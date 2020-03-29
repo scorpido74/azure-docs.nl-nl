@@ -1,6 +1,6 @@
 ---
-title: Een browser tracering vastleggen voor probleem oplossing | Microsoft Docs
-description: Leg netwerk gegevens vast van een browser tracering om problemen met de Azure Portal op te lossen.
+title: Een browsertracering vastleggen voor het oplossen van problemen | Microsoft Documenten
+description: Leg netwerkgegevens vast uit een browsertracering om problemen met de Azure-portal op te lossen.
 services: azure-portal
 keywords: ''
 author: mgblythe
@@ -10,162 +10,162 @@ ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 2b506c9d15dafcd23b24207fe15ed0532939209f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76310693"
 ---
-# <a name="capture-a-browser-trace-for-troubleshooting"></a>Een browser tracering vastleggen voor het oplossen van problemen
+# <a name="capture-a-browser-trace-for-troubleshooting"></a>Een browsertracering vastleggen om problemen op te lossen
 
-Als u een probleem met de Azure Portal oplost en u contact moet opnemen met micro soft-ondersteuning, raden we u aan eerst een browser tracering en enige aanvullende informatie vast te leggen. De gegevens die u verzamelt, kunnen belang rijke informatie geven over de portal op het moment dat het probleem optreedt. Volg de stappen in dit artikel voor de ontwikkel hulpprogramma's in de browser die u gebruikt: Google Chrome of micro soft Edge (chroom), micro soft Edge (EdgeHTML) of Apple Safari.
+Als u een probleem met de Azure-portal oplost en u contact moet opnemen met microsoft-ondersteuning, raden we u aan eerst een browsertracering en wat aanvullende informatie vast te leggen. De informatie die u verzamelt, kan belangrijke details geven over de portal op het moment dat het probleem zich voordoet. Volg de stappen in dit artikel voor de hulpprogramma's voor ontwikkelaars in de browser die u gebruikt: Google Chrome of Microsoft Edge (Chromium), Microsoft Edge (EdgeHTML) of Apple Safari.
 
-## <a name="google-chrome-and-microsoft-edge-chromium"></a>Google Chrome en micro soft Edge (zeswaardig)
+## <a name="google-chrome-and-microsoft-edge-chromium"></a>Google Chrome en Microsoft Edge (Chromium)
 
-Google Chrome en micro soft Edge (chroom) zijn beide gebaseerd op het [open-source-project](https://www.chromium.org/Home)van Chrome. De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars gebruikt, die vergelijkbaar zijn in de twee browsers. Zie [Chrome devtools](https://developers.google.com/web/tools/chrome-devtools) en [micro soft Edge (chroom) Ontwikkelhulpprogramma's](/microsoft-edge/devtools-guide-chromium)voor meer informatie.
+Google Chrome en Microsoft Edge (Chromium) zijn beide gebaseerd op het [Chromium open source project.](https://www.chromium.org/Home) De volgende stappen laten zien hoe de hulpprogramma's voor ontwikkelaars te gebruiken, die zeer vergelijkbaar zijn in de twee browsers. Zie [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) en [Microsoft Edge (Chromium) Developer Tools](/microsoft-edge/devtools-guide-chromium)voor meer informatie.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Het is belang rijk dat u zich aanmeldt _voordat_ u de tracering start, zodat de tracering geen gevoelige informatie bevat met betrekking tot uw aanmelding. 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Het is belangrijk om je aan te melden _voordat_ u het traceerspoor start, zodat het traceerspoor geen gevoelige informatie bevat met betrekking tot uw aanmelding. 
 
-1. Begin met het vastleggen van de stappen die u in de portal uitvoert, met behulp van de [stappen beschrijving](https://support.microsoft.com/help/22878/windows-10-record-steps).
-
-1. Navigeer in de portal naar de stap vlak voordat het probleem zich voordoet.
-
-1. Druk op F12 of selecteer ![scherm opname van het pictogram browser instellingen](media/capture-browser-trace/chromium-icon-settings.png) > **meer hulp middelen** > **ontwikkel hulpprogramma's**.
-
-1. De browser houdt standaard alleen tracerings informatie bij voor de pagina die momenteel wordt geladen. Stel de volgende opties zodanig in dat de browser alle tracerings gegevens houdt, zelfs als uw reproduceren naar meer dan één pagina moet gaan:
-
-    1. Selecteer het tabblad **netwerk** en selecteer vervolgens **logboek bewaren**.
-
-          ![Scherm opname van ' logboek bewaren '](media/capture-browser-trace/chromium-network-preserve-log.png)
-
-    1. Selecteer het tabblad **console** , selecteer **console-instellingen**en selecteer vervolgens **logboek bewaren**. Selecteer de **console-instellingen** opnieuw om het deel venster instellingen te sluiten.
-
-          ![Scherm opname van ' logboek bewaren '](media/capture-browser-trace/chromium-console-preserve-log.png)
-
-1. Selecteer het tabblad **netwerk** en selecteer vervolgens **opname van netwerk logboek stoppen** en **wissen**.
-
-    ![Scherm opname van het opnemen van het netwerk logboek stoppen en wissen](media/capture-browser-trace/chromium-stop-clear-session.png)
-
-1. Selecteer **netwerk logboek opnemen**en reproduceer vervolgens het probleem in de portal.
-
-    ![Scherm opname van de "profilerings sessie starten"](media/capture-browser-trace/chromium-start-session.png)
-
-    U ziet de uitvoer van de sessie, vergelijkbaar met de volgende afbeelding.
-
-    ![Scherm opname van resultaten van browser tracering](media/capture-browser-trace/chromium-browser-trace-results.png)
-
-1. Nadat u het onverwachte gedrag van de portal hebt gereproduceerd, selecteert u **netwerk logboek opname stoppen**en selecteert u vervolgens **exporteren har** en slaat u het bestand op.
-
-    ![Scherm afbeelding van "uitvoer HAR"](media/capture-browser-trace/chromium-network-export-har.png)
-
-1. Stop de stappen opnemen en sla het bestand op.
-
-1. Selecteer in het deel venster ontwikkel hulpprogramma's van de browser het tabblad **console** . Klik met de rechter muisknop, selecteer vervolgens **Opslaan als...** en sla de uitvoer van de console op in een tekst bestand.
-
-    ![Scherm opname van console-uitvoer](media/capture-browser-trace/chromium-console-select.png)
-
-1. Pak het HAR-bestand, de console-uitvoer en de scherm opname in een gecomprimeerde indeling zoals. zip en share die met micro soft ondersteuning.
-
-## <a name="microsoft-edge-edgehtml"></a>Micro soft Edge (EdgeHTML)
-
-De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars in micro soft Edge (EdgeHTML) gebruikt. Zie [micro soft Edge (EdgeHTML) Ontwikkelhulpprogramma's](/microsoft-edge/devtools-guide)voor meer informatie.
-
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Het is belang rijk dat u zich aanmeldt _voordat_ u de tracering start, zodat de tracering geen gevoelige informatie bevat met betrekking tot uw aanmelding. 
-
-1. Begin met het vastleggen van de stappen die u in de portal uitvoert, met behulp van de [stappen beschrijving](https://support.microsoft.com/help/22878/windows-10-record-steps).
+1. Begin met het opnemen van de stappen die u in de portal neemt met [Steps Recorder.](https://support.microsoft.com/help/22878/windows-10-record-steps)
 
 1. Navigeer in de portal naar de stap vlak voordat het probleem zich voordoet.
 
-1. Druk op F12 of selecteer ![scherm opname van het pictogram browser instellingen](media/capture-browser-trace/edge-icon-settings.png) > **meer hulp middelen** > **ontwikkel hulpprogramma's**.
+1. Druk op F12 of ![selecteer](media/capture-browser-trace/chromium-icon-settings.png) > Screenshot van het pictogram browserinstellingen**Meer hulpprogramma's** > **Voor ontwikkelaars**.
 
-1. De browser houdt standaard alleen tracerings informatie bij voor de pagina die momenteel wordt geladen. Stel de volgende opties zodanig in dat de browser alle tracerings gegevens houdt, zelfs als uw reproduceren naar meer dan één pagina moet gaan:
+1. Standaard bewaart de browser alleen traceergegevens voor de pagina die momenteel is geladen. Stel de volgende opties in, zodat de browser alle traceergegevens bijhoudt, zelfs als uw repro naar meer dan één pagina moet gaan:
 
-    1. Selecteer het tabblad **netwerk** en schakel vervolgens de optie **vermeldingen wissen bij navigeren**uit.
+    1. Selecteer het tabblad **Netwerk** en selecteer **Logboek behouden**.
 
-          ![Scherm opname van "vermeldingen wissen bij navigeren"](media/capture-browser-trace/edge-network-clear-entries.png)
+          ![Schermafbeelding van 'Logboek behouden'](media/capture-browser-trace/chromium-network-preserve-log.png)
 
-    1. Selecteer het tabblad **console** en selecteer vervolgens **logboek bewaren**.
+    1. Selecteer het tabblad **Console,** selecteer **Console-instellingen**en selecteer **Logboek behouden**. Selecteer **opnieuw Console-instellingen** om het instellingenvenster te sluiten.
 
-          ![Scherm opname van ' logboek bewaren '](media/capture-browser-trace/edge-console-preserve-log.png)
+          ![Schermafbeelding van 'Logboek behouden'](media/capture-browser-trace/chromium-console-preserve-log.png)
 
-1. Selecteer het tabblad **netwerk** en selecteer vervolgens **profilerings sessie stoppen** en **sessie wissen**.
+1. Selecteer het tabblad **Netwerk** en selecteer **Het registratienetwerklogboek stoppen** en **Wissen**.
 
-    ![Scherm opname van de ' profilerings sessie stoppen ' en ' sessie wissen '](media/capture-browser-trace/edge-stop-clear-session.png)
+    ![Schermafbeelding van 'Stop opname netwerklogboek' en 'Wissen'](media/capture-browser-trace/chromium-stop-clear-session.png)
 
-1. Selecteer de **profilerings sessie starten**en reproduceer vervolgens het probleem in de portal.
+1. Selecteer **Netwerklogboek opnemen**en reproduceert het probleem vervolgens in de portal.
 
-    ![Scherm opname van de "profilerings sessie starten"](media/capture-browser-trace/edge-start-session.png)
+    ![Schermafbeelding van "Profiling session starten"](media/capture-browser-trace/chromium-start-session.png)
 
-    U ziet de uitvoer van de sessie, vergelijkbaar met de volgende afbeelding.
+    U ziet sessie-uitvoer vergelijkbaar met de volgende afbeelding.
 
-    ![Scherm opname van resultaten van browser tracering](media/capture-browser-trace/edge-browser-trace-results.png)
+    ![Schermafbeelding van de resultaten van browsertraceringsresultaten](media/capture-browser-trace/chromium-browser-trace-results.png)
 
-1. Nadat u het onverwachte gedrag van de portal hebt gereproduceerd, selecteert u de optie **profilerings sessie stoppen**en selecteert u vervolgens **exporteren als har** en slaat u het bestand op.
+1. Nadat u het onverwachte portalgedrag hebt gereproduceerd, selecteert u **Het registratienetwerklogboek stoppen,** selecteert u **HAR exporteren** en slaat u het bestand op.
 
-    ![Scherm afbeelding van "exporteren als HAR"](media/capture-browser-trace/edge-network-export-har.png)
+    ![Schermafbeelding van "Export HAR"](media/capture-browser-trace/chromium-network-export-har.png)
 
-1. Stop de stappen opnemen en sla het bestand op.
+1. Stop Steps Recorder en sla het bestand op.
 
-1. Ga terug naar het deel venster ontwikkel hulpprogramma's van de browser, selecteer het tabblad **console** en vouw het venster uit. Plaats de cursor aan het begin van de console-uitvoer en sleep en selecteer de volledige inhoud van de uitvoer. Klik met de rechter muisknop, selecteer **kopiëren**en sla de console-uitvoer op in een tekst bestand.
+1. Selecteer terug in het deelvenster Hulpmiddelen voor browserontwikkelaars het tabblad **Console.** Klik met de rechtermuisknop en selecteer **Opslaan als...** en sla de console-uitvoer op in een tekstbestand.
 
-    ![Scherm opname van console-uitvoer](media/capture-browser-trace/edge-console-select.png)
+    ![Schermafbeelding van console-uitvoer](media/capture-browser-trace/chromium-console-select.png)
 
-1. Pak het HAR-bestand, de console-uitvoer en de scherm opname in een gecomprimeerde indeling zoals. zip en share die met micro soft ondersteuning.
+1. Verpak het HAR-bestand, de console-uitvoer en de schermopname in een gecomprimeerde indeling zoals .zip en deel dat met Microsoft-ondersteuning.
+
+## <a name="microsoft-edge-edgehtml"></a>Microsoft Edge (EdgeHTML)
+
+In de volgende stappen wordt uitgelegd hoe u de hulpprogramma's voor ontwikkelaars gebruiken in Microsoft Edge (EdgeHTML). Zie [Microsoft Edge (EdgeHTML) Developer Tools voor](/microsoft-edge/devtools-guide)meer informatie .
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Het is belangrijk om je aan te melden _voordat_ u het traceerspoor start, zodat het traceerspoor geen gevoelige informatie bevat met betrekking tot uw aanmelding. 
+
+1. Begin met het opnemen van de stappen die u in de portal neemt met [Steps Recorder.](https://support.microsoft.com/help/22878/windows-10-record-steps)
+
+1. Navigeer in de portal naar de stap vlak voordat het probleem zich voordoet.
+
+1. Druk op F12 of ![selecteer](media/capture-browser-trace/edge-icon-settings.png) > Screenshot van het pictogram browserinstellingen**Meer hulpprogramma's** > **Voor ontwikkelaars**.
+
+1. Standaard bewaart de browser alleen traceergegevens voor de pagina die momenteel is geladen. Stel de volgende opties in, zodat de browser alle traceergegevens bijhoudt, zelfs als uw repro naar meer dan één pagina moet gaan:
+
+    1. Selecteer het tabblad **Netwerk** en schakel de optie **Items wissen bij navigeren uit.**
+
+          ![Schermafbeelding van 'Berichten wissen bij navigeren'](media/capture-browser-trace/edge-network-clear-entries.png)
+
+    1. Selecteer het tabblad **Console** en selecteer **Logboek behouden**.
+
+          ![Schermafbeelding van 'Logboek behouden'](media/capture-browser-trace/edge-console-preserve-log.png)
+
+1. Selecteer het tabblad **Netwerk** en selecteer **Vervolgens Profileringssessie stoppen** en Sessie **wissen**.
+
+    ![Schermafbeelding van 'Profiling-sessie stoppen' en 'Sessie wissen'](media/capture-browser-trace/edge-stop-clear-session.png)
+
+1. Selecteer **Profileringssessie starten**en reproduceert het probleem vervolgens in de portal.
+
+    ![Schermafbeelding van "Profiling session starten"](media/capture-browser-trace/edge-start-session.png)
+
+    U ziet sessie-uitvoer vergelijkbaar met de volgende afbeelding.
+
+    ![Schermafbeelding van de resultaten van browsertraceringsresultaten](media/capture-browser-trace/edge-browser-trace-results.png)
+
+1. Nadat u het onverwachte portalgedrag hebt gereproduceerd, selecteert u **De profileringssessie stoppen**en selecteert u **Exporteren als HAR** en slaat u het bestand op.
+
+    ![Schermafbeelding van "Exporteren als HAR"](media/capture-browser-trace/edge-network-export-har.png)
+
+1. Stop Steps Recorder en sla het bestand op.
+
+1. Selecteer het tabblad **Console** en vouw het venster uit in het deelvenster Hulpmiddelen voor browserontwikkelaars. Plaats de cursor aan het begin van de console-uitvoer en sleep en selecteer de volledige inhoud van de uitvoer. Klik met de rechtermuisknop, selecteer **Kopiëren**en sla de console-uitvoer op in een tekstbestand.
+
+    ![Schermafbeelding van console-uitvoer](media/capture-browser-trace/edge-console-select.png)
+
+1. Verpak het HAR-bestand, de console-uitvoer en de schermopname in een gecomprimeerde indeling zoals .zip en deel dat met Microsoft-ondersteuning.
 
 ## <a name="apple-safari"></a>Apple Safari
 
-De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars in Apple Safari kunt gebruiken. Zie [overzicht van Safari Ontwikkelhulpprogramma's](https://support.apple.com/guide/safari-developer/safari-developer-tools-overview-dev073038698/11.0/mac)voor meer informatie.
+De volgende stappen laten zien hoe u de hulpprogramma's voor ontwikkelaars in Apple Safari gebruiken. Zie [overzicht van Safari Developer Tools voor](https://support.apple.com/guide/safari-developer/safari-developer-tools-overview-dev073038698/11.0/mac)meer informatie.
 
-1. De hulpprogram ma's voor ontwikkel aars in Apple Safari inschakelen:
+1. Schakel de hulpprogramma's voor ontwikkelaars in Apple Safari in:
 
-    1. Selecteer **Safari**en selecteer vervolgens **voor keuren**.
+    1. Selecteer **Safari**en selecteer **Voorkeuren**.
 
-        ![Scherm opname van Safari-voor keuren](media/capture-browser-trace/safari-preferences.png)
+        ![Schermafbeelding van Safari-voorkeuren](media/capture-browser-trace/safari-preferences.png)
 
-    1. Selecteer het tabblad **Geavanceerd** en selecteer vervolgens het **menu ontwikkelen weer geven in de menu balk**.
+    1. Selecteer het tabblad **Geavanceerd** en selecteer **Het menu Ontwikkelen weergeven in de menubalk**.
 
-        ![Scherm opname van geavanceerde voor keuren voor Safari](media/capture-browser-trace/safari-show-develop-menu.png)
+        ![Schermafbeelding van geavanceerde voorkeuren voor Safari](media/capture-browser-trace/safari-show-develop-menu.png)
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Het is belang rijk dat u zich aanmeldt _voordat_ u de tracering start, zodat de tracering geen gevoelige informatie bevat met betrekking tot uw aanmelding. 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Het is belangrijk om je aan te melden _voordat_ u het traceerspoor start, zodat het traceerspoor geen gevoelige informatie bevat met betrekking tot uw aanmelding. 
 
-1. Begin met het vastleggen van de stappen die u in de portal uitvoert. Zie [het scherm op uw Mac vastleggen](https://support.apple.com/HT208721)voor meer informatie.
+1. Begin met het opnemen van de stappen die u neemt in de portal. Zie [Het scherm opnemen op uw Mac](https://support.apple.com/HT208721)voor meer informatie.
 
 1. Navigeer in de portal naar de stap vlak voordat het probleem zich voordoet.
 
-1. Selecteer **ontwikkelen**en selecteer vervolgens **Web-Inspector weer geven**.
+1. Selecteer **Ontwikkelen**en selecteer **Webcontrole weergeven**.
 
-    ![Scherm opname van ' webinspector weer geven '](media/capture-browser-trace/safari-show-web-inspector.png)
+    ![Schermafbeelding van 'Webcontrole weergeven'](media/capture-browser-trace/safari-show-web-inspector.png)
 
-1. De browser houdt standaard alleen tracerings informatie bij voor de pagina die momenteel wordt geladen. Stel de volgende opties zodanig in dat de browser alle tracerings gegevens houdt, zelfs als uw reproduceren naar meer dan één pagina moet gaan:
+1. Standaard bewaart de browser alleen traceergegevens voor de pagina die momenteel is geladen. Stel de volgende opties in, zodat de browser alle traceergegevens bijhoudt, zelfs als uw repro naar meer dan één pagina moet gaan:
 
-    1. Selecteer het tabblad **netwerk** en selecteer vervolgens **logboek bewaren**.
+    1. Selecteer het tabblad **Netwerk** en selecteer **Logboek behouden**.
 
-          ![Scherm opname van ' logboek bewaren '](media/capture-browser-trace/safari-network-preserve-log.png)
+          ![Schermafbeelding van 'Logboek behouden'](media/capture-browser-trace/safari-network-preserve-log.png)
 
-    1. Selecteer het tabblad **console** en selecteer vervolgens **logboek bewaren**.
+    1. Selecteer het tabblad **Console** en selecteer **Logboek behouden**.
 
-          ![Scherm opname van ' logboek bewaren '](media/capture-browser-trace/safari-console-preserve-log.png)
+          ![Schermafbeelding van 'Logboek behouden'](media/capture-browser-trace/safari-console-preserve-log.png)
 
-1. Selecteer het tabblad **netwerk** en selecteer vervolgens **netwerk items wissen**.
+1. Selecteer het tabblad **Netwerk** en selecteer **Netwerkitems wissen**.
 
-    ![Scherm opname van ' netwerk items wissen '](media/capture-browser-trace/safari-clear-session.png)
+    ![Schermafbeelding van 'Netwerkitems wissen'](media/capture-browser-trace/safari-clear-session.png)
 
-1. Reproduceer het probleem in de portal. U ziet de uitvoer van de sessie, vergelijkbaar met de volgende afbeelding.
+1. Reproduceren van het probleem in het portaal. U ziet sessie-uitvoer vergelijkbaar met de volgende afbeelding.
 
-    ![Scherm opname van resultaten van browser tracering](media/capture-browser-trace/safari-browser-trace-results.png)
+    ![Schermafbeelding van de resultaten van browsertraceringsresultaten](media/capture-browser-trace/safari-browser-trace-results.png)
 
-1. Nadat u het onverwachte gedrag van de portal hebt gemaakt, selecteert u **exporteren** en slaat u het bestand op.
+1. Nadat u het onverwachte portalgedrag hebt gereproduceerd, selecteert u **Exporteren** en het bestand opslaan.
 
-    ![Scherm opname van "exporteren"](media/capture-browser-trace/safari-network-export-har.png)
+    ![Schermafbeelding van 'Exporteren'](media/capture-browser-trace/safari-network-export-har.png)
 
-1. Stop de scherm opname en sla het bestand op.
+1. Stop de schermrecorder en sla het bestand op.
 
-1. Ga terug naar het deel venster ontwikkel hulpprogramma's van de browser, selecteer het tabblad **console** en vouw het venster uit. Plaats de cursor aan het begin van de console-uitvoer en sleep en selecteer de volledige inhoud van de uitvoer. Gebruik opdracht-C om de uitvoer te kopiëren en op te slaan in een tekst bestand.
+1. Selecteer het tabblad **Console** en vouw het venster uit in het deelvenster Hulpmiddelen voor browserontwikkelaars. Plaats de cursor aan het begin van de console-uitvoer en sleep en selecteer de volledige inhoud van de uitvoer. Gebruik Command-C om de uitvoer te kopiëren en op te slaan in een tekstbestand.
 
-    ![Scherm opname van console-uitvoer](media/capture-browser-trace/safari-console-select.png)
+    ![Schermafbeelding van console-uitvoer](media/capture-browser-trace/safari-console-select.png)
 
-1. Pak het HAR-bestand, de console-uitvoer en de scherm opname in een gecomprimeerde indeling zoals. zip en share die met micro soft ondersteuning.
+1. Verpak het HAR-bestand, de console-uitvoer en de schermopname in een gecomprimeerde indeling zoals .zip en deel dat met Microsoft-ondersteuning.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Overzicht van Azure Portal](azure-portal-overview.md)
+[Overzicht van de Azure Portal](azure-portal-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: De Postman-verzameling importeren voor Azure Live Streaming REST-aanroepen
-description: Dit artikel bevat een definitie van de Postman-verzameling voor Azure Media Services REST-aanroepen.
+title: De Postman-verzameling importeren voor Azure Live Streaming REST-oproepen
+description: In dit artikel vindt u een definitie van de Postman-verzameling voor rest-aanroepen van Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 897513abcc9f829f1cbdc315208e4451ae4dbc41
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60637587"
 ---
-# <a name="import-a-postman-collection-with-live-streaming-operations"></a>Een Postman-verzameling met Live Streaming bewerkingen importeren 
+# <a name="import-a-postman-collection-with-live-streaming-operations"></a>Een Postman-verzameling importeren met live streaming-bewerkingen 
 
-In dit artikel bevat een definitie van de **Postman** verzameling met gegroepeerde HTTP-aanvragen die aanroep **Live Streaming** Azure Media Services REST API's. Voor meer informatie over het configureren van **Postman** , zodat deze kan worden gebruikt om de Media Services REST API's aanroepen, Zie [Postman configureren voor Media Services REST API-aanroepen](media-rest-apis-with-postman.md) zelfstudie.
+Dit artikel bevat een definitie van de **Postman-verzameling** die gegroepeerde HTTP-aanvragen bevat die **live streaming** Azure Media Services REST API's aanroepen. Zie [Zelfstudie voor postman configureren voor Media Services REST API's voor](media-rest-apis-with-postman.md) informatie over het configureren **van Postman** zodat deze kan worden gebruikt om API's voor Media Services REST te bellen.
 
 ```
 {

@@ -1,6 +1,6 @@
 ---
-title: Integreer SIM-gegevens in the Remote Monitoring Solution - Azure | Microsoft Docs
-description: Dit artikel wordt beschreven hoe u Telefónica SIM-gegevens integreert in de oplossing voor externe controle.
+title: SIM-gegevens integreren in de remote monitoring-oplossing - Azure| Microsoft Documenten
+description: In dit artikel wordt beschreven hoe u Telefónica SIM-gegevens integreren in de remote monitoring-oplossing.
 author: hegate
 manager: ''
 ms.author: hegate
@@ -9,66 +9,66 @@ services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61442212"
 ---
-# <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>SIM-gegevens in de oplossing voor externe controle integreren
+# <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>SIM-gegevens integreren in de oplossing voor externe monitoring
 
-IoT-apparaten is vaak verbinding maken met de cloud met behulp van een SIM-kaart waarmee ze gegevensstromen verzenden vanaf elke locatie. De externe controle van Azure IoT-oplossing maakt de integratie van beheerde connectiviteit van IoT-gegevens, zodat operators kunnen ook de status van het apparaat wordt via de gegevens van de IoT SIM bijhouden.
+IoT-apparaten maken vaak verbinding met de cloud met behulp van een simkaart waarmee ze vanaf elke locatie gegevensstromen kunnen verzenden. De Azure IoT Remote Monitoring-oplossing maakt de integratie van IoT Managed Connectivity-gegevens mogelijk, zodat operators ook de status van het apparaat kunnen volgen via de gegevens die door de IoT-sim worden geleverd.
 
-Externe controle biedt buiten de box-integratie met Telefónica IoT-connectiviteit, zodat klanten die gebruikmaken van het Platform van IoT-connectiviteit hun apparaat connectiviteitsgegevens van SIM-kaarten om hun oplossingen te synchroniseren. Deze oplossing kan worden uitgebreid ter ondersteuning van andere leveranciers van IoT-connectiviteit via GitHub [opslagplaats](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet).
+Remote Monitoring biedt out-of-the-box integratie met Telefónica IoT Connectivity, waardoor klanten die gebruik maken van het IoT Connectivity Platform hun apparaat-SIM-connectiviteitsgegevens synchroniseren met hun oplossingen. Deze oplossing kan worden uitgebreid om andere IoT Connectivity-providers te ondersteunen via [GitHub-repository.](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
 
 In deze zelfstudie leert u het volgende:
 
-* Integreer Telefónica IoT SIM-gegevens in de oplossing voor externe controle
+* Integreer IoT SIM-gegevens van Telefónica in de Remote Monitoring-oplossing
 * Telemetrie in realtime weergeven
 * SIM-gegevens weergeven
 
-## <a name="telefnica-iot-integration-setup"></a>Installatie van de integration Telefónica IoT
+## <a name="telefnica-iot-integration-setup"></a>Telefónica IoT-integratie-installatie
 
 ### <a name="prerequisites"></a>Vereisten
 
-Deze extra bewaking op afstand-functie is momenteel in preview. Als u wilt synchroniseren uw verbindingsgegevens in de oplossing voor externe bewaking Azure, de volgende stappen uit:
+Deze extra functie voor externe controle is momenteel in preview. Voer de volgende stappen uit om uw verbindingsgegevens te synchroniseren met Azure Remote Monitoring Solution:
 
-1. Vul een verzoek in via [Telefónica van site](https://iot.telefonica.com/contact), selecteert u de optie **Azure Remote Monitoring**, met inbegrip van de gegevens van uw contactpersonen.
-2. Telefónica wordt geactiveerd voor uw account.
-3. Als u nog niet een client Telefónica en u wilt profiteren van deze of andere IoT-connectiviteit Cloud gereed services, gaat u naar [Telefónica van site](https://iot.telefonica.com/) en selecteer de optie **connectiviteit**.
+1. Vul een aanvraag in op [de site van Telefónica,](https://iot.telefonica.com/contact)selecteer de optie **Azure Remote Monitoring**, inclusief uw contactgegevens.
+2. Telefónica activeert uw account.
+3. Als u nog geen Telefónica-client bent en u wilt genieten van deze of andere IoT Connectivity Cloud Ready-services, gaat u naar [de site van Telefónica](https://iot.telefonica.com/) en selecteert u de optie **Connectiviteit.**
 
-### <a name="telefnica-sim-setup"></a>Telefónica SIM setup
-Telefónica SIM & Azure dubbele apparaat-ID-koppeling is gebaseerd op de eigenschap 'alias' Telefónica IoT SIM. 
+### <a name="telefnica-sim-setup"></a>Telefónica SIM-installatie
+Telefónica SIM & Azure Twin device ID association is gebaseerd op de eigenschap "alias" van Telefónica IoT SIM. 
 
-Navigeer naar [Telefónica IoT connectiviteit Platform Portal](https://m2m-movistar-es.telefonica.com/) > SIM-inventarisatie > Selecteer de SIM-kaart en elk SIM 'alias' werken met uw gewenste dubbele apparaat-id. Deze taak kan ook worden uitgevoerd in bulkmodus (Zie handleidingen Telefónica IoT connectiviteit Platform).
+Navigeer naar [Telefónica IoT Connectivity Platform Portal](https://m2m-movistar-es.telefonica.com/) > SIM-inventaris > Selecteer uw SIM-kaart en werk elke SIM-alias bij met uw gewenste Twin-apparaatID. Deze taak kan ook worden uitgevoerd in bulk-modus (zie Telefónica IoT Connectivity Platform handleidingen).
 
-Deze taak kan ook worden uitgevoerd in bulkmodus (Zie Telefónica IoT connectiviteit Platform-handleidingen)
+Deze taak kan ook worden uitgevoerd in bulkmodus (zie de gebruikershandleidingen van het Telefónica IoT Connectivity Platform)
 
-![Telefónica Update](./media/iot-accelerators-remote-monitoring-telefonica-sim/telefonica_site.png)
+![Telefónica-update](./media/iot-accelerators-remote-monitoring-telefonica-sim/telefonica_site.png)
 
-Als u wilt uw apparaat aansluiten op de externe controle, kunt u deze met behulp van zelfstudies volgen [C](iot-accelerators-connecting-devices-linux.md) of [knooppunt](iot-accelerators-connecting-devices-node.md). 
+Als u uw apparaat wilt verbinden met de bewaking op afstand, u deze zelfstudies volgen met [C](iot-accelerators-connecting-devices-linux.md) of [Node.](iot-accelerators-connecting-devices-node.md) 
 
-## <a name="view-device-telemetry-and-sim-properties"></a>Telemetrie van apparaten weergeven en SIM-eigenschappen
+## <a name="view-device-telemetry-and-sim-properties"></a>Telemetrie en SIM-eigenschappen van het apparaat weergeven
 
-Nadat uw account Telefónica correct is geconfigureerd en uw apparaat is verbonden, kunt u de Apparaatdetails van het en SIM-gegevens kunt weergeven.
+Zodra uw Telefónica-account goed is geconfigureerd en uw apparaat is verbonden, u apparaatgegevens en SIM-gegevens bekijken.
 
-De volgende parameters voor de verbindingen worden gepubliceerd:
+De volgende verbindingsparameters worden gepubliceerd:
 
 * ICCID
 * IP
-* Netwerk aanwezigheid
-* SIM-Status
-* Op het netwerk locatie
-* Verbruikte gegevens-verkeer
+* Aanwezigheid van het netwerk
+* SIM-status
+* Locatie op basis van netwerk
+* Verbruikt dataverkeer
 
 ![Dashboard](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u een overzicht van hoe u SIM-gegevens in Azure IoT Remote Monitoring integreert hebt, moet u hier voorgestelde volgende stappen voor oplossingen accelerators zijn:
+Nu u een overzicht hebt van hoe simgegevens kunnen worden geïntegreerd in Azure IoT Remote Monitoring, worden hier de volgende stappen voorgesteld voor versnellers van oplossingen:
 
-* [De oplossing Azure IoT Remote Monitoring werken](quickstart-remote-monitoring-deploy.md)
+* [De Azure IoT Remote Monitoring-oplossing bedienen](quickstart-remote-monitoring-deploy.md)
 * [Geavanceerde bewaking uitvoeren](iot-accelerators-remote-monitoring-monitor.md)
 * [Uw apparaten beheren](iot-accelerators-remote-monitoring-manage.md)
-* [Problemen met een apparaat oplossen](iot-accelerators-remote-monitoring-maintain.md)
+* [Apparaatproblemen oplossen](iot-accelerators-remote-monitoring-maintain.md)
 

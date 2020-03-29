@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
 ms.openlocfilehash: 69062e42a5d572cf7b73bec3932613d39be9b92f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921501"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Security Center en Azure Virtual Machines
@@ -33,7 +33,7 @@ Met Security Center kunt u gegevens van virtuele machines in Azure beveiligen do
 * Aanbevelingen voor eindpuntbeveiliging
 * Validatie voor schijfversleuteling
 * Beoordeling en herstel van beveiligingslekken
-* Beveiligings waarschuwingen van de functies voor bedreigings beveiliging
+* Beveiligingswaarschuwingen van de functies voor bedreigingsbeveiliging
 
 Naast het beveiligen van Azure VM's biedt Security Center ook beveiligingscontrole en -beheer voor cloudservices, app-services, virtuele netwerken en meer. 
 
@@ -47,17 +47,17 @@ Als u aan de slag wilt met Azure Security Center, moet u aan het volgende voldoe
 
 * U moet een abonnement hebben op Microsoft Azure. Zie [Prijzen van Beveiligingscentrum](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie over de gratis laag en standaardlaag in Security Center.
 * Plan de invoer van Security Center. Zie [Plannings- en bedieningsgids voor het Beveiligingscentrum](security-center-planning-and-operations-guide.md) voor meer informatie over plannings- en bedieningsoverwegingen.
-* Zie [Azure Security Center Veelgestelde vragen (FAQ)](faq-vms.md)voor meer informatie over ondersteunde besturings systemen. 
+* Zie [Veelgestelde vragen (Azure Security Center)](faq-vms.md)voor informatie over ondersteunde besturingssystemen. 
 
 ## <a name="set-security-policy"></a>Beveiligingsbeleid instellen
 Gegevensverzameling moet zijn ingeschakeld, zodat met Azure Security Center de informatie kan worden verkregen die nodig is om aanbevelingen en waarschuwingen te bieden die zijn gegenereerd op basis van het beveiligingsbeleid dat u configureert. In de onderstaande afbeelding ziet u dat **Gegevensverzameling** is ingesteld op **Aan**.
 
-Een beveiligingsbeleid bepaalt welke set controles wordt aanbevolen voor resources binnen het opgegeven abonnement of de opgegeven resourcegroep. Voordat u het beveiligingsbeleid inschakelt, moet gegevensverzameling zijn ingeschakeld. Met Security Center worden gegevens van uw virtuele machines verzameld om de beveiligingsstatus van de VM's te beoordelen, aanbevelingen voor beveiliging te bieden en u te waarschuwen bij dreigingen. In Security Center definieert u beleid voor Azure-abonnementen of -resourcegroepen overeenkomstig de behoeften van uw bedrijf en het type toepassingen of de vertrouwelijkheid van de gegevens in elk abonnement. 
+Een beveiligingsbeleid bepaalt welke set besturingselementen wordt aanbevolen voor resources binnen het opgegeven abonnement of de opgegeven resourcegroep. Voordat u het beveiligingsbeleid inschakelt, moet gegevensverzameling zijn ingeschakeld. Met Security Center worden gegevens van uw virtuele machines verzameld om de beveiligingsstatus van de VM's te beoordelen, aanbevelingen voor beveiliging te bieden en u te waarschuwen bij dreigingen. In Security Center definieert u beleid voor Azure-abonnementen of -resourcegroepen overeenkomstig de behoeften van uw bedrijf en het type toepassingen of de vertrouwelijkheid van de gegevens in elk abonnement. 
 
 ![Beveiligingsbeleid](./media/security-center-virtual-machine/security-center-virtual-machine-fig1.png)
 
 > [!NOTE]
-> Zie het artikel **Beveiligingsbeleid instellen** voor meer informatie over elk [Preventiebeleid](tutorial-security-policy.md).
+> Zie het artikel [Beveiligingsbeleid instellen](tutorial-security-policy.md) voor meer informatie over elk **Preventiebeleid**.
 
 ## <a name="manage-security-recommendations"></a>Aanbevelingen voor beveiliging beheren
 De beveiligingsstatus van uw Azure-resources wordt gecontroleerd met Security Center. Wanneer met Security Center potentiële beveiligingsproblemen worden geïdentificeerd, worden er aanbevelingen gedaan. Deze aanbevelingen begeleiden u bij het configureren van de benodigde besturingselementen.
@@ -73,7 +73,7 @@ Nadat er een beveiligingsbeleid is ingesteld, wordt met Security Center de bevei
 | Eindpuntbeveiliging installeren |Hiermee wordt aanbevolen om antimalwareprogramma's op VM's te installeren. (Alleen voor Windows-VM's.) |
 | VM-agent inschakelen |Hiermee kunt u zien voor welke VM's de VM-agent is vereist. De VM-agent moet zijn geïnstalleerd op VM's om patches en basislijnen te scannen en antimalwareprogramma's uit te voeren. De VM-agent wordt standaard geïnstalleerd op VM's die zijn geïmplementeerd vanuit Azure Marketplace. Het artikel [VM Agent and Extensions – Part 2)](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) (VM-agent en -extensies – deel 2) bevat informatie over het installeren van de VM-agent. |
 | Schijfversleuteling toepassen |Hiermee wordt aanbevolen om de VM-schijven te versleutelen met behulp van Azure Disk Encryption. (Voor VM's van Windows en Linux.) Versleuteling wordt aanbevolen voor het besturingssysteem en voor de gegevensvolumes op de VM. |
-| Beoordeling van beveiligingslekken is niet geïnstalleerd |Hiermee wordt aanbevolen om een oplossing voor de beoordeling van beveiligingslekken te installeren op de VM. |
+| Beoordeling van beveiligingslekken is niet geïnstalleerd |Hiermee wordt aanbevolen dat een oplossing voor de beoordeling van beveiligingslekken wordt geïnstalleerd op de VM. |
 | Beveiligingsproblemen herstellen |Hiermee ziet u beveiligingsproblemen in het systeem en in de toepassing die zijn gedetecteerd met de oplossing voor beveiligingslekken die op de VM is geïnstalleerd. |
 
 > [!NOTE]
@@ -82,7 +82,7 @@ Nadat er een beveiligingsbeleid is ingesteld, wordt met Security Center de bevei
 > 
 
 ## <a name="monitor-security-health"></a>Beveiligingsstatus controleren
-Nadat u een [beveiligingsbeleid](tutorial-security-policy.md) voor de resources van een abonnement hebt ingeschakeld, analyseert Security Center de beveiliging van uw resources om mogelijke beveiligingsproblemen op te sporen.  U kunt de beveiligingsstatus van uw resources samen met eventuele problemen bekijken op de blade **Beveiligingsstatus van de resource**. Wanneer u op de statustegel **Resourcebeveiliging** klikt op **Virtuele machines**, wordt de blade **Virtuele machines** geopend met de aanbevelingen voor uw VM's. 
+Nadat u een [beveiligingsbeleid](tutorial-security-policy.md) voor de resources van een abonnement hebt ingeschakeld, analyseert Security Center de beveiliging van uw resources om mogelijke beveiligingsproblemen op te sporen.  U de beveiligingsstatus van uw resources bekijken, samen met eventuele problemen in het **beveiligingsblad voor resources.** Wanneer u op de statustegel **Resourcebeveiliging** klikt op **Virtuele machines**, wordt de blade **Virtuele machines** geopend met de aanbevelingen voor uw VM's. 
 
 ![Beveiligingsstatus](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
@@ -94,8 +94,8 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
 Selecteer een beveiligingswaarschuwing voor meer informatie over de gebeurtenis(sen) waarmee de waarschuwing is geactiveerd en welke stappen u zo nodig moet uitvoeren om een aanval te verhelpen. Beveiligingswaarschuwingen zijn gegroepeerd op type en datum.
 
 ## <a name="see-also"></a>Zie ook
-Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
+Zie de volgende onderwerpen voor meer informatie over Security Center:
 
 * [Setting security policies in Azure Security Center](tutorial-security-policy.md) (Beveiligingsbeleid instellen in Azure Security Center): leer hoe u beveiligingsbeleid voor uw Azure-abonnementen en -resourcegroepen configureert.
-* [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) (Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center): ontdek hoe u beveiligingswaarschuwingen kunt beheren en erop kunt reageren.
-* [Veelgestelde vragen-virtual machines](faq-vms.md) : vind Veelgestelde vragen over het gebruik van de service.
+* [Beveiligingswaarschuwingen beheren en beantwoorden in Azure Security Center:](security-center-managing-and-responding-alerts.md) meer informatie over het beheren en reageren op beveiligingswaarschuwingen.
+* [VEELGESTELDE VRAGEN - Virtuele machines](faq-vms.md) - Vind veelgestelde vragen over het gebruik van de service.

@@ -1,6 +1,6 @@
 ---
-title: Simulatie van apparaten met IoT-externe controle-Azure | Microsoft Docs
-description: In deze hand leiding wordt uitgelegd hoe u de Device Simulator kunt gebruiken met de oplossings versneller voor externe controle.
+title: Apparaatsimulatie met IoT-bewaking op afstand - Azure | Microsoft Documenten
+description: Deze handleiding laat u zien hoe u de apparaatsimulator gebruiken met de versneller van de bewakingsoplossing op afstand.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,119 +9,119 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8babacfede6e13fde629492e1cd9f80af7f0e53f
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943059"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Een nieuw gesimuleerd apparaat maken en testen
 
-Met de oplossings versneller voor externe controle kunt u uw eigen gesimuleerde apparaten definiëren. Dit artikel laat u zien hoe u een nieuw gesimuleerd gloeilamp-apparaat definieert en dit vervolgens lokaal kunt testen. De oplossings versneller bevat gesimuleerde apparaten, zoals koelers en vracht wagens. U kunt echter uw eigen gesimuleerde apparaten definiëren om uw IoT-oplossingen te testen voordat u echte apparaten implementeert.
+Met de Remote Monitoring-oplossingsversneller u uw eigen gesimuleerde apparaten definiëren. In dit artikel ziet u hoe u een nieuw gesimuleerd gloeilampapparaat definieert en vervolgens lokaal testen. De oplossingsversneller omvat gesimuleerde apparaten zoals koelmachines en vrachtwagens. U echter uw eigen gesimuleerde apparaten definiëren om uw IoT-oplossingen te testen voordat u echte apparaten implementeert.
 
 > [!NOTE]
-> In dit artikel wordt beschreven hoe u gesimuleerde apparaten gebruikt die worden gehost in de Device simulatie service. Als u een echt apparaat wilt maken, raadpleegt u [uw apparaat aansluiten op de oplossings versneller voor externe controle](iot-accelerators-connecting-devices.md).
+> In dit artikel wordt beschreven hoe gesimuleerde apparaten worden gebruikt die worden gehost in de apparaatsimulatieservice. Als u een echt apparaat wilt maken, [raadpleegt u Uw apparaat verbinden met de versneller van de oplossing voor externe bewaking.](iot-accelerators-connecting-devices.md)
 
-In deze hand leiding wordt uitgelegd hoe u de micro service Device simulatie kunt aanpassen. Deze micro service maakt deel uit van de oplossings versneller voor externe controle. Voor het weer geven van de functies voor simulatie van apparaten worden in deze hand leiding twee scenario's in de toepassing contoso IoT gebruikt:
+Deze handleiding laat u zien hoe u de microservice voor apparaatsimulatie aanpassen. Deze microservice maakt deel uit van de Remote Monitoring oplossingsversneller. Om de mogelijkheden voor apparaatsimulatie weer te geven, gebruikt deze handleiding twee scenario's in de Contoso IoT-toepassing:
 
-In het eerste scenario voegt u een nieuw type telemetrie toe aan het bestaande **Chiller** -apparaattype van contoso.
+In het eerste scenario voegt u een nieuw telemetrietype toe aan het bestaande **Chiller-apparaattype van** Contoso.
 
-In het tweede scenario wil Contoso een nieuw Smart gloeilamp-apparaat testen. Als u de tests wilt uitvoeren, maakt u een nieuw gesimuleerd apparaat met de volgende kenmerken:
+In het tweede scenario wil Contoso een nieuw slim gloeilampapparaat testen. Als u de tests wilt uitvoeren, maakt u een nieuw gesimuleerd apparaat met de volgende kenmerken:
 
 *Eigenschappen*
 
-| Naam                     | Waarden                      |
+| Name                     | Waarden                      |
 | ------------------------ | --------------------------- |
-| Kleur                    | Wit, rood, blauw            |
-| Helderder               | 0 tot 100                    |
-| Geschatte resterende levens duur | Aftel tijd van 10.000 uur |
+| Kleur                    | Wit, Rood, Blauw            |
+| Helderheid               | 0 tot 100                    |
+| Geschatte resterende levensduur | Aftellen vanaf 10.000 uur |
 
 *Telemetrie*
 
-In de volgende tabel ziet u de gegevens die de gloeilamp rapporteert aan de Cloud als een gegevens stroom:
+In de volgende tabel worden de gegevens weergegeven die de gloeilampen naar de cloud rapporteert als een gegevensstroom:
 
-| Naam   | Waarden      |
+| Name   | Waarden      |
 | ------ | ----------- |
-| Status | ' aan ', ' uit ' |
+| Status | "aan", "off" |
 | Temperatuur | Graden F |
-| Aanschaffen | waar of ONWAAR |
+| online | de waarde True, false |
 
 > [!NOTE]
-> De **online** -telemetrie-waarde is verplicht voor alle gesimuleerde typen.
+> De **online** telemetriewaarde is verplicht voor alle gesimuleerde typen.
 
-*Technieken*
+*Methoden*
 
-In de volgende tabel ziet u de acties die het nieuwe apparaat ondersteunt:
+In de volgende tabel worden de acties weergegeven die het nieuwe apparaat ondersteunt:
 
-| Naam        |
+| Name        |
 | ----------- |
-| Scha kelen   |
-| Uitschakelen  |
+| Inschakelen   |
+| Schakel  |
 
-*Begin status*
+*Initiële status*
 
-In de volgende tabel wordt de begin status van het apparaat weer gegeven:
+In de volgende tabel ziet u de oorspronkelijke status van het apparaat:
 
-| Naam                     | Waarden |
+| Name                     | Waarden |
 | ------------------------ | -------|
-| Eerste kleur            | Wit  |
-| Eerste helderheid       | 75     |
-| Eerste resterende levens duur   | 10.000 |
-| Initiële telemetrie-status | waarop   |
-| Initiële telemetrische Tempe ratuur | 200   |
+| Initiële kleur            | Wit  |
+| Initiële helderheid       | 75     |
+| Initiële resterende levensduur   | 10.000 |
+| Initiële telemetriestatus | "op"   |
+| Initiële telemetrietemperatuur | 200   |
 
-Als u de stappen in deze hand leiding wilt uitvoeren, hebt u een actief Azure-abonnement nodig.
+Als u de stappen in deze handleiding wilt uitvoeren, hebt u een actief Azure-abonnement nodig.
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze hand leiding wilt volgen, hebt u het volgende nodig:
+Om deze handleiding te volgen, moet u het volgende volgen:
 
-* Visual Studio Code. U kunt [Visual Studio code voor Mac, Linux en Windows downloaden](https://code.visualstudio.com/download).
-* .NET core. U kunt [.net core voor Mac, Linux en Windows](https://www.microsoft.com/net/download)downloaden.
+* Visual Studio Code. U [Visual Studio Code voor Mac, Linux en Windows downloaden.](https://code.visualstudio.com/download)
+* .NET Core. U [.NET Core voor Mac, Linux en Windows](https://www.microsoft.com/net/download)downloaden.
 * [C# voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* Postman. U kunt [postman downloaden voor Mac, Windows of Linux](https://www.getpostman.com/apps).
-* Een [IOT-hub die is geïmplementeerd in uw Azure-abonnement](../../articles/iot-hub/iot-hub-create-through-portal.md). U hebt de connection string van de IoT-hub nodig om de stappen in deze hand leiding uit te voeren. U kunt de connection string ophalen via de Azure Portal.
-* Een Cosmos DB-Data Base die gebruikmaakt van de SQL-API en die is geconfigureerd voor [sterke consistentie](../../articles/cosmos-db/how-to-manage-database-account.md). U hebt de connection string van de Cosmos DB-data base nodig om de stappen in deze hand leiding uit te voeren. U kunt de connection string ophalen via de Azure Portal.
+* Postman. U [Postman voor Mac, Windows of Linux](https://www.getpostman.com/apps)downloaden.
+* Een [IoT-hub die is geïmplementeerd voor uw Azure-abonnement.](../../articles/iot-hub/iot-hub-create-through-portal.md) U hebt de verbindingstekenreeks van de IoT-hub nodig om de stappen in deze handleiding te voltooien. U de verbindingstekenreeks ophalen via de Azure-portal.
+* Een Cosmos DB-database die de SQL-API gebruikt en die is geconfigureerd voor [een sterke consistentie.](../../articles/cosmos-db/how-to-manage-database-account.md) U hebt de verbindingstekenreeks van de Cosmos DB-database nodig om de stappen in deze handleiding uit te voeren. U de verbindingstekenreeks ophalen via de Azure-portal.
 
 ## <a name="prepare-your-development-environment"></a>Uw ontwikkelomgeving voorbereiden
 
-Voer de volgende taken uit om uw ontwikkel omgeving voor te bereiden:
+Voltooi de volgende taken om uw ontwikkelomgeving voor te bereiden:
 
-* Down load de bron voor de micro service Device simulatie.
-* Down load de bron voor de micro service Storage Adapter.
-* Voer de micro service Storage Adapter lokaal uit.
+* Download de bron voor de microservice van apparaatsimulatie.
+* Download de bron voor de microservice van de opslagadapter.
+* Voer de microservice van de opslagadapter lokaal uit.
 
-In de instructies in dit artikel wordt ervan uitgegaan dat u Windows gebruikt. Als u een ander besturings systeem gebruikt, moet u mogelijk enkele bestands paden en opdrachten aanpassen aan uw omgeving.
+De instructies in dit artikel gaan ervan uit dat u Windows gebruikt. Als u een ander besturingssysteem gebruikt, moet u mogelijk een aantal bestandspaden en opdrachten aanpassen aan uw omgeving.
 
-### <a name="download-the-microservices"></a>De micro services downloaden
+### <a name="download-the-microservices"></a>De microservices downloaden
 
-Down load en pak de [externe bewakings micro Services](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) van github naar een geschikte locatie op de lokale computer. In dit artikel wordt ervan uitgegaan dat de naam van deze map **extern wordt bewaakt-Services-DotNet-Master**.
+Download en rits de [microservices voor externe bewaking](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) van GitHub uit naar een geschikte locatie op uw lokale machine. Het artikel gaat ervan uit dat de naam van deze map **remote-monitoring-services-dotnet-master**is.
 
-Down load en pak de [device simulatie micro service](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) vanuit github naar een geschikte locatie op de lokale computer. In dit artikel wordt ervan uitgegaan dat de naam van deze map **device-simulatie-DotNet-Master**is.
+Download en rits de microservice van de [apparaatsimulatie](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) van GitHub uit naar een geschikte locatie op uw lokale machine. Het artikel gaat ervan uit dat de naam van deze map **apparaatsimulatie-dotnet-master**is.
 
-### <a name="run-the-storage-adapter-microservice"></a>De micro service Storage Adapter uitvoeren
+### <a name="run-the-storage-adapter-microservice"></a>De microservice van de opslagadapter uitvoeren
 
-Open de map **Remote-Monitoring-Services-DotNet-master\storage-adapter** in Visual Studio code. Klik op alle **herstel** knoppen om eventuele onopgeloste afhankelijkheden op te lossen.
+Open de map **remote-monitoring-services-dotnet-master\storage-adapter** in Visual Studio Code. Klik **op de knoppen Herstel** om onopgeloste afhankelijkheden op te lossen.
 
-Open het bestand **Storage-Adapter/webservice/appSettings. ini** en wijs uw Cosmos DB toe Connection String aan de variabele **documentDBConnectionString** toe te wijzen.
+Open het **bestand storage-adapter/WebService/appsettings.ini** en wijs de Cosmos DB-verbindingstekenreeks toe aan de variabele **documentDBConnectionString.**
 
-Als u de micro service lokaal wilt uitvoeren, klikt u op **fouten opsporen > fout opsporing starten**.
+Als u de microservice lokaal wilt uitvoeren, klikt u op **Foutopsporing > Foutopsporing starten**.
 
-Het **Terminal** venster in Visual Studio code toont uitvoer van de actieve micro service, inclusief een URL voor de status controle van de webservice: [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status). Wanneer u naar dit adres navigeert, moet de status ' OK: Alive en well ' zijn.
+Het **venster Terminal** in Visual Studio Code toont de uitvoer van de [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status)uitvoerende microservice, inclusief een URL voor de statuscontrole van de webservice: . Wanneer u naar dit adres navigeert, moet de status "OK: Levend en wel" zijn.
 
-Verlaat de micro service voor de opslag adapter die wordt uitgevoerd in dit exemplaar van Visual Studio code terwijl u de volgende stappen uitvoert.
+Laat de microservice van de opslagadapter draaien in dit geval van Visual Studio Code terwijl u de volgende stappen uitvoert.
 
-## <a name="modify-the-chiller"></a>De chiller wijzigen
+## <a name="modify-the-chiller"></a>De koeler wijzigen
 
-In deze sectie voegt u een nieuw type telemetrie voor **intern temperatuur** toe aan het bestaande **Chiller** -apparaattype:
+In deze sectie voegt u een nieuw telemetrietype **interne temperatuur** toe aan het bestaande **type Chiller-apparaat:**
 
 1. Maak een nieuwe map **C:\temp\devicemodels** op uw lokale machine.
 
-1. Kopieer de volgende bestanden naar de nieuwe map vanuit de gedownloade kopie van de micro service Device simulatie:
+1. Kopieer de volgende bestanden naar uw nieuwe map uit de gedownloade kopie van de microservice voor apparaatsimulatie:
 
     | Bron | Doel |
     | ------ | ----------- |
@@ -132,7 +132,7 @@ In deze sectie voegt u een nieuw type telemetrie voor **intern temperatuur** toe
     | Services\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
     | Services\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
 
-1. Open het **C:\temp\devicemodels\chiller-01.json** -bestand.
+1. Open het **c:\temp\devicemodels\chiller-01.json-bestand.**
 
 1. Voeg in de sectie **InitialState** de volgende twee definities toe:
 
@@ -141,7 +141,7 @@ In deze sectie voegt u een nieuw type telemetrie voor **intern temperatuur** toe
     "internal_temperature_unit": "F",
     ```
 
-1. Voeg in de **telemetrie** -matrix de volgende definitie toe:
+1. Voeg in de array **Telemetrie** de volgende definitie toe:
 
     ```json
     {
@@ -158,18 +158,18 @@ In deze sectie voegt u een nieuw type telemetrie voor **intern temperatuur** toe
     },
     ```
 
-1. Sla het **C:\temp\devicemodels\chiller-01.json** -bestand op.
+1. Sla het **c:\temp\devicemodels\chiller-01.json-bestand op.**
 
-1. Open het **C:\temp\devicemodels\scripts\chiller-01-State.js** -bestand.
+1. Open het **c:\temp\devicemodels\scripts\chiller-01-state.js-bestand.**
 
-1. Voeg de volgende velden toe aan de variabele **status** :
+1. Voeg de volgende velden toe aan de **statusvariabele:**
 
     ```js
     internal_temperature: 65.0,
     internal_temperature_unit: "F",
     ```
 
-1. Werk de **hoofd** functie als volgt bij:
+1. Werk de **hoofdfunctie** als volgt bij:
 
     ```js
     function main(context, previousState, previousProperties) {
@@ -201,11 +201,11 @@ In deze sectie voegt u een nieuw type telemetrie voor **intern temperatuur** toe
     }
     ```
 
-1. Sla het **C:\temp\devicemodels\scripts\chiller-01-State.js** -bestand op.
+1. Sla het **c:\temp\devicemodels\scripts\chiller-01-state.js-bestand op.**
 
 ## <a name="create-the-lightbulb"></a>De gloeilamp maken
 
-In deze sectie definieert u een nieuw **gloeilamp** -apparaattype:
+In deze sectie definieert u een nieuw **type lampapparaat:**
 
 1. Maak een bestand **C:\temp\devicemodels\lightbulb-01.json** en voeg de volgende inhoud toe:
 
@@ -273,7 +273,7 @@ In deze sectie definieert u een nieuw **gloeilamp** -apparaattype:
 
     Sla de wijzigingen op in **C:\temp\devicemodels\lightbulb-01.json**.
 
-1. Maak een bestand **C:\temp\devicemodels\scripts\lightbulb-01-State.js** en voeg de volgende inhoud toe:
+1. Maak een bestand **C:\temp\devicemodels\scripts\lightbulb-01-state.js** en voeg de volgende inhoud toe:
 
     ```javascript
     "use strict";
@@ -360,7 +360,7 @@ In deze sectie definieert u een nieuw **gloeilamp** -apparaattype:
     }
     ```
 
-    Sla de wijzigingen op in **C:\temp\devicemodels\scripts\lightbulb-01-State.js**.
+    Sla de wijzigingen op in **C:\temp\devicemodels\scripts\lightbulb-01-state.js**.
 
 1. Maak een bestand **C:\temp\devicemodels\scripts\SwitchOn-method.js** en voeg de volgende inhoud toe:
 
@@ -414,17 +414,17 @@ In deze sectie definieert u een nieuw **gloeilamp** -apparaattype:
 
     Sla de wijzigingen op in **C:\temp\devicemodels\scripts\SwitchOff-method.js**.
 
-U hebt nu een aangepaste versie van het **Chiller** -apparaattype gemaakt en een nieuw **gloeilamp** -apparaattype gemaakt.
+U hebt nu een aangepaste versie van het type **Chiller-apparaat** gemaakt en een nieuw **type gloeilampapparaat** gemaakt.
 
 ## <a name="test-the-devices"></a>De apparaten testen
 
-In deze sectie test u de apparaattypen die u hebt gemaakt in de vorige gedeelten lokaal.
+In deze sectie test u de apparaattypen die u in de vorige secties lokaal hebt gemaakt.
 
-### <a name="run-the-device-simulation-microservice"></a>De Device simulatie micro service uitvoeren
+### <a name="run-the-device-simulation-microservice"></a>De microservice voor apparaatsimulatie uitvoeren
 
-Open de map **device-simulatie-DotNet-Master** die u hebt gedownload van github in een nieuw exemplaar van Visual Studio code. Klik op alle **herstel** knoppen om eventuele onopgeloste afhankelijkheden op te lossen.
+Open de **apparaatsimulatie-dotnet-mastermap** die u van GitHub hebt gedownload in een nieuw exemplaar van Visual Studio Code. Klik **op de knoppen Herstel** om onopgeloste afhankelijkheden op te lossen.
 
-Open het bestand **webservice/appSettings. ini** en wijs uw Cosmos DB toe connection string toe aan de variabele **documentdb_connstring** en wijzig de instellingen ook als volgt:
+Open het **bestand WebService/appsettings.ini** en wijs de Cosmos DB-verbindingstekenreeks toe aan de **documentdb_connstring** variabele en wijzig ook de instellingen als volgt:
 
 ```ini
 device_models_folder = C:\temp\devicemodels\
@@ -432,17 +432,17 @@ device_models_folder = C:\temp\devicemodels\
 device_models_scripts_folder = C:\temp\devicemodels\scripts\
 ```
 
-Als u de micro service lokaal wilt uitvoeren, klikt u op **fouten opsporen > fout opsporing starten**.
+Als u de microservice lokaal wilt uitvoeren, klikt u op **Foutopsporing > Foutopsporing starten**.
 
-In het **Terminal** venster in Visual Studio code wordt uitvoer van de actieve micro service weer gegeven.
+Het **venster Terminal** in Visual Studio Code toont de uitvoer van de hardloopmicroservice.
 
-Zorg ervoor dat de micro service Device simulatie niet wordt uitgevoerd in dit exemplaar van Visual Studio code terwijl u de volgende stappen uitvoert.
+Laat de microservice voor apparaatsimulatie draaien in dit geval van Visual Studio Code terwijl u de volgende stappen uitvoert.
 
-### <a name="set-up-a-monitor-for-device-events"></a>Een monitor instellen voor faxgebeurtenissen
+### <a name="set-up-a-monitor-for-device-events"></a>Een monitor instellen voor apparaatgebeurtenissen
 
-In deze sectie gebruikt u de Azure CLI om een gebeurtenis controle in te stellen voor het weer geven van de telemetrie die is verzonden vanaf de apparaten die zijn verbonden met uw IoT-hub.
+In deze sectie gebruikt u de Azure CLI om een gebeurtenismonitor in te stellen om de telemetrie weer te geven die is verzonden vanaf de apparaten die zijn verbonden met uw IoT-hub.
 
-In het volgende script wordt ervan uitgegaan dat de naam van uw IoT hub **apparaat-simulatie-test**is.
+Het volgende script gaat ervan uit dat de naam van uw **IoT-hub apparaatsimulatie-test**is.
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
@@ -452,54 +452,54 @@ az extension add --name azure-iot
 az iot hub monitor-events --hub-name device-simulation-test
 ```
 
-Zorg ervoor dat de controle van gebeurtenissen actief blijft terwijl u de gesimuleerde apparaten test.
+Laat de gebeurtenismonitor draaien terwijl u de gesimuleerde apparaten test.
 
-### <a name="create-a-simulation-with-the-updated-chiller-device-type"></a>Een simulatie maken met het bijgewerkte Chiller-apparaattype
+### <a name="create-a-simulation-with-the-updated-chiller-device-type"></a>Een simulatie maken met het bijgewerkte type koelapparaat
 
-In deze sectie gebruikt u het hulp programma postman om de Device simulatie micro service aan te vragen om een simulatie uit te voeren met het bijgewerkte Chiller-apparaattype. Postman is een hulp programma waarmee u REST-aanvragen kunt verzenden naar een webservice. De Postman-configuratie bestanden die u nodig hebt, bevinden zich in uw lokale kopie van de ' **device-simulatie-DotNet-** opslag plaats.
+In deze sectie gebruikt u het gereedschap Postman om de microservice voor apparaatsimulatie te vragen om een simulatie uit te voeren met behulp van het bijgewerkte type koelapparaat. Postman is een tool waarmee u REST-verzoeken naar een webservice sturen. De Postman configuratiebestanden die u nodig hebt, staan in uw lokale kopie van de **apparaatsimulatie-dotnet-repository.**
 
 Postman instellen:
 
-1. Open postman op uw lokale machine.
+1. Open postbode op je lokale machine.
 
-1. Klik op **bestand > importeren**. Klik vervolgens op **bestanden kiezen**.
+1. Klik **op Bestand > importeren**. Klik vervolgens op **Bestanden kiezen**.
 
-1. Navigeer naar de map **device-simulatie-DotNet-Master/docs/postman** . Selecteer **Azure IOT Device simulatie Solution Accelerator. postman_collection** en **Azure IOT Device simulatie solution Accelerator. postman_environment** en klik op **openen**.
+1. Navigeer naar de **map device-simulation-dotnet-master/docs/postman.** Selecteer **Azure IoT Device Simulation solution accelerator.postman_collection** en **Azure IoT Device Simulation solution accelerator.postman_environment** en klik op **Openen**.
 
-1. Vouw de **Azure IOT Device simulatie-oplossings versneller** uit voor de aanvragen die u kunt verzenden.
+1. Vouw de **azure IoT Device Simulation-oplossingsversneller** uit naar de aanvragen die u verzenden.
 
-1. Klik op **geen omgeving** en selecteer **Azure IOT Device simulatie Solution Accelerator**.
+1. Klik **op Geen omgeving** en selecteer Azure **IoT Device Simulation solution accelerator**.
 
-U hebt nu een verzameling en omgeving geladen in uw postman-werk ruimte die u kunt gebruiken om te communiceren met de micro service Device simulatie.
+U hebt nu een verzameling en omgeving geladen in uw Postman-werkruimte die u gebruiken om te communiceren met de microservice voor apparaatsimulatie.
 
-De simulatie configureren en uitvoeren:
+Ga als het gaat om het configureren en uitvoeren van de simulatie:
 
-1. Selecteer in de verzameling postman de optie **gewijzigde Chiller simulatie maken** en klik op **verzenden**. Met deze aanvraag worden vier exemplaren van het gesimuleerde Chiller-apparaattype gemaakt.
+1. Selecteer in de postmanverzameling de optie **Gewijzigde koelersimulatie maken** en klik op **Verzenden**. Met deze aanvraag worden vier exemplaren van het gesimuleerde type koelapparaat gebruikt.
 
-1. De gebeurtenis monitor uitvoer in het venster Azure CLI toont de telemetrie van de gesimuleerde apparaten, met inbegrip van de nieuwe **internal_temperature** waarden.
+1. De uitvoer van gebeurtenismonitor in het Azure CLI-venster toont de **internal_temperature** telemetrie van de gesimuleerde apparaten, inclusief de nieuwe internal_temperature-waarden.
 
-Als u de simulatie wilt stoppen, selecteert u de aanvraag voor het stoppen van de **simulatie** in postman en klikt u op **verzenden**.
+Als u de simulatie wilt stoppen, selecteert u de **simulatieaanvraag stoppen** in Postman en klikt u op **Verzenden**.
 
-### <a name="create-a-simulation-with-the-lightbulb-device-type"></a>Een simulatie maken met het gloeilamp
+### <a name="create-a-simulation-with-the-lightbulb-device-type"></a>Een simulatie maken met het type gloeilampapparaat
 
-In deze sectie gebruikt u het hulp programma postman om de Device simulatie micro service aan te vragen om een simulatie uit te voeren met behulp van het apparaattype van het type gloeilamp. Postman is een hulp programma waarmee u REST-aanvragen kunt verzenden naar een webservice.
+In deze sectie gebruikt u de tool Postman om de microservice voor apparaatsimulatie te vragen om een simulatie uit te voeren met behulp van het type gloeilampapparaat. Postman is een tool waarmee u REST-verzoeken naar een webservice sturen.
 
-De simulatie configureren en uitvoeren:
+Ga als het gaat om het configureren en uitvoeren van de simulatie:
 
-1. Selecteer in de verzameling postman de optie **gloeilamp simulatie maken** en klik op **verzenden**. Met deze aanvraag worden twee exemplaren van het gesimuleerde gloeilamp-apparaattype gemaakt.
+1. Selecteer **gloeilampsimulatie maken** in de verzameling Postbode en klik op **Verzenden**. Met deze aanvraag worden twee exemplaren van het gesimuleerde type gloeilampapparaat ingeschakeld.
 
-1. De gebeurtenis monitor uitvoer in het Azure CLI-venster toont de telemetrie van de gesimuleerde Lightbulbs.
+1. De uitvoer van gebeurtenismonitor in het Azure CLI-venster toont de telemetrie van de gesimuleerde gloeilampen.
 
-Als u de simulatie wilt stoppen, selecteert u de aanvraag voor het stoppen van de **simulatie** in postman en klikt u op **verzenden**.
+Als u de simulatie wilt stoppen, selecteert u de **simulatieaanvraag stoppen** in Postman en klikt u op **Verzenden**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt de twee lokaal uitgevoerde micro Services in hun Visual Studio code-instanties stoppen (**fout opsporing > fout opsporing stoppen**).
+U de twee lokaal draaiende microservices stoppen in hun visual studiocode-instanties **(Foutopsporing > Stoppen met foutopsporing).**
 
-Als u de IoT Hub en Cosmos DB instanties niet meer nodig hebt, verwijdert u deze uit uw Azure-abonnement om overbodige kosten te voor komen.
+Als u de IoT Hub- en Cosmos DB-exemplaren niet meer nodig hebt, verwijdert u deze uit uw Azure-abonnement om onnodige kosten te voorkomen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze hand leiding wordt uitgelegd hoe u een aangepaste gesimuleerde apparaattypen maakt en deze test door de micro service Device simulatie lokaal uit te voeren.
+Deze handleiding liet u zien hoe u een aangepaste gesimuleerde apparaattypen maken en deze testen door de microservice voor apparaatsimulatie lokaal uit te voeren.
 
-De voorgestelde volgende stap is om te leren hoe u uw aangepaste gesimuleerde apparaattypen kunt implementeren naar de [oplossings versneller voor externe controle](iot-accelerators-remote-monitoring-deploy-simulated-device.md).
+De voorgestelde volgende stap is om te leren hoe u uw aangepaste gesimuleerde apparaattypen implementeert in de [remote monitoring oplossingsversneller.](iot-accelerators-remote-monitoring-deploy-simulated-device.md)

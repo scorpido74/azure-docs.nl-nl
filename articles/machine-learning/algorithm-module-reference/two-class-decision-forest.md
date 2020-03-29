@@ -1,7 +1,7 @@
 ---
-title: 'Beslissings forest met twee klassen: Naslag informatie over modules'
+title: 'Beslissingsbos van twee klassen: naslaginformatie over modules'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module beslissings forest met twee klassen in Azure Machine Learning om een machine learning model te maken op basis van het algoritme voor de beslissings bossen.
+description: Meer informatie over het gebruik van de Tweeklassen-Beslissingsforestmodule in Azure Machine Learning om een machine learning-model te maken op basis van het algoritme voor beslissingsforests.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,94 +10,94 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: c9388da449e75dee00fd43af9a4e0407c46f597a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77916707"
 ---
-# <a name="two-class-decision-forest-module"></a>Module voor beslissings forest met twee klassen
+# <a name="two-class-decision-forest-module"></a>Module Decision Forest met twee klassen
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module beschreven in Azure Machine Learning designer (preview).
 
-Gebruik deze module om een machine learning model te maken op basis van het algoritme voor de beslissings bossen.  
+Gebruik deze module om een machine learning-model te maken op basis van het algoritme voor beslissingsbossen.  
 
-Beslissings bossen zijn snelle, onder Super visie gemodelleerde ensemble-modellen. Deze module is een goede keuze als u een doel wilt voors pellen met Maxi maal twee resultaten. 
+De bossen van het besluit zijn snelle, gecontroleerde ensemblemodellen. Deze module is een goede keuze als u een doel met een maximum van twee uitkomsten wilt voorspellen. 
 
-## <a name="understanding-decision-forests"></a>Informatie over beslissings bossen
+## <a name="understanding-decision-forests"></a>Inzicht in beslissing bossen
 
-Deze beslissings forest-algoritme is een ensemble-leer methode die is bedoeld voor classificatie taken. Ensemble-methoden zijn gebaseerd op het algemene principe dat in plaats van op één model moet worden gebruikgemaakt, u krijgt betere resultaten en een meer gegeneraliseerde model door meerdere gerelateerde modellen te maken en deze op een of andere manier te combi neren. In het algemeen bieden ensemble-modellen betere dekking en nauw keurigheid dan enkelvoudige beslissings structuren. 
+Dit algoritme voor beslissingsbos is een ensembleleermethode die is bedoeld voor classificatietaken. Ensemble methoden zijn gebaseerd op het algemene principe dat in plaats van te vertrouwen op een enkel model, u betere resultaten en een meer gegeneraliseerd model door het creëren van meerdere gerelateerde modellen en ze te combineren op een bepaalde manier. Over het algemeen bieden ensemblemodellen een betere dekking en nauwkeurigheid dan enkele beslissingsbomen. 
 
-Er zijn veel manieren om afzonderlijke modellen te maken en deze te combi neren in een ensemble. Deze specifieke implementatie van een besluit forest werkt door meerdere beslissings structuren te bouwen en vervolgens te **stemmen** op de meest populaire uitvoer klasse. Stemmen is een van de betere bekende methoden voor het genereren van resultaten in een ensembles model. 
+Er zijn vele manieren om individuele modellen te maken en te combineren in een ensemble. Deze bijzondere uitvoering van een beslissing bos werkt door het bouwen van meerdere beslissingbomen en vervolgens **stemmen** op de meest populaire output klasse. Stemmen is een van de bekendere methoden voor het genereren van resultaten in een ensemble model. 
 
-+ Er worden veel afzonderlijke classificatie structuren gemaakt met behulp van de volledige gegevensset, maar verschillende (meestal wille keurig) begin punten. Dit wijkt af van de benadering van een wille keurige forest, waarbij de afzonderlijke beslissings structuren mogelijk alleen een wille keurig deel van de gegevens of functies gebruiken.
-+ Elke structuur in de structuur van het beslissings forest voert een niet-genormaliseerd frequentie histogram van labels uit. 
-+ Het aggregatie proces berekent deze histogrammen en normaliseert het resultaat om de ' kansen ' voor elk label op te halen. 
-+ De structuren die een hoog Voorspellings betrouwbaarheids niveau hebben, hebben een groter gewicht in de definitieve beslissing van de ensemble.
++ Veel individuele classificatiebomen worden gemaakt met behulp van de gehele gegevensset, maar verschillende (meestal gerandomiseerde) uitgangspunten. Dit verschilt van de willekeurige bosbenadering, waarbij de individuele beslissingsbomen slechts een willekeurig deel van de gegevens of functies kunnen gebruiken.
++ Elke boom in de beslissing bosboom outputeen niet-genormaliseerde frequentie histogram van etiketten. 
++ Het aggregatieproces somt deze histogrammen op en normaliseert het resultaat om de "waarschijnlijkheden" voor elk label te krijgen. 
++ De bomen die een hoog voorspellingsvertrouwen hebben, zullen een groter gewicht hebben in de uiteindelijke beslissing van het ensemble.
 
-Beslissings structuren in het algemeen hebben veel voor delen voor classificatie taken:
+Beslissingsbomen in het algemeen hebben veel voordelen voor classificatietaken:
   
-- Ze kunnen niet-lineaire beslissings grenzen vastleggen.
-- U kunt veel gegevens trainen en voors pellen, omdat ze efficiënt zijn in berekeningen en geheugen gebruik.
-- De functie selectie is geïntegreerd in de trainings-en classificatie processen.  
-- Structuren kunnen ruis gegevens en veel functies bevatten.  
-- Dit zijn niet-parametrische modellen, wat betekent dat ze gegevens kunnen verwerken met verschillende distributies. 
+- Ze kunnen niet-lineaire beslissingsgrenzen vastleggen.
+- U trainen en voorspellen op veel gegevens, omdat ze efficiënt zijn in berekening en geheugengebruik.
+- Functieselectie is geïntegreerd in de trainings- en classificatieprocessen.  
+- Bomen zijn geschikt voor luidruchtige gegevens en vele functies.  
+- Het zijn niet-parametrische modellen, wat betekent dat ze gegevens kunnen verwerken met gevarieerde distributies. 
 
-Eenvoudige beslissings structuren kunnen echter overfit aan gegevens en zijn minder generaliseer dan een boom ensemble.
+Eenvoudige beslissingsbomen kunnen echter overfit op gegevens, en zijn minder generaleer dan boom ensembles.
 
-Zie [Decision bossen](https://go.microsoft.com/fwlink/?LinkId=403677)voor meer informatie.  
+Zie [Decision Forests voor](https://go.microsoft.com/fwlink/?LinkId=403677)meer informatie.  
 
 ## <a name="how-to-configure"></a>Configureren
   
-1.  Voeg de module **beslissings forest met twee klassen** toe aan uw pijp lijn in azure machine learning en open het deel venster **Eigenschappen** van de module. 
+1.  Voeg de **tweeklassen-beslissingsforestmodule** toe aan uw pijplijn in Azure Machine Learning en open het deelvenster **Eigenschappen** van de module. 
 
-    U kunt de module vinden onder **machine learning**. Vouw **initialiseren**en vervolgens **classificatie**uit.  
+    U de module vinden onder **Machine Learning.** **Initialiseren**en vervolgens **Classificeren uitvouwen**.  
   
-2.  Kies voor **resampling methode**de methode die is gebruikt voor het maken van de afzonderlijke structuren.  U kunt **kiezen uit een** of meer van de **replicatie**.  
+2.  Kies **bij resamplingmethode**de methode die wordt gebruikt om de afzonderlijke bomen te maken.  U kiezen uit **Zakken** of **Repliceren.**  
   
-    -   **Overbaggen**: de functie voor het *verzamelen van de Boots trap* In deze methode wordt elke structuur op een nieuw voor beeld gekweekt, gemaakt door de oorspronkelijke gegevensset wille keurig te bemonsteren, totdat u een gegevensset hebt die de oorspronkelijke grootte heeft.  
+    -   **Zakken**: Zakken wordt ook wel *bootstrap aggregeren*. In deze methode wordt elke structuur gekweekt op een nieuw voorbeeld, gemaakt door willekeurig de oorspronkelijke gegevensset te bemonsteren met vervanging totdat u een gegevensset hebt ter grootte van het origineel.  
   
-         De uitvoer van de modellen worden gecombineerd door middel van *stemmen*. Dit is een vorm van aggregatie. Elke structuur in een forest met classificatie beslissingen voert een niet-genormaliseerd frequentie histogram van labels uit. De aggregatie is het opsommen van deze histogrammen en normaliseren om de ' kansen ' voor elk label op te halen. Op deze manier hebben de structuren met een hoog Voorspellings betrouwbaarheids niveau een groter gewicht in de definitieve beslissing van de ensemble.  
+         De outputs van de modellen worden gecombineerd door *te stemmen*, wat een vorm van aggregatie is. Elke boom in een classificatiebesluit bos output een ongenormaliseerde frequentie histogram van etiketten. De aggregatie is om deze histogrammen op te tellen en te normaliseren om de "waarschijnlijkheden" voor elk label te krijgen. Op deze manier zullen de bomen met een hoog voorspellingsvertrouwen een groter gewicht hebben in de uiteindelijke beslissing van het ensemble.  
   
-         Zie de Wikipedia-vermelding voor Boots trap aggregatie voor meer informatie.  
+         Zie voor meer informatie de Wikipedia-vermelding voor Bootstrap die aggregeren.  
   
-    -   **Repliceren**: in replicatie wordt elke structuur getraind op exact dezelfde invoer gegevens. De bepaling waarvan het gesplitste predicaat voor elk structuur knooppunt wordt gebruikt, blijft wille keurig en de structuur is divers.   
+    -   **Repliceren:** Bij replicatie wordt elke structuur getraind op exact dezelfde invoergegevens. De bepaling van welke split predicaat wordt gebruikt voor elke boom knooppunt blijft willekeurig en de bomen zullen divers zijn.   
   
-3.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
+3.  Geef op hoe u het model wilt trainen door de optie **Trainer-modus maken in** te stellen.  
   
-    -   **Eén para meter**: als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.
+    -   **Eén parameter:** als u weet hoe u het model wilt configureren, u een specifieke set waarden als argumenten opgeven.
 
-    -   **Parameter bereik**: als u niet zeker weet wat de beste para meters zijn, kunt u de optimale para meters vinden met behulp van de Hyper parameters-module voor het [afstemmen van modellen](tune-model-hyperparameters.md) . U geeft een aantal waarden op, en de trainer herhaalt meerdere combi Naties van de instellingen om de combi natie van waarden te bepalen die het beste resultaat oplevert.
+    -   **Parameterbereik:** Als u niet zeker bent van de beste parameters, u de optimale parameters vinden met behulp van de module Hyperparameters van [tunemodel.](tune-model-hyperparameters.md) U geeft een aantal waarden en de trainer wijzigt meerdere combinaties van de instellingen om de combinatie van waarden te bepalen die het beste resultaat oplevert.
   
-4.  Voor het **aantal beslissings structuren**typt u het maximum aantal beslissings structuren dat kan worden gemaakt in de ensemble. Door meer beslissings structuren te maken, kunt u een betere dekking krijgen, maar de trainings tijd wordt verhoogd.  
+4.  Typ **voor aantal beslissingsbomen**het maximum aantal beslissingsbomen dat in het ensemble kan worden gemaakt. Door meer beslissingsbomen te maken, u mogelijk een betere dekking krijgen, maar de trainingstijd neemt toe.  
   
     > [!NOTE]
-    >  Deze waarde bepaalt ook het aantal structuren dat wordt weer gegeven wanneer het getrainde model wordt gevisualiseerd. Als u één boom structuur wilt zien of afdrukken, kunt u de waarde instellen op 1. Er kan echter maar één structuur worden geproduceerd (de boom structuur met de initiële set para meters) en er worden geen verdere herhalingen uitgevoerd.
+    >  Deze waarde bepaalt ook het aantal bomen dat wordt weergegeven bij het visualiseren van het getrainde model. Als u één boom wilt zien of afdrukken, u de waarde instellen op 1. Er kan echter slechts één boom worden geproduceerd (de boom met de eerste set parameters) en er worden geen verdere iteraties uitgevoerd.
   
-5.  Voor **de maximale diepte van de beslissings structuren**typt u een getal om de maximale diepte van een beslissings structuur te beperken. Het verg Roten van de diepte van de structuur kan nauw keuriger zijn, met het risico van een aantal verdeelde en verhoogde opleidings tijd.
+5.  Voor **maximale diepte van de beslissingsbomen,** typt u een getal om de maximale diepte van een beslissingsboom te beperken. Het verhogen van de diepte van de boom kan de precisie verhogen, met het risico van enige overfitting en verhoogde trainingstijd.
   
-6.  Voor het **aantal wille keurige splitsingen per knoop punt**typt u het aantal splitsingen dat moet worden gebruikt bij het maken van elk knoop punt van de structuur. Een *splitsing* houdt in dat onderdelen in elk niveau van de structuur (knoop punt) wille keurig worden gedeeld.
+6.  Typ **voor aantal willekeurige splitsingen per knooppunt**het aantal splitsingen dat moet worden gebruikt bij het bouwen van elk knooppunt van de boom. Een *splitsing* betekent dat functies in elk niveau van de boom (knooppunt) willekeurig worden verdeeld.
   
-7.  Geef voor het **minimum aantal steek proeven per blad knooppunt**het minimale aantal cases op dat nodig is om een Terminal knooppunt (Leaf) in een structuur te maken.
+7.  Voor **minimumaantal monsters per bladknooppunt**geeft u het minimumaantal gevallen aan dat nodig is om een eindknooppunt (blad) in een boom te maken.
   
-     Door deze waarde te verhogen, verhoogt u de drempel voor het maken van nieuwe regels. Met de standaard waarde 1 kan zelfs een enkele case ertoe leiden dat een nieuwe regel wordt gemaakt. Als u de waarde op 5 verhoogt, moeten de trainings gegevens ten minste vijf gevallen bevatten die voldoen aan dezelfde voor waarden.  
+     Door deze waarde te verhogen, verhoogt u de drempel voor het maken van nieuwe regels. Met de standaardwaarde van 1 kan bijvoorbeeld zelfs één aanvraag ertoe leiden dat een nieuwe regel wordt gemaakt. Als u de waarde verhoogt tot 5, moeten de trainingsgegevens ten minste vijf gevallen bevatten die aan dezelfde voorwaarden voldoen.  
   
-8.  Selecteer de optie **onbekende waarden toestaan voor categorische functies** om een groep te maken voor onbekende waarden in de trainings-of validatie sets. Het model is mogelijk minder nauw keurig voor bekende waarden, maar het kan betere voor spellingen bieden voor nieuwe (onbekende) waarden. 
+8.  Selecteer de optie **Onbekende waarden toestaan voor categorische functies** om een groep voor onbekende waarden te maken in de trainings- of validatiesets. Het model is misschien minder nauwkeurig voor bekende waarden, maar het kan betere voorspellingen geven voor nieuwe (onbekende) waarden. 
 
-     Als u deze optie uitschakelt, kan het model alleen de waarden accepteren die deel uitmaken van de trainings gegevens.
+     Als u deze optie deselecteert, kan het model alleen de waarden accepteren die in de trainingsgegevens zijn opgenomen.
   
-9. Koppel een gegevensset met een label en een van de [trainings modules](module-reference.md):  
+9. Voeg een gelabelde gegevensset en een van de [trainingsmodules toe:](module-reference.md)  
   
-    -   Als u de **modus trainer maken** instelt op **één para meter**, gebruikt u de module [Train model](./train-model.md) .  
+    -   Als u **De trainermodus maken** instelt op Eén **parameter,** gebruikt u de module [Treinmodel.](./train-model.md)  
     
 ## <a name="results"></a>Resultaten
 
-Nadat de training is voltooid:
+Na de training is voltooid:
 
-+ Als u een moment opname van het getrainde model wilt opslaan, selecteert u het tabblad **uitvoer** in het rechterdeel venster van de module **Train model** . Selecteer het pictogram **gegevensset registreren** om het model als een herbruikbare module op te slaan.
++ Als u een momentopname van het getrainde model wilt opslaan, selecteert u het tabblad **Uitvoer** in het rechterdeelvenster van de **module Treinmodel.** Selecteer het pictogram **Gegevensset registreren** om het model op te slaan als een herbruikbare module.
 
-+ Als u het model voor scores wilt gebruiken, voegt u de module **score model** toe aan een pijp lijn.
++ Als u het model wilt gebruiken om te scoren, voegt u de module **Scoremodel** toe aan een pijplijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 

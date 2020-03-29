@@ -1,6 +1,6 @@
 ---
-title: De Azure portal gebruiken voor het oplossen van Azure Data Box Edge | Microsoft Docs
-description: Beschrijft hoe u problemen met Azure Data Box Edge.
+title: De Azure-portal gebruiken om problemen op te lossen met Azure Data Box Edge | Microsoft Documenten
+description: Beschrijft hoe u azure Data Box Edge-problemen oplossen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 3a8d1f93930d2b298eeb7d10a73624b9a19bcc0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60756154"
 ---
-# <a name="troubleshoot-your-azure-data-box-edge-issues"></a>Problemen met uw Azure Data Box Edge 
+# <a name="troubleshoot-your-azure-data-box-edge-issues"></a>Problemen met de Azure Data Box Edge oplossen 
 
-In dit artikel wordt beschreven hoe u problemen voor uw Azure Data Box-edge-apparaten. 
+In dit artikel wordt beschreven hoe u problemen op uw Azure Data Box Edge oplossen. 
 
 In dit artikel leert u het volgende:
 
@@ -33,15 +33,15 @@ U kunt de diagnostische tests uitvoeren om apparaatfouten vast te stellen en op 
 
 1. Ga in de lokale webinterface naar **Probleemoplossing > Diagnostische tests**. Selecteer de test die u wilt uitvoeren en klik op **Test uitvoeren**. Hiermee voert u de tests uit om mogelijke problemen met uw netwerk-, apparaat-, webproxy-, tijd- of cloudinstellingen vast te stellen. U ontvangt een melding dat er tests op het apparaat worden uitgevoerd.
 
-    ![Selecteer tests](media/data-box-edge-troubleshoot/run-diag-1.png)
+    ![Tests selecteren](media/data-box-edge-troubleshoot/run-diag-1.png)
  
 2. Wanneer de tests zijn voltooid, worden de resultaten weergegeven. 
 
-    ![Bekijk de resultaten](media/data-box-edge-troubleshoot/run-diag-2.png)
+    ![Testresultaten bekijken](media/data-box-edge-troubleshoot/run-diag-2.png)
 
     Als een test mislukt, wordt er een URL voor de aanbevolen actie weergegeven. U kunt op de URL klikken om de aanbevolen actie weer te geven.
  
-    ![Bekijk de waarschuwingen voor mislukte tests](media/data-box-edge-troubleshoot/run-diag-3.png)
+    ![Waarschuwingen controleren voor mislukte tests](media/data-box-edge-troubleshoot/run-diag-3.png)
 
 
 ## <a name="collect-support-package"></a>Ondersteuningspakket verzamelen
@@ -64,7 +64,7 @@ Eventuele fouten die zich hebben voorgedaan tijdens de upload- en vernieuwingspr
 
 1. Om de foutbestanden te bekijken, gaat u naar uw share en klikt u op de share om de inhoud weer te geven. 
 
-      ![Verbinding maken met en share-inhoud weergeven](media/data-box-edge-troubleshoot/troubleshoot-logs-1.png)
+      ![Verbinding maken met en inhoud van delen weergeven](media/data-box-edge-troubleshoot/troubleshoot-logs-1.png)
 
 2. Klik op de _map Microsoft Data Box Edge_. Deze map heeft twee submappen:
 

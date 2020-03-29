@@ -1,7 +1,7 @@
 ---
-title: Een IPv4-toepassing upgraden naar IPv6 in azure Virtual Network-Power shell
+title: Een IPv4-toepassing upgraden naar IPv6 in Azure Virtual Network - PowerShell
 titlesuffix: Azure Virtual Network
-description: In dit artikel wordt beschreven hoe u IPv6-adressen implementeert voor een bestaande toepassing in een virtueel Azure-netwerk met behulp van Azure Power shell.
+description: In dit artikel ziet u hoe u IPv6-adressen implementeert naar een bestaande toepassing in het virtuele Azure-netwerk met Azure Powershell.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,55 +14,55 @@ ms.workload: infrastructure-services
 ms.date: 10/21/2019
 ms.author: kumud
 ms.openlocfilehash: d08ce1c382d173ac98a0e61e6117ed50b958ba44
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76119819"
 ---
-# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell-preview"></a>Een IPv4-toepassing upgraden naar IPv6 in het virtuele netwerk van Azure-Power shell (preview)
+# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell-preview"></a>Een IPv4-toepassing upgraden naar IPv6 in het virtuele Azure-netwerk van Azure - PowerShell (Voorbeeld)
 
-In dit artikel wordt beschreven hoe u IPv6-connectiviteit kunt toevoegen aan een bestaande IPv4-toepassing in een virtueel Azure-netwerk met een Standard Load Balancer en een openbaar IP-adres. Het in-place upgrade omvat:
-- IPv6-adres ruimte voor het virtuele netwerk en subnet
-- een Standard Load Balancer met zowel IPv4-als IPV6-front-end configuraties
-- Vm's met Nic's met een IPv4 + IPv6-configuratie
-- Open bare IPv6-IP, zodat de load balancer een Internet gerichte IPv6-verbinding heeft
+In dit artikel ziet u hoe u IPv6-connectiviteit toevoegt aan een bestaande IPv4-toepassing in een virtueel Azure-netwerk met een standaardloadbalansr en openbaar IP. De in-place upgrade omvat:
+- IPv6-adresruimte voor het virtuele netwerk en subnet
+- een standaard load balancer met zowel IPv4- als IPV6 frontend-configuraties
+- VM's met NIC's met zowel een IPv4 + IPv6-configuratie
+- IPv6 Public IP, zodat de load balancer ipv6-connectiviteit met internet heeft
 
 > [!Important]
-> IPv6-ondersteuning voor Azure Virtual Network is momenteel beschikbaar als open bare preview. Deze preview wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> IPv6-ondersteuning voor Azure Virtual Network is momenteel in openbare preview. Deze preview wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u Power shell lokaal wilt installeren en gebruiken, moet u voor dit artikel gebruikmaken van de Azure PowerShell module versie 6.9.0 of hoger. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Als u ervoor kiest PowerShell lokaal te installeren en te gebruiken, vereist dit artikel de Azure PowerShell-moduleversie 6.9.0 of hoger. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="register-the-service"></a>De service registreren
 
-Voordat u een dual stack-toepassing in azure implementeert, moet u uw abonnement voor deze preview-functie configureren met behulp van de volgende Azure PowerShell:
+Voordat u een dual stack-toepassing implementeert in Azure, moet u uw abonnement voor deze voorbeeldfunctie configureren met de volgende Azure PowerShell:
 
-Meld u als volgt aan:
+Registreer als volgt:
 ```azurepowershell
 Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-Het duurt Maxi maal 30 minuten voordat de functie registratie is voltooid. U kunt de registratie status controleren door de volgende Azure PowerShell opdracht uit te voeren: Controleer de registratie als volgt:
+Het duurt maximaal 30 minuten voordat de functieregistratie is voltooid. U uw registratiestatus controleren door de volgende opdracht Azure PowerShell uit te voeren: Controleer de registratie als volgt:
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-Nadat de registratie is voltooid, voert u de volgende opdracht uit:
+Voer de volgende opdracht uit nadat de registratie is voltooid:
 
 ```azurepowershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
 ### <a name="create-a-standard-load-balancer"></a>Een Load Balancer van het type Standard maken
-In dit artikel wordt ervan uitgegaan dat u een Standard Load Balancer hebt geïmplementeerd zoals beschreven in [Quick Start: een Standard Load Balancer Azure PowerShell maken](../load-balancer/quickstart-create-standard-load-balancer-powershell.md).
+In dit artikel wordt ervan uitgegaan dat u een StandaardLoad Balancer hebt geïmplementeerd zoals beschreven in [Quickstart: Een standaardloadbalancer maken - Azure PowerShell](../load-balancer/quickstart-create-standard-load-balancer-powershell.md).
 
-## <a name="retrieve-the-resource-group"></a>De resource groep ophalen
+## <a name="retrieve-the-resource-group"></a>De resourcegroep ophalen
 
-Voordat u een virtueel netwerk met twee stacks kunt maken, moet u de resource groep ophalen met [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup).
+Voordat u uw virtuele dual-stacknetwerk maken, moet u de brongroep ophalen met [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup).
 
 ```azurepowershell
  $rg = Get-AzResourceGroup  -ResourceGroupName "myResourceGroupSLB"
@@ -70,7 +70,7 @@ Voordat u een virtueel netwerk met twee stacks kunt maken, moet u de resource gr
 
 ## <a name="create-an-ipv6-ip-addresses"></a>Een IPv6-IP-adres maken
 
-Maak een openbaar IPv6-adres met [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) voor uw Standard Load Balancer. In het volgende voor beeld wordt een openbaar IP-adres voor IPv6 gemaakt met de naam *PublicIP_v6* in de resource groep *myResourceGroupSLB* :
+Maak een openbaar IPv6-adres met [Nieuw-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) voor uw Standaard Load Balancer. In het volgende voorbeeld wordt een IPv6-openbaar IP-adres gemaakt met de naam *PublicIP_v6* in de *brongroep myResourceGroupSLB:*
 
 ```azurepowershell
   
@@ -83,9 +83,9 @@ Maak een openbaar IPv6-adres met [New-AzPublicIpAddress](/powershell/module/az.n
   -IpAddressVersion IPv6
 ```
 
-## <a name="configure-load-balancer-frontend"></a>load balancer frontend configureren
+## <a name="configure-load-balancer-frontend"></a>Load balancer frontend configureren
 
-Haal de bestaande load balancer configuratie op en voeg als volgt het nieuwe IPv6 IP-adres toe met [add-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/Add-AzLoadBalancerFrontendIpConfig) :
+Haal de bestaande configuratie van de load balancer op en voeg vervolgens het nieuwe IPv6-IP-adres toe met [Add-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/Add-AzLoadBalancerFrontendIpConfig) als volgt:
 
 ```azurepowershell
 # Retrieve the load balancer configuration
@@ -98,9 +98,9 @@ $lb | Add-AzLoadBalancerFrontendIpConfig `
 $lb | Set-AzLoadBalancer
 ```
 
-## <a name="configure-load-balancer-backend-pool"></a>load balancer back-end-groep configureren
+## <a name="configure-load-balancer-backend-pool"></a>Backendpool load balancer configureren
 
-Maak de back-end-groep op de lokale kopie van de load balancer configuratie en werk de actieve load balancer bij met de nieuwe back-end-pool configuratie als volgt:
+Maak de backendpool op de lokale kopie van de configuratie van de load balancer en werk de running load balancer als volgt bij met de nieuwe backendpoolconfiguratie:
 
 ```azurepowershell
 $lb | Add-AzLoadBalancerBackendAddressPoolConfig -Name "LbBackEndPool_v6"
@@ -109,7 +109,7 @@ $lb | Set-AzLoadBalancer
 ```
 
 ## <a name="configure-load-balancer-rules"></a>Regels voor load balancers configureren
-Haal de bestaande configuratie voor de front-end-en back-AzLoadBalancerRuleConfig op en voeg nieuwe taakverdelings regels toe met behulp van [add-](/powershell/module/az.network/Add-AzLoadBalancerRuleConfig)Load Balancer.
+Haal de bestaande configuratie van de load balancer frontend en backend pool op en voeg vervolgens nieuwe regels voor het balanceren van de lasten toe met [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/Add-AzLoadBalancerRuleConfig).
 
 ```azurepowershell
 # Retrieve the updated (live) versions of the frontend and backend pool
@@ -128,7 +128,7 @@ $lb | Set-AzLoadBalancer
 ```
 ## <a name="add-ipv6-address-ranges"></a>IPv6-adresbereiken toevoegen
 
-Voeg als volgt IPv6-adresbereiken toe aan het virtuele netwerk en het subnet dat als host fungeert voor de Vm's:
+Voeg IPv6-adresbereiken toe aan het virtuele netwerk en subnet dat als volgt de VM's host:
 
 ```azurepowershell
 #Add IPv6 ranges to the VNET and subnet
@@ -149,7 +149,7 @@ $vnet |  Set-AzVirtualNetwork
 ```
 ## <a name="add-ipv6-configuration-to-nic"></a>IPv6-configuratie toevoegen aan NIC
 
-Configureer alle virtuele machine Nic's met een IPv6-adres met behulp van [add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/Add-AzNetworkInterfaceIpConfig) als volgt:
+Configureer alle VM NIC's met een IPv6-adres met [Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/Add-AzNetworkInterfaceIpConfig) als volgt:
 
 ```azurepowershell
 
@@ -169,15 +169,15 @@ $NIC_3 | Set-AzNetworkInterface
 
 ```
 
-## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Virtueel IPv6-netwerk met dubbele stack in Azure Portal weer geven
-U kunt het virtuele IPv6-netwerk met dubbele stack als volgt weer geven in Azure Portal:
-1. Voer in de zoek balk van de portal *myVnet*in.
-2. Wanneer **myVnet** wordt weer gegeven in de zoek resultaten, selecteert u dit. Hiermee opent u de **overzichts** pagina van het virtuele netwerk met dubbele stack met de naam *myVNet*. Het virtuele netwerk met dubbele stack toont de drie Nic's met zowel IPv4-als IPv6-configuraties die zich bevinden in het dubbele stack-subnet met de naam *mySubnet*.
+## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>IPv6 dual stack virtueel netwerk weergeven in Azure portal
+U het virtuele IPv6-dual stack-netwerk in Azure-portal als volgt bekijken:
+1. Voer in de zoekbalk van het portaal *myVnet*in.
+2. Wanneer **myVnet** in de zoekresultaten wordt weergegeven, selecteert u deze. Dit lanceert de **overzichtspagina** van het dual stack virtuele netwerk genaamd *myVNet*. De dual stack virtuele netwerk toont de drie NIC's met zowel IPv4 en IPv6 configuraties gelegen in de dual stack subnet genaamd *mySubnet*.
 
-  ![Virtueel IPv6-netwerk met dubbele stack in azure](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
+  ![IPv6 dual stack virtueel netwerk in Azure](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
 > [!NOTE]
-> Het virtuele netwerk van IPv6 voor Azure is beschikbaar in het Azure Portal alleen-lezen voor deze preview-versie.
+> Het virtuele IPv6 voor Azure-netwerk is beschikbaar in de Azure-portal in alleen-lezen voor deze preview-release.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -189,4 +189,4 @@ Remove-AzResourceGroup -Name MyAzureResourceGroupSLB
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een bestaande Standard Load Balancer bijgewerkt met een IPv4-frontend-IP-configuratie naar een configuratie met dubbele stack (IPv4 en IPv6). U hebt ook IPv6-configuraties toegevoegd aan de Nic's van de virtuele machines in de back-endadresgroep en op de Virtual Network die deze host. Zie [Wat is IPv6 voor azure Virtual Network?](ipv6-overview.md) voor meer informatie over IPv6-ondersteuning in azure Virtual Networks.
+In dit artikel hebt u een bestaande StandaardLoad Balancer bijgewerkt met een IP-configuratie van IPv4 frontend naar een dual stack -configuratie (IPv4 en IPv6). U hebt ook IPv6-configuraties toegevoegd aan de NIC's van de VM's in de backendpool en aan het virtuele netwerk dat ze host. Zie [Wat is IPv6 voor Azure Virtual Network voor](ipv6-overview.md) meer informatie over IPv6-ondersteuning in virtuele Azure-netwerken?

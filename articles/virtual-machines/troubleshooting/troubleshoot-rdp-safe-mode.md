@@ -1,6 +1,6 @@
 ---
-title: Kan geen verbinding maken naar Azure Virtual Machines op afstand omdat de virtuele machine wordt opgestart in de veilige modus | Microsoft Docs
-description: Meer informatie over het oplossen van problemen waarbij niet RDP-verbinding met een virtuele machine omdat de virtuele machine wordt opgestart in de veilige modus. | Microsoft Docs
+title: Kan niet op afstand verbinding maken met Azure Virtual Machines omdat de VM wordt gestart in de veilige modus | Microsoft Documenten
+description: Meer informatie over het oplossen van een probleem waarbij RDP niet aan een VM kan worden gebruikt omdat de VM wordt opgestart in de veilige modus.| Microsoft Documenten
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,80 +13,80 @@ ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
 ms.openlocfilehash: 7bc2c0f472a03c3f069a889c360bea9017a780f2
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918203"
 ---
-#  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Niet van RDP-verbinding met een virtuele machine omdat de virtuele machine wordt opgestart in de veilige modus
+#  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Kan RDP niet naar een VM omdat de VM wordt opgestart in de veilige modus
 
-In dit artikel laat zien hoe het oplossen van een probleem waarbij u geen verbinding naar Azure Windows Virtual Machines (VM's maken) omdat de virtuele machine is geconfigureerd om op te starten in de veilige modus.
+In dit artikel ziet u hoe u een probleem oplossen waarbij u geen verbinding maken met Azure Windows Virtual Machines (VM's) omdat de VM is geconfigureerd om op te starten in de veilige modus.
 
 
 ## <a name="symptoms"></a>Symptomen
 
-Kunt u niet een RDP-verbinding of andere verbindingen (zoals HTTP) aan een virtuele machine in Azure omdat de virtuele machine is geconfigureerd om op te starten in de veilige modus. Wanneer u de scherm opname in de Azure Portal [Diagnostische gegevens over opstarten](../troubleshooting/boot-diagnostics.md) controleert, ziet u mogelijk dat de VM normaal wordt opgestart, maar de netwerk interface is niet beschikbaar:
+U geen RDP-verbinding of andere verbindingen (zoals HTTP) maken met een VM in Azure omdat de VM is geconfigureerd om op te starten in de veilige modus. Wanneer u de schermafbeelding in de [opstartdiagnose](../troubleshooting/boot-diagnostics.md) in de Azure-portal controleert, ziet u mogelijk dat de VM normaal wordt gestart, maar dat de netwerkinterface niet beschikbaar is:
 
-![Afbeelding van netwerk inferce in de veilige modus](./media/troubleshoot-rdp-safe-mode/network-safe-mode.png)
+![Afbeelding over netwerkinferce in veilige modus](./media/troubleshoot-rdp-safe-mode/network-safe-mode.png)
 
 ## <a name="cause"></a>Oorzaak
 
-De RDP-service is niet beschikbaar in de veilige modus. Alleen zijn essentiële systeem programma's en services geladen wanneer de virtuele machine wordt opgestart in de veilige modus. Dit geldt voor de twee verschillende versies van de veilige modus zijn "Opstarten in veilige modus minimale" en "Veilig opstarten met de connectiviteit".
+De RDP-service is niet beschikbaar in de veilige modus. Alleen essentiële systeemprogramma's en -services worden geladen wanneer de VM in de veilige modus wordt opgestart. Dit geldt voor de twee verschillende versies van de veilige modus die "Safe Boot minimal" en "Safe Boot with connectivity" zijn.
 
 
 ## <a name="solution"></a>Oplossing
 
-Voordat u deze stappen hebt uitgevoerd, maakt u een momentopname van de besturingssysteemschijf van de betrokken virtuele machine als een back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
+Voordat u deze stappen volgt, maakt u een momentopname van de OS-schijf van de betreffende VM als back-up. Zie [Momentopname een schijf voor](../windows/snapshot-copy-managed-disk.md)meer informatie .
 
-U kunt dit probleem oplossen door seriële controle te gebruiken om de virtuele machine te configureren om op te starten in de normale modus of [de virtuele machine offline te herstellen](#repair-the-vm-offline) met behulp van een herstel-VM.
+Als u dit probleem wilt oplossen, gebruikt u Seriële besturingselementom de VM te configureren om op te starten in de normale modus of [de VM offline te herstellen](#repair-the-vm-offline) met behulp van een herstel-vm.
 
 ### <a name="use-serial-control"></a>Seriële besturingselement gebruiken
 
-1. Verbinding maken met de [seriële console en het Open cmd-exemplaar](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-   ). Als de seriële console niet op uw virtuele machine is ingeschakeld, raadpleegt u [de virtuele machine offline herstellen](#repair-the-vm-offline).
+1. Maak verbinding [met seriële console en open CMD-instantie](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+   ). Zie De [VM offline herstellen](#repair-the-vm-offline)als de seriële console niet is ingeschakeld op uw vm.
 2. Controleer de opstartconfiguratiegegevens:
 
         bcdedit /enum
 
-    Als de virtuele machine is geconfigureerd om te worden opgestart in de veilige modus, ziet u een extra vlag onder het gedeelte **Windows boot loader** met de naam **safeboot**. Als u de vlag **safeboot** niet ziet, is de virtuele machine niet in de veilige modus. In dit artikel geldt niet voor uw scenario.
+    Als de VM is geconfigureerd om op te starten in de veilige modus, ziet u een extra vlag onder de sectie **Windows Boot Loader** genaamd **safeboot**. Als u de **safebootvlag** niet ziet, bevindt de VM zich niet in de veilige modus. Dit artikel is niet van toepassing op uw scenario.
 
-    De vlag **safeboot** kan worden weer gegeven met de volgende waarden:
+    De **safebootvlag** kan worden weergegeven met de volgende waarden:
    - Minimaal
    - Netwerk
 
-     RDP wordt in een van deze twee modi, niet worden gestart. De oplossing blijft daarom ongewijzigd.
+     In een van deze twee modi wordt RDP niet gestart. Daarom blijft de oplossing hetzelfde.
 
-     ![Afbeelding van de markering voor de veilige modus](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
+     ![Afbeelding over de vlag Veilige modus](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
 
-3. Verwijder de vlag **safemoade** , zodat de virtuele machine in de normale modus wordt opgestart:
+3. Verwijder de **safemoadevlag,** zodat de VM in de normale modus wordt opgestart:
 
         bcdedit /deletevalue {current} safeboot
 
-4. Controleer de opstart configuratie gegevens om er zeker van te zijn dat de vlag **safeboot** wordt verwijderd:
+4. Controleer de configuratiegegevens voor het opstarten om ervoor te zorgen dat de **safebootvlag** wordt verwijderd:
 
         bcdedit /enum
 
-5. Start de VM opnieuw en controleer vervolgens of het probleem opgelost is.
+5. Start de VM opnieuw en controleer of het probleem is opgelost.
 
-### <a name="repair-the-vm-offline"></a>Herstel de virtuele machine offline
+### <a name="repair-the-vm-offline"></a>De VM offline herstellen
 
-#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>De besturingssysteemschijf koppelen aan een virtuele machine voor herstel
+#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>De OS-schijf koppelen aan een herstel-vm
 
-1. [Koppel de besturingssysteem schijf aan een herstel-VM](../windows/troubleshoot-recovery-disks-portal.md).
-2. Start een externe bureaubladverbinding met de virtuele machine voor herstel.
-3. Zorg ervoor dat de schijf is gemarkeerd als **online** in de schijf beheer-console. Houd er rekening mee de stationsletter die is toegewezen aan de gekoppelde besturingssysteemschijf.
+1. [Koppel de OS-schijf aan een herstelvm](../windows/troubleshoot-recovery-disks-portal.md).
+2. Start een verbinding met Extern bureaublad met de herstel-vm.
+3. Controleer of de schijf is gemarkeerd als **Online** in de schijfbeheerconsole. Let op de stationsletter die is toegewezen aan de gekoppelde osschijf.
 
-#### <a name="enable-dump-log-and-serial-console-optional"></a>Inschakelen van de dump logboek- en seriële Console (optioneel)
+#### <a name="enable-dump-log-and-serial-console-optional"></a>Dumplog en Seriële console inschakelen (optioneel)
 
-De dump logboek- en seriële Console kunnen we doen problemen op te lossen als het probleem niet kan worden omgezet door de oplossing in dit artikel.
+Het dumplogboek en de seriële console helpen ons om verdere problemen op te lossen als het probleem niet kan worden opgelost door de oplossing in dit artikel.
 
-Om in te schakelen dump logboek- en seriële Console, voer het volgende script.
+Voer het volgende script uit om dumplog en Seriële console in te schakelen.
 
-1. Open een opdracht prompt sessie met verhoogde bevoegdheden (**als administrator uitvoeren**).
+1. Open een opdrachtpromptsessie met verhoogde bevoegdheid **(Uitvoeren als beheerder).**
 2. Voer het volgende script uit:
 
-    In dit script, we gaan ervan uit dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteemschijf F. vervangen deze stationsletter door de juiste waarde voor uw virtuele machine.
+    In dit script gaan we ervan uit dat de stationsletter die is toegewezen aan de gekoppelde OS-schijf F is. Vervang deze stationsletter met de juiste waarde voor uw VM.
 
     ```powershell
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM
@@ -110,22 +110,22 @@ Om in te schakelen dump logboek- en seriële Console, voer het volgende script.
     reg unload HKLM\BROKENSYSTEM
     ```
 
-#### <a name="configure-the-windows-to-boot-into-normal-mode"></a>Windows configureren om op te starten in de normale modus
+#### <a name="configure-the-windows-to-boot-into-normal-mode"></a>De Windows configureren om op te starten in de normale modus
 
-1. Open een opdracht prompt sessie met verhoogde bevoegdheden (**als administrator uitvoeren**).
-2. Controleer de opstart configuratie gegevens. In de volgende opdrachten wordt ervan uitgegaan dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf F is. Vervang deze stationsletter door de juiste waarde voor de virtuele machine.
+1. Open een opdrachtpromptsessie met verhoogde bevoegdheid **(Uitvoeren als beheerder).**
+2. Controleer de opstartconfiguratiegegevens. In de volgende opdrachten gaan we ervan uit dat de stationsletter die is toegewezen aan de gekoppelde OS-schijf F is. Vervang deze stationsletter door de juiste waarde voor uw vm.
 
         bcdedit /store F:\boot\bcd /enum
-    Noteer de id-naam van de partitie die de map **\Windows** heeft. De id-naam is standaard ingesteld op standaard.
+    Let op de naam van de id van de partitie met de **map \windows.** Standaard is de naam van de id 'Standaard'.
 
-    Als de virtuele machine is geconfigureerd om te worden opgestart in de veilige modus, ziet u een extra vlag onder het gedeelte **Windows boot loader** met de naam **safeboot**. Als u de vlag **safeboot** niet ziet, is dit artikel niet van toepassing op uw scenario.
+    Als de VM is geconfigureerd om op te starten in de veilige modus, ziet u een extra vlag onder de sectie **Windows Boot Loader** genaamd **safeboot**. Als u de **safebootvlag** niet ziet, is dit artikel niet van toepassing op uw scenario.
 
-    ![De installatie kopie over de opstart-id](./media/troubleshoot-rdp-safe-mode/boot-id.png)
+    ![De afbeelding over boot-id](./media/troubleshoot-rdp-safe-mode/boot-id.png)
 
-3. Verwijder de vlag **safeboot** , zodat de virtuele machine in de normale modus wordt opgestart:
+3. Verwijder de **safebootvlag,** zodat de VM in de normale modus wordt opgestart:
 
         bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
-4. Controleer de opstart configuratie gegevens om er zeker van te zijn dat de vlag **safeboot** wordt verwijderd:
+4. Controleer de configuratiegegevens voor het opstarten om ervoor te zorgen dat de **safebootvlag** wordt verwijderd:
 
         bcdedit /store F:\boot\bcd /enum
-5. [Ontkoppel de besturingssysteem schijf en maak de virtuele machine opnieuw](../windows/troubleshoot-recovery-disks-portal.md). Controleer vervolgens of het probleem is opgelost.
+5. [Maak de OS-schijf los en maak de VM opnieuw](../windows/troubleshoot-recovery-disks-portal.md). Controleer vervolgens of het probleem is opgelost.

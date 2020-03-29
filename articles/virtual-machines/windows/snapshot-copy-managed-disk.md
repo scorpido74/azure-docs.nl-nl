@@ -1,6 +1,6 @@
 ---
-title: Een moment opname van een virtuele harde schijf maken in azure
-description: Meer informatie over het maken van een kopie van een virtuele Azure-machine die u kunt gebruiken als back-up of voor problemen oplossen.
+title: Een momentopname van een virtuele harde schijf maken in Azure
+description: Meer informatie over het maken van een kopie van een Azure VM om te gebruiken als back-up of voor het oplossen van problemen.
 documentationcenter: ''
 author: roygara
 manager: twooley
@@ -15,38 +15,38 @@ ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: bc74a3eea1f99de6080788d6f3fddcac823092dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75370898"
 ---
 # <a name="create-a-snapshot"></a>Een momentopname maken
 
-Een moment opname is een volledige, alleen-lezen kopie van een virtuele harde schijf (VHD). U kunt een moment opname maken van een besturings systeem of gegevens schijf VHD om te gebruiken als back-up, of om problemen met virtuele machine (VM) op te lossen.
+Een momentopname is een volledige, alleen-lezen kopie van een virtuele harde schijf (VHD). U een momentopname maken van een VHD-besturingssysteem of gegevensschijf om te gebruiken als back-up of om vm-problemen (virtual machine) op te lossen.
 
-Als u de moment opname wilt gebruiken om een nieuwe virtuele machine te maken, kunt u het beste de virtuele machine op een schone manier afsluiten voordat u een moment opname maakt, zodat alle processen die worden uitgevoerd, worden gewist.
+Als u de momentopname gaat gebruiken om een nieuwe virtuele machine te maken, raden we u aan de VM netjes af te sluiten voordat u een momentopname maakt, om alle lopende processen op te ruimen.
 
-## <a name="use-the-azure-portal"></a>De Azure Portal gebruiken 
+## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken 
 
-Voer de volgende stappen uit om een moment opname te maken: 
-1.  Selecteer **een resource maken**op de [Azure Portal](https://portal.azure.com).
-2. Zoek en selecteer de **moment opname**.
-3. Selecteer in het venster **moment opname** **maken**. Het venster **moment opname maken** wordt weer gegeven.
-4. Voer een **naam** in voor de moment opname.
-5. Selecteer een bestaande [resource groep](../../azure-resource-manager/management/overview.md#resource-groups) of voer de naam van een nieuwe in. 
+Voer de volgende stappen uit om een momentopname te maken: 
+1.  Selecteer een resource **maken**in de [Azure-portal](https://portal.azure.com).
+2. Zoeken naar en selecteer **Momentopname**.
+3. Selecteer **in** het venster Momentopname de optie **Maken**. Het **venster Momentopname maken** wordt weergegeven.
+4. Voer een **naam** voor de momentopname in.
+5. Selecteer een bestaande [resourcegroep](../../azure-resource-manager/management/overview.md#resource-groups) of voer de naam van een nieuwe groep in. 
 6. Selecteer de **Locatie** van een Azure-datacenter.  
-7. Voor de **bron schijf**selecteert u de beheerde schijf voor de moment opname.
-8. Het **account type** selecteren dat moet worden gebruikt voor het opslaan van de moment opname. Selecteer **Standard_HDD**, tenzij u wilt dat de moment opname wordt opgeslagen op een hoogwaardige schijf.
+7. Selecteer **voor de bronschijf**de beheerde schijf naar momentopname.
+8. Selecteer het **accounttype** dat u wilt gebruiken om de momentopname op te slaan. Selecteer **Standard_HDD**, tenzij u de momentopname moet opslaan op een goed presterende schijf.
 9. Selecteer **Maken**.
 
 ## <a name="use-powershell"></a>PowerShell gebruiken
 
-De volgende stappen laten zien hoe u de VHD-schijf kopieert en de configuratie van de moment opname maakt. U kunt vervolgens een moment opname van de schijf maken met behulp van de cmdlet [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) . 
+In de volgende stappen wordt uitgelegd hoe u de VHD-schijf kopieert en de momentopnameconfiguratie maakt. U dan een momentopname van de schijf maken met de [nieuw-AzSnapshot-cmdlet.](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) 
 
  
 
-1. Stel een aantal para meters in: 
+1. Stel een aantal parameters in: 
 
    ```azurepowershell-interactive
    $resourceGroupName = 'myResourceGroup' 
@@ -55,7 +55,7 @@ De volgende stappen laten zien hoe u de VHD-schijf kopieert en de configuratie v
    $snapshotName = 'mySnapshot'  
    ```
 
-2. De VM ophalen:
+2. Download de VM:
 
    ```azurepowershell-interactive
    $vm = get-azvm `
@@ -63,7 +63,7 @@ De volgende stappen laten zien hoe u de VHD-schijf kopieert en de configuratie v
    -Name $vmName
    ```
 
-3. De configuratie van de moment opname maken. Voor dit voor beeld is de moment opname van de besturingssysteem schijf:
+3. Maak de momentopnameconfiguratie. In dit voorbeeld is de momentopname van de OS-schijf:
 
    ```azurepowershell-interactive
    $snapshot =  New-AzSnapshotConfig 
@@ -73,9 +73,9 @@ De volgende stappen laten zien hoe u de VHD-schijf kopieert en de configuratie v
    ```
    
    > [!NOTE]
-   > Als u uw moment opname wilt opslaan in zone-flexibele opslag, maakt u deze in een regio die [beschikbaarheids zones](../../availability-zones/az-overview.md) ondersteunt en de para meter `-SkuName Standard_ZRS` bevatten.   
+   > Als u uw momentopname wilt opslaan in zonebestendige opslag, maakt u deze in `-SkuName Standard_ZRS` een regio die [beschikbaarheidszones](../../availability-zones/az-overview.md) ondersteunt en de parameter opneemt.   
    
-4. De moment opname maken:
+4. Neem de momentopname:
 
    ```azurepowershell-interactive
    New-AzSnapshot 
@@ -87,4 +87,4 @@ De volgende stappen laten zien hoe u de VHD-schijf kopieert en de configuratie v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Een virtuele machine maken op basis van een moment opname door een beheerde schijf te maken op basis van een moment opname en vervolgens de nieuwe beheerde schijf als de besturingssysteem schijf te koppelen. Zie het voor beeld in [een VM maken van een moment opname met Power shell](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)voor meer informatie.
+Maak een virtuele machine op basis van een momentopname door een beheerde schijf te maken op basis van een momentopname en vervolgens de nieuwe beheerde schijf als de OS-schijf te bevestigen. Zie het voorbeeld in [Een vm maken op basis van een momentopname met PowerShell](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)voor meer informatie.

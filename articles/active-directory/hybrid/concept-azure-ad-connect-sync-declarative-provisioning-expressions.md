@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Declaratieve inrichting expressies | Microsoft Docs'
-description: De declaratieve inrichtingsexpressies uitgelegd.
+title: 'Azure AD Connect: declaratieve inrichtingsexpressies | Microsoft Documenten'
+description: Legt de declaratieve inrichtingsuitdrukkingen uit.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,87 +17,87 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60245508"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect-synchronisatie: Inzicht in verklarende inrichtingsexpressies
-Azure AD Connect-synchronisatie is gebaseerd op het declaratieve inrichting is geïntroduceerd in Forefront Identity Manager 2010. Hiermee kunt u voor het implementeren van uw volledige identity integration bedrijfslogica zonder de noodzaak gecompileerde code te schrijven.
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect-synchronisatie: declaratieve inrichtingsexpressies begrijpen
+Azure AD Connect-synchronisatie bouwt voort op declaratieve inrichting die voor het eerst is geïntroduceerd in Forefront Identity Manager 2010. Hiermee u uw volledige bedrijfslogica voor identiteitsintegratie implementeren zonder dat u gecompileerde code hoeft te schrijven.
 
-Een essentieel onderdeel van de declaratieve inrichting wordt de expressietaal die wordt gebruikt in kenmerkstromen. De gebruikte taal is een subset van Microsoft Visual Basic® for Applications (VBA). Deze taal wordt gebruikt in Microsoft Office en ook door gebruikers met de ervaring van VBScript worden herkend. De declaratieve inrichting expressietaal wordt alleen gebruikt voor functies en is niet een gestructureerde taal. Er zijn geen methoden of instructies. Functies zijn in plaats daarvan naar snelle programmastroom genest.
+Een essentieel onderdeel van declaratieve inrichting is de expressietaal die wordt gebruikt in kenmerkstromen. De gebruikte taal is een subset van Microsoft® Visual Basic® for Applications (VBA). Deze taal wordt gebruikt in Microsoft Office en gebruikers met ervaring met VBScript zullen deze ook herkennen. De Declaratieve Inrichtingexpressietaal gebruikt alleen functies en is geen gestructureerde taal. Er zijn geen methoden of verklaringen. Functies worden in plaats daarvan genest om de programmastroom uit te drukken.
 
-Zie voor meer informatie, [Welkom bij de Visual Basic for Applications taalverwijzing voor Office 2013](https://msdn.microsoft.com/library/gg264383.aspx).
+Zie [Welkom bij de taalverwijzing voor Visual Basic for Applications voor Office 2013 voor](https://msdn.microsoft.com/library/gg264383.aspx)meer informatie.
 
-De kenmerken zijn sterk getypeerd. Een functie accepteert alleen de kenmerken van het juiste type. Het is ook hoofdlettergevoelig. Zowel de functienamen van de en kenmerk moet juiste hoofdlettergebruik of een fout gegenereerd.
+De attributen zijn sterk getypt. Een functie accepteert alleen kenmerken van het juiste type. Het is ook hoofdlettergevoelig. Zowel functienamen als kenmerknamen moeten een goede behuizing hebben of er wordt een fout gegenereerd.
 
-## <a name="language-definitions-and-identifiers"></a>Definities van de taal en id 's
-* Functies hebben een naam, gevolgd door argumenten tussen vierkante haken: Functienaam (1 argument, argument N).
-* Kenmerken worden geïdentificeerd door de vierkante haken: [attributeName]
-* Parameters worden aangeduid met procenttekens: % ParameterName %
-* Tekenreeksconstanten worden omringd door aanhalingstekens: Bijvoorbeeld 'Contoso' (Opmerking: rechte aanhalingstekens "' en niet slimme aanhalingstekens" ")
-* Numerieke waarden worden uitgedrukt zonder aanhalingstekens en verwacht decimaal. Hexadecimale waarden worden voorafgegaan door & h Bijvoorbeeld, 98052 & HFF
-* Booleaanse waarden worden uitgedrukt met constanten: Waar, ONWAAR.
-* Ingebouwde constanten en letterlijke waarden worden uitgedrukt met alleen de naam: NULL, CRLF, IgnoreThisFlow
+## <a name="language-definitions-and-identifiers"></a>Taaldefinities en id's
+* Functies hebben een naam, gevolgd door argumenten tussen haakjes: FunctieNaam(argument 1, argument N).
+* Kenmerken worden geïdentificeerd aan de basis van vierkante haakjes: [attributeName]
+* Parameters worden geïdentificeerd door procentuele tekens: %ParameterName%
+* String constanten worden omringd door aanhalingstekens: Bijvoorbeeld "Contoso" (Opmerking: moet gebruik maken van rechte aanhalingstekens "" en niet slimme citaten "")
+* Numerieke waarden worden uitgedrukt zonder aanhalingstekens en zullen naar verwachting decimaal zijn. Hexadecimale waarden zijn vooraf vastgesteld met &H. Bijvoorbeeld 98052, &HFF
+* Booleaanse waarden worden uitgedrukt met constanten: Waar, Onwaar.
+* Ingebouwde constanten en literals worden uitgedrukt met alleen hun naam: NULL, CRLF, IgnoreThisFlow
 
 ### <a name="functions"></a>Functions
-Declaratieve inrichting maakt gebruik van veel functies waarmee de mogelijkheid om te zetten van kenmerkwaarden. Deze functies kunnen worden genest, zodat het resultaat van een functie aan een andere functie doorgegeven.
+Declaratieve inrichting maakt gebruik van vele functies om de mogelijkheid mogelijk te maken om kenmerkwaarden te transformeren. Deze functies kunnen worden genest, zodat het resultaat van de ene functie wordt doorgegeven aan een andere functie.
 
 `Function1(Function2(Function3()))`
 
-De volledige lijst met functies vindt u de [functie verwijzing](reference-connect-sync-functions-reference.md).
+De volledige lijst met functies is te vinden in de [functiereferentie.](reference-connect-sync-functions-reference.md)
 
 ### <a name="parameters"></a>Parameters
-Een parameter wordt gedefinieerd door een Connector of door een beheerder met behulp van PowerShell. Parameters bevatten gewoonlijk waarden die verschillen van systeem, bijvoorbeeld de naam van het domein de gebruiker zich bevindt in. Deze parameters kunnen worden gebruikt in kenmerkstromen.
+Een parameter wordt gedefinieerd door een connector of door een beheerder die PowerShell gebruikt. Parameters bevatten meestal waarden die verschillen van systeem tot systeem, bijvoorbeeld de naam van het domein waarin de gebruiker zich bevindt. Deze parameters kunnen worden gebruikt in kenmerkstromen.
 
-De Active Directory-Connector die de volgende parameters voor binnenkomende synchronisatieregels:
+De Active Directory Connector heeft de volgende parameters voor binnenkomende synchronisatieregels opgegeven:
 
 | Parameternaam | Opmerking |
 | --- | --- |
-| Domain.Netbios |NetBIOS-indeling van het domein dat momenteel wordt geïmporteerd, bijvoorbeeld FABRIKAMSALES |
+| Domain.Netbios |Netbios-formaat van het domein dat momenteel wordt geïmporteerd, bijvoorbeeld FABRIKAMSALES |
 | Domain.FQDN |FQDN-indeling van het domein dat momenteel wordt geïmporteerd, bijvoorbeeld sales.fabrikam.com |
-| Domain.LDAP |LDAP-indeling van het domein dat momenteel wordt geïmporteerd, bijvoorbeeld DC = verkoop, DC = fabrikam, DC = com |
-| Forest.Netbios |NetBIOS-indeling van de naam van het forest dat momenteel wordt geïmporteerd, bijvoorbeeld FABRIKAMCORP |
-| Forest.FQDN |FQDN-indeling van de naam van het forest dat momenteel wordt geïmporteerd, bijvoorbeeld fabrikam.com |
-| Forest.LDAP |LDAP-indeling van de naam van het forest dat momenteel wordt geïmporteerd, bijvoorbeeld DC = fabrikam, DC = com |
+| Domain.LDAP (Domain.LDAP) |LDAP-indeling van het domein dat momenteel wordt geïmporteerd, bijvoorbeeld DC=sales,DC=fabrikam,DC=com |
+| Forest.Netbios |Netbios-formaat van de bosnaam die momenteel wordt ingevoerd, bijvoorbeeld FABRIKAMCORP |
+| Forest.FQDN |FQDN-indeling van de forestnaam die momenteel wordt geïmporteerd, bijvoorbeeld fabrikam.com |
+| Forest.LDAP |LDAP-indeling van de forestnaam die momenteel wordt geïmporteerd, bijvoorbeeld DC=fabrikam,DC=com |
 
-Het systeem biedt de volgende parameter, die wordt gebruikt om op te halen van de id van de Connector die momenteel wordt uitgevoerd:  
+Het systeem biedt de volgende parameter, die wordt gebruikt om de id van de connector die momenteel wordt uitgevoerd, op te laten draaien:  
 `Connector.ID`
 
-Hier volgt een voorbeeld waarin vult het domein van de metaverse-kenmerk met de netbios-naam van het domein waar de gebruiker zich bevindt:  
+Hier volgt een voorbeeld dat het metaverse kenmerkdomein vult met de netbios-naam van het domein waar de gebruiker zich bevindt:  
 `domain` <- `%Domain.Netbios%`
 
 ### <a name="operators"></a>Operators
-De volgende operators kunnen worden gebruikt:
+De volgende operatoren kunnen worden gebruikt:
 
-* **Comparison**: <, <=, <>, =, >, >=
-* **Wiskunde**: +, -, \*, -
-* **Tekenreeks**: & (samenvoegen)
-* **Logische**: & & (en) || (of)
-* **Evaluatievolgorde**:)
+* **Vergelijking**: <, <=, <>, =, >, >=
+* **Wiskunde**: +, \*-, , -
+* **Tekenreeks**: & (concatenate)
+* **Logisch**: && (en), || (of)
+* **Evaluatievolgorde**: ( )
 
-Operators links naar rechts worden geëvalueerd en dezelfde evaluatie prioriteit hebben. Dat wil zeggen, de \* (vermenigvuldiger) wordt niet geëvalueerd vóór - (aftrekken). 2\*(5 + 3) is niet gelijk zijn aan 2\*5 + 3. De vierkante haken () worden gebruikt om de evaluatievolgorde wijzigen wanneer links naar rechts evaluatieorder niet juist.
+Operators worden van links tot rechts geëvalueerd en hebben dezelfde evaluatieprioriteit. Dat wil \* zeggen, de (multiplier) wordt niet eerder geëvalueerd - (aftrekken). 2\*(5+3) is niet\*hetzelfde als 2 5+3. De haakjes ( ) worden gebruikt om de evaluatievolgorde te wijzigen wanneer de evaluatievolgorde van links naar rechts niet geschikt is.
 
 ## <a name="multi-valued-attributes"></a>Kenmerken met meerdere waarden
-De functies kunnen worden uitgevoerd op zowel één waarde als meerwaardige kenmerken. Voor kenmerken met meerdere waarden, de functie werkt via elke waarde en dezelfde functie is van toepassing op elke waarde.
+De functies kunnen werken op zowel enkelgewaardeerde als multigewaardeerde kenmerken. Voor kenmerken met meerdere waarden werkt de functie over elke waarde en past dezelfde functie toe op elke waarde.
 
 Bijvoorbeeld:  
-`Trim([proxyAddresses])` Voer een Trim van elke waarde in het proxyAddress-kenmerk.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"` Voor elke waarde met een @-sign, vervangt u het domein met @contoso.com.  
-`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` Het SIP-adres zoekt en verwijdert u het uit de waarden.
+`Trim([proxyAddresses])`Doe een trim van elke waarde in het kenmerk proxyAddress.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"`Voor elke waarde @-signmet een @contoso.com, vervang het domein door .  
+`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Zoek naar het SIP-adres en verwijder het uit de waarden.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over de configuratiemodel in [Understanding declaratieve inrichting](concept-azure-ad-connect-sync-declarative-provisioning.md).
-* Zie hoe declaratieve inrichting is gebruikte out-of-box in [inzicht in de standaardconfiguratie](concept-azure-ad-connect-sync-default-configuration.md).
-* Zien hoe u een praktische wijzigen met behulp van declaratieve inrichting [hoe u een wijziging in de standaardconfiguratie](how-to-connect-sync-change-the-configuration.md).
+* Lees meer over het configuratiemodel in [Declaratieve provisioning begrijpen.](concept-azure-ad-connect-sync-declarative-provisioning.md)
+* Bekijk hoe declaratieve inrichting out-of-box wordt gebruikt in Het begrijpen van [de standaardconfiguratie.](concept-azure-ad-connect-sync-default-configuration.md)
+* Zie hoe u een praktische wijziging aanbrengen met declaratieve inrichting in [Hoe u een wijziging in de standaardconfiguratie aanbrengen.](how-to-connect-sync-change-the-configuration.md)
 
 **Overzichtsonderwerpen**
 
-* [Azure AD Connect-synchronisatie: Begrijpen en aanpassen van synchronisatie](how-to-connect-sync-whatis.md)
-* [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md)
+* [Synchronisatie van Azure AD Connect: synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)
+* [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)
 
 **Onderwerpen met naslaginformatie**
 
-* [Azure AD Connect-synchronisatie: Functieverwijzing](reference-connect-sync-functions-reference.md)
+* [Synchronisatie van Azure AD Connect: naslaginformatie over functies](reference-connect-sync-functions-reference.md)
 

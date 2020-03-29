@@ -1,6 +1,6 @@
 ---
-title: Overzicht van de Azure Eventhubs standaard .NET-API's | Microsoft Docs
-description: Standaard .NET-API-overzicht
+title: Overzicht van de Azure Event Hubs .NET Standard API's | Microsoft Documenten
+description: .NET Standard API-overzicht
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -10,32 +10,32 @@ ms.topic: article
 ms.date: 08/13/2018
 ms.author: shvija
 ms.openlocfilehash: b09f39f45936a7c43dbc1ef109780315d62c768f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60821910"
 ---
-# <a name="event-hubs-net-standard-api-overview"></a>Overzicht van Event Hubs .NET Standard-API
+# <a name="event-hubs-net-standard-api-overview"></a>Overzicht van Gebeurtenishubs .NET Standard API
 
-In dit artikel vindt u een samenvatting van de sleutel Azure Event Hubs [.NET Standard client-API's](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/). Er zijn momenteel twee .NET Standard-clientbibliotheken voor Event Hubs:
+In dit artikel worden enkele van de belangrijkste Azure Event Hubs [.NET Standard client API's](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)samengevat. Er zijn momenteel twee .NET Standard-clientbibliotheken voor gebeurtenishubs:
 
-* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs): Biedt alle basic runtime-bewerkingen.
-* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor): Extra functionaliteit waarmee het bijhouden van de verwerkte gebeurtenissen, en is de eenvoudigste manier om te lezen van een event hub wordt toegevoegd.
+* [Microsoft.Azure.EventHubs:](/dotnet/api/microsoft.azure.eventhubs)biedt alle basisruntimebewerkingen.
+* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor): Voegt extra functionaliteit toe waarmee verwerkte gebeurtenissen kunnen worden bijgehouden en is de eenvoudigste manier om te lezen vanaf een gebeurtenishub.
 
-## <a name="event-hubs-client"></a>Event Hubs-client
+## <a name="event-hubs-client"></a>Gebeurtenishubs-client
 
-[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) is het primaire object dat u wilt verzenden van gebeurtenissen, maakt u ontvangers en runtime-gegevens ophalen. Deze client is gekoppeld aan een specifieke event hub, en maakt een nieuwe verbinding met het eindpunt van de Event Hubs.
+[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) is het primaire object dat u gebruikt om gebeurtenissen te verzenden, ontvangers te maken en tijdsinformatie op te halen. Deze client is gekoppeld aan een bepaalde gebeurtenishub en maakt een nieuwe verbinding met het eindpunt van gebeurtenishubs.
 
 ### <a name="create-an-event-hubs-client"></a>Een Event Hubs-client maken
 
-Een [EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) object is gemaakt op basis van een verbindingsreeks. De eenvoudigste manier om het instantiëren van een nieuwe client wordt weergegeven in het volgende voorbeeld:
+Een [EventHubClient-object](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) wordt gemaakt op basis van een verbindingstekenreeks. De eenvoudigste manier om een nieuwe client te instantiëren wordt weergegeven in het volgende voorbeeld:
 
 ```csharp
 var eventHubClient = EventHubClient.CreateFromConnectionString("Event Hubs connection string");
 ```
 
-Als u wilt de verbindingsreeks programmatisch bewerken, kunt u de [EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) klasse en de verbindingsreeks doorgeven als een parameter voor [EventHubClient.CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient).
+Als u de verbindingstekenreeks programmatisch wilt bewerken, u de klasse [EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) gebruiken en de verbindingstekenreeks als parameter doorgeven aan [EventHubClient.CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient).
 
 ```csharp
 var connectionStringBuilder = new EventHubsConnectionStringBuilder("Event Hubs connection string")
@@ -48,7 +48,7 @@ var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringB
 
 ### <a name="send-events"></a>Gebeurtenissen verzenden
 
-Gebruiken voor het verzenden van gebeurtenissen naar een event hub, de [EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata) klasse. De hoofdtekst moet een `byte` matrix of een `byte` segment van de matrix.
+Als u gebeurtenissen naar een gebeurtenishub wilt verzenden, gebruikt u de klasse [EventData.](/dotnet/api/microsoft.azure.eventhubs.eventdata) Het lichaam moet `byte` een array `byte` of een arraysegment zijn.
 
 ```csharp
 // Create a new EventData object by encoding a string as a byte array
@@ -61,11 +61,11 @@ await eventHubClient.SendAsync(data);
 
 ### <a name="receive-events"></a>Gebeurtenissen ontvangen
 
-De aanbevolen manier om u te ontvangen van gebeurtenissen van Event Hubs gebruikt het [Event Processor Host](#event-processor-host-apis), waarmee u functionaliteit voor het automatisch bijhouden van de event hub offset en partitie-informatie. Er zijn echter bepaalde situaties waarin kunt u de flexibiliteit van de kernbibliotheek van Event Hubs gebruiken om u te ontvangen van gebeurtenissen.
+De aanbevolen manier om gebeurtenissen te ontvangen van Gebeurtenishubs is het gebruik van de [GebeurtenisprocessorHost](#event-processor-host-apis), die functionaliteit biedt om automatisch de gebeurtenishubverschuivingen en partitiegegevens bij te houden. Er zijn echter bepaalde situaties waarin u de flexibiliteit van de kernbibliotheek van Event Hubs gebruiken om evenementen te ontvangen.
 
 #### <a name="create-a-receiver"></a>Een ontvanger maken
 
-Ontvangers zijn gekoppeld aan specifieke partities, dus als u wilt ontvangen van alle gebeurtenissen in een event hub, moet u meerdere exemplaren maken. Het is raadzaam voor de partitie-informatie via een programma, in plaats van hard-coding de partitie-id. Als u wilt doen, kunt u de [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) methode.
+Ontvangers zijn gekoppeld aan specifieke partities, dus om alle gebeurtenissen in een gebeurtenishub te ontvangen, moet u meerdere exemplaren maken. Het is een goede gewoonte om de partitie informatie programmatisch te krijgen, in plaats van hard-codering van de partitie-id's. Hiervoor u de [GetRuntimeInformationAsync-methode](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) gebruiken.
 
 ```csharp
 // Create a list to keep track of the receivers
@@ -82,7 +82,7 @@ foreach (var partitionId in runTimeInformation.PartitionIds)
 }
 ```
 
-Omdat de gebeurtenissen worden nooit verwijderd van een event hub (en alleen verlopen), moet u het juiste beginpunt. Het volgende voorbeeld ziet u mogelijke combinaties:
+Omdat gebeurtenissen nooit worden verwijderd uit een gebeurtenishub (en alleen verlopen), moet u het juiste beginpunt opgeven. In het volgende voorbeeld worden mogelijke combinaties weergegeven:
 
 ```csharp
 // partitionId is assumed to come from GetRuntimeInformationAsync()
@@ -97,7 +97,7 @@ var receiver = eventHubClient.CreateReceiver(PartitionReceiver.DefaultConsumerGr
 var receiver = eventHubClient.CreateReceiver(PartitionReceiver.DefaultConsumerGroupName, partitionId, DateTime.Now.AddDays(-1));
 ```
 
-#### <a name="consume-an-event"></a>Een gebeurtenis gebruiken
+#### <a name="consume-an-event"></a>Een gebeurtenis consumeren
 
 ```csharp
 // Receive a maximum of 100 messages in this call to ReceiveAsync
@@ -117,9 +117,9 @@ if (ehEvents != null)
 }       
 ```
 
-## <a name="event-processor-host-apis"></a>Event Processor Host API 's
+## <a name="event-processor-host-apis"></a>Api's voor hosthost van gebeurtenisprocessor
 
-Deze API's bieden tolerantie tegen werkprocessen die mogelijk niet beschikbaar is, door de partities over beschikbare werkrollen verdeeld:
+Deze API's bieden tolerantie voor werkprocessen die mogelijk niet meer beschikbaar zijn, door partities over beschikbare werknemers te verdelen:
 
 ```csharp
 // Checkpointing is done within the SimpleEventProcessor and on a per-consumerGroup per-partition basis, workers resume from where they last left off.
@@ -144,7 +144,7 @@ await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 await eventProcessorHost.UnregisterEventProcessorAsync();
 ```
 
-Hieronder volgt een Voorbeeldimplementatie van de [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) interface:
+Het volgende is een voorbeeld implementatie van de [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) interface:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -185,7 +185,7 @@ public class SimpleEventProcessor : IEventProcessor
 Volg deze koppelingen voor meer informatie over Event Hubs-scenario‘s:
 
 * [Wat is Azure Event Hubs?](event-hubs-what-is-event-hubs.md)
-* [Beschikbare Event Hubs-API 's](event-hubs-api-overview.md)
+* [Beschikbare gebeurtenishubs-api's](event-hubs-api-overview.md)
 
 De .NET API-verwijzingen zijn hier:
 

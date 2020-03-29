@@ -1,138 +1,138 @@
 ---
-title: Mainframe Compute verplaatsen naar Azure Virtual Machines
-description: Azure Compute-resources vergelijken met de mainframe capaciteit, zodat u IBM z14-toepassingen kunt migreren en moderniseren.
+title: Mainframecompute verplaatsen naar Azure Virtual Machines
+description: Azure compute resources vergelijken gunstig met mainframecapaciteit, zodat u IBM z14-toepassingen migreren en moderniseren.
 author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 97f354d0a313d58c671366dd0e5f485504823e13
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76288928"
 ---
-# <a name="move-mainframe-compute-to-azure"></a>Mainframe Compute verplaatsen naar Azure
+# <a name="move-mainframe-compute-to-azure"></a>Mainframecompute verplaatsen naar Azure
 
-Mainframes hebben een reputatie voor hoge betrouw baarheid en beschik baarheid en blijven de vertrouwde backbone van veel ondernemingen. Het is vaak een goed idee om bijna onbeperkte schaal baarheid en reken kracht te hebben. Sommige ondernemingen hebben echter de mogelijkheid om de grootste beschik bare mainframes te verg Roten. Als dit zo klinkt als u, biedt Azure flexibiliteit, bereiken en infrastructuur besparingen.
+Mainframes hebben een reputatie voor hoge betrouwbaarheid en beschikbaarheid en blijven de vertrouwde ruggengraat van veel ondernemingen. Er wordt vaak gedacht dat ze ook bijna onbeperkte schaalbaarheid en rekenkracht hebben. Echter, sommige ondernemingen zijn ontgroeid de mogelijkheden van de grootste beschikbare mainframes. Als dit klinkt als u, azure biedt flexibiliteit, bereik, en infrastructuur besparingen.
 
-Als u mainframe-workloads op Microsoft Azure wilt uitvoeren, moet u weten hoe de reken mogelijkheden van uw mainframe worden vergeleken met Azure. In dit artikel wordt beschreven hoe u op basis van een IBM z14 mainframe (het meest recente model van deze schrijf bewerking) een vergelijk bare resultaten krijgt op Azure.
+Als u mainframeworkloads wilt uitvoeren op Microsoft Azure, moet u weten hoe de rekenmogelijkheden van uw mainframe zich verhouden tot Azure. Op basis van een IBM z14 mainframe (het meest recente model vanaf dit schrijven), dit artikel vertelt u hoe u vergelijkbare resultaten op Azure te krijgen.
 
-Als u aan de slag wilt gaan, moet u rekening houden met de omgevingen naast elkaar. In de volgende afbeelding wordt een mainframe-omgeving vergeleken voor het uitvoeren van toepassingen op een Azure-hosting omgeving.
+Om aan de slag te gaan, moet u rekening houden met de omgevingen naast elkaar. In het volgende cijfer wordt een mainframeomgeving voor het uitvoeren van toepassingen vergeleken met een Azure-hostingomgeving.
 
-![Azure-Services en-emulatie omgevingen bieden vergelijk bare ondersteuning en kunnen de migratie stroom lijnen](media/mainframe-compute-azure.png)
+![Azure-services en emulatieomgevingen bieden vergelijkbare ondersteuning en stroomlijnt migratie](media/mainframe-compute-azure.png)
 
-De kracht van mainframes wordt vaak gebruikt voor OLTP-systemen (online Trans Action processing) die miljoenen updates voor duizenden gebruikers verwerken. Deze toepassingen gebruiken vaak software voor transactie verwerking, scherm verwerking en formulier invoer. Ze kunnen gebruikmaken van een klant Information Control System (CICS), een IMS (Information Management System) of een transactie interface pakket (TIP).
+De kracht van mainframes wordt vaak gebruikt voor oltp-systemen (online transactieverwerking) die miljoenen updates voor duizenden gebruikers verwerken. Deze toepassingen maken vaak gebruik van software voor transactieverwerking, schermafhandeling en formulierinvoer. Ze kunnen gebruik maken van een Customer Information Control System (CICS), Information Management System (IMS) of Transaction Interface Package (TIP).
 
-Zoals in de afbeelding wordt weer gegeven, kan een TPM-emulator op Azure de werk belasting van CICS en IMS verwerken. Een batch systeem emulator in azure voert de rol van taak besturings taal (JCL). Mainframe gegevens worden gemigreerd naar Azure-data bases, zoals Azure SQL Database. Azure-Services of andere software die worden gehost in azure Virtual Machines kunnen worden gebruikt voor systeem beheer.
+Zoals uit de figuur blijkt, kan een TPM-emulator op Azure CICS- en IMS-workloads verwerken. Een batchsysteememulator op Azure vervult de rol van Job Control Language (JCL). Mainframegegevens worden gemigreerd naar Azure-databases, zoals Azure SQL Database. Azure-services of andere software die wordt gehost in Azure Virtual Machines kunnen worden gebruikt voor systeembeheer.
 
-## <a name="mainframe-compute-at-a-glance"></a>Mainframe Compute in één oogopslag
+## <a name="mainframe-compute-at-a-glance"></a>Mainframe compute in één oogopslag
 
-In de z14-mainframe worden de processors in Maxi maal vier *bakken*geordend. Een *lade* is gewoon een cluster met processors en chip sets. Elke lade kan zes actieve Central processor-chips (CP) hebben en elke CP heeft 10 systeem controller (SC)-chips. In de Intel x86-terminologie zijn er zes sockets per lade, 10 kernen per socket en vier lade. Deze architectuur biedt het ruwe equivalent van 24 sockets en 240 kernen, maximum, voor een z14.
+In het z14 mainframe zijn processors gerangschikt in maximaal vier *laden.* Een *lade* is gewoon een cluster van processors en chipsets. Elke lade kan zes actieve centrale processor (CP) chips hebben, en elke CP heeft 10 system controller (SC) chips. In Intel x86-terminologie zijn er zes sockets per lade, 10 cores per socket en vier laden. Deze architectuur biedt het ruwe equivalent van 24 sockets en 240 cores, maximaal, voor een z14.
 
-De snelle z14 CP heeft een klok snelheid van 5,2 GHz. Normaal gesp roken wordt een z14 met alle CPs in het vak geleverd. Ze worden naar behoefte geactiveerd. Een klant wordt doorgaans gefactureerd voor ten minste vier uur reken tijd per maand, ondanks het werkelijke gebruik.
+De snelle z14 CP heeft een kloksnelheid van 5,2 GHz. Typisch, een z14 wordt geleverd met alle cps in de doos. Ze worden geactiveerd als dat nodig is. Een klant wordt vaak in rekening gebracht voor ten minste vier uur rekentijd per maand, ondanks het werkelijke gebruik.
 
-Een mainframe-processor kan worden geconfigureerd als een van de volgende typen:
+Een mainframeprocessor kan worden geconfigureerd als een van de volgende typen:
 
-- Algemeen-processor (GP)
-- Systeem z Integrated Information processor (zIIP)
-- Integrated Facility for Linux (IFL)-processor
-- Systeem assistent-processor (SAP)
-- De processor voor geïntegreerde koppelings faciliteit (ICF)
+- Gp-processor voor algemeen gebruik
+- Geïntegreerde informatieprocessor systeem z (zIIP)
+- Geïntegreerde faciliteit voor Linux (IFL) processor
+- System Assist Processor (SAP)
+- Geïntegreerde koppelingsinstallatie (ICF)-processor
 
-## <a name="scaling-mainframe-compute-up-and-out"></a>Mainframe-Compute omhoog en uitschalen
+## <a name="scaling-mainframe-compute-up-and-out"></a>Mainframe compute up and out schalen
 
-IBM-mainframes bieden de mogelijkheid om tot 240 kernen te schalen (de huidige z14-grootte voor één systeem). Daarnaast kan IBM-mainframes worden uitgeschaald via een functie die de koppelings faciliteit (CF) wordt genoemd. Met CF kunnen meerdere mainframe systemen tegelijkertijd toegang hebben tot dezelfde gegevens. Met de CF, de mainframe parallel Sysplex Technology, worden mainframe-processors in clusters gegroepeerd. Wanneer deze hand leiding is geschreven, wordt met de functie parallel Sysplex 32 groepen van 64 processors elk ondersteund. Maxi maal 2.048 processors kunnen op deze manier worden gegroepeerd om reken capaciteit uit te schalen.
+IBM mainframes bieden de mogelijkheid om op te schalen tot 240 cores (de huidige z14 grootte voor een enkel systeem). Daarnaast kunnen IBM mainframes uitschalen via een functie genaamd de Coupling Facility (CF). De CF maakt het mogelijk meerdere mainframesystemen tegelijkertijd toegang te geven tot dezelfde gegevens. Met behulp van de CF groepeert de mainframe Parallel Sysplex-technologie mainframeprocessors in clusters. Toen deze handleiding werd geschreven, ondersteunde de Parallel Sysplex-functie 32 groeperingen van elk 64 processors. Tot 2.048 processors kunnen op deze manier worden gegroepeerd om de rekencapaciteit uit te schalen.
 
-Met een CF kunnen compute-clusters gegevens delen met directe toegang. Dit wordt gebruikt voor het vergren delen van informatie, het opslaan van gegevens in de cache en de lijst met gedeelde gegevens bronnen. Een parallelle Sysplex die gebruikmaakt van een of meer CFs, kan worden beschouwd als een scale-out-berekenings cluster dat wordt gedeeld met alles. Zie [parallel Sysplex op IBM Z](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources) op de IBM-website voor meer informatie over deze functies.
+Met een CF kunnen de compute clusters gegevens delen met directe toegang. Het wordt gebruikt voor het vergrendelen van informatie, cache-informatie en de lijst met gedeelde gegevensbronnen. Een Parallel Sysplex met behulp van een of meer CD's kan worden gezien als een "gedeelde alles" scale-out compute cluster. Zie [Parallel Sysplex op IBM Z op](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources) de website van IBM voor meer informatie over deze functies.
 
-Toepassingen kunnen deze functies gebruiken om zowel uitbreid bare prestaties als hoge Beschik baarheid te bieden. Voor informatie over hoe CICS parallelle Sysplex met CF kan gebruiken, moet u de [IBM CICS en de koppelings faciliteit downloaden: meer dan de basis principes](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf) van Redbook.
+Toepassingen kunnen deze functies gebruiken om zowel scale-out prestaties als hoge beschikbaarheid te bieden. Voor informatie over hoe CICS Parallel Sysplex met CF kan gebruiken, download t.w.v. [de IBM CICS en de Coupling Facility: Beyond the Basics](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf) redbook.
 
-## <a name="azure-compute-at-a-glance"></a>Azure Compute in één oogopslag
+## <a name="azure-compute-at-a-glance"></a>Azure-gegevens in één oogopslag
 
-Sommige mensen denken er per ongeluk voor dat op Intel gebaseerde servers niet zo krachtig zijn als mainframes. De nieuwe grootschalige, op Intel gebaseerde systemen hebben echter zoveel reken capaciteit als mainframes. In deze sectie worden de Azure Infrastructure-as-a-Service-opties (IaaS) voor computing en opslag beschreven. Azure biedt ook PaaS-opties (platform-as-a-Service), maar dit artikel richt zich op de IaaS-keuzes die vergelijk bare mainframe capaciteit bieden.
+Sommige mensen denken ten onrechte dat Intel-gebaseerde servers zijn niet zo krachtig als mainframes. Echter, de nieuwe core-dense, Intel-gebaseerde systemen hebben net zoveel rekencapaciteit als mainframes. In dit gedeelte worden de IaaS-opties (Azure infrastructure-as-a-service) voor computers en opslag beschreven. Azure biedt ook PaaS-opties (Platform-as-a-Service), maar dit artikel richt zich op de IaaS-keuzes die vergelijkbare mainframecapaciteit bieden.
 
-Azure Virtual Machines bieden reken kracht in een bereik van grootten en typen. In Azure is een virtuele CPU (vCPU) ruwweg gelijk aan een kern op een mainframe.
+Azure Virtual Machines bieden rekenkracht in verschillende formaten en typen. In Azure komt een virtuele CPU (vCPU) ruwweg overeen met een kern op een mainframe.
 
-Op dit moment is het bereik van de groottes van Azure virtual machines van 1 tot 128 Vcpu's. VM-typen (virtuele machine) zijn geoptimaliseerd voor bepaalde werk belastingen. De volgende lijst bevat bijvoorbeeld de VM-typen (huidige op basis van dit schrijven) en de aanbevolen toepassingen:
+Momenteel biedt het bereik van Azure Virtual Machine-formaten 1 tot 128 vCPU's. Vm-typen (Virtual machine) zijn geoptimaliseerd voor bepaalde workloads. In de volgende lijst worden bijvoorbeeld de VM-typen weergegeven (actueel vanaf dit schrijven) en de aanbevolen toepassingen ervan:
 
 | Grootte     | Type en beschrijving                                                                 |
 |----------|--------------------------------------------------------------------------------------|
-| D-serie | Algemeen gebruik met 64 vCPU en Maxi maal 3,5 GHz klok snelheid                           |
-| E-serie | Geheugen dat is geoptimaliseerd met Maxi maal 64 Vcpu's                                                 |
-| F-serie | Compute Optimized with 64 Vcpu's en 3.. 7 GHz klok snelheid                       |
-| H-serie | Geoptimaliseerd voor HPC-toepassingen (High-Performance Computing)                          |
-| L-serie | Opslag geoptimaliseerd voor toepassingen met hoge door Voer die worden ondersteund door data bases zoals NoSQL |
-| M-serie | Grootste Vm's met reken kracht en geoptimaliseerd voor geheugen met Maxi maal 128 Vcpu's                        |
+| D-serie | Algemene doeleinden met 64 vCPU en een kloksnelheid van maximaal 3,5 GHz                           |
+| E-serie | Geheugen geoptimaliseerd met maximaal 64 vCPU's                                                 |
+| F-serie | Compute geoptimaliseerd met maximaal 64 vCPU's en een kloksnelheid van 3,7 GHz                       |
+| H-serie | Geoptimaliseerd voor HPC-toepassingen (high-performance computing)                          |
+| L-serie | Opslag geoptimaliseerd voor toepassingen met hoge doorvoer die worden ondersteund door databases zoals NoSQL |
+| M-serie | Grootste computer- en geheugengeoptimaliseerde VM's met maximaal 128 vCPU's                        |
 
-Zie [reeksen virtuele machines](https://azure.microsoft.com/pricing/details/virtual-machines/series/)voor meer informatie over beschik bare vm's.
+Zie [Virtual Machine-serie](https://azure.microsoft.com/pricing/details/virtual-machines/series/)voor meer informatie over beschikbare VM's.
 
-Een z14-mainframe kan Maxi maal 240 kernen hebben. Z14-mainframes gebruiken echter bijna nooit alle kernen voor één toepassing of werk belasting. In plaats daarvan worden workloads gescheiden in logische partities (LPARs) en de LPARs hebben beoordelingen: MIPS (miljoenen instructies per seconde) of MSU (miljoen service-eenheid). Bij het bepalen van de vergelijk bare VM-grootte die nodig is om een mainframe werk belasting uit te voeren op Azure, wordt de waarde van de MIPS-classificatie (of MSU) bepaald.
+Een z14 mainframe kan maximaal 240 cores hebben. Z14 mainframes gebruiken echter bijna nooit alle cores voor één toepassing of workload. In plaats daarvan scheidt een mainframe workloads in logische partities (LPARs) en hebben de LPARs classificaties: MIPS (Millions Of Instructions Per Second) of MSU (Million Service Unit). Bij het bepalen van de vergelijkbare VM-grootte die nodig is om een mainframeworkload op Azure uit te voeren, moet u rekening houden met de MIPS-classificatie (of MSU).
 
-Hieronder vindt u algemene schattingen:
+Hieronder volgen algemene schattingen:
 
 -   150 MIPS per vCPU
 
--   1\.000 MIPS per processor
+-   1.000 MIPS per processor
 
-Als u de juiste VM-grootte voor een bepaalde werk belasting in een LPAR wilt bepalen, optimaliseert u eerst de virtuele machine voor de werk belasting. Bepaal vervolgens het aantal Vcpu's dat nodig is. Een conservatieve schatting is 150 MIPS per vCPU. Op basis van deze schatting kan bijvoorbeeld een virtuele machine met een F-serie met 16 Vcpu's een IBM Db2-workload die afkomstig is van een LPAR met 2.400 MIPS, eenvoudig ondersteunen.
+Als u de juiste VM-grootte voor een bepaalde werkbelasting in een LPAR wilt bepalen, optimaliseert u eerst de VM voor de werkbelasting. Bepaal vervolgens het aantal vCPU's dat nodig is. Een conservatieve schatting is 150 MIPS per vCPU. Op basis van deze schatting kan bijvoorbeeld een VM uit de F-serie met 16 vCPU's gemakkelijk een IBM Db2-workload van een LPAR met 2.400 MIPS ondersteunen.
 
-## <a name="azure-compute-scale-up"></a>Schaal van Azure Compute-up
+## <a name="azure-compute-scale-up"></a>Azure compute scale-up
 
-De virtuele machines uit de M-serie kunnen tot 128 Vcpu's worden geschaald (op het moment dat dit artikel is geschreven). Met behulp van de conservatieve schatting van 150 MIPS per vCPU is de VM uit de M-serie gelijk aan ongeveer 19.000 MIPS. De algemene regel voor het schatten van MIPS voor een mainframe is 1.000 MIPS per processor. Een z14-mainframe kan Maxi maal 24 processors hebben en biedt ongeveer 24.000 MIPS voor één mainframe systeem.
+De Vm's uit de M-serie kunnen worden opgeschaald naar 128 vCPU's (op het moment dat dit artikel werd geschreven). Met behulp van de conservatieve schatting van 150 MIPS per vCPU, de M-serie VM komt neer op ongeveer 19.000 MIPS. De algemene regel voor het schatten van MIPS voor een mainframe is 1.000 MIPS per processor. Een z14 mainframe kan maximaal 24 processors hebben en ongeveer 24.000 MIPS leveren voor een enkel mainframesysteem.
 
-De grootste single z14 mainframe heeft ongeveer 5.000 MIPS meer dan de grootste virtuele machine die beschikbaar is in Azure. Het is echter belang rijk om te vergelijken hoe workloads worden geïmplementeerd. Als een mainframe systeem zowel een toepassing als een relationele data base heeft, worden deze doorgaans geïmplementeerd op hetzelfde fysieke mainframe, elk in een eigen LPAR. Dezelfde oplossing op Azure wordt vaak geïmplementeerd met behulp van één virtuele machine voor de toepassing en een afzonderlijke, een VM-grootte voor de data base.
+Het grootste enkel z14 mainframe heeft ongeveer 5.000 MIPS meer dan de grootste VM die beschikbaar is in Azure. Toch is het belangrijk om te vergelijken hoe workloads worden geïmplementeerd. Als een mainframesysteem zowel een toepassing als een relationele database heeft, worden ze meestal geïmplementeerd op hetzelfde fysieke mainframe, elk in zijn eigen LPAR. Dezelfde oplossing op Azure wordt vaak geïmplementeerd met één VM voor de toepassing en een afzonderlijke VM met voldoende grootte voor de database.
 
-Als bijvoorbeeld een M64 vCPU-systeem de toepassing ondersteunt en er een M96-vCPU wordt gebruikt voor de data base, zijn ongeveer 150 Vcpu's nodig, of ongeveer 24.000 MIPS, zoals in de volgende afbeelding wordt weer gegeven.
+Als bijvoorbeeld een M64 vCPU-systeem de toepassing ondersteunt en een M96-vCPU wordt gebruikt voor de database, zijn ongeveer 150 vCPU's nodig, of ongeveer 24.000 MIPS, zoals het volgende cijfer laat zien.
 
-![Implementaties van workloads van 24.000 MIPS vergelijken](media/mainframe-compute-mips.png)
+![Workload-implementaties van 24.000 MIPS vergelijken](media/mainframe-compute-mips.png)
 
-De benadering is het migreren van LPARs naar afzonderlijke Vm's. Vervolgens schaalt Azure eenvoudig tot de grootte die nodig is voor de meeste toepassingen die op één mainframe systeem worden geïmplementeerd.
+De aanpak is om LPARs te migreren naar individuele VM's. Vervolgens schaalt Azure eenvoudig op naar de grootte die nodig is voor de meeste toepassingen die worden geïmplementeerd op één mainframesysteem.
 
-## <a name="azure-compute-scale-out"></a>Azure Compute scale-out
+## <a name="azure-compute-scale-out"></a>Azure compute scale-out
 
-Een van de voor delen van een Azure-gebaseerde oplossing is de mogelijkheid om uit te schalen. Schaling maakt bijna onbeperkte reken capaciteit beschikbaar voor een toepassing. Azure ondersteunt meerdere methoden om reken kracht uit te schalen:
+Een van de voordelen van een Azure-gebaseerde oplossing is de mogelijkheid om uit te schalen. Schalen maakt bijna onbeperkte rekencapaciteit beschikbaar voor een toepassing. Azure ondersteunt meerdere methoden om rekenkracht uit te schalen:
 
-- **Taak verdeling over een cluster.** In dit scenario kan een toepassing een [Load Balancer](/azure/load-balancer/load-balancer-overview) of Resource Manager gebruiken om de werk belasting over meerdere vm's in een cluster uit te breiden. Als er meer reken capaciteit nodig is, worden er extra Vm's aan het cluster toegevoegd.
+- **Taakverdeling in een cluster.** In dit scenario kan een toepassing een [load balancer](/azure/load-balancer/load-balancer-overview) of resourcemanager gebruiken om de werkbelasting over meerdere VM's in een cluster te spreiden. Als er meer rekencapaciteit nodig is, worden extra VM's aan het cluster toegevoegd.
 
-- **Schaal sets voor virtuele machines.** In dit burst-scenario kan een toepassing worden geschaald naar extra [reken resources](/azure/virtual-machine-scale-sets/overview) op basis van het gebruik van de virtuele machine. Wanneer de vraag daalt, kan het aantal Vm's in een schaalset ook worden uitgeschakeld, waardoor het gebruik van reken kracht efficiënt kan worden benut.
+- **Virtuele machineschaalsets.** In dit burst-scenario kan een toepassing worden geschaald naar aanvullende [rekenbronnen](/azure/virtual-machine-scale-sets/overview) op basis van vm-gebruik. Wanneer de vraag daalt, kan het aantal VM's in een schaalset ook dalen, waardoor een efficiënt gebruik van rekenkracht wordt gegarandeerd.
 
-- **PaaS schalen.** Azure PaaS-aanbiedingen schaal Compute-resources. Zo wijst [Azure service Fabric](/azure/service-fabric/service-fabric-overview) reken bronnen toe om te voldoen aan de toename van het aantal aanvragen.
+- **PaaS-schaling.** Azure PaaS-aanbiedingen schalen rekenresources. [Azure Service Fabric](/azure/service-fabric/service-fabric-overview) wijst bijvoorbeeld rekenresources toe om te voldoen aan de toename van het aantal aanvragen.
 
-- **Kubernetes-clusters.** Toepassingen op Azure kunnen gebruikmaken van [Kubernetes-clusters](/azure/aks/concepts-clusters-workloads) voor Compute-Services voor opgegeven resources. Azure Kubernetes service (AKS) is een beheerde service die Kubernetes-knoop punten, Pools en clusters in azure organiseert.
+- **Kubernetes clusters.** Toepassingen op Azure kunnen [Kubernetes-clusters](/azure/aks/concepts-clusters-workloads) gebruiken voor compute services voor bepaalde resources. Azure Kubernetes Service (AKS) is een beheerde service die Kubernetes-knooppunten, pools en clusters op Azure orkestreert.
 
-Als u de juiste methode voor het schalen van reken resources wilt kiezen, is het belang rijk om te begrijpen hoe Azure en mainframes verschillen. De sleutel is hoe, of als — gegevens worden gedeeld door reken bronnen. In azure wordt gegevens (standaard) doorgaans niet gedeeld door meerdere Vm's. Als het delen van gegevens vereist is voor meerdere Vm's in een scale-out Compute-Cluster, moeten de gedeelde gegevens zich in een resource bevinden die deze functionaliteit ondersteunt. Voor het delen van gegevens in Azure is opslag vereist, zoals in de volgende sectie wordt beschreven.
+Als u de juiste methode wilt kiezen voor het uitschalen van rekenresources, is het belangrijk om te begrijpen hoe Azure en mainframes verschillen. De sleutel is hoe of als gegevens worden gedeeld door rekenbronnen. In Azure worden gegevens (standaard) doorgaans niet door meerdere VM's gedeeld. Als het delen van gegevens vereist is door meerdere VM's in een schaal-out compute cluster, moeten de gedeelde gegevens zich bevinden in een bron die deze functionaliteit ondersteunt. Op Azure omvat het delen van gegevens opslag zoals in de volgende sectie wordt besproken.
 
-## <a name="azure-compute-optimization"></a>Optimalisatie van Azure compute
+## <a name="azure-compute-optimization"></a>Azure-compute-optimalisatie
 
-U kunt elke verwerkings lagen optimaliseren in een Azure-architectuur. Gebruik het meest geschikte type Vm's en functies voor elke omgeving. In de volgende afbeelding ziet u één mogelijk patroon voor het implementeren van Vm's in azure ter ondersteuning van een CICS-toepassing die gebruikmaakt van Db2. Op de primaire site worden de Vm's productie, preproductie en testen geïmplementeerd met hoge Beschik baarheid. De secundaire site is voor back-up en herstel na nood gevallen.
+U elke verwerkingslaag optimaliseren in een Azure-architectuur. Gebruik het meest geschikte type VM's en functies voor elke omgeving. De volgende afbeelding toont een potentieel patroon voor het implementeren van VM's in Azure ter ondersteuning van een CICS-toepassing die Db2 gebruikt. Op de primaire locatie worden de VM's voor productie, preproductie en het testen van VM's met hoge beschikbaarheid geïmplementeerd. De secundaire site is voor back-up en disaster recovery.
 
-Elke laag kan ook geschikte nood herstel services bieden. Voor productie-en data base-Vm's is mogelijk een dynamisch of warme herstel vereist, terwijl de ontwikkel-en test-Vm's een koud herstel ondersteunen.
+Elke laag kan ook de juiste noodherstelservices bieden. Productie- en database-VM's vereisen bijvoorbeeld een warm of warm herstel, terwijl de VM's voor de ontwikkeling en het testen van VM's een koud herstel ondersteunen.
 
-![Hoge beschik bare implementatie die ondersteuning biedt voor herstel na nood gevallen](media/mainframe-compute-dr.png)
+![Zeer beschikbare implementatie die noodherstel ondersteunt](media/mainframe-compute-dr.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Mainframe migratie](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Mainframe herhosten op Azure Virtual Machines](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
-- [Mainframe-opslag verplaatsen naar Azure](mainframe-storage-Azure.md)
+- [Mainframemigratie](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
+- [Mainframe rehosting op Azure Virtual Machines](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Mainframeopslag verplaatsen naar Azure](mainframe-storage-Azure.md)
 
 ### <a name="ibm-resources"></a>IBM-bronnen
 
-- [Parallelle Sysplex op IBM Z](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
-- [IBM CICS en de koppelings faciliteit: meer dan de basis beginselen](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
-- [De vereiste gebruikers voor een installatie van een Db2 pureScale-functie maken](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
-- [De opdracht Db2icrt-instantie maken](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
-- [Geclusterde database oplossing voor Db2 pureScale](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+- [Parallel Sysplex op IBM Z](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
+- [IBM CICS en de koppelingsfaciliteit: Beyond the Basics](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
+- [Vereiste gebruikers maken voor een Db2 pureScale Feature-installatie](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
+- [Db2icrt - Instantie maken, opdracht](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
+- [Db2 pureScale Clustered Database-oplossing](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 - [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
 ### <a name="azure-government"></a>Azure Government
 
-- [Microsoft Azure Government Cloud voor mainframe-toepassingen](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
-- [Micro soft en FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/FedRAMP)
+- [Microsoft Azure Government cloud voor mainframetoepassingen](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
+- [Microsoft en FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/FedRAMP)
 
-### <a name="more-migration-resources"></a>Meer migratie resources
+### <a name="more-migration-resources"></a>Meer migratiebronnen
 
-- [Azure Virtual Data Center lift-en Shift-gids](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
+- [Azure Virtual Data Center Lift and Shift Guide](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
 - [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

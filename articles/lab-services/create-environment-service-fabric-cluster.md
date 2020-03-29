@@ -1,6 +1,6 @@
 ---
-title: Een Service Fabric cluster omgeving maken in Azure DevTest Labs
-description: Leer hoe u een omgeving met een zelfstandig Service Fabric cluster maakt en het cluster start en stopt met planningen.
+title: Een clusteromgeving voor Servicefabric maken in Azure DevTest Labs
+description: Leer hoe u een omgeving maakt met een op zichzelf staand Cluster servicestructuur en het cluster start en stopt met behulp van planningen.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: EMaher
@@ -15,120 +15,120 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: enewman
 ms.openlocfilehash: 71793b81d8735c80881fc25a9b7ec31bc4fc6762
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170340"
 ---
-# <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Een omgeving met een zelfstandig Service Fabric cluster maken in Azure DevTest Labs
-In dit artikel vindt u informatie over het maken van een omgeving met een zelfstandig Service Fabric cluster in Azure DevTest Labs. 
+# <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Een omgeving maken met een op zichzelf staand ServiceFabric-cluster in Azure DevTest Labs
+In dit artikel vindt u informatie over het maken van een omgeving met een op zichzelf staand Service Fabric-cluster in Azure DevTest Labs. 
 
 ## <a name="overview"></a>Overzicht
-DevTest Labs kan op zichzelf staande test omgevingen maken, zoals gedefinieerd door Azure resource management-sjablonen. Deze omgevingen bevatten IaaS resources, zoals virtuele machines, en PaaS-resources, zoals Service Fabric. Met DevTest Labs kunt u virtuele machines in een omgeving beheren door opdrachten te bieden om de virtuele machines te beheren. Deze opdrachten bieden u de mogelijkheid om een virtuele machine op een schema te starten of te stoppen. Op dezelfde manier kan DevTest Labs u ook helpen bij het beheren van Service Fabric clusters in een omgeving. U kunt een Service Fabric cluster in een omgeving hand matig of via een planning starten of stoppen.
+DevTest Labs kan zelfstandige testomgevingen maken zoals gedefinieerd door Azure Resource Management-sjablonen. Deze omgevingen bevatten zowel IaaS-bronnen, zoals virtuele machines, als PaaS-bronnen, zoals Service Fabric. Met DevTest Labs u virtuele machines in een omgeving beheren door opdrachten te geven om de virtuele machines te bedienen. Deze opdrachten geven u de mogelijkheid om een virtuele machine te starten of te stoppen op een schema. Op dezelfde manier kan DevTest Labs u ook helpen bij het beheren van Service Fabric-clusters in een omgeving. U een Cluster ServiceFabric handmatig of via een planning starten of stoppen in een omgeving.
 
 ## <a name="create-a-service-fabric-cluster"></a>Een Service Fabric-cluster maken
-Service Fabric clusters worden gemaakt met omgevingen in DevTest Labs. Elke omgeving wordt gedefinieerd door een Azure Resource Manager sjabloon in een Git-opslag plaats. De [open bare Git-opslag plaats](https://github.com/Azure/azure-devtestlab/tree/master/Environments/) voor DevTest Labs bevat de Resource Manager-sjabloon voor het maken van een service Fabric cluster in de map [ServiceFabric-cluster](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster) . 
+Service Fabric clusters worden gemaakt met behulp van omgevingen in DevTest Labs. Elke omgeving wordt gedefinieerd door een Azure Resource Manager-sjabloon in een Git-opslagplaats. De [openbare Git-opslagplaats](https://github.com/Azure/azure-devtestlab/tree/master/Environments/) voor DevTest Labs bevat de sjabloon Resourcemanager om een cluster servicestructuur te maken in de map [ServiceFabric-Cluster.](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster) 
 
-1. Maak eerst een lab in Azure DevTest Labs met behulp van instructies in het volgende artikel: [een lab maken](devtest-lab-create-lab.md). U ziet dat de optie **open bare omgevingen** standaard is **ingeschakeld** . 
-2. Controleer aan de hand van de volgende stappen of de Service Fabric provider is geregistreerd voor uw abonnement:
-    1. Selecteer **abonnementen** in het navigatie menu links en selecteer uw **abonnement**
-    2. Selecteer op de pagina **abonnement** de optie **resource providers** in het gedeelte **instellingen** van het menu aan de linkerkant. 
-    3. Als **micro soft. ServiecFabric** niet is geregistreerd, selecteert u **registreren**. 
-3. Selecteer op de pagina **DevTest Lab** voor uw Lab **+ toevoegen** op de werk balk. 
+1. Maak eerst een lab in Azure DevTest Labs met behulp van instructies in het volgende artikel: [Een lab maken.](devtest-lab-create-lab.md) De optie **Openbare omgevingen** is standaard **ingeschakeld.** 
+2. Controleer of de Provider van Service Fabric is geregistreerd voor uw abonnement door de volgende stappen te volgen:
+    1. Selecteer **Abonnementen** in het linkernavigatiemenu en selecteer uw **abonnement**
+    2. Selecteer **op** de pagina Abonnement de optie **Bronproviders** in de sectie **Instellingen** in het linkermenu. 
+    3. Als **Microsoft.ServiecFabric** niet is geregistreerd, selecteert u **Register**. 
+3. Selecteer op de pagina **DevTest Lab** voor uw lab de optie **+ Toevoegen** op de werkbalk. 
     
-    ![Knop toevoegen op de werk balk](./media/create-environment-service-fabric-cluster/add-button.png)
-3. Op de pagina **Kies een basis** selecteert u **service Fabric Lab-cluster** in de lijst. 
+    ![Knop Toevoegen op de werkbalk](./media/create-environment-service-fabric-cluster/add-button.png)
+3. Selecteer op de **basispagina Een basispagina kiezen** de optie **Service Fabric Lab Cluster** in de lijst. 
 
-    ![Service Fabric Lab-cluster selecteren in de lijst](./media/create-environment-service-fabric-cluster/select-service-fabric-cluster.png)
-4. Voer de volgende stappen uit op de pagina **instellingen configureren** : 
-    1. Geef een **naam** op voor uw cluster **omgeving**. Dit is de naam van de resource groep in azure waarin het Service Fabric-cluster wordt gemaakt. 
-    2. Selecteer het **besturings systeem (OS)** voor de virtuele cluster machines. De standaard waarde is: **Windows**.
-    3. Geef een naam op voor de **beheerder** van het cluster. 
-    4. Geef een **wacht woord** op voor de beheerder. 
-    5. Voer voor het **certificaat**uw certificaat gegevens in als een base64-gecodeerde teken reeks. Als u een certificaat wilt maken, voert u de volgende stappen uit:
-        1. Down load het bestand **Create-ClusterCertificate. ps1** uit de [Git-opslag plaats](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster). U kunt ook de opslag plaats op uw computer klonen. 
-        2. Start **PowerShell**. 
-        3. Voer het **PS1** -bestand uit met behulp van de opdracht `.\Create-ClusterCertificate.ps1`. U ziet een tekst bestand dat in Klad blok wordt geopend met de informatie die u nodig hebt om de certificaat velden op deze pagina in te vullen. . 
-    6. Voer het **wacht woord voor het certificaat in**.
-    7. Geef de **vinger afdruk** voor het certificaat op.
-    8. Selecteer **toevoegen** op de pagina **instellingen configureren** . 
+    ![Het labcluster van servicefabric in de lijst selecteren](./media/create-environment-service-fabric-cluster/select-service-fabric-cluster.png)
+4. Ga op de pagina **Instellingen configureren** de volgende stappen uit: 
+    1. Geef een **naam** op voor uw **clusteromgeving.** Dit is de naam van de brongroep in Azure waarin het cluster Servicefabric wordt gemaakt. 
+    2. Selecteer het **besturingssysteem (OS)** voor de virtuele clustermachines. De standaardwaarde is: **Windows**.
+    3. Geef een naam op voor de **beheerder** voor het cluster. 
+    4. Geef een **wachtwoord** op voor de beheerder. 
+    5. Voer voor het **certificaat**uw certificaatgegevens in als een door basis64 gecodeerde tekenreeks. Ga als volgt te werk om een certificaat te maken:
+        1. Download het **bestand Create-ClusterCertificate.ps1** uit de [Git-repository.](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster) U ook de repository op uw machine klonen. 
+        2. PowerShell **starten**. 
+        3. Voer het **ps1-bestand** uit met de opdracht `.\Create-ClusterCertificate.ps1`. U ziet een tekstbestand geopend in kladblok met de informatie die u nodig hebt om de certificaatgerelateerde velden op deze pagina in te vullen. . 
+    6. Voer het **wachtwoord voor het certificaat in.**
+    7. Geef de **duimafdruk** voor uw certificaat op.
+    8. Selecteer **Toevoegen** op de pagina **Instellingen configureren.** 
 
-        ![Cluster instellingen configureren](./media/create-environment-service-fabric-cluster/configure-settings.png)
-5. Nadat het cluster is gemaakt, ziet u een resource groep met de naam van de omgeving die u in de vorige stap hebt gegeven. Wanneer u uitvouwt, ziet u het Service Fabric cluster hierin. Als de status van de resource groep is vastgelopen bij **het maken**, selecteert u **vernieuwen** op de werk balk. De **service Fabric cluster** omgeving maakt een cluster met vijf knoop punten van één node op Linux of Windows.
+        ![Clusterinstellingen configureren](./media/create-environment-service-fabric-cluster/configure-settings.png)
+5. Nadat het cluster is gemaakt, ziet u een resourcegroep met de naam van de omgeving die u in de vorige stap hebt opgegeven. Wanneer u uitvouwt, ziet u het cluster Servicefabric erin. Als de status van de resourcegroep vastzit bij **Maken,** selecteert u **Vernieuwen** op de werkbalk. De **clusteromgeving ServiceFabric** maakt een cluster van 1 nodetype met 5 nodetype op Linux of Windows.
 
-    In het volgende voor beeld is **mysfabricclusterrg** de naam van de resource groep die specifiek is gemaakt voor het service Fabric cluster. Het is belang rijk te weten dat de test omgevingen zich op zichzelf bevinden in de resource groep waarin ze zijn gemaakt. Dit betekent dat de sjabloon die de omgeving definieert, alleen toegang heeft tot resources binnen de zojuist gemaakte resource groep of [virtuele netwerken die zijn geconfigureerd om te worden gebruikt door het lab](devtest-lab-configure-vnet.md). Met dit voor beeld hierboven maakt u alle vereiste resources in dezelfde resource groep.
+    In het volgende voorbeeld is **mysfabricclusterrg** de naam van de resourcegroep die speciaal is gemaakt voor het cluster ServiceFabric. Het is belangrijk op te merken dat labomgevingen op zichzelf staan binnen de resourcegroep waarin ze zijn gemaakt. Dit betekent dat de sjabloon die de omgeving definieert, die alleen toegang heeft tot bronnen binnen de nieuw gemaakte brongroep of [virtuele netwerken die zijn geconfigureerd om door het lab te worden gebruikt.](devtest-lab-configure-vnet.md) In dit voorbeeld hierboven worden alle vereiste resources in dezelfde resourcegroep gemaakt.
 
-    ![Cluster gemaakt](./media/create-environment-service-fabric-cluster/cluster-created.png)
+    ![Geclusterd gemaakt](./media/create-environment-service-fabric-cluster/cluster-created.png)
 
 ## <a name="start-or-stop-the-cluster"></a>Het cluster starten of stoppen
-U kunt het cluster starten of stoppen vanaf de pagina DevTest Lab zelf of via de Service Fabric cluster pagina die wordt weer gegeven door DevTest Labs. 
+U het cluster starten of stoppen vanaf de devTest Lab-pagina zelf of vanaf de pagina Service Fabric Cluster van DevTest Labs. 
 
-### <a name="from-the-devtest-lab-page"></a>Van de pagina DevTest Lab
-U kunt het cluster op de DevTest Lab-pagina voor uw Lab starten of stoppen. 
+### <a name="from-the-devtest-lab-page"></a>Vanaf de devTest Lab-pagina
+U het cluster starten of stoppen op de devTest Lab-pagina voor uw lab. 
 
-1. Selecteer **drie puntjes (...)** voor het service Fabric-cluster zoals wordt weer gegeven in de volgende afbeelding: 
+1. Selecteer **drie puntjes (...)** voor het cluster Servicefabric zoals weergegeven in de volgende afbeelding: 
 
-    ![Start-en stop opdrachten voor het cluster](./media/create-environment-service-fabric-cluster/start-stop-on-devtest-lab-page.png)
+    ![Opdrachten voor het cluster starten en stoppen](./media/create-environment-service-fabric-cluster/start-stop-on-devtest-lab-page.png)
 
-2. U ziet twee opdrachten in het context menu om het cluster te **starten** en te **stoppen** . Met de start opdracht worden alle knoop punten in een cluster gestart. Met de opdracht stoppen worden alle knoop punten in een cluster gestopt. Zodra een cluster is gestopt, blijft de Service Fabric cluster zelf de status gereed, maar er zijn geen knoop punten beschikbaar totdat de start opdracht opnieuw wordt uitgegeven op het cluster in het lab.
+2. U ziet twee opdrachten in het contextmenu om het cluster te **starten** en **te stoppen.** Met de opdracht Start worden alle knooppunten in een cluster gestart. Met de opdracht Stoppen worden alle knooppunten in een cluster gestopt. Zodra een cluster is gestopt, blijft het cluster Servicefabric zelf in een gereedstaat, maar zijn er geen knooppunten beschikbaar totdat de startopdracht opnieuw is uitgegeven op het cluster in het lab.
 
-    Er zijn enkele overwegingen waarmee u rekening moet houden wanneer u een Service Fabric cluster in een test omgeving gebruikt. Het kan enige tijd duren voordat het Service Fabric cluster volledig opnieuw is geknoeid nadat de knoop punten opnieuw zijn opgestart. Gegevens moeten worden opgeslagen op een beheerde schijf die is gekoppeld aan de virtuele machine om de gegevens van de afsluit actie te bewaren. Er zijn prestatie implicaties bij het gebruik van een gekoppelde beheerde schijf. dit wordt daarom alleen aanbevolen voor test omgevingen. Als er geen back-up wordt gemaakt van de schijf die wordt gebruikt voor gegevens opslag, gaan de gegevens verloren wanneer de opdracht stoppen op het cluster wordt gegeven.
+    Er zijn een paar overwegingen op te merken bij het gebruik van een Service Fabric-cluster in een testomgeving. Het kan enige tijd duren voordat het cluster ServiceFabric volledig is gerehydrateerd nadat de knooppunten opnieuw zijn opgestart. Om gegevens van afsluiten tot opstarten te bewaren, moeten gegevens worden opgeslagen op een beheerde schijf die aan de virtuele machine is gekoppeld. Er zijn gevolgen voor de prestaties bij het gebruik van een gekoppelde beheerde schijf, dus het wordt alleen aanbevolen voor testomgevingen. Als er geen back-back wordt gemaakt van de schijf die wordt gebruikt voor gegevensopslag, gaan gegevens verloren wanneer de stopopdracht op het cluster wordt uitgegeven.
 
-### <a name="from-the-service-fabric-cluster-page"></a>Van de pagina Service Fabric cluster 
+### <a name="from-the-service-fabric-cluster-page"></a>Vanaf de pagina Cluster van servicefabric 
 Er is een andere manier om het cluster te starten of te stoppen. 
 
-1. Selecteer uw Service Fabric cluster in de structuur weergave op de pagina DevTest Lab. 
+1. Selecteer uw cluster Servicefabric in de structuurweergave op de pagina DevTest Lab. 
 
-    ![Uw cluster selecteren](./media/create-environment-service-fabric-cluster/select-cluster.png)
+    ![Selecteer uw cluster](./media/create-environment-service-fabric-cluster/select-cluster.png)
 
-2. Op de pagina **service Fabric cluster** voor het cluster ziet u opdrachten op de werk balk om het cluster te starten of te stoppen. 
+2. Op de clusterpagina **Servicefabric** voor het cluster ziet u opdrachten op de werkbalk om het cluster te starten of te stoppen. 
 
-    ![Opdrachten op de pagina Service Fabric cluster starten of stoppen](./media/create-environment-service-fabric-cluster/start-stop-on-cluster-page.png)
+    ![Opdrachten starten of stoppen op de pagina Cluster servicestructuur](./media/create-environment-service-fabric-cluster/start-stop-on-cluster-page.png)
 
-## <a name="configure-auto-startup-and-auto-shutdown-schedule"></a>Planning voor automatisch starten en automatisch afsluiten configureren
-Service Fabric clusters kunnen ook worden gestart of gestopt volgens een planning. Deze ervaring is vergelijkbaar met de ervaring voor virtuele machines in een lab. Om geld te besparen, wordt standaard elk cluster dat in een lab wordt gemaakt, automatisch afgesloten op het tijdstip dat is gedefinieerd door het lab- [afsluit beleid](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy). U kunt overschrijven door op te geven of het cluster moet worden afgesloten of door de tijd op te geven waarop het cluster wordt afgesloten. 
+## <a name="configure-auto-startup-and-auto-shutdown-schedule"></a>Schema voor automatisch opstarten en automatisch afsluiten configureren
+Service Fabric-clusters kunnen ook volgens een planning worden gestart of gestopt. Deze ervaring is vergelijkbaar met de ervaring voor virtuele machines in een lab. Om geld te besparen, standaard, elk cluster gemaakt in een lab wordt automatisch afgesloten op het moment dat wordt gedefinieerd door het lab [shutdown beleid](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy). U overschrijven door op te geven of het cluster moet worden afgesloten of door de tijd op te geven waarop het cluster wordt afgesloten. 
 
-![Bestaande planningen voor automatisch starten en automatisch afsluiten](./media/create-environment-service-fabric-cluster/existing-schedules.png)
+![Bestaande schema's voor het starten en automatisch afsluiten van automatisch](./media/create-environment-service-fabric-cluster/existing-schedules.png)
 
-### <a name="opt-in-to-the-auto-start-schedule"></a>Aanmelden bij de automatische start planning
-Voer de volgende stappen uit om u aan te melden bij het opstart schema:
+### <a name="opt-in-to-the-auto-start-schedule"></a>Aanmelden voor het automatisch startschema
+Ga als volgt te werk om u aan te melden voor het opstartschema:
 
-1. Selecteer **automatisch starten** in het menu links
-2. Selecteer **aan** voor **toestaan dat deze service Fabric-cluster wordt gepland voor automatisch starten**. Deze pagina is alleen ingeschakeld als de eigenaar van het Lab gebruikers toestaat hun virtuele machines of Service Fabric clusters automatisch te starten.
+1. **Automatisch starten selecteren** in het linkermenu
+2. Selecteer **Aan** voor **Toestaan dat dit cluster van servicefabricen automatisch wordt gestart**. Deze pagina is alleen ingeschakeld als de eigenaar van het lab gebruikers toestemming heeft gegeven om hun virtuele machines of Service Fabric-clusters automatisch te starten.
 3. Selecteer **Opslaan** op de werkbalk. 
 
-    ![Automatische ster pagina](./media/create-environment-service-fabric-cluster/set-auto-start-settings.png)
+    ![Autosterpagina](./media/create-environment-service-fabric-cluster/set-auto-start-settings.png)
 
 ### <a name="configure-auto-shutdown-settings"></a>Instellingen voor automatisch afsluiten configureren 
-Voer de volgende stappen uit om de instellingen voor afsluiten te wijzigen:
+Ga als volgt te werk om instellingen voor afsluiten te wijzigen:
 
-1. Selecteer **automatisch afsluiten** in het menu links. 
-2. Op deze pagina kunt u het automatisch afsluiten afmelden door **uit** te scha kelen voor **ingeschakeld**. 
-3. Als u **hebt geselecteerd voor** **ingeschakeld**, voert u de volgende stappen uit:
-    1. Geef de **tijd** op voor het afsluiten.
-    2. Geef de tijd **zone** voor het tijdstip op. 
-    3. Geef op of u DevTest Labs **meldingen** wilt laten verzenden voordat het automatisch wordt afgesloten. 
-    4. Als u **Ja** hebt geselecteerd voor de optie melding, geeft u de **webhook-URL** en/of het **e-mail adres** op om meldingen te verzenden. 
+1. Selecteer **Automatisch afsluiten** in het linkermenu. 
+2. Op deze pagina u zich afmelden voor automatische uitschakeling door **Uit** voor **Ingeschakeld te**selecteren. 
+3. Als u **Aan** hebt geselecteerd voor **Ingeschakeld,** voert u de volgende stappen uit:
+    1. Geef de **tijd** voor afsluiten op.
+    2. Geef de **tijdzone** voor de tijd op. 
+    3. Geef op of u wilt dat DevTest Labs **meldingen** verzendt voordat u automatisch wordt afgesloten. 
+    4. Als u **Ja** hebt geselecteerd voor de meldingsoptie, geeft u de URL en/of **het e-mailadres** **webhook** op om meldingen te verzenden. 
     5. Selecteer **Opslaan** op de werkbalk.
 
-        ![Pagina automatisch afsluiten](./media/create-environment-service-fabric-cluster/auto-shutdown-settings.png)
+        ![Pagina Automatisch afsluiten](./media/create-environment-service-fabric-cluster/auto-shutdown-settings.png)
 
-## <a name="to-view-nodes-in-the-service-fabric-cluster"></a>Knoop punten in het Service Fabric cluster weer geven
-De Service Fabric cluster pagina die u eerder hebt bekeken, is specifiek voor de pagina DevTest Labs. De knoop punten in het cluster worden niet weer gegeven. Voer de volgende stappen uit om meer informatie over het cluster weer te geven:
+## <a name="to-view-nodes-in-the-service-fabric-cluster"></a>Knooppunten weergeven in het cluster Servicefabric
+De clusterpagina ServiceFabric die u in de stappen eerder hebt gezien, is specifiek voor de pagina DevTest Labs. Het toont u niet de knooppunten in het cluster. Voer de volgende stappen uit om meer informatie over het cluster te bekijken:
 
-1. Selecteer de **resource groep** in de structuur weergave van de sectie **mijn virtuele machines** op de **DevTest Lab** -pagina voor uw Lab.
+1. Selecteer op de pagina **DevTest Lab** voor uw lab de **resourcegroep** in de structuurweergave in de sectie **Mijn virtuele machines.**
 
     ![Resourcegroep selecteren](./media/create-environment-service-fabric-cluster/select-resource-group.png)
-2. Op de pagina **resource groep** ziet u alle resources in de resource groep in een lijst. Selecteer uw **service Fabric cluster** in de lijst. 
+2. Op de pagina **Resourcegroep** ziet u alle bronnen in de resourcegroep in een lijst. Selecteer uw **cluster Servicefabric** in de lijst. 
 
     ![Selecteer uw cluster in de lijst](./media/create-environment-service-fabric-cluster/select-cluster-resource-group-page.png)
-3. U ziet de **service Fabric cluster** pagina voor uw cluster. Dit is de pagina die het Service Fabric levert. U ziet alle informatie over de clusters, zoals knoop punten, knooppunt typen, enzovoort.
+3. U ziet de clusterpagina **Servicefabric** voor uw cluster. Dit is de pagina die de Service Fabric biedt. U ziet alle informatie over de clusters, zoals knooppunten, knooppunttypen, enz.
 
-    ![Start pagina van Service Fabric cluster](./media/create-environment-service-fabric-cluster/service-fabric-cluster-page.png)
+    ![Startpagina van servicestructuurcluster](./media/create-environment-service-fabric-cluster/service-fabric-cluster-page.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de volgende artikelen voor meer informatie over omgevingen: 
+Zie de volgende artikelen voor meer informatie over omgevingen: 
 
 - [Multi-VM-omgevingen en PaaS-resources maken met Azure Resource Manager-sjablonen](devtest-lab-create-environment-from-arm.md)
-- [Open bare omgevingen configureren en gebruiken in Azure DevTest Labs](devtest-lab-configure-use-public-environments.md)
+- [Openbare omgevingen configureren en gebruiken in Azure DevTest Labs](devtest-lab-configure-use-public-environments.md)

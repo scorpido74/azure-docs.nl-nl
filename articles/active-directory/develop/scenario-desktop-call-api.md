@@ -1,6 +1,6 @@
 ---
-title: Web-Api's aanroepen vanuit een desktop-app-micro soft Identity platform | Azure
-description: Meer informatie over het bouwen van een bureau blad-app die web-Api's aanroept
+title: Web-API's bellen vanuit een desktop-app - Microsoft-identiteitsplatform | Azure
+description: Meer informatie over het bouwen van een bureaublad-app die web-API's aanroept
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,26 +15,26 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 2b3d9fdc163d0661670f3d0cf6e6a276c8b691bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76702161"
 ---
-# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Bureau blad-app die web-Api's aanroept: een web-API aanroepen
+# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Bureaublad-app die web-API's aanroept: een web-API aanroepen
 
-Nu u een token hebt, kunt u een beveiligde web-API aanroepen.
+Nu u een token hebt, u een beveiligde web-API aanroepen.
 
 ## <a name="call-a-web-api"></a>Een web-API aanroepen
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
 <!--
 More includes will come later for Python and Java
 -->
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 endpoint = "url to the API"
@@ -44,7 +44,7 @@ http_headers = {'Authorization': 'Bearer ' + result['access_token'],
 data = requests.get(endpoint, headers=http_headers, stream=False).json()
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -63,13 +63,13 @@ if(responseCode != HttpURLConnection.HTTP_OK) {
 JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[Macos](#tab/macOS)
 
-## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Een web-API aanroepen in MSAL voor iOS en macOS
+## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Een web-API in MSAL bellen voor iOS en macOS
 
-De methoden voor het verkrijgen van tokens retour neren een `MSALResult`-object. `MSALResult` beschrijft een `accessToken`-eigenschap die kan worden gebruikt om een web-API aan te roepen. Voeg een toegangs token toe aan de HTTP-autorisatie-header voordat u de aanroep gaat gebruiken om toegang te krijgen tot de beveiligde web-API.
+De methoden om tokens `MSALResult` te verkrijgen geven een object terug. `MSALResult`onthult `accessToken` een eigenschap die kan worden gebruikt om een web-API aan te roepen. Voeg een toegangstoken toe aan de HTTP-autorisatiekop voordat u aanbelt om toegang te krijgen tot de beveiligde web-API.
 
-Doel-C:
+Doelstelling-C:
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -83,7 +83,7 @@ NSURLSessionDataTask *task =
 [task resume];
 ```
 
-Swift
+Swift:
 
 ```swift
 let urlRequest = NSMutableURLRequest()
@@ -95,9 +95,9 @@ let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: D
 task.resume()
 ```
 
-## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Meerdere Api's aanroepen: stapsgewijze toestemming en voorwaardelijke toegang
+## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Meerdere API's oproepen: incrementele toestemming en voorwaardelijke toegang
 
-Als u meerdere Api's voor dezelfde gebruiker wilt aanroepen, roept u `AcquireTokenSilent`aan nadat u een token voor de eerste API hebt ontvangen. U ontvangt een token voor de andere Api's de meeste tijd op de achtergrond.
+Als u meerdere API's voor dezelfde gebruiker wilt aanroepen, `AcquireTokenSilent`u een aanroep aanroepen nadat u een token voor de eerste API hebt gekregen. Je krijgt meestal een token voor de andere API's.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -109,8 +109,8 @@ result = await app.AcquireTokenSilent("scopeApi2")
 
 Interactie is vereist wanneer:
 
-- De gebruiker heeft toestemming gegeven voor de eerste API, maar nu moet worden gestemd op meer bereiken. Dit soort toestemming wordt incrementele toestemming genoemd.
-- De eerste API heeft geen multi-factor Authentication nodig, maar de volgende.
+- De gebruiker heeft ingestemd met de eerste API, maar moet nu toestemming geven voor meer scopes. Dit soort toestemming staat bekend als incrementele toestemming.
+- De eerste API vereist geen multifactorauthenticatie, maar de volgende wel.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -133,4 +133,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naar productie verplaatsen](scenario-desktop-production.md)
+> [Verplaatsen naar productie](scenario-desktop-production.md)

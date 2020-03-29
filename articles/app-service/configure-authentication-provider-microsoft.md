@@ -1,64 +1,64 @@
 ---
-title: Micro soft-verificatie configureren
-description: Meer informatie over het configureren van micro soft-account verificatie als een id-provider voor uw App Service-app.
+title: Microsoft-verificatie configureren
+description: Meer informatie over het configureren van Microsoft-accountverificatie als identiteitsprovider voor uw App Service-app.
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 95c603d4a10eb0e4d0817e20755c0f9b36baa96f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842330"
 ---
-# <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Uw App Service-app configureren voor het gebruik van aanmelding met een micro soft-account
+# <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Uw App Service-app configureren om aantemelding voor Microsoft-account te gebruiken
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-In dit onderwerp wordt beschreven hoe u Azure App Service configureert om AAD te gebruiken voor het ondersteunen van persoonlijke Microsoft-account aanmeldingen.
+In dit onderwerp ziet u hoe u Azure App Service configureert om AAD te gebruiken om persoonlijke aanmeldingen van Microsoft-accountteondersteunen.
 
 > [!NOTE]
-> Zowel persoonlijke micro soft-accounts als organisatie accounts gebruiken de AAD-ID-provider. Op dit moment is het niet mogelijk om deze id-provider zo te configureren dat beide typen logboeken worden ondersteund.
+> Zowel persoonlijke Microsoft-accounts als organisatieaccounts maken gebruik van de AAD-identiteitsprovider. Op dit moment is het niet mogelijk om deze identiteitsprovider te configureren om beide soorten aanmeldingen te ondersteunen.
 
-## <a name="register-microsoft-account"> </a>Uw app registreren bij micro soft-account
+## <a name="register-your-app-with-microsoft-account"></a><a name="register-microsoft-account"> </a>Uw app registreren met Microsoft-account
 
-1. Ga naar [**app-registraties**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in het Azure Portal. Meld u indien nodig aan met uw Microsoft-account.
-1. Selecteer **nieuwe registratie**en voer vervolgens een toepassings naam in.
-1. Onder **ondersteunde account typen**selecteert u **accounts in elke organisatie Directory (een Azure AD-adres lijst-multi tenant) en persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox)**
-1. Selecteer in de **omleidings-Uri's** **Web**en voer vervolgens `https://<app-domain-name>/.auth/login/aad/callback`in. Vervang *\<app-domain name >* door de domein naam van uw app.  Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Zorg ervoor dat u het HTTPS-schema in de URL gebruikt.
+1. Ga naar [**App-registraties**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in de Azure-portal. Meld u indien nodig aan met uw Microsoft-account.
+1. Selecteer **Nieuwe registratie**en voer vervolgens een toepassingsnaam in.
+1. Selecteer **accounts in een organisatiemap (Azure AD-map - Multitenant) en persoonlijke Microsoft-accounts (bijvoorbeeld Skype, Xbox) onder** Ondersteunde **accounttypen.**
+1. Selecteer in **URI's omleiden** `https://<app-domain-name>/.auth/login/aad/callback` **en**voer . Vervang * \<app-domeinnaam->* door de domeinnaam van uw app.  Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Zorg ervoor dat u het HTTPS-schema in de URL gebruikt.
 
 1. Selecteer **Registreren**.
-1. Kopieer de **toepassings-id (client)** . U hebt deze later nodig.
-1. Selecteer in het linkerdeel venster **certificaten & geheimen** > **Nieuw client geheim**. Voer een beschrijving in, selecteer de geldigheids duur en selecteer **toevoegen**.
-1. Kopieer de waarde die wordt weer gegeven op de pagina **certificaten & geheimen** . Nadat u de pagina verlaat, wordt deze niet meer weer gegeven.
+1. Kopieer de **id van toepassing (client**). U hebt deze later nodig.
+1. Selecteer certificaten & **geheimen** > in het linkerdeelvenster.**New client secret** Voer een beschrijving in, selecteer de geldigheidsduur en selecteer **Toevoegen**.
+1. Kopieer de waarde die wordt weergegeven op de pagina **Certificaten & secrets.** Nadat u de pagina hebt verlaten, wordt deze niet meer weergegeven.
 
     > [!IMPORTANT]
-    > De waarde van het client geheim (wacht woord) is een belang rijke beveiligings referentie. Deel het wacht woord niet met iemand of distribueer het in een client toepassing.
+    > De client geheime waarde (wachtwoord) is een belangrijke beveiligingsreferentie. Deel het wachtwoord met niemand of distribueer het niet binnen een clienttoepassing.
 
-## <a name="secrets"> </a>Micro soft-account gegevens toevoegen aan uw app service-toepassing
+## <a name="add-microsoft-account-information-to-your-app-service-application"></a><a name="secrets"> </a>Microsoft-accountgegevens toevoegen aan uw App Service-toepassing
 
-1. Ga naar uw toepassing in de [Azure Portal].
-1. Selecteer **instellingen** > **verificatie/autorisatie**en controleer of app service- **verificatie** is **ingeschakeld**.
-1. Selecteer **Azure Active Directory**onder **verificatie providers**. Selecteer **Geavanceerd** onder **beheer modus**. Plak de client-ID en het client geheim die u eerder hebt verkregen. Gebruik **https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0** voor het URL-veld van de **certificaat verlener** .
+1. Ga naar uw toepassing in de [Azure-portal.]
+1. Selecteer **Instellingenverificatie** > **/ Autorisatie**en controleer of verificatie van de **appservice** **is ingeschakeld**.
+1. Selecteer Azure **Active Directory**onder **Verificatieproviders**. Selecteer **Geavanceerd** onder **beheermodus**. Plak in de applicatie (client) ID en client geheim dat u eerder verkregen. Gebruiken **https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0** voor het **veld Url van de uitgever.**
 1. Selecteer **OK**.
 
-   App Service biedt verificatie, maar beperkt de toegang tot uw site-inhoud en Api's niet. U moet gebruikers in uw app-code autoriseren.
+   App Service biedt verificatie, maar beperkt de geautoriseerde toegang tot uw site-inhoud en API's niet. U moet gebruikers autoriseren in uw app-code.
 
-1. Beschrijving Als u de toegang tot Microsoft-account gebruikers wilt beperken, stelt **u een actie in die moet worden uitgevoerd wanneer de aanvraag niet is geverifieerd** om u aan te **melden met Azure Active Directory**. Wanneer u deze functionaliteit instelt, vereist uw app dat alle aanvragen worden geverifieerd. Ook worden alle niet-geverifieerde aanvragen voor authenticatie via AAD omgeleid. Omdat u de URL van uw **Uitgever** hebt geconfigureerd voor het gebruik van de Tenant van het micro soft-account, wordt alleen de persoonlijke acccounts geverifieerd.
+1. (Optioneel) Als u de toegang tot Microsoft-accountgebruikers wilt beperken, stelt u **Actie in die moet worden uitgevoerd wanneer het verzoek niet is geverifieerd** om zich aan te melden bij Azure Active **Directory.** Wanneer u deze functionaliteit instelt, moet uw app worden geverifieerd. Het leidt ook alle niet-geverifieerde verzoeken om AAD te gebruiken voor authenticatie. Houd er rekening mee dat omdat u de **url van** uw uitgever hebt geconfigureerd om de microsoft-accounttenant te gebruiken, alleen persoonlijke acccounts zich met succes zullen verifiëren.
 
    > [!CAUTION]
-   > Het beperken van de toegang op deze manier is van toepassing op alle aanroepen naar uw app. Dit is mogelijk niet wenselijk voor apps met een openbaar beschik bare start pagina, zoals in veel toepassingen met één pagina. Voor dergelijke toepassingen kunt u **anonieme aanvragen (geen actie) toestaan** , zodat de verificatie zelf door de app hand matig wordt gestart. Zie voor meer informatie [verificatie stroom](overview-authentication-authorization.md#authentication-flow).
+   > Het beperken van de toegang op deze manier is van toepassing op alle oproepen naar uw app, wat mogelijk niet wenselijk is voor apps met een openbaar beschikbare startpagina, zoals in veel toepassingen met één pagina. Voor dergelijke toepassingen kan **het toestaan van anonieme verzoeken (geen actie)** de voorkeur krijgen, zodat de app de verificatie zelf handmatig start. Zie [Verificatiestroom](overview-authentication-authorization.md#authentication-flow)voor meer informatie .
 
 1. Selecteer **Opslaan**.
 
-U bent nu klaar om micro soft-account te gebruiken voor verificatie in uw app.
+U bent nu klaar om Microsoft-account te gebruiken voor verificatie in uw app.
 
-## <a name="related-content"> </a>Volgende stappen
+## <a name="next-steps"></a><a name="related-content"> </a>Volgende stappen
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- URLs. -->
 
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure Portal]: https://portal.azure.com/
+[Azure-portal]: https://portal.azure.com/

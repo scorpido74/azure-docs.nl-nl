@@ -1,6 +1,6 @@
 ---
-title: Overzicht van Widevine-licentie sjablonen | Microsoft Docs
-description: Dit onderwerp bevat een overzicht van een Widevine-licentie sjabloon die wordt gebruikt voor het configureren van Widevine-licenties.
+title: Overzicht van widevine-licentiesjablonen | Microsoft Documenten
+description: In dit onderwerp vindt u een overzicht van een Widevine-licentiesjabloon die wordt gebruikt om Widevine-licenties te configureren.
 author: juliako
 manager: femila
 editor: ''
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c7511279e66ab598e4ae3c26f053915b7393b39d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74978387"
 ---
-# <a name="widevine-license-template-overview"></a>Overzicht van Widevine-licentie sjablonen 
-U kunt Azure Media Services gebruiken om Google Widevine-licenties te configureren en aan te vragen. Wanneer de speler uw met Widevine beveiligde inhoud probeert af te spelen, wordt een aanvraag verzonden naar de service voor levering van licenties om een licentie te verkrijgen. Als de licentieservice de aanvraag goedkeurt, wordt de licentie serviceproblemen. Het wordt verzonden naar de client en wordt gebruikt om te ontsleutelen en de opgegeven inhoud af te spelen.
+# <a name="widevine-license-template-overview"></a>Overzicht van Widevine-licentiesjablonen 
+U Azure Media Services gebruiken om Google Widevine-licenties te configureren en aan te vragen. Wanneer de speler probeert om uw Widevine-beschermde inhoud af te spelen, wordt een verzoek verzonden naar de licentie levering dienst om een licentie te verkrijgen. Als de licentieservice de aanvraag goedkeurt, geeft de service de licentie uit. Het wordt verzonden naar de client en wordt gebruikt om de opgegeven inhoud te decoderen en af te spelen.
 
-Een Widevine-licentie aanvraag wordt opgemaakt als een JSON-bericht.  
+Een Widevine-licentieaanvraag wordt opgemaakt als een JSON-bericht.  
 
 >[!NOTE]
-> U kunt een leeg bericht zonder waarden maken, alleen{}. Vervolgens wordt er een licentie sjabloon gemaakt met de standaard instellingen. De standaard instelling is in de meeste gevallen. Voor micro soft-scenario's voor het leveren van licenties moet altijd de standaard waarden worden gebruikt. Als u de waarden provider en content_id moet instellen, moet een provider overeenkomen met Widevine-referenties.
+> U een leeg bericht maken{}zonder waarden, gewoon. Vervolgens wordt een licentiesjabloon gemaakt met standaardwaarden. De standaardwerkt voor de meeste gevallen. Microsoft-gebaseerde licentie-levering scenario's moeten altijd gebruik maken van de standaardinstellingen. Als u de waarden 'provider' en 'content_id' moet instellen, moet een provider overeenkomen met de breedwaarden.
 
     {  
        "payload": "<license challenge>",
@@ -59,56 +59,56 @@ Een Widevine-licentie aanvraag wordt opgemaakt als een JSON-bericht.
     }
 
 ## <a name="json-message"></a>JSON-bericht
-| Naam | Waarde | Beschrijving |
+| Name | Waarde | Beschrijving |
 | --- | --- | --- |
-| Nettolading |Met base64 gecodeerde teken reeks |De licentie aanvraag die door een client is verzonden. |
-| content_id |Met base64 gecodeerde teken reeks |Id die wordt gebruikt voor het afleiden van de sleutel-ID en de inhouds sleutel voor elke content_key_specs. track_type. |
-| provider |string |Wordt gebruikt om inhouds sleutels en-beleid op te zoeken. Als micro soft key delivery wordt gebruikt voor Widevine-licentie levering, wordt deze para meter genegeerd. |
-| policy_name |string |Naam van een eerder geregistreerd beleid. Optioneel. |
-| allowed_track_types |enum |SD_ONLY of SD_HD. Hiermee bepaalt u welke inhouds sleutels zijn opgenomen in een licentie. |
-| content_key_specs |Matrix van JSON-structuren, zie de sectie "inhouds sleutel specificaties".  |Een nauw keurigere controle over welke inhouds sleutels moeten worden geretourneerd. Zie de sectie "inhouds sleutel specificaties" voor meer informatie. Er kan slechts één van de allowed_track_types en content_key_specs waarden worden opgegeven. |
-| use_policy_overrides_exclusively |Boolean, True of False |Gebruik beleids kenmerken die zijn opgegeven door policy_overrides en laat alle eerder opgeslagen beleid weg. |
-| policy_overrides |JSON-structuur, zie de sectie ' beleids onderdrukkingen '. |Beleids instellingen voor deze licentie.  In het geval dat deze asset een vooraf gedefinieerd beleid heeft, worden deze opgegeven waarden gebruikt. |
-| session_init |JSON-structuur, zie de sectie sessie-initialisatie. |Optionele gegevens worden door gegeven aan de licentie. |
-| parse_only |Boolean, True of False |De licentie aanvraag wordt geparseerd, maar er wordt geen licentie verleend. Waarden van de licentie aanvraag worden echter geretourneerd in het antwoord. |
+| nettolading |Base64-gecodeerde tekenreeks |De licentieaanvraag die door een klant is verzonden. |
+| content_id |Base64-gecodeerde tekenreeks |Id gebruikt om de sleutel-ID en inhoudssleutel voor elke content_key_specs,track_type. |
+| Provider |tekenreeks |Wordt gebruikt om inhoudssleutels en -beleid op te zoeken. Als microsoft-sleutellevering wordt gebruikt voor de levering van Widevine-licenties, wordt deze parameter genegeerd. |
+| policy_name |tekenreeks |Naam van een eerder geregistreerd beleid. Optioneel. |
+| allowed_track_types |Enum |SD_ONLY of SD_HD. Hiermee bepaalt u welke inhoudssleutels in een licentie zijn opgenomen. |
+| content_key_specs |Array van JSON structuren, zie de sectie "Content key specs."  |Een fijnmazige besturingselement waarop inhoudssleutels moeten worden teruggegeven. Zie voor meer informatie de sectie 'Specificaties van inhoudssleutel'. Er kan slechts één van de allowed_track_types- en content_key_specs-waarden worden opgegeven. |
+| use_policy_overrides_exclusively |Booleaans, waar of onwaar |Gebruik beleidskenmerken die zijn opgegeven door policy_overrides en laat alle eerder opgeslagen beleidsregels weg. |
+| policy_overrides |JSON-structuur, zie de sectie 'Beleidsoverschrijvingen'. |Beleidsinstellingen voor deze licentie.  In het geval dat dit actief een vooraf gedefinieerd beleid heeft, worden deze opgegeven waarden gebruikt. |
+| session_init |JSON structuur, zie de sectie "Sessie initialisatie." |Optionele gegevens worden doorgegeven aan de licentie. |
+| parse_only |Booleaans, waar of onwaar |De licentieaanvraag wordt ontleed, maar er wordt geen licentie afgegeven. Waarden uit de licentieaanvraag worden echter geretourneerd in het antwoord. |
 
-## <a name="content-key-specs"></a>Specificaties van inhouds sleutel
-Als er al een bestaand beleid bestaat, hoeft u geen van de waarden in de specificatie van de inhouds sleutel op te geven. Het bestaande beleid dat aan deze inhoud is gekoppeld, wordt gebruikt om de uitvoer beveiliging te bepalen, zoals Digital Content Protection met hoge band breedte (HDCP) en het copy General Management System (CGMS). Als er geen bestaand beleid is geregistreerd bij de Widevine-licentie server, kan de inhouds provider de waarden in de licentie aanvraag injecteren.   
+## <a name="content-key-specs"></a>Specificaties van inhoudssleutel
+Als er een bestaand beleid bestaat, hoeft u geen van de waarden in de specificaties van de inhoudssleutel op te geven. Het reeds bestaande beleid dat aan deze inhoud is gekoppeld, wordt gebruikt om de uitvoerbeveiliging te bepalen, zoals HDCP (High-bandwidth Digital Content Protection) en het Copy General Management System (CGMS). Als een bestaand beleid niet is geregistreerd bij de Widevine-licentieserver, kan de inhoudsprovider de waarden in de licentieaanvraag injecteren.   
 
-Elke content_key_specs waarde moet worden opgegeven voor alle sporen, ongeacht de use_policy_overrides_exclusively optie. 
+Elke content_key_specs waarde moet worden opgegeven voor alle tracks, ongeacht de use_policy_overrides_exclusively optie. 
 
-| Naam | Waarde | Beschrijving |
+| Name | Waarde | Beschrijving |
 | --- | --- | --- |
-| content_key_specs. track_type |string |De naam van het tracerings type. Als content_key_specs is opgegeven in de licentie aanvraag, moet u alle typen spoor expliciet opgeven. Als u dit niet doet, kan het afspelen van de afgelopen 10 seconden mislukken. |
-| content_key_specs  <br/> security_level |uint32 |Hiermee worden de vereisten voor het afspelen van clients gedefinieerd. <br/> -Op software gebaseerde, witte box crypto grafie is vereist. <br/> -Software-crypto grafie en een verborgen decoder zijn vereist. <br/> -Het sleutel materiaal en cryptografische bewerkingen moeten worden uitgevoerd binnen een vertrouwde, door hardware ondersteunde omgeving. <br/> -De crypto grafie en de code ring van inhoud moet worden uitgevoerd binnen een vertrouwde, door hardware ondersteunde omgeving.  <br/> -De crypto grafie, het decoderen en alle verwerking van de media (gecomprimeerd en niet-gecomprimeerd) moeten worden afgehandeld binnen een vertrouwde, door hardware ondersteunde omgeving. |
-| content_key_specs <br/> required_output_protection.hdc |teken reeks, een van HDCP_NONE, HDCP_V1, HDCP_V2 |Hiermee wordt aangegeven of HDCP is vereist. |
-| content_key_specs <br/>sleutel |Base64-<br/>versleutelde teken reeks |De inhouds sleutel die moet worden gebruikt voor dit nummer. Indien opgegeven, is de track_type of key_id vereist. De inhouds provider kan deze optie gebruiken om de inhouds sleutel voor dit spoor te injecteren in plaats van de Widevine-licentie server een sleutel te laten genereren of op te zoeken. |
-| content_key_specs.key_id |Base64-gecodeerde teken reeks binair, 16 bytes |De unieke id voor de sleutel. |
+| content_key_specs. track_type |tekenreeks |Een track type naam. Als content_key_specs is opgegeven in de licentieaanvraag, moet u alle tracktypen expliciet opgeven. Als u dit niet doet, hoeft u niet langer dan 10 seconden terug te spelen. |
+| content_key_specs  <br/> security_level |uint32 |Hiermee definieert u vereisten voor robuustheid van de client voor afspelen. <br/> - Software-gebaseerde white-box cryptografie is vereist. <br/> - Software cryptografie en een versluierde decoder zijn vereist. <br/> - De belangrijkste materiaal- en cryptografiebewerkingen moeten worden uitgevoerd binnen een hardwarematige vertrouwde uitvoeringsomgeving. <br/> - De cryptografie en decodering van inhoud moet worden uitgevoerd binnen een hardware-backed vertrouwde uitvoering omgeving.  <br/> - De cryptografie, decodering en alle verwerking van de media (gecomprimeerd en ongecomprimeerd) moeten worden afgehandeld binnen een hardware-backed vertrouwde uitvoeringsomgeving. |
+| content_key_specs <br/> required_output_protection.hdc |touw, een van HDCP_NONE, HDCP_V1, HDCP_V2 |Geeft aan of HDCP vereist is. |
+| content_key_specs <br/>sleutel |Basis64-<br/>gecodeerde tekenreeks |Inhoudssleutel om te gebruiken voor deze track. Indien dit is bepaald, is de track_type of key_id vereist. De contentprovider kan deze optie gebruiken om de inhoudssleutel voor dit nummer te injecteren in plaats van de Widevine-licentieserver een sleutel te laten genereren of opzoeken. |
+| content_key_specs.key_id |Base64-gecodeerde tekenreeks binaire, 16 bytes |Unieke id voor de sleutel. |
 
-## <a name="policy-overrides"></a>Beleids onderdrukkingen
-| Naam | Waarde | Beschrijving |
+## <a name="policy-overrides"></a>Beleidsoverschrijvingen
+| Name | Waarde | Beschrijving |
 | --- | --- | --- |
-| policy_overrides. can_play |Boolean, True of False |Hiermee wordt aangegeven dat het afspelen van de inhoud is toegestaan. De standaardinstelling is onwaar. |
-| policy_overrides. can_persist |Boolean, True of False |Geeft aan dat de licentie kan worden bewaard voor niet-vluchtige opslag voor offline gebruik. De standaardinstelling is onwaar. |
-| policy_overrides. can_renew |Boolean, True of False |Hiermee wordt aangegeven dat het vernieuwen van deze licentie is toegestaan. Indien waar, kan de duur van de licentie worden verlengd met heartbeat. De standaardinstelling is onwaar. |
-| policy_overrides. license_duration_seconds |int64 |Hiermee wordt het tijd venster voor deze specifieke licentie aangegeven. Een waarde van 0 geeft aan dat er geen limiet is voor de duur. De standaard waarde is 0. |
-| policy_overrides. rental_duration_seconds |int64 |Hiermee wordt het tijd venster aangegeven tijdens het afspelen is toegestaan. Een waarde van 0 geeft aan dat er geen limiet is voor de duur. De standaard waarde is 0. |
-| policy_overrides. playback_duration_seconds |int64 |Het weergave venster van de tijd na het afspelen begint binnen de licentie duur. Een waarde van 0 geeft aan dat er geen limiet is voor de duur. De standaard waarde is 0. |
-| policy_overrides. renewal_server_url |string |Alle heartbeat-aanvragen (verlenging) voor deze licentie worden omgeleid naar de opgegeven URL. Dit veld wordt alleen gebruikt als can_renew waar is. |
-| policy_overrides. renewal_delay_seconds |int64 |Het aantal seconden na de license_start_time voordat de verlenging voor het eerst wordt geprobeerd. Dit veld wordt alleen gebruikt als can_renew waar is. De standaard waarde is 0. |
-| policy_overrides. renewal_retry_interval_seconds |int64 |Hiermee geeft u de vertraging in seconden tussen de volgende aanvragen voor licentie vernieuwing, in geval van een fout. Dit veld wordt alleen gebruikt als can_renew waar is. |
-| policy_overrides. renewal_recovery_duration_seconds |int64 |Het venster waarin het afspelen kan worden voortgezet terwijl er wordt geprobeerd om te vernieuwen, maar dit is niet gelukt als gevolg van back-end-problemen met de licentie server. Een waarde van 0 geeft aan dat er geen limiet is voor de duur. Dit veld wordt alleen gebruikt als can_renew waar is. |
-| policy_overrides. renew_with_usage |Boolean, True of False |Geeft aan dat de licentie wordt verzonden voor verlenging wanneer het gebruik wordt gestart. Dit veld wordt alleen gebruikt als can_renew waar is. |
+| policy_overrides. can_play |Booleaans, waar of onwaar |Geeft aan dat het afspelen van de inhoud is toegestaan. De standaardinstelling is onwaar. |
+| policy_overrides. can_persist |Booleaans, waar of onwaar |Geeft aan dat de licentie mogelijk wordt voortgezet in niet-vluchtige opslag voor offline gebruik. De standaardinstelling is onwaar. |
+| policy_overrides. can_renew |Booleaans, waar of onwaar |Geeft aan dat verlenging van deze licentie is toegestaan. Als dit waar is, kan de duur van de licentie worden verlengd met heartbeat. De standaardinstelling is onwaar. |
+| policy_overrides. license_duration_seconds |int64 |Geeft het tijdvenster voor deze specifieke licentie aan. Een waarde van 0 geeft aan dat er geen limiet is aan de duur. Standaard is 0. |
+| policy_overrides. rental_duration_seconds |int64 |Geeft het tijdvenster aan terwijl afspelen is toegestaan. Een waarde van 0 geeft aan dat er geen limiet is aan de duur. Standaard is 0. |
+| policy_overrides. playback_duration_seconds |int64 |Het weergavevenster van de tijd na het afspelen begint binnen de licentieduur. Een waarde van 0 geeft aan dat er geen limiet is aan de duur. Standaard is 0. |
+| policy_overrides. renewal_server_url |tekenreeks |Alle heartbeat-aanvragen (verlenging) voor deze licentie worden naar de opgegeven URL geleid. Dit veld wordt alleen gebruikt als can_renew waar is. |
+| policy_overrides. renewal_delay_seconds |int64 |Hoeveel seconden na license_start_time voor verlenging wordt eerst geprobeerd. Dit veld wordt alleen gebruikt als can_renew waar is. Standaard is 0. |
+| policy_overrides. renewal_retry_interval_seconds |int64 |Hiermee geeft u de vertraging in seconden op tussen de volgende aanvragen voor verlenging van de licentie, in geval van een storing. Dit veld wordt alleen gebruikt als can_renew waar is. |
+| policy_overrides. renewal_recovery_duration_seconds |int64 |Het venster van de tijd waarin het afspelen kan worden voortgezet terwijl de verlenging wordt geprobeerd, maar niet succesvol als gevolg van back-end problemen met de licentieserver. Een waarde van 0 geeft aan dat er geen limiet is aan de duur. Dit veld wordt alleen gebruikt als can_renew waar is. |
+| policy_overrides. renew_with_usage |Booleaans, waar of onwaar |Geeft aan dat de licentie wordt verzonden voor verlenging wanneer het gebruik begint. Dit veld wordt alleen gebruikt als can_renew waar is. |
 
-## <a name="session-initialization"></a>Sessie-initialisatie
-| Naam | Waarde | Beschrijving |
+## <a name="session-initialization"></a>Sessieinitialisatie
+| Name | Waarde | Beschrijving |
 | --- | --- | --- |
-| provider_session_token |Met base64 gecodeerde teken reeks |Dit sessie token wordt weer gegeven in de licentie en komt voor in latere vernieuwingen. Het sessie token wordt niet persistent gemaakt buiten sessies. |
-| provider_client_token |Met base64 gecodeerde teken reeks |Client token om terug te sturen naar de reactie van de licentie. Als de licentie aanvraag een client token bevat, wordt deze waarde genegeerd. Het client token blijft in de voorbije licentie sessies. |
-| override_provider_client_token |Boolean, True of False |Als deze eigenschap onwaar is en de licentie aanvraag een client token bevat, gebruikt u het token van de aanvraag, zelfs als er een client token is opgegeven in deze structuur. Indien waar, altijd het token gebruiken dat is opgegeven in deze structuur. |
+| provider_session_token |Base64-gecodeerde tekenreeks |Dit sessietoken wordt teruggestuurd in de licentie en bestaat in volgende verlengingen. Het sessietoken blijft niet langer bestaan dan sessies. |
+| provider_client_token |Base64-gecodeerde tekenreeks |Clienttoken om de licentiereactie terug te sturen. Als de licentieaanvraag een clienttoken bevat, wordt deze waarde genegeerd. Het clienttoken blijft langer bestaan dan licentiesessies. |
+| override_provider_client_token |Booleaans, waar of onwaar |Als false en de licentieaanvraag een clienttoken bevat, gebruikt u het token uit de aanvraag, zelfs als een clienttoken in deze structuur is opgegeven. Als dit waar is, gebruikt u altijd het token dat in deze structuur is opgegeven. |
 
-## <a name="configure-your-widevine-licenses-by-using-net-types"></a>Uw Widevine-licenties configureren met behulp van .NET-typen
-Media Services biedt .NET-Api's die u kunt gebruiken om uw Widevine-licenties te configureren. 
+## <a name="configure-your-widevine-licenses-by-using-net-types"></a>Configureer uw Widevine-licenties met behulp van .NET-typen
+Media Services biedt .NET API's die u gebruiken om uw Widevine-licenties te configureren. 
 
 ### <a name="classes-as-defined-in-the-media-services-net-sdk"></a>Klassen zoals gedefinieerd in de Media Services .NET SDK
 De volgende klassen zijn de definities van deze typen:
@@ -161,7 +161,7 @@ De volgende klassen zijn de definities van deze typen:
     }
 
 ### <a name="example"></a>Voorbeeld
-In het volgende voor beeld ziet u hoe u .NET-Api's gebruikt om een eenvoudige Widevine-licentie te configureren:
+In het volgende voorbeeld ziet u hoe u .NET API's gebruikt om een eenvoudige Widevine-licentie te configureren:
 
     private static string ConfigureWidevineLicenseTemplate()
     {
@@ -191,7 +191,7 @@ In het volgende voor beeld ziet u hoe u .NET-Api's gebruikt om een eenvoudige Wi
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en onderworpen aan de servicevoorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

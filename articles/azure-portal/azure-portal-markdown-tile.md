@@ -1,6 +1,6 @@
 ---
-title: Een aangepaste prijs opstaande tegel in azure-Dash boards gebruiken
-description: Meer informatie over het toevoegen van een tegel met korting op een Azure-dash board voor het weer geven van statische inhoud
+title: Een aangepaste afwaarderingstegel gebruiken op Azure-dashboards
+description: Meer informatie over het toevoegen van een afwaarderingstegel aan een Azure-dashboard om statische inhoud weer te geven
 services: azure-portal
 keywords: ''
 author: mgblythe
@@ -10,57 +10,57 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 74102423461a56bb6fc19c2eb9874f96a76e34e0
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76310710"
 ---
-# <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Een tegel met korting op Azure-Dash boards gebruiken om aangepaste inhoud weer te geven
+# <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Een afwaarderingstegel op Azure-dashboards gebruiken om aangepaste inhoud weer te geven
 
-U kunt een tegel met korting toevoegen aan uw Azure-Dash boards om aangepaste statische inhoud weer te geven. U kunt bijvoorbeeld basis instructies, een afbeelding of een set hyper links weer geven op een tegel met korting.
+U een afwaarderingstegel toevoegen aan uw Azure-dashboards om aangepaste, statische inhoud weer te geven. U bijvoorbeeld basisinstructies, een afbeelding of een set hyperlinks op een markeringstegel weergeven.
 
-## <a name="add-a-markdown-tile-to-your-dashboard"></a>Een tegel met korting toevoegen aan uw dash board
+## <a name="add-a-markdown-tile-to-your-dashboard"></a>Een afwaarderingstegel toevoegen aan uw dashboard
 
-1. Selecteer **dash board** in de Azure Portal zijbalk.
+1. Selecteer **Dashboard** op de zijbalk van de Azure-portal.
 
-   ![Scherm opname van portal zijbalk](./media/azure-portal-markdown-tile/azure-portal-nav.png)
+   ![Schermafbeelding van de zijbalk van de portal](./media/azure-portal-markdown-tile/azure-portal-nav.png)
 
-1. Als u aangepaste Dash boards hebt gemaakt, gebruikt u in de dashboard weergave de vervolg keuzelijst om het dash board te selecteren waar de tegel aangepaste prijs opgave moet worden weer gegeven. Selecteer het bewerkings pictogram om de **tegel galerie**te openen.
+1. Als u aangepaste dashboards hebt gemaakt, gebruikt u in de dashboardweergave de vervolgkeuzelijst om het dashboard te selecteren waar de aangepaste markeringstegel moet worden weergegeven. Selecteer het pictogram Bewerken om de **Tegelgalerie**te openen .
 
-   ![Scherm opname van weer gave dash board bewerken](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
+   ![Schermafbeelding van de weergave dashboardbewerking](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
-1. Zoek in de **tegel galerie**de tegel met de naam **prijs** opgave en selecteer **toevoegen**. De tegel wordt toegevoegd aan het dash board en het deel venster **verlaging bewerken** wordt geopend.
+1. Zoek in de **tegelgalerie**de tegel met de naam **Markdown** en selecteer **Toevoegen**. De tegel wordt aan het dashboard toegevoegd en het deelvenster **Markering bewerken** wordt geopend.
 
-1. Voer waarden in voor **titel** en **ondertitel**, die op de tegel worden weer gegeven nadat u naar een ander veld hebt verplaatst.
+1. Voer waarden in voor **Titel** en **Ondertitel,** die op de tegel worden weergegeven nadat u naar een ander veld bent gegaan.
 
-   ![Scherm opname van de resultaten van het invoeren van de titel en subtitel](./media/azure-portal-markdown-tile/azure-portal-dashboard-enter-title.png)
+   ![Schermafbeelding van resultaten van het invoeren van titel en ondertitel](./media/azure-portal-markdown-tile/azure-portal-dashboard-enter-title.png)
 
-1. Selecteer een van de opties voor het opnemen van de inhoud van de prijs opgave: **inline bewerken** of **Voeg inhoud in met behulp**van een URL.
+1. Selecteer een van de opties voor het opnemen van **afwaarderingsinhoud: Inline-bewerking** of **Inhoud invoegen met URL**.
 
-   - Selecteer **inline bewerken** als u de korting rechtstreeks wilt invoeren.
+   - Selecteer **Inline-bewerking** als u direct afwaardering wilt invoeren.
 
-      ![Scherm opname van het invoeren van inline-inhoud](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-inline-content.png)
+      ![Schermafbeelding van het invoeren van inline-inhoud](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-inline-content.png)
 
-   - Selecteer **inhoud met behulp van URL invoegen** als u bestaande inhoud voor prijs verlaging wilt gebruiken die online wordt gehost.
+   - Selecteer **Inhoud invoegen met URL** als u bestaande markeringsinhoud wilt gebruiken die online wordt gehost.
 
-      ![Scherm opname van invoeren van URL](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
+      ![Schermafbeelding van het invoeren van URL](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
 
       > [!NOTE]
-      > Voor extra beveiliging kunt u een afkortings bestand maken en dit opslaan in een [Azure Storage-account-BLOB waarvoor versleuteling is ingeschakeld](../storage/common/storage-service-encryption.md). vervolgens wijst u het bestand met de URL-optie aan. De inhoud van de prijs verlaging wordt versleuteld via de versleutelings opties van het opslag account. Alleen gebruikers met machtigingen voor het bestand kunnen de inhoud van de korting op het dash board zien.
+      > Voor extra beveiliging u een afwaarderingsbestand maken en opslaan in een [blob met Azure-opslagaccount waar versleuteling is ingeschakeld](../storage/common/storage-service-encryption.md)en vervolgens het bestand aanwijzen met de URL-optie. De markeringsinhoud wordt versleuteld via de versleutelingsopties van het opslagaccount. Alleen gebruikers met machtigingen voor het bestand kunnen de markeringsinhoud op het dashboard zien.
 
-1. Selecteer **gereed** om het deel venster **prijs verlaging bewerken** te sluiten. Uw inhoud wordt weer gegeven op de tegel prijs verlaging, die u kunt verg Roten of verkleinen door de greep in de rechter benedenhoek te slepen.
+1. Selecteer **Gereed** om het deelvenster **Markering bewerken te** sluiten. De inhoud wordt weergegeven op de tegel Markdown, waarmee u het formaat wijzigen door de handgreep in de rechterbenedenhoek te slepen.
 
-   ![Scherm opname van tegel met aangepaste prijs verlaging](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
+   ![Schermafbeelding van aangepaste afwaarderingstegel](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
 
-## <a name="markdown-content-capabilities-and-limitations"></a>Mogelijkheden en beperkingen van de inhoud prijs verlaging
+## <a name="markdown-content-capabilities-and-limitations"></a>Markdown-inhoudsmogelijkheden en -beperkingen
 
-U kunt elke combi natie van de syntaxis voor tekst zonder opmaak en de inhoud van een HTML-bestand gebruiken op de tegel prijs verlaging. De Azure Portal gebruikt een open-source bibliotheek met de naam _gemarkeerd_ om uw inhoud te TRANSFORMEREN in HTML die wordt weer gegeven op de tegel. De HTML-code die wordt geproduceerd door _gemarkeerd_ , wordt vooraf verwerkt door de portal voordat deze wordt weer gegeven. Met deze stap zorgt u ervoor dat uw aanpassing geen invloed heeft op de beveiliging of indeling van de portal. Tijdens deze vooraf-verwerking wordt elk deel van de HTML dat een mogelijke bedreiging vormt, verwijderd. De volgende typen inhoud zijn niet toegestaan door de portal:
+U elke combinatie van platte tekst, markdownsyntaxis en HTML-inhoud op de markeringstegel gebruiken. De Azure-portal maakt gebruik van een open-sourcebibliotheek met de naam _gemarkeerd_ om uw inhoud om te zetten in HTML die op de tegel wordt weergegeven. De HTML die door _gemarkeerd wordt_ geproduceerd, wordt vooraf verwerkt door de portal voordat deze wordt weergegeven. Met deze stap u ervoor zorgen dat uw aanpassing geen invloed heeft op de beveiliging of lay-out van de portal. Tijdens die voorbewerking wordt elk deel van de HTML dat een potentiële bedreiging vormt, verwijderd. De volgende typen inhoud zijn niet toegestaan door de portal:
 
-* Java script: `<script>` Tags en inline java script-evaluaties worden verwijderd.
-* iframes-`<iframe>` Tags worden verwijderd.
-* Style-`<style>` Tags worden verwijderd. Inline stijl kenmerken voor HTML-elementen worden niet officieel ondersteund. Het kan voor komen dat sommige inline-stijl elementen werken voor u, maar als deze de indeling van de portal beïnvloeden, kunnen ze op elk gewenst moment niet meer werken. De tegel prijs verlaging is bedoeld voor basis statische inhoud die gebruikmaakt van de standaard stijlen van de portal.
+* JavaScript `<script>` – tags en inline JavaScript-evaluaties worden verwijderd.
+* iframes `<iframe>` - tags worden verwijderd.
+* Stijl `<style>` - tags worden verwijderd. Inline-stijlkenmerken op HTML-elementen worden niet officieel ondersteund. U vinden dat sommige inline stijlelementen voor u werken, maar als zij met de lay-out van het portaal interfereren, konden zij op elk ogenblik ophouden werkend. De tegel Markdown is bedoeld voor basisstatische inhoud die de standaardstijlen van de portal gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Dash boards maken en delen in de Azure portal voor het maken van](../azure-portal/azure-portal-dashboards.md) een aangepast dash board.
+* Zie [Dashboards maken en delen in de Azure-portal](../azure-portal/azure-portal-dashboards.md) als u een aangepast dashboard wilt maken.

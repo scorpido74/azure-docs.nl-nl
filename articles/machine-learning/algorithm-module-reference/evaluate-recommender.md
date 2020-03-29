@@ -1,7 +1,7 @@
 ---
-title: 'Aanbeveling evalueren: module verwijzing'
+title: 'Recommender evalueren: moduleverwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module aanbevolen procedures evalueren in Azure Machine Learning om de nauw keurigheid van de voor spellingen van het aanbevolen model te evalueren.
+description: Meer informatie over het gebruik van de module Recommender evalueren in Azure Machine Learning om de nauwkeurigheid van voorspellingsmodelvoorspellingen te evalueren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,85 +9,85 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 0890e13acbba8dae31de28d7c78a81bd9b516853
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76312257"
 ---
 # <a name="evaluate-recommender"></a>Aanbevelingsfunctie voor evaluatie
 
-In dit artikel wordt beschreven hoe u de module aanbevolen procedures evalueren in Azure Machine Learning Designer gebruikt. Het doel is om de nauw keurigheid te meten van voor spellingen die een aanbevelings model heeft gedaan. Met deze module kunt u verschillende soorten aanbevelingen evalueren:  
+In dit artikel wordt beschreven hoe u de module Recommender evalueren gebruiken in Azure Machine Learning-ontwerper (voorbeeld). Het doel is om de nauwkeurigheid van voorspellingen te meten die een aanbevelingsmodel heeft gemaakt. Met deze module u verschillende soorten aanbevelingen evalueren:  
   
--   Classificaties voor speld voor een gebruiker en een item    
--   Aanbevolen items voor een gebruiker  
+-   Beoordelingen voorspeld voor een gebruiker en een item    
+-   Aanbevolen objecten voor een gebruiker  
   
-Wanneer u voor spellingen maakt met behulp van een aanbevelings model, worden er enigszins verschillende resultaten geretourneerd voor elk van deze ondersteunde Voorspellings typen. In de module beoordeling aanbevelen wordt het type voor spelling afgeleid van de kolom indeling van de Score gegevensset. De gescoorde gegevensset kan bijvoorbeeld het volgende bevatten:
+Wanneer u voorspellingen maakt met behulp van een aanbevelingsmodel, worden voor elk van deze ondersteunde voorspellingstypen iets andere resultaten geretourneerd. De module Recommender evalueren leidt het soort voorspelling af uit de kolomindeling van de gescoorde gegevensset. De gegevensset met punten kan bijvoorbeeld het:
 
-- Gebruikers-item-beoordeling drieën
-- Gebruikers en de aanbevolen items
+- Triples van gebruikers-item-rating
+- Gebruikers en hun aanbevolen items
 
-De module past ook de juiste prestatie gegevens toe, op basis van het type voor spellingen dat wordt gemaakt. 
+De module past ook de juiste prestatiestatistieken toe, gebaseerd op het type voorspelling dat wordt uitgevoerd. 
 
   
-## <a name="how-to-configure-evaluate-recommender"></a>Aanbevolen evaluatie configureren
+## <a name="how-to-configure-evaluate-recommender"></a>Recommender evalueren configureren
 
-In de module beoordeling aanbevelen wordt de Voorspellings uitvoer vergeleken met behulp van een aanbevelings model met de bijbehorende gegevens van de "vloer waarheid". De module [Score SVD aanbevelen](score-svd-recommender.md) levert bijvoorbeeld gescoorde gegevens sets op die u kunt analyseren met behulp van de aanbeveling evalueren.
+De module Recommender evalueren vergelijkt de voorspellingsuitvoer met behulp van een aanbevelingsmodel met de bijbehorende "grondwaarheid"-gegevens. De module [Score SVD Recommender](score-svd-recommender.md) produceert bijvoorbeeld gescoorde gegevenssets die u analyseren met evalueren Recommender.
 
 ### <a name="requirements"></a>Vereisten
 
-Aanbevolen wordt om de volgende gegevens sets als invoer te evalueren. 
+Voor het evalueren van Recommender zijn de volgende gegevenssets vereist als invoer. 
   
-#### <a name="test-dataset"></a>Gegevensset testen
+#### <a name="test-dataset"></a>Testgegevensset
 
-De test gegevensset bevat de gegevens van de ' grond waarheid ' in de vorm van triples van gebruikers items-beoordeling.  
+De testdataset bevat de "ground truth" gegevens in de vorm van triples met user-item rating.  
 
-#### <a name="scored-dataset"></a>Score gegevensset
+#### <a name="scored-dataset"></a>Gegevensset Gescoord
 
-De gescoorde gegevensset bevat de voor spellingen die het aanbevolen model heeft gegenereerd.  
+De gescoorde gegevensset bevat de voorspellingen die het aanbevelingsmodel heeft gegenereerd.  
   
-De kolommen in deze tweede gegevensset zijn afhankelijk van het soort voor spelling dat u tijdens het Score proces hebt uitgevoerd. De gescoorde gegevensset kan bijvoorbeeld een van de volgende bevatten:
+De kolommen in deze tweede gegevensset zijn afhankelijk van het soort voorspelling dat u tijdens het scoringsproces hebt uitgevoerd. De gegevensset met punten kan bijvoorbeeld een van de volgende gegevens bevatten:
 
-- Gebruikers, items en de classificaties die de gebruiker waarschijnlijk voor het item zou geven
-- Een lijst met gebruikers en items die hiervoor worden aanbevolen 
+- Gebruikers, items en de beoordelingen die de gebruiker waarschijnlijk zou geven voor het item
+- Een lijst met gebruikers en items die voor hen worden aanbevolen 
 
 ### <a name="metrics"></a>Metrische gegevens
 
-Prestatie gegevens voor het model worden gegenereerd op basis van het type invoer. In de volgende secties vindt u meer informatie.
+Prestatiestatistieken voor het model worden gegenereerd op basis van het type invoer. De volgende secties geven details.
 
-## <a name="evaluate-predicted-ratings"></a>Voorspelde classificaties evalueren  
+## <a name="evaluate-predicted-ratings"></a>Voorspelde beoordelingen evalueren  
 
-Wanneer u voorspelde beoordelingen evalueert, moet de Score van de gescoorde gegevensset (de tweede invoer voor het evalueren van de aanbevolen functie) het volgende bevatten:
+Wanneer u voorspelde beoordelingen evalueert, moet de gegevensset voor de score (de tweede invoer voor Recommender evalueren) triples van gebruikers-items bevatten die aan deze vereisten voldoen:
   
 -   De eerste kolom van de gegevensset bevat de gebruikers-id's.    
 -   De tweede kolom bevat de item-id's.  
--   De derde kolom bevat de bijbehorende beoordelingen van gebruikers items.  
+-   De derde kolom bevat de bijbehorende gebruikersitemclassificaties.  
   
 > [!IMPORTANT] 
-> Voor een geslaagde evaluatie moeten de kolom namen respectievelijk `User`, `Item`en `Rating`zijn.  
+> Om de evaluatie te laten `User`slagen, `Rating`moeten de kolomnamen respectievelijk , en , zijn. `Item`  
   
-Met de aanbeveling evalueren wordt de classificaties in de gegevensset ' vloer waarheid ' vergeleken met de voorspelde classificaties van de gescoorde gegevensset. Vervolgens wordt de gemiddelde absolute fout (MAE) en de wortel fout (RMSE) berekend.
+Evalueren Recommender vergelijkt de beoordelingen in de "ground truth" dataset met de voorspelde beoordelingen van de gescoorde dataset. Vervolgens berekent het de gemiddelde absolute fout (MAE) en de root-gemiddelde kwadraatfout (RMSE).
 
 
 
-## <a name="evaluate-item-recommendations"></a>Aanbevelingen voor item evalueren
+## <a name="evaluate-item-recommendations"></a>Aanbevelingen voor items evalueren
 
-Wanneer u de aanbevelingen van een item evalueert, gebruikt u een gescoorde gegevensset die de aanbevolen items voor elke gebruiker bevat:
+Wanneer u aanbevelingen voor items evalueert, gebruikt u een gescoorde gegevensset met de aanbevolen items voor elke gebruiker:
   
 -   De eerste kolom van de gegevensset moet de gebruikers-id bevatten.    
--   Alle volgende kolommen moeten de bijbehorende aanbevolen item-id's bevatten, geordend op basis van de relevantie van een item voor de gebruiker. 
+-   Alle volgende kolommen moeten de bijbehorende aanbevolen artikel-id's bevatten, geordend op basis van hoe relevant een item is voor de gebruiker. 
 
-Voordat u deze gegevensset verbindt, wordt u aangeraden de gegevensset te sorteren zodat de meest relevante items het eerst worden geleverd.  
+Voordat u deze gegevensset verbindt, raden we u aan de gegevensset te sorteren, zodat de meest relevante items op de eerste plaats komen.  
 
 > [!IMPORTANT] 
-> Als u wilt evalueren, kunt u het beste de kolom namen `User`, `Item 1`, `Item 2``Item 3` enzovoort gebruiken.  
+> Als u Recommender evalueren wilt laten `User` `Item 1`werken, moeten de kolomnamen , , `Item 2`enzovoort, `Item 3` zijn.  
   
-Bij evaluatie van evalueren wordt de gemiddelde genormaliseerde cumulatieve winst (NDCG) berekend en geretourneerd in de uitvoer gegevensset.  
+Evalueren Recommender berekent de gemiddelde genormaliseerde verdisconteerde cumulatieve winst (NDCG) en retourneert deze in de uitvoergegevensset.  
   
-Omdat het niet mogelijk is om de werkelijke "vloer waarheid" te weten voor de aanbevolen items, moet u aanbevolen worden de beoordelingen van gebruikers items in de gegevensset test gebruiken als toename in de berekening van de NDCG. Om te evalueren, moet de Score module voor aanbevolen beoordelingen alleen aanbevelingen voor items met classificaties van ' vloer waarheid ' (in de test gegevensset) produceren.  
+Omdat het onmogelijk is om de werkelijke "grondwaarheid" voor de aanbevolen items te kennen, gebruikt Evaluate Recommender de gebruikersitemclassificaties in de testgegevensset als winst in de berekening van de NDCG. Om te evalueren, moet de scoremodule voor recommenderalleen aanbevelingen produceren voor items met 'ground truth'-classificaties (in de testgegevensset).  
   
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 

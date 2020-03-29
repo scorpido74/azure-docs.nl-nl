@@ -1,6 +1,6 @@
 ---
-title: Inrichten van apparaten voor externe controle in Node.js - Azure | Microsoft Docs
-description: Beschrijft hoe u een apparaat verbinden met de oplossingsversnellers bewaking op afstand met behulp van een toepassing die is geschreven in Node.js.
+title: Apparaten inrichten op bewaking op afstand in Node.js - Azure | Microsoft Documenten
+description: Beschrijft hoe u een apparaat aansluit op de remote monitoring oplossingsversneller met behulp van een toepassing geschreven in Node.js.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
 ms.openlocfilehash: fdb2bed76a8e23a6034a57b3a5f1358c26e9e990
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61450262"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Uw apparaat aansluiten op de Remote Monitoring solution accelerator (Node.js)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Sluit uw apparaat aan op de remote monitoring oplossingsversneller (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Deze zelfstudie leert u hoe u een echt apparaat verbinden met de oplossingsverbetering voor externe controle. In deze zelfstudie gebruikt u Node.js, dit is een goede optie voor omgevingen met minimale resourcebeperkingen.
+In deze zelfstudie ziet u hoe u een echt apparaat aansluiten op de versneller van de oplossing op afstand. In deze zelfstudie gebruikt u Node.js, wat een goede optie is voor omgevingen met minimale resourcebeperkingen.
 
-Als u liever een apparaat simuleren, Zie [maken en test een nieuw gesimuleerd apparaat](iot-accelerators-remote-monitoring-create-simulated-device.md).
+Zie Een nieuw gesimuleerd apparaat maken en testen als u een apparaat liever [simuleert.](iot-accelerators-remote-monitoring-create-simulated-device.md)
 
 ## <a name="create-a-nodejs-solution"></a>Een Node.js-oplossing maken
 
-Zorg ervoor dat [Node.js](https://nodejs.org/) versie 4.0.0 of hoger is geïnstalleerd op uw ontwikkelcomputer. U kunt uitvoeren `node --version` op de opdrachtregel om de versie te controleren.
+Zorg ervoor dat [Node.js](https://nodejs.org/) versie 4.0.0 of hoger op uw ontwikkelmachine is geïnstalleerd. U kunt `node --version` op de opdrachtregel worden uitgevoerd om de versie te controleren.
 
-1. Maak een map genaamd `remotemonitoring` op uw ontwikkelcomputer. Ga naar deze map in uw opdrachtregelomgeving.
+1. Maak een `remotemonitoring` map die op uw ontwikkelingsmachine wordt aangeroepen. Navigeer naar deze map in de opdrachtlijnomgeving.
 
-1. Als u wilt downloaden en installeren van de pakketten die u nodig hebt voor de voorbeeld-app, voer de volgende opdrachten:
+1. Voer de volgende opdrachten uit om de pakketten te downloaden en te installeren die u nodig hebt om de voorbeeld-app te voltooien:
 
     ```cmd/sh
     npm init
     npm install async azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. In de `remotemonitoring` map, maakt u een bestand met de naam **remote_monitoring.js**. Open dit bestand in een teksteditor.
+1. Maak `remotemonitoring` in de map een bestand met de naam **remote_monitoring.js**. Open dit bestand in een teksteditor.
 
-1. In de **remote_monitoring.js** bestand, voeg de volgende `require` instructies:
+1. Voeg in het **bestand remote_monitoring.js** de volgende `require` instructies toe:
 
     ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -47,13 +47,13 @@ Zorg ervoor dat [Node.js](https://nodejs.org/) versie 4.0.0 of hoger is geïnsta
     var async = require('async');
     ```
 
-1. Voeg de volgende variabelendeclaraties achter de `require`-instructies toe. Vervang de tijdelijke aanduidingswaarde `{device connection string}` met de waarde die u hebt genoteerd voor het apparaat dat u hebt ingericht in de oplossing voor externe controle:
+1. Voeg de volgende variabelendeclaraties achter de `require`-instructies toe. Vervang de tijdelijke `{device connection string}` aanduidingswaarde door waarde die u hebt genoteerd voor het apparaat dat u in de oplossing voor externe bewaking hebt ingerichte:
 
     ```javascript
     var connectionString = '{device connection string}';
     ```
 
-1. Sommige base om telemetriegegevens te definiëren, voeg de volgende variabelen:
+1. Als u bepaalde basistelemetriegegevens wilt definiëren, voegt u de volgende variabelen toe:
 
     ```javascript
     var temperature = 50;
@@ -64,7 +64,7 @@ Zorg ervoor dat [Node.js](https://nodejs.org/) versie 4.0.0 of hoger is geïnsta
     var pressureUnit = 'psig';
     ```
 
-1. Voor het definiëren van sommige eigenschapswaarden, voeg de volgende variabelen:
+1. Als u bepaalde eigenschapswaarden wilt definiëren, voegt u de volgende variabelen toe:
 
     ```javascript
     var schema = "real-chiller;v1";
@@ -77,7 +77,7 @@ Zorg ervoor dat [Node.js](https://nodejs.org/) versie 4.0.0 of hoger is geïnsta
     var deviceOnline = true;
     ```
 
-1. Voeg de volgende variabele voor het definiëren van de gerapporteerde eigenschappen om te verzenden naar de oplossing. Deze eigenschappen zijn onder andere metagegevens om weer te geven in de Web-UI:
+1. Voeg de volgende variabele toe om de gerapporteerde eigenschappen te definiëren die naar de oplossing moeten worden verzonden. Deze eigenschappen omvatten metagegevens die moeten worden weergegeven in de webgebruikersinterface:
 
     ```javascript
     var reportedProperties = {
@@ -95,7 +95,7 @@ Zorg ervoor dat [Node.js](https://nodejs.org/) versie 4.0.0 of hoger is geïnsta
     }
     ```
 
-1. Voeg de volgende Help-functie resultaten van de bewerking om af te drukken:
+1. Als u de bewerkingsresultaten wilt afdrukken, voegt u de volgende helperfunctie toe:
 
     ```javascript
     function printErrorFor(op) {
@@ -105,7 +105,7 @@ Zorg ervoor dat [Node.js](https://nodejs.org/) versie 4.0.0 of hoger is geïnsta
     }
     ```
 
-1. Voeg de volgende helperfunctie te gebruiken op een willekeurige kleur geven de telemetriewaarden:
+1. Voeg de volgende helperfunctie toe die u wilt gebruiken om de telemetriewaarden te randomiseren:
 
      ```javascript
      function generateRandomIncrement() {
@@ -113,7 +113,7 @@ Zorg ervoor dat [Node.js](https://nodejs.org/) versie 4.0.0 of hoger is geïnsta
      }
      ```
 
-1. Voeg de volgende algemene functie voor het afhandelen van rechtstreekse methodeaanroepen van de oplossing. De functie geeft informatie weer over de directe methode die is aangeroepen, maar in dit voorbeeld het apparaat op geen enkele manier niet wijzigen. De oplossing maakt gebruik van directe methoden om te reageren op apparaten:
+1. Voeg de volgende algemene functie toe om directe methodeaanroepen vanuit de oplossing te verwerken. De functie geeft informatie weer over de directe methode die is aangeroepen, maar in dit voorbeeld wijzigt het apparaat op geen enkele manier. De oplossing maakt gebruik van directe methoden om te handelen op apparaten:
 
      ```javascript
      function onDirectMethod(request, response) {
@@ -128,7 +128,7 @@ Zorg ervoor dat [Node.js](https://nodejs.org/) versie 4.0.0 of hoger is geïnsta
      }
      ```
 
-1. Voeg de volgende functie voor het afhandelen van de **FirmwareUpdate** rechtstreekse methodeaanroepen van de oplossing. De functie controleert of de parameters die worden doorgegeven in de nettolading van directe methode en de simulatie van een firmware-update wordt asynchroon uitgevoerd:
+1. Voeg de volgende functie toe om de directe methodeaanroepen van **FirmwareUpdate** vanuit de oplossing te verwerken. De functie controleert de parameters die worden doorgegeven in de laadlading van de directe methode en voert vervolgens asynchroon een firmware-updatesimulatie uit:
 
      ```javascript
      function onFirmwareUpdate(request, response) {
@@ -157,7 +157,7 @@ Zorg ervoor dat [Node.js](https://nodejs.org/) versie 4.0.0 of hoger is geïnsta
      }
      ```
 
-1. Voeg de volgende functie voor het simuleren van een stroom langlopende firmware bijwerken die wordt uitgevoerd aan de oplossing doorgegeven:
+1. Voeg de volgende functie toe om een langlopende firmware-updatestroom te simuleren die de voortgang naar de oplossing rapporteert:
 
      ```javascript
      // Simulated firmwareUpdate flow
@@ -235,7 +235,7 @@ Zorg ervoor dat [Node.js](https://nodejs.org/) versie 4.0.0 of hoger is geïnsta
      }
      ```
 
-1. Voeg de volgende code voor het verzenden van telemetriegegevens naar de oplossing. Eigenschappen van de client-app toegevoegd aan het bericht om te identificeren van het berichtschema:
+1. Voeg de volgende code toe om telemetriegegevens naar de oplossing te verzenden. De client-app voegt eigenschappen toe aan het bericht om het berichtschema te identificeren:
 
      ```javascript
      function sendTelemetry(data, schema) {
@@ -254,19 +254,19 @@ Zorg ervoor dat [Node.js](https://nodejs.org/) versie 4.0.0 of hoger is geïnsta
      }
      ```
 
-1. Voeg de volgende code voor het maken van een clientexemplaar:
+1. Voeg de volgende code toe om een clientinstantie te maken:
 
      ```javascript
      var client = Client.fromConnectionString(connectionString, Protocol);
      ```
 
-1. Voeg de volgende code toe:
+1. Voeg de volgende code toe aan:
 
     * Open de verbinding.
-    * Instellen van een handler voor de gewenste eigenschappen.
+    * Stel een handler in voor de gewenste eigenschappen.
     * Gerapporteerde eigenschappen verzenden.
-    * Registreer handlers voor de directe methoden. Het voorbeeld wordt een afzonderlijke handler voor de directe methode die firmware-update.
-    * Beginnen met het verzenden van telemetrie.
+    * Registreer handlers voor de directe methoden. Het voorbeeld maakt gebruik van een aparte handler voor de directe methode voor firmware-update.
+    * Begin met het verzenden van telemetrie.
 
       ```javascript
       client.open(function (err) {
@@ -328,9 +328,9 @@ Zorg ervoor dat [Node.js](https://nodejs.org/) versie 4.0.0 of hoger is geïnsta
       });
       ```
 
-1. Sla de wijzigingen aan de **remote_monitoring.js** bestand.
+1. Sla de wijzigingen op in het **bestand remote_monitoring.js.**
 
-1. Voor het starten van de voorbeeld-App, voer de volgende opdracht achter de opdrachtprompt:
+1. Als u de voorbeeldtoepassing wilt starten, voert u de volgende opdracht uit bij een opdrachtprompt:
 
      ```cmd/sh
      node remote_monitoring.js

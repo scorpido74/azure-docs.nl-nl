@@ -1,6 +1,6 @@
 ---
-title: De Postman-omgeving importeren voor Azure Media Services REST-aanroepen
-description: In dit onderwerp vindt u een definitie van de Postman-omgeving voor Azure Media Services REST-aanroepen.
+title: De postman-omgeving importeren voor REST-aanroepen van Azure Media Services
+description: In dit onderwerp wordt een definitie van de Postman-omgeving voor Azure Media Services REST-oproepen gedefinieerd.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78926717"
 ---
-# <a name="import-the-postman-environment"></a>De Postman-omgeving importeren  
+# <a name="import-the-postman-environment"></a>De postman-omgeving importeren  
 
-Dit artikel bevat een definitie van de **postman** -omgevings variabelen die worden gebruikt de [postman-verzameling](postman-collection.md) die gegroepeerde HTTP-aanvragen bevat die Media Services rest-api's aanroepen. De omgevings-en verzamelings bestanden worden gebruikt door de zelf studie [postman configureren voor Media Services rest API](media-rest-apis-with-postman.md) .
+Dit artikel bevat een definitie van de **postman-omgevingsvariabelen** die worden gebruikt in de [Postman-verzameling](postman-collection.md) die gegroepeerde HTTP-aanvragen bevat die API's voor mediaservices REST aanroepen. De omgeving- en verzamelingsbestanden worden gebruikt door de zelfstudie [Voor API-aanroepen](media-rest-apis-with-postman.md) van De REST van mediaservices configureren voor Media Services.
 
 > [!NOTE]
-> De waarde van `AzureADSTSEndpoint ` = `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`. Als u uw Tenant-ID wilt ophalen, kunt u de muis aanwijzer over uw gebruikers naam in de portal (in de rechter bovenhoek) bewegen en deze bevindt zich in de map: micro soft ({{TENANTID}}).
+> De waarde `AzureADSTSEndpoint `  =  `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`van . Als u uw tenant-id wilt krijgen, u met uw muis over uw gebruikersnaam in de portal (in de rechterbovenhoek) zweven en deze bevindt zich in de 'Directory: Microsoft ( {{TENANTID}} ).
 
 ```
 {

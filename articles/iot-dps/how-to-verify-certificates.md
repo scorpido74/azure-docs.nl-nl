@@ -1,6 +1,6 @@
 ---
-title: X. 509 CA-certificaten controleren met Azure IoT Hub Device Provisioning Service
-description: De bewijs van het bezit van een X. 509 CA-certificaten met Azure IoT Hub Device Provisioning Service (DPS)
+title: X.509 CA-certificaten verifiëren met Azure IoT Hub Device Provisioning Service
+description: Bewijs van bezit voor X.509 CA-certificaten doen met Azure IoT Hub Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 02/26/2018
@@ -8,71 +8,71 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: b008c4ebc83200043d51fc8ef367f1983c549949
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74973438"
 ---
-# <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Een bewijs van het bezit van de X. 509 CA-certificaten met uw Device Provisioning Service
+# <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Bewijs van bezit voor X.509 CA-certificaten doen met uw Service voor het inrichten van apparaten
 
-Een geverifieerde X. 509-certificaat certificerings instantie (CA) is een CA-certificaat dat is geüpload en geregistreerd bij de inrichtings service en is door de controle van het bezit van de service. 
+Een geverifieerd X.509 Certificate Authority (CA)-certificaat is een CA-certificaat dat is geüpload en geregistreerd bij uw inprovisioningsservice en door middel van bewijs van bezit met de service is gegaan. 
 
-Bewijs-of-eigendom omvat de volgende stappen:
-1. Haal een unieke verificatie code op die is gegenereerd door de inrichtings service voor uw X. 509 CA-certificaat. U kunt dit doen vanuit de Azure Portal.
-2. Maak een X. 509-verificatie certificaat met de verificatie code als onderwerp en onderteken het certificaat met de persoonlijke sleutel die is gekoppeld aan uw X. 509 CA-certificaat.
-3. Upload het ondertekende verificatie certificaat naar de service. De service valideert het verificatie certificaat met behulp van het open bare deel van het CA-certificaat dat moet worden geverifieerd, waardoor u in het bezit bent van de persoonlijke sleutel van het CA-certificaat.
+Proof-of-possession omvat de volgende stappen:
+1. Ontvang een unieke verificatiecode die wordt gegenereerd door de inrichtingsservice voor uw X.509 CA-certificaat. U kunt dit doen vanuit Azure Portal.
+2. Maak een X.509-verificatiecertificaat met de verificatiecode als onderwerp en onderteken het certificaat met de privésleutel die is gekoppeld aan uw X.509 CA-certificaat.
+3. Upload het ondertekende verificatiecertificaat naar de service. De service valideert het verificatiecertificaat met behulp van het openbare gedeelte van het TE verifiëren CA-certificaat, waardoor wordt aangetoond dat u in het bezit bent van de privésleutel van het CA-certificaat.
 
-Geverifieerde certificaten spelen een belang rijke rol bij het gebruik van inschrijvings groepen. Het verifiëren van het eigendom van het certificaat biedt een extra beveiligingslaag door ervoor te zorgen dat de uploader van het certificaat in bezit is van de persoonlijke sleutel van het certificaat. Verificatie verhindert een kwaad aardige actor waarmee uw verkeer wordt gesniffd en dat certificaat wordt gebruikt om een registratie groep te maken in hun eigen inrichtings service, waardoor uw apparaten effectief worden overgenomen. Door eigenaar te worden van de hoofdmap of een tussenliggend certificaat in een certificaat keten bewijst u dat u gemachtigd bent om blad certificaten te genereren voor de apparaten die worden geregistreerd als onderdeel van die registratie groep. Daarom moet het basis-of tussenliggende certificaat dat is geconfigureerd in een registratie groep een geverifieerd certificaat zijn of moet worden getotaliseerd op een geverifieerd certificaat in de certificaat keten die een apparaat presenteert wanneer het wordt geverifieerd bij de service. Zie [x. 509-certificaten](concepts-security.md#x509-certificates) en [de toegang tot de inrichtings service beheren met x. 509-certificaten](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)voor meer informatie over registratie groepen.
+Geverifieerde certificaten spelen een belangrijke rol bij het gebruik van inschrijvingsgroepen. Het verifiëren van het eigendom van certificaten biedt een extra beveiligingslaag door ervoor te zorgen dat de uploader van het certificaat in het bezit is van de privésleutel van het certificaat. Verificatie voorkomt dat een kwaadwillende actor die uw verkeer snuift, een tussencertificaat kan extraheren en dat certificaat gebruikt om een inschrijvingsgroep in hun eigen inrichtingsservice te maken, waardoor uw apparaten effectief worden gekaapt. Door het eigendom van de root of een tussencertificaat in een certificaatketen te bewijzen, bewijst u dat u toestemming hebt om bladcertificaten te genereren voor de apparaten die zich registreren als onderdeel van die inschrijvingsgroep. Daarom moet het basis- of tussencertificaat dat is geconfigureerd in een inschrijvingsgroep een geverifieerd certificaat zijn of moet het worden uitgevoerd tot een geverifieerd certificaat in de certificaatketen die een apparaat presenteert wanneer het zich verifieert met de service. Zie [X.509-certificaten](concepts-security.md#x509-certificates) en [Apparaattoegang tot de inrichtingsservice beheren met X.509-certificaten](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)voor meer informatie over inschrijvingsgroepen.
 
-## <a name="register-the-public-part-of-an-x509-certificate-and-get-a-verification-code"></a>Het open bare deel van een X. 509-certificaat registreren en een verificatie code ophalen
+## <a name="register-the-public-part-of-an-x509-certificate-and-get-a-verification-code"></a>Registreer het openbare deel van een X.509-certificaat en ontvang een verificatiecode
 
-Voer de volgende stappen uit om een CA-certificaat te registreren bij uw inrichtings service en een verificatie code op te halen die u kunt gebruiken tijdens het bewijs van zijn bezit. 
+Als u een CA-certificaat wilt registreren bij uw inrichtingsservice en een verificatiecode wilt krijgen die u gebruiken tijdens het bewijs van bezit, voert u deze stappen uit. 
 
-1. Navigeer in het Azure Portal naar uw inrichtings service en open **certificaten** vanuit het menu aan de linkerkant. 
-2. Klik op **toevoegen** om een nieuw certificaat toe te voegen.
-3. Geef een beschrijvende weergave naam voor het certificaat op. Blader naar het. CER-of. pem-bestand dat het open bare deel van het X. 509-certificaat vertegenwoordigt. Klik op **Uploaden**.
-4. Zodra u een melding krijgt dat het certificaat is geüpload, klikt u op **Opslaan**.
+1. Navigeer in de Azure-portal naar uw inrichtingsservice en open **Certificaten** in het linkermenu. 
+2. Klik **op Toevoegen** om een nieuw certificaat toe te voegen.
+3. Voer een vriendelijke weergavenaam in voor uw certificaat. Blader naar het .cer- of .pem-bestand dat het openbare deel van uw X.509-certificaat vertegenwoordigt. Klik op **Uploaden**.
+4. Zodra u een melding krijgt dat uw certificaat is geüpload, klikt u op **Opslaan**.
 
     ![Certificaat uploaden](./media/how-to-verify-certificates/add-new-cert.png)  
 
-   Uw certificaat wordt weer gegeven in de lijst **certificaat Verkenner** . Houd er rekening mee dat de **status** van dit certificaat niet is *geverifieerd*.
+   Uw certificaat wordt weergegeven in de lijst **Certificate Explorer.** Houd er rekening mee dat de **status** van dit certificaat niet is *geverifieerd*.
 
 5. Klik op het certificaat dat u in de vorige stap hebt toegevoegd.
 
-6. Klik in **certificaat Details**op **verificatie code genereren**.
+6. Klik **in certificaatgegevens**op **Verificatiecode genereren**.
 
-7. De inrichtings service maakt een **verificatie code** die u kunt gebruiken om het eigendom van het certificaat te valideren. Kopieer de code naar het klem bord. 
+7. De inrichtingsservice maakt een **verificatiecode** die u gebruiken om het certificaateigendom te valideren. Kopieer de code naar het klembord. 
 
    ![Certificaat verifiëren](./media/how-to-verify-certificates/verify-cert.png)  
 
-## <a name="digitally-sign-the-verification-code-to-create-a-verification-certificate"></a>De verificatie code digitaal ondertekenen om een verificatie certificaat te maken
+## <a name="digitally-sign-the-verification-code-to-create-a-verification-certificate"></a>De verificatiecode digitaal ondertekenen om een verificatiecertificaat te maken
 
-Nu moet u de *verificatie code* ondertekenen met de persoonlijke sleutel die is gekoppeld aan uw X. 509 CA-certificaat, waardoor een hand tekening wordt gegenereerd. Dit staat bekend als [bewijs van bezit](https://tools.ietf.org/html/rfc5280#section-3.1) en resulteert in een ondertekend verificatie certificaat.
+U moet nu de *verificatiecode* ondertekenen met de privésleutel die is gekoppeld aan uw X.509 CA-certificaat, waarmee een handtekening wordt gegenereerd. Dit staat bekend als [bewijs van bezit](https://tools.ietf.org/html/rfc5280#section-3.1) en resulteert in een ondertekend verificatiecertificaat.
 
-Micro soft biedt hulpprogram ma's en voor beelden die u kunnen helpen bij het maken van een ondertekend verificatie certificaat: 
+Microsoft biedt hulpprogramma's en voorbeelden waarmee u een ondertekend verificatiecertificaat maken: 
 
-- De **Azure IOT hub C SDK** voorziet in Power shell-scripts (Windows) en bash (Linux) om u te helpen bij het maken van ca-en blad certificaten voor ontwikkeling en het uitvoeren van een bewijs van het bezit van een verificatie code. U kunt de [bestanden](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) die relevant zijn voor uw systeem naar een werkmap downloaden en de instructies in het [Leesmij-bestand voor CA-certificaten beheren](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) gebruiken om een CA-certificaat uit te voeren. 
-- De **Azure IOT hub C# SDK** bevat het voor beeld van een [verificatie van groeps certificaten](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample), die u kunt gebruiken om een bewijs van zijn of haar eigendom te maken.
+- De **Azure IoT Hub C SDK** biedt PowerShell -scripts (Windows) en Bash (Linux) om u te helpen CA- en bladcertificaten te maken voor ontwikkeling en om bewijs van bezit uit te voeren met behulp van een verificatiecode. U de [bestanden](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) die relevant zijn voor uw systeem downloaden naar een werkende map en de instructies in de readme voor het beheren van [CA-certificaten](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) volgen om bewijs van bezit uit te voeren op een CA-certificaat. 
+- De **Azure IoT Hub C# SDK** bevat het [groepscertificaatverificatievoorbeeld](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample), waarmee u een bewijs van bezit maken.
  
 > [!IMPORTANT]
-> Naast het uitvoeren van een bewijs materiaal, kunt u met de Power shell-en bash-scripts die eerder zijn vermeld, basis certificaten, tussenliggende certificaten en blad certificaten maken die kunnen worden gebruikt om apparaten te verifiëren en in te richten. Deze certificaten moeten alleen worden gebruikt voor ontwikkeling. Ze mogen nooit worden gebruikt in een productie omgeving. 
+> Naast het uitvoeren van proof-of-possession, de PowerShell en Bash scripts aangehaald eerder vermeld ook u root certificaten, tussenliggende certificaten en blad certificaten die kunnen worden gebruikt om te verifiëren en provisiondevices te maken. Deze certificaten mogen alleen voor ontwikkeling worden gebruikt. Ze mogen nooit worden gebruikt in een productieomgeving. 
 
-De Power shell-en bash-scripts die zijn opgenomen in de documentatie en Sdk's, zijn afhankelijk van [openssl](https://www.openssl.org/). U kunt ook OpenSSL of andere hulpprogram ma's van derden gebruiken om u te helpen bij het maken van een bewijs van eigendom. Zie het [gebruik van hulpprogram ma's in de sdk's](how-to-use-sdk-tools.md)voor meer informatie over hulp middelen die worden meegeleverd met de sdk's. 
+De PowerShell- en Bash-scripts in de documentatie en SDK's zijn afhankelijk van [OpenSSL.](https://www.openssl.org/) U ook OpenSSL of andere tools van derden gebruiken om u te helpen bewijs van bezit te maken. Zie Hoe u tools in de SDK's gebruikt voor meer informatie over tooling die bij de [SDK's wordt geleverd.](how-to-use-sdk-tools.md) 
 
 
-## <a name="upload-the-signed-verification-certificate"></a>Het ondertekende verificatie certificaat uploaden
+## <a name="upload-the-signed-verification-certificate"></a>Het ondertekende verificatiecertificaat uploaden
 
-1. Upload de resulterende hand tekening als een verificatie certificaat naar uw inrichtings service in de portal. Gebruik in **certificaat Details** op het Azure Portal het pictogram _bestand Verkenner_ naast het veld **verificatie certificaat. pem-of. cer-bestand** om het ondertekende verificatie certificaat van uw systeem te uploaden.
+1. Upload de resulterende handtekening als verificatiecertificaat naar uw inrichtingsservice in de portal. Gebruik in **Certificaatgegevens** op de Azure-portal het pictogram _Verkenner_ naast het **veld Verificatiecertificaat .pem of .cer** om het ondertekende verificatiecertificaat van uw systeem te uploaden.
 
-2. Zodra het certificaat is geüpload, klikt u op **verifiëren**. De **status** van uw certificaat wordt **_gecontroleerd_** in de lijst **certificaat Verkenner** . Klik op **vernieuwen** als deze niet automatisch wordt bijgewerkt.
+2. Zodra het certificaat is geüpload, klikt u op **Verifiëren**. De **status** van uw certificaat wordt gewijzigd in **_Geverifieerd_** in de lijst **Certificate Explorer.** Klik **op Vernieuwen** als deze niet automatisch wordt bijgewerkt.
 
-   ![Certificaat verificatie uploaden](./media/how-to-verify-certificates/upload-cert-verification.png)  
+   ![Verificatie van het uploadcertificaat](./media/how-to-verify-certificates/upload-cert-verification.png)  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [inschrijving van apparaten beheren met Azure Portal](how-to-manage-enrollments.md)voor meer informatie over het gebruik van de portal voor het maken van een registratie groep.
-- Zie [apparaatregistratie beheren met Service-sdk's](how-to-manage-enrollments-sdks.md)voor meer informatie over het gebruik van de service-sdk's voor het maken van een registratie groep.
+- Zie [Apparaatinschrijvingen beheren met Azure-portal](how-to-manage-enrollments.md)voor meer informatie over het gebruik van de portal om een inschrijvingsgroep te maken.
+- Zie [Apparaatinschrijvingen beheren met service-SDK's](how-to-manage-enrollments-sdks.md)voor meer informatie over het gebruik van de service-SDK's om een inschrijvingsgroep te maken.
 
 
 

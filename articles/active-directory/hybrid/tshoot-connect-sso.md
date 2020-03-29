@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Connect: problemen met naadloze eenmalige aanmelding oplossen | Microsoft Docs'
-description: In dit onderwerp wordt beschreven hoe u Azure Active Directory naadloze eenmalige aanmelding kunt oplossen
+title: 'Azure Active Directory Connect: problemen oplossen met naadloze aanmelding | Microsoft Documenten'
+description: In dit onderwerp wordt beschreven hoe u problemen oplossen met Azure Active Directory Seamless Single Sign-On
 services: active-directory
 author: billmath
 ms.reviewer: swkrish
@@ -13,84 +13,84 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1293bbf6d2966caf7e6e095c1721e29890a57b76
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 759748124893a8f906a4bc336f835546202b0b62
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025798"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049498"
 ---
-# <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Problemen met Azure Active Directory naadloze eenmalige aanmelding oplossen
+# <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Problemen oplossen azure Active Directory Seamless Single Sign-On
 
-In dit artikel vindt u informatie over het oplossen van problemen met de naadloze eenmalige aanmelding van Azure Active Directory (naadloze SSO).
+Met dit artikel u informatie vinden over probleemoplossingsproblemen met betrekking tot Azure Active Directory (Azure AD) Seamless Single Sign-On (Seamless SSO).
 
 ## <a name="known-issues"></a>Bekende problemen
 
-- In enkele gevallen kan het inschakelen van naadloze SSO tot wel 30 minuten duren.
-- Als u naadloze SSO op uw Tenant uitschakelt en weer inschakelt, krijgen gebruikers niet de mogelijkheid tot eenmalige aanmelding te zien, en zijn de in de cache geplaatste Kerberos-tickets, die doorgaans 10 uur geldig zijn, verlopen.
-- Als naadloze SSO is geslaagd, is de gebruiker niet in staat om aangemeld te **blijven**selecteren. Vanwege dit gedrag werken [share point-en OneDrive-toewijzings scenario's](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) niet.
-- Office 365 Win32-clients (Outlook, Word, Excel en andere) met versies 16.0.8730. xxxx en hoger worden ondersteund met behulp van een niet-interactieve stroom. Andere versies worden niet ondersteund. op deze versies voeren gebruikers hun gebruikers namen in, maar geen wacht woorden, om zich aan te melden. Voor OneDrive moet u de [functie voor stil configuratie van onedrive](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) activeren voor een stille aanmeldings ervaring.
-- Naadloze SSO werkt niet in de modus voor persoonlijke navigatie op Firefox.
-- Naadloze SSO werkt niet in Internet Explorer wanneer de uitgebreide beveiligde modus is ingeschakeld.
+- In een paar gevallen kan het inschakelen van Seamless SSO tot 30 minuten duren.
+- Als u Seamless SSO op uw tenant uitschakelt en opnieuw inschakelt, krijgen gebruikers de enkele aanmeldingservaring pas als hun Kerberos-tickets in de cache, die doorgaans 10 uur geldig zijn, zijn verlopen.
+- Als Seamless SSO slaagt, heeft de gebruiker niet de mogelijkheid om **Keep me signed in**te selecteren. Vanwege dit gedrag werken [SharePoint- en OneDrive-toewijzingsscenario's](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) niet.
+- Office 365 Win32-clients (Outlook, Word, Excel en anderen) met versies 16.0.8730.xxxx en hoger worden ondersteund met behulp van een niet-interactieve stroom. Andere versies worden niet ondersteund; op deze versies, gebruikers zullen hun gebruikersnamen, maar niet wachtwoorden, aan te melden. Voor OneDrive moet u de [OneDrive-functie voor stille config](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) activeren voor een stille aanmeldingservaring.
+- Naadloze SSO werkt niet in de privébrowsermodus in Firefox.
+- Naadloze SSO werkt niet in Internet Explorer wanneer de modus Verbeterd beveiligd is ingeschakeld.
 - Naadloze SSO werkt niet op mobiele browsers op iOS en Android.
-- Als een gebruiker deel uitmaakt van te veel groepen in Active Directory, is het Kerberos-ticket van de gebruiker waarschijnlijk te groot om te verwerken, waardoor naadloze SSO niet kan worden uitgevoerd. HTTPS-aanvragen van Azure AD kunnen kopteksten hebben met een maximale grootte van 50 KB. Kerberos-tickets moeten kleiner zijn dan die limiet voor andere Azure AD-artefacten (meestal 2-5 KB), zoals cookies. U kunt het beste de groepslid maatschappen van de gebruiker verminderen en het opnieuw proberen.
-- Als u 30 of meer Active Directory-forests wilt synchroniseren, kunt u naadloze eenmalige aanmelding via Azure AD Connect niet inschakelen. Als tijdelijke oplossing kunt u de functie [hand matig inschakelen](#manual-reset-of-the-feature) op uw Tenant.
-- Als u de URL van de Azure AD-service (https://autologon.microsoftazuread-sso.com) aan de zone met vertrouwde sites toevoegt in plaats van de zone Lokaal intranet, blokkeert u de *aanmelding van gebruikers*.
-- Naadloze SSO ondersteunt de AES256_HMAC_SHA1, AES128_HMAC_SHA1 en RC4_HMAC_MD5 versleutelings typen voor Kerberos. Het is raadzaam om het versleutelings type voor de AzureADSSOAcc $-account in te stellen op AES256_HMAC_SHA1, of een van de AES-typen versus RC4 voor extra beveiliging. Het versleutelings type wordt opgeslagen in het kenmerk msDS-SupportedEncryptionTypes van het account in uw Active Directory.  Als het versleutelings type AzureADSSOAcc $-account is ingesteld op RC4_HMAC_MD5 en u het wilt wijzigen in een van de AES-versleutelings typen, moet u ervoor zorgen dat u de eerste keer de Kerberos-ontsleutelingssleutel van het AzureADSSOAcc $-account uitschakelt, zoals wordt uitgelegd in het [document met veelgestelde vragen](how-to-connect-sso-faq.md) onder de relevante vraag, anders wordt naadloze SSO niet uitgevoerd.
+- Als een gebruiker deel uitmaakt van te veel groepen in Active Directory, is het Kerberos-ticket van de gebruiker waarschijnlijk te groot om te verwerken en zal dit ervoor zorgen dat Naadloze SSO mislukt. Azure AD HTTPS-aanvragen kunnen kopteksten hebben met een maximale grootte van 50 KB; Kerberos-tickets moeten kleiner zijn dan die limiet voor andere Azure AD-artefacten (meestal 2 - 5 KB) zoals cookies. Onze aanbeveling is om het groepslidmaatschap van de gebruiker te verminderen en het opnieuw te proberen.
+- Als u 30 of meer Active Directory-forests synchroniseert, u Seamless SSO niet inschakelen via Azure AD Connect. Als tijdelijke oplossing u de functie [handmatig inschakelen](#manual-reset-of-the-feature) op uw tenant.
+- Als u de URL`https://autologon.microsoftazuread-sso.com`van de Azure AD-service () toevoegt aan de zone Vertrouwde sites in plaats van de zone Lokaal *intranet, kunnen gebruikers zich niet aanmelden.*
+- Seamless SSO ondersteunt de AES256_HMAC_SHA1, AES128_HMAC_SHA1 en RC4_HMAC_MD5 encryptietypen voor Kerberos. Het wordt aanbevolen dat het versleutelingstype voor het AzureADSSOAcc$-account is ingesteld op AES256_HMAC_SHA1 of een van de AES-typen vs. RC4 voor extra beveiliging. Het versleutelingstype wordt opgeslagen in het kenmerk msDS-SupportedEncryptionTypes van het account in uw Active Directory.  Als het AzureADSSOAcc$-accountversleutelingstype is ingesteld op RC4_HMAC_MD5 en u deze wilt wijzigen in een van de AES-versleutelingstypen, moet u ervoor zorgen dat u eerst de Kerberos-decryptiesleutel van het AzureADSSOAcc$-account overrolt, zoals uitgelegd in het [FAQ-document](how-to-connect-sso-faq.md) onder de relevante vraag, anders gebeurt Naadloze SSO niet.
 
-## <a name="check-status-of-feature"></a>De status van de functie controleren
+## <a name="check-status-of-feature"></a>Status van functie controleren
 
-Zorg ervoor dat de functie naadloze SSO nog steeds is **ingeschakeld** voor uw Tenant. U kunt de status controleren door naar het deel venster **Azure AD Connect** in het [Azure Active Directory beheer centrum](https://aad.portal.azure.com/)te gaan.
+Zorg ervoor dat de Seamless SSO-functie nog steeds **is ingeschakeld** op uw tenant. U de status controleren door naar het deelvenster **Azure AD Connect** in het Azure Active [Directory-beheercentrum](https://aad.portal.azure.com/)te gaan.
 
-![Azure Active Directory-beheer centrum: Azure AD Connect deel venster](./media/tshoot-connect-sso/sso10.png)
+![Azure Active Directory-beheercentrum: deelvenster Azure AD Connect](./media/tshoot-connect-sso/sso10.png)
 
-Klik op door om alle AD-forests weer te geven die zijn ingeschakeld voor naadloze SSO.
+Klik door om alle AD-forests te zien die zijn ingeschakeld voor Seamless SSO.
 
-![Azure Active Directory-beheer centrum: naadloze SSO-deel venster](./media/tshoot-connect-sso/sso13.png)
+![Azure Active Directory-beheercentrum: naadloos SSO-deelvenster](./media/tshoot-connect-sso/sso13.png)
 
-## <a name="sign-in-failure-reasons-in-the-azure-active-directory-admin-center-needs-a-premium-license"></a>Redenen voor aanmelden is mislukt in het Azure Active Directory-beheer centrum (hiervoor is een Premium-licentie vereist)
+## <a name="sign-in-failure-reasons-in-the-azure-active-directory-admin-center-needs-a-premium-license"></a>Redenen voor aanmeldingsfout in het Azure Active Directory-beheercentrum (heeft een Premium-licentie nodig)
 
-Als aan uw Tenant een Azure AD Premium-licentie is gekoppeld, kunt u ook kijken naar het [rapport aanmeldings activiteit](../reports-monitoring/concept-sign-ins.md) in het [Azure Active Directory beheer centrum](https://aad.portal.azure.com/).
+Als aan uw tenant een Azure AD Premium-licentie is gekoppeld, u ook het [aanmeldingsactiviteitsrapport](../reports-monitoring/concept-sign-ins.md) bekijken in het [Azure Active Directory-beheercentrum](https://aad.portal.azure.com/).
 
-![Azure Active Directory beheer centrum: rapporten van aanmeldingen](./media/tshoot-connect-sso/sso9.png)
+![Azure Active Directory-beheercentrum: rapport Aanmeldingen](./media/tshoot-connect-sso/sso9.png)
 
-Blader naar **Azure Active Directory** > **aanmeldingen** in het [Azure Active Directory beheer centrum](https://aad.portal.azure.com/)en selecteer vervolgens de aanmeldings activiteit van een specifieke gebruiker. Zoek het veld **met de fout code** voor de aanmelding. Wijs de waarde van dat veld toe aan een fout reden en een oplossing met behulp van de volgende tabel:
+Blader naar Azure Active > **Directory-aanmeldingen** in het Azure Active [Directory-beheercentrum](https://aad.portal.azure.com/)en selecteer vervolgens de aanmeldingsactiviteit van een specifieke gebruiker. **Azure Active Directory** Zoek naar het veld **AANMELDINGsFOUTCODE.** Breng de waarde van dat veld in kaart met de volgende tabel:
 
-|Fout code voor aanmelden|Reden voor aanmeldings fout|Oplossing
+|Aanmeldingsfoutcode|Reden voor aanmeldingsfout|Oplossing
 | --- | --- | ---
 | 81001 | Kerberos-ticket van de gebruiker is te groot. | Reduceer het aantal groepslidmaatschappen van de gebruiker en probeer het opnieuw.
-| 81002 | Kan het Kerberos-ticket van de gebruiker niet valideren. | Raadpleeg de [controle lijst voor probleem oplossing](#troubleshooting-checklist).
-| 81003 | Kan het Kerberos-ticket van de gebruiker niet valideren. | Raadpleeg de [controle lijst voor probleem oplossing](#troubleshooting-checklist).
-| 81004 | Poging tot Kerberos-verificatie is mislukt. | Raadpleeg de [controle lijst voor probleem oplossing](#troubleshooting-checklist).
-| 81008 | Kan het Kerberos-ticket van de gebruiker niet valideren. | Raadpleeg de [controle lijst voor probleem oplossing](#troubleshooting-checklist).
-| 81009 | Kan het Kerberos-ticket van de gebruiker niet valideren. | Raadpleeg de [controle lijst voor probleem oplossing](#troubleshooting-checklist).
-| 81010 | Naadloze eenmalige aanmelding is mislukt omdat het Kerberos-ticket van de gebruiker is verlopen of ongeldig is. | De gebruiker moet zich aanmelden vanaf een apparaat dat lid is van een domein in uw bedrijfs netwerk.
-| 81011 | Kan het gebruikers object niet vinden op basis van de informatie in het Kerberos-ticket van de gebruiker. | Gebruik Azure AD Connect om de gebruikers gegevens te synchroniseren met Azure AD.
-| 81012 | De gebruiker die zich probeert aan te melden bij Azure AD wijkt af van de gebruiker die is aangemeld bij het apparaat. | De gebruiker moet zich aanmelden vanaf een ander apparaat.
-| 81013 | Kan het gebruikers object niet vinden op basis van de informatie in het Kerberos-ticket van de gebruiker. |Gebruik Azure AD Connect om de gebruikers gegevens te synchroniseren met Azure AD. 
+| 81002 | Kan het Kerberos-ticket van de gebruiker niet valideren. | Zie de [checklist voor probleemoplossing.](#troubleshooting-checklist)
+| 81003 | Kan het Kerberos-ticket van de gebruiker niet valideren. | Zie de [checklist voor probleemoplossing.](#troubleshooting-checklist)
+| 81004 | Poging tot Kerberos-verificatie is mislukt. | Zie de [checklist voor probleemoplossing.](#troubleshooting-checklist)
+| 81008 | Kan het Kerberos-ticket van de gebruiker niet valideren. | Zie de [checklist voor probleemoplossing.](#troubleshooting-checklist)
+| 81009 | Kan het Kerberos-ticket van de gebruiker niet valideren. | Zie de [checklist voor probleemoplossing.](#troubleshooting-checklist)
+| 81010 | Naadloze eenmalige aanmelding is mislukt omdat het Kerberos-ticket van de gebruiker is verlopen of ongeldig is. | De gebruiker moet zich aanmelden vanaf een apparaat dat is verbonden aan het domein binnen uw bedrijfsnetwerk.
+| 81011 | Kan het object van de gebruiker niet vinden op basis van de informatie in het Kerberos-ticket van de gebruiker. | Gebruik Azure AD Connect om de gegevens van de gebruiker te synchroniseren met Azure AD.
+| 81012 | De gebruiker die zich probeert aan te melden bij Azure AD is anders dan de gebruiker die is aangemeld bij het apparaat. | De gebruiker moet zich aanmelden vanaf een ander apparaat.
+| 81013 | Kan het object van de gebruiker niet vinden op basis van de informatie in het Kerberos-ticket van de gebruiker. |Gebruik Azure AD Connect om de gegevens van de gebruiker te synchroniseren met Azure AD. 
 
-## <a name="troubleshooting-checklist"></a>Controle lijst voor probleem oplossing
+## <a name="troubleshooting-checklist"></a>Controlelijst voor probleemoplossing
 
-Gebruik de volgende controle lijst om problemen met naadloze SSO op te lossen:
+Gebruik de volgende checklist om naadloze SSO-problemen op te lossen:
 
-- Zorg ervoor dat de functie naadloze SSO is ingeschakeld in Azure AD Connect. Als u de functie niet kunt inschakelen (bijvoorbeeld vanwege een geblokkeerde poort), moet u ervoor zorgen dat u beschikt over alle [vereiste onderdelen](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites) .
-- Als u [Azure AD-deelname](../active-directory-azureadjoin-overview.md) en naadloze SSO hebt ingeschakeld voor uw Tenant, moet u ervoor zorgen dat het probleem niet is met Azure AD-deelname. SSO van Azure AD join heeft voor rang op naadloze SSO als het apparaat is geregistreerd bij Azure AD en lid is van een domein. Met SSO van Azure AD-deelname ziet de gebruiker een aanmeldings tegel met de tekst ' verbonden met Windows '.
-- Zorg ervoor dat de Azure AD-URL (https://autologon.microsoftazuread-sso.com) onderdeel is van de intranet zone-instellingen van de gebruiker.
-- Zorg ervoor dat het bedrijfs apparaat is gekoppeld aan het Active Directory domein. Het apparaat hoeft _geen_ lid te zijn van [Azure AD](../active-directory-azureadjoin-overview.md) voor naadloze SSO.
-- Zorg ervoor dat de gebruiker is aangemeld bij het apparaat via een Active Directory domein account.
-- Zorg ervoor dat het account van de gebruiker afkomstig is van een Active Directory-forest waar naadloze SSO is ingesteld.
-- Zorg ervoor dat het apparaat is verbonden met het bedrijfs netwerk.
-- Zorg ervoor dat de tijd van het apparaat wordt gesynchroniseerd met de tijd in zowel Active Directory als de domein controllers en dat ze binnen vijf minuten van elkaar zijn.
-- Zorg ervoor dat de `AZUREADSSOACC` computer account aanwezig is en is ingeschakeld in elk AD-forest waarvoor u naadloze SSO wilt inschakelen. Als het computer account is verwijderd of ontbreekt, kunt u de [Power shell-cmdlets](#manual-reset-of-the-feature) gebruiken om ze opnieuw te maken.
-- Vermeld de bestaande Kerberos-tickets op het apparaat met behulp van de opdracht `klist` vanaf een opdracht prompt. Zorg ervoor dat de tickets die voor het `AZUREADSSOACC` computer account zijn uitgegeven, aanwezig zijn. De Kerberos-tickets van gebruikers zijn doorgaans 10 uur geldig. Er zijn mogelijk verschillende instellingen in Active Directory.
-- Als u naadloze SSO op uw Tenant hebt uitgeschakeld en opnieuw hebt ingeschakeld, krijgen gebruikers niet de mogelijkheid om eenmalige aanmelding te ontvangen. de Kerberos-tickets in de cache zijn verlopen.
-- Verwijder bestaande Kerberos-tickets van het apparaat met behulp van de opdracht `klist purge` en probeer het opnieuw.
-- Raadpleeg de console logboeken van de browser (onder **Ontwikkelhulpprogramma's**) om te bepalen of er problemen zijn met Java script.
-- Controleer de [Logboeken van de domein controller](#domain-controller-logs).
+- Controleer of de seamless sso-functie is ingeschakeld in Azure AD Connect. Als u de functie niet inschakelen (bijvoorbeeld vanwege een geblokkeerde poort), moet u ervoor zorgen dat u over alle [vereisten](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites) beschikt.
+- Als u zowel [Azure AD Join](../active-directory-azureadjoin-overview.md) als Seamless SSO op uw tenant hebt ingeschakeld, moet u ervoor zorgen dat het probleem niet bij Azure AD Join is. SSO van Azure AD Join heeft voorrang op Seamless SSO als het apparaat zowel is geregistreerd bij Azure AD als met een domein is verbonden. Met SSO van Azure AD Join ziet de gebruiker een aanmeldingstegel met de tekst 'Verbonden met Windows'.
+- Controleer of de Azure`https://autologon.microsoftazuread-sso.com`AD URL ( ) deel uitmaakt van de instellingen van de intranetzone van de gebruiker.
+- Controleer of het bedrijfsapparaat is verbonden met het Active Directory-domein. Het apparaat _hoeft niet_ [Azure AD](../active-directory-azureadjoin-overview.md) te zijn aangesloten om Seamless SSO te laten werken.
+- Controleer of de gebruiker is aangemeld bij het apparaat via een Active Directory-domeinaccount.
+- Controleer of het account van de gebruiker afkomstig is uit een Active Directory-forest waar Seamless SSO is ingesteld.
+- Controleer of het apparaat is verbonden met het bedrijfsnetwerk.
+- Zorg ervoor dat de tijd van het apparaat wordt gesynchroniseerd met de tijd in zowel Active Directory als de domeincontrollers en dat ze zich binnen vijf minuten van elkaar bevinden.
+- Controleer of `AZUREADSSOACC` het computeraccount aanwezig en ingeschakeld is in elk AD-forest waarvan u wilt dat Seamless SSO is ingeschakeld. Als het computeraccount is verwijderd of ontbreekt, u [PowerShell-cmdlets](#manual-reset-of-the-feature) gebruiken om ze opnieuw te maken.
+- Vermeld de bestaande Kerberos-tickets op `klist` het apparaat met behulp van de opdracht uit een opdrachtprompt. Zorg ervoor dat de `AZUREADSSOACC` tickets die voor het computeraccount zijn uitgegeven, aanwezig zijn. De Kerberos-tickets van gebruikers zijn doorgaans 10 uur geldig. Mogelijk hebt u verschillende instellingen in Active Directory.
+- Als u Seamless SSO op uw tenant hebt uitgeschakeld en opnieuw hebt ingeschakeld, krijgen gebruikers de enkele aanmeldingservaring pas als hun Kerberos-tickets in de cache zijn verlopen.
+- Verwijder bestaande Kerberos-tickets van `klist purge` het apparaat met behulp van de opdracht en probeer het opnieuw.
+- Als u wilt bepalen of er JavaScript-gerelateerde problemen zijn, controleert u de consolelogboeken van de browser (onder **Hulpprogramma's voor ontwikkelaars).**
+- Controleer de [logboeken van](#domain-controller-logs)de domeincontroller .
 
-### <a name="domain-controller-logs"></a>Domein controller logboeken
+### <a name="domain-controller-logs"></a>Logboeken van domeincontroller
 
-Als u geslaagde controle op de domein controller inschakelt, wordt er telkens wanneer een gebruiker zich aanmeldt via naadloze SSO, een beveiligings vermelding vastgelegd in het gebeurtenis logboek. U kunt deze beveiligings gebeurtenissen vinden met behulp van de volgende query. (Zoek naar gebeurtenis **4769** die is gekoppeld aan het computer account **AzureADSSOAcc $** .)
+Als u succescontrole op uw domeincontroller inschakelt, wordt elke keer dat een gebruiker zich aanmeldt via Seamless SSO, een beveiligingsitem geregistreerd in het gebeurtenislogboek. U deze beveiligingsgebeurtenissen vinden met behulp van de volgende query. (Zoek naar gebeurtenis **4769** die is gekoppeld aan het computeraccount **AzureADSSOAcc$**.)
 
 ```
     <QueryList>
@@ -100,46 +100,46 @@ Als u geslaagde controle op de domein controller inschakelt, wordt er telkens wa
     </QueryList>
 ```
 
-## <a name="manual-reset-of-the-feature"></a>Hand matig opnieuw instellen van de functie
+## <a name="manual-reset-of-the-feature"></a>Handmatig opnieuw instellen van de functie
 
-Als u het probleem niet kunt oplossen, kunt u de functie hand matig opnieuw instellen op uw Tenant. Volg deze stappen op de on-premises server waarop u Azure AD Connect uitvoert.
+Als het oplossen van problemen niet heeft geholpen, u de functie handmatig opnieuw instellen op uw tenant. Volg deze stappen op de on-premises server waar u Azure AD Connect uitvoert.
 
-### <a name="step-1-import-the-seamless-sso-powershell-module"></a>Stap 1: de naadloze SSO Power shell-module importeren
+### <a name="step-1-import-the-seamless-sso-powershell-module"></a>Stap 1: De Seamless SSO PowerShell-module importeren
 
-1. Down load en installeer eerst [Azure AD Power shell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+1. Download en installeer [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
 2. Blader naar de map `%programfiles%\Microsoft Azure Active Directory Connect`.
-3. Importeer de naadloze SSO Power shell-module met behulp van deze opdracht: `Import-Module .\AzureADSSO.psd1`.
+3. Importeer de Seamless SSO PowerShell-module `Import-Module .\AzureADSSO.psd1`met deze opdracht: .
 
-### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>Stap 2: de lijst met Active Directory forests ophalen waarop naadloze SSO is ingeschakeld
+### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>Stap 2: Download de lijst met Active Directory-forests waarop Seamless SSO is ingeschakeld
 
-1. Voer Power shell uit als beheerder. Roep `New-AzureADSSOAuthenticationContext`aan in Power shell. Voer de referenties van de globale beheerder van uw Tenant in wanneer dit wordt gevraagd.
-2. `Get-AzureADSSOStatus`aanroepen. Met deze opdracht geeft u de lijst met Active Directory forests weer (Bekijk de lijst ' domeinen ') waarop deze functie is ingeschakeld.
+1. Voer PowerShell uit als beheerder. Bel in `New-AzureADSSOAuthenticationContext`PowerShell. Voer de algemene beheerdersreferenties van uw tenant in wanneer u daarom wordt gevraagd.
+2. Bel `Get-AzureADSSOStatus`. Deze opdracht biedt u de lijst met Active Directory-forests (kijk naar de lijst Domeinen) waarop deze functie is ingeschakeld.
 
-### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>Stap 3: naadloze SSO uitschakelen voor elke Active Directory forest waarin u de functie hebt ingesteld
+### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>Stap 3: Naadloze SSO uitschakelen voor elk Active Directory-forest waar u de functie hebt ingesteld
 
-1. `$creds = Get-Credential`aanroepen. Wanneer u hierom wordt gevraagd, voert u de referenties voor de domein beheerder in voor het beoogde Active Directory-forest.
-
-   > [!NOTE]
-   >De gebruikers naam van de domein beheerder referenties moet worden opgegeven in de indeling SAM-account naam (contoso\johndoe of contoso. com\johndoe). We gebruiken het domein gedeelte van de gebruikers naam voor het zoeken van de domein controller van de domein beheerder met behulp van DNS.
-
-   >[!NOTE]
-   >Het domein beheerders account dat wordt gebruikt, mag geen lid zijn van de groep met beveiligde gebruikers. Als dit het geval is, mislukt de bewerking.
-
-2. `Disable-AzureADSSOForest -OnPremCredentials $creds`aanroepen. Met deze opdracht wordt het `AZUREADSSOACC` computer account verwijderd van de on-premises domein controller voor dit specifieke Active Directory forest.
-3. Herhaal de voor gaande stappen voor elke Active Directory forest waarin u de functie hebt ingesteld.
-
-### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>Stap 4: naadloze SSO inschakelen voor elke Active Directory-forest
-
-1. `Enable-AzureADSSOForest`aanroepen. Wanneer u hierom wordt gevraagd, voert u de referenties voor de domein beheerder in voor het beoogde Active Directory-forest.
+1. Bel `$creds = Get-Credential`. Wanneer u daarom wordt gevraagd, voert u de referenties van de domeinbeheerder in voor het beoogde Active Directory-forest.
 
    > [!NOTE]
-   >De gebruikers naam van de domein beheerder referenties moet worden opgegeven in de indeling SAM-account naam (contoso\johndoe of contoso. com\johndoe). We gebruiken het domein gedeelte van de gebruikers naam voor het zoeken van de domein controller van de domein beheerder met behulp van DNS.
+   >De gebruikersnaam van de domeinbeheerder moet worden ingevoerd in de SAM-accountnaamnotatie (contoso\johndoe of contoso.com\johndoe). We gebruiken het domeingedeelte van de gebruikersnaam om de domeincontroller van de domeinbeheerder te vinden met BEHULP van DNS.
 
    >[!NOTE]
-   >Het domein beheerders account dat wordt gebruikt, mag geen lid zijn van de groep met beveiligde gebruikers. Als dit het geval is, mislukt de bewerking.
+   >Het gebruikte domeinbeheerdersaccount mag geen lid zijn van de groep Beveiligde gebruikers. Als dat het zo is, zal de bewerking mislukken.
 
-2. Herhaal de vorige stap voor elke Active Directory forest waarin u de functie wilt instellen.
+2. Bel `Disable-AzureADSSOForest -OnPremCredentials $creds`. Met deze `AZUREADSSOACC` opdracht wordt het computeraccount verwijderd van de on-premises domeincontroller voor dit specifieke Active Directory-forest.
+3. Herhaal de voorgaande stappen voor elk Active Directory-forest waarin u de functie hebt ingesteld.
 
-### <a name="step-5-enable-the-feature-on-your-tenant"></a>Stap 5. De functie inschakelen op uw Tenant
+### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>Stap 4: Naadloze SSO inschakelen voor elk Active Directory-forest
 
-Als u de functie op uw Tenant wilt inschakelen, roept u `Enable-AzureADSSO -Enable $true`aan.
+1. Bel `Enable-AzureADSSOForest`. Wanneer u daarom wordt gevraagd, voert u de referenties van de domeinbeheerder in voor het beoogde Active Directory-forest.
+
+   > [!NOTE]
+   >De gebruikersnaam van de domeinbeheerder moet worden ingevoerd in de SAM-accountnaamnotatie (contoso\johndoe of contoso.com\johndoe). We gebruiken het domeingedeelte van de gebruikersnaam om de domeincontroller van de domeinbeheerder te vinden met BEHULP van DNS.
+
+   >[!NOTE]
+   >Het gebruikte domeinbeheerdersaccount mag geen lid zijn van de groep Beveiligde gebruikers. Als dat het zo is, zal de bewerking mislukken.
+
+2. Herhaal de vorige stap voor elk Active Directory-forest waarin u de functie wilt instellen.
+
+### <a name="step-5-enable-the-feature-on-your-tenant"></a>Stap 5. De functie op uw tenant inschakelen
+
+Als u de functie op `Enable-AzureADSSO -Enable $true`uw tenant wilt inschakelen, belt u.

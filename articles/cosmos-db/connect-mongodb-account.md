@@ -1,70 +1,74 @@
 ---
 title: Een MongoDB-toepassing verbinden met Azure Cosmos DB
-description: Meer informatie over hoe u een MongoDB-app kunt verbinden met Azure Cosmos DB door de connection string op te halen van Azure Portal
-author: markjbrown
-ms.author: mjbrown
+description: Meer informatie over het verbinden van een MongoDB-app met Azure Cosmos DB door de verbindingstekenreeks van Azure-portal te halen
+author: timsander1
+ms.author: tisande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 03/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0f2cd1b7228f2cc9cadb84232222f658a512a81f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e3ab6282a3c61e12dce5dd17bc0859c0d73a7724
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79246849"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051725"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Een MongoDB-toepassing verbinden met Azure Cosmos DB
-Ontdek hoe u uw MongoDB-app met een Azure Cosmos DB kunt verbinden met behulp van een MongoDB-verbindingsreeks. U kunt vervolgens een Azure Cosmos-database gebruiken als het gegevensarchief voor uw MongoDB-app. 
+
+Ontdek hoe u uw MongoDB-app met een Azure Cosmos DB kunt verbinden met behulp van een MongoDB-verbindingsreeks. U kunt vervolgens een Azure Cosmos-database gebruiken als het gegevensarchief voor uw MongoDB-app.
 
 In deze zelfstudie kunt u op twee manieren gegevens van verbindingsreeksen ophalen:
 
-- [De Quick](#QuickstartConnection)start-methode, voor gebruik met .net-, node. js-, MongoDb-, Java-en python-Stuur Programma's
-- [De aangepaste Connection String methode](#GetCustomConnection), voor gebruik met andere Stuur Programma's
+- [De quickstart-methode](#get-the-mongodb-connection-string-by-using-the-quick-start), voor gebruik met .NET, Node.js, MongoDB Shell, Java en Python drivers
+- [De aangepaste verbindingstekenreeksmethode](#get-the-mongodb-connection-string-to-customize)voor gebruik met andere stuurprogramma's
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account. Als u geen Azure-account hebt, maakt u nu een [gratis Azure-account](https://azure.microsoft.com/free/) . 
-- Een Cosmos-account. Zie [een web-app bouwen met de API van Azure Cosmos DB voor MongoDb en .NET SDK](create-mongodb-dotnet.md)voor instructies.
+- Een Azure-account. Als u geen Azure-account hebt, maakt u nu een [gratis Azure-account.](https://azure.microsoft.com/free/)
+- Een Cosmos-account. Zie Een [web-app bouwen met de API van Azure Cosmos DB voor MongoDB en .NET SDK voor](create-mongodb-dotnet.md)instructies.
 
-## <a id="QuickstartConnection"></a>De MongoDB-connection string ophalen met behulp van snel starten
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)in een Internet browser.
-2. Selecteer op de Blade **Azure Cosmos DB** de API. 
-3. Klik in het linkerdeel venster van de Blade account op **Quick Start**. 
-4. Kies uw platform ( **.net**, **node. js**, **MongoDb shell**, **Java**, **python**). Als uw stuur programma of hulp programma niet wordt weer gegeven, kunt u geen zorgen maken, we maken continu meer code fragmenten voor verbindings codes. Geef hieronder een opmerking over wat u wilt zien. Als u wilt weten hoe u uw eigen verbinding maakt, leest u [de Connection String gegevens van het account ophalen](#GetCustomConnection).
-5. Kopieer en plak het code fragment in uw MongoDB-app.
+## <a name="get-the-mongodb-connection-string-by-using-the-quick-start"></a>Download de MongoDB-verbindingstekenreeks met de snelle start
 
-    ![Blade snel starten](./media/connect-mongodb-account/QuickStartBlade.png)
+1. Meld u in een internetbrowser aan bij de [Azure-portal.](https://portal.azure.com)
+2. Selecteer de API in het **Azure Cosmos DB-blad.**
+3. Klik in het linkerdeelvenster van het accountblad op **Snel starten**.
+4. Kies uw platform (**.NET**, **Node.js**, **MongoDB Shell**, **Java**, **Python**). Als u uw stuurprogramma of hulpprogramma niet in de lijst ziet staan, hoeft u zich geen zorgen te maken: we documenteren continu meer verbindingscodefragmenten. Reageer hieronder op wat je wilt zien. Lees De [verbindingstekenreeksgegevens van het account voor](#get-the-mongodb-connection-string-to-customize)meer informatie over het maken van uw eigen verbinding.
+5. Kopieer en plak het codefragment in uw MongoDB-app.
 
-## <a id="GetCustomConnection"></a>De MongoDB-connection string ophalen om aan te passen
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)in een Internet browser.
-2. Selecteer op de Blade **Azure Cosmos DB** de API. 
-3. Klik in het linkerdeel venster van de Blade account op **verbindings reeks**. 
-4. De Blade **verbindings reeks** wordt geopend. Het bevat alle informatie die nodig is om verbinding te maken met het account met behulp van een stuur programma voor MongoDB, inclusief een geconstrueerde connection string.
+    ![Snel startblad](./media/connect-mongodb-account/QuickStartBlade.png)
 
-    ![De blade Verbindingsreeks](./media/connect-mongodb-account/ConnectionStringBlade.png)
+## <a name="get-the-mongodb-connection-string-to-customize"></a>De MongoDB-verbindingstekenreeks aanpassen
 
-## <a name="connection-string-requirements"></a>Vereisten voor de verbindings reeks
+1. Meld u in een internetbrowser aan bij de [Azure-portal.](https://portal.azure.com)
+2. Selecteer de API in het **Azure Cosmos DB-blad.**
+3. Klik in het linkerdeelvenster van het accountblad op **Verbindingstekenreeks**.
+4. Het **verbindingsstouwsblad** wordt geopend. Het heeft alle informatie die nodig is om verbinding te maken met de rekening met behulp van een driver voor MongoDB, inclusief een vooraf gebouwde verbindingstekenreeks.
+
+   [![Verbindingsstouwsblad](./media/connect-mongodb-account/ConnectionStringBlade.png)](./media/connect-mongodb-account/ConnectionStringBlade.png#lightbox)
+
+## <a name="connection-string-requirements"></a>Vereisten voor verbindingstekenreeks
+
 > [!Important]
-> Voor Azure Cosmos DB gelden strenge beveiligingsvereisten en -normen. Azure Cosmos DB-accounts vereisen verificatie en beveiligde communicatie via *SSL*. 
+> Voor Azure Cosmos DB gelden strenge beveiligingsvereisten en -normen. Azure Cosmos DB-accounts vereisen verificatie en beveiligde communicatie via *SSL.* 
 >
 >
 
-Azure Cosmos DB ondersteunt de standaard MongoDB-connection string URI-indeling, met een aantal specifieke vereisten: Azure Cosmos DB accounts vereisen verificatie en beveiligde communicatie via SSL. De connection string indeling is dus:
+Azure Cosmos DB ondersteunt de standaard MongoDB-verbindingstekenreeks URI-indeling, met een paar specifieke vereisten: Azure Cosmos DB-accounts vereisen verificatie en veilige communicatie via SSL. De verbindingstekenreeksindeling is dus:
 
     mongodb://username:password@host:port/[database]?ssl=true
 
-De waarden van deze teken reeks zijn beschikbaar op de Blade **verbindingsteken reeks** die eerder is weer gegeven:
+De waarden van deze tekenreeks zijn beschikbaar in het eerder weergegeven **verbindingstekenreeksblad:**
 
-* Gebruikers naam (vereist): Cosmos-account naam.
-* Wacht woord (vereist): Cosmos-account wachtwoord.
+* Gebruikersnaam (vereist): Cosmos-accountnaam.
+* Wachtwoord (vereist): Wachtwoord van cosmos-account.
 * Host (vereist): FQDN van het Cosmos-account.
-* Poort (vereist): 10255.
-* Data Base (optioneel): de data base die door de verbinding wordt gebruikt. Als er geen data base wordt gegeven, is de standaard database ' test '.
-* SSL = True (vereist)
+* Poort (verplicht): 10255.
+* Database (optioneel): de database die de verbinding gebruikt. Als er geen database wordt verstrekt, is de standaarddatabase 'test'.
+* ssl=true (vereist)
 
-Bekijk bijvoorbeeld het account dat wordt weer gegeven op de Blade **verbindings reeks** . Een geldig connection string is:
+Denk bijvoorbeeld aan het account dat wordt weergegeven in het **verbindingstekenreeksblad.** Een geldige verbindingstekenreeks is:
 
     mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@contoso123.documents.azure.com:10255/mydatabase?ssl=true
 
@@ -72,4 +76,4 @@ Bekijk bijvoorbeeld het account dat wordt weer gegeven op de Blade **verbindings
 
 - Meer informatie over het [gebruik van Studio 3T](mongodb-mongochef.md) met de API voor MongoDB van Azure Cosmos DB.
 - Meer informatie over het [gebruik van Robo 3T](mongodb-robomongo.md) met de API voor MongoDB van Azure Cosmos DB.
-- Verken [voorbeelden](mongodb-samples.md) van MongoDB met de API voor MongoDB van Azure Cosmos DB.
+- Verken [voorbeelden](mongodb-samples.md) van MongoDB met de API van Azure Cosmos DB voor MongoDB.

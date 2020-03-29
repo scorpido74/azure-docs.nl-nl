@@ -1,6 +1,6 @@
 ---
-title: Batch verwerking gebruiken om de prestaties van toepassingen te verbeteren
-description: In het onderwerp wordt beschreven hoe u met batch-database bewerkingen de snelheid en schaal baarheid van uw Azure SQL Database-toepassingen aanzienlijk verbetert. Hoewel deze batch technieken voor een SQL Server Data Base werken, is de focus van het artikel op Azure.
+title: Batching gebruiken om de prestaties van toepassingen te verbeteren
+description: Het onderwerp biedt bewijs dat batching database bewerkingen sterk verbetert de snelheid en schaalbaarheid van uw Azure SQL Database-toepassingen. Hoewel deze batchingtechnieken werken voor elke SQL Server-database, ligt de focus van het artikel op Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,42 +12,42 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: cacc01151edaf31db938cf8abf3d46e75397758f
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76545021"
 ---
-# <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Batch verwerking gebruiken om de prestaties van SQL Database-toepassingen te verbeteren
+# <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Batchverwerking gebruiken om de prestaties van SQL Database-toepassingen te verbeteren
 
-Batch bewerkingen voor het Azure SQL Database aanzienlijk betere prestaties en schaal baarheid van uw toepassingen. Het eerste deel van dit artikel bevat een aantal voor beelden van test resultaten waarmee opeenvolgende en batch-aanvragen worden vergeleken met een SQL Database om de voor delen te begrijpen. In de rest van het artikel ziet u de technieken, scenario's en aandachtspunten om u te helpen bij het gebruik van batch verwerking in uw Azure-toepassingen.
+Batching-bewerkingen naar Azure SQL Database verbeteren de prestaties en schaalbaarheid van uw toepassingen aanzienlijk. Om de voordelen te begrijpen, bevat het eerste deel van dit artikel een aantal voorbeeldtestresultaten die opeenvolgende en batched-aanvragen vergelijken met een SQL-database. In de rest van het artikel worden de technieken, scenario's en overwegingen weergegeven waarmee u batching succesvol gebruiken in uw Azure-toepassingen.
 
-## <a name="why-is-batching-important-for-sql-database"></a>Waarom is batching belang rijk voor SQL Database
+## <a name="why-is-batching-important-for-sql-database"></a>Waarom is batching belangrijk voor SQL Database
 
-Het batch-aanroepen van een externe service is een bekende strategie voor het verbeteren van de prestaties en schaal baarheid. Er zijn vaste verwerkings kosten voor alle interacties met een externe service, zoals serialisatie, netwerk overdracht en deserialisatie. Als u veel afzonderlijke trans acties inpakt in één batch, worden deze kosten geminimaliseerd.
+Batching calls naar een externe service is een bekende strategie voor het verhogen van prestaties en schaalbaarheid. Er zijn vaste verwerkingskosten voor interacties met een externe service, zoals serialisatie, netwerkoverdracht en deserialisatie. Het verpakken van veel afzonderlijke transacties in één batch minimaliseert deze kosten.
 
-In dit artikel willen we verschillende SQL Database voor het uitvoeren van batch-strategieën en-scenario's bekijken. Hoewel deze strategieën ook belang rijk zijn voor on-premises toepassingen die gebruikmaken van SQL Server, zijn er verschillende redenen voor het markeren van het gebruik van batch verwerking voor SQL Database:
+In dit artikel willen we verschillende SQL Database batching strategieën en scenario's onderzoeken. Hoewel deze strategieën ook belangrijk zijn voor on-premises toepassingen die SQL Server gebruiken, zijn er verschillende redenen om het gebruik van batching voor SQL Database te benadrukken:
 
-* Er is mogelijk een grotere netwerk latentie bij het openen van SQL Database, met name als u SQL Database van buiten hetzelfde Microsoft Azure Data Center toegang hebt.
-* De multi tenant-kenmerken van SQL Database betekent dat de efficiëntie van de Gegevenstoegangslaag overeenkomt met de algehele schaal baarheid van de data base. SQL Database moet voor komen dat één Tenant/gebruiker database bronnen kan beslag nemen tegen de nadelige andere tenants. Als reactie op het gebruik van vooraf gedefinieerde quota's, kan SQL Database de door Voer verminderen of reageren met beperkings uitzonderingen. Met efficiency verbeteringen, zoals batch verwerking, kunt u meer werk doen op SQL Database voordat u deze limieten bereikt. 
-* Batch verwerking is ook effectief voor architecturen die gebruikmaken van meerdere data bases (sharding). De efficiëntie van uw interactie met elke database eenheid is nog steeds een belang rijke factor in uw totale schaal baarheid. 
+* Er is mogelijk een grotere netwerklatentie bij het openen van SQL Database, vooral als u toegang hebt tot SQL Database van buiten hetzelfde Microsoft Azure-datacenter.
+* De multitenant-kenmerken van SQL Database betekenen dat de efficiëntie van de gegevenstoegangslaag correleert met de algehele schaalbaarheid van de database. SQL Database moet voorkomen dat één tenant/gebruiker databasebronnen monopoliseert ten nadele van andere tenants. Als reactie op het gebruik dat hoger is dan vooraf gedefinieerde quota, kan SQL Database de doorvoer verminderen of reageren met uitzonderingen op beperking. Met efficiëntieverbeteringen, zoals batching, u meer werk doen aan SQL Database voordat u deze limieten bereikt. 
+* Batching is ook effectief voor architecturen die meerdere databases gebruiken (sharding). De efficiëntie van uw interactie met elke database-eenheid is nog steeds een belangrijke factor in uw algehele schaalbaarheid. 
 
-Een van de voor delen van het gebruik van SQL Database is dat u de servers die als host fungeren voor de-data base niet hoeft te beheren. Deze beheerde infra structuur houdt er echter ook rekening mee dat u anders moet denken over database optimalisaties. Het is niet meer mogelijk om de data base-hardware of netwerk infrastructuur te verbeteren. Microsoft Azure regelt deze omgevingen. In het hoofd gebied dat u kunt bepalen hoe uw toepassing samenwerkt met SQL Database. Batch verwerking is een van deze optimalisaties. 
+Een van de voordelen van het gebruik van SQL Database is dat u de servers die de database hosten niet hoeft te beheren. Deze beheerde infrastructuur betekent echter ook dat u anders moet denken over databaseoptimalisaties. U niet langer kijken naar het verbeteren van de database hardware of netwerkinfrastructuur. Microsoft Azure beheert deze omgevingen. Het belangrijkste gebied dat u beheren, is hoe uw toepassing samenwerkt met SQL Database. Batching is een van deze optimalisaties. 
 
-In het eerste deel van het artikel worden verschillende batch technieken onderzocht voor .NET-toepassingen die gebruikmaken van SQL Database. In de laatste twee secties worden de richt lijnen en scenario's voor batch verwerking behandeld.
+Het eerste deel van het document onderzoekt verschillende batchingtechnieken voor .NET-toepassingen die SQL Database gebruiken. De laatste twee secties hebben betrekking op batchrichtlijnen en scenario's.
 
-## <a name="batching-strategies"></a>Batch-strategieën
+## <a name="batching-strategies"></a>Batchstrategieën
 
-### <a name="note-about-timing-results-in-this-article"></a>Opmerking over timing resultaten in dit artikel
+### <a name="note-about-timing-results-in-this-article"></a>Opmerking over de timing resultaten in dit artikel
 
 > [!NOTE]
-> Resultaten zijn geen benchmarks, maar zijn bedoeld om **relatieve prestaties**weer te geven. Tijds instellingen zijn gebaseerd op een gemiddelde van ten minste tien test uitvoeringen. Bewerkingen worden ingevoegd in een lege tabel. Deze tests werden gemeten vóór V12 en ze komen niet noodzakelijkerwijs overeen met de door Voer die u kunt ervaren in een V12-data base met behulp van de nieuwe [DTU-service lagen](sql-database-service-tiers-dtu.md) of [vCore-service lagen](sql-database-service-tiers-vcore.md). Het relatieve voor deel van de batch-techniek moet vergelijkbaar zijn.
+> Resultaten zijn geen benchmarks, maar zijn bedoeld om **relatieve prestaties**weer te geven . De timings zijn gebaseerd op een gemiddelde van ten minste 10 testruns. Bewerkingen worden ingevoegd in een lege tabel. Deze tests werden gemeten vóór V12 en komen niet noodzakelijkerwijs overeen met de doorvoer die u in een V12-database ervaren met behulp van de nieuwe [DTU-servicelagen](sql-database-service-tiers-dtu.md) of [vCore-servicelagen.](sql-database-service-tiers-vcore.md) Het relatieve voordeel van de batchingtechniek moet vergelijkbaar zijn.
 
 ### <a name="transactions"></a>Transacties
 
-Het lijkt vreemd te beginnen met het controleren van batch verwerking door trans acties te bespreken. Maar het gebruik van trans acties aan client zijde heeft een subtiele batch-effect aan de server zijde waarmee de prestaties worden verbeterd. En trans acties kunnen met slechts een paar regels code worden toegevoegd, zodat ze een snelle manier bieden om de prestaties van sequentiële bewerkingen te verbeteren.
+Het lijkt vreemd om te beginnen met een herziening van batching door het bespreken van transacties. Maar het gebruik van client-side transacties heeft een subtiele server-side batching effect dat de prestaties verbetert. En transacties kunnen worden toegevoegd met slechts een paar regels code, zodat ze een snelle manier bieden om de prestaties van opeenvolgende bewerkingen te verbeteren.
 
-Bekijk de volgende C# code die een reeks INSERT-en update-bewerkingen in een eenvoudige tabel bevat.
+Overweeg de volgende C#-code die een reeks invoeg- en updatebewerkingen bevat in een eenvoudige tabel.
 
 ```csharp
 List<string> dbOperations = new List<string>();
@@ -58,7 +58,7 @@ dbOperations.Add("insert MyTable values ('new value',1)");
 dbOperations.Add("insert MyTable values ('new value',2)");
 dbOperations.Add("insert MyTable values ('new value',3)");
 ```
-Met de volgende ADO.NET-code worden deze bewerkingen sequentieel uitgevoerd.
+De volgende ADO.NET code voert deze bewerkingen achtereenvolgens uit.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -73,7 +73,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-De beste manier om deze code te optimaliseren, is door een vorm van client-side batching van deze aanroepen te implementeren. Maar er is een eenvoudige manier om de prestaties van deze code te verhogen door de volg orde van de aanroepen in een trans actie te verpakken. Dit is dezelfde code die gebruikmaakt van een trans actie.
+De beste manier om deze code te optimaliseren is het implementeren van een vorm van client-side batching van deze gesprekken. Maar er is een eenvoudige manier om de prestaties van deze code te verhogen door simpelweg het verpakken van de volgorde van oproepen in een transactie. Hier is dezelfde code die een transactie gebruikt.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -91,22 +91,22 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Trans acties worden feitelijk gebruikt in beide voor beelden. In het eerste voor beeld is elke afzonderlijke aanroep een impliciete trans actie. In het tweede voor beeld verloopt een expliciete trans actie alle aanroepen. In de documentatie voor het [transactie logboek voor schrijven](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)worden logboek records naar de schijf verwijderd wanneer de trans actie wordt doorgevoerd. Door meer aanroepen in een trans actie op te nemen, kan de schrijf bewerking naar het transactie logboek worden vertraagd totdat de trans actie is doorgevoerd. In feite schakelt u batch verwerking in voor de schrijf bewerkingen naar het transactie logboek van de server.
+Transacties worden in beide voorbeelden daadwerkelijk gebruikt. In het eerste voorbeeld is elke afzonderlijke aanroep een impliciete transactie. In het tweede voorbeeld wordt met een expliciete transactie alle aanmeldingen verwerkt. Volgens de documentatie voor het [write-ahead transactielogboek](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)worden logboekrecords naar de schijf gespoeld wanneer de transactie wordt gepleegd. Dus door meer oproepen in een transactie op te nemen, kan het schrijven naar het transactielogboek vertragen totdat de transactie is vastgelegd. In feite schakelt u batching voor de schrijft in het transactielogboek van de server in.
 
-In de volgende tabel ziet u enkele ad hoc test resultaten. De tests hebben dezelfde sequentiële toevoegingen met en zonder trans acties uitgevoerd. Voor meer perspectief is de eerste set testen op afstand uitgevoerd vanaf een laptop naar de data base in Microsoft Azure. De tweede set tests is uitgevoerd vanuit een Cloud service en data base die zich in hetzelfde Microsoft Azure Data Center (VS-West) bevindt. De volgende tabel toont de duur in milliseconden van opeenvolgende toevoegingen met en zonder trans acties.
+In de volgende tabel ziet u enkele ad hoc testresultaten. De tests voerden dezelfde opeenvolgende wisselplaten uit met en zonder transacties. Voor meer perspectief, de eerste set van tests liep op afstand van een laptop naar de database in Microsoft Azure. De tweede reeks tests liep vanuit een cloudservice en -database die beide binnen hetzelfde Microsoft Azure-datacenter (West US) verbleven. In de volgende tabel ziet u de duur in milliseconden van opeenvolgende wisselplaten met en zonder transacties.
 
-**On-premises naar Azure**:
+**On-premises naar Azure:**
 
-| Operations | Geen trans actie (MS) | Trans actie (MS) |
+| Bewerkingen | Geen transactie (ms) | Transactie (ms) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-**Azure naar Azure (hetzelfde Data Center)** :
+**Azure naar Azure (zelfde datacenter):**
 
-| Operations | Geen trans actie (MS) | Trans actie (MS) |
+| Bewerkingen | Geen transactie (ms) | Transactie (ms) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -114,19 +114,19 @@ In de volgende tabel ziet u enkele ad hoc test resultaten. De tests hebben dezel
 | 1000 |21479 |2756 |
 
 > [!NOTE]
-> Resultaten zijn geen benchmarks. Zie de [Opmerking over timing resultaten in dit artikel](#note-about-timing-results-in-this-article).
+> Resultaten zijn geen benchmarks. Zie de [opmerking over timing resultaten in dit artikel](#note-about-timing-results-in-this-article).
 
-Op basis van de vorige test resultaten vermindert het verpakken van een enkele bewerking in een trans actie de prestaties. Maar naarmate u het aantal bewerkingen binnen één trans actie verhoogt, wordt de prestatie verbetering gemarkeerd. Het prestatie verschil is ook merkbaarer wanneer alle bewerkingen binnen het Microsoft Azure Data Center plaatsvinden. Dankzij de verbeterde latentie van het gebruik van SQL Database van buiten het Microsoft Azure Data Center wordt de prestatie verbetering van het gebruik van trans acties overschaduwd.
+Op basis van de vorige testresultaten vermindert het verpakken van één bewerking in een transactie de prestaties. Maar naarmate u het aantal bewerkingen binnen één transactie verhoogt, wordt de prestatieverbetering duidelijker. Het prestatieverschil is ook meer merkbaar wanneer alle bewerkingen plaatsvinden binnen het Microsoft Azure-datacenter. De verhoogde latentie van het gebruik van SQL Database van buiten het Microsoft Azure-datacenter overschaduwt de prestatiewinst van het gebruik van transacties.
 
-Hoewel het gebruik van trans acties de prestaties kan verhogen, blijven de [Aanbevolen procedures voor trans acties en verbindingen](https://msdn.microsoft.com/library/ms187484.aspx)zien. Bewaar de trans actie zo kort mogelijk en sluit de database verbinding nadat het werk is voltooid. De instructie using in het vorige voor beeld zorgt ervoor dat de verbinding wordt gesloten wanneer het volgende code blok is voltooid.
+Hoewel het gebruik van transacties de prestaties kan verhogen, blijven [de aanbevolen procedures voor transacties en verbindingen observeren](https://msdn.microsoft.com/library/ms187484.aspx). Houd de transactie zo kort mogelijk en sluit de databaseverbinding nadat het werk is voltooid. De instructie met gebruik in het vorige voorbeeld zorgt ervoor dat de verbinding wordt gesloten wanneer het volgende codeblok is voltooid.
 
-In het vorige voor beeld ziet u dat u een lokale trans actie kunt toevoegen aan elke ADO.NET code met twee regels. Trans acties bieden een snelle manier om de prestaties te verbeteren van code die sequentiële invoeg-, bijwerk-en verwijder bewerkingen mogelijk maakt. Voor de snelste prestaties kunt u echter het beste de code wijzigen om te profiteren van batch verwerking aan de client zijde, zoals para meters voor tabel waarden.
+Het vorige voorbeeld toont aan dat u een lokale transactie toevoegen aan elke ADO.NET code met twee regels. Transacties bieden een snelle manier om de prestaties van code te verbeteren die opeenvolgende bewerkingen invoegen, bijwerken en verwijderen maakt. Overweeg echter voor de snelste prestaties de code verder te wijzigen om te profiteren van batching aan de clientzijde, zoals parameters met tabelwaarde.
 
-Zie [lokale trans acties in ADO.net](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions)voor meer informatie over trans acties in ADO.net.
+Zie [Lokale transacties in ADO.NET](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions)voor meer informatie over transacties in ADO.NET .
 
-### <a name="table-valued-parameters"></a>Tabelwaardeparameter
+### <a name="table-valued-parameters"></a>Tabelwaardeparameters
 
-Para meters voor tabel waarden ondersteunen door de gebruiker gedefinieerde tabel typen als para meters in Transact-SQL-instructies, opgeslagen procedures en functies. Met deze batch techniek voor client zijde kunt u meerdere rijen met gegevens binnen de tabelwaardeparameter verzenden. Als u para meters met tabel waarden wilt gebruiken, moet u eerst een tabel type definiëren. Met de volgende Transact-SQL-instructie maakt u een tabel type met de naam **MyTableType**.
+Tabelwaardeparameters ondersteunen door de gebruiker gedefinieerde tabeltypen als parameters in Transact-SQL-instructies, opgeslagen procedures en functies. Met deze batchtechniek aan de clientzijde u meerdere rijen gegevens verzenden binnen de parameter met een tabelwaarde. Als u parameters met tabelwaarde wilt gebruiken, definieert u eerst een tabeltype. Met de volgende transact-SQL-instructie wordt een tabeltype met de naam **MyTableType geopperd.**
 
 ```sql
     CREATE TYPE MyTableType AS TABLE 
@@ -134,7 +134,7 @@ Para meters voor tabel waarden ondersteunen door de gebruiker gedefinieerde tabe
       num INT );
 ```
 
-In code maakt u een **DataTable** met exact dezelfde namen en typen van het tabel type. Geef deze **DataTable** door in een para meter in een tekst query of een opgeslagen procedure aanroep. In het volgende voor beeld ziet u deze techniek:
+In code maakt u een **gegevenstabel** met exact dezelfde namen en typen van het tabeltype. Geef deze **Gegevenstabel** door in een parameter in een tekstquery of opgeslagen procedureaanroep. In het volgende voorbeeld ziet u deze techniek:
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -167,9 +167,9 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-In het vorige voor beeld voegt het object **SqlCommand** rijen uit een tabelwaardeparameter, **\@TestTvp**. Het eerder gemaakte **DataTable** -object wordt toegewezen aan deze para meter met de methode **SqlCommand. para meters. add** . Als u de invoeging in één gesprek inschakelt, neemt de prestaties aanzienlijk toe tijdens opeenvolgende invoegingen.
+In het vorige voorbeeld voegt het **sqlcommand-object** rijen in van de parameter ** \@TestTvp**met tabelwaarde. Het eerder gemaakte **Object DataTable** wordt aan deze parameter toegewezen met de methode **SqlCommand.Parameters.Add.** Het batchn van de wisselplaten in één aanroep verhoogt de prestaties aanzienlijk ten opzichte van opeenvolgende wisselplaten.
 
-Als u het vorige voor beeld verder wilt verbeteren, gebruikt u een opgeslagen procedure in plaats van een op tekst gebaseerde opdracht. Met de volgende Transact-SQL-opdracht maakt u een opgeslagen procedure die de **SimpleTestTableType** -para meter voor de tabel waarde gebruikt.
+Als u het vorige voorbeeld verder wilt verbeteren, gebruikt u een opgeslagen procedure in plaats van een op tekst gebaseerde opdracht. Met de volgende opdracht Transact-SQL wordt een opgeslagen procedure gemaakt die de parameter **SimpleTestTableType-tabelwaarde** gebruikt.
 
 ```sql
 CREATE PROCEDURE [dbo].[sp_InsertRows] 
@@ -182,18 +182,18 @@ END
 GO
 ```
 
-Wijzig vervolgens de declaratie van het **SqlCommand** -object in het voor gaande code voorbeeld in het volgende voor beeld.
+Wijzig vervolgens de **sqlcommand-objectdeclaratie** in het vorige codevoorbeeld in het volgende.
 
 ```csharp
 SqlCommand cmd = new SqlCommand("sp_InsertRows", connection);
 cmd.CommandType = CommandType.StoredProcedure;
 ```
 
-In de meeste gevallen hebben para meters met een tabel waarde dezelfde of betere prestaties dan andere batch-technieken. Para meters met tabel waarden zijn vaak de voor keur, omdat ze flexibeler zijn dan andere opties. Bijvoorbeeld: voor andere technieken, zoals SQL bulksgewijze kopie, is het invoegen van nieuwe rijen alleen toegestaan. Maar met tabelwaardeparameter-para meters kunt u de logica in de opgeslagen procedure gebruiken om te bepalen welke rijen moeten worden bijgewerkt en die worden ingevoegd. Het tabel type kan ook worden gewijzigd om een kolom ' bewerking ' te bevatten die aangeeft of de opgegeven rij moet worden ingevoegd, bijgewerkt of verwijderd.
+In de meeste gevallen hebben parameters met tabelwaarde gelijkwaardige of betere prestaties dan andere batchtechnieken. Tabelwaardeparameters hebben vaak de voorkeur, omdat ze flexibeler zijn dan andere opties. Andere technieken, zoals SQL bulkcopy, maken bijvoorbeeld alleen het invoegen van nieuwe rijen mogelijk. Maar met parameters met tabelwaarde u logica in de opgeslagen procedure gebruiken om te bepalen welke rijen worden bijgewerkt en welke invoegen zijn. Het tabeltype kan ook worden gewijzigd om een kolom 'Bewerking' te bevatten die aangeeft of de opgegeven rij moet worden ingevoegd, bijgewerkt of verwijderd.
 
-In de volgende tabel ziet u de resultaten van ad hoc tests voor het gebruik van para meters met tabel waarden in milliseconden.
+In de volgende tabel worden ad-hoctestresultaten weergegeven voor het gebruik van parameters met tabelwaarde in milliseconden.
 
-| Operations | On-premises naar Azure (MS) | Azure hetzelfde Data Center (MS) |
+| Bewerkingen | On-premises naar Azure (ms) | Azure zelfde datacenter (ms) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -202,17 +202,17 @@ In de volgende tabel ziet u de resultaten van ad hoc tests voor het gebruik van 
 | 10.000 |23830 |3586 |
 
 > [!NOTE]
-> Resultaten zijn geen benchmarks. Zie de [Opmerking over timing resultaten in dit artikel](#note-about-timing-results-in-this-article).
+> Resultaten zijn geen benchmarks. Zie de [opmerking over timing resultaten in dit artikel](#note-about-timing-results-in-this-article).
 > 
 > 
 
-De prestatie verbetering van batch verwerking is onmiddellijk zichtbaar. In de vorige sequentiële test duurde 1000 bewerkingen 129 seconden buiten het Data Center en 21 seconden vanaf het Data Center. Maar met tabelwaardeparameter-para meters 1000 bewerkingen alleen 2,6 seconden buiten het Data Center en 0,4 seconden binnen het Data Center.
+De prestatiewinst van batching is meteen duidelijk. In de vorige sequentiële test duurden 1000 bewerkingen 129 seconden buiten het datacenter en 21 seconden vanuit het datacenter. Maar met tabelwaardeparameters duren 1000 bewerkingen slechts 2,6 seconden buiten het datacenter en 0,4 seconden binnen het datacenter.
 
-Zie [para meters voor tabel waarden](https://msdn.microsoft.com/library/bb510489.aspx)voor meer informatie over tabelwaardeparameter.
+Zie Parameters met [tabelwaarde](https://msdn.microsoft.com/library/bb510489.aspx)voor meer informatie over parameters met tabelwaarde .
 
-### <a name="sql-bulk-copy"></a>Bulksgewijs kopiëren van SQL
+### <a name="sql-bulk-copy"></a>SQL-bulkkopie
 
-SQL bulksgewijze kopie is een andere manier om grote hoeveel heden gegevens in te voegen in een doel database. .NET-toepassingen kunnen de klasse **SqlBulkCopy** gebruiken om bulksgewijze Insert-bewerkingen uit te voeren. **SqlBulkCopy** is vergelijkbaar met de functie voor het opdracht regel programma, **BCP. exe**of de Transact-SQL-instructie **Bulk Insert**. In het volgende code voorbeeld ziet u hoe u de rijen in de bron- **DataTable**, tabel, kunt bulksgewijs kopiëren naar de doel tabel in SQL Server, mytable.
+SQL-bulkkopie is een andere manier om grote hoeveelheden gegevens in een doeldatabase in te voegen. .NET-toepassingen kunnen de klasse **SqlBulkCopy** gebruiken om bulkinsertbewerkingen uit te voeren. **SqlBulkCopy** is qua functie vergelijkbaar met het command-line-gereedschap **Bcp.exe**of de transact-SQL-instructie **BULK INSERT**. In het volgende codevoorbeeld ziet u hoe u de rijen in de tabel **Source DataTable**kopiëren naar de doeltabel in SQL Server, MyTable.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -229,11 +229,11 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Er zijn enkele gevallen waarin bulksgewijs kopiëren de voor keur geeft aan de para meters met tabel waarden. Zie de vergelijkings tabel van para meters met tabel waarden ten opzichte van BULK INSERT bewerkingen in de [tabel waarden para meters](https://msdn.microsoft.com/library/bb510489.aspx).
+Er zijn enkele gevallen waarin bulkkopie de voorkeur heeft boven parameters met tabelwaarde. Zie de vergelijkingstabel met parameters met tabelwaarde versus BULKINSERT-bewerkingen in het artikel [Tabelwaardeparameters](https://msdn.microsoft.com/library/bb510489.aspx).
 
-De volgende ad hoc test resultaten tonen de prestaties van batching met **SqlBulkCopy** in milliseconden.
+De volgende ad hoc testresultaten tonen de prestaties van batching met **SqlBulkCopy** in milliseconden.
 
-| Operations | On-premises naar Azure (MS) | Azure hetzelfde Data Center (MS) |
+| Bewerkingen | On-premises naar Azure (ms) | Azure zelfde datacenter (ms) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -242,17 +242,17 @@ De volgende ad hoc test resultaten tonen de prestaties van batching met **SqlBul
 | 10.000 |21605 |2737 |
 
 > [!NOTE]
-> Resultaten zijn geen benchmarks. Zie de [Opmerking over timing resultaten in dit artikel](#note-about-timing-results-in-this-article).
+> Resultaten zijn geen benchmarks. Zie de [opmerking over timing resultaten in dit artikel](#note-about-timing-results-in-this-article).
 > 
 > 
 
-In kleinere batch grootten wordt de **SqlBulkCopy** -klasse gebruikt voor het uitvoeren van para meters met tabel waarden. **SqlBulkCopy** heeft 12-31% sneller uitgevoerd dan para meters met tabel waarden voor de tests van 1.000 en 10.000 rijen. Net als tabelwaardeparameter is **SqlBulkCopy** een goede optie voor het invoegen in batches, met name bij het vergelijken van de prestaties van niet-batch bewerkingen.
+In kleinere batchgroottes presteerden de parameters met tabelwaarde beter dan de klasse **SqlBulkCopy.** **SqlBulkCopy** presteerde echter 12-31% sneller dan tabelwaardeparameters voor de tests van 1.000 en 10.000 rijen. Net als tabel-gewaardeerde parameters, **SqlBulkCopy** is een goede optie voor batched inserts, vooral in vergelijking met de prestaties van niet-batched operaties.
 
-Zie [bulksgewijze Kopieer bewerkingen in SQL Server](https://msdn.microsoft.com/library/7ek5da1a.aspx)voor meer informatie over bulksgewijs kopiëren in ADO.net.
+Zie Bulk Copy Operations in [SQL Server](https://msdn.microsoft.com/library/7ek5da1a.aspx)voor meer informatie over bulkcopy in ADO.NET.
 
-### <a name="multiple-row-parameterized-insert-statements"></a>INSERT-instructies met para meters met meerdere rijen
+### <a name="multiple-row-parameterized-insert-statements"></a>Parameterized INSERT-instructies met meerdere rijen
 
-Een alternatief voor kleine batches bestaat uit het samen stellen van een grote instructie INSERT waarmee meerdere rijen worden ingevoegd. In het volgende code voorbeeld wordt deze techniek gedemonstreerd.
+Een alternatief voor kleine batches is het maken van een grote parameterinstructie INSERT die meerdere rijen invoegt. Het volgende codevoorbeeld toont deze techniek aan.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -274,58 +274,58 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Dit voor beeld is bedoeld om het basis concept weer te geven. In een realistischer scenario worden de vereiste entiteiten door lopen om de query reeks en de opdracht parameters tegelijk te maken. U bent beperkt tot een totaal van 2100 query parameters, dus Hiermee beperkt u het totale aantal rijen dat op deze manier kan worden verwerkt.
+Dit voorbeeld is bedoeld om het basisconcept te tonen. Een realistischer scenario zou door de vereiste entiteiten lopen om de querytekenreeks en de opdrachtparameters tegelijkertijd te construeren. U bent beperkt tot een totaal van 2100 queryparameters, dus dit beperkt het totale aantal rijen dat op deze manier kan worden verwerkt.
 
-De volgende resultaten van ad hoc tests geven de prestaties van dit type instructie INSERT in milliseconden weer.
+De volgende ad hoc testresultaten tonen de prestaties van dit type invoeginstructie in milliseconden.
 
-| Operations | Tabelwaardeparameter (MS) | INSERT met één instructie (MS) |
+| Bewerkingen | Parameters met tabelwaarde (ms) | INSERT met één instructie (ms) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |
 | 100 |33 |51 |
 
 > [!NOTE]
-> Resultaten zijn geen benchmarks. Zie de [Opmerking over timing resultaten in dit artikel](#note-about-timing-results-in-this-article).
+> Resultaten zijn geen benchmarks. Zie de [opmerking over timing resultaten in dit artikel](#note-about-timing-results-in-this-article).
 > 
 > 
 
-Deze benadering kan iets sneller zijn voor batches die minder dan 100 rijen zijn. Hoewel de verbetering klein is, is deze techniek een andere optie die goed kan werken in uw specifieke toepassings scenario.
+Deze aanpak kan iets sneller zijn voor batches die minder dan 100 rijen zijn. Hoewel de verbetering klein is, is deze techniek een andere optie die goed zou kunnen werken in uw specifieke toepassingsscenario.
 
-### <a name="dataadapter"></a>DataAdapter
+### <a name="dataadapter"></a>Gegevensadapter
 
-Met de klasse **Data adapter** kunt u een object **DataSet** wijzigen en vervolgens de wijzigingen verzenden als insert-, update-en delete-bewerkingen. Als u de **Data adapter** op deze manier gebruikt, is het belang rijk te weten dat afzonderlijke aanroepen voor elke afzonderlijke bewerking worden uitgevoerd. U kunt de prestaties verbeteren door de eigenschap **UpdateBatchSize** te gebruiken voor het aantal bewerkingen dat per keer moet worden ingebatcheerd. Zie [batch bewerkingen uitvoeren met behulp van data adapters](https://msdn.microsoft.com/library/aadf8fk2.aspx)voor meer informatie.
+Met de klasse **DataAdapter** u een **object DataSet** wijzigen en vervolgens de wijzigingen indienen als bewerkingen INSERT, UPDATE en DELETE. Als u de **DataAdapter** op deze manier gebruikt, is het belangrijk op te merken dat er voor elke afzonderlijke bewerking afzonderlijke oproepen worden gedaan. Gebruik de eigenschap **UpdateBatchSize** om de prestaties te verbeteren voor het aantal bewerkingen dat tegelijk moet worden gebatched. Zie [Batchoperations uitvoeren met dataadapters voor](https://msdn.microsoft.com/library/aadf8fk2.aspx)meer informatie.
 
-### <a name="entity-framework"></a>Entity Framework
+### <a name="entity-framework"></a>Entiteitskader
 
-Entity Framework biedt momenteel geen ondersteuning voor batch verwerking. Verschillende ontwikkel aars in de community hebben geprobeerd tijdelijke oplossingen te demonstreren, zoals het overschrijven van de methode **Save Changes** . Maar de oplossingen zijn doorgaans complex en aangepast aan de toepassing en het gegevens model. Het CodePlex-project van Entity Framework heeft momenteel een discussie pagina voor dit functie verzoek. Zie voor het weer geven van deze discussie [ontwerp notities voor de vergadering-2 augustus 2012](https://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
+Entity Framework ondersteunt momenteel geen batching. Verschillende ontwikkelaars in de community hebben geprobeerd tijdelijke oplossingen aan te tonen, zoals de **methode SaveChanges** overschrijven. Maar de oplossingen zijn meestal complex en aangepast aan het applicatie- en gegevensmodel. Het Entity Framework codeplex-project heeft momenteel een discussiepagina over deze functieaanvraag. Zie [Ontwerpvergaderingnotities - 2 augustus 2012](https://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012)om deze discussie te bekijken.
 
 ### <a name="xml"></a>XML
 
-Voor de volledigheid is het belang rijk om te praten over XML als een batch-strategie. Het gebruik van XML heeft echter geen voor delen ten opzichte van andere methoden en enkele nadelen. De benadering is vergelijkbaar met tabelwaardeparameter, maar er wordt een XML-bestand of-teken reeks door gegeven aan een opgeslagen procedure in plaats van een door de gebruiker gedefinieerde tabel. Met de opgeslagen procedure worden de opdrachten in de opgeslagen procedure geparseerd.
+Voor de volledigheid vinden we het belangrijk om over XML te praten als batchstrategie. Het gebruik van XML heeft echter geen voordelen ten opzichte van andere methoden en verschillende nadelen. De benadering is vergelijkbaar met parameters met tabelwaarde, maar een XML-bestand of -tekenreeks wordt doorgegeven aan een opgeslagen procedure in plaats van een door de gebruiker gedefinieerde tabel. De opgeslagen procedure ontneemt de commando's in de opgeslagen procedure.
 
-Deze aanpak heeft verschillende nadelen:
+Er zijn verschillende nadelen aan deze aanpak:
 
-* Werken met XML kan lastig zijn en fout gevoelig zijn.
-* Het parseren van de XML voor de data base kan CPU-intensief zijn.
-* In de meeste gevallen is deze methode langzamer dan tabelwaardeparameter.
+* Werken met XML kan omslachtig en foutgevoelig zijn.
+* Het ontschepen van de XML in de database kan CPU-intensief zijn.
+* In de meeste gevallen is deze methode trager dan parameters met tabelwaarde.
 
-Daarom wordt het gebruik van XML voor batch-query's niet aanbevolen.
+Om deze redenen wordt het gebruik van XML voor batchquery's niet aanbevolen.
 
-## <a name="batching-considerations"></a>Overwegingen voor batch verwerking
+## <a name="batching-considerations"></a>Batching overwegingen
 
-In de volgende secties vindt u meer informatie over het gebruik van batch verwerking in SQL Database-toepassingen.
+De volgende secties bieden meer richtlijnen voor het gebruik van batching in SQL Database-toepassingen.
 
 ### <a name="tradeoffs"></a>Compromissen
 
-Afhankelijk van uw architectuur kan batch verwerking gebruikmaken van een balans tussen prestaties en tolerantie. Denk bijvoorbeeld na over het scenario waarin uw rol onverwacht uitvalt. Als u één rij met gegevens kwijtraakt, is de impact kleiner dan de impact van het verloren gaan van een grote batch met niet-verzonden rijen. Er is een groter risico bij het bufferen van rijen voordat deze naar de Data Base worden verzonden in een opgegeven tijd venster.
+Afhankelijk van uw architectuur kan batching een afweging tussen prestaties en veerkracht inhouden. Denk bijvoorbeeld aan het scenario waarin uw rol onverwacht naar beneden gaat. Als u één rij gegevens verliest, is de impact kleiner dan de impact van het verliezen van een grote batch niet-ingediende rijen. Er is een groter risico wanneer u rijen buffert voordat u ze in een bepaald tijdvenster naar de database verzendt.
 
-Als gevolg van deze balans, moet u het type bewerkingen evalueren dat u batcheert. Batch is agressief (grotere batches en langere tijd Vensters) met gegevens die minder kritiek zijn.
+Evalueer t.a.v. het type bewerkingen dat u batcht. Batch agressiever (grotere batches en langere tijd vensters) met gegevens die minder kritisch is.
 
 ### <a name="batch-size"></a>Batchgrootte
 
-In onze tests is het niet handig om grote batches te verbreken in kleinere segmenten. Dit leidt er vaak toe dat deze indeling langzamer presteert dan het verzenden van één grote batch. Denk bijvoorbeeld aan een scenario waarin u 1000 rijen wilt invoegen. In de volgende tabel ziet u hoe lang het duurt om de para meters met tabel waarden te gebruiken om 1000 rijen in te voegen in kleinere batches.
+In onze tests, was er meestal geen voordeel aan het breken van grote partijen in kleinere brokken. In feite resulteerde deze onderverdeling vaak in tragere prestaties dan het indienen van één grote batch. Overweeg bijvoorbeeld een scenario waarin u 1000 rijen wilt invoegen. In de volgende tabel ziet u hoe lang het duurt om parameters met tabelwaarde te gebruiken om 1000 rijen in te voegen wanneer deze worden onderverdeeld in kleinere batches.
 
-| Batchgrootte | Iteraties | Tabelwaardeparameter (MS) |
+| Batchgrootte | Iteraties | Parameters met tabelwaarde (ms) |
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |
@@ -333,21 +333,21 @@ In onze tests is het niet handig om grote batches te verbreken in kleinere segme
 | 50 |20 |630 |
 
 > [!NOTE]
-> Resultaten zijn geen benchmarks. Zie de [Opmerking over timing resultaten in dit artikel](#note-about-timing-results-in-this-article).
+> Resultaten zijn geen benchmarks. Zie de [opmerking over timing resultaten in dit artikel](#note-about-timing-results-in-this-article).
 > 
 > 
 
-U kunt zien dat de beste prestaties voor 1000 rijen allemaal tegelijk worden verzonden. In andere tests (hier niet weer gegeven) is er een kleine prestatie verbetering opgetreden bij het opsplitsen van een batch van 10000 in twee batches van 5000. Maar het tabel schema voor deze tests is relatief eenvoudig. u moet dus testen uitvoeren op uw specifieke gegevens en batch grootten om deze resultaten te controleren.
+U zien dat de beste prestatie voor 1000 rijen is om ze allemaal tegelijk in te dienen. In andere tests (hier niet getoond), was er een kleine prestatiewinst om een 10000 rij batch te breken in twee batches van 5000. Maar het tabelschema voor deze tests is relatief eenvoudig, dus u moet tests uitvoeren op uw specifieke gegevens en batchgroottes om deze bevindingen te verifiëren.
 
-Een andere factor waarmee u rekening moet houden, is dat als de totale batch te groot wordt, SQL Database de batch mogelijk moet vertragen en weigeren. Test uw specifieke scenario om te bepalen of er sprake is van een ideale Batch grootte voor de beste resultaten. Maak de Batch grootte configureerbaar tijdens runtime om snelle aanpassingen mogelijk te maken op basis van de prestaties of fouten.
+Een andere factor om rekening mee te houden is dat als de totale batch te groot wordt, SQL Database kan gas geven en weigeren om de batch te plegen. Test voor de beste resultaten uw specifieke scenario om te bepalen of er een ideale batchgrootte is. Maak de batchgrootte configureerbaar tijdens runtime om snelle aanpassingen op basis van prestaties of fouten in te schakelen.
 
-Ten slotte kunt u de grootte van de batch afstemmen op de Risico's die zijn gekoppeld aan batch verwerking. Als er sprake is van tijdelijke fouten of als de rol mislukt, kunt u de gevolgen van het opnieuw proberen van de bewerking of het verlies van de gegevens in de batch nadenken.
+Ten slotte moet u de grootte van de partij in evenwicht brengen met de risico's die verbonden zijn aan batching. Als er tijdelijke fouten zijn of als de rol mislukt, moet u rekening houden met de gevolgen van het opnieuw proberen van de bewerking of van het verlies van de gegevens in de batch.
 
 ### <a name="parallel-processing"></a>Parallelle verwerking
 
-Wat gebeurt er als u de manier hebt genomen om de Batch grootte te verminderen, maar meerdere threads hebt gebruikt om het werk uit te voeren? Volgens onze tests bleek het dat verschillende kleinere multithreadde batches doorgaans erger zijn dan een enkele grotere batch. De volgende test probeert 1000 rijen in te voegen in een of meer parallelle batches. Deze test laat zien hoe meerdere gelijktijdige batches de prestaties in werkelijkheid verlaagt.
+Wat als u de aanpak van het verminderen van de batch grootte, maar gebruikt meerdere threads om het werk uit te voeren? Nogmaals, onze tests toonden aan dat een aantal kleinere multithreaded batches meestal slechter uitgevoerd dan een enkele grotere partij. Met de volgende test wordt geprobeerd om 1000 rijen in een of meer parallelle batches in te voegen. Deze test laat zien hoe meer gelijktijdige batches daadwerkelijk de prestaties verminderden.
 
-| Batch grootte [iteraties] | Twee threads (MS) | Vier threads (MS) | Zes threads (MS) |
+| Batchgrootte [Iteraties] | Twee draden (ms) | Vier draden (ms) | Zes draden (ms) |
 | --- | --- | --- | --- |
 | 1000 [1] |277 |315 |266 |
 | 500 [2] |548 |278 |256 |
@@ -355,42 +355,42 @@ Wat gebeurt er als u de manier hebt genomen om de Batch grootte te verminderen, 
 | 100 [10] |488 |439 |391 |
 
 > [!NOTE]
-> Resultaten zijn geen benchmarks. Zie de [Opmerking over timing resultaten in dit artikel](#note-about-timing-results-in-this-article).
+> Resultaten zijn geen benchmarks. Zie de [opmerking over timing resultaten in dit artikel](#note-about-timing-results-in-this-article).
 > 
 > 
 
-Er zijn verschillende mogelijke oorzaken voor het degraderen van prestaties vanwege parallellisme:
+Er zijn verschillende mogelijke redenen voor de verslechtering van de prestaties als gevolg van parallellisme:
 
-* Er zijn meerdere gelijktijdige netwerk aanroepen in plaats van één.
-* Meerdere bewerkingen voor één tabel kunnen leiden tot conflicten en blok keringen.
-* Er zijn overhead kosten gekoppeld aan meerdere threads.
-* De onkosten van het openen van meerdere verbindingen verloopt het voor deel van parallelle verwerking.
+* Er zijn meerdere gelijktijdige netwerkoproepen in plaats van één.
+* Meerdere bewerkingen tegen één tabel kunnen leiden tot onenigheid en blokkering.
+* Er zijn overheadkosten verbonden aan multithreading.
+* De kosten van het openen van meerdere verbindingen wegen op tegen het voordeel van parallelle verwerking.
 
-Als u verschillende tabellen of data bases aanwijst, is het mogelijk dat er een prestatie verbetering met deze strategie wordt weer geven. Data base sharding of de overkoepelende federatie zou een scenario voor deze aanpak zijn. Sharding maakt gebruik van meerdere data bases en stuurt verschillende gegevens naar elke Data Base. Als elke kleine batch naar een andere data base gaat, kan het efficiënter zijn om de bewerkingen op parallelle wijze uit te voeren. De prestatie verbetering is echter niet significant genoeg om te gebruiken als basis voor een beslissing over het gebruik van data base-sharding in uw oplossing.
+Als u verschillende tabellen of databases target, is het mogelijk om met deze strategie enige prestatiewinst te zien. Database sharding of federaties zou een scenario voor deze aanpak. Sharding maakt gebruik van meerdere databases en leidt verschillende gegevens naar elke database. Als elke kleine batch naar een andere database gaat, kan het uitvoeren van de bewerkingen parallel efficiënter zijn. De prestatiewinst is echter niet significant genoeg om te gebruiken als basis voor een beslissing om databasesharding in uw oplossing te gebruiken.
 
-In sommige ontwerpen kan parallelle uitvoering van kleinere batches leiden tot een betere door Voer van aanvragen in een systeem onder belasting. In dit geval, zelfs als het sneller is om één grotere batch te verwerken, is het verwerken van meerdere batches parallel mogelijk efficiënter.
+In sommige ontwerpen kan parallelle uitvoering van kleinere batches resulteren in een verbeterde doorvoer van aanvragen in een systeem onder belasting. In dit geval, ook al is het sneller om een enkele grotere batch te verwerken, kan het verwerken van meerdere batches parallel efficiënter zijn.
 
-Als u parallelle uitvoering wilt gebruiken, kunt u het maximum aantal werkthreads beheren. Een kleiner getal kan leiden tot minder conflicten en een snellere uitvoerings tijd. Houd ook rekening met de extra belasting die op deze locatie in de doel database is opgeslagen in verbindingen en trans acties.
+Als u parallelle uitvoering gebruikt, u overwegen het maximum aantal werknemersthreads te beheren. Een kleiner getal kan leiden tot minder twist en een snellere uitvoeringstijd. Houd ook rekening met de extra belasting die dit op de doeldatabase plaatst, zowel in verbindingen als in transacties.
 
-### <a name="related-performance-factors"></a>Gerelateerde prestatie factoren
+### <a name="related-performance-factors"></a>Gerelateerde prestatiefactoren
 
-Typische richt lijnen voor de prestaties van de Data Base zijn ook van invloed op batch verwerking. Zo worden de prestaties voor tabellen met een grote primaire sleutel of een groot aantal niet-geclusterde indexen gereduceerd.
+Typische richtlijnen voor databaseprestaties hebben ook invloed op batching. De invoegprestaties worden bijvoorbeeld verlaagd voor tabellen met een grote primaire sleutel of veel niet-geclusterde indexen.
 
-Als de tabelwaardeparameter para meters een opgeslagen procedure gebruiken, kunt u de opdracht **set Count aan** aan het begin van de procedure gebruiken. Deze instructie onderdrukt het retour neren van het aantal beïnvloede rijen in de procedure. Bij onze tests had het gebruik van set- **AANTALARG** echter geen effect of verminderde prestaties. De test opgeslagen procedure is eenvoudig met één opdracht **Invoegen** uit de tabelwaardeparameter. Het is mogelijk dat complexere opgeslagen procedures van deze instructie profiteren. Maar stel dat het toevoegen **van set-tellingen** aan aan uw opgeslagen procedure automatisch betere prestaties verbetert. Als u wilt weten wat het effect is, test u uw opgeslagen procedure met en zonder de instructie **set Count on** .
+Als parameters met een tabelwaarde een opgeslagen procedure gebruiken, u de opdracht **SET NOCOUNT ON** aan het begin van de procedure gebruiken. Deze instructie onderdrukt de terugkeer van de telling van de getroffen rijen in de procedure. In onze tests had het gebruik van **SET NOCOUNT ON** echter geen effect of verminderde prestaties. De testopgeslagen procedure was eenvoudig met één **INSERT-opdracht** uit de parameter met tabelwaarde. Het is mogelijk dat complexere opgeslagen procedures baat zouden hebben bij deze verklaring. Maar ga er niet van uit dat het toevoegen **van SET NOCOUNT ON** aan uw opgeslagen procedure automatisch de prestaties verbetert. Als u het effect wilt begrijpen, test u uw opgeslagen procedure met en zonder de instructie **NOCOUNT ON INSTELLEN.**
 
-## <a name="batching-scenarios"></a>Scenario's voor batch verwerking
+## <a name="batching-scenarios"></a>Batching-scenario's
 
-In de volgende secties wordt beschreven hoe u tabelwaardeparameter kunt gebruiken in drie toepassings scenario's. In het eerste scenario ziet u hoe buffering en batch verwerking kunnen samen werken. In het tweede scenario worden de prestaties verbeterd door hoofd gegevens bewerkingen uit te voeren in één opgeslagen procedure aanroep. In het laatste scenario ziet u hoe u tabelwaardeparameter kunt gebruiken in een ' UPSERT-bewerking.
+In de volgende secties wordt beschreven hoe parameters met tabelwaarde worden gebruikt in drie toepassingsscenario's. Het eerste scenario laat zien hoe buffering en batching kunnen samenwerken. Het tweede scenario verbetert de prestaties door masterdetailbewerkingen uit te voeren in één opgeslagen proceduregesprek. Het laatste scenario laat zien hoe parameters met tabelwaarde kunnen worden gebruikt in een "UPSERT"-bewerking.
 
-### <a name="buffering"></a>Buffer
+### <a name="buffering"></a>Buffering
 
-Hoewel er sprake is van een duidelijkere kandidaat voor batch verwerking, zijn er veel scenario's die kunnen profiteren van batch verwerking door vertraagd verwerken. De vertraagde verwerking heeft echter ook een groter risico dat de gegevens verloren gaan in het geval van een onverwachte fout. Het is belang rijk om dit risico te begrijpen en de gevolgen te bepalen.
+Hoewel er een aantal scenario's die voor de hand liggende kandidaat voor batching zijn, zijn er veel scenario's die kunnen profiteren van batching door vertraagde verwerking. Vertraagde verwerking brengt echter ook een groter risico met zich mee dat de gegevens verloren gaan in het geval van een onverwachte storing. Het is belangrijk om dit risico te begrijpen en de gevolgen te overwegen.
 
-Denk bijvoorbeeld aan een webtoepassing waarmee de navigatie geschiedenis van elke gebruiker wordt bijgehouden. Op elke pagina-aanvraag kan de toepassing een database aanroep maken om de pagina weergave van de gebruiker vast te leggen. Maar betere prestaties en schaal baarheid kan worden bereikt door de navigatie activiteiten van de gebruikers te bufferen en deze gegevens vervolgens naar de data base in batches te verzenden. U kunt de Data Base-update activeren op basis van de verstreken tijd en/of buffer grootte. Een regel kan bijvoorbeeld aangeven dat de batch na 20 seconden moet worden verwerkt of wanneer de buffer 1000 items bereikt.
+Overweeg bijvoorbeeld een webtoepassing die de navigatiegeschiedenis van elke gebruiker bijhoudt. Op elk paginaverzoek kan de toepassing een databaseaanroep doen om de paginaweergave van de gebruiker op te nemen. Maar hogere prestaties en schaalbaarheid kunnen worden bereikt door de navigatieactiviteiten van de gebruikers te bufferen en deze gegevens vervolgens in batches naar de database te verzenden. U de database-update activeren op verstreken tijd en/of buffergrootte. Een regel kan bijvoorbeeld aangeven dat de batch na 20 seconden moet worden verwerkt of wanneer de buffer 1000 artikelen bereikt.
 
-Het volgende code voorbeeld maakt gebruik van [reactieve extensies-RX](https://msdn.microsoft.com/data/gg577609) om gebufferde gebeurtenissen te verwerken die door een bewakings klasse worden gegenereerd. Wanneer de buffer opvulling of een time-out is bereikt, wordt de batch met gebruikers gegevens naar de data base verzonden met een tabelwaardeparameter.
+In het volgende codevoorbeeld wordt [Reactieve extensies gebruikt - Rx](https://msdn.microsoft.com/data/gg577609) om gebufferde gebeurtenissen te verwerken die door een bewakingsklasse zijn opgehaald. Wanneer de buffer vullingen of een time-out is bereikt, wordt de batch met gebruikersgegevens naar de database verzonden met een parameter met tabelwaarde.
 
-De volgende NavHistoryData-klassen modellen de navigatie gegevens van de gebruiker. Het bevat algemene informatie, zoals de gebruikers-id, de URL die wordt gebruikt en de toegangs tijd.
+Met de volgende klasse NavHistoryData worden de navigatiegegevens van de gebruiker aangepast. Het bevat basisinformatie zoals de gebruikers-id, de toegang tot de URL en de toegangstijd.
 
 ```csharp
 public class NavHistoryData
@@ -403,7 +403,7 @@ public class NavHistoryData
 }
 ```
 
-De NavHistoryDataMonitor-klasse is verantwoordelijk voor het bufferen van de navigatie gegevens van de gebruiker naar de data base. Het bevat een methode, RecordUserNavigationEntry, die reageert door een **OnAdded** -gebeurtenis te verhogen. De volgende code toont de constructor-logica die gebruikmaakt van RX om een waarneem bare verzameling te maken op basis van de gebeurtenis. Vervolgens wordt u met de buffer methode geabonneerd op deze waarneem bare verzameling. De overbelasting geeft aan dat de buffer elke 20 seconden of 1000 vermeldingen moet worden verzonden.
+De klasse NavHistoryDataMonitor is verantwoordelijk voor het bufferen van de gebruikersnavigatiegegevens naar de database. Het bevat een methode, RecordUserNavigationEntry, die reageert door het verhogen van een **OnAdded** gebeurtenis. De volgende code toont de constructorlogica die Rx gebruikt om een waarneembare verzameling te maken op basis van de gebeurtenis. Vervolgens onderschrijft het deze waarneembare verzameling met de Buffer-methode. De overbelasting geeft aan dat de buffer elke 20 seconden of 1000 vermeldingen moet worden verzonden.
 
 ```csharp
 public NavHistoryDataMonitor()
@@ -415,7 +415,7 @@ public NavHistoryDataMonitor()
 }
 ```
 
-Met de handler worden alle gebufferde items naar een type tabel waarde geconverteerd en wordt dit type vervolgens door gegeven aan een opgeslagen procedure waarmee de batch wordt verwerkt. De volgende code toont de volledige definitie voor de klassen NavHistoryDataEventArgs en NavHistoryDataMonitor.
+De handler zet alle gebufferde items om in een tabelwaardetype en geeft dit type vervolgens door aan een opgeslagen procedure die de batch verwerkt. De volgende code toont de volledige definitie voor zowel de NavHistoryDataEventArgs als de NavHistoryDataMonitor klassen.
 
 ```csharp
 public class NavHistoryDataEventArgs : System.EventArgs
@@ -437,7 +437,7 @@ public class NavHistoryDataMonitor
     }
 ```
 
-Met de handler worden alle gebufferde items naar een type tabel waarde geconverteerd en wordt dit type vervolgens door gegeven aan een opgeslagen procedure waarmee de batch wordt verwerkt. De volgende code toont de volledige definitie voor de klassen NavHistoryDataEventArgs en NavHistoryDataMonitor.
+De handler zet alle gebufferde items om in een tabelwaardetype en geeft dit type vervolgens door aan een opgeslagen procedure die de batch verwerkt. De volgende code toont de volledige definitie voor zowel de NavHistoryDataEventArgs als de NavHistoryDataMonitor klassen.
 
 ```csharp
     public class NavHistoryDataEventArgs : System.EventArgs
@@ -480,11 +480,11 @@ Met de handler worden alle gebufferde items naar een type tabel waarde geconvert
 }
 ```
 
-Als u deze buffer klasse wilt gebruiken, maakt de toepassing een statisch NavHistoryDataMonitor-object. Telkens wanneer een gebruiker een pagina opent, roept de toepassing de methode NavHistoryDataMonitor. RecordUserNavigationEntry aan. De logica voor buffering zorgt ervoor dat deze vermeldingen in batches naar de Data Base worden verzonden.
+Als u deze bufferklasse wilt gebruiken, maakt de toepassing een statisch Object NavHistoryDataMonitor. Elke keer dat een gebruiker een pagina opent, roept de toepassing de methode NavHistoryDataMonitor.RecordUserNavigationEntry aan. De bufferlogica gaat over tot het verzenden van deze vermeldingen in batches naar de database.
 
-### <a name="master-detail"></a>Hoofd Details
+### <a name="master-detail"></a>Hoofddetails
 
-Para meters met tabel waarden zijn handig voor eenvoudige INVOEG scenario's. Het kan echter lastiger zijn om batch toevoegingen te maken die meer dan een tabel omvatten. Het scenario ' hoofd/detail ' is een goed voor beeld. De hoofd tabel bevat de primaire entiteit. Een of meer detail tabellen bevatten meer gegevens over de entiteit. In dit scenario afdwingen refererende-sleutel relaties de relatie van gegevens met een unieke hoofd entiteit. Overweeg een vereenvoudigde versie van een PurchaseOrder-tabel en de bijbehorende OrderDetail-tabel. Met de volgende Transact-SQL wordt de PurchaseOrder-tabel gemaakt met vier kolommen: OrderID, order date, KlantId en status.
+Tabelwaardeparameters zijn handig voor eenvoudige INSERT-scenario's. Het kan echter moeilijker zijn om batchinserts die meer dan een tabel te betrekken. Het "master/detail"-scenario is een goed voorbeeld. De hoofdtabel identificeert de primaire entiteit. Een of meer detailtabellen slaan meer gegevens over de entiteit op. In dit scenario dwingen buitenlandse sleutelrelaties de relatie van details af met een unieke hoofdentiteit. Overweeg een vereenvoudigde versie van een tabel PurchaseOrder en de bijbehorende orderdetailtabel. Met de volgende Transact-SQL wordt de tabel PurchaseOrder gemaakt met vier kolommen: OrderID, OrderDate, CustomerID en Status.
 
 ```sql
 CREATE TABLE [dbo].[PurchaseOrder](
@@ -496,7 +496,7 @@ CONSTRAINT [PrimaryKey_PurchaseOrder]
 PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
 ```
 
-Elke bestelling bevat een of meer product aankopen. Deze informatie wordt vastgelegd in de tabel PurchaseOrderDetail. Met de volgende Transact-SQL wordt de PurchaseOrderDetail-tabel gemaakt met vijf kolommen: OrderID, OrderDetailID, ProductID, UnitPrice en Bestelhoev.
+Elke bestelling bevat een of meer productaankopen. Deze informatie wordt vastgelegd in de tabel PurchaseOrderDetail. Met de volgende Transact-SQL wordt de tabel PurchaseOrderDetail gemaakt met vijf kolommen: OrderID, OrderDetailID, ProductID, UnitPrice en OrderQty.
 
 ```sql
 CREATE TABLE [dbo].[PurchaseOrderDetail](
@@ -509,7 +509,7 @@ CONSTRAINT [PrimaryKey_PurchaseOrderDetail] PRIMARY KEY CLUSTERED
 ( [OrderID] ASC, [OrderDetailID] ASC ))
 ```
 
-De kolom OrderID in de tabel PurchaseOrderDetail moet verwijzen naar een order in de tabel PurchaseOrder. Deze beperking wordt afgedwongen door de volgende definitie van een refererende sleutel.
+De kolom OrderID in de tabel PurchaseOrderDetail moet verwijzen naar een order uit de tabel Inkooporder. De volgende definitie van een buitenlandse sleutel dwingt deze beperking af.
 
 ```sql
 ALTER TABLE [dbo].[PurchaseOrderDetail]  WITH CHECK ADD 
@@ -517,7 +517,7 @@ CONSTRAINT [FK_OrderID_PurchaseOrder] FOREIGN KEY([OrderID])
 REFERENCES [dbo].[PurchaseOrder] ([OrderID])
 ```
 
-Als u para meters met tabel waarden wilt gebruiken, moet u voor elke doel tabel één door de gebruiker gedefinieerd tabel type hebben.
+Als u tabelparameters wilt gebruiken, moet u voor elke doeltabel één door de gebruiker gedefinieerd tabeltype hebben.
 
 ```sql
 CREATE TYPE PurchaseOrderTableType AS TABLE 
@@ -535,7 +535,7 @@ CREATE TYPE PurchaseOrderDetailTableType AS TABLE
 GO
 ```
 
-Definieer vervolgens een opgeslagen procedure voor het accepteren van tabellen van deze typen. Met deze procedure kan een toepassing lokale batch een set orders en de volg orde van de gegevens in één aanroep uitvoeren. De volgende Transact-SQL bevat de volledige opgeslagen procedure declaratie voor dit inkoop order voorbeeld.
+Definieer vervolgens een opgeslagen procedure die tabellen van deze typen accepteert. Met deze procedure kan een toepassing een set orders en ordergegevens in één gesprek lokaal batchen. De volgende Transact-SQL biedt de volledige opgeslagen proceduredeclaratie voor dit voorbeeld van de aankooporder.
 
 ```sql
 CREATE PROCEDURE sp_InsertOrdersBatch (
@@ -580,9 +580,9 @@ JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
 GO
 ```
 
-In dit voor beeld slaat de lokaal gedefinieerde @IdentityLink tabel de werkelijke waarden van de order-waarde van de zojuist ingevoegde rijen. Deze order-id's verschillen van de tijdelijke waarden voor OrderID in de @orders en @details para meters met tabel waarden. Daarom verbindt de @IdentityLink-tabel vervolgens de waarden voor de OrderID van de para meter @orders met de werkelijke waarden van de order-waarde voor de nieuwe rijen in de tabel PurchaseOrder. Nadat deze stap is uitgevoerd, kan de @IdentityLink tabel de details van de order gemakkelijker invoegen met de huidige OrderID die voldoet aan de beperking van de refererende sleutel.
+In dit voorbeeld worden in @IdentityLink de lokaal gedefinieerde tabel de werkelijke OrderID-waarden van de nieuw ingevoegde rijen opgeslagen. Deze order-id's verschillen van de @orders tijdelijke @details OrderID-waarden in de parameters met tabelwaarde. Daarom verbindt de @IdentityLink tabel vervolgens de OrderID-waarden van de @orders parameter met de echte OrderID-waarden voor de nieuwe rijen in de tabel Inkooporder. Na deze stap @IdentityLink kan de tabel het invoegen van de ordergegevens vergemakkelijken met de werkelijke OrderID die voldoet aan de externe sleutelbeperking.
 
-Deze opgeslagen procedure kan worden gebruikt vanuit code of vanuit andere Transact-SQL-aanroepen. Zie de sectie para meters voor tabel waarden in dit artikel voor een code voorbeeld. In de volgende Transact-SQL wordt uitgelegd hoe u de sp_InsertOrdersBatch aanroept.
+Deze opgeslagen procedure kan worden gebruikt vanuit code of vanuit andere Transact-SQL-aanroepen. Zie het gedeelte parameters met tabelwaarde van dit document voor een codevoorbeeld. De volgende Transact-SQL laat zien hoe u de sp_InsertOrdersBatch.
 
 ```sql
 declare @orders as PurchaseOrderTableType
@@ -604,15 +604,15 @@ VALUES(1, 10, $11.50, 1),
 exec sp_InsertOrdersBatch @orders, @details
 ```
 
-Met deze oplossing kan elke batch een set OrderID-waarden gebruiken die beginnen bij 1. Met deze tijdelijke order-waarden worden de relaties in de batch beschreven, maar de werkelijke waarden voor OrderID worden bepaald op het moment van de invoeg bewerking. U kunt dezelfde instructies in het vorige voor beeld herhaaldelijk uitvoeren en unieke orders in de-data base genereren. Daarom kunt u overwegen meer code of database logica toe te voegen waarmee dubbele orders worden voor komen wanneer deze batch techniek wordt gebruikt.
+Met deze oplossing kan elke batch een set OrderID-waarden gebruiken die bij 1 beginnen. Deze tijdelijke OrderID-waarden beschrijven de relaties in de batch, maar de werkelijke OrderID-waarden worden bepaald op het moment van de invoegbewerking. U dezelfde instructies in het vorige voorbeeld herhaaldelijk uitvoeren en unieke orders genereren in de database. Daarom u overwegen meer code- of databaselogica toe te voegen die dubbele orders voorkomt bij het gebruik van deze batchtechniek.
 
-In dit voor beeld wordt gedemonstreerd dat zelfs complexere database bewerkingen, zoals hoofd detail bewerkingen, kunnen worden gebatcheerd met para meters met tabel waarden.
+In dit voorbeeld wordt aangetoond dat nog complexere databasebewerkingen, zoals master-detailbewerkingen, kunnen worden gebatched met behulp van parameters met tabelwaarde.
 
-### <a name="upsert"></a>UPSERT
+### <a name="upsert"></a>UPSERT UPSERT
 
-Een ander batch scenario omvat het gelijktijdig bijwerken van bestaande rijen en het invoegen van nieuwe rijen. Deze bewerking wordt ook wel een ' UPSERT-bewerking (update + insert) genoemd. In plaats van afzonderlijke aanroepen te maken om in te VOEGen en bij te werken, is de instructie MERGe het meest geschikt voor deze taak. De instructie MERGe kan zowel insert-als update-bewerkingen uitvoeren in één aanroep.
+Een ander batchscenario omvat het gelijktijdig bijwerken van bestaande rijen en het invoegen van nieuwe rijen. Deze bewerking wordt soms aangeduid als een "UPSERT" (update + insert) bewerking. In plaats van afzonderlijke gesprekken te voeren naar INSERT en UPDATE, is de instructie MERGE het meest geschikt voor deze taak. De instructie MERGE kan zowel invoegen als bijwerken in één gesprek uitvoeren.
 
-U kunt para meters voor tabel waarden gebruiken met de instructie MERGe om updates uit te voeren en in te VOEGen. Denk bijvoorbeeld aan een vereenvoudigde tabel met werk nemers die de volgende kolommen bevat: EmployeeID, FirstName, LastName, SocialSecurityNumber:
+Tabelwaardeparameters kunnen met de instructie MERGE worden gebruikt om updates en inserts uit te voeren. Denk bijvoorbeeld aan een vereenvoudigde tabel met werknemers met de volgende kolommen: EmployeeID, FirstName, LastName, SocialSecurityNumber:
 
 ```sql
 CREATE TABLE [dbo].[Employee](
@@ -624,7 +624,7 @@ CONSTRAINT [PrimaryKey_Employee] PRIMARY KEY CLUSTERED
 ([EmployeeID] ASC ))
 ```
 
-In dit voor beeld kunt u het feit gebruiken dat de SocialSecurityNumber uniek is om een samen VOEGing van meerdere werk nemers uit te voeren. Maak eerst het door de gebruiker gedefinieerde tabel type:
+In dit voorbeeld u het feit gebruiken dat het SocialSecurityNumber uniek is om een samenvoeging van meerdere werknemers uit te voeren. Maak eerst het door de gebruiker gedefinieerde tabeltype:
 
 ```sql
 CREATE TYPE EmployeeTableType AS TABLE 
@@ -635,7 +635,7 @@ CREATE TYPE EmployeeTableType AS TABLE
 GO
 ```
 
-Maak vervolgens een opgeslagen procedure of schrijf code die gebruikmaakt van de instructie MERGe om de update uit te voeren en in te voegen. In het volgende voor beeld wordt de instructie MERGe gebruikt voor een tabelwaardeparameter, @employees, van het type EmployeeTableType. De inhoud van de tabel @employees wordt hier niet weer gegeven.
+Maak vervolgens een opgeslagen procedure of schrijfcode die de instructie MERGE gebruikt om de update uit te voeren en in te voegen. In het volgende voorbeeld wordt de instructie MERGE @employeesgebruikt op een parameter met tabelwaarde van het type EmployeeTableType. De inhoud @employees van de tabel wordt hier niet weergegeven.
 
 ```sql
 MERGE Employee AS target
@@ -651,30 +651,30 @@ WHEN NOT MATCHED THEN
     VALUES (source.[FirstName], source.[LastName], source.[SocialSecurityNumber]);
 ```
 
-Zie voor meer informatie de documentatie en voor beelden voor de instructie MERGe. Hoewel hetzelfde werk kan worden uitgevoerd in een opgeslagen procedure aanroep met meerdere stappen met afzonderlijke INSERT-en UPDATE-bewerkingen, is de instructie MERGe efficiënter. Met database code kunnen ook Transact-SQL-aanroepen worden gemaakt die de instructie MERGe direct gebruiken zonder dat er twee database aanroepen hoeven te worden uitgevoerd voor INSERT en UPDATE.
+Zie de documentatie en voorbeelden voor de instructie MERGE voor meer informatie. Hoewel hetzelfde werk kan worden uitgevoerd in een door meerdere stappen opgeslagen procedureaanroep met afzonderlijke insert- en updatebewerkingen, is de instructie MERGE efficiënter. Databasecode kan ook Transact-SQL-aanroepen construeren die de merge-instructie rechtstreeks gebruiken zonder dat er twee databaseoproepen nodig zijn voor INSERT en UPDATE.
 
-## <a name="recommendation-summary"></a>Samen vatting aanbeveling
+## <a name="recommendation-summary"></a>Aanbevelingssamenvatting
 
-De volgende lijst bevat een overzicht van de aanbevelingen voor batch verwerking die in dit artikel worden besproken:
+De volgende lijst bevat een overzicht van de aanbevelingen voor batching die in dit artikel worden besproken:
 
-* Gebruik buffering en batch verwerking om de prestaties en schaal baarheid van SQL Database toepassingen te verbeteren.
-* Meer informatie over de compromissen tussen batch verwerking/buffering en tolerantie. Tijdens een storing van een functie kan het risico dat een niet-verwerkte batch kritieke gegevens verloren gaan, de prestaties van de batch verwerking ten zwaarder afnemen.
-* Poging om alle aanroepen naar de data base binnen één Data Center te houden om de latentie te verminderen.
-* Als u één batch-techniek kiest, bieden para meters voor de tabel waarden de beste prestaties en flexibiliteit.
-* Volg de volgende algemene richt lijnen voor de snelste prestaties, maar test uw scenario:
-  * Gebruik voor < 100-rijen één para meter opdracht invoegen.
-  * Gebruik voor < 1000-rijen para meters met tabel waarden.
-  * Gebruik SqlBulkCopy voor > = 1000 rijen.
-* Voor bijwerk-en verwijder bewerkingen gebruikt u tabelwaardeparameter-para meters met opgeslagen procedure logica waarmee de juiste bewerking wordt bepaald op elke rij in de tabel parameter.
-* Richt lijnen voor Batch grootte:
-  * Gebruik de grootste batch grootten die zinvol zijn voor uw toepassing en zakelijke vereisten.
-  * Behaal de prestatie winst van grote batches met de Risico's van tijdelijke of onherstelbare fouten. Wat is het gevolg van nieuwe pogingen of verlies van de gegevens in de batch? 
-  * Test de grootste Batch grootte om te controleren of SQL Database deze niet afwijst.
-  * Maak configuratie-instellingen voor het beheren van batch verwerking, zoals de Batch grootte of het buffer tijd venster. Deze instellingen bieden flexibiliteit. U kunt het batch gedrag voor productie wijzigen zonder de Cloud service opnieuw te implementeren.
-* Vermijd parallelle uitvoering van batches die op één tabel in één Data Base worden uitgevoerd. Als u ervoor kiest om één batch te verdelen over meerdere werk threads, voert u tests uit om het ideale aantal threads te bepalen. Na een niet-opgegeven drempel waarde, zullen meer threads de prestaties verlagen in plaats van deze te verg Roten.
-* Overweeg bufferen op grootte en tijd als een manier om batches te implementeren voor meer scenario's.
+* Gebruik buffering en batching om de prestaties en schaalbaarheid van SQL Database-toepassingen te verhogen.
+* Begrijp de afwegingen tussen batching/buffering en tolerantie. Tijdens een rolfout kan het risico van het verliezen van een onverwerkte batch bedrijfskritieke gegevens opwegen tegen het prestatievoordeel van batching.
+* Probeer alle oproepen naar de database binnen één datacenter te houden om de latentie te verminderen.
+* Als u kiest voor één batchingtechniek, bieden tabelwaardeparameters de beste prestaties en flexibiliteit.
+* Volg deze algemene richtlijnen voor de snelste invoegprestaties, maar test uw scenario:
+  * Gebruik voor < 100 rijen één parametermet de opdracht INVOEGEN.
+  * Voor < 1000 rijen gebruikt u parameters met tabelwaarde.
+  * Voor >= 1000 rijen gebruikt u SqlBulkCopy.
+* Voor het bijwerken en verwijderen van bewerkingen gebruikt u parameters met tabelwaarde met opgeslagen procedurelogica die de juiste bewerking bepaalt voor elke rij in de tabelparameter.
+* Richtlijnen voor batchgrootte:
+  * Gebruik de grootste batchgroottes die zinvol zijn voor uw toepassing en zakelijke vereisten.
+  * Breng de prestatiewinst van grote batches in evenwicht met de risico's van tijdelijke of catastrofale storingen. Wat is het gevolg van nieuwe pogingen of verlies van de gegevens in de batch? 
+  * Test de grootste batchgrootte om te controleren of SQL Database deze niet afwijst.
+  * Maak configuratie-instellingen die batching beheren, zoals de batchgrootte of het buffertijdvenster. Deze instellingen bieden flexibiliteit. U het batchgedrag in de productie wijzigen zonder de cloudservice opnieuw te implementeren.
+* Vermijd parallelle uitvoering van batches die werken op één tabel in één database. Als u ervoor kiest om één batch over meerdere werknemersthreads te verdelen, voert u tests uit om het ideale aantal threads te bepalen. Na een niet-gespecificeerde drempelwaarde zullen meer threads de prestaties verlagen in plaats van deze te verhogen.
+* Overweeg buffering op grootte en tijd als een manier om batching te implementeren voor meer scenario's.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Dit artikel is gericht op het verbeteren van de prestaties en schaal baarheid van uw toepassingen met bemiddelende technieken voor database ontwerp en-code ring. Maar dit is slechts één factor in uw algemene strategie. Zie [Azure SQL database richt lijnen voor prestaties voor individuele data bases](sql-database-performance-guidance.md) en [prijs-en prestatie overwegingen voor een elastische pool](sql-database-elastic-pool-guidance.md)voor meer manieren om de prestaties en schaal baarheid te verbeteren.
+Dit artikel richtte zich op hoe databaseontwerp- en coderingstechnieken met betrekking tot batching de prestaties en schaalbaarheid van uw toepassing kunnen verbeteren. Maar dit is slechts een factor in uw algemene strategie. Zie [Azure SQL Database-prestatierichtlijnen voor afzonderlijke databases](sql-database-performance-guidance.md) en [prijs- en prestatieoverwegingen voor een elastische pool voor](sql-database-elastic-pool-guidance.md)meer manieren om de prestaties en schaalbaarheid te verbeteren.
 

@@ -1,6 +1,6 @@
 ---
-title: Een API zoeken voor een aangepaste app | Azure
-description: De machtigingen configureren die u nodig hebt voor toegang tot een bepaalde API in uw aangepaste, ontwikkelde Azure AD-toepassing
+title: Een API zoeken voor een op maat gemaakte app | Azure
+description: De machtigingen configureren die u nodig hebt om toegang te krijgen tot een bepaalde API in uw speciaal ontwikkelde Azure AD-toepassing
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,24 +12,24 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.openlocfilehash: bc50ec86866b7fe04c549c7fd463b6de4df3444b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76698387"
 ---
-# <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>Een specifieke API vinden die nodig is voor een speciaal ontwikkelde toepassing
+# <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>Een specifieke API vinden die nodig is voor een op maat ontwikkelde toepassing
 
-Toegang tot Api's vereist configuratie van toegangs scopes en rollen. Als u de Web-Api's van uw resource toepassing beschikbaar wilt maken voor client toepassingen, moet u de toegangs scopes en rollen voor de API configureren. Als u een-client toepassing toegang wilt geven tot een web-API, moet u machtigingen configureren voor toegang tot de API in de app-registratie.
+Toegang tot API's vereist configuratie van toegangsscopen en rollen. Als u de web-API's van uw brontoepassing wilt blootstellen aan clienttoepassingen, moet u toegangsscopen en -rollen voor de API configureren. Als u wilt dat een clienttoepassing toegang krijgt tot een web-API, moet u machtigingen configureren om toegang te krijgen tot de API in de app-registratie.
 
 ## <a name="configuring-a-resource-application-to-expose-web-apis"></a>Een resourcetoepassing configureren voor het beschikbaar maken van web-API's
 
-Wanneer u uw web-API beschikbaar maakt, wordt de API weer gegeven in de lijst **een API selecteren** wanneer u machtigingen toevoegt aan een app-registratie. Volg de stappen die worden beschreven in [een toepassing configureren om Web-api's](quickstart-configure-app-expose-web-apis.md)weer te geven om toegangs scopes toe te voegen.
+Wanneer u uw web-API blootstelt, wordt de API weergegeven in de lijst **Een API selecteren** wanneer machtigingen worden toegevoegd aan een app-registratie. Als u toegangsscopen wilt toevoegen, voert u de stappen uit die zijn beschreven in [Een toepassing configureren om web-API's bloot te leggen.](quickstart-configure-app-expose-web-apis.md)
 
-## <a name="configuring-a-client-application-to-access-web-apis"></a>Een client toepassing configureren voor toegang tot Web-Api's
+## <a name="configuring-a-client-application-to-access-web-apis"></a>Een clienttoepassing configureren om toegang te krijgen tot web-API's
 
-Wanneer u machtigingen toevoegt voor uw app-registratie, kunt u **API-toegang toevoegen** aan weer gegeven Web-api's. Als u toegang wilt krijgen tot Web-Api's, volgt u de stappen in [een client toepassing configureren voor toegang tot Web-api's](quickstart-configure-app-access-web-apis.md).
+Wanneer u machtigingen toevoegt aan uw app-registratie, u **API-toegang toevoegen** aan blootgestelde web-API's. Als u toegang wilt krijgen tot web-API's, volgt u de stappen die zijn beschreven in [Een clienttoepassing configureren om toegang te krijgen tot web-API's](quickstart-configure-app-access-web-apis.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Informatie over het Azure Active Directory toepassings manifest](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)
+- [Het Azure Active Directory-toepassingsmanifest begrijpen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)

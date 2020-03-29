@@ -1,6 +1,6 @@
 ---
 title: MPIO configureren op StorSimple Linux-host
-description: MPIO configureren op StorSimple die zijn verbonden met een Linux-host met CentOS 6,6
+description: MPIO configureren op StorSimple die is aangesloten op een Linux-host met CentOS 6.6
 author: alkohli
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
@@ -8,67 +8,67 @@ ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: 5dadd231335e93839e947077168f32dbfe96eb45
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278364"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>MPIO configureren op een StorSimple-host met CentOS
-In dit artikel worden de stappen beschreven die nodig zijn voor het configureren van MPIO (multipath-i/o) op de CentOS 6,6-hostserver. De hostserver is verbonden met uw Microsoft Azure StorSimple-apparaat voor hoge Beschik baarheid via iSCSI-initia tors. Hierin wordt de automatische detectie van multipath-apparaten en de specifieke installatie van alleen voor StorSimple-volumes beschreven.
+In dit artikel worden de stappen uitgelegd die nodig zijn om Multipathing IO (MPIO) te configureren op uw Centos 6.6-hostserver. De hostserver is verbonden met uw Microsoft Azure StorSimple-apparaat voor hoge beschikbaarheid via iSCSI-initiators. Het beschrijft in detail de automatische ontdekking van multipath apparaten en de specifieke setup alleen voor StorSimple volumes.
 
-Deze procedure is van toepassing op alle modellen van de StorSimple 8000-serie apparaten.
+Deze procedure is van toepassing op alle modellen van StorSimple 8000-serie apparaten.
 
 > [!NOTE]
-> Deze procedure kan niet worden gebruikt voor een StorSimple Cloud Appliance. Zie voor meer informatie host-servers configureren voor uw Cloud apparaat.
+> Deze procedure kan niet worden gebruikt voor een StorSimple Cloud Appliance. Zie voor meer informatie hoe u hostservers voor uw cloudtoestel configureert.
 
 
-## <a name="about-multipathing"></a>Over meerdere paden
-Met de functie multipath kunt u meerdere I/O-paden configureren tussen een hostserver en een opslag apparaat. Deze I/O-paden zijn fysieke SAN-verbindingen die afzonderlijke kabels, switches, netwerk interfaces en controllers kunnen bevatten. Met meerdere paden worden de I/O-paden geaggregeerd om een nieuw apparaat te configureren dat is gekoppeld aan alle geaggregeerde paden.
+## <a name="about-multipathing"></a>Over multipathing
+Met de multipathing-functie u meerdere I/O-paden configureren tussen een hostserver en een opslagapparaat. Deze I/O-paden zijn fysieke SAN-verbindingen die afzonderlijke kabels, switches, netwerkinterfaces en controllers kunnen bevatten. Multipathing verzamelt de I/O-paden om een nieuw apparaat te configureren dat is gekoppeld aan alle geaggregeerde paden.
 
-Het doel van meerdere paden is twee vouwen:
+Het doel van multipathing is tweeledig:
 
-* **Hoge Beschik baarheid**: het biedt een alternatief pad als een element van het I/O-pad (zoals een kabel, Switch, netwerk interface of controller) mislukt.
-* **Taak verdeling**: afhankelijk van de configuratie van uw opslag apparaat kan dit de prestaties verbeteren door de belasting van de I/O-paden te detecteren en deze belastingen dynamisch te herverdelen.
+* **Hoge beschikbaarheid**: het biedt een alternatief pad als een element van het I/O-pad (zoals een kabel, switch, netwerkinterface of controller) uitvalt.
+* **Load balancing**: Afhankelijk van de configuratie van uw opslagapparaat kan het de prestaties verbeteren door belastingen op de I/O-paden te detecteren en deze belastingen dynamisch opnieuw in evenwicht te brengen.
 
-### <a name="about-multipathing-components"></a>Over onderdelen voor meerdere paden
-Meerdere paden in Linux bestaat uit kernel-onderdelen en onderdelen van de gebruikers ruimte, zoals hieronder beschreven.
+### <a name="about-multipathing-components"></a>Over multipathing componenten
+Multipathing in Linux bestaat uit kernel componenten en user-space componenten zoals hieronder getabuleerd.
 
-* **Kernel**: het hoofd onderdeel is de *toewijzing* van het apparaat waarmee I/O wordt omgeleid en failover voor paden en paden wordt ondersteund.
+* **Kernel:** De belangrijkste component is de *apparaatmapper* die I/O omleidt en failover voor paden en padgroepen ondersteunt.
 
-* **Gebruikers ruimte**: Dit zijn *meerdere paden* waarmee apparaten met meerdere paden kunnen worden beheerd door de toewijzings module voor het apparaat in te voeren. De hulpprogram ma's bestaan uit:
+* **Gebruikersruimte:** dit zijn *multipath-tools* die multipathed devices beheren door de multipathmodule van het apparaat mapper te instrueren wat te doen. De gereedschappen bestaan uit:
    
-   * **Multipath**: geeft een lijst en configureert apparaten met meerdere paden.
-   * **Meerdere**paden: daemon waarmee meerdere paden worden uitgevoerd en de paden worden bewaakt.
-   * **Devmap-name**: biedt een herken bare apparaat-naam voor udev voor devmaps.
-   * **Kpartx**: wijst lineaire devmaps toe aan toepassingsmappartities om meerdere paden partitionisch te maken.
-   * **Multipath. conf**: configuratie bestand voor multipath daemon dat wordt gebruikt om de ingebouwde configuratie tabel te overschrijven.
+   * **Multipath:** geeft meerpathige apparaten weer en configureert deze.
+   * **Multipathd**: daemon die multipath uitvoert en de paden bewaakt.
+   * **Devmap-naam**: biedt een zinvolle apparaatnaam aan udev voor devmaps.
+   * **Kpartx**: brengt lineaire devmaps in kaart met apparaatpartities om multipath-kaarten partitionerbaar te maken.
+   * **Multipath.conf**: configuratiebestand voor multipath daemon dat wordt gebruikt om de ingebouwde configuratietabel te overschrijven.
 
-### <a name="about-the-multipathconf-configuration-file"></a>Over het configuratie bestand voor meerdere paden. conf
-Het configuratie bestand `/etc/multipath.conf` veel van de multipath-functies die door de gebruiker kunnen worden geconfigureerd. De `multipath`-opdracht en de kernel-daemon `multipathd` informatie gebruiken die in dit bestand zijn gevonden. Het bestand wordt alleen geraadpleegd tijdens de configuratie van de multipath-apparaten. Zorg ervoor dat alle wijzigingen zijn aangebracht voordat u de opdracht `multipath` uitvoert. Als u het bestand later wijzigt, moet u de meerdere paden stoppen en opnieuw starten om de wijzigingen van kracht te laten worden.
+### <a name="about-the-multipathconf-configuration-file"></a>Over het configuratiebestand multipath.conf
+Het configuratiebestand `/etc/multipath.conf` maakt veel van de multipathing-functies gebruikersconfigureerbaar. De `multipath` opdracht en `multipathd` de kernel daemon gebruiken informatie in dit bestand. Het bestand wordt alleen geraadpleegd tijdens de configuratie van de multipath-apparaten. Zorg ervoor dat alle wijzigingen worden `multipath` aangebracht voordat u de opdracht uitvoert. Als u het bestand daarna wijzigt, moet u stoppen en opnieuw beginnen met multipathen om de wijzigingen van kracht te laten worden.
 
-Het multipath. conf heeft vijf secties:
+De multipath.conf bestaat uit vijf secties:
 
-- **Standaard waarden systeem niveau** *(standaard instellingen)* : u kunt de standaard instellingen van het systeem niveau opheffen.
-- **Apparaten in de zwarte** *lijst: u*kunt opgeven welke apparaten moeten worden beheerd door de toewijzing van het apparaat.
-- **Uitzonderingen zwarte** *(blacklist_exceptions)* : U kunt specifieke apparaten moet worden behandeld als multipath-apparaten, zelfs als die worden vermeld in de blokkeringslijst.
-- **Specifieke instellingen voor de opslag controller** *(apparaten)* : u kunt configuratie-instellingen opgeven die worden toegepast op apparaten met leverancier-en product informatie.
-- **Apparaatspecifieke instellingen** *(meerdere paden)* : u kunt deze sectie gebruiken om de configuratie-instellingen voor afzonderlijke lun's te verfijnen.
+- **Standaardinstellingen op systeemniveau** *(standaardinstellingen):* u standaardinstellingen op systeemniveau overschrijven.
+- **Apparaten op de zwarte lijst** *(zwarte lijst)*: U de lijst opgeven met apparaten die niet door apparaatmapper moeten worden bestuurd.
+- **Uitzonderingen op de zwarte lijst** *(blacklist_exceptions)*: U specifieke apparaten identificeren die als multipath-apparaten moeten worden behandeld, zelfs als deze op de zwarte lijst worden vermeld.
+- **Specifieke instellingen voor opslagcontroller** *(apparaten):* U configuratie-instellingen opgeven die worden toegepast op apparaten met leveranciers- en productgegevens.
+- **Apparaatspecifieke instellingen** *(multipaths):* U deze sectie gebruiken om de configuratie-instellingen voor afzonderlijke LUN's te verfijnen.
 
-## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>Meerdere paden configureren op StorSimple die zijn verbonden met de Linux-host
-Een StorSimple-apparaat dat is verbonden met een Linux-host kan worden geconfigureerd voor hoge Beschik baarheid en taak verdeling. Als de Linux-host bijvoorbeeld twee interfaces heeft die zijn verbonden met het SAN en het apparaat twee interfaces heeft die zijn verbonden met het SAN, zodat deze interfaces zich op hetzelfde subnet bevinden, zijn er vier paden beschikbaar. Als elke gegevens interface op het apparaat en de host interface zich echter op een ander IP-subnet bevindt (en niet routeerbaar), zijn er slechts twee paden beschikbaar. U kunt meerdere paden configureren om automatisch alle beschik bare paden te detecteren, een taakverdelings algoritme voor die paden te kiezen, specifieke configuratie-instellingen toe te passen voor StorSimple volumes en vervolgens meerdere paden in te scha kelen en te controleren.
+## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>Multipathing configureren op StorSimple die is verbonden met Linux-host
+Een StorSimple-apparaat dat is aangesloten op een Linux-host kan worden geconfigureerd voor hoge beschikbaarheid en taakverdeling. Als de Linux-host bijvoorbeeld twee interfaces heeft die zijn aangesloten op het SAN en het apparaat twee interfaces heeft die zijn aangesloten op het SAN, zodat deze interfaces zich op hetzelfde subnet bevinden, zijn er 4 paden beschikbaar. Als elke DATA-interface op het apparaat en de hostinterface zich echter op een ander IP-subnet bevinden (en niet routeerbaar), zijn er slechts 2 paden beschikbaar. U multipathing configureren om automatisch alle beschikbare paden te ontdekken, een load-balancing-algoritme voor die paden te kiezen, specifieke configuratie-instellingen toe te passen voor alleen StorSimple-volumes en vervolgens multipathing in- en te verifiëren.
 
-In de volgende procedure wordt beschreven hoe u meerdere paden configureert wanneer een StorSimple-apparaat met twee netwerk interfaces is verbonden met een host met twee netwerk interfaces.
+In de volgende procedure wordt beschreven hoe u multipathing configureert wanneer een StorSimple-apparaat met twee netwerkinterfaces is verbonden met een host met twee netwerkinterfaces.
 
 ## <a name="prerequisites"></a>Vereisten
-In deze sectie vindt u meer informatie over de configuratie vereisten voor CentOS-server en uw StorSimple-apparaat.
+In dit gedeelte worden de configuratievereisten voor CentOS-server en uw StorSimple-apparaat beschreven.
 
 ### <a name="on-centos-host"></a>Op CentOS-host
-1. Zorg ervoor dat op de CentOS-host twee netwerk interfaces zijn ingeschakeld. Type:
+1. Zorg ervoor dat uw CentOS-host twee netwerkinterfaces heeft ingeschakeld. Type:
    
     `ifconfig`
    
-    In het volgende voor beeld ziet u de uitvoer wanneer twee netwerk interfaces (`eth0` en `eth1`) aanwezig zijn op de host.
+    In het volgende voorbeeld wordt de`eth0` `eth1`uitvoer weergegeven wanneer er twee netwerkinterfaces (en ) op de host aanwezig zijn.
    
         [root@centosSS ~]# ifconfig
         eth0  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:41  
@@ -99,21 +99,21 @@ In deze sectie vindt u meer informatie over de configuratie vereisten voor CentO
           TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:0
           RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
-1. Installeer *iSCSI-initiator-hulppr* . op uw CentOS-server. Voer de volgende stappen uit om *iSCSI-initiator-hulppr*. te installeren.
+1. Installeer *iSCSI-initiator-utils* op uw CentOS-server. Voer de volgende stappen uit om *iSCSI-initiator-utils te*installeren.
    
-   1. Meld u aan als `root` in uw CentOS-host.
-   1. Installeer de *iSCSI-initiator-hulppr*. Type:
+   1. Meld je `root` aan bij je CentOS-host.
+   1. Installeer de *iSCSI-initiator-utils*. Type:
       
        `yum install iscsi-initiator-utils`
-   1. Nadat de *iSCSI-initiator-hulppr* . is geïnstalleerd, start u de iSCSI-service. Type:
+   1. Nadat de *iSCSI-Initiator-utils* is geïnstalleerd, start u de iSCSI-service. Type:
       
        `service iscsid start`
       
-       `iscsid` wordt mogelijk niet daad werkelijk gestart en de `--force` optie kan nodig zijn
-   1. Om ervoor te zorgen dat uw iSCSI-initiator tijdens het opstarten wordt ingeschakeld, gebruikt u de opdracht `chkconfig` om de service in te scha kelen.
+       Soms, `iscsid` kan niet daadwerkelijk `--force` beginnen en de optie kan nodig zijn
+   1. Gebruik de opdracht om de `chkconfig` service in te schakelen om ervoor te zorgen dat uw iSCSI-initiator tijdens het opstarten is ingeschakeld.
       
        `chkconfig iscsi on`
-   1. Voer de volgende opdracht uit om te controleren of deze correct is ingesteld:
+   1. Voer de opdracht uit om te controleren of deze correct is ingesteld:
       
        `chkconfig --list | grep iscsi`
       
@@ -122,69 +122,69 @@ In deze sectie vindt u meer informatie over de configuratie vereisten voor CentO
            iscsi   0:off   1:off   2:on3:on4:on5:on6:off
            iscsid  0:off   1:off   2:on3:on4:on5:on6:off
       
-       In het bovenstaande voor beeld kunt u zien dat uw iSCSI-omgeving wordt uitgevoerd op de opstart tijd op uitvoerings niveaus 2, 3, 4 en 5.
-1. *Apparaatinstallatie-Mapper-meerdere paden*. Type:
+       In het bovenstaande voorbeeld u zien dat uw iSCSI-omgeving wordt uitgevoerd op opstarttijd op run-niveaus 2, 3, 4 en 5.
+1. Installeer *apparaat-mapper-multipath*. Type:
    
     `yum install device-mapper-multipath`
    
-    De installatie wordt gestart. Typ **j** om door te gaan als u om bevestiging wordt gevraagd.
+    De installatie start. Type **Y** om door te gaan wanneer om bevestiging wordt gevraagd.
 
 ### <a name="on-storsimple-device"></a>Op StorSimple-apparaat
-Uw StorSimple-apparaat moet het volgende hebben:
+Uw StorSimple-apparaat moet beschikken over:
 
-* Ten minste twee interfaces zijn ingeschakeld voor iSCSI. Als u wilt controleren of twee interfaces op uw StorSimple-apparaat zijn ingeschakeld, voert u de volgende stappen uit in de klassieke Azure-portal voor uw StorSimple-apparaat:
+* Minimaal twee interfaces ingeschakeld voor iSCSI. Voer de volgende stappen uit in de klassieke Azure-portal voor uw StorSimple-apparaat om te controleren of twee interfaces op uw StorSimple-apparaat zijn ingeschakeld:
   
-  1. Meld u aan bij de klassieke portal voor uw StorSimple-apparaat.
-  1. Selecteer uw StorSimple Manager-service, klik op **apparaten** en kies het specifieke StorSimple-apparaat. Klik op **configureren** en controleer de instellingen van de netwerk interface. Hieronder ziet u een scherm opname met twee netwerk interfaces met iSCSI-functionaliteit. Hier gegevens 2 en DATA 3 zijn beide 10 GbE-interfaces ingeschakeld voor iSCSI.
+  1. Log in op de klassieke portal voor uw StorSimple-apparaat.
+  1. Selecteer uw StorSimple Manager-service, klik op **Apparaten** en kies het specifieke StorSimple-apparaat. Klik **op De** instellingen van de netwerkinterface configureren en verifiëren. Hieronder vindt u een schermafbeelding met twee netwerkinterfaces met iSCSI-interface. Hier data 2 en DATA 3 zijn beide 10 GbE-interfaces ingeschakeld voor iSCSI.
      
       ![MPIO StorsSimple DATA 2 config](./media/storsimple-configure-mpio-on-linux/IC761347.png)
      
-      ![MPIO StorSimple DATA 3 config](./media/storsimple-configure-mpio-on-linux/IC761348.png)
+      ![MPIO StorSimple DATA 3 Config](./media/storsimple-configure-mpio-on-linux/IC761348.png)
      
-      Op de pagina **configureren**
+      Op de pagina **Configureren**
      
-     1. Zorg ervoor dat voor beide netwerk interfaces iSCSI is ingeschakeld. Het veld **iSCSI ingeschakeld** moet worden ingesteld op **Ja**.
-     1. Zorg ervoor dat de netwerk interfaces dezelfde snelheid hebben, beide moeten 1 GbE of 10 GbE hebben.
-     1. Noteer de IPv4-adressen van de iSCSI-interfaces en sla deze op voor later gebruik op de host.
+     1. Zorg ervoor dat beide netwerkinterfaces iSCSI-enabled zijn. Het veld **met iSCSI-ingeschakeld** moet worden ingesteld op **Ja**.
+     1. Zorg ervoor dat de netwerkinterfaces dezelfde snelheid hebben, beide moeten 1 GbE of 10 GbE zijn.
+     1. Let op de IPv4-adressen van de iSCSI-interfaces en sla op voor later gebruik op de host.
 * De iSCSI-interfaces op uw StorSimple-apparaat moeten bereikbaar zijn vanaf de CentOS-server.
-      Als u dit wilt controleren, moet u de IP-adressen van uw StorSimple iSCSI-netwerk interfaces op de hostserver opgeven. De gebruikte opdrachten en de bijbehorende uitvoer met BESTAND2 (10.126.162.25) en DATA3 (10.126.162.26) worden hieronder weer gegeven:
+      Om dit te verifiëren, moet u de IP-adressen van uw StorSimple iSCSI-netwerkinterfaces op uw hostserver opgeven. De gebruikte opdrachten en de bijbehorende uitvoer met DATA2 (10.126.162.25) en DATA3 (10.126.162.26) worden hieronder weergegeven:
   
         [root@centosSS ~]# iscsiadm -m discovery -t sendtargets -p 10.126.162.25:3260
         10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
         10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
 
 ### <a name="hardware-configuration"></a>Hardwareconfiguratie
-U wordt aangeraden de twee iSCSI-netwerk interfaces op afzonderlijke paden te verbinden voor redundantie. In de afbeelding hieronder ziet u de aanbevolen hardwareconfiguratie voor hoge Beschik baarheid en meerdere paden voor taak verdeling voor uw CentOS-server en StorSimple-apparaat.
+We raden u aan de twee iSCSI-netwerkinterfaces op afzonderlijke paden aan te sluiten voor redundantie. De onderstaande afbeelding toont de aanbevolen hardwareconfiguratie voor hoge beschikbaarheid en load-balancing multipathing voor uw CentOS-server en StorSimple-apparaat.
 
-![MPIO-hardwareconfiguratie voor StorSimple naar Linux-host](./media/storsimple-configure-mpio-on-linux/MPIOHardwareConfigurationStorSimpleToLinuxHost2M.png)
+![MPIO hardware config voor StorSimple naar Linux host](./media/storsimple-configure-mpio-on-linux/MPIOHardwareConfigurationStorSimpleToLinuxHost2M.png)
 
-Zoals in de vorige afbeelding wordt weer gegeven:
+Zoals in het voorgaande cijfer wordt aangegeven:
 
 * Uw StorSimple-apparaat bevindt zich in een actief-passieve configuratie met twee controllers.
-* Twee SAN-switches zijn verbonden met uw apparaat-controllers.
-* Er zijn twee iSCSI-initia tors ingeschakeld op uw StorSimple-apparaat.
-* Er zijn twee netwerk interfaces ingeschakeld op de CentOS-host.
+* Er zijn twee SAN-switches aangesloten op de controllers van uw apparaat.
+* Twee iSCSI-initiators zijn ingeschakeld op uw StorSimple-apparaat.
+* Twee netwerkinterfaces zijn ingeschakeld op uw CentOS-host.
 
-Met de bovenstaande configuratie worden vier afzonderlijke paden tussen uw apparaat en de host opgeleverd als de host en de gegevens interfaces routeerbaar zijn.
+De bovenstaande configuratie levert 4 afzonderlijke paden op tussen uw apparaat en de host als de host- en gegevensinterfaces routeerbaar zijn.
 
 > [!IMPORTANT]
-> * We raden u aan om 1 GbE-en 10 GbE-netwerk interfaces niet te combi neren voor meerdere paden. Wanneer u twee netwerk interfaces gebruikt, moeten beide interfaces van hetzelfde type zijn.
-> * Op uw StorSimple-apparaat zijn DATA0, BESTAND1, DATA4 en DATA5 1 GbE-interfaces, terwijl DATA2 en DATA3 10 GbE-netwerk interfaces zijn. |
+> * Wij raden u aan geen 1 GbE- en 10 GbE-netwerkinterfaces te mixen voor multipathing. Bij het gebruik van twee netwerkinterfaces moeten beide interfaces hetzelfde type zijn.
+> * Op uw StorSimple-apparaat, DATA0, DATA1, DATA4 en DATA5 zijn 1 GbE-interfaces, terwijl DATA2 en DATA3 10 GbE-netwerkinterfaces zijn.|
 > 
 > 
 
 ## <a name="configuration-steps"></a>Configuratiestappen
-Bij de configuratie stappen voor meerdere paden moet u de beschik bare paden configureren voor automatische detectie, het te gebruiken taakverdelings algoritme opgeven, meerdere paden inschakelen en de configuratie ten slotte controleren. Elk van deze stappen wordt gedetailleerd beschreven in de volgende secties.
+De configuratiestappen voor multipathing omvatten het configureren van de beschikbare paden voor automatische detectie, het opgeven van het te gebruiken algoritme voor het balanceren van de lasten, het inschakelen van multipathing en het uiteindelijk verifiëren van de configuratie. Elk van deze stappen wordt in detail besproken in de volgende secties.
 
-### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>Stap 1: meerdere paden configureren voor automatische detectie
-De apparaten die door meerdere paden worden ondersteund, kunnen automatisch worden gedetecteerd en geconfigureerd.
+### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>Stap 1: Multipathing configureren voor automatische detectie
+De multipath-ondersteunde apparaten kunnen automatisch worden gedetecteerd en geconfigureerd.
 
-1. Initialiseer `/etc/multipath.conf`-bestand. Type:
+1. Bestand initialiseren. `/etc/multipath.conf` Type:
    
      `mpathconf --enable`
    
-    Met de bovenstaande opdracht maakt u een `sample/etc/multipath.conf` bestand.
-1. Start multipath service. Type:
+    De bovenstaande opdracht `sample/etc/multipath.conf` maakt een bestand.
+1. Multipath-service starten. Type:
    
     `service multipathd start`
    
@@ -195,7 +195,7 @@ De apparaten die door meerdere paden worden ondersteund, kunnen automatisch word
    
     `mpathconf --find_multipaths y`
    
-    Hiermee wordt de sectie standaard waarden van uw `multipath.conf` gewijzigd, zoals hieronder wordt weer gegeven:
+    Hiermee wordt het gedeelte standaardwaarden van uw `multipath.conf` gedeelte gewijzigd, zoals hieronder wordt weergegeven:
    
         defaults {
         find_multipaths yes
@@ -203,13 +203,13 @@ De apparaten die door meerdere paden worden ondersteund, kunnen automatisch word
         path_grouping_policy multibus
         }
 
-### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>Stap 2: meerdere paden configureren voor StorSimple-volumes
-Standaard worden alle apparaten zwart weer gegeven in het bestand met meerdere paden. conf en worden deze omzeild. U moet een blokkerlingslijst met uitzonderingen om toe te staan van meerdere paden voor volumes van StorSimple-apparaten maken.
+### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>Stap 2: Multipathing configureren voor StorSimple-volumes
+Standaard staan alle apparaten in het bestand multipath.conf en worden ze omzeild. U moet uitzonderingen op de zwarte lijst maken om multipathing mogelijk te maken voor volumes van StorSimple-apparaten.
 
-1. Bewerk het `/etc/mulitpath.conf` bestand. Type:
+1. Bewerk `/etc/mulitpath.conf` het bestand. Type:
    
     `vi /etc/multipath.conf`
-1. Zoek de sectie blacklist_exceptions in het bestand met meerdere paden. conf. Uw StorSimple-apparaat moet in deze sectie als een uitzonde ring Black List worden weer gegeven. U kunt opmerkingen van relevante regels in dit bestand opheffen om deze te wijzigen, zoals hieronder wordt weer gegeven (gebruik alleen het specifieke model van het apparaat dat u gebruikt):
+1. Zoek de sectie blacklist_exceptions in het bestand multipath.conf. Uw StorSimple-apparaat moet in deze sectie worden vermeld als een uitzondering op de zwarte lijst. U de relevante regels in dit bestand ongedaan maken om het te wijzigen zoals hieronder wordt weergegeven (gebruik alleen het specifieke model van het apparaat dat u gebruikt):
    
         blacklist_exceptions {
             device {
@@ -222,13 +222,13 @@ Standaard worden alle apparaten zwart weer gegeven in het bestand met meerdere p
             }
            }
 
-### <a name="step-3-configure-round-robin-multipathing"></a>Stap 3: meerdere paden configureren met Round Robin
-Deze taakverdelings algoritme gebruikt alle beschik bare meerdere paden naar de actieve controller op een evenwichtige, Round-Robin manier.
+### <a name="step-3-configure-round-robin-multipathing"></a>Stap 3: Round-robin multipathing configureren
+Dit load-balancing algoritme maakt gebruik van alle beschikbare multipaths naar de actieve controller in een evenwichtige, round-robin mode.
 
-1. Bewerk het `/etc/multipath.conf` bestand. Type:
+1. Bewerk `/etc/multipath.conf` het bestand. Type:
    
     `vi /etc/multipath.conf`
-1. Stel de `path_grouping_policy` in op `multibus`in het gedeelte `defaults`. Met de `path_grouping_policy` geeft u het groeps beleid voor standaard paden op dat moet worden toegepast op niet-opgegeven meerdere paden. De sectie standaard waarden ziet er ongeveer uit zoals hieronder wordt weer gegeven.
+1. Stel `defaults` onder de `path_grouping_policy` sectie `multibus`de . Hiermee `path_grouping_policy` geeft u het standaardpadgroeperingsbeleid op dat moet worden toegepast op niet-gespecificeerde multipaden. De sectie standaardwaarden ziet er zoals hieronder wordt weergegeven.
    
         defaults {
                 user_friendly_names yes
@@ -236,24 +236,24 @@ Deze taakverdelings algoritme gebruikt alle beschik bare meerdere paden naar de 
         }
 
 > [!NOTE]
-> De meest voorkomende waarden van `path_grouping_policy` zijn onder andere:
+> De meest voorkomende `path_grouping_policy` waarden van zijn:
 > 
-> * failover = 1 pad per prioriteits groep
-> * multibus = alle geldige paden in de groep 1 prioriteit
+> * failover = 1 pad per prioriteitsgroep
+> * multibus = alle geldige paden in 1 prioriteitsgroep
 > 
 > 
 
-### <a name="step-4-enable-multipathing"></a>Stap 4: meerdere paden inschakelen
-1. Start de `multipathd`-daemon opnieuw op. Type:
+### <a name="step-4-enable-multipathing"></a>Stap 4: Multipathing inschakelen
+1. Start `multipathd` de daemon opnieuw op. Type:
    
     `service multipathd restart`
-1. De uitvoer ziet er als volgt uit:
+1. De output zal worden weergegeven hieronder:
    
         [root@centosSS ~]# service multipathd start
         Starting multipathd daemon:  [OK]
 
-### <a name="step-5-verify-multipathing"></a>Stap 5: meerdere paden controleren
-1. Controleer eerst of de iSCSI-verbinding met het StorSimple-apparaat als volgt is ingesteld:
+### <a name="step-5-verify-multipathing"></a>Stap 5: Multipathing verifiëren
+1. Zorg er eerst voor dat de iSCSI-verbinding met het StorSimple-apparaat als volgt tot stand wordt gebracht:
    
    a. Ontdek uw StorSimple-apparaat. Type:
       
@@ -261,22 +261,22 @@ Deze taakverdelings algoritme gebruikt alle beschik bare meerdere paden naar de 
     iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>
     ```
     
-    De uitvoer wanneer IP-adres voor DATA0 is 10.126.162.25 en poort 3260 wordt geopend op het StorSimple-apparaat voor uitgaand iSCSI-verkeer, zoals hieronder wordt weer gegeven:
+    De uitvoer wanneer ip-adres voor DATA0 10.126.162.25 is en poort 3260 wordt geopend op het StorSimple-apparaat voor uitgaand iSCSI-verkeer is zoals hieronder weergegeven:
     
     ```
     10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     ```
 
-    Kopieer de IQN van uw StorSimple-apparaat, `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`, uit de voor gaande uitvoer.
+    Kopieer de IQN van uw `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`StorSimple-apparaat, van de vorige uitvoer.
 
-   b. Maak verbinding met het apparaat via de doel-IQN. Het StorSimple-apparaat is hier het iSCSI-doel. Type:
+   b. Maak verbinding met het apparaat met behulp van doel IQN. Het StorSimple-apparaat is het iSCSI-doelwit hier. Type:
 
     ```
     iscsiadm -m node --login -T <IQN of iSCSI target>
     ```
 
-    In het volgende voor beeld ziet u de uitvoer met de IQN van het doel van `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`. De uitvoer geeft aan dat u verbinding hebt gemaakt met de twee iSCSI-netwerk interfaces op het apparaat.
+    In het volgende voorbeeld ziet u `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`de uitvoer met een doel-IQN van . De uitvoer geeft aan dat u met succes verbinding hebt gemaakt met de twee iSCSI-netwerkinterfaces op uw apparaat.
 
     ```
     Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
@@ -289,17 +289,17 @@ Deze taakverdelings algoritme gebruikt alle beschik bare meerdere paden naar de 
     Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
     ```
 
-    Als u hier slechts één host-interface en twee paden ziet, moet u beide interfaces op de host inschakelen voor iSCSI. U kunt de [gedetailleerde instructies in de Linux-documentatie](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html)volgen.
+    Als u hier slechts één hostinterface en twee paden ziet, moet u beide interfaces op host voor iSCSI inschakelen. U de [gedetailleerde instructies in Linux documentatie](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html)volgen.
 
-1. Een volume wordt weer gegeven op de CentOS-server van het StorSimple-apparaat. Zie voor meer informatie [stap 6: een volume maken](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) via de Azure Portal op uw StorSimple-apparaat.
+1. Een volume wordt blootgesteld aan de CentOS-server vanaf het StorSimple-apparaat. Zie [Stap 6: Een volume maken](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) via de Azure-portal op uw StorSimple-apparaat voor meer informatie.
 
-1. Controleer de beschik bare paden. Type:
+1. Controleer de beschikbare paden. Type:
 
       ```
       multipath -l
       ```
 
-      In het volgende voor beeld ziet u de uitvoer voor twee netwerk interfaces op een StorSimple-apparaat dat is verbonden met een netwerk interface met één host en twee beschik bare paden.
+      In het volgende voorbeeld wordt de uitvoer weergegeven voor twee netwerkinterfaces op een StorSimple-apparaat dat is aangesloten op één hostnetwerkinterface met twee beschikbare paden.
 
         ```
         mpathb (36486fd20cc081f8dcd3fccb992d45a68) dm-3 MSFT,STORSIMPLE 8100
@@ -323,55 +323,55 @@ Deze taakverdelings algoritme gebruikt alle beschik bare meerdere paden naar de 
 
         After the paths are configured, refer to the specific instructions on your host operating system (Centos 6.6) to mount and format this volume.
 
-## <a name="troubleshoot-multipathing"></a>Problemen met meerdere paden oplossen
-In deze sectie vindt u nuttige tips als u problemen ondervindt tijdens het configureren van meerdere paden.
+## <a name="troubleshoot-multipathing"></a>Problemen met multipathing oplossen
+In dit gedeelte vindt u enkele handige tips als u problemen ondervindt tijdens de multipathing-configuratie.
 
-V. Ik zie de wijzigingen in `multipath.conf` bestand worden niet doorgevoerd.
+V. Ik zie niet de `multipath.conf` wijzigingen in het bestand van kracht.
 
-A. Als u wijzigingen hebt aangebracht in het `multipath.conf` bestand, moet u de multipath-service opnieuw starten. Typ de volgende opdracht:
+A. Als u wijzigingen in `multipath.conf` het bestand hebt aangebracht, moet u de multipathingservice opnieuw starten. Typ de volgende opdracht:
 
     service multipathd restart
 
-V. Ik heb twee netwerk interfaces ingeschakeld op het StorSimple-apparaat en twee netwerk interfaces op de host. Wanneer ik de beschik bare paden vermeld, worden er slechts twee paden weer geven. Ik verwacht vier beschik bare paden te zien.
+V. Ik heb twee netwerkinterfaces ingeschakeld op het StorSimple-apparaat en twee netwerkinterfaces op de host. Als ik de beschikbare paden opmaak, zie ik slechts twee paden. Ik verwachtte vier beschikbare paden te zien.
 
-A. Zorg ervoor dat de twee paden zich in hetzelfde subnet bevinden en routeerbaar zijn. Als de netwerk interfaces zich op verschillende Vlan's bevinden en niet routeerbaar zijn, worden er slechts twee paden weer geven. Een manier om dit te controleren, is om ervoor te zorgen dat u de interfaces van de host kunt bereiken vanuit een netwerk interface op het StorSimple-apparaat. U moet [contact opnemen met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) als deze verificatie alleen kan worden uitgevoerd via een ondersteunings sessie.
+A. Zorg ervoor dat de twee paden op hetzelfde subnet en routebaar zijn. Als de netwerkinterfaces zich op verschillende vLAN's bevinden en niet routeerbaar zijn, ziet u slechts twee paden. Een manier om dit te verifiëren is om ervoor te zorgen dat u beide host-interfaces bereiken vanuit een netwerkinterface op het StorSimple-apparaat. U moet contact opnemen [met Microsoft Support,](storsimple-8000-contact-microsoft-support.md) omdat deze verificatie alleen kan worden uitgevoerd via een ondersteuningssessie.
 
-V. Wanneer ik beschik bare paden vermeld, zie ik geen uitvoer.
+V. Wanneer ik beschikbare paden vermeld, zie ik geen uitvoer.
 
-A. Als er geen paden met meerdere paden worden weer gegeven, wordt er normaal gesp roken een probleem met de multipath daemon voorgesteld. het is waarschijnlijk dat er een probleem is met het `multipath.conf` bestand.
+A. Meestal, niet zien van een multipathed paden suggereert een probleem met de multipathing daemon, en het is zeer waarschijnlijk dat een probleem hier ligt in het `multipath.conf` bestand.
 
-Het is ook een goed idee om te controleren of u bepaalde schijven daad werkelijk kunt zien nadat u verbinding hebt gemaakt met het doel, omdat er ook geen enkele schijf hoeft te worden beantwoord.
+Het zou ook de moeite waard zijn om te controleren of je daadwerkelijk zien sommige schijven na het aansluiten op het doel, als geen reactie van de multipath aanbiedingen kan ook betekenen dat je geen schijven.
 
 * Gebruik de volgende opdracht om de SCSI-bus opnieuw te scannen:
   
-    `$ rescan-scsi-bus.sh` (onderdeel van sg3_utils pakket)
+    `$ rescan-scsi-bus.sh`(onderdeel van sg3_utils pakket)
 * Typ de volgende opdrachten:
   
     `$ dmesg | grep sd*`
      
-     Of
+     of
   
     `$ fdisk -l`
   
-    Deze geven details over recent toegevoegde schijven.
+    Deze zullen details van onlangs toegevoegde schijven retourneren.
 * Gebruik de volgende opdrachten om te bepalen of het een StorSimple-schijf is:
   
     `cat /sys/block/<DISK>/device/model`
   
-    Hiermee wordt een teken reeks geretourneerd die bepaalt of het een StorSimple-schijf is.
+    Dit zal een string retourneren, die zal bepalen of het een StorSimple schijf.
 
-Een minder waarschijnlijke, maar mogelijke oorzaak kan ook een verouderde PID van iSCSI zijn. Gebruik de volgende opdracht om u af te melden bij de iSCSI-sessies:
+Een minder waarschijnlijke, maar mogelijke oorzaak kan ook muf iscsid pid. Gebruik de volgende opdracht om u af te melden voor de iSCSI-sessies:
 
     iscsiadm -m node --logout -p <Target_IP>
 
-Herhaal deze opdracht voor alle verbonden netwerk interfaces op het iSCSI-doel, wat het StorSimple-apparaat is. Zodra u zich hebt afgemeld bij alle iSCSI-sessies, gebruikt u de IQN van het iSCSI-doel om de iSCSI-sessie opnieuw tot stand te brengen. Typ de volgende opdracht:
+Herhaal deze opdracht voor alle verbonden netwerkinterfaces op het iSCSI-doel, dat is uw StorSimple-apparaat. Zodra u zich hebt afgemeld voor alle iSCSI-sessies, gebruikt u het iSCSI-doel IQN om de iSCSI-sessie opnieuw in te stellen. Typ de volgende opdracht:
 
     iscsiadm -m node --login -T <TARGET_IQN>
 
 
-V. Ik weet niet zeker of mijn apparaat white list is.
+V. Ik weet niet zeker of mijn apparaat op de witte lijst staat.
 
-A. Als u wilt controleren of uw apparaat white list is, gebruikt u de volgende interactieve opdracht:
+A. Als u wilt controleren of uw apparaat op de witte lijst staat, gebruikt u de volgende interactieve opdracht voor het oplossen van problemen:
 
     multipathd -k
     multipathd> show devices
@@ -410,33 +410,33 @@ A. Als u wilt controleren of uw apparaat white list is, gebruikt u de volgende i
     dm-3 devnode blacklisted, unmonitored
 
 
-Ga voor meer informatie naar [probleem oplossing voor meerdere paden](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot).
+Ga voor meer informatie naar [probleemoplossing voor multipathing.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)
 
-## <a name="list-of-useful-commands"></a>Lijst met handige opdrachten
+## <a name="list-of-useful-commands"></a>Lijst met nuttige opdrachten
 | Type | Opdracht | Beschrijving |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |ISCSI-service starten |
 | &nbsp; |`service iscsid stop` |ISCSI-service stoppen |
-| &nbsp; |`service iscsid restart` |De iSCSI-service opnieuw starten |
-| &nbsp; |`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>` |Beschik bare doelen op het opgegeven adres detecteren |
-| &nbsp; |`iscsiadm -m node --login -T <TARGET_IQN>` |Aanmelden bij het iSCSI-doel |
+| &nbsp; |`service iscsid restart` |ISCSI-service opnieuw starten |
+| &nbsp; |`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>` |Beschikbare doelen ontdekken op het opgegeven adres |
+| &nbsp; |`iscsiadm -m node --login -T <TARGET_IQN>` |Inloggen bij het iSCSI-doel |
 | &nbsp; |`iscsiadm -m node --logout -p <Target_IP>` |Afmelden bij het iSCSI-doel |
 | &nbsp; |`cat /etc/iscsi/initiatorname.iscsi` |Naam van iSCSI-initiator afdrukken |
-| &nbsp; |`iscsiadm -m session -s <sessionid> -P 3` |Controleer de status van de iSCSI-sessie en het volume dat op de host is gedetecteerd |
-| &nbsp; |`iscsi -m session` |Toont alle iSCSI-sessies die zijn gemaakt tussen de host en het StorSimple-apparaat |
+| &nbsp; |`iscsiadm -m session -s <sessionid> -P 3` |Controleer de status van de iSCSI-sessie en het volume dat op de host is ontdekt |
+| &nbsp; |`iscsi -m session` |Toont alle iSCSI-sessies die zijn vastgesteld tussen de host en het StorSimple-apparaat |
 |  | | |
-| **Meerdere paden** |`service multipathd start` |Multipath daemon starten |
-| &nbsp; |`service multipathd stop` |Multipath daemon stoppen |
-| &nbsp; |`service multipathd restart` |Multipath daemon opnieuw starten |
-| &nbsp; |`chkconfig multipathd on` </br> OF </br> `mpathconf -with_chkconfig y` |Multipath daemon inschakelen om te starten op het moment van opstarten |
+| **Gebruik van meerdere paden** |`service multipathd start` |Start multipath daemon |
+| &nbsp; |`service multipathd stop` |Stop multipath daemon |
+| &nbsp; |`service multipathd restart` |Opnieuw multipath daemon |
+| &nbsp; |`chkconfig multipathd on` </br> OF </br> `mpathconf -with_chkconfig y` |Multipath daemon inschakelen om te starten bij het opstarten |
 | &nbsp; |`multipathd -k` |De interactieve console starten voor het oplossen van problemen |
-| &nbsp; |`multipath -l` |Meerdere paden en apparaten weer geven |
-| &nbsp; |`mpathconf --enable` |Maak een voor beeld van een bestand mulitpath. conf in `/etc/mulitpath.conf` |
+| &nbsp; |`multipath -l` |Multipath-verbindingen en -apparaten weergeven |
+| &nbsp; |`mpathconf --enable` |Een voorbeeld van mulitpath.conf-bestand maken in`/etc/mulitpath.conf` |
 |  | | |
 
 ## <a name="next-steps"></a>Volgende stappen
-Tijdens het configureren van MPIO op een Linux-host moet u mogelijk ook de volgende CentoS 6,6-documenten raadplegen:
+Aangezien u MPIO op Linux-host configureert, moet u mogelijk ook verwijzen naar de volgende CentoS 6.6-documenten:
 
 * [MPIO instellen op CentOS](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
-* [Linux-trainings gids](http://linux-training.be/linuxsys.pdf)
+* [Linux-trainingsgids](http://linux-training.be/linuxsys.pdf)
 

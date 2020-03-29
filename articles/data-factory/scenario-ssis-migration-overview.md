@@ -1,6 +1,6 @@
 ---
 title: On-premises SSIS-workloads migreren naar SSIS in Azure Data Factory
-description: Migratie van on-premises SSIS-workloads naar SSIS in ADF.
+description: Migreren on-premises SSIS-workloads naar SSIS in ADF.
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -12,81 +12,81 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
 ms.openlocfilehash: 52629b8e2e190cc041116e6f65488480712baf01
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74929793"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>On-premises SSIS-workloads migreren naar SSIS in ADF
 
 ## <a name="overview"></a>Overzicht
 
-Wanneer u de werk belasting van uw data base migreert van SQL Server on-premises naar Azure Data Base-Services, dat wil zeggen Azure SQL Database of Azure SQL Database beheerde instantie, worden uw ETL-workloads op SQL Server Integration Services (SSIS) als een van de primaire toegevoegde waarde Services moeten ook worden gemigreerd.
+Wanneer u uw databaseworkloads migreert van SQL Server on premises naar Azure-databaseservices, namelijk Azure SQL Database of Azure SQL Database managed instance, is uw ETL-workloads op SQL Server Integration Services (SSIS) als een van de primaire toegevoegde waarde diensten moeten ook worden gemigreerd.
 
-Azure-SSIS Integration Runtime (IR) in Azure Data Factory (ADF) ondersteunt actieve SSIS-pakketten. Als Azure-SSIS IR is ingericht, kunt u vervolgens vertrouwde hulpprogram ma's gebruiken, zoals SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS) en opdracht regel Programma's, zoals dtinstall/dtutil/dtexec, om uw pakketten te implementeren en uit te voeren in Azure. Zie [Azure SSIS Lift-and-Shift Overview (](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview)Engelstalig) voor meer informatie.
+Azure-SSIS Integration Runtime (IR) in Azure Data Factory (ADF) ondersteunt het uitvoeren van SSIS-pakketten. Zodra Azure-SSIS IR is ingericht, u vervolgens vertrouwde hulpprogramma's gebruiken, zoals SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS) en command-line-hulpprogramma's, zoals dtinstall/dtutil/dtexec, om uw pakketten in Azure te implementeren en uit te voeren. Zie [Azure SSIS-lift-and-shift-overzicht voor](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview)meer informatie.
 
-In dit artikel wordt het migratie proces van de ETL-workloads van on-premises SSIS naar SSIS in ADF uitgelegd. Het migratie proces bestaat uit twee fasen: **evaluatie** en **migratie**.
+In dit artikel wordt het migratieproces van uw ETL-workloads belicht, van on-premises SSIS naar SSIS in ADF. Het migratieproces bestaat uit twee fasen: **Assessment** and **Migration**.
 
 ## <a name="assessment"></a>Beoordeling
 
-Een grondige evaluatie helpt bij het vaststellen van een volledig migratie plan voor het identificeren van problemen met de bron-SSIS-pakketten die een geslaagde migratie belemmeren.
+Om een volledig migratieplan op te stellen, zal een grondige beoordeling helpen bij het identificeren van problemen met de bron-SSIS-pakketten die een succesvolle migratie zouden voorkomen.
 
-Data Migration Assistant (DMA) is een vrij downloadbaar hulp programma voor dit doel dat lokaal kan worden geïnstalleerd en uitgevoerd. Een DMA-beoordelings project van het type **integratie Services** kan worden gemaakt om SSIS-pakketten in batches te beoordelen en compatibiliteits problemen te identificeren die worden weer gegeven in de volgende categorieën:
+Data Migration Assistant (DMA) is een vrij downloadbare tool voor dit doel die lokaal kan worden geïnstalleerd en uitgevoerd. DMA-beoordelingsproject van type **Integration Services** kan worden gemaakt om SSIS-pakketten in batches te beoordelen en compatibiliteitsproblemen te identificeren die worden gepresenteerd in de volgende categorieën:
 
-- Migratie blokkeringen: Dit zijn compatibiliteits problemen waarbij de migratie bron pakketten worden geblokkeerd om te worden uitgevoerd op Azure-SSIS IR. DMA biedt hulp bij het oplossen van deze problemen.
+- Migratieblokkers: dit zijn compatibiliteitsproblemen die de migratiebronpakketten blokkeren die op Azure-SSIS IR moeten worden uitgevoerd. DMA biedt richtlijnen om u te helpen deze problemen aan te pakken.
 
-- Informatieve problemen: Dit zijn gedeeltelijk ondersteunde of afgeschafte functies die worden gebruikt in bron pakketten. DMA biedt een uitgebreide set aanbevelingen, alternatieve benaderingen die beschikbaar zijn in Azure en het beperken van de stappen voor het oplossen van problemen.
+- Informatieve problemen: dit zijn gedeeltelijk ondersteunde of afgeschafte functies die worden gebruikt in bronpakketten. DMA biedt een uitgebreide reeks aanbevelingen, alternatieve benaderingen die beschikbaar zijn in Azure en verzachtende stappen om op te lossen.
 
-### <a name="four-storage-types-for-ssis-packages"></a>Vier opslag typen voor SSIS-pakketten
+### <a name="four-storage-types-for-ssis-packages"></a>Vier opslagtypen voor SSIS-pakketten
 
-- SSIS-catalogus (SSISDB). Dit is geïntroduceerd in SQL Server 2012 en bevat een reeks opgeslagen procedures, weer gaven en functies voor tabel waarden die worden gebruikt voor het werken met SSIS-projecten/-pakketten.
-- Bestands systeem.
-- SQL Server systeem database (MSDB).
-- SSIS-pakket opslag. Dit is een pakket Management-laag boven op twee subtypen:
-  - MSDB, een systeem database in SQL Server gebruikt om SSIS-pakketten op te slaan.
-  - Beheerd bestands systeem, een specifieke map in SQL Server installatiepad dat wordt gebruikt voor het opslaan van SSIS-pakketten.
+- SSIS-catalogus (SSISDB). Dit is geïntroduceerd met SQL Server 2012 en bevat een reeks opgeslagen procedures, weergaven en functies met tabelwaarde die worden gebruikt voor het werken met SSIS-projecten/-pakketten.
+- Bestandssysteem.
+- SQL Server-systeemdatabase (MSDB).
+- SSIS-pakketwinkel. Dit is een pakketbeheerlaag bovenop twee subtypen:
+  - MSDB, een systeemdatabase in SQL Server die wordt gebruikt om SSIS-pakketten op te slaan.
+  - Beheerd bestandssysteem, een specifieke map in SQL Server-installatiepad dat wordt gebruikt om SSIS-pakketten op te slaan.
 
-DMA ondersteunt momenteel de batch-evaluatie van pakketten die zijn opgeslagen in **Bestands systeem**, **pakket opslag**en **SSIS-catalogus** sinds **DMA versie v 5.0**.
+DMA ondersteunt momenteel de batch-beoordeling van pakketten die zijn opgeslagen in **file system,** **Package Store**en **SSIS catalogus** sinds **DMA versie v5.0**.
 
-U kunt [DMA](https://docs.microsoft.com/sql/dma/dma-overview)ophalen en [uw pakket evaluatie met IT uitvoeren](https://docs.microsoft.com/sql/dma/dma-assess-ssis).
+Haal [DMA,](https://docs.microsoft.com/sql/dma/dma-overview)en [voer uw pakket beoordeling mee.](https://docs.microsoft.com/sql/dma/dma-assess-ssis)
 
 ## <a name="migration"></a>Migratie
 
-Afhankelijk van de [opslag typen](#four-storage-types-for-ssis-packages) van de bron-SSIS-pakketten en het migratie doel van data base-workloads, zijn de stappen voor het migreren van **SSIS-pakketten** en **SQL Server Agent taken** die de uitvoering van SSIS-pakket plannen kunnen variëren. Er zijn twee scenario's:
+Afhankelijk van de [opslagtypen](#four-storage-types-for-ssis-packages) van bron-SSIS-pakketten en de migratiebestemming van databaseworkloads, kunnen de stappen om **SSIS-pakketten** en **SQL Server Agent-taken** te migreren die SSIS-pakketuitvoeringen plannen, variëren. Er zijn twee scenario's:
 
-- [**Beheerde instantie Azure SQL database** als data base-werk belasting bestemming](#azure-sql-database-managed-instance-as-database-workload-destination)
-- [**Azure SQL database** als doel van de database werk belasting](#azure-sql-database-as-database-workload-destination)
+- [**Azure SQL Database beheerd instantie** als database workload bestemming](#azure-sql-database-managed-instance-as-database-workload-destination)
+- [**Azure SQL Database** als doel voor databaseworkload](#azure-sql-database-as-database-workload-destination)
 
-### <a name="azure-sql-database-managed-instance-as-database-workload-destination"></a>**Beheerde instantie Azure SQL database** als data base-werk belasting bestemming
+### <a name="azure-sql-database-managed-instance-as-database-workload-destination"></a>**Azure SQL Database beheerd instantie** als database workload bestemming
 
-| **Type pakket opslag** |Hoe batch migratie SSIS-pakketten|Hoe kan ik SSIS-taken batchgewijs migreren|
+| **Type pakketopslag** |SSIS-pakketten voor batchmigreren|SSIS-taken voor batchmigreren|
 |-|-|-|
-|SSISDB|[**SSISDB** migreren](scenario-ssis-migration-ssisdb-mi.md)|[SSIS-taken migreren naar Azure SQL Database Managed instance agent](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-azure-sql-database-managed-instance-agent)|
-|Bestandssysteem|Implementeer deze opnieuw naar bestands shares/Azure Files via dtinstall/dtutil/hand matig kopiëren of bewaar de bestands systemen via VNet/zelf-Hostende IR. Zie [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)(Engelstalig) voor meer informatie.|Zet ze om in ADF-pijp lijnen/activiteiten/triggers via scripts/SSMS/ADF Portal. Zie [SSMS planning feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)(Engelstalig) voor meer informatie.|
-|SQL Server (MSDB)|Exporteren naar bestands systemen/bestands shares/Azure Files via SSMS/dtutil. Zie [SSIS-pakketten exporteren](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service)voor meer informatie.|Zet ze om in ADF-pijp lijnen/activiteiten/triggers via scripts/SSMS/ADF Portal. Zie [SSMS planning feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)(Engelstalig) voor meer informatie.|
-|Pakket archief|Exporteer deze naar bestands systemen/bestands shares/Azure Files via SSMS/dtutil of implementeer ze opnieuw op bestands shares/Azure Files via dtinstall/dtutil/hand matig kopiëren of bewaar ze in bestands systemen voor toegang via een VNet/zelf-Hostende IR. Zie dtutil Utility (Engelstalig) voor meer informatie. Zie [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)(Engelstalig) voor meer informatie.|Zet ze om in ADF-pijp lijnen/activiteiten/triggers via scripts/SSMS/ADF Portal. Zie [SSMS planning feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)(Engelstalig) voor meer informatie.|
+|SSISDB (SSISDB)|[**SSISDB migreren**](scenario-ssis-migration-ssisdb-mi.md)|[SSIS-taken migreren naar azure SQL Database managed instance agent](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-azure-sql-database-managed-instance-agent)|
+|Bestandssysteem|Implementeer ze opnieuw naar bestandsshares/Azure-bestanden via dtinstall/dtutil/handmatige kopie, of om in bestandssystemen toegang te houden via VNet/Self-Hosted IR. Zie [dtutil utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)voor meer informatie.|Converteer ze naar ADF-pijplijnen/activiteiten/triggers via scripts/SSMS/ADF-portal. Zie [SSMS-planningsfunctie voor](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)meer informatie .|
+|SQL Server (MSDB)|Exporteer ze naar bestandssystemen/bestandsshares/Azure-bestanden via SSMS/dtutil. Zie [SSIS-pakketten exporteren](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service)voor meer informatie .|Converteer ze naar ADF-pijplijnen/activiteiten/triggers via scripts/SSMS/ADF-portal. Zie [SSMS-planningsfunctie voor](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)meer informatie .|
+|Pakketwinkel|Exporteer ze naar bestandssystemen/bestandsshares/Azure Files via SSMS/dtutil of implementeer ze opnieuw naar bestandsshares/Azure Files via dtinstall/dtutil/manual copy of bewaar ze in bestandssystemen om toegang te krijgen via VNet/Self-Hosted IR. Zie dtutil utility voor meer informatie. Zie [dtutil utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)voor meer informatie.|Converteer ze naar ADF-pijplijnen/activiteiten/triggers via scripts/SSMS/ADF-portal. Zie [SSMS-planningsfunctie voor](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)meer informatie .|
 
-### <a name="azure-sql-database-as-database-workload-destination"></a>**Azure SQL database** als doel van de database werk belasting
+### <a name="azure-sql-database-as-database-workload-destination"></a>**Azure SQL Database** als doel voor databaseworkload
 
-| **Type pakket opslag** |Hoe batch migratie SSIS-pakketten|Taken batchgewijs migreren|
+| **Type pakketopslag** |SSIS-pakketten voor batchmigreren|Taken voor batch-migreren|
 |-|-|-|
-|SSISDB|Implementeer opnieuw naar Azure-SSISDB via SSDT/SSMS. Zie [SSIS-pakketten implementeren in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial)voor meer informatie.|Zet ze om in ADF-pijp lijnen/activiteiten/triggers via scripts/SSMS/ADF Portal. Zie [SSMS planning feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)(Engelstalig) voor meer informatie.|
-|Bestandssysteem|Implementeer deze opnieuw naar bestands shares/Azure Files via dtinstall/dtutil/hand matig kopiëren of bewaar de bestands systemen via VNet/zelf-Hostende IR. Zie [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)(Engelstalig) voor meer informatie.|Zet ze om in ADF-pijp lijnen/activiteiten/triggers via scripts/SSMS/ADF Portal. Zie [SSMS planning feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)(Engelstalig) voor meer informatie.|
-|SQL Server (MSDB)|Exporteren naar bestands systemen/bestands shares/Azure Files via SSMS/dtutil. Zie [SSIS-pakketten exporteren](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service)voor meer informatie.|Zet ze om in ADF-pijp lijnen/activiteiten/triggers via scripts/SSMS/ADF Portal. Zie [SSMS planning feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)(Engelstalig) voor meer informatie.|
-|Pakket archief|Exporteer deze naar bestands systemen/bestands shares/Azure Files via SSMS/dtutil of implementeer ze opnieuw op bestands shares/Azure Files via dtinstall/dtutil/hand matig kopiëren of bewaar ze in bestands systemen voor toegang via een VNet/zelf-Hostende IR. Zie dtutil Utility (Engelstalig) voor meer informatie. Zie [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)(Engelstalig) voor meer informatie.|Zet ze om in ADF-pijp lijnen/activiteiten/triggers via scripts/SSMS/ADF Portal. Zie [SSMS planning feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)(Engelstalig) voor meer informatie.|
+|SSISDB (SSISDB)|Opnieuw implementeren naar Azure-SSISDB via SSDT/SSMS. Zie [SSIS-pakketten implementeren in Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial)voor meer informatie.|Converteer ze naar ADF-pijplijnen/activiteiten/triggers via scripts/SSMS/ADF-portal. Zie [SSMS-planningsfunctie voor](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)meer informatie .|
+|Bestandssysteem|Implementeer ze opnieuw naar bestandsshares/Azure-bestanden via dtinstall/dtutil/handmatige kopie, of om in bestandssystemen toegang te houden via VNet/Self-Hosted IR. Zie [dtutil utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)voor meer informatie.|Converteer ze naar ADF-pijplijnen/activiteiten/triggers via scripts/SSMS/ADF-portal. Zie [SSMS-planningsfunctie voor](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)meer informatie .|
+|SQL Server (MSDB)|Exporteer ze naar bestandssystemen/bestandsshares/Azure-bestanden via SSMS/dtutil. Zie [SSIS-pakketten exporteren](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service)voor meer informatie .|Converteer ze naar ADF-pijplijnen/activiteiten/triggers via scripts/SSMS/ADF-portal. Zie [SSMS-planningsfunctie voor](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)meer informatie .|
+|Pakketwinkel|Exporteer ze naar bestandssystemen/bestandsshares/Azure Files via SSMS/dtutil of implementeer ze opnieuw naar bestandsshares/Azure Files via dtinstall/dtutil/manual copy of bewaar ze in bestandssystemen om toegang te krijgen via VNet/Self-Hosted IR. Zie dtutil utility voor meer informatie. Zie [dtutil utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)voor meer informatie.|Converteer ze naar ADF-pijplijnen/activiteiten/triggers via scripts/SSMS/ADF-portal. Zie [SSMS-planningsfunctie voor](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)meer informatie .|
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)
+- [Azure-gegevensfabriek](https://docs.microsoft.com/azure/data-factory/introduction)
 - [Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview)
-- [SSIS-workloads in de Cloud optillen en verplaatsen](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview?view=sql-server-2017)
-- [SSIS-pakketten migreren naar Azure SQL Database beheerde instantie](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
-- [Pakketten opnieuw implementeren naar Azure SQL Database](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)
+- [SSIS-workloads naar de cloud tillen en verschuiven](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview?view=sql-server-2017)
+- [SSIS-pakketten naar beheerd exemplaar van Azure SQL Database migreren](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
+- [Pakketten opnieuw implementeren in Azure SQL Database](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [SSIS-pakketten valideren die zijn geïmplementeerd in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-validate-packages)
-- [SSIS-pakketten uitvoeren die zijn geïmplementeerd in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-run-packages)
+- [SSIS-pakketten valideren die zijn geïmplementeerd in Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-validate-packages)
+- [SSIS-pakketten uitvoeren die zijn geïmplementeerd in Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-run-packages)
 - [Azure-SSIS Integration Runtime bewaken](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime)
-- [Uitvoeringen van SSIS-pakketten plannen in azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages)
+- [SSIS-pakketuitvoeringen plannen in Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages)

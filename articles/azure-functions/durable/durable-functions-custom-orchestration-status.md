@@ -1,30 +1,30 @@
 ---
-title: Aangepaste indelings status in Durable Functions-Azure
-description: Meer informatie over het configureren en gebruiken van een aangepaste indelings status voor Durable Functions.
+title: Aangepaste orchestration-status in duurzame functies - Azure
+description: Meer informatie over het configureren en gebruiken van aangepaste orchestration-status voor duurzame functies.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 31b7d51293878c9d0e8567b6b4bd58c48d75ec63
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76766275"
 ---
-# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Aangepaste indelings status in Durable Functions (Azure Functions)
+# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Aangepaste orchestration-status in duurzame functies (Azure-functies)
 
-Met de aangepaste indelings status kunt u een aangepaste status waarde instellen voor uw Orchestrator-functie. Deze status wordt gegeven via de [http GetStatus-API](durable-functions-http-api.md#get-instance-status) of de [`GetStatusAsync`-API](durable-functions-instance-management.md#query-instances) op de Orchestration-client.
+Met de aangepaste orkestratiestatus u een aangepaste statuswaarde instellen voor uw orchestrator-functie. Deze status wordt verstrekt via de [HTTP GetStatus API](durable-functions-http-api.md#get-instance-status) of de [ `GetStatusAsync` API](durable-functions-instance-management.md#query-instances) op de orchestration client.
 
-## <a name="sample-use-cases"></a>Voorbeeld Cases gebruiken
+## <a name="sample-use-cases"></a>Voorbeeldgebruiksvoorbeelden
 
 > [!NOTE]
-> De volgende voor beelden laten zien hoe u een aangepaste status C# functie kunt gebruiken in en Java script. De C# voor beelden zijn geschreven voor Durable functions 2. x en zijn niet compatibel met Durable functions 1. x. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> In de volgende voorbeelden ziet u hoe u de aangepaste statusfunctie in C# en JavaScript gebruikt. De C# voorbeelden zijn geschreven voor duurzame functies 2.x en zijn niet compatibel met duurzame functies 1.x. Zie het artikel [Duurzame functies voor](durable-functions-versions.md) meer informatie over de verschillen tussen versies.
 
 ### <a name="visualize-progress"></a>Voortgang visualiseren
 
-Clients kunnen het eind punt van de status controleren en een voortgangs GEBRUIKERSINTERFACE weer geven die de huidige uitvoerings fase visualiseert. In het volgende voor beeld ziet u de voortgang van het delen:
+Clients kunnen het eindpunt van de status peilen en een voortgangs-gebruikersinterface weergeven die de huidige uitvoeringsfase visualiseert. In het volgende voorbeeld wordt het delen van voortgang seinen getoond:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -51,9 +51,9 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-`E1_HelloSequence` Orchestrator-functie:
+`E1_HelloSequence`orchestrator, functie:
 
 ```javascript
 const df = require("durable-functions");
@@ -73,7 +73,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-functie `E1_SayHello` activiteit:
+`E1_SayHello`activiteitsfunctie:
 
 ```javascript
 module.exports = async function(context, name) {
@@ -83,9 +83,9 @@ module.exports = async function(context, name) {
 
 ---
 
-De client ontvangt de uitvoer van de indeling alleen wanneer `CustomStatus` veld is ingesteld op Amsterdam:
+En dan zal de klant de output `CustomStatus` van de orkestratie alleen ontvangen wanneer het veld is ingesteld op "Londen":
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -118,7 +118,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -148,15 +148,15 @@ module.exports = async function(context, req) {
 ```
 
 > [!NOTE]
-> In Java script wordt het `customStatus` veld ingesteld wanneer de volgende `yield` of `return` actie wordt gepland.
+> In JavaScript `customStatus` wordt het veld ingesteld `yield` `return` wanneer de volgende of actie is gepland.
 
 ---
 
-### <a name="output-customization"></a>Aanpassing van de uitvoer
+### <a name="output-customization"></a>Aanpassing van uitvoer
 
-Een ander interessant scenario is het segmenteren van gebruikers door een aangepaste uitvoer te retour neren op basis van unieke kenmerken of interacties. Met behulp van de aangepaste indelings status blijft de client-side-code algemeen. Alle belang rijke wijzigingen worden aangebracht aan de server zijde, zoals wordt weer gegeven in het volgende voor beeld:
+Een ander interessant scenario is het segmenteren van gebruikers door aangepaste uitvoer terug te sturen op basis van unieke kenmerken of interacties. Met behulp van aangepaste orchestration status, zal de client-side code generiek blijven. Alle belangrijke wijzigingen zullen plaatsvinden aan de serverkant, zoals weergegeven in het volgende voorbeeld:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("CityRecommender")]
@@ -194,7 +194,7 @@ public static void Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -229,11 +229,11 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-### <a name="instruction-specification"></a>Instructie specificatie
+### <a name="instruction-specification"></a>Instructiespecificatie
 
-De Orchestrator kan unieke instructies bieden aan de clients via de aangepaste status. De aangepaste status instructies worden toegewezen aan de stappen in de indelings code:
+De orchestrator kan unieke instructies aan de klanten via de aangepaste staat. De aangepaste statusinstructies worden toegewezen aan de stappen in de orchestration-code:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("ReserveTicket")]
@@ -261,7 +261,7 @@ public static async Task<bool> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -292,9 +292,9 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="sample"></a>Voorbeeld
 
-In het volgende voor beeld wordt de aangepaste status eerst ingesteld.
+In het volgende voorbeeld wordt eerst de aangepaste status ingesteld;
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrationContext context)
@@ -309,7 +309,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -327,13 +327,13 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Terwijl de Orchestration wordt uitgevoerd, kunnen externe clients deze aangepaste status ophalen:
+Terwijl de orkestratie wordt uitgevoerd, kunnen externe clients deze aangepaste status ophalen:
 
 ```http
 GET /runtime/webhooks/durabletask/instances/instance123
 ```
 
-Clients ontvangen het volgende antwoord:
+Klanten krijgen het volgende antwoord:
 
 ```json
 {
@@ -347,7 +347,7 @@ Clients ontvangen het volgende antwoord:
 ```
 
 > [!WARNING]
-> De nettolading van de aangepaste status is beperkt tot 16 KB aan UTF-16-JSON-tekst omdat deze moet kunnen passen in een Azure Table Storage-kolom. U wordt aangeraden externe opslag te gebruiken als u een grotere Payload nodig hebt.
+> De aangepaste statuspayload is beperkt tot 16 KB UTF-16 JSON-tekst omdat deze in een kolom Azure Table Storage moet kunnen passen. We raden u aan externe opslag te gebruiken als u een grotere payload nodig hebt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

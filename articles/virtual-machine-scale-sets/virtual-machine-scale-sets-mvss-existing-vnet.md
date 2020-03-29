@@ -1,6 +1,6 @@
 ---
-title: Verwijzen naar een bestaand virtueel netwerk in een Azure Scale set-sjabloon
-description: Meer informatie over het toevoegen van een virtueel netwerk aan een bestaande Azure virtual machine-schaal sets sjabloon
+title: Een bestaand virtueel netwerk in een sjabloon voor Azure-schaalset verwijzen
+description: Meer informatie over het toevoegen van een virtueel netwerk aan een bestaande sjabloon voor azure-sjabloon voor het schalen van virtuele machines
 author: mayanknayar
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: manayar
 ms.openlocfilehash: e725e75b8b19fd8b3295226639b5e5aeb3736e34
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76275537"
 ---
-# <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Verwijzing naar een bestaand virtueel netwerk in een Azure-schaalset-sjabloon toevoegen
+# <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Verwijzing naar een bestaand virtueel netwerk toevoegen aan een sjabloon voor Azure-schaalsets
 
-In dit artikel wordt beschreven hoe u de [basisschaalset-sjabloon](virtual-machine-scale-sets-mvss-start.md) kunt aanpassen om te implementeren in een bestaand virtueel netwerk in plaats van een nieuwe te maken.
+In dit artikel ziet u hoe u de [sjabloon voor basisschaalset kunt](virtual-machine-scale-sets-mvss-start.md) wijzigen om te implementeren in een bestaand virtueel netwerk in plaats van een nieuw netwerk te maken.
 
-## <a name="change-the-template-definition"></a>De sjabloon definitie wijzigen
+## <a name="change-the-template-definition"></a>De sjabloondefinitie wijzigen
 
-In een [vorig artikel](virtual-machine-scale-sets-mvss-start.md) moesten we een basisschaalset-sjabloon maken. We gaan nu die eerdere sjabloon gebruiken en deze wijzigen om een sjabloon te maken waarmee een schaalset in een bestaand virtueel netwerk wordt geïmplementeerd. 
+In een [vorig artikel](virtual-machine-scale-sets-mvss-start.md) hadden we een basissjabloon voor schaalsets gemaakt. We gebruiken die eerdere sjabloon nu en wijzigen deze om een sjabloon te maken die een schaalset implementeert in een bestaand virtueel netwerk. 
 
-Voeg eerst een `subnetId`-para meter toe. Deze teken reeks wordt door gegeven aan de configuratie van de schaalset, waardoor de schaalset het vooraf gemaakte subnet kan identificeren voor het implementeren van virtuele machines in. Deze teken reeks moet de volgende indeling hebben: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
+Voeg eerst `subnetId` een parameter toe. Deze tekenreeks wordt doorgegeven in de configuratie van de schaalset, zodat de schaalset het vooraf gemaakte subnet kan identificeren om virtuele machines in te zetten. Deze tekenreeks moet van het formulier zijn:`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
 
-Als u bijvoorbeeld de schaalset wilt implementeren in een bestaand virtueel netwerk met de naam `myvnet`, het subnet `mysubnet`, de `myrg`van de resource groep en het abonnement `00000000-0000-0000-0000-000000000000`, zou de subnetId: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`zijn.
+Als u bijvoorbeeld de schaalset wilt implementeren `myvnet`in een `mysubnet`bestaand `myrg`virtueel netwerk `00000000-0000-0000-0000-000000000000`met naam , subnet, resourcegroep en abonnement, zou de subnetId zijn: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
 
 ```diff
      },
@@ -38,7 +38,7 @@ Als u bijvoorbeeld de schaalset wilt implementeren in een bestaand virtueel netw
    },
 ```
 
-Verwijder vervolgens de bron van het virtuele netwerk uit de `resources`-matrix, omdat u een bestaand virtueel netwerk gebruikt en geen nieuwe hoeft te implementeren.
+Verwijder vervolgens de virtuele netwerkbron uit de `resources` array, omdat u een bestaand virtueel netwerk gebruikt en geen nieuw netwerk hoeft te implementeren.
 
 ```diff
    "variables": {},
@@ -66,7 +66,7 @@ Verwijder vervolgens de bron van het virtuele netwerk uit de `resources`-matrix,
 -    },
 ```
 
-Het virtuele netwerk bestaat al voordat de sjabloon wordt geïmplementeerd. Daarom is het niet nodig om een dependsOn-component van de schaalset naar het virtuele netwerk op te geven. Verwijder de volgende regels:
+Het virtuele netwerk bestaat al voordat de sjabloon wordt geïmplementeerd, dus het is niet nodig om een dependsOn-clausule op te geven van de schaal die is ingesteld op het virtuele netwerk. Verwijder de volgende regels:
 
 ```diff
      {
@@ -82,7 +82,7 @@ Het virtuele netwerk bestaat al voordat de sjabloon wordt geïmplementeerd. Daar
          "capacity": 2
 ```
 
-Geef ten slotte de para meter `subnetId` door die door de gebruiker is ingesteld (in plaats van `resourceId` om de ID van een vnet in dezelfde implementatie op te halen. Dit is wat de basis sjabloon voor het maken van een schaalset is).
+Tot slot, `subnetId` pass in de parameter ingesteld `resourceId` door de gebruiker (in plaats van te gebruiken om de ID van een vnet te krijgen in dezelfde implementatie, dat is wat de fundamentele levensvatbare schaal set sjabloon doet).
 
 ```diff
                        "name": "myIpConfig",

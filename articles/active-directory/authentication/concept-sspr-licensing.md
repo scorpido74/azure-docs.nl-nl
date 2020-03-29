@@ -1,6 +1,6 @@
 ---
-title: Self-service voor wachtwoord herstel van licentie-Azure Active Directory
-description: Licentie vereisten voor Azure AD self-service voor wacht woord opnieuw instellen
+title: Zelfservicewachtwoord voor licentie - Azure Active Directory
+description: Licentievereisten voor azure AD-zelfservicewachtwoord opnieuw instellen
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,63 +12,63 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 598f3bd8500a59cd41cc4126915e6cccbd4fb2f3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848558"
 ---
-# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Licentie vereisten voor Azure AD self-service voor wachtwoord herstel
+# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Licentievereisten voor het opnieuw instellen van azure AD-zelfservicewachtwoorden
 
-Azure Active Directory (Azure AD) is verkrijgbaar in verschillende edities: gratis, Premium P1 en Premium P2. Er zijn verschillende functies die selfservice voor het opnieuw instellen van wacht woorden maken, zoals wijzigen, opnieuw instellen, ontgrendelen en terugschrijven, die beschikbaar zijn in de verschillende edities van Azure AD. In dit artikel worden de verschillen uitgelegd. Meer informatie over de functies die deel uitmaken van elke Azure AD-editie kunt u vinden op de [pagina met Azure Active Directory prijzen](https://azure.microsoft.com/pricing/details/active-directory/).
+Azure Active Directory (Azure AD) wordt geleverd in verschillende edities: Gratis, Premium P1 en Premium P2. Er zijn verschillende functies die deel uitmaken van self-service wachtwoord resetten, met inbegrip van wijzigen, resetten, ontgrendelen en terugschrijven, die beschikbaar zijn in de verschillende edities van Azure AD. Dit artikel probeert de verschillen uit te leggen. Meer details over de functies in elke Azure AD-editie vindt u op de [prijspagina van Azure Active Directory.](https://azure.microsoft.com/pricing/details/active-directory/)
 
 ## <a name="compare-editions-and-features"></a>Edities en functies vergelijken
 
-Voor de selfservice voor wachtwoord herstel van Azure AD is een licentie verleend per gebruiker, om nalevings organisaties te onderhouden, moeten de juiste licentie aan hun gebruikers worden toegewezen.
+Azure AD self-service password reset is gelicentieerd per gebruiker, om compliance organisaties te handhaven zijn verplicht om de juiste licentie toe te wijzen aan hun gebruikers.
 
-* Wachtwoorden wijzigen via self-service voor cloudgebruikers
-   * Ik ben een **alleen-Cloud gebruiker** en weet mijn wacht woord.
-      * Ik wil mijn wacht woord **wijzigen** in iets nieuw.
+* Selfservice wachtwoordwijziging voor cloudgebruikers
+   * Ik ben een **cloud-only gebruiker** en weet mijn wachtwoord.
+      * Ik wil mijn wachtwoord **wijzigen** in iets nieuws.
    * Deze functionaliteit is opgenomen in alle edities van Azure AD.
 
-* Wachtwoorden opnieuw instellen via self-service voor cloudgebruikers
-   * Ik ben een **alleen-Cloud gebruiker** en ben mijn wacht woord verg eten.
-      * Ik wil mijn wacht woord **opnieuw instellen** op iets dat ik weet.
-   * Deze functionaliteit is opgenomen in Azure AD Premium P1, P2, Microsoft 365 Business of Office 365.
+* Selfservice wachtwoordreset voor cloudgebruikers
+   * Ik ben een **cloud-only gebruiker** en ben mijn wachtwoord vergeten.
+      * Ik wil mijn wachtwoord **resetten** naar iets wat ik weet.
+   * Deze functionaliteit is opgenomen in Azure AD Premium P1 of P2, Microsoft 365 Business of Office 365.
 
-* Self-service voor wacht woord opnieuw instellen/wijzigen/ontgrendelen **met on-premises terugschrijven**
-   * Ik ben een **hybride gebruiker** met mijn on-premises Active Directory gebruikers account is gesynchroniseerd met mijn Azure ad-account met behulp van Azure AD Connect. Ik wil mijn wacht woord wijzigen, mijn wacht woord verg eten of dit is vergrendeld.
-      * Ik wil mijn wacht woord wijzigen of opnieuw instellen op een bekende of mijn account ontgrendelen, **en** deze wijziging wordt weer gesynchroniseerd naar on-premises Active Directory.
+* Self-Service Wachtwoord opnieuw instellen/wijzigen/ontgrendelen **met on-premises terugschrijftekst**
+   * Ik ben een **hybride gebruiker** Mijn on-premises Active Directory-gebruikersaccount wordt gesynchroniseerd met mijn Azure AD-account met Azure AD Connect. Ik wil mijn wachtwoord wijzigen, mijn wachtwoord vergeten of buitengesloten zijn.
+      * Ik wil mijn wachtwoord wijzigen of opnieuw instellen op iets dat ik ken, of mijn account ontgrendelen **en** die wijziging weer synchroniseren met on-premises Active Directory.
    * Deze functionaliteit is opgenomen in Azure AD Premium P1 of P2 of Microsoft 365 Business.
 
 > [!WARNING]
-> Zelfstandige Office 365-licentie plannen *bieden geen ondersteuning voor "selfservice voor wachtwoord herstel/wijzigen/ontgrendelen met on-premises terugschrijven"* en vereisen een abonnement met Azure AD Premium P1, een Premium P2 of Microsoft 365 Business om deze functionaliteit te laten werken.
+> Zelfstandige Office 365-licentieplannen *bieden geen ondersteuning voor 'Self-Service Password Reset/Change/Unlock with on-premises writeback'* en vereisen een abonnement dat Azure AD Premium P1, Premium P2 of Microsoft 365 Business bevat om deze functionaliteit te laten werken.
 >
 
-Meer informatie over licenties, waaronder kosten, vindt u op de volgende pagina's:
+Aanvullende licentie-informatie, inclusief kosten, is te vinden op de volgende pagina's:
 
-* [Azure Active Directory-prijs site](https://azure.microsoft.com/pricing/details/active-directory/)
-* [Azure Active Directory functies en mogelijkheden](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
+* [Prijssite azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Azure Active Directory-functies en -mogelijkheden](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
-* [Microsoft 365 Enterprise](https://www.microsoft.com/microsoft-365/enterprise)
-* [Beschrijving van Microsoft 365 Business-Service](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
+* [Microsoft 365 Zakelijk](https://www.microsoft.com/microsoft-365/enterprise)
+* [Beschrijving van microsoft 365 Business-service](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
 
-## <a name="enable-group-or-user-based-licensing"></a>Op groep of gebruiker gebaseerde licentie verlening inschakelen
+## <a name="enable-group-or-user-based-licensing"></a>Licenties op basis van groepen of gebruikers inschakelen
 
-Azure AD ondersteunt nu licentie verlening op basis van een groep. Beheerders kunnen licenties bulksgewijs toewijzen aan een groep gebruikers, in plaats van ze een voor een toe te wijzen. Zie [problemen met licenties toewijzen, controleren en oplossen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)voor meer informatie.
+Azure AD ondersteunt nu groepslicenties. Beheerders kunnen licenties in bulk toewijzen aan een groep gebruikers, in plaats van ze één voor één toe te wijzen. Zie [Problemen met licenties toewijzen, verifiëren en oplossen voor](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)meer informatie.
 
-Sommige services van Microsoft zijn niet op alle locaties beschikbaar. Voordat een licentie aan een gebruiker kan worden toegewezen, moet de beheerder de eigenschap **gebruiks locatie** opgeven voor de gebruiker. De toewijzing van licenties kan worden uitgevoerd in de sectie **gebruikers** > **profiel** > **instellingen** van de Azure Portal. *Wanneer u de toewijzing van een groeps licentie gebruikt, nemen alle gebruikers waarvoor geen gebruiks locatie is opgegeven, de locatie van de map over.*
+Sommige services van Microsoft zijn niet op alle locaties beschikbaar. Voordat een licentie aan een gebruiker kan worden toegewezen, moet de beheerder de eigenschap **Gebruikslocatie** van de gebruiker opgeven. Toewijzing van licenties kan worden gedaan onder de sectie > **Gebruikersprofielinstellingen** > **Settings** in de Azure-portal. **User** *Wanneer u groepslicentietoewijzing gebruikt, erven gebruikers zonder opgegeven gebruikslocatie de locatie van de map.*
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Hoe kan ik een geslaagde implementatie van SSPR voltooien?](howto-sspr-deployment.md)
 * [Uw wachtwoord opnieuw instellen of wijzigen](../user-help/active-directory-passwords-update-your-own-password.md)
-* [Registreren voor de selfservice voor wachtwoordherstel](../user-help/active-directory-passwords-reset-register.md)
+* [Registreren voor de selfservice voor het opnieuw instellen van een wachtwoord](../user-help/active-directory-passwords-reset-register.md)
 * [Welke gegevens worden gebruikt door selfservice voor wachtwoordherstel en welke gegevens moet u voor uw gebruikers invullen?](howto-sspr-authenticationdata.md)
 * [Welke verificatiemethoden zijn beschikbaar voor gebruikers?](concept-sspr-howitworks.md#authentication-methods)
 * [Wat zijn de beleidsopties bij selfservice voor wachtwoordherstel?](concept-sspr-policy.md)
 * [Wat is Wachtwoord terugschrijven en waarom is dit van belang?](howto-sspr-writeback.md)
 * [Hoe maak ik rapporten van activiteit in selfservice voor wachtwoordherstel?](howto-sspr-reporting.md)
 * [Wat zijn alle opties in selfservice voor wachtwoordherstel en wat houden ze in?](concept-sspr-howitworks.md)
-* [Ik denk dat er iets is verbroken. Hoe kan ik problemen met SSPR oplossen?](active-directory-passwords-troubleshoot.md)
+* [Ik denk dat er iets kapot is. Hoe los ik SSPR op?](active-directory-passwords-troubleshoot.md)
 * [Ik heb een vraag die nog niet is beantwoord](active-directory-passwords-faq.md)

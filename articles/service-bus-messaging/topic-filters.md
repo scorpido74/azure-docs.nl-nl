@@ -1,6 +1,6 @@
 ---
-title: Filters voor Azure Service Bus-onderwerp | Microsoft Docs
-description: In dit artikel wordt uitgelegd hoe abonnees kunnen bepalen welke berichten ze willen ontvangen van een onderwerp door filters op te geven.
+title: Onderwerpenfilters voor Azure Service Bus | Microsoft Documenten
+description: In dit artikel wordt uitgelegd hoe abonnees kunnen definiëren welke berichten ze van een onderwerp willen ontvangen door filters op te geven.
 services: service-bus-messaging
 documentationcenter: ''
 author: clemensv
@@ -14,47 +14,47 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: spelluru
 ms.openlocfilehash: b8ffbb16763bfe6485ebf2ab770f4537ddbc8569
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774504"
 ---
 # <a name="topic-filters-and-actions"></a>Onderwerpfilters en acties
 
-Abonnees kunnen definiëren welke berichten ze willen ontvangen van een onderwerp. Deze berichten worden opgegeven in de vorm van een of meer regels met de naam abonnement. Elke regel bestaat uit een voor waarde die specifieke berichten selecteert en een actie die het geselecteerde bericht aantekent. Voor elke regelvoorwaarde waaraan wordt voldaan, produceert het abonnement een kopie van het bericht, dat anders voor elke overeenkomende regel anders kan worden geannoteerd.
+Abonnees kunnen definiëren welke berichten ze willen ontvangen van een onderwerp. Deze berichten worden opgegeven in de vorm van een of meer benoemde abonnementsregels. Elke regel bestaat uit een voorwaarde die bepaalde berichten selecteert en een actie die het geselecteerde bericht annoteert. Voor elke regelvoorwaarde waaraan wordt voldaan, produceert het abonnement een kopie van het bericht, dat anders voor elke overeenkomende regel anders kan worden geannoteerd.
 
-Elk nieuw gemaakt onderwerp-abonnement heeft een eerste standaard abonnements regel. Als u geen expliciete filter voorwaarde opgeeft voor de regel, is het toegepaste filter het **ware** filter waarmee alle berichten in het abonnement kunnen worden geselecteerd. De standaard regel heeft geen gekoppelde actie voor aantekening.
+Elk nieuw gemaakt onderwerpabonnement heeft een initiële standaardabonnementsregel. Als u niet expliciet een filtervoorwaarde voor de regel opgeeft, is het toegepaste filter het **echte** filter waarmee alle berichten in het abonnement kunnen worden geselecteerd. De standaardregel heeft geen bijbehorende annotatieactie.
 
-Service Bus ondersteunt drie filter voorwaarden:
+Service Bus ondersteunt drie filtervoorwaarden:
 
--   *Booleaanse filters* : de **TrueFilter** en **FalseFilter** leiden ertoe dat alle berichten (**waar**) of geen van de binnenkomende berichten (**False**) worden geselecteerd voor het abonnement.
+-   *Booleaanse filters* - **TrueFilter** en **FalseFilter** zorgen ervoor dat alle aankomende berichten **(true)** of geen van de aankomende berichten **(false)** worden geselecteerd voor het abonnement.
 
--   *SQL-filters* -een **SQLFILTER** bevat een SQL-achtige voorwaardelijke expressie die in de Broker wordt geëvalueerd op basis van de door de gebruiker gedefinieerde eigenschappen en systeem eigenschappen van de binnenkomende berichten. Alle systeem eigenschappen moeten worden voorafgegaan door `sys.` in de voorwaardelijke expressie. De [SQL-taal deel verzameling voor filter voorwaarden](service-bus-messaging-sql-filter.md) test op het bestaan van eigenschappen (`EXISTS`), en voor Null-waarden (`IS NULL`), logische not/en/of relationele Opera Tors, eenvoudig numeriek reken kundig en eenvoudig tekst patroon dat overeenkomt met `LIKE`.
+-   *SQL-filters* - Een **SqlFilter** bevat een SQL-achtige voorwaardelijke expressie die in de broker wordt geëvalueerd tegen de door gebruikers gedefinieerde eigenschappen en systeemeigenschappen van de binnenkomende berichten. Alle systeemeigenschappen moeten vooraf `sys.` zijn vastgelegd in de voorwaardelijke expressie. De [SQL-taalsubset voor filtervoorwaardentests](service-bus-messaging-sql-filter.md) voor`EXISTS`het bestaan van eigenschappen (`IS NULL`), evenals voor null-waarden ( ), logische NOT/AND/OR, relationele operatoren, eenvoudige numerieke rekenkunde en eenvoudige tekstpatroon die overeenkomt met `LIKE`.
 
--   *Correlatie filters* : een **CorrelationFilter** bevat een set voor waarden die overeenkomen met een of meer van de gebruikers-en systeem eigenschappen van een inkomend bericht. Een gemeen schappelijk gebruik komt overeen met de eigenschap **CorrelationId** , maar de toepassing kan er ook voor kiezen om te zoeken op **Content type**, **Label**, **MessageId**, **ReplyTo**, **ReplyToSessionId**, **SessionId**, **to**en een door de gebruiker gedefinieerde eigenschappen. Er bestaat een overeenkomst wanneer de waarde van een binnenkomend bericht voor een eigenschap gelijk is aan de waarde die is opgegeven in het correlatie filter. Voor teken reeks expressies is de vergelijking hoofdletter gevoelig. Wanneer u meerdere match-eigenschappen opgeeft, combineert het filter ze als een logische en-voor waarde, wat betekent dat het filter overeenkomt met alle voor waarden.
+-   *Correlatiefilters* - Een **CorrelationFilter** bevat een reeks voorwaarden die zijn gekoppeld aan een of meer gebruikers- en systeemeigenschappen van een binnenkomend bericht. Een gemeenschappelijk gebruik is om te matchen met de eigenschap **CorrelationId,** maar de toepassing kan er ook voor kiezen om te matchen met **ContentType,** **Label**, **MessageId**, **ReplyTo,** **ReplyToSessionId**, **SessionId**, **To**en eventuele door de gebruiker gedefinieerde eigenschappen. Er bestaat een overeenkomst wanneer de waarde van een aankomend bericht voor een eigenschap gelijk is aan de waarde die is opgegeven in het correlatiefilter. Voor tekenreeksexpressies is de vergelijking hoofdlettergevoelig. Bij het opgeven van meerdere overeenkomsteigenschappen combineert het filter deze als een logische EN voorwaarde, wat betekent dat het filter overeenkomt, alle voorwaarden moeten overeenkomen.
 
-Alle filters evalueren bericht eigenschappen. Filters kunnen de bericht tekst niet evalueren.
+Alle filters evalueren berichteigenschappen. Filters kunnen de berichttekst niet evalueren.
 
-Complexe filter regels vereisen verwerkings capaciteit. Met name het gebruik van SQL-filter regels resulteert in een lagere algehele bericht doorvoer op het niveau van de abonnementen, het onderwerp en de naam ruimte. Indien mogelijk moeten toepassingen correlatie filters kiezen ten opzichte van SQL-achtige filters, omdat ze veel efficiënter zijn in de verwerking en daarom minder gevolgen hebben voor de door voer.
+Complexe filterregels vereisen verwerkingscapaciteit. Met name het gebruik van SQL-filterregels resulteert in een lagere totale berichtdoorvoer op het niveau van het abonnement, het onderwerp en de naamruimte. Waar mogelijk moeten toepassingen kiezen voor correlatiefilters boven SQL-achtige filters, omdat ze veel efficiënter zijn in de verwerking en dus minder invloed hebben op de doorvoer.
 
 ## <a name="actions"></a>Acties
 
-Met SQL-filter voorwaarden kunt u een actie definiëren die het bericht kan annoteren door de eigenschappen en de waarden ervan toe te voegen, te verwijderen of te vervangen. De actie [maakt gebruik van een SQL-achtige expressie](service-bus-messaging-sql-filter.md) die los van de syntaxis van de SQL UPDATE-instructie. De actie wordt uitgevoerd op het bericht nadat het is gevonden en voordat het bericht is geselecteerd in het abonnement. De wijzigingen in de bericht eigenschappen zijn privé in het bericht dat naar het abonnement is gekopieerd.
+Met SQL-filtervoorwaarden u een actie definiëren die het bericht kan annoteren door eigenschappen en waarden toe te voegen, te verwijderen of te vervangen. De actie [maakt gebruik van een SQL-achtige expressie](service-bus-messaging-sql-filter.md) die losjes leunt op de sql-update-instructiesyntaxis. De actie wordt uitgevoerd op het bericht nadat het is gekoppeld en voordat het bericht is geselecteerd in het abonnement. De wijzigingen in de berichteigenschappen zijn privé voor het bericht dat in het abonnement is gekopieerd.
 
-## <a name="usage-patterns"></a>Gebruiks patronen
+## <a name="usage-patterns"></a>Gebruikspatronen
 
-Het eenvoudigste gebruiks scenario voor een onderwerp is dat elk abonnement een kopie krijgt van elk bericht dat naar een onderwerp wordt verzonden, waardoor een broadcast patroon mogelijk is.
+Het eenvoudigste gebruiksscenario voor een onderwerp is dat elk abonnement een kopie krijgt van elk bericht dat naar een onderwerp wordt verzonden, waardoor een uitzendpatroon mogelijk is.
 
-Met filters en acties worden twee verdere groepen patronen ingeschakeld: partitioneren en routeren.
+Filters en acties maken nog twee groepen patronen mogelijk: partitionering en routering.
 
-Partitioneren gebruikt filters voor het distribueren van berichten over verschillende bestaande onderwerps abonnementen op een voorspel bare en wederzijds exclusieve manier. Het patroon voor partitionering wordt gebruikt wanneer een systeem wordt uitgeschaald voor het afhandelen van veel verschillende contexten in functiond identieke compartimenten die elk een subset van de algemene gegevens bevatten; bijvoorbeeld klant profiel gegevens. Bij partitioneren verzendt een uitgever het bericht naar een onderwerp zonder kennis van het partitie model. Het bericht wordt vervolgens verplaatst naar het juiste abonnement, dat vervolgens kan worden opgehaald door de Message Handler van de partitie.
+Partitionering maakt gebruik van filters om berichten op een voorspelbare en wederzijds exclusieve manier over verschillende bestaande onderwerpabonnementen te distribueren. Het scheidingspatroon wordt gebruikt wanneer een systeem wordt uitgeschaald om veel verschillende contexten te verwerken in functioneel identieke compartimenten die elk een subset van de totale gegevens bevatten; bijvoorbeeld klantprofielinformatie. Met partitionering legt een uitgever het bericht in een onderwerp in zonder enige kennis van het partitionerende model. Het bericht wordt vervolgens verplaatst naar het juiste abonnement waarvan het vervolgens kan worden opgehaald door de berichthandler van de partitie.
 
-Route ring gebruikt filters voor het distribueren van berichten over topic-abonnementen op een voorspel bare manier, maar niet noodzakelijkerwijs exclusief. In combi natie met de functie voor [automatisch door sturen](service-bus-auto-forwarding.md) kunnen onderwerps filters worden gebruikt voor het maken van complexe routerings grafieken binnen een service bus naam ruimte voor bericht distributie binnen een Azure-regio. Met Azure Functions of Azure Logic Apps fungeren als een brug tussen Azure Service Bus naam ruimten, kunt u complexe globale topologieën maken met directe integratie in line-of-business-toepassingen.
+Routering gebruikt filters om berichten op een voorspelbare manier over onderwerpabonnementen te distribueren, maar niet noodzakelijkerwijs exclusief. In combinatie met de functie [automatisch doorsturen](service-bus-auto-forwarding.md) kunnen onderwerpfilters worden gebruikt om complexe routeringsgrafieken te maken in een naamruimte van servicebus voor berichtdistributie binnen een Azure-gebied. Met Azure Functions of Azure Logic Apps die fungeren als een brug tussen azure servicebusnaamruimten, u complexe algemene topologieën maken met directe integratie in line-of-business-toepassingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende onderwerpen voor meer informatie over Service Bus Messa ging:
+Zie de volgende onderwerpen voor meer informatie over berichten over Service Bus:
 
 * [Service Bus-wachtrijen, -onderwerpen en -abonnementen](service-bus-queues-topics-subscriptions.md)
 * [SQLFilter-syntaxis](service-bus-messaging-sql-filter.md)

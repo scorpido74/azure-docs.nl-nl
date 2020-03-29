@@ -1,42 +1,39 @@
 ---
-title: Azure Data Lake Storage Gen2 .NET SDK voor bestanden & Acl's (preview-versie)
-description: Gebruik de Azure Storage-client bibliotheek voor het beheren van mappen en ACL'S (toegangs beheer lijsten) in opslag accounts met een hiërarchische naam ruimte (HNS) ingeschakeld.
+title: Azure Data Lake Storage Gen2 .NET SDK voor bestanden & ACL's
+description: Gebruik de Azure Storage-clientbibliotheek om mappen en lijsten met bestands- en adresmaptoegangsbeheer (ACL) te beheren in opslagaccounts waarop hiërarchische naamruimte (HNS) is ingeschakeld.
 author: normesta
 ms.service: storage
-ms.date: 01/09/2020
+ms.date: 03/20/2020
 ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 0c279118df3a9205e82f8444b261922c688578da
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: b83d0d2d765b60585832f1a3e7c610f05eac075c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969085"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061570"
 ---
-# <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>.NET gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2 (preview)
+# <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>.NET gebruiken om mappen, bestanden en ACL's te beheren in Azure Data Lake Storage Gen2
 
-In dit artikel leest u hoe u .NET gebruikt voor het maken en beheren van mappen, bestanden en machtigingen in opslag accounts met een hiërarchische naam ruimte (HNS) ingeschakeld. 
+In dit artikel ziet u hoe u .NET gebruiken voor het maken en beheren van mappen, bestanden en machtigingen in opslagaccounts waarop hiërarchische naamruimte (HNS) is ingeschakeld. 
 
-> [!IMPORTANT]
-> Het NuGet-pakket van [Azure. storage. files. DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake) dat in dit artikel wordt aanbevolen, is momenteel beschikbaar als open bare preview.
-
-[Package (NuGet) | -](https://www.nuget.org/packages/Azure.Storage.Files.DataLake) voor [beelden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [API-verwijzing](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake) | [gen1 naar Gen2-toewijzing](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md) | [feedback geven](https://github.com/Azure/azure-sdk-for-net/issues)
+[Package (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake) | [Samples](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [API referentie](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake) | [Gen1 naar Gen2 mapping](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md) | [Feedback geven](https://github.com/Azure/azure-sdk-for-net/issues)
 
 ## <a name="prerequisites"></a>Vereisten
 
 > [!div class="checklist"]
 > * Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-> * Een opslag account met een hiërarchische naam ruimte (HNS) ingeschakeld. Volg [deze](data-lake-storage-quickstart-create-account.md) instructies om er een te maken.
+> * Een opslagaccount met hiërarchische naamruimte (HNS) ingeschakeld. Volg [deze](data-lake-storage-quickstart-create-account.md) instructies om er een te maken.
 
 ## <a name="set-up-your-project"></a>Uw project instellen
 
-Om aan de slag te gaan, installeert u het [Azure. storage. files. DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) NuGet-pakket.
+Installeer om aan de slag te gaan het [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) NuGet-pakket.
 
-Zie [pakketten installeren en beheren in Visual Studio met behulp van de NuGet-pakket beheer](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio)voor meer informatie over het installeren van NuGet-pakketten.
+Zie Pakketten installeren en beheren in [Visual Studio met nuGet Package Manager](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio)voor meer informatie over het installeren van NuGet-pakketten.
 
-Voeg deze instructies vervolgens toe aan de bovenkant van het code bestand.
+Voeg deze vervolgens toe met behulp van instructies aan de bovenkant van uw codebestand.
 
 ```csharp
 using Azure.Storage.Files.DataLake;
@@ -48,9 +45,13 @@ using Azure;
 
 ## <a name="connect-to-the-account"></a>Verbinding maken met het account
 
-Als u de fragmenten in dit artikel wilt gebruiken, moet u een [DataLakeServiceClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient) -exemplaar maken dat het opslag account vertegenwoordigt. De eenvoudigste manier om een account sleutel te gebruiken is. 
+Als u de fragmenten in dit artikel wilt gebruiken, moet u een [Instantie DataLakeServiceClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient) maken die het opslagaccount vertegenwoordigt. 
 
-In dit voor beeld wordt een exemplaar van de [DataLakeServiceClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient?) gemaakt met behulp van een account sleutel.
+### <a name="connect-by-using-an-account-key"></a>Verbinding maken met een accountsleutel
+
+Dit is de eenvoudigste manier om verbinding te maken met een account. 
+
+In dit voorbeeld wordt een [Instantie DataLakeServiceClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient?) gemaakt met behulp van een accountsleutel.
 
 ```cs
 public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceClient,
@@ -66,11 +67,35 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
 }
 ```
 
+### <a name="connect-by-using-azure-active-directory-ad"></a>Verbinding maken met Azure Active Directory (AD)
+
+U de [Azure-identiteitsclientbibliotheek voor .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity) gebruiken om uw toepassing te verifiëren met Azure AD.
+
+In dit voorbeeld wordt een [GegevensLakeServiceClient-exemplaar](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient?) gemaakt met behulp van een client-id, een clientgeheim en een tenant-id.  Zie Een token [van Azure AD ophalen van Azure AD voor het toestaan van aanvragen van een clienttoepassing](../common/storage-auth-aad-app.md)om deze waarden te verkrijgen.
+
+```cs
+public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceClient, 
+    String accountName, String clientID, string clientSecret, string tenantID)
+{
+
+    TokenCredential credential = new ClientSecretCredential(
+        tenantID, clientID, clientSecret, new TokenCredentialOptions());
+
+    string dfsUri = "https://" + accountName + ".dfs.core.windows.net";
+
+    dataLakeServiceClient = new DataLakeServiceClient(new Uri(dfsUri), credential);
+}
+
+```
+
+> [!NOTE]
+> Zie voor meer voorbeelden de [Azure-identiteitsclientbibliotheek voor .NET-documentatie..](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)
+
 ## <a name="create-a-file-system"></a>Een bestandssysteem maken
 
-Een bestands systeem fungeert als een container voor uw bestanden. U kunt er een maken door de methode [DataLakeServiceClient. CreateFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync) aan te roepen.
+Een bestandssysteem fungeert als een container voor uw bestanden. U er een maken door de [methode DataLakeServiceClient.CreateFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync) aan te roepen.
 
-In dit voor beeld wordt een bestands systeem gemaakt met de naam `my-file-system`. 
+In dit voorbeeld wordt `my-file-system`een bestandssysteem met de naam . 
 
 ```cs
 public async Task<DataLakeFileSystemClient> CreateFileSystem
@@ -82,9 +107,9 @@ public async Task<DataLakeFileSystemClient> CreateFileSystem
 
 ## <a name="create-a-directory"></a>Een map maken
 
-Maak een verwijzing naar een directory door de methode [DataLakeFileSystemClient. CreateDirectoryAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createdirectoryasync) aan te roepen.
+Maak een adreslijstverwijzing door de [methode DataLakeFileSystemClient.CreateDirectoryAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createdirectoryasync) aan te roepen.
 
-In dit voor beeld wordt een map met de naam `my-directory` toegevoegd aan een bestands systeem en wordt vervolgens een submap met de naam `my-subdirectory`toegevoegd. 
+In dit voorbeeld `my-directory` wordt een map toegevoegd met de naam `my-subdirectory`aan een bestandssysteem en wordt een submap met de naam toegevoegd. 
 
 ```cs
 public async Task<DataLakeDirectoryClient> CreateDirectory
@@ -100,11 +125,11 @@ public async Task<DataLakeDirectoryClient> CreateDirectory
 }
 ```
 
-## <a name="rename-or-move-a-directory"></a>Een map een andere naam geven of verplaatsen
+## <a name="rename-or-move-a-directory"></a>De naam van een map wijzigen of verplaatsen
 
-Wijzig de naam of verplaats een map door de methode [DataLakeDirectoryClient. RenameAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.renameasync) aan te roepen. Geef een para meter door aan het pad van de gewenste map. 
+Wijzig de naam of verplaats een map door de [methode DataLakeDirectoryClient.RenameAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.renameasync) aan te roepen. Geef het pad van de gewenste map een parameter. 
 
-In dit voor beeld wordt de naam van een submap gewijzigd in `my-subdirectory-renamed`.
+In dit voorbeeld wordt de naam `my-subdirectory-renamed`van een submap gewijzigd in de naam .
 
 ```cs
 public async Task<DataLakeDirectoryClient> 
@@ -117,7 +142,7 @@ public async Task<DataLakeDirectoryClient>
 }
 ```
 
-In dit voor beeld wordt een map met de naam `my-subdirectory-renamed` verplaatst naar een submap van de map met de naam `my-directory-2`. 
+In dit voorbeeld `my-subdirectory-renamed` wordt een map met de `my-directory-2`naam verplaatst naar een submap van een map met de naam . 
 
 ```cs
 public async Task<DataLakeDirectoryClient> MoveDirectory
@@ -132,9 +157,9 @@ public async Task<DataLakeDirectoryClient> MoveDirectory
 
 ## <a name="delete-a-directory"></a>Een map verwijderen
 
-Verwijder een directory door de methode [DataLakeDirectoryClient. Delete](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.delete) aan te roepen.
+Een map verwijderen door de methode [DataLakeDirectoryClient.Delete aan](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.delete) te roepen.
 
-In dit voor beeld wordt een map met de naam `my-directory`verwijderd.  
+In dit voorbeeld wordt `my-directory`een map met de naam .  
 
 ```cs
 public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient)
@@ -146,14 +171,14 @@ public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-## <a name="manage-a-directory-acl"></a>Een directory-ACL beheren
+## <a name="manage-a-directory-acl"></a>Een map ACL beheren
 
-Haal de toegangs beheer lijst (ACL) van een directory op door de methode [DataLakeDirectoryClient. GetAccessControlAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.getaccesscontrolasync) aan te roepen en de ACL in te stellen door de methode [DataLakeDirectoryClient. SetAccessControlList](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.setaccesscontrollist) aan te roepen.
+Download de lijst met toegangsbeheer (ACL) van een map door de [Methode GegevensLakeDirectoryClient aan te roepen.GetAccessControlAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.getaccesscontrolasync) en stel de ACL in door de methode [DataLakeDirectoryClient.SetAccessControlList](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.setaccesscontrollist) aan te roepen.
 
 > [!NOTE]
-> Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
+> Als uw toepassing de toegang autoriseert met Azure Active Directory (Azure AD), controleert u of de beveiligingsprincipal die uw toepassing gebruikt om toegang te autoriseren, is toegewezen aan de [rol Opslagblob-gegevenseigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie [Toegangsbeheer in Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)voor meer informatie over hoe ACL-machtigingen worden toegepast en de effecten van het wijzigen ervan. 
 
-In dit voor beeld wordt de toegangs beheer lijst van een map met de naam `my-directory`opgehaald en ingesteld. De teken reeks `user::rwx,group::r-x,other::rw-` de machtigingen lezen, schrijven en uitvoeren van de gebruiker die eigenaar is, geeft de groep die eigenaar is alleen lezen-en uitvoer machtigingen en geeft alle andere Lees-en schrijf rechten.
+In dit voorbeeld wordt de ACL `my-directory`van een map met de naam . De `user::rwx,group::r-x,other::rw-` tekenreeks geeft de eigenaar van de gebruiker machtigingen lezen, schrijven en uitvoeren, geeft de eigenaargroep alleen lees- en uitvoermachtigingen en geeft alle anderen lees- en schrijftoestemming.
 
 ```cs
 public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
@@ -178,9 +203,9 @@ public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
 
 ## <a name="upload-a-file-to-a-directory"></a>Een bestand uploaden naar een map
 
-Maak eerst een bestands verwijzing in de doel directory door een instantie van de klasse [DataLakeFileClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient) te maken. Upload een bestand door de methode [DataLakeFileClient. AppendAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.appendasync) aan te roepen. Zorg ervoor dat u de upload voltooit door de methode [DataLakeFileClient. FlushAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.flushasync) aan te roepen.
+Maak eerst een bestandsverwijzing in de doelmap door een instantie van de klasse [DataLakeFileClient te](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient) maken. Upload een bestand door de [methode DataLakeFileClient.AppendAsync aan te](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.appendasync) roepen. Zorg ervoor dat u de upload voltooit door de [methode DataLakeFileClient.FlushAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.flushasync) aan te roepen.
 
-In dit voor beeld wordt een tekst bestand geüpload naar een map met de naam `my-directory`.    
+In dit voorbeeld wordt een tekstbestand geüpload naar een map met de naam `my-directory`.    
 
 ```cs
 public async Task UploadFile(DataLakeFileSystemClient fileSystemClient)
@@ -202,14 +227,40 @@ public async Task UploadFile(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-## <a name="manage-a-file-acl"></a>Een bestands-ACL beheren
+> [!TIP]
+> Als uw bestandsgrootte groot is, moet uw code meerdere oproepen doen naar de [DataLakeFileClient.AppendAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.appendasync). Overweeg in plaats daarvan de [methode DataLakeFileClient.UploadAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.uploadasync?view=azure-dotnet#Azure_Storage_Files_DataLake_DataLakeFileClient_UploadAsync_System_IO_Stream_) te gebruiken. Op die manier u het hele bestand in één gesprek uploaden. 
+>
+> Zie de volgende sectie voor een voorbeeld.
 
-Haal de toegangs beheer lijst (ACL) van een bestand op door de methode [DataLakeFileClient. GetAccessControlAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.getaccesscontrolasync) aan te roepen en de ACL in te stellen door de methode [DataLakeFileClient. SetAccessControlList](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.setaccesscontrollist) aan te roepen.
+## <a name="upload-a-large-file-to-a-directory"></a>Een groot bestand uploaden naar een map
+
+Gebruik de [methode DataLakeFileClient.UploadAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.uploadasync?view=azure-dotnet#Azure_Storage_Files_DataLake_DataLakeFileClient_UploadAsync_System_IO_Stream_) om grote bestanden te uploaden zonder meerdere gesprekken te hoeven voeren naar de [methode DataLakeFileClient.AppendAsync.](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.appendasync)
+
+```cs
+public async Task UploadFileBulk(DataLakeFileSystemClient fileSystemClient)
+{
+    DataLakeDirectoryClient directoryClient =
+        fileSystemClient.GetDirectoryClient("my-directory");
+
+    DataLakeFileClient fileClient = directoryClient.GetFileClient("uploaded-file.txt");
+
+    FileStream fileStream =
+        File.OpenRead("C:\\file-to-upload.txt");
+
+    await fileClient.UploadAsync(fileStream);
+
+}
+
+```
+
+## <a name="manage-a-file-acl"></a>Een bestand ACL beheren
+
+Download de lijst met toegangsbeheer (ACL) van een bestand door de [methode DataLakeFileClient aan te roepen.GetAccessControlAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.getaccesscontrolasync) en stel de ACL in door de methode [DataLakeFileClient.SetAccessControlList](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.setaccesscontrollist) aan te roepen.
 
 > [!NOTE]
-> Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
+> Als uw toepassing de toegang autoriseert met Azure Active Directory (Azure AD), controleert u of de beveiligingsprincipal die uw toepassing gebruikt om toegang te autoriseren, is toegewezen aan de [rol Opslagblob-gegevenseigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie [Toegangsbeheer in Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)voor meer informatie over hoe ACL-machtigingen worden toegepast en de effecten van het wijzigen ervan. 
 
-In dit voor beeld wordt de ACL van een bestand met de naam `my-file.txt`opgehaald en ingesteld. De teken reeks `user::rwx,group::r-x,other::rw-` de machtigingen lezen, schrijven en uitvoeren van de gebruiker die eigenaar is, geeft de groep die eigenaar is alleen lezen-en uitvoer machtigingen en geeft alle andere Lees-en schrijf rechten.
+In dit voorbeeld wordt de ACL `my-file.txt`van een bestand met de naam . De `user::rwx,group::r-x,other::rw-` tekenreeks geeft de eigenaar van de gebruiker machtigingen lezen, schrijven en uitvoeren, geeft de eigenaargroep alleen lees- en uitvoermachtigingen en geeft alle anderen lees- en schrijftoestemming.
 
 ```cs
 public async Task ManageFileACLs(DataLakeFileSystemClient fileSystemClient)
@@ -233,11 +284,11 @@ public async Task ManageFileACLs(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-## <a name="download-from-a-directory"></a>Downloaden uit een directory 
+## <a name="download-from-a-directory"></a>Downloaden uit een map 
 
-Maak eerst een [DataLakeFileClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient) -exemplaar dat het bestand vertegenwoordigt dat u wilt downloaden. Gebruik de methode [DataLakeFileClient. ReadAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.readasync) en parser de retour waarde voor het verkrijgen van een [Stream](https://docs.microsoft.com/dotnet/api/system.io.stream) -object. Gebruik een API voor het verwerken van .NET-bestanden om bytes van de stroom naar een bestand op te slaan. 
+Maak eerst een [Instantie DataLakeFileClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient) die het bestand vertegenwoordigt dat u wilt downloaden. Gebruik de methode [DataLakeFileClient.ReadAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.readasync) en ontlijn de retourwaarde om een [streamobject](https://docs.microsoft.com/dotnet/api/system.io.stream) te verkrijgen. Gebruik een .NET-api voor bestandsverwerking om bytes van de stream in een bestand op te slaan. 
 
-In dit voor beeld wordt een [BinaryReader](https://docs.microsoft.com/dotnet/api/system.io.binaryreader) en een [FileStream](https://docs.microsoft.com/dotnet/api/system.io.filestream) gebruikt om bytes op te slaan in een bestand. 
+In dit voorbeeld worden een [BinaryReader](https://docs.microsoft.com/dotnet/api/system.io.binaryreader) en een [FileStream](https://docs.microsoft.com/dotnet/api/system.io.filestream) gebruikt om bytes in een bestand op te slaan. 
 
 ```cs
 public async Task DownloadFile(DataLakeFileSystemClient fileSystemClient)
@@ -274,9 +325,9 @@ public async Task DownloadFile(DataLakeFileSystemClient fileSystemClient)
 
 ## <a name="list-directory-contents"></a>Mapinhoud weergeven
 
-Mapinhoud weer geven door de methode [FileSystemClient. GetPathsAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getpathsasync) aan te roepen en vervolgens de resultaten te inventariseren.
+Lijstinhoud door de methode [FileSystemClient.GetPathsAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getpathsasync) aan te roepen en vervolgens de resultaten op te sommen.
 
-In dit voor beeld worden de namen afgedrukt van elk bestand dat zich bevindt in een map met de naam `my-directory`.
+In dit voorbeeld worden de namen van elk `my-directory`bestand met de naam .
 
 ```cs
 public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient)
@@ -305,10 +356,10 @@ public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient
 
 ## <a name="see-also"></a>Zie ook
 
-* [API-referentie documentatie](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake)
+* [API-referentiedocumentatie](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake)
 * [Pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake)
-* [Voorbeelden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)
-* [Toewijzing van gen1 naar Gen2](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)
+* [Monsters](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)
+* [Gen1 naar Gen2 mapping](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)
 * [Bekende problemen](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [Feedback geven](https://github.com/Azure/azure-sdk-for-net/issues)
 

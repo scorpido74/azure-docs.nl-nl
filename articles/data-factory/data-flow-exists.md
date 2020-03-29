@@ -1,6 +1,6 @@
 ---
-title: Er bestaat een trans formatie in de toewijzing van gegevens stroom
-description: Controleren op bestaande rijen met de trans formatie exists in Azure Data Factory gegevens stroom toewijzen
+title: Bestaat transformatie in het toewijzen van gegevensstroom
+description: Controleren op bestaande rijen met de bestaande transformatie in azure datafabriek toewijzingsgegevensstroom
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
 ms.openlocfilehash: efcc45dcf3565b70305323701810c49c4a720394
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930413"
 ---
-# <a name="exists-transformation-in-mapping-data-flow"></a>Er bestaat een trans formatie in de toewijzing van gegevens stroom
+# <a name="exists-transformation-in-mapping-data-flow"></a>Bestaat transformatie in het toewijzen van gegevensstroom
 
-De exists-trans formatie is een filter transformatie voor rijen waarmee wordt gecontroleerd of uw gegevens zich in een andere bron of stroom bevindt. De uitvoer stroom bevat alle rijen in de linker stroom die ofwel bestaan of niet voor komen in de juiste stroom. De exists-trans formatie is vergelijkbaar met ```SQL WHERE EXISTS``` en ```SQL WHERE NOT EXISTS```.
+De bestaande transformatie is een rijfiltertransformatie die controleert of uw gegevens in een andere bron of stream bestaan. De uitvoerstroom bevat alle rijen in de linkerstream die wel of niet bestaan in de rechterstroom. De bestaande transformatie ```SQL WHERE EXISTS``` is ```SQL WHERE NOT EXISTS```vergelijkbaar met en .
 
 ## <a name="configuration"></a>Configuratie
 
-1. Kies welke gegevens stroom u in de vervolg keuzelijst naar de **juiste stroom** wilt controleren.
-1. Geef op of u wilt dat de gegevens bestaan of niet aanwezig zijn in de instelling voor het **bestaande type** .
-1. Selecteer of u een **aangepaste expressie**wilt of niet.
-1. Kies welke sleutel kolommen u als voor waarden wilt vergelijken. De gegevens stroom zoekt standaard naar gelijkheid tussen één kolom in elke stroom. Als u wilt vergelijken via een berekende waarde, houdt u de muis aanwijzer boven de vervolg keuzelijst kolom en selecteert u **berekende kolom**.
+1. Kies welke gegevensstroom u controleert op bestaan in de **vervolgkeuzelijst Rechts stroom.**
+1. Geef op of u op zoek bent naar de gegevens die al dan niet bestaan in de **instelling Bestaan.**
+1. Selecteer of u een **aangepaste expressie**wilt .
+1. Kies welke belangrijke kolommen u wilt vergelijken als uw bestaande voorwaarden. Standaard zoekt de gegevensstroom naar gelijkheid tussen één kolom in elke stream. Als u wilt vergelijken via een berekende waarde, zweeft u boven de kolomvervolgkeuzelijst en selecteert **u Berekende kolom**.
 
-![Instellingen voor exists](media/data-flow/exists.png "bestaat 1")
+![Bestaande instellingen](media/data-flow/exists.png "bestaat 1")
 
-### <a name="multiple-exists-conditions"></a>Meerdere voor waarden voor bestaan
+### <a name="multiple-exists-conditions"></a>Meerdere bestaande voorwaarden
 
-Als u meerdere kolommen van elke stroom wilt vergelijken, voegt u een nieuwe exists-voor waarde toe door op het plus pictogram naast een bestaande rij te klikken. Elke aanvullende voor waarde wordt gekoppeld door een and-instructie. Vergelijken van twee kolommen is hetzelfde als de volgende expressie:
+Als u meerdere kolommen van elke stream wilt vergelijken, voegt u een nieuwe voorwaarde toe door op het pluspictogram naast een bestaande rij te klikken. Elke aanvullende voorwaarde wordt vergezeld door een "en" verklaring. Het vergelijken van twee kolommen is hetzelfde als de volgende expressie:
 
 `source1@column1 == source2@column1 && source1@column2 == source2@column2`
 
 ### <a name="custom-expression"></a>Aangepaste expressie
 
-Als u een vrije-vorm expressie wilt maken die andere opera tors dan ' en ' en ' is gelijk aan ' bevat, selecteert u het veld **aangepaste expressie** . Voer een aangepaste expressie in via de opbouw functie voor de data flow-expressie door te klikken op het blauwe vak.
+Als u een vrije-vormexpressie wilt maken die andere operatoren bevat dan 'en' en 'gelijk aan', selecteert u het veld **Aangepaste expressie.** Voer een aangepaste expressie in via de opbouw van gegevensstromenexpressie door op het blauwe vak te klikken.
 
-![Aangepaste instellingen bestaan](media/data-flow/exists1.png "bestaat aangepast")
+![Bestaande aangepaste instellingen](media/data-flow/exists1.png "bestaat op maat")
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
@@ -55,13 +55,13 @@ Als u een vrije-vorm expressie wilt maken die andere opera tors dan ' en ' en ' 
 
 ### <a name="example"></a>Voorbeeld
 
-Het onderstaande voor beeld is een bestaande trans formatie met de naam `checkForChanges` die links stream `NameNorm2` en Right stream-`TypeConversions`gebruikt.  De exists-voor waarde is de expressie `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` die waar retourneert als de `EMPID` en `Region` kolommen in elke stroom overeenkomen. Wanneer we controleren op bestaan, is `negate` onwaar. Er wordt geen uitzending ingeschakeld op het tabblad Optimize, dus `broadcast` heeft waarde `'none'`.
+Het onderstaande voorbeeld is `checkForChanges` een transformatie `NameNorm2` met `TypeConversions`de naam die links stream en rechter stream neemt .  De voorwaarde bestaat: `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` de expressie die `EMPID` `Region` true retourneert als zowel de kolommen als de kolommen in elke stream overeenkomen. Als we controleren op `negate` bestaan, is vals. We zijn niet in staat alle uitzendingen in het tabblad optimaliseren dus `broadcast` heeft waarde `'none'`.
 
-In de Data Factory UX ziet deze trans formatie er als volgt uit:
+In de UX van de Data Factory lijkt deze transformatie op de onderstaande afbeelding:
 
-![Voor beeld van exist](media/data-flow/exists-script.png "Voor beeld van exist")
+![Bestaat bijvoorbeeld](media/data-flow/exists-script.png "Bestaat bijvoorbeeld")
 
-Het gegevens stroom script voor deze trans formatie bevindt zich in het volgende fragment:
+Het gegevensstroomscript voor deze transformatie bevindt zich in het onderstaande fragment:
 
 ```
 NameNorm2, TypeConversions
@@ -74,4 +74,4 @@ NameNorm2, TypeConversions
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Vergelijk bare trans formaties zijn [Opzoeken](data-flow-lookup.md) en [samen voegen](data-flow-join.md).
+Vergelijkbare transformaties zijn [Lookup](data-flow-lookup.md) en [Join](data-flow-join.md).

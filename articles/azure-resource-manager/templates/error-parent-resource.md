@@ -1,22 +1,22 @@
 ---
-title: Fouten van bovenliggende resources
-description: Hierin wordt beschreven hoe u fouten oplost bij het werken met een bovenliggende resource in een Azure Resource Manager sjabloon.
+title: Bovenliggende resourcefouten
+description: Beschrijft hoe u fouten oplossen wanneer u met een bovenliggende bron werkt in een Azure Resource Manager-sjabloon.
 ms.topic: troubleshooting
 ms.date: 08/01/2018
 ms.openlocfilehash: f1847389d60ddf3c6abc70bc3309940c2246084e
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76154037"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>Fouten voor bovenliggende resources oplossen
 
-In dit artikel worden de fouten beschreven die u kunt krijgen bij het implementeren van een resource die afhankelijk is van een bovenliggende resource.
+In dit artikel worden de fouten beschreven die u krijgen bij het implementeren van een resource die afhankelijk is van een bovenliggende bron.
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u een resource implementeert die een onderliggend item van een andere resource is, wordt mogelijk de volgende fout weer gegeven:
+Wanneer u een resource implementeert die een onderliggend kind is voor een andere resource, ontvangt u mogelijk de volgende fout:
 
 ```
 Code=ParentResourceNotFound;
@@ -25,7 +25,7 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 
 ## <a name="cause"></a>Oorzaak
 
-Wanneer een resource een onderliggend item van een andere resource is, moet de bovenliggende resource bestaan voordat de onderliggende resource wordt gemaakt. Met de naam van de onderliggende resource wordt de verbinding met de bovenliggende resource gedefinieerd. De naam van de onderliggende resource heeft de indeling `<parent-resource-name>/<child-resource-name>`. Een SQL Database kan bijvoorbeeld als volgt worden gedefinieerd:
+Wanneer een resource een onderliggende bron is, moet de bovenliggende resource bestaan voordat de onderliggende bron wordt gemaakt. De naam van de onderliggende bron definieert de verbinding met de bovenliggende resource. De naam van de onderliggende `<parent-resource-name>/<child-resource-name>`bron staat in de indeling . Een SQL-database kan bijvoorbeeld worden gedefinieerd als:
 
 ```json
 {
@@ -34,13 +34,13 @@ Wanneer een resource een onderliggend item van een andere resource is, moet de b
   ...
 ```
 
-Als u zowel de server als de data base in dezelfde sjabloon implementeert, maar geen afhankelijkheid op de server opgeeft, wordt de implementatie van de data base mogelijk gestart voordat de server is geïmplementeerd.
+Als u zowel de server als de database in dezelfde sjabloon implementeert, maar geen afhankelijkheid van de server opgeeft, kan de database-implementatie beginnen voordat de server is geïmplementeerd.
 
-Als de bovenliggende resource al bestaat en niet is geïmplementeerd in dezelfde sjabloon, wordt deze fout weer geven wanneer Resource Manager de onderliggende resource niet kan koppelen aan het bovenliggende item. Deze fout kan optreden wanneer de onderliggende resource niet de juiste indeling heeft of de onderliggende resource wordt geïmplementeerd naar een resource groep die verschilt van de resource groep voor de bovenliggende resource.
+Als de bovenliggende resource al bestaat en niet in dezelfde sjabloon wordt geïmplementeerd, krijgt u deze fout wanneer Resource Manager de onderliggende bron niet kan koppelen aan de bovenliggende bron. Deze fout kan optreden wanneer de onderliggende resource niet in de juiste indeling is of wanneer de onderliggende resource wordt geïmplementeerd in een resourcegroep die anders is dan de resourcegroep voor bovenliggende resources.
 
 ## <a name="solution"></a>Oplossing
 
-Als u deze fout wilt oplossen wanneer bovenliggende en onderliggende resources in dezelfde sjabloon zijn geïmplementeerd, neemt u een afhankelijkheid op.
+Als u deze fout wilt oplossen wanneer bovenliggende en onderliggende bronnen in dezelfde sjabloon worden geïmplementeerd, moet u een afhankelijkheid opnemen.
 
 ```json
 "dependsOn": [
@@ -48,7 +48,7 @@ Als u deze fout wilt oplossen wanneer bovenliggende en onderliggende resources i
 ]
 ```
 
-Als u deze fout wilt oplossen wanneer de bovenliggende resource eerder in een andere sjabloon is geïmplementeerd, stelt u geen afhankelijkheid in. Implementeer het onderliggende item in plaats daarvan naar dezelfde resource groep en geef de naam van de bovenliggende resource op.
+Als u deze fout wilt oplossen toen de bovenliggende resource eerder in een andere sjabloon werd geïmplementeerd, stelt u geen afhankelijkheid in. Implementeer het onderliggende kind in dezelfde resourcegroep en geef de naam van de bovenliggende resource op.
 
 ```json
 {
@@ -78,4 +78,4 @@ Als u deze fout wilt oplossen wanneer de bovenliggende resource eerder in een an
 }
 ```
 
-Zie [de order voor het implementeren van resources in azure Resource Manager-sjablonen definiëren](define-resource-dependency.md)voor meer informatie.
+Zie [De volgorde definiëren voor het implementeren van resources in Azure Resource Manager-sjablonen voor](define-resource-dependency.md)meer informatie.

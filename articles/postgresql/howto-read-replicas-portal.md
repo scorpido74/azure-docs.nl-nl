@@ -1,102 +1,102 @@
 ---
-title: Lees replica's beheren-Azure Portal-Azure Database for PostgreSQL-één server
-description: Meer informatie over het beheren van Lees replica's Azure Database for PostgreSQL-één server van de Azure Portal.
+title: Lees-replica's beheren - Azure portal - Azure Database for PostgreSQL - Single Server
+description: Meer informatie over het beheren van leesreplica's Azure Database voor PostgreSQL - Single Server vanuit de Azure-portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76768947"
 ---
-# <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for PostgreSQL-één server van de Azure Portal
+# <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Lees-replica's maken en beheren in Azure Database voor PostgreSQL - Eén server vanuit de Azure-portal
 
-In dit artikel leert u hoe u in Azure Database for PostgreSQL Lees replica's maakt en beheert via de Azure Portal. Zie het [overzicht](concepts-read-replicas.md)voor meer informatie over het lezen van replica's.
+In dit artikel leert u hoe u leesreplica's maakt en beheert in Azure Database voor PostgreSQL vanuit de Azure-portal. Zie het [overzicht](concepts-read-replicas.md)voor meer informatie over gelezen replica's.
 
 
 ## <a name="prerequisites"></a>Vereisten
-Een [Azure database for postgresql-server](quickstart-create-server-database-portal.md) als de hoofd server.
+Een [Azure-database voor PostgreSQL-server](quickstart-create-server-database-portal.md) als hoofdserver.
 
-## <a name="prepare-the-master-server"></a>De hoofd server voorbereiden
-Deze stappen moeten worden gebruikt om een hoofd server voor te bereiden in de lagen Algemeen of geoptimaliseerd voor geheugen. De master server wordt voor bereid voor replicatie door de para meter Azure. replication_support in te stellen. Wanneer de replicatie parameter wordt gewijzigd, moet de server opnieuw worden opgestart om de wijziging van kracht te laten worden. In de Azure Portal worden deze twee stappen ingekapseld door één knop, **ondersteuning voor replicatie inschakelen**.
+## <a name="prepare-the-master-server"></a>De hoofdserver voorbereiden
+Deze stappen moeten worden gebruikt om een hoofdserver voor te bereiden in de lagen Algemeen Doel of Geheugengeoptimaliseerd. De hoofdserver is voorbereid op replicatie door de parameter azure.replication_support in te stellen. Wanneer de replicatieparameter wordt gewijzigd, is een serveropnieuw opstarten vereist om de wijziging van kracht te laten worden. In de Azure-portal worden deze twee stappen ingekapseld door één knop, **Replicatieondersteuning inschakelen**.
 
-1. Selecteer in de Azure Portal de bestaande Azure Database for PostgreSQL-server die als een Master moet worden gebruikt.
+1. Selecteer in de Azure-portal de bestaande Azure-database voor PostgreSQL-server die als stramien moet worden gebruikt.
 
-2. Selecteer op de zijbalk van de server onder **instellingen**de optie **replicatie**.
+2. Selecteer **replicatie**op de zijbalk van de server onder **INSTELLINGEN**.
 
 > [!NOTE] 
-> Als u de **ondersteuning voor replicatie uitschakelen** grijs weer gegeven, zijn de replicatie-instellingen standaard al op uw server ingesteld. U kunt de volgende stappen overs Laan en een lees replica maken. 
+> Als u **replicatieondersteuning** grijs uitschakelen ziet, zijn de replicatieinstellingen standaard al ingesteld op uw server. U de volgende stappen overslaan en een gelezen replica maken. 
 
-3. Selecteer **ondersteuning voor replicatie inschakelen**. 
+3. Selecteer **Replicatieondersteuning inschakelen**. 
 
-   ![Ondersteuning voor replicatie inschakelen](./media/howto-read-replicas-portal/enable-replication-support.png)
+   ![Replicatieondersteuning inschakelen](./media/howto-read-replicas-portal/enable-replication-support.png)
 
-4. Bevestig dat u de ondersteuning voor replicatie wilt inschakelen. Met deze bewerking wordt de hoofd server opnieuw gestart. 
+4. Bevestig dat u replicatieondersteuning wilt inschakelen. Met deze bewerking wordt de hoofdserver opnieuw opgestart. 
 
-   ![Ondersteuning voor replicatie inschakelen bevestigen](./media/howto-read-replicas-portal/confirm-enable-replication.png)
+   ![Replicatieondersteuning inschakelen bevestigen](./media/howto-read-replicas-portal/confirm-enable-replication.png)
    
-5. Zodra de bewerking is voltooid, ontvangt u twee meldingen over Azure Portal. Er is één melding voor het bijwerken van de server parameter. Er is een andere melding voor de herstart van de server die onmiddellijk volgt.
+5. U ontvangt twee Azure-portalmeldingen zodra de bewerking is voltooid. Er is één melding voor het bijwerken van de serverparameter. Er is nog een melding voor de server opnieuw opstarten die onmiddellijk volgt.
 
-   ![Geslaagde meldingen-inschakelen](./media/howto-read-replicas-portal/success-notifications-enable.png)
+   ![Succesmeldingen - inschakelen](./media/howto-read-replicas-portal/success-notifications-enable.png)
 
-6. Vernieuw de Azure Portal pagina om de werk balk replicatie bij te werken. U kunt nu lees replica's maken voor deze server.
+6. Vernieuw de Azure-portalpagina om de werkbalk Replicatie bij te werken. U nu leesreplica's voor deze server maken.
 
-   ![Bijgewerkte werk balk](./media/howto-read-replicas-portal/updated-toolbar.png)
+   ![Bijgewerkte werkbalk](./media/howto-read-replicas-portal/updated-toolbar.png)
    
-Het inschakelen van ondersteuning voor replicatie is een eenmalige bewerking per hoofd server. Er wordt een **ondersteunings** knop voor het uitschakelen van de replicatie voor uw gemak geboden. Het is niet raadzaam om replicatie ondersteuning uit te scha kelen, tenzij u zeker weet dat u nooit een replica maakt op deze hoofd server. U kunt ondersteuning voor replicatie niet uitschakelen als uw hoofd server bestaande replica's heeft.
+Replicatieondersteuning inschakelen is een eenmalige bewerking per hoofdserver. Voor uw gemak is er een knop **Replicatieondersteuning uitschakelen.** We raden u aan replicatieondersteuning uit te schakelen, tenzij u er zeker van bent dat u nooit een replica op deze hoofdserver zult maken. U replicatieondersteuning niet uitschakelen terwijl de hoofdserver bestaande replica's heeft.
 
 
-## <a name="create-a-read-replica"></a>Maken van een replica lezen
-Voer de volgende stappen uit om een lees replica te maken:
+## <a name="create-a-read-replica"></a>Een gelezen replica maken
+Voer de volgende stappen uit om een gelezen replica te maken:
 
-1. Selecteer de bestaande Azure Database for PostgreSQL-server om te gebruiken als de hoofd server. 
+1. Selecteer de bestaande Azure Database voor PostgreSQL-server die u als hoofdserver wilt gebruiken. 
 
-2. Selecteer op de zijbalk van de server onder **instellingen**de optie **replicatie**.
+2. Selecteer **replicatie**op de zijbalk van de server onder **INSTELLINGEN**.
 
-3. Selecteer **replica toevoegen**.
+3. Selecteer **Replica toevoegen**.
 
    ![Een replica toevoegen](./media/howto-read-replicas-portal/add-replica.png)
 
-4. Voer een naam in voor de Lees replica. 
+4. Voer een naam in voor de gelezen replica. 
 
-    ![De replica een naam](./media/howto-read-replicas-portal/name-replica.png)
+    ![De replica een naam geven](./media/howto-read-replicas-portal/name-replica.png)
 
-5. Selecteer een locatie voor de replica. De standaard locatie is dezelfde als die van de hoofd server.
+5. Selecteer een locatie voor de replica. De standaardlocatie is hetzelfde als die van de hoofdserver.
 
-    ![Selecteer een locatie](./media/howto-read-replicas-portal/location-replica.png)
+    ![Een locatie selecteren](./media/howto-read-replicas-portal/location-replica.png)
 
    > [!NOTE]
-   > Ga naar het [artikel concepten van replica's lezen](concepts-read-replicas.md)voor meer informatie over de regio's die u kunt maken in de replica. 
+   > Ga voor meer informatie over welke regio's u een replica maken in het [artikel Voor replicaconcepten](concepts-read-replicas.md). 
 
-6. Selecteer **OK** om te bevestigen dat de replica is gemaakt.
+6. Selecteer **OK** om de creatie van de replica te bevestigen.
 
-Een replica wordt gemaakt met behulp van dezelfde berekenings-en opslag instellingen als de hoofd server. Nadat een replica is gemaakt, kunnen verschillende instellingen onafhankelijk van de hoofd server worden gewijzigd: generatie van compute, vCores, opslag en back-up van Bewaar periode. De prijs categorie kan ook onafhankelijk worden gewijzigd, met uitzonde ring van of van de Basic-laag.
+Er wordt een replica gemaakt met dezelfde reken- en opslaginstellingen als het stramien. Nadat een replica is gemaakt, kunnen verschillende instellingen onafhankelijk van de hoofdserver worden gewijzigd: rekengeneratie, vCores, opslag en back-upbewaarperiode. De prijscategorie kan ook onafhankelijk worden gewijzigd, behalve van of naar de basislaag.
 
 > [!IMPORTANT]
-> Werk de replica-instelling bij naar een gelijke of grotere waarde voordat een master server-instelling wordt bijgewerkt naar een nieuwe waarde. Met deze actie wordt de replica zo aangepast dat er wijzigingen in de master worden aangebracht.
+> Voordat een hoofdserverinstelling wordt bijgewerkt naar een nieuwe waarde, werkt u de replica-instelling bij naar een evengrote of grotere waarde. Met deze actie kan de replica gelijke tred houden met eventuele wijzigingen in het model.
 
-Nadat de Lees replica is gemaakt, kan deze worden weer gegeven in het venster **replicatie** :
+Nadat de gelezen replica is gemaakt, kan deze worden weergegeven vanuit het **replicatievenster:**
 
-![De nieuwe replica weer geven in het venster replicatie](./media/howto-read-replicas-portal/list-replica.png)
+![De nieuwe replica weergeven in het replicatievenster](./media/howto-read-replicas-portal/list-replica.png)
  
 
 ## <a name="stop-replication"></a>Replicatie stoppen
-U kunt de replicatie tussen een hoofd server en een lees replica stoppen.
+U de replicatie tussen een hoofdserver en een gelezen replica stoppen.
 
 > [!IMPORTANT]
-> Nadat u de replicatie naar een hoofd server en een lees replica hebt gestopt, kunt u deze niet meer ongedaan maken. De Lees replica wordt een zelfstandige server die zowel lees-als schrijf bewerkingen ondersteunt. De zelfstandige server kan niet opnieuw in een replica worden gemaakt.
+> Nadat u de replicatie naar een hoofdserver en een gelezen replica hebt gestopt, kan deze niet ongedaan worden gemaakt. De gelezen replica wordt een standalone server die zowel leest als schrijft ondersteunt. De standalone server kan niet opnieuw worden omgezet in een replica.
 
-Voer de volgende stappen uit om de replicatie tussen een hoofd server en een lees replica van de Azure Portal te stoppen:
+Voer de volgende stappen uit om de replicatie tussen een hoofdserver en een gelezen replica van de Azure-portal te stoppen:
 
-1. Selecteer in de Azure Portal uw Master Azure Database for PostgreSQL-server.
+1. Selecteer in de Azure-portal uw hoofdAzure Database voor PostgreSQL-server.
 
-2. Selecteer in het menu Server onder **instellingen**de optie **replicatie**.
+2. Selecteer **Replicatie**in het servermenu onder **INSTELLINGEN**.
 
-3. Selecteer de replica server waarvoor u de replicatie wilt stoppen.
+3. Selecteer de replicaserver waarvoor u de replicatie wilt stoppen.
 
    ![De replica selecteren](./media/howto-read-replicas-portal/select-replica.png)
  
@@ -106,80 +106,80 @@ Voer de volgende stappen uit om de replicatie tussen een hoofd server en een lee
  
 5. Selecteer **OK** om de replicatie te stoppen.
 
-   ![Bevestigen om replicatie te stoppen](./media/howto-read-replicas-portal/confirm-stop-replication.png)
+   ![Replicatie bevestigen om de replicatie te stoppen](./media/howto-read-replicas-portal/confirm-stop-replication.png)
  
 
-## <a name="delete-a-master-server"></a>Een hoofd-server verwijderen
-Als u een master server wilt verwijderen, gebruikt u dezelfde stappen als voor het verwijderen van een zelfstandige Azure Database for PostgreSQL-server. 
+## <a name="delete-a-master-server"></a>Een hoofdserver verwijderen
+Als u een hoofdserver wilt verwijderen, gebruikt u dezelfde stappen als het verwijderen van een zelfstandige Azure-database voor PostgreSQL-server. 
 
 > [!IMPORTANT]
-> Wanneer u een master-server verwijdert, wordt de replicatie naar alle Lees replica's gestopt. De Lees replica's worden zelfstandige servers die nu zowel lees-als schrijf bewerkingen ondersteunen.
+> Wanneer u een hoofdserver verwijdert, wordt replicatie naar alle gelezen replica's gestopt. De gelezen replica's worden standalone servers die nu ondersteuning voor zowel leest en schrijft.
 
-Voer de volgende stappen uit om een server te verwijderen uit de Azure Portal:
+Voer de volgende stappen uit om een server uit de Azure-portal te verwijderen:
 
-1. Selecteer in de Azure Portal uw Master Azure Database for PostgreSQL-server.
+1. Selecteer in de Azure-portal uw hoofdAzure Database voor PostgreSQL-server.
 
-2. Open de pagina **overzicht** voor de-server. Selecteer **Verwijderen**.
+2. Open de **pagina Overzicht** voor de server. Selecteer **Verwijderen**.
 
-   ![Selecteer op de pagina overzicht van de server om de hoofd server te verwijderen](./media/howto-read-replicas-portal/delete-server.png)
+   ![Selecteer op de pagina serveroverzicht de optie om de hoofdserver te verwijderen](./media/howto-read-replicas-portal/delete-server.png)
  
-3. Voer de naam in van de hoofd server die u wilt verwijderen. Selecteer **verwijderen** om te bevestigen dat de hoofd server moet worden verwijderd.
+3. Voer de naam in van de hoofdserver die u wilt verwijderen. Selecteer **Verwijderen** om verwijdering van de hoofdserver te bevestigen.
 
-   ![Bevestigen dat de hoofd server moet worden verwijderd](./media/howto-read-replicas-portal/confirm-delete.png)
+   ![Bevestigen dat de hoofdserver moet worden verwijderd](./media/howto-read-replicas-portal/confirm-delete.png)
  
 
 ## <a name="delete-a-replica"></a>Een replica verwijderen
-U kunt een lees replica verwijderen die vergelijkbaar is met de manier waarop u een hoofd server verwijdert.
+U een gelezen replica verwijderen die vergelijkbaar is met de manier waarop u een hoofdserver verwijdert.
 
-- Open in de Azure Portal de pagina **overzicht** voor de Lees replica. Selecteer **Verwijderen**.
+- Open in de Azure-portal de pagina **Overzicht** voor de gelezen replica. Selecteer **Verwijderen**.
 
-   ![Selecteer op de pagina overzicht van replica de optie om de replica te verwijderen](./media/howto-read-replicas-portal/delete-replica.png)
+   ![Selecteer op de pagina replicaoverzicht om de replica te verwijderen](./media/howto-read-replicas-portal/delete-replica.png)
  
-U kunt ook de replica lezen uit het venster **replicatie** verwijderen door de volgende stappen uit te voeren:
+U de gelezen replica ook uit het **replicatievenster** verwijderen door de volgende stappen te volgen:
 
-1. Selecteer in de Azure Portal uw Master Azure Database for PostgreSQL-server.
+1. Selecteer in de Azure-portal uw hoofdAzure Database voor PostgreSQL-server.
 
-2. Selecteer in het menu Server onder **instellingen**de optie **replicatie**.
+2. Selecteer **Replicatie**in het servermenu onder **INSTELLINGEN**.
 
-3. Selecteer de replica lezen die u wilt verwijderen.
+3. Selecteer de gelezen replica die u wilt verwijderen.
 
    ![Selecteer de replica die u wilt verwijderen](./media/howto-read-replicas-portal/select-replica.png)
  
-4. Selecteer **replica verwijderen**.
+4. Selecteer **Replica verwijderen**.
 
    ![Replica verwijderen selecteren](./media/howto-read-replicas-portal/select-delete-replica.png)
  
-5. Voer de naam in van de replica die u wilt verwijderen. Selecteer **verwijderen** om te bevestigen dat de replica moet worden verwijderd.
+5. Voer de naam in van de replica die u wilt verwijderen. Selecteer **Verwijderen** om de verwijdering van de replica te bevestigen.
 
-   ![Bevestigen dat de replica moet worden verwijderd](./media/howto-read-replicas-portal/confirm-delete-replica.png)
+   ![Te replica verwijderen](./media/howto-read-replicas-portal/confirm-delete-replica.png)
  
 
-## <a name="monitor-a-replica"></a>Een replica bewaken
-Er zijn twee metrische gegevens beschikbaar om Lees replica's te bewaken.
+## <a name="monitor-a-replica"></a>Een replica controleren
+Er zijn twee statistieken beschikbaar om gelezen replica's te controleren.
 
-### <a name="max-lag-across-replicas-metric"></a>Maximale vertraging voor de metrische gegevens over Replica's
-De **maximale vertraging** voor de metrische gegevens van replica's toont de vertraging in bytes tussen de hoofd server en de meest bewaarde replica. 
+### <a name="max-lag-across-replicas-metric"></a>Maximale vertraging over replica's statistiek
+De statistiek **Max Lag Across Replicas** toont de vertraging in bytes tussen de hoofdserver en de meest achterblijvende replica. 
 
-1.  Selecteer in de Azure Portal de Master Azure Database for PostgreSQL-server.
+1.  Selecteer in de Azure-portal de hoofdAzure Database voor PostgreSQL-server.
 
-2.  Selecteer **Metrische gegevens**. In het venster **metrische gegevens** selecteert u **Max. vertraging in replica's**.
+2.  Selecteer **Metrische gegevens**. Selecteer **in** het venster Statistieken de optie **Max Lag Across Replica's**.
 
-    ![De maximale vertraging voor verschillende replica's bewaken](./media/howto-read-replicas-portal/select-max-lag.png)
+    ![De maximale vertraging tussen replica's bewaken](./media/howto-read-replicas-portal/select-max-lag.png)
  
-3.  Voor uw **aggregatie**selecteert u **Max**.
+3.  Selecteer **Max**voor uw **aggregatie.**
 
 
-### <a name="replica-lag-metric"></a>Metrische gegevens van replica vertraging
-De metriek van de **replica vertraging** toont de tijd sinds de laatste opnieuw geplayte trans actie op een replica. Als er geen trans acties plaatsvinden in uw Master, weerspiegelt de metriek deze tijds periode.
+### <a name="replica-lag-metric"></a>Replica Lag-statistiek
+De statistiek **Replica Lag** toont de tijd sinds de laatst afgespeelde transactie op een replica. Als er geen transacties plaatsvinden op uw master, weerspiegelt de statistiek deze vertraging.
 
-1. Selecteer in de Azure Portal de Azure Database for PostgreSQL replica lezen.
+1. Selecteer in de Azure-portal de Azure Database voor PostgreSQL-leesreplica.
 
-2. Selecteer **Metrische gegevens**. Selecteer **replica vertraging**in het venster **metrische gegevens** .
+2. Selecteer **Metrische gegevens**. Selecteer **Replicalag** in **Replica Lag**het venster Statistieken .
 
-   ![De replica vertraging bewaken](./media/howto-read-replicas-portal/select-replica-lag.png)
+   ![De replicavertraging controleren](./media/howto-read-replicas-portal/select-replica-lag.png)
  
-3. Voor uw **aggregatie**selecteert u **Max**. 
+3. Selecteer **Max**voor uw **aggregatie.** 
  
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het [lezen van replica's in azure database for PostgreSQL](concepts-read-replicas.md).
-* Meer informatie over het [maken en beheren van Lees replica's in azure CLI en rest API](howto-read-replicas-cli.md).
+* Meer informatie over [leesreplica's in Azure Database voor PostgreSQL](concepts-read-replicas.md).
+* Meer informatie over het [maken en beheren van leesreplica's in de Azure CLI- en REST-API.](howto-read-replicas-cli.md)

@@ -1,6 +1,6 @@
 ---
-title: B-serie-Burstable-Azure Virtual Machines
-description: Beschrijft de B-serie van de afbreekbaar Azure VM-grootten.
+title: B-serie burstable - Azure Virtual Machines
+description: Beschrijft de B-serie burstable Azure VM-formaten.
 services: virtual-machines
 author: ayshakeen
 manager: gwallace
@@ -9,33 +9,33 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: ayshak
 ms.openlocfilehash: 5121ef8eb3123d830233e91968c69b331d255bd0
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78161077"
 ---
-# <a name="b-series-burstable-virtual-machine-sizes"></a>Grootte van de B-serie bebreekbaar virtuele machines
+# <a name="b-series-burstable-virtual-machine-sizes"></a>B-serie burstable virtuele machine maten
 
-De virtuele machines uit de B-serie zijn ideaal voor werk belastingen die de volledige prestaties van de CPU niet continu nodig hebben, zoals webservers, het testen van concepten, kleine data bases en ontwikkel bouw omgevingen. Deze werk belastingen hebben doorgaans een burstieve prestatie vereisten. De B-serie biedt u de mogelijkheid om een VM-grootte aan te schaffen met de basislijn prestaties en het VM-exemplaar maakt tegoeden bij gebruik van minder dan de basis lijn. Wanneer de virtuele machine tegoed heeft gecumuleerd, kan de virtuele machine met Maxi maal 100% van de vCPU worden gebonden aan de basis lijn wanneer uw toepassing hogere CPU-prestaties vereist.
+De VM's uit de B-serie zijn ideaal voor workloads die niet continu de volledige prestaties van de CPU nodig hebben, zoals webservers, proof of concepts, kleine databases en ontwikkelbuildomgevingen. Deze workloads hebben doorgaans burstable prestatievereisten. De B-serie biedt u de mogelijkheid om een VM-grootte te kopen met basislijnprestaties en de VM-instantie bouwt credits op wanneer deze minder dan de basislijn gebruikt. Wanneer de VM krediet heeft verzameld, kan de VM boven de basislijn barsten met maximaal 100% van de vCPU wanneer uw toepassing hogere CPU-prestaties vereist.
 
-De B-serie is beschikbaar in de volgende VM-grootten:
+De B-serie is verkrijgbaar in de volgende VM-formaten:
 
-Premium Storage: ondersteund
+Premium opslag: ondersteund
 
 Premium Storage caching: niet ondersteund
 
-Livemigratie: ondersteund
+Live migratie: ondersteund
 
-Updates voor geheugen behoud: ondersteund
+Updates voor geheugenbehoud: ondersteund
 
-| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Basis CPU-prestaties van VM | Maximale CPU-prestaties van VM | Eerste tegoeden | Tegoeden per uur | Maximum aantal gestorte tegoeden | Max. aantal gegevensschijven | Max. door Voer in cache en tijdelijke opslag: IOPS/MBps | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Max. aantal NIC's |
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Cpu-perf van VM baseren | Max CPU Perf van VM | Initiële kredieten | Kredieten banked/uur | Max Banked Credits | Max. aantal gegevensschijven | Doorvoer van maximale opslag in de cache en temp: IOPS/MBps | Maximale schijfdoorvoer zonder cache: IOPS/MBps | Max. aantal NIC's |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Standard_B1ls<sup>1</sup> | 1  | 0.5 | 4   | 5%   | 100%  | 30  | 3   | 72   | 2  | 200/10    | 160/10    | 2  |
-| Standard_B1s              | 1  | 1   | 4   | 6  | 100%  | 30  | 6   | 144  | 2  | 400/10    | 320/10    | 2  |
-| Standard_B1ms             | 1  | 2   | 4   | 20  | 100%  | 30  | 12  | 288  | 2  | 800/10    | 640/10    | 2  |
+| Standard_B1ls<sup>1.</sup> | 1  | 0.5 | 4   | 5%   | 100%  | 30  | 3   | 72   | 2  | 200/10    | 160/10    | 2  |
+| Standard_B1s              | 1  | 1   | 4   | 10%  | 100%  | 30  | 6   | 144  | 2  | 400/10    | 320/10    | 2  |
+| Standard_B1ms             | 1  | 2   | 4   | 20%  | 100%  | 30  | 12  | 288  | 2  | 800/10    | 640/10    | 2  |
 | Standard_B2s              | 2  | 4   | 8   | 40%  | 200%  | 60  | 24  | 576  | 4  | 1600/15   | 1280/15   | 3  |
-| Standard_B2ms             | 2  | 8   | 16  | 60%  | 200%  | 60  | 36  | 864  | 4  | 2400/22.5 | 1\.920-22.5 | 3  |
+| Standard_B2ms             | 2  | 8   | 16  | 60%  | 200%  | 60  | 36  | 864  | 4  | 2400/22.5 | 1920/22.5 | 3  |
 | Standard_B4ms             | 4  | 16  | 32  | 90%  | 400%  | 120 | 54  | 1296 | 8  | 3600/35   | 2880/35   | 4  |
 | Standard_B8ms             | 8  | 32  | 64  | 135% | 800%  | 240 | 81  | 1944 | 16 | 4320/50   | 4320/50   | 4  |
 | Standard_B12ms            | 12 | 48  | 96  | 202% | 1200% | 360 | 121 | 2909 | 16 | 6480/75   | 4320/50   | 6  |
@@ -44,98 +44,98 @@ Updates voor geheugen behoud: ondersteund
 
 <sup>1</sup> B1ls wordt alleen ondersteund op Linux
 
-## <a name="workload-example"></a>Voor beeld workload
+## <a name="workload-example"></a>Voorbeeld van werkbelasting
 
-Overweeg een Office-toepassing voor in-en uitchecken. De toepassing heeft CPU-bursts nodig tijdens kantoor uren, maar er is geen veel reken kracht tijdens de periode. In dit voor beeld vereist de werk belasting een 16vCPU virtuele machine met 64GiB RAM-geheugen om efficiënt te werken.
+Overweeg een office check-in/out applicatie. De applicatie moet CPU uitbarstingen tijdens kantooruren, maar niet veel rekenkracht tijdens off-uren. In dit voorbeeld vereist de werkbelasting een virtuele 16vCPU-machine met 64GiB RAM om efficiënt te werken.
 
-De tabel toont de verkeers gegevens per uur en de grafiek is een visuele representatie van dat verkeer.
+De tabel toont de verkeersgegevens per uur en de grafiek is een visuele weergave van dat verkeer.
 
-B16 kenmerken:
+B16-kenmerken:
 
-Maximale CPU-prestaties: 16vCPU * 100% = 1600%
+Max CPU perf: 16vCPU * 100% = 1600%
 
-Basis lijn: 270%
+Basislijn: 270%
 
-![Grafiek van verkeers gegevens per uur](./media/b-series-burstable/office-workload.png)
+![Grafiek van verkeersgegevens per uur](./media/b-series-burstable/office-workload.png)
 
-| Scenario | Time | CPU-gebruik (%) | Geaccumuleerde tegoeden<sup>1</sup> | Tegoed beschikbaar |
+| Scenario | Time | CPU-gebruik (%) | Credits verzameld<sup>1</sup> | Credits beschikbaar |
 | --- | --- | --- | --- | --- |
-| B16ms-implementatie | Implementatie | Implementatie  | 480 (eerste tegoed) | 480 |
+| B16ms-implementatie | Implementatie | Implementatie  | 480 (eerste credits) | 480 |
 | Geen verkeer | 0:00 | 0 | 162 | 642 |
 | Geen verkeer | 1:00 | 0 | 162 | 804 |
 | Geen verkeer | 2:00 | 0 | 162 | 966 |
 | Geen verkeer | 3:00 | 0 | 162 | 1128 |
 | Geen verkeer | 4:00 | 0 | 162 | 1290 |
 | Geen verkeer | 5:00 | 0 | 162 | 1452 |
-| Laag verkeer | 6:00 | 270 | 0 | 1452 |
-| Werk nemers komen naar Office (app heeft 80% vCPU) | 7:00 | 1280 | -606 | 846 |
-| Werk nemers blijven Office bezoeken (app heeft 80% vCPU) | 8:00 | 1280 | -606 | 240 |
-| Laag verkeer | 9:00 | 270 | 0 | 240 |
-| Laag verkeer | 10:00 | 100 | 102 | 342 |
-| Laag verkeer | 11:00 | 50 | 132 | 474 |
-| Laag verkeer | 12:00 | 100 | 102 | 576 |
-| Laag verkeer | 13:00 | 100 | 102 | 678 |
-| Laag verkeer | 14:00 | 50 | 132 | 810 |
-| Laag verkeer | 15:00 | 100 | 102 | 912 |
-| Laag verkeer | 16:00 | 100 | 102 | 1014 |
-| Uitchecken van werk nemers (app heeft 100% vCPU) | 17:00 | 1600 | -798 | 216 |
-| Laag verkeer | 18:00 | 270 | 0 | 216 |
-| Laag verkeer | 19:00 | 270 | 0 | 216 |
-| Laag verkeer | 20:00 | 50 | 132 | 348 |
-| Laag verkeer | 21:00 | 50 | 132 | 480 |
+| Weinig verkeer | 6:00 | 270 | 0 | 1452 |
+| Medewerkers komen naar kantoor (app heeft 80% vCPU nodig) | 7:00 | 1280 | -606 | 846 |
+| Medewerkers blijven naar kantoor (app heeft 80% vCPU nodig) | 8:00 | 1280 | -606 | 240 |
+| Weinig verkeer | 9:00 | 270 | 0 | 240 |
+| Weinig verkeer | 10:00 | 100 | 102 | 342 |
+| Weinig verkeer | 11:00 | 50 | 132 | 474 |
+| Weinig verkeer | 12:00 | 100 | 102 | 576 |
+| Weinig verkeer | 13:00 | 100 | 102 | 678 |
+| Weinig verkeer | 14:00 | 50 | 132 | 810 |
+| Weinig verkeer | 15:00 | 100 | 102 | 912 |
+| Weinig verkeer | 16:00 | 100 | 102 | 1014 |
+| Medewerkers uitchecken (app heeft 100% vCPU nodig) | 17:00 | 1600 | -798 | 216 |
+| Weinig verkeer | 18:00 | 270 | 0 | 216 |
+| Weinig verkeer | 19:00 | 270 | 0 | 216 |
+| Weinig verkeer | 20:00 | 50 | 132 | 348 |
+| Weinig verkeer | 21:00 | 50 | 132 | 480 |
 | Geen verkeer | 22:00 | 0 | 162 | 642 |
 | Geen verkeer | 23:00 | 0 | 162 | 804 |
 
-<sup>1</sup> credit bedragen/tegoeden die in een uur worden gebruikt, zijn gelijk aan: `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes`.  
+<sup>1</sup> Credits verzameld / credits gebruikt in `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes`een uur is gelijk aan: .  
 
-Voor een D16s_v3 met 16 Vcpu's en 64 GiB geheugen is het uurtarief $0,936 per uur (maandelijks $673,92) en voor B16ms met 16 Vcpu's en 64 GiB geheugen de rente per uur $0,794 (maandelijks $547,86). <b>Dit resulteert in een besparing van 15%.</b>
+Voor een D16s_v3 die 16 vCPU's en 64 GiB van geheugen heeft is het uurtarief $0.936 per uur (maandelijks $673.92) en voor B16ms met 16 vCPU's en 64 Geheugen GiB is het tarief $0.794 per uur (maandelijks $547.86). <b>Dit resulteert in 15% besparing!</b>
 
-## <a name="q--a"></a>Q & A
+## <a name="q--a"></a>Vragen en antwoorden
 
-### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>V: Hoe krijg ik 135% basislijn prestaties van een VM?
+### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>V: Hoe krijg je 135% basisprestaties van een VM?
 
-**A**: de 135% wordt gedeeld met de 8 vCPU die de VM-grootte vormen. Als uw toepassing bijvoorbeeld 4 van de 8 kernen gebruikt die aan batch verwerking werken en elk van deze vier vCPUs wordt uitgevoerd met 30% gebruik, is de totale hoeveelheid VM-CPU-prestaties gelijk aan 120%.  Dit betekent dat uw virtuele machine de tegoed tijd zou bouwen op basis van de 15% Delta van de basislijn prestaties.  Maar dit betekent ook dat wanneer u een tegoed hebt dat op dezelfde virtuele machine 100% van alle 8 vCPU de maximale CPU-prestaties van 800% mag gebruiken.
+**A**: De 135% wordt gedeeld onder de 8 vCPU's die deel uitmaken van de VM-grootte. Als uw toepassing bijvoorbeeld 4 van de 8 cores gebruikt die werken aan batchverwerking en elk van deze 4 vCPU's op 30% gebruik draait, zou de totale hoeveelheid VM-CPU-prestaties 120% bedragen.  Dit betekent dat uw VM krediettijd zou opbouwen op basis van de 15% delta van uw basislijnprestaties.  Maar het betekent ook dat wanneer u credits beschikbaar dat dezelfde VM kan gebruiken 100% van alle 8 vCPU's geven dat VM een Max CPU prestaties van 800%.
 
 
-### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>V: hoe kan ik mijn tegoed en verbruik bewaken
+### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>V: Hoe kan ik mijn kredietsaldo en verbruik controleren
 
-**A**: we introduceren 2 nieuwe metrische gegevens in de komende weken, met de **krediet** metriek kunt u zien hoeveel tegoeden uw VM heeft gebankd en hoe de **ConsumedCredit** -metriek laat zien hoeveel CPU-tegoeden uw VM van de Bank heeft verbruikt.    U kunt deze metrische gegevens bekijken in het deel venster metrische gegevens in de portal of via een programma via de Azure Monitor-Api's.
+**A:** We zullen de komende weken 2 nieuwe statistieken introduceren, met de **creditstatistiek** u zien hoeveel credits uw VM heeft gebanked en de **metriek ConsumedCredit** laat zien hoeveel CPU-credits uw VM van de bank heeft verbruikt.    U deze statistieken bekijken vanuit het deelvenster metrische gegevens in de portal of programmatisch via de Azure Monitor API's.
 
-Voor meer informatie over het verkrijgen van toegang tot de metrische gegevens voor Azure, verwijzen we u naar het [overzicht van metrieken in Microsoft Azure](../azure-monitor/platform/data-platform.md).
+Zie [Overzicht van statistieken in Microsoft Azure](../azure-monitor/platform/data-platform.md)voor meer informatie over hoe u toegang krijgen tot de metrische gegevens voor Azure.
 
-### <a name="q-how-are-credits-accumulated"></a>V: hoe worden de tegoeden geaccumuleerd?
+### <a name="q-how-are-credits-accumulated"></a>V: Hoe worden credits verzameld?
 
-**A**: de accumulatie van de VM en de verbruiks tarieven zijn zodanig ingesteld dat een virtuele machine die op exact het basis prestatie niveau draait, geen netaccumulatie of het verbruik van bursting-tegoeden heeft.  Een virtuele machine heeft een netto toename van de verantwoording als deze wordt uitgevoerd onder het basis prestatie niveau en heeft een net-afname in het tegoed wanneer de virtuele machine de CPU meer dan het basis prestatie niveau gebruikt.
+**A**: De VM-accumulatie- en verbruikspercentages zijn zodanig ingesteld dat een VM die precies op het basisprestatieniveau draait, noch een nettoaccumulatie of verbruik van barstende credits zal hebben.  Een VM zal een netto toename van credits wanneer het draait onder de basis prestatieniveau en zal een netto daling van de credits wanneer de VM is gebruik te maken van de CPU meer dan de basis prestatieniveau.
 
-**Voor beeld**: Ik implementeer een virtuele machine met behulp van de B1ms-grootte voor mijn kleine tijd-en aanwezigheids Database toepassing. Met deze grootte kan mijn toepassing Maxi maal 20% van een vCPU gebruiken als mijn basis lijn. Dit is 0,2 tegoed per minuut die ik kan gebruiken of bank.
+**Voorbeeld:** Ik implementeer een VM met de b1ms-grootte voor mijn kleine tijd- en aanwezigheidsdatabasetoepassing. Deze grootte maakt het mogelijk mijn applicatie te gebruiken tot 20% van een vCPU als mijn baseline, dat is 0,2 credits per minuut kan ik gebruiken of bank.
 
-Mijn toepassing is aan het begin en einde van mijn werkdag, tussen 7:00-9:00 uur en 4:00-6:13:00. Gedurende de andere 20 uur van de dag is mijn toepassing meestal niet actief, maar alleen met 10% van de vCPU. Voor de niet-piek uren kan ik 0,2 tegoed per minuut verdienen, maar alleen 0. l tegoeden per minuut verbruiken, dus mijn VM zal Bank 0,1 x 60 = 6 tegoed per uur.  Voor de 20 uur dat ik buiten de piek ben, Bank 120 tegoed.  
+Mijn sollicitatie is druk aan het begin en einde van mijn werknemers werkdag, tussen 7:00-9:00 en 04:00 - 18:00 uur. Tijdens de andere 20 uur van de dag, mijn applicatie is meestal in actief, alleen met behulp van 10% van de vCPU. Voor de niet-piekuren verdien ik 0,2 credits per minuut, maar verbruik ik slechts 0,l credits per minuut, dus mijn VM zal 0,1 x 60 = 6 credits per uur bankieren.  Voor de 20 uur dat ik buiten de piek ben, zal ik 120 credits bankieren.  
 
-Tijdens piek uren heeft mijn toepassing een gemiddelde van 60% vCPU-gebruik, ik krijg nog steeds 0,2 tegoed per minuut, maar ik gebruik meer dan 0,6 tegoed per minuut, voor een nettokosten van 0,4 Credit van een minuut of 0,4 x 60 = 24 tegoed per uur. Ik heb vier uur per dag voor piek gebruik, dus kosten 4 x 24 = 96 tegoed voor mijn piek gebruik.
+Tijdens piekuren mijn applicatie gemiddeld60% vCPU gebruik, ik verdien nog steeds 0,2 credits per minuut, maar ik verbruiken 0,6 credits per minuut, voor een netto kosten van 0,4 credits per minuut of 0,4 x 60 = 24 credits per uur. Ik heb 4 uur per dag van piek gebruik, dus het kost 4 x 24 = 96 credits voor mijn piek gebruik.
 
-Als ik de 120-tegoeden heb behaald en u de 96 tegoeden aftrekt die ik heb gebruikt voor mijn piek tijden, Bank ik nog eens 24 tegoed per dag aan die ik kan gebruiken voor andere bursts van de activiteit.
+Als ik de 120 credits die ik verdiende off-peak en trek de 96 credits die ik gebruikte voor mijn piektijden, ik bank een extra 24 credits per dag die ik kan gebruiken voor andere uitbarstingen van activiteit.
 
-### <a name="q-how-can-i-calculate-credits-accumulated-and-used"></a>V: hoe kan ik tegoed berekenen dat wordt gecumuleerd en gebruikt?
+### <a name="q-how-can-i-calculate-credits-accumulated-and-used"></a>V: Hoe kan ik geaccumuleerde en gebruikte credits berekenen?
 
-**A**: u kunt de volgende formule gebruiken:
+**A:** U de volgende formule gebruiken:
 
-(Basis CPU-prestaties van de VM-CPU-gebruik)/100 = Credit Bank of gebruik per minuut
+(Base CPU perf vm - CPU-gebruik) / 100 = Credits bank of gebruik per minuut
 
-bijvoorbeeld: in het bovenstaande exemplaar is uw basis lijn 20%. Als u 10% van de CPU gebruikt, wordt er een accumulatie uitgevoerd (20%-10%)/100 = 0,1 tegoed per minuut.
+bijvoorbeeld in bovenstaande instantie is uw basislijn 20% en als u 10% van de CPU gebruikt, verzamelt u zich (20%-10%)/100 = 0,1 krediet per minuut.
 
-### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>V: biedt de B-serie ondersteuning Premium Storage gegevens schijven?
+### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>V: Ondersteunt de B-serie Premium Storage dataschijven?
 
-**A**: Ja, alle grootten van de B-serie ondersteunen Premium Storage gegevens schijven.
+**A:** Ja, alle B-serie formaten ondersteunen Premium Storage dataschijven.
 
-### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>V: Waarom is mijn resterende tegoed ingesteld op 0 na het opnieuw implementeren of stoppen/starten?
+### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>V: Waarom is mijn resterende tegoed ingesteld op 0 na een redeploy of een stop/start?
 
-**A** : wanneer een virtuele machine ' REDPLOYED ' is en de VM naar een ander knoop punt verplaatst, gaat het geaccumuleerde tegoed verloren. Als de virtuele machine is gestopt/gestart, maar blijft op hetzelfde knoop punt, behoudt de VM het geaccumuleerde tegoed. Wanneer de VM wordt vernieuwd op een knoop punt, ontvangt deze een eerste tegoed, voor Standard_B8ms deze 240 minuten is.
+**A:** Wanneer een VM "REDPLOYED" is en de VM naar een ander knooppunt wordt verplaatst, gaat het geaccumuleerde tegoed verloren. Als de vm wordt gestopt/gestart, maar op hetzelfde knooppunt blijft, behoudt de VM het geaccumuleerde tegoed. Wanneer de VM begint vers op een knooppunt, krijgt het een eerste krediet, voor Standard_B8ms het is 240 minuten.
 
-### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>V: wat gebeurt er als ik een niet-ondersteunde installatie kopie van het besturings systeem Implementeer op B1ls?
+### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>V: Wat gebeurt er als ik een niet-ondersteunde OS-afbeelding op B1ls implementeer?
 
-**A** : B1ls biedt alleen ondersteuning voor Linux-installatie kopieën en als u een andere installatie kopie van het besturings systeem implementeert, is het mogelijk dat u niet de beste klant ervaring krijgt.
+**A** : B1ls ondersteunt alleen Linux-afbeeldingen en als u een andere OS-afbeelding implementeert, krijgt u mogelijk niet de beste klantervaring.
 
-## <a name="other-sizes"></a>Andere grootten
+## <a name="other-sizes"></a>Andere maten
 
 - [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerde rekenkracht](sizes-compute.md)
@@ -146,4 +146,4 @@ bijvoorbeeld: in het bovenstaande exemplaar is uw basis lijn 20%. Als u 10% van 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.
+Meer informatie over hoe [Azure compute units (ACU)](acu.md) u kunnen helpen bij het vergelijken van rekenprestaties in Azure SKU's.

@@ -1,127 +1,127 @@
 ---
 title: Azure Backup-rapporten configureren
-description: Rapporten voor Azure Backup configureren en weer geven met behulp van Log Analytics en Azure-werkmappen
+description: Rapporten voor Azure Backup configureren en weergeven met behulp van Logboekanalyses en Azure-werkmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: 651d1383f0f292895ed95c91bafd5206d4f04c2c
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78161198"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren
 
-Een veelvoorkomende vereiste voor back-upbeheerders is het verkrijgen van inzichten op back-ups, op basis van gegevens die een lange periode lang zijn. Er kunnen meerdere use cases zijn voor een dergelijke oplossing: toewijzing en prognose van het verbruik van Cloud opslag, het controleren van back-ups en herstel bewerkingen en het identificeren van de belangrijkste trends op verschillende niveaus.
+Een veelvoorkomende vereiste voor back-upbeheerders is het verkrijgen van inzichten over back-ups, op basis van gegevens die een lange periode beslaat. Er kunnen meerdere use cases zijn voor een dergelijke oplossing: het toewijzen en voorspellen van verbruikte cloudopslag, het controleren van back-ups en herstel, en het identificeren van belangrijke trends op verschillende granulaire niveaus.
 
-Vandaag biedt Azure Backup een rapportage oplossing die gebruikmaakt van [Azure monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) en [Azure-werkmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks), zodat u uw back-ups op uw hele back-up kunt maken. In dit artikel wordt uitgelegd hoe u back-uprapporten kunt configureren en weer geven.
+Vandaag biedt Azure Backup een rapportageoplossing die gebruikmaakt van [Azure Monitor Logs](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) en Azure [Workbooks,](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)zodat u uitgebreide inzichten krijgt over uw back-ups in uw hele back-updomein. In dit artikel wordt uitgelegd hoe u back-uprapporten configureert en bekijkt.
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
-* Back-uprapporten worden ondersteund voor virtuele Azure-machines, SQL in azure vm's, SAP HANA-ASE in azure Vm's, Azure Backup Agent (MARS), Azure Backup Server (MABS) en System Center DPM.
-* Voor DPM-workloads worden back-uprapporten ondersteund voor de DPM-versie 5.1.363.0 en hoger en de agent versie 2.0.9127.0 en hoger.
-* Voor MABS-workloads worden back-uprapporten ondersteund voor de MABS-versie 13.0.415.0 en hoger en de agent versie 2.0.9170.0 en hoger.
-* Back-uprapporten kunnen worden weer gegeven in alle back-upitems, kluizen, abonnementen en regio's, zolang hun gegevens worden verzonden naar een Log Analytics (LA)-werk ruimte waartoe de gebruiker toegang heeft. 
-* Als u een [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) -gebruiker bent met gedelegeerde toegang tot de abonnementen van uw klanten, kunt u deze rapporten gebruiken met Azure Lighthouse om rapporten weer te geven over al uw tenants.
-* Gegevens voor logboek back-uptaken worden momenteel niet weer gegeven in de rapporten.
+* Back-uprapporten worden ondersteund voor Azure VM's, SQL in Azure VM's, SAP HANA/ASE in Azure VM's, Azure Backup Agent (MARS), Azure Backup Server (MABS) en System Center DPM.
+* Voor DPM-workloads worden back-uprapporten ondersteund voor DPM-versie 5.1.363.0 en hoger en Agent Versie 2.0.9127.0 en hoger.
+* Voor MABS-workloads worden back-uprapporten ondersteund voor MABS-versie 13.0.415.0 en hoger en Agent Versie 2.0.9170.0 en hoger.
+* Back-uprapporten kunnen worden bekeken in alle back-upitems, kluizen, abonnementen en regio's, zolang hun gegevens worden verzonden naar een LA-werkruimte (Log Analytics) waartoe de gebruiker toegang heeft. 
+* Als u een [Azure Lighthouse-gebruiker](https://docs.microsoft.com/azure/lighthouse/) bent met gedelegeerde toegang tot de abonnementen van uw klanten, u deze rapporten met Azure Lighthouse gebruiken om rapporten voor al uw tenants weer te geven.
+* Gegevens voor logboekback-uptaken worden momenteel niet weergegeven in de rapporten.
 
 ## <a name="getting-started"></a>Aan de slag
 
-Volg de drie stappen die hieronder worden beschreven om aan de slag te gaan met het gebruik van de rapporten:
+Volg de drie onderstaande stappen om aan de slag te gaan met het gebruik van de rapporten:
 
-1. **Een Log Analytics (LA)-werk ruimte maken (of een bestaande gebruiken):**
+1. **Een LA-werkruimte (Log Analytics) maken (of een bestaande werkruimte gebruiken):**
 
-U moet een of meer LA-werk ruimten instellen om de gegevens van uw back-uprapport op te slaan. De locatie en het abonnement waar deze LA-werk ruimte kan worden gemaakt, zijn onafhankelijk van de locatie en het abonnement waar uw kluizen zich bevinden. 
+U moet een of meer LA Workspaces instellen om uw back-uprapportagegegevens op te slaan. De locatie en het abonnement waar deze LA-werkruimte kan worden gemaakt, is onafhankelijk van de locatie en het abonnement waar uw kluizen bestaan. 
 
-Raadpleeg het volgende artikel: [een log Analytics-werk ruimte maken in de Azure Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) om een werk ruimte van La in te stellen.
+Raadpleeg het volgende artikel: [Een Logboekanalysewerkruimte maken in de Azure-portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) om een LA Workspace in te stellen.
 
-De gegevens in een werk ruimte van LA worden standaard 30 dagen bewaard. Als u gegevens wilt weer geven voor een langere periode, wijzigt u de Bewaar periode van de werk ruimte LA. Als u de retentie periode wilt wijzigen, raadpleegt u het volgende artikel: [gebruik en kosten beheren met Azure monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage).
+Standaard worden de gegevens in een LA Workspace 30 dagen bewaard. Als u gegevens voor een langere tijdshorizon wilt bekijken, wijzigt u de bewaarperiode van de LA Workspace. Als u de bewaarperiode wilt wijzigen, raadpleegt u het volgende artikel: [Gebruik en kosten beheren met Azure Monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage).
 
 2. **Diagnostische instellingen voor uw kluizen configureren:**
 
-Azure Resource Manager resources, zoals Recovery Services kluizen, registreert u informatie over geplande bewerkingen en door de gebruiker geactiveerde bewerkingen als diagnostische gegevens. 
+Azure Resource Manager-bronnen, zoals vaults van Recovery Services, registreren informatie over geplande bewerkingen en door gebruikers geactiveerde bewerkingen als diagnostische gegevens. 
 
-Selecteer in de sectie bewaking van uw Recovery Services kluis **Diagnostische instellingen** en geef het doel op voor de diagnostische gegevens van de Recovery Services kluis. Meer [informatie over het gebruik van diagnostische gebeurtenissen](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events).
+Selecteer **diagnostische instellingen** in het controlegedeelte van uw vault Recovery Services en geef het doel op voor de diagnostische gegevens van de vault Recovery Services. [Meer informatie over het gebruik van diagnostische gebeurtenissen](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events).
 
-![Blade instellingen voor diagnostische gegevens](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
+![Blade diagnostische instellingen](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-Azure Backup biedt ook een ingebouwde Azure Policy, waarmee de configuratie van diagnostische instellingen voor alle kluizen in een bepaald bereik wordt geautomatiseerd. Raadpleeg het volgende artikel voor meer informatie over het gebruik van dit beleid: [instellingen voor diagnostische gegevens van de kluis op schaal configureren](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
-
-> [!NOTE]
-> Zodra u de diagnostische gegevens hebt geconfigureerd, kan het tot 24 uur duren voordat de eerste push-bewerking is voltooid. Wanneer de gegevens worden gestart in de werk ruimte van de LA, is het mogelijk dat u de gegevens in de rapporten niet onmiddellijk kunt zien, omdat de gegevens voor de huidige gedeeltelijke dag niet worden weer gegeven in de rapporten ( [meer informatie hierover](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports)). Daarom is het raadzaam om de rapporten 2 dagen na het configureren van uw kluizen te bekijken om gegevens naar Log Analytics te verzenden.
-
-3. **Rapporten weer geven op de Azure Portal:**
-
-Wanneer u uw kluizen zo hebt geconfigureerd dat gegevens naar LA worden verzonden, kunt u de back-uprapporten bekijken door te navigeren naar de Blade van de kluis en te klikken op het menu **-item back-uprapporten** . 
-
-![Kluis dashboard](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
-
-Als u op deze koppeling klikt, wordt de werkmap van het back-uprapport geopend.
+Azure Backup biedt ook een ingebouwd Azure-beleid, dat de configuratie van diagnostische instellingen automatiseert voor alle kluizen in een bepaald bereik. Raadpleeg het volgende artikel voor meer informatie over het gebruik van dit beleid: [Vault Diagnostics Settings op schaal configureren](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
 > [!NOTE]
-> * De aanvankelijke belasting van het rapport kan tot wel 1 minuut duren.
-> * De Recovery Services kluis is slechts een ingangs punt voor back-uprapporten. Zodra de werkmap met back-uprapporten wordt geopend vanaf de Blade van een kluis, ziet u de gegevens die zijn geaggregeerd in al uw kluizen (door de juiste set LA-werk ruimten te selecteren).
+> Zodra u diagnoses configureert, kan het tot 24 uur duren voordat de eerste gegevenspush is voltooid. Zodra de gegevens naar de LA Workspace stromen, u mogelijk niet onmiddellijk gegevens in de rapporten zien, omdat gegevens voor de huidige gedeeltelijke dag niet worden weergegeven in de rapporten (meer details [hier).](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports) Daarom is het raadzaam om de rapporten 2 dagen nadat u uw kluizen configureert om gegevens naar Log Analytics te verzenden, te bekijken.
 
-Hieronder ziet u een beschrijving van de verschillende tabbladen die het rapport bevat:
+3. **Rapporten weergeven op de Azure-portal:**
 
-* **Samen vatting** : op het tabblad samen vatting vindt u een overzicht van uw back-ups op hoog niveau. Op het tabblad samen vatting ziet u een kort overzicht van het totale aantal back-upitems, het totale verbruik van de Cloud opslag, het aantal beveiligde instanties en het succes percentage van de taak per type werk belasting. Voor meer informatie over een specifiek type back-upartefact gaat u naar de desbetreffende tabbladen.
+Zodra u uw kluizen hebt geconfigureerd om gegevens naar LA te verzenden, bekijkt u uw back-uprapporten door naar het blad van een kluis te navigeren en te klikken op het **menu-item Back-uprapporten.** 
 
-![Tabblad samen vatting](./media/backup-azure-configure-backup-reports/summary.png)
+![Vault-dashboard](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
 
-* **Back-** upitems: op het tabblad Back-upitems kunt u informatie en trends bekijken over Cloud opslag die wordt verbruikt op het niveau van een back-upartikel. Als u bijvoorbeeld SQL in azure VM Backup gebruikt, ziet u dat de gebruikte Cloud opslag voor elke SQL database een back-up wordt gemaakt. U kunt er ook voor kiezen om gegevens te bekijken voor back-upitems van een bepaalde beveiligings status. Als u bijvoorbeeld op de tegel **beveiliging gestopt** klikt boven aan het tabblad, worden alle onderstaande widgets gefilterd om alleen gegevens weer te geven voor back-upitems met de status gestopt voor beveiliging.
+Als u op deze koppeling klikt, wordt de werkmap voor back-uprapport geopend.
+
+> [!NOTE]
+> * Momenteel kan de eerste belasting van het rapport tot 1 minuut duren.
+> * De kluis Recovery Services is slechts een toegangspunt voor back-uprapporten. Zodra de werkmap Back-uprapporten wordt geopend vanaf het blad van een kluis, u gegevens zien die zijn samengevoegd in al uw kluizen (door de juiste set LA-werkruimten te selecteren).
+
+Hieronder vindt u een beschrijving van de verschillende tabbladen die het rapport bevat:
+
+* **Samenvatting** - Het tabblad Overzicht biedt een overzicht op hoog niveau van uw back-updomein. Onder het tabblad Overzicht u een snelle blik werpen op het totale aantal back-upitems, de totale verbruikte cloudopslag, het aantal beveiligde exemplaren en het slagingspercentage per werkbelastingtype. Ga naar de desbetreffende tabbladen voor meer gedetailleerde informatie over een specifiek type back-upartefact.
+
+![Tabblad Samenvatting](./media/backup-azure-configure-backup-reports/summary.png)
+
+* **Back-upitems** : met het tabblad Back-upitems u informatie en trends zien over cloudopslag die wordt verbruikt op back-upitemniveau. Als u bijvoorbeeld SQL gebruikt in Azure VM-back-ups, u zien dat er een back-up wordt gemaakt van de cloudopslag die wordt gebruikt voor elke SQL-database. U er ook voor kiezen om gegevens te zien voor back-upitems met een bepaalde beveiligingsstatus. Als u bijvoorbeeld boven aan het tabblad op de tegel **Beveiliging gestopt** klikt, filtert u alle onderstaande widgets om alleen gegevens weer te geven voor Back-upitems in de status Gestopt e-mailbeveiliging.
 
 ![Tabblad Back-upitems](./media/backup-azure-configure-backup-reports/backup-items.png)
 
-* **Gebruik** : het tabblad gebruik helpt u bij het weer geven van de para meters voor de sleutel facturering voor uw back-ups. De informatie die op dit tabblad wordt weer gegeven, bevindt zich op het niveau van een facturerings entiteit (beveiligde container). Als er bijvoorbeeld een back-up van een DPM-server wordt gemaakt naar Azure, kunt u de trend van beveiligde exemplaren en Cloud opslag die is verbruikt voor de DPM-server weer geven. Op dezelfde manier kunt u, als u SQL gebruikt in Azure Backup of SAP HANA in Azure Backup, op dit tabblad informatie over het gebruik weer geven op het niveau van de virtuele machine waarop deze data bases zijn opgenomen.
+* **Gebruik** : op het tabblad Gebruik u de belangrijkste factureringsparameters voor uw back-ups weergeven. De informatie op dit tabblad bevindt zich op een niveau van factureringsentiteit (beveiligde container). Als er bijvoorbeeld een back-up van een DPM-server wordt gemaakt naar Azure, u de trend van beveiligde exemplaren en cloudopslag die voor de DPM-server wordt verbruikt, bekijken. Als u SQL gebruikt in Azure Backup of SAP HANA in Azure Backup, geeft dit tabblad u gebruiksgerelateerde informatie op het niveau van de virtuele machine waarin deze databases zich bevinden.
 
-![Tabblad gebruik](./media/backup-azure-configure-backup-reports/usage.png)
+![Tabblad Gebruik](./media/backup-azure-configure-backup-reports/usage.png)
 
-* **Taken** : met het tabblad taken kunt u langlopende trends op taken weer geven, zoals het aantal mislukte taken per dag en de belangrijkste oorzaken van een mislukte taak. U kunt deze informatie op zowel een totaal niveau als een niveau van een back-upitem weer geven. Als u op een bepaald back-upitem in een raster klikt, kunt u gedetailleerde informatie over elke taak weer geven die is geactiveerd op het back-upitem in het geselecteerde tijds bereik.
+* **Taken** : met het tabblad Vacatures u langlopende trends op taken weergeven, zoals het aantal mislukte taken per dag en de belangrijkste oorzaken van taakuitval. U deze informatie zowel op geaggregeerd niveau als op back-upitemniveau bekijken. Als u op een bepaald back-upitem in een raster klikt, u gedetailleerde informatie weergeven over elke taak die is geactiveerd op dat back-upitem in het geselecteerde tijdsbereik.
 
-![Tabblad Taken](./media/backup-azure-configure-backup-reports/jobs.png)
+![Tabblad Vacatures](./media/backup-azure-configure-backup-reports/jobs.png)
 
-* **Beleid** : met het tabblad beleid kunt u informatie weer geven over al uw actieve beleids regels, zoals het aantal gekoppelde items en de totale Cloud opslag die wordt gebruikt door items waarvan een back-up is gemaakt onder een bepaald beleid. Als u op een bepaald beleid klikt, kunt u informatie weer geven over elk van de bijbehorende back-upitems.
+* **Beleid** : op het tabblad Beleid u informatie weergeven over al uw actieve beleidsregels, zoals het aantal gekoppelde items en de totale cloudopslag die wordt verbruikt door items waarvan een back-up is gemaakt onder een bepaald beleid. Als u op een bepaald beleid klikt, u informatie weergeven over elk van de bijbehorende back-upitems.
 
-![Tabblad beleid](./media/backup-azure-configure-backup-reports/policies.png)
+![Tabblad Beleid](./media/backup-azure-configure-backup-reports/policies.png)
 
 ## <a name="exporting-to-excel"></a>Exporteren naar Excel
 
-Als u op de pijl-omlaag in de rechter bovenhoek van een wille keurige widget (tabel/grafiek) klikt, wordt de inhoud van die widget geëxporteerd als een Excel-werk blad, net als bij bestaande filters die zijn toegepast. Als u meer rijen van een tabel wilt exporteren naar Excel, kunt u het aantal rijen dat wordt weer gegeven op de pagina verhogen met behulp van de vervolg keuzelijst **rijen per pagina** boven aan elk raster.
+Als u klikt op de pijl-omlaag rechtsboven in een widget (tabel/grafiek) wordt de inhoud van die widget geëxporteerd als een Excel-blad, zoals deze is toegepast met bestaande filters. Als u meer rijen van een tabel naar Excel wilt exporteren, u het aantal rijen op de pagina verhogen met de vervolgkeuzelijst **Rijen per pagina** boven aan elk raster.
 
-## <a name="pinning-to-dashboard"></a>Vastmaken aan dash board
+## <a name="pinning-to-dashboard"></a>Vastmaken aan dashboard
 
-Klik op het speld pictogram boven aan elke widget om de widget aan uw Azure Portal dash board vast te maken. Dit helpt u bij het maken van aangepaste Dash boards die zijn aangepast om de belangrijkste informatie die u nodig hebt, weer te geven.
+Klik op het pictogram Vastmaken boven aan elke widget om de widget vast te maken aan uw Azure-portaldashboard. Zo u aangepaste dashboards maken die zijn afgestemd op de belangrijkste informatie die u nodig hebt.
 
-## <a name="cross-tenant-reports"></a>Rapporten over meerdere tenants
+## <a name="cross-tenant-reports"></a>Rapporten met meerdere huurders
 
-Als u een [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) -gebruiker bent met gedelegeerde toegang tot abonnementen in meerdere Tenant omgevingen, kunt u het standaard abonnements filter gebruiken (door te klikken op het filter pictogram in de rechter bovenhoek van de Azure Portal) om alle abonnementen te kiezen waarvoor u gegevens wilt weer geven. Als u dit doet, kunt u LA-werk ruimten in uw tenants selecteren om multi-tenant rapporten weer te geven.
+Als u een [Azure Lighthouse-gebruiker](https://docs.microsoft.com/azure/lighthouse/) bent met gedelegeerde toegang tot abonnementen in meerdere tenantomgevingen, u het standaardabonnementsfilter gebruiken (door op het filterpictogram rechtsboven in de Azure-portal te klikken) om alle abonnementen te kiezen waarvoor u gegevens wilt zien. Als u dit doet, u LA Workspaces voor uw huurders selecteren om rapporten met meerdere tenants te bekijken.
 
-## <a name="conventions-used-in-backup-reports"></a>Conventies die in back-uprapporten worden gebruikt
+## <a name="conventions-used-in-backup-reports"></a>Conventies die worden gebruikt in back-uprapporten
 
-* Filters werken van links naar rechts en van boven naar beneden op elk tabblad, dat wil zeggen dat alle filters alleen van toepassing zijn op alle widgets die aan de rechter kant van het filter of onder dat filter worden geplaatst. 
-* Als u op een gekleurde tegel klikt, worden de widgets onder de tegel gefilterd op records die betrekking hebben op de waarde van die tegel. Als u bijvoorbeeld op de tegel *beveiliging gestopt* klikt op het tabblad Back-upitems, worden de rasters en de onderstaande grafieken gefilterd om gegevens weer te geven voor back-upitems in de status ' beveiliging gestopt '.
-* Tegels die niet zijn gekleurd, kunnen niet worden geklikt.
-* Gegevens voor het huidige dagdeel worden niet weergegeven in de rapporten. Als de geselecteerde waarde van het **tijds bereik** bijvoorbeeld de ***laatste 7 dagen***is, worden in het rapport records weer gegeven voor de afgelopen 7 voltooide dagen (die de huidige dag niet bevat).
-* Het rapport bevat details van taken (naast logboek taken) die zijn **geactiveerd** in het geselecteerde tijds bereik. 
-* De waarden die worden weer gegeven voor Cloud opslag en beveiligde instanties, bevinden zich aan het **einde** van het geselecteerde tijds bereik.
-* De back-upitems die in de rapporten worden weer gegeven, zijn de items die aan het **einde** van het geselecteerde tijds bereik bestaan. Back-upitems die in het midden van het geselecteerde tijds bereik zijn verwijderd, worden niet weer gegeven. Dezelfde Conventie geldt ook voor back-upbeleid.
+* Filters werken van links naar rechts en van boven naar beneden op elk tabblad, dat wil zeggen, elk filter is alleen van toepassing op al die widgets die zijn gepositioneerd, hetzij aan de rechterkant van dat filter of onder dat filter. 
+* Als u op een gekleurde tegel klikt, worden de widgets onder de tegel gefilterd voor records met betrekking tot de waarde van die tegel. Als u bijvoorbeeld op de tegel *Beveiliging gestopt* klikt op het tabblad Back-upitems, worden de rasters en grafieken hieronder gefilterd om gegevens weer te geven voor back-upitems in de status 'Gestopt voor beveiliging'.
+* Tegels die niet gekleurd zijn, zijn niet klikbaar.
+* Gegevens voor het huidige dagdeel worden niet weergegeven in de rapporten. Wanneer de geselecteerde waarde van **Tijdbereik** dus, ***Laatste 7 dagen,*** wordt in het rapport records weergegeven voor de laatste 7 voltooide dagen (exclusief de huidige dag).
+* Het rapport bevat details van taken (met uitzondering van logboektaken) die zijn **geactiveerd** in het geselecteerde tijdsbereik. 
+* De waarden die worden weergegeven voor cloudopslag en beveiligde exemplaren, bevinden zich aan het **einde** van het geselecteerde tijdsbereik.
+* De back-upitems die in de rapporten worden weergegeven, zijn de items die aan het **einde** van het geselecteerde tijdsbereik bestaan. Back-upitems die in het midden van het geselecteerde tijdsbereik zijn verwijderd, worden niet weergegeven. Dezelfde conventie geldt ook voor back-upbeleid.
 
-## <a name="query-load-times"></a>Laad tijden query
+## <a name="query-load-times"></a>Laadtijden van query's
 
-De widgets in het back-uprapport worden aangedreven door Kusto-query's, die worden uitgevoerd op de LA-werk ruimten van de gebruiker. Aangezien deze query's doorgaans de verwerking van grote hoeveel heden gegevens omvatten, met meerdere samen voegingen om uitgebreid inzicht mogelijk te maken, kunnen de widgets niet direct worden geladen wanneer de gebruiker rapporten weergeeft over een grote back-up. De onderstaande tabel bevat een ruwe schatting van de tijd die verschillende widgets kunnen laden, op basis van het aantal back-upitems en het tijds bereik waarvoor het rapport wordt weer gegeven:
+De widgets in het back-uprapport worden aangedreven door Kusto-query's, die worden uitgevoerd op de LA Workspaces van de gebruiker. Aangezien deze query's meestal betrekking hebben op de verwerking van grote hoeveelheden gegevens, met meerdere joins om rijkere inzichten mogelijk te maken, kunnen de widgets niet onmiddellijk laden wanneer de gebruiker rapporten bekijkt over een grote back-updomein. De onderstaande tabel geeft een ruwe schatting van de tijd die verschillende widgets kunnen nemen om te laden, op basis van het aantal back-upitems en het tijdsbereik waarvoor het rapport wordt bekeken:
 
-| **Aantal gegevens bronnen**                         | **Tijd horizon** | **Laad tijden (ong.)**                                              |
+| **# Gegevensbronnen**                         | **Tijdshorizon** | **Laadtijden (ca.)**                                              |
 | --------------------------------- | ------------- | ------------------------------------------------------------ |
-| ~ 5 K                       | 1 maand          | Tegels: 5-10 seconden <br> Rasters: 5-10 seconden <br> Grafieken: 5-10 seconden <br> Filters op rapport niveau: 5-10 seconden|
-| ~ 5 K                       | 3 maanden          | Tegels: 5-10 seconden <br> Rasters: 5-10 seconden <br> Grafieken: 5-10 seconden <br> Filters op rapport niveau: 5-10 seconden|
-| ~ 10 K                       | 3 maanden          | Tegels: 15-20 seconden <br> Rasters: 15-20 seconden <br> Grafieken: 1-2 minuten <br> Filters op rapport niveau: 25-30 seconden|
-| ~ 15 K                       | 1 maand          | Tegels: 15-20 seconden <br> Rasters: 15-20 seconden <br> Grafieken: 50-60 seconden <br> Filters op rapport niveau: 20-25 seconden|
-| ~ 15 K                       | 3 maanden          | Tegels: 20-30 seconden <br> Rasters: 20-30 seconden <br> Grafieken: 2-3 minuten <br> Filters op rapport niveau: 50-60 seconden |
+| ~5 K                       | 1 maand          | Tegels: 5-10 seconden <br> Roosters: 5-10 seconden <br> Grafieken: 5-10 seconden <br> Filters op rapportniveau: 5-10 seconden|
+| ~5 K                       | 3 maanden          | Tegels: 5-10 seconden <br> Roosters: 5-10 seconden <br> Grafieken: 5-10 seconden <br> Filters op rapportniveau: 5-10 seconden|
+| ~10 K                       | 3 maanden          | Tegels: 15-20 seconden <br> Roosters: 15-20 seconden <br> Grafieken: 1-2 minuten <br> Filters op rapportniveau: 25-30 seconden|
+| ~15 K                       | 1 maand          | Tegels: 15-20 seconden <br> Roosters: 15-20 seconden <br> Grafieken: 50-60 seconden <br> Filters op rapportniveau: 20-25 seconden|
+| ~15 K                       | 3 maanden          | Tegels: 20-30 seconden <br> Roosters: 20-30 seconden <br> Grafieken: 2-3 minuten <br> Filters op rapportniveau: 50-60 seconden |
 
 ## <a name="what-happened-to-the-power-bi-reports"></a>Wat is er gebeurd met de Power BI-rapporten?
-* Onze eerder Power BI sjabloon-app voor rapportage (waarvan de bron gegevens van een Azure Storage account) zich op een afschaffing-pad bevindt. Het wordt aanbevolen om te beginnen met het verzenden van diagnostische gegevens van de kluis naar Log Analytics, zoals hierboven wordt beschreven, om rapporten weer te geven.
+* Onze eerdere Power BI-sjabloon-app voor rapportage (die gegevens uit een Azure Storage-account heeft gehaald) bevindt zich op een afschrijvingspad. Het wordt aanbevolen om te beginnen met het verzenden van diagnostische vaultgegevens naar Log Analytics zoals hierboven beschreven, om rapporten te bekijken.
 
-* Daarnaast bevindt het v1-schema voor het verzenden van diagnostische gegevens naar een opslag account of een LA-werk ruimte zich ook op een afschaffing pad. Dit betekent dat als u aangepaste query's of Automatiseringen hebt geschreven op basis van het v1-schema, u wordt geadviseerd om deze query's bij te werken om het momenteel ondersteunde v2-schema te gebruiken.
+* Daarnaast bevindt het V1-schema voor het verzenden van diagnostische gegevens naar een opslagaccount of een LA Workspace zich ook op een afschrijvingspad. Dit betekent dat als u aangepaste query's of automatiseringen hebt geschreven op basis van het V1-schema, u wordt geadviseerd deze query's bij te werken om het momenteel ondersteunde V2-schema te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over bewaking en rapportage met Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-monitor-alert-faq)
+[Meer informatie over monitoring en rapportage met Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-monitor-alert-faq)

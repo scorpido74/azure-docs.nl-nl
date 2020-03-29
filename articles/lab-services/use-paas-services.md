@@ -1,6 +1,6 @@
 ---
-title: PaaS-Services (platform-as-a-Service) gebruiken in Azure DevTest Labs
-description: Meer informatie over het gebruik van platform-as-a-Service-(Pass) services in Azure DevTest Labs.
+title: PaaS-services (Platform-as-a-Service) gebruiken in Azure DevTest Labs
+description: Meer informatie over het gebruik van Platform-as-a-Service (Pass)-services in Azure DevTest Labs.
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,79 +13,79 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 88bbf921fedae4bcdba2b6386ce6e08105206cd2
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169195"
 ---
-# <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>PaaS-Services (platform-as-a-Service) gebruiken in Azure DevTest Labs
-PaaS wordt ondersteund in DevTest Labs via de omgevings functie. Omgevingen in DevTest Labs worden ondersteund door vooraf geconfigureerde Azure Resource Manager sjablonen in een Git-opslag plaats. Omgevingen kunnen zowel PaaS-als IaaS-resources bevatten. Ze bieden u de mogelijkheid om complexe systemen te maken die Azure-resources zoals virtuele machines, data bases, virtuele netwerken en web-apps kunnen bevatten, die zijn aangepast om samen te werken. Deze sjablonen bieden een consistente implementatie en een verbeterd beheer van omgevingen met broncode beheer. 
+# <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>PaaS-services (Platform-as-a-Service) gebruiken in Azure DevTest Labs
+PaaS wordt ondersteund in DevTest Labs via de omgevingen functie. Omgevingen in DevTest Labs worden ondersteund door vooraf geconfigureerde Azure Resource Manager-sjablonen in een Git-repository. Omgevingen kunnen zowel PaaS- als IaaS-bronnen bevatten. Hiermee u complexe systemen maken die Azure-bronnen kunnen bevatten, zoals virtuele machines, databases, virtuele netwerken en web-apps, die zijn aangepast om samen te werken. Deze sjablonen maken een consistente implementatie en een verbeterd beheer van omgevingen mogelijk met behulp van broncodebeheer. 
 
-Een correct ingesteld systeem biedt de volgende scenario's: 
+Een goed ingesteld systeem maakt de volgende scenario's mogelijk: 
 
-- Ontwikkel aars die onafhankelijke en meerdere omgevingen hebben
+- Ontwikkelaars hebben onafhankelijke en meerdere omgevingen
 - Asynchroon testen op verschillende configuraties
-- Integratie in faserings-en productie pijplijnen zonder sjabloon wijzigingen
-- Als zowel ontwikkel machines als omgevingen binnen hetzelfde lab worden ontwikkeld, wordt het gemak voor beheer en kosten rapportage verbeterd.  
+- Integratie in faserings- en productiepijplijnen zonder sjabloonwijzigingen
+- Het hebben van zowel ontwikkelmachines als omgevingen in hetzelfde lab verbetert het gemak van beheer en kostenrapportage.  
 
-De resource provider DevTest Labs maakt bronnen voor de gebruikers van de test omgeving, zodat er geen extra machtigingen aan de test gebruiker moeten worden gegeven om het gebruik van de PaaS-resources in te scha kelen. In de volgende afbeelding ziet u een Service Fabric cluster als een omgeving in het lab.
+De DevTest Labs resource provider maakt resources namens de labgebruiker, dus er hoeven geen extra machtigingen te worden gegeven aan de labgebruiker om het gebruik van de PaaS-bronnen mogelijk te maken. De volgende afbeelding toont een cluster servicestructuur als een omgeving in het lab.
 
-![Service Fabric cluster als een omgeving](./media/create-environment-service-fabric-cluster/cluster-created.png)
+![Cluster van servicefabric als omgeving](./media/create-environment-service-fabric-cluster/cluster-created.png)
 
-Zie voor meer informatie over het instellen van omgevingen [multi-VM-omgevingen en Paas-resources maken met Azure Resource Manager sjablonen](devtest-lab-create-environment-from-arm.md). DevTest Labs heeft een open bare opslag plaats van Azure Resource Manager sjablonen die u kunt gebruiken om omgevingen te maken zonder dat u zelf een externe GitHub-bron hoeft te maken. Zie [open bare omgevingen configureren en gebruiken in azure DevTest Labs](devtest-lab-configure-use-public-environments.md)voor meer informatie over open bare omgevingen.
+Zie [MultiVM-omgevingen en PaaS-resources maken met Azure Resource Manager-sjablonen](devtest-lab-create-environment-from-arm.md)voor meer informatie over het instellen van omgevingen. DevTest Labs heeft een openbare opslagplaats van Azure Resource Manager-sjablonen die u gebruiken om omgevingen te maken zonder zelf verbinding te hoeven maken met een externe GitHub-bron. Zie [Openbare omgevingen configureren en gebruiken in Azure DevTest Labs](devtest-lab-configure-use-public-environments.md)voor meer informatie over openbare omgevingen.
 
-In grote organisaties bieden ontwikkel teams doorgaans omgevingen zoals aangepaste/geïsoleerde test omgevingen. Er zijn mogelijk omgevingen die door alle teams in een bedrijfs eenheid of een divisie moeten worden gebruikt. De IT-groep wil mogelijk hun omgevingen leveren die kunnen worden gebruikt door alle teams in de organisatie.  
+In grote organisaties bieden ontwikkelteams doorgaans omgevingen zoals aangepaste/geïsoleerde testomgevingen. Er kunnen omgevingen zijn die door alle teams binnen een business unit of een divisie moeten worden gebruikt. De IT-groep wil mogelijk hun omgevingen bieden die door alle teams in de organisatie kunnen worden gebruikt.  
 
 ## <a name="customizations"></a>Aanpassingen
 
 #### <a name="sandbox"></a>Sandbox 
-De eigenaar van het Lab kan de test omgevingen aanpassen om de rol van de gebruiker van de **lezer** te wijzigen in **Inzender** binnen de resource groep. Deze mogelijkheid bevindt zich op de pagina **Lab-instellingen** onder de **configuratie en het beleid** van het lab. Met deze wijziging in de rol kan de gebruiker resources toevoegen aan of verwijderen uit die omgeving. Als u de toegang verder wilt beperken, gebruikt u Azure-beleid. Met deze functie kunt u de resources of configuratie aanpassen zonder de toegang op het abonnements niveau.
+De eigenaar van het lab kan labomgevingen aanpassen om de rol van de gebruiker te wijzigen van **lezer** naar **bijdrager** binnen de resourcegroep. Deze mogelijkheid bevindt zich op de pagina **Lab-instellingen** onder **de configuratie en het beleid** van het lab. Met deze wijziging in de rol kan de gebruiker resources binnen die omgeving toevoegen of verwijderen. Als u de toegang verder wilt beperken, gebruikt u Azure-beleid. Met deze functionaliteit u de resources of configuratie aanpassen zonder toegang op abonnementsniveau.
 
 #### <a name="custom-tokens"></a>Aangepaste tokens
-Er zijn een aantal aangepaste Lab-gegevens die zich buiten de resource groep bevinden en die specifiek zijn voor omgevingen waar de sjabloon toegang toe heeft. Hier volgen enkele voor beelden: 
+Er is een aantal aangepaste labinformatie die zich buiten de brongroep bevindt en specifiek is voor omgevingen die de sjabloon kan openen. Hier zijn een aantal van hen: 
 
-- Lab-netwerk identificatie
+- Identificatie van het labnetwerk
 - Locatie
-- Het opslag account waarin de Resource Manager-sjabloon bestanden worden opgeslagen. 
+- Opslagaccount waarin de sjablonenbestanden van Resource Manager zijn opgeslagen. 
  
-#### <a name="lab-virtual-network"></a>Virtueel Lab-netwerk
-In de [verbinding met omgevingen met het virtuele netwerk van het lab](connect-environment-lab-virtual-network.md) wordt beschreven hoe u uw Resource Manager-sjabloon kunt wijzigen om het `$(LabSubnetId)`-token te gebruiken. Wanneer een omgeving wordt gemaakt, wordt het `$(LabSubnetId)`-token vervangen door het eerste subnet, waarbij de optie **gebruiken bij het maken van virtuele machines** is ingesteld op **waar**. Zo kan onze omgeving eerder gemaakte netwerken gebruiken. Als u de Resource Manager-sjablonen in omgevingen testen als fase ring en productie wilt gebruiken, gebruikt u `$(LabSubnetId)` als standaard waarde in een resource manager-sjabloon parameter. 
+#### <a name="lab-virtual-network"></a>Lab virtueel netwerk
+In [de verbindingsomgevingen met het virtuele netwerkartikel van het lab](connect-environment-lab-virtual-network.md) `$(LabSubnetId)` wordt beschreven hoe u uw Resource Manager-sjabloon wijzigen om het token te gebruiken. Wanneer een omgeving wordt `$(LabSubnetId)` gemaakt, wordt het token vervangen door het eerste subnetteken waarbij het gebruik in de optie **voor het maken van virtuele machines** is ingesteld op **true.** Het stelt onze omgeving in staat om eerder gemaakte netwerken te gebruiken. Als u dezelfde Resource Manager-sjablonen wilt gebruiken in omgevingen `$(LabSubnetId)` in testomgevingen als fasering en productie, gebruikt u als standaardwaarde in een sjabloonparameter Resource Manager. 
 
-#### <a name="environment-storage-account"></a>Omgevings opslag account
-DevTest Labs ondersteunt het gebruik van [geneste Resource Manager-sjablonen](../azure-resource-manager/templates/linked-templates.md). In het artikel [[geneste Azure Resource Manager sjablonen implementeren voor test omgevingen](deploy-nested-template-environments.md) wordt uitgelegd hoe u `_artifactsLocation`-en `_artifactsLocationSasToken`-tokens kunt gebruiken voor het maken van een URI naar een resource manager-sjabloon in dezelfde map als of in een geneste map van de hoofd sjabloon. Zie de sectie **implementatie artefacten** in de [hand leiding voor de aanbevolen procedures van Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)voor meer informatie over deze twee tokens.
+#### <a name="environment-storage-account"></a>Milieuopslagaccount
+DevTest Labs ondersteunt het gebruik van [geneste Resource Manager-sjablonen.](../azure-resource-manager/templates/linked-templates.md) In het artikel [[Deploy nested Azure Resource Manager-sjablonen voor testomgevingen](deploy-nested-template-environments.md) wordt uitgelegd hoe u `_artifactsLocation` `_artifactsLocationSasToken` een URI gebruiken voor een Sjabloon resourcebeheer in dezelfde map als of in een geneste map van de hoofdsjabloon. Zie de sectie **Implementatieartefacten** van [Azure Resource Manager – Best Practices Guide](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)voor meer informatie over deze twee tokens.
 
-## <a name="user-experience"></a>Ervaring gebruiker
+## <a name="user-experience"></a>Gebruikerservaring
 
 ## <a name="developer"></a>Developer
-Ontwikkel aars gebruiken dezelfde werk stroom voor het maken van een virtuele machine voor het maken van een specifieke omgeving. Ze selecteren de omgeving versus de installatie kopie van de computer en voeren de benodigde gegevens in die vereist zijn voor de sjabloon. Elke ontwikkelaar die een omgeving heeft, kan wijzigingen aanbrengen en verbeterde fout opsporing in de interne lus. De omgeving kan op elk gewenst moment worden gemaakt met behulp van de meest recente sjabloon.  Met deze functie kunnen de omgevingen worden vernietigd en opnieuw worden gemaakt om de downtime te verminderen van het hand matig maken van het systeem of het herstellen van fouten testen.  
+Ontwikkelaars gebruiken dezelfde workflow voor het maken van een VM om een specifieke omgeving te maken. Ze selecteren de omgeving versus de machineafbeelding en voeren de benodigde informatie in die de sjabloon vereist. Elke ontwikkelaar met een omgeving zorgt voor de implementatie van wijzigingen en verbeterde inner loop debugging. De omgeving kan op elk gewenst moment worden gemaakt met behulp van de nieuwste sjabloon.  Met deze functie kunnen de omgevingen worden vernietigd en opnieuw worden gemaakt om de downtime te verminderen van het handmatig maken van het systeem of het herstellen van fouttesten.  
 
 ### <a name="testing"></a>Testen
-Met DevTest Labs-omgevingen kunnen specifieke code en configuraties asynchroon worden getest. De algemene procedure is het instellen van de omgeving met de code van de afzonderlijke pull-aanvraag en het starten van geautomatiseerd testen. Zodra de geautomatiseerde tests zijn uitgevoerd om te worden voltooid, kunnen hand matige tests worden uitgevoerd op basis van de specifieke omgeving. Dit proces wordt doorgaans uitgevoerd als onderdeel van de CI/CD-pijp lijn. 
+DevTest Labs-omgevingen maken het mogelijk om specifieke code en configuraties asynchroon te testen. De gangbare praktijk is het opzetten van de omgeving met de code van de individuele pull aanvraag en start een geautomatiseerde testen. Zodra de geautomatiseerde tests zijn voltooid, kunnen handmatige tests worden uitgevoerd tegen de specifieke omgeving. Meestal wordt dit proces gedaan als onderdeel van de CI / CD-pijplijn. 
 
-## <a name="management-experience"></a>Beheer ervaring
+## <a name="management-experience"></a>Management ervaring
 
-### <a name="cost-tracking"></a>Kosten bijhouden
-De functie voor het bijhouden van kosten omvat Azure-resources in de verschillende omgevingen als onderdeel van de totale kosten trend. De kosten per resources hebben geen uitsplitsing van de verschillende resources binnen de omgeving, maar de omgeving wordt als één kosten weer gegeven.
+### <a name="cost-tracking"></a>Kostenbijhouden
+De functie kostenbijhouden bevat Azure-resources binnen de verschillende omgevingen als onderdeel van de algemene kostentrend. De kosten per resources breken niet uit de verschillende bronnen binnen de omgeving, maar geeft de omgeving weer als een enkele kostenpost.
 
 ### <a name="security"></a>Beveiliging
-Een correct geconfigureerd Azure-abonnement met DevTest Labs kan [de toegang tot Azure-bronnen alleen beperken via het lab](devtest-lab-add-devtest-user.md). Met omgevingen kan een Lab-eigenaar gebruikers toegang geven tot PaaS-bronnen met goedgekeurde configuraties zonder dat ze toegang hebben tot andere Azure-resources. In het scenario waarin Lab-gebruikers omgevingen aanpassen, kan de eigenaar van het lab toegang tot de Inzender toestaan. Met de Inzender toegang kan de test gebruiker Azure-resource alleen toevoegen aan of verwijderen uit de beheerde resource groep. Het maakt het gemakkelijker om te traceren en te beheren, en Hiermee wordt de gebruiker in staat stellen om toegang te krijgen tot het abonnement.
+Een goed geconfigureerd Azure-abonnement met DevTest Labs kan [de toegang tot Azure-bronnen alleen via het lab beperken.](devtest-lab-add-devtest-user.md) Met omgevingen kan een labeigenaar gebruikers toegang geven tot PaaS-bronnen met goedgekeurde configuraties zonder toegang te verlenen tot andere Azure-bronnen. In het scenario waarin labgebruikers omgevingen aanpassen, kan de eigenaar van het lab toegang tot de inzender toestaan. Met de toegang tot de bijdrager kan de labgebruiker azure-bron alleen toevoegen of verwijderen binnen de beheerde brongroep. Het maakt het eenvoudiger bijhouden en beheren ten opzichte van de gebruiker inzender toegang tot het abonnement.
 
 ### <a name="automation"></a>Automation
-Automation is een belang rijk onderdeel voor een grote schaal, effectief ecosysteem. Automatisering is nodig voor het beheren of bijhouden van meerdere omgevingen in abonnementen en Labs.
+Automatisering is een belangrijk onderdeel voor een grootschalig, effectief ecosysteem. Automatisering is nodig voor het beheren of bijhouden van meerdere omgevingen in abonnementen en laboratoria.
 
-### <a name="cicd-pipeline"></a>CI/CD-pijp lijn
-PaaS Services in DevTest Labs kunnen helpen de CI/CD-pijp lijn te verbeteren door gerichte implementaties te hebben, waarbij toegang wordt bepaald door het lab.
+### <a name="cicd-pipeline"></a>CI/CD-pijplijn
+PaaS-services in DevTest Labs kunnen helpen bij het verbeteren van de CI/CD-pijplijn door gerichte implementaties te hebben waarbij de toegang wordt gecontroleerd door het lab.
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de volgende artikelen voor meer informatie over omgevingen: 
+Zie de volgende artikelen voor meer informatie over omgevingen: 
 
 - 
 - [Multi-VM-omgevingen en PaaS-resources maken met Azure Resource Manager-sjablonen](devtest-lab-create-environment-from-arm.md)
-- [Open bare omgevingen configureren en gebruiken in Azure DevTest Labs](devtest-lab-configure-use-public-environments.md)
-- [Een omgeving met een zelfstandig Service Fabric cluster maken in Azure DevTest Labs](create-environment-service-fabric-cluster.md)
-- [Een omgeving verbinden met het virtuele netwerk van uw Lab in Azure DevTest Labs](connect-environment-lab-virtual-network.md)
-- [Omgevingen integreren in uw Azure DevOps CI/CD-pijp lijnen](integrate-environments-devops-pipeline.md)
+- [Openbare omgevingen configureren en gebruiken in Azure DevTest Labs](devtest-lab-configure-use-public-environments.md)
+- [Een omgeving maken met een op zichzelf staand ServiceFabric-cluster in Azure DevTest Labs](create-environment-service-fabric-cluster.md)
+- [Een omgeving verbinden met het virtuele netwerk van uw lab in Azure DevTest Labs](connect-environment-lab-virtual-network.md)
+- [Omgevingen integreren in uw Azure DevOps CI/CD-pijplijnen](integrate-environments-devops-pipeline.md)
  
 
 

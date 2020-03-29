@@ -1,6 +1,6 @@
 ---
-title: HB-serie-Azure Virtual Machines
-description: Specificaties voor de virtuele machines uit de HB-serie.
+title: HB-serie - Azure Virtual Machines
+description: Specificaties voor de HB-serie VM's.
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
@@ -8,33 +8,33 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 600f10e81742e9bb66c800b747fd7b2dc062754d
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78164828"
 ---
 # <a name="hb-series"></a>HB-serie
 
-Vm's uit de HB-serie zijn geoptimaliseerd voor toepassingen die worden aangedreven door geheugen bandbreedte, zoals een Hydraulic-Dynamics, een expliciete, beperkte element analyse en weer modellen. HB Vm's feature 60 AMD EPYC 7551-processor kernen, 4 GB RAM per CPU-kern en zonder gelijktijdige multi threading. Een HB-VM biedt tot 260 GB/sec. geheugen bandbreedte.
+VM's uit de HB-serie zijn geoptimaliseerd voor toepassingen die worden aangedreven door geheugenbandbreedte, zoals vloeistofdynamica, expliciete eindige elementenanalyse en weermodellering. HB VM's zijn voorzien van 60 AMD EPYC 7551-processorcores, 4 GB RAM per CPU-kern en geen gelijktijdige multithreading. Een HB VM biedt tot 260 GB/sec geheugenbandbreedte.
 
 ACU: 199-216
 
-Premium Storage: ondersteund
+Premium opslag: ondersteund
 
-Premium Storage caching: ondersteund
+Premium Storage Caching: ondersteund
 
-Livemigratie: niet ondersteund
+Live migratie: niet ondersteund
 
-Updates voor het behouden van geheugen: niet ondersteund
+Updates voor geheugenbehoud: niet ondersteund
 
-| Grootte | vCPU | Processor | Geheugen (GB) | Geheugen bandbreedte GB/s | Basis-CPU-frequentie (GHz) | Frequentie van alle kernen (GHz, piek) | Frequentie met één kern geheugen (GHz, piek) | RDMA-prestaties (GB/s) | MPI-ondersteuning | Tijdelijke opslag (GB) | Max. aantal gegevensschijven | Maximum aantal Ethernet Nic's |
+| Grootte | vCPU | Processor | Geheugen (GB) | Geheugenbandbreedte GB/s | Cpu-frequentie baseren (GHz) | All-cores frequentie (GHz, piek) | Single-core frequentie (GHz, piek) | RDMA-prestaties (Gb/s) | ONDERSTEUNING VOOR MPI | Tijdelijke opslag (GB) | Max. aantal gegevensschijven | Max Ethernet-NIC's |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HB60rs | 60 | AMD EPYC 7551 | 240 | 263 | 2.0 | 2.55 | 2.55 | 100 | Alle | 700 | 4 | 1 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>Andere grootten
+## <a name="other-sizes"></a>Andere maten
 
 - [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
@@ -45,4 +45,4 @@ Updates voor het behouden van geheugen: niet ondersteund
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.
+Meer informatie over hoe [Azure compute units (ACU)](acu.md) u kunnen helpen bij het vergelijken van rekenprestaties in Azure SKU's.

@@ -1,43 +1,43 @@
 ---
-title: Taak hubs in Durable Functions-Azure
-description: Meer informatie over wat een task hub is in de Durable Functions-extensie voor Azure Functions. Meer informatie over het configureren van taak hubs.
+title: Taakhubs in duurzame functies - Azure
+description: Ontdek wat een taakhub is in de extensie Duurzame functies voor Azure-functies. Meer informatie over het configureren van taakhubs.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: ffb3d590aebe80994de1e7e834a2eba5777df9a1
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76262483"
 ---
-# <a name="task-hubs-in-durable-functions-azure-functions"></a>Taak hubs in Durable Functions (Azure Functions)
+# <a name="task-hubs-in-durable-functions-azure-functions"></a>Taakhubs in duurzame functies (Azure-functies)
 
-Een *Task hub* in [Durable functions](durable-functions-overview.md) is een logische container voor Azure storage resources die worden gebruikt voor Orchestrations. Orchestrator-en activiteit functies kunnen alleen communiceren wanneer ze tot dezelfde taak hub behoren.
+Een *taakhub* in [Duurzame functies](durable-functions-overview.md) is een logische container voor Azure Storage-bronnen die worden gebruikt voor orkestraties. Orchestrator- en activiteitsfuncties kunnen alleen met elkaar communiceren als ze tot dezelfde taakhub behoren.
 
-Als meerdere functie-apps een opslag account delen, *moet* elke functie-app worden geconfigureerd met de naam van een afzonderlijke taak hub. Een opslag account kan meerdere taak hubs bevatten. In het volgende diagram ziet u één taak-hub per functie-app in gedeelde en toegewezen opslag accounts.
+Als meerdere functie-apps een opslagaccount delen, *moet* elke functie-app zijn geconfigureerd met een afzonderlijke taakhubnaam. Een opslagaccount kan meerdere taakhubs bevatten. In het volgende diagram wordt één taakhub per functie-app in gedeelde en toegewezen opslagaccounts geïllustreerd.
 
-![Diagram met gedeelde en speciale opslag accounts.](./media/durable-functions-task-hubs/task-hubs-storage.png)
+![Diagram met gedeelde en toegewezen opslagaccounts.](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
-## <a name="azure-storage-resources"></a>Azure Storage resources
+## <a name="azure-storage-resources"></a>Azure Storage-bronnen
 
-Een taak-hub bestaat uit de volgende opslag resources:
+Een taakhub bestaat uit de volgende opslagbronnen:
 
-* Een of meer controle wachtrijen.
-* Eén wachtrij voor werk items.
-* Eén geschiedenis tabel.
-* Tabel met één exemplaar.
-* Eén opslag container met een of meer lease-blobs.
-* Een opslag container met grote bericht payloads, indien van toepassing.
+* Een of meer controlewachtrijen.
+* Eén wachtrij voor werkitems.
+* Eén geschiedenistafel.
+* Een instanties tabel.
+* Eén opslagcontainer met een of meer leaseblobs.
+* Een opslagcontainer met grote berichtenladingen, indien van toepassing.
 
-Al deze resources worden automatisch gemaakt in de standaard Azure Storage-account wanneer orchestrator-, entity-of activity-functies worden uitgevoerd of zijn gepland om te worden uitgevoerd. In het artikel [prestaties en schalen](durable-functions-perf-and-scale.md) wordt uitgelegd hoe deze bronnen worden gebruikt.
+Al deze resources worden automatisch gemaakt in het standaard Azure Storage-account wanneer orchestrator-, entiteits- of activiteitsfuncties worden uitgevoerd of gepland worden uitgevoerd. In het artikel [Prestaties en schaal](durable-functions-perf-and-scale.md) wordt uitgelegd hoe deze resources worden gebruikt.
 
-## <a name="task-hub-names"></a>Namen van taak hubs
+## <a name="task-hub-names"></a>Namen van taakhubs
 
-Taak hubs worden geïdentificeerd aan de hand van een naam die is gedeclareerd in het *host. json* -bestand, zoals wordt weer gegeven in het volgende voor beeld:
+Taakhubs worden geïdentificeerd door een naam die is gedeclareerd in het bestand *host.json,* zoals in het volgende voorbeeld wordt weergegeven:
 
-### <a name="hostjson-functions-20"></a>host. json (functions 2,0)
+### <a name="hostjson-functions-20"></a>host.json (functies 2.0)
 
 ```json
 {
@@ -50,7 +50,7 @@ Taak hubs worden geïdentificeerd aan de hand van een naam die is gedeclareerd i
 }
 ```
 
-### <a name="hostjson-functions-1x"></a>host. json (functions 1. x)
+### <a name="hostjson-functions-1x"></a>host.json (functies 1.x)
 
 ```json
 {
@@ -60,9 +60,9 @@ Taak hubs worden geïdentificeerd aan de hand van een naam die is gedeclareerd i
 }
 ```
 
-Taak hubs kunnen ook worden geconfigureerd met behulp van app-instellingen, zoals wordt weer gegeven in het volgende `host.json` voorbeeld bestand:
+Taakhubs kunnen ook worden geconfigureerd met app-instellingen, zoals in het volgende `host.json` voorbeeldbestand wordt weergegeven:
 
-### <a name="hostjson-functions-10"></a>host. json (functions 1,0)
+### <a name="hostjson-functions-10"></a>host.json (functies 1.0)
 
 ```json
 {
@@ -72,7 +72,7 @@ Taak hubs kunnen ook worden geconfigureerd met behulp van app-instellingen, zoal
 }
 ```
 
-### <a name="hostjson-functions-20"></a>host. json (functions 2,0)
+### <a name="hostjson-functions-20"></a>host.json (functies 2.0)
 
 ```json
 {
@@ -85,7 +85,7 @@ Taak hubs kunnen ook worden geconfigureerd met behulp van app-instellingen, zoal
 }
 ```
 
-De naam van de taak-hub wordt ingesteld op de waarde van de app-instelling `MyTaskHub`. In de volgende `local.settings.json` ziet u hoe u de instelling `MyTaskHub` kunt definiëren als `samplehubname`:
+De naam van de taakhub wordt `MyTaskHub` ingesteld op de waarde van de app-instelling. Het `local.settings.json` volgende laat zien `MyTaskHub` hoe `samplehubname`de instelling moet worden gedefinieerd als :
 
 ```json
 {
@@ -96,9 +96,9 @@ De naam van de taak-hub wordt ingesteld op de waarde van de app-instelling `MyTa
 }
 ```
 
-De volgende code laat zien hoe u een functie schrijft die gebruikmaakt van de [Orchestration-client binding](durable-functions-bindings.md#orchestration-client) om te werken met een task hub die is geconfigureerd als een app-instelling:
+In de volgende code wordt uitgelegd hoe u een functie schrijft die de [orchestration-clientbinding](durable-functions-bindings.md#orchestration-client) gebruikt om te werken met een taakhub die is geconfigureerd als app-instelling:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -119,11 +119,11 @@ public static async Task<HttpResponseMessage> Run(
 ```
 
 > [!NOTE]
-> Het vorige C# voor beeld is voor Durable functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` gebruiken in plaats van `IDurableOrchestrationContext`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> Het vorige C#-voorbeeld is voor Duurzame functies 2.x. Voor duurzame functies 1.x `DurableOrchestrationContext` moet `IDurableOrchestrationContext`u in plaats van . Zie het artikel [Duurzame functies voor](durable-functions-versions.md) meer informatie over de verschillen tussen versies.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-De eigenschap task hub in het `function.json`-bestand is ingesteld via de app-instelling:
+De eigenschap taakhub `function.json` in het bestand wordt ingesteld via app-instelling:
 
 ```json
 {
@@ -136,19 +136,19 @@ De eigenschap task hub in het `function.json`-bestand is ingesteld via de app-in
 
 ---
 
-Namen van taak hubs moeten beginnen met een letter en mogen alleen letters en cijfers bevatten. Als u niets opgeeft, wordt de naam van een standaard taak-hub gebruikt, zoals wordt weer gegeven in de volgende tabel:
+Namen van taakhubs moeten beginnen met een letter en bestaan alleen uit letters en cijfers. Als dit niet is opgegeven, wordt een standaardtaakhubnaam gebruikt zoals in de volgende tabel wordt weergegeven:
 
-| Duurzame extensie versie | Naam van de standaard taak-hub |
+| Duurzame extensieversie | Standaardnaam taakhub |
 | - | - |
-| 2.x | Bij implementatie in azure wordt de naam van de taak-hub afgeleid van de naam van de _functie-app_. Bij uitvoering buiten Azure wordt de standaard naam van de taak hub `TestHubName`. |
-| 1.x | De standaard naam van de taak hub voor alle omgevingen is `DurableFunctionsHub`. |
+| 2.x | Wanneer de naam van de taakhub wordt geïmplementeerd in Azure, wordt deze afgeleid van de naam van de _functie-app_. Wanneer u buiten Azure wordt uitgevoerd, `TestHubName`is de standaardnaam van de taakhub . |
+| 1.x | De standaardnaam van de `DurableFunctionsHub`taakhub voor alle omgevingen is . |
 
-Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen extensies.
+Zie het artikel [Duurzame functies versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen extensieversies.
 
 > [!NOTE]
-> De naam is wat een taak hub onderscheidt van een andere als er meerdere taak hubs in een gedeeld opslag account zijn. Als u meerdere functie-apps hebt die een gedeeld opslag account delen, moet u expliciet verschillende namen configureren voor elke Task hub in de *host. json* -bestanden. Anders kunnen de meerdere functie-apps met elkaar concurreren voor berichten. Dit kan leiden tot ongedefinieerd gedrag, met inbegrip van indelingen die onverwacht zijn vastgelopen in de `Pending` of `Running` status.
+> De naam is wat de ene taakhub onderscheidt van de andere wanneer er meerdere taakhubs in een gedeelde opslagaccount zijn. Als u meerdere functie-apps hebt die een gedeeld opslagaccount delen, moet u expliciet verschillende namen configureren voor elke taakhub in de *bestanden host.json.* Anders zullen de meerdere functie-apps met elkaar concurreren om berichten, wat kan leiden tot ongedefinieerd gedrag, waaronder orkestraties die onverwacht "vastlopen" in de `Pending` of-status. `Running`
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het afhandelen van Orchestrator versie beheer](durable-functions-versioning.md)
+> [Meer informatie over het verwerken van orchestration-versies](durable-functions-versioning.md)

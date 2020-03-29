@@ -1,7 +1,7 @@
 ---
-title: Fout opsporing en problemen oplossen ParallelRunStep
+title: Foutopsporing en oplossen van ParallelRunStep
 titleSuffix: Azure Machine Learning
-description: Fout opsporing en probleem oplossing voor ParallelRunStep in machine learning-pijp lijnen in de Azure Machine Learning SDK voor python. Leer veelvoorkomende Valk uilen voor het ontwikkelen met pijp lijnen en tips voor het oplossen van fouten in scripts voor en tijdens externe uitvoering.
+description: Foutopsporing en problemen oplossen Van ParallelRunStep in machine learning-pijplijnen in de Azure Machine Learning SDK voor Python. Leer veelvoorkomende valkuilen voor het ontwikkelen met pijplijnen en tips om u te helpen uw scripts te debuggen voor en tijdens uitvoering op afstand.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,54 +11,54 @@ ms.author: trmccorm
 author: tmccrmck
 ms.date: 01/15/2020
 ms.openlocfilehash: ca50d70965d5edc4e31606e542ddf163fe3b0741
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76122962"
 ---
-# <a name="debug-and-troubleshoot-parallelrunstep"></a>Fout opsporing en problemen oplossen ParallelRunStep
+# <a name="debug-and-troubleshoot-parallelrunstep"></a>Foutopsporing en oplossen van ParallelRunStep
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u fouten kunt opsporen en oplossen van de [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) -klasse in de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+In dit artikel leert u hoe u de klasse [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) van de [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)opsporen en oplossen.
 
 ## <a name="testing-scripts-locally"></a>Scripts lokaal testen
 
-Zie de [sectie scripts lokaal testen](how-to-debug-pipelines.md#testing-scripts-locally) voor machine learning pijp lijnen. Uw ParallelRunStep wordt uitgevoerd als een stap in ML-pijp lijnen, zodat hetzelfde antwoord van toepassing is op beide.
+Zie de [sectie Scripts lokaal testen](how-to-debug-pipelines.md#testing-scripts-locally) voor machine learning-pijplijnen. Uw ParallelRunStep wordt uitgevoerd als een stap in ML-pijplijnen, zodat hetzelfde antwoord op beide geldt.
 
-## <a name="debugging-scripts-from-remote-context"></a>Fouten opsporen in scripts in externe context
+## <a name="debugging-scripts-from-remote-context"></a>Scripts debuggen vanuit externe context
 
-De overgang van het opsporen van fouten in een score script voor het opsporen van fouten in een score script in een pijp lijn kan lastig zijn. Voor informatie over het vinden van uw logboeken in de portal, het [gedeelte met machine learning pijp lijnen over het opsporen van fouten in scripts van een externe context](how-to-debug-pipelines.md#debugging-scripts-from-remote-context). De informatie in deze sectie is ook van toepassing op het uitvoeren van een parallelle stap.
+De overgang van het debuggen van een scorescript lokaal naar het debuggen van een scorescript in een werkelijke pijplijn kan een moeilijke sprong zijn. Voor informatie over het vinden van uw logboeken in de portal, de [machine learning pipelines sectie over het opsporen van scripts uit een externe context](how-to-debug-pipelines.md#debugging-scripts-from-remote-context). De informatie in die sectie is ook van toepassing op een parallelle stap run.
 
-Het logboek bestand `70_driver_log.txt` bijvoorbeeld informatie bevat van de controller die de parallelle uitvoerings stap code start.
+Het logboekbestand `70_driver_log.txt` bevat bijvoorbeeld informatie van de controller die parallelle run-stapcode lanceert.
 
-Vanwege de gedistribueerde aard van parallelle uitvoerings taken zijn er logboeken van verschillende bronnen. Er worden echter twee geconsolideerde bestanden gemaakt die gegevens op hoog niveau bieden:
+Vanwege de gedistribueerde aard van parallelle run taken, zijn er logs uit verschillende bronnen. Er worden echter twee geconsolideerde bestanden gemaakt die informatie op hoog niveau bieden:
 
-- `~/logs/overview.txt`: dit bestand bevat een hoog niveau informatie over het aantal Mini-batches (ook wel taken genoemd), dat tot nu toe is gemaakt en het aantal verwerkte mini batches tot nu toe. Nu wordt het resultaat van de taak weer gegeven. Als de taak is mislukt, wordt het fout bericht weer gegeven en wordt aangegeven waar de probleem oplossing moet worden gestart.
+- `~/logs/overview.txt`: Dit bestand biedt een hoog niveau info over het aantal mini-batches (ook bekend als taken) gemaakt tot nu toe en het aantal mini-batches verwerkt tot nu toe. Aan deze kant, het toont het resultaat van de baan. Als de taak is mislukt, wordt het foutbericht weergegeven en wordt het probleemoplossing gestart.
 
-- `~/logs/sys/master.txt`: dit bestand bevat het hoofd knooppunt (ook wel bekend als Orchestrator) van de taak die wordt uitgevoerd. Omvat het maken van taken, voortgangs bewaking, het resultaat van de uitvoering.
+- `~/logs/sys/master.txt`: Dit bestand geeft de hoofdknooppunt (ook wel de orchestrator genoemd) weergave van de lopende taak. Inclusief taakcreatie, voortgangsbewaking, het runresultaat.
 
-Logboeken die zijn gegenereerd op basis van een invoer script met behulp van EntryScript. logger en print-instructies worden gevonden in de volgende bestanden:
+Logboeken die worden gegenereerd uit het invoerscript met Behulp van EntryScript.logger en afdrukinstructies worden gevonden in de volgende bestanden:
 
-- `~/logs/user/<ip_address>/Process-*.txt`: dit bestand bevat logboeken die zijn geschreven van entry_script met behulp van EntryScript. logger. Het bevat ook een instructie Print (stdout) van entry_script.
+- `~/logs/user/<ip_address>/Process-*.txt`: Dit bestand bevat logboeken die zijn geschreven vanuit entry_script met Behulp van EntryScript.logger. Het bevat ook print statement (stdout) van entry_script.
 
-Als u wilt weten hoe elk knoop punt het Score script heeft uitgevoerd, bekijkt u de afzonderlijke proces logboeken voor elk knoop punt. De proces Logboeken kunt u vinden in de map `sys/worker`, gegroepeerd op worker-knoop punten:
+Wanneer u een volledig inzicht nodig hebt in hoe elk knooppunt het scorescript heeft uitgevoerd, bekijkt u de afzonderlijke proceslogboeken voor elk knooppunt. De proceslogboeken zijn `sys/worker` te vinden in de map, gegroepeerd op werknemersknooppunten:
 
-- `~/logs/sys/worker/<ip_address>/Process-*.txt`: dit bestand bevat gedetailleerde informatie over elke mini-batch, zoals deze wordt opgehaald of voltooid door een werk nemer. Voor elke mini-batch bestaat dit bestand uit:
+- `~/logs/sys/worker/<ip_address>/Process-*.txt`: Dit bestand bevat gedetailleerde informatie over elke minibatch terwijl deze wordt opgehaald of ingevuld door een werknemer. Voor elke minibatch bevat dit bestand:
 
-    - Het IP-adres en de PID van het werk proces. 
-    - Het totale aantal items, het aantal items dat is verwerkt en het aantal mislukte items.
-    - De tijd van begin tijd, duur, proces tijd en uitvoerings methode.
+    - Het IP-adres en de PID van het werkproces. 
+    - Het totale aantal objecten, het aantal verwerkte objecten met succes en het aantal mislukte objecten.
+    - De begintijd, duur, procestijd en runmethodetijd.
 
-U kunt ook informatie vinden over het resource gebruik van de processen voor elke werk nemer. Deze informatie bevindt zich in de CSV-indeling en bevindt zich op `~/logs/sys/perf/<ip_address>/`. Voor één knoop punt zijn er taak bestanden beschikbaar onder `~logs/sys/perf`. Bekijk bijvoorbeeld de volgende bestanden bij het controleren van het resource gebruik:
+U ook informatie vinden over het resourcegebruik van de processen voor elke werknemer. Deze informatie is in CSV-formaat en bevindt zich op `~/logs/sys/perf/<ip_address>/`. Voor één knooppunt zijn taakbestanden beschikbaar `~logs/sys/perf`onder . Wanneer u bijvoorbeeld controleert op het gebruik van resources, bekijkt u de volgende bestanden:
 
-- `Process-*.csv`: resource gebruik per werk proces. 
-- `sys.csv`: logboek voor het per knoop punt.
+- `Process-*.csv`: Per werknemer verwerken resource gebruik. 
+- `sys.csv`: Logboek per knooppunt.
 
-### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Hoe kan ik logboek van mijn gebruikers script vanuit een externe context?
-U kunt een logboek registratie ophalen van EntryScript zoals hieronder wordt weer gegeven in de voorbeeld code om de logboeken weer te geven in de map **Logboeken/gebruikers** in de portal.
+### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Hoe meld ik me af vanuit mijn gebruikersscript vanuit een externe context?
+U een logger uit EntryScript krijgen zoals hieronder in de voorbeeldcode wordt weergegeven om de logboeken in **logboeken/gebruikersmap** in de portal te laten verschijnen.
 
-**Een voor beeld van een invoer script met behulp van het logboek:**
+**Een voorbeeld item script met behulp van de logger:**
 ```python
 from entry_script import EntryScript
 
@@ -80,9 +80,9 @@ def run(mini_batch):
     return mini_batch
 ```
 
-### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>Hoe kan ik een invoer van een zijde, zoals een bestand of bestand (en) met een opzoek tabel, aan al mijn werk rollen door geven?
+### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>Hoe kan ik een zijinvoer zoals een bestand of bestand(en) met een opzoektabel doorgeven aan al mijn werknemers?
 
-Een object [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) maken met de invoer aan de zijkant en registreren bij uw werk ruimte. Nadat u dit hebt geopend in uw Afleidings script (bijvoorbeeld in de methode init ()), als volgt:
+Maak een [setgegevensobject](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) met de zijinvoer en registreer u bij uw werkruimte. Daarna u het als volgt openen in uw gevolgtrekkingsscript (bijvoorbeeld in uw methode init().
 
 ```python
 from azureml.core.run import Run
@@ -95,6 +95,6 @@ lookup_ds.download(target_path='.', overwrite=True)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Raadpleeg de SDK-Naslag informatie voor hulp met het pakket met de [contrib-pipeline-stap](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps?view=azure-ml-py) en de [documentatie](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallelrunstep?view=azure-ml-py) voor de klasse ParallelRunStep.
+* Zie de SDK-referentie voor hulp bij het [azureml-contrib-pipeline-step-pakket](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps?view=azure-ml-py) en de [documentatie](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallelrunstep?view=azure-ml-py) voor de klasse ParallelRunStep.
 
-* Volg de [Geavanceerde zelf studie](tutorial-pipeline-batch-scoring-classification.md) over het gebruik van pijp lijnen met parallelle uitvoerings stap.
+* Volg de [geavanceerde zelfstudie](tutorial-pipeline-batch-scoring-classification.md) over het gebruik van pijplijnen met parallelle runstap.
