@@ -1,7 +1,7 @@
 ---
-title: Ethiek en verantwoordelijk gebruik-Personaler
+title: Ethiek en verantwoord gebruik - Personalizer
 titleSuffix: Azure Cognitive Services
-description: Deze richt lijnen zijn bedoeld om u te helpen bij het implementeren van personalisatie op een manier waarmee u vertrouwen in uw bedrijf en service kunt bouwen. Zorg ervoor dat u pauzeert om onderzoek te doen, meer te weten te komen over de impact van de persoonlijke instellingen op het leven van mensen. Zoek richt lijnen wanneer dat niet het geval is.
+description: Deze richtlijnen zijn erop gericht u te helpen personalisatie te implementeren op een manier die u helpt vertrouwen in uw bedrijf en service op te bouwen. Zorg ervoor dat u pauze om onderzoek, leren en beraadslagen over de impact van de personalisatie op het leven van mensen. Bij twijfel, zoek begeleiding.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,196 +11,196 @@ ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
 ms.openlocfilehash: 11b626c0033814f0886ac76fff0c5d4087a80554
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71720243"
 ---
-# <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Richt lijnen voor de verantwoordelijke implementatie van Personaler
+# <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Richtlijnen voor verantwoorde implementatie van Personalizer
 
-Voor personen en samenleving om optimaal te kunnen profiteren van de mogelijkheden van AI, moeten implementaties zodanig worden ontworpen dat ze de vertrouwens relatie van die AI toevoegen aan hun toepassingen en de gebruikers van toepassingen die met AI zijn gebouwd. Deze richt lijnen zijn bedoeld om u te helpen bij het implementeren van personalisatie op een manier waarmee u vertrouwen in uw bedrijf en service kunt bouwen. Zorg ervoor dat u pauzeert om onderzoek te doen, meer te weten te komen over de impact van de persoonlijke instellingen op het leven van mensen. Zoek richt lijnen wanneer dat niet het geval is.
+Om mensen en de samenleving het volledige potentieel van AI te laten realiseren, moeten implementaties zo worden ontworpen dat ze het vertrouwen winnen van degenen die AI toevoegen aan hun toepassingen en de gebruikers van toepassingen die met AI zijn gebouwd. Deze richtlijnen zijn erop gericht u te helpen Personalizer te implementeren op een manier die u helpt vertrouwen in uw bedrijf en service op te bouwen. Zorg ervoor dat u pauze om onderzoek, leren en beraadslagen over de impact van de personalisatie op het leven van mensen. Bij twijfel, zoek begeleiding.
 
-Deze richt lijnen zijn niet bedoeld als juridisch advies en u moet er ook voor zorgen dat uw toepassing voldoet aan de snelle ontwikkelingen in de wet op dit gebied en in uw sector.
+Deze richtlijnen zijn niet bedoeld als juridisch advies en u dient er afzonderlijk voor te zorgen dat uw aanvraag voldoet aan de snelle ontwikkelingen in de wet op dit gebied en in uw sector.
 
-Bij het ontwerpen van uw toepassing met behulp van Personaler, moet u ook rekening houden met een brede set verantwoordelijkheden tijdens het ontwikkelen van een gegevensgericht AI-systeem, met inbegrip van de ethiek, privacy, beveiliging, veiligheid, insluiting, transparantie en verantwoording. Meer informatie hierover vindt u in de [Aanbevolen Lees](#recommended-reading) sectie.
+Ook bij het ontwerpen van uw toepassing met behulp van Personalizer, moet u rekening houden met een brede set van verantwoordelijkheden die u hebt bij het ontwikkelen van een data-centric AI-systeem, met inbegrip van ethiek, privacy, veiligheid, veiligheid, inclusie, transparantie en verantwoording. U hier meer over lezen in de [sectie Aanbevolen lezen.](#recommended-reading)
 
-U kunt de volgende inhoud als een begin controlelijst gebruiken en deze aan uw scenario aanpassen en verfijnen. Dit document bevat twee hoofd secties: De eerste is gewijd aan het markeren van de verantwoordelijke gebruiken bij het kiezen van scenario's, functies en voor delen voor persoonlijk gebruik. In de tweede reeks worden de waarden van micro soft volgens elkaar overwogen bij het bouwen van AI-systemen en worden er suggesties en risico's voor acties geboden voor het gebruik van persoonlijke instellingen. 
+U de volgende inhoud gebruiken als een startchecklist en deze aanpassen en verfijnen aan uw scenario. Dit document bevat twee hoofdsecties: de eerste is gewijd aan het benadrukken van overwegingen voor verantwoord gebruik bij het kiezen van scenario's, functies en beloningen voor Personalizer. De tweede nemen van een set van waarden Microsoft is van mening moet worden overwogen bij het bouwen van AI-systemen, en biedt bruikbare suggesties en risico's over hoe uw gebruik van Personalizer hen beïnvloedt. 
 
 
 ## <a name="your-responsibility"></a>Uw verantwoordelijkheid
 
-Alle richt lijnen voor de verantwoordelijke implementatie bouwen op de basis die ontwikkel aars en bedrijven die persoonlijker gebruiken zijn verantwoordelijk en kunnen worden verwerkt voor de gevolgen van het gebruik van deze algoritmen in de samenleving. Als u een toepassing ontwikkelt die uw organisatie gaat implementeren, moet u uw rol en verantwoordelijkheid voor de werking ervan herkennen en bepalen hoe deze van invloed is op personen. Als u een toepassing ontwerpt die door een derde partij moet worden geïmplementeerd, moet u een gemeen schappelijke inzichten hebben met wie deze uiteindelijk verantwoordelijk is voor het gedrag van de toepassing, en documenten die ze kennen.
+Alle richtlijnen voor verantwoorde implementatie bouwen voort op de basis dat ontwikkelaars en bedrijven die Personalizer gebruiken verantwoordelijk en verantwoordelijk zijn voor de effecten van het gebruik van deze algoritmen in de samenleving. Als u een toepassing ontwikkelt die uw organisatie zal implementeren, moet u uw rol en verantwoordelijkheid voor de werking ervan erkennen en hoe deze van invloed is op mensen. Als u een toepassing ontwerpt die door een derde partij moet worden geïmplementeerd, komt u tot een gedeeld begrip met hen over wie uiteindelijk verantwoordelijk is voor het gedrag van de toepassing en documenteert u dat begrip.
 
-Trust is gebaseerd op het principe van vervulde verbintenissen: Houd rekening met uw gebruikers, de samenleving en het juridische Framework waarmee uw toepassingen werken, om expliciete en impliciete toezeg gingen te identificeren.
+Vertrouwen is gebaseerd op het begrip nagekomen verplichtingen - houd rekening met uw gebruikers, de samenleving en het juridische kader waarin uw toepassingen werken, om expliciete en impliciete toezeggingen te identificeren die ze kunnen hebben.
 
-Micro soft brengt voortdurend inspanningen in de hulp middelen en documenten waarmee u op deze verantwoordelijkheden kunt handelen. [Feedback geven over micro soft](mailto:cogsvcs-RL-feedback@microsoft.com?subject%3DPersonalizer%20Responsible%20Use%20Feedback&body%3D%5BPlease%20share%20any%20question%2C%20idea%20or%20concern%5D) als u meer hulp middelen denkt, product functies en documenten helpen u bij het implementeren van deze richt lijnen voor het gebruik van personaler.
-
-
-## <a name="factors-for-responsibly-implementing-personalizer"></a>Factoren voor een verantwoorde persoonlijke implementatie
-
-Het implementeren van Personaler is een fantastische waarde voor uw gebruikers en uw bedrijf. Als u een verantwoorde Personaler wilt implementeren, moet u eerst de volgende richt lijnen overwegen:
-
-* Kies cases gebruiken om persoonlijke instellingen toe te passen.
-* Bouwen van [belonings functies](https://github.com/Azure/personalization-rl/blob/master/docs/concepts-rewards.md).
-* Kiezen welke [functies](https://github.com/Azure/personalization-rl/blob/master/docs/concepts-features.md) over de context en mogelijke acties u wilt gebruiken voor personalisatie.
+Microsoft zet voortdurend in op de tools en documenten om u te helpen deze verantwoordelijkheden op te nemen. [Geef feedback aan Microsoft](mailto:cogsvcs-RL-feedback@microsoft.com?subject%3DPersonalizer%20Responsible%20Use%20Feedback&body%3D%5BPlease%20share%20any%20question%2C%20idea%20or%20concern%5D) als u denkt dat extra hulpprogramma's, productfuncties en documenten u zouden helpen bij het implementeren van deze richtlijnen voor het gebruik van Personalizer.
 
 
-## <a name="choosing-use-cases-for-personalizer"></a>Use cases voor Personaler kiezen
+## <a name="factors-for-responsibly-implementing-personalizer"></a>Factoren voor het verantwoord implementeren van Personalizer
 
-Het gebruik van een service die leert om inhoud te personaliseren en gebruikers interfaces is nuttig. Het kan ook worden toegepast als de manier waarop de personalisatie negatieve neven effecten in de echte wereld creëert,, ook als gebruikers niet op de hoogte zijn van personalisatie van inhoud. 
+Het implementeren van Personalizer kan van grote waarde zijn voor uw gebruikers en uw bedrijf. Als u Personalizer op een verantwoorde manier wilt implementeren, moet u eerst de volgende richtlijnen overwegen wanneer:
 
-Voor beelden van het gebruik van Personaler met verhoogde mogelijkheden voor negatieve neven effecten of een gebrek aan transparantie zijn scenario's waarbij de ' beloning ' afhankelijk is van veel lange termijn complexe factoren die, wanneer over meer dan vereenvoudigd in een onmiddellijke beloning, ongunstig kunnen zijn resultaten voor individuen. Deze opties worden meestal beschouwd als ' keuze mogelijkheden ' of ' keuzen ' die een risico op schade inhouden. Bijvoorbeeld: 
-
-
-* **Financiën**: Het personaliseren van aanbiedingen voor leningen, financiële en verzekerings producten, waarbij risico factoren zijn gebaseerd op gegevens die de personen niet weten, niet kunnen verkrijgen of niet kunnen betwisten. 
-* **Onderwijs**: Het personaliseren van classificaties voor school cursussen en onderwijs instellingen, waarbij aanbevelingen kunnen leiden tot afstellingen en de bewustmaking van andere opties door gebruikers te beperken.
-* **Democratie en Civice participatie**: Het personaliseren van inhoud voor gebruikers die het doel hebben om meningen te vervolledigen, is opvolgbaar en gemanipuleerd.
-* **Evaluatie**van de lonen van derden: Het personaliseren van items waarbij de vergoeding is gebaseerd op een evaluatie versie van een derde partij van de gebruiker, in plaats van een beloning die wordt gegenereerd door het eigen gedrag van de gebruiker.
-* **Intolerantie voor exploratie**: Een situatie waarin het exploratie gedrag van Personaler schade kan veroorzaken.
-
-Bij het kiezen van use cases voor Personaler:
-
-* Start het ontwerp proces om te bepalen hoe de persoonlijke instellingen uw gebruikers helpen.
-* Houd rekening met de negatieve gevolgen voor de echte wereld als sommige items niet worden geclassificeerd voor gebruikers als gevolg van personalisatie patronen of verkennen.
-* Houd rekening met het feit of uw use-case geautomatiseerde verwerking is die van invloed is op de gegevens onderwerpen die worden geregeld onder [AVG](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679) artikel 22 of andere wetgeving.
-* Overweeg zelf te voldoen aan Prophecy-lussen. Dit kan gebeuren als een persoonlijke compensatie beloning een model traint, zodat het mogelijk is dat een demografische groep van toegang tot relevante inhoud wordt uitgesloten. Het is bijvoorbeeld mogelijk dat de meeste mensen in een lage inkomsten groep geen Premium-verzekerings aanbieding verkrijgen en dat ze nooit in de groep worden weer geven om de aanbieding helemaal te zien als er onvoldoende is.
-* Sla kopieën van modellen en learning-beleids regels op voor het geval dat het nodig is om in de toekomst een persoonlijker te maken. U kunt dit regel matig doen of elke vernieuwings periode voor het model.
-* Denk na over het niveau van exploratie dat voldoende is voor de ruimte en hoe u het kunt gebruiken als hulp middel om de effecten van de echo kamer te verminderen.
+* Het kiezen van use cases om personalisatie toe te passen.
+* [Beloningsfuncties](https://github.com/Azure/personalization-rl/blob/master/docs/concepts-rewards.md)bouwen.
+* Kiezen welke [functies](https://github.com/Azure/personalization-rl/blob/master/docs/concepts-features.md) over de context en mogelijke acties die u zal gebruiken voor personalisatie.
 
 
-## <a name="selecting-features-for-personalizer"></a>Functies selecteren voor persoonlijkere
+## <a name="choosing-use-cases-for-personalizer"></a>Use cases kiezen voor Personalizer
 
-Het personaliseren van inhoud is afhankelijk van nuttige informatie over de inhoud en de gebruiker. Houd er rekening mee dat voor sommige toepassingen en branches sommige gebruikers functies direct of indirect als discriminerend en mogelijk illegaal kunnen worden beschouwd.
+Het gebruik van een service die leert om inhoud en gebruikersinterfaces te personaliseren is nuttig. Het kan ook verkeerd worden toegepast als de manier waarop de personalisatie negatieve bijwerkingen in de echte wereld creëert, ook als gebruikers zich niet bewust zijn van content personalisatie. 
+
+Voorbeelden van gebruik van Personalizer met een verhoogd potentieel voor negatieve bijwerkingen of een gebrek aan transparantie zijn scenario's waarin de "beloning" afhankelijk is van veel complexe factoren op lange termijn die, wanneer over-vereenvoudigd in een onmiddellijke beloning ongunstig kan zijn resultaten voor individuen. Deze hebben de neiging om te worden beschouwd als "consequente" keuzes, of keuzes die een risico van schade te betrekken. Bijvoorbeeld: 
+
+
+* **Financiën**: Het personaliseren van aanbiedingen op lening, financiële en verzekeringsproducten, waarbij risicofactoren zijn gebaseerd op gegevens die de individuen niet kennen, niet kunnen verkrijgen of niet kunnen betwisten. 
+* **Onderwijs**: Het personaliseren van rangen voor schoolcursussen en onderwijsinstellingen waar aanbevelingen vooroordelen kunnen uitdragen en het bewustzijn van gebruikers over andere opties kunnen verminderen.
+* **Democratie en burgerparticipatie**: Het personaliseren van inhoud voor gebruikers met als doel het beïnvloeden van meningen is consequent en manipulatief.
+* **Evaluatie van de beloning**van derden : Het personaliseren van items waarbij de beloning is gebaseerd op een laatste evaluatie door derden van de gebruiker, in plaats van een beloning te hebben die wordt gegenereerd door het eigen gedrag van de gebruiker.
+* **Intolerantie voor exploratie:** Elke situatie waarin het verkenningsgedrag van Personalizer schade kan veroorzaken.
+
+Bij het kiezen van use cases voor Personalizer:
+
+* Start het ontwerpproces, rekening houdend met de manier waarop de personalisatie uw gebruikers helpt.
+* Houd rekening met de negatieve gevolgen in de echte wereld als sommige items niet zijn gerangschikt voor gebruikers als gevolg van personalisatie patronen of exploratie.
+* Overweeg of uw use case geautomatiseerde verwerking is die een aanzienlijke invloed heeft op betrokkenen die onder [avg-artikel](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679) 22 of andere wetten vallen.
+* Denk aan self-fulfilling prophecy loops. Dit kan gebeuren als een personalisatiebeloning een model traint, zodat een demografische groep vervolgens verder kan worden uitgesloten van toegang tot relevante inhoud. Bijvoorbeeld, de meeste mensen in een buurt met een laag inkomen niet krijgen van een premie verzekering te bieden, en langzaam niemand in de buurt heeft de neiging om het aanbod te zien op alle als er niet genoeg exploratie.
+* Sla kopieën van modellen en leerbeleid op voor het geval het nodig is om Personalizer in de toekomst te reproduceren. U dit periodiek of elke vernieuwingsperiode van het model doen.
+* Overweeg het niveau van exploratie voldoende voor de ruimte en hoe het te gebruiken als een instrument om "echo kamer" effecten te beperken.
+
+
+## <a name="selecting-features-for-personalizer"></a>Functies selecteren voor personalizer
+
+Het personaliseren van inhoud is afhankelijk van het hebben van nuttige informatie over de inhoud en de gebruiker. Houd er rekening mee dat sommige gebruikersfuncties voor sommige toepassingen en industrieën direct of indirect als discriminerend en mogelijk illegaal kunnen worden beschouwd.
 
 Houd rekening met het effect van deze functies:
 
-* **Demografische gebruikers**gegevens: Functies met betrekking tot geslacht, geslacht, leeftijd, race, religion: Deze functies zijn mogelijk niet toegestaan in bepaalde toepassingen om wettelijke redenen en zijn mogelijk niet gepersonaliseerd om ze te personaliseren, omdat de personalisatie generalisaties en bias zou door geven. Een voor beeld van deze bias-doorgifte is een taak boeking voor engineering die niet wordt weer gegeven voor doel groepen op basis van oude of geslachte producten.
-* **Informatie over de land instelling**: Op veel plaatsen van de wereld kunnen locatie gegevens (zoals een post code, post code of groeps naam) in hoge mate worden gecorreleerd met inkomsten, race-en Religion.
-* **Gebruikers perceptie van verdeling**: Zelfs in gevallen waarin uw toepassing geluids beslissingen maakt, moet u rekening houden met het effect van gebruikers die zien dat de inhoud die in de toepassing wordt weer gegeven, verandert in een manier die is afgestemd op functies die discriminerend zijn.
-* **Onbedoelde afwijking in functies**:  Er zijn soorten bias die kunnen worden geïntroduceerd met behulp van functies die alleen van invloed zijn op een subset van de populatie. Dit vereist extra aandacht als er functies worden gegenereerd algorithmically, zoals wanneer u afbeeldings analyse gebruikt om items in een afbeelding of tekst analyse te extra heren om entiteiten in tekst te detecteren. Let op de kenmerken van de services die u gebruikt om deze functies te maken.
+* **Demografische gegevens van gebruikers**: Kenmerken met betrekking tot geslacht, geslacht, leeftijd, ras, religie: deze functies kunnen niet worden toegestaan in bepaalde toepassingen om regelgevende redenen, en het kan niet ethisch zijn om te personaliseren om hen heen, omdat de personalisatie zou verdragen generalisaties en bias. Een voorbeeld van deze bias propagatie is een baan die voor techniek wordt gepost die niet aan bejaarde of geslachtsgebaseerde doelgroepen wordt getoond.
+* **Locale informatie**: Op veel plaatsen in de wereld kan locatie-informatie (zoals een postcode, postcode of buurtnaam) sterk gecorreleerd zijn met inkomen, ras en religie.
+* **User Perception of Fairness:** Zelfs in gevallen waarin uw toepassing is het maken van goede beslissingen, rekening houden met het effect van gebruikers waarnemen dat de inhoud weergegeven in uw toepassing verandert op een manier die lijkt te zijn gecorreleerd aan functies die discriminerend zou zijn.
+* **Onbedoelde bias in features:** Er zijn soorten vooroordelen die kunnen worden geïntroduceerd met behulp van functies die alleen van invloed zijn op een subset van de bevolking. Dit vereist extra aandacht als functies algoritmisch worden gegenereerd, bijvoorbeeld bij het gebruik van beeldanalyse om items in een afbeelding of tekstanalyse te extraheren om entiteiten in tekst te ontdekken. Maak uzelf bewust van de kenmerken van de services die u gebruikt om deze functies te maken.
 
-Pas de volgende procedures toe bij het kiezen van functies voor het verzenden van contexten en acties naar Personaler:
+Pas de volgende praktijken toe bij het kiezen van functies die u in contexten en acties wilt verzenden naar Personalizer:
 
-* Denk na over de wettigheid en de ethiek van het gebruik van bepaalde functies voor sommige toepassingen, en of onschuldieve functies proxy's kunnen zijn voor anderen die u wilt of moet vermijden,
-* Wees transparant voor gebruikers die algoritmen en gegevens analyse worden gebruikt om de weer te geven opties te personaliseren.
-* Stel uzelf de: Moeten mijn gebruikers er tevreden mee zijn als ik deze informatie gebruik om de inhoud voor hen te personaliseren? Zou ik graag zien hoe de beslissing is genomen om bepaalde items te markeren of te verbergen?
-* Gebruik gedrag in plaats van classificatie of segmentatie gegevens op basis van andere kenmerken. Demografische informatie werd traditioneel gebruikt door detail handelaren voor historische redenen: demografische kenmerken leken eenvoudig te verzamelen en te handelen vóór een digitale vormgeving, maar vraag hoe relevante demografische gegevens zich voordoen wanneer u werkelijke interactie hebt, contextuele en historische gegevens die nauw keuriger zijn voor de voor keuren en identiteit van gebruikers.
-* Bedenk hoe u kunt voor komen dat functies die worden vervalst door kwaadwillende gebruikers, wanneer ze worden misbruikt in grote aantallen, kunnen leiden tot het aanpassen van persoonlijke voor keuren op misleidende manieren om purposefully te verstoren, verlegen en lastigvallen te maken van bepaalde klassen gebruikers. 
-* Als dat nodig is, kunt u uw toepassing zo ontwerpen dat uw gebruikers zich kunnen aanmelden of willen afmelden dat er bepaalde persoonlijke functies worden gebruikt. Deze kunnen worden gegroepeerd, zoals ' locatie-informatie ', ' apparaatgegevens ', ' eerdere aankoop geschiedenis ' enzovoort.
-
-
-## <a name="computing-rewards-for-personalizer"></a>Computer beloningen voor persoonlijk gebruik
-
-Personaler streeft ernaar om de keuze van de actie te verbeteren op basis van de belonings Score die wordt geboden door de bedrijfs logica van uw toepassing.
-
-Een goed ontwikkelde belonings Score fungeert als een proxy voor een korte periode voor een bedrijfs doel, die is gekoppeld aan de missie van een organisatie.
-
-Als u bijvoorbeeld op klikken klikt, wordt de Personaler service gevraagd om te klikken op de kosten van alle andere, zelfs als op de knop wordt geklikt of deze niet aan een zakelijk resultaat is gekoppeld.
-
-Een voor beeld hiervan is het mogelijk dat er voor een nieuws site beloningen worden ingesteld die zijn gekoppeld aan iets wat betekenisvoler is dan klikken, zoals ' heeft de gebruiker genoeg tijd besteed aan het lezen van de inhoud? ' "Had hij of zij klikken op relevante artikelen of verwijzingen?". Met Personaler is het eenvoudig om meet waarden nauw keurig te koppelen aan beloningen. Let er echter op dat u geen gebruik kunt maken van de gebruikers betrokkenheid op korte termijn met goede resultaten.
-
-### <a name="unintended-consequences-from-reward-scores"></a>Onbedoelde gevolgen van belonings scores
-Belonings scores kunnen worden gebouwd met het beste van de bedoelingen, maar kunnen nog steeds onverwachte gevolgen of onbedoelde resultaten maken voor de rang schikking van de inhoud van Personaler. 
-
-Bekijk de volgende voor beelden:
-
-* Het maken van een persoonlijke aanpassing van de video-inhoud op het percentage van de gevolgde video heeft waarschijnlijk een kortere hoeveelheid Video's.
-* Het belonen van sociale-media shares zonder sentiment analyse van de manier waarop het wordt gedeeld of de inhoud zelf, kan leiden tot een beledigend, ongecontroleerd of inflammatory inhoud, die een groot deel van ' betrokkenheid ' indeelt, maar een kleine waarde toevoegt.
-* Het afleiden van de actie voor gebruikers interface-elementen die gebruikers niet verwachten te wijzigen, kan de bruikbaarheid en voorspel baarheid van de gebruikers interface belemmeren, waarbij de knoppen verrassend de locatie of het doel zonder waarschuwing veranderen, waardoor het moeilijker is voor bepaalde gebruikers groepen om productief te blijven.
-
-Implementeer deze aanbevolen procedures:
-
-* Voer offline experimenten uit met uw systeem met behulp van verschillende benaderingen om de impact en neven effecten te begrijpen.
-* Beoordeel uw belonens functies en vraag uzelf hoe zou een extreem naïvee de interpretatie van het programma te buigen en ongewenste resultaten te bereiken.
+* Denk aan de wettigheid en ethiek van het gebruik van bepaalde functies voor sommige toepassingen, en of onschuldig uitziende functies volmachten kunnen zijn voor anderen die u wilt of moet vermijden,
+* Wees transparant voor gebruikers dat algoritmen en gegevensanalyse worden gebruikt om de opties die ze zien te personaliseren.
+* Vraag jezelf af: Zou mijn gebruikers zorg en blij zijn als ik deze informatie gebruikt om de inhoud voor hen te personaliseren? Zou ik me op mijn gemak voelen om hen te laten zien hoe de beslissing is genomen om bepaalde items te markeren of te verbergen?
+* Gebruik gedrags- in plaats van classificatie- of segmentatiegegevens op basis van andere kenmerken. Demografische informatie werd traditioneel gebruikt door detailhandelaren om historische redenen - demografische kenmerken leek eenvoudig te verzamelen en te handelen op vóór een digitaal tijdperk, maar vraag me af hoe relevant demografische informatie is wanneer u daadwerkelijk interactie, contextuele en historische gegevens die nauwer verband houden met de voorkeuren en identiteit van gebruikers.
+* Bedenk hoe u voorkomen dat functies worden 'vervalst' door kwaadwillende gebruikers, wat, als ze in grote aantallen worden uitgebuit, ertoe kunnen leiden dat personalizer op misleidende manieren wordt getraind om bepaalde klassen gebruikers doelbewust te verstoren, in verlegenheid te brengen en lastig te vallen. 
+* Indien nodig en haalbaar, ontwerpt u uw toepassing zodat uw gebruikers zich kunnen aanmelden of afmelden voor het gebruik van bepaalde persoonlijke functies. Deze kunnen worden gegroepeerd, zoals 'Locatiegegevens', 'Apparaatgegevens', 'Aankoopgeschiedenis in het verleden' enz.
 
 
-## <a name="responsible-design-considerations"></a>Overwegingen voor verantwoordelijkheids ontwerp
+## <a name="computing-rewards-for-personalizer"></a>Computerbeloningen voor personalizer
 
-Hier volgen de ontwerp gebieden voor de verantwoordelijke implementaties van AI. Meer informatie over dit Framework vindt u in [de toekomst](https://news.microsoft.com/futurecomputed/)over.
+Personalizer streeft ernaar om de keuze te verbeteren van welke actie te belonen op basis van de beloningsscore die door uw toepassing bedrijfslogica wordt verstrekt.
 
-![AI-waarden van toekomstige berekeningen](media/ethics-and-responsible-use/ai-values-future-computed.png)
+Een goed gebouwde beloningsscore zal fungeren als een korte termijn proxy voor een zakelijk doel, dat is gekoppeld aan de missie van een organisatie.
 
-### <a name="accountability"></a>Aansprakelijkheid
-*Personen die AI-systemen ontwerpen en implementeren, moeten verantwoordelijk zijn voor de werking van hun systemen*. 
+Bijvoorbeeld, belonen op klikken zal de Personalizer Service klikken op de kosten van al het andere, zelfs als wat wordt geklikt is storend of niet gebonden aan een zakelijk resultaat.
 
-* Maak interne richt lijnen voor het implementeren van persoonlijke instellingen, documenten en communicatie met uw team, leidinggevenden en leveranciers.
-* Voer periodieke beoordelingen uit over de berekening van belonings cijfers, voer offline-evaluaties uit om te zien welke functies van invloed zijn op personalisatie, en gebruik de resultaten om onnodige en overbodige functies te elimineren.
-* Communiceer duidelijk aan uw gebruikers hoe Personaler wordt gebruikt, wat doel en met welke gegevens.
-* Archiveer informatie en assets, zoals modellen, leer beleid en andere gegevens, die Personaler gebruikt om te werken, om de resultaten te kunnen reproduceren.
+Als contrasterend voorbeeld wil een nieuwssite mogelijk beloningen instellen die gekoppeld zijn aan iets dat zinvoller is dan klikken, zoals 'Heeft de gebruiker genoeg tijd besteed aan het lezen van de inhoud?' "Hebben ze op relevante artikelen of referenties geklikt?". Met Personalizer is het eenvoudig om statistieken nauw aan beloningen te koppelen. Maar wees voorzichtig niet te verwarren op korte termijn betrokkenheid van de gebruiker met goede resultaten.
+
+### <a name="unintended-consequences-from-reward-scores"></a>Onbedoelde gevolgen van beloningsscores
+Beloningsscores kunnen worden opgebouwd met de beste bedoelingen, maar kunnen nog steeds onverwachte gevolgen of onbedoelde resultaten opleveren voor de manier waarop Personalizer inhoud rangschikt. 
+
+Bekijk de volgende voorbeelden:
+
+* Belonen video-inhoud personalisatie op het percentage van de video lengte bekeken zal waarschijnlijk de neiging om kortere video's rang.
+* Het belonen van sociale media-aandelen, zonder sentimentanalyse van hoe het wordt gedeeld of de inhoud zelf, kan leiden tot het rangschikken van aanstootgevende, ongemodereerde of opruiende inhoud, die veel "betrokkenheid" heeft, maar weinig waarde toevoegt.
+* Het belonen van de actie op gebruikersinterface-elementen die gebruikers niet verwachten te veranderen, kan interfereren met de bruikbaarheid en voorspelbaarheid van de gebruikersinterface, waar knoppen verrassend van locatie of doel veranderen zonder waarschuwing, waardoor het moeilijker wordt voor bepaalde groepen gebruikers om productief te blijven.
+
+Implementeer deze best practices:
+
+* Voer offline experimenten met uw systeem uit met behulp van verschillende beloningsbenaderingen om de impact en bijwerkingen te begrijpen.
+* Evalueer uw beloningsfuncties en vraag uzelf af hoe een uiterst naïef persoon zijn interpretatie zou buigen en er ongewenste uitkomsten mee zou bereiken.
+
+
+## <a name="responsible-design-considerations"></a>Verantwoord ontwerp overwegingen
+
+Hieronder volgen ontwerpgebieden voor verantwoorde implementaties van AI. Meer informatie over dit framework in [The Future Computed](https://news.microsoft.com/futurecomputed/).
+
+![AI-waarden uit toekomstige berekende](media/ethics-and-responsible-use/ai-values-future-computed.png)
+
+### <a name="accountability"></a>Verantwoordelijkheid
+*Mensen die AI-systemen ontwerpen en implementeren, moeten verantwoordelijk zijn voor de werking van hun systemen.* 
+
+* Maak interne richtlijnen voor het implementeren van personalizer, documenteren en communiceren naar uw team, leidinggevenden en leveranciers.
+* Voer periodieke beoordelingen uit van hoe beloningsscores worden berekend, voer offline evaluaties uit om te zien welke functies van invloed zijn op Personalizer en gebruik de resultaten om onnodige en onnodige functies te elimineren.
+* Communiceer duidelijk met uw gebruikers hoe Personalizer wordt gebruikt, naar welk doel en met welke gegevens.
+* Archiveer informatie en assets - zoals modellen, leerbeleid en andere gegevens - die Personalizer gebruikt om te functioneren, om resultaten te kunnen reproduceren.
 
 ### <a name="transparency"></a>Transparantie
-*AI-systemen moeten begrijpelijk zijn*. Met persoonlijke instellingen:
+*AI-systemen moeten begrijpelijk zijn.* Met Personalizer:
 
-* *Geef gebruikers informatie over de manier waarop de inhoud is aangepast.* U kunt bijvoorbeeld uw gebruikers weer geven met een knop met het label `Why These Suggestions?` waarin wordt weer gegeven welke belangrijkste functies van de gebruiker en acties een rol hebben gespeeld in de resultaten van Personaler.
-* Zorg ervoor dat uw gebruiksrecht overeenkomst vermeldt dat u informatie over gebruikers en hun gedrag gaat gebruiken om de ervaring te personaliseren.
+* *Geef gebruikers informatie over hoe de inhoud is gepersonaliseerd.* U uw gebruikers bijvoorbeeld een `Why These Suggestions?` knop laten zien met het label met het label welke functies van de gebruiker en acties een rol hebben gespeeld in de resultaten van Personalizer.
+* Zorg ervoor dat uw gebruiksvoorwaarden vermelden dat u informatie over gebruikers en hun gedrag gebruikt om de ervaring te personaliseren.
 
-### <a name="fairness"></a>Verdeling
-*AI-systemen moeten alle mensen redelijk behandelen*.
+### <a name="fairness"></a>Eerlijkheid
+*AI Systems moet alle mensen eerlijk behandelen.*
 
-* Gebruik persoonlijke voor keuren niet voor use-cases waarin de resultaten op lange termijn worden uitgevoerd, of die echte schade betreffen.
-* Gebruik geen functies die niet geschikt zijn voor het personaliseren van inhoud met of die het mogelijk maakt om ongewenste BIASS door te geven. Iedereen met vergelijk bare financiële omstandigheden zou bijvoorbeeld dezelfde gepersonaliseerde aanbevelingen voor financiële producten moeten zien.
-* Begrijp wat er mogelijk is in functies die zijn opgenomen in de editors, hulpprogram ma's voor algoritmen of gebruikers zelf.
+* Gebruik Personalizer niet voor use cases waarbij de uitkomsten op lange termijn, consequent zijn of echte schade veroorzaken.
+* Gebruik geen functies die niet geschikt zijn om inhoud mee te personaliseren of die ongewenste vooroordelen kunnen helpen verspreiden. Iedereen met vergelijkbare financiële omstandigheden moet bijvoorbeeld dezelfde gepersonaliseerde aanbevelingen voor financiële producten zien.
+* Begrijp vooroordelen die kunnen bestaan in functies die afkomstig zijn van editors, algoritmische tools of gebruikers zelf.
 
-### <a name="reliability-and-safety"></a>Betrouw baarheid en veiligheid
-*AI-systemen moeten betrouwbaar en veilig worden uitgevoerd*. Voor Personaler:
+### <a name="reliability-and-safety"></a>Betrouwbaarheid en veiligheid
+*AI-systemen moeten betrouwbaar en veilig presteren.* Voor personalizer:
 
-* *Geef geen persoonlijke voor keuren op die niet moeten worden gekozen*. Zo moeten niet-geëigende films worden gefilterd op basis van de acties die persoonlijk moeten worden uitgevoerd als er een aanbeveling wordt gedaan voor een anonieme gebruiker of een gebruiks duur van de leeftijd.
-* *Beheer uw persoonlijker model als een bedrijfs activum*.  Bedenk hoe vaak u het model en het trainings beleid achter uw Personaler-lus wilt opslaan en er een back-up van wilt maken. u kunt dit ook behandelen als een belang rijk bedrijfs activum. Het reproduceren van eerdere resultaten is belang rijk voor zelf controle en het meten van de verbetering.
-* *Geef kanalen op om direct feedback van gebruikers te ontvangen*. Naast het coderen van veiligheids controles om ervoor te zorgen dat alleen de juiste doel groepen de juiste inhoud zien, kunt u een feedback mechanisme geven waarmee gebruikers inhoud kunnen rapporteren die kan worden verrassende of verstoord. Met name als uw inhoud afkomstig is van gebruikers of derden, kunt u overwegen om de inhoud te controleren en te valideren met behulp van micro soft Content Moderator of extra hulp middelen.
-* *Voer frequente offline-evaluaties uit*. Dit helpt u trends te bewaken en ervoor te zorgen dat de effectiviteit bekend is.
-* *Stel een proces voor het detecteren en reageren op schadelijke manipulatie*. Er zijn actors die profiteren van de mogelijkheden van machine learning en AI-systemen om te leren van hun omgeving om het resultaat te verschuiven naar hun doel stellingen. Als uw gebruik van Personaler in staat is om belang rijke keuzes te beïnvloeden, moet u ervoor zorgen dat u de juiste middelen hebt om deze klassen aanvallen te detecteren en te verhelpen, met inbegrip van de beoordeling van mensen in de relevante omstandigheden.
+* *Geef geen acties aan Personalizer die niet moeten worden gekozen.* Films moeten bijvoorbeeld uit de acties worden gefilterd om te personaliseren als een aanbeveling voor een anonieme of minderjarige gebruiker wordt gedaan.
+* *Beheer uw personalizermodel als bedrijfsmiddel.*  Bedenk hoe vaak u het model- en leerbeleid achter uw Personalizer Loop opslaan en een back-up maken en anders u dit als een belangrijk bedrijfsmiddel behandelen. Het reproduceren van resultaten uit het verleden is belangrijk voor zelfaudit en het meten van verbetering.
+* *Geef kanalen om directe feedback van gebruikers te krijgen.* Naast het coderen van veiligheidscontroles om ervoor te zorgen dat alleen de juiste doelgroepen de juiste inhoud zien, biedt u gebruikers een feedbackmechanisme om inhoud te rapporteren die verrassend of storend kan zijn. Vooral als uw inhoud afkomstig is van gebruikers of derde partijen, u overwegen microsoft-inhoudsmoderator of aanvullende hulpprogramma's te gebruiken om inhoud te bekijken en te valideren.
+* *Voer frequente offline evaluaties uit*. Dit zal u helpen trends te volgen en ervoor te zorgen dat de effectiviteit bekend is.
+* *Stel een proces op om kwaadaardige manipulatie te detecteren en te reageren.* Er zijn actoren die zullen profiteren van machine learning en het vermogen van AI-systemen om te leren van hun omgeving om het resultaat te verschuiven naar hun doelen. Als uw gebruik van Personalizer in staat is om belangrijke keuzes te beïnvloeden, zorg er dan voor dat u over de juiste middelen beschikt om deze aanvallenklassen, waaronder menselijke beoordeling in de juiste omstandigheden, op te sporen en te beperken.
 
 ### <a name="security-and-privacy"></a>Beveiliging en privacy
-*AI-systemen moeten veilig zijn en de privacy eerbiedigen*. Bij het gebruik van Personaler:
+*AI-systemen moeten veilig zijn en de privacy respecteren.* Bij gebruik van Personalizer:
 
-* *Informeer gebruikers vooraf over de verzamelde gegevens en de wijze waarop deze worden gebruikt en verschaf vóór*de voorafgaande toestemming, volgens uw lokale en industriële voor Schriften.
-* *Beveilig gebruikers besturings elementen voor privacy.* Voor toepassingen waarin persoonlijke gegevens worden opgeslagen, kunt u een gemakkelijk te vinden knop bieden voor functies zoals: 
+* *Informeer gebruikers vooraf over de gegevens die worden verzameld en hoe deze worden gebruikt en verkrijg vooraf hun toestemming*, volgens uw lokale en brancheregelgeving.
+* *Zorg voor privacybeschermende gebruikerscontroles.* Voor toepassingen die persoonlijke gegevens opslaan, u overwegen een eenvoudig te vinden knop te bieden voor functies zoals: 
    * `Show me all you know about me`    
    * `Forget my last interaction` 
    * `Delete all you know about me`
 
-In sommige gevallen kunnen deze juridisch verplicht zijn. Houd rekening met de compromissen bij het opnieuw trainen van modellen, zodat deze geen traceringen van verwijderde gegevens bevatten.
+In sommige gevallen kunnen deze wettelijk verplicht zijn. Houd rekening met de afwegingen in omscholingsmodellen, zodat ze geen sporen van verwijderde gegevens bevatten.
 
-### <a name="inclusiveness"></a>Inclusieve
-*Adresseer een breed scala aan menselijke behoeften en ervaring*.
-* *Een persoonlijke ervaring bieden voor toegankelijkheids interfaces.* De efficiëntie die afkomstig is van goede persoonlijke instellingen: wordt toegepast om de hoeveelheid inspanning, verplaatsing en onnodige herhaling in interacties te verminderen. Dit kan vooral nuttig zijn voor mensen met een handicap.
-* *Stel toepassings gedrag in op context*. U kunt Personaler gebruiken om dubbel zinnigheid te maken tussen intenties in een chat-bot, bijvoorbeeld omdat de juiste interpretatie context gevoelig is en één grootte mogelijk niet helemaal past. 
-
-
-## <a name="proactive-readiness-for-increased-data-protection-and-governance"></a>Proactieve gereedheid voor verhoogde gegevens bescherming en-beheer
-
-Het is moeilijk om specifieke wijzigingen in reglementaire contexten te voors pellen, maar in het algemeen is het verstandig om verder te gaan dan het minimale juridische kader om het respectful gebruik van persoons gegevens te waarborgen en om transparantie en keuze te bieden die betrekking hebben op het maken van een algoritme beslissing.
+### <a name="inclusiveness"></a>Inclusiviteit
+*Een breed scala aan menselijke behoeften en ervaringen*aanpakken.
+* *Bied gepersonaliseerde ervaringen voor interfaces met toegankelijkheid.* De efficiëntie die voortkomt uit een goede personalisatie - toegepast om de hoeveelheid inspanning, beweging en onnodige herhaling in interacties te verminderen - kan vooral gunstig zijn voor mensen met een handicap.
+* *Toepassingsgedrag aanpassen aan context*. U Personalizer gebruiken om tussen intenties in een chatbot te disambiguate, bijvoorbeeld omdat de juiste interpretatie contextueel kan zijn en één maat mogelijk niet allemaal past. 
 
 
-* Denk na over een situatie waarin er nieuwe beperkingen zijn voor gegevens die door individuen worden verzameld, en er moet worden aangegeven hoe deze is gebruikt om beslissingen te nemen.
-* Houd rekening met extra gereedheid waarbij gebruikers onder andere marginale kwets bare populaties, kinderen, gebruikers in economische Risico's of gebruikers kunnen bevatten die van invloed zijn op de manipulatie van algoritmen.
-* Houd rekening met het verbreiden van de betrouw bare afweging met de manier waarop toepassingen en algoritmen voor het verzamelen van doel stellingen en doel groepen worden uitgespeeld en hoe u beproefde strategische fouten kunt voor komen.
+## <a name="proactive-readiness-for-increased-data-protection-and-governance"></a>Proactieve bereidheid voor meer gegevensbescherming en governance
+
+Het is moeilijk om specifieke veranderingen in regelgevingscontexten te voorspellen, maar in het algemeen zou het verstandig zijn om verder te gaan dan het minimale wettelijke kader om respectvol gebruik van persoonsgegevens te garanderen en transparantie en keuze te bieden met betrekking tot algoritmische besluitvorming.
 
 
-## <a name="proactive-assessments-during-your-project-lifecycle"></a>Proactieve analyses tijdens de levens cyclus van uw project
+* Overweeg om vooruit te plannen naar een situatie waarin er nieuwe beperkingen kunnen zijn op gegevens die van individuen worden verzameld, en er is behoefte om te laten zien hoe het werd gebruikt om beslissingen te nemen.
+* Houd rekening met extra bereidheid waarbij gebruikers gemarginaliseerde kwetsbare bevolkingsgroepen, kinderen, gebruikers in economische kwetsbaarheid of gebruikers die anderszins gevoelig zijn voor invloed van algoritmische manipulatie kunnen omvatten.
+* Denk aan de wijdverbreide ontevredenheid over hoe doelgroeptargeting en publieksbeïnvloedende programma's en algoritmen voor het verzamelen van gegevens zich hebben afgespeeld en hoe bewezen strategische fouten kunnen worden voorkomen.
 
-Overweeg om methoden te maken voor team leden, gebruikers en zakelijke eigen aren om problemen met het verantwoordelijke gebruik te melden, en een proces te maken dat prioriteit geeft aan de oplossing en voor komt dat Retaliation.
 
-Een persoon die op de hoogte is van de neven effecten van het gebruik van een technologie wordt beperkt door hun perspectief en levens ervaring. Breid het bereik van de beschik bare meningen uit door in meer uiteenlopende stemmen in uw teams, gebruikers of advies borden te brengen. zo is het mogelijk en gestimuleerd dat ze kunnen praten. Overweeg trainings-en leer materiaal om de team kennis in dit domein verder uit te breiden en de mogelijkheid toe te voegen om complexe en gevoelige onderwerpen te bespreken.
+## <a name="proactive-assessments-during-your-project-lifecycle"></a>Proactieve beoordelingen tijdens de levenscyclus van uw project
 
-Denk na over het behandelen van taken met betrekking tot verantwoordelijk gebruik, net zoals andere crosscutting taken in de toepassings levenscyclus, zoals taken met betrekking tot gebruikers ervaring, beveiliging of DevOps. Deze taken en hun vereisten kunnen geen behandeld zijn. Het verantwoordelijke gebruik moet worden besproken en geverifieerd tijdens de levens cyclus van de toepassing.
+Overweeg methoden te maken voor teamleden, gebruikers en bedrijfseigenaren om zorgen over verantwoord gebruik te melden en een proces te maken dat prioriteit geeft aan hun oplossing en vergelding voorkomt.
+
+Elke persoon denken over bijwerkingen van het gebruik van een technologie wordt beperkt door hun perspectief en levenservaring. Breid het beschikbare meningenaanbod uit door meer uiteenlopende stemmen in uw teams, gebruikers of adviesraden te brengen; zodanig dat het mogelijk is en aangemoedigd voor hen om zich uit te spreken. Overweeg trainings- en leermateriaal om de teamkennis op dit gebied verder uit te breiden en om mogelijkheden toe te voegen om complexe en gevoelige onderwerpen te bespreken.
+
+Overweeg taken met betrekking tot verantwoord gebruik te behandelen, net als andere crosscutting-taken in de levenscyclus van de toepassing, zoals taken die verband houden met gebruikerservaring, beveiliging of DevOps. Deze taken en hun vereisten kunnen geen bijzaak zijn. Verantwoord gebruik moet worden besproken en geverifieerd gedurende de levenscyclus van de toepassing.
  
 ## <a name="questions-and-feedback"></a>Vragen en feedback
 
-Micro soft zet zich voortdurend bezig met hulp middelen en documenten om u op deze verantwoordelijkheden te helpen. Ons team nodigt u uit om [feedback te geven aan micro soft](mailto:cogsvcs-RL-feedback@microsoft.com?subject%3DPersonalizer%20Responsible%20Use%20Feedback&body%3D%5BPlease%20share%20any%20question%2C%20idea%20or%20concern%5D) als u meer hulp middelen, product functies en documenten zou kunnen helpen bij het implementeren van deze richt lijnen voor het gebruik van personaler.
+Microsoft zet zich voortdurend in voor hulpprogramma's en documenten om u te helpen deze verantwoordelijkheden op te nemen. Ons team nodigt u uit om [feedback te geven aan Microsoft](mailto:cogsvcs-RL-feedback@microsoft.com?subject%3DPersonalizer%20Responsible%20Use%20Feedback&body%3D%5BPlease%20share%20any%20question%2C%20idea%20or%20concern%5D) als u denkt dat extra tools, productfuncties en documenten u zouden helpen bij het implementeren van deze richtlijnen voor het gebruik van Personalizer.
 
-## <a name="recommended-reading"></a>Aanbevolen Lees bewerkingen
+## <a name="recommended-reading"></a>Aanbevolen lezen
 
-* Zie de zes principes van micro soft voor de verantwoordelijke ontwikkeling van AI die is gepubliceerd in het boek van januari 2018, [de toekomst berekende](https://news.microsoft.com/futurecomputed/)
-* [Wie is eigenaar van de toekomst?](https://www.goodreads.com/book/show/15802693-who-owns-the-future) door Jaron Lanier.
-* [Wapens van wiskunde](https://www.goodreads.com/book/show/28186015-weapons-of-math-destruction) door-Cathy O'Neil
-* [Ethiek en gegevens wetenschap](https://www.oreilly.com/library/view/ethics-and-data/9781492043898/) door DJ Patil, Hilary Mets, Mike Loukides.
-* [ACM-code van de ethiek](https://www.acm.org/code-of-ethics)
-* [Genetic Information Nondiscrimination Act - GINA](https://en.wikipedia.org/wiki/Genetic_Information_Nondiscrimination_Act)
-* [FATML-principes voor berekenings algoritmen](https://www.fatml.org/resources/principles-for-accountable-algorithms)
+* Zie de zes principes van Microsoft voor de verantwoorde ontwikkeling van AI die zijn gepubliceerd in het boek [The Future Computed](https://news.microsoft.com/futurecomputed/) van januari 2018
+* [Wie is eigenaar van de toekomst?](https://www.goodreads.com/book/show/15802693-who-owns-the-future) van Jaron Lanier.
+* [Wapens van Math Destruction](https://www.goodreads.com/book/show/28186015-weapons-of-math-destruction) door - Cathy O'Neil
+* [Ethiek en Data Science](https://www.oreilly.com/library/view/ethics-and-data/9781492043898/) door DJ Patil, Hilary Mason, Mike Loukides.
+* [ACM-ethische code](https://www.acm.org/code-of-ethics)
+* [Wet op de non-discriminatie van genetische informatie - GINA](https://en.wikipedia.org/wiki/Genetic_Information_Nondiscrimination_Act)
+* [FATML-principes voor verantwoordelijke algoritmen](https://www.fatml.org/resources/principles-for-accountable-algorithms)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Functies: actie en context](concepts-features.md).
+[Kenmerken: actie en context](concepts-features.md).

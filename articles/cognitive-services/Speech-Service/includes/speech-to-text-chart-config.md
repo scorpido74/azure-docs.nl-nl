@@ -1,7 +1,7 @@
 ---
-title: Spraak containers installeren
+title: Spraakcontainers installeren
 titleSuffix: Azure Cognitive Services
-description: Details van de configuratie opties voor de helm voor spraak naar tekst.
+description: Geeft details over de configuratieopties voor het aan de werk-naar-tekst helmdiagram.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,32 +11,32 @@ ms.topic: include
 ms.date: 08/22/2019
 ms.author: dapine
 ms.openlocfilehash: 3f390affe7badb401277aa86d1867c763aa0ae3b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "69971321"
 ---
-### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>Spraak naar tekst (subdiagram: grafieken/speechToText)
+### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>Spraak-naar-tekst (subgrafiek: grafieken/speechToText)
 
-Als u het schema "paraplu" wilt overschrijven, voegt `speechToText.` u het voor voegsel toe aan een para meter om het meer specifiek te maken. Hiermee wordt bijvoorbeeld de overeenkomstige para meter overschreven zoals `speechToText.numberOfConcurrentRequest` `numberOfConcurrentRequest`onderdrukkingen.
+Als u de "paraplu"-grafiek `speechToText.` wilt overschrijven, voegt u het voorvoegsel op een parameter toe om deze specifieker te maken. Het zal bijvoorbeeld de bijbehorende parameter `speechToText.numberOfConcurrentRequest` overschrijven, bijvoorbeeld overschrijft `numberOfConcurrentRequest`.
 
-|Parameter|Description|Standaard|
+|Parameter|Beschrijving|Standaard|
 | -- | -- | -- |
-| `enabled` | Hiermee wordt aangegeven of de **spraak-naar-tekst-** service is ingeschakeld. | `false` |
-| `numberOfConcurrentRequest` | Het aantal gelijktijdige aanvragen voor de service voor **spraak naar tekst** . In deze grafiek worden automatisch de CPU-en geheugen bronnen berekend op basis van deze waarde. | `2` |
-| `optimizeForAudioFile`| Of de service moet worden geoptimaliseerd voor audio-invoer via audio bestanden. Als `true`deze grafiek meer CPU-resource wordt toegewezen aan de service. | `false` |
-| `image.registry`| Het REGI ster **met spraak-naar-tekst** docker-installatie kopieën. | `containerpreview.azurecr.io` |
-| `image.repository` | De afbeeldings opslagplaats **voor spraak-naar-tekst-** docker. | `microsoft/cognitive-services-speech-to-text` |
-| `image.tag` | De tag **voor spraak-naar-tekst-** docker-afbeelding. | `latest` |
-| `image.pullSecrets` | De afbeeldings geheimen voor het ophalen van de **spraak-naar-tekst** docker-installatie kopie. | |
-| `image.pullByHash`| Hiermee wordt aangegeven of de docker-installatie kopie wordt opgehaald door hash. Als `true`isvereist. `image.hash` | `false` |
-| `image.hash`| De hash van de **spraak-naar-tekst-** docker-installatie kopie. Wordt alleen gebruikt `image.pullByHash: true`wanneer.  | |
-| `image.args.eula`lang | Hiermee wordt aangegeven dat u de licentie hebt geaccepteerd. De enige geldige waarde is`accept` | |
-| `image.args.billing`lang | De waarde voor de URL van het facturerings eindpunt is beschikbaar op de overzichts pagina van het Azure Portal. | |
-| `image.args.apikey`lang | Gebruikt voor het bijhouden van informatie over facturering. ||
-| `service.type` | Het Service type Kubernetes van de service **voor spraak naar tekst** . Zie de [instructies voor het Kubernetes-Service type](https://kubernetes.io/docs/concepts/services-networking/service/) voor meer informatie en controleer de ondersteuning van cloud providers. | `LoadBalancer` |
-| `service.port`|  De poort van de service voor **spraak naar tekst** . | `80` |
-| `service.annotations` | De aantekeningen voor **spraak naar tekst** voor de meta gegevens van de service. Annotaties zijn sleutel waardeparen. <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
-| `service.autoScaler.enabled` | Hiermee wordt aangegeven of de horizontale pod-functie voor [automatisch schalen](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) is ingeschakeld. Als `true`, wordt `speech-to-text-autoscaler` de geïmplementeerd in het Kubernetes-cluster. | `true` |
-| `service.podDisruption.enabled` | Of het [pod](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) -verstorings budget is ingeschakeld. Als `true`, wordt `speech-to-text-poddisruptionbudget` de geïmplementeerd in het Kubernetes-cluster. | `true` |
+| `enabled` | Of de **spraak-naar-tekstservice** is ingeschakeld. | `false` |
+| `numberOfConcurrentRequest` | Het aantal gelijktijdige aanvragen voor de **spraak-naar-tekstservice.** Deze grafiek berekent automatisch CPU- en geheugenbronnen op basis van deze waarde. | `2` |
+| `optimizeForAudioFile`| Of de service moet optimaliseren voor audio-invoer via audiobestanden. Als `true`, zal deze grafiek meer CPU-bron toewijzen aan service. | `false` |
+| `image.registry`| Het **afbeeldingsregister van de tekst-naar-tekstdocker.** | `containerpreview.azurecr.io` |
+| `image.repository` | De **spraak-naar-tekst** docker image repository. | `microsoft/cognitive-services-speech-to-text` |
+| `image.tag` | De **afbeeldingstag van de tekst-naar-tekstdocker.** | `latest` |
+| `image.pullSecrets` | De afbeelding is geheimen voor het trekken van de **spraak-naar-tekst** docker afbeelding. | |
+| `image.pullByHash`| Of het dockerbeeld door hash wordt getrokken. `true`Indien, `image.hash` is vereist. | `false` |
+| `image.hash`| De **spraak-naar-tekst** docker afbeelding hash. Alleen gebruikt `image.pullByHash: true`wanneer .  | |
+| `image.args.eula`(verplicht) | Geeft aan dat je de licentie hebt geaccepteerd. De enige geldige waarde is`accept` | |
+| `image.args.billing`(verplicht) | De URI-waarde voor factureringseindpunt is beschikbaar op de pagina Spraakoverzicht van de Azure-portal. | |
+| `image.args.apikey`(verplicht) | Wordt gebruikt om factureringsgegevens bij te houden. ||
+| `service.type` | Het Kubernetes-servicetype van de **spraak-naar-tekstservice.** Bekijk de [instructies voor Kubernetes-servicetypen](https://kubernetes.io/docs/concepts/services-networking/service/) voor meer informatie en controleer de ondersteuning van cloudprovideren. | `LoadBalancer` |
+| `service.port`|  De poort van de **spraak-naar-tekstservice.** | `80` |
+| `service.annotations` | De **spraak-naar-tekst-annotaties** voor de metagegevens van de service. Annotaties zijn sleutelwaardeparen. <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
+| `service.autoScaler.enabled` | Of de [Horizontale Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) is ingeschakeld. Als `true`, `speech-to-text-autoscaler` wordt het geïmplementeerd in het Kubernetes-cluster. | `true` |
+| `service.podDisruption.enabled` | Of het [pod-onderbrekingsbudget](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) is ingeschakeld. Als `true`, `speech-to-text-poddisruptionbudget` wordt het geïmplementeerd in het Kubernetes-cluster. | `true` |

@@ -1,41 +1,41 @@
 ---
-title: Gegevens wijziging-LUIS
-description: Informatie over hoe gegevens kunnen worden gewijzigd voordat voorspellingen in Language Understanding (LUIS)
+title: Wijziging van gegevens - LUIS
+description: Meer informatie over hoe gegevens kunnen worden gewijzigd voordat voorspellingen worden gedaan in Taalbegrip (LUIS)
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 5547724a6333d248a7ba4e9aeecaaa8f331feb7d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: b3b36351a64a4e1a0bd13d5785a4e0609a80901d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79221093"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292062"
 ---
-# <a name="alter-utterance-data-before-or-during-prediction"></a>ALTER utterance gegevens vóór of tijdens de voorspelling
-LUIS biedt methoden voor het bewerken van de utterance vóór of tijdens de voorspelling. Dit zijn onder andere het corrigeren van de [Spelling](luis-tutorial-bing-spellcheck.md)en het oplossen van problemen met de tijd zone voor vooraf ontwikkelde [datetimeV2](luis-reference-prebuilt-datetimev2.md).
+# <a name="alter-utterance-data-before-or-during-prediction"></a>Utterancegegevens voor of tijdens de voorspelling wijzigen
+LUIS biedt manieren om de utterance voor of tijdens de voorspelling te manipuleren. Deze omvatten [het oplossen van spelling,](luis-tutorial-bing-spellcheck.md)en het oplossen van tijdzone problemen voor vooraf gebouwde [datetimeV2](luis-reference-prebuilt-datetimev2.md).
 
-## <a name="correct-spelling-errors-in-utterance"></a>Corrigeren van spelfouten in utterance
+## <a name="correct-spelling-errors-in-utterance"></a>Spellingfouten in utterance corrigeren
 
 
 ### <a name="v3-runtime"></a>V3-runtime
 
-Tekst voorverwerken voor spelling correcties voordat u de utterance naar LUIS verzendt. Gebruik voor beeld-uitingen met de juiste spelling om ervoor te zorgen dat u de juiste voor spellingen krijgt.
+Verwerk tekst voor spellingcorrecties voordat u de utterance naar LUIS verzendt. Gebruik voorbeelduitingen met de juiste spelling om ervoor te zorgen dat u de juiste voorspellingen krijgt.
 
-Gebruik [Bing spellingcontrole](../bing-spell-check/overview.md) om tekst te corrigeren voordat u deze naar Luis verzendt.
+Gebruik [Bing Spell Check](../bing-spell-check/overview.md) om tekst te corrigeren voordat u deze naar LUIS verzendt.
 
-### <a name="prior-to-v3-runtime"></a>Voorafgaand aan de V3-runtime
+### <a name="prior-to-v3-runtime"></a>Voorafgaand aan V3 runtime
 
-LUIS maakt gebruik van [Bing spellingcontrole-API V7](../Bing-Spell-Check/overview.md) om spel fouten in de utterance te corrigeren. LUIS moet de sleutel die is gekoppeld aan die service. Maak de sleutel en voeg vervolgens de sleutel toe als een query reeks parameter op het [eind punt](https://go.microsoft.com/fwlink/?linkid=2092356).
+LUIS gebruikt [Bing Spell Check API V7](../Bing-Spell-Check/overview.md) om spelfouten in de utterance te corrigeren. LUIS heeft de sleutel nodig die aan die service is gekoppeld. Maak de sleutel en voeg de sleutel toe als parameter querystring op het [eindpunt.](https://go.microsoft.com/fwlink/?linkid=2092356)
 
-Het eindpunt moet twee parameters voor spellingcorrecties om te werken:
+Het eindpunt vereist twee param's voor spellingcorrecties om te werken:
 
 |Param|Waarde|
 |--|--|
 |`spellCheck`|booleaans|
-|`bing-spell-check-subscription-key`|[Bing spellingcontrole-API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) -eindpunt sleutel|
+|`bing-spell-check-subscription-key`|[Bing Spell Check API V7-eindpunttoets](https://azure.microsoft.com/services/cognitive-services/spell-check/)|
 
-Wanneer [Bing spellingcontrole-API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) een fout detecteert, worden de oorspronkelijke utterance en de gecorrigeerde utterance met de voor spellingen van het eind punt geretourneerd.
+Wanneer [Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) een fout detecteert, worden de oorspronkelijke utterance en de gecorrigeerde utterance geretourneerd, samen met voorspellingen van het eindpunt.
 
-#### <a name="v2-prediction-endpoint-response"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 voorspelling eindpuntrespons](#tab/V2)
 
 ```JSON
 {
@@ -49,7 +49,7 @@ Wanneer [Bing spellingcontrole-API V7](https://azure.microsoft.com/services/cogn
 }
 ```
 
-#### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 voorspelling eindpuntrespons](#tab/V3)
 
 ```JSON
 {
@@ -70,47 +70,47 @@ Wanneer [Bing spellingcontrole-API V7](https://azure.microsoft.com/services/cogn
 * * *
 
 ### <a name="list-of-allowed-words"></a>Lijst met toegestane woorden
-De Bing spell check-API die in LUIS wordt gebruikt, biedt geen ondersteuning voor een lijst met woorden die moeten worden genegeerd tijdens de wijziging van de spelling controle. Als u een lijst met woorden of acroniemen wilt toestaan, verwerkt u de utterance in de client toepassing voordat u de utterance naar LUIS verzendt voor het voors pellen van de intentie.
+De API voor spellingcontrole van Bing die in LUIS wordt gebruikt, biedt geen ondersteuning voor een lijst met woorden die u moet negeren tijdens wijzigingen bij de spellingcontrole. Als u een lijst met woorden of afkortingen moet toestaan, verwerkt u de utterance in de clienttoepassing voordat u de utterance naar LUIS verzendt voor intentievoorspelling.
 
-## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Tijdzone van de vooraf gedefinieerde datetimeV2 entiteit wijzigen
-Wanneer een LUIS-app gebruikmaakt van de vooraf gemaakte [datetimeV2](luis-reference-prebuilt-datetimev2.md) -entiteit, kan een datum/tijd-waarde worden geretourneerd in het Voorspellings antwoord. De tijdzone van de aanvraag wordt gebruikt om te bepalen van de juiste datum/tijd om terug te keren. Als de aanvraag afkomstig is van een bot of een andere gecentraliseerde toepassing voorafgaand aan LUIS, corrigeer dan de tijdzone die LUIS gebruikt.
+## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Tijdzone wijzigen van vooraf gebouwde datumV2-entiteit
+Wanneer een LUIS-app de vooraf gebouwde [datumV2-entiteit](luis-reference-prebuilt-datetimev2.md) gebruikt, kan een datumtijdwaarde worden geretourneerd in het voorspellingsantwoord. De tijdzone van de aanvraag wordt gebruikt om de juiste datumtijd te bepalen om terug te keren. Als de aanvraag afkomstig is van een bot of een andere gecentraliseerde toepassing voordat u naar LUIS gaat, corrigeert u de tijdzone die LUIS gebruikt.
 
-### <a name="endpoint-querystring-parameter"></a>Eindpunt querystring-parameter
-De tijd zone wordt gecorrigeerd door de tijd zone van de gebruiker toe te voegen aan het [eind punt](https://go.microsoft.com/fwlink/?linkid=2092356) met behulp van de para meter `timezoneOffset`. De waarde van `timezoneOffset` moet het positieve of negatieve getal zijn, in minuten, om de tijd te wijzigen.
+### <a name="endpoint-querystring-parameter"></a>Parameter eindpuntquerytekenreeks
+De tijdzone wordt gecorrigeerd door de tijdzone van [endpoint](https://go.microsoft.com/fwlink/?linkid=2092356) de gebruiker `timezoneOffset` toe te voegen aan het eindpunt met behulp van de param. De waarde `timezoneOffset` van moet het positieve of negatieve getal zijn, in minuten, om de tijd te wijzigen.
 
 |Param|Waarde|
 |--|--|
 |`timezoneOffset`|positief of negatief getal, in minuten|
 
-### <a name="daylight-savings-example"></a>Voorbeeld van de zomer-en besparingen
-Als u de geretourneerde vooraf gemaakte datetimeV2 nodig hebt om te passen op zomer tijd, moet u de `timezoneOffset` query string-para meter gebruiken met een +/-waarde in minuten voor de [eindpunt](https://go.microsoft.com/fwlink/?linkid=2092356) query.
+### <a name="daylight-savings-example"></a>Voorbeeld van zomertijd
+Als u de geretourneerde vooraf gebouwde datetimeV2 wilt aanpassen `timezoneOffset` voor de zomertijd, moet u de querystringparameter met een +/- waarde in minuten gebruiken voor de [eindpuntquery.](https://go.microsoft.com/fwlink/?linkid=2092356)
 
-#### <a name="v2-prediction-endpoint-request"></a>[V2-aanvraag voor Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[V2 voorspelling eindpunt aanvraag](#tab/V2)
 
-60 minuten toevoegen:
+Voeg 60 minuten toe:
 
-https://{Region}. API. cognitieve. Microsoft. com/Luis/v 2.0/apps/{appId}? q = de lampjes inschakelen? **time zone offset = 60**& verbose = {boolean} & spelling controle = {boole} & fase ring = {boolean} & Bing-spelling controle-abonnement-key = {string} & log = {Boolean}
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
-60 minuten verwijderen:
+Verwijder 60 minuten:
 
-https://{Region}. API. cognitieve. Microsoft. com/Luis/v 2.0/apps/{appId}? q = de lampjes inschakelen? **time zone offset =-60**& uitgebreid = {boolean} & spelling controle = {boolean} & fase ring = {boolean} & Bing-spelling controle-abonnement-key = {string} & log = {Boolean}
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=-60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
-#### <a name="v3-prediction-endpoint-request"></a>[V3-Voorspellings eindpunt aanvraag](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[V3 voorspelling eindpunt aanvraag](#tab/V3)
 
-60 minuten toevoegen:
+Voeg 60 minuten toe:
 
-https://{Region}. API. cognitieve. micro soft. com/Luis/v 3.0-Preview/apps/{appId}/sleuven/Production/voorspelbaar? query = de lampjes inschakelen? **time zone offset = 60**& spelling controle = {boolean} & Bing-spelling-check-Subscription-key = {string} & log = {Boolean}
+`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
-60 minuten verwijderen:
+Verwijder 60 minuten:
 
-https://{Region}. API. cognitieve. micro soft. com/Luis/v 3.0-Preview/apps/{appId}/sleuven/Production/voorspelbaar? query = de lampjes inschakelen? **time zone offset =-60**& spelling controle = {boolean} & Bing-spelling-check-Subscription-key = {string} & log = {Boolean}
+`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=-60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
-Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
+Meer informatie over het [V3-voorspellingseindpunt](luis-migration-api-v3.md).
 
 * * *
 
 ## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>C#-code bepaalt de juiste waarde van timezoneOffset
-De volgende C# code maakt gebruik van de methode [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) van de klasse [time zone info](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) om de juiste `timezoneOffset` te bepalen op basis van de systeem tijd:
+De volgende C#-code gebruikt de [FindSystemTimeZoneById-methode](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) van `timezoneOffset` de klasse [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) om de juiste te bepalen op basis van de systeemtijd:
 
 ```csharp
 // Get CST zone id
@@ -129,4 +129,4 @@ int timezoneOffset = (int)((cstDatetime - utcDatetime).TotalMinutes);
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Spel fouten corrigeren met deze zelf studie](luis-tutorial-bing-spellcheck.md)
+> [Spelfouten corrigeren met deze zelfstudie](luis-tutorial-bing-spellcheck.md)

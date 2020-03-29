@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 68da335875752d326ee718cade3d501623c70b49
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72935945"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>Tekst controleren aan de hand van een aangepaste termenlijst in C#
@@ -32,7 +32,7 @@ In dit artikel vindt u informatie en codevoorbeelden om aan de slag te gaan met 
 - Lijstgegevens bewerken.
 - De index vernieuwen zodat wijzigingen in de lijst worden gebruikt in een nieuwe scan.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Registreren voor de Content Moderator-services
 
@@ -69,7 +69,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>De Content Moderator-client maken
 
-Voeg de volgende code toe om een Content Moderator-client voor uw abonnement te maken. Werk de velden `AzureEndpoint` en `CMSubscriptionKey` bij met de waarden van uw eind punt-URL en abonnements sleutel. U vindt deze in het Azure Portal op het tabblad **Quick Start** van uw resource.
+Voeg de volgende code toe om een Content Moderator-client voor uw abonnement te maken. Werk `AzureEndpoint` de `CMSubscriptionKey` velden en velden bij met de waarden van uw URL voor eindpunt en abonnementssleutel. Deze vindt u op het tabblad **Snel starten** van uw resource in de Azure-portal.
 
 ```csharp
 /// <summary>
@@ -264,7 +264,7 @@ U kunt tekst screenen met behulp van een termenlijst met **ContentModeratorClien
 - Een MIME-type, te weten 'text/html', 'text/xml', 'text/markdown' of 'text/plain'.
 - De tekst die moet worden gescreend.
 - Een Booleaanse waarde Stel dit veld in op **true** om AutoCorrectie toe te passen op de tekst voordat deze wordt gescreend.
-- Een Booleaanse waarde Stel dit veld in op **waar** om persoons gegevens in de tekst te detecteren.
+- Een Booleaanse waarde Stel dit veld **in op true** om persoonlijke gegevens in de tekst te detecteren.
 - De id van de termenlijst.
 
 Zie voor meer informatie de [API-naslaghandleiding](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).
@@ -362,9 +362,9 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="compose-the-main-method"></a>De methode Main opstellen
+## <a name="compose-the-main-method"></a>De hoofdmethode opstellen
 
-Voeg de methodedefinitie **Main** toe aan de naamruimte **TermLists**, klasse **Program**. Sluit de klasse **Program** en de naamruimte **TermLists** tot slot af.
+Voeg de definitie van de **hoofdmethode** toe aan **termlisten**, **klasseprogramma**voor naamruimte . Sluit ten slotte de klasse **Programma** en de **naamruimte TermLists.**
 
 ```csharp
 static void Main(string[] args)
@@ -404,7 +404,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>De toepassing uitvoeren om de uitvoer te bekijken
 
-De uitvoer van de console ziet er als volgt uit:
+De uitvoer van uw console ziet er als volgt uit:
 
 ```console
 Creating term list.
@@ -438,4 +438,4 @@ Press ENTER to close the application.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Download de [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) en de [Visual Studio-oplossing](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) voor deze en andere snelstartgidsen over Content Moderator voor .NET en begin met de integratie.
+Download de [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) en de [Visual Studio-oplossing](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) voor deze en andere snelstarts over Content Moderator voor .NET en begin met de integratie.

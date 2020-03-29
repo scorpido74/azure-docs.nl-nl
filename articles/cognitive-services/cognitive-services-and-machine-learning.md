@@ -1,5 +1,5 @@
 ---
-title: Cognitive Services en Machine Learning
+title: Cognitieve diensten en machine learning
 titleSuffix: Azure Cognitive Services
 description: Ontdek hoe Azure Cognitive Services past bij andere Azure-aanbiedingen voor machine learning.
 services: cognitive-services
@@ -10,136 +10,136 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
 ms.openlocfilehash: cde505e4c95de9b9693a0e9d260d7fa84f3e905b
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75531476"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services en machine learning
 
-Cognitive Services biedt machine learning mogelijkheden om algemene problemen op te lossen, zoals het analyseren van tekst voor emotioneel sentiment of het analyseren van installatie kopieën om objecten of gezichten te herkennen. U hebt geen speciale machine learning of kennis van data wetenschappen nodig om deze services te kunnen gebruiken. 
+Cognitive Services biedt machine learning-mogelijkheden om algemene problemen op te lossen, zoals het analyseren van tekst voor emotioneel sentiment of het analyseren van afbeeldingen om objecten of gezichten te herkennen. U hebt geen speciale machine learning- of data science-kennis nodig om deze services te gebruiken. 
 
-[Cognitive Services](welcome.md) is een groep services die elk verschillende gegeneraliseerde Voorspellings mogelijkheden ondersteunt. De services zijn onderverdeeld in verschillende categorieën om u te helpen de juiste service te vinden. 
+[Cognitive Services](welcome.md) is een groep services die elk verschillende, algemene voorspellingsmogelijkheden ondersteunen. De diensten zijn onderverdeeld in verschillende categorieën om u te helpen de juiste service te vinden. 
 
-|Service categorie|Doel|
+|Servicecategorie|Doel|
 |--|--|
-|[Beslissen](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Bouw apps die aanbevelingen opleveren voor geïnformeerde en efficiënte besluitvorming.|
-|[Taal](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Laat uw apps natuurlijke taal verwerken met vooraf gemaakte scripts, sentiment evalueren en leren herkennen wat gebruikers willen.|
+|[Besluit](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Bouw apps die aanbevelingen opleveren voor geïnformeerde en efficiënte besluitvorming.|
+|[Language](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Laat uw apps natuurlijke taal verwerken met vooraf gemaakte scripts, sentiment evalueren en leren herkennen wat gebruikers willen.|
 |[Zoeken](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Voeg Bing Search-API's toe aan uw apps en maak het mogelijk om miljarden webpagina's, afbeeldingen, video's en nieuwsartikelen met één API-aanroep te doorzoeken.|
-|[Spraak](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Converteert spraak naar tekst en tekst naar spraak met natuurlijke uitspraak. Vertaal teksten van de ene naar de andere taal en schakel sprekercontrole en -herkenning in.|
-|[Handicap](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Herken, identificeer, indexeer en wijzig uw afbeeldingen, video's en digitale inkt en voorzie deze van ondertitels.|
+|[Speech](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Converteer spraak naar tekst en tekst naar spraak met natuurlijke uitspraak. Vertaal teksten van de ene naar de andere taal en schakel sprekercontrole en -herkenning in.|
+|[Vision](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Herken, identificeer, indexeer en wijzig uw afbeeldingen, video's en digitale inkt en voorzie deze van ondertitels.|
 ||||
 
-Gebruik Cognitive Services wanneer u:
+Gebruik cognitieve services wanneer u:
 
-* Kan gebruikmaken van een algemene oplossing.
-* Toegang tot de oplossing vanuit een programmeer REST API of-SDK. 
+* Kan een algemene oplossing gebruiken.
+* Toegang tot oplossing vanuit een programmeer-REST API of SDK. 
 
-Gebruik een andere oplossing voor machine learning wanneer u:
+Gebruik een andere machine learning-oplossing wanneer u:
 
-* Het algoritme moet worden gekozen en moet worden getraind op zeer specifieke gegevens.
+* Noodzaak om het algoritme te kiezen en moeten trainen op zeer specifieke gegevens.
 
 ## <a name="what-is-machine-learning"></a>Wat is machine learning?
 
-Machine learning is een concept waarbij u gegevens en een algoritme samenvoegt om een specifieke behoefte op te lossen. Zodra de gegevens en het algoritme zijn getraind, is de uitvoer een model dat u opnieuw kunt gebruiken met andere gegevens. Het getrainde model bevat inzichten op basis van de nieuwe gegevens. 
+Machine learning is een concept waarbij je data en een algoritme bij elkaar brengt om een specifieke behoefte op te lossen. Zodra de gegevens en het algoritme zijn getraind, is de uitvoer een model dat u opnieuw gebruiken met verschillende gegevens. Het getrainde model biedt inzichten op basis van de nieuwe gegevens. 
 
-Het proces van het bouwen van een machine learning systeem vereist enige kennis van machine learning of Data Science.
+Het proces van het bouwen van een machine learning-systeem vereist enige kennis van machine learning of data science.
 
-Machine learning wordt gegeven met behulp van [Azure machine learning (AML)-producten en-services](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context).
+Machine learning wordt geleverd met Behulp van [Azure Machine Learning (AML) producten en services.](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context)
 
 ## <a name="what-is-a-cognitive-service"></a>Wat is een cognitieve service?
 
-Een cognitieve service biedt deel of alle onderdelen in een machine learning oplossing: gegevens, algoritme en getraind model. Deze services zijn bedoeld om algemene kennis van uw gegevens te vereisen zonder dat u ervaring hoeft te hebben met machine learning of gegevens wetenschap. Deze services bieden zowel REST API (s) als Sdk's op basis van taal. Als gevolg hiervan moet u kennis van programmeer talen hebben om de services te kunnen gebruiken.
+Een Cognitive Service biedt een deel of alle componenten in een machine learning-oplossing: gegevens, algoritme en getraind model. Deze services zijn bedoeld om algemene kennis over uw gegevens te vereisen zonder ervaring met machine learning of data science. Deze diensten bieden zowel REST API(s) als op taal gebaseerde SDK's. Als gevolg hiervan moet u programmeertaal kennis hebben om de diensten te gebruiken.
 
-## <a name="how-are-cognitive-services-and-azure-machine-learning-aml-similar"></a>Hoe worden Cognitive Services en Azure Machine Learning (AML) vergelijkbaar?
+## <a name="how-are-cognitive-services-and-azure-machine-learning-aml-similar"></a>Hoe zijn Cognitive Services en Azure Machine Learning (AML) vergelijkbaar?
 
-Beide hebben de eind doelen van het Toep assen van kunst matige intelligentie (AI) voor het verbeteren van bedrijfs activiteiten, maar hoe elk deze in de respectieve aanbiedingen levert, is anders. 
+Beide hebben als einddoel om kunstmatige intelligentie (AI) toe te passen om de bedrijfsvoering te verbeteren, maar hoe elk dit in het betreffende aanbod biedt, is anders. 
 
-Over het algemeen zijn de doel groepen verschillend:
+Over het algemeen is het publiek anders:
 
-* Cognitive Services zijn voor ontwikkel aars zonder machine learning-ervaring.
-* Azure Machine Learning is afgestemd op gegevens wetenschappers. 
+* Cognitive Services zijn voor ontwikkelaars zonder machine learning-ervaring.
+* Azure Machine Learning is afgestemd op gegevenswetenschappers. 
 
-## <a name="how-is-a-cognitive-service-different-from-machine-learning"></a>Hoe wijkt een cognitieve service af van machine learning?
+## <a name="how-is-a-cognitive-service-different-from-machine-learning"></a>Hoe verschilt een cognitieve service van machine learning?
 
-Een cognitieve service biedt een getraind model voor u. Dit brengt gegevens en een algoritme samen die beschikbaar zijn via een REST API (s) of SDK. U kunt deze service binnen enkele minuten implementeren, afhankelijk van uw scenario.  Een cognitieve service biedt antwoorden op algemene problemen, zoals sleutel zinnen in tekst-of item identificatie in afbeeldingen. 
+Een Cognitive Service biedt een getraind model voor u. Dit brengt gegevens en een algoritme samen, beschikbaar vanuit een REST API(s) of SDK. U deze service binnen enkele minuten implementeren, afhankelijk van uw scenario.  Een cognitieve service biedt antwoorden op algemene problemen, zoals sleutelzinnen in tekst- of artikelidentificatie in afbeeldingen. 
 
-Machine learning is een proces dat doorgaans een langere periode nodig heeft om te implementeren. Deze tijd wordt besteed aan het verzamelen van gegevens, het opschonen, transformeren, het selecteren van algoritmen, model trainingen en implementaties om te profiteren van hetzelfde functionaliteits niveau dat wordt verschaft door een cognitieve service. Met machine learning kunt u antwoorden geven op zeer gespecialiseerde en/of specifieke problemen. Voor machine learning-problemen moet u vertrouwd zijn met het specifieke onderwerp en de gegevens van het probleem dat wordt onderzocht, evenals de expertise van de gegevens wetenschap.
+Machine learning is een proces dat over het algemeen een langere periode nodig heeft om succesvol te implementeren. Deze tijd wordt besteed aan het verzamelen, schoonmaken, transformeren, algoritmeselectie, modeltraining en implementatie om tot hetzelfde niveau van functionaliteit te komen dat wordt geleverd door een cognitieve service. Met machine learning is het mogelijk om antwoorden te geven op zeer gespecialiseerde en/of specifieke problemen. Machine learning-problemen vereisen vertrouwdheid met het specifieke onderwerp en de gegevens van het betrokken probleem, evenals expertise in data science.
 
-## <a name="what-kind-of-data-do-you-have"></a>Wat voor soort gegevens hebt u?
+## <a name="what-kind-of-data-do-you-have"></a>Wat voor gegevens heb je?
 
-Cognitive Services kan, als een groep services, geen, sommige of alle aangepaste gegevens voor het getrainde model vereisen. 
+Cognitieve services, als een groep services, kunnen geen, sommige of alle aangepaste gegevens vereisen voor het getrainde model. 
 
-### <a name="no-additional-training-data-required"></a>Geen extra trainings gegevens vereist
+### <a name="no-additional-training-data-required"></a>Geen aanvullende trainingsgegevens vereist
 
-Services die een volledig getraind model bieden, kunnen worden behandeld als een _zwart vak_. U hoeft niet te weten hoe ze werken of welke gegevens er zijn gebruikt om ze te trainen. U brengt uw gegevens naar een volledig getraind model om een voor spelling te krijgen. 
+Diensten die een volledig getraind model bieden, kunnen worden behandeld als een _zwarte doos._ U hoeft niet te weten hoe ze werken of welke gegevens zijn gebruikt om ze te trainen. U brengt uw gegevens naar een volledig opgeleid model om een voorspelling te krijgen. 
 
-### <a name="some-or-all-training-data-required"></a>Sommige of alle trainings gegevens zijn vereist
+### <a name="some-or-all-training-data-required"></a>Sommige of alle benodigde trainingsgegevens
 
-Met sommige services kunt u uw eigen gegevens meenemen en vervolgens een model trainen. Hierdoor kunt u het model uitbreiden met behulp van de gegevens en het algoritme van de service met uw eigen gegevens. De uitvoer komt overeen met uw behoeften. Wanneer u uw eigen gegevens meebrengt, moet u mogelijk de gegevens labelen op een manier die specifiek is voor de service. Als u bijvoorbeeld een model traint om bloemen aan te duiden, kunt u een catalogus van bloem afbeeldingen samen met de locatie van de bloem in elke afbeelding opgeven om het model te trainen. 
+Met sommige services u uw eigen gegevens meenemen en vervolgens een model trainen. Hiermee u het model uitbreiden met behulp van de gegevens en het algoritme van de Service met uw eigen gegevens. De output komt overeen met uw behoeften. Wanneer u uw eigen gegevens meeneemt, moet u de gegevens mogelijk taggen op een manier die specifiek is voor de service. Als u bijvoorbeeld een model traint om bloemen te identificeren, u een catalogus met bloemenafbeeldingen, samen met de locatie van de bloem in elke afbeelding, aanbieden om het model te trainen. 
 
-Met een service _kunt u gegevens_ leveren om de eigen gegevens te verbeteren. Voor een service _moet_ u mogelijk gegevens opgeven. 
+Met een service _kunt_ u gegevens verstrekken om de eigen gegevens te verbeteren. Voor een service _moet_ u mogelijk gegevens verstrekken. 
 
-### <a name="real-time-or-near-real-time-data-required"></a>Realtime of bijna realtime gegevens vereist
+### <a name="real-time-or-near-real-time-data-required"></a>Real-time of bijna real-time gegevens vereist
 
-Een service heeft mogelijk realtime of bijna realtime gegevens nodig om een effectief model te bouwen. Deze services verwerken aanzienlijke hoeveel heden model gegevens. 
+Een service heeft mogelijk realtime of bijna realtime gegevens nodig om een effectief model te bouwen. Deze services verwerken aanzienlijke hoeveelheden modelgegevens. 
 
-## <a name="service-requirements-for-the-data-model"></a>Service vereisten voor het gegevens model
+## <a name="service-requirements-for-the-data-model"></a>Servicevereisten voor het gegevensmodel
 
-In de volgende gegevens wordt elke service gecategoriseerd op basis van het type gegevens dat is toegestaan of vereist.
+De volgende gegevens categoriseren elke service op welke soort gegevens deze toestaat of vereist.
 
-|Cognitieve service|Geen trainings gegevens vereist|U geeft enkele of alle trainings gegevens op|Real-time of bijna realtime gegevens verzameling|
+|Cognitieve service|Geen trainingsgegevens vereist|U verstrekt een aantal of alle trainingsgegevens|Real-time of bijna real-time gegevensverzameling|
 |--|--|--|--|
-|[Anomalie detectie](./Anomaly-Detector/overview.md)|x|x|x|
+|[Anomaly Detector](./Anomaly-Detector/overview.md)|x|x|x|
 |Bing Zoeken |x|||
-|[Computer Vision](./Computer-vision/Home.md)|x|||
+|[Computer Visie](./Computer-vision/Home.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Custom Vision](./Custom-Vision-Service/home.md)||x||
 |[Face](./Face/Overview.md)|x|x||
-|[Formulier herkenning](./form-recognizer/overview.md)||x||
+|[Form Recognizer](./form-recognizer/overview.md)||x||
 |[Insluitende lezer](./immersive-reader/overview.md)|x|||
-|[Inkt herkenning](./Ink-recognizer/overview.md)|x|x||
+|[Ink Recognizer](./Ink-recognizer/overview.md)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Personalizer](./personalizer/what-is-personalizer.md)|x*|x*|x|
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
-|[Spreker-herkenning](./speaker-recognition/home.md)||x||
-|[Spraak tekst naar spraak (TTS)](speech-service/text-to-speech.md)|x|x||
+|[Luidsprekerherkenning](./speaker-recognition/home.md)||x||
+|[Spraaktekst-naar-spraak (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Spraak-naar-tekst (STT)](speech-service/speech-to-text.md)|x|x||
 |[Spraakomzetting](speech-service/speech-translation.md)|x|||
 |[Tekstanalyse](./text-analytics/overview.md)|x|||
 |[Translator Text](./translator/translator-info-overview.md)|x|||
-|[Translator Text-aangepaste vertaler](./translator/custom-translator/overview.md)||x||
+|[Vertaler Tekst - aangepaste vertaler](./translator/custom-translator/overview.md)||x||
 
-\* Personaler vereist alleen trainings gegevens die door de service worden verzameld (zoals deze in realtime actief zijn) om uw beleid en gegevens te evalueren. Personaler heeft geen grote historische gegevens sets nodig voor de voor-en hands-training. 
+*Personalizer heeft alleen trainingsgegevens nodig die door de service worden verzameld (omdat deze in realtime werkt) om uw beleid en gegevens te evalueren. Personalizer heeft geen grote historische datasets nodig voor up-front- of batchtraining. 
 
-## <a name="where-can-you-use-cognitive-services"></a>Waar kunt u Cognitive Services gebruiken?
+## <a name="where-can-you-use-cognitive-services"></a>Waar u gebruik maken van Cognitive Services?
  
-De services worden gebruikt in een toepassing die REST API (en) of SDK-aanroepen kan maken. Voor beelden van toepassingen zijn websites, bots, virtuele of gemengde realiteit, desktop-en mobiele toepassingen. 
+De services worden gebruikt in elke toepassing die REST API(s) of SDK-aanroepen kan voeren. Voorbeelden van toepassingen zijn websites, bots, virtuele of mixed reality, desktop en mobiele applicaties. 
 
-## <a name="how-is-azure-cognitive-search-related-to-cognitive-services"></a>Hoe zijn Azure Cognitive Search gerelateerd aan Cognitive Services?
+## <a name="how-is-azure-cognitive-search-related-to-cognitive-services"></a>Hoe is Azure Cognitive Search gerelateerd aan Cognitive Services?
 
-[Azure Cognitive Search](../search/search-what-is-azure-search.md) is een afzonderlijke service voor het zoeken in de cloud die optioneel Cognitive Services gebruikt voor het toevoegen van een installatie kopie en natuurlijke taal verwerking voor het indexeren van werk belastingen. Cognitive Services wordt weer gegeven in azure Cognitive Search via [ingebouwde vaardig heden](../search/cognitive-search-predefined-skills.md) waarmee afzonderlijke api's worden verpakt. U kunt een gratis resource gebruiken voor scenario's, maar plan het maken en koppelen van een [factureer bare resource](../search/cognitive-search-attach-cognitive-services.md) voor grotere volumes.
+[Azure Cognitive Search](../search/search-what-is-azure-search.md) is een afzonderlijke cloudzoekservice die optioneel cognitieve services gebruikt om beeld- en natuurlijke taalverwerking toe te voegen aan het indexeren van workloads. Cognitive Services wordt blootgesteld in Azure Cognitive Search door middel [van ingebouwde vaardigheden](../search/cognitive-search-predefined-skills.md) die individuele API's omwikkelen. U een gratis resource gebruiken voor walkthroughs, maar van plan zijn een [factureerbare bron](../search/cognitive-search-attach-cognitive-services.md) voor grotere volumes te maken en toe te voegen.
 
-## <a name="how-can-you-use-cognitive-services"></a>Hoe kunt u Cognitive Services gebruiken?
+## <a name="how-can-you-use-cognitive-services"></a>Hoe u cognitieve services gebruiken?
 
-Elke service biedt informatie over uw gegevens. U kunt Services combi neren om oplossingen te koppelen, zoals het omzetten van spraak (audio) naar tekst, het vertalen van de tekst in veel talen, en het gebruik van de vertaalde talen om antwoorden te krijgen van een Knowledge Base. Hoewel Cognitive Services kan worden gebruikt om intelligente oplossingen te maken, kunnen ze ook worden gecombineerd met traditionele machine learning projecten om modellen aan te vullen of het ontwikkel proces te versnellen. 
+Elke service geeft informatie over uw gegevens. U services combineren tot ketenoplossingen zoals het omzetten van spraak (audio) naar tekst, het vertalen van de tekst in vele talen en vervolgens het gebruik van de vertaalde talen om antwoorden te krijgen uit een kennisbank. Hoewel Cognitive Services kunnen worden gebruikt om zelf intelligente oplossingen te creëren, kunnen ze ook worden gecombineerd met traditionele machine learning-projecten om modellen aan te vullen of het ontwikkelingsproces te versnellen. 
 
-Cognitive Services die export modellen bieden voor andere machine learning-hulpprogram ma's:
+Cognitieve services die geëxporteerde modellen bieden voor andere machine learning-tools:
 
-|Cognitieve service|Model gegevens|
+|Cognitieve service|Modelinformatie|
 |--|--|
-|[Custom Vision](./custom-vision-service/home.md)|[Exporteren](./Custom-Vision-Service/export-model-python.md) voor tensor flow voor Android, CoreML voor IOS11, ONNX voor Windows ml|
+|[Custom Vision](./custom-vision-service/home.md)|[Exporteren](./Custom-Vision-Service/export-model-python.md) voor Tensorflow voor Android, CoreML voor iOS11, ONNX voor Windows ML|
 
 ## <a name="learn-more"></a>Meer informatie
 
-* [Architectuur handleiding-wat zijn de machine learning producten van micro soft?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
-* [Machine learning-Inleiding tot diep gaande informatie versus machine learning](../machine-learning/concept-deep-learning-vs-machine-learning.md)
+* [Architectuurgids - Wat zijn de machine learning-producten bij Microsoft?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
+* [Machine learning - Inleiding tot deep learning versus machine learning](../machine-learning/concept-deep-learning-vs-machine-learning.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Maak uw cognitieve service account in de [Azure Portal](cognitive-services-apis-create-account.md) of met [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli).
-* Meer informatie over het [verifiëren](authentication.md) van een cognitieve service.
-* [Diagnostische logboek registratie](diagnostic-logging.md) gebruiken voor het identificeren van problemen en het opsporen van fouten. 
-* Implementeer een cognitieve service in een docker- [container](cognitive-services-container-support.md).
-* Blijf up-to-date met [service-updates](https://azure.microsoft.com/updates/?product=cognitive-services).
+* Maak uw Cognitive Service-account in de [Azure-portal](cognitive-services-apis-create-account.md) of met [Azure CLI.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)
+* Meer informatie over hoe [u zich verifiëren bij](authentication.md) een cognitieve service.
+* Gebruik [diagnostische logboekregistratie](diagnostic-logging.md) voor het identificeren en debuggen van problemen. 
+* Een cognitieve service implementeren in een [Docker-container.](cognitive-services-container-support.md)
+* Blijf op de hoogte van [service-updates.](https://azure.microsoft.com/updates/?product=cognitive-services)

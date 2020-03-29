@@ -1,7 +1,7 @@
 ---
-title: N-beste vertalingen retour neren-Translator Text
+title: Return N-Best Translations - Tekst vertaler
 titleSuffix: Azure Cognitive Services
-description: N-beste vertalingen retour neren met behulp van de Translator Text-API.
+description: Retourneer N-Best vertalingen met behulp van de Translator Text API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -12,50 +12,50 @@ ms.date: 12/14/2017
 ms.author: swmachan
 ROBOTS: NOINDEX
 ms.openlocfilehash: eff25877165ac365e0af77651147fcdd1eebe294
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73837244"
 ---
-# <a name="how-to-return-n-best-translations"></a>N-beste vertalingen retour neren
+# <a name="how-to-return-n-best-translations"></a>N-Best vertalingen retourneren
 
 > [!NOTE]
-> Deze methode is afgeschaft. Het is niet beschikbaar in V 3.0 van de Translator Text-API.
+> Deze methode wordt afgeschaft. Het is niet beschikbaar in V3.0 van de Translator Text API.
 
-De methoden GetTranslations () en GetTranslationsArray () van de micro soft Translator-API bevatten een optionele Booleaanse vlag "IncludeMultipleMTAlternatives".
-De-methode retourneert maxTranslations alternatieven waarbij de Delta wordt verstrekt uit de N-beste lijst van de Vertaal engine.
+De methoden GetTranslations() en GetTranslationsArray() van de Microsoft Translator API bevatten een optionele Booleaanse vlag "IncludeMultipleMTAlternatives".
+De methode zal terugkeren naar maxTranslations alternatieven waar de delta wordt geleverd uit de N-Best lijst van de vertaler motor.
 
-De hand tekening is:
+De handtekening is:
 
 **Syntaxis**
 
 | C# |
 |:---|
-| GetTranslationsResponse micro soft. Translator. GetTranslations (appId, Text, van, to, maxTranslations, Options); |
+| GetTranslationsResponse Microsoft.Translator.GetTranslations(appId, tekst, van, naar maxTranslations, opties); |
 
 **Parameters**
 
 | Parameter | Beschrijving |
 |:---|:---|
-| appId | **Vereist** Als de autorisatie-header wordt gebruikt, laat u het veld AppID leeg een teken reeks opgeven met ' Bearer ' + ' "+ toegangs token.|
-| tekst | **Vereist** Een teken reeks voor de tekst die moet worden vertaald. De tekst mag niet langer zijn dan 10000 tekens.|
-| Van | **Vereist** Een teken reeks die de taal code vertegenwoordigt van de tekst die moet worden vertaald. |
-| tot | **Vereist** Een teken reeks die de taal code vertegenwoordigt voor het vertalen van de tekst in. |
-| maxTranslations | **Vereist** Een geheel getal dat het maximum aantal vertalingen vertegenwoordigt dat moet worden geretourneerd. |
-| Opties | **Optioneel** Een TranslateOptions-object met daarin de waarden die hieronder worden weer gegeven. Ze zijn allemaal optioneel en standaard ingesteld op de meest voorkomende instellingen.
+| appId | **Vereist** Als de kopautorisatie wordt gebruikt, laat u het appid-veld leeg, anders geeft u een tekenreeks op met 'Drager' + + + toegangstoken.|
+| tekst | **Vereist** Een tekenreeks die de tekst weergeeft om te vertalen. De grootte van de tekst mag niet groter zijn dan 10000 tekens.|
+| from | **Vereist** Een tekenreeks die de taalcode van de te vertalen tekst weergeeft. |
+| tot | **Vereist** Een tekenreeks die de taalcode weergeeft om de tekst naar te vertalen. |
+| maxVertalingen | **Vereist** Een int die het maximum aantal vertalingen vertegenwoordigt om terug te keren. |
+| opties | **Optioneel** Een object TranslateOptions dat de onderstaande waarden bevat. Ze zijn allemaal optioneel en standaard naar de meest voorkomende instellingen.
 
-* Categorie: de enige ondersteunde en standaard optie is "algemeen".
-* Content type: de enige ondersteunde en standaard optie is ' text/plain '.
-* Status: gebruikers status voor het correleren van aanvragen en antwoorden. Dezelfde inhoud wordt in het antwoord geretourneerd.
-* IncludeMultipleMTAlternatives: vlag om te bepalen of er meer dan één alternatief moet worden geretourneerd van de MT-engine. De standaard waarde is False en bevat slechts één alternatief.
+* Categorie: De enige ondersteunde optie en de standaardoptie is 'algemeen'.
+* ContentType: De enige ondersteunde en de standaardoptie is 'tekst/vlakte'.
+* Status: Gebruikersstatus om aanvragen en antwoorden te correleren. Dezelfde inhoud wordt geretourneerd in het antwoord.
+* IncludeMultipleMTAlternatives: vlag om te bepalen of meer dan één alternatieven van de MT-engine moeten worden teruggekomen. Standaard is false en bevat slechts 1 alternatief.
 
-## <a name="ratings"></a>Inhoudrestricties
-De classificaties worden als volgt toegepast: de beste automatische vertaling heeft de classificatie 5.
-De automatisch gegenereerde alternatieven voor vertaling (N-best) hebben een classificatie van 0 en hebben een afstemmings graad van 100.
+## <a name="ratings"></a>Waarderingen
+De beoordelingen worden als volgt toegepast: De beste automatische vertaling heeft een beoordeling van 5.
+De automatisch gegenereerde (N-Best) vertaalalternatieven hebben een rating van 0 en hebben een matchgraad van 100.
 
 ## <a name="number-of-alternatives"></a>Aantal alternatieven
-Het aantal geretourneerde alternatieven is Maxi maal maxTranslations, maar kan minder zijn.
+Het aantal geretourneerde alternatieven is maximaalVertalingen, maar kan minder zijn.
 
-## <a name="language-pairs"></a>Taal paren
-Deze functionaliteit is niet beschikbaar voor vertalingen tussen vereenvoudigd en traditioneel Chinees, beide richtingen. Het is beschikbaar voor alle andere ondersteunde taal paren van micro soft Translator.
+## <a name="language-pairs"></a>Taalparen
+Deze functionaliteit is niet beschikbaar voor vertalingen tussen vereenvoudigd en traditioneel Chinees, beide richtingen. Het is beschikbaar voor alle andere door Microsoft Translator ondersteunde taalparen.

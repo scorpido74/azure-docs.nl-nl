@@ -1,7 +1,7 @@
 ---
-title: Real-time conversatie transcriptie (preview)-spraak service
+title: Realtime gesprekstranscriptie (voorbeeld) - Spraakservice
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van real-time conversatie-transcriptie met de spraak-SDK. Beschikbaar voor C++, C#en Java.
+description: Meer informatie over het gebruik van real-time gesprekstranscriptie met de Speech SDK. Beschikbaar voor C++, C#en Java.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,46 +11,46 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
 ms.openlocfilehash: 64a9e11cec7164fb4421dd018238de9f0670382b
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76263724"
 ---
-# <a name="real-time-conversation-transcription-preview"></a>Real-time conversatie transcriptie (preview-versie)
+# <a name="real-time-conversation-transcription-preview"></a>Realtime gesprekstranscriptie (voorbeeld)
 
-Met de **ConversationTranscriber** API van de Speech SDK kunt u vergaderingen en andere gesp rekken transcriberen met de mogelijkheid om meerdere deel nemers toe te voegen, te verwijderen en te identificeren door audio naar de spraak service te streamen met behulp van `PullStream` of `PushStream`. In dit onderwerp moet u weten hoe u spraak-naar-tekst kunt gebruiken met de Speech SDK (versie 1.8.0 of hoger). Zie [Wat zijn spraak Services](overview.md)? voor meer informatie.
+Met de **ConversationTranscriber** API van de Speech SDK u vergaderingen en andere gesprekken transcriberen met de mogelijkheid `PullStream` `PushStream`om meerdere deelnemers toe te voegen, te verwijderen en te identificeren door audio naar de Spraakservice te streamen met of. In dit onderwerp moet u weten hoe u spraak-naar-tekst gebruiken met de SpraakSDK (versie 1.8.0 of hoger). Zie [Wat zijn spraakservices](overview.md)voor meer informatie .
 
 ## <a name="limitations"></a>Beperkingen
 
-- De ConversationTranscriber-API wordt ondersteund C++voor C#, en java in Windows, Linux en Android.
-- Momenteel beschikbaar in de talen "en-US" en "zh-CN" in de volgende regio's: _Midden_ -en _EastAsia_.
-- Vereist een matrix met een meerkanaals multi-microfoon met 7-Mic en een referentie stroom voor afspelen. De microfoon matrix moet voldoen aan [onze specificaties](https://aka.ms/sdsdk-microphone).
-- De [SDK voor spraak apparaten](speech-devices-sdk.md) biedt geschikte apparaten en een voor beeld-app die conversatie transcriptie demonstreert.
+- De ConversationTranscriber API wordt ondersteund voor C++, C#en Java op Windows, Linux en Android.
+- Momenteel beschikbaar in "en-US" en "zh-CN" talen in de volgende regio's: _centralus_ en _eastasia_.
+- Vereist een cirkelvormige array met meerdere microfoons met 7 microfoons met een naslagstream voor afspelen. De microfoonarray moet voldoen aan [onze specificatie.](https://aka.ms/sdsdk-microphone)
+- De [Speech Devices SDK](speech-devices-sdk.md) biedt geschikte apparaten en een voorbeeld-app die gesprekstranscriptie demonstreert.
 
-## <a name="optional-sample-code-resources"></a>Optionele voorbeeld code resources
+## <a name="optional-sample-code-resources"></a>Optionele voorbeeldcodebronnen
 
-De SDK voor spraak apparaten biedt voorbeeld code in Java voor realtime audio-opname met 8 kanalen.
+De Speech Device SDK biedt voorbeeldcode in Java voor real-time audio-opname met behulp van 8 kanalen.
 
-- [Voorbeeld code van ROOBO-apparaat](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/Conversation.java)
-- [Voorbeeld code van de Azure Kinect dev kit](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
+- [VOORBEELDcode ROOBO-apparaat](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/Conversation.java)
+- [Voorbeeldcode azure Kinect Dev Kit](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Een spraak service-abonnement. U kunt [een proef abonnement voor spraak ontvangen](https://azure.microsoft.com/try/cognitive-services/) als u er nog geen hebt.
+Een spraakserviceabonnement. Je [een spraakproefabonnement krijgen](https://azure.microsoft.com/try/cognitive-services/) als je er geen hebt.
 
-## <a name="create-voice-signatures"></a>Spraak handtekeningen maken
+## <a name="create-voice-signatures"></a>Spraakhandtekeningen maken
 
-De eerste stap bestaat uit het maken van gesp roken hand tekeningen voor de deel nemers aan de conversatie voor een efficiënte speaker-identificatie.
+De eerste stap is het maken van spraakhandtekeningen voor de deelnemers aan het gesprek voor een efficiënte luidsprekeridentificatie.
 
-### <a name="audio-input-requirements"></a>Vereisten voor audio-invoer
+### <a name="audio-input-requirements"></a>Vereisten voor audioinvoer
 
-- Het Wave-invoer bestand voor het maken van spraak handtekeningen moet de 16-bits steek proeven, een sample frequentie van 16 kHz en een indeling met één kanaal (mono) zijn.
-- De aanbevolen lengte voor elk audio voorbeeld ligt tussen dertig seconden en twee minuten.
+- Het invoeraudiogolfbestand voor het maken van spraakhandtekeningen moet in 16-bits samples, een 16 kHz-samplesnelheid en een mono-indeling met één kanaal (mono) zijn opgenomen.
+- De aanbevolen lengte voor elk audiomonster ligt tussen de dertig seconden en twee minuten.
 
 ### <a name="sample-code"></a>Voorbeeldcode
 
-In het volgende voor beeld ziet u twee verschillende manieren om een spraak handtekening te maken C#met [behulp van de rest API](https://aka.ms/cts/signaturegenservice) in. Houd er rekening mee dat u de werkelijke gegevens voor ' YourSubscriptionKey ', uw Wave-bestands naam voor ' speakerVoice. wav ' en uw regio voor `{region}` en ' YourServiceRegion ' (_centralus_ of _EastAsia_) moet vervangen.
+In het volgende voorbeeld worden twee verschillende manieren weergegeven om spraakhandtekening te maken [met behulp van de REST API](https://aka.ms/cts/signaturegenservice) in C#. Houd er rekening mee dat u echte informatie moet vervangen door "YourSubscriptionKey", uw wave-bestandsnaam voor "speakerVoice.wav", en uw regio voor `{region}` en "YourServiceRegion"_(centralus_ of _eastasia)._
 
 ```csharp
 class Program
@@ -102,20 +102,20 @@ class Program
 }
 ```
 
-## <a name="transcribe-conversations"></a>Conversaties transcriberen
+## <a name="transcribe-conversations"></a>Gesprekken transcriberen
 
-De volgende voorbeeld code laat zien hoe u gesp rekken in realtime kunt vertranscriben voor drie luid sprekers. Hierbij wordt ervan uitgegaan dat u al gesp roken hand tekeningen hebt gemaakt voor elke spreker zoals hierboven wordt weer gegeven. Vervang echte informatie door ' YourSubscriptionKey ' en ' YourServiceRegion ' bij het maken van het SpeechConfig-object.
+De volgende voorbeeldcode laat zien hoe je gesprekken in realtime transcribeert voor drie sprekers. Het gaat ervan uit dat u al spraakhandtekeningen hebt gemaakt voor elke spreker, zoals hierboven wordt weergegeven. Vervang echte informatie voor "YourSubscriptionKey" en "YourServiceRegion" bij het maken van het Object SpeechConfig.
 
-Voor beelden van code-hooglichten zijn:
+Hoogtepunten van voorbeeldcode zijn:
 
-- Een `Conversation`-object maken op basis van het `SpeechConfig`-object met behulp van een Vergader-id die is gegenereerd met `Guid.NewGuid()`
-- Een `ConversationTranscriber`-object maken en de conversatie koppelen met `JoinConversationAsync()` om transcriptie te starten
-- De gebeurtenissen van belang registreren
-- Deel nemers aan de conversatie toevoegen of verwijderen met behulp van het gespreks object
-- Audio streamen
-- In Speech SDK versie 1.9.0 en vervolgens op zowel `int` als `string` waardetypen worden ondersteund in het veld versie van spraak handtekening.
+- Een `Conversation` object maken `SpeechConfig` van het object met behulp van een vergaderings-id die wordt gegenereerd met`Guid.NewGuid()`
+- Een `ConversationTranscriber` object maken en `JoinConversationAsync()` deelnemen aan het gesprek om transcriptie te starten
+- Het registreren van de gebeurtenissen van belang
+- Deelnemers aan het gesprek toevoegen of verwijderen met het object Gesprek
+- De audio streamen
+- In Speech SDK-versie 1.9.0 en verder worden beide `int` en `string` waardetypen ondersteund in het veld van de spraakhandtekeningversie.
 
-De transcriptie en de spreker-id worden weer gegeven in de geregistreerde gebeurtenissen.
+De transcriptie en luidspreker-id komen terug in de geregistreerde gebeurtenissen.
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -218,4 +218,4 @@ public class MyConversationTranscriber
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Asynchrone conversatie transcriptie](how-to-async-conversation-transcription.md)
+> [Asynchrone gesprekstranscriptie](how-to-async-conversation-transcription.md)

@@ -1,31 +1,30 @@
 ### YamlMime:Landing
 title: Documentatie over intentieherkenning
-summary: Intentie herkenning met de services speech en Language Understanding (LUIS), biedt real-time transcriptie van audio-streams in tekst, terwijl intentie en entiteiten worden geïdentificeerd.
+summary: Intent recognition with the Speech and Language Understanding (LUIS) services, enables real-time transcription of audio streams into text, while identifying intent and tities.
 metadata:
-  title: Documentatie voor intentie herkenning-zelf studies, API-verwijzing-Azure Cognitive Services | Microsoft Docs
+  title: Documentatie voor intentieherkenning - Zelfstudies, API-verwijzing - Azure Cognitive Services | Microsoft Documenten
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 63c830b20ad5a3bf322fe2402d72230a80399d45
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 87e698c2a9b09b54c6015293b5be26ea2006a786
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79371457"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415169"
 landingContent:
-- title: Over de intentie herkenning
+- title: Over intentieherkenning
   linkLists:
   - linkListType: quickstart
     links:
     - text: Spraak, intenties en entiteiten herkennen
       url: quickstarts/intent-recognition.md
-- title: Ontwikkelen met intentie herkenning
+- title: Ontwikkelen met intentieherkenning
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -41,5 +40,5 @@ landingContent:
       url: ../luis/developer-reference-resource.md
     - text: Taalondersteuning
       url: ../luis/luis-language-support.md#languages-supported
-    - text: Prijs informatie voor intentie herkenning
+    - text: Prijs voor intentiesherkenning
       url: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services

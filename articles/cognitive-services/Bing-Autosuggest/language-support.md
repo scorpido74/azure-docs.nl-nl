@@ -1,7 +1,7 @@
 ---
-title: Taalondersteuning - Automatische suggestie-API
+title: Taalondersteuning - Bing Autosuggest API
 titleSuffix: Azure Cognitive Services
-description: Een lijst met ondersteunde talen en regio's voor de Automatische suggestie-API.
+description: Een lijst met ondersteunde talen en regio's voor de Bing Autosuggest API.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,32 +11,32 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "60547333"
 ---
-# <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Ondersteuning voor taal en regio voor de Automatische suggestie-API
+# <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Taal- en regioondersteuning voor de Bing Autosuggest-API
 
-Hieronder vindt u de talen die worden ondersteund door de Automatische suggestie-API.
+In de volgende lijsten worden de talen weergegeven die worden ondersteund door de Bing Autosuggest API.
 
 | Taal    | Taalcode |
 |:----------- |:-------------:|
 | Arabisch      | `ar`          |
 | Chinees (Volksrepubliek China)     | `zh-CN`          |
-| Chinees (Hongkong SAR)    | `zh-HK`          |
+| Chinees (Hong Kong SAR)    | `zh-HK`          |
 | Chinees (Taiwan)     | `zh-TW`          |
 | Deens      | `da`          |
 | Nederlands (België)       | `nl-BE`          |
 | Nederlands (Nederland)      | `nl-NL`          |
 | Engels (Australië)    | `en-AU`          |
 | Engels (Canada)     | `en-CA`          |
-| English (India)    | `en-IN`          |
+| Engels (India)    | `en-IN`          |
 | Engels (Indonesië)     | `en-ID`          |
 | Engels (Maleisië)     | `en-MY`          |
 | Engels (Nieuw-Zeeland)    | `en-NZ`          |
-| Engels (Filipijnen)     | `en-PH`          |
+| Engels (Filippijnen)     | `en-PH`          |
 | Engels (Zuid-Afrika)    | `en-ZA`          |
 | Engels (Verenigd Koninkrijk)    | `en-GB`          |
 | Engels (Verenigde Staten)    | `en-US`          |
@@ -51,7 +51,7 @@ Hieronder vindt u de talen die worden ondersteund door de Automatische suggestie
 | Italiaans     | `it`          |
 | Japans    | `ja`          |
 | Koreaans      | `ko`          |
-| Noors   | `no`          |
+| Norwegian   | `no`          |
 | Pools      | `pl`          |
 | Portugees (Brazilië)   | `pt-BR`|
 | Portugees (Portugal) | `pt-PT`|
@@ -66,5 +66,5 @@ Hieronder vindt u de talen die worden ondersteund door de Automatische suggestie
 
 ## <a name="see-also"></a>Zie ook
 
-- [Documentatie over Cognitive Services-pagina in Azure](https://docs.microsoft.com/azure/cognitive-services/)
-- [Pagina van Azure Cognitive Services-Product](https://azure.microsoft.com/services/cognitive-services/)
+- [Pagina Documentatie van Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
+- [Productpagina Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

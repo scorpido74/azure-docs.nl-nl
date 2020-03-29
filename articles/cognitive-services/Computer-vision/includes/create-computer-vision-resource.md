@@ -9,25 +9,25 @@ ms.topic: include
 ms.date: 10/07/2019
 ms.author: dapine
 ms.openlocfilehash: 2cb2cfbdfbac5d496f109d85977b41a050766ab0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73499113"
 ---
-## <a name="create-an-computer-vision-resource"></a>Een Computer Vision resource maken
+## <a name="create-an-computer-vision-resource"></a>Een Computer Vision-bron maken
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-1. Klik [op **Computer Vision** resource maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision) .
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Klik [op **Computervisie maken.** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
 1. Voer alle vereiste instellingen in:
 
     |Instelling|Waarde|
     |--|--|
-    |Naam|Gewenste naam (2-64 tekens)|
-    |Abonnement|Selecteer het juiste abonnement|
-    |Locatie|Selecteer een locatie in de buurt en beschik bare locaties|
-    |Prijscategorie|`F0`-de minimale prijs categorie|
-    |Resourcegroep|Een beschik bare resource groep selecteren|
+    |Name|Gewenste naam (2-64 tekens)|
+    |Abonnement|Passend abonnement selecteren|
+    |Locatie|Selecteer een nabijgelegen en beschikbare locatie|
+    |Prijscategorie|`F0`- de minimale prijscategorie|
+    |Resourcegroep|Een beschikbare resourcegroep selecteren|
 
-1. Klik op **maken** en wacht tot de resource is gemaakt. Nadat deze is gemaakt, gaat u naar de pagina resource.
-1. De geconfigureerde `{ENDPOINT_URI}` en `{API_KEY}`verzamelen, Zie [vereiste para meters verzamelen](../computer-vision-how-to-install-containers.md#gathering-required-parameters) voor meer informatie.
+1. Klik **op Maken** en wacht tot de resource is gemaakt. Nadat deze is gemaakt, navigeert u naar de resourcepagina.
+1. Verzamel geconfigureerd `{ENDPOINT_URI}` `{API_KEY}`en zie [het verzamelen van vereiste parameters](../computer-vision-how-to-install-containers.md#gathering-required-parameters) voor meer informatie.

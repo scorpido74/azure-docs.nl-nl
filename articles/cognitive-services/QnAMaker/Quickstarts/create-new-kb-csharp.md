@@ -6,13 +6,13 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 78608d3acdfea07f21ccc42e8d530ff502fbb0b4
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851925"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>Snelstartgids: een Knowledge Base maken in QnA Maker met C# behulp van met rest
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>Quickstart: Creëer een kennisbank in QnA Maker met C# met REST
 
 In deze snelstart wordt beschreven hoe u programmatisch een voorbeeld van een QnA Maker-knowledge base kunt maken en publiceren. Met QnA Maker worden automatisch vragen en antwoorden opgehaald uit semi-gestructureerde inhoud, zoals veelgestelde vragen, vanuit [gegevensbronnen](../Concepts/knowledge-base.md). Het model voor de knowledge base wordt gedefinieerd in de JSON die in de hoofdtekst van de API-aanvraag wordt verzonden.
 
@@ -20,32 +20,32 @@ In deze snelstart worden QnA Maker-API's aangeroepen:
 * [KB maken](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Bewerkingsdetails ophalen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[Referentie documentatie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [ C# voor beeld](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
+[Referentiedocumentatie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [C# Voorbeeld](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De huidige versie van [.net core](https://dotnet.microsoft.com/download/dotnet-core).
-* U moet een [QnA Maker resource](../How-To/set-up-qnamaker-service-azure.md)hebben. Als u de sleutel en het eind punt (inclusief de resource naam) wilt ophalen, selecteert u **Quick** start voor uw resource in het Azure Portal.
+* De huidige versie van [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* U moet een [QnA Maker-bron](../How-To/set-up-qnamaker-service-azure.md)hebben. Als u uw sleutel en eindpunt (inclusief de naam van de bron) wilt ophalen, selecteert u **Quickstart** voor uw resource in de Azure-portal.
 
-### <a name="create-a-new-c-application"></a>Een nieuwe C# toepassing maken
+### <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
 
-Maak een nieuwe .NET core-toepassing in uw voorkeurs editor of IDE.
+Maak een nieuwe .NET Core-toepassing in uw voorkeurseditor of IDE.
 
-Gebruik in een console venster (zoals cmd, Power shell of bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam `qna-maker-quickstart`. Met deze opdracht maakt u een eenvoudig ' C# Hallo wereld '-project met één bron bestand: *Program.cs*.
+Gebruik de `dotnet new` opdracht om in een consolevenster (zoals cmd, PowerShell of Bash) een nieuwe console-app met de naam `qna-maker-quickstart`te maken. Met deze opdracht wordt een eenvoudig "Hello World" C#-project gemaakt met één bronbestand: *Program.cs*.
 
 ```dotnetcli
 dotnet new console -n qna-maker-quickstart
 ```
 
-Wijzig uw directory in de zojuist gemaakte app-map. U kunt de toepassing samen stellen met:
+Wijzig uw map in de nieuw gemaakte app-map. U de toepassing bouwen met:
 
 ```dotnetcli
 dotnet build
 ```
 
-De build-uitvoer mag geen waarschuwingen of fouten bevatten.
+De buildoutput mag geen waarschuwingen of fouten bevatten.
 
 ```console
 ...
@@ -63,12 +63,12 @@ Boven in Program.cs vervangt u de enige using-instructie door de volgende regels
 
 ## <a name="add-the-required-constants"></a>De vereiste constanten toevoegen
 
-Voeg boven aan de programma klasse de vereiste constanten toe om toegang te krijgen tot QnA Maker.
+Voeg bovenaan de klasse Programma de vereiste constanten toe om toegang te krijgen tot QnA Maker.
 
-Stel de volgende waarden in omgevings variabelen in:
+Stel de volgende waarden in omgevingsvariabelen in:
 
-* `QNA_MAKER_SUBSCRIPTION_KEY`: de **sleutel** is een teken reeks van 32 en is beschikbaar in de Azure Portal, op de QnA Maker resource, op de pagina Quick Start. Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.
-* `QNA_MAKER_ENDPOINT`: het **eind punt** is de URL voor het ontwerpen in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.
+* `QNA_MAKER_SUBSCRIPTION_KEY`- De **sleutel** is een tekenreeks met 32 tekens en is beschikbaar in de Azure-portal, op de QnA Maker-bron, op de quickstart-pagina. Dit is niet hetzelfde als de voorspellingeindpuntsleutel.
+* `QNA_MAKER_ENDPOINT`- Het **eindpunt** is de URL voor het `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`ontwerpen, in de indeling van . Dit is niet dezelfde URL die wordt gebruikt om het voorspellingseindpunt op te vragen.
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=17-26 "Add the required constants")]
 
@@ -138,7 +138,7 @@ Herhaal de aanroep totdat deze lukt of mislukt:
 
 ## <a name="add-createkb-method"></a>CreateKB-methode toevoegen
 
-Met de volgende methode wordt de KB gemaakt en worden controles van de status herhaald.  De **bewerking-id** voor maken wordt geretourneerd in de veld **locatie**van de post-antwoord header en vervolgens gebruikt als onderdeel van de route in de GET-aanvraag. Omdat het maken van de KB enige tijd kan duren, moet u aanroepen herhalen om de status te controleren totdat de status geslaagd of mislukt is. Wanneer de bewerking is geslaagd, wordt de KB-id geretourneerd in **resourceLocation**.
+Met de volgende methode wordt de KB gemaakt en worden controles van de status herhaald.  De **bewerkings-id** _maken_ wordt geretourneerd in het veld Locatie van de post-antwoordkoplocatie en vervolgens wordt gebruikt als onderdeel van de route in de GET-aanvraag. **Location** Omdat het maken van de KB enige tijd kan duren, moet u aanroepen herhalen om de status te controleren totdat de status geslaagd of mislukt is. Wanneer de bewerking is geslaagd, wordt de KB-id geretourneerd in **resourceLocation**.
 
 [!code-csharp[Add CreateKB method](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=189-254 "Add CreateKB method")]
 
@@ -160,4 +160,4 @@ Zodra de knowledge base is gemaakt, kunt u deze weergeven in de QnA Maker-portal
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naslaginformatie over REST API voor QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [Naslaginformatie over REST-API voor QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)

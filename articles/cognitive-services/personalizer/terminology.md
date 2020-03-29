@@ -1,70 +1,70 @@
 ---
-title: Terminologie-persoonlijker
-description: Personaler maakt gebruik van terminologie van versterking van het onderwijs. Deze voor waarden worden gebruikt in de Azure Portal en de Api's.
+title: Terminologie - Personalizer
+description: Personalizer gebruikt terminologie uit reinforcement learning. Deze termen worden gebruikt in de Azure-portal en de API's.
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: f75437c5afd5d3fd7f7570079be410d3db1ca8db
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77624273"
 ---
 # <a name="terminology"></a>Terminologie
 
-Personaler maakt gebruik van terminologie van versterking van het onderwijs. Deze voor waarden worden gebruikt in de Azure Portal en de Api's.
+Personalizer gebruikt terminologie uit reinforcement learning. Deze termen worden gebruikt in de Azure-portal en de API's.
 
 ## <a name="conceptual-terminology"></a>Conceptuele terminologie
 
-* **Learning-lus**: u maakt een persoonlijke resource, een _Learning-lus_, voor elk deel van uw toepassing dat kan profiteren van personalisatie. Als u meer dan één ervaring hebt om persoonlijker te maken, maakt u een lus voor elke.
+* **Learning Loop:** U maakt een Personalizer resource, een _zogenaamde learning loop,_ voor elk deel van uw toepassing dat kan profiteren van personalisatie. Als je meer dan één ervaring hebt om te personaliseren, maak je een lus voor elk.
 
-* **Model**: een personalr model legt alle gegevens vast die zijn geleerd over het gedrag van gebruikers, en trainings gegevens ophalen uit de combi natie van de argumenten die u verzendt voor het classificeren en beloningen en met een opleidings gedrag dat door het leer beleid wordt bepaald.
+* **Model:** Een personalizermodel legt alle gegevens vast die over gebruikersgedrag zijn geleerd, het verkrijgen van trainingsgegevens uit de combinatie van de argumenten die u naar Rang- en Beloningsgesprekken verzendt en met een trainingsgedrag dat wordt bepaald door het leerbeleid.
 
-## <a name="personalizer-configuration"></a>Aangepaste configuratie
+## <a name="personalizer-configuration"></a>Gepersonaliseerde configuratie
 
-Personaler is geconfigureerd vanuit het [Azure Portal](https://portal.azure.com).
+Personalizer is geconfigureerd vanuit de [Azure-portal.](https://portal.azure.com)
 
-* **Beloningen**: Configureer de standaard waarden voor de berekenings tijd, de standaard beloning en het aggregatie beleid voor beloningen.
+* **Beloningen:** configureer de standaardwaarden voor de wachttijd voor beloning, standaardbeloning en beloningsaggregatiebeleid.
 
-* **Verkennen**: het percentage van de rangings aanvragen configureren dat voor het verkennen moet worden gebruikt
+* **Verkenning:** configureer het percentage rankcalls dat moet worden gebruikt voor verkenning
 
-* **Frequentie van model updates**: hoe vaak het model opnieuw wordt getraind.
+* **Model update frequentie**: Hoe vaak het model wordt omgeschoold.
 
-* **Bewaren van gegevens**: het aantal dagen aan gegevens dat moet worden opgeslagen. Dit kan invloed hebben op offline-evaluaties, die worden gebruikt voor het verbeteren van uw leer proces.
+* **Gegevensbewaring**: Hoeveel dagen aan gegevens moeten worden opgeslagen. Dit kan gevolgen hebben voor offline evaluaties, die worden gebruikt om uw leerlus te verbeteren.
 
-## <a name="use-rank-and-reward-apis"></a>Rang en beloning-Api's gebruiken
+## <a name="use-rank-and-reward-apis"></a>Api's voor rang en beloning gebruiken
 
-* **Positie**: Bekijk de acties met functies en de context functies en gebruik verkennen of misbruik om de bovenste actie (inhouds item) te retour neren.
+* **Rang:** Gebruik, gezien de acties met functies en de contextfuncties, verkennen of exploiteren om de hoogste actie (inhoudsitem) terug te sturen.
 
-    * **Acties**: acties zijn de inhouds items, zoals producten of promoties, waaruit u kunt kiezen. Personaler kiest de hoogste actie (geretourneerde actie-ID) die wordt weer gegeven aan uw gebruikers via de classificatie-API.
+    * **Acties:** Acties zijn de inhouditems, zoals producten of promoties, om uit te kiezen. Personalizer kiest de hoogste actie (geretourneerde reward action ID) om uw gebruikers te laten zien via de Rank API.
 
-    * **Context**: Geef informatie op over uw context om een nauw keurigere positie te geven, bijvoorbeeld:
+    * **Context:** Om een nauwkeurigere rang te bieden, moet u informatie verstrekken over uw context, bijvoorbeeld:
         * Uw gebruiker.
-        * Het apparaat waarop deze zich bevinden.
+        * Het apparaat waarop ze zitten.
         * De huidige tijd.
         * Andere gegevens over de huidige situatie.
         * Historische gegevens over de gebruiker of context.
 
-        Uw specifieke toepassing heeft mogelijk andere context informatie.
+        Uw specifieke toepassing kan verschillende contextinformatie bevatten.
 
-    * **[Functies](concepts-features.md)** : een eenheid van informatie over een inhouds item of een gebruikers context. Zorg ervoor dat u alleen gebruikmaakt van functies die zijn samengevoegd. Gebruik geen specifieke tijden, gebruikers-Id's of andere niet-geaggregeerde gegevens als onderdelen.
+    * **[Kenmerken:](concepts-features.md)** een verzameling informatie over een inhoudsitem of een gebruikerscontext. Zorg ervoor dat u alleen functies gebruikt die zijn samengevoegd. Gebruik geen specifieke tijden, gebruikersnamen of andere niet-geaggregeerde gegevens als functies.
 
-        * Een _actie functie_ is meta gegevens over de inhoud.
-        * Een _context functie_ is meta gegevens over de context waarin de inhoud wordt weer gegeven.
+        * Een _actiefunctie_ is metagegevens over de inhoud.
+        * Een _contextfunctie_ is metagegevens over de context waarin de inhoud wordt gepresenteerd.
 
-* **Exploratie**: de personaler-service wordt gebruikt wanneer, in plaats van de beste actie te retour neren, een andere actie voor de gebruiker wordt gekozen. De Personaler-service vermijdt drift, stagnation en kan worden aangepast aan het doorlopende gedrag van gebruikers door te verkennen.
+* **Verkenning**: De Personalizer-service onderzoekt wanneer deze, in plaats van de beste actie terug te sturen, een andere actie voor de gebruiker kiest. De Personalizer-service voorkomt drift, stagnatie en kan zich aanpassen aan het voortdurende gedrag van gebruikers door te verkennen.
 
-* **Misbruik**: de personaler-service gebruikt het huidige model om de beste actie te bepalen op basis van gegevens in het verleden.
+* **Exploitatie**: De Personalizer-service gebruikt het huidige model om de beste actie te bepalen op basis van gegevens uit het verleden.
 
-* **Duur**van het experiment: de hoeveelheid tijd die de personaler-service wacht op een beloning, vanaf het moment dat de positie oproep voor die gebeurtenis is opgetreden.
+* **Experimentduur:** de hoeveelheid tijd die de personalizerservice wacht op een beloning, vanaf het moment dat de rangoproep voor die gebeurtenis is uitgevoerd.
 
-* **Inactieve gebeurtenissen**: een inactieve gebeurtenis is de locatie waar u positie noemt, maar u weet niet zeker dat de gebruiker het resultaat ooit zal zien vanwege beslissingen van de client toepassing. Inactieve gebeurtenissen bieden u de mogelijkheid om persoonlijke resultaten te maken en op te slaan. vervolgens besluit u deze later te negeren zonder dat dit van invloed is op het machine learning model.
+* **Inactieve gebeurtenissen**: Een inactieve gebeurtenis is er een waarbij u Rank hebt genoemd, maar u weet niet zeker of de gebruiker het resultaat ooit zal zien, als gevolg van beslissingen over clienttoepassingen. Met inactieve gebeurtenissen u personalisatieresultaten maken en opslaan en vervolgens besluiten deze later te verwijderen zonder dat dit gevolgen heeft voor het machine learning-model.
 
 
-* **Beloning**: een meting van de manier waarop de gebruiker heeft gereageerd op de geretourneerde actie-id van de absolute API, als een score tussen 0 en 1. De waarde van 0 tot 1 wordt ingesteld door uw bedrijfs logica, op basis van de manier waarop de keuze heeft geholpen bij het bereiken van uw zakelijke doel stellingen voor persoonlijke instellingen. De learning-lus slaat deze beloning niet op als afzonderlijke gebruikers geschiedenis.
+* **Beloning:** Een maat voor hoe de gebruiker reageerde op de geretourneerde reward action ID van de Rank API, als een score tussen 0 tot 1. De 0-1 waarde wordt bepaald door uw bedrijfslogica, gebaseerd op hoe de keuze heeft bijgedragen aan het bereiken van uw zakelijke doelstellingen van personalisatie. De leerlus slaat deze beloning niet op als individuele gebruikersgeschiedenis.
 
 ## <a name="offline-evaluations"></a>Offline evaluaties
 
-* **Evaluatie**: een offline-evaluatie bepaalt het beste leer beleid voor uw lus op basis van de gegevens van uw lussen.
+* **Evaluatie:** Een offline evaluatie bepaalt het beste leerbeleid voor uw lus op basis van de gegevens van uw lus.
 
-* **Trainings beleid**: hoe personaler een model voor elke gebeurtenis moet treinen, wordt bepaald door sommige para meters die van invloed zijn op de werking van het machine learning algoritme. Er wordt een nieuw leer proces gestart met een standaard **learningbeleid**, waarmee de prestaties kunnen worden vertraagd. Bij het uitvoeren van [evaluaties](concepts-offline-evaluation.md)maakt personaler een nieuw leer beleid dat speciaal is geoptimaliseerd voor de gebruiks voorbeelden van uw lus. Personaler presteert aanzienlijk beter met beleids regels die zijn geoptimaliseerd voor elke specifieke lus, die tijdens de evaluatie wordt gegenereerd. Het leer beleid heet de _leer instellingen_ voor de **model-en leer instellingen** voor de personaler-resource in de Azure Portal.
+* **Leerbeleid:** Hoe Personalizer een model traint op elke gebeurtenis, wordt bepaald door een aantal parameters die van invloed zijn op de manier waarop het machine learning-algoritme werkt. Een nieuwe leerlus begint met een standaard **leerbeleid**, dat matige prestaties kan opleveren. Bij het uitvoeren [van evaluaties](concepts-offline-evaluation.md)maakt Personalizer nieuw leerbeleid dat specifiek is geoptimaliseerd voor de use cases van uw lus. Personalizer zal aanzienlijk beter presteren met beleid geoptimaliseerd voor elke specifieke lus, gegenereerd tijdens de evaluatie. Het leerbeleid wordt _leerinstellingen_ genoemd in de **model- en leerinstellingen** voor de personalizerbron in de Azure-portal.

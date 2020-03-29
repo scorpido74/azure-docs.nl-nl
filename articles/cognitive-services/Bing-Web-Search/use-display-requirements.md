@@ -1,7 +1,7 @@
 ---
-title: Gebruik en weergavevereisten voor de Bing zoeken-API 's
+title: Vereisten gebruiken en weergeven voor de Bing Search API's
 titleSuffix: Azure Cognitive Services
-description: De vereisten voor het weergeven van de zoekresultaten van de Bing zoeken-API's in uw toepassingen.
+description: De vereisten voor het weergeven van zoekresultaten van de Bing Search API's in uw toepassingen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "60499882"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Vereisten voor gebruik en weergave van Bing Zoeken-API's
 
-Deze vereisten voor gebruik en weergave van toepassing op elke uitvoering van de inhoud en de bijbehorende gegevens uit de volgende Bing zoeken-API's, met inbegrip van relaties, metagegevens en andere signalen.
+Deze gebruiks- en weergavevereisten zijn van toepassing op elke implementatie van de inhoud en bijbehorende informatie van de volgende Bing Search API's, waaronder relaties, metagegevens en andere signalen.
 
-- Bing Aangepaste zoekopdrachten
+- Aangepast zoeken met Bing
 - Bing Entiteiten zoeken
 - Bing Afbeeldingen zoeken
-- Bing Nieuws zoeken
-- Bing Video's zoeken
+- Zoeken in Bing Nieuws
+- Zoeken in Bing Video
 - Bing Visuele zoekopdrachten
 - Bing Webzoekopdrachten
 - Bing Spellingcontrole
@@ -34,138 +34,138 @@ Deze vereisten voor gebruik en weergave van toepassing op elke uitvoering van de
 ## <a name="definitions"></a>Definities
 
 
-|Termijn  |Description  |
+|Termijn  |Beschrijving  |
 |---------|---------|
-|Antwoord     | Een categorie van de resultaten in een antwoord geretourneerd. Een antwoord van de Bing webzoekopdrachten-API kan bijvoorbeeld antwoorden bevatten in de categorieën van webpagina-resultaten, afbeelding, video, visueel element en nieuws. |
-|Antwoord     | Alle antwoorden en de bijbehorende gegevens ontvangen in antwoord op één aanroep aan een Search-API. |
-|Resultaat    | Een item van gegevens in een antwoord. De set gegevens die zijn verbonden met een enkele nieuwsartikel is bijvoorbeeld een resultaat in een nieuwsantwoord. |
-|Zoeken-API 's    | gezamenlijk de Bing Custom Search, entiteiten zoeken, afbeeldingen zoeken, nieuws zoeken, video's zoeken, visuele zoekopdrachten, lokale bedrijven zoeken en Web zoeken-API's. |
+|Antwoord     | Een categorie resultaten die in een reactie is geretourneerd. Een antwoord van de Bing Web Search API kan bijvoorbeeld antwoorden bevatten in de categorieën webpaginaresultaten, afbeelding, video, visual en nieuws. |
+|Antwoord     | Alle antwoorden en bijbehorende gegevens die zijn ontvangen als reactie op één aanroep naar een Search API. |
+|Resultaat    | Een informatiepunt in een antwoord. Bijvoorbeeld, de set van gegevens in verband met een enkel nieuwsartikel is een resultaat in een nieuwsantwoord. |
+|Zoek-API's    | gezamenlijk de Bing Custom Search, Entity Search, Image Search, News Search, Video Search, Visual Search, Local Business Search en Web Search API's. |
 
-## <a name="bing-spell-check-and-bing-autosuggest-api-restrictions"></a>Bing Spell Check en Automatische suggestie-API-beperkingen
+## <a name="bing-spell-check-and-bing-autosuggest-api-restrictions"></a>Bing Spell Check en Bing Automatisch API-beperkingen voorstellen
 
 Niet doen:
 
-- Kopiëren, opslaan of alle gegevens die u van de Bing Spell Check- of Bing Automatische suggestie-API's ontvangt in de cache.
-- Gegevens die u van Bing Spell Check- of Bing Automatische suggestie-API's als onderdeel van een machine learning- of vergelijkbare algoritmische activiteit ontvangt gebruiken. Gebruik deze gegevens niet te trainen, evalueren of nieuwe of bestaande services die worden geboden door u of van derden mogelijk te verbeteren.
+- Kopieer, bewaar of cache alle gegevens die u ontvangt van de Bing Spell Check of Bing Autosuggest API's.
+- Gebruik gegevens die u ontvangt van Bing Spell Check of Bing Autosuggest API's als onderdeel van machine learning of vergelijkbare algoritmische activiteiten. Gebruik deze gegevens niet om nieuwe of bestaande services die u of derden aanbieden, te trainen, evalueren of verbeteren.
 
 ## <a name="bing-search-apis"></a>Bing Zoeken-API's
 
 > [!NOTE]
-> De vereisten in deze sectie zijn van toepassing op alleen de zoeken-API's, wat exclusief Bing Spell Check- of Automatische suggestie voor Bing. 
+> De vereisten in deze sectie zijn alleen van toepassing op de zoek-API's, die geen Bing Spell Check of Bing Autosuggest bevatten. 
 
-### <a name="internet-search-experience-requirements"></a>Vereisten voor Internet zoeken ervaring
+### <a name="internet-search-experience-requirements"></a>Vereisten voor zoekervaring via internet
 
-Alle gegevens die worden geretourneerd in antwoorden kan alleen worden gebruikt in internet zoekervaringen. Een internet-zoekervaring betekent dat de inhoud die wordt weergegeven: 
+Alle gegevens die in reacties worden geretourneerd, mogen alleen worden gebruikt in zoekervaringen op internet. Een zoekervaring op internet betekent de weergegeven inhoud: 
 
-- Relevante en reageren op van de eindgebruiker directe query of een andere vermelding van hun interesse zoeken en voor welk doel (bijvoorbeeld een gebruiker aangegeven zoekquery) is. 
+- Is relevant en reageert op de directe query van de eindgebruiker, of een andere indicatie van hun zoekinteresse en -intentie (bijvoorbeeld een door de gebruiker aangegeven zoekopdracht). 
 
-- Helpt gebruikers vinden en navigeer naar de gegevensbronnen van het antwoord. Bijvoorbeeld, biedt geklikt koppelingen van hyperlinks in het antwoord.
+- Helpt gebruikers bij het vinden en navigeren naar de gegevensbronnen van de reactie. Bijvoorbeeld, het verstrekken van klikbare links van hyperlinks in het antwoord.
 
-- Bevat verschillende resultaten voor de gebruiker te selecteren in. 
+- Bevat meerdere resultaten waaruit de gebruiker kan kiezen. 
 
-- Zijn in een plaatsing waarmee gebruikers om te zoeken.
+- Zijn in een plaatsing die gebruikers in staat stelt om te zoeken.
 
-- Bevat een zichtbare indicatie dat de inhoud een zoekresultaat internet is. Bijvoorbeeld, een instructie die de inhoud 'van het web is'.
+- Bevat een zichtbare indicatie dat de inhoud een zoekresultaat op internet is. Bijvoorbeeld een verklaring dat de inhoud "van het web" is.
 
-- Bevat alle andere passende maatregelen om ervoor te zorgen dat de Bing zoeken-API-gegevens geen inbreuk maken op alle van toepassing zijnde wetten of rechten van derden. Raadpleeg uw juridische adviseurs om te bepalen welke metingen kunnen worden nodig.
+- Bevat alle andere passende maatregelen om ervoor te zorgen dat uw Bing Search API-gegevens geen toepasselijke wetten of rechten van derden schenden. Raadpleeg uw juridische adviseurs om te bepalen welke maatregelen geschikt kunnen zijn.
 
-De enige uitzondering op deze vereisten internet zoeken ervaring is voor de detectie van de URL, zoals verderop in dit artikel wordt beschreven. 
+De enige uitzondering op deze vereisten voor zoekervaring op internet is voor URL-detectie, zoals later in dit artikel wordt beschreven. 
 
 ### <a name="restrictions"></a>Beperkingen
 
 Niet doen:
 
-- Kopiëren, opslaan of alle gegevens van antwoorden in de cache (met uitzondering van de bewaarperiode voor zover toegestaan door [continuïteit van de service](#continuity-of-service). 
+- Kopieer, sla gegevens uit reacties op of in de cache (met uitzondering van retentie voor zover toegestaan door [de continuïteit van de service](#continuity-of-service). 
 
-- Gegevens ontvangen van de Search-API's als onderdeel van een machine learning- of vergelijkbare algoritmische activiteit gebruiken. Gebruik deze gegevens niet te trainen, evalueren of nieuwe of bestaande services die worden geboden door u of van derden mogelijk te verbeteren.
+- Gebruik gegevens die zijn ontvangen van de zoek-API's als onderdeel van machine learning of vergelijkbare algoritmische activiteiten. Gebruik deze gegevens niet om nieuwe of bestaande services die u of derden aanbieden, te trainen, evalueren of verbeteren.
 
-- De inhoud van de resultaten (andere dan te formatteren ze op een manier die niet in strijd is met alle andere vereiste), wijzigen, tenzij de wet of geaccepteerd door Microsoft. 
+- Wijzig de inhoud van de resultaten (anders dan ze te formatteren op een manier die niet in strijd is met een andere eis), tenzij vereist door de wet of overeengekomen door Microsoft. 
 
-- Weglaten attribution informatie en URL's die zijn gekoppeld aan de resultaat-inhoud.
+- Attributiegegevens en URL's die zijn gekoppeld aan resultaatinhoud weglaten.
 
-- Ordenen, met inbegrip van door het nalaten hiervan, worden de resultaten in een antwoord weergegeven als een order of de classificatie is opgegeven, tenzij de wet of geaccepteerd door Microsoft. 
+- Bestel, ook door omissie, de resultaten die worden weergegeven in een antwoord wanneer een bestelling of rangschikking wordt verstrekt, tenzij vereist door de wet of overeengekomen door Microsoft. 
 
     > [!NOTE]
-    > Deze vereiste geldt niet voor opnieuw ordenen geïmplementeerd via de portal voor de Bing Custom Search-API.
+    > Deze vereiste is niet van toepassing op het opnieuw ordenen geïmplementeerd via de portal voor de Bing Custom Search API.
 
-- Weer andere inhoud in een deel van een reactie op een manier die een gebruiker te geloven dat de andere inhoud deel van het antwoord uitmaakt zou leiden. 
+- Andere inhoud in een deel van een reactie weergeven op een manier die ertoe zou leiden dat een gebruiker zou geloven dat de andere inhoud deel uitmaakt van het antwoord. 
 
-- Voor advertentiedoeleinden die niet is geleverd door Microsoft op een willekeurige pagina waarop een deel van een reactie. 
+- Advertenties weergeven die niet door Microsoft worden geleverd op een pagina waarop een deel van een antwoord wordt weergegeven. 
 
-- Advertenties weergeven op pagina's met antwoorden:
-    - Van de Bing afbeeldingen, nieuws zoeken, video's zoeken of visuele zoekopdrachten-API 's
-    - Die zijn gefilterd of die beperkt zijn voornamelijk (of uitsluitend) naar afbeeldingen, nieuws en/of video- of visual search-resultaten.
+- Alle advertenties weergeven op pagina's met reacties:
+    - Vanuit de Bing-afbeelding, nieuwszoekopdrachten, videozoeken of visuele zoek-API's
+    - Die worden gefilterd of voornamelijk (of uitsluitend) gefilterd tot beeld, nieuws en/of video of visuele zoekresultaten.
 
-### <a name="notices-and-branding"></a>Kennisgevingen en huisstijl 
+### <a name="notices-and-branding"></a>Aankondigingen en branding 
 Doen:
 
-- Duidelijk zichtbaar zijn een functionele hyperlink naar de [privacyverklaring van Microsoft](https://go.microsoft.com/fwlink/?LinkId=521839), in de buurt van elk punt in de gebruikerservaring (UX) die een gebruiker de mogelijkheid biedt voor het invoeren van een zoekquery. Label van de hyperlink **privacyverklaring van Microsoft**.
+- Voeg prominent een functionele hyperlink naar de [Microsoft-privacyverklaring toe](https://go.microsoft.com/fwlink/?LinkId=521839), in de buurt van elk punt in de gebruikerservaring (UX) dat een gebruiker de mogelijkheid biedt om een zoekopdracht in te voeren. Label de hyperlink **Microsoft Privacy Statement**.
 
-- Duidelijk zichtbaar weer Bing huisstijl, consistent zijn met de [richtlijnen voor handelsmerken Bing](https://go.microsoft.com/fwlink/?linkid=833278), in de buurt van elk punt in de UX die een gebruiker de mogelijkheid biedt voor het invoeren van een zoekquery. Dergelijke huisstijl moet duidelijk staat voor de gebruiker die door Microsoft is dat de zoekfunctie van internet.
+- Geef bing-branding prominent weer, in overeenstemming met de [richtlijnen voor het gebruik van Bing-handelsmerken,](https://go.microsoft.com/fwlink/?linkid=833278)in de buurt van elk punt in de UX dat een gebruiker de mogelijkheid biedt om een zoekopdracht in te voeren. Dergelijke branding moet duidelijk aan de gebruiker dat Microsoft is het aandrijven van de internet zoekervaring.
 
-- U kunt elk antwoord (of elk deel van een antwoord) weergegeven van de Bing webzoekopdrachten, afbeeldingen zoeken, nieuws zoeken, video's zoeken en visueel zoeken-API's aan Microsoft, kenmerk, tenzij Microsoft bij het schrijven voor uw gebruik iets anders aangeeft. Dit wordt beschreven in [richtlijnen voor handelsmerken Bing](https://go.microsoft.com/fwlink/?linkid=833278). 
+- U elk antwoord (of gedeelte van een antwoord) dat wordt weergegeven vanuit de Bing Web Search, Image Search, News Search, Video Search en Visual Search API's aan Microsoft toeschrijven, tenzij Microsoft anders aangeeft schriftelijk voor uw gebruik. Dit wordt beschreven in [richtlijnen voor het gebruik van handelsmerken bing.](https://go.microsoft.com/fwlink/?linkid=833278) 
 
 Niet doen:
 
-- Kenmerk antwoorden (of gedeelten van de antwoorden) weergegeven van de Bing Custom Search-API aan Microsoft, tenzij Microsoft bij het schrijven voor uw specifieke gebruik iets anders aangeeft.
+- Kenmerkreacties (of delen van reacties) die worden weergegeven vanuit de Bing Custom Search API aan Microsoft, tenzij Microsoft anders schriftelijk specificeert voor uw specifieke gebruik.
 
-### <a name="transferring-responses"></a>Overdracht van reacties
+### <a name="transferring-responses"></a>Reacties overdragen
 
-Als u een gebruiker om over te dragen van een reactie van een Search-API aan een andere gebruiker, zoals via een berichten-app of sociale media plaatsen, de volgende van toepassing inschakelen: 
+Als u een gebruiker in staat stelt een reactie van een zoek-API over te zetten naar een andere gebruiker, bijvoorbeeld via een berichten-app of het plaatsen van sociale media, geldt het volgende: 
 
 - Overgedragen antwoorden moeten:
-  - Bestaan uit de inhoud die niet worden gewijzigd van de inhoud van de antwoorden weergegeven aan de gebruiker overdragen. Wijzigingen in de opmaak zijn toegestaan.
-  - Geen gegevens in de vorm van metagegevens bevatten.
-  - Voor antwoorden van de Bing Web, afbeeldingen, nieuws, Video en Visual API's, is weergavetaal die wijzen op het antwoord verkregen via een internet-zoekervaring mogelijk gemaakt door Bing. Bijvoorbeeld, kunt u de taal, zoals 'Mogelijk gemaakt door Bing' of "Leren" meer informatie over deze afbeelding weergeven in Bing of kunt u het Bing-logo.
-  - Voor antwoorden van de Bing Custom Search-API, weergegeven die wijzen op dat het antwoord is verkregen via een internet-zoekervaring taal. Bijvoorbeeld, kunt u de taal, zoals 'Meer informatie over dit zoekresultaat.' weergeven
-  - De volledige-query gebruikt voor het genereren van het antwoord duidelijk zichtbaar weer.
-  - Bevatten een prominente koppeling of een vergelijkbare attribution naar de onderliggende gegevensbron van het antwoord, rechtstreeks of via de zoekmachine (bing.com, m.bing.com of uw aangepaste search-service, zoals van toepassing).
-- U mag niet de overdracht van antwoorden automatiseren. Een overdracht moet worden gestart door een actie van de gebruiker duidelijk waaruit blijkt een intent om over te dragen van een antwoord.
-- U mag alleen een gebruiker om over te dragen van antwoorden die werden weergegeven in reactie op de overdracht gebruikersquery inschakelen.
+  - Bestaan uit inhoud die niet is gewijzigd ten opzichte van de inhoud van de antwoorden die worden weergegeven aan de overdragende gebruiker. Opmaakwijzigingen zijn toegestaan.
+  - Bevat geen gegevens in metagegevensformulier.
+  - Voor reacties van de Bing-web-, beeld-, nieuws-, video- en visuele API's wordt de weergavetaal die de respons aangeeft, verkregen via een zoekervaring op internet die wordt aangedreven door Bing. U bijvoorbeeld taal weergeven zoals 'Aangedreven door Bing' of 'Meer informatie over deze afbeelding op Bing' of u het Bing-logo gebruiken.
+  - Voor reacties uit de Bing Custom Search API wordt de taal weergegeven die het antwoord aangeeft via een zoekervaring op internet. U bijvoorbeeld taal weergeven, zoals 'Meer informatie over dit zoekresultaat'.
+  - Geef de volledige query weer die wordt gebruikt om het antwoord te genereren.
+  - Voeg een prominente link of vergelijkbare toeschrijving toe aan de onderliggende bron van het antwoord, direct of via de zoekmachine (bing.com, m.bing.com of uw aangepaste zoekservice, indien van toepassing).
+- U mag de overdracht van reacties niet automatiseren. Een overdracht moet worden gestart door een gebruikersactie die duidelijk een intentie om een reactie over te dragen aangeeft.
+- U mag een gebruiker alleen in staat stellen om reacties over te zetten die zijn weergegeven als reactie op de query die de gebruiker overdraagt.
 
-### <a name="continuity-of-service"></a>Continuïteit van de service 
+### <a name="continuity-of-service"></a>Continuïteit van de dienstverlening 
 
-Niet kopiëren, opslaan of alle gegevens van antwoorden zoeken-API in de cache. Echter, zodat de continuïteit van de toegang tot de service en de rendering van rapportgegevens bewaren u resultaten uitsluitend in de volgende omstandigheden:
+Kopieer, bewaar of cache geen gegevens uit antwoorden van de Search API. Om de continuïteit van de toegang tot de service en het renderen van gegevens mogelijk te maken, u echter alleen resultaten behouden onder de volgende voorwaarden:
 
 #### <a name="device"></a>Apparaat
 
-Mogelijk is, schakelt u een gebruiker te bewaren van resultaten op een apparaat voor de laagste van (i) 24 uur vanaf het moment van de query, of (ii) totdat een gebruiker een andere query voor de bijgewerkte resultaten indient voorwaarde dat de ingehouden resultaten kunnen alleen worden gebruikt:
+U een gebruiker in staat stellen om de resultaten op een apparaat gedurende de laagste (i) 24 uur vanaf het tijdstip van de query te bewaren, of (ii) totdat een gebruiker een andere query voor bijgewerkte resultaten indient, op voorwaarde dat bewaarde resultaten alleen mogen worden gebruikt:
 
-- Om in te schakelen van de gebruiker toegang tot resultaten die eerder zijn geretourneerd voor die gebruiker op het apparaat (bijvoorbeeld in het geval van service wordt onderbroken).
-- Voor het opslaan van resultaten voor uw proactieve query persoonlijke in afwachting van de behoeften van de gebruiker, op basis van signalen van die gebruiker (bijvoorbeeld in het geval van verwachte service wordt onderbroken).
+- Om de gebruiker toegang te geven tot resultaten die eerder aan die gebruiker op dat apparaat zijn geretourneerd (bijvoorbeeld in geval van onderbreking van de service).
+- Om resultaten op te slaan die worden geretourneerd voor uw proactieve query, gepersonaliseerd in afwachting van de behoeften van de gebruiker, op basis van de signalen van die gebruiker (bijvoorbeeld in geval van verwachte onderbreking van de service).
 
-#### <a name="server"></a>Server
+#### <a name="server"></a>server
 
-U kunt oplost die specifiek zijn voor één gebruiker veilig op een server die u beheert, en alleen de bewaarde resultaten weer te geven:
+U resultaten die specifiek zijn voor één gebruiker veilig bewaren op een server die u beheert en alleen de bewaarde resultaten weergeven:
 
-- Om in te schakelen van de gebruiker toegang tot een historisch rapport van de resultaten die eerder zijn geretourneerd voor die gebruiker in uw oplossing. De resultaten kunnen niet worden (i) behouden gedurende meer dan 21 dagen vanaf het moment van de eerste query van de eindgebruiker en (ii) in antwoord op de nieuwe of herhaalde query van een gebruiker weergegeven.
-- Persoonlijke in afwachting van de behoeften van de gebruiker, op basis van signalen van die gebruiker voor het opslaan van resultaten die voor uw proactieve query zijn geretourneerd. U kunt deze resultaten voor de laagste van (i) 24 uur vanaf het moment van de query, of (ii) totdat een gebruiker een andere query voor de bijgewerkte resultaten indient opslaan.
+- Om de gebruiker toegang te geven tot een historisch rapport van resultaten die eerder in uw oplossing aan die gebruiker zijn geretourneerd. De resultaten mogen niet langer dan 21 dagen worden bewaard vanaf het moment van de eerste query van de eindgebruiker en (ii) worden weergegeven in reactie op de nieuwe of herhaalde query van een gebruiker.
+- Om resultaten op te slaan die zijn geretourneerd voor uw proactieve query, gepersonaliseerd in afwachting van de behoeften van de gebruiker, op basis van de signalen van die gebruiker. U deze resultaten opslaan voor de laagste (i) 24 uur vanaf het moment van de query, of (ii) totdat een gebruiker een andere query indient voor bijgewerkte resultaten.
 
-Wanneer aanwezig zijn, kunnen geen resultaten voor een specifieke gebruiker worden commingled met de resultaten van een andere gebruiker. Dat wil zeggen, moeten de resultaten van elke gebruiker worden bewaard en afzonderlijk verkrijgbaar waren.
+Wanneer behouden, kunnen de resultaten voor een specifieke gebruiker niet worden doorgesluisd met resultaten voor een andere gebruiker. Dat wil zeggen, de resultaten van elke gebruiker moeten apart worden bewaard en geleverd.
 
 ### <a name="general"></a>Algemeen 
 
-Voor alle presentatie van de ingehouden resultaten:
+Voor alle presentatie van bewaarde resultaten:
 
-- Bevatten een duidelijke, zichtbaar kennisgeving van de tijd waarop die de query is verzonden.
-- Dit betekent dat de gebruiker met een knop of vergelijkbare opnieuw opvragen en verkrijgen van resultaten bijgewerkt. 
-- De huisstijl van de presentatie van de resultaten Bing behouden.
-- verwijderen (en indien nodig het vernieuwen met een nieuwe query) de opgeslagen resultaten binnen het opgegeven tijdsbestek.
+- Voeg een duidelijke, zichtbare melding toe van de tijd dat de query is verzonden.
+- Presenteer de gebruiker met een knop of iets dergelijks om opnieuw op te vragen en bijgewerkte resultaten te verkrijgen. 
+- Bewaar de Bing-branding bij de presentatie van de resultaten.
+- Verwijder (en vernieuw indien nodig met een nieuwe query) de opgeslagen resultaten binnen de opgegeven termijnen.
 
-### <a name="non-display-url-discovery"></a>Detectie van niet-weergave-URL 
+### <a name="non-display-url-discovery"></a>URL-detectie niet weergeven 
 
-U kunt de reacties op webzoekopdrachten alleen gebruiken in een internet-zoekervaring voor het enige doel van het detecteren van URL's van bronnen met informatie die reageren op een query van de gebruiker of de klant. U mag deze URL's kopiëren in een rapport of een vergelijkbaar antwoord dat u opgeeft:
+U mag alleen zoekreacties gebruiken in een niet-internetzoekervaring met als enige doel URL's van informatiebronnen te ontdekken die reageren op een zoekopdracht van uw gebruiker of klant. U dergelijke URL's kopiëren in een rapport of een soortgelijk antwoord dat u geeft:
 
-- Alleen voor die gebruiker of de klant, in reactie op deze query.
-- Alleen als deze aanzienlijke extra waardevol inhoud, relevant zijn voor de query bevat.
+- Alleen aan die gebruiker of klant, als reactie op die vraag.
+- Alleen als deze belangrijke extra waardevolle inhoud bevat, die relevant is voor de query.
 
-Gebruikt u de voorgaande secties in zoeken-API's en vereisten van de weergave niet van toepassing op dit gebruik niet weergegeven, met uitzondering van de volgende: 
+De vorige secties van gebruiks- en weergavevereisten voor zoekopdrachten zijn niet van toepassing op dit niet-weergavegebruik, behalve voor: 
 
-- Niet in de cache, kopiëren of opslaan van gegevens of inhoud, of is afgeleid van het antwoord van de zoekactie dan het beperkte URL kopiëren die eerder zijn beschreven.
-- Zorg ervoor dat uw gebruik van gegevens (inclusief de URL's) van de Search-API's ontvangen geen inbreuk maken op alle van toepassing zijnde wetten of rechten van derden.
-- Gebruik niet de gegevens (inclusief de URL's) die worden ontvangen van de Search-API's als onderdeel van een search-index of machine learning of vergelijkbare algoritmische activiteit. Gebruik deze gegevens niet te maken van de trein, evalueren of services die worden geboden door u of van derden mogelijk te verbeteren.
+- Bewaar geen gegevens of inhoud van of afgeleid van het zoekantwoord, anders dan het beperkte URL-kopiëren dat eerder is beschreven, niet in de cache, kopieer of deze op slaat.
+- Zorg ervoor dat uw gebruik van gegevens (inclusief de URL's) die van de zoek-API's zijn ontvangen, niet in strijd is met toepasselijke wetten of rechten van derden.
+- Gebruik de gegevens (inclusief de URL's) die van de zoek-API's zijn ontvangen niet als onderdeel van een zoekindex of machine learning of vergelijkbare algoritmische activiteit. Gebruik deze gegevens niet om trein- of evaluatie- of services te maken die u of derden kunnen aanbieden.
 
 ## <a name="gdpr-compliance"></a>AVG-naleving  
 
-Met betrekking tot persoonlijke gegevens afhankelijk van de Europese Unie General Data Protection Regulation (GDPR) en die wordt verwerkt in verband met aanroepen naar de zoeken-API's, de Bing Spell Check-API of de Automatische suggestie-API, weten u dat u en Microsoft zijn domeincontrollers onafhankelijke gegevens onder de AVG. U bent onafhankelijk die verantwoordelijk is voor uw naleving van de AVG.  
+Met betrekking tot persoonsgegevens die onder de Algemene Verordening Gegevensbescherming van de Europese Unie (AVG) vallen en die worden verwerkt in verband met oproepen naar de Search API's, Bing Spell Check API of Bing Autosuggest API, begrijpt u dat u en Microsoft onafhankelijke verwerkingsverantwoordelijken onder de AVG. U bent onafhankelijk verantwoordelijk voor uw naleving van de AVG.  
 

@@ -1,7 +1,7 @@
 ---
-title: Taal ondersteuning-Text Analytics-API
+title: Taalondersteuning - Text Analytics API
 titleSuffix: Azure Cognitive Services
-description: 'Een lijst met natuurlijke talen die worden ondersteund door de Text Analytics-API. In dit artikel wordt uitgelegd welke talen worden ondersteund voor elke bewerking: sentiment analyse, extractie van sleutel zinnen, taal detectie en entiteits herkenning.'
+description: 'Een lijst met natuurlijke talen die worden ondersteund door de Text Analytics API. In dit artikel wordt uitgelegd welke talen voor elke bewerking worden ondersteund: sentimentanalyse, sleutelzinextractie, taaldetectie en entiteitsherkenning.'
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,73 +11,73 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219278"
 ---
-# <a name="language-and-region-support-for-the-text-analytics-api"></a>Ondersteuning van talen en regio's voor de Text Analytics-API
+# <a name="language-and-region-support-for-the-text-analytics-api"></a>Ondersteuning voor taal en regio voor de Text Analytics API
 
-In dit artikel wordt uitgelegd welke talen worden ondersteund voor elke bewerking: sentiment analyse, extractie van sleutel zinnen, taal detectie en benoemde entiteits herkenning.
+In dit artikel wordt uitgelegd welke talen voor elke bewerking worden ondersteund: sentimentanalyse, sleutelzinextractie, taaldetectie en benoemde entiteitsherkenning.
 
 ## <a name="language-detection"></a>Taaldetectie
 
-Het Text Analytics-API kan een breed scala aan talen, varianten, dialecten en bepaalde regionale/culturele talen detecteren.  Taaldetectie retourneert het ' script ' van een taal. Bijvoorbeeld: voor de woord groep ' Ik heb een hond ' wordt `en` in plaats van `en-US`geretourneerd. Het enige speciale geval is Chinees, waarbij de functie voor taal detectie `zh_CHS` of `zh_CHT` retourneert als het script de opgegeven tekst kan bepalen. In situaties waarin een specifiek script niet kan worden geïdentificeerd voor een Chinees document, wordt alleen `zh`geretourneerd.
+De Text Analytics API kan een breed scala aan talen, varianten, dialecten en sommige regionale/culturele talen detecteren.  Taaldetectie retourneert het 'script' van een taal. Bijvoorbeeld, voor de zinsnede "Ik heb een `en` hond" het zal terugkeren in plaats van `en-US`. Het enige speciale geval is Chinees, waar `zh_CHS` de `zh_CHT` taaldetectiecapaciteit zal terugkeren of als het het manuscript kan bepalen gegeven de verstrekte tekst. In situaties waarin een specifiek script niet kan worden geïdentificeerd `zh`voor een Chinees document, zal het eenvoudig terugkeren.
 
-De exacte lijst met talen voor deze functie wordt niet gepubliceerd, maar het kan een breed scala aan talen, varianten, dialecten en enkele regionale/culturele talen detecteren. 
+We publiceren niet de exacte lijst met talen voor deze functie, maar het kan een breed scala aan talen, varianten, dialecten en sommige regionale/culturele talen detecteren. 
 
-Als er inhoud in een minder vaak gebruikte taal wordt weer gegeven, kunt u Taaldetectie proberen om te zien of er een code wordt geretourneerd. Het antwoord op talen dat niet kan worden gedetecteerd, is `unknown`.
+Als u inhoud hebt uitgedrukt in een minder vaak gebruikte taal, u Taaldetectie proberen om te zien of een code wordt geretourneerd. Het antwoord voor talen die `unknown`niet kunnen worden gedetecteerd is .
 
-## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Herkenning van Sentimentanalyse, Sleuteltermextractie en benoemde entiteit
+## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Sentimentanalyse, sleutelzinextractie en benoemde entiteitsherkenning
 
-Voor sentiment analyse, extractie van sleutel zinnen en entiteits herkenning is de lijst met ondersteunde talen meer selectief naarmate de analyseers worden verfijnd om te voldoen aan de taal kundige regels van andere talen. In benoemde entiteits herkenning v2 is de ondersteuning voor de volledige set [entiteits typen](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) momenteel beperkt tot de volgende talen: 
-* Nederlands
-* Chinees-vereenvoudigd
+Voor sentimentanalyse, sleutelzinextractie en entiteitsherkenning is de lijst met ondersteunde talen selectiever omdat de analysatoren worden verfijnd om de taalkundige regels van extra talen te aanpassen. In Named Entity Recognition v2 is de ondersteuning voor de volledige reeks [entiteitstypen](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) momenteel beperkt tot de volgende talen: 
+* Engels
+* Chinees vereenvoudigd
 * Frans
 * Duits
 * Spaans
 
-Alleen de `Person`, `Location` en `Organization` benoemde entiteiten worden geretourneerd voor de andere talen.
+Alleen `Person`de `Location` `Organization` entiteiten met de naam en de naam worden geretourneerd voor de andere talen.
 
-## <a name="language-list-and-status"></a>Taal lijst en status
+## <a name="language-list-and-status"></a>Taallijst en -status
 
-Taal ondersteuning wordt in eerste instantie in de preview-fase geïmplementeerd, met een afronding van de algemeen beschik bare (GA) status, onafhankelijk van elkaar en van de Text Analytics service. Het is mogelijk dat de talen in de preview-fase blijven, zelfs als Text Analytics-API overgangen algemeen beschikbaar zijn.
+Taalondersteuning wordt in eerste instantie uitgerold in preview, waarbij ze onafhankelijk van elkaar en de Text Analytics-service in het algemeen afstuderen naar de algemeen beschikbare (GA)-status. Het is mogelijk dat talen in preview blijven, zelfs terwijl Text Analytics API overgaat naar algemeen beschikbaar.
 
 > [!NOTE]
-> Zie [benoemde entiteits typen](named-entity-types.md)voor gedetailleerde taal ondersteuning voor de ner (named entity Recognition) v3 open bare preview.
+> Zie [Benoemde entiteitstypen](named-entity-types.md)voor gedetailleerde taalondersteuning voor het openbare voorbeeld van Named Entity Recognition(NER).
 
-| Taal              | Taalcode | Stemming | Sleutel zinnen | Herkenning van benoemde entiteiten | Entiteit koppelen |       Opmerkingen        |
+| Taal              | Taalcode | Sentiment | Sleutelzinnen | Herkenning van benoemde entiteiten | Koppeling van entiteiten |       Opmerkingen        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
-| Arabisch                |     `ar`      |           |             |           ✔ \*           |                |                    |
-| Tsjechisch                 |     `cs`      |           |             |           ✔ \*           |                |                    |
-| Chinees-vereenvoudigd    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                | `zh` is ook geaccepteerd                   |
-| Chinees-traditioneel   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
-| Deens                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Nederlands                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| Nederlands               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
-| Fins               |     `fi`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Frans                |     `fr`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
-| Duits                |     `de`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
-| Grieks                 |     `el`      |   ✔ \*    |             |                          |                |                    |
-| Hongaars             |     `hu`      |           |             |           ✔ \*           |                |                    |
-| Italiaans               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| Japans              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| Koreaans                |     `ko`      |   ✔ \*\*  |      ✔      |           ✔ \*           |                |                    |
-| Noors (Bokmål)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                | `nb` is ook geaccepteerd                   |
-| Pools                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Portugees (Portugal) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` is ook geaccepteerd |
-| Portugees (Brazilië)   |    `pt-BR`    |           |      ✔      |           ✔ \*           |                |                    |
-| Russisch               |     `ru`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Spaans               |     `es`      |   ✔\**    |      ✔      |           ✔ \*           |     ✔ \**      |                    |
-| Zweeds               |     `sv`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Turks               |     `tr`      |   ✔ \*    |             |           ✔ \*           |                |                    |
+| Arabisch                |     `ar`      |           |             |           ✔\*           |                |                    |
+| Tsjechisch                 |     `cs`      |           |             |           ✔\*           |                |                    |
+| Chinees vereenvoudigd    |   `zh-hans`   |  ✔\*\*   |             |            ✔             |                | `zh`ook aanvaard                   |
+| Chinees-traditioneel   |   `zh-hant`   |  ✔\*\*   |             |                          |                |                    |
+| Deens                |     `da`      |   ✔\*    |      ✔      |           ✔\*           |                |                    |
+| Nederlands                 |     `nl`      |   ✔\**   |      ✔      |           ✔\*           |                |                    |
+| Engels               |     `en`      |   ✔\**   |      ✔      |          ✔\*\*          |     ✔\**      |                    |
+| Fins               |     `fi`      |   ✔\*    |      ✔      |           ✔\*           |                |                    |
+| Frans                |     `fr`      |   ✔\**   |      ✔      |            ✔             |                |                    |
+| Duits                |     `de`      |   ✔\**   |      ✔      |            ✔             |                |                    |
+| Grieks                 |     `el`      |   ✔\*    |             |                          |                |                    |
+| Hongaars             |     `hu`      |           |             |           ✔\*           |                |                    |
+| Italiaans               |     `it`      |   ✔\**   |      ✔      |           ✔\*           |                |                    |
+| Japans              |     `ja`      |   ✔\**   |      ✔      |           ✔\*           |                |                    |
+| Koreaans                |     `ko`      |   ✔\*\*  |      ✔      |           ✔\*           |                |                    |
+| Noors (Bokmål)   |     `no`      |   ✔\*    |      ✔      |           ✔\*           |                | `nb`ook aanvaard                   |
+| Pools                |     `pl`      |   ✔\*    |      ✔      |           ✔\*           |                |                    |
+| Portugees (Portugal) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔\*           |                | `pt`ook aanvaard |
+| Portugees (Brazilië)   |    `pt-BR`    |           |      ✔      |           ✔\*           |                |                    |
+| Russisch               |     `ru`      |   ✔\*    |      ✔      |           ✔\*           |                |                    |
+| Spaans               |     `es`      |   ✔\**    |      ✔      |           ✔\*           |     ✔\**      |                    |
+| Zweeds               |     `sv`      |   ✔\*    |      ✔      |           ✔\*           |                |                    |
+| Turks               |     `tr`      |   ✔\*    |             |           ✔\*           |                |                    |
 
-\* taal ondersteuning is beschikbaar in de preview-versie
+\*Taalondersteuning is in preview
 
-\** ook beschikbaar in de open bare voor beelden van de [sentimentanalyse v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) en/of [entity Recognition v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) .
+\** Ook beschikbaar in de [Sentiment Analysis v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) en/ of [Named Entity Recognition v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) openbare previews.
 
 ## <a name="see-also"></a>Zie ook
 
-[Cognitive Services-documentatie pagina](https://docs.microsoft.com/azure/cognitive-services/)   
+[Pagina Documentatie van Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)   
 [Productpagina van Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

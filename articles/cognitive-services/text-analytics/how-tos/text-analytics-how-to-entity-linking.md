@@ -1,7 +1,7 @@
 ---
-title: Entiteits herkenning gebruiken met de Text Analytics-API
+title: Entiteitsherkenning gebruiken met de Text Analytics API
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het identificeren en dubbel zinnigheid van de identiteit van een entiteit gevonden in tekst met de Text Analytics REST API.
+description: Meer informatie over het identificeren en disambiuleren van de identiteit van een entiteit in tekst met de TEXT Analytics REST API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,154 +11,154 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
 ms.openlocfilehash: 243086ddaae47eba20eea6877fe6d7f8f9889290
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79203488"
 ---
-# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Benoemde entiteits herkenning gebruiken in Text Analytics
+# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Naamsbekendheid gebruiken in Text Analytics
 
-Met de Text Analytics-API kunt u ongestructureerde tekst afgeven en een lijst met disambiguated-entiteiten retour neren met koppelingen naar meer informatie op het web. De API ondersteunt zowel NER (named entity Recognition) als entiteits koppeling.
+Met de Text Analytics API u ongestructureerde tekst gebruiken en een lijst met gedesbigbiguated entiteiten retourneren, met koppelingen naar meer informatie op het web. De API ondersteunt zowel de benoemde entiteitsherkenning (NER) als entiteitskoppeling.
 
 ### <a name="entity-linking"></a>Entiteiten koppelen
 
-Entiteit koppelen is de mogelijkheid om de identiteit van een entiteit te identificeren en te dubbel zinnigheid die in tekst is gevonden (bijvoorbeeld om te bepalen of een exemplaar van het woord `Mars` verwijst naar de planeet of naar de Romeinse niet van War). Voor dit proces moet de aanwezigheid van een Knowledge Base in de juiste taal worden gekoppeld om herkende entiteiten in de tekst te koppelen. De koppeling van de entiteit maakt gebruik van [Wikipedia](https://www.wikipedia.org/) als deze Knowledge Base.
+Entiteit koppelen is de mogelijkheid om de identiteit van een entiteit gevonden in tekst te identificeren en `Mars` te disambiguate (bijvoorbeeld om te bepalen of een gebeurtenis van het woord verwijst naar de planeet, of naar de Romeinse god van de oorlog). Dit proces vereist de aanwezigheid van een kennisbank in een geschikte taal, om erkende entiteiten in tekst te koppelen. Entity Linking gebruikt [Wikipedia](https://www.wikipedia.org/) als kennisbank.
 
 
-### <a name="named-entity-recognition-ner"></a>Herkenning van benoemde entiteiten (NER)
+### <a name="named-entity-recognition-ner"></a>Benoemde entiteitsherkenning (NER)
 
-Herkenning van benoemde entiteiten (NER) is de mogelijkheid om verschillende entiteiten in tekst te identificeren en ze te categoriseren in vooraf gedefinieerde klassen of typen zoals: persoon, locatie, gebeurtenis, product en organisatie.  
+Named Entity Recognition (NER) is de mogelijkheid om verschillende entiteiten in tekst te identificeren en te categoriseren in vooraf gedefinieerde klassen of typen zoals: persoon, locatie, gebeurtenis, product en organisatie.  
 
-Vanaf versie 3 kan deze functie van de Text Analytics-API ook persoonlijke en gevoelige gegevens typen identificeren, zoals het telefoon nummer, het sofi-nummer, het e-mail adres en het bankrekening nummer.  Het identificeren van deze entiteiten kan helpen bij het classificeren van gevoelige documenten en het redigeren van persoonlijke gegevens.
+Vanaf versie 3 kan deze functie van de Text Analytics API ook persoonlijke en gevoelige informatietypen identificeren, zoals: telefoonnummer, sofinummer, e-mailadres en bankrekeningnummer.  Het identificeren van deze entiteiten kan helpen bij het classificeren van gevoelige documenten en het redacting van persoonlijke gegevens.
 
-## <a name="named-entity-recognition-versions-and-features"></a>Erkennings versies en-functies voor benoemde eenheden
+## <a name="named-entity-recognition-versions-and-features"></a>Benoemde entiteitsherkenningsversies en -functies
 
-De Text Analytics-API biedt twee versies van named entity Recognition-v2 en v3. Versie 3 (open bare preview) biedt meer details in de entiteiten die kunnen worden gedetecteerd en gecategoriseerd.
+De Text Analytics API biedt twee versies van Named Entity Recognition - v2 en v3. Versie 3 (Openbare preview) biedt meer details in de entiteiten die kunnen worden gedetecteerd en gecategoriseerd.
 
 | Functie                                                         | NER v2 | NER v3 |
 |-----------------------------------------------------------------|--------|--------|
-| Methoden voor enkelvoudige en batch-aanvragen                          | X      | X      |
-| Basis herkenning van entiteiten in verschillende categorieën              | X      | X      |
-| Uitgebreide classificatie voor herkende entiteiten                 |        | X      |
-| Afzonderlijke eind punten voor het verzenden van entiteits koppelings-en NER-aanvragen. |        | X      |
-| Model versie beheer                                                |        | X      |
+| Methoden voor enkele aanvragen en batchaanvragen                          | X      | X      |
+| Basisentiteitsherkenning in verschillende categorieën              | X      | X      |
+| Uitgebreide classificatie voor erkende entiteiten                 |        | X      |
+| Afzonderlijke eindpunten voor het verzenden van entiteitskoppelingen en NER-aanvragen. |        | X      |
+| Modelversiebeheer                                                |        | X      |
 
-Zie [taal ondersteuning](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) voor meer informatie.
+Zie [taalondersteuning](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) voor informatie.
 
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3.0-voorbeeld](#tab/version-3)
 
 ### <a name="entity-types"></a>Entiteitstypen
 
-Named entity Recognition V3 biedt uitgebreide detectie over meerdere typen. Op dit moment kan NER v3 de volgende categorieën entiteiten herkennen:
+Named Entity Recognition v3 biedt uitgebreide detectie voor meerdere typen. Momenteel kan NER v3 de volgende categorieën entiteiten herkennen:
 
 * Algemeen
 * Persoonlijke gegevens 
 
-Zie het artikel [ner v3 ondersteunde entiteit types](../named-entity-types.md) voor een gedetailleerde lijst met ondersteunde entiteiten en talen.
+Zie het artikel van de door NER [v3 ondersteunde entiteitstypen](../named-entity-types.md) voor een gedetailleerde lijst met ondersteunde entiteiten en talen.
 
-### <a name="request-endpoints"></a>Eind punten van aanvraag
+### <a name="request-endpoints"></a>Eindpunten aanvragen
 
-Met named entity Recognition v3 worden afzonderlijke eind punten gebruikt voor NER en aanvragen voor entiteits koppelingen. Gebruik een URL-indeling hieronder op basis van uw aanvraag:
+Named Entity Recognition v3 gebruikt afzonderlijke eindpunten voor NER- en entiteitskoppelingsaanvragen. Gebruik hieronder een URL-indeling op basis van uw aanvraag:
 
-NER
-* Algemene entiteiten-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+Ner
+* Algemene entiteiten -`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
 
-* Persoonlijke gegevens-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+* Persoonlijke gegevens -`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
 
-Entiteit koppelen
+Koppeling van entiteiten
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-### <a name="model-versioning"></a>Model versie beheer
+### <a name="model-versioning"></a>Modelversiebeheer
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-#### <a name="version-21"></a>[Versie 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
 ### <a name="entity-types"></a>Entiteitstypen
 
 > [!NOTE]
-> Named entity Recognition (NER) versie 2 ondersteunt alleen de volgende entiteiten. NER V3 bevindt zich in de open bare preview en breidt het aantal en de diepte van de entiteiten die in tekst worden herkend, aanzienlijk uit.   
+> Ner versie 2 (Named Entity Recognition) ondersteunt alleen de volgende entiteiten. NER v3 is in openbare preview, en sterk breidt het aantal en de diepte van de entiteiten erkend in tekst.   
 
-| Type  | SubType | Voorbeeld |
+| Type  | Subtype | Voorbeeld |
 |:-----------   |:------------- |:---------|
 | Person        | N.v.t.\*         | "Jeff", "Bill Gates"     |
 | Locatie      | N.v.t.\*         | "Redmond, Washington", "Parijs"  |
 | Organisatie  | N.v.t.\*         | "Microsoft"   |
-| Aantal      | Aantal        | "6", "six"     |
-| Aantal      | Percentage    | "50%", "50 procent"|
-| Aantal      | Rang telwoord       | ' 2e ', ' seconde '     |
-| Aantal      | Leeftijd           | "90 dag oud", "30 jaar oud"    |
+| Aantal      | Aantal        | "6", "zes"     |
+| Aantal      | Percentage    | "50%", "vijftig procent"|
+| Aantal      | Ordinale       | "2e", "tweede"     |
+| Aantal      | Leeftijd           | "90 dagen oud", "30 jaar oud"    |
 | Aantal      | Valuta      | "$10,99"     |
 | Aantal      | Dimensie     | "10 mijl", "40 cm"     |
 | Aantal      | Temperatuur   | "32 graden"    |
-| DateTime      | N.v.t.\*         | "6:17.30 februari 4, 2012"      |
-| DateTime      | Date          | "Mei 2e, 2017", "05/02/2017"   |
-| DateTime      | Time          | "8 a.m.", "8:00"  |
-| DateTime      | DateRange     | "Mag 2e tot vijfde mei"    |
-| DateTime      | TimeRange     | "18:00 uur naar 19.00 uur"     |
+| DateTime      | N.v.t.\*         | "4:30 uur 4 februari 2012"      |
+| DateTime      | Date          | "2 mei 2017", "05/02/2017"   |
+| DateTime      | Time          | "8uur", "8:00"  |
+| DateTime      | DateRange     | "2 mei tot 5 mei"    |
+| DateTime      | TimeRange TimeRange     | "18.00 tot 19.00 uur"     |
 | DateTime      | Duur      | "1 minuut en 45 seconden"   |
-| DateTime      | Instellen           | "elke dinsdag"     |
+| DateTime      | Instellen           | "Elke dinsdag"     |
 | URL           | N.v.t.\*         | "https:\//www.bing.com"    |
 | Email         | N.v.t.\*         | "support@contoso.com" |
-| Telefoon nummer VS  | N.v.t.\*         | (Alleen telefoon nummers in de VS) "(312) 555-0176" |
+| Amerikaans telefoonnummer  | N.v.t.\*         | (Alleen telefoonnummers in de VS) "(312) 555-0176" |
 | IP-adres    | N.v.t.\*         | "10.0.0.100" |
 
-\* afhankelijk van de invoer en geëxtraheerde entiteiten, kunnen bepaalde entiteiten de `SubType`weglaten.  Alle ondersteunde entiteits typen die worden weer gegeven, zijn alleen beschikbaar voor de talen Engels, Chinees, vereenvoudigd, Duits en Spaans.
+\*Afhankelijk van de input en de geëxtraheerde entiteiten kunnen bepaalde entiteiten de `SubType`.  Alle ondersteunde entiteitstypen die worden vermeld, zijn alleen beschikbaar voor de Engelse, Chinees-vereenvoudigde, Franse, Duitse en Spaanse taal.
 
-### <a name="request-endpoints"></a>Eind punten van aanvraag
+### <a name="request-endpoints"></a>Eindpunten aanvragen
 
-De benoemde entiteits herkenning v2 gebruikt één eind punt voor NER en aanvragen voor entiteits koppeling:
+Named Entity Recognition v2 gebruikt één eindpunt voor NER- en entiteitskoppelingen:
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
 ---
 
-## <a name="sending-a-rest-api-request"></a>Een REST API aanvraag verzenden
+## <a name="sending-a-rest-api-request"></a>Een REST API-aanvraag verzenden
 
 ### <a name="preparation"></a>Voorbereiding
 
-U moet JSON-documenten hebben met de volgende indeling: ID, tekst, taal.
+U moet JSON-documenten in deze indeling hebben: ID, tekst, taal.
 
-Elk document moet 5.120 tekens lang zijn en u kunt Maxi maal 1.000 items (Id's) per verzameling hebben. De verzameling is in de hoofdtekst van de aanvraag ingediend.
+Elk document moet minder dan 5.120 tekens bevatten en u maximaal 1.000 items (ID's) per verzameling bevatten. De verzameling is in de hoofdtekst van de aanvraag ingediend.
 
 ### <a name="structure-the-request"></a>Structureer de aanvraag
 
-Maak een POST-aanvraag. U kunt [postman](text-analytics-how-to-call-api.md) of de **API-test console** in de volgende koppelingen gebruiken om een snelle structuur en verzen ding te sturen. 
+Maak een POST-aanvraag. U [Postman](text-analytics-how-to-call-api.md) of de **API-testconsole** in de volgende koppelingen gebruiken om er snel een te structureren en te verzenden. 
 
 > [!NOTE]
-> U vindt de sleutel en het eind punt voor uw Text Analytics-resource in azure Portal. Ze bevinden zich op de pagina **snel starten** van de resource, onder **resource beheer**. 
+> U uw sleutel en eindpunt voor uw Text Analytics-bron vinden op de azure-portal. Ze bevinden zich op de **startpagina snel van** de resource, onder **resourcebeheer.** 
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3.0-voorbeeld](#tab/version-3)
 
-[Benoemde entiteit herkenning v3-referentie](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
+[Verwijzing naar entiteitserkenning v3](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
-Versie 3 gebruikt afzonderlijke eind punten voor NER en entiteits koppelings aanvragen. Gebruik een URL-indeling hieronder op basis van uw aanvraag:
+Versie 3 maakt gebruik van afzonderlijke eindpunten voor NER- en entiteitskoppelingenaanvragen. Gebruik hieronder een URL-indeling op basis van uw aanvraag:
 
-NER
-* Algemene entiteiten-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+Ner
+* Algemene entiteiten -`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
 
-* Persoonlijke informatie-entiteiten-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+* Entiteiten voor persoonlijke gegevens -`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
 
-Entiteit koppelen
+Koppeling van entiteiten
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-#### <a name="version-21"></a>[Versie 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-[Naslag Gids voor benoemde entiteits herkenning (NER) v2](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+[NER-verwijzing (Named Entity Recognition) v2](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-Versie 2 gebruikt het volgende eind punt voor entiteits koppelings-en NER-aanvragen: 
+Versie 2 gebruikt het volgende eindpunt voor entiteitskoppelingen en NER-aanvragen: 
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
 ---
 
-Stel een aanvraag header in om uw Text Analytics-API sleutel toe te voegen. Geef in de hoofd tekst van de aanvraag de JSON-documenten op die u hebt voor bereid.
+Stel een aanvraagkop in om uw Text Analytics API-sleutel op te nemen. Geef in de aanvraaginstantie de JSON-documenten die u hebt opgesteld.
 
-### <a name="example-ner-request"></a>Voor beeld van NER-aanvraag 
+### <a name="example-ner-request"></a>Voorbeeld NER-aanvraag 
 
-Hier volgt een voor beeld van de inhoud die u naar de API zou kunnen verzenden. De aanvraag indeling is hetzelfde voor beide versies van de API.
+Het volgende is een voorbeeld van inhoud die u naar de API verzenden. De aanvraagindeling is hetzelfde voor beide versies van de API.
 
 ```json
 {
@@ -174,23 +174,23 @@ Hier volgt een voor beeld van de inhoud die u naar de API zou kunnen verzenden. 
 
 ## <a name="post-the-request"></a>Plaats de aanvraag
 
-Analyse wordt uitgevoerd na ontvangst van de aanvraag. Zie de sectie [gegevens limieten](../overview.md#data-limits) in het overzicht voor informatie over de grootte en het aantal aanvragen dat u per minuut en seconde kunt verzenden.
+Analyse wordt uitgevoerd na ontvangst van de aanvraag. Zie de sectie [gegevenslimieten](../overview.md#data-limits) in het overzicht voor informatie over de grootte en het aantal aanvragen dat u per minuut en seconde verzenden.
 
-De Text Analytics-API is stateless. Er worden geen gegevens in uw account opgeslagen en de resultaten worden onmiddellijk in het antwoord geretourneerd.
+De Text Analytics API is stateloos. Er worden geen gegevens opgeslagen in uw account en de resultaten worden onmiddellijk geretourneerd in het antwoord.
 
 ## <a name="view-results"></a>Resultaten weergeven
 
-Alle POST-aanvragen retour neren een JSON-indelings antwoord met de eigenschappen id en gedetecteerde entiteit.
+Alle POST-aanvragen retourneren een JSON-opgemaakte reactie met de id's en gedetecteerde entiteitseigenschappen.
 
-Uitvoer wordt onmiddellijk geretourneerd. U kunt de resultaten streamen naar een toepassing die JSON accepteert of u kunt de uitvoer opslaan als lokaal bestand en vervolgens importeren in een toepassing waarmee u kunt sorteren, zoeken en de gegevens kunt manipuleren. Vanwege meertalige en Emoji-ondersteuning kan het antwoord tekst verschuivingen bevatten. Zie [tekst verschuivingen verwerken](../concepts/text-offsets.md) voor meer informatie.
+Uitvoer wordt onmiddellijk geretourneerd. U kunt de resultaten streamen naar een toepassing die JSON accepteert of u kunt de uitvoer opslaan als lokaal bestand en vervolgens importeren in een toepassing waarmee u kunt sorteren, zoeken en de gegevens kunt manipuleren. Vanwege ondersteuning voor meertaligen en emoji's kan het antwoord tekstverschuivingen bevatten. Zie [hoe u tekstverschuivingen verwerkt](../concepts/text-offsets.md) voor meer informatie.
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview)](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3.0-preview)](#tab/version-3)
 
-### <a name="example-v3-responses"></a>Voor beeld v3-antwoorden
+### <a name="example-v3-responses"></a>Voorbeeld v3-antwoorden
 
-Versie 3 biedt afzonderlijke eind punten voor NER en entiteits koppelingen. De antwoorden voor beide bewerkingen vindt u hieronder. 
+Versie 3 biedt afzonderlijke eindpunten voor NER- en entiteitskoppelingen. De antwoorden voor beide bewerkingen zijn hieronder. 
 
-#### <a name="example-ner-response"></a>Voor beeld van NER-antwoord
+#### <a name="example-ner-response"></a>Voorbeeld NER-reactie
 
 ```json
 {
@@ -216,7 +216,7 @@ Versie 3 biedt afzonderlijke eind punten voor NER en entiteits koppelingen. De a
 }
 ```
 
-#### <a name="example-entity-linking-response"></a>Voor beeld van entiteit koppelings reactie
+#### <a name="example-entity-linking-response"></a>Voorbeeld entiteit die respons koppelt
 
 ```json
 {
@@ -241,9 +241,9 @@ Versie 3 biedt afzonderlijke eind punten voor NER en entiteits koppelingen. De a
 }
 ```
 
-#### <a name="version-21"></a>[Versie 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-### <a name="example-ner-v2-response"></a>Voor beeld van NER v2-antwoord
+### <a name="example-ner-v2-response"></a>Voorbeeld NER v2-respons
 ```json
 {
   "documents": [{
@@ -282,15 +282,15 @@ Versie 3 biedt afzonderlijke eind punten voor NER en entiteits koppelingen. De a
 
 ## <a name="summary"></a>Samenvatting
 
-In dit artikel hebt u concepten en werk stromen geleerd voor het koppelen van entiteiten met behulp van Text Analytics in Cognitive Services. Samenvatting:
+In dit artikel hebt u concepten en werkstroom geleerd voor entiteitskoppeling met Text Analytics in Cognitive Services. Samenvatting:
 
-* Herkenning van benoemde entiteiten is beschikbaar voor geselecteerde talen in twee versies.
-* JSON-documenten in de hoofd tekst van de aanvraag bevatten een ID, tekst en taal code.
-* POST-aanvragen worden verzonden naar een of meer eind punten met behulp van een aangepaste [toegangs sleutel en een eind punt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) dat geldig is voor uw abonnement.
-* De antwoord uitvoer, die bestaat uit gekoppelde entiteiten (inclusief betrouwbaarheids scores, verschuivingen en webkoppelingen, voor elke document-ID), kan worden gebruikt in elke toepassing
+* Benoemde entiteitsherkenning is beschikbaar voor geselecteerde talen in twee versies.
+* JSON-documenten in de aanvraaginstantie bevatten een ID, tekst en taalcode.
+* POST-verzoeken worden verzonden naar een of meer eindpunten, met behulp van een gepersonaliseerde [toegangssleutel en een eindpunt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) dat geldig is voor uw abonnement.
+* Responsuitvoer, die bestaat uit gekoppelde entiteiten (inclusief betrouwbaarheidsscores, compensaties en webkoppelingen voor elke document-id) kan in elke toepassing worden gebruikt
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Overzicht van Text Analytics](../overview.md)
-* [De Text Analytics-client bibliotheek gebruiken](../quickstarts/text-analytics-sdk.md)
-* [Nieuwe functies](../whats-new.md)
+* [De tekstanalyse-clientbibliotheek gebruiken](../quickstarts/text-analytics-sdk.md)
+* [Wat is er nieuw](../whats-new.md)

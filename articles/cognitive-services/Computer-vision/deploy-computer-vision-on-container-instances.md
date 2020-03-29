@@ -1,7 +1,7 @@
 ---
-title: Computer Vision-container uitvoeren in Azure Container Instances
+title: Computer vision-container uitvoeren in Azure Container Instances
 titleSuffix: Azure Cognitive Services
-description: Implementeer de Computer Vision-container in een Azure-container exemplaar en test deze in een webbrowser.
+description: Implementeer de container Computer Vision in een Azure Container Instance en test deze in een webbrowser.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
 ms.openlocfilehash: 1c858432a3382e6dbc8e479aab11b18dc5eebfe4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73499098"
 ---
-# <a name="deploy-the-computer-vision-container-to-azure-container-instances"></a>De Computer Vision-container implementeren op Azure Container Instances
+# <a name="deploy-the-computer-vision-container-to-azure-container-instances"></a>De container Computer Vision implementeren in Azure Container Instances
 
-Meer informatie over het implementeren van de Cognitive Services [Computer Vision](computer-vision-how-to-install-containers.md) -container in azure [container instances](https://docs.microsoft.com/azure/container-instances/). Met deze procedure wordt het maken van de Computer Vision resource gedemonstreerd. Vervolgens bespreken we het verzamelen van de bijbehorende container installatie kopie. Ten slotte markeren we de mogelijkheid om de indeling van de twee uit een browser uit te oefenen. Door gebruik te maken van containers kan de aandacht van de ontwikkel aars van de infra structuur afnemen in plaats van de ontwikkeling van toepassingen te richten.
+Meer informatie over het implementeren van de container Cognitive Services [Computer Vision](computer-vision-how-to-install-containers.md) naar Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Deze procedure toont de creatie van de Computer Vision-bron aan. Dan bespreken we het trekken van de bijbehorende container beeld. Tot slot benadrukken we de mogelijkheid om de orkestratie van de twee uit te oefenen vanuit een browser. Het gebruik van containers kan de aandacht van de ontwikkelaars verleggen van het beheren van infrastructuur naar het richten op applicatieontwikkeling.
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Toegang aanvragen tot het persoonlijke container register
+## <a name="request-access-to-the-private-container-registry"></a>Toegang aanvragen tot het register van privécontainers
 
 [!INCLUDE [Request access](../../../includes/cognitive-services-containers-request-access.md)]
 

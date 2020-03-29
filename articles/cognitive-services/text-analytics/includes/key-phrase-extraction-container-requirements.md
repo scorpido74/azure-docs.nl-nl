@@ -1,7 +1,7 @@
 ---
 title: Containervereisten en aanbevelingen
 titleSuffix: Azure Cognitive Services
-description: Sleuteltermextractie container vereisten
+description: Vereisten voor sleutelzin extractiecontainer
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 08/20/2019
 ms.author: dapine
 ms.openlocfilehash: 7b479dd8b4d35351c3340d91bd01a8fc20f02f93
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70051306"
 ---
-| Container | Minimum | Aanbevolen | TPS<br>(Minimum, Maximum)|
+| Container | Minimum | Aanbevolen | Tps<br>(Minimum, Maximum)|
 |-----------|---------|-------------|--|
-|Sleuteltermextractie | 1 Core, 2 GB geheugen | 1 kern geheugen van 4 GB |15, 30|
+|Sleuteltermextractie | 1 core, 2 GB geheugen | 1 core, 4 GB geheugen |15, 30|

@@ -1,7 +1,7 @@
 ---
-title: Containers installeren en uitvoeren-Text Analytics
+title: Containers installeren en uitvoeren - Text Analytics
 titleSuffix: Azure Cognitive Services
-description: Het downloaden, installeren en uitvoeren van containers voor Tekstanalyse overschrijd in deze zelfstudie met stapsgewijze instructies.
+description: Hoe u containers voor Text Analytics downloaden, installeren en uitvoeren in deze walkthrough-zelfstudie.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,34 +12,34 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: dapine
 ms.openlocfilehash: 65033f9b6599d690b1097b4b78aa01148a40fc39
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79037507"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>De Text Analytics-containers installeren en uitvoeren
 
-Met containers kunt u de tekst analyse-Api's in uw eigen omgeving uitvoeren en zijn geweldig voor uw specifieke vereisten voor beveiliging en gegevens beheer. De Text Analytics-containers bieden geavanceerde verwerking van natuurlijke taal via onbewerkte tekst en bevatten drie belang rijke functies: sentiment analyse, extractie van sleutel zinnen en taal detectie. Het koppelen van entiteiten wordt momenteel niet ondersteund in een container.
+Containers stellen u in staat om de TEXT Analytic API's in uw eigen omgeving uit te voeren en zijn ideaal voor uw specifieke vereisten voor beveiliging en gegevensbeheer. De text analytics-containers bieden geavanceerde verwerking van natuurlijke taal over ruwe tekst en bevatten drie belangrijke functies: sentimentanalyse, sleutelzinextractie en taaldetectie. Entiteitskoppeling wordt momenteel niet ondersteund in een container.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 > [!IMPORTANT]
-> Het gratis account is beperkt tot 5.000 trans acties per maand en alleen de <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">prijs categorieën <span class="docon docon-navigate-external x-hidden-focus"></span> </a> **gratis** en **standaard** zijn geldig voor containers. Zie [gegevens limieten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)voor meer informatie over de tarieven voor transactie aanvragen.
+> De gratis account is beperkt tot 5.000 transacties per maand en alleen de <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> prijzenvoor</a> containers **gratis** en **standaard** zijn geldig. Zie [Gegevenslimieten voor](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)meer informatie over transactieaanvraagtarieven.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u een van de Text Analytics containers wilt uitvoeren, moet u beschikken over de host-computer en de container omgeving.
+Als u een van de Text Analytics-containers wilt uitvoeren, moet u de hostcomputer- en containeromgevingen hebben.
 
 ## <a name="preparation"></a>Voorbereiding
 
-U moet voldoen aan de volgende vereisten voordat u met behulp van Text Analytics-containers:
+U moet aan de volgende vereisten voldoen voordat u Text Analytics-containers gebruikt:
 
 |Vereist|Doel|
 |--|--|
-|Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie het [docker-overzicht](https://docs.docker.com/engine/docker-overview/)voor een primer op basis van docker en container.<br><br> Docker moet worden geconfigureerd, zodat de containers om te verbinden met en facturering gegevens verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
-|Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker`-opdrachten.| 
-|Text Analytics resource |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure [Text Analytics-resource](../../cognitive-services-apis-create-account.md) om de bijbehorende API-sleutel en eind punt-URI op te halen. Beide waarden zijn beschikbaar op het Text Analytics overzicht van de Azure Portal en de pagina sleutels en zijn vereist om de container te starten.<br><br>**{API_KEY}** : een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}** : het eind punt op de pagina **overzicht**|
+|Docker-engine| U moet de Docker Engine geïnstalleerd op een [hostcomputer.](#the-host-computer) Docker biedt pakketten waarmee de Docker-omgeving op [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms) kan worden geconfigureerd. Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.<br><br> Docker moet zijn geconfigureerd om de containers in staat te stellen verbinding te maken met en factureringsgegevens naar Azure te verzenden. <br><br> **Op Windows**moet Docker ook zijn geconfigureerd om Linux-containers te ondersteunen.<br><br>|
+|Vertrouwdheid met Docker | U moet een basiskennis hebben van Docker-concepten, zoals registers, opslagplaatsen, containers en `docker` containerafbeeldingen, evenals kennis van basisopdrachten.| 
+|Text Analytics-bron |Om de container te kunnen gebruiken, moet u beschikken over:<br><br>Een Azure [Text Analytics-bron](../../cognitive-services-apis-create-account.md) om de bijbehorende API-sleutel en eindpunt URI op te halen. Beide waarden zijn beschikbaar op de pagina's Text Analytics Overview and Keys van de Azure-portal en zijn vereist om de container te starten.<br><br>**{API_KEY}**: Een van de twee beschikbare resourcesleutels op de pagina **Sleutels**<br><br>**{ENDPOINT_URI}**: Het eindpunt zoals vermeld op de **pagina Overzicht**|
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
@@ -49,7 +49,7 @@ U moet voldoen aan de volgende vereisten voordat u met behulp van Text Analytics
 
 ### <a name="container-requirements-and-recommendations"></a>Containervereisten en aanbevelingen
 
-De volgende tabel beschrijft de minimale en aanbevolen CPU-kernen, ten minste 2,6 GHz (gigahertz) of sneller, en het geheugen, in gigabytes (GB), om toe te wijzen voor elke container Text Analytics.
+In de volgende tabel worden de minimale en aanbevolen CPU-cores beschreven, ten minste 2,6 gigahertz (GHz) of sneller, en geheugen, in gigabytes (GB), om toe te wijzen voor elke Text Analytics-container.
 
 # <a name="key-phrase-extraction"></a>[Sleuteltermextractie](#tab/keyphrase)
 
@@ -66,13 +66,13 @@ De volgende tabel beschrijft de minimale en aanbevolen CPU-kernen, ten minste 2,
 ***
 
 * Elke kern moet ten minste 2,6 gigahertz (GHz) of sneller zijn.
-* TPS-trans acties per seconde
+* TPS - transacties per seconde
 
-Core en geheugen komen overeen met de instellingen `--cpus` en `--memory` die worden gebruikt als onderdeel van de `docker run` opdracht.
+Kern en geheugen `--cpus` komen `--memory` overeen met de en `docker run` instellingen, die worden gebruikt als onderdeel van de opdracht.
 
-## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie met `docker pull` ophalen
+## <a name="get-the-container-image-with-docker-pull"></a>De containerafbeelding biju halen`docker pull`
 
-Container installatie kopieën voor Text Analytics zijn beschikbaar op de micro soft-Container Registry.
+Containerafbeeldingen voor Text Analytics zijn beschikbaar in het Microsoft Container Registry.
 
 # <a name="key-phrase-extraction"></a>[Sleuteltermextractie](#tab/keyphrase)
 
@@ -90,7 +90,7 @@ Container installatie kopieën voor Text Analytics zijn beschikbaar op de micro 
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="docker-pull-for-the-text-analytics-containers"></a>Docker-pull voor de Text Analytics containers
+### <a name="docker-pull-for-the-text-analytics-containers"></a>Koppeling van docker voor de Text Analytics-containers
 
 # <a name="key-phrase-extraction"></a>[Sleuteltermextractie](#tab/keyphrase)
 
@@ -106,18 +106,18 @@ Container installatie kopieën voor Text Analytics zijn beschikbaar op de micro 
 
 ***
 
-## <a name="how-to-use-the-container"></a>De container gebruiken
+## <a name="how-to-use-the-container"></a>Hoe de container te gebruiken
 
-Wanneer de container zich op de [hostcomputer](#the-host-computer)bevindt, gebruikt u het volgende proces om met de container te werken.
+Zodra de container zich op de [hostcomputer bevindt,](#the-host-computer)gebruikt u het volgende proces om met de container te werken.
 
-1. [Voer de container uit](#run-the-container-with-docker-run)met de vereiste facturerings instellingen. Er zijn meer [voor beelden](../text-analytics-resource-container-config.md#example-docker-run-commands) van de `docker run`-opdracht beschikbaar.
-1. [Zoek het Voorspellings eindpunt van de container](#query-the-containers-prediction-endpoint)op.
+1. [Voer de container](#run-the-container-with-docker-run)uit met de vereiste factureringsinstellingen. Meer [voorbeelden](../text-analytics-resource-container-config.md#example-docker-run-commands) van `docker run` de opdracht zijn beschikbaar.
+1. [Query the container prediction endpoint](#query-the-containers-prediction-endpoint).
 
-## <a name="run-the-container-with-docker-run"></a>De container met `docker run` uitvoeren
+## <a name="run-the-container-with-docker-run"></a>Voer de container uit met`docker run`
 
-Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om een van de drie containers uit te voeren. Raadpleeg de [vereiste para meters verzamelen](#gathering-required-parameters) voor meer informatie over het ophalen van de `{ENDPOINT_URI}` en `{API_KEY}` waarden.
+Gebruik de opdracht [Docker run](https://docs.docker.com/engine/reference/commandline/run/) om een van de drie containers uit te voeren. Raadpleeg [de vereiste parameters verzamelen](#gathering-required-parameters) voor `{ENDPOINT_URI}` meer `{API_KEY}` informatie over hoe u de en waarden krijgen.
 
-[Voor beelden](../text-analytics-resource-container-config.md#example-docker-run-commands) van de opdracht `docker run` zijn beschikbaar.
+[Voorbeelden](../text-analytics-resource-container-config.md#example-docker-run-commands) van `docker run` de opdracht zijn beschikbaar.
 
 # <a name="key-phrase-extraction"></a>[Sleuteltermextractie](#tab/keyphrase)
 
@@ -134,15 +134,15 @@ Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/comman
 ***
 
 > [!IMPORTANT]
-> De opties `Eula`, `Billing`en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](#billing)voor meer informatie.
+> De `Eula` `Billing`opties `ApiKey` en de opties moeten worden opgegeven om de container uit te voeren; Anders start de container niet.  Zie [Facturering voor](#billing)meer informatie.
 
 [!INCLUDE [Running multiple containers on the same host](../../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
-## <a name="query-the-containers-prediction-endpoint"></a>Query uitvoeren op het prediction-eind punt van de container
+## <a name="query-the-containers-prediction-endpoint"></a>Het voorspellingseindpunt van de container opvragen
 
-De container bevat op REST gebaseerde query Voorspellings eindpunt-Api's.
+De container biedt OP RUST gebaseerde queryvoorspellingseindpunt-API's.
 
-Gebruik de host, `http://localhost:5000`voor container-Api's.
+Gebruik de `http://localhost:5000`host, voor container API's.
 
 <!--  ## Validate container is running -->
 
@@ -154,17 +154,17 @@ Gebruik de host, `http://localhost:5000`voor container-Api's.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als u de container uitvoert met een uitvoer [koppeling](../text-analytics-resource-container-config.md#mount-settings) en logboek registratie ingeschakeld, genereert de container logboek bestanden die handig zijn om problemen op te lossen die optreden tijdens het starten of uitvoeren van de container.
+Als u de container uitvoert met een [uitvoerbevestiging](../text-analytics-resource-container-config.md#mount-settings) en logboekregistratie is ingeschakeld, genereert de container logboekbestanden die handig zijn om problemen op te lossen die zich voordoen tijdens het starten of uitvoeren van de container.
 
 [!INCLUDE [Cognitive Services FAQ note](../../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Facturering
+## <a name="billing"></a>Billing
 
-De Text Analytics-containers verzenden facturerings gegevens naar Azure met behulp van een _Text Analytics_ resource in uw Azure-account. 
+De tekstanalysecontainers verzenden factureringsgegevens naar Azure met behulp van een _Text Analytics-bron_ op uw Azure-account. 
 
 [!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Zie [containers configureren](../text-analytics-resource-container-config.md)voor meer informatie over deze opties.
+Zie [Containers configureren](../text-analytics-resource-container-config.md)voor meer informatie over deze opties.
 
 <!--blogs/samples/video course -->
 
@@ -172,21 +172,21 @@ Zie [containers configureren](../text-analytics-resource-container-config.md)voo
 
 ## <a name="summary"></a>Samenvatting
 
-In dit artikel hebt u geleerd concepten en werkstroom voor het downloaden, installeren en Text Analytics-containers uitvoeren. Samenvatting:
+In dit artikel hebt u concepten en werkstroom geleerd voor het downloaden, installeren en uitvoeren van Text Analytics-containers. Samenvatting:
 
-* Text Analytics biedt drie Linux-containers voor docker, met inkapseling van diverse mogelijkheden:
+* Text Analytics biedt drie Linux-containers voor Docker, waarin verschillende mogelijkheden worden ingekapseld:
    * *Sleuteltermextractie*
    * *Taaldetectie*
    * *Sentimentanalyse*
-* Containerinstallatiekopieën worden gedownload uit het Microsoft Container Registry (MCR) in Azure.
-* Containerinstallatiekopieën uitvoeren in Docker.
-* U kunt de REST-API of de SDK gebruiken om aan te roepen van bewerkingen in Text Analytics-containers door de host-URI van de container op te geven.
-* Bij het instantiëren van een container, moet u informatie over facturering opgeven.
+* Containerafbeeldingen worden gedownload uit het Microsoft Container Registry (MCR) in Azure.
+* Containerafbeeldingen worden uitgevoerd in Docker.
+* U de REST API of SDK gebruiken om bewerkingen aan te roepen in Text Analytics-containers door de hostURI van de container op te geven.
+* U moet factureringsgegevens opgeven bij het momentmaken van een container.
 
 > [!IMPORTANT]
-> Cognitive Services-containers zijn geen licentie om uit te voeren zonder verbinding met Azure voor het meten. Klanten moeten de containers om te communiceren factureringsgegevens met de softwarelicentiecontrole-service te allen tijde inschakelen. Cognitive Services-containers verzenden klantgegevens (zoals de afbeelding of tekst die wordt geanalyseerd) niet naar Microsoft.
+> Cognitive Services-containers hebben geen licentie om uit te voeren zonder dat deze is verbonden met Azure voor meting. Klanten moeten de containers te allen tijde in staat stellen factureringsgegevens met de meetservice te communiceren. Cognitive Services-containers verzenden geen klantgegevens (bijvoorbeeld de afbeelding of tekst die wordt geanalyseerd) naar Microsoft.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Containers voor configuratie-instellingen [configureren](../text-analytics-resource-container-config.md) controleren
-* Raadpleeg Veelgestelde [vragen (FAQ)](../text-analytics-resource-faq.md) om problemen met betrekking tot de functionaliteit op te lossen.
+* Containers [configureren controleren](../text-analytics-resource-container-config.md) voor configuratie-instellingen
+* Raadpleeg [veelgestelde vragen (FAQ)](../text-analytics-resource-faq.md) om problemen met betrekking tot functionaliteit op te lossen.

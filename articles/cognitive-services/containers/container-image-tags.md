@@ -1,7 +1,7 @@
 ---
 title: Tags voor Cognitive Services-containerinstallatiekopie
 titleSuffix: Azure Cognitive Services
-description: Een uitgebreide lijst met alle afbeeldings Tags voor de cognitieve service container.
+description: Een uitgebreide lijst van alle tagen van de Cognitive Service-containerafbeeldingen.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,26 +10,26 @@ ms.topic: reference
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: eed2223dbfeee307b552cdd010530f27c379f5fe
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219443"
 ---
-# <a name="azure-cognitive-services-container-image-tags"></a>Tags voor Azure Cognitive Services container installatie kopieën
+# <a name="azure-cognitive-services-container-image-tags"></a>Image-imagetags voor Azure Cognitive Services-container
 
-Azure Cognitive Services biedt veel container installatie kopieën. De container registers en de bijbehorende opslag plaatsen variëren tussen container installatie kopieën. De naam van elke container installatie kopie biedt meerdere labels. Een container afbeeldings code is een mechanisme voor het versie beheer van de container installatie kopie. Dit artikel is bedoeld om te worden gebruikt als een uitgebreide verwijzing voor het weer geven van alle Cognitive Services container installatie kopieën en de beschik bare Tags.
+Azure Cognitive Services biedt veel containerafbeeldingen. De containerregisters en bijbehorende opslagplaatsen variëren tussen containerafbeeldingen. Elke naam van de containerafbeelding biedt meerdere tags. Een containerafbeeldingstag is een mechanisme voor het versien van de containerafbeelding. Dit artikel is bedoeld om te worden gebruikt als een uitgebreide referentie voor het vermelden van alle Cognitive Services container afbeeldingen en hun beschikbare tags.
 
 > [!TIP]
-> Wanneer u [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)gebruikt, moet u zorgvuldig letten op de behuizing van het container register, de opslag plaats, de naam van de container installatie kopie en de bijbehorende tag. Dit zijn **hoofdletter gevoelig**.
+> Let [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)bij gebruik goed op de behuizing van het containerregister, de opslagplaats, de naam van de containerafbeelding en de bijbehorende tag - omdat ze **hoofdlettergevoelig**zijn .
 
 ## <a name="anomaly-detector"></a>Anomaly Detector
 
-De [afwijkende detector][ad-containers] container installatie kopie vindt u in het container register van `containerpreview.azurecr.io`. Deze bevindt zich in de `microsoft` opslagplaats en heet `cognitive-services-anomaly-detector`. De volledig gekwalificeerde naam van de container installatie kopie is `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector`.
+De [anomaliedetectorcontainerafbeelding][ad-containers] is te `containerpreview.azurecr.io` vinden in het containerregister. Het bevindt `microsoft` zich in `cognitive-services-anomaly-detector`de repository en is vernoemd. De volledig gekwalificeerde containerafbeeldingsnaam is, `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector`.
 
-Deze container installatie kopie heeft de volgende tags beschikbaar:
+Deze containerafbeelding heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldingstags                    | Opmerkingen |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -37,11 +37,11 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 ## <a name="computer-vision"></a>Computer Vision
 
-De [Computer Vision][cv-containers] container installatie kopie vindt u in het `containerpreview.azurecr.io` container register. Deze bevindt zich in de `microsoft` opslagplaats en heet `cognitive-services-read`. De volledig gekwalificeerde naam van de container installatie kopie is `containerpreview.azurecr.io/microsoft/cognitive-services-read`.
+De [containerafbeelding van Computer][cv-containers] Vision `containerpreview.azurecr.io` is te vinden in het containerregister. Het bevindt `microsoft` zich in `cognitive-services-read`de repository en is vernoemd. De volledig gekwalificeerde containerafbeeldingsnaam is, `containerpreview.azurecr.io/microsoft/cognitive-services-read`.
 
-Deze container installatie kopie heeft de volgende tags beschikbaar:
+Deze containerafbeelding heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldingstags                    | Opmerkingen |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.011580001-amd64-preview` |       |
@@ -50,11 +50,11 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 ## <a name="face"></a>Face
 
-De [Face][fa-containers] -container installatie kopie vindt u in het container register van `containerpreview.azurecr.io`. Deze bevindt zich in de `microsoft` opslagplaats en heet `cognitive-services-face`. De volledig gekwalificeerde naam van de container installatie kopie is `containerpreview.azurecr.io/microsoft/cognitive-services-face`.
+De afbeelding van de [Face-container][fa-containers] is te vinden in het `containerpreview.azurecr.io` containerregister. Het bevindt `microsoft` zich in `cognitive-services-face`de repository en is vernoemd. De volledig gekwalificeerde containerafbeeldingsnaam is, `containerpreview.azurecr.io/microsoft/cognitive-services-face`.
 
-Deze container installatie kopie heeft de volgende tags beschikbaar:
+Deze containerafbeelding heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldingstags                    | Opmerkingen |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -68,11 +68,11 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 ## <a name="form-recognizer"></a>Form Recognizer
 
-De container installatie kopie voor de [formulier herkenning][fr-containers] vindt u in het container register van `containerpreview.azurecr.io`. Deze bevindt zich in de `microsoft` opslagplaats en heet `cognitive-services-form-recognizer`. De volledig gekwalificeerde naam van de container installatie kopie is `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer`.
+De [containerafbeelding van Form Recognizer][fr-containers] is te vinden in het `containerpreview.azurecr.io` containerregister. Het bevindt `microsoft` zich in `cognitive-services-form-recognizer`de repository en is vernoemd. De volledig gekwalificeerde containerafbeeldingsnaam is, `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer`.
 
-Deze container installatie kopie heeft de volgende tags beschikbaar:
+Deze containerafbeelding heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldingstags                    | Opmerkingen |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -81,11 +81,11 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 ## <a name="language-understanding-luis"></a>Language Understanding (LUIS)
 
-De [Luis][lu-containers] -container installatie kopie vindt u in de `mcr.microsoft.com` container register Syndicate. Deze bevindt zich in de `azure-cognitive-services` opslagplaats en heet `luis`. De volledig gekwalificeerde naam van de container installatie kopie is `mcr.microsoft.com/azure-cognitive-services/luis`.
+De [LUIS][lu-containers] container afbeelding is `mcr.microsoft.com` te vinden op de container register syndicaat. Het bevindt `azure-cognitive-services` zich in `luis`de repository en is vernoemd. De volledig gekwalificeerde containerafbeeldingsnaam is, `mcr.microsoft.com/azure-cognitive-services/luis`.
 
-Deze container installatie kopie heeft de volgende tags beschikbaar:
+Deze containerafbeelding heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldingstags                    | Opmerkingen |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.010330004-amd64-preview` |       |
@@ -97,13 +97,13 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 | `1.1.007360001-amd64-preview` |       |
 | `1.1.007020001-amd64-preview` |       |
 
-## <a name="custom-speech-to-text"></a>Custom Speech-naar-tekst
+## <a name="custom-speech-to-text"></a>Aangepaste spraak-naar-tekst
 
-De [Custom speech-naar-tekst][sp-cstt] container installatie kopie vindt u in het `containerpreview.azurecr.io` container register. Deze bevindt zich in de `microsoft` opslagplaats en heet `cognitive-services-custom-speech-to-text`. De volledig gekwalificeerde naam van de container installatie kopie is `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text`.
+De afbeelding van de [aangepaste spraak-naar-tekstcontainer][sp-cstt] is te vinden in het `containerpreview.azurecr.io` containerregister. Het bevindt `microsoft` zich in `cognitive-services-custom-speech-to-text`de repository en is vernoemd. De volledig gekwalificeerde containerafbeeldingsnaam is, `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text`.
 
-Deze container installatie kopie heeft de volgende tags beschikbaar:
+Deze containerafbeelding heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags            | Opmerkingen |
+| Afbeeldingstags            | Opmerkingen |
 |-----------------------|:------|
 | `latest`              |       |
 | `2.1.1-amd64-preview` |       |
@@ -113,480 +113,480 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 ## <a name="custom-text-to-speech"></a>Aangepaste tekst-naar-spraak
 
-De [aangepaste tekst-naar-spraak-][sp-ctts] container installatie kopie vindt u in het `containerpreview.azurecr.io` container register. Deze bevindt zich in de `microsoft` opslagplaats en heet `cognitive-services-custom-text-to-speech`. De volledig gekwalificeerde naam van de container installatie kopie is `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech`.
+De [aangepaste tekst-naar-spraak][sp-ctts] container afbeelding `containerpreview.azurecr.io` is te vinden in het containerregister. Het bevindt `microsoft` zich in `cognitive-services-custom-text-to-speech`de repository en is vernoemd. De volledig gekwalificeerde containerafbeeldingsnaam is, `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech`.
 
-Deze container installatie kopie heeft de volgende tags beschikbaar:
+Deze containerafbeelding heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags            | Opmerkingen |
+| Afbeeldingstags            | Opmerkingen |
 |-----------------------|:------|
 | `latest`              |       |
 | `1.3.0-amd64-preview` |       |
 
 ## <a name="speech-to-text"></a>Spraak naar tekst
 
-De afbeelding voor de [spraak-naar-tekst-][sp-stt] container kan worden gevonden in het container register van `containerpreview.azurecr.io`. Deze bevindt zich in de `microsoft` opslagplaats en heet `cognitive-services-speech-to-text`. De volledig gekwalificeerde naam van de container installatie kopie is `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text`.
+De [spraak-naar-tekst][sp-stt] container afbeelding is `containerpreview.azurecr.io` te vinden in het containerregister. Het bevindt `microsoft` zich in `cognitive-services-speech-to-text`de repository en is vernoemd. De volledig gekwalificeerde containerafbeeldingsnaam is, `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text`.
 
-Deze container installatie kopie heeft de volgende tags beschikbaar:
+Deze containerafbeelding heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                  | Opmerkingen                                    |
+| Afbeeldingstags                  | Opmerkingen                                    |
 |-----------------------------|:-----------------------------------------|
-| `latest`                    | Container installatie kopie met de `en-US` land instelling. |
-| `2.1.1-amd64-ar-ae-preview` | Container installatie kopie met de `ar-AE` land instelling. |
-| `2.1.1-amd64-ar-eg-preview` | Container installatie kopie met de `ar-EG` land instelling. |
-| `2.1.1-amd64-ar-kw-preview` | Container installatie kopie met de `ar-KW` land instelling. |
-| `2.1.1-amd64-ar-qa-preview` | Container installatie kopie met de `ar-QA` land instelling. |
-| `2.1.1-amd64-ar-sa-preview` | Container installatie kopie met de `ar-SA` land instelling. |
-| `2.1.1-amd64-ca-es-preview` | Container installatie kopie met de `ca-ES` land instelling. |
-| `2.1.1-amd64-da-dk-preview` | Container installatie kopie met de `da-DK` land instelling. |
-| `2.1.1-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
-| `2.1.1-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
-| `2.1.1-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
-| `2.1.1-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
-| `2.1.1-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
-| `2.1.1-amd64-en-nz-preview` | Container installatie kopie met de `en-NZ` land instelling. |
-| `2.1.1-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
-| `2.1.1-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
-| `2.1.1-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
-| `2.1.1-amd64-fi-fi-preview` | Container installatie kopie met de `fi-FI` land instelling. |
-| `2.1.1-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
-| `2.1.1-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
-| `2.1.1-amd64-gu-in-preview` | Container installatie kopie met de `gu-IN` land instelling. |
-| `2.1.1-amd64-hi-in-preview` | Container installatie kopie met de `hi-IN` land instelling. |
-| `2.1.1-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
-| `2.1.1-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
-| `2.1.1-amd64-ko-kr-preview` | Container installatie kopie met de `ko-KR` land instelling. |
-| `2.1.1-amd64-mr-in-preview` | Container installatie kopie met de `mr-IN` land instelling. |
-| `2.1.1-amd64-nb-no-preview` | Container installatie kopie met de `nb-NO` land instelling. |
-| `2.1.1-amd64-nl-nl-preview` | Container installatie kopie met de `nl-NL` land instelling. |
-| `2.1.1-amd64-pl-pl-preview` | Container installatie kopie met de `pl-PL` land instelling. |
-| `2.1.1-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
-| `2.1.1-amd64-pt-pt-preview` | Container installatie kopie met de `pt-PT` land instelling. |
-| `2.1.1-amd64-ru-ru-preview` | Container installatie kopie met de `ru-RU` land instelling. |
-| `2.1.1-amd64-sv-se-preview` | Container installatie kopie met de `sv-SE` land instelling. |
-| `2.1.1-amd64-ta-in-preview` | Container installatie kopie met de `ta-IN` land instelling. |
-| `2.1.1-amd64-te-in-preview` | Container installatie kopie met de `te-IN` land instelling. |
-| `2.1.1-amd64-th-th-preview` | Container installatie kopie met de `th-TH` land instelling. |
-| `2.1.1-amd64-tr-tr-preview` | Container installatie kopie met de `tr-TR` land instelling. |
-| `2.1.1-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
-| `2.1.1-amd64-zh-hk-preview` | Container installatie kopie met de `zh-HK` land instelling. |
-| `2.1.1-amd64-zh-tw-preview` | Container installatie kopie met de `zh-TW` land instelling. |
-| `2.1.0-amd64-ar-ae-preview` | Container installatie kopie met de `ar-AE` land instelling. |
-| `2.1.0-amd64-ar-eg-preview` | Container installatie kopie met de `ar-EG` land instelling. |
-| `2.1.0-amd64-ar-kw-preview` | Container installatie kopie met de `ar-KW` land instelling. |
-| `2.1.0-amd64-ar-qa-preview` | Container installatie kopie met de `ar-QA` land instelling. |
-| `2.1.0-amd64-ar-sa-preview` | Container installatie kopie met de `ar-SA` land instelling. |
-| `2.1.0-amd64-ca-es-preview` | Container installatie kopie met de `ca-ES` land instelling. |
-| `2.1.0-amd64-da-dk-preview` | Container installatie kopie met de `da-DK` land instelling. |
-| `2.1.0-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
-| `2.1.0-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
-| `2.1.0-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
-| `2.1.0-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
-| `2.1.0-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
-| `2.1.0-amd64-en-nz-preview` | Container installatie kopie met de `en-NZ` land instelling. |
-| `2.1.0-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
-| `2.1.0-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
-| `2.1.0-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
-| `2.1.0-amd64-fi-fi-preview` | Container installatie kopie met de `fi-FI` land instelling. |
-| `2.1.0-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
-| `2.1.0-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
-| `2.1.0-amd64-gu-in-preview` | Container installatie kopie met de `gu-IN` land instelling. |
-| `2.1.0-amd64-hi-in-preview` | Container installatie kopie met de `hi-IN` land instelling. |
-| `2.1.0-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
-| `2.1.0-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
-| `2.1.0-amd64-ko-kr-preview` | Container installatie kopie met de `ko-KR` land instelling. |
-| `2.1.0-amd64-mr-in-preview` | Container installatie kopie met de `mr-IN` land instelling. |
-| `2.1.0-amd64-nb-no-preview` | Container installatie kopie met de `nb-NO` land instelling. |
-| `2.1.0-amd64-nl-nl-preview` | Container installatie kopie met de `nl-NL` land instelling. |
-| `2.1.0-amd64-pl-pl-preview` | Container installatie kopie met de `pl-PL` land instelling. |
-| `2.1.0-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
-| `2.1.0-amd64-pt-pt-preview` | Container installatie kopie met de `pt-PT` land instelling. |
-| `2.1.0-amd64-ru-ru-preview` | Container installatie kopie met de `ru-RU` land instelling. |
-| `2.1.0-amd64-sv-se-preview` | Container installatie kopie met de `sv-SE` land instelling. |
-| `2.1.0-amd64-ta-in-preview` | Container installatie kopie met de `ta-IN` land instelling. |
-| `2.1.0-amd64-te-in-preview` | Container installatie kopie met de `te-IN` land instelling. |
-| `2.1.0-amd64-th-th-preview` | Container installatie kopie met de `th-TH` land instelling. |
-| `2.1.0-amd64-tr-tr-preview` | Container installatie kopie met de `tr-TR` land instelling. |
-| `2.1.0-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
-| `2.1.0-amd64-zh-hk-preview` | Container installatie kopie met de `zh-HK` land instelling. |
-| `2.1.0-amd64-zh-tw-preview` | Container installatie kopie met de `zh-TW` land instelling. |
-| `2.0.3-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
-| `2.0.2-amd64-ar-ae-preview` | Container installatie kopie met de `ar-AE` land instelling. |
-| `2.0.2-amd64-ar-eg-preview` | Container installatie kopie met de `ar-EG` land instelling. |
-| `2.0.2-amd64-ar-kw-preview` | Container installatie kopie met de `ar-KW` land instelling. |
-| `2.0.2-amd64-ar-qa-preview` | Container installatie kopie met de `ar-QA` land instelling. |
-| `2.0.2-amd64-ar-sa-preview` | Container installatie kopie met de `ar-SA` land instelling. |
-| `2.0.2-amd64-ca-es-preview` | Container installatie kopie met de `ca-ES` land instelling. |
-| `2.0.2-amd64-da-dk-preview` | Container installatie kopie met de `da-DK` land instelling. |
-| `2.0.2-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
-| `2.0.2-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
-| `2.0.2-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
-| `2.0.2-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
-| `2.0.2-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
-| `2.0.2-amd64-en-nz-preview` | Container installatie kopie met de `en-NZ` land instelling. |
-| `2.0.2-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
-| `2.0.2-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
-| `2.0.2-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
-| `2.0.2-amd64-fi-fi-preview` | Container installatie kopie met de `fi-FI` land instelling. |
-| `2.0.2-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
-| `2.0.2-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
-| `2.0.2-amd64-gu-in-preview` | Container installatie kopie met de `gu-IN` land instelling. |
-| `2.0.2-amd64-hi-in-preview` | Container installatie kopie met de `hi-IN` land instelling. |
-| `2.0.2-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
-| `2.0.2-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
-| `2.0.2-amd64-ko-kr-preview` | Container installatie kopie met de `ko-KR` land instelling. |
-| `2.0.2-amd64-mr-in-preview` | Container installatie kopie met de `mr-IN` land instelling. |
-| `2.0.2-amd64-nb-no-preview` | Container installatie kopie met de `nb-NO` land instelling. |
-| `2.0.2-amd64-nl-nl-preview` | Container installatie kopie met de `nl-NL` land instelling. |
-| `2.0.2-amd64-pl-pl-preview` | Container installatie kopie met de `pl-PL` land instelling. |
-| `2.0.2-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
-| `2.0.2-amd64-pt-pt-preview` | Container installatie kopie met de `pt-PT` land instelling. |
-| `2.0.2-amd64-ru-ru-preview` | Container installatie kopie met de `ru-RU` land instelling. |
-| `2.0.2-amd64-sv-se-preview` | Container installatie kopie met de `sv-SE` land instelling. |
-| `2.0.2-amd64-ta-in-preview` | Container installatie kopie met de `ta-IN` land instelling. |
-| `2.0.2-amd64-te-in-preview` | Container installatie kopie met de `te-IN` land instelling. |
-| `2.0.2-amd64-th-th-preview` | Container installatie kopie met de `th-TH` land instelling. |
-| `2.0.2-amd64-tr-tr-preview` | Container installatie kopie met de `tr-TR` land instelling. |
-| `2.0.2-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
-| `2.0.2-amd64-zh-hk-preview` | Container installatie kopie met de `zh-HK` land instelling. |
-| `2.0.2-amd64-zh-tw-preview` | Container installatie kopie met de `zh-TW` land instelling. |
-| `2.0.1-amd64-ar-ae-preview` | Container installatie kopie met de `ar-AE` land instelling. |
-| `2.0.1-amd64-ar-eg-preview` | Container installatie kopie met de `ar-EG` land instelling. |
-| `2.0.1-amd64-ar-kw-preview` | Container installatie kopie met de `ar-KW` land instelling. |
-| `2.0.1-amd64-ar-qa-preview` | Container installatie kopie met de `ar-QA` land instelling. |
-| `2.0.1-amd64-ar-sa-preview` | Container installatie kopie met de `ar-SA` land instelling. |
-| `2.0.1-amd64-ca-es-preview` | Container installatie kopie met de `ca-ES` land instelling. |
-| `2.0.1-amd64-da-dk-preview` | Container installatie kopie met de `da-DK` land instelling. |
-| `2.0.1-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
-| `2.0.1-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
-| `2.0.1-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
-| `2.0.1-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
-| `2.0.1-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
-| `2.0.1-amd64-en-nz-preview` | Container installatie kopie met de `en-NZ` land instelling. |
-| `2.0.1-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
-| `2.0.1-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
-| `2.0.1-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
-| `2.0.1-amd64-fi-fi-preview` | Container installatie kopie met de `fi-FI` land instelling. |
-| `2.0.1-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
-| `2.0.1-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
-| `2.0.1-amd64-gu-in-preview` | Container installatie kopie met de `gu-IN` land instelling. |
-| `2.0.1-amd64-hi-in-preview` | Container installatie kopie met de `hi-IN` land instelling. |
-| `2.0.1-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
-| `2.0.1-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
-| `2.0.1-amd64-ko-kr-preview` | Container installatie kopie met de `ko-KR` land instelling. |
-| `2.0.1-amd64-mr-in-preview` | Container installatie kopie met de `mr-IN` land instelling. |
-| `2.0.1-amd64-nb-no-preview` | Container installatie kopie met de `nb-NO` land instelling. |
-| `2.0.1-amd64-nl-nl-preview` | Container installatie kopie met de `nl-NL` land instelling. |
-| `2.0.1-amd64-pl-pl-preview` | Container installatie kopie met de `pl-PL` land instelling. |
-| `2.0.1-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
-| `2.0.1-amd64-pt-pt-preview` | Container installatie kopie met de `pt-PT` land instelling. |
-| `2.0.1-amd64-ru-ru-preview` | Container installatie kopie met de `ru-RU` land instelling. |
-| `2.0.1-amd64-sv-se-preview` | Container installatie kopie met de `sv-SE` land instelling. |
-| `2.0.1-amd64-ta-in-preview` | Container installatie kopie met de `ta-IN` land instelling. |
-| `2.0.1-amd64-te-in-preview` | Container installatie kopie met de `te-IN` land instelling. |
-| `2.0.1-amd64-th-th-preview` | Container installatie kopie met de `th-TH` land instelling. |
-| `2.0.1-amd64-tr-tr-preview` | Container installatie kopie met de `tr-TR` land instelling. |
-| `2.0.1-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
-| `2.0.1-amd64-zh-hk-preview` | Container installatie kopie met de `zh-HK` land instelling. |
-| `2.0.1-amd64-zh-tw-preview` | Container installatie kopie met de `zh-TW` land instelling. |
-| `2.0.0-amd64-ar-eg-preview` | Container installatie kopie met de `ar-EG` land instelling. |
-| `2.0.0-amd64-ca-es-preview` | Container installatie kopie met de `ca-ES` land instelling. |
-| `2.0.0-amd64-da-dk-preview` | Container installatie kopie met de `da-DK` land instelling. |
-| `2.0.0-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
-| `2.0.0-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
-| `2.0.0-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
-| `2.0.0-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
-| `2.0.0-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
-| `2.0.0-amd64-en-nz-preview` | Container installatie kopie met de `en-NZ` land instelling. |
-| `2.0.0-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
-| `2.0.0-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
-| `2.0.0-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
-| `2.0.0-amd64-fi-fi-preview` | Container installatie kopie met de `fi-FI` land instelling. |
-| `2.0.0-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
-| `2.0.0-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
-| `2.0.0-amd64-hi-in-preview` | Container installatie kopie met de `hi-IN` land instelling. |
-| `2.0.0-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
-| `2.0.0-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
-| `2.0.0-amd64-ko-kr-preview` | Container installatie kopie met de `ko-KR` land instelling. |
-| `2.0.0-amd64-nb-no-preview` | Container installatie kopie met de `nb-NO` land instelling. |
-| `2.0.0-amd64-nl-nl-preview` | Container installatie kopie met de `nl-NL` land instelling. |
-| `2.0.0-amd64-pl-pl-preview` | Container installatie kopie met de `pl-PL` land instelling. |
-| `2.0.0-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
-| `2.0.0-amd64-pt-pt-preview` | Container installatie kopie met de `pt-PT` land instelling. |
-| `2.0.0-amd64-ru-ru-preview` | Container installatie kopie met de `ru-RU` land instelling. |
-| `2.0.0-amd64-sv-se-preview` | Container installatie kopie met de `sv-SE` land instelling. |
-| `2.0.0-amd64-th-th-preview` | Container installatie kopie met de `th-TH` land instelling. |
-| `2.0.0-amd64-tr-tr-preview` | Container installatie kopie met de `tr-TR` land instelling. |
-| `2.0.0-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
-| `2.0.0-amd64-zh-hk-preview` | Container installatie kopie met de `zh-HK` land instelling. |
-| `2.0.0-amd64-zh-tw-preview` | Container installatie kopie met de `zh-TW` land instelling. |
-| `1.2.0-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
-| `1.2.0-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
-| `1.2.0-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
-| `1.2.0-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
-| `1.2.0-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
-| `1.2.0-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
-| `1.2.0-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
-| `1.2.0-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
-| `1.2.0-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
-| `1.2.0-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
-| `1.2.0-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
-| `1.2.0-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
-| `1.2.0-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
-| `1.2.0-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
-| `1.1.3-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
-| `1.1.3-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
-| `1.1.3-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
-| `1.1.3-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
-| `1.1.3-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
-| `1.1.3-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
-| `1.1.3-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
-| `1.1.3-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
-| `1.1.3-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
-| `1.1.3-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
-| `1.1.3-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
-| `1.1.3-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
-| `1.1.3-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
-| `1.1.3-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
-| `1.1.2-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
-| `1.1.2-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
-| `1.1.2-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
-| `1.1.2-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
-| `1.1.2-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
-| `1.1.2-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
-| `1.1.2-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
-| `1.1.2-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
-| `1.1.2-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
-| `1.1.2-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
-| `1.1.2-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
-| `1.1.2-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
-| `1.1.2-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
-| `1.1.2-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
-| `1.1.1-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
-| `1.1.1-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
-| `1.1.1-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
-| `1.1.1-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
-| `1.1.1-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
-| `1.1.1-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
-| `1.1.1-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
-| `1.1.1-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
-| `1.1.1-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
-| `1.1.1-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
-| `1.1.1-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
-| `1.1.1-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
-| `1.1.1-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
-| `1.1.1-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
-| `1.1.0-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
-| `1.1.0-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
-| `1.1.0-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
-| `1.1.0-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
-| `1.1.0-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
-| `1.1.0-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
-| `1.1.0-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
-| `1.1.0-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
-| `1.1.0-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
-| `1.1.0-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
-| `1.1.0-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
-| `1.1.0-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
-| `1.1.0-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
-| `1.1.0-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
-| `1.0.0-amd64-de-de-preview` | Container installatie kopie met de `de-DE` land instelling. |
-| `1.0.0-amd64-en-au-preview` | Container installatie kopie met de `en-AU` land instelling. |
-| `1.0.0-amd64-en-ca-preview` | Container installatie kopie met de `en-CA` land instelling. |
-| `1.0.0-amd64-en-gb-preview` | Container installatie kopie met de `en-GB` land instelling. |
-| `1.0.0-amd64-en-in-preview` | Container installatie kopie met de `en-IN` land instelling. |
-| `1.0.0-amd64-en-us-preview` | Container installatie kopie met de `en-US` land instelling. |
-| `1.0.0-amd64-es-es-preview` | Container installatie kopie met de `es-ES` land instelling. |
-| `1.0.0-amd64-es-mx-preview` | Container installatie kopie met de `es-MX` land instelling. |
-| `1.0.0-amd64-fr-ca-preview` | Container installatie kopie met de `fr-CA` land instelling. |
-| `1.0.0-amd64-fr-fr-preview` | Container installatie kopie met de `fr-FR` land instelling. |
-| `1.0.0-amd64-it-it-preview` | Container installatie kopie met de `it-IT` land instelling. |
-| `1.0.0-amd64-ja-jp-preview` | Container installatie kopie met de `ja-JP` land instelling. |
-| `1.0.0-amd64-pt-br-preview` | Container installatie kopie met de `pt-BR` land instelling. |
-| `1.0.0-amd64-zh-cn-preview` | Container installatie kopie met de `zh-CN` land instelling. |
+| `latest`                    | Containerafbeelding met `en-US` de landint. |
+| `2.1.1-amd64-ar-ae-preview` | Containerafbeelding met `ar-AE` de landint. |
+| `2.1.1-amd64-ar-eg-preview` | Containerafbeelding met `ar-EG` de landint. |
+| `2.1.1-amd64-ar-kw-preview` | Containerafbeelding met `ar-KW` de landint. |
+| `2.1.1-amd64-ar-qa-preview` | Containerafbeelding met `ar-QA` de landint. |
+| `2.1.1-amd64-ar-sa-preview` | Containerafbeelding met `ar-SA` de landint. |
+| `2.1.1-amd64-ca-es-preview` | Containerafbeelding met `ca-ES` de landint. |
+| `2.1.1-amd64-da-dk-preview` | Containerafbeelding met `da-DK` de landint. |
+| `2.1.1-amd64-de-de-preview` | Containerafbeelding met `de-DE` de landint. |
+| `2.1.1-amd64-en-au-preview` | Containerafbeelding met `en-AU` de landint. |
+| `2.1.1-amd64-en-ca-preview` | Containerafbeelding met `en-CA` de landint. |
+| `2.1.1-amd64-en-gb-preview` | Containerafbeelding met `en-GB` de landint. |
+| `2.1.1-amd64-en-in-preview` | Containerafbeelding met `en-IN` de landint. |
+| `2.1.1-amd64-en-nz-preview` | Containerafbeelding met `en-NZ` de landint. |
+| `2.1.1-amd64-en-us-preview` | Containerafbeelding met `en-US` de landint. |
+| `2.1.1-amd64-es-es-preview` | Containerafbeelding met `es-ES` de landint. |
+| `2.1.1-amd64-es-mx-preview` | Containerafbeelding met `es-MX` de landint. |
+| `2.1.1-amd64-fi-fi-preview` | Containerafbeelding met `fi-FI` de landint. |
+| `2.1.1-amd64-fr-ca-preview` | Containerafbeelding met `fr-CA` de landint. |
+| `2.1.1-amd64-fr-fr-preview` | Containerafbeelding met `fr-FR` de landint. |
+| `2.1.1-amd64-gu-in-preview` | Containerafbeelding met `gu-IN` de landint. |
+| `2.1.1-amd64-hi-in-preview` | Containerafbeelding met `hi-IN` de landint. |
+| `2.1.1-amd64-it-it-preview` | Containerafbeelding met `it-IT` de landint. |
+| `2.1.1-amd64-ja-jp-preview` | Containerafbeelding met `ja-JP` de landint. |
+| `2.1.1-amd64-ko-kr-preview` | Containerafbeelding met `ko-KR` de landint. |
+| `2.1.1-amd64-mr-in-preview` | Containerafbeelding met `mr-IN` de landint. |
+| `2.1.1-amd64-nb-no-preview` | Containerafbeelding met `nb-NO` de landint. |
+| `2.1.1-amd64-nl-nl-preview` | Containerafbeelding met `nl-NL` de landint. |
+| `2.1.1-amd64-pl-pl-preview` | Containerafbeelding met `pl-PL` de landint. |
+| `2.1.1-amd64-pt-br-preview` | Containerafbeelding met `pt-BR` de landint. |
+| `2.1.1-amd64-pt-pt-preview` | Containerafbeelding met `pt-PT` de landint. |
+| `2.1.1-amd64-ru-ru-preview` | Containerafbeelding met `ru-RU` de landint. |
+| `2.1.1-amd64-sv-se-preview` | Containerafbeelding met `sv-SE` de landint. |
+| `2.1.1-amd64-ta-in-preview` | Containerafbeelding met `ta-IN` de landint. |
+| `2.1.1-amd64-te-in-preview` | Containerafbeelding met `te-IN` de landint. |
+| `2.1.1-amd64-th-th-preview` | Containerafbeelding met `th-TH` de landint. |
+| `2.1.1-amd64-tr-tr-preview` | Containerafbeelding met `tr-TR` de landint. |
+| `2.1.1-amd64-zh-cn-preview` | Containerafbeelding met `zh-CN` de landint. |
+| `2.1.1-amd64-zh-hk-preview` | Containerafbeelding met `zh-HK` de landint. |
+| `2.1.1-amd64-zh-tw-preview` | Containerafbeelding met `zh-TW` de landint. |
+| `2.1.0-amd64-ar-ae-preview` | Containerafbeelding met `ar-AE` de landint. |
+| `2.1.0-amd64-ar-eg-preview` | Containerafbeelding met `ar-EG` de landint. |
+| `2.1.0-amd64-ar-kw-preview` | Containerafbeelding met `ar-KW` de landint. |
+| `2.1.0-amd64-ar-qa-preview` | Containerafbeelding met `ar-QA` de landint. |
+| `2.1.0-amd64-ar-sa-preview` | Containerafbeelding met `ar-SA` de landint. |
+| `2.1.0-amd64-ca-es-preview` | Containerafbeelding met `ca-ES` de landint. |
+| `2.1.0-amd64-da-dk-preview` | Containerafbeelding met `da-DK` de landint. |
+| `2.1.0-amd64-de-de-preview` | Containerafbeelding met `de-DE` de landint. |
+| `2.1.0-amd64-en-au-preview` | Containerafbeelding met `en-AU` de landint. |
+| `2.1.0-amd64-en-ca-preview` | Containerafbeelding met `en-CA` de landint. |
+| `2.1.0-amd64-en-gb-preview` | Containerafbeelding met `en-GB` de landint. |
+| `2.1.0-amd64-en-in-preview` | Containerafbeelding met `en-IN` de landint. |
+| `2.1.0-amd64-en-nz-preview` | Containerafbeelding met `en-NZ` de landint. |
+| `2.1.0-amd64-en-us-preview` | Containerafbeelding met `en-US` de landint. |
+| `2.1.0-amd64-es-es-preview` | Containerafbeelding met `es-ES` de landint. |
+| `2.1.0-amd64-es-mx-preview` | Containerafbeelding met `es-MX` de landint. |
+| `2.1.0-amd64-fi-fi-preview` | Containerafbeelding met `fi-FI` de landint. |
+| `2.1.0-amd64-fr-ca-preview` | Containerafbeelding met `fr-CA` de landint. |
+| `2.1.0-amd64-fr-fr-preview` | Containerafbeelding met `fr-FR` de landint. |
+| `2.1.0-amd64-gu-in-preview` | Containerafbeelding met `gu-IN` de landint. |
+| `2.1.0-amd64-hi-in-preview` | Containerafbeelding met `hi-IN` de landint. |
+| `2.1.0-amd64-it-it-preview` | Containerafbeelding met `it-IT` de landint. |
+| `2.1.0-amd64-ja-jp-preview` | Containerafbeelding met `ja-JP` de landint. |
+| `2.1.0-amd64-ko-kr-preview` | Containerafbeelding met `ko-KR` de landint. |
+| `2.1.0-amd64-mr-in-preview` | Containerafbeelding met `mr-IN` de landint. |
+| `2.1.0-amd64-nb-no-preview` | Containerafbeelding met `nb-NO` de landint. |
+| `2.1.0-amd64-nl-nl-preview` | Containerafbeelding met `nl-NL` de landint. |
+| `2.1.0-amd64-pl-pl-preview` | Containerafbeelding met `pl-PL` de landint. |
+| `2.1.0-amd64-pt-br-preview` | Containerafbeelding met `pt-BR` de landint. |
+| `2.1.0-amd64-pt-pt-preview` | Containerafbeelding met `pt-PT` de landint. |
+| `2.1.0-amd64-ru-ru-preview` | Containerafbeelding met `ru-RU` de landint. |
+| `2.1.0-amd64-sv-se-preview` | Containerafbeelding met `sv-SE` de landint. |
+| `2.1.0-amd64-ta-in-preview` | Containerafbeelding met `ta-IN` de landint. |
+| `2.1.0-amd64-te-in-preview` | Containerafbeelding met `te-IN` de landint. |
+| `2.1.0-amd64-th-th-preview` | Containerafbeelding met `th-TH` de landint. |
+| `2.1.0-amd64-tr-tr-preview` | Containerafbeelding met `tr-TR` de landint. |
+| `2.1.0-amd64-zh-cn-preview` | Containerafbeelding met `zh-CN` de landint. |
+| `2.1.0-amd64-zh-hk-preview` | Containerafbeelding met `zh-HK` de landint. |
+| `2.1.0-amd64-zh-tw-preview` | Containerafbeelding met `zh-TW` de landint. |
+| `2.0.3-amd64-ja-jp-preview` | Containerafbeelding met `ja-JP` de landint. |
+| `2.0.2-amd64-ar-ae-preview` | Containerafbeelding met `ar-AE` de landint. |
+| `2.0.2-amd64-ar-eg-preview` | Containerafbeelding met `ar-EG` de landint. |
+| `2.0.2-amd64-ar-kw-preview` | Containerafbeelding met `ar-KW` de landint. |
+| `2.0.2-amd64-ar-qa-preview` | Containerafbeelding met `ar-QA` de landint. |
+| `2.0.2-amd64-ar-sa-preview` | Containerafbeelding met `ar-SA` de landint. |
+| `2.0.2-amd64-ca-es-preview` | Containerafbeelding met `ca-ES` de landint. |
+| `2.0.2-amd64-da-dk-preview` | Containerafbeelding met `da-DK` de landint. |
+| `2.0.2-amd64-de-de-preview` | Containerafbeelding met `de-DE` de landint. |
+| `2.0.2-amd64-en-au-preview` | Containerafbeelding met `en-AU` de landint. |
+| `2.0.2-amd64-en-ca-preview` | Containerafbeelding met `en-CA` de landint. |
+| `2.0.2-amd64-en-gb-preview` | Containerafbeelding met `en-GB` de landint. |
+| `2.0.2-amd64-en-in-preview` | Containerafbeelding met `en-IN` de landint. |
+| `2.0.2-amd64-en-nz-preview` | Containerafbeelding met `en-NZ` de landint. |
+| `2.0.2-amd64-en-us-preview` | Containerafbeelding met `en-US` de landint. |
+| `2.0.2-amd64-es-es-preview` | Containerafbeelding met `es-ES` de landint. |
+| `2.0.2-amd64-es-mx-preview` | Containerafbeelding met `es-MX` de landint. |
+| `2.0.2-amd64-fi-fi-preview` | Containerafbeelding met `fi-FI` de landint. |
+| `2.0.2-amd64-fr-ca-preview` | Containerafbeelding met `fr-CA` de landint. |
+| `2.0.2-amd64-fr-fr-preview` | Containerafbeelding met `fr-FR` de landint. |
+| `2.0.2-amd64-gu-in-preview` | Containerafbeelding met `gu-IN` de landint. |
+| `2.0.2-amd64-hi-in-preview` | Containerafbeelding met `hi-IN` de landint. |
+| `2.0.2-amd64-it-it-preview` | Containerafbeelding met `it-IT` de landint. |
+| `2.0.2-amd64-ja-jp-preview` | Containerafbeelding met `ja-JP` de landint. |
+| `2.0.2-amd64-ko-kr-preview` | Containerafbeelding met `ko-KR` de landint. |
+| `2.0.2-amd64-mr-in-preview` | Containerafbeelding met `mr-IN` de landint. |
+| `2.0.2-amd64-nb-no-preview` | Containerafbeelding met `nb-NO` de landint. |
+| `2.0.2-amd64-nl-nl-preview` | Containerafbeelding met `nl-NL` de landint. |
+| `2.0.2-amd64-pl-pl-preview` | Containerafbeelding met `pl-PL` de landint. |
+| `2.0.2-amd64-pt-br-preview` | Containerafbeelding met `pt-BR` de landint. |
+| `2.0.2-amd64-pt-pt-preview` | Containerafbeelding met `pt-PT` de landint. |
+| `2.0.2-amd64-ru-ru-preview` | Containerafbeelding met `ru-RU` de landint. |
+| `2.0.2-amd64-sv-se-preview` | Containerafbeelding met `sv-SE` de landint. |
+| `2.0.2-amd64-ta-in-preview` | Containerafbeelding met `ta-IN` de landint. |
+| `2.0.2-amd64-te-in-preview` | Containerafbeelding met `te-IN` de landint. |
+| `2.0.2-amd64-th-th-preview` | Containerafbeelding met `th-TH` de landint. |
+| `2.0.2-amd64-tr-tr-preview` | Containerafbeelding met `tr-TR` de landint. |
+| `2.0.2-amd64-zh-cn-preview` | Containerafbeelding met `zh-CN` de landint. |
+| `2.0.2-amd64-zh-hk-preview` | Containerafbeelding met `zh-HK` de landint. |
+| `2.0.2-amd64-zh-tw-preview` | Containerafbeelding met `zh-TW` de landint. |
+| `2.0.1-amd64-ar-ae-preview` | Containerafbeelding met `ar-AE` de landint. |
+| `2.0.1-amd64-ar-eg-preview` | Containerafbeelding met `ar-EG` de landint. |
+| `2.0.1-amd64-ar-kw-preview` | Containerafbeelding met `ar-KW` de landint. |
+| `2.0.1-amd64-ar-qa-preview` | Containerafbeelding met `ar-QA` de landint. |
+| `2.0.1-amd64-ar-sa-preview` | Containerafbeelding met `ar-SA` de landint. |
+| `2.0.1-amd64-ca-es-preview` | Containerafbeelding met `ca-ES` de landint. |
+| `2.0.1-amd64-da-dk-preview` | Containerafbeelding met `da-DK` de landint. |
+| `2.0.1-amd64-de-de-preview` | Containerafbeelding met `de-DE` de landint. |
+| `2.0.1-amd64-en-au-preview` | Containerafbeelding met `en-AU` de landint. |
+| `2.0.1-amd64-en-ca-preview` | Containerafbeelding met `en-CA` de landint. |
+| `2.0.1-amd64-en-gb-preview` | Containerafbeelding met `en-GB` de landint. |
+| `2.0.1-amd64-en-in-preview` | Containerafbeelding met `en-IN` de landint. |
+| `2.0.1-amd64-en-nz-preview` | Containerafbeelding met `en-NZ` de landint. |
+| `2.0.1-amd64-en-us-preview` | Containerafbeelding met `en-US` de landint. |
+| `2.0.1-amd64-es-es-preview` | Containerafbeelding met `es-ES` de landint. |
+| `2.0.1-amd64-es-mx-preview` | Containerafbeelding met `es-MX` de landint. |
+| `2.0.1-amd64-fi-fi-preview` | Containerafbeelding met `fi-FI` de landint. |
+| `2.0.1-amd64-fr-ca-preview` | Containerafbeelding met `fr-CA` de landint. |
+| `2.0.1-amd64-fr-fr-preview` | Containerafbeelding met `fr-FR` de landint. |
+| `2.0.1-amd64-gu-in-preview` | Containerafbeelding met `gu-IN` de landint. |
+| `2.0.1-amd64-hi-in-preview` | Containerafbeelding met `hi-IN` de landint. |
+| `2.0.1-amd64-it-it-preview` | Containerafbeelding met `it-IT` de landint. |
+| `2.0.1-amd64-ja-jp-preview` | Containerafbeelding met `ja-JP` de landint. |
+| `2.0.1-amd64-ko-kr-preview` | Containerafbeelding met `ko-KR` de landint. |
+| `2.0.1-amd64-mr-in-preview` | Containerafbeelding met `mr-IN` de landint. |
+| `2.0.1-amd64-nb-no-preview` | Containerafbeelding met `nb-NO` de landint. |
+| `2.0.1-amd64-nl-nl-preview` | Containerafbeelding met `nl-NL` de landint. |
+| `2.0.1-amd64-pl-pl-preview` | Containerafbeelding met `pl-PL` de landint. |
+| `2.0.1-amd64-pt-br-preview` | Containerafbeelding met `pt-BR` de landint. |
+| `2.0.1-amd64-pt-pt-preview` | Containerafbeelding met `pt-PT` de landint. |
+| `2.0.1-amd64-ru-ru-preview` | Containerafbeelding met `ru-RU` de landint. |
+| `2.0.1-amd64-sv-se-preview` | Containerafbeelding met `sv-SE` de landint. |
+| `2.0.1-amd64-ta-in-preview` | Containerafbeelding met `ta-IN` de landint. |
+| `2.0.1-amd64-te-in-preview` | Containerafbeelding met `te-IN` de landint. |
+| `2.0.1-amd64-th-th-preview` | Containerafbeelding met `th-TH` de landint. |
+| `2.0.1-amd64-tr-tr-preview` | Containerafbeelding met `tr-TR` de landint. |
+| `2.0.1-amd64-zh-cn-preview` | Containerafbeelding met `zh-CN` de landint. |
+| `2.0.1-amd64-zh-hk-preview` | Containerafbeelding met `zh-HK` de landint. |
+| `2.0.1-amd64-zh-tw-preview` | Containerafbeelding met `zh-TW` de landint. |
+| `2.0.0-amd64-ar-eg-preview` | Containerafbeelding met `ar-EG` de landint. |
+| `2.0.0-amd64-ca-es-preview` | Containerafbeelding met `ca-ES` de landint. |
+| `2.0.0-amd64-da-dk-preview` | Containerafbeelding met `da-DK` de landint. |
+| `2.0.0-amd64-de-de-preview` | Containerafbeelding met `de-DE` de landint. |
+| `2.0.0-amd64-en-au-preview` | Containerafbeelding met `en-AU` de landint. |
+| `2.0.0-amd64-en-ca-preview` | Containerafbeelding met `en-CA` de landint. |
+| `2.0.0-amd64-en-gb-preview` | Containerafbeelding met `en-GB` de landint. |
+| `2.0.0-amd64-en-in-preview` | Containerafbeelding met `en-IN` de landint. |
+| `2.0.0-amd64-en-nz-preview` | Containerafbeelding met `en-NZ` de landint. |
+| `2.0.0-amd64-en-us-preview` | Containerafbeelding met `en-US` de landint. |
+| `2.0.0-amd64-es-es-preview` | Containerafbeelding met `es-ES` de landint. |
+| `2.0.0-amd64-es-mx-preview` | Containerafbeelding met `es-MX` de landint. |
+| `2.0.0-amd64-fi-fi-preview` | Containerafbeelding met `fi-FI` de landint. |
+| `2.0.0-amd64-fr-ca-preview` | Containerafbeelding met `fr-CA` de landint. |
+| `2.0.0-amd64-fr-fr-preview` | Containerafbeelding met `fr-FR` de landint. |
+| `2.0.0-amd64-hi-in-preview` | Containerafbeelding met `hi-IN` de landint. |
+| `2.0.0-amd64-it-it-preview` | Containerafbeelding met `it-IT` de landint. |
+| `2.0.0-amd64-ja-jp-preview` | Containerafbeelding met `ja-JP` de landint. |
+| `2.0.0-amd64-ko-kr-preview` | Containerafbeelding met `ko-KR` de landint. |
+| `2.0.0-amd64-nb-no-preview` | Containerafbeelding met `nb-NO` de landint. |
+| `2.0.0-amd64-nl-nl-preview` | Containerafbeelding met `nl-NL` de landint. |
+| `2.0.0-amd64-pl-pl-preview` | Containerafbeelding met `pl-PL` de landint. |
+| `2.0.0-amd64-pt-br-preview` | Containerafbeelding met `pt-BR` de landint. |
+| `2.0.0-amd64-pt-pt-preview` | Containerafbeelding met `pt-PT` de landint. |
+| `2.0.0-amd64-ru-ru-preview` | Containerafbeelding met `ru-RU` de landint. |
+| `2.0.0-amd64-sv-se-preview` | Containerafbeelding met `sv-SE` de landint. |
+| `2.0.0-amd64-th-th-preview` | Containerafbeelding met `th-TH` de landint. |
+| `2.0.0-amd64-tr-tr-preview` | Containerafbeelding met `tr-TR` de landint. |
+| `2.0.0-amd64-zh-cn-preview` | Containerafbeelding met `zh-CN` de landint. |
+| `2.0.0-amd64-zh-hk-preview` | Containerafbeelding met `zh-HK` de landint. |
+| `2.0.0-amd64-zh-tw-preview` | Containerafbeelding met `zh-TW` de landint. |
+| `1.2.0-amd64-de-de-preview` | Containerafbeelding met `de-DE` de landint. |
+| `1.2.0-amd64-en-au-preview` | Containerafbeelding met `en-AU` de landint. |
+| `1.2.0-amd64-en-ca-preview` | Containerafbeelding met `en-CA` de landint. |
+| `1.2.0-amd64-en-gb-preview` | Containerafbeelding met `en-GB` de landint. |
+| `1.2.0-amd64-en-in-preview` | Containerafbeelding met `en-IN` de landint. |
+| `1.2.0-amd64-en-us-preview` | Containerafbeelding met `en-US` de landint. |
+| `1.2.0-amd64-es-es-preview` | Containerafbeelding met `es-ES` de landint. |
+| `1.2.0-amd64-es-mx-preview` | Containerafbeelding met `es-MX` de landint. |
+| `1.2.0-amd64-fr-ca-preview` | Containerafbeelding met `fr-CA` de landint. |
+| `1.2.0-amd64-fr-fr-preview` | Containerafbeelding met `fr-FR` de landint. |
+| `1.2.0-amd64-it-it-preview` | Containerafbeelding met `it-IT` de landint. |
+| `1.2.0-amd64-ja-jp-preview` | Containerafbeelding met `ja-JP` de landint. |
+| `1.2.0-amd64-pt-br-preview` | Containerafbeelding met `pt-BR` de landint. |
+| `1.2.0-amd64-zh-cn-preview` | Containerafbeelding met `zh-CN` de landint. |
+| `1.1.3-amd64-de-de-preview` | Containerafbeelding met `de-DE` de landint. |
+| `1.1.3-amd64-en-au-preview` | Containerafbeelding met `en-AU` de landint. |
+| `1.1.3-amd64-en-ca-preview` | Containerafbeelding met `en-CA` de landint. |
+| `1.1.3-amd64-en-gb-preview` | Containerafbeelding met `en-GB` de landint. |
+| `1.1.3-amd64-en-in-preview` | Containerafbeelding met `en-IN` de landint. |
+| `1.1.3-amd64-en-us-preview` | Containerafbeelding met `en-US` de landint. |
+| `1.1.3-amd64-es-es-preview` | Containerafbeelding met `es-ES` de landint. |
+| `1.1.3-amd64-es-mx-preview` | Containerafbeelding met `es-MX` de landint. |
+| `1.1.3-amd64-fr-ca-preview` | Containerafbeelding met `fr-CA` de landint. |
+| `1.1.3-amd64-fr-fr-preview` | Containerafbeelding met `fr-FR` de landint. |
+| `1.1.3-amd64-it-it-preview` | Containerafbeelding met `it-IT` de landint. |
+| `1.1.3-amd64-ja-jp-preview` | Containerafbeelding met `ja-JP` de landint. |
+| `1.1.3-amd64-pt-br-preview` | Containerafbeelding met `pt-BR` de landint. |
+| `1.1.3-amd64-zh-cn-preview` | Containerafbeelding met `zh-CN` de landint. |
+| `1.1.2-amd64-de-de-preview` | Containerafbeelding met `de-DE` de landint. |
+| `1.1.2-amd64-en-au-preview` | Containerafbeelding met `en-AU` de landint. |
+| `1.1.2-amd64-en-ca-preview` | Containerafbeelding met `en-CA` de landint. |
+| `1.1.2-amd64-en-gb-preview` | Containerafbeelding met `en-GB` de landint. |
+| `1.1.2-amd64-en-in-preview` | Containerafbeelding met `en-IN` de landint. |
+| `1.1.2-amd64-en-us-preview` | Containerafbeelding met `en-US` de landint. |
+| `1.1.2-amd64-es-es-preview` | Containerafbeelding met `es-ES` de landint. |
+| `1.1.2-amd64-es-mx-preview` | Containerafbeelding met `es-MX` de landint. |
+| `1.1.2-amd64-fr-ca-preview` | Containerafbeelding met `fr-CA` de landint. |
+| `1.1.2-amd64-fr-fr-preview` | Containerafbeelding met `fr-FR` de landint. |
+| `1.1.2-amd64-it-it-preview` | Containerafbeelding met `it-IT` de landint. |
+| `1.1.2-amd64-ja-jp-preview` | Containerafbeelding met `ja-JP` de landint. |
+| `1.1.2-amd64-pt-br-preview` | Containerafbeelding met `pt-BR` de landint. |
+| `1.1.2-amd64-zh-cn-preview` | Containerafbeelding met `zh-CN` de landint. |
+| `1.1.1-amd64-de-de-preview` | Containerafbeelding met `de-DE` de landint. |
+| `1.1.1-amd64-en-au-preview` | Containerafbeelding met `en-AU` de landint. |
+| `1.1.1-amd64-en-ca-preview` | Containerafbeelding met `en-CA` de landint. |
+| `1.1.1-amd64-en-gb-preview` | Containerafbeelding met `en-GB` de landint. |
+| `1.1.1-amd64-en-in-preview` | Containerafbeelding met `en-IN` de landint. |
+| `1.1.1-amd64-en-us-preview` | Containerafbeelding met `en-US` de landint. |
+| `1.1.1-amd64-es-es-preview` | Containerafbeelding met `es-ES` de landint. |
+| `1.1.1-amd64-es-mx-preview` | Containerafbeelding met `es-MX` de landint. |
+| `1.1.1-amd64-fr-ca-preview` | Containerafbeelding met `fr-CA` de landint. |
+| `1.1.1-amd64-fr-fr-preview` | Containerafbeelding met `fr-FR` de landint. |
+| `1.1.1-amd64-it-it-preview` | Containerafbeelding met `it-IT` de landint. |
+| `1.1.1-amd64-ja-jp-preview` | Containerafbeelding met `ja-JP` de landint. |
+| `1.1.1-amd64-pt-br-preview` | Containerafbeelding met `pt-BR` de landint. |
+| `1.1.1-amd64-zh-cn-preview` | Containerafbeelding met `zh-CN` de landint. |
+| `1.1.0-amd64-de-de-preview` | Containerafbeelding met `de-DE` de landint. |
+| `1.1.0-amd64-en-au-preview` | Containerafbeelding met `en-AU` de landint. |
+| `1.1.0-amd64-en-ca-preview` | Containerafbeelding met `en-CA` de landint. |
+| `1.1.0-amd64-en-gb-preview` | Containerafbeelding met `en-GB` de landint. |
+| `1.1.0-amd64-en-in-preview` | Containerafbeelding met `en-IN` de landint. |
+| `1.1.0-amd64-en-us-preview` | Containerafbeelding met `en-US` de landint. |
+| `1.1.0-amd64-es-es-preview` | Containerafbeelding met `es-ES` de landint. |
+| `1.1.0-amd64-es-mx-preview` | Containerafbeelding met `es-MX` de landint. |
+| `1.1.0-amd64-fr-ca-preview` | Containerafbeelding met `fr-CA` de landint. |
+| `1.1.0-amd64-fr-fr-preview` | Containerafbeelding met `fr-FR` de landint. |
+| `1.1.0-amd64-it-it-preview` | Containerafbeelding met `it-IT` de landint. |
+| `1.1.0-amd64-ja-jp-preview` | Containerafbeelding met `ja-JP` de landint. |
+| `1.1.0-amd64-pt-br-preview` | Containerafbeelding met `pt-BR` de landint. |
+| `1.1.0-amd64-zh-cn-preview` | Containerafbeelding met `zh-CN` de landint. |
+| `1.0.0-amd64-de-de-preview` | Containerafbeelding met `de-DE` de landint. |
+| `1.0.0-amd64-en-au-preview` | Containerafbeelding met `en-AU` de landint. |
+| `1.0.0-amd64-en-ca-preview` | Containerafbeelding met `en-CA` de landint. |
+| `1.0.0-amd64-en-gb-preview` | Containerafbeelding met `en-GB` de landint. |
+| `1.0.0-amd64-en-in-preview` | Containerafbeelding met `en-IN` de landint. |
+| `1.0.0-amd64-en-us-preview` | Containerafbeelding met `en-US` de landint. |
+| `1.0.0-amd64-es-es-preview` | Containerafbeelding met `es-ES` de landint. |
+| `1.0.0-amd64-es-mx-preview` | Containerafbeelding met `es-MX` de landint. |
+| `1.0.0-amd64-fr-ca-preview` | Containerafbeelding met `fr-CA` de landint. |
+| `1.0.0-amd64-fr-fr-preview` | Containerafbeelding met `fr-FR` de landint. |
+| `1.0.0-amd64-it-it-preview` | Containerafbeelding met `it-IT` de landint. |
+| `1.0.0-amd64-ja-jp-preview` | Containerafbeelding met `ja-JP` de landint. |
+| `1.0.0-amd64-pt-br-preview` | Containerafbeelding met `pt-BR` de landint. |
+| `1.0.0-amd64-zh-cn-preview` | Containerafbeelding met `zh-CN` de landint. |
 
 ## <a name="text-to-speech"></a>Tekst naar spraak
 
-De [tekst-naar-spraak][sp-tts] container installatie kopie vindt u in het `containerpreview.azurecr.io` container register. Deze bevindt zich in de `microsoft` opslagplaats en heet `cognitive-services-text-to-speech`. De volledig gekwalificeerde naam van de container installatie kopie is `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech`.
+De [tekst-naar-spraak][sp-tts] container afbeelding is `containerpreview.azurecr.io` te vinden in het containerregister. Het bevindt `microsoft` zich in `cognitive-services-text-to-speech`de repository en is vernoemd. De volledig gekwalificeerde containerafbeeldingsnaam is, `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech`.
 
-Deze container installatie kopie heeft de volgende tags beschikbaar:
+Deze containerafbeelding heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                                  | Opmerkingen                                                                      |
+| Afbeeldingstags                                  | Opmerkingen                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
-| `latest`                                    | Container installatie kopie met de `en-US` land instelling en `en-US-JessaRUS`e stem.        |
-| `1.3.0-amd64-ar-eg-hoda-preview`            | Container installatie kopie met de `ar-EG` land instelling en `ar-EG-Hoda`e stem.            |
-| `1.3.0-amd64-ar-sa-naayf-preview`           | Container installatie kopie met de `ar-SA` land instelling en `ar-SA-Naayf`e stem.           |
-| `1.3.0-amd64-bg-bg-ivan-preview`            | Container installatie kopie met de `bg-BG` land instelling en `bg-BG-Ivan`e stem.            |
-| `1.3.0-amd64-ca-es-herenarus-preview`       | Container installatie kopie met de `ca-ES` land instelling en `ca-ES-HerenaRUS`e stem.       |
-| `1.3.0-amd64-cs-cz-jakub-preview`           | Container installatie kopie met de `cs-CZ` land instelling en `cs-CZ-Jakub`e stem.           |
-| `1.3.0-amd64-da-dk-hellerus-preview`        | Container installatie kopie met de `da-DK` land instelling en `da-DK-HelleRUS`e stem.        |
-| `1.3.0-amd64-de-at-michael-preview`         | Container installatie kopie met de `de-AT` land instelling en `de-AT-Michael`e stem.         |
-| `1.3.0-amd64-de-ch-karsten-preview`         | Container installatie kopie met de `de-CH` land instelling en `de-CH-Karsten`e stem.         |
-| `1.3.0-amd64-de-de-hedda-preview`           | Container installatie kopie met de `de-DE` land instelling en `de-DE-Hedda`e stem.           |
-| `1.3.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met de `de-DE` land instelling en `de-DE-Hedda`e stem.           |
-| `1.3.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met de `de-DE` land instelling en `de-DE-HeddaRUS`e stem.        |
-| `1.3.0-amd64-de-de-stefan-apollo-preview`   | Container installatie kopie met de `de-DE` land instelling en `de-DE-Stefan-Apollo`e stem.   |
-| `1.3.0-amd64-el-gr-stefanos-preview`        | Container installatie kopie met de `el-GR` land instelling en `el-GR-Stefanos`e stem.        |
-| `1.3.0-amd64-en-au-catherine-preview`       | Container installatie kopie met de `en-AU` land instelling en `en-AU-Catherine`e stem.       |
-| `1.3.0-amd64-en-au-hayleyrus-preview`       | Container installatie kopie met de `en-AU` land instelling en `en-AU-HayleyRUS`e stem.       |
-| `1.3.0-amd64-en-ca-heatherrus-preview`      | Container installatie kopie met de `en-CA` land instelling en `en-CA-HeatherRUS`e stem.      |
-| `1.3.0-amd64-en-ca-linda-preview`           | Container installatie kopie met de `en-CA` land instelling en `en-CA-Linda`e stem.           |
-| `1.3.0-amd64-en-gb-george-apollo-preview`   | Container installatie kopie met de `en-GB` land instelling en `en-GB-George-Apollo`e stem.   |
-| `1.3.0-amd64-en-gb-hazelrus-preview`        | Container installatie kopie met de `en-GB` land instelling en `en-GB-HazelRUS`e stem.        |
-| `1.3.0-amd64-en-gb-susan-apollo-preview`    | Container installatie kopie met de `en-GB` land instelling en `en-GB-Susan-Apollo`e stem.    |
-| `1.3.0-amd64-en-ie-sean-preview`            | Container installatie kopie met de `en-IE` land instelling en `en-IE-Sean`e stem.            |
-| `1.3.0-amd64-en-in-heera-apollo-preview`    | Container installatie kopie met de `en-IN` land instelling en `en-IN-Heera-Apollo`e stem.    |
-| `1.3.0-amd64-en-in-priyarus-preview`        | Container installatie kopie met de `en-IN` land instelling en `en-IN-PriyaRUS`e stem.        |
-| `1.3.0-amd64-en-in-ravi-apollo-preview`     | Container installatie kopie met de `en-IN` land instelling en `en-IN-Ravi-Apollo`e stem.     |
-| `1.3.0-amd64-en-us-benjaminrus-preview`     | Container installatie kopie met de `en-US` land instelling en `en-US-BenjaminRUS`e stem.     |
-| `1.3.0-amd64-en-us-guy24krus-preview`       | Container installatie kopie met de `en-US` land instelling en `en-US-Guy24kRUS`e stem.       |
-| `1.3.0-amd64-en-us-jessa24krus-preview`     | Container installatie kopie met de `en-US` land instelling en `en-US-Jessa24kRUS`e stem.     |
-| `1.3.0-amd64-en-us-jessarus-preview`        | Container installatie kopie met de `en-US` land instelling en `en-US-JessaRUS`e stem.        |
-| `1.3.0-amd64-en-us-zirarus-preview`         | Container installatie kopie met de `en-US` land instelling en `en-US-ZiraRUS`e stem.         |
-| `1.3.0-amd64-es-es-helenarus-preview`       | Container installatie kopie met de `es-ES` land instelling en `es-ES-HelenaRUS`e stem.       |
-| `1.3.0-amd64-es-es-laura-apollo-preview`    | Container installatie kopie met de `es-ES` land instelling en `es-ES-Laura-Apollo`e stem.    |
-| `1.3.0-amd64-es-es-pablo-apollo-preview`    | Container installatie kopie met de `es-ES` land instelling en `es-ES-Pablo-Apollo`e stem.    |
-| `1.3.0-amd64-es-mx-hildarus-preview`        | Container installatie kopie met de `es-MX` land instelling en `es-MX-HildaRUS`e stem.        |
-| `1.3.0-amd64-es-mx-raul-apollo-preview`     | Container installatie kopie met de `es-MX` land instelling en `es-MX-Raul-Apollo`e stem.     |
-| `1.3.0-amd64-fi-fi-heidirus-preview`        | Container installatie kopie met de `fi-FI` land instelling en `fi-FI-HeidiRUS`e stem.        |
-| `1.3.0-amd64-fr-ca-caroline-preview`        | Container installatie kopie met de `fr-CA` land instelling en `fr-CA-Caroline`e stem.        |
-| `1.3.0-amd64-fr-ca-harmonierus-preview`     | Container installatie kopie met de `fr-CA` land instelling en `fr-CA-HarmonieRUS`e stem.     |
-| `1.3.0-amd64-fr-ch-guillaume-preview`       | Container installatie kopie met de `fr-CH` land instelling en `fr-CH-Guillaume`e stem.       |
-| `1.3.0-amd64-fr-fr-hortenserus-preview`     | Container installatie kopie met de `fr-FR` land instelling en `fr-FR-HortenseRUS`e stem.     |
-| `1.3.0-amd64-fr-fr-julie-apollo-preview`    | Container installatie kopie met de `fr-FR` land instelling en `fr-FR-Julie-Apollo`e stem.    |
-| `1.3.0-amd64-fr-fr-paul-apollo-preview`     | Container installatie kopie met de `fr-FR` land instelling en `fr-FR-Paul-Apollo`e stem.     |
-| `1.3.0-amd64-he-il-asaf-preview`            | Container installatie kopie met de `he-IL` land instelling en `he-IL-Asaf`e stem.            |
-| `1.3.0-amd64-hi-in-hemant-preview`          | Container installatie kopie met de `hi-IN` land instelling en `hi-IN-Hemant`e stem.          |
-| `1.3.0-amd64-hi-in-kalpana-apollo-preview`  | Container installatie kopie met de `hi-IN` land instelling en `hi-IN-Kalpana-Apollo`e stem.  |
-| `1.3.0-amd64-hi-in-kalpana-apollo-preview`  | Container installatie kopie met de `hi-IN` land instelling en `hi-IN-Kalpana`e stem.         |
-| `1.3.0-amd64-hi-in-kalpana-preview`         | Container installatie kopie met de `hi-IN` land instelling en `hi-IN-Kalpana`e stem.         |
-| `1.3.0-amd64-hr-hr-matej-preview`           | Container installatie kopie met de `hr-HR` land instelling en `hr-HR-Matej`e stem.           |
-| `1.3.0-amd64-hu-hu-szabolcs-preview`        | Container installatie kopie met de `hu-HU` land instelling en `hu-HU-Szabolcs`e stem.        |
-| `1.3.0-amd64-id-id-andika-preview`          | Container installatie kopie met de `id-ID` land instelling en `id-ID-Andika`e stem.          |
-| `1.3.0-amd64-it-it-cosimo-apollo-preview`   | Container installatie kopie met de `it-IT` land instelling en `it-IT-Cosimo-Apollo`e stem.   |
-| `1.3.0-amd64-it-it-luciarus-preview`        | Container installatie kopie met de `it-IT` land instelling en `it-IT-LuciaRUS`e stem.        |
-| `1.3.0-amd64-ja-jp-ayumi-apollo-preview`    | Container installatie kopie met de `ja-JP` land instelling en `ja-JP-Ayumi-Apollo`e stem.    |
-| `1.3.0-amd64-ja-jp-harukarus-preview`       | Container installatie kopie met de `ja-JP` land instelling en `ja-JP-HarukaRUS`e stem.       |
-| `1.3.0-amd64-ja-jp-ichiro-apollo-preview`   | Container installatie kopie met de `ja-JP` land instelling en `ja-JP-Ichiro-Apollo`e stem.   |
-| `1.3.0-amd64-ko-kr-heamirus-preview`        | Container installatie kopie met de `ko-KR` land instelling en `ko-KR-HeamiRUS`e stem.        |
-| `1.3.0-amd64-ms-my-rizwan-preview`          | Container installatie kopie met de `ms-MY` land instelling en `ms-MY-Rizwan`e stem.          |
-| `1.3.0-amd64-nb-no-huldarus-preview`        | Container installatie kopie met de `nb-NO` land instelling en `nb-NO-HuldaRUS`e stem.        |
-| `1.3.0-amd64-nl-nl-hannarus-preview`        | Container installatie kopie met de `nl-NL` land instelling en `nl-NL-HannaRUS`e stem.        |
-| `1.3.0-amd64-pl-pl-paulinarus-preview`      | Container installatie kopie met de `pl-PL` land instelling en `pl-PL-PaulinaRUS`e stem.      |
-| `1.3.0-amd64-pt-br-daniel-apollo-preview`   | Container installatie kopie met de `pt-BR` land instelling en `pt-BR-Daniel-Apollo`e stem.   |
-| `1.3.0-amd64-pt-br-heloisarus-preview`      | Container installatie kopie met de `pt-BR` land instelling en `pt-BR-HeloisaRUS`e stem.      |
-| `1.3.0-amd64-pt-pt-heliarus-preview`        | Container installatie kopie met de `pt-PT` land instelling en `pt-PT-HeliaRUS`e stem.        |
-| `1.3.0-amd64-ro-ro-andrei-preview`          | Container installatie kopie met de `ro-RO` land instelling en `ro-RO-Andrei`e stem.          |
-| `1.3.0-amd64-ru-ru-ekaterinarus-preview`    | Container installatie kopie met de `ru-RU` land instelling en `ru-RU-EkaterinaRUS`e stem.    |
-| `1.3.0-amd64-ru-ru-irina-apollo-preview`    | Container installatie kopie met de `ru-RU` land instelling en `ru-RU-Irina-Apollo`e stem.    |
-| `1.3.0-amd64-ru-ru-pavel-apollo-preview`    | Container installatie kopie met de `ru-RU` land instelling en `ru-RU-Pavel-Apollo`e stem.    |
-| `1.3.0-amd64-sk-sk-filip-preview`           | Container installatie kopie met de `sk-SK` land instelling en `sk-SK-Filip`e stem.           |
-| `1.3.0-amd64-sl-si-lado-preview`            | Container installatie kopie met de `sl-SI` land instelling en `sl-SI-Lado`e stem.            |
-| `1.3.0-amd64-sv-se-hedvigrus-preview`       | Container installatie kopie met de `sv-SE` land instelling en `sv-SE-HedvigRUS`e stem.       |
-| `1.3.0-amd64-ta-in-valluvar-preview`        | Container installatie kopie met de `ta-IN` land instelling en `ta-IN-Valluvar`e stem.        |
-| `1.3.0-amd64-te-in-chitra-preview`          | Container installatie kopie met de `te-IN` land instelling en `te-IN-Chitra`e stem.          |
-| `1.3.0-amd64-th-th-pattara-preview`         | Container installatie kopie met de `th-TH` land instelling en `th-TH-Pattara`e stem.         |
-| `1.3.0-amd64-tr-tr-sedarus-preview`         | Container installatie kopie met de `tr-TR` land instelling en `tr-TR-SedaRUS`e stem.         |
-| `1.3.0-amd64-vi-vn-an-preview`              | Container installatie kopie met de `vi-VN` land instelling en `vi-VN-An`e stem.              |
-| `1.3.0-amd64-zh-cn-huihuirus-preview`       | Container installatie kopie met de `zh-CN` land instelling en `zh-CN-HuihuiRUS`e stem.       |
-| `1.3.0-amd64-zh-cn-kangkang-apollo-preview` | Container installatie kopie met de `zh-CN` land instelling en `zh-CN-Kangkang-Apollo`e stem. |
-| `1.3.0-amd64-zh-cn-yaoyao-apollo-preview`   | Container installatie kopie met de `zh-CN` land instelling en `zh-CN-Yaoyao-Apollo`e stem.   |
-| `1.3.0-amd64-zh-hk-danny-apollo-preview`    | Container installatie kopie met de `zh-HK` land instelling en `zh-HK-Danny-Apollo`e stem.    |
-| `1.3.0-amd64-zh-hk-tracy-apollo-preview`    | Container installatie kopie met de `zh-HK` land instelling en `zh-HK-Tracy-Apollo`e stem.    |
-| `1.3.0-amd64-zh-hk-tracyrus-preview`        | Container installatie kopie met de `zh-HK` land instelling en `zh-HK-TracyRUS`e stem.        |
-| `1.3.0-amd64-zh-tw-hanhanrus-preview`       | Container installatie kopie met de `zh-TW` land instelling en `zh-TW-HanHanRUS`e stem.       |
-| `1.3.0-amd64-zh-tw-yating-apollo-preview`   | Container installatie kopie met de `zh-TW` land instelling en `zh-TW-Yating-Apollo`e stem.   |
-| `1.3.0-amd64-zh-tw-zhiwei-apollo-preview`   | Container installatie kopie met de `zh-TW` land instelling en `zh-TW-Zhiwei-Apollo`e stem.   |
-| `1.2.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met de `de-DE` land instelling en `de-DE-Hedda`e stem.           |
-| `1.2.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met de `de-DE` land instelling en `de-DE-HeddaRUS`e stem.        |
-| `1.2.0-amd64-de-de-stefan-apollo-preview`   | Container installatie kopie met de `de-DE` land instelling en `de-DE-Stefan-Apollo`e stem.   |
-| `1.2.0-amd64-en-au-catherine-preview`       | Container installatie kopie met de `en-AU` land instelling en `en-AU-Catherine`e stem.       |
-| `1.2.0-amd64-en-au-hayleyrus-preview`       | Container installatie kopie met de `en-AU` land instelling en `en-AU-HayleyRUS`e stem.       |
-| `1.2.0-amd64-en-gb-george-apollo-preview`   | Container installatie kopie met de `en-GB` land instelling en `en-GB-George-Apollo`e stem.   |
-| `1.2.0-amd64-en-gb-hazelrus-preview`        | Container installatie kopie met de `en-GB` land instelling en `en-GB-HazelRUS`e stem.        |
-| `1.2.0-amd64-en-gb-susan-apollo-preview`    | Container installatie kopie met de `en-GB` land instelling en `en-GB-Susan-Apollo`e stem.    |
-| `1.2.0-amd64-en-in-heera-apollo-preview`    | Container installatie kopie met de `en-IN` land instelling en `en-IN-Heera-Apollo`e stem.    |
-| `1.2.0-amd64-en-in-priyarus-preview`        | Container installatie kopie met de `en-IN` land instelling en `en-IN-PriyaRUS`e stem.        |
-| `1.2.0-amd64-en-in-ravi-apollo-preview`     | Container installatie kopie met de `en-IN` land instelling en `en-IN-Ravi-Apollo`e stem.     |
-| `1.2.0-amd64-en-us-benjaminrus-preview`     | Container installatie kopie met de `en-US` land instelling en `en-US-BenjaminRUS`e stem.     |
-| `1.2.0-amd64-en-us-guy24krus-preview`       | Container installatie kopie met de `en-US` land instelling en `en-US-Guy24kRUS`e stem.       |
-| `1.2.0-amd64-en-us-jessa24krus-preview`     | Container installatie kopie met de `en-US` land instelling en `en-US-Jessa24kRUS`e stem.     |
-| `1.2.0-amd64-en-us-jessarus-preview`        | Container installatie kopie met de `en-US` land instelling en `en-US-JessaRUS`e stem.        |
-| `1.2.0-amd64-en-us-zirarus-preview`         | Container installatie kopie met de `en-US` land instelling en `en-US-ZiraRUS`e stem.         |
-| `1.2.0-amd64-es-es-helenarus-preview`       | Container installatie kopie met de `es-ES` land instelling en `es-ES-HelenaRUS`e stem.       |
-| `1.2.0-amd64-es-es-laura-apollo-preview`    | Container installatie kopie met de `es-ES` land instelling en `es-ES-Laura-Apollo`e stem.    |
-| `1.2.0-amd64-es-es-pablo-apollo-preview`    | Container installatie kopie met de `es-ES` land instelling en `es-ES-Pablo-Apollo`e stem.    |
-| `1.2.0-amd64-es-mx-hildarus-preview`        | Container installatie kopie met de `es-MX` land instelling en `es-MX-HildaRUS`e stem.        |
-| `1.2.0-amd64-es-mx-raul-apollo-preview`     | Container installatie kopie met de `es-MX` land instelling en `es-MX-Raul-Apollo`e stem.     |
-| `1.2.0-amd64-fr-ca-caroline-preview`        | Container installatie kopie met de `fr-CA` land instelling en `fr-CA-Caroline`e stem.        |
-| `1.2.0-amd64-fr-ca-harmonierus-preview`     | Container installatie kopie met de `fr-CA` land instelling en `fr-CA-HarmonieRUS`e stem.     |
-| `1.2.0-amd64-fr-fr-hortenserus-preview`     | Container installatie kopie met de `fr-FR` land instelling en `fr-FR-HortenseRUS`e stem.     |
-| `1.2.0-amd64-fr-fr-julie-apollo-preview`    | Container installatie kopie met de `fr-FR` land instelling en `fr-FR-Julie-Apollo`e stem.    |
-| `1.2.0-amd64-fr-fr-paul-apollo-preview`     | Container installatie kopie met de `fr-FR` land instelling en `fr-FR-Paul-Apollo`e stem.     |
-| `1.2.0-amd64-it-it-cosimo-apollo-preview`   | Container installatie kopie met de `it-IT` land instelling en `it-IT-Cosimo-Apollo`e stem.   |
-| `1.2.0-amd64-it-it-luciarus-preview`        | Container installatie kopie met de `it-IT` land instelling en `it-IT-LuciaRUS`e stem.        |
-| `1.2.0-amd64-ja-jp-ayumi-apollo-preview`    | Container installatie kopie met de `ja-JP` land instelling en `ja-JP-Ayumi-Apollo`e stem.    |
-| `1.2.0-amd64-ja-jp-harukarus-preview`       | Container installatie kopie met de `ja-JP` land instelling en `ja-JP-HarukaRUS`e stem.       |
-| `1.2.0-amd64-ja-jp-ichiro-apollo-preview`   | Container installatie kopie met de `ja-JP` land instelling en `ja-JP-Ichiro-Apollo`e stem.   |
-| `1.2.0-amd64-ko-kr-heamirus-preview`        | Container installatie kopie met de `ko-KR` land instelling en `ko-KR-HeamiRUS`e stem.        |
-| `1.2.0-amd64-pt-br-daniel-apollo-preview`   | Container installatie kopie met de `pt-BR` land instelling en `pt-BR-Daniel-Apollo`e stem.   |
-| `1.2.0-amd64-pt-br-heloisarus-preview`      | Container installatie kopie met de `pt-BR` land instelling en `pt-BR-HeloisaRUS`e stem.      |
-| `1.2.0-amd64-zh-cn-huihuirus-preview`       | Container installatie kopie met de `zh-CN` land instelling en `zh-CN-HuihuiRUS`e stem.       |
-| `1.2.0-amd64-zh-cn-kangkang-apollo-preview` | Container installatie kopie met de `zh-CN` land instelling en `zh-CN-Kangkang-Apollo`e stem. |
-| `1.2.0-amd64-zh-cn-yaoyao-apollo-preview`   | Container installatie kopie met de `zh-CN` land instelling en `zh-CN-Yaoyao-Apollo`e stem.   |
-| `1.1.0-amd64-de-de-hedda-preview`           | Container installatie kopie met de `de-DE` land instelling en `de-DE-Hedda`e stem.           |
-| `1.1.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met de `de-DE` land instelling en `de-DE-Hedda`e stem.           |
-| `1.1.0-amd64-de-de-heddarus-preview`        | Container installatie kopie met de `de-DE` land instelling en `de-DE-HeddaRUS`e stem.        |
-| `1.1.0-amd64-de-de-stefan-apollo-preview`   | Container installatie kopie met de `de-DE` land instelling en `de-DE-Stefan-Apollo`e stem.   |
-| `1.1.0-amd64-en-au-catherine-preview`       | Container installatie kopie met de `en-AU` land instelling en `en-AU-Catherine`e stem.       |
-| `1.1.0-amd64-en-au-hayleyrus-preview`       | Container installatie kopie met de `en-AU` land instelling en `en-AU-HayleyRUS`e stem.       |
-| `1.1.0-amd64-en-gb-george-apollo-preview`   | Container installatie kopie met de `en-GB` land instelling en `en-GB-George-Apollo`e stem.   |
-| `1.1.0-amd64-en-gb-hazelrus-preview`        | Container installatie kopie met de `en-GB` land instelling en `en-GB-HazelRUS`e stem.        |
-| `1.1.0-amd64-en-gb-susan-apollo-preview`    | Container installatie kopie met de `en-GB` land instelling en `en-GB-Susan-Apollo`e stem.    |
-| `1.1.0-amd64-en-in-heera-apollo-preview`    | Container installatie kopie met de `en-IN` land instelling en `en-IN-Heera-Apollo`e stem.    |
-| `1.1.0-amd64-en-in-priyarus-preview`        | Container installatie kopie met de `en-IN` land instelling en `en-IN-PriyaRUS`e stem.        |
-| `1.1.0-amd64-en-in-ravi-apollo-preview`     | Container installatie kopie met de `en-IN` land instelling en `en-IN-Ravi-Apollo`e stem.     |
-| `1.1.0-amd64-en-us-benjaminrus-preview`     | Container installatie kopie met de `en-US` land instelling en `en-US-BenjaminRUS`e stem.     |
-| `1.1.0-amd64-en-us-guy24krus-preview`       | Container installatie kopie met de `en-US` land instelling en `en-US-Guy24kRUS`e stem.       |
-| `1.1.0-amd64-en-us-jessa24krus-preview`     | Container installatie kopie met de `en-US` land instelling en `en-US-Jessa24kRUS`e stem.     |
-| `1.1.0-amd64-en-us-jessarus-preview`        | Container installatie kopie met de `en-US` land instelling en `en-US-JessaRUS`e stem.        |
-| `1.1.0-amd64-en-us-zirarus-preview`         | Container installatie kopie met de `en-US` land instelling en `en-US-ZiraRUS`e stem.         |
-| `1.1.0-amd64-es-es-helenarus-preview`       | Container installatie kopie met de `es-ES` land instelling en `es-ES-HelenaRUS`e stem.       |
-| `1.1.0-amd64-es-es-laura-apollo-preview`    | Container installatie kopie met de `es-ES` land instelling en `es-ES-Laura-Apollo`e stem.    |
-| `1.1.0-amd64-es-es-pablo-apollo-preview`    | Container installatie kopie met de `es-ES` land instelling en `es-ES-Pablo-Apollo`e stem.    |
-| `1.1.0-amd64-es-mx-hildarus-preview`        | Container installatie kopie met de `es-MX` land instelling en `es-MX-HildaRUS`e stem.        |
-| `1.1.0-amd64-es-mx-raul-apollo-preview`     | Container installatie kopie met de `es-MX` land instelling en `es-MX-Raul-Apollo`e stem.     |
-| `1.1.0-amd64-fr-ca-caroline-preview`        | Container installatie kopie met de `fr-CA` land instelling en `fr-CA-Caroline`e stem.        |
-| `1.1.0-amd64-fr-ca-harmonierus-preview`     | Container installatie kopie met de `fr-CA` land instelling en `fr-CA-HarmonieRUS`e stem.     |
-| `1.1.0-amd64-fr-fr-hortenserus-preview`     | Container installatie kopie met de `fr-FR` land instelling en `fr-FR-HortenseRUS`e stem.     |
-| `1.1.0-amd64-fr-fr-julie-apollo-preview`    | Container installatie kopie met de `fr-FR` land instelling en `fr-FR-Julie-Apollo`e stem.    |
-| `1.1.0-amd64-fr-fr-paul-apollo-preview`     | Container installatie kopie met de `fr-FR` land instelling en `fr-FR-Paul-Apollo`e stem.     |
-| `1.1.0-amd64-it-it-cosimo-apollo-preview`   | Container installatie kopie met de `it-IT` land instelling en `it-IT-Cosimo-Apollo`e stem.   |
-| `1.1.0-amd64-it-it-luciarus-preview`        | Container installatie kopie met de `it-IT` land instelling en `it-IT-LuciaRUS`e stem.        |
-| `1.1.0-amd64-ja-jp-ayumi-apollo-preview`    | Container installatie kopie met de `ja-JP` land instelling en `ja-JP-Ayumi-Apollo`e stem.    |
-| `1.1.0-amd64-ja-jp-harukarus-preview`       | Container installatie kopie met de `ja-JP` land instelling en `ja-JP-HarukaRUS`e stem.       |
-| `1.1.0-amd64-ja-jp-ichiro-apollo-preview`   | Container installatie kopie met de `ja-JP` land instelling en `ja-JP-Ichiro-Apollo`e stem.   |
-| `1.1.0-amd64-ko-kr-heamirus-preview`        | Container installatie kopie met de `ko-KR` land instelling en `ko-KR-HeamiRUS`e stem.        |
-| `1.1.0-amd64-pt-br-daniel-apollo-preview`   | Container installatie kopie met de `pt-BR` land instelling en `pt-BR-Daniel-Apollo`e stem.   |
-| `1.1.0-amd64-pt-br-heloisarus-preview`      | Container installatie kopie met de `pt-BR` land instelling en `pt-BR-HeloisaRUS`e stem.      |
-| `1.1.0-amd64-zh-cn-huihuirus-preview`       | Container installatie kopie met de `zh-CN` land instelling en `zh-CN-HuihuiRUS`e stem.       |
-| `1.1.0-amd64-zh-cn-kangkang-apollo-preview` | Container installatie kopie met de `zh-CN` land instelling en `zh-CN-Kangkang-Apollo`e stem. |
-| `1.1.0-amd64-zh-cn-yaoyao-apollo-preview`   | Container installatie kopie met de `zh-CN` land instelling en `zh-CN-Yaoyao-Apollo`e stem.   |
-| `1.0.0-amd64-en-us-benjaminrus-preview`     | Container installatie kopie met de `en-US` land instelling en `en-US-BenjaminRUS`e stem.     |
-| `1.0.0-amd64-en-us-guy24krus-preview`       | Container installatie kopie met de `en-US` land instelling en `en-US-Guy24kRUS`e stem.       |
-| `1.0.0-amd64-en-us-jessa24krus-preview`     | Container installatie kopie met de `en-US` land instelling en `en-US-Jessa24kRUS`e stem.     |
-| `1.0.0-amd64-en-us-jessarus-preview`        | Container installatie kopie met de `en-US` land instelling en `en-US-JessaRUS`e stem.        |
-| `1.0.0-amd64-en-us-zirarus-preview`         | Container installatie kopie met de `en-US` land instelling en `en-US-ZiraRUS`e stem.         |
-| `1.0.0-amd64-zh-cn-huihuirus-preview`       | Container installatie kopie met de `zh-CN` land instelling en `zh-CN-HuihuiRUS`e stem.       |
-| `1.0.0-amd64-zh-cn-kangkang-apollo-preview` | Container installatie kopie met de `zh-CN` land instelling en `zh-CN-Kangkang-Apollo`e stem. |
-| `1.0.0-amd64-zh-cn-yaoyao-apollo-preview`   | Container installatie kopie met de `zh-CN` land instelling en `zh-CN-Yaoyao-Apollo`e stem.   |
+| `latest`                                    | Containerafbeelding met `en-US` de `en-US-JessaRUS` land- en stem.        |
+| `1.3.0-amd64-ar-eg-hoda-preview`            | Containerafbeelding met `ar-EG` de `ar-EG-Hoda` land- en stem.            |
+| `1.3.0-amd64-ar-sa-naayf-preview`           | Containerafbeelding met `ar-SA` de `ar-SA-Naayf` land- en stem.           |
+| `1.3.0-amd64-bg-bg-ivan-preview`            | Containerafbeelding met `bg-BG` de `bg-BG-Ivan` land- en stem.            |
+| `1.3.0-amd64-ca-es-herenarus-preview`       | Containerafbeelding met `ca-ES` de `ca-ES-HerenaRUS` land- en stem.       |
+| `1.3.0-amd64-cs-cz-jakub-preview`           | Containerafbeelding met `cs-CZ` de `cs-CZ-Jakub` land- en stem.           |
+| `1.3.0-amd64-da-dk-hellerus-preview`        | Containerafbeelding met `da-DK` de `da-DK-HelleRUS` land- en stem.        |
+| `1.3.0-amd64-de-at-michael-preview`         | Containerafbeelding met `de-AT` de `de-AT-Michael` land- en stem.         |
+| `1.3.0-amd64-de-ch-karsten-preview`         | Containerafbeelding met `de-CH` de `de-CH-Karsten` land- en stem.         |
+| `1.3.0-amd64-de-de-hedda-preview`           | Containerafbeelding met `de-DE` de `de-DE-Hedda` land- en stem.           |
+| `1.3.0-amd64-de-de-heddarus-preview`        | Containerafbeelding met `de-DE` de `de-DE-Hedda` land- en stem.           |
+| `1.3.0-amd64-de-de-heddarus-preview`        | Containerafbeelding met `de-DE` de `de-DE-HeddaRUS` land- en stem.        |
+| `1.3.0-amd64-de-de-stefan-apollo-preview`   | Containerafbeelding met `de-DE` de `de-DE-Stefan-Apollo` land- en stem.   |
+| `1.3.0-amd64-el-gr-stefanos-preview`        | Containerafbeelding met `el-GR` de `el-GR-Stefanos` land- en stem.        |
+| `1.3.0-amd64-en-au-catherine-preview`       | Containerafbeelding met `en-AU` de `en-AU-Catherine` land- en stem.       |
+| `1.3.0-amd64-en-au-hayleyrus-preview`       | Containerafbeelding met `en-AU` de `en-AU-HayleyRUS` land- en stem.       |
+| `1.3.0-amd64-en-ca-heatherrus-preview`      | Containerafbeelding met `en-CA` de `en-CA-HeatherRUS` land- en stem.      |
+| `1.3.0-amd64-en-ca-linda-preview`           | Containerafbeelding met `en-CA` de `en-CA-Linda` land- en stem.           |
+| `1.3.0-amd64-en-gb-george-apollo-preview`   | Containerafbeelding met `en-GB` de `en-GB-George-Apollo` land- en stem.   |
+| `1.3.0-amd64-en-gb-hazelrus-preview`        | Containerafbeelding met `en-GB` de `en-GB-HazelRUS` land- en stem.        |
+| `1.3.0-amd64-en-gb-susan-apollo-preview`    | Containerafbeelding met `en-GB` de `en-GB-Susan-Apollo` land- en stem.    |
+| `1.3.0-amd64-en-ie-sean-preview`            | Containerafbeelding met `en-IE` de `en-IE-Sean` land- en stem.            |
+| `1.3.0-amd64-en-in-heera-apollo-preview`    | Containerafbeelding met `en-IN` de `en-IN-Heera-Apollo` land- en stem.    |
+| `1.3.0-amd64-en-in-priyarus-preview`        | Containerafbeelding met `en-IN` de `en-IN-PriyaRUS` land- en stem.        |
+| `1.3.0-amd64-en-in-ravi-apollo-preview`     | Containerafbeelding met `en-IN` de `en-IN-Ravi-Apollo` land- en stem.     |
+| `1.3.0-amd64-en-us-benjaminrus-preview`     | Containerafbeelding met `en-US` de `en-US-BenjaminRUS` land- en stem.     |
+| `1.3.0-amd64-en-us-guy24krus-preview`       | Containerafbeelding met `en-US` de `en-US-Guy24kRUS` land- en stem.       |
+| `1.3.0-amd64-en-us-jessa24krus-preview`     | Containerafbeelding met `en-US` de `en-US-Jessa24kRUS` land- en stem.     |
+| `1.3.0-amd64-en-us-jessarus-preview`        | Containerafbeelding met `en-US` de `en-US-JessaRUS` land- en stem.        |
+| `1.3.0-amd64-en-us-zirarus-preview`         | Containerafbeelding met `en-US` de `en-US-ZiraRUS` land- en stem.         |
+| `1.3.0-amd64-es-es-helenarus-preview`       | Containerafbeelding met `es-ES` de `es-ES-HelenaRUS` land- en stem.       |
+| `1.3.0-amd64-es-es-laura-apollo-preview`    | Containerafbeelding met `es-ES` de `es-ES-Laura-Apollo` land- en stem.    |
+| `1.3.0-amd64-es-es-pablo-apollo-preview`    | Containerafbeelding met `es-ES` de `es-ES-Pablo-Apollo` land- en stem.    |
+| `1.3.0-amd64-es-mx-hildarus-preview`        | Containerafbeelding met `es-MX` de `es-MX-HildaRUS` land- en stem.        |
+| `1.3.0-amd64-es-mx-raul-apollo-preview`     | Containerafbeelding met `es-MX` de `es-MX-Raul-Apollo` land- en stem.     |
+| `1.3.0-amd64-fi-fi-heidirus-preview`        | Containerafbeelding met `fi-FI` de `fi-FI-HeidiRUS` land- en stem.        |
+| `1.3.0-amd64-fr-ca-caroline-preview`        | Containerafbeelding met `fr-CA` de `fr-CA-Caroline` land- en stem.        |
+| `1.3.0-amd64-fr-ca-harmonierus-preview`     | Containerafbeelding met `fr-CA` de `fr-CA-HarmonieRUS` land- en stem.     |
+| `1.3.0-amd64-fr-ch-guillaume-preview`       | Containerafbeelding met `fr-CH` de `fr-CH-Guillaume` land- en stem.       |
+| `1.3.0-amd64-fr-fr-hortenserus-preview`     | Containerafbeelding met `fr-FR` de `fr-FR-HortenseRUS` land- en stem.     |
+| `1.3.0-amd64-fr-fr-julie-apollo-preview`    | Containerafbeelding met `fr-FR` de `fr-FR-Julie-Apollo` land- en stem.    |
+| `1.3.0-amd64-fr-fr-paul-apollo-preview`     | Containerafbeelding met `fr-FR` de `fr-FR-Paul-Apollo` land- en stem.     |
+| `1.3.0-amd64-he-il-asaf-preview`            | Containerafbeelding met `he-IL` de `he-IL-Asaf` land- en stem.            |
+| `1.3.0-amd64-hi-in-hemant-preview`          | Containerafbeelding met `hi-IN` de `hi-IN-Hemant` land- en stem.          |
+| `1.3.0-amd64-hi-in-kalpana-apollo-preview`  | Containerafbeelding met `hi-IN` de `hi-IN-Kalpana-Apollo` land- en stem.  |
+| `1.3.0-amd64-hi-in-kalpana-apollo-preview`  | Containerafbeelding met `hi-IN` de `hi-IN-Kalpana` land- en stem.         |
+| `1.3.0-amd64-hi-in-kalpana-preview`         | Containerafbeelding met `hi-IN` de `hi-IN-Kalpana` land- en stem.         |
+| `1.3.0-amd64-hr-hr-matej-preview`           | Containerafbeelding met `hr-HR` de `hr-HR-Matej` land- en stem.           |
+| `1.3.0-amd64-hu-hu-szabolcs-preview`        | Containerafbeelding met `hu-HU` de `hu-HU-Szabolcs` land- en stem.        |
+| `1.3.0-amd64-id-id-andika-preview`          | Containerafbeelding met `id-ID` de `id-ID-Andika` land- en stem.          |
+| `1.3.0-amd64-it-it-cosimo-apollo-preview`   | Containerafbeelding met `it-IT` de `it-IT-Cosimo-Apollo` land- en stem.   |
+| `1.3.0-amd64-it-it-luciarus-preview`        | Containerafbeelding met `it-IT` de `it-IT-LuciaRUS` land- en stem.        |
+| `1.3.0-amd64-ja-jp-ayumi-apollo-preview`    | Containerafbeelding met `ja-JP` de `ja-JP-Ayumi-Apollo` land- en stem.    |
+| `1.3.0-amd64-ja-jp-harukarus-preview`       | Containerafbeelding met `ja-JP` de `ja-JP-HarukaRUS` land- en stem.       |
+| `1.3.0-amd64-ja-jp-ichiro-apollo-preview`   | Containerafbeelding met `ja-JP` de `ja-JP-Ichiro-Apollo` land- en stem.   |
+| `1.3.0-amd64-ko-kr-heamirus-preview`        | Containerafbeelding met `ko-KR` de `ko-KR-HeamiRUS` land- en stem.        |
+| `1.3.0-amd64-ms-my-rizwan-preview`          | Containerafbeelding met `ms-MY` de `ms-MY-Rizwan` land- en stem.          |
+| `1.3.0-amd64-nb-no-huldarus-preview`        | Containerafbeelding met `nb-NO` de `nb-NO-HuldaRUS` land- en stem.        |
+| `1.3.0-amd64-nl-nl-hannarus-preview`        | Containerafbeelding met `nl-NL` de `nl-NL-HannaRUS` land- en stem.        |
+| `1.3.0-amd64-pl-pl-paulinarus-preview`      | Containerafbeelding met `pl-PL` de `pl-PL-PaulinaRUS` land- en stem.      |
+| `1.3.0-amd64-pt-br-daniel-apollo-preview`   | Containerafbeelding met `pt-BR` de `pt-BR-Daniel-Apollo` land- en stem.   |
+| `1.3.0-amd64-pt-br-heloisarus-preview`      | Containerafbeelding met `pt-BR` de `pt-BR-HeloisaRUS` land- en stem.      |
+| `1.3.0-amd64-pt-pt-heliarus-preview`        | Containerafbeelding met `pt-PT` de `pt-PT-HeliaRUS` land- en stem.        |
+| `1.3.0-amd64-ro-ro-andrei-preview`          | Containerafbeelding met `ro-RO` de `ro-RO-Andrei` land- en stem.          |
+| `1.3.0-amd64-ru-ru-ekaterinarus-preview`    | Containerafbeelding met `ru-RU` de `ru-RU-EkaterinaRUS` land- en stem.    |
+| `1.3.0-amd64-ru-ru-irina-apollo-preview`    | Containerafbeelding met `ru-RU` de `ru-RU-Irina-Apollo` land- en stem.    |
+| `1.3.0-amd64-ru-ru-pavel-apollo-preview`    | Containerafbeelding met `ru-RU` de `ru-RU-Pavel-Apollo` land- en stem.    |
+| `1.3.0-amd64-sk-sk-filip-preview`           | Containerafbeelding met `sk-SK` de `sk-SK-Filip` land- en stem.           |
+| `1.3.0-amd64-sl-si-lado-preview`            | Containerafbeelding met `sl-SI` de `sl-SI-Lado` land- en stem.            |
+| `1.3.0-amd64-sv-se-hedvigrus-preview`       | Containerafbeelding met `sv-SE` de `sv-SE-HedvigRUS` land- en stem.       |
+| `1.3.0-amd64-ta-in-valluvar-preview`        | Containerafbeelding met `ta-IN` de `ta-IN-Valluvar` land- en stem.        |
+| `1.3.0-amd64-te-in-chitra-preview`          | Containerafbeelding met `te-IN` de `te-IN-Chitra` land- en stem.          |
+| `1.3.0-amd64-th-th-pattara-preview`         | Containerafbeelding met `th-TH` de `th-TH-Pattara` land- en stem.         |
+| `1.3.0-amd64-tr-tr-sedarus-preview`         | Containerafbeelding met `tr-TR` de `tr-TR-SedaRUS` land- en stem.         |
+| `1.3.0-amd64-vi-vn-an-preview`              | Containerafbeelding met `vi-VN` de `vi-VN-An` land- en stem.              |
+| `1.3.0-amd64-zh-cn-huihuirus-preview`       | Containerafbeelding met `zh-CN` de `zh-CN-HuihuiRUS` land- en stem.       |
+| `1.3.0-amd64-zh-cn-kangkang-apollo-preview` | Containerafbeelding met `zh-CN` de `zh-CN-Kangkang-Apollo` land- en stem. |
+| `1.3.0-amd64-zh-cn-yaoyao-apollo-preview`   | Containerafbeelding met `zh-CN` de `zh-CN-Yaoyao-Apollo` land- en stem.   |
+| `1.3.0-amd64-zh-hk-danny-apollo-preview`    | Containerafbeelding met `zh-HK` de `zh-HK-Danny-Apollo` land- en stem.    |
+| `1.3.0-amd64-zh-hk-tracy-apollo-preview`    | Containerafbeelding met `zh-HK` de `zh-HK-Tracy-Apollo` land- en stem.    |
+| `1.3.0-amd64-zh-hk-tracyrus-preview`        | Containerafbeelding met `zh-HK` de `zh-HK-TracyRUS` land- en stem.        |
+| `1.3.0-amd64-zh-tw-hanhanrus-preview`       | Containerafbeelding met `zh-TW` de `zh-TW-HanHanRUS` land- en stem.       |
+| `1.3.0-amd64-zh-tw-yating-apollo-preview`   | Containerafbeelding met `zh-TW` de `zh-TW-Yating-Apollo` land- en stem.   |
+| `1.3.0-amd64-zh-tw-zhiwei-apollo-preview`   | Containerafbeelding met `zh-TW` de `zh-TW-Zhiwei-Apollo` land- en stem.   |
+| `1.2.0-amd64-de-de-heddarus-preview`        | Containerafbeelding met `de-DE` de `de-DE-Hedda` land- en stem.           |
+| `1.2.0-amd64-de-de-heddarus-preview`        | Containerafbeelding met `de-DE` de `de-DE-HeddaRUS` land- en stem.        |
+| `1.2.0-amd64-de-de-stefan-apollo-preview`   | Containerafbeelding met `de-DE` de `de-DE-Stefan-Apollo` land- en stem.   |
+| `1.2.0-amd64-en-au-catherine-preview`       | Containerafbeelding met `en-AU` de `en-AU-Catherine` land- en stem.       |
+| `1.2.0-amd64-en-au-hayleyrus-preview`       | Containerafbeelding met `en-AU` de `en-AU-HayleyRUS` land- en stem.       |
+| `1.2.0-amd64-en-gb-george-apollo-preview`   | Containerafbeelding met `en-GB` de `en-GB-George-Apollo` land- en stem.   |
+| `1.2.0-amd64-en-gb-hazelrus-preview`        | Containerafbeelding met `en-GB` de `en-GB-HazelRUS` land- en stem.        |
+| `1.2.0-amd64-en-gb-susan-apollo-preview`    | Containerafbeelding met `en-GB` de `en-GB-Susan-Apollo` land- en stem.    |
+| `1.2.0-amd64-en-in-heera-apollo-preview`    | Containerafbeelding met `en-IN` de `en-IN-Heera-Apollo` land- en stem.    |
+| `1.2.0-amd64-en-in-priyarus-preview`        | Containerafbeelding met `en-IN` de `en-IN-PriyaRUS` land- en stem.        |
+| `1.2.0-amd64-en-in-ravi-apollo-preview`     | Containerafbeelding met `en-IN` de `en-IN-Ravi-Apollo` land- en stem.     |
+| `1.2.0-amd64-en-us-benjaminrus-preview`     | Containerafbeelding met `en-US` de `en-US-BenjaminRUS` land- en stem.     |
+| `1.2.0-amd64-en-us-guy24krus-preview`       | Containerafbeelding met `en-US` de `en-US-Guy24kRUS` land- en stem.       |
+| `1.2.0-amd64-en-us-jessa24krus-preview`     | Containerafbeelding met `en-US` de `en-US-Jessa24kRUS` land- en stem.     |
+| `1.2.0-amd64-en-us-jessarus-preview`        | Containerafbeelding met `en-US` de `en-US-JessaRUS` land- en stem.        |
+| `1.2.0-amd64-en-us-zirarus-preview`         | Containerafbeelding met `en-US` de `en-US-ZiraRUS` land- en stem.         |
+| `1.2.0-amd64-es-es-helenarus-preview`       | Containerafbeelding met `es-ES` de `es-ES-HelenaRUS` land- en stem.       |
+| `1.2.0-amd64-es-es-laura-apollo-preview`    | Containerafbeelding met `es-ES` de `es-ES-Laura-Apollo` land- en stem.    |
+| `1.2.0-amd64-es-es-pablo-apollo-preview`    | Containerafbeelding met `es-ES` de `es-ES-Pablo-Apollo` land- en stem.    |
+| `1.2.0-amd64-es-mx-hildarus-preview`        | Containerafbeelding met `es-MX` de `es-MX-HildaRUS` land- en stem.        |
+| `1.2.0-amd64-es-mx-raul-apollo-preview`     | Containerafbeelding met `es-MX` de `es-MX-Raul-Apollo` land- en stem.     |
+| `1.2.0-amd64-fr-ca-caroline-preview`        | Containerafbeelding met `fr-CA` de `fr-CA-Caroline` land- en stem.        |
+| `1.2.0-amd64-fr-ca-harmonierus-preview`     | Containerafbeelding met `fr-CA` de `fr-CA-HarmonieRUS` land- en stem.     |
+| `1.2.0-amd64-fr-fr-hortenserus-preview`     | Containerafbeelding met `fr-FR` de `fr-FR-HortenseRUS` land- en stem.     |
+| `1.2.0-amd64-fr-fr-julie-apollo-preview`    | Containerafbeelding met `fr-FR` de `fr-FR-Julie-Apollo` land- en stem.    |
+| `1.2.0-amd64-fr-fr-paul-apollo-preview`     | Containerafbeelding met `fr-FR` de `fr-FR-Paul-Apollo` land- en stem.     |
+| `1.2.0-amd64-it-it-cosimo-apollo-preview`   | Containerafbeelding met `it-IT` de `it-IT-Cosimo-Apollo` land- en stem.   |
+| `1.2.0-amd64-it-it-luciarus-preview`        | Containerafbeelding met `it-IT` de `it-IT-LuciaRUS` land- en stem.        |
+| `1.2.0-amd64-ja-jp-ayumi-apollo-preview`    | Containerafbeelding met `ja-JP` de `ja-JP-Ayumi-Apollo` land- en stem.    |
+| `1.2.0-amd64-ja-jp-harukarus-preview`       | Containerafbeelding met `ja-JP` de `ja-JP-HarukaRUS` land- en stem.       |
+| `1.2.0-amd64-ja-jp-ichiro-apollo-preview`   | Containerafbeelding met `ja-JP` de `ja-JP-Ichiro-Apollo` land- en stem.   |
+| `1.2.0-amd64-ko-kr-heamirus-preview`        | Containerafbeelding met `ko-KR` de `ko-KR-HeamiRUS` land- en stem.        |
+| `1.2.0-amd64-pt-br-daniel-apollo-preview`   | Containerafbeelding met `pt-BR` de `pt-BR-Daniel-Apollo` land- en stem.   |
+| `1.2.0-amd64-pt-br-heloisarus-preview`      | Containerafbeelding met `pt-BR` de `pt-BR-HeloisaRUS` land- en stem.      |
+| `1.2.0-amd64-zh-cn-huihuirus-preview`       | Containerafbeelding met `zh-CN` de `zh-CN-HuihuiRUS` land- en stem.       |
+| `1.2.0-amd64-zh-cn-kangkang-apollo-preview` | Containerafbeelding met `zh-CN` de `zh-CN-Kangkang-Apollo` land- en stem. |
+| `1.2.0-amd64-zh-cn-yaoyao-apollo-preview`   | Containerafbeelding met `zh-CN` de `zh-CN-Yaoyao-Apollo` land- en stem.   |
+| `1.1.0-amd64-de-de-hedda-preview`           | Containerafbeelding met `de-DE` de `de-DE-Hedda` land- en stem.           |
+| `1.1.0-amd64-de-de-heddarus-preview`        | Containerafbeelding met `de-DE` de `de-DE-Hedda` land- en stem.           |
+| `1.1.0-amd64-de-de-heddarus-preview`        | Containerafbeelding met `de-DE` de `de-DE-HeddaRUS` land- en stem.        |
+| `1.1.0-amd64-de-de-stefan-apollo-preview`   | Containerafbeelding met `de-DE` de `de-DE-Stefan-Apollo` land- en stem.   |
+| `1.1.0-amd64-en-au-catherine-preview`       | Containerafbeelding met `en-AU` de `en-AU-Catherine` land- en stem.       |
+| `1.1.0-amd64-en-au-hayleyrus-preview`       | Containerafbeelding met `en-AU` de `en-AU-HayleyRUS` land- en stem.       |
+| `1.1.0-amd64-en-gb-george-apollo-preview`   | Containerafbeelding met `en-GB` de `en-GB-George-Apollo` land- en stem.   |
+| `1.1.0-amd64-en-gb-hazelrus-preview`        | Containerafbeelding met `en-GB` de `en-GB-HazelRUS` land- en stem.        |
+| `1.1.0-amd64-en-gb-susan-apollo-preview`    | Containerafbeelding met `en-GB` de `en-GB-Susan-Apollo` land- en stem.    |
+| `1.1.0-amd64-en-in-heera-apollo-preview`    | Containerafbeelding met `en-IN` de `en-IN-Heera-Apollo` land- en stem.    |
+| `1.1.0-amd64-en-in-priyarus-preview`        | Containerafbeelding met `en-IN` de `en-IN-PriyaRUS` land- en stem.        |
+| `1.1.0-amd64-en-in-ravi-apollo-preview`     | Containerafbeelding met `en-IN` de `en-IN-Ravi-Apollo` land- en stem.     |
+| `1.1.0-amd64-en-us-benjaminrus-preview`     | Containerafbeelding met `en-US` de `en-US-BenjaminRUS` land- en stem.     |
+| `1.1.0-amd64-en-us-guy24krus-preview`       | Containerafbeelding met `en-US` de `en-US-Guy24kRUS` land- en stem.       |
+| `1.1.0-amd64-en-us-jessa24krus-preview`     | Containerafbeelding met `en-US` de `en-US-Jessa24kRUS` land- en stem.     |
+| `1.1.0-amd64-en-us-jessarus-preview`        | Containerafbeelding met `en-US` de `en-US-JessaRUS` land- en stem.        |
+| `1.1.0-amd64-en-us-zirarus-preview`         | Containerafbeelding met `en-US` de `en-US-ZiraRUS` land- en stem.         |
+| `1.1.0-amd64-es-es-helenarus-preview`       | Containerafbeelding met `es-ES` de `es-ES-HelenaRUS` land- en stem.       |
+| `1.1.0-amd64-es-es-laura-apollo-preview`    | Containerafbeelding met `es-ES` de `es-ES-Laura-Apollo` land- en stem.    |
+| `1.1.0-amd64-es-es-pablo-apollo-preview`    | Containerafbeelding met `es-ES` de `es-ES-Pablo-Apollo` land- en stem.    |
+| `1.1.0-amd64-es-mx-hildarus-preview`        | Containerafbeelding met `es-MX` de `es-MX-HildaRUS` land- en stem.        |
+| `1.1.0-amd64-es-mx-raul-apollo-preview`     | Containerafbeelding met `es-MX` de `es-MX-Raul-Apollo` land- en stem.     |
+| `1.1.0-amd64-fr-ca-caroline-preview`        | Containerafbeelding met `fr-CA` de `fr-CA-Caroline` land- en stem.        |
+| `1.1.0-amd64-fr-ca-harmonierus-preview`     | Containerafbeelding met `fr-CA` de `fr-CA-HarmonieRUS` land- en stem.     |
+| `1.1.0-amd64-fr-fr-hortenserus-preview`     | Containerafbeelding met `fr-FR` de `fr-FR-HortenseRUS` land- en stem.     |
+| `1.1.0-amd64-fr-fr-julie-apollo-preview`    | Containerafbeelding met `fr-FR` de `fr-FR-Julie-Apollo` land- en stem.    |
+| `1.1.0-amd64-fr-fr-paul-apollo-preview`     | Containerafbeelding met `fr-FR` de `fr-FR-Paul-Apollo` land- en stem.     |
+| `1.1.0-amd64-it-it-cosimo-apollo-preview`   | Containerafbeelding met `it-IT` de `it-IT-Cosimo-Apollo` land- en stem.   |
+| `1.1.0-amd64-it-it-luciarus-preview`        | Containerafbeelding met `it-IT` de `it-IT-LuciaRUS` land- en stem.        |
+| `1.1.0-amd64-ja-jp-ayumi-apollo-preview`    | Containerafbeelding met `ja-JP` de `ja-JP-Ayumi-Apollo` land- en stem.    |
+| `1.1.0-amd64-ja-jp-harukarus-preview`       | Containerafbeelding met `ja-JP` de `ja-JP-HarukaRUS` land- en stem.       |
+| `1.1.0-amd64-ja-jp-ichiro-apollo-preview`   | Containerafbeelding met `ja-JP` de `ja-JP-Ichiro-Apollo` land- en stem.   |
+| `1.1.0-amd64-ko-kr-heamirus-preview`        | Containerafbeelding met `ko-KR` de `ko-KR-HeamiRUS` land- en stem.        |
+| `1.1.0-amd64-pt-br-daniel-apollo-preview`   | Containerafbeelding met `pt-BR` de `pt-BR-Daniel-Apollo` land- en stem.   |
+| `1.1.0-amd64-pt-br-heloisarus-preview`      | Containerafbeelding met `pt-BR` de `pt-BR-HeloisaRUS` land- en stem.      |
+| `1.1.0-amd64-zh-cn-huihuirus-preview`       | Containerafbeelding met `zh-CN` de `zh-CN-HuihuiRUS` land- en stem.       |
+| `1.1.0-amd64-zh-cn-kangkang-apollo-preview` | Containerafbeelding met `zh-CN` de `zh-CN-Kangkang-Apollo` land- en stem. |
+| `1.1.0-amd64-zh-cn-yaoyao-apollo-preview`   | Containerafbeelding met `zh-CN` de `zh-CN-Yaoyao-Apollo` land- en stem.   |
+| `1.0.0-amd64-en-us-benjaminrus-preview`     | Containerafbeelding met `en-US` de `en-US-BenjaminRUS` land- en stem.     |
+| `1.0.0-amd64-en-us-guy24krus-preview`       | Containerafbeelding met `en-US` de `en-US-Guy24kRUS` land- en stem.       |
+| `1.0.0-amd64-en-us-jessa24krus-preview`     | Containerafbeelding met `en-US` de `en-US-Jessa24kRUS` land- en stem.     |
+| `1.0.0-amd64-en-us-jessarus-preview`        | Containerafbeelding met `en-US` de `en-US-JessaRUS` land- en stem.        |
+| `1.0.0-amd64-en-us-zirarus-preview`         | Containerafbeelding met `en-US` de `en-US-ZiraRUS` land- en stem.         |
+| `1.0.0-amd64-zh-cn-huihuirus-preview`       | Containerafbeelding met `zh-CN` de `zh-CN-HuihuiRUS` land- en stem.       |
+| `1.0.0-amd64-zh-cn-kangkang-apollo-preview` | Containerafbeelding met `zh-CN` de `zh-CN-Kangkang-Apollo` land- en stem. |
+| `1.0.0-amd64-zh-cn-yaoyao-apollo-preview`   | Containerafbeelding met `zh-CN` de `zh-CN-Yaoyao-Apollo` land- en stem.   |
 
 ## <a name="key-phrase-extraction"></a>Sleuteltermextractie
 
-De [Sleuteltermextractie][ta-kp] container installatie kopie vindt u in het `mcr.microsoft.com` container register Syndicate. Deze bevindt zich in de `azure-cognitive-services` opslagplaats en heet `keyphrase`. De volledig gekwalificeerde naam van de container installatie kopie is `mcr.microsoft.com/azure-cognitive-services/keyphrase`.
+De [key phrase extraction][ta-kp] container afbeelding `mcr.microsoft.com` is te vinden op de container register syndicaat. Het bevindt `azure-cognitive-services` zich in `keyphrase`de repository en is vernoemd. De volledig gekwalificeerde containerafbeeldingsnaam is, `mcr.microsoft.com/azure-cognitive-services/keyphrase`.
 
-Deze container installatie kopie heeft de volgende tags beschikbaar:
+Deze containerafbeelding heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldingstags                    | Opmerkingen |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -597,11 +597,11 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 ## <a name="language-detection"></a>Taaldetectie
 
-De [taaldetectie][ta-la] container installatie kopie vindt u in het `mcr.microsoft.com` container register Syndicate. Deze bevindt zich in de `azure-cognitive-services` opslagplaats en heet `language`. De volledig gekwalificeerde naam van de container installatie kopie is `mcr.microsoft.com/azure-cognitive-services/language`.
+De [containerafbeelding Taaldetectie][ta-la] is `mcr.microsoft.com` te vinden in het containerregistersyndicaat. Het bevindt `azure-cognitive-services` zich in `language`de repository en is vernoemd. De volledig gekwalificeerde containerafbeeldingsnaam is, `mcr.microsoft.com/azure-cognitive-services/language`.
 
-Deze container installatie kopie heeft de volgende tags beschikbaar:
+Deze containerafbeelding heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldingstags                    | Opmerkingen |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -612,11 +612,11 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
 
-De [sentimentanalyse][ta-se] container installatie kopie vindt u in het `mcr.microsoft.com` container register Syndicate. Deze bevindt zich in de `azure-cognitive-services` opslagplaats en heet `sentiment`. De volledig gekwalificeerde naam van de container installatie kopie is `mcr.microsoft.com/azure-cognitive-services/sentiment`.
+De [sentimentanalyse][ta-se] container afbeelding is `mcr.microsoft.com` te vinden op de container register syndicaat. Het bevindt `azure-cognitive-services` zich in `sentiment`de repository en is vernoemd. De volledig gekwalificeerde containerafbeeldingsnaam is, `mcr.microsoft.com/azure-cognitive-services/sentiment`.
 
-Deze container installatie kopie heeft de volgende tags beschikbaar:
+Deze containerafbeelding heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldingstags                    | Opmerkingen |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |

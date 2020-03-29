@@ -1,7 +1,7 @@
 ---
-title: Uw project bijwerken naar de 3,0-API
+title: Uw project bijwerken naar de 3.0 API
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het bijwerken van Custom Vision projecten van de vorige versie van de API naar de 3,0-API.
+description: Meer informatie over het bijwerken van Custom Vision-projecten vanaf de vorige versie van de API naar de 3.0 API.
 services: cognitive-services
 author: areddish
 manager: nitinme
@@ -11,49 +11,49 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: areddish
 ms.openlocfilehash: c134f30b124113a23df0e73cd1bbc8209e335183
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73647503"
 ---
-# <a name="update-to-the-30-api"></a>Bijwerken naar de 3,0-API
+# <a name="update-to-the-30-api"></a>Update naar de 3.0 API
 
-Custom Vision heeft nu de algemene Beschik baarheid bereikt en heeft een API-update ondergaan.
-Deze update bevat enkele nieuwe functies en belang rijke wijzigingen:
+Custom Vision heeft nu de algemene beschikbaarheid bereikt en heeft een API-update ondergaan.
+Deze update bevat een paar nieuwe functies en, belangrijker nog, een paar baanbrekende wijzigingen:
 
-* De Voorspellings-API is nu onderverdeeld in twee op basis van het project type.
-* Voor de export optie VAIDK (Vision AI Developer Kit) moet een project op een specifieke manier worden gemaakt.
-* Er zijn standaard herhalingen verwijderd in het voor deel van het publiceren/ongedaan maken van de publicatie van een benoemde iteratie.
+* De Voorspelling-API is nu opgesplitst in twee op basis van het projecttype.
+* De Vision AI Developer Kit (VAIDK) exportoptie vereist het maken van een project op een specifieke manier.
+* Standaarditeraties zijn verwijderd ten gunste van een publicatie / onpublicatie van een benoemde iteratie.
 
-In deze hand leiding wordt uitgelegd hoe u uw projecten bijwerkt om te werken met de nieuwe API-versie. Zie de [release opmerkingen](release-notes.md) voor een volledige lijst met de wijzigingen.
+In deze handleiding ziet u hoe u uw projecten bijwerken om te werken met de nieuwe API-versie. Zie de [releasenotes](release-notes.md) voor een volledige lijst met de wijzigingen.
 
-## <a name="use-the-updated-prediction-api"></a>De bijgewerkte Voorspellings-API gebruiken
+## <a name="use-the-updated-prediction-api"></a>De bijgewerkte voorspellings-API gebruiken
 
-De 2. x-Api's hebben dezelfde Voorspellings aanroep gebruikt voor zowel afbeeldings classificaties als object detector projecten. Beide project typen zijn acceptabel voor de aanroepen van **PredictImage** en **PredictImageUrl** . Vanaf 3,0 hebben we deze API gesplitst zodat u het project type moet overeenkomen met de aanroep:
+De 2.x API's gebruikten dezelfde voorspellingsoproep voor zowel beeldclassificaties als objectdetectorprojecten. Beide projecttypen waren acceptabel voor de aanroepen **PredictImage** en **PredictImageUrl.** Vanaf 3.0 hebben we deze API gesplitst, zodat u het projecttype moet koppelen aan de aanroep:
 
-* Gebruik **[ClassifyImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)** en **[ClassifyImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c14)** om voor spellingen te ontvangen voor afbeeldings classificatie projecten.
-* Gebruik **[DetectImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c19)** en **[DetectImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c18)** om voor spellingen te ontvangen voor object detectie projecten.
+* Gebruik **[ClassificerenAfbeelding](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)** en **[ClassificerenImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c14)** om voorspellingen voor beeldclassificatieprojecten te krijgen.
+* Gebruik **[DetectImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c19)** en **[DetectImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c18)** om voorspellingen te krijgen voor objectdetectieprojecten.
 
-## <a name="use-the-new-iteration-publishing-workflow"></a>De nieuwe werk stroom voor het publiceren van iteraties gebruiken
+## <a name="use-the-new-iteration-publishing-workflow"></a>De nieuwe iteratiepublicatiewerkstroom gebruiken
 
-De 2. x-Api's hebben de standaard herhaling of een opgegeven iteratie-ID gebruikt om te kiezen welke herhaling moet worden gebruikt voor de voor spelling. Vanaf 3,0 hebben we een publicatie stroom aangenomen waarbij u eerst een iteratie onder een opgegeven naam publiceert vanuit de trainings-API. Vervolgens geeft u de naam door aan de Voorspellings methoden om op te geven welke iteratie moet worden gebruikt.
+De 2.x API's gebruikten de standaarditeratie of een opgegeven iteratie-id om de iteratie te kiezen die moet worden gebruikt voor voorspelling. Vanaf 3.0 hebben we een publicatiestroom aangenomen waarbij u eerst een iteratie publiceert onder een bepaalde naam uit de trainings-API. Vervolgens geeft u de naam door aan de voorspellingsmethoden om op te geven welke iteratie u moet gebruiken.
 
 > [!IMPORTANT]
-> De 3,0-Api's maken geen gebruik van de standaard herhalings functie. Totdat we de oudere Api's hebben overgezet, kunt u de 2. x-Api's blijven gebruiken om een herhaling als de standaard waarde te scha kelen. Deze Api's worden gedurende een bepaalde tijd onderhouden en u kunt de methode **[UpdateIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b818)** aanroepen om een herhaling als standaard te markeren.
+> De 3.0 API's maken geen gebruik van de standaarditeratiefunctie. Totdat we de oudere API's hebben afnodigt, u de 2.x API's blijven gebruiken om een iteratie als standaardoptie te schakelen. Deze API's worden gedurende een bepaalde periode gehandhaafd en u de methode **[UpdateIteratie](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b818)** aanroepen om een iteratie als standaard te markeren.
 
-### <a name="publish-an-iteration"></a>Een herhaling publiceren
+### <a name="publish-an-iteration"></a>Een iteratie publiceren
 
-Zodra een iteratie is getraind, kunt u deze beschikbaar stellen voor voor spellingen met behulp van de methode **[PublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c82db28bf6a2b11a8247bbc)** . Als u een iteratie wilt publiceren, hebt u de resource-ID voor de voor spelling nodig, die beschikbaar is op de instellingen pagina van de CustomVision-website.
+Zodra een iteratie is getraind, u deze beschikbaar maken voor voorspelling met behulp van de **[publishiteratiemethode.](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c82db28bf6a2b11a8247bbc)** Als u een iteratie wilt publiceren, hebt u de voorspellingsbron-id nodig, die beschikbaar is op de instellingenpagina van de CustomVision-website.
 
-![De pagina met de Custom Vision website-instellingen met de Voorspellings Resource-ID wordt beschreven.](./media/update-application-to-3.0-sdk/prediction-id.png)
+![De pagina Met de informatiebron-ID van Custom Vision met de voorgestelde bron-id.](./media/update-application-to-3.0-sdk/prediction-id.png)
 
 > [!TIP]
-> U kunt deze informatie ook ophalen via de [Azure-Portal](https://portal.azure.com) door naar de Custom Vision Voorspellings bron te gaan en **Eigenschappen**te selecteren.
+> U deze informatie ook ophalen uit de [Azure Portal](https://portal.azure.com) door naar de aangepaste visievoorspellingsbron te gaan en **Eigenschappen**te selecteren.
 
-Zodra de herhaling is gepubliceerd, kunnen apps deze gebruiken voor voor spelling door de naam op te geven in de API-aanroep voor de voor spelling. Als u een iteratie niet beschikbaar wilt maken voor Voorspellings aanroepen, gebruikt u de **[UnpublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b81a)** -API.
+Zodra uw iteratie is gepubliceerd, kunnen apps deze gebruiken voor voorspelling door de naam op te geven in hun voorspellings-API-aanroep. Als u een iteratie niet beschikbaar wilt maken voor voorspellingsoproepen, gebruikt u de API **[voor publicatieherhaling.](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b81a)**
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Naslag documentatie voor trainings-API (REST)](https://go.microsoft.com/fwlink/?linkid=865446)
-* [Naslag documentatie voor de voor Spellings-API (REST)](https://go.microsoft.com/fwlink/?linkid=865445)
+* [Trainings-API-referentiedocumentatie (REST)](https://go.microsoft.com/fwlink/?linkid=865446)
+* [Api-referentiedocumentatie voor voorspelling (REST)](https://go.microsoft.com/fwlink/?linkid=865445)

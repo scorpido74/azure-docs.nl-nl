@@ -1,7 +1,7 @@
 ---
-title: 'Het gebruik van classificaties om weer te geven van zoekresultaten: Bing webzoekopdrachten-API'
+title: Ranglijst gebruiken om zoekresultaten weer te geven - Bing Web Search API
 titleSuffix: Azure Cognitive Services
-description: Informatie over het gebruik van de volgorde om weer te geven resultaten van de Bing webzoekopdrachten-API.
+description: Meer informatie over het gebruik van rangschikking om zoekresultaten weer te geven vanuit de Bing Web Search API.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -12,29 +12,29 @@ ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66390127"
 ---
-# <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>Het gebruik van trefwoordenrangschikking om weer te geven resultaten van de Bing webzoekopdrachten-API  
+# <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>Rangschikking gebruiken om API-resultaten van Bing Web Search weer te geven  
 
-Elke zoekopdracht-antwoord bevat een [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) antwoord, waarmee wordt aangegeven hoe u de lijst met zoekresultaten moet weergeven. Het antwoord rangorde groepen resultaten door mainline inhoud en zijbalk inhoud voor een traditionele pagina met zoekresultaten. Als de resultaten in een traditionele hoofdlijnen en de indeling van de zijbalk niet wordt weergegeven, moet u de hoofdlijnen inhoud hoger zichtbaarheid dan de zijbalk-inhoud opgeven.  
+Elk zoekantwoord bevat een [RankingResponse-antwoord,](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) dat aangeeft hoe u de zoekresultaten moet weergeven. De ranking respons groepen resultaten door mainline inhoud en sidebar inhoud voor een traditionele zoekresultaten pagina. Als u de resultaten niet in een traditionele hoofdlijn- en zijbalkindeling weergeeft, moet u de hoofdlijninhoud beter zichtbaar maken dan de inhoud van de zijbalk.  
 
-Binnen elke groep (mainline of zijbalk), wordt de [Items](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) matrix identificeert de volgorde waarin de inhoud moet worden weergegeven in. Elk item biedt de volgende twee manieren om te identificeren van het resultaat binnen een antwoord.  
+Binnen elke groep (hoofdregel of zijbalk) identificeert de array [Items](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) de volgorde waarin de inhoud moet worden weergegeven. Elk item biedt de volgende twee manieren om het resultaat binnen een antwoord te identificeren.  
 
--   `answerType` en `resultIndex` : de `answerType` veld identificeert het antwoord (bijvoorbeeld een webpagina of nieuws) en `resultIndex` geeft een resultaat in het antwoord (bijvoorbeeld een nieuwsbericht). De index is op basis van nul.  
+-   `answerType`en `resultIndex` — `answerType` Het veld identificeert het antwoord (bijvoorbeeld `resultIndex` Webpagina of Nieuws) en identificeert een resultaat in het antwoord (bijvoorbeeld een nieuwsartikel). De index is nul gebaseerd.  
 
--   `value` : De `value` veld bevat een ID die overeenkomt met de ID van een antwoord of een resultaat in het antwoord. Het antwoord of de resultaten bevatten de ID, maar niet beide.  
+-   `value`— `value` Het veld bevat een id die overeenkomt met de id van een antwoord of een resultaat in het antwoord. Ofwel het antwoord of de resultaten bevatten de ID, maar niet beide.  
 
-Met behulp van de ID is eenvoudiger om te gebruiken omdat u alleen moet overeenkomen met de volgorde-ID met de ID van een antwoord of een van de resultaten. Als een object van het antwoord bevat een `id` veld, van het antwoord resultaten tegelijk weergeven. Bijvoorbeeld, als de `News` object bevat de `id` veld, alle nieuwsartikelen tegelijk weergeven. Als de `News` object omvat niet de `id` veld, wordt elk nieuwsartikel bevat een `id` veld en de reactie rangschikking van de nieuwsartikelen combineert met de resultaten van andere antwoorden.  
+Het gebruik van de ID is eenvoudiger te gebruiken omdat u alleen de ranking-ID hoeft te matchen met de ID van een antwoord of een van de resultaten. Als een antwoordobject `id` een veld bevat, geeft u alle resultaten van het antwoord samen weer. Als het object `News` bijvoorbeeld `id` het veld bevat, worden alle nieuwsartikelen samen weergegeven. Als `News` het object het `id` veld niet bevat, `id` bevat elk nieuwsartikel een veld en mengt de rankingrespons de nieuwsartikelen met de resultaten van andere antwoorden.  
 
-Met behulp van de `answerType` en `resultIndex` is iets gecompliceerder. U gebruikt `answerType` voor het identificeren van het antwoord met de resultaten om weer te geven. Vervolgens gebruikt u `resultIndex` index via de resultaten van het antwoord voor het resultaat om weer te geven. (De `answerType` waarde is de naam van het veld in de [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) object.) Als u verwacht om samen de resultaten van het antwoord weer te geven, het antwoord rangorde item niet bevatten de `resultIndex` veld.  
+Met `answerType` behulp `resultIndex` van de en is een beetje ingewikkelder. U `answerType` gebruikt om het antwoord te identificeren dat de resultaten bevat om weer te geven. Vervolgens kunt `resultIndex` u de resultaten van het antwoord doorindexeren om het resultaat weer te geven. (De `answerType` waarde is de naam van het veld in het object [SearchResponse.)](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) Als u alle resultaten van het antwoord samen moet weergeven, bevat `resultIndex` het antwoorditem van de rangschikking geen veld.  
 
-## <a name="ranking-response-example"></a>Voorbeeld van de reactie rangorde
+## <a name="ranking-response-example"></a>Voorbeeld van het rangschikken van antwoorden
 
-Hieronder ziet u een voorbeeld [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse). Omdat de Web-antwoord bevat geen een `id` veld, zou u alle webpagina's afzonderlijk op basis van de volgorde weergeven (elke webpagina bevat een `id` veld). En omdat de afbeeldingen, video's en verwante zoekopdrachten antwoorden omvatten de `id` veld, zou u de resultaten van elk van de antwoorden samen op basis van de volgorde weergeven.
+Hieronder ziet u een voorbeeld [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse). Omdat het webantwoord geen `id` veld bevat, geeft u alle webpagina's afzonderlijk weer `id` op basis van de rangschikking (elke webpagina bevat een veld). En omdat de antwoorden op afbeeldingen, video's en gerelateerde zoekopdrachten het `id` veld bevatten, geeft u de resultaten van elk van deze antwoorden samen weer op basis van de rangschikking.
 
 ```json
 {  
@@ -205,23 +205,23 @@ Hieronder ziet u een voorbeeld [RankingResponse](https://docs.microsoft.com/rest
 }  
 ```  
 
-Op basis van deze rangschikking antwoord, de hoofdlijnen zou de volgende zoekresultaten weergeven:  
+Op basis van deze ranking reactie, zou de hoofdlijn de volgende zoekresultaten weer te geven:  
 
--   Het eerste webpagina-resultaat
--   Alle installatiekopieën  
+-   Het eerste resultaat op de webpagina
+-   Alle afbeeldingen  
 -   De resultaten van de tweede en derde webpagina  
--   Alle video 's  
--   De resultaten 4, 5 en 6 webpagina  
+-   Alle video's  
+-   De resultaten van de 4e, 5e en 6e webpagina  
 
-En de zijbalk zou de volgende lijst met zoekresultaten weergeven:  
+En op de zijbalk worden de volgende zoekresultaten weergegeven:  
 
--   Alle verwante zoekopdrachten  
+-   Alle gerelateerde zoekopdrachten  
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het promoveren van geen positie resultaten [bevordering van de antwoorden die niet worden gerangschikt](./filter-answers.md#promoting-answers-that-are-not-ranked).
+Zie [Antwoorden promoten die niet zijn gerangschikt](./filter-answers.md#promoting-answers-that-are-not-ranked)voor informatie over het promoten van niet-gerangschikte resultaten.
 
-Zie voor meer informatie over het beperken van het aantal gerangschikte antwoorden in het antwoord [beperkt het aantal antwoorden in het antwoord](./filter-answers.md#limiting-the-number-of-answers-in-the-response).
+Zie [Het aantal antwoorden in het antwoord beperken](./filter-answers.md#limiting-the-number-of-answers-in-the-response)voor informatie over het beperken van het aantal gerangschikte antwoorden .
 
-Zie voor een voorbeeld met C# die gebruikmaakt van trefwoordenrangschikking om resultaten weer te geven, [C# rangorde zelfstudie](./csharp-ranking-tutorial.md).
+Zie [C# ranking tutorial](./csharp-ranking-tutorial.md)voor een C#-voorbeeld dat classificatie gebruikt om resultaten weer te geven.

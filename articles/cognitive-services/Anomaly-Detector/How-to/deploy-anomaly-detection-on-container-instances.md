@@ -1,7 +1,7 @@
 ---
-title: Afwijkende detector-container uitvoeren in Azure Container Instances
+title: Anomaliedetectorcontainer uitvoeren in Azure Container Instances
 titleSuffix: Azure Cognitive Services
-description: Implementeer de afwijkende detector container in een Azure-container exemplaar en test deze in een webbrowser.
+description: Implementeer de container Anomaliedetector in een Azure Container Instance en test deze in een webbrowser.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: dapine
 ms.openlocfilehash: 2fba0a0d64502a30b6dfbc9f4f109bca65cca8b9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76716361"
 ---
-# <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>Een anomalie detectie container implementeren naar Azure Container Instances
+# <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>Een anomaliedetectorcontainer implementeren in Azure Container Instances
 
-Meer informatie over het implementeren van de Cognitive Services [anomalie detectie](../anomaly-detector-container-howto.md) container naar Azure [container instances](https://docs.microsoft.com/azure/container-instances/). In deze procedure wordt het maken van een afwijkende detector-resource gedemonstreerd. Vervolgens bespreken we het verzamelen van de bijbehorende container installatie kopie. Ten slotte markeren we de mogelijkheid om de indeling van de twee uit een browser uit te oefenen. Door gebruik te maken van containers kan de aandacht van de ontwikkel aars van de infra structuur afnemen in plaats van de ontwikkeling van toepassingen te richten.
+Meer informatie over het implementeren van de container Cognitive Services [Anomaly Detector](../anomaly-detector-container-howto.md) naar Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Deze procedure toont de creatie van een Anomalie Detector bron. Dan bespreken we het trekken van de bijbehorende container beeld. Tot slot benadrukken we de mogelijkheid om de orkestratie van de twee uit te oefenen vanuit een browser. Het gebruik van containers kan de aandacht van de ontwikkelaars verleggen van het beheren van infrastructuur naar het richten op applicatieontwikkeling.
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Aanvraag voor toegang tot de privécontainerregister
+## <a name="request-access-to-the-private-container-registry"></a>Toegang aanvragen tot het register van privécontainers
 
-U moet eerst het [aanvraag formulier voor de afwijkings detectie container](https://aka.ms/adcontainer) volt ooien en verzenden om toegang tot de container aan te vragen.
+U moet eerst het [aanvraagformulier anomaly detectorcontainer](https://aka.ms/adcontainer) invullen en indienen om toegang tot de container aan te vragen.
 
 [!INCLUDE [Request access](../../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -37,6 +37,6 @@ U moet eerst het [aanvraag formulier voor de afwijkings detectie container](http
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Controleer de [installatie-en uitvoer containers](../anomaly-detector-container-configuration.md) voor het ophalen van de container installatie kopie en voer de container uit
-* Containers voor configuratie-instellingen [configureren](../anomaly-detector-container-configuration.md) controleren
-* [Meer informatie over de API-service voor anomalie detectie](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
+* [Containers installeren en uitvoeren](../anomaly-detector-container-configuration.md) controleren voor het trekken van de containerafbeelding en de container uitvoeren
+* Containers [configureren controleren](../anomaly-detector-container-configuration.md) voor configuratie-instellingen
+* [Meer informatie over de API-service voor Anomalie Detector](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

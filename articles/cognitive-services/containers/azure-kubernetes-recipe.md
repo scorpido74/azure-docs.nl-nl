@@ -1,7 +1,7 @@
 ---
-title: Taaldetectie-container uitvoeren in Kubernetes-service
+title: Taaldetectiecontainer uitvoeren in Kubernetes-service
 titleSuffix: Text Analytics -  Azure Cognitive Services
-description: Implementeer de taal detectie container, met een actief voor beeld, naar de Azure Kubernetes-service en test deze in een webbrowser.
+description: Implementeer de taaldetectiecontainer, met een lopend voorbeeld, naar de Azure Kubernetes-service en test deze in een webbrowser.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,54 +11,54 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: dapine
 ms.openlocfilehash: 1968bc03bfddb9d6f6c8fe743a2a1a99722c074d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399174"
 ---
-# <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>De Text Analytics taal detectie container implementeren naar de Azure Kubernetes-service
+# <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>De taaldetectiecontainer text Analytics implementeren in Azure Kubernetes-service
 
-Meer informatie over het implementeren van de taal detectie container. In deze procedure ziet u hoe u de lokale docker-containers maakt, de containers naar uw eigen persoonlijke container register pusht, de container in een Kubernetes-cluster uitvoert en deze test in een webbrowser.
+Meer informatie over het implementeren van de taaldetectiecontainer. Deze procedure laat zien hoe u de lokale Docker-containers maakt, de containers naar uw eigen privécontainerregister pusht, de container in een Kubernetes-cluster uitvoert en deze test in een webbrowser.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze procedure zijn verschillende hulpprogram ma's vereist die moeten worden geïnstalleerd en lokaal worden uitgevoerd. Gebruik Azure Cloud shell niet.
+Deze procedure vereist verschillende tools die lokaal moeten worden geïnstalleerd en uitgevoerd. Gebruik azure cloudshell niet.
 
-* Een Azure-abonnement gebruiken. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-* [Git](https://git-scm.com/downloads) voor uw besturings systeem, zodat u het voor [beeld](https://github.com/Azure-Samples/cognitive-services-containers-samples) in deze procedure kunt klonen.
+* Gebruik een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+* [Git](https://git-scm.com/downloads) voor uw besturingssysteem, zodat u het [monster](https://github.com/Azure-Samples/cognitive-services-containers-samples) dat in deze procedure wordt gebruikt, klonen.
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-* [Docker-engine](https://www.docker.com/products/docker-engine) en controleer of de docker-cli in een console venster werkt.
+* [Docker-engine](https://www.docker.com/products/docker-engine) en valideren dat de Docker CLI werkt in een consolevenster.
 * [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe).
-* Een Azure-resource met de juiste prijs categorie. Niet alle prijs categorieën werken met deze container:
-  * **Text Analytics** resource alleen met F0 of Standard-prijs categorieën.
-  * **Cognitive Services** resource met de prijs categorie s0.
+* Een Azure-bron met de juiste prijscategorie. Niet alle prijsniveaus werken met deze container:
+  * **Text Analytics-bron** met alleen F0- of Standaardprijsniveaus.
+  * **Cognitive Services** resource met de Prijscategorie S0.
 
 ## <a name="running-the-sample"></a>Het voorbeeld uitvoeren
 
-Met deze procedure wordt het Cognitive Services container voorbeeld voor taal detectie geladen en uitgevoerd. Het voor beeld heeft twee containers, een voor de client toepassing en één voor de Cognitive Services container. Beide installatie kopieën worden naar de Azure Container Registry gepusht. Als ze zich in uw eigen REGI ster bevinden, maakt u een Azure Kubernetes-service voor toegang tot deze installatie kopieën en voert u de containers uit. Wanneer de containers worden uitgevoerd, gebruikt u de **kubectl** CLI om de prestaties van de containers te bekijken. Open de client toepassing met een HTTP-aanvraag en Bekijk de resultaten.
+Deze procedure laadt en voert het voorbeeld van cognitive services container uit voor taaldetectie. Het voorbeeld heeft twee containers, een voor de clienttoepassing en een voor de container Cognitive Services. We duwen beide afbeeldingen naar het Azure Container Registry. Zodra ze in uw eigen register staan, maakt u een Azure Kubernetes-service om toegang te krijgen tot deze afbeeldingen en de containers uit te voeren. Wanneer de containers actief zijn, gebruikt u de **kubectl** CLI om de prestaties van de containers te bekijken. Toegang tot de clienttoepassing met een HTTP-aanvraag en bekijk de resultaten.
 
-![Conceptueel idee van het uitvoeren van voorbeeld containers](../text-analytics/media/how-tos/container-instance-sample/containers.png)
+![Conceptueel idee van het uitvoeren van monstercontainers](../text-analytics/media/how-tos/container-instance-sample/containers.png)
 
-## <a name="the-sample-containers"></a>De voorbeeld containers
+## <a name="the-sample-containers"></a>De monstercontainers
 
-Het voor beeld heeft twee container installatie kopieën, één voor de frontend-website. De tweede afbeelding is de container voor taal detectie die de gedetecteerde taal (cultuur) van tekst retourneert. Beide containers zijn toegankelijk vanuit een extern IP-adres wanneer u klaar bent.
+Het voorbeeld heeft twee containerafbeeldingen, een voor de frontend-website. De tweede afbeelding is de taaldetectiecontainer die de gedetecteerde taal (cultuur) van tekst retourt. Beide containers zijn toegankelijk vanaf een extern IP wanneer u klaar bent.
 
-### <a name="the-language-frontend-container"></a>De taal-frontend-container
+### <a name="the-language-frontend-container"></a>De taal-frontend container
 
-Deze website is gelijk aan uw eigen toepassing aan de client zijde die aanvragen van het taal detectie-eind punt maakt. Wanneer de procedure is voltooid, krijgt u de gedetecteerde taal van een teken reeks door toegang te krijgen tot de website container in een browser met `http://<external-IP>/<text-to-analyze>`. Een voor beeld van deze URL is `http://132.12.23.255/helloworld!`. Het resultaat in de browser is `English`.
+Deze website is gelijk aan uw eigen client-side applicatie die verzoeken van de taal detectie eindpunt maakt. Wanneer de procedure is voltooid, krijgt u de gedetecteerde taal van een reeks `http://<external-IP>/<text-to-analyze>`tekens door toegang te krijgen tot de websitecontainer in een browser met . Een voorbeeld van `http://132.12.23.255/helloworld!`deze URL is . Het resultaat in `English`de browser is .
 
-### <a name="the-language-container"></a>De taal container
+### <a name="the-language-container"></a>De taalcontainer
 
-De taal detectie container, in deze specifieke procedure, is toegankelijk voor alle externe aanvragen. De container is op geen enkele manier gewijzigd, dus de standaard Cognitive Services-providerspecifieke taal detectie-API is beschikbaar.
+De taaldetectiecontainer is in deze specifieke procedure toegankelijk voor externe aanvragen. De container is op geen enkele manier gewijzigd, dus de standaard Cognitive Services containerspecifieke taaldetectie-API is beschikbaar.
 
-Voor deze container is deze API een POST-aanvraag voor taal detectie. Net als bij alle Cognitive Services containers kunt u meer informatie over de container vinden op basis van de gehoste Swagger-informatie, `http://<external-IP>:5000/swagger/index.html`.
+Voor deze container is die API een POST-verzoek voor taaldetectie. Zoals met alle Cognitive Services containers, u meer te weten `http://<external-IP>:5000/swagger/index.html`komen over de container van de gehoste Swagger informatie,.
 
-Poort 5000 is de standaard poort die wordt gebruikt met de Cognitive Services containers.
+Poort 5000 is de standaardpoort die wordt gebruikt bij de containers Cognitive Services.
 
 ## <a name="create-azure-container-registry-service"></a>Azure Container Registry-service maken
 
-Als u de container wilt implementeren in de Azure Kubernetes-service, moeten de container installatie kopieën toegankelijk zijn. Maak uw eigen Azure Container Registry-service om de installatie kopieën te hosten.
+Als u de container wilt implementeren in de Azure Kubernetes-service, moeten de containerafbeeldingen toegankelijk zijn. Maak uw eigen Azure Container Registry-service om de afbeeldingen te hosten.
 
 1. Aanmelden bij de Azure CLI
 
@@ -66,19 +66,19 @@ Als u de container wilt implementeren in de Azure Kubernetes-service, moeten de 
     az login
     ```
 
-1. Maak een resource groep met de naam `cogserv-container-rg` voor het opslaan van elke resource die in deze procedure wordt gemaakt.
+1. Maak een resourcegroep met de naam die is gemaakt `cogserv-container-rg` om elke resource die in deze procedure is gemaakt, vast te houden.
 
     ```azurecli-interactive
     az group create --name cogserv-container-rg --location westus
     ```
 
-1. Maak uw eigen Azure Container Registry met de indeling van uw naam en `registry`, zoals `pattyregistry`. Gebruik geen streepjes of onderstrepings tekens in de naam.
+1. Maak vervolgens `registry`uw eigen Azure Container Registry met `pattyregistry`de indeling van uw naam, zoals . Gebruik geen streepjes of onderstrepingstekens in de naam.
 
     ```azurecli-interactive
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
     ```
 
-    Sla de resultaten op om de eigenschap **login server** op te halen. Dit maakt deel uit van het adres van de gehoste container, die later in het `language.yml`-bestand wordt gebruikt.
+    Sla de resultaten op om de eigenschap **loginServer** te krijgen. Dit maakt deel uit van het adres van `language.yml` de gehoste container, dat later in het bestand wordt gebruikt.
 
     ```azurecli-interactive
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
@@ -105,39 +105,39 @@ Als u de container wilt implementeren in de Azure Kubernetes-service, moeten de 
     }
     ```
 
-1. Meld u aan bij uw container register. U moet zich aanmelden voordat u installatie kopieën naar uw REGI ster kunt pushen.
+1. Meld u aan bij uw containerregister. Je moet inloggen voordat je afbeeldingen naar je register pushen.
 
     ```azurecli-interactive
     az acr login --name pattyregistry
     ```
 
-## <a name="get-website-docker-image"></a>Site docker-installatie kopie ophalen
+## <a name="get-website-docker-image"></a>Website Docker-afbeelding bekijken
 
-1. De voorbeeld code die in deze procedure wordt gebruikt, bevindt zich in de opslag plaats Cognitive Services containers voor beelden. Kloon de opslag plaats met een lokale kopie van het voor beeld.
+1. De voorbeeldcode die in deze procedure wordt gebruikt, bevindt zich in de opslagplaats voor containers voor cognitive services-containers. Kloon de repository om een lokale kopie van het voorbeeld te hebben.
 
     ```console
     git clone https://github.com/Azure-Samples/cognitive-services-containers-samples
     ```
 
-    Zodra de opslag plaats op de lokale computer is, gaat u naar de website in de [\dotnet\Language\FrontendService](https://github.com/Azure-Samples/cognitive-services-containers-samples/tree/master/dotnet/Language/FrontendService) -map. Deze website fungeert als de client toepassing die de API voor taal detectie aanroept die wordt gehost in de taal detectie container.  
+    Zodra de opslagplaats zich op uw lokale computer bevindt, zoekt u de website in de [map \dotnet\Language\FrontendService.](https://github.com/Azure-Samples/cognitive-services-containers-samples/tree/master/dotnet/Language/FrontendService) Deze website fungeert als de clienttoepassing die de taaldetectie-API aanroept die wordt gehost in de taaldetectiecontainer.  
 
-1. Bouw de docker-installatie kopie voor deze website. Controleer of de-console zich in de [\FrontendService](https://github.com/Azure-Samples/cognitive-services-containers-samples/tree/master/dotnet/Language/FrontendService) -map bevindt met de Dockerfile wanneer u de volgende opdracht uitvoert:
+1. Bouw de Docker afbeelding voor deze website. Controleer of de console zich in de [\FrontendService-map](https://github.com/Azure-Samples/cognitive-services-containers-samples/tree/master/dotnet/Language/FrontendService) bevindt waar het Dockerbestand zich bevindt wanneer u de volgende opdracht uitvoert:
 
     ```console
     docker build -t language-frontend -t pattiyregistry.azurecr.io/language-frontend:v1 .
     ```
 
-    Als u de versie in het container register wilt volgen, voegt u de tag toe met een versie-indeling, zoals `v1`.
+    Als u de versie in uw containerregister wilt bijhouden, voegt u de tag toe met een versie-indeling, zoals `v1`.
 
-1. Push de installatie kopie naar het container register. Dit kan enkele minuten duren.
+1. Duw de afbeelding naar uw containerregister. Dit kan enkele minuten duren.
 
     ```console
     docker push pattyregistry.azurecr.io/language-frontend:v1
     ```
 
-    Als er een `unauthorized: authentication required` fout optreedt, meldt u zich aan met de `az acr login --name <your-container-registry-name>` opdracht. 
+    Als u `unauthorized: authentication required` een fout krijgt, logt u in met de `az acr login --name <your-container-registry-name>` opdracht. 
 
-    Wanneer het proces is voltooid, moeten de resultaten er ongeveer als volgt uitzien:
+    Wanneer het proces is afgerond, moeten de resultaten vergelijkbaar zijn met:
 
     ```output
     The push refers to repository [pattyregistry.azurecr.io/language-frontend]
@@ -150,37 +150,37 @@ Als u de container wilt implementeren in de Azure Kubernetes-service, moeten de 
     v1: digest: sha256:31930445deee181605c0cde53dab5a104528dc1ff57e5b3b34324f0d8a0eb286 size: 1580
     ```
 
-## <a name="get-language-detection-docker-image"></a>Docker-installatie kopie voor taal detectie ophalen
+## <a name="get-language-detection-docker-image"></a>Afbeelding van de Docker-taaldetectie
 
-1. Haal de nieuwste versie van de docker-installatie kopie op de lokale computer op. Dit kan enkele minuten duren. Als er een nieuwere versie van deze container is, wijzigt u de waarde van `1.1.006770001-amd64-preview` naar de nieuwere versie.
+1. Trek de nieuwste versie van de Docker-afbeelding naar de lokale machine. Dit kan enkele minuten duren. Als er een nieuwere versie van deze container `1.1.006770001-amd64-preview` is, wijzigt u de waarde van de nieuwere versie.
 
     ```console
     docker pull mcr.microsoft.com/azure-cognitive-services/language:1.1.006770001-amd64-preview
     ```
 
-1. Codeer een afbeelding met het container register. Zoek de nieuwste versie en vervang de versie `1.1.006770001-amd64-preview` als u een recentere versie hebt. 
+1. Tag afbeelding met uw containerregister. Zoek de nieuwste versie `1.1.006770001-amd64-preview` en vervang de versie als u een recentere versie hebt. 
 
     ```console
     docker tag mcr.microsoft.com/azure-cognitive-services/language pattiyregistry.azurecr.io/language:1.1.006770001-amd64-preview
     ```
 
-1. Push de installatie kopie naar het container register. Dit kan enkele minuten duren.
+1. Duw de afbeelding naar uw containerregister. Dit kan enkele minuten duren.
 
     ```console
     docker push pattyregistry.azurecr.io/language:1.1.006770001-amd64-preview
     ```
 
-## <a name="get-container-registry-credentials"></a>Container Registry referenties ophalen
+## <a name="get-container-registry-credentials"></a>Referenties containerregister ophalen
 
-De volgende stappen zijn nodig om de vereiste informatie te krijgen om uw container register te verbinden met de Azure Kubernetes-service die u later in deze procedure maakt.
+De volgende stappen zijn nodig om de vereiste informatie te krijgen om uw containerregister te verbinden met de Azure Kubernetes-service die u later in deze procedure maakt.
 
-1. Service-Principal maken.
+1. Serviceprincipal maken.
 
     ```azurecli-interactive
     az ad sp create-for-rbac --skip-assignment
     ```
 
-    Sla de resultaten `appId` waarde op voor de para meter assigned in stap 3, `<appId>`. Sla de `password` op voor de client-geheime para meter van de volgende sectie `<client-secret>`.
+    Sla de `appId` resultaatwaarde voor de parameter assignee op in stap 3. `<appId>` Sla `password` de parameter voor de volgende `<client-secret>`sectie op voor de client-secret parameter .
 
     ```output
     {
@@ -192,21 +192,21 @@ De volgende stappen zijn nodig om de vereiste informatie te krijgen om uw contai
     }
     ```
 
-1. Haal de register-ID van uw container op.
+1. Haal uw containerregister-ID op.
 
     ```azurecli-interactive
     az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
     ```
 
-    Sla de uitvoer voor de waarde van de bereik parameter op `<acrId>`in de volgende stap. Het ziet er als volgt uit:
+    Sla de uitvoer op voor `<acrId>`de waarde van de bereikparameter in de volgende stap. Het lijkt erop dat:
 
     ```output
     /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cogserv-container-rg/providers/Microsoft.ContainerRegistry/registries/pattyregistry
     ```
 
-    Sla de volledige waarde voor stap 3 in deze sectie op.
+    Sla de volledige waarde op voor stap 3 in deze sectie.
 
-1. Als u de juiste toegang wilt verlenen voor het AKS-cluster om afbeeldingen te gebruiken die zijn opgeslagen in het container register, maakt u een roltoewijzing. Vervang `<appId>` en `<acrId>` door de waarden die in de vorige twee stappen zijn verzameld.
+1. Als u de juiste toegang wilt verlenen voor het AKS-cluster om afbeeldingen te gebruiken die zijn opgeslagen in uw containerregister, maakt u een roltoewijzing. Vervang `<appId>` `<acrId>` en met de waarden die in de vorige twee stappen zijn verzameld.
 
     ```azurecli-interactive
     az role assignment create --assignee <appId> --scope <acrId> --role Reader
@@ -214,7 +214,7 @@ De volgende stappen zijn nodig om de vereiste informatie te krijgen om uw contai
 
 ## <a name="create-azure-kubernetes-service"></a>Azure Kubernetes-service maken
 
-1. Maak de Kubernetes-cluster. Alle parameter waarden zijn afkomstig uit vorige secties, met uitzonde ring van de para meter name. Kies een naam die aangeeft wie het heeft gemaakt en het doel ervan, zoals `patty-kube`.
+1. Maak de Kubernetes-cluster. Alle parameterwaarden zijn afkomstig van vorige secties, behalve de parameter naam. Kies een naam die aangeeft wie de `patty-kube`naam heeft gemaakt en het doel ervan, zoals .
 
     ```azurecli-interactive
     az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
@@ -279,25 +279,25 @@ De volgende stappen zijn nodig om de vereiste informatie te krijgen om uw contai
     }
     ```
 
-    De service is gemaakt, maar heeft nog geen website container of taal detectie container.  
+    De service is gemaakt, maar het heeft nog niet de website container of taal detectie container.  
 
-1. Referenties ophalen van het Kubernetes-cluster.
+1. Haal referenties van het Kubernetes-cluster op.
 
     ```azurecli-interactive
     az aks get-credentials --resource-group cogserv-container-rg --name patty-kube
     ```
 
-## <a name="load-the-orchestration-definition-into-your-kubernetes-service"></a>Laad de indelings definitie in uw Kubernetes-service
+## <a name="load-the-orchestration-definition-into-your-kubernetes-service"></a>De orchestration-definitie in uw Kubernetes-service laden
 
-In deze sectie wordt de **kubectl** cli gebruikt om te communiceren met de Azure Kubernetes-service.
+In deze sectie wordt de **kubectl** CLI gebruikt om te praten met de Azure Kubernetes-service.
 
-1. Controleer voordat u de indelings definitie laadt **kubectl** toegang heeft tot de knoop punten.
+1. Controleer voordat u de orchestration-definitie laadt, of **Kubectl** toegang heeft tot de knooppunten.
 
     ```console
     kubectl get nodes
     ```
 
-    Het antwoord ziet er als volgt uit:
+    Het antwoord ziet eruit als volgt:
 
     ```output
     NAME                       STATUS    ROLES     AGE       VERSION
@@ -305,29 +305,29 @@ In deze sectie wordt de **kubectl** cli gebruikt om te communiceren met de Azure
     aks-nodepool1-13756812-1   Ready     agent     6m        v1.9.11
     ```
 
-1. Kopieer het volgende bestand en geef het de naam `language.yml`. Het bestand bevat een `service` sectie en een `deployment` sectie elk voor de twee typen containers, de `language-frontend` website container en de container voor `language` detectie.
+1. Kopieer het volgende bestand `language.yml`en geef een naam. Het bestand `service` heeft een `deployment` sectie en een sectie `language-frontend` voor de `language` twee containertypen, de websitecontainer en de detectiecontainer.
 
     [!code-yml[Kubernetes orchestration file for the Cognitive Services containers sample](~/samples-cogserv-containers/Kubernetes/language/language.yml "Kubernetes orchestration file for the Cognitive Services containers sample")]
 
-1. Wijzig de implementatie regels voor de taal-frontend van `language.yml` op basis van de volgende tabel om uw eigen container register installatie kopie namen, client geheim en tekst analyse-instellingen toe te voegen.
+1. Wijzig de implementatieregels voor `language.yml` taalfrontend op basis van de volgende tabel om uw eigen instellingen voor containerregisterafbeelding, clientgeheim en tekstanalyse-instellingen toe te voegen.
 
-    Implementatie-instellingen voor taal-frontend|Doel|
+    Instellingen voor taalfrontend-implementatie|Doel|
     |--|--|
-    |Regel 32<br> `image` eigenschap|Afbeeldings locatie voor de front-end-installatie kopie in uw Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
-    |Regel 44<br> `name` eigenschap|Container Registry geheim voor de installatie kopie, waarnaar wordt verwezen als `<client-secret>` in een vorige sectie.|
+    |Lijn 32<br> `image`Eigenschap|Afbeeldingslocatie voor de frontendafbeelding in uw containerregister<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
+    |Lijn 44<br> `name`Eigenschap|Containerregister geheim voor de afbeelding, aangeduid als `<client-secret>` in een vorige sectie.|
 
-1. Wijzig de taal implementatie regels van `language.yml` op basis van de volgende tabel om uw eigen container register installatie kopie namen, client geheim en tekst analyse-instellingen toe te voegen.
+1. Wijzig de taalimplementatieregels van `language.yml` de volgende tabel om uw eigen instellingen voor containerregisterafbeelding, clientgeheim en tekstanalyse-instellingen toe te voegen.
 
-    |Instellingen voor taal implementatie|Doel|
+    |Instellingen voor taalimplementatie|Doel|
     |--|--|
-    |Regel 78<br> `image` eigenschap|Afbeeldings locatie voor de taal installatie kopie in uw Container Registry<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
-    |Regel 95<br> `name` eigenschap|Container Registry geheim voor de installatie kopie, waarnaar wordt verwezen als `<client-secret>` in een vorige sectie.|
-    |Regel 91<br> `apiKey` eigenschap|De bron sleutel voor tekst analyse|
-    |Regel 92<br> `billing` eigenschap|Het facturerings eindpunt voor uw tekst analyse resource.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+    |Lijn 78<br> `image`Eigenschap|Afbeeldingslocatie voor de taalafbeelding in uw containerregister<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
+    |Lijn 95<br> `name`Eigenschap|Containerregister geheim voor de afbeelding, aangeduid als `<client-secret>` in een vorige sectie.|
+    |Lijn 91<br> `apiKey`Eigenschap|Uw bronsleutel voor tekstanalyse|
+    |Lijn 92<br> `billing`Eigenschap|Het factureringseindpunt voor uw bron voor tekstanalyse.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
-    Omdat het **apiKey** -en **facturerings eindpunt** zijn ingesteld als onderdeel van de Kubernetes-indelings definitie, hoeft de website container deze niet te kennen of door te geven als onderdeel van de aanvraag. De website container verwijst naar de taal detectie container door de naam van de Orchestrator `language`.
+    Omdat het **apiKey-** en **factureringseindpunt** is ingesteld als onderdeel van de Kubernetes-orchestration-definitie, hoeft de websitecontainer deze niet te weten of door te geven als onderdeel van de aanvraag. De websitecontainer verwijst naar de taaldetectiecontainer `language`met de orchestratornaam .
 
-1. Laad het bestand met de indelings definitie voor dit voor beeld vanuit de map waarin u de `language.yml`hebt gemaakt en opgeslagen.
+1. Laad het orchestration definition-bestand voor dit voorbeeld uit `language.yml`de map waar u de .
 
     ```console
     kubectl apply -f language.yml
@@ -342,9 +342,9 @@ In deze sectie wordt de **kubectl** cli gebruikt om te communiceren met de Azure
     deployment.apps "language" created
     ```
 
-## <a name="get-external-ips-of-containers"></a>Externe IP-adressen van containers ophalen
+## <a name="get-external-ips-of-containers"></a>Externe IP's van containers krijgen
 
-Controleer voor de twee containers of de `language-frontend`-en `language`-services worden uitgevoerd en haal het externe IP-adres op.
+Controleer voor de twee `language-frontend` `language` containers of de services worden uitgevoerd en krijg het externe IP-adres.
 
 ```console
 kubectl get all
@@ -377,21 +377,21 @@ replicaset.apps/language-586849d8dc            1         1         1         13h
 replicaset.apps/language-frontend-68b9969969   1         1         1         13h
 ```
 
-Als de `EXTERNAL-IP` voor de service wordt weer gegeven als in behandeling, voert u de opdracht opnieuw uit totdat het IP-adres wordt weer gegeven voordat u verdergaat met de volgende stap.
+Als `EXTERNAL-IP` de voor de service wordt weergegeven als in behandeling, voert u de opdracht opnieuw uit totdat het IP-adres wordt weergegeven voordat u naar de volgende stap gaat.
 
-## <a name="test-the-language-detection-container"></a>De taal detectie container testen
+## <a name="test-the-language-detection-container"></a>De taaldetectiecontainer testen
 
-Open een browser en ga naar het externe IP-adres van de `language`-container in de vorige sectie: `http://<external-ip>:5000/swagger/index.html`. U kunt de `Try it`-functie van de API gebruiken om het taal detectie-eind punt te testen.
+Open een browser en navigeer naar `language` het externe IP `http://<external-ip>:5000/swagger/index.html`van de container uit de vorige sectie: . U `Try it` de functie van de API gebruiken om het eindpunt voor taaldetectie te testen.
 
-![De Swagger-documentatie van de container weer geven](../text-analytics/media/how-tos/container-instance-sample/language-detection-container-swagger-documentation.png)
+![Bekijk de swaggerdocumentatie van de container](../text-analytics/media/how-tos/container-instance-sample/language-detection-container-swagger-documentation.png)
 
-## <a name="test-the-client-application-container"></a>De client toepassings container testen
+## <a name="test-the-client-application-container"></a>De clienttoepassingscontainer testen
 
-Wijzig de URL in de browser in het externe IP-adres van de `language-frontend`-container met de volgende indeling: `http://<external-ip>/helloworld`. De Engelse cultuur tekst van `helloworld` wordt voor speld als `English`.
+Wijzig de URL in de browser `language-frontend` in het externe `http://<external-ip>/helloworld`IP-adres van de container met de volgende indeling: . De Engelse cultuurtekst `helloworld` van `English`wordt voorspeld zoals .
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met het cluster, verwijdert u de Azure-resource groep.
+Wanneer u klaar bent met het cluster, verwijdert u de Azure-brongroep.
 
 ```azurecli-interactive
 az group delete --name cogserv-container-rg
@@ -399,12 +399,12 @@ az group delete --name cogserv-container-rg
 
 ## <a name="related-information"></a>Gerelateerde informatie
 
-* [kubectl voor docker-gebruikers](https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/)
+* [kubectl voor Docker-gebruikers](https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Cognitive Services containers](../cognitive-services-container-support.md)
+> [Containers voor cognitieve services](../cognitive-services-container-support.md)
 
 <!--
 kubectl get secrets

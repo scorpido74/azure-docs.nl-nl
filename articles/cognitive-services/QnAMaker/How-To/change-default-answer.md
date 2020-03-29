@@ -1,35 +1,35 @@
 ---
-title: Standaard antwoord ophalen-QnA Maker
-description: Het standaard antwoord wordt geretourneerd wanneer er geen overeenkomst is met de vraag. Mogelijk wilt u het standaard antwoord wijzigen van het standaard antwoord standaard.
+title: Krijg standaard antwoord - QnA Maker
+description: Het standaardantwoord wordt geretourneerd wanneer er geen overeenkomst is met de vraag. U het standaardantwoord wijzigen vanuit het standaardstandaardantwoord.
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.openlocfilehash: fae5c38fd64435a3fae56862bad04e000916e88b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76843273"
 ---
-# <a name="set-default-answer-for-a-knowledge-base"></a>Standaard antwoord voor een Knowledge Base instellen
+# <a name="set-default-answer-for-a-knowledge-base"></a>Standaardantwoord instellen voor een kennisbank
 
-Het standaard antwoord wordt geretourneerd wanneer er geen overeenkomst is met de vraag. Mogelijk wilt u het standaard antwoord wijzigen van het standaard antwoord standaard.
+Het standaardantwoord wordt geretourneerd wanneer er geen overeenkomst is met de vraag. U het standaardantwoord wijzigen vanuit het standaardstandaardantwoord.
 
-## <a name="change-default-answer"></a>Standaard antwoord wijzigen
+## <a name="change-default-answer"></a>Standaardantwoord wijzigen
 
-1. Ga naar de [Azure-portal](https://portal.azure.com) en navigeer naar de resourcegroep die de QnA Maker-service die u hebt gemaakt.
+1. Ga naar de [Azure-portal](https://portal.azure.com) en navigeer naar de resourcegroep die de QnA Maker-service vertegenwoordigt die u hebt gemaakt.
 
-2. Klik hier om de **App Service**.
+2. Klik hier om de **App-service**te openen.
 
-    ![In de Azure-portal toegang tot appservice voor QnA Maker](../media/qnamaker-concepts-confidencescore/set-default-response.png)
+    ![Toegang tot de App-service voor QnA Maker in de Azure-portal](../media/qnamaker-concepts-confidencescore/set-default-response.png)
 
-3. Klik op **toepassingsinstellingen** en bewerk de **DefaultAnswer** veld naar de gewenste Standaardantwoord. Klik op **Opslaan**.
+3. Klik op **Toepassingsinstellingen** en bewerk het veld **Standaardantwoord** op het gewenste standaardantwoord. Klik op **Opslaan**.
 
-    ![Selecteer de toepassingsinstellingen en bewerk vervolgens DefaultAnswer voor QnA Maker](../media/qnamaker-concepts-confidencescore/change-response.png)
+    ![Selecteer Toepassingsinstellingen en bewerk vervolgens DefaultAnswer voor QnA Maker](../media/qnamaker-concepts-confidencescore/change-response.png)
 
 4. Uw App-service opnieuw starten
 
-    ![Nadat u de DefaultAnswer hebt gewijzigd, start opnieuw op de appservice QnA Maker](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+    ![Nadat u de standaardantwoord hebt gewijzigd, start u de appservice QnA Maker opnieuw](../media/qnamaker-faq/qnamaker-appservice-restart.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een bot met QnA Maker en LUIS maken](../tutorials/integrate-qnamaker-luis.md)
+* [Maak een bot met QnA Maker en LUIS](../tutorials/integrate-qnamaker-luis.md)

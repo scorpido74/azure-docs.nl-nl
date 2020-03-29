@@ -1,7 +1,7 @@
 ---
-title: Vooraf samengestelde LUIS van de woordgroepen-entiteit
+title: Sleutelzin voorgebouwde entiteit - LUIS
 titleSuffix: Azure Cognitive Services
-description: In dit artikel bevat keyphrase vooraf gedefinieerde entiteitgegevens in Language Understanding (LUIS).
+description: Dit artikel bevat keyphrase prebuilt entity information in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,24 +12,24 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 53be1b13f1e2744e143a4be0777e3a8e3135460e
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270533"
 ---
-# <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>vooraf samengestelde woordgroepen instantie voor een LUIS-app
-De entiteit woordgroep haalt een aantal sleutel zinnen op uit een utterance. U hoeft geen voorbeeld uitingen met een Woordgroeps groep aan de toepassing toe te voegen. De woordgroepen entiteit wordt in [veel cultures](luis-language-support.md#languages-supported) ondersteund als onderdeel van de functie voor [tekst analyse](../text-analytics/overview.md) .
+# <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>sleutelzinnen voor een vooraf gebouwde entiteit voor een LUIS-app
+De entiteit keyPhrase haalt een verscheidenheid aan sleutelzinnen uit een utterance. U hoeft geen voorbeelduitingen met keyPhrase aan de toepassing toe te voegen. De entiteit keyPhrase wordt in [veel culturen](luis-language-support.md#languages-supported) ondersteund als onderdeel van de functies [voor tekstanalyse.](../text-analytics/overview.md)
 
-## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Oplossing voor vooraf gedefinieerde keyPhrase entiteit
+## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Oplossing voor vooraf gebouwde entiteit KeyPhrase
 
-De volgende entiteits objecten worden geretourneerd voor de query:
+De volgende entiteitsobjecten worden geretourneerd voor de query:
 
 `where is the educational requirements form for the development and engineering group`
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
+De volgende JSON `verbose` is met `false`de parameter ingesteld op:
 
 ```json
 "entities": {
@@ -39,8 +39,8 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
-De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
+#### <a name="v3-verbose-response"></a>[V3 verbose reactie](#tab/V3-verbose)
+De volgende JSON `verbose` is met `true`de parameter ingesteld op:
 
 ```json
 "entities": {
@@ -78,7 +78,7 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
 ```
 #### <a name="v2-response"></a>[V2-antwoord](#tab/V2)
 
-In het volgende voor beeld ziet u de resolutie van de entiteit **Builtin. Superwoord groep** .
+In het volgende voorbeeld wordt de resolutie van de entiteit **builtin.keyPhrase** weergegeven.
 
 ```json
 "entities": [
@@ -100,6 +100,6 @@ In het volgende voor beeld ziet u de resolutie van de entiteit **Builtin. Superw
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
+Meer informatie over het [V3-voorspellingseindpunt](luis-migration-api-v3.md).
 
-Meer informatie over de eenheden [percentage](luis-reference-prebuilt-percentage.md), [aantal](luis-reference-prebuilt-number.md)en [leeftijd](luis-reference-prebuilt-age.md) .
+Meer informatie over het [percentage,](luis-reference-prebuilt-percentage.md) [het aantal](luis-reference-prebuilt-number.md)en [de leeftijdsentiteiten.](luis-reference-prebuilt-age.md)

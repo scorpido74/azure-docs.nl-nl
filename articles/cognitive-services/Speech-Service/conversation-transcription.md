@@ -1,81 +1,81 @@
 ---
-title: 'Gesprek transcriptie (preview): Speech Service'
+title: Gesprekstranscriptie (preview) - Spraakservice
 titleSuffix: Azure Cognitive Services
-description: Conversation transcriptie is een oplossing voor spraak naar tekst waarmee spraak herkenning, de identificatie van de spreker en de toewijzing van zinnen aan elke spreker (ook wel bekend als diarization) worden gecombineerd om te voorzien in realtime en/of asynchroon transcriptie van een gesprek.
+description: Conversation Transcription is een oplossing voor vergaderingen, die herkenning, luidspreker-ID en diarisatie combineert om transcriptie van elk gesprek te bieden.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 03/16/2020
 ms.author: dapine
-ms.openlocfilehash: 8fc52428795b0dc8123d501dac9605c473f61456
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: ba56c7fb989658195f6394c7390c4f83027c7c96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79367819"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79479736"
 ---
-# <a name="what-is-conversation-transcription-preview"></a>Wat is een conversatie transcriptie (preview)?
+# <a name="what-is-conversation-transcription-in-meetings-preview"></a>Wat is gesprekstranscriptie in vergaderingen (Voorbeeld)?
 
-Conversation transcriptie is een oplossing [voor spraak naar tekst](speech-to-text.md) waarmee spraak herkenning, de identificatie van de spreker en de toewijzing van zinnen aan elke spreker (ook wel bekend als _diarization_) worden gecombineerd om te voorzien in realtime en/of asynchroon transcriptie van een gesprek. Conversatie transcriptie onderscheidt sprekers in een gesprek om te bepalen wie wat en wanneer en wanneer, en maakt het gemakkelijk voor ontwikkel aars om spraak-naar-tekst toe te voegen aan hun toepassingen die Multi-Speaker diarization uitvoeren.
+Conversation Transcription is een [spraak-naar-tekst](speech-to-text.md) oplossing die spraakherkenning, luidsprekeridentificatie en zinstoeschrijving combineert aan elke spreker (ook bekend als _diarisatie)_ om real-time en/of asynchrone transcriptie van elk gesprek te bieden. Conversation Transcription onderscheidt sprekers in een gesprek om te bepalen wie wat en wanneer heeft gezegd, en maakt het voor ontwikkelaars gemakkelijk om spraak-naar-tekst toe te voegen aan hun toepassingen die diarisatie met meerdere luidsprekers uitvoeren.
 
 ## <a name="key-features"></a>Belangrijke functies
 
-- **Tijds tempels** : elke utterance van de spreker heeft een tijds tempel, zodat u gemakkelijk kunt vinden wanneer een woord groep werd genoemd.
-- **Lees bare transcripten** : transcripten hebben automatisch opmaak en interpunctie toegevoegd om ervoor te zorgen dat de tekst goed overeenkomt met wat werd gezegd.
-- **Gebruikers profielen** : gebruikers profielen worden gegenereerd door de voor beelden van gebruikers spraak te verzamelen en ze te verzenden naar het genereren van hand tekeningen.
-- **Luidspreker identificatie** : de luid sprekers worden geïdentificeerd met behulp van gebruikers profielen en er wordt een _spreker-id_ aan elk toegewezen.
-- **Multi-Speaker diarization** : Bepaal wie wat heeft gezegd door de audio stroom te syntheseen met elke luidspreker-id.
-- **Real-time transcriptie** : bieden live transcripten van wie zegt wat en wanneer de conversatie plaatsvindt.
-- **asynchroon transcriptie** : Geef transcripten met een grotere nauw keurigheid door gebruik te maken van een meerkanaals audio stroom.
+- **Tijdstempels** - elke spreker uiting heeft een tijdstempel, zodat u gemakkelijk vinden wanneer een zin werd gezegd.
+- **Leesbare transcripties** - transcripties hebben opmaak en interpunctie automatisch toegevoegd om ervoor te zorgen dat de tekst nauw overeenkomt met wat er werd gezegd.
+- **Gebruikersprofielen** - gebruikersprofielen worden gegenereerd door het verzamelen van spraakvoorbeelden van gebruikers en ze naar het genereren van handtekeningen te sturen.
+- **Luidsprekeridentificatie** - sprekers worden geïdentificeerd met behulp van gebruikersprofielen en aan elk luidspreker-id wordt een _luidspreker-id_ toegewezen.
+- **Diarization met meerdere luidsprekers** - bepaal wie wat heeft gezegd door de audiostream met elke luidspreker-id te synthetiseren.
+- **Real-time transcriptie** - bieden live transcripties van wie zegt wat en wanneer, terwijl het gesprek gebeurt.
+- **asynchrone transcriptie** – geef transcripties met een hogere nauwkeurigheid met behulp van een multichannel audiostream.
 
 > [!NOTE]
-> Hoewel door de conversatie transcriptie geen limiet wordt ingesteld voor het aantal luid sprekers in de ruimte, is deze geoptimaliseerd voor 2-10 sprekers per sessie.
+> Hoewel Conversation Transcription geen limiet stelt aan het aantal luidsprekers in de kamer, is het geoptimaliseerd voor 2-10 luidsprekers per sessie.
 
 ## <a name="use-cases"></a>Gebruiksvoorbeelden
 
 ### <a name="inclusive-meetings"></a>Inclusieve vergaderingen
 
-Als u vergaderingen voor iedereen wilt maken, zoals deel nemers die doof en slechthorend zijn, is het belang rijk om transcriptie in realtime te hebben. In de real-time modus van conversaties wordt audio aan de vergadering gestuurd en wordt bepaald wie er moet zeggen, waardoor alle deel nemers aan de vergadering de transcripten kunnen volgen en zonder enige vertraging deel nemen aan de vergadering.
+Om vergaderingen inclusief te maken voor iedereen, zoals deelnemers die doof en slechthorend zijn, is het belangrijk om transcriptie in real time te hebben. Gesprek Transcriptie in real-time modus neemt vergadering audio en bepaalt wie wat zegt, zodat alle deelnemers aan de vergadering om het transcript te volgen en deel te nemen aan de vergadering zonder vertraging.
 
 ### <a name="improved-efficiency"></a>Verbeterde efficiëntie
 
-Deel nemers aan het vergaderen kunnen zich richten op de vergadering en moeten notities maken op het gesprek transcriptie. Deel nemers kunnen actief gebruikmaken van de vergadering en snel opvolgen tijdens de volgende stappen, waarbij de transcriptie wordt gebruikt in plaats van notities te maken en mogelijk iets te missen tijdens de vergadering.
+Deelnemers aan de vergadering kunnen zich concentreren op de vergadering en het maken van notities overlaten aan gesprekstranscriptie. Deelnemers kunnen actief deelnemen aan de vergadering en snel de volgende stappen opvolgen, waarbij ze het transcript gebruiken in plaats van notities te maken en mogelijk iets missen tijdens de vergadering.
 
-## <a name="how-it-works"></a>How it works (Engelstalig artikel)
+## <a name="how-it-works"></a>Hoe werkt het?
 
-Dit is een overzicht op hoog niveau van de werking van de conversatie transcriptie.
+Dit is een overzicht op hoog niveau van hoe conversation transcription werkt.
 
-![Het diagram gesprek transcriptie importeren](media/scenarios/conversation-transcription-service.png)
+![Het transcriptiediagram voor gespreksgesprekken importeren](media/scenarios/conversation-transcription-service.png)
 
-## <a name="expected-inputs"></a>Verwachte invoer
+## <a name="expected-inputs"></a>Verwachte ingangen
 
-- **Multi Channel audio stream** : Zie de [micro soft speech Device SDK-microfoon](https://aka.ms/cts/microphone)voor informatie over de specificatie en het ontwerp. Raadpleeg voor meer informatie of een Development Kit aanschaffen [micro soft speech Device SDK](https://aka.ms/cts/getsdk)(Engelstalig).
-- Voor **beelden van gebruikers spraak** : conversatie transcriptie moet vóór de conversatie gebruikers profielen hebben. U moet audio-opnames van elke gebruiker verzamelen en vervolgens de opnamen naar de [service Signature generate](https://aka.ms/cts/signaturegenservice) verzenden om de audio te valideren en gebruikers profielen te genereren.
+- **Multi-channel audiostream** – Zie Microsoft [Speech Device SDK Microphone](https://aka.ms/cts/microphone)voor specificatie- en ontwerpdetails. Zie Microsoft Speech Device SDK [ophalen](https://aka.ms/cts/getsdk)voor meer informatie of een ontwikkelkit aanschaffen.
+- **Voice samples van gebruikers** – Conversation Transcription heeft gebruikersprofielen nodig voorafgaand aan het gesprek. U moet audio-opnamen van elke gebruiker verzamelen en vervolgens de opnamen naar de [Signature Generation Service](https://aka.ms/cts/signaturegenservice) sturen om de audio te valideren en gebruikersprofielen te genereren.
 
-## <a name="real-time-vs-asynchronous"></a>Realtime versus asynchroon
+## <a name="real-time-vs-asynchronous"></a>Real-time vs. asynchroon
 
-De conversatie transcriptie biedt drie transcriptie-modi:
+Conversation Transcription biedt drie transcriptiemodi:
 
 ### <a name="real-time"></a>Real-time
 
-Audio gegevens worden live verwerkt om de luid spreker-id en transcriptie te retour neren. Selecteer deze modus als uw transcriptie-oplossing vereist is om gesprek deel nemers te voorzien van een live transcriptie van hun doorlopende conversatie. Zo is het bouwen van een toepassing om vergaderingen toegankelijker te maken voor dove en hard of slechthorende deel nemers is een ideaal gebruiks voorbeeld voor realtime-transcriptie.
+Audiogegevens worden live verwerkt om de luidspreker-id + transcript terug te sturen. Selecteer deze modus als de vereiste transcriptieoplossing is om deelnemers aan het gesprek een live transcriptieweergave van hun lopende gesprek te bieden. Het bouwen van een applicatie om vergaderingen toegankelijker te maken voor doven en slechthorenden is bijvoorbeeld een ideale use case voor real-time transcriptie.
 
 ### <a name="asynchronous"></a>Asynchrone
 
-De code van de audio gegevens wordt verwerkt om de luid spreker-id en transcriptie te retour neren. Selecteer deze modus als uw transcriptie vereist is om een hogere nauw keurigheid te bieden zonder de weer gave Live transcripten. Als u bijvoorbeeld een toepassing wilt maken waarmee deel nemers aan de vergadering gemakkelijk gemiste vergaderingen kunnen opsporen, gebruikt u de asynchrone transcriptie-modus om hoge nauw keurigheid transcriptie resultaten te krijgen.
+Audiogegevens worden batch verwerkt om de luidspreker-id en transcriptie terug te sturen. Selecteer deze modus als uw vereiste voor transcriptieoplossingen is om een hogere nauwkeurigheid te bieden zonder live transcript-weergave. Als u bijvoorbeeld een toepassing wilt bouwen om deelnemers aan de vergadering in staat te stellen gemiste vergaderingen eenvoudig in te halen, gebruikt u de asynchrone transcriptiemodus om transcriptieresultaten met hoge nauwkeurigheid te verkrijgen.
 
 ### <a name="real-time-plus-asynchronous"></a>Real-time plus asynchroon
 
-Audio gegevens worden live verwerkt om de luid spreker-id en transcriptie te retour neren, en daarnaast wordt er een aanvraag gemaakt om ook een afschrift met een hoge nauw keurigheid te krijgen via asynchrone verwerking. Selecteer deze modus als uw toepassing behoefte heeft aan een real-time transcriptie, maar ook een nauw keurige transcriptie nodig heeft voor gebruik nadat de conversatie of de vergadering heeft plaatsgevonden.
+Audiogegevens worden live verwerkt om de luidspreker-id + transcript terug te sturen, en daarnaast wordt een verzoek gemaakt om ook een transcriptie met hoge nauwkeurigheid te krijgen via asynchrone verwerking. Selecteer deze modus als uw toepassing behoefte heeft aan real-time transcriptie, maar ook een transcriptie met een hogere nauwkeurigheid vereist voor gebruik nadat het gesprek of de vergadering heeft plaatsgevonden.
 
 ## <a name="language-support"></a>Taalondersteuning
 
-Op dit moment ondersteunt de conversatie transcriptie "en-US" en "zh-CN" in de volgende regio's: *centralus* en *EastAsia*. Als u aanvullende ondersteuning voor de land instelling nodig hebt, neemt u contact op met de [transcriptie-functie](mailto:CTSFeatureCrew@microsoft.com)van de conversatie.
+Momenteel ondersteunt Conversation Transcription "en-US" en "zh-CN" in de volgende regio's: *centralus* en *eastasia*. Als u extra ondersteuning voor de landine nodig hebt, neemt u contact op met de [Crew gesprekstranscriptie.](mailto:CTSFeatureCrew@microsoft.com)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Rekken in realtime transcriberen](how-to-use-conversation-transcription-service.md)
+> [Transcribeer gesprekken in realtime](how-to-use-conversation-transcription-service.md)

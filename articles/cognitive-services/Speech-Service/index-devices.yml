@@ -1,45 +1,44 @@
 ### YamlMime:Landing
 title: Documentatie over Speech Devices
-summary: De spraak-apparaten-SDK is een pretuned bibliotheek die gekoppeld met speciaal ontwikkelde, microfoon SDK in de matrix.
+summary: De Speech Devices SDK is een vooraf afgestemde bibliotheek die is gekoppeld aan speciaal gebouwde, microfoon array development kits.
 metadata:
-  title: Documentatie voor spraak apparaten-zelf studies, API-verwijzing-Azure Cognitive Services | Microsoft Docs
+  title: Documentatie van spraakapparaten - Zelfstudies, API-verwijzing - Azure Cognitive Services | Microsoft Documenten
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: cbdbcce25d357530775140bc8b5fdf82808c64ad
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 5fc9e045162c03585f20e0b06a01524480070050
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79369247"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415356"
 landingContent:
-- title: Over de speech-apparaten SDK
+- title: Over de Spraakapparaten SDK
   linkLists:
   - linkListType: overview
     links:
-    - text: Wat is de SDK voor spraak apparaten?
+    - text: Wat is de SDK voor spraakapparaten?
       url: speech-devices-sdk.md
   - linkListType: quickstart
     links:
-    - text: De SDK voor spraak apparaten gebruiken (Windows)
+    - text: Spraakapparaten SDK (Windows) gebruiken
       url: speech-devices-sdk-quickstart.md?pivots=platform-windows
-    - text: De SDK voor spraak apparaten gebruiken (Linux)
+    - text: Spraakapparaten SDK (Linux) gebruiken
       url: speech-devices-sdk-quickstart.md?pivots=platform-linux
-    - text: Speech apparaten SDK (Android) gebruiken
+    - text: Spraakapparaten SDK (Android) gebruiken
       url: speech-devices-sdk-quickstart.md?pivots=platform-android
-- title: Ontwikkelen met de SDK voor spraak apparaten
+- title: Ontwikkelen met spraakapparaten SDK
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Een microfoon matrix ontwerpen
+    - text: Een microfoonarray ontwerpen
       url: speech-devices-sdk-microphone.md
-    - text: De roobo v1-Kit instellen
+    - text: Opstelling van de Roobo v1 Kit
       url: speech-devices-sdk-roobo-v1.md
 - title: Naslaginformatie
   linkLists:

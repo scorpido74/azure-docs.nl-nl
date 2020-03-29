@@ -1,61 +1,73 @@
 ---
-title: Knowledge bases migreren-QnA Maker
-titleSuffix: Azure Cognitive Services
-description: Voor het migreren van een Knowledge Base moet u vanuit één kennis database exporteren en vervolgens importeren in een andere.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
+title: Migreer kennisbanken - QnA Maker
+description: Het migreren van een kennisbank vereist exporteren vanuit de ene kennisbank en vervolgens importeren in een andere.
 ms.topic: article
-ms.date: 01/28/2020
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 942932c229ace82a0bf66da7a5421f936b028088
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/25/2020
+ms.openlocfilehash: 13e5e79bf4eaf6ec59e41b3e12aa1bb23f2c1578
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78302556"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258087"
 ---
-# <a name="migrate-a-knowledge-base-using-export-import"></a>Migreren van een kennisdatabase met behulp van exporteren / importeren
+# <a name="migrate-a-knowledge-base-using-export-import"></a>Een kennisbank migreren met export-import
 
-Voor het migreren van een Knowledge Base moet u vanuit één kennis database exporteren en vervolgens importeren in een andere.
+Migratie is het proces van het creëren van een nieuwe kennisbasis vanuit een bestaande kennisbank. U dit doen om verschillende redenen:
+
+* back-up- en herstelproces
+* CI/CD-pijplijn
+* regio's verplaatsen
+
+Het migreren van een kennisbank vereist exporteren vanuit een bestaande kennisbank en vervolgens importeren in een andere.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Maak een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
-* Een nieuwe QnA Maker- [service](../How-To/set-up-qnamaker-service-azure.md) instellen
+* Een nieuwe [QnA Maker-service](../How-To/set-up-qnamaker-service-azure.md) instellen
 
-## <a name="migrate-a-knowledge-base-from-qna-maker"></a>Een Knowledge Base migreren uit QnA Maker
-1. Meld u aan bij [QnA Maker Portal](https://qnamaker.ai).
-1. Selecteer de Knowledge Base van de oorsprong die u wilt migreren.
+## <a name="migrate-a-knowledge-base-from-qna-maker"></a>Migreer een kennisbank van QnA Maker
+1. Meld u aan bij [qnA Maker portal](https://qnamaker.ai).
+1. Selecteer de oorsprongskennisbank die u wilt migreren.
 
-1. Selecteer op de pagina **instellingen** de optie **Knowledge Base exporteren** om een TSV-bestand te downloaden dat de inhoud van de Knowledge Base van uw oorsprong bevat: vragen, antwoorden, meta gegevens, opvolgings prompts en de namen van de gegevens bronnen waaruit ze zijn geëxtraheerd.
+1. Selecteer **op** de pagina Instellingen **de optie Knowledge Base exporteren** om een .tsv-bestand te downloaden met de inhoud van uw oorsprongskennisbank - vragen, antwoorden, metagegevens, follow-upprompts en de gegevensbronnamen waaruit ze zijn geëxtraheerd.
 
-1. Selecteer **een Knowledge Base maken** in het bovenste menu en maak vervolgens een _lege_ Knowledge Base. Het is leeg omdat u geen Url's of bestanden gaat toevoegen wanneer u deze maakt. Deze worden toegevoegd tijdens de stap importeren na het maken.
+1. Selecteer **Een kennisbank maken** in het bovenste menu en maak vervolgens een _lege_ kennisbank. Het is leeg, want wanneer u het maakt, gaat u geen URL's of bestanden toevoegen. Deze worden toegevoegd tijdens de importstap, na het maken.
 
-    De Knowledge Base configureren. Stel alleen de nieuwe naam van de Knowledge Base in. Dubbele namen worden ondersteund en speciale tekens worden ook ondersteund.
+    Configureer de kennisbank. Stel alleen de nieuwe knowledge base-naam in. Dubbele namen worden ondersteund en speciale tekens worden ook ondersteund.
 
     Selecteer niets uit stap 4 omdat deze waarden worden overschreven wanneer u het bestand importeert.
 
-1. Selecteer in stap 5 **maken**.
+1. Selecteer in stap 5 **Maken**.
 
-1. Open in deze nieuwe Knowledge Base het tabblad **instellingen** en selecteer **Knowledge Base importeren**. Hiermee worden de vragen, antwoorden, meta gegevens, opvolgings aanwijzingen geïmporteerd en blijven de namen van de gegevens bronnen waarvan ze zijn geëxtraheerd.
+1. Open in deze nieuwe kennisbank het tabblad **Instellingen** en selecteer **Kennisbank importeren**. Hiermee worden de vragen, antwoorden, metagegevens, follow-upprompts geïmporteerd en worden de gegevensbronnamen bewaard waaruit ze zijn geëxtraheerd.
 
    > [!div class="mx-imgBorder"]
-   > [Knowledge Base ![importeren](../media/qnamaker-how-to-migrate-kb/Import.png)](../media/qnamaker-how-to-migrate-kb/Import.png#lightbox)
+   > [![Kennisbank importeren](../media/qnamaker-how-to-migrate-kb/Import.png)](../media/qnamaker-how-to-migrate-kb/Import.png#lightbox)
 
-1. **Test** de nieuwe Knowledge Base met behulp van het test paneel. Meer informatie over het [testen van uw Knowledge Base](../How-To/test-knowledge-base.md).
+1. **Test** de nieuwe kennisbank met behulp van het testpaneel. Leer hoe [u uw kennisbank testen.](../How-To/test-knowledge-base.md)
 
-1. **Publiceer** de Knowledge Base en maak een chat-bot. Meer informatie over het [publiceren van uw Knowledge Base](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
+1. **Publiceer** de kennisbank en maak een chatbot. Meer informatie over het [publiceren van uw kennisbank.](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)
 
-## <a name="chat-logs-and-alterations"></a>Chat-logboeken en-wijzigingen
-Niet-hoofdletter gevoelige wijzigingen (synoniemen) worden niet automatisch geïmporteerd. Gebruik de [v4-api's](https://go.microsoft.com/fwlink/?linkid=2092179) om de wijzigingen in de nieuwe Knowledge Base te verplaatsen.
+## <a name="programmatically-migrate-a-knowledge-base-from-qna-maker"></a>Programmatisch migreren van een kennisbank van QnA Maker
 
-Het is niet mogelijk om chat-logboeken te migreren omdat de nieuwe Knowledge Base gebruikmaakt van Application Insights voor het opslaan van chat-Logboeken.
+Het migratieproces is programmatisch beschikbaar met behulp van de volgende REST API's:
+
+**Exporteren**
+
+* [Knowledge base API downloaden](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)
+
+**Importeren**
+
+* [API vervangen (opnieuw laden met dezelfde knowledge base ID)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)
+* [API maken (laden met nieuwe knowledge base ID)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+
+
+## <a name="chat-logs-and-alterations"></a>Chatlogboeken en wijzigingen
+Case-ongevoelige wijzigingen (synoniemen) worden niet automatisch geïmporteerd. Gebruik de [V4 API's](https://go.microsoft.com/fwlink/?linkid=2092179) om de wijzigingen in de nieuwe kennisbank te verplaatsen.
+
+Er is geen manier om chatlogs te migreren, omdat de nieuwe kennisbank Application Insights gebruikt voor het opslaan van chatlogs.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een kennis database bewerken](../How-To/edit-knowledge-base.md)
+> [Een knowledge base bewerken](../How-To/edit-knowledge-base.md)

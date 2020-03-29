@@ -1,7 +1,7 @@
 ---
-title: Exploratie-persoonlijker
+title: Verkenning - Personalizer
 titleSuffix: Azure Cognitive Services
-description: Met verkennen kan Personaler goede resultaten blijven leveren, zelfs wanneer het gebruikers gedrag verandert. Het kiezen van een instelling voor een exploratie is een bedrijfs beslissing over het aandeel van gebruikers interacties om te verkennen met, om het model te verbeteren.
+description: Met exploratie is Personalizer in staat om goede resultaten te blijven leveren, zelfs als het gedrag van gebruikers verandert. Het kiezen van een verkenningsinstelling is een zakelijke beslissing over het aandeel van gebruikersinteracties om mee te verkennen, om het model te verbeteren.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,38 +11,38 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: diberry
 ms.openlocfilehash: 0b69c1fb070431ad61858322dce461f6496c35d7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73490810"
 ---
 # <a name="exploration-and-exploitation"></a>Exploratie en exploitatie
 
-Met verkennen kan Personaler goede resultaten blijven leveren, zelfs wanneer het gebruikers gedrag verandert.
+Met exploratie is Personalizer in staat om goede resultaten te blijven leveren, zelfs als het gedrag van gebruikers verandert.
 
-Wanneer Personaler een classificatie oproep ontvangt, retourneert deze een RewardActionID dat:
-* Maakt gebruik van exploitatie om te voldoen aan het meest waarschijnlijke gebruikers gedrag op basis van het huidige machine learning model.
-* Maakt gebruik van verkennen, wat niet overeenkomt met de actie die de hoogste kans op de positie heeft.
+Wanneer Personalizer een Rang-call ontvangt, retourneert deze een RewardActionID die:
+* Gebruikt uitbuiting om het meest waarschijnlijke gebruikersgedrag op basis van het huidige machine learning-model te matchen.
+* Hiermee wordt verkenning gebruikt, die niet overeenkomt met de actie met de hoogste waarschijnlijkheid in de rang.
 
-Personaler maakt momenteel gebruik van een algoritme met de naam *Epsilon Greedy* om te verkennen. 
+Personalizer maakt momenteel gebruik van een algoritme genaamd *epsilon hebzuchtig* om te verkennen. 
 
-## <a name="choosing-an-exploration-setting"></a>Een instelling voor verkennen kiezen
+## <a name="choosing-an-exploration-setting"></a>Een verkenningsinstelling kiezen
 
-U configureert het percentage verkeer dat voor het verkennen moet worden gebruikt op de **configuratie** pagina van de Azure portal voor persoonlijk gebruik. Met deze instelling bepaalt u het percentage van de Rangings aanvragen dat het verkennen uitvoert. 
+U configureert het percentage verkeer dat moet worden gebruikt voor verkenning op de **configuratiepagina** van de Azure-portal voor Personalizer. Met deze instelling bepaalt u het percentage rank-aanroepen dat verkenning uitvoert. 
 
-Personaler bepaalt of u deze kans op elke positie oproep wilt verkennen of ermee wilt worden misbruikt. Dit wijkt af van het gedrag in sommige A/B-frameworks die een behandeling voor specifieke gebruikers-Id's vergren delen.
+Personalizer bepaalt of te verkennen of te exploiteren met deze waarschijnlijkheid op elke rang oproep. Dit is anders dan het gedrag in sommige A/B-frameworks die een behandeling op specifieke gebruikers-id's vergrendelen.
 
-## <a name="best-practices-for-choosing-an-exploration-setting"></a>Aanbevolen procedures voor het kiezen van een instelling voor verkennen
+## <a name="best-practices-for-choosing-an-exploration-setting"></a>Aanbevolen procedures voor het kiezen van een verkenningsinstelling
 
-Het kiezen van een instelling voor een exploratie is een bedrijfs beslissing over het aandeel van gebruikers interacties om te verkennen met, om het model te verbeteren. 
+Het kiezen van een verkenningsinstelling is een zakelijke beslissing over het aandeel van gebruikersinteracties om mee te verkennen, om het model te verbeteren. 
 
-Met een instelling van nul worden veel van de voor delen van persoonlijkere voor komen. Met deze instelling maakt Personaler geen gebruik van gebruikers interacties voor het ontdekken van betere gebruikers interacties. Dit leidt tot het model stagnation, drift en uiteindelijk lagere prestaties.
+Een instelling van nul zal veel van de voordelen van Personalizer teniet doen. Met deze instelling gebruikt Personalizer geen gebruikersinteracties om betere gebruikersinteracties te ontdekken. Dit leidt tot modelstagnatie, drift en uiteindelijk lagere prestaties.
 
-Een instelling die te hoog is, leidt niet tot de voor delen van het leren van het gedrag van gebruikers. Als u deze instelt op 100% impliceert dit een constante wille keurige waarde, en zijn geleerde gedrag van gebruikers niet van invloed op het resultaat.
+Een instelling die te hoog is, doet af aan de voordelen van het leren van gebruikersgedrag. Het instellen op 100% impliceert een constante randomisatie, en elk aangeleerd gedrag van gebruikers zou de uitkomst niet beïnvloeden.
 
-Het is belang rijk dat u het toepassings gedrag niet wijzigt, op basis van het feit of u ziet of de Personaler zich moet verkennen of misbruikt. Dit zou leiden tot het leren van BIASS die uiteindelijk de potentiële prestaties zouden verlagen.
+Het is belangrijk om het gedrag van de toepassing niet te wijzigen op basis van of u ziet of Personalizer aan het verkennen of exploiteren is. Dit zou leiden tot het leren van vooroordelen die uiteindelijk zou de potentiële prestaties te verminderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Leer versterking](concepts-reinforcement-learning.md) 
+[Bekrachtigend leren](concepts-reinforcement-learning.md) 

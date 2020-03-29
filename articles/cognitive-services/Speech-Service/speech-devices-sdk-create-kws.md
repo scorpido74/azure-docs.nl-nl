@@ -1,7 +1,7 @@
 ---
-title: Aangepaste tref woorden maken-spraak service
+title: Aangepaste zoekwoorden maken - Spraakservice
 titleSuffix: Azure Cognitive Services
-description: Het apparaat luistert altijd naar een tref woord (of woord groep). Wanneer de gebruiker het tref woord heeft gestaan, stuurt het apparaat alle volgende audio naar de Cloud totdat de gebruiker stopt met spreken. Het aanpassen van uw tref woord is een efficiënte manier om uw apparaat te onderscheiden en uw huis stijl te versterken.
+description: Uw apparaat luistert altijd naar een trefwoord (of woordgroep). Wanneer de gebruiker het trefwoord zegt, stuurt het apparaat alle volgende audio naar de cloud, totdat de gebruiker stopt met spreken. Het aanpassen van uw zoekwoord is een effectieve manier om uw apparaat te differentiëren en uw branding te versterken.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,50 +11,50 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: dapine
 ms.openlocfilehash: 46e9f8e660c3fd62807d630481e6b3057d2351a5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76717019"
 ---
-# <a name="create-a-custom-keyword-using-speech-studio"></a>Een aangepast sleutel woord maken met behulp van speech Studio
+# <a name="create-a-custom-keyword-using-speech-studio"></a>Een aangepast trefwoord maken met Spraakstudio
 
-Het apparaat luistert altijd naar een tref woord (of woord groep). "Hey Cortana" is bijvoorbeeld een tref woord voor de Cortana-assistent. Wanneer de gebruiker het tref woord heeft gestaan, stuurt het apparaat alle volgende audio naar de Cloud totdat de gebruiker stopt met spreken. Het aanpassen van uw tref woord is een efficiënte manier om uw apparaat te onderscheiden en uw huis stijl te versterken.
+Uw apparaat luistert altijd naar een trefwoord (of woordgroep). 'Hey Cortana' is bijvoorbeeld een zoekwoord voor de Cortana-assistent. Wanneer de gebruiker het trefwoord zegt, stuurt het apparaat alle volgende audio naar de cloud, totdat de gebruiker stopt met spreken. Het aanpassen van uw zoekwoord is een effectieve manier om uw apparaat te differentiëren en uw branding te versterken.
 
-In dit artikel leert u hoe u een aangepast tref woord maakt voor uw apparaat.
+In dit artikel leert u hoe u een aangepast zoekwoord voor uw apparaat maakt.
 
-## <a name="create-your-keyword"></a>Uw tref woord maken
+## <a name="create-your-keyword"></a>Uw trefwoord maken
 
-Voordat u een aangepast tref woord kunt gebruiken, moet u een tref woord maken met behulp van de [aangepaste trefwoord](https://aka.ms/sdsdk-wakewordportal) pagina in [Speech Studio](https://aka.ms/sdsdk-speechportal). Nadat u een tref woord hebt verstrekt, produceert het een bestand dat u op het apparaat implementeert.
+Voordat u een aangepast zoekwoord gebruiken, moet u een trefwoord maken met behulp van de pagina [Aangepast trefwoord](https://aka.ms/sdsdk-wakewordportal) op [Spraakstudio.](https://aka.ms/sdsdk-speechportal) Nadat u een trefwoord hebt opgeleverd, produceert het een bestand dat u op uw apparaat implementeert.
 
-1. Ga naar de [Speech Studio](https://aka.ms/sdsdk-speechportal) en **Meld** u aan of als u nog geen abonnement op spraak hebt, kiest u [**een abonnement maken**](https://go.microsoft.com/fwlink/?linkid=2086754).
+1. Ga naar de [Spraakstudio](https://aka.ms/sdsdk-speechportal) en **Meld u aan** of kies [**een abonnement maken**](https://go.microsoft.com/fwlink/?linkid=2086754)als u nog geen spraakabonnement hebt.
 
-1. Maak een **Nieuw project**op de pagina [aangepast tref woord](https://aka.ms/sdsdk-wakewordportal) . 
+1. Maak op de pagina [Aangepast trefwoord](https://aka.ms/sdsdk-wakewordportal) een **nieuw project**. 
 
-1. Voer een **naam**, een optionele **Beschrijving**en selecteer de taal. U hebt één project per taal nodig en de ondersteuning is momenteel beperkt tot de taal en-US.
+1. Voer een **naam**in, een optionele **beschrijving**en selecteer de taal. U hebt één project per taal nodig en de ondersteuning is momenteel beperkt tot de en-Amerikaanse taal.
 
-    ![Uw trefwoord project beschrijven](media/custom-keyword/custom-kws-portal-new-project.png)
+    ![Uw zoekwoordproject beschrijven](media/custom-keyword/custom-kws-portal-new-project.png)
 
 1. Selecteer uw project in de lijst. 
 
-    ![Selecteer uw trefwoord project](media/custom-keyword/custom-kws-portal-project-list.png)
+    ![Selecteer uw trefwoordproject](media/custom-keyword/custom-kws-portal-project-list.png)
 
-1. Als u een nieuw trefwoord model wilt starten, klikt u op **model trainen**.
+1. Als u een nieuw trefwoordmodel wilt starten, klikt u op **Treinmodel**.
 
-1. Voer een **naam** in voor het trefwoord model en geef een optionele **Beschrijving** op en typ het **tref woord** van uw keuze en klik op **volgende**. Er zijn enkele [richt lijnen](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) die u helpen bij het kiezen van een effectief tref woord.
+1. Voer een **naam** in voor het trefwoordmodel en optionele **beschrijving** en typ het **trefwoord** van uw keuze en klik op **Volgende**. We hebben een aantal [richtlijnen](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) om te helpen bij het kiezen van een effectief zoekwoord.
 
-    ![Voer uw tref woord in](media/custom-keyword/custom-kws-portal-new-model.png)
+    ![Voer uw trefwoord in](media/custom-keyword/custom-kws-portal-new-model.png)
 
-1. De portal maakt nu kandidaat-uitspraak voor uw tref woord. Luister naar elke kandidaat door te klikken op de afspeel knoppen en de controles te verwijderen naast eventuele uitstaande uitspraaken. Als er alleen goede uitspraaken zijn ingeschakeld, klikt u op **trainen** om het tref woord te genereren. 
+1. De portal maakt nu kandidaat-uitspraken voor uw zoekwoord. Luister naar elke kandidaat door op de afspeelknoppen te klikken en verwijder de controles naast eventuele onjuistheden. Zodra alleen goede uitspraken zijn gecontroleerd, klikt u op **Trainen** om te beginnen met het genereren van het zoekwoord. 
 
-    ![Je tref woord controleren](media/custom-keyword/custom-kws-portal-choose-prons.png)
+    ![Uw zoekwoord bekijken](media/custom-keyword/custom-kws-portal-choose-prons.png)
 
-1. Het kan tot dertig minuten duren voordat het model is gegenereerd. De lijst met tref woorden wordt gewijzigd van de **verwerking** naar **geslaagd** wanneer het model is voltooid. Vervolgens kunt u het bestand downloaden.
+1. Het kan tot dertig minuten duren voordat het model wordt gegenereerd. De lijst met zoekwoorden verandert van **verwerking** naar **geslaagd** wanneer het model is voltooid. U het bestand vervolgens downloaden.
 
-    ![Je tref woord controleren](media/custom-keyword/custom-kws-portal-download-model.png)
+    ![Uw zoekwoord bekijken](media/custom-keyword/custom-kws-portal-download-model.png)
 
-1. Sla het ZIP-bestand op uw computer. U hebt dit bestand nodig om uw aangepaste tref woord te implementeren op het apparaat.
+1. Sla het .zip-bestand op uw computer op. U hebt dit bestand nodig om uw aangepaste zoekwoord op uw apparaat te implementeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Test uw aangepaste tref woord met [Speech apparaten SDK Quick](https://aka.ms/sdsdk-quickstart)start.
+Test uw aangepaste zoekwoord met [Spraakapparaten SDK Quickstart](https://aka.ms/sdsdk-quickstart).

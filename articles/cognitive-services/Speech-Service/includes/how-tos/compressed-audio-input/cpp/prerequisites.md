@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: 590e5494a8c8f9d4e06b69af0708e83d53be72b5
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943854"
 ---
-Het verwerken van gecomprimeerde audio wordt geïmplementeerd met behulp van [gstreamer](https://gstreamer.freedesktop.org). Om licentie redenen GStreamer binaire bestanden niet worden gecompileerd en gekoppeld aan de spraak-SDK. Ontwikkel aars moeten verschillende afhankelijkheden en invoeg toepassingen installeren.
+Het verwerken van gecomprimeerde audio wordt geïmplementeerd met [GStreamer](https://gstreamer.freedesktop.org). Om licentieredenen worden GStreamer-binaries niet gecompileerd en gekoppeld aan de Speech SDK. Ontwikkelaars moeten verschillende afhankelijkheden en plug-ins installeren.
 
-# <a name="ubuntu-1604-1804-or-debian-9"></a>[Ubuntu, 16,04, 18,04 of Debian 9](#tab/debian)
+# <a name="ubuntu-1604-1804-or-debian-9"></a>[Ubuntu, 16.04, 18.04 of Debian 9](#tab/debian)
 
 ```sh
 sudo apt install libgstreamer1.0-0 \
@@ -23,7 +23,7 @@ gstreamer1.0-plugins-bad \
 gstreamer1.0-plugins-ugly
 ```
 
-# <a name="rehl--centos"></a>[REHL/CentOS](#tab/centos)
+# <a name="rehl--centos"></a>[REHL / CentOS](#tab/centos)
 
 ```sh
 sudo yum install gstreamer1 \
@@ -34,6 +34,6 @@ gstreamer1-plugins-ugly-free
 ```
 
 > [!NOTE]
-> Volg de instructies in RHEL/CentOS voor het [configureren van openssl voor Linux](../../../../how-to-configure-openssl-linux.md).
+> Volg op RHEL / CentOS de instructies voor [het configureren van OpenSSL voor Linux.](../../../../how-to-configure-openssl-linux.md)
 
 ---

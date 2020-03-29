@@ -1,7 +1,7 @@
 ---
-title: Op het web zoeken naar trending van Video's met behulp van de Bing Video's zoeken-API
+title: Zoek op internet naar trending video's met de Bing Video Search API
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van de Bing Video's zoeken-API om op het web te zoeken naar trending-Video's.
+description: Meer informatie over het gebruik van de Bing Video Search API om op internet te zoeken naar trending video's.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: ea6f79bf6c305ecc07b3e684ede15ad439039e7e
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68500617"
 ---
-# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Bekijk trends in de video met de Bing Video's zoeken-API 
+# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Krijg trending video's met de Bing Video Search API 
 
-Met de Bing Video's zoeken-API kunt u de Video's van de huidige trend in het web en in verschillende categorieën zoeken. 
+Met de Bing Video Search API u de toonaangevende video's van vandaag vinden op het web en in verschillende categorieën. 
 
-## <a name="get-request"></a>Aanvraag ophalen
+## <a name="get-request"></a>GET-aanvraag
 
-Als u de Video's van de huidige trend wilt ophalen uit de Bing Video's zoeken-API, verzendt u de volgende GET-aanvraag:  
+Als u de trending video's van vandaag uit de Bing Video Search API wilt halen, stuurt u het volgende GET-verzoek:  
   
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/trending?mkt=en-us HTTP/1.1
@@ -35,27 +35,27 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```
 
-## <a name="market-support"></a>Markt ondersteuning
+## <a name="market-support"></a>Marktondersteuning
 
-De volgende markten bieden ondersteuning voor trending van Video's.  
+De volgende markten ondersteunen trending video's.  
  
 -   en-AU (Engels, Australië)  
 -   en-CA (Engels, Canada)  
--   en-GB (Engels, Groot-Brittannië)  
+-   nl-GB (Engels, Groot-Brittannië)  
 -   en-ID (Engels, Indonesië)  
 -   en-IE (Engels, Ierland)  
 -   en-IN (Engels, India)  
--   en-NZ (Engels, Nieuw-Zeeland)  
--   en-PH (Engels, Filipijnen)  
--   en-AG (Engels, Singapore)  
--   en-US (Engels, Verenigde Staten)  
--   en-WW (Engelse, wereld wijd gecombineerde code)  
--   en-ZA (Engels, Zuid-Afrika)  
+-   nl-NZ (Engels, Nieuw-Zeeland)  
+-   en-PH (Engels, Filippijnen)  
+-   en-SG (Engels, Singapore)  
+-   nl-VS (Engels, Verenigde Staten)  
+-   nl-WW (Engels, Wereldwijd geaggregeerde code)  
+-   nl-ZA (Engels, Zuid-Afrika)  
 -   zh-CN (Chinees, China)
 
 ## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord  
 
-In het volgende voor beeld ziet u een API-antwoord met trending-Video's, die worden vermeld op categorie en subcategorie. Het antwoord bevat ook banner Video's, wat de populairste trending Video's zijn, en kan afkomstig zijn uit een of meer categorieën.  
+In het volgende voorbeeld wordt een API-antwoord weergegeven dat trending video's bevat, die worden vermeld per categorie en subcategorie. Het antwoord bevat ook bannervideo's, die de meest populaire trending video's zijn en afkomstig kunnen zijn uit een of meer categorieën.  
 
 ```json
 {  

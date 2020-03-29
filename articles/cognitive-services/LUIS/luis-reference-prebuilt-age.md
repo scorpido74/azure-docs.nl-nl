@@ -1,7 +1,7 @@
 ---
-title: Leeftijd preconstrueerde entiteit-LUIS
+title: Leeftijd Prebuilt entiteit - LUIS
 titleSuffix: Azure Cognitive Services
-description: In dit artikel bevat leeftijd vooraf gedefinieerde entiteitgegevens in Language Understanding (LUIS).
+description: Dit artikel bevat informatie over de voorgebouwde entiteit suc in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,25 +12,25 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
 ms.openlocfilehash: 1607b80276a9c35bf0ac2f0a00bd2226e2c07f97
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270796"
 ---
-# <a name="age-prebuilt-entity-for-a-luis-app"></a>Leeftijd preconstrueerde entiteit voor een LUIS-app
-De vooraf gedefinieerde leeftijd entiteit bevat de leeftijdwaarde zowel numeriek en in termen van dagen, weken, maanden en jaren. Omdat deze entiteit wordt al getraind, hoeft u niet om toe te voegen van de voorbeeld-uitingen met leeftijd aan de toepassing intents. De leeftijds entiteit wordt in [veel cultures](luis-reference-prebuilt-entities.md)ondersteund.
+# <a name="age-prebuilt-entity-for-a-luis-app"></a>Prebuilt entiteit leeftijd voor een LUIS-app
+De vooraf gebouwde leeftijdsentiteit vangt de leeftijdswaarde zowel numeriek als in termen van dagen, weken, maanden en jaren. Omdat deze entiteit al is getraind, hoeft u geen voorbeelduitingen met leeftijd toe te voegen aan de toepassingsintenties. Leeftijd entiteit wordt ondersteund in [vele culturen](luis-reference-prebuilt-entities.md).
 
-## <a name="types-of-age"></a>Typen leeftijd
-De leeftijd wordt beheerd vanuit de map [recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) github
+## <a name="types-of-age"></a>Leeftijdstypen
+Leeftijd wordt beheerd vanuit de [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) GitHub repository
 
-## <a name="resolution-for-prebuilt-age-entity"></a>Oplossing voor vooraf gedefinieerde leeftijd entiteit
+## <a name="resolution-for-prebuilt-age-entity"></a>Oplossing voor vooraf gebouwde leeftijdsentiteit
 
 
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
+De volgende JSON `verbose` is met `false`de parameter ingesteld op:
 
 ```json
 "entities": {
@@ -42,8 +42,8 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
-De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
+#### <a name="v3-verbose-response"></a>[V3 verbose reactie](#tab/V3-verbose)
+De volgende JSON `verbose` is met `true`de parameter ingesteld op:
 
 ```json
 "entities": {
@@ -69,7 +69,7 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
 ```
 #### <a name="v2-response"></a>[V2-antwoord](#tab/V2)
 
-In het volgende voor beeld ziet u de resolutie van de **inbuiltin. Age** -entiteit.
+In het volgende voorbeeld ziet u de oplossing van de entiteit **builtin.age.**
 
 ```json
   "entities": [
@@ -88,6 +88,6 @@ In het volgende voor beeld ziet u de resolutie van de **inbuiltin. Age** -entite
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
+Meer informatie over het [V3-voorspellingseindpunt](luis-migration-api-v3.md).
 
-Meer informatie over de [valuta](luis-reference-prebuilt-currency.md)-, [datetimeV2](luis-reference-prebuilt-datetimev2.md)-en [dimensie](luis-reference-prebuilt-dimension.md) -entiteiten.
+Meer informatie over de [valuta,](luis-reference-prebuilt-currency.md) [datetimeV2](luis-reference-prebuilt-datetimev2.md)en [dimensieentiteiten.](luis-reference-prebuilt-dimension.md)

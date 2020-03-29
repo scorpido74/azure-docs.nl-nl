@@ -1,7 +1,7 @@
 ---
-title: Recensies, werk stromen en taken concepten-Content Moderator
+title: Concepten voor beoordelingen, werkstromen en vacatures - Inhoudsmoderator
 titleSuffix: Azure Cognitive Services
-description: In dit artikel vindt u meer informatie over de basis concepten van het hulp programma voor beoordeling. Beoordelingen, werk stromen en taken.
+description: In dit artikel leert u over de kernconcepten van de reviewtool; beoordelingen, werkstromen en taken.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,35 +11,35 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79221148"
 ---
-# <a name="content-moderation-reviews-workflows-and-jobs"></a>Beoordelingen, werk stromen en taken voor content toezicht
+# <a name="content-moderation-reviews-workflows-and-jobs"></a>Beoordelingen van inhoudsbeheer, werkstromen en taken
 
-Content Moderator combineert de door de machine ondersteunde toezicht met de mogelijkheden van Human-in-the-loop om een optimaal toezicht proces te maken voor praktijk scenario's. Dit wordt gedaan via het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com)op basis van de Cloud. In deze hand leiding vindt u informatie over de belangrijkste concepten van het hulp programma voor beoordeling: Recensies, werk stromen en taken.
+Content Moderator combineert machine-ondersteunde moderatie met human-in-the-loop mogelijkheden om een optimaal moderatieproces te creëren voor real-world scenario's. Het doet dit via de cloud-based [Review tool](https://contentmoderator.cognitive.microsoft.com). In deze handleiding leert u over de kernconcepten van de beoordelingstool: beoordelingen, workflows en taken.
 
 ## <a name="reviews"></a>Beoordelingen
 
-Bij een beoordeling wordt inhoud geüpload naar het hulp programma beoordeling en wordt deze weer gegeven onder het tabblad **controleren** . Hier kunnen gebruikers de toegepaste labels wijzigen en hun eigen aangepaste labels Toep assen. Wanneer een gebruiker een beoordeling verzendt, worden de resultaten verzonden naar een opgegeven eind punt van de retour aanroep en wordt de inhoud verwijderd van de site.
+In een beoordeling wordt inhoud geüpload naar het gereedschap Controleren en wordt deze weergegeven onder het tabblad **Controleren.** Vanaf hier kunnen gebruikers de toegepaste tags wijzigen en hun eigen aangepaste tags toepassen. Wanneer een gebruiker een beoordeling indient, worden de resultaten naar een opgegeven callback-eindpunt verzonden en wordt de inhoud van de site verwijderd.
 
-![De website voor het controleren van het hulp programma open in een browser op het tabblad controleren](./Review-Tool-user-Guide/images/image-workflow-review.png)
+![Website van beoordelingsprogramma's geopend in een browser op het tabblad Controleren](./Review-Tool-user-Guide/images/image-workflow-review.png)
 
-Raadpleeg de [hand leiding voor het beoordelings programma](./review-tool-user-guide/review-moderated-images.md) om te beginnen met het maken van recensies of raadpleeg de [rest API gids](./try-review-api-review.md) voor informatie over hoe u dit kunt doen.
+Bekijk de [handleiding voor het hulpprogramma Controleren](./review-tool-user-guide/review-moderated-images.md) om aan de slag te gaan met het maken van beoordelingen of bekijk de [API-handleiding voor](./try-review-api-review.md) rust om te leren hoe u dit programmatisch doen.
 
 ## <a name="workflows"></a>Werkstromen
 
-Een werk stroom is een op de cloud gebaseerd gepersonaliseerd filter voor inhoud. Werk stromen kunnen verbinding maken met verschillende services om inhoud op verschillende manieren te filteren en vervolgens de juiste actie ondernemen. Met de Content Moderator-connector kunt u met een werk stroom automatisch toezicht Tags Toep assen en beoordelingen maken met verzonden inhoud.
+Een werkstroom is een op de cloud gebaseerd aangepast filter voor inhoud. Werkstromen kunnen verbinding maken met verschillende services om inhoud op verschillende manieren te filteren en vervolgens de juiste actie te ondernemen. Met de contentmoderatorconnector kan een werkstroom automatisch moderatietags toepassen en beoordelingen maken met ingediende inhoud.
 
-### <a name="view-workflows"></a>Werk stromen weer geven
+### <a name="view-workflows"></a>Werkstromen weergeven
 
-Als u uw bestaande werk stromen wilt weer geven, gaat u naar het [hulp programma controleren](https://contentmoderator.cognitive.microsoft.com/) en selecteert u **instellingen** > **werk stromen**.
+Als u uw bestaande werkstromen wilt weergeven, gaat u naar het [gereedschap Controleren](https://contentmoderator.cognitive.microsoft.com/) en selecteert u**Werkstromen** **instellingen** > .
 
-![Standaardwerk stroom](images/default-workflow-listed.PNG)
+![Standaardwerkstroom](images/default-workflow-listed.PNG)
 
-Werk stromen kunnen volledig worden beschreven als JSON-teken reeksen, waardoor ze via een programma toegankelijk zijn. Als u de optie **bewerken** selecteert voor uw werk stroom en vervolgens het tabblad **JSON** selecteert, ziet u een JSON-expressie zoals het volgende:
+Workflows kunnen volledig worden omschreven als JSON-tekenreeksen, waardoor ze programmatisch toegankelijk zijn. Als u de optie **Bewerken** voor uw werkstroom selecteert en vervolgens het **tabblad JSON** selecteert, ziet u een JSON-expressie als volgt:
 
 ```json
 {
@@ -64,16 +64,16 @@ Werk stromen kunnen volledig worden beschreven als JSON-teken reeksen, waardoor 
 }
 ```
 
-Raadpleeg de [hand leiding voor het hulp programma](./review-tool-user-guide/workflows.md) voor het maken en gebruiken van werk stromen of raadpleeg de [rest API gids](./try-review-api-workflow.md) voor informatie over hoe u dit kunt doen met programma code.
+Bekijk de [handleiding voor het hulpprogramma Controleren](./review-tool-user-guide/workflows.md) om aan de slag te gaan met het maken en gebruiken van werkstromen, of bekijk de [API-handleiding voor rust](./try-review-api-workflow.md) om te leren hoe u dit programmatisch doen.
 
 ## <a name="jobs"></a>Taken
 
-Een toezicht taak fungeert als een soort wrapper voor de functionaliteit van toezicht op inhoud, werk stromen en Beoordelingen. De taak scant uw inhoud met behulp van de Content Moderator afbeeldings toezicht-API of tekst toezicht-API en controleert deze vervolgens op de aangewezen werk stroom. Op basis van de werk stroom resultaten kan de inhoud niet worden gecontroleerd in het [beoordelings programma](./review-tool-user-guide/human-in-the-loop.md). Hoewel zowel beoordelingen als werk stromen kunnen worden gemaakt en geconfigureerd met hun respectieve Api's, kunt u met de taak-API een gedetailleerd rapport verkrijgen van het hele proces (dat kan worden verzonden naar een opgegeven call back-eind punt).
+Een moderatietaak dient als een soort wrapper voor de functionaliteit van contentmoderatie, workflows en reviews. De taak scant uw inhoud met behulp van de CONTENT Moderator image moderation API of text moderation API en controleert deze vervolgens aan de hand van de aangewezen werkstroom. Op basis van de werkstroomresultaten kan het al dan niet een beoordeling maken voor de inhoud in het [hulpprogramma Controleren](./review-tool-user-guide/human-in-the-loop.md). Hoewel zowel beoordelingen als workflows kunnen worden gemaakt en geconfigureerd met hun respectievelijke API's, u met de taak-API een gedetailleerd rapport van het hele proces verkrijgen (dat naar een opgegeven callback-eindpunt kan worden verzonden).
 
-Raadpleeg de [rest API-hand leiding](./try-review-api-job.md) om aan de slag te gaan met taken.
+Bekijk de [API-handleiding voor rust](./try-review-api-job.md) om aan de slag te gaan met taken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Test de [taak-API-console](try-review-api-job.md)en gebruik de rest API code voorbeelden. Als u bekend bent met Visual Studio en C#raadpleegt u ook de [taken .net Quick](moderation-jobs-quickstart-dotnet.md)start. 
-* Ga voor recensies naar aan de slag met de [API-console voor controle](try-review-api-review.md)en gebruik de rest API code voorbeelden. Zie de sectie Recensies van [.net Quick](dotnet-sdk-quickstart.md)start.
-* Gebruik voor video revisies de [Snelstartgids voor video revisie](video-reviews-quickstart-dotnet.md)en leer hoe u [Transcripten kunt toevoegen aan de video beoordeling](video-transcript-reviews-quickstart-dotnet.md).
+* Test de [Job API-console](try-review-api-job.md)en gebruik de monsters van de REST API-code. Als u bekend bent met Visual Studio en C#, raadpleegt u ook de [Snelstart Van Jobs .NET](moderation-jobs-quickstart-dotnet.md). 
+* Ga voor beoordelingen aan de slag met de [Review API-console](try-review-api-review.md)en gebruik de monsters van de REST API-code. Bekijk dan het gedeelte beoordelingen van de [.NET quickstart](dotnet-sdk-quickstart.md).
+* Voor videorecensies gebruikt u de [quickstart videobeoordeling](video-reviews-quickstart-dotnet.md)en leert u hoe [u transcripties toevoegt aan de videobeoordeling](video-transcript-reviews-quickstart-dotnet.md).

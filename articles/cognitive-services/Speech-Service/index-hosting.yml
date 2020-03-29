@@ -1,41 +1,40 @@
 ### YamlMime:Landing
 title: Documentatie over hosting
-summary: Er zijn spraakherkennings-service containers beschikbaar voor scenario's die zijn afgestemd op tekst en tekst naar spraak en die standaard of aangepaste modellen omvatten.
+summary: Spraakservicecontainers zijn beschikbaar voor zowel spraak-naar-tekst- als tekst-naar-spraakscenario's, waaronder standaard- of aangepaste modellen.
 metadata:
-  title: Documentatie voor hosting-zelf studies, API-verwijzing-Azure Cognitive Services | Microsoft Docs
+  title: Hostingdocumentatie - Zelfstudies, API-referentie - Azure Cognitive Services | Microsoft Documenten
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: ff12c357ba273c6965b11db4eabc1890925439be
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 8298a2e37520e7920f18b7ffd5b49074098e0243
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79366697"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415907"
 landingContent:
-- title: Over het hosten van
+- title: Over hosting
   linkLists:
   - linkListType: concept
     links:
-    - text: Spraak containers installeren en uitvoeren
+    - text: Spraakcontainers installeren en uitvoeren
       url: speech-container-howto.md
-    - text: Spraak containers met Kubernetes en helm
+    - text: Spraakcontainers met Kubernetes en Helm
       url: speech-container-howto-on-premises.md
-    - text: Spraak containers op Azure container instances
+    - text: Spraakcontainers op Azure-containerexemplaren
       url: deploy-speech-on-container-instances.md
 - title: Maken en configureren
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Een Azure-spraak resource maken
+    - text: Een Azure-spraakbron maken
       url: get-started.md#new-resource
-    - text: Spraak containers configureren
+    - text: Spraakcontainers configureren
       url: speech-container-configuration.md
 - title: Naslaginformatie
   linkLists:
@@ -43,5 +42,5 @@ landingContent:
     links:
     - text: Ondersteunde regio’s
       url: regions.md
-    - text: Onafhankelijke clouds
+    - text: Soevereine wolken
       url: sovereign-clouds.md

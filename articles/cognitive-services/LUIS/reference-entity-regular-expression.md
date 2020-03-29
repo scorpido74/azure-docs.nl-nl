@@ -1,7 +1,7 @@
 ---
-title: Entiteits type van reguliere expressie-LUIS
+title: Entiteitstype voor reguliere expressies - LUIS
 titleSuffix: Azure Cognitive Services
-description: Een reguliere expressie is het meest geschikt voor onbewerkte utterance-tekst. Deze aanvraag wordt genegeerd en worden genegeerd culturele variant.  Reguliere expressie die overeenkomt met is na spellingcontrole wijzigingen op het niveau van het teken, niet het niveau van de token toegepast.
+description: Een reguliere expressie is het beste voor ruwe utterancetekst. Het negeert geval en negeert culturele variant.  Regelmatige expressie matching wordt toegepast na spellingcontrole wijzigingen op het tekenniveau, niet het tokenniveau.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,46 +11,46 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74841214"
 ---
 # <a name="regular-expression-entity"></a>Een entiteit in de vorm van een reguliere expressie
 
-Een reguliere expressie-entiteit extraheert een entiteit op basis van een reguliere expressie patroon dat u opgeeft.
+Een entiteit met reguliere expressie haalt een entiteit uit op basis van een regelmatig expressiepatroon dat u opgeeft.
 
-Een reguliere expressie is het meest geschikt voor onbewerkte utterance-tekst. Deze aanvraag wordt genegeerd en worden genegeerd culturele variant.  Reguliere expressie die overeenkomt met is na spellingcontrole wijzigingen op het niveau van het teken, niet het niveau van de token toegepast. Als de reguliere expressie te complex is, zoals het gebruik van een groot aantal haken, kunt u de expressie niet toevoegen aan het model. Maakt gebruik van een deel, maar niet alle [.net regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) -bibliotheek.
+Een reguliere expressie is het beste voor ruwe utterancetekst. Het negeert geval en negeert culturele variant.  Regelmatige expressie matching wordt toegepast na spellingcontrole wijzigingen op het tekenniveau, niet het tokenniveau. Als de reguliere expressie te complex is, zoals het gebruik van veel haakjes, u de expressie niet aan het model toevoegen. Gebruikt een deel, maar niet alle [.NET Regex-bibliotheek.](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions)
 
-**De entiteit is goed geschikt wanneer:**
+**De entiteit past goed wanneer:**
 
 * De gegevens zijn consistent opgemaakt met elke variatie die ook consistent is.
-* De reguliere expressie heeft niet meer dan 2 geneste niveaus nodig.
+* De reguliere expressie heeft niet meer dan 2 nestniveaus nodig.
 
 ![Een entiteit in de vorm van een reguliere expressie](./media/luis-concept-entities/regex-entity.png)
 
-## <a name="usage-considerations"></a>Gebruiks overwegingen
+## <a name="usage-considerations"></a>Gebruiksoverwegingen
 
-Reguliere expressies kunnen overeenkomen met meer dan verwacht. Een voor beeld hiervan is een numeriek woord dat overeenkomt met `one` en `two`. Een voor beeld is de volgende regex die overeenkomt met het getal `one` samen met andere getallen:
+Reguliere expressies kunnen meer overeenkomen dan u verwacht. Een voorbeeld hiervan is numerieke `one` woordmatching zoals en `two`. Een voorbeeld is de volgende regex, die overeenkomt met het nummer `one` samen met andere nummers:
 
 ```javascript
 (plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
 ```
 
-Deze regex-expressie komt ook overeen met woorden die eindigen op deze getallen, zoals `phone`. Als u problemen wilt oplossen, moet u ervoor zorgen dat de regex-overeenkomsten rekening houden met woord grenzen. De regex voor het gebruik van woord grenzen voor dit voor beeld wordt gebruikt in de volgende regex:
+Deze regex-expressie komt ook overeen met `phone`alle woorden die eindigen met deze getallen, zoals . Om dit soort problemen op te lossen, moet u ervoor zorgen dat de regex-overeenkomsten rekening houden met woordgrenzen. De regex om woordgrenzen voor dit voorbeeld te gebruiken, wordt gebruikt in de volgende regex:
 
 ```javascript
 \b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
 ```
 
-### <a name="example-json"></a>Voorbeeld van JSON
+### <a name="example-json"></a>Voorbeeld JSON
 
-Bij het gebruik van `kb[0-9]{6}`, als de definitie van de reguliere expressie-entiteit, is de volgende JSON-reactie een voor beeld van een utterance met de geretourneerde reguliere expressie-entiteiten voor de query:
+Bij `kb[0-9]{6}`het gebruik van de definitie van de entiteit voor reguliere expressieen is het volgende JSON-antwoord een voorbeeldutterance met de geretourneerde reguliere expressieentiteiten voor de query:
 
 `When was kb123456 published?`:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 voorspelling eindpuntrespons](#tab/V2)
 
 ```JSON
 "entities": [
@@ -64,10 +64,10 @@ Bij het gebruik van `kb[0-9]{6}`, als de definitie van de reguliere expressie-en
 ```
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 voorspelling eindpuntrespons](#tab/V3)
 
 
-Dit is de JSON als `verbose=false` is ingesteld in de query reeks:
+Dit is de `verbose=false` JSON als deze is ingesteld in de querytekenreeks:
 
 ```json
 "entities": {
@@ -77,7 +77,7 @@ Dit is de JSON als `verbose=false` is ingesteld in de query reeks:
 }
 ```
 
-Dit is de JSON als `verbose=true` is ingesteld in de query reeks:
+Dit is de `verbose=true` JSON als deze is ingesteld in de querytekenreeks:
 
 ```json
 "entities": {
@@ -106,4 +106,4 @@ Dit is de JSON als `verbose=true` is ingesteld in de query reeks:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze [zelf studie](tutorial-regex-entity.md)maakt u een app om consistent opgemaakte gegevens te extra heren uit een utterance met behulp van de **reguliere expressie** -entiteit.
+Maak in deze [zelfstudie](tutorial-regex-entity.md)een app om consistent opgemaakte gegevens uit een utterance te extraheren met behulp van de entiteit **Reguliere expressie.**

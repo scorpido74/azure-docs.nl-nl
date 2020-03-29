@@ -1,7 +1,7 @@
 ---
-title: Problemen oplossen met de Speech SDK-Speech-Service
+title: Problemen oplossen met de Spraak-SDK - Spraakservice
 titleSuffix: Azure Cognitive Services
-description: In dit artikel vindt u informatie over het oplossen van problemen die kunnen optreden wanneer u de Speech SDK gebruikt.
+description: In dit artikel vindt u informatie om problemen op te lossen die u tegenkomen wanneer u de Spraak-SDK gebruikt.
 services: cognitive-services
 author: jhakulin
 manager: nitinme
@@ -11,42 +11,42 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.openlocfilehash: 421b9adf4ae5d2c641484e646bea096716d46cca
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74815413"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>Problemen met de Speech-SDK oplossen
 
-In dit artikel vindt u informatie over het oplossen van problemen die kunnen optreden wanneer u de Speech SDK gebruikt.
+In dit artikel vindt u informatie om problemen op te lossen die u tegenkomen wanneer u de Spraak-SDK gebruikt.
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Fout: De WebSocket-Upgrade is mislukt met een verificatiefout (403)
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Fout: WebSocket-upgrade is mislukt met een verificatiefout (403)
 
-Mogelijk hebt u het juiste eindpunt voor uw regio of de service. Controleer de URI om te controleren of dat deze juist is.
+Mogelijk hebt u het verkeerde eindpunt voor uw regio of service. Controleer de URI om te controleren of het correct is.
 
-Bovendien kan er een probleem met uw abonnementssleutel of autorisatie token. Zie de volgende sectie voor meer informatie.
+Er kan ook een probleem zijn met uw abonnementssleutel of autorisatietoken. Zie de volgende sectie voor meer informatie.
 
-## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Fout: HTTP 403 verboden of HTTP 401 Unauthorized
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Fout: HTTP 403 Verboden of HTTP 401 Ongeautoriseerd
 
-Deze fout wordt vaak veroorzaakt door verificatieproblemen met. Verbindingsaanvragen zonder een geldig `Ocp-Apim-Subscription-Key` of `Authorization` header met de status 403 of 401 worden afgewezen.
+Deze fout wordt vaak veroorzaakt door verificatieproblemen. Verbindingsaanvragen zonder `Ocp-Apim-Subscription-Key` geldige `Authorization` of header worden afgewezen met een status van 403 of 401.
 
-* Als u een abonnementssleutel voor verificatie gebruikt, ziet u mogelijk de fout omdat:
+* Als u een abonnementssleutel gebruikt voor verificatie, ziet u mogelijk de fout omdat:
 
-    - de abonnementssleutel is ongeldig of ontbreekt
-    - u hebt overschreden quotum voor het gebruik van uw abonnement
+    - De abonnementssleutel ontbreekt of ongeldig is
+    - U hebt het gebruiksquotum van uw abonnement overschreden
 
-* Als u een verificatietoken voor de verificatie gebruikt, ziet u mogelijk de fout omdat:
+* Als u een autorisatietoken gebruikt voor verificatie, ziet u mogelijk de fout omdat:
 
-    - het verificatietoken is ongeldig
-    - het verificatietoken is verlopen
+    - Het autorisatietoken is ongeldig
+    - Het autorisatietoken is verlopen
 
 ### <a name="validate-your-subscription-key"></a>Uw abonnementssleutel valideren
 
-U kunt controleren of dat u beschikt over een sleutel geldig abonnement door het uitvoeren van een van de volgende opdrachten.
+U controleren of u een geldige abonnementssleutel hebt door een van de volgende opdrachten uit te voeren.
 
 > [!NOTE]
-> Vervang `YOUR_SUBSCRIPTION_KEY` en `YOUR_REGION` met uw eigen abonnementssleutel en een gekoppelde regio.
+> Vervang `YOUR_SUBSCRIPTION_KEY` `YOUR_REGION` en met uw eigen abonnementssleutel en bijbehorende regio.
 
 * PowerShell
 
@@ -66,14 +66,14 @@ U kunt controleren of dat u beschikt over een sleutel geldig abonnement door het
     curl -v -X POST "https://YOUR_REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0"
     ```
 
-Als u een geldige abonnements sleutel hebt opgegeven, retourneert de opdracht een autorisatie token, anders wordt er een fout geretourneerd.
+Als u een geldige abonnementssleutel hebt ingevoerd, retourneert de opdracht een autorisatietoken, anders wordt een fout geretourneerd.
 
-### <a name="validate-an-authorization-token"></a>Een verificatietoken valideren
+### <a name="validate-an-authorization-token"></a>Een autorisatietoken valideren
 
-Als u een verificatietoken voor de verificatie gebruikt, voert u een van de volgende opdrachten om te verifiëren dat het Autorisatietoken nog geldig is. Tokens zijn geldig voor 10 minuten.
+Als u een autorisatietoken gebruikt voor verificatie, voert u een van de volgende opdrachten uit om te controleren of het autorisatietoken nog steeds geldig is. Tokens zijn 10 minuten geldig.
 
 > [!NOTE]
-> Vervang `YOUR_AUDIO_FILE` met het pad naar uw vooraf opgenomen audiobestand. Vervang `YOUR_ACCESS_TOKEN` geretourneerd door het Autorisatietoken in de vorige stap. Vervang `YOUR_REGION` met de juiste regio.
+> Vervang `YOUR_AUDIO_FILE` het pad naar uw vooraf opgenomen audiobestand. Vervang `YOUR_ACCESS_TOKEN` het autorisatietoken dat in de vorige stap is geretourneerd. Vervang `YOUR_REGION` door het juiste gebied.
 
 * PowerShell
 
@@ -103,26 +103,26 @@ Als u een verificatietoken voor de verificatie gebruikt, voert u een van de volg
     curl -v -X POST "https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Transfer-Encoding: chunked" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
     ```
 
-Als u een geldig autorisatie token hebt opgegeven, retourneert de opdracht de transcriptie voor uw audio bestand, anders wordt er een fout geretourneerd.
+Als u een geldig autorisatietoken hebt ingevoerd, retourneert de opdracht de transcriptie voor uw audiobestand, anders wordt er een fout geretourneerd.
 
 ---
 
-## <a name="error-http-400-bad-request"></a>Fout: HTTP 400-Ongeldige aanvraag
+## <a name="error-http-400-bad-request"></a>Fout: HTTP 400 Bad Request
 
-Deze fout treedt meestal op wanneer de aanvraagtekst ongeldige audiogegevens bevat. Alleen WAV-indeling wordt ondersteund. Controleer ook of de aanvraagheaders om te controleren of u de juiste waarden voor opgeven `Content-Type` en `Content-Length`.
+Deze fout treedt meestal op wanneer de aanvraaginstantie ongeldige audiogegevens bevat. Alleen wav-indeling wordt ondersteund. Controleer ook de kopteksten van het verzoek om `Content-Type` `Content-Length`te controleren of u de juiste waarden opgeeft voor en .
 
-## <a name="error-http-408-request-timeout"></a>Fout: HTTP 408 time-out van aanvraag
+## <a name="error-http-408-request-timeout"></a>Fout: HTTP 408 Time-out aanvragen
 
-De meest waarschijnlijke fout treedt op omdat er geen audiogegevens worden verzonden naar de service. Deze fout kan ook worden veroorzaakt door netwerkproblemen.
+De fout treedt waarschijnlijk op omdat er geen audiogegevens naar de service worden verzonden. Deze fout kan ook worden veroorzaakt door netwerkproblemen.
 
-## <a name="recognitionstatus-in-the-response-is-initialsilencetimeout"></a>"RecognitionStatus' in het antwoord is"InitialSilenceTimeout"
+## <a name="recognitionstatus-in-the-response-is-initialsilencetimeout"></a>"RecognitionStatus" in het antwoord is "InitialSilenceTimeout"
 
-Dit probleem wordt meestal veroorzaakt door audiogegevens. U kunt deze fout mogelijk ziet, omdat:
+Dit probleem wordt meestal veroorzaakt door audiogegevens. Mogelijk ziet u deze fout omdat:
 
-* Er is een lange stretch stilte aan het begin van de audio. In dat geval wordt de service stopt de opname na een paar seconden en retourneert `InitialSilenceTimeout`.
+* Er is een lange strook stilte aan het begin van de audio. In dat geval stopt de service de herkenning `InitialSilenceTimeout`na enkele seconden en retourneert .
 
-* Een niet-ondersteunde codec-indeling, die ervoor zorgt dat de gegevens worden behandeld als stilte maakt gebruik van de audio.
+* De audio maakt gebruik van een niet-ondersteunde codec-indeling, waardoor de audiogegevens als stilte worden behandeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Opmerkingen bij de release bekijken](releasenotes.md)
+* [Bekijk de releasenotes](releasenotes.md)

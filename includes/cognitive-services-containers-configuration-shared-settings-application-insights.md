@@ -5,17 +5,17 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 046c5c5e32c71364e1bf54551989e19eec4937e4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67712530"
 ---
-De `ApplicationInsights` instelling kunt u om toe te voegen [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) ondersteuning voor telemetrie naar de container. Application Insights biedt uitgebreide bewaking van de container. U kunt de container voor beschikbaarheid, prestaties en gebruik eenvoudig bewaken. U kunt ook snel identificeren en opsporen van fouten in de container.
+Met `ApplicationInsights` de instelling u telemetrieondersteuning azure [application insights](https://docs.microsoft.com/azure/application-insights) toevoegen aan uw container. Application Insights biedt een diepgaande monitoring van uw container. U uw container eenvoudig controleren op beschikbaarheid, prestaties en gebruik. U ook snel fouten in uw container identificeren en diagnosticeren.
 
-De volgende tabel beschrijft de configuratieinstellingen die worden ondersteund onder de `ApplicationInsights` sectie.
+In de volgende tabel worden de `ApplicationInsights` configuratie-instellingen beschreven die onder de sectie worden ondersteund.
 
-|Vereist| Name | Gegevenstype | Description |
+|Vereist| Name | Gegevenstype | Beschrijving |
 |--|------|-----------|-------------|
-|Nee| `InstrumentationKey` | Reeks | De instrumentatiesleutel van de Application Insights-exemplaar aan welke telemetrie gegevens voor de container is verzonden. Zie voor meer informatie, [Application Insights voor ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core). <br><br>Voorbeeld:<br>`InstrumentationKey=123456789`|
+|Nee| `InstrumentationKey` | Tekenreeks | De instrumentatiesleutel van de instantie Application Insights waarnaar telemetriegegevens voor de container worden verzonden. Zie [Application Insights voor ASP.NET Core voor](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core)meer informatie. <br><br>Voorbeeld:<br>`InstrumentationKey=123456789`|
 

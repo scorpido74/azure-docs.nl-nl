@@ -5,23 +5,23 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 873fd8cbc211f098c93b8fb3fbe701e4a34d8487
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68320522"
 ---
-De `Logging` instellingen beheren van ASP.NET Core logboekregistratie ondersteuning voor de container. U kunt de dezelfde configuratie-instellingen en waarden voor de container die u voor een ASP.NET Core-toepassing gebruikt. 
+De `Logging` instellingen beheren ASP.NET Core-registratieondersteuning voor uw container. U dezelfde configuratie-instellingen en -waarden voor uw container gebruiken als voor een ASP.NET Core-toepassing. 
 
-De volgende logboek registratie providers worden ondersteund door de container:
+De volgende logging providers worden ondersteund door de container:
 
 |Provider|Doel|
 |--|--|
-|[Console](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)|De ASP.NET Core `Console` provider voor logboekregistratie. Alle configuratie-instellingen voor ASP.NET Core en standaardwaarden voor deze provider voor logboekregistratie worden ondersteund.|
-|[Foutopsporing](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)|De ASP.NET Core `Debug` provider voor logboekregistratie. Alle configuratie-instellingen voor ASP.NET Core en standaardwaarden voor deze provider voor logboekregistratie worden ondersteund.|
-|[Schijf](#disk-logging)|De provider van de JSON-logboekregistratie. Deze provider voor logboekregistratie schrijft logboekgegevens naar het koppelpunt van de uitvoer.|
+|[Console](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)|De ASP.NET `Console` Core logging provider. Alle ASP.NET Core-configuratie-instellingen en standaardwaarden voor deze logboekregistratieprovider worden ondersteund.|
+|[Fouten opsporen](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)|De ASP.NET `Debug` Core logging provider. Alle ASP.NET Core-configuratie-instellingen en standaardwaarden voor deze logboekregistratieprovider worden ondersteund.|
+|[Schijf](#disk-logging)|De JSON logging provider. Deze logging provider schrijft loggegevens naar de uitvoer mount.|
 
-Met deze container opdracht worden logboek gegevens in de JSON-indeling opgeslagen in de uitvoer koppeling:
+Met deze containeropdracht worden logboekregistratiegegevens in de JSON-indeling opgeslagen in de uitvoerberg:
 
 ```bash
 docker run --rm -it -p 5000:5000 \
@@ -34,7 +34,7 @@ ApiKey=<api-key> \
 Logging:Disk:Format=json
 ```
 
-Deze container opdracht bevat informatie over fout opsporing, voorafgegaan `dbug`door, terwijl de container wordt uitgevoerd:
+Met deze containeropdracht ziet u foutopsporingsgegevens, vooraf opgelost met `dbug`, terwijl de container wordt uitgevoerd:
 
 ```bash
 docker run --rm -it -p 5000:5000 \
@@ -46,14 +46,14 @@ ApiKey=<api-key> \
 Logging:Console:LogLevel:Default=Debug
 ```
 
-### <a name="disk-logging"></a>Logboekregistratie van schijf
+### <a name="disk-logging"></a>Schijflogboekregistratie
 
-De `Disk` logboekregistratie-provider ondersteunt de volgende configuratie-instellingen:
+De `Disk` logboekregistratieprovider ondersteunt de volgende configuratie-instellingen:
 
-| Name | Gegevenstype | Description |
+| Name | Gegevenstype | Beschrijving |
 |------|-----------|-------------|
-| `Format` | Reeks | De indeling van de uitvoer voor de logboekbestanden.<br/> **Opmerking:** Deze waarde moet worden ingesteld op `json` om de logboek registratie provider in te scha kelen. Als deze waarde is opgegeven zonder ook een koppelpunt uitvoer op te geven bij het instantiëren van een container, wordt er een fout optreedt. |
-| `MaxFileSize` | Geheel getal | De maximale grootte in megabytes (MB) van een logboekbestand. Wanneer de grootte van het huidige logboekbestand voldoet aan of deze waarde overschrijdt, wordt een nieuw logboekbestand wordt gestart door de provider voor logboekregistratie. Als -1 is opgegeven, wordt de grootte van het logboekbestand alleen beperkt door de maximale bestandsgrootte, indien aanwezig, voor het koppelen van de uitvoer. De standaardwaarde is 1. |
+| `Format` | Tekenreeks | De uitvoerindeling voor logboekbestanden.<br/> **Let op:** Deze waarde moet `json` worden ingesteld om de logboekregistratieprovider in te schakelen. Als deze waarde is opgegeven zonder ook een uitvoerbevestiging op te geven tijdens het instantiën van een container, treedt er een fout op. |
+| `MaxFileSize` | Geheel getal | De maximale grootte, in megabytes (MB), van een logboekbestand. Wanneer de grootte van het huidige logboekbestand aan deze waarde voldoet of deze overschrijdt, wordt een nieuw logboekbestand gestart door de logboekregistratieprovider. Als -1 is opgegeven, wordt de grootte van het logboekbestand alleen beperkt door de eventuele maximale bestandsgrootte voor de uitvoerberg. De standaardwaarde is 1. |
 
-Zie voor meer informatie over het configureren van ondersteuning voor ASP.NET Core-logboekregistratie [instellingen bestandsconfiguratie](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1).
+Zie [Bestandsconfiguratie Instellingen](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1)voor meer informatie over het configureren van ASP.NET Core-registratieondersteuning.
 

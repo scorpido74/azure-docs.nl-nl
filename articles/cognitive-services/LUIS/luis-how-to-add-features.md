@@ -1,7 +1,7 @@
 ---
-title: Descriptoren-LUIS
+title: Descriptoren - LUIS
 titleSuffix: Azure Cognitive Services
-description: Language Understanding (LUIS) gebruiken om toe te voegen van app-functies ter verbetering van de detectie of de voorspelling van intenties en entiteiten die categorieën en -patronen
+description: Gebruik Language Understanding (LUIS) om app-functies toe te voegen die de detectie of voorspelling van intenties en entiteiten die categorieën en patronen kunnen verbeteren
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,48 +12,48 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: diberry
 ms.openlocfilehash: 2b5046bb61dcafbba0b0540935e08777fbd747a5
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74123144"
 ---
-# <a name="use-descriptors-to-boost-signal-of-word-list"></a>Descriptors gebruiken om het signaal van een woorden lijst te verhogen
+# <a name="use-descriptors-to-boost-signal-of-word-list"></a>Beschrijvingen gebruiken om het signaal van de woordenlijst te stimuleren
 
-U kunt functies toevoegen aan uw LUIS-app voor het verbeteren van de nauwkeurigheid. Functies LUIS u helpen met hints die bepaalde woorden en woordgroepen maken deel uit van een app-domein vocabulaire. 
+U functies toevoegen aan uw LUIS-app om de nauwkeurigheid ervan te verbeteren. Functies helpen LUIS door hints te geven dat bepaalde woorden en zinnen deel uitmaken van een vocabulaire van een app-domein. 
 
-Een [descriptor](luis-concept-feature.md) (woordgroepen lijst) bevat een groep waarden (woorden of zinsdelen) die deel uitmaken van dezelfde klasse en moeten op dezelfde manier worden behandeld (bijvoorbeeld namen van steden of producten). LUIS leert over een van beide wordt automatisch toegepast op de andere. Deze lijst is niet hetzelfde als een [lijst entiteit](reference-entity-list.md) (exacte tekst overeenkomsten) van overeenkomende woorden.
+Een [beschrijving](luis-concept-feature.md) (woordlijst) bevat een groep waarden (woorden of zinnen) die tot dezelfde klasse behoren en op dezelfde manier moeten worden behandeld (bijvoorbeeld namen van steden of producten). Wat LUIS leert over een van hen wordt automatisch toegepast op de anderen ook. Deze lijst is niet hetzelfde als een [lijstentiteit](reference-entity-list.md) (exacte tekstkomt overeen) met overeenkomende woorden.
 
-Een descriptor voegt de woorden lijst van het app-domein als een tweede signaal toe aan LUIS over die woorden.
+Een descriptor voegt aan de woordenschat van het appdomein als tweede signaal aan LUIS over die woorden toe.
 
-Bekijk de [functie concepten](luis-concept-feature.md) om te begrijpen wanneer en waarom een descriptor moet worden gebruikt. 
+Bekijk [functieconcepten](luis-concept-feature.md) om te begrijpen wanneer en waarom een beschrijving moet worden gebruikt. 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="add-descriptor"></a>Descriptor toevoegen
 
-1. Open uw app door te klikken op de naam op de pagina **mijn apps** . Klik vervolgens op **bouwen**en vervolgens op **descriptors** in het linkerdeel venster van de app. 
+1. Open uw app door op de naam van **Mijn apps te** klikken en vervolgens op **Bouwen**te klikken en vervolgens op **Descriptoren** in het linkerdeelvenster van uw app te klikken. 
 
-1. Klik op **de pagina** **descriptors op + beschrijving toevoegen**. 
+1. Klik op de pagina **Descriptors** op **+ Descriptor toevoegen**. 
  
-1. Voer in het dialoog venster **nieuwe woordgroepen lijst-descriptor maken** een naam in, zoals `Cities` voor de descriptor. Typ in het vak **waarde** de waarden van de descriptors, zoals `Seattle`. Typ een waarde op een tijdstip of een set met door komma's gescheiden waarden en druk vervolgens op **Enter**.
+1. Voer in het dialoogvenster **Descriptor van** de nieuwe `Cities` woordgroep maken een naam in, zoals voor de beschrijving. Typ **in** het vak Waarde de waarden van de `Seattle`beschrijvingen, zoals . U één waarde tegelijk typen of een set waarden die door komma's zijn gescheiden en vervolgens op **Enter drukken.**
 
     > [!div class="mx-imgBorder"]
-    > ![descriptor steden toevoegen](./media/luis-add-features/add-phrase-list-cities.png)
+    > ![Descriptorsteden toevoegen](./media/luis-add-features/add-phrase-list-cities.png)
 
-    Zodra u voldoende waarden hebt ingevoerd voor LUIS, worden er suggesties weer gegeven. U kunt **+ alle** voorgestelde waarden toevoegen of afzonderlijke voor waarden selecteren.
+    Zodra u voldoende waarden voor LUIS hebt ingevoerd, worden suggesties weergegeven. U **+ Alle** voorgestelde waarden toevoegen of afzonderlijke termen selecteren.
 
-1. Behoud **deze waarden zijn verwisselbaar** ingeschakeld als de toegevoegde descriptor waarden alternatieven zijn die door elkaar kunnen worden gebruikt.
+1. Houd **Deze waarden zijn uitwisselbaar** gecontroleerd als de toegevoegde descriptorwaarden alternatieven zijn die door elkaar kunnen worden gebruikt.
 
-1. Selecteer **Done**. De nieuwe beschrijving wordt toegevoegd aan de **pagina** descriptors.
+1. Selecteer **Done**. De nieuwe beschrijving wordt toegevoegd aan de pagina **Descriptors.**
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> U kunt een descriptor verwijderen of deactiveren via de contextuele werk balk op de pagina **descriptors** .
+> U een descriptor verwijderen of deactiveren van de contextuele werkbalk op de pagina **Descriptors.**
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Na het toevoegen, bewerken, verwijderen of deactiveren van een descriptor, [Train en test u de app](luis-interactive-test.md) opnieuw om te zien of de prestaties verbeteren.
+Nadat u een beschrijving hebt toegevoegd, bewerkt, verwijderd of gedeactiveerd, [traint en test u de app](luis-interactive-test.md) opnieuw om te zien of de prestaties verbeteren.

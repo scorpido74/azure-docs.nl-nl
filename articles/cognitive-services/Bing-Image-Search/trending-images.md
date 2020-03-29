@@ -1,7 +1,7 @@
 ---
-title: Trending afbeeldingen met de Bing afbeeldingen zoeken-API ophalen
+title: Trending afbeeldingen bekijken met de Bing Image Search API
 titleSuffix: Azure Cognitive Services
-description: Zoeken naar trending afbeeldingen van vandaag van het web met de Bing afbeeldingen zoeken-API.
+description: Zoek naar de trending images van vandaag vanaf het web met de Bing Image Search API.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -13,15 +13,15 @@ ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: 2936b94d7ba791b1a4e5a9b95aca3ca3ecdb5904
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66383437"
 ---
-# <a name="get-trending-images-from-the-web"></a>Ophalen van afbeeldingen-trending van het web
+# <a name="get-trending-images-from-the-web"></a>Krijg trending afbeeldingen van het web
 
-Voor trending afbeeldingen van vandaag, de volgende GET-aanvraag te verzenden:  
+Als u de trending images van vandaag wilt krijgen, stuurt u het volgende GET-verzoek:  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/trending?mkt=en-us HTTP/1.1  
@@ -32,14 +32,14 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-De Trending afbeeldingen-API ondersteunt momenteel alleen de volgende markten:  
+De TRENDING Images API ondersteunt momenteel alleen de volgende markten:  
 
-- en-US (Engels, Verenigde Staten)  
-- NL-CA (Engels, Canada)  
+- nl-VS (Engels, Verenigde Staten)  
+- en-CA (Engels, Canada)  
 - en-AU (Engels, Australië)  
 - zh-CN (Chinees, China)
 
-Het antwoord bevat een [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) object met een lijst met installatiekopieën op categorie. Gebruik van de categorie `title` voor het groeperen van de afbeeldingen in uw gebruikerservaring. De categorieën kunnen dagelijks worden gewijzigd.  
+Het antwoord bevat een object [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) dat afbeeldingen per categorie weergeeft. Gebruik de categorie's `title` om de afbeeldingen in uw gebruikerservaring te groeperen. De categorieën kunnen dagelijks veranderen.  
 
 ```json
 {
@@ -88,11 +88,11 @@ Het antwoord bevat een [TrendingImages](https://docs.microsoft.com/rest/api/cogn
 }  
 ```  
 
-Elke tegel bevat een afbeelding en opties voor het ophalen van gerelateerde afbeeldingen. Als u de gerelateerde afbeeldingen, kunt u de query `text` om aan te roepen de [afbeeldingen zoeken-API](./search-the-web.md) en de gerelateerde afbeeldingen zelf weer te geven. Of u kunt de URL in `webSearchUrl` te nemen van de gebruiker van de Bing afbeeldingen pagina met zoekresultaten, waarin de gerelateerde afbeeldingen.
+Elke tegel bevat een afbeelding en opties voor het verkrijgen van gerelateerde afbeeldingen. Als u de gerelateerde afbeeldingen wilt `text` krijgen, u de query gebruiken om de [Image Search API](./search-the-web.md) aan te roepen en de gerelateerde afbeeldingen zelf weer te geven. U de URL `webSearchUrl` ook gebruiken om de gebruiker naar de pagina met zoekresultaten van Bing te brengen, die de bijbehorende afbeeldingen bevat.
 
-Als u de afbeeldingen zoeken-API om op te halen van de gerelateerde afbeeldingen aanroepen, stelt u de [id](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) queryparameter met de ID in de `id` veld. De ID op te geven, zorgt u ervoor dat het antwoord bevat de installatiekopie (dit is de eerste afbeelding in het antwoord) en de bijbehorende gerelateerde afbeeldingen. Stel ook de [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) queryparameter op de tekst in de `query` van het object `text` veld.
+Als u de Image Search API aanroept om de gerelateerde afbeeldingen `id` op te halen, stelt u de parameter [id-query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) in op de id in het veld. Als u de id opgeeft, zorgt u ervoor dat het antwoord de afbeelding bevat (het is de eerste afbeelding in het antwoord) en de bijbehorende afbeeldingen. Stel ook de parameter [q-query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) `query` in op `text` de tekst in het veld van het object.
 
-Het volgende voorbeeld ziet hoe u de afbeeldings-ID gebruikt om op te halen van gerelateerde afbeeldingen van Mr. Smith in de voorgaande Trending afbeeldingen-API-reactie.
+In het volgende voorbeeld ziet u hoe u de afbeeldings-ID gebruiken om gerelateerde afbeeldingen van De heer Smith te krijgen in de voorgaande API-reactie van Trending Images.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=Smith&id=77FDE4A1C6529A23C7CF0EC073FAA64843E828F2&mkt=en-us HTTP/1.1  

@@ -1,7 +1,7 @@
 ---
-title: Filteren op scheld woorden-Translator Text-API
+title: Godslastering filteren - Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Gebruik filters voor scheld woorden om het niveau van de scheld in de tekst in de Azure Cognitive Services Translator text-API te bepalen.
+description: Gebruik godslasteringsfiltering om het niveau van godslastering te bepalen dat in uw tekst wordt vertaald in de Azure Cognitive Services Translator Text API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,27 +11,27 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.openlocfilehash: e7e2097e0d3daf360f1fa0f30bf3fd2c62c07163
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73836232"
 ---
-# <a name="add-profanity-filtering-with-the-translator-text-api"></a>Filters voor scheld woorden toevoegen met de Translator Text-API
+# <a name="add-profanity-filtering-with-the-translator-text-api"></a>Filtering toevoegen met de Translator Text API
 
-Normaal gesp roken behoudt de Translator-service woorden die aanwezig zijn in de bron in de vertaling. De mate van scheld woorden en de context die het ongepaste woord is, verschillen per cultuur. Als gevolg hiervan kan de mate van scheld woorden in de doel taal worden versterkt of gereduceerd.
+Normaal gesproken behoudt de Translator-service godslastering die aanwezig is in de bron in de vertaling. De mate van godslastering en de context die woorden profane verschillen tussen culturen. Als gevolg hiervan kan de mate van godslastering in de doeltaal worden versterkt of verminderd.
 
-Als u wilt voor komen dat er grove taal in de vertaling wordt weer gegeven, zelfs als scheld woorden in de bron tekst aanwezig zijn, gebruikt u de filter optie voor scheld woorden die beschikbaar is in de methode trans late (). Met deze optie kunt u kiezen of u ongepaste woorden wilt verwijderen, gemarkeerd met de juiste Tags of geen actie ondernomen.
+Als u wilt voorkomen dat u godslastering in de vertaling ziet, zelfs als er godslastering aanwezig is in de brontekst, gebruikt u de optie voor het filteren van godslastering die beschikbaar is in de methode Vertalen(). Met deze optie u kiezen of u godslastering wilt verwijderen, gemarkeerd met de juiste tags of geen actie wilt ondernemen.
 
-De methode relate () gebruikt de para meter ' Options ', die het nieuwe element ' ProfanityAction ' bevat. De geaccepteerde waarden van ProfanityAction zijn ' geen actie ', ' gemarkeerd ' en ' verwijderd '.
+De methode Translate() neemt de parameter "opties", die het nieuwe element "ProfanityAction" bevat. De geaccepteerde waarden van ProfanityAction zijn 'NoAction', 'Gemarkeerd' en 'Verwijderd'.
 
-## <a name="accepted-values-of-profanityaction-and-examples"></a>Geaccepteerde waarden van ProfanityAction en voor beelden
-|Waarde ProfanityAction | Actie | Voor beeld: bron-Japans | Voor beeld: doel-Engels|
+## <a name="accepted-values-of-profanityaction-and-examples"></a>Geaccepteerde waarden van ProfanityAction en voorbeelden
+|Waarde van godslasteringActie | Actie | Voorbeeld: Bron - Japans | Voorbeeld: Target - Engels|
 | :---|:---|:---|:---|
-| Geen actie | Standaard. Hetzelfde als de optie niet instellen. Gods gang van de bron naar het doel. | 彼は変態です Marketplace. | Hij is een schokkerige. |
-| Duidelijke | Ongepaste woorden worden omgeven door XML-tags \<Gods >... \</profanity >. | 彼は変態です Marketplace. | Hij is \<Gods > schokken\</profanity >. |
-| Deleted | Ongepaste woorden worden verwijderd uit de uitvoer zonder vervanging. | 彼は Marketplace. | Hij is een. |
+| NoAction (NoAction) | Standaard. Hetzelfde als het niet instellen van de optie. Godslastering gaat van bron naar doel. | 彼は変態です。 | Hij is een eikel. |
+| Gemarkeerd | Profane woorden worden omringd \<door XML-tags godslastering> ... \</godslastering>. | 彼は変態です。 | Hij is \<een godslastering\<>eikel / godslastering>. |
+| Verwijderen | Profane woorden worden verwijderd uit de output zonder vervanging. | 彼は。 | Hij is een. |
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Filters voor scheld woorden Toep assen met de API-aanroep van Translator](reference/v3-0-translate.md)
+> [Godslasteringfilteren toepassen met uw Translator API-aanroep](reference/v3-0-translate.md)

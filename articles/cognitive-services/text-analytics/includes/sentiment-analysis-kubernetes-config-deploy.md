@@ -1,7 +1,7 @@
 ---
-title: Sentimentanalyse Kubernetes-configuratie en implementatie stappen
+title: Sentiment Analyse Kubernetes config en implementeren stappen
 titleSuffix: Azure Cognitive Services
-description: Sentimentanalyse Kubernetes-configuratie en implementatie stappen
+description: Sentiment Analyse Kubernetes config en implementeren stappen
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,13 +10,13 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 2a99f85cf861c0c36ffac136cdf1f792b40719b2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78262199"
 ---
-### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>De Sentimentanalyse-container implementeren in een AKS-cluster
+### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>De container Sentimentanalyse implementeren in een AKS-cluster
 
 1. Open de Azure CLI en meld u aan bij Azure.
 
@@ -24,31 +24,31 @@ ms.locfileid: "78262199"
     az login
     ```
 
-1. Meld u aan bij het AKS-cluster. Vervang `your-cluster-name` en `your-resource-group` door de juiste waarden.
+1. Meld u aan bij het AKS-cluster. Vervang `your-cluster-name` `your-resource-group` en met de juiste waarden.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    Wanneer deze opdracht wordt uitgevoerd, wordt een bericht met de volgende strekking gerapporteerd:
+    Nadat deze opdracht is uitgevoerd, wordt een bericht gerapporteerd dat vergelijkbaar is met het volgende:
 
     ```console
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > Als er meerdere abonnementen voor u beschikbaar zijn in uw Azure-account en de `az aks get-credentials`-opdracht wordt geretourneerd met een fout, is een veelvoorkomend probleem dat u het verkeerde abonnement gebruikt. Stel de context van uw Azure CLI-sessie in op het gebruik van hetzelfde abonnement dat u hebt gemaakt voor de resources en probeer het opnieuw.
+    > Als u meerdere abonnementen beschikbaar hebt op `az aks get-credentials` uw Azure-account en de opdracht met een fout wordt geretourneerd, is een veelvoorkomend probleem dat u het verkeerde abonnement gebruikt. Stel de context van uw Azure CLI-sessie in om hetzelfde abonnement te gebruiken waarmee u de resources hebt gemaakt en probeer het opnieuw.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. Open de gewenste tekst editor. In dit voor beeld wordt Visual Studio code gebruikt.
+1. Open de teksteditor naar keuze. In dit voorbeeld wordt gebruik gebruikt voor Visual Studio Code.
 
     ```console
     code .
     ```
 
-1. Maak in de tekst editor een nieuw bestand met de naam *sentiment. yaml*en plak de volgende YAML hierin. Vervang `billing/value` en `apikey/value` door uw eigen gegevens.
+1. Maak in de teksteditor een nieuw bestand met de naam *sentiment.yaml*en plak de volgende YAML erin. Zorg ervoor `billing/value` dat `apikey/value` u en met uw eigen informatie te vervangen.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -94,26 +94,26 @@ ms.locfileid: "78262199"
         app: sentiment-app
     ```
 
-1. Sla het bestand op en sluit de tekst editor.
-1. Voer de opdracht Kubernetes `apply` uit met het bestand *sentiment. yaml* als doel:
+1. Sla het bestand op en sluit de teksteditor.
+1. Voer de `apply` opdracht Kubernetes uit met het *sentiment.yaml-bestand* als doel:
 
     ```console
     kubectl apply -f sentiment.yaml
     ```
 
-    Nadat de opdracht de implementatie configuratie heeft toegepast, wordt een bericht weer gegeven zoals in de volgende uitvoer:
+    Nadat de opdracht de implementatieconfiguratie heeft toegepast, wordt een bericht weergegeven dat lijkt op de volgende uitvoer:
 
     ```output
     deployment.apps "sentiment" created
     service "sentiment" created
     ```
-1. Controleer of de Pod is geïmplementeerd:
+1. Controleer of de pod is geïmplementeerd:
 
     ```console
     kubectl get pods
     ```
 
-    De uitvoer voor de uitvoerings status van de Pod:
+    De uitvoer voor de lopende status van de pod:
 
     ```output
     NAME                         READY     STATUS    RESTARTS   AGE
@@ -126,7 +126,7 @@ ms.locfileid: "78262199"
     kubectl get services
     ```
 
-    De uitvoer voor de uitvoerings status van de *sentiment* -service in de Pod:
+    De uitvoer voor de uitvoerstatus van de *gevoelsservice* in de pod:
 
     ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

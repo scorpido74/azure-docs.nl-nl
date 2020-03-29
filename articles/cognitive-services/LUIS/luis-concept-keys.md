@@ -1,7 +1,7 @@
 ---
-title: Ontwerpen en runtime sleutels gebruiken met LUIS
+title: Ontwerpen en runtime-toetsen gebruiken met LUIS
 titleSuffix: Azure Cognitive Services
-description: LUIS maakt gebruik van twee sleutels, de ontwerp sleutel voor het maken van uw model en de runtime sleutel voor het uitvoeren van query's op het Voorspellings eindpunt met gebruiker uitingen.
+description: LUIS gebruikt twee sleutels, de ontwerpsleutel om uw model te maken en de runtime-toets voor het opvragen van het voorspellingseindpunt met gebruikersuitingen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,160 +12,160 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: 9d213c8fa03ad2ca5e5fd7e620e52aa502749be2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220961"
 ---
 # <a name="authoring-and-runtime-keys"></a>Ontwerp- en runtimesleutels
 
 Language Understanding (LUIS) heeft twee services en API-sets: 
 
-* Ontwerpen (voorheen bekend als _programmatisch_)
-* Voorspellings runtime
+* Authoring (voorheen bekend als _programmatisch)_
+* Voorspelling runtime
 
-Er zijn verschillende soorten sleutels, afhankelijk van de service waarmee u wilt werken en hoe u ermee wilt werken.
+Er zijn verschillende sleuteltypen, afhankelijk van met welke service u wilt werken en hoe u ermee wilt werken.
 
 ## <a name="non-azure-resources-for-luis"></a>Niet-Azure-resources voor LUIS
 
-### <a name="starter-key"></a>Start sleutel
+### <a name="starter-key"></a>Startsleutel
 
-Wanneer u LUIS voor het eerst gaat gebruiken, wordt er een **Start sleutel** voor u gemaakt. Deze resource biedt:
+Wanneer u LUIS voor het eerst gaat gebruiken, wordt er een **startsleutel** voor u gemaakt. Deze bron biedt:
 
-* gratis service aanvragen ontwerpen via de LUIS-portal of Api's (inclusief Sdk's)
-* gratis 1.000 Voorspellings eindpunt aanvragen per maand via een browser, API of Sdk's
+* gratis aanvragen voor het aanvragen van artikelen via de LUIS-portal of API's (inclusief SDK's)
+* gratis 1.000 voorspellingseindpuntaanvragen per maand via een browser, API of SDKs
 
-## <a name="azure-resources-for-luis"></a>Azure-resources voor LUIS
+## <a name="azure-resources-for-luis"></a>Azure-bronnen voor LUIS
 
 <a name="programmatic-key" ></a>
 <a name="endpoint-key"></a>
 <a name="authoring-key"></a>
 
-LUIS maakt drie typen Azure-resources mogelijk: 
+LUIS maakt drie typen Azure-bronnen mogelijk: 
  
-|Sleutel|Doel|`kind` van de cognitieve service|`type` van de cognitieve service|
+|Sleutel|Doel|Cognitieve service`kind`|Cognitieve service`type`|
 |--|--|--|--|
-|[Sleutel ontwerpen](#programmatic-key)|Toegang tot en het beheren van gegevens van toepassingen met ontwerpen, training, publicatie en testen. Maak een LUIS-ontwerp sleutel als u van plan bent om LUIS-apps programmatisch te ontwerpen.<br><br>Het doel van de `LUIS.Authoring` sleutel is om het volgende toe te staan:<br>* Language Understanding-apps en-modellen, inclusief training en publicatie, programmatisch beheren<br> * beheer machtigingen voor de ontwerp bron door personen toe te wijzen aan [de rol Inzender](#contributions-from-other-authors).|`LUIS.Authoring`|`Cognitive Services`|
-|[Voorspellings sleutel](#prediction-endpoint-runtime-key)| Query's voor Voorspellings eindpunt aanvragen. Maak een LUIS-Voorspellings sleutel voordat u de voor spellingen van de client-app voorspelde aanvragen overschrijdt met de 1.000-aanvragen van de eerste resource. |`LUIS`|`Cognitive Services`|
-|[Bron sleutel voor de cognitieve service met meerdere services](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|Query Voorspellings eindpunt aanvragen gedeeld met LUIS en andere ondersteunde Cognitive Services.|`CognitiveServices`|`Cognitive Services`|
+|[Ontwerpsleutel](#programmatic-key)|Toegang tot en beheer van gegevens van toepassingen met authoring, training, publishing en testen. Maak een LUIS-ontwerpsleutel als u luis-apps programmatisch wilt schrijven.<br><br>Het doel `LUIS.Authoring` van de sleutel is om u in staat te stellen:<br>* programmatisch beheren van apps en modellen voor taalbegrip, inclusief training en publicatie<br> * beheer machtigingen voor de auteur bron door het toewijzen van mensen aan [de bijdrager rol](#contributions-from-other-authors).|`LUIS.Authoring`|`Cognitive Services`|
+|[Voorspellingstoets](#prediction-endpoint-runtime-key)| Eindpuntaanvragen voor queryvoorspelling. Maak een LUIS-voorspellingssleutel voordat uw client-app voorspellingen opvraagt die verder gaan dan de 1.000 aanvragen die door de starterbron worden verstrekt. |`LUIS`|`Cognitive Services`|
+|[Multi-service multiservicebronsleutel voor cognitive service](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|Eindpuntaanvragen voor queryvoorspelling die worden gedeeld met LUIS en andere ondersteunde cognitieve services.|`CognitiveServices`|`Cognitive Services`|
 
-Wanneer het proces voor het maken van de resource is voltooid, [wijst u de sleutel](luis-how-to-azure-subscription.md) toe aan de app in de Luis-Portal.
+Wanneer het proces voor het maken van resources is voltooid, [wijst u de sleutel toe](luis-how-to-azure-subscription.md) aan de app in de LUIS-portal.
 
-Het is belang rijk om LUIS-apps te schrijven in [regio's](luis-reference-regions.md#publishing-regions) waar u wilt publiceren en query's.
+Het is belangrijk om LUIS-apps te maken in [regio's](luis-reference-regions.md#publishing-regions) waar u wilt publiceren en query's.
 
 > [!CAUTION]
-> Voor het gemak gebruiken veel van de voor beelden de [Start sleutel](#starter-key) , omdat het een aantal gratis endpoint-aanroepen voor voor spellingen bevat in het [quotum](luis-boundaries.md#key-limits).  
+> Voor het gemak gebruiken veel van de monsters de [starter-toets](#starter-key) omdat het een paar gratis voorspellingseindpuntoproepen in het [quotum](luis-boundaries.md#key-limits)biedt.  
 
 
-### <a name="query-prediction-resources"></a>Query Voorspellings resources
+### <a name="query-prediction-resources"></a>Bronnen voor queryvoorspelling
 
-* De runtime sleutel kan worden gebruikt voor al uw LUIS-apps of voor specifieke LUIS-apps. 
-* Gebruik niet de runtime sleutel voor het ontwerpen van LUIS-apps. 
+* De runtime-toets kan worden gebruikt voor al uw LUIS-apps of voor specifieke LUIS-apps. 
+* Gebruik de runtime-sleutel niet voor het maken van LUIS-apps. 
 
-Het LUIS-runtime-eind punt accepteert twee stijlen van de query, beide gebruiken de Voorspellings eindpunt runtime sleutel, maar op verschillende plaatsen.
+Het luis-runtime-eindpunt accepteert twee querystijlen, beide gebruiken de toets voor runtime van het voorspellingseindpunt, maar op verschillende plaatsen.
 
-Het eind punt dat wordt gebruikt voor toegang tot de runtime maakt gebruik van een subdomein dat uniek is voor de regio van uw resource, aangeduid met `{region}` in de volgende tabel. 
+Het eindpunt dat wordt gebruikt om toegang te krijgen tot de runtime, `{region}` maakt gebruik van een subdomein dat uniek is voor het gebied van uw resource, aangeduid met in de volgende tabel. 
 
 ## <a name="assignment-of-the-key"></a>Toewijzing van de sleutel
 
-U kunt de runtime sleutel [toewijzen](luis-how-to-azure-subscription.md) in de [Luis-Portal](https://www.luis.ai) of via de bijbehorende api's. 
+U de runtime-sleutel [toewijzen](luis-how-to-azure-subscription.md) in de [LUIS-portal](https://www.luis.ai) of via de bijbehorende API's. 
 
-## <a name="key-limits"></a>Limieten
+## <a name="key-limits"></a>Sleutellimieten
 
-U kunt Maxi maal tien ontwerp sleutels per regio per abonnement maken. 
+Per abonnement u maximaal 10 ontwerpsleutels per regio maken. 
 
-Zie de [belangrijkste limieten](luis-boundaries.md#key-limits) en [Azure-regio's](luis-reference-regions.md). 
+Zie [Sleutellimieten](luis-boundaries.md#key-limits) en [Azure-regio's](luis-reference-regions.md). 
 
-Publicatie-regio's wijken af van het ontwerpen van regio's. Zorg ervoor dat u een app maakt in de ontwerp regio die overeenkomt met het publicatie gebied dat u wilt dat uw client toepassing zich bevindt.
+Publicatieregio's verschillen van authoring regio's. Zorg ervoor dat u een app maakt in het ontwerpgebied dat overeenkomt met het publicatiegebied dat u wilt dat uw clienttoepassing zich bevindt.
 
-## <a name="key-limit-errors"></a>Belangrijkste limiet fouten
-Als u het quotum voor trans acties per seconde (TPS) overschrijdt, ontvangt u een HTTP 429-fout. Als u het quotum voor trans acties per maand (TPS) overschrijdt, ontvangt u een HTTP 403-fout. 
+## <a name="key-limit-errors"></a>Fouten in de sleutellimiet
+Als u het TPS-quotum (Transactions-per-second) overschrijdt, ontvangt u een HTTP 429-fout. Als u het TPS-quotum (Transaction-per-month) overschrijdt, ontvangt u een HTTP 403-fout. 
 
 ## <a name="contributions-from-other-authors"></a>Bijdragen van andere auteurs
 
-**Voor [gemigreerde](luis-migration-authoring.md) apps voor**het maken van een resource: _inzenders_ worden beheerd in de Azure portal voor de ontwerp bron, met behulp van de **toegangs beheer pagina (IAM)** . Meer informatie [over het toevoegen van een gebruiker](luis-how-to-collaborate.md)met behulp van het e-mail adres van de samen werker en de rol _Inzender_ . 
+**Voor [het maken van door resources gemigreerde](luis-migration-authoring.md) apps:** _bijdragers_ worden beheerd in de Azure-portal voor de ontwerpbron, met behulp van de pagina **IAM (Access control).** Meer informatie over [het toevoegen van een gebruiker,](luis-how-to-collaborate.md)met behulp van het e-mailadres van de medewerker en de rol van de _bijdrager._ 
 
-**Voor apps die nog niet zijn gemigreerd**: _alle mede_ werkers worden beheerd in de Luis **>-** portal via de pagina samen werkers beheren.
+**Voor apps die nog niet zijn gemigreerd:** alle _bijdragers_ worden beheerd in de LUIS-portal vanaf de pagina **> bijdragers beheren.**
 
-## <a name="move-transfer-or-change-ownership"></a>Verplaatsen, overdragen of eigendom wijzigen
+## <a name="move-transfer-or-change-ownership"></a>Van eigenaar verplaatsen, overdragen of van eigenaar veranderen
 
-Een app wordt gedefinieerd door de Azure-resources die worden bepaald door het abonnement van de eigenaar. 
+Een app wordt gedefinieerd door de Azure-resources, die wordt bepaald door het abonnement van de eigenaar. 
 
-U kunt uw LUIS-app verplaatsen. Gebruik de volgende documentatie bronnen in de Azure Portal of Azure CLI:
+U uw LUIS-app verplaatsen. Gebruik de volgende documentatiebronnen in de Azure-portal of Azure CLI:
 
-* [App verplaatsen tussen LUIS-ontwerp resources](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-move-app-to-another-luis-authoring-azure-resource)
-* [Resource verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
-* [Resource verplaatsen binnen hetzelfde abonnement of tussen abonnementen](../../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)
+* [App verplaatsen tussen LUIS-bronnen voor het maken van auteurs](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-move-app-to-another-luis-authoring-azure-resource)
+* [Bron verplaatsen naar nieuwe resourcegroep of -abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
+* [Bron verplaatsen binnen hetzelfde abonnement of tussen abonnementen](../../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)
 
-Het [eigendom](../../cost-management-billing/manage/billing-subscription-transfer.md) van het abonnement overdragen: 
+Ga als [het gaat](../../cost-management-billing/manage/billing-subscription-transfer.md) om het eigendom van uw abonnement over te dragen: 
 
-**Voor gebruikers die [gemigreerde](luis-migration-authoring.md) apps hebben**gemigreerd: als eigenaar van de resource kunt u een `contributor`toevoegen.
+**Voor gebruikers die zijn gemigreerd - [het maken van brongemigreerde](luis-migration-authoring.md) apps:** als eigenaar van de bron u een `contributor`.
 
-**Voor gebruikers die nog niet zijn gemigreerd**: Exporteer uw app als een JSON-bestand. Een andere LUIS-gebruiker kan de app importeren, waardoor de eigenaar van de app wordt. De nieuwe app heeft een andere app-ID.  
+**Voor gebruikers die nog niet zijn gemigreerd:** Exporteer uw app als JSON-bestand. Een andere LUIS-gebruiker kan de app importeren en zo de eigenaar van de app worden. De nieuwe app heeft een andere app-id.  
 
-## <a name="access-for-private-and-public-apps"></a>Toegang voor persoonlijke en open bare apps
+## <a name="access-for-private-and-public-apps"></a>Toegang voor privé- en openbare apps
 
-Voor een **persoonlijke** app is runtime toegang beschikbaar voor eigen aren en mede werkers. Voor een **open bare** app is runtime toegang beschikbaar voor iedereen met hun eigen Azure [cognitieve service](../cognitive-services-apis-create-account.md) of [Luis](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) runtime-resource, en heeft de id van de open bare app. 
+Voor een **privé-app** is runtime-toegang beschikbaar voor eigenaren en bijdragers. Voor een **openbare** app is runtime-toegang beschikbaar voor iedereen die zijn eigen Azure [Cognitive Service-](../cognitive-services-apis-create-account.md) of [LUIS-runtime-bron](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) heeft en de id van de openbare app heeft. 
 
-Er is momenteel geen catalogus met open bare apps.
+Momenteel is er geen catalogus met openbare apps.
 
-### <a name="authoring-access"></a>Toegang ontwerpen
-Toegang tot de app vanuit de [Luis](luis-reference-regions.md#luis-website) -portal of de [ontwerp-api's](https://go.microsoft.com/fwlink/?linkid=2092087) wordt bepaald door de Azure authoring-resource. 
+### <a name="authoring-access"></a>Toegang tot het ontwerpen
+Toegang tot de app vanuit de [LUIS-portal](luis-reference-regions.md#luis-website) of de [ontwerp-API's](https://go.microsoft.com/fwlink/?linkid=2092087) wordt beheerd door de Azure-ontwerpbron. 
 
-De eigenaar en alle mede werkers hebben toegang tot het schrijven van de app. 
+De eigenaar en alle bijdragers hebben toegang tot de auteur van de app. 
 
-|Omvat toegang ontwerpen|Opmerkingen|
+|Toegang tot het ontwerpen omvat|Opmerkingen|
 |--|--|
-|Toevoegen of verwijderen van de eindpunt-sleutels||
-|Exporteren van versie||
-|Eindpunt-logboeken exporteren||
-|Versie wordt geïmporteerd||
-|App openbaar maken|Wanneer een app openbaar is, kan iedereen met een sleutel ontwerpen of eindpunt query uitvoeren op de app.|
+|Eindpunttoetsen toevoegen of verwijderen||
+|Versie exporteren||
+|Eindpuntlogboeken exporteren||
+|Versie importeren||
+|App openbaar maken|Wanneer een app openbaar is, kan iedereen met een ontwerp- of eindpunttoets de app opvragen.|
 |Model wijzigen|
 |Publiceren|
-|Endpoint uitingen voor [actief leren](luis-how-to-review-endpoint-utterances.md) bekijken|
+|Eindpuntuitingen controleren voor [actief leren](luis-how-to-review-endpoint-utterances.md)|
 |Trainen|
 
 <a name="prediction-endpoint-runtime-key"></a>
 
-### <a name="prediction-endpoint-runtime-access"></a>Runtime-toegang voor voor Spellings eindpunt
+### <a name="prediction-endpoint-runtime-access"></a>Runtime-toegang voor eindpunten voorspellen
 
-Toegang tot het uitvoeren van een query voor het prediction-eind punt wordt bepaald door een instelling op de pagina **toepassings gegevens** in de sectie **beheren** . 
+Toegang tot query het voorspellingseindpunt wordt beheerd door een instelling op de pagina **Toepassingsgegevens** in de sectie **Beheren.** 
 
-|[Persoonlijk eind punt](#runtime-security-for-private-apps)|[Openbaar eind punt](#runtime-security-for-public-apps)|
+|[Privéeindpunt](#runtime-security-for-private-apps)|[Openbaar eindpunt](#runtime-security-for-public-apps)|
 |:--|:--|
-|Beschikbaar voor eigenaar en mede werkers|Beschikbaar voor eigenaar, bijdrager en anderen die App-ID kent|
+|Beschikbaar voor eigenaar en bijdragers|Beschikbaar voor eigenaar, bijdragers en iedereen die app-id kent|
 
-U kunt bepalen wie uw LUIS runtime-sleutel kan zien door deze aan te roepen in een server-naar-server-omgeving. Als u LUIS gebruikt van een bot, is de verbinding tussen de bot en LUIS al beveiligd. Als u het LUIS-eind punt rechtstreeks aanroept, moet u een API aan de server zijde maken (zoals een Azure- [functie](https://azure.microsoft.com/services/functions/)) met beheerde toegang (zoals [Aad](https://azure.microsoft.com/services/active-directory/)). Wanneer de API aan de server zijde wordt aangeroepen en geverifieerd en autorisatie is geverifieerd, geeft u de aanroep door aan LUIS. Hoewel deze strategie niet van toepassing is op man-in-the-middle-aanvallen, verbergt uw sleutel en eind punt-URL van uw gebruikers, kunt u de toegang bijhouden en kunt u de logboek registratie van eindpunt Reacties toevoegen (zoals [Application Insights](https://azure.microsoft.com/services/application-insights/)).
+U bepalen wie uw LUIS-runtime-sleutel ziet door deze in een server-naar-server-omgeving te noemen. Als u LUIS van een bot gebruikt, is de verbinding tussen de bot en LUIS al beveiligd. Als u het LUIS-eindpunt rechtstreeks aanroept, moet u een API aan de serverzijde (zoals een [Azure-functie)](https://azure.microsoft.com/services/functions/)maken met gecontroleerde toegang (zoals [AAD).](https://azure.microsoft.com/services/active-directory/) Wanneer de API aan de serverzijde wordt aangeroepen en geverifieerd en de autorisatie is geverifieerd, geeft u de aanroep door aan LUIS. Hoewel deze strategie geen man-in-the-middle-aanvallen voorkomt, versluiert het uw sleutel- en eindpunt-URL van uw gebruikers, u toegang bijhouden en u endpoint response logging toevoegen (zoals [Application Insights).](https://azure.microsoft.com/services/application-insights/)
 
-#### <a name="runtime-security-for-private-apps"></a>Runtime-beveiliging voor persoonlijke apps
+#### <a name="runtime-security-for-private-apps"></a>Runtime-beveiliging voor privé-apps
 
-De runtime van een persoonlijke app is alleen beschikbaar voor het volgende:
+De runtime van een privé-app is alleen beschikbaar voor het volgende:
 
-|Sleutel en de gebruiker|Uitleg|
+|Sleutel en gebruiker|Uitleg|
 |--|--|
-|De eigenaar van authoring sleutel| Maximaal 1000 eindpunt treffers|
-|Ontwerp sleutels voor samen werker/Inzender| Maximaal 1000 eindpunt treffers|
-|Een sleutel die is toegewezen aan LUIS door een auteur of samen werker/bijdrager|Op basis van gebruik van de sleutel-laag|
+|De ontwerpsleutel van de eigenaar| Tot 1000 endpoint hits|
+|Toetsen voor het maken van bijdragende bijdragen aan de redactie| Tot 1000 endpoint hits|
+|Elke sleutel die door een auteur of medewerker/bijdrager aan LUIS is toegewezen|Op basis van de toetsgebruikslaag|
 
-#### <a name="runtime-security-for-public-apps"></a>Runtime-beveiliging voor open bare apps
+#### <a name="runtime-security-for-public-apps"></a>Runtime-beveiliging voor openbare apps
 
-Zodra een app als openbaar is geconfigureerd, kan elke geldige LUIS-ontwerp sleutel of LUIS-eindpunt sleutel _een_ query uitvoeren op uw app, mits de sleutel niet het volledige eindpunt quotum heeft gebruikt.
+Zodra een app als openbaar is geconfigureerd, kan _elke_ geldige LUIS-ontwerpsleutel of LUIS-eindpuntsleutel uw app opvragen, zolang de sleutel het volledige eindpuntquotum niet heeft gebruikt.
 
-Een gebruiker die geen eigenaar of bijdrager is, heeft alleen toegang tot de runtime van een open bare app als deze de App-ID heeft opgegeven. LUIS heeft geen open bare _markt_ of een andere manier om te zoeken naar een open bare app.  
+Een gebruiker die geen eigenaar of bijdrager is, heeft alleen toegang tot de runtime van een openbare app als hij de app-id krijgt. LUIS heeft geen openbare _markt_ of een andere manier om te zoeken naar een openbare app.  
 
-Een openbare app is gepubliceerd in alle regio's, zodat een gebruiker met een sleutel op basis van een regio LUIS resource toegang heeft tot de app in welke regio gekoppeld aan de resource-sleutel is.
+Een openbare app wordt in alle regio's gepubliceerd, zodat een gebruiker met een op een regio gebaseerde LUIS-bronsleutel toegang heeft tot de app in welke regio dan ook is gekoppeld aan de resourcesleutel.
 
-## <a name="transfer-of-ownership"></a>Overdracht van eigendom
+## <a name="transfer-of-ownership"></a>Eigendomsoverdracht
 
-LUIS is niet het concept van het overdragen van het eigendom van een resource. 
+LUIS heeft niet het concept van de overdracht van eigendom van een bron. 
 
-## <a name="securing-the-endpoint"></a>Beveiligen van het eindpunt 
+## <a name="securing-the-endpoint"></a>Het eindpunt beveiligen 
 
-U kunt bepalen wie uw LUIS prediction runtime-eindpunt sleutel kan zien door deze aan te roepen in een server-naar-server-omgeving. Als u LUIS gebruikt van een bot, is de verbinding tussen de bot en LUIS al beveiligd. Als u het LUIS-eind punt rechtstreeks aanroept, moet u een API aan de server zijde maken (zoals een Azure- [functie](https://azure.microsoft.com/services/functions/)) met beheerde toegang (zoals [Aad](https://azure.microsoft.com/services/active-directory/)). Wanneer de server-side-API wordt aangeroepen en de verificatie en autorisatie worden geverifieerd, geeft u de aanroep naar LUIS. Hoewel deze strategie niet van toepassing is op man-in-the-middle-aanvallen, maakt het uw eind punt van uw gebruikers af, kunt u de toegang bijhouden en kunt u de logboek registratie van eindpunt Reacties toevoegen (zoals [Application Insights](https://azure.microsoft.com/services/application-insights/)).  
+U bepalen wie uw LUIS-voorspelling runtime-eindpuntsleutel kan zien door deze in een server-naar-server-omgeving te noemen. Als u LUIS van een bot gebruikt, is de verbinding tussen de bot en LUIS al beveiligd. Als u het LUIS-eindpunt rechtstreeks aanroept, moet u een API aan de serverzijde (zoals een [Azure-functie)](https://azure.microsoft.com/services/functions/)maken met gecontroleerde toegang (zoals [AAD).](https://azure.microsoft.com/services/active-directory/) Wanneer de api aan de serverzijde wordt aangeroepen en de verificatie en autorisatie worden geverifieerd, geeft u de aanroep door aan LUIS. Hoewel deze strategie geen man-in-the-middle-aanvallen voorkomt, versluiert het uw eindpunt van uw gebruikers, u toegang bijhouden en u endpoint response logging toevoegen (zoals [Application Insights).](https://azure.microsoft.com/services/application-insights/)  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Begrijpen van [versie](luis-concept-version.md) -concepten. 
-* Meer informatie [over het maken van sleutels](luis-how-to-azure-subscription.md).
+* Concepten [voor versiebeheer](luis-concept-version.md) begrijpen. 
+* Meer informatie over [het maken van toetsen](luis-how-to-azure-subscription.md).

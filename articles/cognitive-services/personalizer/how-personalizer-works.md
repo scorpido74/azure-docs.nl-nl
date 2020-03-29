@@ -1,59 +1,59 @@
 ---
-title: 'Hoe Personaler werkt: Personaler'
-description: De Personaler- _lus_ gebruikt machine learning om het model te bouwen dat de meest voorkomende actie voor uw inhoud voorspelt. Het model wordt uitsluitend getraind op uw gegevens die u hebt verzonden met behulp van de rang en beloning.
+title: Hoe Personalizer werkt - Personalizer
+description: De _Personalizer-lus_ maakt gebruik van machine learning om het model te bouwen dat de beste actie voor uw inhoud voorspelt. Het model is uitsluitend getraind op uw gegevens die u naar het met de Rang en Beloning oproepen verzonden.
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 836c207213ac52a60e27da6fc957418187059023
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77623748"
 ---
 # <a name="how-personalizer-works"></a>Hoe Personalizer werkt
 
-De Personaler resource, uw _leer proces_, gebruikt machine learning om het model te bouwen waarmee de meest voorkomende actie voor uw inhoud wordt voor speld. Het model wordt uitsluitend getraind op uw gegevens die u hebt verzonden met behulp van de **rang** en **beloning** . Elke lus is volledig onafhankelijk van elkaar.
+De personalizer-bron, uw _leerlus,_ maakt gebruik van machine learning om het model te bouwen dat de hoogste actie voor uw inhoud voorspelt. Het model is uitsluitend getraind op uw gegevens die u naar het met de **Rang** en **Beloning** oproepen verzonden. Elke lus is volledig onafhankelijk van elkaar.
 
-## <a name="rank-and-reward-apis-impact-the-model"></a>Prioriteits-en beloning-Api's die van invloed zijn op het model
+## <a name="rank-and-reward-apis-impact-the-model"></a>Rank- en Reward API's hebben invloed op het model
 
-U verzendt _acties met functies_ en _context functies_ naar de classificatie-API. De **positie** -API besluit om de volgende te gebruiken:
+U verzendt _acties met functies_ en _contextfuncties_ naar de Rank API. De **Rank** API besluit te gebruiken:
 
-* _Exploit_: het huidige model om de beste actie te bepalen op basis van gegevens in het verleden.
-* _Verkennen_: Selecteer een andere actie in plaats van de bovenste actie. U kunt [Dit percentage configureren](how-to-settings.md#configure-exploration-to-allow-the-learning-loop-to-adapt) voor uw personaler-resource in de Azure Portal.
+* _Exploit:_ Het huidige model om de beste actie te bepalen op basis van gegevens uit het verleden.
+* _Verkennen:_ Selecteer een andere actie in plaats van de bovenste actie. U [configureert dit percentage](how-to-settings.md#configure-exploration-to-allow-the-learning-loop-to-adapt) voor uw personalizerbron in de Azure-portal.
 
-U bepaalt de belonings Score en verzendt deze score naar de belonings-API. De **belonings** -API:
+U bepaalt de beloningsscore en stuurt die score naar de Reward API. De **Reward** API:
 
-* Verzamelt gegevens om het model te trainen door de functies en belonings scores van elke positie oproep vast te leggen.
-* Gebruikt die gegevens om het model bij te werken op basis van de configuratie die is opgegeven in het _Learning-beleid_.
+* Verzamelt gegevens om het model te trainen door de functies en beloningsscores van elk ranggesprek vast te nemen.
+* Gebruikt die gegevens om het model bij te werken op basis van de configuratie die is opgegeven in het _leerbeleid_.
 
-## <a name="your-system-calling-personalizer"></a>Uw systeem Personaler aanroepen
+## <a name="your-system-calling-personalizer"></a>Uw systeem belt personalizer
 
-In de volgende afbeelding ziet u de architectuur stroom van het aanroepen van de rang-en belonings aanroepen:
+De volgende afbeelding toont de architecturale stroom van het aanroepen van de rang- en beloningsoproepen:
 
-![alternatieve tekst](./media/how-personalizer-works/personalization-how-it-works.png "Hoe persoonlijke instellingen werken")
+![alternatieve tekst](./media/how-personalizer-works/personalization-how-it-works.png "Hoe personalisatie werkt")
 
-1. U verzendt _acties met functies_ en _context functies_ naar de classificatie-API.
+1. U verzendt _acties met functies_ en _contextfuncties_ naar de Rank API.
 
-    * Personaler beslist of het huidige model moet worden misbruikt of dat er nieuwe opties voor het model moeten worden verkend.
-    * Het resultaat van de rang schikking wordt verzonden naar EventHub.
-1. De bovenste positie wordt geretourneerd naar de systeem _Actie-id_.
-    Uw systeem presenteert die inhoud en bepaalt een belonings Score op basis van uw eigen bedrijfs regels.
-1. Uw systeem retourneert de belonings score naar de learning-lus.
-    * Wanneer Personaler de beloning ontvangt, wordt de vergoeding verzonden naar EventHub.
-    * De positie en beloning worden gecorreleerd.
-    * Het AI-model wordt bijgewerkt op basis van de correlatie resultaten.
-    * De engine voor het ingrijpen van de functie wordt bijgewerkt met het nieuwe model.
+    * Personalizer beslist of het huidige model wordt gebruikt of nieuwe keuzes voor het model wil verkennen.
+    * Het rankingresultaat wordt naar EventHub gestuurd.
+1. De hoogste rang wordt teruggegeven aan uw systeem als _beloningsactie-ID._
+    Uw systeem presenteert die inhoud en bepaalt een beloningsscore op basis van uw eigen bedrijfsregels.
+1. Uw systeem geeft de beloningsscore terug aan de leerlus.
+    * Wanneer Personalizer de beloning ontvangt, wordt de beloning naar EventHub gestuurd.
+    * De rang en beloning zijn gecorreleerd.
+    * Het AI-model wordt bijgewerkt op basis van de correlatieresultaten.
+    * De gevolgtrekking motor is bijgewerkt met het nieuwe model.
 
-## <a name="personalizer-retrains-your-model"></a>Persoonlijkere traint uw model opnieuw
+## <a name="personalizer-retrains-your-model"></a>Personalizer hertraint uw model
 
-Personaler traint uw model opnieuw op basis van de instelling voor het bijwerken van de **model frequentie** van uw personaler-resource in de Azure Portal.
+Personalizer hertraint uw model op basis van de instelling **voor modelfrequentie-updates** op uw Personalizer-bron in de Azure-portal.
 
-Personaler gebruikt alle gegevens die momenteel worden bewaard, op basis van de instelling voor het **bewaren van gegevens** in aantal dagen op uw personaler-resource in de Azure Portal.
+Personalizer gebruikt alle gegevens die momenteel worden bewaard, op basis van de instelling **voor gegevensbewaring** in het aantal dagen op uw Personalizer-bron in de Azure-portal.
 
-## <a name="research-behind-personalizer"></a>Onderzoek achter persoonlijker
+## <a name="research-behind-personalizer"></a>Onderzoek achter Personalizer
 
-Personaler is gebaseerd op wetenschap en onderzoek op het gebied van versterking van het [onderwijs](concepts-reinforcement-learning.md) , waaronder documenten, onderzoeksactiviteiten en lopende onderzoeksgebieden in micro soft Research.
+Personalizer is gebaseerd op geavanceerde wetenschap en onderzoek op het gebied van [Reinforcement Learning,](concepts-reinforcement-learning.md) waaronder papers, onderzoeksactiviteiten en lopende onderzoeksgebieden in Microsoft Research.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de [belangrijkste scenario's](where-can-you-use-personalizer.md) voor personaliseren
+Meer informatie over [topscenario's](where-can-you-use-personalizer.md) voor personalizer

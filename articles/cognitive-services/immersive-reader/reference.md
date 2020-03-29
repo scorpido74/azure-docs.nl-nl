@@ -1,7 +1,7 @@
 ---
-title: Naslag Gids voor insluitende lezers SDK
+title: Naslaginformatie over de sdk voor meeslepende lezers
 titleSuffix: Azure Cognitive Services
-description: De insluitende lezer-SDK bevat een Java script-bibliotheek waarmee u de insluitende lezer kunt integreren in uw toepassing.
+description: De Immersive Reader SDK bevat een JavaScript-bibliotheek waarmee u de Immersive Reader in uw toepassing integreren.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
 ms.openlocfilehash: b20a3e6dd3b32b183bbf34dbefd76f0e4cd56b99
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76156400"
 ---
-# <a name="immersive-reader-sdk-reference-guide"></a>Naslag Gids voor insluitende lezers SDK
+# <a name="immersive-reader-sdk-reference-guide"></a>Gids voor meeslepende reader SDK
 
-De insluitende lezer-SDK bevat een Java script-bibliotheek waarmee u de insluitende lezer kunt integreren in uw toepassing.
+De Immersive Reader SDK bevat een JavaScript-bibliotheek waarmee u de Immersive Reader in uw toepassing integreren.
 
 ## <a name="functions"></a>Functions
 
-De SDK biedt de volgende functies beschikbaar:
+De SDK legt de functies bloot:
 
 - [`ImmersiveReader.launchAsync(token, subdomain, content, options)`](#launchasync)
 
@@ -33,7 +33,7 @@ De SDK biedt de volgende functies beschikbaar:
 
 ## <a name="launchasync"></a>launchAsync
 
-Hiermee wordt de insluitende lezer gestart binnen een `iframe` in uw webtoepassing.
+Lanceert de Immersive `iframe` Reader in een in uw webapplicatie.
 
 ```typescript
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
@@ -43,36 +43,36 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 | Name | Type | Beschrijving |
 | ---- | ---- |------------ |
-| `token` | string | Het Azure AD-verificatie token. |
-| `subdomain` | string | Het aangepaste subdomein van uw insluitende lezer-resource in Azure. |
-| `content` | [Inhoud](#content) | Een object met de inhoud die in de insluitende lezer moet worden weer gegeven. |
-| `options` | [Opties](#options) | Opties voor het configureren van bepaald gedrag van de insluitende lezer. Optioneel. |
+| `token` | tekenreeks | Het Azure AD-verificatietoken. |
+| `subdomain` | tekenreeks | Het aangepaste subdomein van uw Immersive Reader-bron in Azure. |
+| `content` | [Inhoud](#content) | Een object met de inhoud die moet worden weergegeven in de meeslepende lezer. |
+| `options` | [Opties](#options) | Opties voor het configureren van bepaalde gedragingen van de immersive reader. Optioneel. |
 
 ### <a name="returns"></a>Retourneert
 
-Retourneert een `Promise<LaunchResponse>`, die wordt omgezet wanneer de insluitende lezer wordt geladen. De `Promise` wordt omgezet in een [`LaunchResponse`](#launchresponse) -object.
+Retourneert een `Promise<LaunchResponse>`, die wordt opgelost wanneer de meeslepende lezer wordt geladen. De `Promise` oplost [`LaunchResponse`](#launchresponse) om een object.
 
 ### <a name="exceptions"></a>Uitzonderingen
 
-De geretourneerde `Promise` wordt afgewezen met een [`Error`](#error) -object als de insluitende lezer niet kan worden geladen. Zie de [fout codes](#error-codes)voor meer informatie.
+De `Promise` geretourneerde wordt geweigerd [`Error`](#error) met een object als de meeslepende lezer niet laadt. Zie de [foutcodes](#error-codes)voor meer informatie .
 
 ## <a name="close"></a>sluiten
 
-Hiermee wordt de insluitende lezer gesloten.
+Sluit de meeslepende lezer.
 
-Een voor beeld van een use-case voor deze functie is als de knop Afsluiten verborgen is door ```hideExitButton: true``` in [Opties](#options)in te stellen. Vervolgens kan een andere knop (bijvoorbeeld de pijl-terug van een mobiele koptekst) deze ```close```-functie aanroepen wanneer erop wordt geklikt.
+Een voorbeeld van een voorbeeld van deze functie ```hideExitButton: true``` is als de afsluitknop is verborgen door in te stellen in [opties](#options). Vervolgens kan een andere knop (bijvoorbeeld de pijl terug ```close``` van een mobiele kop) deze functie aanroepen wanneer erop wordt geklikt.
 
 ```typescript
 close(): void;
 ```
 
-## <a name="renderbuttons"></a>renderButtons
+## <a name="renderbuttons"></a>renderknoppen
 
-Deze functie stijlen en werkt de elementen van de insluitende lezer van het document bij. Als ```options.elements``` is geleverd, zal deze functie knoppen in ```options.elements```weer geven. Anders worden de knoppen weer gegeven in de elementen van het document die de klasse ```immersive-reader-button```hebben.
+Deze functie stijlen en updates van het document Immersive Reader knop elementen. Als ```options.elements``` wordt geleverd, dan zal ```options.elements```deze functie knoppen binnen renderen. Anders worden de knoppen weergegeven in de elementen van ```immersive-reader-button```het document die de klasse hebben.
 
 Deze functie wordt automatisch aangeroepen door de SDK wanneer het venster wordt geladen.
 
-Zie [optionele kenmerken](#optional-attributes) voor meer rendering-opties.
+Zie [Optionele kenmerken](#optional-attributes) voor meer weergaveopties.
 
 ```typescript
 renderButtons(options?: RenderButtonsOptions): void;
@@ -82,13 +82,13 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 | Name | Type | Beschrijving |
 | ---- | ---- |------------ |
-| `options` | [RenderButtonsOptions](#renderbuttonsoptions) | Opties voor het configureren van bepaald gedrag van de functie renderButtons. Optioneel. |
+| `options` | [Opties voor renderknoppen](#renderbuttonsoptions) | Opties voor het configureren van bepaalde gedragingen van de functie renderButtons. Optioneel. |
 
 ## <a name="types"></a>Typen
 
 ### <a name="content"></a>Inhoud
 
-Bevat de inhoud die in de insluitende lezer moet worden weer gegeven.
+Bevat de inhoud die moet worden weergegeven in de meeslepende lezer.
 
 ```typescript
 {
@@ -99,7 +99,7 @@ Bevat de inhoud die in de insluitende lezer moet worden weer gegeven.
 
 ### <a name="chunk"></a>Segment
 
-Eén gegevens segment dat wordt door gegeven aan de inhoud van de insluitende lezer.
+Een enkel stuk gegevens, die zal worden doorgegeven aan de inhoud van de meeslepende lezer.
 
 ```typescript
 {
@@ -109,9 +109,9 @@ Eén gegevens segment dat wordt door gegeven aan de inhoud van de insluitende le
 }
 ```
 
-### <a name="launchresponse"></a>LaunchResponse
+### <a name="launchresponse"></a>LaunchResponse LaunchResponse LaunchResponse LaunchResponse
 
-Bevat de reactie van de aanroep van `ImmersiveReader.launchAsync`.
+Bevat het antwoord van `ImmersiveReader.launchAsync`de oproep naar .
 
 ```typescript
 {
@@ -120,9 +120,9 @@ Bevat de reactie van de aanroep van `ImmersiveReader.launchAsync`.
 }
 ```
 
-### <a name="cookiepolicy-enum"></a>CookiePolicy Enum
+### <a name="cookiepolicy-enum"></a>CookieBeleid enum
 
-Een opsomming die wordt gebruikt om het beleid voor het cookie gebruik van de insluitende lezer in te stellen. Zie [Opties](#options).
+Een enum dat wordt gebruikt om het beleid voor het cookiegebruik van de Immersive Reader in te stellen. Zie [opties](#options).
 
 ```typescript
 enum CookiePolicy { Disable, Enable }
@@ -132,25 +132,25 @@ enum CookiePolicy { Disable, Enable }
 
 | MIME-type | Beschrijving |
 | --------- | ----------- |
-| text/plain | Tekst zonder opmaak. |
+| tekst/vlakte | Platte tekst. |
 | text/html | HTML-inhoud. [Meer informatie](#html-support)|
-| Application/MathML + XML | MathML (wiskundige Markup Language). [Meer informatie](./how-to/display-math.md).
-| application/vnd. openxmlformats-officedocument. WordprocessingML. document | Micro soft Word. docx-indelings document.
+| toepassing/mathml+xml | Wiskundige markuptaal (MathML). [Meer informatie](./how-to/display-math.md).
+| application/vnd.openxmlformats-officedocument.wordprocessingml.document | Microsoft Word .docx-indelingsdocument.
 
 ### <a name="html-support"></a>HTML-ondersteuning
 
 | HTML | Ondersteunde inhoud |
 | --------- | ----------- |
-| Lettertype stijlen | Vet, cursief, onderstrepen, code, doorhaling, Super script |
-| Niet-geordende lijsten | Schijf, cirkel, vier kant |
-| Geordende lijsten | Decimaal, hoofd letter, kleine letter alfa, bovenste Romeins, kleine letter Romeins |
+| Tekenstijlen | Vet, Cursief, Onderstrepen, Code, Doorhalen, Superscript, Subscript |
+| Niet-geordende lijsten | Schijf, Cirkel, Vierkant |
+| Geordende lijsten | Decimaal, Upper-Alpha, Lower-Alpha, Upper-Roman, Lower-Roman |
 | Hyperlinks | Binnenkort beschikbaar |
 
-Niet-ondersteunde labels worden weer gegeven comparably. Afbeeldingen en tabellen worden momenteel niet ondersteund.
+Niet-ondersteunde tags worden vergelijkbaar weergegeven. Afbeeldingen en tabellen worden momenteel niet ondersteund.
 
 ### <a name="options"></a>Opties
 
-Bevat eigenschappen die bepaald gedrag van de insluitende lezer configureren.
+Bevat eigenschappen die bepaalde gedragingen van de meeslepende lezer configureren.
 
 ```typescript
 {
@@ -166,9 +166,9 @@ Bevat eigenschappen die bepaald gedrag van de insluitende lezer configureren.
 }
 ```
 
-### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
+### <a name="renderbuttonsoptions"></a>Opties voor renderknoppen
 
-Opties voor het weer geven van de knoppen voor insluitende lezer.
+Opties voor het renderen van de knoppen Immersive Reader.
 
 ```typescript
 {
@@ -189,16 +189,16 @@ Bevat informatie over de fout.
 
 #### <a name="error-codes"></a>Foutcodes
 
-| Coderen | Beschrijving |
+| Code | Beschrijving |
 | ---- | ----------- |
-| BadArgument | Het opgegeven argument is ongeldig. Zie `message` voor meer informatie. |
-| Time-out | De insluitende lezer kan niet worden geladen binnen de opgegeven time-out. |
-| TokenExpired | Het opgegeven token is verlopen. |
-| Beperkt | De limiet voor de aanroep frequentie is overschreden. |
+| BadArgument (BadArgument) | Geleverd argument is ongeldig, zie `message` voor details. |
+| Time-out | De immersive reader kan niet worden geladen binnen de opgegeven time-out. |
+| TokenExpired | Het meegeleverde token is verlopen. |
+| Smoorklep | De gesprekslimiet is overschreden. |
 
-## <a name="launching-the-immersive-reader"></a>De insluitende lezer starten
+## <a name="launching-the-immersive-reader"></a>Lancering van de meeslepende lezer
 
-De SDK biedt standaard stijlen voor de knop voor het starten van de insluitende lezer. Gebruik het kenmerk `immersive-reader-button` class om deze stijl in te scha kelen. Raadpleeg [dit artikel](./how-to-customize-launch-button.md) voor meer informatie.
+De SDK biedt standaard styling voor de knop voor het starten van de Immersive Reader. Gebruik `immersive-reader-button` het kenmerk klasse om deze styling in te schakelen. Zie [dit artikel](./how-to-customize-launch-button.md) voor meer details.
 
 ```html
 <div class='immersive-reader-button'></div>
@@ -210,13 +210,13 @@ Gebruik de volgende kenmerken om het uiterlijk van de knop te configureren.
 
 | Kenmerk | Beschrijving |
 | --------- | ----------- |
-| `data-button-style` | Hiermee wordt de stijl van de knop ingesteld. Kan `icon`, `text`of `iconAndText`zijn. Standaard ingesteld op `icon`. |
-| `data-locale` | Hiermee stelt u de land instelling. Bijvoorbeeld `en-US` of `fr-FR`. De standaard instelling is Engels `en`. |
-| `data-icon-px-size` | Hiermee stelt u de grootte van het pictogram in pixels. De standaard waarde is 20px. |
+| `data-button-style` | Hiermee stelt u de stijl van de knop in. Kan `icon`worden `text`, `iconAndText`, of . Standaard instellingen `icon`voor . |
+| `data-locale` | Hiermee stelt u de landint in. Bijvoorbeeld `en-US` of `fr-FR`. Standaardwaarden in `en`het Engels . |
+| `data-icon-px-size` | Hiermee stelt u de grootte van het pictogram in pixels in. Standaard naar 20px. |
 
 ## <a name="browser-support"></a>Browserondersteuning
 
-Gebruik de meest recente versies van de volgende browsers voor de beste ervaring met de insluitende lezer.
+Gebruik de meest recente versies van de volgende browsers voor de beste ervaring met de Immersive Reader.
 
 * Microsoft Edge
 * Internet Explorer 11
@@ -226,5 +226,5 @@ Gebruik de meest recente versies van de volgende browsers voor de beste ervaring
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* De [insluitende lezer-SDK op github](https://github.com/microsoft/immersive-reader-sdk) verkennen
-* [Snelstartgids: een web-app maken waarmee de insluitende lezerC#wordt gestart ()](./quickstart.md)
+* Ontdek de [Immersive Reader SDK op GitHub](https://github.com/microsoft/immersive-reader-sdk)
+* [Snelstart: maak een web-app die de Immersive Reader (C#)](./quickstart.md)

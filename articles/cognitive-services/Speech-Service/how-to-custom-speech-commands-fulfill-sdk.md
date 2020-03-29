@@ -1,7 +1,7 @@
 ---
-title: Opdrachten uitvoeren vanuit een client met de Speech SDK
+title: Opdrachten van een client uitvoeren met de Speech SDK
 titleSuffix: Azure Cognitive Services
-description: In dit artikel wordt uitgelegd hoe u aangepaste opdrachten voor activiteiten op een client met de spraak-SDK kunt afhandelen.
+description: In dit artikel leggen we uit hoe u aangepaste opdrachtenactiviteiten op een client afhandelen met de Speech SDK.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -11,52 +11,52 @@ ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: donkim
 ms.openlocfilehash: e109955774722da7f55defe1417de35ff202cce8
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367735"
 ---
-# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>Opdrachten uitvoeren vanuit een client met de Speech SDK (preview)
+# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>Opdrachten van een client uitvoeren met de Spraak-SDK (Voorbeeld)
 
-Als u taken wilt volt ooien met behulp van een aangepaste opdrachten toepassing, kunt u aangepaste payloads verzenden naar een verbonden client apparaat.
+Als u taken wilt voltooien met een toepassing Aangepaste opdrachten, u aangepaste payloads verzenden naar een verbonden clientapparaat.
 
-In dit artikel voert u de volgende handelingen uit:
+In dit artikel:
 
-- Een aangepaste JSON-nettolading definiëren en verzenden vanuit uw toepassing voor aangepaste opdrachten
-- De aangepaste inhoud van de JSON-nettolading ontvangen en visualiseren vanuit een C# UWP Speech SDK-client toepassing
+- Een aangepaste JSON-payload definiëren en verzenden vanuit uw toepassing Aangepaste opdrachten
+- De aangepaste JSON-payload-inhoud ontvangen en visualiseren van een C# UWP Speech SDK-clienttoepassing
 
 ## <a name="prerequisites"></a>Vereisten
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Een sleutel van een Azure-abonnement voor de speech-service
-  - [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com)
-- Een eerder gemaakte aangepaste opdrachten-app
-  - [Snelstartgids: een aangepaste opdracht maken met para meters (preview)](./quickstart-custom-speech-commands-create-parameters.md)
-- Een Speech SDK met ingeschakelde client toepassing
-  - [Quick Start: verbinding maken met een aangepaste opdracht toepassing met de spraak-SDK (preview)](./quickstart-custom-speech-commands-speech-sdk.md)
+- Een Azure-abonnementssleutel voor spraakservice
+  - [Gratis een gratis of](get-started.md) maak het op de [Azure-portal](https://portal.azure.com)
+- Een eerder gemaakte app Aangepaste opdrachten
+  - [Snelstart: een aangepaste opdracht maken met parameters (voorbeeld)](./quickstart-custom-speech-commands-create-parameters.md)
+- Een clienttoepassing met spraak-SDK
+  - [Snelstart: verbinding maken met een aangepaste opdrachttoepassing met de Spraak-SDK (Voorbeeld)](./quickstart-custom-speech-commands-speech-sdk.md)
 
 ## <a name="optional-get-started-fast"></a>Optioneel: snel aan de slag
 
-In dit artikel wordt stapsgewijs beschreven hoe u een client toepassing kunt maken om te praten met uw toepassing voor aangepaste opdrachten. Als u liever meteen wilt beginnen, is de volledige, kant-en-klaar-assembly-bron code die in dit artikel wordt gebruikt, beschikbaar in de voor [beelden van spraak-SDK](https://aka.ms/csspeech/samples).
+In dit artikel wordt stap voor stap beschreven hoe u een clienttoepassing maken om met uw toepassing Aangepaste opdrachten te praten. Als u er liever in duikt, is de volledige, kant-en-klare broncode die in dit artikel wordt gebruikt, beschikbaar in de [Speech SDK Samples.](https://aka.ms/csspeech/samples)
 
-## <a name="fulfill-with-json-payload"></a>Voldoen aan JSON-nettolading
+## <a name="fulfill-with-json-payload"></a>Vervul met JSON payload
 
-1. Open de eerder gemaakte toepassing voor aangepaste opdrachten vanuit de [Speech Studio](https://speech.microsoft.com/)
-1. Controleer de sectie **voltooiings regels** om ervoor te zorgen dat u de eerder gemaakte regel hebt die terugkeert naar de gebruiker
-1. Als u een Payload rechtstreeks naar de client wilt verzenden, maakt u een nieuwe regel met de actie activiteit verzenden
+1. De eerder gemaakte toepassing Aangepaste opdrachten openen vanuit de [Spraakstudio](https://speech.microsoft.com/)
+1. Controleer de sectie **Voltooiingsregels** om te controleren of u de eerder gemaakte regel hebt die op de gebruiker reageert
+1. Als u een payload rechtstreeks naar de client wilt verzenden, maakt u een nieuwe regel met de actie Activiteit verzenden
 
    > [!div class="mx-imgBorder"]
-   > ![de voltooiings regel voor het verzenden van de activiteit](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
+   > ![Voltooiingsregel Activiteit verzenden](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
    | Instelling | Voorgestelde waarde | Beschrijving |
    | ------- | --------------- | ----------- |
    | Regelnaam | UpdateDeviceState | Een naam die het doel van de regel beschrijft |
-   | Voorwaarden | Vereiste para meter-`OnOff` en `SubjectDevice` | Voor waarden die bepalen wanneer de regel kan worden uitgevoerd |
-   | Acties | `SendActivity` (zie hieronder) | De actie die moet worden uitgevoerd wanneer de regel voorwaarde waar is |
+   | Voorwaarden | Vereiste parameter `OnOff` - en`SubjectDevice` | Voorwaarden die bepalen wanneer de regel kan worden uitgevoerd |
+   | Acties | `SendActivity`(zie hieronder) | De actie die moet worden ondernomen wanneer de regelvoorwaarde waar is |
 
    > [!div class="mx-imgBorder"]
-   > ![payload van activiteit verzenden](media/custom-speech-commands/fulfill-sdk-send-activity-action.png)
+   > ![Activiteitspayload verzenden](media/custom-speech-commands/fulfill-sdk-send-activity-action.png)
 
    ```json
    {
@@ -67,11 +67,11 @@ In dit artikel wordt stapsgewijs beschreven hoe u een client toepassing kunt mak
    }
    ```
 
-## <a name="create-visuals-for-device-on-or-off-state"></a>Visualisaties maken voor het apparaat in-of uitschakelen
+## <a name="create-visuals-for-device-on-or-off-state"></a>Visuals maken voor apparaat in- of uitschakelen-status
 
-In [Quick Start: verbinding maken met een aangepaste opdracht toepassing met de Speech-SDK (preview)](./quickstart-custom-speech-commands-speech-sdk.md) u hebt een Speech SDK-client toepassing gemaakt die de opdrachten heeft verwerkt, zoals `turn on the tv`, `turn off the fan`. Voeg nu enkele visuele elementen toe zodat u het resultaat van deze opdrachten kunt zien.
+In [Quickstart: Maak verbinding met een aangepaste opdrachttoepassing met de Speech SDK (Preview)](./quickstart-custom-speech-commands-speech-sdk.md) hebt u een Speech SDK-clienttoepassing gemaakt die opdrachten heeft verwerkt zoals `turn on the tv`, `turn off the fan`. Voeg nu wat visuals toe, zodat u het resultaat van deze opdrachten zien.
 
-Voeg gelabelde vakken toe met tekst die wordt aangegeven in of **uit** met behulp **van** de volgende XML die wordt toegevoegd aan `MainPage.xaml.cs`
+Gelabelde vakken toevoegen met tekst die **aan** of **uit** geeft met de volgende XML toegevoegd aan`MainPage.xaml.cs`
 
 ```xml
 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
@@ -90,14 +90,14 @@ Voeg gelabelde vakken toe met tekst die wordt aangegeven in of **uit** met behul
 </StackPanel>
 ```
 
-## <a name="handle-customizable-payload"></a>Aanpas bare nettolading verwerken
+## <a name="handle-customizable-payload"></a>Omgaan met aanpasbare payload
 
-Nu u een JSON-nettolading hebt gemaakt, kunt u een verwijzing naar de [JSON.net](https://www.newtonsoft.com/json) -bibliotheek voor het afhandelen van deserialisatie toevoegen.
+Nu u een JSON-payload hebt gemaakt, u een verwijzing toevoegen naar de [JSON.NET](https://www.newtonsoft.com/json) bibliotheek om deserialisatie te verwerken.
 
 > [!div class="mx-imgBorder"]
-> ![payload van activiteit verzenden](media/custom-speech-commands/fulfill-sdk-json-nuget.png)
+> ![Activiteitspayload verzenden](media/custom-speech-commands/fulfill-sdk-json-nuget.png)
 
-Voeg in `InitializeDialogServiceConnector` het volgende toe aan de gebeurtenis-handler van `ActivityReceived`. Met de extra code wordt de payload geëxtraheerd uit de activiteit en wordt de visuele status van de TV of ventilator dienovereenkomstig gewijzigd.
+Voeg `InitializeDialogServiceConnector` het volgende `ActivityReceived` toe aan uw gebeurtenishandler. De extra code zal de lading uit de activiteit halen en de visuele toestand van de tv of ventilator dienovereenkomstig veranderen.
 
 ```C#
 connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
@@ -134,12 +134,12 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 ## <a name="try-it-out"></a>Uitproberen
 
 1. De toepassing starten
-1. Selecteer microfoon inschakelen
-1. Selecteer de knop spreken
-1. Zeg `turn on the tv`
-1. De visuele status van de TV moet worden gewijzigd in aan
+1. Microfoon inschakelen selecteren
+1. De knop Praten selecteren
+1. Zeggen`turn on the tv`
+1. De visuele toestand van de tv moet veranderen in "Aan"
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Procedure: validaties toevoegen aan aangepaste opdracht parameters (preview-versie)](./how-to-custom-speech-commands-validations.md)
+> [How to: Validaties toevoegen aan aangepaste opdrachtparameters (voorbeeld)](./how-to-custom-speech-commands-validations.md)

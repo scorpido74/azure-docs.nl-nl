@@ -1,7 +1,7 @@
 ---
-title: Instellingen voor het revisie programma configureren-Content Moderator
+title: Instellingen voor controlegereedschappen configureren - Inhoudsmoderator
 titleSuffix: Azure Cognitive Services
-description: Gebruik het beoordelings programma om uw team, tags, connectors, werk stromen en referenties voor Content Moderator te configureren of op te halen.
+description: Gebruik het hulpprogramma Controleren om uw team, tags, connectors, werkstromen en referenties voor inhoudsmoderator te configureren of op te halen.
 services: cognitive-services
 author: PatrickFarley
 manager: mikemcca
@@ -11,133 +11,133 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220125"
 ---
 # <a name="configure-the-review-tool"></a>Het beoordelingsprogramma configureren
 
-Het [hulp programma beoordeling](https://contentmoderator.cognitive.microsoft.com) heeft verschillende belang rijke functies die u kunt openen via het menu **instellingen** op het dash board.
+De [tool Controleren](https://contentmoderator.cognitive.microsoft.com) heeft een aantal belangrijke functies die u openen via het menu **Instellingen** op het dashboard.
 
-![Content Moderator het menu met de instellingen te controleren](images/settings-1.png)
+![Inhoudsmoderator Ook instellingenmenu controleren](images/settings-1.png)
 
-## <a name="manage-team-and-subteams"></a>Team en subteams beheren
+## <a name="manage-team-and-subteams"></a>Team- en subteams beheren
 
-Op het tabblad **team** kunt u uw team en subteams beheren&mdash;groepen gebruikers die kunnen worden gewaarschuwd wanneer bepaalde [mensen beoordelingen](../review-api.md#reviews) worden gestart. U kunt slechts één team gebruiken (dat u maakt wanneer u zich aanmeldt met het hulp programma beoordeling), maar u kunt meerdere subteams maken. De team beheerder kan leden uitnodigen, hun machtigingen instellen en ze toewijzen aan verschillende subteams.
+Op het tabblad **Team** u&mdash;uw team- en subteamsgroepen beheren van gebruikers die op de hoogte kunnen worden gesteld wanneer bepaalde [menselijke beoordelingen](../review-api.md#reviews) worden gestart. U slechts één team hebben (dat u maakt wanneer u zich aanmeldt met het gereedschap Controleren), maar u meerdere subteams maken. De teambeheerder kan leden uitnodigen, hun machtigingen instellen en ze toewijzen aan verschillende subteams.
 
-![Team instellingen voor het hulp programma bekijken](images/settings-2-team.png)
+![Instellingen voor gereedschapsteam controleren](images/settings-2-team.png)
 
-Subteams zijn handig voor het maken van escalatie teams of teams die specifiek zijn gericht op het controleren van specifieke inhouds categorieën. U kunt bijvoorbeeld inhoud voor volwassenen naar een afzonderlijk team verzenden voor verdere beoordeling.
+Subteams zijn handig voor het maken van escalatieteams of teams die zich toeleggen op het beoordelen van specifieke categorieën inhoud. U bijvoorbeeld inhoud voor volwassenen naar een apart team sturen voor verdere beoordeling.
 
-In deze sectie wordt uitgelegd hoe u subteamsen maakt en snel Recensies toewijst. U kunt echter [werk stromen](workflows.md) gebruiken om beoordelingen toe te wijzen op basis van specifieke criteria.
+In dit gedeelte wordt uitgelegd hoe u subteams maakt en snel onderweg beoordelingen toewijst. U echter [werkstromen](workflows.md) gebruiken om beoordelingen toe te wijzen op basis van specifieke criteria.
 
 ### <a name="create-a-subteam"></a>Een subteam maken
 
-Ga naar de sectie **subteams** en klik op **subteam toevoegen**. Voer de naam van uw subteam in het dialoog venster in en klik op **Opslaan**.
+Ga naar de sectie **Subteams** en klik op **Subteam toevoegen**. Voer de naam van uw subteam in het dialoogvenster in en klik op **Opslaan**.
 
-![Naam van subteam](images/1-Teams-2.PNG)
+![Subteamnaam](images/1-Teams-2.PNG)
 
-#### <a name="invite-teammates"></a>Team leden uitnodigen
+#### <a name="invite-teammates"></a>Teamleden uitnodigen
 
-U kunt geen iemand aan een subteam toewijzen als ze nog geen lid zijn van het standaard team. Daarom moet u eerst revisors toevoegen aan het standaard team. Klik op **uitnodigen** op het tabblad **team** .
+U iemand niet aan een subteam toewijzen als deze persoon nog geen lid is van het standaardteam, dus u moet eerst revisoren toevoegen aan het standaardteam. Klik **op Uitnodigen** op het tabblad **Team.**
 
 ![Gebruikers uitnodigen](images/invite-users.png)
 
-#### <a name="assign-teammates-to-subteam"></a>Team leden toewijzen aan subteam
+#### <a name="assign-teammates-to-subteam"></a>Teamgenoten toewijzen aan subteam
 
-Klik op de knop **lid toevoegen** om leden van uw standaard team toe te wijzen aan een of meer subteams. U kunt alleen bestaande gebruikers toevoegen aan een subteam. Voor het toevoegen van nieuwe gebruikers die zich niet in het beoordelings programma bevinden, kunt u ze uitnodigen met behulp van de knop ' uitnodigen ' op de pagina team instellingen.
+Klik **op** de knop Lid toevoegen om leden van uw standaardteam toe te wijzen aan een of meer subteams. U alleen bestaande gebruikers toevoegen aan een subteam. Als u nieuwe gebruikers wilt toevoegen die zich niet in het controleprogramma bevinden, nodigt u ze uit via de knop Uitnodigen op de pagina Teaminstellingen.
 
-![Leden van een subteam toewijzen](images/1-Teams-3.PNG)
+![Subteamleden toewijzen](images/1-Teams-3.PNG)
 
 ### <a name="assign-reviews-to-subteams"></a>Beoordelingen toewijzen aan subteams
 
-Zodra u uw subteams en toegewezen leden hebt gemaakt, kunt u beginnen met het toewijzen van inhouds [beoordelingen](../review-api.md#reviews) aan die subteams. Dit doet u via het tabblad **controleren** van de site.
-Als u inhoud aan een subteam wilt toewijzen, klikt u op het beletsel teken in de rechter bovenhoek, selecteert **u verplaatsen naar**en selecteert u een subteam.
+Zodra u uw subteams hebt gemaakt en leden hebt toegewezen, u [inhoudsbeoordelingen](../review-api.md#reviews) toewijzen aan die subteams. Dit gebeurt via het tabblad **Controleren** van de site.
+Als u inhoud wilt toewijzen aan een subteam, klikt u op de ellips in de rechterbovenhoek, selecteert u **Verplaatsen naar**en selecteert u een subteam.
 
-![Afbeeldings beoordeling aan subteam toewijzen](images/3-review-image-subteam-1.png)
+![Afbeeldingscontrole toewijzen aan subteam](images/3-review-image-subteam-1.png)
 
-### <a name="switch-between-subteams"></a>Scha kelen tussen subteams
+### <a name="switch-between-subteams"></a>Schakelen tussen subteams
 
-Als u lid bent van meer dan één subteam, kunt u scha kelen tussen deze subteams om te wijzigen welke inhouds Beoordelingen voor u worden weer gegeven. Op het tabblad **controleren** selecteert u de vervolg keuzelijst met de naam **standaard** en selecteert u **subteam kiezen**. U kunt de inhouds Beoordelingen voor verschillende subteams weer geven, maar alleen degenen waarvan u lid bent.
+Als u lid bent van meer dan één subteam, u schakelen tussen deze subteams om te wijzigen welke inhoudsbeoordelingen voor u worden weergegeven. Selecteer op het tabblad **Controleren** het vervolgkeuzemenu met **de tekst Standaard** en selecteer **Subteam kiezen**. U de inhoudsrecensies voor verschillende subteams bekijken, maar alleen die waarvan u lid bent.
 
-![Scha kelen tussen subteams](images/3-review-image-subteam-2.png)
+![Schakelen tussen subteams](images/3-review-image-subteam-2.png)
 
 ## <a name="tags"></a>Tags
 
-Op het tabblad **labels** kunt u aangepaste toezicht Tags definiëren naast de twee standaard markeringen voor toezicht&mdash;**isadult** (**a**) en **isracy** (**r**). Wanneer u een aangepaste tag maakt, wordt deze beschikbaar in beoordelingen naast de standaard tags. U kunt wijzigen welke tags worden weer gegeven in beoordelingen door de instellingen voor zicht baarheid van hun voor beeld te scha kelen.
+Met het tabblad **Labels** u aangepaste moderatietags definiëren&mdash;naast de twee standaardmoderatietags **(a)** en**isadult** **isracy** **(r).** Wanneer u een aangepaste tag maakt, wordt deze beschikbaar in recensies naast de standaardtags. U wijzigen welke tags in beoordelingen worden weergegeven door de zichtbaarheidsinstellingen te wijzigen.
 
-![De weer gave Tags, inclusief de selectie vakjes ' is zichtbaar '](images/tags-4-disable.png)
+![Tagsweergave, inclusief de selectievakjes 'Zichtbaar'](images/tags-4-disable.png)
 
-### <a name="create-custom-tags"></a>Aangepaste labels maken
+### <a name="create-custom-tags"></a>Aangepaste tags maken
 
-Als u een nieuwe tag wilt maken, moet u een korte code, naam en beschrijving in de desbetreffende velden invoeren.
+Als u een nieuwe tag wilt maken, moet u een korte code, naam en beschrijving invoeren in de betreffende velden.
 
-- **Korte code**: Voer een code van twee letters in voor de tag. Voor beeld: **CB**
-- **Naam**: Voer een korte en beschrijvende label naam in in kleine letters zonder spaties. Voor beeld: **isbullying**.
-- **Beschrijving**: (optioneel) Voer een beschrijving in van het type inhoud dat door de tag wordt doel. Voor beeld: **afbeeldingen of instanties van Cyber Bullying**.
+- **Korte code**: Voer een code van twee letters in voor uw tag. Voorbeeld: **cb**
+- **Naam:** Voer een korte en beschrijvende tagnaam in kleine letters zonder spaties in. Voorbeeld: **isbullying**.
+- **Beschrijving**: (optioneel) Voer een beschrijving in van het soort inhoud waarop uw tag is gericht. Voorbeeld: **Afbeeldingen of gevallen van cyberpesten**.
 
-Klik op **toevoegen** om een tag toe te voegen en klik op **Opslaan** wanneer u klaar bent met het maken van tags.
+Klik **op Toevoegen** om een tag toe te voegen en klik op **Opslaan** wanneer u klaar bent met het maken van tags.
 
-![Hulp programma voor het maken van een nieuw label dialoog venster](images/settings-3-tags.png)
+![Het hulpprogramma Controleren maakt een nieuw tagdialoogvenster](images/settings-3-tags.png)
 
 ### <a name="delete-tags"></a>Tags verwijderen
 
-U kunt aangepaste tags verwijderen door het prullenbak pictogram naast hun vermeldingen in de lijst Tags te selecteren, maar u kunt de standaard tags niet verwijderen.
+U aangepaste tags verwijderen door het prullenbakpictogram naast de vermeldingen in de lijst Labels te selecteren, maar u de standaardtags niet verwijderen.
 
 ## <a name="connectors"></a>Connectors
 
-Op het tabblad **connectors** kunt u uw connectors beheren. Dit zijn service-specifieke invoeg toepassingen die inhoud op verschillende manieren kunnen verwerken als onderdeel van [werk stromen](../review-api.md#workflows)voor inhoud.
+Met het tabblad **Connectors** u uw connectors beheren, die servicespecifieke plug-ins zijn die inhoud op verschillende manieren kunnen verwerken als onderdeel van [inhoudswerkstromen.](../review-api.md#workflows)
 
-De standaard connector wanneer u een werk stroom maakt, is de Content Moderator-connector, waarmee inhoud als **volwassene** of **ongepaste**kan worden gemarkeerd, de woorden kunnen worden gevonden, enzovoort. U kunt echter andere connectors gebruiken die hier worden weer gegeven, mits u referenties voor hun respectieve services hebt (u moet bijvoorbeeld een [Face](https://docs.microsoft.com/azure/cognitive-services/face/overview) -abonnements sleutel ophalen).
+De standaardconnector wanneer u een werkstroom maakt, is de inhoudsmoderatorconnector, die inhoud kan markeren als **volwassen** of **pikant,** godslastering kan vinden, enzovoort. U echter andere connectoren gebruiken die hier worden vermeld, zolang u referenties hebt voor hun respectieve services (om bijvoorbeeld de Face-connector te gebruiken, moet u een [Face-abonnementssleutel](https://docs.microsoft.com/azure/cognitive-services/face/overview) krijgen).
 
-Het [hulp programma voor beoordeling](./human-in-the-loop.md) bevat de volgende connectors:
+Het [gereedschap Controleren](./human-in-the-loop.md) bevat de volgende connectors:
 
 - Emotion
 - Face
-- PhotoDNA-Cloud service
+- PhotoDNA Cloud Service
 - Tekstanalyse
 
 ### <a name="add-a-connector"></a>Een connector toevoegen
 
-Als u een connector wilt toevoegen (en deze beschikbaar wilt maken voor gebruik in inhouds [werk stromen](../review-api.md#workflows)), selecteert u de juiste knop **verbinden** . Voer in het volgende dialoog venster uw abonnements sleutel voor die service in. Wanneer u klaar bent, wordt de nieuwe connector boven aan de pagina weer gegeven.
+Als u een connector wilt toevoegen (en beschikbaar wilt maken voor gebruik in [inhoudswerkstromen),](../review-api.md#workflows)selecteert u de juiste **knop Verbinding maken.** Voer in het volgende dialoogvenster uw abonnementssleutel voor die service in. Wanneer u klaar bent, moet uw nieuwe connector boven aan de pagina worden weergegeven.
 
-![Instellingen voor Content Moderator connectors](images/settings-4-connectors.png)
+![Instellingen voor connectoren voor inhoudsmoderator](images/settings-4-connectors.png)
 
 ## <a name="workflows"></a>Werkstromen
 
-Op het tabblad **werk stromen** kunt u uw [werk stromen](../review-api.md#workflows)beheren. Werk stromen zijn Cloud filters voor inhoud en ze werken met connectors om inhoud op verschillende manieren te sorteren en de juiste acties uit te voeren. Hier kunt u uw werk stromen definiëren, bewerken en testen. Zie [werk stromen definiëren en gebruiken](Workflows.md) voor richt lijnen voor informatie over hoe u dit doet.
+Op het tabblad **Werkstromen** u uw [werkstromen](../review-api.md#workflows)beheren. Werkstromen zijn cloudfilters voor inhoud en ze werken met connectors om inhoud op verschillende manieren te sorteren en passende acties uit te voeren. Hier u uw werkstromen definiëren, bewerken en testen. Zie [Werkstromen definiëren en gebruiken](Workflows.md) voor richtlijnen voor hoe u dit doen.
 
-![Werk stroom instellingen Content Moderator](images/settings-5-workflows.png)
+![Werkstroominstellingen voor inhoudsmoderator](images/settings-5-workflows.png)
 
 ## <a name="credentials"></a>Referenties
 
-Het tabblad **referenties** biedt snelle toegang tot uw content moderator-abonnements sleutel, die u nodig hebt om toegang te krijgen tot een van de toezicht services van een rest-aanroep of client-SDK.
+Het tabblad **Referenties** biedt snelle toegang tot uw abonnementssleutel voor inhoudsmoderator, die u nodig hebt om toegang te krijgen tot een van de moderatieservices van een REST-oproep of clientSDK.
 
-![Content Moderator referenties](images/settings-6-credentials.png)
+![Referenties voor inhoudsmoderator](images/settings-6-credentials.png)
 
-### <a name="use-external-credentials-for-workflows"></a>Externe referenties voor werk stromen gebruiken
+### <a name="use-external-credentials-for-workflows"></a>Externe referenties gebruiken voor werkstromen
 
-Het [hulp programma beoordeling](https://contentmoderator.cognitive.microsoft.com) genereert een gratis proef versie voor Azure content moderator Services wanneer u zich aanmeldt, maar u kunt deze ook configureren voor het gebruik van een bestaande sleutel van uw Azure-account. Dit wordt aanbevolen voor grootschalige scenario's, aangezien de gratis proef sleutels strikte gebruiks limieten ([prijzen en limieten](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/)) hebben.
+Met [de tool Controleren](https://contentmoderator.cognitive.microsoft.com) wordt een gratis proefsleutel gegenereerd voor Azure Content Moderator-services wanneer u zich aanmeldt, maar u deze ook configureren om een bestaande sleutel van uw Azure-account te gebruiken. Dit wordt aanbevolen voor grootschalige scenario's, omdat gratis proefsleutels strikte gebruikslimieten hebben[(prijzen en limieten).](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/)
 
-Als u een [Content moderator resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) hebt gemaakt in azure, navigeert u deze in de Azure Portal en selecteert u de Blade **sleutels** . Kopieer een van de sleutels.
+Als u een [inhoudsmoderatorbron](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) in Azure hebt gemaakt, navigeert u naar de bron in de Azure-portal en selecteert u het blade **Sleutels.** Kopieer een van je sleutels.
 
-![Content Moderator sleutels in de Azure Portal](images/credentials-azure-portal-keys.PNG)
+![Inhoudsmoderatorsleutels in de Azure-portal](images/credentials-azure-portal-keys.PNG)
 
-Ga op het tabblad controle **van het** [hulp programma](https://contentmoderator.cognitive.microsoft.com)naar het deel venster **werk stroom instellingen** , selecteer **bewerken**en plak uw sleutel in het veld **OCP-APIM-Subscription-Key** . Nu gebruiken werk stromen die de toezicht-Api's aanroepen, uw Azure-referentie.
+Ga op het tabblad Referenties van het [gereedschap](https://contentmoderator.cognitive.microsoft.com) **Controleren** naar het deelvenster **Werkstroominstellingen,** selecteer **Bewerken**en plak de sleutel in het veld **Ocp-Apim-Abonnement-Sleutel.** Werkstromen die de moderatie-API's aanroepen, gebruiken nu uw Azure-referentie.
 
 > [!NOTE]
-> De andere twee velden in het deel venster **werk stroom instellingen** zijn voor aangepaste termen en lijsten met installatie kopieën. Raadpleeg de hand leidingen voor [aangepaste voor waarden](../try-terms-list-api.md) of [aangepaste afbeeldingen](../try-image-list-api.md) voor meer informatie.
+> De andere twee velden in het deelvenster **Werkstroominstellingen** zijn voor aangepaste termen- en afbeeldingslijsten. Bekijk de [aangepaste termen](../try-terms-list-api.md) of [aangepaste afbeeldingen](../try-image-list-api.md) gidsen om meer te weten te komen over deze.
 
-### <a name="use-your-azure-account-with-the-review-apis"></a>Uw Azure-account gebruiken met de controle-Api's
+### <a name="use-your-azure-account-with-the-review-apis"></a>Uw Azure-account gebruiken met de revisie-API's
 
-Als u uw Azure-sleutel wilt gebruiken met de controle-Api's, moet u de resource-ID ophalen. Ga naar uw Content Moderator-resource in de Azure Portal en selecteer de Blade **Eigenschappen** . Kopieer de waarde van de resource-ID en plak deze in het veld **white list resource-id ('s)** op het tabblad **referenties** van het controle programma.
+Als u uw Azure-sleutel wilt gebruiken met de controle-API's, moet u uw resource-id ophalen. Ga naar de bron Inhoudsmoderator in de Azure-portal en selecteer het blad **Eigenschappen.** Kopieer de waarde resource-id en plak deze in het veld **('s)** op de witte lijst van het tabblad Referenties van het gereedschap **Controleren.**
 
-![Content Moderator Resource-ID in de Azure Portal](images/credentials-azure-portal-resourceid.PNG)
+![Resource-id voor inhoudsmoderator in de Azure-portal](images/credentials-azure-portal-resourceid.PNG)
 
-Als u uw abonnements sleutel op beide locaties hebt ingevoerd, wordt de proef versie die wordt meegeleverd met het account van uw beoordelings programma niet gebruikt, maar blijft deze beschikbaar.
+Als u uw abonnementssleutel op beide plaatsen hebt ingevoerd, wordt de testsleutel die bij uw account met de beoordelingstool wordt geleverd, niet gebruikt, maar blijft deze beschikbaar.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg de Quick Start van het [hulp programma](../quick-start.md) om te beginnen met het hulp programma beoordeling in scenario's voor inhouds toezicht.
+Volg het [gereedschap Snel starten van](../quick-start.md) het gereedschap Controleren om het gereedschap Controleren te gebruiken in scenario's voor inhoudsbeheer.

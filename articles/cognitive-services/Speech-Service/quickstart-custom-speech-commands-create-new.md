@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: een aangepaste opdracht maken (preview)-spraak service'
+title: 'Snelstart: een aangepaste opdracht (voorbeeld) maken - Spraakservice'
 titleSuffix: Azure Cognitive Services
-description: In dit artikel kunt u een toepassing met gehoste aangepaste opdrachten maken en testen.
+description: In dit artikel maakt en test u een gehoste toepassing voor aangepaste opdrachten.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -11,147 +11,147 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
 ms.openlocfilehash: 4ae8f13b4887bbc41b17defa3f9a20c07ed0cb45
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76155584"
 ---
-# <a name="quickstart-create-a-custom-command-preview"></a>Snelstartgids: een aangepaste opdracht maken (preview)
+# <a name="quickstart-create-a-custom-command-preview"></a>Snelstart: een aangepaste opdracht maken (voorbeeld)
 
-In dit artikel leert u hoe u een toepassing met gehoste aangepaste opdrachten kunt maken en testen.
-De toepassing herkent een utterance zoals ' de TV inschakelen ' en reageert met een eenvoudig bericht ' OK, de TV inschakelen '.
+In dit artikel leert u hoe u een gehoste toepassing voor aangepaste opdrachten maken en testen.
+De applicatie herkent een uiting als "zet de tv aan" en reageert met een eenvoudig bericht "Ok, het inschakelen van de tv".
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een spraak abonnement.
+- Een spraakabonnement.
 
-Als u geen spraak abonnement hebt, kunt u er een maken door te navigeren naar de [Speech Studio](https://speech.microsoft.com/) en **een spraak resource maken**te selecteren.
+Als u geen spraakabonnement hebt, u er een maken door naar de [Spraakstudio](https://speech.microsoft.com/) te navigeren en **Een spraakbron maken te**selecteren.
 
   > [!div class="mx-imgBorder"]
-  > [![een project maken](media/custom-speech-commands/create-new-subscription.png)](media/custom-speech-commands/create-new-subscription.png#lightbox)
+  > [![Een project](media/custom-speech-commands/create-new-subscription.png) maken](media/custom-speech-commands/create-new-subscription.png#lightbox)
 
   > [!NOTE]
-  > Tijdens de preview-periode wordt alleen de westus2-regio ondersteund.
+  > Tijdens de preview wordt alleen de regio Westus2 ondersteund.
 
-## <a name="go-to-the-speech-studio-for-custom-commands"></a>Ga naar de speech Studio voor aangepaste opdrachten
+## <a name="go-to-the-speech-studio-for-custom-commands"></a>Ga naar de spraakstudio voor aangepaste opdrachten
 
-1. Open uw webbrowser en ga naar de [Speech Studio](https://speech.microsoft.com/)
+1. Uw webbrowser openen en naar de [spraakstudio](https://speech.microsoft.com/) navigeren
 1. Voer uw referenties in om u aan te melden bij de portal
 
-   - De standaard weergave is uw lijst met spraak abonnementen
+   - De standaardweergave is uw lijst met spraakabonnementen
      > [!NOTE]
-     > Als u de pagina abonnement selecteren niet ziet, kunt u daar navigeren door te klikken op spraak bronnen in het menu instellingen op de bovenste balk.
+     > Als u de pagina Selecteren abonnement niet ziet, u daar naartoe navigeren door 'Spraakbronnen' te kiezen in het instellingenmenu op de bovenste balk.
 
-1. Selecteer uw spraak abonnement en selecteer vervolgens **Go to Studio**
-1. **Aangepaste opdrachten selecteren (preview-versie)**
+1. Selecteer uw spraakabonnement en selecteer **Ga naar Studio**
+1. **Aangepaste opdrachten selecteren (voorbeeld)**
 
-De standaard weergave is een lijst met de aangepaste opdrachten voor toepassingen die u hebt gemaakt.
+De standaardweergave is een lijst met de aangepaste opdrachtentoepassingen die u hebt gemaakt.
 
-## <a name="create-a-custom-commands-project"></a>Een project met aangepaste opdrachten maken
+## <a name="create-a-custom-commands-project"></a>Een project Aangepaste opdrachten maken
 
-1. Selecteer **Nieuw project** om een nieuw project te maken
+1. Nieuw **project selecteren** om een nieuw project te maken
 
    > [!div class="mx-imgBorder"]
-   > ![een project maken](media/custom-speech-commands/create-new-project.png)
+   > ![Een project maken](media/custom-speech-commands/create-new-project.png)
 
 1. Voer de naam en taal van het project in.
-1. Selecteer een ontwerp bron. Als er geen geldige ontwerp resources zijn, maakt u er een door **nieuwe resource maken**te selecteren.
+1. Selecteer een ontwerpbron. Als er geen geldige bronnen voor het ontwerpen zijn, maakt u er een door **Nieuwe resource maken te**selecteren.
 
    > [!div class="mx-imgBorder"]
    > ![Een resource maken](media/custom-speech-commands/create-new-resource.png)
 
-   1. Voer de resource naam, de groep, de locatie en de prijs categorie in.
+   1. Voer de resourcenaam, groep, locatie en prijslaag in.
 
          > [!NOTE]
-         > U kunt resource groepen maken door de naam van de gewenste resource groep in te voeren in het veld Resource groep. De resource groep wordt gemaakt wanneer **maken** is geselecteerd.
+         > U resourcegroepen maken door de gewenste naam van de resourcegroep in te voeren in het veld Resourcegroep. De resourcegroep wordt gemaakt wanneer **Maken** is geselecteerd.
 
-1. Klik op **maken** om het project te maken.
-1. Selecteer uw project zodra het is gemaakt.
+1. Klik **op Maken** om uw project te maken.
+1. Selecteer uw project nadat u bent gemaakt.
 
-Uw weer gave moet nu een overzicht zijn van de toepassing aangepaste opdrachten.
+Uw weergave moet nu een overzicht zijn van uw toepassing Aangepaste opdrachten.
 
-## <a name="update-luis-resources-optional"></a>LUIS-resources bijwerken (optioneel)
+## <a name="update-luis-resources-optional"></a>LUIS-bronnen bijwerken (optioneel)
 
-U kunt de set ontwerpen in het venster Nieuw project bijwerken en een Voorspellings resource instellen die wordt gebruikt om invoer tijdens runtime te herkennen.
+U de ontwerpbronset bijwerken in het nieuwe projectvenster en een voorspellingsbron instellen die wordt gebruikt om invoer tijdens runtime te herkennen.
 
 > [!NOTE]
-> U moet een Voorspellings bron instellen voordat u de voor spellingen van de aanvraag van de 1.000-aanvragen voor de toepassing aanvraagt.
+> U moet een voorspellingsbron instellen voordat uw toepassing voorspellingen opvraagt die verder gaan dan de 1.000 aanvragen die door de auteursbron worden verstrekt.
 
 > [!div class="mx-imgBorder"]
-> ![LUIS-resources instellen](media/custom-speech-commands/set-luis-resources.png)
+> ![LUIS-bronnen instellen](media/custom-speech-commands/set-luis-resources.png)
 
-1. Ga naar het deel venster LUIS resources door **instellingen** te selecteren in het linkerdeel venster en vervolgens **Luis resources** in het middelste deel venster.
-1. Selecteer een Voorspellings bron of maak een resource door **nieuwe resource maken** te selecteren
+1. Navigeer naar het deelvenster LUIS-bronnen door **Instellingen** in het linkerdeelvenster te selecteren en vervolgens **LUIS-bronnen** in het middelste deelvenster.
+1. Selecteer een voorspellingsbron of maak er een door **Nieuwe resource maken te** selecteren
 1. Selecteer **Opslaan**
 
 ## <a name="create-a-new-command"></a>Een nieuwe opdracht maken
 
-U kunt nu een opdracht maken. We gaan een voor beeld gebruiken waarbij één utterance wordt gebruikt, `turn on the tv`en reageert met het bericht `Ok, turning on the TV`.
+Nu u een opdracht maken. Laten we een voorbeeld gebruiken dat één `turn on the tv`utterance neemt en `Ok, turning on the TV`met het bericht reageert.
 
-1. Maak een nieuwe opdracht door het `+` pictogram naast opdrachten te selecteren en geef het de naam `TurnOn`
+1. Een nieuwe opdracht maken `+` door het pictogram naast opdrachten te selecteren en deze de naam te geven`TurnOn`
 1. Selecteer **Opslaan**
 
 > [!div class="mx-imgBorder"]
-> ![een opdracht maken](media/custom-speech-commands/create-add-command.png)
+> ![Een opdracht maken](media/custom-speech-commands/create-add-command.png)
 
-Een opdracht is een set:
+Een opdracht is een set van:
 
 | Groep            | Beschrijving                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Voorbeeldzinnen | Voor beeld van uitingen de gebruiker kan zeggen dat deze opdracht wordt geactiveerd                                                                 |
-| Parameters       | Gegevens die nodig zijn om de opdracht te volt ooien                                                                                |
-| Voltooiings regels | De acties die moeten worden uitgevoerd om te voldoen aan de opdracht. Als u bijvoorbeeld op de gebruiker wilt reageren of met een andere webservice wilt communiceren |
-| Geavanceerde regels   | Aanvullende regels voor het afhandelen van specifieke of complexe situaties                                                              |
+| Voorbeeldzinnen | Voorbeelduitingen die de gebruiker kan zeggen om deze opdracht te activeren                                                                 |
+| Parameters       | Informatie die nodig is om de opdracht te voltooien                                                                                |
+| Voltooiingsregels | De acties die moeten worden ondernomen om het commando te vervullen. Bijvoorbeeld om te reageren op de gebruiker of te communiceren met een andere webservice |
+| Geavanceerde regels   | Aanvullende regels voor het omgaan met meer specifieke of complexe situaties                                                              |
 
-### <a name="add-a-sample-sentence"></a>Een voor beeld van een zin toevoegen
+### <a name="add-a-sample-sentence"></a>Een voorbeeldzin toevoegen
 
-Laten we beginnen met voorbeeld zinnen en een voor beeld geven van wat de gebruiker kan zeggen:
+Laten we beginnen met voorbeeldzinnen en een voorbeeld geven van wat de gebruiker kan zeggen:
 
 ```
 turn on the tv
 ```
 
-We hebben nu geen para meters, dus we kunnen door gaan met de voltooiings regels.
+Voor nu hebben we geen parameters, dus we kunnen verder gaan met voltooiingsregels.
 
-### <a name="add-a-completion-rule"></a>Een voltooiings regel toevoegen
+### <a name="add-a-completion-rule"></a>Een voltooiingsregel toevoegen
 
-Voeg nu een voltooiings regel toe om te reageren op de gebruiker om aan te geven dat een actie wordt ondernomen.
+Voeg nu een voltooiingsregel toe om te reageren op de gebruiker die aangeeft dat er een actie wordt uitgevoerd.
 
-1. Een nieuwe voltooiings regel maken door het `+` pictogram naast voltooiings regels te selecteren
-1. Voer de naam van de regel in
+1. Een nieuwe voltooiingsregel `+` maken door het pictogram naast voltooiingsregels te selecteren
+1. Voer de regelnaam in
 1. Een actie toevoegen
-   1. Maak een nieuwe actie voor spraak reacties door het `+` pictogram naast acties te selecteren en `SpeechResponse` te selecteren
+   1. Een nieuwe actie voor spraakrespons maken door het `+` pictogram naast Acties te selecteren en`SpeechResponse`
    1. Voer het antwoord in
 
    > [!NOTE]
-   > Normale tekst moet beginnen met een streepje. Meer informatie vindt u [hier](https://aka.ms/sc-lg-format)
+   > Reguliere tekst moet beginnen met een streepje. Voor meer informatie, ga [hier](https://aka.ms/sc-lg-format)
 
    > [!div class="mx-imgBorder"]
-   > ![een spraak antwoord maken](media/custom-speech-commands/create-speech-response-action.png)
+   > ![Een spraakreactie maken](media/custom-speech-commands/create-speech-response-action.png)
 
-1. Klik op **Opslaan** om de regel op te slaan
+1. Klik **op Opslaan** om de regel op te slaan
 
 > [!div class="mx-imgBorder"]
-> ![een voltooiings regel maken](media/custom-speech-commands/create-basic-completion-response-rule.png)
+> ![Een voltooiingsregel maken](media/custom-speech-commands/create-basic-completion-response-rule.png)
 
 | Instelling    | Voorgestelde waarde                          | Beschrijving                                        |
 | ---------- | ---------------------------------------- | -------------------------------------------------- |
-| Regelnaam  | "ConfirmationResponse"                   | Een naam die het doel van de regel beschrijft          |
-| Voorwaarden | Geen                                     | Voor waarden die bepalen wanneer de regel kan worden uitgevoerd    |
-| Acties    | SpeechResponse "-OK, inschakelen van de TV" | De actie die moet worden uitgevoerd wanneer de regel voorwaarde waar is |
+| Regelnaam  | "Bevestigingreactie"                   | Een naam die het doel van de regel beschrijft          |
+| Voorwaarden | Geen                                     | Voorwaarden die bepalen wanneer de regel kan worden uitgevoerd    |
+| Acties    | SpeechResponse "- Ok, het inschakelen van de TV" | De actie die moet worden ondernomen wanneer de regelvoorwaarde waar is |
 
-## <a name="try-it-out"></a>Probeer het
+## <a name="try-it-out"></a>Uitproberen
 
-Test het gedrag met behulp van het deel venster testen.
+Test het gedrag met het chatpaneel Testen.
 
 > [!div class="mx-imgBorder"]
-> ![testen met Web Chat](media/custom-speech-commands/create-basic-test-chat.png)
+> ![Testen met webchat](media/custom-speech-commands/create-basic-test-chat.png)
 
-- U typt: ' de TV inschakelen '
-- Verwachte reactie: "OK, inschakelen van de TV"
+- U typt: "zet de tv aan"
+- Verwachte reactie: "Ok, het draaien van de tv"
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: een aangepaste opdracht maken met para meters (preview)](./quickstart-custom-speech-commands-create-parameters.md)
+> [Snelstart: een aangepaste opdracht maken met parameters (voorbeeld)](./quickstart-custom-speech-commands-create-parameters.md)

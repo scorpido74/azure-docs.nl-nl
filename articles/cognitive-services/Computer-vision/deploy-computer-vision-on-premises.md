@@ -1,36 +1,36 @@
 ---
-title: Computer Vision-container gebruiken met Kubernetes en helm
+title: Computer Vision-container gebruiken met Kubernetes en Helm
 titleSuffix: Azure Cognitive Services
-description: Implementeer de Computer Vision-container in een Azure-container exemplaar en test deze in een webbrowser.
+description: Implementeer de container Computer Vision in een Azure Container Instance en test deze in een webbrowser.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/16/2020
 ms.author: dapine
-ms.openlocfilehash: 22ec16f66c463cde49adbc9c472e461169df5eeb
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 126060875c09d70b8680447d78b7cf6ccdd782af
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383785"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79458015"
 ---
-# <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Computer Vision-container gebruiken met Kubernetes en helm
+# <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Computer Vision-container gebruiken met Kubernetes en Helm
 
-Een optie voor het on-premises beheren van uw Computer Vision-containers is het gebruik van Kubernetes en helm. Door Kubernetes en helm te gebruiken om een Computer Vision container installatie kopie te definiëren, maken we een Kubernetes-pakket. Dit pakket wordt on-premises geïmplementeerd op een Kubernetes-cluster. Ten slotte verkennen we hoe u de geïmplementeerde Services kunt testen. Zie [Computer Vision containers installeren en uitvoeren](computer-vision-how-to-install-containers.md)voor meer informatie over het uitvoeren van docker-containers zonder Kubernetes-indeling.
+Een optie om uw Computer Vision-containers on-premises te beheren, is het gebruik van Kubernetes en Helm. Met Kubernetes en Helm om een Computer Vision-containerafbeelding te definiëren, maken we een Kubernetes-pakket. Dit pakket wordt on-premises geïmplementeerd in een Kubernetes-cluster. Tot slot gaan we onderzoeken hoe we de geïmplementeerde services kunnen testen. Zie [Computer Vision-containers installeren en uitvoeren](computer-vision-how-to-install-containers.md)voor meer informatie over het uitvoeren van Docker-containers zonder Kubernetes-orkestratie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende vereisten voordat u Computer Vision containers on-premises gebruikt:
+De volgende vereisten voordat u computervision-containers on-premises gebruikt:
 
-|Vereist|Doel|
-|--|--|
-| Azure-Account | Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][free-azure-account] aan voordat u begint. |
-| Kubernetes CLI | De [KUBERNETES cli][kubernetes-cli] is vereist voor het beheren van de gedeelde referenties in het container register. Kubernetes is ook vereist voordat helm, de Kubernetes Package Manager. |
-| Helm CLI | Als onderdeel van de [helm cli][helm-install] -installatie moet u ook helm initialiseren, waarmee [Tiller][tiller-install]wordt geïnstalleerd. |
-| Computer Vision resource |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure **Computer Vision** -resource en de bijbehorende API-sleutel de EINDPUNT-URI. Beide waarden zijn beschikbaar op de pagina overzicht en sleutels voor de resource en zijn vereist om de container te starten.<br><br>**{API_KEY}** : een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}** : het eind punt op de pagina **overzicht**|
+| Vereist | Doel |
+|----------|---------|
+| Azure-account | Als u geen Azure-abonnement hebt, maakt u een [gratis account][free-azure-account] voordat u begint. |
+| Kubernetes CLI | De [Kubernetes CLI][kubernetes-cli] is vereist voor het beheren van de gedeelde referenties uit het containerregister. Kubernetes is ook nodig voor Helm, de Kubernetes package manager. |
+| Helm CLI | Installeer de [Helm CLI][helm-install], die wordt gebruikt om een helm grafiek (container pakket definitie) te installeren. |
+| Computer Vision-bron |Om de container te kunnen gebruiken, moet u beschikken over:<br><br>Een Azure **Computer Vision-bron** en de bijbehorende API-sleutel het eindpunt URI. Beide waarden zijn beschikbaar op de pagina's Overzicht en Sleutels voor de resource en zijn vereist om de container te starten.<br><br>**{API_KEY}**: Een van de twee beschikbare resourcesleutels op de pagina **Sleutels**<br><br>**{ENDPOINT_URI}**: Het eindpunt zoals vermeld op de **pagina Overzicht**|
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -44,13 +44,13 @@ De volgende vereisten voordat u Computer Vision containers on-premises gebruikt:
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>Verbinding maken met het Kubernetes-cluster
 
-Er wordt naar verwachting een beschik bare Kubernetes-cluster op de hostcomputer. Raadpleeg deze zelf studie over het [implementeren van een Kubernetes-cluster](../../aks/tutorial-kubernetes-deploy-cluster.md) voor een conceptuele uitleg over het implementeren van een Kubernetes-cluster op een hostcomputer.
+De hostcomputer heeft naar verwachting een beschikbaar Kubernetes-cluster. Zie deze zelfstudie over [het implementeren van een Kubernetes-cluster](../../aks/tutorial-kubernetes-deploy-cluster.md) voor een conceptueel inzicht in het implementeren van een Kubernetes-cluster op een hostcomputer.
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Docker-referenties delen met het Kubernetes-cluster
 
-Als u het Kubernetes-cluster wilt toestaan om de geconfigureerde installatie kopieën te `docker pull` uit het container register `containerpreview.azurecr.io`, moet u de referenties van de docker naar het cluster overdragen. Voer de [`kubectl create`][kubectl-create] opdracht hieronder uit om een archief met *docker-REGI ster* te maken op basis van de referenties die zijn verschaft uit de toegangs vereisten voor container register.
+Als u het `docker pull` Kubernetes-cluster vanuit het `containerpreview.azurecr.io` containerregister wilt toestaan aan de geconfigureerde afbeelding(en), moet u de dockerreferenties naar het cluster overbrengen. Voer [`kubectl create`][kubectl-create] de opdracht hieronder uit om een *dockerregistergeheim* te maken op basis van de referenties die zijn verstrekt vanuit de vereiste voor toegang voor containerregister.
 
-Voer de volgende opdracht uit vanaf de opdracht regel interface van Choice. Zorg ervoor dat u de `<username>`, `<password>`en `<email-address>` vervangt door de container register referenties.
+Voer in de opdrachtlijn interface naar keuze de volgende opdracht uit. Zorg ervoor dat `<username>` `<password>`u `<email-address>` de referenties van het containerregister vervangt.
 
 ```console
 kubectl create secret docker-registry containerpreview \
@@ -61,35 +61,35 @@ kubectl create secret docker-registry containerpreview \
 ```
 
 > [!NOTE]
-> Als u al toegang hebt tot het container register van `containerpreview.azurecr.io`, kunt u in plaats daarvan een Kubernetes-geheim maken met behulp van de generieke vlag. Bekijk de volgende opdracht die wordt uitgevoerd op basis van de JSON van de docker-configuratie.
+> Als u al toegang `containerpreview.azurecr.io` hebt tot het containerregister, u in plaats daarvan een Kubernetes-geheim maken met behulp van de algemene vlag. Overweeg de volgende opdracht die wordt uitgevoerd tegen uw Docker-configuratie JSON.
 > ```console
 >  kubectl create secret generic containerpreview \
 >      --from-file=.dockerconfigjson=~/.docker/config.json \
 >      --type=kubernetes.io/dockerconfigjson
 > ```
 
-De volgende uitvoer wordt naar de console afgedrukt wanneer het geheim is gemaakt.
+De volgende uitvoer wordt afgedrukt op de console wanneer het geheim is gemaakt.
 
 ```console
 secret "containerpreview" created
 ```
 
-Als u wilt controleren of het geheim is gemaakt, voert u de [`kubectl get`][kubectl-get] uit met de vlag `secrets`.
+Voer het [`kubectl get`][kubectl-get] geheim uit met de `secrets` vlag om te controleren of het geheim is gemaakt.
 
 ```console
 kubectl get secrets
 ```
 
-Als u de `kubectl get secrets` uitvoert, worden alle geconfigureerde geheimen afgedrukt.
+Het uitvoeren `kubectl get secrets` van de afdrukken alle geconfigureerde geheimen.
 
 ```console
 NAME                  TYPE                                  DATA      AGE
 containerpreview      kubernetes.io/dockerconfigjson        1         30s
 ```
 
-## <a name="configure-helm-chart-values-for-deployment"></a>Helm-grafiek waarden voor implementatie configureren
+## <a name="configure-helm-chart-values-for-deployment"></a>Waarden van het Helmdiagram configureren voor implementatie
 
-Maak eerst een map met de naam *Read*en plak de volgende YAML-inhoud in een nieuw bestand met de naam *Chart. yml*.
+Begin met het maken van een gelezen map *en*plak vervolgens de volgende YAML-inhoud in een nieuw bestand met de naam *Chart.yml*.
 
 ```yaml
 apiVersion: v1
@@ -98,7 +98,7 @@ version: 1.0.0
 description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
 ```
 
-Als u de standaard waarden van de helm-grafiek wilt configureren, kopieert en plakt u de volgende YAML in een bestand met de naam `values.yaml`. Vervang de `# {ENDPOINT_URI}` en `# {API_KEY}` opmerkingen door uw eigen waarden.
+Als u de standaardwaarden van de helmdiagram wilt configureren, `values.yaml`kopieert en plakt u de volgende YAML in een bestand met de naam . Vervang `# {ENDPOINT_URI}` de `# {API_KEY}` opmerkingen en opmerkingen door uw eigen waarden.
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -118,11 +118,11 @@ read:
 ```
 
 > [!IMPORTANT]
-> Als de `billing`-en `apikey`-waarden niet worden weer gegeven, verlopen de Services na 15 minuten. De verificatie mislukt ook omdat de services niet beschikbaar zijn.
+> Als `billing` de `apikey` en waarden niet worden verstrekt, vervallen de services na 15 min. Ook verificatie mislukt omdat de services niet beschikbaar zijn.
 
-Maak een map *sjablonen* onder de map *lezen* . Kopieer en plak de volgende YAML in een bestand met de naam `deployment.yaml`. Het `deployment.yaml`-bestand zal fungeren als een helm-sjabloon.
+Maak een *map sjablonen* onder de *leesmap.* Kopieer en plak de volgende YAML in een bestand met de naam `deployment.yaml`. Het `deployment.yaml` bestand zal dienen als een Helm-sjabloon.
 
-> Sjablonen genereren manifest bestanden. Dit zijn YAML bron beschrijvingen die Kubernetes kunnen begrijpen. [-Hand leiding voor helm-grafiek sjablonen][chart-template-guide]
+> Sjablonen genereren manifestbestanden, die met YAML-indelingen bronbeschrijvingen zijn die Kubernetes kan begrijpen. [- Sjabloonhandleiding voor helmdiagram][chart-template-guide]
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -163,25 +163,25 @@ spec:
     app: read-app
 ```
 
-De sjabloon specificeert een load balancer service en de implementatie van de container/installatie kopie voor lezen.
+De sjabloon geeft een load balancer-service en de implementatie van uw container/afbeelding voor Lezen op.
 
-### <a name="the-kubernetes-package-helm-chart"></a>Het Kubernetes-pakket (helm-grafiek)
+### <a name="the-kubernetes-package-helm-chart"></a>Het Kubernetes-pakket (Helm-diagram)
 
-Het *helm-diagram* bevat de configuratie van de docker-installatie kopie (n) die moet worden opgehaald uit het `containerpreview.azurecr.io` container register.
+De *Helm-grafiek* bevat de configuratie waarvan dockerafbeelding(s) uit het `containerpreview.azurecr.io` containerregister moeten worden gehaald.
 
-> Een [helm-grafiek][helm-charts] is een verzameling bestanden waarin een gerelateerde set Kubernetes-resources wordt beschreven. Eén grafiek kan worden gebruikt om een eenvoudig te implementeren, zoals een memcached Pod, of iets complex, zoals een volledige web-app-stack met HTTP-servers, data bases, caches, enzovoort.
+> Een [Helm-grafiek][helm-charts] is een verzameling bestanden die een gerelateerde set Kubernetes-bronnen beschrijven. Een enkele grafiek kan worden gebruikt om iets eenvoudigs te implementeren, zoals een pod met memcached of iets complexs, zoals een volledige web-app-stack met HTTP-servers, databases, caches, enzovoort.
 
-De meegeleverde *helm-grafieken* halen de docker-installatie kopieën van de computer vision-service en de bijbehorende service uit het `containerpreview.azurecr.io` container register.
+De meegeleverde *Helm grafieken* trekken de docker beelden van `containerpreview.azurecr.io` de Computer Vision Service, en de bijbehorende service uit het containerregister.
 
-## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>De helm-grafiek op het Kubernetes-cluster installeren
+## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>De helmdiagram op het Kubernetes-cluster installeren
 
-Als u de *helm-grafiek*wilt installeren, moet u de [`helm install`][helm-install-cmd] -opdracht uitvoeren. Zorg ervoor dat u de installatie opdracht uitvoert vanuit de map die zich boven de `read` map bevindt.
+Om de *helmdiagram*te installeren, moeten [`helm install`][helm-install-cmd] we de opdracht uitvoeren. Zorg ervoor dat u de installatieopdracht uitvoert vanuit de map boven de `read` map.
 
 ```console
-helm install read --name read
+helm install read ./read
 ```
 
-Hier volgt een voorbeeld uitvoer die u kunt verwachten van een geslaagde installatie-uitvoering:
+Hier is een voorbeeld uitvoer die u zou verwachten te zien van een succesvolle installatie uitvoering:
 
 ```console
 NAME: read
@@ -203,13 +203,13 @@ NAME    READY  UP-TO-DATE  AVAILABLE  AGE
 read    0/1    1           0          0s
 ```
 
-Het volt ooien van de implementatie van Kubernetes kan enkele minuten duren. Voer de volgende opdracht uit om te controleren of zowel de peulen als de services goed zijn geïmplementeerd en beschikbaar zijn:
+De Kubernetes-implementatie kan enkele minuten in beslag nemen. Voer de volgende opdracht uit om te controleren of beide pods en services correct zijn geïmplementeerd en beschikbaar zijn:
 
 ```console
 kubectl get all
 ```
 
-U ziet dat er iets lijkt op de volgende uitvoer:
+U mag verwachten dat u iets ziet dat lijkt op de volgende uitvoer:
 
 ```console
 kubectl get all
@@ -232,10 +232,10 @@ replicaset.apps/read-57cb76bcf7   1         1         1       17s
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het installeren van toepassingen met helm in azure Kubernetes service (AKS) [vindt u hier][installing-helm-apps-in-aks].
+Ga [hier][installing-helm-apps-in-aks]voor meer informatie over het installeren van toepassingen met Helm in Azure Kubernetes Service (AKS).
 
 > [!div class="nextstepaction"]
-> [Cognitive Services containers][cog-svcs-containers]
+> [Containers voor cognitieve services][cog-svcs-containers]
 
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free
@@ -245,7 +245,6 @@ Meer informatie over het installeren van toepassingen met helm in azure Kubernet
 [kubernetes-cli]: https://kubernetes.io/docs/tasks/tools/install-kubectl
 [helm-install]: https://helm.sh/docs/using_helm/#installing-helm
 [helm-install-cmd]: https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package
-[tiller-install]: https://helm.sh/docs/install/#installing-tiller
 [helm-charts]: https://helm.sh/docs/topics/charts/
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

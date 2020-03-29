@@ -1,7 +1,7 @@
 ---
-title: Translator Text-API methode BreakSentence
+title: Methode voor het verbreken van de api-breuk voor vertalers
 titleSuffix: Azure Cognitive Services
-description: Met de Translator Text-API methode BreakSentence wordt de plaatsing van de begrenzing van zinnen in een stuk tekst bepaald.
+description: De methode Translator Text API BreakSentence identificeert de positionering van zinsgrenzen in een stuk tekst.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,46 +11,46 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: 4c314148b8e1495a8b5a12c42d4989d13cdd6a08
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76548115"
 ---
-# <a name="translator-text-api-30-breaksentence"></a>Translator Text-API 3,0: BreakSentence
+# <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
 
-Hiermee wordt de positie van zinnen in een stuk tekst bepaald.
+Hiermee wordt de positionering van zinsgrenzen in een stuk tekst geïdentificeerd.
 
 ## <a name="request-url"></a>Aanvraag-URL
 
-Een `POST` aanvraag verzenden naar:
+Stuur `POST` een verzoek naar:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 ```
 
-## <a name="request-parameters"></a>Aanvraag parameters
+## <a name="request-parameters"></a>Parameters aanvragen
 
-Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
+De aangezochtparameters die op de querytekenreeks worden doorgegeven, zijn:
 
-| Query parameter | Beschrijving |
+| Queryparameter | Beschrijving |
 | -------| ----------- |
-| api-version <img width=200/>   | **Vereiste query parameter**.<br/>De versie van de API die door de client is aangevraagd. De waarde moet `3.0`zijn. |
-| language | **Optionele query parameter**.<br/>Taal code die de taal van de invoer tekst aangeeft. Als er geen code is opgegeven, wordt automatische taal detectie toegepast. |
-| uit    | **Optionele query parameter**.<br/>Script label waarmee het script wordt aangeduid dat wordt gebruikt door de invoer tekst. Als er geen script is opgegeven, wordt het standaard script van de taal gebruikt.  | 
+| api-versie <img width=200/>   | **Vereiste queryparameter**.<br/>Versie van de API die door de client is aangevraagd. Waarde moet `3.0`zijn . |
+| language | **Optionele queryparameter**.<br/>Taaltag die de taal van de invoertekst identificeert. Als een code niet is opgegeven, wordt automatische taaldetectie toegepast. |
+| uit    | **Optionele queryparameter**.<br/>Scripttag die het script identificeert dat door de invoertekst wordt gebruikt. Als een script niet is opgegeven, wordt het standaardscript van de taal aangenomen.  | 
 
-Aanvraag headers zijn onder andere:
+Aanvraagkoppen zijn:
 
 | Headers | Beschrijving |
 | ------- | ----------- |
-| Verificatie header (s) <img width=200/>  | De **vereiste aanvraag header**.<br/>Bekijk de <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">beschik bare opties voor authenticatie</a>. |
-| Content-Type | De **vereiste aanvraag header**.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: `application/json`. |
-| Content-length    | De **vereiste aanvraag header**.<br/>De lengte van de aanvraag tekst.  | 
-| X-ClientTraceId   | **Optioneel**.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. Houd er rekening mee dat u deze koptekst kunt weglaten als u de tracerings-ID opneemt in de query reeks met behulp van een query parameter met de naam `ClientTraceId`.  | 
+| Verificatiekop(en) <img width=200/>  | **Vereiste aanvraagheader**.<br/>Zie <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">beschikbare opties voor verificatie</a>. |
+| Content-Type | **Vereiste aanvraagheader**.<br/>Hiermee geeft u het inhoudstype van de payload op. Mogelijke waarden `application/json`zijn: . |
+| Inhoudslengte    | **Vereiste aanvraagheader**.<br/>De lengte van het verzoek lichaam.  | 
+| X-ClientTraceid   | **Optioneel**.<br/>Een door de klant gegenereerde GUID om de aanvraag op unieke wijze te identificeren. Houd er rekening mee dat u deze koptekst weglaten als `ClientTraceId`u de traceid in de querytekenreeks opneemt met een queryparameter met de naam.  | 
 
 ## <a name="request-body"></a>Aanvraagbody
 
-De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSON-object met een teken reeks eigenschap met de naam `Text`. De grenzen van zinnen worden berekend voor de waarde van de eigenschap `Text`. Een voor beeld van een aanvraag tekst met een tekst fragment ziet er als volgt uit:
+De instantie van het verzoek is een JSON array. Elk array-element is een JSON-object met een tekenreekseigenschap met de naam `Text`. Zinsgrenzen worden berekend voor `Text` de waarde van de eigenschap. Een voorbeeldaanvraaginstantie met één stuk tekst ziet er zo uit:
 
 ```json
 [
@@ -58,28 +58,28 @@ De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSO
 ]
 ```
 
-Hierbij gelden de volgende beperkingen:
+De volgende beperkingen zijn van toepassing:
 
-* De matrix kan Maxi maal 100 elementen bevatten.
-* De tekst waarde van een matrix element mag niet langer zijn dan 10.000 tekens, inclusief spaties.
-* De volledige tekst die in de aanvraag is opgenomen, mag niet langer zijn dan 50.000 tekens, inclusief spaties.
-* Als de `language` query parameter is opgegeven, moeten alle matrix elementen zich in dezelfde taal bevindt. Anders wordt automatische taal detectie toegepast op elk matrix element onafhankelijk van elkaar.
+* De array kan hoogstens 100 elementen hebben.
+* De tekstwaarde van een arrayelement mag niet hoger zijn dan 10.000 tekens, inclusief spaties.
+* De volledige tekst in de aanvraag mag niet groter zijn dan 50.000 tekens, inclusief spaties.
+* Als `language` de queryparameter is opgegeven, moeten alle matrixelementen in dezelfde taal staan. Anders wordt taalautomatische detectie onafhankelijk toegepast op elk array-element.
 
-## <a name="response-body"></a>Antwoord tekst
+## <a name="response-body"></a>Hoofdtekst van de reactie
 
-Een geslaagde reactie is een JSON-matrix met één resultaat voor elke teken reeks in de invoer matrix. Een resultaat object bevat de volgende eigenschappen:
+Een succesvol antwoord is een JSON-array met één resultaat voor elke tekenreeks in de invoerarray. Een resultaatobject bevat de volgende eigenschappen:
 
-  * `sentLen`: een matrix van gehele getallen die de lengte van de zinnen in het tekst element vertegenwoordigt. De lengte van de matrix is het aantal zinnen en de waarden zijn de lengte van elke zin. 
+  * `sentLen`: Een reeks gehele getallen die de lengtes van de zinnen in het tekstelement weergeven. De lengte van de array is het aantal zinnen en de waarden zijn de lengte van elke zin. 
 
-  * `detectedLanguage`: een object dat de gedetecteerde taal beschrijft via de volgende eigenschappen:
+  * `detectedLanguage`: Een object dat de gedetecteerde taal beschrijft via de volgende eigenschappen:
 
-     * `language`: code van de gedetecteerde taal.
+     * `language`: Code van de gedetecteerde taal.
 
-     * `score`: een float-waarde waarmee het vertrouwen in het resultaat wordt aangegeven. De Score ligt tussen nul en een en een lage score geeft een lage betrouw baarheid aan.
+     * `score`: Een floatwaarde die het vertrouwen in het resultaat aangeeft. De score is tussen nul en een en een lage score geeft een laag vertrouwen.
      
-    Houd er rekening mee dat de eigenschap `detectedLanguage` alleen aanwezig is in het resultaat object als automatische taal detectie is aangevraagd.
+    Houd er `detectedLanguage` rekening mee dat de eigenschap alleen aanwezig is in het resultaatobject wanneer automatische detectie van taal wordt gevraagd.
 
-Een voor beeld van een JSON-antwoord is:
+Een voorbeeld json antwoord is:
 
 ```json
 [
@@ -100,13 +100,13 @@ Een voor beeld van een JSON-antwoord is:
   <th>Beschrijving</th>
   <tr>
     <td>X-RequestId</td>
-    <td>De waarde die door de service is gegenereerd om de aanvraag te identificeren. Dit wordt gebruikt voor het oplossen van problemen.</td>
+    <td>Waarde gegenereerd door de service om de aanvraag te identificeren. Het wordt gebruikt voor het oplossen van problemen.</td>
   </tr>
 </table> 
 
-## <a name="response-status-codes"></a>Antwoord status codes
+## <a name="response-status-codes"></a>Statuscodes voor antwoord
 
-Hier volgen de mogelijke HTTP-status codes die een aanvraag retourneert. 
+Hieronder volgen de mogelijke HTTP-statuscodes die een aanvraag retourneert. 
 
 <table width="100%">
   <th width="20%">Statuscode</th>
@@ -117,35 +117,35 @@ Hier volgen de mogelijke HTTP-status codes die een aanvraag retourneert.
   </tr>
   <tr>
     <td>400</td>
-    <td>Een van de query parameters ontbreekt of is ongeldig. Corrigeer de aanvraag parameters voordat u het opnieuw probeert.</td>
+    <td>Een van de queryparameters ontbreekt of is ongeldig. De aanvraagparameters corrigeren voordat u het opnieuw probeert.</td>
   </tr>
   <tr>
     <td>401</td>
-    <td>De aanvraag kan niet worden geverifieerd. Controleer of de referenties zijn opgegeven en geldig zijn.</td>
+    <td>De aanvraag kan niet worden geverifieerd. Controleer of referenties zijn opgegeven en geldig zijn.</td>
   </tr>
   <tr>
     <td>403</td>
-    <td>De aanvraag is niet gemachtigd. Controleer het fout bericht Details. Dit betekent vaak dat alle gratis vertalingen van een proef abonnement zijn gebruikt.</td>
+    <td>Het verzoek is niet geautoriseerd. Controleer de foutmelding details. Dit geeft vaak aan dat alle gratis vertalingen met een proefabonnement zijn opgebruikt.</td>
   </tr>
   <tr>
     <td>429</td>
-    <td>De server heeft de aanvraag geweigerd omdat de aanvraag limieten voor de client is overschreden.</td>
+    <td>De server heeft de aanvraag afgewezen omdat de client de aanvraaglimieten heeft overschreden.</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>Er is een onverwachte fout opgetreden. Als de fout zich blijft voordoen, meldt u deze met: datum en tijd van de fout, aanvraag-id van de reactie header `X-RequestId`en de client-id van de aanvraag header `X-ClientTraceId`.</td>
+    <td>Er is een onverwachte fout opgetreden. Als de fout blijft bestaan, meldt u deze met: datum `X-RequestId`en tijd van de `X-ClientTraceId`fout, aanvraag-id van antwoordkop en client-id van de hoofdtekst van de aanvraag .</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>De server is tijdelijk niet beschikbaar. Voer de aanvraag opnieuw uit. Als de fout zich blijft voordoen, meldt u deze met: datum en tijd van de fout, aanvraag-id van de reactie header `X-RequestId`en de client-id van de aanvraag header `X-ClientTraceId`.</td>
+    <td>Server tijdelijk niet beschikbaar. Probeer het verzoek opnieuw. Als de fout blijft bestaan, meldt u deze met: datum `X-RequestId`en tijd van de `X-ClientTraceId`fout, aanvraag-id van antwoordkop en client-id van de hoofdtekst van de aanvraag .</td>
   </tr>
 </table> 
 
-Als er een fout optreedt, wordt door de aanvraag ook een JSON-fout bericht geretourneerd. De fout code is een getal van 6 cijfers, waarbij de HTTP-status code van 3 cijfers wordt gevolgd door een getal van drie cijfers om de fout verder te categoriseren. Algemene fout codes vindt u op de [pagina v3-Translator text-API-referentie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Als er een fout optreedt, retourneert de aanvraag ook een JSON-foutantwoord. De foutcode is een 6-cijferig getal dat de 3-cijferige HTTP-statuscode combineert, gevolgd door een 3-cijferig getal om de fout verder te categoriseren. Veelvoorkomende foutcodes zijn te vinden op de [referentiepagina v3 Translator Text API.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) 
 
 ## <a name="examples"></a>Voorbeelden
 
-In het volgende voor beeld ziet u hoe u de grenzen van zinnen voor één zin kunt verkrijgen. De taal van de zin wordt automatisch gedetecteerd door de service.
+In het volgende voorbeeld ziet u hoe u zinsgrenzen voor één zin verkrijgen. De taal van de zin wordt automatisch gedetecteerd door de service.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'How are you? I am fine. What did you do today?'}]"

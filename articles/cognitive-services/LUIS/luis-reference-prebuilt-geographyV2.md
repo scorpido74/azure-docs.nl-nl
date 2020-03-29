@@ -1,7 +1,7 @@
 ---
-title: Geografie v2 vooraf ontwikkelde entiteit-LUIS
+title: Aardrijkskunde V2 voorgebouwde entiteit - LUIS
 titleSuffix: Azure Cognitive Services
-description: In dit artikel bevat geographyV2 vooraf gedefinieerde entiteitgegevens in Language Understanding (LUIS).
+description: Dit artikel bevat vooraf gebouwde informatie over de entiteit geografieV2 in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,36 +12,36 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
 ms.openlocfilehash: b2b2b0781abce59628660b669f43110bf91b15e6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273499"
 ---
-# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 prebuiled-entiteit voor een LUIS-app
-De vooraf gedefinieerde geographyV2 entiteit detecteert plaatsen. Omdat deze entiteit wordt al getraind, hoeft u niet om toe te voegen van de voorbeeld-uitingen GeographyV2 die aan de toepassing intents. De GeographyV2-entiteit wordt ondersteund in de Engelse [cultuur](luis-reference-prebuilt-entities.md).
+# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>Voorgebouwde entiteit GeographyV2 voor een LUIS-app
+De vooraf gebouwde entiteit GeographyV2 detecteert plaatsen. Omdat deze entiteit al is getraind, hoeft u geen voorbeelduitingen met GeographyV2 toe te voegen aan de toepassingsintenties. GeographyV2 entiteit wordt ondersteund in de Engelse [cultuur](luis-reference-prebuilt-entities.md).
 
 ## <a name="subtypes"></a>Subtypen
-De geografische locaties zijn subtypen:
+De geografische locaties hebben subtypen:
 
 |Subtype|Doel|
 |--|--|
-|`poi`|nuttige plaats|
-|`city`|naam van plaats|
-|`countryRegion`|naam van het land of regio|
+|`poi`|punt van belang|
+|`city`|naam van de stad|
+|`countryRegion`|naam van land of regio|
 |`continent`|naam van continent|
 |`state`|naam van staat of provincie|
 
 
-## <a name="resolution-for-geographyv2-entity"></a>Oplossing voor GeographyV2 entiteit
+## <a name="resolution-for-geographyv2-entity"></a>Resolutie voor de entiteit GeographyV2
 
-De volgende entiteits objecten worden geretourneerd voor de query:
+De volgende entiteitsobjecten worden geretourneerd voor de query:
 
 `Carol is visiting the sphinx in gizah egypt in africa before heading to texas.`
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
+De volgende JSON `verbose` is met `false`de parameter ingesteld op:
 
 ```json
 "entities": {
@@ -70,11 +70,11 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
 }
 ```
 
-In de voor gaande JSON is `poi` een afkorting van **belang rijke punten**.
+In de voorgaande `poi` JSON is een afkorting voor **Point of Interest**.
 
-#### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 verbose reactie](#tab/V3-verbose)
 
-De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
+De volgende JSON `verbose` is met `true`de parameter ingesteld op:
 
 ```json
 "entities": {
@@ -163,7 +163,7 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
 ```
 #### <a name="v2-response"></a>[V2-antwoord](#tab/V2)
 
-In het volgende voor beeld ziet u de oplossing van de **ingebouwde entiteit. geographyV2** .
+In het volgende voorbeeld ziet u de resolutie van de entiteit **builtin.geographyV2.**
 
 ```json
 "entities": [
@@ -209,6 +209,6 @@ In het volgende voor beeld ziet u de oplossing van de **ingebouwde entiteit. geo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
+Meer informatie over het [V3-voorspellingseindpunt](luis-migration-api-v3.md).
 
-Meer informatie over de entiteiten [e-mail](luis-reference-prebuilt-email.md), [nummer](luis-reference-prebuilt-number.md)en [rang telwoord](luis-reference-prebuilt-ordinal.md) .
+Meer informatie over de [e-mail,](luis-reference-prebuilt-email.md) [het nummer](luis-reference-prebuilt-number.md)en [de ordinale](luis-reference-prebuilt-ordinal.md) entiteiten.

@@ -1,7 +1,7 @@
 ---
-title: Azure Kubernetes-service uitvoeren-Text Analytics
+title: Azure Kubernetes-service uitvoeren - Text Analytics
 titleSuffix: Azure Cognitive Services
-description: Implementeer de Text Analytics container installatie kopie naar de Azure Kubernetes-service en test deze in een webbrowser.
+description: Implementeer de containerafbeelding Text Analytics in Azure Kubernetes Service en test deze in een webbrowser.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,45 +11,45 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 3264ec5a83277e6bb4befad46cd1337175e911c5
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74383410"
 ---
-# <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Een Text Analytics-container implementeren in azure Kubernetes service
+# <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Een Text Analytics-container implementeren in Azure Kubernetes-service
 
-Meer informatie over het implementeren van de Azure Cognitive Services [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) container installatie kopie naar Azure Kubernetes service (AKS). In deze procedure ziet u hoe u een Text Analytics resource maakt, hoe u een gekoppelde sentiment-analyse kopie maakt en hoe u deze indeling van de twee kunt volgen vanuit een browser. Door gebruik te maken van containers kunt u uw aandacht afleiden van het beheer van de infra structuur om te richten op het ontwikkelen van toepassingen.
+Meer informatie over het implementeren van de containerafbeelding Azure Cognitive Services [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) naar Azure Kubernetes Service (AKS). In deze procedure ziet u hoe u een Text Analytics-bron maakt, hoe u een bijbehorende sentimentanalyseafbeelding maakt en hoe u deze orkestratie van de twee vanuit een browser uitvoeren. Het gebruik van containers kan uw aandacht verleggen van het beheren van infrastructuur naar in plaats daarvan gericht op applicatieontwikkeling.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze procedure zijn verschillende hulpprogram ma's vereist die moeten worden geïnstalleerd en lokaal worden uitgevoerd. Gebruik Azure Cloud Shell niet. U hebt het volgende nodig:
+Deze procedure vereist verschillende tools die lokaal moeten worden geïnstalleerd en uitgevoerd. Gebruik Azure Cloud Shell niet. Je hebt het volgende nodig:
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-* Een tekst editor, bijvoorbeeld [Visual Studio code](https://code.visualstudio.com/download).
-* De [Azure-cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) is geïnstalleerd.
-* De [Kubernetes-cli](https://kubernetes.io/docs/tasks/tools/install-kubectl/) is geïnstalleerd.
-* Een Azure-resource met de juiste prijs categorie. Niet alle prijs categorieën werken met deze container:
-    * **Azure Text Analytics** resource met alleen F0 of Standard-prijs categorieën.
-    * **Azure Cognitive Services** resource met de prijs categorie s0.
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+* Een teksteditor, bijvoorbeeld [Visual Studio Code](https://code.visualstudio.com/download).
+* De [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) is geïnstalleerd.
+* De [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) geïnstalleerd.
+* Een Azure-bron met de juiste prijscategorie. Niet alle prijsniveaus werken met deze container:
+    * **Azure Text Analytics-bron** met alleen F0- of standaardprijsniveaus.
+    * **Azure Cognitive Services-bron** met de prijslaag S0.
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 
 [!INCLUDE [Create a Text Analytics container on Azure Kubernetes Service (AKS)](../../containers/includes/create-aks-resource.md)]
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Sleuteltermextractie](#tab/keyphrase)
+#### <a name="key-phrase-extraction"></a>[Sleuteltermextractie](#tab/keyphrase)
 
 [!INCLUDE [Key Phrase Extraction Kubernetes config and deploy steps](../includes/key-phrase-extraction-kubernetes-config-deploy.md)]
 
 [!INCLUDE [Verify the Key Phrase Extraction container instance](../includes/verify-key-phrase-extraction-container.md)]
 
-#### <a name="language-detectiontablanguage"></a>[Taaldetectie](#tab/language)
+#### <a name="language-detection"></a>[Taaldetectie](#tab/language)
 
 [!INCLUDE [Language Detection Kubernetes config and deploy steps](../includes/language-detection-kubernetes-config-deploy.md)]
 
 [!INCLUDE [Verify the Language Detection container instance](../includes/verify-language-detection-container.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Sentimentanalyse](#tab/sentiment)
+#### <a name="sentiment-analysis"></a>[Sentimentanalyse](#tab/sentiment)
 
 [!INCLUDE [Sentiment Analysis Kubernetes config and deploy steps](../includes/sentiment-analysis-kubernetes-config-deploy.md)]
 
@@ -59,5 +59,5 @@ Voor deze procedure zijn verschillende hulpprogram ma's vereist die moeten worde
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer [Cognitive Services containers](../../cognitive-services-container-support.md) gebruiken
-* De [Text Analytics verbonden service](../vs-text-connected-service.md) gebruiken
+* Meer [cognitive services-containers gebruiken](../../cognitive-services-container-support.md)
+* De [met tekstanalyse verbonden service gebruiken](../vs-text-connected-service.md)

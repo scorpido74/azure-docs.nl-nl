@@ -1,7 +1,7 @@
 ---
-title: Veelgestelde vragen-Computer Vision
+title: Veelgestelde vragen - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Krijg antwoorden op veelgestelde vragen over de Computer Vision-API in azure Cognitive Services.
+description: Krijg antwoorden op veelgestelde vragen over de Computer Vision API in Azure Cognitive Services.
 services: cognitive-services
 author: KellyDF
 manager: nitinme
@@ -12,63 +12,63 @@ ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: e8ab205a43e5cb1e8e2b96dbd9600e1fceb29403
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68564606"
 ---
-# <a name="computer-vision-api-frequently-asked-questions"></a>Veelgestelde vragen over Computer Vision-API
+# <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API veelgestelde vragen
 
 > [!TIP]
-> Als u in deze veelgestelde vragen geen antwoorden op uw vragen kunt vinden, kunt u de Computer Vision-API Community vragen op [stack overflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) of contact opnemen met de [Help en ondersteuning op UserVoice](https://cognitive.uservoice.com/)
+> Als u geen antwoorden op uw vragen vinden in deze veelgestelde vragen, u de Computer Vision API-community op [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) vragen of contact opnemen met [Help en ondersteuning op UserVoice](https://cognitive.uservoice.com/)
 
 ---
 
-**Vraag**: *Kan ik Computer Vision-API trainen om aangepaste labels te gebruiken?  Ik wil bijvoorbeeld dat ik in afbeeldingen van kat rassen de AI ' Train ', en vervolgens de RAS-waarde op een AI-aanvraag kan ontvangen.*
+**Vraag:** *Kan ik Computer Vision API trainen om aangepaste tags te gebruiken?  Ik wil bijvoorbeeld foto's van kattenrassen invoeren om de AI te 'trainen', en vervolgens de raswaarde ontvangen op een AI-verzoek.*
 
-**Antwoord**: Deze functie is momenteel niet beschikbaar. Onze technici werken echter aan om deze functionaliteit te Computer Vision.
+**Antwoord**: Deze functie is momenteel niet beschikbaar. Onze engineers werken er echter aan om deze functionaliteit naar Computer Vision te brengen.
 
 ---
 
-**Vraag**: *Kunnen Computer Vision lokaal worden gebruikt zonder een Internet verbinding?*
+**Vraag**: *Kan Computer Vision lokaal worden gebruikt zonder internetverbinding?*
 
 **Antwoord**: We bieden momenteel geen on-premises of lokale oplossing.
 
 ---
 
-**Vraag**: *Kan Computer Vision worden gebruikt voor het lezen van de licentie platen?*
+**Vraag**: *Kan Computer Vision worden gebruikt om nummerplaten te lezen?*
 
-**Antwoord**: De Vision-API biedt een goede detectie van tekst met OCR, maar is momenteel niet geoptimaliseerd voor licentie platen. We proberen onze services voortdurend te verbeteren en hebben OCR toegevoegd voor de erkenning van automatische licentie plaat aan onze lijst met functie aanvragen.
-
----
-
-**Vraag**: *Welke typen schrijf oppervlakken worden ondersteund voor handschrift herkenning?*
-
-**Antwoord**: De technologie werkt met verschillende soorten Opper vlakken, waaronder white boards, wit papier en gele plak notities.
+**Antwoord**: De Vision API biedt een goede tekstdetectie met OCR, maar is momenteel niet geoptimaliseerd voor nummerplaten. We zijn voortdurend bezig om onze diensten te verbeteren en hebben OCR toegevoegd voor automatische nummerplaatherkenning aan onze lijst met functieverzoeken.
 
 ---
 
-**Vraag**: *Hoe lang duurt de bewerking voor handschrift herkenning?*
+**Vraag**: *Welke soorten schrijfoppervlakken worden ondersteund voor handschriftherkenning?*
 
-**Antwoord**: Hoe lang het duurt, hangt af van de lengte van de tekst. Voor langere teksten kan het enkele seconden duren. Nadat de bewerking handgeschreven tekst herkennen is voltooid, moet u daarom mogelijk wachten voordat u de resultaten kunt ophalen met behulp van de bewerking handgeschreven tekst bewerking ophalen.
-
----
-
-**Vraag**: *Hoe verwerkt de technologie voor handschrift herkenning tekst die is ingevoegd met een caret in het midden van een regel?*
-
-**Antwoord**: Deze tekst wordt geretourneerd als afzonderlijke regel door de bewerking voor handschrift herkenning.
+**Antwoord:** De technologie werkt met verschillende soorten oppervlakken, waaronder whiteboards, wit papier en gele plaknotities.
 
 ---
 
-**Vraag**: *Hoe worden door de technologie voor handschrift herkenning cross-out woorden of lijnen afgehandeld?*
+**Vraag**: *Hoe lang duurt de handschriftherkenningsbewerking?*
 
-**Antwoord**: Als de woorden worden gepasseerd met meerdere regels om ze onherkenbaar weer te geven, worden ze niet door de bewerking voor handschrift herkenning gekozen. Als de woorden echter worden gepasseerd met behulp van één regel, wordt die kruising beschouwd als ruis en de woorden worden nog steeds opgehaald door de bewerking voor handschrift herkenning.
+**Antwoord:** De hoeveelheid tijd die het kost, is afhankelijk van de lengte van de tekst. Voor langere teksten kan het enkele seconden duren. Daarom moet u, nadat de bewerking Handgeschreven tekst herkennen is voltooid, mogelijk wachten voordat u de resultaten ophalen met de bewerking resultaat van de bewerking Met handgeschreven tekst ophalen.
 
 ---
 
-**Vraag**: *Welke tekst standen worden ondersteund voor de technologie voor handschrift herkenning?*
+**Vraag**: *Hoe gaat de handschriftherkenningstechnologie om met tekst die is ingevoegd met behulp van een caret in het midden van een regel?*
 
-**Antwoord**: Tekst gericht op hoeken van Maxi maal 30 graden tot 40 graden kan worden opgehaald door de bewerking voor handschrift herkenning.
+**Antwoord**: Deze tekst wordt geretourneerd als een afzonderlijke regel door de bewerking handschriftherkenning.
+
+---
+
+**Vraag**: *Hoe gaat de handschriftherkenningstechnologie om met doorgestreepte woorden of lijnen?*
+
+**Antwoord:** Als de woorden met meerdere regels worden doorgestreept om ze onherkenbaar te maken, wordt ze niet opgehaald door de bewerking handschriftherkenning. Echter, als de woorden worden doorgestreept met behulp van een enkele regel, die kruising wordt behandeld als lawaai, en de woorden nog steeds opgepikt door het handschrift herkenning operatie.
+
+---
+
+**Vraag**: *Welke tekstoriëntaties worden ondersteund voor de handschriftherkenningstechnologie?*
+
+**Antwoord**: Tekst gericht op hoeken van maximaal ongeveer 30 graden tot 40 graden kan worden opgepikt door de handschriftherkenningsbewerking.
 
 ---

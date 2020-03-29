@@ -1,7 +1,7 @@
 ---
-title: Voorspellings scores-LUIS
+title: Voorspelling scores - LUIS
 titleSuffix: Azure Cognitive Services
-description: Een Voorspellings score geeft de mate van betrouw baarheid van de LUIS API-service voor Voorspellings resultaten op basis van een gebruikers utterance.
+description: Een voorspellingsscore geeft de mate van vertrouwen aan die de LUIS API-service heeft voor voorspellingsresultaten, op basis van een uiting van een gebruiker.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,72 +12,72 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: b360bc82b80e834492b524acc5c4535b0409eda1
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74280824"
 ---
-# <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Voorspellings scores geven de nauw keurigheid van de voor spelling voor intentie en entiteiten aan
+# <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Voorspellingsscores geven voorspellingsnauwkeurigheid voor intentie en entiteiten aan
 
-Een Voorspellings score geeft aan dat de mate van betrouw baarheid die LUIS heeft voor de Voorspellings resultaten van een utterance van de gebruiker.
+Een voorspellingsscore geeft de mate van vertrouwen aan die LUIS heeft voor voorspellingsresultaten van een uiting van een gebruiker.
 
-De score van een voorspelling is tussen de nul (0) en één (1). Een voorbeeld van een zeer vertrouwen LUIS-score is 0,99. Een voorbeeld van een score van lage vertrouwen is 0,01. 
+Een voorspellingsscore ligt tussen nul (0) en één (1). Een voorbeeld van een zeer zelfverzekerde LUIS-score is 0,99. Een voorbeeld van een score van laag vertrouwen is 0,01. 
 
-|Score-waarde|Confidence|
+|Scorewaarde|Betrouwbaarheid|
 |--|--|
-|1|goede overeenkomst|
-|0,99|hoge betrouwbaarheid|
-|0,01|lage vertrouwen|
-|0|goede niet overeen met|
+|1|bepaalde overeenkomst|
+|0.99|hoog vertrouwen|
+|0,01|weinig vertrouwen|
+|0|definitief niet te evenaren|
 
-## <a name="top-scoring-intent"></a>Scoring-bovenaan doel
+## <a name="top-scoring-intent"></a>Intentie met hoogste score
 
-Elke utterance voorspelling retourneert een scoring-bovenaan doel. Deze voor spelling is een numerieke vergelijking van de Voorspellings scores. 
+Elke utterancevoorspelling retourneert een intentie die topscorer wordt. Deze voorspelling is een numerieke vergelijking van voorspellingsscores. 
 
 ## <a name="proximity-of-scores-to-each-other"></a>Nabijheid van scores aan elkaar
 
-De bovenste twee scores kunnen een zeer klein verschil hebben. LUIS geeft deze nabijheid niet aan, anders dan het retour neren van de bovenste Score.  
+De top 2 scores kunnen een zeer klein verschil tussen hen hebben. LUIS geeft niet aan dat deze nabijheid anders is dan het retourneren van de hoogste score.  
 
-## <a name="return-prediction-score-for-all-intents"></a>Voorspelling score voor alle intents retourneren
+## <a name="return-prediction-score-for-all-intents"></a>Return voorspelling score voor alle doeleinden
 
-Resultaat van een test- of -eindpunt kan alle intents bevatten. Deze configuratie wordt ingesteld op het eind punt met de juiste teken reeks naam/waarde-paar.
+Een test- of eindpuntresultaat kan alle intenties bevatten. Deze configuratie is ingesteld op het eindpunt met behulp van de juiste querystringnaam/waardepaar.
 
-|Voorspellings-API|Query naam|
+|Voorspellings-API|Querytekenreeksnaam|
 |--|--|
 |V3|`show-all-intents=true`|
 |V2|`verbose=true`|
 
-## <a name="review-intents-with-similar-scores"></a>Intents met vergelijkbare scores bekijken
+## <a name="review-intents-with-similar-scores"></a>Intenties met vergelijkbare scores bekijken
 
-Het controleren van de score voor alle doel stellingen is een goede manier om te controleren of niet alleen de juiste intentie is geïdentificeerd, maar dat de volgende geïdentificeerde intenten significant en consistent zijn voor uitingen.
+Het controleren van de score voor alle intenties is een goede manier om te controleren of niet alleen de juiste intentie is geïdentificeerd, maar dat de volgende geïdentificeerde intentiescore aanzienlijk en consistent lager is voor uitingen.
 
-Als meerdere intents sluiten voorspelling scores op basis van de context van een utterance kan LUIS schakelen tussen de intents. Om deze situatie op te lossen, gaat u door met het toevoegen van uitingen aan elke intentie met een breder scala aan contextuele verschillen of kunt u de client toepassing, zoals een chat-bot, programmatische keuzes maken over het afhandelen van de twee belangrijkste intenties.
+Als meerdere intenties close prediction scores hebben, gebaseerd op de context van een utterance, kan LUIS schakelen tussen de intenties. Om deze situatie op te lossen, blijven uitingen toevoegen aan elke intentie met een breder scala aan contextuele verschillen of u de clienttoepassing, zoals een chatbot, programmatische keuzes laten maken over hoe om te gaan met de twee belangrijkste intents.
 
-De twee intenten, die te nauw keurig zijn, kunnen worden tegengehouden als gevolg van **niet-deterministische training**. De hoogste score kan de tweede boven en de tweede belangrijkste score kan worden de eerste hoogste score. Om deze situatie te voor komen, voegt u bijvoorbeeld uitingen toe aan elk van de twee bovenste doel stellingen voor die utterance met de keuze en context van het woord dat de 2 intentie onderscheidt. De twee intenties moeten over hetzelfde aantal voorbeeld uitingen hebben. Vuistregel voor scheiding om te voorkomen dat tekenomkering vanwege training is een verschil 15% in scores.
+De 2 intenties, die te nauw zijn gescoord, kunnen omkeren als gevolg van **niet-deterministische training**. De hoogste score zou de tweede hoogste kunnen worden en de tweede hoogste score zou de eerste hoogste score kunnen worden. Als u deze situatie wilt voorkomen, voegt u voorbeelduitingen toe aan elk van de twee belangrijkste intenties voor die utterance met woordkeuze en context die de twee intenties onderscheidt. De twee intents moeten ongeveer hetzelfde aantal voorbeelduitingen hebben. Een vuistregel voor de scheiding om inversie als gevolg van training te voorkomen, is een verschil van 15% in scores.
 
-U kunt de **niet-deterministische training** uitschakelen door te [trainen op alle gegevens](luis-how-to-train.md#train-with-all-data).
+U de **niet-deterministische training** uitschakelen door [te trainen met alle gegevens.](luis-how-to-train.md#train-with-all-data)
 
-## <a name="differences-with-predictions-between-different-training-sessions"></a>Verschillen met voor spellingen tussen verschillende trainings sessies
+## <a name="differences-with-predictions-between-different-training-sessions"></a>Verschillen met voorspellingen tussen verschillende trainingssessies
 
-Wanneer u hetzelfde model in een andere app traint en de scores zijn niet hetzelfde, is dit verschil omdat er **niet-deterministische training** (een element van wille keurigheid) is. Ten tweede betekent een overlapping van een utterance aan meer dan één kunt u lezen wat dat het belangrijkste doel voor de dezelfde utterance kunt wijzigen op basis van de training.
+Wanneer u hetzelfde model traint in een andere app en de scores niet hetzelfde zijn, is dit verschil omdat er **niet-deterministische training** is (een element van willekeur). Ten tweede betekent elke overlapping van een utterance naar meer dan één intentie dat de bovenste intentie voor dezelfde utterance kan veranderen op basis van training.
 
-Als uw chat-bot een specifieke LUIS Score vereist om het vertrouwen in een intentie aan te geven, moet u het Score verschil tussen de twee beste doel stellingen gebruiken. Deze situatie biedt mogelijkheden voor variaties in training.
+Als uw chatbot een specifieke LUIS-score vereist om vertrouwen in een intentie aan te geven, moet u het scoreverschil tussen de bovenste twee intents gebruiken. Deze situatie biedt flexibiliteit voor variaties in opleiding.
 
-U kunt de **niet-deterministische training** uitschakelen door te [trainen op alle gegevens](luis-how-to-train.md#train-with-all-data).
+U de **niet-deterministische training** uitschakelen door [te trainen met alle gegevens.](luis-how-to-train.md#train-with-all-data)
 
-## <a name="e-exponent-notation"></a>De notatie E (exponent)
+## <a name="e-exponent-notation"></a>E (exponent) notatie
 
-Voor Voorspellings scores kunnen de notatie exponent gebruiken die boven het 0-1-bereik wordt _weer gegeven_ , zoals `9.910309E-07`. Deze score geeft een indicatie van een zeer **klein** getal.
+Voorspellingscores kunnen exponentnotatie gebruiken, die boven het `9.910309E-07`0-1-bereik _worden weergegeven,_ zoals . Deze score is een indicatie van een zeer **klein** aantal.
 
-|E-notatie score |Werkelijke score|
+|E notatiescore |Werkelijke score|
 |--|--|
 |9.910309E-07|.0000009910309|
 
-## <a name="punctuation"></a>Leestekens
+## <a name="punctuation"></a>Interpunctie
 
-Meer [informatie](luis-concept-utterance.md#punctuation-marks) over het gebruik of negeren van interpunctie. 
+[Meer informatie](luis-concept-utterance.md#punctuation-marks) over het gebruik of negeren van interpunctie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [entiteiten toevoegen](luis-how-to-add-entities.md) voor meer informatie over het toevoegen van entiteiten aan uw Luis-app.
+Zie [Entiteiten toevoegen](luis-how-to-add-entities.md) voor meer informatie over het toevoegen van entiteiten aan uw LUIS-app.

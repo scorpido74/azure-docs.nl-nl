@@ -1,25 +1,24 @@
 ### YamlMime:Landing
 title: Documentatie over spraakomzetting
-summary: Spraak omzetting van de speech-service biedt de mogelijkheid om audio gegevensstromen in realtime, meertalige spraak naar spraak en spraak naar tekst te converteren
+summary: Spraakvertaling van de Spraakservice maakt real-time, meertalige spraak-naar-spraak- en spraak-naar-tekstvertaling van audiostreams mogelijk
 metadata:
-  title: Documentatie voor spraak omzetting-zelf studies, API-verwijzing-Azure Cognitive Services | Microsoft Docs
+  title: Documentatie voor spraakvertaling - Zelfstudies, API-verwijzing - Azure Cognitive Services | Microsoft Documenten
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 742b9710fc7ab396aa906c956d6809df9440c78e
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 75f620d5210f5ba0dc61ac1c5be2f30aa23dea9c
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79367972"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415322"
 landingContent:
-- title: Over spraak omzetting
+- title: Over spraakvertaling
   linkLists:
   - linkListType: overview
     links:
@@ -33,7 +32,7 @@ landingContent:
       url: quickstarts/translate-speech-to-text-multiple-languages.md
     - text: Spraak naar spraak omzetten
       url: quickstarts/translate-speech-to-speech.md
-- title: Ontwikkelen met spraak omzetting
+- title: Ontwikkelen met spraakvertaling
   linkLists:
   - linkListType: learn
     links:
@@ -41,7 +40,7 @@ landingContent:
       url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
   - linkListType: tutorial
     links:
-    - text: Tekst vertalen en voor REST-Api's nakunsten
+    - text: Tekst vertalen en synthetiseren met REST API's
       url: ../translator/tutorial-build-flask-app-translation-synthesis.md
 - title: Naslaginformatie
   linkLists:
@@ -51,5 +50,5 @@ landingContent:
       url: language-support.md#speech-translation
     - text: Veelgestelde vragen over spraakomzetting
       url: https://www.microsoft.com/translator/business/faq/
-    - text: Prijzen voor spraak omzetting
+    - text: Prijzen voor spraakvertaling
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

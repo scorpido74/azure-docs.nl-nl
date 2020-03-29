@@ -1,7 +1,7 @@
 ---
-title: Taalondersteuning - Bing Spell Check-API
+title: Taalondersteuning - Bing Spell Check API
 titleSuffix: Azure Cognitive Services
-description: Een lijst van natuurlijke talen die worden ondersteund door de Bing Spell Check-API.
+description: Een lijst met natuurlijke talen die worden ondersteund door de Bing Spell Check API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,34 +11,34 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66390169"
 ---
-# <a name="language-and-region-support-for-bing-spell-check-api"></a>Ondersteuning voor taal en regio voor de Bing Spell Check-API
+# <a name="language-and-region-support-for-bing-spell-check-api"></a>Taal- en regioondersteuning voor Bing Spell Check API
 
-Deze talen worden ondersteund door de Bing Spell Check-API (alleen in `spell` modus).
+Deze talen worden ondersteund door de Bing `spell` Spell Check API (alleen in de modus).
 
-Houd er rekening mee dat werkt met een andere taal dan `en-US`, wordt de `mkt` moet worden ingesteld en ofwel `Accept-Language` of `setLang` moet worden ingesteld als deze zijn beschreven in [Spell Check-API voor Bing versie 7 verwijzing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+Houd er rekening mee dat `en-US`om `mkt` te werken met `Accept-Language` `setLang` een andere taal dan, de moet worden ingesteld en een van beide of moet worden ingesteld zoals het is beschreven in [Spell Check API v7 referentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
 
 | Taal    | Taalcode |
 |:----------- |:-------------:|
 | Arabisch      | `ar`          |
 | Chinees (Volksrepubliek China)     | `zh-CN`          |
-| Chinees (Hongkong SAR)    | `zh-HK`          |
+| Chinees (Hong Kong SAR)    | `zh-HK`          |
 | Chinees (Taiwan)     | `zh-TW`          |
 | Deens      | `da`          |
 | Nederlands (België)       | `nl-BE`          |
 | Nederlands (Nederland)      | `nl-NL`          |
 | Engels (Australië)    | `en-AU`          |
 | Engels (Canada)     | `en-CA`          |
-| English (India)    | `en-IN`          |
+| Engels (India)    | `en-IN`          |
 | Engels (Indonesië)     | `en-ID`          |
 | Engels (Maleisië)     | `en-MY`          |
 | Engels (Nieuw-Zeeland)    | `en-NZ`          |
-| Engels (Filipijnen)     | `en-PH`          |
+| Engels (Filippijnen)     | `en-PH`          |
 | Engels (Zuid-Afrika)    | `en-ZA`          |
 | Engels (Verenigd Koninkrijk)    | `en-GB`          |
 | Engels (Verenigde Staten)    | `en-US`          |
@@ -53,7 +53,7 @@ Houd er rekening mee dat werkt met een andere taal dan `en-US`, wordt de `mkt` m
 | Italiaans     | `it`          |
 | Japans    | `ja`          |
 | Koreaans      | `ko`          |
-| Noors   | `no`          |
+| Norwegian   | `no`          |
 | Pools      | `pl`          |
 | Portugees (Brazilië)   | `pt-BR`|
 | Portugees (Portugal) | `pt-PT`|

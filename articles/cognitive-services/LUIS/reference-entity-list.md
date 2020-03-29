@@ -1,33 +1,33 @@
 ---
-title: Entiteits type van lijst-LUIS
-description: Lijst entiteiten vertegenwoordigen een vaste, gesloten set verwante woorden samen met hun synoniemen. LUIS detecteert geen aanvullende waarden voor de lijst met entiteiten. Gebruik de functie aanbevolen om suggesties voor nieuwe woorden op basis van de huidige lijst te bekijken.
+title: Type lijstentiteit - LUIS
+description: Lijstentiteiten vertegenwoordigen een vaste, gesloten reeks verwante woorden, samen met hun synoniemen. LUIS ontdekt geen extra waarden voor lijstentiteiten. Gebruik de functie Aanbevelen om suggesties voor nieuwe woorden te bekijken op basis van de huidige lijst.
 ms.topic: reference
 ms.date: 03/12/2020
 ms.openlocfilehash: 795d16bc2e0c4223ff3ac283a72493923d3ab355
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79297234"
 ---
 # <a name="list-entity"></a>Lijstentiteit
 
-Lijst entiteiten vertegenwoordigen een vaste, gesloten set verwante woorden samen met hun synoniemen. LUIS detecteert geen aanvullende waarden voor de lijst met entiteiten. Gebruik de functie **Aanbevolen** om suggesties voor nieuwe woorden op basis van de huidige lijst te bekijken. Als er meer dan één lijst entiteit met dezelfde waarde, wordt elke entiteit in de query eindpunt geretourneerd.
+Lijstentiteiten vertegenwoordigen een vaste, gesloten reeks verwante woorden, samen met hun synoniemen. LUIS ontdekt geen extra waarden voor lijstentiteiten. Gebruik de functie **Aanbevelen** om suggesties voor nieuwe woorden te bekijken op basis van de huidige lijst. Als er meer dan één lijstentiteit met dezelfde waarde is, wordt elke entiteit geretourneerd in de eindpuntquery.
 
-Een lijst entiteit is niet door de machine geleerd. Het is een overeenkomst exact overeenkomende tekst. LUIS markeert een overeenkomst aan een item in een lijst als een entiteit in het antwoord.
+Een lijstentiteit wordt niet machine-geleerd. Het is een exacte tekst overeenkomst. LUIS markeert elke overeenkomst met een item in een lijst als een entiteit in het antwoord.
 
-**De entiteit is goed geschikt wanneer de tekst gegevens:**
+**De entiteit past goed bij de gegevens van de tekst:**
 
 * Zijn een bekende set.
-* Verandert niet vaak. Als u de lijst vaak wilt wijzigen of de lijst zelf wilt uitbreiden, is een eenvoudige entiteit met een woordgroepen lijst een betere keuze.
+* Dat verandert niet vaak. Als u de lijst vaak moet wijzigen of wilt dat de lijst zichzelf wordt uitgebreid, is een eenvoudige entiteit die is geboost met een woordenlijst een betere keuze.
 * De set maximale [begrenzingen](luis-boundaries.md) van LUIS voor dit entiteitstype niet overschrijdt.
-* De tekst in de utterance is een hoofdletter gevoelige overeenkomst met een synoniem of canonieke naam. LUIS gebruikt de lijst niet verder dan de overeenkomst. Fuzzy matching, ontleding, meervouden en andere variaties worden niet opgelost met een lijst entiteit. Hiervoor kunt u overwegen een [patroon](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) met de optionele tekstsyntaxis te gebruiken.
+* De tekst in de utterance is een case-ongevoelige overeenkomst met een synoniem of de canonieke naam. LUIS gebruikt de lijst niet verder dan de wedstrijd. Fuzzy matching, stemming, meervouden en andere varianten worden niet opgelost met een lijstentiteit. Hiervoor kunt u overwegen een [patroon](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) met de optionele tekstsyntaxis te gebruiken.
 
-![lijst met entiteiten](./media/luis-concept-entities/list-entity.png)
+![lijstentiteit](./media/luis-concept-entities/list-entity.png)
 
-## <a name="example-json-to-import-into-list-entity"></a>Voor beeld. json om in lijst entiteit te importeren
+## <a name="example-json-to-import-into-list-entity"></a>Voorbeeld .json om te importeren in lijstentiteit
 
-  U kunt waarden importeren in een bestaande lijst entiteit met behulp van de volgende JSON-indeling:
+  U waarden importeren in een bestaande lijstentiteit met behulp van de volgende JSON-indeling:
 
   ```JSON
   [
@@ -52,18 +52,18 @@ Een lijst entiteit is niet door de machine geleerd. Het is een overeenkomst exac
 
 ## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
-Stel dat de app een lijst bevat met de naam `Cities`, waarmee u namen van steden kunt variëren, waaronder de plaats van de lucht haven (Sea-TAC), luchthaven code (zee), post code (98101) en telefoon gebied (206).
+Stel dat de app `Cities`een lijst heeft met de naam , waarmee variaties van stadsnamen kunnen worden toegestaan, waaronder de luchthavenstad (Sea-tac), luchthavencode (SEA), postcode (98101) en telefoonnummer (206).
 
-|Lijstitem|Item synoniemen|
+|Lijstitem|Objectsynoniemen|
 |---|---|
 |`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
 |`Paris`|`cdg`, `roissy`, `ory`, `75001`, `1`, `+33`|
 
 `book 2 tickets to paris`
 
-In de vorige utterance wordt het woord `paris` toegewezen aan het item Parijs als onderdeel van de entiteit `Cities` lijst. De entiteit lijst komt overeen met zowel genormaliseerde naam van het item als het item synoniemen.
+In de vorige utterance `paris` wordt het woord toegewezen aan `Cities` het item in Parijs als onderdeel van de lijstentiteit. De lijstentiteit komt overeen met zowel de genormaliseerde naam van het item als de itemsynoniemen.
 
-#### <a name="v2-prediction-endpoint-response"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 voorspelling eindpuntrespons](#tab/V2)
 
 ```JSON
   "entities": [
@@ -81,10 +81,10 @@ In de vorige utterance wordt het woord `paris` toegewezen aan het item Parijs al
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 voorspelling eindpuntrespons](#tab/V3)
 
 
-Dit is de JSON als `verbose=false` is ingesteld in de query reeks:
+Dit is de `verbose=false` JSON als deze is ingesteld in de querytekenreeks:
 
 ```json
 "entities": {
@@ -96,7 +96,7 @@ Dit is de JSON als `verbose=false` is ingesteld in de query reeks:
 }
 ```
 
-Dit is de JSON als `verbose=true` is ingesteld in de query reeks:
+Dit is de `verbose=true` JSON als deze is ingesteld in de querytekenreeks:
 
 ```json
 "entities": {
@@ -125,11 +125,11 @@ Dit is de JSON als `verbose=true` is ingesteld in de query reeks:
 
 * * *
 
-|Data-object|De naam van de entiteit|Waarde|
+|Gegevensobject|Entiteitsnaam|Waarde|
 |--|--|--|
-|Entiteit weer geven|`Cities`|`paris`|
+|Lijstentiteit|`Cities`|`paris`|
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze [zelf studie](tutorial-list-entity.md)leert u hoe u een **lijst entiteit** kunt gebruiken om exacte overeenkomsten met tekst te extra heren uit een lijst met bekende items.
+In deze [zelfstudie](tutorial-list-entity.md)leert u hoe u een **lijstentiteit** gebruikt om exacte overeenkomsten met tekst uit een lijst met bekende items te extraheren.

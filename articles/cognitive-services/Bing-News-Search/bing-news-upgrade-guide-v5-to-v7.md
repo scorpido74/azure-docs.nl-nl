@@ -1,7 +1,7 @@
 ---
-title: Upgrade Bing Nieuws zoeken-API v5 naar v7
+title: Upgrade Bing News Search API v5 naar v7
 titleSuffix: Azure Cognitive Services
-description: Identificeert de onderdelen van uw toepassing die u moet bijwerken om versie 7 te gebruiken.
+description: Hiermee worden de onderdelen van uw toepassing geïdentificeerd die u moet bijwerken om versie 7 te kunnen gebruiken.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,84 +10,84 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 1263e93b1e316cab4afb51cd828737a5bd087fed
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: bad0ef849af7c94e63f1dfbebda7f47caef9947d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423840"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294370"
 ---
-# <a name="news-search-api-upgrade-guide"></a>Upgrade handleiding voor Nieuws zoeken-API
+# <a name="news-search-api-upgrade-guide"></a>Upgradegids voor nieuwszoeken API
 
-Deze upgrade handleiding bevat de wijzigingen tussen versie 5 en versie 7 van de Bing Nieuws zoeken-API. Gebruik deze hand leiding om u te helpen bij het identificeren van de onderdelen van uw toepassing die u moet bijwerken om versie 7 te gebruiken.
+Deze upgradehandleiding identificeert de wijzigingen tussen versie 5 en versie 7 van de Bing News Search API. Gebruik deze handleiding om u te helpen de onderdelen van uw toepassing te identificeren die u moet bijwerken om versie 7 te gebruiken.
 
 ## <a name="breaking-changes"></a>Wijzigingen die fouten veroorzaken
 
 ### <a name="endpoints"></a>Eindpunten
 
-- Het versie nummer van het eind punt is gewijzigd van v5 naar v7. Bijvoorbeeld, https://api.cognitive.microsoft.com/bing/ **v 7.0**/News/Search.
+- Het versienummer van het eindpunt is gewijzigd van v5 naar v7. Bijvoorbeeld `https://api.cognitive.microsoft.com/bing/v7.0/news/search`.
 
-### <a name="error-response-objects-and-error-codes"></a>Fout bericht objecten en fout codes
+### <a name="error-response-objects-and-error-codes"></a>Foutreactieobjecten en foutcodes
 
-- Alle mislukte aanvragen moeten nu een `ErrorResponse` object bevatten in de hoofd tekst van het antwoord.
+- Alle mislukte aanvragen moeten `ErrorResponse` nu een object in de antwoordinstantie bevatten.
 
-- De volgende velden zijn toegevoegd aan `Error` het object.  
-  - `subCode`&mdash;Partitioneert de fout code indien mogelijk naar discrete buckets
-  - `moreDetails`&mdash;Aanvullende informatie over de fout die in het `message` veld wordt beschreven
+- De volgende velden `Error` aan het object toegevoegd.  
+  - `subCode`&mdash;Partities van de foutcode in discrete buckets, indien mogelijk
+  - `moreDetails`&mdash;Aanvullende informatie over de `message` fout die in het veld is beschreven
 
-- De V5-fout codes zijn vervangen door de `code` volgende `subCode` mogelijke en waarden.
+- Verving de v5-foutcodes `code` door `subCode` de volgende mogelijke en waarden.
 
-|Code|SubCode|Description
+|Code|Subcode|Beschrijving
 |-|-|-
-|ServerError|UnexpectedError<br/>ResourceError<br/>Niet geïmplementeerd|Bing retourneert server error wanneer een van de voor waarden van de onderliggende code optreedt. Het antwoord bevat deze fouten als de HTTP-status code 500 is.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Geblokkeerd|Bing retourneert InvalidRequest wanneer een deel van de aanvraag ongeldig is. Een vereiste para meter ontbreekt bijvoorbeeld of een parameter waarde is niet geldig.<br/><br/>Als de fout ParameterMissing of ParameterInvalidValue is, is de HTTP-status code 400.<br/><br/>Als de fout HttpNotAllowed is, wordt de HTTP-status code 410.
-|RateLimitExceeded||Bing retourneert RateLimitExceeded wanneer u het quotum voor query's per seconde (QPS) of query's per maand (QPM) overschrijdt.<br/><br/>Bing retourneert HTTP-status code 429 als u QPS en 403 hebt overschreden als u QPM hebt overschreden.
-|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing retourneert InvalidAuthorization wanneer Bing de oproepende functie niet kan verifiëren. De `Ocp-Apim-Subscription-Key` koptekst ontbreekt bijvoorbeeld of de abonnements sleutel is niet geldig.<br/><br/>Redundantie treedt op als u meer dan één verificatie methode opgeeft.<br/><br/>Als de fout InvalidAuthorization is, is de HTTP-status code 401.
-|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Bing retourneert InsufficientAuthorization wanneer de aanroeper geen machtigingen heeft voor toegang tot de resource. Dit kan gebeuren als de abonnements sleutel is uitgeschakeld of is verlopen. <br/><br/>Als de fout InsufficientAuthorization is, is de HTTP-status code 403.
+|ServerFout|Onverwachts<br/>ResourceFout<br/>Niet geïmplementeerd|Bing retourneert ServerError wanneer een van de subcodevoorwaarden zich voordoet. Het antwoord bevat deze fouten als de HTTP-statuscode 500 is.
+|Ongeldig verzoek|ParameterMissing<br/>ParameterOngeldigWaarde<br/>HttpNotAtoegestaan<br/>Geblokkeerd|Bing retourneert Ongeldige aanvraag wanneer een deel van de aanvraag niet geldig is. Een vereiste parameter ontbreekt bijvoorbeeld of een parameterwaarde is ongeldig.<br/><br/>Als de fout ParameterMissing of ParameterInvalidValue is, is de HTTP-status400.<br/><br/>Als de fout httpNota is toegestaan, wordt de HTTP-statuscode 410 weergegeven.
+|RateLimitoverschreden||Bing retourneert RateLimitExceeded wanneer u uw query's per seconde (QPS) of query's per maand (QPM) quotum overschrijdt.<br/><br/>Bing retourneert HTTP-statuscode 429 als u QPS en 403 hebt overschreden als u QPM hebt overschreden.
+|Ongeldig autorisatie|Autorisatieontbreekt<br/>AutorisatieRedundantie|Bing retourneert InvalidAuthorization wanneer Bing de beller niet kan verifiëren. De `Ocp-Apim-Subscription-Key` koptekst ontbreekt bijvoorbeeld of de abonnementssleutel is ongeldig.<br/><br/>Redundantie treedt op als u meer dan één verificatiemethode opgeeft.<br/><br/>Als de fout Ongeldig autorisatie is, is de HTTP-status401.
+|OnvoldoendeAutorisatie|AutorisatieUitgeschakeld<br/>Autorisatie verlopen|Bing retourneert OnvoldoendeAutorisatie wanneer de beller geen machtigingen heeft om toegang te krijgen tot de bron. Dit kan gebeuren als de abonnementssleutel is uitgeschakeld of is verlopen. <br/><br/>Als de fout Onvoldoende autorisatie is, is de HTTP-statuscode 403.
 
-- De volgende fout codes worden toegewezen aan de nieuwe codes. Als u een afhankelijkheid van V5-fout codes hebt genomen, werkt u de code dienovereenkomstig bij.
+- De volgende geeft de vorige foutcodes een overzicht van de nieuwe codes. Als u afhankelijk bent van v5-foutcodes, werkt u uw code dienovereenkomstig bij.
 
-|Versie 5-code|Versie 7 code. subcode
+|Versie 5-code|Versie 7 code.subCode
 |-|-
-|RequestParameterMissing|InvalidRequest.ParameterMissing
-RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
-ResourceAccessDenied|InsufficientAuthorization
-ExceededVolume|RateLimitExceeded
-ExceededQpsLimit|RateLimitExceeded
-Uitgeschakeld|InsufficientAuthorization.AuthorizationDisabled
-UnexpectedError|ServerError.UnexpectedError
-DataSourceErrors|ServerError.ResourceError
-AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
-HttpNotAllowed|InvalidRequest.HttpNotAllowed
+|AanvraagParametermissing|InvalidRequest.ParameterMissing
+AanvraagParameterInvalidValue|Ongeldige waarde voor ongeldige aanvragen.parameterongeldig
+ResourceAccess geweigerd|OnvoldoendeAutorisatie
+OverschredenVolume|RateLimitoverschreden
+Limiet overschredenQpsLimit|RateLimitoverschreden
+Uitgeschakeld|OnvoldoendeAutorisatie.AutorisatieUitgeschakeld
+Onverwachts|ServerError.UnexpectedError
+Gegevensbronfouten|ServerError.ResourceError
+Autorisatieontbreekt|InvalidAuthorization.AuthorizationMissing InvalidAuthorization.AuthorizationMissing InvalidAuthorization.AuthorizationMissing InvalidAuthorization
+HttpNotAtoegestaan|InvalidRequest.HttpNotA toegestaan
 UserAgentMissing|InvalidRequest.ParameterMissing
-Niet geïmplementeerd|ServerError.NotImplemented
-InvalidAuthorization|InvalidAuthorization
-InvalidAuthorizationMethod|InvalidAuthorization
+Niet geïmplementeerd|ServerFout.Niet geïmplementeerd
+Ongeldig autorisatie|Ongeldig autorisatie
+Ongeldige autorisatiemethode|Ongeldig autorisatie
 MultipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
-ExpiredAuthorizationToken|InsufficientAuthorization.AuthorizationExpired
-InsufficientScope|InsufficientAuthorization
-Geblokkeerd|InvalidRequest. blocked
+VerlopenAutorisatieToken|OnvoldoendeAutorisatie.Autorisatieverlopen
+OnvoldoendeScope|OnvoldoendeAutorisatie
+Geblokkeerd|Ongeldig verzoek.geblokkeerd
 
-### <a name="object-changes"></a>Object wijzigingen
+### <a name="object-changes"></a>Objectwijzigingen
 
-- Het `contractualRules` veld is toegevoegd aan het [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) -object. Het `contractualRules` veld bevat een lijst met regels die u moet volgen (bijvoorbeeld artikel toewijzing). U moet de toewijzing Toep assen die is `contractualRules` opgenomen in in `provider`plaats van met. Het artikel bevat `contractualRules` alleen wanneer de [webzoekopdrachten API](../bing-web-search/search-the-web.md) -antwoord een nieuws antwoord bevat.
+- Het `contractualRules` veld toegevoegd aan het object [NewsArticle.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) Het `contractualRules` veld bevat een lijst met regels die u moet volgen (bijvoorbeeld toeschrijving van artikelen). U moet de inschrijving toepassen in `contractualRules` plaats van het gebruik van `provider`. Het artikel `contractualRules` bevat alleen wanneer het antwoord van de [Web Search API](../bing-web-search/search-the-web.md) een nieuwsantwoord bevat.
 
 ## <a name="non-breaking-changes"></a>Niet-brekende wijzigingen
 
 ### <a name="query-parameters"></a>Queryparameters
 
-- U hebt producten toegevoegd als mogelijke waarde waarvoor u de [categorie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) query parameter kunt instellen op. Zie [Categorieën per markt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).
+- Producten toegevoegd als mogelijke waarde waarop u de [parameter categoriequery](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) instellen. Zie [categorieën op markten](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).
 
-- De [sortby](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortby) -query parameter is toegevoegd. Hiermee worden trends op datum gesorteerd op basis van de meest recente eerst.
+- Added the [SortBy](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortby) query parameter, which returns trending topics sorted by date with the most recent first.
 
-- [De after](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#since) query-para meter is toegevoegd, waarmee trends in onderwerpen worden geretourneerd die door Bing zijn gedetecteerd op of na de opgegeven Unix-epoche-tijds tempel.
+- Toegevoegd de [Parameter Sinds](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#since) query, die trending onderwerpen die werden ontdekt door Bing op of na de opgegeven Unix tijdperk tijdstempel retourneert.
 
-### <a name="object-changes"></a>Object wijzigingen
+### <a name="object-changes"></a>Objectwijzigingen
 
-- Het `mentions` veld is toegevoegd aan het [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) -object. Het `mentions` veld bevat een lijst met entiteiten (personen of plaatsen) die in het artikel zijn gevonden.
+- Het `mentions` veld toegevoegd aan het object [NewsArticle.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) Het `mentions` veld bevat een lijst met entiteiten (personen of plaatsen) die in het artikel zijn gevonden.
 
-- Het `video` veld is toegevoegd aan het [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) -object. Het `video` veld bevat een video die aan het nieuws artikel is gerelateerd. De video is een \<iframe\> dat u kunt insluiten of een animatie-miniatuur.
+- Het `video` veld toegevoegd aan het object [NewsArticle.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) Het `video` veld bevat een video die gerelateerd is aan het nieuwsartikel. De video is \<een\> iframe dat u insluiten of een bewegingsminiatuur.
 
-- Het `sort` veld is toegevoegd aan het [Nieuws](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) object. In `sort` het veld wordt de sorteer volgorde van de artikelen weer gegeven. De artikelen worden bijvoorbeeld gesorteerd op relevantie (standaard) of datum.
+- Het `sort` veld toegevoegd aan het object [Nieuws.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) Het `sort` veld toont de sorteervolgorde van de artikelen. De artikelen worden bijvoorbeeld gesorteerd op relevantie (standaard) of datum.
 
-- Het [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) -object is toegevoegd, waarmee een sorteer volgorde wordt gedefinieerd. Het `isSelected` veld geeft aan of het antwoord de sorteer volgorde heeft gebruikt. Als dit het **geval**is, wordt de sorteer volgorde gebruikt voor het antwoord. Als `isSelected` de waarde **False**is, kunt u de URL in `url` het veld gebruiken om een andere sorteer volgorde aan te vragen.
+- Het object [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) toevoegen, dat een sorteervolgorde definieert. Het `isSelected` veld geeft aan of het antwoord de sorteervolgorde heeft gebruikt. Als **dit waar is,** heeft het antwoord de sorteervolgorde gebruikt. Als `isSelected` **dit niet waar**is, `url` kunt u de URL in het veld gebruiken om een andere sorteervolgorde aan te vragen.

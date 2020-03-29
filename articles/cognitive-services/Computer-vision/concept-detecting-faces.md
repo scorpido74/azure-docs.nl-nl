@@ -1,7 +1,7 @@
 ---
-title: Gezichts detectie-Computer Vision
+title: Gezichtsherkenning - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Leer concepten die betrekking hebben op de functie gezichts detectie van de Computer Vision-API.
+description: Leer concepten met betrekking tot de functie voor gezichtsherkenning van de Computer Vision API.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3675acf59c6889dd00c8f26089f509bbcd3c724e
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d10e4c98d3e2f00e7139063c8263e65ffd015d7c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945253"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244697"
 ---
-# <a name="face-detection-with-computer-vision"></a>Gezichts detectie met Computer Vision
+# <a name="face-detection-with-computer-vision"></a>Gezichtsherkenning met Computer Vision
 
-Computer Vision kunt menselijke gezichten detecteren binnen een afbeelding en de leeftijd, het geslacht en de rechthoek voor elk gedetecteerd gezicht genereren. 
+Computer Vision kan menselijke gezichten in een afbeelding detecteren en de leeftijd, het geslacht en de rechthoek voor elk gedetecteerd gezicht genereren. 
 
 > [!NOTE]
-> Deze functie wordt ook aangeboden door de Azure [Face](/azure/cognitive-services/face/) -service. Bekijk dit alternatief voor gedetailleerde analyse van het gezicht, inclusief gezichts identificatie en het detecteren van detectie. 
+> Deze functie wordt ook aangeboden door de Azure [Face-service.](/azure/cognitive-services/face/) Zie dit alternatief voor meer gedetailleerde gezichtsanalyse, inclusief gezichtsidentificatie en posedetectie. 
 
-## <a name="face-detection-examples"></a>Voor beelden van gezichts detectie
+## <a name="face-detection-examples"></a>Voorbeelden van gezichtsherkenning
 
-In het volgende voor beeld wordt het JSON-antwoord gedemonstreerd dat wordt geretourneerd door Computer Vision voor een afbeelding met één menselijk gezicht.
+In het volgende voorbeeld wordt de JSON-reactie weergegeven die door Computer Vision is geretourneerd voor een afbeelding die één menselijk gezicht bevat.
 
 ![Vision-analyse Vrouw op dak-gezicht](./Images/woman_roof_face.png)
 
@@ -54,9 +54,9 @@ In het volgende voor beeld wordt het JSON-antwoord gedemonstreerd dat wordt gere
 }
 ```
 
-In het volgende voor beeld wordt het JSON-antwoord gedemonstreerd dat is geretourneerd voor een afbeelding met meerdere menselijke gezichten.
+In het volgende voorbeeld wordt de JSON-reactie weergegeven die is geretourneerd voor een afbeelding met meerdere menselijke gezichten.
 
-![Vision Analyseer Family foto face](./Images/family_photo_face.png)
+![Vision Analyseer familie foto gezicht](./Images/family_photo_face.png)
 
 ```json
 {
@@ -111,6 +111,9 @@ In het volgende voor beeld wordt het JSON-antwoord gedemonstreerd dat is geretou
 }
 ```
 
-## <a name="next-steps"></a>Volgende stappen
+## <a name="use-the-api"></a>De API gebruiken
 
-Zie de naslag documentatie over het [analyseren van afbeeldingen](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) voor meer informatie over het gebruik van de functie voor gezichts herkenning.
+De functie voor gezichtsherkenning maakt deel uit van de Api Voor het analyseren van [afbeeldingen.](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) U deze API aanroepen via een native SDK of via REST-oproepen. Opnemen `Faces` in de parameter **visualFeatures** query. Wanneer u vervolgens de volledige JSON-respons krijgt, ontleden `"faces"` u gewoon de tekenreeks voor de inhoud van de sectie.
+
+* [Snelstart: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Snelstart: een afbeelding analyseren (REST API)](./quickstarts/csharp-analyze.md)

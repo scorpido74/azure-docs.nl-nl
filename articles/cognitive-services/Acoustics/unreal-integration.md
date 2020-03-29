@@ -1,7 +1,7 @@
 ---
-title: Unreal-en WWise-integratie in Project akoestische
+title: Project Acoustics Unreal en Wwise integratie
 titlesuffix: Azure Cognitive Services
-description: In dit artikel wordt de integratie van het project akoestische Unreal-en WWise-invoeg toepassingen in uw project beschreven.
+description: In dit artikel wordt beschreven dat de Plug-ins Project Acoustics Unreal en Wwise in uw project zijn opgenomen.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,182 +12,182 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: e57212a3002390754aaebc5f2aa9ffb10af230a2
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72243048"
 ---
-# <a name="project-acoustics-unreal-and-wwise-integration"></a>Unreal-en WWise-integratie in Project akoestische
-In dit artikel wordt beschreven hoe u het pakket voor de geluids invoeg toepassing van het project integreert in uw bestaande Unreal-en WWise-Game project.
+# <a name="project-acoustics-unreal-and-wwise-integration"></a>Project Acoustics Unreal en Wwise integratie
+In dit artikel wordt beschreven hoe u het Project Acoustics-insteekpakket integreren in uw bestaande Unreal en Wwise-gameproject.
 
-Software vereisten:
-* [Unreal Engine](https://www.unrealengine.com/) 4.20 +
-* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018,1
-* [WWise-invoeg toepassing voor Unreal](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
+Softwarevereisten:
+* [Unreal Engine](https://www.unrealengine.com/) 4.20+
+* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1
+* [Wwise plug-in voor Unreal](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
   
-  Als u een directe integratie van de WWise-SDK gebruikt in plaats van de WWise-Unreal-invoeg toepassing, raadpleegt u de invoeg toepassing project akoestische Unreal en past u WWise-API-aanroepen aan.
+  Als u een directe integratie van de Wwise SDK gebruikt in plaats van de Wwise Unreal-plug-in, raadpleegt u de Project Acoustics Unreal-plug-in en past u Wwise API-aanroepen aan.
 
-Als u project akoestische wilt gebruiken met een andere audio-engine dan WWise, moet u een uitbrei ding aanvragen in het [discussie forum van het project akoestische](https://github.com/microsoft/ProjectAcoustics/issues). U kunt de Unreal-invoeg toepassing voor project akoestische gebruiken om een query uit te voeren op geluids gegevens en API-aanroepen naar uw engine te maken.
+Als u Project Acoustics wilt gebruiken met een andere audio-engine dan Wwise, dient u een verbeteringsverzoek in het [discussieforum projectakoestiek.](https://github.com/microsoft/ProjectAcoustics/issues) U de Project Acoustics Unreal-plug-in gebruiken om akoestiekgegevens op te vragen en API-aanroepen naar uw engine.
 
-## <a name="download-project-acoustics"></a>Project akoestische downloaden
-Down load het [Unreal-en WWise-invoeg pakket voor project akoestische](https://www.microsoft.com/download/details.aspx?id=58090) als u dat nog niet hebt gedaan.
+## <a name="download-project-acoustics"></a>Project Acoustics downloaden
+Download het [Project Acoustics Unreal en Wwise plug-in pakket](https://www.microsoft.com/download/details.aspx?id=58090) als je dat nog niet hebt gedaan.
 
-Het pakket bevat een Unreal-invoeg toepassing en een WWise-mixer-invoeg toepassing. De Unreal-invoeg toepassing biedt integratie van de editor en runtime. Tijdens de gameplay berekent het project akoestische Unreal-invoeg toepassingen para meters zoals bedekking voor elk spel object voor elk frame. Deze para meters worden vertaald naar WWise API-aanroepen.
+Een Unreal Engine plug-in en een Wwise mixer plug-in zijn inbegrepen in het pakket. De Unreal-plug-in biedt editor- en runtime-integratie. Tijdens het spelen berekent de Project Acoustics Unreal plug-in parameters zoals occlusie voor elk gameobject voor elk frame. Deze parameters worden vertaald in Wwise API-aanroepen.
 
-## <a name="integration-steps"></a>Integratie stappen
+## <a name="integration-steps"></a>Integratiestappen
 
-Volg deze stappen om het pakket te installeren en te implementeren in uw game.
+Volg deze stappen om het pakket te installeren en te implementeren in je game.
 
-### <a name="install-the-project-acoustics-mixer-plug-in"></a>De invoeg toepassing voor de project akoestische mixers installeren
-1. Open het start programma voor WWise. Selecteer op het tabblad **invoeg toepassingen** onder **nieuwe invoeg toepassingen installeren**de optie **toevoegen uit map**.
+### <a name="install-the-project-acoustics-mixer-plug-in"></a>De invoegstop van de Project Acoustics-mixer installeren
+1. Open de Wwise launcher. Selecteer op het tabblad **Plug-ins** onder **Nieuwe plug-ins installeren**de optie **Toevoegen in map**.
 
-    ![Een invoeg toepassing installeren in het start programma voor WWise](media/wwise-install-new-plugin.png)
+    ![Installeer een plug-in in de Wwise launcher](media/wwise-install-new-plugin.png)
 
-1. Selecteer de *AcousticsWwisePlugin\ProjectAcoustics* -map in het Download pakket. Deze bevat de bundel invoeg toepassing WWise mixer.
+1. Selecteer de *map AcousticsWwisePlugin\ProjectAcoustics* die zich in het downloadpakket bevindt. Het bevat de Wwise mixer plug-in bundel.
 
-   WWise installeert de invoeg toepassing. De geluids van het project moet worden weer gegeven in de lijst met geïnstalleerde invoeg toepassingen in WWise.  
-![De lijst met geïnstalleerde WWise-invoeg toepassingen na de installatie van de project akoestische](media/unreal-integration-post-mixer-plugin-install.png)
+   Wwise installeert de plug-in. Project Acoustics moet verschijnen op de geïnstalleerde plug-ins lijst in Wwise.  
+![De Wwise geïnstalleerde plug-ins lijst na Project Acoustics installatie](media/unreal-integration-post-mixer-plugin-install.png)
 
-### <a name="dedeploy-wwise-into-your-game"></a>WWise in uw game deimplementeren
-Implementeer WWise in uw game, zelfs als u al een WWise hebt geïntegreerd. Deze stap integreert de WWise-invoeg toepassing voor project akoestische.
+### <a name="dedeploy-wwise-into-your-game"></a>Implementeer Wwise in je spel
+Zet Wwise opnieuw in je spel, zelfs als je Wwise al hebt geïntegreerd. Deze stap integreert de Project Acoustics Wwise plug-in.
 
    > [!NOTE]
-   > **Engine-invoeg toepassing:** Als WWise is geïnstalleerd als een game-invoeg toepassing in een Unreal C++ -project, slaat u deze stap over. Als de app in plaats daarvan wordt geïnstalleerd als een engine-invoeg toepassing, bijvoorbeeld omdat uw Unreal-project alleen blauw drukken is, is WWise-implementatie met onze mixer-invoeg toepassing ingewik kelder. Een leeg pop-Unreal C++ project maken. Sluit de Unreal-editor als deze wordt geopend en volg de resterende procedure voor het implementeren van WWise in het dummy-project. Kopieer vervolgens de geïmplementeerde WWise-invoeg toepassing.
+   > **Motorplug-in:** Als je Wwise hebt geïnstalleerd als een game plug-in in een Unreal C++ project, sla je deze stap over. Als het in plaats daarvan is geïnstalleerd als een engine plug-in, bijvoorbeeld omdat uw Unreal project is Blueprint alleen, Wwise implementatie met onze mixer plug-in is complexer. Maak een dummy leeg Unreal C ++ project. Sluit de Unreal-editor als deze wordt geopend en volg de resterende procedure om Wwise in het dummy-project te implementeren. Kopieer vervolgens de geïmplementeerde Wwise-plug-in.
  
-1. Selecteer in het start programma WWise het tabblad **Unreal Engine** . Selecteer het menu ' Hamburger ' (pictogram) naast **recente Unreal-Engine projecten** en selecteer vervolgens **Bladeren voor project**. Open het project bestand van het Unreal-project *.*
+1. Selecteer in het Startprogramma Wwise het tabblad **Unreal Engine.** Selecteer het menu 'hamburger' (pictogram) naast **Recente Unreal Engine-projecten** en selecteer **Bladeren naar project.** Open het Unreal-project *.projectbestand van* je game.
 
-    ![Het tabblad WWise Launcher Unreal](media/wwise-unreal-tab.png)
+    ![Het tabblad Wwise launcher Unreal](media/wwise-unreal-tab.png)
 
-1. Selecteer **WWise integreren in Project** of **WWise wijzigen in Project**. Deze stap integreert binaire WWise-bestanden in uw project, met inbegrip van de invoeg toepassing voor de project akoestische-mixer.
+1. Selecteer **Wwise integreren in Project** of **Wwise wijzigen in Project**. Deze stap integreert Wwise binaries in uw project, inclusief de Project Acoustics mixer plug-in.
 
    > [!NOTE]
-   > **Engine-invoeg toepassing:** Als u WWise als een engine-invoeg toepassing gebruikt en u het dummy-project hebt gemaakt zoals eerder beschreven, kopieert u de map die WWise geïmplementeerd: *[DummyUProject] \Plugins\Wwise*. Plak het over *[UESource] \Engine\Plugins\Wwise*. *[DummyUProject]* is het lege Unreal C++ -projectmap en *[UESource]* is de plaats waar de Unreal-Engine bronnen zijn geïnstalleerd. Nadat u de map hebt gekopieerd, kunt u het dummy-project verwijderen.
+   > **Motorplug-in:** Als u Wwise gebruikt als engine plug-in en u het dummy-project hebt gemaakt zoals eerder beschreven, kopieert u de map die Wwise heeft geïmplementeerd: *[DummyUProject]\Plugins\Wwise*. Plak het over *[UESource]\Engine\Plugins\Wwise*. *[DummyUProject]* is het lege Unreal C++-projectpad en *[UESource]* is de plaats waar de Unreal Engine-bronnen zijn geïnstalleerd. Nadat u de map hebt gekopieerd, u het dummy-project verwijderen.
 
-### <a name="add-the-project-acoustics-unreal-plug-in-to-your-game"></a>Voeg de Unreal-invoeg toepassing voor project akoestische toe aan uw game
+### <a name="add-the-project-acoustics-unreal-plug-in-to-your-game"></a>Voeg de Project Acoustics Unreal-plug-in toe aan je game
  
-1. Kopieer de map *Unreal\ProjectAcoustics* in het invoeg toepassings pakket. Maak een nieuwe map *[UProjectDir] \Plugins\ProjectAcoustics*, waarbij *[UProjectDir]* de projectmap van uw game is die het *. uproject* -bestand bevat.
+1. Kopieer de map *Unreal\ProjectAcoustics* in het insteekpakket. Maak een nieuwe map *[UProjectDir]\Plugins\ProjectAcoustics*, waarbij *[UProjectDir]* de projectmap van uw game is die het *.uproject-bestand* bevat.
 
    > [!NOTE]
-   > **Engine-invoeg toepassing**: als u WWise als een engine-invoeg toepassing gebruikt, moet u ook project akoestische als een Unreal-Engine-invoeg toepassing gebruiken. Gebruik in plaats van de doelmap die eerder is vermeld *[UESource] \Engine\Plugins\ProjectAcoustics*.
+   > **Engine plug-in**: Als je Wwise gebruikt als een motor plug-in, moet je Project Acoustics ook gebruiken als een Unreal engine plug-in. Gebruik *[UESource]\Engine\Plugins\ProjectAcoustics*in plaats van de eerder aangehaalde bestemmingsmap.
 
-1. Controleer of u een map *WWise* naast de map *ProjectAcoustics* ziet. Het bevat de WWise-invoeg toepassing en binaire bestanden voor de invoeg toepassing die u eerder hebt geïmplementeerd.
+1. Controleer of u een *Wwise-map* ziet naast de map *ProjectAcoustics.* Het bevat de Wwise plug-in samen met binaries voor de mixer plug-in die u eerder geïmplementeerd.
 
-### <a name="extend-wwise-unreal-plug-in-functionality"></a>WWise Unreal-invoeg toepassings functionaliteit uitbreiden
-De Unreal-invoeg toepassing voor project akoestische vereist extra gedrag dat wordt weer gegeven vanuit de WWise Unreal-invoeg toepassing API volgens [deze richt lijnen](https://www.audiokinetic.com/library/?source=UE4&id=using__initialsetup.html). We hebben een batch-bestand opgenomen om de patch procedure te automatiseren.
+### <a name="extend-wwise-unreal-plug-in-functionality"></a>Wwise Unreal-plug-infunctionaliteit uitbreiden
+De Project Acoustics Unreal plug-in vereist extra gedrag blootgesteld van de Wwise Unreal plug-in API volgens [deze richtlijnen](https://www.audiokinetic.com/library/?source=UE4&id=using__initialsetup.html). We hebben een batchbestand opgenomen om de patchprocedure te automatiseren.
 
-* Voer *PatchWwise. bat*in *Plugins\ProjectAcoustics\Resources*uit. In het volgende voor beeld wordt het AcousticsGame-voorbeeld project gebruikt.
+* Binnen *in Plugins\ProjectAcoustics\Resources,* voer *PatchWwise.bat*uit. In het volgende voorbeeld wordt gebruik gemaakt van ons AcousticsGame voorbeeldproject.
 
-    ![Een Windows Verkenner-venster met het script voor de patch WWise gemarkeerd](media/patch-wwise-script.png)
+    ![Een Windows Explorer-venster met het script om Wwise te patchen gemarkeerd](media/patch-wwise-script.png)
 
-* Als u de DirectX SDK niet hebt geïnstalleerd: afhankelijk van de versie van WWise die u gebruikt, moet u mogelijk een opmerking plaatsen bij de regel die `DXSDK_DIR` in *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.build.cs*bevat:
+* Als u de DirectX SDK niet hebt geïnstalleerd: afhankelijk van de versie van Wwise die u `DXSDK_DIR` gebruikt, moet u mogelijk commentaar geven op de regel die bevat in *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs:*
 
-    ![De code-editor met ' DXSDK '](media/directx-sdk-comment.png)
+    ![De code editor met 'DXSDK' commentaar uit](media/directx-sdk-comment.png)
 
-* Als u compileert met Visual Studio 2019: als u een koppelings fout met WWise wilt omzeilen, wijzigt u de standaard `VSVersion` waarde in *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.build.cs* hand matig in **vc150**:
+* Als u compileert met Visual Studio 2019: Als u een koppelingsfout met Wwise wilt omzeilen, wijzigt u handmatig de standaardwaarde `VSVersion` in *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs* naar **vc150:**
 
-    ![De code-editor met ' VSVersion ' is gewijzigd in ' vc150 '](media/vsversion-comment.png)
+    ![De codeeditor met "VSVersion" is gewijzigd in "vc150"](media/vsversion-comment.png)
 
-### <a name="build-the-game-and-check-that-python-is-enabled"></a>Het spel bouwen en controleren of python is ingeschakeld
+### <a name="build-the-game-and-check-that-python-is-enabled"></a>Bouw het spel en controleer of Python is ingeschakeld
 
-1. Compileer uw spel en controleer of het correct is gebouwd. Als deze nog niet is gemaakt, controleert u de vorige stappen zorgvuldig voordat u doorgaat.
+1. Compileer je spel en zorg ervoor dat het correct wordt opgebouwd. Als het niet bouwt, controleert u de vorige stappen zorgvuldig voordat u verdergaat.
 
-1. Open het project in de Unreal-editor.
+1. Open uw project in Unreal Editor.
 
     > [!NOTE]
-    > **Engine-invoeg toepassing:** Als u ProjectAcoustics als een engine-invoeg toepassing gebruikt, moet u er ook voor zorgen dat deze is ingeschakeld onder ingebouwde invoeg toepassingen.
+    > **Motorplug-in:** Als u ProjectAcoustics gebruikt als een motorplug-in, moet u er ook voor zorgen dat het is ingeschakeld onder "ingebouwde" plug-ins.
 
-    Er wordt een nieuwe modus weer gegeven, die aangeeft dat de geluids van het project is geïntegreerd.
+    U ziet een nieuwe modus, die aangeeft dat Project Acoustics is geïntegreerd.
 
-    ![De akoestische modus is volledig in Unreal](media/acoustics-mode-full.png)
+    ![Akoestiek modus vol in Unreal](media/acoustics-mode-full.png)
 
-1. Controleer of de python-invoeg toepassing voor Unreal is ingeschakeld, zodat de integratie van de editor correct werkt.
+1. Controleer of de Python-plug-in voor Unreal is ingeschakeld, zodat de editor-integratie correct functioneert.
 
-    ![De python-uitbrei dingen in de Unreal-editor zijn ingeschakeld](media/ensure-python.png)
+    ![De Python-extensies in de Unreal-editor zijn ingeschakeld](media/ensure-python.png)
 
-### <a name="set-up-your-wwise-project-to-use-project-acoustics"></a>Stel uw WWise-project in om project akoestische te gebruiken
+### <a name="set-up-your-wwise-project-to-use-project-acoustics"></a>Uw Wwise-project instellen om Project Acoustics te gebruiken
 
-Een voor beeld van een WWise-project is opgenomen in de down load samples. We raden u aan deze samen met deze instructies te bekijken. De scherm afbeeldingen verderop in dit artikel zijn afkomstig uit dit project.
+Een voorbeeld Wwise project is opgenomen in de monsters te downloaden. We raden u aan het samen met deze instructies te bekijken. De screenshots later in dit artikel zijn van dit project.
 
-#### <a name="bus-setup"></a>Bus-installatie
-De Unreal-invoeg toepassing voor project akoestische zoekt naar de gekoppelde mixer-invoeg toepassing op een bus met de exacte naam `Project Acoustics Bus`. Maak een nieuwe audio bus met dezelfde naam. De invoeg toepassing voor de mixer kan worden gebruikt in verschillende configuraties. We gaan echter ervan uit dat deze alleen wordt gebruikt voor de verwerking van galm. Deze bus heeft het gemengde galm signaal voor alle bronnen die akoestische gebruiken. De IT-upstream kan worden gecombineerd in elke wille keurige bus-structuur. Hier wordt een voor beeld weer gegeven uit het WWise-voorbeeld project dat is opgenomen in de voor beeld-down load.
+#### <a name="bus-setup"></a>Bussetup
+De Project Acoustics Unreal plug-in zoekt naar de bijbehorende mixer plug-in op een bus met de exacte naam. `Project Acoustics Bus` Maak een nieuwe audiobus met dezelfde naam. De mixer plug-in kan werken in verschillende configuraties. Maar voor nu, gaan we ervan uit dat het alleen zal worden gebruikt voor reverb verwerking. Deze bus zal het gemengde galmsignaal dragen voor alle bronnen die Acoustics gebruiken. Het kan stroomopwaarts mengen in elke bus-mengen structuur. Een voorbeeld wordt hier weergegeven uit het Wwise-voorbeeldproject dat is opgenomen in de voorbeelddownload.
 
-![WWise-bussen met de project akoestische bus](media/acoustics-bus.png)
+![Wwise bussen die De Bus van de Akoestiek van Het wat van het project](media/acoustics-bus.png)
 
-1. Stel de kanaal configuratie op de bus in op *1,0*, *2,0*, *4,0*, *5,1*of *7,1*. Elke andere instelling leidt tot geen uitvoer op de bus.
+1. Stel de kanaalconfiguratie op de bus in op *1.0*, *2.0*, *4.0*, *5.1*of *7.1*. Elke andere instelling zal resulteren in geen output op de bus.
 
-    ![Kanaal configuratie opties voor de project akoestische bus](media/acoustics-bus-channel-config.png)
+    ![Kanaalconfig opties voor Project Acoustics Bus](media/acoustics-bus-channel-config.png)
 
-1. Ga naar de gegevens van de geluids bus van het project en zorg ervoor dat u het tabblad **invoeg toepassing voor mixer** kunt zien.
+1. Ga naar de details van de Project Acoustics Bus en zorg ervoor dat u het **tabblad Mixer-plug-in** zien.
 
-    ![WWise met het tabblad invoeg toepassing voor de project akoestische bus ingeschakeld](media/mixer-tab-enable.png)
+    ![Wwise met het tabblad Mixer Plug-in voor de Project Acoustics Bus ingeschakeld](media/mixer-tab-enable.png)
 
-1. Ga naar het tabblad **invoeg toepassing voor mixer** en voeg de invoeg toepassing voor de project akoestische mixers toe aan de bus.
+1. Ga naar het tabblad **Mixer Plug-in** en voeg de plug-in voor de akoestiek van het project toe aan de bus.
 
-    ![Diagram van het toevoegen van de invoeg toepassing voor de project akoestische-mixer aan de WWise-bus](media/add-mixer-plugin.png)
+    ![Diagram voor het toevoegen van de Project Acoustics Mixer Plug-in aan de Wwise-bus](media/add-mixer-plugin.png)
 
-#### <a name="actor-mixer-hierarchy-setup"></a>Setup actor-mixer-hiërarchie
-Voor de beste prestaties wordt de verwerking van digitale signalen op het niveau van een geluid toegepast op alle bronnen tegelijk. Daarom moet de invoeg toepassing worden gebruikt als een mixer-invoeg toepassing. WWise vereist dat er mixer-invoeg toepassingen aanwezig zijn op de uitvoer bus, hoewel de uitvoer bus doorgaans het droge uitvoer signaal uitvoert. Voor de geluids sterkte van een project moet het droge signaal worden gerouteerd via aux-bussen, terwijl het natte signaal wordt uitgevoerd op de `Project Acoustics Bus`. Het volgende proces ondersteunt geleidelijke migratie naar deze signaal stroom.
+#### <a name="actor-mixer-hierarchy-setup"></a>Instelling voor de hiërarchie van actormixer
+Voor de beste prestaties past Project Acoustics audiodigitale signaalverwerking toe op alle bronnen tegelijk. De plug-in moet dus werken als een mixer plug-in. Wwise vereist mixer plug-ins te worden op de output bus, hoewel de output bus draagt meestal de droge output signaal. Project Acoustics vereist dat het droge signaal wordt gerouteerd door `Project Acoustics Bus`aux bussen, terwijl het natte signaal wordt uitgevoerd op de . Het volgende proces ondersteunt geleidelijke migratie naar deze signaalstroom.
 
-Stel dat u een bestaand project hebt met een actor-mixer-hiërarchie die *beeld*, *wapens*en anderen op het hoogste niveau bevat. Elk heeft een bijbehorende uitvoer bus voor de droge mix. Stel dat u beeld wilt migreren om akoestische te gebruiken. Maak eerst een corresponderende aux-bus om de droge submix te maken die een onderliggend element is van de beeld-uitvoer bus. We hebben bijvoorbeeld een voor voegsel ' droge ' gebruikt in de volgende afbeelding om de bussen te ordenen, hoewel de exacte naam niet van belang is. Alle meters of effecten die u op de beeld-bus had, functioneren net als voorheen.
+Stel dat u een bestaand project hebt met een hiërarchie van actor-mixers die *voetstappen,* *wapens*en andere op het hoogste niveau bevat. Elk heeft een bijbehorende output bus voor zijn droge mix. Stel dat u voetstappen wilt migreren om akoestiek te gebruiken. Maak eerst een bijbehorende aux-bus om de droge submix te dragen die een kind is van de voetstappen uitvoerbus. We gebruikten bijvoorbeeld een "Droog" voorvoegsel in de volgende afbeelding om de bussen te organiseren, hoewel de exacte naam niet belangrijk is. Alle meters of effecten die je had op de voetstappen bus zal nog steeds functioneren als voorheen.
 
-![Aanbevolen WWise droge mix instellen](media/wwise-dry-mix-setup.png)
+![Aanbevolen Wwise droge mix setup](media/wwise-dry-mix-setup.png)
 
-Wijzig vervolgens de bus-uitvoer structuur voor de beeld actor-mixer als volgt, waarbij de *project akoestische bus* is ingesteld als **uitvoer bus**en *Dry_Footsteps* ingesteld als een door de gebruiker gedefinieerde aux-bus.
+Wijzig vervolgens de busuitvoerstructuur voor de actormixer Voetstappen als volgt, met *Project Acoustics Bus* als **uitvoerbus**en *Dry_Footsteps* ingesteld als een door de gebruiker gedefinieerde aux-bus.
 
-![Aanbevolen installatie van WWise actor mixer-bus](media/actor-mixer-bus-settings.png)
+![Aanbevolen Wwise actor mixer bus setup](media/actor-mixer-bus-settings.png)
 
-Alle beeld verkrijgen nu akoestische behandeling en voeren hun galm uit op de projector van het project akoestische. Het droge signaal wordt gerouteerd via Dry_Footsteps en wordt zo ruimtelijk gewend.
+Nu krijgen alle voetstappen een akoestiekbehandeling en output van hun galm op de Project Acoustics Bus. Het droge signaal wordt door Dry_Footsteps gerouteerd en zoals gebruikelijk ruimtelijk gemaakt.
 
-De geluids fragmenten van het project zijn alleen van toepassing op geluiden met een 3D-locatie in de wereld. De volgende [WWise-documentatie](https://blog.audiokinetic.com/out-with-the-old-in-with-the-new-positioning-revamped-in-wwise-2018.1/)moeten de plaatsings eigenschappen worden ingesteld zoals weer gegeven. De instelling van de **3D-spatialization** kan een *positie* of *positie en stand* zijn, waar nodig.
+Project Acoustics is alleen van toepassing op geluiden met een 3D-locatie in de wereld. Na [Wwise-documentatie](https://blog.audiokinetic.com/out-with-the-old-in-with-the-new-positioning-revamped-in-wwise-2018.1/)moeten de positioneringseigenschappen worden ingesteld zoals weergegeven. De **instelling 3D Spatialization** kan indien nodig *positie* of positie *+ oriëntatie* zijn.
 
-![Aanbevolen positie-instellingen voor WWise actor](media/wwise-positioning.png)
+![Aanbevolen positioneringsinstellingen van Wwise Actor](media/wwise-positioning.png)
 
-U kunt geen **uitvoer bus** instellen op een andere bus die upstream samenmengt in de *project akoestische bus*. WWise legt deze vereiste op mixer-invoeg toepassingen.
+U **de uitvoerbus** niet instellen op een andere bus die stroomopwaarts in *Project Acoustics Bus*wordt gemengd. Wwise legt deze eis op aan mixerplug-ins.
 
-Als u een onderliggend element in de beeld actor-mixer-hiërarchie niet wilt gebruiken voor het gebruik van akoestische, kunt u ' bovenliggende ' overschrijven ' gebruiken om dit te doen.
+Als u wilt dat een kind in de voetstappen van de actor-mixerhiërarchie geen akoestiek gebruikt, u 'ouder overschrijven' gebruiken om het af te melden.
 
-Als u door het spel gedefinieerde of door de gebruiker gedefinieerde verzen dingen voor een actor-mixer in het spel gebruikt, schakelt u deze uit op die actor-mixer om te voor komen dat er twee keer meer worden toegepast.
+Als je game-defined of door de gebruiker gedefinieerde stuurt voor galm op een actor-mixer in het spel, schakel je ze uit op die actor-mixer om te voorkomen dat je twee keer galm toepast.
 
-#### <a name="spatialization"></a>Spatialization
-De WWise mixer-invoeg toepassing voor project akoestische past standaard convolutie galm toe, waardoor WWise op spatialization kan worden gesleept. Wanneer u project akoestische gebruikt in deze standaard alleen-galm configuratie, kunt u elke kanaal configuratie en spatialization-methode gebruiken voor uw droge mix. U kunt dus bijna elke spatializer combi neren en vergelijken met het project akoestische klanken. Uw opties zijn onder andere [op Ambisonics gebaseerde binaural spatializers](https://www.audiokinetic.com/products/ambisonics-in-wwise/) en [Windows Sonic](https://docs.microsoft.com/windows/desktop/CoreAudio/spatial-sound).
+#### <a name="spatialization"></a>Ruimtelijkheid
+De Project Acoustics Wwise mixer plug-in past standaard convolutie reverb toe, waardoor Wwise panning spatialization hoeft te doen. Wanneer u Project Acoustics gebruikt in deze standaard reverb-only configuratie, u elke kanaalconfiguratie en ruimtelijke methode gebruiken op uw droge mix. Zo kun je bijna elke spatializer mixen en matchen met de Project Acoustics reverb. Uw opties omvatten [Ambisonics-gebaseerde binaurale spatializers](https://www.audiokinetic.com/products/ambisonics-in-wwise/) en [Windows Sonic](https://docs.microsoft.com/windows/desktop/CoreAudio/spatial-sound).
  
-Project akoestische bevat een optionele spatializer die zowel op objecten gebaseerde HRTF rendering als pannen ondersteunt. Schakel het selectie vakje **spatialization uitvoeren** in de instellingen van de mixer-invoeg toepassing in en kies tussen *HRTF* of *pannen*. Schakel ook door de gebruiker gedefinieerde aux-verzen dingen uit naar alle droge bussen om spatializing twee maal te vermijden door de invoeg toepassing voor project akoestische mixers en WWise. De spatialization-modus kan in realtime niet worden gewijzigd, omdat er een geluids Bank opnieuw moet worden gegenereerd. Start Unreal opnieuw op en Genereer soundbanks voordat u afspelen selecteert voor het integreren van de configuratie wijzigingen voor de invoeg toepassing van de mixer, zoals de instelling spatialization selectie vakje **uitvoeren** .
+Project Acoustics bevat een optionele spatializer die zowel objectgebaseerde HRTF-rendering en panning met hoge resolutie ondersteunt. Schakel het selectievakje **Ruimtemaken uitvoeren** in de invoeginstellingen voor mixers in en kies tussen *HRTF* of *Pannen.* Schakel ook door de gebruiker gedefinieerde aux-sends naar alle droge bussen uit om te voorkomen dat de Plug-in project acoustics en Wwise twee keer ruimtelijk worden gemaakt. De spatialisatiemodus kan niet in realtime worden gewijzigd omdat er een herstel van de geluidsbank nodig is. Start Unreal opnieuw op en regenereerde vervolgens geluidsbanken voordat u play selecteert om mixerplug-in config-wijzigingen te integreren, zoals de instelling voor het selectievakje **Ruimte uitvoeren.**
 
-![Spatialization-instellingen voor WWise-mixer-invoeg toepassingen](media/mixer-spatial-settings.png)
+![Instellingen voor plug-in-ruimte wwise Mixer](media/mixer-spatial-settings.png)
 
-Helaas worden andere op objecten gebaseerde spatializer-invoeg toepassingen momenteel niet ondersteund. Ze worden geïmplementeerd als mixer-invoeg toepassingen en WWise staat niet toe dat meerdere mixer-invoeg toepassingen worden toegewezen aan één actor-mixer.  
+Helaas worden andere objectgebaseerde spatializer-plug-ins momenteel niet ondersteund. Ze worden geïmplementeerd als mixerplug-ins en Wwise staat niet toe dat meerdere mixerplug-ins worden toegewezen aan één actor-mixer.  
 
-### <a name="audio-setup-in-unreal"></a>Audio-instellingen in Unreal
-1. Eerst moet u uw game niveau maken om een akoestische activa te maken, die in *Content\Acoustics*worden geplaatst. Raadpleeg de [zelf studie voor Unreal maken](unreal-baking.md). Een aantal pre-geïntegreerde niveaus zijn opgenomen in het voorbeeld pakket.
+### <a name="audio-setup-in-unreal"></a>Audio-installatie in Unreal
+1. Eerst moet je je spelniveau bakken om een akoestiek-asset te produceren, die in *Content\Acoustics*wordt geplaatst. Raadpleeg de [Unreal Bake Tutorial](unreal-baking.md). Sommige voorgebakken niveaus zijn opgenomen in het monsterpakket.
 
-1. Maak een actor voor akoestische ruimte in uw scène. Maak slechts een van deze actors op een niveau, omdat deze de akoestische voor het hele niveau vertegenwoordigt.
+1. Maak een akoestiekruimteacteur in je scène. Maak slechts een van deze actoren in een niveau, omdat het vertegenwoordigt de akoestiek voor het hele niveau.
 
-    ![Maken van een actor voor akoestische ruimte in de Unreal-editor](media/create-acoustics-space.png)
+    ![Creatie van een Akoestiek ruimte acteur in de Unreal editor](media/create-acoustics-space.png)
 
-1. Wijs de geïntegreerde akoestische-gegevensasset toe aan de geluids gegevens sleuf van de akoestische Space actor. Uw scène heeft nu akoestische beelden.
+1. Wijs de gebakken akoestische dataasset toe aan de akoestiek-gegevenssleuf op de ruimteactor Akoestiek. Uw scène heeft nu akoestiek!
 
-    ![De toewijzing van akoestische activa in de Unreal-editor](media/acoustics-asset-assign.png)
+    ![Akoestiek asset assignment in de Unreal editor](media/acoustics-asset-assign.png)
 
-1. Voeg een lege actor toe. Configureer deze als volgt.
+1. Voeg een lege actor toe. Configureer het als volgt.
 
-    ![De Unreal-editor toont het gebruik van akoestische onderdelen in een lege actor](media/acoustics-component-usage.png)
+    ![De Unreal-editor toont het gebruik van de akoestiekcomponent in een lege actor](media/acoustics-component-usage.png)
 
        
-    <sup>1</sup> Voeg een akoestische audio-onderdeel aan de actor toe. Met dit onderdeel wordt de functionaliteit van het project akoestisch toegevoegd aan het audio onderdeel WWise.
+    <sup>1</sup> Voeg een audiocomponent Akoestiek toe aan de actor. Dit onderdeel voegt Project Acoustics-functionaliteit toe aan de Wwise-audiocomponent.
         
-    <sup>2</sup> het vak **afspelen op het begin** is standaard geselecteerd. Met deze instelling wordt een gekoppelde WWise-gebeurtenis geactiveerd op het niveau van opstarten.</li>
+    <sup>2</sup> Het vak **Afspelen op start** is standaard geselecteerd. Met deze instelling wordt een bijbehorende Wwise-gebeurtenis geactiveerd bij het opstarten op niveau.</li>
          
-    <sup>3</sup> gebruik het selectie vakje **akoestische para meters weer geven** om informatie over fout opsporing op het scherm af te drukken over de bron.
+    <sup>3</sup> Gebruik het selectievakje **Akoestiekparameters weergeven** om foutopsporingsgegevens op het scherm over de bron af te drukken.
 
-    ![Het Unreal editor-geluids paneel op de geluids bron met de waarden voor fout opsporing ingeschakeld](media/debug-values.png)
+    ![Het deelvenster Onwerkelijke editor Akoestiek over geluidsbron met foutopsporingswaarden ingeschakeld](media/debug-values.png)
 
-    <sup>4</sup> wijs een WWise-gebeurtenis toe per gewone WWise-werk stroom.
+    <sup>4</sup> Wijs een Wwise-gebeurtenis toe per de gebruikelijke Wwise-werkstroom.
        
-    <sup>5</sup> zorg ervoor dat **ruimtelijke audio gebruiken** is uitgeschakeld. Als u de geluids fragmenten van het project gebruikt voor een bepaald audio onderdeel, kunt u de ruimtelijke audio-engine van WWise niet tegelijkertijd gebruiken voor akoestische geluids.</li>
+    <sup>5</sup> Zorg ervoor dat **Gebruik Ruimtelijke Audio** is uitgeschakeld. Als u Project Acoustics voor een bepaalde audiocomponent gebruikt, u de Spatial Audio-engine van Wwise niet tegelijkertijd gebruiken voor akoestiek.</li>
        
-U bent nu klaar. Ga door de scène en verken de akoestische effecten.
+U bent nu klaar. Beweeg rond de scène en verken de akoestische effecten!
 
 ## <a name="next-steps"></a>Volgende stappen
-* Probeer de [zelf studie Unreal/WWise](unreal-workflow.md)van het ontwerp van het project.
-* Meer informatie [over hoe u Bakes kunt doen](unreal-baking.md) voor uw game scènes.
+* Probeer de [Project Acoustics Unreal / Wwise Design Tutorial](unreal-workflow.md).
+* Meer [informatie over hoe je bakt](unreal-baking.md) voor je spelscènes.

@@ -1,7 +1,7 @@
 ---
-title: Video toezicht met menselijke beoordeling-Content Moderator
+title: Videomoderatie met menselijke beoordeling - Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Met machine ondersteunde video toezicht en hulpprogram ma's voor menselijke beoordeling naar ongepaste inhoud
+description: Gebruik machineondersteunde videomoderatie en tools voor menselijke beoordeling om ongepaste inhoud te matigen
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: pafarley
 ms.openlocfilehash: a4e7b079367a4b4dec1d2b3d6c0afde1d8276766
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72754157"
 ---
-# <a name="video-moderation-with-human-review"></a>Video toezicht met menselijke beoordeling
+# <a name="video-moderation-with-human-review"></a>Videomoderatie met menselijke beoordeling
 
-Gebruik Content Moderator door de machine ondersteunde [video toezicht](video-moderation-api.md) en het [hulp programma voor menselijke beoordeling](Review-Tool-User-Guide/human-in-the-loop.md) naar gematige Video's en transcripten voor volwassene (expliciete) en ongepaste (Voorst Ellen) om de beste resultaten voor uw bedrijf te krijgen.
+Gebruik de machine-ondersteunde [videomoderatie](video-moderation-api.md) en [human review](Review-Tool-User-Guide/human-in-the-loop.md) tool van Content Moderator om video's en transcripties te modereren voor inhoud voor volwassenen (expliciete) en pikante (suggestieve) inhoud om de beste resultaten voor je bedrijf te krijgen.
 
-## <a name="video-trained-classifier-preview"></a>Video-getrainde classificatie (preview-versie)
+## <a name="video-trained-classifier-preview"></a>Door video getrainde classifier (preview)
 
-De door de machine ondersteunde video classificatie is behaald met afbeeldingen getrainde modellen of modellen die zijn getraind. In tegens telling tot video classificaties die zijn getraind, wordt de video classificatie voor volwassenen en ongepaste van micro soft getraind met Video's. Deze methode resulteert in een beter resultaat van kwaliteit.
+Machine-ondersteunde video classificatie wordt bereikt met beeld getrainde modellen of video getrainde modellen. In tegenstelling tot videoclassificaties die door afbeeldingen zijn opgeleid, wordt de classificatie voor volwassenen en racy video's van Microsoft getraind met video's. Deze methode resulteert in een betere match kwaliteit.
 
-## <a name="shot-detection"></a>Opname detectie
+## <a name="shot-detection"></a>Shotdetectie
 
-Bij het uitvoeren van de classificatie Details helpt aanvullende video-informatie over meer flexibiliteit bij het analyseren van Video's. In plaats van alleen de frames uit te voeren, biedt de video moderator service van micro soft ook informatie over het niveau van de opname. U hebt nu de mogelijkheid om uw Video's op het niveau van de afbeelding en het frame niveau te analyseren.
+Bij het uitdelen van de classificatiedetails helpt extra video-intelligentie bij het analyseren van video's. In plaats van alleen de frames te outputting, microsoft's video moderatie service biedt shot-level informatie ook. Je hebt nu de mogelijkheid om je video's te analyseren op het opnameniveau en het frameniveau.
 
-## <a name="key-frame-detection"></a>Belangrijkste frame detectie
+## <a name="key-frame-detection"></a>Detectie van sleutelframes
 
-In plaats van frames met regel matige tussen pozen te laten uitvoeren, identificeert de video moderator-service alleen mogelijke voltooide (goede) frames. Met deze functie kunt u efficiënte frames genereren voor de analyse op frame niveau voor volwassenen en ongepaste.
+In plaats van frames op regelmatige tijdstippen uit te voeren, identificeert en produceert de videomoderatieservice alleen potentieel complete (goede) frames. De functie maakt een efficiënte framegeneratie mogelijk voor analyse op frameniveau voor volwassenen en racy.
 
-De volgende extractie toont een gedeeltelijk antwoord met potentiële opnamen, keyframes en volwassene en ongepastee scores:
+Het volgende extract toont een gedeeltelijke reactie met potentiële opnamen, hoofdframes en volwassen en pikante scores:
 
 ```json
 "fragments":[  
@@ -76,33 +76,33 @@ De volgende extractie toont een gedeeltelijk antwoord met potentiële opnamen, k
     ]
 ```
 
-## <a name="visualization-for-human-reviews"></a>Visualisatie voor mensen beoordelingen
+## <a name="visualization-for-human-reviews"></a>Visualisatie voor menselijke beoordelingen
 
-Voor meer gesmelte gevallen hebben bedrijven een menselijke beoordelings oplossing nodig voor het renderen van de video, de frames en de door de machine toegewezen tags. De menselijke moderators die Video's en frames bekijken, krijgen een volledig overzicht van de inzichten, wijzigingen aanbrengen en hun beslissingen verzenden.
+Voor meer genuanceerde gevallen hebben bedrijven een oplossing voor menselijke beoordeling nodig voor het renderen van de video, de frames en de door machines toegewezen tags. De menselijke moderators die video's en frames bekijken, krijgen een compleet overzicht van de inzichten, wijzigen tags en dienen hun beslissingen in.
 
-![standaard weergave voor video revisie programma](images/video-review-default-view.png)
+![Standaardweergave voor videocontroletool](images/video-review-default-view.png)
 
-## <a name="player-view-for-video-level-review"></a>Player-weer gave voor beoordeling op video niveau
+## <a name="player-view-for-video-level-review"></a>Spelersweergave voor beoordeling op videoniveau
 
-Binaire beslissingen op video niveau worden mogelijk gemaakt met een video speler-weer gave waarin potentiële volwassene en ongepaste-frames worden weer gegeven. De menselijke revisoren navigeren de video met verschillende snelheids opties om de scènes te onderzoeken. Ze bevestigen hun beslissingen door de tags in te scha kelen.
+Binaire beslissingen op videoniveau worden mogelijk gemaakt met een videospelerweergave die potentiële volwassen en pikante frames laat zien. De menselijke reviewers navigeren door de video met verschillende snelheidsopties om de scènes te onderzoeken. Ze bevestigen hun beslissingen door de tags te omdraaien.
 
-![weer gave video revisie programma Player](images/video-review-player-view.PNG)
+![video review tool player view video review tool player view video review tool player view video review](images/video-review-player-view.PNG)
 
-## <a name="frames-view-for-detailed-reviews"></a>Frame weergave voor gedetailleerde Recensies
+## <a name="frames-view-for-detailed-reviews"></a>Frames weergave voor gedetailleerde beoordelingen
 
-Een gedetailleerde video beoordeling voor frame-voor-frame analyse wordt mogelijk gemaakt met een weer gave op basis van een frame. De menselijke revisoren beoordelen en selecteren een of meer frames en wisselen Tags in om hun beslissingen te bevestigen. Een optionele volgende stap is redactie van de aanstootgevende frames of inhoud.
+Een gedetailleerde videoreview voor frame-by-frame analyse wordt mogelijk gemaakt met een frame-based view. De menselijke beoordelaars beoordelen en selecteren een of meer frames en schakeltags om hun beslissingen te bevestigen. Een optionele volgende stap is redactie van de aanstootgevende frames of inhoud.
 
-![frame weergave van video-revisie programma](images/video-review-frames-view-apply-tags.PNG)
+![weergave videobeoordelingsprogramma's](images/video-review-frames-view-apply-tags.PNG)
 
 ## <a name="transcript-moderation"></a>Transcriptie beoordelen
 
-Video's hebben normaal gesp roken Voice-over die gematigd moeten worden gemoderator en aanstootgevende spraak. U gebruikt de Azure Media Indexer-service om spraak naar tekst te converteren en de beoordelings-API van Content Moderator te gebruiken om de transcriptie voor tekst toezicht in het beoordelings programma in te dienen.
+Video's hebben meestal voice-over die ook matiging nodig heeft voor aanstootgevende spraak. U gebruikt de Azure Media Indexer-service om spraak om te zetten in tekst en de controle-API van inhoudsmoderator te gebruiken om het transcript in te dienen voor tekstmoderatie in het beoordelingsprogramma.
 
-![weer gave voor de transcriptie van video-revisie Programma's](images/video-review-transcript-view.png)
+![transcriptweergave van video-controleprogramma's](images/video-review-transcript-view.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Ga aan de slag met de [Snelstartgids voor video toezicht](video-moderation-api.md).
-- Meer informatie over het genereren van [video beoordelingen](video-reviews-quickstart-dotnet.md) voor uw menselijke revisoren vanuit uw gecontroleerde uitvoer.
-- Voeg [Video-Transcript beoordelingen](video-transcript-reviews-quickstart-dotnet.md) toe aan uw video Beoordelingen.
-- Bekijk de gedetailleerde zelf studie over het ontwikkelen van een [complete oplossing voor video toezicht](video-transcript-moderation-review-tutorial-dotnet.md).
+- Ga snel aan de slag met de [videomoderatie.](video-moderation-api.md)
+- Meer informatie over het genereren van [videorecensies](video-reviews-quickstart-dotnet.md) voor uw menselijke beoordelaars op maat van uw gemodereerde uitvoer.
+- Voeg [videotranscriptiebeoordelingen](video-transcript-reviews-quickstart-dotnet.md) toe aan je videorecensies.
+- Bekijk de gedetailleerde tutorial over het ontwikkelen van een [complete video moderatie oplossing.](video-transcript-moderation-review-tutorial-dotnet.md)

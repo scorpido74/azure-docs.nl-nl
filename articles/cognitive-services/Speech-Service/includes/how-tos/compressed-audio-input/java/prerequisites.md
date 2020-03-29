@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: e77e61fc977231effb098c1cbe80cf2e6666c489
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943787"
 ---
-Het verwerken van gecomprimeerde audio wordt geïmplementeerd met behulp van [gstreamer](https://gstreamer.freedesktop.org). Om licentie redenen GStreamer binaire bestanden niet worden gecompileerd en gekoppeld aan de spraak-SDK. In plaats daarvan moet u de vooraf gemaakte binaire bestanden voor Android gebruiken. Zie [installatie voor Android-ontwikkeling](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)voor informatie over het downloaden van de vooraf ontwikkelde bibliotheken.
+Het verwerken van gecomprimeerde audio wordt geïmplementeerd met [GStreamer](https://gstreamer.freedesktop.org). Om licentieredenen worden GStreamer-binaries niet gecompileerd en gekoppeld aan de Speech SDK. In plaats daarvan moet je de vooraf gebouwde binaire bestanden voor Android gebruiken. Zie [Installeren voor Android-ontwikkeling](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)om de vooraf gebouwde bibliotheken te downloaden.
 
-`libgstreamer_android.so` is vereist. Zorg ervoor dat uw GStreamer-invoeg toepassingen zijn gekoppeld aan `libgstreamer_android.so`.
+`libgstreamer_android.so` is vereist. Zorg ervoor dat uw GStreamer-plug-ins zijn gekoppeld in `libgstreamer_android.so`.
 
 ```makefile
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
@@ -21,7 +21,7 @@ GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
     opus wavparse alaw mulaw flac
 ```
 
-Hieronder vindt u een voor beeld `Android.mk` en `Application.mk` bestand. Volg deze stappen om het `gstreamer` gedeelde object te maken:`libgstreamer_android.so`.
+Hieronder `Android.mk` vindt `Application.mk` u een voorbeeld en bestand. Volg deze stappen `gstreamer` om het`libgstreamer_android.so`gedeelde object te maken: .
 
 ```makefile
 # Android.mk
@@ -76,7 +76,7 @@ APP_PLATFORM = android-21
 APP_BUILD_SCRIPT = Android.mk
 ```
 
-U kunt `libgstreamer_android.so` bouwen met behulp van de volgende opdracht in Ubuntu 16,04 of 18,04. De volgende opdracht regels zijn alleen getest voor [gstreamer Android-versie 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) met [Android ndk b16b.](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
+Je kunt `libgstreamer_android.so` bouwen met de volgende opdracht op Ubuntu 16.04 of 18.04. De volgende opdrachtregels zijn alleen getest voor [Gstreamer Android versie 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) met [Android NDK b16b.](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
 
 ```sh
 # Assuming wget and unzip already installed on the system
@@ -108,4 +108,4 @@ ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=armeab
 #ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=x86 NDK_LIBS_OUT=$(pwd)
 ```
 
-Zodra het gedeelde object (`libgstreamer_android.so`) is gebouwd, moet de ontwikkelaar van de toepassing het gedeelde object in de Android-app plaatsen, zodat het kan worden geladen door de spraak-SDK.
+Zodra het gedeelde`libgstreamer_android.so`object ( ) is gebouwd applicatie ontwikkelaar moet het gedeelde object te plaatsen in de Android-app, zodat het kan worden geladen door spraak SDK.

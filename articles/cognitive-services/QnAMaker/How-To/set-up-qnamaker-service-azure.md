@@ -1,197 +1,222 @@
 ---
-title: Een QnA Maker-service instellen-QnA Maker
-description: Voordat u een QnA Maker knowledge bases maken kunt, moet u eerst een QnA Maker-service in Azure instellen. Iedereen met autorisatie voor het maken van nieuwe resources in een abonnement kunt een QnA Maker-service instellen.
+title: Een QnA Maker-service instellen - QnA Maker
+description: Voordat u kennisbases van QnA Maker maken, moet u eerst een QnA Maker-service in Azure instellen. Iedereen met toestemming om nieuwe bronnen in een abonnement te maken, kan een QnA Maker-service instellen.
 ms.topic: conceptual
-ms.date: 01/28/2020
-ms.openlocfilehash: 663cbce0e096c6189d97cf7872d466383d272f06
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/19/2020
+ms.openlocfilehash: 8ec57f441ba58227e45398c35c7931dc75fa658f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79220587"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131715"
 ---
-# <a name="manage-qna-maker-resources"></a>QnA Maker-resources beheren
+# <a name="manage-qna-maker-resources"></a>QnA Maker-bronnen beheren
 
-Voordat u een QnA Maker knowledge bases maken kunt, moet u eerst een QnA Maker-service in Azure instellen. Iedereen met autorisatie voor het maken van nieuwe resources in een abonnement kunt een QnA Maker-service instellen.
+Voordat u kennisbases van QnA Maker maken, moet u eerst een QnA Maker-service in Azure instellen. Iedereen met toestemming om nieuwe bronnen in een abonnement te maken, kan een QnA Maker-service instellen.
 
-Een uitgevulde uitleg van de volgende concepten is handig voordat u de resource maakt:
+Een goed begrip van de volgende concepten is handig voordat u uw resource maakt:
 
-* [QnA Maker resources](../Concepts/azure-resources.md)
+* [QnA Maker-bronnen](../Concepts/azure-resources.md)
 * [Sleutels ontwerpen en publiceren](../Concepts/azure-resources.md#keys-in-qna-maker)
 
 ## <a name="create-a-new-qna-maker-service"></a>Een nieuwe QnA Maker-service maken
 
-Met deze procedure maakt u de Azure-resources die nodig zijn voor het beheren van de inhoud van de Knowledge Base. Nadat u deze stappen hebt voltooid, vindt u de _abonnements_ sleutels op de pagina **sleutels** voor de resource in de Azure Portal.
+Met deze procedure worden de Azure-resources gebruikt die nodig zijn om de inhoud van de knowledge base te beheren. Nadat u deze stappen hebt voltooid, vindt u de _abonnementssleutels_ op de pagina **Sleutels** voor de bron in de Azure-portal.
 
-1. Meld u aan bij de Azure Portal en [Maak een QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) -resource.
+1. Meld u aan bij de Azure-portal en [maak een QnA Maker-bron.](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)
 
-1. Selecteer **maken** nadat u de voor waarden hebt gelezen:
+1. Selecteer **Maken** nadat u de algemene voorwaarden hebt gelezen:
 
     ![Een nieuwe QnA Maker-service maken](../media/qnamaker-how-to-setup-service/create-new-resource-button.png)
 
 1. Selecteer in **QnA Maker**de juiste lagen en regio's:
 
-    ![Een nieuwe QnA Maker-service - prijscategorie en regio's maken](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
+    ![Een nieuwe QnA Maker-service maken - prijscategorie en regio's](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
 
-    * Voer in het veld **naam** een unieke naam in om deze QnA Maker service aan te duiden. Deze naam duidt ook het QnA Maker-eind punt aan waaraan uw kennis grondslagen worden gekoppeld.
-    * Kies het **abonnement** waarmee de QnA Maker resource wordt geïmplementeerd.
-    * Selecteer de **prijs categorie** voor de QnA Maker-beheer Services (Portal-en beheer-api's). Bekijk [meer informatie over de prijzen van de SKU](https://aka.ms/qnamaker-pricing).
-    * Een nieuwe **resource groep** maken (aanbevolen) of een bestaande gebruiken om deze QnA Maker-resource te implementeren. QnA Maker maakt verschillende Azure-resources. Wanneer u een resource groep maakt om deze resources te bevatten, kunt u deze resources eenvoudig vinden, beheren en verwijderen op basis van de naam van de resource groep.
-    * Selecteer een **locatie voor de resource groep**.
-    * Kies de **prijs categorie voor zoeken** in de Azure Cognitive Search-service. Als de optie gratis laag niet beschikbaar is (grijs weer gegeven), betekent dit dat u al een gratis service hebt geïmplementeerd via uw abonnement. In dat geval moet u beginnen met de laag basis. Zie de [prijs informatie voor Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/).
-    * Kies de **Zoek locatie** waar u Azure Cognitive Search-indexen wilt implementeren. Beperkingen voor het opslaan van klant gegevens kunnen helpen bij het bepalen van de locatie die u kiest voor Azure Cognitive Search.
-    * Voer in het veld **app-naam** een naam in voor uw Azure app service-exemplaar.
-    * Standaard App Service standaard ingesteld op de standaard laag (S1). U kunt het abonnement wijzigen nadat de is gemaakt. Meer informatie over [app service prijzen](https://azure.microsoft.com/pricing/details/app-service/).
-    * Kies de **locatie** van de Website waar app service worden geïmplementeerd.
+    * Voer in het veld **Naam** een unieke naam in om deze QnA Maker-service te identificeren. Deze naam identificeert ook het QnA Maker-eindpunt waar uw kennisbanken aan worden gekoppeld.
+    * Kies het **abonnement** waaronder de QnA Maker-bron wordt geïmplementeerd.
+    * Selecteer de **prijslaag** voor de beheerservices van QnA Maker (portal- en beheer-API's). Meer [informatie over SKU-prijzen](https://aka.ms/qnamaker-pricing).
+    * Maak een nieuwe **Resourcegroep** (aanbevolen) of gebruik een bestaande groep waarin deze QnA Maker-bron kan worden geïmplementeerd. QnA Maker maakt verschillende Azure-bronnen. Wanneer u een resourcegroep maakt om deze resources vast te houden, u deze resources eenvoudig vinden, beheren en verwijderen op basis van de naam van de brongroep.
+    * Selecteer een locatie van de **resourcegroep**.
+    * Kies de **prijscategorie Zoeken** van de Azure Cognitive Search-service. Als de optie Gratis laag niet beschikbaar is (wordt gedimd weergegeven), betekent dit dat u al een gratis service hebt geïmplementeerd via uw abonnement. In dat geval moet u beginnen met de laag Basis. Zie [prijsdetails azure cognitive search](https://azure.microsoft.com/pricing/details/search/).
+    * Kies de **zoeklocatie** waar u Azure Cognitive Search-indexen wilt implementeren. Beperkingen voor waar klantgegevens moeten worden opgeslagen, helpen bij het bepalen van de locatie die u kiest voor Azure Cognitive Search.
+    * Voer in het veld **App-naam** een naam in voor uw Azure App Service-exemplaar.
+    * App Service standaard ingesteld op de standaardlaag (S1). U het plan na het maken wijzigen. Meer informatie over [de prijzen van App-service](https://azure.microsoft.com/pricing/details/app-service/).
+    * Kies de **locatie van** de website waar De App-service wordt geïmplementeerd.
 
         > [!NOTE]
-        > De **Zoek locatie** kan afwijken van de **locatie**van de website.
+        > De **zoeklocatie** kan afwijken van de locatie van de **website.**
 
-    * Kies of u **Application Insights**wilt inschakelen. Als **Application Insights** is ingeschakeld, verzamelt QnA Maker telemetrie in verkeer, chat logboeken en fouten.
-    * Kies de **app Insights-locatie** waar de Application Insights resource wordt geïmplementeerd.
-    * Voor kosten besparingen kunt u enkele, maar niet alle Azure-resources die zijn gemaakt voor QnA Maker [delen](#configure-qna-maker-to-use-different-cognitive-search-resource) .
+    * Kies of u **toepassingsinzichten**wilt inschakelen. Als **Application Insights** is ingeschakeld, verzamelt QnA Maker telemetrie op verkeer, chatlogboeken en fouten.
+    * Kies de **locatie app-inzichten** waar de resource Application Insights wordt geïmplementeerd.
+    * Voor kostenbesparingsmaatregelen u sommige, maar niet alle Azure-resources die zijn gemaakt voor QnA [Maker, delen.](#configure-qna-maker-to-use-different-cognitive-search-resource)
 
-1. Nadat alle velden zijn gevalideerd, selecteert u **maken**. Het proces kan een paar minuten duren.
+1. Nadat alle velden zijn gevalideerd, selecteert u **Maken**. Het proces kan enkele minuten in beslag nemen.
 
-1. Nadat de implementatie is voltooid, ziet u de volgende resources die zijn gemaakt in uw abonnement:
+1. Nadat de implementatie is voltooid, ziet u de volgende bronnen die in uw abonnement zijn gemaakt:
 
-   ![De resource gemaakt in een nieuwe QnA Maker-service](../media/qnamaker-how-to-setup-service/resources-created.png)
+   ![Resource heeft een nieuwe QnA Maker-service gemaakt](../media/qnamaker-how-to-setup-service/resources-created.png)
 
-    De resource met het _Cognitive Services_ type heeft uw _abonnements_ sleutels.
+    De bron met het type _Cognitive Services_ heeft uw _abonnementssleutels._
 
-## <a name="find-subscription-keys-in-the-azure-portal"></a>Abonnements sleutels zoeken in de Azure Portal
+## <a name="find-subscription-keys-in-the-azure-portal"></a>Abonnementssleutels zoeken in de Azure-portal
 
-U kunt uw abonnements sleutels weer geven en opnieuw instellen in de Azure Portal, waar u de QnA Maker resource hebt gemaakt.
+U uw abonnementssleutels bekijken en opnieuw instellen vanuit de Azure-portal, waar u de QnA Maker-bron hebt gemaakt.
 
-1. Ga naar de QnA Maker resource in de Azure Portal en selecteer de resource met het _Cognitive Services_ type:
+1. Ga naar de QnA Maker-bron in de Azure-portal en selecteer de bron met het type _Cognitive Services:_
 
-    ![Lijst met resources voor QnA Maker](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
+    ![QnA Maker-resourcelijst](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
 
-2. Ga naar **sleutels**:
+2. Ga naar **Toetsen:**
 
     ![Abonnementssleutel](../media/qnamaker-how-to-key-management/subscription-key.PNG)
 
-## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>Eindpunt sleutels zoeken in de QnA Maker Portal
+## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>Eindpunttoetsen zoeken in de QnA Maker-portal
 
-Het eind punt bevindt zich in dezelfde regio als de resource omdat de eindpunt sleutels worden gebruikt voor het aanroepen van de Knowledge Base.
+Het eindpunt bevindt zich in dezelfde regio als de resource, omdat de eindpunttoetsen worden gebruikt om een oproep te doen naar de kennisbank.
 
-Eindpunt sleutels kunnen worden beheerd vanuit de [QnA Maker Portal](https://qnamaker.ai).
+Eindpunttoetsen kunnen worden beheerd vanuit de [QnA Maker-portal.](https://qnamaker.ai)
 
-1. Meld u aan bij de [QnA Maker-Portal](https://qnamaker.ai), ga naar uw profiel en selecteer vervolgens service- **instellingen**:
+1. Meld u aan bij de [QnA Maker-portal,](https://qnamaker.ai)ga naar uw profiel en selecteer **Service-instellingen:**
 
-    ![Eindpuntsleutel](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
+    ![Eindpunttoets](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 
-2. Uw sleutels weer geven of herstellen:
+2. Uw toetsen weergeven of opnieuw instellen:
 
     > [!div class="mx-imgBorder"]
-    > ![eindpunt sleutel beheer](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
+    > ![Eindpuntsleutelmanager](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
 
     >[!NOTE]
-    >Vernieuw uw sleutels als u denkt dat ze zijn aangetast. Hiervoor kunnen eventueel bijbehorende wijzigingen in de client toepassing of bot code worden vereist.
+    >Ververs je sleutels als je denkt dat ze zijn gecompromitteerd. Hiervoor zijn mogelijk overeenkomstige wijzigingen in uw clienttoepassing of botcode nodig.
 
-### <a name="upgrade-qna-maker-sku"></a>QnA Maker SKU bijwerken
+### <a name="upgrade-qna-maker-sku"></a>Upgrade QnA Maker SKU
 
-Als u meer vragen en antwoorden in uw Knowledge Base wilt hebben, moet u de prijs categorie van QnA Maker service upgraden naar uw huidige laag.
+Wanneer u meer vragen en antwoorden in uw kennisbank wilt hebben, u uw prijscategorie voor QnA Maker-service upgraden.
 
-Een upgrade uitvoeren van de QnA Maker Management SKU:
+Ga als lid van het Management SKU van QnA Maker:
 
-1. Ga in de Azure Portal naar uw QnA Maker-resource en selecteer **prijs categorie**.
+1. Ga naar uw QnA Maker-bron in de Azure-portal en selecteer **Prijscategorie**.
 
-    ![QnA Maker resource](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource.png)
+    ![QnA Maker-bron](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource.png)
 
-1. Kies de juiste SKU en druk op **selecteren**.
+1. Kies de juiste SKU en druk op **Selecteren**.
 
     ![QnA Maker prijzen](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-### <a name="upgrade-app-service"></a>App Service bijwerken
+### <a name="upgrade-app-service"></a>App-service bijwerken
 
- Als uw Knowledge Base meer aanvragen van uw client-app wil leveren, moet u uw App Service prijs categorie bijwerken.
+ Wanneer uw kennisbank meer aanvragen van uw client-app moet indienen, upgradet u de prijscategorie App Service.
 
-U kunt App Service [schalen](https://docs.microsoft.com/azure/app-service/manage-scale-up) of uitschalen.
+U App Service [opschalen](https://docs.microsoft.com/azure/app-service/manage-scale-up) of uitschalen.
 
-Ga naar de App Service resource in de Azure Portal en selecteer de optie **Omhoog schalen** of **uitschalen** .
+Ga naar de App Service-bron in de Azure-portal en selecteer de optie **Opschalen** of **Uitschalen** zoals vereist.
 
-![QnA Maker App Service schaal](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
+![QnA Maker App Service-schaal](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
 ### <a name="upgrade-the-azure-cognitive-search-service"></a>De Azure Cognitive Search-service upgraden
 
-Als u van plan bent een groot aantal Knowledge bases te hebben, moet u de prijs categorie van uw Azure Cognitive Search-service bijwerken.
+Als u van plan bent veel kennisbases te hebben, u de prijscategorie Azure Cognitive Search upgraden.
 
-Op dit moment kunt u geen in-place upgrade van de SKU voor Azure Search uitvoeren. U kunt echter een nieuwe Azure Search-resource met de gewenste SKU maken, de gegevens herstellen naar de nieuwe resource en deze vervolgens koppelen aan de QnA Maker-stack. Voer de volgende stappen uit om dit te doen:
+Momenteel u geen in-place upgrade van de Azure search SKU uitvoeren. U echter een nieuwe Azure-zoekbron maken met de gewenste SKU, de gegevens herstellen naar de nieuwe bron en deze koppelen aan de stapel QnA Maker. Voer de volgende stappen uit om dit te doen:
 
-1. Maak een nieuwe Azure-Zoek resource in het Azure Portal en selecteer de gewenste SKU.
+1. Maak een nieuwe Azure-zoekbron in de Azure-portal en selecteer de gewenste SKU.
 
-    ![QnA Maker Azure Search-resource](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
+    ![QnA Maker Azure-zoekbron](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
-1. Herstel de indexen van de oorspronkelijke Azure Search-resource naar de nieuwe. Zie de [voorbeeld code voor het terugzetten van back-ups](https://github.com/pchoudhari/QnAMakerBackupRestore).
+1. Herstel de indexen van uw oorspronkelijke Azure-zoekbron naar de nieuwe. Zie de [voorbeeldcode voor back-upherstel](https://github.com/pchoudhari/QnAMakerBackupRestore).
 
-1. Nadat de gegevens zijn hersteld, gaat u naar uw nieuwe Azure Search-resource, selecteert u **sleutels**en noteert u de **naam** en de **beheerders sleutel**:
+1. Nadat de gegevens zijn hersteld, gaat u naar uw nieuwe Azure-zoekbron, selecteert u **Sleutels**en schrijft u de **sleutel Naam** en **beheerder**op:
 
-    ![QnA Maker Azure-Zoek sleutels](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-keys.png)
+    ![QnA Maker Azure-zoeksleutels](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-keys.png)
 
-1. Als u de nieuwe Azure Search-resource wilt koppelen aan de QnA Maker stack, gaat u naar het QnA Maker App Service-exemplaar.
+1. Als u de nieuwe Azure-zoekbron wilt koppelen aan de qnA-knopstapel, gaat u naar de instantie QnA Maker App Service.
 
-    ![App Service instantie QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
+    ![QnA Maker App Service-instantie](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
 
-1. Selecteer **Toepassings instellingen** en wijzig de instellingen in de velden **AzureSearchName** en **AzureSearchAdminKey** uit stap 3.
+1. Selecteer **Toepassingsinstellingen** en wijzig de instellingen in de velden **AzureSearchName** en **AzureSearchAdminKey** vanaf stap 3.
 
-    ![Instelling voor QnA Maker App Service](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
+    ![QnA Maker App Service-instelling](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
 
-1. Start het App Service-exemplaar opnieuw.
+1. Start het exemplaar van de App-service opnieuw.
 
-    ![Het QnA Maker App Service-exemplaar opnieuw starten](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
+    ![Het exemplaar qnA Maker App-service opnieuw starten](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
-## <a name="get-the-latest-runtime-updates"></a>Down load de meest recente runtime-updates
+## <a name="get-the-latest-runtime-updates"></a>Ontvang de nieuwste runtime-updates
 
-De QnAMaker-runtime maakt deel uit van het Azure App Service-exemplaar dat wordt geïmplementeerd wanneer u [een QnAMaker-service](./set-up-qnamaker-service-azure.md) in de Azure Portal maakt. Updates worden periodiek gesteld in de runtime. Het QnA Maker App Service-exemplaar bevindt zich in de modus automatisch bijwerken na de site-extensie release van april 2019 (versie 5 +). Deze update is ontworpen om te zorgen dat er geen downtime is tijdens de upgrade.
+De Runtime van QnAMaker maakt deel uit van het Azure App Service-exemplaar dat wordt geïmplementeerd wanneer u [een QnAMaker-service](./set-up-qnamaker-service-azure.md) maakt in de Azure-portal. Updates worden periodiek gemaakt om de runtime. Het qnA Maker App-service-exemplaar bevindt zich in de automatische updatemodus na de release van de siteextensie van april 2019 (versie 5+). Deze update is ontworpen om zero downtime tijdens upgrades te verzorgen.
 
-U kunt uw huidige versie controleren op https://www.qnamaker.ai/UserSettings. Als uw versie ouder is dan versie 5. x, moet u App Service opnieuw opstarten om de meest recente updates toe te passen:
+U uw huidige https://www.qnamaker.ai/UserSettingsversie controleren op. Als uw versie ouder is dan versie 5.x, moet u de App Service opnieuw starten om de nieuwste updates toe te passen:
 
-1. Ga naar de QnAMaker-service (resource groep) in het [Azure Portal](https://portal.azure.com).
-
-    > [!div class="mx-imgBorder"]
-    > ![QnAMaker Azure-resource groep](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
-
-1. Selecteer de App Service instantie en open de sectie **overzicht** .
+1. Ga naar uw QnAMaker-service (resourcegroep) in de [Azure-portal.](https://portal.azure.com)
 
     > [!div class="mx-imgBorder"]
-    > ![QnAMaker App Service-exemplaar](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
+    > ![QnAMaker Azure-brongroep](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
 
-
-1. Start App Service opnieuw. Het update proces moet binnen een paar seconden worden voltooid. Alle afhankelijke toepassingen of botsingen die gebruikmaken van deze QnAMaker-service, zijn niet beschikbaar voor eind gebruikers tijdens de herstart periode.
-
-    ![Het QnAMaker App Service-exemplaar opnieuw starten](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
-
-## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>QnA Maker configureren voor het gebruik van verschillende Cognitive Search resource
-
-Als u een QnA-service en de bijbehorende afhankelijkheden (zoals zoeken) maakt via de portal, wordt er een zoek service voor u gemaakt en gekoppeld aan de QnA Maker-service. Nadat deze resources zijn gemaakt, kunt u de App Service-instelling bijwerken om een eerder bestaande zoek service te gebruiken en de toepassing verwijderen die u zojuist hebt gemaakt.
-
-De **app service** resource van QnA Maker maakt gebruik van de Cognitive Search resource. Als u de Cognitive Search resource wilt wijzigen die door QnA Maker wordt gebruikt, moet u de instelling wijzigen in de Azure Portal.
-
-1. Haal de **beheerders sleutel** en de **naam** op van de Cognitive Search resource die u QnA Maker wilt gebruiken.
-
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en zoek de **app service** die aan uw QnA Maker-resource zijn gekoppeld. Beide met dezelfde naam hebben.
-
-1. Selecteer **instellingen**en vervolgens **configuratie**. Hiermee worden alle bestaande instellingen voor de App Service van de QnA Maker weer gegeven.
+1. Selecteer de instantie App-service en open de sectie **Overzicht.**
 
     > [!div class="mx-imgBorder"]
-    > ![scherm opname van Azure Portal waarin App Service configuratie-instellingen worden weer gegeven](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
+    > ![QnAMaker App Service-instantie](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
 
-1. Wijzig de waarden voor de volgende sleutels:
+
+1. App-service opnieuw starten. Het updateproces moet in een paar seconden zijn voltooid. Afhankelijke toepassingen of bots die deze QnAMaker-service gebruiken, zijn tijdens deze herstartperiode niet beschikbaar voor eindgebruikers.
+
+    ![Het exemplaar qnAMaker App-service opnieuw starten](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
+
+## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>QnA Maker configureren om verschillende cognitive search-bron te gebruiken
+
+Als u een QnA-service en de afhankelijkheden ervan (zoals Zoeken) maakt via de portal, wordt er een zoekservice voor u gemaakt en gekoppeld aan de QnA Maker-service. Nadat deze bronnen zijn gemaakt, u de instelling App-service bijwerken om een eerder bestaande zoekservice te gebruiken en de service die u zojuist hebt gemaakt verwijderen.
+
+De **App Service-bron** van QnA Maker maakt gebruik van de bron Cognitive Search. Als u de resource Cognitief zoeken wilt wijzigen die door QnA Maker wordt gebruikt, moet u de instelling in de Azure-portal wijzigen.
+
+1. Download de **beheersleutel** en **de naam** van de resource Cognitief zoeken die u wilt dat QnA Maker gebruikt.
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en zoek de **App-service** die is gekoppeld aan uw QnA Maker-bron. Beide hebben dezelfde naam.
+
+1. Selecteer **Instellingen**, dan **Configuratie**. Hiermee worden alle bestaande instellingen voor de App Service van de QnA Maker weergegeven.
+
+    > [!div class="mx-imgBorder"]
+    > ![Schermafbeelding van Azure-portal met configuratie-instellingen voor App Service](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
+
+1. Wijzig de waarden voor de volgende toetsen:
 
     * **AzureSearchAdminKey**
     * **AzureSearchName**
 
-1. Als u de nieuwe instellingen wilt gebruiken, moet u de app service opnieuw starten. Selecteer **overzicht**en selecteer **opnieuw opstarten**.
+1. Als u de nieuwe instellingen wilt gebruiken, moet u de app-service opnieuw starten. Selecteer **Overzicht**en selecteer **Opnieuw starten**.
 
     > [!div class="mx-imgBorder"]
-    > ![scherm opname van Azure Portal opnieuw opstarten App Service nadat de configuratie-instellingen zijn gewijzigd](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
+    > ![Schermafbeelding van Azure-portal die App Service opnieuw opstart nadat de configuratie-instellingen zijn gewijzigd](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
 
-Als u een QnA-service maakt via Azure Resource Manager sjablonen, kunt u alle resources maken en de App Service maken om een bestaande zoek service te gebruiken.
+Als u een QnA-service maakt via Azure Resource Manager-sjablonen, u alle resources maken en de app-service maken om een bestaande zoekservice te gebruiken beheren.
+
+Meer informatie over het configureren van de instellingen van de App [Service-toepassing](../../../app-service/configure-common.md#configure-app-settings).
+
+## <a name="configure-app-service-idle-setting-to-avoid-timeout"></a>Inactieve app-service configureren om een time-out te voorkomen
+
+De app-service, die de QnA Maker-voorspellingsruntime voor een gepubliceerde kennisbank bedient, heeft een inactieve time-outconfiguratie, die standaard automatisch een time-out kan krijgen als de service niet actief is. Voor QnA Maker betekent dit dat uw voorspelling runtime genererenAnswer API af en toe een time-out na perioden van geen verkeer.
+
+Om de voorspellingendpunt-app te laden, zelfs als er geen verkeer is, stelt u de idle in op altijd ingeschakeld.
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Zoek naar en selecteer de app-service van uw QnA Maker-bron. Het zal dezelfde naam hebben als de QnA Maker bron, maar het zal een ander **type** app-service hebben.
+1. Selecteer **Instellingen** en selecteer **Configuratie**.
+1. Selecteer in het deelvenster Configuratie de optie **Algemene instellingen**, zoek **vervolgens Altijd aan**en selecteer **Aan** als waarde.
+
+    > [!div class="mx-imgBorder"]
+    > ![Selecteer in het deelvenster Configuratie **Algemene instellingen**, zoek **Altijd aan**en selecteer **Aan** als waarde.](../media/qnamaker-how-to-upgrade-qnamaker/configure-app-service-idle-timeout.png)
+
+1. Selecteer **Opslaan** om de configuratie op te slaan.
+1. U wordt gevraagd of u de app opnieuw wilt starten om de nieuwe instelling te gebruiken. Selecteer **Doorgaan**.
+
+Meer informatie over het configureren van de [algemene instellingen](../../../app-service/configure-common.md#configure-general-settings)van de app-service .
+
+## <a name="delete-azure-resources"></a>Azure-resources verwijderen
+
+Als u een van de Azure-bronnen verwijdert die worden gebruikt voor uw QnA Maker-kennisbases, werken de kennisbanken niet meer. Voordat u resources verwijderd, moet u ervoor zorgen dat u uw kennisbases exporteert via de pagina **Instellingen.**
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de [app service](../../../app-service/index.yml) en de [Zoek service](../../../search/index.yml).
+Meer informatie over de [app-](../../../app-service/index.yml) en [zoekservice](../../../search/index.yml).
 
 > [!div class="nextstepaction"]
-> [Een Knowledge Base maken en publiceren](../Quickstarts/create-publish-knowledge-base.md)
+> [Een knowledge base maken](../Quickstarts/create-publish-knowledge-base.md)

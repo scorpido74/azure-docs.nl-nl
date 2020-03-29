@@ -1,49 +1,49 @@
 ---
-title: Container opslagplaatsen en installatie kopieën
+title: Containeropslagplaatsen en -afbeeldingen
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
-description: Twee tabellen die de container registers, opslag plaatsen en namen van installatie kopieën vertegenwoordigen voor alle cognitieve service aanbiedingen.
+description: Twee tabellen die de containerregisters, opslagplaatsen en afbeeldingsnamen voor alle Cognitive Service-aanbiedingen vertegenwoordigen.
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/10/2020
 ms.author: dapine
 ms.openlocfilehash: 55a3bb5f894d3ab753cfec64687abc9c7cae53cb
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79081970"
 ---
-### <a name="container-repositories-and-images"></a>Container opslagplaatsen en installatie kopieën
+### <a name="container-repositories-and-images"></a>Containeropslagplaatsen en -afbeeldingen
 
-De onderstaande tabellen geven een lijst van de beschik bare container installatie kopieën die door Azure Cognitive Services worden aangeboden. Zie voor een volledige lijst met alle beschik bare namen van container installatie kopieën en de beschik bare labels [Cognitive Services container-afbeeldings codes](../container-image-tags.md). Er zijn momenteel geen Cognitive Services containers die algemeen beschikbaar zijn (GA). Voor de tijd dat u verdere aankondigingen hebt gemaakt--containers zijn beschikbaar als preview-versie van *open bare* of *open bare gated*.
+De onderstaande tabellen zijn een lijst van de beschikbare containerafbeeldingen die worden aangeboden door Azure Cognitive Services. Zie [Tagingsafbeeldingen](../container-image-tags.md)voor cognitive services voor een volledige lijst met alle beschikbare containerafbeeldingsnamen en de beschikbare tags. Momenteel zijn er geen Cognitive Services-containers die algemeen beschikbaar zijn (GA). Voor het moment, totdat verdere aankondigingen worden gedaan - containers zijn beschikbaar als *ofwel Openbare Ungated* of *Public Gated Preview*.
 
- - *Openbaar niet-gegate*: containers zijn openbaar zonder beperking-mechanisme.
- - *Public gated preview*: containers zijn openbaar beschikbaar, maar eerst een formele aanvraag voor toegang tot het container register.
+ - *Openbaar Ungated*: containers zijn openbaar beschikbaar zonder een gating mechanisme.
+ - *Openbare Gated Preview*: containers zijn openbaar beschikbaar, maar vereisen eerst een formeel verzoek om toegang te krijgen tot het containerregister.
 
-#### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Openbaar "niet-gegateeerd" (container register: `mcr.microsoft.com`)
+#### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Openbaar "Ungated" (containerregister: `mcr.microsoft.com`)
 
-Met de micro soft-Container Registry (MCR) worden alle openbaar beschik bare ' niet-gegateeerde ' containers gepubliceerd voor Cognitive Services. De containers zijn ook rechtstreeks beschikbaar vanuit de [docker-hub](https://hub.docker.com/_/microsoft-azure-cognitive-services).
+De Microsoft Container Registry (MCR) syndicaten alle openbaar beschikbare "ungated" containers voor Cognitive Services. De containers zijn ook direct verkrijgbaar vanaf de [Docker hub.](https://hub.docker.com/_/microsoft-azure-cognitive-services)
 
-| Service | Container | Container Registry/opslagplaats/naam van installatie kopie |
+| Service | Container | Containerregister / Repository / Afbeeldingsnaam |
 |--|--|--|
 | [LUIS](../../LUIS/luis-container-howto.md) | LUIS | `mcr.microsoft.com/azure-cognitive-services/luis` |
 | [Tekstanalyse](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Sleuteltermextractie | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
 | [Tekstanalyse](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Taaldetectie | `mcr.microsoft.com/azure-cognitive-services/language` |
 | [Tekstanalyse](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Sentimentanalyse | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
-#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Open bare preview-versie van ' gated ' (container Registry: `containerpreview.azurecr.io`)
+#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Openbare "Gated" Preview (containerregister: `containerpreview.azurecr.io`)
 
-Het voor beeld-container register host alle openbaar beschik bare ' gated '-containers voor Cognitive Services. Deze containers vereisen een formeel verzoek om toegang te krijgen tot deze via hun container register.
+Het Container Preview-register host alle openbaar beschikbare 'gated' containers voor cognitive services. Deze containers vereisen een formeel verzoek om toegang hen via hun container register.
 
-| Service | Container | Container Registry/opslagplaats/naam van installatie kopie |
+| Service | Container | Containerregister / Repository / Afbeeldingsnaam |
 |--|--|--|
-| [Anomalie detectie](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomaly Detector | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector` |
-| [Computer Vision](../../Computer-vision/computer-vision-how-to-install-containers.md) | Lezen | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
-| [Gaat](../../face/face-how-to-install-containers.md) | Face | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
-| [Formulier herkenning](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Form Recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
+| [Anomaliedetector](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomaly Detector | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector` |
+| [Computer Visie](../../Computer-vision/computer-vision-how-to-install-containers.md) | Lezen | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
+| [Face](../../face/face-how-to-install-containers.md) | Face | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
+| [Formulierherkenning](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Form Recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
 | [Speech Service-API](../../speech-service/speech-container-howto.md?tab=stt) | Spraak naar tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` |
-| [Speech Service-API](../../speech-service/speech-container-howto.md?tab=cstt) | Custom Speech-naar-tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` |
+| [Speech Service-API](../../speech-service/speech-container-howto.md?tab=cstt) | Aangepaste spraak-naar-tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` |
 | [Speech Service-API](../../speech-service/speech-container-howto.md?tab=tts) | Tekst naar spraak | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` |
 | [Speech Service-API](../../speech-service/speech-container-howto.md?tab=ctts) | Aangepaste tekst-naar-spraak | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech` |

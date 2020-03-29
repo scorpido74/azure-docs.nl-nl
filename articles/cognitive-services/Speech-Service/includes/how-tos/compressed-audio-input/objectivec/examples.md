@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: 788903d802ca47c763734e7cf6ddbbf3b0032203
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943726"
 ---
-Als u een gecomprimeerde audio-indeling naar de speech-service wilt streamen, maakt u een `SPXPullAudioInputStream` of `SPXPushAudioInputStream`.
+Als u wilt streamen in een gecomprimeerde `SPXPullAudioInputStream` audio-indeling naar de spraakservice, maakt u een of . `SPXPushAudioInputStream`
 
-Het volgende code fragment laat zien hoe u een `SPXAudioConfiguration` maakt op basis van een exemplaar van een `SPXPushAudioInputStream`, waarbij een MP3 wordt opgegeven als de compressie-indeling van de stroom.
+In het volgende fragment `SPXAudioConfiguration` ziet u hoe `SPXPushAudioInputStream`u een exemplaar van een , het opgeven van een MP3 als de compressie-indeling van de stream.
 
 [!code-objectivec[Set up the input stream](~/samples-cognitive-services-speech-sdk/samples/objective-c/ios/compressed-streams/CompressedStreamsSample/CompressedStreamsSample/ViewController.m?range=67-76&highlight=2-11)]
 
-In het volgende fragment ziet u hoe gecomprimeerde audio gegevens kunnen worden gelezen uit een bestand en worden gepompt in de `SPXPushAudioInputStream`.
+Het volgende fragment laat zien hoe gecomprimeerde audiogegevens kunnen `SPXPushAudioInputStream`worden gelezen uit een bestand en in de .
 
 [!code-objectivec[Push compressed audio data into the stream](~/samples-cognitive-services-speech-sdk/samples/objective-c/ios/compressed-streams/CompressedStreamsSample/CompressedStreamsSample/ViewController.m?range=106-150&highlight=19-44)]

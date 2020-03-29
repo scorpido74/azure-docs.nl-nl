@@ -1,7 +1,7 @@
 ---
-title: De bron taal voor spraak naar tekst opgeven
+title: Brontaal opgeven voor spraak naar tekst
 titleSuffix: Azure Cognitive Services
-description: Met de Speech SDK kunt u de bron taal opgeven bij het converteren van spraak naar tekst. In dit artikel wordt beschreven hoe u de FromConfig-en SourceLanguageConfig-methoden gebruikt om de spraak service de bron taal te laten kennen en een aangepast model doel te bieden.
+description: Met de SpraakSDK u de brontaal opgeven wanneer u spraak omzet in tekst. In dit artikel wordt beschreven hoe u de methoden FromConfig en SourceLanguageConfig gebruiken om de spraakservice de brontaal te laten kennen en een aangepast modeldoel te bieden.
 services: cognitive-services
 author: susanhu
 manager: nitinme
@@ -11,35 +11,35 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: e4f4dd3c1e23855a8a1a69dac72c232779206f1d
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: f0723534d9d2187593cb73f058ffea62473b80a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121706"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235975"
 ---
-# <a name="specify-source-language-for-speech-to-text"></a>De bron taal voor spraak naar tekst opgeven
+# <a name="specify-source-language-for-speech-to-text"></a>Brontaal opgeven voor spraak naar tekst
 
-In dit artikel leert u hoe u de bron taal kunt opgeven voor een audio-invoer die wordt door gegeven aan de Speech SDK voor spraak herkenning. Daarnaast wordt er een voorbeeld code gegeven om een aangepast spraak model op te geven voor verbeterde herkenning.
+In dit artikel leert u hoe u de brontaal opgeeft voor een audio-ingang die is doorgegeven aan de Spraak-SDK voor spraakherkenning. Daarnaast wordt voorbeeldcode verstrekt om een aangepast spraakmodel op te geven voor een betere herkenning.
 
 ::: zone pivot="programming-language-csharp"
 
-## <a name="how-to-specify-source-language-in-c"></a>De bron taal opgeven inC#
+## <a name="how-to-specify-source-language-in-c"></a>Brontaal opgeven in C #
 
-In dit voor beeld wordt de bron taal expliciet gegeven als een para meter met behulp van `SpeechRecognizer` construct.
+In dit voorbeeld wordt de brontaal expliciet `SpeechRecognizer` opgegeven als parameter met behulp van construct.
 
 ```csharp
 var recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-In dit voor beeld wordt de bron taal gegeven met behulp van `SourceLanguageConfig`. Vervolgens wordt de `sourceLanguageConfig` door gegeven als een para meter voor `SpeechRecognizer` construct.
+In dit voorbeeld wordt de `SourceLanguageConfig`brontaal geleverd met behulp van . Vervolgens wordt `sourceLanguageConfig` de doorgegeven `SpeechRecognizer` als een parameter te construeren.
 
 ```csharp
 var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE");
 var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-In dit voor beeld worden de bron taal en het aangepaste eind punt voorzien van `SourceLanguageConfig`. Vervolgens wordt de `sourceLanguageConfig` door gegeven als een para meter voor `SpeechRecognizer` construct.
+In dit voorbeeld worden de brontaal en `SourceLanguageConfig`het aangepaste eindpunt geleverd met behulp van . Vervolgens wordt `sourceLanguageConfig` de doorgegeven `SpeechRecognizer` als een parameter te construeren.
 
 ```csharp
 var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -47,29 +47,29 @@ var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioC
 ```
 
 >[!Note]
-> `SpeechRecognitionLanguage`-en `EndpointId` set-methoden zijn afgeschaft uit de C#`SpeechConfig`-klasse in. Het gebruik van deze methoden wordt afgeraden en mag niet worden gebruikt bij het maken van een `SpeechRecognizer`.
+> `SpeechRecognitionLanguage`en `EndpointId` ingestelde methoden worden afgeschaft uit `SpeechConfig` de klasse in C#. Het gebruik van deze methoden worden ontmoedigd, en mag niet `SpeechRecognizer`worden gebruikt bij de bouw van een .
 
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
 
 
-## <a name="how-to-specify-source-language-in-c"></a>De bron taal opgeven inC++
+## <a name="how-to-specify-source-language-in-c"></a>Brontaal opgeven in C++
 
-In dit voor beeld wordt de bron taal expliciet als een para meter gegeven met behulp van de `FromConfig` methode.
+In dit voorbeeld wordt de brontaal expliciet opgegeven `FromConfig` als parameter met behulp van de methode.
 
 ```C++
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, "de-DE", audioConfig);
 ```
 
-In dit voor beeld wordt de bron taal gegeven met behulp van `SourceLanguageConfig`. Vervolgens wordt de `sourceLanguageConfig` door gegeven als een para meter voor `FromConfig` bij het maken van de `recognizer`.
+In dit voorbeeld wordt de `SourceLanguageConfig`brontaal geleverd met behulp van . Vervolgens wordt `sourceLanguageConfig` de doorgegeven `FromConfig` als een `recognizer`parameter bij het maken van de .
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE");
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-In dit voor beeld worden de bron taal en het aangepaste eind punt voorzien van `SourceLanguageConfig`. De `sourceLanguageConfig` wordt door gegeven als een para meter voor `FromConfig` bij het maken van de `recognizer`.
+In dit voorbeeld worden de brontaal en `SourceLanguageConfig`het aangepaste eindpunt geleverd met behulp van . De `sourceLanguageConfig` wordt doorgegeven `FromConfig` als een `recognizer`parameter bij het maken van de .
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -77,28 +77,28 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 ```
 
 >[!Note]
-> `SetSpeechRecognitionLanguage` en `SetEndpointId` zijn afgeschafte methoden van de `SpeechConfig` C++ -klasse in en Java. Het gebruik van deze methoden wordt afgeraden en mag niet worden gebruikt bij het maken van een `SpeechRecognizer`.
+> `SetSpeechRecognitionLanguage`en `SetEndpointId` zijn afgeschafte methoden uit `SpeechConfig` de klasse in C++ en Java. Het gebruik van deze methoden worden ontmoedigd, en mag niet `SpeechRecognizer`worden gebruikt bij de bouw van een .
 
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
 
-## <a name="how-to-specify-source-language-in-java"></a>Een bron taal opgeven in Java
+## <a name="how-to-specify-source-language-in-java"></a>Brontaal opgeven in Java
 
-In dit voor beeld wordt de bron taal expliciet aangelegd bij het maken van een nieuwe `SpeechRecognizer`.
+In dit voorbeeld wordt de brontaal expliciet `SpeechRecognizer`verstrekt bij het maken van een nieuwe .
 
 ```Java
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-In dit voor beeld wordt de bron taal gegeven met behulp van `SourceLanguageConfig`. Vervolgens wordt de `sourceLanguageConfig` door gegeven als een para meter bij het maken van een nieuwe `SpeechRecognizer`.
+In dit voorbeeld wordt de `SourceLanguageConfig`brontaal geleverd met behulp van . Vervolgens wordt `sourceLanguageConfig` de doorgegeven als een `SpeechRecognizer`parameter bij het maken van een nieuwe .
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE");
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-In dit voor beeld worden de bron taal en het aangepaste eind punt voorzien van `SourceLanguageConfig`. Vervolgens wordt de `sourceLanguageConfig` door gegeven als een para meter bij het maken van een nieuwe `SpeechRecognizer`.
+In dit voorbeeld worden de brontaal en `SourceLanguageConfig`het aangepaste eindpunt geleverd met behulp van . Vervolgens wordt `sourceLanguageConfig` de doorgegeven als een `SpeechRecognizer`parameter bij het maken van een nieuwe .
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -106,72 +106,79 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 ```
 
 >[!Note]
-> `setSpeechRecognitionLanguage` en `setEndpointId` zijn afgeschafte methoden van de `SpeechConfig` C++ -klasse in en Java. Het gebruik van deze methoden wordt afgeraden en mag niet worden gebruikt bij het maken van een `SpeechRecognizer`.
+> `setSpeechRecognitionLanguage`en `setEndpointId` zijn afgeschafte methoden uit `SpeechConfig` de klasse in C++ en Java. Het gebruik van deze methoden worden ontmoedigd, en mag niet `SpeechRecognizer`worden gebruikt bij de bouw van een .
 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
 
-## <a name="how-to-specify-source-language-in-python"></a>De bron taal in python opgeven
+## <a name="how-to-specify-source-language-in-python"></a>Brontaal opgeven in Python
 
-De eerste stap bestaat uit het maken van een `speech_config`:
-
-```Python
-speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
-speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
-```
-
-Geef vervolgens de bron taal van uw audio op met `speech_recognition_language`:
+In dit voorbeeld wordt de brontaal expliciet `SpeechRecognizer` opgegeven als parameter met behulp van construct.
 
 ```Python
-speech_config.speech_recognition_language="de-DE"
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, language="de-DE", audio_config=audio_config)
 ```
 
-Als u een aangepast model gebruikt voor herkenning, kunt u het eind punt opgeven met `endpoint_id`:
+In dit voorbeeld wordt de `SourceLanguageConfig`brontaal geleverd met behulp van . Vervolgens wordt `SourceLanguageConfig` de doorgegeven `SpeechRecognizer` als een parameter te construeren.
 
 ```Python
-speech_config.endpoint_id = "The Endpoint ID for your custom model."
+source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE")
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, source_language_config=source_language_config, audio_config=audio_config)
 ```
+
+In dit voorbeeld worden de brontaal en `SourceLanguageConfig`het aangepaste eindpunt geleverd met behulp van . Vervolgens wordt `SourceLanguageConfig` de doorgegeven `SpeechRecognizer` als een parameter te construeren.
+
+```Python
+source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE", "The Endpoint ID for your custom model.")
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, source_language_config=source_language_config, audio_config=audio_config)
+```
+
+>[!Note]
+> `speech_recognition_language`en `endpoint_id` eigenschappen worden afgeschaft uit `SpeechConfig` de klasse in Python. Het gebruik van deze eigenschappen worden ontmoedigd, en mag `SpeechRecognizer`niet worden gebruikt bij de bouw van een .
 
 ::: zone-end
 
 ::: zone pivot="programming-language-more"
 
-## <a name="how-to-specify-source-language-in-javascript"></a>Een bron taal opgeven in Java script
+## <a name="how-to-specify-source-language-in-javascript"></a>Brontaal opgeven in Javascript
 
-De eerste stap bestaat uit het maken van een `SpeechConfig`:
+De eerste stap is `SpeechConfig`het creëren van een:
 
 ```Javascript
 var speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionkey", "YourRegion");
 ```
 
-Geef vervolgens de bron taal van uw audio op met `speechRecognitionLanguage`:
+Geef vervolgens de brontaal van `speechRecognitionLanguage`uw audio op met:
 
 ```Javascript
 speechConfig.speechRecognitionLanguage = "de-DE";
 ```
 
-Als u een aangepast model gebruikt voor herkenning, kunt u het eind punt opgeven met `endpointId`:
+Als u een aangepast model gebruikt voor herkenning, kunt `endpointId`u het eindpunt opgeven met:
 
 ```Javascript
 speechConfig.endpointId = "The Endpoint ID for your custom model.";
 ```
 
-## <a name="how-to-specify-source-language-in-objective-c"></a>De bron taal opgeven in de doel stelling-C
+## <a name="how-to-specify-source-language-in-objective-c"></a>Brontaal opgeven in Doelstelling-C
 
-De eerste stap bestaat uit het maken van een `speechConfig`:
+De eerste stap is `speechConfig`het creëren van een:
 
 ```Objective-C
 SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithSubscription:@"YourSubscriptionkey" region:@"YourRegion"];
 ```
 
-Geef vervolgens de bron taal van uw audio op met `speechRecognitionLanguage`:
+Geef vervolgens de brontaal van `speechRecognitionLanguage`uw audio op met:
 
 ```Objective-C
 speechConfig.speechRecognitionLanguage = @"de-DE";
 ```
 
-Als u een aangepast model gebruikt voor herkenning, kunt u het eind punt opgeven met `endpointId`:
+Als u een aangepast model gebruikt voor herkenning, kunt `endpointId`u het eindpunt opgeven met:
 
 ```Objective-C
 speechConfig.endpointId = @"The Endpoint ID for your custom model.";
@@ -181,8 +188,8 @@ speechConfig.endpointId = @"The Endpoint ID for your custom model.";
 
 ## <a name="see-also"></a>Zie ook
 
-* Zie [taal ondersteuning](language-support.md)voor een lijst met ondersteunde talen en land instellingen voor spraak naar tekst.
+* Zie [Taalondersteuning](language-support.md)voor een lijst met ondersteunde talen en landlocaties voor spraak naar tekst.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Naslag documentatie voor Speech SDK](speech-sdk.md)
+* [SpraakSDK-referentiedocumentatie](speech-sdk.md)

@@ -5,30 +5,30 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/5/2019
 ms.openlocfilehash: 993b0e8cc5b1ec482b2f6041dfc970dc7e7409dd
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68229324"
 ---
-Invullen en verzenden de [Cognitive Services beeld Containers aanvraagformulier](https://aka.ms/VisionContainersPreview) toegang vragen tot de container. Het formulier vraagt om informatie over u, uw bedrijf en het scenario voor gebruikers waarvoor u de container gebruikt. Nadat u het formulier hebt verzonden, controleert het team van Azure Cognitive Services om er zeker van te zijn dat u voldoet aan de criteria voor toegang tot de persoonlijke container registry.
+Vul het [formulier Cognitive Services Vision Containers Request](https://aka.ms/VisionContainersPreview) in en dien dit in om toegang tot de container aan te vragen. Het formulier vraagt om informatie over u, uw bedrijf en het gebruikersscenario waarvoor u de container gebruikt. Nadat u het formulier hebt ingediend, controleert het Azure Cognitive Services-team het om te zien of u voldoet aan de criteria voor toegang tot het privécontainerregister.
 
 > [!IMPORTANT]
-> U moet een e-mailadres dat is gekoppeld aan een Microsoft-Account (MSA) of Azure Active Directory (Azure AD)-account in het formulier.
+> U moet een e-mailadres gebruiken dat is gekoppeld aan een Microsoft-account (MSA) of een Azure AD-account (Azure Directory) in het formulier.
 
-Als uw aanvraag is goedgekeurd, ontvangt u een e-mailbericht met instructies over het verkrijgen van uw referenties en toegang tot het privé-container-register.
+Als uw aanvraag wordt goedgekeurd, ontvangt u een e-mail met instructies waarin wordt beschreven hoe u uw referenties verkrijgen en toegang krijgt tot het privécontainerregister.
 
-## <a name="log-in-to-the-private-container-registry"></a>Meld u aan bij de privé containerregister
+## <a name="log-in-to-the-private-container-registry"></a>Log in bij het register van privécontainers
 
-Er zijn verschillende manieren om te verifiëren met de privécontainerregister voor Cognitive Services-containers. Het is raadzaam dat u de methode via de opdrachtregel met behulp van gebruiken de [Docker-Opdrachtregelinterface](https://docs.docker.com/engine/reference/commandline/cli/).
+Er zijn verschillende manieren om te verifiëren met het privécontainerregister voor cognitive services-containers. We raden u aan de opdrachtregelmethode te gebruiken met behulp van de [Docker CLI.](https://docs.docker.com/engine/reference/commandline/cli/)
 
-Gebruik de [dockeraanmelding](https://docs.docker.com/engine/reference/commandline/login/) opdracht, zoals wordt weergegeven in het volgende voorbeeld, voor aanmelding bij `containerpreview.azurecr.io`, dit is de privécontainerregister voor Cognitive Services-containers. Vervang *\<gebruikersnaam\>* met de naam van de gebruiker en *\<wachtwoord\>* met het wachtwoord dat is opgegeven in de referenties die u hebt ontvangen van de Azure Cognitive Services-team.
+Gebruik de [aanmeldingsopdracht docker,](https://docs.docker.com/engine/reference/commandline/login/) zoals in het `containerpreview.azurecr.io`volgende voorbeeld wordt weergegeven, om in te loggen bij , het privécontainerregister voor containers van Cognitive Services. Vervang * \<\> gebruikersnaam* door de gebruikersnaam en * \<het wachtwoord\> * door het wachtwoord dat is opgegeven in de referenties die u hebt ontvangen van het Azure Cognitive Services-team.
 
 ```
 docker login containerpreview.azurecr.io -u <username> -p <password>
 ```
 
-Als u uw referenties in een tekstbestand beveiligd, kunt u de inhoud van het tekstbestand op samenvoegen de `docker login` opdracht. Gebruik de `cat` opdracht, zoals wordt weergegeven in het volgende voorbeeld. Vervang *\<passwordFile\>* met het pad en de naam van het tekstbestand dat het wachtwoord bevat. Vervang *\<gebruikersnaam\>* met de naam van de gebruiker opgegeven in uw referenties.
+Als u uw referenties in een tekstbestand hebt beveiligd, u de `docker login` inhoud van dat tekstbestand aan de opdracht toevoegen. Gebruik `cat` de opdracht, zoals in het volgende voorbeeld wordt weergegeven. Wachtwoord * \<vervangenBestand\> * door het pad en de naam van het tekstbestand dat het wachtwoord bevat. Vervang * \<\> gebruikersnaam* door de gebruikersnaam in uw referenties.
 
 ```
 cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin

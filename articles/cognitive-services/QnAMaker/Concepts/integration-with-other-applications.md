@@ -1,35 +1,35 @@
 ---
-title: Integreren met andere toepassingen-QnA Maker
-description: QnA Maker kan worden geïntegreerd in client toepassingen zoals chat bots en met andere services voor natuurlijke taal verwerking, zoals Language Understanding (LUIS).
+title: Integreren met andere toepassingen - QnA Maker
+description: QnA Maker integreert in clienttoepassingen zoals chatbots en met andere natuurlijke taalverwerkingsservices zoals Language Understanding (LUIS).
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300516"
 ---
-# <a name="design-knowledge-base-for-client-applications"></a>De Knowledge Base voor client toepassingen ontwerpen
+# <a name="design-knowledge-base-for-client-applications"></a>Ontwerp kennisbank voor klanttoepassingen
 
-QnA Maker kan worden geïntegreerd in client toepassingen zoals chat bots en met andere services voor natuurlijke taal verwerking, zoals Language Understanding (LUIS).
+QnA Maker integreert in clienttoepassingen zoals chatbots en met andere natuurlijke taalverwerkingsservices zoals Language Understanding (LUIS).
 
-## <a name="integration-with-a-conversational-client"></a>Integratie met een gesprek-client
+## <a name="integration-with-a-conversational-client"></a>Integratie met een conversationele client
 
-QnA Maker integreert met conversatie-client toepassingen zoals [micro soft bot Framework](https://dev.botframework.com/). De tekst die wordt verzonden naar QnA Maker hoeft niet te worden gereinigd of getransformeerd. QnA Maker accepteert natuurlijke talen en retourneert het beste antwoord.
+QnA Maker integreert met conversationele clienttoepassingen zoals [Microsoft Bot Framework.](https://dev.botframework.com/) De tekst die naar QnA Maker wordt verzonden, hoeft niet te worden gereinigd of getransformeerd. QnA Maker accepteert natuurlijke talen en geeft het beste antwoord.
 
 ## <a name="create-a-bot-without-writing-any-code"></a>Een bot maken zonder code te schrijven
 
-Nadat u uw Knowledge Base hebt gepubliceerd, maakt u een bot op de pagina **publiceren** door de knop **bot maken** te selecteren. Gebruik de [bot-zelf studie](../Quickstarts/create-publish-knowledge-base.md) om te leren wat er gebeurt wanneer u de knop selecteert.
+Nadat u uw kennisbasis hebt gepubliceerd, maakt u een bot op de **pagina Publiceren** door de knop **Bot maken** te selecteren. Gebruik de [botzelfstudie](../Quickstarts/create-publish-knowledge-base.md) om te leren wat er gebeurt nadat u de knop hebt geselecteerd.
 
-## <a name="providing-multi-turn-conversations"></a>Meerdere gesp rekken bieden
+## <a name="providing-multi-turn-conversations"></a>Multi-turn gesprekken bieden
 
-Een bot-client biedt het beste geselecteerde antwoord uit uw Knowledge Base en kan opvolgings aanwijzingen geven als het antwoord deel uitmaakt van een multi-turn QnA-set. Meer informatie [over het](../how-to/multiturn-conversation.md) toevoegen van vraag-en antwoord sets voor multi-turn-gesprekken aan uw Knowledge Base.
+Een botclient biedt het best geselecteerde antwoord uit uw kennisbank en kan vervolgaanwijzingen geven als het antwoord deel uitmaakt van een Multi-turn QnA-set. Meer informatie over [het](../how-to/multiturn-conversation.md) toevoegen van multi-turn gespreksvragen en antwoordsets aan uw kennisbank.
 
 ## <a name="natural-language-processing"></a>Natuurlijke taalverwerking
 
-Hoewel QnA Maker vragen heeft over de verwerking van natuurlijke taal, kan dit ook een deel uitmaken van een groter systeem dat vragen van meerdere kennis grondslagen beantwoordt. U kunt QnA Maker combi neren met een andere cognitieve service, Language Understanding (LUIS), om natuurlijke taal verwerking te bieden voordat u een specifieke kennis database gaat ophalen. Meer informatie over wanneer en hoe u [Luis en QnA Maker](../../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json) samen kunt gebruiken.
+Hoewel QnA Maker vragen verwerkt die gebruikmaken van natuurlijke taalverwerking, kan het ook worden gebruikt als onderdeel van een groter systeem dat vragen van meerdere kennisbanken beantwoordt. U QnA Maker combineren met een andere Cognitive Service, Language Understanding (LUIS), om natuurlijke taalverwerking te bieden voordat u naar een specifieke kennisbank gaat. Meer informatie over wanneer en hoe [luis en QnA Maker](../../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json) samen kunnen worden gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Leer de [concepten](development-lifecycle-knowledge-base.md) van de ontwikkelings cyclus voor QnA Maker.
+Leer [ontwikkelingscyclusconcepten](development-lifecycle-knowledge-base.md) voor QnA Maker.

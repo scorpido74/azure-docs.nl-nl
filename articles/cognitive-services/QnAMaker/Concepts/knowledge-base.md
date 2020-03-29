@@ -1,46 +1,46 @@
 ---
-title: Importeren uit gegevens bronnen-QnA Maker
-description: Een QnA Maker Knowledge Base bestaat uit een set vraag-en antwoord sets (QnA) en optionele meta gegevens die zijn gekoppeld aan elk QnA-paar.
+title: Importeren uit gegevensbronnen - QnA Maker
+description: Een QnA Maker knowledge base bestaat uit een set vraag-en-antwoordsets (QnA) en optionele metadata die aan elk QnA-paar zijn gekoppeld.
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.openlocfilehash: d47d994366a8057521c1cc2ab1ab8a7ec3393965
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/16/2020
+ms.openlocfilehash: e7772b2c76dfb92ced4d2c0d4b8dae97a59d1b83
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79219685"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457818"
 ---
 # <a name="importing-from-data-sources"></a>Importeren uit gegevensbronnen
 
-Een kennis database bestaat uit vraag-en antwoord sets in open bare Url's en bestanden.
+Een kennisbank bestaat uit vraag- en antwoordsets die worden ingebracht door openbare URL's en bestanden.
 
-## <a name="data-source-locations"></a>Gegevensbronnen
+## <a name="data-source-locations"></a>Gegevensbronlocaties
 
-Inhoud wordt in een Knowledge Base van een gegevens bron gebracht. Gegevens bron locaties zijn **open bare url's of bestanden**, waarvoor geen verificatie is vereist.
+Inhoud wordt vanuit een gegevensbron in een kennisbank gebracht. Gegevensbronlocaties zijn **openbare URL's of bestanden,** waarvoor geen verificatie vereist is.
 
-[Share Point-bestanden](../how-to/add-sharepoint-datasources.md)die zijn beveiligd met verificatie, zijn de uitzonde ring. Share point-resources moeten bestanden, niet webpagina's zijn. Als de URL eindigt met een webextensie, zoals. ASPX, wordt niet geïmporteerd in QnA Maker vanuit share point.
+[SharePoint-bestanden](../how-to/add-sharepoint-datasources.md), beveiligd met authenticatie, zijn de uitzondering. SharePoint-bronnen moeten bestanden zijn, geen webpagina's. Als de URL eindigt met een webextensie, zoals . ASPX, het zal niet importeren in QnA Maker van SharePoint.
 
-## <a name="chit-chat-content"></a>Chat inhoud Chit
+## <a name="chit-chat-content"></a>Chit chat-inhoud
 
-De Chit Chat QnA-inhoudset wordt aangeboden als een volledige inhouds bron voor inhoud in verschillende talen en gespreks stijlen. Dit kan een startpunt voor de persoonlijkheid van uw bot, en u bespaart de tijd en kosten van het schrijven van deze helemaal. Meer informatie [over hoe u](../how-to/chit-chat-knowledge-base.md) deze inhoud kunt toevoegen aan uw Knowledge Base.
+De Chit chat QnA content set wordt aangeboden als een volledige content data bron in verschillende talen en conversationele stijlen. Dit kan een uitgangspunt voor de persoonlijkheid van uw bot, en het bespaart u de tijd en de kosten van het schrijven van hen vanaf nul. Meer informatie over [het toevoegen van](../how-to/chit-chat-knowledge-base.md) deze inhoudsset aan uw kennisbank.
 
-## <a name="structured-data-format-through-import"></a>Indeling van gestructureerde gegevens via importeren
+## <a name="structured-data-format-through-import"></a>Gestructureerde gegevensindeling via importeren
 
-Importeren van een kennisdatabase wordt vervangen door de inhoud van de bestaande knowledge base. Voor het importeren is een gestructureerd `.tsv` bestand vereist dat vragen en antwoorden bevat. Deze informatie helpt bij het QnA Maker groeperen van de vraag-antwoord sets en het kenmerk hiervan aan een bepaalde gegevens bron.
+Het importeren van een kennisbank vervangt de inhoud van de bestaande kennisbank. Voor importeren `.tsv` is een gestructureerd bestand vereist dat vragen en antwoorden bevat. Met deze informatie kan QnA Maker de vraagbeantwoordingssets groeperen en toeschrijven aan een bepaalde gegevensbron.
 
-| Vraag  | Antwoord  | Bron| Meta gegevens (1 sleutel: 1 waarde) |
+| Vraag  | Antwoord  | Bron| Metagegevens (1 toets: 1 waarde) |
 |-----------|---------|----|---------------------|
-| Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
-| Question2 | Answer2 | Redactioneel|    `Key:Value`       |
+| Vraag1 | Antwoord1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
+| Vraag2 | Antwoord2 | Redactionele|    `Key:Value`       |
 
-## <a name="structured-multi-turn-format-through-import"></a>Indeling voor gestructureerde multi-draaiing via importeren
+## <a name="structured-multi-turn-format-through-import"></a>Gestructureerde multi-turn-indeling via importeren
 
-U kunt de multi-turn-conversaties maken in een `.tsv`-bestands indeling. De indeling biedt u de mogelijkheid om de multi-turn-conversaties te maken door eerdere chat logboeken te analyseren (met andere processen, niet met QnA Maker) en vervolgens het `.tsv` bestand te maken via Automation. Importeer het bestand om de bestaande Knowledge Base te vervangen.
+U de multi-turn `.tsv` gesprekken maken in een bestandsindeling. De indeling biedt u de mogelijkheid om de multi-turn gesprekken te maken door het analyseren van eerdere `.tsv` chat logs (met andere processen, niet met behulp van QnA Maker), vervolgens het bestand te maken door middel van automatisering. Importeer het bestand om de bestaande kennisbank te vervangen.
 
 > [!div class="mx-imgBorder"]
-> ![conceptuele model van 3 niveaus van meerdere Schakel vragen](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
+> ![Conceptueel model van 3 niveaus van multi-turn vraag](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
 
-De kolom voor een multifunctionele `.tsv`, die specifiek is voor meerdere zetten, is een **prompt**. Een voor beeld `.tsv`, weer gegeven in Excel, toont de gegevens die moeten worden opgenomen om de multi-turn-kinderen te definiëren:
+De kolom voor een `.tsv`multi-turn , specifiek voor multi-turn is **Prompts**. In `.tsv`een voorbeeld , weergegeven in Excel, wordt de informatie weergegeven die moet worden opgenomen om de kinderen met meerdere beurten te definiëren:
 
 ```JSON
 [
@@ -49,30 +49,32 @@ De kolom voor een multifunctionele `.tsv`, die specifiek is voor meerdere zetten
 ]
 ```
 
-De **display order** is numeriek en de **weergave** tekst is Text die geen prijs verlaging mag bevatten.
+De **weergaveVolgorde** is numeriek en de **displayText** is tekst die geen afwaardering mag bevatten.
 
 > [!div class="mx-imgBorder"]
-> ![voor beeld van een multi-turn-vraag zoals weer gegeven in Excel](../media/qnamaker-concepts-knowledgebase/multi-turn-tsv-columns-excel-example.png)
+> ![Voorbeeld van vragen met meerdere beurten zoals weergegeven in Excel](../media/qnamaker-concepts-knowledgebase/multi-turn-tsv-columns-excel-example.png)
 
-## <a name="export-as-example"></a>Exporteren als voor beeld
+## <a name="export-as-example"></a>Exporteren als voorbeeld
 
-Als u niet zeker weet hoe u uw QnA in het `.tsv`-bestand kunt weer geven, maakt u de set in de QnA Maker Portal, slaat u de kennis database op en exporteert u de Knowledge Base voor een voor beeld van hoe de set wordt vertegenwoordigd.
+Als u niet zeker weet hoe u uw `.tsv` QnA-set in het bestand weergeven:
+* Gebruik dit [downloadbare voorbeeld van GitHub](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)
+* Of maak de set in de QnA Maker-portal, sla op en exporteer de kennisbank voor een voorbeeld van hoe u de set weergeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Ontwikkelings levenscyclus van een Knowledge Base](./development-lifecycle-knowledge-base.md)
+> [Levenscyclus van een knowledge base-ontwikkeling](./development-lifecycle-knowledge-base.md)
 
 ## <a name="see-also"></a>Zie ook
 
-Gebruik de QnA Maker [prijs informatie](../reference-markdown-format.md) om u te helpen bij het format teren van uw antwoorden.
+Gebruik de QnA Maker [Markdown-verwijzing](../reference-markdown-format.md) om u te helpen uw antwoorden op te maken.
 
 [Overzicht van QnA Maker](../Overview/overview.md)
 
-Een Knowledge Base maken en bewerken met:
+Maak en bewerk een kennisbank met:
 * [REST-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
-Een antwoord genereren met:
+Genereer een antwoord met:
 * [REST-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

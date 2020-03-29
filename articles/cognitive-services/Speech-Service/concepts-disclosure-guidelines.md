@@ -1,7 +1,7 @@
 ---
-title: Richt lijnen voor het ontwerpen van vrijgeven
+title: Richtlijnen voor openbaarmakingsontwerp
 titleSuffix: Azure Cognitive Services
-description: Inleiding tot de richt lijnen voor het vrijgeven van informatie en het beoordelen van het niveau van de publicatie
+description: Inleiding tot richtlijnen voor het openbaarmakingsontwerp en het beoordelen van het openbaarmakingsniveau.
 services: cognitive-services
 author: sharonlo101
 manager: nitinme
@@ -11,75 +11,75 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74776382"
 ---
 # <a name="disclosure-design-guidelines"></a>Richtlijnen voor het ontwerpen van openbaarmakingen
-Meer informatie over het bouwen en onderhouden van vertrouwen met klanten door transparante informatie te krijgen over de synthetische aard van uw stem ervaring.
+Leer hoe je vertrouwen opbouwen en onderhouden bij klanten door transparant te zijn over het synthetische karakter van je spraakervaring.
 
-## <a name="what-is-disclosure"></a>Wat is een openbaar making?
+## <a name="what-is-disclosure"></a>Wat is openbaarmaking?
 
-Openbaar making is een manier om mensen te laten&#39;weten dat ze zich opnieuw met of naar een stem moeten houden die synthetisch is gegenereerd.
+Disclosure is een middel om mensen te laten weten dat ze&#39;interactie met of luisteren naar een stem die synthetisch wordt gegenereerd.
 
-## <a name="why-is-disclosure-necessary"></a>Waarom is de openbaar making nood zakelijk?
+## <a name="why-is-disclosure-necessary"></a>Waarom is openbaarmaking noodzakelijk?
 
-De nood zaak om de synthetische oorsprong van een door de computer gegenereerde spraak openbaar te maken, is relatief nieuw. In het verleden waren de door de computer gegenereerde stemmen uiteraard duidelijk dat: niemand zou deze ooit voor een echte persoon zouden afwegen. Elke dag gaat echter het reële aantal synthetische stemmen beter en ze worden steeds meer onderscheiden van mensen stemmen.
+De noodzaak om de synthetische oorsprong van een computergegenereerde stem bekend te maken is relatief nieuw. In het verleden, computer-gegenereerde stemmen waren natuurlijk dat-niemand ooit zou ze verwarren met een echte persoon. Elke dag, echter, het realisme van synthetische stemmen verbetert, en ze worden steeds meer niet te onderscheiden van menselijke stemmen.
 
-## <a name="goals"></a>Bedoeling
-Dit zijn de principes die u moet overwegen bij het ontwerpen van synthetische spraak ervaring:
+## <a name="goals"></a>Doelstellingen
+Dit zijn de principes om in gedachten te houden bij het ontwerpen van synthetische spraakervaringen:
 
-**Vertrouwens relatie versterken**
-<br>Ontwerp met de bedoeling dat de Turing-test niet kan worden gereduceerd zonder de ervaring te degraderen. Laat de gebruikers in op het feit dat ze interactie hebben met een synthetische stem, terwijl ze naadloos kunnen samen werken met de ervaring.
+**Vergroot het vertrouwen**
+<br>Ontwerp met de bedoeling om de Turing Test te mislukken zonder de ervaring te vernederen. Laat de gebruikers in op het feit dat ze interactie met een synthetische stem, terwijl ze naadloos in contact met de ervaring.
 
-**Aanpassen aan gebruiks context**
-<br>Begrijpen wanneer, waar en hoe uw gebruikers met de synthetische stem communiceren, om het juiste type openbaar making op het juiste moment te bieden.
+**Aanpassen aan de context van het gebruik**
+<br>Begrijp wanneer, waar en hoe uw gebruikers zullen communiceren met de synthetische stem om het juiste type openbaarmaking op het juiste moment te bieden.
 
-**Duidelijke verwachtingen instellen**
-<br>Gebruikers toestaan de mogelijkheden van de agent eenvoudig te detecteren en te begrijpen. Bied mogelijkheden om meer te weten te komen over synthetische spraak technologie op aanvraag.
+**Stel duidelijke verwachtingen**
+<br>Laat gebruikers gemakkelijk de mogelijkheden van de agent ontdekken en begrijpen. Bied desgevraagd mogelijkheden om meer te weten te komen over synthetische spraaktechnologie.
 
-**Profiteer van fout**
-<br>Gebruik momenten van de fout om de mogelijkheden van de agent te versterken.
+**Omarm falen**
+<br>Gebruik momenten van falen om de mogelijkheden van de agent te versterken.
 
-## <a name="how-to-use-this-guide"></a>Deze hand leiding gebruiken
+## <a name="how-to-use-this-guide"></a>Het gebruik van deze handleiding
 
-Deze hand leiding helpt u te bepalen welke uitschaffings patronen het meest geschikt zijn voor uw synthetische spraak ervaring. We bieden vervolgens voor beelden van hoe en wanneer ze ze gebruiken. Elk van deze patronen is ontworpen om de transparantie te maximaliseren met gebruikers over synthetische spraak, terwijl hij waar voor menselijke gecentreerde ontwerp blijft.
+Deze gids helpt u te bepalen welke openbaarmakingspatronen het beste passen bij uw synthetische spraakervaring. Vervolgens geven we voorbeelden van hoe en wanneer ze moeten worden gebruikt. Elk van deze patronen is ontworpen om de transparantie met gebruikers over synthetische spraak te maximaliseren, terwijl trouw blijven aan mensgericht ontwerp.
 
-Gezien het grote deel van ontwerp richtlijnen voor spraak ervaringen, zijn we hier specifiek gericht op:
+Gezien de enorme hoeveelheid ontwerpbegeleiding over stemervaringen, richten we ons hier specifiek op:
 
-1. [**Beoordeling van de openbaar making**](#disclosure-assessment): een proces om te bepalen welk type openbaar making wordt aanbevolen voor uw synthetische spraak ervaring
+1. [**Beoordeling van de openbaarmaking**](#disclosure-assessment): Een proces om het type openbaarmaking te bepalen dat wordt aanbevolen voor uw synthetische spraakervaring
 
-2. [**Openbaar**](concepts-disclosure-patterns.md)Making: voor beelden van uitgevende patronen die kunnen worden toegepast op uw synthetische spraak ervaring
+2. [**Hoe te onthullen:**](concepts-disclosure-patterns.md)Voorbeelden van openbaarmakingspatronen die kunnen worden toegepast op uw synthetische spraakervaring
 
-3. [**Wanneer moet u**](concepts-disclosure-patterns.md#when-to-disclose)het volgende vermelden: optimaal moment om te vermelden tijdens de gebruikers reis
+3. [**Wanneer bekend te maken**](concepts-disclosure-patterns.md#when-to-disclose): Optimale momenten om bekend te maken tijdens de gebruikersreis
 
-## <a name="disclosure-assessment"></a>Beoordeling van vrijgeven
-Denk aan de&#39; verwachtingen van uw gebruikers over een interactie en de context waarin ze de stem zullen ondervinden. Als de context duidelijk maakt dat een synthetische stem &quot;spreekt, kan het zijn dat&quot; de openbaar making mini maal of onnodig is. De belangrijkste typen context die van invloed zijn op de openbaar making zijn onder ander type, scenario type en blootstellings niveau. U kunt ook zien wie er zou kunnen Luis teren.
+## <a name="disclosure-assessment"></a>Beoordeling van de openbaarmaking
+Houd rekening met uw gebruikers&#39; verwachtingen over een interactie en de context waarin ze de stem zullen ervaren. Als de context duidelijk maakt dat &quot;een&quot; synthetische stem spreekt, kan openbaarmaking minimaal, tijdelijk of zelfs onnodig zijn. De belangrijkste typen context die van invloed zijn op openbaarmaking zijn persona-type, scenariotype en blootstellingsniveau. Het helpt ook om te overwegen wie zou kunnen luisteren.
 
-### <a name="understand-context"></a>Context begrijpen
+### <a name="understand-context"></a>Begrijpen van de context
 
-Gebruik dit werk blad om de context van uw synthetische spraak ervaring te bepalen. U kunt dit in de volgende stap gebruiken, waarbij u het niveau van de uitgave kunt bepalen.
+Gebruik dit werkblad om de context van uw synthetische spraakervaring te bepalen. Je past dit toe in de volgende stap waar je je openbaarmakingsniveau bepaalt.
 
-|                                    | Gebruiks context                                                                                                                                                                                                                                                                                                                                                       | Mogelijke Risico's & uitdagingen                                                                                                                                                                                                                                                                                                                                                                       |
+|                                    | Context van gebruik                                                                                                                                                                                                                                                                                                                                                       | Potentiële risico's & uitdagingen                                                                                                                                                                                                                                                                                                                                                                       |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **1. persona-type**               | **Als een van de volgende opties van toepassing is, past uw persoona aan onder de categorie Human-achtige Persona:**<br><br><ul><li> Persoona geeft een echte mens weer, of het nu gaat om een fictieve vertegenwoordiging of niet. (bijvoorbeeld foto of een door de computer gegenereerde rendering van een echte persoon)<br><br><li> De synthetische stem is gebaseerd op de stem van een zeer herken bare echte persoon (bijvoorbeeld beroemdheden, politieke afbeelding) | Hoe meer mensen u met Human-achtige representaties aan uw persoonlijke voor keur geeft, hoe groter de kans dat een gebruiker deze kan koppelen aan een echte persoon of dat ze van mening zijn dat de inhoud wordt gesp roken door een echte persoon in plaats van door de computer gegenereerd. </ul>                                                                                                                                                                      |
-| **2. type scenario**            | **Als een van de volgende van toepassing is, past uw spraak ervaring aan onder de categorie ' gevoelig ':**<br><br><ul><li> Hiermee worden persoonlijke gegevens van de gebruiker opgehaald of weer gegeven <br><br> <li> Verzendt tijd gevoelige nieuws/informatie (bijvoorbeeld nood waarschuwing)<br><br><li> Streeft ernaar dat echte mensen met elkaar kunnen communiceren (bijvoorbeeld persoonlijke e-mail berichten/teksten lezen)<br><br> <li> Biedt medische/gezondheids bijstand </ul>            | Het gebruik van synthetische stem is mogelijk niet geschikt voor de mensen die het gebruiken wanneer de onderwerpen zijn gerelateerd aan gevoelige, persoonlijke of dringende zaken. Ze kunnen ook uitgaan van hetzelfde niveau van empathie en contextuele bewustzijn als een echt menselijk. |
-| **3. blootstellings niveau** |**Uw spraak ervaring is waarschijnlijk het beste onder de categorie hoog als:** <br><br><ul><li>De gebruiker kan de synthetische spraak regel matig of gedurende een lange periode gebruiken </ul>                                                                                                                                                                             | Het belang van doorzichtigheid en het bouwen van vertrouwen met gebruikers is zelfs groter bij het tot stand brengen van lange termijn relaties.                                                                                                                                                                                                                                                                      |
+| **1. Persona-type**               | **Als een van de volgende van toepassing is, past uw persona onder de categorie 'Mens-achtig Persona':**<br><br><ul><li> Persona belichaamt een echte mens, of het nu een fictieve voorstelling is of niet. (bijvoorbeeld foto of een computergegenereerde weergave van een echte persoon)<br><br><li> De synthetische stem is gebaseerd op de stem van een breed herkenbare echte persoon (bijvoorbeeld, beroemdheid, politieke figuur) | Hoe meer mens-achtige voorstellingen u uw persona geven, hoe groter de kans dat een gebruiker het zal associëren met een echte persoon, of ervoor zorgt dat ze geloven dat de inhoud wordt gesproken door een echte persoon in plaats van computer-gegenereerd. </ul>                                                                                                                                                                      |
+| **2. Scenariotype**            | **Als een van de volgende toepassing, uw stem ervaring past onder de 'Gevoelige' categorie:**<br><br><ul><li> Persoonlijke informatie van de gebruiker verkrijgen of weergeven <br><br> <li> Zendt tijdgevoelig nieuws/informatie uit (bijv. noodwaarschuwing)<br><br><li> Is bedoeld om echte mensen te helpen met elkaar te communiceren (bijvoorbeeld, leest persoonlijke e-mails / teksten)<br><br> <li> Biedt medische/gezondheidshulp </ul>            | Het gebruik van synthetische stem kan niet geschikt of betrouwbaar voelen voor de mensen die het gebruiken wanneer onderwerpen gerelateerd zijn aan gevoelige, persoonlijke of dringende zaken. Ze kunnen ook verwachten dat hetzelfde niveau van empathie en contextuele bewustzijn als een echte mens. |
+| **3. Blootstellingsniveau** |**Uw spraakervaring past waarschijnlijk onder de categorie 'Hoog' als:** <br><br><ul><li>De gebruiker zal de synthetische stem vaak of gedurende een lange tijd horen of ermee communiceren </ul>                                                                                                                                                                             | Het belang van transparant zijn en vertrouwen opbouwen met gebruikers is nog groter bij het aangaan van langdurige relaties.                                                                                                                                                                                                                                                                      |
 
-### <a name="determine-disclosure-level"></a>Verschaffings niveau bepalen
+### <a name="determine-disclosure-level"></a>Het openbaarmakingsniveau bepalen
 
-Gebruik het volgende diagram om te bepalen of uw synthetische spraak ervaring een hoge of lage openbaar making vereist op basis van uw gebruiks context.
+Gebruik het volgende diagram om te bepalen of uw synthetische spraakervaring een hoge of lage openbaarmaking vereist op basis van uw gebruikscontext.
 
-  ![Diagram voor uitschaffings beoordeling](media/responsible-ai/disclosure-guidelines/flowchart.png)
+  ![Informatiebeoordelingsdiagram](media/responsible-ai/disclosure-guidelines/flowchart.png)
 
 ## <a name="reference-docs"></a>Referentiedocumenten
 
-* [Openbaar making voor spraak-talen](https://aka.ms/disclosure-voice-talent)
-* [Richt lijnen voor de verantwoordelijke implementatie van synthetische spraak technologie](concepts-guidelines-responsible-deployment-synthetic.md)
-* [Overzicht van beperking](concepts-gating-overview.md)
+* [Openbaarmaking voor Voice Talent](https://aka.ms/disclosure-voice-talent)
+* [Richtlijnen voor verantwoorde implementatie van synthetische spraaktechnologie](concepts-guidelines-responsible-deployment-synthetic.md)
+* [Gating overzicht](concepts-gating-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Ontwerp patronen voor openbaar making](concepts-disclosure-patterns.md)
+* [Ontwerppatronen van openbaarmakingen](concepts-disclosure-patterns.md)

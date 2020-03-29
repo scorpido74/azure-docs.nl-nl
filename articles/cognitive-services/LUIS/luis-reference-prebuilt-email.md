@@ -1,7 +1,7 @@
 ---
-title: Naslag informatie voor LUIS-vooraf gemaakte entiteiten
+title: Luis Prebuilt entiteiten e-mailverwijzing
 titleSuffix: Azure Cognitive Services
-description: In dit artikel e-mailbericht bevat vooraf gedefinieerde entiteitgegevens in Language Understanding (LUIS).
+description: Dit artikel bevat vooraf gebouwde informatie over e-mailentiteiten in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,24 +12,24 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: f7aa2a341a82d30f7022af49e626a3cd358854b7
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273485"
 ---
-# <a name="email-prebuilt-entity-for-a-luis-app"></a>E-mail vooraf gebouwde entiteit voor een LUIS-app
-Extractie van e-mailbericht bevat het volledige e-mailadres van een utterance. Omdat deze entiteit wordt al getraind, hoeft u niet om toe te voegen van de voorbeeld-uitingen met e-mailbericht naar de toepassing intents. De e-mail entiteit wordt alleen ondersteund in `en-us` cultuur.
+# <a name="email-prebuilt-entity-for-a-luis-app"></a>Vooraf gebouwde entiteit e-mailen voor een LUIS-app
+E-mailextractie bevat het volledige e-mailadres van een utterance. Omdat deze entiteit al is getraind, hoeft u geen voorbeelduitingen met e-mail toe te voegen aan de toepassingsintenties. E-mailentiteit wordt `en-us` alleen ondersteund in cultuur.
 
-## <a name="resolution-for-prebuilt-email"></a>Oplossing voor vooraf gemaakte e-mailadres
+## <a name="resolution-for-prebuilt-email"></a>Oplossing voor vooraf gebouwde e-mail
 
-De volgende entiteits objecten worden geretourneerd voor de query:
+De volgende entiteitsobjecten worden geretourneerd voor de query:
 
 `please send the information to patti@contoso.com`
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
+De volgende JSON `verbose` is met `false`de parameter ingesteld op:
 
 ```json
 "entities": {
@@ -38,9 +38,9 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 verbose reactie](#tab/V3-verbose)
 
-De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
+De volgende JSON `verbose` is met `true`de parameter ingesteld op:
 
 ```json
 "entities": {
@@ -66,7 +66,7 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
 ```
 #### <a name="v2-response"></a>[V2-antwoord](#tab/V2)
 
-In het volgende voor beeld ziet u de oplossing van de **ingebouwde e-mail-** entiteit.
+In het volgende voorbeeld ziet u de oplossing van de entiteit **builtin.email.**
 
 ```json
 "entities": [
@@ -85,6 +85,6 @@ In het volgende voor beeld ziet u de oplossing van de **ingebouwde e-mail-** ent
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
+Meer informatie over het [V3-voorspellingseindpunt](luis-migration-api-v3.md).
 
-Meer informatie over het [aantal](luis-reference-prebuilt-number.md), het [rang telwoord](luis-reference-prebuilt-ordinal.md)en het [percentage](luis-reference-prebuilt-percentage.md).
+Meer informatie over het [aantal](luis-reference-prebuilt-number.md) [, ordinal](luis-reference-prebuilt-ordinal.md)en [percentage](luis-reference-prebuilt-percentage.md).

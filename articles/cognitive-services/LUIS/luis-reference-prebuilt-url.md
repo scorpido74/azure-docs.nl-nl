@@ -1,7 +1,7 @@
 ---
-title: URL-preconstrueerde entiteiten-LUIS
+title: URL-voorgebouwde entiteiten - LUIS
 titleSuffix: Azure Cognitive Services
-description: In dit artikel bevat een url vooraf gedefinieerde entiteitgegevens in Language Understanding (LUIS).
+description: Dit artikel bevat vooraf ingebouwde informatie over de url in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,27 +12,27 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
 ms.openlocfilehash: 49f145ce3e9022826abad5d274dd611bb2cc6530
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270352"
 ---
-# <a name="url-prebuilt-entity-for-a-luis-app"></a>URL preconstrueerde entiteit voor een LUIS-app
-URL-entiteit extraheert URL's met domeinnamen of IP-adressen. Omdat deze entiteit wordt al getraind, hoeft u niet om toe te voegen van de voorbeeld-uitingen met URL's naar de toepassing. URL-entiteit wordt alleen ondersteund in `en-us` cultuur.
+# <a name="url-prebuilt-entity-for-a-luis-app"></a>URL-voorgebouwde entiteit voor een LUIS-app
+URL-entiteit haalt URL's uit met domeinnamen of IP-adressen. Omdat deze entiteit al is getraind, hoeft u geen voorbeelduitingen met URL's aan de toepassing toe te voegen. URL-entiteit wordt `en-us` alleen ondersteund in cultuur.
 
-## <a name="types-of-urls"></a>Typen van URL 's
-URL wordt beheerd vanuit de map [recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) github
+## <a name="types-of-urls"></a>Typen URL's
+Url wordt beheerd vanuit de [GitHub-repository Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml)
 
-## <a name="resolution-for-prebuilt-url-entity"></a>Oplossing voor vooraf gedefinieerde URL-entiteit
+## <a name="resolution-for-prebuilt-url-entity"></a>Oplossing voor vooraf gebouwde URL-entiteit
 
-De volgende entiteits objecten worden geretourneerd voor de query:
+De volgende entiteitsobjecten worden geretourneerd voor de query:
 
 `https://www.luis.ai is a great cognitive services example of artificial intelligence`
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
+De volgende JSON `verbose` is met `false`de parameter ingesteld op:
 
 ```json
 "entities": {
@@ -41,9 +41,9 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 verbose reactie](#tab/V3-verbose)
 
-De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
+De volgende JSON `verbose` is met `true`de parameter ingesteld op:
 
 ```json
 "entities": {
@@ -69,7 +69,7 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
 ```
 #### <a name="v2-response"></a>[V2-antwoord](#tab/V2)
 
-In het volgende voor beeld ziet u de oplossing van de https://www.luis.ai is een fantastisch voor beeld van een fraaie cognitieve service van kunst matige intelligentie
+Het volgende voorbeeld toont https://www.luis.ai de resolutie van de is een groot voorbeeld van cognitieve diensten van kunstmatige intelligentie
 
 ```json
 "entities": [
@@ -86,6 +86,6 @@ In het volgende voor beeld ziet u de oplossing van de https://www.luis.ai is een
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
+Meer informatie over het [V3-voorspellingseindpunt](luis-migration-api-v3.md).
 
-Meer informatie over het [rang telwoord](luis-reference-prebuilt-ordinal.md), het [aantal](luis-reference-prebuilt-number.md)en de [Tempe ratuur](luis-reference-prebuilt-temperature.md) .
+Meer informatie over de [ordinale,](luis-reference-prebuilt-ordinal.md) [aantal-](luis-reference-prebuilt-number.md)en [temperatuurentiteiten.](luis-reference-prebuilt-temperature.md)

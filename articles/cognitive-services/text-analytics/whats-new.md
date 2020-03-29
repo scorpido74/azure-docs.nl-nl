@@ -1,5 +1,5 @@
 ---
-title: Wat is er nieuw in de Text Analytics-API
+title: Nieuwe nieuws in de Text Analytics API
 titleSuffix: Text Analytics - Azure Cognitive Services
 description: In dit artikel vindt u informatie over nieuwe releases en functies voor de Azure Cognitive Services Text Analytics.
 services: cognitive-services
@@ -11,88 +11,88 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: 162e60ac8d33dc5d1951a58b0a9643b668608d7b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77188809"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Wat is er nieuw in de Text Analytics-API?
 
-De Text Analytics-API wordt doorlopend bijgewerkt. In dit artikel vindt u informatie over nieuwe releases en functies, zodat u op de hoogte blijft van recente ontwikkelingen.
+De Text Analytics API wordt voortdurend bijgewerkt. Om op de hoogte te blijven van recente ontwikkelingen, biedt dit artikel u informatie over nieuwe releases en functies.
 
 ## <a name="february-2020"></a>Februari 2020
 
-### <a name="sdk-support-for-text-analytics-api-v3-public-preview"></a>SDK-ondersteuning voor de open bare preview van Text Analytics-API v3
+### <a name="sdk-support-for-text-analytics-api-v3-public-preview"></a>SDK-ondersteuning voor Text Analytics API v3 Public Preview
 
-Als onderdeel van de [Unified Azure SDK-versie](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)is de Text Analytics-API v3 SDK nu beschikbaar als open bare Preview voor de volgende programmeer talen:
-   * [C#](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-csharp)
+Als onderdeel van de [uniforme Azure SDK-release](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)is de Text Analytics API v3 SDK nu beschikbaar als openbare preview voor de volgende programmeertalen:
+   * [C #](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-csharp)
    * [Python](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-python)
-   * [Java script (node. js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
+   * [JavaScript (Node.js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
    * [Java](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-java)
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Text Analytics-API v3 SDK](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3)
+> [Meer informatie over Text Analytics API v3 SDK](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3)
 
-### <a name="named-entity-recognition-v3-public-preview"></a>Named entity Recognition v3 open bare preview
+### <a name="named-entity-recognition-v3-public-preview"></a>Met de naam entiteitsherkenning v3 openbare preview
 
-Er zijn nu extra entiteits typen beschikbaar in de open bare preview-service van de NER (named entity Recognition) omdat we de detectie van algemene en persoonlijke informatie entiteiten in tekst kunnen uitbreiden. Deze update introduceert de [model versie](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) `2020-02-01`, met inbegrip van:
+Aanvullende entiteitstypen zijn nu beschikbaar in de NER-v3-openbare preview-service (Named Entity Recognition) terwijl we de detectie van algemene en persoonlijke informatieentiteiten in tekst uitbreiden. Deze update introduceert [modelversie,](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) `2020-02-01`die omvat:
 
-* Erkenning van de volgende algemene entiteits typen (alleen Engels):
+* Erkenning van de volgende algemene entiteitstypen (alleen In het Engels):
     * PersonType
     * Product
     * Gebeurtenis
-    * Geopolitieke entiteit (GPE) als subtype onder locatie
-    * Eigen
+    * Geopolitieke entiteit (GPE) als subtype onder Locatie
+    * Behendigheid
 
-* Herkenning van de volgende entiteits typen van persoonlijke gegevens (alleen Engels):
+* Erkenning van de volgende typen persoonlijke gegevens (alleen In het Engels):
     * Person
     * Organisatie
-    * Leeftijd als subtype onder hoeveelheid
-    * Datum als een subtype onder DateTime
+    * Leeftijd als subtype onder Hoeveelheid
+    * Datum als subtype onder DateTime
     * Email 
-    * Telefoon nummer (alleen VS)
+    * Telefoonnummer (alleen in de VS)
     * URL
     * IP-adres
 
 > [!div class="nextstepaction"]
-> [Meer informatie over named entity Recognition v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
+> [Meer informatie over Named Entity Recognition v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
 
 ### <a name="october-2019"></a>Oktober 2019
 
-#### <a name="named-entity-recognition-ner"></a>Herkenning van benoemde entiteiten (NER)
+#### <a name="named-entity-recognition-ner"></a>Benoemde entiteitsherkenning (NER)
 
-* Een [Nieuw eind punt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) voor het herkennen van entiteits typen van persoonlijke gegevens (alleen Engels)
+* Een [nieuw eindpunt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) voor het herkennen van entiteitstypen voor persoonlijke gegevens (alleen In het Engels)
 
-* Afzonderlijke eind punten voor [entiteits herkenning](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) en [entiteits koppeling](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking).
+* Afzonderlijke eindpunten voor [entiteitsherkenning](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) en [entiteitskoppeling](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking).
 
-* [Model versie](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) `2019-10-01`, met inbegrip van:
-    * Uitgebreide detectie en categorisatie van entiteiten gevonden in tekst. 
-    * Herkenning van de volgende nieuwe entiteits typen:
+* [Modelversie,](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) `2019-10-01`waaronder:
+    * Uitgebreide detectie en categorisering van entiteiten in tekst. 
+    * Erkenning van de volgende nieuwe entiteitstypen:
         * Telefoonnummer
         * IP-adres
 
-Koppeling van entiteit ondersteunt Engels en Spaans. NER taal ondersteuning varieert per entiteits type.
+Entiteitskoppeling ondersteunt Engels en Spaans. Ner-taalondersteuning verschilt per entiteitstype.
 
-#### <a name="sentiment-analysis-v3-public-preview"></a>Open bare preview van Sentimentanalyse v3
+#### <a name="sentiment-analysis-v3-public-preview"></a>Sentiment Analyse v3 openbare preview
 
-* Een [Nieuw eind punt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) voor het analyseren van sentiment.
-* [Model versie](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) `2019-10-01`, met inbegrip van:
+* Een [nieuw eindpunt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) voor het analyseren van sentiment.
+* [Modelversie,](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) `2019-10-01`waaronder:
 
-    * Aanzienlijke verbeteringen in de nauw keurigheid en Details van de tekst categorisatie en Score van de API.
-    * Automatische labeling voor verschillende gevoel in tekst.
-    * Sentiment analyse en uitvoer op het niveau van een document en zin. 
+    * Aanzienlijke verbeteringen in de nauwkeurigheid en details van de tekstcategorisering en -score van de API.
+    * Automatische etikettering voor verschillende sentimenten in tekst.
+    * Sentimentanalyse en output op document- en zinsniveau. 
 
-Het biedt ondersteuning voor Engels (`en`), Japans (`ja`) vereenvoudigd Chinees (`zh-Hans`), traditioneel Chinees (`zh-Hant`), Frans (`fr`), Italiaans (`it`), Spaans (`es`), Nederlands (`nl`), Portugees (`pt`) en Duits (`de`), en is beschikbaar in de volgende regio's: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`en `West US 2`. 
+Het ondersteunt`en`Engels (`ja`), Japans`zh-Hans`( ),`zh-Hant`Chinese Vereenvoudigde`fr`(`it`), Chinese`es`Traditionele`nl`( ),`pt`Franse (`de`), Italiaanse ( ), `Australia East`Spaanse `Central Canada` `Central US`( `East Asia` `East US`), Nederlandse ( ), Portugese ( ) en Duitse ( ), en is beschikbaar in de volgende regio's: , , , , `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, , `UK South`, `West Europe`, en `West US 2`. 
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Sentimentanalyse v3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)
+> [Meer informatie over Sentiment Analysis v3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is de Text Analytics-API?](overview.md)  
-* [Voor beelden van gebruikers scenario's](text-analytics-user-scenarios.md)
-* [Sentiment analyse](how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Taal detectie](how-tos/text-analytics-how-to-language-detection.md)
-* [Entiteit herkenning](how-tos/text-analytics-how-to-entity-linking.md)
-* [Extractie van sleutel woorden](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Wat is Text Analytics-API?](overview.md)  
+* [Voorbeeldgebruikerscenario's](text-analytics-user-scenarios.md)
+* [Sentimentanalyse](how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Taaldetectie](how-tos/text-analytics-how-to-language-detection.md)
+* [Herkenning van entiteiten](how-tos/text-analytics-how-to-entity-linking.md)
+* [Trefwoordextractie](how-tos/text-analytics-how-to-keyword-extraction.md)

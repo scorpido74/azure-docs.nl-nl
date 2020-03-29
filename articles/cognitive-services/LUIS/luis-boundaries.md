@@ -1,7 +1,7 @@
 ---
-title: Limieten-LUIS
+title: Limieten - LUIS
 titleSuffix: Azure Cognitive Services
-description: In dit artikel bevat de bekende beperkingen van Azure Cognitive Services Language Understanding (LUIS). LUIS heeft verschillende gebieden van de grens. Model grens bepaalt intents, entiteiten en functies van LUIS. De quotalimieten op basis van het type sleutel. Toetscombinatie bepaalt de LUIS-website.
+description: Dit artikel bevat de bekende limieten van Azure Cognitive Services Language Understanding (LUIS). LUIS heeft verschillende grensgebieden. Modelgrens besturingselementen intents, entiteiten en functies in LUIS. Quotalimieten op basis van sleuteltype. Toetsenbordcombinatie regelt de LUIS-website.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,103 +12,103 @@ ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: d584b00caef628eb9dfd085b1fdce2bb7b353988
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220081"
 ---
-# <a name="boundaries-for-your-luis-model-and-keys"></a>Grenzen voor uw LUIS-model en-sleutels
-LUIS heeft verschillende gebieden van de grens. De eerste is de [model grens](#model-boundaries), waarmee de intenties, entiteiten en functies in Luis worden beheerd. Het tweede gebied is [quotum limieten](#key-limits) op basis van het sleutel type. Een derde gebied met grenzen is de [toetscombinatie voor het beheren van de Luis](#keyboard-controls) -website. Een vierde gebied is de [wereld wijde toewijzing](luis-reference-regions.md) tussen de Luis-ontwerp website en de Luis- [eindpunt](luis-glossary.md#endpoint) api's.
+# <a name="boundaries-for-your-luis-model-and-keys"></a>Grenzen voor uw LUIS-model en sleutels
+LUIS heeft verschillende grensgebieden. De eerste is de [modelgrens](#model-boundaries), die intents, entiteiten en functies in LUIS beheert. Het tweede gebied is [quotalimieten](#key-limits) op basis van sleuteltype. Een derde gebied van grenzen is de [toetsenbordcombinatie](#keyboard-controls) voor het besturen van de LUIS-website. Een vierde gebied is de [wereldregio mapping](luis-reference-regions.md) tussen de LUIS authoring website en de LUIS [endpoint](luis-glossary.md#endpoint) API's.
 
 
-## <a name="model-boundaries"></a>Model grenzen
+## <a name="model-boundaries"></a>Modelgrenzen
 
-Als uw app de limieten en grenzen van het LUIS-model overschrijdt, kunt u overwegen een [Luis-verzend](luis-concept-enterprise.md#dispatch-tool-and-model) -app te gebruiken of een [Luis-container](luis-container-howto.md)te gebruiken.
+Als uw app de grenzen en grenzen van het LUIS-model overschrijdt, u overwegen een [LUIS-verzendapp te](luis-concept-enterprise.md#dispatch-tool-and-model) gebruiken of een [LUIS-container](luis-container-howto.md)te gebruiken.
 
 |Onderwerp|Limiet|
 |--|:--|
-| [Naam van app][luis-get-started-create-app] | \* Standaard teken max |
-| Toepassingen| 500-toepassingen per Azure-ontwerp bron |
-| [Batch testen][batch-testing]| 10 gegevenssets, 1000 uitingen per gegevensset|
-| Expliciete lijst | 50 per toepassing|
-| Externe entiteiten | geen limieten |
-| [Intents][intents]|500 per toepassing: 499 aangepaste intenties en de vereiste _geen_ intentie.<br>[Op verzen ding gebaseerde](https://aka.ms/dispatch-tool) toepassing heeft corresponderende 500-verzend bronnen.|
-| [Entiteiten weer geven](./luis-concept-entity-types.md) | Bovenliggende: 50, onderliggende: maximaal 20.000 items. Canonieke naam is * standaard teken max. Synoniem waarden hebben geen lengtebeperking. |
-| Door [machines geleerde entiteiten + rollen](./luis-concept-entity-types.md):<br> werken<br>Simple<br>entiteits rol|Een limiet van 100 bovenliggende entiteiten of 330 entiteiten, afhankelijk van het aantal gebruikers dat het eerst voor komt. Een rol telt als een entiteit voor het doel van deze grens. Een voor beeld is een samen stelling met een eenvoudige entiteit, die twee rollen heeft: 1 composiet + 1 eenvoudige + 2 rollen = 4 van de 330 entiteiten.<br>Subonderdelen kunnen Maxi maal vijf niveaus worden genest.|
-|Model als onderdeel| Het maximum aantal modellen dat kan worden gebruikt als een descriptor (functie) voor een specifiek model om 10 modellen te zijn. Het maximum aantal woordgroepen lijsten dat als een descriptor (functie) voor een specifiek model wordt gebruikt, is 10 woordgroepen lijsten.|
-| [Preview-dynamische lijst entiteiten](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 lijsten met een eindpunt aanvraag van ongeveer 1 KB per query|
-| [Daarin](luis-concept-patterns.md)|500 patronen per toepassing.<br>Maximale lengte van het patroon is 400 tekens.<br>3 Pattern.any entiteiten per patroon<br>Maximaal 2 geneste optionele tekst in het patroon|
-| [Patroon. alle](./luis-concept-entity-types.md)|100 per toepassing, 3 pattern.any entiteiten per patroon |
-| [Woordgroepen lijst][phrase-list]|500 woordgroepen lijsten. Niet-verwisselbaar phraselist heeft een maximum van 5.000 zinsdelen. Interchangeable Phraselist heeft een maximum van 50.000 zinsdelen. Maximum aantal woord groepen per toepassing van 500.000-zinsdelen.|
-| [Vooraf gemaakte entiteiten](./luis-prebuilt-entities.md) | geen limiet|
-| [Entiteiten van reguliere expressie](./luis-concept-entity-types.md)|20 entiteiten<br>Max. 500 tekens. per entiteit patroon van reguliere expressie|
+| [App-naam][luis-get-started-create-app] | *Standaardteken max. |
+| Toepassingen| 500 toepassingen per Azure-ontwerpbron |
+| [Batchgewijs testen][batch-testing]| 10 gegevenssets, 1000 uitingen per gegevensset|
+| Expliciete lijst | 50 per aanvraag|
+| Externe entiteiten | geen grenzen |
+| [Intents][intents]|500 per toepassing: 499 aangepaste intents en de vereiste _Geen_ intentie.<br>[Dispatch-gebaseerde](https://aka.ms/dispatch-tool) toepassing heeft overeenkomstige 500 verzendbronnen.|
+| [Entiteiten vermelden](./luis-concept-entity-types.md) | Ouder: 50, kind: 20.000 items. Canonieke naam is *standaardteken max. Synoniemwaarden hebben geen lengtebeperking. |
+| [Machine-geleerde entiteiten + rollen:](./luis-concept-entity-types.md)<br> Samengestelde<br>Eenvoudige<br>entiteitsrol|Een limiet van 100 bovenliggende entiteiten of 330 entiteiten, welke limiet de gebruiker het eerst bereikt. Een rol telt als een entiteit voor het doel van deze grens. Een voorbeeld is een compositie met een eenvoudige entiteit, die 2 rollen heeft is: 1 composiet + 1 eenvoudige + 2 rollen = 4 van de 330 entiteiten.<br>Subcomponenten kunnen tot 5 niveaus worden genest.|
+|Model als functie| Maximaal aantal modellen dat kan worden gebruikt als beschrijving (functie) voor een specifiek model om 10 modellen te zijn. Het maximum aantal woordgroeplijsten dat als beschrijving (functie) wordt gebruikt voor een specifiek model als 10 woordgroeplijsten.|
+| [Voorbeeld - Dynamische lijstentiteiten](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 lijsten van ~ 1k per query voorspelling eindpunt aanvraag|
+| [Patronen](luis-concept-patterns.md)|500 patronen per toepassing.<br>Maximale lengte van het patroon is 400 tekens.<br>3 Patroon.alle entiteiten per patroon<br>Maximaal 2 geneste optionele teksten in patroon|
+| [Patroon.elk](./luis-concept-entity-types.md)|100 per toepassing, 3 patroon.alle entiteiten per patroon |
+| [Lijst met zinnen][phrase-list]|500 zinnenlijsten. Niet-verwisselbare phraselist heeft max van 5.000 zinnen. Verwisselbare Phraselist heeft maximaal 50.000 zinnen. Maximum aantal zinnen per toepassing van 500.000 zinnen.|
+| [Vooraf gebouwde entiteiten](./luis-prebuilt-entities.md) | geen limiet|
+| [Entiteiten in de vorm van reguliere expressies](./luis-concept-entity-types.md)|20 entiteiten<br>500 karakter max. per entiteitspatroon voor reguliere expressies|
 | [Rollen](luis-concept-roles.md)|300 rollen per toepassing. 10 rollen per entiteit|
-| [Utterance][utterances] | 500 tekens bevatten|
-| [Uitingen][utterances] | 15.000 per toepassing: er is geen limiet voor het aantal uitingen per intentie|
-| [Lager](luis-concept-version.md)| 100 versies per toepassing |
-| [Versie naam][luis-how-to-manage-versions] | beperkt tot alleen alfanumerieke tekens en periode 10 tekens (.) |
+| [Utterance][utterances] | 500 tekens|
+| [Utterances][utterances] | 15.000 per toepassing - er is geen limiet aan het aantal uitingen per intentie|
+| [Versies](luis-concept-version.md)| 100 versies per toepassing |
+| [Versienaam][luis-how-to-manage-versions] | 10 tekens beperkt tot alfanumerieke en periode (.) |
 
-\* Standaard teken maximaal is 50 tekens.
+*Standaardteken max is 50 tekens.
 
 <a name="intent-and-entity-naming"></a>
 
-## <a name="name-uniqueness"></a>Unieke naam
+## <a name="name-uniqueness"></a>Naam uniciteit
 
-Gebruik de volgende naamgevings regels voor uniekheid.
+Gebruik de volgende naamuniciteitsregels.
 
-Het volgende moet uniek zijn in een LUIS-app:
+In een LUIS-app moet het volgende uniek zijn:
 
-* Versie naam
-* bedoeling
-* entiteit
+* versienaam
+* Bedoeling
+* Entiteit
 * rolls
 
-Het volgende moet uniek zijn binnen het bereik dat wordt toegepast:
+Binnen het toegepaste toepassingsgebied moeten de volgende vermeldingen uniek zijn:
 
-* woordgroepen lijst
+* woordenlijst
 
-## <a name="object-naming"></a>Naamgeving van objecten
+## <a name="object-naming"></a>Objectnaamgeving
 
-Gebruik niet de volgende tekens in de volgende namen.
+Gebruik de volgende tekens niet in de volgende namen.
 
 |Object|Tekens uitsluiten|
 |--|--|
-|De namen van intentie, entiteit en rollen|`:`<br>`$` <br> `&`|
-|Versie naam|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
+|Intentie-, entiteits- en rolnamen|`:`<br>`$` <br> `&`|
+|Versienaam|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
 ## <a name="key-usage"></a>Sleutelgebruik
 
-Taal kennis heeft afzonderlijke sleutels, één type voor ontwerpen en één type voor het uitvoeren van query's op het Voorspellings eindpunt. Zie voor meer informatie over de verschillen tussen sleutel typen [ontwerpen en query prediction-eindpunt sleutels in Luis](luis-concept-keys.md).
+Language Understand heeft afzonderlijke toetsen, één type voor het ontwerpen en één type voor het opvragen van het voorspellingseindpunt. Zie [Eindpuntsleutels voor ontwerp- en queryvoorspelling in LUIS](luis-concept-keys.md)voor meer informatie over de verschillen tussen sleuteltypen.
 
 <a name="key-limits"></a>
 
-## <a name="resource-key-limits"></a>Limieten voor de resource sleutel
+## <a name="resource-key-limits"></a>Limieten voor resourcesleutels
 
-De resource sleutels hebben verschillende limieten voor ontwerpen en eind punten. De eindpunt sleutel van de LUIS-Voorspellings query is alleen geldig voor eindpunt query's.
+De resourcesleutels hebben verschillende limieten voor het ontwerpen en eindpunt. De eindpuntsleutel luis-voorspellingsquery is alleen geldig voor eindpuntquery's.
 
-* 500-toepassingen per Azure-ontwerp bron
+* 500 toepassingen per Azure-ontwerpbron
 
 |Sleutel|Ontwerpen|Eindpunt|Doel|
 |--|--|--|--|
-|Starter|1 miljoen/maand, 5 per seconde|1-1000/maand, 5 per seconde|Uw LUIS-app ontwerpen|
-|F0-gratis laag |1 miljoen/maand, 5 per seconde|10 duizend/maand, 5 per seconde|Uitvoeren van query's uw LUIS-eindpunt|
-|S0-Basic-laag|-|50 per seconde|Uitvoeren van query's uw LUIS-eindpunt|
-|S0-Standard-laag|-|50 per seconde|Uitvoeren van query's uw LUIS-eindpunt|
-|[Integratie van sentiment-analyse](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|Het toevoegen van sentiment-informatie, inclusief sleutel woordgroepen gegevens extractie, wordt verstrekt zonder dat er een andere Azure-resource nodig is. |
-|[Spraak integratie](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|1000 eindpunt aanvragen per eenheids kosten|Gesproken utterance converteren naar tekst utterance en LUIS resultaten geretourneerd|
+|Starter|1 miljoen/maand, 5/seconde|1 duizend/maand, 5/seconde|Uw LUIS-app ontwerpen|
+|F0 - Gratis laag |1 miljoen/maand, 5/seconde|10 duizend/maand, 5/seconde|Uw LUIS-eindpunt opvragen|
+|S0 - Basislaag|-|50/seconde|Uw LUIS-eindpunt opvragen|
+|S0 - Standaardlaag|-|50/seconde|Uw LUIS-eindpunt opvragen|
+|[Sentimentanalyse integratie](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|Het toevoegen van sentimentsinformatie, waaronder gegevensextractie met sleutelzin, wordt geleverd zonder dat er nog een Azure-bron nodig is. |
+|[Spraakintegratie](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|1 duizend eindpuntaanvragen per kostenper eenheid|Gesproken utterance converteren naar tekstuiting en LUIS-resultaten retourneren|
 
 [Meer informatie over prijzen.][pricing]
 
-## <a name="keyboard-controls"></a>Toetsenbord
+## <a name="keyboard-controls"></a>Toetsenbordbesturingselementen
 
 |Toetsenbordinvoer | Beschrijving |
 |--|--|
-|Besturingselement + E|Hiermee schakelt u tussen tokens en entiteiten in de lijst met uitingen|
+|Control+E|schakelt tussen tokens en entiteiten op de lijst met uitingen|
 
-## <a name="website-sign-in-time-period"></a>Tijds periode website aanmelding
+## <a name="website-sign-in-time-period"></a>Aanmeldingsperiode voor website
 
-Uw aanmeldings toegang is **60 minuten**. Na deze periode ontvangt u deze fout. U moet zich opnieuw aanmelden.
+Uw aanmeldingstoegang duurt **60 minuten.** Na deze periode krijgt u deze fout. Je moet je opnieuw aanmelden.
 
 [luis-get-started-create-app]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app
 [batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-test#batch-testing

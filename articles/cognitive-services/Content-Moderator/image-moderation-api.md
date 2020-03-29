@@ -1,7 +1,7 @@
 ---
-title: Afbeeldings toezicht-Content Moderator
+title: Image Moderation - Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Gebruik Content Moderator de door de machine gesteunde afbeeldings controle en het hulp programma voor het inchecken van de werk nemer naar gematige installatie kopieën voor inhoud voor volwassenen en ongepaste.
+description: Gebruik de machine-ondersteunde beeldmoderatie en human-in-the-loop Review-tool van Content Moderator om afbeeldingen te modereren voor inhoud voor volwassenen en racy.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 6d419135a1da68d23689f66d3134a638d71a3eab
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73044100"
 ---
-# <a name="learn-image-moderation-concepts"></a>Concepten van afbeeldings toezicht leren
+# <a name="learn-image-moderation-concepts"></a>Concepten voor beeldbeheer leren
 
-Gebruik Content Moderator de door de machine gesteunde afbeeldings [controle en het hulp programma voor het](Review-Tool-User-Guide/human-in-the-loop.md) inchecken van de werk nemer naar gematige installatie kopieën voor inhoud voor volwassenen en ongepaste. Afbeeldingen scannen voor tekst inhoud en deze tekst uitpakken en gezichten detecteren. U kunt afbeeldingen afstemmen op aangepaste lijsten en verdere actie ondernemen.
+Gebruik de machine-ondersteunde beeldmoderatie en [human-in-the-loop Review-tool van](Review-Tool-User-Guide/human-in-the-loop.md) Content Moderator om afbeeldingen te modereren voor inhoud voor volwassenen en racy. Scan afbeeldingen op tekstinhoud en extraheer die tekst en detecteer gezichten. U afbeeldingen koppelen aan aangepaste lijsten en verdere actie ondernemen.
 
-## <a name="evaluating-for-adult-and-racy-content"></a>Beoordeling voor inhoud voor volwassenen en ongepaste
+## <a name="evaluating-for-adult-and-racy-content"></a>Evalueren voor inhoud voor volwassenen en racy
 
-Met de bewerking **evalueren** wordt een betrouwbaarheids Score geretourneerd tussen 0 en 1. Ook worden Boole-gegevens geretourneerd die gelijk zijn aan True of false. Met deze waarden wordt voor speld dat de afbeelding potentiële inhoud voor volwassenen of ongepaste bevat. Wanneer u de API aanroept met uw installatie kopie (bestand of URL), bevat het geretourneerde antwoord de volgende informatie:
+Met de bewerking **Evalueren** wordt een vertrouwensscore tussen 0 en 1 geretourneerd. Het retourneert ook booleaanse gegevens gelijk aan waar of onwaar. Deze waarden voorspellen of de afbeelding potentiële inhoud voor volwassenen of racy bevat. Wanneer u de API aanroept met uw afbeelding (bestand of URL), bevat het geretourneerde antwoord de volgende informatie:
 
     "ImageModeration": {
       .............
@@ -38,18 +38,18 @@ Met de bewerking **evalueren** wordt een betrouwbaarheids Score geretourneerd tu
 > 
 > - `isImageAdultClassified` geeft de mogelijke aanwezigheid weer van afbeeldingen die in bepaalde situaties als seksueel expliciet of erotisch kunnen worden beschouwd.
 > - `isImageRacyClassified` geeft de mogelijke aanwezigheid weer van afbeeldingen die in bepaalde situaties als suggestief of voor volwassenen kunnen worden beschouwd.
-> - De scores liggen tussen 0 en 1. Hoe hoger de score, hoe hoger het model is om te voors pellen dat de categorie van toepassing kan zijn. Dit voor beeld is afhankelijk van een statistisch model in plaats van hand matige gecodeerde resultaten. We raden u aan om te testen met uw eigen inhoud om te bepalen hoe elke categorie wordt uitgelijnd op uw vereisten.
-> - De Booleaanse waarden zijn waar of onwaar, afhankelijk van de drempel waarden van de interne Score. Klanten moeten beoordelen of u deze waarde moet gebruiken of besluiten over aangepaste drempel waarden op basis van hun inhouds beleid.
+> - De scores liggen tussen 0 en 1. Hoe hoger de score, hoe hoger het model voorspelt dat de categorie van toepassing kan zijn. Deze preview is gebaseerd op een statistisch model in plaats van handmatig gecodeerde resultaten. We raden u aan te testen met uw eigen inhoud om te bepalen hoe elke categorie aansluit bij uw vereisten.
+> - De booleaanse waarden zijn waar of onwaar, afhankelijk van de interne scoredrempels. Klanten moeten beoordelen of ze deze waarde moeten gebruiken of aangepaste drempels moeten bepalen op basis van hun inhoudsbeleid.
 
-## <a name="detecting-text-with-optical-character-recognition-ocr"></a>Tekst detecteren met optische teken herkenning (OCR)
+## <a name="detecting-text-with-optical-character-recognition-ocr"></a>Tekst detecteren met ocr (Optical Character Recognition)
 
-De **optische teken herkenning (OCR)-** bewerking voor spelt de aanwezigheid van tekst inhoud in een afbeelding en extraheert deze voor tekst toezicht, onder andere gebruikt. U kunt de taal opgeven. Als u geen taal opgeeft, wordt de detectie standaard ingesteld op Engels.
+De operatie **Optical Character Recognition (OCR)** voorspelt de aanwezigheid van tekstinhoud in een afbeelding en extraheert deze onder andere voor tekstmatiging. U de taal opgeven. Als u geen taal opgeeft, wordt de detectie standaard weergegeven in het Engels.
 
 Het antwoord bevat de volgende informatie:
 - De oorspronkelijke tekst.
-- De gedetecteerde tekst elementen met hun betrouwbaarheids scores.
+- De gedetecteerde tekstelementen met hun betrouwbaarheidsscores.
 
-Voor beeld extractie:
+Voorbeelduittreksel:
 
     "TextDetection": {
       "status": {
@@ -66,14 +66,14 @@ Voor beeld extractie:
 
 ## <a name="detecting-faces"></a>Gezichten detecteren
 
-Het detecteren van gezichten helpt bij het detecteren van persoons gegevens, zoals gezichten in de installatie kopieën. U detecteert mogelijke gezichten en het aantal mogelijke gezichten in elke afbeelding.
+Het detecteren van gezichten helpt bij het detecteren van persoonlijke gegevens, zoals gezichten in de afbeeldingen. U detecteert potentiële gezichten en het aantal potentiële gezichten in elke afbeelding.
 
-Een antwoord bevat de volgende informatie:
+Een antwoord bevat deze informatie:
 
-- Aantal gezichten
-- Lijst met locaties van gezichten gedetecteerd
+- Gezichten tellen
+- Lijst met gedetecteerde gezichten
 
-Voor beeld extractie:
+Voorbeelduittreksel:
 
 
     "FaceDetection": {
@@ -101,28 +101,28 @@ Voor beeld extractie:
 
 ## <a name="creating-and-managing-custom-lists"></a>Aangepaste lijsten maken en beheren
 
-Na het uploaden van een installatie kopie of ander type inhoud, kunnen aanstootgevende items in veel online community's meerdere keren worden gedeeld gedurende de volgende dagen, weken en maanden. De kosten voor het herhaaldelijk scannen en filteren van dezelfde afbeelding of zelfs gewijzigde versies van de afbeelding vanaf meerdere locaties kunnen duur en fout gevoelig zijn.
+In veel online community's kunnen aanstootgevende items meerdere keren worden gedeeld in de volgende dagen, weken en maanden nadat gebruikers afbeeldingen of andere soorten inhoud hebben geüpload. De kosten van het herhaaldelijk scannen en filteren van dezelfde afbeelding of zelfs licht gewijzigde versies van de afbeelding op meerdere plaatsen kunnen duur en foutgevoelig zijn.
 
-In plaats van dezelfde installatie kopie meermaals te gebruiken, voegt u de aanstootgevende installatie kopieën toe aan uw aangepaste lijst met geblokkeerde inhoud. Op die manier vergelijkt uw systeem voor content toezicht inkomende installatie kopieën met uw aangepaste lijsten en stopt verdere verwerking.
+In plaats van dezelfde afbeelding meerdere keren te modereren, voegt u de aanstootgevende afbeeldingen toe aan uw aangepaste lijst met geblokkeerde inhoud. Op die manier vergelijkt uw contentmoderatiesysteem binnenkomende afbeeldingen met uw aangepaste lijsten en stopt u verdere verwerking.
 
 > [!NOTE]
 > Er is een maximumlimiet van **5 afbeeldingslijsten** waarbij elke lijst **niet meer dan 10.000 afbeeldingen mag bevatten**.
 >
 
-De Content Moderator biedt een volledige [lijst beheer-API voor installatie kopieën](try-image-list-api.md) met bewerkingen voor het beheren van lijsten met aangepaste installatie kopieën. Begin met de [lijst met installatie kopieën](try-image-list-api.md) van de API-console en gebruik de rest API code voorbeelden. Bekijk ook de [lijst met installatie kopieën .net Quick](image-lists-quickstart-dotnet.md) start als u bekend bent met Visual C#Studio en.
+De Inhoudsmoderator biedt een complete [API voor het beheer](try-image-list-api.md) van afbeeldingen met bewerkingen voor het beheren van lijsten met aangepaste afbeeldingen. Begin met de [API-console voor afbeeldingslijsten](try-image-list-api.md) en gebruik de monsters van de REST API-code. Bekijk ook de [afbeeldingslijst .NET snelstart](image-lists-quickstart-dotnet.md) als u bekend bent met Visual Studio en C#.
 
-## <a name="matching-against-your-custom-lists"></a>Vergelijken met uw aangepaste lijsten
+## <a name="matching-against-your-custom-lists"></a>Overeenkomen met uw aangepaste lijsten
 
-Met de bewerking match kunt u het gebruik van de bewerkingen in de lijst opwaarderen voor een wille keurige, door u gemaakte en beheerde installatie kopieën.
+Met de bewerking Match u inkomende afbeeldingen op een vage manier afstemmen op een van uw aangepaste lijsten, die zijn gemaakt en beheerd met behulp van de bewerkingen Lijst.
 
-Als er een overeenkomst wordt gevonden, retourneert de bewerking de id en de moderator Tags van de overeenkomende afbeelding. Het antwoord bevat de volgende informatie:
+Als er een overeenkomst wordt gevonden, retourneert de bewerking de id en de moderatietags van de overeenkomende afbeelding. Het antwoord bevat deze informatie:
 
-- Overeenkomende Score (tussen 0 en 1)
-- Overeenkomende afbeelding
-- Afbeeldings Tags (toegewezen tijdens vorige toezicht)
-- Afbeeldings labels
+- Wedstrijdscore (tussen 0 en 1)
+- Gematchte afbeelding
+- Afbeeldingstags (toegewezen tijdens eerdere moderatie)
+- Afbeeldingslabels
 
-Voor beeld extractie:
+Voorbeelduittreksel:
 
     {
     ..............,
@@ -141,10 +141,10 @@ Voor beeld extractie:
 
 ## <a name="human-review-tool"></a>Programma voor menselijke beoordeling
 
-Gebruik het [hulp programma content moderator beoordeling](Review-Tool-User-Guide/human-in-the-loop.md) en de bijbehorende API om de controle resultaten en-inhoud in de beoordeling voor uw menselijke moderators te laten weer geven. Ze bekijken de door de machine toegewezen tags en bevestigen hun definitieve beslissingen.
+Voor meer genuanceerde gevallen gebruikt u de [beoordelingstool](Review-Tool-User-Guide/human-in-the-loop.md) Voor inhoudsmoderator en de API om de moderatieresultaten en -inhoud in de beoordeling voor uw menselijke moderators weer te geven. Ze bekijken de door machines toegewezen tags en bevestigen hun definitieve beslissingen.
 
-![Beoordeling van afbeeldingen voor menselijke moderators](images/moderation-reviews-quickstart-dotnet.PNG)
+![Beoordeling van afbeelding voor menselijke beoordelaars](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Test de [API-console voor Image toezicht](try-image-api.md) en gebruik de rest API code voorbeelden. Bekijk ook de sectie afbeeldings toezicht van de [.NET SDK Quick](dotnet-sdk-quickstart.md) start als u bekend bent met Visual Studio en C#.
+Test station de [Image Moderation API-console](try-image-api.md) en gebruik de REST API-code samples. Bekijk ook de sectie Beeldmatiging van de [.NET SDK snelstart](dotnet-sdk-quickstart.md) als u bekend bent met Visual Studio en C#.

@@ -1,7 +1,7 @@
 ---
-title: Type samengestelde entiteit-LUIS
+title: Samengesteld entiteitstype - LUIS
 titleSuffix: Azure Cognitive Services
-description: Een samengestelde entiteit bestaat uit andere entiteiten, zoals vooraf gebouwde entiteiten, eenvoudige, reguliere expressies en lijst entiteiten. De afzonderlijke entiteiten vormen een hele entiteit.
+description: Een samengestelde entiteit bestaat uit andere entiteiten, zoals vooraf gebouwde entiteiten, eenvoudige, reguliere expressie en lijstentiteiten. De afzonderlijke entiteiten vormen een hele entiteit.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,39 +11,39 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71695157"
 ---
 # <a name="composite-entity"></a>Samengestelde entiteit 
 
-Een samengestelde entiteit bestaat uit andere entiteiten, zoals vooraf gebouwde entiteiten, eenvoudige, reguliere expressies en lijst entiteiten. De afzonderlijke entiteiten vormen een hele entiteit. 
+Een samengestelde entiteit bestaat uit andere entiteiten, zoals vooraf gebouwde entiteiten, eenvoudige, reguliere expressie en lijstentiteiten. De afzonderlijke entiteiten vormen een hele entiteit. 
 
-**Deze entiteit is geschikt voor de volgende gegevens:**
+**Deze entiteit past goed bij de gegevens:**
 
-* Aan elkaar zijn gerelateerd. 
+* Zijn met elkaar verbonden. 
 * Ze zijn aan elkaar gerelateerd in de context van de utterance.
-* Verschillende Entiteitstypen gebruiken.
-* Moeten worden gegroepeerd en verwerkt door de client toepassing als een gegevens eenheid.
-* Hebben een aantal uitingen voor gebruikers die machine learning nodig hebben.
+* Gebruik verschillende entiteitstypen.
+* Moeten worden gegroepeerd en verwerkt door de clientapplicatie als een eenheid van informatie.
+* Hebben een verscheidenheid van gebruiker uitingen die machine-learning vereisen.
 
-![Samengestelde entiteit](./media/luis-concept-entities/composite-entity.png)
+![samengestelde entiteit](./media/luis-concept-entities/composite-entity.png)
 
-## <a name="example-json"></a>Voorbeeld van JSON
+## <a name="example-json"></a>Voorbeeld JSON
 
-Overweeg een samengestelde entiteit van vooraf gemaakte `number` en `Location::ToLocation` met de volgende utterance:
+Overweeg een samengestelde entiteit `number` `Location::ToLocation` van vooraf gebouwde en met de volgende uiting:
 
 `book 2 tickets to cairo`
 
-U ziet dat `2`, het aantal en `cairo`, de ToLocation woorden tussen deze die geen deel uitmaken van een van de entiteiten hebben. De groene lijn, gebruikt in een gelabelde utterance in de [LUIS](luis-reference-regions.md) -website geeft aan dat een samengestelde entiteit.
+Merk `2`op dat , `cairo`het nummer, en , de ToLocation hebben woorden tussen hen die geen deel uitmaken van een van de entiteiten. De groene onderstreping, gebruikt in een gelabelde utterance op de [LUIS-website,](luis-reference-regions.md) geeft een samengestelde entiteit aan.
 
 ![Samengestelde entiteit](./media/luis-concept-data-extraction/composite-entity.png)
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 voorspelling eindpuntrespons](#tab/V2)
 
-Samengestelde entiteiten worden geretourneerd in een `compositeEntities` matrix en alle entiteiten in de samengestelde worden ook weergegeven in de `entities` matrix:
+Samengestelde entiteiten worden `compositeEntities` geretourneerd in een array en alle entiteiten binnen de samengestelde worden ook geretourneerd in de `entities` array:
 
 ```JSON
   "entities": [
@@ -89,9 +89,9 @@ Samengestelde entiteiten worden geretourneerd in een `compositeEntities` matrix 
   ]
 ```    
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 voorspelling eindpuntrespons](#tab/V3)
 
-Dit is de JSON als `verbose=false` is ingesteld in de query reeks:
+Dit is de `verbose=false` JSON als deze is ingesteld in de querytekenreeks:
 
 ```json
 "entities": {
@@ -108,7 +108,7 @@ Dit is de JSON als `verbose=false` is ingesteld in de query reeks:
 }
 ```
 
-Dit is de JSON als `verbose=true` is ingesteld in de query reeks:
+Dit is de `verbose=true` JSON als deze is ingesteld in de querytekenreeks:
 
 ```json
 "entities": {
@@ -172,11 +172,11 @@ Dit is de JSON als `verbose=true` is ingesteld in de query reeks:
 * * * 
 
 
-|Data-object|De naam van de entiteit|Waarde|
+|Gegevensobject|Entiteitsnaam|Waarde|
 |--|--|--|
-|Vooraf gedefinieerde entiteit - nummer|"builtin.number"|"2"|
-|Preconstrueerde entiteit-GeographyV2|"Location::ToLocation"|Cairo|
+|Vooraf gebouwde entiteit - getal|"builtin.nummer"|"2"|
+|Voorgebouwde entiteit - GeografieV2|"Locatie::ToLocation"|"Caïro"|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze [zelf studie](luis-tutorial-composite-entity.md)voegt u een **samengestelde entiteit** toe om geëxtraheerde gegevens van verschillende typen te bundelen in één container met een entiteit. De clienttoepassing kan door de gegevens bundeling, gerelateerde gegevens in verschillende gegevenstypen eenvoudig extraheren.
+Voeg in deze [zelfstudie](luis-tutorial-composite-entity.md)een **samengestelde entiteit** toe om geëxtraheerde gegevens van verschillende typen te bundelen in één bevattende entiteit. Door de gegevens te bundelen, kan de clientapplicatie eenvoudig gerelateerde gegevens in verschillende gegevenstypen extraheren.

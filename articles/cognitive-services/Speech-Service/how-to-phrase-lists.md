@@ -1,7 +1,7 @@
 ---
-title: Woordgroepen lijsten-spraak service
+title: Woordgroeplijsten - Spraakservice
 titleSuffix: Azure Cognitive Services
-description: Informatie over het leveren van de speech-service met een woordgroepen lijst met behulp van het `PhraseListGrammar`-object om de resultaten van spraak-naar-tekst herkenning te verbeteren.
+description: Meer informatie over het leveren van de `PhraseListGrammar` spraakservice met een woordgroeplijst met het object om de resultaten van spraak-naar-tekstherkenning te verbeteren.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,26 +12,26 @@ ms.date: 02/04/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: f84ea6b2b0f1e8246e1d765e54f663cd01f29b1d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77560844"
 ---
-# <a name="phrase-lists-for-speech-to-text"></a>Woordgroepen lijsten voor spraak naar tekst
+# <a name="phrase-lists-for-speech-to-text"></a>Woordlijsten voor spraak-naar-tekst
 
-Door de spraak service een lijst met zinsdelen te bieden, kunt u de nauw keurigheid van spraak herkenning verbeteren. Woordgroepen lijsten worden gebruikt voor het identificeren van bekende woord groepen in audio gegevens, zoals de naam van een persoon of een specifieke locatie.
+Door de Spraakservice een lijst met zinnen te geven, u de nauwkeurigheid van spraakherkenning verbeteren. Woordgroeplijsten worden gebruikt om bekende zinnen in audiogegevens te identificeren, zoals de naam van een persoon of een specifieke locatie.
 
-Als u bijvoorbeeld een opdracht ' verplaatsen naar ' en een mogelijke bestemming van ' naar onder ' hebt, kunt u een vermelding van ' verplaatsen naar binnen ' toevoegen. Als u een woord groep toevoegt, wordt de kans groter dat wanneer de audio wordt herkend dat ' naar binnen verplaatsen ' wordt herkend.
+Als u bijvoorbeeld een opdracht 'Verplaatsen naar' en een mogelijke bestemming van 'Ward' hebt die kan worden gesproken, u een vermelding toevoegen van 'Verplaatsen naar afdeling'. Het toevoegen van een zin verhoogt de kans dat wanneer de audio wordt herkend, 'Naar Ward' wordt herkend in plaats van 'Naar toe gaan'.
 
-Enkele woorden of volledige woord groepen kunnen worden toegevoegd aan een woordgroepen lijst. Tijdens de herkenning wordt een vermelding in een woordgroepen lijst gebruikt als een exacte overeenkomst voor de hele woord groep wordt opgenomen in de audio als een afzonderlijke woord groep. Als een exacte overeenkomst met de zin niet wordt gevonden, wordt de herkenning niet ondersteund.
+Enkele woorden of volledige woordgroepen kunnen worden toegevoegd aan een woordgroeplijst. Tijdens de herkenning wordt een vermelding in een woordenlijst gebruikt als een exacte overeenkomst voor de hele zin in de audio wordt opgenomen als een afzonderlijke woordgroep. Als er geen exacte overeenkomst wordt gevonden met de woordgroep, wordt de herkenning niet ondersteund.
 
 >[!Note]
-> Op dit moment ondersteunt een woordgroepen lijst alleen het Engels voor spraak naar tekst.
+> Op dit moment ondersteunt Woordgroeplijsten alleen Engels voor spraak-naar-tekst.
 
-## <a name="how-to-use-phrase-lists"></a>Woordgroepen lijsten gebruiken
+## <a name="how-to-use-phrase-lists"></a>Woordlijsten gebruiken
 
-In de onderstaande voor beelden ziet u hoe u een woordgroepen lijst maakt met behulp van het `PhraseListGrammar`-object.
+In de onderstaande voorbeelden is te `PhraseListGrammar` zien hoe u een woordgroeplijst maken met behulp van het object.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -89,9 +89,9 @@ phraseListGrammar.addPhrase("Move to Ted");
 ::: zone-end
 
 >[!Note]
-> Het maximum aantal woordgroepen lijsten dat door de spraak service wordt gebruikt om te voldoen aan spraak is 1024 zinsdelen.
+> Het maximum aantal woordgroeplijsten dat de spraakservice gebruikt om spraak te matchen, is 1024 zinnen.
 
-U kunt ook de zinsdelen wissen die zijn gekoppeld aan de `PhraseListGrammar` door Clear () aan te roepen.
+U ook de zinnen `PhraseListGrammar` wissen die aan de door duidelijke aanroepen() zijn gekoppeld.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -134,8 +134,8 @@ phraseListGrammar.clear();
 ::: zone-end
 
 > [!NOTE]
-> Wijzigingen in een `PhraseListGrammar`-object worden van kracht bij de volgende herkenning of na het opnieuw verbinden met de spraak service.
+> Wijzigingen in `PhraseListGrammar` een object worden van kracht op de volgende herkenning of na een heraansluiting met de spraakservice.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Naslag documentatie voor Speech SDK](speech-sdk.md)
+* [SpraakSDK-referentiedocumentatie](speech-sdk.md)

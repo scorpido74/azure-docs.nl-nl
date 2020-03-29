@@ -1,7 +1,7 @@
 ---
-title: Stream-codec gecomprimeerde audio met de Speech SDK-Speech-Service
+title: Codec gecomprimeerde audio streamen met de SpraakSDK - Spraakservice
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het streamen van gecomprimeerde audio naar de speech-service met de spraak-SDK. Beschikbaar voor C++, C#en Java voor Linux, java in Android en objectief-C in Ios.
+description: Meer informatie over het streamen van gecomprimeerde audio naar de spraakservice met de SpraakSDK. Beschikbaar voor C++, C#en Java voor Linux, Java in Android en Objective-C in iOS.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -12,19 +12,19 @@ ms.date: 03/09/2020
 ms.author: amishu
 zone_pivot_groups: programming-languages-set-twelve
 ms.openlocfilehash: 3fab02d3dc567a2c54edad5bfb05abe7d99f7b7c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943814"
 ---
-# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Gecomprimeerde audio-invoer van codec gebruiken met de spraak-SDK
+# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Codec gecomprimeerde audio-invoer gebruiken met de SpraakSDK
 
-De Speech Service SDK **gecomprimeerde audio input stream** API biedt een manier om gecomprimeerde audio naar de spraak service te streamen met behulp van een `PullStream` of `PushStream`.
+De Spraakservice SDK **Compressed Audio Input Stream** API biedt een manier om `PullStream` `PushStream`gecomprimeerde audio naar de spraakservice te streamen met behulp van a of .
 
 > [!IMPORTANT]
-> Streaming gecomprimeerde invoer audio wordt momenteel ondersteund voor C#, C++Java op Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8). Het wordt ook ondersteund voor java in Android en objectief-C in iOS-platform.
-> Speech SDK-versie 1.7.0 of hoger is vereist (versie 1.10.0 of hoger voor RHEL 8, CentOS 8).
+> Streaming compressed input audio wordt momenteel ondersteund voor C#, C++, Java op Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8). Het wordt ook ondersteund voor Java in Android en Objective-C in iOS-platform.
+> Spraak SDK versie 1.7.0 of hoger is vereist (versie 1.10.0 of hoger voor RHEL 8, CentOS 8).
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
@@ -46,7 +46,7 @@ De Speech Service SDK **gecomprimeerde audio input stream** API biedt een manier
 [!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/objectivec/prerequisites.md)]
 ::: zone-end
 
-## <a name="example-code-using-codec-compressed-audio-input"></a>Voorbeeld code met behulp van gecomprimeerde audio-invoer van de codec
+## <a name="example-code-using-codec-compressed-audio-input"></a>Voorbeeldcode met codec gecomprimeerde audio-invoer
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/csharp/examples.md)]

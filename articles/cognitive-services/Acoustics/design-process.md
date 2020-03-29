@@ -1,7 +1,7 @@
 ---
 title: Ontwerpconcepten met akoestische simulatie
 titlesuffix: Azure Cognitive Services
-description: In dit Conceptueel overzicht wordt uitgelegd hoe de geluids simulatie in Project akoestische wordt opgenomen in het ontwerp proces.
+description: Dit conceptuele overzicht legt uit hoe Project Acoustics akoestische simulatie verwerkt in het geluidsontwerpproces.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,55 +12,55 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 11e1e3f45b5198ddedb6c31fcd354185adef445d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68854295"
 ---
-# <a name="project-acoustics-design-process-concepts"></a>Concepten van het ontwerp proces voor project akoestische
+# <a name="project-acoustics-design-process-concepts"></a>Project Acoustics Ontwerp procesconcepten
 
-In dit conceptuele overzicht wordt uitgelegd hoe project akoestische een fysieke akoestische simulatie in het ontwerp proces van het geluid indeelt.
+Dit conceptuele overzicht legt uit hoe Project Acoustics fysieke akoestische simulatie verwerkt in het geluidsontwerpproces.
 
-## <a name="sound-design-with-audio-dsp-parameters"></a>Geluids ontwerp met audio-DSP-para meters
+## <a name="sound-design-with-audio-dsp-parameters"></a>Geluidsontwerp met audio-DSP-parameters
 
-met 3D-interactieve titels krijgt u een bepaald geluid met behulp van DSP-blokken (audio Digital signalering processing) die worden gehost in een audio-engine. Deze blokken variëren in complexiteit van eenvoudig mengen, reverberation, ECHO, vertraging, egaliseren, compressie en beperking en andere effecten. Het selecteren, rangschikken en instellen van para meters voor deze effecten is de verantwoordelijkheid van de ontwerper van het geluid, die een audio grafiek bouwt waarmee de esthetische en gameplay van de ervaring worden gerealiseerd.
+3D interactieve titels bereiken hun specifieke geluid met behulp van audio digitale signaal verwerking (DSP) blokken gehost in een audio-engine. Deze blokken variëren in complexiteit van eenvoudig mengen, tot nagalm, echo, vertraging, egalisatie, compressie en beperking, en andere effecten. Het selecteren, rangschikken en instellen van parameters op deze effecten is de verantwoordelijkheid van de geluidsontwerper, die een audiografiek bouwt die de esthetische en gameplay-doelen van de ervaring bereikt.
 
-Hoe kunnen de para meters worden aangepast aan veranderende voor waarden, terwijl de geluiden en de listener in de 3D-ruimte worden verplaatst in een interactieve titel? De ontwerper van het geluid rangschikt vaak volumes in de ruimte die zijn geprogrammeerd om parameter wijzigingen te activeren om wijzigingen in reverberation-effecten te bereiken, bijvoorbeeld of om geluiden in de mix te eenden wanneer de listener van het ene deel van de scène naar het andere gaat. Er zijn ook akoestische systemen beschikbaar waarmee sommige van deze effecten kunnen worden geautomatiseerd.
+Hoe passen deze parameters zich aan veranderende omstandigheden aan in een interactieve titel, terwijl de geluiden en de luisteraar door de 3D-ruimte bewegen? De geluidsontwerper zal vaak volumes in de ruimte ordenen die zijn geprogrammeerd om parameterwijzigingen te activeren om bijvoorbeeld veranderingen in nagalmeffecten te bereiken of om geluiden in de mix te ontwijken terwijl de luisteraar van het ene deel van de scène naar het andere gaat. Er zijn ook akoestieksystemen beschikbaar die sommige van deze effecten kunnen automatiseren.
 
-3D-titels gebruiken belichtings-en kinematische-fysieke systemen met een natuur kunde-oplossing, maar Designer zijn aangepast om een combi natie van de doel stellingen voor overleving en gameplay te bereiken. Een Visual Designer stelt geen afzonderlijke pixel waarden in, maar past in plaats daarvan 3D-modellen, materialen en licht transport systemen aan die allemaal fysiek zijn gebaseerd op het afhandelen van visuele vormgevingen en CPU-kosten. Wat is het equivalente proces voor audio? Project akoestische is een eerste stap bij het verkennen van deze vraag. Eerst gaan we in op wat het betekent om geluids energie door middel van een ruimte te transporteren.
+3D-titels maken gebruik van verlichting en kinematische fysica systemen die fysica-gemotiveerd, maar ontwerper-aangepast om een mix van onderdompeling en gameplay doelen te bereiken. Een visuele ontwerper stelt geen individuele pixelwaarden in, maar past 3D-modellen, materialen en lichttransportsystemen aan die allemaal fysiek zijn gebaseerd om visuele esthetiek en CPU-kosten af te zetten. Wat zou het gelijkwaardige proces voor audio? Project Acoustics is een eerste stap in de verkenning van deze vraag. Eerst zullen we ingaan op wat het betekent om akoestische energie te transporteren door een ruimte.
 
-![Scherm opname van AltSpacee scène met galm zones](media/reverb-zones-altspace.png)
+![Schermafbeelding van altspace-scène die is bedekt met reverb-zones](media/reverb-zones-altspace.png)
 
-## <a name="impulse-responses-acoustically-connecting-two-points-in-space"></a>Impulse-Reacties: Een akoestische verbinding maken tussen twee punten in de ruimte
+## <a name="impulse-responses-acoustically-connecting-two-points-in-space"></a>Impulsreacties: Akoestisch twee punten in de ruimte verbinden
 
-Als u vertrouwd bent met het ontwerpen van audio, is het mogelijk dat u bekend bent met akoestische Impulse-reacties. Een akoestische Impulse-respons modelt het Trans Port van een geluid van een bron naar een listener. Een Impulse-antwoord kan daarom elk interessant effect van room-akoestische, zoals bedekking en reverberation, vastleggen. Impulse-antwoorden hebben ook een aantal krachtige eigenschappen waarmee audio-DSP-effecten kunnen worden geschaald. Het toevoegen van twee audio signalen en het verwerken met een Impulse-antwoord geeft hetzelfde resultaat als het Toep assen van de Impulse-respons op elk signaal en het toevoegen van de resultaten. Akoestische-doorgifte en Impulse-antwoorden zijn ook niet afhankelijk van de audio die wordt verwerkt, alleen op de scène die wordt gemodelleerd en de locaties van de bron-en luister aars. Kortom, een Impulse-antwoord wordt het effect van de scène op de geluids doorgifte gedestilleerd.
+Als u bekend bent met audio-ontwerp, bent u mogelijk bekend met akoestische impulsreacties. Een akoestische impulsrespons modelleert het transport van een geluid van een bron naar een luisteraar. Daarom kan een impulsreactie elk interessant effect van ruimteakoestiek zoals occlusie en nagalm vangen. Impulsreacties hebben ook bepaalde krachtige eigenschappen waarmee audio-DSP-effecten kunnen worden geschaald. Het toevoegen van twee audiosignalen en verwerking met een impulsrespons geeft hetzelfde resultaat als het afzonderlijk toepassen van de impulsrespons op elk signaal en het toevoegen van de resultaten. Akoestische voortplanting en impulsreacties zijn ook niet afhankelijk van de audio die wordt verwerkt, alleen van de scène die wordt gemodelleerd en de bron- en listenerlocaties. Kortom, een impulsreactie destilleert het effect van de scène op de geluidsvoortplanting.
 
-Een Impulse-antwoord legt elke interessante ruimte geluids effect vast en we kunnen dit op efficiënte wijze Toep assen op audio met een filter, en wij kunnen Impulse-antwoorden van meting of simulatie ontvangen. Maar wat als we niet goed willen dat de akoestische gegevens precies overeenkomen met de fysieke fysica, maar dat ze niet echt overeenkomen met de emotioneel-vereisten van een scène? Net als bij pixel waarden is een Impulse-antwoord slechts een lijst met duizenden cijfers, hoe kan het mogelijk worden aangepast om aan esthetische behoeften te voldoen? En wat moet ik doen als we bedekking/obstructie willen hebben die vloeiend zijn tijdens het door lopen van slagen of achter de obstakels, hoe veel reacties van Impulse een glad effect hebben? Wat gebeurt er als de bron snel verloopt? Hoe gaan we interpoleeren?
+Een impulsrespons vangt elk interessant kamerakoestisch effect vast, en we kunnen het efficiënt toepassen op audio met een filter, en we kunnen impulsreacties krijgen van meting of simulatie. Maar wat als we niet willen dat de akoestiek precies bij de fysica past, maar het precies vormen om aan de emotionele eisen van een scène te voldoen? Maar net als pixelwaarden, een impulsreactie is slechts een lijst van duizenden nummers, hoe kunnen we eventueel aanpassen aan esthetische behoeften? En wat als we occlusie/ obstructie willen hebben die soepel varieert tijdens het passeren van deuropeningen of achter obstakels, hoeveel impulsreacties hebben we nodig om een soepel effect te krijgen? Wat als de bron snel beweegt? Hoe interpoleren we?
 
-Het klinkt moeilijk om simulatie-en Impulse-reacties te gebruiken voor bepaalde aspecten van akoestische in interactieve titels. Maar we kunnen nog steeds een audio transportsysteem bouwen dat ontwerp aanpassingen ondersteunt als we onze Impulse-reacties van simulatie kunnen verbinden met onze vertrouwde effecten parameters van de audio-DSP.
+Het klinkt moeilijk om simulatie en impulsreacties te gebruiken voor sommige aspecten van akoestiek in interactieve titels. Maar we kunnen nog steeds een audiotransportsysteem bouwen dat designeraanpassingen ondersteunt als we onze impulsreacties van simulatie kunnen verbinden met onze bekende audio DSP-effectparameters.
 
-## <a name="connecting-simulation-to-audio-dsp-with-parameters"></a>Simulatie koppelen aan audio-DSP met para meters
+## <a name="connecting-simulation-to-audio-dsp-with-parameters"></a>Simulatie verbinden met audio-DSP met parameters
 
-Een Impulse-antwoord bevat alle interessante (en alle oninteressante) akoestische effecten. Audio-DSP-blokken, wanneer hun para meters juist zijn ingesteld, kunnen een interessanter geluids effect weer geven. Het gebruik van akoestische simulatie om een audio-DSP-blok te maken voor het automatiseren van audio transport in een 3D-scène is slechts een kwestie van het meten van de audio DSP-para meters uit een Impulse-antwoord. Deze meting is duidelijk voor bepaalde algemene en belang rijke akoestische effecten, waaronder bedekking, obstructie, portaling en reverberation.
+Een impulsreactie bevat elk interessant (en elk oninteressant) akoestisch effect. Audio DSP blokken, wanneer hun parameters goed zijn ingesteld, kan interessante akoestische effect weer te geven. Het gebruik van akoestische simulatie om een audio DSP-blok te stimuleren om audiotransport in een 3D-scène te automatiseren, is slechts een kwestie van het meten van de audio-DSP-parameters vanuit een impulsrespons. Deze meting is goed begrepen voor bepaalde gemeenschappelijke en belangrijke akoestische effecten, waaronder occlusie, obstructie, portalen en nagalm.
 
-Maar als de simulatie direct is verbonden met de audio DSP-para meters, waar is de aanpassing van de ontwerp functie? Wat hebben we gewonnen? Het is ook mogelijk dat er een aanzienlijke hoeveelheid geheugen wordt vrijgemaakt door Impulse-reacties te verwijderen en enkele DSP-para meters te bewaren. En om de ontwerper enige stroom te geven over het uiteindelijke resultaat, hebben we alleen een manier nodig om de ontwerp functie tussen de simulatie en de audio-DSP in te voegen.
+Maar als de simulatie rechtstreeks is aangesloten op de audio-DSP parameters, waar is de ontwerper aanpassing? Wat hebben we binnen? Nou, we krijgen een aanzienlijke hoeveelheid geheugen terug door het weggooien van impulsreacties en het behoud van een paar DSP parameters. En om de ontwerper wat macht te geven over het eindresultaat, hoeven we alleen maar een manier te vinden om de ontwerper tussen de simulatie en de audio DSP in te voegen.
 
-![Grafiek met een stijlvol Impulse-antwoord met para meters die elkaar overlappen](media/acoustic-parameters.png)
+![Grafiek met gestileerde impulsreactie met parameters bedekt](media/acoustic-parameters.png)
 
-## <a name="sound-design-by-transforming-audio-dsp-parameters-from-simulation"></a>Geluids ontwerp door de audio DSP-para meters van simulatie te transformeren
+## <a name="sound-design-by-transforming-audio-dsp-parameters-from-simulation"></a>Geluidsontwerp door audio-DSP-parameters te transformeren uit simulatie
 
-Houd rekening met het effect dat uw zonnebril hebben op uw weer gave van de wereld. Op een heldere dag kunnen de glazen de kleur van het glanzende object verminderen. In een donkere kamer is het mogelijk dat u helemaal niets kunt zien. De glas plaat heeft in geen enkele situatie een bepaald niveau van helderheid ingesteld; ze maken alleen meer donkerder.
+Denk aan het effect dat uw zonnebril heeft op uw kijk op de wereld. Op een heldere dag kan de bril de glans reduceren tot iets comfortabelers. In een donkere kamer, zou je niet in staat zijn om iets te zien op alle. De bril stelt niet in alle situaties een bepaald helderheidsniveau in; ze maken alles donkerder.
 
-Als we simulatie gebruiken om onze audio-DSP te voorzien van bedekking-en reverberation-para meters, kunnen we een filter toevoegen na de Simulator om de para meters die de DSP ' ziet ' te wijzigen. Het filter dwingt niet een bepaald niveau van bedekking of een lengte van een galm af, ongeveer zoals zonnebril niet elke kamer dezelfde helderheid geven. Het filter maakt het mogelijk om elke occluder occlude minder te maken. Of occlude meer. Door het toevoegen en aanpassen van een filter voor bedekking-para meters, grote, open ruimten hebben nog weinig invloed op het bedekking-effect, terwijl de uitbrei ding van een middel tot een sterk bedekking effect verloopt en dat de vloeiendheid van overgangen in feite behouden blijft dat de simulatie voorziet.
+Als we simulatie gebruiken om onze audio DSP aan te drijven met occlusie- en nagalmparameters, kunnen we na de simulator een filter toevoegen om de parameters aan te passen die de DSP 'ziet'. Het filter zou niet afdwingen een bepaald niveau van occlusie of reverb staart lengte, net als zonnebrillen maken niet elke kamer dezelfde helderheid. Het filter zou gewoon elke occluder occlude minder. Of meer occlude. Door het toevoegen en aanpassen van een 'verduisterend' occlusieparameterfilter zouden grote, open ruimtes nog steeds weinig tot geen occlusie-effect hebben, terwijl deuropeningen zouden toenemen van een medium naar een sterk occlusie-effect, met behoud van de gladheid in effectovergangen die de simulatie biedt.
 
-In dit paradigma wordt de taak van de ontwerp functie gewijzigd van akoestische para meters voor elke situatie, om filters te selecteren en aan te passen die van toepassing zijn op de belangrijkste DSP-para meters die afkomstig zijn van simulatie. Het verhoogt de activiteiten van de ontwerp functie van de beperkte problemen bij het instellen van soepele overgangen naar de hogere bezorgdheid van de intensiteit van bedekking-en reverberation-effecten en de aanwezigheid van bronnen in de mix. Natuurlijk moet u, wanneer de situatie is vereist, één filter altijd beschikbaar zijn om eenvoudigweg terug te gaan naar het kiezen van de DSP-para meters voor een specifieke bron in een specifieke situatie.
+In dit paradigma verandert de taak van de ontwerper van het kiezen van akoestische parameters voor elke situatie, in het selecteren en aanpassen van filters om toe te passen op de belangrijkste DSP-parameters die afkomstig zijn van simulatie. Het verheft de activiteiten van de ontwerper van de smalle zorgen van het opzetten van soepele overgangen naar de hogere zorgen van de intensiteit van occlusie en nagalm effecten en de aanwezigheid van bronnen in de mix. Natuurlijk, wanneer de situatie vraagt, een filter altijd beschikbaar is om gewoon terug te gaan naar het kiezen van de DSP parameters voor een specifieke bron in een specifieke situatie.
 
-## <a name="sound-design-in-project-acoustics"></a>Geluids ontwerp in Project akoestische
+## <a name="sound-design-in-project-acoustics"></a>Sound design in Project Acoustics
 
-Het project akoestische pakket integreert elk van de hierboven beschreven onderdelen: een simulator, een encoder die para meters ophaalt en bouwt de akoestische activa, audio-DSP en een selectie van filters. Voor een goed ontwerp met Projectbudgeties zijn para meters gekozen voor de filters waarmee de bedekking-en reverberation-para meters worden aangepast die zijn afgeleid van simulatie en toegepast op de audio-DSP, met dynamische besturings elementen die worden weer gegeven in de game-editor en de audio-engine.
+Het Project Acoustics-pakket integreert elk van de hierboven beschreven componenten: een simulator, een encoder die parameters extraheert en de akoestiek asset, audio DSP, en een selectie van filters bouwt. Sound design met Project Acoustics houdt in dat parameters worden gekozen voor de filters die de occlusie- en nagalmparameters aanpassen die zijn afgeleid van simulatie en worden toegepast op de audio-DSP, met dynamische bedieningselementen die in de game-editor en de audio-engine worden belicht.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Probeer het ontwerp paradigma uit met behulp [van de Snelstartgids voor de project akoestische voor eenheid](unity-quickstart.md) of de [Snelstartgids voor het project akoestische voor Unreal](unreal-quickstart.md)
-* Verken de [ontwerp besturings elementen van het project akoestische ontwerpen voor Unity](unity-workflow.md) of het [project akoestische ontwerp besturings elementen voor Unreal](unreal-workflow.md)
+* Probeer het ontwerpparadigma met behulp van de [Project Acoustics quickstart voor Unity](unity-quickstart.md) of de Project Acoustics [quickstart voor Unreal](unreal-quickstart.md)
+* Ontdek de [ontwerpregelaars van Project Acoustics voor Unity](unity-workflow.md) of de [Ontwerpregelaars van Project Acoustics voor Unreal](unreal-workflow.md)
 

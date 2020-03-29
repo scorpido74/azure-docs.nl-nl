@@ -1,7 +1,7 @@
 ---
-title: Wiskundige formules weer geven in de insluitende lezer
+title: Wiskundige weergave in de meeslepende lezer
 titleSuffix: Azure Cognitive Services
-description: In dit artikel wordt uitgelegd hoe u wiskundige berekeningen in de insluitende lezer kunt weer geven.
+description: In dit artikel zie je hoe je wiskunde weergeven in de meeslepende lezer.
 author: pasta
 manager: guillasi
 ms.service: cognitive-services
@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: pasta
 ms.openlocfilehash: e01cc9e8cedb6c38da0b56e04419c706d5d0566e
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75946120"
 ---
-# <a name="how-to-display-math-in-the-immersive-reader"></a>Wiskunde weer geven in de insluitende lezer
+# <a name="how-to-display-math-in-the-immersive-reader"></a>Hoe wiskunde weer te geven in de meeslepende lezer
 
-De insluitende lezer kan wiskundige formules weer geven wanneer deze zijn opgenomen in de vorm van de wiskundige Markup Language ([MathML](https://developer.mozilla.org/docs/Web/MathML)).
-Het MIME-type kan worden ingesteld via het [segment](../reference.md#chunk)van de insluitende lezer. Zie [ondersteunde MIME-typen](../reference.md#supported-mime-types) voor meer informatie.
+De meeslepende lezer kan wiskunde weergeven wanneer deze wordt geleverd in de vorm van wiskundige opmaaktaal[(MathML).](https://developer.mozilla.org/docs/Web/MathML)
+Het MIME-type kan worden ingesteld via de immersive reader [chunk](../reference.md#chunk). Zie [ondersteunde MIME-typen](../reference.md#supported-mime-types) voor meer informatie.
 
-## <a name="send-math-to-the-immersive-reader"></a>Wiskunde naar de insluitende lezer verzenden
-Als u wiskunde wilt verzenden naar de insluitende lezer, geeft u een segment met MathML op en stelt u het MIME-type in op ```application/mathml+xml```.
+## <a name="send-math-to-the-immersive-reader"></a>Stuur wiskunde naar de meeslepende lezer
+Als u wiskunde naar de meeslepende lezer wilt verzenden, levert u een ```application/mathml+xml```stuk met MathML en stelt u het MIME-type in op ;
 
-Als uw inhoud bijvoorbeeld het volgende was:
+Als uw inhoud bijvoorbeeld de volgende gegevens zijn:
 
 ```html
 <div id='ir-content'>
@@ -53,7 +53,7 @@ Als uw inhoud bijvoorbeeld het volgende was:
 </div>
 ```
 
-Vervolgens kunt u uw inhoud weer geven met behulp van de volgende Java script.
+Vervolgens u uw inhoud weergeven met behulp van de volgende JavaScript.
 
 ```javascript
 const data = {
@@ -67,10 +67,10 @@ const data = {
 ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, data, YOUR_OPTIONS);
 ```
 
-Wanneer u de insluitende lezer start, ziet u het volgende:
+Wanneer u de immersive reader start, moet u zien:
 
-![Wiskunde in insluitende lezer](../media/how-tos/1-math.png)
+![Wiskunde in meeslepende lezer](../media/how-tos/1-math.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Verken de [insluitende lezer SDK](https://github.com/microsoft/immersive-reader-sdk) en de referentie voor de [insluitende lezer SDK](../reference.md)
+* Ontdek de [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) en de [Immersive Reader SDK Reference](../reference.md)

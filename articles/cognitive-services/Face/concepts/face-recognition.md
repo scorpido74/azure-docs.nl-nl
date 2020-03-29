@@ -1,7 +1,7 @@
 ---
-title: Concepten voor gezichts herkenning
+title: Concepten voor gezichtsherkenning
 titleSuffix: Azure Cognitive Services
-description: In dit artikel worden de concepten uitgelegd van de berekenings-en onderhouds bewerkingen voor het verifiëren, vergelijken, groeperen en identificeren van het gezicht en de onderliggende gegevens structuren.
+description: In dit artikel worden de concepten van de bewerkingen Verifiëren, Vergelijkbare gegevens, Groeperen en Gezichtsherkenning en de onderliggende gegevensstructuren worden uitgelegd.
 services: cognitive-services
 author: PatrickFarley
 manager: nitime
@@ -11,64 +11,64 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
 ms.openlocfilehash: 164e5a8c107f445b376d26f9be7db92a7983b0d3
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73743074"
 ---
-# <a name="face-recognition-concepts"></a>Concepten voor gezichts herkenning
+# <a name="face-recognition-concepts"></a>Concepten voor gezichtsherkenning
 
-In dit artikel worden de concepten uitgelegd van de berekenings-en onderhouds bewerkingen voor het verifiëren, vergelijken, groeperen en identificeren van het gezicht en de onderliggende gegevens structuren. In het algemeen wordt met herkenning het werk van het vergelijken van twee verschillende gezichten beschreven om te bepalen of ze vergelijkbaar zijn of horen bij dezelfde persoon.
+In dit artikel worden de concepten van de bewerkingen Verifiëren, Vergelijkbare gegevens, Groeperen en Gezichtsherkenning en de onderliggende gegevensstructuren worden uitgelegd. In grote lijnen beschrijft herkenning het werk van het vergelijken van twee verschillende gezichten om te bepalen of ze vergelijkbaar zijn of behoren tot dezelfde persoon.
 
-## <a name="recognition-related-data-structures"></a>Gegevens structuren met betrekking tot herkenning
+## <a name="recognition-related-data-structures"></a>Herkenningsgerelateerde gegevensstructuren
 
-De herkennings bewerkingen gebruiken voornamelijk de volgende gegevens structuren. Deze objecten worden opgeslagen in de Cloud en hiernaar kan worden verwezen met de ID-teken reeksen. ID-teken reeksen zijn altijd uniek binnen een abonnement. Naam velden kunnen worden gedupliceerd.
+De herkenningsbewerkingen gebruiken voornamelijk de volgende gegevensstructuren. Deze objecten worden opgeslagen in de cloud en kunnen worden verwezen door hun ID-tekenreeksen. ID-strings zijn altijd uniek binnen een abonnement. Naamvelden kunnen worden gedupliceerd.
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |:--|:--|
-|DetectedFace| Deze enkelvoudige gezichts weergave wordt opgehaald door de [gezichts detectie](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md) bewerking. De ID verloopt 24 uur nadat deze is gemaakt.|
-|PersistedFace| Wanneer DetectedFace-objecten worden toegevoegd aan een groep, zoals FaceList of persoon, worden ze PersistedFace-objecten. Ze kunnen op elk gewenst moment worden [opgehaald](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c) en verloopt niet.|
-|[FaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b) of [LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)| Deze gegevens structuur is een geassorteerde lijst met PersistedFace-objecten. Een FaceList heeft een unieke ID, een naam reeks en optioneel een gebruikers gegevens reeks.|
-|[Gelaedeerde](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)| Deze gegevens structuur is een lijst met PersistedFace-objecten die deel uitmaken van dezelfde persoon. Het heeft een unieke ID, een naam reeks en optioneel een gebruikers gegevens reeks.|
-|[PersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) of [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)| Deze gegevens structuur is een geassorteerde lijst met objecten van personen. Het heeft een unieke ID, een naam reeks en optioneel een gebruikers gegevens reeks. Een PersonGroup moet worden [getraind](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) voordat deze kan worden gebruikt in herkennings bewerkingen.|
+|GedetecteerdGezicht| Deze enkele gezichtsweergave wordt opgehaald door de [gezichtsherkenningsbewerking.](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md) De ID verloopt 24 uur nadat deze is gemaakt.|
+|PersistedFace PersistedFace| Wanneer Gedetecteerde Face-objecten aan een groep worden toegevoegd, zoals FaceList of Persoon, worden ze PersistedFace-objecten. Ze kunnen op elk gewenst moment worden [opgehaald](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c) en verlopen niet.|
+|[FaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b) of [LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)| Deze gegevensstructuur is een diverse lijst met PersistedFace-objecten. Een FaceList heeft een unieke ID, een naamtekenreeks en optioneel een tekenreeks voor gebruikersgegevens.|
+|[Person](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)| Deze gegevensstructuur is een lijst met PersistedFace-objecten die van dezelfde persoon zijn. Het heeft een unieke ID, een naamtekenreeks en optioneel een tekenreeks voor gebruikersgegevens.|
+|[Persoonsgroep](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) of [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)| Deze gegevensstructuur is een diverse lijst met persoonsobjecten. Het heeft een unieke ID, een naamtekenreeks en optioneel een tekenreeks voor gebruikersgegevens. Een persoonsgroep moet worden [opgeleid](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) voordat deze kan worden gebruikt in herkenningsbewerkingen.|
 
-## <a name="recognition-operations"></a>Herkennings bewerkingen
+## <a name="recognition-operations"></a>Erkenningsoperaties
 
-In deze sectie wordt uitgelegd hoe de vier herkennings bewerkingen gebruikmaken van de eerder beschreven gegevens structuren. Zie [overzicht](../Overview.md)voor een uitgebreide beschrijving van elke herkennings bewerking.
+In dit gedeelte wordt beschreven hoe de vier herkenningsbewerkingen de eerder beschreven gegevensstructuren gebruiken. Zie [Overzicht](../Overview.md)voor een brede beschrijving van elke herkenningsbewerking.
 
 ### <a name="verify"></a>Verifiëren
 
-Bij de [controle](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) bewerking wordt een gezichts-id van DetectedFace of PersistedFace en een ander gezichts-id of persoons object gebruikt en wordt bepaald of deze bij dezelfde persoon horen. Als u een persoons object doorgeeft, kunt u eventueel een PersonGroup door geven waartoe deze persoon behoort om de prestaties te verbeteren.
+Met de bewerking [Verifiëren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) wordt een face-id van DetectedFace of PersistedFace en een ander face-id of een persoonsobject genomen en wordt bepaald of deze van dezelfde persoon zijn. Als u een persoonsobject doorgeeft, u optioneel in een persoonsgroep worden doorgegeven waartoe die persoon behoort om de prestaties te verbeteren.
 
-### <a name="find-similar"></a>Zoek vergelijk bare
+### <a name="find-similar"></a>Vergelijkbare zoeken
 
-De [Zoek vergelijk bare](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) bewerking neemt een gezichts-id van DetectedFace of PersistedFace en een FaceList of een matrix met andere gezichts-id's. Met een FaceList wordt een kleiner FaceList geretourneerd van gezichten die vergelijkbaar zijn met het opgegeven gezicht. Met een matrix met gezichts-Id's, wordt er ook een kleinere matrix geretourneerd.
+De bewerking [Vergelijkbare zoeken](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) neemt een face-id van DetectedFace of PersistedFace en een FaceList of een reeks andere gezichts-id's. Met een FaceList retourneert het een kleinere FaceList met gezichten die vergelijkbaar zijn met het opgegeven gezicht. Met een array van gezichts-id's, het op dezelfde manier retourneert een kleinere array.
 
 ### <a name="group"></a>Groep
 
-De [groeps](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) bewerking heeft een matrix van geassorteerde gezichts-Id's van DetectedFace of PersistedFace en retourneert dezelfde id's die zijn gegroepeerd in verschillende kleinere matrices. Elke matrix ' groups ' bevat gezichts-Id's die vergelijkbaar zijn. Eén messyGroup-matrix bevat gezichts-Id's waarvoor geen overeenkomsten zijn gevonden.
+De [groepsbewerking](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) neemt een array van diverse gezichts-id's van DetectedFace of PersistedFace en retourneert dezelfde id's gegroepeerd in verschillende kleinere arrays. Elke array met 'groepen' bevat gezichts-id's die op elkaar lijken. Een enkele "messyGroup" array bevat face ID's waarvoor geen overeenkomsten werden gevonden.
 
 ### <a name="identify"></a>Identificeren
 
-Bij de [identificerende](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) bewerking worden een of meer gezichts-Id's van DetectedFace of PersistedFace en een PersonGroup opgehaald en wordt een lijst met objecten geretourneerd waarop elk gezicht kan worden aangesloten. Geretourneerde persoons objecten worden verpakt als objecten van de kandidaat, die een Voorspellings betrouwbaarheids waarde hebben.
+De bewerking [Identificeren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) neemt een of meer gezichts-id's van GedetecteerdGezicht of PersistedFace en een persoonsgroep en retourneert een lijst met persoonsobjecten waartoe elk gezicht mogelijk behoort. Geretourneerde persoonsobjecten worden verpakt als kandidaat-objecten, die een voorspellingsbetrouwbaarheid hebben.
 
 ## <a name="input-data"></a>Invoergegevens
 
-Gebruik de volgende tips om ervoor te zorgen dat uw invoer installatie kopieën de meest nauw keurige herkennings resultaten geven:
+Gebruik de volgende tips om ervoor te zorgen dat uw invoerafbeeldingen de meest nauwkeurige herkenningsresultaten geven:
 
-* De ondersteunde indelingen voor de invoer afbeeldingen zijn JPEG, PNG, GIF (het eerste frame), BMP.
-* De grootte van het afbeeldings bestand mag niet groter zijn dan 4 MB.
-* Wanneer u persoons objecten maakt, gebruikt u Foto's die verschillende soorten hoeken en verlichting hebben.
-* Sommige gezichten worden mogelijk niet herkend vanwege technische problemen, zoals:
-  * Afbeeldingen met extreme verlichting, bijvoorbeeld ernstig achtergrond verlichting.
-  * Obstakels waarmee één of beide ogen worden geblokkeerd.
-  * Verschillen in haar aard of gezicht.
-  * Wijzigingen in gezichts vormgeving vanwege leeftijd.
-  * Extreme gezichts uitdrukkingen.
+* De ondersteunde invoerafbeeldingsindelingen zijn JPEG, PNG, GIF (het eerste frame), BMP.
+* De grootte van het afbeeldingsbestand mag niet groter zijn dan 4 MB.
+* Wanneer u Persoonsobjecten maakt, gebruikt u foto's met verschillende soorten hoeken en verlichting.
+* Sommige gezichten worden mogelijk niet herkend vanwege technische uitdagingen, zoals:
+  * Beelden met extreme verlichting, bijvoorbeeld, ernstige achtergrondverlichting.
+  * Obstakels die een of beide ogen blokkeren.
+  * Verschillen in haartype of gezichtshaar.
+  * Veranderingen in het uiterlijk van het gezicht als gevolg van leeftijd.
+  * Extreme gezichtsuitdrukkingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u bekend bent met de concepten van gezichts herkenning, leert u hoe u een script schrijft dat gezichten identificeert op basis van een getrainde PersonGroup.
+Nu u bekend bent met concepten voor gezichtsherkenning, leert u hoe u een script schrijft dat gezichten identificeert met een getrainde persoonsgroep.
 
-* [Gezichten identificeren in installatie kopieën](../Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)
+* [Gezichten in afbeeldingen identificeren](../Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)

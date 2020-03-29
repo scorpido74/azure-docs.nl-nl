@@ -1,7 +1,7 @@
 ---
-title: SDK-documentatie voor speech-apparaten
+title: SDK-documentatie voor spraakapparaten
 titleSuffix: Azure Cognitive Services
-description: De release opmerkingen bieden een logboek van updates, verbeteringen, fout oplossingen en wijzigingen aan de SDK voor spraak apparaten. Dit artikel wordt bijgewerkt met elke release van de SDK voor spraak apparaten.
+description: De release notes bieden een logboek van updates, verbeteringen, bug fixes en wijzigingen in de Speech Devices SDK. Dit artikel wordt bijgewerkt bij elke release van de Speech Devices SDK.
 services: cognitive-services
 author: wsturman
 manager: nitinme
@@ -10,95 +10,95 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: c12aaea1dbc99a3f6db064e03b4b49e569f15194
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 29dcb3c0e74482fd6670d1a0983e751043379d6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189061"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80371622"
 ---
-# <a name="release-notes-speech-devices-sdk"></a>Release opmerkingen: SDK voor spraak apparaten
+# <a name="release-notes-speech-devices-sdk"></a>Release notes: Speech Devices SDK
 
-De volgende secties bevatten een lijst met wijzigingen in de meest recente releases.
+In de volgende secties worden wijzigingen weergegeven in de meest recente versies.
 
-## <a name="speech-devices-sdk-190"></a>Speech-apparaten SDK 1.9.0:
+## <a name="speech-devices-sdk-190"></a>Spraakapparaten SDK 1.9.0:
 
-- De initiële binaire bestanden voor [URBETTER DDK](https://aka.ms/sdsdk-download-urbetter) (Linux ARM64) worden gegeven.
-- Roobo v1 maakt nu gebruik van Maven voor de Speech SDK
-- Het [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) -onderdeel is bijgewerkt naar versie 1.9.0. Zie de [release opmerkingen](https://aka.ms/csspeech/whatsnew)voor meer informatie.
+- De eerste binaire bestanden voor [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter) (Linux ARM64) zijn aanwezig.
+- Roobo v1 gebruikt Maven nu voor de Speech SDK
+- De [spraaksdkcomponent](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bijgewerkt naar versie 1.9.0. Zie voor meer informatie de [releasenotes](https://aka.ms/csspeech/whatsnew).
 
-## <a name="speech-devices-sdk-170"></a>Speech-apparaten SDK 1.7.0:
+## <a name="speech-devices-sdk-170"></a>Spraakapparaten SDK 1.7.0:
 
 - Linux ARM wordt nu ondersteund.
-- Er worden initiële binaire bestanden voor [roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2) gegeven (Linux ARM64).
-- Windows-gebruikers kunnen `AudioConfig.fromDefaultMicrophoneInput()` of `AudioConfig.fromMicrophoneInput(deviceName)` gebruiken om de microfoon op te geven die moet worden gebruikt.
-- De grootte van de tape wisselaar is geoptimaliseerd.
-- Ondersteuning voor multi-turn-herkenning met hetzelfde spraak/intentie Recognizer-object.
-- Herstel af en toe is vastgelopen tijdens het stoppen van de herkenning.
-- Voor beeld-apps bevatten nu een voor beeld van een deel nemers. eigenschappen bestand om de indeling van het bestand te demonstreren.
-- Het [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) -onderdeel is bijgewerkt naar versie 1.7.0. Zie de [release opmerkingen](https://aka.ms/csspeech/whatsnew)voor meer informatie.
+- De eerste binaries voor [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2) zijn aanwezig (Linux ARM64).
+- Windows-gebruikers `AudioConfig.fromDefaultMicrophoneInput()` kunnen `AudioConfig.fromMicrophoneInput(deviceName)` de te gebruiken microfoon gebruiken of opgeven.
+- De grootte van de bibliotheek is geoptimaliseerd.
+- Ondersteuning voor multi-turn herkenning met hetzelfde object voor spraakherkenning/intentieherkenning.
+- Fix af en toe hangen dat zou optreden tijdens het stoppen van de erkenning.
+- Voorbeeld-apps bevatten nu een voorbeeld van deelnemers.properties-bestand om de indeling van het bestand weer te geven.
+- De [spraaksdkcomponent](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bijgewerkt naar versie 1.7.0. Zie voor meer informatie de [releasenotes](https://aka.ms/csspeech/whatsnew).
 
-## <a name="speech-devices-sdk-160"></a>Speech-apparaten SDK 1.6.0:
+## <a name="speech-devices-sdk-160"></a>Spraakapparaten SDK 1.6.0:
 
-- Ondersteuning voor [Azure KINECT DK](https://azure.microsoft.com/services/kinect-dk/) op Windows en Linux met een gemeen schappelijke [voorbeeld toepassing](https://aka.ms/sdsdk-download)
-- Het [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) -onderdeel is bijgewerkt naar versie 1.6.0. Zie de [release opmerkingen](https://aka.ms/csspeech/whatsnew)voor meer informatie.
+- [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) op Windows en Linux ondersteunen met algemene [voorbeeldtoepassing](https://aka.ms/sdsdk-download)
+- De [spraaksdkcomponent](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bijgewerkt naar versie 1.6.0. Zie voor meer informatie de [releasenotes](https://aka.ms/csspeech/whatsnew).
 
-## <a name="speech-devices-sdk-151"></a>Speech-apparaten SDK 1.5.1:
+## <a name="speech-devices-sdk-151"></a>Spraakapparaten SDK 1.5.1:
 
-- Neem de [conversatie-transcriptie](conversation-transcription-service.md) op in de voor beeld-app.
-- Het [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) -onderdeel is bijgewerkt naar versie 1.5.1. Zie de [release opmerkingen](https://aka.ms/csspeech/whatsnew)voor meer informatie.
+- [Gesprekstranscriptie](conversation-transcription-service.md) opnemen in de voorbeeld-app.
+- De [spraaksdkcomponent](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bijgewerkt naar versie 1.5.1. Zie voor meer informatie de [releasenotes](https://aka.ms/csspeech/whatsnew).
 
-## <a name="speech-devices-sdk-150-2019-may-release"></a>Speech-apparaten SDK 1.5.0:2019-mei release
+## <a name="speech-devices-sdk-150-2019-may-release"></a>Spraakapparaten SDK 1.5.0: release 2019-mei
 
-- De SDK voor spraak apparaten is nu beschikbaar en is niet langer een geteste preview.
-- Het [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) -onderdeel is bijgewerkt naar versie 1.5.0. Zie de [release opmerkingen](https://aka.ms/csspeech/whatsnew)voor meer informatie.
-- Nieuwe trefwoord technologie brengt belang rijke verbeteringen met zich mee.
-- Nieuwe pijp lijn voor de verwerking van audio voor verbeterde herkenning van het ver-veld.
+- Spraakapparaten SDK is nu GA en niet langer een gated preview.
+- De [spraaksdkcomponent](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bijgewerkt naar versie 1.5.0. Zie voor meer informatie de [releasenotes](https://aka.ms/csspeech/whatsnew).
+- Nieuwe zoekwoordtechnologie brengt aanzienlijke kwaliteitsverbeteringen met zich mee, zie Breaking Changes.
+- Nieuwe audioverwerkingspijplijn voor verbeterde vervelding.
 
-**Wijzigingen afbreken**
+**Wijzigingen doorbreken**
 
-- Vanwege de nieuwe trefwoord technologie moeten alle tref woorden opnieuw worden gemaakt in onze verbeterde trefwoord Portal. Oude tref woorden volledig verwijderen van het apparaat verwijderen van de oude app.
-  - ADB uninstall com. micro soft. coginitiveservices. speech. samples. sdsdkstarterapp
+- Dankzij de nieuwe trefwoordtechnologie moeten alle zoekwoorden opnieuw worden gemaakt op onze verbeterde trefwoordportal. Als u oude zoekwoorden volledig van het apparaat wilt verwijderen, verwijdert u de oude app.
+  - adb verwijderen com.microsoft.cognitiveservices.speech.samples.sdsdkstarterapp
 
-## <a name="speech-devices-sdk-140-2019-apr-release"></a>Speech-apparaten SDK 1.4.0:2019-apr release
+## <a name="speech-devices-sdk-140-2019-apr-release"></a>Spraakapparaten SDK 1.4.0: release 2019-Apr
 
-- Het [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) -onderdeel is bijgewerkt naar versie 1.4.0. Zie de [release opmerkingen](https://aka.ms/csspeech/whatsnew)voor meer informatie.
+- De [spraaksdkcomponent](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bijgewerkt naar versie 1.4.0. Zie voor meer informatie de [releasenotes](https://aka.ms/csspeech/whatsnew).
 
-## <a name="speech-devices-sdk-131-2019-mar-release"></a>Speech-apparaten SDK 1.3.1:2019-mrt release
+## <a name="speech-devices-sdk-131-2019-mar-release"></a>Spraakapparaten SDK 1.3.1: release 2019-maart
 
-- Het [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) -onderdeel is bijgewerkt naar versie 1.3.1. Zie de [release opmerkingen](https://aka.ms/csspeech/whatsnew)voor meer informatie.
-- De verwerking van tref woorden is bijgewerkt, zie wijzigingen afbreken.
-- Voorbeeld toepassing voegt taal keuze voor zowel spraak herkenning als omzetting toe.
+- De [spraaksdkcomponent](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bijgewerkt naar versie 1.3.1. Zie voor meer informatie de [releasenotes](https://aka.ms/csspeech/whatsnew).
+- Bijgewerkte trefwoordverwerking, zie Wijzigingen verbreken.
+- Voorbeeldtoepassing voegt taalkeuze toe voor zowel spraakherkenning als vertaling.
 
-**Wijzigingen afbreken**
+**Wijzigingen doorbreken**
 
-- Het [installeren van een tref woord](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) is vereenvoudigd, het maakt nu deel uit van de app en vereist geen afzonderlijke installatie op het apparaat.
-- De herkenning van het tref woord is gewijzigd en twee gebeurtenissen worden ondersteund.
-  - `RecognizingKeyword,` geeft aan dat het resultaat van de spraak (niet-geverifieerde) trefwoord tekst bevat.
-  - `RecognizedKeyword`geeft aan dat trefwoord herkenning het opgegeven tref woord heeft herkend.
+- [Het installeren van een trefwoord](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) is vereenvoudigd, het is nu onderdeel van de app en heeft geen aparte installatie op het apparaat nodig.
+- De trefwoordherkenning is gewijzigd en twee gebeurtenissen worden ondersteund.
+  - `RecognizingKeyword,`geeft het spraakresultaat (niet-geverifieerde) trefwoordtekst aan.
+  - `RecognizedKeyword`, geeft aan dat trefwoordherkenning is voltooid door het opgegeven trefwoord te herkennen.
 
-## <a name="speech-devices-sdk-110-2018-nov-release"></a>Speech-apparaten SDK 1.1.0:2018-nov release
+## <a name="speech-devices-sdk-110-2018-nov-release"></a>Spraakapparaten SDK 1.1.0: release 2018-nov
 
-- Het [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) -onderdeel is bijgewerkt naar versie 1.1.0. Zie de [release opmerkingen](https://aka.ms/csspeech/whatsnew)voor meer informatie.
-- De nauw keurigheid van spraak herkenning in het verre veld is verbeterd met ons uitgebreide algoritme voor geluids verwerking.
-- Voorbeeld toepassing toegevoegd Chinese spraak herkenning ondersteuning.
+- De [spraaksdkcomponent](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bijgewerkt naar versie 1.1.0. Zie voor meer informatie de [releasenotes](https://aka.ms/csspeech/whatsnew).
+- Far Field Spraakherkenning nauwkeurigheid is verbeterd met onze verbeterde audio-processing algoritme.
+- Voorbeeldtoepassing heeft ondersteuning voor Chinese spraakherkenning toegevoegd.
 
-## <a name="speech-devices-sdk-101-2018-oct-release"></a>Speech-apparaten SDK 1.0.1:2018-okt release
+## <a name="speech-devices-sdk-101-2018-oct-release"></a>Spraakapparaten SDK 1.0.1: release 2018-okt
 
-- Het [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) -onderdeel is bijgewerkt naar versie 1.0.1. Zie de [release opmerkingen](https://aka.ms/csspeech/whatsnew)voor meer informatie.
-- Nauw keurigheid van spraak herkenning is verbeterd met onze verbeterde algoritme voor geluids verwerking
-- Er is een probleem met een continue opname van audio sessie opgelost.
+- De [spraaksdkcomponent](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bijgewerkt naar versie 1.0.1. Zie voor meer informatie de [releasenotes](https://aka.ms/csspeech/whatsnew).
+- De nauwkeurigheid van spraakherkenning wordt verbeterd met ons verbeterde audioverwerkingsalgoritme
+- Een continue herkenning audio sessie bug is opgelost.
 
-**Wijzigingen afbreken**
+**Wijzigingen doorbreken**
 
-- Met deze release zijn een aantal belangrijke wijzigingen worden geïntroduceerd. Raadpleeg [Deze pagina](https://aka.ms/csspeech/breakingchanges_1_0_0) voor meer informatie over de api's.
-- De KWS-model bestanden zijn niet compatibel met Speech-apparaten SDK 1.0.1. De bestaande trefwoord bestanden worden verwijderd nadat de nieuwe trefwoord bestanden naar het apparaat zijn geschreven.
+- Met deze release worden een aantal baanbrekende wijzigingen geïntroduceerd. Kijk op [deze pagina](https://aka.ms/csspeech/breakingchanges_1_0_0) voor meer informatie over de API's.
+- De KWS-modelbestanden zijn niet compatibel met Spraakapparaten SDK 1.0.1. De bestaande trefwoordbestanden worden verwijderd nadat de nieuwe trefwoordbestanden naar het apparaat zijn geschreven.
 
-## <a name="speech-devices-sdk-050-2018-aug-release"></a>Speech-apparaten SDK 0.5.0:2018-aug release
+## <a name="speech-devices-sdk-050-2018-aug-release"></a>Spraakapparaten SDK 0,5.0: release 2018-aug
 
-- De nauw keurigheid van spraak herkenning is verbeterd door een fout in de code voor audio verwerking te corrigeren.
-- Het [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) -onderdeel is bijgewerkt naar versie 0.5.0. Zie de [release opmerkingen](releasenotes.md#cognitive-services-speech-sdk-050-2018-july-release)voor meer informatie.
+- Verbeterde de nauwkeurigheid van spraakherkenning door het oplossen van een bug in de audioverwerkingscode.
+- De [spraaksdkcomponent](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bijgewerkt naar versie 0.5.0. Zie voor meer informatie de [releasenotes](releasenotes.md#cognitive-services-speech-sdk-050-2018-july-release).
 
-## <a name="speech-devices-sdk-0212733-2018-may-release"></a>Speech-apparaten SDK 0.2.12733:2018-mei release
+## <a name="speech-devices-sdk-0212733-2018-may-release"></a>Spraakapparaten SDK 0,2.12733: release 2018-mei
 
-De eerste open bare preview-versie van de SDK voor Cognitive Services speech-apparaten.
+De eerste openbare preview release van de Cognitive Services Speech Devices SDK.

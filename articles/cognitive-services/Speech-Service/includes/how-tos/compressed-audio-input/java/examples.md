@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: cc1fc56f70c2867225903904c7e9706f876f07e2
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943843"
 ---
-Als u een gecomprimeerde audio-indeling naar de speech-service wilt streamen, maakt u een `PullAudioInputStream` of `PushAudioInputStream`. Maak vervolgens een `AudioConfig` van een instantie van uw Stream-klasse, waarbij u de compressie-indeling van de stroom opgeeft.
+Als u wilt streamen in een gecomprimeerde `PullAudioInputStream` audio-indeling naar de spraakservice, maakt u een of . `PushAudioInputStream` Maak vervolgens `AudioConfig` een exemplaar van uw streamklasse en geeft de compressieindeling van de stream op.
 
-We gaan ervan uit dat u een invoer stroom klasse hebt met de naam `pullStream` en gebruikmaakt van OPUS/OGG. Uw code kan er als volgt uitzien:
+Laten we aannemen dat u een `pullStream` invoerstreamklasse hebt genaamd en OPUS/OGG gebruikt. Uw code kan er als volgt uitzien:
 
 ```java
 import com.microsoft.cognitiveservices.speech.audio.AudioConfig;

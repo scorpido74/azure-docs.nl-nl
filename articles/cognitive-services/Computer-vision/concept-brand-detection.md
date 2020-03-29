@@ -1,7 +1,7 @@
 ---
-title: Merk detectie-Computer Vision
+title: Merkdetectie - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: In dit artikel wordt een gespecialiseerde modus voor object detectie beschreven. merk-en/of logo detectie met behulp van de Computer Vision-API.
+description: In dit artikel wordt een gespecialiseerde modus voor objectdetectie besproken; merk- en/of logodetectie met behulp van de Computer Vision API.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,26 +10,26 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 117beca1284f28c75c1ac772425423f732b8a236
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 50e4fe1e2573c8566bbdf5697bb81b025a00935c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718629"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131739"
 ---
-# <a name="detect-popular-brands-in-images"></a>Populaire merken detecteren in installatie kopieën
+# <a name="detect-popular-brands-in-images"></a>Populaire merken in afbeeldingen detecteren
 
-Merk detectie is een gespecialiseerde modus van [object detectie](concept-object-detection.md) die gebruikmaakt van een Data Base met duizenden wereld wijde logo's waarmee commerciële merken in afbeeldingen of video worden geïdentificeerd. U kunt deze functie bijvoorbeeld gebruiken om te ontdekken welke merken het populairst zijn op sociale media of het meest voorkomen in productplaatsing in de media.
+Merkdetectie is een gespecialiseerde modus voor [objectdetectie](concept-object-detection.md) die een database van duizenden wereldwijde logo's gebruikt om commerciële merken in afbeeldingen of video's te identificeren. U kunt deze functie bijvoorbeeld gebruiken om te ontdekken welke merken het populairst zijn op sociale media of het meest voorkomen in productplaatsing in de media.
 
-De Computer Vision-service detecteert of er merk logo's zijn in een bepaalde afbeelding. Als dit het geval is, wordt de merk naam, een betrouwbaarheids Score en de coördinaten van een selectie kader rond het logo geretourneerd.
+De Computer Vision-service detecteert of er merklogo's in een bepaalde afbeelding zitten; als dat het zo is, geeft het de merknaam, een betrouwbaarheidsscore en de coördinaten van een selectiekader rond het logo terug.
 
-De ingebouwde logo database heeft betrekking op populaire merken in consumenten elektronica, kleren en meer. Als u merkt dat het merk dat u zoekt niet wordt gedetecteerd door de Computer Vision-service, kunt u beter uw eigen logo detector maken en trainen met behulp van de [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) -service.
+De ingebouwde logodatabase omvat populaire merken in consumentenelektronica, kleding en meer. Als u merkt dat het merk dat u zoekt niet wordt gedetecteerd door de Computer Vision-service, u beter worden bediend met het maken en trainen van uw eigen logodetector met behulp van de [Custom Vision-service.](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/)
 
-## <a name="brand-detection-example"></a>Voor beeld van merk detectie
+## <a name="brand-detection-example"></a>Voorbeeld van merkdetectie
 
-De volgende JSON-antwoorden laten zien wat Computer Vision retourneert bij het detecteren van Brands in de voorbeeld afbeeldingen.
+De volgende JSON-antwoorden illustreren wat Computer Vision retourneert bij het detecteren van merken in de voorbeeldafbeeldingen.
 
-![Een rode shirt met een micro soft-label en-logo](./Images/red-shirt-logo.jpg)
+![Een rood overhemd met een etiket van Microsoft en embleem op het](./Images/red-shirt-logo.jpg)
 
 ```json
 "brands":[  
@@ -45,9 +45,9 @@ De volgende JSON-antwoorden laten zien wat Computer Vision retourneert bij het d
 ]
 ```
 
-In sommige gevallen haalt de merk detector zowel de logo afbeelding als de stijl van de stijlvol merk op als twee afzonderlijke logo's.
+In sommige gevallen zal de merkdetector zowel het logobeeld als de gestileerde merknaam als twee afzonderlijke logo's oppikken.
 
-![Een grijze Sweatshirt met een micro soft-label en-logo](./Images/gray-shirt-logo.jpg)
+![Een grijs sweatshirt met een Microsoft-label en logo erop](./Images/gray-shirt-logo.jpg)
 
 ```json
 "brands":[  
@@ -74,7 +74,7 @@ In sommige gevallen haalt de merk detector zowel de logo afbeelding als de stijl
 
 ## <a name="use-the-api"></a>De API gebruiken
 
-De functie voor merk detectie maakt deel uit van de API voor het [analyseren van afbeeldingen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . U kunt deze API aanroepen via een systeem eigen SDK of via REST-aanroepen. Neem `Brands` op in de query parameter **visualFeatures** . Wanneer u vervolgens het volledige JSON-antwoord krijgt, parseert u de teken reeks voor de inhoud van de sectie `"brands"`.
+De functie merkdetectie maakt deel uit van de [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API. U deze API aanroepen via een native SDK of via REST-oproepen. Opnemen `Brands` in de parameter **visualFeatures** query. Wanneer u vervolgens de volledige JSON-respons krijgt, ontleden `"brands"` u gewoon de tekenreeks voor de inhoud van de sectie.
 
-* [Snelstartgids: Computer Vision .NET SDK](./quickstarts-sdk/csharp-sdk.md)
-* [Quick Start: een afbeelding analyseren (REST API)](./quickstarts/csharp-analyze.md)
+* [Snelstart: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Snelstart: een afbeelding analyseren (REST API)](./quickstarts/csharp-analyze.md)

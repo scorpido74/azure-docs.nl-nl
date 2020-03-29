@@ -10,20 +10,20 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: c63356ba81aefb2ac28bd5f077bd743488656cfc
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 192d3d1a7bd792779b068a9c0c7ac34c7bee1c80
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77279676"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80116860"
 ---
-Als uw apps moeten worden gemaakt door andere personen, moet u de bijbehorende e-mail adressen toevoegen aan de ontwerp bron van de Azure Portal.
+Als uw apps door andere mensen moeten worden geschreven, moet u de bijbehorende e-mailadressen toevoegen aan de ontwerpbron van de Azure-portal.
 
-Als u de **eigenaar of beheerder van uw Azure-abonnement**bent, kunt u een bijdrager aan de resource toevoegen.
+Als u de **eigenaar of beheerder van uw Azure-abonnement bent,** u een bijdrager aan de bron toevoegen.
 
-Als u **niet de eigenaar of beheerder van uw Azure-abonnement**bent, moet uw Azure-account beschikken over `Microsoft.Authorization/roleAssignments/write` machtigingen.
+Als u **niet de eigenaar of beheerder van uw Azure-abonnement bent,** moet uw Azure-account machtigingen hebben. `Microsoft.Authorization/roleAssignments/write`
 
-Als u problemen ondervindt met deze roltoewijzing, controleert u het volgende:
+Als u problemen hebt met deze roltoewijzing, bekijkt u het:
 
 * [Azure-roltoewijzingen](../../../role-based-access-control/role-assignments-portal.md)
- * [Problemen met Azure Access Control oplossen](../../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments)
+* [Problemen met Azure-toegangsbeheer oplossen](../../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments)

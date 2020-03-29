@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: asynchrone synthese voor lange-vorm audio (preview)-spraak service'
+title: 'Snelstart: Asynchrone synthese voor lange audio (Preview) - Spraakservice'
 titleSuffix: Azure Cognitive Services
-description: Gebruik de lange audio-API om tekst asynchroon te converteren naar spraak en de audio-uitvoer op te halen uit een URI die door de service wordt verschaft. Deze REST API is ideaal voor inhouds providers die tekst bestanden moeten converteren die groter zijn dan 10.000 tekens of 50 alinea's in gesynthesizerde spraak.
+description: Gebruik de LANGE Audio-API om tekst asynchroon om te zetten in spraak en de audio-uitvoer op te halen uit een URI die door de service wordt geleverd. Deze REST API is ideaal voor contentproviders die tekstbestanden van meer dan 10.000 tekens of 50 alinea's moeten converteren naar gesynthetiseerde spraak.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,30 +11,30 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: d3cd330001bcf53e7bd4fb9e6955c76a9ef20511
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78331073"
 ---
-# <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Quick Start: asynchrone synthese voor lange-vorm audio in python (preview-versie)
+# <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Snelstart: Asynchrone synthese voor lange audio in Python (Preview)
 
-In deze Quick Start gebruikt u de lange audio-API om tekst asynchroon te converteren naar spraak en de audio-uitvoer op te halen uit een URI die door de service wordt verschaft. Deze REST API is ideaal voor inhouds providers waarvoor audio moet worden gesynthesizerd van tekst die groter is dan 5.000 tekens (of meer dan 10 minuten lang). Zie voor meer informatie [Long audio API](../../long-audio-api.md)(Engelstalig).
+In deze snelstart gebruikt u de API Voor lange audio om tekst asynchroon om te zetten in spraak en de audio-uitvoer op te halen uit een URI die door de service wordt geleverd. Deze REST API is ideaal voor contentproviders die audio moeten synthetiseren uit tekst van meer dan 5.000 tekens (of meer dan 10 minuten lang). Zie [Long Audio API](../../long-audio-api.md)voor meer informatie.
 
 > [!NOTE]
-> Asynchrone synthese voor lange-vorm audio kan alleen worden gebruikt met [aangepaste Neural stemmen](../../how-to-custom-voice.md#custom-neural-voices).
+> Asynchrone synthese voor lange-vorm audio kan alleen worden gebruikt met [Custom Neural Voices](../../how-to-custom-voice.md#custom-neural-voices).
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor deze snelstart zijn de volgende zaken vereist:
 
-* Python 2.7. x of 3. x.
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio code](https://code.visualstudio.com/download)of uw favoriete tekst editor.
-* Een Azure-abonnement en een sleutel voor spraak service-abonnement. [Maak een Azure-account](../../get-started.md#new-resource) en [Maak een spraak bron](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-resource) om de sleutel op te halen. Wanneer u de spraak bron maakt, moet u ervoor zorgen dat uw prijs categorie is ingesteld op **s0**en dat de locatie is ingesteld op een [ondersteunde regio](../../regions.md#standard-and-neural-voices).
+* Python 2.7.x of 3.x.
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)of uw favoriete teksteditor.
+* Een Azure-abonnement en een abonnementssleutel voor spraakservice. [Maak een Azure-account](../../get-started.md#new-resource) en [maak een spraakbron](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-resource) om de sleutel te krijgen. Controleer bij het maken van de spraakbron of uw prijslaag is ingesteld op **S0**en dat de locatie is ingesteld op een [ondersteunde regio](../../regions.md#standard-and-neural-voices).
 
 ## <a name="create-a-project-and-import-required-modules"></a>Een project maken en de vereiste modules importeren
 
-Maak een nieuw Python-project met uw favoriete IDE of editor. Kopieer vervolgens dit code fragment naar een bestand met de naam `voice_synthesis_client.py`.
+Maak een nieuw Python-project met uw favoriete IDE of editor. Kopieer dit codefragment vervolgens `voice_synthesis_client.py`naar een bestand met de naam .
 
 ```python
 import argparse
@@ -50,13 +50,13 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 ```
 
 > [!NOTE]
-> Als u deze modules niet hebt gebruikt, moet u deze installeren voordat u het programma uitvoert. Voer voor het installeren van deze pakketten voert u `pip install requests urllib3` uit.
+> Als u deze modules niet hebt gebruikt, moet u ze installeren voordat u uw programma uitvoert. Voer voor het installeren van deze pakketten voert u `pip install requests urllib3` uit.
 
-Deze modules worden gebruikt voor het parseren van argumenten, het samen stellen van de HTTP-aanvraag en het aanroepen van de tekst-naar-spraak-audio REST API.
+Deze modules worden gebruikt om argumenten te ontlopen, de HTTP-aanvraag te construeren en de text-to-speech long audio REST API aan te roepen.
 
-## <a name="get-a-list-of-supported-voices"></a>Een lijst met ondersteunde stemmen ophalen
+## <a name="get-a-list-of-supported-voices"></a>Een lijst met ondersteunde stemmen
 
-Met deze code wordt een lijst met beschik bare stemmen opgehaald die u kunt gebruiken om tekst naar spraak te converteren. Voeg de code toe aan `voice_synthesis_client.py`:
+Deze code krijgt een lijst met beschikbare stemmen die u gebruiken om tekst-naar-spraak om te zetten. Voeg de `voice_synthesis_client.py`code toe aan:
 
 ```python
 parser = argparse.ArgumentParser(description='Cris client tool to submit voice synthesis requests.')
@@ -80,10 +80,10 @@ if args.voices:
 
 ### <a name="test-your-code"></a>Uw code testen
 
-Laten we eens testen wat u tot nu toe hebt gedaan. U moet een paar dingen bijwerken in de onderstaande aanvraag:
+Laten we testen wat je tot nu toe hebt gedaan. Je moet een paar dingen bijwerken in het onderstaande verzoek:
 
-* Vervang `<your_key>` door de abonnements sleutel van uw speech-service. Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
-* Vervang `<region>` door de regio waarin uw spraak bron is gemaakt (bijvoorbeeld: `eastus` of `westus`). Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
+* Vervang `<your_key>` door de abonnementssleutel spraakservice. Deze informatie is beschikbaar op het tabblad **Overzicht** voor uw resource in de [Azure-portal.](https://aka.ms/azureportal)
+* Vervang `<region>` door het gebied waar uw spraakbron `eastus` `westus`is gemaakt (bijvoorbeeld: of ). Deze informatie is beschikbaar op het tabblad **Overzicht** voor uw resource in de [Azure-portal.](https://aka.ms/azureportal)
 
 Voer deze opdracht uit:
 
@@ -100,16 +100,16 @@ Name: Microsoft Server Speech Text to Speech Voice (en-US, xxx), Description: xx
 Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xxx , Id: xxx, Locale: zh-CN, Gender: Female, PublicVoice: xxx, Created: 2019-08-26T04:55:39Z
 ```
 
-## <a name="prepare-input-files"></a>Invoer bestanden voorbereiden
+## <a name="prepare-input-files"></a>Invoerbestanden voorbereiden
 
-Een invoer tekst bestand voorbereiden. Dit kan onbewerkte tekst of SSML tekst zijn. Zie [inhoud voorbereiden voor synthese](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#prepare-content-for-synthesis)voor de vereisten voor het invoer bestand.
+Een invoertekstbestand voorbereiden. Het kan platte tekst of SSML-tekst zijn. Zie voor de vereisten van het invoerbestand hoe u [inhoud voorbereidt op synthese](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#prepare-content-for-synthesis).
 
-## <a name="convert-text-to-speech"></a>Tekst naar spraak converteren
+## <a name="convert-text-to-speech"></a>Tekst converteren naar spraak
 
-Nadat u het invoer tekst bestand hebt voor bereid, voegt u deze code voor spraak synthese toe aan `voice_synthesis_client.py`:
+Voeg na het voorbereiden van het invoertekstbestand `voice_synthesis_client.py`deze code toe voor spraaksynthese aan:
 
 > [!NOTE]
-> ' concatenateResult ' is een optionele para meter. Als deze para meter niet is ingesteld, worden de audio-uitvoer per alinea gegenereerd. U kunt de audio waarden ook samen voegen in 1 uitvoer door de para meter in te stellen. De audio-uitvoer wordt standaard ingesteld op RIFF-16khz-16-mono-PCM. Zie [audio-uitvoer indelingen](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats)voor meer informatie over ondersteunde audio-uitvoer.
+> 'concatenateResult' is een optionele parameter. Als deze parameter niet is ingesteld, worden de audio-uitgangen per alinea gegenereerd. U de audio ook in 1 uitvoer toevoegen door de parameter in te stellen. Standaard is de audio-uitgang ingesteld op riff-16khz-16bit-mono-pcm. Zie [Audio-uitvoerindelingen](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats)voor meer informatie over ondersteunde audio-uitgangen.
 
 ```python
 parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
@@ -172,24 +172,24 @@ if args.submit:
 
 ### <a name="test-your-code"></a>Uw code testen
 
-Laten we een aanvraag indienen voor het samen stellen van tekst met behulp van uw invoer bestand als bron. U moet een paar dingen bijwerken in de onderstaande aanvraag:
+Laten we een verzoek indienen om tekst te synthetiseren met behulp van uw invoerbestand als bron. Je moet een paar dingen bijwerken in het onderstaande verzoek:
 
-* Vervang `<your_key>` door de abonnements sleutel van uw speech-service. Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
-* Vervang `<region>` door de regio waarin uw spraak bron is gemaakt (bijvoorbeeld: `eastus` of `westus`). Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
-* Vervang `<input>` door het pad naar het tekst bestand dat u voor tekst naar spraak hebt voor bereid.
-* Vervang `<locale>` door de gewenste land instelling voor uitvoer. Zie [taal ondersteuning](../../language-support.md#neural-voices)voor meer informatie.
-* Vervang `<voice_guid>` door de gewenste uitvoer stem. Gebruik een van de stemmen die worden geretourneerd door [een lijst met ondersteunde stemmen](#get-a-list-of-supported-voices)op te halen.
+* Vervang `<your_key>` door de abonnementssleutel spraakservice. Deze informatie is beschikbaar op het tabblad **Overzicht** voor uw resource in de [Azure-portal.](https://aka.ms/azureportal)
+* Vervang `<region>` door het gebied waar uw spraakbron `eastus` `westus`is gemaakt (bijvoorbeeld: of ). Deze informatie is beschikbaar op het tabblad **Overzicht** voor uw resource in de [Azure-portal.](https://aka.ms/azureportal)
+* Vervang `<input>` het pad naar het tekstbestand dat u hebt voorbereid voor tekst-naar-spraak.
+* Vervang `<locale>` door de gewenste uitgangsland. Zie [taalondersteuning](../../language-support.md#neural-voices)voor meer informatie.
+* Vervang `<voice_guid>` door de gewenste uitvoerstem. Gebruik een van de stemmen die worden geretourneerd door [Get a list of supported voices](#get-a-list-of-supported-voices).
 
-Converteer tekst naar spraak met deze opdracht:
+Tekst converteren naar spraak met deze opdracht:
 
 ```console
 python voice_synthesis_client.py --submit -key <your_key> -region <Region> -file <input> -locale <locale> -voiceId <voice_guid>
 ```
 
 > [!NOTE]
-> Als u meer dan 1 invoer bestanden hebt, moet u meerdere aanvragen indienen. Er zijn enkele beperkingen die u moet kennen. 
-> * De client mag Maxi maal **5** aanvragen voor de server per seconde indienen voor elk account van een Azure-abonnement. Als deze de beperking overschrijdt, krijgt de client een fout code van 429 (te veel aanvragen). Verminder de aanvraag hoeveelheid per seconde
-> * De server mag Maxi maal **120** aanvragen voor elk account van een Azure-abonnement uitvoeren en in de wachtrij plaatsen. Als de limiet wordt overschreden, retourneert de server een fout code van 429 (te veel aanvragen). Een ogen blik geduld en het verzenden van een nieuwe aanvraag voor komen totdat sommige aanvragen zijn voltooid
+> Als u meer dan 1 invoerbestanden hebt, moet u meerdere aanvragen indienen. Er zijn een aantal beperkingen die moet worden bewust. 
+> * De client mag maximaal **5** aanvragen indienen bij server per seconde voor elk Azure-abonnementsaccount. Als de beperking wordt beperkt, krijgt de client een foutcode van 429 (te veel aanvragen). Verlaag het aanvraagbedrag per seconde
+> * De server mag maximaal **120** aanvragen uitvoeren en in de wachtrij staan voor elk Azure-abonnementsaccount. Als de beperking wordt beperkt, retourneert de server een foutcode van 429 (te veel aanvragen). Wacht en vermijd het indienen van nieuwe aanvraag totdat sommige aanvragen zijn voltooid
 
 U ziet een uitvoer die er als volgt uitziet:
 
@@ -209,13 +209,13 @@ Checking status
 Succeeded... Result file downloaded : xxxx.zip
 ```
 
-Het resultaat bevat de invoer tekst en de audio-uitvoer bestanden die door de service worden gegenereerd. U kunt deze bestanden downloaden in een zip-bestand.
+Het resultaat bevat de invoertekst en de audio-uitvoerbestanden die door de service worden gegenereerd. U deze bestanden downloaden in een zip.
 
 ## <a name="remove-previous-requests"></a>Eerdere aanvragen verwijderen
 
-De server bewaart Maxi maal **20.000** aanvragen voor elk account van een Azure-abonnement. Als uw aanvraag bedrag deze beperking overschrijdt, moet u de vorige aanvragen verwijderen voordat u er nieuwe maakt. Als u geen bestaande aanvragen verwijdert, ontvangt u een fout melding.
+De server houdt maximaal **20.000** aanvragen bij voor elk Azure-abonnementsaccount. Als uw aanvraagbedrag deze beperking overschrijdt, verwijdert u eerdere aanvragen voordat u nieuwe aanvragen maakt. Als u bestaande aanvragen niet verwijdert, ontvangt u een foutmelding.
 
-Voeg de code toe aan `voice_synthesis_client.py`:
+Voeg de `voice_synthesis_client.py`code toe aan:
 
 ```python
 parser.add_argument('--syntheses', action="store_true", default=False, help='print synthesis list')
@@ -248,10 +248,10 @@ if args.delete:
 
 ### <a name="test-your-code"></a>Uw code testen
 
-We gaan nu kijken welke aanvragen u eerder hebt verzonden. Voordat u doorgaat, moet u enkele dingen in deze aanvraag bijwerken:
+Laten we nu controleren welke aanvragen u eerder hebt ingediend. Voordat u verdergaat, moet u een paar dingen in dit verzoek bijwerken:
 
-* Vervang `<your_key>` door de abonnements sleutel van uw speech-service. Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
-* Vervang `<region>` door de regio waarin uw spraak bron is gemaakt (bijvoorbeeld: `eastus` of `westus`). Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
+* Vervang `<your_key>` door de abonnementssleutel spraakservice. Deze informatie is beschikbaar op het tabblad **Overzicht** voor uw resource in de [Azure-portal.](https://aka.ms/azureportal)
+* Vervang `<region>` door het gebied waar uw spraakbron `eastus` `westus`is gemaakt (bijvoorbeeld: of ). Deze informatie is beschikbaar op het tabblad **Overzicht** voor uw resource in de [Azure-portal.](https://aka.ms/azureportal)
 
 Voer deze opdracht uit:
 
@@ -259,7 +259,7 @@ Voer deze opdracht uit:
 python voice_synthesis_client.py --syntheses -key <your_key> -region <Region>
 ```
 
-Hiermee wordt een lijst geretourneerd met de synthese aanvragen die u hebt gemaakt. U ziet een uitvoer als volgt:
+Hiermee wordt een lijst met syntheseverzoeken die u hebt ingediend, retourneren. U ziet een uitvoer als volgt:
 
 ```console
 There are <number> synthesis requests submitted:
@@ -268,14 +268,14 @@ ID : xxx , Name : xxx, Status : Running
 ID : xxx , Name : xxx : Succeeded
 ```
 
-Nu gaan we een eerder ingediende aanvraag verwijderen. U moet een paar dingen bijwerken in de onderstaande code:
+Laten we nu een eerder ingediende aanvraag verwijderen. Je moet een paar dingen bijwerken in de onderstaande code:
 
-* Vervang `<your_key>` door de abonnements sleutel van uw speech-service. Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
-* Vervang `<region>` door de regio waarin uw spraak bron is gemaakt (bijvoorbeeld: `eastus` of `westus`). Deze informatie is beschikbaar op het tabblad **overzicht** voor uw resource in de [Azure Portal](https://aka.ms/azureportal).
-* Vervang `<synthesis_id>` door de waarde die in de vorige aanvraag is geretourneerd.
+* Vervang `<your_key>` door de abonnementssleutel spraakservice. Deze informatie is beschikbaar op het tabblad **Overzicht** voor uw resource in de [Azure-portal.](https://aka.ms/azureportal)
+* Vervang `<region>` door het gebied waar uw spraakbron `eastus` `westus`is gemaakt (bijvoorbeeld: of ). Deze informatie is beschikbaar op het tabblad **Overzicht** voor uw resource in de [Azure-portal.](https://aka.ms/azureportal)
+* Vervang `<synthesis_id>` de waarde die in de vorige aanvraag is geretourneerd.
 
 > [!NOTE]
-> Aanvragen met de status Running/Waiting kunnen niet worden verwijderd of verwijderd.
+> Aanvragen met de status 'Hardlopen'/'Wachten' kunnen niet worden verwijderd of verwijderd.
 
 Voer deze opdracht uit:
 
@@ -290,11 +290,11 @@ delete voice synthesis xxx
 delete successful
 ```
 
-## <a name="get-the-full-client"></a>De volledige client ophalen
+## <a name="get-the-full-client"></a>Krijg de volledige klant
 
-De voltooide `voice_synthesis_client.py` is beschikbaar voor downloaden op [github](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py).
+De `voice_synthesis_client.py` voltooide is beschikbaar voor download op [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over de API voor lange audio](../../long-audio-api.md)
+> [Meer informatie over de Lange Audio API](../../long-audio-api.md)

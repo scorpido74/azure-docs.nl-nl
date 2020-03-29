@@ -1,7 +1,7 @@
 ---
-title: Betrouwbaarheids Score-QnA Maker
+title: Betrouwbaarheidsscore - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Een Knowledge Base moet worden gepubliceerd. Zodra de Knowledge Base is gepubliceerd, wordt deze in de runtime-Voorspellings eindpunt opgevraagd met behulp van de generateAnswer-API.
+description: Er moet een kennisbank worden gepubliceerd. Eenmaal gepubliceerd, wordt de knowledge base opgevraagd op het eindpunt voor runtime voorspelling met behulp van de generateAnswer API.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,81 +12,81 @@ ms.date: 01/27/2020
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: d901a803311805825c22503af6098e805a67e8f6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76843449"
 ---
-# <a name="the-confidence-score-of-an-answer"></a>De betrouwbaarheids Score van een antwoord
-Wanneer de aanvraag voor een gebruiker wordt vergeleken met een knowledge base, retourneert de QnA Maker relevante antwoorden, samen met een betrouwbaarheidsscore. Deze score geeft aan dat het vertrouwen dat het antwoord de juiste overeenkomst voor de opgegeven gebruiker-query is.
+# <a name="the-confidence-score-of-an-answer"></a>De betrouwbaarheidsscore van een antwoord
+Wanneer een gebruikersquery wordt gekoppeld aan een kennisbank, retourneert QnA Maker relevante antwoorden, samen met een vertrouwensscore. Deze score geeft het vertrouwen aan dat het antwoord de juiste match is voor de opgegeven gebruikersquery.
 
-De betrouwbaarheidsscore is een getal tussen 0 en 100 liggen. Een score van 100, is waarschijnlijk een exacte overeenkomst, terwijl een score van 0 betekent dat dat er geen overeenkomende antwoord is gevonden. Hoe hoger de score - hoe groter het vertrouwen in het antwoord. Voor een bepaalde query, kunnen er meerdere antwoorden geretourneerd. In dat geval worden de antwoorden geretourneerd in volgorde van de betrouwbaarheidsscore verlagen.
+De betrouwbaarheidsscore is een getal tussen 0 en 100. Een score van 100 is waarschijnlijk een exacte match, terwijl een score van 0 betekent, dat er geen overeenkomend antwoord werd gevonden. Hoe hoger de score, hoe groter het vertrouwen in het antwoord. Voor een bepaalde query kunnen er meerdere antwoorden worden geretourneerd. In dat geval worden de antwoorden geretourneerd in volgorde van afnemende betrouwbaarheidsscore.
 
-In het onderstaande voorbeeld ziet u één QnA entiteit, met 2 vragen.
-
-
-![Voorbeeld van een combinatie van QnA](../media/qnamaker-concepts-confidencescore/ranker-example-qna.png)
-
-U kunt voor het bovenstaande voorbeeld - scores, zoals het bereik van de voorbeeld-score onderstaande-voor verschillende typen query's van gebruikers verwachten:
+In het onderstaande voorbeeld ziet u één QnA-entiteit, met 2 vragen.
 
 
-![Kerntechnologie score bereik](../media/qnamaker-concepts-confidencescore/ranker-score-range.png)
+![Voorbeeld van QnA-paar](../media/qnamaker-concepts-confidencescore/ranker-example-qna.png)
+
+Voor het bovenstaande voorbeeld u scores verwachten, zoals het onderstaande voorbeeldscorebereik, voor verschillende typen gebruikersquery's:
 
 
-De volgende tabel staan de typische vertrouwen die voor een bepaald scorebereik zijn gekoppeld.
+![Ranker score bereik](../media/qnamaker-concepts-confidencescore/ranker-score-range.png)
 
-|Score-waarde|Betekenis van score|Voorbeeld van een Query|
+
+In de volgende tabel wordt het typische vertrouwen aangegeven dat is gekoppeld aan een bepaalde score.
+
+|Scorewaarde|Scorebetekenis|Voorbeeldquery|
 |--|--|--|
-|90 - 100|Een bijna exact overeenkomen met de gebruikersquery en een vraag KB|' Mijn wijzigingen worden na het publiceren niet bijgewerkt in KB '|
-|> 70|Hoge betrouwbaarheid - doorgaans een goed antwoord die volledig vindt u antwoorden op query van de gebruiker|'Ik mijn KB gepubliceerd, maar deze niet wordt bijgewerkt'|
-|50 - 70|Gemiddeld vertrouwen - doorgaans een redelijk goed antwoord dat de belangrijkste doel van de gebruikersquery moet beantwoorden|"Moet ik mijn updates opslaan voordat ik mijn KB publiceren?"|
-|30 - 50|Lage vertrouwen - doorgaans een gerelateerde antwoord, die gedeeltelijk vindt u antwoorden op de intentie van de gebruiker|"Wat doet de opslaan en train?"|
-|< 30|Zeer lage vertrouwen - doorgaans query van de gebruiker niet reageert, maar heeft een overeenkomende woorden of zinsdelen |"Waar kan ik synoniemen toevoegen aan mijn KB"|
-|0|Er is geen overeenkomst, zodat het antwoord niet wordt geretourneerd.|"Wat de service kost"|
+|90 - 100|Een bijna exacte overeenkomst van gebruikersquery en een KB-vraag|"Mijn wijzigingen worden niet bijgewerkt in KB na publicatie"|
+|> 70|Veel vertrouwen - meestal een goed antwoord dat volledig beantwoordt aan de vraag van de gebruiker|"Ik heb mijn KB gepubliceerd, maar het is niet bijgewerkt"|
+|50 - 70|Gemiddeld vertrouwen - meestal een vrij goed antwoord dat de belangrijkste bedoeling van de gebruikersquery moet beantwoorden|"Moet ik mijn updates opslaan voordat ik mijn KB publiceer?"|
+|30 - 50|Weinig vertrouwen - meestal een gerelateerd antwoord, dat gedeeltelijk beantwoordt aan de intentie van de gebruiker|"Wat doet de save en trein doen?"|
+|< 30|Zeer weinig vertrouwen - meestal niet beantwoorden van de vraag van de gebruiker, maar heeft een aantal overeenkomende woorden of zinnen |" Waar kan ik synoniemen toevoegen aan mijn KB"|
+|0|Geen overeenkomst, dus het antwoord wordt niet geretourneerd.|"Hoeveel kost de service"|
 
-## <a name="choose-a-score-threshold"></a>Kies een score drempelwaarde
-De bovenstaande tabel bevat de scores dat wordt verwacht dat op de meeste kB's. Omdat elke KB echter anders is en verschillende soorten woorden, intenties en doel stellingen heeft, raden we u aan om de drempel waarde te testen en te kiezen die het beste geschikt is voor u. De drempel waarde is standaard ingesteld op 0, zodat alle mogelijke antwoorden worden geretourneerd. De aanbevolen drempel waarde die moet worden gebruikt voor de meeste Kb's, is **50**.
+## <a name="choose-a-score-threshold"></a>Kies een scoredrempel
+De bovenstaande tabel toont de scores die worden verwacht op de meeste KBs. Echter, omdat elke KB anders is, en heeft verschillende soorten woorden, bedoelingen en doelen- raden we u testen en kies de drempel die het beste werkt voor jou. Standaard is de drempelwaarde ingesteld op 0, zodat alle mogelijke antwoorden worden geretourneerd. De aanbevolen drempel die voor de meeste KB's zou moeten werken, is **50**.
 
-Bij het kiezen van de drempelwaarde, houd rekening met de balans tussen nauwkeurigheid en dekking en de drempelwaarde op basis van uw behoeften aanpassen.
+Houd bij het kiezen van uw drempel rekening met de balans tussen nauwkeurigheid en dekking en pas uw drempelwaarde aan op basis van uw vereisten.
 
-- Als **nauwkeurigheid** (of precisie) is belangrijker voor uw scenario en vervolgens uw drempelwaarde verhogen. Op deze manier telkens wanneer u een antwoord retourneren, worden een nog veel meer CONFIDENT case en nog veel meer waarschijnlijk dat de antwoord-gebruikers op zoek bent. In dit geval als u uiteindelijk meer vragen met openstaande verlaten. *Bijvoorbeeld:* als u de drempelwaarde **70**, mogelijk ontbreken bepaalde niet-eenduidige voorbeelden likes 'wat wordt opgeslagen en trainen?'.
+- Als **nauwkeurigheid** (of precisie) belangrijker is voor uw scenario, verhoog dan uw drempelwaarde. Op deze manier, elke keer dat u een antwoord terug, zal het een veel meer vertrouwen geval, en veel meer kans om het antwoord gebruikers op zoek zijn naar. In dit geval u uiteindelijk meer vragen onbeantwoord laten. *Bijvoorbeeld:* als u de drempel **70**maakt, mist u mogelijk enkele dubbelzinnige voorbeelden zoals "wat is opslaan en trainen?".
 
-- Als **dekking** (of intrekken) is meer belangrijke - en u wilt beantwoorden als veel vragen mogelijk, zelfs als er slechts een gedeeltelijke relatie van de gebruiker vragen-vervolgens VERLAAGT de drempel. Dit betekent dat er mogelijk meer situaties waarbij het antwoord niet de werkelijke query van de gebruiker beantwoordt, maar sommige andere enigszins gerelateerde antwoord krijgt. *Bijvoorbeeld:* als u de drempel waarde **30**maakt, kunt u antwoorden geven op query's zoals ' waar kan ik mijn KB bewerken? '
+- Als **dekking** (of terugroepen) belangrijker is en u zoveel mogelijk vragen wilt beantwoorden, zelfs als er slechts een gedeeltelijke relatie is met de vraag van de gebruiker, dan verlaagt u de drempel. Dit betekent dat er meer gevallen kunnen zijn waarin het antwoord geen antwoord geeft op de werkelijke vraag van de gebruiker, maar een ander enigszins gerelateerd antwoord geeft. *Bijvoorbeeld:* als u de drempel **30**maakt, u antwoorden geven op vragen als 'Waar kan ik mijn KB bewerken?'
 
 > [!NOTE]
-> Nieuwere versies van QnA Maker zijn verbeteringen aangebracht aan scoring logica en invloed kunnen zijn op de drempelwaarde. Elk gewenst moment bijwerken van de service, zorg ervoor dat voor het testen en aanpassen van de drempelwaarde, indien nodig. U kunt uw versie van de QnA-Service controleren [hier](https://www.qnamaker.ai/UserSettings), en zien hoe u de meest recente updates [hier](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates).
+> Nieuwere versies van QnA Maker bevatten verbeteringen in de scorelogica en kunnen van invloed zijn op uw drempelwaarde. Elke keer dat u de service bijwerkt, moet u de drempel testen en zo nodig aanpassen. U uw QnA Service-versie [hier](https://www.qnamaker.ai/UserSettings)controleren en zien hoe u hier de nieuwste updates [kunt](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)ontvangen.
 
-## <a name="set-threshold"></a>Drempel waarde instellen
+## <a name="set-threshold"></a>Drempelwaarde instellen
 
-Stel de drempel Score in als een eigenschap van de [JSON-hoofd tekst](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)van de GENERATEANSWER-API. Dit betekent dat u deze instelt voor elke aanroep van GenerateAnswer.
+Stel de drempelscore in als eigenschap van de [Json-instantie GenerateAnswer API.](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) Dit betekent dat u deze voor elke oproep instelt op GenerateAnswer.
 
-Stel in het bot-Framework de score in als onderdeel van het object Options [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) met of [node. js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
+Stel in het botkader de score in als onderdeel van het object Opties met [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) of [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
 
-## <a name="improve-confidence-scores"></a>Vertrouwen van de scores verbeteren
-Ter verbetering van de betrouwbaarheidsscore van een bepaald antwoord op de gebruikersquery van een, kunt u de gebruikersquery toevoegen aan de knowledge base als een alternatieve vraag op dat-antwoord. U kunt ook hoofdletter gevoelige [woord wijzigingen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) gebruiken om synoniemen toe te voegen aan tref woorden in uw KB.
-
-
-## <a name="similar-confidence-scores"></a>Vergelijkbare vertrouwen scores
-Wanneer u meerdere antwoorden op een vergelijkbare betrouwbaarheidsscore hebt, is het waarschijnlijk dat de query te algemeen en daarom overeenkomende kans met meerdere antwoorden was. Probeer uw vragen en antwoorden supereenvoudig beter structuur zodat elke entiteit QnA een afzonderlijke intentie heeft.
+## <a name="improve-confidence-scores"></a>Verbeter de vertrouwensscores
+Als u de vertrouwensscore van een bepaald antwoord op een gebruikersquery wilt verbeteren, u de gebruikersquery aan de kennisbank toevoegen als een alternatieve vraag over dat antwoord. U ook hoofdlettergevoelige [woordwijzigingen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) gebruiken om synoniemen toe te voegen aan zoekwoorden in uw KB.
 
 
-## <a name="confidence-score-differences-between-test-and-production"></a>Verschillen in Betrouwbaarheids scores tussen testen en productie
-De betrouwbaarheidsscore van een antwoord kan negligibly wisselen tussen de test- en gepubliceerde versie van de knowledge base, zelfs als de inhoud hetzelfde is. Dit komt doordat de inhoud van de test en de gepubliceerde Knowledge Base zich bevinden in verschillende Azure Cognitive Search-indexen.
-
-De test index bevat alle QnA-paren van uw kennis bases. Bij het uitvoeren van query's op de test index is de query van toepassing op de volledige index en worden de resultaten beperkt tot de partitie voor die specifieke Knowledge Base. Als de test query resultaten een negatieve invloed hebben op de mogelijkheid om de Knowledge Base te valideren, kunt u het volgende doen:
-* Organiseer uw Knowledge Base met behulp van een van de volgende opties:
-    * 1 resource beperkt tot 1 KB: Beperk uw single QnA-resource (en de resulterende Azure Cognitive Search test index) tot één kennis database.
-    * 2 Resources-1 voor test, 1 voor productie: twee QnA Maker resources hebben met één voor testen (met een eigen test-en productie-index) en één voor product (ook wel een eigen test-en productie-index)
-* en gebruik altijd dezelfde para meters, zoals **[Top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** bij het uitvoeren van query's op uw test-en productie Knowledge Base
-
-Wanneer u een kennis database publiceert, wordt de vraag en antwoord inhoud van uw kennis basis verplaatst van de test index naar een productie-index in azure Search. Bekijk hoe de [publicatie](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) bewerking werkt.
-
-Als u een Knowledge Base hebt in verschillende regio's, gebruikt elke regio een eigen Azure Cognitive Search-index. Omdat er verschillende indexen worden gebruikt, zijn de scores niet precies hetzelfde.
+## <a name="similar-confidence-scores"></a>Vergelijkbare vertrouwensscores
+Wanneer meerdere antwoorden een vergelijkbare betrouwbaarheidsscore hebben, is het waarschijnlijk dat de query te algemeen was en daarom gepaard ging met dezelfde waarschijnlijkheid met meerdere antwoorden. Probeer uw QnA's beter te structureren, zodat elke QnA-entiteit een duidelijke intentie heeft.
 
 
-## <a name="no-match-found"></a>Er is geen overeenkomst gevonden
-Wanneer er geen goede overeenkomst is gevonden door de kerntechnologie, wordt de betrouwbaarheidsscore van 0,0 of 'Geen' wordt geretourneerd en wordt het standaardantwoord is 'Geen goede treffer gevonden in de KB'. U kunt deze [standaard reactie](../How-To/metadata-generateanswer-usage.md) overschrijven in de bot of toepassings code die het eind punt aanroept. U kunt ook u kunt ook het antwoord voor overschrijven instellen in Azure en Hiermee wordt de standaardwaarde voor alle knowledge bases geïmplementeerd in een bepaalde QnA Maker-service gewijzigd.
+## <a name="confidence-score-differences-between-test-and-production"></a>Vertrouwensscoreverschillen tussen test en productie
+De betrouwbaarheidsscore van een antwoord kan verwaarloosbaar veranderen tussen de test en de gepubliceerde versie van de kennisbank, zelfs als de inhoud hetzelfde is. Dit komt omdat de inhoud van de test en de gepubliceerde kennisbank zich bevinden in verschillende Azure Cognitive Search-indexen.
+
+De testindex bevat alle QnA-paren van uw kennisbanken. Bij het opvragen van de testindex is de query van toepassing op de volledige index, waarna de resultaten beperkt zijn tot de partitie voor die specifieke kennisbasis. Als de testqueryresultaten een negatieve invloed hebben op uw vermogen om de kennisbank te valideren, u het als:
+* uw kennisbank te organiseren met een van de volgende opties:
+    * 1 resource beperkt tot 1 KB: beperk uw enkele QnA-bron (en de resulterende Azure Cognitive Search-testindex) tot één kennisbank.
+    * 2 resources - 1 voor test, 1 voor productie: hebben twee QnA Maker middelen, met behulp van een voor het testen (met zijn eigen test-en productie-indexen) en een voor het product (ook met een eigen test en productie-indexen)
+* en gebruik altijd dezelfde parameters, zoals **[bovenaan](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** bij het opvragen van zowel uw test- als productiekennisbestand
+
+Wanneer u een kennisbank publiceert, wordt de vraag- en antwoordinhoud van uw kennisbank verplaatst van de testindex naar een productie-index in Azure-zoekopdrachten. Bekijk hoe de [publicatiebewerking](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) werkt.
+
+Als u een kennisbank in verschillende regio's hebt, gebruikt elke regio zijn eigen Azure Cognitive Search-index. Omdat verschillende indexen worden gebruikt, zullen de scores niet precies hetzelfde zijn.
+
+
+## <a name="no-match-found"></a>Geen overeenkomst gevonden
+Wanneer er geen goede overeenkomst wordt gevonden door de ranker, wordt de betrouwbaarheidsscore van 0,0 of "Geen" geretourneerd en is de standaardrespons "Geen goede match gevonden in de KB". U dit [standaardantwoord](../How-To/metadata-generateanswer-usage.md) overschrijven in de bot- of toepassingscode die het eindpunt aanroept. U ook de overschrijfreactie in Azure instellen en dit verandert de standaardinstelling voor alle kennisbases die zijn geïmplementeerd in een bepaalde QnA Maker-service.
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
