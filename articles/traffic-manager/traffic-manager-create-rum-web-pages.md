@@ -1,6 +1,6 @@
 ---
-title: Real-user-metingen met webpagina's-Azure Traffic Manager
-description: In dit artikel leert u hoe u uw webpagina's kunt instellen om Real-user-metingen te verzenden naar Azure Traffic Manager.
+title: Metingen van echte gebruikers met webpagina's - Azure Traffic Manager
+description: In dit artikel leest u hoe u uw webpagina's instelt om echte gebruikersmetingen naar Azure Traffic Manager te verzenden.
 services: traffic-manager
 documentationcenter: traffic-manager
 author: rohinkoul
@@ -14,59 +14,59 @@ ms.date: 03/16/2018
 ms.author: rohink
 ms.custom: ''
 ms.openlocfilehash: 927d774ee30a291607a8a47fc2fd6878c1bc6fee
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938687"
 ---
-# <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Real-user-metingen naar Azure Traffic Manager verzenden met behulp van webpagina's
+# <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Echte gebruikersmetingen verzenden naar Azure Traffic Manager met behulp van webpagina's
 
-U kunt uw webpagina's zo configureren dat Real-user-metingen naar Traffic Manager worden verzonden door een Real-user-metingen (RUM)-sleutel te verkrijgen en de gegenereerde code op de webpagina in te sluiten.
+U uw webpagina's configureren om echte gebruikersmetingen naar Traffic Manager te verzenden door een RUM-sleutel (Real User Measurements) te verkrijgen en de gegenereerde code in te sluiten op webpagina's.
 
-## <a name="obtain-a-real-user-measurements-key"></a>Een Real-user-metingen sleutel verkrijgen
+## <a name="obtain-a-real-user-measurements-key"></a>Een sleutel voor het bekijken van een echte gebruiker verkrijgen
 
-De metingen die u uitvoert en verzenden naar Traffic Manager vanuit uw client toepassing worden geïdentificeerd door de service met behulp van een unieke teken reeks, de **real-User-metingen (rum)-sleutel**. U kunt een RUM-sleutel ophalen met behulp van de Azure Portal, een REST API of door gebruik te maken van de Power shell of Azure CLI.
+De metingen die u uitvoert en naar Traffic Manager stuurt vanuit uw clienttoepassing worden door de service geïdentificeerd met behulp van een unieke tekenreeks, de **zogenaamde Rum-toets (Real User Measurements).** U een RUM-sleutel krijgen via de Azure-portal, een REST-API of met de PowerShell- of Azure CLI-code.
 
-Voor het verkrijgen van de sleutel RUM met behulp van Azure Portal:
-1. Meld u aan bij de Azure Portal vanuit een browser. Als u nog geen account hebt, kunt u zich aanmelden voor een gratis proef versie van één maand.
-2. Zoek in de zoek balk van de portal naar de naam van het Traffic Manager profiel dat u wilt wijzigen en klik vervolgens op het Traffic Manager profiel in de resultaten die worden weer gegeven.
-3. Klik in de Blade Traffic Manager profiel op **real-User-metingen** onder **instellingen**.
-4. Klik op **sleutel genereren** om een nieuwe sleutel rum te maken.
+Ga als u de RUM-sleutel wilt verkrijgen via azure-portal:
+1. Meld u vanuit een browser aan bij Azure Portal. Als u nog geen account hebt, kunt u zich registreren voor een gratis proefversie van één maand.
+2. Zoek in de zoekbalk van de portal naar de naam van het Traffic Manager-profiel dat u wilt wijzigen, en klik vervolgens in de weergegeven resultaten op het Traffic Manager-profiel.
+3. Klik in het profielblad Verkeerbeheer op **Echte gebruikersmetingen** onder **Instellingen**.
+4. Klik **op Sleutel genereren** om een nieuwe RUM-sleutel te maken.
  
-   ![Real-user-metingen sleutel genereren](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
+   ![De sleutel Voor echte gebruikersmetingen genereren](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **Afbeelding 1: genereren van sleutels Real-user-metingen**
+   **Figuur 1: Real User Measurements Key Generation**
 
-5. Op de Blade worden nu de gegenereerde RUM-sleutel en een Java script-code fragment weer gegeven dat moet worden inge sloten in de HTML-pagina.
+5. Het blad geeft nu de gegenereerde RUM-sleutel weer en een JavaScript-codefragment dat moet worden ingesloten in uw HTML-pagina.
  
-    ![Java script-code voor Real-user-metingen sleutel](./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png)
+    ![Javascript-code voor de sleutel voor metingen van echte gebruikers](./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png)
 
-    **Afbeelding 2: Real-user-metingen Key en meting java script**
+    **Figuur 2: Real User Measurements Key en Measurement JavaScript**
  
-6. Klik op de knop **kopiëren** om de Java script-code te kopiëren. 
+6. Klik **op** de knop Kopiëren om de JavaScript-code te kopiëren. 
 
 >[!IMPORTANT]
-> Gebruik de gegenereerde java script-functie om Real-user-metingen goed te laten functioneren. Wijzigingen in dit script of de scripts die door Real-user-metingen worden gebruikt, kunnen leiden tot onvoorspelbaar gedrag.
+> Gebruik de functie gegenereerde JavaScript for Real-gebruikersmetingen om goed te functioneren. Wijzigingen in dit script of de scripts die worden gebruikt door Real User Measurements kunnen leiden tot onvoorspelbaar gedrag.
 
 ## <a name="embed-the-code-to-an-html-web-page"></a>De code insluiten op een HTML-webpagina
 
-Nadat u de sleutel RUM hebt verkregen, is de volgende stap het insluiten van deze gekopieerde java script naar een HTML-pagina die uw eind gebruikers bezoeken. Het bewerken van HTML kan op verschillende manieren worden uitgevoerd en het gebruik van verschillende hulpprogram ma's en werk stromen. In dit voor beeld ziet u hoe u een HTML-pagina bijwerkt om dit script toe te voegen. U kunt deze richt lijnen gebruiken om deze aan te passen aan uw HTML-bron beheer werk stroom.
+Nadat u de RUM-sleutel hebt verkregen, is de volgende stap om deze gekopieerde JavaScript in te sluiten in een HTML-pagina die uw eindgebruikers bezoeken. Het bewerken van HTML kan op vele manieren worden gedaan en met behulp van verschillende tools en workflows. In dit voorbeeld ziet u hoe u een HTML-pagina bijwerkt om dit script toe te voegen. U deze richtlijnen gebruiken om deze aan te passen aan uw HTML-bronbeheerworkflow.
 
-1.  Open de HTML-pagina in een tekst editor
-2.  Plak de Java script-code die u in de vorige stap hebt gekopieerd naar de hoofd sectie van de HTML (de gekopieerde code bevindt zich op regel 8 & 9, zie afbeelding 3).
+1.  De HTML-pagina openen in een teksteditor
+2.  Plak de JavaScript-code die u in de eerdere stap naar de sectie BODY van de HTML hebt gekopieerd (de gekopieerde code staat op regel 8 & 9, zie figuur 3).
  
-    ![Java script-code insluiten in een webpagina voor Real-user-metingen](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
+    ![Javascript-code insluiten in webpagina voor metingen van echte gebruikers](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
 
-    **Afbeelding 3: eenvoudige HTML met Inge sloten Real-user-metingen java script**
+    **Figuur 3: Eenvoudige HTML met ingesloten echte gebruikersmetingen JavaScript**
 
 3.  Sla het HTML-bestand op en host het op een webserver die is verbonden met internet. 
-4. De volgende keer dat deze pagina wordt weer gegeven in een webbrowser, wordt de Java script waarnaar wordt verwezen gedownload en worden de metings-en rapportage bewerkingen uitgevoerd door het script.
+4. De volgende keer dat deze pagina wordt weergegeven in een webbrowser, wordt de JavaScript waarnaar wordt verwezen gedownload en voert het script de meet- en rapportagebewerkingen uit.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [real-User-metingen](traffic-manager-rum-overview.md)
-- Meer informatie [over de werking van Traffic Manager](traffic-manager-overview.md)
-- Meer informatie over de [routerings methoden voor verkeer](traffic-manager-routing-methods.md) die door Traffic Manager worden ondersteund
-- Meer informatie over het [maken van een Traffic Manager profiel](traffic-manager-create-profile.md)
+- Meer informatie over [echte gebruikersmetingen](traffic-manager-rum-overview.md)
+- Meer informatie over [hoe Traffic Manager werkt](traffic-manager-overview.md)
+- Meer informatie over de [verkeersrouteringsmethoden](traffic-manager-routing-methods.md) die worden ondersteund door Traffic Manager
+- Meer informatie over het [maken van een Traffic Manager-profiel](traffic-manager-create-profile.md)
 

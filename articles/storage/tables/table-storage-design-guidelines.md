@@ -1,6 +1,6 @@
 ---
-title: Richtlijnen voor Azure storage tabelontwerp | Microsoft Docs
-description: Uw Azure-tabel-service voor de ondersteuning van leesbewerkingen efficiënt ontwerpen.
+title: Richtlijnen voor azure-opslagtabelontwerp | Microsoft Documenten
+description: Ontwerp uw Azure-tabelservice om leesbewerkingen efficiënt te ondersteunen.
 services: storage
 author: SnehaGunda
 ms.service: storage
@@ -9,37 +9,37 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: d056d29469ad9a60fceeee307aca3c0e1319283c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61269830"
 ---
 # <a name="guidelines-for-table-design"></a>Richtlijnen voor tabelontwerp
 
-Het ontwerpen van tabellen voor gebruik met de service Azure storage-tabel is heel anders dan ontwerpoverwegingen voor een relationele database. Dit artikel bevat richtlijnen voor het ontwerpen van uw service-oplossing van de tabel efficiënt worden gelezen en geschreven efficiënt.
+Het ontwerpen van tabellen voor gebruik met de Azure-opslagtabelservice verschilt sterk van ontwerpoverwegingen voor een relationele database. In dit artikel worden richtlijnen beschreven voor het ontwerpen van uw Table-serviceoplossing om efficiënt te lezen en efficiënt te schrijven.
 
-## <a name="design-your-table-service-solution-to-be-read-efficient"></a>Uw service-oplossing van de tabel lezen efficiënt ontwerpen
+## <a name="design-your-table-service-solution-to-be-read-efficient"></a>Ontwerp uw Table-serviceoplossing om leesefficiënt te zijn
 
-* ***Ontwerp voor het uitvoeren van query's in leesintensief toepassingen.*** Wanneer u uw tabellen ontwerpt, denken over de query's (met name de latentie gevoelige bestanden) die u zullen uitvoeren voordat u gaat nadenken over hoe u uw entiteiten wordt bijgewerkt. Dit leidt meestal tot een efficiënte en krachtige oplossing.  
-* ***Geef zowel PartitionKey en RowKey in uw query's.*** *Query's verwijzen* zoals dit zijn de meest efficiënt query's voor tabel-service.  
-* ***Houd rekening met het opslaan van kopieën maken van entiteiten.*** Tabelopslag is goedkoop dus houd rekening met het opslaan van dezelfde entiteit meerdere keren (met verschillende sleutels) om in te schakelen efficiëntere query's.  
-* ***Houd rekening met uw gegevens denormalizing.*** Tabelopslag is goedkoop dus houd rekening met uw gegevens denormalizing. Bijvoorbeeld, opslaan, samenvatting entiteiten zodat query's voor statistische gegevens alleen nodig voor toegang tot één entiteit.  
-* ***Samengestelde sleutels waarden gebruiken.*** Zijn de enige sleutels die u hebt **PartitionKey** en **RowKey**. Gebruik bijvoorbeeld samengestelde sleutelwaarden zodat alternatieve versleutelde Toegangspaden naar entiteiten.  
-* ***Query-projectie gebruiken.*** U kunt verminderen de hoeveelheid gegevens die u via het netwerk worden overgebracht met behulp van query's die u selecteert alleen de velden die u nodig hebt.  
+* ***Ontwerp voor query's in leeszware toepassingen.*** Wanneer u uw tabellen ontwerpt, moet u nadenken over de query's (met name de latentiegevoelige) die u uitvoert voordat u nadenkt over hoe u uw entiteiten bijwerkt. Dit resulteert meestal in een efficiënte en performante oplossing.  
+* ***Geef zowel PartitionKey als RowKey op in uw query's.*** *Puntquery's* zoals deze zijn de meest efficiënte tabelservicequery's.  
+* ***Overweeg dubbele kopieën van entiteiten op te slaan.*** Tabelopslag is goedkoop, dus overweeg om dezelfde entiteit meerdere keren (met verschillende sleutels) op te slaan om efficiëntere query's mogelijk te maken.  
+* ***Overweeg uw gegevens te denormaliseren.*** Tabelopslag is goedkoop, dus overweeg uw gegevens te denormaliseren. Sla bijvoorbeeld overzichtsentiteiten op, zodat query's voor geaggregeerde gegevens slechts toegang hoeven te krijgen tot één entiteit.  
+* ***Gebruik samengestelde sleutelwaarden.*** De enige toetsen die u hebt zijn **PartitionKey** en **RowKey.** Gebruik bijvoorbeeld samengestelde sleutelwaarden om alternatieve hoofdtoegangspaden naar entiteiten in te schakelen.  
+* ***Queryprojectie gebruiken.*** U de hoeveelheid gegevens die u via het netwerk overdraagt, verminderen door query's te gebruiken die alleen de velden selecteren die u nodig hebt.  
 
-## <a name="design-your-table-service-solution-to-be-write-efficient"></a>Uw service-oplossing van de tabel schrijven efficiënt ontwerpen  
+## <a name="design-your-table-service-solution-to-be-write-efficient"></a>Ontwerp uw Table-serviceoplossing om schrijfefficiënt te zijn  
 
-* ***Maak geen hot-partities.*** Kies de sleutels waarmee u kunt uw verzoeken, verdeeld over meerdere partities op elk moment.  
-* ***Vermijd pieken in verkeer.*** Het verkeer via een redelijke termijn vloeiend maken en te voorkomen dat pieken in verkeer.
-* ***Niet per se een afzonderlijke tabel voor elk type entiteit maken.*** Wanneer u atomische transacties via Entiteitstypen vereist, kunt u deze meerdere Entiteitstypen opslaan in dezelfde partitie in dezelfde tabel.
-* ***Houd rekening met de maximale doorvoer die u moet doen.*** U moet rekening houden met de schaalbaarheidsdoelen voor de Table-service en ervoor te zorgen dat uw ontwerp wordt niet ervoor zorgen dat u meer dan ze.  
+* ***Maak geen hete partities.*** Kies toetsen waarmee u uw aanvragen op elk gewenst moment over meerdere partities spreiden.  
+* ***Vermijd pieken in het verkeer.*** Glad het verkeer over een redelijke periode van tijd en vermijd pieken in het verkeer.
+* ***Maak niet noodzakelijkerwijs een aparte tabel voor elk type entiteit.*** Wanneer u atoomtransacties voor entiteitstypen nodig hebt, u deze meerdere entiteitstypen opslaan in dezelfde partitie in dezelfde tabel.
+* ***Houd rekening met de maximale doorvoer die u moet bereiken.*** U moet zich bewust zijn van de schaalbaarheidsdoelstellingen voor de tabelservice en ervoor zorgen dat uw ontwerp ervoor zorgt dat u deze niet overschrijdt.  
 
-Als u deze handleiding leest, ziet u voorbeelden die al deze principes in de praktijk te plaatsen. 
+Als u deze gids leest, ziet u voorbeelden die al deze beginselen in de praktijk brengen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Ontwerppatronen voor tabel](table-storage-design-patterns.md)
-- [Ontwerp voor het uitvoeren van query 's](table-storage-design-for-query.md)
-- [Versleutelen van gegevens in een tabel](table-storage-design-encrypt-data.md)
-- [Ontwerp voor wijziging van gegevens](table-storage-design-for-modification.md)
+- [Tabelontwerppatronen](table-storage-design-patterns.md)
+- [Ontwerp voor query's](table-storage-design-for-query.md)
+- [Tabelgegevens versleutelen](table-storage-design-encrypt-data.md)
+- [Ontwerp voor gegevenswijziging](table-storage-design-for-modification.md)

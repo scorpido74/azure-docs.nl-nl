@@ -1,7 +1,7 @@
 ---
-title: Id-providers configureren (MSAL iOS/macOS) | Azure
+title: Identiteitsproviders configureren (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het gebruik van verschillende instanties, zoals B2C, soevereine Clouds en gast gebruikers, met MSAL voor iOS en macOS.
+description: Meer informatie over het gebruik van verschillende autoriteiten, zoals B2C, sovereign clouds en gastgebruikers, met MSAL voor iOS en macOS.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,32 +14,32 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085206"
 ---
-# <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Procedure: MSAL voor iOS en macOS configureren voor het gebruik van verschillende id-providers
+# <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>How to: MSAL configureren voor iOS en macOS om verschillende identiteitsproviders te gebruiken
 
-In dit artikel wordt uitgelegd hoe u uw micro soft-verificatie bibliotheek-app voor iOS en macOS (MSAL) kunt configureren voor verschillende instanties, zoals Azure Active Directory (Azure AD), Business-to-consumer (B2C), soevereine Clouds en gast gebruikers.  In dit artikel kunt u het algemeen beschouwen als een id-provider.
+In dit artikel ziet u hoe u uw Microsoft-verificatiebibliotheek-app voor iOS en macOS (MSAL) configureert voor verschillende autoriteiten, zoals Azure Active Directory (Azure AD), Business-to-Consumer (B2C), soevereine clouds en gastgebruikers.  In dit artikel u over het algemeen denken aan een autoriteit als een identiteitsprovider.
 
-## <a name="default-authority-configuration"></a>Configuratie van de standaard instantie
+## <a name="default-authority-configuration"></a>Standaardconfiguratie van de autoriteit
 
-`MSALPublicClientApplication` is geconfigureerd met een standaard instantie-URL van `https://login.microsoftonline.com/common`, dat geschikt is voor de meeste Azure Active Directory AAD-scenario's. Tenzij u geavanceerde scenario's zoals nationale Clouds implementeert, of als u werkt met B2C, hoeft u deze niet te wijzigen.
+`MSALPublicClientApplication`is geconfigureerd met een URL `https://login.microsoftonline.com/common`van de standaardautoriteit van , die geschikt is voor de meeste Azure Active Directory (AAD)-scenario's. Tenzij u geavanceerde scenario's zoals nationale clouds implementeert of met B2C werkt, hoeft u deze niet te wijzigen.
 
 > [!NOTE]
-> Moderne authenticatie met Active Directory Federation Services als id-provider (ADFS) wordt niet ondersteund (Zie [ADFS voor ontwikkel aars](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) voor meer informatie). ADFS wordt ondersteund via Federatie.
+> Moderne verificatie met Active Directory Federation Services als identiteitsprovider (ADFS) wordt niet ondersteund (zie [ADFS voor ontwikkelaars](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) voor meer informatie). ADFS wordt ondersteund door federatie.
 
-## <a name="change-the-default-authority"></a>De standaard instantie wijzigen
+## <a name="change-the-default-authority"></a>De standaardautoriteit wijzigen
 
-In sommige scenario's, zoals Business-to-consumer (B2C), moet u mogelijk de standaard instantie wijzigen.
+In sommige scenario's, zoals business-to-consumer (B2C), moet u mogelijk de standaardautoriteit wijzigen.
 
 ### <a name="b2c"></a>B2C
 
-Voor het werken met B2C is voor de [micro soft Authentication Library (MSAL)](reference-v2-libraries.md) een andere certificerings instantie geconfigureerd. MSAL herkent één instantie-URL-indeling als B2C. De herkende indeling voor de B2C-instantie is `https://<host>/tfp/<tenant>/<policy>`, bijvoorbeeld `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SignInPolicy`. U kunt echter ook andere ondersteunde B2C ca-Url's gebruiken door instanties expliciet te declareren als B2C-instantie.
+Om met B2C te werken, vereist de [Microsoft Authentication Library (MSAL)](reference-v2-libraries.md) een configuratie van een andere autoriteit. MSAL herkent één URL-indeling van de autoriteit als B2C op zichzelf. De erkende B2C-autoriteitsindeling `https://<host>/tfp/<tenant>/<policy>` `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SignInPolicy`is bijvoorbeeld . U echter ook alle andere ondersteunde URL's van de B2C-autoriteit gebruiken door de autoriteit expliciet als B2C-autoriteit aan te zeggen.
 
-Als u een wille keurige URL-indeling voor B2C wilt ondersteunen, kunt `MSALB2CAuthority` als volgt worden ingesteld met een wille keurige URL:
+Als u een willekeurige URL-indeling `MSALB2CAuthority` voor B2C wilt ondersteunen, u worden ingesteld met een willekeurige URL, zoals deze:
 
 Objective-C
 ```objc
@@ -56,9 +56,9 @@ guard let authorityURL = URL(string: "arbitrary URL") else {
 let b2cAuthority = try MSALB2CAuthority(url: authorityURL)
 ```
 
-Alle B2C-instanties die geen gebruik maken van de standaard indeling voor B2C-instanties, moeten worden gedeclareerd als bekende instanties.
+Alle B2C-autoriteiten die geen gebruik maken van de standaard B2C-instantiemoeten als bekende autoriteiten worden aangegeven.
 
-Voeg elke andere B2C-instantie toe aan de lijst met bekende instanties, zelfs als de autoriteiten van het beleid verschillen.
+Voeg elke verschillende B2C-bevoegdheid toe aan de lijst van bekende autoriteiten, zelfs als de autoriteiten alleen verschillen in beleid.
 
 Objective-C
 ```objc
@@ -74,9 +74,9 @@ let b2cApplicationConfig = MSALPublicClientApplicationConfig(clientId: "your-cli
 b2cApplicationConfig.knownAuthorities = [b2cAuthority]
 ```
 
-Als uw app een nieuw beleid aanvraagt, moet de URL van de instantie worden gewijzigd omdat de URL van de autoriteit voor elk beleid verschillend is. 
+Wanneer uw app een nieuw beleid aanvraagt, moet de URL van de autoriteit worden gewijzigd omdat de URL van de autoriteit voor elk beleid verschilt. 
 
-Als u een B2C-toepassing wilt configureren, stelt u `@property MSALAuthority *authority` in met een exemplaar van `MSALB2CAuthority` in `MSALPublicClientApplicationConfig` voordat u `MSALPublicClientApplication`maakt. dit doet u als volgt:
+Als u een B2C-toepassing wilt configureren, stelt u in `@property MSALAuthority *authority` met een instantie van `MSALB2CAuthority` in `MSALPublicClientApplicationConfig` voordat u deze `MSALPublicClientApplication`maakt, zoals:
 
 Objective-C
 ```ObjC
@@ -127,9 +127,9 @@ do{
 }
 ```
 
-### <a name="sovereign-clouds"></a>Soevereine Clouds
+### <a name="sovereign-clouds"></a>Soevereine wolken
 
-Als uw app wordt uitgevoerd in een soevereine Cloud, moet u mogelijk de URL van de autoriteit wijzigen in de `MSALPublicClientApplication`. In het volgende voor beeld wordt de URL van de instantie ingesteld voor gebruik met de Duitse AAD-Cloud:
+Als uw app in een soevereine cloud wordt uitgevoerd, `MSALPublicClientApplication`moet u mogelijk de url van de autoriteit wijzigen in de . In het volgende voorbeeld wordt de URL van de autoriteit ingesteld om te werken met de Duitse AAD-cloud:
 
 Objective-C
 ```objc
@@ -174,17 +174,17 @@ do{
 }
 ```
 
-Mogelijk moet u verschillende bereiken door geven aan elke soevereine Cloud. Welke bereiken moeten worden verzonden, is afhankelijk van de resource die u gebruikt. U kunt bijvoorbeeld `"https://graph.microsoft.com/user.read"` gebruiken in de wereld wijde Cloud en `"https://graph.microsoft.de/user.read"` in de Duitse Cloud.
+Het kan nodig zijn om verschillende scopes door te geven aan elke soevereine cloud. Welke scopes u wilt verzenden, is afhankelijk van de resource die u gebruikt. U bijvoorbeeld `"https://graph.microsoft.com/user.read"` gebruiken in de `"https://graph.microsoft.de/user.read"` wereldwijde cloud en in de Duitse cloud.
 
-### <a name="signing-a-user-into-a-specific-tenant"></a>Een gebruiker ondertekenen in een specifieke Tenant
+### <a name="signing-a-user-into-a-specific-tenant"></a>Een gebruiker aanmelden bij een specifieke tenant
 
-Wanneer de CA-URL is ingesteld op `"login.microsoftonline.com/common"`, wordt de gebruiker aangemeld bij hun thuis Tenant. Sommige apps moeten de gebruiker echter mogelijk ondertekenen in een andere Tenant en sommige apps werken alleen met één Tenant.
+Wanneer de URL van `"login.microsoftonline.com/common"`de autoriteit is ingesteld op , wordt de gebruiker aangemeld bij zijn woonplaatstenant. Het kan echter zijn dat sommige apps de gebruiker moeten aanmelden bij een andere tenant en sommige apps werken alleen met één tenant.
 
-Als u de gebruiker wilt aanmelden bij een specifieke Tenant, configureert u `MSALPublicClientApplication` met een specifieke instantie. Bijvoorbeeld:
+Als u de gebruiker wilt `MSALPublicClientApplication` aanmelden bij een specifieke tenant, configureert u met een specifieke autoriteit. Bijvoorbeeld:
 
 `https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4`
 
-Hieronder ziet u hoe u een gebruiker aanmeldt bij een specifieke Tenant:
+Het volgende laat zien hoe u een gebruiker aaneentekent bij een specifieke tenant:
 
 Objective-C
 ```objc
@@ -228,24 +228,24 @@ do{
 }
 ```
 
-## <a name="supported-authorities"></a>Ondersteunde instanties
+## <a name="supported-authorities"></a>Ondersteunde autoriteiten
 
-### <a name="msalauthority"></a>MSALAuthority
+### <a name="msalauthority"></a>MSALAutoriteit
 
-De klasse `MSALAuthority` is de basis abstracte klasse voor de MSAL-instantie klassen. Probeer geen instantie hiervan te maken met behulp van `alloc` of `new`. Maak in plaats daarvan een van de subklassen rechtstreeks (`MSALAADAuthority`, `MSALB2CAuthority`) of gebruik de fabrieks methode `authorityWithURL:error:` om subklassen te maken met behulp van een CA-URL.
+De `MSALAuthority` klasse is de basis abstracte klasse voor de MSAL autoriteit klassen. Probeer er geen instantie van `alloc` te `new`maken met of . Maak in plaats daarvan een van`MSALAADAuthority`de `MSALB2CAuthority`subklassen rechtstreeks `authorityWithURL:error:` (, ) of gebruik de fabrieksmethode om subklassen te maken met behulp van een autoriteits-URL.
 
-Gebruik de eigenschap `url` om een genormaliseerde URL te verkrijgen. Extra para meters en padcomponenten of fragmenten die geen deel uitmaken van de instantie, worden niet weer gegeven in de genormaliseerde URL.
+Gebruik `url` de eigenschap om een genormaliseerde autoriteit URL te krijgen. Extra parameters en padcomponenten of fragmenten die geen deel uitmaken van de autoriteit, bevinden zich niet in de geretourneerde genormaliseerde autoriteits-URL.
 
-Hier volgen de subklassen van `MSALAuthority` die u kunt instantiëren afhankelijk van de instantie die u wilt gebruiken.
+De volgende zijn subklassen van `MSALAuthority` die u instantiate afhankelijk van de autoriteit wilt gebruiken.
 
-### <a name="msalaadauthority"></a>MSALAADAuthority
+### <a name="msalaadauthority"></a>MSALAADAutoriteit
 
-`MSALAADAuthority` vertegenwoordigt een AAD-instantie. De CA-URL moet de volgende indeling hebben, waarbij `<port>` optioneel is: `https://<host>:<port>/<tenant>`
+`MSALAADAuthority`vertegenwoordigt een AAD-autoriteit. De url van de autoriteit moet `<port>` in de volgende indeling zijn, waar is optioneel:`https://<host>:<port>/<tenant>`
 
-### <a name="msalb2cauthority"></a>MSALB2CAuthority
+### <a name="msalb2cauthority"></a>MSALB2CAutoriteit
 
-`MSALB2CAuthority` vertegenwoordigt een B2C-instantie. Standaard moet de URL van de B2C-instantie de volgende indeling hebben, waarbij `<port>` optioneel is: `https://<host>:<port>/tfp/<tenant>/<policy>`. MSAL ondersteunt echter ook andere wille keurige B2C-instantie-indelingen.
+`MSALB2CAuthority`vertegenwoordigt een B2C-autoriteit. Standaard moet de url van de B2C-autoriteit `<port>` in `https://<host>:<port>/tfp/<tenant>/<policy>`de volgende indeling staan, waar is optioneel: . MSAL ondersteunt echter ook andere willekeurige B2C-autoriteitsformaten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [verificatie stromen en toepassings scenario's](authentication-flows-app-scenarios.md)
+Meer informatie over [verificatiestromen en toepassingsscenario's](authentication-flows-app-scenarios.md)

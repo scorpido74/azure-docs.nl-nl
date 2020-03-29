@@ -1,6 +1,6 @@
 ---
-title: Over het netwerk controleren in Azure Monitor-Logboeken | Microsoft Docs
-description: Overzicht van oplossingen, met inbegrip van NPM, voor het beheren van netwerken in cloud, on-premises en hybride omgevingen voor netwerkbeheer.
+title: Informatie over netwerkbewaking in Azure-monitorlogboeken | Microsoft Documenten
+description: Overzicht van netwerkbewakingsoplossingen, waaronder NPM, om netwerken te beheren in cloud-, on-premises en hybride omgevingen.
 services: monitoring-and-diagnostics
 documentationcenter: na
 author: agummadi
@@ -16,59 +16,59 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
 ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67672179"
 ---
-# <a name="network-monitoring-solutions"></a>Oplossingen voor netwerkbeheer 
+# <a name="network-monitoring-solutions"></a>Oplossingen voor netwerkbewaking 
 
-Azure biedt een groot aantal oplossingen voor het controleren van de activa van uw netwerk. Azure heeft oplossingen en hulpprogramma's voor verbinding met het netwerk, de status van ExpressRoute-circuits, controleren en analyseren van netwerkverkeer in de cloud.
+Azure biedt een groot aantal oplossingen om uw netwerkassets te bewaken. Azure heeft oplossingen en hulpprogramma's om de netwerkconnectiviteit, de status van ExpressRoute-circuits te bewaken en netwerkverkeer in de cloud te analyseren.
 
-## <a name="network-performance-monitor-npm"></a>Netwerkprestatiemeter (NPM)
+## <a name="network-performance-monitor-npm"></a>Netwerkprestatiemonitor (NPM)
 
-(Netwerkprestatiemeter) is een reeks mogelijkheden, die is afgestemd op de bewaking van de status van uw netwerk, verbinding met het netwerk aan uw toepassingen, en biedt inzicht in de prestaties van uw netwerk. NPM is cloud-gebaseerde en biedt een hybride Netwerkcontrole-oplossing die connectiviteit tussen bewaakt:
+Network Performance Monitor (NPM) is een reeks mogelijkheden, die elk zijn gericht op het bewaken van de status van uw netwerk, netwerkconnectiviteit met uw toepassingen en biedt inzicht in de prestaties van uw netwerk. NPM is cloudgebaseerd en biedt een hybride netwerkbewakingsoplossing die de connectiviteit tussen:
  
-* Cloud-implementaties en on-premises locaties
-* Meerdere datacenters en filialen
-* Missiekritieke kritieke toepassingen/micro-services met meerdere lagen
-* Gebruikerslocaties en webtoepassingen (HTTP/HTTPs) 
+* Cloudimplementaties en on-premises locaties
+* Meerdere datacenters en bijkantoren
+* Bedrijfskritische toepassingen met meerdere lagen/microservices
+* Gebruikerslocaties en webgebaseerde toepassingen (HTTP/HTTP's) 
 
-Prestatiemeter, ExpressRoute-bewaking en Connectiviteitsmonitor Service mogelijkheden van NPM bewaakt en worden hieronder beschreven.
+Performance Monitor, ExpressRoute Monitor en Service Connectivity Monitor zijn monitoringmogelijkheden binnen NPM en worden hieronder beschreven.
 
 ## <a name="performance-monitor"></a>Prestatiemeter
 
-Prestatiemeter maakt deel uit van NPM en netwerkbewaking is voor de cloud, hybride en on-premises omgevingen. U kunt de netwerkconnectiviteit controleren voor externe filialen en bijkantoren, WINKELLOCATIES, datacentrums en clouds. U kunt netwerkproblemen detecteren voordat uw gebruikers klagen. De belangrijkste voordelen zijn:
+Performance Monitor is onderdeel van NPM en is netwerkbewaking voor cloud-, hybride- en on-premises omgevingen. U de netwerkconnectiviteit in externe filialen en veldkantoren, winkellocaties, datacenters en clouds controleren. U netwerkproblemen detecteren voordat uw gebruikers een klacht indienen. De belangrijkste voordelen zijn:
 
-* Verlies en latentie controleren in verschillende subnetten en waarschuwingen instellen
-* Alle paden (inclusief redundante paden) op het netwerk controleren
-* Problemen met tijdelijke en point-in-time-netwerk, die moeilijk te repliceren
-* Het specifieke segment van het netwerk, die verantwoordelijk is voor de verslechterde prestaties bepalen
-* Controleer de status van het netwerk, zonder de noodzaak voor SNMP
+* Verlies en latentie bewaken in verschillende subnetten en waarschuwingen instellen
+* Alle paden (inclusief redundante paden) op het netwerk bewaken
+* Tijdelijke en point-in-time netwerkproblemen oplossen die moeilijk te repliceren zijn
+* Bepaal het specifieke segment op het netwerk, dat verantwoordelijk is voor gedegradeerde prestaties
+* De status van het netwerk bewaken, zonder dat snmp nodig is
 
-![NPM topologiekaart weer](./media/network-monitoring-overview/npm-topology-map.png) 
+![NPM-topologiekaart](./media/network-monitoring-overview/npm-topology-map.png) 
 
-Voor meer informatie raadpleegt u de volgende artikelen:
+Bekijk voor meer informatie de volgende artikelen:
 
-* [Een-oplossing Netwerkprestatiemeter configureren in Azure Monitor-Logboeken](../azure-monitor/insights/network-performance-monitor.md) 
-* [Use cases](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
+* [Een oplossing voor netwerkprestatiemonitor configureren in Azure Monitor-logboeken](../azure-monitor/insights/network-performance-monitor.md) 
+* [Gebruiksvoorbeelden](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
 * Productupdates:
   * [Februari 2017](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
   * [Augustus 2017](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
 
-## <a name="expressroute-monitor"></a>ExpressRoute-bewaking
+## <a name="expressroute-monitor"></a>ExpressRoute-monitor
 
-NPM voor ExpressRoute biedt uitgebreide ExpressRoute-bewaking voor persoonlijke Azure-peering en Microsoft-peeringverbindingen. U kunt E2E-connectiviteit en -prestaties tussen uw filialen en Azure bewaken via ExpressRoute. De belangrijkste mogelijkheden zijn:
+NPM voor ExpressRoute biedt uitgebreide ExpressRoute-monitoring voor Azure Private peering- en Microsoft-peeringverbindingen. U de E2E-connectiviteit en -prestaties tussen uw filialen en Azure via ExpressRoute bewaken. De belangrijkste mogelijkheden zijn:
 
-* Automatische detectie van ER circuits die zijn gekoppeld aan uw abonnement
-* Detectie van de netwerktopologie van on-premises voor uw cloudtoepassingen
-* Capaciteitsplanning, analyse van Resourcegebruik bandbreedte
-* Bewaking en waarschuwingen voor de primaire en secundaire paden
-* Verbinding met Azure Monitoring services zoals Office 365, Dynamics 365, via ExpressRoute
-* Vermindering van de verbinding met vnet's detecteren
+* Automatische detectie van ER-circuits die aan uw abonnement zijn gekoppeld
+* Detectie van netwerktopologie van on-premises tot uw cloudtoepassingen
+* Capaciteitsplanning, bandbreedtegebruiksanalyse
+* Monitoring en waarschuwing op zowel primaire als secundaire paden
+* Controle van de connectiviteit met Azure-services zoals Office 365, Dynamics 365, ... over ExpressRoute
+* De afbraak van connectiviteit met VNets detecteren
 
-![Geografische kaart weergegeven verkeer tussen regio 's](./media/network-monitoring-overview/expressroute-topology-map.png) 
+![Geokaart met verkeer tussen regio's](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
@@ -77,49 +77,49 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 ## <a name="service-connectivity-monitor"></a>Bewaking van serviceverbinding
 
-Met Service-connectiviteit controleren, kunt u nu testen bereikbaarheid van toepassingen en knelpunten detecteren via on-premises, provider-netwerken en cloud/persoonlijk datacenters.
+Met Service Connectivity monitoring u nu de bereikbaarheid van toepassingen testen en prestatieknelpunten detecteren in on-premises, carriernetwerken en cloud/private datacenters.
 
-* Controleer de netwerkconnectiviteit voor end-to-end voor toepassingen
-* Levering van toepassingen correleren met prestaties van het netwerk, precieze locatie van de degradatie langs het pad tussen de gebruiker en de toepassing te detecteren
-* Test bereikbaarheid van de toepassing vanaf verschillende gebruikerslocaties over de hele wereld
-* Bepalen van de latentie en pakket wegvallend netwerk voor uw line-of-business en SaaS-toepassingen
-* Hotspots in het netwerk, die kan worden veroorzaakt door de prestaties slecht presteert bepalen
-* Bereikbaarheid voor Office 365-toepassingen, met behulp van ingebouwde tests voor Microsoft Office 365, Dynamics 365, Skype voor bedrijven en andere Microsoft-services bewaken
+* End-to-end netwerkconnectiviteit met toepassingen bewaken
+* Correleer de levering van toepassingen met netwerkprestaties, detecteer nauwkeurige locatie van degradatie langs het pad tussen de gebruiker en de toepassing
+* Bereikbaarheid van toepassingen testen vanaf meerdere gebruikerslocaties over de hele wereld
+* Netwerklatentie en pakketverlies bepalen voor uw branche en SaaS-toepassingen
+* Bepaal hotspots op het netwerk, die kunnen leiden tot slechte prestaties van toepassingen
+* De bereikbaarheid van Office 365-toepassingen bewaken met behulp van ingebouwde tests voor Microsoft Office 365, Dynamics 365, Skype voor Bedrijven en andere Microsoft-services
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
-* [Network Performance Monitor configureren voor het bewaken van Service-eindpunten](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
+* [Netwerkprestatiemeter configureren voor het bewaken van serviceeindpunten](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
 * [Blogbericht](https://aka.ms/svcendptmonitor)
 
 ## <a name="traffic-analytics"></a>Traffic Analytics
-Traffic Analytics is een cloud-gebaseerde oplossing waarmee u inzicht in gebruikers en toepassingen in uw cloudnetwerken. Stroomlogboeken logboeken zijn geanalyseerd om te bieden van inzicht in:
+Traffic Analytics is een cloudgebaseerde oplossing die inzicht biedt in de activiteit van gebruikers en toepassingen op uw cloudnetwerken. NSG Flow logs worden geanalyseerd om inzicht te geven in:
 
-* Verkeer stroomt tussen uw netwerken tussen Azure en Internet, openbare cloud-regio's, VNETs en subnetten
-* Toepassingen en -protocollen op uw netwerk, zonder de noodzaak voor sniffers of toegewezen stroom collector apparaten
-* Belangrijke gebruikers, intensieve toepassingen, VM-gesprekken in de cloud, verkeer hotspots
-* Bronnen en bestemmingen van verkeer in vnet's, tussen relaties tussen kritische zakelijke services en toepassingen
-* Beveiliging – schadelijk verkeer, poorten openen op het Internet, toepassingen of virtuele machines toegang tot het Internet proberen...
-* Capaciteitsverbruik - helpt u bij het voorkomen van problemen met capaciteit in te richten of ondermaats gebruik door de bewaking van trends in het gebruik van VPN-gateways en andere services
+* Verkeersstromen over uw netwerken tussen Azure en internet, openbare cloudregio's, VNET's en subnetten
+* Toepassingen en protocollen op uw netwerk, zonder de noodzaak van sniffers of speciale flow collector-apparaten
+* Top praters, spraakzame applicaties, VM-gesprekken in de cloud, traffic hotspots
+* Bronnen en bestemmingen van het verkeer over VNET's, onderlinge relaties tussen kritieke zakelijke diensten en toepassingen
+* Beveiliging - kwaadwillig verkeer, poorten open voor het internet, toepassingen of VM's proberen toegang tot internet ...
+* Capaciteitsbenutting - helpt u problemen van overprovisioning of onderbenutting te elimineren door de gebruikstrends van VPN-gateways en andere services te volgen
 
-Traffic Analytics voorziet u van bruikbare informatie die helpt u activiteit op het netwerk, veilige toepassingen en gegevens van uw organisatie controleren werkbelasting prestaties te optimaliseren en blijven voldoen.
+Traffic Analytics voorziet u van bruikbare informatie waarmee u de netwerkactiviteit van uw organisatie controleren, toepassingen en gegevens beveiligen, de werkbelastingprestaties optimaliseren en compliant blijven.
 
-![Geografische kaart weergegeven verkeer tussen regio 's](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
+![Geokaart met verkeer tussen regio's](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
-Verwante koppelingen:
-* [Blogbericht](https://aka.ms/trafficanalytics), [documentatie](https://aka.ms/trafficanalyticsdocs), [Veelgestelde vragen](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
+Gerelateerde links:
+* [Blogpost](https://aka.ms/trafficanalytics), [Documentatie](https://aka.ms/trafficanalyticsdocs), [FAQ](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
 
 ## <a name="dns-analytics"></a>DNS-analyse
-Gebouwd voor DNS-beheerders, deze oplossing verzamelt, analyseert en correleert DNS-logboeken voor beveiliging, bewerkingen en inzichten met betrekking tot prestaties.  Enkele van de mogelijkheden zijn:
+Deze oplossing is gebouwd voor DNS-beheerders en verzamelt, analyseert en correleert DNS-logboeken om beveiligings-, operationele en prestatiegerelateerde inzichten te bieden.  Enkele van de mogelijkheden zijn:
 
-* Identificatie van clients die proberen te worden omgezet naar schadelijke domeinen
-* Identificatie van verlopen bronrecords
-* Inzicht in vaak opgevraagde domeinnamen en dremepelwaarde DNS-clients
-* Inzicht in de aanvraagbelasting van DNS-servers
-* Bewaking van dynamische DNS-registratiefouten
+* Identificatie van clients die proberen op te lossen in schadelijke domeinen
+* Identificatie van verouderde bronrecords
+* Inzicht in veelgevraagde domeinnamen en spraakzame DNS-clients
+* Inzicht in de aanvraagbelasting op DNS-servers
+* Controle van dynamische DNS-registratiefouten
 
-![DNS Analytics-Dashboard](./media/network-monitoring-overview/dns-analytics-overview.png) 
+![DNS Analytics-dashboard](./media/network-monitoring-overview/dns-analytics-overview.png) 
 
-Verwante koppelingen:
+Gerelateerde links:
 * [Blogpost](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [Documentatie](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
 ## <a name="miscellaneous"></a>Diversen

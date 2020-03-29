@@ -1,6 +1,6 @@
 ---
-title: Een bureau blad-app bouwen die web-Api's aanroept-micro soft Identity-platform | Azure
-description: Meer informatie over het bouwen van een bureau blad-app die web-Api's aanroept (overzicht)
+title: Een desktop-app bouwen die web-API's aanroept - Microsoft-identiteitsplatform | Azure
+description: Meer informatie over het maken van een bureaublad-app die web-API's aanroept (overzicht)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,15 +15,15 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 196102769c1f5f68df316918a63079b09baad32d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76702144"
 ---
-# <a name="scenario-desktop-app-that-calls-web-apis"></a>Scenario: bureau blad-app voor het aanroepen van web-Api's
+# <a name="scenario-desktop-app-that-calls-web-apis"></a>Scenario: Bureaublad-app die web-API's aanroept
 
-Meer informatie over wat u nodig hebt om een bureau blad-app te bouwen die web-Api's aanroept.
+Leer alles wat u nodig hebt om een desktop-app te bouwen die web-API's aanroept.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,43 +31,43 @@ Meer informatie over wat u nodig hebt om een bureau blad-app te bouwen die web-A
 
 ## <a name="get-started"></a>Aan de slag
 
-Als u dat nog niet hebt gedaan, maakt u uw eerste toepassing door de Snelstartgids voor het .NET-bureau blad, de Universeel Windows-platform (UWP) Quick Start of de macOS-Snelstartgids voor de systeem eigen app te volgen:
+Als u dat nog niet hebt gedaan, maakt u uw eerste toepassing door de quickstart van het .NET-bureaublad, het QuickStart Universal Windows Platform (UWP) of de snelle start van de macOS-app te volgen:
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een Windows-bureau blad-app](./quickstart-v2-windows-desktop.md)
+> [Quickstart: Een token verkrijgen en Microsoft Graph API aanroepen vanuit een Windows-bureaublad-app](./quickstart-v2-windows-desktop.md)
 
 
 > [!div class="nextstepaction"]
-> [Quick Start: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een UWP-app](./quickstart-v2-uwp.md)
+> [Snelstart: een token aanschaffen en Microsoft Graph API aanroepen vanuit een UWP-app](./quickstart-v2-uwp.md)
 
 > [!div class="nextstepaction"]
-> [Quick Start: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een macOS-systeem eigen app](./quickstart-v2-ios.md)
+> [Snelstart: een token aanschaffen en Microsoft Graph API aanroepen vanuit een native macOS-app](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>Overzicht
 
-U schrijft een bureaublad toepassing en u wilt gebruikers aanmelden bij uw toepassing en Web-Api's aanroepen, zoals Microsoft Graph, andere micro soft-Api's of uw eigen web-API. U hebt verschillende mogelijkheden:
+U schrijft een bureaubladtoepassing en u wilt gebruikers aanmelden bij uw toepassing en web-API's aanroepen, zoals Microsoft Graph, andere Microsoft API's of uw eigen web-API. Je hebt verschillende mogelijkheden:
 
-- U kunt de volgende aanschaf van het interactieve token gebruiken:
+- U de interactieve tokenacquisitie gebruiken:
 
-  - Als uw bureaublad toepassing grafische besturings elementen ondersteunt, bijvoorbeeld als het een Windows. Form-toepassing, een WPF-toepassing of een macOS-systeem eigen toepassing is.
-  - Of, als het een .NET core-toepassing is en u akkoord gaat om de verificatie-interactie met Azure Active Directory (Azure AD) te laten plaatsvinden in de systeem browser.
+  - Als uw bureaubladtoepassing grafische besturingselementen ondersteunt, bijvoorbeeld als het een Windows.Form-toepassing, een WPF-toepassing of een macOS-native toepassing is.
+  - Of als het een .NET Core-toepassing is en u ermee instemt dat de verificatieinteractie met Azure AD (Azure AD) in de systeembrowser plaatsvindt.
 
-- Voor Windows-toepassingen die worden gehost, is het ook mogelijk voor toepassingen die worden uitgevoerd op computers die zijn toegevoegd aan een Windows-domein of Azure AD om een token op de achtergrond te verkrijgen met behulp van geïntegreerde Windows-verificatie.
-- Ten slotte, hoewel dit niet wordt aangeraden, kunt u een gebruikers naam en wacht woord in open bare client toepassingen gebruiken. Het is nog steeds nodig in sommige scenario's zoals DevOps. Met deze functie worden beperkingen voor uw toepassing opgelegd. Het is bijvoorbeeld niet mogelijk om een gebruiker aan te melden die multi-factor Authentication (voorwaardelijke toegang) moet uitvoeren. Uw toepassing profiteert ook niet van eenmalige aanmelding (SSO).
+- Voor windows gehoste toepassingen is het ook mogelijk voor toepassingen die worden uitgevoerd op computers die zijn aangesloten op een Windows-domein of Azure AD om een token in stilte te verkrijgen met geïntegreerde Windows-verificatie.
+- Ten slotte, en hoewel het niet wordt aanbevolen, u een gebruikersnaam en een wachtwoord gebruiken in openbare clienttoepassingen. Het is nog steeds nodig in sommige scenario's zoals DevOps. Het gebruik ervan legt beperkingen op aan uw toepassing. Het kan zich bijvoorbeeld niet aanmelden bij een gebruiker die multifactorauthenticatie moet uitvoeren (voorwaardelijke toegang). Ook zal uw aanvraag niet profiteren van single sign-on (SSO).
 
-  Het is ook van toepassing op de principes van moderne authenticatie en wordt alleen voor verouderde redenen verschaft.
+  Het is ook tegen de principes van moderne authenticatie en is alleen voorzien om legacy redenen.
 
-  ![Bureaublad toepassing](media/scenarios/desktop-app.svg)
+  ![Bureaubladtoepassing](media/scenarios/desktop-app.svg)
 
-- Als u een draagbaar opdracht regel programma schrijft, waarschijnlijk een .NET core-toepassing die wordt uitgevoerd op Linux of Mac, en als u accepteert dat verificatie wordt gedelegeerd aan de systeem browser, kunt u interactieve verificatie gebruiken. .NET core biedt geen [webbrowser](https://aka.ms/msal-net-uses-web-browser), waardoor er verificatie plaatsvindt in de systeem browser. Anders is de beste optie in dat geval het gebruik van de code stroom van het apparaat. Deze stroom wordt ook gebruikt voor toepassingen zonder een browser, zoals IoT-toepassingen.
+- Als u een draagbaar command-line-hulpprogramma schrijft, waarschijnlijk een .NET Core-toepassing die op Linux of Mac wordt uitgevoerd, en als u accepteert dat verificatie wordt gedelegeerd aan de systeembrowser, u interactieve verificatie gebruiken. .NET Core biedt geen [webbrowser,](https://aka.ms/msal-net-uses-web-browser)dus verificatie gebeurt in de systeembrowser. Anders is de beste optie in dat geval het gebruik van apparaatcodestroom. Deze stroom wordt ook gebruikt voor toepassingen zonder browser, zoals IoT-toepassingen.
 
   ![Browserloze toepassing](media/scenarios/device-code-flow-app.svg)
 
-## <a name="specifics"></a>Opsporingsgegevens
+## <a name="specifics"></a>Details
 
-Desktop toepassingen hebben een aantal specifieke kenmerken. Ze zijn voornamelijk afhankelijk van of uw toepassing interactieve authenticatie gebruikt.
+Desktoptoepassingen hebben een aantal specifieke kenmerken. Ze zijn vooral afhankelijk van de vraag of uw toepassing gebruik maakt van interactieve authenticatie of niet.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Bureau blad-app: app-registratie](scenario-desktop-app-registration.md)
+> [Bureaublad-app: App-registratie](scenario-desktop-app-registration.md)

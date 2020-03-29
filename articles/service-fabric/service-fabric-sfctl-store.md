@@ -1,94 +1,94 @@
 ---
-title: Azure Service Fabric CLI-sfctl Store
-description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het uitvoeren van bewerkingen op bestands niveau in het cluster installatie kopie archief.
+title: Azure Service Fabric CLI- sfctl-winkel
+description: Meer informatie over sfctl, de opdrachtregelinterface van Azure Service Fabric. Bevat een lijst met opdrachten voor het uitvoeren van bestandsniveaubewerkingen in het clusterimagearchief.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 75c62b54ff3aa7f3af344aa3e1ca81d431ae0ab2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905621"
 ---
 # <a name="sfctl-store"></a>sfctl store
-Voer elementaire bewerkingen op bestands niveau uit in het cluster installatie kopie archief.
+Voer bewerkingen op basisbestandsniveau uit in het clusterimagearchief.
 
 ## <a name="commands"></a>Opdrachten
 
 |Opdracht|Beschrijving|
 | --- | --- |
-| delete | Hiermee verwijdert u de bestaande inhoud van het installatie kopie archief. |
-| root-info | Hiermee haalt u de inhouds informatie op in de hoofdmap van het archief met installatie kopieën. |
-| gave | Hiermee wordt de informatie over de inhoud van de installatie kopie opgehaald. |
+| delete | Hiermee verwijdert u bestaande inhoud van het afbeeldingsarchief. |
+| root-info | Krijgt de inhoudsinformatie aan de basis van het afbeeldingsarchief. |
+| Stat | Hier worden de inhoudsinformatie van de afbeeldingswinkel weergegeven. |
 
-## <a name="sfctl-store-delete"></a>sfctl Store verwijderen
-Hiermee verwijdert u de bestaande inhoud van het installatie kopie archief.
+## <a name="sfctl-store-delete"></a>sfctl store verwijderen
+Hiermee verwijdert u bestaande inhoud van het afbeeldingsarchief.
 
-Hiermee verwijdert u de bestaande inhoud van het archief van de installatie kopie in het relatieve pad van de opgegeven afbeeldings opslag. Deze opdracht kan worden gebruikt om Geüploade toepassings pakketten te verwijderen nadat deze zijn ingericht.
-
-### <a name="arguments"></a>Argumenten
-
-|Argument|Beschrijving|
-| --- | --- |
-| --content-path [required] | Het relatieve pad naar het bestand of de map in het archief van de installatie kopie van de hoofdmap. |
-| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
-
-### <a name="global-arguments"></a>Algemene argumenten
-
-|Argument|Beschrijving|
-| --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
-| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
-| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
-| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
-
-## <a name="sfctl-store-root-info"></a>hoofdmap van sfctl-archief-info
-Hiermee haalt u de inhouds informatie op in de hoofdmap van het archief met installatie kopieën.
-
-Hiermee wordt de informatie over de inhoud van de installatie kopie in de hoofdmap van de installatie kopie-Archief geretourneerd.
+Hiermee verwijdert u bestaande inhoud van het afbeeldingsarchief die wordt gevonden in het opgegeven relatieve pad van het afbeeldingsarchief. Deze opdracht kan worden gebruikt om geüploade toepassingspakketten te verwijderen zodra ze zijn ingericht.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
+| --inhoud-pad [Vereist] | Relatief pad naar bestand of map in het afbeeldingsarchief vanaf de hoofdmap. |
+| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Algemene argumenten
+### <a name="global-arguments"></a>Globale argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
-| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
-| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
-| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
+| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
+| --help -h | Dit helpbericht weergeven en afsluiten. |
+| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
+| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
+| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
 
-## <a name="sfctl-store-stat"></a>sfctl Store-stat
-Hiermee wordt de informatie over de inhoud van de installatie kopie opgehaald.
+## <a name="sfctl-store-root-info"></a>sfctl store root-info
+Krijgt de inhoudsinformatie aan de basis van het afbeeldingsarchief.
 
-Retourneert informatie over de inhoud van de afbeeldings opslag in de opgegeven contentPath. De contentPath is relatief ten opzichte van de hoofdmap van de opslag voor installatie kopieën.
+Retourneert de informatie over de inhoud van het afbeeldingsarchief aan de hoofdmap van het afbeeldingsarchief.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --content-path [required] | Het relatieve pad naar het bestand of de map in het archief van de installatie kopie van de hoofdmap. |
-| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
+| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Algemene argumenten
+### <a name="global-arguments"></a>Globale argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
-| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
-| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
-| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
+| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
+| --help -h | Dit helpbericht weergeven en afsluiten. |
+| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
+| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
+| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+
+## <a name="sfctl-store-stat"></a>sfctl winkel stat
+Hier worden de inhoudsinformatie van de afbeeldingswinkel weergegeven.
+
+Geeft als resultaat de informatie over de inhoud van het afbeeldingsarchief op de opgegeven contentPath. De contentPath is relatief ten opzichte van de hoofdmap van het afbeeldingsarchief.
+
+### <a name="arguments"></a>Argumenten
+
+|Argument|Beschrijving|
+| --- | --- |
+| --inhoud-pad [Vereist] | Relatief pad naar bestand of map in het afbeeldingsarchief vanaf de hoofdmap. |
+| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+
+### <a name="global-arguments"></a>Globale argumenten
+
+|Argument|Beschrijving|
+| --- | --- |
+| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
+| --help -h | Dit helpbericht weergeven en afsluiten. |
+| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
+| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
+| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Stel](service-fabric-cli.md) de service Fabric cli in.
-- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Stel](service-fabric-cli.md) de SERVICE Fabric CLI in.
+- Meer informatie over het gebruik van de CLI van de ServiceFabric met behulp van de [voorbeeldscripts](/azure/service-fabric/scripts/sfctl-upgrade-application).

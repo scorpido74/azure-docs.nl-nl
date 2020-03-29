@@ -1,7 +1,7 @@
 ---
-title: Verschillen tussen MSAL. js en ADAL. js | Azure
+title: Verschillen tussen MSAL.js en ADAL.js | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over de verschillen tussen de micro soft-verificatie bibliotheek voor Java script (MSAL. js) en de Azure AD-verificatie bibliotheek voor Java script (ADAL. js) en hoe u kunt kiezen welke u wilt gebruiken.
+description: Meer informatie over de verschillen tussen Microsoft Authentication Library voor JavaScript (MSAL.js) en Azure AD Authentication Library for JavaScript (ADAL.js) en hoe u kiezen welke te gebruiken.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,54 +14,54 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 7238a78279528b4522d09178d00bf916f14bad88
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696415"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>Verschillen tussen MSAL JS en ADAL JS
 
-Zowel micro soft-verificatie bibliotheek voor Java script (MSAL. js) als Azure AD-verificatie bibliotheek voor Java script (ADAL. js) worden gebruikt voor het verifiëren van Azure AD-entiteiten en het aanvragen van tokens van Azure AD. Tot nu toe hebben de meeste ontwikkel aars met Azure AD voor ontwikkel aars (v 1.0) gewerkt voor het verifiëren van Azure AD-identiteiten (werk-en school accounts) door tokens aan te vragen met behulp van ADAL. Nu kunt u met behulp van MSAL. js een uitgebreidere set micro soft-identiteiten (Azure AD-identiteiten en micro soft-accounts en sociale en lokale accounts via Azure AD B2C) verifiëren via micro soft Identity platform (v 2.0).
+Zowel de Microsoft-verificatiebibliotheek voor JavaScript (MSAL.js) als de Azure AD-verificatiebibliotheek voor JavaScript (ADAL.js) worden gebruikt om Azure AD-entiteiten te verifiëren en tokens van Azure AD aan te vragen. Tot nu toe hebben de meeste ontwikkelaars samengewerkt met Azure AD voor ontwikkelaars (v1.0) om Azure AD-identiteiten (werk- en schoolaccounts) te verifiëren door tokens aan te vragen met ADAL. Nu u met MSAL.js een bredere set Microsoft-identiteiten (Azure AD-identiteiten en Microsoft-accounts en sociale en lokale accounts verifiëren via Azure AD B2C) via het Microsoft-identiteitsplatform (v2.0).
 
-In dit artikel wordt beschreven hoe u kiest tussen de micro soft-verificatie bibliotheek voor Java script (MSAL. js) en de Azure AD-verificatie bibliotheek voor Java script (ADAL. js) en vergelijkt de twee bibliotheken.
+In dit artikel wordt beschreven hoe u kiezen tussen de Microsoft-verificatiebibliotheek voor JavaScript (MSAL.js) en azure AD-verificatiebibliotheek voor JavaScript (ADAL.js) en de twee bibliotheken.
 
-## <a name="choosing-between-adaljs-and-msaljs"></a>Kiezen tussen ADAL. js en MSAL. js
+## <a name="choosing-between-adaljs-and-msaljs"></a>Kiezen tussen ADAL.js en MSAL.js
 
-In de meeste gevallen wilt u het micro soft Identity platform en MSAL. js gebruiken. Dit is de nieuwste generatie micro soft-verificatie bibliotheken. Met behulp van MSAL. js kunt u tokens verkrijgen voor gebruikers die zich aanmelden bij uw toepassing met Azure AD (werk-en school accounts), micro soft (persoonlijke) accounts (MSA) of Azure AD B2C.
+In de meeste gevallen wilt u het Microsoft-identiteitsplatform en MSAL.js gebruiken, de nieuwste generatie Microsoft-verificatiebibliotheken. Met MSAL.js verwerft u tokens voor gebruikers die zich aanmelden bij uw toepassing met Azure AD (werk- en schoolaccounts), Microsoft (personal) accounts (MSA) of Azure AD B2C.
 
-Als u al bekend bent met het v 1.0-eind punt (en ADAL. js), wilt u wellicht lezen [wat er anders is dan het v 2.0-eind punt?](active-directory-v2-compare.md).
+Als u al bekend bent met het v1.0-eindpunt (en ADAL.js), wilt u misschien lezen [Wat is er anders aan het v2.0-eindpunt?](active-directory-v2-compare.md).
 
-U moet echter nog steeds ADAL. js gebruiken als uw toepassing zich moet aanmelden bij eerdere versies van [Active Directory Federation Services (ADFS)](/windows-server/identity/active-directory-federation-services).
+U moet ADAL.js echter nog steeds gebruiken als uw toepassing zich moet aanmelden bij gebruikers met eerdere versies van [ADFS (Active Directory Federation Services).](/windows-server/identity/active-directory-federation-services)
 
-## <a name="key-differences-in-authentication-with-msaljs"></a>Belangrijkste verschillen in verificatie met MSAL. js
+## <a name="key-differences-in-authentication-with-msaljs"></a>Belangrijkste verschillen in verificatie met MSAL.js
 
-### <a name="core-api"></a>Core-API
+### <a name="core-api"></a>Core API
 
-* ADAL. js gebruikt [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#authenticationcontext) als representatie van een exemplaar van de verbinding van uw toepassing met de autorisatie server of ID-provider via een instantie-URL. In tegens telling tot de MSAL. js-API is ontworpen rond client toepassing voor gebruikers agent (een vorm van een open bare client toepassing waarin de client code wordt uitgevoerd in een gebruikers agent, zoals een webbrowser). Het biedt de `UserAgentApplication` klasse om een exemplaar van de verificatie context van de toepassing met de autorisatie server weer te geven. Zie [initialiseren met MSAL. js](msal-js-initializing-client-applications.md)voor meer informatie.
+* ADAL.js gebruikt [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#authenticationcontext) als weergave van een instantie van de verbinding van uw toepassing met de autorisatieserver of identiteitsprovider via een url van de autoriteit. MsAL.js API is daarentegen ontworpen rond de clienttoepassing van gebruikersagenten (een vorm van openbare clienttoepassing waarin de clientcode wordt uitgevoerd in een user-agent zoals een webbrowser). Het biedt `UserAgentApplication` de klasse om een instantie van de verificatiecontext van de toepassing te vertegenwoordigen met de autorisatieserver. Zie [Initialiseren met MSAL.js](msal-js-initializing-client-applications.md)voor meer informatie.
 
-* In ADAL. js worden de methoden voor het verkrijgen van tokens gekoppeld aan één instantie die in de `AuthenticationContext`is ingesteld. In MSAL. js kunnen de aanvragen voor het ophalen van tokens verschillende instanties waarden hebben dan wat in de `UserAgentApplication`is ingesteld. Hierdoor kan MSAL. js tokens afzonderlijk verkrijgen en in de cache opslaan voor meerdere tenants en gebruikers accounts in dezelfde toepassing.
+* In ADAL.js worden de methoden voor het verkrijgen van `AuthenticationContext`tokens gekoppeld aan één autoriteit die is ingesteld in de . In MSAL.js kunnen de tokenaanvragen voor verwerven andere autoriteitswaarden aannemen dan wat is ingesteld in de `UserAgentApplication`. Hierdoor kan MSAL.js tokens afzonderlijk aanschaffen en opslaan voor meerdere tenants en gebruikersaccounts in dezelfde toepassing.
 
-* De methode om tokens op de achtergrond te verkrijgen en te vernieuwen zonder dat de gebruiker om toestemming wordt gevraagd, wordt `acquireToken` genoemd in ADAL. js. In MSAL. js heeft deze methode de naam `acquireTokenSilent` om meer beschrijvende van deze functionaliteit te maken.
+* De methode om tokens in stilte te `acquireToken` verkrijgen en te vernieuwen zonder gebruikers te vragen wordt genoemd in ADAL.js. In MSAL.js wordt deze `acquireTokenSilent` methode genoemd als meer beschrijvend voor deze functionaliteit.
 
-### <a name="authority-value-common"></a>Waarde van instantie `common`
+### <a name="authority-value-common"></a>Waarde van de autoriteit`common`
 
-In v 1.0 kunnen gebruikers zich aanmelden met een Azure AD-account (voor elke organisatie) met behulp van de `https://login.microsoftonline.com/common`-instantie.
+In v1.0 kunnen `https://login.microsoftonline.com/common` gebruikers zich met de autoriteit aanmelden met een Azure AD-account (voor elke organisatie).
 
-In v 2.0 kunnen gebruikers met behulp van de `https://login.microsoftonline.com/common`-instantie zich aanmelden met een Azure AD-organisatie account of een persoonlijk micro soft-account (MSA). Als u de aanmelding wilt beperken tot alleen Azure AD-accounts (hetzelfde gedrag als met ADAL. js), moet u `https://login.microsoftonline.com/organizations`gebruiken. Zie voor meer informatie de optie `authority` config in [Initialize met behulp van MSAL. js](msal-js-initializing-client-applications.md).
+In v2.0, `https://login.microsoftonline.com/common` met behulp van de autoriteit, kunnen gebruikers zich aanmelden met een Azure AD-organisatieaccount of een Microsoft-persoonlijk account (MSA). Als u de aanmelding wilt beperken tot alleen Azure AD-accounts (hetzelfde gedrag als bij ADAL.js), moet u . `https://login.microsoftonline.com/organizations` Zie voor meer `authority` informatie de optie config in [Initialiseren met MSAL.js](msal-js-initializing-client-applications.md).
 
-### <a name="scopes-for-acquiring-tokens"></a>Bereiken voor het verkrijgen van tokens
-* Bereik in plaats van resource-para meter in verificatie aanvragen voor het verkrijgen van tokens
+### <a name="scopes-for-acquiring-tokens"></a>Scopes voor het verwerven van tokens
+* Scope in plaats van resourceparameter in verificatieaanvragen om tokens te verkrijgen
 
-    v 2.0-protocol gebruikt scopes in plaats van resource in de aanvragen. Met andere woorden, als uw toepassing tokens moet aanvragen met machtigingen voor een resource zoals MS Graph, is het verschil in waarden die worden door gegeven aan de bibliotheek methoden als volgt:
+    v2.0-protocol gebruikt scopes in plaats van resource in de aanvragen. Met andere woorden, wanneer uw toepassing tokens moet aanvragen met machtigingen voor een bron zoals MS Graph, is het verschil in waarden dat wordt doorgegeven aan de bibliotheekmethoden als volgt:
 
-    v 1.0: resource = https\://graph.microsoft.com
+    v1.0: resource\:= https -graph.microsoft.com
 
-    v 2.0: Scope = https\://graph.microsoft.com/User.Read
+    v2.0: scope\:= https -graph.microsoft.com/User.Read
 
-    U kunt bereiken voor elke resource-API aanvragen met behulp van de URI van de API in deze indeling: appidURI/Scope bijvoorbeeld: https:\//mytenant.onmicrosoft.com/myapi/api.read
+    U scopes voor elke resource-API aanvragen met de URI van de API\/in deze indeling: appidURI/scope Bijvoorbeeld: https: /mytenant.onmicrosoft.com/myapi/api.read
 
-    Voor de MS Graph API is een bereik waarde `user.read` toegewezen aan https:\//graph.microsoft.com/User.Read en kan door elkaar worden gebruikt.
+    Alleen voor de MS Graph `user.read` API wordt\/een scopewaarde toegewezen aan https: /graph.microsoft.com/User.Read en kan door elkaar worden gebruikt.
 
     ```javascript
     var request = {
@@ -71,9 +71,9 @@ In v 2.0 kunnen gebruikers met behulp van de `https://login.microsoftonline.com/
     acquireTokenPopup(request);   
     ```
 
-* Dynamische bereiken voor incrementele toestemming.
+* Dynamische scopes voor incrementele toestemming.
 
-    Wanneer u toepassingen bouwt met behulp van v 1.0, moet u de volledige set machtigingen (statische bereiken) registreren die de gebruiker nodig heeft om toestemming te geven op het moment van de aanmelding. In v 2.0 kunt u de bereik parameter gebruiken om de machtigingen op te vragen op het moment dat u wilt. Deze worden dynamische bereiken genoemd. Hiermee kan de gebruiker incrementele toestemming geven voor bereiken. Als u aan het begin alleen wilt dat de gebruiker zich bij uw toepassing aanmeldt en u geen toegang nodig hebt, kunt u dat doen. Als u dit later nodig hebt om de agenda van de gebruiker te lezen, kunt u het bereik van de agenda aanvragen in de acquireToken-methoden en de toestemming van de gebruiker krijgen. Bijvoorbeeld:
+    Bij het bouwen van toepassingen met behulp van v1.0, moest u de volledige set van machtigingen (statische scopes) vereist door de toepassing voor de gebruiker om toestemming te geven aan op het moment van inloggen registreren. In v2.0 u de bereikparameter gebruiken om de machtigingen aan te vragen op het moment dat u ze wilt. Dit worden dynamische scopes genoemd. Hierdoor kan de gebruiker incrementele toestemming geven voor scopes. Dus als je in het begin gewoon wilt dat de gebruiker zich aanmeldt bij je applicatie en je hebt geen toegang nodig, dan kun je dat doen. Als u later de mogelijkheid nodig hebt om de agenda van de gebruiker te lezen, u vervolgens het agendabereik in de acquireToken-methoden aanvragen en de toestemming van de gebruiker verkrijgen. Bijvoorbeeld:
 
     ```javascript
     var request = {
@@ -83,9 +83,9 @@ In v 2.0 kunnen gebruikers met behulp van de `https://login.microsoftonline.com/
     acquireTokenPopup(request);   
     ```
 
-* Bereiken voor V 1.0-Api's
+* Scopes voor V1.0 API's
 
-    Bij het ophalen van tokens voor V 1.0 Api's met behulp van MSAL. js kunt u alle statische bereiken aanvragen die zijn geregistreerd op de API door `.default` toe te voegen aan de App-ID-URI van de API als bereik. Bijvoorbeeld:
+    Wanneer u tokens voor V1.0-API's krijgt met MSAL.js, u `.default` alle statische scopes aanvragen die op de API zijn geregistreerd door toe te nemen aan de App ID URI van de API als scope. Bijvoorbeeld:
 
     ```javascript
     var request = {
@@ -96,4 +96,4 @@ In v 2.0 kunnen gebruikers met behulp van de `https://login.microsoftonline.com/
     ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [vergelijking van v 1.0 en v 2.0](active-directory-v2-compare.md)voor meer informatie.
+Zie voor meer informatie [v1.0 en v2.0-vergelijking](active-directory-v2-compare.md).

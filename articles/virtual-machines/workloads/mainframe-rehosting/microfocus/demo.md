@@ -1,276 +1,276 @@
 ---
 title: Micro Focus CICS BankDemo instellen voor Micro Focus Enterprise Developer 4.0 op Azure Virtual Machines
-description: Voer de toepassing Micro Focus BankDemo op Azure Virtual Machines (VM's) voor meer informatie over het gebruik van Micro Focus Enterprise Server en Enterprise-ontwikkelaars.
+description: Voer de Micro Focus BankDemo-toepassing uit op Azure Virtual Machines (VM's) om te leren microfocus-enterpriseserver en enterprise ontwikkelaar te gebruiken.
 author: sread
 ms.author: sread
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 4491fc137c2c85e2be605f5e58fde6fd422efbbe
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67621337"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Micro Focus CICS BankDemo instellen voor Micro Focus Enterprise Developer 4.0 op Azure
 
-Bij het instellen van Micro Focus Enterprise Server 4.0 en Enterprise Developer 4.0 op Azure, kunt u implementaties van IBM z/OS-werkbelastingen kunt testen. In dit artikel laat zien hoe het instellen van CICS BankDemo, een voorbeeldtoepassing die wordt geleverd met Enterprise-ontwikkelaars.
+Wanneer u Micro Focus Enterprise Server 4.0 en Enterprise Developer 4.0 inStelt op Azure, u implementaties van IBM z/OS-workloads testen. In dit artikel ziet u hoe u CICS BankDemo instellen, een voorbeeldtoepassing die wordt geleverd met Enterprise Developer.
 
-CICs staat voor het systeem voor klantinformatie, de transactie-platform dat door veel van de online mainframe-toepassingen. De toepassing BankDemo is erg handig voor het leren van de werking van Enterprise-Server en Enterprise Developer en over het beheren en implementeren van een werkelijke toepassing is voltooid met groene scherm terminals.
+CICs staat voor Customer Information Control System, het transactieplatform dat wordt gebruikt door veel van de online mainframetoepassingen. De BankDemo-applicatie is ideaal om te leren hoe Enterprise Server en Enterprise Developer werken en hoe u een daadwerkelijke toepassing beheren en implementeren, compleet met green screen terminals.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een virtuele machine met [Enterprise Developer](set-up-micro-focus-azure.md). Houd er rekening mee dat ontwikkelaar een compleet exemplaar van de Enterprise-Server erop voor ontwikkelings- en testdoeleinden heeft. Dit exemplaar is het exemplaar van de Enterprise-Server die wordt gebruikt voor de demo.
+- Een VM met [Enterprise Developer](set-up-micro-focus-azure.md). Houd er rekening mee dat Enterprise Developer een volledig exemplaar van Enterprise Server heeft staan voor ontwikkelings- en testdoeleinden. Dit exemplaar is de instantie van Enterprise Server die wordt gebruikt voor de demo.
 
-- [SQL Server 2017 Express edition](https://www.microsoft.com/sql-server/sql-server-editions-express). Download en installeer deze op de Enterprise Developer-VM. Enterprise-Server vereist een database voor het beheer van CICS regio's en de toepassing BankDemo gebruikt ook een SQL Server-database met de naam BANKDEMO. In deze demo wordt ervan uitgegaan dat u SQL Server Express gebruikt voor beide databases. Wanneer u installeert, selecteert u de standaardinstallatie.
+- [SQL Server 2017 Express-editie](https://www.microsoft.com/sql-server/sql-server-editions-express). Download en installeer het op de Enterprise Developer VM. Enterprise Server vereist een database voor het beheer van CICS-regio's en de BankDemo-toepassing maakt ook gebruik van een SQL Server-database genaamd BANKDEMO. In deze demo wordt ervan uitgegaan dat u SQL Server Express voor beide databases gebruikt. Selecteer bij het installeren de basisinstallatie.
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS). SSMS wordt gebruikt voor het beheren van de databases en een T-SQL-script is uitgevoerd. Download en installeer deze op de Enterprise Developer-VM.
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS). SSMS wordt gebruikt voor het beheren van de databases en het uitvoeren van een T-SQL-script. Download en installeer het op de Enterprise Developer VM.
 
-- [Visual Studio 2019](https://azure.microsoft.com/downloads/) met het nieuwste servicepack of [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), die u gratis kunt downloaden.
+- [Visual Studio 2019](https://azure.microsoft.com/downloads/) met het nieuwste servicepack of [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), dat je gratis downloaden.
 
-- Bureaublad of een andere Rumba 3270 emulator.
+- Rumba Desktop of een andere 3270 emulator.
 
 ## <a name="configure-the-windows-environment"></a>De Windows-omgeving configureren
 
-Nadat u Enterprise Developer 4.0 hebt geïnstalleerd op de virtuele machine, moet u het exemplaar van de Enterprise-Server die wordt geleverd met het configureren. Om dit te doen, moet u als volgt een aantal extra functies voor Windows installeren.
+Nadat u Enterprise Developer 4.0 op de VM hebt geïnstalleerd, moet u het exemplaar van Enterprise Server configureren dat bij de vm wordt geleverd. Om dat te doen, moet u een paar extra Windows-functies als volgt installeren.
 
-1. Extern bureaublad gebruiken voor aanmelding bij de Enterprise Server 4.0-VM wordt gebruikt, u hebt gemaakt.
+1. Gebruik RDP om u aan te melden bij de door u gemaakte Enterprise Server 4.0 VM.
 
-2. Klik op de **zoeken** pictogram naast de **Start** knop en het type **Windows functies**. De Wizard Server Manager toevoegen functies en onderdelen wordt geopend.
+2. Klik **op het** pictogram Zoeken naast de knop **Start** en typ **Windows-functies**. De wizard Rollen en onderdelen toevoegen van serverbeheer wordt geopend.
 
-3. Selecteer **rol webserver (IIS)** , en controleer vervolgens of de volgende opties:
+3. Selecteer **De Functie Webserver (IIS)** en controleer vervolgens de volgende opties:
 
-    - Hulpprogramma's voor webbeheer
-    - Compatibiliteit met IIS 6-beheer (Selecteer alle beschikbare functies)
+    - Webbeheerhulpprogramma's
+    - Compatibiliteit met IIS 6-beheer (selecteer alle beschikbare functies)
     - IIS-beheerconsole
-    - IIS Management Scripts en hulpprogramma 's
+    - IIS-beheerscripts en -hulpprogramma's
     - IIS-beheerservice
 
-4. Selecteer **World Wide Web Services**, en controleert u de volgende opties:
+4. Selecteer **World Wide Web Services**en controleer de volgende opties:
 
-     Onderdelen voor toepassingsontwikkeling:
+     Functies voor toepassingsontwikkeling:
     - .NET-uitbreidbaarheid
     - ASP.NET
-    - Veelvoorkomende HTTP-functies: Alle beschikbare functies toevoegen
-    - Status en diagnostische gegevens: Alle beschikbare functies toevoegen
-    - Beveiliging:
+    - Algemene HTTP-functies: alle beschikbare functies toevoegen
+    - Gezondheid en diagnose: alle beschikbare functies toevoegen
+    - Veiligheid:
         - Basisverificatie
         - Windows-verificatie
 
-5. Selecteer **Windows Process Activation-Service** en alle onderliggende items.
+5. Selecteer **de Windows Process Activation Service** en alle kinderen.
 
-6. Voor **functies**, Controleer **Microsoft .NET framework 3.5.1**, en controleert u de volgende opties:
+6. Schakel microsoft **.NET framework 3.5.1**op **voor functies**en controleer de volgende opties:
 
-    - Windows Communication Foundation HTTP Activation
-    - Windows Communication Foundation Non-HTTP Activation
+    - Activering van windows Communication Foundation HTTP-activering
+    - Windows Communication Foundation Niet-HTTP-activering
 
-7. Voor **functies**, Controleer **Microsoft .NET framework 4.6**, en controleert u de volgende opties:
+7. Schakel microsoft **.NET framework 4.6**op **voor functies**en controleer de volgende opties:
 
-   - Named Pipe-activering
-   - TCP Activation
+   - Pipe-activering met naam
+   - TCP-activering
    - TCP-poort delen
 
-     ![Wizard functies en onderdelen toevoegen: Functieservices](media/01-demo-roles.png)
+     ![Wizard Rollen en functies toevoegen: functieservices](media/01-demo-roles.png)
 
-8. Wanneer u alle opties hebt geselecteerd, klikt u op **volgende** te installeren.
+8. Wanneer u alle opties hebt geselecteerd, klikt u op **Volgende** om te installeren.
 
-9. Na de Windows-functies, Ga naar **Configuratiescherm \> systeem en beveiliging \> Systeembeheer**, en selecteer **Services**. Schuif naar beneden en zorg ervoor dat de volgende services worden uitgevoerd en ingesteld op **automatische**:
+9. Ga na de **Windows-functies \> naar \> Systeem- en Beveiligingsbeheerhulpprogramma's**van het Configuratiescherm en selecteer **Services**. Scroll naar beneden en zorg ervoor dat de volgende services worden uitgevoerd en ingesteld op **Automatisch:**
 
     - **NetTcpPortSharing**
-    - **Listener-Adapter Net.Pipe**
-    - **Net.tcp Listener Adapter**
+    - **Net.Pipe-listeneradapter**
+    - **Net.tcp-listeneradapter**
 
-10. Voor het configureren van ondersteuning voor IIS en WAS in het menu Zoeken **Micro Focus Enterprise opdrachtprompt voor ontwikkelaars (64 bits)** en uitvoeren als **beheerder**.
+10. Als u IIS- en WAS-ondersteuning wilt configureren, zoekt u in het menu **Opdrachtprompt voor Micro Focus Enterprise Developer (64-bits)** en wordt u uitgevoerd als **administrator.**
 
-11. Type **wassetup – i** en druk op **Enter**.
+11. Typ **wassetup –i** en druk op **Enter**.
 
-12. Nadat het script wordt uitgevoerd, kunt u het venster sluiten.
+12. Nadat het script is uitgevoerd, u het venster sluiten.
 
-## <a name="configure-the-local-system-account-for-sql-server"></a>Het lokale systeemaccount gebruikt voor SQL Server configureren
+## <a name="configure-the-local-system-account-for-sql-server"></a>Het lokale systeemaccount voor SQL Server configureren
 
-Bepaalde processen Enterprise-Server moeten kunnen zich in SQL Server en het maken van databases en andere objecten. Deze processen gebruiken het lokale systeemaccount gebruikt, zodat u sysadmin-instantie aan dat account geven moet.
+Sommige Enterprise Server-processen moeten zich kunnen aanmelden bij SQL Server en databases en andere objecten kunnen maken. Deze processen maken gebruik van het lokale systeemaccount, dus u moet sysadmin-bevoegdheid aan dat account geven.
 
-1. Start de **SSMS** en klikt u op **Connect** verbinding maken met de lokale SQLEXPRESS-Server met behulp van Windows-verificatie. Deze moet beschikbaar zijn in de **servernaam** lijst.
+1. Start de **SSMS** en klik op **Verbinding maken** om verbinding te maken met de lokale SQLEXPRESS-server met Windows-verificatie. Het moet beschikbaar zijn in de lijst **Servernaam.**
 
-2. Aan de linkerkant, vouw de **Security** map en selecteer **aanmeldingen**.
+2. Vouw links de **map Beveiliging** uit en selecteer **Aanmeldingen**.
 
-3. Selecteer **NT AUTHORITY\\SYSTEM** en selecteer **eigenschappen**.
+3. Selecteer **NT\\AUTHORITY SYSTEM** en selecteer **Eigenschappen**.
 
-4. Selecteer **serverfuncties** en Controleer **sysadmin**.
+4. Selecteer **Serverrollen** en controleer **sysadmin**.
 
-     ![SSMS-Object Explorer-venster: Aanmeldingseigenschappen](media/02-demo-explorer.png)
+     ![Venster SSMS Object Explorer: aanmeldingseigenschappen](media/02-demo-explorer.png)
 
-## <a name="create-the-bankdemo-database-and-all-its-objects"></a>De database BankDemo en alle bijbehorende objecten maken
+## <a name="create-the-bankdemo-database-and-all-its-objects"></a>De BankDemo-database en al zijn objecten maken
 
-1. Open **Windows Explorer** en navigeer naar **C:\\gebruikers\\openbare\\documenten\\Micro Focus\\Enterprise Developer\\ Voorbeelden\\Mainframe\\CICS\\DotNet\\BankDemo\\SQL**.
+1. Open **Windows Explorer** en navigeer naar **C:\\\\Gebruikers\\\\\\\\Openbare\\\\documenten Micro Focus\\\\Enterprise Developer\\Samples Mainframe CICS DotNet BankDemo SQL**.
 
-2. Kopieer de inhoud van **BankDemoCreateAll.SQL** -bestand in het Klembord.
+2. Kopieer de inhoud van **BankDemoCreateAll.SQL-bestand** naar uw klembord.
 
-3. Open **SSMS**. Aan de rechterkant, klikt u op **Server** en selecteer **nieuwe Query**.
+3. Open **SSMS**. Klik rechts op **Server** en selecteer **Nieuwe query**.
 
-4. Plak de inhoud van het Klembord in de **nieuwe Query** vak.
+4. Plak de inhoud van het klembord in het vak **Nieuwe query.**
 
-5. De SQL-instructies uitvoeren door te klikken op **Execute** uit de **opdracht** tabblad boven de query.
+5. Voer de SQL uit door op **Uitvoeren** te klikken vanaf het tabblad **Opdracht** boven de query.
 
-De query moet worden uitgevoerd zonder fouten. Wanneer deze voltooid is, hebt u de voorbeelddatabase voor de toepassing BankDemo.
+De query moet worden uitgevoerd zonder fouten. Wanneer deze is voltooid, beschikt u over de voorbeelddatabase voor de BankDemo-toepassing.
 
-![SQLQuery1.sql output](media/03-demo-query.png)
+![SQLQuery1.sql-uitvoer](media/03-demo-query.png)
 
-## <a name="verify-that-the-database-tables-and-objects-have-been-created"></a>Controleer of de database-tabellen en objecten is gemaakt
+## <a name="verify-that-the-database-tables-and-objects-have-been-created"></a>Controleren of de databasetabellen en -objecten zijn gemaakt
 
-1. Met de rechtermuisknop op de **BANKDEMO** database en selecteer **vernieuwen**.
+1. Klik met de rechtermuisknop op de **BANKDEMO-database** en selecteer **Vernieuwen**.
 
-2. Vouw de **Database** en selecteer **tabellen**. U ziet er ongeveer als volgt uit.
+2. Vouw de **database** uit en selecteer **Tabellen**. Je zou zoiets als het volgende moeten zien.
 
-     ![BANKDEMO tabel uitgevouwen in Object Explorer](media/04-demo-explorer.png)
+     ![BANKDEMO-tabel uitgebreid in Object Explorer](media/04-demo-explorer.png)
 
-## <a name="build-the-application-in-enterprise-developer"></a>Maken van de toepassing in Enterprise Developer
+## <a name="build-the-application-in-enterprise-developer"></a>De toepassing bouwen in Enterprise Developer
 
-1. Open Visual Studio en meld u aan.
+1. Open Visual Studio en meld je aan.
 
-2. Onder de **bestand** Selecteer menuoptie **Open Project/oplossing**, gaat u naar **C:\\gebruikers\\openbare\\documenten\\Micro Focus\\Enterprise Developer\\voorbeelden\\Mainframe\\CICS\\DotNet\\BankDemo**, en selecteer de **sln**bestand.
+2. Selecteer onder de optie **Bestandmenu** **Project/Oplossing**openen, navigeer naar **C:\\Gebruikers\\\\Openbare Documenten\\Micro Focus\\Enterprise\\Developer Samples\\Mainframe\\CICS\\DotNet\\BankDemo**en selecteer het **sln-bestand.**
 
-3. Even om te controleren van de objecten. COBOL programma's worden weergegeven in Solution Explorer met de extensie koppelingsbestand voor samen met CopyBooks (CPY) en JCL.
+3. Neem de tijd om de objecten te onderzoeken. COBOL-programma's worden weergegeven in Solution Explorer met de CBL-extensie, samen met CopyBooks (CPY) en JCL.
 
-4. Met de rechtermuisknop op de **BankDemo2** Project en selecteer **Set as Startup Project**.
-
-    > [!NOTE]
-    > Het BankDemo Project maakt gebruik van HCOSS (Host optie voor toepassingscompatibiliteit voor SQL Server), dat niet wordt gebruikt voor deze demo.
-
-5. In **Solution Explorer**, met de rechtermuisknop op de **BankDemo2** Project en selecteer **bouwen**.
+4. Klik met de rechtermuisknop op het **BankDemo2-project** en selecteer **Instellen als opstartproject**.
 
     > [!NOTE]
-    > Bouwen op het niveau van de oplossing resulteert in fouten, zoals HCOSS is niet geconfigureerd.
+    > Het BankDemo Project maakt gebruik van HCOSS (Host Compatibility Option for SQL Server), dat niet wordt gebruikt voor deze demo.
 
-6. Wanneer het Project is gemaakt, bekijkt u de **uitvoer** venster. Het ziet er als de onderstaande afbeelding.
+5. Klik in **Solution Explorer**met de rechtermuisknop op het **BankDemo2-project** en selecteer **Bouwen**.
 
-     ![Venster van de uitvoer van geslaagde build](media/05-demo-output.png)
+    > [!NOTE]
+    > Bouwen op oplossingsniveau leidt tot fouten, omdat HCOSS niet is geconfigureerd.
 
-## <a name="deploy-the-bankdemo-application-into-the-region-database"></a>De toepassing BankDemo in de regio-database implementeren
+6. Wanneer het project is gebouwd, onderzoekt u het venster **Uitvoer.** Het zou eruit moeten zien als in de onderstaande afbeelding.
 
-1. Open een opdrachtprompt voor ontwikkelaars van de Enterprise (64 bits) als beheerder.
+     ![Uitvoervenster met geslaagde build](media/05-demo-output.png)
 
-2. Navigeer naar de **openbare %\\documenten\\Micro Focus\\Enterprise Developer\\voorbeelden\\Mainframe\\CICS\\DotNet\\ BankDemo**.
+## <a name="deploy-the-bankdemo-application-into-the-region-database"></a>De BankDemo-toepassing implementeren in de regiodatabase
 
-3. Uitvoeren bij de opdrachtprompt **bankdemodbdeploy** en voegt u de parameter toe om de database te implementeren, bijvoorbeeld:
+1. Open een opdrachtprompt voor Enterprise Developer (64 bits) als beheerder.
+
+2. Navigeer naar de **\\%PUBLIC%\\Documents\\\\Micro\\Focus\\Enterprise\\Developer samples\\Mainframe CICS DotNet BankDemo**.
+
+3. Voer bij de opdrachtprompt **bankdemodbdeploy** uit en voeg de parameter op voor de database die moet worden geïmplementeerd, bijvoorbeeld:
 
     ```
     bankdemodbdeploy (local)/sqlexpress
     ```
 
 > [!NOTE]
-> Zorg ervoor dat u een slash (/) een backslash (\\). Met dit script wordt uitgevoerd voor een tijdje.
+> Zorg ervoor dat u een voorwaartse slash\\(/) niet een achterwaartse slash() gebruikt. Dit script draait een tijdje.
 
-![Beheer: Enterprise Developer-opdrachtpromptvenster](media/06-demo-cmd.png)
+![Beheer: opdrachtprompt voor enterprise-ontwikkelaars](media/06-demo-cmd.png)
 
-## <a name="create-the-bankdemo-region-in-enterprise-administrator-for-net"></a>Maken van de regio BankDemo in Enterprise-beheerder voor .NET
+## <a name="create-the-bankdemo-region-in-enterprise-administrator-for-net"></a>De BankDemo-regio maken in enterpriseadministrator voor .NET
 
-1. Open de **Enterprise-Server voor het beheer van .NET** gebruikersinterface.
+1. Open de **Enterprise Server voor de gebruikersinterface van .NET Administration.**
 
-2. De MMC-module starten vanuit de Windows **Start** in het menu kiezen **Micro Focus Enterprise Developer \> configuratie \> Enterprise-Server voor .NET-beheerder**. (Voor Windows Server, kiest u **Micro Focus Enterprise Developer \> Enterprise-Server voor .NET-beheerder**).
+2. Als u de MMC-module wilt starten, kiest u in het menu **Start** van Windows de optie **Micro Focus Enterprise Developer Configuration \> \> Enterprise Server voor .NET-beheerder**. (Kies voor Windows Server de optie **Micro Focus Enterprise Developer \> Enterprise Server voor .NET-beheerder).**
 
-3. Vouw de **regio's** -container in het linkerdeelvenster en klik met de rechtermuisknop **CICS**.
+3. Vouw de container **Regio's** uit in het linkerdeelvenster en klik vervolgens met de rechtermuisknop op **CICS**.
 
-4. Selecteer **definiëren regio** te maken van een nieuwe CICS regio met de naam **BANKDEMO**, gehost in de database (lokaal).
+4. Selecteer **Regio definiëren** om een nieuwe CICS-regio te maken, **bankdemo**genaamd, gehost in de (lokale) database.
 
-5. Het database-server-exemplaar opgeven, klikt u op **volgende**, en voer vervolgens de regionaam van de **BANKDEMO**.
+5. Geef de instantie databaseserver op **Volgende**en voer de regionaam **BANKDEMO**in .
 
-     ![In het dialoogvenster van de regio bepalen](media/07-demo-cics.png)
+     ![Dialoogvenster Regio definiëren](media/07-demo-cics.png)
 
-6. Als u wilt het definitiebestand van de regio voor de regio-overschrijdende database selecteert, zoek **regio\_bankdemo\_db.config** in **C:\\gebruikers\\openbare\\ Documenten\\Micro Focus\\Enterprise Developer\\voorbeelden\\Mainframe\\CICS\\DotNet\\BankDemo**.
+6. Als u het regiodefinitiebestand voor de database met meerdere regio's wilt selecteren, zoekt u **\_regiobankdemo\_db.config** in **C:\\\\Users Public\\Documents\\Micro Focus\\Enterprise Developer\\Samples\\Mainframe\\CICS\\DotNet\\BankDemo**.
 
-     ![Regio - regionaam definiëren: BANKDEMO](media/08-demo-cics.png)
+     ![Regio definiëren - Regionaam: BANKDEMO](media/08-demo-cics.png)
 
 7. Klik op **Voltooien**.
 
-## <a name="create-xa-resource-definitions"></a>Definities van XA-Resource maken
+## <a name="create-xa-resource-definitions"></a>XA-brondefinities maken
 
-1. In het linkerdeelvenster van de **Enterprise-Server voor het beheer van .NET** gebruikersinterface, vouw **System**, en vervolgens **XA Resourcedefinities**. Deze instelling bepaalt hoe de regio werkt samen met Enterprise-Server en de toepassingsdatabases.
+1. Vouw in het linkerdeelvenster van de gebruikersinterface van **de Enterprise Server voor .NET Administration** het **systeem**uit en vervolgens **XA-brondefinities**. Met deze instelling bepaalt u hoe de regio werkt met Enterprise Server en de toepassingsdatabases.
 
-2. Met de rechtermuisknop op **XA Resourcedefinities** en selecteer **Server-exemplaar toevoegen**.
+2. Klik met de rechtermuisknop op **XA-brondefinities** en selecteer **Serverinstantie toevoegen**.
 
-3. Selecteer in de vervolgkeuzelijst **Database-Service-exemplaar**. Dit is de lokale computer SQLEXPRESS.
+3. Selecteer **databaseservice-instantie**in de vervolgkeuzelijst . Het zal de lokale machine SQLEXPRESS.
 
-4. Selecteer het exemplaar van onder de **definities van XA-Resource (machinename\\sqlexpress)** container en klik op **toevoegen**.
+4. Selecteer de instantie van onder de **xa-brondefinities (machinename\\sqlexpress)** container en klik op **Toevoegen**.
 
-5. Selecteer **Database XA-Resource Definition** en typ vervolgens **BANKDEMO** voor de **naam** en **regio**.
+5. Selecteer **Database XA Resource Definition** en typ **BANKDEMO** voor **naam** en **regio**.
 
-     ![Nieuwe Database XA-Resource Definition scherm](media/09-demo-xa.png)
+     ![Nieuw scherm Database XA Resource Definition](media/09-demo-xa.png)
 
-6. Klik op het beletselteken ( **...** ) om de wizard Connection String. Voor **servernaam**, type **(lokaal)\\SQLEXPRESS**. Voor **aanmelding**, selecteer **Windows-verificatie**. Typ voor de databasenaam, **BANKDEMO**
+6. Klik op de ellipsen (**...**) om de wizard Verbindingstekenreeks weer te nemen. Typ **voor Servernaam** **\\(lokaal) SQLEXPRESS**. Selecteer **Windows-verificatie**voor **Aanmelden**. Typ **BANKDEMO** voor databasenaam
 
-     ![Verbindingsreeks-scherm voor bewerken](media/10-demo-string.png)
+     ![Scherm Verbindingstekenreeks bewerken](media/10-demo-string.png)
 
 7. Test de verbinding.
 
-## <a name="start-the-bankdemo-region"></a>De regio BANKDEMO starten
+## <a name="start-the-bankdemo-region"></a>Start de BANKDEMO Regio
 
 > [!NOTE]
-> De eerste stap is het belangrijk: De regio voor gebruik van de XA-resourcedefinitie die u zojuist hebt gemaakt, moet u instellen.
+> De eerste stap is belangrijk: u moet de regio zo instellen dat de XA-resourcedefinitie die u zojuist hebt gemaakt, wordt gebruikt.
 
-1. Navigeer naar de **BANDEMO CICS regio** onder de **regio's Container**, en selecteer vervolgens **regio opstartbestand bewerken** uit de **acties** deelvenster. Schuif omlaag naar de SQL-eigenschappen en voer **bankdemo** voor de **XA-resourcenaam**, of gebruikt u het beletselteken om deze te selecteren.
+1. Navigeer naar het **BANDEMO CICS-gebied** onder de **container Regio's**en selecteer **vervolgens Regioopstartbestand bewerken** in het deelvenster **Acties.** Schuif omlaag naar de SQL-eigenschappen en voer **bankdemo** in voor de Naam van de **XA-bron**of gebruik de ellips om deze te selecteren.
 
-2. Klik op de **opslaan** pictogram uw wijzigingen op te slaan.
+2. Klik **op** het pictogram Opslaan om de wijzigingen op te slaan.
 
-3. Met de rechtermuisknop op **BANKDEMO CICS regio** in de **Console** deelvenster en selecteer **starten/stoppen regio**.
+3. Klik met de rechtermuisknop op **HET CICS-gebied BANKDEMO** in het **deelvenster Console** en selecteer **Start/Stop-regio**.
 
-4. In de onderkant van de **starten/stoppen regio** vak dat wordt weergegeven in het middelste deelvenster, selecteer **Start**. Na enkele seconden, de regio wordt gestart.
+4. Selecteer Start onder aan het vak **Start/Stopgebied** dat in het middelste deelvenster wordt **weergegeven.** Na een paar seconden begint de regio.
 
-     ![Vak SQL starten/stoppen](media/11-demo-sql.png)
+     ![SQL-start/stop,, vak](media/11-demo-sql.png)
 
-     ![CICS regio BANKDEMO - gestart scherm](media/12-demo-cics.png)
+     ![CICS Regio BANKDEMO - Gestart scherm](media/12-demo-cics.png)
 
-## <a name="create-a-listener"></a>Maak een listener
+## <a name="create-a-listener"></a>Een listener maken
 
-Maak een listener voor de TN3270-sessies die toegang hebben tot de toepassing BankDemo.
+Maak een listener voor de TN3270-sessies die toegang hebben tot de BankDemo-toepassing.
 
-1. Vouw in het linkerdeelvenster **configuratie Editors** en selecteer **Listener**.
+1. Vouw **configuratie-editors** uit in het linkerdeelvenster en selecteer **Listener**.
 
-2. Klik op de **bestand openen** pictogram en selecteer de **seelistener.exe.config** bestand. Dit bestand worden gewijzigd en wordt geladen telkens als Enterprise-Server wordt gestart.
+2. Klik **op** het pictogram Bestand openen en selecteer het bestand **seelistener.exe.config.** Dit bestand wordt bewerkt en wordt geladen elke keer dat Enterprise Server wordt gestart.
 
-3. U ziet dat de twee regio's eerder gedefinieerd (ESDEMO en JCLDEMO).
+3. Let op de twee regio's die eerder zijn gedefinieerd (ESDEMO en JCLDEMO).
 
-4. Voor het maken van een nieuwe regio voor BANKDEMO, met de rechtermuisknop op **regio's**, en selecteer **regio toevoegen**.
+4. Als u een nieuwe regio voor BANKDEMO wilt maken, klikt u met de rechtermuisknop op **Regio ',** en selecteert u **Regio toevoegen**.
 
-5. Selecteer **BANKDEMO regio**.
+5. Selecteer **BANKDEMO-regio**.
 
-6. Een kanaal TN3270 toevoegen met de rechtermuisknop op **BANKDEMO regio** en selecteren **kanaal toevoegen**.
+6. Voeg een TN3270-kanaal toe door met de rechtermuisknop op **BANKDEMO-regio** te klikken en **Kanaal toevoegen te**selecteren.
 
-7. Voor **naam**, voer **TN3270**. Voor **poort**, voer **9024**. De toepassing ESDEMO gebruikt poort 9230, dus moet u een andere poort gebruikt.
+7. Voer **TN3270**voor **Naam**in . Voer **voor Port** **9024**in . De ESDEMO applicatie maakt gebruik van poort 9230 dus je moet een andere poort gebruiken.
 
-8. Om het bestand hebt opgeslagen, klikt u op de **opslaan** pictogram of kies **bestand** \> **opslaan**.
+8. Als u het bestand wilt opslaan, klikt u op het pictogram **Opslaan** of kiest **u Bestand** \> **opslaan**.
 
-9. Voor het starten van de listener, klikt u op de **Listener starten** pictogram of kies **opties** \> **Listener starten**.
+9. Als u de listener wilt starten, klikt u op het pictogram **Listener starten** of kiest u Listener Met **opties** \> **starten**.
 
-     ![Configuratie-Editor voor listener-windows](media/13-demo-listener.png)
+     ![Venster Listenerconfiguratieeditor](media/13-demo-listener.png)
 
 
-## <a name="configure-rumba-to-access-the-bankdemo-application"></a>Rumba voor toegang tot de toepassing BankDemo configureren
+## <a name="configure-rumba-to-access-the-bankdemo-application"></a>Rumba configureren om toegang te krijgen tot de BankDemo-toepassing
 
-Het laatste wat dat u moet doen is een 3270-sessie met behulp van Rumba, een emulator 3270 configureren. Deze stap kunt u de toepassing BankDemo openen via de listener die u hebt gemaakt.
+Het laatste wat je moet doen is het configureren van een 3270 sessie met rumba, een 3270 emulator. Met deze stap u toegang krijgen tot de BankDemo-toepassing via de luisteraar die u hebt gemaakt.
 
-1. Vanuit de Windows **Start** in het menu Start Rumba Desktop.
+1. Start Rumba Desktop in het menu Windows **Start.**
 
-2. Onder de **verbindingen** menu-item, selecteer **TN3270**.
+2. Selecteer **TN3270**onder het **menu-item Verbindingen** .
 
-3. Klik op **invoegen** en het type **127.0.0.1** voor het IP-adres en **9024** voor de gebruiker gedefinieerde poort.
+3. Klik **op Invoegen** en typ **127.0.0.1** voor het IP-adres en **9024** voor de door de gebruiker gedefinieerde poort.
 
-4. Aan de onderkant van het dialoogvenster klikt u op **Connect**. Een zwart CICS scherm wordt weergegeven.
+4. Klik onder aan het dialoogvenster op **Verbinden**. Er verschijnt een zwart CICS-scherm.
 
-5. Type **bank** om het eerste scherm 3270 voor de toepassing BankDemo weer te geven.
+5. Typ **bank** om het eerste 3270-scherm weer te geven voor de BankDemo-toepassing.
 
-6. Voor gebruikers-ID, typt u **B0001** en voor het wachtwoord, typt u. Het eerste scherm BANK20 wordt geopend.
+6. Typ voor gebruikersnaam **B0001** en typ voor het wachtwoord alles. Het eerste scherm BANK20 wordt geopend.
 
-![Mainframe weergave welkomstscherm](media/14-demo.png)
-![Mainframe-weergave - Rumba - subsysteem demonstratie scherm](media/15-demo.png)
+![Mainframe Display](media/14-demo.png)
+![Welkomstscherm Mainframe Display - Rumba - Subsysteem Demonstratie scherm](media/15-demo.png)
 
-Gefeliciteerd! U nu uitvoert een CICS toepassing in Azure met behulp van Micro Focus Enterprise-Server.
+Gefeliciteerd! U voert nu een CICS-toepassing uit in Azure met behulp van Micro Focus Enterprise Server.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Enterprise-Server uitvoeren in Docker-containers op Azure](run-enterprise-server-container.md)
-- [Mainframe-migratie - Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
+- [Enterprise Server uitvoeren in Docker-containers op Azure](run-enterprise-server-container.md)
+- [Mainframemigratie - Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
 - [Virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [Problemen oplossen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
-- [Mainframe ontrafelen aan Azure-migratie](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)
+- [Probleemoplossing](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Demystifying mainframe to Azure migration Demyststifying mainframe to Azure migration Demyststifying mainframe to Azure migration](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

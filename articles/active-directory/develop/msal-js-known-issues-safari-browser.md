@@ -1,7 +1,7 @@
 ---
-title: Bekende problemen met de Safari-browser (MSAL. js) | Azure
+title: Bekende Safari browser problemen (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over problemen met het gebruik van de micro soft-verificatie bibliotheek voor Java script (MSAL. js) met de Safari-browser.
+description: Meer informatie over bekende problemen bij het gebruik van de Microsoft-verificatiebibliotheek voor JavaScript (MSAL.js) met de Safari-browser.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,29 +14,29 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: edb995e31c2872c1541e29fee09dd66aafc8f9e2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696109"
 ---
-# <a name="known-issues-on-safari-browser-with-msaljs"></a>Bekende problemen in de Safari-browser met MSAL. js 
+# <a name="known-issues-on-safari-browser-with-msaljs"></a>Bekende problemen op Safari browser met MSAL.js 
 
-## <a name="silent-token-renewal-on-safari-12-and-itp-20"></a>Vernieuwing van het Silent-token in Safari 12 en ITP 2,0
+## <a name="silent-token-renewal-on-safari-12-and-itp-20"></a>Stille tokenverlenging op Safari 12 en ITP 2.0
 
-Apple iOS 12-en MacOS 10,14-besturings systemen bevatten een release van de [Safari 12-browser](https://developer.apple.com/safari/whats-new/). Voor de beveiliging en privacy bevat Safari 12 het [intelligent volgen van 2,0](https://webkit.org/blog/8311/intelligent-tracking-prevention-2-0/). Hierdoor worden cookies van derden die worden ingesteld, weggehaald. ITP 2,0 behandelt ook de cookies die door id-providers zijn ingesteld als cookies van derden.
+Apple iOS 12 en MacOS 10.14 besturingssystemen opgenomen een release van de [Safari 12 browser](https://developer.apple.com/safari/whats-new/). Voor de veiligheid en privacy bevat Safari 12 de [Intelligent Tracking Prevention 2.0.](https://webkit.org/blog/8311/intelligent-tracking-prevention-2-0/) Dit zorgt er in wezen voor dat de browser cookies van derden laat vallen die worden ingesteld. ITP 2.0 behandelt ook de cookies die door identiteitsproviders zijn geplaatst als cookies van derden.
 
-### <a name="impact-on-msaljs"></a>Impact op MSAL. js
+### <a name="impact-on-msaljs"></a>Impact op MSAL.js
 
-MSAL. js maakt gebruik van een verborgen iframe voor het uitvoeren van een Silent token Acquisition en vernieuwing als onderdeel van de `acquireTokenSilent`-aanroepen. De aanvragen voor het Silent-token zijn afhankelijk van de iframe die toegang heeft tot de geverifieerde gebruikers sessie, aangeduid door de cookies die door Azure AD zijn ingesteld. Met ITP 2,0 kan geen toegang tot deze cookies worden geblokkeerd, kan MSAL. js geen tokens op de achtergrond verkrijgen en vernieuwen. Dit leidt tot `acquireTokenSilent` fouten.
+MSAL.js gebruikt een verborgen Iframe om stille token `acquireTokenSilent` acquisitie en vernieuwing uit te voeren als onderdeel van de gesprekken. De stille tokenaanvragen zijn afhankelijk van het Iframe dat toegang heeft tot de geverifieerde gebruikerssessie die wordt weergegeven door de cookies die zijn ingesteld door Azure AD. Met ITP 2.0 die de toegang tot deze cookies verhindert, slaagt MSAL.js er niet in om tokens in stilte te verwerven en te vernieuwen en dit resulteert in `acquireTokenSilent` fouten.
 
-Er is op dit moment geen oplossing voor dit probleem en we evalueren de opties in de Community Standards.
+Er is geen oplossing voor dit probleem op dit punt en we zijn de evaluatie van opties met de normen gemeenschap.
 
-### <a name="work-around"></a>Tijdelijke oplossing
+### <a name="work-around"></a>Werken rond
 
-De ITP-instelling is standaard ingeschakeld in de Safari-browser. U kunt deze instelling uitschakelen door te navigeren naar de **voor keuren** -> **Privacy** en de optie **voor het bijhouden van cross-site voor komen** uit te scha kelen.
+Standaard is de ITP-instelling ingeschakeld in de Safari-browser. U deze instelling uitschakelen door te navigeren naar **Voorkeuren** -> **Privacy** en de controle uit de optie **Cross-site tracking voorkomen.**
 
-![Safari-instelling](./media/msal-js-known-issue-safari-browser/safari.png)
+![safari-instelling](./media/msal-js-known-issue-safari-browser/safari.png)
 
-U moet de `acquireTokenSilent` storingen met een interactieve aanvraag voor het ophalen van tokens afhandelen, waarbij de gebruiker wordt gevraagd zich aan te melden.
-Om herhaalde aanmeldingen te voor komen, kunt u het beste de `acquireTokenSilent`-fout afhandelen en de gebruiker een optie geven om de instelling ITP in Safari uit te scha kelen voordat u verdergaat met de interactieve oproep. Zodra de instelling is uitgeschakeld, moeten volgende Silent-token vernieuwingen slagen.
+U moet de `acquireTokenSilent` fouten afhandelen met een interactief tokengesprek voor aanschaffen, waardoor de gebruiker wordt gevraagd zich aan te melden.
+Om herhaalde aanmeldingen te voorkomen, u de `acquireTokenSilent` fout aanpakken en de gebruiker de optie bieden om de ITP-instelling in Safari uit te schakelen voordat u verdergaat met het interactieve gesprek. Zodra de instelling is uitgeschakeld, moeten latere stille tokenverlengingen slagen.

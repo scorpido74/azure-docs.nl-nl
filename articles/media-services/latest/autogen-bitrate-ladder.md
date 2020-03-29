@@ -1,6 +1,6 @@
 ---
-title: Coderen, video's met codering-standaard in Media Services - Azure | Microsoft Docs
-description: In dit onderwerp laat zien hoe de codering-standaard in Media Services gebruiken om te coderen invoer video met een automatisch gegenereerde bitrateladder, op basis van de invoerresolutie en de bitsnelheid.
+title: Video's coderen met Standard Encoder in Media Services - Azure | Microsoft Documenten
+description: In dit onderwerp wordt uitgelegd hoe u de standaardencoder in Media Services gebruiken om een invoervideo te coderen met een automatisch gegenereerde bitrate-ladder, op basis van de invoerresolutie en bitrate.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,32 +15,32 @@ ms.date: 02/10/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: c25c32f35adc1c017f0f4c012c82bd7e0af8d452
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60733314"
 ---
-#  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Coderen met een automatisch gegenereerde bitrateladder
+#  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Coderen met een automatisch gegenereerde bitrate-ladder
 
 ## <a name="overview"></a>Overzicht
 
-In dit artikel wordt uitgelegd hoe u de codering-standaard in Media Services gebruiken een invoervideo coderen in een automatisch gegenereerde bitrateladder (bitrate-resolutie paren) op basis van de invoerresolutie en de bitsnelheid. Deze ingebouwde encoder instellen of vooraf gedefinieerde instellingen, wordt nooit groter zijn dan de invoerresolutie en de bitsnelheid. Bijvoorbeeld, als de invoer 720p met 3 Mbps is, uitvoer blijft 720p met de beste en tarieven lager is dan 3 Mbps wordt gestart.
+In dit artikel wordt uitgelegd hoe u de standaardencoder in Media Services gebruiken om een invoervideo te coderen in een automatisch gegenereerde bitrateladder (bitrate-resolutieparen) op basis van de invoerresolutie en bitrate. Deze ingebouwde encoderinstelling, of vooraf ingestelde, zal nooit hoger zijn dan de invoerresolutie en bitrate. Als de ingang bijvoorbeeld 720p bij 3 Mbps is, blijft de uitvoer op zijn best 720p en begint het met snelheden lager dan 3 Mbps.
 
-### <a name="encoding-for-streaming"></a>Voor het streaming-codering
+### <a name="encoding-for-streaming"></a>Codering voor streaming
 
-Wanneer u gebruikt de **AdaptiveStreaming** vooraf ingestelde in **transformeren**, krijgt u uitvoer die geschikt is voor levering via streaming-protocollen, zoals HLS en DASH. Wanneer u deze definitie, de service op intelligente wijze bepaalt hoeveel video lagen voor het genereren van en op welke bitrate en de resolutie. De uitvoerinhoud bevat waar AAC-gecodeerd audio en video H.264 gecodeerde is niet interleaved MP4-bestanden.
+Wanneer u de **AdaptiveStreaming-voorinstelling** in **Transform**gebruikt, krijgt u een uitvoer die geschikt is voor levering via streamingprotocollen zoals HLS en DASH. Bij het gebruik van deze voorinstelling bepaalt de service op intelligente wijze hoeveel videolagen moeten worden gegenereerd en met welke bitrate en resolutie. De uitvoerinhoud bevat MP4-bestanden waarbij AAC-gecodeerde audio en H.264-gecodeerde video niet worden interleaved.
 
-Zie voor een voorbeeld van hoe deze definitie wordt gebruikt, [Stream van een bestand](stream-files-dotnet-quickstart.md).
+Zie [Een bestand streamen](stream-files-dotnet-quickstart.md)als u een voorbeeld wilt zien van de manier waarop deze voorinstelling wordt gebruikt.
 
 ## <a name="output"></a>Uitvoer
 
-In deze sectie ziet u drie voorbeelden van de uitvoer van een video lagen die worden geproduceerd door de Media Services encoder als gevolg van de codering met de **AdaptiveStreaming** vooraf ingestelde. In alle gevallen bevat de uitvoer alleen audio MP4-bestand met stereo audio gecodeerd met een 128 kbps.
+In deze sectie worden drie voorbeelden weergegeven van de uitvoervideolagen die door de encoder van Media Services zijn geproduceerd als gevolg van codering met de **voorinstelling AdaptiveStreaming.** In alle gevallen bevat de uitvoer een mp4-audiobestand met stereogeluid gecodeerd op 128 kbps.
 
 ### <a name="example-1"></a>Voorbeeld 1
-Bron met hoogte "1080" en "29.970" framesnelheid produceert 6 video lagen:
+Bron met hoogte "1080" en framerate "29.970" produceert 6 videolagen:
 
-|Laag|Hoogte|Breedte|Bitrate (kbps)|
+|Laag|Height|Breedte|Bitrate (kbps)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -50,9 +50,9 @@ Bron met hoogte "1080" en "29.970" framesnelheid produceert 6 video lagen:
 |6|180|320|380|
 
 ### <a name="example-2"></a>Voorbeeld 2
-Bron met hoogte "720" en "23.970" framesnelheid produceert 5 video lagen:
+Bron met hoogte "720" en framerate "23.970" produceert 5 videolagen:
 
-|Laag|Hoogte|Breedte|Bitrate (kbps)|
+|Laag|Height|Breedte|Bitrate (kbps)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -61,9 +61,9 @@ Bron met hoogte "720" en "23.970" framesnelheid produceert 5 video lagen:
 |5|180|320|320|
 
 ### <a name="example-3"></a>Voorbeeld 3
-Bron met hoogte "360" en "29.970" framesnelheid produceert 3 video lagen:
+Bron met hoogte "360" en framerate "29.970" produceert 3 videolagen:
 
-|Laag|Hoogte|Breedte|Bitrate (kbps)|
+|Laag|Height|Breedte|Bitrate (kbps)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|

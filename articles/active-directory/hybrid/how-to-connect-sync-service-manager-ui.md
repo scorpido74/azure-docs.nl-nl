@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect-synchronisatie: Synchronization Service Manager-UI | Microsoft Docs'
-description: Krijg inzicht in Synchronization Service Manager voor Azure AD Connect.
+title: 'Azure AD Connect-synchronisatie: gebruikersinterface van Synchronisatieservicebeheer | Microsoft Documenten'
+description: Informatie Over synchronisatieservicebeheer voor Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,25 +18,25 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3a03b2320caa7facc04f589993907ab9b3a7703
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381508"
 ---
-# <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Inleiding tot de Azure AD Connect Synchronization Service Manager-UI
+# <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Inleiding tot de gebruikersinterface van Azure AD Connect Synchronization Service Manager
 
-![Synchronisatie van Service Manager](./media/how-to-connect-sync-service-manager-ui/ssmui.png)
+![Onderhoudsbeheer synchroniseren](./media/how-to-connect-sync-service-manager-ui/ssmui.png)
 
-De **Synchronization Service Manager** gebruikersinterface wordt gebruikt om meer geavanceerde aspecten van de synchronisatie-engine configureren en om te zien van de operationele aspecten van de service.
+De **gebruikersinterface van Synchronization Service Manager** wordt gebruikt om meer geavanceerde aspecten van de synchronisatieengine te configureren en om de operationele aspecten van de service te bekijken.
 
-U start de **Synchronization Service Manager** gebruikersinterface vanuit het startmenu. De naam ervan is **Synchronization Service** en kunt u vinden in de **Azure AD Connect** groep.  
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui/startmenu.png)
+U start de **gebruikersinterface van Synchronisatieservicebeheerbeheer** in het startmenu. Het heet **Synchronisatieservice** en is te vinden in de **Azure AD Connect-groep.**  
+![Onderhoudsbeheer synchroniseren](./media/how-to-connect-sync-service-manager-ui/startmenu.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de Synchronization Service Manager-UI, met inbegrip van [Operations](how-to-connect-sync-service-manager-ui-operations.md), [Connectors](how-to-connect-sync-service-manager-ui-connectors.md), [Metaverse-ontwerper](how-to-connect-sync-service-manager-ui-mvdesigner.md), en [Metaverse zoeken](how-to-connect-sync-service-manager-ui-mvsearch.md) tabbladen.
+Meer informatie over de tabbladen SynchronisatieServicemanager, inclusief [Operations,](how-to-connect-sync-service-manager-ui-operations.md) [Connectors,](how-to-connect-sync-service-manager-ui-connectors.md) [Metaverse Designer](how-to-connect-sync-service-manager-ui-mvdesigner.md)en [Metaverse Search.](how-to-connect-sync-service-manager-ui-mvsearch.md)
 
-Meer informatie over de [Azure AD Connect-synchronisatie](how-to-connect-sync-whatis.md) configuratie.
+Meer informatie over de [synchronisatieconfiguratie van Azure AD Connect.](how-to-connect-sync-whatis.md)
 
-Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory ](whatis-hybrid-identity.md).
+Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).

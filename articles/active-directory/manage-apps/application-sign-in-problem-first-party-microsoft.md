@@ -1,6 +1,6 @@
 ---
-title: Problemen met aanmelden bij een Microsoft-toepassing | Microsoft Docs
-description: Algemene problemen met het aanmelden bij de eerste partij Microsoft Applications met behulp van Azure AD (zoals Office 365)
+title: Problemen bij het aanmelden bij een Microsoft-toepassing | Microsoft Documenten
+description: Veelvoorkomende problemen oplossen bij het aanmelden bij microsoft-toepassingen van de eerste partij met Azure AD (zoals Office 365)
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,29 +17,29 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67108301"
 ---
-# <a name="problems-signing-in-to-a-microsoft-application"></a>Problemen met aanmelden bij een Microsoft-toepassing
+# <a name="problems-signing-in-to-a-microsoft-application"></a>Problemen met het aanmelden bij een Microsoft-toepassing
 
-Microsoft Applications (zoals Office 365 Exchange, SharePoint, Yammer, enzovoort) worden toegewezen en beheerd iets anders dan 3e SaaS-toepassingen van derden of andere toepassingen die u integreren met Azure AD voor eenmalige aanmelding op.
+Microsoft-toepassingen (zoals Office 365 Exchange, SharePoint, Yammer, enz.) worden een beetje anders toegewezen en beheerd dan SaaS-toepassingen van derden of andere toepassingen die u integreert met Azure AD voor éénmalige aanmelding.
 
-Er zijn drie manieren dat een gebruiker toegang tot een Microsoft gepubliceerde toepassing krijgen kan.
+Er zijn drie belangrijke manieren waarop een gebruiker toegang kan krijgen tot een door Microsoft gepubliceerde toepassing.
 
--   Voor toepassingen in de Office 365 of andere betaalde suites kunnen gebruikers krijgen toegang tot en met **toewijzing van gebruiksrecht** rechtstreeks aan hun gebruikersaccount of via een groep met behulp van onze mogelijkheid voor het toewijzen van licentie op basis van een groep.
+-   Voor toepassingen in de Office 365 of andere betaalde suites krijgen gebruikers toegang via **licentietoewijzing,** hetzij rechtstreeks tot hun gebruikersaccount, hetzij via een groep met behulp van onze groepsgebaseerde licentietoewijzingsmogelijkheid.
 
--   Voor toepassingen die Microsoft of van een derde partij publiceert naar eigen inzicht voor iedereen, gebruikers kunnen toegang worden verleend via **toestemming van de gebruiker**. Dit betekent dat ze zich aanmelden bij de toepassing met hun Azure AD werk of School-account en toe te staan om toegang hebben tot een beperkt aantal gegevens op hun account.
+-   Voor toepassingen die Microsoft of een derde partij vrij publiceert voor iedereen om te gebruiken, kunnen gebruikers toegang krijgen via **toestemming van de gebruiker.** Dit betekent dat ze zich aanmelden bij de toepassing met hun Azure AD Work- of School-account en deze toegang geven tot een beperkte set gegevens op hun account.
 
--   Voor toepassingen die Microsoft of een 3e partij publiceert naar eigen inzicht voor iedereen, gebruikers kunnen ook toegang worden verleend via **administrator toestemming**. Dit betekent dat een beheerder de toepassing kan worden gebruikt door iedereen in de organisatie, zodat ze zich aanmelden bij de toepassing met een account voor globale beheerders en toegang aan iedereen in de organisatie verlenen heeft bepaald.
+-   Voor toepassingen die Microsoft of een derde partij vrij publiceert voor iedereen om te gebruiken, kunnen gebruikers ook toegang krijgen via **toestemming van de beheerder.** Dit betekent dat een beheerder heeft bepaald dat de toepassing kan worden gebruikt door iedereen in de organisatie, zodat ze zich aanmelden bij de toepassing met een Global Administrator-account en toegang verlenen aan iedereen in de organisatie.
 
-Voor het oplossen van uw probleem, beginnen met de [algemene probleemgebieden met toegang tot de toepassing om te overwegen](#general-problem-areas-with-application-access-to-consider) en lees vervolgens de stapsgewijze instructies: Stappen voor het oplossen van Microsoft Application toegang tot de details.
+Als u uw probleem wilt oplossen, begint u met de [algemene probleemgebieden met toepassingstoegang om](#general-problem-areas-with-application-access-to-consider) de walkthrough: stappen te overwegen om de toegang tot Microsoft-toepassingen op te lossen om in de details te komen.
 
-## <a name="general-problem-areas-with-application-access-to-consider"></a>Algemene probleemgebieden met toegang tot de toepassing om te overwegen
+## <a name="general-problem-areas-with-application-access-to-consider"></a>Algemene probleemgebieden met toepassingstoegang om te overwegen
 
-Hieronder volgt een lijst van de algemene probleemgebieden die u inzoomen kunt op als u een idee van waar u hebben wilt beginnen, maar wij raden dat u deze stapsgewijze Kennismaking voor snel aan de slag te lezen: Walkthrough: Stappen voor het oplossen van Microsoft Application access.
+Hieronder volgt een lijst met de algemene probleemgebieden waarin u inzoomen als u een idee hebt van waar u moet beginnen, maar we raden u aan de walkthrough te lezen om snel aan de slag te gaan: Walkthrough: Stappen om de toegang tot Microsoft-toepassingen op te lossen.
 
 -   [Problemen met het account van de gebruiker](#problems-with-the-users-account)
 
@@ -47,373 +47,373 @@ Hieronder volgt een lijst van de algemene probleemgebieden die u inzoomen kunt o
 
 -   [Problemen met beleid voor voorwaardelijke toegang](#problems-with-conditional-access-policies)
 
--   [Problemen met toestemming van de toepassing](#problems-with-application-consent)
+-   [Problemen met de toestemming van de aanvraag](#problems-with-application-consent)
 
-## <a name="steps-to-troubleshoot-microsoft-application-access"></a>Stappen voor het oplossen van Microsoft Application access
+## <a name="steps-to-troubleshoot-microsoft-application-access"></a>Stappen om problemen met de toegang tot Microsoft-toepassingen op te lossen
 
-Hieronder vindt u enkele veelvoorkomende problemen mensen ondervindt wanneer hun gebruikers kunnen niet bij een Microsoft-toepassing aanmelden.
+Hieronder volgen enkele veelvoorkomende problemen die mensen tegenkomen wanneer hun gebruikers zich niet kunnen aanmelden bij een Microsoft-toepassing.
 
 - Algemene problemen om eerst te controleren
 
-  * Zorg ervoor dat de gebruiker zich aanmeldt voor de **Corrigeer de URL** en niet de URL van een lokale toepassing.
+  * Zorg ervoor dat de gebruiker zich aanmeldt bij de **juiste URL** en niet op een URL van de lokale toepassing.
 
-  * Zorg ervoor dat het gebruikersaccount is **niet vergrendeld.**
+  * Zorg ervoor dat het account van de gebruiker niet is **vergrendeld.**
 
-  * Zorg ervoor dat de **gebruikersaccount bestaat** in Azure Active Directory. [Controleer of een gebruikersaccount in Azure Active Directory](#problems-with-the-users-account)
+  * Controleer of het account van de **gebruiker bestaat** in Azure Active Directory. [Controleren of er een gebruikersaccount bestaat in Azure Active Directory](#problems-with-the-users-account)
 
-  * Zorg ervoor dat het gebruikersaccount is **ingeschakeld** voor aanmeldingen. [Controleer de status van de account van een gebruiker](#problems-with-the-users-account)
+  * Controleer of het account van de gebruiker is **ingeschakeld** voor aanmeldingen. [Check a user’s account status](#problems-with-the-users-account)
 
-  * Zorg ervoor dat de gebruiker **wachtwoord niet is verlopen of is vergeten.** [Opnieuw instellen van wachtwoord van een gebruiker](#reset-a-users-password) of [selfservice voor wachtwoordherstel inschakelen](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+  * Zorg ervoor dat het wachtwoord van de gebruiker **niet is verlopen of vergeten.** [Het wachtwoord van een gebruiker opnieuw instellen](#reset-a-users-password) of [selfservicewachtwoord opnieuw instellen](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
-  * Zorg ervoor dat **multi-Factor Authentication** gebruikerstoegang niet blokkeert. [Controleer de status van van een gebruiker multi-factor authentication](#check-a-users-multi-factor-authentication-status) of [contactgegevens voor verificatie van een gebruiker controleren](#check-a-users-authentication-contact-info)
+  * Controleer of **multi-factorauthenticatie** de toegang van gebruikers niet blokkeert. [Controleer de multifactorauthenticatiestatus van een gebruiker](#check-a-users-multi-factor-authentication-status) of [Controleer de contactgegevens van een gebruiker op de verificatie](#check-a-users-authentication-contact-info)
 
-  * Zorg ervoor dat een **beleid voor voorwaardelijke toegang** of **Identity Protection** beleid voor de gebruikerstoegang niet blokkeert. [Een specifiek beleid voor voorwaardelijke toegang controleren](#problems-with-conditional-access-policies) of [controleren van beleid voor voorwaardelijke toegang van een bepaalde toepassing](#check-a-specific-applications-conditional-access-policy) of [specifiek beleid voor voorwaardelijke toegang uitschakelen](#disable-a-specific-conditional-access-policy)
+  * Zorg ervoor dat een **beleid voor voorwaardelijke toegang** of beleid voor **identiteitsbescherming** de toegang van gebruikers niet blokkeert. [Een specifiek beleid voor voorwaardelijke toegang controleren](#problems-with-conditional-access-policies) of het beleid voor voorwaardelijke toegang van een specifieke toepassing [controleren](#check-a-specific-applications-conditional-access-policy) of een specifiek beleid voor voorwaardelijke [toegang uitschakelen](#disable-a-specific-conditional-access-policy)
 
-  * Zorg ervoor dat een gebruiker **contactgegevens voor verificatie** is up-to-date om toe te staan van multi-factor Authentication of voorwaardelijk beleid moeten worden afgedwongen. [Controleer de status van van een gebruiker multi-factor authentication](#check-a-users-multi-factor-authentication-status) of [contactgegevens voor verificatie van een gebruiker controleren](#check-a-users-authentication-contact-info)
+  * Zorg ervoor dat de contactgegevens van een gebruiker op de hoogte zijn van de gegevens over de **verificatie,** zodat het beleid voor meervoudige verificatie of voorwaardelijke toegang kan worden afgedwongen. [Controleer de multifactorauthenticatiestatus van een gebruiker](#check-a-users-multi-factor-authentication-status) of [Controleer de contactgegevens van een gebruiker op de verificatie](#check-a-users-authentication-contact-info)
 
-- Voor **Microsoft** **toepassingen waarvoor een licentie** (zoals Office365) wordt gebruikt, worden hier enkele specifieke problemen te controleren als u de algemene problemen met bovenstaande zijn uitgesloten:
+- Voor **Microsoft** **Microsoft-toepassingen waarvoor een licentie vereist is** (zoals Office365), zijn hier enkele specifieke problemen om te controleren zodra u de algemene problemen hierboven hebt uitgesloten:
 
-  * Zorg ervoor dat de gebruiker of heeft een **-licentie is toegewezen.** [Controleren van een gebruiker toegewezen licenties](#check-a-users-assigned-licenses) of [toegewezen licenties van een groep controleren](#check-a-groups-assigned-licenses)
+  * Zorg ervoor dat de gebruiker of een **licentie heeft toegewezen.** [De toegewezen licenties van een gebruiker controleren](#check-a-users-assigned-licenses) of de toegewezen licenties van een groep [controleren](#check-a-groups-assigned-licenses)
 
-  * Als de licentie is **toegewezen aan een** **statische groep**, zorg ervoor dat de **gebruiker lid is** van die groep. [Controleren van groepslidmaatschappen van een gebruiker](#check-a-users-group-memberships)
+  * Als de licentie is **toegewezen aan een** statische **groep,** moet u ervoor zorgen dat de **gebruiker lid is** van die groep. [Groepslidmaatschappen van een gebruiker controleren](#check-a-users-group-memberships)
 
-  * Als de licentie is **toegewezen aan een** **dynamische groep**, zorg ervoor dat de **dynamische groepsregel juist is ingesteld**. [Criteria voor lidmaatschap van een dynamische groep controleren](#check-a-dynamic-groups-membership-criteria)
+  * Als de licentie is **toegewezen aan een** dynamische **groep,** moet u ervoor zorgen dat de **dynamische groepsregel correct is ingesteld**. [De lidmaatschapscriteria van een dynamische groep controleren](#check-a-dynamic-groups-membership-criteria)
 
-  * Als de licentie is **toegewezen aan een** **dynamische groep**, zorg ervoor dat de dynamische groep heeft **verwerkt** het lidmaatschap en dat de **gebruiker lid is**  (dit kan enige tijd duren). [Controleren van groepslidmaatschappen van een gebruiker](#check-a-users-group-memberships)
+  * Als de licentie is **toegewezen aan een** dynamische **groep,** moet u ervoor zorgen dat de dynamische groep klaar is **met het verwerken van** het lidmaatschap en dat de gebruiker lid **is** (dit kan enige tijd duren). [Groepslidmaatschappen van een gebruiker controleren](#check-a-users-group-memberships)
 
-  *  Als u ervoor te zorgen dat de licentie is toegewezen, zorg ervoor dat de licentie is **niet verlopen**.
+  *  Zodra u ervoor zorgt dat de licentie is toegewezen, controleert u of de licentie niet is **verlopen.**
 
-  *  Zorg ervoor dat de licentie is **voor de toepassing** ze openen.
+  *  Zorg ervoor dat de licentie is **voor de toepassing die** ze openen.
 
-- Voor **Microsoft** **toepassingen waarvoor een licentie niet**, Hier volgen enkele dingen om te controleren:
+- Voor **Microsoft** **Microsoft-toepassingen waarvoor geen licentie nodig is,** vindt u hier enkele andere dingen om te controleren:
 
-  * Als de toepassing aanvraagt **op gebruikersniveau machtigingen** (bijvoorbeeld ' toegang tot deze gebruiker Postvak"), zorg ervoor dat de gebruiker is aangemeld bij de toepassing en is uitgevoerd. een **toestemming op gebruikersniveau bewerking** zodat de toepassing toegang tot hun gegevens.
+  * Als de toepassing **toestemmingen** op gebruikersniveau aanvraagt (bijvoorbeeld 'Toegang tot het postvak van deze gebruiker'), moet u ervoor zorgen dat de gebruiker zich bij de toepassing heeft aangemeld en een **toestemmingsbewerking op gebruikersniveau** heeft uitgevoerd om de toepassing toegang te geven tot hun gegevens.
 
-  * Als de toepassing aanvraagt **administratormachtigingen** (bijvoorbeeld ' toegang tot postvakken van alle gebruikers'), zorg ervoor dat een globale beheerder is uitgevoerd. een **bewerking op beheerdersniveau toestemming andere gebruikers van alle gebruikers** in de organisatie.
+  * Als de toepassing machtigingen op **administratorniveau** aanvraagt (bijvoorbeeld 'Toegang tot alle postvakken van de gebruiker'), moet u ervoor zorgen dat een globale beheerder namens alle gebruikers in de organisatie een **toestemmingsbewerking op administratorniveau** heeft uitgevoerd.
 
 ## <a name="problems-with-the-users-account"></a>Problemen met het account van de gebruiker
 
-Toegang tot toepassingen kan worden geblokkeerd vanwege een probleem met een gebruiker die is toegewezen aan de toepassing. Hieronder vindt u enkele manieren u deze kunt oplossen en oplossen van problemen met gebruikers en hun Accountinstellingen:
+Toegang tot toepassingen kan worden geblokkeerd vanwege een probleem met een gebruiker die is toegewezen aan de toepassing. Hieronder volgen enkele manieren waarop u problemen met gebruikers en hun accountinstellingen oplossen en oplossen:
 
--   [Controleer of een gebruikersaccount in Azure Active Directory](#check-if-a-user-account-exists-in-azure-active-directory)
+-   [Controleren of er een gebruikersaccount bestaat in Azure Active Directory](#check-if-a-user-account-exists-in-azure-active-directory)
 
--   [Controleer de status van de account van een gebruiker](#check-a-users-account-status)
+-   [De accountstatus van een gebruiker controleren](#check-a-users-account-status)
 
--   [Wachtwoord van een gebruiker opnieuw instellen](#reset-a-users-password)
+-   [Het wachtwoord van een gebruiker opnieuw instellen](#reset-a-users-password)
 
 -   [Selfservice voor wachtwoordherstel inschakelen](#enable-self-service-password-reset)
 
--   [Een gebruiker multi-factor authentication-status controleren](#check-a-users-multi-factor-authentication-status)
+-   [De multifactorauthenticatiestatus van een gebruiker controleren](#check-a-users-multi-factor-authentication-status)
 
--   [Contactgegevens voor verificatie van een gebruiker controleren](#check-a-users-authentication-contact-info)
+-   [Contactgegevens van een gebruiker controleren](#check-a-users-authentication-contact-info)
 
--   [Controleren van groepslidmaatschappen van een gebruiker](#check-a-users-group-memberships)
+-   [Groepslidmaatschappen van een gebruiker controleren](#check-a-users-group-memberships)
 
--   [Controleren van een gebruiker toegewezen licenties](#check-a-users-assigned-licenses)
+-   [De toegewezen licenties van een gebruiker controleren](#check-a-users-assigned-licenses)
 
 -   [Een gebruiker een licentie toewijzen](#assign-a-user-a-license)
 
-### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>Controleer of een gebruikersaccount in Azure Active Directory
+### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>Controleren of er een gebruikersaccount bestaat in Azure Active Directory
 
-Als u wilt controleren of de account van een gebruiker aanwezig is, de volgende stappen uit:
+Voer de volgende stappen uit om te controleren of het account van een gebruiker aanwezig is:
 
-1.  Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2.  Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3.  Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4.  Klik op **gebruikers en groepen** in het navigatiemenu.
+4.  klik op **Gebruikers en groepen** in het navigatiemenu.
 
-5.  Klik op **alle gebruikers**.
+5.  klik op **Alle gebruikers**.
 
-6.  **Search** voor de gebruiker die u geïnteresseerd bent in en **klikt u op de rij** om te selecteren.
+6.  **Zoek naar** de gebruiker waarin u geïnteresseerd bent en **klik op de rij** om te selecteren.
 
-7.  Controleer de eigenschappen van het gebruikersobject om ervoor te zorgen dat ze eruitzien zoals u verwacht en er worden geen gegevens ontbreekt.
+7.  Controleer de eigenschappen van het object van de gebruiker om er zeker van te zijn dat ze eruit zien zoals u verwacht en dat er geen gegevens ontbreken.
 
-### <a name="check-a-users-account-status"></a>Controleer de status van de account van een gebruiker
+### <a name="check-a-users-account-status"></a>De accountstatus van een gebruiker controleren
 
-Om te controleren of de status van de account van een gebruiker, de volgende stappen uit:
+Voer de volgende stappen uit om de accountstatus van een gebruiker te controleren:
 
-1.  Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2.  Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3.  Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4.  Klik op **gebruikers en groepen** in het navigatiemenu.
+4.  klik op **Gebruikers en groepen** in het navigatiemenu.
 
-5.  Klik op **alle gebruikers**.
+5.  klik op **Alle gebruikers**.
 
-6.  **Search** voor de gebruiker die u geïnteresseerd bent in en **klikt u op de rij** om te selecteren.
+6.  **Zoek naar** de gebruiker waarin u geïnteresseerd bent en **klik op de rij** om te selecteren.
 
-7.  Klik op **profiel**.
+7.  klik op **Profiel**.
 
-8.  Onder **instellingen** ervoor te zorgen dat **aanmelden blokkeren** is ingesteld op **Nee**.
+8.  Controleer **onder Instellingen** of Aanmelden voor **blokkeren** is ingesteld op **Nee**.
 
-### <a name="reset-a-users-password"></a>Wachtwoord van een gebruiker opnieuw instellen
+### <a name="reset-a-users-password"></a>Het wachtwoord van een gebruiker opnieuw instellen
 
-Als u wilt opnieuw instellen van wachtwoord van een gebruiker, de volgende stappen uit:
+Voer de volgende stappen uit om het wachtwoord van een gebruiker opnieuw in te stellen:
 
-1.  Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2.  Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3.  Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4.  Klik op **gebruikers en groepen** in het navigatiemenu.
+4.  klik op **Gebruikers en groepen** in het navigatiemenu.
 
-5.  Klik op **alle gebruikers**.
+5.  klik op **Alle gebruikers**.
 
-6.  **Search** voor de gebruiker die u geïnteresseerd bent in en **klikt u op de rij** om te selecteren.
+6.  **Zoek naar** de gebruiker waarin u geïnteresseerd bent en **klik op de rij** om te selecteren.
 
-7.  Klik op de **wachtwoord opnieuw instellen** knop aan de bovenkant van de gebruiker-deelvenster.
+7.  klik op de knop **Wachtwoord opnieuw instellen** boven aan het gebruikersvenster.
 
-8.  Klik op de **wachtwoord opnieuw instellen** knop op de **wachtwoord opnieuw instellen** deelvenster dat wordt weergegeven.
+8.  klik op de knop **Wachtwoord opnieuw instellen** in het deelvenster Wachtwoord opnieuw **instellen** dat wordt weergegeven.
 
-9.  Kopieer de **tijdelijk wachtwoord** of **een nieuw wachtwoord invoeren** voor de gebruiker.
+9.  Kopieer het **tijdelijke wachtwoord** of voer een **nieuw wachtwoord** in voor de gebruiker.
 
-10. Het nieuwe wachtwoord voor de gebruiker te communiceren, ze moeten dit wachtwoord wijzigen tijdens de volgende aanmelding in Azure Active Directory.
+10. Ze moeten dit wachtwoord aan de gebruiker meedelen, maar deze wachtwoord moeten worden gewijzigd tijdens hun volgende aanmelding in Azure Active Directory.
 
 ### <a name="enable-self-service-password-reset"></a>Selfservice voor wachtwoordherstel inschakelen
 
-Om in te schakelen Self-service voor wachtwoord opnieuw instellen, volgt u de onderstaande implementatiestappen:
+Volg de onderstaande implementatiestappen om het opnieuw instellen van selfservicewachtwoorden in te schakelen:
 
--   [Gebruikers kunnen hun Azure Active Directory-wachtwoord opnieuw instellen inschakelen](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Gebruikers in staat stellen hun Azure Active Directory-wachtwoorden opnieuw te instellen](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
--   [Gebruikers opnieuw instellen of wijzigen van het wachtwoord van de on-premises Active Directory inschakelen](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Gebruikers in staat stellen hun on-premises wachtwoorden van Active Directory opnieuw in te stellen of te wijzigen](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
-### <a name="check-a-users-multi-factor-authentication-status"></a>Een gebruiker multi-factor authentication-status controleren
+### <a name="check-a-users-multi-factor-authentication-status"></a>De multifactorauthenticatiestatus van een gebruiker controleren
 
-Als u wilt controleren van een gebruiker multi-factor authentication-status, de volgende stappen uit:
+Voer de volgende stappen uit om de multifactorauthenticatiestatus van een gebruiker te controleren:
 
-1. Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2. Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3. Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4. Klik op **gebruikers en groepen** in het navigatiemenu.
+4. klik op **Gebruikers en groepen** in het navigatiemenu.
 
-5. Klik op **alle gebruikers**.
+5. klik op **Alle gebruikers**.
 
-6. Klik op de **multi-Factor Authentication** knop aan de bovenkant van het deelvenster.
+6. klik op de knop **Multifactorverificatie** boven aan het deelvenster.
 
-7. Zodra de **multi-factor Authentication-beheerportal** belastingen, zorg ervoor dat u zich op de **gebruikers** tabblad.
+7. Zodra de **portal voor multi-factorverificatiebeheer** wordt geladen, moet u ervoor zorgen dat u zich op het tabblad **Gebruikers** bevindt.
 
-8. Zoek de gebruiker in de lijst van gebruikers door te zoeken, filteren of sorteren.
+8. Zoek de gebruiker in de lijst met gebruikers door te zoeken, te filteren of te sorteren.
 
-9. Selecteer de gebruiker in de lijst met gebruikers en **inschakelen**, **uitschakelen**, of **afdwingen** meervoudige verificatie naar wens.
+9. Selecteer de gebruiker in de lijst met gebruikers en **Schakel**multifactorauthenticatie naar wens **in, schakel uit**of dwing multifactorauthenticatie **af.**
 
-   * **Opmerking**: Als een gebruiker zich in een **afgedwongen** staat, deze kan worden ingesteld op **uitgeschakelde** tijdelijk wilt laten terug bij hun account. Nadat zij zich terug in, kunt u vervolgens hun status om te wijzigen **ingeschakeld** opnieuw voor moet de gebruiker opnieuw registreren hun contactgegevens tijdens de volgende aanmelding in. U kunt ook u kunt de stappen in de [contactgegevens voor verificatie van een gebruiker controleren](#check-a-users-authentication-contact-info) om te controleren of instellen dat deze gegevens voor hen.
+   * **Opmerking:** als een gebruiker zich in **een afgedwongen** toestand bevindt, u deze tijdelijk instellen **op Uitgeschakeld** om hem of haar terug te laten keren in zijn account. Zodra ze weer binnen zijn, u hun status opnieuw wijzigen **in Ingeschakeld** om te eisen dat ze hun contactgegevens opnieuw registreren tijdens hun volgende aanmelding. U ook de stappen volgen in de [contactgegevens van de verificatiegegevens van een gebruiker](#check-a-users-authentication-contact-info) controleren om deze gegevens voor hen te verifiëren of in te stellen.
 
-### <a name="check-a-users-authentication-contact-info"></a>Contactgegevens voor verificatie van een gebruiker controleren
+### <a name="check-a-users-authentication-contact-info"></a>Contactgegevens van een gebruiker controleren
 
-Als u wilt controleren van een gebruiker contactgegevens voor verificatie gebruikt voor multi-factor authentication, voorwaardelijke toegang, Identity Protection en het wachtwoord opnieuw instellen, de volgende stappen uit:
+Voer de volgende stappen uit om de contactgegevens van een gebruiker te controleren die worden gebruikt voor multifactorauthenticatie, voorwaardelijke toegang, identiteitsbeveiliging en wachtwoordreset:
 
-1.  Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2.  Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3.  Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4.  Klik op **gebruikers en groepen** in het navigatiemenu.
+4.  klik op **Gebruikers en groepen** in het navigatiemenu.
 
-5.  Klik op **alle gebruikers**.
+5.  klik op **Alle gebruikers**.
 
-6.  **Search** voor de gebruiker die u geïnteresseerd bent in en **klikt u op de rij** om te selecteren.
+6.  **Zoek naar** de gebruiker waarin u geïnteresseerd bent en **klik op de rij** om te selecteren.
 
-7.  Klik op **profiel**.
+7.  klik op **Profiel**.
 
-8.  Schuif omlaag naar **contactgegevens voor verificatie**.
+8.  Schuif omlaag naar **Contactgegevens voor verificatie**.
 
-9.  **Beoordeling** de gegevens die zijn geregistreerd voor de gebruiker en de update zo nodig.
+9.  **Controleer** de gegevens die zijn geregistreerd voor de gebruiker en werk indien nodig bij.
 
-### <a name="check-a-users-group-memberships"></a>Controleren van groepslidmaatschappen van een gebruiker
+### <a name="check-a-users-group-memberships"></a>Groepslidmaatschappen van een gebruiker controleren
 
-Om te controleren of de groepslidmaatschappen van een gebruiker, de volgende stappen uit:
+Voer de volgende stappen uit om groepslidmaatschappen van een gebruiker te controleren:
 
-1.  Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2.  Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3.  Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4.  Klik op **gebruikers en groepen** in het navigatiemenu.
+4.  klik op **Gebruikers en groepen** in het navigatiemenu.
 
-5.  Klik op **alle gebruikers**.
+5.  klik op **Alle gebruikers**.
 
-6.  **Search** voor de gebruiker die u geïnteresseerd bent in en **klikt u op de rij** om te selecteren.
+6.  **Zoek naar** de gebruiker waarin u geïnteresseerd bent en **klik op de rij** om te selecteren.
 
-7.  Klik op **groepen** om te zien welke groepen de gebruiker lid is van.
+7.  klik op **Groepen** om te zien van welke groepen de gebruiker lid is.
 
-### <a name="check-a-users-assigned-licenses"></a>Controleren van een gebruiker toegewezen licenties
+### <a name="check-a-users-assigned-licenses"></a>De toegewezen licenties van een gebruiker controleren
 
-Om te controleren of de toegewezen licenties van een gebruiker, de volgende stappen uit:
+Voer de volgende stappen uit om de toegewezen licenties van een gebruiker te controleren:
 
-1.  Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2.  Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3.  Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4.  Klik op **gebruikers en groepen** in het navigatiemenu.
+4.  klik op **Gebruikers en groepen** in het navigatiemenu.
 
-5.  Klik op **alle gebruikers**.
+5.  klik op **Alle gebruikers**.
 
-6.  **Search** voor de gebruiker die u geïnteresseerd bent in en **klikt u op de rij** om te selecteren.
+6.  **Zoek naar** de gebruiker waarin u geïnteresseerd bent en **klik op de rij** om te selecteren.
 
-7.  Klik op **licenties** om te zien welke licenties die de gebruiker die momenteel is toegewezen.
+7.  klik op **Licenties** om te zien welke licenties de gebruiker momenteel heeft toegewezen.
 
 ### <a name="assign-a-user-a-license"></a>Een gebruiker een licentie toewijzen 
 
-Als u wilt een licentie toewijzen aan een gebruiker, de volgende stappen uit:
+Voer de volgende stappen uit om een licentie aan een gebruiker toe te wijzen:
 
-1.  Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2.  Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3.  Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4.  Klik op **gebruikers en groepen** in het navigatiemenu.
+4.  klik op **Gebruikers en groepen** in het navigatiemenu.
 
-5.  Klik op **alle gebruikers**.
+5.  klik op **Alle gebruikers**.
 
-6.  **Search** voor de gebruiker die u geïnteresseerd bent in en **klikt u op de rij** om te selecteren.
+6.  **Zoek naar** de gebruiker waarin u geïnteresseerd bent en **klik op de rij** om te selecteren.
 
-7.  Klik op **licenties** om te zien welke licenties die de gebruiker die momenteel is toegewezen.
+7.  klik op **Licenties** om te zien welke licenties de gebruiker momenteel heeft toegewezen.
 
-8.  Klik op de **toewijzen** knop.
+8.  klik op de knop **Toewijzen.**
 
 9.  Selecteer **een of meer producten** uit de lijst met beschikbare producten.
 
-10. **Optionele** klikt u op de **toewijzingsopties** item om toe te wijzen granulair producten. Klik op **Ok** wanneer dit is voltooid.
+10. **Optioneel** klikt u op het item **toewijzingsopties** om producten gedetailleerd toe te wijzen. Klik **op Ok** wanneer dit is voltooid.
 
-11. Klik op de **toewijzen** knop deze licenties toewijzen aan deze gebruiker.
+11. Klik **op** de knop Toewijzen om deze licenties aan deze gebruiker toe te wijzen.
 
 ## <a name="problems-with-groups"></a>Problemen met groepen
 
-Toegang tot toepassingen kan worden geblokkeerd vanwege een probleem met een groep die is toegewezen aan de toepassing. Hieronder vindt u enkele manieren waarop u deze kunt oplossen en problemen oplossen met groepen en groepslidmaatschappen:
+Toegang tot toepassingen kan worden geblokkeerd vanwege een probleem met een groep die is toegewezen aan de toepassing. Hieronder volgen enkele manieren waarop u problemen met groepen en groepslidmaatschappen oplossen en oplossen:
 
--   [Controleer het lidmaatschap van een groep](#check-a-groups-membership)
+-   [Het lidmaatschap van een groep controleren](#check-a-groups-membership)
 
--   [Criteria voor lidmaatschap van een dynamische groep controleren](#check-a-dynamic-groups-membership-criteria)
+-   [De lidmaatschapscriteria van een dynamische groep controleren](#check-a-dynamic-groups-membership-criteria)
 
--   [Controleer de toegewezen licenties van een groep](#check-a-groups-assigned-licenses)
+-   [De toegewezen licenties van een groep controleren](#check-a-groups-assigned-licenses)
 
--   [Van een groep licenties opnieuw verwerken](#reprocess-a-groups-licenses)
+-   [Licenties van een groep opnieuw verwerken](#reprocess-a-groups-licenses)
 
--   [Een licentie toewijzen aan een groep](#assign-a-group-a-license)
+-   [Een groep een licentie toewijzen](#assign-a-group-a-license)
 
-### <a name="check-a-groups-membership"></a>Controleer het lidmaatschap van een groep
+### <a name="check-a-groups-membership"></a>Het lidmaatschap van een groep controleren
 
-Als u wilt controleren van een groep lidmaatschap, de volgende stappen uit:
+Voer de volgende stappen uit om het lidmaatschap van een groep te controleren:
 
-1.  Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2.  Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3.  Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4.  Klik op **gebruikers en groepen** in het navigatiemenu.
+4.  klik op **Gebruikers en groepen** in het navigatiemenu.
 
-5.  Klik op **alle groepen**.
+5.  klik op **Alle groepen**.
 
-6.  **Search** voor de groep waarin u geïnteresseerd bent en **klikt u op de rij** om te selecteren.
+6.  **Zoek naar** de groep waarin u geïnteresseerd bent en **klik op de rij** om te selecteren.
 
-7.  Klik op **leden** om te controleren van de lijst met gebruikers die zijn toegewezen aan deze groep.
+7.  klik op **Leden** om de lijst met gebruikers te bekijken die aan deze groep zijn toegewezen.
 
-### <a name="check-a-dynamic-groups-membership-criteria"></a>Criteria voor lidmaatschap van een dynamische groep controleren 
+### <a name="check-a-dynamic-groups-membership-criteria"></a>De lidmaatschapscriteria van een dynamische groep controleren 
 
-Om te controleren of criteria voor lidmaatschap van een dynamische groep, de volgende stappen uit:
+Voer de volgende stappen uit om de lidmaatschapscriteria van een dynamische groep te controleren:
 
-1.  Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2.  Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3.  Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4.  Klik op **gebruikers en groepen** in het navigatiemenu.
+4.  klik op **Gebruikers en groepen** in het navigatiemenu.
 
-5.  Klik op **alle groepen**.
+5.  klik op **Alle groepen**.
 
-6.  **Search** voor de groep waarin u geïnteresseerd bent en **klikt u op de rij** om te selecteren.
+6.  **Zoek naar** de groep waarin u geïnteresseerd bent en **klik op de rij** om te selecteren.
 
-7.  Klik op **dynamisch-lidmaatschapregels.**
+7.  klik op **Dynamische lidmaatschapsregels.**
 
-8.  Controleer de **eenvoudige** of **geavanceerde** regel gedefinieerd voor deze groep en zorg ervoor dat de gebruiker die u wilt een lid van deze groep aan deze criteria voldoet.
+8.  Controleer de **eenvoudige** of **geavanceerde** regel die voor deze groep is gedefinieerd en controleer of de gebruiker die u lid wilt zijn van deze groep aan deze criteria voldoet.
 
-### <a name="check-a-groups-assigned-licenses"></a>Controleer de toegewezen licenties van een groep
+### <a name="check-a-groups-assigned-licenses"></a>De toegewezen licenties van een groep controleren
 
-Om te controleren of de toegewezen licenties van een groep, de volgende stappen uit:
+Voer de volgende stappen uit om de toegewezen licenties van een groep te controleren:
 
-1.  Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2.  Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3.  Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4.  Klik op **gebruikers en groepen** in het navigatiemenu.
+4.  klik op **Gebruikers en groepen** in het navigatiemenu.
 
-5.  Klik op **alle groepen**.
+5.  klik op **Alle groepen**.
 
-6.  **Search** voor de groep waarin u geïnteresseerd bent en **klikt u op de rij** om te selecteren.
+6.  **Zoek naar** de groep waarin u geïnteresseerd bent en **klik op de rij** om te selecteren.
 
-7.  Klik op **licenties** om te zien welke licenties die de groep momenteel is toegewezen.
+7.  Klik op **Licenties** om te zien welke licenties de groep momenteel heeft toegewezen.
 
-### <a name="reprocess-a-groups-licenses"></a>Van een groep licenties opnieuw verwerken
+### <a name="reprocess-a-groups-licenses"></a>Licenties van een groep opnieuw verwerken
 
-Als u wilt opnieuw verwerken van een groep toegewezen licenties, de volgende stappen uit:
+Voer de volgende stappen uit om de toegewezen licenties van een groep opnieuw te verwerken:
 
-1. Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2. Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3. Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4. Klik op **gebruikers en groepen** in het navigatiemenu.
+4. klik op **Gebruikers en groepen** in het navigatiemenu.
 
-5. Klik op **alle groepen**.
+5. klik op **Alle groepen**.
 
-6. **Search** voor de groep waarin u geïnteresseerd bent en **klikt u op de rij** om te selecteren.
+6. **Zoek naar** de groep waarin u geïnteresseerd bent en **klik op de rij** om te selecteren.
 
-7. Klik op **licenties** om te zien welke licenties die de groep momenteel is toegewezen.
+7. Klik op **Licenties** om te zien welke licenties de groep momenteel heeft toegewezen.
 
-8. Klik op de **opnieuw verwerken** knop om ervoor te zorgen dat de licenties zijn toegewezen aan leden van deze groep bijgewerkt zijn. Dit kan lang duren, afhankelijk van de grootte en complexiteit van de groep.
+8. klik **op** de knop Opnieuw verwerken om ervoor te zorgen dat de licenties die zijn toegewezen aan de leden van deze groep up-to-date zijn. Dit kan lang duren, afhankelijk van de grootte en complexiteit van de groep.
 
    >[!NOTE]
-   >Om dit te doen sneller, kunt u tijdelijk een licentie rechtstreeks aan de gebruiker toewijzen. [Een gebruiker een licentie toewijzen](#problems-with-application-consent).
+   >Om dit sneller te doen, u overwegen om een licentie rechtstreeks aan de gebruiker toe te wijsen. [Een gebruiker een licentie toewijzen](#problems-with-application-consent).
    >
    >
 
-### <a name="assign-a-group-a-license"></a>Een licentie toewijzen aan een groep
+### <a name="assign-a-group-a-license"></a>Een groep een licentie toewijzen
 
-Als u wilt een licentie toewijzen aan een groep, de volgende stappen uit:
+Voer de volgende stappen uit om een licentie aan een groep toe te wijzen:
 
-1. Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2. Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3. Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4. Klik op **gebruikers en groepen** in het navigatiemenu.
+4. klik op **Gebruikers en groepen** in het navigatiemenu.
 
-5. Klik op **alle groepen**.
+5. klik op **Alle groepen**.
 
-6. **Search** voor de groep waarin u geïnteresseerd bent en **klikt u op de rij** om te selecteren.
+6. **Zoek naar** de groep waarin u geïnteresseerd bent en **klik op de rij** om te selecteren.
 
-7. Klik op **licenties** om te zien welke licenties die de groep momenteel is toegewezen.
+7. Klik op **Licenties** om te zien welke licenties de groep momenteel heeft toegewezen.
 
-8. Klik op de **toewijzen** knop.
+8. klik op de knop **Toewijzen.**
 
 9. Selecteer **een of meer producten** uit de lijst met beschikbare producten.
 
-10. **Optionele** klikt u op de **toewijzingsopties** item om toe te wijzen granulair producten. Klik op **Ok** wanneer dit is voltooid.
+10. **Optioneel** klikt u op het item **toewijzingsopties** om producten gedetailleerd toe te wijzen. Klik **op Ok** wanneer dit is voltooid.
 
-11. Klik op de **toewijzen** knop deze licenties toewijzen aan deze groep. Dit kan lang duren, afhankelijk van de grootte en complexiteit van de groep.
+11. Klik **op** de knop Toewijzen om deze licenties aan deze groep toe te wijzen. Dit kan lang duren, afhankelijk van de grootte en complexiteit van de groep.
 
     >[!NOTE]
-    >Om dit te doen sneller, kunt u tijdelijk een licentie rechtstreeks aan de gebruiker toewijzen. [Een gebruiker een licentie toewijzen](#problems-with-application-consent).
+    >Om dit sneller te doen, u overwegen om een licentie rechtstreeks aan de gebruiker toe te wijsen. [Een gebruiker een licentie toewijzen](#problems-with-application-consent).
     > 
     >
 
@@ -421,113 +421,113 @@ Als u wilt een licentie toewijzen aan een groep, de volgende stappen uit:
 
 ### <a name="check-a-specific-conditional-access-policy"></a>Een specifiek beleid voor voorwaardelijke toegang controleren
 
-Om te controleren of het valideren van één beleid voor voorwaardelijke toegang:
+Eén voorwaardelijk toegangsbeleid controleren of valideren:
 
-1. Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2. Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3. Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4. Klik op **bedrijfstoepassingen** in het navigatiemenu.
+4. klik op **Enterprise-toepassingen** in het navigatiemenu.
 
-5. Klik op de **voorwaardelijke toegang** navigatie-item.
+5. klik op het **navigatie-item Voorwaardelijke toegang.**
 
-6. Klik op het beleid dat u geïnteresseerd bent in het inspecteren.
+6. klik op het beleid dat u wilt inspecteren.
 
-7. Controleer of er zijn geen specifieke voorwaarden, toewijzingen en andere instellingen die de gebruikerstoegang blokkeren mogelijk.
+7. Controleer of er geen specifieke voorwaarden, toewijzingen of andere instellingen zijn die de toegang van gebruikers kunnen blokkeren.
 
    >[!NOTE]
-   >Mogelijk wilt u dit beleid om te controleren of deze geen gevolgen heeft tijdelijk te deactiveren aanmeldingen. Om dit te doen, stel de **beleid inschakelen** in-/ uitschakelen op **Nee** en klikt u op de **opslaan** knop.
+   >U dit beleid tijdelijk uitschakelen om ervoor te zorgen dat het geen aanmeldingen beïnvloedt. Stel hiervoor het **inschakelen van** het beleid inschakelen in op **Nee** en klik op de knop **Opslaan.**
    >
    >
 
-### <a name="check-a-specific-applications-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang van een bepaalde toepassing controleren
+### <a name="check-a-specific-applications-conditional-access-policy"></a>Het beleid voor voorwaardelijke toegang van een specifieke toepassing controleren
 
-Geconfigureerd om te controleren of het valideren van één toepassing momenteel beleid voor voorwaardelijke toegang:
+Ga als lid van het momenteel geconfigureerde beleid voor voorwaardelijke toegang van één toepassing controleren of valideren:
 
-1.  Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2.  Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3.  Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4.  Klik op **bedrijfstoepassingen** in het navigatiemenu.
+4.  klik op **Enterprise-toepassingen** in het navigatiemenu.
 
-5.  Klik op **alle toepassingen**.
+5.  klik op **Alle toepassingen**.
 
-6.  Zoek naar de toepassing waarin u geïnteresseerd bent, of de gebruiker probeert zich aanmeldt bij de toepassing weergegeven naam of toepassing-ID.
+6.  Zoek naar de toepassing waarin u geïnteresseerd bent of de gebruiker probeert zich aan te melden op de naam of toepassings-id van de toepassing.
 
      >[!NOTE]
-     >Als u de toepassing die u zoekt niet ziet, klikt u op de **Filter** knop en vouwt u het bereik van de lijst moet **alle toepassingen**. Als u meer kolommen weergeven wilt, klikt u op de **kolommen** om toe te voegen extra details voor uw toepassingen.
+     >Als u de toepassing die u zoekt niet ziet, klikt u op de knop **Filter** en breidt u het bereik van de lijst uit naar **Alle toepassingen**. Als u meer kolommen wilt zien, klikt u op de knop **Kolommen** om extra details voor uw toepassingen toe te voegen.
      >
      >
 
-7.  Klik op de **voorwaardelijke toegang** navigatie-item.
+7.  klik op het **navigatie-item Voorwaardelijke toegang.**
 
-8.  Klik op het beleid dat u geïnteresseerd bent in het inspecteren.
+8.  klik op het beleid dat u wilt inspecteren.
 
-9.  Controleer of er zijn geen specifieke voorwaarden, toewijzingen of andere instellingen die gebruikerstoegang mogelijk blokkeert.
+9.  Controleer of er geen specifieke voorwaarden, toewijzingen of andere instellingen zijn die de toegang van gebruikers kunnen blokkeren.
 
      >[!NOTE]
-     >Mogelijk wilt u dit beleid om te controleren of deze geen gevolgen heeft tijdelijk te deactiveren aanmeldingen. Om dit te doen, stel de **beleid inschakelen** in-/ uitschakelen op **Nee** en klikt u op de **opslaan** knop.
+     >U dit beleid tijdelijk uitschakelen om ervoor te zorgen dat het geen aanmeldingen beïnvloedt. Stel hiervoor het **inschakelen van** het beleid inschakelen in op **Nee** en klik op de knop **Opslaan.**
      >
      >
 
 ### <a name="disable-a-specific-conditional-access-policy"></a>Een specifiek beleid voor voorwaardelijke toegang uitschakelen
 
-Om te controleren of het valideren van één beleid voor voorwaardelijke toegang:
+Eén voorwaardelijk toegangsbeleid controleren of valideren:
 
-1.  Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2.  Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2.  Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3.  Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4.  Klik op **bedrijfstoepassingen** in het navigatiemenu.
+4.  klik op **Enterprise-toepassingen** in het navigatiemenu.
 
-5.  Klik op de **voorwaardelijke toegang** navigatie-item.
+5.  klik op het **navigatie-item Voorwaardelijke toegang.**
 
-6.  Klik op het beleid dat u geïnteresseerd bent in het inspecteren.
+6.  klik op het beleid dat u wilt inspecteren.
 
-7.  Het beleid uitschakelen door in te stellen de **beleid inschakelen** overzet naar **Nee** en klikt u op de **opslaan** knop.
+7.  Schakel het beleid uit door het **inschakelen van** het beleid inschakelen in te stellen op **Nee** en klik op de knop **Opslaan.**
 
-## <a name="problems-with-application-consent"></a>Problemen met toestemming van de toepassing
+## <a name="problems-with-application-consent"></a>Problemen met de toestemming van de aanvraag
 
-Toegang tot toepassingen kan worden geblokkeerd omdat de juiste machtigingen toestemming bewerking nog niet heeft plaatsgevonden. Hieronder vindt u enkele manieren waarop u deze kunt oplossen en oplossen van problemen met toepassing toestemming:
+Toegang tot de toepassing kan worden geblokkeerd omdat de procedure voor de juiste toestemming sperdie niet is uitgevoerd. Hieronder volgen enkele manieren waarop u problemen met de toestemming van toepassingen oplossen en oplossen:
 
--   [Een bewerking toestemming op gebruikersniveau uitvoeren](#perform-a-user-level-consent-operation)
+-   [Een toestemmingsbewerking op gebruikersniveau uitvoeren](#perform-a-user-level-consent-operation)
 
--   [De bewerking beheerdersniveau toestemming voor elke toepassing uitvoeren](#perform-administrator-level-consent-operation-for-any-application)
+-   [Toestemmingsbewerking op administratorniveau uitvoeren voor elke toepassing](#perform-administrator-level-consent-operation-for-any-application)
 
--   [Toestemming van de administrator-niveau uitvoeren voor een toepassing met één tenant](#perform-administrator-level-consent-for-a-single-tenant-application)
+-   [Toestemming op administratorniveau uitvoeren voor een toepassing met één tenant](#perform-administrator-level-consent-for-a-single-tenant-application)
 
--   [Niveau van administrator toestemming voor een multitenant-toepassing uitvoeren](#perform-administrator-level-consent-for-a-multi-tenant-application)
+-   [Toestemming op administratorniveau uitvoeren voor een toepassing met meerdere tenants](#perform-administrator-level-consent-for-a-multi-tenant-application)
 
-### <a name="perform-a-user-level-consent-operation"></a>Een bewerking toestemming op gebruikersniveau uitvoeren
+### <a name="perform-a-user-level-consent-operation"></a>Een toestemmingsbewerking op gebruikersniveau uitvoeren
 
--   Voor alle toepassingen voor Open ID Connect-functionaliteit die machtigingen aanvraagt, voert een niveau toestemming van de gebruiker naar de toepassing voor de aangemelde gebruiker door te navigeren naar het aanmeldingsscherm van de toepassing.
+-   Als u voor elke toepassing met Open ID Connect die machtigingen opvraagt, voert u naar het aanmeldingsscherm van de toepassing een toestemming op gebruikersniveau uit voor de toepassing voor de aangemelde gebruiker.
 
--   Als u dit programmatisch doen wilt, raadpleegt u [aanvragen van toestemming van de individuele gebruiker](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent).
+-   Zie [Individuele toestemming van de gebruiker aanvragen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent)als u dit programmatisch wilt doen.
 
-### <a name="perform-administrator-level-consent-operation-for-any-application"></a>De bewerking beheerdersniveau toestemming voor elke toepassing uitvoeren
+### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Toestemmingsbewerking op administratorniveau uitvoeren voor elke toepassing
 
--   Voor **alleen de toepassingen die zijn ontwikkeld met behulp van het V1-toepassingsmodel**, u kunt afdwingen dat dit niveau goedgekeurd door een beheerder worden uitgevoerd door toe te voegen ' **? prompt = beheerder\_toestemming geven**' aan het einde van een aanmelding van de toepassing in URL.
+-   Voor **alleen toepassingen die zijn ontwikkeld met behulp van het V1-toepassingsmodel,** u deze toestemming op administratorniveau afdwingen door **?prompt=admin\_consent**toe te voegen aan het einde van de aanmeldings-URL van een toepassing.
 
--   Voor **elke toepassing die is ontwikkeld met behulp van de V2-toepassingsmodel**, kunt u afdwingen dat deze toestemming beheerdersrechten worden uitgevoerd door de instructies onder de **de machtigingen van een directory-beheerderaanvragen** sectie van [met behulp van het eindpunt beheerder toestemming](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   Voor **elke toepassing die is ontwikkeld met behulp van het V2-toepassingsmodel,** u deze toestemming op administratorniveau afdwingen door de instructies te volgen onder **de sectie Machtigingen aanvragen van een sectie directorybeheerder** van [Het eindpunt van de beheerderstoestemming gebruiken](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
-### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Toestemming van de administrator-niveau uitvoeren voor een toepassing met één tenant
+### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Toestemming op administratorniveau uitvoeren voor een toepassing met één tenant
 
--   Voor **toepassingen met één tenant** die aanvragen machtigingen (zoals die u ontwikkelt of in uw organisatie de eigenaar), kunt u uitvoeren een **administratief niveau toestemming** bewerking namens alle gebruikers door te klikken op en aanmelden als een globale beheerder de **machtigingen verlenen** knop aan de bovenkant van de **toepassingsregister -&gt; alle toepassingen -&gt; selecteert u een App -&gt; Vereiste machtigingen** deelvenster.
+-   Voor **toepassingen met één tenant** die machtigingen aanvragen (zoals toepassingen die u in uw organisatie ontwikkelt of bezit), u namens alle gebruikers een **toestemmingsbewerking** op administratief niveau uitvoeren door u aan te melden als globale beheerder en te klikken op de knop Machtigingen **verlenen** boven aan het **aanvraagregister -&gt; Alle toepassingen -&gt; Selecteer een app -&gt; Vereiste machtigingenvenster.**
 
--   Voor **elke toepassing die is ontwikkeld met behulp van het V1 of V2-toepassingsmodel**, kunt u afdwingen dat deze toestemming beheerdersrechten worden uitgevoerd door de instructies onder de **aanvragen van de machtigingen van een directory-beheerder**  sectie van [met behulp van het eindpunt beheerder toestemming](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   Voor **elke toepassing die is ontwikkeld met behulp van het V1- of V2-toepassingsmodel,** u deze toestemming op administratorniveau afdwingen door de instructies te volgen onder de **sectie Machtigingen aanvragen van een sectie directorybeheerder** van [Het eindpunt van de beheerderstoestemming gebruiken.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)
 
-### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Niveau van administrator toestemming voor een multitenant-toepassing uitvoeren
+### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Toestemming op administratorniveau uitvoeren voor een toepassing met meerdere tenants
 
--   Voor **toepassingen met meerdere tenants** die aanvraag machtigingen (zoals een toepassing een derde partij, of Microsoft ontwikkelt), kunt u uitvoeren een **administratief niveau toestemming** bewerking. Meld u aan als globale beheerder en te klikken op de **machtigingen verlenen** knop onder de **bedrijfstoepassingen -&gt; alle toepassingen -&gt; selecteert u een App -&gt; machtigingen**  deelvenster (beschikbaar snel).
+-   Voor **toepassingen met meerdere tenants** die machtigingen aanvragen (zoals een toepassing die een derde partij of Microsoft ontwikkelt), u een **toestemmingsbewerking op administratief niveau** uitvoeren. Meld u aan als globale beheerder en klik op de knop **Machtigingen verlenen** onder de **knop Ondernemingstoepassingen&gt; - Alle toepassingen -&gt; Selecteer een app -&gt; Machtigingen** (binnenkort beschikbaar).
 
--   U kunt ook afdwingen deze toestemming beheerdersrechten worden uitgevoerd door de instructies onder de **aanvragen van de machtigingen van een directory-beheerder** sectie van [met behulp van het eindpunt beheerder toestemming](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   U ook deze toestemming op administratorniveau afdwingen door de instructies te volgen onder het **verzoek de machtigingen op te volgen van een sectie directorybeheerder** van [Het eindpunt van de beheerderstoestemming gebruiken.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)
 
 ## <a name="next-steps"></a>Volgende stappen
-[Met behulp van het eindpunt beheerder toestemming](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)
+[Het eindpunt voor beheerderstoestemming gebruiken](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)
 

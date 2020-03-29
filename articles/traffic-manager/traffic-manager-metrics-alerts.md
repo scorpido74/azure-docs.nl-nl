@@ -1,6 +1,6 @@
 ---
-title: Metrische gegevens en waarschuwingen in azure Traffic Manager
-description: In dit artikel vindt u informatie over de metrische gegevens en waarschuwingen die beschikbaar zijn voor Traffic Manager in Azure.
+title: Statistieken en waarschuwingen in Azure Traffic Manager
+description: In dit artikel leest u de statistieken en waarschuwingen die beschikbaar zijn voor Traffic Manager in Azure.
 services: traffic-manager
 author: rohinkoul
 ms.service: traffic-manager
@@ -11,58 +11,58 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: rohink
 ms.openlocfilehash: 521e6ac605d187c0f95545611a17a86cfda6e1dd
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938589"
 ---
-# <a name="traffic-manager-metrics-and-alerts"></a>Metrische gegevens en waarschuwingen Traffic Manager
+# <a name="traffic-manager-metrics-and-alerts"></a>Statistieken en waarschuwingen voor Verkeersbeheer
 
-Traffic Manager biedt u de taak verdeling op basis van DNS met meerdere routerings methoden en opties voor eindpunt bewaking. In dit artikel worden de metrische gegevens en bijbehorende waarschuwingen beschreven die voor klanten beschikbaar zijn. 
+Traffic Manager biedt u dns-gebaseerde taakverdeling die meerdere routeringsmethoden en eindpuntcontroleopties bevat. In dit artikel worden de statistieken en bijbehorende waarschuwingen beschreven die beschikbaar zijn voor klanten. 
 
-## <a name="metrics-available-in-traffic-manager"></a>Metrische gegevens die beschikbaar zijn in Traffic Manager 
+## <a name="metrics-available-in-traffic-manager"></a>Statistieken beschikbaar in Traffic Manager 
 
-Traffic Manager biedt de volgende metrische gegevens per profiel dat klanten kunnen gebruiken om het gebruik van Traffic Manager en de status van hun eind punten onder dat profiel te begrijpen.  
+Traffic Manager biedt de volgende statistieken per profiel die klanten kunnen gebruiken om inzicht te krijgen in hun gebruik van Traffic manager en de status van hun eindpunten onder dat profiel.  
 
-### <a name="queries-by-endpoint-returned"></a>Query's op eind punt geretourneerd
-Gebruik [Deze metrische gegevens](../azure-monitor/platform/metrics-supported.md) om het aantal query's weer te geven dat gedurende een bepaalde periode door een Traffic Manager profiel wordt verwerkt. U kunt ook dezelfde informatie weer geven op het niveau van de granulatie op het eind punt, zodat u begrijpt hoe vaak een eind punt is geretourneerd in de antwoorden op query's van Traffic Manager.
+### <a name="queries-by-endpoint-returned"></a>Query's op eindpunt geretourneerd
+Gebruik [deze statistiek](../azure-monitor/platform/metrics-supported.md) om het aantal query's weer te geven dat een Traffic Manager-profiel gedurende een bepaalde periode verwerkt. U dezelfde informatie ook bekijken op een granulariteit op eindpuntniveau, zodat u begrijpt hoe vaak een eindpunt is geretourneerd in de queryantwoorden van Traffic Manager.
 
-In het volgende voor beeld toont afbeelding 1 alle antwoorden op query's die het Traffic Manager-profiel retourneert. 
+In het volgende voorbeeld geeft figuur 1 alle queryreacties weer die het Traffic Manager-profiel retourneert. 
 
   
-![Samengevoegde weer gave van alle query's](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
+![Geaggregeerde weergave van alle query's](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
 
-*Afbeelding 1: geaggregeerde weer gave met alle query's*
+*Figuur 1: Geaggregeerde weergave met alle query's*
   
-In afbeelding 2 wordt dezelfde informatie weer gegeven, maar deze wordt gesplitst op eind punten. Als gevolg hiervan kunt u het volume van de query antwoorden zien waarin een bepaald eind punt is geretourneerd.
+Figuur 2 geeft dezelfde informatie weer, maar deze wordt gesplitst naar eindpunten. Als gevolg hiervan u het volume van queryreacties zien waarin een specifiek eindpunt is geretourneerd.
 
-![Traffic Manager metrische gegevens: gesplitste weer gave van query volume per eind punt](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-query-volume-per-endpoint.png)
+![Traffic Manager metrics - split view of query volume per eindpunt](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-query-volume-per-endpoint.png)
 
-*Afbeelding 2: de weer gave splitsen met het query volume dat wordt geretourneerd per eind punt*
+*Figuur 2: Gesplitste weergave met queryvolume weergegeven per endpoint geretourneerd*
 
-## <a name="endpoint-status-by-endpoint"></a>Eindpunt status op eind punt
-Gebruik [Deze metrische gegevens](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) om inzicht te krijgen in de status van de eind punten in het profiel. Er zijn twee waarden nodig:
- - Gebruik **1** als het eind punt actief is.
- - Gebruik **0** als het eind punt niet beschikbaar is.
+## <a name="endpoint-status-by-endpoint"></a>Eindpuntstatus op eindpunt
+Gebruik [deze statistiek](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) om de status van de eindpunten in het profiel te begrijpen. Er zijn twee waarden voor nodig:
+ - 1 **1** gebruiken als het eindpunt omhoog is.
+ - 0 **0** gebruiken als het eindpunt is uitgeschakeld.
 
-Deze metriek kan worden weer gegeven als een statistische waarde die de status van alle metrische gegevens (afbeelding 3) vertegenwoordigt, of kan worden gesplitst (zie afbeelding 4) om de status van specifieke eind punten weer te geven. Als het voormalige, als het aggregatie niveau is geselecteerd als **Gem**, is de waarde van deze metriek het reken kundige gemiddelde van de status van alle eind punten. Als een profiel bijvoorbeeld twee eind punten heeft en er slechts één is in orde, dan heeft deze metriek de waarde **0,50** , zoals wordt weer gegeven in afbeelding 3. 
-
-
-![Traffic Manager metrische gegevens: samengestelde weer gave van de eindpunt status](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-composite-view.png)
-
-*Afbeelding 3: samengestelde weer gave van metrische gegevens van eindpunt status – "Gem" aggregatie geselecteerd*
+Deze statistiek kan worden weergegeven als een geaggregeerde waarde die de status van alle statistieken weergeeft (figuur 3), of kan worden gesplitst (zie figuur 4) om de status van specifieke eindpunten weer te geven. Als het eerste, als het aggregatieniveau is geselecteerd als **Avg,** is de waarde van deze statistiek het rekenkundig gemiddelde van de status van alle eindpunten. Als een profiel bijvoorbeeld twee eindpunten heeft en slechts één is gezond, heeft deze statistiek een waarde van **0,50,** zoals weergegeven in figuur 3. 
 
 
-![Traffic Manager metrische gegevens-gesplitste weer gave van de eindpunt status](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-split-view.png)
+![Traffic Manager metrics - samengestelde weergave van de status van eindpunt](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-composite-view.png)
 
-*Afbeelding 4: de gesplitste weer gave van metrische gegevens van de eindpunt status*
+*Figuur 3: Samengestelde weergave van de statistiek van de status van eindpunt – Avg-aggregatie geselecteerd*
 
-U kunt deze metrische gegevens gebruiken via de portal van [Azure monitor Services](../azure-monitor/platform/metrics-supported.md), [rest API](https://docs.microsoft.com/rest/api/monitor/), [Azure cli](https://docs.microsoft.com/cli/azure/monitor)en [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights), of via de sectie metrische gegevens van de portal-ervaring van Traffic Manager.
 
-## <a name="alerts-on-traffic-manager-metrics"></a>Waarschuwingen over Traffic Manager metrische gegevens
-Naast het verwerken en weer geven van metrische gegevens van Traffic Manager, kunt u met Azure Monitor klanten waarschuwingen configureren en ontvangen die zijn gekoppeld aan deze metrische gegevens. U kunt kiezen aan welke voor waarden in deze metrische gegevens moet worden voldaan om een waarschuwing te vinden, hoe vaak deze voor waarden moeten worden bewaakt en hoe de waarschuwingen naar u moeten worden gezonden. Zie [Azure monitor Alerts documentation](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)(Engelstalig) voor meer informatie.
+![Traffic Manager metrics - split view of endpoint status](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-split-view.png)
+
+*Figuur 4: Gesplitste weergave van eindpuntstatusstatistieken*
+
+U deze statistieken gebruiken via de portal van [azure monitor-service,](../azure-monitor/platform/metrics-supported.md) [de REST API,](https://docs.microsoft.com/rest/api/monitor/) [Azure CLI](https://docs.microsoft.com/cli/azure/monitor)en [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights)of via het gedeelte metrics van de portalervaring van Traffic Manager.
+
+## <a name="alerts-on-traffic-manager-metrics"></a>Waarschuwingen voor statistieken verkeersbeheer
+Naast het verwerken en weergeven van statistieken van Traffic Manager, stelt Azure Monitor klanten in staat om waarschuwingen te configureren en te ontvangen die aan deze statistieken zijn gekoppeld. U kiezen aan welke voorwaarden in deze statistieken moet worden voldaan om een waarschuwing te kunnen ontvangen, hoe vaak deze voorwaarden moeten worden gecontroleerd en hoe de waarschuwingen naar u moeten worden verzonden. Zie [Azure Monitor-waarschuwingendocumentatie](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [Azure Monitor-service](../azure-monitor/platform/metrics-supported.md)
-- Meer informatie over het [maken van een grafiek met Azure monitor](../azure-monitor/platform/metrics-getting-started.md#create-your-first-metric-chart)
+- Meer informatie over [azure monitorservice](../azure-monitor/platform/metrics-supported.md)
+- Meer informatie over het [maken van een grafiek met Azure Monitor](../azure-monitor/platform/metrics-getting-started.md#create-your-first-metric-chart)

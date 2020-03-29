@@ -1,7 +1,7 @@
 ---
-title: Netwerk beveiliging analyseren-weer gave van beveiligings groep-Azure PowerShell
+title: Netwerkbeveiliging analyseren - Weergave beveiligingsgroep - Azure PowerShell
 titleSuffix: Azure Network Watcher
-description: In dit artikel wordt beschreven hoe u Power shell gebruikt voor het analyseren van de beveiliging van virtuele machines met een beveiligings groep.
+description: In dit artikel wordt beschreven hoe u PowerShell gebruiken om de beveiliging van virtuele machines te analyseren met de beveiligingsgroepweergave.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,61 +13,61 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 4cba2c7e25b5f76b0638da1c551514f102247ae0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840788"
 ---
-# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>De beveiliging van uw virtuele machine analyseren met behulp van Power shell
+# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>Uw beveiliging van virtuele machines analyseren met de beveiligingsgroepweergave met PowerShell
 
 > [!div class="op_single_selector"]
-> - [PowerShell](network-watcher-security-group-view-powershell.md)
+> - [Powershell](network-watcher-security-group-view-powershell.md)
 > - [Azure-CLI](network-watcher-security-group-view-cli.md)
-> - [REST API](network-watcher-security-group-view-rest.md)
+> - [REST-API](network-watcher-security-group-view-rest.md)
 
-De weer gave beveiligings groep retourneert geconfigureerde en efficiënte netwerk beveiligings regels die worden toegepast op een virtuele machine. Deze mogelijkheid is nuttig bij het controleren en diagnosticeren van netwerk beveiligings groepen en-regels die zijn geconfigureerd op een virtuele machine om ervoor te zorgen dat verkeer correct wordt toegestaan of geweigerd. In dit artikel laten we zien hoe u de geconfigureerde en efficiënte beveiligings regels kunt ophalen voor een virtuele machine met behulp van Power shell
+De weergave beveiligingsgroep retourneert geconfigureerde en effectieve netwerkbeveiligingsregels die worden toegepast op een virtuele machine. Deze mogelijkheid is handig voor het controleren en diagnosticeren van netwerkbeveiligingsgroepen en regels die zijn geconfigureerd op een vm om ervoor te zorgen dat verkeer correct wordt toegestaan of geweigerd. In dit artikel laten we u zien hoe u de geconfigureerde en effectieve beveiligingsregels ophalen naar een virtuele machine met PowerShell
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit scenario voert u de `Get-AzNetworkWatcherSecurityGroupView` cmdlet uit om de gegevens van de beveiligings regel op te halen.
+In dit scenario voert `Get-AzNetworkWatcherSecurityGroupView` u de cmdlet uit om de beveiligingsregelgegevens op te halen.
 
-In dit scenario wordt ervan uitgegaan dat u de stappen in [Create a Network Watcher](network-watcher-create.md) voor het maken van een Network Watcher, al hebt gevolgd.
+In dit scenario wordt ervan uitgegaan dat u de stappen in [Een netwerkwatcher maken](network-watcher-create.md) al hebt gevolgd om een netwerkwatcher te maken.
 
 ## <a name="scenario"></a>Scenario
 
-In het scenario dat in dit artikel wordt behandeld, worden de geconfigureerde en efficiënte beveiligings regels voor een bepaalde virtuele machine opgehaald.
+Het scenario in dit artikel haalt de geconfigureerde en effectieve beveiligingsregels voor een bepaalde virtuele machine op.
 
-## <a name="retrieve-network-watcher"></a>Network Watcher ophalen
+## <a name="retrieve-network-watcher"></a>Netwerkwatcher ophalen
 
-De eerste stap bestaat uit het ophalen van het Network Watcher-exemplaar. Deze variabele wordt door gegeven aan de cmdlet `Get-AzNetworkWatcherSecurityGroupView`.
+De eerste stap is het ophalen van de instantie Network Watcher. Deze variabele wordt `Get-AzNetworkWatcherSecurityGroupView` doorgegeven aan de cmdlet.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
 ```
 
-## <a name="get-a-vm"></a>Een virtuele machine ophalen
+## <a name="get-a-vm"></a>Een vm
 
-Een virtuele machine is vereist om de `Get-AzNetworkWatcherSecurityGroupView`-cmdlet uit te voeren. In het volgende voor beeld wordt een VM-object opgehaald.
+Een virtuele machine is `Get-AzNetworkWatcherSecurityGroupView` nodig om de cmdlet tegen te draaien. In het volgende voorbeeld wordt een VM-object weergegeven.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName testrg -Name testvm1
 ```
 
-## <a name="retrieve-security-group-view"></a>Weer gave van beveiligings groep ophalen
+## <a name="retrieve-security-group-view"></a>Weergave beveiligingsgroep ophalen
 
-De volgende stap is het ophalen van het resultaat van de beveiligings groep weer geven.
+De volgende stap is het ophalen van het resultaat van de beveiligingsgroepweergave.
 
 ```powershell
 $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
 ```
 
-## <a name="viewing-the-results"></a>De resultaten weer geven
+## <a name="viewing-the-results"></a>De resultaten bekijken
 
-Het volgende voor beeld is een kortere reactie op de geretourneerde resultaten. De resultaten tonen alle effectief en toegepaste beveiligings regels op de virtuele machine, onderverdeeld in groepen **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**en **EffectiveSecurityRules**.
+Het volgende voorbeeld is een verkorte reactie van de geretourneerde resultaten. De resultaten tonen alle effectieve en toegepaste beveiligingsregels op de virtuele machine, onderverdeeld in groepen van **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**en **EffectiveSecurityRules**.
 
 ```
 NetworkInterfaces : [
@@ -128,6 +128,6 @@ NetworkInterfaces : [
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar [controle netwerk beveiligings groepen (NSG) met Network Watcher](network-watcher-nsg-auditing-powershell.md) voor meer informatie over het automatiseren van de validatie van netwerk beveiligings groepen.
+Ga [naar Auditing Network Security Groups (NSG) met Network Watcher](network-watcher-nsg-auditing-powershell.md) voor meer informatie over het automatiseren van validatie van netwerkbeveiligingsgroepen.
 
 

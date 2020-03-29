@@ -1,6 +1,6 @@
 ---
-title: REST API-Azure Event Grid IoT Edge | Microsoft Docs
-description: REST API op Event Grid in IoT Edge.
+title: REST API - IoT Edge van Azure Event Grid | Microsoft Documenten
+description: REST API op Gebeurtenisraster op IoT Edge.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,38 +10,38 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841826"
 ---
 # <a name="rest-api"></a>REST API
-In dit artikel worden de REST-Api's van Azure Event Grid op IoT Edge beschreven
+In dit artikel worden de REST API's van Azure Event Grid op IoT Edge beschreven
 
-## <a name="common-api-behavior"></a>Normaal API-gedrag
+## <a name="common-api-behavior"></a>Algemeen API-gedrag
 
 ### <a name="base-url"></a>Basis-URL
-Event Grid op IoT Edge heeft de volgende Api's die worden weer gegeven via HTTP (poort 5888) en HTTPS (poort 4438).
+Event Grid on IoT Edge heeft de volgende API's die worden blootgesteld via HTTP (poort 5888) en HTTPS (poort 4438).
 
-* Basis-URL voor HTTP: http://eventgridmodule:5888
-* Basis-URL voor HTTPS: https://eventgridmodule:4438
+* Url baseren voor HTTP:http://eventgridmodule:5888
+* URL baseren voor HTTPS:https://eventgridmodule:4438
 
-### <a name="request-query-string"></a>Query reeks voor aanvraag
-Voor alle API-aanvragen is de volgende query teken reeks parameter vereist:
+### <a name="request-query-string"></a>Querytekenreeks aanvragen
+Voor alle API-aanvragen is de volgende parameter querytekenreeks vereist:
 
 ```?api-version=2019-01-01-preview```
 
-### <a name="request-content-type"></a>Type aanvraag inhoud
-Alle API-aanvragen moeten een **inhouds type**hebben.
+### <a name="request-content-type"></a>Inhoudstype aanvragen
+Alle API-aanvragen moeten een **inhoudstype**hebben.
 
-In het geval van **EventGridSchema** of **CustomSchema**kan de waarde van het inhouds type een van de volgende waarden hebben:
+In het geval van **EventGridSchema** of **CustomSchema**kan de waarde van Content-Type een van de volgende waarden zijn:
 
 ```Content-Type: application/json```
 
 ```Content-Type: application/json; charset=utf-8```
 
-In het geval van **CloudEventSchemaV1_0** in de gestructureerde modus kan de waarde van het inhouds type een van de volgende waarden hebben:
+In het geval van **CloudEventSchemaV1_0** in gestructureerde modus, kan de waarde van Content-Type een van de volgende waarden zijn:
 
 ```Content-Type: application/cloudevents+json```
     
@@ -51,10 +51,10 @@ In het geval van **CloudEventSchemaV1_0** in de gestructureerde modus kan de waa
     
 ```Content-Type: application/cloudevents-batch+json; charset=utf-8```
 
-In het geval van **CloudEventSchemaV1_0** in binaire modus raadpleegt u de [documentatie](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md) voor meer informatie.
+In het geval van **CloudEventSchemaV1_0** in binaire modus, verwijzen naar [documentatie](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md) voor details.
 
-### <a name="error-response"></a>Fout bericht
-Alle Api's retour neren een fout met de volgende Payload:
+### <a name="error-response"></a>Foutreactie
+Alle API's geven een fout met de volgende payload:
 
 ```json
 {
@@ -72,11 +72,11 @@ Alle Api's retour neren een fout met de volgende Payload:
 
 ## <a name="manage-topics"></a>Onderwerpen beheren
 
-### <a name="put-topic-create--update"></a>Onderwerp plaatsen (maken/bijwerken)
+### <a name="put-topic-create--update"></a>Put topic (maken / bijwerken)
 
-**Aanvraag**: ``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Verzoek**:``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Payload**:
+**Laadvermogen**:
 
 ```json
     {
@@ -88,9 +88,9 @@ Alle Api's retour neren een fout met de volgende Payload:
     }
 ```
 
-**Antwoord**: http 200
+**Reactie**: HTTP 200
 
-**Payload**:
+**Laadvermogen**:
 
 ```json
 {
@@ -105,13 +105,13 @@ Alle Api's retour neren een fout met de volgende Payload:
 }
 ```
 
-### <a name="get-topic"></a>Onderwerp ophalen
+### <a name="get-topic"></a>Onderwerp bekijken
 
-**Aanvraag**: ``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Verzoek**:``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Antwoord**: http 200
+**Reactie**: HTTP 200
 
-**Payload**:
+**Laadvermogen**:
 ```json
 {
     "id": "/iotHubs/<iot_hub_name>/devices/<iot_edge_device_id>/modules/<eventgrid_module_name>/topics/<topic_name>",
@@ -125,13 +125,13 @@ Alle Api's retour neren een fout met de volgende Payload:
 }
 ```
 
-### <a name="get-all-topics"></a>Alle onderwerpen ophalen
+### <a name="get-all-topics"></a>Alle onderwerpen oppakken
 
-**Aanvraag**: ``` GET /topics?api-version=2019-01-01-preview ```
+**Verzoek**:``` GET /topics?api-version=2019-01-01-preview ```
 
-**Antwoord**: http 200
+**Reactie**: HTTP 200
 
-**Payload**:
+**Laadvermogen**:
 ```json
 [
     {
@@ -159,18 +159,18 @@ Alle Api's retour neren een fout met de volgende Payload:
 
 ### <a name="delete-topic"></a>Onderwerp verwijderen
 
-**Aanvraag**: ``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Verzoek**:``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Antwoord**: http 200, lege nettolading
+**Reactie**: HTTP 200, leeg laadvermogen
 
-## <a name="manage-event-subscriptions"></a>Gebeurtenis abonnementen beheren
-Voor beelden in deze sectie gebruiken `EndpointType=Webhook;`. De JSON-voor beelden voor `EndpointType=EdgeHub / EndpointType=EventGrid` bevinden zich in de volgende sectie. 
+## <a name="manage-event-subscriptions"></a>Gebeurtenisabonnementen beheren
+Monsters in deze `EndpointType=Webhook;`sectie gebruiken . De json `EndpointType=EdgeHub / EndpointType=EventGrid` monsters voor zijn in de volgende sectie. 
 
-### <a name="put-event-subscription-create--update"></a>Gebeurtenis abonnement plaatsen (maken/bijwerken)
+### <a name="put-event-subscription-create--update"></a>Abonnement op evenementen plaatsen (maken / bijwerken)
 
-**Aanvraag**: ``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Verzoek**:``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Payload**:
+**Laadvermogen**:
 ```json
 {
     "name": "<subscription_name>", // optional, inferred from URL. If specified must match URL subscription_name
@@ -268,9 +268,9 @@ Voor beelden in deze sectie gebruiken `EndpointType=Webhook;`. De JSON-voor beel
 }
 ```
 
-**Antwoord**: http 200
+**Reactie**: HTTP 200
 
-**Payload**:
+**Laadvermogen**:
 
 ```json
 {
@@ -371,13 +371,13 @@ Voor beelden in deze sectie gebruiken `EndpointType=Webhook;`. De JSON-voor beel
 ```
 
 
-### <a name="get-event-subscription"></a>Gebeurtenis abonnement ophalen
+### <a name="get-event-subscription"></a>Abonnement op een evenement
 
-**Aanvraag**: ``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Verzoek**:``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Antwoord**: http 200
+**Reactie**: HTTP 200
 
-**Payload**:
+**Laadvermogen**:
 ```json
 {
     "id": "/iotHubs/<iot_hub_name>/devices/<iot_edge_device_id>/modules/<eventgrid_module_name>/topics/<topic_name>/eventSubscriptions/<subscription_name>",
@@ -476,13 +476,13 @@ Voor beelden in deze sectie gebruiken `EndpointType=Webhook;`. De JSON-voor beel
 }
 ```
 
-### <a name="get-event-subscriptions"></a>Gebeurtenis abonnementen ophalen
+### <a name="get-event-subscriptions"></a>Abonnementen op evenementen
 
-**Aanvraag**: ``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
+**Verzoek**:``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
 
-**Antwoord**: http 200
+**Reactie**: HTTP 200
 
-**Payload**:
+**Laadvermogen**:
 ```json
 [
     {
@@ -494,18 +494,18 @@ Voor beelden in deze sectie gebruiken `EndpointType=Webhook;`. De JSON-voor beel
 ]
 ```
 
-### <a name="delete-event-subscription"></a>Gebeurtenis abonnement verwijderen
+### <a name="delete-event-subscription"></a>Gebeurtenisabonnement verwijderen
 
-**Aanvraag**: ``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Verzoek**:``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Antwoord**: http 200, geen nettolading
+**Reactie**: HTTP 200, geen payload
 
 
-## <a name="publish-events-api"></a>API voor publiceren van gebeurtenissen
+## <a name="publish-events-api"></a>API voor gebeurtenissen publiceren
 
-### <a name="send-batch-of-events-in-event-grid-schema"></a>Batch gebeurtenissen verzenden (in Event Grid schema)
+### <a name="send-batch-of-events-in-event-grid-schema"></a>Batch gebeurtenissen verzenden (in het schema van gebeurtenisraster)
 
-**Aanvraag**: ``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**Verzoek**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -523,22 +523,22 @@ Voor beelden in deze sectie gebruiken `EndpointType=Webhook;`. De JSON-voor beel
 ]
 ```
 
-**Antwoord**: http 200, lege nettolading
+**Reactie**: HTTP 200, leeg laadvermogen
 
 
-**Beschrijvingen van lading veld**
-- ```Id``` is verplicht. Dit kan een wille keurige teken reeks waarde zijn die wordt ingevuld door de aanroeper. Event Grid voert geen duplicaten detectie uit of dwingt geen semantiek af van dit veld.
-- ```Topic``` is optioneel, maar indien opgegeven moet overeenkomen met de topic_name van de aanvraag-URL
-- ```Subject``` is verplicht, kan een wille keurige teken reeks waarde zijn
-- ```EventType``` is verplicht, kan een wille keurige teken reeks waarde zijn
-- ```EventTime``` is verplicht, wordt niet gevalideerd, maar moet een juiste datum/tijd zijn.
-- ```DataVersion``` is verplicht
-- ```MetadataVersion``` is optioneel, indien opgegeven, moet een teken reeks zijn met de waarde ```"1"```
-- ```Data``` is optioneel en kan elk JSON-token (getal, teken reeks, Booleaanse waarde, matrix, object) zijn
+**Beschrijvingen van het payloadveld**
+- ```Id```is verplicht. Het kan elke tekenreekswaarde zijn die wordt ingevuld door de beller. Event Grid doet geen dubbele detectie of dwingt geen semantiek af op dit veld.
+- ```Topic```is optioneel, maar als opgegeven moet overeenkomen met de topic_name van de aanvraag-URL
+- ```Subject```is verplicht, kan elke tekenreekswaarde zijn
+- ```EventType```is verplicht, kan elke tekenreekswaarde zijn
+- ```EventTime```is verplicht, het is niet gevalideerd, maar moet een goede DateTime.
+- ```DataVersion```is verplicht
+- ```MetadataVersion```is optioneel, indien gespecificeerd moet het een tekenreeks zijn met de waarde```"1"```
+- ```Data```is optioneel en kan elk JSON-token zijn (getal, tekenreeks, booleaan, array, object)
 
-### <a name="send-batch-of-events-in-custom-schema"></a>Batch gebeurtenissen verzenden (in aangepast schema)
+### <a name="send-batch-of-events-in-custom-schema"></a>Batch gebeurtenissen verzenden (volgens het aangepaste schema)
 
-**Aanvraag**: ``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**Verzoek**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -548,18 +548,18 @@ Voor beelden in deze sectie gebruiken `EndpointType=Webhook;`. De JSON-voor beel
 ]
 ```
 
-**Antwoord**: http 200, lege nettolading
+**Reactie**: HTTP 200, leeg laadvermogen
 
 
-**Beperkingen voor nettolading**
-- MOET een matrix met gebeurtenissen zijn.
-- Elke matrix vermelding moet een JSON-object zijn.
-- Geen andere beperkingen (met uitzonde ring van Payload-grootte).
+**Payload-beperkingen**
+- Moet een scala aan gebeurtenissen.
+- Elke array-item moet een JSON-object zijn.
+- Geen andere beperkingen (andere dan payload grootte).
 
 ## <a name="examples"></a>Voorbeelden
 
 ### <a name="set-up-topic-with-eventgrid-schema"></a>Onderwerp instellen met EventGrid-schema
-Hiermee stelt u een onderwerp in voor het vereisen van gebeurtenissen die moeten worden gepubliceerd in **eventgridschema**.
+Hiermee stelt u een onderwerp in om te vereisen dat gebeurtenissen worden gepubliceerd in **eventgridschema.**
 
 ```json
     {
@@ -571,8 +571,8 @@ Hiermee stelt u een onderwerp in voor het vereisen van gebeurtenissen die moeten
     }
 ```
 
-### <a name="set-up-topic-with-custom-schema"></a>Onderwerp met aangepast schema instellen
-Hiermee stelt u een onderwerp in waarmee gebeurtenissen moeten worden gepubliceerd in `customschema`.
+### <a name="set-up-topic-with-custom-schema"></a>Onderwerp instellen met aangepast schema
+Hiermee stelt u een onderwerp in `customschema`om te vereisen dat gebeurtenissen worden gepubliceerd in .
 
 ```json
     {
@@ -584,8 +584,8 @@ Hiermee stelt u een onderwerp in waarmee gebeurtenissen moeten worden gepublicee
     }
 ```
 
-### <a name="set-up-topic-with-cloud-event-schema"></a>Onderwerp instellen met Cloud-gebeurtenis schema
-Hiermee stelt u een onderwerp in waarmee gebeurtenissen moeten worden gepubliceerd in `cloudeventschema`.
+### <a name="set-up-topic-with-cloud-event-schema"></a>Onderwerp instellen met cloudgebeurtenisschema
+Hiermee stelt u een onderwerp in `cloudeventschema`om te vereisen dat gebeurtenissen worden gepubliceerd in .
 
 ```json
     {
@@ -597,8 +597,8 @@ Hiermee stelt u een onderwerp in waarmee gebeurtenissen moeten worden gepublicee
     }
 ```
 
-### <a name="set-up-webhook-as-destination-events-to-be-delivered-in-eventgridschema"></a>Webhook als doel instellen, gebeurtenissen die moeten worden geleverd in eventgridschema
-Gebruik dit doel type om gebeurtenissen te verzenden naar een andere module (die als host fungeert voor een HTTP-eind punt) of naar een HTTP-eind punt op het netwerk/Internet.
+### <a name="set-up-webhook-as-destination-events-to-be-delivered-in-eventgridschema"></a>WebHook instellen als bestemming, gebeurtenissen die moeten worden geleverd in eventgridschema
+Gebruik dit doeltype om gebeurtenissen te verzenden naar een andere module (die een HTTP-eindpunt host) of naar een HTTP-adresseerbaar eindpunt op het netwerk/internet.
 
 ```json
 {
@@ -617,19 +617,19 @@ Gebruik dit doel type om gebeurtenissen te verzenden naar een andere module (die
 }
 ```
 
-Beperkingen voor het kenmerk `endpointUrl`:
-- De waarde mag niet null zijn.
-- Dit moet een absolute URL zijn.
-- Als outbound__webhook__httpsOnly is ingesteld op True in de EventGridModule-instellingen, moet dit alleen HTTPS zijn.
-- Als outbound__webhook__httpsOnly is ingesteld op False, kan dit HTTP of HTTPS zijn.
+Beperkingen op `endpointUrl` het kenmerk:
+- Het moet niet-null zijn.
+- Het moet een absolute URL zijn.
+- Als outbound__webhook__httpsOnly is ingesteld op true in de EventGridModule-instellingen, moet dit alleen HTTPS zijn.
+- Als outbound__webhook__httpsOnly ingesteld op false, kan het HTTP of HTTPS zijn.
 
-Beperkingen voor de eigenschap `eventDeliverySchema`:
-- Het moet overeenkomen met het invoer schema van het geabonneerde onderwerp.
-- Dit kan null zijn. De standaard instelling is het invoer schema van het onderwerp.
+Beperkingen op `eventDeliverySchema` de eigenschap:
+- Het moet overeenkomen met het invoerschema van het abonnementsonderwerp.
+- Het kan null zijn. Het standaard is het invoerschema van het onderwerp.
 
 ### <a name="set-up-iot-edge-as-destination"></a>IoT Edge instellen als bestemming
 
-Gebruik deze bestemming om gebeurtenissen te verzenden naar IoT Edge hub en te worden blootgesteld aan het subsysteem Routing/filtering/forwarding van Edge hub.
+Gebruik deze bestemming om gebeurtenissen naar IoT Edge Hub te verzenden en te worden onderworpen aan het subsysteem routering/filtering/forwarding van Edge Hub.
 
 ```json
 {
@@ -647,9 +647,9 @@ Gebruik deze bestemming om gebeurtenissen te verzenden naar IoT Edge hub en te w
 }
 ```
 
-### <a name="set-up-event-grid-cloud-as-destination"></a>Event Grid Cloud instellen als bestemming
+### <a name="set-up-event-grid-cloud-as-destination"></a>Gebeurtenisrasterwolk instellen als bestemming
 
-Gebruik deze bestemming voor het verzenden van gebeurtenissen naar Event Grid in de Cloud (Azure). Voordat u een gebeurtenis abonnement op de rand maakt, moet u eerst een gebruikers onderwerp instellen in de Cloud waarnaar gebeurtenissen moeten worden verzonden.
+Gebruik deze bestemming om gebeurtenissen naar gebeurtenisraster in de cloud (Azure) te verzenden. U moet eerst een gebruikersonderwerp instellen in de cloud waarnaar gebeurtenissen moeten worden verzonden, voordat u een gebeurtenisabonnement maakt.
 
 ```json
 {
@@ -669,33 +669,33 @@ Gebruik deze bestemming voor het verzenden van gebeurtenissen naar Event Grid in
 }
 ```
 
-EndpointUrl
-- De waarde mag niet null zijn.
-- Dit moet een absolute URL zijn.
-- Het pad `/api/events` moet worden gedefinieerd in het pad van de aanvraag-URL.
-- Deze moet `api-version=2018-01-01` hebben in de query reeks.
-- Als outbound__eventgrid__httpsOnly is ingesteld op True in de instellingen voor EventGridModule (standaard instelling), moet dit alleen HTTPS zijn.
-- Als outbound__eventgrid__httpsOnly is ingesteld op False, kan dit HTTP of HTTPS zijn.
-- Als outbound__eventgrid__allowInvalidHostnames is ingesteld op False (standaard instelling ONWAAR), moet dit een van de volgende eind punten zijn:
+EindpuntURL:
+- Het moet niet-null zijn.
+- Het moet een absolute URL zijn.
+- Het `/api/events` pad moet worden gedefinieerd in het URL-pad van de aanvraag.
+- Het moet `api-version=2018-01-01` in de querytekenreeks staan.
+- Als outbound__eventgrid__httpsOnly is ingesteld op true in de EventGridModule-instellingen (standaard waar), moet dit alleen HTTPS zijn.
+- Als outbound__eventgrid__httpsOnly is ingesteld op false, kan dit HTTP of HTTPS zijn.
+- Als outbound__eventgrid__allowInvalidHostnames is ingesteld op false (standaard false), moet deze zich richten op een van de volgende eindpunten:
    - `eventgrid.azure.net`
    - `eventgrid.azure.us`
    - `eventgrid.azure.cn`
 
 SasKey:
-- Mag niet null zijn.
+- Moet niet-null zijn.
 
-Onderwerpnaam:
-- Als het abonnement. EventDeliverySchema is ingesteld op EventGridSchema, wordt de waarde uit dit veld in het veld onderwerp van elke gebeurtenis geplaatst voordat deze wordt doorgestuurd naar Event Grid in de Cloud.
-- Als het abonnement. EventDeliverySchema is ingesteld op CustomEventSchema, wordt deze eigenschap genegeerd en wordt de nettolading van de aangepaste gebeurtenis exact doorgestuurd zoals deze is ontvangen.
+TopicName:
+- Als het Subscription.EventDeliverySchema is ingesteld op EventGridSchema, wordt de waarde van dit veld in het onderwerpveld van elke gebeurtenis geplaatst voordat deze wordt doorgestuurd naar Gebeurtenisraster in de cloud.
+- Als het Subscription.EventDeliverySchema is ingesteld op CustomEventSchema, wordt deze eigenschap genegeerd en wordt de aangepaste gebeurtenispayload precies doorgestuurd zoals deze is ontvangen.
 
-## <a name="set-up-event-hubs-as-a-destination"></a>Event Hubs instellen als bestemming
+## <a name="set-up-event-hubs-as-a-destination"></a>Gebeurtenishubs instellen als bestemming
 
-Als u wilt publiceren naar een event hub, stelt u de `endpointType` in op `eventHub` en geeft u het volgende op:
+Als u wilt publiceren naar `endpointType` `eventHub` een gebeurtenishub, stelt u het in en geeft u het:
 
-* Connections Tring: verbindings reeks voor de specifieke Event hub die u als doel hebt gegenereerd via een gedeeld toegangs beleid.
+* connectionString: verbindingstekenreeks voor de specifieke gebeurtenishub die u target die wordt gegenereerd via een beleid voor gedeelde toegang.
 
     >[!NOTE]
-    > De connection string moet entiteits-specifiek zijn. Het is niet mogelijk om een naam ruimte connection string te gebruiken. U kunt een specifieke connection string genereren door te navigeren naar de specifieke Event hub waarnaar u wilt publiceren in azure Portal en te klikken op **gedeeld toegangs beleid** voor het genereren van een nieuwe entiteit specifieke connecection teken reeks.
+    > De verbindingstekenreeks moet entiteitsspecifiek zijn. Het gebruik van een verbindingstekenreeks voor naamruimte werkt niet. U een entiteitsspecifieke verbindingstekenreeks genereren door te navigeren naar de specifieke gebeurtenishub die u wilt publiceren in de Azure Portal en te klikken op **Beleid voor gedeelde toegang** om een nieuwe entiteitsspecifieke connecection-tekenreeks te genereren.
 
     ```json
         {
@@ -710,14 +710,14 @@ Als u wilt publiceren naar een event hub, stelt u de `endpointType` in op `event
         }
     ```
 
-## <a name="set-up-service-bus-queues-as-a-destination"></a>Service Bus-wacht rijen instellen als bestemming
+## <a name="set-up-service-bus-queues-as-a-destination"></a>Wachtrijen voor servicebussen instellen als bestemming
 
-Als u wilt publiceren naar een Service Bus wachtrij, stelt u de `endpointType` in op `serviceBusQueue` en geeft u het volgende op:
+Als u wilt publiceren in `endpointType` een `serviceBusQueue` servicebuswachtrij, stelt u het instellen en op bieden:
 
-* Connections Tring: een verbindings reeks voor de specifieke Service Bus wachtrij waarvan u de doel groep hebt gegenereerd via een gedeeld toegangs beleid.
+* connectionString: verbindingstekenreeks voor de specifieke servicebuswachtrij die u target die wordt gegenereerd via een beleid voor gedeelde toegang.
 
     >[!NOTE]
-    > De connection string moet entiteits-specifiek zijn. Het is niet mogelijk om een naam ruimte connection string te gebruiken. Genereer een specifieke entiteit connection string door te navigeren naar de specifieke Service Bus wachtrij waarnaar u wilt publiceren in azure Portal en klik op **beleid voor gedeelde toegang** om een nieuwe entiteit specifieke connecection teken reeks te genereren.
+    > De verbindingstekenreeks moet entiteitsspecifiek zijn. Het gebruik van een verbindingstekenreeks voor naamruimte werkt niet. Genereer een entiteitsspecifieke verbindingstekenreeks door te navigeren naar de specifieke servicebuswachtrij die u wilt publiceren in de Azure Portal en te klikken op **Beleid voor gedeelde toegang** om een nieuwe entiteitsspecifieke connecection-tekenreeks te genereren.
 
     ```json
         {
@@ -732,14 +732,14 @@ Als u wilt publiceren naar een Service Bus wachtrij, stelt u de `endpointType` i
         }
     ```
 
-## <a name="set-up-service-bus-topics-as-a-destination"></a>Service Bus onderwerpen instellen als bestemming
+## <a name="set-up-service-bus-topics-as-a-destination"></a>Onderwerpen voor servicebussen instellen als bestemming
 
-Als u wilt publiceren naar een Service Bus onderwerp, stelt u de `endpointType` in op `serviceBusTopic` en geeft u het volgende op:
+Als u wilt publiceren naar `endpointType` een `serviceBusTopic` servicebusonderwerp, stelt u het aan en de informatie in:
 
-* Connections Tring: een verbindings reeks voor het specifieke Service Bus onderwerp dat wordt gegenereerd via een gedeeld toegangs beleid.
+* connectionString: verbindingstekenreeks voor het specifieke servicebusonderwerp dat u target, gegenereerd via een beleid voor gedeelde toegang.
 
     >[!NOTE]
-    > De connection string moet entiteits-specifiek zijn. Het is niet mogelijk om een naam ruimte connection string te gebruiken. Genereer een specifieke entiteit connection string door te navigeren naar het specifieke Service Bus onderwerp waarnaar u wilt publiceren in azure Portal en klik op **beleid voor gedeelde toegang** om een nieuwe entiteit specifieke connecection teken reeks te genereren.
+    > De verbindingstekenreeks moet entiteitsspecifiek zijn. Het gebruik van een verbindingstekenreeks voor naamruimte werkt niet. Genereer een entiteitsspecifieke verbindingstekenreeks door te navigeren naar het specifieke servicebusonderwerp dat u wilt publiceren in de Azure Portal en te klikken op **Beleid voor gedeelde toegang** om een nieuwe entiteitsspecifieke connecection-tekenreeks te genereren.
 
     ```json
         {
@@ -754,15 +754,15 @@ Als u wilt publiceren naar een Service Bus onderwerp, stelt u de `endpointType` 
         }
     ```
 
-## <a name="set-up-storage-queues-as-a-destination"></a>Opslag wachtrijen instellen als bestemming
+## <a name="set-up-storage-queues-as-a-destination"></a>Opslagwachtrijen instellen als bestemming
 
-Als u wilt publiceren naar een opslag wachtrij, stelt u de `endpointType` in op `storageQueue` en geeft u het volgende op:
+Als u wilt publiceren in `endpointType` `storageQueue` een opslagwachtrij, stelt u het in en geeft u het:
 
-* wachtrijmap: de naam van de opslag wachtrij waarnaar u publiceert.
-* Connections Tring: de verbindings reeks voor het opslag account waarin de opslag wachtrij zich bevindt.
+* queueName: naam van de opslagwachtrij die u publiceert.
+* verbindingTekenreeks: verbindingstekenreeks voor het opslagaccount waarin de opslagwachtrij zich bevindt.
 
     >[!NOTE]
-    > Event Hubs, Service Bus wacht rijen en Service Bus onderwerpen, de connection string die voor opslag wachtrijen wordt gebruikt, is niet specifiek voor de entiteit. In plaats daarvan moet de connection string voor het opslag account.
+    > De verbindingstekenreeks die wordt gebruikt voor opslagwachtrijen is niet entiteitsspecifiek. In plaats daarvan moet het alleen de verbindingstekenreeks voor het opslagaccount.
 
     ```json
         {

@@ -1,16 +1,16 @@
 ---
 title: Een iOS-app maken
-description: Volg deze zelf studie om aan de slag te gaan met het gebruik van Azure mobile app back-ends voor iOS-ontwikkeling in doel-C of SWIFT.
+description: Volg deze zelfstudie om aan de slag te gaan met het gebruik van backends van azure mobiele apps voor iOS-ontwikkeling in Doelstelling-C of Swift.
 ms.assetid: 6461a899-9340-42dd-b118-ffc5ba00e846
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.openlocfilehash: 1b1114a22d33689f485aa228a8a1cf65eba719da
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461484"
 ---
 # <a name="create-an-ios-app"></a>Een iOS-app maken
@@ -26,7 +26,7 @@ Voor het uitvoeren van deze zelfstudie hebt u een Mac en [een Azure-account](htt
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Een database verbinding maken en het client-en server project configureren
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Een databaseverbinding maken en het client- en serverproject configureren
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
 ## <a name="run-the-ios-app"></a>De iOS-app uitvoeren

@@ -15,10 +15,10 @@ ms.date: 07/24/2018
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 30f71432ca008b87bddfb253f23ae3cef0ac390d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77020179"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-resources beheren met Azure CLI
@@ -62,7 +62,7 @@ Als u de Azure CLI wilt gebruiken met Batch, moet u zich aanmelden en verifiëre
 Er zijn een aantal manieren om u aan te melden bij Azure, zoals u kunt lezen in [Aanmelden met de Azure CLI](/cli/azure/authenticate-azure-cli):
 
 1. [Interactief aanmelden](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Meld u interactief aan wanneer u zelf Azure CLI-opdrachten uitvoert vanaf de opdrachtregel.
-2. [Aanmelden met een service-principal](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Meld u aan met een service-principal wanneer u Azure CLI-opdrachten uitvoert vanuit een script of een toepassing.
+2. [Log in met een serviceprincipal](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Meld u aan met een service-principal wanneer u Azure CLI-opdrachten uitvoert vanuit een script of een toepassing.
 
 Ten behoeve van dit artikel laten we zien hoe u zich interactief aanmeldt bij Azure. Typ [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) op de opdrachtregel:
 
@@ -83,7 +83,7 @@ Als u de Azure CLI wilt gebruiken voor het beheren van Batch-resources, zoals po
 
 Er zijn twee mogelijkheden voor verificatie van uw Batch-account:
 
-- **Met behulp van Azure AD-verificatie (Azure Active Directory)** 
+- **Azure AD-verificatie (Azure Directory) gebruiken** 
 
     Verificatie met Azure AD is de standaardinstelling als u de Azure CLI gebruikt met Batch en wordt aanbevolen voor de meeste scenario's. 
     
@@ -97,7 +97,7 @@ Er zijn twee mogelijkheden voor verificatie van uw Batch-account:
     az batch account login -g myresource group -n mybatchaccount
     ```
 
-- **Met behulp van gedeelde sleutelverificatie**
+- **Door verificatie van gedeelde sleutels te gebruiken**
 
     Bij [gedeelde sleutelverificatie](/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service#authentication-via-shared-key) worden de toegangssleutels van uw account gebruikt om Azure CLI-opdrachten te verifiëren voor de Batch-service.
 
@@ -129,7 +129,7 @@ az batch pool create my_batch_pool.json
 
 Hoewel u de meeste resources kunt maken met alleen opdrachtregelopties, is voor sommige functies vereist dat u een bestand met de JSON-indeling opgeeft met daarin details van de resource. U moet bijvoorbeeld een JSON-bestand gebruiken als u resourcebestanden wilt opgeven voor een starttaak.
 
-Raadpleeg de referentie documentatie voor [batch-rest API][rest_api] voor een overzicht van de vereiste JSON-syntaxis voor het maken van een resource. De onderwerpen voor het toevoegen van een *resourcetype* in de Azure Batch REST API Reference bevat JSON-voorbeeldscripts voor het maken van die resource. U kunt deze JSON-voorbeeldscripts als sjablonen gebruiken voor JSON-bestanden die u met de Azure CLI wilt gebruiken. Als u bijvoorbeeld de JSON-syntaxis voor het maken van een groep wilt weer geven, raadpleegt u [een groep toevoegen aan een account][rest_add_pool].
+Informatie over de juiste JSON-syntaxis voor het maken van een resource vindt u in de Engelstalige [Azure Batch REST API Reference][rest_api]. De onderwerpen voor het toevoegen van een *resourcetype* in de Azure Batch REST API Reference bevat JSON-voorbeeldscripts voor het maken van die resource. U kunt deze JSON-voorbeeldscripts als sjablonen gebruiken voor JSON-bestanden die u met de Azure CLI wilt gebruiken. Als u bijvoorbeeld de JSON-syntaxis wilt zien voor het maken van een pool, raadpleegt u [Add a pool to an account][rest_add_pool] (Een pool toevoegen aan een account).
 
 Zie [Running jobs on Azure Batch with Azure CLI](./scripts/batch-cli-sample-run-job.md) (Taken uitvoeren in Azure Batch met Azure CLI) voor een voorbeeld van een script waarin een JSON-bestand is opgegeven.
 
@@ -161,7 +161,7 @@ Zie [Een functie en taken uitvoeren met Batch](./scripts/batch-cli-sample-run-jo
 
 Zie [Create queries to list Batch resources efficiently](batch-efficient-list-queries.md) (Query's maken om efficiënt Batch-resources op te vragen) voor meer informatie over het uitvoeren van efficiënte lijstquery's met OData-componenten.
 
-## <a name="troubleshooting-tips"></a>Tips om problemen op te lossen
+## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
 
 De volgende tips kunnen helpen bij het oplossen van problemen met Azure CLI:
 

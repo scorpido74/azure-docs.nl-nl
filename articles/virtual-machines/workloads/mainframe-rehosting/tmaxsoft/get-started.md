@@ -1,42 +1,42 @@
 ---
 title: Aan de slag met TmaxSoft OpenFrame op Azure Virtual Machines
-description: Rehost uw IBM z/OS mainframe-workloads op Azure Virtual Machines (VM's) met behulp van TmaxSoft OpenFrame omgeving.
+description: Host uw IBM z/OS mainframeworkloads opnieuw met de TmaxSoft OpenFrame-omgeving op Azure Virtual Machines (VM's).
 author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.openlocfilehash: 408e0166e52af9efd3d4c64f1b29bddcfc1cca4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61485383"
 ---
 # <a name="get-started-with-tmaxsoft-openframe-on-azure"></a>Aan de slag met TmaxSoft OpenFrame op Azure
 
-Uw bestaande mainframe-activa nemen en ze te verplaatsen naar Microsoft Azure met behulp van TmaxSoft OpenFrame. Deze populaire rehosting oplossing maakt een emulatieomgeving op Azure zodat u snel om toepassingen te migreren. Er is geen formatteren is vereist.
+Neem uw bestaande mainframe-elementen en verplaats ze naar Microsoft Azure met Behulp van TmaxSoft OpenFrame. Deze populaire rehostingoplossing creëert een emulatieomgeving op Azure, zodat u snel toepassingen migreren. Er is geen heropmaak vereist.
 
-## <a name="openframe-rehosting-environment"></a>OpenFrame opnieuw hosten omgeving
+## <a name="openframe-rehosting-environment"></a>OpenFrame rehosting-omgeving
 
-Instellen van een omgeving OpenFrame op Azure voor ontwikkeling, demo's, tests of productie-workloads. Zoals in de volgende afbeelding wordt weergegeven, bevat OpenFrame meerdere onderdelen die de mainframe-emulatie-omgeving in Azure maken. Bijvoorbeeld vervangt OpenFrame onlineservices de mainframe-middleware, zoals IBM klant informatie besturingselement System (CICS). OpenFrame Batch, vervangt met de component TJES, u de IBM-mainframes taak post subsysteem (JES). 
+Stel een OpenFrame-omgeving in op Azure voor ontwikkelings-, demo-, test- of productieworkloads. Zoals uit de volgende afbeelding blijkt, bevat OpenFrame meerdere componenten die de mainframe-emulatieomgeving op Azure maken. OpenFrame online services vervangen bijvoorbeeld de mainframe middleware zoals IBM Customer Information Control System (CICS). OpenFrame Batch, met zijn TJES-component, vervangt het IBM mainframe's Job Entry Subsystem (JES). 
 
-![OpenFrame opnieuw hosten proces](media/openframe-01.png)
+![OpenFrame rehostingproces](media/openframe-01.png)
 
 > [!NOTE]
-> Als u wilt de OpenFrame-omgeving op Azure uitvoert, moet u een geldige productcode licentie of proeflicentie TmaxSoft hebben.
+> Als u de OpenFrame-omgeving op Azure wilt uitvoeren, moet u over een geldige productlicentie of proeflicentie van TmaxSoft beschikken.
 
-## <a name="openframe-components"></a>OpenFrame onderdelen
+## <a name="openframe-components"></a>OpenFrame-componenten
 
-De volgende componenten maken deel uit van de omgeving OpenFrame op Azure:
+De volgende componenten maken deel uit van de OpenFrame-omgeving op Azure:
 
-- **Hulpprogramma voor migratie van** met inbegrip van OFMiner, een oplossing die analyseert de activa mainframes en ze vervolgens naar Azure migreert.
-- **Compilers**, met inbegrip van OFCOBOL, een compiler dat wordt geïnterpreteerd programma's van de mainframe-COBOL; OFPLI, welke van de mainframe PL interpreteert / ik programma's; en OFASM, een compiler die van de mainframe-assembler programma's worden geïnterpreteerd.
-- **Front-end** onderdelen, inclusief Java Enterprise gebruiker-oplossing (JEUS), een webserver van de toepassing die is gecertificeerd voor Java Enterprise Edition 6.OFGW en het onderdeel OpenFrame gateway waarmee een listener 3270.
-- **Toepassing** omgeving. OpenFrame basis is het middleware die het hele systeem beheert. OpenFrame Server Type C (OSC) vervangt de middleware en IBM CICS van de mainframe.
-- **Relationele database**, zoals Tibero (weergegeven), Oracle Database, Microsoft SQL Server, IBM Db2 of MySQL. De toepassingen OpenFrame gebruiken Open Database Connectivity (ODBC)-protocol om te communiceren met de database.
-- **Beveiliging** via TACF, een servicemodule waarmee de gebruikerstoegang tot systemen en bronnen. 
-- **OFManager** is een oplossing die van OpenFrame uitvoeren en beheren van functies in de web-omgeving biedt.
+- **Migratietools,** waaronder OFMiner, een oplossing die de mainframes-assets analyseert en vervolgens migreert naar Azure.
+- **Compilers**, waaronder OFCOBOL, een compiler die de COBOL-programma's van het mainframe interpreteert; OFPLI, dat de PL/I-programma's van het mainframe interpreteert; en OFASM, een compiler die de assembleerprogramma's van het mainframe interpreteert.
+- **Front-end** componenten, waaronder Java Enterprise User Solution (JEUS), een webapplicatieserver die is gecertificeerd voor Java Enterprise Edition 6.OFGW, en de OpenFrame-gatewaycomponent die een 3270-listener biedt.
+- **Toepassingsomgeving.** OpenFrame Base is de middleware die het hele systeem beheert. OpenFrame Server Type C (OSC) vervangt de middleware van het mainframe en IBM CICS.
+- **Relationele database**, zoals Tibero (getoond), Oracle Database, Microsoft SQL Server, IBM Db2 of MySQL. De OpenFrame-toepassingen gebruiken ODBC-protocol (Open Database Connectivity) om met de database te communiceren.
+- **Beveiliging** via TACF, een servicemodule die de toegang van gebruikers tot systemen en bronnen regelt. 
+- **OFManager** is een oplossing die de werkings- en beheerfuncties van OpenFrame biedt in de webomgeving.
 
 ![OpenFrame-architectuur](media/openframe-02.png)
 

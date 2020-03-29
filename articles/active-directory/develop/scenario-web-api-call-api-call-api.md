@@ -1,6 +1,6 @@
 ---
-title: Web-API voor het aanroepen van web-Api's-micro soft Identity-platform | Azure
-description: Meer informatie over het bouwen van een web-API voor het aanroepen van web-Api's.
+title: Web API die web API's aanroept - Microsoft-identiteitsplatform | Azure
+description: Meer informatie over het maken van een web-API die web-API's aanroept.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,23 +15,23 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d66a08d4e84a3771d6c3fa46b96c975869435452
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76833376"
 ---
-# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Een web-API die web-Api's aanroept: een API aanroepen
+# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Een web-API die web-API's aanroept: een API aanroepen
 
-Nadat u een token hebt, kunt u een beveiligde web-API aanroepen. U kunt dit doen vanuit de controller van uw web-API.
+Nadat u een token hebt, u een beveiligde web-API aanroepen. Dit doe je vanuit de controller van je web-API.
 
-## <a name="controller-code"></a>Controller code
+## <a name="controller-code"></a>Controllercode
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Met de volgende code wordt de voorbeeld code die wordt weer gegeven in [een web-API die web-api's aanroept, voortgezet: Schaf een token voor de app aan](scenario-web-api-call-api-acquire-token.md). De code wordt aangeroepen in de acties van de API-controllers. Er wordt een stroomafwaartse API met de naam *ToDoList*aangeroepen.
+De volgende code blijft de voorbeeldcode die wordt weergegeven in [een web-API die web-API's aanroept: Een token voor de app aanschaffen.](scenario-web-api-call-api-acquire-token.md) De code wordt aangeroepen in de acties van de API-controllers. Het roept een downstream API genaamd *todolist*.
 
-Nadat u het token hebt aangeschaft, kunt u dit als Bearer-token gebruiken om de downstream API aan te roepen.
+Nadat u het token hebt aangeschaft, gebruikt u het als een token voor dragers om de downstream-API aan te roepen.
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -59,11 +59,11 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-Met de volgende code wordt de voorbeeld code die wordt weer gegeven in [een web-API die web-api's aanroept, voortgezet: Schaf een token voor de app aan](scenario-web-api-call-api-acquire-token.md). De code wordt aangeroepen in de acties van de API-controllers. Het roept de downstream API MS Graph aan.
+De volgende code blijft de voorbeeldcode die wordt weergegeven in [een web-API die web-API's aanroept: Een token voor de app aanschaffen.](scenario-web-api-call-api-acquire-token.md) De code wordt aangeroepen in de acties van de API-controllers. Het noemt de downstream API MS Graph.
 
-Nadat u het token hebt aangeschaft, kunt u dit als Bearer-token gebruiken om de downstream API aan te roepen.
+Nadat u het token hebt aangeschaft, gebruikt u het als een token voor dragers om de downstream-API aan te roepen.
 
 ```Java
 private String callMicrosoftGraphMeEndpoint(String accessToken){
@@ -83,12 +83,12 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
-Een voor beeld van het demonstreren van deze stroom met MSAL python is nog niet beschikbaar.
+# <a name="python"></a>[Python](#tab/python)
+Een voorbeeld dat deze stroom met MSAL Python aantoont, is nog niet beschikbaar.
 
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-API die web-Api's aanroept: verplaatsen naar productie](scenario-web-api-call-api-production.md)
+> [Een web-API die web-API's aanroept: naar productie gaan](scenario-web-api-call-api-production.md)

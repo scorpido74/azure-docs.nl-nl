@@ -1,6 +1,6 @@
 ---
-title: Problemen met Azure IoT Hub-fout 400027 ConnectionForcefullyClosedOnNewConnection
-description: Meer informatie over het oplossen van fout 400027 ConnectionForcefullyClosedOnNewConnection
+title: Azure IoT Hub-fout oplossen 400027 ConnectionForcefullyClosedOnNewConnection
+description: Begrijpen hoe u fout 400027 ConnectionForcefullyClosedOnNewConnection oplossen
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -9,24 +9,24 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: f4949816f516c6a6b60cfda0602f458256370d40
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76960527"
 ---
 # <a name="400027-connectionforcefullyclosedonnewconnection"></a>400027 ConnectionForcefullyClosedOnNewConnection
 
-In dit artikel worden de oorzaken en oplossingen voor **400027 ConnectionForcefullyClosedOnNewConnection** -fouten beschreven.
+In dit artikel worden de oorzaken en oplossingen beschreven voor fouten die zijn gesloten met **400027 ConnectionForcefullyClosedOnNewConnection.**
 
 ## <a name="symptoms"></a>Symptomen
 
-Uw apparaat-naar-Cloud-dubbele bewerking (zoals gerapporteerde eigenschappen voor lezen of patches) of directe methode aanroep mislukt met de fout code **400027**.
+Uw apparaat-naar-cloud-dubbele bewerking (zoals lees- of patchgerapporteerde eigenschappen) of directe methodeaanroep mislukt met de foutcode **400027**.
 
 ## <a name="cause"></a>Oorzaak
 
-Een andere client heeft een nieuwe verbinding gemaakt met IoT Hub met dezelfde referenties, waardoor de vorige verbinding IoT Hub gesloten. IoT Hub mogen niet meer dan één client verbinding maken met behulp van dezelfde set referenties.
+Een andere client heeft een nieuwe verbinding met IoT Hub gemaakt met dezelfde referenties, zodat IoT Hub de vorige verbinding heeft gesloten. IoT Hub staat niet toe dat meer dan één client verbinding maakt met dezelfde set referenties.
 
 ## <a name="solution"></a>Oplossing
 
-Zorg ervoor dat elke client verbinding maakt met IoT Hub met behulp van een eigen identiteit.
+Zorg ervoor dat elke client verbinding maakt met IoT Hub met zijn eigen identiteit.

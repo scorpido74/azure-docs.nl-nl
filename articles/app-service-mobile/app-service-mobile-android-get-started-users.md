@@ -1,65 +1,65 @@
 ---
 title: Verificatie toevoegen op Android
-description: Meer informatie over het gebruik van Azure App Service voor het verifiëren van gebruikers van uw Android-app met id-providers zoals Google, Facebook, Twitter en micro soft.
+description: Meer informatie over het gebruik van Azure App Service om gebruikers van uw Android-app te verifiëren bij identiteitsproviders zoals Google, Facebook, Twitter en Microsoft.
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 705ebb5809840155e6bbf3f8eef091eb95f63e63
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461637"
 ---
 # <a name="add-authentication-to-your-android-app"></a>Verificatie toevoegen aan uw Android-app
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 ## <a name="summary"></a>Samenvatting
-In deze zelf studie voegt u verificatie toe aan het ToDoList Quick start-project op Android met behulp van een ondersteunde ID-provider. Deze zelf studie is gebaseerd op de zelf studie [aan de slag met Mobile apps] , die u eerst moet volt ooien.
+In deze zelfstudie voegt u verificatie toe aan het snelstartproject van de todolist op Android met behulp van een ondersteunde identiteitsprovider. Deze zelfstudie is gebaseerd op de zelfstudie [van Mobile Apps,] die u eerst moet voltooien.
 
-## <a name="register"></a>Uw app registreren voor verificatie en Azure App Service configureren
+## <a name="register-your-app-for-authentication-and-configure-azure-app-service"></a><a name="register"></a>Uw app registreren voor verificatie en Azure App Service configureren
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Uw app toevoegen aan de toegestane externe omleidings-Url's
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>Uw app toevoegen aan de toegestane URL's voor omleiding
 
-Voor beveiligde verificatie moet u een nieuw URL-schema definiëren voor uw app. Hierdoor kan het verificatie systeem terugkeren naar uw app nadat het verificatie proces is voltooid. In deze zelf studie gebruiken we het URL-schema _AppName_ in. U kunt echter elk gewenst URL-schema gebruiken. Deze moet uniek zijn voor uw mobiele toepassing. De omleiding aan de server zijde inschakelen:
+Veilige verificatie vereist dat u een nieuw URL-schema voor uw app definieert. Hierdoor kan het verificatiesysteem worden omgeleid naar uw app zodra het verificatieproces is voltooid. In deze zelfstudie gebruiken we de _URL-appname_ overal. U echter elk URL-schema gebruiken dat u kiest. Het moet uniek zijn voor uw mobiele applicatie. Ga als u de omleiding aan de serverzijde inschakelen:
 
-1. Selecteer uw App Service in de [Azure Portal].
+1. Selecteer uw App-service in de [Azure-portal.]
 
-2. Klik op de menu optie voor **verificatie/autorisatie** .
+2. Klik op de optie **Verificatie / Autorisatie.**
 
-3. In de **toegestane externe omleidings-url's**voert u `appname://easyauth.callback`in.  De _AppName_ in deze teken reeks is het URL-schema voor uw mobiele toepassing.  De standaard URL-specificatie voor een protocol moet volgen (alleen letters en cijfers gebruiken en beginnen met een letter).  U moet een notitie maken van de teken reeks die u kiest, omdat u de code van uw mobiele toepassing moet aanpassen aan het URL-schema op verschillende locaties.
+3. Voer in de toegestane externe `appname://easyauth.callback` **omleidings-URL's**.  De _appnaam_ in deze tekenreeks is het URL-schema voor uw mobiele toepassing.  Het moet de normale URL-specificatie voor een protocol volgen (gebruik alleen letters en cijfers en begin met een letter).  U moet een notitie maken van de tekenreeks die u kiest, omdat u uw mobiele toepassingscode op verschillende plaatsen moet aanpassen met het URL-schema.
 
 4. Klik op **OK**.
 
 5. Klik op **Opslaan**.
 
-## <a name="permissions"></a>Machtigingen voor geverifieerde gebruikers beperken
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>Machtigingen beperken tot geverifieerde gebruikers
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-* Open in Android Studio het project dat u hebt voltooid met de zelf studie aan de [Aan de slag met Mobile Apps]. Klik in het menu **uitvoeren** op **app uitvoeren**en controleer of er een niet-verwerkte uitzonde ring met de status code 401 (niet toegestaan) wordt gegenereerd nadat de app is gestart.
+* Open in Android Studio het project dat u hebt voltooid met de zelfstudie Aan de [slag met mobiele apps.] Klik **in** het menu Uitvoeren op **App uitvoeren**en controleer of een niet-afgehandelde uitzondering met een statuscode van 401 (Ongeautoriseerd) wordt verhoogd nadat de app is gestart.
 
-     Deze uitzonde ring treedt op omdat de app probeert toegang te krijgen tot de back-end als een niet-geverifieerde gebruiker, maar voor de tabel *TodoItem* is nu verificatie vereist.
+     Deze uitzondering vindt plaats omdat de app probeert toegang te krijgen tot de back-end als een niet-geverifieerde gebruiker, maar de *TodoItem-tabel* vereist nu verificatie.
 
-Vervolgens werkt u de app bij om gebruikers te verifiëren voordat ze een aanvraag indienen bij de Mobile Apps back-end.
+Vervolgens werkt u de app bij om gebruikers te verifiëren voordat u resources opvraagt via de back-end van Mobiele apps.
 
 ## <a name="add-authentication-to-the-app"></a>Verificatie toevoegen aan de app
 [!INCLUDE [mobile-android-authenticate-app](../../includes/mobile-android-authenticate-app.md)]
 
 
 
-## <a name="cache-tokens"></a>Verificatie-tokens in de cache op de client
+## <a name="cache-authentication-tokens-on-the-client"></a><a name="cache-tokens"></a>Cacheverificatietokens op de client
 [!INCLUDE [mobile-android-authenticate-app-with-token](../../includes/mobile-android-authenticate-app-with-token.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u deze basis verificatie-zelf studie hebt voltooid, kunt u door gaan met een van de volgende zelf studies:
+Nu u deze basisverificatiezelfstudie hebt voltooid, u overwegen verder te gaan naar een van de volgende zelfstudies:
 
-* [Push meldingen toevoegen aan uw Android-app](app-service-mobile-android-get-started-push.md).
-  Meer informatie over het configureren van uw Mobile Apps back-end voor het gebruik van Azure notification hubs voor het verzenden van push meldingen.
+* [Voeg pushmeldingen toe aan je Android-app](app-service-mobile-android-get-started-push.md).
+  Meer informatie over het configureren van de back-end van uw mobiele apps om Azure-meldingshubs te gebruiken om pushmeldingen te verzenden.
 * [Offline synchronisatie inschakelen voor uw Android-app](app-service-mobile-android-get-started-offline-data.md).
-  Meer informatie over het toevoegen van offline ondersteuning aan uw app met behulp van een Mobile Apps back-end. Met offline synchronisatie kunnen gebruikers met een mobiele app communiceren&mdash;gegevens weer geven, toevoegen of wijzigen&mdash;zelfs wanneer er geen netwerk verbinding is.
+  Meer informatie over het toevoegen van offline ondersteuning aan uw app met behulp van een back-end van Mobiele apps. Met offline synchronisatie kunnen gebruikers communiceren&mdash;met een mobiele app&mdash;die gegevens bekijkt, toevoegt of wijzigt, zelfs als er geen netwerkverbinding is.
 
 <!-- Anchors. -->
 [Register your app for authentication and configure Mobile Services]: #register
@@ -71,5 +71,5 @@ Nu u deze basis verificatie-zelf studie hebt voltooid, kunt u door gaan met een 
 
 
 <!-- URLs. -->
-[Aan de slag met Mobile Apps]: app-service-mobile-android-get-started.md
-[Azure Portal]: https://portal.azure.com/
+[Aan de slag met mobiele apps]: app-service-mobile-android-get-started.md
+[Azure-portal]: https://portal.azure.com/

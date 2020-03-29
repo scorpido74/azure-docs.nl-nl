@@ -1,6 +1,6 @@
 ---
-title: Table colocation-grootschalige (Citus)-Azure Database for PostgreSQL
-description: Verwante informatie samen opslaan voor snellere query's
+title: Tabelcolocatie - Hyperscale (Citus) - Azure Database voor PostgreSQL
+description: Gerelateerde informatie opslaan voor snellere query's
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,25 +8,25 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 7e4073ec45f4c21f33d20924a9948e72f961c7f8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74967334"
 ---
-# <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Tabel co-locatie in Azure Database for PostgreSQL – grootschalige (Citus)
+# <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Tabelcolocatie in Azure Database voor PostgreSQL – Hyperscale (Citus)
 
-Co-locatie betekent dat verwante informatie samen op dezelfde knoop punten wordt opgeslagen. Query's kunnen snel worden uitgevoerd wanneer alle benodigde gegevens beschikbaar zijn zonder netwerk verkeer. Als u gerelateerde gegevens op verschillende knoop punten wilt verplaatsen, kunt u query's efficiënt uitvoeren op elk knoop punt.
+Colocatie betekent het opslaan van gerelateerde informatie samen op dezelfde knooppunten. Query's kunnen snel gaan wanneer alle benodigde gegevens beschikbaar zijn zonder netwerkverkeer. Door gerelateerde gegevens op verschillende knooppunten te colocaten, kunnen query's op elk knooppunt efficiënt parallel worden uitgevoerd.
 
-## <a name="data-colocation-for-hash-distributed-tables"></a>Gegevens locatie voor op hash-gedistribueerde tabellen
+## <a name="data-colocation-for-hash-distributed-tables"></a>Gegevenscolocatie voor door hash gedistribueerde tabellen
 
-In Azure Database for PostgreSQL – grootschalige (Citus), een rij wordt opgeslagen in een Shard als de hash van de waarde in de kolom distributie binnen het hash-bereik van de Shard valt. Shards met hetzelfde hash-bereik worden altijd op hetzelfde knoop punt geplaatst. Rijen met gelijke distributie kolom waarden bevinden zich altijd op hetzelfde knoop punt in tabellen.
+In Azure Database for PostgreSQL – Hyperscale (Citus) wordt een rij opgeslagen in een shard als de hash van de waarde in de distributiekolom binnen het hashbereik van de shard valt. Scherven met hetzelfde hashbereik worden altijd op hetzelfde knooppunt geplaatst. Rijen met dezelfde kolomwaarden voor distributie bevinden zich altijd op hetzelfde knooppunt voor tabellen.
 
-![Shards](media/concepts-hyperscale-colocation/colocation-shards.png)
+![Scherven](media/concepts-hyperscale-colocation/colocation-shards.png)
 
-## <a name="a-practical-example-of-colocation"></a>Een praktisch voor beeld van een co-locatie
+## <a name="a-practical-example-of-colocation"></a>Een praktisch voorbeeld van colocatie
 
-Bekijk de volgende tabellen die deel kunnen uitmaken van een multi tenant Web Analytics SaaS:
+Houd rekening met de volgende tabellen die deel kunnen uitmaken van een SaaS met multitenantwebanalyse:
 
 ```sql
 CREATE TABLE event (
@@ -45,9 +45,9 @@ CREATE TABLE page (
 );
 ```
 
-Nu willen we query's beantwoorden die kunnen worden uitgegeven door een klant gericht dash board. Een voorbeeld query is ' het aantal bezoeken in de afgelopen week retour neren voor alle pagina's die beginnen met '/blog ' in de Tenant zes. '
+Nu willen we vragen beantwoorden die kunnen worden uitgegeven door een klantgericht dashboard. Een voorbeeldquery is 'Het aantal bezoeken in de afgelopen week retourneren voor alle pagina's die beginnen met '/blog' in tenant zes.'
 
-Als de gegevens in de implementatie optie voor één server werden gebruikt, kunnen we onze query eenvoudig met behulp van de uitgebreide set relationele bewerkingen die worden aangeboden door SQL:
+Als onze gegevens zich in de optie Single-Server-implementatie bevond, konden we onze query eenvoudig uitdrukken met behulp van de uitgebreide set relationele bewerkingen die SQL aanbiedt:
 
 ```sql
 SELECT page_id, count(event_id)
@@ -62,13 +62,13 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-Zolang de [werkset](https://en.wikipedia.org/wiki/Working_set) voor deze query in het geheugen past, is een tabel met één server een geschikte oplossing. Laten we eens kijken naar de mogelijkheden voor het schalen van het gegevens model met de implementatie optie grootschalige (Citus).
+Zolang de [werkset](https://en.wikipedia.org/wiki/Working_set) voor deze query in het geheugen past, is een tabel met één server een geschikte oplossing. Laten we eens kijken naar de mogelijkheden om het gegevensmodel te schalen met de optie Hyperscale (Citus) implementatie.
 
-### <a name="distribute-tables-by-id"></a>Tabellen verdelen op basis van ID
+### <a name="distribute-tables-by-id"></a>Tabellen distribueren op id
 
-Query's met één server worden langzamer gestart naarmate het aantal tenants en de gegevens die voor elke Tenant zijn opgeslagen toenemen. De werkset stopt met het aanpassen van het geheugen en de CPU wordt een knel punt.
+Query's met één server beginnen te vertragen naarmate het aantal tenants en de gegevens die voor elke tenant zijn opgeslagen, groeit. De werkset stopt met het inpassen in het geheugen en CPU wordt een knelpunt.
 
-In dit geval kunnen we de gegevens op verschillende knoop punten Shard met behulp van grootschalige (Citus). De eerste en belangrijkste keuze die we moeten maken wanneer we bepalen dat Shard de distributie kolom is. Laten we beginnen met het gebruik van `event_id` voor de gebeurtenis tabel en `page_id` voor de tabel `page`:
+In dit geval kunnen we de gegevens over veel knooppunten sharden met Behulp van Hyperscale (Citus). De eerste en belangrijkste keuze die we moeten maken wanneer we besluiten om te scherfen is de distributie kolom. Laten we beginnen met een `event_id` naïeve keuze van `page_id` het `page` gebruik voor de gebeurtenistabel en voor de tabel:
 
 ```sql
 -- naively use event_id and page_id as distribution columns
@@ -77,7 +77,7 @@ SELECT create_distributed_table('event', 'event_id');
 SELECT create_distributed_table('page', 'page_id');
 ```
 
-Wanneer gegevens worden verspreid over verschillende werk rollen, kunnen we geen samen voegen uitvoeren zoals we op één PostgreSQL-knoop punt zouden doen. In plaats daarvan moeten er twee query's worden uitgevoerd:
+Wanneer gegevens worden verspreid over verschillende werknemers, kunnen we geen join uitvoeren zoals we zouden doen op één PostgreSQL-knooppunt. In plaats daarvan moeten we twee query's uitgeven:
 
 ```sql
 -- (Q1) get the relevant page_ids
@@ -94,22 +94,22 @@ GROUP BY page_id ORDER BY count DESC LIMIT 10;
 
 Daarna moeten de resultaten van de twee stappen worden gecombineerd door de toepassing.
 
-Het uitvoeren van de query's moet gegevens raadplegen in Shards verspreid over verschillende knoop punten.
+Het uitvoeren van de query's moet gegevens raadplegen in shards verspreid over knooppunten.
 
 ![Inefficiënte query's](media/concepts-hyperscale-colocation/colocation-inefficient-queries.png)
 
-In dit geval maakt de gegevens distributie aanzienlijke nadelen:
+In dit geval creëert de gegevensdistributie aanzienlijke nadelen:
 
--   Overhead van het uitvoeren van query's op elke Shard en het uitvoeren van meerdere query's.
--   Overhead van Q1 waarbij veel rijen worden geretourneerd naar de client.
+-   Overhead van het opvragen van elke shard en het uitvoeren van meerdere query's.
+-   Overhead van Q1 terug te keren vele rijen aan de klant.
 -   Q2 wordt groot.
--   De nood zaak om query's te schrijven in meerdere stappen vereist wijzigingen in de toepassing.
+-   De noodzaak om query's in meerdere stappen te schrijven vereist wijzigingen in de toepassing.
 
-De gegevens worden verspreid, zodat de query's kunnen worden geparallelleerd. Het is alleen nuttig als de hoeveelheid werk die de query uitvoert, aanzienlijk groter is dan de overhead van het uitvoeren van query's op veel Shards.
+De gegevens worden verspreid, zodat de query's kunnen worden parallel. Het is alleen nuttig als de hoeveelheid werk die de query doet aanzienlijk groter is dan de overhead van het opvragen van veel scherven.
 
-### <a name="distribute-tables-by-tenant"></a>Tabellen distribueren op Tenant
+### <a name="distribute-tables-by-tenant"></a>Tabellen distribueren per tenant
 
-In grootschalige (Citus) zijn rijen met dezelfde waarde voor de distributie kolom gegarandeerd dat deze zich op hetzelfde knoop punt bevinden. Vanaf nu kunnen we de tabellen met `tenant_id` als de distributie kolom maken.
+In Hyperscale (Citus) staan rijen met dezelfde waarde van de distributiekolom gegarandeerd op hetzelfde knooppunt. Opnieuw beginnen, kunnen we `tenant_id` onze tabellen maken met als de distributiekolom.
 
 ```sql
 -- co-locate tables by using a common distribution column
@@ -117,7 +117,7 @@ SELECT create_distributed_table('event', 'tenant_id');
 SELECT create_distributed_table('page', 'tenant_id', colocate_with => 'event');
 ```
 
-Nu grootschalige (Citus) kan de oorspronkelijke query met één server zonder aanpassing beantwoorden (Q1):
+Nu kan Hyperscale (Citus) de oorspronkelijke single-server query beantwoorden zonder wijziging (Q1):
 
 ```sql
 SELECT page_id, count(event_id)
@@ -132,12 +132,12 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-Vanwege het filter en de samen voeging van tenant_id, weet grootschalige (Citus) dat de volledige query kan worden beantwoord met behulp van de set met Shards die de gegevens voor die specifieke Tenant bevatten. Een enkel PostgreSQL-knoop punt kan de query in één stap beantwoorden.
+Vanwege filter en join op tenant_id, Hyperscale (Citus) weet dat de hele query kan worden beantwoord met behulp van de set van co-located shards die de gegevens voor die specifieke tenant bevatten. Eén PostgreSQL-knooppunt kan de query in één stap beantwoorden.
 
 ![Betere query](media/concepts-hyperscale-colocation/colocation-better-query.png)
 
-In sommige gevallen moeten query's en tabel schema's worden gewijzigd om de Tenant-ID op te nemen in unieke beperkingen en voor waarden voor samen voegen. Deze wijziging is doorgaans eenvoudig.
+In sommige gevallen moeten query's en tabelschema's worden gewijzigd om de tenant-id in unieke beperkingen en aansluitvoorwaarden op te nemen. Deze verandering is meestal eenvoudig.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk hoe Tenant gegevens in de [multi-tenant zelf studie](tutorial-design-database-hyperscale-multi-tenant.md)worden geplaatst.
+- Bekijk hoe tenantgegevens worden naast elkaar geplaatst in de [zelfstudie met meerdere tenants](tutorial-design-database-hyperscale-multi-tenant.md).

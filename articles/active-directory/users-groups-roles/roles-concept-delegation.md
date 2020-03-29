@@ -1,6 +1,6 @@
 ---
-title: Delegering admin role - Azure Active Directory | Microsoft Docs
-description: Delegering modellen, voorbeelden en rolbeveiliging in Azure Active Directory
+title: Beheerdersroldelegatie begrijpen - Azure Active Directory | Microsoft Documenten
+description: Delegatiemodellen, voorbeelden en rolbeveiliging in Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,102 +16,102 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fa3c6bf39dbef601fe64e125999f519f725f2e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67083777"
 ---
-# <a name="delegate-administration-in-azure-active-directory"></a>Beheer in Azure Active Directory delegeren
+# <a name="delegate-administration-in-azure-active-directory"></a>Beheer delegeren in Azure Active Directory
 
-Wordt geleverd complexiteit met groei van de organisatie. Er is een algemene antwoord te verminderen enkele van de werkbelasting van toegangsbeheer met Azure Active Directory (AD)-beheerdersrollen. U kunt de geringst mogelijke bevoegdheid toewijzen aan gebruikers voor toegang tot hun apps en hun taken uitvoeren. Zelfs als u niet de globale beheerdersrol aan de eigenaar van elke toepassing toewijzen, kunt u de verantwoordelijkheden van application management wilt plaatsen op de bestaande globale beheerders. Er zijn veel redenen voor een organisatie verplaatsen naar een meer gedecentraliseerd beheer. In dit artikel kunt u van plan bent voor overdracht in uw organisatie.
+Met organisatorische groei komt complexiteit. Een veelgebruikte reactie is het verminderen van een deel van de werkbelasting van toegangsbeheer met AD-beheerdersrollen (Azure Active Directory). U gebruikers de minst mogelijke bevoegdheden toewijzen om toegang te krijgen tot hun apps en hun taken uit te voeren. Zelfs als u de rol Globale beheerder niet aan elke eigenaar van de toepassing toewijst, plaatst u verantwoordelijkheden voor toepassingsbeheer op de bestaande globale beheerders. Er zijn vele redenen voor een organisatie te verplaatsen naar een meer gedecentraliseerde administratie. In dit artikel u de delegatie in uw organisatie plannen.
 
 <!--What about reporting? Who has which role and how do I audit?-->
 
-## <a name="centralized-versus-delegated-permissions"></a>Gecentraliseerd ten opzichte van gedelegeerde machtigingen
+## <a name="centralized-versus-delegated-permissions"></a>Gecentraliseerde versus gedelegeerde machtigingen
 
-Wanneer een organisatie groeit, kan het lastig zijn om bij te houden welke gebruikers specifieke-beheerdersrollen hebben. Als een werknemer administrator-rechten die ze al dan niet mogen heeft, is uw organisatie kan zijn vatbaar voor inbreuk op de beveiliging. Over het algemeen het aantal beheerders ondersteund en hoe nauwkeurig de machtigingen zijn afhankelijk van de grootte en complexiteit van uw implementatie.
+Naarmate een organisatie groeit, kan het moeilijk zijn om bij te houden welke gebruikers specifieke beheerdersrollen hebben. Als een werknemer beheerdersrechten heeft die hij niet zou moeten hebben, kan uw organisatie gevoeliger zijn voor inbreuken op de beveiliging. In het algemeen is het aantal beheerders dat u ondersteunt en hoe gedetailleerd hun machtigingen zijn, afhankelijk van de grootte en complexiteit van uw implementatie.
 
-* Bij kleine of proof of concept-implementaties kan doen één of een aantal beheerders alles; Er is geen delegering. In dit geval elke beheerder te maken met de rol globale beheerder.
-* Bij implementaties met meer machines, toepassingen en bureaubladen, is meer overdracht vereist. Verschillende beheerders mogelijk meer specifieke functionele verantwoordelijkheden (rollen). Bijvoorbeeld sommige mogelijk Privileged Identity-beheerders en anderen toepassingsbeheerders mogelijk. Een beheerder kan bovendien alleen bepaalde groepen objecten zoals apparaten beheren.
-* Nog grotere implementaties mogelijk nog meer gedetailleerde machtigingen, plus mogelijk beheerders met niet-conventionele of hybride functies.
+* In kleine of proof-of-concept implementaties, een of enkele beheerders doen alles; Er is geen delegatie. Maak in dit geval elke beheerder met de rol Globale beheerder.
+* In grotere implementaties met meer machines, toepassingen en desktops is meer delegatie nodig. Verschillende beheerders hebben mogelijk meer specifieke functionele verantwoordelijkheden (rollen). Sommige zijn bijvoorbeeld bevoorrechte identiteitsbeheerders en andere mogelijk toepassingsbeheerders. Bovendien kan een beheerder alleen bepaalde groepen objecten beheren, zoals apparaten.
+* Zelfs grotere implementaties vereisen mogelijk nog gedetailleerdere machtigingen, plus mogelijk beheerders met onconventionele of hybride rollen.
 
-In de Azure AD-portal, kunt u [weergeven van alle leden van een rol](directory-manage-roles-portal.md), kunt u snel uw implementatie en gemachtigde machtigingen te controleren.
+In de Azure AD-portal u [alle leden van elke rol bekijken,](directory-manage-roles-portal.md)waarmee u snel uw implementatie controleren en machtigingen delegeren.
 
-Als u geïnteresseerd bent in toegang tot Azure-resources in plaats van met beheerdersrechten toegang delegeren in Azure AD, Zie [een Role-based access control (RBAC) rol toewijzen](../../role-based-access-control/role-assignments-portal.md).
+Zie [RBAC-rol (Role-based access control) toewijzen](../../role-based-access-control/role-assignments-portal.md)als u de toegang tot Azure-resources wilt delegeren in plaats van beheertoegang in Azure AD.
 
-## <a name="delegation-planning"></a>Overdracht plannen
+## <a name="delegation-planning"></a>Delegatieplanning
 
-Het werk voor het ontwikkelen van een overdrachtsmodel die past bij uw behoeften. Een analysemodel overdracht is een iteratieve ontwerpproces en we raden dat u als volgt te werk:
+Het is werk om een delegatiemodel te ontwikkelen dat aan uw behoeften voldoet. Het ontwikkelen van een delegatiemodel is een iteratief ontwerpproces en we raden u aan de volgende stappen te volgen:
 
-* Bepaalt de rollen die u nodig hebt
-* App-beheer overdragen
-* De mogelijkheid om toepassingen te registreren verlenen
-* App-eigenaar delegeren
+* Definieer de rollen die u nodig hebt
+* App-beheer delegeren
+* De mogelijkheid verlenen om aanvragen te registreren
+* App-eigendom delegeren
 * Een beveiligingsplan ontwikkelen
-* Tot stand brengen noodgevallen accounts
-* Beveiligen van uw beheerdersrollen
-* Bevoegde uitbreiding van bevoegdheden tijdelijke maken
+* Noodrekeningen opstellen
+* Uw beheerdersrollen beveiligen
+* Maak bevoorrechte verhoging tijdelijk
 
 ## <a name="define-roles"></a>Rollen definiëren
 
-De Active Directory-taken die worden uitgevoerd door beheerders en hoe deze worden toegewezen aan rollen bepalen. U kunt [beschrijvingen van gedetailleerde gebruikersrollen weer](directory-manage-roles-portal.md) in Azure portal.
+Bepaal de Active Directory-taken die worden uitgevoerd door beheerders en hoe ze toewijzen aan rollen. U [gedetailleerde rolbeschrijvingen bekijken](directory-manage-roles-portal.md) in de Azure-portal.
 
-Elke taak moet worden geëvalueerd voor de frequentie, prioriteit en problemen. Deze criteria zijn belangrijke aspecten van de taakdefinitie omdat ze bepalen of een machtiging moet worden overgedragen:
+Elke taak moet worden beoordeeld op frequentie, belang en moeilijkheidsgraad. Deze criteria zijn essentiële aspecten van taakdefinitie, omdat ze bepalen of een machtiging moet worden gedelegeerd:
 
-* Taken regelmatig doen, beperkt risico en pretje om zijn voltooid, zijn uitstekende kandidaten voor overdracht.
-* Taken die u zelden maar grote gevolgen in de hele organisatie hebben en hoge vaardigheidsniveau vereisen moeten zorgvuldig worden overwogen voordat het delegeren. In plaats daarvan kunt u [tijdelijk een account uitbreiden naar de vereiste functieservices](../active-directory-privileged-identity-management-configure.md) of opnieuw toewijzen van de taak.
+* Taken die je routinematig doet, een beperkt risico hebben en triviaal zijn om te voltooien zijn uitstekende kandidaten voor delegatie.
+* Taken die u zelden uitvoert, maar die grote impact hebben in de hele organisatie en hoge vaardigheidsniveaus vereisen, moeten zeer zorgvuldig worden overwogen voordat u delegeren. In plaats daarvan u [een account tijdelijk naar de vereiste rol verheffen](../active-directory-privileged-identity-management-configure.md) of de taak opnieuw toewijzen.
 
-## <a name="delegate-app-administration"></a>App-beheer overdragen
+## <a name="delegate-app-administration"></a>App-beheer delegeren
 
-De verspreiding van apps binnen uw organisatie kan uw overdrachtsmodel toegenomen. Als de belasting voor toegangsbeheer voor toepassingen worden geplaatst op de globale beheerder, is het waarschijnlijk dat model, neemt de overhead toe naarmate tijd verstrijkt. Als de rol globale beheerder voor zaken zoals toepassingen voor bedrijven configureren, hebt u mensen verleend, kunt u ze nu offloaden naar de volgende rollen met minder bevoegdheden. In dat geval kunt u uw beveiligingspostuur verbeteren en vermindert de kans op fouten erg vervelend. De beheerder van de meeste bevoegdheden toepassingsrollen zijn:
+De wildgroei aan apps binnen uw organisatie kan uw delegatiemodel belasten. Als het de last voor het beheer van toepassingstoegang op de Globale Beheerder plaatst, is het waarschijnlijk dat het model zijn overhead naarmate de tijd vordert, verhoogt. Als u mensen de rol Globale beheerder hebt toegekend voor zaken als het configureren van bedrijfstoepassingen, u ze nu uitladen naar de volgende minder bevoorrechte rollen. Dit helpt om uw beveiligingshouding te verbeteren en vermindert het potentieel voor ongelukkige fouten. De meest bevoorrechte rolrollen voor toepassingsbeheerders zijn:
 
-* De **toepassingsbeheerder** rol, de mogelijkheid hebben voor het beheren van alle toepassingen in de map, inclusief registraties, instellingen voor eenmalige aanmelding, gebruiker en toewijzingen van groepen en licenties, Application Proxy-instellingen en toestemming. Het verlenen niet de mogelijkheid voor het beheren van voorwaardelijke toegang.
-* De **beheerder van de Cloudtoepassing** rol, waarmee alle mogelijkheden van de beheerder van de toepassing, tenzij deze geen toegang aan Application Proxy-instellingen verlenen (omdat het heeft geen machtiging on-premises) worden verleend.
+* De rol **Toepassingsbeheerder,** die de mogelijkheid biedt om alle toepassingen in de map te beheren, inclusief registraties, instellingen voor één aanmelding, gebruikers- en groepstoewijzingen en licenties, instellingen voor toepassingsproxy en toestemming. Het verleent geen de mogelijkheid om voorwaardelijke toegang te beheren.
+* De rol **Cloudapplicationadministrator,** die alle mogelijkheden van de toepassingsbeheerder verleent, behalve dat deze geen toegang verleent tot instellingen voor toepassingsproxy (omdat deze geen on-premises machtiging heeft).
 
 ## <a name="delegate-app-registration"></a>App-registratie delegeren
 
-Standaard kunnen alle gebruikers toepassingsregistraties maken. Selectief verlenen toepassingsregistraties maken:
+Standaard kunnen alle gebruikers toepassingsregistraties maken. Selectief de mogelijkheid verlenen om toepassingsregistraties te maken:
 
-* Stel **gebruikers kunnen toepassingen registreren** op Nee in **gebruikersinstellingen**
-* De gebruiker toewijzen aan de rol van ontwikkelaar van toepassingen
+* **Gebruikers instellen kunnen toepassingen registreren** op Nee in **gebruikersinstellingen**
+* De gebruiker toewijzen aan de rol Toepassingsontwikkelaar
 
-De mogelijkheid om in te stemmen dat een toepassing voor toegang tot gegevens selectief verlenen:
+Selectief toestemming verlenen om een toepassing toegang te geven tot gegevens:
 
-* Stel **gebruikers toestemming kunnen geven tot bedrijfsgegevens namens hen toegang tot toepassingen** op Nee in **gebruikersinstellingen**
-* De gebruiker toewijzen aan de rol van ontwikkelaar van toepassingen
+* **Gebruikers instellen kunnen toestemming geven voor toepassingen die namens hen toegang hebben tot bedrijfsgegevens** in **gebruikersinstellingen**
+* De gebruiker toewijzen aan de rol Toepassingsontwikkelaar
 
-Als u de ontwikkelaar van een toepassing maakt een nieuwe toepassing registreren, worden ze automatisch toegevoegd als de eigenaar van de eerste.
+Wanneer een toepassingsontwikkelaar een nieuwe toepassingsregistratie maakt, worden deze automatisch toegevoegd als de eerste eigenaar.
 
-## <a name="delegate-app-ownership"></a>App-eigenaar delegeren
+## <a name="delegate-app-ownership"></a>App-eigendom delegeren
 
-Voor overdracht nog nauwkeurigere app-toegang, kunt u eigenaar toewijzen aan afzonderlijke zakelijke toepassingen. Dit is een aanvulling op de bestaande ondersteuning voor het toewijzen van eigenaren van de registratie van toepassing. Eigenaar wordt toegewezen op basis van per-enterprise-toepassing in de blade voor bedrijfstoepassingen. Het voordeel is eigenaren kunnen alleen de zakelijke toepassingen die waarvan ze eigenaar beheren. Bijvoorbeeld, u kunt een eigenaar toewijzen voor de Salesforce-toepassing en die eigenaar de toegang tot en configuratie voor Salesforce en geen andere toepassingen kunt beheren. Een zakelijke toepassing kan veel eigenaars hebben en een gebruiker kan de eigenaar voor veel zakelijke toepassingen zijn. Er zijn twee app-eigenaar rollen:
+Voor zelfs fijnmazige app-toegang delegeren, u eigendom toewijzen aan individuele bedrijfstoepassingen. Dit vormt een aanvulling op de bestaande ondersteuning voor het toewijzen van eigenaren van toepassingsregistraties. Eigendom wordt per onderneming toegewezen in het blade van Enterprise Applications. Het voordeel is dat eigenaren alleen de bedrijfstoepassingen kunnen beheren die ze bezitten. U bijvoorbeeld een eigenaar toewijzen voor de Salesforce-toepassing en die eigenaar kan toegang tot en configuratie voor Salesforce beheren en geen andere toepassingen. Een bedrijfstoepassing kan veel eigenaren hebben en een gebruiker kan de eigenaar zijn voor veel bedrijfstoepassingen. Er zijn twee rollen voor app-eigenaren:
 
-* De **Enterprise Toepassingseigenaar** rol hebben de mogelijkheid voor het beheren van de ' zakelijke toepassingen maken die de gebruiker eigenaar is, met inbegrip van instellingen voor eenmalige aanmelding, gebruiker en groepstoewijzingen en het toevoegen van extra eigenaren. Het verlenen niet de mogelijkheid voor het beheren van de Application Proxy-instellingen of voorwaardelijke toegang.
-* De **registratie Toepassingseigenaar** rol hebben de mogelijkheid voor het beheren van de registratie voor de app die de gebruiker eigenaar is, met inbegrip van het manifest van de toepassing en het toevoegen van extra eigenaren.
+* De rol **Enterprise Application Owner** biedt de mogelijkheid om de 'bedrijfstoepassingen die de gebruiker bezit te beheren, inclusief instellingen voor één aanmelding, gebruikers- en groepstoewijzingen en het toevoegen van extra eigenaren. Het verleent niet de mogelijkheid om instellingen voor toepassingsproxy of voorwaardelijke toegang te beheren.
+* De rol **Toepassingsregistratie-eigenaar** verleent de mogelijkheid om toepassingsregistraties te beheren voor de app waarvan de gebruiker eigenaar is, inclusief het toepassingsmanifest en het toevoegen van extra eigenaren.
 
 ## <a name="develop-a-security-plan"></a>Een beveiligingsplan ontwikkelen
 
-Azure AD biedt een uitgebreide handleiding voor het plannen en uitvoeren van een beveiligingsplan op uw Azure AD-beheerdersrollen, [beveiligen van bevoegde toegang voor cloud- en hybride implementaties](directory-admin-roles-secure.md).
+Azure AD biedt een uitgebreide handleiding voor het plannen en uitvoeren van een beveiligingsplan voor uw Azure AD-beheerrollen, [Beveiligde bevoorrechte toegang voor hybride en cloudimplementaties.](directory-admin-roles-secure.md)
 
-## <a name="establish-emergency-accounts"></a>Tot stand brengen noodgevallen accounts
+## <a name="establish-emergency-accounts"></a>Noodrekeningen opstellen
 
-Als u wilt behouden toegang tot uw identity management-store als het probleem zich voordoet, voorbereiden voor toegang in noodgevallen accounts volgens [EMS-toegang met beheerdersrechten accounts maken](directory-emergency-access.md).
+Als u toegang wilt houden tot uw identiteitsbeheerarchief wanneer zich problemen voordoen, bereidt u noodtoegangsaccounts voor op [basis van beheeraccounts voor noodgevallen maken.](directory-emergency-access.md)
 
-## <a name="secure-your-administrator-roles"></a>Beveiligen van uw beheerdersrollen
+## <a name="secure-your-administrator-roles"></a>Uw beheerdersrollen beveiligen
 
-Aanvallers die beheer van bevoegde accounts krijgen kan grote schade aanrichten, dus deze accounts beschermen eerst met behulp van de [basislijn toegangsbeleid](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/) die standaard beschikbaar voor alle Azure AD-tenants is (in openbare preview). Het beleid dwingt meervoudige verificatie in Azure AD-accounts met bevoegdheden. De volgende Azure AD-rollen worden gedekt door het basisbeleid voor Azure AD:
+Aanvallers die controle krijgen over bevoegde accounts kunnen enorme schade aanrichten, dus bescherm deze accounts eerst, met behulp van het [basislijntoegangsbeleid](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/) dat standaard beschikbaar is voor alle Azure AD-tenants (in openbare preview). Het beleid dwingt multi-factor authenticatie af op geprivilegieerde Azure AD-accounts. De volgende Azure AD-rollen vallen onder het Azure AD-basislijnbeleid:
 
 * Globale beheerder
 * SharePoint-beheerder
 * Exchange-beheerder
-* Voorwaardelijke toegang beheerder
+* Beheerder van voorwaardelijke toegang
 * Beveiligingsbeheerder
 
-## <a name="elevate-privilege-temporarily"></a>Tijdelijk bevoegdheden verhogen
+## <a name="elevate-privilege-temporarily"></a>Bevoegdheden tijdelijk verheffen
 
-Niet alle gebruikers moeten global administrator-rechten voor de meeste dagelijkse activiteiten, en niet alle permanent moet worden toegewezen aan de rol globale beheerder. Wanneer gebruikers de machtigingen van een globale beheerder moeten, moeten ze de toewijzing van rollen in Azure AD activeren [Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) op hun eigen account of een alternatieve Administrator-account.
+Voor de meeste dagelijkse activiteiten hebben niet alle gebruikers wereldwijde beheerdersrechten nodig en niet alle gebruikers moeten permanent worden toegewezen aan de rol globale beheerder. Wanneer gebruikers de machtigingen van een globale beheerder nodig hebben, moeten ze de roltoewijzing activeren in Azure AD [Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) voor hun eigen account of een alternatief beheerdersaccount.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor een verwijzing naar de beschrijvingen van de Azure AD-rol, [beheerdersrollen toewijzen in Azure AD](directory-assign-admin-roles.md)
+Zie [Beheerdersrollen toewijzen in Azure AD](directory-assign-admin-roles.md) voor een verwijzing naar de functiebeschrijvingen van Azure AD

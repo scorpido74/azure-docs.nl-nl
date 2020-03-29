@@ -1,52 +1,52 @@
 ---
 title: Meer informatie over gedelegeerd resourcebeheer
-description: Met beheerde services kunnen service providers resource beheer aanbiedingen verkopen aan klanten in azure Marketplace.
+description: Met beheerde services kunnen serviceproviders aanbiedingen voor resourcebeheer verkopen aan klanten in Azure Marketplace.
 ms.date: 01/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 15814b1ca3b1b78de521033836e3614d18fd0c71
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76904314"
 ---
 # <a name="azure-delegated-resource-management"></a>Meer informatie over gedelegeerd resourcebeheer
 
-Azure delegated resource management is een van de belangrijkste onderdelen van Azure Lighthouse. Met Azure delegated resource management kunnen service providers de klant betrokkenheid en de onboarding-ervaring vereenvoudigen, terwijl gedelegeerde resources op schaal worden beheerd met flexibiliteit en precisie.
+Azure delegated resource management is een van de belangrijkste onderdelen van Azure Lighthouse. Met Azure gedelegeerd resourcebeheer kunnen serviceproviders de betrokkenheid van klanten en onboarding-ervaringen vereenvoudigen, terwijl gedelegeerde resources op schaal worden beheerd met flexibiliteit en precisie.
 
-## <a name="what-is-azure-delegated-resource-management"></a>Wat is Azure delegated resource management?
+## <a name="what-is-azure-delegated-resource-management"></a>Wat is Azure-gedelegeerd bronbeheer?
 
-Met het gedelegeerde resource beheer van Azure kunt u resources van de ene Tenant naar een andere Tenant maken. Hierdoor kunnen geautoriseerde gebruikers in één Azure Active Directory (Azure AD)-Tenant beheer bewerkingen uitvoeren in verschillende Azure AD-tenants die deel uitmaken van hun klanten. Service providers kunnen zich aanmelden bij hun eigen Azure AD-Tenant en hebben toestemming om te werken in gedelegeerde klant abonnementen en resource groepen. Hierdoor kunnen ze beheer bewerkingen uitvoeren namens hun klanten, zonder dat ze zich hoeven aan te melden bij elke afzonderlijke klant Tenant.
-
-> [!NOTE]
-> Azure delegated resource management kan ook worden gebruikt [binnen een onderneming met meerdere Azure AD-tenants](enterprise.md) , om het beheer van meerdere tenants te vereenvoudigen.
-
-Met Azure delegated resource management kunnen geautoriseerde gebruikers rechtstreeks in de context van een klant abonnement werken zonder dat ze een account in de Tenant van de klant hebben of mede-eigenaar zijn van de Tenant van de klant. Ze kunnen ook [alle gedelegeerde klant abonnementen weer geven en beheren op de pagina nieuwe **mijn klanten** ](../how-to/view-manage-customers.md) in de Azure Portal.
-
-Met de [beheer ervaring voor cross-tenants](cross-tenant-management-experience.md) kunt u efficiënter werken met Azure-beheer Services, zoals Azure Policy, Azure Security Center en meer. Alle activiteiten van de service provider worden bijgehouden in het activiteiten logboek, dat is opgeslagen in zowel de tenants van de service provider als de eigenaar van de klant. Dit betekent dat zowel de klant als de service provider gemakkelijk de gebruiker kan identificeren die is gekoppeld aan wijzigingen.
-
-Wanneer u een klant voor het beheer van Azure-gedelegeerde resources ongedaan maakt, hebben ze toegang tot de pagina nieuwe **service providers** in het Azure Portal, waar ze [hun aanbiedingen, service providers en gedelegeerde resources kunnen bevestigen en beheren](../how-to/view-manage-service-providers.md). Als de klant ooit toegang wil intrekken voor een service provider, kan dit hier op elk gewenst moment worden gedaan.
-
-U kunt [het nieuwe aanbieding voor het managed services-aanbod publiceren naar Azure Marketplace](../how-to/publish-managed-services-offers.md) , zodat klanten eenvoudig kunnen worden gemigreerd naar Azure gedelegeerde resource beheer. U kunt ook [het voorbereidings proces volt ooien door Azure Resource Manager sjablonen te implementeren](../how-to/onboard-customer.md).
-
-## <a name="how-azure-delegated-resource-management-works"></a>Hoe Azure gedelegeerd resource beheer werkt
-
-Op hoog niveau is dit de manier waarop Azure gedelegeerd resource management werkt:
-
-1. Als service provider identificeert u de toegang (rollen) die uw groepen, service-principals of gebruikers nodig hebben voor het beheren van de Azure-resources van de klant. De toegangs definitie bevat de Tenant-ID van de service provider, samen met de vereiste toegang voor de aanbieding, die is gedefinieerd met behulp van **principalId** -identiteiten uit uw Tenant die is toegewezen aan [ingebouwde **roleDefinition** -waarden](../../role-based-access-control/built-in-roles.md) (Inzender, VM-bijdrager, lezer, enzovoort).
-2. U geeft deze toegang op een van de volgende twee manieren op om de klant in te delen voor het beheer van Azure-resources:
-   - [Een Azure Marketplace Managed Services-aanbieding](../how-to/publish-managed-services-offers.md) (privé of openbaar) publiceren die door de klant wordt geaccepteerd
-   - [Een Azure Resource Manager-sjabloon implementeren naar de Tenant van de klant](../how-to/onboard-customer.md) voor een of meer specifieke abonnementen of resource groepen
-3. Zodra de klant onboarded is, kunnen geautoriseerde gebruikers zich aanmelden bij de Tenant van de service provider en beheer taken uitvoeren op het opgegeven klant bereik, op basis van de toegang die u hebt gedefinieerd.
+Azure gedelegeerd resourcebeheer maakt logische projectie van resources van de ene tenant naar een andere tenant mogelijk. Hiermee kunnen geautoriseerde gebruikers in één Azure Active Directory-tenant (Azure AD) beheerbewerkingen uitvoeren voor verschillende Azure AD-tenants die behoren tot hun klanten. Serviceproviders kunnen zich aanmelden bij hun eigen Azure AD-tenant en hebben toestemming om te werken in gedelegeerde klantabonnementen en resourcegroepen. Hierdoor kunnen ze beheerbewerkingen uitvoeren namens hun klanten, zonder dat ze zich hoeven aan te melden bij elke individuele klanttenant.
 
 > [!NOTE]
-> Overdracht van een abonnement tussen twee tenants in afzonderlijke Clouds wordt niet ondersteund.
+> Azure gedelegeerd resourcebeheer kan ook worden gebruikt [binnen een onderneming die meerdere Azure AD-tenants heeft om](enterprise.md) het beheer van meerdere tenants te vereenvoudigen.
 
-## <a name="support-for-azure-delegated-resource-management"></a>Ondersteuning voor Azure delegated resource management
+Met Azure gedelegeerd resourcebeheer kunnen geautoriseerde gebruikers rechtstreeks werken in de context van een klantabonnement zonder dat ze een account hebben in de tenant van die klant of mede-eigenaar zijn van de tenant van de klant. Ze kunnen ook [alle gedelegeerde klantabonnementen bekijken en beheren op de nieuwe pagina **Mijn klanten** ](../how-to/view-manage-customers.md) in de Azure-portal.
 
-Als u hulp nodig hebt met betrekking tot het beheer van de gedelegeerde resources van Azure, kunt u een ondersteunings aanvraag openen in de Azure Portal. Kies voor **type probleem**de optie **technisch**. Selecteer een abonnement en selecteer vervolgens **Lighthouse** (onder **bewaking & Management**).
+Met [de beheerervaring voor meerdere tenants](cross-tenant-management-experience.md) u efficiënter werken met Azure-beheerservices zoals Azure Policy, Azure Security Center en meer. Alle activiteit van de serviceprovider wordt bijgehouden in het activiteitenlogboek, dat wordt opgeslagen in zowel de huurders van de serviceprovider als de huurders van de klant. Dit betekent dat zowel de klant als de serviceprovider gemakkelijk de gebruiker kunnen identificeren die aan wijzigingen is gekoppeld.
+
+Wanneer u een klant aan boord maakt van azure-gedelegeerde bronbeheer, hebben ze toegang tot de nieuwe pagina **met serviceproviders** in de Azure-portal, waar ze [hun aanbiedingen, serviceproviders en gedelegeerde resources](../how-to/view-manage-service-providers.md)kunnen bevestigen en beheren. Als de klant ooit de toegang voor een serviceprovider wil intrekken, kan hij dit hier op elk gewenst moment doen.
+
+U [het nieuwe type Managed Services-aanbieding publiceren naar Azure Marketplace](../how-to/publish-managed-services-offers.md) om klanten eenvoudig aan te boorden van azure-gedelegeerd bronbeheer. U ook [het onboardingproces voltooien door Azure Resource Manager-sjablonen te implementeren.](../how-to/onboard-customer.md)
+
+## <a name="how-azure-delegated-resource-management-works"></a>Hoe Azure gedelegeerd resourcebeheer werkt
+
+Op hoog niveau werkt het gedelegeerd resourcebeheer van Azure als een van de besteed bronnen:
+
+1. Als serviceprovider identificeert u de toegang (rollen) die uw groepen, serviceprincipals of gebruikers nodig hebben om de Azure-bronnen van de klant te beheren. De definitie van toegang bevat de tenant-id van de serviceprovider, samen met de vereiste toegang voor de aanbieding, gedefinieerd met behulp van **principalId-identiteiten** van uw tenant die zijn toegewezen aan [ingebouwde **rolDefinitiewaarden** ](../../role-based-access-control/built-in-roles.md) (inzender, VM-bijdrager, lezer, enz.).
+2. U geeft deze toegang en aan boord van de klant aan azure gedelegeerd resourcebeheer op twee manieren op:
+   - [Een Azure Marketplace managed services-aanbieding publiceren](../how-to/publish-managed-services-offers.md) (privé of openbaar) die de klant accepteert
+   - [Een Azure Resource Manager-sjabloon implementeren voor de tenant van de klant](../how-to/onboard-customer.md) voor een of meer specifieke abonnementen of resourcegroepen
+3. Zodra de klant aan boord is gegaan, kunnen geautoriseerde gebruikers zich aanmelden bij de tenant van uw serviceprovider en beheertaken uitvoeren op basis van de door u gedefinieerde toegang.
+
+> [!NOTE]
+> De overdracht van een abonnement tussen twee tenants in afzonderlijke clouds wordt niet ondersteund.
+
+## <a name="support-for-azure-delegated-resource-management"></a>Ondersteuning voor azure gedelegeerd bronbeheer
+
+Als u hulp nodig hebt in verband met Azure gedelegeerd bronbeheer, u een ondersteuningsaanvraag openen in de Azure-portal. Kies Voor **Probleemtype**De optie **Technisch**. Selecteer een abonnement en selecteer **Lighthouse** (onder **Toezicht & beheer).**
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [ervaring op het beheer van cross-tenants](cross-tenant-management-experience.md).
-- Meer informatie over [Managed Services-aanbiedingen in azure Marketplace](managed-services-offers.md).
+- Meer informatie over [cross-tenant management ervaringen](cross-tenant-management-experience.md).
+- Meer informatie over [aanbiedingen voor beheerde services in Azure Marketplace](managed-services-offers.md).

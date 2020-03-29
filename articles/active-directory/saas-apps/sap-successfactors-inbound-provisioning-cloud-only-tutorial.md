@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: SuccessFactors inrichtings inrichting configureren in Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van binnenkomende Provisioning van SuccessFactors naar Azure AD
+title: 'Zelfstudie: Succesfactoren binnenkomende inrichting configureren in Azure Active Directory | Microsoft Documenten'
+description: Meer informatie over het configureren van inkomende inrichting van SuccessFactors naar Azure AD
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -15,270 +15,270 @@ ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
 ms.openlocfilehash: 09501a80d6ddcbbc9fa6cc08e36f47beb13d1663
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063219"
 ---
-# <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning-preview"></a>Zelf studie: SAP SuccessFactors configureren voor Azure AD-gebruikers inrichten (preview-versie)
-Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoeren om werk nemers in te richten op SuccessFactors-werk nemers centraal in Azure Active Directory, met een optionele write-back van e-mail adres naar SuccessFactors. Deze integratie is in open bare preview en ondersteunt het ophalen van meer dan [70 + gebruikers kenmerken](../app-provisioning/sap-successfactors-attribute-reference.md) van SuccessFactors Employee Central. 
+# <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning-preview"></a>Zelfstudie: SAP-succesfactoren configureren voor azure AD-gebruikersinrichting (Voorbeeld)
+Het doel van deze zelfstudie is om de stappen weer te geven die u moet uitvoeren om werknemersgegevens van SuccessFactors Employee Central in Te richten in Azure Active Directory, met optionele terugschrijfgegevens van e-mailadres naar SuccessFactors. Deze integratie is in openbare preview en ondersteunt het ophalen van meer dan [70 + gebruikerskenmerken](../app-provisioning/sap-successfactors-attribute-reference.md) van SuccessFactors Employee Central. 
 
 >[!NOTE]
->Gebruik deze zelf studie als de gebruikers die u wilt inrichten via SuccessFactors alleen Cloud gebruikers zijn die geen on-premises AD-account nodig hebben. Als de gebruikers alleen een on-premises AD-account of AD-en Azure AD-account nodig hebben, raadpleegt u de zelf studie over het [configureren van SAP SuccessFactors om](sap-successfactors-inbound-provisioning-tutorial.md#overview) de gebruikers inrichting te Active Directory. 
+>Gebruik deze zelfstudie als de gebruikers die u wilt inrichten van SuccessFactors alleen cloudgebruikers zijn die geen on-premises AD-account nodig hebben. Als de gebruikers alleen on-premises AD-account of zowel AD- als Azure AD-account nodig hebben, raadpleegt u de zelfstudie over [het configureren van SAP SuccessFactors naar Active Directory-gebruikersinrichting.](sap-successfactors-inbound-provisioning-tutorial.md#overview) 
 
 ## <a name="overview"></a>Overzicht
 
-De [Azure Active Directory User Provisioning Service](../app-provisioning/user-provisioning.md) kan worden geïntegreerd met het [SuccessFactors van werk nemers](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) , zodat de identiteits levenscyclus van gebruikers kan worden beheerd. 
+De [Azure Active Directory-service voor het inrichten van gebruikers](../app-provisioning/user-provisioning.md) integreert met de Service [SuccessFactors Employee Central](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) om de levenscyclus van gebruikers te beheren. 
 
-De werk stromen voor het inrichten van SuccessFactors-gebruikers die worden ondersteund door de Azure AD User Provisioning-Service, maken het mogelijk om de volgende scenario's voor human resources en Identity Lifecycle Management te automatiseren:
+De gebruikersinrichtingsworkflows van SuccesFactors die worden ondersteund door de Azure AD-service voor het inrichten van gebruikers, maken automatisering mogelijk van de volgende scenario's voor het beheer van human resources en identiteitslevenscyclus:
 
-* **Nieuwe werk nemers inhuren** : wanneer een nieuwe werk nemer wordt toegevoegd aan SuccessFactors, wordt automatisch een gebruikers account gemaakt in azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md), met een terugschrijf bewerking van het e-mail adres naar SuccessFactors.
+* **Nieuwe werknemers inhuren** - Wanneer een nieuwe werknemer wordt toegevoegd aan SuccessFactors, wordt een gebruikersaccount automatisch gemaakt in Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD,](../app-provisioning/user-provisioning.md)met terugschrijfinformatie van het e-mailadres naar SuccessFactors.
 
-* **Updates van werknemers kenmerken en-profielen** : wanneer een werknemers record wordt bijgewerkt in SuccessFactors (zoals hun naam, titel of Manager), wordt het gebruikers account automatisch bijgewerkt Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md).
+* **Werknemerskenmerk en profielupdates** : Wanneer een werknemersrecord wordt bijgewerkt in SuccessFactors (zoals hun naam, titel of manager), wordt hun gebruikersaccount automatisch bijgewerkt in Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD.](../app-provisioning/user-provisioning.md)
 
-* **Beëindiging van werk nemers** : wanneer een werk nemer wordt beëindigd in SuccessFactors, wordt het gebruikers account automatisch uitgeschakeld in azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md).
+* **Werknemersbeëindigingen** - Wanneer een werknemer wordt beëindigd in SuccessFactors, wordt zijn gebruikersaccount automatisch uitgeschakeld in Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD.](../app-provisioning/user-provisioning.md)
 
-* Opnieuw **inhuren van werk nemers** : wanneer een werk nemer opnieuw wordt ingehuurd in SuccessFactors, kan het oude account automatisch opnieuw worden geactiveerd of worden ingericht (afhankelijk van uw voor keur) naar Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md).
+* **Werknemer rehires** - Wanneer een werknemer opnieuw wordt aangenomen in SuccessFactors, kan hun oude account automatisch worden gereactiveerd of opnieuw ingericht (afhankelijk van uw voorkeur) naar Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD.](../app-provisioning/user-provisioning.md)
 
-### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Wie is deze oplossing voor het inrichten van de gebruiker geschikt voor?
+### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Voor wie is deze gebruikersinrichtingsoplossing het meest geschikt?
 
-Deze SuccessFactors voor het Azure Active Directory van de oplossing voor het inrichten van gebruikers is in het ideale geval geschikt voor:
+Deze Oplossing voor het inrichten van Azure Active Directory-gebruikers is bij uitstek geschikt voor:
 
-* Organisaties die behoefte hebben aan een vooraf ontwikkelde, op de cloud gebaseerde oplossing voor het inrichten van SuccessFactors-gebruikers
+* Organisaties die een vooraf gebouwde, cloudgebaseerde oplossing willen voor de gebruikersinrichting van SuccessFactors
 
-* Organisaties die directe gebruikers inrichting van SuccessFactors naar Azure Active Directory vereisen
+* Organisaties die directe gebruikersvoorziening van SuccessFactors naar Azure Active Directory vereisen
 
-* Organisaties die gebruikers moeten inrichten op basis van gegevens die zijn verkregen van de [SuccessFactors Employee Central (EG)](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)
+* Organisaties die vereisen dat gebruikers worden ingericht met behulp van gegevens die zijn verkregen uit de [SuccessFactors Employee Central (EC)](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)
 
 * Organisaties die Office 365 gebruiken voor e-mail
 
-## <a name="solution-architecture"></a>Architectuur van de oplossing
+## <a name="solution-architecture"></a>Oplossingsarchitectuur
 
-In deze sectie wordt de end-to-end-architectuur voor het inrichten van gebruikers voor Cloud gebruikers beschreven. Er zijn twee gerelateerde stromen:
+In deze sectie wordt de end-to-end-inrichtingsoplossingsarchitectuur voor alleen cloudgebruikers beschreven. Er zijn twee gerelateerde stromen:
 
-* **Gezaghebbende HR-gegevens stroom: van SuccessFactors tot Azure Active Directory:** In deze stroom worden werk gebeurtenissen (zoals nieuwe aanmeldingen, overdrachten, afsluitingen) voor het eerst uitgevoerd in de Cloud SuccessFactors werk nemer Central en vervolgens worden de gebeurtenis gegevens stromen naar Azure Active Directory. Afhankelijk van de gebeurtenis kan dit leiden tot het maken/bijwerken/inschakelen/uitschakelen van bewerkingen in azure AD.
-* **Write-back-upflow: van on-premises Active Directory naar SuccessFactors:** Zodra het account is gemaakt in Azure Active Directory, kan de waarde van het e-mail kenmerk of de UPN die in azure AD is gegenereerd, worden teruggeschreven naar SuccessFactors.
+* **Gezaghebbende HR-gegevensstroom – van SuccesFactors tot Azure Active Directory:** In deze stroomwerkgebeurtenissen (zoals Nieuwe aanwervingen, Overdrachten, Beëindigingen) vinden eerst plaats in de cloud SuccessFactors Employee Central en vervolgens stromen de gebeurtenisgegevens uit in Azure Active Directory. Afhankelijk van de gebeurtenis kan dit leiden tot het maken/bijwerken/inschakelen/uitschakelen van bewerkingen in Azure AD.
+* **E-mail Writeback Flow – van on-premises Active Directory naar SuccessFactors:** Zodra het aanmaken van een account is voltooid in Azure Active Directory, kan de waarde van het e-mailkenmerk of de UPN die is gegenereerd in Azure AD, worden teruggeschreven naar SuccessFactors.
 
   ![Overzicht](./media/sap-successfactors-inbound-provisioning/sf2aad-overview.png)
 
-### <a name="end-to-end-user-data-flow"></a>Gegevens stroom van end-to-end-gebruikers
+### <a name="end-to-end-user-data-flow"></a>Gegevensstroom van eind-tot-eindgebruiker
 
-1. Het HR-team voert werknemers transacties (samenvoegers/verplaatsingen/Leavers of nieuwe huur/overdrachten/afsluitingen) uit in SuccessFactors werk nemers centraal
-2. De Azure AD-inrichtings service voert geplande synchronisaties uit van identiteiten van SuccessFactors EC en identificeert wijzigingen die moeten worden verwerkt om te synchroniseren met on-premises Active Directory.
-3. De Azure AD-inrichtings service bepaalt de wijziging en roept de bewerking voor het maken/bijwerken/inschakelen/uitschakelen van de gebruiker aan in azure AD.
-4. Als de [SuccessFactors write-app](sap-successfactors-writeback-tutorial.md) is geconfigureerd, wordt het e-mail adres van de gebruiker opgehaald van Azure AD. 
-5. Azure AD Provisioning Service schrijft het e-mail kenmerk terug naar SuccessFactors, op basis van het gebruikte kenmerk dat wordt gebruikt.
+1. Het HR-team voert werknemerstransacties uit (Joiners/Verhuizers/Leavers of New Hires/Transfers/Terminations) in SuccessFactors Employee Central
+2. De Azure AD Provisioning Service voert geplande synchronisaties van identiteiten van SuccessFactors EC uit en identificeert wijzigingen die moeten worden verwerkt voor synchronisatie met on-premises Active Directory.
+3. De Azure AD Provisioning Service bepaalt de wijziging en roept create/update/enable/disable operation in voor de gebruiker in Azure AD.
+4. Als de [App SuccessFactors Writeback](sap-successfactors-writeback-tutorial.md) is geconfigureerd, wordt het e-mailadres van de gebruiker opgehaald uit Azure AD. 
+5. Azure AD-inrichtingsservice schrijft e-mailkenmerk terug aan SuccessFactors, op basis van het gebruikte overeenkomende kenmerk.
 
 ## <a name="planning-your-deployment"></a>Uw implementatie plannen
 
-Het configureren van in de Cloud HR gestuurde gebruikers inrichten van SuccessFactors naar Azure AD vereist een aanzienlijke planning voor verschillende aspecten, zoals:
+Het configureren van cloud HR-gestuurde gebruikersinrichting van SuccessFactors naar Azure AD vereist een aanzienlijke planning voor verschillende aspecten, zoals:
 
-* De overeenkomende ID bepalen 
-* Kenmerk toewijzing
-* Kenmerk transformatie 
+* De overeenkomende id bepalen 
+* Kenmerktoewijzing
+* Kenmerktransformatie 
 * Bereikfilters
 
-Raadpleeg het [implementatie plan voor Cloud HR](../app-provisioning/plan-cloud-hr-provision.md) voor uitgebreide richt lijnen rond deze onderwerpen. 
+Raadpleeg het [cloud HR-implementatieplan](../app-provisioning/plan-cloud-hr-provision.md) voor uitgebreide richtlijnen rond deze onderwerpen. 
 
 ## <a name="configuring-successfactors-for-the-integration"></a>SuccessFactors configureren voor de integratie
 
-Een algemene vereiste van alle SuccessFactors-inrichtings connectors is dat er referenties van een SuccessFactors-account nodig zijn met de juiste machtigingen om de SuccessFactors OData-Api's aan te roepen. In deze sectie worden de stappen beschreven voor het maken van het service account in SuccessFactors en het verlenen van de juiste machtigingen. 
+Een veelvoorkomende vereiste van alle SuccessFactors-inrichtingsconnectoren is dat ze referenties van een SuccessFactors-account met de juiste machtigingen nodig hebben om de OData-API's van SuccessFactors aan te roepen. In deze sectie worden stappen beschreven om het serviceaccount in SuccessFactors te maken en de juiste machtigingen toe te kennen. 
 
-* [API-gebruikers account maken/identificeren in SuccessFactors](#createidentify-api-user-account-in-successfactors)
-* [Een functie voor API-machtigingen maken](#create-an-api-permissions-role)
-* [Een machtigings groep maken voor de API-gebruiker](#create-a-permission-group-for-the-api-user)
-* [Machtigings functie verlenen aan de machtigings groep](#grant-permission-role-to-the-permission-group)
+* [API-gebruikersaccount maken/identificeren in SuccessFactors](#createidentify-api-user-account-in-successfactors)
+* [Een rol api-machtigingen maken](#create-an-api-permissions-role)
+* [Een machtigingsgroep maken voor de API-gebruiker](#create-a-permission-group-for-the-api-user)
+* [Machtigingsrol verlenen aan de machtigingsgroep](#grant-permission-role-to-the-permission-group)
 
-### <a name="createidentify-api-user-account-in-successfactors"></a>API-gebruikers account maken/identificeren in SuccessFactors
-Werk samen met uw SuccessFactors-beheer team of implementatie partner om een gebruikers account in SuccessFactors te maken of te identificeren dat wordt gebruikt om de OData-Api's aan te roepen. De referenties van de gebruikers naam en het wacht woord van dit account zijn vereist bij het configureren van de inrichtings-apps in azure AD. 
+### <a name="createidentify-api-user-account-in-successfactors"></a>API-gebruikersaccount maken/identificeren in SuccessFactors
+Werk samen met uw SuccessFactors-beheerteam of implementatiepartner om een gebruikersaccount te maken of te identificeren in SuccessFactors dat wordt gebruikt om de OData-API's aan te roepen. De gebruikersnaam en wachtwoordreferenties van dit account zijn vereist bij het configureren van de inrichtingsapps in Azure AD. 
 
-### <a name="create-an-api-permissions-role"></a>Een functie voor API-machtigingen maken
+### <a name="create-an-api-permissions-role"></a>Een rol api-machtigingen maken
 
-* Meld u aan bij SAP SuccessFactors met een gebruikers account dat toegang heeft tot het beheer centrum.
-* Zoek naar *machtigings rollen beheren*en selecteer vervolgens **machtigings rollen beheren** in de zoek resultaten.
-  Machtigings rollen ![beheren](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* Klik in de lijst machtigings rollen op **nieuwe maken**.
+* Meld u aan bij SAP SuccessFactors met een gebruikersaccount dat toegang heeft tot het Beheercentrum.
+* Zoek *naar Machtigingenrollen beheren*en selecteer **vervolgens Machtigingenrollen beheren** in de zoekresultaten.
+  ![Machtigingsrollen beheren](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
+* Klik in de lijst met machtigingsrollen op **Nieuw maken**.
   > [!div class="mx-imgBorder"]
-  > ![nieuwe machtigings functie maken](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
-* Voeg een **rolnaam** en een **Beschrijving** voor de nieuwe machtigings functie toe. De naam en beschrijving moeten aangeven dat de rol is voor API-gebruiks machtigingen.
+  > ![Nieuwe machtigingsrol maken](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
+* Voeg een **rolnaam** en **-beschrijving toe** voor de nieuwe machtigingsrol. De naam en beschrijving moeten aangeven dat de rol voor API-gebruiksmachtigingen is.
   > [!div class="mx-imgBorder"]
-  > Details van ![-machtigings rol](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* Klik onder machtigings instellingen op **machtiging...** , Schuif omlaag in de lijst met machtigingen en klik op **integratie hulpprogramma's beheren**. Schakel het selectie vakje in om de beheerder toe te **staan om toegang te krijgen tot ODATA API via basis verificatie**.
+  > ![Machtigingsroldetail](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
+* Klik onder Machtigingsinstellingen op **Machtiging...** en scrol vervolgens naar beneden in de machtigingslijst en klik op **Hulpmiddelen voor integratie beheren**. Schakel het selectievakje **Beheerder toegang geven tot De OData-API in via basisverificatie**.
   > [!div class="mx-imgBorder"]
-  > ![integratie hulpprogramma's beheren](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* Schuif omlaag in hetzelfde vak en selecteer de **centrale API voor werk nemers**. Voeg machtigingen toe, zoals hieronder wordt weer gegeven, voor meer informatie over het gebruik van ODATA API en Edit met de ODATA-API. Selecteer de optie bewerken als u van plan bent hetzelfde account te gebruiken voor het terugschrijven naar het SuccessFactors-scenario. 
+  > ![Integratietools beheren](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
+* Schuif omlaag in hetzelfde vak en selecteer **Employee Central API**. Voeg machtigingen toe zoals hieronder wordt weergegeven om te lezen met behulp van de ODATA API en bewerk met ODATA API. Selecteer de bewerkingsoptie als u van plan bent hetzelfde account te gebruiken voor het scenario Writeback to SuccessFactors. 
   > [!div class="mx-imgBorder"]
-  > ![lees schrijf machtigingen](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* Klik op **gereed**. Klik op **Wijzigingen opslaan**.
+  > ![Schrijfmachtigingen lezen](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+* Klik op **Gereed**. Klik **op Wijzigingen opslaan**.
 
-### <a name="create-a-permission-group-for-the-api-user"></a>Een machtigings groep maken voor de API-gebruiker
+### <a name="create-a-permission-group-for-the-api-user"></a>Een machtigingsgroep maken voor de API-gebruiker
 
-* Zoek in het SuccessFactors-beheer centrum naar *machtigings groepen beheren*en selecteer vervolgens **machtigings groepen beheren** in de zoek resultaten.
+* Zoek in het SuccesFactors-beheercentrum naar *Machtigingsgroepen beheren*en selecteer **vervolgens Machtigingsgroepen beheren** in de zoekresultaten.
   > [!div class="mx-imgBorder"]
-  > ![beheren van machtigings groepen](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* Klik in het venster machtigings groepen beheren op **nieuwe maken**.
+  > ![Machtigingsgroepen beheren](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
+* Klik in het venster Machtigingsgroepen beheren op **Nieuw maken**.
   > [!div class="mx-imgBorder"]
-  > nieuwe groep ![toevoegen](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
-* Voeg een groeps naam voor de nieuwe groep toe. De groeps naam moet aangeven dat de groep voor API-gebruikers is.
+  > ![Nieuwe groep toevoegen](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
+* Voeg een groepsnaam toe voor de nieuwe groep. De groepsnaam moet aangeven dat de groep voor API-gebruikers is.
   > [!div class="mx-imgBorder"]
-  > ![naam van de machtigings groep](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
-* Leden toevoegen aan de groep. U kunt bijvoorbeeld **gebruikers naam** selecteren in de vervolg keuzelijst personen groep en vervolgens de gebruikers naam invoeren van het API-account dat wordt gebruikt voor de integratie. 
+  > ![Naam van de machtigingsgroep](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
+* Leden toevoegen aan de groep. U bijvoorbeeld **gebruikersnaam** selecteren in het vervolgkeuzemenu Groep Personen en vervolgens de gebruikersnaam invoeren van het API-account dat voor de integratie wordt gebruikt. 
   > [!div class="mx-imgBorder"]
   > ![Groepsleden toevoegen](./media/sap-successfactors-inbound-provisioning/add-group-members.png)
-* Klik op **gereed** om het maken van de machtigings groep te volt ooien.
+* Klik **op Gereed** om de machtigingsgroep te maken.
 
-### <a name="grant-permission-role-to-the-permission-group"></a>Machtigings functie verlenen aan de machtigings groep
+### <a name="grant-permission-role-to-the-permission-group"></a>Machtigingsrol verlenen aan de machtigingsgroep
 
-* Zoek in SuccessFactors-beheer centrum naar *machtigings rollen beheren*en selecteer vervolgens **machtigings rollen beheren** in de zoek resultaten.
-* Selecteer in de **lijst machtigings rollen**de rol die u hebt gemaakt voor de machtigingen voor API-gebruik.
-* Onder **deze rol toekennen aan..** . klikt u op de knop **toevoegen..** ..
-* Selecteer de **machtigings groep..** . in de vervolg keuzelijst en klik vervolgens op **selecteren...** om het venster groepen te openen, te zoeken en de eerder gemaakte groep te selecteren. 
+* Zoek in het SuccesFactors-beheercentrum naar *Machtigingenrollen beheren*en selecteer **vervolgens Machtigingsrollen beheren** in de zoekresultaten.
+* Selecteer in de **lijst met machtigingsrollen**de rol die u hebt gemaakt voor API-gebruiksmachtigingen.
+* Klik **onder Deze rol verlenen aan...**, klik op Knop **Toevoegen...**
+* Selecteer **Machtigingsgroep...** klik in het vervolgkeuzemenu op **Selecteren...** om het venster Groepen te openen om te zoeken en selecteer de groep die hierboven is gemaakt. 
   > [!div class="mx-imgBorder"]
-  > ![een machtigings groep toe](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
-* Controleer de machtigings rol verlenen aan de machtigings groep. 
+  > ![Machtigingsgroep toevoegen](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
+* Controleer de machtigingsrolverlening aan de machtigingsgroep. 
   > [!div class="mx-imgBorder"]
-  > ![machtigings-en groeps detail](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* Klik op **Wijzigingen opslaan**.
+  > ![Machtigingsrol en groepsgegevens](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
+* Klik **op Wijzigingen opslaan**.
 
-## <a name="configuring-user-provisioning-from-successfactors-to-azure-ad"></a>Gebruikers inrichten van SuccessFactors naar Azure AD configureren
+## <a name="configuring-user-provisioning-from-successfactors-to-azure-ad"></a>Gebruikersvoorziening configureren van SuccessFactors naar Azure AD
 
-In deze sectie vindt u de stappen voor het inrichten van gebruikers accounts van SuccessFactors naar Azure AD.
+In deze sectie vindt u stappen voor het inrichten van gebruikersaccounts van SuccessFactors naar Azure AD.
 
-* [De inrichtings connector-app toevoegen en connectiviteit configureren voor SuccessFactors](#part-1-add-the-provisioning-connector-app-and-configure-connectivity-to-successfactors)
-* [Kenmerk toewijzingen configureren](#part-2-configure-attribute-mappings)
-* [Gebruikers inrichting inschakelen en starten](#enable-and-launch-user-provisioning)
+* [De inrichtingsconnector-app toevoegen en connectiviteit configureren met SuccessFactors](#part-1-add-the-provisioning-connector-app-and-configure-connectivity-to-successfactors)
+* [Kenmerkentoewijzingen configureren](#part-2-configure-attribute-mappings)
+* [Gebruikersinrichting inschakelen en starten](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-add-the-provisioning-connector-app-and-configure-connectivity-to-successfactors"></a>Deel 1: de app voor de inrichtings connector toevoegen en connectiviteit met SuccessFactors configureren
+### <a name="part-1-add-the-provisioning-connector-app-and-configure-connectivity-to-successfactors"></a>Deel 1: De inrichtingsconnector-app toevoegen en connectiviteit configureren met SuccessFactors
 
-**SuccessFactors configureren voor Azure AD-inrichting:**
+**Ga als eerste voor een configureren op Azure AD-inrichting:**
 
 1. Ga naar <https://portal.azure.com>
 
-2. Selecteer in de linker navigatie balk de optie **Azure Active Directory**
+2. Selecteer **Azure Active Directory** op de linkernavigatiebalk
 
-3. Selecteer **bedrijfs toepassingen**en vervolgens **alle toepassingen**.
+3. Selecteer **Enterprise-toepassingen**en **vervolgens Alle toepassingen**.
 
-4. Selecteer **een toepassing toevoegen**en selecteer de categorie **alle** .
+4. Selecteer **Een toepassing toevoegen**en selecteer de categorie **Alles.**
 
-5. Zoek **SuccessFactors naar Azure Active Directory gebruikers inrichten**en voeg die app toe vanuit de galerie.
+5. Zoek **naar SuccesFactors naar Azure Active Directory User Provisioning**en voeg die app toe vanuit de galerie.
 
-6. Nadat de app is toegevoegd en het scherm met details van de app wordt weer gegeven, selecteert u **inrichting** maken
+6. Nadat de app is toegevoegd en het scherm met app-details wordt weergegeven, selecteert u **Provisioning**
 
-7. De **inrichtings** **modus** wijzigen in **automatisch**
+7. De **inrichtingsmodus** **Mode** wijzigen in **Automatisch**
 
-8. Voer de sectie **beheerders referenties** als volgt uit:
+8. Vul de sectie **Beheerdersreferenties** als volgt in:
 
-   * **Gebruikers naam beheerder** : Voer de gebruikers naam in van het gebruikers account van de SUCCESSFACTORS-API, waarbij de bedrijfs-id is toegevoegd. Het heeft de volgende indeling: **gebruikers naam\@companyID**
+   * **Gebruikersnaam beheerder** : voer de gebruikersnaam van het Account van de SuccessFactors API-gebruikers in, waarbij de bedrijfs-id is toegevoegd. Het heeft het formaat: **\@gebruikersnaam companyID**
 
-   * **Beheerders wachtwoord –** Voer het wacht woord van het gebruikers account van de SuccessFactors-API in. 
+   * **Beheerderswachtwoord –** Voer het wachtwoord in van het Account van de Api-gebruikersaccount van SuccessFactors. 
 
-   * **Tenant-URL:** Voer de naam van het SuccessFactors OData API services-eind punt in. Voer alleen de hostnaam van de server in zonder http of https. Deze waarde moet er als volgt uitzien: **API-server-name.successfactors.com**.
+   * **URL van tenant –** Voer de naam in van het eindpunt van de OData API-services van SuccesFactors. Voer alleen de hostnaam van de server in zonder http of https. Deze waarde moet eruit zien als: **api-server-name.successfactors.com**.
 
-   * **E-mail melding-** Voer uw e-mail adres in en schakel het selectie vakje e-mail verzenden als er een fout is opgetreden in.
+   * **Melding e-mail –** Voer uw e-mailadres in en schakel het selectievakje 'E-mail verzenden als er mislukt' in.
     > [!NOTE]
-    > De Azure AD-inrichtings service verzendt een e-mail melding als de inrichtings taak een [quarantaine](/azure/active-directory/manage-apps/application-provisioning-quarantine-status) status heeft.
+    > De Azure AD Provisioning Service verzendt e-mailmelding als de inrichtingstaak in een [quarantainestatus](/azure/active-directory/manage-apps/application-provisioning-quarantine-status) terechtkomt.
 
-   * Klik op de knop **verbinding testen** . Als de verbindings test is geslaagd, klikt u bovenaan op de knop **Opslaan** . Als dit mislukt, controleert u of de SuccessFactors-referenties en-URL geldig zijn.
+   * Klik op de knop **Verbinding testen.** Als de verbindingstest slaagt, klikt u bovenaan op de knop **Opslaan.** Als dit niet lukt, controleert u of de referenties van SuccessFactors en de URL geldig zijn.
     >[!div class="mx-imgBorder"]
     >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sf2aad-provisioning-creds.png)
 
-   * Zodra de referenties zijn opgeslagen, wordt in de sectie **toewijzingen** de standaard toewijzing weer gegeven **SuccessFactors-gebruikers synchroniseren met Azure Active Directory**
+   * Zodra de referenties zijn opgeslagen, wordt in de sectie **Toewijzingen** de standaardtoewijzing **Spaarfactorengebruikers gesynchroniseerd in Azure Active Directory weergegeven.**
 
-### <a name="part-2-configure-attribute-mappings"></a>Deel 2: kenmerk toewijzingen configureren
+### <a name="part-2-configure-attribute-mappings"></a>Deel 2: Toewijzingen van kenmerken configureren
 
-In deze sectie configureert u hoe gebruikers gegevens stromen van SuccessFactors naar Active Directory.
+In deze sectie configureert u hoe gebruikersgegevens stromen van SuccessFactors naar Active Directory.
 
-1. Klik op het tabblad inrichting onder **toewijzingen**op **SuccessFactors gebruikers synchroniseren om Azure Active Directory**.
+1. Klik op het tabblad Inrichten onder **Toewijzingen**op **Gebruikers van Succesfactoren synchroniseren naar Azure Active Directory**.
 
-1. In het veld **bereik van bron object** kunt u selecteren welke groepen gebruikers in SuccessFactors het bereik moeten hebben voor het inrichten van Azure AD door een set op kenmerken gebaseerde filters te definiëren. Het standaard bereik is alle gebruikers in SuccessFactors. Voorbeeld filters:
+1. In het veld **Bronobjectbereik** u selecteren welke sets gebruikers in SuccessFactors in het bereik van Azure moeten zijn, door een set op kenmerken gebaseerde filters te definiëren. De standaardscope is "alle gebruikers in SuccessFactors". Voorbeeldfilters:
 
-   * Voor beeld: bereik voor gebruikers met personIdExternal tussen 1000000 en 2000000 (m.u.v. 2000000)
+   * Voorbeeld: Scope voor gebruikers met personIdExternal tussen 1000000 en 2000000 (exclusief 2000000)
 
       * Kenmerk: personIdExternal
 
-      * Operator: overeenkomende REGEX
+      * Operator: REGEX Match
 
-      * Waarde: (1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])
+      * Waarde: (1[0-9][0-9][0-9][0-9][0-9][0-9])
 
-   * Voor beeld: alleen werk nemers en niet-voorwaardelijke werk nemers
+   * Voorbeeld: Alleen werknemers en geen voorwaardelijke werknemers
 
       * Kenmerk: EmployeeID
 
-      * Operator: IS niet NULL
+      * Operator: IS NIET NULL
 
    > [!TIP]
-   > Wanneer u de inrichtings-app voor de eerste keer configureert, moet u de kenmerk toewijzingen en expressies testen en controleren om ervoor te zorgen dat het gewenste resultaat wordt weer geven. Micro soft raadt aan om de bereik filters onder het bereik van de **bron object** te gebruiken om uw toewijzingen te testen met een aantal test gebruikers van SuccessFactors. Wanneer u hebt gecontroleerd of de toewijzingen werken, kunt u het filter verwijderen of het bestand geleidelijk uitbreiden om meer gebruikers op te geven.
+   > Wanneer u de inrichtingsapp voor de eerste keer configureert, moet u uw kenmerktoewijzingen en -expressies testen en verifiëren om ervoor te zorgen dat deze het gewenste resultaat oplevert. Microsoft raadt aan om de scopingfilters onder **Source Object Scope** te gebruiken om uw toewijzingen te testen met een paar testgebruikers van SuccessFactors. Zodra u hebt geverifieerd dat de toewijzingen werken, u het filter verwijderen of geleidelijk uitbreiden met meer gebruikers.
 
    > [!CAUTION] 
-   > Het standaard gedrag van de inrichtings engine is het uitschakelen/verwijderen van gebruikers die buiten het bereik vallen. Dit is mogelijk niet wenselijk in uw SuccessFactors naar Azure AD-integratie. Als u dit standaard gedrag wilt overschrijven, raadpleegt u het artikel [verwijdering overs laan van gebruikers accounts die buiten het bereik](../app-provisioning/skip-out-of-scope-deletions.md) vallen
+   > Het standaardgedrag van de inrichtingsengine is het uitschakelen/verwijderen van gebruikers die buiten het bereik vallen. Dit is mogelijk niet wenselijk in uw SuccessFactors naar Azure AD-integratie. Als u dit standaardgedrag wilt overschrijven, verwijst u naar het artikel [Verwijdering van gebruikersaccounts](../app-provisioning/skip-out-of-scope-deletions.md) overslaan die buiten het bereik vallen
   
-1. In het veld **acties doel object** kunt u globaal filteren welke acties er worden uitgevoerd op Active Directory. **Create** en **Update** worden het meest gebruikt.
+1. In het veld **Doelobjectacties** u globaal filteren welke acties worden uitgevoerd in Active Directory. **Maken** en **bijwerken** komen het meest voor.
 
-1. In de sectie **kenmerk toewijzingen** kunt u definiëren hoe afzonderlijke SuccessFactors kenmerken worden toegewezen aan Active Directory kenmerken.
+1. In de sectie **Toewijzingen van kenmerken** u definiëren hoe afzonderlijke SuccessFactors-kenmerken worden toegewezen aan Active Directory-kenmerken.
 
   >[!NOTE]
-  >Voor de volledige lijst met SuccessFactors-kenmerken die door de toepassing worden ondersteund, verwijzen wij u naar [SuccessFactors-kenmerk verwijzing](../app-provisioning/sap-successfactors-attribute-reference.md)
+  >Raadpleeg de verwijzing naar [successfactors-attribuut Naslagrecht](../app-provisioning/sap-successfactors-attribute-reference.md) voor de volledige lijst met kenmerken van SuccessFactors die door de toepassing wordt ondersteund
 
 
-1. Klik op een bestaande kenmerk toewijzing om het bij te werken of Klik onder aan het scherm op **nieuwe toewijzing toevoegen** om nieuwe toewijzingen toe te voegen. Een individuele kenmerk toewijzing ondersteunt de volgende eigenschappen:
+1. Klik op een bestaande kenmerktoewijzing om deze bij te werken of klik op **Nieuwe toewijzing** onder aan het scherm toevoegen om nieuwe toewijzingen toe te voegen. Een afzonderlijke kenmerktoewijzing ondersteunt deze eigenschappen:
 
-      * **Toewijzings type**
+      * **Toewijzingstype**
 
-         * **Direct** : schrijft de waarde van het kenmerk SuccessFactors naar het kenmerk AD, zonder wijzigingen
+         * **Direct** : hiermee schrijft u de waarde van het kenmerk SuccesFactors aan het AD-kenmerk, zonder wijzigingen
 
-         * **Constante** : een statische, constante teken reeks waarde schrijven naar het AD-kenmerk
+         * **Constant** - Schrijf een statische, constante tekenreekswaarde naar het AD-kenmerk
 
-         * **Expressie** : Hiermee kunt u een aangepaste waarde schrijven naar het AD-kenmerk, op basis van een of meer SuccessFactors-kenmerken. [Zie dit artikel over expressies voor meer informatie](../app-provisioning/functions-for-customizing-application-data.md).
+         * **Expressie** : hiermee u een aangepaste waarde naar het AD-kenmerk schrijven op basis van een of meer kenmerken van SuccessFactors. [Zie dit artikel over expressies voor meer informatie.](../app-provisioning/functions-for-customizing-application-data.md)
 
-      * **Bron kenmerk** -het gebruikers kenmerk van SuccessFactors
+      * **Bronkenmerk** - Het gebruikerskenmerk van SuccessFactors
 
-      * **Standaard waarde** : optioneel. Als het bron kenmerk een lege waarde heeft, wordt deze waarde in plaats daarvan door de toewijzing geschreven.
-            De meest voorkomende configuratie is om dit leeg te laten.
+      * **Standaardwaarde** – Optioneel. Als het bronkenmerk een lege waarde heeft, wordt deze waarde in de toewijzing geschreven.
+            Meest voorkomende configuratie is om deze leeg te laten.
 
-      * **Doel kenmerk** : het gebruikers kenmerk in Active Directory.
+      * **Kenmerk Doel** : het gebruikerskenmerk in Active Directory.
 
-      * **Objecten met dit kenmerk matchen** : bepaalt of deze toewijzing moet worden gebruikt om gebruikers te identificeren tussen SuccessFactors en Active Directory. Deze waarde wordt doorgaans ingesteld op het veld worker-ID voor SuccessFactors, die meestal wordt toegewezen aan een van de kenmerken van de werk nemer-ID in Active Directory.
+      * **Objecten matchen met dit kenmerk** : of deze toewijzing al dan niet moet worden gebruikt om gebruikers op unieke wijze te identificeren tussen SuccessFactors en Active Directory. Deze waarde wordt meestal ingesteld op het veld Werknemers-id voor SuccesFactors, dat doorgaans is toegewezen aan een van de kenmerken van werknemers-id in Active Directory.
 
-      * **Overeenkomende prioriteit** : meerdere overeenkomende kenmerken kunnen worden ingesteld. Wanneer er meerdere zijn, worden deze geëvalueerd in de volg orde die is gedefinieerd door dit veld. Zodra er een overeenkomst wordt gevonden, worden er geen verdere overeenkomende kenmerken geëvalueerd.
+      * **Overeenkomende prioriteit** – Meerdere overeenkomende kenmerken kunnen worden ingesteld. Wanneer er meerdere zijn, worden ze geëvalueerd in de volgorde die door dit veld is gedefinieerd. Zodra een overeenkomst wordt gevonden, worden geen verdere overeenkomende kenmerken geëvalueerd.
 
-      * **Deze toewijzing Toep assen**
+      * **Deze toewijzing toepassen**
 
-         * **Altijd** : deze toewijzing Toep assen op zowel het maken van gebruikers als bij het bijwerken van acties
+         * **Altijd** – Deze toewijzing toepassen op zowel acties voor het maken en bijwerken van gebruikers
 
-         * **Alleen tijdens het maken** : pas deze toewijzing alleen toe bij het maken van gebruikers acties
+         * **Alleen tijdens het maken** - Pas deze toewijzing alleen toe op acties voor het maken van gebruikers
 
-1. Klik boven aan de sectie kenmerk toewijzing op **Opslaan** om uw toewijzingen op te slaan.
+1. Als u uw toewijzingen wilt opslaan, klikt u boven aan de sectie Kenmerktoewijzing op **Opslaan.**
 
-Zodra de configuratie van de kenmerk toewijzing is voltooid, kunt u [de User Provisioning Service nu inschakelen en starten](#enable-and-launch-user-provisioning).
+Zodra de configuratie van de toewijzing van kenmerken is voltooid, u [nu de service voor het inrichten van de gebruiker inschakelen en starten.](#enable-and-launch-user-provisioning)
 
-## <a name="enable-and-launch-user-provisioning"></a>Gebruikers inrichting inschakelen en starten
+## <a name="enable-and-launch-user-provisioning"></a>Gebruikersinrichting inschakelen en starten
 
-Zodra de configuratie van de SuccessFactors-inrichting is voltooid, kunt u de inrichtings service inschakelen in de Azure Portal.
+Zodra de app-configuraties voor het inrichten van 1-1-apps zijn voltooid, u de inrichtingsservice inschakelen in de Azure-portal.
 
 > [!TIP]
-> Wanneer u de inrichtings service inschakelt, worden er standaard inrichtings bewerkingen gestart voor alle gebruikers binnen het bereik. Als er fouten optreden in de toewijzings-of workday-gegevens problemen, kan de inrichtings taak mislukken en gaat u naar de quarantaine status. Om dit te voor komen best practice, raden we u aan om het bereik filter voor **bron objecten** te configureren en uw kenmerk toewijzingen te testen met enkele test gebruikers voordat u de volledige synchronisatie voor alle gebruikers start. Wanneer u hebt gecontroleerd of de toewijzingen werken en u de gewenste resultaten krijgt, kunt u het filter verwijderen of het bestand geleidelijk uitbreiden om meer gebruikers op te geven.
+> Wanneer u de inrichtingsservice inschakelt, wordt standaard de inrichtingsbewerking gestart voor alle gebruikers in het bereik. Als er fouten zijn in de problemen met de toewijzing of workday-gegevens, kan de inrichtingstaak mislukken en in de quarantainestatus gaan. Om dit te voorkomen, raden we u aan het filter **Source Object Scope** te configureren en uw kenmerktoewijzingen te testen met een paar testgebruikers voordat u de volledige synchronisatie voor alle gebruikers start. Zodra u hebt geverifieerd dat de toewijzingen werken en geven u de gewenste resultaten, dan u ofwel verwijderen van het filter of geleidelijk uit te breiden naar meer gebruikers op te nemen.
 
-1. Stel op het tabblad **inrichten** de **inrichtings status** in **op aan**.
+1. Stel op het tabblad **Inrichten** de **inrichtingsstatus** in **op Aan**.
 
 2. Klik op **Opslaan**.
 
-3. Met deze bewerking wordt de eerste synchronisatie gestart, wat een variabel aantal uur kan duren, afhankelijk van het aantal gebruikers in de SuccessFactors-Tenant. U kunt de voortgangs balk controleren om de voortgang van de synchronisatie cyclus bij te houden. 
+3. Met deze bewerking wordt de eerste synchronisatie gestart, die een variabel aantal uren kan duren, afhankelijk van het aantal gebruikers dat zich in de tenant SuccessFactors bevindt. U de voortgangsbalk controleren om de voortgang van de synchronisatiecyclus bij te houden. 
 
-4. Controleer op elk gewenst moment het tabblad **controle logboeken** in de Azure Portal om te zien welke acties de inrichtings service heeft uitgevoerd. In de controle logboeken worden alle afzonderlijke synchronisatie gebeurtenissen weer gegeven die door de inrichtings service worden uitgevoerd, bijvoorbeeld welke gebruikers worden gelezen uit de werk dagen en vervolgens worden toegevoegd of bijgewerkt aan Active Directory. 
+4. Controleer op elk gewenst moment het tabblad **Controlelogboeken** in de Azure-portal om te zien welke acties de inrichtingsservice heeft uitgevoerd. De controlelogboeken bevatten alle afzonderlijke synchronisatiegebeurtenissen die door de inrichtingsservice worden uitgevoerd, zoals welke gebruikers buiten Workday worden voorgelezen en vervolgens worden toegevoegd of bijgewerkt naar Active Directory. 
 
-5. Zodra de initiële synchronisatie is voltooid, wordt een overzichts rapport van de controle op het tabblad **inrichten** geschreven, zoals hieronder wordt weer gegeven.
+5. Zodra de eerste synchronisatie is voltooid, wordt een controleoverzichtrapport geschreven op het tabblad **Inname,** zoals hieronder wordt weergegeven.
 
    > [!div class="mx-imgBorder"]
-   > voortgangs balk bij het inrichten van ![](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
+   > ![Voortgangsbalk inrichten](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Meer informatie over ondersteunde SuccessFactors-kenmerken voor inkomende inrichting](../app-provisioning/sap-successfactors-attribute-reference.md)
-* [Meer informatie over het configureren van write-back van e-mail naar SuccessFactors](sap-successfactors-writeback-tutorial.md)
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het configureren van e-mailterugschrijven naar SuccessFactors](sap-successfactors-writeback-tutorial.md)
+* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../app-provisioning/check-status-user-account-provisioning.md)
 * [Meer informatie over het configureren van eenmalige aanmelding tussen SuccessFactors en Azure Active Directory](successfactors-tutorial.md)
 * [Meer informatie over het integreren van andere SaaS-toepassingen met Azure Active Directory](tutorial-list.md)
-* [Meer informatie over het exporteren en importeren van uw inrichtings configuraties](../app-provisioning/export-import-provisioning-configuration.md)
+* [Meer informatie over het exporteren en importeren van uw inrichtingsconfiguraties](../app-provisioning/export-import-provisioning-configuration.md)
 
 

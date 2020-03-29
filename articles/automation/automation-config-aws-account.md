@@ -1,5 +1,5 @@
 ---
-title: Verificatie met Amazon Web Services configureren
+title: Verificatie configureren met Amazon Web Services
 description: In dit artikel wordt beschreven hoe u een AWS-referentie voor runbooks in Azure Automation maakt en valideert bij het beheren van AWS-resources.
 keywords: AWS-verificatie, AWS configureren
 services: automation
@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 04/17/2018
 ms.topic: conceptual
 ms.openlocfilehash: 596dc334a412b3e0839d7661a23af771e5cd7394
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75366937"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Runbooks met Amazon Web Services verifiëren
@@ -20,16 +20,16 @@ Het automatiseren van algemene taken met resources in Amazon Web Services (AWS) 
 * Een AWS-abonnement en een set referenties. Het gaat dan met name om uw AWS-toegangssleutel en de geheime sleutel. Raadpleeg het artikel [AWS-referenties gebruiken](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html) voor meer informatie.
 * Een Azure-abonnement en een Automation-account.
 
-Als u wilt verifiëren met AWS, moet u een set AWS-referenties opgeven om uw runbooks te verifiëren die vanuit Azure Automation worden uitgevoerd. Als u al een Automation-account hebt gemaakt en u dit wilt gebruiken om te verifiëren met AWS, kunt u de stappen in de volgende sectie volgen: als u een account voor runbooks wilt toewijzen dat is gericht op AWS-resources, moet u eerst een nieuw [Automation-account](automation-offering-get-started.md) maken (Sla de optie voor het maken van een service-principal over) en voert u de volgende stappen uit:
+Als u wilt verifiëren met AWS, moet u een set AWS-referenties opgeven om uw runbooks te verifiëren die vanuit Azure Automation worden uitgevoerd. Als u al een Automation-account hebt gemaakt en u dat wilt gebruiken om te verifiëren met AWS, u de stappen in de volgende sectie volgen: Als u een account wilt wijden voor runbooks die aws-bronnen targeten, moet u eerst een nieuw [Automatiseringsaccount](automation-offering-get-started.md) maken (de optie overslaan om een serviceprincipal te maken) en de volgende stappen gebruiken:
 
 ## <a name="configure-automation-account"></a>Automation-account configureren
 
 Voor communicatie tussen Azure Automation en AWS moet u eerst uw AWS-referenties ophalen en deze opslaan als assets in Azure Automation. Voer de volgende stappen uit die in het AWS-document [Toegangssleutels voor uw AWS-account beheren](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) zijn gedocumenteerd om een toegangssleutel te maken en kopieer de **toegangssleutel-id** en **geheime toegangssleutel** (download desgewenst uw sleutelbestand om het ergens veilig op te slaan).
 
-Nadat u uw AWS-beveiligingssleutels hebt gemaakt en gekopieerd, moet u een referentieasset met een Azure Automation-account maken om deze sleutels veilig op te slaan en ernaar te verwijzen met uw runbooks. Volg de stappen in de sectie: **voor het maken van een nieuwe referentie** in het artikel [referentie-assets in azure Automation](shared-resources/credentials.md#to-create-a-new-credential-asset-with-the-azure-portal) en voer de volgende gegevens in:
+Nadat u uw AWS-beveiligingssleutels hebt gemaakt en gekopieerd, moet u een referentieasset met een Azure Automation-account maken om deze sleutels veilig op te slaan en ernaar te verwijzen met uw runbooks. Volg de stappen in de sectie: **Maak een nieuwe referentie** in het artikel Credential assets in Azure [Automation](shared-resources/credentials.md#to-create-a-new-credential-asset-with-the-azure-portal) en voer de volgende gegevens in:
 
-1. Voer in het vak **Naam** **AWScred** in of een geschikte waarde die voldoet aan uw naamgevingsstandaarden.
-2. Typ uw **toegangs-id** in het vak **Gebruikersnaam** en uw **geheime toegangssleutel** in de vakken **Wachtwoord** en **Wachtwoord bevestigen**.
+1. Voer in het vak **Naam****AWScred** in of een geschikte waarde die voldoet aan uw naamgevingsstandaarden.
+2. Typ **in** het vak Gebruikersnaam uw **Toegangs-id** en uw **geheime toegangssleutel** in het vak **Wachtwoord** en **Wachtwoord bevestigen.**
 
 ## <a name="next-steps"></a>Volgende stappen
 

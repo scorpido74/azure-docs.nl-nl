@@ -1,6 +1,6 @@
 ---
-title: Aangepaste regels voor de geoovereenkomst van Azure Web Application firewall (WAF)
-description: Dit artikel bevat een overzicht van WAF (Web Application firewall) die voldoet aan aangepaste regels op Azure-toepassing gateway.
+title: Aangepaste regels voor Azure Web Application Firewall (WAF) Geomatch
+description: Dit artikel is een overzicht van de aangepaste regels van Web Application Firewall (WAF) op Azure Application Gateway.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,26 +8,26 @@ ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
 ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76961086"
 ---
-# <a name="geomatch-custom-rules-preview"></a>Aangepaste regels voor geomatching (preview-versie)
+# <a name="geomatch-custom-rules-preview"></a>Aangepaste regels voor Geomatch (voorbeeld)
 
-Aangepaste regels bieden u de mogelijkheid om op maat gemaakte regels te maken voor de exacte behoeften van uw toepassingen en beveiligings beleid. Nu kunt u de toegang tot uw webtoepassingen beperken op basis van land/regio. Net als bij alle aangepaste regels kan deze logica worden samengesteld met andere regels om te voldoen aan de behoeften van uw toepassing.
+Met aangepaste regels u aangepaste regels maken die voldoen aan de exacte behoeften van uw toepassingen en beveiligingsbeleid. U nu de toegang tot uw webtoepassingen per land/regio beperken. Zoals met alle aangepaste regels, kan deze logica worden samengesteld met andere regels om de behoeften van uw toepassing aan te passen.
 
-Als u een aangepaste regel voor geografisch filteren wilt maken, selecteert u *geo-locatie* als het type overeenkomst en selecteert u vervolgens het land of de landen die u wilt toestaan of blok keren vanuit uw toepassing. Zie [aangepaste regels maken in Power shell](configure-waf-custom-rules.md) en meer voor beelden van aangepaste regels (Create-Custom-waf-rules.MD) voor meer informatie.
+Als u een aangepaste regel voor geofiltering wilt maken, selecteert u *Geo-locatie* als het type Match en selecteert u vervolgens het land of de landen die u wilt toestaan/blokkeren van uw toepassing. Zie [hoe u aangepaste regels maakt in Powershell](configure-waf-custom-rules.md) en meer aangepaste regelvoorbeelden (create-custom-waf-rules.md) voor meer informatie.
 
 > [!IMPORTANT]
 > Deze openbare preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="country-codes"></a>Land codes
+## <a name="country-codes"></a>Landcodes
 
-Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende landen codes van twee cijfers zijn. 
+Als u de Geomatch-operator gebruikt, kunnen de selectors een van de volgende landcodes van twee cijfers zijn. 
 
-|Landnummer | Land naam |
+|Landcode | Landnaam |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Verenigde Arabische Emiraten|
@@ -50,17 +50,17 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | BH | Bahrein|
 | BI | Burundi|
 | BJ | Benin|
-| BL | Saint--Barthélemy|
+| BL | Sint-Barthélemie|
 | BN | Brunei Darussalam|
 | BO | Bolivia|
 | BR | Brazilië|
 | BS | Bahama's|
 | BT | Bhutan|
 | BW | Botswana|
-| BY | Wit-Rusland|
+| BY | Belarus|
 | BZ | Belize|
 | CA | Canada|
-| CD | Congo (DRC)|
+| CD | Democratische Republiek Congo|
 | CF | Centraal-Afrikaanse Republiek|
 | CH | Zwitserland|
 | CI | Cote d'Ivoire|
@@ -95,7 +95,7 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | GR | Griekenland|
 | GT | Guatemala|
 | GY | Guyana|
-| HK | Hong Kong SAR|
+| HK | Hongkong SAR|
 | HN | Honduras|
 | HR | Kroatië|
 | HT | Haiti|
@@ -147,7 +147,7 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | MX | Mexico|
 | MY | Maleisië|
 | MZ | Mozambique|
-| N.V.T. | Namibië|
+| N.v.t. | Namibië|
 | NE | Niger|
 | NG | Nigeria|
 | NI | Nicaragua|
@@ -159,7 +159,7 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | OM | Oman|
 | PA | Panama|
 | PE | Peru|
-| PH | Filippijnen|
+| PH | Filipijnen|
 | PK | Pakistan|
 | PL | Polen|
 | PR | Puerto Rico|
@@ -183,7 +183,7 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | SR | Suriname|
 | SS | Zuid-Soedan|
 | SV | El Salvador|
-| SY | Syrië|
+| SY | Arabische Republiek Syrië|
 | SZ | Swaziland|
 | TC | Turks- en Caicoseilanden|
 | TG | Togo|
@@ -194,7 +194,7 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | TW | Taiwan|
 | TZ | Tanzania, Verenigde Republiek|
 | UA | Oekraïne|
-| UG | Uganda|
+| UG | Oeganda|
 | VS | Verenigde Staten|
 | UY | Uruguay|
 | UZ | Oezbekistan|
@@ -209,4 +209,4 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u meer informatie over aangepaste regels hebt [gemaakt, maakt u uw eigen aangepaste regels](create-custom-waf-rules.md).
+Nadat u meer te weten bent over aangepaste regels, [maakt u uw eigen aangepaste regels.](create-custom-waf-rules.md)
