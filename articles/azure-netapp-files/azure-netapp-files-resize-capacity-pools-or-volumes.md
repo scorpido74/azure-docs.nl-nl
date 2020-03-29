@@ -1,6 +1,6 @@
 ---
-title: Het formaat van de capaciteit van toepassingen of een volume voor Azure NetApp Files | Microsoft Docs
-description: Beschrijft hoe u de grootte van een capaciteit van toepassingen of een volume wijzigt.
+title: Het formaat van de capaciteitsgroep of een volume voor Azure NetApp-bestanden wijzigen | Microsoft Documenten
+description: Beschrijft hoe u de grootte van een capaciteitsgroep of een volume wijzigen.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,28 +15,28 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: b-juche
 ms.openlocfilehash: c58ceef57b984f46b86bb2a8577c53b75082b78b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65794614"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>Het formaat van een capaciteitspool of volume wijzigen
-U kunt de grootte van een capaciteit van toepassingen of een volume indien nodig wijzigen. 
+U de grootte van een capaciteitsgroep of een volume indien nodig wijzigen. 
 
-## <a name="resize-the-capacity-pool"></a>Grootte van de capaciteit van toepassingen 
+## <a name="resize-the-capacity-pool"></a>Het formaat van de capaciteitsgroep wijzigen 
 
-U kunt de grootte van de capaciteit van toepassingen in 1 TiB verhoogd of verlaagd wijzigen. De grootte van de capaciteit van toepassingen kan echter niet kleiner zijn dan 4 TiB. Grootte van de groep capaciteit, wijzigt de aangeschafte capaciteit van de Azure NetApp bestanden.
+U de grootte van de capaciteitspool wijzigen in stappen of decrements van 1-TiB. De grootte van de capaciteitspool mag echter niet kleiner zijn dan 4 TiB. Als u het formaat van de capaciteitsgroep wijzigt, wordt de aangeschafte capaciteit van Azure NetApp-bestanden gewijzigd.
 
-1. Klik op de capaciteit van toepassingen die u wilt vergroten of verkleinen van de blade NetApp-Account beheren. 
-2. Met de rechtermuisknop op de naam van de capaciteit van toepassingen of klik op het pictogram '...' aan het einde van de rij van de capaciteit van toepassingen om het contextmenu weer te geven. 
-3. Gebruik de opties in contextmenu vergroten of verkleinen of verwijderen van de capaciteit van toepassingen.
+1. Klik in het netapp-accountblad beheren op de capaciteitsgroep die u wilt aanpassen. 
+2. Klik met de rechtermuisknop op de naam van de capaciteitsgroep of klik op de "..." pictogram aan het einde van de rij capaciteitpool om het contextmenu weer te geven. 
+3. Gebruik de opties voor het contextmenu om het formaat van de capaciteitsgroep te wijzigen of te verwijderen.
 
-## <a name="resize-a-volume"></a>Een volume vergroten of verkleinen
+## <a name="resize-a-volume"></a>Het formaat van een volume wijzigen
 
-U kunt de grootte van een volume indien nodig wijzigen. Capaciteitsgebruik van een volume wordt in mindering gebracht op de ingerichte capaciteit van de pool.
+U de grootte van een volume zo nodig wijzigen. Capaciteitsgebruik van een volume wordt in mindering gebracht op de ingerichte capaciteit van de pool.
 
-1. Klik op de blade NetApp-Account beheren op **Volumes**. 
-2. Met de rechtermuisknop op de naam van het volume dat u wilt vergroten of verkleinen of klik op het pictogram '...' aan het einde van de rij van het volume om het contextmenu weer te geven.
-3. Gebruik de opties in contextmenu om de grootte of het volume niet verwijderen.
+1. Klik in het blad NetApp-account beheren op **Volumes**. 
+2. Klik met de rechtermuisknop op de naam van het volume waarvan u het formaat wilt wijzigen of klik op de "..." pictogram aan het einde van de rij van het volume om het contextmenu weer te geven.
+3. Gebruik de opties van het contextmenu om het formaat van het volume te wijzigen of te verwijderen.
 

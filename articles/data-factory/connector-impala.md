@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren van Impala met behulp van Azure Data Factory
-description: Leer hoe u gegevens kopiëren van Impala naar ondersteunde sink-gegevensopslag met behulp van een kopieeractiviteit in een data factory-pijplijn.
+title: Gegevens uit Impala kopiëren met Azure Data Factory
+description: Meer informatie over het kopiëren van gegevens van Impala naar ondersteunde sinkdatastores met behulp van een kopieeractiviteit in een pijplijn voor gegevensfabrieken.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,26 +12,26 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: f465fe4bb69bc5ae81db6c78df51bf5133de1b60
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74929310"
 ---
-# <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Gegevens kopiëren van Impala met behulp van Azure Data Factory
+# <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Gegevens uit Impala kopiëren met Azure Data Factory
 
-In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in Azure Data Factory om gegevens te kopiëren uit een Impala. Dit is gebaseerd op de [overzicht van Kopieeractiviteit](copy-activity-overview.md) artikel met daarin een algemeen overzicht van de kopieeractiviteit.
+In dit artikel wordt beschreven hoe u Activiteit kopiëren in Azure Data Factory gebruikt om gegevens van Impala te kopiëren. Het bouwt voort op het [overzichtsartikel Van activiteit kopiëren](copy-activity-overview.md) dat een algemeen overzicht van de kopieeractiviteit weergeeft.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
 Deze Impala-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
-- [Activiteit Lookup](control-flow-lookup-activity.md)
+- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
+- [Opzoekactiviteit](control-flow-lookup-activity.md)
 
-U kunt gegevens uit een Impala kopiëren naar een ondersteunde sink-gegevensopslag. Zie voor een lijst met gegevensarchieven die worden ondersteund als gegevensbronnen of PUT voor de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
+U gegevens van Impala kopiëren naar een ondersteund sink data store. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen of sinks door de kopieeractiviteit.
 
-Data Factory biedt een ingebouwde stuurprogramma als connectiviteit wilt inschakelen. Daarom moet u niet handmatig een stuurprogramma voor het gebruik van deze connector hebt geïnstalleerd.
+Data Factory biedt een ingebouwd stuurprogramma om connectiviteit mogelijk te maken. Daarom hoeft u geen stuurprogramma handmatig te installeren om deze connector te gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,26 +41,26 @@ Data Factory biedt een ingebouwde stuurprogramma als connectiviteit wilt inschak
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-De volgende secties bevatten meer informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten die specifiek voor de Impala-connector.
+In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in Gegevensfabriek te definiëren die specifiek zijn voor de Impala-connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
 
-De volgende eigenschappen worden ondersteund voor Impala service gekoppelde.
+De volgende eigenschappen worden ondersteund voor impala gekoppelde service.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op **Impala**. | Ja |
-| host | De IP-adres of de hostnaam naam van de Impala-server (dat wil zeggen, 192.168.222.160).  | Ja |
-| poort | De TCP-poort die de Impala-server wordt gebruikt om te luisteren naar clientverbindingen. De standaardwaarde is 21050.  | Nee |
-| authenticationType | Het verificatietype te gebruiken. <br/>Toegestane waarden zijn **anoniem**, **SASLUsername**, en **UsernameAndPassword**. | Ja |
-| gebruikersnaam | De gebruikersnaam die wordt gebruikt voor toegang tot de Impala-server. De standaardwaarde is anoniem wanneer u SASLUsername gebruikt.  | Nee |
-| wachtwoord | Het wachtwoord dat overeenkomt met de naam van de gebruiker wanneer u UsernameAndPassword gebruikt. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Nee |
-| enableSsl | Hiermee geeft u op of de verbindingen met de server zijn versleuteld met behulp van SSL. De standaardwaarde is **false**.  | Nee |
-| trustedCertPath | Het volledige pad van het .pem-bestand met vertrouwde CA-certificaten gebruikt om te controleren of de server wanneer u verbinding via SSL maakt. Deze eigenschap kan alleen worden ingesteld als u SSL op zelfgehoste Cloudintegratieruntime. De standaardwaarde is de cacerts.pem-bestand met de integratieruntime geïnstalleerd.  | Nee |
-| useSystemTrustStore | Hiermee bepaalt u of u een CA-certificaat uit het archief van de vertrouwensrelatie systeem- of uit een opgegeven PEM-bestand. De standaardwaarde is **false**.  | Nee |
-| allowHostNameCNMismatch | Hiermee geeft u op of de naam van een Certificeringsinstantie uitgegeven SSL-certificaat zodat deze overeenkomen met de hostnaam van de server wanneer u verbinding via SSL maakt vereist. De standaardwaarde is **false**.  | Nee |
-| allowSelfSignedServerCert | Hiermee geeft u op of zelfondertekende certificaten van de server is toegestaan. De standaardwaarde is **false**.  | Nee |
-| connectVia | De [integratieruntime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
+| host | Het IP-adres of de hostnaam van de Impala-server (dat wil zeggen 192.168.222.160).  | Ja |
+| poort | De TCP-poort die de Impala-server gebruikt om naar clientverbindingen te luisteren. De standaardwaarde is 21050.  | Nee |
+| authenticationType | Het te gebruiken verificatietype. <br/>Toegestane waarden zijn **Anoniem,** **SASLUsername**en **GebruikersnaamEnPassword**. | Ja |
+| gebruikersnaam | De gebruikersnaam die wordt gebruikt om toegang te krijgen tot de Impala-server. De standaardwaarde is anoniem wanneer u SASLUsername gebruikt.  | Nee |
+| wachtwoord | Het wachtwoord dat overeenkomt met de gebruikersnaam wanneer u Gebruikersnaam EnWachtwoord gebruikt. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Nee |
+| inschakelenSsl | Hiermee geeft u op of de verbindingen met de server zijn versleuteld met SSL. De standaardwaarde is **onwaar**.  | Nee |
+| trustedCertPath | Het volledige pad van het .pem-bestand dat vertrouwde CA-certificaten bevat die worden gebruikt om de server te verifiëren wanneer u verbinding maakt via SSL. Deze eigenschap kan alleen worden ingesteld wanneer u SSL gebruikt op Zelf gehoste integratieruntime. De standaardwaarde is het cacerts.pem-bestand dat is geïnstalleerd met de inburgeringsruntime.  | Nee |
+| gebruik vanSystemTrustStore | Hiermee geeft u op of u een CA-certificaat wilt gebruiken in het systeemvertrouwensarchief of uit een opgegeven PEM-bestand. De standaardwaarde is **onwaar**.  | Nee |
+| allowHostNameCNMismatch | Hiermee geeft u op of een door CA uitgegeven SSL-certificaatnaam moet overeenkomen met de hostnaam van de server wanneer u verbinding maakt via SSL. De standaardwaarde is **onwaar**.  | Nee |
+| allowSelfSignedServerCert | Hiermee geeft u op of zelfondertekende certificaten van de server moeten worden toegestaan. De standaardwaarde is **onwaar**.  | Nee |
+| connectVia | De [inburgeringsruntijd](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevensarchief. Meer informatie van de sectie [Voorwaarden.](#prerequisites) Als dit niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
 
 **Voorbeeld:**
 
@@ -89,16 +89,16 @@ De volgende eigenschappen worden ondersteund voor Impala service gekoppelde.
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Impala-gegevensset.
+Zie het artikel [Gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Impala-gegevensset.
 
-Om gegevens te kopiëren uit een Impala, stel de eigenschap type van de gegevensset in **ImpalaObject**. De volgende eigenschappen worden ondersteund:
+Als u gegevens uit Impala wilt kopiëren, stelt u de eigenschap type van de gegevensset in op **ImpalaObject**. De volgende eigenschappen worden ondersteund:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **ImpalaObject** | Ja |
-| schema | De naam van het schema. |Nee (als 'query' in de activiteitbron is opgegeven)  |
-| table | Naam van de tabel. |Nee (als 'query' in de activiteitbron is opgegeven)  |
-| tableName | De naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en `table` voor nieuwe workloads. | Nee (als 'query' in de activiteitbron is opgegeven) |
+| schema | Naam van het schema. |Nee (als 'query' in activiteitsbron is opgegeven)  |
+| tabel | Naam van de tabel. |Nee (als 'query' in activiteitsbron is opgegeven)  |
+| tableName | Naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` `table` en voor nieuwe werkbelasting. | Nee (als 'query' in activiteitsbron is opgegeven) |
 
 **Voorbeeld**
 
@@ -119,16 +119,16 @@ Om gegevens te kopiëren uit een Impala, stel de eigenschap type van de gegevens
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door het brontype Impala.
+Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door het type Impala-bron.
 
-### <a name="impala-as-a-source-type"></a>Impala als een brontype
+### <a name="impala-as-a-source-type"></a>Impala als brontype
 
-Om gegevens te kopiëren uit een Impala, stelt u het brontype in de kopieeractiviteit naar **ImpalaSource**. De volgende eigenschappen worden ondersteund in de kopieeractiviteit **bron** sectie.
+Als u gegevens uit Impala wilt kopiëren, stelt u het brontype in de kopieeractiviteit in op **ImpalaSource**. De volgende eigenschappen worden ondersteund in de **sectie** bron van kopieeractiviteit.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron voor kopiëren-activiteit moet worden ingesteld op **ImpalaSource**. | Ja |
-| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `"SELECT * FROM MyTable"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
+| type | De eigenschap type van de bron van de kopieeractiviteit moet worden ingesteld op **ImpalaSource**. | Ja |
+| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `"SELECT * FROM MyTable"`. | Nee (als 'tabelNaam' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**
 
@@ -162,10 +162,10 @@ Om gegevens te kopiëren uit een Impala, stelt u het brontype in de kopieeractiv
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
 
-Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
+Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).
+Zie [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Data Factory.

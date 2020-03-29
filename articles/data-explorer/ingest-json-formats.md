@@ -1,6 +1,6 @@
 ---
-title: Gegevens in JSON-indeling opnemen in azure Data Explorer
-description: Meer informatie over het opnemen van gegevens in JSON-indeling in azure Data Explorer.
+title: Opgenomen JSON-opgemaakte gegevens in Azure Data Explorer
+description: Meer informatie over het innemen van OPGEMAAKTE JSON-gegevens in Azure Data Explorer.
 author: orspod
 ms.author: orspodek
 ms.reviewer: kerend
@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: d293b76e004d693813a074cb8551a86cb3c0bec2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76772336"
 ---
-# <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>Voorbeeld gegevens in JSON-indeling opnemen in azure Data Explorer
+# <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>Opgenomen JSON-opgemaakte voorbeeldgegevens in Azure Data Explorer
 
-Dit artikel laat u zien hoe u gegevens in JSON-indeling kunt opnemen in een Azure Data Explorer-data base. U begint met eenvoudige voor beelden van RAW en toegewezen JSON, gaat verder naar JSON met meerdere regels en vervolgens worden complexere JSON-schema's met matrices en woorden boeken door lopen.  De voor beelden beschrijven het proces van het opnemen van gegevens in JSON-indeling met behulp van C#Kusto query language (KQL), of python. De Kusto-query taal `ingest` besturings opdrachten worden direct uitgevoerd op het eind punt van de engine. In productie scenario's wordt opname voor de Gegevensbeheer-service uitgevoerd met behulp van client bibliotheken of gegevens verbindingen. Lees [opname gegevens met behulp van de azure Data Explorer python-bibliotheek](/azure/data-explorer/python-ingest-data) en neem [gegevens op met behulp van de Azure Data Explorer .NET Standard SDK](/azure/data-explorer/net-standard-ingest-data) voor een overzicht van de opname van gegevens met deze client bibliotheken.
+In dit artikel ziet u hoe u OPgemaakte JSON-gegevens inneemt in een Azure Data Explorer-database. Je begint met eenvoudige voorbeelden van ruwe en toegewezen JSON, gaat door met Json met meerdere teksten en pakt vervolgens complexere JSON-schema's aan met arrays en woordenboeken.  De voorbeelden beschrijven het proces van het innemen van JSON-opgemaakte gegevens met Kusto-querytaal (KQL), C#of Python. De opdrachten voor `ingest` het besturingselement voor query's van Kusto-query's worden rechtstreeks naar het eindpunt van de engine uitgevoerd. In productiescenario's wordt opname uitgevoerd naar de dienst Gegevensbeheer met behulp van clientbibliotheken of gegevensverbindingen. Lees [Inname gegevens met behulp van de Azure Data Explorer Python-bibliotheek](/azure/data-explorer/python-ingest-data) en [innamegegevens met behulp van de Azure Data Explorer .NET Standard SDK](/azure/data-explorer/net-standard-ingest-data) voor een walk-through met betrekking tot het innemen van gegevens met deze clientbibliotheken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -24,17 +24,17 @@ Dit artikel laat u zien hoe u gegevens in JSON-indeling kunt opnemen in een Azur
 
 ## <a name="the-json-format"></a>De JSON-indeling
 
-Azure Data Explorer ondersteunt twee JSON-bestands indelingen:
-* `json`: JSON wordt gescheiden door een regel. Elke regel in de invoer gegevens heeft precies één JSON-record.
-* `multijson`: JSON met meerdere regels. De parser negeert de regel scheidings tekens en leest een record van de vorige positie naar het einde van een geldige JSON.
+Azure Data Explorer ondersteunt twee JSON-bestandsindelingen:
+* `json`: Lijn gescheiden JSON. Elke regel in de invoergegevens heeft precies één JSON-record.
+* `multijson`: Multi-lined JSON. De parser negeert de lijnscheidingstekens en leest een record van de vorige positie tot het einde van een geldige JSON.
 
-### <a name="ingest-and-map-json-formatted-data"></a>Gegevens opnemen in JSON-indeling en deze toewijzen
+### <a name="ingest-and-map-json-formatted-data"></a>Inname en kaart JSON-opgemaakte gegevens
 
-Voor opname van gegevens in JSON-indeling moet u de *indeling* opgeven met behulp van de [eigenschap inslikken](/azure/kusto/management/data-ingestion/index#ingestion-properties). Voor opname van JSON-gegevens is [toewijzing](/azure/kusto/management/mappings)vereist, waarmee een JSON-bron vermelding wordt toegewezen aan de doel kolom. Wanneer u gegevens opneemt, gebruikt u de vooraf gedefinieerde `jsonMappingReference` opname eigenschap of geeft u de eigenschap `jsonMapping`opname op. In dit artikel wordt gebruikgemaakt van de `jsonMappingReference` opname-eigenschap, die vooraf is gedefinieerd in de tabel die wordt gebruikt voor opname. In de onderstaande voor beelden beginnen we met het opnemen van JSON-records als onbewerkte gegevens in een tabel met één kolom. Vervolgens gebruiken we de toewijzing om elke eigenschap op te nemen in de toegewezen kolom. 
+Voor de opname van JSON-opgemaakte gegevens moet u de *indeling* opgeven met de [eigenschap Inname.](/azure/kusto/management/data-ingestion/index#ingestion-properties) Inname van JSON-gegevens vereist [toewijzing,](/azure/kusto/management/mappings)die een JSON-bronvermelding in de doelkolom in kaart brengt. Gebruik bij het innemen van gegevens `jsonMappingReference` de vooraf `jsonMapping`gedefinieerde eigenschap of specificeert de eigenschap opname. In dit artikel `jsonMappingReference` wordt gebruik gemaakt van de eigenschap inname, die vooraf is gedefinieerd op de tabel die wordt gebruikt voor inname. In de onderstaande voorbeelden beginnen we met het opnemen van JSON-records als ruwe gegevens in een enkele kolomtabel. Vervolgens gebruiken we de toewijzing om elke eigenschap in te nemen in de toegewezen kolom. 
 
-### <a name="simple-json-example"></a>Eenvoudig JSON-voor beeld
+### <a name="simple-json-example"></a>Eenvoudig JSON-voorbeeld
 
-Het volgende voor beeld is een eenvoudige JSON met een vlakke structuur. De gegevens hebben informatie over de Tempe ratuur en vochtigheid, verzameld door verschillende apparaten. Elke record is gemarkeerd met een ID en tijds tempel.
+Het volgende voorbeeld is een eenvoudige JSON, met een platte structuur. De gegevens bevatten temperatuur- en vochtigheidsinformatie, verzameld door verschillende apparaten. Elke record is gemarkeerd met een ID en tijdstempel.
 
 ```json
 {
@@ -46,27 +46,27 @@ Het volgende voor beeld is een eenvoudige JSON met een vlakke structuur. De gege
 }
 ```
 
-## <a name="ingest-raw-json-records"></a>Onbewerkte JSON-records opnemen 
+## <a name="ingest-raw-json-records"></a>Inname van raw JSON records 
 
-In dit voor beeld neemt u JSON-records op als onbewerkte gegevens in een tabel met één kolom. De gegevens bewerking, het gebruik van query's en het update beleid wordt uitgevoerd nadat de gegevens zijn opgenomen.
+In dit voorbeeld neemt u JSON-records in als ruwe gegevens in een enkele kolomtabel. De gegevensmanipulatie, het gebruik van query's en het updatebeleid worden uitgevoerd nadat de gegevens zijn ingenomen.
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL KQL](#tab/kusto-query-language)
 
-Gebruik de Kusto-query taal om gegevens op te nemen in een onbewerkte JSON-indeling.
+Gebruik Kusto-querytaal om gegevens in te nemen in een ruwe JSON-indeling.
 
-1. Meld u aan bij [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
+1. Log hier [https://dataexplorer.azure.com](https://dataexplorer.azure.com)in
 
 1. Selecteer **Add Cluster**.
 
-1. Voer in het dialoog venster **cluster toevoegen** uw cluster-URL in de notatie `https://<ClusterName>.<Region>.kusto.windows.net/`en selecteer vervolgens **toevoegen**.
+1. Voer **in** het dialoogvenster Cluster toevoegen de `https://<ClusterName>.<Region>.kusto.windows.net/`URL van het cluster in het formulier in en selecteer **Toevoegen**.
 
-1. Plak de volgende opdracht en selecteer **uitvoeren** om de tabel te maken.
+1. Plak in de volgende opdracht en selecteer **Uitvoeren** om de tabel te maken.
 
     ```Kusto
     .create table RawEvents (Event: dynamic)
     ```
 
-    Met deze query maakt u een tabel met één `Event` kolom van een [dynamisch](/azure/kusto/query/scalar-data-types/dynamic) gegevens type.
+    Met deze query wordt `Event` een tabel met één kolom van een [dynamisch](/azure/kusto/query/scalar-data-types/dynamic) gegevenstype.
 
 1. Maak de JSON-toewijzing.
 
@@ -74,19 +74,19 @@ Gebruik de Kusto-query taal om gegevens op te nemen in een onbewerkte JSON-indel
     .create table RawEvents ingestion json mapping 'RawEventMapping' '[{"column":"Event","path":"$"}]'
     ```
 
-    Met deze opdracht maakt u een toewijzing en wijst u het pad naar de JSON-hoofdmap `$` toe aan de kolom `Event`.
+    Met deze opdracht wordt een toewijzing gemaakt `$` en `Event` wordt het JSON-hoofdpad naar de kolom toegewezen.
 
-1. Gegevens opnemen in de `RawEvents` tabel.
+1. Gegevens innemen `RawEvents` in de tabel.
 
     ```Kusto
     .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=RawEventMapping)
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-Gebruiken C# om gegevens op te nemen in de onbewerkte JSON-indeling.
+Gebruik C# om gegevens in raw JSON-indeling in te nemen.
 
-1. Maak de `RawEvents` tabel.
+1. Maak `RawEvents` de tabel.
 
     ```C#
     var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
@@ -128,9 +128,9 @@ Gebruiken C# om gegevens op te nemen in de onbewerkte JSON-indeling.
 
     kustoClient.ExecuteControlCommand(command);
     ```
-    Met deze opdracht maakt u een toewijzing en wijst u het pad naar de JSON-hoofdmap `$` toe aan de kolom `Event`.
+    Met deze opdracht wordt een toewijzing gemaakt `$` en `Event` wordt het JSON-hoofdpad naar de kolom toegewezen.
 
-1. Gegevens opnemen in de `RawEvents` tabel.
+1. Gegevens innemen `RawEvents` in de tabel.
 
     ```C#
     var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/";
@@ -157,13 +157,13 @@ Gebruiken C# om gegevens op te nemen in de onbewerkte JSON-indeling.
     ```
 
 > [!NOTE]
-> Gegevens worden geaggregeerd volgens het [batch beleid](/azure/kusto/concepts/batchingpolicy), wat resulteert in een latentie van een paar minuten.
+> Gegevens worden geaggregeerd volgens [batchingbeleid,](/azure/kusto/concepts/batchingpolicy)wat resulteert in een latentie van een paar minuten.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Gebruik python om gegevens op te nemen in de onbewerkte JSON-indeling.
+Gebruik Python om gegevens in raw JSON-formaat in te nemen.
 
-1. Maak de `RawEvents` tabel.
+1. Maak `RawEvents` de tabel.
 
     ```Python
     KUSTO_URI = "https://<ClusterName>.<Region>.kusto.windows.net:443/"
@@ -185,7 +185,7 @@ Gebruik python om gegevens op te nemen in de onbewerkte JSON-indeling.
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. Gegevens opnemen in de `RawEvents` tabel.
+1. Gegevens innemen `RawEvents` in de tabel.
 
     ```Python
     INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/"
@@ -200,17 +200,17 @@ Gebruik python om gegevens op te nemen in de onbewerkte JSON-indeling.
     ```
 
     > [!NOTE]
-    > Gegevens worden geaggregeerd volgens het [batch beleid](/azure/kusto/concepts/batchingpolicy), wat resulteert in een latentie van een paar minuten.
+    > Gegevens worden geaggregeerd volgens [batchingbeleid,](/azure/kusto/concepts/batchingpolicy)wat resulteert in een latentie van een paar minuten.
 
 ---
 
-## <a name="ingest-mapped-json-records"></a>Door opname toegewezen JSON-records
+## <a name="ingest-mapped-json-records"></a>Inkaart gebrachte JSON-records
 
-In dit voor beeld neemt u gegevens van JSON-records op. Elke JSON-eigenschap is toegewezen aan één kolom in de tabel. 
+In dit voorbeeld neemt u JSON records op. Elke JSON-eigenschap wordt toegewezen aan één kolom in de tabel. 
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL KQL](#tab/kusto-query-language)
 
-1. Maak een nieuwe tabel met een vergelijkbaar schema voor de JSON-invoer gegevens. Deze tabel wordt gebruikt voor alle volgende voor beelden en opname opdrachten. 
+1. Maak een nieuwe tabel, met een vergelijkbaar schema als de JSON-invoergegevens. We gebruiken deze tabel voor alle volgende voorbeelden en innameopdrachten. 
 
     ```Kusto
     .create table Events (Time: datetime, Device: string, MessageId: string, Temperature: double, Humidity: double)
@@ -222,19 +222,19 @@ In dit voor beeld neemt u gegevens van JSON-records op. Elke JSON-eigenschap is 
     .create table Events ingestion json mapping 'FlatEventMapping' '[{"column":"Time","path":"$.timestamp"},{"column":"Device","path":"$.deviceId"},{"column":"MessageId","path":"$.messageId"},{"column":"Temperature","path":"$.temperature"},{"column":"Humidity","path":"$.humidity"}]'
     ```
 
-    In deze toewijzing, zoals gedefinieerd door het tabel schema, worden de `timestamp` vermeldingen opgenomen in de kolom `Time` als `datetime` gegevens typen.
+    In deze toewijzing, zoals gedefinieerd door `timestamp` het tabelschema, worden de `Time` `datetime` vermeldingen in de kolom opgenomen als gegevenstypen.
 
-1. Gegevens opnemen in de `Events` tabel.
+1. Gegevens innemen `Events` in de tabel.
 
     ```Kusto
     .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=FlatEventMapping)
     ```
 
-    Het bestand ' Simple. json ' heeft een aantal door regels gescheiden JSON-records. De indeling is `json`en de toewijzing die wordt gebruikt in de opdracht opnemen is de `FlatEventMapping` die u hebt gemaakt.
+    Het bestand 'simple.json' heeft een paar line-gescheiden JSON records. De indeling `json`is , en de toewijzing die `FlatEventMapping` wordt gebruikt in de inname opdracht is de u hebt gemaakt.
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-1. Maak een nieuwe tabel met een vergelijkbaar schema voor de JSON-invoer gegevens. Deze tabel wordt gebruikt voor alle volgende voor beelden en opname opdrachten. 
+1. Maak een nieuwe tabel, met een vergelijkbaar schema als de JSON-invoergegevens. We gebruiken deze tabel voor alle volgende voorbeelden en innameopdrachten. 
 
     ```C#
     var table = "Events";
@@ -273,9 +273,9 @@ In dit voor beeld neemt u gegevens van JSON-records op. Elke JSON-eigenschap is 
     kustoClient.ExecuteControlCommand(command);
     ```
 
-    In deze toewijzing, zoals gedefinieerd door het tabel schema, worden de `timestamp` vermeldingen opgenomen in de kolom `Time` als `datetime` gegevens typen.    
+    In deze toewijzing, zoals gedefinieerd door `timestamp` het tabelschema, worden de `Time` `datetime` vermeldingen in de kolom opgenomen als gegevenstypen.    
 
-1. Gegevens opnemen in de `Events` tabel.
+1. Gegevens innemen `Events` in de tabel.
 
     ```C#
     var blobPath = "https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
@@ -289,11 +289,11 @@ In dit voor beeld neemt u gegevens van JSON-records op. Elke JSON-eigenschap is 
     ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
     ```
 
-    Het bestand ' Simple. json ' heeft een aantal door regels gescheiden JSON-records. De indeling is `json`en de toewijzing die wordt gebruikt in de opdracht opnemen is de `FlatEventMapping` die u hebt gemaakt.
+    Het bestand 'simple.json' heeft een paar line-gescheiden JSON records. De indeling `json`is , en de toewijzing die `FlatEventMapping` wordt gebruikt in de inname opdracht is de u hebt gemaakt.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-1. Maak een nieuwe tabel met een vergelijkbaar schema voor de JSON-invoer gegevens. Deze tabel wordt gebruikt voor alle volgende voor beelden en opname opdrachten. 
+1. Maak een nieuwe tabel, met een vergelijkbaar schema als de JSON-invoergegevens. We gebruiken deze tabel voor alle volgende voorbeelden en innameopdrachten. 
 
     ```Python
     TABLE = "RawEvents"
@@ -311,7 +311,7 @@ In dit voor beeld neemt u gegevens van JSON-records op. Elke JSON-eigenschap is 
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. Gegevens opnemen in de `Events` tabel.
+1. Gegevens innemen `Events` in de tabel.
 
     ```Python
     BLOB_PATH = 'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D'
@@ -322,24 +322,24 @@ In dit voor beeld neemt u gegevens van JSON-records op. Elke JSON-eigenschap is 
         BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
     ```
 
-    Het bestand ' Simple. json ' heeft een aantal regels gescheiden van JSON-records. De indeling is `json`en de toewijzing die wordt gebruikt in de opdracht opnemen is de `FlatEventMapping` die u hebt gemaakt.    
+    Het bestand 'simple.json' heeft een paar regel gescheiden JSON records. De indeling `json`is , en de toewijzing die `FlatEventMapping` wordt gebruikt in de inname opdracht is de u hebt gemaakt.    
 ---
 
-## <a name="ingest-multi-lined-json-records"></a>Meerdere geregelde JSON-records opnemen
+## <a name="ingest-multi-lined-json-records"></a>Inname multi-lined JSON records
 
-In dit voor beeld neemt u meerdere geregelde JSON-records op. Elke JSON-eigenschap is toegewezen aan één kolom in de tabel. Het bestand ' meerdere regels. json ' heeft een aantal Inge sprongen JSON-records. De indeling `multijson` vertelt dat de Engine records moet lezen op basis van de JSON-structuur.
+In dit voorbeeld neemt u json-records met meerdere lined's in. Elke JSON-eigenschap wordt toegewezen aan één kolom in de tabel. Het bestand 'multilined.json' heeft een paar ingesprongen JSON-records. Het `multijson` formaat vertelt de engine om records te lezen door de JSON-structuur.
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL KQL](#tab/kusto-query-language)
 
-Gegevens opnemen in de `Events` tabel.
+Gegevens innemen `Events` in de tabel.
 
 ```Kusto
 .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/multilined.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=FlatEventMapping)
 ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-Gegevens opnemen in de `Events` tabel.
+Gegevens innemen `Events` in de tabel.
 
 ```C#
 var tableMapping = "FlatEventMapping";
@@ -354,9 +354,9 @@ var properties =
 ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Gegevens opnemen in de `Events` tabel.
+Gegevens innemen `Events` in de tabel.
 
 ```Python
 MAPPING = "FlatEventMapping"
@@ -369,9 +369,9 @@ INGESTION_CLIENT.ingest_from_blob(
 
 ---
 
-## <a name="ingest-json-records-containing-arrays"></a>JSON-records opnemen die matrices bevatten
+## <a name="ingest-json-records-containing-arrays"></a>Json-records innemen die arrays bevatten
 
-Matrix gegevens typen zijn een geordende verzameling waarden. Opname van een JSON-matrix wordt uitgevoerd door een [Update beleid](/azure/kusto/management/update-policy). De JSON wordt geconsumeerd als een tussenliggende tabel. Een update beleid voert een vooraf gedefinieerde functie uit in de tabel `RawEvents`, waarbij de resultaten worden teruggestuurd naar de doel tabel. Er worden gegevens opgenomen met de volgende structuur:
+Arraygegevenstypen zijn een geordende verzameling waarden. Inname van een JSON-array gebeurt door een [updatebeleid](/azure/kusto/management/update-policy). Json wordt ingenomen as-is aan een middenlijst. In een updatebeleid wordt een vooraf `RawEvents` gedefinieerde functie op de tabel uitgevoerd, waarbij de resultaten opnieuw worden toegerust in de doeltabel. We zullen gegevens innemen met de volgende structuur:
 
 ```json
 {
@@ -395,9 +395,9 @@ Matrix gegevens typen zijn een geordende verzameling waarden. Opname van een JSO
 }
 ```
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL KQL](#tab/kusto-query-language)
 
-1. Maak een `update policy`-functie die de verzameling `records` uitbreidt, zodat elke waarde in de verzameling een afzonderlijke rij ontvangt met behulp van de operator `mv-expand`. We gebruiken tabel `RawEvents` als bron tabel en `Events` als doel tabel.
+1. Maak `update policy` een functie die `records` de verzameling uitbreidt, zodat elke waarde in `mv-expand` de verzameling een aparte rij ontvangt, met behulp van de operator. We gebruiken de `RawEvents` tabel als `Events` brontabel en als doeltabel.
 
     ```Kusto
     .create function EventRecordsExpand() {
@@ -412,33 +412,33 @@ Matrix gegevens typen zijn een geordende verzameling waarden. Opname van een JSO
     }
     ```
 
-1. Het schema dat door de functie wordt ontvangen, moet overeenkomen met het schema van de doel tabel. Gebruik de operator `getschema` om het schema te controleren.
+1. Het schema dat door de functie wordt ontvangen, moet overeenkomen met het schema van de doeltabel. Gebruik `getschema` operator om het schema te bekijken.
 
     ```Kusto
     EventRecordsExpand() | getschema
     ```
 
-1. Voeg het update beleid toe aan de doel tabel. Met dit beleid wordt de query automatisch uitgevoerd op nieuwe opgenomen gegevens in de `RawEvents` tussenliggende tabel en worden de resultaten opgenomen in de tabel `Events`. Definieer een beleid voor 0 bewaren om te voor komen dat de tussenliggende tabel persistent wordt gemaakt.
+1. Voeg het updatebeleid toe aan de doeltabel. Met dit beleid wordt de query automatisch uitgevoerd `RawEvents` op nieuw ingenomen gegevens `Events` in de tussentabel en worden de resultaten in de tabel opgenomen. Definieer een beleid voor nulbehoud om te voorkomen dat de tussenliggende tabel blijft bestaan.
 
     ```Kusto
     .alter table Events policy update @'[{"Source": "RawEvents", "Query": "EventRecordsExpand()", "IsEnabled": "True"}]'
     ```
 
-1. Gegevens opnemen in de `RawEvents` tabel.
+1. Gegevens innemen `RawEvents` in de tabel.
 
     ```Kusto
     .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=RawEventMapping)
     ```
 
-1. Controleer de gegevens in de tabel `Events`.
+1. Gegevens in `Events` de tabel bekijken.
 
     ```Kusto
     Events
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-1. Maak een update functie die de verzameling `records` uitbreidt, zodat elke waarde in de verzameling een afzonderlijke rij ontvangt met behulp van de `mv-expand` operator. We gebruiken tabel `RawEvents` als bron tabel en `Events` als doel tabel.   
+1. Maak een updatefunctie waarmee `records` de verzameling wordt uitgebreid, zodat elke waarde `mv-expand` in de verzameling een aparte rij ontvangt, met behulp van de operator. We gebruiken de `RawEvents` tabel als `Events` brontabel en als doeltabel.   
 
     ```C#
     var command =
@@ -461,9 +461,9 @@ Matrix gegevens typen zijn een geordende verzameling waarden. Opname van een JSO
     ```
 
     > [!NOTE]
-    > Het schema dat door de functie wordt ontvangen, moet overeenkomen met het schema van de doel tabel.
+    > Het schema dat door de functie wordt ontvangen, moet overeenkomen met het schema van de doeltabel.
 
-1. Voeg het update beleid toe aan de doel tabel. Met dit beleid wordt de query automatisch uitgevoerd op nieuwe opgenomen gegevens in de `RawEvents` tussenliggende tabel en worden de resultaten opgenomen in de tabel `Events`. Definieer een beleid voor 0 bewaren om te voor komen dat de tussenliggende tabel persistent wordt gemaakt.
+1. Voeg het updatebeleid toe aan de doeltabel. Met dit beleid wordt de query automatisch uitgevoerd `RawEvents` op nieuw ingenomen gegevens `Events` in de tussentabel en worden de resultaten ervan in de tabel opgenomen. Definieer een beleid voor nulbehoud om te voorkomen dat de tussenliggende tabel blijft bestaan.
 
     ```C#
     var command =
@@ -472,7 +472,7 @@ Matrix gegevens typen zijn een geordende verzameling waarden. Opname van een JSO
     kustoClient.ExecuteControlCommand(command);
     ```
 
-1. Gegevens opnemen in de `RawEvents` tabel.
+1. Gegevens innemen `RawEvents` in de tabel.
 
     ```C#
     var table = "RawEvents";
@@ -488,11 +488,11 @@ Matrix gegevens typen zijn een geordende verzameling waarden. Opname van een JSO
     ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
     ```
     
-1. Controleer de gegevens in de tabel `Events`.
+1. Gegevens in `Events` de tabel bekijken.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-1. Maak een update functie die de verzameling `records` uitbreidt, zodat elke waarde in de verzameling een afzonderlijke rij ontvangt met behulp van de `mv-expand` operator. We gebruiken tabel `RawEvents` als bron tabel en `Events` als doel tabel.   
+1. Maak een updatefunctie waarmee `records` de verzameling wordt uitgebreid, zodat elke waarde `mv-expand` in de verzameling een aparte rij ontvangt, met behulp van de operator. We gebruiken de `RawEvents` tabel als `Events` brontabel en als doeltabel.   
 
     ```Python
     CREATE_FUNCTION_COMMAND = 
@@ -511,9 +511,9 @@ Matrix gegevens typen zijn een geordende verzameling waarden. Opname van een JSO
     ```
 
     > [!NOTE]
-    > Het schema dat door de functie wordt ontvangen, moet overeenkomen met het schema van de doel tabel.
+    > Het schema dat door de functie wordt ontvangen, moet overeenkomen met het schema van de doeltabel.
 
-1. Voeg het update beleid toe aan de doel tabel. Met dit beleid wordt de query automatisch uitgevoerd op nieuwe opgenomen gegevens in de `RawEvents` tussenliggende tabel en worden de resultaten opgenomen in de tabel `Events`. Definieer een beleid voor 0 bewaren om te voor komen dat de tussenliggende tabel persistent wordt gemaakt.
+1. Voeg het updatebeleid toe aan de doeltabel. Met dit beleid wordt de query automatisch uitgevoerd `RawEvents` op nieuw ingenomen gegevens `Events` in de tussentabel en worden de resultaten ervan in de tabel opgenomen. Definieer een beleid voor nulbehoud om te voorkomen dat de tussenliggende tabel blijft bestaan.
 
     ```Python
     CREATE_UPDATE_POLICY_COMMAND = 
@@ -522,7 +522,7 @@ Matrix gegevens typen zijn een geordende verzameling waarden. Opname van een JSO
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. Gegevens opnemen in de `RawEvents` tabel.
+1. Gegevens innemen `RawEvents` in de tabel.
 
     ```Python
     TABLE = "RawEvents"
@@ -534,13 +534,13 @@ Matrix gegevens typen zijn een geordende verzameling waarden. Opname van een JSO
         BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
     ```
 
-1. Controleer de gegevens in de tabel `Events`.
+1. Gegevens in `Events` de tabel bekijken.
 
 ---    
 
-## <a name="ingest-json-records-containing-dictionaries"></a>JSON-records opnemen die woorden boeken bevatten
+## <a name="ingest-json-records-containing-dictionaries"></a>Inname JSON records met woordenboeken
 
-Gestructureerde JSON van woorden lijst bevat sleutel-waardeparen. JSON-records worden opgenomen in de opname toewijzing met een logische expressie in de `JsonPath`. U kunt gegevens opnemen met de volgende structuur:
+Woordenboek gestructureerde JSON bevat sleutel-waarde paren. Json-records ondergaan innamemapping `JsonPath`met behulp van logische expressie in de . U gegevens opnemen met de volgende structuur:
 
 ```json
 {
@@ -570,7 +570,7 @@ Gestructureerde JSON van woorden lijst bevat sleutel-waardeparen. JSON-records w
 }
 ```
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL KQL](#tab/kusto-query-language)
 
 1. Maak een JSON-toewijzing.
 
@@ -578,13 +578,13 @@ Gestructureerde JSON van woorden lijst bevat sleutel-waardeparen. JSON-records w
     .create table Events ingestion json mapping 'KeyValueEventMapping' '[{"column":"Time","path":"$.event[?(@.Key == 'timestamp')]"},{"column":"Device","path":"$.event[?(@.Key == 'deviceId')]"},{"column":"MessageId","path":"$.event[?(@.Key == 'messageId')]"},{"column":"Temperature","path":"$.event[?(@.Key == 'temperature')]"},{"column":"Humidity","path":"$.event[?(@.Key == 'humidity')]"}]'
     ```
 
-1. Gegevens opnemen in de `Events` tabel.
+1. Gegevens innemen `Events` in de tabel.
 
     ```Kusto
     .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=KeyValueEventMapping)
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
 1. Maak een JSON-toewijzing.
 
@@ -607,7 +607,7 @@ Gestructureerde JSON van woorden lijst bevat sleutel-waardeparen. JSON-records w
     kustoClient.ExecuteControlCommand(command);
     ```
 
-1. Gegevens opnemen in de `Events` tabel.
+1. Gegevens innemen `Events` in de tabel.
 
     ```C#
     var blobPath = "https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
@@ -621,7 +621,7 @@ Gestructureerde JSON van woorden lijst bevat sleutel-waardeparen. JSON-records w
     ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
     ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. Maak een JSON-toewijzing.
 
@@ -632,7 +632,7 @@ Gestructureerde JSON van woorden lijst bevat sleutel-waardeparen. JSON-records w
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. Gegevens opnemen in de `Events` tabel.
+1. Gegevens innemen `Events` in de tabel.
 
      ```Python
     MAPPING = "KeyValueEventMapping"
@@ -647,5 +647,5 @@ Gestructureerde JSON van woorden lijst bevat sleutel-waardeparen. JSON-records w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overzicht van gegevens opname](ingest-data-overview.md)
+* [Overzicht van gegevensopname](ingest-data-overview.md)
 * [Query's schrijven](write-queries.md)

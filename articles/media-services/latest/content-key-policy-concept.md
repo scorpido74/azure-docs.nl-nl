@@ -1,6 +1,6 @@
 ---
-title: Inhoud van de belangrijkste beleidsregels in mediaservices - Azure | Microsoft Docs
-description: Dit artikel bevat een uitleg over wat inhoudsbeleid van de sleutels zijn, en hoe ze worden gebruikt door Azure Media Services.
+title: Beleid voor inhoudssleutel in mediaservices - Azure | Microsoft Documenten
+description: In dit artikel wordt uitgelegd wat beleid voor inhoudssleutel is en hoe deze worden gebruikt door Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,53 +13,53 @@ ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 7ddef1e78b4f8f62145e10b4cabc4537e28aba2f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74969901"
 ---
 # <a name="content-key-policies"></a>Beleid voor inhoudssleutels
 
-Met Media Services, kunt u uw live en on-demand inhoud dynamisch wordt versleuteld met Advanced Encryption Standard (AES-128) of een van de drie belangrijkste digital rights management (DRM)-systemen leveren: Microsoft PlayReady en Google Widevine Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM (PlayReady, Widevine en FairPlay) licenties voor geautoriseerde clients. 
+Met Media Services u uw live en on-demand content dynamisch versleuteld leveren met Advanced Encryption Standard (AES-128) of een van de drie belangrijkste DRM-systemen (Digital Rights Management): Microsoft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties (PlayReady, Widevine en FairPlay) aan geautoriseerde clients. 
 
-Als u versleutelings opties wilt opgeven voor uw stream, moet u een [streaming-beleid](streaming-policy-concept.md) maken en dit koppelen aan uw [streaming-Locator](streaming-locators-concept.md). U maakt het [beleid voor inhouds sleutels](https://docs.microsoft.com/rest/api/media/contentkeypolicies) om te configureren hoe de inhouds sleutel (die beveiligde toegang tot uw [assets](assets-concept.md)biedt) wordt geleverd aan de eind clients. U moet de vereisten (beperkingen) instellen voor het beleid voor de inhouds sleutel waaraan moet worden voldaan om sleutels met de opgegeven configuratie aan clients te kunnen leveren. Het beleid voor inhouds sleutels is niet nodig voor het wissen van streams of downloaden. 
+Als u versleutelingsopties op uw stream wilt opgeven, moet u een [streamingbeleid](streaming-policy-concept.md) maken en deze koppelen aan uw [streaminglocator.](streaming-locators-concept.md) U maakt het [beleid voor inhoudssleutel](https://docs.microsoft.com/rest/api/media/contentkeypolicies) om te configureren hoe de inhoudssleutel (die veilige toegang biedt tot uw [assets)](assets-concept.md)wordt geleverd aan eindclients. U moet de vereisten (beperkingen) instellen voor het beleid voor inhoudssleutel waaraan moet worden voldaan om sleutels met de opgegeven configuratie aan clients te kunnen leveren. Het contentkey-beleid is niet nodig voor het wissen van streaming of downloaden. 
 
-Normaal gesp roken koppelt u het beleid voor inhouds sleutels aan uw [streaming-Locator](streaming-locators-concept.md). U kunt ook het beleid voor de inhouds sleutel binnen een [streaming-beleid](streaming-policy-concept.md) opgeven (bij het maken van een aangepast streaming-beleid voor geavanceerde scenario's). 
+Meestal koppelt u uw contentkey-beleid aan uw [streaminglocator.](streaming-locators-concept.md) U ook het inhoudssleutelbeleid opgeven in een [streamingbeleid](streaming-policy-concept.md) (bij het maken van een aangepast streamingbeleid voor geavanceerde scenario's). 
 
 ## <a name="best-practices-and-considerations"></a>Aanbevolen procedures en overwegingen
 
 > [!IMPORTANT]
-> Controleer de volgende aanbevelingen.
+> Bekijk de volgende aanbevelingen.
 
-* U dient een beperkt aantal beleids regels te ontwerpen voor uw media service-account en deze opnieuw te gebruiken voor uw streaming-Locators wanneer dezelfde opties nodig zijn. Zie [quota's en beperkingen](limits-quotas-constraints.md)voor meer informatie.
-* Beleid voor inhouds sleutels kan worden bijgewerkt. Het kan tot vijf tien minuten duren voordat de sleutel bezorgings caches zijn bijgewerkt en het bijgewerkte beleid wordt opgehaald. 
+* U moet een beperkt aantal beleidsregels voor uw Media Service-account ontwerpen en deze opnieuw gebruiken voor uw streaminglocators wanneer dezelfde opties nodig zijn. Zie [Quota en beperkingen](limits-quotas-constraints.md)voor meer informatie .
+* Contentkey-beleid is updateerbaar. Het kan tot 15 minuten duren voordat de caches voor het leveren van sleutels worden bijgewerkt en het bijgewerkte beleid worden opgehaald. 
 
-   Door het beleid bij te werken, wordt uw bestaande CDN-cache overschreven, waardoor er problemen kunnen ontstaan met het afspelen van klanten die inhoud in de cache gebruiken.  
-* We raden u aan geen nieuw beleid voor inhouds sleutels voor elke Asset te maken. De belangrijkste voor delen van het delen van hetzelfde beleid voor inhouds sleutels tussen activa die dezelfde beleids opties nodig hebben, zijn:
+   Door het beleid bij te werken, overschrijft u uw bestaande CDN-cache, wat problemen met het afspelen kan veroorzaken voor klanten die inhoud in de cache gebruiken.  
+* We raden u aan geen nieuw contentkey-beleid voor elk item te maken. De belangrijkste voordelen van het delen van hetzelfde inhoudssleutelbeleid tussen assets die dezelfde beleidsopties nodig hebben, zijn:
    
-   * Het is eenvoudiger om een klein aantal beleids regels te beheren.
-   * Als u updates moet maken voor het beleid voor inhouds sleutels, worden de wijzigingen bijna direct van kracht op alle nieuwe licentie aanvragen.
-* Als u een nieuw beleid moet maken, moet u een nieuwe streaming-Locator voor de Asset maken.
-* Het wordt aanbevolen Media Services automatisch de inhouds sleutel te genereren. 
+   * Het is gemakkelijker om een klein aantal beleidsmaatregelen te beheren.
+   * Als u het beleid voor inhoudssleutel wilt bijwerken, worden de wijzigingen vrijwel meteen van kracht op alle nieuwe licentieaanvragen.
+* Als u een nieuw beleid moet maken, moet u een nieuwe streaminglocator voor het item maken.
+* Het wordt aanbevolen om Media Services de inhoudssleutel automatisch te laten genereren. 
 
-   Normaal gesp roken gebruikt u een langdurige sleutel en controleert u of het beleid voor de inhouds sleutel met [Get](https://docs.microsoft.com/rest/api/media/contentkeypolicies/get). Als u de sleutel wilt ophalen, moet u een afzonderlijke actie methode aanroepen om geheimen of referenties op te halen. Zie het volgende voor beeld.
+   Meestal zou u gebruik maken van een langlevende sleutel en controleren op het bestaan van de inhoud sleutel beleid met [Get](https://docs.microsoft.com/rest/api/media/contentkeypolicies/get). Als u de sleutel wilt krijgen, moet u een afzonderlijke actiemethode aanroepen om geheimen of referenties te krijgen, zie het voorbeeld dat volgt.
 
 ## <a name="example"></a>Voorbeeld
 
-Als u de sleutel wilt weer geven, gebruikt u `GetPolicyPropertiesWithSecretsAsync`, zoals wordt weer gegeven in het voor beeld [een handtekening sleutel van het bestaande beleid ophalen](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) .
+Gebruik , zoals in `GetPolicyPropertiesWithSecretsAsync`de [tekentoets ophalen, in het bestaande beleidsvoorbeeld](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) om bij de sleutel te komen.
 
-## <a name="filtering-ordering-paging"></a>Filters, bestellen, wisselbestand
+## <a name="filtering-ordering-paging"></a>Filteren, bestellen, paging
 
-Zie [filteren, ordenen, pagineren van Media Services entiteiten](entities-overview.md).
+Zie [Het filteren, bestellen, paging van mediaservices entiteiten](entities-overview.md).
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Eigenschappen van het beleid voor inhouds sleutels van het type `Datetime` zijn altijd in UTC-indeling.
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Eigenschappen van het beleid met `Datetime` inhoudssleutel van het type zijn altijd in UTC-indeling.
+* Widevine is een service van Google Inc. en onderworpen aan de servicevoorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Dynamische AES-128-versleuteling en de sleutelleveringsservice gebruiken](protect-with-aes128.md)
+* [AES-128 dynamische versleuteling en de key delivery service gebruiken](protect-with-aes128.md)
 * [De Digital Rights Management-service gebruiken voor dynamische versleuteling en licentielevering](protect-with-drm.md)
-* [EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted)
+* [CoderenHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted)

@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60612537"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Integratie van virtuele netwerken voor Azure Data Lake Storage Gen1
@@ -65,8 +65,8 @@ Naast het beveiligen van de toegang tot Data Lake Storage-accounts voor toegang 
 Gebruik hiervoor een firewalloplossing in uw virtuele netwerk voor het filteren van uitgaand verkeer op basis van de URL van het doelaccount. Verleen alleen toegang aan goedgekeurde Data Lake Storage Gen1-accounts.
 
 Een aantal beschikbare opties zijn:
-- [Azure Firewall](https://docs.microsoft.com/azure/firewall/overview): [Implementeer en configureer een Azure-firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) voor uw virtuele netwerk. Beveilig het uitgaande Data Lake Storage-verkeer en beperk het tot de bekende en goedgekeurde account-URL.
-- [Firewall voor het virtuele netwerkapparaat](https://azure.microsoft.com/solutions/network-appliances/): De beheerder staat mogelijk alleen het gebruik van bepaalde commerciële firewalls toe. Gebruik een firewalloplossing voor virtuele-netwerkapparaten die beschikbaar is in Azure Marketplace en waarmee dezelfde functie kan worden vervuld.
+- [Azure Firewall](https://docs.microsoft.com/azure/firewall/overview): [implementeer en configureer een Azure-firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) voor uw virtuele netwerk. Beveilig het uitgaande Data Lake Storage-verkeer en beperk het tot de bekende en goedgekeurde account-URL.
+- [Firewall voor het virtuele netwerkapparaat](https://azure.microsoft.com/solutions/network-appliances/): de beheerder staat mogelijk alleen het gebruik van bepaalde commerciële firewalls toe. Gebruik een firewalloplossing voor virtuele-netwerkapparaten die beschikbaar is in Azure Marketplace en waarmee dezelfde functie kan worden vervuld.
 
 > [!NOTE]
 > Door firewalls te gebruiken in het gegevenspad wordt er een extra sprong in het gegevenspad gecreëerd. Dit kan van invloed zijn op de netwerkprestaties voor end-to-endgegevensuitwisseling. De doorvoerbeschikbaarheid en verbindingslatentie kunnen worden beïnvloed. 
@@ -83,7 +83,7 @@ Een aantal beschikbare opties zijn:
 
 ## <a name="configuration"></a>Configuratie
 
-### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>Stap 1: Uw virtuele netwerk configureren voor het gebruik van een Azure AD-service-eindpunt
+### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>Stap 1: uw virtuele netwerk configureren voor het gebruik van een Azure AD-service-eindpunt
 
 1.  Ga naar de Azure-portal en meld u aan bij uw account.
  
@@ -107,7 +107,7 @@ Een aantal beschikbare opties zijn:
  
     ![Geslaagde toevoeging van het service-eindpunt](media/data-lake-store-network-security/config-vnet-4.png)
 
-### <a name="step-2-set-up-the-allowed-virtual-network-or-subnet-for-your-data-lake-storage-gen1-account"></a>Stap 2: Het toegestane virtuele netwerk of subnet instellen voor uw Data Lake Storage Gen1-account
+### <a name="step-2-set-up-the-allowed-virtual-network-or-subnet-for-your-data-lake-storage-gen1-account"></a>Stap 2: het toegestane virtuele netwerk of subnet instellen voor uw Data Lake Storage Gen1-account
 
 1.  Wanneer u uw virtuele netwerk hebt geconfigureerd, [maakt u een nieuw account voor Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account) in uw abonnement. U kunt ook naar een bestaand Data Lake Storage Gen1-account gaan. Het Data Lake Storage Gen1-account moet zich in dezelfde regio bevinden als het virtuele netwerk.
  

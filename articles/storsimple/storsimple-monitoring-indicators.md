@@ -1,6 +1,6 @@
 ---
-title: StorSimple indicatoren | Microsoft Docs
-description: Beschrijft de Lichtdioden (LED's) en hoorbaar alarm gebruikt voor het bewaken van de status van het StorSimple-apparaat.
+title: StorSimple-bewakingsindicatoren | Microsoft Documenten
+description: Beschrijft de lichtgevende diodes (LED's) en hoorbare alarmen die worden gebruikt om de status van het StorSimple-apparaat te controleren.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,234 +15,234 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60630561"
 ---
-# <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>StorSimple indicatoren gebruiken om uw apparaat te beheren
+# <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>StorSimple-bewakingsindicatoren gebruiken om uw apparaat te beheren
 
 
 ## <a name="overview"></a>Overzicht
-Uw StorSimple-apparaat bevat luminescentiedioden (LED's) en waarschuwingen die u gebruiken kunt voor het bewaken van de modules en de algehele status van het StorSimple-apparaat. De controle-indicatoren kunnen u vinden op de hardware-onderdelen van de primaire ruimte van het apparaat en de EBOD-behuizing. De indicatoren controle kunnen-LED's of hoorbaar alarm zijn.
+Uw StorSimple-apparaat bevat lichtgevende diodes (LED's) en alarmen die u gebruiken om de modules en de algehele status van het StorSimple-apparaat te controleren. De bewakingsindicatoren zijn te vinden op de hardwarecomponenten van de primaire behuizing van het apparaat en de EBOD-behuizing. De bewakingsindicatoren kunnen LED's of hoorbare alarmen zijn.
 
-Er zijn drie LED statussen die worden gebruikt om aan te geven van de status van een module: groen, groen naar rood-geel of rood-geel knipperen.  
+Er zijn drie LED-toestanden die worden gebruikt om de status van een module aan te geven: groen, knipperend groen tot rood-oranje of rood-oranje.  
 
-* Groen-LED's vertegenwoordigen de operationele status in orde.  
-* Knipperen groen naar rood-geel-LED's vertegenwoordigen de aanwezigheid van niet-kritieke situaties die mogelijk tussenkomst van de gebruiker.  
-* Rood-geel-LED's erop duiden dat er een kritieke fout is aanwezig in de module.  
+* Groene LED's vertegenwoordigen een gezonde bedrijfsstatus.  
+* Knipperend groen naar rood-oranje LED's vertegenwoordigen de aanwezigheid van niet-kritieke omstandigheden die mogelijk tussenkomst van de gebruiker vereisen.  
+* Rood-oranje LED's geven aan dat er een kritieke fout aanwezig is in de module.  
 
-De rest van dit artikel beschrijft de verschillende bewakings-LED, hun locaties op het StorSimple-apparaat, de status van het apparaat op basis van de Staten LED en alle bijbehorende hoorbaar alarm.
+De rest van dit artikel beschrijft de verschillende monitoring indicator LED's, hun locaties op de StorSimple apparaat, het apparaat status op basis van de LED-toestanden, en eventuele bijbehorende hoorbare alarmen.
 
-## <a name="front-panel-indicator-leds"></a>Voorpaneel-LED 's
-De front-scherm, ook wel bekend als de *operations deelvenster* of *ops deelvenster*, geeft u de cumulatieve status van alle modules in het systeem. Het voorpaneel identiek zijn op de primaire StorSimple en de EBOD-behuizing is en wordt hieronder weergegeven.  
+## <a name="front-panel-indicator-leds"></a>LED's voorpaneelindicator
+Het voorpaneel, ook wel bekend als het *bedieningspaneel* of *het deelvenster Ops,* geeft de geaggregeerde status weer van alle modules in het systeem. Het voorpaneel is identiek op de StorSimple primaire en de EBOD behuizing, en is hieronder geïllustreerd.  
 
-   ![Voorpaneel van apparaat][1]
+   ![Voorpaneel van het apparaat][1]
 
 Het voorpaneel bevat de volgende indicatoren:  
 
 1. Knop Dempen
-2. Energiebeheer-indicator LED (rood-groen-geel)
-3. Module fouttolerantie indicator geleid (in rood-geel/uitgeschakeld)
-4. Logische fout indicator geleid (in rood-geel/uitgeschakeld
-5. Eenheid-ID weergeven  
+2. Power indicator LED (groen/rood-oranje)
+3. Module foutindicator LED (AAN rood-oranje/UIT)
+4. Logische foutindicator LED (OP rood-oranje/UIT
+5. Beeldscherm van eenheids-id  
 
-Het belangrijkste verschil tussen het voorpaneel-LED's voor het apparaat en die voor de EBOD-behuizing is de **System eenheid id-nummer** op het LED-scherm weergegeven. De standaardeenheid weergegeven op het apparaat-ID is **00**, terwijl de ID van de standaard-eenheid weergegeven op de behuizing EBOD **01**. Hiermee kunt u snel onderscheid maken tussen het apparaat en de behuizing EBOD wanneer het apparaat is ingeschakeld. Als uw apparaat is uitgeschakeld, gebruikt u de informatie in [inschakelen op een nieuw apparaat](storsimple-turn-device-on-or-off.md#turn-on-a-new-device) om te onderscheiden van het apparaat van de EBOD-behuizing.  
+Het grote verschil tussen de LED's voor het voorpaneel voor het apparaat en die voor de EBOD-behuizing is het **systeemeenheididentificatienummer** dat op het LED-display wordt weergegeven. De standaard-eenheids-ID die op het apparaat wordt weergegeven, is **00**, terwijl de standaard-eenheids-ID die op de EBOD-behuizing wordt weergegeven **01**is. Hierdoor u snel onderscheid maken tussen het apparaat en de EBOD-behuizing wanneer het apparaat is ingeschakeld. Als uw apparaat is uitgeschakeld, gebruikt u de informatie die in [Turn on a new device](storsimple-turn-device-on-or-off.md#turn-on-a-new-device) wordt verstrekt om het apparaat te onderscheiden van de EBOD-behuizing.  
 
-## <a name="front-panel-led-status"></a>Voorpaneel LED-status
-Gebruik de volgende tabel om u te identificeren van de status aangegeven door de LED's op het voorpaneel van het apparaat of de EBOD-behuizing.  
+## <a name="front-panel-led-status"></a>LED-status voorpaneel
+Gebruik de volgende tabel om de status te identificeren die wordt aangegeven door de LED's op het voorpaneel voor het apparaat of de EBOD-behuizing.  
 
-| Inschakelen van het systeem | Module-fout | Logische fout | Waarschuwing | Status |
+| Systeemvermogen | Modulefout | Logische fout | Alarm | Status |
 | --- | --- | --- | --- | --- |
-| Rood-geel |UIT |UIT |N/A |Netstroomtoevoer verloren, operationele op back-up power, of op Netstroom zijn aangesloten op en de controller modules zijn verwijderd. |
-| Groen |AAN |AAN |N/A |OPS deelvenster inschakelen (5s) status testen |
-| Groen |UIT |UIT |N/A |Inschakelen van alle functies die goed |
-| Groen |AAN |N/A |PCM fouttolerantie LED's, ventilator fouttolerantie LED 's |PCM schuld, ventilator fouttolerantie, boven of onder temperatuur |
-| Groen |AAN |N/A |I/o-module LED 's |Een controller module-fout |
-| Groen |AAN |N/A |N/A |Behuizing logische fout |
-| Groen |Flash |N/A |Status van de module onder leiding van de controllermodule. PCM fouttolerantie LED's, ventilator fouttolerantie LED 's |Onbekende controller moduletype is geïnstalleerd, I2C bus fout, controller module essentieel product data (VPD)-configuratiefout |
+| Rood-amber |UIT |UIT |N.v.t. |Wisselstroom verloren, werken op back-up stroom, of AC power ON en de controller modules werden verwijderd. |
+| Groen |AAN |AAN |N.v.t. |Ops-paneelaande (5s) teststatus |
+| Groen |UIT |UIT |N.v.t. |Inschakelen, alle functies goed |
+| Groen |AAN |N.v.t. |PCM fout LED's, ventilator fout LED's |Elke PCM-fout, ventilatorfout, over of onder temperatuur |
+| Groen |AAN |N.v.t. |I/O-module-LED's |Eventuele fout van de controllermodule |
+| Groen |AAN |N.v.t. |N.v.t. |Fout in de logica van de behuizing |
+| Groen |Flash |N.v.t. |Module status LED op controller module. PCM fout LED's, ventilator fout LED's |Onbekend type controllermodule geïnstalleerd, I2C-busstoring, type essentiële productgegevens (VPD)-configuratiefout |
 
-## <a name="power-cooling-module-pcm-indicator-leds"></a>Voeding, koeling module (PCM)-LED 's
-Energiebeheer koeling module (PCM)-LED's kunt u vinden op de achterkant van het primaire behuizing of EBOD behuizing op elke PCM-module. In dit onderwerp wordt beschreven hoe u de volgende LED's gebruiken voor het bewaken van de status van uw StorSimple-apparaat.  
+## <a name="power-cooling-module-pcm-indicator-leds"></a>LED's voor stroomkoelingsmodule (PCM)
+Power cooling module (PCM) indicator LED's zijn te vinden op de achterkant van de primaire behuizing of EBOD behuizing op elke PCM-module. In dit onderwerp wordt besproken hoe u de volgende LED's gebruiken om de status van uw StorSimple-apparaat te controleren.  
 
 * PCM-LED's voor de primaire behuizing
-* PCM-LED's voor de behuizing EBOD
+* PCM LED's voor de EBOD-behuizing
 
 ## <a name="pcm-leds-for-the-primary-enclosure"></a>PCM-LED's voor de primaire behuizing
-Het StorSimple-apparaat heeft een 764W PCM-module met een extra accu. De volgende afbeelding ziet u het LED-deelvenster voor het apparaat.  
+Het StorSimple-apparaat heeft een 764W PCM-module met een extra batterij. In de volgende afbeelding ziet u het LED-paneel voor het apparaat.  
 
    ![PCM-LED's op de primaire behuizing][2]
 
-LED legenda:
+LED-legende:
 
-1. Fout in Echtheidsvoorwaarde power
-2. Storing in de ventilator
-3. Accu fouttolerantie
+1. Wisselstroomstoring
+2. Ventilatormislukking
+3. Batterijstoring
 4. PCM OK
-5. DC-fout
-6. Goede accu  
+5. DC-storing
+6. Batterij goed  
 
-De status van de PCM wordt aangegeven in het venster LED. Het apparaat PCM-LED deelvenster heeft zes LED's. Vier van deze LED's weergegeven de status van de voeding en de ventilator. De resterende twee LED's geven de status van de back-upbatterij-module in de PCM. U kunt de volgende tabellen gebruiken om de status van de PCM te bepalen.  
+De status van de PCM wordt aangegeven op het LED-paneel. Het pcm LED-paneel van het apparaat heeft zes LED's. Vier van deze LED's geven de status van de voeding en de ventilator weer. De overige twee LED's geven de status van de back-upbatterijmodule in het PCM aan. U de volgende tabellen gebruiken om de status van de PCM te bepalen.  
 
-### <a name="pcm-indicator-leds-for-power-supply-and-fan"></a>PCM-LED's voor voeding en -ventilator
-| Status | PCM orde (groen) | AC-fouten (geel) | Ventilator (geel) is mislukt | DC is mislukt (geel) |
+### <a name="pcm-indicator-leds-for-power-supply-and-fan"></a>PCM-indicator LED's voor voeding en ventilator
+| Status | PCM OK (groen) | AC fail (oranje) | Ventilator fail (oranje) | DC-fail (oranje) |
 | --- | --- | --- | --- | --- |
-| Er is geen netstroom (naar behuizing) |UIT |UIT |UIT |UIT |
-| Er is geen netstroom (alleen deze PCM) |UIT |AAN |UIT |AAN |
-| AC presenteren aan PCM - OK |AAN |UIT |UIT |UIT |
-| PCM mislukt (ventilator mislukken) |UIT |UIT |AAN |N/A |
-| PCM-fouten (via amp over spanning, via een huidig) |UIT |AAN |AAN |AAN |
-| PCM (ventilator buiten tolerantie) |AAN |UIT |UIT |AAN |
-| Standby-modus |Knipperen |UIT |UIT |UIT |
-| PCM firmware downloaden |UIT |Knipperen |Knipperen |Knipperen |
+| Geen wisselstroom (naar behuizing) |UIT |UIT |UIT |UIT |
+| Geen wisselstroom (alleen dit PCM) |UIT |AAN |UIT |AAN |
+| AC aanwezig PCM ON - OK |AAN |UIT |UIT |UIT |
+| PCM mislukken (ventilator mislukken) |UIT |UIT |AAN |N.v.t. |
+| PCM-fout (over versterker, over spanning, over stroom) |UIT |AAN |AAN |AAN |
+| PCM (ventilator uit tolerantie) |AAN |UIT |UIT |AAN |
+| Stand-bymodus |Knipperen |UIT |UIT |UIT |
+| PCM-firmware downloaden |UIT |Knipperen |Knipperen |Knipperen |
 
-### <a name="pcm-indicator-leds-for-the-backup-battery"></a>PCM-LED's voor de back-upbatterij
-| Status | Accu goed (groen) | Accu fouttolerantie (geel) |
+### <a name="pcm-indicator-leds-for-the-backup-battery"></a>PCM-indicator-LED's voor de back-upbatterij
+| Status | Batterij goed (groen) | Batterijfout (oranje) |
 | --- | --- | --- |
-| Accu niet aanwezig |UIT |UIT |
-| Accu aanwezig zijn en in rekening gebracht |AAN |UIT |
-| Accu in rekening gebracht of onderhoud ontslag |Knipperen |UIT |
-| Accu 'soft' veroorzaakt (herstelbare) |UIT |Knipperen |
-| Accu "harde" fout (niet-herstelbare) |UIT |AAN |
-| Accu disarmed |Knipperen |UIT |
+| Batterij niet aanwezig |UIT |UIT |
+| Batterij aanwezig en opgeladen |AAN |UIT |
+| Acculading of onderhoudsontlading |Knipperen |UIT |
+| Batterij "zachte" fout (herstelbaar) |UIT |Knipperen |
+| Batterij "harde" fout (niet-herstelbaar) |UIT |AAN |
+| Batterij uitgeschakeld |Knipperen |UIT |
 
-## <a name="pcm-leds-for-the-ebod-enclosure"></a>PCM-LED's voor de behuizing EBOD
-De behuizing EBOD heeft een PCM 580 w bij en er geen extra accu. De PCM-Configuratiescherm voor de behuizing EBOD heeft-LED's alleen voor de voedingen en de ventilator. De volgende afbeelding ziet u deze LED's.
+## <a name="pcm-leds-for-the-ebod-enclosure"></a>PCM LED's voor de EBOD-behuizing
+De EBOD-behuizing heeft een PCM van 580W en geen extra batterij. Het PCM-paneel voor de EBOD-behuizing heeft alleen indicator-LED's voor de voedingen en de ventilator. De volgende afbeelding toont deze LED's.
 
-   ![PCM-LED's op de behuizing EBOD][3] 
+   ![PCM LED's op de EBOD-behuizing][3] 
 
-U kunt de volgende tabel gebruiken om te bepalen van de status van de PCM.  
+U de volgende tabel gebruiken om de status van de PCM te bepalen.  
 
-| Status | PCM orde (groen) | AC-fouten (geel) | Ventilator (geel) is mislukt | DC is mislukt (geel) |
+| Status | PCM OK (groen) | AC fail (oranje) | Ventilator fail (oranje) | DC-fail (oranje) |
 | --- | --- | --- | --- | --- |
-| Er is geen netstroom (naar behuizing) |UIT |UIT |UIT |UIT |
-| Er is geen netstroom (alleen deze PCM) |UIT |AAN |UIT |AAN |
-| AC presenteren PCM ON – OK |AAN |UIT |UIT |UIT |
-| PCM mislukt (ventilator mislukken) |UIT |UIT |AAN |X |
-| PCM-fouten (via amp over spanning over huidige |UIT |AAN |AAN |AAN |
-| PCM (ventilator buiten tolerantie) |AAN |UIT |UIT |AAN |
-| Stand-by-model |Knipperen |UIT |UIT |UIT |
-| PCM firmware downloaden |UIT |Knipperen |Knipperen |Knipperen |
+| Geen wisselstroom (naar behuizing) |UIT |UIT |UIT |UIT |
+| Geen wisselstroom (alleen dit PCM) |UIT |AAN |UIT |AAN |
+| AC aanwezig PCM ON – OK |AAN |UIT |UIT |UIT |
+| PCM mislukken (ventilator mislukken) |UIT |UIT |AAN |X |
+| PCM-fout (over versterker, over spanning, over stroom |UIT |AAN |AAN |AAN |
+| PCM (ventilator uit tolerantie) |AAN |UIT |UIT |AAN |
+| Stand-bymodel |Knipperen |UIT |UIT |UIT |
+| PCM-firmware downloaden |UIT |Knipperen |Knipperen |Knipperen |
 
-## <a name="controller-module-indicator-leds"></a>Controller-module-LED 's
-Het StorSimple-apparaat bevat LED's voor de primaire controller en de EBOD-controller-modules.   
+## <a name="controller-module-indicator-leds"></a>Leds van controllermodule-indicator
+Het StorSimple-apparaat bevat LED's voor de primaire controller en de EBOD-controllermodules.   
 
-### <a name="monitoring-leds-for-the-primary-controller"></a>Controle-LED's voor de primaire controller
-De volgende afbeelding kunt u de LED's op de primaire controller identificeren. (Alle onderdelen worden weergegeven om u te helpen in de afdrukstand.)  
+### <a name="monitoring-leds-for-the-primary-controller"></a>LED's controleren voor de primaire controller
+Met de volgende illustratie u de LED's op de primaire controller identificeren. (Alle componenten worden vermeld om te helpen bij oriëntatie.)  
 
-   ![Controle-LED's - primaire controller][4]
+   ![Monitoring LED's - primaire controller][4]
 
-Gebruik de volgende tabel om te bepalen of de controllermodule correct functioneert.  
+Gebruik de volgende tabel om te bepalen of de controllermodule correct werkt.  
 
-### <a name="controller-indicator-leds"></a>Controller-LED 's
-| LED | Description |
+### <a name="controller-indicator-leds"></a>Controllerindicator-LED's
+| Led | Beschrijving |
 | --- | --- |
-| ID-LED (blauw) |Geeft aan dat de module is die wordt geïdentificeerd. Als de blauwe LED op een actieve domeincontroller knippert, de controller is de actieve controller en de andere is de stand-by-controller. Zie voor meer informatie, [de actieve controller op uw apparaat identificeren](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
-| Fout met betrekking tot LED (geel) |Geeft aan dat een fout in de controller. |
-| OK LED (groen) |Onveranderlijk groen geeft aan dat de controller OK is. Knipperen groen geeft aan dat een domeincontroller VPD-configuratiefout. |
-| SAS-activiteit LED's (groen) |Onveranderlijk groen geeft aan dat een verbinding met geen huidige activiteit. Knipperen groen geeft aan dat de verbinding is lopende activiteiten. |
-| Status van de Ethernet-LED 's |Rechts wijst op een koppeling/netwerk activiteit: (onveranderlijk groen)-koppeling is actief (knipperen groen) netwerkactiviteit. Links geeft aan dat de snelheid van het netwerk: 1000 Mb/s (geel) en (groen) 100 Mb/s (uit) 10 Mb/s. Dit lampje mogelijk, afhankelijk van het Onderdeelmodel knipperen, zelfs als de netwerkinterface is niet ingeschakeld. |
-| POST-LED 's |Geeft de voortgang van de opstartinstallatiekopie aan wanneer de controller is ingeschakeld. Als het StorSimple-apparaat mislukt om op te starten, kunnen deze LED Microsoft Support identificeren van het punt in het opstartproces waarop de fout is opgetreden. |
+| ID LED (blauw) |Geeft aan dat de module wordt geïdentificeerd. Als de blauwe LED knippert op een actieve controller, dan is de controller is de actieve controller en de andere is de stand-by controller. Zie [De actieve controller op uw apparaat identificeren](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)voor meer informatie . |
+| Fout LED (oranje) |Geeft een fout in de controller aan. |
+| OK LED (groen) |Steady green geeft aan dat de controller in orde is. Knipperend groen geeft een VPD-configuratiefout van de controller aan. |
+| SAS activiteit LED's (groen) |Steady green geeft een verbinding aan zonder huidige activiteit. Knipperend groen geeft aan dat de verbinding aan de gang is. |
+| Ethernet-status-LED's |Rechterkant geeft link/netwerkactiviteit aan: (steady green) link active, (flashing green) network activity. De linkerkant geeft de netwerksnelheid aan: (geel) 1000 Mb/s, (groen) 100 Mb/s en (UIT) 10 Mb/s. Afhankelijk van het componentmodel kan dit lampje knipperen, zelfs als de netwerkinterface niet is ingeschakeld. |
+| POST LED's |Geeft de voortgang van het opstarten aan wanneer de controller is ingeschakeld. Als het StorSimple-apparaat niet wordt opgestart, helpt deze LED Microsoft Support bij het identificeren van het punt in het opstartproces waarop de storing is opgetreden. |
 
 > [!IMPORTANT]
-> Als de fout LED wordt belicht, is er een probleem met de netwerkcontroller-module die mogelijk worden opgelost door de controller opnieuw te starten. Neem contact op met Microsoft Support als dit probleem niet is opgelost wanneer u de controller opnieuw te starten.  
+> Als de fout-LED brandt, is er een probleem met de controllermodule die kan worden opgelost door de controller opnieuw op te starten. Neem contact op met Microsoft Support als het opnieuw opstarten van de controller dit probleem niet oplost.  
 > 
 > 
 
-### <a name="monitoring-leds-for-the-ebod-ebod-enclosure"></a>Controle-LED's voor de EBOD (EBOD behuizing)
-Elk van de 6 Gb/s SAS EBOD-controllers heeft LED's die de status aan te geven, zoals wordt weergegeven in de volgende afbeelding.  
+### <a name="monitoring-leds-for-the-ebod-ebod-enclosure"></a>Monitoring LED's voor de EBOD (EBOD-behuizing)
+Elk van de 6 Gb/s SAS EBOD-controllers heeft LED's die de status aangeven, zoals in de volgende afbeelding wordt weergegeven.  
 
-  ![Controle-LED's - EBOD behuizing][5]
+  ![Monitoring LED's - EBOD-behuizing][5]
 
-Gebruik de volgende tabel om te bepalen of de module EBOD-controller normaal functioneert.  
+Gebruik de volgende tabel om te bepalen of de EBOD-controllermodule normaal werkt.  
 
-### <a name="ebod-controller-module-indicator-leds"></a>EBOD-controller-module-LED 's
-| Status | I/o-module orde (groen) | I/o-module fouttolerantie (geel) | Poort hostactiviteit (groen) |
+### <a name="ebod-controller-module-indicator-leds"></a>EBOD-module-indicator-indicator LED's
+| Status | I/O module OK (groen) | I/O-modulefout (oranje) | Gasthavenactiviteit (groen) |
 | --- | --- | --- | --- |
 | Controllermodule OK |AAN |UIT |- |
-| Controller-module fouttolerantie |UIT |AAN |- |
-| Er is geen externe host-poortverbinding |- |- |UIT |
-| Externe host-poortverbinding: Er is geen activiteit |- |- |AAN |
-| Externe host-poortverbinding - activiteit |- |- |Knipperen |
-| Fout bij de metagegevens van de controller module |Knipperen |- |- |
+| Fout van de controllermodule |UIT |AAN |- |
+| Geen externe hostpoortverbinding |- |- |UIT |
+| Externe hostpoortverbinding – geen activiteit |- |- |AAN |
+| Externe hostpoortverbinding - activiteit |- |- |Knipperen |
+| Metagegevensvan controllermodule |Knipperen |- |- |
 
-## <a name="disk-drive-indicator-leds-for-the-primary-enclosure-and-ebod-enclosure"></a>Schijf-LED's voor de primaire behuizing en EBOD behuizing
-Het StorSimple-apparaat heeft schijven vindt u in zowel de primaire behuizing en de EBOD-behuizing. Elke schijf bevat een controle-LED's, zoals beschreven in deze sectie. 
+## <a name="disk-drive-indicator-leds-for-the-primary-enclosure-and-ebod-enclosure"></a>LED-indicatorvoor de primaire behuizing en EBOD-behuizing
+Het StorSimple-apparaat heeft schijven in zowel de primaire behuizing als de EBOD-behuizing. Elk schijfstation bevat bewakingsindicator-LED's, zoals beschreven in deze sectie. 
 
-Voor de schijven, de status van de schijf wordt aangegeven door een groene LED en een rood-geel-LED gekoppeld aan het begin van elke module drive-provider. De volgende afbeelding ziet u deze LED's.
+Voor de schijven wordt de status van de schijf aangegeven door een groene LED en een rood-oranje LED gemonteerd op de voorkant van elke drive carrier module. De volgende afbeelding toont deze LED's.
 
-  ![Schijf-LED 's][6]
+  ![LED's voor schijfstations][6]
 
-Gebruik de volgende tabel om de status van elke harde schijf die invloed hebben op zijn beurt op de algehele voorpaneel LED status te bepalen.  
+Gebruik de volgende tabel om de status van elk schijfstation te bepalen, wat weer van invloed is op de algemene LED-status voor het voorpaneel.  
 
-### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>Schijf-LED's voor de behuizing EBOD
-| Status | Activiteit OK LED (groen) | Fout met betrekking tot LED (rood-geel) | Ops-deelvenster LED die zijn gekoppeld |
+### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>LED's voor de Led-indicator voor de EBOD-behuizing
+| Status | Activiteit OK LED (groen) | Fout LED (rood-oranje) | LED van het deelvenster Gekoppeld ops |
 | --- | --- | --- | --- |
-| Er is geen station is geïnstalleerd |UIT |UIT |Geen |
-| Station geïnstalleerd en operationeel |Knipperen in-of uitschakelen met de activiteit |X |Geen |
-| Identiteitsset SCSI Enclosure Services (SES)-apparaat |AAN |Knipperen 1 seconde op/1 seconde uitschakelen |Geen |
-| SES apparaat fouttolerantie bit is ingesteld |AAN |AAN |Logische fout (rood) |
-| Stroomstoring besturingselement circuit |UIT |AAN |Module-fouten (rood) |
+| Geen station geïnstalleerd |UIT |UIT |Geen |
+| Drive geïnstalleerd en operationeel |Knipperen aan/uit met activiteit |X |Geen |
+| SCSI Enclosure Services (SES) apparaatidentiteitsset |AAN |Knipperend 1 seconde aan/1 seconde af |Geen |
+| SES-foutbitset voor ses-apparaten |AAN |AAN |Logische fout (rood) |
+| Storing van het stroomregelcircuit |UIT |AAN |Modulefout (rood) |
 
-## <a name="audible-alarms"></a>Hoorbaar alarm
-Een StorSimple-apparaat bevat hoorbaar alarm die zijn gekoppeld aan zowel de primaire behuizing en de EBOD-behuizing. Een hoorbaar alarm bevindt zich op het voorpaneel (ook wel bekend als in het deelvenster ops) van beide behuizingen. Hoorbaar alarm geeft aan wanneer een fouttoestand aanwezig is. De volgende voorwaarden wordt de waarschuwing te activeren:  
+## <a name="audible-alarms"></a>Hoorbare alarmen
+Een StorSimple-apparaat bevat hoorbare alarmen die zijn gekoppeld aan zowel de primaire behuizing als de EBOD-behuizing. Een hoorbaar alarm bevindt zich op het voorpaneel (ook wel bekend als het ops-paneel) van beide behuizingen. Het hoorbare alarm geeft aan wanneer er een storing aanwezig is. De volgende voorwaarden activeren het alarm:  
 
-* Ventilator schuld of fout
-* Spanning buiten het bereik
-* Boven of onder de voorwaarde temperatuur
-* Warmte overschrijding
+* Ventilatorfout of -storing
+* Spanning buiten bereik
+* Boven of onder temperatuurconditie
+* Thermische overschrijding
 * Systeemfout
 * Logische fout
-* Levering stroomstoring
-* Het verwijderen van een macht koeling module (PCM)  
+* Stroomstoring
+* Verwijdering van een stroomkoelingsmodule (PCM)  
 
-De volgende tabel beschrijft de verschillende statussen van de waarschuwing.  
+De volgende tabel beschrijft de verschillende alarmtoestanden.  
 
-### <a name="alarm-states"></a>Waarschuwing-statussen
-| Status van waarschuwing | Bewerking | Actie met knop Dempen ingedrukt |
+### <a name="alarm-states"></a>Alarmtoestanden
+| Alarmstatus | Actie | Actie met ingedrukt mute-knop |
 | --- | --- | --- |
-| S0 |Normale modus: op de achtergrond |Pieptoon twee keer |
-| S1 |Fout-modus: 1 seconde op/1 seconde uitschakelen |Overgang naar S2 of S3 (Zie de opmerkingen) |
-| S2 |Modus herinneren: onregelmatige geluid |Geen |
-| S3 |Zacht modus: op de achtergrond |Geen |
-| S4 |Kritieke fout modus: continue alarm |Niet beschikbaar: dempen niet actief |
+| S0 |Normale modus: stil |Piep twee keer |
+| S1 |Foutmodus: 1 seconde aan/1 seconde uit |Overgang naar S2 of S3 (zie notities) |
+| S2 |Remind-modus: intermitterende pieptoon |Geen |
+| S3 |Gedempte modus: stil |Geen |
+| S4 |Kritieke foutmodus: continu alarm |Niet beschikbaar: niet actief dempen |
 
 > [!NOTE]
-> * Waarschuwing status S1, als u niet op dempen binnen twee minuten de status automatisch wordt overgezet naar S2 of S3.  
-> * Waarschuwing Staten S1 naar S4 terug naar S0 nadat de fouttoestand is uitgeschakeld.  
-> * Kritieke fout staat S4 kan worden ingevoerd van een andere staat.  
+> * Als u in alarmtoestand S1 niet binnen 2 minuten op dempen drukt, schakelt de status automatisch over naar S2 of S3.  
+> * Alarmtoestanden S1 naar S4 keren terug naar S0 nadat de storing is opgelost.  
+> * Kritieke foutstatus S4 kan vanuit elke andere status worden ingevoerd.  
 
 
-U kunt de hoorbaar alarm dempen door te drukken dempen ops in het venster. Automatische dempen gebeurt na twee minuten als de dempen niet handmatig wordt beheerd. Wanneer de waarschuwing gedempt is, blijft het een gesprek met korte onregelmatige pieptoon om aan te geven dat het probleem blijft optreden. De waarschuwing niet op de achtergrond wanneer alle problemen zijn uitgeschakeld.
+U het hoorbare alarm dempen door op de mute-knop op het ops-paneel te drukken. Automatisch dempen gebeurt na twee minuten als de mute-schakelaar niet handmatig wordt bediend. Wanneer het alarm wordt gedempt, blijft het klinken met korte intermitterende piepjes om aan te geven dat er nog steeds een probleem bestaat. Het alarm zal stil zijn wanneer alle problemen zijn opgelost.
 
-De volgende tabel beschrijft de verschillende voorwaarden voor de waarschuwing.
+De volgende tabel beschrijft de verschillende alarmomstandigheden.
 
-### <a name="alarm-conditions"></a>Waarschuwing-voorwaarden
-| Status | Severity | Waarschuwing | OPS deelvenster LED |
+### <a name="alarm-conditions"></a>Alarmomstandigheden
+| Status | Severity | Alarm | LED-paneel ops |
 | --- | --- | --- | --- |
-| PCM alarm, verlies van DC-stroom vanaf een enkele PCM |Fout: Er is geen verlies van redundantie |S1 |Module-fout |
-| PCM alarm, verlies van DC-stroom vanaf een enkele PCM |Fout: verlies van redundantie |S1 |Module-fout |
-| PCM-ventilator mislukt |Fout: verlies van redundantie |S1 |Module-fout |
-| SBB-module gedetecteerd PCM-fout |Fouttolerantie |S1 |Module-fout |
-| PCM verwijderd |Configuratiefout |Geen |Module-fout |
-| Behuizing-configuratiefout |Fout: kritiek |S1 |Module-fout |
-| Lage temperatuur waarschuwing |Waarschuwing |S1 |Module-fout |
-| Hoogste temperatuur waarschuwing |Waarschuwing |S1 |Module-fout |
-| Over temperatuur |Fout: kritiek |S1 |Module-fout |
-| I2C bus fout |Fout: verlies van redundantie |S1 |Module-fout |
-| OPS deelvenster communicatiefout (I2C) |Fout: kritiek |S1 |Module-fout |
-| Controllerfout |Fout: kritiek |S1 |Module-fout |
-| SBB interface module fouttolerantie |Fout: kritiek |S1 |Module-fout |
-| Fout in SBB interface module – geen werkende modules resterend |Fout: kritiek |S4 |Module-fout |
-| SBB interfacemodule verwijderd |Waarschuwing |Geen |Module-fout |
-| Besturingselement voor station stroomstoring |Waarschuwing: zonder verlies van station power |S1 |Module-fout |
-| Besturingselement voor station stroomstoring |Fout: essentiële; stroomstoring station |S1 |Module-fout |
-| Station verwijderd |Waarschuwing |Geen |Module-fout |
-| Onvoldoende acculading beschikbaar |Waarschuwing |Geen |Module-fout |
+| PCM alert – verlies van DC-stroom door één PCM |Fout – geen verlies van redundantie |S1 |Modulefout |
+| PCM alert – verlies van DC-stroom door één PCM |Fout – ontslagverlies |S1 |Modulefout |
+| PCM-ventilator mislukt |Fout – ontslagverlies |S1 |Modulefout |
+| SBB-module ontdekt PCM-fout |Schuld |S1 |Modulefout |
+| PCM verwijderd |Configuratiefout |Geen |Modulefout |
+| Fout in de configuratie van de behuizing |Fout – kritiek |S1 |Modulefout |
+| Waarschuwing lage waarschuwingstemperatuur |Waarschuwing |S1 |Modulefout |
+| Hoge waarschuwingstemperatuurwaarschuwing |Waarschuwing |S1 |Modulefout |
+| Over temperatuuralarm |Fout – kritiek |S1 |Modulefout |
+| I2C bus storing |Fout – ontslagverlies |S1 |Modulefout |
+| Communicatiefout van het deelvenster Ops (I2C) |Fout – kritiek |S1 |Modulefout |
+| Controllerfout |Fout – kritiek |S1 |Modulefout |
+| SBB-interfacemodulefout |Fout – kritiek |S1 |Modulefout |
+| SBB-interfacemodulefout – Geen werkende modules meer over |Fout – kritiek |S4 |Modulefout |
+| SBB-interfacemodule verwijderd |Waarschuwing |Geen |Modulefout |
+| Schijfstoring |Waarschuwing – geen verlies van aandrijfvermogen |S1 |Modulefout |
+| Schijfstoring |Fout – kritiek; verlies van aandrijfvermogen |S1 |Modulefout |
+| Station verwijderd |Waarschuwing |Geen |Modulefout |
+| Onvoldoende stroom beschikbaar |Waarschuwing |geen |Modulefout |
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [StorSimple hardware-onderdelen en de status](storsimple-8000-monitor-hardware-status.md).
+Meer informatie over [StorSimple-hardwarecomponenten en -status](storsimple-8000-monitor-hardware-status.md).
 
 [1]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE01.png
 [2]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE02.png

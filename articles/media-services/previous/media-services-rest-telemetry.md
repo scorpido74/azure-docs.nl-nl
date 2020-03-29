@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services telemetrie configureren met REST | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u de Azure Media Services telemetrie gebruikt met behulp van REST API..
+title: Azure Media Services-telemetrie configureren met REST| Microsoft Documenten
+description: In dit artikel ziet u hoe u de telemetrie van Azure Media Services gebruiken met REST API..
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,36 +15,36 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 4cf2bc919ecb8b39a23b23df95a6f37396f50603
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774870"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-rest"></a>Azure Media Services telemetrie configureren met REST
+# <a name="configuring-azure-media-services-telemetry-with-rest"></a>Azure Media Services-telemetrie configureren met REST
 
-In dit onderwerp worden algemene stappen beschreven die u kunt uitvoeren bij het configureren van de telemetrie van Azure Media Services (AMS) met behulp van REST API. 
+In dit onderwerp worden algemene stappen beschreven die u nemen bij het configureren van de AMS-telemetrie (Azure Media Services) met behulp van REST API. 
 
 >[!NOTE]
->Zie het onderwerp [overzicht](media-services-telemetry-overview.md) voor gedetailleerde uitleg over de AMS-telemetrie en hoe u deze kunt gebruiken.
+>Voor de gedetailleerde uitleg van wat AMS telemetrie is en hoe u deze consumeren, raadpleegt u het [overzichtsonderwerp.](media-services-telemetry-overview.md)
 
-De stappen die in dit onderwerp worden beschreven, zijn:
+De stappen beschreven in dit onderwerp zijn:
 
-- Ophalen van het opslag account dat is gekoppeld aan een Media Services account
-- De meldings eindpunten ophalen
-- Een meldings eindpunt maken voor bewaking. 
+- Het opslagaccount opmaken dat is gekoppeld aan een Media Services-account
+- De meldingseindpunten ontvangen
+- Een meldingseindpunt voor controle maken. 
 
-    Als u een meldings eindpunt wilt maken, stelt u de EndPointType in op AzureTable (2) en endPontAddress ingesteld op de opslag tabel (bijvoorbeeld https:\//telemetryvalidationstore.table.core.windows.net/).
+    Als u een meldingseindpunt wilt maken, stelt u het EndPointType in op AzureTable (2) en het end-Up-Adres dat is ingesteld op de opslagtabel (bijvoorbeeld https:\//telemetryvalidationstore.table.core.windows.net/).
   
-- De bewakings configuraties ophalen
+- De bewakingsconfiguraties oppakken
 
-    Een bewakings configuratie-instellingen maken voor de services die u wilt bewaken. Er zijn niet meer dan één bewakings configuratie-instellingen toegestaan. 
+    Maak een bewakingsconfiguratie-instellingen voor de services die u wilt controleren. Er zijn niet meer dan één bewakingsconfiguratie-instellingen toegestaan. 
 
-- Een bewakings configuratie toevoegen
+- Een bewakingsconfiguratie toevoegen
 
 
  
-## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Het opslag account ophalen dat is gekoppeld aan een Media Services-account
+## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Het opslagaccount opmaken dat is gekoppeld aan een Media Services-account
 
 ### <a name="request"></a>Aanvraag
 
@@ -72,7 +72,7 @@ De stappen die in dit onderwerp worden beschreven, zijn:
     
     {"d":{"results":[{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.StorageAccount"},"Name":"telemetryvalidationstore","IsDefault":true,"BytesUsed":null}]}}
 
-## <a name="get-the-notification-endpoints"></a>De meldings eindpunten ophalen
+## <a name="get-the-notification-endpoints"></a>De meldingseindpunten ophalen
 
 ### <a name="request"></a>Aanvraag
 
@@ -105,7 +105,7 @@ De stappen die in dit onderwerp worden beschreven, zijn:
         }
     }
  
-## <a name="create-a-notification-endpoint-for-monitoring"></a>Een meldings eindpunt maken voor bewaking
+## <a name="create-a-notification-endpoint-for-monitoring"></a>Een meldingseindpunt maken voor bewaking
 
 ### <a name="request"></a>Aanvraag
 
@@ -126,7 +126,7 @@ De stappen die in dit onderwerp worden beschreven, zijn:
     }
 
 > [!NOTE]
-> Vergeet niet om de waarde ' https:\//telemetryvalidationstore.table.core.windows.net ' te wijzigen in uw opslag account.
+> Vergeet niet om de waarde\/'https: /telemetryvalidationstore.table.core.windows.net' te wijzigen in uw opslagaccount.
 
 ### <a name="response"></a>Antwoord
 
@@ -147,7 +147,7 @@ De stappen die in dit onderwerp worden beschreven, zijn:
     
     {"d":{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.NotificationEndPoint"},"Id":"nb:nepid:UUID:76bb4faf-ea29-4815-840a-9a8e20102fc4","Name":"monitoring","Created":"\/Date(1449033042667)\/","EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/","EndPointType":2}}
  
-## <a name="get-the-monitoring-configurations"></a>De bewakings configuraties ophalen
+## <a name="get-the-monitoring-configurations"></a>De bewakingsconfiguraties oppakken
 
 ### <a name="request"></a>Aanvraag
 
@@ -177,7 +177,7 @@ De stappen die in dit onderwerp worden beschreven, zijn:
     
     {"d":{"results":[]}}
 
-## <a name="add-a-monitoring-configuration"></a>Een bewakings configuratie toevoegen
+## <a name="add-a-monitoring-configuration"></a>Een bewakingsconfiguratie toevoegen
 
 ### <a name="request"></a>Aanvraag
 
@@ -233,9 +233,9 @@ De stappen die in dit onderwerp worden beschreven, zijn:
     Content-Type: application/json; charset=utf-8
     Host: wamsbnp1clus001rest-hs.cloudapp.net
 
-## <a name="consuming-telemetry-information"></a>Informatie over telemetrie gebruiken
+## <a name="consuming-telemetry-information"></a>Telemetrie-informatie consumeren
 
-Zie dit onderwerp voor meer informatie over [het](media-services-telemetry-overview.md) gebruiken van telemetriegegevens.
+Zie [dit](media-services-telemetry-overview.md) onderwerp voor informatie over het consumeren van telemetriegegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 

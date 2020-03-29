@@ -1,6 +1,6 @@
 ---
-title: Splunk integreren met behulp van Azure Monitor | Microsoft Docs
-description: Meer informatie over het integreren van Azure Active Directory-logboeken met SumoLogic met behulp van Azure Monitor
+title: Splunk integreren met Azure Monitor | Microsoft Documenten
+description: Meer informatie over het integreren van Azure Active Directory-logboeken met SumoLogic met Azure Monitor
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,44 +18,44 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2eda3643a7b1a341c7ed664dbfea933145f1f927
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78968714"
 ---
-# <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>Procedure: Azure Active Directory-logboeken integreren met Splunk met behulp van Azure Monitor
+# <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>How to: Azure Active Directory logs integreren met Splunk met Azure Monitor
 
-In dit artikel leert u hoe u Azure Active Directory (Azure AD)-Logboeken kunt integreren met Splunk met behulp van Azure Monitor. U stuurt de logboeken eerst naar een Azure Event Hub en integreert de Event Hub vervolgens met Splunk.
+In dit artikel leert u hoe u Azure Active Directory -logboeken (Azure AD) integreert met Splunk met Azure Monitor. U routeert de logboeken eerst naar een Azure-gebeurtenishub en vervolgens de gebeurtenishub met Splunk.
 
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt het volgende nodig om deze functie te gebruiken:
 
-- Een Azure-Event Hub die Azure AD-activiteiten Logboeken bevat. Meer informatie over het [streamen van uw activiteiten logboeken naar een event hub](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
+- Een Azure-gebeurtenishub die Azure AD-activiteitslogboeken bevat. Meer informatie over het [streamen van uw activiteitslogboeken naar een gebeurtenishub](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
 
--  De [Microsoft Azure toevoegen aan voor Splunk](https://splunkbase.splunk.com/app/3757/). 
+-  De [Microsoft Azure Add on voor Splunk](https://splunkbase.splunk.com/app/3757/). 
 
 ## <a name="integrate-azure-active-directory-logs"></a>Azure Active Directory-logboeken integreren 
 
-1. Open uw Splunk-exemplaar en selecteer **gegevens overzicht**.
+1. Open de instantie Splunk en selecteer **Gegevensoverzicht**.
 
-    ![De knop gegevens overzicht](./media/howto-integrate-activity-logs-with-splunk/DataSummary.png)
+    ![De knop 'Gegevensoverzicht'](./media/howto-integrate-activity-logs-with-splunk/DataSummary.png)
 
-2. Selecteer het tabblad **Sourcetypes** en selecteer vervolgens **Amal: aadal: audit**
+2. Selecteer het tabblad **Brontypen** en selecteer **vervolgens amal: aadal:audit**
 
-    ![Het tabblad gegevens overzicht Sourcetypes](./media/howto-integrate-activity-logs-with-splunk/sourcetypeaadal.png)
+    ![Het tabblad Brontypen voor gegevensoverzicht](./media/howto-integrate-activity-logs-with-splunk/sourcetypeaadal.png)
 
-    De activiteiten logboeken van Azure AD worden weer gegeven in de volgende afbeelding:
+    De Azure AD-activiteitslogboeken worden weergegeven in de volgende afbeelding:
 
     ![Activiteitenlogboeken](./media/howto-integrate-activity-logs-with-splunk/activitylogs.png)
 
 > [!NOTE]
-> Als u een invoeg toepassing niet kunt installeren in uw Splunk-exemplaar (bijvoorbeeld als u een proxy gebruikt of wordt uitgevoerd op de Splunk-Cloud), kunt u deze gebeurtenissen door sturen naar de HTTP-gebeurtenis verzamelaar van Splunk. Als u dit wilt doen, gebruikt u deze [Azure-functie](https://github.com/Microsoft/AzureFunctionforSplunkVS), die wordt geactiveerd door nieuwe berichten in de Event hub. 
+> Als u een add-on niet installeren in uw Splunk-exemplaar (bijvoorbeeld als u een proxy gebruikt of op Splunk Cloud draait), u deze gebeurtenissen doorsturen naar de Splunk HTTP-gebeurtenisverzamelaar. Gebruik hiervoor deze [Azure-functie](https://github.com/Microsoft/AzureFunctionforSplunkVS), die wordt geactiveerd door nieuwe berichten in de gebeurtenishub. 
 >
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Interpret audit logs schema in Azure Monitor](reference-azure-monitor-audit-log-schema.md) (Auditlogboekenschema interpreteren in Azure Monitor)
+* [Controlelogboekenschema interpreteren in Azure Monitor](reference-azure-monitor-audit-log-schema.md)
 * [Interpret sign-in logs schema in Azure Monitor](reference-azure-monitor-sign-ins-log-schema.md) (Aanmeldingslogboekenschema interpreteren in Azure Monitor)
 * [Veelgestelde vragen en bekende problemen](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

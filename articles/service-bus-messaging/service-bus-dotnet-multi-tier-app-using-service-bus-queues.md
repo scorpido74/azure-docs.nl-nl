@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: d4d837bb49e4ce80340d59f8a01334f3c80ff413
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60403096"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>.NET-toepassing met meerdere lagen die Azure Service Bus-wachtrijen gebruikt
@@ -33,7 +33,7 @@ U leert het volgende:
 
 In deze zelfstudie zult u de toepassing met meerdere lagen ontwikkelen en uitvoeren in een cloudservice van Azure. De front-end is een ASP.NET MVC-webrol en de back-end is een werkrol die gebruikmaakt van een Service Bus-wachtrij. U kunt dezelfde toepassing met meerdere lagen maken met de front-end als een webproject dat wordt geïmplementeerd op een Azure-website in plaats van een cloudservice. U kunt ook de zelfstudie [.NET on-premises/hybride cloud-toepassing](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md) gebruiken.
 
-De volgende schermafbeelding ziet u de voltooide toepassing.
+De volgende schermafbeelding toont de voltooide toepassing.
 
 ![][0]
 
@@ -50,7 +50,7 @@ Dit communicatiemechanisme heeft verschillende voordelen ten opzichte van Direct
 
 * **Tijdelijke ontkoppeling.** Met het asynchrone berichtenpatroon hoeven producenten en consumenten niet op hetzelfde moment online te zijn. Service Bus slaat de berichten veilig op totdat de verbruikende partij gereed is om de berichten te ontvangen. Hierdoor kunnen de onderdelen van de gedistribueerde toepassing worden losgekoppeld - hetzij vrijwillig, bijvoorbeeld voor onderhoud, hetzij vanwege het vastlopen van een onderdeel - zonder dat dit van invloed is op het systeem als geheel. Bovendien hoeft de betreffende toepassing mogelijk alleen online te komen op bepaalde tijdstippen gedurende de dag.
 * **Herverdeling van taken.** In veel toepassingen varieert de systeembelasting gedurende de tijd, terwijl de benodigde verwerkingstijd voor elke werkeenheid doorgaans constant blijft. Door een wachtrij tussen producenten en consumenten van berichten te plaatsen, hoeft de verbruikende toepassing (de werkrol) alleen te worden ingericht voor het opvangen van een gemiddelde belasting in plaats van een piekbelasting. De lengte van de wachtrij neemt toe of af, al naargelang het binnenkomende verkeer. Dit betekent een rechtstreekse besparing op de kosten voor de benodigde infrastructuur om de toepassingsbelasting te verwerken.
-* **Taakverdeling.** Naarmate het verkeer toeneemt, kunnen meer werkprocessen worden toegevoegd om uit de wachtrij te lezen. Elk bericht worden door slechts één van de werkprocessen verwerkt. Bovendien biedt deze pull-gebaseerde taakverdeling optimaal gebruik van de werkmachines, zelfs als de verwerkingskracht van de werkmachines verschilt en ze op eigen maximale snelheid berichten ophalen. Dit patroon wordt vaak aangeduid als het *concurrerend consumenten*-patroon.
+* **Load balancing.** Naarmate het verkeer toeneemt, kunnen meer werkprocessen worden toegevoegd om uit de wachtrij te lezen. Elk bericht worden door slechts één van de werkprocessen verwerkt. Bovendien biedt deze pull-gebaseerde taakverdeling optimaal gebruik van de werkmachines, zelfs als de verwerkingskracht van de werkmachines verschilt en ze op eigen maximale snelheid berichten ophalen. Dit patroon wordt vaak aangeduid als het *concurrerend consumenten*-patroon.
   
   ![][2]
 
@@ -58,7 +58,7 @@ In de volgende gedeelten wordt de code besproken waarmee deze architectuur wordt
 
 ## <a name="create-a-namespace"></a>Een naamruimte maken
 
-De eerste stap is het maken van een *naamruimte*, en het verkrijgen van een [Shared Access Signature (SAS)](service-bus-sas.md) voor die naamruimte. Een naamruimte biedt een toepassingsbegrenzing voor elke toepassing die toegankelijk is via Service Bus. Er wordt automatisch een SAS-sleutel gegenereerd wanneer er een naamruimte wordt gemaakt. De combinatie van naamruimte en SAS-sleutel biedt Service Bus de benodigde referenties voor het verifiëren van toegang tot een toepassing.
+De eerste stap is het maken van een *naamruimte*en het verkrijgen van een [SAS-sleutel (Shared Access Signature)](service-bus-sas.md) voor die naamruimte. Een naamruimte biedt een toepassingsbegrenzing voor elke toepassing die toegankelijk is via Service Bus. Er wordt automatisch een SAS-sleutel gegenereerd wanneer er een naamruimte wordt gemaakt. De combinatie van naamruimte en SAS-sleutel biedt Service Bus de benodigde referenties voor het verifiëren van toegang tot een toepassing.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -177,7 +177,7 @@ In dit gedeelte maakt u de verschillende pagina's die door uw toepassing worden 
 6. Een dialoogvenster voor het maken van de weergave wordt weergegeven. Kies **Maken** in de lijst **Sjabloon**. Selecteer in de lijst **Modelklasse** de klasse **OnlineOrder**.
    
    ![][15]
-7. Klik op **Toevoegen**.
+7. Klik op**toevoegen**.
 8. Wijzig nu de weergegeven naam van uw toepassing. Dubbelklik in **Solution Explorer** op het bestand **Views\Shared\\_Layout.cshtml** om dit te openen in de Visual Studio-editor.
 9. Vervang alle instanties van **Mijn ASP.NET-toepassing** door **Producten van Northwind Traders**.
 10. Verwijder de koppelingen **Start**, **Info** en **Contact**. Verwijder de gemarkeerde code:

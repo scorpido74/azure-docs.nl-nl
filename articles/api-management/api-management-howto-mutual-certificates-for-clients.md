@@ -1,7 +1,7 @@
 ---
-title: Api's beveiligen met verificatie op basis van client certificaten in API Management
+title: Beveiligde API's met verificatie clientcertificaat in API-beheer
 titleSuffix: Azure API Management
-description: Meer informatie over het beveiligen van de toegang tot Api's met behulp van client certificaten
+description: Meer informatie over het beveiligen van toegang tot API's met clientcertificaten
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,31 +14,31 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76713148"
 ---
-# <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Api's beveiligen met verificatie op basis van client certificaten in API Management
+# <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API's beveiligen met behulp van verificatie via clientcertificaten in API Management
 
-API Management biedt de mogelijkheid om de toegang tot Api's (client naar API Management) te beveiligen met behulp van client certificaten. U kunt het inkomende certificaat valideren en certificaat eigenschappen controleren op basis van de gewenste waarden met behulp van beleids expressies.
+API-beheer biedt de mogelijkheid om toegang tot API's (d.w.z. client-naar-API-beheer) te beveiligen met behulp van clientcertificaten. U binnenkomend certificaat valideren en certificaateigenschappen controleren op de gewenste waarden met behulp van beleidsexpressies.
 
-Voor informatie over het beveiligen van de toegang tot de back-end-service van een API met behulp van client certificaten (API Management naar back-end), raadpleegt u [back-end-services beveiligen met verificatie op basis van client certificaten](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
-
-> [!IMPORTANT]
-> Als u client certificaten wilt ontvangen en controleren via HTTP/2 in de lagen ontwikkelaar, Basic, Standard of Premium, moet u de instelling ' onderhandelen over client certificaat ' op de Blade ' aangepaste domeinen ' inschakelen, zoals hieronder wordt weer gegeven.
-
-![Onderhandelen over client certificaat](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
+Zie [Back-endservices beveiligen met clientcertificaatverificatie](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates) voor informatie over het beveiligen van toegang tot de back-endservice van een API met clientcertificaten (d.w.z. API-beheer naar backend)
 
 > [!IMPORTANT]
-> Als u client certificaten wilt ontvangen en verifiëren in de laag verbruik, moet u de instelling client certificaat aanvragen inschakelen op de Blade aangepaste domeinen, zoals hieronder wordt weer gegeven.
+> Als u clientcertificaten wilt ontvangen en verifiëren via HTTP/2 in de lagen Ontwikkelaars, Basic, Standard of Premium, moet u de instelling 'Onderhandelen over clientcertificaat' inschakelen op het blad 'Aangepaste domeinen', zoals hieronder wordt weergegeven.
 
-![Client certificaat aanvragen](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
+![Onderhandelen over clientcertificaat](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
-## <a name="checking-the-issuer-and-subject"></a>De uitgever en het onderwerp controleren
+> [!IMPORTANT]
+> Als u clientcertificaten in de categorie Verbruik wilt ontvangen en verifiëren, moet u de instelling Clientcertificaat aanvragen inschakelen op het blad 'Aangepaste domeinen', zoals hieronder wordt weergegeven.
 
-Onder beleids regels kunnen worden geconfigureerd om de uitgever en het onderwerp van een client certificaat te controleren:
+![Clientcertificaat aanvragen](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
+
+## <a name="checking-the-issuer-and-subject"></a>Controle van de uitgevende instelling en het onderwerp
+
+Onderstaand beleid kan worden geconfigureerd om de uitgever te controleren en het onderwerp van een clientcertificaat:
 
 ```xml
 <choose>
@@ -51,12 +51,12 @@ Onder beleids regels kunnen worden geconfigureerd om de uitgever en het onderwer
 ```
 
 > [!NOTE]
-> Als u het controleren van de lijst met ingetrokken certificaten wilt uitschakelen, gebruikt u `context.Request.Certificate.VerifyNoRevocation()` in plaats van `context.Request.Certificate.Verify()`.
-> Als het client certificaat zelfondertekend is, moeten er basis (of tussenliggende) CA-certificaten worden [geüpload](api-management-howto-ca-certificates.md) naar API Management voor `context.Request.Certificate.Verify()` en `context.Request.Certificate.VerifyNoRevocation()` te kunnen werken.
+> Het gebruik `context.Request.Certificate.VerifyNoRevocation()` van de intrekkingslijst voor het controleren van certificaten uitschakelen in plaats van `context.Request.Certificate.Verify()`.
+> Als clientcertificaat zelf is ondertekend, moeten root (of intermediaire) CA-certificaat(s) worden [geüpload](api-management-howto-ca-certificates.md) naar API-beheer voor `context.Request.Certificate.Verify()` en `context.Request.Certificate.VerifyNoRevocation()` naar het werk.
 
-## <a name="checking-the-thumbprint"></a>De vinger afdruk controleren
+## <a name="checking-the-thumbprint"></a>De duimafdruk controleren
 
-Onder beleids regels kunnen worden geconfigureerd om de vinger afdruk van een client certificaat te controleren:
+Hieronder u de duimafdruk van een clientcertificaat controleren:
 
 ```xml
 <choose>
@@ -69,12 +69,12 @@ Onder beleids regels kunnen worden geconfigureerd om de vinger afdruk van een cl
 ```
 
 > [!NOTE]
-> Als u het controleren van de lijst met ingetrokken certificaten wilt uitschakelen, gebruikt u `context.Request.Certificate.VerifyNoRevocation()` in plaats van `context.Request.Certificate.Verify()`.
-> Als het client certificaat zelfondertekend is, moeten er basis (of tussenliggende) CA-certificaten worden [geüpload](api-management-howto-ca-certificates.md) naar API Management voor `context.Request.Certificate.Verify()` en `context.Request.Certificate.VerifyNoRevocation()` te kunnen werken.
+> Het gebruik `context.Request.Certificate.VerifyNoRevocation()` van de intrekkingslijst voor het controleren van certificaten uitschakelen in plaats van `context.Request.Certificate.Verify()`.
+> Als clientcertificaat zelf is ondertekend, moeten root (of intermediaire) CA-certificaat(s) worden [geüpload](api-management-howto-ca-certificates.md) naar API-beheer voor `context.Request.Certificate.Verify()` en `context.Request.Certificate.VerifyNoRevocation()` naar het werk.
 
-## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Een vinger afdruk controleren op certificaten die zijn geüpload naar API Management
+## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Een duimafdruk controleren op certificaten die zijn geüpload naar API-beheer
 
-In het volgende voor beeld ziet u hoe u de vinger afdruk van een client certificaat controleert op certificaten die zijn geüpload naar API Management:
+In het volgende voorbeeld ziet u hoe u de duimafdruk van een clientcertificaat controleren op certificaten die zijn geüpload naar API-beheer:
 
 ```xml
 <choose>
@@ -88,16 +88,16 @@ In het volgende voor beeld ziet u hoe u de vinger afdruk van een client certific
 ```
 
 > [!NOTE]
-> Als u het controleren van de lijst met ingetrokken certificaten wilt uitschakelen, gebruikt u `context.Request.Certificate.VerifyNoRevocation()` in plaats van `context.Request.Certificate.Verify()`.
-> Als het client certificaat zelfondertekend is, moeten er basis (of tussenliggende) CA-certificaten worden [geüpload](api-management-howto-ca-certificates.md) naar API Management voor `context.Request.Certificate.Verify()` en `context.Request.Certificate.VerifyNoRevocation()` te kunnen werken.
+> Het gebruik `context.Request.Certificate.VerifyNoRevocation()` van de intrekkingslijst voor het controleren van certificaten uitschakelen in plaats van `context.Request.Certificate.Verify()`.
+> Als clientcertificaat zelf is ondertekend, moeten root (of intermediaire) CA-certificaat(s) worden [geüpload](api-management-howto-ca-certificates.md) naar API-beheer voor `context.Request.Certificate.Verify()` en `context.Request.Certificate.VerifyNoRevocation()` naar het werk.
 
 > [!TIP]
-> Probleem met het publiceren van het client certificaat dat in dit [artikel](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) wordt beschreven, kan zich op verschillende manieren manifesteren, zoals het blok keren van aanvragen, de aanvraag resulteert in `403 Forbidden` status code na een time-out, `context.Request.Certificate` is `null`. Dit probleem is doorgaans van invloed op `POST` en `PUT` aanvragen met een inhouds lengte van ongeveer 60KB of groter.
-> Ga als volgt te werk om te voor komen dat dit probleem optreedt bij het inschakelen van de instelling ' onderhandelen over client certificaat ' voor gewenste hostnamen op de Blade ' aangepaste domeinen ', zoals hieronder wordt weer gegeven. Deze functie is niet beschikbaar in de laag verbruik.
+> Client certificaat impasse probleem beschreven in dit [artikel](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) kan zich manifesteren op verschillende `403 Forbidden` manieren, bijvoorbeeld `context.Request.Certificate` aanvragen `null`bevriezen, verzoeken resulteren in statuscode na timing uit, is . Dit probleem heeft `POST` `PUT` meestal invloed op en aanvragen met inhoudslengte van ongeveer 60 KB of groter.
+> Als u wilt voorkomen dat dit probleem optreedt, schakelt u de instelling 'Onderhandelen over clientcertificaat' in voor de gewenste hostnamen op het blad 'Aangepaste domeinen', zoals hieronder wordt weergegeven. Deze functie is niet beschikbaar in de laag Verbruik.
 
-![Onderhandelen over client certificaat](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
+![Onderhandelen over clientcertificaat](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
--   [Back-end-services beveiligen met verificatie op basis van client certificaten](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+-   [Back-endservices beveiligen met verificatie van clientcertificaat](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
 -   [Certificaten uploaden](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)

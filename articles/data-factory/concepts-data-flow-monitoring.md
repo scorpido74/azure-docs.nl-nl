@@ -1,6 +1,6 @@
 ---
-title: Visuele bewaking van gegevens stroom toewijzen
-description: Azure Data Factory gegevens stromen visueel bewaken
+title: Gegevensstroom visuele bewaking toewijzen
+description: Azure Data Factory-gegevensstromen visueel controleren
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
@@ -9,55 +9,55 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
 ms.openlocfilehash: 93d92286fa9eecbc64229059274cc8f9ed99e21e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74928284"
 ---
-# <a name="monitor-data-flows"></a>Gegevens stromen bewaken
+# <a name="monitor-data-flows"></a>Gegevensstromen controleren
 
 
 
-Nadat u klaar bent met het maken en opsporen van fouten in uw gegevens stroom, moet u de gegevens stroom plannen om uit te voeren volgens een schema in de context van een pijp lijn. U kunt de pijp lijn plannen vanuit Azure Data Factory met behulp van triggers. U kunt ook de optie nu activeren van de opbouw functie voor het Azure Data Factory pijp lijn gebruiken om een uitvoering met één uitvoering uit te voeren om uw gegevens stroom in de pijplijn context te testen.
+Nadat u uw gegevensstroom hebt voltooid en debuggen, wilt u uw gegevensstroom plannen om volgens een planning in de context van een pijplijn uit te voeren. U de pijplijn plannen vanuit Azure Data Factory met Triggers. U de optie Trigger Now van de Azure Data Factory Pipeline Builder gebruiken om een runsuitvoering uit te voeren om uw gegevensstroom binnen de pijplijncontext te testen.
 
-Wanneer u de pijp lijn uitvoert, kunt u de pijp lijn en alle activiteiten in de pijp lijn bewaken, met inbegrip van de activiteit gegevens stroom. Klik op het pictogram monitor in het deel venster aan de linkerkant Azure Data Factory gebruikers interface. Er wordt een scherm weer gegeven dat er ongeveer als volgt uitziet. Met de gemarkeerde pictogrammen kunt u inzoomen op de activiteiten in de pijp lijn, met inbegrip van de activiteit gegevens stroom.
+Wanneer u uw pijplijn uitvoert, u de pijplijn en alle activiteiten in de pijplijn controleren, inclusief de activiteit Gegevensstroom. Klik op het monitorpictogram in het linkerazure datafactory-gebruikersinterfacepaneel. U ziet een scherm vergelijkbaar met de onderstaande. Met de gemarkeerde pictogrammen u inzoomen op de activiteiten in de pijplijn, inclusief de activiteit Gegevensstroom.
 
-![Gegevensstroom controleren](media/data-flow/mon001.png "Bewaking gegevensstroom")
+![Gegevensstroombewaking](media/data-flow/mon001.png "Bewaking gegevensstroom")
 
-U ziet de statistieken op dit niveau en ook de uitvoerings tijden en de status. De run-ID op het activiteit niveau wijkt af van de run-ID op het pijplijn niveau. De uitvoerings-ID op het vorige niveau is voor de pijp lijn. Als u op de bril klikt, krijgt u gedetailleerde informatie over de uitvoering van de gegevens stroom.
+U ziet statistieken op dit niveau, inclusief de looptijden en status. De run-id op het activiteitsniveau is anders dan de run-id op pijplijnniveau. De run-id op het vorige niveau is voor de pijplijn. Als u op de bril klikt, krijgt u diepgaande details over de uitvoering van uw gegevensstroom.
 
-![Gegevensstroom controleren](media/data-flow/mon002.png "Bewaking gegevensstroom")
+![Gegevensstroombewaking](media/data-flow/mon002.png "Bewaking gegevensstroom")
 
-Wanneer u zich in de weer gave van het grafische knoop punt bevindt, ziet u een vereenvoudigde versie van uw gegevens stroom diagram.
+Wanneer u zich in de grafische knooppuntbewakingsweergave bevindt, ziet u een vereenvoudigde weergaveversie van uw gegevensstroomgrafiek.
 
-![Gegevensstroom controleren](media/data-flow/mon003.png "Bewaking gegevensstroom")
+![Gegevensstroombewaking](media/data-flow/mon003.png "Bewaking gegevensstroom")
 
-## <a name="view-data-flow-execution-plans"></a>Uitvoerings plannen voor gegevens stromen weer geven
+## <a name="view-data-flow-execution-plans"></a>Uitvoeringsplannen voor gegevensstromen weergeven
 
-Wanneer uw gegevens stroom in Spark wordt uitgevoerd, bepaalt Azure Data Factory optimale code paden op basis van het geheel van uw gegevens stroom. Daarnaast kunnen de uitvoerings paden optreden op verschillende scale-out knoop punten en gegevens partities. Daarom vertegenwoordigt de bewakings grafiek het ontwerp van uw stroom, waarbij rekening wordt gehouden met het pad van de uitvoering van de trans formaties. Wanneer u op afzonderlijke knoop punten klikt, worden ' groeperingen ' weer gegeven die de code vertegenwoordigen die samen in het cluster is uitgevoerd. De tijds instellingen en aantallen die u ziet, worden weer gegeven in plaats van de afzonderlijke stappen in uw ontwerp.
+Wanneer uw gegevensstroom wordt uitgevoerd in Spark, bepaalt Azure Data Factory optimale codepaden op basis van het geheel van uw gegevensstroom. Bovendien kunnen de uitvoeringspaden optreden op verschillende scale-outknooppunten en gegevenspartities. Daarom geeft de bewakingsgrafiek het ontwerp van uw stroom weer, rekening houdend met het uitvoeringspad van uw transformaties. Wanneer u op afzonderlijke knooppunten klikt, ziet u 'groeperingen' die code vertegenwoordigen die samen op het cluster is uitgevoerd. De timings en tellingen die u ziet, vertegenwoordigen deze groepen in tegenstelling tot de afzonderlijke stappen in uw ontwerp.
 
-![Gegevensstroom controleren](media/data-flow/mon004.png "Bewaking gegevensstroom")
+![Gegevensstroombewaking](media/data-flow/mon004.png "Bewaking gegevensstroom")
 
-* Wanneer u klikt op de open ruimte in het venster bewaking, worden in de statistieken in het onderste deel venster de timing en het aantal rijen weer gegeven voor elke Sink en de trans formaties die leiden tot de Sink-gegevens voor transformatie afkomst.
+* Wanneer u op de open ruimte in het controlevenster klikt, worden in de statistieken in het onderste deelvenster de timing en rijtellingen weergegeven voor elke sink en de transformaties die hebben geleid tot de sinkgegevens voor transformatieregel.
 
-* Wanneer u afzonderlijke trans formaties selecteert, ontvangt u extra feedback over het rechterdeel venster waarin de partitie statistieken, kolom aantallen, scheefheid (hoe gelijkmatig de gegevens worden verdeeld over verschillende partities) en kurtosis (hoe piekige de gegevens zijn) worden weer gegeven.
+* Wanneer u afzonderlijke transformaties selecteert, ontvangt u extra feedback op het rechterpaneel met partitiestatistieken, kolomtellingen, scheefheid (hoe gelijkmatig worden de gegevens verdeeld over partities) en kurtose (hoe stekek is de gegevens).
 
-* Wanneer u in de weer gave knoop punt op de Sink klikt, wordt kolom afkomst weer gegeven. Er zijn drie verschillende methoden die kolommen tijdens de gegevens stroom in de Sink worden verzameld. Dit zijn:
+* Wanneer u op de gootsteen in de knooppuntweergave klikt, ziet u kolomregel. Er zijn drie verschillende methoden die kolommen worden verzameld in uw gegevensstroom om te landen in de gootsteen. Dit zijn:
 
-  * Berekend: u gebruikt de kolom voor voorwaardelijke verwerking of binnen een expressie in uw gegevens stroom, maar niet in de Sink
-  * Afgeleid: de kolom is een nieuwe kolom die u hebt gegenereerd in uw stroom, dat wil zeggen dat deze niet aanwezig is in de bron
-  * Toegewezen: de kolom afkomstig uit de bron en uw toewijzing is aan een Sink-veld gekoppeld
-  * Status van de gegevens stroom: de huidige status van de uitvoering
-  * Opstart tijd van het cluster: de hoeveelheid tijd voor het verkrijgen van de JIT Spark-Compute-omgeving voor het uitvoeren van gegevens stromen
-  * Aantal trans formaties: hoeveel transformatie stappen worden uitgevoerd in uw stroom
+  * Berekend: u gebruikt de kolom voor voorwaardelijke verwerking of binnen een expressie in uw gegevensstroom, maar landt deze niet in de gootsteen
+  * Afgeleid: de kolom is een nieuwe kolom die u in uw stroom hebt gegenereerd, d.w.z. deze was niet aanwezig in de bron
+  * Toegewezen: de kolom is afkomstig van de bron en uw bent het toewijzen aan een gootsteenveld
+  * Status van gegevensstroom: de huidige status van uw uitvoering
+  * Opstarttijd van het cluster: hoeveelheid tijd om de JIT Spark-compute-omgeving te verkrijgen voor de uitvoering van uw gegevensstroom
+  * Aantal transformaties: hoeveel transformatiestappen worden uitgevoerd in uw stroom
   
-![Gegevensstroom controleren](media/data-flow/monitornew.png "Gegevens stroom bewaking nieuw")  
+![Gegevensstroombewaking](media/data-flow/monitornew.png "Data Flow Monitoring Nieuw")  
   
-## <a name="monitor-icons"></a>Bewaak pictogrammen
+## <a name="monitor-icons"></a>Monitorpictogrammen
 
-Dit pictogram geeft aan dat de transformatie gegevens al in de cache zijn opgeslagen op het cluster, waardoor de timing en het uitvoerings traject hebben geduurd in het account:
+Dit pictogram betekent dat de transformatiegegevens al in de cache op het cluster zijn opgeslagen, dus de timings en het uitvoeringspad hebben daar rekening mee gehouden:
 
-![Gegevensstroom controleren](media/data-flow/mon004.png "Bewaking gegevensstroom")
+![Gegevensstroombewaking](media/data-flow/mon004.png "Bewaking gegevensstroom")
 
-U ziet ook groene cirkel pictogrammen in de trans formatie. Ze vertegenwoordigen een telling van het aantal sinks dat de gegevens stromen.
+U ziet ook groene cirkelpictogrammen in de transformatie. Ze vertegenwoordigen een telling van het aantal putten waarin gegevens stromen.

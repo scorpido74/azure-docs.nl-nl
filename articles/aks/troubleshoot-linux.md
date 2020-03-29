@@ -1,7 +1,7 @@
 ---
-title: Linux-prestatie hulpprogramma's
+title: Linux-prestatietools
 titleSuffix: Azure Kubernetes Service
-description: Meer informatie over het oplossen van veelvoorkomende problemen bij het gebruik van Azure Kubernetes service (AKS)
+description: Meer informatie over het oplossen en oplossen van veelvoorkomende problemen bij het gebruik van Azure Kubernetes Service (AKS)
 services: container-service
 author: alexeldeib
 ms.service: container-service
@@ -9,60 +9,60 @@ ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: aleldeib
 ms.openlocfilehash: eb6b126b4d1794adf0380432040190b91a17a675
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77925603"
 ---
-# <a name="linux-performance-troubleshooting"></a>Problemen met Linux-prestaties oplossen
+# <a name="linux-performance-troubleshooting"></a>Problemen met de prestaties van Linux
 
-Bron uitputting op Linux-machines is een veelvoorkomend probleem en kan zich in een groot aantal symptomen voordoen. Dit document bevat een overzicht van de hulpprogram ma's die beschikbaar zijn om te helpen bij het vaststellen van dergelijke problemen.
+Uitputting van hulpbronnen op Linux-machines is een veel voorkomend probleem en kan zich manifesteren door een breed scala aan symptomen. Dit document biedt een overzicht op hoog niveau van de beschikbare tools om dergelijke problemen te diagnosticeren.
 
-Veel van deze hulpprogram ma's accepteren een interval voor het produceren van uitvoer. Met deze uitvoer indeling worden herkennen patronen doorgaans veel eenvoudiger gemaakt. Wanneer het voor beeld wordt geaccepteerd, bevat het de aanroep `[interval]`.
+Veel van deze gereedschappen accepteren een interval waarop rollend vermogen kan worden geproduceerd. Dit uitvoerformaat maakt het spotten van patronen doorgaans veel gemakkelijker. Indien aanvaard, omvat `[interval]`de voorbeeldaanroep .
 
-Veel van deze hulpprogram ma's hebben een uitgebreide geschiedenis en een breed scala aan configuratie opties. Deze pagina bevat slechts een eenvoudige subset van aanroepen om veelvoorkomende problemen te markeren. De canonieke bron van informatie is altijd de referentie documentatie voor elk bepaald hulp programma. Deze documentatie is veel uitgebreider dan u hier vindt.
+Veel van deze tools hebben een uitgebreide geschiedenis en een brede set configuratie-opties. Deze pagina biedt slechts een eenvoudige subset van aanroepingen om veelvoorkomende problemen te markeren. De canonieke bron van informatie is altijd de referentiedocumentatie voor elk specifiek instrument. Die documentatie zal veel grondiger zijn dan wat hier wordt verstrekt.
 
 ## <a name="guidance"></a>Richtlijnen
 
-Zorg voor een systematische aanpak bij het onderzoeken van prestatie problemen. Er zijn twee veelvoorkomende benaderingen (gebruik, intensiteit, fouten) en rood (frequentie, fouten, duur). ROOD wordt doorgaans gebruikt in de context van services voor bewaking op basis van aanvragen. GEBRUIK wordt meestal gebruikt voor bewakings bronnen: voor elke bron op een machine, het gebruik, de verzadiging en de fouten bewaken. De vier belangrijkste soorten resources op elke computer zijn CPU, geheugen, schijf en netwerk. Hoog gebruik, verzadiging of fout tarieven voor een van deze resources duiden op een mogelijk probleem met het systeem. Als er een probleem optreedt, onderzoekt u de hoofd oorzaak: Waarom is de schijf-i/o-latentie hoog? Zijn de schijven of de SKU van de virtuele machine beperkt? Welke processen schrijven naar de apparaten en naar welke bestanden?
+Wees systematisch in uw benadering van het onderzoeken van prestatieproblemen. Twee veelvoorkomende benaderingen zijn GEBRUIK (gebruik, verzadiging, fouten) en ROOD (snelheid, fouten, duur). RED wordt meestal gebruikt in de context van services voor op aanvragen gebaseerde monitoring. USE wordt meestal gebruikt voor het bewaken van resources: voor elke resource in een machine, monitorgebruik, verzadiging en fouten. De vier belangrijkste soorten resources op elke machine zijn cpu, geheugen, schijf en netwerk. Hoge benuttings-, verzadigings- of foutpercentages voor een van deze resources duiden op een mogelijk probleem met het systeem. Wanneer er een probleem is, onderzoekt u de hoofdoorzaak: waarom is schijf-IO-latentie hoog? Zijn de schijven of virtuele machine SKU gasgevend? Welke processen schrijven naar de apparaten en naar welke bestanden?
 
-Enkele voor beelden van veelvoorkomende problemen en indica toren om ze te diagnosticeren:
-- IOPS-beperking: gebruik iostat gebruiken om IOPS per apparaat te meten. Zorg ervoor dat er geen afzonderlijke schijven meer zijn dan de limiet en dat de som voor alle schijven kleiner is dan de limiet voor de virtuele machine.
-- Bandbreedte regeling: gebruik iostat gebruiken als voor IOPS, maar lees/schrijf doorvoer meten. Zorg ervoor dat zowel per apparaat als geaggregeerde door Voer lager zijn dan de bandbreedte limieten.
-- SNAT-uitputting: dit kan worden gemanifesteerd als hoge actieve (uitgaande) verbindingen in SAR. 
-- Pakket verlies: dit kan worden gemeten met behulp van een aantal TCP-verzen dingen ten opzichte van het aantal verzonden/ontvangen. Zowel `sar` als `netstat` kunnen deze gegevens weer geven.
+Enkele voorbeelden van veelvoorkomende problemen en indicatoren om ze te diagnosticeren:
+- IOPS throttling: gebruik iostat om iops per apparaat te meten. Zorg ervoor dat geen enkele afzonderlijke schijf boven de limiet is en dat de som voor alle schijven lager is dan de limiet voor de virtuele machine.
+- Bandbreedte beperking: gebruik iostat als voor IOPS, maar het meten van lees / schrijf doorvoer. Zorg ervoor dat zowel de doorvoer per apparaat als de totale doorvoer onder de bandbreedtelimieten ligt.
+- SNAT uitputting: dit kan zich manifesteren als hoge actieve (uitgaande) verbindingen in SAR. 
+- Pakketverlies: dit kan worden gemeten door proxy via TCP retransmit count ten opzichte van verzonden / ontvangen telling. Beide `sar` `netstat` en kunnen deze informatie laten zien.
 
 ## <a name="general"></a>Algemeen
 
-Deze hulpprogram ma's zijn algemeen gebruik en gelden voor basis informatie over het systeem. Het is een goed uitgangs punt voor verder onderzoek.
+Deze instrumenten zijn algemeen doel en omvatten basissysteeminformatie. Ze zijn een goed uitgangspunt voor verder onderzoek.
 
-### <a name="uptime"></a>systeem
+### <a name="uptime"></a>Uptime
 
 ```
 $ uptime
  19:32:33 up 17 days, 12:36,  0 users,  load average: 0.21, 0.77, 0.69
 ```
 
-uptime zorgt voor de uptime van het systeem en de gemiddelde belasting van 1, 5 en 15 minuten. Deze belasting gemiddelden komen ongeveer overeen met threads die werken of wachten op het volt ooien van een nood werk. In absolute deze getallen kan het lastig zijn om te interpreteren, maar na verloop van tijd kunnen ze nuttige informatie vertellen:
+uptime biedt systeemuptime en 1, 5 en 15 minuten load gemiddelden. Deze belastingsgemiddelden komen ruwweg overeen met threads die werken of wachten op onbreekbaar werk. In absolute absolute deze aantallen kan moeilijk te interpreteren, maar gemeten in de tijd kunnen ze ons nuttige informatie vertellen:
 
-- gemiddeld 1 minuut > 5 minuten gemiddelde betekent dat de belasting toeneemt.
-- gemiddeld 1 minuut < 5 minuten gemiddelde betekent dat de belasting afneemt.
+- 1-minuten gemiddelde > gemiddelde van 5 minuten betekent dat de belasting toeneemt.
+- 1-minuten gemiddelde < gemiddelde van 5 minuten betekent dat de belasting afneemt.
 
-de uptime kan ook worden verlicht waarom er geen informatie beschikbaar is: het probleem is mogelijk afzonderlijk opgelost of opnieuw opgestart voordat de gebruiker toegang tot de computer heeft.
+uptime kan ook verlichten waarom informatie niet beschikbaar is: het probleem kan zijn opgelost op zijn eigen of door een herstart voordat de gebruiker toegang tot de machine.
 
-Het laden van gemiddelden hoger dan het aantal beschik bare CPU-threads kan duiden op een prestatie probleem met een bepaalde werk belasting.
+Het laden van gemiddelden die hoger zijn dan het aantal beschikbare CPU-threads, kan duiden op een prestatieprobleem met een bepaalde werkbelasting.
 
-### <a name="dmesg"></a>dmesg
+### <a name="dmesg"></a>Dmesg
 
 ```
 $ dmesg | tail 
 $ dmesg --level=err | tail
 ```
 
-dmesg dumpt de kernel-buffer. Gebeurtenissen zoals OOMKill voegen een vermelding toe aan de kernel-buffer. Het vinden van een OOMKill of andere berichten over bron uitputting in dmesg-Logboeken is een sterke indicatie van een probleem.
+dmesg dumpt de kernel buffer. Gebeurtenissen zoals OOMKill voegen een vermelding toe aan de kernelbuffer. Het vinden van een OOMKill of andere resource uitputting berichten in dmesg logs is een sterke indicator van een probleem.
 
-### <a name="top"></a>Boven
+### <a name="top"></a>top
 
 ```
 $ top
@@ -78,19 +78,19 @@ KiB Swap:        0 total,        0 free,        0 used. 62739060 avail Mem
      ...
 ```
 
-`top` biedt een breed overzicht van de huidige systeem status. De headers bieden enkele nuttige statistische informatie:
+`top`biedt een breed overzicht van de huidige systeemstatus. De kopteksten bevatten nuttige geaggregeerde informatie:
 
-- status van taken: uitvoeren, in slaap stand, gestopt.
-- CPU-gebruik: in dit geval wordt meestal niet-actieve tijd weer gegeven.
-- totaal, vrij en gebruikt systeem geheugen.
+- staat van taken: hardlopen, slapen, gestopt.
+- CPU-gebruik, in dit geval meestal met idle tijd.
+- totaal, gratis en gebruikt systeemgeheugen.
 
-`top` kunnen processen met een korte levens duur missen; alternatieven als `htop` en `atop` vergelijk bare interfaces bieden bij het oplossen van enkele van deze tekortkomingen.
+`top`kunnen kortstondige processen missen; alternatieven `htop` zoals `atop` en bieden soortgelijke interfaces, terwijl de vaststelling van een aantal van deze tekortkomingen.
 
 ## <a name="cpu"></a>CPU
 
-Deze hulpprogram ma's bieden informatie over CPU-gebruik. Dit is met name handig bij Rolling uitvoer, waarbij patronen gemakkelijk te herkennen zijn.
+Deze tools bieden informatie over cpu-gebruik. Dit is vooral handig bij rollende output, waar patronen gemakkelijk te herkennen zijn.
 
-### <a name="mpstat"></a>mpstat
+### <a name="mpstat"></a>mpstat mpstat
 
 ```
 $ mpstat -P ALL [interval]
@@ -108,9 +108,9 @@ Linux 4.15.0-1064-azure (aks-main-10212767-vmss000001)  02/10/20        _x86_64_
 19:49:04       7    1.98    0.00    0.99    0.00    0.00    0.00    0.00    0.00    0.00   97.03
 ```
 
-`mpstat` vergelijk bare CPU-informatie naar boven, maar niet per CPU-thread. Alle kernen tegelijk bekijken kan nuttig zijn bij het detecteren van het CPU-gebruik met een zeer groot aantal, bijvoorbeeld wanneer een toepassing met één thread één kern op 100% gebruik gebruikt. Dit probleem kan lastiger zijn bij het samen voegen van alle Cpu's in het systeem.
+`mpstat`drukt soortgelijke CPU-informatie naar boven, maar opgesplitst door CPU-thread. Het zien van alle kernen tegelijk kan handig zijn voor het detecteren van een zeer onevenwichtig CPU-gebruik, bijvoorbeeld wanneer een single threaded-toepassing één kern gebruikt bij 100% gebruik. Dit probleem kan moeilijker te herkennen zijn wanneer deze worden samengevoegd over alle CPU's in het systeem.
 
-### <a name="vmstat"></a>vmstat
+### <a name="vmstat"></a>vmstat vmstat
 
 ```
 $ vmstat [interval]
@@ -119,13 +119,13 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  2  0      0 43300372 545716 19691456    0    0     3    50    3    3  2  1 95  1  0
 ```
 
-`vmstat` biedt soort gelijke informatie `mpstat` en `top`, het inventariseren van het aantal processen dat wacht op CPU (r-kolom), geheugen statistieken en percentage CPU-tijd die aan elke werk status zijn besteed.
+`vmstat`biedt vergelijkbare `mpstat` `top`informatie en , opsommen aantal processen te wachten op CPU (r kolom), geheugen statistieken, en het percentage van de CPU-tijd doorgebracht in elke werkstaat.
 
 ## <a name="memory"></a>Geheugen
 
-Het geheugen is zeer belang rijk en gelukkig eenvoudig, te traceren resource. Sommige hulpprogram ma's kunnen zowel de CPU als het geheugen, zoals `vmstat`, rapporteren. Hulpprogram ma's zoals `free` zijn mogelijk nog steeds nuttig voor snelle fout opsporing.
+Geheugen is een zeer belangrijke, en gelukkig gemakkelijk, bron te volgen. Sommige hulpprogramma's kunnen zowel `vmstat`CPU als geheugen rapporteren, zoals . Maar tools `free` zoals kan nog steeds nuttig zijn voor snelle debugging.
 
-### <a name="free"></a>Macro's
+### <a name="free"></a>Gratis
 
 ```
 $ free -m
@@ -134,13 +134,13 @@ Mem:          64403        2338       42485           1       19579       61223
 Swap:             0           0           0
 ```
 
-`free` geeft basis informatie over het totale geheugen en het gebruikte en vrije geheugen. `vmstat` is mogelijk handiger, zelfs bij een elementaire geheugen analyse door de mogelijkheid om uitvoer te leveren.
+`free`presenteert basisinformatie over het totale geheugen, evenals gebruikt en gratis geheugen. `vmstat`kan nuttiger zijn, zelfs voor basisgeheugenanalyse vanwege de mogelijkheid om rolling output te bieden.
 
 ## <a name="disk"></a>Schijf
 
-Deze hulpprogram ma's meten schijf-IOPS, wacht rijen en totale door voer. 
+Deze hulpprogramma's meten schijf-IOPS, wachtrijen wachten en totale doorvoer. 
 
-### <a name="iostat"></a>iostat gebruiken
+### <a name="iostat"></a>iostat
 
 ```
 $ iostat -xy [interval] [count]
@@ -157,31 +157,31 @@ sda               0.00    56.00    0.00   65.00     0.00   504.00    15.51     0
 scd0              0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.00    0.00    0.00    0.00   0.00   0.00
 ```
 
-`iostat` biedt uitgebreide inzichten in het schijf gebruik. Deze aanroep geeft `-x` voor uitgebreide statistieken `-y` om de eerste uitvoer van het afdruk systeem na het opstarten over te slaan, en `1 1` om op te geven dat het interval van 1 seconde moet eindigen na één uitvoer blok. 
+`iostat`biedt diepgaande inzichten in het gebruik van schijven. Deze aanroep `-x` gaat over `-y` voor uitgebreide statistieken, om de initiële uitvoerafdruksysteemgemiddelden sinds het opstarten over te slaan en `1 1` om op te geven dat we een interval van 1 seconde willen, eindigend na één blok uitvoer. 
 
-`iostat` maakt veel nuttige statistieken beschikbaar:
+`iostat`onthult veel nuttige statistieken:
 
-- `r/s` en `w/s` zijn Lees bewerkingen per seconde en schrijf bewerkingen per seconde. De som van deze waarden is IOPS.
-- `rkB/s` en `wkB/s` zijn kilo bytes per seconde voor lezen/schrijven. De som van deze waarden is door voer.
-- `await` is de gemiddelde iowait-tijd in milliseconden voor aanvragen in de wachtrij.
-- `avgqu-sz` is de gemiddelde wachtrij grootte boven het gegeven interval.
+- `r/s`en `w/s` zijn leest per seconde en schrijft per seconde. De som van deze waarden is IOPS.
+- `rkB/s`en `wkB/s` worden kilobytes gelezen/geschreven per seconde. De som van deze waarden is doorvoer.
+- `await`is de gemiddelde iowait-tijd in milliseconden voor aanvragen in de wachtrij.
+- `avgqu-sz`is de gemiddelde wachtrijgrootte over het opgegeven interval.
 
-Op een virtuele Azure-machine:
+Op een Azure VM:
 
-- de som van `r/s` en `w/s` voor een afzonderlijk blok apparaat mag niet hoger zijn dan de SKU-limieten van die schijf.
-- de som van `rkB/s` en `wkB/s` voor een afzonderlijk blok apparaat mag de SKU-limieten van die schijf niet overschrijden
-- de som van `r/s` en `w/s` voor alle blok apparaten overschrijdt mogelijk niet de limieten voor de VM-SKU.
-- de som van `rkB/s` en ' wkB/s voor alle blok apparaten overschrijdt mogelijk niet de limieten voor de VM-SKU.
+- de som van `r/s` en `w/s` voor een individueel blokapparaat mag de SKU-limieten van die schijf niet overschrijden.
+- de som van `rkB/s` en `wkB/s` voor een individueel blokapparaat mag de SKU-limieten van die schijf niet overschrijden
+- de som van `r/s` en `w/s` voor alle blokapparaten mag de limieten voor de VM SKU niet overschrijden.
+- de som van `rkB/s` en 'wkB/s voor alle blokapparaten mag de limieten voor de VM SKU niet overschrijden.
 
-Houd er rekening mee dat de schijf van het besturings systeem telt als een beheerde schijf van de kleinste SKU die overeenkomt met de capaciteit. Een 1024GB-besturingssysteem schijf komt bijvoorbeeld overeen met een P30-schijf. Tijdelijke besturingssysteem schijven en tijdelijke schijven hebben geen afzonderlijke schijf limieten. ze worden alleen beperkt door de volledige VM-limieten.
+Houd er rekening mee dat de OS-schijf telt als een beheerde schijf van de kleinste SKU die overeenkomt met de capaciteit. Een 1024GB OS-schijf komt bijvoorbeeld overeen met een P30-schijf. Kortstondige OS-schijven en tijdelijke schijven hebben geen afzonderlijke schijflimieten; ze worden alleen beperkt door de volledige VM-limieten.
 
-Niet-nulwaarde waarden van await of avgqu-SZ zijn ook goede indica toren voor i/o-conflicten.
+Niet-nul waarden van wachten of avgqu-sz zijn ook goede indicatoren van IO stelling.
 
 ## <a name="network"></a>Netwerk
 
-Deze hulpprogram ma's meten netwerk statistieken, zoals door Voer, storingen en gebruik. Een diep gaande analyse kan leiden tot gedetailleerde TCP-statistieken over congestie en verloren pakketten.
+Deze hulpprogramma's meten netwerkstatistieken zoals doorvoer, transmissiefouten en gebruik. Diepere analyse kan fijnkorrelige TCP-statistieken over congestie en gedropte pakketten blootleggen.
 
-### <a name="sar"></a>SAR
+### <a name="sar"></a>Sar
 
 ```
 $ sar -n DEV [interval]
@@ -199,10 +199,10 @@ $ sar -n DEV [interval]
 22:36:58    azvdbf16b0b2fc      9.00     19.00      3.36      1.18      0.00      0.00      0.00      0.00
 ```
 
-`sar` is een krachtig hulp middel voor een breed scala aan analyses. Hoewel in dit voor beeld de mogelijkheid van netwerk statistieken wordt gebruikt, is deze even krachtig voor het meten van CPU-en geheugen gebruik. In dit voor beeld wordt `sar` met `-n`-vlag aangeroepen om het sleutel woord `DEV` (netwerk apparaat) op te geven, waarbij netwerk doorvoer per apparaat wordt weer gegeven.
+`sar`is een krachtig hulpmiddel voor een breed scala aan analyses. Hoewel dit voorbeeld zijn vermogen gebruikt om netwerkstatistieken te meten, is het even krachtig voor het meten van CPU- en geheugenverbruik. In dit `sar` voorbeeld `-n` wordt met `DEV` vlag aanknopingspunt aangenomen om het trefwoord (netwerkapparaat) op te geven, waarbij de netwerkdoorvoer per apparaat wordt weergegeven.
 
-- De som van `rxKb/s` en `txKb/s` is de totale door Voer voor een bepaald apparaat. Wanneer deze waarde de limiet voor de ingerichte Azure-NIC overschrijdt, hebben werk belastingen op de computer een verhoogde netwerk latentie.
-- het gebruik van `%ifutil` meet waarden voor een bepaald apparaat. Omdat deze waarde 100% benadert, hebben werk belastingen een verhoogde netwerk latentie.
+- De som van `rxKb/s` en `txKb/s` is totale doorvoer voor een bepaald apparaat. Wanneer deze waarde de limiet voor de ingerichte Azure NIC overschrijdt, worden workloads op de machine ervaren een verhoogde netwerklatentie.
+- `%ifutil`meet het gebruik van een bepaald apparaat. Aangezien deze waarde 100% nadert, zullen workloads een verhoogde netwerklatentie ervaren.
 
 ```
 $ sar -n TCP,ETCP [interval]
@@ -221,11 +221,11 @@ Average:     atmptf/s  estres/s retrans/s isegerr/s   orsts/s
 Average:         0.00      0.00      0.00      0.00      0.00
 ```
 
-Met deze aanroep van `sar` worden de `TCP,ETCP` tref woorden gebruikt voor het onderzoeken van TCP-verbindingen. De derde kolom van de laatste rij, ' hertrans ', is het aantal TCP-retransmits per seconde. Hoge waarden voor dit veld duiden op een onbetrouwbare netwerk verbinding. In de eerste en derde rij betekent "actief" dat een verbinding afkomstig is van het lokale apparaat, terwijl "externe" wijst op een binnenkomende verbinding.  Een veelvoorkomend probleem op Azure is een SNAT-poort uitputting, wat `sar` kan helpen te detecteren. De SNAT-poort ontdubbeling wordt als hoge ' Active '-waarden gemanifesteerd, omdat het probleem wordt veroorzaakt door een hoog aantal uitgaande, lokaal geactiveerde TCP-verbindingen.
+Deze aanroep `sar` gebruikt `TCP,ETCP` de trefwoorden om TCP-verbindingen te onderzoeken. De derde kolom van de laatste rij, "retrans", is het aantal TCP-retransmits per seconde. Hoge waarden voor dit veld duiden op een onbetrouwbare netwerkverbinding. In de eerste en derde rij betekent "actief" een verbinding die afkomstig is van het lokale apparaat, terwijl 'afstandsbediening' een binnenkomende verbinding aangeeft.  Een veelvoorkomend probleem op Azure is `sar` SNAT-poortuitputting, die kan helpen bij het detecteren. SNAT-poortuitputting zou zich manifesteren als hoge "actieve" waarden, omdat het probleem te wijten is aan een hoge mate van uitgaande, lokaal geïnitieerde TCP-verbindingen.
 
-Als `sar` een interval gebruikt, wordt de uitvoer uitgevoerd en worden vervolgens definitieve rijen met uitvoer afgedrukt met de gemiddelde resultaten van de aanroep.
+Als `sar` duurt een interval, het drukt rollende uitvoer en vervolgens drukt de laatste rijen van de uitvoer met de gemiddelde resultaten van de aanroep.
 
-### <a name="netstat"></a>netstat
+### <a name="netstat"></a>Netstat
 
 ```
 $ netstat -s
@@ -323,4 +323,4 @@ IpExt:
     InECT0Pkts: 14
 ```
 
-`netstat` kunt een breed scala aan netwerk statistieken introspect, die hier wordt aangeroepen met samenvattings uitvoer. Er zijn hier veel nuttige velden, afhankelijk van het probleem. Een handig veld in de TCP-sectie is mislukte Verbindings pogingen. Dit kan een indicatie zijn van de SNAT-poort afvoer of andere problemen met het maken van uitgaande verbindingen. Een hoog tempo van opnieuw verzonden segmenten (ook onder het TCP-gedeelte) kan duiden op problemen met pakket levering. 
+`netstat`kan introspect een breed scala van netwerk statistieken, hier aangeroepen met samenvatting output. Er zijn veel nuttige velden hier, afhankelijk van het probleem. Een nuttig veld in de tcp-sectie is 'mislukte verbindingspogingen'. Dit kan een indicatie zijn van snat-poortuitputting of andere problemen met het maken van uitgaande verbindingen. Een hoge snelheid van opnieuw verzonden segmenten (ook onder de TCP-sectie) kan duiden op problemen met de levering van pakketten. 

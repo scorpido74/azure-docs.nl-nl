@@ -1,6 +1,6 @@
 ---
-title: Bedreigings beveiliging voor Azure Key Vault
-description: In dit artikel wordt uitgelegd hoe u geavanceerde beveiliging tegen bedreigingen kunt instellen voor Azure Key Vault in Azure Security Center
+title: Bescherming tegen bedreigingen voor Azure Key Vault
+description: In dit artikel wordt uitgelegd hoe u geavanceerde bedreigingsbeveiliging voor Azure Key Vault in Azure Security Center instellen
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,42 +9,42 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: 449096590df6145c9f80dcf2c97726931909a2ae
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77914803"
 ---
-# <a name="threat-protection-for-azure-key-vault-preview"></a>Bedreigings beveiliging voor Azure Key Vault (preview-versie)
+# <a name="threat-protection-for-azure-key-vault-preview"></a>Bescherming tegen bedreigingen voor Azure Key Vault (voorbeeld)
 
-Advanced Threat Protection voor Azure Key Vault biedt een extra laag beveiligings informatie. Dit hulp programma detecteert mogelijk schadelijke pogingen om Key Vault accounts te openen of misbruik te maken. Met behulp van de systeem eigen geavanceerde beveiliging tegen bedreigingen in Azure Security Center kunt u bedreigingen verhelpen zonder dat u een beveiligings expert bent en zonder dat u extra beveiligings bewakings systemen hoeft te leren.
+Geavanceerde bescherming van bedreigingen voor Azure Key Vault biedt een extra laag beveiligingsinformatie. Deze tool detecteert mogelijk schadelijke pogingen om toegang te krijgen tot key vault-accounts of deze te exploiteren. Met behulp van de native geavanceerde bedreigingsbeveiliging in Azure Security Center u bedreigingen aanpakken zonder beveiligingsexpert te zijn en zonder aanvullende beveiligingsbewakingssystemen te leren.
 
-Wanneer Security Center afwijkende activiteiten detecteert, worden er waarschuwingen weer gegeven. Er wordt ook een e-mail verzonden naar de abonnements beheerder met details van de verdachte activiteit en aanbevelingen voor het onderzoeken en oplossen van de geïdentificeerde bedreigingen.
+Wanneer Security Center afwijkende activiteit detecteert, worden waarschuwingen weergegeven. Het e-mailt ook de abonnementsbeheerder met details van de verdachte activiteit en aanbevelingen voor het onderzoeken en herstellen van de geïdentificeerde bedreigingen.
 
-## <a name="configuring-threat-protection-from-security-center"></a>Beveiliging tegen bedreigingen configureren vanaf Security Center
+## <a name="configuring-threat-protection-from-security-center"></a>Bedreigingsbeveiliging configureren vanuit Security Center
 
-Advanced Threat Protection is standaard ingeschakeld voor al uw Key Vault accounts wanneer u zich abonneert op de prijs categorie Standard van Security Center. Zie [prijzen](security-center-pricing.md)voor meer informatie.
+Standaard is geavanceerde bescherming tegen bedreigingen ingeschakeld voor al uw Key Vault-accounts wanneer u zich abonneert op de standaardprijscategorie van security center. Zie [Prijzen voor](security-center-pricing.md)meer informatie.
 
-De beveiliging van een specifiek abonnement in-of uitschakelen:
+Ga als lid in of schakel de beveiliging voor een specifiek abonnement uit:
 
-1. Selecteer in het linkerdeel venster in Security Center **prijzen & instellingen**.
+1. Selecteer **prijzen & instellingen**in het linkerdeelvenster in het beveiligingscentrum.
 
-1. Selecteer het abonnement met de opslag accounts waarvoor u bedreigings beveiliging wilt in-of uitschakelen.
+1. Selecteer het abonnement met de opslagaccounts waarvoor u bedreigingsbeveiliging wilt in- of uitschakelen.
 
-1. Selecteer **Prijscategorie**.
+1. Selecteer **Prijsniveau**.
 
-1. Zoek in de groep **prijs categorie selecteren per resource type** de rij **sleutel kluizen** en selecteer **ingeschakeld** of **uitgeschakeld**.
+1. Zoek in de **categorie Prijsselecteren op resourcegroep** de rij **Sleutelkluizen** en selecteer **Ingeschakeld** of **uitgeschakeld**.
 
-    [![geavanceerde beveiliging tegen bedreigingen in-of uitschakelen voor Key Vault in Azure Security Center](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png)](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png#lightbox)
+    [![Geavanceerde bedreigingsbeveiliging voor Key Vault inazure security center inschakelen of uitschakelen](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png)](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png#lightbox)
 
 1. Selecteer **Opslaan**.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u Advanced Threat Protection voor Azure Key Vault kunt in-en uitschakelen. 
+In dit artikel hebt u geleerd hoe u geavanceerde bedreigingsbeveiliging voor Azure Key Vault inschakelen en uitschakelen. 
 
-Raadpleeg de volgende artikelen voor gerelateerde materialen:
+Zie voor gerelateerd materiaal de volgende artikelen:
 
-- [Beveiliging tegen bedreigingen in azure Security Center](threat-protection.md): in dit artikel worden de bronnen van beveiligings waarschuwingen in azure Security Center beschreven.
-- [Beveiligings waarschuwingen Key Vault](alerts-reference.md#alerts-azurekv): de sectie Key Vault van de verwijzings tabel voor alle Azure Security Center waarschuwingen
+- [Bescherming van bedreigingen in Azure Security Center](threat-protection.md)--Dit artikel beschrijft de bronnen van beveiligingswaarschuwingen in Azure Security Center.
+- [Key Vault-beveiligingswaarschuwingen](alerts-reference.md#alerts-azurekv)--Het gedeelte Sleutelkluis van de referentietabel voor alle Azure Security Center-waarschuwingen

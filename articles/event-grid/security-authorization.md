@@ -1,5 +1,5 @@
 ---
-title: Azure Event Grid-beveiliging en verificatie
+title: Beveiliging en verificatie van Azure Event Grid
 description: Beschrijving van Azure Event Grid en de concepten ervan.
 services: event-grid
 author: banisadr
@@ -9,35 +9,35 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
 ms.openlocfilehash: 03bc2f9de6f50f08c9f62f86a3d1791a067cecd0
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78899280"
 ---
-# <a name="authorizing-access-to-event-grid-resources"></a>Toegang tot Event Grid-resources autoriseren
-Azure Event Grid kunt u bepalen het niveau van toegang krijgen tot verschillende gebruikers verschillende beheerbewerkingen zoals gebeurtenisabonnementen lijst, een nieuwe maken en genereren van sleutels. Event Grid maakt gebruik van toegangsbeheer van Azure op basis van rollen (RBAC).
+# <a name="authorizing-access-to-event-grid-resources"></a>Toegang tot bronnen voor gebeurtenisrasters toestaan
+Met Azure Event Grid u het toegangsniveau beheren dat aan verschillende gebruikers wordt gegeven om verschillende beheerbewerkingen uit te voeren, zoals gebeurtenisabonnementen op de lijst, nieuwe abonnementen te maken en sleutels te genereren. Event Grid maakt gebruik van Azure's role-based access control (RBAC).
 
 ## <a name="operation-types"></a>Bewerkingstypen
 
 Event Grid ondersteunt de volgende acties:
 
-* Microsoft.EventGrid/*/read
+* Microsoft.EventGrid/*/gelezen
 * Microsoft.EventGrid/*/write
 * Microsoft.EventGrid/*/delete
-* Microsoft.EventGrid/eventSubscriptions/getFullUrl/action
+* Microsoft.EventGrid/eventAbonnementen/getFullUrl/actie
 * Microsoft.EventGrid/topics/listKeys/action
 * Microsoft.EventGrid/topics/regenerateKey/action
 
-De laatste drie bewerkingen retourneren mogelijk geheime gegevens die buiten het normale leesbewerkingen wordt gefilterd. Het raadzaam dat u toegang tot deze bewerkingen beperken. 
+De laatste drie bewerkingen leveren mogelijk geheime informatie op, die wordt gefilterd uit normale leesbewerkingen. Het wordt aanbevolen om de toegang tot deze bewerkingen te beperken. 
 
 ## <a name="built-in-roles"></a>Ingebouwde rollen
 
-Event Grid biedt twee ingebouwde rollen voor het beheren van abonnementen. Ze zijn belang rijk bij het implementeren van [gebeurtenis domeinen](event-domains.md) omdat ze gebruikers de machtigingen geven die ze nodig hebben om zich te abonneren op onderwerpen in uw gebeurtenis domein. Deze rollen zijn gericht op gebeurtenisabonnementen en geen toegangsmachtigingen voor acties zoals het maken van onderwerpen.
+Event Grid biedt twee ingebouwde rollen voor het beheren van gebeurtenisabonnementen. Ze zijn belangrijk bij het implementeren van [gebeurtenisdomeinen](event-domains.md) omdat ze gebruikers de machtigingen geven die ze nodig hebben om zich te abonneren op onderwerpen in uw gebeurtenisdomein. Deze rollen zijn gericht op gebeurtenisabonnementen en verlenen geen toegang voor acties zoals het maken van onderwerpen.
 
-U kunt [deze rollen toewijzen aan een gebruiker of groep](../role-based-access-control/quickstart-assign-role-user-portal.md).
+U [deze rollen toewijzen aan een gebruiker of groep.](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-**EventGrid EventSubscription Inzender**: Event grid-abonnements bewerkingen beheren
+**EventGrid EventSubscription Contributor**: event grid-abonnementsbewerkingen beheren
 
 ```json
 [
@@ -73,7 +73,7 @@ U kunt [deze rollen toewijzen aan een gebruiker of groep](../role-based-access-c
 ]
 ```
 
-**EventGrid EventSubscription-lezer**: Event grid-abonnementen lezen
+**EventGrid EventSubscription Reader**: lees Event Grid abonnementen
 
 ```json
 [
@@ -107,11 +107,11 @@ U kunt [deze rollen toewijzen aan een gebruiker of groep](../role-based-access-c
 
 ## <a name="custom-roles"></a>Aangepaste rollen
 
-Als u nodig hebt om op te geven van de machtigingen die verschillen van de ingebouwde rollen, kunt u aangepaste rollen maken.
+Als u machtigingen moet opgeven die anders zijn dan de ingebouwde rollen, u aangepaste rollen maken.
 
-Hieronder vindt u voorbeeld Event Grid roldefinities die toestaat dat gebruikers verschillende acties uitvoeren. Deze aangepaste rollen wijken af van de ingebouwde rollen, omdat ze uitgebreidere toegang dan alleen gebeurtenisabonnementen verlenen.
+Hieronder volgen voorbeelddefinities van gebeurtenisrasterrollen waarmee gebruikers verschillende acties kunnen uitvoeren. Deze aangepaste rollen verschillen van de ingebouwde rollen omdat ze bredere toegang bieden dan alleen gebeurtenisabonnementen.
 
-**EventGridReadOnlyRole. json**: alleen alleen-lezen bewerkingen toestaan.
+**EventGridReadOnlyRole.json**: Alleen-lezen bewerkingen toestaan.
 
 ```json
 {
@@ -130,7 +130,7 @@ Hieronder vindt u voorbeeld Event Grid roldefinities die toestaat dat gebruikers
 }
 ```
 
-**EventGridNoDeleteListKeysRole. json**: beperkte post acties toestaan, maar geen verwijderings acties toestaan.
+**EventGridNoDeleteListKeysRole.json**: Sta acties voor beperkte berichten toe, maar verontgelaten verwijderingsacties.
 
 ```json
 {
@@ -153,7 +153,7 @@ Hieronder vindt u voorbeeld Event Grid roldefinities die toestaat dat gebruikers
 }
 ```
 
-**EventGridContributorRole. json**: alle gebeurtenis raster acties toestaan.
+**EventGridContributorRole.json**: Hiermee kunnen alle gebeurtenisrasteracties worden uitgevoerd.
 
 ```json
 {
@@ -175,14 +175,14 @@ Hieronder vindt u voorbeeld Event Grid roldefinities die toestaat dat gebruikers
 }
 ```
 
-U kunt aangepaste rollen maken met [Power shell](../role-based-access-control/custom-roles-powershell.md), [Azure cli](../role-based-access-control/custom-roles-cli.md)en [rest](../role-based-access-control/custom-roles-rest.md).
+U aangepaste rollen maken met [PowerShell,](../role-based-access-control/custom-roles-powershell.md) [Azure CLI](../role-based-access-control/custom-roles-cli.md)en [REST.](../role-based-access-control/custom-roles-rest.md)
 
 
 
 ### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 
-Alle gebeurtenissen of gegevens die door de Event Grid-Service naar schijf worden geschreven, worden versleuteld met een door micro soft beheerde sleutel, zodat deze op rest versleuteld is. Bovendien is de maximale tijds duur dat gebeurtenissen of gegevens bewaard 24 uur in acht te komen in de [Event grid beleid voor opnieuw proberen](delivery-and-retry.md). Event Grid verwijdert automatisch alle gebeurtenissen of gegevens na 24 uur, of de TTL van de gebeurtenis, afhankelijk van wat kleiner is.
+Alle gebeurtenissen of gegevens die door de Event Grid-service naar de schijf zijn geschreven, worden versleuteld door een door Microsoft beheerde sleutel die ervoor zorgt dat deze in rust wordt versleuteld. Bovendien is de maximale periode die gebeurtenissen of gegevens bewaren 24 uur in overeenstemming met het [beleid voor opnieuw proberen van het gebeurtenisraster](delivery-and-retry.md). Event Grid verwijdert automatisch alle gebeurtenissen of gegevens na 24 uur, of de gebeurtenis time-to-live, wat minder is.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [About Event grid](overview.md) voor een inleiding tot Event grid.
+* Zie [Over gebeurtenisraster](overview.md) voor een inleiding tot gebeurtenisraster

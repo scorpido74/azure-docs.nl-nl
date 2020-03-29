@@ -1,6 +1,6 @@
 ---
-title: Inleiding tot volgende hop in azure Network Watcher | Microsoft Docs
-description: Dit artikel bevat een overzicht van de Network Watcher volgende hop-mogelijkheid.
+title: Inleiding tot de volgende hop in Azure Network Watcher | Microsoft Documenten
+description: Dit artikel geeft een overzicht van de Network Watcher next hop mogelijkheid.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 33c22b5b68b6677e8cf271dc185007316ec44500
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844055"
 ---
-# <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Volgende hop gebruiken om problemen met de route ring van virtuele machines op te sporen
+# <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Volgende hop gebruiken om problemen met het routeren van virtuele machines te diagnosticeren
 
-Verkeer van een virtuele machine (VM) wordt verzonden naar een bestemming op basis van de efficiënte routes die zijn gekoppeld aan een netwerk interface (NIC). Met de volgende hop wordt het type van de volgende hop en het IP-adres van een pakket van een specifieke virtuele machine en NIC opgehaald. Als u de volgende hop weet, kunt u bepalen of verkeer wordt omgeleid naar de beoogde bestemming, of dat het verkeer nergens wordt verzonden. Een onjuiste configuratie van routes, waarbij verkeer wordt omgeleid naar een on-premises locatie of een virtueel apparaat, kan leiden tot verbindings problemen. De volgende hop retourneert ook de route tabel die is gekoppeld aan de volgende hop. Als de route wordt gedefinieerd als een door de gebruiker gedefinieerde route, wordt die route geretourneerd. Anders retourneert de volgende hop een **systeem route**.
+Verkeer van een virtuele machine (VM) wordt verzonden naar een bestemming op basis van de effectieve routes die zijn gekoppeld aan een netwerkinterface (NIC). Volgende hop krijgt het volgende hoptype en IP-adres van een pakket van een specifieke VM en NIC. Het kennen van de volgende hop helpt u bepalen of het verkeer wordt doorverwezen naar de beoogde bestemming, of dat het verkeer nergens naartoe wordt gestuurd. Een onjuiste configuratie van routes, waarbij het verkeer naar een on-premises locatie wordt geleid, of een virtueel toestel, kan leiden tot verbindingsproblemen. Volgende hop retourneert ook de routetabel die is gekoppeld aan de volgende hop. Als de route wordt gedefinieerd als een door de gebruiker gedefinieerde route, wordt die route geretourneerd. Anders retourneert de volgende hop **Systeemroute**.
 
-![overzicht van volgende hop](./media/network-watcher-next-hop-overview/figure1.png)
+![volgende hop overzicht](./media/network-watcher-next-hop-overview/figure1.png)
 
-De volgende hops die kunnen worden geretourneerd door de volgende hop-mogelijkheid zijn als volgt:
+De volgende hop die zou kunnen worden geretourneerd door de volgende hop vermogen zijn als volgt:
 
 * Internet
 * VirtualAppliance
@@ -36,8 +36,8 @@ De volgende hops die kunnen worden geretourneerd door de volgende hop-mogelijkhe
 * MicrosoftEdge
 * Geen
 
-Zie [route ring Overview](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)voor meer informatie over elk type volgende hop.
+Zie [Overzicht van](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)de volgende hop .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie problemen met VM-netwerk routering vaststellen met behulp van de [Azure Portal](diagnose-vm-network-routing-problem.md), [Power shell](diagnose-vm-network-routing-problem-powershell.md)of de [Azure cli](diagnose-vm-network-routing-problem-cli.md)voor meer informatie over het gebruik van de volgende hop om problemen met VM-netwerk routering te diagnosticeren.
+Zie Vm-netwerkrouteringsproblemen diagnosticeren met behulp van de [Azure-portal,](diagnose-vm-network-routing-problem.md) [PowerShell](diagnose-vm-network-routing-problem-powershell.md)of Azure [CLI](diagnose-vm-network-routing-problem-cli.md)voor meer informatie over het gebruik van volgende hop om problemen met vm-netwerkroutering te diagnosticeren.

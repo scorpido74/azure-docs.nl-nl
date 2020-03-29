@@ -1,6 +1,6 @@
 ---
-title: Een aangepaste installatiekopie van Azure DevTest Labs van een virtuele machine maken | Microsoft Docs
-description: Meer informatie over het maken van een aangepaste installatiekopie in Azure DevTest Labs van een ingerichte virtuele machine met behulp van de Azure portal
+title: Een aangepaste azure devTest Labs-afbeelding maken op basis van een VM | Microsoft Documenten
+description: Meer informatie over het maken van een aangepaste afbeelding in Azure DevTest Labs op basis van een ingerichte VM met behulp van de Azure-portal
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,54 +15,54 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 07f3b60b9218f74bb3a778daa27f31687c4538b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60868450"
 ---
-# <a name="create-a-custom-image-from-a-vm"></a>Een aangepaste installatiekopie van een virtuele machine maken
+# <a name="create-a-custom-image-from-a-vm"></a>Een aangepaste installatiekopie maken vanaf een virtuele machine
 
 [!INCLUDE [devtest-lab-custom-image-definition](../../includes/devtest-lab-custom-image-definition.md)]
 
 ## <a name="step-by-step-instructions"></a>Stapsgewijze instructies
 
-U kunt een aangepaste installatiekopie van een ingerichte virtuele machine maken en daarna die aangepaste installatiekopie gebruiken om te maken van identieke VM's. De volgende stappen laten zien hoe u een aangepaste installatiekopie maken van een virtuele machine:
+U een aangepaste afbeelding maken van een ingerichte virtuele machine en die aangepaste afbeelding vervolgens gebruiken om identieke VM's te maken. In de volgende stappen wordt uitgelegd hoe u een aangepaste afbeelding maakt van een virtuele machine:
 
 1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Selecteer **alle services**, en selecteer vervolgens **DevTest Labs** in de lijst.
+1. Selecteer **Alle services**en selecteer Vervolgens **DevTest Labs** in de lijst.
 
-1. Selecteer de gewenste lab in de lijst met labs.  
+1. Selecteer in de lijst met laboratoria het gewenste lab.  
 
-1. Selecteer in het hoofdvenster van de testomgeving, **mijn virtuele machines**.
+1. Selecteer in het hoofdvenster van het lab **mijn virtuele machines**.
  
-1. Op de **mijn virtuele machines** deelvenster, selecteert u de virtuele machine van waaruit u wilt maken van de aangepaste installatiekopie.
+1. Selecteer in het deelvenster **Mijn virtuele machines** de VM waaruit u de aangepaste afbeelding wilt maken.
 
-1. Selecteer op de VM beheer in het deelvenster **maken aangepaste installatiekopie (VHD)** .
+1. Selecteer in het beheervenster van de VM de optie **Aangepaste afbeelding maken (VHD).**
 
-    ![Aangepaste installatiekopie menu-item maken](./media/devtest-lab-create-template/create-custom-image.png)
+    ![Aangepast afbeeldingsmenu-item maken](./media/devtest-lab-create-template/create-custom-image.png)
 
-1. Op de **aangepaste installatiekopie** deelvenster, voer een naam en beschrijving op voor uw aangepaste installatiekopie. Deze informatie wordt weergegeven in de lijst met databases bij het maken van een virtuele machine. De aangepaste installatiekopie bevat de besturingssysteemschijf en alle gegevensschijven die zijn gekoppeld aan de virtuele machine.
+1. Voer in het deelvenster **Aangepaste afbeelding** een naam en beschrijving in voor uw aangepaste afbeelding. Deze informatie wordt weergegeven in de lijst met basissen wanneer u een vm maakt. De aangepaste afbeelding bevat de OS-schijf en alle gegevensschijven die aan de virtuele machine zijn gekoppeld.
 
-    ![Deelvenster van de aangepaste installatiekopie maken](./media/devtest-lab-create-template/create-custom-image-blade.png)
+    ![Aangepast afbeeldingsvenster maken](./media/devtest-lab-create-template/create-custom-image-blade.png)
 
-1. Geef aan of sysprep is uitgevoerd op de virtuele machine. Als de sysprep is niet uitgevoerd op de virtuele machine, moet u opgeven of u wilt dat sysprep om te worden uitgevoerd op de virtuele machine wanneer de aangepaste installatiekopie wordt gemaakt.
+1. Selecteer of sysprep is uitgevoerd op de VM. Als de sysprep niet op de VM is uitgevoerd, geeft u op of u wilt dat sysprep op de VM wordt uitgevoerd wanneer de aangepaste afbeelding wordt gemaakt.
 
-1. Selecteer **OK** wanneer u klaar bent om de aangepaste installatiekopie te maken.
+1. Selecteer **OK** wanneer u klaar bent om de aangepaste afbeelding te maken.
 
-Na een paar minuten, wordt de aangepaste installatiekopie wordt gemaakt en wordt opgeslagen in het opslagaccount van het lab. Wanneer een gebruiker lab wil maken van een nieuwe virtuele machine, is de installatiekopie is beschikbaar in de lijst met basisinstallatiekopieën.
+Na een paar minuten wordt de aangepaste afbeelding gemaakt en opgeslagen in het opslagaccount van het lab. Wanneer een labgebruiker een nieuwe vm wil maken, is de afbeelding beschikbaar in de lijst met basisafbeeldingen.
 
-![Aangepaste installatiekopie beschikbaar in de lijst met basisinstallatiekopieën](./media/devtest-lab-create-template/custom-image-available-as-base.png)
+![Aangepaste afbeelding beschikbaar in lijst met basisafbeeldingen](./media/devtest-lab-create-template/custom-image-available-as-base.png)
 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>Gerelateerde blogberichten
 
-- [Aangepaste installatiekopieën of formules?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [Kopiëren van aangepaste installatiekopieën tussen Azure DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [Aangepaste afbeeldingen of formules?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [Aangepaste afbeeldingen kopiëren tussen Azure DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een VM toevoegen aan uw testomgeving](devtest-lab-add-vm.md)
+- [Een vm toevoegen aan uw lab](devtest-lab-add-vm.md)

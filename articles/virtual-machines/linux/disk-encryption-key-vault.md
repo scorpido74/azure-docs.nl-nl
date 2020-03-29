@@ -1,6 +1,6 @@
 ---
-title: Een sleutel kluis voor Azure Disk Encryption maken en configureren
-description: In dit artikel worden de stappen beschreven voor het maken en configureren van een sleutel kluis voor gebruik met Azure Disk Encryption
+title: Een sleutelkluis voor Azure Disk Encryption maken en configureren
+description: In dit artikel vindt u stappen voor het maken en configureren van een sleutelkluis voor gebruik met Azure Disk Encryption
 ms.service: virtual-machines-linux
 ms.topic: article
 author: msmbaldwin
@@ -8,44 +8,44 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: a818d9fe9707d1789fbe8e77489fc380fd2c92dd
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970631"
 ---
-# <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Een sleutel kluis voor Azure Disk Encryption maken en configureren
+# <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Een sleutelkluis voor Azure Disk Encryption maken en configureren
 
-Azure Disk Encryption gebruikt Azure Key Vault om sleutels en geheimen voor schijf versleuteling te beheren en te beheren.  Zie [aan de slag met Azure Key Vault](../../key-vault/key-vault-get-started.md) en [uw sleutel kluis beveiligen](../../key-vault/key-vault-secure-your-key-vault.md)voor meer informatie over sleutel kluizen. 
+Azure Disk Encryption gebruikt Azure Key Vault om schijfversleutelingssleutels en -geheimen te beheren en te beheren.  Zie [Aan de slag met Azure Key Vault](../../key-vault/key-vault-get-started.md) en Uw [sleutelkluis beveiligen](../../key-vault/key-vault-secure-your-key-vault.md)voor meer informatie over sleutelkluizen. 
 
 > [!WARNING]
-> - Als u eerder Azure Disk Encryption met Azure AD hebt gebruikt om een virtuele machine te versleutelen, moet u deze optie blijven gebruiken om uw virtuele machine te versleutelen. Zie [een sleutel kluis maken en configureren voor Azure Disk Encryption met Azure AD (vorige versie)](disk-encryption-key-vault-aad.md) voor meer informatie.
+> - Als u azure-schijfversleuteling eerder met Azure AD hebt gebruikt om een vm te versleutelen, moet u deze optie blijven gebruiken om uw vm te versleutelen. Zie [Een sleutelkluis voor Azure-schijfversleuteling maken en configureren met Azure AD (vorige release)](disk-encryption-key-vault-aad.md) voor meer informatie.
 
-Een sleutel kluis maken en configureren voor gebruik met Azure Disk Encryption bestaat uit drie stappen:
+Het maken en configureren van een sleutelkluis voor gebruik met Azure Disk Encryption omvat drie stappen:
 
-1. Een resource groep maken, indien nodig.
-2. Een sleutel kluis maken. 
-3. Geavanceerd toegangs beleid voor sleutel kluis instellen.
+1. Indien nodig een resourcegroep maken.
+2. Het creëren van een sleutelkluis. 
+3. Het instellen van geavanceerde toegangsbeleidsregels voor belangrijke vaults.
 
-Deze stappen worden geïllustreerd in de volgende Quick starts:
+Deze stappen worden geïllustreerd in de volgende snelstarts:
 
 - [Een Linux-VM maken en versleutelen met behulp van Azure CLI](disk-encryption-cli-quickstart.md)
 - [Een Linux-VM maken en versleutelen met behulp van Azure PowerShell](disk-encryption-cli-quickstart.md)
 
-U kunt eventueel ook een sleutel versleutelings sleutel genereren of importeren (KEK).
+U ook, indien u dat wenst, een sleutelversleutelingssleutel (KEK) genereren of importeren.
 
 > [!Note]
-> De stappen in dit artikel zijn geautomatiseerd in het [Azure Disk Encryption vereisten CLI-script](https://github.com/ejarvi/ade-cli-getting-started) en [Azure Disk Encryption vereisten Power shell-script](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts).
+> De stappen in dit artikel zijn geautomatiseerd in de [vereisten voor Azure Disk Encryption CLI-script](https://github.com/ejarvi/ade-cli-getting-started) en Azure Disk [Encryption-vereisten PowerShell-script](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts).
 
-## <a name="install-tools-and-connect-to-azure"></a>Hulpprogram ma's installeren en verbinding maken met Azure
+## <a name="install-tools-and-connect-to-azure"></a>Hulpprogramma's installeren en verbinding maken met Azure
 
-U kunt de stappen in dit artikel uitvoeren met de [Azure cli](/cli/azure/), de [Azure PowerShell AZ-module](/powershell/azure/overview)of de [Azure Portal](https://portal.azure.com). 
+De stappen in dit artikel kunnen worden voltooid met de [Azure CLI,](/cli/azure/)de [Azure PowerShell Az-module](/powershell/azure/overview)of de [Azure-portal](https://portal.azure.com). 
 
-Terwijl de portal toegankelijk is via uw browser, hebben Azure CLI en Azure PowerShell lokale installatie nodig. Zie [Azure Disk Encryption voor Linux: hulpprogram Ma's installeren](disk-encryption-linux.md#install-tools-and-connect-to-azure) voor meer informatie.
+Hoewel de portal toegankelijk is via uw browser, vereisen Azure CLI en Azure PowerShell lokale installatie. zie [Azure Disk Encryption for Linux: Installeer hulpprogramma's](disk-encryption-linux.md#install-tools-and-connect-to-azure) voor meer informatie.
 
 ### <a name="connect-to-your-azure-account"></a>Verbinding maken met uw Azure-account
 
-Voordat u de Azure CLI of Azure PowerShell gebruikt, moet u eerst verbinding maken met uw Azure-abonnement. U doet dit door u aan te [melden met Azure cli](/cli/azure/authenticate-azure-cli?view=azure-cli-latest), u aan te [melden met Azure Power shell](/powershell/azure/authenticate-azureps?view=azps-2.5.0)of uw referenties aan de Azure portal toe te voegen wanneer u hierom wordt gevraagd.
+Voordat u de Azure CLI of Azure PowerShell gebruikt, moet u eerst verbinding maken met uw Azure-abonnement. U doet dit door [u aan te melden bij Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest), zich aan te melden bij Azure [Powershell](/powershell/azure/authenticate-azureps?view=azps-2.5.0)of uw referenties aan de Azure-portal te leveren wanneer daarom wordt gevraagd.
 
 ```azurecli-interactive
 az login
@@ -57,13 +57,13 @@ Connect-AzAccount
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-*Als u al een resource groep hebt, kunt u door gaan met [het maken van een sleutel kluis](#create-a-key-vault).*
+*Als u al een resourcegroep hebt, u doorgaan [met Het maken van een sleutelkluis.](#create-a-key-vault)*
 
 Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. 
 
-Maak een resource groep met behulp van de [AZ-groep](/cli/azure/group?view=azure-cli-latest#az-group-create) Azure cli-opdracht maken, de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell of uit de [Azure Portal](https://portal.azure.com).
+Maak een resourcegroep met de [opdracht AZ-groep maak](/cli/azure/group?view=azure-cli-latest#az-group-create) Azure CLI, de opdracht [Nieuw-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell of vanuit de [Azure-portal.](https://portal.azure.com)
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" --location eastus
@@ -75,18 +75,18 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 ## <a name="create-a-key-vault"></a>Een sleutelkluis maken
 
-*Als u al een sleutel kluis hebt, kunt u door gaan met [Geavanceerd toegangs beleid voor sleutel kluis instellen](#set-key-vault-advanced-access-policies).*
+*Als u al een sleutelkluis hebt, u doorgaan [met het geavanceerde toegangsbeleid voor belangrijke kluizen instellen.](#set-key-vault-advanced-access-policies)*
 
-Een sleutel kluis maken met behulp van de opdracht [AZ sleutel kluis Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) Azure CLI, de opdracht [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure power shell, de [Azure Portal](https://portal.azure.com)of een [Resource Manager-sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
+Maak een sleutelkluis met de sjabloon [AZ KeyVault maak](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) Azure CLI, de opdracht [Nieuw-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell, de [Azure-portal](https://portal.azure.com)of een [Resource Manager-sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
 >[!WARNING]
-> Om ervoor te zorgen dat versleutelings geheimen geen regionale grenzen overschrijden, Azure Disk Encryption vereist dat de Key Vault en de virtuele machines in dezelfde regio naast elkaar staan. Maak en gebruik een Key Vault dat zich in dezelfde regio bevindt als de Vm's die moeten worden versleuteld. 
+> Om ervoor te zorgen dat versleutelingsgeheimen de regionale grenzen niet overschrijden, vereist Azure Disk Encryption dat de Key Vault en de VM's in dezelfde regio worden geplaatst. Maak en gebruik een Key Vault die zich in dezelfde regio bevindt als de VM's die moeten worden versleuteld. 
 
-Elk Key Vault moet een unieke naam hebben. Vervang < uw-unieke kluis naam > door de naam van uw sleutel kluis in de volgende voor beelden.
+Elke Key Vault moet een unieke naam hebben. Vervang <uw-unieke-keyvault-naam> met de naam van uw sleutelkluis in de volgende voorbeelden.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
-Wanneer u een sleutel kluis maakt met behulp van Azure CLI, voegt u de vlag '--ingeschakeld-voor-Disk-Encryption ' toe.
+Voeg bij het maken van een sleutelkluis met Azure CLI de vlag '--enabled-for-disk-encryption' toe.
 
 ```azurecli-interactive
 az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myResourceGroup" --location "eastus" --enabled-for-disk-encryption
@@ -94,106 +94,106 @@ az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myReso
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Wanneer u een sleutel kluis maakt met behulp van Azure PowerShell, voegt u de vlag '-EnabledForDiskEncryption ' toe.
+Voeg bij het maken van een sleutelkluis met Azure PowerShell de vlag 'EnabledForDiskEncryption' toe.
 
 ```azurepowershell-interactive
 New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup" -Location "eastus" -EnabledForDiskEncryption
 ```
 ### <a name="resource-manager-template"></a>Resource Manager-sjabloon
 
-U kunt ook een sleutel kluis maken met behulp van de [Resource Manager-sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
+U ook een sleutelkluis maken met behulp van de [sjabloon Resourcemanager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
-1. Klik in de Azure Quick Start-sjabloon op **implementeren naar Azure**.
-2. Selecteer het abonnement, de resource groep, de locatie van de resource groep, de Key Vault naam, de object-ID, de juridische voor waarden en de overeenkomst en klik vervolgens op **kopen**. 
+1. Klik op de Azure-snelstartsjabloon op **Implementeren naar Azure**.
+2. Selecteer het abonnement, de resourcegroep, de locatie van de resourcegroep, de naam van de sleutelkluis, object-id, juridische voorwaarden en overeenkomst en klik op **Kopen**. 
 
 
-##  <a name="set-key-vault-advanced-access-policies"></a>Geavanceerd toegangs beleid voor sleutel kluis instellen
+##  <a name="set-key-vault-advanced-access-policies"></a>Geavanceerd toegangsbeleid voor de sleutelkluis instellen
 
-Het Azure-platform moet toegang hebben tot de sleutels of geheimen in uw key vault zodat ze beschikbaar voor de virtuele machine voor opstarten en ontsleutelen van de volumes. 
+Het Azure-platform heeft toegang nodig tot de versleutelingssleutels of -geheimen in uw sleutelkluis om ze beschikbaar te maken voor de VM voor het opstarten en decoderen van de volumes. 
 
-Als u de sleutel kluis voor schijf versleuteling, implementatie of sjabloon implementatie niet hebt ingeschakeld op het moment van maken (zoals in de vorige stap is gedemonstreerd), moet u het geavanceerde toegangs beleid bijwerken.  
+Als u uw sleutelkluis niet hebt ingeschakeld voor schijfversleuteling, -implementatie of sjabloonimplementatie op het moment van maken (zoals in de vorige stap is aangetoond), moet u het geavanceerde toegangsbeleid bijwerken.  
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
-Gebruik [AZ Key kluis update](/cli/azure/keyvault#az-keyvault-update) om schijf versleuteling in te scha kelen voor de sleutel kluis. 
+Gebruik [de AZ KeyVault-update](/cli/azure/keyvault#az-keyvault-update) om schijfversleuteling voor de sleutelkluis in te schakelen. 
 
- - **Key Vault voor schijf versleuteling inschakelen:** Ingeschakeld-voor-schijf versleuteling is vereist. 
+ - **Key Vault inschakelen voor schijfversleuteling:** Ingeschakeld-voor-schijf-encryptie is vereist. 
 
      ```azurecli-interactive
      az keyvault update --name "<your-unique-keyvault-name>" --resource-group "MyResourceGroup" --enabled-for-disk-encryption "true"
      ```  
 
- - **Schakel Key Vault in voor implementatie, indien nodig:** Hiermee kan de micro soft. Compute-resource provider geheimen ophalen van deze sleutel kluis wanneer er naar deze sleutel kluis wordt verwezen bij het maken van een virtuele machine.
+ - **Schakel Key Vault in voor implementatie, indien nodig:** Hiermee kan de Microsoft.Compute-resourceprovider geheimen ophalen uit deze sleutelkluis wanneer naar deze sleutelkluis wordt verwezen in het maken van resources, bijvoorbeeld bij het maken van een virtuele machine.
 
      ```azurecli-interactive
      az keyvault update --name "<your-unique-keyvault-name>" --resource-group "MyResourceGroup" --enabled-for-deployment "true"
      ``` 
 
- - **Schakel Key Vault voor sjabloon implementatie in, indien nodig:** Resource Manager mag geheimen uit de kluis ophalen.
+ - **Schakel Key Vault in voor sjabloonimplementatie, indien nodig:** Laat Resource Manager geheimen uit de kluis ophalen.
      ```azurecli-interactive  
      az keyvault update --name "<your-unique-keyvault-name>" --resource-group "MyResourceGroup" --enabled-for-template-deployment "true"
      ```
 
 ###  <a name="azure-powershell"></a>Azure PowerShell
- Gebruik de sleutel kluis Power shell [-cmdlet Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) om schijf versleuteling in te scha kelen voor de sleutel kluis.
+ Gebruik de key vault PowerShell cmdlet [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) om schijfversleuteling voor de sleutelkluis in te schakelen.
 
-  - **Key Vault voor schijf versleuteling inschakelen:** EnabledForDiskEncryption is vereist voor Azure Disk Encryption.
+  - **Key Vault inschakelen voor schijfversleuteling:** EnabledForDiskEncryption is vereist voor Azure Disk-versleuteling.
       
      ```azurepowershell-interactive 
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForDiskEncryption
      ```
 
-  - **Schakel Key Vault in voor implementatie, indien nodig:** Hiermee kan de micro soft. Compute-resource provider geheimen ophalen van deze sleutel kluis wanneer er naar deze sleutel kluis wordt verwezen bij het maken van een virtuele machine.
+  - **Schakel Key Vault in voor implementatie, indien nodig:** Hiermee kan de Microsoft.Compute-resourceprovider geheimen ophalen uit deze sleutelkluis wanneer naar deze sleutelkluis wordt verwezen in het maken van resources, bijvoorbeeld bij het maken van een virtuele machine.
 
      ```azurepowershell-interactive
       Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForDeployment
      ```
 
-  - **Schakel Key Vault voor sjabloon implementatie in, indien nodig:** Hiermee kunnen Azure Resource Manager geheimen van deze sleutel kluis ophalen wanneer naar deze sleutel kluis wordt verwezen in een sjabloon implementatie.
+  - **Schakel Key Vault in voor sjabloonimplementatie, indien nodig:** Hiermee kan Azure Resource Manager geheimen uit deze sleutelkluis krijgen wanneer naar deze sleutelkluis wordt verwezen in een sjabloonimplementatie.
 
      ```azurepowershell-interactive             
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForTemplateDeployment
      ```
 
-### <a name="azure-portal"></a>Azure-portal
+### <a name="azure-portal"></a>Azure Portal
 
-1. Selecteer uw sleutel kluis, ga naar **toegangs beleid**en **Klik om geavanceerd toegangs beleid weer te geven**.
-2. Schakel het selectie vakje **toegang tot Azure Disk Encryption voor volume versleuteling inschakelen**in.
-3. Selecteer **toegang tot Azure virtual machines inschakelen voor implementatie** en/of **toegang tot Azure Resource Manager voor sjabloon implementatie**inschakelen, indien nodig. 
+1. Selecteer uw sleutelkluis, ga naar **Toegangsbeleid**en **klik om geavanceerd toegangsbeleid weer te geven**.
+2. Schakel het vak met het label **Toegang tot Azure-schijfversleuteling inschakelen in voor volumeversleuteling**.
+3. Selecteer **Toegang tot Azure Virtual Machines inschakelen voor implementatie** en/of Toegang tot Azure Resource Manager inschakelen voor **sjabloonimplementatie**, indien nodig. 
 4. Klik op **Opslaan**.
 
-    ![Azure-sleutelkluis geavanceerde toegangsbeleid](./media/disk-encryption/keyvault-portal-fig4.png)
+    ![Azure key vault advanced access policies](./media/disk-encryption/keyvault-portal-fig4.png)
 
 
-## <a name="set-up-a-key-encryption-key-kek"></a>Een Key Encryption Key instellen (KEK)
+## <a name="set-up-a-key-encryption-key-kek"></a>Een sleutelversleutelingssleutel instellen (KEK)
 
-Als u wilt een sleutel key-versleuteling (KEK) te gebruiken voor een extra beveiligingslaag voor versleutelingssleutels, moet u een KEK-sleutel toevoegen aan uw key vault. Wanneer een sleutel van versleutelingssleutel is opgegeven, gebruikt Azure Disk Encryption die sleutel het verpakken van de geheimen van de versleuteling voor het schrijven naar de Key Vault.
+Als u een sleutelversleutelingssleutel (KEK) wilt gebruiken voor een extra beveiligingslaag voor versleutelingssleutels, voegt u een KEK toe aan uw sleutelkluis. Wanneer een sleutelversleutelingssleutel is opgegeven, gebruikt Azure Disk Encryption die sleutel om de versleutelingsgeheimen te verpakken voordat u naar Key Vault gaat.
 
-U kunt een nieuwe KEK genereren met behulp van de opdracht voor het maken van de Azure CLI [AZ-sleutel](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) , de Azure PowerShell [add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet of de [Azure Portal](https://portal.azure.com/). U moet een RSA-sleutel type genereren. Azure Disk Encryption biedt nog geen ondersteuning voor het gebruik van elliptische curve toetsen.
+U een nieuwe KEK genereren met de opdracht Azure CLI [az keyvault-key create,](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) de Azure PowerShell [Add-AzKeyVaultKey-cmdlet](/powershell/module/az.keyvault/add-azkeyvaultkey) of de [Azure-portal.](https://portal.azure.com/) U moet een RSA-sleuteltype genereren; Azure Disk Encryption biedt nog geen ondersteuning voor elliptische curvetoetsen.
 
-U kunt in plaats daarvan een KEK importeren uit uw on-premises sleutel beheer HSM. Zie [Key Vault-documentatie](../../key-vault/key-vault-hsm-protected-keys.md)voor meer informatie. 
+U in plaats daarvan een KEK importeren uit uw on-premises key management HSM. Zie [Key Vault Documentation voor](../../key-vault/key-vault-hsm-protected-keys.md)meer informatie. 
 
-Uw sleutel kluis KEK-Url's moeten een versie nummer hebben. Azure wordt deze beperking van versiebeheer afgedwongen. Zie de volgende voorbeelden voor geldige geheim en KEK-sleutel-URL's:
+Uw key vault KEK URL's moeten worden geversioned. Azure handhaaft deze beperking van versiebeheer. Zie de volgende voorbeelden voor geldige geheime en KEK-URL's:
 
-* Voor beeld van een geldige geheime URL: *https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-* Voor beeld van een geldige KEK-URL: *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+* Voorbeeld van een geldige geheime URL:*https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+* Voorbeeld van een geldige KEK-URL:*https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-Azure Disk Encryption biedt geen ondersteuning voor het opgeven van de poortnummers als onderdeel van de key vault-geheimen en KEK-sleutel-URL's. Zie voor voorbeelden van niet-ondersteunde en ondersteunde key vault-URL's in de volgende voorbeelden:
+Azure Disk Encryption ondersteunt geen ondersteuning voor het opgeven van poortnummers als onderdeel van sleutelkluisgeheimen en KEK-URL's. Zie de volgende voorbeelden voor niet-ondersteunde en ondersteunde URL's voor sleutelkluizen:
 
-  * Aanvaard bare sleutel kluis-URL: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-  * Onaanvaardbaar URL voor sleutel kluis: *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * URL van acceptabele sleutelkluis:*https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * URL van onaanvaardbare sleutelkluis:*https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
-Gebruik de opdracht voor het maken van een nieuwe KEK in de Azure CLI [AZ-sleutel](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) voor het genereren van sleutels en sla deze op in uw sleutel kluis.
+Gebruik de opdracht Azure CLI [az keyvault-toets om](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) een nieuwe KEK te genereren en op te slaan in uw sleutelkluis.
 
 ```azurecli-interactive
 az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA-HSM
 ```
 
-. U kunt in plaats daarvan een persoonlijke sleutel importeren met behulp van de Azure CLI [AZ sleutel import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) opdracht:
+. U in plaats daarvan een privésleutel importeren met de opdracht Azure CLI [az keyvault-sleutelimporteren:](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import)
 
-In beide gevallen moet u de naam van uw KEK opgeven voor de para meter Azure CLI [AZ VM Encryption Enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-enable) --Key-Encryption-Key. 
+In beide gevallen levert u de naam van uw KEK aan de parameter Azure CLI [az vm-encryptie](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-enable) --key-encryption-key. 
 
 ```azurecli-interactive
 az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-keyvault "<your-unique-keyvault-name>" --key-encryption-key "myKEK"
@@ -201,15 +201,15 @@ az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-key
 
 ###  <a name="azure-powershell"></a>Azure PowerShell 
 
-Gebruik de Azure PowerShell cmdlet [add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey?view=azps-2.5.0) om een nieuwe KEK te genereren en op te slaan in uw sleutel kluis.
+Gebruik de Azure PowerShell [Add-AzKeyVaultKey-cmdlet](/powershell/module/az.keyvault/add-azkeyvaultkey?view=azps-2.5.0) om een nieuwe KEK te genereren en op te slaan in uw sleutelkluis.
 
  ```powershell-interactive
 Add-AzKeyVaultKey -Name "myKEK" -VaultName "<your-unique-keyvault-name>" -Destination "HSM"
 ```
 
-U kunt in plaats daarvan een persoonlijke sleutel importeren met behulp van de Azure PowerShell [AZ Key kluis-sleutel importeren](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) .
+U in plaats daarvan een privésleutel importeren met de opdracht Azure PowerShell [az keyvault-sleutelinvoer.](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import)
 
-In beide gevallen geeft u de ID van uw KEK-sleutel kluis en de URL van uw KEK aan de Azure PowerShell [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.5.0) -KeyEncryptionKeyVaultId en-KeyEncryptionKeyUrl para meters. Houd er rekening mee dat in dit voor beeld wordt aangenomen dat u dezelfde sleutel kluis gebruikt voor zowel de schijf versleutelings sleutel als de KEK.
+In beide gevallen levert u de ID van uw KEK-sleutelkluis en de URL van uw KEK aan de Azure PowerShell [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.5.0) -KeyEncryptionKeyVaultId en -KeyEncryptionKeyUrl-parameters. Houd er rekening mee dat in dit voorbeeld wordt aangenomen dat u dezelfde sleutelkluis gebruikt voor zowel de schijfversleutelingssleutel als de KEK.
 
  ```powershell-interactive
 $KeyVault = Get-AzKeyVault -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup"
@@ -220,8 +220,8 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName MyResourceGroup -VMName "MyVM
  
 ## <a name="next-steps"></a>Volgende stappen
 
-- [SysteemAzure Disk Encryption vereisten CLI-script](https://github.com/ejarvi/ade-cli-getting-started)
-- [Azure Disk Encryption van vereisten Power shell-script](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
-- [Azure Disk Encryption scenario's voor Linux-vm's](disk-encryption-linux.md) leren
-- Meer informatie over het [oplossen van Azure Disk Encryption](disk-encryption-troubleshooting.md)
-- De [voorbeeld scripts van Azure Disk Encryption](disk-encryption-sample-scripts.md) lezen
+- [Azure Disk Encryption-vereisten voor CLI-script](https://github.com/ejarvi/ade-cli-getting-started)
+- [Azure Disk Encryption-vereisten Voor PowerShell-script](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
+- Azure [Disk Encryption-scenario's op Linux VM's](disk-encryption-linux.md)
+- Meer informatie over het [oplossen van problemen met Azure Disk Encryption](disk-encryption-troubleshooting.md)
+- Lees de [voorbeeldscripts azure diskversleuteling](disk-encryption-sample-scripts.md)

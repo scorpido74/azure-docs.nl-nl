@@ -1,6 +1,6 @@
 ---
-title: Invoer voor probleemoplossing voor Azure Stream Analytics
-description: Dit artikel wordt beschreven technieken voor het oplossen van uw invoer verbindingen in Azure Stream Analytics-taken.
+title: Problemen met de invoer voor Azure Stream Analytics oplossen
+description: In dit artikel worden technieken beschreven om problemen op te lossen met uw invoerverbindingen in Azure Stream Analytics-taken.
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,101 +9,101 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: dac3037f82c38980c9ac16685aa7fddac68a2e7b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720296"
 ---
 # <a name="troubleshoot-input-connections"></a>Problemen met invoerverbindingen oplossen
 
-Deze pagina worden veelvoorkomende problemen beschreven met invoer verbindingen en het oplossen van deze.
+Op deze pagina worden veelvoorkomende problemen met invoerverbindingen beschreven en hoe u deze oplossen.
 
-## <a name="input-events-not-received-by-job"></a>Invoergebeurtenissen niet is ontvangen door de taak 
-1.  Test de verbinding. Controleer de verbinding met de invoer en uitvoer met behulp van de knop **verbinding testen** voor elke invoer en uitvoer.
+## <a name="input-events-not-received-by-job"></a>Invoergebeurtenissen die niet door taak zijn ontvangen 
+1.  Test uw connectiviteit. Controleer de connectiviteit met ingangen en uitgangen met behulp van de knop **Verbinding testen** voor elke invoer en uitvoer.
 
-2.  Controleer de ingevoerde gegevens.
+2.  Bekijk uw invoergegevens.
 
-    1. Als u wilt controleren of de invoer gegevens in Event hub stromen, gebruikt u [Service Bus Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) om verbinding te maken met de Azure Event hub (als er een event hub-invoer wordt gebruikt).
+    1. Als u wilt controleren of invoergegevens naar gebeurtenishub stromen, gebruikt u [Service Bus Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) om verbinding te maken met Azure Event Hub (als gebeurtenishub-invoer wordt gebruikt).
         
-    1. Gebruik de knop [**voorbeeld gegevens**](stream-analytics-sample-data-input.md) voor elke invoer. Down load de voorbeeld gegevens van de invoer.
+    1. Gebruik de knop [**Voorbeeldgegevens**](stream-analytics-sample-data-input.md) voor elke invoer. Download de invoervoorbeeldgegevens.
         
-    1. Inspecteer de voorbeeld gegevens om inzicht te krijgen in de vorm van de gegevens, dat wil zeggen, het schema en de [gegevens typen](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+    1. Controleer de voorbeeldgegevens om de vorm van de gegevens te begrijpen, dat wil zeggen het schema en de [gegevenstypen.](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
 
-3.  Zorg ervoor dat u een tijds bereik hebt geselecteerd in de invoer voorbeeld. Kies **tijds bereik selecteren**en voer een voorbeeld duur in voordat u uw query test.
+3.  Zorg ervoor dat u een tijdsbereik hebt geselecteerd in het invoervoorbeeld. Kies **Tijdbereik selecteren**en voer een voorbeeldduur in voordat u uw query test.
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Ongeldige invoergebeurtenissen veroorzaken deserialisatiefouten 
-Deserialisatie problemen worden veroorzaakt wanneer de invoerstroom van uw Stream Analytics-taak onjuiste berichten bevat. Bijvoorbeeld, een onjuist ingedeeld bericht wordt mogelijk veroorzaakt door een ontbrekend haakje of een accolade in een JSON-object, of heeft een onjuiste tijdstempel-indeling in het tijdveld. 
+Deserialisatieproblemen worden veroorzaakt wanneer de invoerstream van uw Stream Analytics-taak misvormde berichten bevat. Een verkeerd gevormd bericht kan bijvoorbeeld worden veroorzaakt door een ontbrekend haakje of een brace in een JSON-object of een onjuiste tijdstempelnotatie in het tijdveld. 
  
-Wanneer een Stream Analytics-taak ontvangt een onjuist ingedeeld bericht uit de invoer, wordt het bericht verwijderd en ontvangt u een melding met een waarschuwing. Er wordt een waarschuwings symbool weer gegeven op de tegel **invoer** van uw stream Analytics taak. Deze waarschuwing aanmelding bestaat, zolang de taak wordt uitgevoerd:
+Wanneer een Stream Analytics-taak een verkeerd ontvangenbericht van een invoer ontvangt, wordt het bericht verwijderd en wordt u gewaarschuwd met een waarschuwing. Er wordt een waarschuwingssymbool weergegeven op de tegel **Invoer** van uw streamanalytics-taak. Dit waarschuwingsbord bestaat zolang de taak in de huidige staat is:
 
-![Azure Stream Analytics-invoer tegel](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
+![Tegel Azure Stream Analytics-invoer](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
-Schakel de diagnostische logboeken om de details van de waarschuwing weer te geven. Voor onjuist gevormde invoergebeurtenissen bevatten de logboeken van de uitvoering van een item met het bericht dat lijkt op: 
+Schakel de diagnostische logboeken in om de details van de waarschuwing weer te geven. Voor misvormde invoergebeurtenissen bevatten de uitvoeringslogboeken een vermelding met het bericht dat eruitziet als: 
 ```
 Could not deserialize the input event(s) from resource <blob URI> as json.
 ```
 
-### <a name="what-caused-the-deserialization-error"></a>Over de oorzaak van de deserialisatiefout
-U kunt de volgende stappen voor het analyseren van de invoer gebeurtenissen in detail om op te halen van een duidelijk wat de oorzaak van de deserialisatiefout kan duren. Vervolgens kunt u de bron van de gebeurtenis voor het genereren van gebeurtenissen in de juiste indeling om te voorkomen dat u opnieuw te maken met dit probleem oplossen.
+### <a name="what-caused-the-deserialization-error"></a>Wat is de oorzaak van de deserialisatiefout
+U de volgende stappen nemen om de invoergebeurtenissen in detail te analyseren om een duidelijk inzicht te krijgen in de oorzaak van de deserialisatiefout. U vervolgens de gebeurtenisbron herstellen om gebeurtenissen in de juiste indeling te genereren om te voorkomen dat u dit probleem opnieuw raakt.
 
-1. Navigeer naar de tegel invoer en klik op de waarschuwing symbolen voor een overzicht van problemen.
+1. Navigeer naar de invoertegel en klik op de waarschuwingssymbolen om de lijst met problemen te bekijken.
 
-2. De tegel invoer details geeft een lijst van waarschuwingen met informatie over elk probleem. De waarschuwing voorbeeld bevat de partitie, offset en volgnummers waarbij er ongeldige JSON-gegevens. 
+2. De tegel invoerdetails geeft een lijst met waarschuwingen weer met details over elk probleem. Het voorbeeld waarschuwingsbericht hieronder bevat de partitie, verschuiving, en volgorde nummers waar er misvormde JSON-gegevens. 
 
-   ![Stream Analytics waarschuwings bericht met offset](media/stream-analytics-malformed-events/warning-message-with-offset.png)
+   ![Waarschuwing voor Stream Analytics met verschuiving](media/stream-analytics-malformed-events/warning-message-with-offset.png)
    
-3. Als u de JSON-gegevens met een onjuiste indeling wilt vinden, voert u de CheckMalformedEvents.cs-code uit die beschikbaar is in de GitHub-voor [beelden-opslag plaats](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Deze code leest de partitie-ID, verschuiving en de gegevens die zich in deze offset af te drukken. 
+3. Als u de JSON-gegevens met de onjuiste indeling wilt vinden, voert u de CheckMalformedEvents.cs code uit die beschikbaar is in de [GitHub-opslagplaats voor voorbeelden.](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH) Deze code leest de partitie-id, ververschuiving en drukt de gegevens af die zich in die verschuiving bevinden. 
 
 4. Zodra de gegevens zijn gelezen, kunt u de serialisatie-indeling analyseren en corrigeren.
 
-5. U kunt ook [gebeurtenissen van een IOT hub met de service bus Explorer lezen](https://code.msdn.microsoft.com/How-to-read-events-from-an-1641eb1b).
+5. U ook [gebeurtenissen lezen vanuit een IoT-hub met de Service Bus Explorer.](https://code.msdn.microsoft.com/How-to-read-events-from-an-1641eb1b)
 
-## <a name="job-exceeds-maximum-event-hub-receivers"></a>Taak overschrijdt de maximale Event Hub-ontvangers
-Een aanbevolen procedure voor het gebruik van Event Hubs is het gebruik van meerdere consumentengroepen om te controleren of de schaalbaarheid van de taak. Het aantal lezers in de Stream Analytics-taak voor een specifieke invoer is van invloed op het aantal lezers in een enkele consumergroep. Het exacte aantal ontvangers is gebaseerd op interne implementatiegegevens voor de scale-out-topologie-logica en niet extern wordt weergegeven. Het aantal lezers kunt wijzigen wanneer een taak wordt gestart of tijdens upgrades van de taak.
+## <a name="job-exceeds-maximum-event-hub-receivers"></a>Taak overschrijdt maximale Event Hub-ontvangers
+Een aanbevolen manier voor het gebruik van Event Hubs is het gebruik van meerdere consumentengroepen om de schaalbaarheid van de taak te garanderen. Het aantal lezers in de taak Stream Analytics voor een specifieke invoer is van invloed op het aantal lezers in één consumentengroep. Het precieze aantal ontvangers is gebaseerd op interne implementatiedetails voor de scale-out topologielogica en wordt niet extern belicht. Het aantal lezers kan wijzigen wanneer een taak wordt gestart of tijdens taakupgrades.
 
 De fout wordt weergegeven wanneer het aantal ontvangers dat het maximum overschrijdt de volgende waarde heeft: `The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
 
 > [!NOTE]
-> Als het aantal lezers worden gewijzigd tijdens de upgrade van een taak, worden tijdelijke waarschuwingen om te controleren, Logboeken geschreven. Stream Analytics-taken worden automatisch hersteld vanuit deze tijdelijke problemen.
+> Wanneer het aantal lezers verandert tijdens een taakupgrade, worden tijdelijke waarschuwingen geschreven om logboeken te controleren. Stream Analytics-taken herstellen automatisch van deze tijdelijke problemen.
 
-### <a name="add-a-consumer-group-in-event-hubs"></a>Toevoegen van een consumentengroep in Event Hubs
-Om toe te voegen een nieuwe consumentengroep in uw exemplaar van de Event Hubs, de volgende stappen uit:
+### <a name="add-a-consumer-group-in-event-hubs"></a>Een consumentengroep toevoegen in gebeurtenishubs
+Voer de volgende stappen uit om een nieuwe consumentengroep toe te voegen aan uw instantie Event Hubs:
 
 1. Meld u aan bij Azure Portal.
 
-2. Ga naar uw Eventhubs.
+2. Zoek je eventhubs.
 
-3. Selecteer **Event hubs** onder de kop **entities** .
+3. Selecteer **Gebeurtenishubs** onder de kop **Entiteiten.**
 
-4. Selecteer de Event Hub met de naam.
+4. Selecteer de gebeurtenishub op naam.
 
-5. Selecteer op de pagina **Event hubs-exemplaar** , onder de kop **entiteiten** , **consumenten groepen**. Er wordt een gebruikers groep met de naam **$default** weer gegeven.
+5. Selecteer op de pagina **Instantie van gebeurtenishubs** onder de kop **Entiteiten** de optie **Consumentengroepen**. Een consumentengroep met naam **$Default** wordt vermeld.
 
-6. Selecteer **+ consumenten groep** om een nieuwe consumenten groep toe te voegen. 
+6. Selecteer **+ Consumentengroep** om een nieuwe consumentengroep toe te voegen. 
 
-   ![Toevoegen van een consumentengroep in Event Hubs](media/stream-analytics-event-hub-consumer-groups/new-eh-consumer-group.png)
+   ![Een consumentengroep toevoegen in gebeurtenishubs](media/stream-analytics-event-hub-consumer-groups/new-eh-consumer-group.png)
 
-7. Wanneer u de invoer in de Stream Analytics-taak om te verwijzen naar de Event Hub hebt gemaakt, kunt u er de consumergroep opgegeven. $Default wordt gebruikt wanneer niets is opgegeven. Als u een nieuwe consumergroep maakt, de Event Hub-invoer in de Stream Analytics-taak bewerken en geef de naam van de nieuwe consumentengroep.
+7. Wanneer u de invoer in de taak Stream Analytics hebt gemaakt om naar de gebeurtenishub te wijzen, hebt u daar de consumentengroep opgegeven. $Default wordt gebruikt wanneer geen is opgegeven. Zodra u een nieuwe consumentengroep hebt gemaakt, bewerkt u de input van de gebeurtenishub in de taak Stream Analytics en geeft u de naam van de nieuwe consumentengroep op.
 
 
-## <a name="readers-per-partition-exceeds-event-hubs-limit"></a>Lezers per partitie overschrijdt de limiet van Event Hubs
+## <a name="readers-per-partition-exceeds-event-hubs-limit"></a>Lezers per partitie overschrijdt de limiet voor gebeurtenishubs
 
-Als uw streaming-querysyntaxis verwijst meerdere keren naar dezelfde invoer Event Hub-resource, kan de engine taak meerdere lezers per query van die consumentengroep kunt gebruiken. Als er te veel verwijzingen naar de dezelfde consumergroep, de taak langer zijn dan de limiet van vijf en er een fout gegenereerd. In deze gevallen kunt u verder verdelen met behulp van meerdere invoergegevens uit meerdere consumentengroepen met behulp van de oplossing in de volgende sectie beschreven. 
+Als de syntaxis van uw streamingquery meerdere keren naar dezelfde bron van gebeurtenishub verwijst, kan de taakengine meerdere lezers per query uit dezelfde consumentengroep gebruiken. Wanneer er te veel verwijzingen naar dezelfde consumentengroep zijn, kan de taak de limiet van vijf overschrijden en een fout worden gegenereerd. In die omstandigheden u verder delen door meerdere ingangen te gebruiken voor meerdere consumentengroepen met behulp van de oplossing die in de volgende sectie wordt beschreven. 
 
-Scenario's waarin het aantal lezers per partitie is groter dan de Event Hubs-limiet van vijf omvatten het volgende:
+Scenario's waarin het aantal lezers per partitie de limiet van gebeurtenishubs van vijf overschrijdt, zijn de volgende:
 
-* Meerdere SELECT-instructies: als u meerdere SELECT-instructies gebruikt die naar **dezelfde** Event hub invoer verwijzen, zorgt elke SELECT-instructie ervoor dat een nieuwe ontvanger wordt gemaakt.
-* UNION: wanneer u een UNION gebruikt, is het mogelijk dat er meerdere invoer waarden zijn die verwijzen naar **dezelfde** Event hub en consumenten groep.
-* SELF-lid: wanneer u een SELF-KOPPELINGs bewerking gebruikt, is het mogelijk om **hetzelfde** Event hub meerdere keren te gebruiken.
+* Meerdere SELECT-instructies: Als u meerdere SELECT-instructies gebruikt die verwijzen naar **dezelfde** gebeurtenishub-invoer, zorgt elke SELECT-instructie ervoor dat er een nieuwe ontvanger wordt gemaakt.
+* UNION: Wanneer u een EU gebruikt, is het mogelijk om meerdere ingangen te hebben die verwijzen naar **dezelfde** gebeurtenishub en consumentengroep.
+* SELF JOIN: Wanneer u een SELF JOIN-bewerking gebruikt, is het mogelijk om meerdere keren naar **dezelfde** gebeurtenishub te verwijzen.
 
-De volgende procedures kunnen u scenario's waarin het aantal lezers per partitie is groter dan de Event Hubs-limiet van vijf.
+De volgende aanbevolen procedures kunnen helpen scenario's te beperken waarin het aantal lezers per partitie de limiet van vijf gebeurtenishubs overschrijdt.
 
-### <a name="split-your-query-into-multiple-steps-by-using-a-with-clause"></a>Uw query splitsen in meerdere stappen met behulp van een WITH-component
+### <a name="split-your-query-into-multiple-steps-by-using-a-with-clause"></a>Uw query splitsen in meerdere stappen met behulp van een MET-component
 
-De WITH-clausule Hiermee geeft u een tijdelijke naam resultatenset die kan worden verwezen door een FROM-component in de query. U definieert de WITH-clausule in het bereik van de uitvoering van één SELECT-instructie.
+De WITH-component specificeert een tijdelijke benoemde resultaatset waarnaar kan worden verwezen door een FROM-component in de query. U definieert de WITH-component in de uitvoeringsscope van één SELECT-instructie.
 
-Bijvoorbeeld, in plaats van deze query:
+Bijvoorbeeld in plaats van deze query:
 
 ```SQL
 SELECT foo 
@@ -133,13 +133,13 @@ FROM data
 …
 ```
 
-### <a name="ensure-that-inputs-bind-to-different-consumer-groups"></a>Zorg ervoor dat de invoer aan verschillende consumentengroepen binden
+### <a name="ensure-that-inputs-bind-to-different-consumer-groups"></a>Ervoor zorgen dat inputs zich binden aan verschillende consumentengroepen
 
-Voor query's waarin drie of meer invoerwaarden zijn verbonden met de dezelfde consumergroep van Event Hubs, kunt u afzonderlijke consumergroepen maken. Dit is vereist voor het maken van aanvullende invoer van de Stream Analytics.
+Voor query's waarin drie of meer ingangen zijn verbonden met dezelfde consumentengroep Event Hubs, maakt u afzonderlijke consumentengroepen. Dit vereist het maken van extra Stream Analytics-ingangen.
 
 ## <a name="get-help"></a>Help opvragen
 
-Probeer het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
+Probeer ons Azure [Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
 
 ## <a name="next-steps"></a>Volgende stappen
 

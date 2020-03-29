@@ -1,6 +1,6 @@
 ---
-title: Overzichtsblade van de service StorSimple Virtual Array | Microsoft Docs
-description: Beschrijft de overzichtsblade van de service voor StorSimple Device Manager en wordt uitgelegd hoe u deze gebruiken voor het bewaken van de status van uw StorSimple Virtual Array.
+title: StorSimple Virtual Array-serviceoverzichtsblad | Microsoft Documenten
+description: Beschrijft het serviceoverzichtsblad voor StorSimple Device Manager en legt uit hoe u het gebruiken om de status van uw StorSimple Virtual Array te controleren.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,36 +15,36 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 9c05bddaeb3c34400db1ec75c624ef00a85d9444
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64720730"
 ---
-# <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Gebruik de overzichtsblade van de service voor StorSimple Device Manager is verbonden met StorSimple Virtual Array
+# <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Gebruik het onderhoudsoverzichtsblad voor StorSimple Device Manager dat is aangesloten op StorSimple Virtual Array
 ## <a name="overview"></a>Overzicht
-De overzichtsblade van de service voor de StorSimple Device Manager geeft een overzicht van de virtuele StorSimple-matrices (ook wel bekend als StorSimple on-premises virtuele apparaten of virtuele apparaten) die zijn verbonden met uw service, die een systeem moet markeren beheerder van uw aandacht. In deze zelfstudie introduceert de overzichtsblade van de service, wordt de inhoud en de functie uitgelegd en beschrijft de taken die u vanaf deze blade uitvoeren kunt.
+Het serviceoverzichtsblad voor de StorSimple Device Manager biedt een overzicht van de StorSimple Virtual Arrays (ook bekend als StorSimple on-premises virtuele apparaten of virtuele apparaten) die zijn aangesloten op uw service, met de nadruk op apparaten die een systeem nodig hebben de aandacht van de beheerder. Deze zelfstudie introduceert het onderhoudsoverzichtsblad, legt de inhoud en functie uit en beschrijft de taken die u vanuit dit blad uitvoeren.
 
 ![Servicedashboard](./media/storsimple-virtual-array-service-summary/service-blade.png)
 
-## <a name="management-commands-and-essentials"></a>Opdrachten voor het beheer- en essentials
-In de overzichtsblade van StorSimple ziet u de opties voor het beheren van uw StorSimple Device Manager-service, evenals de virtuele matrices die zijn geregistreerd bij deze service. Aan de bovenkant van de blade en aan de linkerkant ziet u de opdrachten voor het beheer.
+## <a name="management-commands-and-essentials"></a>Managementopdrachten en benodigdheden
+In het StorSimple-overzichtsblad ziet u de opties voor het beheren van uw StorSimple Device Manager-service en de virtuele arrays die zijn geregistreerd bij deze service. U ziet de management commando's over de bovenkant van het blad en aan de linkerkant.
 
-Gebruik deze opties verschillende bewerkingen uit te voeren, zoals bestandsshares of volumes toevoegen, of een monitor die de verschillende taken die worden uitgevoerd op de virtuele matrices.
+Gebruik deze opties om verschillende bewerkingen uit te voeren, zoals het toevoegen van shares of volumes, of het bewaken van de verschillende taken die op de virtuele arrays worden uitgevoerd.
 
-Het gebied essentials bevat enkele belangrijke eigenschappen, zoals de resourcegroep, de locatie en het abonnement waarin uw StorSimple Device Manager is gemaakt.
+Het gebied essentials legt een aantal belangrijke eigenschappen vast, zoals de resourcegroep, locatie en abonnement waarin uw StorSimple Device Manager is gemaakt.
 
-## <a name="storsimple-device-manager-service-summary"></a>Serviceoverzicht van de StorSimple Device Manager
-* De **waarschuwingen** tegel biedt een momentopname van de actieve waarschuwingen voor alle virtuele apparaten, gegroepeerd op ernst van waarschuwing. Hiermee opent u de tegel te klikken op de **waarschuwingen** blade waar u kunt klikken op een afzonderlijke waarschuwing om weer te geven aanvullende informatie over deze waarschuwing, inclusief alle aanbevolen acties. U kunt ook de waarschuwing wissen als het probleem is opgelost.
-* De **capaciteit** tegel geeft ziet u de primaire opslag die is ingericht en resterende voor alle virtuele apparaten ten opzichte van de totale beschikbare opslag voor alle virtuele apparaten. **Ingericht** verwijst naar de hoeveelheid opslag die is voorbereid en is toegewezen voor gebruik, **resterend** verwijst naar de resterende capaciteit die kan worden ingericht op alle virtuele apparaten. De **resterende gelaagde** capaciteit is de beschikbare capaciteit die kan worden ingericht met inbegrip van de cloud, terwijl de **resterende lokale** is de resterende capaciteit op de schijven die zijn gekoppeld aan de virtuele matrices.
-* In de **gebruik** diagram ziet u de relevante metrische gegevens voor uw virtuele apparaten. U kunt de primaire opslag die wordt gebruikt voor alle virtuele apparaten, evenals de cloudopslag die wordt gebruikt door virtuele apparaten gedurende de afgelopen 7 dagen, de standaard periode bekijken. Gebruik de **bewerken** optie in de rechterbovenhoek van de grafiek naar een ander tijdstip schaal kiezen.
-* De **apparaten** tegel bevat een samenvatting van het aantal virtuele matrices in uw StorSimple-Apparaatbeheerfunctie gegroepeerd op de status van apparaat. Klik op deze tegel te openen de **apparaten** blade lijst en klik vervolgens op een afzonderlijk apparaat om te zoomen op de samenvatting voor apparaten die specifiek zijn voor het apparaat. U kunt ook specifieke apparaatacties uitvoeren vanaf de overzichtsblade van een bepaald apparaat. Voor meer informatie over de overzichtsblade van het apparaat, gaat u naar [de overzichtsblade van Device](storsimple-virtual-array-device-summary.md).
+## <a name="storsimple-device-manager-service-summary"></a>StorSimple Device Manager-serviceoverzicht
+* De tegel **Waarschuwingen** biedt een momentopname van alle actieve waarschuwingen op alle virtuele apparaten, gegroepeerd op waarschuwingsernst. Als u op de tegel klikt, wordt het **zwaard Waarschuwingen** geopend, waar u op een afzonderlijke waarschuwing klikken om aanvullende details over die waarschuwing weer te geven, inclusief aanbevolen acties. U de waarschuwing ook wissen als het probleem is opgelost.
+* De **tegeldisplays capaciteit** toont de primaire opslag die is ingericht en overblijft op alle virtuele apparaten ten opzichte van de totale opslag die beschikbaar is voor alle virtuele apparaten. **Provisioned** verwijst naar de hoeveelheid opslagruimte die is voorbereid en toegewezen voor gebruik, **Remaining** verwijst naar de resterende capaciteit die kan worden ingericht op alle virtuele apparaten. De **resterende gelaagde** capaciteit is de beschikbare capaciteit die kan worden ingericht, inclusief cloud, terwijl **de resterende lokale** is de capaciteit die overblijft op de schijven die zijn gekoppeld aan de virtuele arrays.
+* In de grafiek **Gebruik** ziet u de relevante statistieken voor uw virtuele apparaten. U de primaire opslag bekijken die wordt gebruikt op alle virtuele apparaten, evenals de cloudopslag die in de afgelopen 7 dagen, de standaardperiode, is verbruikt door virtuele apparaten. Gebruik de optie **Bewerken** in de rechterbovenhoek van de grafiek om een andere tijdschaal te kiezen.
+* De tegel **Apparaten** geeft een overzicht van het aantal virtuele arrays in uw StorSimple-apparaatbeheer gegroepeerd op apparaatstatus. Klik op deze tegel om het lijstblad **apparaten** te openen en klik vervolgens op een afzonderlijk apparaat om in te zoomen op het apparaatoverzicht dat specifiek is voor het apparaat. U ook apparaatspecifieke acties uitvoeren vanaf een bepaald apparaatoverzichtsblad. Ga voor meer informatie over het apparaatoverzichtsblad naar [het overzichtsblad van het apparaat](storsimple-virtual-array-device-summary.md).
 
-## <a name="view-the-activity-logs"></a>De activiteitenlogboeken bekijken
-Als u de verschillende bewerkingen uitgevoerd binnen uw StorSimple Device Manager, klikt u op de **activiteitenlogboeken** koppelen aan de linkerkant van de overzichtsblade van uw StorSimple-service. Hiermee gaat u naar de **activiteitenlogboeken** blade waar u een overzicht van de recente bewerkingen uitgevoerd kunt zien.
+## <a name="view-the-activity-logs"></a>De activiteitslogboeken weergeven
+Als u de verschillende bewerkingen wilt bekijken die binnen uw StorSimple-apparaatbeheer worden uitgevoerd, klikt u op de koppeling **Activiteitslogboeken** aan de linkerkant van uw StorSimple-serviceoverzichtsblad. Dit brengt u naar het **blade activiteitslogboeken,** waar u een overzicht zien van de recente uitgevoerde bewerkingen.
 
 ![Activiteitenlogboeken](./media/storsimple-virtual-array-service-summary/activity-log.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het [gebruiken van de lokale webgebruikersinterface voor het beheren van uw StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
+Meer informatie over het [gebruik van de lokale web-gebruikersinterface om uw StorSimple Virtual Array te beheren.](storsimple-ova-web-ui-admin.md)
 

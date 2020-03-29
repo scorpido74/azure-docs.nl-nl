@@ -1,6 +1,6 @@
 ---
-title: Taken voor het project leiden in Team Data Science Process
-description: Een gedetailleerd overzicht van de taken voor een project leider op een team data Science process team
+title: Taken voor de projectleider in het Team Data Science Proces
+description: Een gedetailleerde overzicht van de taken voor een projectlead in een Team Data Science Process team
 author: marktab
 manager: marktab
 editor: marktab
@@ -11,90 +11,90 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76714409"
 ---
-# <a name="project-lead-tasks-in-the-team-data-science-process"></a>Project Lead-taken in het team data Science process
+# <a name="project-lead-tasks-in-the-team-data-science-process"></a>Projectleadtaken in het Team Data Science Process
 
-In dit artikel worden taken beschreven die een *Project Lead* heeft voltooid voor het instellen van een opslag plaats voor hun project team in het [team data Science process](overview.md) (TDSP). De TDSP is een framework dat is ontwikkeld door micro soft en een gestructureerde reeks activiteiten biedt om op een efficiënte manier cloud-gebaseerde predictive analytics oplossingen uit te voeren. De TDSP is ontworpen om samen werking en team educatie te verbeteren. Voor een overzicht van de personeels rollen en de bijbehorende taken voor een Data Science-team dat wordt gestandardization op de TDSP, raadpleegt u [rollen en taken voor team data Science process](roles-tasks.md).
+In dit artikel worden taken beschreven die een *projectlead* voltooit om een opslagplaats voor hun projectteam in het [Team Data Science Process](overview.md) (TDSP) in te stellen. De TDSP is een framework ontwikkeld door Microsoft dat een gestructureerde reeks activiteiten biedt om cloudgebaseerde, voorspellende analyseoplossingen efficiënt uit te voeren. Het TDSP is ontworpen om samenwerking en teamlearning te verbeteren. Zie [Team Data Science Process rollen en taken](roles-tasks.md)voor een team dat zich standaard maakt voor een team dat zich op het TDSP standaardiseert.
 
-Een project lead beheert de dagelijkse activiteiten van afzonderlijke gegevens wetenschappers over een specifiek data Science-project in de TDSP. In het volgende diagram ziet u de werk stroom voor Project Lead-taken:
+Een projectlead beheert de dagelijkse activiteiten van individuele data scientists op een specifiek data science project in het TDSP. In het volgende diagram wordt de werkstroom voor projectleadtaken weergegeven:
 
-![Taak werk stroom project leider](./media/project-lead-tasks/project-leads-1-tdsp-creating-projects.png)
+![Werkstroom van projectleadtaak](./media/project-lead-tasks/project-leads-1-tdsp-creating-projects.png)
 
-In deze zelf studie wordt stap 1 beschreven: project opslagplaats maken en stap 2: een Seed-project opslagplaats uit de ProjectTemplate-opslag plaats van uw team. 
+Deze zelfstudie heeft betrekking op stap 1: Projectrepository maken en Stap 2: Seed projectrepository van uw projectProjectTemplate-opslagplaats. 
 
-Voor stap 3: functie werk item voor project maken en stap 4: verhalen toevoegen voor project fasen, Zie [flexibele ontwikkeling van data Science-projecten](agile-development.md).
+Voor stap 3: Functiewerkitem voor project maken en stap 4: Verhalen toevoegen voor projectfasen, zie [Agile ontwikkeling van data science-projecten.](agile-development.md)
 
-Zie voor stap 5: opslag/analyse-assets maken en aanpassen en delen, indien nodig, [team gegevens en analyse resources maken](team-lead-tasks.md#create-team-data-and-analytics-resources).
+Voor stap 5: Opslag-/analyse-elementen maken en aanpassen en zo nodig delen, zie [Teamgegevens en analysebronnen maken.](team-lead-tasks.md#create-team-data-and-analytics-resources)
 
-Zie [team leden toevoegen en machtigingen configureren](team-lead-tasks.md#add-team-members-and-configure-permissions)voor stap 6: beveiligings beheer van de project opslagplaats instellen.
+Voor stap 6: Beveiligingsbeheer instellen van projectrepository, zie [Teamleden toevoegen en machtigingen configureren.](team-lead-tasks.md#add-team-members-and-configure-permissions)
 
 > [!NOTE] 
-> In dit artikel wordt gebruikgemaakt van Azure opslag plaatsen voor het instellen van een TDSP-project, omdat dat gaat om TDSP te implementeren bij micro soft. Als uw team gebruikmaakt van een ander platform voor het hosten van een code, zijn de taken van de Project Lead hetzelfde, maar de manier om ze te volt ooien, kan afwijken.
+> In dit artikel wordt Azure Repos gebruikt om een TDSP-project in te stellen, omdat u TDSP bij Microsoft implementeren. Als uw team een ander codehostingplatform gebruikt, zijn de projectleadtaken hetzelfde, maar de manier om ze te voltooien kan anders zijn.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In deze zelf studie wordt ervan uitgegaan dat uw [groeps Manager](group-manager-tasks.md) en [team leider](team-lead-tasks.md) de volgende resources en machtigingen hebben ingesteld:
+In deze zelfstudie wordt ervan uitgegaan dat uw [groepsmanager](group-manager-tasks.md) en [teamleider](team-lead-tasks.md) de volgende bronnen en machtigingen hebben ingesteld:
 
-- De Azure DevOps **-organisatie** voor uw gegevens eenheid
-- Een team **project** voor uw data Science-Team
-- **Opslag** plaatsen voor team sjablonen en-hulpprogram ma's
-- **Machtigingen** voor uw organisatie account voor het maken en bewerken van opslag plaatsen voor uw project
+- De Azure **DevOps-organisatie** voor uw gegevenseenheid
+- Een **teamproject** voor uw data science team
+- Teamsjabloon en **hulpprogramma's repositories**
+- **Machtigingen** voor uw organisatieaccount voor u om opslagplaatsen voor uw project te maken en te bewerken
 
-Als u opslag plaatsen wilt klonen en inhoud wilt wijzigen op uw lokale machine of Data Science Virtual Machine (DSVM), of Azure File Storage wilt instellen en deze wilt koppelen aan uw DSVM, moet u ook rekening houden met de volgende controle lijst:
+Als u opslagplaatsen wilt klonen en inhoud op uw lokale machine of Data Science Virtual Machine (DSVM) wilt wijzigen of Azure-bestandsopslag wilt instellen en deze wilt monteren op uw DSVM, moet u ook rekening houden met deze checklist:
 
 - Een Azure-abonnement.
-- Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Anders raadpleegt u de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix).
-- Als u een DSVM wilt gebruiken, wordt de Windows-of Linux-DSVM gemaakt en geconfigureerd in Azure. Zie de [Data Science virtual machine-documentatie](/azure/machine-learning/data-science-virtual-machine/)voor meer informatie en instructies.
-- Voor een Windows DSVM is [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) op uw computer geïnstalleerd. Schuif in het bestand *README.MD* omlaag naar de sectie **downloaden en installeren** en selecteer het **nieuwste installatie programma**. Down load het installatie programma *. exe* op de pagina installatie programma en voer het uit. 
-- Voor een Linux-DSVM is een open bare SSH-sleutel ingesteld op uw DSVM en toegevoegd aan Azure DevOps. Zie de sectie **open bare SSH-sleutel maken** in de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix)voor meer informatie en instructies. 
+- Git geïnstalleerd op uw machine. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Anders zie de [bijlage platforms en gereedschappen](platforms-and-tools.md#appendix).
+- Als u een DSVM wilt gebruiken, heeft de Windows- of Linux DSVM in Azure gemaakt en geconfigureerd. Zie de Data Science [Virtual Machine Documentation](/azure/machine-learning/data-science-virtual-machine/)voor meer informatie en instructies.
+- Voor een Windows DSVM is [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) geïnstalleerd op uw machine. Schuif *in* het README.md-bestand omlaag naar de sectie **Downloaden en installeren** en selecteer het nieuwste **installatieprogramma.** Download de *.exe* installer van de installatiepagina en voer deze uit. 
+- Voor een Linux DSVM is een SSH-openbare sleutel ingesteld op uw DSVM en toegevoegd in Azure DevOps. Zie de sectie **SSH public key maken** in de [bijlage platforms en hulpmiddelen](platforms-and-tools.md#appendix)voor meer informatie en instructies. 
 
-## <a name="create-a-project-repository-in-your-team-project"></a>Een project opslagplaats maken in uw team project
+## <a name="create-a-project-repository-in-your-team-project"></a>Een projectrepository maken in uw teamproject
 
-Een project opslagplaats maken in het **MyTeam** -project van uw team:
+Ga als het gaat om het maken van een projectrepository in het **MyTeam-project van** uw team:
 
-1. Ga naar de project **samenvattings** pagina van uw team op *https:\//\<server naam >/\<organisatie naam >/\<team naam >* , bijvoorbeeld **https:\//dev.Azure.com/DataScienceUnit/MyTeam**, en selecteer **opslag plaatsen** in de linkernavigatiebalk. 
+1. Ga naar de **projectoverzichtspagina** van uw team op *\//\<https: servernaam>/\<organisatienaam>/\<teamnaam>*, bijvoorbeeld **https:\//dev.azure.com/DataScienceUnit/MyTeam**en selecteer **Repos** in de linkernavigatie. 
    
-1. Selecteer de naam van de opslag plaats boven aan de pagina en selecteer vervolgens **nieuwe opslag plaats** in de vervolg keuzelijst.
+1. Selecteer de naam van de opslagplaats boven aan de pagina en selecteer **Vervolgens Nieuwe opslagplaats** in de vervolgkeuzelijst.
    
-   ![Nieuwe opslag plaats selecteren](./media/project-lead-tasks/project-leads-9-select-repos.png)
+   ![Nieuwe opslagplaats selecteren](./media/project-lead-tasks/project-leads-9-select-repos.png)
    
-1. Zorg ervoor dat in het dialoog venster **een nieuwe opslag plaats maken** de tekst **Git** is geselecteerd onder **type**. Voer *DSProject1* in bij **naam van opslag plaats**en selecteer vervolgens **maken**.
+1. Controleer in het dialoogvenster **Een nieuwe opslagplaats maken** of **Git** is geselecteerd onder **Type**. Voer *DSProject1* in onder **de naam Repository**en selecteer Vervolgens **Maken**.
    
-   ![Opslag plaats maken](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
+   ![Repository maken](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
    
-1. Controleer of u de nieuwe **DSProject1** -opslag plaats kunt zien op de pagina project instellingen. 
+1. Controleer of u de nieuwe **DSProject1-opslagplaats** op uw projectinstellingenpagina zien. 
    
-   ![Project opslagplaats in Project instellingen](./media/project-lead-tasks/project-leads-4-create-project-repo-3.png)
+   ![Projectrepository in Projectinstellingen](./media/project-lead-tasks/project-leads-4-create-project-repo-3.png)
 
-## <a name="import-the-team-template-into-your-project-repository"></a>De team sjabloon importeren in uw project opslagplaats
+## <a name="import-the-team-template-into-your-project-repository"></a>De teamsjabloon importeren in uw projectopslagplaats
 
-Uw project opslagplaats vullen met de inhoud van de opslag plaats van uw team sjabloon:
+Ga als volgende over uw projectopslagplaats met de inhoud van de opslagplaats voor teamsjablonen:
 
-1. Selecteer op de pagina project **overzicht** van uw team **opslag plaatsen** in het navigatie venster aan de linkerkant. 
+1. Selecteer **Repo's** in de linkernavigatie op de pagina **Projectoverzicht van** uw team. 
    
-1. Selecteer de naam van de opslag plaats boven aan de pagina en selecteer **DSProject1** in de vervolg keuzelijst.
+1. Selecteer de naam van de opslagplaats boven aan de pagina en selecteer **DSProject1** in de vervolgkeuzelijst.
    
-1. Selecteer **importeren**op de pagina **DSProject1 is leeg** . 
+1. Selecteer **Importeren**op de pagina **DSProject1 is leeg** . 
    
-   ![Import selecteren](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
+   ![Selecteer Importeren](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. Selecteer **Git** als **bron type**in het dialoog venster **een Git-opslag plaats importeren** en voer de URL voor uw **TeamTemplate** -opslag plaats in onder **kloon-URL**. De URL is *https:\//\<server naam >/\<organisatie naam >/\<team naam >/_git/\<naam van de opslag plaats van de team sjabloon >* . Bijvoorbeeld: **https:\//dev.Azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
+1. Selecteer **Git** als **brontype**in het dialoogvenster **Een Git-opslagplaats importeren** en voer de URL in voor uw **TeamTemplate-opslagplaats** onder **Kloon-URL**. De URL is *\//\<https:\<servernaam>/ organisatienaam\<>/ teamnaam>/_git/\<teamtemplate repository>*. Bijvoorbeeld: **https:\//dev.azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
    
-1. Selecteer **importeren**. De inhoud van de opslag plaats van uw team sjabloon wordt in uw project opslagplaats geïmporteerd. 
+1. Selecteer **Importeren**. De inhoud van uw teamsjabloonrepository wordt geïmporteerd in uw projectrepository. 
    
-   ![Opslag plaats voor team sjabloon importeren](./media/project-lead-tasks/project-leads-6-create-project-repo-5.png)
+   ![Opslagplaats teamsjabloon importeren](./media/project-lead-tasks/project-leads-6-create-project-repo-5.png)
 
-Als u de inhoud van de project opslagplaats moet aanpassen om te voldoen aan de specifieke behoeften van uw project, kunt u opslag plaats bestanden en mappen toevoegen, verwijderen of wijzigen. U kunt rechtstreeks in azure opslag plaatsen werken of de opslag plaats klonen op uw lokale computer of DSVM, wijzigingen aanbrengen en uw updates door voeren en pushen naar de gedeelde project opslagplaats. Volg de instructies bij het [aanpassen van de inhoud van de team opslagplaatsen](team-lead-tasks.md#customize-the-contents-of-the-team-repositories).
+Als u de inhoud van uw projectopslagplaats moet aanpassen aan de specifieke behoeften van uw project, u opslagplaatsen en mappen toevoegen, verwijderen of wijzigen. U rechtstreeks werken in Azure Repos, of de repository klonen naar uw lokale machine of DSVM, wijzigingen aanbrengen en uw updates vastleggen en pushen naar de gedeelde projectrepository. Volg de instructies [bij De inhoud van de teamrepositories aanpassen.](team-lead-tasks.md#customize-the-contents-of-the-team-repositories)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Hier vindt u koppelingen naar gedetailleerde beschrijvingen van de andere rollen en taken die worden gedefinieerd door het team data Science process:
+Hier vindt u links naar gedetailleerde beschrijvingen van de andere rollen en taken die zijn gedefinieerd door het Team Data Science-proces:
 
-- [Groeps Manager-taken voor een Data Science-Team](group-manager-tasks.md)
-- [Team lead taken voor een Data Science-Team](team-lead-tasks.md)
-- [Individuele Inzender taken voor een Data Science-Team](project-ic-tasks.md)
+- [Group Manager taken voor een data science team](group-manager-tasks.md)
+- [Team Lead taken voor een data science team](team-lead-tasks.md)
+- [Individuele bijdragertaken voor een data science-team](project-ic-tasks.md)

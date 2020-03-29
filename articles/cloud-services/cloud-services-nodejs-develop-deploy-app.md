@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
 ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386184"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Een Node.js-toepassing maken en implementeren in een Azure Cloud Service
@@ -35,7 +35,7 @@ De toepassing is een eenvoudige 'Hallo wereld'-toepassing:
 > [!NOTE]
 > In deze zelfstudie wordt Azure PowerShell gebruikt waarvoor Windows is vereist.
 
-* Installeer en configureer [Azure Powershell].
+* Azure [Powershell]installeren en configureren.
 * Download en installeer [Azure SDK voor .NET 2.7]. Selecteer in de installatie-instellingen:
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
@@ -155,7 +155,7 @@ Nadat u uw toepassing hebt geïmplementeerd, wilt u deze mogelijk uitschakelen o
    > Als u de service verwijdert, wordt niet het opslagaccount verwijderd dat is gemaakt toen de service voor de eerste keer werd gepubliceerd, en de kosten voor gebruikte opslag worden nog wel in rekening gebracht. Als niets anders de opslag gebruikt, kunt u deze verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het [Node.js Developer Center] voor meer informatie.
+Zie het [Node.js-ontwikkelaarscentrum] voor meer informatie.
 
 <!-- URL List -->
 

@@ -1,6 +1,6 @@
 ---
-title: Een image Factory maken in Azure DevTest Labs | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u een aangepaste installatie kopie-Factory instelt met behulp van voorbeeld scripts die beschikbaar zijn in de Git-opslag plaats (Azure DevTest Labs).
+title: Een afbeeldingsfabriek maken in Azure DevTest Labs | Microsoft Documenten
+description: In dit artikel ziet u hoe u een aangepaste afbeeldingsfabriek instelt met behulp van voorbeeldscripts die beschikbaar zijn in de Git-opslagplaats (Azure DevTest Labs).
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -13,49 +13,49 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 2c5a44a9505d4a312be521cdc3219c5e4ce95a42
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759445"
 ---
-# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Een aangepaste installatie kopie maken in de fabriek in Azure DevTest Labs
-In dit artikel wordt beschreven hoe u een aangepaste installatie kopie-Factory instelt met behulp van voorbeeld scripts die beschikbaar zijn in de [Git-opslag plaats](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory).
+# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Een aangepaste afbeeldingsfabriek maken in Azure DevTest Labs
+In dit artikel ziet u hoe u een aangepaste afbeeldingsfabriek instelt met behulp van voorbeeldscripts die beschikbaar zijn in de [Git-opslagplaats.](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)
 
-## <a name="whats-an-image-factory"></a>Wat is een image Factory?
-Een image Factory is een oplossing voor configuratie-as-code waarmee installatie kopieën automatisch worden gebouwd en gedistribueerd op regel matige basis met alle gewenste configuraties. De installatie kopieën in de installatie kopie-Factory zijn altijd up-to-date en het doorlopende onderhoud is bijna nul zodra het hele proces is geautomatiseerd. En omdat alle vereiste configuraties al aanwezig zijn in de installatie kopie, wordt de tijd bespaard om het systeem hand matig te configureren nadat een virtuele machine is gemaakt met het basis besturingssysteem.
+## <a name="whats-an-image-factory"></a>Wat is een beeldfabriek?
+Een beeldfabriek is een configuratie-als-code-oplossing die afbeeldingen regelmatig automatisch bouwt en distribueert met alle gewenste configuraties. De beelden in de beeldfabriek zijn altijd up-to-date, en het voortdurende onderhoud is bijna nul zodra het hele proces is geautomatiseerd. En omdat alle vereiste configuraties al in de afbeelding staan, bespaart dit de tijd om het systeem handmatig te configureren nadat een VM is gemaakt met het basisbesturingssysteem.
 
-De belang rijke Accelerator om een ontwikkelaars Desktop te krijgen in DevTest Labs maakt gebruik van aangepaste installatie kopieën. Het nadeel van aangepaste installatie kopieën is dat er iets extra is om te onderhouden in het lab. Proef versies van producten verlopen bijvoorbeeld na verloop van tijd (of) nieuwe beveiligings updates worden niet toegepast, waardoor we de aangepaste installatie kopie periodiek kunnen vernieuwen. Met een image Factory hebt u een definitie van de installatie kopie die is ingecheckt bij broncode beheer en hebt u een geautomatiseerd proces om aangepaste installatie kopieën te maken op basis van de definitie.
+De belangrijke accelerator om een ontwikkelaar desktop naar een kant-en-klare status in DevTest Labs is met behulp van aangepaste afbeeldingen. Het nadeel van aangepaste afbeeldingen is dat er iets extra's te onderhouden in het lab. Proefversies van producten verlopen bijvoorbeeld na verloop van tijd (of) nieuw uitgebrachte beveiligingsupdates worden niet toegepast, waardoor we de aangepaste afbeelding periodiek moeten vernieuwen. Met een afbeeldingsfabriek hebt u een definitie van de afbeelding ingecheckt in broncodebeheer en hebt u een geautomatiseerd proces om aangepaste afbeeldingen te produceren op basis van de definitie.
 
-De oplossing maakt het mogelijk om virtuele machines te maken op basis van aangepaste installatie kopieën, terwijl extra onderhouds kosten worden geëlimineerd. Met deze oplossing kunt u automatisch aangepaste installatie kopieën maken, deze naar andere DevTest Labs distribueren en de oude installatie kopieën buiten gebruik stellen. In de volgende video vindt u informatie over de installatie kopie-Factory en hoe deze wordt geïmplementeerd met DevTest Labs.  Alle Azure Power shell-scripts zijn vrij beschikbaar en bevinden zich hier: [https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory).
+De oplossing maakt de snelheid van het maken van virtuele machines van aangepaste afbeeldingen mogelijk, terwijl extra lopende onderhoudskosten worden geëlimineerd. Met deze oplossing u automatisch aangepaste afbeeldingen maken, distribueren naar andere DevTest Labs en de oude afbeeldingen met pensioen laten gaan. In de volgende video leert u over de beeldfabriek en hoe deze wordt geïmplementeerd met DevTest Labs.  Alle Azure Powershell-scripts zijn vrij beschikbaar [https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory)en bevinden zich hier: .
 
 <br/>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Custom-Image-Factory-with-Azure-DevTest-Labs/player]
 
 
-## <a name="high-level-view-of-the-solution"></a>Weer gave op hoog niveau van de oplossing
-De oplossing maakt het mogelijk om virtuele machines te maken op basis van aangepaste installatie kopieën, terwijl extra onderhouds kosten worden geëlimineerd. Met deze oplossing kunt u automatisch aangepaste installatie kopieën maken en deze distribueren naar andere DevTest Labs. U gebruikt Azure DevOps (voorheen Visual Studio Team Services) als de Orchestration-engine voor het automatiseren van de bewerkingen in de DevTest Labs.
+## <a name="high-level-view-of-the-solution"></a>Beeld op hoog niveau van de oplossing
+De oplossing maakt de snelheid van het maken van virtuele machines van aangepaste afbeeldingen mogelijk, terwijl extra lopende onderhoudskosten worden geëlimineerd. Met deze oplossing u automatisch aangepaste afbeeldingen maken en distribueren naar andere DevTest Labs. U gebruikt Azure DevOps (voorheen Visual Studio Team Services) als orchestration-engine voor het automatiseren van alle bewerkingen in de DevTest Labs.
 
-![Weer gave op hoog niveau van de oplossing](./media/create-image-factory/high-level-view-of-solution.png)
+![Beeld op hoog niveau van de oplossing](./media/create-image-factory/high-level-view-of-solution.png)
 
-Er is een [VSTS-extensie voor DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) waarmee u deze afzonderlijke stappen kunt uitvoeren:
+Er is een [VSTS-extensie voor DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) waarmee u deze afzonderlijke stappen uitvoeren:
 
 - Aangepaste installatiekopie maken
 - VM maken
 - VM verwijderen
 - Omgeving maken
 - Omgeving verwijderen
-- Omgeving vullen
+- Omgeving bevolken
 
-Het gebruik van de DevTest Labs-extensie is een eenvoudige manier om aan de slag te gaan met het automatisch maken van aangepaste installatie kopieën in DevTest Labs.
+Het gebruik van de DevTest Labs-extensie is een eenvoudige manier om aan de slag te gaan met het automatisch maken van aangepaste afbeeldingen in DevTest Labs.
 
-Er is een alternatieve implementatie met behulp van het Power shell-script voor een complexere scenario. Met Power shell kunt u een installatie kopie-Factory volledig automatiseren op basis van DevTest Labs die kan worden gebruikt in uw doorlopende integratie en doorlopende levering (CI/CD) hulpprogramma keten. De beginselen gevolgd in deze alternatieve oplossing zijn:
+Er is een alternatieve implementatie met PowerShell-script voor een complexer scenario. Met PowerShell u een beeldfabriek volledig automatiseren op basis van DevTest Labs die kan worden gebruikt in uw continuous integration and continuous delivery (CI/CD) toolchain. De principes die in deze alternatieve oplossing worden gevolgd zijn:
 
-- Algemene updates moeten geen wijzigingen in de installatie kopie-Factory vereisen. (bijvoorbeeld het toevoegen van een nieuw type aangepaste installatie kopie, het automatisch buiten gebruik stellen van oude installatie kopieën, het toevoegen van een nieuw ' endpoint ' DevTest Labs om aangepaste installatie kopieën te ontvangen, enzovoort.)
-- Algemene wijzigingen worden ondersteund door broncode beheer (infra structuur als code)
-- DevTest Labs die aangepaste installatie kopieën ontvangen, bevinden zich mogelijk niet in hetzelfde Azure-abonnement (Labs span-abonnementen)
-- Power shell-scripts moeten opnieuw worden gebruikt, zodat we indien nodig extra fabrieken kunnen door nemen
+- Veelvoorkomende updates vereisen geen wijzigingen in de afbeeldingsfabriek. (bijvoorbeeld het toevoegen van een nieuw type aangepaste afbeelding, het automatisch terugtrekken van oude afbeeldingen, het toevoegen van een nieuw 'eindpunt' DevTest Labs om aangepaste afbeeldingen te ontvangen, enzovoort.)
+- Veelvoorkomende wijzigingen worden ondersteund door broncodebeheer (infrastructuur als code)
+- DevTest Labs die aangepaste afbeeldingen ontvangt, bevinden zich mogelijk niet in hetzelfde Azure-abonnement (labsspanabonnementen)
+- PowerShell-scripts moeten herbruikbaar zijn, zodat we extra fabrieken kunnen draaien als dat nodig is
 
 ## <a name="next-steps"></a>Volgende stappen
-Ga naar het volgende artikel in deze sectie: [een installatie kopie uitvoeren vanuit Azure DevOps](image-factory-set-up-devops-lab.md)
+Ga verder naar het volgende artikel in deze sectie: [Een afbeeldingsfabriek uitvoeren vanuit Azure DevOps](image-factory-set-up-devops-lab.md)

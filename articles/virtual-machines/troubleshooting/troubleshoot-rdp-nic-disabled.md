@@ -1,6 +1,6 @@
 ---
-title: Kan geen verbinding maken op afstand naar Azure Virtual Machines omdat de NIC is uitgeschakeld. | Microsoft Docs
-description: Meer informatie over het oplossen van problemen waarbij RDP mislukt, omdat de NIC is uitgeschakeld in virtuele Azure-machine | Microsoft Docs
+title: Kan niet op afstand verbinding maken met virtuele azure-machines omdat de NIC is uitgeschakeld | Microsoft Documenten
+description: Meer informatie over het oplossen van een probleem waarbij RDP mislukt omdat de NIC is uitgeschakeld in Azure VM| Microsoft Documenten
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,53 +13,53 @@ ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
 ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918237"
 ---
-#  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Kan geen extern bureaublad met een virtuele machine omdat de netwerkinterface is uitgeschakeld
+#  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Kan extern bureaublad niet naar een vm omdat de netwerkinterface is uitgeschakeld
 
-In dit artikel wordt uitgelegd hoe u een probleem in die u niet een extern bureaublad-verbinding naar Azure Windows Virtual Machines (VM's) als de netwerkinterface is uitgeschakeld op te lossen.
+In dit artikel wordt uitgelegd hoe u een probleem oplossen waarbij u geen Verbinding met Extern bureaublad maken met Azure Windows Virtual Machines (VM's) als de netwerkinterface is uitgeschakeld.
 
 
 ## <a name="symptoms"></a>Symptomen
 
-U kunt een RDP-verbinding of een ander type verbinding met een andere poort aanbrengen in een virtuele machine in Azure omdat de netwerkinterface op de virtuele machine is uitgeschakeld.
+U geen RDP-verbinding of een ander type verbinding met andere poorten maken met een VM in Azure omdat de netwerkinterface in de VM is uitgeschakeld.
 
 ## <a name="solution"></a>Oplossing
 
-Voordat u deze stappen hebt uitgevoerd, maakt u een momentopname van de besturingssysteemschijf van de betrokken virtuele machine als een back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
+Voordat u deze stappen volgt, maakt u een momentopname van de OS-schijf van de betreffende VM als back-up. Zie [Momentopname een schijf voor](../windows/snapshot-copy-managed-disk.md)meer informatie .
 
-Als u de interface voor de virtuele machine wilt inschakelen, gebruikt u serieel beheer of de [netwerk interface opnieuw instellen](#reset-network-interface) voor de virtuele machine.
+Als u de interface voor de virtuele machine wilt inschakelen, gebruikt u Seriële besturingselement of [reset de netwerkinterface](#reset-network-interface) voor de VM.
 
 ### <a name="use-serial-control"></a>Seriële besturingselement gebruiken
 
-1. Verbinding maken met de [seriële console en het Open cmd-exemplaar](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Als de seriële console niet op uw virtuele machine is ingeschakeld, raadpleegt u de [netwerk interface opnieuw instellen](#reset-network-interface).
+1. Maak verbinding [met seriële console en open CMD-instantie](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+). Zie [Netwerkinterface opnieuw instellen](#reset-network-interface)als de seriële console niet is ingeschakeld op uw vm.
 2. Controleer de status van de netwerkinterface:
 
         netsh interface show interface
 
-    Noteer de naam van de uitgeschakelde netwerkinterface.
+    Let op de naam van de uitgeschakelde netwerkinterface.
 
-3. De netwerkinterface inschakelen:
+3. Schakel de netwerkinterface in:
 
         netsh interface set interface name="interface Name" admin=enabled
 
-    Bijvoorbeeld, als de interwork-interface is de naam 'Ethernet 2', voer de volgende opdracht:
+    Als de interwork-interface bijvoorbeeld 'Ethernet 2' heet, voert u de volgende opdracht uit:
 
         netsh interface set interface name="Ethernet 2" admin=enabled
 
-4.  Controleer de status van de netwerkinterface opnieuw om het ervoor te zorgen dat de netwerkinterface is ingeschakeld.
+4.  Controleer opnieuw de status van de netwerkinterface om ervoor te zorgen dat de netwerkinterface is ingeschakeld.
 
         netsh interface show interface
 
-    U hebt geen op dit moment de virtuele machine opnieuw. De virtuele machine is weer bereikbaar is.
+    U hoeft de VM op dit moment niet opnieuw op te starten. De VM is weer bereikbaar.
 
-5.  Verbinding maken met de virtuele machine en controleren of het probleem opgelost is.
+5.  Maak verbinding met de VIRTUELE V.S. en kijk of het probleem is opgelost.
 
-## <a name="reset-network-interface"></a>De netwerkinterface opnieuw instellen
+## <a name="reset-network-interface"></a>Netwerkinterface opnieuw instellen
 
-Als u wilt herstellen van de netwerkinterface, wijzigt u het IP-adres naar een ander IP-adres dat beschikbaar is in het Subnet. U doet dit door Azure portal of Azure PowerShell te gebruiken. Zie [netwerk interface opnieuw instellen](reset-network-interface.md)voor meer informatie.
+Als u de netwerkinterface opnieuw wilt instellen, wijzigt u het IP-adres naar een ander IP-adres dat beschikbaar is in het subnet. Gebruik hiervoor Azure portal of Azure PowerShell. Zie [Netwerkinterface opnieuw instellen](reset-network-interface.md)voor meer informatie.

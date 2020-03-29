@@ -1,6 +1,6 @@
 ---
-title: De Azure VM-agent installeren in de offline modus | Microsoft Docs
-description: Meer informatie over het installeren van de Azure VM-agent in de offline modus.
+title: De Azure VM-agent installeren in offlinemodus | Microsoft Documenten
+description: Meer informatie over het installeren van de Azure VM Agent in offlinemodus.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -14,103 +14,103 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 8ea85b560f35c79b3d5066d794f587345810b5d0
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920855"
 ---
-# <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>De Azure virtual machine-agent installeren in de offline modus 
+# <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>De Azure Virtual Machine Agent installeren in offlinemodus 
 
-De Azure virtual machine agent (VM-agent) biedt nuttige functies, zoals het opnieuw instellen van het wacht woord voor de lokale beheerder en het pushen van scripts. In dit artikel wordt beschreven hoe u de VM-agent voor een offline virtuele Windows-machine (VM) installeert. 
+De Azure Virtual Machine Agent (VM Agent) biedt handige functies, zoals het opnieuw instellen van het wachtwoord van de lokale beheerder en het pushen van scripts. In dit artikel ziet u hoe u de VM-agent voor een virtuele Windows-virtuele machine (VM) installeert. 
 
-## <a name="when-to-use-the-vm-agent-in-offline-mode"></a>Wanneer de VM-agent in de offline modus moet worden gebruikt
+## <a name="when-to-use-the-vm-agent-in-offline-mode"></a>Wanneer de VM-agent in de offlinemodus gebruiken
 
-Installeer de VM-agent in de offline modus in de volgende scenario's:
+Installeer de VM-agent in de offlinemodus in de volgende scenario's:
 
-- De VM-agent is niet geïnstalleerd op de geïmplementeerde virtuele machine van Azure of de agent werkt niet.
-- U hebt het beheerders wachtwoord voor de virtuele machine verg eten of u hebt geen toegang tot de virtuele machine.
+- De geïmplementeerde Azure VM heeft de VM-agent niet geïnstalleerd of de agent werkt niet.
+- U bent het beheerderswachtwoord voor de vm vergeten of u hebt geen toegang tot de vm.
 
-## <a name="how-to-install-the-vm-agent-in-offline-mode"></a>De VM-agent installeren in de offline modus
+## <a name="how-to-install-the-vm-agent-in-offline-mode"></a>De VM-agent installeren in de offlinemodus
 
-Gebruik de volgende stappen om de VM-agent in de offline modus te installeren.
+Gebruik de volgende stappen om de VM-agent in de offlinemodus te installeren.
 
-### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>Stap 1: de besturingssysteem schijf van de virtuele machine als een gegevens schijf aan een andere virtuele machine koppelen
+### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>Stap 1: De OS-schijf van de VM als gegevensschijf aan een andere vm koppelen
 
-1. Maak een moment opname van de besturingssysteem schijf van de betreffende virtuele machine, maakt een schijf van de moment opname en koppel de schijf vervolgens aan een virtuele machine voor probleem oplossing. Zie [problemen met een Windows-VM oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure Portal](troubleshoot-recovery-disks-portal-windows.md)voor meer informatie. Voor de klassieke virtuele machine verwijdert u de virtuele machine en bewaart u de besturingssysteem schijf en koppelt u de besturingssysteem schijf aan de virtuele machine voor probleem oplossing.
+1. Maak een momentopname voor de OS-schijf van de betreffende VM, maak een schijf van de momentopname en voeg de schijf toe aan een probleemoplossingsvm. Zie [Problemen met een Windows-vm oplossen door de OS-schijf aan een herstel-vm te koppelen met behulp van de Azure-portal](troubleshoot-recovery-disks-portal-windows.md)voor meer informatie. Verwijder voor de klassieke VM de VM en bewaar de osschijf en voeg de OS-schijf toe aan de vm voor problemen oplossen.
 
-2.  Maak verbinding met de virtuele machine voor probleem oplossing. Open **computer beheer** > **schijf beheer**. Controleer of de besturingssysteem schijf online is en of de stationsletters zijn toegewezen aan de schijf partities.
+2.  Maak verbinding met de probleemoplosser-vm. **Schijfbeheer** > **openen**. Controleer of de schijf van het besturingssysteem online is en dat er stationsletters zijn toegewezen aan de schijfpartities.
 
-### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>Stap 2: Wijzig de besturingssysteem schijf om de Azure VM-agent te installeren
+### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>Stap 2: De osschijf wijzigen om de Azure VM-agent te installeren
 
-1.  Een verbinding met een extern bureau blad maken met de virtuele machine voor probleem oplossing.
+1.  Maak een externe bureaubladverbinding met de probleemoplosser-vm.
 
-2.  Blader in de virtuele machine van de probleem oplossing naar de besturingssysteem schijf die u hebt toegevoegd, open de map \Windows\System32\Config. Kopieer alle bestanden in deze map als back-up als een terugdraai actie vereist is.
+2.  Blader in de probleemoplosser-VM naar de besturingssysteemschijf die u hebt gekoppeld en open de map \windows\system32\config. Kopieer alle bestanden in deze map als back-up, voor het geval een terugdraaiing vereist is.
 
-3.  Start de **REGI ster-editor** (Regedit. exe).
+3.  Start de **registereditor** (regedit.exe).
 
-4.  Selecteer de **HKEY_LOCAL_MACHINE** sleutel. Selecteer in het menu **File** > **Component laden**:
+4.  Selecteer de **HKEY_LOCAL_MACHINE** toets. Selecteer In het menu **File** > **Load Hive:**
 
-    ![De Hive laden](./media/install-vm-agent-offline/load-hive.png)
+    ![Laad de korf](./media/install-vm-agent-offline/load-hive.png)
 
-5.  Blader naar de map \windows\system32\config\SYSTEM op de besturingssysteem schijf die u hebt toegevoegd. Voer **BROKENSYSTEM**in voor de naam van de component. De nieuwe register component wordt weer gegeven onder de sleutel **HKEY_LOCAL_MACHINE** .
+5.  Blader naar de map \windows\system32\config\SYSTEM op de besturingssysteemschijf die u hebt gekoppeld. Voer **BROKENSYSTEM**in voor de naam van de korf. De nieuwe registerkorf wordt weergegeven onder de **HKEY_LOCAL_MACHINE** sleutel.
 
-6.  Blader naar de map \windows\system32\config\SOFTWARE op de besturingssysteem schijf die u hebt toegevoegd. Voer **BROKENSOFTWARE**in als de naam van de Hive-software.
+6.  Blader naar de map \windows\system32\config\SOFTWARE op de besturingssysteemschijf die u hebt gekoppeld. Voer BROKENSOFTWARE in voor de naam van de **hive-software.**
 
-7. Als op de gekoppelde besturingssysteem schijf de VM-agent is geïnstalleerd, voert u een back-up uit van de huidige configuratie. Als er geen VM-agent is geïnstalleerd, gaat u verder met de volgende stap.
+7. Als de gekoppelde besturingssysteemschijf de VM-agent heeft geïnstalleerd, voert u een back-up van de huidige configuratie uit. Als de VM-agent niet is geïnstalleerd, gaat u naar de volgende stap.
       
     1. Wijzig de naam van de map \windowsazure in \windowsazure.old.
 
-    2. De volgende registers exporteren:
+    2. Exporteer de volgende registers:
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
-        - HKEY_LOCAL_MACHINE \BROKENSYSTEM\\ControlSet001\Services\WindowsAzureTelemetryService
+        - HKEY_LOCAL_MACHINE\BROKENSYSTEM\\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\RdAgent
 
-8.  Gebruik de bestaande bestanden op de virtuele machine voor probleem oplossing als opslag plaats voor de installatie van de VM-agent. Voltooi de volgende stappen:
+8.  Gebruik de bestaande bestanden op de probleemoplosser VM als opslagplaats voor de VM Agent-installatie. Voltooi de volgende stappen:
 
-    1. Exporteer de volgende subsleutels in de register indeling (. reg) van de virtuele machine voor probleem oplossing: 
-        - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
-        - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureTelemetryService
-        - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\RdAgent
+    1. Exporteer vanuit de probleemoplosser VM de volgende subsleutels in registerformaat (.reg): 
+        - HKEY_LOCAL_MACHINE \SYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
+        - HKEY_LOCAL_MACHINE \SYSTEM\ControlSet001\Services\WindowsAzureTelemetryService
+        - HKEY_LOCAL_MACHINE \SYSTEM\ControlSet001\Services\RdAgent
 
-          ![De subsleutels van het REGI ster exporteren](./media/install-vm-agent-offline/backup-reg.png)
+          ![De registersubsleutels exporteren](./media/install-vm-agent-offline/backup-reg.png)
 
-    2. Bewerk de register bestanden. Wijzig in elk bestand het vermeldings waarde **systeem** in **BROKENSYSTEM** (zoals weer gegeven in de volgende installatie kopieën) en sla het bestand op. Onthoud het **ImagePath** van de huidige VM-agent. U moet de bijbehorende map kopiëren naar de gekoppelde besturingssysteem schijf. 
+    2. Bewerk de registerbestanden. Wijzig in elk bestand het **invoerwaardesysteem** in **BROKENSYSTEM** (zoals in de volgende afbeeldingen wordt weergegeven) en sla het bestand op. Denk aan het **ImagePath** van de huidige VM-agent. We moeten de bijbehorende map kopiëren naar de bijgevoegde OS-schijf. 
 
-        ![De waarden van de registersubsleutel wijzigen](./media/install-vm-agent-offline/change-reg.png)
+        ![De subsleutelwaarden van het register wijzigen](./media/install-vm-agent-offline/change-reg.png)
 
-    3. Importeer de register bestanden in de opslag plaats door te dubbel klikken op elk register bestand.
+    3. Importeer de registerbestanden in de opslagplaats door op elk registerbestand te dubbelklikken.
 
-    4. Controleer of de volgende drie subsleutels zijn geïmporteerd in de **BROKENSYSTEM** -component:
+    4. Controleer of de volgende drie subsleutels met succes zijn geïmporteerd in de **brokensystem-korf:**
         - WindowsAzureGuestAgent
         - WindowsAzureTelemetryService
-        - RdAgent
+        - RdAgent (RdAgent)
 
-    5. Kopieer de installatiemap van de huidige VM-agent naar de gekoppelde besturingssysteem schijf: 
+    5. Kopieer de installatiemap van de huidige VM-agent naar de bijgevoegde osschijf: 
 
-        1.  Maak op de besturingssysteem schijf die u hebt gekoppeld, een map met de naam WindowsAzure in het hoofdpad.
+        1.  Maak op de besturingssysteemschijf die u hebt gekoppeld een map met de naam WindowsAzure in het hoofdpad.
 
-        2.  Ga naar C:\WindowsAzure op de virtuele machine voor probleem oplossing, zoek naar een map met de naam C:\WindowsAzure\ GuestAgent_X. X. XXXX. XXX. Kopieer de werken-map met het meest recente versie nummer van C:\WindowsAzure naar de map WindowsAzure in de gekoppelde besturingssysteem schijf. Als u niet zeker weet welke map moet worden gekopieerd, kopieert u alle werken-mappen. In de volgende afbeelding ziet u een voor beeld van de map werken die wordt gekopieerd naar de gekoppelde besturingssysteem schijf.
+        2.  Ga naar C:\WindowsAzure op de probleemoplosser VM, zoek naar een map met de naam C:\WindowsAzure\GuestAgent_X.X.XXXX.XXX. Kopieer de Map GuestAgent met het nieuwste versienummer van C:\WindowsAzure naar de WindowsAzure-map in de bijgevoegde osschijf. Als u niet zeker weet welke map moet worden gekopieerd, kopieert u alle GuestAgent-mappen. In de volgende afbeelding ziet u een voorbeeld van de map GuestAgent die naar de bijgevoegde osschijf is gekopieerd.
 
-             ![Map werken kopiëren](./media/install-vm-agent-offline/copy-files.png)
+             ![Map GuestAgent kopiëren](./media/install-vm-agent-offline/copy-files.png)
 
-9.  Selecteer **BROKENSYSTEM**. Selecteer in het menu **File** > **Hive verwijderen**.
+9.  Selecteer **BROKENSYSTEM**. Selecteer Hive**bij het uitladen van** **bestanden** > in het menu .
 
-10.  Selecteer **BROKENSOFTWARE**. Selecteer in het menu **File** > **Hive verwijderen**.
+10.  Selecteer **BROKENSOFTWARE**. Selecteer Hive**bij het uitladen van** **bestanden** > in het menu .
 
-11.  Ontkoppel de besturingssysteem schijf en wijzig vervolgens [de besturingssysteem schijf voor de betrokken VM](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm). Maak voor de klassieke virtuele machine een nieuwe virtuele machine met behulp van de gerepareerde besturingssysteem schijf.
+11.  Maak de osschijf los en [wijzig vervolgens de osschijf voor de betreffende VM.](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm) Maak voor de klassieke VM een nieuwe VM met behulp van de gerepareerde OS-schijf.
 
-12.  Toegang tot de virtuele machine. U ziet dat de RdAgent wordt uitgevoerd en de logboeken worden gegenereerd.
+12.  Toegang tot de VM. Merk op dat de RdAgent wordt uitgevoerd en de logboeken worden gegenereerd.
 
-Als u de virtuele machine hebt gemaakt met behulp van het Resource Manager-implementatie model, bent u klaar.
+Als u de VM hebt gemaakt met behulp van het implementatiemodel ResourceManager, bent u klaar.
 
-### <a name="use-the-provisionguestagent-property-for-classic-vms"></a>Gebruik de eigenschap ProvisionGuestAgent voor klassieke Vm's
+### <a name="use-the-provisionguestagent-property-for-classic-vms"></a>De eigenschap ProvisionGuestAgent gebruiken voor klassieke VM's
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-Als u de virtuele machine hebt gemaakt met behulp van het klassieke model, gebruikt u de module Azure PowerShell om de eigenschap **ProvisionGuestAgent** bij te werken. De eigenschap informeert Azure dat de VM-agent op de VM is geïnstalleerd.
+Als u de VM hebt gemaakt met behulp van het klassieke model, gebruikt u de Azure PowerShell-module om de eigenschap **ProvisionGuestAgent** bij te werken. De eigenschap informeert Azure dat de VM de VM-agent heeft geïnstalleerd.
 
-Als u de eigenschap **ProvisionGuestAgent** wilt instellen, voert u de volgende opdrachten uit in azure PowerShell:
+Voer de volgende opdrachten uit in Azure PowerShell als u de eigenschap **ProvisionGuestAgent** wilt instellen:
 
    ```powershell
    $vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>
@@ -118,7 +118,7 @@ Als u de eigenschap **ProvisionGuestAgent** wilt instellen, voert u de volgende 
    Update-AzureVM –Name <VM name> –VM $vm.VM –ServiceName <cloud service name>
    ```
 
-Voer vervolgens de `Get-AzureVM` opdracht uit. U ziet dat de eigenschap **GuestAgentStatus** nu is gevuld met gegevens:
+Voer vervolgens `Get-AzureVM` de opdracht uit. De eigenschap **GuestAgentStatus** is nu gevuld met gegevens:
 
    ```powershell
    Get-AzureVM –ServiceName <cloud service name> –Name <VM name>
@@ -127,5 +127,5 @@ Voer vervolgens de `Get-AzureVM` opdracht uit. U ziet dat de eigenschap **GuestA
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van de agent voor virtuele Azure-machines](../extensions/agent-windows.md)
-- [Extensies en functies van virtuele machines voor Windows](../extensions/features-windows.md)
+- [Overzicht van Azure Virtual Machine Agent](../extensions/agent-windows.md)
+- [Virtuele machine-extensies en -functies voor Windows](../extensions/features-windows.md)

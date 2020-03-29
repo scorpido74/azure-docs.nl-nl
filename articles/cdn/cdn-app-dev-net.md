@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met de Azure CDN-bibliotheek voor .NET | Microsoft Docs
-description: Informatie over het schrijven van .NET-toepassingen voor het beheren van Azure CDN met Visual Studio.
+title: Aan de slag met de Azure CDN-bibliotheek voor .NET | Microsoft Documenten
+description: Meer informatie over het schrijven van .NET-toepassingen om Azure CDN te beheren met Visual Studio.
 services: cdn
 documentationcenter: .net
 author: zhangmanling
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7e3ad3a5928b36c221bb83b1c4012c3c9e14f35d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67594166"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Aan de slag met Azure CDN-ontwikkeling
@@ -28,40 +28,40 @@ ms.locfileid: "67594166"
 > 
 > 
 
-U kunt de [Azure CDN-bibliotheek voor .NET](/dotnet/api/overview/azure/cdn) voor het automatiseren van het maken en beheren van CDN-profielen en -eindpunten.  Deze zelfstudie leidt u door het maken van een eenvoudige .NET-consoletoepassing die ziet u enkele van de beschikbare bewerkingen.  In deze zelfstudie is niet bedoeld om alle aspecten van de Azure CDN-bibliotheek voor .NET in detail beschreven.
+U de [Azure CDN-bibliotheek voor .NET](/dotnet/api/overview/azure/cdn) gebruiken om het maken en beheren van CDN-profielen en eindpunten te automatiseren.  Deze zelfstudie leidt door de creatie van een eenvoudige .NET-consoletoepassing die een aantal van de beschikbare bewerkingen demonstreert.  Deze zelfstudie is niet bedoeld om alle aspecten van de Azure CDN-bibliotheek voor .NET in detail te beschrijven.
 
-U moet Visual Studio 2015 om deze zelfstudie te voltooien.  [Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) is gratis te downloaden.
+Je hebt Visual Studio 2015 nodig om deze zelfstudie te voltooien.  [Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) is gratis te downloaden.
 
 > [!TIP]
-> De [voltooid project uit deze zelfstudie](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c) is beschikbaar voor downloaden op MSDN.
+> Het [voltooide project van deze zelfstudie](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c) is beschikbaar om te downloaden op MSDN.
 > 
 > 
 
 [!INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
-## <a name="create-your-project-and-add-nuget-packages"></a>Maken van uw project en Nuget-pakketten toevoegen
-Nu dat we hebben een resourcegroep gemaakt voor onze CDN-profielen en toestemming van onze Azure AD-toepassing voor het beheren van CDN-profielen en eindpunten in die groep, kunnen we beginnen met het maken van onze toepassing.
+## <a name="create-your-project-and-add-nuget-packages"></a>Maak uw project en voeg Nuget-pakketten toe
+Nu we een brongroep hebben gemaakt voor onze CDN-profielen en onze Azure AD-toepassingstoestemming hebben gegeven om CDN-profielen en eindpunten binnen die groep te beheren, kunnen we beginnen met het maken van onze toepassing.
 
-Klik in Visual Studio 2015, op **bestand**, **nieuw**, **Project...**  opent het dialoogvenster Nieuw project.  Vouw **Visual C#** en selecteer vervolgens **Windows** in het deelvenster aan de linkerkant.  Klik op **consoletoepassing** in het middelste deelvenster.  Geef uw project de naam en klik vervolgens op **OK**.  
+Klik vanuit Visual Studio 2015 op **Bestand**, **Nieuw**, **Project...** om het nieuwe projectdialoogvenster te openen.  Vouw **Visual C#** uit en selecteer **Vervolgens Windows** in het deelvenster aan de linkerkant.  Klik op **Consoletoepassing** in het middelste deelvenster.  Geef uw project een naam en klik op **OK**.  
 
 ![Nieuw project](./media/cdn-app-dev-net/cdn-new-project.png)
 
-Dit project is gaan sommige Azure-bibliotheken die zijn opgenomen in de Nuget-pakketten gebruiken.  Laten we deze toevoegen aan het project.
+Ons project gaat een aantal Azure-bibliotheken gebruiken die zijn opgenomen in Nuget-pakketten.  Laten we die toevoegen aan het project.
 
-1. Klik op de **extra** in het menu **Nuget Package Manager**, klikt u vervolgens **Package Manager Console**.
+1. Klik op het menu **Extra,** **Nuget Package Manager**en vervolgens op Package Manager **Console**.
    
     ![Nuget-pakketten beheren](./media/cdn-app-dev-net/cdn-manage-nuget.png)
-2. In de Package Manager-Console, dan de volgende opdracht voor het installeren van de **Active Directory Authentication Library (ADAL)** :
+2. Voer in de Package Manager-console de volgende opdracht uit om de **Active Directory Authentication Library (ADAL)** te installeren:
    
     `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
-3. Voer het volgende uit voor het installeren van de **Azure CDN-Beheerbibliotheek**:
+3. Voer het volgende uit om de **Azure CDN-beheerbibliotheek**te installeren:
    
     `Install-Package Microsoft.Azure.Management.Cdn`
 
-## <a name="directives-constants-main-method-and-helper-methods"></a>Richtlijnen, constanten hoofdmethode en Help-methoden
-Laten we nu de basisstructuur van ons programma geschreven ophalen.
+## <a name="directives-constants-main-method-and-helper-methods"></a>Richtlijnen, constanten, hoofdmethoden en helpermethoden
+Laten we de basisstructuur van ons programma laten schrijven.
 
-1. Terug op het tabblad Program.cs vervangen de `using` richtlijnen aan de bovenkant door het volgende:
+1. Terug in het tabblad `using` Program.cs, vervang de richtlijnen aan de bovenkant met de volgende:
    
     ```csharp
     using System;
@@ -73,7 +73,7 @@ Laten we nu de basisstructuur van ons programma geschreven ophalen.
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-2. We moeten sommige constanten die onze methoden gebruikt definiëren.  In de `Program` klasse, maar voordat de `Main` methode, voeg de volgende.  Zorg ervoor dat u de plaatsaanduidingen vervangt, met inbegrip van de  **&lt;punthaken&gt;** , door uw eigen waarden indien nodig.
+2. We moeten een aantal constanten definiëren die onze methoden zullen gebruiken.  Voeg `Program` in de klasse, maar vóór de `Main` methode, het volgende toe.  Zorg ervoor dat u de tijdelijke ** &lt;aanduidingen,&gt;** inclusief de hoekbeugels, vervangt door uw eigen waarden indien nodig.
    
     ```csharp
     //Tenant app constants
@@ -88,13 +88,13 @@ Laten we nu de basisstructuur van ons programma geschreven ophalen.
     private const string resourceGroupName = "CdnConsoleTutorial";
     private const string resourceLocation = "<YOUR PREFERRED AZURE LOCATION, SUCH AS Central US>";
     ```
-3. Ook op het klasseniveau van de, deze twee variabelen definiëren.  We gebruiken deze later om te bepalen als onze profiel en -eindpunt al bestaan.
+3. Ook op klassenniveau definieert u deze twee variabelen.  We gebruiken deze later om te bepalen of ons profiel en eindpunt al bestaan.
    
     ```csharp
     static bool profileAlreadyExists = false;
     static bool endpointAlreadyExists = false;
     ```
-4. Vervang de `Main` methode als volgt te werk:
+4. Vervang `Main` de methode als volgt:
    
    ```csharp
    static void Main(string[] args)
@@ -129,7 +129,7 @@ Laten we nu de basisstructuur van ons programma geschreven ophalen.
        Console.ReadLine();
    }
    ```
-5. Sommige van onze andere methoden gaan om te vragen van de gebruiker met "Ja/Nee" vragen.  Voeg de volgende methode die een beetje om eenvoudiger te maken:
+5. Sommige van onze andere methoden gaan de gebruiker vragen met "Ja / Nee" vragen.  Voeg de volgende methode toe om dat een beetje gemakkelijker te maken:
    
     ```csharp
     private static bool PromptUser(string Question)
@@ -153,10 +153,10 @@ Laten we nu de basisstructuur van ons programma geschreven ophalen.
     }
     ```
 
-Nu dat de basisstructuur van ons programma is geschreven, maken we de methoden die worden aangeroepen door de `Main` methode.
+Nu de basisstructuur van ons programma is geschreven, moeten `Main` we de methoden die door de methode worden genoemd, maken.
 
 ## <a name="authentication"></a>Authentication
-Voordat we de Azure CDN-Beheerbibliotheek gebruiken kunt, moeten we onze service-principal verifiëren en verkrijgen van een verificatietoken.  Deze methode maakt gebruik van ADAL om op te halen van het token.
+Voordat we de Azure CDN-beheerbibliotheek kunnen gebruiken, moeten we onze serviceprincipal verifiëren en een verificatietoken verkrijgen.  Deze methode gebruikt ADAL om het token op te halen.
 
 ```csharp
 private static AuthenticationResult GetAccessToken()
@@ -170,10 +170,10 @@ private static AuthenticationResult GetAccessToken()
 }
 ```
 
-Als u van verificatie van de individuele gebruiker gebruikmaakt, de `GetAccessToken` methode wordt er iets anders uitzien.
+Als u individuele gebruikersverificatie `GetAccessToken` gebruikt, ziet de methode er iets anders uit.
 
 > [!IMPORTANT]
-> Gebruik dit codevoorbeeld alleen als u ervoor kiest om de verificatie van de afzonderlijke gebruiker in plaats van een service-principal.
+> Gebruik dit codevoorbeeld alleen als u kiest voor individuele gebruikersverificatie in plaats van een serviceprincipal.
 > 
 > 
 
@@ -188,10 +188,10 @@ private static AuthenticationResult GetAccessToken()
 }
 ```
 
-Vervang `<redirect URI>` met de omleidings-URI die u hebt ingevoerd toen u de toepassing in Azure AD hebt geregistreerd.
+Zorg ervoor `<redirect URI>` dat u de omleidings-URI die u hebt ingevoerd toen u de toepassing in Azure AD hebt geregistreerd, vervangt.
 
-## <a name="list-cdn-profiles-and-endpoints"></a>Lijst met CDN-profielen en -eindpunten
-Nu we gaan CDN-bewerkingen uit te voeren.  Het eerste wat dat onze methode doet is de lijst met alle profielen en de eindpunten in de resourcegroep en als er een overeenkomst wordt gevonden voor het profiel en eindpunt namen opgegeven in onze constanten maakt een notitie van deze in voor later, zodat we niet probeert te maken van dubbele waarden.
+## <a name="list-cdn-profiles-and-endpoints"></a>CDN-profielen en eindpunten weergeven
+Nu zijn we klaar om CDN-operaties uit te voeren.  Het eerste wat onze methode doet is een lijst van alle profielen en eindpunten in onze resource groep, en als het vindt een match voor het profiel en eindpunt namen opgegeven in onze constanten, maakt een notitie van dat voor later, zodat we niet proberen om duplicaten te maken.
 
 ```csharp
 private static void ListProfilesAndEndpoints(CdnManagementClient cdn)
@@ -224,8 +224,8 @@ private static void ListProfilesAndEndpoints(CdnManagementClient cdn)
 }
 ```
 
-## <a name="create-cdn-profiles-and-endpoints"></a>CDN-profielen en -eindpunten maken
-Vervolgens maken we een profiel.
+## <a name="create-cdn-profiles-and-endpoints"></a>CDN-profielen en eindpunten maken
+Vervolgens maken we een profiel aan.
 
 ```csharp
 private static void CreateCdnProfile(CdnManagementClient cdn)
@@ -270,12 +270,12 @@ private static void CreateCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> Het bovenstaande voorbeeld wijst u het eindpunt een oorsprong met de naam *Contoso* met een hostnaam `www.contoso.com`.  U moet dit om te verwijzen naar de hostnaam van uw eigen oorsprong wijzigen.
+> In het bovenstaande voorbeeld wordt het eindpunt een oorsprong `www.contoso.com`met de naam *Contoso* met een hostnaam toegeschreven.  Je moet dit wijzigen om de hostnaam van je eigen oorsprong aan te wijzen.
 > 
 > 
 
-## <a name="purge-an-endpoint"></a>Een eindpunt leegmaken
-Ervan uitgaande dat het eindpunt is gemaakt, is een veelvoorkomende taak die we in ons programma uitvoert de inhoud in ons eindpunt voor verwijderen.
+## <a name="purge-an-endpoint"></a>Een eindpunt zuiveren
+Ervan uitgaande dat het eindpunt is gemaakt, is een veelvoorkomende taak die we in ons programma zouden willen uitvoeren, het zuiveren van de inhoud in ons eindpunt.
 
 ```csharp
 private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
@@ -291,12 +291,12 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> In het bovenstaande voorbeeld wordt de tekenreeks `/*` geeft aan dat ik wil alles in de hoofdmap van het eindpuntpad leegmaken.  Dit is gelijk aan het controleren van **alle opschonen** in de Azure-portal 'wissen' dialoogvenster. In de `CreateCdnProfile` methode, ik heb gemaakt onze profiel als een **Azure CDN van Verizon** profiel met de code `Sku = new Sku(SkuName.StandardVerizon)`, dus dit voltooid is.  Echter, **Azure CDN van Akamai** profielen bieden geen ondersteuning voor **alle opschonen**, dus als ik een Akamai-profiel is voor deze zelfstudie gebruikt, moet ik specifieke paden opgeven om te verwijderen.
+> In het bovenstaande voorbeeld `/*` geeft de tekenreeks aan dat ik alles in de wortel van het eindpuntpad wil verwijderen.  Dit is gelijk aan het controleren **van Purge All** in het dialoogvenster 'zuivering' van de Azure-portal. In `CreateCdnProfile` de methode heb ik ons profiel gemaakt als een **Azure CDN van Verizon** profiel met behulp van de code, `Sku = new Sku(SkuName.StandardVerizon)`dus dit zal succesvol zijn.  Azure **CDN van Akamai-profielen** ondersteunt echter geen **Purge All,** dus als ik een Akamai-profiel voor deze zelfstudie gebruikte, zou ik specifieke paden moeten opnemen om te verwijderen.
 > 
 > 
 
-## <a name="delete-cdn-profiles-and-endpoints"></a>CDN-profielen en -eindpunten verwijderen
-De laatste methoden worden onze eindpunt en profiel verwijderd.
+## <a name="delete-cdn-profiles-and-endpoints"></a>CDN-profielen en eindpunten verwijderen
+De laatste methoden verwijderen ons eindpunt en profiel.
 
 ```csharp
 private static void PromptDeleteCdnEndpoint(CdnManagementClient cdn)
@@ -323,22 +323,22 @@ private static void PromptDeleteCdnProfile(CdnManagementClient cdn)
 ```
 
 ## <a name="running-the-program"></a>Het programma uitvoeren
-We kunnen nu worden gecompileerd en voer het programma uit door te klikken op de **Start** knop in Visual Studio.
+We kunnen het programma nu compileren en uitvoeren door op de knop **Start** in Visual Studio te klikken.
 
-![Programma wordt uitgevoerd](./media/cdn-app-dev-net/cdn-program-running-1.png)
+![Programma uitgevoerd](./media/cdn-app-dev-net/cdn-program-running-1.png)
 
-Wanneer het programma de bovenstaande vraag bereikt, zou het mogelijk om te retourneren aan de resourcegroep in Azure portal en Zie dat het profiel is gemaakt.
+Wanneer het programma de bovenstaande prompt bereikt, moet u kunnen terugkeren naar uw resourcegroep in de Azure-portal en zien of het profiel is gemaakt.
 
 ![Gelukt!](./media/cdn-app-dev-net/cdn-success.png)
 
-We vervolgens de aanwijzingen voor het uitvoeren van de rest van het programma wilt controleren.
+We kunnen dan de aanwijzingen bevestigen om de rest van het programma uit te voeren.
 
-![Programma voltooid](./media/cdn-app-dev-net/cdn-program-running-2.png)
+![Programma voltooien](./media/cdn-app-dev-net/cdn-program-running-2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Om te zien van het voltooide project van dit scenario [het voorbeeld downloaden](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c).
+Download het voorbeeld om het voltooide project van deze walkthrough te [bekijken.](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c)
 
-Ga voor aanvullende documentatie over Azure CDN Management Library voor .NET, weer de [verwijzingen op MSDN](/dotnet/api/overview/azure/cdn).
+Als u aanvullende documentatie wilt vinden in de Azure CDN-beheerbibliotheek voor .NET, bekijkt u de [verwijzing op MSDN](/dotnet/api/overview/azure/cdn).
 
-Beheer uw CDN-resources met [PowerShell](cdn-manage-powershell.md).
+Beheer uw CDN-resources met [PowerShell.](cdn-manage-powershell.md)
 

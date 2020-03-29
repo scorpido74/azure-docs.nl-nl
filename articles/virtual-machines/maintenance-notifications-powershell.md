@@ -1,6 +1,6 @@
 ---
-title: Onderhouds meldingen voor Azure-Vm's ontvangen met Power shell
-description: Bekijk onderhouds meldingen voor virtuele machines die in Azure worden uitgevoerd en start selfservice onderhoud met behulp van Power shell.
+title: Onderhoudsmeldingen voor Azure VM's ontvangen met PowerShell
+description: Bekijk onderhoudsmeldingen voor virtuele machines die in Azure worden uitgevoerd en start selfserviceonderhoud met PowerShell.
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: b23c210d7c8a9f1d42e6e1b46e0f7f81bda857b2
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77916079"
 ---
-# <a name="handling-planned-maintenance-using-powershell"></a>Verwerken van gepland onderhoud met behulp van Power shell
+# <a name="handling-planned-maintenance-using-powershell"></a>Gepland onderhoud verwerken met PowerShell
 
-**Dit artikel is van toepassing op virtuele machines met Linux en Windows.**
+**Dit artikel is van toepassing op virtuele machines met zowel Linux als Windows.**
 
-U kunt Azure PowerShell gebruiken om te zien wanneer Vm's zijn gepland voor [onderhoud](maintenance-notifications.md). Informatie over gepland onderhoud is beschikbaar via de cmdlet [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) wanneer u de para meter `-status` gebruikt.
+U Azure PowerShell gebruiken om te zien wanneer VM's zijn gepland voor [onderhoud.](maintenance-notifications.md) Geplande onderhoudsinformatie is beschikbaar via de [Get-AzVM-cmdlet](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) wanneer u de `-status` parameter gebruikt.
   
-Onderhouds informatie wordt alleen geretourneerd als er onderhoud wordt gepland. Als er geen onderhoud is gepland dat van invloed is op de virtuele machine, retourneert de cmdlet geen onderhouds informatie. 
+Onderhoudsinformatie wordt alleen geretourneerd als er onderhoud is gepland. Als er geen onderhoud is gepland dat van invloed is op de VM, geeft de cmdlet geen onderhoudsinformatie terug. 
 
 
 ```powershell
@@ -31,22 +31,22 @@ De volgende eigenschappen worden geretourneerd onder MaintenanceRedeployStatus:
 
 | Waarde | Beschrijving   |
 |-------|---------------|
-| IsCustomerInitiatedMaintenanceAllowed | Hiermee wordt aangegeven of u op dit moment onderhoud kunt starten op de virtuele machine |
-| PreMaintenanceWindowStartTime         | Het begin van het onderhouds self-service venster wanneer u onderhoud op uw virtuele machine kunt initiëren |
-| PreMaintenanceWindowEndTime           | Het einde van het onderhouds self-service venster wanneer u onderhoud op uw virtuele machine kunt initiëren |
-| MaintenanceWindowStartTime            | Het begin van de geplande werkzaamheden waarbij Azure onderhoud initieert op uw virtuele machine |
-| MaintenanceWindowEndTime              | Het einde van het geplande onderhouds venster waarin Azure onderhoud initieert op uw virtuele machine |
-| LastOperationResultCode               | Het resultaat van de laatste poging om onderhoud op de VM te initiëren |
+| IsCustomerInitiatedMaintenanceA toegestaan | Geeft aan of u op dit moment met onderhoud aan de VM beginnen |
+| Begintijd voor onderhoud         | Het begin van het onderhouds-selfservicevenster wanneer u onderhoud aan uw VM starten |
+| PreMaintenanceWindowEndTime           | Het einde van het onderhouds-selfservicevenster wanneer u onderhoud aan uw VM starten |
+| Begintijd van onderhoudsvenster            | Het begin van het geplande onderhoud waarin Azure onderhoud op uw VM initieert |
+| MaintenanceWindowEndTime              | Het einde van het geplande onderhoudsvenster waarin Azure onderhoud op uw VM initieert |
+| LastOperationResultCode               | Het resultaat van de laatste poging om onderhoud aan de VM te starten |
 
 
 
-U kunt ook de onderhouds status voor alle virtuele machines in een resource groep ophalen met behulp van [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) en geen virtuele machine opgeven.
+U ook de onderhoudsstatus voor alle VM's in een resourcegroep krijgen door [Get-AzVM te](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) gebruiken en geen VM op te geven.
  
 ```powershell
 Get-AzVM -ResourceGroupName myResourceGroup -Status
 ```
 
-In het volgende Power shell-voor beeld wordt uw abonnements-ID gebruikt en wordt een lijst geretourneerd met de Vm's die zijn gepland voor onderhoud.
+In het volgende PowerShell-voorbeeld wordt uw abonnements-ID opgenomen en wordt een lijst met VM's geretourneerd die zijn gepland voor onderhoud.
 
 ```powershell
 
@@ -74,9 +74,9 @@ function MaintenanceIterator
 
 ```
 
-### <a name="start-maintenance-on-your-vm-using-powershell"></a>Onderhoud starten op uw virtuele machine met behulp van Power shell
+### <a name="start-maintenance-on-your-vm-using-powershell"></a>Onderhoud aan uw vm starten met PowerShell
 
-Met behulp van informatie van de functie in de vorige sectie wordt het onderhoud op een VM gestart als **IsCustomerInitiatedMaintenanceAllowed** is ingesteld op True.
+Met behulp van informatie uit de functie in de vorige sectie wordt het onderhoud van een vm gestart als **isCustomerInitiatedMaintenanceA toegestaan** ingesteld op true.
 
 ```powershell
 Restart-AzVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceGroupName 
@@ -86,15 +86,15 @@ Restart-AzVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceG
 
 [!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
 
-Als u nog steeds verouderde Vm's hebt die zijn geïmplementeerd met behulp van het klassieke implementatie model, kunt u Power shell gebruiken om te zoeken naar Vm's en onderhoud te initiëren.
+Als u nog steeds verouderde VM's hebt die zijn geïmplementeerd met behulp van het klassieke implementatiemodel, u PowerShell gebruiken om vm's op te vragen en onderhoud te starten.
 
-Als u de onderhouds status van een virtuele machine wilt ophalen, typt u:
+Typ:
 
 ```
 Get-AzureVM -ServiceName <Service name> -Name <VM name>
 ```
 
-Als u onderhoud wilt starten op uw klassieke VM, typt u:
+Als u wilt beginnen met het onderhoud van uw klassieke VM, typt u het:
 
 ```
 Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
@@ -102,4 +102,4 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt gepland onderhoud ook afhandelen met behulp van de [Azure cli](maintenance-notifications-cli.md) of [Portal](maintenance-notifications-portal.md).
+U ook gepland onderhoud afhandelen via de [Azure CLI](maintenance-notifications-cli.md) of [portal.](maintenance-notifications-portal.md)

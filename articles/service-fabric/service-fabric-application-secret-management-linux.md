@@ -1,27 +1,27 @@
 ---
-title: Een versleutelings certificaat voor Linux-clusters instellen
-description: Meer informatie over het instellen van een versleutelings certificaat en het versleutelen van geheimen op Linux-clusters.
+title: Een versleutelingscertificaat instellen op Linux-clusters
+description: Meer informatie over het instellen van een versleutelingscertificaat en het versleutelen van geheimen op Linux-clusters.
 author: shsha
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
 ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969036"
 ---
-# <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Een versleutelings certificaat instellen en geheimen op Linux-clusters versleutelen
-In dit artikel wordt beschreven hoe u een versleutelings certificaat instelt en hoe u het kunt gebruiken voor het versleutelen van geheimen op Linux-clusters. Zie [een versleutelings certificaat instellen en geheimen op Windows-clusters versleutelen][secret-management-windows-specific-link]voor Windows-clusters.
+# <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Een versleutelingscertificaat instellen en geheimen versleutelen op Linux-clusters
+In dit artikel ziet u hoe u een versleutelingscertificaat instellen en gebruiken om geheimen op Linux-clusters te versleutelen. Zie Een [versleutelingscertificaat instellen en geheimen versleutelen op Windows-clusters][secret-management-windows-specific-link]voor Windows-clusters.
 
-## <a name="obtain-a-data-encipherment-certificate"></a>Een certificaat voor gegevens codering verkrijgen
-Een gegevens versleuteling certificaat wordt uitsluitend gebruikt voor het versleutelen en ontsleutelen van [para meters][parameters-link] in de instellingen van een service. XML en [omgevings variabelen][environment-variables-link] in de ServiceManifest. XML van een service. Het wordt niet gebruikt voor verificatie of ondertekening van versleutelings tekst. Het certificaat moet voldoen aan de volgende vereisten:
+## <a name="obtain-a-data-encipherment-certificate"></a>Een certificaat voor gegevensvercijfering verkrijgen
+Een certificaat voor gegevensversleuteling wordt strikt gebruikt voor versleuteling en decryptie van [parameters][parameters-link] in de instellingen.xml en [omgevingsvariabelen][environment-variables-link] van een service in serviceManifest.xml van een service. Het wordt niet gebruikt voor authenticatie of ondertekening van cijfertekst. Het certificaat moet aan de volgende eisen voldoen:
 
-* Het certificaat moet een persoonlijke sleutel bevatten.
-* Het gebruik van de certificaat sleutel moet gegevens codering (10) bevatten en mag geen server verificatie of client verificatie omvatten.
+* Het certificaat moet een privésleutel bevatten.
+* Het gebruik van de certificaatsleutel moet gegevenscodering (10) bevatten en mag geen serververificatie of clientverificatie bevatten.
 
-  De volgende opdrachten kunnen bijvoorbeeld worden gebruikt voor het genereren van het vereiste certificaat met behulp van OpenSSL:
+  De volgende opdrachten kunnen bijvoorbeeld worden gebruikt om het vereiste certificaat te genereren met OpenSSL:
   
   ```console
   user@linux:~$ openssl req -newkey rsa:2048 -nodes -keyout TestCert.prv -x509 -days 365 -out TestCert.pem
@@ -29,17 +29,17 @@ Een gegevens versleuteling certificaat wordt uitsluitend gebruikt voor het versl
   ```
 
 ## <a name="install-the-certificate-in-your-cluster"></a>Het certificaat in uw cluster installeren
-Het certificaat moet worden geïnstalleerd op elk knoop punt in het cluster onder `/var/lib/sfcerts`. Het gebruikers account waarmee de service wordt uitgevoerd (standaard sfuser) **moet lees toegang hebben** tot het geïnstalleerde certificaat (`/var/lib/sfcerts/TestCert.pem` voor het huidige voor beeld).
+Het certificaat moet op elk knooppunt in `/var/lib/sfcerts`het cluster onder . Het gebruikersaccount waaronder de service wordt uitgevoerd (standaard sfuser) **moet leestoegang hebben tot** het geïnstalleerde certificaat (dat wil zeggen, `/var/lib/sfcerts/TestCert.pem` voor het huidige voorbeeld).
 
 ## <a name="encrypt-secrets"></a>Geheimen versleutelen
-Het volgende code fragment kan worden gebruikt voor het versleutelen van een geheim. Met dit fragment wordt alleen de waarde versleuteld. de versleutelings tekst wordt **niet** ondertekend. **U moet** hetzelfde versleuteling certificaat gebruiken dat is geïnstalleerd in uw cluster voor het maken van gecodeerde tekst voor geheime waarden.
+Het volgende fragment kan worden gebruikt om een geheim te versleutelen. Dit fragment versleutelt alleen de waarde; het ondertekent **niet** de cijfertekst. **U moet** hetzelfde vercijferingscertificaat gebruiken dat in uw cluster is geïnstalleerd om cijfertekst voor geheime waarden te produceren.
 
 ```console
 user@linux:$ echo "Hello World!" > plaintext.txt
 user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt | tr -d '\n' > plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
-De resulterende met base 64 gecodeerde teken reeks uitvoer naar versleutelde. txt bevat zowel de geheime code ring als informatie over het certificaat dat is gebruikt om het te versleutelen. U kunt de geldigheid ervan controleren door deze te ontsleutelen met OpenSSL.
+De resulterende base-64 gecodeerde tekenreeks uitvoer naar encrypted.txt bevat zowel de geheime ciphertext als informatie over het certificaat dat werd gebruikt om het te versleutelen. U de geldigheid ervan verifiëren door deze te decoderen met OpenSSL.
 ```console
 user@linux:$ cat encrypted.txt | base64 -d | openssl smime -decrypt -inform der -inkey TestCert.prv
 ```

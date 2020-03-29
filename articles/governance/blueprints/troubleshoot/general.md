@@ -1,86 +1,86 @@
 ---
 title: Veelvoorkomende problemen oplossen
-description: Meer informatie over het oplossen van problemen met het maken, toewijzen en verwijderen van blauw drukken, zoals beleids schendingen en Blue para meter-functies.
+description: Meer informatie over het oplossen van problemen bij het maken, toewijzen en verwijderen van blauwdrukken, zoals beleidsschendingen en parameterfuncties voor blauwdrukken.
 ms.date: 01/15/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 7306e344a479008a87164a954c4444d375950b0b
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76157080"
 ---
-# <a name="troubleshoot-errors-using-azure-blueprints"></a>Problemen met Azure-blauw drukken oplossen
+# <a name="troubleshoot-errors-using-azure-blueprints"></a>Fouten oplossen met Azure Blueprints
 
-Er kunnen fouten optreden bij het maken, toewijzen of verwijderen van blauw drukken. In dit artikel worden verschillende fouten beschreven die zich kunnen voordoen en hoe u deze kunt oplossen.
+U fouten tegenkomen bij het maken, toewijzen of verwijderen van blauwdrukken. In dit artikel worden verschillende fouten beschreven die kunnen optreden en hoe u deze oplossen.
 
-## <a name="finding-error-details"></a>Fout details zoeken
+## <a name="finding-error-details"></a>Foutgegevens zoeken
 
-Veel fouten worden veroorzaakt door het toewijzen van een blauw druk aan een bereik. Wanneer een toewijzing mislukt, bevat de blauw druk Details over de mislukte implementatie. Deze informatie geeft het probleem aan zodat het kan worden hersteld en de volgende implementatie slaagt.
+Veel fouten zullen het gevolg zijn van het toewijzen van een blauwdruk aan een scope. Wanneer een toewijzing mislukt, bevat de blauwdruk details over de mislukte implementatie. Deze informatie geeft het probleem aan, zodat het kan worden opgelost en de volgende implementatie slaagt.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer **toegewezen blauw drukken** op de pagina aan de linkerkant en gebruik het zoekvak om de opdrachten in de blauw druk te filteren om de mislukte toewijzing te vinden. U kunt ook de tabel met toewijzingen sorteren op de kolom **inrichtings status** om alle mislukte toewijzingen weer te geven die samen zijn gegroepeerd.
+1. Selecteer **Toegewezen blauwdrukken** op de pagina aan de linkerkant en gebruik het zoekvak om de blauwdruktoewijzingen te filteren om de mislukte toewijzing te vinden. U de tabel met toewijzingen ook sorteren op de kolom **Status inrichten** om alle mislukte toewijzingen gegroepeerd te zien.
 
-1. Klik met de rechter muisknop op de blauw druk met de status _mislukt_ of klik met de linkermuisknop en selecteer **toewijzings details weer geven**.
+1. Klik met de rechtermuisknop op de blauwdruk met de _status Mislukt_ of klik met de rechtermuisknop en selecteer Details van **toewijzing weergeven**.
 
-1. Een rode banner waarschuwing dat de toewijzing is mislukt, bevindt zich bovenaan de pagina voor de toewijzing van blauw drukken. Klik ergens op de banner voor meer informatie.
+1. Een rode banner waarschuwing dat de toewijzing is mislukt is aan de bovenkant van de blauwdruk toewijzing pagina. Klik ergens op de banner om meer details te krijgen.
 
-Het is gebruikelijk dat de fout wordt veroorzaakt door een artefact en niet de blauw druk als geheel. Als een artefact een Key Vault maakt en Azure Policy voor komt dat Key Vault wordt gemaakt, mislukt de volledige toewijzing.
+Het is gebruikelijk dat de fout wordt veroorzaakt door een artefact en niet door de blauwdruk als geheel. Als een artefact een sleutelkluis maakt en Azure Policy voorkomt dat Key Vault wordt gemaakt, mislukt de hele toewijzing.
 
 ## <a name="general-errors"></a>Algemene fouten
 
-### <a name="policy-violation"></a>Scenario: beleids schending
+### <a name="scenario-policy-violation"></a><a name="policy-violation"></a>Scenario: Beleidsschending
 
 #### <a name="issue"></a>Probleem
 
-De sjabloon implementatie is mislukt vanwege een overtreding van het beleid.
+De implementatie van de sjabloon is mislukt vanwege beleidsschending.
 
 #### <a name="cause"></a>Oorzaak
 
-Een beleid kan om een aantal redenen conflicteren met de implementatie:
+Een beleid kan om een aantal redenen in strijd zijn met de implementatie:
 
-- De bron die wordt gemaakt, wordt beperkt door het beleid (vaak SKU of locatie beperkingen)
-- De implementatie is het instellen van velden die worden geconfigureerd door beleid (gemeen schappelijk met Tags)
+- De resource die wordt gemaakt, wordt beperkt door beleid (gewoonlijk SKU- of locatiebeperkingen)
+- De implementatie stelt velden in die zijn geconfigureerd op basis van beleid (algemeen met tags)
 
-#### <a name="resolution"></a>Resolutie
+#### <a name="resolution"></a>Oplossing
 
-Wijzig de blauw druk zodat deze niet in strijd is met het beleid in de fout Details. Als deze wijziging niet mogelijk is, is het bereik van de beleids toewijzing gewijzigd, zodat de blauw druk niet meer in strijd is met het beleid.
+Wijzig de blauwdruk zodat deze niet in strijd is met het beleid in de foutgegevens. Als deze wijziging niet mogelijk is, is een alternatieve optie om het bereik van de beleidstoewijzing te wijzigen, zodat de blauwdruk niet langer in strijd is met het beleid.
 
-### <a name="escape-function-parameter"></a>Scenario: blauw druk-para meter is een functie
+### <a name="scenario-blueprint-parameter-is-a-function"></a><a name="escape-function-parameter"></a>Scenario: Parameter Blueprint is een functie
 
 #### <a name="issue"></a>Probleem
 
-Blauw drukken-para meters die zijn functies worden verwerkt voordat ze worden door gegeven aan artefacten.
+Blauwdrukparameters die functies zijn, worden verwerkt voordat ze worden doorgegeven aan artefacten.
 
 #### <a name="cause"></a>Oorzaak
 
-Het door geven van een blauw druk-para meter die gebruikmaakt van een functie, zoals `[resourceGroup().tags.myTag]`, op een artefact resulteert in het verwerkte resultaat van de functie die wordt ingesteld op het artefact in plaats van de dynamische functie.
+Het doorgeven van een blauwdrukparameter `[resourceGroup().tags.myTag]`die een functie gebruikt, zoals , aan een artefact resulteert in de verwerkte uitkomst van de functie die op het artefact wordt ingesteld in plaats van de dynamische functie.
 
-#### <a name="resolution"></a>Resolutie
+#### <a name="resolution"></a>Oplossing
 
-Als u een functie wilt door geven door middel van een para meter, moet u de volledige teken reeks met `[` zodanig wegvallen dat de blauw druk-para meter lijkt op `[[resourceGroup().tags.myTag]`. Het escape teken resulteert in blauw drukken om de waarde te behandelen als een teken reeks bij het verwerken van de blauw druk. Blauw drukken plaatst vervolgens de functie op het artefact, zodat deze dynamisch kan worden uitgevoerd. Zie [syntaxis en expressies in azure Resource Manager-sjablonen](../../../azure-resource-manager/templates/template-expressions.md)voor meer informatie.
+Als u een functie als parameter wilt `[` doorgeven, ontloopt `[[resourceGroup().tags.myTag]`u de hele tekenreeks met een zodanige dat de blauwdrukparameter eruit ziet als . Het escape-teken zorgt ervoor dat Blauwdrukken de waarde als een tekenreeks behandelen bij het verwerken van de blauwdruk. Blauwdrukken plaatst de functie vervolgens op het artefact, zodat deze dynamisch kan zijn zoals verwacht. Zie [Syntaxis en expressies in Azure Resource Manager-sjablonen](../../../azure-resource-manager/templates/template-expressions.md)voor meer informatie .
 
 ## <a name="delete-errors"></a>Fouten verwijderen
 
-### <a name="assign-delete-timeout"></a>Scenario: time-out bij toewijzing verwijderen
+### <a name="scenario-assignment-deletion-timeout"></a><a name="assign-delete-timeout"></a>Scenario: time-out voor het verwijderen van toewijzingen
 
 #### <a name="issue"></a>Probleem
 
-Het verwijderen van een blauw druk-toewijzing is niet voltooid.
+Het verwijderen van een blauwdruktoewijzing is niet voltooid.
 
 #### <a name="cause"></a>Oorzaak
 
-Een blauw druk-toewijzing kan worden vastlopen in een niet-Terminal status wanneer deze wordt verwijderd. Deze status wordt veroorzaakt wanneer resources die zijn gemaakt met de opdracht blauw druk nog steeds moeten worden verwijderd of geen status code retour neren naar Azure-blauw drukken.
+Een blauwdruktoewijzing kan vast komen te zitten in een niet-terminale status wanneer deze wordt verwijderd. Deze status wordt veroorzaakt wanneer resources die zijn gemaakt door de blauwdruktoewijzing nog in behandeling zijn bij verwijdering of een statuscode niet terugsturen naar Azure Blueprints.
 
-#### <a name="resolution"></a>Resolutie
+#### <a name="resolution"></a>Oplossing
 
-Blauw druk-toewijzingen in een niet-Terminal status worden automatisch gemarkeerd als **mislukt** na een time-out van _6 uur_ . Zodra de time-out de status van de blauw druk toewijzing heeft gewijzigd, kan het verwijderen opnieuw worden uitgevoerd.
+Blueprint-toewijzingen in een niet-terminale status worden automatisch gemarkeerd **als Mislukt** na een time-out van _6 uur._ Zodra de time-out de status van de blauwdruktoewijzing heeft aangepast, kan de delete opnieuw worden geprobeerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
+Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
 
-- Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
-- Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport), het officiële Microsoft Azure-account voor het verbeteren van de gebruikerservaring door de Azure-community in contact te brengen met de juiste resources: antwoorden, ondersteuning en experts.
-- Als u meer hulp nodig hebt, kunt u een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
+- Krijg antwoorden van Azure-experts via [Azure Forums.](https://azure.microsoft.com/support/forums/)
+- Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met – het officiële Microsoft Azure-account voor het verbeteren van de klantervaring door de Azure-community te verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
+- Als u meer hulp nodig hebt, u een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer **Ondersteuning opdoen**.

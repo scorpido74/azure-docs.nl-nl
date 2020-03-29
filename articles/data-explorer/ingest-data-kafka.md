@@ -1,6 +1,6 @@
 ---
 title: Gegevens uit Kafka opnemen in Azure Data Explorer
-description: In dit artikel leert u hoe u voor het opnemen van gegevens (laden) in Azure Data Explorer van Kafka.
+description: In dit artikel leert u hoe u gegevens inneemt (laden) in Azure Data Explorer van Kafka.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,25 +8,25 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66497270"
 ---
 # <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>Gegevens uit Kafka opnemen in Azure Data Explorer
  
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. Azure Data Explorer biedt opname (het laden van gegevens) uit Kafka. Kafka is een gedistribueerd streamingplatform voor het bouwen van pijplijnen voor realtime streaminggegevens, waarmee gegevens op betrouwbare wijze worden verplaatst tussen systemen of toepassingen.
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Azure Data Explorer biedt opname (het laden van gegevens) uit Kafka. Kafka is een gedistribueerd streamingplatform voor het bouwen van pijplijnen voor realtime streaminggegevens, waarmee gegevens op betrouwbare wijze worden verplaatst tussen systemen of toepassingen.
  
 ## <a name="prerequisites"></a>Vereisten
  
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint. 
+* Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint. 
  
-* [Een testcluster en de database](create-cluster-database-portal.md).
+* [Een testcluster en -database](create-cluster-database-portal.md).
  
-* [Een voorbeeld-app](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) die gegevens genereert en verzendt dit naar Kafka.
+* [Een voorbeeld-app](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) die gegevens genereert en naar Kafka stuurt.
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) om uit te voeren van de voorbeeld-app.
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) om de voorbeeld-app uit te voeren.
  
 ## <a name="kafka-connector-setup"></a>Kafka-connector instellen
 
@@ -162,4 +162,4 @@ cd ./azure-kusto-samples-dotnet/kafka/
  
 ## <a name="next-steps"></a>Volgende stappen
  
-* [Query uitvoeren op gegevens in Azure Data Explorer](web-query-data.md)
+* [Query's uitvoeren op gegevens in Azure Data Explorer](web-query-data.md)

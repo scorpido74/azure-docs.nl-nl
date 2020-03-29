@@ -1,6 +1,6 @@
 ---
-title: Met HSM beveiligde sleutels genereren en overdragen voor Azure Key Vault-Azure Key Vault | Microsoft Docs
-description: Gebruik dit artikel om u te helpen bij het plannen, genereren en overdragen van uw eigen met HSM beveiligde sleutels voor gebruik met Azure Key Vault. Ook wel bekend als uw eigen sleutel (BYOK).
+title: HSM-beveiligde sleutels genereren en overdragen voor Azure Key Vault - Azure Key Vault | Microsoft Documenten
+description: Gebruik dit artikel om u te helpen bij het plannen, genereren en overdragen van uw eigen HSM-beveiligde sleutels voor gebruik met Azure Key Vault. Ook wel bekend als breng je eigen sleutel (BYOK).
 services: key-vault
 author: amitbapat
 manager: devtiw
@@ -10,131 +10,131 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
 ms.openlocfilehash: 08a4330f4a786deca8ddb2f1c6803b29152e7f50
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79080132"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>Met HSM beveiligde sleutels importeren in Key Vault (preview)
 
 > [!NOTE]
-> Deze functie is in Preview en is alleen beschikbaar in de Azure-regio's *VS-Oost 2 EUAP* en *Centraal VS EUAP*. 
+> Deze functie is in preview en alleen beschikbaar in de Azure-regio's *East US 2 EUAP* en *Central US EUAP*. 
 
-Voor extra zekerheid wanneer u Azure Key Vault gebruikt, kunt u een sleutel importeren of genereren in een Hardware Security module (HSM). de sleutel verlaat nooit de HSM-grens. Dit scenario wordt vaak *uw eigen sleutel* (BYOK) genoemd. Key Vault maakt gebruik van de nCipher nShield-familie van Hsm's (FIPS 140-2 level 2 gevalideerd) om uw sleutels te beveiligen.
+Voor extra zekerheid wanneer u Azure Key Vault gebruikt, u een sleutel importeren of genereren in een hardwarebeveiligingsmodule (HSM); de sleutel zal nooit de HSM-grens verlaten. Dit scenario wordt vaak aangeduid als *breng je eigen sleutel* (BYOK). Key Vault maakt gebruik van de nCipher nShield-familie van HSM's (FIPS 140-2 Level 2 gevalideerd) om uw sleutels te beschermen.
 
-Gebruik de informatie in dit artikel om u te helpen bij het plannen, genereren en overdragen van uw eigen met HSM beveiligde sleutels voor gebruik met Azure Key Vault.
+Gebruik de informatie in dit artikel om u te helpen bij het plannen, genereren en overdragen van uw eigen HSM-beveiligde sleutels voor gebruik met Azure Key Vault.
 
 > [!NOTE]
 > Deze functionaliteit is niet beschikbaar voor Azure China 21Vianet. 
 > 
-> Deze import methode is alleen beschikbaar voor [ondersteunde hsm's](#supported-hsms). 
+> Deze importmethode is alleen beschikbaar voor [ondersteunde HSM's.](#supported-hsms) 
 
-Zie [Wat is Azure Key Vault?](key-vault-overview.md)voor meer informatie en voor een zelf studie om aan de slag te gaan met Key Vault (inclusief het maken van een sleutel kluis voor met HSM beschermde sleutels).
+Zie [Wat is Azure Key Vault?](key-vault-overview.md)
 
 ## <a name="overview"></a>Overzicht
 
-Hier volgt een overzicht van het proces. Specifieke stappen die u moet uitvoeren, worden verderop in het artikel beschreven.
+Hier is een overzicht van het proces. Specifieke stappen die moeten worden voltooid, worden later in het artikel beschreven.
 
-* Genereer in Key Vault een sleutel (aangeduid met een sleutel *uitwisselings sleutel* (KEK)). De KEK moet een RSA-HSM-sleutel zijn die alleen de sleutel bewerking `import` heeft. Alleen Key Vault Premium SKU ondersteunt RSA-HSM-sleutels.
-* Down load de open bare sleutel KEK als een. pem-bestand.
-* De open bare sleutel van KEK overdragen naar een offline computer die is verbonden met een on-premises HSM.
-* Gebruik op de offline computer het BYOK-hulp programma van de HSM-leverancier om een BYOK-bestand te maken. 
-* De doel sleutel is versleuteld met een KEK, die versleuteld blijft totdat deze wordt overgedragen naar de Key Vault HSM. Alleen de versleutelde versie van uw sleutel laat de on-premises HSM ongewijzigd.
-* Een KEK die wordt gegenereerd in een Key Vault HSM kan niet worden geëxporteerd. Hsm's dwingt de regel af dat er geen duidelijke versie van een KEK bestaat buiten een Key Vault HSM.
-* De KEK moet zich in dezelfde sleutel kluis bekomen als de doel sleutel wordt geïmporteerd.
-* Wanneer het BYOK-bestand wordt geüpload naar Key Vault, gebruikt een Key Vault HSM de persoonlijke sleutel KEK om het doel sleutel materiaal te ontsleutelen en te importeren als een HSM-sleutel. Deze bewerking treedt volledig op in een Key Vault HSM. De doel sleutel blijft altijd in de grens van de HSM-beveiliging.
+* Genereer in Key Vault een sleutel *(kek* genoemd). De KEK moet een RSA-HSM-sleutel `import` zijn die alleen de sleutelbewerking heeft. Alleen Key Vault Premium SKU ondersteunt RSA-HSM-sleutels.
+* Download de KEK public key als een .pem-bestand.
+* Breng de openbare SLEUTEL van KEK over naar een offline computer die is verbonden met een on-premises HSM.
+* Gebruik op de offline computer het BYOK-hulpprogramma van uw HSM-leverancier om een BYOK-bestand te maken. 
+* De doelsleutel wordt versleuteld met een KEK, die versleuteld blijft totdat deze wordt overgebracht naar de Key Vault HSM. Alleen de versleutelde versie van uw sleutel verlaat de on-premises HSM.
+* Een KEK die wordt gegenereerd in een Key Vault HSM is niet exporteerbaar. HSM's handhaven de regel dat er geen duidelijke versie van een KEK bestaat buiten een Key Vault HSM.
+* De KEK moet zich in dezelfde sleutelkluis bevindt waar de doelsleutel wordt geïmporteerd.
+* Wanneer het BYOK-bestand wordt geüpload naar Key Vault, gebruikt een Key Vault HSM de PRIVÉsleutel KEK om het doelsleutelmateriaal te decoderen en te importeren als een HSM-sleutel. Deze bewerking vindt volledig plaats in een Key Vault HSM. De doelsleutel blijft altijd in de HSM-beschermingsgrens.
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende tabel bevat de vereisten voor het gebruik van BYOK in Azure Key Vault:
+In de volgende tabel worden vereisten weergegeven voor het gebruik van BYOK in Azure Key Vault:
 
 | Vereiste | Meer informatie |
 | --- | --- |
-| Een Azure-abonnement |Als u een sleutel kluis in Azure Key Vault wilt maken, hebt u een Azure-abonnement nodig. [Meld u aan voor een gratis proef versie](https://azure.microsoft.com/pricing/free-trial/). |
-| Een Key Vault Premium-SKU voor het importeren van met HSM beveiligde sleutels |Zie [Key Vault prijzen](https://azure.microsoft.com/pricing/details/key-vault/)voor meer informatie over de service lagen en mogelijkheden van Azure Key Vault. |
-| Een HSM uit de lijst met ondersteunde Hsm's en een BYOK-hulp programma en instructies van uw HSM-leverancier | U moet over machtigingen beschikken voor een HSM en basis kennis van het gebruik van uw HSM. Zie [ondersteunde hsm's](#supported-hsms). |
-| Azure CLI-versie 2.1.0 of hoger | Zie [de Azure cli installeren](/cli/azure/install-azure-cli?view=azure-cli-latest).|
+| Een Azure-abonnement |Als u een sleutelkluis wilt maken in Azure Key Vault, hebt u een Azure-abonnement nodig. [Meld u aan voor een gratis proefperiode.](https://azure.microsoft.com/pricing/free-trial/) |
+| Een Key Vault Premium SKU om HSM-beveiligde sleutels te importeren |Zie [Key Vault Pricing](https://azure.microsoft.com/pricing/details/key-vault/)voor meer informatie over de servicelagen en -mogelijkheden in Azure Key Vault. |
+| Een HSM uit de ondersteunde HSM-lijst en een BYOK-tool en instructies van uw HSM-leverancier | U moet machtigingen hebben voor een HSM en basiskennis van het gebruik van uw HSM. Zie [Ondersteunde HSM's](#supported-hsms). |
+| Azure CLI-versie 2.1.0 of hoger | Zie [De Azure CLI installeren](/cli/azure/install-azure-cli?view=azure-cli-latest).|
 
-## <a name="supported-hsms"></a>Ondersteunde Hsm's
+## <a name="supported-hsms"></a>Ondersteunde HSM's
 
-|Leveranciers naam|Leveranciers type|Ondersteunde HSM-modellen|Meer informatie|
+|Naam van leverancier|Type leverancier|Ondersteunde HSM-modellen|Meer informatie|
 |---|---|---|---|
-|Thales|Fabrikant|SafeNet Luna HSM 7-familie met firmware versie 7,3 of hoger| [SafeNet Luna BYOK tool en documentatie](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
-|Fortanix|HSM as a Service|Zelf-verdediging van de service voor sleutel beheer (SDKMS)|[SDKMS-sleutels exporteren naar cloud providers voor BYOK-Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
+|Thales|Fabrikant|SafeNet Luna HSM 7 familie met firmware versie 7.3 of hoger| [SafeNet Luna BYOK tool en documentatie](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
+|Fortanix Fortanix|HSM as a Service|Self-Defending Key Management Service (SDKMS)|[SDKMS-sleutels exporteren naar cloudproviders voor BYOK - Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 
 
 > [!NOTE]
-> Gebruik de [verouderde BYOK-procedure](hsm-protected-keys-legacy.md)om met HSM beschermde sleutels te importeren uit de nCipher nShield-familie van hsm's.
+> Als u hsm-beveiligde sleutels wilt importeren uit de nCipher nShield-familie van HSM's, gebruikt u de [verouderde BYOK-procedure](hsm-protected-keys-legacy.md).
 
-## <a name="supported-key-types"></a>Ondersteunde sleutel typen
+## <a name="supported-key-types"></a>Ondersteunde sleuteltypen
 
-|Sleutelnaam|Type sleutel|Sleutel grootte|Oorsprong|Beschrijving|
+|Sleutelnaam|Type sleutel|Sleutelgrootte|Oorsprong|Beschrijving|
 |---|---|---|---|---|
-|Sleutel uitwisselings sleutel (KEK)|RSA| 2\.048-bits<br />3\.072-bits<br />4\.096-bits|Azure Key Vault HSM|Een met HSM ondersteund RSA-sleutel paar dat is gegenereerd in Azure Key Vault|
-|Doel sleutel|RSA|2\.048-bits<br />3\.072-bits<br />4\.096-bits|Leverancier HSM|De sleutel die moet worden overgedragen naar de Azure Key Vault HSM|
+|Key Exchange-sleutel (KEK)|RSA| 2.048-bits<br />3.072-bits<br />4.096-bits|Azure Key Vault HSM|Een RSA-sleutelpaar met HSM-ondersteuning gegenereerd in Azure Key Vault|
+|Doelsleutel|RSA|2.048-bits<br />3.072-bits<br />4.096-bits|Leverancier HSM|De sleutel die moet worden overgedragen naar de Azure Key Vault HSM|
 
-## <a name="generate-and-transfer-your-key-to-the-key-vault-hsm"></a>Uw sleutel genereren en overdragen naar de Key Vault HSM
+## <a name="generate-and-transfer-your-key-to-the-key-vault-hsm"></a>Genereer en breng uw sleutel over naar de Key Vault HSM
 
-U kunt als volgt uw sleutel genereren en overdragen naar een Key Vault HSM:
+Ga als lid op voor het genereren en overdragen van uw sleutel naar een Key Vault HSM:
 
-* [Stap 1: een KEK genereren](#step-1-generate-a-kek)
-* [Stap 2: de open bare sleutel voor KEK downloaden](#step-2-download-the-kek-public-key)
-* [Stap 3: uw sleutel voor overdracht genereren en voorbereiden](#step-3-generate-and-prepare-your-key-for-transfer)
-* [Stap 4: uw sleutel overdragen naar Azure Key Vault](#step-4-transfer-your-key-to-azure-key-vault)
+* [Stap 1: Een KEK genereren](#step-1-generate-a-kek)
+* [Stap 2: Download de kek public key](#step-2-download-the-kek-public-key)
+* [Stap 3: Genereer en bereid je sleutel voor op overdracht](#step-3-generate-and-prepare-your-key-for-transfer)
+* [Stap 4: Uw sleutel overbrengen naar Azure Key Vault](#step-4-transfer-your-key-to-azure-key-vault)
 
-### <a name="step-1-generate-a-kek"></a>Stap 1: een KEK genereren
+### <a name="step-1-generate-a-kek"></a>Stap 1: Een KEK genereren
 
-Een KEK is een RSA-sleutel die wordt gegenereerd in een Key Vault HSM. De KEK wordt gebruikt voor het versleutelen van de sleutel die u wilt importeren (de *doel* sleutel).
+Een KEK is een RSA-sleutel die wordt gegenereerd in een Key Vault HSM. De KEK wordt gebruikt om de sleutel te versleutelen die u wilt importeren (de *doelsleutel).*
 
-De KEK moet zijn:
-- Een RSA-HSM-sleutel (2.048-bits; 3.072-bits; of 4.096-bits)
-- gegenereerd in de sleutel kluis waar u de doel sleutel wilt importeren
-- Gemaakt met toegestane sleutel bewerkingen ingesteld op `import`
+De KEK moet:
+- Een RSA-HSM-toets (2.048-bits; 3.072-bits; of 4.096-bits)
+- Gegenereerd in dezelfde sleutelkluis waar u de doelsleutel wilt importeren
+- Gemaakt met toegestane sleutelbewerkingen ingesteld op`import`
 
 > [!NOTE]
-> De KEK moet ' Import ' bevatten als de enige toegestane sleutel bewerking. ' Import ' is wederzijds exclusief met alle andere sleutel bewerkingen.
+> De KEK moet 'importeren' als de enige toegestane sleutelbewerking hebben. "import" sluit elkaar uit met alle andere belangrijke activiteiten.
 
-Gebruik de opdracht [AZ sleutel kluis Key Create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) om een KEK te maken waarvoor sleutel bewerkingen zijn ingesteld op `import`. Noteer de sleutel-id (`kid`) die wordt geretourneerd door de volgende opdracht. (U gebruikt de `kid` waarde in [stap 3](#step-3-generate-and-prepare-your-key-for-transfer).)
+Gebruik de opdracht [az keyvault-toets om](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) een KEK `import`te maken waarop belangrijke bewerkingen zijn ingesteld op . Neem de sleutel-id (`kid`) op die is geretourneerd vanuit de volgende opdracht. (U gebruikt `kid` de waarde in [stap 3](#step-3-generate-and-prepare-your-key-for-transfer).)
 
 ```azurecli
 az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import --vault-name ContosoKeyVaultHSM
 ```
 
-### <a name="step-2-download-the-kek-public-key"></a>Stap 2: de open bare sleutel voor KEK downloaden
+### <a name="step-2-download-the-kek-public-key"></a>Stap 2: Download de kek public key
 
-Gebruik [AZ sleutel kluis down load](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download) om de open bare sleutel KEK te downloaden naar een. pem-bestand. De doel sleutel die u importeert, wordt versleuteld met behulp van de open bare sleutel KEK.
+Gebruik [de az keyvault-sleutel download](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download) om de KEK-openbare sleutel van een .pem-bestand te downloaden. De doelsleutel die u importeert, wordt versleuteld met behulp van de openbare KEK-sleutel.
 
 ```azurecli
 az keyvault key download --name KEKforBYOK --vault-name ContosoKeyVaultHSM --file KEKforBYOK.publickey.pem
 ```
 
-Zet het bestand KEKforBYOK. PUBLICKEY. pem over naar uw offline computer. U hebt dit bestand nodig in de volgende stap.
+Breng het KEKforBYOK.publickey.pem-bestand over naar uw offline computer. U zult dit bestand in de volgende stap nodig hebben.
 
-### <a name="step-3-generate-and-prepare-your-key-for-transfer"></a>Stap 3: uw sleutel voor overdracht genereren en voorbereiden
+### <a name="step-3-generate-and-prepare-your-key-for-transfer"></a>Stap 3: Genereer en bereid je sleutel voor op overdracht
 
-Raadpleeg de documentatie van uw HSM-leverancier om het BYOK-hulp programma te downloaden en te installeren. Volg de instructies van de HSM-leverancier om een doel sleutel te genereren en maak vervolgens een sleutel overdrachts pakket (een BYOK-bestand). Het hulp programma BYOK maakt gebruik van de `kid` uit [stap 1](#step-1-generate-a-kek) en het bestand KEKforBYOK. PUBLICKEY. pem dat u in [stap 2](#step-2-download-the-kek-public-key) hebt gedownload om een versleutelde doel sleutel in een BYOK-bestand te genereren.
+Raadpleeg de documentatie van uw HSM-leverancier om de BYOK-tool te downloaden en te installeren. Volg instructies van uw HSM-leverancier om een doelsleutel te genereren en maak vervolgens een sleuteloverdrachtspakket (een BYOK-bestand). De BYOK-tool `kid` gebruikt het bestand van [stap 1](#step-1-generate-a-kek) en het KEKforBYOK.publickey.pem dat u in [stap 2](#step-2-download-the-kek-public-key) hebt gedownload om een versleutelde doelsleutel in een BYOK-bestand te genereren.
 
-Het BYOK-bestand naar de verbonden computer overzetten.
+Breng het BYOK-bestand over naar uw aangesloten computer.
 
 > [!NOTE] 
-> Het importeren van RSA 1.024-bits sleutels wordt niet ondersteund. Het importeren van een elliptische curve sleutel (EC) wordt momenteel niet ondersteund.
+> Het importeren van RSA 1.024-bits sleutels wordt niet ondersteund. Momenteel wordt het importeren van een Elliptic Curve (EC) sleutel niet ondersteund.
 > 
-> **Bekend probleem**: het importeren van een RSA 4.000-doel sleutel van SafeNet Luna hsm's wordt alleen ondersteund met firmware 7.4.0 of nieuwer.
+> **Bekend probleem**: Het importeren van een RSA 4K-doelsleutel van SafeNet Luna HSMs wordt alleen ondersteund met firmware 7.4.0 of nieuwer.
 
-### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>Stap 4: uw sleutel overdragen naar Azure Key Vault
+### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>Stap 4: Uw sleutel overbrengen naar Azure Key Vault
 
-Als u de sleutel import wilt volt ooien, brengt u het sleutel overdrachts pakket (een BYOK-bestand) over van de niet-verbonden computer naar de computer met Internet verbinding. Gebruik de opdracht [AZ file kluis Key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) om het BYOK-bestand te uploaden naar de Key Vault HSM.
+Als u de sleutelimport wilt voltooien, brengt u het sleuteloverdrachtspakket (een BYOK-bestand) over van uw losgekoppelde computer naar de computer die met internet is verbonden. Gebruik de [opdracht az keyvault-toetsinvoer](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) om het BYOK-bestand te uploaden naar de Key Vault HSM.
 
 ```azurecli
 az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok
 ```
 
-Als het uploaden is gelukt, worden in azure CLI de eigenschappen van de geïmporteerde sleutel weer gegeven.
+Als de upload is geslaagd, worden in Azure CLI de eigenschappen van de geïmporteerde sleutel weergegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt deze met HSM beschermde sleutel nu gebruiken in uw sleutel kluis. Zie voor meer informatie [deze vergelijking van prijzen en functies](https://azure.microsoft.com/pricing/details/key-vault/).
+U deze HSM-beveiligde sleutel nu gebruiken in uw sleutelkluis. Zie voor meer informatie [deze prijs- en functievergelijking.](https://azure.microsoft.com/pricing/details/key-vault/)
 
 
 

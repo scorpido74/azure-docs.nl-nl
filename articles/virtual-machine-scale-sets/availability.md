@@ -1,6 +1,6 @@
 ---
-title: Beschikbaarheids opties voor virtuele-machine schaal sets van Azure
-description: Meer informatie over de beschikbaarheids functies voor het uitvoeren van Windows-schaal sets voor virtuele machines in azure
+title: Beschikbaarheidsopties voor Azure-schaalsets voor virtuele machines
+description: Meer informatie over de beschikbaarheidsfuncties voor het uitvoeren van windows-virtuele machineschaalsets in Azure
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machine-scale-sets
@@ -9,13 +9,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/05/2019
 ms.openlocfilehash: a0939bae3a06dd566ca519dd8a52105f6625fc59
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277893"
 ---
-# <a name="availability-options-for-virtual-machines-in-azure"></a>Beschikbaarheids opties voor virtuele machines in azure
+# <a name="availability-options-for-virtual-machines-in-azure"></a>Beschikbaarheidsopties voor virtuele machines in Azure
 
 [!INCLUDE [virtual-machines-common-availability](../../includes/virtual-machines-common-availability.md)]
 

@@ -1,101 +1,101 @@
 ---
 title: IBM DB2 pureScale implementeren op Azure
-description: Meer informatie over het implementeren van een voorbeeld architectuur voor het migreren van een onderneming vanuit de IBM DB2-omgeving die wordt uitgevoerd op een z/O'S naar IBM DB2 pureScale op Azure.
+description: Meer informatie over het implementeren van een voorbeeldarchitectuur die onlangs is gebruikt om een onderneming te migreren van de IBM DB2-omgeving die op z/OS wordt uitgevoerd naar IBM DB2 pureScale op Azure.
 author: njray
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78968900"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale implementeren op Azure
 
-In dit artikel wordt beschreven hoe u een [voorbeeld architectuur](ibm-db2-purescale-azure.md) implementeert die een Enter prise-klant onlangs heeft gebruikt voor het migreren van de IBM DB2-omgeving die wordt uitgevoerd op een z/O'S naar IBM DB2 PureScale op Azure.
+In dit artikel wordt beschreven hoe u een [voorbeeldarchitectuur](ibm-db2-purescale-azure.md) implementeert die een zakelijke klant onlangs heeft gebruikt om te migreren van de IBM DB2-omgeving die op z/OS naar IBM DB2 pureScale op Azure wordt uitgevoerd.
 
-Zie de installatie scripts in de [DB2onAzure](https://aka.ms/db2onazure) -opslag plaats op github om de stappen te volgen die worden gebruikt voor de migratie. Deze scripts zijn gebaseerd op de architectuur voor een typische OLTP-werk belasting (online Trans Action processing) van gemiddelde grootte.
+Zie de installatiescripts in de [DB2onAzure-repository](https://aka.ms/db2onazure) op GitHub om de stappen te volgen die voor de migratie zijn gebruikt. Deze scripts zijn gebaseerd op de architectuur voor een typische, middelgrote online transactieverwerking (OLTP) workload.
 
 ## <a name="get-started"></a>Aan de slag
 
-Als u deze architectuur wilt implementeren, downloadt en voert u het script deploy.sh uit in de [DB2onAzure](https://aka.ms/db2onazure) -opslag plaats op github.
+Als u deze architectuur wilt implementeren, downloadt en voert u het deploy.sh script uit dat is gevonden in de [DB2onAzure-opslagplaats](https://aka.ms/db2onazure) op GitHub.
 
-De opslag plaats bevat ook scripts voor het instellen van een Grafana-dash board. U kunt het dash board gebruiken om query's uit te Prometheus, het open source-bewakings-en waarschuwings systeem dat is opgenomen in DB2.
+De repository heeft ook scripts voor het opzetten van een Grafana dashboard. U het dashboard gebruiken om Prometheus te bevragen, het open-source monitoring- en waarschuwingssysteem dat bij DB2 is meegeleverd.
 
 > [!NOTE]
-> Het deploy.sh-script op de client maakt privé-SSH-sleutels en geeft deze door aan de implementatie sjabloon via HTTPS. Voor een betere beveiliging kunt u het beste [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) gebruiken om geheimen, sleutels en wacht woorden op te slaan.
+> De deploy.sh-script op de client maakt privé SSH-sleutels en geeft deze door aan de implementatiesjabloon via HTTPS. Voor meer beveiliging raden we u aan [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) te gebruiken om geheimen, sleutels en wachtwoorden op te slaan.
 
-## <a name="how-the-deployment-script-works"></a>Hoe het implementatie script werkt
+## <a name="how-the-deployment-script-works"></a>Hoe het implementatiescript werkt
 
-Met het script deploy.sh maakt en configureert u de Azure-resources voor deze architectuur. Het script vraagt u om het Azure-abonnement en de virtuele machines die worden gebruikt in de doel omgeving en voert de volgende bewerkingen uit:
+Het deploy.sh script maakt en configureert de Azure-resources voor deze architectuur. Het script vraagt u om het Azure-abonnement en virtuele machines die in de doelomgeving worden gebruikt en voert vervolgens de volgende bewerkingen uit:
 
--   Hiermee stelt u de resource groep, het virtuele netwerk en de subnetten op Azure in voor de installatie.
+-   Hiermee stelt u de brongroep, het virtuele netwerk en de subnetten op Azure in voor de installatie.
 
--   Hiermee stelt u de netwerk beveiligings groepen en SSH in voor de omgeving.
+-   Hiermee stelt u de netwerkbeveiligingsgroepen en SSH in voor het milieu.
 
--   Hiermee stelt u meerdere Nic's in op zowel de gedeelde opslag als de pureScale van de DB2-virtuele machine.
+-   Hiermee worden meerdere NIC's ingesteld op zowel de gedeelde opslag als de DB2 pureScale virtuele machines.
 
--   Hiermee maakt u de virtuele machines van de gedeelde opslag. Als u Opslagruimten Direct of een andere opslag oplossing gebruikt, raadpleegt u [overzicht van opslagruimten direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview).
+-   Hiermee maakt u de virtuele machines voor gedeelde opslag. Zie [Direct-overzicht opslagruimten](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)als u Storage Spaces Direct of een andere opslagoplossing gebruikt.
 
--   Hiermee maakt u de virtuele machine JumpBox.
+-   Hiermee maakt u de virtuele machine van de jumpbox.
 
--   Hiermee maakt u de DB2 pureScale-virtuele machines.
+-   Hiermee maakt u de DB2 pureScale virtuele machines.
 
--   Hiermee maakt u de virtuele Witness-machine die door de DB2-pureScale wordt gepingd. Sla dit deel van de implementatie over als uw versie van de Db2-pureScale geen Witness vereist.
+-   Hiermee maakt u de virtuele computer die DB2 pureScale pings. Sla dit deel van de implementatie over als uw versie van Db2 pureScale geen getuige vereist.
 
--   Hiermee maakt u een virtuele Windows-machine die moet worden gebruikt voor het testen, maar worden er geen items geïnstalleerd.
+-   Hiermee maakt u een virtuele Windows-machine om te gebruiken voor het testen, maar er wordt niets op geïnstalleerd.
 
-Vervolgens stelt de implementatie scripts een virtuele iSCSI-Storage Area Network (vSAN) in voor gedeelde opslag in Azure. In dit voor beeld maakt iSCSI verbinding met het gedeelde opslag cluster. In de oorspronkelijke klant oplossing is GlusterFS gebruikt. IBM biedt echter geen ondersteuning meer voor deze methode. Als u de ondersteuning van IBM wilt behouden, moet u een ondersteund bestands systeem dat compatibel is met iSCSI gebruiken. Micro soft biedt Opslagruimten Direct (S2D) als optie.
+Vervolgens stellen de implementatiescripts een iSCSI-netwerk voor virtuele opslagruimte (vSAN) in voor gedeelde opslag op Azure. In dit voorbeeld maakt iSCSI verbinding met het gedeelde opslagcluster. In de oorspronkelijke klantoplossing werd GlusterFS gebruikt. IBM ondersteunt deze aanpak echter niet langer. Om uw ondersteuning van IBM te behouden, moet u een ondersteund iSCSI-compatibel bestandssysteem gebruiken. Microsoft biedt Storage Spaces Direct (S2D) als optie aan.
 
-Deze oplossing biedt u ook de mogelijkheid om de iSCSI-doelen als één Windows-knoop punt te installeren. iSCSI biedt een gedeelde Block Storage-interface via TCP/IP waarmee de installatie procedure van de DB2-pureScale een apparaatinterface kan gebruiken om verbinding te maken met de gedeelde opslag.
+Deze oplossing geeft u ook de mogelijkheid om de iSCSI-doelen te installeren als één Windows-knooppunt. iSCSI biedt een gedeelde blokopslaginterface via TCP/IP waarmee de DB2 pureScale-installatieprocedure een apparaatinterface kan gebruiken om verbinding te maken met gedeelde opslag.
 
-De implementatie scripts voeren de volgende algemene stappen uit:
+De implementatiescripts voeren de volgende algemene stappen uit:
 
-1.  Stel een gedeeld opslag cluster in op Azure. Deze stap omvat ten minste twee Linux-knoop punten.
+1.  Stel een gedeeld opslagcluster in op Azure. Deze stap omvat ten minste twee Linux-knooppunten.
 
-2.  Stel een iSCSI direct-interface in op Linux-doel servers voor het gedeelde opslag cluster.
+2.  Stel een iSCSI Direct-interface in op doel-Linux-servers voor het gedeelde opslagcluster.
 
-3.  De iSCSI-initiator instellen op de virtuele Linux-machines. De initiator heeft toegang tot het gedeelde opslag cluster met behulp van een iSCSI-doel. Zie [een iSCSI-doel en initiator configureren in Linux](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) in de RootUsers-documentatie voor meer informatie over de installatie.
+3.  Stel de iSCSI-initiator in op de virtuele Linux-machines. De initiator heeft toegang tot het gedeelde opslagcluster met behulp van een iSCSI-doel. Zie [Een iSCSI-doel en initiator in Linux configureren](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) in de documentatie van RootUsers voor installatiegegevens.
 
 4.  Installeer de gedeelde opslaglaag voor de iSCSI-interface.
 
-Nadat de scripts het iSCSI-apparaat hebben gemaakt, is de laatste stap om DB2 pureScale te installeren. Als onderdeel van de installatie van de DB2 pureScale wordt [IBM spectrum Scale](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html) (voorheen bekend als GPFS) gecompileerd en geïnstalleerd op het glusterfs-cluster. Met dit geclusterde bestands systeem kan DB2 pureScale gegevens delen tussen de virtuele machines waarop de DB2 pureScale-engine wordt uitgevoerd. Zie de documentatie over [IBM spectrum Scale](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) op de IBM-website voor meer informatie.
+Nadat de scripts het iSCSI-apparaat hebben gemaakt, is de laatste stap het installeren van DB2 pureScale. Als onderdeel van de DB2 pureScale setup wordt [IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html) (voorheen GPFS) gecompileerd en geïnstalleerd op het GlusterFS cluster. Dit geclusterde bestandssysteem stelt DB2 pureScale in staat om gegevens te delen tussen de virtuele machines die de DB2 pureScale-engine draaien. Zie voor meer informatie de documentatie van ibm [Spectrum Scale](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) op de IBM-website.
 
-## <a name="db2-purescale-response-file"></a>PureScale-respons bestand van DB2
+## <a name="db2-purescale-response-file"></a>DB2 pureScale-antwoordbestand
 
-De GitHub-opslag plaats bevat DB2server. RSP, een antwoord bestand (. RSP) waarmee u een geautomatiseerd script kunt genereren voor de installatie van de DB2-pureScale. De volgende tabel bevat de opties voor de DB2-pureScale die het antwoord bestand gebruikt voor Setup. U kunt het antwoord bestand zo nodig aanpassen voor uw omgeving.
+De GitHub repository bevat DB2server.rsp, een response (.rsp) bestand waarmee u een geautomatiseerd script voor de DB2 pureScale installatie genereren. In de volgende tabel worden de DB2-pureScale-opties weergegeven die het antwoordbestand gebruikt voor het instellen. U het antwoordbestand aanpassen als dat nodig is voor uw omgeving.
 
 > [!NOTE]
-> Een voor beeld van een antwoord bestand, DB2server. RSP, is opgenomen in de [DB2onAzure](https://aka.ms/db2onazure) -opslag plaats op github. Als u dit bestand gebruikt, moet u het bewerken voordat het in uw omgeving kan worden gebruikt.
+> Een voorbeeldreactiebestand, DB2server.rsp, is opgenomen in de [DB2onAzure-repository](https://aka.ms/db2onazure) op GitHub. Als u dit bestand gebruikt, moet u het bewerken voordat het in uw omgeving kan werken.
 
-| Scherm naam               | Veld                                        | Waarde                                                                                                 |
+| Schermnaam               | Veld                                        | Waarde                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | Welkom                   |                                              | Nieuwe installatie                                                                                           |
-| Kies een product          |                                              | DB2-versie 11.1.3.3. Server edities met DB2 pureScale                                              |
+| Een product kiezen          |                                              | DB2 Versie 11.1.3.3. Server Editions met DB2 pureScale                                              |
 | Configuratie             | Directory                                    | /data1/opt/ibm/db2/V11.1                                                                              |
-|                           | Het installatie type selecteren                 | Standaard                                                                                               |
-|                           | Ik ga akkoord met de IBM-voor waarden                     | Geselecteerd                                                                                               |
-| Eigenaar van exemplaar            | Bestaande gebruiker voor exemplaar, gebruikers naam        | DB2sdin1                                                                                              |
-| Gebruiker met omheining               | Bestaande gebruiker, gebruikers naam                     | DB2sdfe1                                                                                              |
-| Bestands systeem van cluster       | Pad naar gedeelde schijf partitie apparaat            | /dev/dm-2                                                                                             |
-|                           | Koppelpunt                                  | /DB2sd\_1804a                                                                                         |
+|                           | Het installatietype selecteren                 | Typische                                                                                               |
+|                           | Ik ga akkoord met de IBM-voorwaarden                     | Geselecteerd                                                                                               |
+| Instantie-eigenaar            | Bestaande gebruiker bijvoorbeeld, gebruikersnaam        | DB2sdin1                                                                                              |
+| Omheinde gebruiker               | Bestaande gebruiker, gebruikersnaam                     | DB2sdfe1                                                                                              |
+| Clusterbestandssysteem       | Apparaatpad gedeelde schijfpartitie            | /dev/dm-2                                                                                             |
+|                           | Bevestigingspunt                                  | /DB2sd\_1804a                                                                                         |
 |                           | Gedeelde schijf voor gegevens                         | /dev/dm-1                                                                                             |
-|                           | Koppel punt (gegevens)                           | /DB2fs/datafs1                                                                                        |
+|                           | Bevestigingspunt (gegevens)                           | /DB2fs/datafs1                                                                                        |
 |                           | Gedeelde schijf voor logboek                          | /dev/dm-0                                                                                             |
-|                           | Koppel punt (logboek)                            | /DB2fs/logfs1                                                                                         |
-|                           | Tiebreaker van de DB2-Cluster Services. Pad naar apparaat | /dev/dm-3                                                                                             |
-| Hostlijst                 | D1 [eth1], D2 [eth1], CF1 [eth1], CF2 [eth1] |                                                                                                       |
-|                           | Voor keur primair CF                         | cf1                                                                                                   |
-|                           | Voor Keurs-secundair CF                       | cf2                                                                                                   |
-| Antwoord bestand en samen vatting | eerste optie                                 | De versie van de DB2-Server installeren met de IBM DB2 pureScale-functie en mijn instellingen opslaan in een reactie bestand |
-|                           | Naam van antwoord bestand                           | /root/DB2server.rsp                                                                                   |
+|                           | Bevestigingspunt (logboek)                            | /DB2fs/logfs1                                                                                         |
+|                           | DB2 Cluster Services Tiebreaker. Apparaatpad | /dev/dm-3                                                                                             |
+| Hostlijst                 | d1 [eth1], d2 [eth1], cf1 [eth1], cf2 [eth1] |                                                                                                       |
+|                           | Primaire CF van voorkeur                         | cf1                                                                                                   |
+|                           | Voorkeur secundaire CF                       | cf2                                                                                                   |
+| Reactiebestand en samenvatting | eerste optie                                 | Db2 Server Edition installeren met de IBM DB2 pureScale-functie en mijn instellingen opslaan in een reactiebestand |
+|                           | Bestandsnaam antwoord                           | /root/DB2server.rsp                                                                                   |
 
 ### <a name="notes-about-this-deployment"></a>Opmerkingen over deze implementatie
 
-- De waarden voor/dev-dm0,/dev-DM1,/dev-dm2 en/dev-dm3 kunnen worden gewijzigd na het opnieuw opstarten van de virtuele machine waarop de installatie plaatsvindt (D0 in het geautomatiseerde script). U kunt de juiste waarden vinden door de volgende opdracht uit te voeren voordat het antwoord bestand wordt voltooid op de server waarop de installatie wordt uitgevoerd:
+- De waarden voor /dev-dm0, /dev-dm1, /dev-dm2 en /dev-dm3 kunnen veranderen na een herstart op de virtuele machine waar de installatie plaatsvindt (d0 in het geautomatiseerde script). Als u de juiste waarden wilt vinden, u de volgende opdracht uitvoeren voordat u het antwoordbestand op de server voltooit waar de installatie wordt uitgevoerd:
 
    ```
    [root\@d0 rhel]\# ls -als /dev/mapper
@@ -109,38 +109,38 @@ De GitHub-opslag plaats bevat DB2server. RSP, een antwoord bestand (. RSP) waarm
    0 lrwxrwxrwx 1 root root 7 May 30 11:08 db2tieb -\> ../dm-3
    ```
 
-- De installatie scripts gebruiken aliassen voor de iSCSI-schijven zodat de werkelijke namen eenvoudig kunnen worden gevonden.
+- De setup scripts gebruiken aliassen voor de iSCSI-schijven, zodat de werkelijke namen gemakkelijk kunnen worden gevonden.
 
-- Wanneer het installatie script wordt uitgevoerd op D0, zijn de **/dev/DM--\*** waarden mogelijk anders op D1, cf0 en CF1. Het verschil in waarden heeft geen invloed op de instellingen van de DB2-pureScale.
+- Wanneer het installatiescript op d0 wordt uitgevoerd, kunnen de **/dev/dm-waarden\* ** verschillen op d1, cf0 en cf1. Het verschil in waarden heeft geen invloed op de DB2 pureScale setup.
 
 ## <a name="troubleshooting-and-known-issues"></a>Probleemoplossing en bekende problemen
 
-De GitHub-opslag plaats bevat een Knowledge Base die de auteurs onderhouden. Hier vindt u mogelijke problemen die kunnen optreden en oplossingen die u kunt proberen. Bekende problemen kunnen bijvoorbeeld optreden wanneer:
+De GitHub repo bevat een kennisbank die de auteurs onderhouden. Het bevat mogelijke problemen die u zou kunnen hebben en oplossingen die u proberen. Bekende problemen kunnen bijvoorbeeld optreden wanneer:
 
 -   U probeert het IP-adres van de gateway te bereiken.
 
--   U compileert de algemene open bare licentie (GPL).
+-   U bent het samenstellen van Algemene Openbare Licentie (GPL).
 
--   De beveiligings-Handshake tussen hosts mislukt.
+-   De beveiligingshanddruk tussen hosts mislukt.
 
--   Het DB2-installatie programma detecteert een bestaand bestands systeem.
+-   De DB2-installer detecteert een bestaand bestandssysteem.
 
--   U installeert de IBM spectrum-schaal hand matig.
+-   U installeert ibm Spectrum Scale handmatig.
 
--   U installeert DB2 pureScale wanneer er al een IBM spectrum-schaal is gemaakt.
+-   U installeert DB2 pureScale wanneer IBM Spectrum Scale al is gemaakt.
 
--   U verwijdert de pureScale van de DB2-en IBM-spectrum.
+-   U verwijdert DB2 pureScale en IBM Spectrum Scale.
 
-Zie het kb.md-bestand in de [DB2onAzure](https://aka.ms/DB2onAzure) -opslag plaats voor meer informatie over deze en andere bekende problemen.
+Zie het kb.md-bestand in de [DB2onAzure](https://aka.ms/DB2onAzure) repo voor meer informatie over deze en andere bekende problemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
--   [De vereiste gebruikers voor een installatie van een DB2 pureScale-functie maken](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
+-   [Vereiste gebruikers maken voor een DB2 pureScale Feature-installatie](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 
--   [De opdracht DB2icrt-instantie maken](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
+-   [DB2icrt - Instantie maken, opdracht](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
 
--   [Gegevens oplossing voor DB2 pureScale-clusters](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+-   [DB2 pureScale Clusters Data Solution](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 
 -   [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
--   [Azure Virtual Data Center lift-en Shift-gids](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
+-   [Azure Virtual Data Center Lift and Shift Guide](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)

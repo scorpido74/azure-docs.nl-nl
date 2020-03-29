@@ -1,5 +1,5 @@
 ---
-title: Opgeslagen procedures en triggers schrijven met behulp van de Java script-query-API in Azure Cosmos DB
+title: Opgeslagen procedures en triggers schrijven met de JavaScript-query-API in Azure Cosmos DB
 description: Leer opgeslagen procedures en triggers schrijven met de JavaScript-query-API in Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
 ms.openlocfilehash: 221a3118808a044ef1b1b822b9c95772bf792f34
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441714"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Opgeslagen procedures en triggers schrijven in Azure Cosmos DB met de JavaScript-query-API
 
 In Azure Cosmos DB kunt u geoptimaliseerde query's uitvoeren door gebruik te maken van een gestroomlijnde JavaScript-interface zonder dat u SQL hoeft te kennen om opgeslagen procedures of triggers te kunnen schrijven. Zie het artikel [Werken met de geïntegreerde query-API voor JavaScript in Azure Cosmos DB](javascript-query-api.md) voor meer informatie over ondersteuning van de JavaScript-query-API in Azure Cosmos DB.
 
-## <a id="stored-procedures"></a>Opgeslagen procedure met behulp van de JavaScript-query-API
+## <a name="stored-procedure-using-the-javascript-query-api"></a><a id="stored-procedures"></a>Opgeslagen procedure met behulp van de JavaScript-query-API
 
-Het volgende codevoorbeeld geeft aan hoe de JavaScript-query-API wordt gebruikt in de context van een opgeslagen procedure. Met de opgeslagen procedure wordt een Azure Cosmos-item ingevoegd dat is opgegeven door een invoer parameter en wordt een meta gegevens document bijgewerkt met behulp van de methode `__.filter()`, met minSize, maxSize en totalSize op basis van de eigenschap Size van het invoer item.
+Het volgende codevoorbeeld geeft aan hoe de JavaScript-query-API wordt gebruikt in de context van een opgeslagen procedure. De opgeslagen procedure voegt een Azure Cosmos-item in dat is opgegeven door `__.filter()` een invoerparameter en werkt een metagegevensdocument bij met behulp van de methode, met minSize, maxSize en totalSize op basis van de eigenschap grootte van het invoeritem.
 
 > [!NOTE]
 > `__` (dubbele onderstreping) is een alias naar `getContext().getCollection()` bij gebruik van de JavaScript-query-API.

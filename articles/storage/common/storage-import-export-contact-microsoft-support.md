@@ -1,6 +1,6 @@
 ---
-title: Ondersteuningsticket of een aanvraag voor de Azure Import/Export-taak maken | Microsoft Docs
-description: Leer hoe u een ondersteuningsaanvraag voor problemen met betrekking tot de Import-/ exporttaak registreren.
+title: Ondersteuningsticket of aanvraag maken voor azure-import-/exporttaak | Microsoft Documenten
+description: Meer informatie over het registreren van ondersteuningsaanvragen voor problemen met betrekking tot uw taak Importeren/exporteren.
 services: storsimple
 author: alkohli
 ms.service: storage
@@ -9,82 +9,82 @@ ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 8361c32860d48b78c778ea5106ba04715fcc5f3c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67621039"
 ---
-# <a name="open-a-support-ticket-for-an-importexport-job"></a>Open een ondersteuningsticket voor een taak voor importeren/exporteren
+# <a name="open-a-support-ticket-for-an-importexport-job"></a>Een ondersteuningsticket openen voor een taak Importeren/exporteren
 
-Als u problemen ondervindt met uw Import/Export-service, kunt u een serviceaanvraag voor technische ondersteuning. In dit artikel begeleidt u bij:
+Als u problemen ondervindt met uw import/exportservice, u een serviceaanvraag voor technische ondersteuning maken. Dit artikel leidt je door:
 
-* Het maken van een ondersteuningsaanvraag.
-* Over het beheren van een aanvraag ondersteuningslevenscyclus uit in de portal.
+* Een ondersteuningsaanvraag maken.
+* Hoe u de levenscyclus van een ondersteuningsaanvraag vanuit de portal beheren.
 
 ## <a name="create-a-support-request"></a>Een ondersteuningsaanvraag maken
 
-De volgende stappen uitvoeren om een ondersteuningsaanvraag maken:
+Voer de volgende stappen uit om een ondersteuningsaanvraag te maken:
 
-1. Ga naar uw taak import/export. Navigeer naar **ondersteuning + probleemoplossing** sectie en klik vervolgens op **nieuwe ondersteuningsaanvraag**.
+1. Ga naar uw import/exporttaak. Navigeer naar de sectie **ONDERSTEUNING + PROBLEEMOPLOSSING** en klik op **Nieuw ondersteuningsverzoek**.
      
-    ![Basics](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
+    ![Basisbeginselen](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
-2. In **nieuwe ondersteuningsaanvraag**, selecteer **basisbeginselen**. In **basisbeginselen**, de volgende stappen uit:
+2. Selecteer **basisbeginselen**in **Nieuw ondersteuningsverzoek**. Ga **in Basisbeginselen**de volgende stappen uit:
     
-    1. Uit de **type probleem** vervolgkeuzelijst **technische**.
+    1. Selecteer **Technische**optie in de vervolgkeuzelijst **Probleemtype.**
     2. Kies uw **abonnement**.
-    3. Onder **Service**, Controleer **mijn Services**. In de vervolgkeuzelijst, kunt u een van de opties - **Opslagaccountbeheer**, **Blob**, of **bestand**. 
-        - Als u ervoor kiest **Opslagaccountbeheer**, selecteer **Resource**, en **ondersteuningsplan**.
-            ![Storage-Account Management kiezen](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
-        - Als u ervoor kiest **Blob**, selecteer **Resource**, **containernamen** (optioneel), en **ondersteuningsplan**.
-            ![Kies Blob](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
-        - Als u ervoor kiest **bestand**, selecteer **Resource**, **namen van bestandsshares** (optioneel), en **ondersteuningsplan** ![bestand kiezen](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
+    3. Controleer **onder Service**Mijn **services**. In de vervolgkeuzelijst u een van de opties selecteren : **Accountbeheer**opslaan, **Blob**of **Bestand**. 
+        - Als u **Opslagaccountbeheer**kiest, selecteert u **Resource**en **ondersteuningsplan**.
+            ![Opslagaccountbeheer kiezen](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
+        - Als u **Blob**kiest, selecteert u **Resource,** **Containernamen** (optioneel) en **Ondersteuningsplan**.
+            ![Blob kiezen](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
+        - Als u **Bestand**kiest, selecteert u **Resource,** **Namen van bestandsdelen** (optioneel) en **Ondersteuningsplan** ![Bestand kiezen](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
     4. Klik op **Volgende**.
 
-3. In **nieuwe ondersteuningsaanvraag**, selecteer **stap 2 probleem**. In **probleem**, de volgende stappen uit:
+3. Selecteer stap 2 **Probleem**in **Nieuw ondersteuningsverzoek**. Ga **in Probleem**de volgende stappen uit:
     
-    1. Kies de **ernst** als **C - minimale impact**. Ondersteuning wordt bijgewerkt als nodig is.
-    2. Selecteer de **probleemtype** als **gegevensmigratie**.
-    3. Kies de **categorie** als **importeren - exporteren**.
-    4. Geef een **titel** voor het probleem en meer **Details**.
-    5. Geef de begindatum en -tijd voor het probleem.
-    6. In de **uploaden van het bestand**, klik op het mappictogram om door te bladeren van alle andere bestanden die u wilt uploaden.
+    1. Kies de **ernst** als **C - Minimale impact**. Ondersteuning zal het bijwerken indien nodig.
+    2. Selecteer het **type Probleem** als **gegevensmigratie**.
+    3. Kies de **rubriek** importeren **- Exporteren**.
+    4. Geef een **titel** op voor het probleem en meer **details**.
+    5. Geef de begindatum en tijd voor het probleem op.
+    6. Klik **in het uploaden van bestanden**op het mappictogram om door andere bestanden te bladeren die u wilt uploaden.
     7. Controleer **diagnostische gegevens delen**.
     8. Klik op **Volgende**.
 
        ![Probleem](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
-4. In **nieuwe ondersteuningsaanvraag**, klikt u op **contactgegevens van stap 3**. In **contactgegevens**, de volgende stappen uit:
+4. Klik in **Nieuw ondersteuningsverzoek**op **Contactgegevens van stap 3**. Ga **in Contactgegevens**de volgende stappen uit:
 
-   1. In de **opties voor contactpersonen**, geef de gewenste manier (telefoon of e-mail) en de taal. De reactietijd wordt automatisch geselecteerd op basis van uw abonnement wilt.
-   2. Geef uw naam, e-mailbericht, contact op met de optionele, land/regio in de contactgegevens. Selecteer de **contact op met wijzigingen opslaan voor toekomstige ondersteuningsaanvragen** selectievakje.
-   3. Klik op **Create**.
+   1. Geef in de **contactopties**de contactmethode (telefoon of e-mail) en de taal op. De reactietijd wordt automatisch geselecteerd op basis van uw abonnement.
+   2. Geef in de contactgegevens uw naam, e-mail, optionele contactpersoon, land/regio op. Schakel het selectievakje **Wijzigingen in contactpersonen opslaan voor toekomstige ondersteuningsaanvragen** in.
+   3. Klik **op Maken**.
    
        ![Contactgegevens](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 
-      Deze informatie wordt door Microsoft Support contact op met u voor meer informatie, diagnose en het probleem zou moeten worden gebruikt.
-      Nadat u uw aanvraag hebt ingediend, een ondersteuningsmedewerker neemt contact met u zo snel mogelijk om door te gaan met uw aanvraag.
+      Microsoft Support gebruikt deze informatie om contact met u op te nemen voor meer informatie, diagnose en oplossing.
+      Nadat u uw aanvraag hebt ingediend, neemt een ondersteuningstechnicus zo snel mogelijk contact met u op om verder te gaan met uw verzoek.
 
-## <a name="manage-a-support-request"></a>Een ondersteuningsaanvraag beheren
+## <a name="manage-a-support-request"></a>Een ondersteuningsverzoek beheren
 
 Nadat u een ondersteuningsticket hebt gemaakt, kunt u de voortgang van het ticket vanuit de portal beheren.
 
-#### <a name="to-manage-your-support-requests"></a>Voor het beheren van uw ondersteuningsaanvragen
+#### <a name="to-manage-your-support-requests"></a>Uw ondersteuningsverzoeken beheren
 
-1. Als u naar de pagina help en ondersteuning, gaat u naar **Bladeren > Help + ondersteuning**.
+1. Als u naar de help- en ondersteuningspagina wilt gaan, navigeert u **naar Bladeren > Help + ondersteuning.**
 
     ![Ondersteuningsaanvragen beheren](./media/storage-import-export-contact-microsoft-support/manage-support-ticket2.png)   
 
-2. Een lijst in tabelvorm met **recente ondersteuningsaanvragen** wordt weergegeven in **Help en ondersteuning**.
+2. Een tabeltabellijst met **recente ondersteuningsaanvragen** wordt weergegeven in **Help + ondersteuning**.
 
     ![Ondersteuningsaanvragen beheren](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
 
-3. Selecteer en klik op een aanvraag voor ondersteuning. U kunt de status en de details voor deze aanvraag bekijken. Klik op **+ nieuw bericht** als u wilt deze aanvraag opgevolgd.
+3. Selecteer en klik op een ondersteuningsverzoek. U de status en de details van dit verzoek bekijken. Klik **+ Nieuw bericht** als u dit verzoek wilt opvolgen.
 
     ![Ondersteuningsaanvragen beheren](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [oplossen van problemen met betrekking tot het Import/Export-service](storage-import-export-tool-troubleshooting-v1.md).
+Meer informatie over het [oplossen van problemen met betrekking tot de import/exportservice](storage-import-export-tool-troubleshooting-v1.md).

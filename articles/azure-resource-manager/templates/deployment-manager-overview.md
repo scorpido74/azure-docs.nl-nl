@@ -1,68 +1,68 @@
 ---
-title: Veilige implementatie in verschillende regio's-Azure Deployment Manager
-description: Beschrijft hoe u een service implementeren via een groot aantal regio's met Azure Deployment Manager. Hier ziet u veilige implementatiemethoden om te controleren of de stabiliteit van uw implementatie te bevestigen voordat het uitrollen van naar alle regio's.
+title: Veilige implementatie in verschillende regio's - Azure Deployment Manager
+description: Beschrijft hoe u een service voor veel regio's implementeert met Azure Deployment Manager. Het toont veilige implementatiepraktijken om de stabiliteit van uw implementatie te controleren voordat u naar alle regio's wordt uitgerold.
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 424cd79a6c63200e1f101cf178b1fd2c9083161e
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76152524"
 ---
-# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Veilige implementatie procedures met Azure Deployment Manager (open bare preview) inschakelen
+# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Veilige implementatieprocedures inschakelen met Azure Deployment Manager (Openbare voorbeeld)
 
-Voor het implementeren van uw service in veel regio's en zorg ervoor dat deze wordt uitgevoerd zoals verwacht in elke regio, kunt u Azure Deployment Manager gebruiken voor de coördinatie van een gefaseerde implementatie van de service. Net zoals u zou voor elke Azure-implementatie doen, definieert u de resources voor uw service in [Resource Manager-sjablonen](template-syntax.md). Na het maken van de sjablonen, kunt u Deployment Manager gebruiken om te beschrijven van de topologie voor uw service en hoe deze moet worden geïmplementeerd.
+Als u uw service in veel regio's wilt implementeren en ervoor wilt zorgen dat deze in elke regio wordt uitgevoerd zoals verwacht, u Azure Deployment Manager gebruiken om een gefaseerde implementatie van de service te coördineren. Net zoals u dat voor elke Azure-implementatie zou doen, definieert u de resources voor uw service in [Resource Manager-sjablonen.](template-syntax.md) Nadat u de sjablonen hebt gemaakt, gebruikt u Deployment Manager om de topologie voor uw service te beschrijven en hoe deze moet worden uitgerold.
 
-Deployment Manager is een functie van Resource Manager. Hiermee wordt uw mogelijkheden tijdens de implementatie. Deployment Manager gebruiken wanneer u een complexe service die moet worden geïmplementeerd voor meerdere regio's. Door de implementatie van uw service te faseren, kunt u potentiële problemen opsporen voordat de service is geïmplementeerd voor alle regio's. Als u niet de extra voorzorgsmaatregelen van een gefaseerde implementatie nodig hebt, gebruikt u de standaard [implementatieopties](deploy-portal.md) voor Resource Manager. Deployment Manager integreert naadloos met alle bestaande hulpprogramma's van derden die ondersteuning bieden voor Resource Manager-implementaties, zoals continue integratie en continue levering (CI/CD)-aanbiedingen.
+Deployment Manager is een functie van Resource Manager. Het breidt uw mogelijkheden tijdens de implementatie uit. Gebruik Deployment Manager wanneer u een complexe service hebt die moet worden geïmplementeerd in verschillende regio's. Door de implementatie van uw service te faseren, kunt u potentiële problemen opsporen voordat de service is geïmplementeerd voor alle regio's. Als u de extra voorzorgsmaatregelen voor een gefaseerde implementatie niet nodig hebt, gebruikt u de [standaardimplementatieopties](deploy-portal.md) voor Resource Manager. Deployment Manager integreert naadloos met alle bestaande tools van derden die Resource Manager-implementaties ondersteunen, zoals continue integratie en ci/cd-aanbiedingen (continuous delivery).
 
-Azure Deployment Manager is beschikbaar als preview-versie. Help ons bij het verbeteren van de functie door [feedback](https://aka.ms/admfeedback)te geven.
+Azure Deployment Manager bevindt zich in preview. Help ons de functie te verbeteren door feedback te [geven.](https://aka.ms/admfeedback)
 
-Deployment Manager wilt gebruiken, moet u vier bestanden maken:
+Als u Deployment Manager wilt gebruiken, moet u vier bestanden maken:
 
-* Sjabloon voor topologie
-* Sjabloon rollout
+* Sjabloon topologie
+* Sjabloon voor implementatie
 * Parameterbestand voor topologie
 * Parameterbestand voor implementatie
 
-U implementeren de sjabloon topologie voordat u de implementatie-sjabloon implementeert.
+U implementeert de topologiesjabloon voordat u de implementatiesjabloon implementeert.
 
 Aanvullende bronnen:
 
-- De [Naslag informatie voor Azure Deployment Manager rest API](https://docs.microsoft.com/rest/api/deploymentmanager/).
-- [Zelf studie: Azure Deployment Manager gebruiken met Resource Manager-sjablonen](./deployment-manager-tutorial.md).
-- [Zelf studie: status controle gebruiken in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
-- [Een Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart)-voor beeld.
+- De [verwijzing naar de REST API van Azure Deployment Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
+- [Zelfstudie: Azure Deployment Manager gebruiken met Resource Manager-sjablonen](./deployment-manager-tutorial.md).
+- [Zelfstudie: Statuscontrole gebruiken in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
+- [Een voorbeeld van Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart).
 
 ## <a name="identity-and-access"></a>Identiteit en toegang
 
-Met Deployment Manager, een [gebruiker toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) worden de implementatieacties uitgevoerd. U kunt deze identiteit maken voordat u begint met uw implementatie. Toegang tot het abonnement dat u de service implementeert en voldoende machtigingen voor het voltooien van de implementatie moet hebben. Zie voor meer informatie over de acties die zijn verleend door middel van rollen [ingebouwde rollen voor Azure-resources](../../role-based-access-control/built-in-roles.md).
+Met Deployment Manager voert een [door de gebruiker toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) de implementatieacties uit. U maakt deze identiteit voordat u met de implementatie begint. Het moet toegang hebben tot het abonnement waarop u de service implementeert en voldoende toestemming hebben om de implementatie te voltooien. Zie [Ingebouwde rollen voor Azure-resources voor](../../role-based-access-control/built-in-roles.md)informatie over de acties die via rollen worden verleend.
 
-De identiteit moet zich op dezelfde locatie bevinden als de implementatie.
+De identiteit moet zich op dezelfde locatie als de implementatie bevinden.
 
-## <a name="topology-template"></a>Sjabloon voor topologie
+## <a name="topology-template"></a>Sjabloon topologie
 
-De sjabloon topologie beschrijft de Azure-resources die gezamenlijk uw service en waar ze moeten worden geïmplementeerd. De volgende afbeelding toont de topologie voor een voorbeeld van de service:
+De topologiesjabloon beschrijft de Azure-resources waaruit uw service bestaat en waar u deze implementeren. In de volgende afbeelding wordt de topologie voor een voorbeeldservice weergegeven:
 
-![Hiërarchie van de service-topologie van services voor het service-eenheden](./media/deployment-manager-overview/service-topology.png)
+![Hiërarchie van servicetopologie tot services tot service-eenheden](./media/deployment-manager-overview/service-topology.png)
 
-De topologie-sjabloon bevat de volgende bronnen:
+De topologiesjabloon bevat de volgende bronnen:
 
-* Artefact-bron - waar uw Resource Manager-sjablonen en de parameters zijn opgeslagen
-* Service-topologie - verwijst naar artefact bron
-  * Services - Hiermee geeft u de locatie en Azure-abonnement-ID
-    * Eenheden service - Hiermee geeft u de resourcegroep, implementatiemodus en pad naar de sjabloon en de parameterbestanden bestand
+* Artefactbron - waar uw Resource Manager-sjablonen en -parameters zijn opgeslagen
+* Servicetopologie - wijst naar artefactbron
+  * Services - geeft locatie- en Azure-abonnements-id op
+    * Service-eenheden - geeft resourcegroep, implementatiemodus en pad naar sjabloon- en parameterbestand op
 
-Om te begrijpen wat er gebeurt op elk niveau, is het handig zijn om te zien welke waarden die u opgeeft.
+Om te begrijpen wat er op elk niveau gebeurt, is het handig om te zien welke waarden u opgeeft.
 
 ![Waarden voor elk niveau](./media/deployment-manager-overview/topology-values.png)
 
-### <a name="artifact-source-for-templates"></a>Artefact bron voor sjablonen
+### <a name="artifact-source-for-templates"></a>Artefactbron voor sjablonen
 
-In uw sjabloon topologie maakt u een artefact-bron die de sjablonen en parameterbestanden bestanden bevat. De bron artefact is een manier om op te halen van de bestanden voor de implementatie. Hier ziet u een andere artefacten bron voor binaire bestanden verderop in dit artikel.
+In uw topologiesjabloon maakt u een artefactbron met de sjablonen en parametersbestanden. De artefactbron is een manier om de bestanden op te halen voor implementatie. U ziet later in dit artikel een andere artefactbron voor binaire bestanden.
 
-Het volgende voorbeeld ziet de algemene indeling van de bron-artefact.
+In het volgende voorbeeld wordt de algemene indeling van de artefactbron weergegeven.
 
 ```json
 {
@@ -83,11 +83,11 @@ Het volgende voorbeeld ziet de algemene indeling van de bron-artefact.
 }
 ```
 
-Zie voor meer informatie, [artifactSources sjabloonverwijzing](/azure/templates/Microsoft.DeploymentManager/artifactSources).
+Zie [verwijzing naar de sjabloon artefactBronnen voor](/azure/templates/Microsoft.DeploymentManager/artifactSources)meer informatie .
 
 ### <a name="service-topology"></a>Servicetopologie
 
-Het volgende voorbeeld ziet de algemene indeling van de resource voor de service-topologie. U opgeven dat de resource-ID van de bron-artefact waarin de sjablonen en parameterbestanden. De topologie van de service omvat alle serviceresources. Als u wilt controleren of dat de bron-artefact beschikbaar is, de topologie van de service is afhankelijk van het.
+In het volgende voorbeeld wordt de algemene indeling van de servicetopologiebron weergegeven. U verstrekt de bron-ID van de artefactbron die de sjablonen en parameterbestanden bevat. De servicetopologie bevat alle servicebronnen. Om ervoor te zorgen dat de artefactbron beschikbaar is, is de servicetopologie afhankelijk van deze bron.
 
 ```json
 {
@@ -110,11 +110,11 @@ Het volgende voorbeeld ziet de algemene indeling van de resource voor de service
 }
 ```
 
-Zie voor meer informatie, [serviceTopologies sjabloonverwijzing](/azure/templates/Microsoft.DeploymentManager/serviceTopologies).
+Zie [verwijzing naar serviceTopologieën voor](/azure/templates/Microsoft.DeploymentManager/serviceTopologies)meer informatie .
 
 ### <a name="services"></a>Services
 
-Het volgende voorbeeld ziet de algemene indeling van de services-resource. In elke service, moet u de locatie en Azure abonnements-ID moet worden gebruikt voor het implementeren van uw service opgeven. Als u wilt implementeren in verschillende regio's, definieert u een service voor elke regio. De service is afhankelijk van de service-topologie.
+In het volgende voorbeeld wordt de algemene indeling van de servicesbron weergegeven. In elke service geeft u de locatie- en Azure-abonnements-ID die u gebruiken voor het implementeren van uw service. Als u naar verschillende regio's wilt implementeren, definieert u een service voor elke regio. De service is afhankelijk van de servicetopologie.
 
 ```json
 {
@@ -138,11 +138,11 @@ Het volgende voorbeeld ziet de algemene indeling van de services-resource. In el
 }
 ```
 
-Zie voor meer informatie, [services sjabloonverwijzing](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services).
+Zie verwijzing naar [de sjabloon services voor](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services)meer informatie .
 
 ### <a name="service-units"></a>Service-eenheden
 
-Het volgende voorbeeld ziet de algemene indeling van de resource voor de service-eenheden. In elke eenheid van de service, geeft u de resourcegroep, de [implementatiemodus](deployment-modes.md) moet worden gebruikt voor de implementatie en het pad naar het bestand sjabloon en de parameterbestanden. Als u een relatief pad voor de sjabloon en parameters opgeeft, wordt het volledige pad is samengesteld uit de hoofdmap van de bron-artefacten. Kunt u een absoluut pad zijn voor de sjabloon en parameters opgeven, maar u verliest de mogelijkheid eenvoudig versie uw releases. De service-eenheid is afhankelijk van de service.
+In het volgende voorbeeld wordt de algemene indeling van de resource service-eenheden weergegeven. In elke service-eenheid geeft u de resourcegroep, de [implementatiemodus](deployment-modes.md) op die moet worden gebruikt voor implementatie en het pad naar het sjabloon- en parameterbestand. Als u een relatief pad opgeeft voor de sjabloon en parameters, wordt het volledige pad opgebouwd uit de hoofdmap in de bron van artefacten. U een absoluut pad opgeven voor de sjabloon en parameters, maar u verliest de mogelijkheid om uw releases eenvoudig te versionen. De service-eenheid is afhankelijk van de service.
 
 ```json
 {
@@ -167,35 +167,35 @@ Het volgende voorbeeld ziet de algemene indeling van de resource voor de service
 }
 ```
 
-Elke sjabloon moet de gerelateerde resources die u wilt implementeren in één stap bevatten. Een service-eenheid kan bijvoorbeeld een sjabloon die alle resources voor de front-end van uw service implementeert.
+Elke sjabloon moet de gerelateerde resources bevatten die u in één stap wilt implementeren. Een service-eenheid kan bijvoorbeeld een sjabloon hebben waarmee alle resources voor de front-end van uw service worden geïmplementeerd.
 
-Zie voor meer informatie, [serviceUnits sjabloonverwijzing](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services/serviceUnits).
+Zie [verwijzing naar de sjabloonserviceEenheden voor](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services/serviceUnits)meer informatie.
 
-## <a name="rollout-template"></a>Sjabloon rollout
+## <a name="rollout-template"></a>Sjabloon voor implementatie
 
-De sjabloon rollout beschrijft de stappen te nemen bij het implementeren van uw service. Geeft u de service-topologie voor het gebruik en de volgorde voor het implementeren van service-eenheden definiëren. Het bevat een artefact bron voor het opslaan van binaire bestanden voor de implementatie. In de sjabloon voor implementatie definieert u de volgende hiërarchie:
+De implementatiesjabloon beschrijft de stappen die moeten worden genomen bij het implementeren van uw service. U geeft de servicetopologie op die u wilt gebruiken en definieert de volgorde voor het implementeren van service-eenheden. Het bevat een artefactbron voor het opslaan van binaire bestanden voor de implementatie. In uw implementatiesjabloon definieert u de volgende hiërarchie:
 
-* Artefact bron
+* Artefactbron
 * Stap
-* Implementeren
-  * Stap-groepen
+* Uitrol
+  * Stappengroepen
     * Implementatiebewerkingen
 
-De volgende afbeelding ziet u de hiërarchie van de rollout-mailsjabloon:
+In de volgende afbeelding ziet u de hiërarchie van de uitrolsjabloon:
 
-![Hiërarchie van implementatie naar de stappen](./media/deployment-manager-overview/Rollout.png)
+![Hiërarchie van implementatie naar stappen](./media/deployment-manager-overview/Rollout.png)
 
-Elke implementatie kan veel stap groepen hebben. Elke groep stap heeft één implementatiebewerking die naar een service-eenheid in de topologie van de service verwijst.
+Elke implementatie kan veel stapgroepen hebben. Elke stapgroep heeft één implementatiebewerking die verwijst naar een service-eenheid in de servicetopologie.
 
-### <a name="artifact-source-for-binaries"></a>Artefact bron voor binaire bestanden
+### <a name="artifact-source-for-binaries"></a>Artefactbron voor binaire bestanden
 
-In de sjabloon rollout maakt u een artefact bron voor de binaire bestanden die u wilt implementeren naar de service. De bron van dit artefact is vergelijkbaar met de [artefact bron voor sjablonen](#artifact-source-for-templates), behalve dat deze bevat de scripts, webpagina's, gecompileerde code of andere bestanden die nodig zijn voor uw service.
+In de uitrolsjabloon maakt u een artefactbron voor de binaire bestanden die u naar de service moet implementeren. Deze artefactbron is vergelijkbaar met de [artefactbron voor sjablonen,](#artifact-source-for-templates)behalve dat deze de scripts, webpagina's, gecompileerde code of andere bestanden bevat die uw service nodig heeft.
 
 ### <a name="steps"></a>Stappen
 
-U kunt een stap uit te voeren voor of na de implementatiebewerking definiëren. Momenteel zijn alleen de stappen `wait` en ' status controle ' beschikbaar.
+U een stap definiëren die u voor of na uw implementatiebewerking wilt uitvoeren. Momenteel zijn `wait` alleen de stap en de 'healthCheck'-stap beschikbaar.
 
-De stap wacht onderbreekt de implementatie voordat u doorgaat. Hiermee kunt u controleren of uw service wordt uitgevoerd zoals verwacht voordat u de volgende eenheid van de service implementeert. Het volgende voorbeeld ziet de algemene indeling van een stap wacht.
+Met de wachtstap wordt de implementatie onderbroken voordat u verdergaat. Hiermee u controleren of uw service wordt uitgevoerd zoals verwacht voordat u de volgende service-eenheid implementeert. In het volgende voorbeeld wordt de algemene indeling van een wachtstap weergegeven.
 
 ```json
 {
@@ -212,19 +212,19 @@ De stap wacht onderbreekt de implementatie voordat u doorgaat. Hiermee kunt u co
 },
 ```
 
-Maakt gebruik van de duur van de eigenschap [ISO 8601-norm](https://en.wikipedia.org/wiki/ISO_8601#Durations). Het vorige voorbeeld bevat een wachttijd van één minuut.
+De eigenschap duur maakt gebruik [van ISO 8601-standaard](https://en.wikipedia.org/wiki/ISO_8601#Durations). In het voorgaande voorbeeld wordt een wachttijd van één minuut opgegeven.
 
-Zie [Introducing Health Integration-implementatie in azure Deployment Manager](./deployment-manager-health-check.md) en [zelf studie: status controle gebruiken in azure Deployment Manager](./deployment-manager-tutorial-health-check.md)voor meer informatie over de status controle.
+Zie [Implementatieimplementatie voor statusintegratie introduceren in Azure Deployment Manager](./deployment-manager-health-check.md) en [Zelfstudie: Statuscontrole gebruiken in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)voor meer informatie over de stap statuscontrole.
 
-Zie voor meer informatie, [stappen sjabloonverwijzing](/azure/templates/Microsoft.DeploymentManager/steps).
+Zie [sjabloonverwijzing stappen voor](/azure/templates/Microsoft.DeploymentManager/steps)meer informatie .
 
 ### <a name="rollouts"></a>Implementaties
 
-Als u wilt controleren of dat de bron-artefact beschikbaar is, de implementatie is afhankelijk van het. De implementatie definieert groepen van stappen voor elke service-eenheid die is geïmplementeerd. Hier kunt u acties moet uitvoeren vóór of na de implementatie. U kunt bijvoorbeeld opgeven dat de implementatie wordt gewacht nadat de service-eenheid is geïmplementeerd. U kunt de volgorde van de groepen stap definiëren.
+Om ervoor te zorgen dat de artefactbron beschikbaar is, is de implementatie afhankelijk van deze bron. De implementatie definieert stappengroepen voor elke service-eenheid die wordt geïmplementeerd. U acties definiëren die u voor of na de implementatie moet uitvoeren. U bijvoorbeeld opgeven dat de implementatie wacht nadat de service-eenheid is geïmplementeerd. U de volgorde van de stapgroepen definiëren.
 
-Hiermee geeft u op het object identiteit het [gebruiker toegewezen beheerde identiteit](#identity-and-access) die acties voor de implementatie wordt uitgevoerd.
+Het identiteitsobject geeft de door de [gebruiker toegewezen beheerde identiteit](#identity-and-access) op die de implementatieacties uitvoert.
 
-Het volgende voorbeeld ziet de algemene indeling van de implementatie.
+In het volgende voorbeeld wordt de algemene indeling van de implementatie weergegeven.
 
 ```json
 {
@@ -260,19 +260,19 @@ Het volgende voorbeeld ziet de algemene indeling van de implementatie.
 }
 ```
 
-Zie voor meer informatie, [implementaties sjabloonverwijzing](/azure/templates/Microsoft.DeploymentManager/rollouts).
+Zie [verwijzing naar de sjabloon voor implementaties voor](/azure/templates/Microsoft.DeploymentManager/rollouts)meer informatie .
 
 ## <a name="parameter-file"></a>Parameterbestand
 
-U maakt twee parameterbestanden. Een parameterbestand wordt gebruikt bij het implementeren van de topologie van de service en de andere wordt gebruikt voor de implementatie van de implementatie. Er zijn enkele waarden die u nodig hebt om ervoor te zorgen zijn hetzelfde in beide parameterbestanden.
+U maakt twee parameterbestanden. Een parameterbestand wordt gebruikt bij het implementeren van de servicetopologie en het andere bestand wordt gebruikt voor de implementatie van de implementatie. Er zijn een aantal waarden die u nodig hebt om ervoor te zorgen zijn hetzelfde in beide parameterbestanden.
 
-## <a name="containerroot-variable"></a>containerRoot variabele
+## <a name="containerroot-variable"></a>containerRoot, variabele
 
-Met versie implementaties, het pad naar uw artefacten wijzigingen bij elke nieuwe versie. De eerste keer dat u het pad naar een implementatie uitgevoerd mogelijk `https://<base-uri-blob-container>/binaries/1.0.0.0`. De tweede keer dat het mogelijk `https://<base-uri-blob-container>/binaries/1.0.0.1`. Deployment Manager vereenvoudigt het ophalen van pad naar de juiste hoofdmap voor de huidige implementatie met behulp van de `$containerRoot` variabele. Deze waarde wordt gewijzigd met elke versie en is niet bekend zijn vóór de implementatie.
+Bij versie-implementaties verandert het pad naar uw artefacten met elke nieuwe versie. De eerste keer dat u een `https://<base-uri-blob-container>/binaries/1.0.0.0`implementatie uitvoert, kan het pad zijn. De tweede keer `https://<base-uri-blob-container>/binaries/1.0.0.1`zou het kunnen zijn. Deployment Manager vereenvoudigt het verkrijgen van het juiste `$containerRoot` hoofdpad voor de huidige implementatie met behulp van de variabele. Deze waarde verandert met elke versie en is niet bekend voor de implementatie.
 
-Gebruik de `$containerRoot` variabele in het parameterbestand voor de sjabloon voor het implementeren van de Azure-resources. Tijdens de implementatie, wordt deze variabele vervangen door de werkelijke waarden van de implementatie.
+Gebruik `$containerRoot` de variabele in het parameterbestand voor sjabloon om de Azure-resources te implementeren. Tijdens de implementatiewordt deze variabele vervangen door de werkelijke waarden van de implementatie.
 
-Tijdens de implementatie maakt u bijvoorbeeld een artefact bron voor de binaire artefacten.
+Tijdens de implementatie maakt u bijvoorbeeld een artefactbron voor de binaire artefacten.
 
 ```json
 {
@@ -294,9 +294,9 @@ Tijdens de implementatie maakt u bijvoorbeeld een artefact bron voor de binaire 
 },
 ```
 
-U ziet dat de `artifactRoot` en `sasUri` eigenschappen. De hoofdmap van het artefact kan worden ingesteld op een waarde zoals `binaries/1.0.0.0`. De SAS-URI is de URI naar uw storage-container met een SAS-token om toegang te krijgen. Deployment Manager bouwt automatisch de waarde van de `$containerRoot` variabele. Het combineert deze waarden in de indeling `<container>/<artifactRoot>`.
+Let `artifactRoot` op `sasUri` de eigenschappen en eigenschappen. De artefactwortel kan worden ingesteld `binaries/1.0.0.0`op een waarde als . De SAS URI is de URI naar uw opslagcontainer met een SAS-token voor toegang. Deployment Manager construeert automatisch de `$containerRoot` waarde van de variabele. Het combineert deze `<container>/<artifactRoot>`waarden in het formaat .
 
-Uw sjabloon en de parameterbestanden-bestand moet weten wat het juiste pad voor het ophalen van de binaire bestanden voor versies. Bijvoorbeeld, voor het implementeren van bestanden voor een web-app, maakt u de volgende parameter-bestand met de variabele $containerRoot. Moet u twee backslashes (`\\`) voor het pad omdat de eerste een escape-teken is.
+Uw sjabloon en parameterbestand moeten het juiste pad kennen voor het verkrijgen van de versies. Als u bijvoorbeeld bestanden voor een web-app wilt implementeren, maakt u het volgende parameterbestand met de variabele $containerRoot. U moet twee backslashes ()`\\`gebruiken voor het pad, omdat het eerste een escape-teken is.
 
 ```json
 {
@@ -310,7 +310,7 @@ Uw sjabloon en de parameterbestanden-bestand moet weten wat het juiste pad voor 
 }
 ```
 
-Gebruik vervolgens deze parameter in de sjabloon:
+Gebruik die parameter vervolgens in uw sjabloon:
 
 ```json
 {
@@ -330,13 +330,13 @@ Gebruik vervolgens deze parameter in de sjabloon:
 }
 ```
 
-U beheren versioned implementaties met het maken van nieuwe mappen en het doorgeven van dat basiscertificaat tijdens implementatie. Het pad loopt tot en met de sjabloon die worden geïmplementeerd.
+U beheert versies door nieuwe mappen te maken en die root door te geven tijdens de implementatie. Het pad stroomt door naar de sjabloon waarmee de resources worden geïmplementeerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd over Deployment Manager. Doorgaan met het volgende artikel voor meer informatie over het implementeren van met Deployment Manager.
+In dit artikel hoorde u over Deployment Manager. Ga naar het volgende artikel om te leren hoe u implementeren met Deployment Manager.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Gebruik Azure Deployment Manager met Resource Manager-sjablonen](./deployment-manager-tutorial.md)
+> [Zelfstudie: Azure Deployment Manager gebruiken met Resource Manager-sjablonen](./deployment-manager-tutorial.md)
 >
-> [Snelstartgids: Azure-Deployment Manager in slechts enkele minuten uitproberen](https://github.com/Azure-Samples/adm-quickstart)
+> [Snelstart: Azure Deployment Manager in slechts een paar minuten uitproberen](https://github.com/Azure-Samples/adm-quickstart)

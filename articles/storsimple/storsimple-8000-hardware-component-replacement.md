@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000-serie Hardwarevervanging onderdeel | Microsoft Docs
-description: Hierin wordt beschreven hoe u veilig vervangt de PCMs, accu, controller-modules, EBOD domeincontrollers, schijven en chassis van een StorSimple-apparaat.
+title: StorSimple 8000-serie hardwareonderdelen vervanging | Microsoft Documenten
+description: Beschrijft hoe u de PCM's, batterij, controllermodules, EBOD-controllers, schijven en chassis van een StorSimple-apparaat veilig vervangen.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -16,124 +16,124 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60321735"
 ---
-# <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Vervangen door een hardware-onderdeel op de StorSimple 8000-apparaat
+# <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Een hardwarecomponent vervangen op uw StorSimple 8000-serie
 
 ## <a name="overview"></a>Overzicht
-De hardware-onderdeel vervanging zelfstudies beschrijven de hardware-onderdelen van uw Microsoft Azure StorSimple 8000-apparaat en de stappen die nodig zijn om te verwijderen en deze te vervangen. In dit artikel beschrijft de pictogrammen veiligheid, bevat verwijzingen naar de gedetailleerde zelfstudies en geeft een lijst van de onderdelen die vervangen zijn.
+De zelfstudies voor het vervangen van hardwarecomponenten beschrijven de hardwareonderdelen van uw Microsoft Azure StorSimple 8000-serie apparaat en de stappen die nodig zijn om deze te verwijderen en te vervangen. In dit artikel worden de veiligheidspictogrammen beschreven, worden verwijzingen naar de gedetailleerde zelfstudies weergegeven en worden de onderdelen vermeld die vervangbaar zijn.
 
 > [!IMPORTANT]
-> Voordat u probeert te verwijderen of vervangen van een StorSimple-onderdeel, zorg ervoor dat u de [veiligheid pictogram conventies](#safety-icon-conventions) en andere [voorzorgsmaatregelen](storsimple-safety.md).
+> Voordat u een StorSimple-onderdeel probeert te verwijderen of te vervangen, moet u de conventies en andere [veiligheidsmaatregelen](storsimple-safety.md)van het [veiligheidspictogram](#safety-icon-conventions) bekijken.
 
 
-### <a name="safety-icon-conventions"></a>Veiligheid pictogram conventies
-De volgende tabel beschrijft de veiligheid pictogrammen die worden gebruikt in deze zelfstudies. Let vooral op deze pictogrammen veiligheid terwijl u de stappen voor het Apparaatonderdelen verwijderen en vervangen.
+### <a name="safety-icon-conventions"></a>Conventies voor veiligheidspictograms
+In de volgende tabel worden de veiligheidspictogrammen beschreven die in deze zelfstudies worden gebruikt. Let goed op deze veiligheidspictogrammen terwijl u de stappen doorneemt om apparaatonderdelen te verwijderen en te vervangen.
 
-| Pictogram | Text | Aanvullende informatie |
+| Pictogram | Tekst | Aanvullende informatie |
 |:--- |:--- |:--- |
-| ![Waarschuwingspictogram](./media/storsimple-hardware-component-replacement/Warning.png) |**GEVAAR!** |Geeft aan dat een gevaarlijke situaties die, als er geen vermeden, in overlijden of ernstige schade resulteert. Dit woord signaal is beperkt tot de meest uitzonderlijke situaties. |
-| ![Waarschuwingspictogram](./media/storsimple-hardware-component-replacement/Warning.png) |**WAARSCHUWING!** |Geeft aan dat een gevaarlijke situaties die als niet voorkomen, tot overlijden of ernstige schade leiden kan. |
-| ![Let op het pictogram](./media/storsimple-hardware-component-replacement/Caution.png) |**LET OP!** |Geeft aan dat een gevaarlijke situaties die als niet voorkomen, tot schade voor kleine of matige leiden kan. |
-| ![U ziet dat het pictogram](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**LET OP:** |Geeft aan dat beschouwd als belangrijk, maar niet op risico productspecifieke informatie. |
-| ![Elektrische schudt pictogram](./media/storsimple-hardware-component-replacement/Electric.png) |**Elektrische schudt gevaar** |Geeft aan dat hoge spanning. |
-| ![Pictogram zware gewicht](./media/storsimple-hardware-component-replacement/Weight.png) |**Zware gewicht** | |
-| ![Er is geen Gebruikerspictogram onderhouden delen](./media/storsimple-hardware-component-replacement/NoUserServiceableParts.png) |**Geen onderdelen voor het onderhouden van gebruiker** |Geen toegang tot tenzij goed zijn opgeleid. |
-| ![Pictogram van de instructies lezen](./media/storsimple-hardware-component-replacement/ReadInstructions.png) |**Lees eerst de instructies** | |
-| ![Gevaar tippictogram](./media/storsimple-hardware-component-replacement/TipHazard.png) |**Tip gevaar** | |
+| ![Waarschuwingspictogram](./media/storsimple-hardware-component-replacement/Warning.png) |**Gevaar!** |Wijst op een gevaarlijke situatie die, indien niet vermeden, zal leiden tot de dood of ernstig letsel. Dit signaal woord is beperkt tot de meest extreme situaties. |
+| ![Waarschuwingspictogram](./media/storsimple-hardware-component-replacement/Warning.png) |**Waarschuwing!** |Wijst op een gevaarlijke situatie die, indien niet vermeden, kan leiden tot de dood of ernstig letsel. |
+| ![Pictogram Voorzichtigheid](./media/storsimple-hardware-component-replacement/Caution.png) |**Voorzichtigheid!** |Wijst op een gevaarlijke situatie die, indien niet vermeden, kan leiden tot lichte of matige verwondingen. |
+| ![Pictogram Bericht](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**LET OP:** |Geeft informatie aan die belangrijk wordt geacht, maar niet met gevaar. |
+| ![Pictogram Elektrische schok](./media/storsimple-hardware-component-replacement/Electric.png) |**Elektrisch schokgevaar** |Geeft hoge spanning aan. |
+| ![Pictogram Zwaar gewicht](./media/storsimple-hardware-component-replacement/Weight.png) |**Zwaar gewicht** | |
+| ![Pictogram geen gebruikersbruikbare onderdelen](./media/storsimple-hardware-component-replacement/NoUserServiceableParts.png) |**Geen gebruikersbruikbare onderdelen** |Geen toegang, tenzij goed opgeleid. |
+| ![Pictogram Leesinstructies](./media/storsimple-hardware-component-replacement/ReadInstructions.png) |**Lees eerst alle instructies** | |
+| ![Pictogram Tipgevaar](./media/storsimple-hardware-component-replacement/TipHazard.png) |**Tip Hazard** | |
 
 ### <a name="before-you-begin"></a>Voordat u begint
-Maak uzelf bekend met de veiligheidsinformatie over uw apparaat en de veiligheid pictogrammen in deze zelfstudie gebruikt. Ga naar [veilig installeren en gebruiken van uw StorSimple-apparaat](storsimple-safety.md) voor volledige informatie. Lees de [voorzorgsmaatregelen](storsimple-safety.md#handling-precautions) voordat u uw StorSimple-apparaat verwerken.
+Maak uzelf vertrouwd met de veiligheidsinformatie over uw apparaat en veiligheidspictogrammen die in deze zelfstudie worden gebruikt. Ga [naar Veilig installeren en bedienen van uw StorSimple apparaat](storsimple-safety.md) voor volledige informatie. Controleer de [veiligheidsmaatregelen](storsimple-safety.md#handling-precautions) voordat u uw StorSimple-apparaat behandelt.
 
-Houd rekening met de volgende informatie voordat u probeert te vervangen door een component.
+Voordat u een component probeert te vervangen, moet u rekening houden met de volgende informatie.
 
-![Waarschuwingspictogram](./media/storsimple-hardware-component-replacement/Warning.png) ![elektrische schudt pictogram](./media/storsimple-hardware-component-replacement/Electric.png) **waarschuwing!**
+![Waarschuwing](./media/storsimple-hardware-component-replacement/Warning.png) ![Pictogram Elektrische](./media/storsimple-hardware-component-replacement/Electric.png) Schok Icon **WAARSCHUWING!**
 
-* Moet u uzelf goed met behulp van een elektrostatische ontlading of antistatische mat bij het verwerken van modules en -onderdelen van uw StorSimple-apparaat.
-* Een circuit niet worden gebruikt. Gebruik de opgegeven ingangen en handleidingen tijdens de verwerking van onderdelen die mogelijk beschikbaar circuit hebt gemaakt.
+* Verminder uzelf goed met behulp van een elektrostatische ontlading of antistatische mat bij het hanteren van modules en componenten van uw StorSimple-apparaat.
+* Raak geen circuits aan. Gebruik de meegeleverde handgrepen en geleiders tijdens het hanteren van onderdelen die mogelijk ontbloot circuit.
 
-![Waarschuwingspictogram](./media/storsimple-hardware-component-replacement/Warning.png) ![Let op het pictogram](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **kennisgeving:**
+![Waarschuwing](./media/storsimple-hardware-component-replacement/Warning.png) ![Pictogram](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **NOTICE:** Kennisgeving:
 
-Wanneer u een module vervangt **nooit laat een lege bay aan de achterzijde van de behuizing**. Een vervangende of lege module verkrijgen voordat u verwijdert de probleem-onderdeel.
+Wanneer u een module vervangt, **laat u NOOIT een lege ruimte achterin de behuizing achter.** Verkrijg een vervangende of lege module voordat u het probleemonderdeel verwijdert.
 
-## <a name="hardware-component-replacement-procedures"></a>Hardware-onderdeel vervanging procedures
-Uw apparaat StorSimple 8000-serie bestaat uit verschillende Plug-ins in de primaire en/of EBOD-behuizingen. De 8100 heeft één primaire behuizing, terwijl de 8600 een dubbele behuizing-apparaat met een primaire behuizing en een EBOD-behuizing is.
+## <a name="hardware-component-replacement-procedures"></a>Vervangingsprocedures voor hardwarecomponenten
+Uw StorSimple 8000-serie apparaat bestaat uit verschillende plug-in modules in de primaire en/of EBOD behuizingen. De 8100 heeft een enkele primaire behuizing, terwijl de 8600 is een dubbele behuizing apparaat met een primaire behuizing en een EBOD behuizing.
 
-De belangrijkste hardware-onderdelen in uw apparaat worden samengevat in de volgende tabellen. Klik op de koppeling in de **vervangingsprocedure** kolom aan de slag met de bijbehorende zelfstudie.
+De belangrijkste hardwarecomponenten in uw apparaat worden samengevat in de volgende tabellen. Klik op de koppeling in de kolom **Vervangenprocedure** om naar de bijbehorende zelfstudie te gaan.
 
-| Onderdelen | # Aanwezig | Module? | Vervangingsprocedure |
+| Onderdelen | # Aanwezig | Plug-in module? | Vervangingsprocedure |
 |:--- |:--- |:--- |:--- |
-| Chassis |1 |Nee |[Vervang het chassis op uw StorSimple-apparaat](storsimple-8000-chassis-replacement.md) |
-| Primaire domeincontrollers |2 |Ja |[Vervangen van een controllermodule op uw StorSimple-apparaat](storsimple-8000-controller-replacement.md) |
-| 764W voeding en koeling Modules (PCMs) |2 |Ja |[Stroom- en koelmodule van StorSimple-apparaat vervangen](storsimple-8000-power-cooling-module-replacement.md) |
+| Chassis |1 |Nee |[Het chassis van uw StorSimple-apparaat vervangen](storsimple-8000-chassis-replacement.md) |
+| Primaire controllers |2 |Ja |[Een controllermodule op uw StorSimple-apparaat vervangen](storsimple-8000-controller-replacement.md) |
+| 764W-stroom- en koelmodules (PCM's) |2 |Ja |[Stroom- en koelmodule van StorSimple-apparaat vervangen](storsimple-8000-power-cooling-module-replacement.md) |
 | Back-upbatterij |2 |Ja |[Noodaccumodule van StorSimple-apparaat vervangen](storsimple-8000-battery-replacement.md) |
-| Schijfstations |12 |Ja |[Vervang een schijfstation op uw StorSimple-apparaat](storsimple-8000-disk-drive-replacement.md) |
+| Schijfstations |12 |Ja |[Een schijfstation op uw StorSimple-apparaat vervangen](storsimple-8000-disk-drive-replacement.md) |
 
-**Tabel 1** hardwareonderdelen in de primaire behuizing
+**Tabel 1** Hardwarecomponenten in de primaire behuizing
 
-De primaire behuizing en de behuizing EBOD verschillen in de i/o-modules. Bovendien hebben de PCMs verschillende vermogen. De PCMs in de primaire behuizing zijn 764 W, die in de behuizing EBOD 580 zijn W. De PCMs in de primaire behuizing bevatten ook een back-upbatterij-module.
+De primaire behuizing en de EBOD-behuizing verschillen in hun I/O-modules. Bovendien hebben de PCM's verschillende wattage. De PCM's in de primaire behuizing zijn 764 W, terwijl die in de EBOD-behuizing 580 W zijn. De PCM's in de primaire behuizing bevatten ook een back-up batterijmodule.
 
-| Onderdelen | # Aanwezig | Module? | Vervangingsprocedure |
+| Onderdelen | # Aanwezig | Plug-in module? | Vervangingsprocedure |
 |:--- |:--- |:--- |:--- |
-| Chassis |1 |Nee |[Vervang het chassis op uw StorSimple-apparaat](storsimple-8000-chassis-replacement.md) |
-| EBOD-controllers |2 |Ja |[Op uw StorSimple-apparaat een EBOD-controller vervangen](storsimple-8000-ebod-controller-replacement.md) |
-| 580 w bij voeding en koeling Modules (PCMs) |2 |Ja |[Stroom- en koelmodule van StorSimple-apparaat vervangen](storsimple-8000-power-cooling-module-replacement.md) |
-| Schijfstations |12 |Ja |[Vervang een schijfstation op uw StorSimple-apparaat](storsimple-8000-disk-drive-replacement.md) |
+| Chassis |1 |Nee |[Het chassis van uw StorSimple-apparaat vervangen](storsimple-8000-chassis-replacement.md) |
+| EBOD-controllers |2 |Ja |[Een EBOD-controller vervangen op uw StorSimple-apparaat](storsimple-8000-ebod-controller-replacement.md) |
+| 580W-stroom- en koelmodules (PCM's) |2 |Ja |[Stroom- en koelmodule van StorSimple-apparaat vervangen](storsimple-8000-power-cooling-module-replacement.md) |
+| Schijfstations |12 |Ja |[Een schijfstation op uw StorSimple-apparaat vervangen](storsimple-8000-disk-drive-replacement.md) |
 
-**Tabel 2** hardwareonderdelen in de behuizing EBOD
+**Tabel 2** Hardwarecomponenten in de EBOD-behuizing
 
-De invoegtoepassing modules op het apparaat zijn gemarkeerd in de volgende voor- en achterkant diagrammen. U kunt deze diagrammen gebruiken om te bepalen van de locatie van de verschillende Plug-ins als vervanging vereist is. Het front diagram toont de schijfstations en de achterzijde diagrammen van de behuizing EBOD en het weergeven van de primaire behuizing de invoegtoepassing modules.
+De plug-in modules op het apparaat worden gemarkeerd in de volgende diagrammen aan de voor- en achterzijde. U deze diagrammen gebruiken om de locatie van de verschillende plug-inmodules te bepalen als een vervanging nodig is. Het voorste diagram toont de schijven en de achterste diagrammen van de EBOD-behuizing en de primaire behuizing tonen de plug-inmodules.
 
-![Voorpaneel van apparaat met harde schijven](./media/storsimple-hardware-component-replacement/IC741028.png)
+![Voorpaneel van apparaat met schijven](./media/storsimple-hardware-component-replacement/IC741028.png)
 
-**Afbeelding 1** Front van het apparaat
+**Figuur 1** Voorzijde van het apparaat
 
-| Label | Description |
+| Label | Beschrijving |
 |:--- |:--- |
-| 0 - 11 |Harde schijven (totaal van 12) |
+| 0 - 11 |Schijven (totaal 12) |
 
-Zowel de primaire behuizing en de behuizing EBOD hebben station carrier modules. Het chassis ook nieuwste twaalf 3,5-inch harde schijven die zijn gerangschikt in een indeling 3 van 4.
+Zowel de primaire behuizing als de EBOD-behuizing hebben aandrijfdraagmodules. Het chassis herbergt twaalf 3,5"-schijven gerangschikt in een 3 bij 4 formaat.
 
-![Backplane van apparaat primaire behuizing-modules](./media/storsimple-hardware-component-replacement/IC740994.png)
+![Backplane van primaire behuizingsmodules van het apparaat](./media/storsimple-hardware-component-replacement/IC740994.png)
 
-**Afbeelding 2** achterzijde de primaire behuizing
+**Figuur 2** Achterkant van de primaire behuizing
 
-| Label | Description |
+| Label | Beschrijving |
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
 | 3 |Controller 0 |
 | 4 |Controller 1 |
 
-![Backplane van apparaat EBOD behuizing Plug-ins](./media/storsimple-hardware-component-replacement/IC769599.png)
+![Backplane van apparaat EBOD-invoegmodules](./media/storsimple-hardware-component-replacement/IC769599.png)
 
-**Afbeelding 3** achterzijde de behuizing EBOD
+**Figuur 3** Achterkant van de EBOD-behuizing
 
-| Label | Description |
+| Label | Beschrijving |
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
-| 3 |EBOD-Controller 0 |
-| 4 |EBOD-Controller 1 |
+| 3 |EBOD-controller 0 |
+| 4 |EBOD-controller 1 |
 
-## <a name="field-replaceable-units"></a>Veld replaceable eenheden
-De volgende veld replaceable eenheden (FRU) zijn beschikbaar voor uw StorSimple-apparaat:
+## <a name="field-replaceable-units"></a>Veldvervangbare eenheden
+De volgende veldvervangbare eenheden (FRU's) zijn beschikbaar voor uw StorSimple-apparaat:
 
-* Chassis (met inbegrip van het paneel geïntegreerde bewerkingen)
+* Chassis (inclusief het geïntegreerde bedieningspaneel)
 * 764 W AC PCM
 * 580 W AC PCM
-* Harde schijf met station provider-module
+* Harde schijf met schijfdragermodule
 * Controllermodule
-* EBOD-controller-module
-* Back-upbatterij-module
-* Rack spoor kit koppelen
+* EBOD-controllermodule
+* Back-up batterijmodule
+* Rack montage rail kit
 
-Neem [Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md) om een van deze vervanging-eenheden.
+Neem [contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md) om een van deze vervangende eenheden te bestellen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk alle [veiligheidsinformatie](storsimple-safety.md) voordat u probeert te vervangen door een StorSimple-hardware-onderdeel.
+Bekijk alle [veiligheidsinformatie](storsimple-safety.md) voordat u een StorSimple-hardwarecomponent probeert te vervangen.
 

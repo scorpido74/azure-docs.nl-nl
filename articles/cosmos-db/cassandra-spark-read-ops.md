@@ -1,7 +1,7 @@
 ---
-title: De tabelgegevens lezen Cassandra-API met behulp van Spark
+title: Cassandra API-tabelgegevens lezen met Spark
 titleSufix: Azure Cosmos DB
-description: In dit artikel wordt beschreven hoe u gegevens lezen uit tabellen in Azure Cosmos DB Cassandra-API.
+description: In dit artikel wordt beschreven hoe u gegevens uit Cassandra API-tabellen in Azure Cosmos DB lezen.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 01a9582062d8eb0d039473a03901fc83fe179020
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60893387"
 ---
-# <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Gegevens lezen uit tabellen van Cassandra-API van Azure Cosmos DB met behulp van Spark
+# <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Gegevens lezen uit Azure Cosmos DB Cassandra API-tabellen met Spark
 
- In dit artikel wordt beschreven hoe u gegevens die zijn opgeslagen in Azure Cosmos DB Cassandra-API van Spark lezen.
+ In dit artikel wordt beschreven hoe u gegevens lezen die zijn opgeslagen in azure cosmos DB Cassandra API van Spark.
 
-## <a name="cassandra-api-configuration"></a>Configuratie van de Cassandra-API
+## <a name="cassandra-api-configuration"></a>Cassandra API-configuratie
 ```scala
 import org.apache.spark.sql.cassandra._
 //Spark connector
@@ -46,9 +46,9 @@ spark.conf.set("spark.cassandra.concurrent.reads", "512")
 spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
-## <a name="dataframe-api"></a>Dataframe API
+## <a name="dataframe-api"></a>Api voor gegevensframe
 
-### <a name="read-table-using-sessionreadformat-command"></a>Lees tabel met de opdracht session.read.format
+### <a name="read-table-using-sessionreadformat-command"></a>Tabel lezen met de opdracht session.read.format
 
 ```scala
 val readBooksDF = sqlContext
@@ -60,13 +60,13 @@ val readBooksDF = sqlContext
 readBooksDF.explain
 readBooksDF.show
 ```
-### <a name="read-table-using-sparkreadcassandraformat"></a>Lees tabel met behulp van spark.read.cassandraFormat 
+### <a name="read-table-using-sparkreadcassandraformat"></a>Leestabel met spark.read.cassandraFormat 
 
 ```scala
 val readBooksDF = spark.read.cassandraFormat("books", "books_ks", "").load()
 ```
 
-### <a name="read-specific-columns-in-table"></a>Lezen van specifieke kolommen in tabel
+### <a name="read-specific-columns-in-table"></a>Specifieke kolommen in tabel lezen
 
 ```scala
 val readBooksDF = spark
@@ -83,7 +83,7 @@ readBooksDF.show
 
 ### <a name="apply-filters"></a>Filters toepassen
 
-Predikaat pushdown wordt momenteel niet ondersteund, met de onderstaande voorbeelden geven aan de clientzijde filteren. 
+Momenteel wordt predicaat pushdown niet ondersteund, de onderstaande voorbeelden weerspiegelen client-side filtering. 
 
 ```scala
 val readBooksDF = spark
@@ -105,13 +105,13 @@ readBooksDF.show
 
 ## <a name="rdd-api"></a>RDD-API
 
-### <a name="read-table"></a>Lees tabel
+### <a name="read-table"></a>Leestabel
 ```scala
 val bookRDD = sc.cassandraTable("books_ks", "books")
 bookRDD.take(5).foreach(println)
 ```
 
-### <a name="read-specific-columns-in-table"></a>Lezen van specifieke kolommen in tabel
+### <a name="read-specific-columns-in-table"></a>Specifieke kolommen in tabel lezen
 
 ```scala
 val booksRDD = sc.cassandraTable("books_ks", "books").select("book_id","book_name").cache
@@ -120,7 +120,7 @@ booksRDD.take(5).foreach(println)
 
 ## <a name="sql-views"></a>SQL-weergaven 
 
-### <a name="create-a-temporary-view-from-a-dataframe"></a>Een tijdelijke weergave maken van een dataframe
+### <a name="create-a-temporary-view-from-a-dataframe"></a>Een tijdelijke weergave maken vanuit een gegevensframe
 
 ```scala
 spark
@@ -130,7 +130,7 @@ spark
   .load.createOrReplaceTempView("books_vw")
 ```
 
-### <a name="run-queries-against-the-view"></a>Query's uitvoeren op de weergave
+### <a name="run-queries-against-the-view"></a>Query's uitvoeren tegen de weergave
 
 ```sql
 select * from books_vw where book_pub_year > 1891
@@ -138,10 +138,10 @@ select * from books_vw where book_pub_year > 1891
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De volgende zijn aanvullende artikelen over het werken met Azure Cosmos DB Cassandra-API van Spark:
+Hieronder volgen aanvullende artikelen over het werken met Azure Cosmos DB Cassandra API van Spark:
  
- * [Upsert-bewerkingen](cassandra-spark-upsert-ops.md)
- * [Verwijderbewerkingen](cassandra-spark-delete-ops.md)
- * [Aggregatiebewerkingen uit te voeren](cassandra-spark-aggregation-ops.md)
- * [Kopieerbewerkingen tabel](cassandra-spark-table-copy-ops.md)
+ * [Upsert-activiteiten](cassandra-spark-upsert-ops.md)
+ * [Bewerkingen verwijderen](cassandra-spark-delete-ops.md)
+ * [Aggregatiebewerkingen](cassandra-spark-aggregation-ops.md)
+ * [Bewerkingen voor tabelkopiëren](cassandra-spark-table-copy-ops.md)
 

@@ -1,25 +1,25 @@
 ---
-title: Cloud-init gebruiken om een gebruiker toe te voegen aan een virtuele Linux-machine in azure
-description: Cloud-init gebruiken om een gebruiker toe te voegen aan een Linux-VM tijdens het maken met de Azure CLI
+title: Cloud-init gebruiken om een gebruiker toe te voegen aan een Linux-vm op Azure
+description: Cloud-init gebruiken om een gebruiker toe te voegen aan een Linux-vm tijdens het maken met de Azure CLI
 author: rickstercdn
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: f1782bfe0c14e3b44703f89ec7f78590c1bb74c5
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969241"
 ---
-# <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Cloud-init gebruiken om een gebruiker toe te voegen aan een virtuele Linux-machine in azure
-Dit artikel laat u zien hoe u [Cloud-init](https://cloudinit.readthedocs.io) kunt gebruiken om een gebruiker toe te voegen op een virtuele machine (VM) of virtuele-machine schaal sets (VMSS) bij het inrichten van de tijd in Azure. Dit Cloud-init-script wordt uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure. Zie [Cloud-init Overview](using-cloud-init.md)(Engelstalig) voor meer informatie over de manier waarop Cloud-init systeem eigen werkt in Azure en de ondersteunde Linux-distributies.
+# <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Cloud-init gebruiken om een gebruiker toe te voegen aan een Linux-vm in Azure
+In dit artikel ziet u hoe u [cloud-init](https://cloudinit.readthedocs.io) gebruikt om een gebruiker toe te voegen op een virtuele machine (VM) of vmss (virtuele machineschaalsets) op het inrichten van de tijd in Azure. Dit cloud-init-script wordt op de eerste boot uitgevoerd zodra de resources zijn ingericht door Azure. Zie [cloud-init-overzicht](using-cloud-init.md)voor meer informatie over hoe cloud-init native werkt in Azure en de ondersteunde Linux-distro's.
 
-## <a name="add-a-user-to-a-vm-with-cloud-init"></a>Een gebruiker toevoegen aan een virtuele machine met Cloud-init
-Een van de eerste taken op een nieuwe virtuele Linux-machine is het toevoegen van een extra gebruiker voor uzelf om het gebruik van de *hoofdmap*te voor komen. SSH-sleutels zijn best practice voor beveiliging en gebruiks gemak. Sleutels worden toegevoegd aan het bestand *~/.ssh/authorized_keys* met dit script voor Cloud-init.
+## <a name="add-a-user-to-a-vm-with-cloud-init"></a>Een gebruiker toevoegen aan een virtuele machine met cloud-init
+Een van de eerste taken op een nieuwe Linux VM is het toevoegen van een extra gebruiker voor jezelf om het gebruik van *root*te voorkomen. SSH-sleutels zijn best practices voor beveiliging en bruikbaarheid. Toetsen worden toegevoegd aan het *bestand ~/.ssh/authorized_keys* met dit cloud-init-script.
 
-Als u een gebruiker aan een virtuele Linux-machine wilt toevoegen, maakt u een bestand in uw huidige shell met de naam *cloud_init_add_user. txt* en plakt u de volgende configuratie. In dit voor beeld maakt u het bestand in het Cloud Shell niet op uw lokale computer. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor cloud_init_add_user.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Kies #1 om de **nano** -editor te gebruiken. Zorg ervoor dat het hele Cloud-init-bestand correct wordt gekopieerd, met name de eerste regel.  U moet uw eigen open bare sleutel (zoals de inhoud van *~/.ssh/id_rsa. pub*) opgeven voor de waarde van `ssh-authorized-keys:`. deze is hier Inge kort om het voor beeld te vereenvoudigen.
+Als u een gebruiker wilt toevoegen aan een Linux-vm, maakt u een bestand in uw huidige shell met de naam *cloud_init_add_user.txt* en plakt u de volgende configuratie. Maak in dit voorbeeld het bestand in de Cloud Shell niet op uw lokale machine. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor cloud_init_add_user.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Kies #1 om de **nano-editor** te gebruiken. Zorg ervoor dat het hele cloud-init-bestand correct is gekopieerd, met name de eerste regel.  U moet uw eigen openbare sleutel (zoals de inhoud van *~/.ssh/id_rsa.pub)* voor de waarde van `ssh-authorized-keys:` - het is hier verkort om het voorbeeld te vereenvoudigen.
 
 ```yaml
 #cloud-config
@@ -33,15 +33,15 @@ users:
       - ssh-rsa AAAAB3<snip>
 ```
 > [!NOTE] 
-> Het #cloud-configuratie bestand bevat de para meter `- default` opgenomen. Hiermee wordt de gebruiker toegevoegd aan de bestaande gebruiker die door de beheerder is gemaakt tijdens het inrichten. Als u een gebruiker maakt zonder de para meter `- default`-de automatisch gegenereerde gebruiker met beheerders rechten die door het Azure-platform is gemaakt, wordt overschreven. 
+> Het #cloud-config-bestand `- default` bevat de parameter inbegrepen. Dit zal de gebruiker toevoegen aan de bestaande admin gebruiker gemaakt tijdens de inrichting. Als u een gebruiker `- default` maakt zonder de parameter, wordt de door het Azure-platform gemaakte automatisch gegenereerde beheergebruiker overschreven. 
 
-Voordat u deze installatie kopie implementeert, moet u een resource groep maken met de opdracht [AZ Group Create](/cli/azure/group) . Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS Oost*.
+Voordat u deze afbeelding implementeert, moet u een resourcegroep maken met de opdracht [Az-groep maken.](/cli/azure/group) Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak nu een virtuele machine met [AZ VM Create](/cli/azure/vm) en geef het bestand Cloud-init met `--custom-data cloud_init_add_user.txt` als volgt op:
+Maak nu een VM met [az vm maak](/cli/azure/vm) en `--custom-data cloud_init_add_user.txt` geef het cloud-init-bestand op met als volgt:
 
 ```azurecli-interactive 
 az vm create \
@@ -52,19 +52,19 @@ az vm create \
   --generate-ssh-keys 
 ```
 
-SSH naar het open bare IP-adres van uw virtuele machine, weer gegeven in de uitvoer van de voor gaande opdracht. Voer uw eigen **publicIpAddress** als volgt in:
+SSH naar het openbare IP-adres van uw VM weergegeven in de uitvoer van de vorige opdracht. Voer als volgt uw **eigen publicIpAddress in:**
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-Als u wilt bevestigen dat de gebruiker is toegevoegd aan de virtuele machine en de opgegeven groepen, bekijkt u de inhoud van het */etc/group* -bestand als volgt:
+Bekijk de inhoud van het */etc/group-bestand* als volgt om te bevestigen dat uw gebruiker is toegevoegd aan de VM en de opgegeven groepen:
 
 ```bash
 cat /etc/group
 ```
 
-In de volgende voorbeeld uitvoer ziet u dat de gebruiker uit het *cloud_init_add_user. txt* -bestand is toegevoegd aan de virtuele machine en de juiste groep:
+In de volgende voorbeelduitvoer ziet u dat de gebruiker van het *bestand cloud_init_add_user.txt* is toegevoegd aan de VM en de juiste groep:
 
 ```bash
 root:x:0:
@@ -75,9 +75,9 @@ myadminuser:x:1000:
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende voor meer voor beelden van configuratie wijzigingen in de Cloud-init:
+Zie het volgende voor aanvullende voorbeelden van configuratiewijzigingen in de cloudinit:
  
-- [Een extra Linux-gebruiker toevoegen aan een VM](cloudinit-add-user.md)
-- [Een pakket beheer programma uitvoeren om bestaande pakketten bij de eerste keer opstarten bij te werken](cloudinit-update-vm.md)
-- [Lokale hostnaam van VM wijzigen](cloudinit-update-vm-hostname.md) 
-- [Een toepassings pakket installeren, configuratie bestanden bijwerken en sleutels invoeren](tutorial-automate-vm-deployment.md)
+- [Een extra Linux-gebruiker toevoegen aan een vm](cloudinit-add-user.md)
+- [Een package manager uitvoeren om bestaande pakketten bij te werken bij het eerste opstarten](cloudinit-update-vm.md)
+- [De lokale hostnaam vm wijzigen](cloudinit-update-vm-hostname.md) 
+- [Een toepassingspakket installeren, configuratiebestanden bijwerken en sleutels injecteren](tutorial-automate-vm-deployment.md)

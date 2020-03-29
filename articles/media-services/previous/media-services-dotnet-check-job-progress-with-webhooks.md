@@ -1,6 +1,6 @@
 ---
-title: Azure-Webhooks gebruiken voor het bewaken van taakmeldingen Media Services met .NET | Microsoft Docs
-description: Informatie over het gebruik van Azure-Webhooks voor het bewaken van taakmeldingen Media Services. De voorbeeldcode is geschreven in C# en maakt gebruik van de Media Services SDK voor .NET.
+title: Azure Webhooks gebruiken om functiemeldingen van Media Services te controleren met .NET | Microsoft Documenten
+description: Meer informatie over het gebruik van Azure Webhooks om meldingen van mediaservices te controleren. Het codevoorbeeld is geschreven in C# en gebruikt de Media Services SDK voor .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: a29381bded4bb2562227bd5f23ccb59bb5add028
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67059200"
 ---
-# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Gebruik Azure Webhooks voor het bewaken van taakmeldingen Media Services met .NET 
+# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure Webhooks gebruiken om functiemeldingen van Media Services te controleren met .NET 
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [hulp bij de migratie van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-Wanneer u taken uitvoert, moet u vaak een manier om bij te houden van de taak wordt uitgevoerd. U kunt Media Services-taakmeldingen bewaken met behulp van Azure-Webhooks of [Azure Queue storage](media-services-dotnet-check-job-progress-with-queues.md). Dit artikel leest hoe u werkt met webhooks.
+Wanneer u taken uitvoert, hebt u vaak een manier nodig om de voortgang van de taak bij te houden. U meldingen van mediaservices-taken controleren met Azure Webhooks of [Azure Queue-opslag.](media-services-dotnet-check-job-progress-with-queues.md) In dit artikel ziet u hoe u met webhooks werken.
 
-Dit artikel wordt beschreven hoe u
+In dit artikel ziet u hoe u
 
-*  Een Azure-functie die is aangepast om te reageren op webhooks definiëren. 
+*  Definieer een Azure-functie die is aangepast om te reageren op webhooks. 
     
-    In dit geval worden de webhook wordt geactiveerd door Media Services wanneer de status van de coderingstaak gewijzigd. De functie luistert naar de webhook-aanroep van Media Services-meldingen en publiceert de uitvoerasset zodra de taak is voltooid. 
+    In dit geval wordt de webhook geactiveerd door Media Services wanneer uw coderingstaak de status wijzigt. De functie luistert naar de webhook call back van Media Services meldingen en publiceert de output asset zodra de taak is voltooid. 
     
     >[!TIP]
-    >Voordat u doorgaat, zorg ervoor dat u begrijpt hoe [Azure Functions-HTTP- en webhook-bindingen](../../azure-functions/functions-bindings-http-webhook.md) werken.
+    >Voordat u verdergaat, moet u begrijpen hoe [Azure Functions HTTP en webhook-bindingen](../../azure-functions/functions-bindings-http-webhook.md) werken.
     >
     
-* Een webhook toevoegen aan uw coderingstaak en geef de webhook-URL en de geheime sleutel die webhook reageert op. U vindt een voorbeeld van een webhook toegevoegd aan uw coderingstaak aan het einde van het artikel.  
+* Voeg een webhook toe aan uw coderingstaak en geef de webhook-URL en geheime sleutel op waarop deze webhook reageert. U vindt een voorbeeld dat een webhook toevoegt aan uw coderingstaak aan het einde van het artikel.  
 
-U vindt de definities van verschillende Media Services .NET Azure Functions (met inbegrip van de architectuur die wordt weergegeven in dit artikel) [hier](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
+U vindt definities van verschillende Media Services .NET Azure-functies (waaronder die in dit artikel) [hier](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -48,42 +48,42 @@ Hieronder wordt aangegeven wat de vereisten zijn om de zelfstudie te voltooien:
 
 * Een Azure-account. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.
 * Een Media Services-account. Zie [Een Media Services-account maken](media-services-portal-create-account.md) voor meer informatie over het maken van een Media Services-account.
-* Inzicht in [over het gebruik van Azure Functions](../../azure-functions/functions-overview.md). Bekijk ook [Azure Functions-HTTP- en webhook-bindingen](../../azure-functions/functions-bindings-http-webhook.md).
+* Inzicht in [het gebruik van Azure-functies.](../../azure-functions/functions-overview.md) Bekijk ook [Azure Functions HTTP en webhookbindingen](../../azure-functions/functions-bindings-http-webhook.md).
 
 ## <a name="create-a-function-app"></a>Een functie-app maken
 
 1. Ga naar de [Azure-portal](https://portal.azure.com) en meld u aan met uw Azure-account.
-2. Een functie-app maken zoals wordt beschreven [hier](../../azure-functions/functions-create-function-app-portal.md).
+2. Maak een functie-app zoals [hier](../../azure-functions/functions-create-function-app-portal.md)beschreven.
 
-## <a name="configure-function-app-settings"></a>Instellingen voor functie-app configureren
+## <a name="configure-function-app-settings"></a>Instellingen voor functie-apps configureren
 
-Bij het ontwikkelen van Media Services-functies, is het handig om toe te voegen omgevingsvariabelen die worden gebruikt in uw functies. Klik op de koppeling van de App-instellingen configureren voor het configureren van app-instellingen. 
+Bij het ontwikkelen van Media Services-functies is het handig om omgevingsvariabelen toe te voegen die tijdens uw functies worden gebruikt. Als u app-instellingen wilt configureren, klikt u op de koppeling App-instellingen configureren. 
 
-De [toepassingsinstellingen](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) gedeelte definieert de parameters die worden gebruikt in de webhook is gedefinieerd in dit artikel. Ook de volgende parameters toevoegen aan de app-instellingen. 
+In de sectie [toepassingsinstellingen](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) worden parameters gedefinieerd die worden gebruikt in de webhook die in dit artikel is gedefinieerd. Voeg ook de volgende parameters toe aan de app-instellingen. 
 
 |Name|Definitie|Voorbeeld| 
 |---|---|---|
-|SigningKey |Een ondertekeningssleutel.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
-|WebHookEndpoint | Een adres van de webhook-eindpunt. Nadat de webhookfunctie is gemaakt, kunt u de URL van de **functie-URL ophalen** koppeling. | https:\//juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
+|Ondertekeningsleutel |Een tekensleutel.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
+|WebHookEndpoint | Een webhook endpoint adres. Zodra uw webhook-functie is gemaakt, u de URL kopiëren via de **URL-koppeling Functie ophalen.** | https:\//juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
 
 ## <a name="create-a-function"></a>Een functie maken
 
-Wanneer uw functie-app is geïmplementeerd, kunt u het vinden van **App Services** Azure Functions.
+Zodra uw functie-app is geïmplementeerd, u deze vinden tussen **Azure-functies van App Services.**
 
-1. Selecteer uw functie-app en klik op **nieuwe functie**.
-2. Selecteer **C#** code en **API en Webhooks** scenario. 
-3. Selecteer **generieke Webhook - C#** .
-4. Naam van uw webhook en druk op **maken**.
+1. Selecteer de functie-app en klik op **Nieuwe functie**.
+2. Selecteer **C#-code** en **API & Webhooks-scenario.** 
+3. Selecteer **Generieke Webhook - C#**.
+4. Geef uw webhook een naam en druk op **Maken**.
 
 ### <a name="files"></a>Bestanden
 
-Uw Azure-functie is gekoppeld aan de codebestanden en andere bestanden die in deze sectie worden beschreven. Een functie is standaard gekoppeld aan **function.json** en **run.csx** (C#) bestanden. U wilt toevoegen een **project.json** bestand. De rest van deze sectie bevat de definities voor deze bestanden.
+Uw Azure-functie is gekoppeld aan codebestanden en andere bestanden die in deze sectie worden beschreven. Standaard is een functie gekoppeld aan **function.json-** en **run.csx-bestanden** (C#). Je moet een **project.json-bestand** toevoegen. De rest van deze sectie toont de definities voor deze bestanden.
 
-![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![bestanden](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 #### <a name="functionjson"></a>function.json
 
-Het bestand function.json definieert de functiebindingen en andere configuratie-instellingen. De runtime maakt gebruik van dit bestand om te bepalen welke gebeurtenissen u wilt controleren en het doorgeven van gegevens in en als resultaat de gegevens van een functie wordt uitgevoerd. 
+Het bestand function.json definieert de functiebindingen en andere configuratie-instellingen. De runtime gebruikt dit bestand om de gebeurtenissen te bepalen die moeten worden gecontroleerd en hoe gegevens kunnen worden doorgegeven aan en deze gegevens van functieuitvoering kunnen worden doorgegeven. 
 
 ```json
 {
@@ -125,11 +125,11 @@ Het bestand project.json bevat afhankelijkheden.
     
 #### <a name="runcsx"></a>run.csx
 
-De code in deze sectie toont een implementatie van een Azure-functie die een webhook. In dit voorbeeld wordt de functie luistert naar de webhook-aanroep van Media Services-meldingen en publiceert de uitvoerasset zodra de taak is voltooid.
+De code in deze sectie toont een implementatie van een Azure-functie die een webhook is. In dit voorbeeld luistert de functie naar de webhook-terugroep van Media Services-meldingen en publiceert de uitvoerasset zodra de taak is voltooid.
 
-De webhook wordt verwacht dat een ondertekeningssleutel (referenties) zodat deze overeenkomen met de versie die u bij het configureren van het meldingseindpunt doorgeven. De ondertekeningssleutel is de waarde van de 64-byte-Base64-gecodeerd die wordt gebruikt om te beschermen en beveiligen van uw WebHooks callbacks van Azure Media Services. 
+De webhook verwacht dat een ondertekeningssleutel (referentie) overeenkomt met de sleutel die u passeert wanneer u het meldingseindpunt configureert. De ondertekeningssleutel is de 64-byte Base64 gecodeerde waarde die wordt gebruikt om uw WebHooks-terugroepen te beschermen en te beveiligen vanuit Azure Media Services. 
 
-In de code van de webhook-definitie die volgt, de **VerifyWebHookRequestSignature** methode wordt de verificatie van de melding. Het doel van deze validatie is om ervoor te zorgen dat het bericht is verzonden door Azure Media Services en nog niet is geknoeid. De handtekening is optioneel voor Azure Functions, omdat u de **Code** waarde als een queryparameter via Transport Layer Security (TLS). 
+In de webhook-definitiecode die volgt, controleert de methode **VerifyWebHookRequestSignature** het meldingsbericht. Het doel van deze validatie is ervoor te zorgen dat het bericht is verzonden door Azure Media Services en niet is geknoeid. De handtekening is optioneel voor Azure Functions omdat deze de **codewaarde** heeft als queryparameter via TLS (Transport Layer Security). 
 
 >[!NOTE]
 >Er geldt een limiet van 1.000.000 beleidsregels voor verschillende AMS-beleidsitems (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). U moet dezelfde beleids-id gebruiken als u altijd dezelfde dagen/toegangsmachtigingen gebruikt, bijvoorbeeld beleidsregels voor locators die zijn bedoeld om gedurende een lange periode gehandhaafd te blijven (niet-upload-beleidsregels). Raadpleeg [dit](media-services-dotnet-manage-entities.md#limit-access-policies) onderwerp voor meer informatie.
@@ -348,11 +348,11 @@ internal sealed class NotificationMessage
 }
 ```
 
-Opslaan en uitvoeren van uw functie.
+Sla uw functie op en voer deze uit.
 
 ### <a name="function-output"></a>Functie-uitvoer
 
-Nadat de webhook wordt geactiveerd, wordt het bovenstaande voorbeeld wordt de volgende uitvoer gegenereerd, wordt uw waarden variëren.
+Zodra de webhook wordt geactiveerd, produceert het bovenstaande voorbeeld de volgende uitvoer, uw waarden variëren.
 
     C# HTTP trigger function processed a request. RequestUri=https://juliako001-functions.azurewebsites.net/api/Notification_Webhook_Function?code=9376d69kygoy49oft81nel8frty5cme8hb9xsjslxjhalwhfrqd79awz8ic4ieku74dvkdfgvi
     Request Body = 
@@ -376,15 +376,15 @@ Nadat de webhook wordt geactiveerd, wordt het bovenstaande voorbeeld wordt de vo
 
 ## <a name="add-a-webhook-to-your-encoding-task"></a>Een webhook toevoegen aan uw coderingstaak
 
-In deze sectie wordt de code die door een webhook-melding worden toegevoegd aan een taak weergegeven. U kunt ook een melding voor niveau op taak, die meer nuttig is voor een taak met gekoppelde taken toevoegen.  
+In deze sectie wordt de code weergegeven die een webhook-melding toevoegt aan een taak. U ook een melding op taakniveau toevoegen, wat handiger zou zijn voor een taak met geketende taken.  
 
-1. Maak in Visual Studio een nieuwe C#-consoletoepassing. Voer de naam, locatie en oplossing en klik vervolgens op OK.
-2. Gebruik [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) voor het installeren van Azure Media Services.
+1. Maak in Visual Studio een nieuwe C#-consoletoepassing. Geef de naam, locatie en naam van de oplossing op en klik vervolgens op OK.
+2. Gebruik [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) om Azure Media Services te installeren.
 3. App.config-bestand bijwerken met de juiste waarden: 
     
-   * Azure Media Services-verbindingsgegevens 
-   * webhook-URL die wordt verwacht dat de meldingen wilt ontvangen 
-   * de ondertekeningssleutel die overeenkomt met de sleutel die de webhook wordt verwacht. De ondertekeningssleutel is de waarde van de 64-byte-Base64-gecodeerd die wordt gebruikt om te beschermen en beveiligen van uw webhooks callbacks van Azure Media Services. 
+   * Verbindingsgegevens van Azure Media Services, 
+   * webhook URL die verwacht om de meldingen te krijgen, 
+   * de ondertekeningssleutel die overeenkomt met de sleutel die uw webhook verwacht. De ondertekeningssleutel is de 64-byte Base64 gecodeerde waarde die wordt gebruikt om uw webhooks callbacks te beschermen en te beveiligen vanuit Azure Media Services. 
 
      ```xml
            <appSettings>
@@ -399,7 +399,7 @@ In deze sectie wordt de code die door een webhook-melding worden toegevoegd aan 
            </appSettings>
      ```
 
-4. Update voor het bestand Program.cs door de volgende code:
+4. Werk uw Program.cs-bestand bij met de volgende code:
 
     ```csharp
             using System;

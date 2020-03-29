@@ -1,6 +1,6 @@
 ---
-title: Azure Data Explorer visualiseren met het streepje
-description: In dit artikel leert u hoe u gegevens in azure Data Explorer kunt visualiseren met de restreep systeem eigen connector.
+title: Azure Data Explorer visualiseren met Redash
+description: In dit artikel leert u hoe u gegevens in Azure Data Explorer visualiseert met de native connector van Redash.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,90 +8,90 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 0380689ae6ca81e3f31a07f1e205c7773fdea8c6
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773945"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-redash"></a>Gegevens uit Azure Data Explorer visualiseren in een herstreep
+# <a name="visualize-data-from-azure-data-explorer-in-redash"></a>Gegevens van Azure Data Explorer visualiseren in Redash
 
-Als u de gegevens bronnen opnieuw [koppelt](https://redash.io/) , maakt u Dash boards om gegevens te visualiseren en te delen met peers. In dit artikel vindt u informatie over het instellen van Azure Data Explorer als gegevens bron voor het opnieuw insluiten en vervolgens visualiseren van gegevens.
+[Redash](https://redash.io/) verbindt en queriet uw gegevensbronnen, bouwt dashboards om gegevens te visualiseren en te delen met collega's. In dit artikel leert u hoe u Azure Data Explorer instelt als gegevensbron voor Redash en vervolgens gegevens visualiseert.
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. [Maak een cluster en een Data Base](create-cluster-database-portal.md).
-1. Gegevens opnemen zoals in de [voorbeeld gegevens van opname in Azure Data Explorer](ingest-sample-data.md)worden uitgelegd. Zie voor meer opname opties overzicht van [opname](ingest-data-overview.md).
+1. [Cluster en database maken](create-cluster-database-portal.md).
+1. Gegevens opnemen zoals uitgelegd in [het opnemen van voorbeeldgegevens in Azure Data Explorer.](ingest-sample-data.md) Zie voor meer innameopties [het innameoverzicht](ingest-data-overview.md).
 
 [!INCLUDE [data-explorer-configure-data-source](../../includes/data-explorer-configure-data-source.md)]
 
-## <a name="create-azure-data-explorer-connector-in-redash"></a>Een Azure Data Explorer-connector maken in een herstreep 
+## <a name="create-azure-data-explorer-connector-in-redash"></a>Azure Data Explorer-connector maken in Redash 
 
-1. Meld u aan bij [restreep](https://www.redash.io/). Selecteer aan de **slag** om een account te maken.
-1. Onder **aan de slag**selecteert u **verbinding maken met een gegevens bron**.
+1. Log hier [Redash](https://www.redash.io/)in Selecteer **Aan de slag** om een account te maken.
+1. Selecteer een gegevensbron verbinden onder **Laten we aan de slag** **gaan.**
 
-    ![Verbinding maken met een gegevens bron](media/redash/connect-data-source.png)
+    ![Een gegevensbron verbinden](media/redash/connect-data-source.png)
 
-1. Selecteer in **het venster een nieuwe gegevens bron maken de** optie **Azure Data Explorer (Kusto)** en selecteer vervolgens **maken**. 
+1. Selecteer azure **data explorer (Kusto)** **in Een nieuw gegevensbronvenster maken** en selecteer Vervolgens **Maken**. 
 
-    ![Azure Data Explorer-gegevens bron selecteren](media/redash/select-adx-data-source.png)
+    ![Gegevensbron van Azure Data Explorer selecteren](media/redash/select-adx-data-source.png)
 
-1. Vul in het venster **Azure Data Explorer (Kusto)** het volgende formulier in en selecteer **maken**.
+1. Voer in het venster **Azure Data Explorer (Kusto)** het volgende formulier in en selecteer **Maken**.
 
-    ![Het venster instellingen van Azure Data Explorer (Kusto)](media/redash/adx-settings-window.png)
+    ![Instellingenvenster Azure Data Explorer (Kusto)](media/redash/adx-settings-window.png)
 
-1. Selecteer in het venster **instellingen** de optie **Opslaan** en **verbinding testen** om uw **Azure Data Explorer-gegevens bron verbinding (Kusto)** te testen.
+1. Selecteer **in het** venster **Instellingen De** optie Verbinding opslaan en **testen** om de **gegevensbronverbinding van Azure Data Explorer (Kusto)** te testen.
 
-## <a name="create-queries-in-redash"></a>Query's maken in restreep
+## <a name="create-queries-in-redash"></a>Query's maken in Redash
 
-1. Selecteer in de linkerbovenhoek van restreep > **query** **maken** . Klik op **nieuwe query** en wijzig de naam van de query.
+1. **Selecteer** > Query maken boven links boven op Redash **.** Klik op **Nieuwe query** en wijzig de naam van de query.
 
     ![Query maken](media/redash/create-query.png)
 
-1. Typ uw query in het deel venster bovenin en selecteer **Opslaan** en **uitvoeren**. Selecteer **publiceren** om de query te publiceren voor toekomstig gebruik.
+1. Typ de query in het bovenste bewerkingsvenster en selecteer **Opslaan** en **uitvoeren**. Selecteer **Publiceren** om query te publiceren voor toekomstig gebruik.
 
     ![Query opslaan en uitvoeren](media/redash/save-and-execute-query.png)
 
-    In het linkerdeel venster ziet u de naam van de gegevens bron verbinding (**github-connector** in onze stroom) in de vervolg keuzelijst en de tabellen in de geselecteerde data base. 
+    In het linkerdeelvenster ziet u de naam van de gegevensbronverbinding **(Github-connector** in onze stroom) in het vervolgkeuzemenu en de tabellen in de geselecteerde database. 
 
-1. Bekijk de query resultaten in het onderste middelste deel venster. Maak een visualisatie om met de query te gaan door de knop **nieuwe visualisatie** te selecteren.
+1. Bekijk de queryresultaten in het onderste centrale deelvenster. Maak een visualisatie die bij de query past door de knop **Nieuwe visualisatie te** selecteren.
 
     ![Nieuwe visualisatie](media/redash/new-visualization.png)
 
-1. Selecteer in het visualisatie scherm het **visualisatie type** en de relevante velden, zoals **X-kolom** en **Y-kolom**. **Sla** de visualisatie op.
+1. Selecteer in het visualisatiescherm het **visualisatietype** en de relevante velden zoals **X-kolom** en **Y-kolom**. Sla de visualisatie **op.**
 
     ![Visualisatie configureren en opslaan](media/redash/configure-visualization.png)
 
-### <a name="create-a-query-using-a-parameter"></a>Een query maken met behulp van een para meter
+### <a name="create-a-query-using-a-parameter"></a>Een query maken met een parameter
 
-1. **Maak** > **query** om een nieuwe query te maken. Voeg een para meter toe aan deze met {{}} accolades. Selecteer **{{}}** om de **add para meter** -venster te openen. U kunt ook het *pictogram instellingen* selecteren om de kenmerken van een bestaande para meter te wijzigen en het venster **< parameter_name >** te openen. 
+1. **Query** > **maken** om een nieuwe query te maken. Voeg er een parameter{}aan toe met { } krullende haakjes. Selecteer **{}{ }** om **het venster Parameter toevoegen** te openen. U ook het *instellingenpictogram* selecteren om de kenmerken van een bestaande parameter te wijzigen en de **<parameter_name>** venster openen. 
 
-    ![para meter invoegen](media/redash/insert-parameter.png)
+    ![invoegen, parameter](media/redash/insert-parameter.png)
 
-1. Geef een naam op voor de para meter. Selecteer **type**: **vervolg keuze lijst op basis** van een query in vervolg keuzemenu. Selecteer **OK**
+1. Geef uw parameter een naam. Selecteer **Tekst:** **vervolgkeuzelijst op basis van query's** in het vervolgkeuzemenu. Selecteer **OK**
 
-    ![vervolg keuzelijst op basis van query's](media/redash/query-based-dropdown-list.png)
+    ![vervolgkeuzelijst op basis van query's](media/redash/query-based-dropdown-list.png)
 
     > [!NOTE]
-    > De query gebruikt meerdere waarden. Daarom moet u de volgende syntaxis `| where Type in ((split('{{Type}}', ',')))`toevoegen. Zie [in operator](/azure/kusto/query/inoperator)voor meer informatie. Dit resulteert in [meerdere query parameter opties in herstreep-app](https://redash.io/help/user-guide/querying/query-parameters#Serialized-Multi-Select-Query-Parametersredash.io)
+    > De query gebruikt meerdere waarden, daarom `| where Type in ((split('{{Type}}', ',')))`moet u de volgende syntaxis opnemen. Zie [in operator](/azure/kusto/query/inoperator)voor meer informatie . Dit resulteert in [meerdere queryparameteropties in de redash-app](https://redash.io/help/user-guide/querying/query-parameters#Serialized-Multi-Select-Query-Parametersredash.io)
 
-## <a name="create-a-dashboard-in-redash"></a>Een dash board maken in opnieuw streepje
+## <a name="create-a-dashboard-in-redash"></a>Een dashboard maken in Redash
 
-1. Als u uw dash board wilt maken, **maakt** u > **dash board**. U kunt ook bestaand dash board selecteren, **Dash boards** > een dash board selecteren in de lijst.
+1. Als u uw dashboard wilt maken, **maakt u** > **Dashboard**maken . U ook bestaande **dashboards, dashboards** > een dashboard in de lijst selecteren.
 
-    ![Dash board maken](media/redash/create-dashboard.png)
+    ![Dashboard maken](media/redash/create-dashboard.png)
 
-1. Geef uw dash board een naam in het **nieuwe dashboard** venster en selecteer **Opslaan**. Selecteer in **< venster Dashboard_name >** de optie **widget toevoegen** om een nieuwe widget te maken. 
+1. Geef in het venster **Nieuw dashboard** een naam aan uw dashboard en selecteer **Opslaan**. Selecteer in **<Dashboard_name>** venster Widget **toevoegen** om een nieuwe widget te maken. 
 
-1. Selecteer in het venster **widget toevoegen** de optie query naam, **Kies visualisatie**en **para meters**. Selecteer **toevoegen aan dash board**
+1. Selecteer **in het** venster Widget toevoegen de naam van query' **s, Visualisatie kiezen**en **Parameters**. Selecteer **Toevoegen aan dashboard**
 
-   ![Visualisaties kiezen en toevoegen aan het dash board](media/redash/add-widget-window.png)
+   ![Visualisaties kiezen en toevoegen aan dashboard](media/redash/add-widget-window.png)
 
-1. Selecteer **gereed bewerken** om het maken van het dash board te volt ooien.
+1. Selecteer **Gereed bewerken** om het maken van dashboards te voltooien.
 
-1.  Selecteer in de modus voor het dash board bewerken de optie **Dashboard niveau filters gebruiken** om de eerder gedefinieerde **type** para meter te gebruiken.
+1.  Selecteer in de modus dashboardbewerking de optie **Dashboardniveaufilters gebruiken** om de parameter Type te gebruiken **die** eerder is gedefinieerd.
 
-    ![Het maken van een dash board volt ooien](media/redash/complete-dashboard.png)
+    ![Volledige dashboardcreatie](media/redash/complete-dashboard.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

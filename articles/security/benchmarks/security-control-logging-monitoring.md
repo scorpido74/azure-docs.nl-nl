@@ -1,6 +1,6 @@
 ---
-title: Azure-beveiligings beheer-logboek registratie en controle
-description: Logboek registratie en controle van beveiligings beheer
+title: Azure-beveiligingsbeheer - Logboekregistratie en -bewaking
+description: Logboekregistratie en bewaking van beveiligingscontrole
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
@@ -9,111 +9,111 @@ ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: ae9c678d9dfca895ec74ed92bcb1b541db6b134e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76545497"
 ---
-# <a name="security-control-logging-and-monitoring"></a>Beveiligings beheer: logboek registratie en controle
+# <a name="security-control-logging-and-monitoring"></a>Beveiligingscontrole: logboekregistratie en -controle
 
-Beveiligings logboeken en-bewaking zijn gericht op activiteiten met betrekking tot het inschakelen, ophalen en opslaan van audit logboeken voor Azure-Services.
+Beveiliging logboekregistratie en -bewaking is gericht op activiteiten die betrekking hebben op het inschakelen, aanschaffen en opslaan van controlelogboeken voor Azure-services.
 
-## <a name="21-use-approved-time-synchronization-sources"></a>2,1: goedgekeurde tijd synchronisatie bronnen gebruiken
+## <a name="21-use-approved-time-synchronization-sources"></a>2.1: Gebruik goedgekeurde tijdsynchronisatiebronnen
 
-| Azure-ID | CIS-Id's | Verantwoordelijkheid |
+| Azure-id | CIS-iD's | Verantwoordelijkheid |
 |--|--|--|
 | 2.1 | 6.1 | Microsoft |
 
-Micro soft onderhoudt tijd bronnen voor Azure-resources, maar u hebt de mogelijkheid om de tijd synchronisatie-instellingen voor uw reken resources te beheren.
+Microsoft onderhoudt tijdbronnen voor Azure-resources, maar u hebt de optie om de tijdsynchronisatie-instellingen voor uw rekenbronnen te beheren.
 
-Tijd synchronisatie voor Azure Compute-resources configureren:
+Tijdsynchronisatie configureren voor Azure-rekenbronnen:
 
 https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
-## <a name="22-configure-central-security-log-management"></a>2,2: Centraal beveiligings logboek beheer configureren
+## <a name="22-configure-central-security-log-management"></a>2.2: Centraal beheer van beveiligingslogboeken configureren
 
-| Azure-ID | CIS-Id's | Verantwoordelijkheid |
+| Azure-id | CIS-iD's | Verantwoordelijkheid |
 |--|--|--|
-| 2.2 | 6,5, 6,6 | Klant |
+| 2,2 | 6.5, 6.6 | Klant |
 
-Opname logboeken via Azure Monitor voor het verzamelen van beveiligings gegevens die zijn gegenereerd door eindpunt apparaten, netwerk bronnen en andere beveiligings systemen. In Azure Monitor kunt u Log Analytics werk ruimte (n) gebruiken om een query uit te voeren en een Analytics-account te gebruiken, en Azure Storage accounts voor lange termijn/archiverings opslag.
+Inname wordt via Azure Monitor opgeslagen om beveiligingsgegevens te verzamelen die worden gegenereerd door eindpuntapparaten, netwerkbronnen en andere beveiligingssystemen. Gebruik in Azure Monitor Log Analytics Workspace(s) om analyses op te vragen en uit te voeren en Azure Storage Accounts te gebruiken voor opslag op lange termijn/archiverings.
 
-U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden. Azure-Sentinel onboarden:
+U ook gegevens aan boord inschakelen en aan boord maken voor Azure Sentinel of een SIEM van derden. Azure Sentinel aan boord:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Platform logboeken en metrische gegevens verzamelen met Azure Monitor:
+Platformlogboeken en -statistieken verzamelen met Azure Monitor:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings
 
-Interne host-logboeken van virtuele machines van Azure verzamelen met Azure Monitor:
+Interne hostlogboeken van Azure Virtual Machine verzamelen met Azure Monitor:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm
 
-Aan de slag met Azure Monitor en integratie van SIEM van derden:
+Aan de slag met Azure Monitor en SIEM-integratie van derden:
 
 https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/
 
-## <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: controle logboek registratie inschakelen voor Azure-resources
+## <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Controlelogboekregistratie inschakelen voor Azure-resources
 
-| Azure-ID | CIS-Id's | Verantwoordelijkheid |
+| Azure-id | CIS-iD's | Verantwoordelijkheid |
 |--|--|--|
-| 2.3 | 6,2, 6,3 | Klant |
+| 2.3 | 6.2, 6.3 | Klant |
 
-Diagnostische instellingen op Azure-resources inschakelen voor toegang tot controle-, beveiligings-en Diagnostische logboeken. Activiteiten logboeken, die automatisch beschikbaar zijn, omvatten gebeurtenis bron, datum, gebruiker, tijds tempel, bron adressen, doel adressen en andere nuttige elementen.
+Diagnostische instellingen in Azure-bronnen inschakelen voor toegang tot controle-, beveiligings- en diagnostische logboeken. Activiteitenlogboeken, die automatisch beschikbaar zijn, bevatten gebeurtenisbron, datum, gebruiker, tijdstempel, bronadressen, bestemmingsadressen en andere nuttige elementen.
 
-Platform logboeken en metrische gegevens verzamelen met Azure Monitor:
+Platformlogboeken en -statistieken verzamelen met Azure Monitor:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings
 
-Informatie over logboek registratie en verschillende logboek typen in Azure:
+Inzicht in logboekregistratie en verschillende logboektypen in Azure:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
-## <a name="24-collect-security-logs-from-operating-systems"></a>2,4: beveiligings logboeken verzamelen van besturings systemen
+## <a name="24-collect-security-logs-from-operating-systems"></a>2.4: Beveiligingslogboeken verzamelen van besturingssystemen
 
-| Azure-ID | CIS-Id's | Verantwoordelijkheid |
+| Azure-id | CIS-iD's | Verantwoordelijkheid |
 |--|--|--|
-| 2.4 | 6,2, 6,3 | Klant |
+| 2.4 | 6.2, 6.3 | Klant |
 
-Als de reken resource eigendom is van micro soft, is micro soft verantwoordelijk voor het bewaken van de bron. Als de reken resource eigendom is van uw organisatie, is het uw verantwoordelijkheid om deze te controleren. U kunt Azure Security Center gebruiken om het besturings systeem te bewaken. Gegevens die worden verzameld door Security Center van het besturings systeem zijn onder andere besturingssysteem type en-versie, OS-Logboeken (Windows-gebeurtenis Logboeken), actieve processen, computer naam, IP-adressen en aangemelde gebruiker. De Log Analytics-agent verzamelt ook crash dump bestanden.
+Als de compute resource eigendom is van Microsoft, is Microsoft verantwoordelijk voor het bewaken ervan. Als de compute resource eigendom is van uw organisatie, is het uw verantwoordelijkheid om deze te controleren. U Azure Security Center gebruiken om het besturingssysteem te controleren. Gegevens die door Security Center van het besturingssysteem worden verzameld, omvatten het type en de versie van het besturingssysteem, OS-logboeken (Windows-gebeurtenislogboeken), het uitvoeren van processen, machinenaam, IP-adressen en ingelogde gebruiker. De Log Analytics Agent verzamelt ook crashdumpbestanden.
 
-Interne host-logboeken van virtuele machines van Azure verzamelen met Azure Monitor:
+Interne hostlogboeken van Azure Virtual Machine verzamelen met Azure Monitor:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm
 
-Meer informatie over het verzamelen van Azure Security Center gegevens:
+Informatie over azure security center-gegevensverzameling:
 
 https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection
 
-## <a name="25-configure-security-log-storage-retention"></a>2,5: Bewaar beveiliging van het beveiligings logboek configureren
+## <a name="25-configure-security-log-storage-retention"></a>2.5: Opslagbehoud beveiligingslogboeken configureren
 
-| Azure-ID | CIS-Id's | Verantwoordelijkheid |
+| Azure-id | CIS-iD's | Verantwoordelijkheid |
 |--|--|--|
 | 2,5 | 6.4 | Klant |
 
-Stel binnen Azure Monitor uw Bewaar periode voor Log Analytics werk ruimte in volgens de nalevings voorschriften van uw organisatie. Gebruik Azure Storage-accounts voor lange termijn/archiverings opslag.
+Stel in Azure Monitor de bewaartermijn van uw Log Analytics Workspace in volgens de nalevingsvoorschriften van uw organisatie. Gebruik Azure Storage Accounts voor opslag op lange termijn/archiverings.
 
-Para meters voor het bewaren van Logboeken instellen voor Log Analytics-werk ruimten:
+Logboekretentieparameters instellen voor Logboekanalysewerkruimten:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
-## <a name="26-monitor-and-review-logs"></a>2,6: Logboeken bewaken en controleren
+## <a name="26-monitor-and-review-logs"></a>2.6: Logboeken controleren en controleren
 
-| Azure-ID | CIS-Id's | Verantwoordelijkheid |
+| Azure-id | CIS-iD's | Verantwoordelijkheid |
 |--|--|--|
 | 2,6 | 6.7 | Klant |
 
-Analyseer en bewaak logboeken voor afwijkend gedrag en controleer regel matig de resultaten. Gebruik de Log Analytics werk ruimte van Azure Monitor om logboeken te controleren en query's uit te voeren op logboek gegevens.
+Analyseer en monitor logboeken op afwijkend gedrag en bekijk regelmatig de resultaten. Gebruik de Log Analytics Workspace van Azure Monitor om logboeken te controleren en query's uit te voeren op logboekgegevens.
 
-U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden. 
+U ook gegevens aan boord inschakelen en aan boord maken voor Azure Sentinel of een SIEM van derden. 
 
-Azure-Sentinel onboarden:
+Azure Sentinel aan boord:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Meer informatie over Log Analytics-werk ruimte:
+Inzicht in logboekanalysewerkruimte:
 
 https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
@@ -121,17 +121,17 @@ Aangepaste query's uitvoeren in Azure Monitor:
 
 https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
-## <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: waarschuwingen inschakelen voor afwijkende activiteit
+## <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Waarschuwingen inschakelen voor afwijkende activiteit
 
-| Azure-ID | CIS-Id's | Verantwoordelijkheid |
+| Azure-id | CIS-iD's | Verantwoordelijkheid |
 |--|--|--|
 | 2.7 | 6.8 | Klant |
 
-Gebruik Azure Security Center met Log Analytics werk ruimte voor bewaking en waarschuwingen over afwijkende activiteiten die in beveiligings logboeken en gebeurtenissen zijn gevonden.
+Gebruik Azure Security Center met Log Analytics Workspace voor het bewaken en waarschuwen van afwijkende activiteiten in beveiligingslogboeken en gebeurtenissen.
 
-U kunt ook gegevens naar Azure-Sentinel inschakelen en op het bord zetten.
+U ook gegevens aan Azure Sentinel inschakelen en aan boord maken.
 
-Azure-Sentinel onboarden:
+Azure Sentinel aan boord:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
@@ -139,46 +139,46 @@ Waarschuwingen beheren in Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts
 
-Een waarschuwing over logboek gegevens van log Analytics:
+Hoe u logboekgegevens waarschuwen voor logboekanalyse:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
-## <a name="28-centralize-anti-malware-logging"></a>2,8: registratie van anti-malware centraliseren
+## <a name="28-centralize-anti-malware-logging"></a>2.8: Centraliseer anti-malware logging
 
-| Azure-ID | CIS-Id's | Verantwoordelijkheid |
+| Azure-id | CIS-iD's | Verantwoordelijkheid |
 |--|--|--|
-| 2.8 | 8,6 | Klant |
+| 2,8 | 8.6 | Klant |
 
-Schakel de verzameling van antimalware-gebeurtenissen in voor Azure Virtual Machines en Cloud Services.
+Antimalware-gebeurtenisverzameling inschakelen voor Azure Virtual Machines en Cloud Services.
 
-Micro soft antimalware configureren voor Virtual Machines:
+Microsoft Antimalware configureren voor virtuele machines:
 
 https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmmicrosoftantimalwareextension?view=azuresmps-4.0.0
 
-Micro soft antimalware configureren voor Cloud Services:
+Microsoft Antimalware configureren voor Cloud Services:
 
 https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension?view=azuresmps-4.0.0
 
-Meer informatie over micro soft antimalware:
+Microsoft Antimalware begrijpen:
 
 https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
-## <a name="29-enable-dns-query-logging"></a>2,9: DNS-query logboek registratie inschakelen
+## <a name="29-enable-dns-query-logging"></a>2.9: DNS-querylogboekregistratie inschakelen
 
-| Azure-ID | CIS-Id's | Verantwoordelijkheid |
+| Azure-id | CIS-iD's | Verantwoordelijkheid |
 |--|--|--|
 | 2.9 | 8.7 | Klant |
 
-Implementeer een oplossing van derden voor DNS-logboek registratie.
+Implementeer een oplossing van derden voor DNS-logboekregistratie.
 
-## <a name="210-enable-command-line-audit-logging"></a>2,10: controle logboek registratie op opdracht regel inschakelen
+## <a name="210-enable-command-line-audit-logging"></a>2.10: Logboekregistratie van opdrachtregelcontrole inschakelen
 
-| Azure-ID | CIS-Id's | Verantwoordelijkheid |
+| Azure-id | CIS-iD's | Verantwoordelijkheid |
 |--|--|--|
 | 2.1 | 8.8 | Klant |
 
-Hand matig de console logboek registratie en Power shell transcriptie configureren per knoop punt.
+Configureer handmatig consolelogboekregistratie en PowerShell-transcriptie per knooppunt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het volgende beveiligings beheer: [identiteit en Access Control](security-control-identity-access-control.md)
+Zie het volgende beveiligingsbesturingselement: [Identiteits- en toegangsbeheer](security-control-identity-access-control.md)

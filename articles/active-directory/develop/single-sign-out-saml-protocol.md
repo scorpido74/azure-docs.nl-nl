@@ -1,6 +1,6 @@
 ---
-title: Azure-SAML-protocol voor eenmalige afmelding | Microsoft Docs
-description: In dit artikel wordt het SAML-protocol voor eenmalige afmeldingen in Azure Active Directory beschreven
+title: Azure Single Sign Out SAML-protocol | Microsoft Documenten
+description: In dit artikel wordt het SAML-protocol voor één malige uitloging beschreven in Azure Active Directory
 services: active-directory
 documentationcenter: .net
 author: rwike77
@@ -18,22 +18,22 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: 95d3deff73ce357f012b15a7fc1cfa3decdb4bda
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701362"
 ---
-# <a name="single-sign-out-saml-protocol"></a>SAML-protocol voor eenmalige afmelding
+# <a name="single-sign-out-saml-protocol"></a>Enkelafmelden SAML-protocol
 
-Azure Active Directory (Azure AD) ondersteunt de SAML 2,0-webbrowser voor eenmalige afmelding. Voor een juiste werking van eenmalige afmelding moet de **LogoutURL** voor de toepassing expliciet worden geregistreerd bij Azure ad tijdens de registratie van de toepassing. Azure AD gebruikt de LogoutURL om gebruikers te omleiden nadat ze zijn afgemeld.
+Azure Active Directory (Azure AD) ondersteunt het eenmalig afmeldprofiel van de SAML 2.0-webbrowser. Als eenmalige afmelding correct werkt, moet de **aanmeldingsURL** voor de toepassing expliciet worden geregistreerd bij Azure AD tijdens toepassingsregistratie. Azure AD gebruikt de log-URL om gebruikers om te leiden nadat ze zijn afgemeld.
 
-In het volgende diagram ziet u de werk stroom van het proces voor eenmalige aanmelding van Azure AD.
+In het volgende diagram ziet u de werkstroom van het eenmaligafmeldingsproces van Azure AD.
 
-![Azure AD-werk stroom voor eenmalige afmelding](./media/single-sign-out-saml-protocol/active-directory-saml-single-sign-out-workflow.png)
+![Strooms-outs azure AD-](./media/single-sign-out-saml-protocol/active-directory-saml-single-sign-out-workflow.png)
 
-## <a name="logoutrequest"></a>LogoutRequest
-De Cloud service stuurt een `LogoutRequest` bericht naar Azure AD om aan te geven dat een sessie is beëindigd. Het volgende fragment toont een `LogoutRequest` element van een voor beeld.
+## <a name="logoutrequest"></a>Uitmeldinggevraagd
+De cloudservice `LogoutRequest` stuurt een bericht naar Azure AD om aan te geven dat een sessie is beëindigd. In het volgende `LogoutRequest` fragment ziet u een voorbeeldelement.
 
 ```
 <samlp:LogoutRequest xmlns="urn:oasis:names:tc:SAML:2.0:metadata" ID="idaa6ebe6839094fe4abc4ebd5281ec780" Version="2.0" IssueInstant="2013-03-28T07:10:49.6004822Z" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -42,21 +42,21 @@ De Cloud service stuurt een `LogoutRequest` bericht naar Azure AD om aan te geve
 </samlp:LogoutRequest>
 ```
 
-### <a name="logoutrequest"></a>LogoutRequest
-Het `LogoutRequest`-element dat naar Azure AD wordt verzonden, vereist de volgende kenmerken:
+### <a name="logoutrequest"></a>Uitmeldinggevraagd
+Voor `LogoutRequest` het element dat naar Azure AD wordt verzonden, zijn de volgende kenmerken vereist:
 
-* `ID`: Hiermee wordt de afmeldings aanvraag geïdentificeerd. De waarde van `ID` mag niet beginnen met een getal. De gang bare procedure is het toevoegen van **id** aan de teken reeks representatie van een GUID.
-* `Version`: Stel de waarde van dit element in op **2,0**. Deze waarde is verplicht.
-* `IssueInstant`: dit is een `DateTime` teken reeks met een UTC-waarde (Universal Time Coordinate) en een notatie voor de [retour Tour ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD verwacht een waarde van dit type, maar dwingt dit niet af.
+* `ID`- Dit identificeert het uithangverzoek. De waarde `ID` van moet niet beginnen met een getal. De typische praktijk is om **id** toe te wijzen aan de tekenreeksweergave van een GUID.
+* `Version`- Stel de waarde van dit element in op **2,0**. Deze waarde is verplicht.
+* `IssueInstant`- Dit `DateTime` is een tekenreeks met een coördinatenuniversele tijd (UTC) waarde en [retourformaat ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD verwacht een waarde van dit type, maar handhaaft deze niet.
 
 ### <a name="issuer"></a>Verlener
-Het `Issuer`-element in een `LogoutRequest` moet exact overeenkomen met een van de **ServicePrincipalNames** in de Cloud service in azure AD. Dit is normaal gesp roken ingesteld op de **App-ID-URI** die is opgegeven tijdens de registratie van de toepassing.
+Het `Issuer` element `LogoutRequest` in een moet exact overeenkomen met een van de **ServicePrincipalNames** in de cloudservice in Azure AD. Dit is meestal ingesteld op de URI van de **app-id** die is opgegeven tijdens de registratie van toepassingen.
 
-### <a name="nameid"></a>Meid
-De waarde van het `NameID` element moet exact overeenkomen met de `NameID` van de gebruiker die wordt afgemeld.
+### <a name="nameid"></a>Naam-ID
+De waarde `NameID` van het element `NameID` moet exact overeenkomen met de gebruiker die wordt afgemeld.
 
-## <a name="logoutresponse"></a>LogoutResponse
-Azure AD verzendt een `LogoutResponse` als reactie op een `LogoutRequest`-element. Het volgende fragment toont een voor beeld `LogoutResponse`.
+## <a name="logoutresponse"></a>Reactie op afmelden
+Azure AD `LogoutResponse` verzendt een `LogoutRequest` in reactie op een element. Het volgende fragment `LogoutResponse`toont een voorbeeld .
 
 ```
 <samlp:LogoutResponse ID="_f0961a83-d071-4be5-a18c-9ae7b22987a4" Version="2.0" IssueInstant="2013-03-18T08:49:24.405Z" InResponseTo="iddce91f96e56747b5ace6d2e2aa9d4f8c" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -67,13 +67,13 @@ Azure AD verzendt een `LogoutResponse` als reactie op een `LogoutRequest`-elemen
 </samlp:LogoutResponse>
 ```
 
-### <a name="logoutresponse"></a>LogoutResponse
-Azure AD stelt de `ID`, `Version` en `IssueInstant` waarden in het element `LogoutResponse` in. Het `InResponseTo`-element wordt ook ingesteld op de waarde van het kenmerk `ID` van de `LogoutRequest` die het antwoord heeft aangevallen.
+### <a name="logoutresponse"></a>Reactie op afmelden
+Azure AD `ID`stelt `Version` `IssueInstant` de waarden `LogoutResponse` en waarden in het element in. Het stelt `InResponseTo` het element ook `ID` in op `LogoutRequest` de waarde van het kenmerk van het dat de reactie ontlokte.
 
 ### <a name="issuer"></a>Verlener
-Deze waarde wordt door Azure AD ingesteld op `https://login.microsoftonline.com/<TenantIdGUID>/` waarbij \<TenantIdGUID > de Tenant-ID is van de Azure AD-Tenant.
+Azure AD stelt `https://login.microsoftonline.com/<TenantIdGUID>/` deze \<waarde in op de plaats waar TenantIdGUID> de tenant-id van de Azure AD-tenant is.
 
-Als u de waarde van het element `Issuer` wilt evalueren, gebruikt u de waarde van de URI van de **App-ID** die tijdens de registratie van de toepassing is opgenomen.
+Als u de `Issuer` waarde van het element wilt evalueren, gebruikt u de waarde van de **App ID URI** die tijdens de registratie van de toepassing wordt verstrekt.
 
 ### <a name="status"></a>Status
-Azure AD gebruikt het `StatusCode`-element in het `Status`-element om aan te geven dat de afmelding is geslaagd of mislukt. Wanneer de aanmeldings poging mislukt, kan het `StatusCode`-element ook aangepaste fout berichten bevatten.
+Azure AD `StatusCode` gebruikt het `Status` element in het element om het succes of het mislukken van afmelding aan te geven. Wanneer de uitmeldingspoging `StatusCode` mislukt, kan het element ook aangepaste foutmeldingen bevatten.

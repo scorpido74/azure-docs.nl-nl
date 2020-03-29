@@ -1,7 +1,7 @@
 ---
 title: Wat is Video Indexer?
 titleSuffix: Azure Media Services
-description: Dit artikel bevat een overzicht van de Azure Media Services Video Indexer-service.
+description: In dit artikel vindt u een overzicht van de Azure Media Services Video Indexer-service.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,111 +11,111 @@ ms.topic: article
 ms.date: 02/02/2020
 ms.author: juliako
 ms.openlocfilehash: efd8386f464bfdf2ac27d3be07e6572dc27952e1
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78163587"
 ---
 # <a name="what-is-video-indexer"></a>Wat is Video Indexer?
 
-Video Indexer (VI) is de Azure Media Services AI-oplossing en deel van het Cognitive Services merk van Azure. Video Indexer biedt de mogelijkheid om diepere inzichten te verkrijgen (zonder gegevens analyse of codeer vaardig heden) met behulp van machine learning modellen op basis van meerdere kanalen (spraak, vocals, Visual). U kunt de modellen verder aanpassen en trainen. Met de service kunnen uitgebreide zoek opdrachten worden uitgevoerd, worden operationele kosten verminderd, worden nieuwe verdiensten maximaliseren-mogelijkheden geboden en worden nieuwe gebruikers ervaringen gemaakt op grote archieven van Video's (met een lage vermelding).
+Video Indexer (VI) is de Azure Media Services AI-oplossing en onderdeel van het merk Azure Cognitive Services. Video Indexer biedt de mogelijkheid om diepgaande inzichten te extraheren (zonder gegevensanalyse of coderingsvaardigheden) met behulp van machine learning-modellen op basis van meerdere kanalen (stem, zang, visueel). U de modellen verder aanpassen en trainen. De service maakt diep zoeken mogelijk, verlaagt de operationele kosten, maakt nieuwe mogelijkheden voor het genereren van inkomsten mogelijk en creëert nieuwe gebruikerservaringen op grote archieven van video's (met lage toegangsdrempels).
 
-Als u inzichten wilt gaan extra heren met Video Indexer, moet u een account maken en Video's uploaden. Wanneer u uw Video's uploadt naar Video Indexer, analyseert deze zowel visuele elementen als audio door verschillende AI-modellen uit te voeren. Als Video Indexer analyseert u uw video, de inzichten die worden geëxtraheerd door de AI-modellen.
+Als je inzichten wilt verzamelen met Video Indexer, moet je een account maken en video's uploaden. Wanneer u uw video's uploadt naar Video Indexer, worden zowel visuals als audio geanalyseerd door verschillende AI-modellen uit te voeren. Terwijl Video Indexer uw video analyseert, worden de inzichten die door de AI-modellen worden geëxtraheerd.
 
-Het volgende diagram is een illustratie en is geen technische uitleg over de werking van Video Indexer in de back-end.
+Het volgende diagram is een illustratie en geen technische uitleg van hoe Video Indexer werkt in de backend.
 
-![Video Indexer stroom diagram Azure Media Services](./media/video-indexer-overview/model-chart.png)
+![Azure Media Services-videoindexerstroomdiagram](./media/video-indexer-overview/model-chart.png)
 
 
 ## <a name="compliance-privacy-and-security"></a>Compliance, privacy en beveiliging
 
-Als belang rijke herinnering moet u zich houden aan alle toepasselijke wetgeving bij het gebruik van Video Indexer en mag u Video Indexer of een Azure-service niet gebruiken op een manier die de rechten van anderen schendt of die schadelijk voor anderen kunnen zijn.
+Als een belangrijke herinnering moet u voldoen aan alle toepasselijke wetten bij uw gebruik van Video Indexer en mag u Video Indexer of een Azure-service niet gebruiken op een manier die de rechten van anderen schendt of die schadelijk kan zijn voor anderen.
 
-Voordat u een video/afbeelding naar Video Indexer uploadt, moet u over alle juiste rechten beschikken voor het gebruik van de video/afbeelding, inclusief, indien vereist door de wet, alle vereiste mede werkers (indien van toepassing) in de video/afbeelding, voor gebruik, verwerking en opslag van hun gegevens in Video Indexer en Azure. Sommige jurisdicties kunnen speciale wettelijke vereisten opleggen voor het verzamelen, online verwerken en opslaan van bepaalde gegevens categorieën, zoals biometrische gegevens. Voordat u Video Indexer en Azure gebruikt voor het verwerken en opslaan van gegevens die onder bijzondere wettelijke vereisten vallen, moet u ervoor zorgen dat u voldoet aan de wettelijke vereisten die voor u van toepassing kunnen zijn.
+Voordat u een video/afbeelding uploadt naar Video Indexer, moet u over alle juiste rechten beschikken om de video/afbeelding te gebruiken, inclusief, indien vereist door de wet, alle benodigde toestemmingen van personen (indien aanwezig) in de video/afbeelding, voor het gebruik, de verwerking en de opslag van hun gegevens in Video Indexer en Azure. Sommige rechtsgebieden kunnen speciale wettelijke vereisten opleggen voor het verzamelen, online verwerken en opslaan van bepaalde categorieën gegevens, zoals biometrische gegevens. Voordat u Video Indexer en Azure gebruikt voor de verwerking en opslag van gegevens die aan speciale wettelijke vereisten voldoen, moet u ervoor zorgen dat aan dergelijke wettelijke vereisten wordt voldaan die op u van toepassing kunnen zijn.
 
-Ga naar het [vertrouwens centrum](https://www.microsoft.com/TrustCenter/CloudServices/Azure/default.aspx)van micro soft voor meer informatie over naleving, privacy en beveiliging in video indexer. Raadpleeg de privacyverklaring van micro soft voor de privacy van micro soft, het verwerken en bewaren van gegevens, inclusief de manier waarop u uw gegevens kunt verwijderen, de [Privacy verklaring](https://privacy.microsoft.com/PrivacyStatement), de [voor waarden voor Online Services](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("Ost") en de [gegevens verwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Door Video Indexer te gebruiken, gaat u ermee akkoord dat u bent gebonden aan de OST, DPA en de privacyverklaring.
+Ga naar het Microsoft [Trust Center](https://www.microsoft.com/TrustCenter/CloudServices/Azure/default.aspx)voor meer informatie over compliance, privacy en beveiliging in Video Indexer. Voor de privacyverplichtingen van Microsoft, gegevensverwerking en bewaarpraktijken, waaronder het verwijderen van uw gegevens, raadpleegt u de [privacyverklaring](https://privacy.microsoft.com/PrivacyStatement)van Microsoft, de [voorwaarden voor onlineservices](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) (OST) en [het addendum voor gegevensverwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (DPA"). Door Video Indexer te gebruiken, stemt u ermee in gebonden te zijn door de OST, DPA en de Privacy Verklaring.
 
 ## <a name="what-can-i-do-with-video-indexer"></a>Wat kan ik doen met Video Indexer?
 
-De inzichten van Video Indexer kunnen worden toegepast op verschillende scenario's, waaronder:
+De inzichten van Video Indexer kunnen worden toegepast op vele scenario's, waaronder:
 
-* *Uitgebreide zoek opdracht*: gebruik de inzichten die zijn geëxtraheerd uit de video om de zoek ervaring in een video bibliotheek te verbeteren. Als u bijvoorbeeld gesp roken woorden en gezichten indexeert, kan de zoek ervaring van het vinden van momenten in een video waarbij een persoon op bepaalde woorden is gespokeeerd of wanneer twee personen samen worden weer gegeven. Zoeken op basis van deze inzichten van Video's is van toepassing op de nieuws instanties, onderwijs instituten, omroep organisaties, eigen aren van entertainment, zakelijke LOB-apps, en in het algemeen voor elke branche met een video bibliotheek die gebruikers nodig hebben om te zoeken.
-* *Maken van inhoud*: Maak Trailers, Markeer trommels, sociale media-inhoud of Nieuws clips op basis van de inzichten video indexer extracten van uw inhoud. Met keyframes, scènes en tijds tempels voor de vormgeving van personen en labels kan het maken van het proces veel vloeiender en eenvoudiger worden en kunt u de onderdelen van de video ophalen die u nodig hebt voor de inhoud die u wilt maken.
-* *Toegankelijkheid*: of u uw inhoud beschikbaar wilt maken voor mensen met een handicap of als u wilt dat uw inhoud naar verschillende regio's wordt gedistribueerd met behulp van verschillende talen, kunt u de transcriptie en vertaling van de video indexer in meerdere talen gebruiken.
-* *Verdiensten maximaliseren*: video indexer kunt u helpen de waarde van Video's te verhogen. Zo kunnen branches die gebruikmaken van de inkomsten van de advertentie (nieuws media, sociale media, enzovoort), relevante advertenties leveren door gebruik te maken van de uitgepakte inzichten als extra signalen voor de ad-server.
-* *Toezicht op inhoud*: gebruik tekstuele en visuele toezicht modellen voor inhoud om uw gebruikers veilig te houden van ongepaste inhoud en te controleren of de inhoud die u publiceert, overeenkomt met de waarden van uw organisatie. U kunt bepaalde Video's automatisch blok keren of uw gebruikers waarschuwen over de inhoud.
-* *Aanbevelingen*: video Insights kan worden gebruikt om de gebruikers betrokkenheid te verbeteren door de relevante video te markeren voor gebruikers. Als u elke video met aanvullende meta gegevens codeert, kunt u gebruikers aanbevelen de meest relevante Video's te plaatsen en de onderdelen van de video te markeren die overeenkomen met hun behoeften.
+* *Diep zoeken:* gebruik de inzichten uit de video om de zoekervaring in een videobibliotheek te verbeteren. Als u bijvoorbeeld gesproken woorden en gezichten indexeert, kan het zoeken mogelijk zijn om momenten te vinden in een video waarin een persoon bepaalde woorden sprak of wanneer twee personen samen werden gezien. Zoeken op basis van dergelijke inzichten uit video's is van toepassing op persbureaus, onderwijsinstellingen, omroepen, eigenaren van entertainmentinhoud, LOB-apps voor bedrijven en in het algemeen op elke branche die een videobibliotheek heeft waargebruikers tegen moeten zoeken.
+* *Content creatie*: Maak trailers, markeer rollen, social media content, of nieuws clips op basis van de inzichten Video Indexer uittreksels uit uw inhoud. Hoofdframes, scènesmarkeringen en tijdstempels voor de mensen en labeloptredens maken het creatieproces veel soepeler en gemakkelijker en stelt u in staat om de delen van de video te krijgen die u nodig hebt voor de inhoud die u maakt.
+* *Toegankelijkheid:* of u uw inhoud beschikbaar wilt maken voor mensen met een handicap of als u wilt dat uw inhoud wordt gedistribueerd naar verschillende regio's met verschillende talen, u de transcriptie en vertaling gebruiken die door video-indexeerder in meerdere talen wordt geleverd.
+* *Inkomsten genereren:* Video-indexer kan helpen de waarde van video's te verhogen. Bedrijven die afhankelijk zijn van advertentie-inkomsten (nieuwsmedia, sociale media, enzovoort) kunnen bijvoorbeeld relevante advertenties weergeven door de geëxtraheerde inzichten te gebruiken als extra signalen naar de advertentieserver.
+* *Inhoudsmatiging:* gebruik tekstuele en visuele inhoudsmoderatiemodellen om uw gebruikers te beschermen tegen ongepaste inhoud en te valideren dat de inhoud die u publiceert overeenkomt met de waarden van uw organisatie. U bepaalde video's automatisch blokkeren of uw gebruikers waarschuwen voor de inhoud.
+* *Aanbevelingen:* Video-inzichten kunnen worden gebruikt om de betrokkenheid van gebruikers te verbeteren door de relevante videomomenten aan gebruikers te benadrukken. Door elke video te taggen met extra metadata, kun je gebruikers de meest relevante video's aanbevelen en de delen van de video markeren die aan hun behoeften voldoen.
 
 ## <a name="features"></a>Functies
 
-In de volgende lijst ziet u de inzichten die u uit uw Video's kunt ophalen met Video Indexer video-en audio modellen:
+In de volgende lijst worden de inzichten weergegeven die u uit uw video's ophalen met video-indexervideo- en audiomodellen:
 
-### <a name="video-insights"></a>Video inzichten
+### <a name="video-insights"></a>Video-inzichten
 
 * **Gezichtsdetectie**: detecteert en groepeert gezichten die worden weergegeven in de video.
-* **Beroemdheden-id**: video indexer identificeert automatisch meer dan 1.000.000 beroemdheden, zoals wereld leiders, actoren, Actresses, atleten, onderzoekers, zakelijke en technologische leiders over de hele wereld. De gegevens over deze beroemdheden kunnen ook worden gevonden op verschillende websites (IMDB, Wikipedia, enzovoort).
-* **Gezichtsidentificatie op basis van account**: Video Indexer traint een model voor een specifiek account. Vervolgens worden de gezichten herkend in de video op basis van het getrainde model. Zie [een persoons model aanpassen van de video indexer website](customize-person-model-with-website.md) en [een persoonlijk model aanpassen met de video indexer-API](customize-person-model-with-api.md)voor meer informatie.
-* **Miniatuur extractie voor gezichten** ("beste gezicht"): identificeert automatisch het beste vastgelegde gezicht in elke groep gezichten (op basis van kwaliteit, grootte en frontale positie) en extraheert dit als een afbeeldings element.
-* **Visuele tekst herkenning** (OCR): extraheert tekst die visueel wordt weer gegeven in de video.
+* **Celebrity identificatie**: Video Indexer identificeert automatisch meer dan 1 miljoen beroemdheden- zoals wereldleiders, acteurs, actrices, atleten, onderzoekers, het bedrijfsleven en tech leiders over de hele wereld. De gegevens over deze beroemdheden zijn ook te vinden op verschillende websites (IMDB, Wikipedia, enzovoort).
+* **Gezichtsidentificatie op basis van account**: Video Indexer traint een model voor een specifiek account. Het herkent dan gezichten in de video op basis van het getrainde model. Zie [Een persoonsmodel aanpassen op de website van video-indexer](customize-person-model-with-website.md) en [Een persoonsmodel aanpassen met de API voor video-indexeren](customize-person-model-with-api.md)voor meer informatie.
+* **Miniatuurextractie voor gezichten** ('beste gezicht'): identificeert automatisch het best vastgelegde gezicht in elke groep gezichten (op basis van kwaliteit, grootte en frontale positie) en haalt het uit als een afbeeldingselement.
+* **Visuele tekstherkenning** (OCR): hiermee wordt tekst geëxtraheerd die visueel wordt weergegeven in de video.
 * **Visueel inhoudstoezicht**: detecteert inhoud voor volwassenen en/of ongepaste visuele elementen.
 * **Identificatie van labels**: identificeert visuele objecten en acties die worden weergegeven.
-* **Scène segmentering**: Hiermee wordt bepaald wanneer een scène in video wordt gewijzigd op basis van visuele hints. In een scène wordt één gebeurtenis weer gegeven en deze is samengesteld op basis van een reeks opeenvolgende opnamen, die semantisch verwant zijn.
-* **Opname detectie**: bepaalt wanneer een foto in video wordt gewijzigd op basis van visuele hints. Een foto is een reeks frames uit dezelfde camera voor animatie. Zie [scènes, afbeeldingen en keyframes](scenes-shots-keyframes.md)voor meer informatie.
+* **Scènesegmentatie:** bepaalt wanneer een scène verandert in video op basis van visuele aanwijzingen. Een scène toont een enkele gebeurtenis en het is samengesteld door een reeks opeenvolgende opnamen, die semantisch gerelateerd zijn.
+* **Shotdetectie:** bepaalt wanneer een opname in video verandert op basis van visuele aanwijzingen. Een opname is een reeks frames genomen van dezelfde motion-picture camera. Zie [Scènes, opnamen en hoofdframes](scenes-shots-keyframes.md)voor meer informatie.
 * **Detectie van zwarte frames**: identificeert zwarte frames in de video.
 * **Extractie van sleutelframes**: detecteert stabiele sleutelframes in een video.
-* **Rollend tegoed**: identificeert het begin en het einde van de roulerende tegoeden aan het einde van TV-Program ma's en films.
-* **Detectie van animatie tekens** (preview): detectie, groepering en herkenning van tekens in inhoud met animatie via integratie met [Cognitive Services aangepast gezichts vermogen](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Zie voor meer informatie [tekst detectie met animatie](animated-characters-recognition.md).
-* **Redactionele afbeeldings type detectie**: Tags maken op basis van het type (zoals grote opname, gemiddelde opname, close-up, uiterst dicht op, twee Foto's, meerdere mensen, buiten en binnen, enzovoort). Zie [redactionele shot type Detection](scenes-shots-keyframes.md#editorial-shot-type-detection)(Engelstalig) voor meer informatie.
+* **Rolling credits**: Identificeert het begin en einde van de rollende credits aan het einde van tv-programma's en films.
+* **Detectie van geanimeerde tekens** (voorbeeld): detectie, groepering en herkenning van tekens in geanimeerde inhoud via integratie met [de aangepaste visie van Cognitive Services](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Zie [Detectie van tekens geanimeerd](animated-characters-recognition.md)voor meer informatie.
+* **Editorial shot type detectie:** Tagging shots op basis van hun type (zoals wide shot, medium shot, close-up, extreme close-up, twee schot, meerdere mensen, outdoor en binnen, enzovoort). Zie [Typedetectie van redactionele schoten](scenes-shots-keyframes.md#editorial-shot-type-detection)voor meer informatie .
 
-### <a name="audio-insights"></a>Audio inzichten
+### <a name="audio-insights"></a>Audio-inzichten
 
-* **Automatische taaldetectie**: identificeert automatisch de meest gesproken taal. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Chinees (vereenvoudigd), Japans, Russisch en Portugees (Brazilië). Als de taal niet met vertrouwen kan worden geïdentificeerd Video Indexer, wordt ervan uitgegaan dat de gesp roken taal Engels is. Zie [Language Identification model (Engelstalig)](language-identification-model.md)voor meer informatie.
-* **Meertalige spraak-identificatie en transcriptie** (preview-versie): identificeert automatisch de gesp roken taal in verschillende segmenten van audio. Elk segment van het Media bestand dat moet worden getranscribeerd, wordt verzonden en vervolgens wordt de transcriptie opnieuw gecombineerd tot één Unified transcriptie. Zie voor meer informatie [automatisch inhoud identificeren en transcriberen in meerdere talen](multi-language-identification-transcription.md).
-* **Audio-transcriptie**: converteert spraak naar tekst in 12 talen en maakt extensies mogelijk. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Chinees (vereenvoudigd), Japans, Arabisch, Russisch, Braziliaans Portugees, Hindi en Koreaans.
+* **Automatische taaldetectie**: identificeert automatisch de meest gesproken taal. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Chinees (Vereenvoudigd), Japans, Russisch en Braziliaans Portugees. Als de taal niet met vertrouwen kan worden geïdentificeerd, gaat Video Indexer ervan uit dat de gesproken taal Engels is. Zie [Taalidentificatiemodel](language-identification-model.md)voor meer informatie .
+* **Meertalige spraakidentificatie en transcriptie** (voorbeeld): identificeert automatisch de gesproken taal in verschillende segmenten van audio. Het stuurt elk segment van het mediabestand dat moet worden getranscribeerd en combineert vervolgens de transcriptie terug naar één uniforme transcriptie. Zie [Meertalige inhoud automatisch identificeren en transcriberen](multi-language-identification-transcription.md)voor meer informatie.
+* **Audiotranscriptie**: converteert spraak naar tekst in 12 talen en maakt extensies mogelijk. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Chinees (Vereenvoudigd), Japans, Arabisch, Russisch, Braziliaans Portugees, Hindi en Koreaans.
 * **Ondertiteling**: hiermee maakt u ondertiteling in drie indelingen: VTT, TTML, SRT.
-* **Twee kanaal verwerking**: automatisch detecteert afzonderlijke transcripten en samen voegingen op één tijd lijn.
-* **Ruis reductie**: Hiermee wist u de audio of ruis opnamen van telefonie (op basis van Skype-filters).
-* **Transcript aanpassing** (cri's): traint aangepaste spraak naar tekst modellen om branchespecifieke transcripten te maken. Zie [een taal model aanpassen van de video indexer website](customize-language-model-with-website.md) en [een taal model aanpassen met de video indexer-api's](customize-language-model-with-api.md)voor meer informatie.
-* **Opsomming van de luid sprekers**: kaarten en begrijpen welke sprekers Spaak zijn die woorden en wanneer.
-* **Sprekers statistieken**: biedt statistieken voor de spraak verhoudingen van de luid sprekers.
+* **Verwerking met twee kanalen:** Automatisch detecteert afzonderlijke transcripties en voegt samen met één tijdlijn.
+* **Ruisonderdrukking**: Ruimt audio of luidruchtige opnames op (op basis van Skype-filters).
+* **Transcript customization** (CRIS): Traint aangepaste spraak naar tekstmodellen om branchespecifieke transcripties te maken. Zie [Een taalmodel aanpassen op de website van video-indexer](customize-language-model-with-website.md) en [Een taalmodel aanpassen met de VIDEO-indexer-API's](customize-language-model-with-api.md)voor meer informatie.
+* **Spreker opsomming**: Kaarten en begrijpt welke spreker sprak welke woorden en wanneer.
+* **Sprekersstatistieken**: Biedt statistieken voor de spraakverhoudingen van sprekers.
 * **Tekstueel inhoudsbeheer**: detecteert expliciete tekst in het audiotranscript.
-* **Audio-effecten**: identificeert audio-effecten zoals hand claps, spraak en stilte.
-* **Detectie van Emotion**: identificeert emoties op basis van de spraak (wat wordt gezegd) en de gesp roken Toon (hoe dit wordt genoemd). De EMOTION kan Joy, verdriet, boosheid of vrezen zijn.
+* **Audio-effecten:** identificeert audio-effecten zoals handklappen, spraak en stilte.
+* **Emotie detectie**: Identificeert emoties op basis van spraak (wat er gezegd wordt) en stem tonaliteit (hoe het wordt gezegd). De emotie kan vreugde, verdriet, woede of angst zijn.
 * **Vertaling**: maakt vertalingen van het audiotranscript in 54 verschillende talen.
 
-### <a name="audio-and-video-insights-multi-channels"></a>Audio-en video inzichten (multi kanalen)
+### <a name="audio-and-video-insights-multi-channels"></a>Audio- en video-inzichten (meerdere kanalen)
 
-Bij het indexeren door één kanaal zijn gedeeltelijke resultaten voor deze modellen beschikbaar.
+Bij indexering per kanaal is een gedeeltelijk resultaat voor deze modellen beschikbaar.
 
-* **Extractie van tref woorden**: extraheert tref woorden uit spraak en visuele tekst.
-* **Extractie van benoemde entiteiten**: pakt merken, locaties en mensen uit vanuit spraak en visuele tekst via natuurlijke taal verwerking (NLP).
-* **Onderwerpdeductie**: maakt een deductie van de belangrijkste onderwerpen uit de transcripten. De IPTC-taxonomie op 2de niveau is inbegrepen.
+* **Trefwoordenextractie**: Haalt trefwoorden uit spraak en visuele tekst.
+* **Benoemde entiteiten extractie**: Haalt merken, locaties en mensen uit spraak en visuele tekst via natural language processing (NLP).
+* **Onderwerpdeductie**: maakt een deductie van de belangrijkste onderwerpen uit de transcripten. De 2e-level IPTC taxonomie is inbegrepen.
 * **Artefacten**: extraheert een grote verscheidenheid aan 'extra gedetailleerde' artefacten voor elk van de modellen.
 * **Gevoelsanalyse**: identificeert positieve, negatieve en neutrale gevoelens uit visuele tekst en gesproken woorden.
 
 ## <a name="how-can-i-get-started-with-video-indexer"></a>Hoe kan ik aan de slag met Video Indexer?
 
-U kunt op drie manieren toegang krijgen tot Video Indexer mogelijkheden:
+U op drie manieren toegang krijgen tot de mogelijkheden van Video Indexer:
 
-* Video Indexer portal: een eenvoudig te gebruiken oplossing waarmee u het product kunt evalueren, het account kunt beheren en modellen aanpassen.
+* Video Indexer-portal: een gebruiksvriendelijke oplossing waarmee u het product evalueren, het account beheren en modellen aanpassen.
 
-    Zie [aan de slag met de video indexer-website](video-indexer-get-started.md)voor meer informatie over de portal.  
+    Zie Aan de slag [met de website Video Indexer](video-indexer-get-started.md)voor meer informatie over de portal.  
 
-* API-integratie: alle mogelijkheden van Video Indexer zijn beschikbaar via een REST API, waarmee u de oplossing kunt integreren in uw apps en infra structuur.
+* API-integratie: Alle mogelijkheden van Video Indexer zijn beschikbaar via een REST API, waarmee u de oplossing integreren in uw apps en infrastructuur.
 
-    Zie [Video Indexer rest API gebruiken](video-indexer-use-apis.md)om aan de slag te gaan als ontwikkelaar.
+    Zie REST API voor [video-indexer gebruiken](video-indexer-use-apis.md)om als ontwikkelaar aan de slag te gaan.
 
-* Inge sloten widget: Hiermee kunt u de Video Indexer Insights-, speler-en editor-ervaring in uw app insluiten.
+* Insluitbare widget: hiermee u de ervaringen met video-indexer, speler en editor insluiten in uw app.
 
-    Zie [visuele objecten insluiten in uw toepassing](video-indexer-embed-widgets.md)voor meer informatie.
+    Zie [Visuele widgets insluiten in uw toepassing](video-indexer-embed-widgets.md)voor meer informatie.
 
-Als u de website gebruikt, worden de inzichten toegevoegd als meta gegevens en worden ze weer gegeven in de portal. Als u Api's gebruikt, zijn de inzichten beschikbaar als JSON-bestand.
+Als u de website gebruikt, worden de inzichten toegevoegd als metagegevens en zijn ze zichtbaar in de portal. Als u API's gebruikt, zijn de inzichten beschikbaar als JSON-bestand.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 U kunt aan de slag met Video Indexer. Raadpleeg voor meer informatie de volgende artikelen:
 
-- [Ga aan de slag met de video indexer-website](video-indexer-get-started.md).
-- [Inhoud verwerken met Video Indexer rest API](video-indexer-use-apis.md).
-- [Sluit visuele objecten in uw toepassing in](video-indexer-embed-widgets.md).
+- [Ga aan de slag met de website Video Indexer](video-indexer-get-started.md).
+- [Inhoud verwerken met Video Indexer REST API](video-indexer-use-apis.md).
+- [Sluit visuele widgets in uw toepassing in.](video-indexer-embed-widgets.md)

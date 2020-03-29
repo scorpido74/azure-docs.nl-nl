@@ -1,6 +1,6 @@
 ---
-title: Klant acceptatie van de fase van de levenscyclus van het Team Data Science Process
-description: De doelen, taken en producten voor de fase van de acceptatie van de klant van uw data-science-projecten
+title: Klantacceptatiefase van de levenscyclus van het Team Data Science Process
+description: De doelen, taken en deliverables voor de klantacceptatiefase van uw data-science projecten
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,52 +12,52 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720517"
 ---
-# <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Klant acceptatie van de fase van de levenscyclus van het Team Data Science Process
+# <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Klantacceptatiefase van de levenscyclus van het Team Data Science Process
 
-In dit artikel bevat een overzicht van de doelen, taken en producten die zijn gekoppeld aan de klant acceptatie van de fase van het Team Data Science Process (TDSP). Deze procedure biedt de levensduur van een aanbevolen die u gebruiken kunt voor het structureren van uw data-science-projecten. De levenscyclus van geeft een overzicht van de belangrijke fasen die projecten doorgaans worden uitgevoerd, vaak iteratief:
+In dit artikel worden de doelen, taken en deliverables beschreven die zijn gekoppeld aan de acceptatiefase van de klant van het Team Data Science Process (TDSP). Dit proces biedt een aanbevolen levenscyclus die u gebruiken om uw data-science-projecten te structureren. De levenscyclus schetst de belangrijkste fasen die projecten doorgaans uitvoeren, vaak iteratief:
 
-   1. **Zakelijke inzichten**
-   2. **Gegevens verkrijgen en meer informatie**
-   3. **Model**
+   1. **Inzicht in het bedrijf**
+   2. **Gegevens verzamelen en begrijpen**
+   3. **Modelleren**
    4. **Implementatie**
-   5. **Klant acceptatie**
+   5. **Aanvaarding van de klant**
 
-Hier volgt een visuele representatie van de TDSP-levenscyclus: 
+Hier is een visuele weergave van de TDSP-levenscyclus: 
 
 ![TDSP-levenscyclus](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goal"></a>Doel
-**Project doelstellingen volt ooien**: Controleer of de pijp lijn, het model en de implementatie ervan in een productie omgeving voldoen aan de doel stellingen van de klant.
+**Projectdeliverables afronden:** controleer of de pijplijn, het model en de implementatie ervan in een productieomgeving voldoen aan de doelstellingen van de klant.
 
-## <a name="how-to-do-it"></a>Hoe voer ik
-Er zijn twee belangrijke taken behandeld in deze fase:
+## <a name="how-to-do-it"></a>Hoe doe je dat?
+Er zijn twee hoofdtaken die in deze fase aan de orde komen:
 
-   * **Systeem validatie**: Controleer of het geïmplementeerde model en de pijp lijn voldoen aan de behoeften van de klant.
-   * **Project-afweging**: hand het project afronden naar de entiteit die het systeem in productie gaat uitvoeren.
+   * **Systeemvalidatie:** controleer of het geïmplementeerde model en de pijplijn voldoen aan de behoeften van de klant.
+   * **Projectoverdracht**: Geef het project af aan de entiteit die het systeem in productie gaat uitvoeren.
 
-De klant moet controleren of het systeem voldoet aan de zakelijke behoeften en dat deze de vragen worden beantwoord met een acceptabele nauwkeurigheid het systeem in productie wilt implementeren voor gebruik door toepassing van de client. Alle documentatie is voltooid en gecontroleerd. Het project is doorgegeven uit naar de entiteit die verantwoordelijk is voor bewerkingen. Deze entiteit kan bijvoorbeeld zijn een IT- of klant gegevenswetenschap team of een agent van de klant is verantwoordelijk voor het uitvoeren van het systeem in productie. 
+De klant moet valideren dat het systeem aan zijn zakelijke behoeften voldoet en dat het de vragen met aanvaardbare nauwkeurigheid beantwoordt om het systeem in productie te nemen voor gebruik door de toepassing van hun klant. Alle documentatie wordt afgerond en beoordeeld. Het project wordt overgedragen aan de entiteit die verantwoordelijk is voor de activiteiten. Deze entiteit kan bijvoorbeeld een IT- of klantdata-science-team zijn of een agent van de klant die verantwoordelijk is voor het uitvoeren van het systeem in productie. 
 
 ## <a name="artifacts"></a>Artefacten
-Het belangrijkste artefact dat in deze laatste fase is geproduceerd, is het **afsluit rapport van het project voor de klant**. Dit technische rapport bevat alle details van het project die nuttig zijn voor meer informatie over het werken met het systeem. TDSP biedt een sjabloon voor het [afsluiten van rapporten](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) . Kunt u de sjabloon is, of u deze voor de specifieke client behoeften kunt aanpassen. 
+Het belangrijkste artefact geproduceerd in deze laatste fase is de **Exit rapport van het project voor de klant**. Dit technische rapport bevat alle details van het project die nuttig zijn voor het leren over hoe het systeem te bedienen. TDSP biedt een [exitrapportsjabloon.](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) U de sjabloon gebruiken zoals deze is, of u deze aanpassen voor specifieke clientbehoeften. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Hier vindt u koppelingen naar elke stap in de levenscyclus van de TDSP:
 
-   1. [Zakelijke inzichten](lifecycle-business-understanding.md)
-   2. [Gegevens verkrijgen en meer informatie](lifecycle-data.md)
-   3. [Model](lifecycle-modeling.md)
+   1. [Inzicht in het bedrijf](lifecycle-business-understanding.md)
+   2. [Gegevens verzamelen en begrijpen](lifecycle-data.md)
+   3. [Modelleren](lifecycle-modeling.md)
    4. [Implementatie](lifecycle-deployment.md)
-   5. [Klant acceptatie](lifecycle-acceptance.md)
+   5. [Aanvaarding van de klant](lifecycle-acceptance.md)
 
-We bieden volledige instructies voor het demonstreren van alle stappen in het proces voor specifieke scenario's. Het artikel [voorbeeld](walkthroughs.md) scenario's bevat een lijst met de scenario's met koppelingen en miniaturen. De scenario's laten zien hoe u cloud, on-premises hulpprogramma's en services combineren in een werkstroom of een pijplijn te maken van een intelligente toepassingen. 
+We bieden volledige walkthroughs die alle stappen in het proces voor specifieke scenario's demonstreren. Het artikel [Voorbeeld walkthroughs](walkthroughs.md) bevat een lijst met de scenario's met koppelingen en miniatuurbeschrijvingen. De walkthroughs illustreren hoe u cloud-, on-premises tools en services combineren in een workflow of pijplijn om een intelligente toepassing te maken. 
 
-Zie [de TDSP gebruiken met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)voor voor beelden van het uitvoeren van stappen in TDSPs die gebruikmaken van Azure machine learning Studio.
+Zie [De TDSP](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)gebruiken met Azure Machine Learning voor voorbeelden van het uitvoeren van stappen in TDSP's die Azure Machine Learning Studio gebruiken.

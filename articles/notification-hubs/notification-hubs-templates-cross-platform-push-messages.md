@@ -17,32 +17,32 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263741"
 ---
 # <a name="templates"></a>Sjablonen
 
-Met sjablonen kunnen een client toepassing de exacte indeling opgeven van de meldingen die ze willen ontvangen. Met behulp van sjablonen kunnen apps verschillende voor delen realiseren, waaronder de volgende:
+Met sjablonen kan een clienttoepassing de exacte indeling opgeven van de meldingen die deze wil ontvangen. Met behulp van sjablonen kan een app verschillende voordelen realiseren, waaronder:
 
-- Een neutraal-back-end van een platform
+- Een platform-agnostische backend
 - Gepersonaliseerde meldingen
 - Client-versie onafhankelijkheid
-- Eenvoudig te lokaliseren
+- Eenvoudige lokalisatie
 
-In deze sectie vindt u twee diep gaande voor beelden van het gebruik van sjablonen voor het verzenden van neutraal-meldingen die gericht zijn op alle apparaten op verschillende platforms en voor het personaliseren van broadcast meldingen op elk apparaat.
+In deze sectie worden twee diepgaande voorbeelden gegeven van het gebruik van sjablonen om platformagnostische meldingen te verzenden die zich richten op al uw apparaten op verschillende platforms en om de melding van uitzendingen naar elk apparaat te personaliseren.
 
-## <a name="using-templates-cross-platform"></a>Sjablonen meerdere platformen gebruiken
+## <a name="using-templates-cross-platform"></a>Sjablonen cross-platform gebruiken
 
-De standaard methode voor het verzenden van push meldingen is het verzenden van elke melding die moet worden verzonden, een specifieke Payload naar platform Notification Services (WNS, APNS). Als u bijvoorbeeld een waarschuwing naar APNS wilt verzenden, is de payload een JSON-object van de volgende vorm:
+De standaardmanier om pushmeldingen te verzenden is door voor elke te verzenden melding een specifieke payload te sturen naar platformmeldingsservices (WNS, APNS). Als u bijvoorbeeld een waarschuwing naar APNS wilt verzenden, is de payload een JSON-object van het volgende formulier:
 
 ```json
 {"aps": {"alert" : "Hello!" }}
 ```
 
-Als u een soortgelijk pop-upbericht wilt verzenden naar een Windows Store-toepassing, is de XML-nettolading als volgt:
+Als u een vergelijkbaar pop-upbericht wilt verzenden op een Windows Store-toepassing, ziet de XML-payload als volgt uit:
 
 ```xml
 <toast>
@@ -54,17 +54,17 @@ Als u een soortgelijk pop-upbericht wilt verzenden naar een Windows Store-toepas
 </toast>
 ```
 
-U kunt vergelijk bare nettoladingen maken voor MPNS-en FCM-platforms (Windows Phone) en (Android).
+U vergelijkbare payloads maken voor MPNS-platforms (Windows Phone) en FCM (Android).
 
-Deze vereiste zorgt ervoor dat de back-end van de app verschillende nettoladingen voor elk platform produceert en de back-end effectief maakt voor een deel van de presentatielaag van de app. Enkele problemen zijn onder andere lokalisatie en grafische indelingen (met name voor Windows Store-apps die meldingen bevatten voor diverse typen tegels).
+Deze vereiste dwingt de app backend om verschillende payloads te produceren voor elk platform, en maakt effectief de backend verantwoordelijk voor een deel van de presentatie laag van de app. Enkele zorgen zijn lokalisatie en grafische lay-outs (vooral voor Windows Store-apps die meldingen bevatten voor verschillende soorten tegels).
 
-Met de functie Notification Hubs sjabloon kan een client-app speciale registraties maken, die sjabloon registraties worden genoemd, naast de set met tags, een sjabloon. Met de functie Notification Hubs sjabloon kan een client-app apparaten koppelen aan sjablonen, ongeacht of u met installaties (voor keur) of registraties werkt. Gezien de voor beelden van voor gaande Payload, is de enige platform onafhankelijke informatie het daad werkelijke waarschuwings bericht (Hallo!). Een sjabloon is een set instructies voor de notification hub voor het format teren van een platform onafhankelijk bericht voor de registratie van die specifieke client-app. In het vorige voor beeld is het platform onafhankelijke bericht één eigenschap: `message = Hello!`.
+Met de sjabloonfunctie Meldinghubs kan een client-app speciale registraties maken, sjabloonregistraties genoemd, waaronder naast de set tags een sjabloon. Met de sjabloonfunctie Meldinghubs kan een client-app apparaten koppelen aan sjablonen, ongeacht of u werkt met Installaties (voorkeurs) of Registraties. Gezien de voorgaande payload voorbeelden, de enige platform-onafhankelijke informatie is de werkelijke waarschuwingsbericht (Hallo!). Een sjabloon is een set instructies voor de meldingshub voor het opmaken van een platformonafhankelijk bericht voor de registratie van die specifieke client-app. In het voorgaande voorbeeld is het platformonafhankelijke `message = Hello!`bericht één eigenschap: .
 
-In de volgende afbeelding ziet u het proces:
+De volgende afbeelding illustreert het proces:
 
 ![](./media/notification-hubs-templates/notification-hubs-hello.png)
 
-De sjabloon voor de registratie van de iOS-client-app is als volgt:
+De sjabloon voor de registratie van de iOS-clientapp is als volgt:
 
 ```json
 {"aps": {"alert": "$(message)"}}
@@ -82,17 +82,17 @@ De bijbehorende sjabloon voor de Windows Store-client-app is:
 </toast>
 ```
 
-U ziet dat het daad werkelijke bericht wordt vervangen door de expressie $ (Message). Met deze expressie wordt de notification hub geïnstrueerd wanneer een bericht wordt verzonden naar deze specifieke registratie, om een bericht te maken dat erop volgt en de algemene waarde wordt geactiveerd.
+Merk op dat het werkelijke bericht wordt vervangen door de expressie $(bericht). Deze expressie instrueert de Meldingshub, wanneer deze een bericht naar deze specifieke registratie verzendt, om een bericht te maken dat volgt en de gemeenschappelijke waarde inschakelt.
 
-Als u werkt met het installatie model, bevat de installatie "Sjablonen"-sleutel een JSON van meerdere sjablonen. Als u met registratie model werkt, kan de client toepassing meerdere registraties maken om meerdere sjablonen te gebruiken. bijvoorbeeld een sjabloon voor waarschuwings berichten en een sjabloon voor het bijwerken van tegels. Client toepassingen kunnen ook systeem eigen registraties (registraties zonder sjabloon) en sjabloon registraties combi neren.
+Als u met installatiemodel werkt, bevat de installatiesleutel "sjablonen" een JSON van meerdere sjablonen. Als u met registratiemodel werkt, kan de clienttoepassing meerdere registraties maken om meerdere sjablonen te gebruiken. bijvoorbeeld een sjabloon voor waarschuwingsberichten en een sjabloon voor tegelupdates. Clienttoepassingen kunnen ook native registraties (registraties zonder sjabloon) en sjabloonregistraties mengen.
 
-De notification hub verzendt één melding voor elke sjabloon zonder rekening te houden met de client-app. Dit gedrag kan worden gebruikt om platform onafhankelijke meldingen om te zetten in meer meldingen. Zo kan hetzelfde platform onafhankelijke bericht naar de notification hub naadloos worden vertaald in een pop-upwaarschuwing en een tegel update, zonder dat de back-end hiervan op de hoogte hoeft te zijn. Sommige platformen (bijvoorbeeld iOS) kunnen meerdere meldingen samen vouwen op hetzelfde apparaat als ze binnen korte tijd worden verzonden.
+De meldingshub stuurt één melding voor elke sjabloon zonder na te gaan of deze tot dezelfde client-app behoren. Dit gedrag kan worden gebruikt om platformonafhankelijke meldingen te vertalen naar meer meldingen. Hetzelfde platformonafhankelijke bericht naar de Meldingshub kan bijvoorbeeld naadloos worden vertaald in een pop-upwaarschuwing en een tegelupdate, zonder dat de backend hiervan op de hoogte moet zijn. Sommige platforms (bijvoorbeeld iOS) kunnen meerdere meldingen naar hetzelfde apparaat samenvouwen als ze in een korte periode worden verzonden.
 
 ## <a name="using-templates-for-personalization"></a>Sjablonen gebruiken voor personalisatie
 
-Een ander voor deel van het gebruik van sjablonen is de mogelijkheid om Notification Hubs te gebruiken voor het uitvoeren van persoonlijke gegevens per registratie. Denk bijvoorbeeld aan een weers-app waarin een tegel met de weers omstandigheden op een specifieke locatie wordt weer gegeven. Een gebruiker kan kiezen uit Celsius of Fahrenheit graden en een enkele of vijf dagen prognose. Met behulp van sjablonen kan elke installatie van de client-app worden geregistreerd voor de vereiste indeling (1-dag Celsius, 1-dag Fahrenheit, 5-dagen Celsius, 5-dagen Fahrenheit) en moet de back-end één bericht bevatten met alle informatie die nodig is om deze sjablonen in te vullen (bijvoorbeeld een prognose van vijf dagen met Celsius en graden van Fahrenheit).
+Een ander voordeel van het gebruik van sjablonen is de mogelijkheid om Notification Hubs te gebruiken om personalisatie per registratie van meldingen uit te voeren. Denk bijvoorbeeld aan een weer-app die een tegel weergeeft met de weersomstandigheden op een specifieke locatie. Een gebruiker kan kiezen tussen Celsius of Fahrenheit graden, en een enkele of vijf-daagse voorspelling. Met behulp van sjablonen kan elke installatie van de client-app zich registreren voor het vereiste formaat (1-daagse Celsius, 1-daagse Fahrenheit, 5-daagse Celsius, 5-dagen Fahrenheit) en de backend één bericht laten verzenden dat alle informatie bevat die nodig is om deze sjablonen in te vullen (bijvoorbeeld een vijfdaagse voorspelling met Celsius en Fahrenheit graden).
 
-De sjabloon voor de 1-daagse prognose met Celsius temperaturen is als volgt:
+De sjabloon voor de eendaagse voorspelling met Celsius-temperaturen is als volgt:
 
 ```xml
 <tile>
@@ -106,7 +106,7 @@ De sjabloon voor de 1-daagse prognose met Celsius temperaturen is als volgt:
 </tile>
 ```
 
-Het bericht dat naar de notification hub wordt verzonden, bevat alle volgende eigenschappen:
+Het bericht dat naar de meldingshub wordt verzonden, bevat alle volgende eigenschappen:
 
 ```html
 <table border="1">
@@ -119,33 +119,33 @@ Het bericht dat naar de notification hub wordt verzonden, bevat alle volgende ei
 </table><br/>
 ```
 
-Met dit patroon verzendt de back-end alleen één bericht zonder specifieke persoonlijke opties op te slaan voor de gebruikers van de app. In de volgende afbeelding ziet u dit scenario:
+Door dit patroon te gebruiken, stuurt de backend slechts één bericht zonder specifieke personalisatieopties op te slaan voor de app-gebruikers. De volgende afbeelding illustreert dit scenario:
 
 ![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
 ## <a name="how-to-register-templates"></a>Sjablonen registreren
 
-Als u zich wilt registreren bij sjablonen met behulp van het installatie model (voor keur) of het registratie model, raadpleegt u [registratie beheer](notification-hubs-push-notification-registration-management.md).
+Zie [Registratiebeheer](notification-hubs-push-notification-registration-management.md)als u zich wilt registreren met sjablonen met behulp van het installatiemodel (voorkeursmodel) of het registratiemodel.
 
-## <a name="template-expression-language"></a>Taal van sjabloon expressie
+## <a name="template-expression-language"></a>Taal voor sjabloonexpressie
 
-Sjablonen zijn beperkt tot XML-of JSON-document indelingen. U kunt ook expressies op bepaalde plaatsen plaatsen; bijvoorbeeld knooppunt kenmerken of-waarden voor XML, String-eigenschaps waarden voor JSON.
+Sjablonen zijn beperkt tot XML- of JSON-documentindelingen. U ook alleen expressies op bepaalde plaatsen plaatsen; bijvoorbeeld nodekenmerken of waarden voor XML, eigenschapswaarden voor JSON.
 
 In de volgende tabel ziet u de taal die is toegestaan in sjablonen:
 
 | Expressie       | Beschrijving |
 | ---------------- | --- |
-| $ (prop)          | Verwijzing naar een gebeurtenis eigenschap met de opgegeven naam. Eigenschaps namen zijn niet hoofdletter gevoelig. Deze expressie wordt omgezet in de tekst waarde van de eigenschap of in een lege teken reeks als de eigenschap niet aanwezig is. |
-| $ (prop, n)       | Net als hierboven wordt de tekst expliciet afgekapt bij n tekens, bijvoorbeeld $ (title, 20), clips de inhoud van de eigenschap Title op 20 tekens. |
-| . (prop, n)       | Net als hierboven, maar de tekst is een achtervoegsel met drie punten wanneer het is afgekapt. De totale grootte van de afgekapte teken reeks en het achtervoegsel mag niet langer zijn dan n tekens. . (titel, 20) met een invoer eigenschap van ' Dit is de titel regel ' resulteert in **Dit is de titel...** |
-| % (prop)          | Vergelijkbaar met $ (naam), behalve dat de uitvoer URI-gecodeerd is. |
-| # (prop)          | Wordt gebruikt in JSON-sjablonen (bijvoorbeeld voor iOS-en Android-sjablonen).<br><br>Deze functie werkt precies hetzelfde als $ (prop) eerder opgegeven, behalve wanneer het wordt gebruikt in JSON-sjablonen (bijvoorbeeld Apple-sjablonen). Als deze functie niet is omgeven door ' {', '} ' (bijvoorbeeld ' myJsonProperty ': ' # (naam) '), en resulteert in een getal in Java script-&#124;indeling, bijvoorbeeld regexp: (0 (&#91;1-9&#93;&#91;0-9&#93;*)) (\.&#91;0-9&#93;+)? ((e&#124;-e) (&#124;+-)? &#91;0-9&#93;+)?, is de JSON van de uitvoer een getal.<br><br>' Badge: ' # (name) ' wordt bijvoorbeeld ' badge ': 40 (en niet ' 40 '). |
-| ' tekst ' of ' tekst ' | Een letterlijke waarde. Letterlijke waarden bevatten wille keurige tekst tussen enkele of dubbele aanhalings tekens. |
-| expr1 + expr2    | De samenvoegings operator verbindt twee expressies tot één teken reeks. |
+| $(prop)          | Verwijzing naar een gebeurteniseigenschap met de voornaam. Eigendomsnamen zijn niet hoofdlettergevoelig. Deze expressie wordt omgezet in de tekstwaarde van de eigenschap of in een lege tekenreeks als de eigenschap niet aanwezig is. |
+| $(prop, n)       | Zoals hierboven, maar de tekst wordt expliciet geknipt op n tekens, bijvoorbeeld $(titel, 20) clips de inhoud van de eigenschap titel op 20 tekens. |
+| . (rekwisieten, n)       | Zoals hierboven, maar de tekst is achtervoegsel met drie stippen als het wordt geknipt. De totale grootte van de geknipte tekenreeks en het achtervoegsel overschrijdt de n-tekens niet. . (titel, 20) met een input eigenschap van "Dit is de titel regel" resultaten in **Dit is de titel ...** |
+| %(steun)          | Vergelijkbaar met $(naam), behalve dat de uitvoer is URI-gecodeerd. |
+| #(steun)          | Wordt gebruikt in JSON-sjablonen (bijvoorbeeld voor iOS- en Android-sjablonen).<br><br>Deze functie werkt precies hetzelfde als $(prop) die eerder is opgegeven, behalve wanneer deze wordt gebruikt in JSON-sjablonen (bijvoorbeeld Apple-sjablonen). In dit geval, als deze functie niet is omgeven door "{','}" (bijvoorbeeld 'myJsonProperty' : '#(name)'), en het evalueert tot een nummer in Javascript-formaat,\. bijvoorbeeld regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*)(&#91;0-9&#93;+)? (e&#124;E)(+&#124;-)?&#91;0-9&#93;+)?, dan is de uitvoer JSON een getal.<br><br>Bijvoorbeeld, 'badge: '#(naam)" wordt 'badge' : 40 (en niet '40'). |
+| 'tekst' of 'tekst' | Een letterlijke. Literals bevatten willekeurige tekst ingesloten in enkele of dubbele aanhalingstekens. |
+| expr1 + expr2    | De samenvoegingsoperator voegt twee expressies samen in één tekenreeks. |
 
-De expressies kunnen een van de voor gaande formulieren zijn.
+De expressies kunnen een van de voorgaande formulieren zijn.
 
-Als samen voeging wordt gebruikt, moet de volledige expressie tussen `{}`worden geplaatst. Bijvoorbeeld `{$(prop) + ‘ - ’ + $(prop2)}`.
+Bij het gebruik van samenvoeging moet `{}`de volledige expressie worden omgeven met . Bijvoorbeeld `{$(prop) + ‘ - ’ + $(prop2)}`.
 
 De volgende sjabloon is bijvoorbeeld geen geldige XML-sjabloon:
 
@@ -159,7 +159,7 @@ De volgende sjabloon is bijvoorbeeld geen geldige XML-sjabloon:
 </tile>
 ```
 
-Zoals eerder is uitgelegd, moeten expressies in accolades worden verpakt wanneer samen voeging wordt gebruikt. Bijvoorbeeld:
+Zoals eerder uitgelegd, bij het gebruik van concatenatie, uitdrukkingen moeten worden verpakt in krullende beugels. Bijvoorbeeld:
 
 ```xml
 <tile>

@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Change feed gebruiken met Azure Functions
-description: Gebruik Azure Functions om verbinding te maken met Azure Cosmos DB wijzigings feed. U kunt later reactieve Azure-functies maken die worden geactiveerd voor elke nieuwe gebeurtenis.
+title: Azure Cosmos DB-wijzigingsfeed gebruiken met Azure-functies
+description: Gebruik Azure-functies om verbinding te maken met de feed voor wijzigingen in Azure Cosmos DB. Later u reactieve Azure-functies maken die op elke nieuwe gebeurtenis worden geactiveerd.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,50 +8,50 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 7a74635551d8416bf60689b1f1403f29883e81bd
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851366"
 ---
-# <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Op gebeurtenissen gebaseerde architecturen met serverloze architectuur met Azure Cosmos DB en Azure Functions
+# <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Op serverloze gebeurtenissen gebaseerde architecturen met Azure Cosmos DB en Azure-functies
 
-Azure Functions biedt de eenvoudigste manier om verbinding te maken met de [wijzigings feed](change-feed.md). U kunt kleine reactieve Azure Functions maken die automatisch worden geactiveerd voor elke nieuwe gebeurtenis in de wijzigings feed van de Azure Cosmos-container.
+Azure Functions biedt de eenvoudigste manier om verbinding te maken met de [wijzigingsfeed.](change-feed.md) U kleine reactieve Azure-functies maken die automatisch worden geactiveerd op elke nieuwe gebeurtenis in de wijzigingsfeed van uw Azure Cosmos-container.
 
-![Functies zonder server gebeurtenis op basis van gebeurtenissen die werken met de Azure Functions trigger voor Cosmos DB](./media/change-feed-functions/functions.png)
+![Serverloze gebeurtenisgebaseerde functies die werken met de trigger voor Azure-functies voor Cosmos DB](./media/change-feed-functions/functions.png)
 
-Met de [Azure functions trigger voor Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)kunt u gebruikmaken van de schaal baarheid en betrouw bare gebeurtenis detectie functionaliteit van de [feed-processor](./change-feed-processor.md)zonder dat er een [werk infrastructuur](./change-feed-processor.md)hoeft te worden onderhouden. Focus op de logica van uw Azure-functie zonder dat u zich zorgen hoeft te maken over de rest van de pijp lijn voor gebeurtenis bronnen. U kunt de trigger zelfs combi neren met andere [Azure functions bindingen](../azure-functions/functions-triggers-bindings.md#supported-bindings).
+Met de [Azure Functions-trigger voor Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)u gebruikmaken van de schaalbaarheid en betrouwbare functionaliteit voor gebeurtenisdetectie van de Change Feed [Processor,](./change-feed-processor.md)zonder dat u de [infrastructuur van werknemers](./change-feed-processor.md)hoeft te onderhouden. Richt u op de logica van uw Azure-functie zonder u zorgen te maken over de rest van de pijplijn voor het vinden van gebeurtenissen. U de Trigger zelfs mengen met andere [Azure-functiesbindingen.](../azure-functions/functions-triggers-bindings.md#supported-bindings)
 
 > [!NOTE]
-> Op dit moment wordt de Azure Functions trigger voor Cosmos DB alleen ondersteund voor gebruik met de core-API (SQL).
+> Momenteel wordt de Trigger van Azure-functies voor Cosmos DB alleen ondersteund voor gebruik met de Core (SQL)-API.
 
 ## <a name="requirements"></a>Vereisten
 
-U hebt het volgende nodig om een stroom op basis van een gebeurtenis op een server te implementeren:
+Als u een serverloze gebeurtenisstroom wilt implementeren, hebt u het:
 
-* **De bewaakte container**: de bewaakte container is de Azure Cosmos-container die wordt bewaakt en de gegevens worden opgeslagen waaruit de wijzigings feed wordt gegenereerd. Eventuele toevoegingen, updates van de bewaakte container worden weer gegeven in de wijzigings feed van de container.
-* **De lease container**: de lease-container houdt status over van meerdere en dynamische Serverloze Azure-functie instanties en maakt dynamische schaling mogelijk. Deze lease container kan hand matig of automatisch worden gemaakt door de Azure Functions trigger voor Cosmos DB. Als u de lease-container automatisch wilt maken, stelt u de vlag *CreateLeaseCollectionIfNotExists* in de [configuratie](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)in. Gepartitioneerde lease containers moeten een `/id` partitie sleutel definitie hebben.
+* **De bewaakte container**: de bewaakte container is de Azure Cosmos-container die wordt gecontroleerd en slaat de gegevens op waaruit de wijzigingsfeed wordt gegenereerd. Eventuele inserts, updates van de bewaakte container worden weerspiegeld in de wijzigingsfeed van de container.
+* **De leasecontainer**: de leasecontainer behoudt de status voor meerdere en dynamische azure-functie-exemplaren zonder server en maakt dynamische schaling mogelijk. Deze leasecontainer kan handmatig of automatisch worden gemaakt door de Trigger voor Azure-functies voor Cosmos DB. Als u de leasecontainer automatisch wilt maken, stelt u de vlag *CreateLeaseCollectionIfNotExists* in de [configuratie](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)in. Partitieleasecontainers zijn vereist om `/id` een definitie van partitiesleutel te hebben.
 
-## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Uw Azure Functions-trigger maken voor Cosmos DB
+## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>De trigger van Azure-functies maken voor Cosmos DB
 
-Het maken van uw Azure-functie met een Azure Functions trigger voor Cosmos DB wordt nu ondersteund in alle Azure Functions IDE-en CLI-integraties:
+Het maken van uw Azure-functie met een Azure-functietrigger voor Cosmos DB wordt nu ondersteund voor alle Azure Functions IDE- en CLI-integraties:
 
-* [Visual Studio-extensie](../azure-functions/functions-develop-vs.md) voor Visual Studio-gebruikers.
-* [Visual Studio code-extensie](/azure/javascript/tutorial-vscode-serverless-node-01) voor gebruikers van Visual Studio code.
-* En ten slotte [kern cli-hulp programma](../azure-functions/functions-run-local.md#create-func) voor een platformoverschrijdende IDE neutraal-ervaring.
+* [Visual Studio-extensie](../azure-functions/functions-develop-vs.md) voor Gebruikers van Visual Studio.
+* [Visual Studio Code Extension](/azure/javascript/tutorial-vscode-serverless-node-01) for Visual Studio Code users.
+* En tenslotte [Core CLI tooling](../azure-functions/functions-run-local.md#create-func) voor een cross-platform IDE agnostische ervaring.
 
-## <a name="run-your-trigger-locally"></a>Uw trigger lokaal uitvoeren
+## <a name="run-your-trigger-locally"></a>Voer uw trigger lokaal uit
 
-U kunt uw [Azure-functie lokaal](../azure-functions/functions-develop-local.md) uitvoeren met de [Azure Cosmos DB-emulator](./local-emulator.md) voor het maken en ontwikkelen van zonder een Azure-abonnement gemaakte stromen op basis van gebeurtenissen.
+U uw [Azure-functie lokaal](../azure-functions/functions-develop-local.md) uitvoeren met de [Azure Cosmos DB Emulator](./local-emulator.md) om uw serverloze gebeurtenisstromen te maken en te ontwikkelen zonder een Azure-abonnement of kosten te maken.
 
-Als u live-scenario's in de Cloud wilt testen, kunt u [Cosmos DB gratis proberen](https://azure.microsoft.com/try/cosmosdb/) zonder dat u een credit card of een Azure-abonnement nodig hebt.
+Als u live scenario's in de cloud wilt testen, u [Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) zonder dat een creditcard of Azure-abonnement vereist is.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt nu door gaan met meer informatie over wijzigings invoer in de volgende artikelen:
+U nu meer te weten komen over de wijzigingsfeed in de volgende artikelen:
 
-* [Overzicht van wijzigings feed](change-feed.md)
-* [Manieren om een wijzigings feed te lezen](read-change-feed.md)
-* [De processor bibliotheek voor Change feed gebruiken](change-feed-processor.md)
-* [Werken met de processor bibliotheek voor wijzigings invoer](change-feed-processor.md)
-* [Serverloze database Computing met Azure Cosmos DB en Azure Functions](serverless-computing-database.md)
+* [Overzicht van wijzigingsfeed](change-feed.md)
+* [Manieren om wijzigingsfeed te lezen](read-change-feed.md)
+* [De feedprocessorbibliotheek wijzigen gebruiken](change-feed-processor.md)
+* [Werken met de bibliotheek voor de feedprocessor wijzigen](change-feed-processor.md)
+* [Serverloze databasecomputing met Azure Cosmos DB- en Azure-functies](serverless-computing-database.md)

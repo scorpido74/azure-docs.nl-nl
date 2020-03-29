@@ -1,6 +1,6 @@
 ---
 title: Azure Stream Analytics preview-functies
-description: In dit artikel geeft een lijst van de Azure Stream Analytics-functies die momenteel in preview.
+description: In dit artikel worden de Azure Stream Analytics-functies weergegeven die momenteel in de preview staan.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -8,67 +8,67 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/9/2020
 ms.openlocfilehash: 3e99263f6bf472c256e1747b8567249bbd62a445
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969622"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics preview-functies
 
-In dit artikel bevat een overzicht van alle functies die momenteel in Preview-versie van Azure Stream Analytics. Preview-functies gebruiken in een productieomgeving wordt niet aanbevolen.
+In dit artikel worden alle functies samengevat die momenteel in de preview voor Azure Stream Analytics staan. Het gebruik van voorbeeldfuncties in een productieomgeving wordt niet aanbevolen.
 
-## <a name="public-previews"></a>Openbare preview-versies
+## <a name="public-previews"></a>Openbare previews
 
-De volgende functies zijn in openbare preview. U kunt profiteren van deze functies vandaag, maar niet gebruiken in uw productieomgeving.
+De volgende functies zijn in openbare preview. U vandaag nog profiteren van deze functies, maar gebruik ze niet in uw productieomgeving.
 
 ### <a name="online-scaling"></a>Online schalen
 
-Wanneer u online schalen hebt, hoeft u uw taak niet te stoppen als u de SU-toewijzing wilt wijzigen. U kunt de SU-capaciteit van een actieve taak verg Roten of verkleinen zonder dat u deze hoeft te stoppen. Dit bouwt voort op de klant belofte van langlopende bedrijfskritische pijp lijnen die vandaag Stream Analytics worden aangeboden. Zie [Azure stream Analytics streaming-eenheden configureren](stream-analytics-streaming-unit-consumption.md#configure-stream-analytics-streaming-units-sus)voor meer informatie.
+Met online schalen hoeft u uw taak niet te stoppen als u de SU-toewijzing moet wijzigen. U de SU-capaciteit van een lopende taak vergroten of verkleinen zonder deze te hoeven stoppen. Dit bouwt voort op de belofte van klanten van langlopende bedrijfskritische pijplijnen die Stream Analytics vandaag de dag biedt. Zie [Streaming-eenheden van Azure Stream Analytics configureren](stream-analytics-streaming-unit-consumption.md#configure-stream-analytics-streaming-units-sus)voor meer informatie.
 
-### <a name="c-custom-de-serializers"></a>C#aangepaste deserializers
-Ontwikkel aars kunnen gebruikmaken van de kracht van Azure Stream Analytics om gegevens in protobuf, XML of een aangepaste indeling te verwerken. U kunt [aangepaste deserializers](custom-deserializer-examples.md) implementeren in C#, die vervolgens kunnen worden gebruikt om de gebeurtenissen te deserialiseren die door Azure stream Analytics worden ontvangen.
+### <a name="c-custom-de-serializers"></a>C# custom de-serializers
+Ontwikkelaars kunnen de kracht van Azure Stream Analytics gebruiken om gegevens te verwerken in Protobuf, XML of een aangepaste indeling. U [aangepaste deserialisators](custom-deserializer-examples.md) implementeren in C#, die vervolgens kunnen worden gebruikt om gebeurtenissen die door Azure Stream Analytics zijn ontvangen, te de-serialiseren.
 
-### <a name="extensibility-with-c-custom-code"></a>Uitbreid baarheid C# met aangepaste code
+### <a name="extensibility-with-c-custom-code"></a>Uitbreidbaarheid met aangepaste C#-code
 
-Ontwikkel aars die Stream Analytics-modules in de Cloud of op IoT Edge maken, kunnen C# aangepaste functies schrijven of opnieuw gebruiken en ze rechtstreeks in de query aanroepen via door de [gebruiker gedefinieerde functies](stream-analytics-edge-csharp-udf-methods.md).
+Ontwikkelaars die Stream [Analytics-modules](stream-analytics-edge-csharp-udf-methods.md)maken in de cloud of op IoT Edge kunnen aangepaste C#-functies schrijven of hergebruiken en deze rechtstreeks in de query aanroepen via door de gebruiker gedefinieerde functies.
 
 
-### <a name="debug-query-steps-in-visual-studio"></a>Debug-query stappen in Visual Studio
+### <a name="debug-query-steps-in-visual-studio"></a>Stappen voor foutopsporing in Visual Studio
 
-U kunt eenvoudig een voor beeld van de tussenliggende Rijset in een gegevens diagram bekijken bij het uitvoeren van lokale tests in Azure Stream Analytics-hulpprogram ma's voor Visual Studio. 
+U eenvoudig een voorbeeld bekijken van de tussenliggende rijset in een gegevensdiagram wanneer u lokale tests doet in Azure Stream Analytics-hulpprogramma's voor Visual Studio. 
 
-### <a name="local-testing-with-live-data-in-visual-studio-code"></a>Lokale tests met Live-gegevens in Visual Studio code
+### <a name="local-testing-with-live-data-in-visual-studio-code"></a>Lokale tests met live gegevens in Visual Studio Code
 
-U kunt uw query's testen op Live-gegevens op uw lokale machine voordat u de taak naar Azure verzendt. Elke test herhaling neemt gemiddeld minder dan twee tot drie seconden in beslag, wat resulteert in een zeer efficiënt ontwikkelings proces.
+U uw query's testen op basis van live gegevens op uw lokale machine voordat u de taak indient bij Azure. Elke testiteratie duurt gemiddeld minder dan twee tot drie seconden, wat resulteert in een zeer efficiënt ontwikkelingsproces.
 
-### <a name="visual-studio-code-for-azure-stream-analytics"></a>Visual Studio code voor Azure Stream Analytics
+### <a name="visual-studio-code-for-azure-stream-analytics"></a>Visual Studio-code voor Azure Stream Analytics
 
-Azure Stream Analytics-taken kunnen worden gemaakt in Visual Studio code. Bekijk onze [zelf studie over de VS code](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code).
+Azure Stream Analytics-taken kunnen worden geschreven in Visual Studio Code. Zie onze [VS Code aan de slag tutorial](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code).
 
 
 ### <a name="integration-with-azure-machine-learning"></a>Integratie met Azure Machine Learning
 
-Stream Analytics-taken met Machine Learning (ML)-functies, kunt u schalen. Ga voor meer informatie over hoe u de functies van ML in uw Stream Analytics-taak kunt gebruiken [uw stream Analytics-taak schalen met Azure machine learning-functies](stream-analytics-scale-with-machine-learning-functions.md). Bekijk een praktijk scenario met het uitvoeren van [sentiment-analyse met behulp van Azure stream Analytics en Azure machine learning](stream-analytics-machine-learning-integration-tutorial.md).
+U Stream Analytics-taken schalen met de functies Machine Learning (ML). Ga naar [Uw Stream Analytics-taak schalen met Azure Machine Learning-functies](stream-analytics-scale-with-machine-learning-functions.md)voor meer informatie over hoe u ML-functies gebruiken in uw Stream Analytics-taak. Bekijk een scenario in de echte wereld met [Het uitvoeren van sentimentanalyse met Azure Stream Analytics en Azure Machine Learning.](stream-analytics-machine-learning-integration-tutorial.md)
 
 
-### <a name="live-data-testing-in-visual-studio"></a>Live gegevens testen in Visual Studio
+### <a name="live-data-testing-in-visual-studio"></a>Live data testen in Visual Studio
 
-Visual Studio-hulpprogramma's voor Azure Stream Analytics, verbeter de lokale testen functie waarmee u voor het testen van query's voor live-gebeurtenis-stromen van cloudbronnen, zoals Event Hub of IoT-hub. Meer informatie over hoe u [Live-gegevens lokaal kunt testen met behulp van Azure stream Analytics-hulpprogram ma's voor Visual Studio](stream-analytics-live-data-local-testing.md).
+Visual Studio-hulpprogramma's voor Azure Stream Analytics verbeteren de lokale testfunctie waarmee u query's testen op live gebeurtenisstreams van cloudbronnen zoals Event Hub of IoT-hub. Meer informatie over het [lokaal testen van live-gegevens met Azure Stream Analytics-hulpprogramma's voor Visual Studio](stream-analytics-live-data-local-testing.md).
 
 
-### <a name="net-user-defined-functions-on-iot-edge"></a>.NET-gebruiker gedefinieerde functies op IoT Edge
+### <a name="net-user-defined-functions-on-iot-edge"></a>.NET door de gebruiker gedefinieerde functies op IoT Edge
 
-Met .NET standard-door gebruiker gedefinieerde functies, kunt u de standaard .NET-code uitvoeren als onderdeel van uw streamingpijplijn automatiseert. U kunt eenvoudig C#-klassen maken of importeren van volledige-project en -bibliotheken. Volledige Maak- en debugfase van ervaring wordt ondersteund in Visual Studio. Ga voor meer informatie naar [.NET Standard-door de gebruiker gedefinieerde functies ontwikkelen voor Azure stream Analytics Edge-taken](stream-analytics-edge-csharp-udf-methods.md).
+Met .NET-standaard door de gebruiker gedefinieerde functies u .NET Standard-code uitvoeren als onderdeel van uw streamingpijplijn. U eenvoudige C#-klassen maken of volledige project- en bibliotheken importeren. Volledige ontwerp- en foutopsporingservaring wordt ondersteund in Visual Studio. Ga voor meer informatie naar [Ontwikkel .NET Standard door de gebruiker gedefinieerde functies voor Azure Stream Analytics Edge-taken](stream-analytics-edge-csharp-udf-methods.md).
 
-## <a name="other-previews"></a>Andere voor beelden
+## <a name="other-previews"></a>Andere voorbeelden
 
-De volgende functies zijn ook beschikbaar als preview-aanvraag.
+De volgende functies zijn ook beschikbaar in preview op aanvraag.
 
-### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Beoordeling in realtime hoge prestaties met aangepaste ML-modellen die worden beheerd door Azure Machine Learning
+### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Real-time high performance scoring met aangepaste ML-modellen beheerd door Azure Machine Learning
 
-Azure Stream Analytics biedt ondersteuning voor hoogwaardige, realtime scores door gebruik te maken van aangepaste vooraf getrainde Machine Learning modellen die worden beheerd door Azure Machine Learning en die worden gehost in azure Kubernetes service (AKS) of Azure Container Instances (ACI), met behulp van een werk stroom u hoeft geen code te schrijven. [Aanmelden](https://aka.ms/asapreview1) voor preview
+Azure Stream Analytics ondersteunt hoge prestaties, realtime scores door gebruik te maken van aangepaste vooraf getrainde Machine Learning-modellen die worden beheerd door Azure Machine Learning en worden gehost in Azure Kubernetes Service (AKS) of Azure Container Instances (ACI), met behulp van een werkstroom dat vereist niet dat u code te schrijven. [Aanmelden](https://aka.ms/asapreview1) voor voorbeeld
 
 ### <a name="support-for-azure-stack"></a>Ondersteuning voor Azure Stack
-Deze functie is ingeschakeld in de Azure IoT Edge runtime, maakt gebruik van aangepaste Azure Stack functies, zoals systeem eigen ondersteuning voor lokale invoer en uitvoer die op Azure Stack worden uitgevoerd (bijvoorbeeld Event Hubs, IoT Hub, Blob Storage). Met deze nieuwe integratie kunt u hybride architecturen bouwen waarmee u uw gegevens dichtbij kunt analyseren waar deze worden gegenereerd, de latentie wordt verkort en de inzichten worden gemaximaliseerd.
-Met deze functie kunt u hybride architecturen bouwen waarmee u uw gegevens dichtbij kunt analyseren waar deze worden gegenereerd, de latentie wordt verkort en de inzichten worden gemaximaliseerd. U moet [zich registreren](https://aka.ms/asapreview1) voor deze preview.
+Deze functie is ingeschakeld op de Azure IoT Edge-runtime en maakt gebruik van aangepaste Azure Stack-functies, zoals native ondersteuning voor lokale invoer en uitvoer die worden uitgevoerd op Azure Stack (bijvoorbeeld Gebeurtenishubs, IoT Hub, Blob-opslag). Met deze nieuwe integratie u hybride architecturen bouwen die uw gegevens dicht bij de plaats waar deze worden gegenereerd, de latentie verlagen en inzichten maximaliseren.
+Met deze functie u hybride architecturen bouwen die uw gegevens kunnen analyseren in de buurt van waar ze worden gegenereerd, waardoor de latentie wordt verlaagd en inzichten kunnen worden gemaximaliseerd. U moet [zich aanmelden](https://aka.ms/asapreview1) voor deze preview.

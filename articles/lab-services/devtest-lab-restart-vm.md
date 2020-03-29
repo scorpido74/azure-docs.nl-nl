@@ -1,6 +1,6 @@
 ---
-title: Een VM opnieuw opstarten in een lab in Azure DevTest Labs | Microsoft Docs
-description: In dit artikel worden de stappen beschreven voor het snel en eenvoudig opnieuw opstarten van virtuele machines (VM) in Azure DevTest Labs.
+title: Een VM opnieuw starten in een lab in Azure DevTest Labs | Microsoft Documenten
+description: In dit artikel vindt u stappen om virtuele machines (VM) snel en eenvoudig opnieuw op te starten in Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,45 +15,45 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 52d3b92909483a99eb82c86b727261bbeb5f8d46
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759991"
 ---
-# <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Een virtuele machine opnieuw starten in een lab in Azure DevTest Labs
-U kunt snel en eenvoudig een virtuele machine in DevTest Labs opnieuw opstarten door de stappen in dit artikel te volgen. Houd rekening met het volgende voordat u een virtuele machine opnieuw opstart:
+# <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Een VM opnieuw starten in een lab in Azure DevTest Labs
+U snel en eenvoudig een virtuele machine opnieuw opstarten in DevTest Labs door de stappen in dit artikel te volgen. Houd rekening met het volgende voordat u een vm opnieuw start:
 
-- De virtuele machine moet worden uitgevoerd om de functie voor opnieuw opstarten in te scha kelen.
-- Als een gebruiker is verbonden met een actieve virtuele machine wanneer de computer opnieuw wordt opgestart, moeten ze opnieuw verbinding maken met de virtuele machine nadat deze opnieuw is opgestart.
-- Als er een artefact wordt toegepast wanneer u de virtuele machine opnieuw opstart, ontvangt u een waarschuwing dat het artefact mogelijk niet wordt toegepast.
+- De VM moet worden uitgevoerd om de functie opnieuw opnieuw op te starten.
+- Als een gebruiker is verbonden met een draaiende VM wanneer deze een herstart uitvoert, moet deze opnieuw verbinding maken met de virtuele machine nadat deze opnieuw is opgestart.
+- Als een artefact wordt toegepast wanneer u de VM opnieuw start, ontvangt u een waarschuwing dat het artefact mogelijk niet wordt toegepast.
 
-    ![Waarschuwing bij het opnieuw opstarten bij het Toep assen van artefacten](./media/devtest-lab-restart-vm/devtest-lab-restart-vm-apply-artifacts.png)
+    ![Waarschuwing bij het opnieuw opstarten tijdens het toepassen van artefacten](./media/devtest-lab-restart-vm/devtest-lab-restart-vm-apply-artifacts.png)
 
 
    > [!NOTE]
-   > Als de virtuele machine is vastgelopen tijdens het Toep assen van een artefact, kunt u de functie VM opnieuw opstarten gebruiken om het probleem op te lossen.
+   > Als de VM is vastgelopen tijdens het toepassen van een artefact, u de VM-functie opnieuw starten gebruiken als een mogelijke manier om het probleem op te lossen.
    >
    >
 
-## <a name="steps-to-restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Stappen voor het opnieuw opstarten van een virtuele machine in een lab in Azure DevTest Labs
-1. Meld u aan bij de [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
-1. Selecteer in de lijst met Labs het lab dat de virtuele machine bevat die u opnieuw wilt opstarten.
-1. Selecteer in het linkerdeel venster **mijn virtual machines**.
-1. Selecteer een actieve virtuele machine in de lijst met Vm's.
-1. Selecteer boven in het deel venster VM-beheer de optie **opnieuw opstarten**.
+## <a name="steps-to-restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Stappen om een VM opnieuw op te starten in een lab in Azure DevTest Labs
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Selecteer **Alle services**en selecteer Vervolgens **DevTest Labs** in de lijst.
+1. Selecteer in de lijst met labs het lab met de VM die u opnieuw wilt starten.
+1. Selecteer in het linkerdeelvenster de optie **Mijn virtuele machines**.
+1. Selecteer in de lijst met VM's een uitvoerende VM.
+1. Selecteer Boven aan het VM-beheervenster de optie **Opnieuw starten**.
 
-    ![Knop VM opnieuw opstarten](./media/devtest-lab-restart-vm/devtest-lab-restart-vm.png)
+    ![Knop VM opnieuw starten](./media/devtest-lab-restart-vm/devtest-lab-restart-vm.png)
 
-1. Bewaak de status van het opnieuw starten door het pictogram **meldingen** rechtsboven in het venster te selecteren.
+1. Controleer de status van de herstart door het pictogram **Meldingen** rechtsboven in het venster te selecteren.
 
-    ![De status van het opnieuw opstarten van de VM weer geven](./media/devtest-lab-restart-vm/devtest-lab-restart-notification.png)
+    ![De status van de vm opnieuw opstarten weergeven](./media/devtest-lab-restart-vm/devtest-lab-restart-notification.png)
 
-U kunt een actieve virtuele machine ook opnieuw starten door het beletsel teken (...) te selecteren in de lijst met **mijn virtual machines**.
+U een draaiende VM ook opnieuw starten door de ellips (...) te selecteren in de lijst van **Mijn virtuele machines**.
 
-![De VM opnieuw starten via een weglatings teken](./media/devtest-lab-restart-vm/devtest-lab-restart-elipses.png)
+![VM opnieuw starten via ellipsen](./media/devtest-lab-restart-vm/devtest-lab-restart-elipses.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zodra deze opnieuw is gestart, kunt u opnieuw verbinding maken met de virtuele machine door **verbinding maken** te selecteren in het deel venster beheer.
-* De [Galerie met DevTest Labs Azure Resource Manager Quick](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) Start verkennen
+* Zodra deze opnieuw is gestart, u opnieuw verbinding maken met de virtuele machine door **Verbinding maken** in het beheervenster te selecteren.
+* De [sjabloongalerie Voor DevTest Labs Azure Resource Manager snel beginnen](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)

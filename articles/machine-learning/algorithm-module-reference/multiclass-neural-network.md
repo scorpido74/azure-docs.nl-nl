@@ -1,7 +1,7 @@
 ---
-title: 'Multi Class Neural Network: module verwijzing'
+title: 'Multiclass Neural Network: Module Referentie'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de netwerk module Multi Class Neural in Azure Machine Learning voor het maken van een Neural-netwerk model dat kan worden gebruikt om een doel met meerdere waarden te voors pellen.
+description: Meer informatie over het gebruik van de Multiclass Neural Network-module in Azure Machine Learning om een neuraal netwerkmodel te maken dat kan worden gebruikt om een doel met meerdere waarden te voorspellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,84 +10,84 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 653b12ddd54c5ec9e4e7dd23a323f34460daa962
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920413"
 ---
-# <a name="multiclass-neural-network-module"></a>Multi Class Neural-netwerk module
+# <a name="multiclass-neural-network-module"></a>Multiclass Neural Network-module
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module beschreven in Azure Machine Learning designer (preview).
 
-Gebruik deze module voor het maken van een Neural-netwerk model dat kan worden gebruikt om een doel met meerdere waarden te voors pellen. 
+Gebruik deze module om een neuraal netwerkmodel te maken dat kan worden gebruikt om een doel met meerdere waarden te voorspellen. 
 
-Neural-netwerken van dit type kunnen bijvoorbeeld worden gebruikt in complexe computer vision-taken, zoals cijfer herkenning, document classificatie en patroon herkenning.
+Dergelijke neurale netwerken kunnen bijvoorbeeld worden gebruikt in complexe computervisiontaken, zoals cijfer- of letterherkenning, documentclassificatie en patroonherkenning.
 
-Classificatie met behulp van Neural-netwerken is een bewaakte leer methode en vereist daarom een *gecodeerde gegevensset* die een kolom Label bevat.
+Classificatie met neurale netwerken is een begeleide leermethode en vereist daarom een *gelabelde gegevensset* met een labelkolom.
 
-U kunt het model trainen door het model en de gecodeerde gegevensset op te geven als invoer voor het [trainen van modellen](./train-model.md). Het getrainde model kan vervolgens worden gebruikt om waarden te voors pellen voor de nieuwe invoer voorbeelden.  
+U het model trainen door het model en de gelabelde gegevensset op te geven als input voor [Train Model.](./train-model.md) Het getrainde model kan vervolgens worden gebruikt om waarden voor de nieuwe invoervoorbeelden te voorspellen.  
 
-## <a name="about-neural-networks"></a>Over Neural-netwerken
+## <a name="about-neural-networks"></a>Over neurale netwerken
 
-Een Neural-netwerk bestaat uit een reeks onderling verbonden lagen. De invoer is de eerste laag en is verbonden met een uitvoer laag door een acyclische grafiek die bestaat uit gewogen randen en knoop punten.
+Een neuraal netwerk is een set van onderling verbonden lagen. De ingangen zijn de eerste laag en zijn verbonden met een uitvoerlaag door een acyclische grafiek bestaande uit gewogen randen en knooppunten.
 
-Tussen de invoer-en uitvoer lagen kunt u meerdere verborgen lagen invoegen. De meeste voorspellende taken kunnen eenvoudig met slechts één of enkele verborgen lagen worden uitgevoerd. Het recente onderzoek heeft echter geleerd dat diepe Neural-netwerken (DNN) met veel lagen effectief kunnen zijn in complexe taken zoals afbeeldingen of spraak herkenning. De opeenvolgende lagen worden gebruikt voor het model leren van de toenemende niveaus van semantische diepte.
+Tussen de invoer- en uitvoerlagen u meerdere verborgen lagen invoegen. De meeste voorspellende taken kunnen eenvoudig worden uitgevoerd met slechts één of enkele verborgen lagen. Echter, recent onderzoek heeft aangetoond dat diepe neurale netwerken (DNN) met veel lagen effectief kunnen zijn in complexe taken zoals beeld- of spraakherkenning. De opeenvolgende lagen worden gebruikt om toenemende niveaus van semantische diepte te modelleren.
 
-De relatie tussen invoer en uitvoer wordt geleerd van het trainen van het Neural-netwerk op de invoer gegevens. De richting van de grafiek loopt van de invoer via de verborgen laag en naar de uitvoer laag. Alle knoop punten in een laag worden verbonden door de gewogen randen op knoop punten in de volgende laag.
+De relatie tussen ingangen en uitgangen wordt geleerd van het trainen van het neurale netwerk op de invoergegevens. De richting van de grafiek gaat van de ingangen door de verborgen laag en aan de outputlaag te werk. Alle knooppunten in een laag zijn verbonden door de gewogen randen met knooppunten in de volgende laag.
 
-Voor het berekenen van de uitvoer van het netwerk voor een bepaalde invoer wordt een waarde berekend op elk knoop punt in de verborgen lagen en in de uitvoer laag. De waarde wordt ingesteld door de gewogen som van de waarden van de knoop punten uit de vorige laag te berekenen. Een activerings functie wordt vervolgens toegepast op die gewogen som.
+Om de uitvoer van het netwerk voor een bepaalde invoer te berekenen, wordt een waarde berekend op elk knooppunt in de verborgen lagen en in de uitvoerlaag. De waarde wordt ingesteld door de gewogen som van de waarden van de knooppunten uit de vorige laag te berekenen. Vervolgens wordt een activeringsfunctie toegepast op die gewogen som.
 
-## <a name="configure-multiclass-neural-network"></a>Multi Class Neural-netwerk configureren
+## <a name="configure-multiclass-neural-network"></a>Multiclass Neural Network configureren
 
-1. Voeg de **netwerk module Multi Class Neural** toe aan uw pijp lijn in de ontwerp functie. U kunt deze module vinden onder **machine learning**, **initialiseren**, in de categorie **classificatie** .
+1. Voeg de **MultiClass Neural Network-module** toe aan uw pijplijn in de ontwerper. U deze module vinden onder **Machine Learning**, **Initialiseren**, in de categorie **Classificatie.**
 
-2. De **trainer modus maken**: gebruik deze optie om op te geven hoe u wilt dat het model wordt getraind:
+2. **Trainer-modus maken:** gebruik deze optie om op te geven hoe u het model wilt trainen:
 
-    - **Eén para meter**: Kies deze optie als u al weet hoe u het model wilt configureren.
+    - **Eén parameter:** kies deze optie als u al weet hoe u het model wilt configureren.
 
-    - **Parameter bereik**: Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren.  
+    - **Parameterbereik:** Selecteer deze optie als u niet zeker bent van de beste parameters en een parametersweep wilt uitvoeren. Selecteer een reeks waarden om over te herhalen en de [Tune Model Hyperparameters](tune-model-hyperparameters.md) herhalen over alle mogelijke combinaties van de instellingen die u hebt opgegeven om de hyperparameters te bepalen die de optimale resultaten opleveren.  
 
-3. **Specificatie van verborgen laag**: Selecteer het type netwerk architectuur dat u wilt maken.
+3. Specificatie van **verborgen lagen:** selecteer het type netwerkarchitectuur dat u wilt maken.
 
-    - **Volledig gekoppelde Case**: Selecteer deze optie om een model te maken met behulp van de standaard Neural-netwerk architectuur. Voor multi class Neural-netwerk modellen zijn de standaard instellingen als volgt:
+    - **Volledig verbonden aanvraag**: Selecteer deze optie om een model te maken met behulp van de standaard neurale netwerkarchitectuur. Voor multiclass neurale netwerkmodellen zijn de standaardinstellingen als volgt:
 
         - Eén verborgen laag
-        - De uitvoer laag is volledig verbonden met de verborgen laag.
-        - De verborgen laag is volledig verbonden met de invoer laag.
-        - Het aantal knoop punten in de invoer laag wordt bepaald door het aantal functies in de trainings gegevens.
-        - Het aantal knoop punten in de verborgen laag kan worden ingesteld door de gebruiker. De standaard waarde is 100.
-        - Het aantal knoop punten in de uitvoer laag is afhankelijk van het aantal klassen.
+        - De uitvoerlaag is volledig verbonden met de verborgen laag.
+        - De verborgen laag is volledig verbonden met de invoerlaag.
+        - Het aantal knooppunten in de invoerlaag wordt bepaald door het aantal functies in de trainingsgegevens.
+        - Het aantal knooppunten in de verborgen laag kan door de gebruiker worden ingesteld. De standaardwaarde is 100.
+        - Het aantal knooppunten in de uitvoerlaag is afhankelijk van het aantal klassen.
   
    
 
-5. **Aantal verborgen knoop punten**: met deze optie kunt u het aantal verborgen knoop punten in de standaard architectuur aanpassen. Typ het aantal verborgen knoop punten. De standaard waarde is één verborgen laag met 100 knoop punten.
+5. **Aantal verborgen knooppunten**: met deze optie u het aantal verborgen knooppunten in de standaardarchitectuur aanpassen. Typ het aantal verborgen knooppunten. De standaardinstelling is een verborgen laag met 100 knooppunten.
 
-6. **Het leer tempo**: Definieer de grootte van de stap die bij elke herhaling moet worden uitgevoerd, vóór correctie. Een hogere waarde voor het leer tempo kan ertoe leiden dat het model sneller wordt geconvergeerd, maar dat het lokale minima kan overschrijden.
+6. **Het leerpercentage**: Definieer de grootte van de stap die bij elke iteratie wordt genomen, vóór correctie. Een grotere waarde voor leersnelheid kan ertoe leiden dat het model sneller convergeert, maar het kan lokale minima overlopen.
 
-7. **Aantal leer herhalingen**: Geef het maximum aantal keren op dat de trainings cases moeten worden verwerkt door de algoritme.
+7. **Aantal leeriteraties**: Geef het maximum aantal keren op dat het algoritme de trainingscases moet verwerken.
 
-8. **De eerste leer gewicht diameter**: Geef de knooppunt gewichten aan het begin van het leer proces op.
+8. **De initiële leergewichten diameter**: Geef de knooppuntgewichten aan het begin van het leerproces.
 
-9. **De impuls**: Geef een gewicht op dat moet worden toegepast tijdens het leren naar knoop punten uit eerdere iteraties.
+9. **Het momentum**: Geef een gewicht op dat moet worden toegepast tijdens het leren op knooppunten van eerdere iteraties.
   
-11. **Voor beelden in wille keurige volg orde**: Selecteer deze optie om cases in wille keurige volg orde te plaatsen
+11. **Shuffle voorbeelden:** Selecteer deze optie om cases tussen iteraties te schuiven.
 
-    Als u deze optie uitschakelt, worden cases in precies dezelfde volg orde verwerkt telkens wanneer u de pijp lijn uitvoert.
+    Als u deze optie deselecteert, worden aanvragen telkens in exact dezelfde volgorde verwerkt wanneer u de pijplijn uitvoert.
 
-12. **Wille keurig getal Seed**: Typ een waarde die als seed moet worden gebruikt als u de Herhaal baarheid wilt waarborgen voor uitvoeringen van dezelfde pijp lijn.
+12. **Willekeurig getalzaad:** Typ een waarde die u als zaad wilt gebruiken, als u herhaalbaarheid wilt garanderen in verschillende runs van dezelfde pijplijn.
 
-14. Verbind een trainings gegevensset en een van de [trainings modules](module-reference.md): 
+14. Sluit een trainingsdataset en een van de [trainingsmodules](module-reference.md)aan: 
 
-    - Als u de **modus trainer maken** instelt op **één para meter**, gebruikt u [Train model](train-model.md).  
+    - Als u **De trainermodus maken** instelt op Eén **parameter,** gebruikt u [Treinmodel](train-model.md).  
   
 
 ## <a name="results"></a>Resultaten
 
-Nadat de training is voltooid:
+Na de training is voltooid:
 
-- Als u een moment opname van het getrainde model wilt opslaan, selecteert u het tabblad **uitvoer** in het rechterdeel venster van de module **Train model** . Selecteer het pictogram **gegevensset registreren** om het model als een herbruikbare module op te slaan.
+- Als u een momentopname van het getrainde model wilt opslaan, selecteert u het tabblad **Uitvoer** in het rechterdeelvenster van de **module Treinmodel.** Selecteer het pictogram **Gegevensset registreren** om het model op te slaan als een herbruikbare module.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 
