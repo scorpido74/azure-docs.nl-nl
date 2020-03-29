@@ -1,6 +1,6 @@
 ---
-title: Inschakelen en logboeken met diagnostische gegevens weergeven voor Azure Data Lake Analytics
-description: Meer informatie over het instellen en diagnostische logboeken openen voor Azure Data Lake Analytics
+title: Diagnostische logboeken voor Azure Data Lake Analytics inschakelen en weergeven
+description: Informatie over het instellen en openen van diagnostische logboeken voor Azure Data Lake Analytics
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell
@@ -9,56 +9,56 @@ ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60616490"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Diagnostische logboeken openen voor Azure Data Lake Analytics
 
-Diagnostische logboekregistratie kunt u voor het verzamelen van audittrails voor gegevenstoegang. Deze logboeken vindt u informatie, zoals:
+Diagnostische logging u gegevens toegang audit paden te verzamelen. Deze logboeken bieden informatie zoals:
 
-* Een lijst met gebruikers die toegang krijgen de gegevens tot.
-* Hoe vaak de gegevens worden gebruikt.
-* Hoeveel gegevens worden opgeslagen in het account.
+* Een lijst met gebruikers die toegang hebben tot de gegevens.
+* Hoe vaak de gegevens worden geopend.
+* Hoeveel gegevens in het account zijn opgeslagen.
 
 ## <a name="enable-logging"></a>Logboekregistratie inschakelen
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-2. Open uw Data Lake Analytics-account en selecteer **diagnostische logboeken** uit de __Monitor__ sectie. Selecteer vervolgens __diagnostische gegevens inschakelen__.
+2. Open uw Data Lake Analytics-account en selecteer **Diagnostische logboeken** in de sectie __Monitor.__ Selecteer vervolgens __Diagnostische gegevens inschakelen__.
 
-    ![Diagnostische gegevens voor het verzamelen van controle en logboeken aanvragen inschakelen](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
+    ![Diagnostische gegevens inschakelen om controle- en aanvraaglogboeken te verzamelen](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
-3. Van __diagnostische instellingen__, voer een __naam__ voor deze configuratie voor logboekregistratie en opties voor logboekregistratie en selecteer vervolgens.
+3. Voer __in diagnose-instellingen__een __naam__ in voor deze logboekconfiguratie en selecteer vervolgens logboekopties.
 
-    ![Diagnostische gegevens voor het verzamelen van controle en aanvragen van logboek inschakelen](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "logboeken met diagnostische gegevens inschakelen")
+    ![Diagnostische gegevens inschakelen om controle- en aanvraaglogboeken te verzamelen](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "Diagnostische logboeken inschakelen")
 
-   * U kunt opslaan en verwerken de gegevens op drie verschillende manieren.
+   * U ervoor kiezen om de gegevens op drie verschillende manieren op te slaan/verwerken.
 
-     * Selecteer __archiveren naar een opslagaccount__ voor het opslaan van Logboeken in Azure storage-account. Gebruik deze optie als u wilt archiveren van de gegevens. Als u deze optie selecteert, moet u een Azure storage-account om op te slaan van de logboeken opgeven.
+     * Selecteer __Archiveren naar een opslagaccount__ om logboeken op te slaan in een Azure-opslagaccount. Gebruik deze optie als u de gegevens wilt archiveren. Als u deze optie selecteert, moet u een Azure-opslagaccount opgeven om de logboeken op te slaan.
 
-     * Selecteer **Stream naar een Event Hub** logboek om gegevens te streamen naar een Azure Event Hub. Gebruik deze optie als u een downstream-verwerkingen pijplijn hebt die wordt binnenkomende Logboeken in realtime analyseren. Als u deze optie selecteert, moet u de details opgeven voor de Azure Event Hub die u wilt gebruiken.
+     * Selecteer **Streamen naar een gebeurtenishub** om logboekgegevens naar een Azure Event Hub te streamen. Gebruik deze optie als u een downstream verwerkingspijplijn hebt die binnenkomende logboeken in realtime analyseert. Als u deze optie selecteert, moet u de gegevens opgeven voor de Azure Event Hub die u wilt gebruiken.
 
-     * Selecteer __verzenden naar Log Analytics__ de gegevens te verzenden naar de Azure Monitor-service. Gebruik deze optie als u met behulp van Azure Monitor-logboeken wilt te verzamelen en analyseren van Logboeken.
-   * Geef op of u wilt ophalen van de logboeken voor controle of aanvraag zich aanmeldt of beide.  Een aanvraag logboek vastgelegd elke API-aanvraag. Een controlelogboek registreert alle bewerkingen die worden geactiveerd door deze API-aanvraag.
+     * Selecteer __Verzenden naar logboekanalyse__ om de gegevens naar de Azure Monitor-service te verzenden. Gebruik deze optie als u Azure Monitor-logboeken wilt gebruiken om logboeken te verzamelen en te analyseren.
+   * Geef op of u controlelogboeken of aanvraaglogboeken of beide wilt opvragen.  Een aanvraaglogboek legt elke API-aanvraag vast. In een controlelogboek worden alle bewerkingen bijdie door die API-aanvraag worden geactiveerd.
 
-   * Voor __archiveren naar een opslagaccount__, geef het aantal dagen om de gegevens te behouden.
+   * Geef __voor Archiveren aan een opslagaccount__het aantal dagen op om de gegevens te bewaren.
 
    * Klik op __Opslaan__.
 
         > [!NOTE]
-        > U moet een selecteren __archiveren naar een opslagaccount__, __Stream naar een Event Hub__ of __verzenden naar Log Analytics__ voordat u op de __opslaan__ de knop.
+        > U moet __Archiveren naar een opslagaccount__selecteren, __streamen naar een gebeurtenishub__ of __Analytics verzenden voordat__ u op __Opslaan__ klikt.
 
-### <a name="use-the-azure-storage-account-that-contains-log-data"></a>Gebruik de Azure Storage-account met logboekgegevens
+### <a name="use-the-azure-storage-account-that-contains-log-data"></a>Het Azure Storage-account gebruiken dat logboekgegevens bevat
 
-1. Als u wilt weergeven van de blobcontainers die opslaan van gegevens voor logboekregistratie, opent u het Azure Storage-account voor logboekregistratie gebruikt voor Data Lake Analytics en klik vervolgens op __Blobs__.
+1. Als u de blobcontainers met logboekregistratiegegevens wilt weergeven, opent u het Azure Storage-account dat wordt gebruikt voor Gegevensmeeranalyse voor logboekregistratie en klikt u op __Blobs__.
 
-   * De container **insights-logs-audit** bevat de auditlogboeken.
-   * De container **insights-logs-aanvragen** bevat de logboeken van de aanvraag.
+   * De container **insights-logs-audit** bevat de auditlogs.
+   * De container **insights-logs-requests** bevatten de aanvraaglogboeken.
 
-2. De logboeken worden opgeslagen in de containers, onder de structuur van het volgende:
+2. Binnen de containers worden de logboeken opgeslagen onder de volgende bestandsstructuur:
 
         resourceId=/
           SUBSCRIPTIONS/
@@ -77,23 +77,23 @@ Diagnostische logboekregistratie kunt u voor het verzamelen van audittrails voor
                                     PT1H.json
 
    > [!NOTE]
-   > De `##` vermeldingen in het pad bevatten het jaar, maand, dag en uur waarin het logboek is gemaakt. Data Lake Analytics maakt u één bestand per uur, dus `m=` bevat altijd een waarde van `00`.
+   > De `##` vermeldingen in het pad bevatten het jaar, de maand, de dag en het uur waarin het logboek is gemaakt. Data Lake Analytics maakt elk `m=` uur één bestand, dus bevat altijd een waarde van `00`.
 
-    Het volledige pad naar een auditlogboek kan bijvoorbeeld worden:
+    Het volledige pad naar een controlelogboek kan bijvoorbeeld zijn:
 
         https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json
 
-    Het volledige pad naar een logboek van de aanvraag kan op dezelfde manier worden:
+    Op dezelfde manier kan het volledige pad naar een aanvraaglogboek zijn:
 
         https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json
 
-## <a name="log-structure"></a>Logboek-structuur
+## <a name="log-structure"></a>Logboekstructuur
 
-Logboeken van de audit en -aanvraag zijn in een gestructureerde JSON-indeling.
+De audit- en aanvraaglogboeken zijn in een gestructureerde JSON-indeling.
 
-### <a name="request-logs"></a>Logboeken van de aanvraag
+### <a name="request-logs"></a>Logboeken aanvragen
 
-Hier volgt een voorbeeldvermelding voor het in het logboek van de aanvraag voor JSON-indeling. Elke blob heeft een basis-object met de naam **records** die een matrix met objecten logboek bevat.
+Hier is een voorbeeld vermelding in de JSON-geformatteerd aanvraaglogboek. Elke blob heeft één hoofdobject met records genaamd **records** die een array van logboekobjecten bevat.
 
     {
     "records":
@@ -123,34 +123,34 @@ Hier volgt een voorbeeldvermelding voor het in het logboek van de aanvraag voor 
       ]
     }
 
-#### <a name="request-log-schema"></a>Schema voor het logboek van aanvraag
+#### <a name="request-log-schema"></a>Logboekschema aanvragen
 
 | Name | Type | Beschrijving |
 | --- | --- | --- |
-| time |String |De tijdstempel (in UTC) van het logboek |
-| resourceId |String |De id van de resource die bewerking duurde plaats op |
-| category |String |De logboekcategorie. Bijvoorbeeld, **aanvragen**. |
-| operationName |String |Naam van de bewerking die wordt vastgelegd. Bijvoorbeeld: GetAggregatedJobHistory. |
-| resultType |String |De status van de bewerking, bijvoorbeeld 200. |
-| callerIpAddress |String |Het IP-adres van de client die de aanvraag |
-| correlationId |String |De id van het logboek. Deze waarde kan worden gebruikt voor het groeperen van een set van gerelateerde vermeldingen. |
-| identity |Object |De identiteit die het logboek is gegenereerd |
-| properties |JSON |Zie de volgende sectie (aanvraag log eigenschappen schema) voor meer informatie |
+| tijd |Tekenreeks |De tijdstempel (in UTC) van het logboek |
+| resourceId |Tekenreeks |De identificatie van de resource waarop de bewerking heeft plaatsgevonden op |
+| category |Tekenreeks |De logcategorie. Bijvoorbeeld **aanvragen**. |
+| operationName |Tekenreeks |Naam van de bewerking die is geregistreerd. Bijvoorbeeld GetAggregatedJobHistory. |
+| resultType |Tekenreeks |De status van de bewerking, bijvoorbeeld 200. |
+| callerIpAddress |Tekenreeks |Het IP-adres van de klant die het verzoek indient |
+| correlationId |Tekenreeks |De id van het logboek. Deze waarde kan worden gebruikt om een reeks gerelateerde logboekvermeldingen te groeperen. |
+| identity |Object |De identiteit die het logboek heeft gegenereerd |
+| properties |JSON |Zie de volgende sectie (Programma voor logboekeigenschappen aanvragen) voor meer informatie |
 
-#### <a name="request-log-properties-schema"></a>Schema voor eigenschappen van aanvraag-logboek
+#### <a name="request-log-properties-schema"></a>Schema voor logboekeigenschappen aanvragen
 
 | Name | Type | Beschrijving |
 | --- | --- | --- |
-| HttpMethod |String |De HTTP-methode gebruikt voor de bewerking. Bijvoorbeeld, krijgen. |
-| Pad |String |Het pad naar de bewerking is uitgevoerd op |
-| RequestContentLength |int |De lengte van de inhoud van de HTTP-aanvraag |
-| ClientRequestId |String |De id die is uniek voor deze aanvraag |
-| StartTime |String |Het tijdstip waarop de server de aanvraag ontvangen |
-| EndTime |String |Het tijdstip waarop de server een antwoord verzonden |
+| HttpMethod |Tekenreeks |De HTTP-methode die voor de bewerking wordt gebruikt. Bijvoorbeeld, GET. |
+| Pad |Tekenreeks |Het pad waarop de bewerking is uitgevoerd |
+| AanvraagContentLengte |int |De inhoudsduur van de HTTP-aanvraag |
+| ClientRequestId |Tekenreeks |De id die deze aanvraag op unieke wijze identificeert |
+| StartTime |Tekenreeks |Het tijdstip waarop de server het verzoek heeft ontvangen |
+| EndTime |Tekenreeks |Het tijdstip waarop de server een antwoord heeft verzonden |
 
 ### <a name="audit-logs"></a>Auditlogboeken
 
-Hier volgt een voorbeeldvermelding voor het in het auditlogboek voor JSON-indeling. Elke blob heeft een basis-object met de naam **records** die een matrix met objecten logboek bevat.
+Hier is een voorbeeld vermelding in de JSON-geformatteerd audit log. Elke blob heeft één hoofdobject met records genaamd **records** die een array van logboekobjecten bevat.
 
     {
     "records":
@@ -179,38 +179,38 @@ Hier volgt een voorbeeldvermelding voor het in het auditlogboek voor JSON-indeli
 
 | Name | Type | Beschrijving |
 | --- | --- | --- |
-| time |String |De tijdstempel (in UTC) van het logboek |
-| resourceId |String |De id van de resource die bewerking duurde plaats op |
-| category |String |De logboekcategorie. Bijvoorbeeld, **Audit**. |
-| operationName |String |Naam van de bewerking die wordt vastgelegd. Bijvoorbeeld: JobSubmitted. |
-| resultType |String |Een substatus voor de status van de taak (operationName). |
-| resultSignature |String |Meer informatie over de status van de taak (operationName). |
-| identity |String |De gebruiker die de bewerking aangevraagd. Bijvoorbeeld susan@contoso.com. |
-| properties |JSON |Zie de volgende sectie (Audit log eigenschappen schema) voor meer informatie |
+| tijd |Tekenreeks |De tijdstempel (in UTC) van het logboek |
+| resourceId |Tekenreeks |De identificatie van de resource waarop de bewerking heeft plaatsgevonden op |
+| category |Tekenreeks |De logcategorie. Bijvoorbeeld **Audit**. |
+| operationName |Tekenreeks |Naam van de bewerking die is geregistreerd. Bijvoorbeeld JobSubmitted. |
+| resultType |Tekenreeks |Een substatus voor de taakstatus (operationName). |
+| resultSignature |Tekenreeks |Meer informatie over de taakstatus (operationName). |
+| identity |Tekenreeks |De gebruiker die de bewerking heeft aangevraagd. Bijvoorbeeld susan@contoso.com. |
+| properties |JSON |Zie de volgende sectie (Programma eigenschappen van controlelogboeken) voor meer informatie |
 
 > [!NOTE]
-> **resultType** en **resultSignature** bevatten informatie over het resultaat van een bewerking, en alleen een waarde bevatten als een bewerking is voltooid. Bijvoorbeeld, ze alleen bevatten een waarde wanneer **operationName** bevat een waarde van **JobStarted** of **JobEnded**.
+> **resultType** en **resultSignature** geven informatie over het resultaat van een bewerking en bevatten alleen een waarde als een bewerking is voltooid. Ze bevatten bijvoorbeeld alleen een waarde wanneer **operationName** een waarde van **JobStarted** of **JobEnded**bevat.
 >
 >
 
-#### <a name="audit-log-properties-schema"></a>Audit log eigenschappen schema
+#### <a name="audit-log-properties-schema"></a>Programma voor controlelogboekeigenschappen
 
-| Name | Type | Description |
+| Name | Type | Beschrijving |
 | --- | --- | --- |
-| JobId |String |De ID die is toegewezen aan de job |
-| JobName |String |De naam die is opgegeven voor de taak |
-| JobRunTime |String |De runtime die wordt gebruikt voor het verwerken van de taak |
-| SubmitTime |String |De tijd (in UTC) dat de taak is verzonden |
-| StartTime |String |De tijd die de taak is gestart na het opsturen hiervan (in UTC) |
-| EndTime |String |De tijd die de taak is beëindigd |
-| Parallelle uitvoering |String |Het aantal aangevraagd voor deze taak tijdens het indienen van Data Lake Analytics-eenheden |
+| JobId |Tekenreeks |De id die aan de taak is toegewezen |
+| JobName |Tekenreeks |De naam die voor de taak is opgegeven |
+| JobRunTime |Tekenreeks |De runtime die wordt gebruikt om de taak te verwerken |
+| VerzendenTijd |Tekenreeks |De tijd (in UTC) dat de taak is ingediend |
+| StartTime |Tekenreeks |De tijd dat de taak is gestart na indiening (in UTC) |
+| EndTime |Tekenreeks |Het moment dat de taak is beëindigd |
+| Parallellisme |Tekenreeks |Het aantal Data Lake Analytics-eenheden dat voor deze taak wordt aangevraagd tijdens het indienen |
 
 > [!NOTE]
-> **SubmitTime**, **StartTime**, **EndTime**, en **parallelle uitvoering** bevatten informatie over een bewerking. Deze vermeldingen alleen een waarde bevatten als die bewerking is gestart of voltooid. Bijvoorbeeld, **SubmitTime** bevat alleen een waarde na **operationName** heeft de waarde **JobSubmitted**.
+> **SubmitTime,** **StartTime,** **EndTime**en **Parallelisme** geven informatie over een bewerking. Deze vermeldingen bevatten alleen een waarde als die bewerking is gestart of voltooid. **SubmitTime** bevat bijvoorbeeld alleen een waarde nadat **operationName** de waarde **JobSubmitted**heeft .
 
-## <a name="process-the-log-data"></a>De logboekgegevens worden verwerkt
+## <a name="process-the-log-data"></a>De loggegevens verwerken
 
-Azure Data Lake Analytics bevat een voorbeeld over het verwerken en analyseren van de logboekgegevens. U vindt het voorbeeld in [ https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample ](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample).
+Azure Data Lake Analytics biedt een voorbeeld over het verwerken en analyseren van de loggegevens. U het [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)monster vinden op.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Overzicht van Azure Data Lake Analytics](data-lake-analytics-overview.md)
+* [Overzicht van Data Lake Analytics](data-lake-analytics-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Analyseren van gegevens in Azure Data Lake Storage Gen1 met behulp van Power BI | Microsoft Docs
-description: Power BI gebruiken voor het analyseren van gegevens die zijn opgeslagen in Azure Data Lake Storage Gen1
+title: Gegevens analyseren in Azure Data Lake Storage Gen1 met Power BI | Microsoft Documenten
+description: Power BI gebruiken om gegevens te analyseren die zijn opgeslagen in Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,89 +13,89 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: d8717b8f365e692b5f27bf8a04d65c5147b8f31b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65603205"
 ---
-# <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Analyseren van gegevens in Azure Data Lake Storage Gen1 met behulp van Power BI
-In dit artikel leert u hoe u Power BI Desktop gebruiken om te analyseren en visualiseren van gegevens die zijn opgeslagen in Azure Data Lake Storage Gen1.
+# <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Gegevens analyseren in Azure Data Lake Storage Gen1 met Power BI
+In dit artikel leert u hoe u Power BI Desktop gebruiken om gegevens die zijn opgeslagen in Azure Data Lake Storage Gen1 te analyseren en te visualiseren.
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaan:
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-* **De account van een Data Lake Storage Gen1**. Volg de instructies op [aan de slag met Azure Data Lake Storage Gen1 met behulp van de Azure-portal](data-lake-store-get-started-portal.md). In dit artikel wordt ervan uitgegaan dat u een Data Lake Storage Gen1-account, met de naam al hebt gemaakt **myadlsg1**, en een eenvoudig gegevensbestand geüpload (**Drivers.txt**) toe. Dit voorbeeldbestand is beschikbaar voor downloaden van [Azure Data Lake Git-opslagplaats](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt).
-* **Power BI Desktop**. U kunt dit downloaden van [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
+* **Een Data Lake Storage Gen1-account**. Volg de instructies bij [Aan de slag met Azure Data Lake Storage Gen1 met behulp van de Azure-portal.](data-lake-store-get-started-portal.md) In dit artikel wordt ervan uitgegaan dat u al een Data Lake Storage Gen1-account hebt gemaakt, **myadlsg1**genaamd, en er een voorbeeldgegevensbestand **(Drivers.txt)** naar hebt geüpload. Dit voorbeeldbestand is beschikbaar om te downloaden van [Azure Data Lake Git Repository.](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)
+* **Power BI-bureaublad**. U dit downloaden van [Microsoft Download Center.](https://www.microsoft.com/en-us/download/details.aspx?id=45331) 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Een rapport maken in Power BI Desktop
 1. Start Power BI Desktop op uw computer.
-2. Uit de **Start** lint, klikt u op **gegevens ophalen**, en klik vervolgens op meer. In de **gegevens ophalen** in het dialoogvenster, klikt u op **Azure**, klikt u op **Azure Data Lake Store**, en klik vervolgens op **Connect**.
+2. Klik **op** het lint Start op **Gegevens ophalen**en klik vervolgens op Meer. Klik in het dialoogvenster **Gegevens opvragen** op **Azure,** klik op **Azure Data Lake Store**en klik vervolgens op **Verbinden**.
    
-    ![Verbinding maken met Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account.png "verbinding maken met Data Lake Storage Gen1")
-3. Als u een dialoogvenster over de connector wordt in een ontwikkelingsfase bevindt ziet, kunt u kiezen om door te gaan.
-4. In de **Azure Data Lake Store** in het dialoogvenster, geeft u de URL naar uw Data Lake Storage Gen1-account en klik vervolgens op **OK**.
+    ![Verbinding maken met Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Verbinding maken met Data Lake Storage Gen1")
+3. Als u een dialoogvenster ziet over de connector die zich in een ontwikkelingsfase bevindt, kiest u ervoor om door te gaan.
+4. Geef in het dialoogvenster **Azure Data Lake Store** de URL op naar uw Data Lake Storage Gen1-account en klik op **OK.**
    
     ![URL voor Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "URL voor Data Lake Storage Gen1")
-5. Klik in het volgende dialoogvenster op **aanmelden** zich aanmelden bij de Gen1 van Data Lake Storage-account. U wordt omgeleid naar de aanmeldingspagina van uw organisatie. Volg de aanwijzingen voor het aanmelden bij het account.
+5. Klik in het volgende dialoogvenster op **Aanmelden** om u aan te melden bij het Data Lake Storage Gen1-account. U wordt doorgestuurd naar de aanmeldingspagina van uw organisatie. Volg de aanwijzingen om u aan te melden bij het account.
    
-    ![Meld u aan bij de Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Meld u aan bij de Data Lake Storage Gen1")
-6. Nadat u hebt aangemeld, klikt u op **Connect**.
+    ![Meld u aan bij Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Meld u aan bij Data Lake Storage Gen1")
+6. Nadat u zich hebt aangemeld, klikt u op **Verbinden**.
    
-    ![Verbinding maken met Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "verbinding maken met Data Lake Storage Gen1")
-7. Het volgende dialoogvenster ziet u het bestand dat u hebt geüpload naar uw Data Lake Storage Gen1-account. Controleer of de gegevens en klik vervolgens op **Load**.
+    ![Verbinding maken met Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Verbinding maken met Data Lake Storage Gen1")
+7. In het volgende dialoogvenster wordt het bestand weergegeven dat u hebt geüpload naar uw Data Lake Storage Gen1-account. Controleer de gegevens en klik op **Laden**.
    
-    ![Laden van gegevens uit Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "laden van gegevens uit Data Lake Storage Gen1")
-8. Nadat de gegevens zijn geladen in Power BI, ziet u de volgende velden in de **velden** tabblad.
+    ![Gegevens laden van Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Gegevens laden van Data Lake Storage Gen1")
+8. Nadat de gegevens zijn geladen in Power BI, ziet u de volgende velden op het tabblad **Velden.**
    
-    ![Velden geïmporteerd](./media/data-lake-store-power-bi/imported-fields.png "velden geïmporteerd")
+    ![Geïmporteerde velden](./media/data-lake-store-power-bi/imported-fields.png "Geïmporteerde velden")
    
-    Voor het visualiseren en analyseren van de gegevens, liever we echter de gegevens worden per de volgende velden beschikbaar
+    Om de gegevens te visualiseren en te analyseren, geven we echter de voorkeur aan de gegevens die beschikbaar zijn volgens de volgende velden
    
-    ![Gewenste velden](./media/data-lake-store-power-bi/desired-fields.png "gewenste velden")
+    ![Gewenste velden](./media/data-lake-store-power-bi/desired-fields.png "Gewenste velden")
    
-    In de volgende stappen wordt de query voor het converteren van de geïmporteerde gegevens in de gewenste indeling bijgewerkt.
-9. Uit de **Start** lint, klikt u op **query's bewerken**.
+    In de volgende stappen werken we de query bij om de geïmporteerde gegevens in de gewenste indeling om te zetten.
+9. Klik op het lint **Start** op **Query's bewerken**.
    
-    ![Query's bewerken](./media/data-lake-store-power-bi/edit-queries.png "query's bewerken")
-10. In de Query-Editor, onder de **inhoud** kolom, klikt u op **binaire**.
+    ![Query's bewerken](./media/data-lake-store-power-bi/edit-queries.png "Query's bewerken")
+10. Klik in de queryeditor onder de kolom **Inhoud** op **Binair**.
     
-    ![Query's bewerken](./media/data-lake-store-power-bi/convert-query1.png "query's bewerken")
-11. Ziet u een bestandspictogram, waarmee de **Drivers.txt** -bestand dat u hebt geüpload. Met de rechtermuisknop op het bestand en klik op **CSV**.    
+    ![Query's bewerken](./media/data-lake-store-power-bi/convert-query1.png "Query's bewerken")
+11. U ziet een bestandspictogram dat het **bestand Drivers.txt** vertegenwoordigt dat u hebt geüpload. Klik met de rechtermuisknop op het bestand en klik op **CSV**.    
     
-    ![Query's bewerken](./media/data-lake-store-power-bi/convert-query2.png "query's bewerken")
-12. U ziet uitvoer zoals hieronder wordt weergegeven. Uw gegevens is nu beschikbaar in een indeling die u gebruiken kunt om visualisaties te maken.
+    ![Query's bewerken](./media/data-lake-store-power-bi/convert-query2.png "Query's bewerken")
+12. U ziet een uitvoer zoals hieronder weergegeven. Uw gegevens zijn nu beschikbaar in een indeling die u gebruiken om visualisaties te maken.
     
-    ![Query's bewerken](./media/data-lake-store-power-bi/convert-query3.png "query's bewerken")
-13. Uit de **Start** lint, klikt u op **sluiten en toepassen**, en klik vervolgens op **sluiten en toepassen**.
+    ![Query's bewerken](./media/data-lake-store-power-bi/convert-query3.png "Query's bewerken")
+13. Klik op het lint **Start** op **Sluiten en Toepassen**en klik vervolgens op Sluiten en **toepassen**.
     
-    ![Query's bewerken](./media/data-lake-store-power-bi/load-edited-query.png "query's bewerken")
-14. Nadat de query is bijgewerkt, de **velden** tabblad ziet u de nieuwe velden beschikbaar voor visualisatie.
+    ![Query's bewerken](./media/data-lake-store-power-bi/load-edited-query.png "Query's bewerken")
+14. Zodra de query is bijgewerkt, worden op het tabblad **Velden** de nieuwe velden weergegeven die beschikbaar zijn voor visualisatie.
     
-    ![Bijgewerkte velden](./media/data-lake-store-power-bi/updated-query-fields.png "bijgewerkte velden")
-15. Laat het ons een cirkeldiagram om weer te geven van de stuurprogramma's in elke plaats voor een bepaald land/regio maken. Om dit te doen, moet u de volgende selecties maken.
+    ![Bijgewerkte velden](./media/data-lake-store-power-bi/updated-query-fields.png "Bijgewerkte velden")
+15. Laten we een cirkeldiagram maken om de chauffeurs in elke stad voor een bepaald land/regio te vertegenwoordigen. Maak hiervoor de volgende selecties.
     
-    1. Klik op het tabblad visualisaties op het symbool voor een cirkeldiagram.
+    1. Klik op het tabblad Visualisaties op het symbool voor een cirkeldiagram.
        
-        ![Maken van de cirkeldiagram](./media/data-lake-store-power-bi/create-pie-chart.png "cirkeldiagram maken")
-    2. De kolommen die we gaan gebruiken **kolom 4** (naam van de stad) en **kolom 7** (naam van het land/regio). Sleep deze kolommen uit **velden** tab naar **visualisaties** tabblad zoals hieronder wordt weergegeven.
+        ![Cirkeldiagram maken](./media/data-lake-store-power-bi/create-pie-chart.png "Cirkeldiagram maken")
+    2. De kolommen die we gaan gebruiken zijn **Kolom 4** (naam van de stad) en **Kolom 7** (naam van het land/regio). Sleep deze kolommen van het tabblad **Velden** naar het tabblad **Visualisaties** zoals hieronder weergegeven.
        
-        ![Visualisaties maken](./media/data-lake-store-power-bi/create-visualizations.png "visualisaties maken")
-    3. Het cirkeldiagram moet nu lijken op, zoals hieronder wordt weergegeven.
+        ![Visualisaties maken](./media/data-lake-store-power-bi/create-visualizations.png "Visualisaties maken")
+    3. De cirkel grafiek moet nu lijken op de hieronder weergegeven.
        
-        ![Cirkeldiagram](./media/data-lake-store-power-bi/pie-chart.png "visualisaties maken")
-16. Als u een specifiek land/regio van de filters op niveau van pagina selecteert, kunt u het aantal stuurprogramma's in elke plaats van het geselecteerde land/regio nu zien. Bijvoorbeeld onder de **visualisaties** tabblad onder **filters op paginaniveau**, selecteer **Brazilië**.
+        ![Cirkeldiagram](./media/data-lake-store-power-bi/pie-chart.png "Visualisaties maken")
+16. Door een specifiek land/regio te selecteren op basis van de filters op paginaniveau, u nu het aantal stuurprogramma's in elke stad van het geselecteerde land/regio zien. Selecteer bijvoorbeeld onder het tabblad **Visualisaties** onder **filters op paginaniveau**de optie **Brazilië**.
     
-    ![Selecteer een land/regio](./media/data-lake-store-power-bi/select-country.png "een land/regio selecteren")
+    ![Een land selecteren](./media/data-lake-store-power-bi/select-country.png "Een land/regio selecteren")
 17. Het cirkeldiagram wordt automatisch bijgewerkt om de stuurprogramma's in de steden van Brazilië weer te geven.
     
-    ![Stuurprogramma's in een land/regio](./media/data-lake-store-power-bi/driver-per-country.png "stuurprogramma's per land/regio")
-18. Uit de **bestand** menu, klikt u op **opslaan** om op te slaan van de visualisatie als een Power BI Desktop-bestand.
+    ![Chauffeurs in een land](./media/data-lake-store-power-bi/driver-per-country.png "Chauffeurs per land/regio")
+18. Klik **in** het menu Bestand op **Opslaan** om de visualisatie op te slaan als een Power BI-bureaubladbestand.
 
 ## <a name="publish-report-to-power-bi-service"></a>Rapport publiceren naar Power BI-service
-Nadat u de visualisaties in Power BI Desktop hebt gemaakt, kunt u deze delen met anderen door deze te publiceren naar Power BI-service. Zie voor instructies over hoe u dat doet, [publiceren vanuit Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/).
+Zodra u de visualisaties in Power BI-bureaublad hebt gemaakt, u deze delen met anderen door deze te publiceren naar de Power BI-service. Zie [Publiceren vanaf Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/)voor instructies over hoe u dat doen.
 
 ## <a name="see-also"></a>Zie ook
-* [Analyseren van gegevens in Data Lake Storage Gen1 met Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Gegevens analyseren in Data Lake Storage Gen1 met Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 

@@ -1,22 +1,22 @@
 ---
-title: TextBlock UI-element
-description: Hierin wordt het micro soft. common. TextBlock UI-element voor Azure Portal beschreven. Gebruiken om tekst toe te voegen aan de-interface.
+title: TextBlock-element
+description: Beschrijft het Microsoft.Common.TextBlock-gebruikersinterfaceelement voor Azure-portal. Tekst toevoegen aan de interface.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 418056cb149f4441bac49db839a0dba40c2bb42d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652214"
 ---
-# <a name="microsoftcommontextblock-ui-element"></a>Micro soft. common. TextBlock UI-element
+# <a name="microsoftcommontextblock-ui-element"></a>Microsoft.Common.TextBlock-element
 
-Een besturings element dat kan worden gebruikt om tekst toe te voegen aan de portal-interface.
+Een besturingselement dat kan worden gebruikt om tekst toe te voegen aan de portalinterface.
 
-## <a name="ui-sample"></a>UI-voor beeld
+## <a name="ui-sample"></a>UI-voorbeeld
 
 ![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textblock.png)
 
@@ -45,5 +45,5 @@ Een besturings element dat kan worden gebruikt om tekst toe te voegen aan de por
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
-* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.
+* Zie Aan de slag met [CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van ui-definities.
+* Zie [Elementen van CreateUiDefinition](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in ui-elementen .

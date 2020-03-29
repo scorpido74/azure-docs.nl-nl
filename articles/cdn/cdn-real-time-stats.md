@@ -1,6 +1,6 @@
 ---
-title: Realtime statistieken in Azure CDN | Microsoft Docs
-description: Realtime statistieken biedt realtime-gegevens over de prestaties van Azure CDN bij het leveren van inhoud aan uw clients.
+title: Realtime statistieken in Azure CDN | Microsoft Documenten
+description: Realtime statistieken bieden realtime gegevens over de prestaties van Azure CDN bij het leveren van inhoud aan uw clients.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,82 +15,82 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d56007e5a196a0857f3b69ac51f5e3b5a88c4f6e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593497"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Realtime statistieken in Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Overzicht
-Dit document wordt uitgelegd realtime statistieken in Microsoft Azure CDN.  Deze functionaliteit biedt realtime gegevens, zoals bandbreedte, cachestatussen en gelijktijdige verbindingen met uw CDN-profiel bij het leveren van inhoud aan uw clients. Hierdoor kunnen de voortdurende bewaking van de status van uw service op elk gewenst moment, met inbegrip van go live gebeurtenissen.
+In dit document worden realtime statistieken in Microsoft Azure CDN uitgelegd.  Deze functionaliteit biedt realtime gegevens, zoals bandbreedte, cachestatussen en gelijktijdige verbindingen met uw CDN-profiel bij het leveren van inhoud aan uw clients. Dit maakt continue monitoring van de gezondheid van uw service op elk gewenst moment mogelijk, inclusief go-live evenementen.
 
 De volgende grafieken zijn beschikbaar:
 
-* [Bandwidth](#bandwidth)
+* [Bandbreedte](#bandwidth)
 * [Statuscodes](#status-codes)
-* [Statusbepaling van de cache](#cache-statuses)
+* [Cachestatussen](#cache-statuses)
 * [Verbindingen](#connections)
 
 ## <a name="accessing-real-time-stats"></a>Toegang tot realtime statistieken
-1. In de [Azure Portal](https://portal.azure.com), blader naar uw CDN-profiel.
+1. Blader in de [Azure Portal](https://portal.azure.com)naar uw CDN-profiel.
    
-    ![Blade CDN-profiel](./media/cdn-real-time-stats/cdn-profile-blade.png)
-2. Klik in de blade CDN-profiel op de **beheren** knop.
+    ![CDN-profielblad](./media/cdn-real-time-stats/cdn-profile-blade.png)
+2. Klik in het CDN-profielblad op de knop **Beheren.**
    
-    ![Knop blade CDN-profiel beheren](./media/cdn-real-time-stats/cdn-manage-btn.png)
+    ![Knop CDN-profielblad beheer](./media/cdn-real-time-stats/cdn-manage-btn.png)
    
-    De CDN-beheerportal wordt geopend.
-3. Beweeg de muisaanwijzer over de **Analytics** tabblad en klik vervolgens Beweeg de muisaanwijzer over de **realtime statistieken** flyout.  Klik op **HTTP Large Object**.
+    Het CDN-beheerportaal wordt geopend.
+3. Plaats de plaats op het tabblad **Analytics** en plaats de plaats vervolgens boven de **flyout voor realtime statistieken.**  Klik op **HTTP Large Object**.
    
     ![CDN-beheerportal](./media/cdn-real-time-stats/cdn-premium-portal.png)
    
-    De grafieken realtime statistieken worden weergegeven.
+    De real-time statistieken grafieken worden weergegeven.
 
-Elk van de grafieken geeft realtime statistieken voor de geselecteerde periode wordt gestart wanneer de pagina wordt geladen.  De grafieken worden automatisch bijgewerkt om de paar seconden.  De **vernieuwen Graph** knop, indien aanwezig, wordt schakelt u de grafiek, waarna deze alleen de geselecteerde gegevens worden weergegeven.
+In elk van de grafieken worden realtime statistieken weergegeven voor de geselecteerde tijdspanne, te beginnen wanneer de pagina wordt geladen.  De grafieken worden om de paar seconden automatisch bijgewerkt.  Met de knop **Grafiek vernieuwen** wordt, indien aanwezig, de grafiek gewist, waarna alleen de geselecteerde gegevens worden weergegeven.
 
 ## <a name="bandwidth"></a>Bandbreedte
-![Bandbreedte-grafiek](./media/cdn-real-time-stats/cdn-bandwidth.png)
+![Bandbreedtegrafiek](./media/cdn-real-time-stats/cdn-bandwidth.png)
 
-De **bandbreedte** diagram toont de hoeveelheid bandbreedte die wordt gebruikt voor het huidige platform via de geselecteerde periode. Het gearceerde gedeelte van de grafiek geeft bandbreedtegebruik. De exacte hoeveelheid bandbreedte die momenteel wordt gebruikt, wordt direct onder het lijndiagram weergegeven.
+In de **grafiek Bandbreedte** wordt de hoeveelheid bandbreedte weergegeven die voor het huidige platform wordt gebruikt gedurende de geselecteerde tijdspanne. Het gearceerde gedeelte van de grafiek geeft het bandbreedtegebruik aan. De exacte hoeveelheid bandbreedte die momenteel wordt gebruikt, wordt direct onder de lijngrafiek weergegeven.
 
 ## <a name="status-codes"></a>Statuscodes
-![Status code graph](./media/cdn-real-time-stats/cdn-status-codes.png)
+![Grafiek statuscode](./media/cdn-real-time-stats/cdn-status-codes.png)
 
-De **statuscodes** grafiek geeft aan hoe vaak bepaalde HTTP-responscodes plaatsvinden via de geselecteerde periode.
-
-> [!TIP]
-> Zie voor een beschrijving van elke optie voor HTTP-status code [Azure CDN HTTP-statuscodes](/previous-versions/azure/mt759238(v=azure.100)).
-> 
-> 
-
-Een lijst met HTTP-statuscodes wordt direct boven de grafiek weergegeven. Deze lijst geeft aan dat elke statuscode die kan worden opgenomen in het lijndiagram en het huidige aantal exemplaren per seconde voor deze statuscode. Een regel wordt standaard weergegeven voor elk van deze statuscodes in de grafiek. U kunt echter kiezen voor het bewaken van alleen de statuscodes die speciale betekenis voor uw CDN-configuratie hebben. U doet dit door de gewenste statuscodes controleren en schakelt u alle andere opties en klik vervolgens op **vernieuwen Graph**. 
-
-U kunt tijdelijk gegevens in het logboek voor een bepaalde statuscode verbergen.  Klik op de statuscode die u wilt verbergen in de legenda direct onder de grafiek. De statuscode onmiddellijk verborgen in de grafiek. Nogmaals op te klikken die statuscode zorgt ervoor dat deze optie moet opnieuw worden weergegeven.
-
-## <a name="cache-statuses"></a>Statusbepaling van de cache
-![Cache statussen graph](./media/cdn-real-time-stats/cdn-cache-status.png)
-
-De **Cachestatussen** grafiek geeft aan hoe vaak bepaalde typen cachestatussen plaatsvinden via de geselecteerde periode. 
+De grafiek **Statuscodes** geeft aan hoe vaak bepaalde HTTP-antwoordcodes optreden gedurende de geselecteerde tijdspanne.
 
 > [!TIP]
-> Zie voor een beschrijving van elke optie cache status code [statuscodes voor Azure CDN-Cache](/previous-versions/azure/mt759237(v=azure.100)).
+> Zie [Azure CDN HTTP-statuscodes voor](/previous-versions/azure/mt759238(v=azure.100))een beschrijving van elke HTTP-statuscodeoptie .
 > 
 > 
 
-Een lijst van cache-statuscodes wordt direct boven de grafiek weergegeven. Deze lijst geeft aan dat elke statuscode die kan worden opgenomen in het lijndiagram en het huidige aantal exemplaren per seconde voor deze statuscode. Een regel wordt standaard weergegeven voor elk van deze statuscodes in de grafiek. U kunt echter kiezen voor het bewaken van alleen de statuscodes die speciale betekenis voor uw CDN-configuratie hebben. U doet dit door de gewenste statuscodes controleren en schakelt u alle andere opties en klik vervolgens op **vernieuwen Graph**. 
+Een lijst met HTTP-statuscodes wordt direct boven de grafiek weergegeven. Deze lijst geeft elke statuscode aan die kan worden opgenomen in de lijngrafiek en het huidige aantal exemplaren per seconde voor die statuscode. Standaard wordt een regel weergegeven voor elk van deze statuscodes in de grafiek. U er echter voor kiezen om alleen de statuscodes te controleren die een speciale betekenis hebben voor uw CDN-configuratie. Controleer hiervoor de gewenste statuscodes en schakel alle andere opties uit en klik vervolgens op **Grafiek vernieuwen**. 
 
-U kunt tijdelijk gegevens in het logboek voor een bepaalde statuscode verbergen.  Klik op de statuscode die u wilt verbergen in de legenda direct onder de grafiek. De statuscode onmiddellijk verborgen in de grafiek. Nogmaals op te klikken die statuscode zorgt ervoor dat deze optie moet opnieuw worden weergegeven.
+U geregistreerde gegevens tijdelijk verbergen voor een bepaalde statuscode.  Klik in de legenda direct onder de grafiek op de statuscode die u wilt verbergen. De statuscode wordt onmiddellijk verborgen in de grafiek. Als u opnieuw op die statuscode klikt, wordt die optie opnieuw weergegeven.
+
+## <a name="cache-statuses"></a>Cachestatussen
+![Grafiek Cachestatussen](./media/cdn-real-time-stats/cdn-cache-status.png)
+
+De grafiek **Cachestatussen** geeft aan hoe vaak bepaalde typen cachestatussen optreden gedurende de geselecteerde tijdspanne. 
+
+> [!TIP]
+> Zie [Azure CDN-cachestatuscodes](/previous-versions/azure/mt759237(v=azure.100))voor een beschrijving van elke cachestatusoptie .
+> 
+> 
+
+Een lijst met statuscodes in de cache wordt direct boven de grafiek weergegeven. Deze lijst geeft elke statuscode aan die kan worden opgenomen in de lijngrafiek en het huidige aantal exemplaren per seconde voor die statuscode. Standaard wordt een regel weergegeven voor elk van deze statuscodes in de grafiek. U er echter voor kiezen om alleen de statuscodes te controleren die een speciale betekenis hebben voor uw CDN-configuratie. Controleer hiervoor de gewenste statuscodes en schakel alle andere opties uit en klik vervolgens op **Grafiek vernieuwen**. 
+
+U geregistreerde gegevens tijdelijk verbergen voor een bepaalde statuscode.  Klik in de legenda direct onder de grafiek op de statuscode die u wilt verbergen. De statuscode wordt onmiddellijk verborgen in de grafiek. Als u opnieuw op die statuscode klikt, wordt die optie opnieuw weergegeven.
 
 ## <a name="connections"></a>Verbindingen
-![Verbindingen graph](./media/cdn-real-time-stats/cdn-connections.png)
+![Grafiek Verbindingen](./media/cdn-real-time-stats/cdn-connections.png)
 
-Deze grafiek geeft aan hoeveel verbindingen naar uw edge-servers zijn gemaakt. Elke aanvraag voor een asset die wordt doorgegeven via onze CDN-resultaten in een verbinding.
+Deze grafiek geeft aan hoeveel verbindingen er zijn gemaakt met uw edge-servers. Elke aanvraag voor een asset die door onze CDN gaat, resulteert in een verbinding.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Blijf op de hoogte met [realtime waarschuwingen in Azure CDN](cdn-real-time-alerts.md)
-* Dieper graven met [geavanceerde HTTP-rapporten](cdn-advanced-http-reports.md)
-* Analyseren [gebruikspatronen](cdn-analyze-usage-patterns.md)
+* Ontvang een melding met [realtime waarschuwingen in Azure CDN](cdn-real-time-alerts.md)
+* Graaf dieper met [geavanceerde HTTP-rapporten](cdn-advanced-http-reports.md)
+* [Gebruikspatronen analyseren](cdn-analyze-usage-patterns.md)
 

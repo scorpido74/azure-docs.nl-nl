@@ -1,6 +1,6 @@
 ---
-title: Trans formatie van gegevens stroom venster toewijzen
-description: Trans formatie van gegevens stroom venster Azure Data Factory toewijzen
+title: Venstertransformatie van gegevensstroom toewijzen
+description: Venstertransformatie van azure-gegevensfabriek
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
@@ -9,44 +9,44 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
 ms.openlocfilehash: fa34def67d91332a00bf0ee92b365957a47f9616
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931484"
 ---
-# <a name="azure-data-factory-window-transformation"></a>Trans formatie van Azure Data Factory-venster
+# <a name="azure-data-factory-window-transformation"></a>Transformatie van azure-gegevensfabrieksvenster
 
 
 
-Met de venster transformatie definieert u op venster gebaseerde aggregaties van kolommen in uw gegevens stromen. In de opbouw functie voor expressies kunt u verschillende typen aggregaties definiëren die zijn gebaseerd op gegevens of tijd Vensters (SQL OVER component) zoals LEAD, LAG, NTILE, CUMEDIST, RANK, enzovoort. Er wordt een nieuw veld in uw uitvoer gegenereerd dat deze aggregaties bevat. U kunt ook optionele velden voor groeperen op toevoegen.
+Met de venstertransformatie definieert u op venster gebaseerde aggregaties van kolommen in uw gegevensstromen. In de Opbouwfunctie voor expressies u verschillende typen aggregaties definiëren die zijn gebaseerd op gegevens of tijdvensters (SQL OVER-clausule), zoals LEAD, LAG, NTILE, CUMEDIST, RANK, enz.). Er wordt een nieuw veld gegenereerd in uw uitvoer met deze aggregaties. U ook optionele groeps-door-velden opnemen.
 
-![Venster Opties](media/data-flow/windows1.png "Windows 1")
+![Vensteropties](media/data-flow/windows1.png "windows 1")
 
 ## <a name="over"></a>Meer dan
-De partitionering van kolom gegevens voor uw venster transformatie instellen. Het equivalent van SQL is het ```Partition By``` in de component over in SQL. Als u een berekening wilt maken of een expressie wilt maken die voor de partitionering moet worden gebruikt, kunt u dit doen door de muis aanwijzer over de kolom naam te bewegen en "berekende kolom" te selecteren.
+Stel de verdeling van kolomgegevens in voor uw venstertransformatie. Het SQL-equivalent ```Partition By``` is de in de Over-clausule in SQL. Als u een berekening wilt maken of een expressie wilt maken die u wilt gebruiken voor de partitionering, u dat doen door over de kolomnaam te zweven en 'berekende kolom' te selecteren.
 
-![Venster Opties](media/data-flow/windows4.png "Windows 4")
+![Vensteropties](media/data-flow/windows4.png "windows 4")
 
 ## <a name="sort"></a>Sorteren
-Een ander deel van de component over is het instellen van de ```Order By```. Hiermee wordt de volg orde van de sortering van gegevens ingesteld. U kunt ook een expressie maken voor een waarde berekenen in dit kolom veld voor het sorteren.
+Een ander deel van de ```Order By```Over-clausule is het instellen van de . Hiermee wordt de volgorde van de gegevenssortvolgorde ingesteld. U ook een expressie maken voor een berekeningswaarde in dit kolomveld voor sorteren.
 
-![Venster Opties](media/data-flow/windows5.png "Windows 5")
+![Vensteropties](media/data-flow/windows5.png "windows 5")
 
 ## <a name="range-by"></a>Bereik op
-Stel vervolgens het venster kader in op niet-gebonden of gebonden. Als u een niet-gebonden venster kader wilt instellen, stelt u de schuif regelaar in op beide uiteinden. Als u een instelling selecteert tussen de niet-gebonden en de huidige rij, moet u de begin-en eind waarde van de offset instellen. Beide waarden moeten positieve gehele getallen zijn. U kunt de relatieve cijfers of waarden van uw gegevens gebruiken.
+Stel vervolgens het raamkozijn in als Niet-begrensd of begrensd. Als u een niet-begrensd vensterframe wilt instellen, stelt u de schuifregelaar in op Niet-begrensd aan beide uiteinden. Als u een instelling kiest tussen Niet-begrensde en huidige rij, moet u de begin- en eindwaarden voor verschuiving instellen. Beide waarden zijn positieve gehele getallen. U relatieve getallen of waarden uit uw gegevens gebruiken.
 
-De schuif regelaar voor het venster heeft twee waarden die moeten worden ingesteld: de waarden vóór de huidige rij en de waarden na de huidige rij. De begin-en eind offset komen overeen met de twee selecters op de schuif regelaar.
+De vensterschuifregelaar heeft twee waarden in te stellen: de waarden vóór de huidige rij en de waarden na de huidige rij. De verschuiving Begin en Eind komt overeen met de twee selectors op de schuifregelaar.
 
-![Venster Opties](media/data-flow/windows6.png "Windows 6")
+![Vensteropties](media/data-flow/windows6.png "windows 6")
 
-## <a name="window-columns"></a>Venster kolommen
-Gebruik ten slotte de opbouw functie voor expressies om de aggregaties te definiëren die u wilt gebruiken met de gegevens Vensters zoals positie, aantal, MIN, MAX, hoge rang orde, LEAD, vertraging enzovoort.
+## <a name="window-columns"></a>Vensterkolommen
+Tot slot, gebruik de Expression Builder om de aggregaties die u wilt gebruiken met de gegevens vensters zoals RANK, COUNT, MIN, MAX, DENSE RANK, LEAD, LAG, enz.
 
-![Venster Opties](media/data-flow/windows7.png "Windows 7")
+![Vensteropties](media/data-flow/windows7.png "windows 7")
 
-De volledige lijst met aggregatie-en analyse functies die u kunt gebruiken in de expressie taal van de ADF-gegevens stroom via de opbouw functie voor expressies, vindt u hier: https://aka.ms/dataflowexpressions.
+De volledige lijst met aggregatie- en analytische functies die u gebruiken in de https://aka.ms/dataflowexpressionsADF Data Flow Expression Language via de Expression Builder vindt u hier:.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u op zoek bent naar een eenvoudige groep-op aggregatie, gebruikt u de [cumulatieve trans formatie](data-flow-aggregate.md)
+Als u op zoek bent naar een eenvoudige groeps-door-aggregatie, gebruikt u [de](data-flow-aggregate.md)

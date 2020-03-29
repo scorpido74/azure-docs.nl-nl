@@ -1,6 +1,6 @@
 ---
-title: Controleer de status van resources voor Azure CDN | Microsoft Docs
-description: Leer hoe u de status van uw Azure CDN-resources met behulp van Azure Resource Health worden gecontroleerd.
+title: De status van Azure CDN-resources controleren| Microsoft Documenten
+description: Meer informatie over het bewaken van de status van uw Azure CDN-resources met Azure Resource Health.
 services: cdn
 documentationcenter: .net
 author: zhangmanling
@@ -15,53 +15,53 @@ ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 6710f5e5b873f751ad21068acdc15d38574f8378
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593441"
 ---
-# <a name="monitor-the-health-of-azure-cdn-resources"></a>Controleer de status van Azure CDN-resources
+# <a name="monitor-the-health-of-azure-cdn-resources"></a>De status van Azure CDN-resources bewaken
   
-Azure CDN-Resource health is een subset van [Azure resource health](../resource-health/resource-health-overview.md).  Azure resource health kunt u de status van CDN-resources bewaken en ontvang praktische richtlijnen voor het oplossen van problemen.
+Azure CDN-bronstatus is een subset van [azure-bronstatus](../resource-health/resource-health-overview.md).  U azure-bronstatus gebruiken om de status van CDN-resources te controleren en bruikbare richtlijnen te ontvangen om problemen op te lossen.
 
 >[!IMPORTANT] 
->Azure CDN-resourcestatus accounts alleen momenteel de status van wereldwijde CDN-levering en API-functies.  Azure CDN-resourcestatus controleert niet of afzonderlijke CDN-eindpunten.
+>Azure CDN-bronstatus is momenteel alleen verantwoordelijk voor de status van wereldwijde CDN-leverings- en API-mogelijkheden.  Azure CDN-bronstatus controleert geen afzonderlijke CDN-eindpunten.
 >
->De signalen die feed resourcestatus Azure CDN kunnen tot 15 minuten vertraagd zijn.
+>De signalen die de status van Azure CDN-bronnen voeden, kunnen tot 15 minuten vertraging oplopen.
 
-## <a name="how-to-find-azure-cdn-resource-health"></a>Over het vinden van Azure CDN-resourcestatus
+## <a name="how-to-find-azure-cdn-resource-health"></a>Azure CDN-bronstatus zoeken
 
-1. In de [Azure-portal](https://portal.azure.com), blader naar uw CDN-profiel.
+1. Blader in de [Azure-portal](https://portal.azure.com)naar uw CDN-profiel.
 
-2. Klik op de **instellingen** knop.
+2. Klik op de knop **Instellingen.**
 
     ![Knop Instellingen](./media/cdn-resource-health/cdn-profile-settings.png)
 
-3. Onder *ondersteuning en probleemoplossing*, klikt u op **resourcestatus**.
+3. Klik *onder Ondersteuning + probleemoplossing*op **Resourcestatus**.
 
     ![CDN-resourcestatus](./media/cdn-resource-health/cdn-resource-health3.png)
 
 >[!TIP] 
->U vindt hier ook CDN-resources die worden vermeld de *resourcestatus* tegel de *Help en ondersteuning* blade.  U kunt snel toegang verkrijgen tot *Help en ondersteuning* door te klikken op de cirkel **?** in de rechterbovenhoek van de portal.
+>U cdn-bronnen ook vinden die worden vermeld in de tegel *Resourcestatus* in het *ondersteuningsblad Help + ondersteuning.*  U snel naar *Help + ondersteuning* door te klikken op de omcirkelde? **?** in de rechterbovenhoek van het portaal.
 >
 > ![Help en ondersteuning](./media/cdn-resource-health/cdn-help-support.png)
 
 ## <a name="azure-cdn-specific-messages"></a>Azure CDN-specifieke berichten
 
-Status met betrekking tot Azure CDN resource health vindt u hieronder.
+Statussen met betrekking tot Azure CDN-bronstatus vindt u hieronder.
 
-|Message | Aanbevolen actie |
+|Bericht | Aanbevolen actie |
 |---|---|
 |Een of meer CDN-eindpunten zijn mogelijk gestopt, verwijderd of verkeerd geconfigureerd | Een of meer CDN-eindpunten zijn mogelijk gestopt, verwijderd of verkeerd geconfigureerd.|
-|De CDN-beheerservice is momenteel niet beschikbaar | Kom hier terug voor statusupdates; Als het probleem zich blijft na de tijd dat het probleem zou moeten voordoen contact opnemen met ondersteuning.|
-|Uw CDN-eindpunten worden mogelijk getroffen door lopende problemen met een aantal van onze CDN-providers | Kom hier terug voor statusupdates; Gebruik het hulpprogramma problemen oplossen voor informatie over het testen van uw oorsprong en CDN-eindpunt; Als het probleem zich blijft na de tijd dat het probleem zou moeten voordoen contact opnemen met ondersteuning. |
-|De wijzigingen in de configuratie van uw CDN-eindpunten ondervinden helaas vertragingen bij de doorgifte | Kom hier terug voor statusupdates; Als uw configuratiewijzigingen niet volledig worden doorgegeven in de verwachte tijd, contact op met ondersteuning.|
-|Er zijn momenteel problemen met het laden van de aanvullende portal | Kom hier terug voor statusupdates; Als het probleem zich blijft na de tijd dat het probleem zou moeten voordoen contact opnemen met ondersteuning.|
-Er zijn momenteel problemen met een aantal van onze CDN-providers | Kom hier terug voor statusupdates; Als het probleem zich blijft na de tijd dat het probleem zou moeten voordoen contact opnemen met ondersteuning. |
+|De CDN-beheerservice is momenteel niet beschikbaar | Kijk hier terug voor statusupdates; Als het probleem blijft bestaan na de verwachte oplossingstijd, neemt u contact op met de ondersteuning.|
+|Uw CDN-eindpunten worden mogelijk getroffen door lopende problemen met een aantal van onze CDN-providers | Kijk hier terug voor statusupdates; Gebruik het hulpprogramma Problemen gebruiken om te leren hoe u uw oorsprong en CDN-eindpunt testen; Als het probleem blijft bestaan na de verwachte oplossingstijd, neemt u contact op met de ondersteuning. |
+|De wijzigingen in de configuratie van uw CDN-eindpunten ondervinden helaas vertragingen bij de doorgifte | Kijk hier terug voor statusupdates; Neem contact op met de ondersteuning als uw configuratiewijzigingen niet volledig zijn doorgevoerd.|
+|Er zijn momenteel problemen met het laden van de aanvullende portal | Kijk hier terug voor statusupdates; Als het probleem blijft bestaan na de verwachte oplossingstijd, neemt u contact op met de ondersteuning.|
+Er zijn momenteel problemen met een aantal van onze CDN-providers | Kijk hier terug voor statusupdates; Als het probleem blijft bestaan na de verwachte oplossingstijd, neemt u contact op met de ondersteuning. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Lees een overzicht van Azure resource health](../resource-health/resource-health-overview.md)
-- [Problemen oplossen met CDN-compressie](./cdn-troubleshoot-compression.md)
-- [Oplossen van problemen met 404-fouten](./cdn-troubleshoot-endpoint.md)
+- [Een overzicht van azure-bronstatus lezen](../resource-health/resource-health-overview.md)
+- [Problemen met CDN-compressie oplossen](./cdn-troubleshoot-compression.md)
+- [Problemen met 404 fouten oplossen](./cdn-troubleshoot-endpoint.md)

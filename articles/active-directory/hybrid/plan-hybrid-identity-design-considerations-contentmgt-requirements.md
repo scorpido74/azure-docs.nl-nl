@@ -1,6 +1,6 @@
 ---
-title: Hybride identiteit ontwerp - inhoudsbeheer vereisten voor Azure | Microsoft Docs
-description: Biedt inzicht in het bepalen van de vereisten voor inhoud van uw bedrijf. Wat meestal gebeurt wanneer een gebruiker een eigen apparaat heeft, kunnen ze ook meerdere referenties die op basis van de toepassing die ze gebruiken zal worden afwisselende hebben. Het is belangrijk om te onderscheiden welke inhoud is gemaakt met behulp van persoonlijke referenties ten opzichte van die zijn gemaakt met behulp van zakelijke referenties. Uw oplossing voor identiteit moet kunnen communiceren met cloud services voor een naadloze ervaring voor de eindgebruiker tijdens hun privacy te waarborgen en verhoogt de beveiliging tegen gegevenslekken.
+title: Hybride identiteitsontwerp - vereisten voor inhoudsbeheer Azure | Microsoft Documenten
+description: Geeft inzicht in hoe u de vereisten voor contentmanagement van uw bedrijf bepalen. Meestal wanneer een gebruiker zijn eigen apparaat heeft, kunnen ze ook meerdere referenties hebben die worden afgewisseld volgens de toepassing die ze gebruiken. Het is belangrijk om te differentiëren welke inhoud is gemaakt met behulp van persoonlijke referenties ten opzichte van de inhoud die is gemaakt met behulp van bedrijfsreferenties. Uw identiteitsoplossing moet kunnen communiceren met cloudservices om de eindgebruiker een naadloze ervaring te bieden en tegelijkertijd hun privacy te waarborgen en de bescherming tegen gegevenslekken te vergroten.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,55 +17,55 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d970fd133f8c43319e7f1fdb6b3a50c3c05f687
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64918445"
 ---
-# <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Bepaal de vereisten voor inhoudsbeheer voor uw oplossing voor hybride identiteit
-Informatie over de vereisten voor inhoud voor uw bedrijf kan direct van invloed op uw beslissing over welke oplossing voor hybride identiteiten te gebruiken. Met de komst van meerdere apparaten en de mogelijkheid van gebruikers op hun eigen apparaten meebrengen ([BYOD](https://aka.ms/byodcg)), het bedrijf een eigen gegevens moet beveiligen, maar deze ook bewaart de privacy van de gebruiker intact. Wat meestal gebeurt wanneer een gebruiker een eigen apparaat heeft, kunnen ze ook meerdere referenties die op basis van de toepassing die ze gebruiken zal worden afwisselende hebben. Het is belangrijk om te onderscheiden welke inhoud is gemaakt met behulp van persoonlijke referenties ten opzichte van die zijn gemaakt met behulp van zakelijke referenties. Uw oplossing voor identiteit moet kunnen communiceren met cloud services voor een naadloze ervaring voor de eindgebruiker tijdens hun privacy te waarborgen en verhoogt de beveiliging tegen gegevenslekken. 
+# <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Bepaal vereisten voor contentbeheer voor uw hybride identiteitsoplossing
+Inzicht in de vereisten voor contentbeheer voor uw bedrijf kan rechtstreeks van invloed zijn op uw beslissing over welke hybride identiteitsoplossing u moet gebruiken. Met de proliferatie van meerdere apparaten en de mogelijkheid van gebruikers om hun eigen apparaten mee te nemen[(BYOD),](https://aka.ms/byodcg)moet het bedrijf zijn eigen gegevens beschermen, maar het moet ook de privacy van de gebruiker intact houden. Meestal wanneer een gebruiker zijn eigen apparaat heeft, kunnen ze ook meerdere referenties hebben die worden afgewisseld volgens de toepassing die ze gebruiken. Het is belangrijk om te differentiëren welke inhoud is gemaakt met behulp van persoonlijke referenties ten opzichte van de inhoud die is gemaakt met behulp van bedrijfsreferenties. Uw identiteitsoplossing moet kunnen communiceren met cloudservices om de eindgebruiker een naadloze ervaring te bieden en tegelijkertijd hun privacy te waarborgen en de bescherming tegen gegevenslekken te vergroten. 
 
-Uw oplossing voor identiteit zal worden gebruikt door verschillende technische besturingselementen om te voorzien van content management, zoals wordt weergegeven in de afbeelding hieronder:
+Uw identiteitsoplossing wordt gebruikt door verschillende technische besturingselementen om contentmanagement te bieden, zoals in de onderstaande afbeelding wordt weergegeven:
 
-![Besturingselementen voor beveiliging](./media/plan-hybrid-identity-design-considerations/securitycontrols.png)
+![beveiligingscontroles](./media/plan-hybrid-identity-design-considerations/securitycontrols.png)
 
-**Beveiligingsmaatregelen die zal worden gebruik te maken van uw identiteitsbeheersysteem**
+**Beveiligingscontroles die uw identiteitsbeheersysteem gebruiken**
 
-In het algemeen wordt inhoud beheervereisten gebruikmaken van uw systeem identity management in de volgende gebieden:
+In het algemeen maken vereisten voor contentbeheer gebruik van uw identiteitsbeheersysteem op de volgende gebieden:
 
-* Privacy: identificeren van de gebruiker die eigenaar is van een bron en het toepassen van de juiste besturingselementen om integriteit te waarborgen.
-* Gegevensclassificatie: Identificeer de gebruiker of groep en het niveau van toegang tot een object op basis van de classificatie. 
-* Beveiliging van Gegevenslekken: beveiligingsmaatregelen die verantwoordelijk is voor het beveiligen van gegevens om te voorkomen dat lekken moet om te communiceren met het identiteitssysteem om de identiteit van de gebruiker te valideren. Dit is ook belangrijk voor controledoeleinden trail.
+* Privacy: het identificeren van de gebruiker die eigenaar is van een resource en het toepassen van de juiste besturingselementen om de integriteit te behouden.
+* Gegevensclassificatie: identificeer de gebruiker of groep en het niveau van toegang tot een object op basis van de classificatie ervan. 
+* Bescherming tegen gegevenslekkage: beveiligingscontroles die verantwoordelijk zijn voor de bescherming van gegevens om lekkage te voorkomen, moeten communiceren met het identiteitssysteem om de identiteit van de gebruiker te valideren. Dit is ook belangrijk voor het controleren van trail doel.
 
 > [!NOTE]
-> Lezen [gegevensclassificatie voor cloudvoorbereiding](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) voor meer informatie over aanbevolen procedures en richtlijnen voor gegevensclassificatie.
+> Lees [gegevensclassificatie voor cloudgereedheid](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) voor meer informatie over aanbevolen procedures en richtlijnen voor gegevensclassificatie.
 > 
 > 
 
-Wanneer uw hybride identiteitsoplossing plannen ervoor te zorgen dat de volgende vragen worden beantwoord op basis van de vereisten van uw organisatie:
+Bij het plannen van uw hybride identiteitsoplossing zorgt u ervoor dat de volgende vragen worden beantwoord volgens de vereisten van uw organisatie:
 
-* Uw bedrijf beschikt over beveiligingsmaatregelen aanwezig om af te dwingen de privacy van gegevens?
-  * Zo ja, kunnen de beveiligingscontroles worden om te integreren met de oplossing voor hybride identiteit die u gaat vast te stellen?
-* Maakt gebruik van uw bedrijf gegevensclassificatie?
-  * Zo ja, is de huidige oplossing integreren met de oplossing voor hybride identiteit die u gaat vast te stellen?
-* Heeft uw bedrijf momenteel oplossing voor het lekken van gegevens? 
-  * Zo ja, is de huidige oplossing integreren met de oplossing voor hybride identiteit die u gaat vast te stellen?
-* Moet uw bedrijf toegang tot resources controleren?
-  * Zo ja, welk type resources?
-  * Zo ja, is welke niveau van de gegevens nodig?
-  * Zo ja, waar het auditlogboek moet zich bevinden? On-premises of in de cloud?
-* Heeft uw bedrijf nodig voor het versleutelen van een e-mailberichten met gevoelige gegevens (burgerservicenummers, creditcardnummers, enz.)?
-* Heeft uw bedrijf nodig voor het versleutelen van alle documenten/inhoud gedeeld met externe zakelijke partners?
-* Heeft uw bedrijf behoefte aan het bedrijfsbeleid voor bepaalde typen e-mailberichten (geen allen beantwoorden, niet doorsturen)?
+* Heeft uw bedrijf beveiligingscontroles om de privacy van gegevens af te dwingen?
+  * Zo ja, zullen de beveiligingscontroles in staat zijn om te integreren met de hybride identiteit oplossing die u gaat aannemen?
+* Gebruikt uw bedrijf gegevensclassificatie?
+  * Zo ja, is de huidige oplossing in staat om te integreren met de hybride identiteitsoplossing die u gaat aannemen?
+* Heeft uw bedrijf momenteel een oplossing voor datalekken? 
+  * Zo ja, is de huidige oplossing in staat om te integreren met de hybride identiteitsoplossing die u gaat aannemen?
+* Moet uw bedrijf de toegang tot resources controleren?
+  * Zo ja, wat voor soort middelen?
+  * Zo ja, welk niveau van informatie is nodig?
+  * Zo ja, waar het controlelogboek moet zich bevinden? On-premises of in de cloud?
+* Moet uw bedrijf e-mails versleutelen die gevoelige gegevens bevatten (SSN's, creditcardnummers, enz.)?
+* Moet uw bedrijf alle documenten/inhoud versleutelen die worden gedeeld met externe zakenpartners?
+* Moet uw bedrijf het bedrijfsbeleid afdwingen op bepaalde soorten e-mails (niet alles beantwoorden, niet doorsturen)?
 
 > [!NOTE]
-> Zorg ervoor dat u elk antwoord noteert en de logica achter het antwoord begrijpt. [Definieer Gegevensbeveiligingsstrategie](plan-hybrid-identity-design-considerations-data-protection-strategy.md) gaat over de beschikbare opties en de voor-en nadelen van elke optie.  Moet door deze vragen die kunt u selecteren welke optie het beste past bij uw bedrijf te beantwoorden.
+> Zorg ervoor dat u elk antwoord noteert de logica achter het antwoord begrijpt. [Define Data Protection Strategy](plan-hybrid-identity-design-considerations-data-protection-strategy.md) zal gaan over de beschikbare opties en voordelen / nadelen van elke optie.  Door deze vragen te hebben beantwoord, selecteert u welke optie het beste bij uw bedrijfsbehoeften past.
 > 
 > 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Vereisten voor toegangsbeheer bepalen](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)
+[Vereisten voor toegangsbeheer vaststellen](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)
 
 ## <a name="see-also"></a>Zie ook
 [Overzicht ontwerpoverwegingen](plan-hybrid-identity-design-considerations-overview.md)

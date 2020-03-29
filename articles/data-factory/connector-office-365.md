@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren van Office 365 met behulp van Azure Data Factory
-description: Informatie over het kopiëren van gegevens uit Office 365 naar ondersteunde Sink-gegevens archieven met behulp van Kopieer activiteit in een Azure Data Factory pijp lijn.
+title: Gegevens uit Office 365 kopiëren met Azure Data Factory
+description: Meer informatie over het kopiëren van gegevens uit Office 365 naar ondersteunde sink-gegevensarchieven met behulp van kopieeractiviteit in een Azure Data Factory-pijplijn.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,83 +12,83 @@ ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
 ms.openlocfilehash: d97b3caccc92f0fdfeb229d94e30ee6499c26181
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74912402"
 ---
-# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Gegevens kopiëren van Office 365 naar Azure met behulp van Azure Data Factory
+# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Gegevens uit Office 365 kopiëren naar Azure met Azure Data Factory
 
-Azure Data Factory kan worden geïntegreerd met [Microsoft Graph data Connect](https://docs.microsoft.com/graph/data-connect-concept-overview), zodat u de uitgebreide organisatie gegevens in uw Office 365-Tenant op schaal bare wijze in azure kunt brengen en analyse toepassingen kunt bouwen en inzichten kunt ophalen op basis van deze waardevolle gegevensassets. Integratie met Privileged Access Management biedt beveiligd toegangs beheer voor de waardevolle gecuratore gegevens in Office 365.  Raadpleeg [deze koppeling](https://docs.microsoft.com/graph/data-connect-concept-overview) voor een overzicht van Microsoft Graph data Connect en Raadpleeg [deze koppeling](https://docs.microsoft.com/graph/data-connect-policies#licensing) voor informatie over licenties.
+Azure Data Factory integreert met [Microsoft Graph data connect,](https://docs.microsoft.com/graph/data-connect-concept-overview)zodat u de rijke organisatiegegevens in uw Office 365-tenant op een schaalbare manier in Azure brengen en analytics-toepassingen bouwen en inzichten extraheren op basis van deze waardevolle gegevenselementen. Integratie met Privileged Access Management biedt beveiligde toegangscontrole voor de waardevolle samengestelde gegevens in Office 365.  Raadpleeg [deze link](https://docs.microsoft.com/graph/data-connect-concept-overview) voor een overzicht over Microsoft Graph data connect en raadpleeg [deze link](https://docs.microsoft.com/graph/data-connect-policies#licensing) voor licentiegegevens.
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit Office 365 te kopiëren. Dit is gebaseerd op de [overzicht kopieeractiviteit](copy-activity-overview.md) artikel met daarin een algemeen overzicht van de kopieeractiviteit.
+In dit artikel wordt beschreven hoe u activiteit kopiëren in Azure Data Factory gebruikt om gegevens uit Office 365 te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
-Met de ADF Office 365-connector en Microsoft Graph data Connect kunt u op grote schaal opname van verschillende typen gegevens sets van post vakken van Exchange-e-mail berichten maken, zoals contact personen in het adres boek, agenda-items, e-mail berichten, gebruikers gegevens, Postvak instellingen en dus.  [Hier](https://docs.microsoft.com/graph/data-connect-datasets) vindt u een overzicht van de volledige lijst met beschik bare gegevens sets.
+ADF Office 365-connector en Microsoft Graph-gegevensverbinding maken het mogelijk om op schaal verschillende typen gegevenssets uit exchange-e-mailboxen te gebruiken, waaronder adresboekcontactpersonen, agenda-afspraken, e-mailberichten, gebruikersgegevens, postvakinstellingen en ga zo maar door.  Raadpleeg [hier](https://docs.microsoft.com/graph/data-connect-datasets) de volledige lijst met beschikbare gegevenssets.
 
-U kunt nu binnen één Kopieer activiteit **gegevens alleen kopiëren van Office 365 naar [Azure Blob Storage](connector-azure-blob-storage.md), [Azure data Lake Storage GEN1](connector-azure-data-lake-store.md)en [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md) in JSON-indeling** (type setOfObjects). Als u Office 365 wilt laden in andere typen gegevens opslag of in andere indelingen, kunt u de eerste Kopieer activiteit koppelen aan een volgende Kopieer activiteit om gegevens te laden in een van de [ondersteunde ADF-doel archieven](copy-activity-overview.md#supported-data-stores-and-formats) (Zie ' ondersteund als een Sink-kolom ' in de tabel ' ondersteunde gegevens archieven en-indelingen ').
+Vooralsnog u binnen één kopieeractiviteit alleen **gegevens uit Office 365 kopiëren naar [Azure Blob Storage,](connector-azure-blob-storage.md) [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)en [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) in JSON-indeling** (typesetOfObjects). Als u Office 365 wilt laden in andere typen gegevensarchieven of in andere indelingen, u de eerste kopieeractiviteit met een volgende kopieeractiviteit ketenen om gegevens verder te laden in een van de [ondersteunde ADF-doelopslag](copy-activity-overview.md#supported-data-stores-and-formats) (verwijzen naar de kolom 'ondersteund als een sink' in de tabel 'Ondersteunde gegevensopslag en -indelingen').
 
 >[!IMPORTANT]
->- Het Azure-abonnement met de data factory en het sink-gegevens archief moeten zich onder dezelfde Azure Active Directory (Azure AD) Tenant benemen als Office 365-Tenant.
->- Zorg ervoor dat de regio Azure Integration Runtime gebruikt voor kopieer activiteiten en dat de bestemming zich in dezelfde regio bevindt als de Office 365-postbus van de Tenant gebruikers. [Hier](concepts-integration-runtime.md#integration-runtime-location) vindt u informatie over de wijze waarop de Azure IR locatie wordt bepaald. Raadpleeg [hier de tabel](https://docs.microsoft.com/graph/data-connect-datasets#regions) voor de lijst met ondersteunde Office-regio's en de bijbehorende Azure-regio's.
->- Service-Principal-verificatie is het enige verificatie mechanisme dat wordt ondersteund voor Azure Blob Storage, Azure Data Lake Storage Gen1 en Azure Data Lake Storage Gen2 als doel archief.
+>- Het Azure-abonnement dat de gegevensfabriek en het sink-gegevensarchief bevat, moet onder dezelfde Azure Active Directory-tenant (Azure AD) als de Office 365-tenant staan.
+>- Controleer of het runtime-gebied Azure Integration wordt gebruikt voor kopieeractiviteit en dat de bestemming zich in hetzelfde gebied bevindt waar het postvak van de Office 365-tenantgebruikers zich bevindt. Raadpleeg [hier](concepts-integration-runtime.md#integration-runtime-location) hoe de Azure IR-locatie wordt bepaald. Raadpleeg [hier de tabel](https://docs.microsoft.com/graph/data-connect-datasets#regions) voor de lijst met ondersteunde Office-regio's en bijbehorende Azure-regio's.
+>- Service principal-verificatie is het enige verificatiemechanisme dat wordt ondersteund voor Azure Blob Storage, Azure Data Lake Storage Gen1 en Azure Data Lake Storage Gen2 als bestemmingsopslag.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u gegevens wilt kopiëren van Office 365 naar Azure, moet u de volgende vereiste stappen uitvoeren:
+Als u gegevens uit Office 365 wilt kopiëren naar Azure, moet u de volgende vereistestappen uitvoeren:
 
-- Uw Office 365-Tenant beheerder moet on-board acties volt ooien, zoals [hier](https://docs.microsoft.com/graph/data-connect-get-started)wordt beschreven.
-- Een Azure AD-webtoepassing maken en configureren in Azure Active Directory.  Zie [een Azure AD-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)voor instructies.
-- Noteer de volgende waarden, die u moet gebruiken om de gekoppelde service voor Office 365 te definiëren:
-    - Tenant-ID. Zie [Tenant-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)voor instructies.
-    - Toepassings-ID en toepassings sleutel.  Zie [toepassings-id en verificatie sleutel ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)voor instructies.
-- Voeg de gebruikers-id toe die de gegevens toegangs aanvraag maakt als de eigenaar van de Azure AD-webtoepassing (van de Azure AD Web Application > Instellingen > eigen aren > een eigenaar toevoegen). 
-    - De gebruikers-id moet zich bevinden in de Office 365-organisatie waarvan u de gegevens ophaalt en mag geen gast gebruiker zijn.
+- Uw Office 365-tenantbeheerder moet de on-boarding-acties uitvoeren zoals [hier](https://docs.microsoft.com/graph/data-connect-get-started)beschreven.
+- Een Azure AD-webtoepassing maken en configureren in Azure Active Directory.  Zie Een [Azure AD-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)voor instructies .
+- Noteer de volgende waarden die u gebruikt om de gekoppelde service voor Office 365 te definiëren:
+    - Huurder-ID. Zie [Tenant-id opvragen voor](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)instructies.
+    - Toepassings-ID en toepassingssleutel.  Zie [Toepassings-id en verificatiesleutel opvragen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)voor instructies.
+- Voeg de gebruikersidentiteit toe die het verzoek tot toegang tot gegevens als eigenaar van de Azure AD-webtoepassing (vanuit de Azure AD-webtoepassing > Instellingen > Eigenaren > Eigenaar toevoegen) gaat maken. 
+    - De gebruikersidentiteit moet zich bevinden in de Office 365-organisatie waar u gegevens van krijgt en mag geen gastgebruiker zijn.
 
-## <a name="approving-new-data-access-requests"></a>Nieuwe aanvragen voor gegevens toegang goed keuren
+## <a name="approving-new-data-access-requests"></a>Nieuwe aanvragen voor toegang tot gegevens goedkeuren
 
-Als dit de eerste keer is dat u gegevens aanvraagt voor deze context (een combi natie van welke gegevens tabel wordt geopend, met welk doel account worden de gegevens geladen en welke gebruikers-id de aanvraag voor gegevens toegang maakt, wordt de status van de Kopieer activiteit als ' wordt uitgevoerd ' weer gegeven. Als u op de [koppeling Details onder acties](copy-activity-overview.md#monitoring) klikt, ziet u de status als ' RequestingConsent '.  Een lid van de groep voor het goed keuren van gegevens toegang moet de aanvraag goed keuren in de Privileged Access Management voordat de gegevens extractie kan worden voortgezet.
+Als dit de eerste keer is dat u gegevens opvraagt voor deze context (een combinatie van welke gegevenstabel wordt geopend, in welk doelaccount de gegevens worden geladen en in welke gebruikersidentiteit de aanvraag voor gegevenstoegang wordt ingediend), ziet u de status van kopieeractiviteit als 'In uitvoering' en alleen wanneer u klikt op [de link Details onder Acties](copy-activity-overview.md#monitoring) ziet u de status 'Verzoek om toestemming'.  Een lid van de groep voor gegevenstoegangsmoet de aanvraag in het Privileged Access Management goedkeuren voordat de gegevensextractie kan worden voortgezet.
 
-[Hier](https://docs.microsoft.com/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal) vindt u informatie over de manier waarop de fiatteur de aanvraag voor gegevens toegang kan goed keuren, en [hier](https://docs.microsoft.com/graph/data-connect-pam) vindt u een uitleg over de algehele integratie met privileged Access Management, met inbegrip van hoe u de groep voor het instellen van gegevens toegang instelt.
+Raadpleeg [hier](https://docs.microsoft.com/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal) hoe de goedkeurder het verzoek tot toegang tot gegevens kan goedkeuren en raadpleeg [hier](https://docs.microsoft.com/graph/data-connect-pam) een uitleg over de algehele integratie met Privileged Access Management, inclusief het instellen van de groep voor de goedkeuring van gegevenstoegang.
 
 ## <a name="policy-validation"></a>Beleidsvalidatie
 
-Als ADF is gemaakt als onderdeel van een beheerde app en Azure-beleids toewijzingen worden uitgevoerd op resources binnen de beheer resource groep, wordt voor elke uitvoering van de Kopieer activiteit gecontroleerd of de beleids toewijzingen worden afgedwongen. [Hier](https://docs.microsoft.com/graph/data-connect-policies#policies) vindt u een lijst met ondersteunde beleids regels.
+Als ADF is gemaakt als onderdeel van een beheerde app en Azure-beleidstoewijzingen worden uitgevoerd op resources binnen de beheerbrongroep, controleert ADF voor elke kopieeractiviteit of de beleidstoewijzingen worden afgedwongen. Raadpleeg [hier](https://docs.microsoft.com/graph/data-connect-policies#policies) een lijst met ondersteunde beleidsregels.
 
 ## <a name="getting-started"></a>Aan de slag
 
 >[!TIP]
->Zie voor een overzicht van het gebruik van Office 365 connector [gegevens laden uit het Office 365](load-office-365-data.md) -artikel.
+>Zie [Gegevens laden uit office 365](load-office-365-data.md) voor een walkthrough van het gebruik van Office 365-connector.
 
-U kunt met behulp van een van de volgende hulpprogram ma's of Sdk's een pijp lijn maken met de Kopieer activiteit. Selecteer een koppeling om naar een zelf studie te gaan met stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. 
+U een pijplijn maken met de kopieeractiviteit met behulp van een van de volgende hulpprogramma's of SDK's. Selecteer een koppeling om naar een zelfstudie te gaan met stapsgewijze instructies om een pijplijn met een kopieeractiviteit te maken. 
 
 - [Azure-portal](quickstart-create-data-factory-portal.md)
-- [.NET-SDK](quickstart-create-data-factory-dot-net.md)
+- [.NET SDK](quickstart-create-data-factory-dot-net.md)
 - [Python SDK](quickstart-create-data-factory-python.md)
 - [Azure PowerShell](quickstart-create-data-factory-powershell.md)
-- [REST API](quickstart-create-data-factory-rest-api.md)
-- [Azure Resource Manager sjabloon](quickstart-create-data-factory-resource-manager-template.md). 
+- [REST-API](quickstart-create-data-factory-rest-api.md)
+- [Azure Resource Manager-sjabloon](quickstart-create-data-factory-resource-manager-template.md). 
 
-De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor Office 365 connector.
+In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in gegevensfabriek te definiëren die specifiek zijn voor de Office 365-connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
 
-De volgende eigenschappen worden ondersteund voor Office 365 gekoppelde service:
+De volgende eigenschappen worden ondersteund voor de gekoppelde office 365-service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **Office365** | Ja |
-| office365TenantId | De Azure-Tenant-ID waartoe het Office 365-account behoort. | Ja |
-| servicePrincipalTenantId | Geef de Tenant gegevens op waaronder uw Azure AD-webtoepassing zich bevindt. | Ja |
-| servicePrincipalId | Opgeven van de toepassing client-ID. | Ja |
-| servicePrincipalKey | Geef de sleutel van de toepassing. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. | Ja |
-| connectVia | Het Integration Runtime dat moet worden gebruikt om verbinding te maken met het gegevens archief.  Als niet is opgegeven, wordt de standaard Azure Integration Runtime. | Nee |
+| type | De eigenschap type moet zijn ingesteld op: **Office365** | Ja |
+| office365TenantId | Azure-tenant-id waartoe het Office 365-account behoort. | Ja |
+| servicePrincipalTenantId | Geef de tenantgegevens op waaronder uw Azure AD-webtoepassing zich bevindt. | Ja |
+| servicePrincipalId | Geef de client-id van de toepassing op. | Ja |
+| servicePrincipalKey | Geef de sleutel van de toepassing op. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. | Ja |
+| connectVia | De integratieruntijd die moet worden gebruikt om verbinding te maken met het gegevensarchief.  Als dit niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. | Nee |
 
 >[!NOTE]
-> Het verschil tussen **office365TenantId** en **servicePrincipalTenantId** en de bijbehorende waarde om het volgende te bieden:
->- Als u een bedrijfs ontwikkelaar bent die een toepassing ontwikkelt op basis van Office 365-gegevens voor het gebruik van uw eigen organisatie, moet u dezelfde Tenant-ID voor beide eigenschappen opgeven. Dit is de AAD-Tenant-ID van uw organisatie.
->- Als u een ISV-ontwikkelaar bent die een toepassing ontwikkelt voor uw klanten, zijn office365TenantId van uw klant (Application Installer) de AAD-Tenant-ID van uw bedrijf en servicePrincipalTenantId wordt de AAD-Tenant-ID van uw organisatie.
+> Het verschil tussen **office365TenantId** en **servicePrincipalTenantId** en de bijbehorende waarde te bieden:
+>- Als u een bedrijfsontwikkelaar bent die een toepassing ontwikkelt tegen Office 365-gegevens voor het gebruik van uw eigen organisatie, moet u dezelfde tenant-id leveren voor beide eigenschappen, wat de AAD-tenant-id van uw organisatie is.
+>- Als u een ISV-ontwikkelaar bent die een applicatie voor uw klanten ontwikkelt, dan is office365TenantId de AAD-tenant-id van uw klant (applicatie-installatie- en servicePrincipalTenantId) de AAD-tenant-id van uw bedrijf.
 
 **Voorbeeld:**
 
@@ -112,16 +112,16 @@ De volgende eigenschappen worden ondersteund voor Office 365 gekoppelde service:
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die door Office 365 DataSet worden ondersteund.
+Zie het artikel [gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Office 365-gegevensset.
 
-Als u gegevens wilt kopiëren uit Office 365, worden de volgende eigenschappen ondersteund:
+Als u gegevens uit Office 365 wilt kopiëren, worden de volgende eigenschappen ondersteund:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **Office365Table** | Ja |
-| tableName | De naam van de gegevensset die moet worden geëxtraheerd uit Office 365. [Hier](https://docs.microsoft.com/graph/data-connect-datasets#datasets) vindt u een lijst met Office 365-gegevens sets die beschikbaar zijn voor uitpakken. | Ja |
+| tableName | Naam van de gegevensset die u uit Office 365 wilt halen. Raadpleeg [hier](https://docs.microsoft.com/graph/data-connect-datasets#datasets) de lijst met Office 365-gegevenssets die beschikbaar zijn voor extractie. | Ja |
 
-Als u `dateFilterColumn`, `startTime`, `endTime`en `userScopeFilterUri` in de gegevensset hebt ingesteld, wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd het nieuwe model in activiteit bron te gebruiken.
+Als u `dateFilterColumn`instellingen `startTime` `endTime`, `userScopeFilterUri` , , en in de gegevensset, wordt het nog steeds ondersteund as-is, terwijl u wordt voorgesteld om het nieuwe model te gebruiken in activiteitbron in de toekomst.
 
 **Voorbeeld**
 
@@ -144,21 +144,21 @@ Als u `dateFilterColumn`, `startTime`, `endTime`en `userScopeFilterUri` in de ge
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door Office 365-bron.
+Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door office 365-bron.
 
 ### <a name="office-365-as-source"></a>Office 365 als bron
 
-Als u gegevens wilt kopiëren uit Office 365, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
+Als u gegevens uit Office 365 wilt kopiëren, worden de volgende eigenschappen ondersteund in de **sectie** bron van kopieeractiviteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **Office365Source** | Ja |
-| allowedGroups | Predikaat groep selecteren.  Gebruik deze eigenschap om Maxi maal 10 gebruikers groepen te selecteren voor wie de gegevens worden opgehaald.  Als er geen groepen zijn opgegeven, worden de gegevens voor de hele organisatie geretourneerd. | Nee |
-| userScopeFilterUri | Als `allowedGroups` eigenschap niet is opgegeven, kunt u een predicaat expressie gebruiken die wordt toegepast op de hele Tenant om de specifieke rijen te filteren die moeten worden geëxtraheerd uit Office 365. De predicaat indeling moet overeenkomen met de query-indeling van Microsoft Graph Api's, bijvoorbeeld `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`. | Nee |
-| dateFilterColumn | De naam van de datum filter kolom. Gebruik deze eigenschap om het tijds bereik te beperken waarvoor Office 365-gegevens worden geëxtraheerd. | Ja als DataSet een of meer DateTime-kolommen bevat. [Hier](https://docs.microsoft.com/graph/data-connect-filtering#filtering) vindt u een lijst met gegevens sets waarvoor dit datetime-filter nodig is. |
-| startTime | Start datum-waarde voor filteren op. | Ja als `dateFilterColumn` is opgegeven |
-| endTime | Eind datum/-waarde waarop moet worden gefilterd. | Ja als `dateFilterColumn` is opgegeven |
-| outputColumns | Matrix van de kolommen die naar Sink moeten worden gekopieerd. | Nee |
+| type | De eigenschap type van de bron van kopieeractiviteit moet zijn ingesteld op: **Office365Source** | Ja |
+| toegestaanGroepen | Groepsselectiepredicaat.  Gebruik deze eigenschap om maximaal 10 gebruikersgroepen te selecteren voor wie de gegevens worden opgehaald.  Als er geen groepen zijn opgegeven, worden de gegevens geretourneerd voor de hele organisatie. | Nee |
+| userScopeFilterUri | Wanneer `allowedGroups` de eigenschap niet is opgegeven, u een predicaatexpressie gebruiken die op de hele tenant wordt toegepast om de specifieke rijen te filteren die u uit Office 365 wilt halen. De predicaatindeling moet overeenkomen met de queryindeling van `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`Microsoft Graph API's, bijvoorbeeld . | Nee |
+| dateFilterKolom | Naam van de filterkolom DateTime. Gebruik deze eigenschap om het tijdsbereik te beperken waarvoor Office 365-gegevens worden geëxtraheerd. | Ja als de gegevensset een of meer Datumtijdkolommen bevat. Raadpleeg [hier](https://docs.microsoft.com/graph/data-connect-filtering#filtering) voor een lijst met gegevenssets waarvoor dit DateTime-filter vereist is. |
+| startTime | Datumtijdwaarde starten om op te filteren. | Ja `dateFilterColumn` als dit is opgegeven |
+| endTime | Datumdatumtijd om op te filteren. | Ja `dateFilterColumn` als dit is opgegeven |
+| uitvoerKolommen | Array van de kolommen te kopiëren om te zinken. | Nee |
 
 **Voorbeeld:**
 
@@ -303,4 +303,4 @@ Als u gegevens wilt kopiëren uit Office 365, worden de volgende eigenschappen o
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).
+Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory.

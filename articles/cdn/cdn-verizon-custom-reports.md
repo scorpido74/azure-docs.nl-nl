@@ -1,6 +1,6 @@
 ---
-title: Aangepaste Verizon-rapporten | Microsoft Docs
-description: 'U kunt gebruikspatronen voor uw CDN bekijken met behulp van de volgende rapporten: Bandbreedte, gegevens overgebracht, treffers, Cachestatussen, het aantal cachetreffers, IPV4/IPV6-gegevens die worden overgebracht.'
+title: Aangepaste rapporten van Verizon | Microsoft Documenten
+description: 'U gebruikspatronen voor uw CDN bekijken aan de hand van de volgende rapporten: Bandbreedte, Overgedragen gegevens, treffers, cachestatussen, cachehitratio, IPV4/IPV6-gegevens overgedragen.'
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,78 +15,78 @@ ms.topic: article
 ms.date: 10/11/2017
 ms.author: magattus
 ms.openlocfilehash: 15f17ac6556c4ff731372dc7f738d0f58bdc3e31
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593296"
 ---
-# <a name="custom-reports-from-verizon"></a>Aangepaste Verizon-rapporten
+# <a name="custom-reports-from-verizon"></a>Aangepaste rapporten van Verizon
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Met behulp van Verizon aangepaste rapporten via de portal beheren voor Verizon-profielen, kunt u het type gegevens moeten worden verzameld voor edge CNAME-records rapporten definiëren.
+Door Verizon Custom Reports te gebruiken via de Portal voor Verizon-profielen beheren, u het type gegevens definiëren dat moet worden verzameld voor edge CNAMEs-rapporten.
 
 
-## <a name="accessing-verizon-custom-reports"></a>Aangepaste Verizon-rapporten openen
-1. Klik in de blade CDN-profiel op de **beheren** knop.
+## <a name="accessing-verizon-custom-reports"></a>Toegang tot aangepaste rapporten van Verizon
+1. Klik in het CDN-profielblad op de knop **Beheren.**
    
-    ![Knop voor CDN-profiel beheren](./media/cdn-reports/cdn-manage-btn.png)
+    ![Knop CDN-profiel beheren](./media/cdn-reports/cdn-manage-btn.png)
    
-    De CDN-beheerportal wordt geopend.
-2. Beweeg de muisaanwijzer over de **Analytics** tabblad en klik vervolgens Beweeg de muisaanwijzer over de **aangepaste rapporten** flyout. Klik op **CNAME-records van de rand**.
+    Het CDN-beheerportaal wordt geopend.
+2. Plaats de plaats op het tabblad **Analytics** en plaats de plaats vervolgens boven de flyout **Aangepaste rapporten.** Klik **op Edge CNAMEs**.
    
-    ![CDN-beheerportal - aangepaste rapporten menu](./media/cdn-reports/cdn-custom-reports.png)
+    ![CDN-beheerportal - Menu Aangepaste rapporten](./media/cdn-reports/cdn-custom-reports.png)
 
-## <a name="edge-cnames-custom-report"></a>Edge CNAME-records aangepast rapport
-Het aangepaste rapport Edge CNAME's biedt treffers en overgedragen gegevens statistieken voor edge CNAME-records die aangepaste rapport logboekregistratie is ingeschakeld. Edge CNAME's bestaan uit Azure CDN-eindpunt hostnamen en geen hostnaam gekoppeld aangepast domein. 
+## <a name="edge-cnames-custom-report"></a>Aangepast rapport Edge CNAMES
+Het aangepaste rapport Edge CNAMES biedt statistieken over hits en gegevensoverdracht voor edge-CNAMEs waarop aangepaste rapportlogboekregistratie is ingeschakeld. Edge CNAMEs bestaan uit Azure CDN-eindpunthostnamen en eventuele bijbehorende aangepaste domeinnamen. 
 
-Aangepast rapport gegevensregistratie begint één uur nadat u de aangepaste rapportagefunctionaliteit een edge-CNAME hebt ingeschakeld. U kunt rapportgegevens weergeven door het genereren van een rapport Edge CNAME-records voor een specifiek platform of voor alle platforms. De dekking voor dit rapport is beperkt tot het edge-CNAME's waarvoor aangepaste rapportgegevens zijn verzameld tijdens de opgegeven periode. Rand van het CNAME-records rapport bestaat uit een grafiek en een gegevenstabel voor de 10 bovenrand CNAME-records op basis van de waarde die is gedefinieerd in de optie voor metrische gegevens. 
+Het vastleggen van aangepaste rapportgegevens begint een uur nadat u de aangepaste rapportagemogelijkheden van een edge CNAME hebt ingeschakeld. U rapportgegevens bekijken door een Edge CNAMEs-rapport te genereren voor een specifiek platform of voor alle platforms. De dekking voor dit rapport is beperkt tot de edge CNAMEs waarvoor aangepaste rapportgegevens werden verzameld tijdens de opgegeven periode. Het edge CNAMEs-rapport bestaat uit een grafiek en gegevenstabel voor de bovenste 10 edge-CNAMEs volgens de statistiek die is gedefinieerd in de optie Metrische gegevens. 
 
-Een aangepast rapport genereren met het definiëren van de volgende opties:
+Een aangepast rapport genereren door de volgende rapportopties te definiëren:
 
-- Metrische gegevens: De volgende opties worden ondersteund:
+- Statistieken: de volgende opties worden ondersteund:
 
-   - Treffers: Geeft het totale aantal aanvragen die worden doorgestuurd naar een edge-CNAME waarop de aangepaste rapportagefunctionaliteit is ingeschakeld. Met deze metriek omvat niet de statuscode geretourneerd naar de client.
+   - Hits: geeft het totale aantal aanvragen aan dat is gericht op een edge CNAME waarop de aangepaste rapportagemogelijkheid is ingeschakeld. Deze statistiek bevat niet de statuscode die naar de client is geretourneerd.
 
-   - Overgedragen gegevens: Geeft de totale hoeveelheid gegevens die van de edge-servers worden overgedragen naar de HTTP-clients (bijvoorbeeld webbrowsers) voor aanvragen die worden doorgestuurd naar een edge-CNAME waarop de aangepaste rapportagefunctionaliteit is ingeschakeld. De hoeveelheid overgedragen gegevens wordt berekend door het HTTP-antwoordheaders toe te voegen aan de antwoordtekst. Als gevolg hiervan is de hoeveelheid gegevens die worden overgedragen voor elke asset groter is dan de werkelijke bestandsgrootte.
+   - Overgedragen gegevens: geeft de totale hoeveelheid gegevens aan die wordt overgedragen van de randservers naar de HTTP-clients (bijvoorbeeld webbrowsers) voor aanvragen die zijn gericht op een edge CNAME waarop de aangepaste rapportagemogelijkheid is ingeschakeld. De hoeveelheid overgedragen gegevens wordt berekend door HTTP-antwoordkoppen toe te voegen aan de antwoordtekst. Als gevolg hiervan is de hoeveelheid gegevens die voor elk actief wordt overgedragen groter dan de werkelijke bestandsgrootte.
 
-- Groepen: Bepaalt het type van de statistieken die worden weergegeven onder het staafdiagram. De volgende opties worden ondersteund:
+- Groeperingen: hiermee bepaalt u het type statistieken dat onder het staafdiagram wordt weergegeven. De volgende opties worden ondersteund:
 
-   - HTTP-responscodes: Statistieken op HTTP-responscode organiseert (bijvoorbeeld 200, 403, etc.) geretourneerd naar de client. 
+   - HTTP-antwoordcodes: organiseert statistieken op HTTP-antwoordcode (bijvoorbeeld 200, 403, enz.) die naar de client wordt teruggestuurd. 
 
-   - Cache Status: Organiseert statistieken met de status van de cache.
+   - Cachestatus: hiermee worden statistieken op basis van cachestatus georganiseerd.
 
 
-Om in te stellen het datumbereik voor het rapport, u kunt selecteren een vooraf gedefinieerde datumbereik, zoals **vandaag** of **deze Week**, uit de vervolgkeuzelijst of u kunt selecteren **aangepaste** en Voer handmatig een datumbereik door te klikken op de pictogrammen van de agenda. 
+Als u het datumbereik voor het rapport wilt instellen, u een vooraf gedefinieerd datumbereik selecteren, zoals **Vandaag** of **Deze week,** in de vervolgkeuzelijst of u **Aangepast** selecteren en handmatig een datumbereik invoeren door op de agendapictogrammen te klikken. 
 
-Nadat u het datumbereik hebt geselecteerd, klikt u op **gaat** om het rapport te genereren.
+Nadat u het datumbereik hebt geselecteerd, klikt u op **Gaan** om het rapport te genereren.
 
-U kunt de gegevens in Excel-indeling exporteren door te klikken op het Excel-symbool aan de rechterkant van de **gaat** knop.
+U de gegevens exporteren in Excel-indeling door rechts van de knop **Naar** door op het Excel-symbool te klikken.
 
-![Rapport van CNAME-records](./media/cdn-reports/cdn-cnames-report.png)
+![CNAMEs-rapport](./media/cdn-reports/cdn-cnames-report.png)
 
-## <a name="edge-cnames-custom-report-fields"></a>Edge CNAME-records aangepaste rapportvelden
+## <a name="edge-cnames-custom-report-fields"></a>Aangepaste rapportvelden edge CNAMES
 
-| Veld                     | Description   |
+| Veld                     | Beschrijving   |
 |---------------------------|---------------|
-| 2xx                       | Geeft het totale aantal aanvragen of overgedragen gegevens (MB) voor de rand CNAME die in een 2xx HTTP-statuscode resulteert (bijvoorbeeld 200 OK). |
-| 3xx                       | Geeft het totale aantal aanvragen of overgedragen gegevens (MB) voor de rand CNAME die in een 3xx HTTP-statuscode resulteert (bijvoorbeeld 302 gevonden of 304 niet gewijzigd. |
-| 4XX                       | Geeft het totale aantal aanvragen of overgedragen gegevens (MB) voor de rand CNAME die in een HTTP-statuscode 4xx resulteert (bijvoorbeeld 400 Ongeldige aanvraag, 403 verboden of 404 niet gevonden). |
-| 5xx                       | Geeft het totale aantal aanvragen of overgedragen gegevens (MB) voor de rand CNAME die in een 5xx HTTP-statuscode (bijvoorbeeld 500 Interne serverfout of 502 Ongeldige Gateway resulteert). |
-| Percentage treffers in cache               | Geeft het percentage van gecachet kan worden aanvragen die zijn behandeld rechtstreeks uit de cache aan de aanvrager. |
-| Treffers in cache                | Geeft het totale aantal aanvragen of overgedragen gegevens (MB) voor de rand CNAME die in een cache-hits (bijvoorbeeld TCP_EXPIRED_HIT, TCP_HIT of TCP_PARTIAL_HIT resulteert). Een cache-hits treedt op wanneer de versie van een cache van de aangevraagde inhoud is gevonden. |
-| Data Transferred (MB)     | Geeft de totale hoeveelheid gegevens overgedragen (MB) van het edge-servers naar HTTP-clients (webbrowsers) voor de CNAME van de rand aan. De hoeveelheid overgedragen gegevens wordt berekend door de HTTP-antwoordheaders toe te voegen aan de antwoordtekst. Als gevolg hiervan is de hoeveelheid gegevens die worden overgedragen voor elke asset groter is dan de werkelijke bestandsgrootte. |
-| Description               | Identificeert een rand CNAME door de hostnaam |
-| Aantal treffers                      | Geeft het totale aantal aanvragen naar de rand CNAME |
-| Missers in                    | Geeft het totale aantal aanvragen of overgedragen gegevens (MB) voor de rand CNAME die in een cache ontbreekt (bijvoorbeeld TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS of TCP_MISS resulteert). Een cache ontbreekt treedt op wanneer de aangevraagde inhoud is niet in de cache opgeslagen op het edge-server die de aanvraag gehonoreerd. | 
-| Geen Cache                  | Geeft het totale aantal aanvragen of overgedragen gegevens (MB) voor de rand CNAME die in een CONFIG_NOCACHE cache-statuscode resulteert.  |
-| Overige                     | Geeft het totale aantal aanvragen of gegevens die worden overgedragen (MB) voor de rand CNAME aangegeven die resulteert in een HTTP-statuscode die buiten het 2xx - bereik 5xx valt. |
-| Platform                  | Geeft aan dat het platform die verantwoordelijk is voor de edge-CNAME-verkeer. |
-| Niet-toegewezen               | Geeft het totale aantal aanvragen of overgedragen gegevens (MB) voor de edge-CNAME voor welke cache statuscode of HTTP-statuscode informatie niet is geregistreerd.  |
-| Uncacheable               | Geeft het totale aantal aanvragen of overgedragen gegevens (MB) voor de rand CNAME die in een statuscode UNCACHEABLE cache resulteert.  |
+| 2xx                       | Geeft het totale aantal aanvragen of overgedragen gegevens (MB) aan voor de edge CNAME die resulteert in een 2xx HTTP-statuscode (bijvoorbeeld 200 OK). |
+| 3xx 3xx                       | Geeft het totale aantal aanvragen of overgedragen gegevens (MB) aan voor de rand-CNAME die resulteert in een 3xx HTTP-statuscode (bijvoorbeeld 302 Gevonden of 304 niet gewijzigd. |
+| 4xx                       | Geeft het totale aantal overgezette aanvragen of gegevens (MB) aan voor de edge CNAME die resulteert in een 4xx HTTP-statuscode (bijvoorbeeld 400 Bad Request, 403 Verboden of 404 niet gevonden). |
+| 5xx                       | Geeft het totale aantal aanvragen of overgedragen gegevens (MB) aan voor de edge CNAME die resulteert in een 5xx HTTP-statuscode (bijvoorbeeld 500 interne serverfout of 502 Bad Gateway). |
+| Cache Hit %               | Hiermee geeft u het percentage cachebare aanvragen aan dat rechtstreeks vanuit de cache naar de aanvrager is aangeboden. |
+| Cache Hits                | Geeft het totale aantal aanvragen of gegevens aan dat wordt overgedragen (MB) voor de edge CNAME die resulteert in een cachehit (bijvoorbeeld TCP_EXPIRED_HIT, TCP_HIT of TCP_PARTIAL_HIT). Er treedt een cachehit op wanneer een in de cache opgeslagen versie van de gevraagde inhoud wordt gevonden. |
+| Overgedragen gegevens (MB)     | Geeft de totale hoeveelheid gegevens aan die wordt overgedragen (MB) van de randservers naar HTTP-clients (webbrowsers) voor de edge CNAME. De hoeveelheid overgedragen gegevens wordt berekend door de HTTP-antwoordkoppen toe te voegen aan de antwoordtekst. Als gevolg hiervan is de hoeveelheid gegevens die voor elk actief wordt overgedragen groter dan de werkelijke bestandsgrootte. |
+| Beschrijving               | Identificeert een edge CNAME aan de hostnaam |
+| Treffers                      | Geeft het totale aantal aanvragen aan de edge CNAME aan |
+| Mist                    | Geeft het totale aantal aanvragen of overgedragen gegevens (MB) aan voor de edge CNAME die resulteert in een cachemiss (bijvoorbeeld TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS of TCP_MISS). Er treedt een cachefout op wanneer de gevraagde inhoud niet in de cache is opgeslagen op de edge-server die het verzoek heeft gehonoreerd. | 
+| Geen cache                  | Geeft het totale aantal aanvragen of overgedragen gegevens (MB) aan voor de edge CNAME die resulteert in een statuscode van een CONFIG_NOCACHE cache.  |
+| Overige                     | Hiermee geeft u het totale aantal aanvragen of overgedragen gegevens (MB) aan voor de edge CNAME die is aangegeven dat dit resulteert in een HTTP-statuscode die buiten het bereik 2xx - 5xx valt. |
+| Platform                  | Geeft het platform aan dat het verkeer van de randCNAME verwerkt. |
+| Niet toegewezen               | Geeft het totale aantal aanvragen of overgedragen gegevens (MB) aan voor de edge CNAME waarvoor de statuscode van de cache of de HTTP-statuscodeniet is geregistreerd.  |
+| Niet in cache kunnen worden opgeslagen               | Geeft het totale aantal aanvragen of gegevens aan dat is overgedragen (MB) voor de rand-CNAME die resulteert in een statuscode voor uncacheable cache.  |
 
 
 ## <a name="considerations"></a>Overwegingen
-Rapporten kunnen alleen in de afgelopen 18 maanden worden gegenereerd.
+Rapporten kunnen alleen worden gegenereerd in de afgelopen 18 maanden.
 

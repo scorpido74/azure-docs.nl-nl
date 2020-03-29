@@ -1,6 +1,6 @@
 ---
 title: Gegevens uit Logstash opnemen in Azure Data Explorer
-description: In dit artikel leert u hoe u voor het opnemen van gegevens (laden) in Azure Data Explorer vanuit Logstash
+description: In dit artikel leert u hoe u gegevens innemen (laden) in Azure Data Explorer van Logstash
 author: tamirkamara
 ms.author: takamara
 ms.reviewer: orspodek
@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 86f6732cbf2409d3c79a3d7709100e8af24988a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66494548"
 ---
 # <a name="ingest-data-from-logstash-to-azure-data-explorer"></a>Gegevens uit Logstash opnemen in Azure Data Explorer
 
-[Logstash](https://www.elastic.co/products/logstash) is een open source pijplijn voor gegevensverwerking aan de serverzijde waarmee gegevens uit vele bronnen tegelijkertijd worden opgenomen, deze gegevens worden getransformeerd en vervolgens worden verzonden naar uw favoriete 'stash'. In dit artikel, zult u die gegevens verzenden naar Azure Data Explorer, dit is een snelle en schaalbare data exploration service voor logboek-en telemetrie. In eerste instantie maakt u een tabel en gegevenstoewijzing in een testcluster. Vervolgens zorgt u ervoor dat Logstash gegevens in de tabel verzendt en de resultaten valideert.
+[Logstash](https://www.elastic.co/products/logstash) is een open source pijplijn voor gegevensverwerking aan de serverzijde waarmee gegevens uit vele bronnen tegelijkertijd worden opgenomen, deze gegevens worden getransformeerd en vervolgens worden verzonden naar uw favoriete 'stash'. In dit artikel stuurt u die gegevens naar Azure Data Explorer, een snelle en zeer schaalbare gegevensverkenningsservice voor logboek- en telemetriegegevens. In eerste instantie maakt u een tabel en gegevenstoewijzing in een testcluster. Vervolgens zorgt u ervoor dat Logstash gegevens in de tabel verzendt en de resultaten valideert.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -106,13 +106,13 @@ output {
 }
 ```
 
-| Parameternaam | Description |
+| Parameternaam | Beschrijving |
 | --- | --- |
-| **path** | De Logstash-invoegtoepassing schrijft gebeurtenissen naar tijdelijke bestanden voordat ze naar Azure Data Explorer worden verzonden. Deze parameter bevat het pad waarnaar bestanden moeten worden geschreven en een tijdexpressie voor bestandsrotatie om een upload naar de service Azure Data Explorer te activeren.|
+| **Pad** | De Logstash-invoegtoepassing schrijft gebeurtenissen naar tijdelijke bestanden voordat ze naar Azure Data Explorer worden verzonden. Deze parameter bevat het pad waarnaar bestanden moeten worden geschreven en een tijdexpressie voor bestandsrotatie om een upload naar de service Azure Data Explorer te activeren.|
 | **ingest_url** | Het Kusto-eindpunt voor opname-gerelateerde communicatie.|
 | **app_id**, **app_key** en **app_tenant**| Referenties vereist om verbinding te maken met Azure Data Explorer. Zorg dat u een toepassing gebruikt die opnamebevoegdheden heeft. |
 | **database**| De naam van de database waarin gebeurtenissen moeten worden geplaatst. |
-| **table** | De naam van de tabel waarin gebeurtenissen moeten worden geplaatst. |
+| **Tabel** | De naam van de tabel waarin gebeurtenissen moeten worden geplaatst. |
 | **mapping** | Toewijzing wordt gebruikt om de json-tekenreeks van een inkomende gebeurtenis toe te wijzen in de juiste rij-indeling (bepaalt welke eigenschap in welke kolom wordt geplaatst). |
 
 ## <a name="run-logstash"></a>Logstash uitvoeren

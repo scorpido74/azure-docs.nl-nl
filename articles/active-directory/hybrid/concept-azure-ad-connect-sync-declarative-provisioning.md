@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Informatie over declaratieve inrichting | Microsoft Docs'
-description: Verklaart de declaratieve inrichting configuratiemodel in Azure AD Connect.
+title: 'Azure AD Connect: declaratieve inrichting begrijpen | Microsoft Documenten'
+description: Hiermee wordt het declaratieve configuratiemodel voor het inrichten in Azure AD Connect uitgelegd.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,151 +17,151 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60246361"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect-synchronisatie: Inzicht in declaratieve inrichting
-In dit onderwerp wordt uitgelegd dat het configuratiemodel in Azure AD Connect. Het model wordt genoemd declaratieve inrichting en deze kunt u een configuratiewijziging met gemak. Groot aantal dingen die worden beschreven in dit onderwerp zijn geavanceerde en niet vereist voor de meeste klantscenario's.
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect-synchronisatie: declaratieve inrichting begrijpen
+In dit onderwerp wordt het configuratiemodel in Azure AD Connect uitgelegd. Het model heet Declarative Provisioning en het stelt u in staat om een configuratiewijziging met gemak aan te brengen. Veel dingen beschreven in dit onderwerp zijn geavanceerd en niet vereist voor de meeste klantscenario's.
 
 ## <a name="overview"></a>Overzicht
-Declaratieve inrichting objecten afkomstig is van een verbonden bronmap wordt verwerkt en bepaalt hoe het object en de kenmerken moeten worden omgezet vanuit een bron naar een doel. Een object in een pijplijn synchronisatie wordt verwerkt en de pijplijn is hetzelfde voor inkomende en uitgaande regels. Een inkomende regel is van een connectorgebied overgebracht naar de metaverse en een uitgaande regel is van de metaverse naar een connectorgebied.
+Declaratieve inrichting is het verwerken van objecten die binnenkomen uit een bron verbonden map en bepaalt hoe het object en de kenmerken moeten worden getransformeerd van een bron naar een doel. Een object wordt verwerkt in een synchronisatiepijplijn en de pijplijn is hetzelfde voor binnenkomende en uitgaande regels. Een inkomende regel is van een connectorruimte naar de metaverse en een uitgaande regel is van de metaverse naar een connectorruimte.
 
-![Synchronisatie-pijplijn](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
+![Pijplijn synchroniseren](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
 
-De pijplijn heeft verschillende andere modules. Elke gebeurtenis wordt die verantwoordelijk is voor een concept in objectsynchronisatie.
+De pijplijn heeft verschillende modules. Elk concept is verantwoordelijk voor één concept in objectsynchronisatie.
 
-![Synchronisatie-pijplijn](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
+![Pijplijn synchroniseren](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
 
-* Bron, het bronobject
-* [Bereik](#scope), vindt u alle synchronisatieregels die binnen het bereik vallen
-* [Deelnemen aan](#join), bepaalt de relatie tussen de connector space en metaverse
-* Transformatie, berekent hoe kenmerken moeten worden omgezet en flow
-* [Prioriteit](#precedence), lost conflicterende kenmerk bijdragen
-* Doel, het beoogde doelobject
+* Bron, Het bronobject
+* [Bereik](#scope), zoekt alle synchronisatieregels die binnen het bereik vallen
+* [Join](#join), Bepaalt de relatie tussen connectorruimte en metaverse
+* Transformeren, berekent hoe kenmerken moeten worden getransformeerd en stromen
+* [Voorrang](#precedence), Hiermee worden conflicterende kenmerkbijdragen opgelost
+* Doel, Het doelobject
 
-## <a name="scope"></a>Scope
-De scope-module is een object evalueren en bepaalt de regels die in het bereik en moeten worden opgenomen in de verwerking. Afhankelijk van de waarden voor kenmerken op het object, worden andere synchronisatieregels geëvalueerd als binnen het bereik. Een uitgeschakelde gebruiker geen Exchange-postvak heeft bijvoorbeeld andere regels dan een ingeschakelde gebruiker met een postvak.  
-![Scope](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
+## <a name="scope"></a>Bereik
+De scopemodule evalueert een object en bepaalt de regels die binnen het toepassingsgebied vallen en in de verwerking moeten worden opgenomen. Afhankelijk van de kenmerkenwaarden op het object worden verschillende synchronisatieregels geëvalueerd om binnen het bereik te zijn. Een uitgeschakelde gebruiker zonder Exchange-postvak heeft bijvoorbeeld andere regels dan een ingeschakelde gebruiker met een postvak.  
+![Bereik](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
-Het bereik wordt gedefinieerd als groepen en -componenten. De componenten zijn binnen een groep. Een logische en wordt tussen alle componenten in een groep gebruikt. Bijvoorbeeld: (afdeling IT en land = = Denemarken). Een logische OR wordt gebruikt tussen groepen.
+Het toepassingsgebied wordt gedefinieerd als groepen en clausules. De clausules zijn binnen een groep. Een logische AND wordt gebruikt tussen alle clausules in een groep. Bijvoorbeeld (afdeling =IT EN land = Denemarken). Er wordt een logische OK gebruikt tussen groepen.
 
-![Scope](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
-Het bereik in deze afbeelding moet worden gelezen als (afdeling IT en land = = Denemarken) of (land = Zweden). Als de groep 1 of 2-groep wordt geëvalueerd op waar, wordt de regel is binnen het bereik.
+![Bereik](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
+De reikwijdte op deze foto moet worden gelezen als (afdeling = IT EN land = Denemarken) OF (land=Zweden). Als groep 1 of groep 2 wordt geëvalueerd op true, is de regel in het bereik.
 
-De scope-module biedt ondersteuning voor de volgende bewerkingen.
+De scopemodule ondersteunt de volgende bewerkingen.
 
-| Bewerking | Description |
+| Bewerking | Beschrijving |
 | --- | --- |
-| GELIJK, NOTEQUAL |Het vergelijken van een tekenreeks die wordt geëvalueerd als de waarde is gelijk aan de waarde in het kenmerk. Zie ISIN en ISNOTIN voor meerwaardige kenmerken. |
-| LESSTHAN, LESSTHAN_OR_EQUAL |De vergelijken van een tekenreeks die wordt geëvalueerd als de waarde is dan de waarde in het kenmerk. |
-| BEVAT, NOTCONTAINS |Het vergelijken van een tekenreeks die wordt geëvalueerd als waarde kan worden gevonden ergens in de waarde in het kenmerk. |
-| STARTSWITH, NOTSTARTSWITH |Het vergelijken van een tekenreeks die wordt geëvalueerd als de waarde in het begin van de waarde in het kenmerk is. |
-| ENDSWITH, NOTENDSWITH |Het vergelijken van een tekenreeks die wordt geëvalueerd als waarde aan het einde van de waarde in het kenmerk. |
-| GROTER DAN, GREATERTHAN_OR_EQUAL |Het vergelijken van een tekenreeks die wordt geëvalueerd als waarde groter is dan de waarde in het kenmerk. |
-| ISNULL, ISNOTNULL |Als het kenmerk is niet aanwezig in het object. Als het kenmerk niet aanwezig zijn en dus null is, klikt u vervolgens is de regel binnen het bereik. |
-| ISIN, ISNOTIN |Als de waarde in het opgegeven kenmerk evalueert. Deze bewerking is de variatie op meerdere waarden gelijk zijn en NOTEQUAL. Het kenmerk moet zijn van een kenmerk met meerdere waarden en als de waarde kan worden gevonden in een van de kenmerkwaarden weer, klikt u vervolgens de regel is binnen het bereik. |
-| ISBITSET, ISNOTBITSET |Evalueert als een bepaalde bit is ingesteld. Bijvoorbeeld, kan worden gebruikt om te evalueren van de bits in userAccountControl om te zien als een gebruiker is ingeschakeld of uitgeschakeld. |
-| ISMEMBEROF, ISNOTMEMBEROF |De waarde moet een DN-naam aan een groep in het connectorgebied bevatten. Als het object lid van de groep die is opgegeven is, wordt de regel is binnen het bereik. |
+| GELIJK, NOTEQUAL |Een tekenreeksvergelijking die evalueert of de waarde gelijk is aan de waarde in het kenmerk. Zie ISIN en ISNOTIN voor kenmerken met meerdere waarden. |
+| LESSTHAN, LESSTHAN_OR_EQUAL |Een tekenreeksvergelijking die evalueert of de waarde kleiner is dan de waarde in het kenmerk. |
+| CONTAINS, NOTCONTAINS |Een tekenreeksvergelijking die evalueert of de waarde ergens binnen de waarde in het kenmerk kan worden gevonden. |
+| BEGINT MET, NOTSTARTSWITH |Een tekenreeksvergelijking die evalueert of de waarde zich in het begin van de waarde in het kenmerk bevindt. |
+| ENDSWITH, NOTENDSWITH |Een tekenreeksvergelijking die evalueert of de waarde zich aan het einde van de waarde in het kenmerk bevindt. |
+| GROTER DAN, GREATERTHAN_OR_EQUAL |Een tekenreeksvergelijking die evalueert of de waarde groter is dan de waarde in het kenmerk. |
+| ISNULL, ISNOTNULL |Evalueert of het kenmerk afwezig is in het object. Als het kenmerk niet aanwezig is en dus null, dan is de regel in het toepassingsgebied. |
+| ISIN, ISNOTIN |Evalueert of de waarde aanwezig is in het gedefinieerde kenmerk. Deze bewerking is de multi-gewaardeerde variant van EQUAL en NOTEQUAL. Het kenmerk wordt verondersteld een kenmerk met meerdere waarden te zijn en als de waarde kan worden gevonden in een van de kenmerkwaarden, is de regel in het bereik. |
+| ISBITSET, ISNOTBITSET |Evalueert of een bepaalde bit is ingesteld. U bijvoorbeeld de bits in userAccountControl evalueren om te zien of een gebruiker is ingeschakeld of uitgeschakeld. |
+| ISMEMBEROF, ISNOTMEMBEROF |De waarde moet een DN bevatten voor een groep in de verbindingsruimte. Als het object lid is van de opgegeven groep, is de regel in het bereik. |
 
-## <a name="join"></a>Deelnemen
-De join-module in de pijplijn synchronisatie is verantwoordelijk voor het vinden van de relatie tussen het object in de bron- en een object in het doel. Deze relatie is op een binnenkomende regel een object in een connectorgebied zoeken van een relatie met een object in de metaverse.  
-![Deelnemen aan tussen cs en mv](./media/concept-azure-ad-connect-sync-declarative-provisioning/join1.png)  
-Het doel is om te zien dat als er een object is al in de metaverse, die zijn gemaakt door een andere Connector dit moet worden gekoppeld aan. In een account-bron-forest moet de gebruiker uit het accountforest bijvoorbeeld worden toegevoegd aan de gebruiker van de bron-forest.
+## <a name="join"></a>Koppelen
+De joinmodule in de synchronisatiepijplijn is verantwoordelijk voor het vinden van de relatie tussen het object in de bron en een object in het doel. Bij een binnenkomende regel zou deze relatie een object in een verbindingsruimte zijn bij het vinden van een relatie met een object in de metaverse.  
+![Deelnemen tussen cs en mv](./media/concept-azure-ad-connect-sync-declarative-provisioning/join1.png)  
+Het doel is om te zien of er een object al in de metaverse, gemaakt door een andere connector, moet worden gekoppeld aan. In een accountbronforest moet de gebruiker van het accountforest bijvoorbeeld worden samengevoegd met de gebruiker uit het bronforest.
 
-Samenvoegingen worden voornamelijk op regels voor binnenkomende verbindingen gebruikt om ruimte connectorobjecten samen toevoegen aan de dezelfde metaverse-object.
+Joins worden meestal gebruikt op binnenkomende regels om verbindingsruimteobjecten samen te voegen met hetzelfde metaverse object.
 
-De joins worden gedefinieerd als een of meer groepen. Binnen een groep hebt van de EU. Een logische en wordt tussen alle componenten in een groep gebruikt. Een logische OR wordt gebruikt tussen groepen. De groepen worden verwerkt in volgorde van boven naar beneden. Wanneer een groep exact één overeenkomst met een object dat in het doel gevonden is, worden geen andere regels voor lid worden geëvalueerd. Als nul of meer dan één object is gevonden, blijft verwerking van de volgende groep van regels. Om deze reden moet de regels is gemaakt in de volgorde van de meeste expliciete eerst en meer zoeken bij benadering aan het einde.  
-![Definitie toevoegen](./media/concept-azure-ad-connect-sync-declarative-provisioning/join2.png)  
-De koppelingen in deze afbeelding worden verwerkt van boven naar beneden. Eerst ziet de pijplijn sync als er een overeenkomst op werknemer-id is. Als dat niet het geval is, de tweede regel ziet als de naam van het kan worden gebruikt om de objecten samenvoegen. Als dat niet overeenkomt met een, is de derde en laatste regel een meer fuzzy overeenkomst met behulp van de naam van gebruiker.
+De joins worden gedefinieerd als een of meer groepen. Binnen een groep heb je clausules. Een logische AND wordt gebruikt tussen alle clausules in een groep. Er wordt een logische OK gebruikt tussen groepen. De groepen worden van boven naar beneden in volgorde verwerkt. Wanneer een groep precies één overeenkomst heeft gevonden met een object in het doel, worden er geen andere joinregels geëvalueerd. Als er nul of meer dan één object wordt gevonden, gaat de verwerking door naar de volgende groep regels. Om deze reden moeten de regels worden gemaakt in de volgorde van de meest expliciete eerste en meer fuzzy aan het einde.  
+![Lid worden van definitie](./media/concept-azure-ad-connect-sync-declarative-provisioning/join2.png)  
+De joins in deze afbeelding worden van boven naar beneden verwerkt. Eerst ziet de synchronisatiepijplijn of er een overeenkomst is op employeeID. Als dit niet het zo is, wordt in de tweede regel gezien of de accountnaam kan worden gebruikt om de objecten samen te voegen. Als dat ook geen overeenkomst is, is de derde en laatste regel een meer vage overeenkomst met behulp van de naam van de gebruiker.
 
-Als alle join-regels zijn geëvalueerd en er niet precies één overeenkomst is, de **koppelingstype** op de **beschrijving** pagina wordt gebruikt. Als deze optie is ingesteld op **inrichten**, en vervolgens een nieuw object in het doel is gemaakt.  
-![Inrichten of join](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
+Als alle joinregels zijn geëvalueerd en er niet precies één overeenkomst is, wordt het **koppelingstype** op de pagina **Beschrijving** gebruikt. Als deze optie is ingesteld op **Voorziening,** wordt een nieuw object in het doel gemaakt.  
+![Voorziening of lid worden](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
 
-Een object mag slechts één enkele synchronisatieregel met join regels binnen het bereik hebben. Als er meerdere synchronisatieregels waarbij de join is gedefinieerd, wordt er een fout optreedt. Prioriteit wordt niet gebruikt om conflicten tussen join. Een object moet een join-regel in het bereik voor kenmerken met dezelfde inkomende/uitgaande richting stromen hebben. Als u kenmerken van gebruikersstroom zowel inkomend als uitgaand naar hetzelfde object wilt, moet u een inkomende en een synchronisatieregel voor uitgaande met join hebben.
+Een object mag slechts één synchronisatieregel hebben met joinregels in het bereik. Als er meerdere synchronisatieregels zijn waarbij join wordt gedefinieerd, treedt er een fout op. Voorrang wordt niet gebruikt om joinconflicten op te lossen. Een object moet een joinregel hebben in het bereik voor kenmerken die met dezelfde inkomende/uitgaande richting kunnen stromen. Als u zowel inkomende als uitgaande kenmerken naar hetzelfde object moet stromen, moet u zowel een binnenkomende als een uitgaande synchronisatieregel hebben met join.
 
-Uitgaande join is een speciaal gedrag als er wordt geprobeerd om in te richten van een object naar een doel-connectorgebied. Het kenmerk DN-naam wordt gebruikt voor het eerst proberen een reverse-join. Als er al een object in de doel-connectorgebied met de dezelfde DN-naam, zijn de objecten gekoppeld.
+Uitgaande join heeft een speciaal gedrag wanneer het probeert om een object in te richten op een doelconnector ruimte. Het kenmerk DN wordt gebruikt om eerst een reverse-join uit te proberen. Als er al een object in de doelconnectorruimte met dezelfde DN staat, worden de objecten samengevoegd.
 
-De module join wordt alleen beoordeeld wanneer wanneer een nieuwe synchronisatieregel voor wordt geleverd in het bereik. Wanneer een object is gekoppeld, is het niet verwijderen, zelfs als de samenvoegcriteria niet meer wordt voldaan. Als u afmelden van een object wilt, moet de synchronisatieregel die lid van de objecten niet binnen het bereik gaan.
+De joinmodule wordt slechts één keer geëvalueerd wanneer een nieuwe synchronisatieregel in het bereik komt. Wanneer een object is lid geworden, wordt het niet meer afaangesloten, zelfs niet als niet langer aan de joincriteria wordt voldaan. Als u een object wilt losmaken, moet de synchronisatieregel die is toegetreden tot de objecten buiten het bereik vallen.
 
-### <a name="metaverse-delete"></a>Metaverse-verwijderen
-Een metaverse-object blijft zolang er is een synchronisatieregel binnen het bereik met **koppelingstype** ingesteld op **inrichten** of **StickyJoin**. Een StickyJoin wordt gebruikt wanneer een Connector is niet toegestaan voor het inrichten van een nieuw object naar de metaverse, maar wanneer deze is gekoppeld, deze in de bron moet worden verwijderd voordat de metaverse-object wordt verwijderd.
+### <a name="metaverse-delete"></a>Metaverse verwijderen
+Een metaverse object blijft staan zolang er één synchronisatieregel in het bereik is met **Koppelingstype** ingesteld op **Voorziening** of **StickyJoin**. Een StickyJoin wordt gebruikt wanneer een connector geen nieuw object aan de metaverse mag inrichten, maar wanneer het lid is geworden, moet het in de bron worden verwijderd voordat het metaverse object wordt verwijderd.
 
-Wanneer een metaverse-object wordt verwijderd, alle objecten die zijn gekoppeld aan een synchronisatieregel voor uitgaande gemarkeerd voor **inrichten** zijn gemarkeerd voor verwijderen.
+Wanneer een metaverse object wordt verwijderd, worden alle objecten die zijn gekoppeld aan een uitgaande synchronisatieregel die is gemarkeerd voor **voorziening** gemarkeerd voor een verwijdering gemarkeerd.
 
 ## <a name="transformations"></a>Transformaties
-De transformaties worden gebruikt om te bepalen hoe kenmerken moeten stromen van de bron naar het doel. De stromen kunnen hebben een van de volgende **flow typen**: Directe,-constante of -expressie. Een directe stroom een kenmerkwaarde als stromen-is geen aanvullende transformaties. Een constante waarde wordt ingesteld voor de opgegeven waarde. Een expressie maakt gebruik van de declaratieve inrichting expressietaal Express hoe de transformatie moet worden. De details voor de expressietaal kunnen worden gevonden de [begrijpen declaratieve inrichting expressietaal](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) onderwerp.
+De transformaties worden gebruikt om te definiëren hoe kenmerken van de bron naar het doel moeten stromen. De stromen kunnen een van de volgende **stroomtypen**hebben: Direct, Constant of Expressie. Een directe stroom, stroomt een attribuutwaarde zoals-is zonder extra transformaties. Met een constante waarde wordt de opgegeven waarde ingesteld. Een expressie gebruikt de declaratieve indatieexpressietaal om uit te drukken hoe de transformatie moet zijn. De details voor de expressietaal zijn te vinden in het [artikel declaratieve inrichting van expressietaalonderwerp.](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
 
-![Inrichten of join](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
+![Voorziening of lid worden](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
 
-De **eenmaal toepassen** selectievakje definieert dat het kenmerk moet alleen worden ingesteld als het object in eerste instantie wordt gemaakt. Deze configuratie kan bijvoorbeeld worden gebruikt om in te stellen van een eerste wachtwoord voor een nieuwe gebruikersobject.
+Het selectievakje **Toepassen zodra,** definieert dat het kenmerk alleen moet worden ingesteld wanneer het object in eerste instantie wordt gemaakt. Deze configuratie kan bijvoorbeeld worden gebruikt om een eerste wachtwoord in te stellen voor een nieuw gebruikersobject.
 
 ### <a name="merging-attribute-values"></a>Kenmerkwaarden samenvoegen
-Er is een instelling om te bepalen als meerwaardige kenmerken uit diverse verschillende Connectors moeten worden samengevoegd in de kenmerkstromen. De standaardwaarde is **Update**, wat aangeeft dat de synchronisatieregel met hoogste prioriteit te winnen.
+In de kenmerkstromen is er een instelling om te bepalen of kenmerken met meerdere waarden moeten worden samengevoegd vanuit verschillende connectors. De standaardwaarde is **Bijwerken,** wat aangeeft dat de synchronisatieregel met de hoogste prioriteit moet winnen.
 
-![Typen samenvoegen](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
+![Samenvoegingstypen](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
 
-Er is ook **samenvoegen** en **MergeCaseInsensitive**. Deze opties kunnen u waarden uit verschillende bronnen samen te voegen. Het kan bijvoorbeeld worden gebruikt voor het samenvoegen van het lid of proxyAddresses-kenmerk uit diverse verschillende forests. Wanneer u deze optie gebruikt, moeten alle synchronisatieregels binnen het bereik van een object hetzelfde type samenvoeging gebruiken. U kunt geen definiëren **Update** van één Connector en **samenvoegen** van een andere. Als u probeert, ontvangt u een foutbericht.
+Er is ook **Merge** en **MergeCaseInsensitive**. Met deze opties u waarden uit verschillende bronnen samenvoegen. Het kan bijvoorbeeld worden gebruikt om het kenmerk member of proxyAddresses uit verschillende forests samen te voegen. Wanneer u deze optie gebruikt, moeten alle synchronisatieregels in het bereik van een object hetzelfde samenvoegtype gebruiken. U **Bijwerken** niet definiëren vanaf de ene connector en **samenvoegen** vanuit een andere connector. Als u het probeert, ontvangt u een foutmelding.
 
-Het verschil tussen **samenvoegen** en **MergeCaseInsensitive** wordt beschreven hoe u voor het verwerken van dubbele kenmerkwaarden. De synchronisatie-engine zorgt ervoor dat dubbele waarden zijn niet ingevoegd in het doelkenmerk. Met **MergeCaseInsensitive**, dubbele waarden met alleen een verschil in het geval niet meer aanwezig zijn. Bijvoorbeeld, niet ziet u beide "SMTP:bob@contoso.com'en'smtp:bob@contoso.com' in het doelkenmerk. **Samenvoegen** wordt alleen gekeken naar de exacte waarden en meerdere waarden waarbij er alleen een verschil in kan de aanvraag aanwezig zijn.
+Het verschil tussen **Samenvoegen** en **MergeCaseInsensitive** is het verwerken van dubbele kenmerkwaarden. De synchronisatieengine zorgt ervoor dat dubbele waarden niet in het doelkenmerk worden ingevoegd. Met **MergeCaseInsensitive**zullen dubbele waarden met slechts een verschil in het geval niet aanwezig zijn. U moet bijvoorbeeld niet zowelSMTP:bob@contoso.com"smtp:bob@contoso.com" als " in het doelkenmerk zien. **Bij Merge** wordt alleen gekeken naar de exacte waarden en meerdere waarden waarbij er alleen een verschil is in het geval aanwezig zou kunnen zijn.
 
-De optie **vervangen** is hetzelfde als **Update**, maar wordt niet gebruikt.
+De optie **Vervangen** is hetzelfde als **Bijwerken,** maar het wordt niet gebruikt.
 
-### <a name="control-the-attribute-flow-process"></a>Het proces voor kenmerk stroom beheren
-Als meerdere inkomende synchronisatieregels zijn geconfigureerd om bij te dragen aan het dezelfde metaverse-kenmerk, wordt prioriteit gebruikt om te bepalen van de winnaar. De synchronisatieregel met hoogste prioriteit (laagste numerieke waarde) gaat om bij te dragen van de waarde. Hetzelfde gebeurt voor regels voor uitgaand verkeer. De synchronisatie met de hoogste prioriteit wins-regel en de waarde in de verbonden adreslijst bijdragen.
+### <a name="control-the-attribute-flow-process"></a>Het kenmerkstroomproces beheren
+Wanneer meerdere binnenkomende synchronisatieregels zijn geconfigureerd om bij te dragen aan hetzelfde metaverse kenmerk, wordt voorrang gebruikt om de winnaar te bepalen. De synchronisatieregel met hoogste prioriteit (laagste numerieke waarde) draagt de waarde bij. Hetzelfde gebeurt voor uitgaande regels. De synchronisatieregel met de hoogste prioriteit wint en draagt de waarde bij aan de verbonden map.
 
-In sommige gevallen, in plaats van een waarde, met bijdragen moet de synchronisatieregel bepalen hoe de andere regels zich moeten gedragen. Er zijn enkele speciale letterlijke waarden gebruikt voor deze aanvraag.
+In sommige gevallen moet de synchronisatieregel bepalen hoe andere regels zich moeten gedragen in plaats van een waarde bij te dragen. Er zijn een aantal speciale literals gebruikt voor deze zaak.
 
-Voor binnenkomende synchronisatieregels, de letterlijke waarde **NULL** kan worden gebruikt om aan te geven dat de stroom heeft geen waarde om bij te dragen. Een andere regel met een lagere prioriteit kan een waarde bijdragen. Als er geen regel een waarde, bijgedragen wordt het metaverse-kenmerk is verwijderd. Voor een uitgaande regel als **NULL** is de laatste waarde nadat alle synchronisatieregels zijn verwerkt, wordt de waarde in de verbonden adreslijst is verwijderd.
+Voor binnenkomende synchronisatieregels kan de letterlijke **NULL** worden gebruikt om aan te geven dat de stroom geen waarde heeft om bij te dragen. Een andere regel met een lagere prioriteit kan een waarde bijdragen. Als er geen regel heeft bijgedragen aan een waarde, wordt het metaverse kenmerk verwijderd. Als **NULL** voor een uitgaande regel de eindwaarde is nadat alle synchronisatieregels zijn verwerkt, wordt de waarde verwijderd in de verbonden map.
 
-De letterlijke waarde **AuthoritativeNull** is vergelijkbaar met **NULL** , maar met het verschil is dat er geen prioriteitsregels met lagere hun bijdrage een waarde leveren.
+De letterlijke **AuthoritativeNull** is vergelijkbaar met **NULL,** maar met het verschil dat er geen lagere voorrangsregels een waarde kunnen bijdragen.
 
-Een kenmerkstroom kunt **IgnoreThisFlow**. Het is vergelijkbaar met NULL in die zin dat deze geeft aan dat er is niets om bij te dragen. Het verschil is dat het niet een al bestaande waarde in het doel verwijdert. Het is net als de kenmerkstroom nooit er is.
+Een kenmerkstroom kan ook **IgnoreThisFlow**gebruiken. Het is vergelijkbaar met NULL in de zin dat het aangeeft dat er niets bij te dragen. Het verschil is dat het een reeds bestaande waarde in het doel niet verwijdert. Het is alsof de attribuutstroom er nooit is geweest.
 
 Hier volgt een voorbeeld:
 
-In *Out met AD - gebruiker Exchange hybride* kunt u de volgende stroom vinden:  
+In *Uit naar AD - User Exchange-hybride* is de volgende stroom te vinden:  
 `IIF([cloudSOAExchMailbox] = True,[cloudMSExchSafeSendersHash],IgnoreThisFlow)`  
-Deze expressie moet worden gelezen als: als het gebruikerspostvak in Azure AD bevindt zich, klikt u vervolgens het kenmerk van Azure AD-AD flow. Als dat niet het geval is, iets terug naar Active Directory niet flow. Dit houdt in dat geval wordt de bestaande waarde in AD.
+Deze expressie moet worden gelezen als: als het gebruikerspostvak zich in Azure AD bevindt, voert u het kenmerk vervolgens van Azure AD naar AD. Zo niet, dan hoeft u niets terug te sturen naar Active Directory. In dit geval zou het de bestaande waarde in AD behouden.
 
-### <a name="importedvalue"></a>ImportedValue
-De functie ImportedValue is anders dan alle andere functies, omdat de naam aanhalingstekens in plaats van tussen vierkante haken tussen moet:  
+### <a name="importedvalue"></a>Geïmporteerde waarde
+De functie Geïmporteerdwaarde is anders dan alle andere functies, omdat de kenmerknaam moet worden ingesloten tussen aanhalingstekens in plaats van vierkante haakjes:  
 `ImportedValue("proxyAddresses")`.
 
-Een kenmerk gebruikt meestal tijdens de synchronisatie de verwachte waarde, zelfs als deze nog niet is zijn geëxporteerd of er is een fout ontvangen tijdens het exporteren ('boven aan de tower"). Een inkomende synchronisatie wordt ervan uitgegaan dat een kenmerk dat nog niet heeft bereikt een verbonden adreslijst uiteindelijk wordt bereikt. In sommige gevallen is het belangrijk dat u alleen een waarde die is goedgekeurd door de verbonden adreslijst ('hologram en delta-tower importeren') worden gesynchroniseerd.
+Meestal gebruikt een kenmerk tijdens synchronisatie de verwachte waarde, zelfs als het nog niet is geëxporteerd of als er een fout is ontvangen tijdens het exporteren ("boven in de toren"). Een binnenkomende synchronisatie gaat ervan uit dat een kenmerk dat nog geen verbonden map heeft bereikt, het uiteindelijk bereikt. In sommige gevallen is het belangrijk om alleen een waarde te synchroniseren die is bevestigd door de verbonden map ("hologram en delta import tower").
 
-Een voorbeeld van deze functie kunt u vinden in de Synchronisatieregel out-of-box *In uit Active Directory-gebruiker algemene in Exchange*. In hybride Exchange, moet de waarde die is toegevoegd door Exchange online alleen worden gesynchroniseerd wanneer deze is bevestigd dat de waarde is geëxporteerd:  
+Een voorbeeld van deze functie is te vinden in de out-of-box synchronisatieregel *in van AD – User Common from Exchange*. In Hybrid Exchange mag de toegevoegde waarde van Exchange online alleen worden gesynchroniseerd wanneer is bevestigd dat de waarde met succes is geëxporteerd:  
 `proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValue("proxyAddresses")))`
 
 ## <a name="precedence"></a>Prioriteit
-Wanneer verschillende synchronisatieregels probeert om bij te dragen van de dezelfde kenmerkwaarde naar het doel, wordt de prioriteitswaarde wordt gebruikt om te bepalen van de winnaar. De regel met de hoogste prioriteit, de laagste numerieke waarde, is om bij te dragen van het kenmerk in een conflict gaan.
+Wanneer verschillende synchronisatieregels dezelfde kenmerkwaarde aan het doel proberen bij te dragen, wordt de prioriteitswaarde gebruikt om de winnaar te bepalen. De regel met de hoogste prioriteit, de laagste numerieke waarde, zal het kenmerk bijdragen in een conflict.
 
-![Typen samenvoegen](./media/concept-azure-ad-connect-sync-declarative-provisioning/precedence1.png)  
+![Samenvoegingstypen](./media/concept-azure-ad-connect-sync-declarative-provisioning/precedence1.png)  
 
-Deze volgorde kan worden gebruikt voor het definiëren van nauwkeuriger kenmerkstromen voor een kleine subset van objecten. Bijvoorbeeld, de out-van-vak-regels moeten u ervoor dat die kenmerken van een ingeschakeld account (**gebruiker AccountEnabled**) hebben voorrang van andere accounts.
+Deze volgorde kan worden gebruikt om preciezere kenmerkstromen voor een kleine subset van objecten te definiëren. De kant-en-klare regels zorgen er bijvoorbeeld voor dat kenmerken van een ingeschakeld account (**User AccountEnabled**) voorrang hebben van andere accounts.
 
-Prioriteit kan worden gedefinieerd tussen Connectors. Die kunt Connectors met betere gegevens om bij te dragen waarden eerst.
+Voorrang kan worden gedefinieerd tussen connectors. Dat stelt Connectors met betere gegevens in staat om eerst waarden bij te dragen.
 
-### <a name="multiple-objects-from-the-same-connector-space"></a>Meerdere objecten vanuit de dezelfde connector ruimte
-Hebt u verschillende objecten in de dezelfde connector ruimte toegevoegd aan de dezelfde metaverse-object, moet prioriteit worden aangepast. De synchronisatie-engine is niet kunnen bepalen prioriteit als meerdere objecten binnen het bereik van de synchronisatieregel met dezelfde. Het is niet eenduidig welke bronobject moet de waarde in de metaverse bijdragen. Deze configuratie wordt gerapporteerd als niet-eenduidige, zelfs als de kenmerken in de bron van dezelfde waarde hebben.  
-![Meerdere objecten samengevoegd tot hetzelfde mv-object](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
+### <a name="multiple-objects-from-the-same-connector-space"></a>Meerdere objecten uit dezelfde verbindingsruimte
+Als u meerdere objecten in dezelfde verbindingsruimte hebt aangesloten op hetzelfde metaverse object, moet de voorrang worden aangepast. Als meerdere objecten zich in het bereik van dezelfde synchronisatieregel bevinden, kan de synchronisatieengine de voorrang niet bepalen. Het is onduidelijk welk bronobject de waarde aan het metaverse moet bijdragen. Deze configuratie wordt gerapporteerd als dubbelzinnig, zelfs als de kenmerken in de bron dezelfde waarde hebben.  
+![Meerdere objecten die zijn samengevoegd met hetzelfde mv-object](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
 
-Voor dit scenario moet u het bereik van de synchronisatieregels wijzigen, zodat de bronobjecten andere synchronisatieregels binnen het bereik hebben. Hierdoor kunt u verschillende prioriteit definiëren.  
-![Meerdere objecten samengevoegd tot hetzelfde mv-object](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple2.png)  
+Voor dit scenario moet u het bereik van de synchronisatieregels wijzigen, zodat de bronobjecten verschillende synchronisatieregels in het bereik hebben. Dat stelt u in staat om verschillende voorrang te definiëren.  
+![Meerdere objecten die zijn samengevoegd met hetzelfde mv-object](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple2.png)  
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over de expressietaal in [Understanding declaratieve inrichting expressies](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md).
-* Zie hoe declaratieve inrichting is gebruikte out-of-box in [inzicht in de standaardconfiguratie](concept-azure-ad-connect-sync-default-configuration.md).
-* Zien hoe u een praktische wijzigen met behulp van declaratieve inrichting [hoe u een wijziging in de standaardconfiguratie](how-to-connect-sync-change-the-configuration.md).
-* Blijven lezen hoe gebruikers en contactpersonen samenwerken [inzicht krijgen in gebruikers en contactpersonen](concept-azure-ad-connect-sync-user-and-contacts.md).
+* Lees meer over de expressietaal in [Het begrijpen van declaratieve inrichtingsuitdrukkingen](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md).
+* Bekijk hoe declaratieve inrichting out-of-box wordt gebruikt in Het begrijpen van [de standaardconfiguratie.](concept-azure-ad-connect-sync-default-configuration.md)
+* Zie hoe u een praktische wijziging aanbrengen met declaratieve inrichting in [Hoe u een wijziging in de standaardconfiguratie aanbrengen.](how-to-connect-sync-change-the-configuration.md)
+* Lees verder hoe gebruikers en contactpersonen samenwerken in [Gebruikers en contactpersonen begrijpen.](concept-azure-ad-connect-sync-user-and-contacts.md)
 
 **Overzichtsonderwerpen**
 
-* [Azure AD Connect-synchronisatie: Begrijpen en aanpassen van synchronisatie](how-to-connect-sync-whatis.md)
-* [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md)
+* [Synchronisatie van Azure AD Connect: synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)
+* [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)
 
 **Onderwerpen met naslaginformatie**
 
-* [Azure AD Connect-synchronisatie: Functieverwijzing](reference-connect-sync-functions-reference.md)
+* [Synchronisatie van Azure AD Connect: naslaginformatie over functies](reference-connect-sync-functions-reference.md)

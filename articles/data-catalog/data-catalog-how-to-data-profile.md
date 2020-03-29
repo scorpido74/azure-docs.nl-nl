@@ -1,92 +1,92 @@
 ---
-title: Gegevens bronnen voor data Profiler in Azure Data Catalog gebruiken
-description: In dit artikel wordt uitgelegd hoe u gegevens profielen op tabel-en kolom niveau kunt opnemen bij het registreren van gegevens bronnen in Azure Data Catalog en hoe u gegevens profielen gebruikt om gegevens bronnen te begrijpen.
+title: Gegevensbronnen voor gegevensprofilering gebruiken in Azure-gegevenscatalogus
+description: In het artikel waarin wordt uitgelegd hoe gegevensprofielen op tabel- en kolomniveau worden opgenomen bij het registreren van gegevensbronnen in Azure-gegevenscatalogus en hoe gegevensprofielen kunnen worden gebruikt om gegevensbronnen te begrijpen.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 04ac6c2bf0137289221a4ae6ed58d5a71ad21739
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68950225"
 ---
-# <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Hoe gegevens bronnen voor gegevens profielen in Azure Data Catalog
+# <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Gegevensbronnen voor gegevensprofiel in Azure-gegevenscatalogus
 
 ## <a name="introduction"></a>Inleiding
 
-**Microsoft Azure Data Catalog** is een volledig beheerde Cloud service die fungeert als registratie systeem en detectie systeem voor zakelijke gegevens bronnen. Met andere woorden, het **Azure Data Catalog** is alles wat helpt mensen bij het detecteren, begrijpen en gebruiken van gegevens bronnen, en helpt organisaties bij het verkrijgen van meer waarde dan hun bestaande gegevens. Wanneer een gegevens bron wordt geregistreerd bij **Azure Data Catalog**, worden de meta gegevens gekopieerd en geïndexeerd door de service, maar het artikel eindigt daar niet.
+**Microsoft Azure Data Catalog** is een volledig beheerde cloudservice die dient als een systeem van registratie en detectiesysteem voor bedrijfsgegevensbronnen. Met andere woorden, **Azure Data Catalog** is alles over het helpen van mensen ontdekken, begrijpen en gebruiken van gegevensbronnen, en het helpen van organisaties om meer waarde te halen uit hun bestaande gegevens. Wanneer een gegevensbron is geregistreerd bij **Azure Data Catalog,** worden de metagegevens gekopieerd en geïndexeerd door de service, maar het verhaal eindigt daar niet.
 
-Met de functie **gegevens Profiler** van **Azure Data Catalog** worden de gegevens van ondersteunde gegevens bronnen in uw catalogus onderzocht en worden statistieken en informatie over die gegevens verzameld. Het is eenvoudig om een profiel van uw gegevensassets toe te voegen. Wanneer u een gegevens Asset registreert, kiest u **gegevens profiel opnemen** in het hulp programma voor registratie van gegevens bronnen.
+De functie **Gegevensprofilering** van **Azure Data Catalog** onderzoekt de gegevens uit ondersteunde gegevensbronnen in uw catalogus en verzamelt statistieken en informatie over die gegevens. Het is eenvoudig om een profiel van uw gegevensassets op te nemen. Wanneer u een gegevensitem registreert, kiest **u Gegevensprofiel opnemen** in het hulpprogramma voor gegevensbronregistratie.
 
-## <a name="what-is-data-profiling"></a>Wat is gegevens profilering?
+## <a name="what-is-data-profiling"></a>Wat is gegevensprofilering
 
-Gegevens Profiler onderzoekt de gegevens in de gegevens bron die worden geregistreerd en verzamelt statistieken en informatie over die gegevens. Tijdens de detectie van gegevens bronnen kan deze statistieken u helpen bij het bepalen van de geschiktheid van de gegevens om het bedrijfs probleem op te lossen.
+Dataprofiling onderzoekt de gegevens in de gegevensbron die wordt geregistreerd en verzamelt statistieken en informatie over die gegevens. Tijdens het ontdekken van gegevensbronnen kunnen deze statistieken u helpen bij het bepalen van de geschiktheid van de gegevens om hun bedrijfsprobleem op te lossen.
 
 <!-- In [How to discover data sources](data-catalog-how-to-discover.md), you learn about **Azure Data Catalog's** extensive search capabilities including searching for data assets that have a profile. See [How to include a data profile when registering a data source](#howto). -->
 
-De volgende gegevens bronnen ondersteunen gegevens profilering:
+De volgende gegevensbronnen ondersteunen gegevensprofilering:
 
-* SQL Server (inclusief Azure SQL DB en Azure SQL Data Warehouse) tabellen en weer gaven
-* Oracle-tabellen en-weer gaven
-* Teradata-tabellen en-weer gaven
+* TABELLEN en weergaven van SQL Server (inclusief Azure SQL DB en Azure SQL Data Warehouse)
+* Oracle-tabellen en -weergaven
+* Teradata tabellen en weergaven
 * Hive-tabellen
 
-Met inbegrip van gegevens profielen bij het registreren van gegevensassets helpt gebruikers bij het beantwoorden van vragen over gegevens bronnen, waaronder:
+Het opnemen van gegevensprofielen bij het registreren van gegevensassets helpt gebruikers bij het beantwoorden van vragen over gegevensbronnen, waaronder:
 
-* Kan worden gebruikt om mijn bedrijfs probleem op te lossen?
+* Kan het worden gebruikt om mijn zakelijke probleem op te lossen?
 * Voldoen de gegevens aan bepaalde normen of patronen?
-* Wat zijn de afwijkingen van de gegevens bron?
-* Wat zijn de mogelijke uitdagingen van het integreren van deze gegevens in mijn toepassing?
+* Wat zijn enkele van de afwijkingen van de gegevensbron?
+* Wat zijn mogelijke uitdagingen om deze gegevens in mijn applicatie te integreren?
 
 > [!NOTE]
-> U kunt ook documentatie toevoegen aan een Asset om te beschrijven hoe gegevens in een toepassing kunnen worden geïntegreerd. Zie [gegevens bronnen documenteren](data-catalog-how-to-documentation.md).
+> U ook documentatie toevoegen aan een asset om te beschrijven hoe gegevens kunnen worden geïntegreerd in een toepassing. Zie [Gegevensbronnen documenteren](data-catalog-how-to-documentation.md).
 >
 
 <a name="howto"/>
 
-## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>Een gegevens profiel opnemen bij het registreren van een gegevens bron
+## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>Een gegevensprofiel opnemen bij het registreren van een gegevensbron
 
-U kunt eenvoudig een profiel van uw gegevens bron toevoegen. Wanneer u een gegevens bron registreert, kiest u in het deel venster **te registreren objecten** van het hulp programma voor registratie van gegevens bronnen de optie **gegevens profiel opnemen**.
+Het is eenvoudig om een profiel van uw gegevensbron op te nemen. Wanneer u een gegevensbron registreert, kiest u in het deelvenster **Objecten dat moet worden geregistreerd** van het hulpprogramma voor gegevensbronregistratie de optie **Gegevensprofiel opnemen**.
 
-![Selectie vakje gegevens profiel insluiten](media/data-catalog-data-profile/data-catalog-register-profile.png)
+![Selectievakje Gegevensprofiel opnemen](media/data-catalog-data-profile/data-catalog-register-profile.png)
 
-Zie [gegevens bronnen registreren](data-catalog-how-to-register.md) en aan de [slag met Azure Data Catalog](data-catalog-get-started.md)voor meer informatie over het registreren van gegevens bronnen.
+Zie [Gegevensbronnen registreren](data-catalog-how-to-register.md) en Aan de slag met [Azure Data Catalog](data-catalog-get-started.md)voor meer informatie over het registreren van gegevensbronnen.
 
-## <a name="filtering-on-data-assets-that-include-data-profiles"></a>Filteren op gegevens assets met gegevens profielen
+## <a name="filtering-on-data-assets-that-include-data-profiles"></a>Filteren op gegevenselementen die gegevensprofielen bevatten
 
-Als u gegevensassets wilt detecteren die een gegevens profiel bevatten, `has:tableDataProfiles` kunt `has:columnsDataProfiles` u een van de zoek termen toevoegen.
+Als u gegevenselementen wilt ontdekken die `has:tableDataProfiles` een `has:columnsDataProfiles` gegevensprofiel bevatten, u of als een van uw zoektermen opnemen.
 
 > [!NOTE]
-> Als u **gegevens profiel opnemen** selecteert in het hulp programma voor registratie van gegevens bronnen, worden profiel gegevens op tabel en kolom niveau weer gegeven. Met de Data Catalog-API kunnen gegevens assets echter worden geregistreerd met slechts één set profiel gegevens.
+> Het **selecteren van Gegevensprofiel opnemen** in het hulpprogramma voor gegevensbronregistratie omvat zowel profielgegevens op tabel- als kolomniveau. Met de API voor gegevenscatalogus kunnen gegevenselementen echter worden geregistreerd met slechts één set opgenomen profielgegevens.
 >
 
-## <a name="viewing-data-profile-information"></a>Gegevens profiel gegevens weer geven
+## <a name="viewing-data-profile-information"></a>Gegevensprofielgegevens weergeven
 
-Wanneer u een geschikte gegevens bron met een profiel hebt gevonden, kunt u de details van het gegevens profiel bekijken. Als u het gegevens profiel wilt weer geven, selecteert u een gegevens activum en kiest u **gegevens profiel** in het venster Data Catalog-Portal.
+Zodra u een geschikte gegevensbron met een profiel hebt gevonden, u de gegevensprofielgegevens bekijken. Als u het gegevensprofiel wilt weergeven, selecteert u een gegevenselement en kiest **u Gegevensprofiel** in het portaalvenster Gegevenscatalogus.
 
-![Tabblad Gegevens Profiel](media/data-catalog-data-profile/data-catalog-view.png)
+![Tabblad Gegevensprofiel](media/data-catalog-data-profile/data-catalog-view.png)
 
-Een gegevens profiel in **Azure Data Catalog** bevat tabel-en kolom profiel informatie, waaronder:
+Een gegevensprofiel in **Azure Data Catalog** toont tabel- en kolomprofielgegevens, waaronder:
 
-### <a name="object-data-profile"></a>Object gegevens profiel
+### <a name="object-data-profile"></a>Objectgegevensprofiel
 
 * Aantal rijen
-* Tabel grootte
-* Wanneer het object voor het laatst is bijgewerkt
+* Tabelgrootte
+* Toen het object voor het laatst is bijgewerkt
 
-### <a name="column-data-profile"></a>Kolom gegevens profiel
+### <a name="column-data-profile"></a>Kolomgegevensprofiel
 
-* Kolom gegevens type
-* Aantal afzonderlijke waarden
+* Kolomgegevenstype
+* Aantal verschillende waarden
 * Aantal rijen met NULL-waarden
-* Minimum, maximum, gemiddelde en standaard afwijking voor kolom waarden
+* Minimum-, maximum-, gemiddelde- en standaarddeviatie voor kolomwaarden
 
 ## <a name="summary"></a>Samenvatting
 
-Gegevens Profiler biedt statistieken en informatie over geregistreerde gegevensassets waarmee u de geschiktheid van de gegevens kunt bepalen om zakelijke problemen op te lossen. Naast het aantekeningen maken en gegevens bronnen documenteren, kunnen gegevens profielen gebruikers een dieper inzicht krijgen in uw gegevens.
+Gegevensprofilering biedt statistieken en informatie over geregistreerde gegevensactiva om u te helpen de geschiktheid van de gegevens te bepalen om bedrijfsproblemen op te lossen. Samen met het annoteren en documenteren van gegevensbronnen, kunnen gegevensprofielen gebruikers een beter inzicht geven in uw gegevens.
 
 ## <a name="see-also"></a>Zie ook
 

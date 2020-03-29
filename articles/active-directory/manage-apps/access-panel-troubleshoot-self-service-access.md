@@ -1,6 +1,6 @@
 ---
-title: Problemen met toegang tot Self-servicetoepassingen | Microsoft Docs
-description: Oplossen van problemen met betrekking tot toegang tot Self-servicetoepassingen
+title: Probleem met selfservice-toegang tot toepassingen | Microsoft Documenten
+description: Problemen met betrekking tot selfservice-toepassingstoegang oplossen
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,86 +17,86 @@ ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a981dfb1d72c21eccf2ad7119ea219114ed15aed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65784284"
 ---
-# <a name="problem-using-self-service-application-access"></a>Problemen met toegang tot Self-servicetoepassingen
+# <a name="problem-using-self-service-application-access"></a>Probleem met selfservice-toepassingstoegang
 
-Toegang tot Self-servicetoepassingen is een uitstekende manier om toe te staan gebruikers voor het zelf detecteren van toepassingen, toestaan de groep bedrijven voor het goedkeuren van toegang tot deze toepassingen. U kunt de bedrijfsgroep voor het beheren van de referenties die zijn toegewezen aan gebruikers voor eenmalige aanmelding op toepassingen wachtwoord rechts van hun toegangsvensters.
+Selfservice-applicatietoegang is een geweldige manier om gebruikers in staat te stellen toepassingen zelf te ontdekken, zodat de bedrijfsgroep optioneel toegang tot die toepassingen kan goedkeuren. U de bedrijfsgroep toestaan de referenties te beheren die aan deze gebruikers zijn toegewezen voor toepassingen met een enkel wachtwoord met één melding vanaf hun toegangspanelen.
 
-Voordat uw gebruikers zelf toepassingen in hun Toegangsvenster detecteren kunnen, moet u om in te schakelen **toegang tot Self-servicetoepassingen** op alle toepassingen die u wilt toestaan dat gebruikers zelf detecteren en aanvragen toegang tot.
+Voordat uw gebruikers zelf toepassingen kunnen ontdekken vanuit hun toegangspaneel, moet u **selfservice-toepassingen toegang** inschakelen tot toepassingen die u gebruikers zelf wilt laten ontdekken en toegang tot aanvragen.
 
 ## <a name="general-issues-to-check-first"></a>Algemene problemen om eerst te controleren
 
--   Zorg ervoor dat de toegang tot Self-servicetoepassingen correct is geconfigureerd. Zie ' toegang tot Self-servicetoepassingen configureren '.
+-   Zorg ervoor dat de toegang tot selfservicetoepassingen correct is geconfigureerd. Zie "Toegang tot selfservicetoepassingen configureren".
 
--   Zorg ervoor dat de gebruiker of groep is ingeschakeld voor het aanvragen van toegang tot Self-servicetoepassingen.
+-   Controleer of de gebruiker of groep is ingeschakeld om selfservice-toepassingstoegang aan te vragen.
 
--   Zorg ervoor dat de gebruiker de juiste plaats voor toegang tot Self-servicetoepassingen bezoekt. gebruikers kunnen navigeren naar hun [Toegangsvenster](https://myapps.microsoft.com/) en klikt u op de **+ toevoegen** knop om de apps waarmee u toegang tot Self-servicegebruikers hebt ingeschakeld te vinden.
+-   Zorg ervoor dat de gebruiker de juiste plaats bezoekt voor selfservice-toegang tot toepassingen. gebruikers kunnen naar het [toepassingstoegangspaneel](https://myapps.microsoft.com/) navigeren en op de knop **+Toevoegen** klikken om de apps te vinden waartoe u selfservicetoegang hebt ingeschakeld.
 
--   Als toegang tot Self-servicetoepassingen onlangs is geconfigureerd, proberen aan te melden en afmelden opnieuw in het toegangsvenster van de gebruiker na een paar minuten om te zien als de wijzigingen zelf toegang hebben gestaan.
+-   Als de toegang tot selfservicetoepassingen onlangs is geconfigureerd, probeert u zich na enkele minuten opnieuw aan en uit te melden bij het toegangspaneel van de gebruiker om te zien of de wijzigingen in de selfservicetoegang zijn weergegeven.
 
-## <a name="how-to-configure-self-service-application-access"></a>Self-servicetoepassingen toegang configureren
+## <a name="how-to-configure-self-service-application-access"></a>Toegang tot selfservicetoepassingen configureren
 
-Om in te schakelen Self-servicetoepassingen toegang tot een toepassing, de volgende stappen uit te voeren:
+Voer de onderstaande stappen uit om selfservice-toepassingstoegang tot een toepassing in te schakelen:
 
-1. Open de [ **Azure Portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2. Open de **Azure Active Directory-extensie** door te klikken op **alle services** boven aan het navigatiemenu links belangrijkste.
+2. Open de **Azure Active Directory Extension** door boven aan het navigatiemenu voor de linkerhoofd te klikken op Alle **services.**
 
-3. Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4. Klik op **bedrijfstoepassingen** in het menu van Azure Active Directory linker navigatie.
+4. klik op **Bedrijfstoepassingen** in het navigatiemenu met de linkerhand van Azure Active Directory.
 
-5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+5. klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-   * Als u de toepassing die u wilt weergeven die hier niet ziet, gebruikt u de **Filter** besturingselement aan de bovenkant van de **lijst met alle toepassingen** en stel de **weergeven** optie naar **alle Toepassingen.**
+   * Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen.**
 
-6. Selecteer de toepassing die u wilt inschakelen, selfservice toegang tot in de lijst.
+6. Selecteer de toepassing waartoe u selfservicetoegang wilt inschakelen in de lijst.
 
-7. Nadat de toepassing wordt geladen, klikt u op **selfservice** vanuit navigatiemenu voor links van de toepassing.
+7. Zodra de toepassing wordt geladen, klikt u op **Selfservice** in het navigatiemenu aan de linkerkant van de toepassing.
 
-8. Om in te schakelen toegang tot Self-servicetoepassingen voor deze toepassing, schakelt u de **toestaan dat gebruikers toegang tot deze toepassing aanvragen?** overzet naar **Ja.**
+8. Als u selfservice-toepassingstoegang voor deze toepassing wilt inschakelen, schakelt u **gebruikers toestaan om toegang tot deze toepassing aan te vragen?** **Yes.**
 
-9. Klik vervolgens op de selector naast het label te selecteren in de groep waaraan de gebruikers die aanvragen toegang tot deze toepassing moet worden toegevoegd, **aan welke groep moeten toegewezen gebruikers worden toegevoegd?** en selecteert u een groep.
+9. Klik vervolgens op de kiezer naast het label **Aan welke groep gebruikers moeten worden toegevoegd,** klikt u de groep waaraan gebruikers moeten worden toegewezen om de groep te selecteren waaraan gebruikers moeten worden toegevoegd.
 
-10. **Optioneel:** Als u wilt een zakelijke goedkeuring vereisen voordat gebruikers toegang hebben, stelt u de **goedkeuring vereisen voordat het verlenen van toegang tot deze toepassing?** overzet naar **Ja**.
+10. **Optioneel:** Als u een bedrijfsgoedkeuring wilt vereisen voordat gebruikers toegang krijgen, stelt u de goedkeuring **Yes** **vereisen in voordat u toegang verleent tot deze toepassing?**
 
-11. **Optioneel: Voor toepassingen die gebruikmaken van eenmalige wachtwoord alleen op** als u toestaan dat de fiatteur om op te geven van de wachtwoorden die worden verzonden naar deze toepassing voor goedgekeurde gebruikers wilt, stelt u de **fiatteurs instellen van wachtwoorden van gebruikers voor dit toestaan toepassing is?**  overzet naar **Ja**.
+11. **Optioneel: Als toepassingen met wachtwoord alleen worden aangemeld,** u deze zakelijke fiatteurs toestaan de wachtwoorden op te geven die naar deze toepassing worden verzonden voor goedgekeurde gebruikers, de **appjes toestaan om de wachtwoorden van deze toepassing in te stellen?** **Yes**
 
-12. **Optioneel:** Als u wilt de fiatteur die gemachtigd zijn om goed te keuren toegang tot deze toepassing opgeven, klikt u op de kiezer naast het label **die is toegestaan toegang tot deze toepassing goedkeuren?** maximaal 10 afzonderlijke fiatteur selecteren.
+12. **Optioneel:** Als u de zakelijke fiatteurs wilt opgeven die toegang tot deze toepassing mogen goedkeuren, klikt u op de kiezer naast het label **Wie mag toegang tot deze toepassing goedkeuren?**
 
     >[!NOTE]
     > Groepen worden niet ondersteund.
     >
     >
 
-13. **Optioneel:** **Voor toepassingen waardoor rollen worden blootgesteld**, als u wilt Self-service goedgekeurde gebruikers toewijzen aan een rol, klik op de selector naast de **aan welke rol moeten gebruikers worden toegewezen in deze toepassing?** die de rol selecteren Deze gebruikers moeten worden toegewezen.
+13. **Optioneel:** **Klik voor toepassingen die rollen blootstellen**, als u zelfservicegoedgekeurde gebruikers aan een rol wilt toewijzen, op de kiezer naast de rol waaraan gebruikers in deze toepassing moeten worden **toegewezen?**
 
-14. Klik op de **opslaan** knop aan de bovenkant van de blade om te voltooien.
+14. Klik op de knop **Opslaan** boven aan het blad om te voltooien.
 
-Nadat u Self-servicetoepassingen configuratie is voltooid, ernaartoe kunnen navigeren hun [Toegangsvenster](https://myapps.microsoft.com/) en klikt u op de **+ toevoegen** knop om de apps waarop u selfservice hebt ingeschakeld te vinden de toegang. Fiatteur ziet ook een melding in hun [Toegangsvenster](https://myapps.microsoft.com/). U kunt een melding wanneer een gebruiker heeft toegang tot een toepassing waarvoor goedkeuring aangevraagd e-mail inschakelen. 
+Zodra u de configuratie van de selfservicetoepassing hebt voltooid, kunnen gebruikers naar hun [toepassingstoegangspaneel](https://myapps.microsoft.com/) navigeren en op de knop **+Toevoegen** klikken om de apps te vinden waarvoor u selfservicetoegang hebt ingeschakeld. Zakelijke fiatteurs zien ook een melding in hun [Application Access Panel](https://myapps.microsoft.com/). U een e-mail inschakelen waarin u hen op de hoogte stelt wanneer een gebruiker toegang heeft gevraagd tot een toepassing waarvoor zijn goedkeuring vereist is. 
 
-Deze goedkeuringen één goedkeuringsworkflows ondersteunen alleen, wat betekent dat als u meerdere goedkeurders opgeeft, een één goedkeurder een aanvraag toegang tot de toepassing goedkeuren kan.
+Deze goedkeuringen ondersteunen alleen afzonderlijke goedkeuringswerkstromen, wat betekent dat als u meerdere fiatteurs opgeeft, elke enkele goedkeurder de toegang tot de toepassing kan goedkeuren.
 
-## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>Als deze stappen voor probleemoplossing het probleem niet verhelpen 
+## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>Als deze stappen voor het oplossen van problemen het probleem niet oplossen 
 
-Open een ondersteuningsticket met de volgende informatie, indien beschikbaar:
+open een support ticket met de volgende informatie indien beschikbaar:
 
--   Correlatie-ID van fout
+-   Correlatiefout-id
 
--   UPN (e-mailadres van gebruiker)
+-   UPN (e-mailadres van de gebruiker)
 
 -   TenantID
 
 -   Browsertype
 
--   Tijdzone en de tijd/tijdsbestek tijdens de fout optreedt
+-   Tijdzone en tijd/tijdsbestek tijdens fout treedt op
 
--   Fiddler traceringen
+-   Fiddler sporen
 
 ## <a name="next-steps"></a>Volgende stappen
-[Azure Active Directory instellen voor groepsbeheer met Self-service](../users-groups-roles/groups-self-service-management.md)
+[Azure Active Directory instellen voor groepsbeheer met self-service](../users-groups-roles/groups-self-service-management.md)

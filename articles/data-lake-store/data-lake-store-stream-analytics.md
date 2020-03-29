@@ -1,5 +1,5 @@
 ---
-title: Gegevens van Stream Analytics in Azure Data Lake Storage Gen1 Stream | Microsoft Docs
+title: Gegevens van Stream Analytics streamen naar Azure Data Lake Storage Gen1 | Microsoft Documenten
 description: Azure Stream Analytics gebruiken om gegevens te streamen naar Azure Data Lake Storage Gen1
 services: data-lake-store,stream-analytics
 documentationcenter: ''
@@ -13,110 +13,110 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: twooley
 ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60194852"
 ---
-# <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Stream-gegevens uit Azure Storage-Blob in Azure Data Lake Storage Gen1 met behulp van Azure Stream Analytics
-In dit artikel leert u hoe u met Azure Data Lake Storage Gen1 als uitvoer voor een Azure Stream Analytics-taak. In dit artikel ziet u een eenvoudig scenario die gegevens van een Azure Storage-blob (invoer) leest en schrijft de gegevens naar Data Lake Storage Gen1 (uitvoer).
+# <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Gegevens van Azure Storage Blob streamen naar Azure Data Lake Storage Gen1 met Azure Stream Analytics
+In dit artikel leert u hoe u Azure Data Lake Storage Gen1 gebruiken als uitvoer voor een Azure Stream Analytics-taak. In dit artikel wordt een eenvoudig scenario weergegeven dat gegevens uit een Azure Storage-blob (invoer) leest en de gegevens naar Data Lake Storage Gen1 (uitvoer) schrijft.
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaan:
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Een Azure Storage-account**. U gebruikt een blob-container uit het account voor het invoeren van gegevens voor een Stream Analytics-taak. Voor deze zelfstudie wordt ervan uitgegaan er een opslagaccount met de naam **storageforasa** en een container in het account met de naam **storageforasacontainer**. Als u de container hebt gemaakt, wordt naar een bestand met voorbeeldgegevens uploaden. 
+* **Azure Storage-account**. U gebruikt een blobcontainer uit dit account om gegevens in te voeren voor een Stream Analytics-taak. Ga er voor deze zelfstudie van uit dat u een opslagaccount hebt dat **storageforasa** wordt genoemd en een container binnen het account dat **storageforasacontainer**wordt genoemd. Zodra u de container hebt gemaakt, uploadt u er een voorbeeldgegevensbestand naar. 
   
-* **De account van een Data Lake Storage Gen1**. Volg de instructies op [aan de slag met Azure Data Lake Storage Gen1 met behulp van de Azure-Portal](data-lake-store-get-started-portal.md). Stel, u hebt een Gen1 van Data Lake Storage-account met de naam **myadlsg1**. 
+* **Een Data Lake Storage Gen1-account**. Volg de instructies bij [Aan de slag met Azure Data Lake Storage Gen1 met behulp van de Azure Portal.](data-lake-store-get-started-portal.md) Laten we aannemen dat u een Data Lake Storage Gen1-account hebt genaamd **myadlsg1.** 
 
 ## <a name="create-a-stream-analytics-job"></a>Een Stream Analytics-taak maken
-U begint met het maken van een Stream Analytics-taak die een invoerbron en een bestemming voor de uitvoer bevat. De bron is een Azure blob-container en de bestemming is Data Lake Storage Gen1 voor deze zelfstudie.
+U begint met het maken van een Stream Analytics-taak met een invoerbron en een uitvoerbestemming. Voor deze zelfstudie is de bron een Azure blob-container en de bestemming is Data Lake Storage Gen1.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-2. Klik in het linkerdeelvenster op **Stream Analytics-taken**, en klik vervolgens op **toevoegen**.
+2. Klik in het linkerdeelvenster op **Taken van Stream analytics**en klik vervolgens op **Toevoegen**.
 
-    ![Een Stream Analytics-taak maken](./media/data-lake-store-stream-analytics/create.job.png "een Stream Analytics-taak maken")
+    ![Een streamanalysetaak maken](./media/data-lake-store-stream-analytics/create.job.png "Een Stream Analytics-taak maken")
 
     > [!NOTE]
-    > Zorg ervoor dat u een taak maken in dezelfde regio bevinden als het opslagaccount of er extra kosten van het verplaatsen van gegevens tussen regio's worden gebracht.
+    > Zorg ervoor dat u een taak maakt in dezelfde regio als het opslagaccount, anders brengt u extra kosten met zich mee voor het verplaatsen van gegevens tussen regio's.
     >
 
 ## <a name="create-a-blob-input-for-the-job"></a>Een Blob-invoer voor de taak maken
 
-1. Open de pagina voor de Stream Analytics-taak gemaakt in het linkerdeelvenster klikt u op de **invoer** tabblad en klik vervolgens op **toevoegen**.
+1. Open de pagina voor de taak Stream Analytics, klik in het linkerdeelvenster op het tabblad **Invoer** en klik vervolgens op **Toevoegen**.
 
-    ![Toevoegen van een invoer voor de taak](./media/data-lake-store-stream-analytics/create.input.1.png "invoer voor de taak toevoegen")
+    ![Een invoer toevoegen aan uw taak](./media/data-lake-store-stream-analytics/create.input.1.png "Een invoer toevoegen aan uw taak")
 
-2. Op de **nieuwe invoer** blade, geef de volgende waarden op.
+2. Geef op het **nieuwe invoerblad** de volgende waarden op.
 
-    ![Toevoegen van een invoer voor de taak](./media/data-lake-store-stream-analytics/create.input.2.png "invoer voor de taak toevoegen")
+    ![Een invoer toevoegen aan uw taak](./media/data-lake-store-stream-analytics/create.input.2.png "Een invoer toevoegen aan uw taak")
 
-   * Voor **invoer alias**, voer een unieke naam voor de taak invoeren.
-   * Voor **gegevensbrontype**, selecteer **gegevensstroom**.
-   * Voor **bron**, selecteer **Blob storage**.
-   * Voor **abonnement**, selecteer **gebruik blob-opslag van het huidige abonnement**.
-   * Voor **opslagaccount**, selecteer het opslagaccount dat u hebt gemaakt als onderdeel van de vereisten. 
-   * Voor **Container**, selecteert u de container die u hebt gemaakt in het geselecteerde opslagaccount.
-   * Voor **serialisatie-indeling voor gebeurtenissen**, selecteer **CSV**.
-   * Voor **scheidingsteken**, selecteer **tabblad**.
-   * Voor **Encoding**, selecteer **UTF-8**.
+   * Voer **voor Invoeralias**een unieke naam in voor de taakinvoer.
+   * Selecteer **Gegevensstroom**voor **Brontype**.
+   * Selecteer **Blob-opslag**voor **Bron**.
+   * Selecteer **Blob-opslag gebruiken in het huidige abonnement**voor **Abonnement**.
+   * Selecteer **voor opslagaccount**het opslagaccount dat u hebt gemaakt als onderdeel van de vereisten. 
+   * Selecteer **voor Container**de container die u hebt gemaakt in het geselecteerde opslagaccount.
+   * Selecteer **CSV**voor **de indeling voor eventserialisatie**.
+   * Selecteer **tabblad**voor **scheidingsteken**.
+   * Selecteer **UTF-8**voor **codering**.
 
-     Klik op **Create**. De portal wordt nu toegevoegd de invoer en test de verbinding met het.
+     Klik **op Maken**. Het portaal voegt nu de invoer toe en test de verbinding ermee.
 
 
-## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>De uitvoer van een Data Lake Storage Gen1 voor de taak maken
+## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Een Data Lake Storage Gen1-uitvoer voor de taak maken
 
-1. Open de pagina voor de Stream Analytics-taak, klikt u op de **uitvoer** tabblad **toevoegen**, en selecteer **Data Lake Storage Gen1**.
+1. Open de pagina voor de taak Stream Analytics, klik op het tabblad **Uitvoer,** klik op **Toevoegen**en selecteer **Data Lake Storage Gen1**.
 
-    ![Uitvoer toevoegen aan uw taak](./media/data-lake-store-stream-analytics/create.output.1.png "uitvoer toevoegen aan uw taak")
+    ![Een uitvoer toevoegen aan uw taak](./media/data-lake-store-stream-analytics/create.output.1.png "Een uitvoer toevoegen aan uw taak")
 
-2. Op de **nieuwe uitvoer** blade, geef de volgende waarden op.
+2. Geef op het **nieuwe uitvoerblad** de volgende waarden op.
 
-    ![Uitvoer toevoegen aan uw taak](./media/data-lake-store-stream-analytics/create.output.2.png "uitvoer toevoegen aan uw taak")
+    ![Een uitvoer toevoegen aan uw taak](./media/data-lake-store-stream-analytics/create.output.2.png "Een uitvoer toevoegen aan uw taak")
 
-    * Voor **uitvoeralias**, voer een unieke naam voor de taakuitvoer. Dit is een beschrijvende naam die wordt gebruikt in query's om te leiden van de query-uitvoer aan deze Gen1 van Data Lake Storage-account.
-    * U wordt gevraagd toegang verlenen aan de Gen1 van Data Lake Storage-account. Klik op **autoriseren**.
+    * Voer **voor Uitvoeralias**een unieke naam in voor de taakuitvoer. Dit is een vriendelijke naam die wordt gebruikt in query's om de queryuitvoer naar dit Data Lake Storage Gen1-account te leiden.
+    * U wordt gevraagd om toegang te verlenen tot het Data Lake Storage Gen1-account. Klik **op Autoriseren**.
 
-3. Op de **nieuwe uitvoer** blade doorgaan met de volgende waarden op te geven.
+3. Blijf op het **nieuwe uitvoerblad** de volgende waarden opgeven.
 
-    ![Uitvoer toevoegen aan uw taak](./media/data-lake-store-stream-analytics/create.output.3.png "uitvoer toevoegen aan uw taak")
+    ![Een uitvoer toevoegen aan uw taak](./media/data-lake-store-stream-analytics/create.output.3.png "Een uitvoer toevoegen aan uw taak")
 
-   * Voor **accountnaam**, selecteert u de Data Lake Storage Gen1-account dat u al hebt gemaakt waar u de taak moet worden verzonden naar de uitvoer.
-   * Voor **voorvoegsel padpatroon**, voer een pad dat wordt gebruikt om uw bestanden in de opgegeven Gen1 van Data Lake Storage-account te schrijven.
-   * Voor **datumnotatie**, als u de datumtoken van een in het voorvoegsel van pad gebruikt, kunt u de datumnotatie waarin de bestanden zijn ingedeeld.
-   * Voor **tijdnotatie**, als u een tijd-token hebt gebruikt in het pad voorvoegsel opgeven van de tijdindeling waarin de bestanden zijn ingedeeld.
-   * Voor **serialisatie-indeling voor gebeurtenissen**, selecteer **CSV**.
-   * Voor **scheidingsteken**, selecteer **tabblad**.
-   * Voor **Encoding**, selecteer **UTF-8**.
+   * Selecteer **voor Accountnaam**het Data Lake Storage Gen1-account dat u al hebt gemaakt waar u de taakuitvoer naartoe wilt sturen.
+   * Voer **voor padvoorvoegingspatroon**een bestandspad in dat wordt gebruikt om uw bestanden te schrijven binnen het opgegeven Data Lake Storage Gen1-account.
+   * Als u voor **Datumnotatie**een datumtoken in het voorvoegselpad hebt gebruikt, u de datumnotatie selecteren waarin uw bestanden zijn ingedeeld.
+   * Als u voor **tijdnotatie**een tijdstokteken in het voorvoegselpad hebt gebruikt, geeft u de tijdindeling op waarin uw bestanden zijn ingedeeld.
+   * Selecteer **CSV**voor **de indeling voor eventserialisatie**.
+   * Selecteer **tabblad**voor **scheidingsteken**.
+   * Selecteer **UTF-8**voor **codering**.
     
-     Klik op **Create**. De portal wordt de uitvoer toegevoegd nu en test de verbinding met het.
+     Klik **op Maken**. Het portaal voegt nu de uitvoer toe en test de verbinding eraan.
     
-## <a name="run-the-stream-analytics-job"></a>De Stream Analytics-taak uitvoeren
+## <a name="run-the-stream-analytics-job"></a>Voer de Stream Analytics-taak uit
 
-1. Als u wilt een Stream Analytics-taak uitvoeren, moet u een query uitvoeren de **Query** tabblad. Voor deze zelfstudie, kunt u de voorbeeldquery uitvoeren door de tijdelijke aanduidingen vervangen door de taak invoer en uitvoer aliassen, zoals wordt weergegeven in onderstaande schermafbeelding.
+1. Als u een streamanalytics-taak wilt uitvoeren, moet u een query uitvoeren op het tabblad **Query.** Voor deze zelfstudie u de voorbeeldquery uitvoeren door de tijdelijke aanduidingen te vervangen door de taakinvoer- en uitvoeraliassen, zoals weergegeven in de onderstaande schermopname.
 
-    ![Query uitvoeren](./media/data-lake-store-stream-analytics/run.query.png "query uitvoeren")
+    ![Query uitvoeren](./media/data-lake-store-stream-analytics/run.query.png "Query uitvoeren")
 
-2. Klik op **opslaan** vanaf de bovenkant van het scherm en klik in de **overzicht** tabblad **Start**. Selecteer in het dialoogvenster **aangepaste tijd**, en stel vervolgens de huidige datum en tijd.
+2. Klik boven aan het scherm **op Opslaan** en klik vervolgens op het tabblad **Overzicht** op **Start**. Selecteer in het dialoogvenster **Aangepaste tijd**en stel de huidige datum en tijd in.
 
-    ![Insteltijd voor de taak](./media/data-lake-store-stream-analytics/run.query.2.png "tijd voor de taak instellen")
+    ![Jobtijd instellen](./media/data-lake-store-stream-analytics/run.query.2.png "Jobtijd instellen")
 
-    Klik op **Start** om de taak te starten. Het kan enkele minuten duren start de taak.
+    Klik **op Start** om de taak te starten. Het kan tot een paar minuten duren om de klus te klaren.
 
-3. Voor het activeren van de taak voor het kiezen van de gegevens uit de blob, een bestand met voorbeeldgegevens te kopiëren naar de blob-container. Krijgt u een bestand met voorbeeldgegevens van de [Azure Data Lake Git-opslagplaats](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). Kopieer het bestand voor deze zelfstudie **vehicle1_09142014.csv**. U kunt verschillende clients, zoals [Azure Storage Explorer](https://storageexplorer.com/), het uploaden van gegevens naar een blob-container.
+3. Als u de taak wilt activeren om de gegevens uit de blob te kiezen, kopieert u een voorbeeldgegevensbestand naar de blobcontainer. U een voorbeeldgegevensbestand ophalen uit de [Azure Data Lake Git Repository.](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt) Voor deze zelfstudie kopiëren we het bestand **vehicle1_09142014.csv**. U verschillende clients, zoals [Azure Storage Explorer,](https://storageexplorer.com/)gebruiken om gegevens naar een blobcontainer te uploaden.
 
-4. Uit de **overzicht** tabblad onder **bewaking**, Zie hoe de gegevens is verwerkt.
+4. Bekijk op het tabblad **Overzicht** onder **Controleren**hoe de gegevens zijn verwerkt.
 
-    ![Taak controleren](./media/data-lake-store-stream-analytics/run.query.3.png "taak controleren")
+    ![Taak controleren](./media/data-lake-store-stream-analytics/run.query.3.png "Taak controleren")
 
-5. Ten slotte kunt u controleren dat de uitvoergegevens van de taak beschikbaar in de Gen1 van Data Lake Storage-account is. 
+5. Ten slotte u controleren of de taakuitvoergegevens beschikbaar zijn in het Data Lake Storage Gen1-account. 
 
-    ![Uitvoer controleren](./media/data-lake-store-stream-analytics/run.query.4.png "uitvoer controleren")
+    ![Uitvoer controleren](./media/data-lake-store-stream-analytics/run.query.4.png "Uitvoer controleren")
 
-    In het deelvenster Data Explorer, ziet u dat de uitvoer wordt geschreven naar het pad naar een map die zijn opgegeven in de Data Lake Storage Gen1 uitvoer instellingen (`streamanalytics/job/output/{date}/{time}`).  
+    Houd in het deelvenster Gegevensverkenner de melding dat de uitvoer wordt geschreven naar een`streamanalytics/job/output/{date}/{time}`mappad zoals opgegeven in de uitvoerinstellingen van Data Lake Storage Gen1 ( ).  
 
 ## <a name="see-also"></a>Zie ook
-* [Een HDInsight-cluster voor het gebruik van Data Lake Storage Gen1 maken](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Een HDInsight-cluster maken om Data Lake Storage Gen1 te gebruiken](data-lake-store-hdinsight-hadoop-use-portal.md)

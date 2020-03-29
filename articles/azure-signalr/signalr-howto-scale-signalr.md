@@ -1,47 +1,47 @@
 ---
-title: Een exemplaar van de Azure signalerings service schalen
-description: Meer informatie over het schalen van een exemplaar van een Azure signalerings service om capaciteit toe te voegen of te verminderen via Azure Portal of Azure CLI.
+title: Een instantie van Azure SignalR-service schalen
+description: Meer informatie over het schalen van een Azure SignalR Service-instantie om de capaciteit toe te voegen of te verkleinen, via Azure portal of Azure CLI.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: zhshang
 ms.openlocfilehash: c8d74342e624b837c7ee803a2bcdcc12a3fb814b
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75659284"
 ---
-# <a name="how-to-scale-an-azure-signalr-service-instance"></a>Hoe kan ik een service-exemplaar van Azure signalering schalen?
-Dit artikel laat u zien hoe u uw exemplaar van de Azure signalerings service kunt schalen. Er zijn twee scenario's voor schalen, omhoog schalen en uitschalen.
+# <a name="how-to-scale-an-azure-signalr-service-instance"></a>Een Azure SignalR-service-instantie schalen?
+In dit artikel ziet u hoe u uw exemplaar van Azure SignalR Service schaalt. Er zijn twee scenario's voor schalen, opschalen en uitschalen.
 
-* [Omhoog schalen](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): krijg meer eenheden, verbindingen, berichten en meer. U kunt omhoog schalen door de prijs categorie te wijzigen van vrij naar standaard.
-* [Uitschalen](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Verhoog het aantal signalerings eenheden. U kunt uitschalen tot Maxi maal 100 eenheden.
+* [Opschalen:](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)krijg meer eenheden, verbindingen, berichten en meer. U schaalt op door de prijscategorie te wijzigen van Gratis naar Standaard.
+* [Uitschalen](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Verhoog het aantal SignalR-eenheden. U uitschalen naar maar liefst 100 eenheden.
 
-De schaal instellingen nemen enkele minuten in beslag. In zeldzame gevallen kan het ongeveer 30 minuten duren om toe te passen. U hoeft uw code niet te wijzigen of uw server toepassing opnieuw te implementeren.
+De schaalinstellingen hebben enkele minuten nodig om toe te passen. In zeldzame gevallen kan het ongeveer 30 minuten duren om toe te passen. U hoeft uw code niet te wijzigen of uw servertoepassing opnieuw te implementeren.
 
-Zie [prijs informatie voor de Azure signalerings service](https://azure.microsoft.com/pricing/details/signalr-service/)voor meer informatie over de prijzen en capaciteit van de afzonderlijke signalerings service.  
+Zie Details van azure [SignalR Service Pricing](https://azure.microsoft.com/pricing/details/signalr-service/)voor informatie over de prijzen en capaciteiten van afzonderlijke SignalR-service.  
 
 > [!NOTE]
-> De signaal service wijzigen van de laag **gratis** in de laag **standaard** of omgekeerd, het IP-adres van de open bare service wordt gewijzigd en het duurt doorgaans 30-60 minuten om de wijziging door te geven aan DNS-servers op het hele internet. Uw service is mogelijk onbereikbaar voordat DNS wordt bijgewerkt. Over het algemeen is het niet raadzaam om uw prijs categorie te vaak wijzigen.
+> Als u de SignalR-service wijzigt van **Gratis** laag naar **Standaardlaag** of vice versa, wordt het IP-adres van de openbare dienst gewijzigd en duurt het meestal 30-60 minuten om de wijziging in DNS-servers over het hele internet te verspreiden. Uw service is mogelijk onbereikbaar voordat DNS wordt bijgewerkt. Over het algemeen is het niet aan te raden om uw prijscategorie te vaak te wijzigen.
 
 
-## <a name="scale-on-azure-portal"></a>Schalen op Azure Portal
+## <a name="scale-on-azure-portal"></a>Schalen op Azure-portal
 
 1. Open [Azure Portal](https://portal.azure.com) in uw browser.
 
-2. Selecteer op de pagina signalerings service in het menu links **schalen**.
+2. Selecteer op de pagina SignalR Service in het linkermenu de optie **Schalen**.
    
-3. Kies uw prijs categorie en klik vervolgens op **selecteren**. Stel het aantal eenheden in voor de **Standard** -laag.
+3. Kies uw prijscategorie en klik op **Selecteren**. Stel het aantal eenheden in voor **Standaardlaag.**
    
-    ![Schalen op Portal](./media/signalr-howto-scale/signalr-howto-scale.png)
+    ![Schaal op portal](./media/signalr-howto-scale/signalr-howto-scale.png)
 
 4. Klik op **Opslaan**.
 
-## <a name="scale-using-azure-cli"></a>Schalen met behulp van Azure CLI
+## <a name="scale-using-azure-cli"></a>Schalen met Azure CLI
 
-Met dit script maakt u een nieuwe signalerings service resource van de **gratis** laag en een nieuwe resource groep en schaalt u deze in de laag **standaard** . 
+Met dit script wordt een nieuwe SignalR Service-bron van **Free** Tier en een nieuwe resourcegroep gemaakt en wordt deze geschaald naar **Standaardlaag.** 
 
 ```azurecli-interactive
 #!/bin/bash
@@ -77,17 +77,17 @@ Noteer de naam die wordt gegenereerd voor de nieuwe resourcegroep. U hebt deze n
 
 [!INCLUDE [cli-script-clean-up](../../includes/cli-script-clean-up.md)]
 
-## <a name="compare-pricing-tiers"></a>Prijs categorieën vergelijken
+## <a name="compare-pricing-tiers"></a>Prijsniveaus vergelijken
 
-Zie [prijs informatie voor de seingevings service](https://azure.microsoft.com/pricing/details/signalr-service/)voor gedetailleerde informatie, zoals opgenomen berichten en verbindingen voor elke prijs categorie.
+Zie [Detaildetails](https://azure.microsoft.com/pricing/details/signalr-service/)van de serviceprijzen voor gedetailleerde informatie, zoals inbegrepen berichten en verbindingen voor elke prijscategorie.
 
-Zie voor een tabel met Service limieten, quota en beperkingen in elke laag [signaal service limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits).
+Zie [SignalR-servicelimieten](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits)voor een tabel met servicelimieten, quota en beperkingen in elke laag.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze hand leiding hebt u geleerd over het schalen van een service-exemplaar met één signaal.
+In deze handleiding leerde u hoe u één SignalR Service-exemplaar schalen.
 
-Meerdere eind punten worden ook ondersteund voor schaal-, sharding-en kruis regio scenario's.
+Meerdere eindpunten worden ook ondersteund voor het schalen, sharden en cross-region scenario's.
 
 > [!div class="nextstepaction"]
-> [Scale signalerings service met meerdere instanties](./signalr-howto-scale-multi-instances.md)
+> [Seinservice schalen met meerdere exemplaren](./signalr-howto-scale-multi-instances.md)

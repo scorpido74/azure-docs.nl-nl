@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Shell beperkingen | Microsoft Docs
+title: Azure Cloud Shell-beperkingen | Microsoft Documenten
 description: Overzicht van beperkingen van Azure Cloud Shell
 services: azure
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
 ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74951476"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Beperkingen van Azure Cloud Shell
@@ -27,17 +27,17 @@ Azure Cloud Shell heeft de volgende bekende beperkingen:
 
 ## <a name="general-limitations"></a>Algemene beperkingen
 
-### <a name="system-state-and-persistence"></a>Systeem status en persistentie
+### <a name="system-state-and-persistence"></a>Systeemstatus en persistentie
 
-De computer die uw Cloud Shell-sessie levert, is tijdelijk en wordt gerecycled nadat uw sessie 20 minuten niet actief is. Cloud Shell moet een Azure-bestands share worden gekoppeld. Als gevolg hiervan moet uw abonnement opslag bronnen kunnen instellen voor toegang tot Cloud Shell. Andere overwegingen zijn onder andere:
+De machine die uw Cloud Shell-sessie biedt, is tijdelijk en wordt gerecycled nadat uw sessie gedurende 20 minuten inactief is. Cloud Shell vereist dat een Azure-bestandsshare wordt gemonteerd. Als gevolg hiervan moet uw abonnement opslagbronnen kunnen instellen om toegang te krijgen tot Cloud Shell. Andere overwegingen zijn:
 
-* Bij gekoppelde opslag worden alleen wijzigingen in de `$Home` Directory bewaard.
-* Azure-bestands shares kunnen alleen worden gekoppeld vanuit uw [toegewezen regio](persisting-shell-storage.md#mount-a-new-clouddrive).
-  * Voer in bash `env` uit om uw regio in te stellen als `ACC_LOCATION`.
+* Met gemonteerde opslag blijven alleen `$Home` wijzigingen in de map bestaan.
+* Azure-bestandsshares kunnen alleen worden gestart vanuit uw [toegewezen regio.](persisting-shell-storage.md#mount-a-new-clouddrive)
+  * Voer in `env` Bash uit om `ACC_LOCATION`je regio te vinden die is ingesteld als .
 
 ### <a name="browser-support"></a>Browserondersteuning
 
-Cloud Shell ondersteunt de nieuwste versies van micro soft Edge, micro soft Internet Explorer, Google Chrome, Mozilla Firefox en Apple Safari. Safari in de privé modus wordt niet ondersteund.
+Cloud Shell ondersteunt de nieuwste versies van Microsoft Edge, Microsoft Internet Explorer, Google Chrome, Mozilla Firefox en Apple Safari. Safari in privémodus wordt niet ondersteund.
 
 ### <a name="copy-and-paste"></a>Kopiëren en plakken
 
@@ -45,43 +45,43 @@ Cloud Shell ondersteunt de nieuwste versies van micro soft Edge, micro soft Inte
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Voor een bepaalde gebruiker kan slechts één shell actief zijn
 
-Gebruikers kunnen slechts één type shell tegelijk starten, hetzij **bash** of **Power shell**. Het is echter mogelijk dat er meerdere exemplaren van bash of Power shell tegelijk worden uitgevoerd. Als u het menu verwisselt tussen bash of Power shell, worden Cloud Shell opnieuw opgestart, waardoor bestaande sessies worden beëindigd. U kunt ook bash in Power shell uitvoeren door `bash`te typen en Power shell in bash uit te voeren door `pwsh`te typen.
+Gebruikers kunnen slechts één type shell tegelijk starten, **bash** of **PowerShell.** U echter meerdere exemplaren van Bash of PowerShell tegelijk laten uitvoeren. Als u wisselt tussen Bash of PowerShell met behulp van het menu, wordt Cloud Shell opnieuw opgestart, waardoor bestaande sessies worden beëindigd. U ook bash in PowerShell `bash`uitvoeren door te typen en `pwsh`u PowerShell in bash uitvoeren door te typen.
 
-### <a name="usage-limits"></a>Gebruiksbeperkingen
+### <a name="usage-limits"></a>Gebruikslimieten
 
-Cloud Shell is bedoeld voor interactieve use-cases. Als gevolg hiervan worden langlopende niet-interactieve sessies beëindigd zonder dat dit wordt gewaarschuwd.
+Cloud Shell is bedoeld voor interactieve use cases. Als gevolg hiervan worden langlopende niet-interactieve sessies zonder waarschuwing beëindigd.
 
-## <a name="bash-limitations"></a>Bash-beperkingen
+## <a name="bash-limitations"></a>Bash beperkingen
 
 ### <a name="user-permissions"></a>Gebruikersmachtigingen
 
-Machtigingen worden ingesteld als gewone gebruikers zonder sudo-toegang. Een installatie buiten uw `$Home` Directory wordt niet bewaard.
+Machtigingen worden ingesteld als gewone gebruikers zonder sudo-toegang. Elke installatie `$Home` buiten uw directory wordt niet gehandhaafd.
 
-### <a name="editing-bashrc-or-profile"></a>Bewerken. bashrc of $PROFILE
+### <a name="editing-bashrc-or-profile"></a>Bewerken .bashrc of $PROFILE
 
-Let op wanneer u het bestand bewerkt. bashrc of Power shell $PROFILE. Dit kan leiden tot onverwachte fouten in Cloud Shell.
+Wees voorzichtig bij het bewerken van .bashrc of het $PROFILE-bestand van PowerShell, waardoor dit onverwachte fouten in Cloud Shell kan veroorzaken.
 
-## <a name="powershell-limitations"></a>Power shell-beperkingen
+## <a name="powershell-limitations"></a>PowerShell-beperkingen
 
-### <a name="azuread-module-name"></a>module naam `AzureAD`
+### <a name="azuread-module-name"></a>`AzureAD`modulenaam
 
-De naam van de `AzureAD` module is momenteel `AzureAD.Standard.Preview`, de module biedt dezelfde functionaliteit.
+De `AzureAD` modulenaam `AzureAD.Standard.Preview`is momenteel, de module biedt dezelfde functionaliteit.
 
-### <a name="sqlserver-module-functionality"></a>functionaliteit van `SqlServer`-module
+### <a name="sqlserver-module-functionality"></a>`SqlServer`modulefunctionaliteit
 
-De `SqlServer` module die is opgenomen in Cloud Shell heeft alleen ondersteuning voor de Prerelease van Power shell core. Met name `Invoke-SqlCmd` is nog niet beschikbaar.
+De `SqlServer` module in Cloud Shell heeft alleen prerelease-ondersteuning voor PowerShell Core. In het `Invoke-SqlCmd` bijzonder, is nog niet beschikbaar.
 
-### <a name="default-file-location-when-created-from-azure-drive"></a>Standaard bestands locatie bij het maken van een Azure-station:
+### <a name="default-file-location-when-created-from-azure-drive"></a>Standaardbestandslocatie wanneer deze is gemaakt vanuit Azure-station:
 
-Met Power shell-cmdlets kunnen gebruikers geen bestanden maken in het Azure:-station. Wanneer gebruikers nieuwe bestanden maken met andere hulpprogram ma's, zoals vim of nano, worden de bestanden standaard opgeslagen in de `$HOME`. 
+Met PowerShell-cmdlets kunnen gebruikers geen bestanden maken onder het Azure:drive. Wanneer gebruikers nieuwe bestanden maken met andere tools, zoals vim `$HOME` of nano, worden de bestanden standaard opgeslagen in de standaardbestanden. 
 
 ### <a name="gui-applications-are-not-supported"></a>GUI-toepassingen worden niet ondersteund
 
-Als de gebruiker een opdracht uitvoert waarmee een Windows-dialoog venster wordt gemaakt, ziet u een fout bericht zoals: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
+Als de gebruiker een opdracht uitvoert waarmee een Dialoogvenster van Windows `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`wordt gemaakt, ziet u een foutbericht zoals: .
 
-### <a name="large-gap-after-displaying-progress-bar"></a>Grote tussen ruimte na het weer geven van de voortgangs balk
+### <a name="large-gap-after-displaying-progress-bar"></a>Grote kloof na het weergeven van de voortgangsbalk
 
-Als de gebruiker een actie uitvoert waarmee een voortgangs balk wordt weer gegeven, zoals een tab die wordt ingevuld in het `Azure:` station, is het mogelijk dat de cursor niet op de juiste wijze is ingesteld en dat er een lege ruimte wordt weer gegeven waarin de voortgangs balk eerder was.
+Als de gebruiker een actie uitvoert die een voortgangsbalk weergeeft, zoals een tabblad dat in het `Azure:` station wordt voltooid, is het mogelijk dat de cursor niet goed is ingesteld en er een gat wordt weergegeven waar de voortgangsbalk voorheen was.
 
 ## <a name="next-steps"></a>Volgende stappen
 

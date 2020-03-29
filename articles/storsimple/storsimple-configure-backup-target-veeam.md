@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000-serie als back-updoel met Veeam | Microsoft Docs
-description: Beschrijft de configuratie van de StorSimple-back-updoel met Veeam.
+title: StorSimple 8000-serie als back-updoel met Veeam | Microsoft Documenten
+description: Beschrijft de StorSimple back-up doelconfiguratie met Veeam.
 services: storsimple
 documentationcenter: ''
 author: harshakirank
@@ -15,508 +15,508 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
 ms.openlocfilehash: 3ebf464fed1480e7452f246f04f3906faf0dd219
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67875300"
 ---
-# <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple als een back-updoel met Veeam
+# <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple als back-up doel met Veeam
 
 ## <a name="overview"></a>Overzicht
 
-Azure StorSimple is een Hybrid Cloud Storage oplossing van micro soft. StorSimple is van toepassing op de complexiteit van exponentiële gegevens groei door gebruik te maken van een Azure Storage-account als een uitbrei ding van de on-premises oplossing en het automatisch belagen van gegevens in on-premises opslag en Cloud opslag.
+Azure StorSimple is een hybride cloudopslagoplossing van Microsoft. StorSimple pakt de complexiteit van exponentiële gegevensgroei aan door een Azure Storage-account te gebruiken als een uitbreiding van de on-premises oplossing en gegevens automatisch te gelaagderen voor on-premises opslag- en cloudopslag.
 
-In dit artikel bespreken we de StorSimple-integratie met Veeam en aanbevolen procedures voor het integreren van beide oplossingen. We maken ook aanbevelingen voor het instellen van Veeam om optimaal te kunnen integreren met StorSimple. We stellen de aanbevolen procedures, back-uparchitects en beheerders uit voor de beste manier om Veeam in te stellen om te voldoen aan de afzonderlijke vereisten voor back-ups en Service Level Agreements (Sla's).
+In dit artikel bespreken we de integratie van StorSimple met Veeam en best practices voor de integratie van beide oplossingen. We doen ook aanbevelingen over hoe veeam zo goed mogelijk te integreren met StorSimple. We stellen veeam best practices, back-uparchitecten en beheerders uit voor de beste manier om Veeam op te zetten om te voldoen aan individuele back-upvereisten en service-level agreements (SLA's).
 
-Hoewel we de configuratie stappen en belang rijke concepten illustreren, is dit artikel in geen stapsgewijze configuratie of installatie handleiding. We gaan ervan uit dat de basis onderdelen en infra structuur in werk orde zijn en klaar zijn voor de ondersteuning van de concepten die we beschrijven.
+Hoewel we configuratiestappen en sleutelconcepten illustreren, is dit artikel geenszins een stapsgewijze configuratie- of installatiehandleiding. We gaan ervan uit dat de basiscomponenten en infrastructuur in goede staat zijn en klaar zijn om de concepten die we beschrijven te ondersteunen.
 
 ### <a name="who-should-read-this"></a>Wie moet dit lezen?
 
-De informatie in dit artikel is het nuttigst voor back-upbeheerders, opslag beheerders en opslag architecten met kennis van opslag, Windows Server 2012 R2, Ethernet, Cloud Services en Veeam.
+De informatie in dit artikel is zeer nuttig voor back-upbeheerders, opslagbeheerders en opslagarchitecten die kennis hebben van opslag, Windows Server 2012 R2, Ethernet, cloudservices en Veeam.
 
 ### <a name="supported-versions"></a>Ondersteunde versies
 
--   Veeam 9 en hoger
--   [StorSimple update 3 en hoger](storsimple-overview.md#storsimple-workload-summary)
+-   Veeam 9 en latere versies
+-   [StorSimple Update 3 en latere versies](storsimple-overview.md#storsimple-workload-summary)
 
 
-## <a name="why-storsimple-as-a-backup-target"></a>Waarom StorSimple als een back-updoel?
+## <a name="why-storsimple-as-a-backup-target"></a>Waarom StorSimple als back-up doelwit?
 
-StorSimple is een goede keuze voor een back-updoel omdat:
+StorSimple is een goede keuze voor een back-up doel, omdat:
 
--   Het biedt standaard lokale opslag voor back-uptoepassingen die als snelle back-upbestemming kunnen worden gebruikt, zonder dat u wijzigingen hoeft aan te brengen. U kunt StorSimple ook gebruiken voor het snel herstellen van recente back-ups.
--   De Cloud Tiering is naadloos geïntegreerd met een Azure Cloud Storage-account voor het gebruik van rendabele Azure Storage.
--   Het biedt automatisch externe opslag voor herstel na nood gevallen.
+-   Het biedt standaard, lokale opslag voor back-uptoepassingen om te gebruiken als een snelle back-upbestemming, zonder wijzigingen. U StorSimple ook gebruiken voor een snelle herstel van recente back-ups.
+-   De cloud-gelaagding is naadloos geïntegreerd met een Azure-cloudopslagaccount om kosteneffectieve Azure Storage te gebruiken.
+-   Het biedt automatisch offsite opslag voor noodherstel.
 
 
 ## <a name="key-concepts"></a>Belangrijkste concepten
 
-Net als bij elke opslag oplossing is een zorgvuldige evaluatie van de opslag prestaties, de Sla's, de wijzigings snelheid en capaciteits groei vereist van essentieel belang. Het belangrijkste is dat door een Cloud-laag te introduceren, uw toegangs tijden en door Voer voor de Cloud een fundamentele rol spelen in de mogelijkheid van StorSimple om de taak uit te voeren.
+Zoals bij elke opslagoplossing is een zorgvuldige beoordeling van de opslagprestaties, SLA's, veranderingssnelheid en capaciteitsgroeibehoeften van cruciaal belang voor succes. Het belangrijkste idee is dat door de invoering van een cloud laag, uw toegangstijden en doorvoernaar de cloud een fundamentele rol spelen in het vermogen van StorSimple om zijn werk te doen.
 
-StorSimple is ontworpen om opslag te bieden aan toepassingen die worden uitgevoerd op een goed gedefinieerde werkset gegevens (warme gegevens). In dit model wordt de werkset gegevens opgeslagen op de lokale lagen en wordt de resterende vrije/gekoelde/gearchiveerde set gegevens gelaagd voor de Cloud. Dit model wordt weer gegeven in de volgende afbeelding. De bijna vlakke groene lijn staat voor de gegevens die zijn opgeslagen in de lokale lagen van het StorSimple-apparaat. De rode lijn staat voor de totale hoeveelheid gegevens die is opgeslagen in de StorSimple-oplossing in alle lagen. De ruimte tussen de platte groene lijn en de exponentiële rode curve vertegenwoordigt de totale hoeveelheid gegevens die in de Cloud is opgeslagen.
+StorSimple is ontworpen om opslag te bieden aan toepassingen die werken op een goed gedefinieerde werkset van gegevens (hot data). In dit model wordt de werkset gegevens opgeslagen op de lokale lagen en wordt de resterende niet-werkende/koud/gearchiveerde set gegevens naar de cloud gegelaagdt. Dit model wordt weergegeven in het volgende cijfer. De bijna vlakke groene lijn vertegenwoordigt de gegevens die zijn opgeslagen op de lokale lagen van het StorSimple-apparaat. De rode lijn vertegenwoordigt de totale hoeveelheid gegevens die is opgeslagen op de StorSimple-oplossing in alle lagen. De ruimte tussen de vlakke groene lijn en de exponentiële rode curve vertegenwoordigt de totale hoeveelheid gegevens die in de cloud is opgeslagen.
 
-**Diagram van StorSimple lagen**
-![StorSimple lagen](./media/storsimple-configure-backup-target-using-veeam/image1.jpg)
+**StorSimple tiering**
+![StorSimple tiering diagram StorSimple tiering diagram StorSimple tiering diagram StorSimple tiering diagram StorSimple tiering Diagram](./media/storsimple-configure-backup-target-using-veeam/image1.jpg)
 
-Met deze architectuur zult u merken dat StorSimple ideaal is voor gebruik als back-updoel. U kunt StorSimple gebruiken voor het volgende:
+Met deze architectuur in het achterhoofd, zult u merken dat StorSimple is bij uitstek geschikt om te werken als een back-up doel. U StorSimple gebruiken om:
 
--   Voer de meest frequente herstel bewerkingen uit vanuit de lokale werkset gegevens.
--   Gebruik de Cloud voor externe herstel na nood gevallen en oudere gegevens, waarbij herstel bewerkingen minder vaak worden gebruikt.
+-   Voer uw meest voorkomende herstelbewerkingen uit van de lokale werkset met gegevens.
+-   Gebruik de cloud voor offsite disaster recovery en oudere gegevens, waarbij herstel minder vaak voorkomt.
 
-## <a name="storsimple-benefits"></a>StorSimple-voor delen
+## <a name="storsimple-benefits"></a>StorSimple voordelen
 
-StorSimple biedt een on-premises oplossing die naadloos kan worden geïntegreerd met Microsoft Azure, door gebruik te maken van naadloze toegang tot on-premises en Cloud opslag.
+StorSimple biedt een on-premises oplossing die naadloos is geïntegreerd met Microsoft Azure, door gebruik te maken van naadloze toegang tot on-premises en cloudopslag.
 
-StorSimple maakt gebruik van automatische lagen tussen het on-premises apparaat, dat SSD-en Serial Attached SCSI (SAS)-opslag heeft en Azure Storage. Met automatische lagen blijven de lokale gegevens lokaal geopend, op de SSD-en SAS-laag. Er worden zelden gebruikte gegevens naar Azure Storage verplaatst.
+StorSimple maakt gebruik van automatische lagen tussen het on-premises apparaat, dat ssd-opslag (solid-state device) en seriële scsi-opslag (SAS) en Azure Storage heeft. Automatische tiering houdt vaak lokale gegevens op de SSD- en SAS-lagen. Het verplaatst zelden geopende gegevens naar Azure Storage.
 
-StorSimple biedt de volgende voor delen:
+StorSimple biedt deze voordelen:
 
--   Unieke ontdubbeling-en compressie algoritmen die gebruikmaken van de cloud om ongekende ontdubbelings niveaus te creëren
+-   Unieke ontdubbelings- en compressiealgoritmen die de cloud gebruiken om ongekende deduplicatieniveaus te bereiken
 -   Hoge beschikbaarheid
--   Geo-replicatie door gebruik te maken van geo-replicatie van Azure
+-   Geo-replicatie met Azure geo-replicatie
 -   Azure-integratie
--   Gegevens versleuteling in de Cloud
--   Verbeterd herstel na nood gevallen en naleving
+-   Gegevensversleuteling in de cloud
+-   Verbeterde herstel en naleving van rampen
 
-Hoewel StorSimple twee belang rijke implementatie scenario's (primair back-updoel en secundair back-updoel) biedt, is het een gewoon, blok opslag apparaat. StorSimple alle compressie en ontdubbeling. Er worden naadloos gegevens verzonden en opgehaald tussen de Cloud en de toepassing en het bestands systeem.
+Hoewel StorSimple twee belangrijke implementatiescenario's presenteert (primair back-updoel en secundair back-updoel), is het in principe een gewoon, blokopslagapparaat. StorSimple doet alle compressie en ontdubbeling. Het verzendt en haalt naadloos gegevens op tussen de cloud en het applicatie- en bestandssysteem.
 
-Voor meer informatie over StorSimple raadpleegt [u StorSimple 8000 Series: Hybride oplossing](storsimple-overview.md)voor Cloud opslag. U kunt ook de specificaties van de [technische StorSimple 8000-serie](storsimple-technical-specifications-and-compliance.md)bekijken.
+Zie [StorSimple 8000-serie: Hybride cloudopslagoplossing voor](storsimple-overview.md)meer informatie over StorSimple. Ook u de [technische StorSimple 8000-serie specificaties](storsimple-technical-specifications-and-compliance.md)bekijken.
 
 > [!IMPORTANT]
-> Het gebruik van een StorSimple-apparaat als back-updoel wordt alleen ondersteund voor StorSimple 8000-update 3 en hoger.
+> Het gebruik van een StorSimple-apparaat als back-updoel wordt alleen ondersteund voor StorSimple 8000 Update 3 en latere versies.
 
 ## <a name="architecture-overview"></a>Overzicht van de architectuur
 
-In de volgende tabellen ziet u de richt lijnen voor het model naar architectuur van het apparaat.
+In de volgende tabellen worden de eerste richtlijnen van het apparaat model-naar-architectuur weergegeven.
 
-**StorSimple-capaciteit voor lokale en Cloud opslag**
+**StorSimple-capaciteiten voor lokale en cloudopslag**
 
 | Opslagcapaciteit | 8100 | 8600 |
 |---|---|---|
-| Lokale opslagcapaciteit | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
-| Capaciteit van de Cloud opslag | &gt; 200 TiB\* | &gt; 500 TiB\* |
+| Lokale opslagcapaciteit | &lt;10 TiB\*  | &lt;20 TiB\*  |
+| Cloudopslagcapaciteit | &gt;200 TiB\* | &gt;500 TiB\* |
 
-\*Bij de opslag grootte wordt ervan uitgegaan dat er geen ontdubbeling of compressie wordt toegepast.
+\*Opslaggrootte gaat uit van geen ontdubbeling of compressie.
 
-**StorSimple-capaciteit voor primaire en secundaire back-ups**
+**StorSimple-capaciteiten voor primaire en secundaire back-ups**
 
-| Back-upscenario  | Lokale opslagcapaciteit  | Capaciteit van de Cloud opslag  |
+| Back-upscenario  | Lokale opslagcapaciteit  | Cloudopslagcapaciteit  |
 |---|---|---|
-| Primaire back-up  | Recente back-ups die zijn opgeslagen op de lokale opslag voor snel herstel om te voldoen aan Recovery Point Objective (RPO) | Back-upgeschiedenis (RPO) past in de Cloud capaciteit |
-| Secundaire back-up | Secundaire kopie van back-upgegevens kan worden opgeslagen in de Cloud capaciteit  | N/A  |
+| Primaire back-up  | Recente back-ups die zijn opgeslagen op lokale opslag voor snel herstel om te voldoen aan de doelstelling van het herstelpunt (RPO) | Back-upgeschiedenis (RPO) past in cloudcapaciteit |
+| Secundaire back-up | Secundaire kopie van back-upgegevens kan worden opgeslagen in cloudcapaciteit  | N.v.t.  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple als primair back-updoel
 
-In dit scenario worden StorSimple-volumes weer gegeven aan de back-uptoepassing als de enige opslag plaats voor back-ups. In de volgende afbeelding ziet u een oplossings architectuur waarin alle back-ups StorSimple gelaagde volumes gebruiken voor back-ups en herstel bewerkingen.
+In dit scenario worden StorSimple-volumes gepresenteerd aan de back-uptoepassing als de enige opslagplaats voor back-ups. De volgende afbeelding toont een oplossingsarchitectuur waarin alle back-ups storSimple-gelaagde volumes gebruiken voor back-ups en herstel.
 
-![StorSimple als primair diagram van een logisch back-updoel](./media/storsimple-configure-backup-target-using-veeam/primarybackuptargetlogicaldiagram.png)
+![StorSimple als een primair logisch back-updoeldiagram](./media/storsimple-configure-backup-target-using-veeam/primarybackuptargetlogicaldiagram.png)
 
-### <a name="primary-target-backup-logical-steps"></a>Logische doel-back-upstappen
+### <a name="primary-target-backup-logical-steps"></a>Logische stappen primaire doelback-up
 
-1.  De back-upserver neemt contact op met de doel back-upagent en de back-upagent verzendt gegevens naar de back-upserver.
-2.  De back-upserver schrijft gegevens naar de StorSimple gelaagde volumes.
-3.  De back-upserver werkt de catalogus database bij en voltooit vervolgens de back-uptaak.
-4.  Met een momentopname script wordt de StorSimple-Cloud momentopname beheerder geactiveerd (starten of verwijderen).
-5.  De back-upserver verwijdert verlopen back-ups op basis van een Bewaar beleid.
+1.  De back-upserver neemt contact op met de doelback-upagent en de back-upagent verzendt gegevens naar de back-upserver.
+2.  De back-upserver schrijft gegevens naar de gelaagde volumes van StorSimple.
+3.  De back-upserver werkt de catalogusdatabase bij en voltooit vervolgens de back-uptaak.
+4.  Een momentopnamescript activeert de StorSimple-cloudmomentopnamemanager (starten of verwijderen).
+5.  De back-upserver verwijdert verlopen back-ups op basis van een bewaarbeleid.
 
-### <a name="primary-target-restore-logical-steps"></a>Primaire doel herstellen logische stappen
+### <a name="primary-target-restore-logical-steps"></a>Logische stappen voor primaire doelstelling herstellen
 
-1.  De back-upserver begint met het terugzetten van de juiste gegevens uit de opslag opslagplaats.
+1.  De back-upserver begint met het herstellen van de juiste gegevens uit de opslagopslagplaats.
 2.  De back-upagent ontvangt de gegevens van de back-upserver.
-3.  De back-upserver voltooit de herstel taak.
+3.  De back-upserver voltooit de hersteltaak.
 
-## <a name="storsimple-as-a-secondary-backup-target"></a>StorSimple als een secundair back-updoel
+## <a name="storsimple-as-a-secondary-backup-target"></a>StorSimple als secundair back-updoel
 
-In dit scenario worden StorSimple-volumes voornamelijk gebruikt voor lange termijn retentie of archivering.
+In dit scenario worden StorSimple-volumes voornamelijk gebruikt voor langetermijnretentie of archivering.
 
-In de volgende afbeelding ziet u een architectuur waarin de eerste back-ups worden gemaakt en gericht op een volume met hoge prestaties. Deze back-ups worden gekopieerd en gearchiveerd naar een StorSimple gelaagd volume volgens een ingesteld schema.
+De volgende afbeelding toont een architectuur waarin initiële back-ups en herstelde een high-performance volume targeten. Deze back-ups worden gekopieerd en gearchiveerd naar een StorSimple-gelaagd volume volgens een vast schema.
 
-Het is belang rijk om uw volume met hoge prestaties te verg Roten, zodat het de capaciteit en prestaties van uw Bewaar beleid kan afhandelen.
+Het is belangrijk om uw high-performance volume te vergroten, zodat het uw retentiebeleidscapaciteit en prestatievereisten aankan.
 
-![StorSimple als een logisch diagram van een secundair back-updoel](./media/storsimple-configure-backup-target-using-veeam/secondarybackuptargetlogicaldiagram.png)
+![StorSimple als een logisch secundair back-updoeldiagram](./media/storsimple-configure-backup-target-using-veeam/secondarybackuptargetlogicaldiagram.png)
 
-### <a name="secondary-target-backup-logical-steps"></a>Logische back-upprocedure voor secundaire doel
+### <a name="secondary-target-backup-logical-steps"></a>Logische stappen voor secundaire doelback-ups
 
-1.  De back-upserver neemt contact op met de doel back-upagent en de back-upagent verzendt gegevens naar de back-upserver.
-2.  De back-upserver schrijft gegevens naar opslag met hoge prestaties.
-3.  De back-upserver werkt de catalogus database bij en voltooit vervolgens de back-uptaak.
-4.  De back-upserver kopieert back-ups naar StorSimple op basis van een Bewaar beleid.
-5.  Met een momentopname script wordt de StorSimple-Cloud momentopname beheerder geactiveerd (starten of verwijderen).
-6.  De back-upserver verwijdert verlopen back-ups op basis van een Bewaar beleid.
+1.  De back-upserver neemt contact op met de doelback-upagent en de back-upagent verzendt gegevens naar de back-upserver.
+2.  De back-upserver schrijft gegevens naar krachtige opslag.
+3.  De back-upserver werkt de catalogusdatabase bij en voltooit vervolgens de back-uptaak.
+4.  De back-upserver kopieert back-ups naar StorSimple op basis van een bewaarbeleid.
+5.  Een momentopnamescript activeert de StorSimple-cloudmomentopnamemanager (starten of verwijderen).
+6.  De back-upserver verwijdert verlopen back-ups op basis van een bewaarbeleid.
 
-### <a name="secondary-target-restore-logical-steps"></a>Logische stappen voor het herstellen van secundaire doelen
+### <a name="secondary-target-restore-logical-steps"></a>Logische stappen voor secundair doelherstellen
 
-1.  De back-upserver begint met het terugzetten van de juiste gegevens uit de opslag opslagplaats.
+1.  De back-upserver begint met het herstellen van de juiste gegevens uit de opslagopslagplaats.
 2.  De back-upagent ontvangt de gegevens van de back-upserver.
-3.  De back-upserver voltooit de herstel taak.
+3.  De back-upserver voltooit de hersteltaak.
 
 ## <a name="deploy-the-solution"></a>De oplossing implementeren
 
-Voor het implementeren van de oplossing zijn drie stappen vereist:
+Het implementeren van de oplossing vereist drie stappen:
 
-1. Bereid de netwerk infrastructuur voor.
-2. Implementeer uw StorSimple-apparaat als een back-updoel.
-3. Veeam implementeren.
+1. Bereid de netwerkinfrastructuur voor.
+2. Implementeer uw StorSimple-apparaat als back-updoel.
+3. Zet Veeam in.
 
-Elke stap wordt gedetailleerd beschreven in de volgende secties.
+Elke stap wordt in detail besproken in de volgende secties.
 
-### <a name="set-up-the-network"></a>Het netwerk instellen
+### <a name="set-up-the-network"></a>Netwerk instellen
 
-Omdat StorSimple is een oplossing die is geïntegreerd met de Azure-Cloud, is voor StorSimple een actieve en werkende verbinding met de Azure-Cloud vereist. Deze verbinding wordt gebruikt voor bewerkingen als Cloud momentopnamen, gegevens beheer en meta gegevens overdracht, en om oudere, minder toegankelijke gegevens te verlaagen naar Azure-Cloud opslag.
+Omdat StorSimple een oplossing is die is geïntegreerd met de Azure-cloud, vereist StorSimple een actieve en werkende verbinding met de Azure-cloud. Deze verbinding wordt gebruikt voor bewerkingen zoals cloudmomentopnamen, gegevensbeheer en overdracht van metagegevens, en voor oudere, minder geopende gegevens naar Azure-cloudopslag.
 
-Als u de oplossing optimaal wilt uitvoeren, raden we u aan deze aanbevolen procedures voor netwerken uit te voeren:
+Om de oplossing optimaal te laten presteren, raden we u aan deze best practices voor netwerken te volgen:
 
--   De koppeling die uw StorSimple-laag aan Azure verbindt, moet voldoen aan uw bandbreedte vereisten. U kunt dit doen door het benodigde Quality of Service (QoS)-niveau toe te passen op de switches van uw infra structuur, zodat deze overeenkomen met uw RPO-en Recovery Time objectief (RTO) Sla's.
--   Maximum aantal toegangs latenties voor Azure Blob-opslag moet ongeveer 80 MS zijn.
+-   De koppeling die uw StorSimple-lagen verbindt met Azure, moet voldoen aan uw bandbreedtevereisten. Dit doe je door het benodigde Quality of Service (QoS) niveau toe te passen op uw infrastructuurswitches om aan te passen aan uw RPO- en Recovery Time Objective (RTO) SLA's.
+-   Maximale azure blob-opslagtoegangslatenmoeten ongeveer 80 ms zijn.
 
 ### <a name="deploy-storsimple"></a>StorSimple implementeren
 
-Zie [uw on-premises StorSimple-apparaat implementeren](storsimple-deployment-walkthrough-u2.md)voor stapsgewijze instructies voor de implementatie van StorSimple.
+Zie [Uw on-premises StorSimple-apparaat implementeren](storsimple-deployment-walkthrough-u2.md)voor stapsgewijze implementatierichtlijnen.
 
 ### <a name="deploy-veeam"></a>Veeam implementeren
 
-Zie voor aanbevolen procedures voor de installatie van Veeam [Veeam back-up & aanbevolen procedures voor replicatie](https://bp.veeam.expert/)en lees de gebruikers handleiding op [Veeam Help Center (technische documentatie)](https://www.veeam.com/documentation-guides-datasheets.html).
+Zie Aanbevolen procedures [& voor veeam-installatie](https://bp.veeam.expert/)en lees de gebruikershandleiding van [veeam Help Center (Technische documentatie)](https://www.veeam.com/documentation-guides-datasheets.html)voor aanbevolen procedures voor installatieinstallatie.
 
 ## <a name="set-up-the-solution"></a>De oplossing instellen
 
-In deze sectie ziet u enkele configuratie voorbeelden. De volgende voor beelden en aanbevelingen illustreren de meest eenvoudige en fundamentele implementatie. Deze implementatie is mogelijk niet rechtstreeks van toepassing op uw specifieke back-upvereisten.
+In deze sectie tonen we enkele configuratievoorbeelden. De volgende voorbeelden en aanbevelingen illustreren de meest fundamentele en fundamentele uitvoering. Deze implementatie is mogelijk niet rechtstreeks van toepassing op uw specifieke back-upvereisten.
 
 ### <a name="set-up-storsimple"></a>StorSimple instellen
 
-| StorSimple-implementatie taken  | Aanvullende opmerkingen |
+| StorSimple-implementatietaken  | Aanvullende opmerkingen |
 |---|---|
-| Implementeer uw on-premises StorSimple-apparaat. | Ondersteunde versies: Update 3 en hoger. |
-| Schakel het doel van de back-up in. | Gebruik deze opdrachten om de doel modus voor back-up in of uit te scha kelen en de status op te halen. Zie [extern verbinding maken met een StorSimple-apparaat](storsimple-remote-connect.md)voor meer informatie.</br> De back-upmodus inschakelen `Set-HCSBackupApplianceMode -enable`:. </br> De back-upmodus uitschakelen `Set-HCSBackupApplianceMode -disable`:. </br> De huidige status van de instellingen van de back- `Get-HCSBackupApplianceMode`upmodus ophalen:. |
-| Maak een algemene volume container voor uw volume waarin de back-upgegevens worden opgeslagen. Alle gegevens in een volume container worden ontdubbeld. | StorSimple volume containers definiëren ontdubbeling domeinen.  |
-| Maak StorSimple-volumes. | Maak volumes met grootten zo dicht mogelijk bij het verwachte gebruik, omdat de volume grootte van invloed is op de duur van de Cloud momentopname. Meer informatie over het aanpassen van de grootte van een volume vindt u in het [Bewaar beleid](#retention-policies).</br> </br> Gebruik StorSimple gelaagde volumes en schakel het selectie vakje **dit volume gebruiken voor minder vaak gebruikte gegevens archivering** in. </br> Het gebruik van alleen lokaal vastgemaakte volumes wordt niet ondersteund. |
-| Maak een uniek StorSimple-back-upbeleid voor alle back-updoel volumes. | Een StorSimple-back-upbeleid definieert de volume consistentie groep. |
-| Het schema uitschakelen wanneer de moment opnamen verlopen. | Moment opnamen worden geactiveerd als een verwerkings bewerking. |
+| Implementeer uw on-premises StorSimple-apparaat. | Ondersteunde versies: Update 3 en latere versies. |
+| Schakel het back-updoel in. | Gebruik deze opdrachten om de back-updoelmodus in of uit te schakelen en status te krijgen. Zie [Op afstand verbinding maken met een StorSimple-apparaat](storsimple-remote-connect.md)voor meer informatie.</br> De back-upmodus `Set-HCSBackupApplianceMode -enable`inschakelen: . </br> De back-upmodus `Set-HCSBackupApplianceMode -disable`uitschakelen: . </br> Ga als u de huidige `Get-HCSBackupApplianceMode`instellingen voor de back-upmodus instellen: . |
+| Maak een algemene volumecontainer voor uw volume waarmee de back-upgegevens worden opgeslagen. Alle gegevens in een volumecontainer worden gededuplicate. | StorSimple-volumecontainers definiëren ontdubbelingsdomeinen.  |
+| Maak StorSimple-volumes. | Maak volumes met zo dicht mogelijk bij het verwachte gebruik, omdat de volumegrootte van invloed is op de duur van de periode van de momentopname in de cloud. Lees meer over [bewaarbeleid](#retention-policies)voor informatie over het vergroten van een volume.</br> </br> Gebruik Gelaagde volumes van StorSimple en schakel het selectievakje **Dit volume gebruiken voor minder vaak geopende archiefgegevens** in. </br> Het gebruik van alleen lokaal vastgemaakte volumes wordt niet ondersteund. |
+| Maak een uniek StorSimple-back-upbeleid voor alle back-updoelvolumes. | Een StorSimple-back-upbeleid definieert de groep voor volumeconsistentie. |
+| Schakel de planning uit als de momentopnamen verlopen. | Momentopnamen worden geactiveerd als een nabewerking. |
 
-### <a name="set-up-the-host-backup-server-storage"></a>De opslag van de back-upserver van de host instellen
+### <a name="set-up-the-host-backup-server-storage"></a>De opslag van de hostback-upserver instellen
 
-Stel de opslag van de back-upserver van de host in volgens deze richt lijnen:  
+Stel de opslag van de hostback-upserver in volgens deze richtlijnen:  
 
-- Gebruik geen spanned volumes (gemaakt door Windows-schijf beheer). Spanned volumes worden niet ondersteund.
-- Format teer uw volumes met NTFS met 64-KB Allocation Unit Size.
-- Wijs de StorSimple-volumes rechtstreeks toe aan de Veeam-server.
+- Gebruik geen overspannen volumes (gemaakt door Windows Disk Management). Overspannen volumes worden niet ondersteund.
+- Maak uw volumes op met NTFS met een toewijzingseenheid van 64 KB.
+- Breng de StorSimple-volumes rechtstreeks naar de Veeam-server.
     - Gebruik iSCSI voor fysieke servers.
 
 
-## <a name="best-practices-for-storsimple-and-veeam"></a>Aanbevolen procedures voor StorSimple en Veeam
+## <a name="best-practices-for-storsimple-and-veeam"></a>Best practices voor StorSimple en Veeam
 
-Stel uw oplossing in aan de hand van de richt lijnen in de volgende secties.
+Stel uw oplossing in volgens de richtlijnen in de volgende paar secties.
 
-### <a name="operating-system-best-practices"></a>Aanbevolen procedures voor het besturings systeem
+### <a name="operating-system-best-practices"></a>Aanbevolen procedures voor besturingssysteem
 
-- Schakel Windows Server-versleuteling en ontdubbeling uit voor het NTFS-bestands systeem.
-- Schakel Windows Server-defragmentatie uit op de StorSimple-volumes.
-- Schakel Windows Server-indexering uit op de StorSimple-volumes.
-- Voer een antivirus scan uit op de bronhost (niet op de StorSimple-volumes).
-- Schakel het standaard [onderhoud van Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) uit in taak beheer. Doe dit op een van de volgende manieren:
-  - De onderhouds Configurator uitschakelen in Windows taak planner.
-  - Down load [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) van Windows Sysinternals. Nadat u PsExec hebt gedownload, voert u Windows Power shell als beheerder uit en typt u:
+- Windows Server-versleuteling en ontdubbeling voor het NTFS-bestandssysteem uitschakelen.
+- Windows Server-defragmentatie uitschakelen op de StorSimple-volumes.
+- Windows Server-indexering op de StorSimple-volumes uitschakelen.
+- Voer een antivirusscan uit bij de bronhost (niet tegen de StorSimple-volumes).
+- Schakel het [standaardonderhoud van Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) uit in Taakbeheer. Doe dit op een van de volgende manieren:
+  - Schakel de onderhoudsconfigurator uit in Windows Taakplanner.
+  - Download [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) van Windows Sysinternals. Nadat u PsExec hebt gedownload, voert u Windows PowerShell uit als beheerder en typt u:
     ```powershell
     psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
     ```
 
-### <a name="storsimple-best-practices"></a>Best practices voor StorSimple
+### <a name="storsimple-best-practices"></a>StorSimple best practices
 
--   Zorg ervoor dat het StorSimple-apparaat is bijgewerkt naar [Update 3 of hoger](storsimple-install-update-3.md).
--   Isoleer iSCSI-en Cloud verkeer. Gebruik toegewezen iSCSI-verbindingen voor verkeer tussen StorSimple en de back-upserver.
--   Zorg ervoor dat uw StorSimple-apparaat een specifiek back-updoel is. Gemengde werk belastingen worden niet ondersteund, omdat deze van invloed zijn op uw RTO en RPO.
+-   Zorg ervoor dat het StorSimple-apparaat wordt bijgewerkt naar [Update 3 of hoger.](storsimple-install-update-3.md)
+-   Isoleer iSCSI- en cloudverkeer. Gebruik speciale iSCSI-verbindingen voor verkeer tussen StorSimple en de back-upserver.
+-   Zorg ervoor dat uw StorSimple-apparaat een speciaal back-updoelwit is. Gemengde workloads worden niet ondersteund omdat ze van invloed zijn op uw RTO en RPO.
 
-### <a name="veeam-best-practices"></a>Best practices voor Veeam
+### <a name="veeam-best-practices"></a>Veeam best practices
 
--   De Veeam-data base moet lokaal zijn voor de server en zich niet bevinden op een StorSimple-volume.
--   Voor herstel na nood gevallen maakt u een back-up van de Veeam-Data Base op een StorSimple-volume.
--   Veeam volledige en incrementele back-ups voor deze oplossing worden ondersteund. U wordt aangeraden geen synthetische en differentiële back-ups te gebruiken.
--   Back-upgegevens bestanden mogen alleen de gegevens voor een specifieke taak bevatten. U kunt bijvoorbeeld geen media toevoegen tussen verschillende taken.
--   Schakel de taak verificatie uit. Indien nodig moet de verificatie worden gepland na de meest recente back-uptaak. Het is belang rijk om te begrijpen dat deze taak van invloed is op uw back-upvenster.
--   Vooraf toewijzen van media inschakelen.
+-   De Veeam-database moet lokaal zijn voor de server en zich niet op een StorSimple-volume bevinden.
+-   Voor herstel na noodgevallen u een back-up maken van de Veeam-database op een StorSimple-volume.
+-   Wij ondersteunen Veeam volledige en incrementele back-ups voor deze oplossing. We raden u aan geen synthetische en differentiële back-ups te gebruiken.
+-   Back-upgegevensbestanden mogen alleen de gegevens voor een specifieke taak bevatten. Er zijn bijvoorbeeld geen media-toevoegen aan verschillende taken toegestaan.
+-   Taakverificatie uitschakelen. Indien nodig moet de verificatie worden gepland na de laatste back-uptaak. Het is belangrijk om te begrijpen dat deze taak van invloed is op uw back-upvenster.
+-   Mediapre-toewijzing inschakelen.
 -   Zorg ervoor dat parallelle verwerking is ingeschakeld.
--   Schakel compressie uit.
--   Schakel ontdubbeling uit voor de back-uptaak.
--   Stel optimalisatie in op **LAN-doel**.
--   Schakel de optie **actieve volledige back-up maken** (elke 2 weken) in.
--   Stel in de back-upopslagplaats **gebruik per VM-back-** upbestanden in.
--   Stel **meerdere upload stromen per taak gebruiken** in op **8** (Maxi maal 16 is toegestaan). Pas dit aantal aan of uit op basis van het CPU-gebruik op het StorSimple-apparaat.
+-   Compressie uitschakelen.
+-   Schakel ontdubbeling uit op de back-uptaak.
+-   Optimalisatie instellen op **LAN Target**.
+-   Actieve **volledige back-up maken** inschakelen (elke 2 weken).
+-   Stel in de back-upopslagplaats **back-upbestanden**gebruiken per VM in.
+-   Stel **Meerdere uploadstreams per taak** in op **8** (maximaal 16 is toegestaan). Pas dit getal omhoog of omlaag aan op basis van het CPU-gebruik op het StorSimple-apparaat.
 
 ## <a name="retention-policies"></a>Bewaarbeleid
 
-Een van de meest voorkomende beleids typen voor het bewaren van back-ups is een beleid voor groot vader, vader en zoon (GFS). In een GFS-beleid wordt dagelijks een incrementele back-up uitgevoerd en worden volledige back-ups wekelijks en maandelijks uitgevoerd. Dit beleid is van toepassing op zes StorSimple gelaagde volumes: een volume bevat de wekelijkse, maandelijkse en jaarlijkse volledige back-ups. de andere vijf volumes slaan dagelijkse incrementele back-ups op.
+Een van de meest voorkomende back-up retentie beleid types is een grootvader, vader en zoon (GFS) beleid. In een GFS-beleid wordt dagelijks een incrementele back-up uitgevoerd en worden de volledige back-ups wekelijks en maandelijks uitgevoerd. Dit beleid resulteert in zes Gelaagde volumes van StorSimple: één volume bevat de wekelijkse, maandelijkse en jaarlijkse volledige back-ups; de andere vijf volumes slaan dagelijkse incrementele back-ups op.
 
-In het volgende voor beeld wordt een GFS-rotatie gebruikt. In het voor beeld wordt uitgegaan van het volgende:
+In het volgende voorbeeld gebruiken we een GFS-rotatie. In het voorbeeld wordt als volgt uitgegaan van:
 
--   Niet-ontdubbelde of gecomprimeerde gegevens worden gebruikt.
--   Volledige back-ups zijn één TiB.
--   Dagelijkse incrementele back-ups zijn 500 GiB.
--   Vier wekelijkse back-ups worden gedurende een maand bewaard.
--   Twaalf maandelijkse back-ups worden gedurende een jaar bewaard.
--   Een jaarlijkse back-up wordt tien jaar bewaard.
+-   Niet-ontdoste of gecomprimeerde gegevens worden gebruikt.
+-   Volledige back-ups zijn 1 TiB per stuk.
+-   Dagelijkse incrementele back-ups zijn 500 GiB per stuk.
+-   Vier wekelijkse back-ups worden bewaard voor een maand.
+-   Twaalf maandelijkse back-ups worden bewaard voor een jaar.
+-   Een jaarlijkse back-up wordt bewaard voor 10 jaar.
 
-Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorSimple voor de maandelijkse en jaarlijkse volledige back-ups. Maak een gelaagd volume van 5 TiB voor elk van de incrementele dagelijkse back-ups.
+Maak op basis van de voorgaande aannames een 26-TiB StorSimple-gelaagd volume voor de maandelijkse en jaarlijkse volledige back-ups. Maak een 5-TiB StorSimple-gelaagd volume voor elk van de incrementele dagelijkse back-ups.
 
-| Bewaar periode van het back-uptype | Grootte (TiB) | GFS vermenigvuldiger\* | Totale capaciteit (TiB)  |
+| Behoud van back-uptype | Grootte (TiB) | GFS-vermenigvuldiger\* | Totale capaciteit (TiB)  |
 |---|---|---|---|
-| Wekelijks volledig | 1 | 4  | 4 |
-| Dagelijks incrementeel | 0.5 | 20 (cyclussen van gelijk aantal weken per maand) | 12 (2 voor het extra quotum) |
-| Volledig maandelijks | 1 | 12 | 12 |
-| Jaarlijks volledig | 1  | 10 | 10 |
-| GFS-vereiste |   | 38 |   |
-| Extra quotum  | 4  |   | 42 totale GFS-vereiste  |
+| Wekelijks vol | 1 | 4  | 4 |
+| Dagelijkse incrementele | 0.5 | 20 (cycli gelijk aan aantal weken per maand) | 12 (2 voor extra contingent) |
+| Maandelijks vol | 1 | 12 | 12 |
+| Jaarlijks vol | 1  | 10 | 10 |
+| GFS-eis |   | 38 |   |
+| Extra contingent  | 4  |   | 42 totale GFS-eis  |
 
-\*De GFS vermenigvuldiger is het aantal kopieën dat u moet beveiligen en bewaren om te voldoen aan de vereisten voor het back-upbeleid.
+\*De GFS multiplier is het aantal exemplaren dat u moet beschermen en behouden om te voldoen aan uw vereisten voor back-upbeleid.
 
 ## <a name="set-up-veeam-storage"></a>Veeam-opslag instellen
 
 ### <a name="to-set-up-veeam-storage"></a>Veeam-opslag instellen
 
-1.  Ga in de Veeam-back-up en de replicatie console naar **back-upinfrastructuur**in de **bibliotheek hulpprogram ma's**. Klik met de rechter muisknop op **back**-upopslagplaatsen en selecteer vervolgens **back-upopslagplaats toevoegen**.
+1.  Ga in de Veeam Backup and Replication-console in **Repository Tools**naar **Back-upinfrastructuur**. Klik met de rechtermuisknop op **Back-upopslagplaatsen**en selecteer **Vervolgens Back-upopslagplaats toevoegen**.
 
-    ![Veeam-beheer console, pagina Back-upopslagplaats](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
+    ![Veeam-beheerconsole, back-uprepository-pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  Voer in het dialoog venster **nieuwe back-upopslagplaats** een naam en een beschrijving in voor de opslag plaats. Selecteer **Volgende**.
+2.  Voer in het dialoogvenster **Nieuwe back-upopslagplaats** een naam en beschrijving in voor de opslagplaats. Selecteer **Volgende**.
 
-    ![Veeam-beheer console, naam en beschrijvings pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
+    ![Veeam management console, naam en beschrijving pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  Selecteer **micro soft Windows Server**voor het type. Selecteer de Veeam-server. Selecteer **Volgende**.
+3.  Selecteer **Microsoft Windows-server**voor het type . Selecteer de Veeam-server. Selecteer **Volgende**.
 
-    ![Veeam-beheer console, type back-upopslagplaats selecteren](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
+    ![Veeam-beheerconsole, selecteer type back-upopslagplaats](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
-4.  Als u een **locatie**wilt opgeven, bladert en selecteert u het volume. Selecteer het selectie vakje **maximum aantal gelijktijdige taken beperken tot:** en stel de waarde in op **4**. Dit zorgt ervoor dat er slechts vier virtuele schijven gelijktijdig worden verwerkt terwijl elke virtuele machine (VM) wordt verwerkt. Selecteer de knop **Geavanceerd** .
+4.  Als u **Locatie wilt**opgeven, bladert u en selecteert u het volume. Schakel het **maximumtaken beperken in:** schakel het selectievakje in en stel de waarde in op **4**. Dit zorgt ervoor dat slechts vier virtuele schijven gelijktijdig worden verwerkt terwijl elke virtuele machine (VM) wordt verwerkt. Selecteer de knop **Geavanceerd.**
 
-    ![Veeam-beheer console, volume selecteren](./media/storsimple-configure-backup-target-using-veeam/veeamimage4.png)
+    ![Veeam-beheerconsole, selecteer volume](./media/storsimple-configure-backup-target-using-veeam/veeamimage4.png)
 
 
-5.  Schakel in het dialoog venster **instellingen voor opslag compatibiliteit** het selectie vakje back-upbestanden **per VM gebruiken** in.
+5.  Schakel in het dialoogvenster **Opslagcompatibiliteitsinstellingen** het selectievakje **Back-upbestanden per vm gebruiken** in.
 
-    ![Veeam-beheer console, instellingen voor opslag compatibiliteit](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
+    ![Veeam-beheerconsole, instellingen voor opslagcompatibiliteit](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  Schakel in het dialoog venster **nieuwe back-upopslagplaats** het selectie vakje **vPower NFS-service inschakelen op het koppel server (aanbevolen)** in. Selecteer **Volgende**.
+6.  Schakel in het dialoogvenster **Nieuwe back-upopslagplaats** het selectievakje **VPower NFS-service inschakelen op de bevestigingsserver (aanbevolen)** in. Selecteer **Volgende**.
 
-    ![Veeam-beheer console, pagina Back-upopslagplaats](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
+    ![Veeam-beheerconsole, back-uprepository-pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
-7.  Controleer de instellingen en selecteer vervolgens **volgende**.
+7.  Controleer de instellingen en selecteer **Volgende**.
 
-    ![Veeam-beheer console, pagina Back-upopslagplaats](./media/storsimple-configure-backup-target-using-veeam/veeamimage7.png)
+    ![Veeam-beheerconsole, back-uprepository-pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage7.png)
 
-    Een opslag plaats wordt toegevoegd aan de Veeam-server.
+    Er wordt een repository toegevoegd aan de Veeam-server.
 
-## <a name="set-up-storsimple-as-a-primary-backup-target"></a>StorSimple als primair back-updoel instellen
+## <a name="set-up-storsimple-as-a-primary-backup-target"></a>StorSimple instellen als primair back-updoel
 
 > [!IMPORTANT]
-> Het terugzetten van gegevens vanuit een back-up die is getiert in de Cloud, vindt plaats op Cloud snelheden.
+> Het herstellen van gegevens van een back-up die is gelaagd naar de cloud, vindt plaats bij cloudsnelheden.
 
-In de volgende afbeelding ziet u de toewijzing van een typisch volume aan een back-uptaak. In dit geval worden alle wekelijkse back-ups met de volledige zaterdag-schijf en de incrementele back-ups toegewezen aan incrementele schijven van maandag t/m vrijdag. Alle back-ups en herstel bewerkingen zijn afkomstig uit een StorSimple gelaagd volume.
+In de volgende afbeelding wordt de toewijzing van een normaal volume aan een back-uptaak weergegeven. In dit geval worden alle wekelijkse back-ups toegewezen aan de volledige schijf van de zaterdag en worden de incrementele back-ups toegewezen aan incrementele schijven van maandag tot en met vrijdag. Alle back-ups en herstelt zijn van een StorSimple gelaagd volume.
 
-![Logisch diagram van configuratie van primaire back-updoel](./media/storsimple-configure-backup-target-using-veeam/primarybackuptargetdiagram.png)
+![Logisch diagram voor primaire back-updoelconfiguratie](./media/storsimple-configure-backup-target-using-veeam/primarybackuptargetdiagram.png)
 
-### <a name="storsimple-as-a-primary-backup-target-gfs-schedule-example"></a>Voor beeld van StorSimple als een primair GFS schema voor het maken van een doel
+### <a name="storsimple-as-a-primary-backup-target-gfs-schedule-example"></a>StorSimple als een primaire back-up doel GFS schema voorbeeld
 
-Hier volgt een voor beeld van een GFS-rotatie schema voor vier weken, maandelijks en jaarlijks:
+Hier is een voorbeeld van een GFS-rotatieschema voor vier weken, maandelijks en jaarlijks:
 
-| Type frequentie/back-up | Volledig | Incrementeel (dagen 1-5)  |   
+| Type Frequentie/back-up | Volledig | Incrementeel (dagen 1-5)  |   
 |---|---|---|
-| Wekelijks (weken 1-4) | zaterdag | Maandag t/m vrijdag |
-| Maandelijks  | zaterdag  |   |
-| Per jaar | zaterdag  |   |
+| Weekblad (weken 1-4) | Saturday | Maandag t/m vrijdag |
+| Maandelijks  | Saturday  |   |
+| Jaar | Saturday  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>StorSimple-volumes toewijzen aan een Veeam-back-uptaak
 
-Maak voor primair scenario voor back-updoel een dagelijkse taak met uw primaire Veeam StorSimple-volume. Voor een secundair scenario voor het maken van een back-updoel maakt u een dagelijkse taak met behulp van DAS (Direct Attached Storage), NAS (Network Attached Storage) of een JBOD-opslag.
+Voor het primaire doelscenario voor back-ups maakt u een dagelijkse taak met uw primaire Veeam StorSimple-volume. Maak voor een secundair back-updoelscenario een dagelijkse taak met Behulp van Direct Attached Storage (DAS), Network Attached Storage (NAS) of Just a Bunch Disks (JBOD)-opslag.
 
 #### <a name="to-assign-storsimple-volumes-to-a-veeam-backup-job"></a>StorSimple-volumes toewijzen aan een Veeam-back-uptaak
 
-1.  Selecteer **back-up & replicatie**in de Veeam-back-up en replicatie console. Klik met de rechter muisknop op **back-up**en selecteer vervolgens **VMware** of **Hyper-V**, afhankelijk van uw omgeving.
+1.  Selecteer **back-up &-replicatie**in de veeam-back-up- en replicatieconsole . Klik met de rechtermuisknop op **Back-up**en selecteer **VMware** of **Hyper-V,** afhankelijk van uw omgeving.
 
-    ![Veeam-beheer console, nieuwe back-uptaak](./media/storsimple-configure-backup-target-using-veeam/veeamimage8.png)
+    ![Veeam management console, nieuwe back-up baan](./media/storsimple-configure-backup-target-using-veeam/veeamimage8.png)
 
-2.  Voer in het dialoog venster **nieuwe back-uptaak** een naam en een beschrijving in voor de dagelijkse back-uptaak.
+2.  Voer in het dialoogvenster **Nieuwe back-uptaak** een naam en beschrijving in voor de dagelijkse back-uptaak.
 
-    ![Veeam-beheer console, pagina nieuwe back-uptaak](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
+    ![Veeam management console, nieuwe back-up vacaturepagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
 
-3.  Selecteer een virtuele machine waarvan u een back-up wilt maken.
+3.  Selecteer een virtuele machine om een back-up naar te maken.
 
-    ![Veeam-beheer console, pagina nieuwe back-uptaak](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
+    ![Veeam management console, nieuwe back-up vacaturepagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
 
-4.  Selecteer de gewenste waarden voor **back-upproxy** en **back-upopslagplaats**. Selecteer een waarde voor **herstel punten die op schijf** moet worden bewaard volgens de RPO-en RTO definities voor uw omgeving op lokaal gekoppelde opslag. Selecteer **Geavanceerd**.
+4.  Selecteer de gewenste waarden voor **back-upproxy** en **back-upopslagplaats**. Selecteer een waarde voor **Herstelpunten die u op schijf wilt bewaren** volgens de RPO- en RTO-definities voor uw omgeving op lokaal gekoppelde opslag. Selecteer **Geavanceerd**.
 
-    ![Veeam-beheer console, pagina nieuwe back-uptaak](./media/storsimple-configure-backup-target-using-veeam/veeamimage11.png)
+    ![Veeam management console, nieuwe back-up vacaturepagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage11.png)
 
-5. Selecteer in het dialoog venster **Geavanceerde instellingen** op het tabblad **back-up** de optie **Incrementeel**. Zorg ervoor dat het selectie vakje **synthetische volledige back-ups maken regel matig** wordt uitgeschakeld. Schakel het selectie vakje **periodiek actieve volledige back-ups maken** in. Schakel onder **actieve volledige back-up**het selectie vakje **wekelijks op geselecteerde dagen** in voor zaterdag.
+5. Selecteer in het dialoogvenster **Geavanceerde instellingen** op het tabblad **Back-up** de optie **Incrementeel**. Zorg ervoor dat het selectievakje **Synthetische volledige back-ups maken periodiek** wordt gewist. Schakel het selectievakje **Actief volledige back-ups maken periodiek in.** Schakel **onder Actieve volledige back-up**het selectievakje Wekelijks op geselecteerde **dagen** voor zaterdag in.
 
-    ![Veeam-beheer console, nieuwe pagina Geavanceerde instellingen voor back-uptaak](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
+    ![Veeam management console, nieuwe back-up job geavanceerde instellingen pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
-6. Controleer op het tabblad **opslag** of het selectie vakje **inline gegevensontdubbeling inschakelen** is uitgeschakeld. Schakel het selectie vakje **wissel bestand blokken uitsluiten** in en schakel het selectie vakje **Verwijder verwijderde bestands blokken** in. Stel **compressie niveau** in op **geen**. Voor evenwichtige prestaties en ontdubbeling stelt u de **opslag optimalisatie** in op het **LAN-doel**. Selecteer **OK**.
+6. Controleer op het tabblad **Opslag** of het selectievakje **Inline-gegevensdeduplicatie inschakelen** is gewist. Schakel het selectievakje **Bestandsblokken uitsluiten en** schakel het selectievakje **Verwijderde bestandsblokken uitsluiten** in. **Compressieniveau** instellen op **Geen**. Voor gebalanceerde prestaties en ontdubbeling stelt u **opslagoptimalisatie** in op **LAN-doel.** Selecteer **OK**.
 
-    ![Veeam-beheer console, nieuwe pagina Geavanceerde instellingen voor back-uptaak](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
+    ![Veeam management console, nieuwe back-up job geavanceerde instellingen pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
 
-    Zie [gegevens compressie en](https://helpcenter.veeam.com/backup/vsphere/compression_deduplication.html)ontdubbeling voor meer informatie over instellingen voor ontdubbeling en compressie van Veeam.
+    Zie [Gegevenscompressie en ontdubbeling](https://helpcenter.veeam.com/backup/vsphere/compression_deduplication.html)voor informatie over de deduplicatie- en compressie-instellingen van Veeam.
 
-7.  In het dialoog venster **back-uptaak bewerken** kunt u het selectie vakje **toepassings bewuste verwerking inschakelen** selecteren (optioneel).
+7.  In het dialoogvenster **Back-uptaak bewerken** u het selectievakje **Toepassingsbewuste verwerking inschakelen** inschakelen (optioneel).
 
-    ![Veeam-beheer console, nieuwe pagina Back-uptaak gast verwerking](./media/storsimple-configure-backup-target-using-veeam/veeamimage14.png)
+    ![Veeam management console, nieuwe back-up job guest processing pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage14.png)
 
-8.  Stel in dat het schema één keer per dag wordt uitgevoerd, per keer dat u kunt opgeven.
+8.  Stel het schema in om eenmaal per dag te worden uitgevoerd, op een moment dat u opgeven.
 
-    ![Veeam-beheer console, nieuwe plannings pagina voor back-uptaken](./media/storsimple-configure-backup-target-using-veeam/veeamimage15.png)
+    ![Veeam management console, nieuwe back-up vacature pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage15.png)
 
-## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>StorSimple instellen als een secundair back-updoel
+## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>StorSimple instellen als secundair back-updoel
 
 > [!NOTE]
-> Gegevens die worden teruggezet vanuit een back-up die is getiert in de Cloud, treden op in de Cloud.
+> Gegevens herstelt van een back-up die is gelaagd naar de cloud optreden bij cloudsnelheden.
 
-In dit model moet u een opslag medium hebben (met uitzonde ring van StorSimple) om als tijdelijke cache te dienen. U kunt bijvoorbeeld een RAID-volume (Redundant Array of Independent Disks) gebruiken om ruimte, invoer/uitvoer (I/O) en band breedte aan te passen. U kunt het beste RAID 5, 50 en 10 gebruiken.
+In dit model moet u een opslagmedium (andere dan StorSimple) hebben om als tijdelijke cache te kunnen dienen. U bijvoorbeeld een redundante array van onafhankelijke schijven (RAID)-volume gebruiken om ruimte, invoer/uitvoer (I/O) en bandbreedte te kunnen aanpassen. We raden u aan RAID 5, 50 en 10 te gebruiken.
 
-In de volgende afbeelding ziet u een typische lokale Bewaar periode voor retentie (naar de server) en volumes voor lange termijn retentie archieven. In dit scenario worden alle back-ups uitgevoerd op het lokale RAID-volume (naar de server). Deze back-ups worden periodiek gedupliceerd en gearchiveerd naar een archief volume. Het is belang rijk dat u de grootte van uw lokale (op het server) RAID-volume kunt aanpassen, zodat deze de capaciteit van de korte-termijn inhoud en prestatie vereisten kan verwerken.
+De volgende figuur toont typische korte termijn retentie lokale (aan de server) volumes en lange termijn retentie archiefvolumes. In dit scenario worden alle back-ups uitgevoerd op het lokale (naar de server) RAID-volume. Deze back-ups worden periodiek gedupliceerd en gearchiveerd naar een archiefvolume. Het is belangrijk om het volume van uw lokale (naar de server) RAID-volume te vergroten, zodat het uw retentiecapaciteit en prestatievereisten op korte termijn aankan.
 
-![Logisch diagram van StorSimple als secundair back-updoel](./media/storsimple-configure-backup-target-using-veeam/secondarybackuptargetdiagram.png)
+![StorSimple als logisch diagram voor secundair back-updoel](./media/storsimple-configure-backup-target-using-veeam/secondarybackuptargetdiagram.png)
 
-### <a name="storsimple-as-a-secondary-backup-target-gfs-example"></a>GFS-voor beeld van StorSimple als secundaire back-updoel
+### <a name="storsimple-as-a-secondary-backup-target-gfs-example"></a>StorSimple als secundaire back-up doel GFS voorbeeld
 
-In de volgende tabel ziet u hoe u back-ups kunt instellen om uit te voeren op de lokale en StorSimple-schijven. Het bevat afzonderlijke en totale capaciteits vereisten.
+In de volgende tabel ziet u hoe u back-ups instelt die op de lokale en StorSimple-schijven worden uitgevoerd. Het omvat individuele en totale capaciteitsvereisten.
 
-| Type back-up en retentie | Geconfigureerde opslag | Grootte (TiB) | GFS vermenigvuldiger | Totale capaciteit\* (Tib) |
+| Back-uptype en retentie | Geconfigureerde opslag | Grootte (TiB) | GFS-vermenigvuldiger | Totale\* capaciteit (TiB) |
 |---|---|---|---|---|
 | Week 1 (volledig en incrementeel) |Lokale schijf (korte termijn)| 1 | 1 | 1 |
-| StorSimple weken 2-4 |StorSimple-schijf (lange termijn) | 1 | 4 | 4 |
-| Volledig maandelijks |StorSimple-schijf (lange termijn) | 1 | 12 | 12 |
-| Jaarlijks volledig |StorSimple-schijf (lange termijn) | 1 | 1 | 1 |
-|Vereiste voor grootte van GFS-volumes |  |  |  | 18*|
+| StorSimple weken 2-4 |StorSimple schijf (lange termijn) | 1 | 4 | 4 |
+| Maandelijks vol |StorSimple schijf (lange termijn) | 1 | 12 | 12 |
+| Jaarlijks vol |StorSimple schijf (lange termijn) | 1 | 1 | 1 |
+|GFS volumes grootte eis |  |  |  | 18*|
 
-\*De totale capaciteit omvat 17 TiB van StorSimple schijven en 1 TiB van het lokale RAID-volume.
+\*De totale capaciteit omvat 17 TiB StorSimple-schijven en 1 TiB met lokaal RAID-volume.
 
 
-### <a name="gfs-example-schedule"></a>Voorbeeld schema voor GFS
+### <a name="gfs-example-schedule"></a>GFS-voorbeeldschema
 
-GFS draaiing wekelijks, maandelijks en jaarlijks plannen
+GFS rotatie wekelijks, maandelijks en jaarlijks schema
 
-| Week | Volledig | Incrementele dag 1 | Incrementele dag 2 | Incrementele dag 3 | Incrementele dag 4 | Incrementele dag 5 |
+| Wekelijks | Volledig | Incrementele dag 1 | Incrementele dag 2 | Incrementele dag 3 | Incrementele dag 4 | Incrementele dag 5 |
 |---|---|---|---|---|---|---|
 | Week 1 | Lokaal RAID-volume  | Lokaal RAID-volume | Lokaal RAID-volume | Lokaal RAID-volume | Lokaal RAID-volume | Lokaal RAID-volume |
 | Week 2 | StorSimple weken 2-4 |   |   |   |   |   |
 | Week 3 | StorSimple weken 2-4 |   |   |   |   |   |
 | Week 4 | StorSimple weken 2-4 |   |   |   |   |   |
 | Maandelijks | StorSimple maandelijks |   |   |   |   |   |
-| Per jaar | Jaarlijks StorSimple  |   |   |   |   |   |
+| Jaar | StorSimple jaarlijks  |   |   |   |   |   |
 
-### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>StorSimple-volumes toewijzen aan een Veeam-Kopieer taak
+### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>StorSimple-volumes toewijzen aan een Veeam-kopieertaak
 
-#### <a name="to-assign-storsimple-volumes-to-a-veeam-copy-job"></a>StorSimple-volumes toewijzen aan een Veeam-Kopieer taak
+#### <a name="to-assign-storsimple-volumes-to-a-veeam-copy-job"></a>StorSimple-volumes toewijzen aan een Veeam-kopieertaak
 
-1.  Selecteer **back-up & replicatie**in de Veeam-back-up en replicatie console. Klik met de rechter muisknop op **back-up**en selecteer vervolgens **VMware** of **Hyper-V**, afhankelijk van uw omgeving.
+1.  Selecteer **back-up &-replicatie**in de veeam-back-up- en replicatieconsole . Klik met de rechtermuisknop op **Back-up**en selecteer **VMware** of **Hyper-V,** afhankelijk van uw omgeving.
 
-    ![Veeam-beheer console, nieuwe pagina back-upkopie taak](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
+    ![Veeam management console, nieuwe back-up kopie vacature pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
 
-2.  Voer in het dialoog venster **nieuwe back-upkopie taak** een naam en een beschrijving in voor de taak.
+2.  Voer in het dialoogvenster **Nieuwe back-upkopietaak** een naam en beschrijving voor de taak in.
 
-    ![Veeam-beheer console, nieuwe pagina back-upkopie taak](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
+    ![Veeam management console, nieuwe back-up kopie vacature pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
 
-3.  Selecteer de Vm's die u wilt verwerken. Selecteer een back-up en selecteer vervolgens de dagelijkse back-up die u eerder hebt gemaakt.
+3.  Selecteer de VM's die u wilt verwerken. Kies uit back-ups en selecteer vervolgens de dagelijkse back-up die u eerder hebt gemaakt.
 
-    ![Veeam-beheer console, nieuwe pagina back-upkopie taak](./media/storsimple-configure-backup-target-using-veeam/veeamimage18.png)
+    ![Veeam management console, nieuwe back-up kopie vacature pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage18.png)
 
-4.  Sluit zo nodig objecten uit van de back-uptaak.
+4.  Sluit objecten uit van de taak voor back-upkopieen, indien nodig.
 
-5.  Selecteer uw back-upopslagplaats en stel een waarde **in voor de herstel punten die u wilt laten staan**. Zorg ervoor dat u het selectie vakje **de volgende herstel punten voor archiverings doeleinden gebruiken** inschakelt. Definieer de back-upfrequentie en selecteer vervolgens **Geavanceerd**.
+5.  Selecteer uw back-upopslagplaats en stel een waarde in voor **Herstelpunten om te behouden.** Schakel het selectievakje **De volgende herstelpunten bewaren voor archiveringsdoeleinden in.** Definieer de back-upfrequentie en selecteer **Geavanceerd**.
 
-    ![Veeam-beheer console, nieuwe pagina back-upkopie taak](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
+    ![Veeam management console, nieuwe back-up kopie vacature pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
 
 6.  Geef de volgende geavanceerde instellingen op:
 
-    * Schakel op het tabblad **onderhoud** de beveiliging tegen beschadiging van opslag niveau uit.
+    * Schakel op het tabblad **Onderhoud** de corruptiebeveiliging op opslagniveau uit.
 
-    ![Veeam-beheer console, nieuwe pagina Geavanceerde instellingen voor back-upkopie taak](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
+    ![Veeam management console, nieuwe back-up kopie job geavanceerde instellingen pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
 
-    * Zorg ervoor dat ontdubbeling en compressie is uitgeschakeld op het tabblad **opslag** .
+    * Controleer op het tabblad **Opslag** of ontdubbeling en compressie zijn uitgeschakeld.
 
-    ![Veeam-beheer console, nieuwe pagina Geavanceerde instellingen voor back-upkopie taak](./media/storsimple-configure-backup-target-using-veeam/veeamimage21.png)
+    ![Veeam management console, nieuwe back-up kopie job geavanceerde instellingen pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage21.png)
 
-7.  Geef op dat de gegevens overdracht direct is.
+7.  Geef op dat de gegevensoverdracht direct is.
 
-8.  Definieer het venster schema voor back-ups volgens uw behoeften en voltooi vervolgens de wizard.
+8.  Definieer het vensterschema voor back-upkopieën op basis van uw behoeften en voltooi de wizard.
 
-Zie [back-upkopie taken maken](https://helpcenter.veeam.com/backup/hyperv/backup_copy_create.html)voor meer informatie.
+Zie [Back-upkopietaken maken](https://helpcenter.veeam.com/backup/hyperv/backup_copy_create.html)voor meer informatie.
 
-## <a name="storsimple-cloud-snapshots"></a>StorSimple-Cloud momentopnamen
+## <a name="storsimple-cloud-snapshots"></a>StorSimple cloudsnapshots
 
-Met StorSimple-Cloud momentopnamen worden de gegevens beschermd die zich op uw StorSimple-apparaat bevinden. Het maken van een Cloud momentopname is gelijk aan het verzenden van lokale back-uptapes naar een externe locatie. Als u geografisch redundante opslag van Azure gebruikt, is het maken van een moment opname van de Cloud gelijk aan het verzenden van back-uptapes naar meerdere sites. Als u een apparaat na een nood geval wilt herstellen, kunt u een ander StorSimple-apparaat online zetten en een failover uitvoeren. Na de failover hebt u toegang tot de gegevens (tegen Cloud snelheden) van de meest recente Cloud momentopname.
+StorSimple cloudsnapshots beschermen de gegevens die zich in uw StorSimple-apparaat bevinden. Het maken van een cloudmomentopname is gelijk aan het verzenden van lokale back-uptapes naar een offsite-faciliteit. Als u azure georedundant-opslag gebruikt, is het maken van een cloudmomentopname gelijk aan het verzenden van back-uptapes naar meerdere sites. Als u een apparaat na een ramp moet herstellen, u een ander StorSimple-apparaat online brengen en een failover uitvoeren. Na de failover hebt u toegang tot de gegevens (met cloudsnelheden) vanaf de meest recente cloudmomentopname.
 
-In de volgende sectie wordt beschreven hoe u een kort script maakt voor het starten en verwijderen van StorSimple-Cloud momentopnamen tijdens een back-up na de verwerking.
-
-> [!NOTE]
-> Moment opnamen die hand matig of via een programma worden gemaakt, volgen niet het verloop beleid van de StorSimple-moment opname. Deze moment opnamen moeten hand matig of programmatisch worden verwijderd.
-
-### <a name="start-and-delete-cloud-snapshots-by-using-a-script"></a>Cloud momentopnamen starten en verwijderen met behulp van een script
+In de volgende sectie wordt beschreven hoe u een kort script maakt om StorSimple-cloudmomentopnamen te starten en te verwijderen tijdens back-upnabewerking.
 
 > [!NOTE]
-> Evalueer zorgvuldig de gevolgen voor naleving en gegevens retentie voordat u een StorSimple-moment opname verwijdert. Zie de Veeam-documentatie voor meer informatie over het uitvoeren van een script dat volgt op back-ups.
+> Momentopnamen die handmatig of programmatisch zijn gemaakt, volgen niet het storSimple-momentopnameverloopbeleid. Deze momentopnamen moeten handmatig of programmatisch worden verwijderd.
+
+### <a name="start-and-delete-cloud-snapshots-by-using-a-script"></a>Cloudmomentopnamen starten en verwijderen met behulp van een script
+
+> [!NOTE]
+> Beoordeel zorgvuldig de gevolgen voor naleving en gegevensbewaring voordat u een StorSimple-momentopname verwijdert. Zie de Veeam-documentatie voor meer informatie over het uitvoeren van een script na de back-up.
 
 
-### <a name="backup-lifecycle"></a>Back-uplevenscyclus
+### <a name="backup-lifecycle"></a>Levenscyclus van back-ups
 
-![Diagram van back-uplevenscyclus](./media/storsimple-configure-backup-target-using-veeam/backuplifecycle.png)
+![Diagram voor back-uplevenscyclus](./media/storsimple-configure-backup-target-using-veeam/backuplifecycle.png)
 
 ### <a name="requirements"></a>Vereisten
 
--   De server waarop het script wordt uitgevoerd, moet toegang hebben tot Azure-cloud resources.
--   Het gebruikers account moet de juiste machtigingen hebben.
--   Een StorSimple-back-upbeleid met de gekoppelde StorSimple-volumes moet worden ingesteld, maar niet ingeschakeld.
--   U hebt de StorSimple-resource naam, de registratie sleutel, de apparaatnaam en het back-upbeleid nodig.
+-   De server waarop het script wordt uitgevoerd, moet toegang hebben tot Azure-cloudbronnen.
+-   Het gebruikersaccount moet over de nodige machtigingen beschikken.
+-   Een StorSimple-back-upbeleid met de bijbehorende StorSimple-volumes moet zijn ingesteld, maar niet ingeschakeld.
+-   U hebt de naam van de StorSimple-bron, registratiesleutel, apparaatnaam en back-upbeleids-ID nodig.
 
-### <a name="to-start-or-delete-a-cloud-snapshot"></a>Een Cloud momentopname starten of verwijderen
+### <a name="to-start-or-delete-a-cloud-snapshot"></a>Een cloudmomentopname starten of verwijderen
 
-1. [Installeer Azure PowerShell](/powershell/azure/overview).
-2. Down load en stel het Power shell-script [Manage-CloudSnapshots. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) .
-3. Op de server waarop het script wordt uitgevoerd, voert u Power shell uit als beheerder. Zorg ervoor dat u het script uitvoert `-WhatIf $true` om te zien welke wijzigingen door het script worden aangebracht. Zodra de validatie is voltooid, geeft `-WhatIf $false`u door. Voer de onderstaande opdracht uit:
+1. [Azure PowerShell installeren](/powershell/azure/overview).
+2. Download en setup [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell script.
+3. Voer PowerShell uit op de server waarop het script wordt uitgevoerd als beheerder. Zorg ervoor dat u `-WhatIf $true` het script uitvoert om te zien met welke wijzigingen het script zal aanbrengen. Zodra de validatie is `-WhatIf $false`voltooid, geeft u door . Voer de onderstaande opdracht uit:
    ```powershell
    .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
    ```
-4. Als u het script wilt toevoegen aan uw back-uptaak, bewerkt u de geavanceerde opties van uw Veeam-taak.
+4. Als u het script wilt toevoegen aan uw back-uptaak, bewerkt u geavanceerde opties voor de taak Veeam.
 
-    ![Tabblad scripts van geavanceerde instellingen voor Veeam back-up](./media/storsimple-configure-backup-target-using-veeam/veeamimage22.png)
+    ![Tabblad Geavanceerde instellingen scripts van Veeam back-up](./media/storsimple-configure-backup-target-using-veeam/veeamimage22.png)
 
-U wordt aangeraden om uw back-upbeleid voor StorSimple-Cloud momentopname als een script aan het einde van uw dagelijkse back-uptaak uit te voeren. Voor meer informatie over het maken van een back-up en het herstellen van uw back-uptoepassingsproces om u te helpen bij uw RPO en RTO, kunt u contact opnemen met uw back-uparchitect.
+We raden u aan uw StorSimple-back-upbeleid voor cloudmomentopnamen uit te voeren als een script voor nabewerking aan het einde van uw dagelijkse back-uptaak. Voor meer informatie over het maken van een back-up en het herstellen van uw back-uptoepassingsomgeving om u te helpen uw RPO en RTO te ontmoeten, u contact opnemen met uw back-uparchitect.
 
-## <a name="storsimple-as-a-restore-source"></a>StorSimple als een herstel bron
+## <a name="storsimple-as-a-restore-source"></a>StorSimple als herstelbron
 
-Herstellen vanaf een StorSimple-apparaat werkt zoals herstellen vanuit elk apparaat voor blok opslag. Het terugzetten van gegevens die in de cloud worden getierd, vindt plaats tegen Cloud snelheden. Voor lokale gegevens worden herstel bewerkingen uitgevoerd op de snelheid van de lokale schijf van het apparaat.
+Herstelt van een StorSimple-apparaat werk, zoals herstelt van elk blok opslagapparaat. Herstel van gegevens die naar de cloud zijn gelaagd, vindt plaats bij cloudsnelheden. Voor lokale gegevens vinden herstelberichten plaats op de lokale schijfsnelheid van het apparaat.
 
-Met Veeam krijgt u snel en gedetailleerd herstel op bestands niveau via StorSimple via de ingebouwde Explorer-weer gaven in de Veeam-console. Gebruik de Veeam Explorers om afzonderlijke items, zoals e-mail berichten, Active Directory objecten en share point-items van back-ups, te herstellen. U kunt de herstel bewerking uitvoeren zonder on-premises VM-onderbreking. U kunt ook herstel naar een bepaald tijdstip voor Azure SQL Database en Oracle-data bases. Veeam en StorSimple maken het proces van herstel op item niveau van Azure snel en eenvoudig. Zie de Veeam-documentatie voor meer informatie over het uitvoeren van een herstel bewerking:
+Met Veeam krijg je snel, gedetailleerd herstel op bestandsniveau via StorSimple via de ingebouwde explorer-weergaven in de Veeam-console. Gebruik de Veeam Explorers om afzonderlijke items, zoals e-mailberichten, Active Directory-objecten en SharePoint-items, te herstellen van back-ups. Het herstel kan worden gedaan zonder on-premises VM-verstoring. U ook point-in-time-herstel doen voor Azure SQL Database- en Oracle-databases. Veeam en StorSimple maken het proces van item-level recovery van Azure snel en eenvoudig. Zie de Veeam-documentatie voor informatie over het uitvoeren van een herstel:
 
 - Voor [Exchange Server](https://www.veeam.com/microsoft-exchange-recovery.html)
 - Voor [Active Directory](https://www.veeam.com/microsoft-active-directory-explorer.html)
 - Voor [SQL Server](https://www.veeam.com/microsoft-sql-server-explorer.html)
-- Voor [share point](https://www.veeam.com/microsoft-sharepoint-recovery-explorer.html)
+- Voor [SharePoint](https://www.veeam.com/microsoft-sharepoint-recovery-explorer.html)
 - Voor [Oracle](https://www.veeam.com/oracle-backup-recovery-explorer.html)
 
 
-## <a name="storsimple-failover-and-disaster-recovery"></a>StorSimple-failover en herstel na nood gevallen
+## <a name="storsimple-failover-and-disaster-recovery"></a>StorSimple failover en disaster recovery
 
 > [!NOTE]
-> StorSimple Cloud Appliance wordt niet ondersteund als doel voor het terugzetten van Back-updoelen.
+> Voor back-updoelscenario's wordt StorSimple Cloud Appliance niet ondersteund als hersteldoel.
 
-Een nood geval kan worden veroorzaakt door diverse factoren. De volgende tabel geeft een lijst van veelvoorkomende scenario's voor herstel na nood gevallen.
+Een ramp kan worden veroorzaakt door een verscheidenheid van factoren. In de volgende tabel worden veelvoorkomende scenario's voor noodherstel weergegeven.
 
-| Scenario | Impact | Herstellen | Opmerkingen |
+| Scenario | Impact | Hoe te herstellen | Opmerkingen |
 |---|---|---|---|
-| StorSimple-apparaat is mislukt | Back-up-en herstel bewerkingen worden onderbroken. | Vervang het apparaat dat is mislukt en voer een [StorSimple-failover en nood herstel](storsimple-device-failover-disaster-recovery.md)uit. | Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden volledige gegevens verzamelingen opgehaald uit de Cloud naar het nieuwe apparaat. Alle bewerkingen bevinden zich in de Cloud snelheid. Het proces voor het opnieuw scannen van indexen en catalogussen kan ertoe leiden dat alle back-upsets worden gescand en opgehaald van de Cloud laag naar de laag van het lokale apparaat. Dit kan een tijdrovend proces zijn. |
-| Veeam-server fout | Back-up-en herstel bewerkingen worden onderbroken. | Bouw de back-upserver opnieuw op en voer data base terugzetten uit zoals beschreven in [Veeam Help Center (technische documentatie)](https://www.veeam.com/documentation-guides-datasheets.html).  | U moet de Veeam-server opnieuw samen stellen of herstellen op de site voor nood herstel. Zet de data base terug naar het meest recente punt. Als de herstelde Veeam-data base niet is gesynchroniseerd met uw meest recente back-uptaken, is indexeren en catalogiseren vereist. Dit proces voor het opnieuw scannen van index en catalogus kan ertoe leiden dat alle back-upsets worden gescand en van de Cloud laag worden opgehaald naar de laag van het lokale apparaat. Hierdoor is het veel tijdrovender. |
-| Site fout die leidt tot verlies van zowel de back-upserver als de StorSimple | Back-up-en herstel bewerkingen worden onderbroken. | Herstel StorSimple eerst en herstel vervolgens Veeam. | Herstel StorSimple eerst en herstel vervolgens Veeam. Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden de volledige gegevens sets van de Cloud naar het nieuwe apparaat opgehaald. Alle bewerkingen bevinden zich in de Cloud snelheid. |
+| StorSimple-apparaatstoring | Back-up- en herstelbewerkingen worden onderbroken. | Vervang het defecte apparaat en voer [StorSimple-failover en disaster recovery](storsimple-device-failover-disaster-recovery.md)uit. | Als u een herstel na herstel van het apparaat moet uitvoeren, worden de volledige gegevenswerksets opgehaald van de cloud naar het nieuwe apparaat. Alle bewerkingen zijn op cloudsnelheden. Het indexerings- en catalogusherscanproces kan ertoe leiden dat alle back-upsets worden gescand en van de cloudlaag naar de lokale apparaatlaag worden getrokken, wat een tijdrovend proces kan zijn. |
+| Veeam-serverstoring | Back-up- en herstelbewerkingen worden onderbroken. | Herbouw de back-upserver en voer databaseherstel uit zoals beschreven in [veeam Help Center (Technische documentatie).](https://www.veeam.com/documentation-guides-datasheets.html)  | U moet de Veeam-server opnieuw opbouwen of herstellen op de noodherstelsite. Herstel de database naar het meest recente punt. Als de herstelde Veeam-database niet synchroon loopt met uw nieuwste back-uptaken, is indexering en catalogisering vereist. Dit indexerings- en catalogusherscanproces kan ertoe leiden dat alle back-upsets worden gescand en van de cloudlaag naar de lokale apparaatlaag worden getrokken. Dit maakt het verder tijdsintensief. |
+| Sitefout die resulteert in het verlies van zowel de back-upserver als StorSimple | Back-up- en herstelbewerkingen worden onderbroken. | Herstel StorSimple eerst en herstel Veeam. | Herstel StorSimple eerst en herstel Veeam. Als u een herstel na herstel van het apparaat moet uitvoeren, worden de volledige gegevenswerksets opgehaald van de cloud naar het nieuwe apparaat. Alle bewerkingen zijn op cloudsnelheden. |
 
 
 ## <a name="references"></a>Verwijzingen
 
-In dit artikel wordt verwezen naar de volgende documenten:
+Naar de volgende documenten voor dit artikel is verwezen:
 
-- [StorSimple Multipath I/O instellen](storsimple-configure-mpio-windows-server.md)
-- [Opslag scenario's: Thin Provisioning](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [StorSimple multipath I/O setup](storsimple-configure-mpio-windows-server.md)
+- [Opslagscenario's: thin provisioning](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [GPT-stations gebruiken](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
-- [Schaduw kopieën voor gedeelde mappen instellen](https://technet.microsoft.com/library/cc771893.aspx)
+- [Schaduwkopieën instellen voor gedeelde mappen](https://technet.microsoft.com/library/cc771893.aspx)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [herstellen van een back-upset](storsimple-restore-from-backup-set-u2.md).
-- Meer informatie over het uitvoeren van een failover van een [apparaat en nood herstel](storsimple-device-failover-disaster-recovery.md).
+- Meer informatie over het [herstellen vanuit een back-upset](storsimple-restore-from-backup-set-u2.md).
+- Meer informatie over het uitvoeren van [apparaatfailover en disaster recovery](storsimple-device-failover-disaster-recovery.md).

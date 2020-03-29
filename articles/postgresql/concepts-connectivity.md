@@ -1,48 +1,48 @@
 ---
-title: Problemen met de tijdelijke verbinding verwerken-Azure Database for PostgreSQL-één server
-description: Meer informatie over het afhandelen van problemen met de tijdelijke connectiviteit voor Azure Database for PostgreSQL-één server.
-keywords: postgresql-verbinding, connection string, connectiviteits problemen, tijdelijke fout, verbindings fout
+title: Tijdelijke verbindingsfouten verwerken - Azure Database voor PostgreSQL - Single Server
+description: Meer informatie over het verwerken van tijdelijke verbindingsfouten voor Azure Database voor PostgreSQL - Single Server.
+keywords: postgresql-verbinding, verbindingstekenreeks, verbindingsproblemen, tijdelijke fout, verbindingsfout
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: fe5b772946bece165a4e09f170355dc7b595a48f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74768840"
 ---
-# <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>Tijdelijke connectiviteits fouten voor Azure Database for PostgreSQL-één server verwerken
+# <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>Tijdelijke connectiviteitsfouten voor Azure Database for PostgreSQL verwerken: één server
 
-In dit artikel wordt beschreven hoe u tijdelijke fouten kunt afhandelen die verbinding maken met Azure Database for PostgreSQL.
+In dit artikel wordt beschreven hoe u tijdelijke fouten verwerken die verbinding maken met Azure Database voor PostgreSQL.
 
 ## <a name="transient-errors"></a>Tijdelijke fouten
 
-Een tijdelijke fout, ook wel bekend als tijdelijke fout, is een fout die zichzelf zal oplossen. Meestal worden deze fouten manifesten beschouwd als een verbinding met de database server die wordt verwijderd. Er kunnen ook geen nieuwe verbindingen met een server worden geopend. Tijdelijke fouten kunnen bijvoorbeeld optreden als er een hardware-of netwerk fout optreedt. Een andere reden kan een nieuwe versie zijn van een PaaS-service die wordt geïmplementeerd. De meeste van deze gebeurtenissen worden in minder dan 60 seconden automatisch door het systeem beperkt. Een best practice voor het ontwerpen en ontwikkelen van toepassingen in de Cloud is het verwachten van tijdelijke fouten. We gaan ervan uit dat ze op elk gewenst moment in elk onderdeel kunnen plaatsvinden en dat ze de juiste logica hebben om deze situaties af te handelen.
+Een tijdelijke fout, ook wel een tijdelijke fout genoemd, is een fout die zichzelf zal oplossen. Meestal manifesteren deze fouten zich als een verbinding met de databaseserver die wordt verwijderd. Ook kunnen nieuwe verbindingen met een server niet worden geopend. Tijdelijke fouten kunnen bijvoorbeeld optreden wanneer er hardware- of netwerkfouten optreden. Een andere reden zou kunnen zijn een nieuwe versie van een PaaS-service die wordt uitgerold. De meeste van deze gebeurtenissen worden automatisch beperkt door het systeem in minder dan 60 seconden. Een aanbevolen manier voor het ontwerpen en ontwikkelen van applicaties in de cloud is het verwachten van tijdelijke fouten. Stel dat ze kunnen gebeuren in elk onderdeel op elk gewenst moment en om de juiste logica op zijn plaats om deze situaties te behandelen.
 
 ## <a name="handling-transient-errors"></a>Tijdelijke fouten verwerken
 
-Tijdelijke fouten moeten worden afgehandeld met behulp van logica opnieuw proberen. Situaties die in overweging moeten worden genomen:
+Tijdelijke fouten moeten worden verwerkt met behulp van logica voor opnieuw proberen. Situaties die in aanmerking moeten worden genomen:
 
 * Er treedt een fout op wanneer u een verbinding probeert te openen
-* Er wordt een niet-actieve verbinding aan de server zijde verwijderd. Wanneer u een opdracht probeert uit te geven, kan deze niet worden uitgevoerd
-* Een actieve verbinding die momenteel een opdracht uitvoert, wordt verwijderd.
+* Een niet-actieve verbinding wordt aan de serverzijde verbroken. Wanneer u een opdracht probeert uit te geven, kan deze niet worden uitgevoerd
+* Een actieve verbinding die momenteel een opdracht uitvoert, wordt verbroken.
 
-Het eerste en tweede geval zijn redelijk direct in de richting van de hand. Probeer de verbinding opnieuw te openen. Wanneer u dit hebt gedaan, wordt de tijdelijke fout door het systeem verholpen. U kunt uw Azure Database for PostgreSQL opnieuw gebruiken. We raden u aan te wachten op het opnieuw proberen van de verbinding. Back-ups maken als de eerste pogingen mislukken. Op deze manier kan het systeem alle bronnen gebruiken die beschikbaar zijn om de fout situatie op te lossen. Een goed patroon dat u moet volgen:
+De eerste en tweede zaak zijn vrij rechttoe rechtaan te behandelen. Probeer de verbinding opnieuw te openen. Wanneer u slaagt, is de tijdelijke fout door het systeem beperkt. U uw Azure Database opnieuw gebruiken voor PostgreSQL. We raden u aan te wachten voordat u de verbinding opnieuw probeert. Terug uit als de eerste pogingen mislukken. Op deze manier kan het systeem alle beschikbare middelen gebruiken om de foutsituatie te overwinnen. Een goed patroon om te volgen is:
 
-* Wacht vijf seconden vóór uw eerste nieuwe poging.
-* Voor elke volgende poging wordt de wacht tijd exponentieel verhoogd, tot 60 seconden.
-* Stel een maximum aantal nieuwe pogingen in op het moment dat de bewerking door uw toepassing wordt beschouwd.
+* Wacht 5 seconden voordat je eerste nieuwe poging doet.
+* Voor elke volgende opnieuw proberen, de verhoging van het wachten exponentieel, tot 60 seconden.
+* Stel een maximum aantal nieuwe pogingen in op welk punt de bewerking is mislukt.
 
-Wanneer een verbinding met een actieve trans actie mislukt, is het moeilijker om het herstel af te handelen. Er zijn twee gevallen: als de trans actie alleen-lezen is, is het veilig om de verbinding opnieuw te openen en de trans actie opnieuw uit te voeren. Als de trans actie echter ook is geschreven naar de data base, moet u bepalen of de trans actie is teruggedraaid of dat deze is geslaagd voordat de tijdelijke fout is opgetreden. In dat geval is het mogelijk dat u alleen de bevestiging van de door Voer hebt ontvangen van de database server.
+Wanneer een verbinding met een actieve transactie mislukt, is het moeilijker om het herstel correct te verwerken. Er zijn twee gevallen: Als de transactie alleen-lezen van aard was, is het veilig om de verbinding te heropenen en de transactie opnieuw te proberen. Als de transactie echter ook naar de database is geschreven, moet u bepalen of de transactie is teruggedraaid of dat deze is geslaagd voordat de tijdelijke fout is uitgevoerd. In dat geval heeft u misschien de commit-bevestiging van de databaseserver niet ontvangen.
 
-Een manier om dit te doen, is door een unieke ID te genereren op de client die wordt gebruikt voor alle nieuwe pogingen. U geeft deze unieke ID door als onderdeel van de trans actie op de server en om deze op te slaan in een kolom met een unieke beperking. Op deze manier kunt u de trans actie veilig opnieuw proberen. Dit gebeurt als de vorige trans actie is teruggedraaid en de door de client gegenereerde unieke ID nog niet in het systeem bestaat. Deze fout kan optreden als de unieke ID eerder is opgeslagen, omdat de vorige trans actie is voltooid.
+Een manier om dit te doen, is het genereren van een unieke ID op de client die wordt gebruikt voor alle pogingen. U geeft deze unieke ID als onderdeel van de transactie door aan de server en slaat deze op in een kolom met een unieke beperking. Op deze manier u de transactie veilig opnieuw proberen. Het zal lukken als de vorige transactie is teruggedraaid en de client gegenereerde unieke ID nog niet bestaat in het systeem. Het wordt niet weergegeven als de schending van de dubbele sleutel wordt aangegeven als de unieke id eerder is opgeslagen omdat de vorige transactie is voltooid.
 
-Wanneer uw programma communiceert met Azure Database for PostgreSQL via middleware van een derde partij, vraagt u de leverancier of de middleware logica voor tijdelijke fouten bevat.
+Wanneer uw programma communiceert met Azure Database voor PostgreSQL via middleware van derden, vraagt u de leverancier of de middleware opnieuw proberenlogica bevat voor tijdelijke fouten.
 
-Zorg ervoor dat u de logica probeert te testen. Probeer bijvoorbeeld uw code uit te voeren terwijl u de reken resources van Azure Database for PostgreSQL server omhoog of omlaag kunt schalen. Uw toepassing moet de korte downtime die tijdens deze bewerking wordt aangetroffen zonder problemen verwerken.
+Zorg ervoor dat u de logica opnieuw probeert. Probeer bijvoorbeeld uw code uit te voeren terwijl u de rekenbronnen van uw Azure Database voor PostgreSQL-server opschaalt of omlaag. Uw toepassing moet de korte downtime die tijdens deze bewerking wordt ondervonden, zonder problemen verwerken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

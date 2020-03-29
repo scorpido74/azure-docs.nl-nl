@@ -1,6 +1,6 @@
 ---
-title: Een opgeslagen toegangs beleid definiëren met .NET-Azure Storage
-description: Meer informatie over het definiëren van een opgeslagen toegangs beleid met behulp van de .NET-client bibliotheek.
+title: Een opgeslagen toegangsbeleid definiëren met .NET - Azure Storage
+description: Meer informatie over het definiëren van een opgeslagen toegangsbeleid met behulp van de .NET-clientbibliotheek.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,17 +10,17 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 272d676d0a5a55262b1c68d0bae9a9ab229df72c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68990739"
 ---
-# <a name="define-a-stored-access-policy-with-net"></a>Een opgeslagen toegangs beleid definiëren met .NET
+# <a name="define-a-stored-access-policy-with-net"></a>Een opgeslagen toegangsbeleid definiëren met .NET
 
-Een opgeslagen toegangs beleid biedt een extra controle niveau voor Shared Access signatures (SAS) op service niveau aan de server zijde. Als u een opgeslagen toegangs beleid definieert, worden de hand tekeningen voor gedeelde toegang gegroepeerd en worden er aanvullende beperkingen geboden voor de hand tekeningen voor gedeelde toegang die door het beleid zijn gebonden. U kunt een opgeslagen toegangs beleid gebruiken om de start tijd, de verloop tijd of de machtigingen voor een SAS te wijzigen, of om deze in te trekken nadat deze is uitgegeven.
+Een opgeslagen toegangsbeleid biedt een extra niveau van controle over gedeelde toegangshandtekeningen op serviceniveau (SAS) aan de serverzijde. Het definiëren van een opgeslagen toegangsbeleid dient om gedeelde toegangshandtekeningen te groeperen en om extra beperkingen op te leggen voor gedeelde toegangshandtekeningen die aan het beleid zijn gebonden. U een opgeslagen toegangsbeleid gebruiken om de begintijd, vervaldatum of machtigingen voor een SAS te wijzigen of om het in te trekken nadat deze is uitgegeven.
   
- De volgende opslag bronnen ondersteunen opgeslagen toegangs beleid:  
+ De volgende opslagbronnen ondersteunen beleid voor opgeslagen toegang:  
   
 - Blobcontainers  
 - Bestandsshares  
@@ -28,13 +28,13 @@ Een opgeslagen toegangs beleid biedt een extra controle niveau voor Shared Acces
 - Tabellen  
   
 > [!NOTE]
-> Een opgeslagen toegangs beleid voor een container kan worden gekoppeld aan een gedeelde toegangs handtekening die machtigingen verleent aan de container zelf of aan de blobs die deze bevat. Op dezelfde manier kan een opgeslagen toegangs beleid voor een bestands share worden gekoppeld aan een gedeelde toegangs handtekening waarmee machtigingen worden verleend aan de share zelf of aan de bestanden die deze bevat.  
+> Een opgeslagen toegangsbeleid voor een container kan worden gekoppeld aan een handtekening met gedeelde toegang waarbij machtigingen worden verleend aan de container zelf of aan de blobs die deze bevat. Op dezelfde manier kan een opgeslagen toegangsbeleid voor een bestandsshare worden gekoppeld aan een handtekening met gedeelde toegang waarmee machtigingen worden verleend aan het aandeel zelf of aan de bestanden die het bevat.  
 >
-> Opgeslagen toegangs beleid wordt alleen ondersteund voor een service-SAS. Opgeslagen toegangs beleid wordt niet ondersteund voor account-SAS of SAS voor gebruikers overdracht.  
+> Het beleid voor opgeslagen toegang wordt alleen ondersteund voor een service-SAS. Beleid voor opgeslagen toegang wordt niet ondersteund voor sas- of gebruikersdelegatie SAS.  
 
-## <a name="create-a-stored-access-policy"></a>Een opgeslagen toegangs beleid maken
+## <a name="create-a-stored-access-policy"></a>Een opgeslagen toegangsbeleid maken
 
-Met de volgende code wordt een opgeslagen toegangs beleid voor een container gemaakt. U kunt het toegangs beleid gebruiken om beperkingen voor een service-SA'S op te geven voor de container of de blobs.
+Met de volgende code wordt een opgeslagen toegangsbeleid voor een container aanmaken. U het toegangsbeleid gebruiken om beperkingen op te geven voor een service-SAS voor de container of de blobs.
 
 ```csharp
 private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer container, string policyName)
@@ -60,6 +60,6 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
 
 ## <a name="see-also"></a>Zie ook
 
-- [Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)](storage-sas-overview.md)
-- [Een opgeslagen toegangs beleid definiëren](/rest/api/storageservices/define-stored-access-policy)
+- [Beperkte toegang verlenen tot Azure Storage-bronnen met behulp van gedeelde toegangshandtekeningen (SAS)](storage-sas-overview.md)
+- [Opgeslagen toegangsbeleid definiëren](/rest/api/storageservices/define-stored-access-policy)
 

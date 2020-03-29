@@ -1,7 +1,7 @@
 ---
-title: Voor beeld-API management-beleid-mogelijkheden toevoegen aan de back-end-service
+title: Voorbeeld van API-beheerbeleid - Mogelijkheden toevoegen aan backendservice
 titleSuffix: Azure API Management
-description: 'Voor beeld van Azure API management-beleid: demonstreert hoe u mogelijkheden kunt toevoegen aan een back-end-service. Bijvoorbeeld, een naam van de locatie accepteren in plaats van de breedtegraad en lengtegraad in een weerprognose-API.'
+description: Voorbeeld van azure API-beheerbeleid - toont aan hoe u mogelijkheden toevoegt aan een backendservice. Bijvoorbeeld, een naam van de locatie accepteren in plaats van de breedtegraad en lengtegraad in een weerprognose-API.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: e286f77009a17870332ed5caf1c66c18dd21d020
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442473"
 ---
-# <a name="add-capabilities-to-a-backend-service"></a>Mogelijkheden toevoegen aan een back-end-service
+# <a name="add-capabilities-to-a-backend-service"></a>Mogelijkheden toevoegen aan een backendservice
 
-In dit artikel wordt een voor beeld van een Azure API management-beleid weer gegeven waarin wordt getoond hoe u mogelijkheden kunt toevoegen aan een back-end-service. Bijvoorbeeld, een naam van de locatie accepteren in plaats van de breedtegraad en lengtegraad in een weerprognose-API. Volg de stappen die worden beschreven in [een beleid instellen of bewerken](../set-edit-policies.md)om een beleids code in te stellen of te bewerken. Zie voor andere voor beelden [beleids voorbeelden](../policy-samples.md).
+In dit artikel wordt een voorbeeld van een Azure API-beheerbeleidsvoorbeeld weergegeven waarin wordt uitgelegd hoe u mogelijkheden toevoegt aan een backendservice. Bijvoorbeeld, een naam van de locatie accepteren in plaats van de breedtegraad en lengtegraad in een weerprognose-API. Als u een beleidscode wilt instellen of bewerken, volgt u de stappen die zijn beschreven in [Een beleid instellen of bewerken](../set-edit-policies.md). Zie [Beleidsvoorbeelden](../policy-samples.md)voor andere voorbeelden .
 
 ## <a name="policy"></a>Beleid
 
@@ -35,5 +35,5 @@ Plak de code in het **binnenkomende** blok.
 Meer informatie over APIM-beleid:
 
 + [Transformatiebeleid](../api-management-transformation-policies.md)
-+ [Voor beelden van beleid](../policy-samples.md)
++ [Beleidsvoorbeelden](../policy-samples.md)
 

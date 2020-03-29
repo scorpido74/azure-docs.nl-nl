@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75392816"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Berichten en verbindingen in Azure SignalR Service
@@ -20,7 +20,7 @@ Het factureringsmodel voor Azure SignalR Service is gebaseerd op het aantal verb
 
 ## <a name="message-formats"></a>Berichtindelingen 
 
-De Azure signalerings service ondersteunt dezelfde indelingen als ASP.NET Core-Signa lering: [JSON](https://www.json.org/) en [Message Pack](/aspnet/core/signalr/messagepackhubprotocol).
+Azure SignalR Service ondersteunt dezelfde indelingen als ASP.NET Core SignalR: [JSON](https://www.json.org/) en [MessagePack](/aspnet/core/signalr/messagepackhubprotocol).
 
 ## <a name="message-size"></a>Berichtgrootte
 
@@ -40,23 +40,23 @@ Stel u hebt drie clients en één toepassingsserver. Vanaf één client wordt ee
 
 ## <a name="how-connections-are-counted"></a>Hoe verbindingen worden geteld
 
-Er zijn server verbindingen en client verbindingen met de Azure signalerings service. Standaard begint elke toepassings server met vijf initiële verbindingen per hub, en elke client heeft één client verbinding.
+Er zijn serververbindingen en clientverbindingen met Azure SignalR Service. Standaard begint elke toepassingsserver met vijf initiële verbindingen per hub en elke client heeft één clientverbinding.
 
 Het aantal verbindingen dat in de Azure-portal wordt weergegeven, betreft zowel server- als clientverbindingen.
 
-Stel dat u twee toepassingsservers hebt en dat u vijf hubs in code definieert. Het aantal server verbindingen is 50:2 app-servers * 5 hubs * 5 verbindingen per hub.
+Stel dat u twee toepassingsservers hebt en dat u vijf hubs in code definieert. Het aantal serververbindingen bedraagt 50: 2 app-servers * 5 hubs * 5 verbindingen per hub.
 
-ASP.NET SignalR berekent serververbindingen op een andere manier. Het bevat één standaardhub, naast de hubs die u definieert. Standaard moet elke toepassings server vijf extra initiële server verbindingen hebben. Het oorspronkelijke aantal verbindingen voor de standaard-hub blijft consistent met die van de andere hubs.
+ASP.NET SignalR berekent serververbindingen op een andere manier. Het bevat één standaardhub, naast de hubs die u definieert. Standaard heeft elke toepassingsserver nog vijf initiële serververbindingen nodig. Het initiële aantal verbindingen voor de standaardhub blijft consistent met die van de andere hubs.
 
-Tijdens de levens duur van de toepassings server houdt de service en de toepassings server de status van de synchronisatie verbinding bij en maken ze een aanpassing van server verbindingen voor betere prestaties en stabiliteit van de service. Het is dus mogelijk dat de server verbindings nummers van tijd tot tijd veranderen.
+Tijdens de levensduur van de toepassingsserver behouden de service en de toepassingsserver de status van de synchronisatieverbinding en passen ze de serververbindingen aan voor betere prestaties en servicestabiliteit. Het is dus mogelijk dat er van tijd tot tijd wijzigingen in het serververbindingsnummer worden weergegeven.
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>Hoe binnenkomend/uitgaand verkeer wordt geteld
 
 Het verschil tussen binnenkomend en uitgaand verkeer is gebaseerd op het perspectief van Azure SignalR Service. Verkeer wordt geteld in bytes.
 
-## <a name="related-resources"></a>Gerelateerde bronnen
+## <a name="related-resources"></a>Gerelateerde resources
 
 - [Aggregatietypen in Azure Monitor](/azure/azure-monitor/platform/metrics-supported#microsoftsignalrservicesignalr )
 - [ASP.NET Core SignalR-configuratie](/aspnet/core/signalr/configuration)
-- [JSON](https://www.json.org/)
+- [Json](https://www.json.org/)
 - [MessagePack](/aspnet/core/signalr/messagepackhubprotocol)

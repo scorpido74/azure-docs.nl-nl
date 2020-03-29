@@ -1,6 +1,6 @@
 ---
-title: Back-ups en herstel na nood gevallen voor IaaS-schijven op Windows-Vm's
-description: In dit artikel wordt uitgelegd hoe u een back-up en herstel na nood gevallen kunt plannen voor virtuele IaaS-machines en-schijven in Azure. In dit document worden zowel beheerde als onbeheerde schijven beschreven.
+title: Back-up en noodherstel voor IaaS-schijven op Windows VM's
+description: In dit artikel wordt uitgelegd hoe u back-up en noodherstel van 30-pc's en -schijven in Azure plannen. Dit document heeft betrekking op zowel beheerde als onbeheerde schijven.
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: conceptual
@@ -8,11 +8,11 @@ ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: e9cfdc43e99aed20501bf80ddf223376aad507ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75375539"
 ---
-# <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Back-ups en herstel na nood gevallen voor Azure IaaS-schijven
+# <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Back-up en noodherstel voor Azure IaaS-schijven
 [!INCLUDE [virtual-machines-common-premium-storage.md](../../../includes/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks.md)]

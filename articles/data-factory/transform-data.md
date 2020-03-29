@@ -11,100 +11,100 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
 ms.openlocfilehash: 1f920f2672c19455a8e8ac979e8d6d1eb14d4c35
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74924297"
 ---
-# <a name="transform-data-in-azure-data-factory"></a>Gegevens in Azure Data Factory transformeren
+# <a name="transform-data-in-azure-data-factory"></a>Gegevens transformeren in Azure Data Factory
 
 > [!div class="op_single_selector"]
-> * [Gegevens stroom toewijzen](data-flow-create.md)
-> * [Hive](transform-data-using-hadoop-hive.md)  
+> * [Gegevensstroom toewijzen](data-flow-create.md)
+> * [Component](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
-> * [HDInsight-streaming](transform-data-using-hadoop-streaming.md)
+> * [HDInsight Streaming](transform-data-using-hadoop-streaming.md)
 > * [HDInsight Spark](transform-data-using-spark.md)
 > * [Machine Learning](transform-data-using-machine-learning.md) 
 > * [Opgeslagen procedure](transform-data-using-stored-procedure.md)
 > * [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md)
-> * [Databricks-notebook](transform-data-databricks-notebook.md)
-> * [Databricks jar](transform-data-databricks-jar.md)
-> * [Databricks python](transform-data-databricks-python.md)
+> * [Databricks-notitieblok](transform-data-databricks-notebook.md)
+> * [Databricks Jar](transform-data-databricks-jar.md)
+> * [Databricks Python](transform-data-databricks-python.md)
 > * [.NET aangepast](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>Overzicht
-In dit artikel wordt uitgelegd hoe u activiteiten voor gegevens transformatie in Azure Data Factory kunt gebruiken om uw onbewerkte gegevens te transformeren en te verwerken in voor spellingen en inzichten op schaal. Een transformatie activiteit wordt uitgevoerd in een computer omgeving, zoals Azure Databricks of Azure HDInsight. Het bevat koppelingen naar artikelen met gedetailleerde informatie over elke transformatie activiteit.
+In dit artikel worden gegevenstransformatieactiviteiten in Azure Data Factory uitgelegd die u gebruiken om uw ruwe gegevens om te zetten en te verwerken tot voorspellingen en inzichten op schaal. Een transformatieactiviteit wordt uitgevoerd in een computeromgeving zoals Azure Databricks of Azure HDInsight. Het biedt links naar artikelen met gedetailleerde informatie over elke transformatieactiviteit.
 
-Data Factory ondersteunt de volgende activiteiten voor gegevens transformatie die afzonderlijk kunnen worden toegevoegd aan [pijp lijnen](concepts-pipelines-activities.md) of moeten worden gekoppeld aan een andere activiteit.
+Data Factory ondersteunt de volgende gegevenstransformatieactiviteiten die afzonderlijk of geketend kunnen worden aan [pijplijnen.](concepts-pipelines-activities.md)
 
-## <a name="transform-natively-in-azure-data-factory-with-data-flows"></a>Systeem eigen transformeren in Azure Data Factory met gegevens stromen
+## <a name="transform-natively-in-azure-data-factory-with-data-flows"></a>Native transformeren in Azure Data Factory met gegevensstromen
 
 ### <a name="mapping-data-flows"></a>Toewijzing gegevensstromen
 
-Het toewijzen van gegevens stromen zijn visueel ontworpen gegevens transformaties in Azure Data Factory. Met gegevens stromen kunnen data engineers grafische gegevens transformatie logica ontwikkelen zonder code te schrijven. De resulterende gegevens stromen worden uitgevoerd als activiteiten binnen Azure Data Factory pijp lijnen die gebruikmaken van geschaalde Spark-clusters. Gegevens stroom activiteiten kunnen worden uitgevoerd via bestaande Data Factory plannings-, beheer-, stroom-en bewakings mogelijkheden. Zie [gegevens stromen toewijzen](concepts-data-flow-overview.md)voor meer informatie.
+Gegevensstromen in kaart brengen zijn visueel ontworpen gegevenstransformaties in Azure Data Factory. Gegevensstromen stellen dataengineers in staat om grafische logica voor gegevenstransformatie te ontwikkelen zonder code te schrijven. De resulterende gegevensstromen worden uitgevoerd als activiteiten binnen Azure Data Factory-pijplijnen die geschaalde Spark-clusters gebruiken. Gegevensstroomactiviteiten kunnen worden geoperationaliseerd via bestaande plannings-, controle-, stroom- en bewakingsmogelijkheden van Data Factory. Zie [gegevensstromen toewijzen](concepts-data-flow-overview.md)voor meer informatie .
 
-### <a name="wrangling-data-flows"></a>Wrangling-gegevens stromen
+### <a name="wrangling-data-flows"></a>Getouwtrek gegevensstromen
 
-Met Wrangling-gegevens stromen in Azure Data Factory kunt u de gegevens voorbereiding voor code gratis uitvoeren op de Cloud schaal. Wrangling-gegevens stromen kunnen worden geïntegreerd met [Power query online](https://docs.microsoft.com/power-query/) en maken Power query M-functies beschikbaar voor gegevens Wrangling op Cloud schaal via Spark-uitvoering. Zie [wrangling Data Flows](wrangling-data-flow-overview.md)(Engelstalig) voor meer informatie.
+Met de gegevensstromen in Azure Data Factory u codevrije gegevensvoorbereiding op cloudschaal iteratief doen. Wrangling data flows integreren met [Power Query Online](https://docs.microsoft.com/power-query/) en maakt Power Query M functies beschikbaar voor data wrangling op cloud schaal via spark uitvoering. Zie voor meer informatie [de gegevensstromen van het getouwtrek](wrangling-data-flow-overview.md).
 
 ## <a name="external-transformations"></a>Externe transformaties
 
-U kunt desgewenst trans formaties hand matig coderen en zelf de externe Compute-omgeving beheren.
+Optioneel u transformaties met de hand coderen en de externe compute-omgeving zelf beheren.
 
 ### <a name="hdinsight-hive-activity"></a>HDInsight Hive-activiteit
-De HDInsight Hive-activiteit in een Data Factory pijp lijn voert Hive-query's uit op uw eigen of op aanvraag gebaseerd HDInsight-cluster op basis van Windows/Linux. Zie het artikel [Hive-activiteit](transform-data-using-hadoop-hive.md) voor meer informatie over deze activiteit. 
+De HDInsight Hive-activiteit in een Data Factory-pijplijn voert Hive-query's uit op uw eigen of on-demand HDInsight-cluster op basis van Windows/Linux. Zie [artikel over de activiteit van Hive](transform-data-using-hadoop-hive.md) voor meer informatie over deze activiteit. 
 
-### <a name="hdinsight-pig-activity"></a>HDInsight Pig-activiteit
-Met de HDInsight Pig-activiteit in een Data Factory pijp lijn worden Pig-query's uitgevoerd op uw eigen of op aanvraag gebaseerd HDInsight-cluster op basis van Windows/Linux. Zie het artikel [Pig-activiteit](transform-data-using-hadoop-pig.md) voor meer informatie over deze activiteit. 
+### <a name="hdinsight-pig-activity"></a>HDInsight Pig activiteit
+De HDInsight Pig-activiteit in een Data Factory-pijplijn voert Pig-query's uit op uw eigen of on-demand Windows/Linux-gebaseerde HDInsight-cluster. Zie [Artikel Varkensactiviteit](transform-data-using-hadoop-pig.md) voor meer informatie over deze activiteit. 
 
-### <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce-activiteit
-Met de HDInsight MapReduce-activiteit in een Data Factory pijp lijn worden MapReduce-Program ma's uitgevoerd op uw eigen of op aanvraag gebaseerd HDInsight-cluster op basis van Windows/Linux. Zie [MapReduce-activiteiten](transform-data-using-hadoop-map-reduce.md) artikel voor meer informatie over deze activiteit.
+### <a name="hdinsight-mapreduce-activity"></a>HDInsight MapActiviteit verminderen
+De HDInsight MapReduce activiteit in een Data Factory-pijplijn voert MapReduce-programma's uit op uw eigen of on-demand Windows/Linux-gebaseerde HDInsight-cluster. Zie [MapReduce activity](transform-data-using-hadoop-map-reduce.md) article for details about this activity.
 
-### <a name="hdinsight-streaming-activity"></a>HDInsight streaming-activiteit
-Met de activiteit HDInsight streaming in een Data Factory pijp lijn worden Hadoop-streaming-Program ma's uitgevoerd op uw eigen of op aanvraag gebaseerd HDInsight-cluster op basis van Windows/Linux. Zie [HDInsight streaming-activiteit](transform-data-using-hadoop-streaming.md) voor meer informatie over deze activiteit.
+### <a name="hdinsight-streaming-activity"></a>HDInsight-streamingactiviteit
+De HDInsight Streaming-activiteit in een Data Factory-pijplijn voert Hadoop Streaming-programma's uit op uw eigen of on-demand Windows/Linux-gebaseerde HDInsight-cluster. Zie [HDInsight Streaming-activiteit](transform-data-using-hadoop-streaming.md) voor meer informatie over deze activiteit.
 
 ### <a name="hdinsight-spark-activity"></a>HDInsight Spark-activiteit
-Met de HDInsight Spark-activiteit in een Data Factory pijp lijn worden Spark-Program ma's uitgevoerd op uw eigen HDInsight-cluster. Zie voor meer informatie [aanroepen Spark-Program ma's van Azure Data Factory](transform-data-using-spark.md). 
+De HDInsight Spark-activiteit in een Data Factory-pijplijn voert Spark-programma's uit op uw eigen HDInsight-cluster. Zie [Spark-programma's van Azure Data Factory voor](transform-data-using-spark.md)meer informatie aanroepen. 
 
-### <a name="machine-learning-activities"></a>Machine Learning activiteiten
-Met Azure Data Factory kunt u eenvoudig pijp lijnen maken die gebruikmaken van een gepubliceerde Azure Machine Learning-webservice voor predictive analytics. U kunt met behulp van de [batch Execution-activiteit](transform-data-using-machine-learning.md) in een Azure Data Factory-pijp lijn een machine learning-webservice aanroepen om voor spellingen te doen op de gegevens in batch.
+### <a name="machine-learning-activities"></a>Machine Learning-activiteiten
+Met Azure Data Factory u eenvoudig pijplijnen maken die gebruikmaken van een gepubliceerde Azure Machine Learning-webservice voor voorspellende analyses. Met de [batchuitvoeringsactiviteit](transform-data-using-machine-learning.md) in een Azure Data Factory-pijplijn u een Machine Learning-webservice aanroepen om voorspellingen te doen over de gegevens in batch.
 
-De voorspellende modellen in de Machine Learning Score experimenten moeten na verloop van tijd opnieuw worden getraind met nieuwe invoer gegevens sets. Wanneer u klaar bent met opnieuw trainen, wilt u de Score-webservice bijwerken met het opnieuw getrainde Machine Learning model. U kunt de [activiteit resource bijwerken](update-machine-learning-models.md) gebruiken om de webservice bij te werken met het nieuwe getrainde model.  
+Na verloop van tijd moeten de voorspellende modellen in de Machine Learning-scoringsexperimenten worden omgeschoold met behulp van nieuwe invoergegevenssets. Nadat u klaar bent met omscholing, wilt u de scorewebservice bijwerken met het omgeschoold Machine Learning-model. U de [activiteit Resource bijwerken](update-machine-learning-models.md) gebruiken om de webservice bij te werken met het nieuw getrainde model.  
 
-Zie [machine learning activiteiten gebruiken](transform-data-using-machine-learning.md) voor meer informatie over deze machine learning activiteiten. 
+Zie [Machine Learning-activiteiten gebruiken](transform-data-using-machine-learning.md) voor meer informatie over deze Machine Learning-activiteiten. 
 
-### <a name="stored-procedure-activity"></a>Opgeslagen procedure activiteit
-U kunt de SQL Server opgeslagen procedure-activiteit in een Data Factory-pijp lijn gebruiken voor het aanroepen van een opgeslagen procedure in een van de volgende gegevens archieven: Azure SQL Database, Azure SQL Data Warehouse, SQL Server data base in uw onderneming of een Azure-VM. Zie het artikel [opgeslagen procedure-activiteit](transform-data-using-stored-procedure.md) voor meer informatie.  
+### <a name="stored-procedure-activity"></a>Opgeslagen procedureactiviteit
+U de sql-server-activiteit opgeslagen procedure in een Data Factory-pijplijn gebruiken om een opgeslagen procedure aan te roepen in een van de volgende gegevensopslag: Azure SQL Database, Azure SQL Data Warehouse, SQL Server Database in uw onderneming of een Azure VM. Zie [Artikel Opgeslagen procedureactiviteit](transform-data-using-stored-procedure.md) voor meer informatie.  
 
 ### <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-activiteit
-Met Data Lake Analytics U-SQL-activiteit wordt een U-SQL-script op een Azure Data Lake Analytics cluster uitgevoerd. Zie [het artikel Data Analytics U-SQL-activiteit](transform-data-using-data-lake-analytics.md) voor meer informatie. 
+Data Lake Analytics U-SQL-activiteit voert een U-SQL-script uit op een Azure Data Lake Analytics-cluster. Zie [Data Analytics U-SQL-activiteitenartikel](transform-data-using-data-lake-analytics.md) voor meer informatie. 
 
-### <a name="databricks-notebook-activity"></a>Databricks-notebook activiteit
+### <a name="databricks-notebook-activity"></a>Activiteit Databricks-notitieblok
 
-Met de activiteit Azure Databricks notebook in een Data Factory pijp lijn wordt een Databricks-notebook in uw Azure Databricks-werk ruimte uitgevoerd. Azure Databricks is een beheerd platform voor het uitvoeren van Apache Spark. Zie [gegevens transformeren door een Databricks-notebook uit te voeren](transform-data-databricks-notebook.md).
+Met de Azure Databricks-notitieblokactiviteit in een datafabriekpijplijn wordt een Databricks-notitieblok uitgevoerd in uw Azure Databricks-werkruimte. Azure Databricks is een beheerd platform voor het uitvoeren van Apache Spark. Zie [Gegevens transformeren door een Databricks-notitieblok uit te voeren](transform-data-databricks-notebook.md).
 
-### <a name="databricks-jar-activity"></a>Databricks jar-activiteit
+### <a name="databricks-jar-activity"></a>Databricks Jar-activiteit
 
-De Azure Databricks jar-activiteit in een Data Factory pijp lijn voert een Spark jar in uw Azure Databricks-cluster uit. Azure Databricks is een beheerd platform voor het uitvoeren van Apache Spark. Zie [gegevens transformeren door een jar-activiteit uit te voeren in azure Databricks](transform-data-databricks-jar.md).
+Met de Azure Databricks Jar-activiteit in een datafabriekwordt een Spark Jar uitgevoerd in uw Azure Databricks-cluster. Azure Databricks is een beheerd platform voor het uitvoeren van Apache Spark. Zie [Gegevens transformeren door een Jar-activiteit uit te voeren in Azure Databricks](transform-data-databricks-jar.md).
 
-### <a name="databricks-python-activity"></a>Databricks python-activiteit
+### <a name="databricks-python-activity"></a>Databricks Python-activiteit
 
-Met de activiteit python Azure Databricks in een Data Factory-pijp lijn wordt een python-bestand in uw Azure Databricks-cluster uitgevoerd. Azure Databricks is een beheerd platform voor het uitvoeren van Apache Spark. Zie [gegevens transformeren door een python-activiteit uit te voeren in azure Databricks](transform-data-databricks-python.md).
+Met de Azure Databricks Python-activiteit in een datafabriekwordt een Python-bestand uitgevoerd in uw Azure Databricks-cluster. Azure Databricks is een beheerd platform voor het uitvoeren van Apache Spark. Zie [Gegevens transformeren door een Python-activiteit uit te voeren in Azure Databricks](transform-data-databricks-python.md).
 
 ### <a name="custom-activity"></a>Aangepaste activiteit
-Als u gegevens moet transformeren op een manier die niet wordt ondersteund door Data Factory, kunt u een aangepaste activiteit maken met uw eigen gegevens verwerkings logica en de activiteit in de pijp lijn gebruiken. U kunt de aangepaste .NET-activiteit zodanig configureren dat deze wordt uitgevoerd met behulp van een Azure Batch-service of een Azure HDInsight-cluster. Zie het artikel [aangepaste activiteiten gebruiken](transform-data-using-dotnet-custom-activity.md) voor meer informatie. 
+Als u gegevens moet transformeren op een manier die niet wordt ondersteund door Data Factory, u een aangepaste activiteit maken met uw eigen gegevensverwerkingslogica en de activiteit in de pijplijn gebruiken. U de aangepaste .NET-activiteit zo configureren dat deze wordt uitgevoerd met een Azure Batch-service of een Azure HDInsight-cluster. Zie [Artikel Aangepaste activiteiten gebruiken](transform-data-using-dotnet-custom-activity.md) voor meer informatie. 
 
 U kunt een aangepaste activiteit maken om R-scripts uit te voeren op uw HDInsight-cluster waarop R is geïnstalleerd. Zie [R-script uitvoeren met behulp van Azure Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample). 
 
-### <a name="compute-environments"></a>Reken omgevingen
-U maakt een gekoppelde service voor de compute-omgeving en gebruikt vervolgens de gekoppelde service wanneer u een trans formatie-activiteit definieert. Er zijn twee soorten reken omgevingen die door Data Factory worden ondersteund. 
+### <a name="compute-environments"></a>Compute-omgevingen
+U maakt een gekoppelde service voor de compute-omgeving en gebruikt vervolgens de gekoppelde service bij het definiëren van een transformatieactiviteit. Er zijn twee typen compute-omgevingen die worden ondersteund door Data Factory. 
 
-- **Op aanvraag**: in dit geval wordt de computer omgeving volledig beheerd door Data Factory. Het wordt automatisch gemaakt door de Data Factory-service voordat een taak wordt verzonden om gegevens te verwerken en te worden verwijderd wanneer de taak is voltooid. U kunt gedetailleerde instellingen van de compute-omgeving op aanvraag voor taak uitvoering, Cluster beheer en acties voor Boots traping configureren en beheren. 
-- **Neem uw eigen**werk: in dit geval kunt u uw eigen computer omgeving (bijvoorbeeld HDInsight-cluster) registreren als een gekoppelde service in Data Factory. De computer omgeving wordt beheerd door u en de Data Factory-service gebruikt deze om de activiteiten uit te voeren. 
+- **On-demand**: In dit geval wordt de computeromgeving volledig beheerd door Data Factory. Het wordt automatisch gemaakt door de Service Gegevensfabriek voordat een taak wordt ingediend om gegevens te verwerken en wordt verwijderd wanneer de taak is voltooid. U gedetailleerde instellingen configureren en beheren van de on-demand compute-omgeving voor taakuitvoering, clusterbeheer en bootstrapping-acties. 
+- **Bring Your Own**: In dit geval u uw eigen computeromgeving (bijvoorbeeld HDInsight cluster) registreren als gekoppelde service in Data Factory. De computeromgeving wordt door u beheerd en de Data Factory-service gebruikt deze om de activiteiten uit te voeren. 
 
-Zie het artikel [Compute linked Services](compute-linked-services.md) voor meer informatie over Compute-services die door Data Factory worden ondersteund. 
+Zie [artikel Compute Linked Services](compute-linked-services.md) voor meer informatie over compute services die worden ondersteund door Data Factory. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de volgende zelf studie voor een voor beeld van het gebruik van een trans formatie-activiteit: [zelf studie: gegevens transformeren met Spark](tutorial-transform-data-spark-powershell.md)
+Zie de volgende zelfstudie voor een voorbeeld van het gebruik van een transformatieactiviteit: [Zelfstudie: gegevens transformeren met Spark](tutorial-transform-data-spark-powershell.md)

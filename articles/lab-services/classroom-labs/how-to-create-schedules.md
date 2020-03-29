@@ -1,6 +1,6 @@
 ---
-title: Planning voor klassikale Labs maken in Azure Lab Services | Microsoft Docs
-description: Meer informatie over het maken van planningen voor klassikale Labs in Azure Lab Services zodat Vm's in de Labs op een opgegeven tijdstip worden gestart en afgesloten.
+title: Schema maken voor klaslokalen in Azure Lab Services | Microsoft Documenten
+description: Meer informatie over het maken van schema's voor klaslabs in Azure Lab Services, zodat VM's in de labs op een bepaald tijdstip worden gestart en afgesloten.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,64 +14,64 @@ ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
 ms.openlocfilehash: 4e3cf302437c3e4954ac977ac3f4ff6b2021a760
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72330593"
 ---
-# <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Planningen voor het maken en beheren van klassikale Labs in Azure Lab Services 
-Met planningen kunt u een leslokaal Lab zodanig configureren dat de virtuele machines in het lab automatisch worden gestart en op een opgegeven tijdstip worden afgesloten. U kunt een eenmalig schema of een terugkerende planning definiëren. De volgende procedures geven u stappen voor het maken en beheren van planningen voor een klas Lab: 
+# <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Schema's maken en beheren voor klaslabs in Azure Lab Services 
+Met schema's u een klaslokaallab zo configureren dat VM's in het lab automatisch op een bepaald tijdstip worden gestart en afgesloten. U een eenmalig schema of een terugkerend schema definiëren. De volgende procedures geven u stappen om schema's voor een klaslokaallab te maken en te beheren: 
 
 > [!IMPORTANT]
-> De geplande uitvoerings tijd van Vm's telt niet op het [quotum dat aan een gebruiker is toegewezen](how-to-configure-student-usage.md#set-quotas-for-users). Het quotum geldt voor de tijd buiten de plannings uren die een student op Vm's doorbrengt. 
+> De geplande looptijd van VM's telt niet mee voor het [quotum dat aan een gebruiker is toegewezen.](how-to-configure-student-usage.md#set-quotas-for-users) Het quotum is voor de tijd buiten de planningsuren die een student aan VM's besteedt. 
 
-## <a name="set-a-schedule-for-the-lab"></a>Een planning voor het lab instellen
-Maak een geplande gebeurtenis voor het Lab zodat Vm's in het lab automatisch worden gestart/gestopt op specifieke tijdstippen. Het gebruikers quotum dat u eerder hebt opgegeven, is de extra tijd die wordt toegewezen aan elke gebruiker buiten dit geplande tijdstip. 
+## <a name="set-a-schedule-for-the-lab"></a>Stel een schema voor het lab
+Maak een geplande gebeurtenis voor het lab, zodat VM's in het lab automatisch worden gestart/gestopt op specifieke tijdstippen. Het gebruikersquotum dat u eerder hebt opgegeven, is de extra tijd die buiten deze geplande tijd aan elke gebruiker is toegewezen. 
 
-1. Ga naar de pagina **schema's** en selecteer een **geplande gebeurtenis toevoegen** op de werk balk. 
+1. Ga naar de pagina **Schema's** en selecteer **Geplande gebeurtenis toevoegen** op de werkbalk. 
 
-    ![Knop schema toevoegen op de pagina planningen](../media/how-to-create-schedules/add-schedule-button.png)
-2. Bevestig dat de **standaard** is geselecteerd het **gebeurtenis type**. U selecteert **alleen starten** om alleen de begin tijd voor de virtuele machines op te geven. U selecteert **alleen stoppen** om alleen de eind tijd voor de virtuele machines op te geven. 
-7. Selecteer in de sectie **herhalen** het huidige schema. 
+    ![Knop Planning toevoegen op de pagina Schema's](../media/how-to-create-schedules/add-schedule-button.png)
+2. Controleer of **Standaard** is geselecteerd op **het gebeurtenistype**. U selecteert **Start alleen** om alleen de begintijd voor de VM's op te geven. U selecteert **Alleen stoppen** om alleen de stoptijd voor de VM's op te geven. 
+7. Selecteer **in** de sectie Herhalen het huidige schema. 
 
-    ![Knop schema toevoegen op de pagina planningen](../media/how-to-create-schedules/select-current-schedule.png)
-5. In het dialoog venster **herhalen** voert u de volgende stappen uit:
-    1. Bevestig dat **elke week** is ingesteld voor het veld **repeat** . 
-    3. De **begin datum**opgeven.
-    4. Geef de **begin tijd** op waarop u de vm's wilt starten.
-    5. Geef de **eind tijd** op waarop de vm's moeten worden afgesloten. 
-    6. Geef de **tijd zone** op voor de start-en stop tijden die u hebt opgegeven. 
-    2. Selecteer de dagen waarop u de planning wilt laten ingaan. In het volgende voor beeld is maandag-donderdag geselecteerd. 
+    ![Knop Planning toevoegen op de pagina Schema's](../media/how-to-create-schedules/select-current-schedule.png)
+5. Ga in het dialoogvenster **Herhalen** de volgende stappen uit:
+    1. Controleer of **elke week** is ingesteld voor het veld **Herhalen.** 
+    3. Geef de **begindatum op**.
+    4. Geef de **begintijd** op waarop u de VM's wilt starten.
+    5. Geef de **stoptijd** op waarop de VM's moeten worden afgesloten. 
+    6. Geef de **tijdzone** op voor de opgegeven start- en stoptijden. 
+    2. Selecteer de dagen waarop u het schema wilt laten werken. In het volgende voorbeeld wordt maandag-donderdag geselecteerd. 
     8. Selecteer **Opslaan**. 
 
-        ![Herhalings schema instellen](../media/how-to-create-schedules/set-repeat-schedule.png)
+        ![Herhaalschema instellen](../media/how-to-create-schedules/set-repeat-schedule.png)
 
-3. Voer nu op de pagina **geplande gebeurtenis toevoegen** voor **notities (optioneel)** een beschrijving of notities in voor de planning. 
-4. Selecteer op de pagina **geplande gebeurtenis toevoegen** de optie **Opslaan**. 
+3. Voer nu op de pagina **Geplande gebeurtenis toevoegen** voor Notities **(optioneel)** een beschrijving of notities voor het schema in. 
+4. Selecteer **Op** de pagina Geplande gebeurtenis toevoegen de optie **Opslaan**. 
 
-    ![Wekelijks schema](../media/how-to-create-schedules/add-schedule-page-weekly.png)
+    ![Weekschema](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
-## <a name="view-schedules-in-calendar"></a>Schema's in de agenda weer geven
-U ziet dat de geplande datums en tijden zijn gemarkeerd in de weer gave kalender, zoals wordt weer gegeven in de volgende afbeelding:
+## <a name="view-schedules-in-calendar"></a>Schema's weergeven in agenda
+U de geplande datums en tijden zien die in de agendaweergave zijn gemarkeerd, zoals weergegeven in de volgende afbeelding:
 
-![Schema's in de agenda weergave](../media/how-to-create-schedules/schedules-calendar.png)
+![Schema's in de agendaweergave](../media/how-to-create-schedules/schedules-calendar.png)
 
-Selecteer de knop **vandaag** in de rechter bovenhoek om over te scha kelen naar de huidige datum in de agenda. Selecteer **pijl-links** om over te scha kelen naar de vorige week en de **pijl-rechts** om over te scha kelen naar de volgende week in de agenda. 
+Selecteer de knop **Vandaag** in de rechterbovenhoek om over te schakelen naar de huidige datum in de agenda. Selecteer **pijl-links** om over te schakelen naar de vorige week en **pijl-rechts** om over te schakelen naar de volgende week in de agenda. 
 
-## <a name="edit-a-schedule"></a>Een planning bewerken
-Wanneer u een gemarkeerde planning in de agenda selecteert, ziet u knoppen om de planning te **bewerken** of te **verwijderen** . 
+## <a name="edit-a-schedule"></a>Een schema bewerken
+Wanneer u een gemarkeerd schema in de agenda selecteert, ziet u knoppen om de planning te **bewerken** of **te verwijderen.** 
 
-![Schema pagina bewerken](../media/how-to-create-schedules/schedule-edit-button.png)
+![Pagina Planning bewerken](../media/how-to-create-schedules/schedule-edit-button.png)
 
-Op de pagina **geplande gebeurtenis bewerken** kunt u het schema bijwerken en vervolgens **Opslaan**selecteren. 
+Op de pagina **Geplande gebeurtenis bewerken** u de planning bijwerken en Opslaan **selecteren.** 
 
 ## <a name="delete-a-schedule"></a>Een schema verwijderen
 
-1. Als u een planning wilt verwijderen, selecteert u een gemarkeerde planning in de agenda en selecteert u de knop met het prullenbak pictogram (verwijderen):
+1. Als u een planning wilt verwijderen, selecteert u een gemarkeerd schema in de agenda en selecteert u de knop prullenbakpictogram (verwijderen):
 
-    ![Knop verwijderen op de werk balk](../media/how-to-create-schedules/schedule-delete-button.png)
-2. Selecteer **Ja** in het dialoog venster **geplande gebeurtenis verwijderen** om de verwijdering te bevestigen. 
+    ![Knop Verwijderen op werkbalk](../media/how-to-create-schedules/schedule-delete-button.png)
+2. Selecteer in het dialoogvenster **Geplande gebeurtenis verwijderen** de optie **Ja** om de verwijdering te bevestigen. 
 
 
 
@@ -81,4 +81,4 @@ Zie de volgende artikelen:
 - [Labaccounts maken en beheren als beheerder](how-to-manage-lab-accounts.md)
 - [Labs maken en beheren als labeigenaar](how-to-manage-classroom-labs.md)
 - [Het gebruik van een lab configureren en beheren als labeigenaar](how-to-configure-student-usage.md)
-- [Als test gebruiker toegang krijgen tot klassikale Labs](how-to-use-classroom-lab.md)
+- [Als labgebruiker toegang tot klaslokalen](how-to-use-classroom-lab.md)

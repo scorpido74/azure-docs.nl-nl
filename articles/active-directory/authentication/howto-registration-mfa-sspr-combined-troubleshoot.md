@@ -1,6 +1,6 @@
 ---
-title: Problemen met gecombineerde registratie oplossen-Azure Active Directory
-description: Problemen met Azure AD Multi-Factor Authentication en self-service voor het opnieuw instellen van wacht woorden oplossen (preview)
+title: Problemen met gecombineerde registratie oplossen - Azure Active Directory
+description: Problemen met Azure AD Multi-Factor Authentication en selfservice wachtwoord reset gecombineerde registratie oplossen (preview)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,77 +12,77 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab7c38d23cb1f05e07488810640aeb791ded3d4a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74847385"
 ---
-# <a name="troubleshooting-combined-security-information-registration-preview"></a>Problemen met het registreren van gecombineerde beveiligings gegevens oplossen (preview-versie)
+# <a name="troubleshooting-combined-security-information-registration-preview"></a>Problemen met gecombineerde beveiligingsgegevensregistratie oplossen (voorbeeld)
 
-De informatie in dit artikel is bedoeld om beheerders te helpen bij het oplossen van problemen die worden gerapporteerd door gebruikers van de gecombineerde registratie-ervaring.
+De informatie in dit artikel is bedoeld om beheerders te begeleiden die problemen oplossen die door gebruikers van de gecombineerde registratie-ervaring zijn gemeld.
 
 |     |
 | --- |
-| Registratie van gecombineerde beveiligings gegevens voor Azure Multi-Factor Authentication en Azure Active Directory (Azure AD) self-service voor het opnieuw instellen van wacht woorden is een open bare preview-functie van Azure AD. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.|
+| Gecombineerde beveiligingsgegevensregistratie voor Azure Multi-Factor Authentication en Azure Active Directory (Azure AD) selfservice wachtwoord reset is een openbare preview-functie van Azure AD. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over voorvertoningen.|
 |     |
 
 ## <a name="audit-logs"></a>Auditlogboeken
 
-De gebeurtenissen die zijn vastgelegd voor gecombineerde registratie vindt u in de categorie verificatie methoden in de Azure AD-controle Logboeken.
+De gebeurtenissen die zijn aangemeld voor gecombineerde registratie, bevinden zich in de categorie Verificatiemethoden in de Azure AD-controlelogboeken.
 
-![Azure AD audit logboeken interface met registratie gebeurtenissen](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
+![Azure AD-controlelogboekeninterface met registratiegebeurtenissen](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
-De volgende tabel geeft een lijst van alle controle gebeurtenissen die worden gegenereerd door gecombineerde registratie:
+In de volgende tabel worden alle auditgebeurtenissen vermeld die door gecombineerde registratie worden gegenereerd:
 
 | Activiteit | Status | Reden | Beschrijving |
 | --- | --- | --- | --- |
-| Gebruiker heeft alle vereiste beveiligings gegevens geregistreerd | Geslaagd | Gebruiker heeft alle vereiste beveiligings gegevens geregistreerd. | Deze gebeurtenis treedt op wanneer de registratie van een gebruiker is voltooid.|
-| Gebruiker heeft alle vereiste beveiligings gegevens geregistreerd | Fout | De gebruiker heeft de registratie van beveiligings gegevens geannuleerd. | Deze gebeurtenis treedt op wanneer een gebruiker de registratie van de interrupt-modus annuleert.|
-| Geregistreerde beveiligings gegevens van gebruiker | Geslaagd | Geregistreerde *methode*van gebruiker. | Deze gebeurtenis treedt op wanneer een gebruiker een afzonderlijke methode registreert. De *methode* kan de verificatie-app, het telefoon nummer, het e-mail adres, de beveiligings vragen, het app-wacht woord, de alternatieve telefoon, enzovoort zijn.| 
-| Door de gebruiker gecontroleerde beveiligings gegevens | Geslaagd | De gebruiker heeft beveiligings gegevens gecontroleerd. | Deze gebeurtenis treedt op wanneer een gebruiker **ziet** dat deze goed wordt geselecteerd op de pagina beveiligings gegevens controleren.|
-| Door de gebruiker gecontroleerde beveiligings gegevens | Fout | De gebruiker heeft geen beveiligings gegevens kunnen controleren. | Deze gebeurtenis treedt op wanneer een gebruiker **ziet** dat deze goed wordt geselecteerd op de pagina beveiligings gegevens controleren, maar er is een fout opgetreden op de back-end.|
-| Door gebruiker verwijderde beveiligings gegevens | Geslaagd | De door de gebruiker verwijderde *methode*. | Deze gebeurtenis treedt op wanneer een gebruiker een afzonderlijke methode verwijdert. De *methode* kan de verificatie-app, het telefoon nummer, het e-mail adres, de beveiligings vragen, het app-wacht woord, de alternatieve telefoon, enzovoort zijn.|
-| Door gebruiker verwijderde beveiligings gegevens | Fout | De gebruiker kan de *methode*niet verwijderen. | Deze gebeurtenis treedt op wanneer een gebruiker een methode probeert te verwijderen, maar de poging om een of andere reden mislukt. De *methode* kan de verificatie-app, het telefoon nummer, het e-mail adres, de beveiligings vragen, het app-wacht woord, de alternatieve telefoon, enzovoort zijn.|
-| Door de gebruiker gewijzigde standaard beveiligings gegevens | Geslaagd | De gebruiker heeft de standaard beveiligings gegevens voor de *methode*gewijzigd. | Deze gebeurtenis treedt op wanneer een gebruiker de standaard methode wijzigt. De *methode* kan een verificatie van de verificator-app zijn, een code van mijn verificator-app of-token, roep + x xxxxxxxxxx, tekst een code naar + X xxxxxxxxx, enzovoort.|
-| Door de gebruiker gewijzigde standaard beveiligings gegevens | Fout | Gebruiker kan de standaard beveiligings gegevens voor de *methode*niet wijzigen. | Deze gebeurtenis treedt op wanneer een gebruiker de standaard methode probeert te wijzigen, maar de poging om een of andere reden mislukt. De *methode* kan een verificatie van de verificator-app zijn, een code van mijn verificator-app of-token, roep + x xxxxxxxxxx, tekst een code naar + X xxxxxxxxx, enzovoort.|
+| Gebruiker heeft alle vereiste beveiligingsgegevens geregistreerd | Geslaagd | De gebruiker registreerde alle vereiste beveiligingsgegevens. | Deze gebeurtenis treedt op wanneer een gebruiker de registratie heeft voltooid.|
+| Gebruiker heeft alle vereiste beveiligingsgegevens geregistreerd | Fout | Gebruiker heeft de registratie van beveiligingsgegevens geannuleerd. | Deze gebeurtenis vindt plaats wanneer een gebruiker de registratie annuleert vanuit de interrupt-modus.|
+| Door de gebruiker geregistreerde beveiligingsgegevens | Geslaagd | Door de gebruiker geregistreerde *methode*. | Deze gebeurtenis treedt op wanneer een gebruiker een afzonderlijke methode registreert. *Methode* kan authenticator app, telefoon, e-mail, beveiligingsvragen, app-wachtwoord, alternatieve telefoon, enzovoort.| 
+| Door de gebruiker beoordeelde beveiligingsgegevens | Geslaagd | De gebruiker heeft beveiligingsgegevens met succes gecontroleerd. | Deze gebeurtenis vindt plaats wanneer een gebruiker **Er goed uitziet** op de pagina beveiligingsgegevens.|
+| Door de gebruiker beoordeelde beveiligingsgegevens | Fout | De gebruiker kan de beveiligingsgegevens niet controleren. | Deze gebeurtenis vindt plaats wanneer een gebruiker **Er goed uitziet** op de pagina beveiligingsgegevens, maar er mislukt iets op de backend.|
+| Door de gebruiker verwijderde beveiligingsgegevens | Geslaagd | Verwijderde *methode*van gebruiker . | Deze gebeurtenis treedt op wanneer een gebruiker een afzonderlijke methode verwijdert. *Methode* kan authenticator app, telefoon, e-mail, beveiligingsvragen, app-wachtwoord, alternatieve telefoon, enzovoort.|
+| Door de gebruiker verwijderde beveiligingsgegevens | Fout | De gebruiker kan *de methode*niet verwijderen . | Deze gebeurtenis vindt plaats wanneer een gebruiker een methode probeert te verwijderen, maar de poging mislukt om een of andere reden. *Methode* kan authenticator app, telefoon, e-mail, beveiligingsvragen, app-wachtwoord, alternatieve telefoon, enzovoort.|
+| Standaardbeveiligingsgegevens van de gebruiker gewijzigd | Geslaagd | De gebruiker heeft de standaardbeveiligingsgegevens voor *methode*gewijzigd. | Deze gebeurtenis treedt op wanneer een gebruiker de standaardmethode wijzigt. *Methode* kan authenticator app melding, een code van mijn authenticator app of token, Call +X XXXXXXXXXX, Tekst een code naar +X XXXXXXXXX, en ga zo maar door.|
+| Standaardbeveiligingsgegevens van de gebruiker gewijzigd | Fout | De gebruiker kan de standaardbeveiligingsgegevens voor *methode*niet wijzigen. | Deze gebeurtenis treedt op wanneer een gebruiker probeert de standaardmethode te wijzigen, maar de poging mislukt om een of andere reden. *Methode* kan authenticator app melding, een code van mijn authenticator app of token, Call +X XXXXXXXXXX, Tekst een code naar +X XXXXXXXXX, en ga zo maar door.|
 
-## <a name="troubleshooting-interrupt-mode"></a>Problemen met de interrupt-modus oplossen
-
-| Symptoom | Stappen voor probleemoplossing |
-| --- | --- |
-| Ik zie niet de methoden die ik verwacht te zien. | 1. Controleer of de gebruiker een Azure AD-beheerdersrol heeft. Zo ja, Bekijk de verschillen in het SSPR-beheer beleid. <br> 2. Bepaal of de gebruiker wordt onderbroken vanwege Multi-Factor Authentication afdwinging of het afdwingen van SSPR registratie. Zie het [stroom diagram](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes) onder "gecombineerde registratie modi" om te bepalen welke methoden moeten worden weer gegeven. <br> 3. Bepaal hoe recent het Multi-Factor Authentication-of SSPR-beleid is gewijzigd. Als de wijziging recent is, kan het enige tijd duren voordat het bijgewerkte beleid is door gegeven.|
-
-## <a name="troubleshooting-manage-mode"></a>Problemen met de beheer modus oplossen
+## <a name="troubleshooting-interrupt-mode"></a>Interrupt-modus oplossen
 
 | Symptoom | Stappen voor probleemoplossing |
 | --- | --- |
-| Ik heb niet de optie om een bepaalde methode toe te voegen. | 1. Bepaal of de methode is ingeschakeld voor Multi-Factor Authentication of voor SSPR. <br> 2. als de methode is ingeschakeld, slaat u het beleid opnieuw op en wacht u 1-2 uur voordat u de test opnieuw uitvoert. <br> 3. als de methode is ingeschakeld, moet u ervoor zorgen dat de gebruiker niet al het maximum aantal van de methode heeft ingesteld dat ze mogen instellen.|
+| Ik zie niet de methoden die ik verwacht te zien. | 1. Controleer of de gebruiker een Azure AD-beheerrol heeft. Zo ja, bekijk de verschillen in het SSPR-beheerbeleid. <br> 2. Bepaal of de gebruiker wordt onderbroken vanwege de handhaving van de registratie van multi-factorauthenticatie of handhaving van de SSPR-registratie. Zie het [stroomdiagram](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes) onder "Gecombineerde registratiemodi" om te bepalen welke methoden moeten worden weergegeven. <br> 3. Bepaal hoe recent het Multi-Factor Authentication- of SSPR-beleid is gewijzigd. Als de wijziging recent is, kan het enige tijd duren voordat het bijgewerkte beleid wordt doorgegeven.|
+
+## <a name="troubleshooting-manage-mode"></a>Modus Probleemoplossing beheren
+
+| Symptoom | Stappen voor probleemoplossing |
+| --- | --- |
+| Ik heb niet de mogelijkheid om een bepaalde methode toe te voegen. | 1. Bepaal of de methode is ingeschakeld voor multifactorauthenticatie of voor SSPR. <br> 2. Als de methode is ingeschakeld, slaat u het beleid opnieuw op en wacht u 1-2 uur voordat u opnieuw test. <br> 3. Als de methode is ingeschakeld, moet u ervoor zorgen dat de gebruiker het maximumaantal van die methode dat hij mag instellen, nog niet heeft ingesteld.|
 
 ## <a name="disable-combined-registration"></a>Gecombineerde registratie uitschakelen
 
-Wanneer een gebruiker een telefoon nummer en/of mobiele app registreert in de nieuwe gecombineerde ervaring, stemt onze service op een set vlaggen (StrongAuthenticationMethods) voor deze methoden voor die gebruiker. Met deze functionaliteit kan de gebruiker Multi-Factor Authentication met deze methoden uitvoeren wanneer Multi-Factor Authentication is vereist.
+Wanneer een gebruiker een telefoonnummer en/of mobiele app registreert in de nieuwe gecombineerde ervaring, stempelt onze service een set vlaggen (StrongAuthenticationMethods) voor die methoden op die gebruiker. Met deze functionaliteit kan de gebruiker multifactorauthenticatie met deze methoden uitvoeren wanneer multi-factorauthenticatie vereist is.
 
-Als een beheerder de preview-versie inschakelt, kunnen gebruikers zich registreren via de nieuwe ervaring. vervolgens schakelt de beheerder de preview-versie uit, kunnen gebruikers ook onbekend worden geregistreerd voor Multi-Factor Authentication.
+Als een beheerder de preview inschakelt, registreren gebruikers zich via de nieuwe ervaring en schakelt de beheerder de preview uit, gebruikers kunnen ook onbewust worden geregistreerd voor Multi-Factor Authentication.
 
-Als een gebruiker die de gecombineerde registratie heeft voltooid, naar de huidige registratie pagina van de self-service voor wachtwoord herstel (SSPR) op [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup), wordt de gebruiker gevraagd om multi-factor Authentication uit te voeren voordat deze toegang tot de pagina hebben. Deze stap wordt verwacht van een technisch standpunt, maar is nieuw voor gebruikers die eerder zijn geregistreerd voor SSPR. Hoewel deze extra stap de beveiligings postuur van de gebruiker verbetert door een ander beveiligings niveau te bieden, kunnen beheerders mogelijk hun gebruikers terugdraaien zodat ze niet meer Multi-Factor Authentication kunnen uitvoeren.  
+Als een gebruiker die de gecombineerde registratie heeft voltooid, naar de huidige [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)zelfbedieningspagina voor het opnieuw instellen van wachtwoorden (SSPR) gaat, wordt de gebruiker gevraagd om multifactorverificatie uit te voeren voordat hij toegang heeft tot die pagina. Deze stap wordt verwacht vanuit een technisch oogpunt, maar het is nieuw voor gebruikers die eerder werden geregistreerd voor SSPR alleen. Hoewel deze extra stap de beveiligingshouding van de gebruiker verbetert door een ander beveiligingsniveau te bieden, willen beheerders hun gebruikers misschien terugdraaien, zodat ze geen multifactorauthenticatie meer kunnen uitvoeren.  
 
 ### <a name="how-to-roll-back-users"></a>Gebruikers terugdraaien
 
-Als u als beheerder wilt de Multi-Factor Authentication-instellingen van een gebruiker opnieuw wilt instellen, kunt u het Power shell-script gebruiken dat in de volgende sectie wordt weer gegeven. Met het script wordt de eigenschap StrongAuthenticationMethods voor de mobiele app en/of het telefoon nummer van een gebruiker gewist. Als u dit script uitvoert voor uw gebruikers, moeten ze zich opnieuw registreren voor Multi-Factor Authentication als dat nodig is. U wordt aangeraden om terugdraaien te testen met een of twee gebruikers voordat u alle betrokken gebruikers terugkeert.
+Als u als beheerder de multifactorauthenticatie-instellingen van een gebruiker opnieuw wilt instellen, u het PowerShell-script in de volgende sectie gebruiken. Het script zal de eigenschap StrongAuthenticationMethods wissen voor de mobiele app en/of het telefoonnummer van een gebruiker. Als u dit script voor uw gebruikers uitvoert, moeten ze zich opnieuw registreren voor multi-factorauthenticatie als ze het nodig hebben. We raden u aan terugdraaien te testen met een of twee gebruikers voordat alle getroffen gebruikers worden teruggedraaid.
 
-De volgende stappen helpen u bij het terugdraaien van een gebruiker of een groep gebruikers.
+Met de volgende stappen u een gebruiker of groep gebruikers terugdraaien.
 
 #### <a name="prerequisites"></a>Vereisten
 
-1. Installeer de juiste Azure AD Power shell-modules. Voer in een Power shell-venster de volgende opdrachten uit om de modules te installeren:
+1. Installeer de juiste Azure AD PowerShell-modules. Voer in een PowerShell-venster de volgende opdrachten uit om de modules te installeren:
 
    ```powershell
    Install-Module -Name MSOnline
    Import-Module MSOnline
    ```
 
-1. Sla de lijst met betrokken gebruikers object-Id's op uw computer op als een tekst bestand met één ID per regel. Noteer de locatie van het bestand.
+1. Sla de lijst met aangedane gebruikersobject-id's op uw computer op als een tekstbestand met één ID per regel. Noteer de locatie van het bestand.
 1. Sla het volgende script op uw computer op en noteer de locatie van het script:
 
    ```powershell
@@ -146,20 +146,20 @@ De volgende stappen helpen u bij het terugdraaien van een gebruiker of een groep
 
 #### <a name="rollback"></a>Terugdraaien
 
-Voer in een Power shell-venster de volgende opdracht uit, waarbij u het script en de gebruikers bestands locaties opgeeft. Voer de referenties van de globale beheerder in wanneer u hierom wordt gevraagd. Het script voert het resultaat van elke bijwerk bewerking van de gebruiker uit.
+Voer in een PowerShell-venster de volgende opdracht uit, waarbij de locatie van het script en het gebruikersbestand wordt weergegeven. Voer globale beheerdersreferenties in wanneer daarom wordt gevraagd. Het script zal de uitkomst van elke bewerking van de gebruikersupdate uitvoeren.
 
 `<script location> -path <user file location>`
 
-### <a name="disable-the-preview-experience"></a>De preview-ervaring uitschakelen
+### <a name="disable-the-preview-experience"></a>De voorbeeldervaring uitschakelen
 
-Voer de volgende stappen uit om de preview-ervaring voor uw gebruikers uit te scha kelen:
+Voer de volgende stappen uit om de voorbeeldervaring voor uw gebruikers uit te schakelen:
 
-1. Meld u aan bij de Azure Portal als een gebruikers beheerder.
-2. Ga naar **Azure Active Directory** > **gebruikers instellingen** > **instellingen voor de preview-functies van het toegangs venster beheren**.
-3. Onder **gebruikers kunnen preview-functies gebruiken voor het registreren en beheren van beveiligings gegevens**, de selector instellen op **geen**en vervolgens **Opslaan**selecteren.
+1. Meld u aan bij de Azure-portal als gebruikersbeheerder.
+2. Ga naar Azure Active > **Directory-gebruikersinstellingen** > **Beheer instellingen voor previewfuncties voor toegangsdeelvensters**. **Azure Active Directory**
+3. Onder **Gebruikers kunnen voorbeeldfuncties gebruiken voor het registreren en beheren van beveiligingsgegevens,** de kiezer instellen op **Geen**en vervolgens **Opslaan selecteren**.
 
-Gebruikers worden niet langer gevraagd om zich te registreren met behulp van de preview-ervaring.
+Gebruikers wordt niet langer gevraagd zich te registreren met behulp van de preview-ervaring.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over de open bare preview van gecombineerde registratie voor Self-service voor wachtwoord herstel en Azure Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)
+* [Meer informatie over de openbare preview van gecombineerde registratie voor selfservicewachtwoordreset en Azure Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)

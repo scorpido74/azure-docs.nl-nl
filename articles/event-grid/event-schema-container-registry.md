@@ -1,6 +1,6 @@
 ---
-title: Azure Container Registry voor Event Grid-gebeurtenisschema
-description: Beschrijft de eigenschappen die beschikbaar zijn voor Container Registry-gebeurtenissen met Azure Event Grid
+title: Gebeurtenisregistergebeurtenisschema azure-gebeurtenisrastercontainer
+description: Beschrijft de eigenschappen die worden geleverd voor containerregistergebeurtenissen met Azure Event Grid
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,30 +9,30 @@ ms.topic: reference
 ms.date: 03/12/2019
 ms.author: spelluru
 ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60345461"
 ---
-# <a name="azure-event-grid-event-schema-for-container-registry"></a>Azure Event Grid-gebeurtenisschema voor Container Registry
+# <a name="azure-event-grid-event-schema-for-container-registry"></a>Azure Event Grid-gebeurtenisschema voor containerregister
 
-Dit artikel bevat de eigenschappen en het schema voor Container Registry-gebeurtenissen. Zie voor een inleiding tot gebeurtenisschema's, [Azure Event Grid-gebeurtenisschema](event-schema.md).
+In dit artikel worden de eigenschappen en het schema voor containerregistergebeurtenissen opgenomen.Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md)
 
-## <a name="available-event-types"></a>Typen van de gebeurtenis berichten beschikbaar
+## <a name="available-event-types"></a>Beschikbare gebeurtenistypen
 
-Azure Container Registry verzendt de volgende typen gebeurtenissen:
+Azure Container Registry zendt de volgende gebeurtenistypen uit:
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
-| Microsoft.ContainerRegistry.ImagePushed | Treedt op wanneer een installatiekopie wordt gepusht. |
-| Microsoft.ContainerRegistry.ImageDeleted | Treedt op wanneer een installatiekopie wordt gewist. |
-| Microsoft.ContainerRegistry.ChartPushed | Treedt op wanneer een Helm-grafiek wordt gepusht. |
-| Microsoft.ContainerRegistry.ChartDeleted | Treedt op wanneer een Helm-diagram wordt verwijderd. |
+| Microsoft.ContainerRegistry.ImagePushed | Verhoogd wanneer een afbeelding wordt geduwd. |
+| Microsoft.ContainerRegistry.ImageVerwijderd | Verhoogd wanneer een afbeelding wordt verwijderd. |
+| Microsoft.ContainerRegistry.ChartGeduwd | Verhoogd wanneer een Helm-kaart wordt geduwd. |
+| Microsoft.ContainerRegistry.ChartVerwijderd | Verhoogd wanneer een Helm-diagram wordt verwijderd. |
 
-## <a name="example-event"></a>Voorbeeld van de gebeurtenis
+## <a name="example-event"></a>Voorbeeldgebeurtenis
 
-Het volgende voorbeeld ziet u het schema van een installatiekopie van een gebeurtenis gepusht: 
+In het volgende voorbeeld wordt het schema van een afbeeldingsgebeurtenis weergegeven: 
 
 ```json
 [{
@@ -65,7 +65,7 @@ Het volgende voorbeeld ziet u het schema van een installatiekopie van een gebeur
 }]
 ```
 
-Het schema voor een afbeelding verwijderd gebeurtenis lijkt:
+Het schema voor een verwijderde gebeurtenis voor een afbeelding is vergelijkbaar:
 
 ```json
 [{
@@ -95,7 +95,7 @@ Het schema voor een afbeelding verwijderd gebeurtenis lijkt:
 }]
 ```
 
-Het schema voor een grafiek gepusht gebeurtenis is vergelijkbaar met het schema voor een afbeelding gepushte gebeurtenis, maar deze bevat geen een request-object:
+Het schema voor een grafiekgepushgebeurtenis is vergelijkbaar met het schema voor een gepushgebeurtenis met afbeelding, maar bevat geen aanvraagobject:
 
 ```json
 [{
@@ -123,7 +123,7 @@ Het schema voor een grafiek gepusht gebeurtenis is vergelijkbaar met het schema 
 }]
 ```
 
-Het schema voor een grafiek verwijderde gebeurtenis is vergelijkbaar met het schema voor een afbeelding verwijderde gebeurtenis, maar deze bevat geen een request-object:
+Het schema voor een verwijderde gebeurtenis in een grafiek is vergelijkbaar met het schema voor een verwijderde gebeurtenis met afbeeldingen, maar bevat geen aanvraagobject:
 
 ```json
 [{
@@ -151,55 +151,55 @@ Het schema voor een grafiek verwijderde gebeurtenis is vergelijkbaar met het sch
 }]
 ```
 
-## <a name="event-properties"></a>Eigenschappen van gebeurtenis
+## <a name="event-properties"></a>Gebeurtenis-eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| topic | string | Volledige resource-pad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid biedt deze waarde. |
-| subject | string | Uitgever gedefinieerde pad naar het onderwerp van de gebeurtenis. |
-| eventType | string | Een van de geregistreerde gebeurtenis-typen voor de bron van deze gebeurtenis. |
-| eventTime | string | Het moment waarop dat de gebeurtenis is gegenereerd, is afhankelijk van de UTC-tijd van de provider. |
-| id | string | De unieke id voor de gebeurtenis. |
-| data | object | Gebeurtenisgegevens voor BLOB-opslag. |
-| dataVersion | string | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
-| metadataVersion | string | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema van de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
+| onderwerp | tekenreeks | Volledig resourcepad naar de gebeurtenisbron. Dit veld is niet schrijfbaar. Event Grid biedt deze waarde. |
+| Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
+| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| eventTime | tekenreeks | De tijd dat de gebeurtenis wordt gegenereerd op basis van de UTC-tijd van de provider. |
+| id | tekenreeks | Unieke id voor de gebeurtenis. |
+| data | object | Gebeurtenisgegevens voor blobopslag. |
+| dataVersion | tekenreeks | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
+| metadataVersion | tekenreeks | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 
 Het gegevensobject heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| id | string | De gebeurtenis-ID. |
-| timestamp | string | De tijd waarop de gebeurtenis heeft plaatsgevonden. |
-| action | string | De actie die de opgegeven gebeurtenis omvat. |
-| target | object | Het doel van de gebeurtenis. |
-| request | object | De aanvraag die de gebeurtenis is gegenereerd. |
+| id | tekenreeks | De gebeurtenis-id. |
+| tijdstempel | tekenreeks | Het tijdstip waarop de gebeurtenis heeft plaatsgevonden. |
+| action | tekenreeks | De actie die het opgegeven evenement omvat. |
+| Doel | object | Het doel van het evenement. |
+| Verzoek | object | Het verzoek dat de gebeurtenis heeft gegenereerd. |
 
 Het doelobject heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| mediaType | string | Het MIME-type van het object waarnaar wordt verwezen. |
-| size | integer | Het aantal bytes van de inhoud. Hetzelfde als het veld lengte. |
-| digest | string | De samenvatting van de inhoud, zoals gedefinieerd door het register V2 HTTP API-specificatie. |
-| length | integer | Het aantal bytes van de inhoud. Hetzelfde als het veld grootte. |
-| repository | string | De naam van de opslagplaats. |
-| tag | string | De naam van de tag. |
-| name | string | De naam van de grafiek. |
-| version | string | De versie van de grafiek. |
+| mediaType | tekenreeks | Het MIME-type van het object waarnaar wordt verwezen. |
+| grootte | geheel getal | Het aantal bytes van de inhoud. Hetzelfde als het veld Lengte. |
+| digest | tekenreeks | De samenvatting van de inhoud, zoals gedefinieerd in de Registry V2 HTTP API Specification. |
+| lengte | geheel getal | Het aantal bytes van de inhoud. Hetzelfde als het veld Grootte. |
+| Repository | tekenreeks | De naam van de opslagplaats. |
+| tag | tekenreeks | De naam van het label. |
+| name | tekenreeks | De naam van de grafiek. |
+| versie | tekenreeks | De grafiekversie. |
 
-Het request-object heeft de volgende eigenschappen:
+Het aanvraagobject heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| id | string | De ID van de aanvraag die de gebeurtenis heeft gestart. |
-| addr | string | Het IP of hostnaam en mogelijk poort van de clientverbinding die de gebeurtenis heeft gestart. Deze waarde is de RemoteAddr van de standaard-http-aanvraag. |
-| host | string | De extern toegankelijke hostnaam van de registry-exemplaar, zoals opgegeven door de http host-header op binnenkomende aanvragen. |
-| method | string | De aanvraagmethode waarmee de gebeurtenis is gegenereerd. |
-| useragent | string | De gebruiker agent-kop van de aanvraag. |
+| id | tekenreeks | De id van het verzoek dat de gebeurtenis heeft geïnitieerd. |
+| Addr | tekenreeks | De IP- of hostnaam en mogelijk de poort van de clientverbinding die de gebeurtenis heeft geïnitieerd. Deze waarde is de RemoteAddr van de standaard http-aanvraag. |
+| host | tekenreeks | De extern toegankelijke hostnaam van de registerinstantie, zoals opgegeven door de http-hostheader bij binnenkomende aanvragen. |
+| method | tekenreeks | De aanvraagmethode die de gebeurtenis heeft gegenereerd. |
+| Useragent | tekenreeks | De header van de gebruikersagent van de aanvraag. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor een inleiding tot Azure Event Grid, [wat is Event Grid?](overview.md)
-* Zie voor meer informatie over het maken van een Azure Event Grid-abonnement [Event Grid-abonnementsschema](subscription-creation-schema.md).
+* Zie [Wat is gebeurtenisraster voor](overview.md) een inleiding tot Azure Event Grid?
+* Zie [Abonnement op gebeurtenisrastervoor](subscription-creation-schema.md)meer informatie over het maken van een Azure Event Grid-abonnement .

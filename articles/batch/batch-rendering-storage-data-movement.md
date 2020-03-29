@@ -1,6 +1,6 @@
 ---
-title: Opslag en gegevens verplaatsing voor rendering-Azure Batch
-description: Meer informatie over de verschillende opties voor opslag en gegevens verplaatsing voor het weer geven van de workloads van assets en uitvoer bestanden.
+title: Opslag- en gegevensverkeer voor rendering - Azure Batch
+description: Meer informatie over de verschillende opties voor opslag- en gegevensverplaatsingvoor het renderen van asset- en uitvoerbestandsworkloads.
 services: batch
 ms.service: batch
 author: mscurrell
@@ -8,92 +8,92 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1076fc152ddf2c3a2d4f2346262ca90215d68ddf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75390384"
 ---
-# <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Opties voor opslag en gegevens verplaatsing voor het weer geven van Asset-en uitvoer bestanden
+# <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Opties voor opslag- en gegevensverplaatsing voor het renderen van activa- en uitvoerbestanden
 
-Er zijn meerdere opties om de scène-en Asset-bestanden beschikbaar te maken voor de rendering-toepassingen op de groeps-Vm's:
+Er zijn meerdere opties om de scène- en assetbestanden beschikbaar te maken voor de renderingtoepassingen op de chatberichten van de groep:
 
-* [Azure Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction):
-  * Scène-en Asset-bestanden worden geüpload naar Blob-opslag vanuit een lokaal bestands systeem. Wanneer de toepassing wordt uitgevoerd door een taak, worden de vereiste bestanden gekopieerd van Blob Storage naar de VM, zodat deze toegankelijk zijn voor de rendering-toepassing. De uitvoer bestanden worden geschreven door de rendering-toepassing naar de VM-schijf en vervolgens gekopieerd naar de Blob-opslag.  De uitvoer bestanden kunnen, indien nodig, worden gedownload van de Blob-opslag naar een lokaal bestands systeem.
-  * Azure Blob-opslag is een eenvoudige en voordelige optie voor kleinere projecten.  Als alle asset-bestanden zijn vereist op elke pool-VM, moet het aantal en de grootte van de Asset-bestanden toenemen om ervoor te zorgen dat de bestands overdrachten zo efficiënt mogelijk zijn.  
-* Azure Storage als een bestands systeem met behulp van [blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux):
-  * Voor Linux-Vm's kan een opslag account worden weer gegeven en gebruikt als een bestands systeem wanneer het blobfuse Virtual File System-stuur programma wordt gebruikt.
-  * Deze optie heeft als voor deel dat het voordeliger is, omdat er geen Vm's vereist zijn voor het bestands systeem, plus blobfuse-caching op de Vm's voor komt herhaalde down loads van dezelfde bestanden voor meerdere taken en taken.  Het verplaatsen van gegevens is ook eenvoudig omdat de bestanden eenvoudigweg blobs en standaard-Api's en-hulpprogram ma's, zoals azcopy, kunnen worden gebruikt voor het kopiëren van bestanden tussen een on-premises bestands systeem en Azure Storage.
-* Bestands systeem of bestands share:
-  * Afhankelijk van de vereisten voor het besturings systeem en de prestaties/schaal van de virtuele machine, bevatten de opties [Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction), met behulp van een VM met gekoppelde schijven voor NFS, met behulp van meerdere vm's met gekoppelde schijven voor een gedistribueerd bestands systeem zoals glusterfs, of het gebruik van een aanbieding van derden.
-  * [Avere Systems](https://www.averesystems.com/) is nu onderdeel van micro soft en zal in de nabije toekomst oplossingen hebben die ideaal zijn voor grootschalige, hoogwaardige rendering.  Met de avere-oplossing kan een op Azure gebaseerde NFS of SMB-cache worden gemaakt die werkt in combi natie met Blob Storage of met on-premises NAS-apparaten.
-  * Met een bestands systeem kunnen bestanden rechtstreeks worden gelezen of geschreven naar het bestands systeem of kunnen worden gekopieerd tussen het bestands systeem en de Vm's van de groep.
-  * Met een gedeeld bestands systeem kan een groot aantal assets worden gedeeld tussen projecten en taken die kunnen worden gebruikt, met het weer geven van taken alleen toegang tot wat vereist is.
+* [Azure blob-opslag:](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)
+  * Scène- en assetbestanden worden geüpload naar blob-opslag vanuit een lokaal bestandssysteem. Wanneer de toepassing wordt uitgevoerd door een taak, worden de vereiste bestanden gekopieerd van blob-opslag naar de VM, zodat ze kunnen worden geopend door de rendering-toepassing. De uitvoerbestanden worden door de renderingtoepassing naar de VM-schijf geschreven en vervolgens gekopieerd naar blobopslag.  Indien nodig kunnen de uitvoerbestanden worden gedownload van blob-opslag naar een lokaal bestandssysteem.
+  * Azure blob-opslag is een eenvoudige en kosteneffectieve optie voor kleinere projecten.  Zoals alle asset bestanden nodig zijn op elke pool VM, dan zodra het aantal en de grootte van asset bestanden verhoogt zorg moet worden genomen om ervoor te zorgen dat de overdracht van bestanden zijn zo efficiënt mogelijk.  
+* Azure-opslag als bestandssysteem met [blobfuse:](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux)
+  * Voor Linux VM's kan een opslagaccount worden blootgesteld en gebruikt als een bestandssysteem wanneer het blobfuse-stuurprogramma voor virtuele bestandssystemen wordt gebruikt.
+  * Deze optie heeft het voordeel dat het zeer kosteneffectief is, omdat er geen VM's nodig zijn voor het bestandssysteem, plus blobfuse caching op de VM's vermijdt herhaalde downloads van dezelfde bestanden voor meerdere taken en taken.  Gegevensverplaatsing is ook eenvoudig omdat de bestanden gewoon blobs zijn en standaard API's en hulpprogramma's, zoals azcopy, kunnen worden gebruikt om bestand te kopiëren tussen een on-premises bestandssysteem en Azure-opslag.
+* Bestandssysteem of bestandsshare:
+  * Afhankelijk van vm-besturingssysteem en prestatie-/schaalvereisten, omvatten de opties [azure-bestanden](https://docs.microsoft.com/azure/storage/files/storage-files-introduction), het gebruik van een VM met gekoppelde schijven voor NFS, het gebruik van meerdere VM's met gekoppelde schijven voor een gedistribueerd bestandssysteem zoals GlusterFS, of het gebruik van een aanbod van derden.
+  * [Avere Systems](https://www.averesystems.com/) is nu onderdeel van Microsoft en zal in de nabije toekomst oplossingen hebben die ideaal zijn voor grootschalige, krachtige rendering.  Met de Avere-oplossing kan een NFS- of SMB-cache in Azure worden gemaakt die werkt in combinatie met blobopslag of met on-premises NAS-apparaten.
+  * Met een bestandssysteem kunnen bestanden rechtstreeks naar het bestandssysteem worden gelezen of geschreven of kunnen ze worden gekopieerd tussen bestandssysteem en de pool-VM's.
+  * Met een gedeeld bestandssysteem kan een groot aantal elementen die worden gedeeld tussen projecten en taken worden gebruikt, waarbij taken worden renderen die alleen toegang hebben tot wat nodig is.
 
-## <a name="using-azure-blob-storage"></a>Azure Blob-opslag gebruiken
+## <a name="using-azure-blob-storage"></a>Azure blob-opslag gebruiken
 
-Er moet een Blob Storage-account of een voor algemeen gebruik v2-opslag account worden gebruikt.  Deze twee typen opslag accounts kunnen worden geconfigureerd met aanzienlijk hogere limieten vergeleken met een v1-opslag account voor algemeen gebruik, zoals wordt beschreven in [dit blog bericht](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).  Als de hogere limieten zijn geconfigureerd, zijn er veel betere prestaties en schaal baarheid mogelijk, met name wanneer er veel pool-Vm's zijn die toegang hebben tot het opslag account.
+Er moet een blob-opslagaccount of een v2-opslagaccount voor algemene doeleinden worden gebruikt.  Deze twee opslagaccounttypen kunnen worden geconfigureerd met aanzienlijk hogere limieten in vergelijking met een v1-opslagaccount voor algemene doeleinden, zoals beschreven in [deze blogpost.](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)  Wanneer geconfigureerd, zullen de hogere limieten veel betere prestaties en schaalbaarheid toelaten, vooral wanneer er veel pool VM's zijn die toegang hebben tot het opslagaccount.
 
-### <a name="copying-files-between-client-and-blob-storage"></a>Bestanden kopiëren tussen de client-en Blob-opslag
+### <a name="copying-files-between-client-and-blob-storage"></a>Bestanden kopiëren tussen client- en blobopslag
 
-Om bestanden te kopiëren naar en van Azure Storage, kunnen diverse mechanismen worden gebruikt, waaronder de opslag-BLOB API, de [Azure Storage gegevens verplaatsings bibliotheek](https://github.com/Azure/azure-storage-net-data-movement), het azcopy-opdracht regel programma voor [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) of [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux), [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)en [Azure batch Explorer](https://azure.github.io/BatchExplorer/).
+Om bestanden van en naar Azure-opslag te kopiëren, kunnen verschillende mechanismen worden gebruikt, waaronder de storage blob API, de [Azure Storage Data Movement Library,](https://github.com/Azure/azure-storage-net-data-movement)het azcopy command line tool voor [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) of [Linux,](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)en Azure Batch [Explorer](https://azure.github.io/BatchExplorer/).
 
-Als u bijvoorbeeld azcopy gebruikt, kunnen alle assets in een map als volgt worden overgedragen:
+Met azcopy kunnen bijvoorbeeld alle elementen in een map als volgt worden overgedragen:
 
 
 `azcopy /source:. /dest:https://account.blob.core.windows.net/rendering/project /destsas:"?st=2018-03-30T16%3A26%3A00Z&se=2020-03-31T16%3A26%3A00Z&sp=rwdl&sv=2017-04-17&sr=c&sig=sig" /Y`
 
-Als u alleen gewijzigde bestanden wilt kopiëren, kan de para meter/XO worden gebruikt:
+Als u alleen gewijzigde bestanden wilt kopiëren, kan de parameter /XO worden gebruikt:
 
 `azcopy /source:. /dest:https://account.blob.core.windows.net/rendering/project /destsas:"?st=2018-03-30T16%3A26%3A00Z&se=2020-03-31T16%3A26%3A00Z&sp=rwdl&sv=2017-04-17&sr=c&sig=sig" /XO /Y`
 
-### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Bezig met kopiëren van invoer-Asset-bestanden van Blob-opslag naar batch-pool Vm's
+### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Invoerassetbestanden kopiëren van blobopslag naar VM's voor batchgroep
 
-Er zijn een aantal verschillende benaderingen voor het kopiëren van bestanden met de beste benadering die wordt bepaald door de grootte van de taak assets.
-De eenvoudigste benadering is het kopiëren van alle asset-bestanden naar de groeps-Vm's voor elke taak:
+Er zijn een paar verschillende benaderingen om bestanden te kopiëren met de beste aanpak bepaald door de grootte van de taak activa.
+De eenvoudigste aanpak is om alle assetbestanden te kopiëren naar de koppelingsvm's voor elke taak:
 
-* Wanneer er bestanden uniek zijn voor een taak, maar zijn vereist voor alle taken van een taak, kan een taak [voorbereidings taak](https://docs.microsoft.com/rest/api/batchservice/job/add#jobpreparationtask) worden opgegeven om alle bestanden te kopiëren.  De taak voor het voorbereiden van taken wordt eenmaal uitgevoerd wanneer de eerste taak taak wordt uitgevoerd op een virtuele machine, maar niet opnieuw wordt uitgevoerd voor de volgende taak taken.
-* Een taak [release taak](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask) moet worden opgegeven om de bestanden per taak te verwijderen nadat de taak is voltooid. Hierdoor wordt voor komen dat de VM-schijf gevuld wordt door alle taak Asset bestanden.
-* Als er meerdere taken zijn die gebruikmaken van dezelfde activa, met alleen incrementele wijzigingen in de activa voor elke taak, worden alle asset-bestanden nog steeds gekopieerd, zelfs als er slechts een subset is bijgewerkt.  Dit is inefficiënt wanneer er veel grote activa bestanden zijn.
+* Wanneer er bestanden zijn die uniek zijn voor een taak, maar die nodig zijn voor alle taken van een taak, kan een [taakvoorbereidingstaak](https://docs.microsoft.com/rest/api/batchservice/job/add#jobpreparationtask) worden opgegeven om alle bestanden te kopiëren.  De taakvoorbereidingstaak wordt eenmaal uitgevoerd wanneer de eerste taaktaak op een vm wordt uitgevoerd, maar niet opnieuw wordt uitgevoerd voor volgende taaktaken.
+* Er moet een taak voor [het vrijgeven](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask) van taken worden opgegeven om de bestanden per taak te verwijderen zodra de taak is voltooid; dit voorkomt dat de VM-schijf wordt gevuld door alle taakassetbestanden.
+* Wanneer er meerdere taken zijn met dezelfde elementen, met alleen incrementele wijzigingen in de assets voor elke taak, worden alle activabestanden nog steeds gekopieerd, zelfs als alleen een subset is bijgewerkt.  Dit zou inefficiënt zijn wanneer er veel grote asset bestanden.
 
-Als activa bestanden opnieuw worden gebruikt tussen taken, met alleen incrementele wijzigingen tussen taken, is een efficiëntere, maar iets andere manier om assets op te slaan in de gedeelde map op de VM en gewijzigde bestanden te synchroniseren.
+Wanneer assetbestanden worden hergebruikt tussen taken, met alleen incrementele wijzigingen tussen taken, is een efficiëntere, maar iets meer betrokken aanpak het opslaan van assets in de gedeelde map op de VM en het synchroniseren van gewijzigde bestanden.
 
-* De taak voor taak voorbereiding voert de kopie met behulp van azcopy met de para meter/XO naar de gedeelde map van de virtuele machine die is opgegeven door AZ_BATCH_NODE_SHARED_DIR omgevings variabele.  Hierdoor worden alleen gewijzigde bestanden naar elke VM gekopieerd.
-* Er moet rekening worden gehouden met de grootte van alle assets om ervoor te zorgen dat ze passen op het tijdelijke station van de groeps-Vm's.
+* De taakvoorbereidingstaak voert de kopie uit met azcopy met de parameter /XO naar de gedeelde VM-map die is opgegeven door AZ_BATCH_NODE_SHARED_DIR omgevingsvariabele.  Hiermee worden alleen gewijzigde bestanden naar elke vm gekopieerd.
+* Er zal moeten worden nagedacht over de grootte van alle activa om ervoor te zorgen dat ze passen op de tijdelijke schijf van het zwembad VM's.
 
-Azure Batch heeft ingebouwde ondersteuning voor het kopiëren van bestanden tussen een opslag account en de virtuele machines van de batch-pool.  Taak [bron bestanden](https://docs.microsoft.com/rest/api/batchservice/job/add#resourcefile) kopiëren bestanden van de opslag naar de pool-vm's en kunnen worden opgegeven voor de taak voorbereidings taken.  Helaas, wanneer er honderden bestanden zijn, is het mogelijk om een limiet te bereiken en kunnen er taken mislukken.  Wanneer er een groot aantal assets is, wordt het aanbevolen om de azcopy-opdracht regel te gebruiken in de taak voorbereidings taken, die joker tekens kunnen gebruiken en geen limiet heeft.
+Azure Batch heeft ingebouwde ondersteuning voor het kopiëren van bestanden tussen een opslagaccount en batchgroepVM's.  [Taakbronbestanden](https://docs.microsoft.com/rest/api/batchservice/job/add#resourcefile) kopiëren bestanden van opslag naar vm's bij het bundelen en kunnen worden opgegeven voor de taakvoorbereidingstaak.  Helaas, wanneer er honderden bestanden is het mogelijk om een limiet en taken te mislukken hit.  Wanneer er grote aantallen activa zijn, wordt aanbevolen om de opdrachtregel azcopy te gebruiken in de taakvoorbereidingstaak, die jokertekens kan gebruiken en geen limiet heeft.
 
-### <a name="copying-output-files-to-blob-storage-from-batch-pool-vms"></a>Uitvoer bestanden naar Blob-opslag kopiëren vanuit de virtuele machines van de batch-pool
+### <a name="copying-output-files-to-blob-storage-from-batch-pool-vms"></a>Uitvoerbestanden kopiëren naar blobopslag vanuit VM's van batchgroep
 
-[Uitvoer bestanden](https://docs.microsoft.com/rest/api/batchservice/task/add#outputfile) kunnen worden gebruikt voor het kopiëren van bestanden van een pool-VM naar opslag.  Een of meer bestanden kunnen worden gekopieerd van de virtuele machine naar een opgegeven opslag account zodra de taak is voltooid.  De weer gegeven uitvoer moet worden gekopieerd, maar het kan ook wenselijk zijn om logboek bestanden op te slaan.
+[Uitvoerbestanden](https://docs.microsoft.com/rest/api/batchservice/task/add#outputfile) kunnen worden gebruikt voor kopieerbestanden van een pool-vm naar opslag.  Een of meer bestanden kunnen worden gekopieerd van de VM naar een opgegeven opslagaccount zodra de taak is voltooid.  De gerenderde uitvoer moet worden gekopieerd, maar het kan ook wenselijk zijn om logbestanden op te slaan.
 
-## <a name="using-a-blobfuse-virtual-file-system-for-linux-vm-pools"></a>Een virtueel bestands systeem voor blobfuse gebruiken voor Linux-VM-Pools
+## <a name="using-a-blobfuse-virtual-file-system-for-linux-vm-pools"></a>Een blobfuse virtueel bestandssysteem gebruiken voor Linux VM-groepen
 
-Blobfuse is een virtueel bestandssysteem stuur programma voor Azure Blob Storage, waarmee u bestanden kunt openen die zijn opgeslagen als blobs in een opslag account via het Linux-bestands systeem.
+Blobfuse is een stuurprogramma voor virtueel bestandssysteem voor Azure Blob Storage, waarmee u via het Linux-bestandssysteem toegang hebt tot bestanden die als blobs in een opslagaccount zijn opgeslagen.
 
-Groeps knooppunten kunnen het bestands systeem koppelen wanneer het starten of koppelen kan plaatsvinden als onderdeel van een taak voorbereidings taak: een taak die alleen wordt uitgevoerd wanneer de eerste taak in een taak wordt uitgevoerd op een knoop punt.  Blobfuse kan worden geconfigureerd om gebruik te maken van een ramdisk en de lokale SSD voor het opslaan van bestanden in de cache, waardoor de prestaties aanzienlijk worden verbeterd als meerdere taken op een knoop punt toegang hebben tot bepaalde bestanden.
+Poolknooppunten kunnen het bestandssysteem monteren wanneer deze is gestart of de houder kan gebeuren als onderdeel van een taakvoorbereidingstaak - een taak die alleen wordt uitgevoerd wanneer de eerste taak in een taak wordt uitgevoerd op een knooppunt.  Blobfuse kan worden geconfigureerd om zowel een ramdisk als de lokale VM's te gebruiken voor het incacheren van bestanden, wat de prestaties aanzienlijk verhoogt als meerdere taken op een knooppunt toegang krijgen tot een aantal van dezelfde bestanden.
 
-[Voorbeeld sjablonen zijn beschikbaar](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/vray/render-linux-with-blobfuse-mount) voor het uitvoeren van zelfstandige V-Ray-Renders met behulp van een blobfuse-bestands systeem en kunnen worden gebruikt als basis voor sjablonen voor andere toepassingen.
+[Voorbeeldsjablonen zijn beschikbaar](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/vray/render-linux-with-blobfuse-mount) voor het uitvoeren van zelfstandige V-Ray-renders met behulp van een blobfuse-bestandssysteem en kunnen worden gebruikt als basis voor sjablonen voor andere toepassingen.
 
 ### <a name="accessing-files"></a>Toegang tot bestanden
 
-Taak taken geven paden op voor invoer bestanden en uitvoer bestanden met behulp van het gekoppelde bestands systeem.
+Taaktaken geven paden op voor invoerbestanden en uitvoerbestanden met behulp van het gemonteerde bestandssysteem.
 
-### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Bezig met kopiëren van invoer-Asset-bestanden van Blob-opslag naar batch-pool Vm's
+### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Invoerassetbestanden kopiëren van blobopslag naar VM's voor batchgroep
 
-Als bestanden zijn eenvoudigweg blobs in Azure Storage, kunnen standaard-BLOB-Api's,-hulpprogram ma's en-UIs worden gebruikt om bestanden te kopiëren tussen een on-premises bestands systeem en Blob Storage. bijvoorbeeld azcopy, Storage Explorer, Batch Explorer, enzovoort.
+Aangezien bestanden gewoon blobs in Azure Storage zijn, kunnen standaard blob-API's, hulpprogramma's en UI's worden gebruikt om bestanden te kopiëren tussen een on-premises bestandssysteem en blobopslag; bijvoorbeeld azcopy, Storage Explorer, Batch Explorer, enz.
 
-## <a name="using-azure-files-with-windows-vms"></a>Azure Files met Windows-Vm's gebruiken
+## <a name="using-azure-files-with-windows-vms"></a>Azure-bestanden gebruiken met Windows VM's
 
-[Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het SMB-protocol.  Azure Files is gebaseerd op Azure Blob-opslag. het is [rendabel](https://azure.microsoft.com/pricing/details/storage/files/) en kan worden geconfigureerd met gegevens replicatie naar een andere regio, zodat deze wereld wijd redundant is.  [Schaal doelen](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets) moeten worden gecontroleerd om te bepalen of Azure files moet worden gebruikt op basis van de grootte van de prognose groep en het aantal Asset-bestanden.
+[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) biedt volledig beheerde bestandsshares in de cloud die toegankelijk zijn via het SMB-protocol.  Azure Files is gebaseerd op Azure blob-opslag; het is [kostenefficiënt](https://azure.microsoft.com/pricing/details/storage/files/) en kan worden geconfigureerd met gegevensreplicatie naar een andere regio die zo wereldwijd overbodig is.  [Schaaldoelen](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets) moeten worden gecontroleerd om te bepalen of Azure-bestanden moeten worden gebruikt, gezien de grootte van de prognosegroep en het aantal assetbestanden.
 
-Er is een [blog bericht](https://blogs.msdn.microsoft.com/windowsazurestorage/2014/05/26/persisting-connections-to-microsoft-azure-files/) en [documentatie](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) over het koppelen van een Azure-bestands share.
+Er is een [blogpost](https://blogs.msdn.microsoft.com/windowsazurestorage/2014/05/26/persisting-connections-to-microsoft-azure-files/) en [documentatie](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) over het monteren van een Azure File share.
 
-### <a name="mounting-an-azure-files-share"></a>Een Azure Files share koppelen
+### <a name="mounting-an-azure-files-share"></a>Een Azure-bestanden-share monteren
 
-Als u in batch wilt gebruiken, moet er een koppelings bewerking worden uitgevoerd telkens wanneer een taak wordt uitgevoerd, omdat het niet mogelijk is om de verbinding tussen taken te behouden.  De eenvoudigste manier om dit te doen is door cmdkey te gebruiken om referenties op te slaan met de begin taak in de pool configuratie en vervolgens de share vóór elke taak te koppelen.
+Om in Batch te kunnen worden gebruikt, moet een houderbewerking worden uitgevoerd telkens wanneer een taak wordt uitgevoerd, omdat het niet mogelijk is om de verbinding tussen taken voort te duren.  De eenvoudigste manier om dit te doen is cmdkey gebruiken om referenties te blijven gebruiken met behulp van de starttaak in de poolconfiguratie en vervolgens het aandeel voor elke taak te monteren.
 
-Voor beeld van het gebruik van cmdkey in een groeps sjabloon (escaped voor gebruik in het JSON-bestand): Houd er rekening mee dat bij het scheiden van de cmdkey-aanroep van de aanroep net use, de gebruikers context voor de begin taak gelijk moet zijn aan die waarmee de taken worden uitgevoerd:
+Voorbeeld gebruik van cmdkey in een poolsjabloon (ontsnapt voor gebruik in JSON-bestand) – merk op dat bij het scheiden van de cmdkey-aanroep de gebruikerscontext voor de starttaak dezelfde moet zijn als die welke wordt gebruikt voor het uitvoeren van de taken:
 
 ```
 "startTask": {
@@ -107,7 +107,7 @@ Voor beeld van het gebruik van cmdkey in een groeps sjabloon (escaped voor gebru
 }
 ```
 
-Voor beeld van opdracht regel taak taak:
+Opdrachtregel taaktaak:
 ```
 "commandLine":"net use S:
   \\\\storageaccountname.file.core.windows.net\\rendering &
@@ -120,18 +120,18 @@ Voor beeld van opdracht regel taak taak:
 
 ### <a name="accessing-files"></a>Toegang tot bestanden
 
-Taak taken geven paden op voor invoer bestanden en uitvoer bestanden met behulp van het gekoppelde bestands systeem, hetzij met behulp van een toegewezen station of een UNC-pad.
+Taaktaken geven paden op voor invoerbestanden en uitvoerbestanden met behulp van het gemonteerde bestandssysteem, met behulp van een toegewezen station of een UNC-pad.
 
-### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Bezig met kopiëren van invoer-Asset-bestanden van Blob-opslag naar batch-pool Vm's
+### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Invoerassetbestanden kopiëren van blobopslag naar VM's voor batchgroep
 
-Azure Files worden ondersteund door alle belangrijkste Api's en hulpprogram ma's die Azure Storage ondersteuning hebben. bijvoorbeeld azcopy, Azure CLI, Storage Explorer, Azure PowerShell, Batch Explorer, enzovoort.
+Azure-bestanden worden ondersteund door alle belangrijke API's en hulpprogramma's die Azure Storage-ondersteuning hebben. bijvoorbeeld azcopy, Azure CLI, Storage Explorer, Azure PowerShell, Batch Explorer, enz.
 
-[Azure file sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) is beschikbaar voor het automatisch synchroniseren van bestanden tussen een on-premises bestands systeem en een Azure-bestands share.
+[Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) is beschikbaar om bestanden automatisch te synchroniseren tussen een on-premises bestandssysteem en een Azure File-share.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de gedetailleerde documentatie voor meer informatie over de opslag opties:
+Zie de uitgebreide documentatie voor meer informatie over de opslagopties:
 
-* [Azure Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)
+* [Azure blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)
 * [Blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux)
-* [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)
+* [Azure-bestanden](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)

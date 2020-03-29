@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60456608"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Opslagverkenner gebruiken met Azure File Storage
@@ -31,7 +31,7 @@ U moet het volgende doen om de stappen in dit artikel uit te voeren:
 
 - [Storage Explorer downloaden en installeren](https://www.storageexplorer.com/)
 
-- [Verbinding maken met een Azure storage-account of -service](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
+- [Verbinding maken met een Azure-opslagaccount of -service](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-file-share"></a>Een bestandsshare maken
 
@@ -203,7 +203,7 @@ De volgende stappen laten zien hoe u de bestanden (en mappen) in een bestandssha
 
         ![Bestanden uploaden](media/vs-azure-tools-storage-explorer-files/image18.png)
         
-        b. Selecteer in het dialoogvenster **Bestanden uploaden** de knop met de weglatingstekens ( **...** ) rechts van het tekstvak **Bestanden** om de bestanden te selecteren die u wilt uploaden.
+        b. Selecteer in het dialoogvenster **Bestanden uploaden** de knop met de weglatingstekens (**... **) rechts van het tekstvak **Bestanden** om de bestanden te selecteren die u wilt uploaden.
 
         ![Bestanden toevoegen](media/vs-azure-tools-storage-explorer-files/image19.png)
 
@@ -215,7 +215,7 @@ De volgende stappen laten zien hoe u de bestanden (en mappen) in een bestandssha
 
         ![Menu voor uploaden van map](media/vs-azure-tools-storage-explorer-files/image20.png)
 
-        b. Selecteer in het dialoogvenster **Map uploaden** de knop met de weglatingstekens ( **...** ) rechts van het tekstvak **Map** om de map te selecteren waarvan u de inhoud wilt uploaden.
+        b. Selecteer in het dialoogvenster **Map uploaden** de knop met de weglatingstekens (**... **) rechts van het tekstvak **Map** om de map te selecteren waarvan u de inhoud wilt uploaden.
 
         c. Geef desgewenst een doelmap op waarin de inhoud van de geselecteerde map moet worden geüpload. Als de doelmap niet bestaat, wordt deze gemaakt.
 

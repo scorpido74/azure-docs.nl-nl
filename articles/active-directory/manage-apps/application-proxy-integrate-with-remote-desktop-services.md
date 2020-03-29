@@ -1,6 +1,6 @@
 ---
-title: Publiceren van extern bureaublad met Azure AD-toepassingsproxy | Microsoft Docs
-description: Bevat informatie over de basisbeginselen van Azure AD Application Proxy connectors.
+title: Extern bureaublad publiceren met Azure AD-appproxy | Microsoft Documenten
+description: Dekt de basisprincipes van Azure AD Application Proxy-connectors.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,81 +17,81 @@ ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67108468"
 ---
-# <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Extern bureaublad met Azure AD Application Proxy publiceren
+# <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Extern bureaublad publiceren met Azure AD-toepassingsproxy
 
-Extern bureaublad-services en Azure AD-toepassingsproxy werken samen om de productiviteit van werknemers die verwijderd van het bedrijfsnetwerk bevinden zijn. 
+Remote Desktop Service en Azure AD Application Proxy werken samen om de productiviteit te verbeteren van werknemers die zich niet van het bedrijfsnetwerk bevinden. 
 
-De doelgroep voor dit artikel is:
-- Huidige Application Proxy-klanten die bieden meer toepassingen voor hun eindgebruikers willen door het publiceren van on-premises toepassingen via Extern bureaublad-Services.
-- Huidige extern bureaublad-Services-klanten die willen Verminder de kwetsbaarheid voor aanvallen van de implementatie met behulp van Azure AD-toepassingsproxy. In dit scenario biedt een beperkte set van verificatie in twee stappen en besturingselementen voor voorwaardelijke toegang tot van RDS.
+Het beoogde publiek voor dit artikel is:
+- Huidige application proxy-klanten die meer toepassingen aan hun eindgebruikers willen aanbieden door on-premises toepassingen te publiceren via Extern bureaublad-services.
+- Huidige klanten van Extern bureaublad-services die het aanvalsoppervlak van hun implementatie willen verminderen met Azure AD-toepassingsproxy. Dit scenario biedt een beperkte set controle- en voorwaardelijke toegangsbesturingselementen in twee stappen voor RDS.
 
-## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>Hoe Application Proxy past in de standaardimplementatie van RDS
+## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>Hoe Application Proxy past in de standaard RDS-implementatie
 
-Een standaardimplementatie van RDS bevat verschillende functieservices van extern bureaublad op Windows Server. Kijken naar de [extern bureaublad-Services architectuur](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture), er zijn meerdere implementatie-opties. In tegenstelling tot andere RDS-implementatie-opties, de [RDS-implementatie met Azure AD-toepassingsproxy](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) (weergegeven in het volgende diagram) is een permanente uitgaande verbinding van de server waarop de connectorservice wordt uitgevoerd. Andere implementaties laat open binnenkomende verbindingen via een load balancer.
+Een standaard RDS-implementatie omvat verschillende Extern bureaublad-functieservices die op Windows Server worden uitgevoerd. Als we kijken naar de [architectuur van Extern bureaublad-services,](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture)zijn er meerdere implementatieopties. In tegenstelling tot andere RDS-implementatieopties heeft de [RDS-implementatie met Azure AD Application Proxy](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) (weergegeven in het volgende diagram) een permanente uitgaande verbinding van de server waarop de connectorservice wordt uitgevoerd. Andere implementaties laten binnenkomende verbindingen openen via een load balancer.
 
-![Application Proxy bevindt zich tussen het openbare internet en de RDS-VM](./media/application-proxy-integrate-with-remote-desktop-services/rds-with-app-proxy.png)
+![Application Proxy zit tussen de RDS VM en het openbare internet](./media/application-proxy-integrate-with-remote-desktop-services/rds-with-app-proxy.png)
 
-In de implementatie van een extern bureaublad-services uitvoeren de RD-Webrol en de rol extern bureaublad-Gateway op machines-internetservices. Deze eindpunten worden weergegeven voor de volgende redenen:
-- RD Web biedt de gebruiker een openbaar eindpunt als u wilt aanmelden en de verschillende on-premises toepassingen en bureaubladen die toegang te krijgen tot weergeven. Bij het selecteren van een resource, wordt een RDP-verbinding gemaakt met behulp van de systeemeigen app op het besturingssysteem.
-- Extern bureaublad-Gateway wordt geleverd in de afbeelding als een gebruiker de RDP-verbinding wordt gestart. De RD-Gateway versleutelde RDP-verkeer via internet worden verwerkt en wordt deze omgezet in de on-premises server die de gebruiker verbinding met maakt. In dit scenario is het de RD-Gateway ontvangt verkeer afkomstig van de Azure AD-toepassingsproxy.
+In een RDS-implementatie worden de rd-webrol en de rd gateway-rol uitgevoerd op op internet gerichte machines. Deze eindpunten worden blootgesteld om de volgende redenen:
+- RD Web biedt de gebruiker een openbaar eindpunt om in te loggen en de verschillende on-premises toepassingen en desktops te bekijken waartoe hij toegang heeft. Bij het selecteren van een resource wordt een RDP-verbinding gemaakt met behulp van de native app op het besturingssysteem.
+- Rd Gateway komt in beeld zodra een gebruiker de RDP-verbinding start. De RD Gateway verwerkt versleuteld RDP-verkeer dat via internet komt en vertaalt dit naar de on-premises server waarmee de gebruiker verbinding maakt. In dit scenario is het verkeer dat de Extern bureaublad-gateway ontvangt afkomstig van de Azure AD Application Proxy.
 
 >[!TIP]
->Als u extern bureaublad-services voordat u dit nog niet hebt geïmplementeerd, of wilt u meer informatie voordat u begint, krijgt u informatie over het [naadloos implementeren extern bureaublad-services met Azure Resource Manager en Azure Marketplace](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure).
+>Als u RDS nog niet eerder hebt geïmplementeerd of meer informatie wilt voordat u begint, leest u hoe [u RDS naadloos implementeert met Azure Resource Manager en Azure Marketplace.](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)
 
 ## <a name="requirements"></a>Vereisten
 
-- Een client dan de webclient extern bureaublad gebruiken omdat de webclient biedt geen ondersteuning voor Application Proxy.
+- Gebruik een andere client dan de Extern bureaublad-webclient, omdat de webclient geen application proxy ondersteunt.
 
-- Eindpunten van de RD-Web- en de RD-Gateway moet zich op dezelfde computer, en met een algemene basis. RD-Web- en RD-Gateway worden gepubliceerd als een enkele aanvraag met de toepassingsproxy zodat u kunt een eenmalige aanmelding mogelijk tussen de twee toepassingen hebben.
+- Zowel de RD Web- als de RD Gateway-eindpunten moeten zich op dezelfde machine bevinden en met een gemeenschappelijke hoofdwortel. RD Web en RD Gateway worden gepubliceerd als één toepassing met Application Proxy, zodat u één aanmeldingservaring hebben tussen de twee toepassingen.
 
-- U hebt al [extern bureaublad-services geïmplementeerd](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure), en [toepassingsproxy hebt ingeschakeld](application-proxy-add-on-premises-application.md).
+- U had [RDS](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)al moeten hebben geïmplementeerd en [Application Proxy moeten inschakelen.](application-proxy-add-on-premises-application.md)
 
-- In dit scenario wordt ervan uitgegaan dat uw eindgebruikers gaan via Internet Explorer op Windows 7 of Windows 10-desktops die verbinding via de extern bureaublad-webpagina wordt weergegeven maken. Als u nodig hebt ter ondersteuning van andere besturingssystemen, raadpleegt u [ondersteuning voor andere clientconfiguraties](#support-for-other-client-configurations).
+- In dit scenario wordt ervan uitgegaan dat uw eindgebruikers via Internet Explorer gaan op Windows 7- of Windows 10-bureaubladen die verbinding maken via de RD-webpagina. Zie [Ondersteuning voor andere clientconfiguraties](#support-for-other-client-configurations)als u andere besturingssystemen moet ondersteunen.
 
-- Bij het publiceren van RD-Web, wordt het aanbevolen gebruik van dezelfde interne en externe FQDN-naam. Als de interne en externe FQDN's verschillen moet u Header vertaling aanvragen om te voorkomen dat de client ontvangt ongeldige koppelingen uitschakelen. 
+- Bij het publiceren van RD Web wordt aanbevolen om dezelfde interne en externe FQDN te gebruiken. Als de interne en externe FQDN's anders zijn, moet u De vertaling van de koptekst aanvragen uitschakelen om te voorkomen dat de client ongeldige koppelingen ontvangt. 
 
-- In Internet Explorer, schakelt u de extern bureaublad-services ActiveX-invoegtoepassing.
+- Schakel in Internet Explorer de RDS ActiveX-invoegtoepassing in.
 
-- Voor de stroom van de Azure AD-verificatie vooraf, gebruikers kunnen alleen verbinding maken met resources die zijn gepubliceerd naar ze op in de **RemoteApp- en bureaubladen** deelvenster. Gebruikers geen verbinding maken met een bureaublad met de **verbinding maken met een externe computer** deelvenster.
+- Voor de azure AD-pre-authenticatiestroom kunnen gebruikers alleen verbinding maken met resources die met hen zijn gepubliceerd in het deelvenster **RemoteApp en Desktops.** Gebruikers kunnen geen verbinding maken met een bureaublad via het **deelvenster Verbinding maken met een extern pc-deelvenster.**
 
-## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>Het gezamenlijke extern bureaublad-services en Application Proxy-scenario implementeren
+## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>Het gezamenlijke RDS- en Toepassingsproxyscenario implementeren
 
-Na het instellen van extern bureaublad-services en Azure AD-toepassingsproxy voor uw omgeving, volg de stappen voor het combineren van de twee oplossingen. Deze stappen helpen bij het publiceren van de twee eindpunten web gerichte-RDS (extern bureaublad-Web- en RD-Gateway) als toepassingen, en vervolgens routeren van verkeer op de extern bureaublad-services om te gaan via Application Proxy.
+Volg na het instellen van RDS- en Azure AD-toepassingsproxy voor uw omgeving de stappen om de twee oplossingen te combineren. Deze stappen doorlopen het publiceren van de twee webgerichte RDS-eindpunten (RD Web en RD Gateway) als toepassingen en leiden vervolgens verkeer op uw RDS om door Application Proxy te gaan.
 
-### <a name="publish-the-rd-host-endpoint"></a>Het eindpunt van de extern bureaublad-Sessiehost host publiceren
+### <a name="publish-the-rd-host-endpoint"></a>Het eindpunt van de Rd-host publiceren
 
-1. [Een nieuwe Application Proxy-toepassing publiceren](application-proxy-add-on-premises-application.md) met de volgende waarden:
-   - Interne URL: `https://\<rdhost\>.com/`, waarbij `\<rdhost\>` is de algemene basis met RD-Web- en RD-Gateway.
-   - Externe URL: Dit veld wordt automatisch ingevuld op basis van de naam van de toepassing, maar u kunt deze wijzigen. Uw gebruikers gaan naar deze URL wanneer ze toegang krijgen van RDS. tot
-   - Methode voor verificatie vooraf: Azure Active Directory
+1. [Publiceer een nieuwe toepassingstoepassing Application Proxy](application-proxy-add-on-premises-application.md) met de volgende waarden:
+   - Interne URL: `https://\<rdhost\>.com/` `\<rdhost\>` , waar is de algemene hoofdmap die Rd Web en Rd Gateway delen.
+   - Externe URL: Dit veld wordt automatisch ingevuld op basis van de naam van de toepassing, maar u deze wijzigen. Uw gebruikers gaan naar deze URL wanneer ze toegang krijgen tot RDS.
+   - Pre-verificatiemethode: Azure Active Directory
    - URL-headers vertalen: Nee
-2. Gebruikers toewijzen aan de gepubliceerde toepassing in de extern bureaublad. Zorg ervoor dat ze alle toegang tot extern bureaublad-services, te hebben.
-3. Laat de methode voor eenmalige aanmelding voor de toepassing als **Azure AD eenmalige aanmelding uitgeschakeld**. Uw gebruikers wordt gevraagd om te verifiëren eenmaal naar Azure AD en eenmaal op RD Web, maar hebben eenmalige aanmelding voor extern bureaublad-Gateway.
-4. Selecteer **Azure Active Directory**, en vervolgens **App-registraties**. Kies uw app in de lijst.
-5. Onder **beheren**, selecteer **Branding**.
-6. Update de **URL van startpagina** veld om te verwijzen naar uw RD-Web-eindpunt (zoals `https://\<rdhost\>.com/RDWeb`).
+2. Gebruikers toewijzen aan de gepubliceerde RD-toepassing. Zorg ervoor dat ze allemaal toegang hebben tot RDS, ook.
+3. Laat de enkele aanmeldingsmethode voor de toepassing als **Azure AD single sign-on disabled**. Uw gebruikers wordt gevraagd om één keer te verifiëren bij Azure AD en één keer naar RD Web, maar hebben eenmalige aanmelding bij Rd Gateway.
+4. Selecteer **Azure Active Directory**en vervolgens **App-registraties**. Kies uw app in de lijst.
+5. Selecteer **Onder Beheren**de optie **Branding**.
+6. Werk het **veld URL van** de startpagina bij `https://\<rdhost\>.com/RDWeb`om naar het RD-webeindpunt te wijzen (zoals ).
 
-### <a name="direct-rds-traffic-to-application-proxy"></a>Extern bureaublad-services verkeer naar toepassingsproxy
+### <a name="direct-rds-traffic-to-application-proxy"></a>Extern bureaublad-verkeer naar application proxy leiden
 
-Verbinding maken met de implementatie van extern bureaublad-services als beheerder en wijzig de naam van de RD-Gateway-server voor de implementatie. Deze configuratie zorgt ervoor dat de verbindingen via de Azure AD Application Proxy-service lopen.
+Maak verbinding met de RDS-implementatie als beheerder en wijzig de naam van de Extern bureaublad-gatewayserver voor de implementatie. Deze configuratie zorgt ervoor dat verbindingen via de Azure AD Application Proxy-service gaan.
 
-1. Verbinding maken met de extern bureaublad-Services-server met de RD Connection Broker-functie.
-2. Start **Serverbeheer**.
-3. Selecteer **extern bureaublad-Services** in het deelvenster aan de linkerkant.
+1. Maak verbinding met de RDS-server met de rol Extern bureaublad Connection Broker.
+2. **Serverbeheer starten**.
+3. Selecteer **Extern bureaublad-services** in het deelvenster aan de linkerkant.
 4. Selecteer **Overzicht**.
-5. Selecteer de vervolgkeuzelijst in de sectie overzicht van de implementatie en kies **implementatie-eigenschappen bewerken**.
-6. Wijzig in het tabblad Extern bureaublad-Gateway de **servernaam** veld naar de externe URL die u hebt ingesteld voor het eindpunt van de host Extern bureaublad in Application Proxy.
-7. Wijzig de **aanmelden methode** veld **wachtwoordverificatie**.
+5. Selecteer in de sectie Implementatieoverzicht het vervolgkeuzemenu en kies **Implementatie-eigenschappen bewerken**.
+6. Wijzig op het tabblad Extern bureaublad-gateway het veld **Servernaam** in de externe URL die u instelt voor het eindpunt van de Extern bureaublad-host in Application Proxy.
+7. Wijzig het veld **Aanmeldingsmethode** in **Wachtwoordverificatie**.
 
-   ![Scherm van de eigenschappen van implementatie van extern bureaublad-services](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
+   ![Scherm Implementatie-eigenschappen op RDS](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
-8. Voer deze opdracht uit voor elke verzameling. Vervang *\<yourcollectionname\>* en *\<proxyfrontendurl\>* door uw eigen waarden. Met deze opdracht kunt eenmalige aanmelding tussen RD-Web- en RD-Gateway en optimaliseert de prestaties:
+8. Voer deze opdracht uit voor elke verzameling. Vervang * \<uw\> collectienaam* en * \<\> proxyfrontendurl* door uw eigen informatie. Met deze opdracht u één aanmelding tussen Rd Web en Rd Gateway inschakelen en de prestaties optimaliseren:
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
@@ -102,40 +102,40 @@ Verbinding maken met de implementatie van extern bureaublad-services als beheerd
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
    >[!NOTE]
-   >De bovenstaande opdracht maakt gebruik van een backtick in ' ' nrequire '.
+   >De bovenstaande opdracht maakt gebruik van een backtick in "'nrequire".
 
-9. Als u wilt controleren of de wijziging van de aangepaste RDP-eigenschappen, evenals de inhoud van het RDP-bestand dat zal worden gedownload van RDWeb voor deze verzameling weergeven, moet u de volgende opdracht uitvoeren:
+9. Voer de volgende opdracht uit om de wijziging van de aangepaste RDP-eigenschappen te verifiëren en de inhoud van het RDP-bestand weer te geven die voor deze verzameling van RDWeb wordt gedownload:
     ```
     (get-wmiobject -Namespace root\cimv2\terminalservices -Class Win32_RDCentralPublishedRemoteDesktop).RDPFileContents
     ```
 
-Nu dat u extern bureaublad hebt geconfigureerd, heeft Azure AD Application Proxy overgenomen als onderdeel van de internetverbinding van RDS. U kunt de andere openbare internetgerichte eindpunten verwijderen op de RD-Web- en RD-Gateway-machines.
+Nu u Extern bureaublad hebt geconfigureerd, heeft Azure AD Application Proxy het overgenomen als het internetgerichte onderdeel van RDS. U de andere openbare internet-gerichte eindpunten op uw Extern bureaublad-web- en Extern bureaublad-gatewaymachines verwijderen.
 
-## <a name="test-the-scenario"></a>Testen van het scenario
+## <a name="test-the-scenario"></a>Het scenario testen
 
-Testen van het scenario met Internet Explorer op een Windows 7 of 10-computer.
+Test het scenario met Internet Explorer op een Windows 7- of 10-computer.
 
-1. Ga naar de externe URL die u instelt of vinden van uw toepassing in de [MyApps deelvenster](https://myapps.microsoft.com).
-2. U wordt gevraagd om te verifiëren bij Azure Active Directory. Gebruik een account dat u hebt toegewezen aan de toepassing.
-3. U wordt gevraagd om te verifiëren bij de RD-Web.
-4. Nadat de verificatie van uw extern bureaublad-services is geslaagd, kunt u het bureaublad of de toepassing die u wilt selecteren en aan de slag gaat.
+1. Ga naar de externe URL die u hebt ingesteld of zoek uw toepassing in het [deelvenster MyApps](https://myapps.microsoft.com).
+2. U wordt gevraagd te verifiëren bij Azure Active Directory. Gebruik een account dat u aan de toepassing hebt toegewezen.
+3. U wordt gevraagd zich te authenticeren naar Rd Web.
+4. Zodra uw RDS-verificatie is geslaagd, u het gewenste bureaublad of de gewenste toepassing selecteren en aan de slag gaan.
 
 ## <a name="support-for-other-client-configurations"></a>Ondersteuning voor andere clientconfiguraties
 
-De configuratie zoals beschreven in dit artikel is bedoeld voor gebruikers op Windows 7- of 10, met Internet Explorer, plus de extern bureaublad-services ActiveX-invoegtoepassing. Als u wilt echter, kunt u ondersteuning voor andere besturingssystemen of browsers. Het verschil is in de verificatiemethode die u gebruikt.
+De configuratie in dit artikel is voor gebruikers op Windows 7 of 10, met Internet Explorer plus de RDS ActiveX-invoegtoepassing. Als dat nodig is, u echter andere besturingssystemen of browsers ondersteunen. Het verschil zit hem in de verificatiemethode die u gebruikt.
 
-| Verificatiemethode | Ondersteunde client-configuratie |
+| Verificatiemethode | Ondersteunde clientconfiguratie |
 | --------------------- | ------------------------------ |
-| Pre-authenticatie    | Windows 7/10 met behulp van Internet Explorer + RDS ActiveX-invoegtoepassing |
-| Passthrough | Een ander besturingssysteem die ondersteuning biedt voor de Microsoft Extern bureaublad-toepassing |
+| Verificatie vooraf    | Windows 7/10 met Internet Explorer + RDS ActiveX-invoegtoepassing |
+| Passthrough | Elk ander besturingssysteem dat de Microsoft Remote Desktop-toepassing ondersteunt |
 
-De stroom voor pre-authenticatie biedt de voordelen van meer beveiliging dan de passthrough-stroom. Met vooraf-verificatie kunt u Azure AD-verificatie-functies, zoals eenmalige aanmelding voor voorwaardelijke toegang en verificatie in twee stappen verificatie voor uw on-premises resources. U ook voor zorgen dat alleen geverifieerd verkeer bereikt uw netwerk.
+De pre-authenticatiestroom biedt meer beveiligingsvoordelen dan de passthrough-stroom. Met pre-authenticatie u Azure AD-verificatiefuncties gebruiken, zoals single sign-on, Conditional Access en tweestapsverificatie voor uw on-premises resources. U zorgt er ook voor dat alleen geverifieerd verkeer uw netwerk bereikt.
 
-Voor het gebruik van passthrough-verificatie, moet u er slechts twee wijzigingen in de stappen in dit artikel zijn:
-1. In [publiceren van het eindpunt van de extern bureaublad-Sessiehost host](#publish-the-rd-host-endpoint) stap 1, stelt u de methode voor verificatie vooraf op **Passthrough**.
-2. In [Direct RDS-verkeer naar de Application Proxy](#direct-rds-traffic-to-application-proxy), slaat u stap 8 volledig.
+Om passthrough-verificatie te gebruiken, zijn er slechts twee wijzigingen in de stappen in dit artikel:
+1. Stel in Stap 1 [van de RD-hosteindestap](#publish-the-rd-host-endpoint) de methode Preauthentication in op **Passthrough**.
+2. Sla stap 8 volledig over in [Direct RDS-verkeer naar Application Proxy.](#direct-rds-traffic-to-application-proxy)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Externe toegang tot SharePoint met Azure AD-toepassingsproxy inschakelen](application-proxy-integrate-with-sharepoint-server.md)  
-[Beveiligingsoverwegingen voor toegang tot de apps op afstand met behulp van Azure AD-toepassingsproxy](application-proxy-security.md)
+[Externe toegang tot SharePoint inschakelen met Azure AD-toepassingsproxy](application-proxy-integrate-with-sharepoint-server.md)  
+[Beveiligingsoverwegingen voor toegang tot apps op afstand met Azure AD-toepassingsproxy](application-proxy-security.md)

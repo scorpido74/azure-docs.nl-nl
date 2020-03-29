@@ -1,6 +1,6 @@
 ---
-title: Onverwachte toestemmingsprompt bij het aanmelden bij een toepassing | Microsoft Docs
-description: Hoe u problemen kunt oplossen wanneer een gebruiker ziet een toestemmingsprompt voor een toepassing die u hebt geïntegreerd met Azure AD die u niet verwacht
+title: Onverwachte toestemmingsprompt bij het aanmelden bij een aanvraag | Microsoft Documenten
+description: Problemen oplossen wanneer een gebruiker een toestemmingsprompt ziet voor een toepassing die u hebt geïntegreerd met Azure AD die u niet had verwacht
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,38 +17,38 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 83d043ecef152f977437e21e2caec40d1c40ce0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65781155"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>Onverwachte toestemmingsprompt bij het aanmelden bij een toepassing
 
-Veel toepassingen die kunnen worden geïntegreerd met Azure Active Directory vereist machtigingen voor verschillende bronnen om uit te voeren. Wanneer deze resources ook worden geïntegreerd met Azure Active Directory, machtigingen voor toegang tot deze wordt aangevraagd met behulp van het toestemmingsframework Azure AD. 
+Veel toepassingen die zijn geïntegreerd met Azure Active Directory vereisen machtigingen voor verschillende bronnen om deze uit te voeren. Wanneer deze bronnen ook zijn geïntegreerd met Azure Active Directory, worden machtigingen voor toegang tot deze bronnen aangevraagd met behulp van het Azure AD-toestemmingskader. 
 
-Dit resulteert in een toestemming vragen wordt weergegeven de eerste keer dat een toepassing wordt gebruikt, dit is vaak een eenmalige bewerking. 
+Dit resulteert in een toestemmingprompt die wordt weergegeven wanneer een toepassing voor het eerst wordt gebruikt, wat vaak een eenmalige bewerking is. 
 
-## <a name="scenarios-in-which-users-see-consent-prompts"></a>Scenario's waarin gebruikers zien toestemming vragen
+## <a name="scenarios-in-which-users-see-consent-prompts"></a>Scenario's waarin gebruikers toestemmingsprompts zien
 
-Als u meer vragen kunnen worden verwacht in verschillende scenario's:
+Aanvullende aanwijzingen kunnen worden verwacht in verschillende scenario's:
 
-* De set machtigingen die vereist zijn door de toepassing is gewijzigd.
+* De set machtigingen die door de toepassing vereist zijn, is gewijzigd.
 
-* De gebruiker die oorspronkelijk ingestemd met de toepassing is niet een beheerder en nu de toepassing voor de eerste keer wordt gebruikt door de gebruiker van een andere (niet-beheerders).
+* De gebruiker die oorspronkelijk ingestemd met de toepassing was geen beheerder, en nu een andere (niet-admin) Gebruiker is met behulp van de toepassing voor de eerste keer.
 
-* De gebruiker die oorspronkelijk ingestemd met de toepassing is een beheerder, maar deze heeft geen toestemming gegeven namens de hele organisatie.
+* De gebruiker die oorspronkelijk instemde met de toepassing was een beheerder, maar stemde niet in namens de hele organisatie.
 
-* De toepassing gebruikmaakt van [incrementele en dynamische toestemming](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent) voor aanvullende machtigingen nadat deze is in eerste instantie toegestaan. Dit wordt vaak gebruikt als optionele functies van een extra toepassing machtigingen buiten degene die vereist zijn voor de functionaliteit van de basislijn vereist.
+* De toepassing gebruikt [incrementele en dynamische toestemming](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent) om aanvullende machtigingen aan te vragen nadat de toestemming in eerste instantie is verleend. Dit wordt vaak gebruikt wanneer optionele functies van een toepassing extra machtigingen vereisen die verder gaan dan die welke nodig zijn voor basislijnfunctionaliteit.
 
-* Toestemming is ingetrokken na in eerste instantie wordt verleend.
+* De toestemming werd ingetrokken nadat deze in eerste instantie was verleend.
 
-* De toepassing om te vereisen een toestemmingsprompt telkens wanneer deze wordt gebruikt door de ontwikkelaar is geconfigureerd (Opmerking: dit is niet aanbevolen).
+* De ontwikkelaar heeft de toepassing geconfigureerd om elke keer dat deze wordt gebruikt een toestemmingsprompt te vereisen (let op: dit is geen best practice).
 
 ## <a name="next-steps"></a>Volgende stappen
 
--   [Apps, machtigingen en toestemming in Azure Active Directory (v1.0 eindpunt)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
+-   [Apps, machtigingen en toestemming in Azure Active Directory (v1.0-eindpunt)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
 
--   [Bereiken, machtigingen en toestemming in Azure Active Directory (v2.0-eindpunt)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
+-   [Scopes, machtigingen en toestemming in de Azure Active Directory (v2.0-eindpunt)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
 
 

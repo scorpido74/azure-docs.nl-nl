@@ -1,6 +1,6 @@
 ---
-title: FQDN maken voor een virtuele Linux-machine in de Azure Portal
-description: Meer informatie over het maken van een FQDN-naam (Fully Qualified Domain Name) voor een virtuele machine op basis van een resource manager in de Azure Portal.
+title: FQDN maken voor een Linux-vm in de Azure-portal
+description: Meer informatie over het maken van een volledig gekwalificeerde domeinnaam of FQDN voor een virtuele machine op basis van Resource Manager in de Azure-portal.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -16,25 +16,25 @@ ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 256e1e60ec8f50df2faea64f31e88d00370b33c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458718"
 ---
-# <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Een Fully Qualified Domain Name maken in de Azure Portal voor een Linux-VM
+# <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Een volledig gekwalificeerde domeinnaam maken in de Azure-portal voor een Linux-VM
 
-Wanneer u een virtuele machine (VM) maakt in de [Azure Portal](https://portal.azure.com), wordt er automatisch een open bare IP-resource voor de virtuele machine gemaakt. U gebruikt dit IP-adres om op afstand toegang te krijgen tot de virtuele machine. Hoewel de portal geen [Fully Qualified Domain name](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)of FQDN maakt, kunt u één keer toevoegen wanneer de virtuele machine is gemaakt. In dit artikel worden de stappen beschreven voor het maken van een DNS-naam of FQDN.
+Wanneer u een virtuele machine (VM) maakt in de [Azure-portal,](https://portal.azure.com)wordt automatisch een openbare IP-bron voor de virtuele machine gemaakt. U gebruikt dit IP-adres om op afstand toegang te krijgen tot de VM. Hoewel de portal geen [volledig gekwalificeerde domeinnaam](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)of FQDN maakt, u er een toevoegen zodra de VM is gemaakt. In dit artikel worden de stappen getoond om een DNS-naam of FQDN te maken.
 
 ## <a name="create-a-fqdn"></a>Een FQDN maken
-In dit artikel wordt ervan uitgegaan dat u al een virtuele machine hebt gemaakt. Als dat nodig is, kunt u [een virtuele machine maken in de portal](quick-create-portal.md) of [met de Azure cli](quick-create-cli.md). Volg deze stappen als uw virtuele machine actief is:
+In dit artikel wordt ervan uitgegaan dat u al een vm hebt gemaakt. Indien nodig u [een VM maken in de portal](quick-create-portal.md) of met de Azure [CLI.](quick-create-cli.md) Volg deze stappen zodra uw vm actief is:
 
 [!INCLUDE [virtual-machines-common-portal-create-fqdn](../../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-U kunt nu extern verbinding maken met de virtuele machine met behulp van deze DNS-naam, zoals bij `ssh azureuser@mydns.westus.cloudapp.azure.com`.
+U nu op afstand verbinding maken met `ssh azureuser@mydns.westus.cloudapp.azure.com`de VM met deze DNS-naam, zoals met.
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu uw VM een open bare IP-en DNS-naam heeft, kunt u algemene toepassings raamwerken of-services implementeren, zoals nginx, MongoDB, docker, enzovoort.
+Nu uw VM een openbare IP- en DNS-naam heeft, u gemeenschappelijke toepassingsframeworks of services implementeren, zoals nginx, MongoDB, Docker, enz.
 
-U kunt ook meer lezen over het [gebruik van Resource Manager](../../azure-resource-manager/management/overview.md) voor tips over het bouwen van uw Azure-implementaties.
+U ook meer lezen over [het gebruik van Resource Manager](../../azure-resource-manager/management/overview.md) voor tips over het bouwen van uw Azure-implementaties.
 

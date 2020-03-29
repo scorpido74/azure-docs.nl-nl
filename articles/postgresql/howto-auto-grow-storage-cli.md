@@ -1,41 +1,41 @@
 ---
-title: Opslag automatisch uitbreiden-Azure CLI-Azure Database for PostgreSQL-één server
-description: In dit artikel wordt beschreven hoe u de automatische groei van opslag kunt configureren met behulp van de Azure CLI in Azure Database for PostgreSQL-één server.
+title: Auto-grow storage - Azure CLI - Azure Database voor PostgreSQL - Single Server
+description: In dit artikel wordt beschreven hoe u opslagautomatisch configureren met behulp van de Azure CLI in Azure Database voor PostgreSQL - Single Server.
 author: ambhatna
 ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 8/7/2019
 ms.openlocfilehash: b0dc2fbb168d9325439ee18a227f71a3b88ef9c8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74767939"
 ---
-# <a name="auto-grow-azure-database-for-postgresql-storage---single-server-using-the-azure-cli"></a>Azure Database for PostgreSQL storage automatisch uitbreiden-één server met behulp van de Azure CLI
-In dit artikel wordt beschreven hoe u een Azure Database for PostgreSQL Server-opslag kunt configureren om te groeien zonder dat dit van invloed is op de werk belasting.
+# <a name="auto-grow-azure-database-for-postgresql-storage---single-server-using-the-azure-cli"></a>Azure-database automatisch kweken voor PostgreSQL-opslag - Eén server met azure-CLI
+In dit artikel wordt beschreven hoe u een Azure Database voor PostgreSQL-serveropslag configureren om te groeien zonder dat dit gevolgen heeft voor de werkbelasting.
 
-De server die [de opslag limiet bereikt](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#reaching-the-storage-limit), wordt ingesteld op alleen-lezen. Als automatisch verg Roten 100 van de opslag is ingeschakeld, wordt de ingerichte opslag grootte met 5 GB verhoogd zodra de beschik bare opslag ruimte groter is dan 1 GB of 10% van de ingerichte opslag ruimte. Voor servers met meer dan 100 GB ingerichte opslag wordt de ingerichte opslag grootte verhoogd met 5% wanneer de beschik bare opslag ruimte lager is dan 5% van de ingerichte opslag grootte. De maximale opslag limieten die [hier](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage) zijn opgegeven, zijn van toepassing.
+De server [die de opslaglimiet bereikt,](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#reaching-the-storage-limit)is ingesteld op alleen-lezen. Als opslagauto's dan worden ingeschakeld voor servers met minder dan 100 GB ingerichte opslag, wordt de ingerichte opslaggrootte met 5 GB verhoogd zodra de gratis opslag lager is dan 1 GB of 10% van de ingerichte opslag. Voor servers met meer dan 100 GB ingerichte opslag wordt de ingerichte opslaggrootte met 5% vergroot wanneer de vrije opslagruimte minder dan 5% van de ingerichte opslaggrootte bedraagt. De maximale opslaglimieten zoals [hier](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage) gespecificeerd zijn van toepassing.
 
 ## <a name="prerequisites"></a>Vereisten
-U hebt het volgende nodig om deze hand leiding te volt ooien:
-- Een [Azure database for postgresql server](quickstart-create-server-database-azure-cli.md)
+Om deze handleiding te voltooien, moet u het:
+- Een [Azure-database voor PostgreSQL-server](quickstart-create-server-database-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Voor deze hand leiding moet u Azure CLI versie 2,0 of hoger gebruiken. Als u de versie wilt bevestigen, voert u bij de opdracht prompt van Azure CLI `az --version`in. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren]( /cli/azure/install-azure-cli).
+> Deze handleiding vereist dat u Azure CLI-versie 2.0 of hoger gebruikt. Als u de versie wilt bevestigen, `az --version`voert u bij de opdrachtprompt azure CLI de opdrachtprompt in. Zie Azure CLI [installeren]( /cli/azure/install-azure-cli).
 
-## <a name="enable-postgresql-server-storage-auto-grow"></a>Automatisch verg Roten van PostgreSQL-Server opslag inschakelen
+## <a name="enable-postgresql-server-storage-auto-grow"></a>Automatische groei van PostgreSQL-serveropslag inschakelen
 
-Schakel de automatische groei van de server in op een bestaande server met de volgende opdracht:
+Schakel serveropslag automatisch uit op een bestaande server met de volgende opdracht:
 
 ```azurecli-interactive
 az postgres server update --name mydemoserver --resource-group myresourcegroup --auto-grow Enabled
 ```
 
-De automatische groei van de server inschakelen bij het maken van een nieuwe server met de volgende opdracht:
+Schakel serveropslag automatisch uit en maak een nieuwe server met de volgende opdracht:
 
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mydemoserver  --auto-grow Enabled --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 9.6
@@ -43,4 +43,4 @@ az postgres server create --resource-group myresourcegroup --name mydemoserver  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [het maken van waarschuwingen over metrische gegevens](howto-alert-on-metric.md).
+Meer informatie over [het maken van waarschuwingen over statistieken](howto-alert-on-metric.md).

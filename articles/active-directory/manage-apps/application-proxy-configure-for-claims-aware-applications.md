@@ -1,6 +1,6 @@
 ---
-title: Claimbewuste apps - Azure AD-toepassingsproxy | Microsoft Docs
-description: Het publiceren van on-premises ASP.NET-toepassingen die AD FS-claims voor veilige externe toegang door uw gebruikers accepteren.
+title: Claimsbewuste apps - Azure AD App Proxy | Microsoft Documenten
+description: On-premises ASP.NET-toepassingen publiceren die ADFS-claims accepteren voor veilige externe toegang door uw gebruikers.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,46 +16,46 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbc5c356ea5a542fdc12b11aff236c56b146b3d5
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68477243"
 ---
-# <a name="working-with-claims-aware-apps-in-application-proxy"></a>Werken met claim-compatibele toepassingen in toepassingsproxy
-[Claimbewuste apps](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) uitvoeren van een omleiding naar de Security Token Service (STS). De STS vraagt om de referenties van de gebruiker voor een token en vervolgens wordt de gebruiker omgeleid naar de toepassing. Er zijn een aantal manieren Application Proxy om te werken met deze omleidingen in te schakelen. Gebruik dit artikel om uw implementatie van claims-compatibele apps te configureren. 
+# <a name="working-with-claims-aware-apps-in-application-proxy"></a>Werken met claimsbewuste apps in Application Proxy
+[Claimsbewuste apps](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) voeren een omleiding uit naar de Security Token Service (STS). De STS vraagt referenties van de gebruiker in ruil voor een token en leidt de gebruiker vervolgens door naar de toepassing. Er zijn een paar manieren om Application Proxy in staat te stellen om met deze omleidingen te werken. Gebruik dit artikel om uw implementatie te configureren voor apps die op claims zijn gericht. 
 
 ## <a name="prerequisites"></a>Vereisten
-Zorg ervoor dat de STS die de claims-compatibele app wordt omgeleid naar uw on-premises netwerk beschikbaar is. U kunt de STS beschikbaar maken door het beschikbaar te maken via een proxy of externe verbindingen. 
+Zorg ervoor dat de STS waarnaar de claimbewuste app wordt omgeleid, beschikbaar is buiten uw on-premises netwerk. U de STS beschikbaar stellen door deze bloot te leggen via een proxy of door externe verbindingen toe te staan. 
 
 ## <a name="publish-your-application"></a>Uw toepassing publiceren
 
-1. Publiceer de toepassing op basis van de instructies die worden beschreven [publiceren van toepassingen met toepassingsproxy](application-proxy-add-on-premises-application.md).
-2. Navigeer naar de pagina voor toepassingen in de portal en selecteer **eenmalige aanmelding**.
-3. Als u ervoor hebt gekozen **Azure Active Directory** als uw **vooraf-verificatie methode**, selecteer **Azure AD eenmalige aanmelding uitgeschakeld** als uw **intern Methode voor netwerkverificatie**. Als u ervoor hebt gekozen **Passthrough** als uw **vooraf-verificatie methode**, moet u niet van belang.
+1. Publiceer uw toepassing volgens de instructies beschreven in [Publicatie toepassingen met Application Proxy](application-proxy-add-on-premises-application.md).
+2. Navigeer naar de toepassingspagina in de portal en selecteer **Eén aanmelding**.
+3. Als u **Azure Active Directory** als **verificatiemethode**hebt gekozen, selecteert u **Azure AD single sign-on disabled** als uw **interne verificatiemethode**. Als u **Passthrough** als **verificatiemethode**hebt gekozen, hoeft u niets te wijzigen.
 
 ## <a name="configure-adfs"></a>ADFS configureren
 
-U kunt AD FS configureren voor de claim-compatibele apps op twee manieren. De eerste is met behulp van aangepaste domeinen. De tweede is met WS-Federation. 
+U ADFS op twee manieren configureren voor claimbewuste apps. De eerste is met behulp van aangepaste domeinen. De tweede is met WS-Federatie. 
 
 ### <a name="option-1-custom-domains"></a>Optie 1: Aangepaste domeinen
 
-Als alle de interne URL's voor uw toepassingen volledig zijn gekwalificeerde domeinnamen (FQDN's), dan kunt u configureren [aangepaste domeinen](application-proxy-configure-custom-domain.md) voor uw toepassingen. Gebruik de aangepaste domeinen te maken van de externe URL's die hetzelfde als de interne URL's zijn. Als de externe URL's die overeenkomen met uw interne URL's, werken de STS-omleidingen of uw gebruikers zich on-premises of extern. 
+Als alle interne URL's voor uw toepassingen volledig gekwalificeerde domeinnamen (FQDN's) zijn, u [aangepaste domeinen](application-proxy-configure-custom-domain.md) voor uw toepassingen configureren. Gebruik de aangepaste domeinen om externe URL's te maken die hetzelfde zijn als de interne URL's. Wanneer uw externe URL's overeenkomen met uw interne URL's, werken de STS-omleidingen of uw gebruikers on-premises of op afstand zijn. 
 
-### <a name="option-2-ws-federation"></a>Optie 2: Webservices-federatie
+### <a name="option-2-ws-federation"></a>Optie 2: WS-Federatie
 
-1. Open AD FS-beheer.
-2. Ga naar **Relying Party-vertrouwensrelaties**, met de rechtermuisknop op de app die u met toepassingsproxy publiceren wilt en kies **eigenschappen**.  
+1. Open ADFS-beheer.
+2. Ga naar **Vertrouwensrelaties van relying**party, klik met de rechtermuisknop op de app die u publiceert met Application Proxy en kies **Eigenschappen**.  
 
-   ![Relying Party-vertrouwensrelaties met de rechtermuisknop op de appnaam van de - schermafbeelding](./media/application-proxy-configure-for-claims-aware-applications/appproxyrelyingpartytrust.png)  
+   ![Relying Party Trusts klik met de rechtermuisknop op de naam van de app - screenshot](./media/application-proxy-configure-for-claims-aware-applications/appproxyrelyingpartytrust.png)  
 
-3. Op de **eindpunten** tabblad onder **eindpunttype**, selecteer **WS-Federation**.
-4. Onder **vertrouwde URL**, voert u de URL die u hebt ingevoerd in de Application Proxy onder **externe URL** en klikt u op **OK**.  
+3. Selecteer op het tabblad **Eindpunten** onder **Doelpunttype**de optie **WS-Federation**.
+4. Voer **onder Vertrouwde URL**de URL in die u hebt ingevoerd in de toepassingsproxy onder Externe **URL** en klik op **OK**.  
 
-   ![Toevoegen van een eindpunt - stelt de waarde van de vertrouwde URL - schermafbeelding](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
+   ![Een eindpunt toevoegen - Vertrouwde URL-waarde instellen - schermafbeelding](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Schakel eenmalige aanmelding op](configure-single-sign-on-non-gallery-applications.md) voor toepassingen die niet claimbewuste
-* [Systeemeigen client-apps om te communiceren met de proxy-toepassingen inschakelen](application-proxy-configure-native-client-application.md)
+* [Eén aanmelding inschakelen](configure-single-sign-on-non-gallery-applications.md) voor toepassingen die niet op claims zijn gebaseerd
+* [Native client-apps inschakelen om te communiceren met proxytoepassingen](application-proxy-configure-native-client-application.md)
 
 

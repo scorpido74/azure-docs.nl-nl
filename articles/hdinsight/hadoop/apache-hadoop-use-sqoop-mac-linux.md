@@ -1,5 +1,5 @@
 ---
-title: Apache Sqoop met Apache Hadoop-Azure HDInsight
+title: Apache Sqoop met Apache Hadoop - Azure HDInsight
 description: Meer informatie over het gebruik van Apache Sqoop voor het importeren en exporteren tussen Apache Hadoop op HDInsight en een Azure SQL Database.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,35 +9,35 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
 ms.openlocfilehash: 21bc903349876a76576fb742840e9899f9d94bcd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74769384"
 ---
-# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop gebruiken voor het importeren en exporteren van gegevens tussen Apache Hadoop op HDInsight en SQL Database
+# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop gebruiken voor het importeren en exporteren van gegevens tussen Apache Hadoop in HDInsight en SQL Database
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Meer informatie over het gebruik van Apache Sqoop voor het importeren en exporteren van een Apache Hadoop cluster in azure HDInsight en Azure SQL Database of Microsoft SQL Server Data Base. De stappen in dit document gebruiken de `sqoop`-opdracht rechtstreeks vanuit het hoofd knooppunt van het Hadoop-cluster. U gebruikt SSH om verbinding te maken met het hoofd knooppunt en de opdrachten uit te voeren in dit document. Dit artikel is een voortzetting van het [gebruik van Apache Sqoop met Hadoop in HDInsight](./hdinsight-use-sqoop.md).
+Meer informatie over het gebruik van Apache Sqoop voor het importeren en exporteren tussen een Apache Hadoop-cluster in Azure HDInsight en Azure SQL Database of Microsoft SQL Server-database. De stappen in dit `sqoop` document gebruiken de opdracht rechtstreeks vanaf de headnode van het Hadoop-cluster. U gebruikt SSH om verbinding te maken met het hoofdknooppunt en voert de opdrachten in dit document uit. Dit artikel is een voortzetting van [Gebruik Apache Sqoop met Hadoop in HDInsight](./hdinsight-use-sqoop.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Volt ooien van de [instelling test omgeving](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) [voor het gebruik van Apache Sqoop met Hadoop in HDInsight](./hdinsight-use-sqoop.md).
+* Voltooiing van [de testomgeving instellen](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) van [Apache Sqoop gebruiken met Hadoop in HDInsight.](./hdinsight-use-sqoop.md)
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Vertrouwd met Sqoop. Zie [Sqoop User Guide (Engelstalig](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html)) voor meer informatie.
+* Vertrouwdheid met Sqoop. Zie [Sqoop-gebruikershandleiding](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html)voor meer informatie.
 
 ## <a name="set-up"></a>Instellen
 
-1. Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
+1. Gebruik [de ssh-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer de opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Stel variabelen in om gebruiks gemak te gebruiken. Vervang `PASSWORD`, `MYSQLSERVER`en `MYDATABASE` met de relevante waarden en voer de volgende opdrachten in:
+1. Stel variabelen in voor gebruiksgemak. Vervang `PASSWORD` `MYSQLSERVER`, `MYDATABASE` en met de relevante waarden en voer de onderstaande opdrachten in:
 
     ```bash
     export password='PASSWORD'
@@ -49,23 +49,23 @@ Meer informatie over het gebruik van Apache Sqoop voor het importeren en exporte
     export serverDbConnect="jdbc:sqlserver://$sqlserver.database.windows.net:1433;user=sqluser;password=$password;database=$database"
     ```
 
-## <a name="sqoop-export"></a>Sqoop exporteren
+## <a name="sqoop-export"></a>Sqoop export
 
 Van Hive naar SQL Server.
 
-1. Als u wilt controleren of Sqoop uw SQL Database kan zien, voert u de onderstaande opdracht in voor de open SSH-verbinding. Met deze opdracht wordt een lijst met data bases geretourneerd.
+1. Als u wilt controleren of Sqoop uw SQL-database kan zien, voert u de onderstaande opdracht in in uw geopende SSH-verbinding. Met deze opdracht wordt een lijst met databases geretourneerd.
 
     ```bash
     sqoop list-databases --connect $serverConnect
     ```
 
-1. Voer de volgende opdracht in om een lijst met tabellen voor de opgegeven Data Base weer te geven:
+1. Voer de volgende opdracht in om een lijst met tabellen voor de opgegeven database te bekijken:
 
     ```bash
     sqoop list-tables --connect $serverDbConnect
     ```
 
-1. Als u gegevens uit het Hive-`hivesampletable` tabel wilt exporteren naar de tabel `mobiledata` in SQL Database, voert u de onderstaande opdracht in voor de open SSH-verbinding:
+1. Als u gegevens `hivesampletable` uit de `mobiledata` tabel Hive wilt exporteren naar de tabel in SQL Database, voert u de onderstaande opdracht in in uw geopende SSH-verbinding:
 
     ```bash
     sqoop export --connect $serverDbConnect \
@@ -73,7 +73,7 @@ Van Hive naar SQL Server.
     --hcatalog-table hivesampletable
     ```
 
-1. Als u wilt controleren of de gegevens zijn geëxporteerd, gebruikt u de volgende query's van uw SSH-verbinding om de geëxporteerde gegevens weer te geven:
+1. Als u wilt controleren of gegevens zijn geëxporteerd, gebruikt u de volgende query's van uw SSH-verbinding om de geëxporteerde gegevens weer te geven:
 
     ```bash
     sqoop eval --connect $serverDbConnect \
@@ -86,9 +86,9 @@ Van Hive naar SQL Server.
 
 ## <a name="sqoop-import"></a>Sqoop importeren
 
-Van SQL Server naar Azure Storage.
+Van SQL Server naar Azure-opslag.
 
-1. Voer de onderstaande opdracht in uw open SSH-verbinding in om gegevens te importeren uit de `mobiledata` tabel in SQL Database, naar de map `wasbs:///tutorials/usesqoop/importeddata` op HDInsight. De velden in de gegevens worden gescheiden door een tab en de lijnen worden afgesloten met een nieuw regel teken.
+1. Voer de onderstaande opdracht in uw geopende `mobiledata` SSH-verbinding in `wasbs:///tutorials/usesqoop/importeddata` om gegevens uit de tabel in SQL Database te importeren in de map op HDInsight. De velden in de gegevens worden gescheiden door een tabteken en de regels worden beëindigd door een nieuwregelteken.
 
     ```bash
     sqoop import --connect $serverDbConnect \
@@ -98,7 +98,7 @@ Van SQL Server naar Azure Storage.
     --lines-terminated-by '\n' -m 1
     ```
 
-1. U kunt ook een Hive-tabel opgeven:
+1. U ook een Hive-tabel opgeven:
 
     ```bash
     sqoop import --connect $serverDbConnect \
@@ -111,21 +111,21 @@ Van SQL Server naar Azure Storage.
     --hive-import -m 1
     ```
 
-1. Zodra het importeren is voltooid, voert u de volgende opdracht in uw open SSH-verbinding in om de gegevens in de nieuwe map weer te geven:
+1. Zodra de import is voltooid, voert u de volgende opdracht in in uw geopende SSH-verbinding om de gegevens in de nieuwe map weer te geven:
 
     ```bash
     hadoop fs -tail /tutorials/usesqoop/importeddata/part-m-00000
     ```
 
-1. Gebruik [Beeline](./apache-hadoop-use-hive-beeline.md) om te controleren of de tabel in Hive is gemaakt.
+1. Gebruik [beeline](./apache-hadoop-use-hive-beeline.md) om te controleren of de tabel is gemaakt in Hive.
 
-    1. Connect
+    1. Verbinding maken
 
         ```bash
         beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
         ```
 
-    1. Voer elke query hieronder een voor een uit en controleer de uitvoer:
+    1. Voer elke query hieronder één voor één uit en bekijk de uitvoer:
 
         ```hql
         show tables;
@@ -134,30 +134,30 @@ Van SQL Server naar Azure Storage.
         SELECT * FROM mobiledata_imported2 LIMIT 10;
         ```
 
-    1. Sluit Beeline af met `!exit`.
+    1. Exit beeline `!exit`met .
 
 ## <a name="limitations"></a>Beperkingen
 
-* Bulk export-met HDInsight op basis van Linux, de Sqoop-connector die wordt gebruikt om gegevens te exporteren naar Microsoft SQL Server of Azure SQL Database biedt geen ondersteuning voor bulk toevoegingen.
+* Bulkexport - Met HDInsight op Basis van Linux biedt de Sqoop-connector die wordt gebruikt om gegevens te exporteren naar Microsoft SQL Server of Azure SQL Database geen bulkinserts.
 
-* Batching-met HDInsight op basis van Linux, wanneer u de `-batch` switch gebruikt bij het uitvoeren van inserts, worden met Sqoop meerdere toevoegingen gemaakt in plaats van de invoeg bewerkingen batch.
+* Batching - Met Linux-gebaseerde HDInsight maakt Sqoop bij het gebruik van de `-batch` schakelaar bij het uitvoeren van wisselplaten meerdere wisselplaten in plaats van het batchn van de insert-bewerkingen.
 
-## <a name="important-considerations"></a>Belang rijke overwegingen
+## <a name="important-considerations"></a>Belangrijke overwegingen
 
-* Zowel HDInsight als SQL Server moeten zich op dezelfde Azure Virtual Network.
+* Zowel HDInsight als SQL Server moeten zich op hetzelfde Azure Virtual Network bevinden.
 
-    Zie voor een voor beeld het [Connect HDInsight to your on-premises netwerk](./../connect-on-premises-network.md) document.
+    Zie bijvoorbeeld het [connect HDInsight naar uw on-premises netwerkdocument.](./../connect-on-premises-network.md)
 
-    Zie het document [Hdinsight uitbreiden met azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md) voor meer informatie over het gebruik van hdinsight met een Azure Virtual Network. Zie het document [Virtual Network Overview](../../virtual-network/virtual-networks-overview.md) voor meer informatie over Azure Virtual Network.
+    Zie het [document Extend HDInsight with Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md) voor meer informatie over het gebruik van HDInsight met een Azure Virtual Network. Zie het document Overzicht van het [virtuele netwerk](../../virtual-network/virtual-networks-overview.md) voor meer informatie over Azure Virtual Network.
 
-* SQL Server moet worden geconfigureerd om SQL-verificatie toe te staan. Zie het document [een verificatie modus kiezen](https://msdn.microsoft.com/ms144284.aspx) voor meer informatie.
+* SQL Server moet zijn geconfigureerd om SQL-verificatie toe te staan. Zie het document [Een verificatiemodus kiezen](https://msdn.microsoft.com/ms144284.aspx) voor meer informatie.
 
-* Mogelijk moet u SQL Server configureren om externe verbindingen te accepteren. Zie [problemen met het maken van verbinding met het document van de SQL Server Data Base-Engine oplossen](https://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx) voor meer informatie.
+* Mogelijk moet u SQL Server configureren om externe verbindingen te accepteren. Zie Problemen met [verbinding met het SQL Server-databaseenginedocument](https://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu geleerd hoe u Sqoop kunt gebruiken. Voor meer informatie zie:
+Nu heb je geleerd hoe je Sqoop moet gebruiken. Voor meer informatie zie:
 
-* [Apache Oozie gebruiken met HDInsight](../hdinsight-use-oozie-linux-mac.md): gebruik de actie Sqoop in een Oozie-werk stroom.
-* [Analyseer gegevens van de vlucht vertraging met HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md): gebruik interactieve query's om vlucht vertragings gegevens te analyseren en gebruik vervolgens Sqoop om gegevens te exporteren naar een Azure-SQL database.
-* [Gegevens uploaden naar hdinsight](../hdinsight-upload-data.md): andere methoden voor het uploaden van gegevens naar Hdinsight/Azure Blob Storage zoeken.
+* [Apache Oozie gebruiken met HDInsight](../hdinsight-use-oozie-linux-mac.md): Gebruik Sqoop-actie in een Oozie-workflow.
+* [Vluchtvertragingsgegevens analyseren met HDInsight:](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)Gebruik Interactieve query om vluchtvertragingsgegevens te analyseren en gebruik Vervolgens Sqoop om gegevens naar een Azure SQL-database te exporteren.
+* [Gegevens uploaden naar HDInsight:](../hdinsight-upload-data.md)zoek andere methoden voor het uploaden van gegevens naar HDInsight/Azure Blob-opslag.

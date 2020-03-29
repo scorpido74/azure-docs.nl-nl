@@ -1,46 +1,46 @@
 ---
-title: Advanced Threat Protection-Azure Database for PostgreSQL-één server
-description: Meer informatie over het gebruik van Advanced Threat Protection voor het detecteren van afwijkende database activiteiten die duiden op mogelijke beveiligings Risico's voor de data base.
+title: Geavanceerde bedreigingsbeveiliging - Azure-database voor PostgreSQL - Single Server
+description: Meer informatie over het gebruik van Advanced Threat Protection om afwijkende databaseactiviteiten te detecteren die potentiële beveiligingsbedreigingen voor de database aangeven.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 3d86c76472580567c95d285924761e1714465d6f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74768738"
 ---
-# <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Geavanceerde beveiliging tegen bedreigingen in Azure Database for PostgreSQL-één server
+# <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Geavanceerde bedreigingsbeveiliging in Azure-database voor PostgreSQL - Enkele server
 
 Advanced Threat Protection for Azure Database for PostgreSQL detecteert vreemde activiteiten die duiden op ongebruikelijke en mogelijk schadelijke pogingen om toegang te verkrijgen tot databases of om deze aan te vallen.
 
 > [!NOTE]
-> Advanced Threat Protection bevindt zich in de open bare preview.
+> Advanced Threat Protection is in openbare preview.
 
-Bedreigings beveiliging maakt deel uit van het aanbod voor Advanced Threat Protection (ATP). Dit is een uniform pakket voor geavanceerde beveiligings mogelijkheden. Geavanceerde beveiliging tegen bedreigingen kan worden geopend en beheerd via de [Azure Portal](https://portal.azure.com) of via [rest API](/rest/api/postgresql/serversecurityalertpolicies). De functie is beschikbaar voor servers met Algemeen en geoptimaliseerd voor geheugen.
+Threat Protection maakt deel uit van het Advanced Threat Protection (ATP) aanbod, een uniform pakket voor geavanceerde beveiligingsmogelijkheden. Geavanceerde bedreigingsbeveiliging kan worden geopend en beheerd via de [Azure-portal](https://portal.azure.com) of met behulp van [REST API.](/rest/api/postgresql/serversecurityalertpolicies) De functie is beschikbaar voor servers voor algemeen gebruik en geheugengeoptimaliseerd.
 
 > [!NOTE]
-> De functie Advanced Threat Protection is **niet** beschikbaar in de volgende Azure Government-en soevereine Cloud regio's: US Gov-Texas, US Gov-Arizona, US gov-Iowa, VS, gov Virginia, US DoD-oost, US DoD-centraal, Duitsland-centraal, Duitsland-noord, China-oost, China-Oost 2. Ga naar beschik [bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/) voor de beschik baarheid van algemene producten.
+> De functie Advanced Threat Protection is **niet** beschikbaar in de volgende Azure-overheids- en soevereine cloudregio's: US Gov Texas, US Gov Arizona, US Gov Iowa, US, Gov Virginia, US DoD East, US DoD Central, Germany Central, Germany North, China East, China East 2. Ga naar [producten die per regio beschikbaar zijn](https://azure.microsoft.com/global-infrastructure/services/) voor algemene beschikbaarheid van producten.
 
 ## <a name="what-is-advanced-threat-protection"></a>Wat is Advanced Threat Protection?
 
-Advanced Threat Protection voor Azure Database for PostgreSQL biedt een nieuwe beveiligingslaag, waarmee klanten potentiële bedreigingen kunnen detecteren en erop reageren zodra ze zich voordoen door beveiligings waarschuwingen te bieden over afwijkende activiteiten. Gebruikers ontvangen een waarschuwing bij verdachte database activiteiten en mogelijke beveiligings problemen, evenals afwijkende database toegang en query patronen. Advanced Threat Protection voor Azure Database for PostgreSQL integreert waarschuwingen met [Azure Security Center](https://azure.microsoft.com/services/security-center/), waaronder Details van verdachte activiteiten en aanbevolen actie voor het onderzoeken en oplossen van de dreiging. Geavanceerde beveiliging tegen bedreigingen voor Azure Database for PostgreSQL maakt het eenvoudig om mogelijke dreigingen naar de data base te verhelpen zonder dat u een beveiligings expert hoeft te zijn of om geavanceerde beveiligings bewakings systemen te beheren. 
+Advanced Threat Protection for Azure Database for PostgreSQL biedt een nieuwe beveiligingslaag, waarmee klanten potentiële bedreigingen kunnen detecteren en erop kunnen reageren wanneer deze zich voordoen door beveiligingswaarschuwingen te geven voor afwijkende activiteiten. Gebruikers ontvangen een waarschuwing over verdachte databaseactiviteiten en mogelijke kwetsbaarheden, evenals afwijkende databasetoegang en querypatronen. Advanced Threat Protection for Azure Database for PostgreSQL integreert waarschuwingen met [Azure Security Center](https://azure.microsoft.com/services/security-center/), dat details van verdachte activiteiten bevat en adviseert actie over het onderzoeken en beperken van de dreiging. Geavanceerde bedreigingsbeveiliging voor Azure Database voor PostgreSQL maakt het eenvoudig om potentiële bedreigingen voor de database aan te pakken zonder dat u beveiligingsexpert hoeft te zijn of geavanceerde beveiligingsbewakingssystemen hoeft te beheren. 
 
-![Concept geavanceerde beveiliging tegen bedreigingen](media/concepts-data-access-and-security-threat-protection/advanced-threat-protection-concept.png)
+![Geavanceerd concept voor bedreigingsbescherming](media/concepts-data-access-and-security-threat-protection/advanced-threat-protection-concept.png)
 
-## <a name="advanced-threat-protection-alerts"></a>Geavanceerde beveiligings waarschuwingen 
-Advanced Threat Protection voor Azure Database for PostgreSQL detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot of misbruik te maken van data bases en de volgende waarschuwingen kunnen activeren:
-- **Toegang vanaf ongebruikelijke locatie**: deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangs patroon voor de Azure database for postgresql-server, waarbij iemand zich vanaf een ongebruikelijke geografische locatie heeft aangemeld bij de Azure database for postgresql-server. In sommige gevallen detecteert de waarschuwing een legitieme actie (een nieuwe toepassing of onderhoud door ontwikkelaars). In andere gevallen detecteert de waarschuwing een schadelijke actie (voormalig werknemer, externe aanvaller).
-- **Toegang vanaf ongebruikelijk Azure Data Center**: deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangs patroon voor de Azure database for postgresql-server, waarbij iemand zich bij de server heeft aangemeld vanuit een ongebruikelijk Azure Data Center dat tijdens de recente periode op deze server is gedetecteerd. In sommige gevallen detecteert de waarschuwing een legitieme actie (uw nieuwe toepassing in azure, Power BI, Azure Database for PostgreSQL Query-Editor). In andere gevallen detecteert de waarschuwing een schadelijke actie vanuit een Azure resource/service (voormalig werknemer, externe aanvaller).
-- **Toegang vanaf een niet-vertrouwde Principal**: deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangs patroon voor de Azure database for postgresql-server, waarbij iemand zich heeft aangemeld bij de server met behulp van een ongewone principal (Azure database for PostgreSQL gebruiker). In sommige gevallen detecteert de waarschuwing een legitieme actie (een nieuwe toepassing of onderhoud door ontwikkelaars). In andere gevallen detecteert de waarschuwing een schadelijke actie (voormalig werknemer, externe aanvaller).
+## <a name="advanced-threat-protection-alerts"></a>Waarschuwingen voor geavanceerde bedreigingsbescherming 
+Advanced Threat Protection for Azure Database for PostgreSQL detecteert afwijkende activiteiten die ongebruikelijke en mogelijk schadelijke pogingen wijzen om databases te openen of te exploiteren en het kan de volgende waarschuwingen activeren:
+- **Toegang vanaf ongebruikelijke locatie:** deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangspatroon naar de Azure Database voor PostgreSQL-server, waarbij iemand zich heeft aangemeld bij de Azure Database voor PostgreSQL-server vanaf een ongebruikelijke geografische locatie. In sommige gevallen detecteert de waarschuwing een legitieme actie (een nieuwe toepassing of onderhoud door ontwikkelaars). In andere gevallen detecteert de waarschuwing een schadelijke actie (voormalig werknemer, externe aanvaller).
+- **Toegang vanuit ongebruikelijke Azure-datacenter:** deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangspatroon in de Azure-database voor PostgreSQL-server, waarbij iemand zich heeft aangemeld bij de server vanuit een ongebruikelijk Azure-datacenter dat in de afgelopen periode op deze server is gezien. In sommige gevallen detecteert de waarschuwing een legitieme actie (uw nieuwe toepassing in Azure, Power BI, Azure Database voor PostgreSQL Query Editor). In andere gevallen detecteert de waarschuwing een schadelijke actie vanuit een Azure resource/service (voormalig werknemer, externe aanvaller).
+- **Toegang vanaf onbekende principal:** deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangspatroon naar de Azure Database voor PostgreSQL-server, waarbij iemand zich heeft aangemeld bij de server met behulp van een ongebruikelijke principal (Azure Database voor PostgreSQL-gebruiker). In sommige gevallen detecteert de waarschuwing een legitieme actie (een nieuwe toepassing of onderhoud door ontwikkelaars). In andere gevallen detecteert de waarschuwing een schadelijke actie (voormalig werknemer, externe aanvaller).
 - **Toegang tot een toepassing die mogelijk schadelijk is**: deze waarschuwing wordt geactiveerd wanneer een mogelijk schadelijke toepassing wordt gebruikt voor toegang tot de database. In sommige gevallen detecteert de waarschuwing het uitvoeren van testen om binnen te dringen. In andere gevallen detecteert de waarschuwing een aanval met behulp van gebruikelijk aanvalsprogramma’s.
-- Beveiligings **verificatie Azure database for PostgreSQL referenties**: deze waarschuwing wordt geactiveerd wanneer er sprake is van een abnormaal groot aantal mislukte aanmeldingen met andere referenties. In sommige gevallen detecteert de waarschuwing het uitvoeren van testen om binnen te dringen. In andere gevallen detecteert de waarschuwing een Brute Force-aanval.
+- **Brute force Azure Database voor PostgreSQL-referenties:** deze waarschuwing wordt geactiveerd wanneer er een abnormaal hoog aantal mislukte aanmeldingen met verschillende referenties is. In sommige gevallen detecteert de waarschuwing het uitvoeren van testen om binnen te dringen. In andere gevallen detecteert de waarschuwing een Brute Force-aanval.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Zie de [pagina met prijzen voor Azure database for PostgreSQL](https://azure.microsoft.com/pricing/details/postgresql/) voor meer informatie over prijzen. 
-* [Azure database for PostgreSQL Advanced Threat Protection](howto-database-threat-protection-portal.md) configureren met behulp van de Azure Portal  
+* Zie de pagina Azure [Database for PostgreSQL-prijzen voor](https://azure.microsoft.com/pricing/details/postgresql/) meer informatie over prijzen 
+* Azure Database configureren [voor PostgreSQL Advanced Threat Protection](howto-database-threat-protection-portal.md) met de Azure-portal  

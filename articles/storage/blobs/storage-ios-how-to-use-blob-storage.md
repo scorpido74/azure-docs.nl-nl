@@ -1,5 +1,5 @@
 ---
-title: Object (BLOB)-opslag gebruiken vanuit iOS-Azure | Microsoft Docs
+title: Objectopslag (Blob) gebruiken vanuit iOS - Azure | Microsoft Documenten
 description: Sla niet-gestructureerde gegevens op in de cloud met Azure Blob Storage (objectopslag).
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,38 +8,38 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: 54085d602246d38adb970ed02f451241ca7ba19d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68726409"
 ---
-# <a name="how-to-use-blob-storage-from-ios"></a>Blob Storage gebruiken vanuit iOS
+# <a name="how-to-use-blob-storage-from-ios"></a>Blob-opslag van iOS gebruiken
 
-In dit artikel wordt beschreven hoe u algemene scenario's uitvoert met behulp van Microsoft Azure Blob-opslag. De voor beelden zijn geschreven in doel-C en gebruiken de [Azure Storage-client bibliotheek voor IOS](https://github.com/Azure/azure-storage-ios). De besproken scenario's zijn onder andere het uploaden, weer geven, downloaden en verwijderen van blobs. Zie de sectie [volgende stappen](#next-steps) voor meer informatie over blobs. U kunt ook de voor [beeld-app](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) downloaden om snel het gebruik van Azure Storage in een IOS-toepassing weer te geven.
+In dit artikel ziet u hoe u veelvoorkomende scenario's uitvoert met Microsoft Azure Blob-opslag. De voorbeelden zijn geschreven in Doelstelling-C en gebruiken de [Azure Storage Client Library voor iOS.](https://github.com/Azure/azure-storage-ios) De scenario's die worden behandeld zijn het uploaden, aanbieden, downloaden en verwijderen van blobs. Zie de sectie [Volgende stappen](#next-steps) voor meer informatie over blobs. U de [voorbeeld-app](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) ook downloaden om snel het gebruik van Azure Storage in een iOS-toepassing te zien.
 
-Zie [Inleiding tot Azure Blob-opslag](storage-blobs-introduction.md)voor meer informatie over Blob Storage.
+Zie Inleiding tot Azure [Blob-opslag voor](storage-blobs-introduction.md)meer informatie over Blob-opslag.
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="import-the-azure-storage-ios-library-into-your-application"></a>Importeer de Azure Storage iOS-bibliotheek in uw toepassing
+## <a name="import-the-azure-storage-ios-library-into-your-application"></a>De Azure Storage iOS-bibliotheek importeren in uw toepassing
 
-U kunt de Azure Storage iOS-bibliotheek importeren in uw toepassing met behulp van de [Azure Storage CocoaPod](https://cocoapods.org/pods/AZSClient) of door het **Framework** -bestand te importeren. CocoaPod is de aanbevolen manier om de bibliotheek eenvoudiger te integreren, maar het importeren van het Framework bestand is minder opvallend voor uw bestaande project.
+U de Azure Storage iOS-bibliotheek importeren in uw toepassing door de [Azure Storage CocoaPod te](https://cocoapods.org/pods/AZSClient) gebruiken of door het **Framework-bestand** te importeren. CocoaPod is de aanbevolen manier omdat het de integratie van de bibliotheek gemakkelijker maakt, maar het importeren uit het framework-bestand is minder opdringerig voor uw bestaande project.
 
 Als u deze bibliotheek wilt gebruiken, hebt u het volgende nodig:
 
 - iOS 8+
-- Xcode 7 +
+- Xcode 7+
 
-## <a name="cocoapod"></a>CocoaPod
+## <a name="cocoapod"></a>CacaoPod
 
-1. Als u dit nog niet hebt gedaan, [installeert u CocoaPods](https://guides.cocoapods.org/using/getting-started.html#toc_3) op uw computer door een Terminal venster te openen en de volgende opdracht uit te voeren.
+1. Als u dit nog niet hebt gedaan, [installeert u CocoaPods](https://guides.cocoapods.org/using/getting-started.html#toc_3) op uw computer door een terminalvenster te openen en de volgende opdracht uit te voeren
 
     ```shell
     sudo gem install cocoapods
     ```
 
-2. Maak vervolgens in de projectmap (de map met uw. xcodeproj-bestand) een nieuw bestand met de naam _Podfile_(geen bestands extensie). Voeg het volgende toe aan _Podfile_ en sla het op.
+2. Maak vervolgens in de projectmap (de map met het .xcodeproj-bestand) een nieuw bestand met de naam _Podfile_(geen bestandsextensie). Voeg het volgende toe aan _Podfile_ en sla op.
 
     ```ruby
     platform :ios, '8.0'
@@ -49,31 +49,31 @@ Als u deze bibliotheek wilt gebruiken, hebt u het volgende nodig:
     end
     ```
 
-3. In het Terminal venster gaat u naar de projectmap en voert u de volgende opdracht uit:
+3. Navigeer in het terminalvenster naar de projectmap en voer de volgende opdracht uit
 
     ```shell
     pod install
     ```
 
-4. Als uw. xcodeproj is geopend in Xcode, sluit u het. Open in de projectmap het zojuist gemaakte project bestand dat de extensie. xcworkspace heeft. Dit is het bestand waarmee u nu kunt werken.
+4. Als uw .xcodeproj is geopend in Xcode, sluit u deze. Open in uw projectmap het nieuw gemaakte projectbestand met de extensie .xcworkspace. Dit is het bestand waar je vanaf nu aan werkt.
 
 ## <a name="framework"></a>Framework
 
-De andere manier om de bibliotheek te gebruiken is het maken van het Framework hand matig:
+De andere manier om de bibliotheek te gebruiken is om het framework handmatig te bouwen:
 
-1. Down load of kloon eerst de [Azure-opslag-IOS-opslag plaats](https://github.com/azure/azure-storage-ios).
-2. Ga naar *Azure-Storage-IOS* -> *lib* -> *Azure Storage-client bibliotheek*en open `AZSClient.xcodeproj` in Xcode.
-3. Wijzig in de linkerbovenhoek van Xcode het actieve schema van "Azure Storage-client bibliotheek" in "Framework".
-4. Bouw het project (⌘ + B). Hiermee maakt u een `AZSClient.framework` bestand op uw bureau blad.
+1. Download of kloon eerst de [repo azure-storage-ios.](https://github.com/azure/azure-storage-ios)
+2. Ga naar de*Lib* -> Azure *Storage Client* -> *Library*en open `AZSClient.xcodeproj` in Xcode.
+3. Wijzig linksboven in Xcode het actieve schema van 'Azure Storage Client Library' in 'Framework'.
+4. Bouw het project (∙+B). Hiermee wordt `AZSClient.framework` een bestand op uw bureaublad gemaakt.
 
-U kunt het Framework-bestand vervolgens importeren in uw toepassing door het volgende te doen:
+U het frameworkbestand vervolgens als volgt importeren in uw toepassing:
 
 1. Maak een nieuw project of open uw bestaande project in Xcode.
-2. Sleep en zet het `AZSClient.framework` neer in uw Xcode-project Navigator.
-3. Selecteer *items kopiëren indien nodig*en klik op *volt ooien*.
-4. Klik in het navigatie venster aan de linkerkant op het project en klik op het tabblad *Algemeen* boven aan de project-editor.
-5. Klik in de sectie *gekoppelde frameworks en bibliotheken* op de knop toevoegen (+).
-6. Zoek in de lijst met bibliotheken die al worden aangeboden `libxml2.2.tbd` en voeg deze toe aan uw project.
+2. Sleep en `AZSClient.framework` zet de in uw Xcode-projectnavigator.
+3. Selecteer *Items zo nodig kopiëren*en klik op *Voltooien*.
+4. Klik op uw project in de navigatie met de linkerkant en klik op het tabblad *Algemeen* boven aan de projecteditor.
+5. Klik onder de sectie *Gekoppelde frameworks en bibliotheken* op de knop Toevoegen (+).
+6. Zoek `libxml2.2.tbd` en voeg deze toe aan uw project in de lijst met bibliotheken die al zijn verstrekt.
 
 ## <a name="import-the-library"></a>De bibliotheek importeren
 
@@ -82,24 +82,24 @@ U kunt het Framework-bestand vervolgens importeren in uw toepassing door het vol
 #import <AZSClient/AZSClient.h>
 ```
 
-Als u Swift gebruikt, moet u een bridging-header maken en \<AZSClient/AZSClient. h >:
+Als u Swift gebruikt, moet u een overbruggingsheader maken en \<AZSClient/AZSClient.h> importeren:
 
-1. Maak een header- `Bridging-Header.h`bestand en voeg de bovenstaande instructie import toe.
-2. Ga naar het tabblad *Build Settings* en zoek naar *doel-C bridging-header*.
-3. Dubbel klik op het veld van de overbruggings header van de *objectief-C* en voeg het pad toe aan het header-bestand:`ProjectName/Bridging-Header.h`
-4. Bouw het project (⌘ + B) om te controleren of de bridging-header is opgehaald door Xcode.
-5. Als u de bibliotheek rechtstreeks in een Swift-bestand wilt gebruiken, hoeft u geen instructies te importeren.
+1. Maak een `Bridging-Header.h`kopbestand en voeg de bovenstaande importinstructie toe.
+2. Ga naar het tabblad *Instellingen voor bouwen* en zoek naar *doelstelling-c-overbruggingskop*.
+3. Dubbelklik op het veld van *Objective-C Bridging Header* en voeg het pad toe aan uw koptekstbestand:`ProjectName/Bridging-Header.h`
+4. Bouw het project (++B) om te controleren of de overbruggingsheader is opgepikt door Xcode.
+5. Begin de bibliotheek rechtstreeks in een Swift-bestand te gebruiken, er is geen importverklaringen nodig.
 
 [!INCLUDE [storage-mobile-authentication-guidance](../../../includes/storage-mobile-authentication-guidance.md)]
 
 ## <a name="asynchronous-operations"></a>Asynchrone bewerkingen
 
 > [!NOTE]
-> Alle methoden voor het uitvoeren van een aanvraag voor de service zijn asynchrone bewerkingen. In de code voorbeelden vindt u het volgende: deze methoden hebben een voltooiings-handler. De code in de voltooiings-handler wordt uitgevoerd **nadat** de aanvraag is voltooid. Code nadat de voltooiings-handler wordt uitgevoerd **terwijl** de aanvraag wordt ingediend.
+> Alle methoden die een aanvraag uitvoeren tegen de service zijn asynchrone bewerkingen. In de codevoorbeelden vindt u dat deze methoden een voltooiingshandler hebben. De code in de voltooiingshandler wordt uitgevoerd **nadat** de aanvraag is voltooid. Code nadat de voltooiingshandler wordt uitgevoerd **terwijl** de aanvraag wordt gedaan.
 
 ## <a name="create-a-container"></a>Een container maken
 
-Elke Blob in Azure Storage moet zich in een container bevinden. In het volgende voor beeld ziet u hoe u een container met de naam *newcontainer*maakt in uw opslag account als deze nog niet bestaat. Wanneer u een naam kiest voor uw container, moet u mindful van de hierboven genoemde naamgevings regels.
+Elke blob in Azure Storage moet zich in een container bevinden. In het volgende voorbeeld ziet u hoe u een container maakt, *newcontainer*genaamd, in uw opslagaccount als deze nog niet bestaat. Bij het kiezen van een naam voor uw container, rekening houden met de hierboven genoemde naamgevingsregels.
 
 ```objc
 -(void)createContainer{
@@ -127,17 +127,17 @@ Elke Blob in Azure Storage moet zich in een container bevinden. In het volgende 
 }
 ```
 
-U kunt controleren of dit werkt door naar de [Microsoft Azure Storage Explorer](https://storageexplorer.com) te kijken en te controleren of *newcontainer* in de lijst met containers voor uw opslag account staat.
+U bevestigen dat dit werkt door te kijken naar de [Microsoft Azure Storage Explorer](https://storageexplorer.com) en te controleren of *newcontainer* in de lijst met containers voor uw opslagaccount staat.
 
-## <a name="set-container-permissions"></a>Container machtigingen instellen
+## <a name="set-container-permissions"></a>Containermachtigingen instellen
 
-De machtigingen van een container zijn standaard geconfigureerd voor **persoonlijke** toegang. Containers bieden echter enkele verschillende opties voor toegang tot de container:
+De machtigingen van een container zijn standaard geconfigureerd voor **privétoegang.** Containers bieden echter een aantal verschillende opties voor containertoegang:
 
-- **Privé**: Container-en BLOB-gegevens kunnen alleen worden gelezen door de eigenaar van het account.
-- **BLOB**: BLOB-gegevens in deze container kunnen worden gelezen via anonieme aanvragen, maar er zijn geen container gegevens beschikbaar. Clients kunnen geen blobs in de container opsommen via anonieme aanvragen.
-- **Container**: Container-en BLOB-gegevens kunnen worden gelezen via anonieme aanvragen. Clients kunnen blobs in de container opsommen via een anonieme aanvraag, maar kunnen containers in het opslag account niet inventariseren.
+- **Privé:** Container- en blobgegevens kunnen alleen door de eigenaar van het account worden gelezen.
+- **Blob:** Blob-gegevens in deze container kunnen worden gelezen via een anoniem verzoek, maar containergegevens zijn niet beschikbaar. Clients kunnen blobs in de container niet opsommen via een anoniem verzoek.
+- **Container**: Container- en blobgegevens kunnen worden gelezen via een anoniem verzoek. Clients kunnen blobs in de container opsommen via een anoniem verzoek, maar kunnen geen containers opsommen binnen het opslagaccount.
 
-In het volgende voor beeld ziet u hoe u een container maakt met toegangs machtigingen voor de **container** , zodat open bare, alleen-lezen toegang wordt toegestaan voor alle gebruikers op het Internet:
+In het volgende voorbeeld ziet u hoe u een container **maakt** met containertoegangsmachtigingen, waarmee openbare, alleen-lezen toegang voor alle gebruikers op internet mogelijk is:
 
 ```objc
 -(void)createContainerWithPublicAccess{
@@ -167,9 +167,9 @@ In het volgende voor beeld ziet u hoe u een container maakt met toegangs machtig
 
 ## <a name="upload-a-blob-into-a-container"></a>Een blob uploaden naar een container
 
-Zoals vermeld in de sectie Blob service concepten, biedt Blob Storage drie verschillende typen blobs: blok-blobs, toevoeg-blobs en pagina-blobs. De Azure Storage iOS-bibliotheek ondersteunt alle drie typen blobs. In de meeste gevallen is een blok-blob het aangewezen type om te gebruiken.
+Zoals vermeld in de sectie Klodderserviceconcepten biedt Blob Storage drie verschillende typen blobs: blobs blokkeren, blobs toevoegen en paginablobs. De Azure Storage iOS-bibliotheek ondersteunt alle drie de typen blobs. In de meeste gevallen is een blok-blob het aangewezen type om te gebruiken.
 
-In het volgende voor beeld ziet u hoe u een blok-BLOB uploadt vanuit een NSString. Als er al een blob met dezelfde naam bestaat in deze container, wordt de inhoud van deze BLOB overschreven.
+In het volgende voorbeeld ziet u hoe u een blokblob uploadt vanaf een NSString. Als er in deze container al een blob met dezelfde naam bestaat, wordt de inhoud van deze blob overschreven.
 
 ```objc
 -(void)uploadBlobToContainer{
@@ -208,32 +208,32 @@ In het volgende voor beeld ziet u hoe u een blok-BLOB uploadt vanuit een NSStrin
 }
 ```
 
-U kunt controleren of dit werkt door naar de [Microsoft Azure Storage Explorer](https://storageexplorer.com) te kijken en te controleren of de container, *containerpublic*, de blob, *sampleblob*bevat. In dit voor beeld hebben we een open bare container gebruikt, zodat u ook kunt controleren of deze toepassing heeft gewerkt door naar de BLOB-URI te gaan:
+U bevestigen dat dit werkt door te kijken naar de [Microsoft Azure Storage Explorer](https://storageexplorer.com) en te controleren of de container, *containerpublic*, bevat de blob, *sampleblob*. In dit voorbeeld hebben we een openbare container gebruikt, zodat u ook controleren of deze toepassing heeft gewerkt door naar de blobs URI te gaan:
 
 ```http
 https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
 ```
 
-Naast het uploaden van een blok-Blob uit een NSString, bestaan er soort gelijke methoden voor NSData, NSInputStream of een lokaal bestand.
+Naast het uploaden van een blokblob vanuit een NSString, bestaan er vergelijkbare methoden voor NSData, NSInputStream of een lokaal bestand.
 
 ## <a name="list-the-blobs-in-a-container"></a>De blobs in een container in een lijst weergeven
 
-In het volgende voor beeld ziet u hoe alle blobs in een container worden weer gegeven. Als u deze bewerking wilt uitvoeren, moet u mindful van de volgende para meters:
+In het volgende voorbeeld ziet u hoe u alle blobs in een container weergeven. Houd bij het uitvoeren van deze bewerking rekening met de volgende parameters:
 
-- **continuationToken** -het vervolg token geeft aan waar de vermelding moet worden gestart. Als er geen token is, worden de blobs vanaf het begin weer gegeven. Een wille keurig aantal blobs kan worden weer gegeven, van nul tot een ingesteld maximum. Zelfs als deze methode nul resultaten retourneert, als `results.continuationToken` niet Nil is, zijn er mogelijk meer blobs op de service die niet zijn vermeld.
-- **voor voegsel** : u kunt het voor voegsel opgeven dat moet worden gebruikt voor de BLOB-vermelding. Alleen blobs die met dit voor voegsel beginnen, worden weer gegeven.
-- **useFlatBlobListing** : zoals vermeld in de sectie [Naamgeving en verwijzende containers en blobs](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) , hoewel de BLOB service een plat opslag schema is, kunt u een virtuele hiërarchie maken door blobs aan te geven met behulp van padgegevens. Niet-platte vermelding wordt momenteel niet ondersteund. Deze functie is binnenkort beschikbaar. Voor dit moment moet deze waarde **Ja**zijn.
-- **blobListingDetails** -u kunt opgeven welke items moeten worden meegenomen bij het weer geven van blobs
-  - _AZSBlobListingDetailsNone_: Alleen doorgevoerde blobs weer geven en geen blob-meta gegevens retour neren.
-  - _AZSBlobListingDetailsSnapshots_: Vermeld doorgevoerde blobs en BLOB-moment opnamen.
-  - _AZSBlobListingDetailsMetadata_: Haal de BLOB-meta gegevens voor elke Blob op die in de vermelding is geretourneerd.
-  - _AZSBlobListingDetailsUncommittedBlobs_: Doorgevoerde en niet-doorgevoerde blobs weer geven.
-  - _AZSBlobListingDetailsCopy_: Kopieer eigenschappen opnemen in de vermelding.
-  - _AZSBlobListingDetailsAll_: Alle beschik bare doorgevoerde blobs, niet-doorgevoerde blobs en moment opnamen weer geven en alle meta gegevens en kopieer status voor deze blobs retour neren.
-- **maxResults** : het maximum aantal resultaten dat moet worden geretourneerd voor deze bewerking. Gebruik-1 om geen limiet in te stellen.
-- **completionHandler** : het code blok dat moet worden uitgevoerd met de resultaten van de vermelding.
+- **continuationToken** - Het vervolgtoken geeft aan waar de aanbiedingsbewerking moet beginnen. Als er geen token wordt verstrekt, worden blobs vanaf het begin weergegeven. Een willekeurig aantal blobs kan worden vermeld, van nul tot een ingesteld maximum. Zelfs als deze methode nul `results.continuationToken` resultaten retourneert, als deze niet nihil is, kunnen er meer blobs op de service zijn die niet zijn vermeld.
+- **voorvoegsel** : u het voorvoegsel opgeven dat u moet gebruiken voor blob-aanbieding. Alleen blobs die beginnen met dit voorvoegsel worden weergegeven.
+- **useFlatBlobListing** - Zoals vermeld in de sectie [Containers en blobs benoemen en verwijzen,](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) de Blob-service een vlak opslagschema zijn, maar u een virtuele hiërarchie maken door blobs te benoemen met padinformatie. Niet-platte aanbieding wordt momenteel echter niet ondersteund. Deze functie komt binnenkort. Voor nu moet deze waarde **JA**zijn.
+- **blobListingDetails** - U opgeven welke objecten u wilt opnemen bij het aanbieden van blobs
+  - _AZSBlobListingDetailsNone_: Lijst alleen gepleegdblobs, en niet blob metadata terug.
+  - _AZSBlobListingDetailsSnapshots:_ Lijst gepleegdblobs en blob snapshots.
+  - _AZSBlobListingDetailsMetadata:_ Blob-metagegevens ophalen voor elke blob die in de aanbieding is geretourneerd.
+  - _AZSBlobListingDetailsUncommittedBlobs_: Lijst gepleegde en niet-vastgelegde blobs.
+  - _AZSBlobListingDetailsCopy_: Kopieereigenschappen opnemen in de aanbieding.
+  - _AZSBlobListingDetailsAll:_ Vermeld alle beschikbare toegewezen blobs, niet-vastgelegde blobs en momentopnamen en retourneer alle metagegevens en kopieerstatus voor die blobs.
+- **maxResults** - Het maximum aantal resultaten dat moet worden retourneren voor deze bewerking. Gebruik -1 om geen limiet in te stellen.
+- **completionHandler** - Het codeblok dat moet worden uitgevoerd met de resultaten van de aanbiedingsbewerking.
 
-In dit voor beeld wordt een hulp methode gebruikt voor het recursief aanroepen van de lijst blobs-methode wanneer een vervolg token wordt geretourneerd.
+In dit voorbeeld wordt een helpermethode gebruikt om de methode lijstblobs opnieuw aan te roepen telkens wanneer een vervolgtoken wordt geretourneerd.
 
 ```objc
 -(void)listBlobsInContainer{
@@ -288,7 +288,7 @@ In dit voor beeld wordt een hulp methode gebruikt voor het recursief aanroepen v
 
 ## <a name="download-a-blob"></a>Een blob downloaden
 
-In het volgende voor beeld ziet u hoe u een BLOB kunt downloaden naar een NSString-object.
+In het volgende voorbeeld ziet u hoe u een blob downloadt naar een NSString-object.
 
 ```objc
 -(void)downloadBlobToString{
@@ -324,7 +324,7 @@ In het volgende voor beeld ziet u hoe u een BLOB kunt downloaden naar een NSStri
 
 ## <a name="delete-a-blob"></a>Een blob verwijderen
 
-In het volgende voor beeld ziet u hoe u een BLOB verwijdert.
+In het volgende voorbeeld ziet u hoe u een blob verwijdert.
 
 ```objc
 -(void)deleteBlob{
@@ -355,9 +355,9 @@ In het volgende voor beeld ziet u hoe u een BLOB verwijdert.
 }
 ```
 
-## <a name="delete-a-blob-container"></a>Een BLOB-container verwijderen
+## <a name="delete-a-blob-container"></a>Een blobcontainer verwijderen
 
-In het volgende voor beeld ziet u hoe u een container verwijdert.
+In het volgende voorbeeld ziet u hoe u een container verwijdert.
 
 ```objc
 -(void)deleteContainer{
@@ -387,12 +387,12 @@ In het volgende voor beeld ziet u hoe u een container verwijdert.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u Blob Storage van iOS kunt gebruiken, volgt u deze koppelingen voor meer informatie over de iOS-bibliotheek en de opslag service.
+Nu je hebt geleerd hoe je Blob-opslag van iOS gebruiken, volg je deze koppelingen voor meer informatie over de iOS-bibliotheek en de opslagservice.
 
-- [Azure Storage-client bibliotheek voor iOS](https://github.com/azure/azure-storage-ios)
-- [Azure Storage iOS-referentie documentatie](https://azure.github.io/azure-storage-ios/)
+- [Azure-opslagclientbibliotheek voor iOS](https://github.com/azure/azure-storage-ios)
+- [Azure Storage iOS-referentiedocumentatie](https://azure.github.io/azure-storage-ios/)
 - [REST-API voor Azure Storage-services](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-- [Blog van het Azure Storage-team](https://blogs.msdn.com/b/windowsazurestorage)
+- [Blog van azure-opslagteam](https://blogs.msdn.com/b/windowsazurestorage)
 
-Als u vragen hebt over deze bibliotheek, kunt u een bericht sturen naar ons [MSDN Azure-forum](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) of [stack overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
-Als u functie suggesties hebt voor Azure Storage, kunt u een bericht plaatsen op [Azure Storage feedback](https://feedback.azure.com/forums/217298-storage/).
+Als je vragen hebt over deze bibliotheek, kun je een bericht plaatsen op ons [MSDN Azure-forum](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) of [Stack Overflow.](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)
+Als u functiesuggesties hebt voor Azure Storage, plaatst u een bericht naar [feedback voor Azure Storage.](https://feedback.azure.com/forums/217298-storage/)

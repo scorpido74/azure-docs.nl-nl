@@ -1,6 +1,6 @@
 ---
-title: Gegevens visualiseren met de Azure Data Explorer-connector voor micro soft Excel
-description: In dit artikel leert u hoe u de Excel-connector voor Azure Data Explorer kunt gebruiken.
+title: Gegevens visualiseren met de Azure Data Explorer-connector voor Microsoft Excel
+description: In dit artikel leert u hoe u de Excel-connector voor Azure Data Explorer gebruikt.
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
@@ -8,73 +8,73 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: 42f52581d8f2f80deb5d6250ed54ab64fc1ba4d3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74849051"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-excel"></a>Gegevens visualiseren met de Azure Data Explorer-connector voor Excel
 
-Azure Data Explorer biedt twee opties voor het maken van verbinding met gegevens in Excel: gebruik de systeem eigen connector of importeer een query vanuit Azure Data Explorer. In dit artikel leest u hoe u de systeem eigen connector in Excel gebruikt en hoe u verbinding maakt met het Azure Data Explorer-cluster om gegevens op te halen en te visualiseren.
+Azure Data Explorer biedt twee opties voor het maken van verbinding met gegevens in Excel: gebruik maken van de native connector of een query importeren uit Azure Data Explorer. In dit artikel ziet u hoe u de native connector in Excel gebruikt en verbinding maakt met het Azure Data Explorer-cluster om gegevens op te halen en te visualiseren.
 
-De systeem eigen Azure Data Explorer-connector biedt de mogelijkheid om query resultaten naar Excel te exporteren. U kunt ook een KQL-query toevoegen als een Excel-gegevens bron voor aanvullende berekeningen of visualisaties.
+De Azure Data Explorer Excel-connector biedt de mogelijkheid om queryresultaten naar Excel te exporteren. U ook een KQL-query toevoegen als Excel-gegevensbron voor aanvullende berekeningen of visualisaties.
 
-## <a name="define-kusto-query-as-an-excel-data-source-and-load-the-data-to-excel"></a>Kusto query definiëren als een Excel-gegevens bron en de gegevens laden in Excel
+## <a name="define-kusto-query-as-an-excel-data-source-and-load-the-data-to-excel"></a>Kusto-query definiëren als een Excel-gegevensbron en de gegevens laden naar Excel
 
-1. Open **Microsoft Excel**.
-1. Op het tabblad **gegevens** selecteert u **gegevens ophalen** > **van Azure** > **van Azure Data Explorer**.
+1. **Microsoft Excel openen**.
+1. Selecteer op het tabblad **Gegevens** de optie **Gegevens** > **ophalen uit Azure** > **vanuit Azure Data Explorer**.
 
     ![Gegevens ophalen uit Azure Data Explorer](media/excel-connector/get-data-from-adx.png)
 
-1. In het venster **Azure Data Explorer (Kusto)** vult u de volgende velden in en selecteert u **OK**.
+1. Voer in het venster **Azure Data Explorer (Kusto)** de volgende velden in en selecteer **OK**.
 
-    ![Venster Azure Data Explorer (Kusto)](media/excel-connector/adx-connection-window.png)
+    ![Azure Data Explorer (Kusto) venster](media/excel-connector/adx-connection-window.png)
     
     |Veld   |Beschrijving |
     |---------|---------|
-    |**Cluster**   |   De naam van het cluster (verplicht)      |    
+    |**Cluster**   |   Naam van cluster (verplicht)      |    
     |**Database**     |    Naam van de database      |    
-    |**Tabel naam of Azure Data Explorer query**    |     De naam van de tabel of Azure-Data Explorer query    | 
+    |**Tabelnaam of Azure Data Explorer-query**    |     Naam van tabel of Azure Data Explorer-query    | 
     
     **Geavanceerde opties:**
 
      |Veld   |Beschrijving |
     |---------|---------|
-    |**Record nummer van query resultaat beperken**     |     Het aantal records dat in Excel is geladen beperken  |    
-    |**Gegevens grootte van query resultaat beperken (bytes)**    |    De grootte van de gegevens beperken      |   
-    |**Afbreking van resultaten sets uitschakelen**    |         |      
-    |**Aanvullende set-instructies (gescheiden door punt komma's)**    |    `set`-instructies toevoegen die moeten worden toegepast op de gegevens bron     |   
+    |**Queryresultaatrecordnummer beperken**     |     Het aantal records beperken dat is geladen in Excel  |    
+    |**Gegevensgrootte van queryresultaten beperken (bytes)**    |    De gegevensgrootte beperken      |   
+    |**Resultaatset-truncation uitschakelen**    |         |      
+    |**Aanvullende setinstructies (gescheiden door puntkomma's)**    |    Instructies `set` toevoegen om toe te passen op gegevensbron     |   
 
-1.  Navigeer in het **Navigatie** deel venster naar de juiste tabel. Selecteer in het voorbeeld venster voor tabellen de optie **gegevens transformeren** om wijzigingen aan te brengen aan uw gegevens of selecteer **laden** om deze naar Excel te laden.
+1.  Navigeer in het deelvenster **Navigator** naar de juiste tabel. Selecteer in het venster van de tabelvoorbeeld de optie **Gegevens transformeren** om wijzigingen aan te brengen in uw gegevens of selecteer **Laden** om deze in Excel te laden.
 
-![Voorbeeld venster voor tabellen](media/excel-connector/navigate-table-preview-window.png)
+![Tabelvoorbeeldvenster](media/excel-connector/navigate-table-preview-window.png)
 
    > [!TIP]
-   > Als er al een **Data Base** -en/of **tabel naam of Azure Data Explorer-query** is opgegeven, wordt het juiste voorbeeld venster voor tabellen automatisch geopend. 
+   > Als **database-** en/of **tabelnaam of Azure Data Explorer-query** al is opgegeven, wordt het juiste tabelvoorbeeldvenster automatisch geopend. 
 
-## <a name="analyze-and-visualize-data-in-excel"></a>Gegevens in Excel analyseren en visualiseren
+## <a name="analyze-and-visualize-data-in-excel"></a>Gegevens analyseren en visualiseren in Excel
 
-Zodra de gegevens zijn geladen in Excel en beschikbaar zijn in uw Excel-werk blad, kunt u de gegevens analyseren, samenvatten en visualiseren door relaties en visuele elementen te maken. 
+Zodra de gegevens worden geladen om uit te blinken en beschikbaar zijn in uw Excel-blad, u de gegevens analyseren, samenvatten en visualiseren door relaties en visuals te maken. 
 
-1.  Op het tabblad **tabel ontwerp** selecteert u **samenvatten met PivotTable**. Selecteer in het venster **draai tabel maken** de relevante tabel en selecteer **OK**.
+1.  Selecteer op het tabblad **Tabelontwerp** de optie **Samenvatten met draaitabel**. Selecteer in het venster **Draaitabel maken** de relevante tabel en selecteer **OK**.
 
-    ![Draai tabel maken](media/excel-connector/create-pivot-table.png)
+    ![Draaitabel maken](media/excel-connector/create-pivot-table.png)
 
-1. Selecteer in het deel venster **draai tabel velden** de relevante tabel kolommen om samenvattings tabellen te maken. In het onderstaande voor beeld zijn de **gebeurtenis** -instellingen en de **status** geselecteerd.
+1. Selecteer in het deelvenster **Draaitabelvelden** de relevante tabelkolommen om overzichtstabellen te maken. In het onderstaande voorbeeld worden **EventId** en **Status** geselecteerd.
     
-    ![Draai tabel velden selecteren](media/excel-connector/pivot-table-pick-fields.png)
+    ![Draaitabelvelden selecteren](media/excel-connector/pivot-table-pick-fields.png)
 
-1. Selecteer in het tabblad **analyseren van draai tabel** de optie **draai grafiek** om visuele elementen te maken op basis van de tabel. 
+1. Selecteer op het tabblad **Draaitabelanalyse** de optie **Draaigrafiek** om visuals te maken op basis van de tabel. 
 
-    ![Draai grafiek](media/excel-connector/pivot-table-analyze-pivotchart.png)
+    ![Draaigrafiek](media/excel-connector/pivot-table-analyze-pivotchart.png)
 
-1. In het onderstaande voor beeld gebruikt u **gebeurtenis-id**, **StartTime**en **Event** type om aanvullende informatie over de weer te geven gebeurtenissen te bekijken.
+1. Gebruik in het onderstaande voorbeeld **Gebeurtenis-id,** **StartTime**en **EventType** om aanvullende informatie over de weergebeurtenissen weer te geven.
 
     ![Gegevens visualiseren](media/excel-connector/visualize-excel-data.png)
 
-1. Maak volledige Dash boards om uw gegevens te bewaken.
+1. Maak volledige dashboards om uw gegevens te controleren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Gegevens visualiseren met behulp van een Azure Data Explorer Kusto-query geïmporteerd in micro soft Excel](excel-blank-query.md)
+[Gegevens visualiseren met een Azure Data Explorer Kusto-query die is geïmporteerd in Microsoft Excel](excel-blank-query.md)

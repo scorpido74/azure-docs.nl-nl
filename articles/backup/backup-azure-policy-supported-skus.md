@@ -1,77 +1,77 @@
 ---
-title: Ondersteunde VM-Sku's voor Azure Policy
-description: Een artikel met een beschrijving van de ondersteunde VM-Sku's (per uitgever, afbeeldings aanbod en installatie kopie-SKU) die worden ondersteund voor het ingebouwde Azure-beleid van back-ups
+title: Ondersteunde VM-SKU's voor Azure Policy
+description: Een artikel waarin de ondersteunde VM SKU's (door Publisher, Image Offer en Image SKU) worden beschreven die worden ondersteund voor het ingebouwde Azure-beleid dat door Backup wordt geleverd
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.openlocfilehash: 1b6a94b0f57ecfea946654c6cae38ac335335e00
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74980112"
 ---
-# <a name="supported-vm-skus-for-azure-policy"></a>Ondersteunde VM-Sku's voor Azure Policy
+# <a name="supported-vm-skus-for-azure-policy"></a>Ondersteunde VM-SKU's voor Azure Policy
 
-Azure Backup biedt een ingebouwd beleid (met behulp van Azure Policy) dat kan worden toegewezen aan **alle virtuele Azure-machines in een opgegeven locatie binnen een abonnement of resource groep**. Wanneer dit beleid is toegewezen aan een bepaald bereik, worden alle nieuwe Vm's die in dat bereik zijn gemaakt, automatisch geconfigureerd voor back-up naar een **bestaande kluis op dezelfde locatie en hetzelfde abonnement**. De volgende tabel bevat een lijst met alle VM-Sku's die door dit beleid worden ondersteund.
+Azure Backup biedt een ingebouwd beleid (met Azure Policy) dat kan worden toegewezen aan **alle Azure VM's op een opgegeven locatie binnen een abonnement of resourcegroep.** Wanneer dit beleid is toegewezen aan een bepaald bereik, worden alle nieuwe VM's die in dat bereik zijn gemaakt, automatisch geconfigureerd voor back-up naar een **bestaande kluis op dezelfde locatie en een abonnement.** In de onderstaande tabel vindt u alle VM SKU's die door dit beleid worden ondersteund.
 
-### <a name="supported-vms"></a>**Ondersteunde Vm's**
+### <a name="supported-vms"></a>**Ondersteunde VM's**
 
-**Beleids naam:** Back-ups op Vm's van een locatie naar een bestaande centrale kluis op dezelfde locatie configureren
+**Beleidsnaam:** Back-up configureren op VM's van een locatie naar een bestaande centrale kluis op dezelfde locatie
 
-Uitgever van installatie kopie | Aanbieding van installatie kopie | Afbeeldings-SKU
+Afbeeldingsuitgever | Afbeeldingsaanbieding | Afbeelding SKU
 --- | --- | ---
 MicrosoftWindowsServer | WindowsServer | Windows Server 2008 R2 SP1 (2008-R2-SP1)
 MicrosoftWindowsServer | WindowsServer | [smalldisk] Windows Server 2008 R2 SP (2008-R2-SP1-smalldisk)
-MicrosoftWindowsServer | WindowsServer | Windows Server 2012 Data Center (2012-Data Center)
-MicrosoftWindowsServer | WindowsServer | [smalldisk] Windows Server 2012 Data Center (2012-Data Center-smalldisk)
-MicrosoftWindowsServer | WindowsServer | Windows Server 2012 R2 Data Center (2012-R2-Data Center)
-MicrosoftWindowsServer | WindowsServer | [smalldisk] Windows Server 2012 R2 Data Center (2012-R2-Data Center-smalldisk)
-MicrosoftWindowsServer | WindowsServer | Windows Server 2016 Data Center (2016-Data Center)
-MicrosoftWindowsServer | WindowsServer | Windows Server 2016 Data Center-Server Core (2016-Data Center-Server-Core)
-MicrosoftWindowsServer | WindowsServer | [smalldisk] Windows Server 2016 Data Center-Server Core (2016-Data Center-Server-Core-smalldisk)
-MicrosoftWindowsServer | WindowsServer | [smalldisk] Windows Server 2016 Data Center (2016-Data Center-smalldisk)
-MicrosoftWindowsServer | WindowsServer | Windows Server 2019 Data Center Server Core met containers (2016-Data Center-with-containers)
-MicrosoftWindowsServer | WindowsServer | Windows Server 2016 Extern bureaublad Session Host 2016 (2016-Data Center-met-RDSH)
-MicrosoftWindowsServer | WindowsServer | Windows Server 2019 Data Center (2019-Data Center)
-MicrosoftWindowsServer | WindowsServer | Windows Server 2019 Data Center Server Core (2019-Data Center-core)
-MicrosoftWindowsServer | WindowsServer | [smalldisk] Windows Server 2019 Data Center Server Core (2019-Data Center-core-smalldisk)
-MicrosoftWindowsServer | WindowsServer | Windows Server 2019 Data Center Server Core met containers (2019-Data Center-core-met-containers)
-MicrosoftWindowsServer | WindowsServer | [smalldisk] Windows Server 2019 Data Center Server Core met containers (2019-Data Center-core-met-containers-smalldisk)
-MicrosoftWindowsServer | WindowsServer | [smalldisk] Windows Server 2019 Data Center (2019-Data Center-smalldisk)
-MicrosoftWindowsServer | WindowsServer | Windows Server 2019 Data Center met containers (2019-Data Center-met-containers)
-MicrosoftWindowsServer | WindowsServer | [smalldisk] Windows Server 2019 Data Center met containers (2019-Data Center-with-containers-smalldisk)
-MicrosoftWindowsServer | WindowsServer | Windows Server 2019 Data Center (zh-cn) (2019-Data Center-zhcn)
-MicrosoftWindowsServer | WindowsServerSemiAnnual | Data Center-core-1709-smalldisk
-MicrosoftWindowsServer | WindowsServerSemiAnnual | Data Center-core-1709-with-containers-smalldisk
-MicrosoftWindowsServer | WindowsServerSemiAnnual | Data Center-core-1803-with-containers-smalldisk
-MicrosoftWindowsServerHPCPack | WindowsServerHPCPack | Alle image-Sku's
-MicrosoftSQLServer | SQL2016SP1-WS2016 | Alle image-Sku's
-MicrosoftSQLServer | SQL2016-WS2016  | Alle image-Sku's
-MicrosoftSQLServer | SQL2016SP1-WS2016-BYOL | Alle image-Sku's
-MicrosoftSQLServer | SQL2012SP3-WS2012R2 | Alle image-Sku's
-MicrosoftSQLServer | SQL2016-WS2012R2 | Alle image-Sku's
-MicrosoftSQLServer | SQL2014SP2-WS2012R2 | Alle image-Sku's
-MicrosoftSQLServer | SQL2012SP3-WS2012R2-BYOL | Alle image-Sku's
-MicrosoftSQLServer | SQL2014SP1-WS2012R2-BYOL | Alle image-Sku's
-MicrosoftSQLServer | SQL2014SP2-WS2012R2-BYOL | Alle image-Sku's
-MicrosoftSQLServer | SQL2016-WS2012R2-BYOL | Alle image-Sku's
-MicrosoftRServer | MLServer-WS2016 | Alle image-Sku's
-MicrosoftVisualStudio | VisualStudio | Alle image-Sku's
-MicrosoftVisualStudio | Windows | Alle image-Sku's
-MicrosoftDynamicsAX | Dynamics  | Pre-req-AX7-Onebox-U8
-microsoft-ads | Windows-Data-Science-VM | Alle image-Sku's
-MicrosoftWindowsDesktop | Windows-10 | Alle image-Sku's
-RedHat | RHEL | 6,7, 6,8, 6,9, 6,10, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7
-RedHat | RHEL-SAP-HANA | 6,7, 7,2, 7,3
-SUSE | SLES | 12. X
-SUSE | SLES-HPC | 12. X
-SUSE | SLES-HPC-Priority | 12. X
-SUSE | SLES-SAP | 12. X
-SUSE | SLES-SAP-BYOS | 12. X
-SUSE | SLES-prioriteit | 12. X
-SUSE | SLES-BYOS | 12. X
-SUSE | SLES-SAPCAL | 12. X
-SUSE | SLES-standaard | 12. X
+MicrosoftWindowsServer | WindowsServer | Windows Server 2012-datacenter (datacenter 2012)
+MicrosoftWindowsServer | WindowsServer | [smalldisk] Windows Server 2012-datacenter (2012-Datacenter-smalldisk)
+MicrosoftWindowsServer | WindowsServer | Windows Server 2012 R2-datacenter (datacenter 2012-R2)
+MicrosoftWindowsServer | WindowsServer | [smalldisk] Windows Server 2012 R2-datacenter (2012-R2-Datacenter-smalldisk)
+MicrosoftWindowsServer | WindowsServer | Windows Server 2016-datacenter (datacenter 2016)
+MicrosoftWindowsServer | WindowsServer | Windows Server 2016-datacenter - Servercore (datacenter-server-core 2016)
+MicrosoftWindowsServer | WindowsServer | [smalldisk] Windows Server 2016-datacenter - Servercore (2016-Datacenter-Server-Core-smalldisk)
+MicrosoftWindowsServer | WindowsServer | [smalldisk] Windows Server 2016-datacenter (2016-Datacenter-smalldisk)
+MicrosoftWindowsServer | WindowsServer | Datacenterservercore van Windows Server 2019 met containers (2016-Datacenter-met-containers)
+MicrosoftWindowsServer | WindowsServer | Windows Server 2016 Extern bureaublad-sessiehost 2016 (2016-Datacenter-met-RDSH)
+MicrosoftWindowsServer | WindowsServer | Windows Server 2019-datacenter (datacenter 2019)
+MicrosoftWindowsServer | WindowsServer | Datacenterservercore van Windows Server 2019 (datacenter-core 2019)
+MicrosoftWindowsServer | WindowsServer | [smalldisk] Datacenter Server Core van Windows Server 2019 (2019-Datacenter-Core-smalldisk)
+MicrosoftWindowsServer | WindowsServer | Datacenterservercore van Windows Server 2019 met containers (2019-Datacenter-Core-met-containers)
+MicrosoftWindowsServer | WindowsServer | [smalldisk] Datacenter servercore van Windows Server 2019 met containers (2019-Datacenter-Core-met-containers-smalldisk)
+MicrosoftWindowsServer | WindowsServer | [smalldisk] Windows Server 2019 Datacenter (2019-Datacenter-smalldisk)
+MicrosoftWindowsServer | WindowsServer | Windows Server 2019 Datacenter with Containers (2019-Datacenter-met-containers)
+MicrosoftWindowsServer | WindowsServer | [smalldisk] Windows Server 2019 Datacenter with Containers (2019-Datacenter-met-Containers-smalldisk)
+MicrosoftWindowsServer | WindowsServer | Windows Server 2019 Datacenter (zh-cn) (2019-Datacenter-zhcn)
+MicrosoftWindowsServer | WindowsServerSemiAnnual | Datacenter-Core-1709-smalldisk
+MicrosoftWindowsServer | WindowsServerSemiAnnual | Datacenter-Core-1709-met-Containers-smalldisk
+MicrosoftWindowsServer | WindowsServerSemiAnnual | Datacenter-Core-1803-met-Containers-smalldisk
+MicrosoftWindowsServerHPCPack | WindowsServerHPCPack | Alle Beeld SKU's
+MicrosoftSQLServer | SQL2016SP1-WS2016 | Alle Beeld SKU's
+MicrosoftSQLServer | SQL2016-WS2016  | Alle Beeld SKU's
+MicrosoftSQLServer | SQL2016SP1-WS2016-BYOL | Alle Beeld SKU's
+MicrosoftSQLServer | SQL2012SP3-WS2012R2 | Alle Beeld SKU's
+MicrosoftSQLServer | SQL2016-WS2012R2 | Alle Beeld SKU's
+MicrosoftSQLServer | SQL2014SP2-WS2012R2 | Alle Beeld SKU's
+MicrosoftSQLServer | SQL2012SP3-WS2012R2-BYOL | Alle Beeld SKU's
+MicrosoftSQLServer | SQL2014SP1-WS2012R2-BYOL | Alle Beeld SKU's
+MicrosoftSQLServer | SQL2014SP2-WS2012R2-BYOL | Alle Beeld SKU's
+MicrosoftSQLServer | SQL2016-WS2012R2-BYOL | Alle Beeld SKU's
+MicrosoftRServer | MLServer-WS2016 | Alle Beeld SKU's
+MicrosoftVisualStudio | VisualStudio (VisualStudio) | Alle Beeld SKU's
+MicrosoftVisualStudio | Windows | Alle Beeld SKU's
+MicrosoftDynamicsAX (MicrosoftDynamicsAX) | Dynamics  | Pre-Req-AX7-Onebox-U8
+microsoft-advertenties | windows-data-science-vm | Alle Beeld SKU's
+MicrosoftWindowsDesktop | Windows-10 | Alle Beeld SKU's
+RedHat | RHEL | 6.7, 6.8, 6.9, 6.10, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7
+RedHat | RHEL-SAP-HANA | 6.7, 7.2, 7.3
+SUSE | SLES | 12.X
+SUSE | SLES-HPC | 12.X
+SUSE | SLES-HPC-Prioriteit | 12.X
+SUSE | SLES-SAP | 12.X
+SUSE | SLES-SAP-BYOS | 12.X
+SUSE | SLES-prioriteit | 12.X
+SUSE | SLES-BYOS | 12.X
+SUSE | SLES-SAPCAL | 12.X
+SUSE | SLES-Standaard | 12.X
 Canonical | UbuntuServer | 14.04.0-LTS
 Canonical | UbuntuServer | 14.04.1-LTS
 Canonical | UbuntuServer | 14.04.2-LTS
@@ -82,10 +82,10 @@ Canonical | UbuntuServer | 14.04.5-LTS
 Canonical | UbuntuServer | 16.04-DAILY-LTS
 Canonical | UbuntuServer | 16.04-LTS
 Canonical | UbuntuServer | 16.04.0-LTS
-Canonical | UbuntuServer | 18,04-DAGELIJKS-LTS
+Canonical | UbuntuServer | 18.04-DAILY-LTS
 Canonical | UbuntuServer | 18.04-LTS
-Oracle | Oracle-Linux | 6,8, 6,9, 6,10, 7,3, 7,4, 7,5, 7,6
-OpenLogic | CentOS | 6. X, 7. X
-OpenLogic | CentOS – LVM | 6. X, 7. X
-OpenLogic | CentOS – SRIOV | 6. X, 7. X
-cloudera | cloudera-centos-os | 7. X
+Oracle | Oracle-Linux | 6.8, 6.9, 6.10, 7.3, 7.4, 7.5, 7.6
+OpenLogic | CentOS | 6.X, 7.X
+OpenLogic | CentOS–LVM | 6.X, 7.X
+OpenLogic | CentOS–SRIOV | 6.X, 7.X
+cloudera | cloudera-centos-os | 7.X

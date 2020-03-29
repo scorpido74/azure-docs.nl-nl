@@ -1,6 +1,6 @@
 ---
-title: 'Azure-ExpressRoute: bewaking, metrische gegevens en waarschuwingen'
-description: Deze pagina bevat informatie over het controleren van ExpressRoute
+title: 'Azure ExpressRoute: monitoring, statistieken en waarschuwingen'
+description: Op deze pagina vindt u informatie over het monitoren van ExpressRoute
 services: expressroute
 author: mialdrid
 ms.service: expressroute
@@ -8,119 +8,119 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
 ms.openlocfilehash: 268a7e7c94285d3c4fdcb0c5fb91b685c09b58c8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75436916"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Bewaking, metrische gegevens en waarschuwingen voor ExpressRoute
 
-Dit artikel helpt u inzicht in de ExpressRoute-bewaking, metrische gegevens en waarschuwingen met behulp van Azure Monitor. Azure Monitor is een centrale locatie voor alle metrische gegevens, waarschuwingen, diagnostische logboeken in heel Azure.
+In dit artikel u informatie krijgen over de controle, statistieken en waarschuwingen van ExpressRoute met Azure Monitor. Azure Monitor is one stop shop voor alle metrics, waarschuwingen, diagnostische logboeken in heel Azure.
  
 >[!NOTE]
->Met behulp van **klassieke metrische gegevens** wordt niet aanbevolen.
+>Het gebruik **van klassieke statistieken** wordt niet aanbevolen.
 >
 
-## <a name="expressroute-metrics"></a>Metrische gegevens van ExpressRoute
+## <a name="expressroute-metrics"></a>ExpressRoute-statistieken
 
-Als u **gegevens**wilt weer geven, gaat u naar de pagina *Azure monitor* en klikt u op *metrische gegevens*. Als u metrische gegevens voor **ExpressRoute** wilt weer geven, filtert u op *ExpressRoute-circuits*van het resource type. Als u **Global Reach** metrische gegevens wilt weer geven, filtert u op resource type *ExpressRoute-circuits* en selecteert u een ExpressRoute-circuit resource waarvoor Global REACH is ingeschakeld. Als u **ExpressRoute direct** -metrische gegevens wilt weer geven, filtert u resource type op *ExpressRoute-poorten*. 
+Als u **statistieken wilt weergeven,** navigeert u naar de *azure-monitorpagina* en klikt u op *Metrische gegevens*. Als u **ExpressRoute-statistieken** wilt weergeven, filtert u op circuits van Resourcetype *ExpressRoute*. Als u **Global Reach-statistieken wilt** weergeven, filtert u op *expressroute-circuits* van resourcetype en selecteert u een ExpressRoute-circuitbron die Global Reach heeft ingeschakeld. Als u **ExpressRoute Direct-statistieken wilt** weergeven, filtert u Resourcetype op *ExpressRoute-poorten*. 
 
-Zodra een metriek is geselecteerd, wordt de standaard aggregatie toegepast. U kunt eventueel splitsen Toep assen, waardoor de metriek wordt weer gegeven met verschillende dimensies.
+Zodra een statistiek is geselecteerd, wordt de standaardaggregatie toegepast. Optioneel u splitsen toepassen, waardoor de statistiek met verschillende afmetingen wordt weergegeven.
 
-### <a name="available-metrics"></a>Beschik bare metrische gegevens
-|**Gegevens**|**Categorie**|**Dimensie (s)**|**Functie (s)**|
+### <a name="available-metrics"></a>Beschikbare statistieken
+|**Gegevens**|**Categorie**|**Dimensie(en)**|**Functie(en)**|
 | --- | --- | --- | --- |
-|ARP-Beschik baarheid|Beschikbaarheid|<ui><li>Peer (primaire/secundaire ExpressRoute-router)</ui></li><ui><li> Peering-type (privé/openbaar/micro soft)</ui></li>|ExpressRoute|
-|BGP-Beschik baarheid|Beschikbaarheid|<ui><li> Peer (primaire/secundaire ExpressRoute-router)</ui></li><ui><li> Peering-type</ui></li>|ExpressRoute|
-|BitsInPerSecond|Verkeer|<ui><li> Peering-type (ExpressRoute)</ui></li><ui><li>Koppeling (ExpressRoute direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
-|BitsOutPerSecond|Verkeer| <ui><li>Peering-type (ExpressRoute)</ui></li><ui><li> Koppeling (ExpressRoute direct) | <ui><li>ExpressRoute<ui><li>ExpressRoute direct</ui></li> |
-|GlobalReachBitsInPerSecond|Verkeer|<ui><li>Skey (Service sleutel) gepeerd circuit</ui></li>|Globaal bereik|
-|GlobalReachBitsOutPerSecond|Verkeer|<ui><li>Skey (Service sleutel) gepeerd circuit</ui></li>|Globaal bereik|
+|ARP-beschikbaarheid|Beschikbaarheid|<ui><li>Peer (primaire/secundaire ExpressRoute-router)</ui></li><ui><li> Peeringtype (privé/openbaar/Microsoft)</ui></li>|ExpressRoute|
+|Beschikbaarheid van Bgp|Beschikbaarheid|<ui><li> Peer (primaire/secundaire ExpressRoute-router)</ui></li><ui><li> Peeringtype</ui></li>|ExpressRoute|
+|BitsinperSeconde|Verkeer|<ui><li> Peering Type (ExpressRoute)</ui></li><ui><li>Link (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
+|BitsOutperSeconde|Verkeer| <ui><li>Peering Type (ExpressRoute)</ui></li><ui><li> Link (ExpressRoute Direct) | <ui><li>ExpressRoute ExpressRoute<ui><li>ExpressRoute Direct</ui></li> |
+|GlobalReachBitsInPerSeconde|Verkeer|<ui><li>Peered Circuit Skey (servicesleutel)</ui></li>|Globaal bereik|
+|GlobalReachBitsOutPerSeconde|Verkeer|<ui><li>Peered Circuit Skey (servicesleutel)</ui></li>|Globaal bereik|
 |AdminState|Fysieke connectiviteit|Koppeling|ExpressRoute Direct|
 |LineProtocol|Fysieke connectiviteit|Koppeling|ExpressRoute Direct|
-|RxLightLevel|Fysieke connectiviteit|<ui><li></ui> koppelen</li><ui><li>Lane-</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Fysieke connectiviteit|<ui><li></ui> koppelen</li><ui><li>Lane-</ui></li>|ExpressRoute Direct|
+|RxLightLevel RxLightLevel|Fysieke connectiviteit|<ui><li>Koppeling</ui></li><ui><li>Lane</ui></li>|ExpressRoute Direct|
+|TxLightLevel TxLightLevel|Fysieke connectiviteit|<ui><li>Koppeling</ui></li><ui><li>Lane</ui></li>|ExpressRoute Direct|
 >[!NOTE]
->Het gebruik van *GlobalGlobalReachBitsInPerSecond* en *GlobalGlobalReachBitsOutPerSecond* wordt alleen weer gegeven als er ten minste één Global Reach verbinding tot stand is gebracht.
+>Het gebruik van *GlobalGlobalReachBitsInPerSeconde* en *GlobalGlobalReachBitsOutPerSecond* is alleen zichtbaar als er ten minste één Global Reach-verbinding tot stand komt.
 >
 
-## <a name="circuits-metrics"></a>Meet gegevens circuits
+## <a name="circuits-metrics"></a>Statistieken over circuits
 
-### <a name="bits-in-and-out---metrics-across-all-peerings"></a>Bits in en uit-metrische gegevens voor alle peerings
+### <a name="bits-in-and-out---metrics-across-all-peerings"></a>Bits In en Out - Statistieken voor alle peerings
 
-U kunt metrische gegevens weer geven voor alle peerings op een bepaald ExpressRoute-circuit.
+U statistieken bekijken voor alle peerings op een bepaald ExpressRoute-circuit.
 
-![Circuit metrische gegevens](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
+![circuitstatistieken](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 
-### <a name="bits-in-and-out---metrics-per-peering"></a>Bits in en out-metrische gegevens per peering
+### <a name="bits-in-and-out---metrics-per-peering"></a>Bits In en Out - Statistieken per peering
 
-Hier vindt u metrische gegevens voor persoonlijke, openbare en Microsoft-peering in bits per seconde.
+U statistieken voor privé-, openbare en Microsoft-peering in bits/seconde bekijken.
 
-![Metrische gegevens per peering](./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg) 
+![metrics per peering](./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg) 
 
-### <a name="bgp-availability---split-by-peer"></a>BGP-Beschik baarheid-splitsen op peer  
+### <a name="bgp-availability---split-by-peer"></a>BGP-beschikbaarheid - Splitsen per peer  
 
-U kunt bijna de real-time Beschik baarheid van BGP over Peerings en peers (primaire en secundaire ExpressRoute-routers) bekijken. Dit dash board toont de primaire BGP-sessie voor privé-peering en de tweede BGP-sessie voor persoonlijke peering. 
+U bijna realtime beschikbaarheid van BGP bekijken voor peerings en peers (Primary and Secondary ExpressRoute routers). Dit dashboard toont de Primaire BGP-sessie voor privé-peering en de tweede BGP-sessie naar beneden voor privé-peering. 
 
-![BGP-Beschik baarheid per peer](./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg) 
+![BGP-beschikbaarheid per peer](./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg) 
 
-### <a name="arp-availability---split-by-peering"></a>Beschik baarheid van ARP-splitsen door peering  
+### <a name="arp-availability---split-by-peering"></a>ARP-beschikbaarheid - Splitsen door peering  
 
-U kunt bijna de real-time Beschik baarheid van [ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) over Peerings en peers (primaire en secundaire ExpressRoute-routers) bekijken. Dit dash board toont de sessie van de privé-peering-ARP voor beide peers, maar is voltooid voor micro soft-peering tussen peerings. De standaard aggregatie (Average) is gebruikt voor beide peers.  
+U bijna realtime de beschikbaarheid van [ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) bekijken voor peerings en peers (Primary and Secondary ExpressRoute routers). Dit dashboard toont de ARP-privé-peering-sessie voor beide peers, maar compleet voor Microsoft-peering in peerings. De standaardaggregatie (Gemiddelde) is voor beide peers gebruikt.  
 
-![ARP-Beschik baarheid per peer](./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg) 
+![ARP-beschikbaarheid per peer](./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg) 
 
-## <a name="expressroute-direct-metrics"></a>Directe metrische gegevens voor ExpressRoute
+## <a name="expressroute-direct-metrics"></a>ExpressRoute Direct Metrics
 
-### <a name="admin-state---split-by-link"></a>Beheer status-splitsen op koppeling
-U kunt de status van de beheerder voor elke koppeling van het directe poort paar ExpressRoute bekijken.
+### <a name="admin-state---split-by-link"></a>Beheerdersstatus - Splitsen op koppeling
+U de beheerdersstatus voor elke koppeling van het ExpressRoute Direct-poortpaar bekijken.
 
-![directe beheerders status](./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg)
+![er directe admin staat](./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg)
 
-### <a name="bits-in-per-second---split-by-link"></a>Bits per seconde-splitsen op koppeling
-U kunt de bits per seconde weer geven voor beide koppelingen van het directe poort paar ExpressRoute. 
+### <a name="bits-in-per-second---split-by-link"></a>Bits in per seconde - Gesplitst op koppeling
+U de bits per seconde bekijken via beide koppelingen van het ExpressRoute Direct-poortpaar. 
 
-![er direct-bits per seconde](./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg)
+![er directe bits in per seconde](./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg)
 
-### <a name="bits-out-per-second---split-by-link"></a>Aantal bits per seconde-splitsen op koppeling
-U kunt ook de bits per seconde weer geven over beide koppelingen van het directe poort paar ExpressRoute. 
+### <a name="bits-out-per-second---split-by-link"></a>Bits Out per seconde - Gesplitst op koppeling
+U de bits ook per seconde bekijken via beide koppelingen van het ExpressRoute Direct-poortpaar. 
 
-![Er is geen directe-bits per seconde](./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg)
+![er directe bits uit per seconde](./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg)
 
-### <a name="line-protocol---split-by-link"></a>Lijn protocol-splitsen op koppeling
-U kunt het regel protocol weer geven op elke koppeling van het directe poort paar ExpressRoute.
+### <a name="line-protocol---split-by-link"></a>Lijnprotocol - Splitsen op koppeling
+U het lijnprotocol bekijken op elke link van het ExpressRoute Direct-poortpaar.
 
-![Er is geen direct line-protocol](./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg)
+![er direct line protocol](./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg)
 
-### <a name="rx-light-level---split-by-link"></a>RX licht niveau-splitsen op koppeling
-U kunt het RX-licht niveau (het licht niveau dat de ExpressRoute directe poort **ontvangt**) weer geven voor elke poort. Gezonde RX Light-niveaus vallen doorgaans binnen een bereik van-10 tot 0 dBm
+### <a name="rx-light-level---split-by-link"></a>Rx Light Level - Split per link
+U het Rx-lichtniveau (het lichtniveau dat de ExpressRoute Direct-poort **ontvangt)** voor elke poort bekijken. Gezonde Rx lichtniveaus vallen over het algemeen binnen een bereik van -10 tot 0 dBm
 
-![Lampje directe lijn RX licht niveau](./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg)
+![er directe lijn Rx Light Level](./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg)
 
-### <a name="tx-light-level---split-by-link"></a>TX licht niveau-splitsen op koppeling
-U kunt het TX licht niveau (het licht niveau dat de ExpressRoute directe poort **verzendt**) weer geven voor elke poort. Gezonde TX Light-niveaus vallen doorgaans binnen een bereik van-10 tot 0 dBm
+### <a name="tx-light-level---split-by-link"></a>Tx Lichtniveau - Splitsen per link
+U het Tx-lichtniveau (het lichtniveau dat de ExpressRoute Direct-poort **uitzendt)** voor elke poort bekijken. Gezonde Tx lichtniveaus vallen over het algemeen binnen een bereik van -10 tot 0 dBm
 
-![Lampje directe lijn RX licht niveau](./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg)
+![er directe lijn Rx Light Level](./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg)
 
-## <a name="expressroute-gateway-connections-in-bitsseconds"></a>ExpressRoute-gateway-verbindingen in bits/seconden
+## <a name="expressroute-gateway-connections-in-bitsseconds"></a>ExpressRoute-gatewayverbindingen in bits/seconden
 
-![gateway-verbindingen](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg )
+![gatewayverbindingen](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg )
 
-## <a name="alerts-for-expressroute-gateway-connections"></a>Waarschuwingen voor ExpressRoute-gateway-verbindingen
+## <a name="alerts-for-expressroute-gateway-connections"></a>Waarschuwingen voor ExpressRoute-gatewayverbindingen
 
-1. Als u wilt configureren van waarschuwingen, gaat u naar **Azure Monitor**, klikt u vervolgens op **waarschuwingen**.
+1. Als u waarschuwingen wilt configureren, navigeert u naar **Azure Monitor**en klikt u op **Waarschuwingen**.
 
    ![waarschuwingen](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
 
-2. Klik op **+ doel selecteren** en selecteer de verbindingsresource van de ExpressRoute-gateway.
+2. Klik **op +Selecteer Doel** en selecteer de verbindingsbron van de ExpressRoute-gateway.
 
-   ![target]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
-3. Definieer de details van de waarschuwing.
+   ![Doel]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+3. Definieer de waarschuwingsgegevens.
 
-   ![Actiegroep](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
+   ![actiegroep](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
 
-4. Definiëren en toevoegen van de actiegroep.
+4. Definieer en voeg de actiegroep toe.
 
    ![actiegroep toevoegen](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
 
@@ -128,11 +128,11 @@ U kunt het TX licht niveau (het licht niveau dat de ExpressRoute directe poort *
 
  ![Wat](./media/expressroute-monitoring-metrics-alerts/basedpeering.jpg)
 
-## <a name="configure-alerts-for-activity-logs-on-circuits"></a>Waarschuwingen voor activiteitenlogboeken voor circuits configureren
+## <a name="configure-alerts-for-activity-logs-on-circuits"></a>Waarschuwingen configureren voor activiteitslogboeken op circuits
 
-In de **waarschuwingscriteria**, kunt u **activiteitenlogboek** signaaltype en selecteer het signaal.
+In de **waarschuwingscriteria**u **activiteitslogboek** selecteren voor het signaaltype en het signaal selecteren.
 
-  ![een andere](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
+  ![Andere](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
   
 ## <a name="next-steps"></a>Volgende stappen
 

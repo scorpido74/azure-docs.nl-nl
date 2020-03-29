@@ -1,5 +1,5 @@
 ---
-title: RosettaNet berichten voor B2B-integratie
+title: RosettaNet berichten voor B2B integratie
 description: RosettaNet-berichten uitwisselen in Azure Logic Apps met Enterprise Integration Pack
 services: logic-apps
 ms.suite: integration
@@ -9,254 +9,254 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: 2cc2ac08b9624c1d1d9bee9ce91a7c91189d7f2c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792419"
 ---
-# <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Exchange RosettaNet-berichten voor B2B Enter prise integration in Azure Logic Apps
+# <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Exchange RosettaNet-berichten voor B2B-bedrijfsintegratie in Azure Logic Apps
 
-[RosettaNet](https://resources.gs1us.org) is een non-profit consortium dat standaard processen heeft opgezet voor het delen van Bedrijfs gegevens. Deze standaarden worden vaak gebruikt voor toeleverings processen en zijn wijd verbreid in de halfgeleider-, elektronica-en logistieke branches. Het RosettaNet consortium maakt en onderhoudt partner interface processen (PIPs), die algemene bedrijfsproces definities bieden voor alle berichten uitwisselingen van RosettaNet. RosettaNet is gebaseerd op XML en definieert bericht richtlijnen, interfaces voor bedrijfs processen en implementatie raamwerken voor communicatie tussen bedrijven.
+[RosettaNet](https://resources.gs1us.org) is een non-profit consortium dat standaardprocessen heeft opgezet voor het delen van bedrijfsinformatie. Deze normen worden vaak gebruikt voor supply chain processen en zijn wijdverbreid in de halfgeleider-, elektronica- en logistieke industrie. Het RosettaNet-consortium creëert en onderhoudt Partner Interface Processes (PIPs), die gemeenschappelijke definities van bedrijfsprocessen bieden voor alle RosettaNet-berichtenuitwisselingen. RosettaNet is gebaseerd op XML en definieert berichtrichtlijnen, interfaces voor bedrijfsprocessen en implementatiekaders voor communicatie tussen bedrijven.
 
-In [Azure Logic apps](../logic-apps/logic-apps-overview.md)kunt u met de RosettaNet-connector integratie oplossingen maken die ondersteuning bieden voor RosettaNet-standaarden. De connector is gebaseerd op RosettaNet implementation Framework (RNIF) versie 2.0.01. RNIF is een open netwerk toepassings raamwerk waarmee zaken partners gezamenlijk RosettaNet PIPs kunnen uitvoeren. Dit framework definieert de bericht structuur, de code ring van bevestigingen, Multipurpose Internet Mail Extensions (MIME) en de digitale hand tekening.
+In [Azure Logic Apps](../logic-apps/logic-apps-overview.md)helpt de RosettaNet-connector u bij het maken van integratieoplossingen die RosettaNet-standaarden ondersteunen. De connector is gebaseerd op RosettaNet Implementation Framework (RNIF) versie 2.0.01. RNIF is een open netwerkapplicatieframework waarmee zakelijke partners rosettanet-pip's gezamenlijk kunnen uitvoeren. Dit framework definieert de berichtstructuur, de behoefte aan bevestigingen, MIME-codering (Multipurpose Internet Mail Extensions) en de digitale handtekening.
 
-De connector biedt met name de volgende mogelijkheden:
+Met name de connector biedt deze mogelijkheden:
 
-* Versleutelen of ontvangen van RosettaNet-berichten.
-* RosettaNet-berichten decoderen of verzenden.
-* Wacht op de reactie en het genereren van een melding van de fout.
+* Codeer of ontvang RosettaNet-berichten.
+* Decoderen of verzenden RosettaNet berichten.
+* Wacht op de reactie en het genereren van melding van falen.
 
-Voor deze mogelijkheden ondersteunt de connector alle PIPs die zijn gedefinieerd door RNIF 2.0.01. Communicatie met de partner kan synchroon of asynchroon zijn.
+Voor deze mogelijkheden ondersteunt de connector alle PIP's die zijn gedefinieerd door RNIF 2.0.01. Communicatie met de partner kan synchroon of asynchroon zijn.
 
-## <a name="rosettanet-concepts"></a>RosettaNet-concepten
+## <a name="rosettanet-concepts"></a>RosettaNet concepten
 
-Hier volgen enkele concepten en termen die uniek zijn voor de RosettaNet-specificatie en zijn belang rijk bij het bouwen van op RosettaNet gebaseerde integraties:
+Hier zijn enkele concepten en termen die uniek zijn voor de RosettaNet-specificatie en belangrijk zijn bij het bouwen van rosettanet-gebaseerde integraties:
 
-* **GOOIEN**
+* **Pip**
 
-  De RosettaNet-organisatie maakt en onderhoudt partner interface processen (PIPs), die algemene bedrijfs proces definities bieden voor alle RosettaNet-bericht uitwisselingen. Elke PIP-specificatie bevat een Document Type Definition DTD-bestand en een bericht richtlijn document. Het DTD-bestand definieert de bericht structuur voor de service-inhoud. Het bericht richtlijn document, een HTML-bestand met lees bare tekst, geeft beperkingen op element niveau. Samen bieden deze bestanden een volledige definitie van het bedrijfs proces.
+  De RosettaNet-organisatie creëert en onderhoudt Partner Interface Processes (PIPs), die gemeenschappelijke definities van bedrijfsprocessen bieden voor alle RosettaNet-berichtenuitwisselingen. Elke PIP-specificatie biedt een DTD-bestand (documenttype definition) en een document voor berichtrichtlijnen. Het DTD-bestand definieert de berichtstructuur voor service-inhoud. In het document met berichtrichtsnoer, dat een html-bestand voor menselijk gebruik is, worden beperkingen op elementniveau gespecificeerd. Samen bieden deze bestanden een volledige definitie van het bedrijfsproces.
 
-   PIPs worden gecategoriseerd door een bedrijfs functie op hoog niveau, of cluster, en een subfunctie of segment. "3A4" is bijvoorbeeld de PIP voor aankoop order, terwijl "3" de functie voor order beheer is en "3A" de subfunctie order entry &. Zie de [RosettaNet-site](https://resources.gs1us.org)voor meer informatie.
+   PIP's worden gecategoriseerd door een bedrijfsfunctie op hoog niveau of cluster en een subfunctie of segment. '3A4' is bijvoorbeeld de PIP voor inkooporder, terwijl '3' de functie Orderbeheer is en '3A' de subfunctie Quote & Orderentry is. Zie voor meer informatie de [RosettaNet-site.](https://resources.gs1us.org)
 
 * **Actie**
 
-  Een deel van een PIP zijn actie berichten die worden uitgewisseld tussen partners.
+  Actieberichten zijn bedrijfsberichten die worden uitgewisseld tussen partners als onderdeel van een PIP.
 
-* **Melden**
+* **Signaal**
 
-   Als onderdeel van een PIP zijn signaal berichten bevestigingen die worden verzonden in antwoord op actie berichten.
+   Een deel van een PIP, signaalberichten zijn bevestigingen die worden verzonden naar aanleiding van actieberichten.
 
-* **Enkele actie en dubbele actie**
+* **Eén actie en dubbele actie**
 
-  Voor een PIP-trans actie is de enige reactie een bevestigings signaal bericht. Bij een dubbel actie-PIP ontvangt de initiator een antwoord bericht en beantwoordt het een bevestiging naast de bericht stroom met één actie.
+  Voor een PIP met één actie is het enige antwoord een bevestigingssignaalbericht. Voor een PIP met dubbele actie ontvangt de initiator een antwoordbericht en antwoordt hij met een bevestiging naast de berichtstroom met één actie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, [meldt u zich aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
+* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, [meldt u zich aan voor een gratis Azure-account.](https://azure.microsoft.com/free/)
 
-* Een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) voor het opslaan van uw overeenkomst en andere B2B-artefacten. Dit integratie account moet worden gekoppeld aan uw Azure-abonnement.
+* Een [integratieaccount](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) voor het opslaan van uw overeenkomst en andere B2B-artefacten. Dit integratieaccount moet zijn gekoppeld aan uw Azure-abonnement.
 
-* Ten minste twee [partners](../logic-apps/logic-apps-enterprise-integration-partners.md) die zijn gedefinieerd in uw integratie account en zijn geconfigureerd met de kwalificatie ' Duns ' onder **Business Identities**
+* Ten minste twee [partners](../logic-apps/logic-apps-enterprise-integration-partners.md) die zijn gedefinieerd in uw integratieaccount en geconfigureerd met de kwalificatie voor "DUNS" onder **Bedrijfsidentiteiten**
 
-* Een PIP-proces configuratie, die is vereist voor het verzenden of ontvangen van RosettaNet-berichten, in uw integratie account. De proces configuratie slaat alle eigenschappen van de PIP-configuratie op. U kunt vervolgens naar deze configuratie verwijzen wanneer u een overeenkomst maakt met de partner. Zie [PIP-proces configuratie toevoegen](#add-pip)voor het maken van een PIP-proces configuratie in uw integratie account.
+* Een PIP-procesconfiguratie, die nodig is om RosettaNet-berichten te verzenden of te ontvangen, in uw integratieaccount. De procesconfiguratie slaat alle PIP-configuratiekenmerken op. U dan verwijzen naar deze configuratie wanneer u een overeenkomst met de partner maakt. Zie [PIP-procesconfiguratie toevoegen](#add-pip)als u een PIP-procesconfiguratie wilt maken in uw integratieaccount.
 
-* Optionele [certificaten](../logic-apps/logic-apps-enterprise-integration-certificates.md) voor het versleutelen, ontsleutelen of ondertekenen van de berichten die u uploadt naar het integratie account. Certificaten zijn alleen vereist als u gebruikmaakt van ondertekening of versleuteling.
+* Optionele [certificaten](../logic-apps/logic-apps-enterprise-integration-certificates.md) voor het versleutelen, ontsleutelen of ondertekenen van de berichten die u uploadt naar het integratieaccount. Certificaten zijn alleen vereist als u ondertekening of versleuteling gebruikt.
 
 <a name="add-pip"></a>
 
-## <a name="add-pip-process-configuration"></a>PIP-proces configuratie toevoegen
+## <a name="add-pip-process-configuration"></a>Pip-procesconfiguratie toevoegen
 
-Voer de volgende stappen uit om een PIP-proces configuratie toe te voegen aan uw integratie account:
+Voer de volgende stappen uit om een PIP-procesconfiguratie toe te voegen aan uw integratieaccount:
 
-1. Zoek en open uw integratie account in de [Azure Portal](https://portal.azure.com).
+1. Zoek en open uw integratieaccount in de [Azure-portal.](https://portal.azure.com)
 
-1. Selecteer in het deel venster **overzicht** de tegel **RosettaNet PIP** .
+1. Selecteer in het deelvenster **Overzicht** de **TEGEL RosettaNet PIP.**
 
-   ![Tegel RosettaNet kiezen](media/logic-apps-enterprise-integration-rosettanet/select-rosettanet-tile.png)
+   ![RosettaNet-tegel kiezen](media/logic-apps-enterprise-integration-rosettanet/select-rosettanet-tile.png)
 
-1. Klik onder **ROSETTANET PIP**op **toevoegen**. Geef uw PIP-Details op.
+1. Kies Onder **RosettaNet PIP**de optie **Toevoegen**. Geef uw PIP-gegevens op.
 
-   ![Details van RosettaNet-PIP toevoegen](media/logic-apps-enterprise-integration-rosettanet/add-rosettanet-pip.png)
+   ![RosettaNet PIP-details toevoegen](media/logic-apps-enterprise-integration-rosettanet/add-rosettanet-pip.png)
 
-   | Eigenschap | Verplicht | Beschrijving |
+   | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
    | **Naam** | Ja | Uw PIP-naam |
-   | **PIP-code** | Ja | De PIP-code van drie cijfers. Zie [RosettaNet PIPs](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips)voor meer informatie. |
-   | **PIP-versie** | Ja | Het PIP-versie nummer, dat beschikbaar is op basis van de geselecteerde PIP-code |
+   | **PIP-code** | Ja | De PIP driecijferige code. Zie [RosettaNet PIPs voor](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips)meer informatie. |
+   | **PIP-versie** | Ja | Het PIP-versienummer, dat beschikbaar is op basis van de geselecteerde PIP-code |
    ||||
 
-   Ga naar de [website van RosettaNet](https://resources.gs1us.org/RosettaNet-Standards/Standards-Library/PIP-Directory#1043208-pipsreg)voor meer informatie over deze PIP-eigenschappen.
+   Ga voor meer informatie over deze PIP-eigenschappen naar de [website van RosettaNet.](https://resources.gs1us.org/RosettaNet-Standards/Standards-Library/PIP-Directory#1043208-pipsreg)
 
-1. Wanneer u klaar bent, kiest u **OK**om de PIP-configuratie te maken.
+1. Wanneer u klaar bent, kiest u **OK,** waardoor de PIP-configuratie wordt gemaakt.
 
-1. Als u de proces configuratie wilt weer geven of bewerken, selecteert u het PIP en kiest u **bewerken als JSON**.
+1. Als u de procesconfiguratie wilt weergeven of bewerken, selecteert u de PIP en kiest **u Bewerken als JSON**.
 
-   Alle configuratie-instellingen van het proces zijn afkomstig uit de specificaties van de PIP. Logic Apps vult de meeste instellingen met de standaard waarden die de meestgebruikte waarden voor deze eigenschappen zijn.
+   Alle procesconfiguratie-instellingen zijn afkomstig van de specificaties van de PIP. Logic Apps vult de meeste instellingen af met de standaardwaarden die de meest gebruikte waarden voor deze eigenschappen zijn.
 
    ![RosettaNet PIP-configuratie bewerken](media/logic-apps-enterprise-integration-rosettanet/edit-rosettanet-pip.png)
 
-1. Controleer of de instellingen overeenkomen met de waarden in de juiste PIP-specificatie en voldoen aan de behoeften van uw bedrijf. Als dat nodig is, werkt u de waarden in JSON bij en slaat u deze wijzigingen op.
+1. Controleer of de instellingen overeenkomen met de waarden in de juiste PIP-specificatie en voldoen aan uw bedrijfsbehoeften. Werk indien nodig de waarden in JSON bij en sla deze wijzigingen op.
 
 ## <a name="create-rosettanet-agreement"></a>RosettaNet-overeenkomst maken
 
-1. Zoek en open uw integratie account in de [Azure Portal](https://portal.azure.com)als dit nog niet is geopend.
+1. Zoek en open uw integratieaccount in de [Azure-portal,](https://portal.azure.com)als deze nog niet is geopend.
 
-1. Selecteer in het deel venster **overzicht** de tegel **overeenkomsten** .
+1. Selecteer in het deelvenster **Overzicht** de tegel **Overeenkomsten.**
 
-   ![De tegel overeenkomsten kiezen](media/logic-apps-enterprise-integration-rosettanet/select-agreement-tile.png)
+   ![Tegel Overeenkomsten kiezen](media/logic-apps-enterprise-integration-rosettanet/select-agreement-tile.png)
 
-1. Klik onder **overeenkomsten**op **toevoegen**. Geef de details van uw overeenkomst op.
+1. Kies Onder **Overeenkomsten**de optie **Toevoegen**. Geef uw instemmingsgegevens op.
 
-   ![Details van overeenkomst toevoegen](media/logic-apps-enterprise-integration-rosettanet/add-agreement-details.png)
+   ![Details van de overeenkomst toevoegen](media/logic-apps-enterprise-integration-rosettanet/add-agreement-details.png)
 
-   | Eigenschap | Verplicht | Beschrijving |
+   | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
    | **Naam** | Ja | De naam van de overeenkomst |
    | **Type overeenkomst** | Ja | Selecteer **RosettaNet**. |
-   | **Host-partner** | Ja | Een overeenkomst vereist zowel een host-als een gast partner. De host-partner vertegenwoordigt de organisatie die de overeenkomst configureert. |
-   | **Host-id** | Ja | Een id voor de host-partner |
-   | **Gast partner** | Ja | Een overeenkomst vereist zowel een host-als een gast partner. De gast partner vertegenwoordigt de organisatie die zakendoet met de host-partner. |
-   | **Gast identiteit** | Ja | Een id voor de gast partner |
-   | **Instellingen voor ontvangen** | Varieert | Deze eigenschappen zijn van toepassing op alle berichten die door de host-partner worden ontvangen |
-   | **Instellingen verzenden** | Varieert | Deze eigenschappen zijn van toepassing op alle berichten die worden verzonden door de host-partner |  
-   | **RosettaNet PIP-verwijzingen** | Ja | De PIP-verwijzingen voor de overeenkomst. Alle RosettaNet-berichten vereisen PIP-configuraties. |
+   | **Gastpartner** | Ja | Een overeenkomst vereist zowel een gast- als gastpartner. De hostpartner vertegenwoordigt de organisatie die de overeenkomst configureert. |
+   | **Host identiteit** | Ja | Een id voor de hostpartner |
+   | **Gastpartner** | Ja | Een overeenkomst vereist zowel een gast- als gastpartner. De gastpartner vertegenwoordigt de organisatie die zaken doet met de gastpartner. |
+   | **Gastidentiteit** | Ja | Een id voor de gastpartner |
+   | **Instellingen voor ontvangen** | Varieert | Deze eigenschappen zijn van toepassing op alle berichten die door de hostpartner zijn ontvangen |
+   | **Verzendinstellingen** | Varieert | Deze eigenschappen zijn van toepassing op alle berichten die door de hostpartner worden verzonden |  
+   | **RosettaNet PIP referenties** | Ja | De PIP-verwijzingen naar de overeenkomst. Alle RosettaNet-berichten vereisen PIP-configuraties. |
    ||||
 
-1. Als u uw overeenkomst wilt instellen voor het ontvangen van inkomende berichten van de gast partner, selecteert u **instellingen voor ontvangen**.
+1. Als u uw overeenkomst wilt instellen voor het ontvangen van binnenkomende berichten van de gastpartner, selecteert u **Instellingen ontvangen**.
 
    ![Instellingen voor ontvangen](media/logic-apps-enterprise-integration-rosettanet/add-agreement-receive-details.png)
 
-   1. Als u het ondertekenen of versleutelen voor inkomende berichten wilt inschakelen, selecteert u in **berichten**het selectie vakje **bericht moet zijn ondertekend** of **moet het bericht respectievelijk worden versleuteld** .
+   1. Als u ondertekening of versleuteling voor binnenkomende berichten wilt inschakelen, moet onder **Berichten**de optie **Bericht worden ondertekend** of moet Bericht respectievelijk worden **versleuteld.**
 
-      | Eigenschap | Verplicht | Beschrijving |
+      | Eigenschap | Vereist | Beschrijving |
       |----------|----------|-------------|
-      | **Het bericht moet worden ondertekend** | Nee | Registreer inkomende berichten met het geselecteerde certificaat. |
-      | **Certificaat** | Ja, als ondertekenen is ingeschakeld | Het certificaat dat moet worden gebruikt voor ondertekening |
-      | **Bericht versleuteling inschakelen** | Nee | Inkomende berichten met het geselecteerde certificaat versleutelen. |
-      | **Certificaat** | Ja, als versleuteling is ingeschakeld | Het certificaat dat voor versleuteling moet worden gebruikt |
+      | **Bericht moet worden ondertekend** | Nee | Teken binnenkomende berichten met het geselecteerde certificaat. |
+      | **Certificaat** | Ja, als ondertekenen is ingeschakeld | Het certificaat dat u wilt gebruiken voor ondertekening |
+      | **Versleuteling van berichten inschakelen** | Nee | Inkomende berichten versleutelen met het geselecteerde certificaat. |
+      | **Certificaat** | Ja, als versleuteling is ingeschakeld | Het certificaat dat moet worden gebruikt voor versleuteling |
       ||||
 
-   1. Selecteer onder elke selectie het respectieve [certificaat](./logic-apps-enterprise-integration-certificates.md), dat u eerder hebt toegevoegd aan uw integratie account, dat u kunt gebruiken voor ondertekening of versleuteling.
+   1. Selecteer onder elke selectie het desbetreffende [certificaat](./logic-apps-enterprise-integration-certificates.md), dat u eerder aan uw integratieaccount hebt toegevoegd, om te gebruiken voor ondertekening of versleuteling.
 
-1. Selecteer **instellingen verzenden**om uw overeenkomst voor het verzenden van berichten naar de gast partner in te stellen.
+1. Als u uw overeenkomst wilt instellen voor het verzenden van berichten naar de gastpartner, selecteert u **Instellingen verzenden**.
 
    ![Instellingen verzenden](media/logic-apps-enterprise-integration-rosettanet/add-agreement-send-details.png)
 
-   1. Als u het ondertekenen of versleutelen voor uitgaande berichten wilt inschakelen, selecteert u in **berichten**de optie **bericht ondertekening inschakelen** of respectievelijk **bericht versleuteling** inschakelen. Selecteer onder elke selectie het respectievelijke algoritme en [certificaat](./logic-apps-enterprise-integration-certificates.md), dat u eerder hebt toegevoegd aan uw integratie account, dat u kunt gebruiken voor ondertekening of versleuteling.
+   1. Als u ondertekening of versleuteling voor uitgaande berichten wilt inschakelen, selecteert u onder **Berichten**respectievelijk **berichtondertekening** of **Versleuteling van berichten inschakelen.** Selecteer onder elke selectie het betreffende algoritme en [certificaat](./logic-apps-enterprise-integration-certificates.md), dat u eerder aan uw integratieaccount hebt toegevoegd, om te gebruiken voor ondertekening of versleuteling.
 
-      | Eigenschap | Verplicht | Beschrijving |
+      | Eigenschap | Vereist | Beschrijving |
       |----------|----------|-------------|
-      | **Bericht ondertekening inschakelen** | Nee | Uitgaande berichten ondertekenen met het geselecteerde handtekening algoritme en certificaat. |
-      | **Handtekening algoritme** | Ja, als ondertekenen is ingeschakeld | Het Ondertekeningsalgoritme dat moet worden gebruikt, op basis van het geselecteerde certificaat |
-      | **Certificaat** | Ja, als ondertekenen is ingeschakeld | Het certificaat dat moet worden gebruikt voor ondertekening |
-      | **Bericht versleuteling inschakelen** | Nee | Versleutel uitgaande met het geselecteerde versleutelings algoritme en certificaat. |
-      | **Versleutelings algoritme** | Ja, als versleuteling is ingeschakeld | Het versleutelings algoritme dat moet worden gebruikt, op basis van het geselecteerde certificaat |
-      | **Certificaat** | Ja, als versleuteling is ingeschakeld | Het certificaat dat voor versleuteling moet worden gebruikt |
+      | **Handtekening van berichten inschakelen** | Nee | Teken uitgaande berichten met het geselecteerde ondertekeningsalgoritme en -certificaat. |
+      | **Ondertekeningsalgoritme** | Ja, als ondertekenen is ingeschakeld | Het te gebruiken tekenalgoritme op basis van het geselecteerde certificaat |
+      | **Certificaat** | Ja, als ondertekenen is ingeschakeld | Het certificaat dat u wilt gebruiken voor ondertekening |
+      | **Versleuteling van berichten inschakelen** | Nee | Versleutel uitgaande met het geselecteerde versleutelingsalgoritme en -certificaat. |
+      | **Coderingsalgoritme** | Ja, als versleuteling is ingeschakeld | Het te gebruiken versleutelingsalgoritme op basis van het geselecteerde certificaat |
+      | **Certificaat** | Ja, als versleuteling is ingeschakeld | Het certificaat dat moet worden gebruikt voor versleuteling |
       ||||
 
-   1. Geef onder **eind punten**de vereiste url's op die moeten worden gebruikt voor het verzenden van actie berichten en bevestigingen.
+   1. Geef **onder Eindpunten**de vereiste URL's op die moeten worden gebruikt voor het verzenden van actieberichten en bevestigingen.
 
-      | Eigenschap | Verplicht | Beschrijving |
+      | Eigenschap | Vereist | Beschrijving |
       |----------|----------|-------------|
-      | **Actie-URL** |  Ja | De URL die moet worden gebruikt voor het verzenden van actie berichten. De URL is een verplicht veld voor zowel synchrone als asynchrone berichten. |
-      | **Bevestigings-URL** | Ja | De URL die moet worden gebruikt voor het verzenden van bevestigings berichten. De URL is een verplicht veld voor asynchrone berichten. |
+      | **Actie-URL** |  Ja | De URL die u wilt gebruiken voor het verzenden van actieberichten. De URL is een vereist veld voor zowel synchrone als asynchrone berichten. |
+      | **URL voor bevestiging** | Ja | De URL die u wilt gebruiken voor het verzenden van bevestigingsberichten. De URL is een vereist veld voor asynchrone berichten. |
       ||||
 
-1. Als u uw overeenkomst met de RosettaNet PIP-verwijzingen voor partners wilt instellen, selecteert u **ROSETTANET PIP-verwijzingen**. Selecteer onder **PIP-naam**de naam voor het eerder gemaakte PIP.
+1. Selecteer **RosettaNet PIP referenties**om uw overeenkomst met de RosettaNet PIP referenties voor partners in te stellen. Selecteer **onder PIP-naam**de naam voor uw eerder gemaakte PIP.
 
    ![PIP-verwijzingen](media/logic-apps-enterprise-integration-rosettanet/add-agreement-pip-details.png)
 
-   De overige eigenschappen worden door de selectie gevuld, op basis van de PIP die u hebt ingesteld in uw integratie account. Als dat nodig is, kunt u de **rol PIP**wijzigen.
+   Uw selectie vult de resterende eigenschappen, die zijn gebaseerd op de PIP die u in uw integratieaccount hebt ingesteld. Indien nodig u de **PIP-rol**wijzigen.
 
    ![Geselecteerde PIP](media/logic-apps-enterprise-integration-rosettanet/add-agreement-selected-pip.png)
 
-Nadat u deze stappen hebt voltooid, kunt u RosettaNet-berichten verzenden of ontvangen.
+Nadat u deze stappen hebt voltooid, bent u klaar om RosettaNet-berichten te verzenden of te ontvangen.
 
 ## <a name="rosettanet-templates"></a>RosettaNet-sjablonen
 
-Voor het versnellen van de ontwikkeling en het aanbevelen van integratie patronen kunt u logische app-sjablonen gebruiken voor het decoderen en coderen van RosettaNet-berichten. Wanneer u een logische app maakt, kunt u kiezen uit de sjabloon galerie in de ontwerp functie voor logische apps. U kunt deze sjablonen ook vinden in de [github-opslag plaats voor Azure Logic apps](https://github.com/Azure/logicapps).
+Om de ontwikkeling te versnellen en integratiepatronen aan te bevelen, u logische app-sjablonen gebruiken voor het decoderen en coderen van RosettaNet-berichten. Wanneer u een logische app maakt, u kiezen in de sjabloongalerie in Logic App Designer. U deze sjablonen ook vinden in de [GitHub-repository voor Azure Logic Apps.](https://github.com/Azure/logicapps)
 
 ![RosettaNet-sjablonen](media/logic-apps-enterprise-integration-rosettanet/decode-encode-rosettanet-templates.png)
 
 ## <a name="receive-or-decode-rosettanet-messages"></a>RosettaNet-berichten ontvangen of decoderen
 
-1. [Maak een lege logische app](quickstart-create-first-logic-app-workflow.md).
+1. [Een lege logische app maken](quickstart-create-first-logic-app-workflow.md).
 
-1. [Koppel uw integratie account](logic-apps-enterprise-integration-create-integration-account.md#link-account) aan uw logische app.
+1. [Koppel uw integratieaccount](logic-apps-enterprise-integration-create-integration-account.md#link-account) aan uw logische app.
 
-1. Voordat u een actie kunt toevoegen om het RosettaNet-bericht te decoderen, moet u een trigger toevoegen voor het starten van uw logische app, zoals een trigger voor aanvragen.
+1. Voordat u een actie toevoegen om het RosettaNet-bericht te decoderen, moet u een trigger toevoegen voor het starten van uw logische app, zoals een trigger voor aanvragen.
 
-1. Nadat u de trigger hebt toegevoegd, kiest u **nieuwe stap**.
+1. Kies **Nieuwe stap**na het toevoegen van de trigger .
 
-   ![Aanvraag trigger toevoegen](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
+   ![Trigger voor aanvragen toevoegen](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
 
-1. Voer in het zoekvak ' RosettaNet ' in en selecteer deze actie: **RosettaNet decoderen**
+1. Voer in het zoekvak "rosettanet" in en selecteer deze actie: **RosettaNet Decode**
 
-   ![Zoek en selecteer de actie ' RosettaNet decode '](media/logic-apps-enterprise-integration-rosettanet/select-decode-rosettanet-action.png)
+   ![Zoeken en selecteren "RosettaNet Decode" actie](media/logic-apps-enterprise-integration-rosettanet/select-decode-rosettanet-action.png)
 
-1. Geef de informatie op voor de eigenschappen van de actie:
+1. Geef de informatie voor de eigenschappen van de actie:
 
-   ![Actie Details opgeven](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
+   ![Actiedetails geven](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
 
-   | Eigenschap | Verplicht | Beschrijving |
+   | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
    | **Bericht** | Ja | Het RosettaNet-bericht dat moet worden gedecodeerd  |
-   | **Headers** | Ja | De HTTP-headers die de waarden opgeven voor de versie, die de RNIF-versie is, en het antwoord type, waarmee het communicatie type tussen de partners wordt aangegeven en synchroon of asynchroon kan zijn |
-   | **Rol** | Ja | De rol van de host-partner in het PIP- |
+   | **Headers** | Ja | De HTTP-headers die de waarden voor de versie, de RNIF-versie, en het antwoordtype bevatten, die het communicatietype tussen de partners aangeeft en synchroon of asynchroon kunnen zijn |
+   | **Rol** | Ja | De rol van de gastpartner in de PIP |
    ||||
 
-   De uitvoer van de RosettaNet decode-actie, samen met andere eigenschappen, omvat het **uitgaande signaal**, dat u kunt coderen en terugsturen naar de partner, of een andere actie op die uitvoer moet uitvoeren.
+   Vanuit de actie RosettaNet Decode bevat de uitvoer, samen met andere eigenschappen, **uitgaand signaal**, dat u kiezen om te coderen en terug te keren naar de partner, of andere actie op die uitvoer te ondernemen.
 
 ## <a name="send-or-encode-rosettanet-messages"></a>RosettaNet-berichten verzenden of coderen
 
-1. [Maak een lege logische app](quickstart-create-first-logic-app-workflow.md).
+1. [Een lege logische app maken](quickstart-create-first-logic-app-workflow.md).
 
-1. [Koppel uw integratie account](logic-apps-enterprise-integration-create-integration-account.md#link-account) aan uw logische app.
+1. [Koppel uw integratieaccount](logic-apps-enterprise-integration-create-integration-account.md#link-account) aan uw logische app.
 
-1. Voordat u een actie kunt toevoegen om het RosettaNet-bericht te coderen, moet u een trigger toevoegen voor het starten van uw logische app, zoals een aanvraag trigger.
+1. Voordat u een actie toevoegen om het RosettaNet-bericht te coderen, moet u een trigger toevoegen voor het starten van uw logische app, zoals een trigger voor aanvragen.
 
-1. Nadat u de trigger hebt toegevoegd, kiest u **nieuwe stap**.
+1. Kies **Nieuwe stap**na het toevoegen van de trigger .
 
-   ![Aanvraag trigger toevoegen](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
+   ![Trigger voor aanvragen toevoegen](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
 
-1. Voer in het zoekvak ' RosettaNet ' in en selecteer deze actie: **RosettaNet coderen**
+1. Voer in het zoekvak "rosettanet" in en selecteer deze actie: **RosettaNet Encode**
 
-   ![Zoek en selecteer de actie ' RosettaNet encode '](media/logic-apps-enterprise-integration-rosettanet/select-encode-rosettanet-action.png)
+   ![Zoek en selecteer actie "RosettaNet Encode"](media/logic-apps-enterprise-integration-rosettanet/select-encode-rosettanet-action.png)
 
-1. Geef de informatie op voor de eigenschappen van de actie:
+1. Geef de informatie voor de eigenschappen van de actie:
 
-   ![Actie Details opgeven](media/logic-apps-enterprise-integration-rosettanet/encode-action-details.png)
+   ![Actiedetails geven](media/logic-apps-enterprise-integration-rosettanet/encode-action-details.png)
 
-   | Eigenschap | Verplicht | Beschrijving |
+   | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Bericht** | Ja | Het RosettaNet-bericht dat moet worden gecodeerd  |
-   | **Host-partner** | Ja | De naam van de host-partner |
-   | **Gast partner** | Ja | De naam van de gast partner |
+   | **Bericht** | Ja | Het RosettaNet-bericht om te coderen  |
+   | **Gastpartner** | Ja | De naam van de hostpartner |
+   | **Gastpartner** | Ja | De naam van de gastpartner |
    | **PIP-code** | Ja | De PIP-code |
    | **PIP-versie** | Ja | De PIP-versie |  
-   | **PIP-exemplaar-id** | Ja | De unieke id voor dit PIP-bericht |  
-   | **Bericht type** | Ja | Het type van het bericht dat moet worden gecodeerd |  
-   | **Rol** | Ja | De rol van de host-partner |
+   | **PIP-instantie-identiteit** | Ja | De unieke id voor dit PIP-bericht |  
+   | **Berichttype** | Ja | Het type van het bericht dat moet worden gecodeerd |  
+   | **Rol** | Ja | De rol van de gastpartner |
    ||||
 
-   Het gecodeerde bericht is nu gereed om te verzenden naar de partner.
+   Het gecodeerde bericht is nu klaar om naar de partner te sturen.
 
-1. In dit voor beeld wordt de **http** -actie, de naam ' http-gecodeerd bericht verzenden naar de partner ', gebruikt om het gecodeerde bericht te verzenden.
+1. Als u het gecodeerde bericht wilt verzenden, wordt in dit voorbeeld de **HTTP-actie** gebruikt, die wordt omgedoopt tot 'HTTP - Gecodeerd bericht verzenden naar partner'.
 
    ![HTTP-actie voor het verzenden van RosettaNet-bericht](media/logic-apps-enterprise-integration-rosettanet/send-rosettanet-message-to-partner.png)
 
-   RosettaNet-standaarden worden bedrijfs transacties alleen als voltooid beschouwd wanneer alle stappen zijn voltooid die zijn gedefinieerd door de PIP.
+   Volgens RosettaNet-normen worden zakelijke transacties alleen als voltooid beschouwd wanneer alle stappen die door de PIP zijn gedefinieerd, zijn voltooid.
 
-1. Nadat de host het gecodeerde bericht naar de partner heeft verzonden, wacht de host op het signaal en de bevestiging. Als u deze taak wilt uitvoeren, voegt u de **RosettaNet wachten op antwoord** actie toe.
+1. Nadat de host het gecodeerde bericht naar de partner stuurt, wacht de host op het signaal en de bevestiging. Als u deze taak wilt uitvoeren, voegt u de **RosettaNet toe die wacht op reactieactie.**
 
-   ![Actie ' RosettaNet wachten op antwoord ' toevoegen](media/logic-apps-enterprise-integration-rosettanet/rosettanet-wait-for-response-action.png)
+   ![Voeg de actie "RosettaNet wait for response" toe](media/logic-apps-enterprise-integration-rosettanet/rosettanet-wait-for-response-action.png)
 
-   De duur die moet worden gebruikt voor wachtend en het aantal nieuwe pogingen is gebaseerd op de PIP-configuratie in uw integratie account. Als de reactie niet wordt ontvangen, wordt door deze actie een melding van de fout gegenereerd. Als u nieuwe pogingen wilt afhandelen, moet u de **code ring** altijd plaatsen en **wachten op reactie** acties in een lus **until** .
+   De gebruiksduur voor het wachten en het aantal nieuwe pogingen zijn gebaseerd op de PIP-configuratie in uw integratieaccount. Als het antwoord niet wordt ontvangen, genereert deze actie een foutmelding. Als u nieuwe pogingen wilt verwerken, plaatst u altijd de **acties Encode** en **Wachten op respons** in een lus **Tot.**
 
-   ![Until-lus met RosettaNet-acties](media/logic-apps-enterprise-integration-rosettanet/rosettanet-loop.png)
+   ![Tot lus met RosettaNet acties](media/logic-apps-enterprise-integration-rosettanet/rosettanet-loop.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het valideren, transformeren en andere bericht bewerkingen met de [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)
-* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
+* Meer informatie over het valideren, transformeren en andere berichtbewerkingen met het [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)
+* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)

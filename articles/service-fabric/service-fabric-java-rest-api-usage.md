@@ -1,81 +1,81 @@
 ---
-title: Api's van Azure Service Fabric Java-client
-description: Service Fabric Java-client-Api's genereren en gebruiken met behulp van Service Fabric client REST API specificatie
+title: Azure-servicefabric Java-clientAPI's
+description: Api's van Service Fabric Java-client genereren en gebruiken met behulp van REST API-specificatie van Service Fabric-client
 author: rapatchi
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: rapatchi
 ms.openlocfilehash: 0a243c1cd0ab0dcb93a1cc6169c89ba18606f346
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451672"
 ---
-# <a name="azure-service-fabric-java-client-apis"></a>Api's van Azure Service Fabric Java-client
+# <a name="azure-service-fabric-java-client-apis"></a>Azure-servicefabric Java-clientAPI's
 
-Met Service Fabric-client-Api's kunt u op micro Services gebaseerde toepassingen en containers implementeren en beheren in een Service Fabric cluster op Azure, on-premises, lokale ontwikkel machine of in een andere cloud. In dit artikel wordt beschreven hoe u Service Fabric Java client-Api's kunt genereren en gebruiken boven op de Service Fabric client REST Api's
+Api's van Service Fabric-client maken het mogelijk om op microservices gebaseerde toepassingen en containers te implementeren en te beheren in een Service Fabric-cluster op Azure, on-premises, op lokale ontwikkelingsmachine of in andere cloud. In dit artikel wordt beschreven hoe u API's van Service Fabric Java-client genereren en gebruiken bovenop de REST-API's van de Service Fabric-client
 
-## <a name="generate-the-client-code-using-autorest"></a>Genereer de client code met behulp van auto rest
+## <a name="generate-the-client-code-using-autorest"></a>De clientcode genereren met AutoRest
 
-Auto [rest](https://github.com/Azure/autorest) is een hulp programma waarmee client bibliotheken worden gegenereerd voor toegang tot gereste webservices. Invoer voor auto rest is een specificatie die de REST API beschrijft met de OpenAPI-specificatie-indeling. [Service Fabric-client rest api's](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/servicefabric/data-plane) volgen deze specificatie.
+[AutoRest](https://github.com/Azure/autorest) is een tool die clientbibliotheken genereert voor toegang tot RESTful-webservices. Invoer naar AutoRest is een specificatie die de REST-API beschrijft met behulp van de OpenAPI-specificatie-indeling. [Service Fabric client REST API's](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/servicefabric/data-plane) volgen deze specificatie .
 
-Volg de onderstaande stappen om Service Fabric Java-client code te genereren met behulp van het gereedschap auto rest.
+Volg de onderstaande stappen om Service Fabric Java-clientcode te genereren met behulp van de AutoRest-tool.
 
 1. nodejs en NPM installeren op uw computer
 
-    Als u Linux gebruikt, gaat u als volgt te werkt:
+    Als u linux gebruikt dan:
     ```bash
     sudo apt-get install npm
     sudo apt install nodejs
     ```
-    Als u Mac OS X gebruikt, gaat u als volgt te werkt:
+    Als u Mac OS X gebruikt, gaat het dan als nog niet het:
     ```bash
     brew install node
     ```
 
-2. Installeer autorest met behulp van NPM.
+2. Installeer AutoRest met Behulp van NPM.
     ```bash
     npm install -g autorest
     ```
 
-3. Fork en kloon de opslag plaats [Azure-rest-API-specificaties](https://github.com/Azure/azure-rest-api-specs) op uw lokale machine en ga naar de gekloonde locatie vanaf de terminal van uw computer.
+3. Fork en kloon [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs) repository in uw lokale machine en ga naar de gekloonde locatie vanaf de terminal van uw machine.
 
 
-4. Ga naar de hieronder vermelde locatie in de gekloonde opslag plaats.
+4. Ga naar de locatie hieronder in uw gekloonde repo.
     ```bash
     cd specification\servicefabric\data-plane\Microsoft.ServiceFabric\stable\6.0
     ```
 
     > [!NOTE]
-    > Als uw cluster versie niet 6,0 is, gaat u naar de juiste map in de map stabiel.
+    > Als uw clusterversie geen 6.0.* is, gaat u naar de juiste map in de stabiele map.
     >   
 
-5. Voer de volgende auto rest-opdracht uit om de Java-client code te genereren.
+5. Voer de volgende opdracht autorest uit om de java-clientcode te genereren.
     
     ```bash
     autorest --input-file= servicefabric.json --java --output-folder=[output-folder-name] --namespace=[namespace-of-generated-client]
     ```
-   Hieronder ziet u een voor beeld van het gebruik van auto rest.
+   Hieronder is een voorbeeld dat het gebruik van autorest aantoont.
    
     ```bash
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   Met de volgende opdracht wordt ``servicefabric.json`` specificatie bestand als invoer gebruikt en wordt Java-client code gegenereerd in ``java-rest-api-     code`` map en wordt de code in ``servicefabricrest`` naam ruimte Inge sloten. Na deze stap vindt u twee mappen ``models``, ``implementation`` en twee bestanden ``ServiceFabricClientAPIs.java`` en ``package-info.java`` gegenereerd in de ``java-rest-api-code`` map.
+   Met de ``servicefabric.json`` volgende opdracht wordt specificatiebestand als ``java-rest-api-     code`` invoer opgenomen en ``servicefabricrest`` wordt java-clientcode in de map gegenereerd en wordt de code in naamruimte ingesloten. Na deze stap vindt u ``models`` ``implementation`` twee mappen ``ServiceFabricClientAPIs.java`` ``package-info.java`` en twee ``java-rest-api-code`` bestanden en gegenereerd in de map.
 
 
-## <a name="include-and-use-the-generated-client-in-your-project"></a>De gegenereerde client in uw project insluiten en gebruiken
+## <a name="include-and-use-the-generated-client-in-your-project"></a>De gegenereerde client opnemen en gebruiken in uw project
 
-1. Voeg de gegenereerde code op de juiste wijze toe aan uw project. We raden u aan om een bibliotheek te maken met behulp van de gegenereerde code en deze bibliotheek op te nemen in uw project.
-2. Als u een bibliotheek maakt, neemt u de volgende afhankelijkheden op in het project van uw bibliotheek. Als u een andere benadering volgt, neemt u de afhankelijkheid op de juiste manier op.
+1. Voeg de gegenereerde code op de juiste manier toe aan uw project. We raden u aan een bibliotheek te maken met de gegenereerde code en deze bibliotheek op te nemen in uw project.
+2. Als u een bibliotheek maakt, neemt u de volgende afhankelijkheid op in het project van uw bibliotheek. Als u een andere aanpak volgt, moet u de afhankelijkheid op de juiste manier opnemen.
 
     ```
         GroupId:  com.microsoft.rest
         Artifactid: client-runtime
         Version: 1.2.1
     ```
-    Als u bijvoorbeeld maven Build System gebruikt, moet u het volgende in het ``pom.xml``-bestand:
+    Als u bijvoorbeeld een Maven-buildsysteem gebruikt, ``pom.xml`` neemt u het volgende in uw bestand op:
 
     ```xml
         <dependency>
@@ -85,7 +85,7 @@ Volg de onderstaande stappen om Service Fabric Java-client code te genereren met
         </dependency>
     ```
 
-3. Maak een RestClient met de volgende code:
+3. Een RestClient maken met de volgende code:
 
     ```java
         RestClient simpleClient = new RestClient.Builder()
@@ -95,8 +95,8 @@ Volg de onderstaande stappen om Service Fabric Java-client code te genereren met
             .build();
         ServiceFabricClientAPIs client = new ServiceFabricClientAPIsImpl(simpleClient);
     ```
-4. Gebruik het client object en breng de juiste aanroepen als dat nodig is. Hier volgen enkele voor beelden van het gebruik van client-object. We gaan ervan uit dat het toepassings pakket is gebouwd en geüpload naar het archief met installatie kopieën voordat u de onderstaande API'S gebruikt.
-    * Een toepassing inrichten
+4. Gebruik het clientobject en maak de juiste gesprekken indien nodig. Hier volgen enkele voorbeelden die het gebruik van clientobject aantonen. We gaan ervan uit dat het toepassingspakket is ingebouwd en geüpload naar de image store voordat u de onderstaande API's gebruikt.
+    * Een aanvraag indienen
     
         ```java
             ApplicationTypeImageStorePath imageStorePath = new ApplicationTypeImageStorePath();
@@ -113,17 +113,17 @@ Volg de onderstaande stappen om Service Fabric Java-client code te genereren met
             client.createApplication(applicationDescription);
         ```
 
-## <a name="understanding-the-generated-code"></a>Uitleg over de gegenereerde code
-Voor elke API vindt u vier overbelasting van de implementatie. Als er optionele para meters zijn, kunt u nog vier variaties vinden, inclusief deze optionele para meters. Denk bijvoorbeeld aan de API-``removeReplica``.
- 1. **openbaar void removeReplica (String nodenaam, UUID partitionId, String replicaId, Boolean forceRemove, lange time-out)**
-    * Dit is de synchrone variant van de API-aanroep van removeReplica
- 2. **open bare ServiceFuture\<void > removeReplicaAsync (String nodenaam, UUID partitionId, String replicaId, Boolean forceRemove, Long timeout, finale ServiceCallback\<void > serviceCallback)**
-    * Deze variant van de API-aanroep kan worden gebruikt als u asynchrone programmering wilt gebruiken en retour aanroepen wilt gebruiken
- 3. **openbaar waarneembaar\<void > removeReplicaAsync (String nodenaam, UUID partitionId, String replicaId)**
-    * Deze variant van de API-aanroep kan worden gebruikt als u een reactieve asynchrone programmering wilt gebruiken
- 4. **openbaar waarneembaar\<ServiceResponse\<void > > removeReplicaWithServiceResponseAsync (String nodenaam, UUID partitionId, String replicaId)**
-    * Deze variant van de API-aanroep kan worden gebruikt als u asynchrone programmering wilt gebruiken en wilt omgaan met onbewerkt rest-antwoord
+## <a name="understanding-the-generated-code"></a>Inzicht in de gegenereerde code
+Voor elke API vindt u vier overbelasting van de implementatie. Als er optionele parameters dan zou je nog vier variaties, waaronder die optionele parameters te vinden. Denk bijvoorbeeld aan ``removeReplica``de API .
+ 1. **openbare nietig verwijderenReplica(String nodeName, UUID partitionId, String replicaId, Booleaanse forceRemove, Long timeout)**
+    * Dit is de synchrone variant van de removeReplica API-aanroep
+ 2. **openbare ServiceFuture\<Void> verwijderenReplicaAsync(String nodeName, UUID partitionId, String replicaId, Booleaanse\<forceRemove, Long timeout, final ServiceCallback Void> serviceCallback)**
+    * Deze variant van API-aanroep kan worden gebruikt als u op de toekomst gebaseerde asynchrone programmering wilt gebruiken en callbacks wilt gebruiken
+ 3. **openbare waarneembare\<leegte> replicaasync(String nodeName, UUID partitionId, String replicaId)**
+    * Deze variant van API-aanroep kan worden gebruikt als u reactieve asynchrone programmering wilt gebruiken
+ 4. **public Observable\<\<ServiceResponse Void>> removeReplicaWithServiceResponseAsync(String nodeName, UUID partitionId, String replicaId)**
+    * Deze variant van API-aanroep kan worden gebruikt als u reactieve asynchrone programmering wilt gebruiken en raw-restrespons wilt verwerken
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [service Fabric rest-api's](https://docs.microsoft.com/rest/api/servicefabric/)
+* Meer informatie over [API's voor servicefabricrest](https://docs.microsoft.com/rest/api/servicefabric/)
 

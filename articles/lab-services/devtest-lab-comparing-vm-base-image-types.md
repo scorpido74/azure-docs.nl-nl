@@ -1,6 +1,6 @@
 ---
-title: Vergelijking van aangepaste installatiekopieën en formules in DevTest Labs | Microsoft Docs
-description: Meer informatie over de verschillen tussen aangepaste installatiekopieën en formules as VM bases zodat u kunt beslissen welke beste tegemoetkomt aan uw omgeving.
+title: Aangepaste afbeeldingen en formules vergelijken in DevTest Labs | Microsoft Documenten
+description: Meer informatie over de verschillen tussen aangepaste afbeeldingen en formules als VM-bases, zodat u beslissen welke het beste bij uw omgeving past.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,44 +15,44 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: ae7556eda817b9eb7be84f9d4a23ea91d3d5440d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64680304"
 ---
-# <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Vergelijking van aangepaste installatiekopieën en formules in DevTest Labs
-Beide [aangepaste installatiekopieën](devtest-lab-create-template.md) en [formules](devtest-lab-manage-formulas.md) kan worden gebruikt als basis voor [nieuwe VM's gemaakt](devtest-lab-add-vm.md). Het belangrijkste verschil tussen aangepaste installatiekopieën en formules is echter dat een aangepaste installatiekopie gewoon een installatiekopie op basis van een VHD is, terwijl een formule een installatiekopie op basis van een VHD wordt *naast* vooraf geconfigureerde instellingen - zoals VM-grootte, virtueel netwerk subnet, en artefacten. Deze vooraf gedefinieerde instellingen worden ingesteld met de standaardwaarden die kunnen worden overschreven op het moment van de VM wordt gemaakt. In dit artikel worden enkele van de voordelen (professionals) en nadelen (nadelen) uitgelegd voor het gebruik van aangepaste installatiekopieën met behulp van formules.
+# <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Aangepaste afbeeldingen en formules vergelijken in DevTest Labs
+Zowel [aangepaste afbeeldingen](devtest-lab-create-template.md) als [formules](devtest-lab-manage-formulas.md) kunnen worden gebruikt als basis voor het maken van [nieuwe VM's.](devtest-lab-add-vm.md) Het belangrijkste onderscheid tussen aangepaste afbeeldingen en formules is echter dat een aangepaste afbeelding gewoon een afbeelding is die is gebaseerd op een VHD, terwijl een formule een afbeelding is die is gebaseerd op een VHD *naast* vooraf geconfigureerde instellingen - zoals VM-grootte, virtueel netwerk, subnet en artefacten. Deze vooraf geconfigureerde instellingen zijn ingesteld met standaardwaarden die kunnen worden overschreven op het moment van het maken van vm's. In dit artikel worden enkele van de voordelen (voor- en nadelen) uitgelegd aan het gebruik van aangepaste afbeeldingen versus het gebruik van formules.
 
-## <a name="custom-image-pros-and-cons"></a>Aangepaste installatiekopie voor- en nadelen
-Aangepaste installatiekopieën bieden een statisch, onveranderbare manier om virtuele machines maken van een gewenste omgeving. 
+## <a name="custom-image-pros-and-cons"></a>Aangepaste afbeelding svoor- en nadelen
+Aangepaste afbeeldingen bieden een statische, onveranderlijke manier om VM's te maken vanuit een gewenste omgeving. 
 
 **Pros**
 
-* VM-inrichting van een aangepaste installatiekopie is snel als er niets verandert nadat de virtuele machine van de installatiekopie wordt genomen. Met andere woorden, zijn er geen instellingen om toe te passen als de aangepaste installatiekopie alleen een installatiekopie zonder de instellingen is. 
-* Virtuele machines die zijn gemaakt op basis van een aangepaste installatiekopie van één zijn identiek.
+* VM-inrichten vanuit een aangepaste afbeelding is snel omdat er niets verandert nadat de VM uit de afbeelding is gesponnen. Met andere woorden, er zijn geen instellingen toe te passen als de aangepaste afbeelding is gewoon een afbeelding zonder instellingen. 
+* VM's die zijn gemaakt van één aangepaste afbeelding zijn identiek.
 
-**Nadelen**
+**Tegens**
 
-* Als u nodig hebt om bij te werken van een bepaald aspect van de aangepaste installatiekopie, kan de installatiekopie moet worden gemaakt.  
+* Als u een bepaald aspect van de aangepaste afbeelding moet bijwerken, moet de afbeelding opnieuw worden gemaakt.  
 
 ## <a name="formula-pros-and-cons"></a>Formule voor- en nadelen
-Formules bieden een dynamische manier om virtuele machines maken van de gewenste instellingen.
+Formules bieden een dynamische manier om VM's te maken vanuit de gewenste configuratie/instellingen.
 
 **Pros**
 
-* Wijzigingen in de omgeving kunnen worden vastgelegd in een handomdraai via artefacten. Bijvoorbeeld, als u een virtuele machine met de meest recente materialen vanuit uw release-pijplijn geïnstalleerd of de meest recente code van uw opslagplaats aanmelden, kunt u gewoon opgeven een artefact die implementeert u de meest recente materialen of waarmee de meest recente code in de formule samen met een doel-basis afbeelding. Wanneer deze formule wordt gebruikt voor het maken van virtuele machines, zijn de meest recente bits/code geïmplementeerd/aangemeld bij de virtuele machine. 
-* Formules kunnen standaardinstellingen die aangepaste installatiekopieën niet - zoals VM-grootten en virtuele-netwerkinstellingen biedt definiëren. 
-* De instellingen die zijn opgeslagen in een formule als standaardwaarden worden weergegeven, maar kunnen worden gewijzigd wanneer de virtuele machine wordt gemaakt. 
+* Veranderingen in de omgeving kunnen worden vastgelegd op de vlieg via artefacten. Als u bijvoorbeeld een VM wilt installeren met de nieuwste bits uit uw releasepijplijn of de nieuwste code uit uw opslagplaats wilt aanvragen, u eenvoudig een artefact opgeven dat de nieuwste bits implementeert of de nieuwste code in de formule inschakelt samen met een doelbasis Afbeelding. Wanneer deze formule wordt gebruikt om VM's te maken, worden de nieuwste bits/code geïmplementeerd/ingeschakeld voor de VM. 
+* Formules kunnen standaardinstellingen definiëren die aangepaste afbeeldingen niet kunnen bieden, zoals VM-formaten en virtuele netwerkinstellingen. 
+* De instellingen die in een formule zijn opgeslagen, worden weergegeven als standaardwaarden, maar kunnen worden gewijzigd wanneer de vm wordt gemaakt. 
 
-**Nadelen**
+**Tegens**
 
-* Het maken van een virtuele machine van een formule, duurt langer dan het maken van een virtuele machine van een aangepaste installatiekopie.
+* Het maken van een VM op basis van een formule kan meer tijd in beslag nemen dan het maken van een VM op basis van een aangepaste afbeelding.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>Gerelateerde blogberichten
-* [Aangepaste installatiekopieën of formules?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+* [Aangepaste afbeeldingen of formules?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Veelgestelde vragen DevTest Labs](devtest-lab-faq.md)
+- [Veelgestelde vragen over DevTest Labs](devtest-lab-faq.md)

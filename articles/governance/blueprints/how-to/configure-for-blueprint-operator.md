@@ -1,43 +1,43 @@
 ---
-title: Uw omgeving instellen voor de operator blauw drukken
-description: Meer informatie over het configureren van uw Azure-omgeving voor gebruik met de standaard functie voor op rollen gebaseerde toegangs beheer (RBAC) op basis van de blauw druk-operator.
+title: Uw omgeving instellen voor Blueprint Operator
+description: Meer informatie over het configureren van uw Azure-omgeving voor gebruik met de RBAC-rol (Blueprint Operator built-in role-based access control).
 ms.date: 08/26/2019
 ms.topic: how-to
 ms.openlocfilehash: fba0dd3f2eeb69f768800d1d04640510462d3c86
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873213"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Uw omgeving configureren voor een Blueprint Operator
 
-Het beheer van uw blauw druk-definities en blauw druk-toewijzingen kunnen worden toegewezen aan verschillende teams. Het is gebruikelijk dat een architect of governance-team verantwoordelijk is voor het levenscyclus beheer van uw blauw drukken definities terwijl een operationeel team verantwoordelijk is voor het beheren van toewijzingen van deze centraal beheerde blauw drukken.
+Het beheer van uw blauwdrukdefinities en blauwdruktoewijzingen kan worden toegewezen aan verschillende teams. Het is gebruikelijk dat een architect of governanceteam verantwoordelijk is voor het levenscyclusbeheer van uw blauwdrukdefinities, terwijl een operationeel team verantwoordelijk is voor het beheren van opdrachten van die centraal gecontroleerde blauwdrukdefinities.
 
-Het ingebouwde op rollen gebaseerde toegangs beheer (RBAC) van de **operator blauw** drukken is speciaal ontworpen voor gebruik in dit type scenario. Met deze rol kunnen teams van bewerkingen type de toewijzing van de definities van de blauw druk van de organisaties beheren, maar niet de mogelijkheid om deze te wijzigen. Hiervoor moet u een configuratie in uw Azure-omgeving hebben en in dit artikel worden de stappen beschreven die nodig zijn.
+De Ingebouwde role-based access control (Blueprint **Operator)** is speciaal ontworpen voor gebruik in dit type scenario. De rol maakt het mogelijk voor operations type teams om de toewijzing van de organisaties blauwdruk definities te beheren, maar niet de mogelijkheid om ze te wijzigen. Hiervoor is een configuratie in uw Azure-omgeving vereist en in dit artikel worden de noodzakelijke stappen uitgelegd.
 
-## <a name="grant-permission-to-the-blueprint-operator"></a>Toestemming geven voor de blauw druk-operator
+## <a name="grant-permission-to-the-blueprint-operator"></a>Toestemming verlenen aan de Blueprint Operator
 
-De eerste stap is het verlenen van de rol van de **blauw druk-operator** aan het account of de beveiligings groep (aanbevolen) die aan blauw drukken gaat toewijzen. Deze actie moet worden uitgevoerd op het hoogste niveau in de hiërarchie van de beheer groep, die alle beheer groepen en abonnementen omvat die het operationele team toegang moet geven tot een blauw druk toewijzen. Het is raadzaam om het principe van minimale bevoegdheden te volgen bij het verlenen van deze machtigingen.
+De eerste stap is om de blueprint **operator** rol toe te kennen aan de account of beveiligingsgroep (aanbevolen) die gaat worden het toewijzen van blauwdrukken. Deze actie moet worden uitgevoerd op het hoogste niveau in de hiërarchie van de beheergroep die alle beheergroepen omvat en abonnementen waartoe het operations team toegang moet hebben tot blauwdruktoewijzing. Het wordt aanbevolen om het principe van de minste bevoegdheden te volgen bij het verlenen van deze machtigingen.
 
-1. Aanbevelingen [Een beveiligings groep maken en leden toevoegen](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
+1. (Aanbevolen) [Een beveiligingsgroep maken en leden toevoegen](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-1. [Een roltoewijzing](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) van de **operator voor blauw** drukken toevoegen aan het account of de beveiligings groep
+1. [Een roltoewijzing](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) van **Blueprint Operator** toevoegen aan de account- of beveiligingsgroep
 
-## <a name="user-assign-managed-identity"></a>Door gebruiker beheerde identiteit toewijzen
+## <a name="user-assign-managed-identity"></a>Beheerde identiteit van de gebruiker toewijzen
 
-Een definitie van een blauw druk kan door het systeem toegewezen of door de gebruiker toegewezen beheerde identiteiten gebruiken. Bij gebruik van de functie van de **blauw druk-operator** moet de definitie van de blauw druk echter worden geconfigureerd voor gebruik van een door de gebruiker toegewezen beheerde identiteit. Daarnaast moet aan het account of de beveiligings groep die de functie van de **blauw druk-operator** wordt verleend, de rol **Managed Identity-operator** worden verleend voor de door de gebruiker toegewezen beheerde identiteit. Zonder deze machtiging mislukken de opdrachten voor blauw drukken vanwege onvoldoende machtigingen.
+Een blauwdrukdefinitie kan beheerde identiteiten met het systeem of door de gebruiker toegewezen identiteiten gebruiken. Wanneer u echter de functie **Blueprint Operator** gebruikt, moet de blauwdrukdefinitie worden geconfigureerd om een door de gebruiker toegewezen beheerde identiteit te gebruiken. Bovendien moet de account- of beveiligingsgroep die de functie **Blueprint Operator** krijgt, de rol Managed **Identity Operator** op de door de gebruiker toegewezen beheerde identiteit krijgen. Zonder deze toestemming mislukken blauwdruktoewijzingen vanwege een gebrek aan machtigingen.
 
-1. [Een door de gebruiker toegewezen beheerde identiteit maken](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity) voor gebruik door een toegewezen blauw druk
+1. [Een door de gebruiker toegewezen beheerde identiteit maken](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity) voor gebruik door een toegewezen blauwdruk
 
-1. [Voeg een roltoewijzing](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) van de **operator Managed Identity** toe aan het account of de beveiligings groep. Bereik de roltoewijzing aan de nieuwe door de gebruiker toegewezen beheerde identiteit.
+1. [Voeg een roltoewijzing](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) van **Managed Identity Operator** toe aan het account of de beveiligingsgroep. De roltoewijzing scopen naar de nieuwe door de gebruiker toegewezen beheerde identiteit.
 
-1. Wijs als de **blauw druk-operator** [een blauw druk toe](../create-blueprint-portal.md#assign-a-blueprint) die gebruikmaakt van de nieuwe door de gebruiker toegewezen beheerde identiteit.
+1. [Wijs als](../create-blueprint-portal.md#assign-a-blueprint) **blueprintoperator**een blauwdruk toe die de nieuwe door de gebruiker toegewezen beheerde identiteit gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [levenscyclus van een blauwdruk](../concepts/lifecycle.md).
-- Meer informatie over hoe u [statische en dynamische parameters](../concepts/parameters.md) gebruikt.
-- Meer informatie over hoe u de [blauwdrukvolgorde](../concepts/sequencing-order.md) aanpast.
-- Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](../concepts/resource-locking.md).
-- Problemen oplossen tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing](../troubleshoot/general.md).
+- Meer informatie over de [levenscyclus van de blauwdruk](../concepts/lifecycle.md).
+- Begrijpen hoe [statische en dynamische parameters](../concepts/parameters.md)te gebruiken.
+- Leer de volgorde van de [blauwdrukvolgorde](../concepts/sequencing-order.md)aan te passen.
+- Ontdek hoe u gebruik maken van het vergrendelen van [blauwdrukbronnen.](../concepts/resource-locking.md)
+- Los problemen op tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing.](../troubleshoot/general.md)

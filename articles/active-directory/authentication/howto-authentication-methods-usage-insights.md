@@ -1,6 +1,6 @@
 ---
-title: Gebruik van verificatie methoden & Insights-Azure Active Directory
-description: Rapportage over de selfservice voor wachtwoord herstel van Azure AD en het gebruik van Multi-Factor Authentication authenticatie methode
+title: Gebruiksmethoden & inzichten - Azure Active Directory
+description: Rapportage over azure AD self-service password reset en Multi-Factor Authentication authentication method usage
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,90 +12,90 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b448e6ce7c8b4522d5e7bdbafb39eccca982fdee
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848507"
 ---
-# <a name="authentication-methods-usage--insights-preview"></a>Gebruik van de verificatie methoden & Insights (preview-versie)
+# <a name="authentication-methods-usage--insights-preview"></a>Gebruiksmethoden voor verificatiemethoden & inzichten (voorbeeld)
 
-Gebruik & Insights maakt het mogelijk om te begrijpen hoe verificatie methoden voor functies zoals Azure Multi-Factor Authentication en self-service voor het opnieuw instellen van wacht woorden in uw organisatie werken. Deze rapportage mogelijkheid biedt uw organisatie de mogelijkheid om te begrijpen welke methoden worden geregistreerd en hoe ze worden gebruikt.
+Met &-inzichten u begrijpen hoe verificatiemethoden voor functies zoals Azure Multi-Factor Authentication en selfservicewachtwoordreset werken in uw organisatie. Deze rapportagemogelijkheid biedt uw organisatie de middelen om te begrijpen welke methoden worden geregistreerd en hoe ze worden gebruikt.
 
 ## <a name="permissions-and-licenses"></a>Machtigingen en licenties
 
-De volgende rollen hebben toegang tot het gebruik en inzichten:
+De volgende rollen hebben toegang tot gebruik en inzichten:
 
 - Globale beheerder
 - Beveiligingslezer
-- Beveiligingsbeheerder
-- Rapport lezer
+- Beveiligingsbeheer
+- Rapporten Reader
 
-Er is geen aanvullende licentie vereist voor toegang tot gebruik en inzichten. De licentie gegevens voor Azure Multi-Factor Authentication en self-service voor het opnieuw instellen van wacht woorden (SSPR) zijn te vinden op de [Azure Active Directory-prijs site](https://azure.microsoft.com/pricing/details/active-directory/).
+Er is geen extra licentie vereist om toegang te krijgen tot gebruik en inzichten. Azure Multi-Factor Authentication en self-service password reset (SSPR) licentiegegevens zijn te vinden op de [Azure Active Directory prijssite.](https://azure.microsoft.com/pricing/details/active-directory/)
 
-## <a name="how-it-works"></a>Het werkt als volgt
+## <a name="how-it-works"></a>Hoe werkt het?
 
-Voor toegang tot het gebruik van de verificatie methode en inzichten:
+Ga als u toegang krijgen tot het gebruik en de inzichten van verificatiemethoden:
 
 1. Blader naar [Azure Portal](https://portal.azure.com).
-1. Blader naar **Azure Active Directory** > **wacht woord opnieuw instellen** > **gebruik & inzichten**.
-1. Vanuit de overzichten van de **registratie** of het **gebruik** kunt u ervoor kiezen om de vooraf gefilterde rapporten te openen om te filteren op basis van uw behoeften.
+1. Blader naar **Azure Active Directory** > **Password reset** > **Usage & insights.**
+1. In de overzichten **Registratie** of **Gebruik** u ervoor kiezen om de vooraf gefilterde rapporten te openen om te filteren op basis van uw behoeften.
 
-![Overzicht van gebruiks & Insights](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
+![Overzicht van gebruik& inzichten](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
 
-Als u rechtstreeks toegang wilt krijgen tot gebruik & Insights, gaat u naar [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade). Met deze koppeling gaat u naar het registratie overzicht.
+Ga & naar . [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade) Via deze link vind je het inschrijfoverzicht.
 
-De tegels gebruikers die zijn geregistreerd, gebruikers ingeschakeld en gebruikers kunnen de volgende registratie gegevens voor uw gebruikers tonen:
+De tegels die zijn geregistreerd, gebruikers zijn ingeschakeld en tegels met gebruikers die geschikt zijn voor uw gebruikers:
 
-- Geregistreerd: een gebruiker wordt als geregistreerd beschouwd als ze (of een beheerder) voldoende verificatie methoden hebben geregistreerd om te voldoen aan het SSPR-of Multi-Factor Authentication-beleid van uw organisatie.
-- Ingeschakeld: een gebruiker wordt als ingeschakeld beschouwd als ze binnen het bereik van het SSPR-beleid vallen. Als SSPR is ingeschakeld voor een groep, wordt de gebruiker als ingeschakeld beschouwd als ze zich in die groep bevinden. Als SSPR is ingeschakeld voor alle gebruikers, worden alle gebruikers in de Tenant (exclusief gasten) als ingeschakeld beschouwd.
-- Compatibel: een gebruiker wordt beschouwd als mogelijk als deze beide zijn geregistreerd en ingeschakeld. Deze status betekent dat ze SSPR op elk gewenst moment kunnen uitvoeren, indien nodig.
+- Geregistreerd: een gebruiker wordt als geregistreerd beschouwd als deze (of een beheerder) voldoende verificatiemethoden heeft geregistreerd om te voldoen aan het SSPR- of Multifactorauthenticatiebeleid van uw organisatie.
+- Ingeschakeld: een gebruiker wordt als ingeschakeld beschouwd als deze geschikt is voor het SSPR-beleid. Als SSPR is ingeschakeld voor een groep, wordt de gebruiker als ingeschakeld beschouwd als deze zich in die groep bevindt. Als SSPR is ingeschakeld voor alle gebruikers, worden alle gebruikers in de tenant (met uitzondering van gasten) als ingeschakeld beschouwd.
+- Staat: Een gebruiker wordt geschikt geacht als ze zowel geregistreerd als ingeschakeld zijn. Deze status betekent dat ze sspr op elk gewenst moment kunnen uitvoeren.
 
-Als u op een van deze tegels of de weer gegeven inzichten klikt, gaat u naar een vooraf gefilterde lijst met registratie gegevens.
+Als u op een van deze tegels klikt of op de inzichten die erin worden weergegeven, u een vooraf gefilterde lijst met registratiegegevens krijgen.
 
-Het **rapport registraties** op het tabblad **registratie** toont het aantal geslaagde en mislukte verificatie methode registraties op basis van de verificatie methode. In de grafiek **opnieuw instellen** op het tabblad **gebruik** wordt het aantal geslaagde en mislukte authenticaties weer gegeven tijdens de verificatie methode voor het opnieuw instellen van het wacht woord.
+In de grafiek **Registraties** op het tabblad **Registratie** wordt het aantal registraties van de geslaagde en mislukte verificatiemethode per verificatiemethode weergegeven. In het diagram **Opnieuw instellingen** op het tabblad **Gebruik** wordt het aantal geslaagde en mislukte verificaties weergegeven tijdens de wachtwoordresetstroom per verificatiemethode.
 
-Als u op een van de grafieken klikt, gaat u naar een vooraf gefilterde lijst met registratie-of reset-gebeurtenissen.
+Als u op een van de grafieken klikt, wordt u naar een vooraf gefilterde lijst met registratie- of resetgebeurtenissen gebracht.
 
-Met behulp van het besturings element in de rechter bovenhoek kunt u het datum bereik wijzigen voor de controle gegevens die in de registraties worden weer gegeven en grafieken opnieuw instellen op 24 uur, 7 dagen of 30 dagen.
+Met het besturingselement in de bovenste, rechterhoek u het datumbereik voor de controlegegevens in de grafieken Registraties en Reseten wijzigen tot 24 uur, 7 dagen of 30 dagen.
 
-### <a name="registration-details"></a>Registratie Details
+### <a name="registration-details"></a>Registratiegegevens
 
-Door te klikken op de gebruikers die zijn **geregistreerd**, **gebruikers ingeschakeld**of door **gebruikers geschikte** tegels of inzichten, wordt u naar de registratie gegevens geleid.
+Als u klikt op de **geregistreerde gebruikers,** **gebruikers ingeschakeld**of tegels of inzichten die geschikt zijn **voor gebruikers,** brengt u naar de registratiegegevens.
 
-In het rapport registratie Details wordt de volgende informatie weer gegeven voor elke gebruiker:
+In het rapport registratiegegevens worden de volgende gegevens voor elke gebruiker weergegeven:
 
-- Naam
+- Name
 - Gebruikersnaam
-- Registratie status (alle, geregistreerd, niet geregistreerd)
-- Ingeschakelde status (alle, ingeschakeld, niet ingeschakeld)
-- Status mogelijk (alles, mogelijk, niet mogelijk)
-- Methoden (app-melding, app-code, telefoon gesprek, SMS, E-mail, beveiligings vragen)
+- Registratiestatus (Alles, Geregistreerd, Niet geregistreerd)
+- Ingeschakelde status (Alles, Ingeschakeld, Niet ingeschakeld)
+- Capabele status (All, Capable, Not capable)
+- Methoden (app-melding, app-code, telefoongesprek, sms, e-mail, beveiligingsvragen)
 
-Met de besturings elementen aan de bovenkant van de lijst kunt u zoeken naar een gebruiker en de lijst met gebruikers filteren op basis van de weer gegeven kolommen.
+Met behulp van de besturingselementen boven aan de lijst u zoeken naar een gebruiker en de lijst met gebruikers filteren op basis van de getoonde kolommen.
 
 ### <a name="reset-details"></a>Details opnieuw instellen
 
-Als u op de registraties klikt of opnieuw instelt, worden de gegevens opnieuw ingesteld.
+Als u op de grafieken Registraties of Resets klikt, wordt u bij de details van de reset gegevens gebracht.
 
-Het rapport opnieuw instellen Details toont de registratie-en reset gebeurtenissen van de afgelopen 30 dagen, inclusief:
+In het rapport resetdetails worden registratie- en resetgebeurtenissen van de afgelopen 30 dagen weergegeven, waaronder:
 
-- Naam
+- Name
 - Gebruikersnaam
-- Functie (alle, registratie, opnieuw instellen)
-- Verificatie methode (app-melding, app-code, telefoon gesprek, Office-oproep, SMS, E-mail, beveiligings vragen)
-- Status (alle, geslaagd, mislukt)
+- Functie (Alles, Registratie, Resetten)
+- Verificatiemethode (app-melding, app-code, telefoongesprek, Office-oproep, sms, e-mail, beveiligingsvragen)
+- Status (Alles, Succes, Mislukking)
 
-Met de besturings elementen aan de bovenkant van de lijst kunt u zoeken naar een gebruiker en de lijst met gebruikers filteren op basis van de weer gegeven kolommen.
+Met behulp van de besturingselementen boven aan de lijst u zoeken naar een gebruiker en de lijst met gebruikers filteren op basis van de getoonde kolommen.
 
 ## <a name="limitations"></a>Beperkingen
 
-De gegevens die in deze rapporten worden weer gegeven, worden tot 60 minuten vertraagd. Het veld ' laatst vernieuwd ' komt voor in de Azure Portal om te bepalen hoe recent uw gegevens zijn.
+De gegevens in deze rapporten worden met maximaal 60 minuten vertraagd. Er bestaat een veld 'Laatste vernieuwd' in de Azure-portal om te bepalen hoe recent uw gegevens zijn.
 
-Gebruik en Insights-gegevens zijn geen vervanging voor de rapporten van Azure Multi-Factor Authentication-activiteiten of de informatie in het rapport met aanmeld gegevens voor Azure AD.
+Gegevens over gebruiken en inzichten zijn geen vervanging voor de activiteitsrapporten of -gegevens van Azure Multi-Factor Authentication in het ad-aanmeldingsrapport van Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Werken met de verificatie methoden gebruiks rapport-API](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
-- [Verificatie methoden kiezen voor uw organisatie](concept-authentication-methods.md)
+- [Werken met de API voor gebruiksrapport verificatiemethoden](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [Verificatiemethoden voor uw organisatie kiezen](concept-authentication-methods.md)
 - [Gecombineerde registratie-ervaring](concept-registration-mfa-sspr-combined.md)

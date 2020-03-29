@@ -1,5 +1,5 @@
 ---
-title: Azure MFA-server met AD FS in Windows Server-Azure Active Directory
+title: Azure MFA Server met AD FS in Windows Server - Azure Active Directory
 description: In dit artikel wordt beschreven hoe u aan de slag gaat met Azure Multi-Factor Authentication en AD FS in Windows Server 2012 R2 en 2016.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d4b463dad84f2c3ea93fefabdca5141a4b51468c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848201"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Azure Multi-Factor Authentication-server configureren om met AD FS in Windows Server te werken
@@ -25,7 +25,7 @@ Als u gebruikmaakt van Active Directory Federation Services (AD FS) en u cloud- 
 In dit artikel wordt besproken hoe u de Azure Multi-Factor Authentication-server gebruikt met AD FS in Windows Server 2012 R2 of Windows Server 2016. Lees over het [beveiligen van cloudresources en on-premises resources met behulp van de Azure Multi-Factor Authentication-server met AD FS 2.0](howto-mfaserver-adfs-2.md) voor meer informatie.
 
 > [!IMPORTANT]
-> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
+> Vanaf 1 juli 2019 biedt Microsoft geen MFA Server meer aan voor nieuwe implementaties. Nieuwe klanten die multi-factor authenticatie van hun gebruikers willen vereisen, moeten azure multi-factor authenticatie in de cloud gebruiken. Bestaande klanten die MFA Server vóór 1 juli hebben geactiveerd, kunnen de nieuwste versie, toekomstige updates downloaden en activeringsreferenties genereren zoals gewoonlijk.
 
 ## <a name="secure-windows-server-ad-fs-with-azure-multi-factor-authentication-server"></a>Windows Server AD FS beveiligen met Azure Multi-Factor Authentication-server
 
@@ -47,9 +47,9 @@ Houd rekening met de volgende informatie voordat u begint:
 1. Download en installeer de Azure Multi-Factor Authentication-server op uw AD FS-server. Lees [Aan de slag met de Azure Multi-Factor Authentication-server](howto-mfaserver-deploy.md) voor informatie over de installatie.
 2. Klik in de beheerconsole van de Azure Multi-Factor Authentication-server op het pictogram **AD FS**. Selecteer de opties **Registreren van gebruikers toestaan** en **Toestaan dat gebruikers de methode selecteren**.
 3. Selecteer de aanvullende opties die u wilt opgeven voor uw organisatie.
-4. Klik op **AD FS-adapter installeren**.
+4. Klik **op AD FS-adapter installeren**.
 
-   ![De ADFS-adapter installeren via de MFA-Server console](./media/howto-mfaserver-adfs-2012/server.png)
+   ![De ADFS-adapter installeren vanaf de MFA-serverconsole](./media/howto-mfaserver-adfs-2012/server.png)
 
 5. Als het Active Directory-venster wordt weergegeven, betekent dit twee dingen. Uw computer is lid van een domein en de Active Directory-configuratie voor de beveiliging van de communicatie tussen de AD FS-adapter en de Multi-Factor Authentication-service is niet voltooid. Klik op **Volgende** om deze configuratie automatisch te voltooien of schakel het selectievakje **Automatische Active Directory-configuratie overslaan en instellingen handmatig configureren** in. Klik op **Volgende**.
 6. Als het venster Lokale groep wordt weergegeven, betekent dit twee dingen. Uw computer is geen lid van een domein en de configuratie van de lokale groep voor de beveiliging van de communicatie tussen de AD FS-adapter en de Multi-Factor Authentication-service is niet voltooid. Klik op **Volgende** om deze configuratie automatisch te voltooien of schakel het selectievakje **Automatische lokale groep-configuratie overslaan en instellingen handmatig configureren** in. Klik op **Volgende**.
@@ -61,9 +61,9 @@ Houd rekening met de volgende informatie voordat u begint:
 
     `C:\Program Files\Multi-Factor Authentication Server\Register-MultiFactorAuthenticationAdfsAdapter.ps1`
 
-12. Bewerk het algemene authenticatiebeleid in AD FS om de zojuist geregistreerde adapter te gebruiken. Ga in de AD FS-beheerconsole naar het knooppunt **Authentication Policies**. Klik in het gedeelte **Multi-factor Authentication** op de koppeling **Edit** naast het gedeelte **Global Settings**. Selecteer in het venster **Edit Global Authentication Policy** **Multi-Factor Authentication** als een aanvullende verificatiemethode en klik op **OK**. De adapter wordt geregistreerd als WindowsAzureMultiFactorAuthentication. Start de AD FS-service opnieuw op voordat de registratie van kracht wordt.
+12. Bewerk het algemene authenticatiebeleid in AD FS om de zojuist geregistreerde adapter te gebruiken. Ga in de AD FS-beheerconsole naar het knooppunt **Authentication Policies**. Klik in het gedeelte **Multi-factor Authentication** op de koppeling **Edit** naast het gedeelte **Global Settings**. Selecteer in het venster **Edit Global Authentication Policy****Multi-Factor Authentication** als een aanvullende verificatiemethode en klik op **OK**. De adapter wordt geregistreerd als WindowsAzureMultiFactorAuthentication. Start de AD FS-service opnieuw op voordat de registratie van kracht wordt.
 
-![Algemeen authenticatie beleid bewerken](./media/howto-mfaserver-adfs-2012/global.png)
+![Globaal verificatiebeleid bewerken](./media/howto-mfaserver-adfs-2012/global.png)
 
 De Multi-Factor Authentication-server is nu ingesteld voor gebruik als een extra verificatieprovider voor gebruik met AD FS.
 
@@ -84,14 +84,14 @@ De Multi-Factor Authentication-server is nu ingesteld voor gebruik als een extra
 Volg deze stappen om het bestand MultiFactorAuthenticationAdfsAdapter.config te bewerken:
 
 1. Stel het knooppunt **UseWebServiceSdk** in op **true**.  
-2. Stel de waarde voor **WebServiceSdkUrl** in op de URL van de webservice-SDK voor Multi-Factor Authentication. Bijvoorbeeld: *https:\/\/contoso.com/\<Certificate name >/multifactorauthwebservicessdk/pfwssdk.asmx*, waarbij\<naam van *certificaat >* het certificaat is.  
-3. Bewerk het script Register-MultiFactorAuthenticationAdfsAdapter.ps1 door `-ConfigurationFilePath &lt;path&gt;` toe te voegen aan het einde van de opdracht `Register-AdfsAuthenticationProvider`, waarbij *&lt;path&gt;* het volledige pad is naar het bestand MultiFactorAuthenticationAdfsAdapter.config.
+2. Stel de waarde voor **WebServiceSdkUrl** in op de URL van de webservice-SDK voor Multi-Factor Authentication. Bijvoorbeeld: *https:\/\/\<contoso.com/ certificaatnaam>/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, Waar * \<certificaatnaam>* de naam van uw certificaat is.  
+3. Bewerk het script Register-MultiFactorAuthenticationAdfsAdapter.ps1 door aan `Register-AdfsAuthenticationProvider` het einde van de opdracht toe te voegen, `-ConfigurationFilePath &lt;path&gt;` waarbij * &lt;pad&gt; * het volledige pad is naar het bestand MultiFactorAuthenticationAdfsAdapter.config.
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>De webservice-SDK configureren met een gebruikersnaam en wachtwoord
 
 Er zijn twee opties voor het configureren van de webservice-SDK. De eerste is met een gebruikersnaam en wachtwoord, de tweede is met een clientcertificaat. Volg deze stappen voor de eerste optie of sla dit gedeelte over voor de tweede optie.  
 
-1. Stel de waarde voor **WebServiceSdkUsername** in op een account dat lid is van de veiligheidsgroep PhoneFactor Admins. Gebruik de indeling &lt;domein&gt;&#92;&lt;gebruikersnaam&gt;.  
+1. Stel de waarde voor **WebServiceSdkUsername** in op een account dat lid is van de beveiligingsgroep PhoneFactor Admins. Gebruik de indeling &lt;domein&gt;&#92;&lt;gebruikersnaam&gt;.  
 2. Stel de waarde voor **WebServiceSdkPassword** in op het juiste accountwachtwoord.
 
 ### <a name="configure-the-web-service-sdk-with-a-client-certificate"></a>De webservice-SDK configureren met een clientcertificaat
@@ -108,7 +108,7 @@ Als u geen gebruikersnaam en wachtwoord wilt gebruiken, volgt u deze stappen voo
 8. Stel enabled in op **true**.  
 9. Stel oneToOneCertificateMappingsEnabled in op **true**.  
 10. Klik op de knop **...** naast oneToOneMappings en vervolgens op de koppeling **Toevoegen**.  
-11. Open het CER-bestand dat u eerder hebt geëxporteerd in base 64-indeling. Verwijder *-----BEGIN CERTIFICATE-----* , *-----END CERTIFICATE-----* en alle regeleinden. Kopieer de resulterende tekenreeks.  
+11. Open het CER-bestand dat u eerder hebt geëxporteerd in base 64-indeling. Verwijder *-----BEGIN CERTIFICATE-----*, *-----END CERTIFICATE-----* en alle regeleinden. Kopieer de resulterende tekenreeks.  
 12. Stel het certificaat in op de tekenreeks die u in de vorige stap hebt gekopieerd.  
 13. Stel enabled in op **true**.  
 14. Stel Gebruikersnaam in op een account dat lid is van de veiligheidsgroep PhoneFactor Admins. Gebruik de indeling &lt;domein&gt;&#92;&lt;gebruikersnaam&gt;.  
@@ -131,24 +131,24 @@ Voer als laatste stap het script \Program Files\Multi-Factor Authentication Serv
 Voor de beveiliging van uw cloudresource stelt u een claimregel in die ervoor zorgt dat Active Directory Federation Services de multipleauthn-claim verstuurt wanneer een gebruiker de verificatie in twee stappen voltooit. Deze claim wordt doorgegeven aan Azure AD. Volg deze procedure om de stappen te doorlopen:
 
 1. Open AD FS-beheer.
-2. Selecteer **Relying Party-vertrouwensrelaties** aan de linkerkant.
-3. Klik met de rechtermuisknop op **Identiteitsplatform van Microsoft Office 365** en selecteer **Claimregels bewerken...**
+2. Selecteer aan de linkerkant **vertrouwensrelaties van relying party**.
+3. Klik met de rechtermuisknop op **Microsoft Office 365 Identity Platform** en selecteer **Claimregels bewerken...**
 
-   ![Claim regels bewerken in de ADFS-console](./media/howto-mfaserver-adfs-2012/trustedip1.png)
+   ![Claimregels bewerken in de ADFS-console](./media/howto-mfaserver-adfs-2012/trustedip1.png)
 
-4. Klik bij Uitgifte transformatieregels op **Regel toevoegen**.
+4. Klik bij Uitgiftetransformatieregels op **Regel toevoegen.**
 
-   ![Transformatie regels bewerken in de ADFS-console](./media/howto-mfaserver-adfs-2012/trustedip2.png)
+   ![Transformatieregels bewerken in de ADFS-console](./media/howto-mfaserver-adfs-2012/trustedip2.png)
 
 5. Selecteer in de wizard Transformatieclaimregels toevoegen **Passthrough of Een binnenkomende claim filteren** in de vervolgkeuzelijst en klik op **Volgende**.
 
-   ![Wizard claim regel voor trans formatie toevoegen](./media/howto-mfaserver-adfs-2012/trustedip3.png)
+   ![Wizard Transformatieclaimregel toevoegen](./media/howto-mfaserver-adfs-2012/trustedip3.png)
 
 6. Geef de regel een naam.
 7. Selecteer **Authenticatiemethodereferenties** als het type voor binnenkomende claims.
 8. Selecteer **Alle claimwaarden doorgeven**.
 
-    ![Wizard claim regel voor trans formatie toevoegen](./media/howto-mfaserver-adfs-2012/configurewizard.png)
+    ![Wizard Claimregel voor transformatie toevoegen](./media/howto-mfaserver-adfs-2012/configurewizard.png)
 
 9. Klik op **Voltooien**. Sluit de AD FS-beheerconsole.
 

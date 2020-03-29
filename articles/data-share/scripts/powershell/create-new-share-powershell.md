@@ -1,6 +1,6 @@
 ---
-title: 'Power shell-script: een nieuwe Azure-gegevens share maken | Microsoft Docs'
-description: Met dit Power shell-script maakt u een nieuwe gegevens share binnen een bestaand gegevens share-account.
+title: 'PowerShell-script: een nieuwe Azure-gegevensshare maken | Microsoft Documenten'
+description: Met dit PowerShell-script wordt een nieuw gegevensaandeel gemaakt binnen een bestaand Data Share-account.
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 54d5dc35cf230b62cbe5f8c3cb4a1dc81eccf1e3
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70307250"
 ---
-# <a name="use-powershell-to-create-a-data-share-in-azure"></a>Power shell gebruiken voor het maken van een gegevens share in azure
+# <a name="use-powershell-to-create-a-data-share-in-azure"></a>PowerShell gebruiken om een gegevensshare in Azure te maken
 
-Met dit Power shell-script maakt u een nieuwe gegevens share binnen een bestaand gegevens share-account.
+Met dit PowerShell-script wordt een nieuwe gegevensshare gemaakt binnen een bestaand Data Share-account.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -41,11 +41,11 @@ In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzDataShare](/powershell/module/az.datashare/new-azdatashare?view=azps-2.6.0) | Hiermee maakt u een gegevens share. |
+| [Nieuw-AzDataShare](/powershell/module/az.datashare/new-azdatashare?view=azps-2.6.0) | Hiermee maakt u een gegevensshare. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
 
-Aanvullende voor beelden van Power shell-scripts voor Azure data share vindt u in de [Azure data share Power shell](../../samples-powershell.md)-voor beelden.
+Aanvullende Azure Data Share PowerShell-scriptvoorbeelden zijn te vinden in de [PowerShell-voorbeelden voor Azure Data Share.](../../samples-powershell.md)

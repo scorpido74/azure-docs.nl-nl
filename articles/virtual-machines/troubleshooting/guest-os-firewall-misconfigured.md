@@ -1,5 +1,5 @@
 ---
-title: Azure VM-Gast-OS-firewall is onjuist geconfigureerd | Microsoft Docs
+title: Azure VM Guest OS-firewall is verkeerd geconfigureerd | Microsoft Documenten
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,92 +15,92 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 8f04d943e1db49beed13c183fbd06e401546fc03
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71153895"
 ---
-# <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure VM-Gast OS firewall is onjuist geconfigureerd
+# <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure VM-gastOS-firewall is verkeerd geconfigureerd
 
-In dit artikel over het oplossen van onjuist geconfigureerde gastbesturingssysteem system-firewall op de virtuele machine in Azure introduceren.
+In dit artikel wordt uitgelegd hoe u een verkeerd geconfigureerde firewall voor gastbesturingssysteemop Azure VM oplossen.
 
 ## <a name="symptoms"></a>Symptomen
 
-1.  Het welkomstscherm van de virtuele machine (VM) ziet u dat de virtuele machine volledig geladen is.
+1.  Het welkomstscherm van de virtuele machine (VM) laat zien dat de VM volledig is geladen.
 
-2.  Afhankelijk van hoe de Gast-besturingssysteem is geconfigureerd, kunnen er bepaalde of geen van de bereiken van de virtuele machine netwerkverkeer.
+2.  Afhankelijk van hoe het gastbesturingssysteem is geconfigureerd, kan er een of geen netwerkverkeer zijn dat de VM bereikt.
 
 ## <a name="cause"></a>Oorzaak
 
-Een onjuiste configuratie van de firewall van de Gast-systeem kan sommige of alle soorten netwerkverkeer naar de virtuele machine blokkeren.
+Een verkeerde configuratie van de firewall van het gastsysteem kan sommige of alle soorten netwerkverkeer naar de VM blokkeren.
 
 ## <a name="solution"></a>Oplossing
 
-Voordat u deze stappen hebt uitgevoerd, maakt u een momentopname van de schijf van de betrokken virtuele machine als een back-up. Zie voor meer informatie, [momentopname maken van een schijf](../windows/snapshot-copy-managed-disk.md).
+Voordat u deze stappen volgt, maakt u een momentopname van de systeemschijf van de betreffende VM als back-up. Zie [Momentopname een schijf voor](../windows/snapshot-copy-managed-disk.md)meer informatie .
 
-Om dit probleem wilt oplossen, gebruikt u de seriële Console of [herstel de virtuele machine offline](troubleshoot-rdp-internal-error.md#repair-the-vm-offline) door het koppelen van de schijf van de virtuele machine aan een virtuele machine voor herstel.
+Als u dit probleem wilt oplossen, gebruikt u de seriële console of [herstelt u de VM offline](troubleshoot-rdp-internal-error.md#repair-the-vm-offline) door de systeemschijf van de VM aan een herstelvm te koppelen.
 
 ## <a name="online-mitigations"></a>Online oplossingen
 
-Verbinding maken met de [seriële Console en open vervolgens een PowerShell-sessie](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Als de seriële Console is niet ingeschakeld op de virtuele machine, gaat u naar de sectie 'Herstel de virtuele machine Offline' van de volgende Azure-artikel:
+Maak verbinding met de [seriële console en open vervolgens een PowerShell-exemplaar](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Als de seriële console niet is ingeschakeld op de VM, gaat u naar de sectie 'De VM offline herstellen' van het volgende Azure-artikel:
 
- [Een interne fout treedt op wanneer u probeert verbinding maken met een Azure-VM via Extern bureaublad](troubleshoot-rdp-internal-error.md#repair-the-vm-offline)
+ [Er treedt een interne fout op wanneer u via Extern bureaublad probeert te verbinden met een Azure-VM](troubleshoot-rdp-internal-error.md#repair-the-vm-offline)
 
-De volgende regels kunnen worden bewerkt voor de toegang tot de virtuele machine (via RDP) of om een makkelijker troubleshooting ervaring te bieden:
+De volgende regels kunnen worden bewerkt om toegang tot de VM (via RDP) in te schakelen of om een eenvoudigere probleemoplossingservaring te bieden:
 
-*   Extern bureaublad (TCP-in): Dit is de standaard regel die primaire toegang biedt tot de virtuele machine door RDP in azure toe te staan.
+*   Extern bureaublad (TCP-In): dit is de standaardregel die primaire toegang tot de VM biedt door RDP toe te staan in Azure.
 
-*   Windows Remote Management (HTTP-in): Met deze regel kunt u verbinding maken met de virtuele machine met behulp van Power shell. in azure kunt u met dit soort toegang het script aspect van externe scripts en probleem oplossing gebruiken.
+*   Windows Remote Management (HTTP-In): met deze regel u verbinding maken met de VM met PowerShell., In Azure u met dit soort toegang het scripting-aspect van externe scripting en probleemoplossing gebruiken.
 
-*   Bestands-en printer deling (SMB-in): Deze regel maakt toegang tot netwerk shares mogelijk als optie voor het oplossen van problemen.
+*   File and Printer Sharing (SMB-In): Met deze regel kan toegang tot netwerkdelen worden toegestaan als een optie voor het oplossen van problemen.
 
-*   Bestands-en printer deling (ECHO aanvraag-ICMPv4-in): Met deze regel kunt u de virtuele machine pingen.
+*   Bestand en printerdelen (Echo Request - ICMPv4-In): met deze regel u de VM pingen.
 
-U kunt de huidige status van de firewallregel opvragen in de toegang tot de seriële Console-exemplaar.
+In de instantie Seriële consoletoegang u de huidige status van de firewallregel opvragen.
 
-*   Query's uitvoeren met behulp van de weergegeven naam als een parameter:
+*   Query met de weergavenaam als parameter:
 
     ```cmd
     netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(DisplayName.*<FIREWALL RULE NAME>)" -context 9,4 | more
     ```
 
-*   Query's uitvoeren met behulp van de lokale poort die gebruikmaakt van de toepassing:
+*   Query met behulp van de lokale poort die de toepassing gebruikt:
 
     ```cmd
     netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalPort.*<APPLICATION PORT>)" -context 9,4 | more
     ```
 
-*   Query's uitvoeren met behulp van het lokale IP-adres die gebruikmaakt van de toepassing:
+*   Query met behulp van het lokale IP-adres dat de toepassing gebruikt:
 
     ```cmd
     netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalIP.*<CUSTOM IP>)" -context 9,4 | more
     ```
 
-*   Als u ziet dat de regel is uitgeschakeld, kunt u deze inschakelen door het uitvoeren van de volgende opdracht uit:
+*   Als u ziet dat de regel is uitgeschakeld, u deze inschakelen door de volgende opdracht uit te voeren:
 
     ```cmd
     netsh advfirewall firewall set rule name="<RULE NAME>" new enable=yes
     ```
 
-*   Voor het oplossen van problemen, kunt u de firewallprofielen uitschakelen:
+*   Voor het oplossen van problemen u de firewallprofielen uitschakelen:
 
     ```cmd
     netsh advfirewall set allprofiles state off
     ```
 
-    Als u dit om in te stellen de firewall correct doet, opnieuw de firewall inschakelen nadat u klaar bent met het oplossen van problemen.
+    Als u dit doet om de firewall correct in te stellen, schakelt u de firewall opnieuw in nadat u uw probleemoplossing hebt voltooid.
 
     > [!Note]
-    > U hebt geen opnieuw opstarten van de virtuele machine als deze wijziging wilt toepassen.
+    > U hoeft de VM niet opnieuw op te starten om deze wijziging toe te passen.
 
-*   Probeer het opnieuw verbinding maken met de virtuele machine via RDP.
+*   Probeer opnieuw verbinding te maken met de VM via RDP.
 
-### <a name="offline-mitigations"></a>Offline oplossingen
+### <a name="offline-mitigations"></a>Offline mitigaties
 
-1.  Als u firewall regels wilt in-of uitschakelen, raadpleegt u [een firewall regel op een Azure VM-gast besturingssysteem in-of uitschakelen](enable-disable-firewall-rule-guest-os.md).
+1.  Als u firewallregels wilt in- of uitschakelen, verwijst u naar [Een firewallregel inschakelen of uitschakelen op een Azure VM-gastbesturingssysteem](enable-disable-firewall-rule-guest-os.md).
 
-2.  Controleer of u zich in de [Guest OS firewall geblokkeerd binnenkomend verkeer scenario](guest-os-firewall-blocking-inbound-traffic.md).
+2.  Controleer of u zich in de [firewall van het gastbesturingssysteem bevindt die het inkomende verkeersscenario blokkeert.](guest-os-firewall-blocking-inbound-traffic.md)
 
-3.  Als u nog steeds niet zeker weet of de firewall de toegang blokkeert, verwijzen naar [uitschakelen van de Gast OS-Firewall in Azure VM](disable-guest-os-firewall-windows.md), en vervolgens de firewall van de Gast-systeem met behulp van de juiste regels weer inschakelen.
+3.  Als u nog steeds twijfelt of de firewall uw toegang blokkeert, raadpleegt u [De gast-OS Firewall uitschakelen in Azure VM](disable-guest-os-firewall-windows.md)en schakelt u de firewall van het gastsysteem opnieuw in met behulp van de juiste regels.
 

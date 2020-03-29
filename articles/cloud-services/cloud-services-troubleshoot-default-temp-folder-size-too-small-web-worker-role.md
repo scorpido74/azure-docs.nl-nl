@@ -1,6 +1,6 @@
 ---
-title: De standaard TEMP-map is te klein voor een rol | Microsoft Docs
-description: Een Cloud serviceprovider heeft een beperkte hoeveelheid ruimte voor de map TEMP. In dit artikel vindt u enkele suggesties om te voor komen dat er bijna geen ruimte meer beschikbaar is.
+title: Standaard TEMP-mapgrootte is te klein voor een rol | Microsoft Documenten
+description: Een cloudservicerol heeft een beperkte hoeveelheid ruimte voor de MAP TEMP. Dit artikel geeft een aantal suggesties over hoe te voorkomen dat opraken van de ruimte.
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -15,27 +15,27 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 0b869b73a79872d9263058bedfead018e18721c1
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71154985"
 ---
-# <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>De standaard TEMP-map is te klein voor de web-of worker-rol van de Cloud service
-De standaard tijdelijke map van een Cloud Service medewerker of Web Role heeft een maximale grootte van 100 MB. deze kan op een bepaald moment vol raken. In dit artikel wordt beschreven hoe u kunt voor komen dat er geen ruimte meer is voor de tijdelijke map.
+# <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Standaard temp-mapgrootte is te klein voor een web/worker-rol van een cloudservice
+De standaardtijdelijke map van een cloudservicemedewerker of webrol heeft een maximale grootte van 100 MB, die op een gegeven moment vol kan worden. In dit artikel wordt beschreven hoe u voorkomen dat er geen ruimte meer is voor de tijdelijke map.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="why-do-i-run-out-of-space"></a>Waarom kan ik geen ruimte meer gebruiken?
-De standaard Windows-omgevings variabelen TEMP en TMP zijn beschikbaar voor code die wordt uitgevoerd in uw toepassing. Zowel TEMP als TMP verwijzen naar één map met een maximale grootte van 100 MB. Gegevens die in deze map worden opgeslagen, worden niet bewaard gedurende de levens cyclus van de Cloud service. Als de rolinstanties in een Cloud service worden gerecycled, wordt de Directory gereinigd.
+## <a name="why-do-i-run-out-of-space"></a>Waarom heb ik geen ruimte meer?
+De standaard Windows-omgevingsvariabelen TEMP en TMP zijn beschikbaar voor code die in uw toepassing wordt uitgevoerd. Zowel TEMP als TMP wijzen naar een enkele map met een maximale grootte van 100 MB. Gegevens die in deze map zijn opgeslagen, blijven niet bestaan gedurende de levenscyclus van de cloudservice. als de rolexemplaren in een cloudservice worden gerecycled, wordt de map schoongemaakt.
 
-## <a name="suggestion-to-fix-the-problem"></a>Suggestie voor het oplossen van het probleem
+## <a name="suggestion-to-fix-the-problem"></a>Suggestie om het probleem op te lossen
 Implementeer een van de volgende alternatieven:
 
-* Configureer een lokale opslag resource en open deze rechtstreeks in plaats van het gebruik van TEMP of TMP. Als u toegang wilt krijgen tot een lokale opslag resource vanuit code die wordt uitgevoerd in uw toepassing, roept u de methode [RoleEnvironment. GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) aan.
-* Configureer een lokale opslag resource en wijs de tijdelijke en TMP-mappen aan om naar het pad van de lokale opslag bron te verwijzen. Deze wijziging moet worden uitgevoerd binnen de methode [RoleEntryPoint. ONSTART](/previous-versions/azure/reference/ee772851(v=azure.100)) .
+* Configureer een lokale opslagbron en krijg rechtstreeks toegang tot deze resource in plaats van TEMP of TMP te gebruiken. Als u toegang wilt krijgen tot een lokale opslagbron van code die binnen uw toepassing wordt uitgevoerd, roept u de methode [RoleEnvironment.GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) aan.
+* Configureer een lokale opslagbron en wijs de TEMP- en TMP-mappen aan om het pad van de lokale opslagbron aan te wijzen. Deze wijziging moet worden uitgevoerd binnen de methode [RoleEntryPoint.OnStart.](/previous-versions/azure/reference/ee772851(v=azure.100))
 
-In het volgende code voorbeeld ziet u hoe u de doel mappen voor TEMP en TMP wijzigt in de methode onstart:
+In het volgende codevoorbeeld ziet u hoe u de doelmappen voor TEMP en TMP wijzigen vanuit de Methode OnStart:
 
 ```csharp
 using System;
@@ -70,8 +70,8 @@ namespace WorkerRole1
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Lees een blog waarin wordt beschreven [hoe u de tijdelijke map ASP.net van Azure Web Role verg root](https://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx).
+Lees een blog waarin wordt beschreven [hoe u de grootte van de Azure-webrol ASP.NET tijdelijke map vergroten.](https://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx)
 
-Bekijk meer [artikelen over probleem oplossing](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/vs-azure-tools-debugging-cloud-services-overview.md) voor Cloud Services.
+Bekijk meer [artikelen over probleemoplossing](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/vs-azure-tools-debugging-cloud-services-overview.md) voor cloudservices.
 
-Bekijk [de blog serie van Kevin Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)voor informatie over het oplossen van problemen met Cloud service rollen met behulp van Azure PaaS computer diagnostische gegevens.
+Bekijk de [blogreeks van Kevin Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)voor meer informatie over het oplossen van problemen met de functieproblemen met de cloudservice met behulp van azure PaaS-computerdiagnosegegevens.

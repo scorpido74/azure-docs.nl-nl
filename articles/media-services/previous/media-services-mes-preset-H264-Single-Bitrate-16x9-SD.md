@@ -1,6 +1,6 @@
 ---
-title: Vooraf ingestelde SD Media Encoder Standard in H264 Single-Bitrate 16 x 9 - Azure | Microsoft Docs
-description: Het onderwerp een overzicht van de **H264 Single-Bitrate 16 x 9 SD** taak vooraf ingesteld.
+title: H264 Single Bitrate 16x9 SD Media Encoder Standard preset - Azure | Microsoft Documenten
+description: Het onderwerp geeft een overzicht van de **H264 Single Bitrate 16x9 SD** taak preset.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: fcc370afeca41a8d1d227db368eeaba789c56137
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61129508"
 ---
 # <a name="h264-single-bitrate-16x9-sd"></a>H264 Single Bitrate 16x9 SD
-`Media Encoder Standard` definieert een reeks voorinstellingen die kunt u bij het maken van coderingstaken coderen. Kunt u ofwel een `preset name` om op te geven in welke indeling u wilt coderen van uw media-bestand. Of, kunt u uw eigen JSON of XML-indeling voorinstellingen (met behulp van UTF-8- of UTF-16-codering. Vervolgens geeft u door de aangepaste voorinstelling voor het coderingsprogramma. Voor een lijst van de vooraf gedefinieerde namen ondersteund door dit `Media Encoder Standard` encoder, Zie [taak voorinstellingen voor Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definieert een set coderingsvoorinstellingen die u gebruiken bij het maken van coderingstaken. U een `preset name` a gebruiken om aan te geven in welke indeling u uw mediabestand wilt coderen. U ook uw eigen JSON- of XML-gebaseerde voorinstellingen maken (met UTF-8- of UTF-16-codering. U zou dan de aangepaste voorinstelling doorgeven aan de encoder. Zie `Media Encoder Standard` [Taakvoorinstellingen voor Media Encoder Standard voor](media-services-mes-presets-overview.md)de lijst met alle vooraf ingestelde namen die door deze encoder worden ondersteund.  
   
- In dit onderwerp leest de `H264 Single Bitrate 16x9 SD` vooraf in XML en JSON-indeling.  
+ In dit `H264 Single Bitrate 16x9 SD` onderwerp wordt de voorinstelling in XML- en JSON-indeling weergegeven.  
   
- Deze vooraf ingestelde produceert een enkel MP4-bestand met een bitrate van 2200 kbps en stereo AAC-audio. Voor gedetailleerde informatie over het profiel bitrate, steekproeven snelheid, enz. van deze vooraf ingesteld, controleert u de XML of JSON hieronder gedefinieerd. Voor een uitleg van wat elk element in deze middelen voorinstellingen, en de geldige waarden voor elk element, Zie de [Media Encoder Standard schema](media-services-mes-schema.md) onderwerp.  
+ Deze voorinstelling produceert een enkel MP4-bestand met een bitrate van 2200 kbps en stereo OC-audio. Voor gedetailleerde informatie over profiel, bitrate, sampling rate, etc. van deze preset, onderzoekt u de XML of JSON die hieronder is gedefinieerd. Zie het [schemaonderwerp Media Encoder Standard](media-services-mes-schema.md) voor uitleg over wat elk element in deze voorinstellingen betekent en de geldige waarden voor elk element.  
   
  XML  
   

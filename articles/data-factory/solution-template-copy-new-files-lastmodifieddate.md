@@ -1,6 +1,6 @@
 ---
-title: Nieuwe en gewijzigde bestanden kopiëren via LastModifiedDate
-description: Meer informatie over het gebruik van een oplossings sjabloon om nieuwe en gewijzigde bestanden te kopiëren door LastModifiedDate met Azure Data Factory.
+title: Nieuwe en gewijzigde bestanden kopiëren op LastModifiedDate
+description: Meer informatie over het gebruik van een oplossingssjabloon om nieuwe en gewijzigde bestanden te kopiëren door LastModifiedDate met Azure Data Factory.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -12,82 +12,82 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
 ms.openlocfilehash: 971d311dfb54d417a8f66f504d01f08f8bcfc48b
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74942028"
 ---
-# <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Nieuwe en gewijzigde bestanden kopiëren met behulp van LastModifiedDate met Azure Data Factory
+# <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Nieuwe en gewijzigde bestanden kopiëren op LastModifiedDate met Azure Data Factory
 
-In dit artikel wordt een oplossings sjabloon beschreven die u kunt gebruiken om nieuwe en gewijzigde bestanden alleen te kopiëren door LastModifiedDate vanuit een archief op basis van een bestand naar een doel archief. 
+In dit artikel wordt een oplossingssjabloon beschreven die u gebruiken om alleen nieuwe en gewijzigde bestanden te kopiëren door LastModifiedDate van een archief op basis van bestanden naar een bestemmingsarchief. 
 
-## <a name="about-this-solution-template"></a>Over deze oplossings sjabloon
+## <a name="about-this-solution-template"></a>Over deze oplossingssjabloon
 
-Met deze sjabloon worden eerst de nieuwe en gewijzigde bestanden geselecteerd op basis van de kenmerken **LastModifiedDate**en worden vervolgens die geselecteerde bestanden gekopieerd van de gegevens bron opslag naar het doel archief van de gegevens.
+Deze sjabloon selecteert eerst de nieuwe en gewijzigde bestanden alleen op basis van hun kenmerken **LastModifiedDate**en kopieert deze geselecteerde bestanden vervolgens uit het gegevensbronarchief naar het gegevensdoelarchief.
 
 De sjabloon bevat één activiteit:
-- **Kopiëren** om nieuwe en gewijzigde bestanden alleen door LastModifiedDate te kopiëren van een bestands archief naar een doel archief.
+- **Kopieer** om nieuwe en gewijzigde bestanden alleen te kopiëren met LastModifiedDate van een bestandsarchief naar een bestemmingsarchief.
 
-De sjabloon definieert zes para meters:
--  *FolderPath_Source* is het mappad waar u de bestanden uit het bron archief kunt lezen. U moet de standaard waarde vervangen door uw eigen mappad.
--  *Directory_Source* is het pad naar de submap waar u de bestanden uit het bron archief kunt lezen. U moet de standaard waarde vervangen door uw eigen pad naar de submap.
--  *FolderPath_Destination* is het mappad waarnaar u bestanden wilt kopiëren naar het doel archief. U moet de standaard waarde vervangen door uw eigen mappad.
--  *Directory_Destination* is het pad naar de submap waar u bestanden naar het doel archief wilt kopiëren. U moet de standaard waarde vervangen door uw eigen pad naar de submap.
--  *LastModified_From* wordt gebruikt om de bestanden te selecteren waarvan het kenmerk LastModifiedDate na of gelijk is aan deze datum/tijd waarde.  Als u alleen de nieuwe bestanden wilt selecteren, die de laatste keer niet zijn gekopieerd, kan deze datum/tijd-waarde de tijd zijn waarop de pijp lijn de laatste keer is geactiveerd. U kunt de standaard waarde ' 2019-02-01T00:00:00Z ' vervangen door de verwachte LastModifiedDate in UTC-tijd zone. 
--  *LastModified_To* wordt gebruikt om de bestanden te selecteren waarvan het kenmerk LastModifiedDate vóór deze datum/tijd-waarde valt. Als u alleen de nieuwe bestanden wilt selecteren, die de laatste keer niet zijn gekopieerd, kan deze datum/tijd-waarde de huidige keer zijn.  U kunt de standaard waarde ' 2019-02-01T00:00:00Z ' vervangen door de verwachte LastModifiedDate in UTC-tijd zone. 
+De sjabloon definieert zes parameters:
+-  *FolderPath_Source* is het mappad waar u de bestanden uit het bronarchief lezen. U moet de standaardwaarde vervangen door uw eigen mappad.
+-  *Directory_Source* is het submappad waar u de bestanden uit het bronarchief lezen. U moet de standaardwaarde vervangen door uw eigen submappad.
+-  *FolderPath_Destination* is het mappad waar u bestanden naar het doelarchief wilt kopiëren. U moet de standaardwaarde vervangen door uw eigen mappad.
+-  *Directory_Destination* is het submappad waar u bestanden naar het doelarchief wilt kopiëren. U moet de standaardwaarde vervangen door uw eigen submappad.
+-  *LastModified_From* wordt gebruikt om de bestanden te selecteren waarvan het kenmerk LastModifiedDate na of gelijk is aan deze datumtijdwaarde.  Om alleen de nieuwe bestanden te selecteren, die de vorige keer niet zijn gekopieerd, kan deze datumwaarde de tijdswaarde zijn waarop de pijplijn de vorige keer is geactiveerd. U de standaardwaarde '2019-02-01T00:00:00Z' vervangen door uw verwachte LastModifiedDate in utc-tijdzone. 
+-  *LastModified_To* wordt gebruikt om de bestanden te selecteren waarvan het kenmerk LastModifiedDate vóór deze datumwaarde is. Om alleen de nieuwe bestanden te selecteren, die de vorige keer niet zijn gekopieerd, kan deze datumwaarde de huidige tijd zijn.  U de standaardwaarde '2019-02-01T00:00:00Z' vervangen door uw verwachte LastModifiedDate in utc-tijdzone. 
 
-## <a name="how-to-use-this-solution-template"></a>Deze oplossings sjabloon gebruiken
+## <a name="how-to-use-this-solution-template"></a>Deze oplossingssjabloon gebruiken
 
-1. Ga naar sjabloon **alleen nieuwe bestanden kopiëren door LastModifiedDate**. Een **nieuwe** verbinding maken met uw bron opslag archief. In het bron opslag archief kunt u bestanden kopiëren.
+1. Ga naar sjabloon **Nieuwe bestanden kopiëren alleen door LastModifiedDate**. Maak een **nieuwe** verbinding met uw bronopslagarchief. Het bronopslagarchief is waar u bestanden wilt kopiëren.
 
-    ![Een nieuwe verbinding maken met de bron](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate1.png)
+    ![Een nieuwe verbinding met de bron maken](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate1.png)
     
-2. Maak een **nieuwe** verbinding naar uw doel archief. U wilt bestanden kopiëren naar het doel archief. 
+2. Maak een **nieuwe** verbinding met uw bestemmingswinkel. Het doelarchief is waar u bestanden naartoe wilt kopiëren. 
 
-    ![Een nieuwe verbinding maken met de bestemming](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
+    ![Een nieuwe verbinding met de bestemming maken](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
 
 3. Selecteer **Deze sjabloon gebruiken**.
 
     ![Deze sjabloon gebruiken](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
     
-4. U ziet de pijp lijn die beschikbaar is in het deel venster, zoals in het volgende voor beeld wordt weer gegeven:
+4. U ziet de pijplijn die beschikbaar is in het deelvenster, zoals in het volgende voorbeeld wordt weergegeven:
 
-    ![De pijp lijn weer geven](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
+    ![De pijplijn weergeven](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
 
-5. Selecteer **debug**, schrijf de waarde voor de **para meters** en selecteer **volt ooien**.  In de onderstaande afbeelding worden de para meters als volgt ingesteld.
-   - **FolderPath_Source** = sourcefolder
+5. Selecteer **Foutopsporing,** schrijf de waarde voor de **parameters** en selecteer **Voltooien**.  In de onderstaande afbeelding stellen we de parameters als volgt in.
+   - **FolderPath_Source** = bronmap
    - **Directory_Source** = submap
-   - **FolderPath_Destination** = destinationfolder
+   - **FolderPath_Destination** = bestemmingsmap
    - **Directory_Destination** = submap
    - **LastModified_From** = 2019-02-01T00:00:00Z
    - **LastModified_To** = 2019-03-01T00:00:00Z
     
-    Het voor beeld geeft aan dat de bestanden, die voor het laatst zijn gewijzigd binnen de time span (**2019-02-01T00:00:00Z** naar **2019-03-01T00:00:00Z**), worden gekopieerd van het bronpad **sourcefolder/submap** naar het doelpad **destinationfolder/submap**.  U kunt deze vervangen door uw eigen para meters.
+    Het voorbeeld geeft aan dat de bestanden, die voor het laatst zijn gewijzigd binnen de tijdspanne (**2019-02-01T00:00:00Z** naar **2019-03-01T00:00:00Z**) worden gekopieerd van de **bronmap bronmap bronvan het bronpad/submap** naar de bestemmingspadbestemmingsmap/submap . **destinationfolder/subfolder**  U deze vervangen door uw eigen parameters.
 
     ![De pijplijn uitvoeren](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
 
-6. Bekijk het resultaat. U ziet alleen de bestanden die voor het laatst zijn gewijzigd binnen de geconfigureerde tijds periode, zijn gekopieerd naar het doel archief.
+6. Bekijk het resultaat. U ziet dat alleen de bestanden die het laatst zijn gewijzigd binnen de geconfigureerde tijdspanne zijn gekopieerd naar het doelarchief.
 
     ![Bekijk het resultaat](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png)
     
-7. U kunt nu een tumblingvenstertriggers-Windows-trigger toevoegen om deze pijp lijn te automatiseren, zodat de pijp lijn altijd nieuwe en gewijzigde bestanden alleen door LastModifiedDate kan kopiëren.  Selecteer **trigger toevoegen**en selecteer **Nieuw/bewerken**.
+7. Nu u een tuimelende windows trigger toevoegen om deze pijplijn te automatiseren, zodat de pijplijn altijd nieuwe en gewijzigde bestanden alleen door LastModifiedDate periodiek kan kopiëren.  Selecteer **Trigger toevoegen**en selecteer **Nieuw/Bewerken**.
 
     ![Bekijk het resultaat](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
     
-8. Selecteer **+ Nieuw**in het venster **triggers toevoegen** .
+8. Selecteer **+** **Nieuw**in het venster Triggers toevoegen .
 
-9. Selecteer **tumblingvenstertriggers-venster** voor het trigger type, stel **elke 15 minuten** in als het terugkeer patroon (u kunt wijzigen in een wille keurige interval periode). Selecteer **Ja** voor geactiveerd vak en selecteer vervolgens **OK**.
+9. Selecteer **Tumbling Window** voor het triggertype en stel Elke **15 minuten in** als herhaling (u overschakelen naar een intervaltijd). Selecteer **Ja** voor geactiveerd vak en selecteer **OK**.
 
     ![Trigger maken](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
-10. Stel de waarde voor de **trigger run-para meters** als volgt in en selecteer **volt ooien**.
-    - **FolderPath_Source** = **sourcefolder**.  U kunt vervangen door de map in de gegevens opslag van de bron.
-    - **Directory_Source** = **submap**.  U kunt vervangen door de submap in de gegevens opslag van de bron.
-    - **FolderPath_Destination** = **destinationfolder**.  U kunt vervangen door de map in het doel gegevens archief.
-    - **Directory_Destination** = **submap**.  U kunt vervangen door de submap in het doel gegevens archief.
-    - **LastModified_From** =   **\@trigger (). outputs. windowStartTime**.  Het is een systeem variabele van de trigger voor het bepalen van de tijd waarop de pijp lijn de laatste keer is geactiveerd.
-    - **LastModified_To** =  **\@trigger (). outputs. windowEndTime**.  Het is een systeem variabele van de trigger die de tijd bepaalt wanneer de pijp lijn deze keer wordt geactiveerd.
+10. Stel de waarde voor de **parameters triggerrun** als volgt in en selecteer **Voltooien**.
+    - **FolderPath_Source** = **sourcemap**.  U uw map vervangen in het brongegevensarchief.
+    - **Directory_Source** = **submap**.  U uw submap vervangen in het brongegevensarchief.
+    - **FolderPath_Destination** = **map met bestemming**.  U uw map vervangen in het doelgegevensarchief.
+    - **Directory_Destination** = **submap**.  U uw submap vervangen in het doelgegevensarchief.
+    - **LastModified_From** =  **LastModified_From\@trigger().outputs.windowStartTime**.  Het is een systeemvariabele vanaf de trigger die bepaalt wanneer de pijplijn de vorige keer is geactiveerd.
+    - **LastModified_To** = **LastModified_To\@trigger().outputs.windowEndTime**.  Het is een systeemvariabele vanaf de trigger die bepaalt wanneer de pijplijn deze keer wordt geactiveerd.
     
     ![Invoerparameters](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     
@@ -95,11 +95,11 @@ De sjabloon definieert zes para meters:
     
     ![Alles publiceren](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate12.png)
 
-12. Nieuwe bestanden maken in de bronmap van de gegevens bron opslag.  U wacht nu totdat de pijp lijn automatisch wordt geactiveerd en alleen de nieuwe bestanden worden gekopieerd naar het doel archief.
+12. Maak nieuwe bestanden in uw bronmap van het gegevensbronarchief.  U wacht nu tot de pijplijn automatisch wordt geactiveerd en alleen de nieuwe bestanden worden gekopieerd naar het doelarchief.
 
-13. Selecteer het tabblad **monitor** in het navigatie paneel aan de linkerkant en wacht ongeveer 15 minuten als het terugkeer patroon van de trigger is ingesteld op elke 15 minuten. 
+13. Selecteer het tabblad **Monitor** in het linkernavigatiedeelvenster en wacht ongeveer 15 minuten als de herhaling van de trigger is ingesteld op elke 15 minuten. 
 
-14. Bekijk het resultaat. U ziet dat de pijp lijn automatisch om de 15 minuten wordt geactiveerd en alleen de nieuwe of gewijzigde bestanden uit het bron archief worden gekopieerd naar het doel archief in elke pijplijn uitvoering.
+14. Bekijk het resultaat. U ziet dat uw pijplijn elke 15 minuten automatisch wordt geactiveerd en alleen de nieuwe of gewijzigde bestanden uit het bronarchief worden gekopieerd naar het doelarchief in elke pijplijnuitvoering.
 
     ![Bekijk het resultaat](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
     

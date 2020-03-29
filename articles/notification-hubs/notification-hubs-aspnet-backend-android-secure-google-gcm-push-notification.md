@@ -1,8 +1,8 @@
 ---
-title: Beveiligde push meldingen verzenden met Azure Notification Hubs
-description: Meer informatie over het verzenden van beveiligde push meldingen naar een Android-app vanuit Azure. Code voorbeelden geschreven in Java en C#.
+title: Beveiligde pushmeldingen verzenden met Azure Notification Hubs
+description: Meer informatie over het verzenden van beveiligde pushmeldingen naar een Android-app vanuit Azure. Code voorbeelden geschreven in Java en C#.
 documentationcenter: android
-keywords: push melding, Push meldingen, Push berichten, Android-push meldingen
+keywords: pushnotificatie, pushmeldingen, pushberichten, android pushmeldingen
 author: sethmanheim
 manager: femila
 editor: jwargo
@@ -18,13 +18,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 419a9f9b5ce698c7516edd55856cbea9891ba029
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71212178"
 ---
-# <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Beveiligde push meldingen verzenden met Azure Notification Hubs
+# <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Beveiligde pushmeldingen verzenden met Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -36,42 +36,42 @@ ms.locfileid: "71212178"
 > [!IMPORTANT]
 > U hebt een actief Azure-account nodig om deze zelfstudie te voltooien. Als u geen account hebt, kunt u binnen een paar minuten een gratis proefaccount maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started) voor meer informatie.
 
-Met ondersteuning voor push meldingen in Microsoft Azure kunt u toegang krijgen tot een gebruiks vriendelijke, geschaalde push-bericht infrastructuur met meerdere platforms, waardoor de implementatie van push meldingen voor zowel consumenten als bedrijfs toepassingen aanzienlijk eenvoudiger wordt. mobiele platforms.
+Pushnotificatie in Microsoft Azure stelt u in staat om toegang te krijgen tot een gebruiksvriendelijke, multi-platform, geschaalde push-message infrastructuur, wat de implementatie van pushmeldingen voor zowel consumenten- als bedrijfstoepassingen voor mobiele platforms.
 
-Vanwege regelgeving of beveiligings beperkingen kan het gebeuren dat een toepassing iets wil toevoegen in de melding die niet kan worden verzonden via de standaard infra structuur voor push meldingen. In deze zelf studie wordt beschreven hoe u dezelfde ervaring kunt krijgen door gevoelige informatie te verzenden via een beveiligde, geverifieerde verbinding tussen het Android-apparaat van de client en de back-end van de app.
+Vanwege wettelijke of beveiligingsbeperkingen wil een toepassing soms iets opnemen in de melding dat niet kan worden verzonden via de standaard push-notificatie-infrastructuur. In deze zelfstudie wordt beschreven hoe u dezelfde ervaring bereiken door gevoelige informatie te verzenden via een beveiligde, geverifieerde verbinding tussen het Android-clientapparaat en de back-end van de app.
 
-Op hoog niveau is de stroom als volgt:
+Op een hoog niveau is de stroom als volgt:
 
 1. De back-end van de app:
-   * Slaat een beveiligde Payload op in de back-enddatabase.
-   * Hiermee wordt de ID van deze melding naar het Android-apparaat verzonden (er worden geen beveiligde gegevens verzonden).
-2. De app op het apparaat wanneer de melding wordt ontvangen:
-   * Het Android-apparaat neemt contact op met de back-end die de beveiligde Payload aanvraagt.
-   * De app kan de payload weer geven als een melding op het apparaat.
+   * Slaat veilige payload op in back-end database.
+   * Hiermee wordt de ID van deze melding naar het Android-apparaat verzonden (er wordt geen beveiligde informatie verzonden).
+2. De app op het apparaat, bij ontvangst van de melding:
+   * Het Android-apparaat neemt contact op met de back-end met het verzoek om de veilige payload.
+   * De app kan de payload weergeven als een melding op het apparaat.
 
-Het is belang rijk te weten dat in de voor gaande stroom (en in deze zelf studie) wordt aangenomen dat het apparaat een verificatie token opslaat in de lokale opslag nadat de gebruiker zich heeft aangemeld. Deze aanpak zorgt voor een naadloze ervaring, omdat het apparaat de beveiligde payload van de melding kan ophalen met dit token. Als uw toepassing geen verificatie tokens opslaat op het apparaat of als deze tokens verlopen zijn, moet de app bij het ontvangen van de push melding een algemene melding weer geven waarin de gebruiker wordt gevraagd de app te starten. De app verifieert vervolgens de gebruiker en toont de meldings lading.
+Het is belangrijk op te merken dat in de voorafgaande stroom (en in deze zelfstudie), wordt aangenomen dat het apparaat een verificatietoken opslaat in de lokale opslag, nadat de gebruiker zich heeft aanmeldt. Deze aanpak garandeert een naadloze ervaring, omdat het apparaat de beveiligde payload van de melding kan ophalen met behulp van dit token. Als uw toepassing geen verificatietokens op het apparaat opslaat of als deze tokens kunnen worden verlopen, moet de apparaat-app, na ontvangst van de pushmelding, een algemene melding weergeven waarin de gebruiker wordt gevraagd de app te starten. De app verifieert vervolgens de gebruiker en toont de payload van de melding.
 
-Deze zelf studie laat zien hoe u beveiligde push meldingen verzendt. Het is gebaseerd op de zelf studie [gebruikers melden](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) , dus u moet de stappen in deze zelf studie eerst volt ooien als u dat nog niet hebt gedaan.
+In deze zelfstudie ziet u hoe u beveiligde pushmeldingen verzendt. Het bouwt voort op de [tutorial Gebruikers melden,](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) dus je moet eerst de stappen in die zelfstudie voltooien als je dat nog niet hebt gedaan.
 
 > [!NOTE]
-> In deze zelf studie wordt ervan uitgegaan dat u uw notification hub hebt gemaakt en geconfigureerd zoals wordt beschreven in [aan de slag met Notification hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).
+> In deze zelfstudie wordt ervan uitgegaan dat u uw meldingshub hebt gemaakt en geconfigureerd zoals beschreven in [Aan de slag met Meldinghubs (Android).](notification-hubs-android-push-notification-google-gcm-get-started.md)
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## <a name="modify-the-android-project"></a>Het Android-project wijzigen
 
-Nu u de back-end van uw app hebt gewijzigd om alleen de id van een push melding te verzenden, moet u uw Android *-* app wijzigen zodat deze melding wordt afgehandeld en de back-end terugbellen om het beveiligde bericht weer te geven.
-Voor dit doel moet u ervoor zorgen dat uw Android-app weet hoe u zich kunt verifiëren met uw back-end wanneer de push meldingen worden ontvangen.
+Nu u uw back-end van uw app hebt gewijzigd om alleen de *id* van een pushmelding te verzenden, moet u uw Android-app wijzigen om die melding te verwerken en uw back-end terugbellen om het beveiligde bericht op te halen dat moet worden weergegeven.
+Om dit doel te bereiken, moet u ervoor zorgen dat uw Android-app weet hoe u zichzelf verifiëren met uw back-end wanneer deze de pushmeldingen ontvangt.
 
-Wijzig nu de *aanmeldings* stroom om de waarde van de verificatie header op te slaan in de gedeelde voor keuren van uw app. Analoge mechanismen kunnen worden gebruikt voor het opslaan van verificatie tokens (bijvoorbeeld OAuth-tokens) die de app moet gebruiken zonder dat hiervoor gebruikers referenties zijn vereist.
+Wijzig nu de *aanmeldingsstroom* om de waarde van de verificatiekopwaarde op te slaan in de gedeelde voorkeuren van uw app. Analoge mechanismen kunnen worden gebruikt om verificatietokens (bijvoorbeeld OAuth-tokens) op te slaan die de app moet gebruiken zonder dat er gebruikersreferenties nodig zijn.
 
-1. Voeg in uw Android-app-project de volgende constanten toe boven aan de `MainActivity` klasse:
+1. Voeg in je Android-app-project de volgende `MainActivity` constanten toe aan de bovenkant van de les:
 
     ```java
     public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
     public static final String AUTHORIZATION_HEADER_PROPERTY = "AuthorizationHeader";
     ```
-2. Werk de `MainActivity` `getAuthorizationHeader()` methode die zich nog in de klasse bevinden, bij met de volgende code:
+2. Werk de `MainActivity` methode bij `getAuthorizationHeader()` om de volgende code te bevatten:
 
     ```java
     private String getAuthorizationHeader() throws UnsupportedEncodingException {
@@ -86,7 +86,7 @@ Wijzig nu de *aanmeldings* stroom om de waarde van de verificatie header op te s
         return basicAuthHeader;
     }
     ```
-3. Voeg boven aan `import` het `MainActivity` bestand de volgende-instructies toe:
+3. Voeg de `import` volgende instructies boven `MainActivity` aan het bestand toe:
 
     ```java
     import android.content.SharedPreferences;
@@ -94,7 +94,7 @@ Wijzig nu de *aanmeldings* stroom om de waarde van de verificatie header op te s
 
 Wijzig nu de handler die wordt aangeroepen wanneer de melding wordt ontvangen.
 
-1. Wijzig in `MyHandler` de klasse de `OnReceive()` methode die moet worden opgenomen:
+1. In `MyHandler` de klasse `OnReceive()` wijzigen van de methode te bevatten:
 
     ```java
     public void onReceive(Context context, Bundle bundle) {
@@ -103,7 +103,7 @@ Wijzig nu de handler die wordt aangeroepen wanneer de melding wordt ontvangen.
         retrieveNotification(secureMessageId);
     }
     ```
-2. Voeg vervolgens de `retrieveNotification()` -methode toe, waarbij `{back-end endpoint}` u de tijdelijke aanduiding vervangt door het back-end-eind punt dat is verkregen tijdens het implementeren van uw back-end:
+2. Voeg vervolgens `retrieveNotification()` de methode toe `{back-end endpoint}` en vervang de tijdelijke aanduiding door het back-end-eindpunt dat is verkregen tijdens het implementeren van uw back-end:
 
     ```java
     private void retrieveNotification(final String secureMessageId) {
@@ -134,15 +134,15 @@ Wijzig nu de handler die wordt aangeroepen wanneer de melding wordt ontvangen.
     }
     ```
 
-Met deze methode wordt de back-end van uw app aangeroepen om de meldings inhoud op te halen met behulp van de referenties die zijn opgeslagen in de gedeelde voor keuren en wordt deze weer gegeven als normale melding. De melding zoekt naar de app-gebruiker op dezelfde manier als andere push meldingen.
+Met deze methode wordt uw app back-end aangeroepen om de meldingsinhoud op te halen met behulp van de referenties die zijn opgeslagen in de gedeelde voorkeuren en wordt deze weergegeven als een normale melding. De melding kijkt naar de app-gebruiker precies zoals elke andere push-melding.
 
-Het is aan te raden om de gevallen van ontbrekende verificatie-header-eigenschap of afwijzing door de back-end af te handelen. De specifieke verwerking van deze gevallen is voornamelijk afhankelijk van uw doel gebruikers ervaring. Een optie is om een melding weer te geven met een algemene prompt voor de gebruiker om de daad werkelijke melding op te halen.
+Het is beter om de gevallen van ontbrekende authenticatie header eigenschap of afwijzing door de back-end te behandelen. De specifieke afhandeling van deze gevallen hangt meestal af van uw doelgebruikerservaring. Een optie is om een melding weer te geven met een algemene prompt voor de gebruiker om te verifiëren om de werkelijke melding op te halen.
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
 Voer de volgende acties uit om de toepassing uit te voeren:
 
-1. Zorg ervoor dat **project appbackend** is geïmplementeerd in Azure. Als u Visual Studio gebruikt, voert u de **project appbackend** Web API-toepassing uit. Er wordt een ASP.NET-webpagina weer gegeven.
-2. In eclips voert u de app uit op een fysiek Android-apparaat of de emulator.
-3. Voer een gebruikers naam en wacht woord in de gebruikers interface van de Android-app in. Dit kan een wille keurige teken reeks zijn, maar ze moeten dezelfde waarde hebben.
-4. Klik in de gebruikers interface van de Android-app op **Aanmelden**. Klik vervolgens op **Push verzenden**.
+1. Controleer of **AppBackend** is geïmplementeerd in Azure. Als u Visual Studio gebruikt, voert u de **API-toepassing AppBackend** uit. Er wordt een ASP.NET webpagina weergegeven.
+2. Voer in Eclipse de app uit op een fysiek Android-apparaat of de emulator.
+3. Voer in de gebruikersinterface van de Android-app een gebruikersnaam en wachtwoord in. Dit kan elke string zijn, maar ze moeten dezelfde waarde hebben.
+4. Klik in de gebruikersinterface van de Android-app op **Aanmelden**. Klik vervolgens op **Push verzenden**.

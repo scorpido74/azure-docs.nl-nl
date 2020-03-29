@@ -1,6 +1,6 @@
 ---
-title: Aanpassen van de oplossing voor verbonden Factory - Azure | Microsoft Docs
-description: Een beschrijving van hoe u het gedrag van de oplossingsversneller voor verbonden Factory aanpassen.
+title: De Connected Factory-oplossing aanpassen - Azure | Microsoft Documenten
+description: Een beschrijving van hoe u het gedrag van de Connected Factory-oplossingsversneller aanpassen.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -10,78 +10,78 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
 ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67080491"
 ---
-# <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Hoe de gegevens van uw OPC UA-servers worden weergegeven in de oplossing voor verbonden Factory aanpassen
+# <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Aanpassen hoe de Connected Factory-oplossing gegevens van uw OPC UA-servers weergeeft
 
-De oplossing voor verbonden Factory verzamelt en gegevens van de OPC UA-servers die zijn verbonden met de oplossing worden weergegeven. U kunt bladeren en opdrachten worden verzonden naar de OPC UA-servers in uw oplossing. Zie de [veelgestelde vragen over verbonden factory's](iot-accelerators-faq-cf.md) voor meer informatie over OPC UA.
+De Connected Factory-oplossing verzamelt en toont gegevens van de OPC UA-servers die met de oplossing zijn verbonden. U in uw oplossing door de OPC UA-servers bladeren en opdrachten verzenden. Zie de [veelgestelde vragen](iot-accelerators-faq-cf.md)over verbonden fabriek voor meer informatie over OPC UA.
 
-Voorbeelden van cumulatieve gegevens in de oplossing zijn de totale Equipment Efficiency (OEE) en Key Performance Indicators (KPI's) die u in het dashboard op de factory, de regel en het station niveaus bekijken kunt. De volgende schermafbeelding ziet u de OEE en KPI-waarden voor de **Assembly** station op **productielijn 1**, in de **München** factory:
+Voorbeelden van geaggregeerde gegevens in de oplossing zijn de Algemene Apparatuurefficiëntie (OEE) en Key Performance Indicators (KPI's) die u in het dashboard op de fabrieks-, lijn- en stationsniveaus bekijken. De volgende screenshot toont de OEE en KPI waarden voor de **Assemblage** station, op **Productielijn 1**, in de fabriek in **München:**
 
-![Voorbeeld van de OEE en KPI-waarden in de oplossing][img-oee-kpi]
+![Voorbeeld van OEE- en KPI-waarden in de oplossing][img-oee-kpi]
 
-De oplossing kunt u gedetailleerde informatie weergeven van specifieke items uit de OPC UA-servers met de naam *stations*. De volgende schermafbeelding ziet u grafieken van het aantal geproduceerde items uit een specifiek station:
+Met de oplossing u gedetailleerde informatie bekijken van specifieke gegevensitems van de OPC UA-servers, *stations*genaamd. De volgende schermafbeelding toont plots van het aantal gefabriceerde items van een specifiek station:
 
-![Grafieken van het aantal geproduceerde artikelen][img-manufactured-items]
+![Percelen van het aantal vervaardigde artikelen][img-manufactured-items]
 
-Als u op een of meer grafieken, kunt u de gegevens verder met Time Series Insights (TSI) verkennen:
+Als u op een van de grafieken klikt, u de gegevens verder verkennen met behulp van Time Series Insights (TSI):
 
-![Gegevens met behulp van Time Series Insights verkennen][img-tsi]
+![Gegevens verkennen met behulp van inzichten uit de time-serie][img-tsi]
 
-Dit artikel wordt beschreven:
+In dit artikel wordt beschreven:
 
-- Hoe de gegevens beschikbaar worden gesteld aan de verschillende weergaven in de oplossing.
-- Hoe u de manier waarop de oplossing kunt aanpassen, worden de gegevens weergegeven.
+- Hoe de gegevens beschikbaar worden gesteld aan de verschillende standpunten in de oplossing.
+- Hoe u de manier waarop de oplossing de gegevens weergeeft, aanpassen.
 
 ## <a name="data-sources"></a>Gegevensbronnen
 
-De oplossing voor verbonden Factory worden gegevens uit de OPC UA-servers die zijn verbonden met de oplossing. De standaard-installatie omvat verschillende OPC UA-servers waarop een factory simulatie wordt uitgevoerd. U kunt uw eigen OPC UA-servers toevoegen die [verbinding maken via een gateway] [lnk-connect-cf] aan uw oplossing.
+De Connected Factory-oplossing geeft gegevens weer van de OPC UA-servers die met de oplossing zijn verbonden. De standaardinstallatie omvat verschillende OPC UA-servers die een fabriekssimulatie uitvoeren. U uw eigen OPC UA-servers die [verbinding maken via een gateway][lnk-connect-cf] toevoegen aan uw oplossing.
 
-De gegevensitems die een verbonden OPC UA-server naar uw oplossing in het dashboard verzenden kunt, kunt u bladeren:
+U bladeren door de gegevensitems die een verbonden OPC UA-server naar uw oplossing in het dashboard kan verzenden:
 
-1. Kies **Browser** om te navigeren naar de **selecteert een OPC UA-server** weergeven:
+1. Kies **Browser** om naar de **OPC UA-serverweergave** selecteren:
 
-    ![Navigeer naar de selecteert een OPC UA-server weergeven][img-select-server]
+    ![Navigeren naar de opc-serverweergave selecteren][img-select-server]
 
-1. Selecteer een server en klikt u op **Connect**. Klik op **doorgaan** wanneer de beveiligingswaarschuwing wordt weergegeven.
+1. Selecteer een server en klik op **Verbinding maken**. Klik **op Doorgaan** wanneer de beveiligingswaarschuwing wordt weergegeven.
 
     > [!NOTE]
-    > Deze waarschuwing wordt eenmaal weergegeven voor elke server alleen en brengt een vertrouwensrelatie tussen het oplossingsdashboard en de server.
+    > Deze waarschuwing wordt slechts één keer voor elke server weergegeven en vormt een vertrouwensrelatie tussen het oplossingsdashboard en de server.
 
-1. U kunt nu de gegevensitems die aan de oplossing kan de server verzenden bladeren. Items die worden verzonden naar de oplossing is ingeschakeld:
+1. U nu bladeren door de gegevensitems die de server naar de oplossing kan verzenden. Items die naar de oplossing worden verzonden, hebben een vinkje:
 
-    ![Gepubliceerde items][img-published]
+    ![Gepubliceerde objecten][img-published]
 
-1. Als u een *beheerder* in de oplossing, kunt u kiezen voor het publiceren van een gegevensitem zodat deze beschikbaar zijn in de oplossing Connected Factory. Als beheerder, kunt u ook de waarde van gegevensitems wijzigen en methoden aanroepen in de OPC UA-server.
+1. Als u *een beheerder in* de oplossing bent, u ervoor kiezen een gegevensitem te publiceren om het beschikbaar te maken in de Connected Factory-oplossing. Als beheerder u ook de waarde van gegevensitems en aanroepmethoden in de OPC UA-server wijzigen.
 
-## <a name="map-the-data"></a>Gegevenstoewijzing
+## <a name="map-the-data"></a>De gegevens in kaart brengen
 
-De oplossing voor verbonden Factory-kaarten en de gepubliceerde-gegevensitems van de OPC UA-server naar de verschillende weergaven in de oplossing combineert. De oplossing voor verbonden Factory's implementeert naar uw Azure-account wanneer u de oplossing inricht. Een JSON-bestand in de Visual Studio verbonden Factory-oplossing slaat deze toewijzingsinformatie. U kunt weergeven en wijzigen van dit JSON-configuratiebestand in de verbonden Factory Visual Studio-oplossing. Nadat u een wijziging aanbrengt, kunt u de oplossing opnieuw implementeren.
+De Connected Factory-oplossing brengt de gepubliceerde gegevensitems van de OPC UA-server in kaart en aggregaat naar de verschillende weergaven in de oplossing. De Connected Factory-oplossing wordt geïmplementeerd in uw Azure-account wanneer u de oplossing indient. Een JSON-bestand in de Visual Studio Connected Factory-oplossing slaat deze kaartinformatie op. U dit JSON-configuratiebestand bekijken en wijzigen in de Connected Factory Visual Studio-oplossing. U de oplossing opnieuw implementeren nadat u een wijziging hebt gewijzigd.
 
-U kunt het configuratiebestand te gebruiken:
+U het configuratiebestand gebruiken om:
 
-- Bewerk de bestaande gesimuleerde factory's, de productielijnen en stations.
-- Gegevens uit de echte OPC UA-servers die u verbinding met de oplossing maken worden toegewezen.
+- Bewerk de bestaande gesimuleerde fabrieken, productielijnen en stations.
+- Kaart gegevens van echte OPC UA-servers die u met de oplossing maakt.
 
-Zie voor meer informatie over de toewijzing en samenvoeging van de gegevens om te voldoen aan uw specifieke vereisten, [de oplossingsverbetering voor verbonden Factory configureren ](iot-accelerators-connected-factory-configure.md).
+Zie Hoe u [de oplossingsversneller van Connected Factory configureert ](iot-accelerators-connected-factory-configure.md)voor meer informatie over het toewijzen en aggregeren van de gegevens om aan uw specifieke vereisten te voldoen.
 
-## <a name="deploy-the-changes"></a>De wijzigingen te implementeren
+## <a name="deploy-the-changes"></a>De wijzigingen implementeren
 
-Wanneer u klaar bent met aanbrengen van wijzigingen aan de **ContosoTopologyDescription.json** -bestand, moet u de oplossing voor verbonden Factory opnieuw implementeren naar uw Azure-account.
+Wanneer u klaar bent met het aanbrengen van wijzigingen in het bestand **ContosoTopologyDescription.json,** moet u de oplossing Verbonden fabriek opnieuw implementeren in uw Azure-account.
 
-De **azure-iot-connected-factory** opslagplaats bevat een **build.ps1** PowerShell-script die u gebruiken kunt om te bouwen en implementeren van de oplossing.
+De **azure-iot-connected-factory** repository bevat een **build.ps1** PowerShell script dat u gebruiken om de oplossing te herbouwen en te implementeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de oplossingsverbetering voor verbonden Factory door het lezen van de volgende artikelen:
+Lees de volgende artikelen over de Connected Factory-oplossingsversneller:
 
-* [Machtigingen op de site azureiotsolutions.com][lnk-permissions]
-* [Veelgestelde vragen over Verbonden Factory](iot-accelerators-faq-cf.md)
-* [FAQ][lnk-faq]
+* [Machtigingen op de site van de azureiotsolutions.com][lnk-permissions]
+* [Veelgestelde vragen over verbonden fabriek](iot-accelerators-faq-cf.md)
+* [Veelgestelde vragen][lnk-faq]
 
 
 [img-oee-kpi]: ./media/iot-accelerators-connected-factory-customize/oeenadkpi.png

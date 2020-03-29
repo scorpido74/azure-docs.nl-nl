@@ -1,22 +1,22 @@
 ---
-title: PasswordBox UI-element
-description: Hierin wordt het micro soft. common. PasswordBox UI-element voor Azure Portal beschreven. Hiermee kunnen gebruikers een geheime waarde opgeven bij het implementeren van beheerde toepassingen.
+title: WachtwoordBox-gebruikersinterface-element
+description: Beschrijft het Microsoft.Common.PasswordBox-gebruikersinterfaceelement voor Azure-portal. Stelt gebruikers in staat om een geheime waarde te bieden bij het implementeren van beheerde toepassingen.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 5f7d3a47482ccec9778b102d3509b5f8ef343185
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652305"
 ---
-# <a name="microsoftcommonpasswordbox-ui-element"></a>Micro soft. common. PasswordBox UI-element
+# <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft.Common.PasswordBox-element UI
 
-Een besturings element dat kan worden gebruikt om een wacht woord op te geven en te bevestigen.
+Een besturingselement dat kan worden gebruikt om een wachtwoord op te geven en te bevestigen.
 
-## <a name="ui-sample"></a>UI-voor beeld
+## <a name="ui-sample"></a>UI-voorbeeld
 
 ![Microsoft.Common.PasswordBox](./media/managed-application-elements/microsoft.common.passwordbox.png)
 
@@ -51,11 +51,11 @@ Een besturings element dat kan worden gebruikt om een wacht woord op te geven en
 
 ## <a name="remarks"></a>Opmerkingen
 
-- Dit element biedt geen ondersteuning voor de eigenschap `defaultValue`.
-- Zie [micro soft. common. TextBox](microsoft-common-textbox.md)voor meer informatie over de implementatie van `constraints`.
-- Als `options.hideConfirmation` is ingesteld op **True**, wordt het tweede tekstvak voor het bevestigen van het wacht woord van de gebruiker verborgen. De standaardwaarde is **false**.
+- Dit element ondersteunt de `defaultValue` eigenschap niet.
+- Zie Microsoft.Common.TextBox voor implementatiedetails van `constraints`, zie [Microsoft.Common.TextBox](microsoft-common-textbox.md).
+- Als `options.hideConfirmation` dit is ingesteld op **true,** wordt het tweede tekstvak voor het bevestigen van het wachtwoord van de gebruiker verborgen. De standaardwaarde is **onwaar**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
-* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.
+* Zie Aan de slag met [CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van ui-definities.
+* Zie [Elementen van CreateUiDefinition](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in ui-elementen .

@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight-toepassingen publiceren
-description: Informatie over het maken van een HDInsight-toepassing en publiceert u het in de Azure Marketplace.
+description: Meer informatie over het maken van een HDInsight-toepassing en deze vervolgens publiceren in de Azure Marketplace.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,29 +9,29 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64685330"
 ---
-# <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Een HDInsight-toepassing publiceren in de Azure Marketplace
-U kunt een Azure HDInsight-toepassing installeren op een Linux gebaseerde HDInsight-cluster. In dit artikel leert u hoe u een HDInsight-toepassing publiceren in de Azure Marketplace. Raadpleeg voor algemene informatie over het publiceren op Azure Marketplace [een aanbieding publiceren in de Azure Marketplace](../marketplace/marketplace-publishers-guide.md).
+# <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Een HDInsight-toepassing publiceren in Azure Marketplace
+U een Azure HDInsight-toepassing installeren op een HDInsight-cluster op Basis van Linux. In dit artikel leest u hoe u een HDInsight-toepassing publiceert in de Azure Marketplace. Zie Een aanbieding publiceren in de Azure Marketplace voor algemene informatie over publiceren in de [Azure Marketplace.](../marketplace/marketplace-publishers-guide.md)
 
-HDInsight-toepassingen gebruiken het *doen om uw eigen licentie (BYOL)* model. In een BYOL-scenario is de provider van een toepassing die verantwoordelijk is voor de toepassing aan gebruikers van app-licentieverlening. Appgebruikers betalen alleen voor de Azure-resources die ze, zoals het HDInsight-cluster, en het virtuele machines en de knooppunten van het cluster maken. Facturering voor de toepassing zelf niet op dit moment wordt uitgevoerd in Azure.
+HDInsight-toepassingen maken gebruik van het *BYOL-model (Bring Your Own License).* In een BYOL-scenario is een toepassingsprovider verantwoordelijk voor het verlenen van licenties voor de toepassing aan app-gebruikers. App-gebruikers worden alleen in rekening gebracht voor de Azure-resources die ze maken, zoals het HDInsight-cluster en de VM's en knooppunten van het cluster. Momenteel vindt facturering voor de toepassing zelf niet plaats in Azure.
 
-Zie voor meer informatie deze HDInsight-toepassing-gerelateerde artikelen:
+Zie deze HDInsight-toepassingsgerelateerde artikelen voor meer informatie:
 
-* [HDInsight-toepassingen installeren](hdinsight-apps-install-applications.md). Meer informatie over het installeren van een HDInsight-toepassing op uw clusters.
-* [Aangepaste HDInsight-toepassingen installeren](hdinsight-apps-install-custom-applications.md). Informatie over het installeren en testen van aangepaste HDInsight-toepassingen.
+* [HDInsight-toepassingen installeren.](hdinsight-apps-install-applications.md) Meer informatie over het installeren van een HDInsight-toepassing op uw clusters.
+* [Installeer aangepaste HDInsight-toepassingen.](hdinsight-apps-install-custom-applications.md) Meer informatie over het installeren en testen van aangepaste HDInsight-toepassingen.
 
 ## <a name="prerequisites"></a>Vereisten
-Indienen van uw aangepaste toepassing in de Marketplace, eerst [maken en testen van uw aangepaste toepassing](hdinsight-apps-install-custom-applications.md).
+Als u uw aangepaste toepassing wilt indienen in de Marketplace, [maakt en test u eerst uw aangepaste toepassing.](hdinsight-apps-install-custom-applications.md)
 
-Ook moet u uw ontwikkelaarsaccount registreren. Zie voor meer informatie, [een aanbieding publiceren in de Azure Marketplace](../marketplace/marketplace-publishers-guide.md) en [maken van een Microsoft Developer-account](../marketplace/marketplace-publishers-guide.md).
+Je moet ook je ontwikkelaarsaccount registreren. Zie [Een aanbieding publiceren in de Azure Marketplace](../marketplace/marketplace-publishers-guide.md) en Een Microsoft [Developer-account maken](../marketplace/marketplace-publishers-guide.md)voor meer informatie.
 
 ## <a name="define-the-application"></a>De toepassing definiëren
-Twee stappen worden uitgevoerd in de publicatie van toepassingen in de Marketplace. Eerst definieert u een *createUiDef.json* bestand. Het createUiDef.json-bestand geeft aan welke clusters de toepassing compatibel is. Vervolgens publiceert u de sjabloon van de Azure-portal. Hier volgt een voorbeeld createUiDef.json-bestand:
+Twee stappen zijn betrokken bij het publiceren van applicaties in de Marketplace. Definieer eerst een *bestand createUiDef.json.* Het bestand createUiDef.json geeft aan met welke clusters uw toepassing compatibel is. Publiceer vervolgens de sjabloon vanuit de Azure-portal. Hier is een voorbeeld van uiDef.json-bestand:
 
 ```json
 {
@@ -44,62 +44,62 @@ Twee stappen worden uitgevoerd in de publicatie van toepassingen in de Marketpla
 }
 ```
 
-| Veld | Description | Mogelijke waarden |
+| Veld | Beschrijving | Mogelijke waarden |
 | --- | --- | --- |
-| typen |De clustertypen waarmee de toepassing compatibel is. |Hadoop, HBase, Storm, Spark (of een combinatie hiervan) |
+| typen |De clustertypen waarmee de toepassing compatibel is. |Hadoop, HBase, Storm, Spark (of een combinatie van deze) |
 | versies |De HDInsight-clustertypen waarmee de toepassing compatibel is. |3.4 |
 
-## <a name="application-installation-script"></a>Script voor installatie van toepassing
-Wanneer een toepassing wordt geïnstalleerd op een cluster (hetzij op een bestaand cluster of op een nieuwe), wordt een edge-knooppunt gemaakt. Het installatiescript van de toepassing wordt uitgevoerd op het edge-knooppunt.
+## <a name="application-installation-script"></a>Installatiescript voor toepassingen
+Wanneer een toepassing op een cluster is geïnstalleerd (op een bestaand cluster of op een nieuw cluster), wordt een randknooppunt gemaakt. Het toepassingsinstallatiescript wordt uitgevoerd op het randknooppunt.
 
   > [!IMPORTANT]  
-  > De naam van het installatiescript van de toepassing moet uniek zijn voor een specifieke cluster. Naam van het script moet de volgende indeling hebben:
+  > De naam van het toepassingsinstallatiescript moet uniek zijn voor een specifiek cluster. De scriptnaam moet de volgende indeling hebben:
   > 
-  > "naam": "[concat ('hue-install-v0 ','-', uniquestring('applicationName')]"
+  > "naam": "[concat('hue-install-v0','-' ,uniquestring('applicationName')]"
   > 
-  > Naam van het script bevat drie onderdelen:
+  > De naam van het script bestaat uit drie delen:
   > 
-  > * Het voorvoegsel van een script, waaronder de toepassingsnaam van de of een naam die relevant zijn voor de toepassing moet.
-  > * Een afbreekstreepje voor de leesbaarheid.
-  > * Een unieke tekenreeksfunctie met de naam van de toepassing als de parameter.
+  > * Een scriptnaamvoorvoegsel, dat de toepassingsnaam of een naam moet bevatten die relevant is voor de toepassing.
+  > * Een koppelteken, voor leesbaarheid.
+  > * Een unieke tekenreeksfunctie, met de naam van de toepassing als parameter.
   > 
-  > In de lijst met persistente scriptacties, in het voorgaande voorbeeld wordt weergegeven als **hue-install-v0-4wkahss55hlas**. Zie een [voorbeeld-JSON-nettolading](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
+  > In de lijst met aanhoudende scriptactie wordt het voorgaande voorbeeld weergegeven als **hue-install-v0-4wkahss55hlas**. Zie een [monster JSON payload](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
   > 
 
-Het script voor installatie moet de volgende kenmerken:
-* Het script is idempotent zijn. Meerdere aanroepen naar het script opleveren hetzelfde resultaat.
-* Het script is correct is samengesteld. Gebruik een andere locatie voor het script wanneer u een upgrade of wijzigingen te testen. Dit zorgt ervoor dat klanten die de toepassing installeren niet getroffen door uw updates of testen zijn. 
-* Het script heeft voldoende logboekregistratie op elk moment. Normaal gesproken zijn scriptlogboeken de enige manier om op te sporen installatieproblemen.
-* Aanroepen naar externe services of resources hebben voldoende nieuwe pogingen, zodat de installatie wordt niet beïnvloed door tijdelijke netwerkproblemen.
-* Als uw script start de services op de knooppunten, worden services bewaakt en geconfigureerd om automatisch te starten als er een opnieuw opstarten van het knooppunt optreedt.
+Het installatiescript moet de volgende kenmerken hebben:
+* Het script is idempotent. Meerdere aanroepen naar het script leveren hetzelfde resultaat op.
+* Het script is goed geversioned. Gebruik een andere locatie voor het script wanneer u wijzigingen upgradet of test. Dit zorgt ervoor dat klanten die de toepassing installeren geen last hebben van uw updates of tests. 
+* Het script heeft voldoende logging op elk punt. Meestal zijn scriptlogboeken de enige manier om problemen met de installatie van toepassingen te debuggen.
+* Oproepen naar externe services of resources hebben voldoende nieuwe pogingen, zodat de installatie niet wordt beïnvloed door tijdelijke netwerkproblemen.
+* Als uw script services op de knooppunten start, worden services gecontroleerd en geconfigureerd om automatisch te starten als er een opnieuw opstarten van een knooppunt plaatsvindt.
 
 ## <a name="package-the-application"></a>De toepassing verpakken
-Maak een ZIP-bestand met de bestanden die nodig zijn om uw HDInsight-toepassing te installeren. Het ZIP-bestand kunt u de toepassing te publiceren. Het ZIP-bestand bevat de volgende bestanden:
+Maak een .zip-bestand dat alle bestanden bevat die nodig zijn om uw HDInsight-toepassing te installeren. U gebruikt het .zip-bestand om de toepassing te publiceren. Het .zip-bestand bevat de volgende bestanden:
 
 * createUiDefinition.json
-* mainTemplate.json (Zie voor een voorbeeld [aangepaste HDInsight-toepassingen installeren](hdinsight-apps-install-custom-applications.md).)
+* mainTemplate.json (Zie Aangepaste [HDInsight-toepassingen installeren](hdinsight-apps-install-custom-applications.md)voor een voorbeeld .)
 * Alle vereiste scripts
 
 > [!NOTE]  
-> U kunt de toepassingsbestanden (inclusief alle web-app-bestanden) hosten op elk willekeurig eindpunt dat openbaar toegankelijk is.
+> U de toepassingsbestanden (inclusief alle web-app-bestanden) hosten op een openbaar toegankelijk eindpunt.
 
 ## <a name="publish-the-application"></a>De toepassing publiceren
-Een HDInsight-toepassing publiceren:
+Ga als een HDInsight-toepassing uit:
 
-1. Aanmelden bij [Azure-publicatie](https://publish.windowsazure.com/).
-2. Selecteer in het menu links **oplossingssjablonen**.
-3. Voer een titel in en selecteer vervolgens **maken van een nieuwe oplossingssjabloon**.
-4. Als u uw organisatie nog niet hebt geregistreerd, selecteert u **ontwikkelaarscentrumaccount maken en deelnemen aan het programma Azure**.  Zie voor meer informatie, [maken van een Microsoft Developer-account](../marketplace/marketplace-publishers-guide.md).
-5. Selecteer **topologieën aan de slag definiëren**. Een oplossingssjabloon is een "ouder" voor alle bijbehorende topologieën. U kunt meerdere topologieën definiëren in één aanbieding of oplossing sjabloon. Wanneer een aanbieding wordt doorgestuurd voor fasering, wordt deze doorgestuurd met alle bijbehorende topologieën. 
-6. Voer een topologienaam in en selecteer vervolgens **+** .
-7. Voer een nieuwe versie, en selecteer vervolgens **+** .
-8. Upload het ZIP-bestand dat u hebt gemaakt toen u de toepassing.  
-9. Selecteer **certificering aanvragen**. Het team van Microsoft-certificering controleert de bestanden en certificeert de topologie.
+1. Meld u aan bij [Azure Publishing](https://publish.windowsazure.com/).
+2. Selecteer **oplossingssjablonen**in het linkermenu .
+3. Voer een titel in en selecteer **Een nieuwe oplossingssjabloon maken**.
+4. Als u uw organisatie nog niet hebt geregistreerd, selecteert u **Dev Center-account maken en lid worden van het Azure-programma**.  Zie [Een Microsoft Developer-account maken](../marketplace/marketplace-publishers-guide.md)voor meer informatie .
+5. Selecteer **Sommige topologieën definiëren om aan de slag te gaan**. Een oplossingssjabloon is een "ouder" voor al zijn topologieën. U meerdere topologieën definiëren in één aanbiedings- of oplossingssjabloon. Wanneer een aanbieding naar enscenering wordt geduwd, wordt het met al zijn topologieën geduwd. 
+6. Voer een topologienaam in **+** en selecteer .
+7. Voer een nieuwe versie **+** in en selecteer .
+8. Upload het .zip-bestand dat u hebt gemaakt toen u de toepassing hebt verpakt.  
+9. Selecteer **Certificering aanvragen**. Het Certificeringsteam van Microsoft controleert de bestanden en certificeert de topologie.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het [HDInsight-toepassingen installeren](hdinsight-apps-install-applications.md) in uw clusters.
-* Meer informatie over het [aangepaste HDInsight-toepassingen installeren](hdinsight-apps-install-custom-applications.md) en implementeren van een niet-gepubliceerde HDInsight-toepassing op HDInsight.
-* Meer informatie over het [scriptactie gebruiken op Linux gebaseerde HDInsight-clusters aanpassen](hdinsight-hadoop-customize-cluster-linux.md) en meer toepassingen toevoegen. 
-* Meer informatie over het [Apache Hadoop op basis van Linux-clusters in HDInsight maken met behulp van Azure Resource Manager-sjablonen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
-* Meer informatie over het [een leeg edge-knooppunt gebruiken in HDInsight](hdinsight-apps-use-edge-node.md) voor toegang tot HDInsight-clusters, HDInsight toepassingen testen en HDInsight-toepassingen hosten.
+* Meer informatie over het [installeren van HDInsight-toepassingen](hdinsight-apps-install-applications.md) in uw clusters.
+* Meer informatie over het [installeren van aangepaste HDInsight-toepassingen](hdinsight-apps-install-custom-applications.md) en het implementeren van een niet-gepubliceerde HDInsight-toepassing op HDInsight.
+* Meer informatie over het [gebruik van Script Action om HDInsight-clusters op basis van Linux aan te passen](hdinsight-hadoop-customize-cluster-linux.md) en meer toepassingen toe te voegen. 
+* Meer informatie over het [maken van Apache Hadoop-clusters op basis van Linux in HDInsight met Azure Resource Manager-sjablonen.](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
+* Meer informatie over het [gebruik van een leeg randknooppunt in HDInsight](hdinsight-apps-use-edge-node.md) om toegang te krijgen tot HDInsight-clusters, HDInsight-toepassingen te testen en HDInsight-toepassingen te hosten.
 

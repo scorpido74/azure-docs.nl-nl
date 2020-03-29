@@ -1,5 +1,5 @@
 ---
-title: Bandbreedte-schema's in Azure Data Box Gateway beheren | Microsoft Docs
+title: Bandbreedteschema's beheren op Azure Data Box Gateway | Microsoft Documenten
 description: Beschrijft hoe u de Azure Portal gebruikt om bandbreedteschema's te beheren in uw Azure Data Box Gateway.
 services: databox
 author: alkohli
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 63f3572dcb5affb9fcf89d86a665bef9414cb011
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60755302"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>De Azure Portal gebruiken om bandbreedteschema's te beheren in uw Azure Data Box Gateway  
@@ -44,7 +44,7 @@ Voer in Azure Portal de volgende stappen uit om een gebruiker toe te voegen.
    2. Als dit schema de hele dag wordt uitgevoerd, kunt u de optie **Hele dag** inschakelen. 
    3. **Bandbreedtesnelheid** is de bandbreedte in Megabits per seconde (Mbps) die door uw apparaat wordt gebruikt bij bewerkingen die betrekking hebben op de cloud (uploaden en downloaden). Geef voor dit veld een waarde op tussen 1 en 1000. 
    4. Schakel **Onbeperkte** bandbreedte in als u de datumupload en -download niet wilt regelen. 
-   5. Klik op **Toevoegen**.
+   5. Klik op**toevoegen**.
 
       ![Klikken op Gebruiker toevoegen](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 

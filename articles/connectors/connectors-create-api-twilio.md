@@ -1,6 +1,6 @@
 ---
 title: Verbinding maken met Twilio vanuit Azure Logic Apps
-description: Automatiseer taken en werk stromen die algemene SMS-, MMS-en IP-berichten beheren via uw Twilio-account met behulp van Azure Logic Apps
+description: Werkstromen en werkstromen automatiseren die algemene SMS-, MMS- en IP-berichten beheren via uw Twilio-account met Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: e5b218efd9c8cfaad99d76d8118d181390a977c3
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789100"
 ---
-# <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Berichten in Twilio beheren met Azure Logic Apps
+# <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Berichten beheren in Twilio met Azure Logic Apps
 
-Met Azure Logic Apps en de Twilio-connector kunt u geautomatiseerde taken en werk stromen maken waarmee berichten worden opgehaald, verzonden en weer geven in Twilio, waaronder algemene SMS-, MMS-en IP-berichten. U kunt deze acties gebruiken om taken uit te voeren met uw Twilio-account. U kunt ook andere acties uitvoeren met de uitvoer van Twilio-acties. Als er bijvoorbeeld een nieuw bericht binnenkomt, kunt u de inhoud van het bericht verzenden met de connector voor toegestane vertraging. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
+Met Azure Logic Apps en de Twilio-connector u geautomatiseerde taken en werkstromen maken die berichten in Twilio ontvangen, verzenden en aanbieden, waaronder algemene SMS-, MMS- en IP-berichten. U deze acties gebruiken om taken uit te voeren met uw Twilio-account. U ook andere acties de uitvoer van Twilio-acties laten gebruiken. Wanneer er bijvoorbeeld een nieuw bericht binnenkomt, u de inhoud van het bericht verzenden met de Slack-connector. Als u nieuw bent in logische apps, controleert u [Wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -24,54 +24,54 @@ Met Azure Logic Apps en de Twilio-connector kunt u geautomatiseerde taken en wer
 
 * Van [Twilio](https://www.twilio.com/): 
 
-  * Uw Twilio-account-ID en [verificatie token](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-How-to-Change-Them), die u op uw Twilio-dash board kunt vinden
+  * Uw Twilio-account-ID en [verificatietoken](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-How-to-Change-Them), die u vinden op uw Twilio-dashboard
 
-    Met uw referenties wordt uw logische app geautoriseerd om een verbinding te maken en toegang te krijgen tot uw Twilio-account vanuit uw logische app. 
-    Als u een Twilio-proef account gebruikt, kunt u alleen SMS-berichten verzenden naar *geverifieerde* telefoon nummers.
+    Uw referenties geven uw logische app toestemming om een verbinding te maken en toegang te krijgen tot uw Twilio-account vanuit uw logische app. 
+    Als u een Twilio-proefaccount gebruikt, u alleen sms'en naar *geverifieerde* telefoonnummers.
 
-  * Een geverifieerd Twilio-telefoon nummer waarmee SMS-berichten kunnen worden verzonden
+  * Een geverifieerd Twilio-telefoonnummer dat sms kan verzenden
 
-  * Een geverifieerd Twilio-telefoon nummer dat SMS-berichten kan ontvangen
+  * Een geverifieerd Twilio-telefoonnummer dat sms kan ontvangen
 
-* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basiskennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waartoe u toegang wilt krijgen tot uw Twilio-account. Als u een Twilio-actie wilt gebruiken, start u uw logische app met een andere trigger, bijvoorbeeld de trigger voor **terugkeer patroon** .
+* De logische app waar u toegang wilt krijgen tot uw Twilio-account. Als u een Twilio-actie wilt gebruiken, start u uw logische app met een andere trigger, bijvoorbeeld de **recidieftrigger.**
 
 ## <a name="connect-to-twilio"></a>Verbinding maken met Twilio
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com)en open uw logische app in Logic App Designer, als deze nog niet is geopend.
 
 1. Kies een pad: 
 
-     * Kies **nieuwe stap**onder de laatste stap waarin u een actie wilt toevoegen. 
+     * Kies Nieuwe **stap**onder de laatste stap waarin u een actie wilt toevoegen . 
 
        -of-
 
-     * Als u een actie wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. 
-     Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+     * Tussen de stappen waar u een actie wilt toevoegen, beweegt u de aanwijzer over de pijl tussen de stappen. 
+     Kies het plusteken (**+**) dat wordt weergegeven en selecteer Vervolgens Een actie **toevoegen**.
      
-       Voer in het zoekvak ' twilio ' in als uw filter. 
-       Selecteer in de lijst acties de gewenste actie.
+       Voer in het zoekvak 'twilio' in als filter. 
+       Selecteer onder de lijst met acties de gewenste actie.
 
-1. Geef de benodigde gegevens voor de verbinding op en kies vervolgens **maken**:
+1. Geef de benodigde details voor uw verbinding op en kies **Maak:**
 
-   * De naam die u voor de verbinding wilt gebruiken
-   * Uw Twilio-account-ID 
-   * Uw Twilio-toegangs token (verificatie)
+   * De naam die u moet gebruiken voor uw verbinding
+   * Uw Twilio-account-id 
+   * Uw Twilio-toegangstoken (authenticatie)
 
-1. Geef de benodigde gegevens voor de geselecteerde actie op en blijf door gaan met het bouwen van de werk stroom van uw logische app.
+1. Geef de benodigde details voor uw geselecteerde actie en ga verder met het bouwen van de workflow van uw logische app.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Raadpleeg de [referentie pagina](/connectors/twilio/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
+Voor technische details over triggers, acties en limieten, die worden beschreven door de OpenAPI-beschrijving (voorheen Swagger) van de connector, raadpleegt u de [referentiepagina](/connectors/twilio/)van de connector.
 
-## <a name="get-support"></a>Krijg ondersteuning
+## <a name="get-support"></a>Ondersteuning krijgen
 
 * Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
 * Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)

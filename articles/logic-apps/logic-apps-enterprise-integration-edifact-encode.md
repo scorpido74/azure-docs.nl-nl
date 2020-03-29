@@ -1,6 +1,6 @@
 ---
 title: EDIFACT-berichten coderen
-description: Valideer EDI en Genereer XML met EDIFACT Message Encoder voor Azure Logic Apps met Enterprise Integration Pack
+description: EDI valideren en XML genereren met EDIFACT-berichtencoder voor Azure Logic Apps met Enterprise Integration Pack
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,88 +9,88 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 257cbd0b1a68ddd2b16235e6f8dec5d5b0eb10e2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790659"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>EDIFACT-berichten coderen voor Azure Logic Apps met Enterprise Integration Pack
 
-Met de code ring EDIFACT Message connector kunt u EDI-en partner-specifieke eigenschappen valideren, een XML-document voor elke transactieset genereren en technische bevestiging, functionele bevestiging of beide aanvragen.
+Met de Ecode EDIFACT-berichtconnector u EDI- en partnerspecifieke eigenschappen valideren, een XML-document voor elke transactieset genereren en een technische bevestiging, functionele bevestiging of beide aanvragen.
 Als u deze connector wilt gebruiken, moet u de connector toevoegen aan een bestaande trigger in uw logische app.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Dit zijn de items die u nodig hebt:
+Dit zijn de items die je nodig hebt:
 
-* Een Azure-account; u kunt een [gratis account](https://azure.microsoft.com/free) maken
-* Een [integratie account](logic-apps-enterprise-integration-create-integration-account.md) dat al is gedefinieerd en gekoppeld aan uw Azure-abonnement. U moet een integratie account hebben voor het gebruik van de code ring EDIFACT Message connector. 
-* Ten minste twee [partners](logic-apps-enterprise-integration-partners.md) die al zijn gedefinieerd in uw integratie account
-* Een [EDIFACT-overeenkomst](logic-apps-enterprise-integration-edifact.md) die al is gedefinieerd in uw integratie account
+* Een Azure-account; u een [gratis account aanmaken](https://azure.microsoft.com/free)
+* Een [integratieaccount](logic-apps-enterprise-integration-create-integration-account.md) dat al is gedefinieerd en is gekoppeld aan uw Azure-abonnement. U moet een integratieaccount hebben om de Ecode EDIFACT-berichtconnector te kunnen gebruiken. 
+* Ten minste twee [partners](logic-apps-enterprise-integration-partners.md) die al zijn gedefinieerd in uw integratieaccount
+* Een [EDIFACT-overeenkomst](logic-apps-enterprise-integration-edifact.md) die al is gedefinieerd in uw integratieaccount
 
 ## <a name="encode-edifact-messages"></a>EDIFACT-berichten coderen
 
-1. [Maak een logische app](quickstart-create-first-logic-app-workflow.md).
+1. [Een logische app maken](quickstart-create-first-logic-app-workflow.md).
 
-2. De code ring EDIFACT Message connector heeft geen triggers. Daarom moet u een trigger toevoegen voor het starten van uw logische app, zoals een aanvraag trigger. Voeg in de ontwerp functie voor logische apps een trigger toe en voeg vervolgens een actie toe aan uw logische app.
+2. De Ecode EDIFACT-berichtconnector heeft geen triggers, dus u moet een trigger toevoegen voor het starten van uw logische app, zoals een trigger voor aanvragen. Voeg in de Logic App Designer een trigger toe en voeg vervolgens een actie toe aan uw logische app.
 
-3.  Voer in het zoekvak ' EDIFACT ' in als uw filter. Selecteer **EDIFACT-bericht coderen op overeenkomst naam** of **coderen naar EDIFACT-bericht door middel van identiteiten**.
+3.  Voer in het zoekvak 'EDIFACT' in als filter. Selecteer **EDIFACT-bericht coderen op naam van de overeenkomst** of Coderen in **EDIFACT-bericht op identiteiten**.
    
-    ![EDIFACT zoeken](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
+    ![zoeken EDIFACT](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
 
-3. Als u eerder geen verbindingen met uw integratie account hebt gemaakt, wordt u gevraagd om die verbinding nu te maken. Geef uw verbinding een naam en selecteer het integratie account dat u wilt verbinden.
+3. Als u nog geen verbindingen met uw integratieaccount hebt gemaakt, wordt u gevraagd die verbinding nu te maken. Geef uw verbinding een naam en selecteer het integratieaccount waarmee u verbinding wilt maken.
 
-    ![verbinding voor integratie account maken](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage1.png)  
+    ![integratieaccountverbinding maken](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage1.png)  
 
     Eigenschappen met een sterretje zijn vereist.
 
     | Eigenschap | Details |
     | --- | --- |
-    | Verbindings naam * |Voer een naam in voor de verbinding. |
-    | Integratie account * |Voer een naam in voor het integratie account. Zorg ervoor dat het integratie account en de logische app zich op dezelfde Azure-locatie bevinden. |
+    | Verbindingsnaam * |Voer een naam in voor uw verbinding. |
+    | Integratieaccount * |Voer een naam in voor uw integratieaccount. Zorg ervoor dat uw integratieaccount en logische app zich op dezelfde Azure-locatie bevinden. |
 
-5.  Wanneer u klaar bent, moeten de verbindings details er ongeveer als volgt uitzien. Kies **maken**om het maken van de verbinding te volt ooien.
+5.  Wanneer u klaar bent, moeten uw verbindingsgegevens op dit voorbeeld lijken. Als u het maken van uw verbinding wilt voltooien, kiest **u Maken**.
 
-    ![verbindings Details van het integratie account](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
+    ![verbindingsgegevens van integratie-account](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
 
-    De verbinding wordt nu gemaakt.
+    Uw verbinding is nu gemaakt.
 
-    ![verbinding voor integratie account gemaakt](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage4.png)
+    ![integratie-accountverbinding gemaakt](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage4.png)
 
-#### <a name="encode-edifact-message-by-agreement-name"></a>EDIFACT-bericht coderen op overeenkomst naam
+#### <a name="encode-edifact-message-by-agreement-name"></a>EDIFACT-bericht coderen met de naam van de overeenkomst
 
-Als u ervoor hebt gekozen om EDIFACT-berichten te coderen op overeenkomst naam, opent u de **naam van de EDIFACT-overeenkomst** lijst, voert u de naam van uw EDIFACT-overeenkomst in of selecteert u deze. Voer het XML-bericht in dat moet worden gecodeerd.
+Als u ervoor kiest om EDIFACT-berichten te coderen onder de naam van de overeenkomst, opent u de lijst **Naam van EDIFACT-overeenkomst,** voert u de naam van uw EDIFACT-overeenkomst in of selecteert u deze. Voer het XML-bericht in om te coderen.
 
-![Voer de naam van de EDIFACT en het XML-bericht in dat moet worden gecodeerd](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
+![Voer de naam van edifact-overeenkomst en het XML-bericht in om te coderen](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
 
-#### <a name="encode-edifact-message-by-identities"></a>EDIFACT-bericht coderen door middel van identiteiten
+#### <a name="encode-edifact-message-by-identities"></a>EDIFACT-bericht coderen op identiteiten
 
-Als u ervoor kiest om EDIFACT-berichten te coderen op identiteiten, voert u de kwalificatie-id, afzender kwalificatie, ontvanger-id en ontvanger van de ontvangers in zoals deze zijn geconfigureerd in uw EDIFACT-overeenkomst. Selecteer het XML-bericht dat moet worden gecodeerd.
+Als u ervoor kiest om EDIFACT-berichten te coderen op identiteiten, voert u de afzender-id, de kwalificatie voor afzenders, de ontvanger-id en de kwalificatie voor ontvangers in zoals geconfigureerd in uw EDIFACT-overeenkomst. Selecteer het XML-bericht dat u wilt coderen.
 
-![Identiteiten opgeven voor de afzender en ontvanger, het XML-bericht selecteren dat moet worden gecodeerd](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
+![Geef identiteiten op voor afzender en ontvanger, selecteer XML-bericht om te coderen](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
 
-## <a name="edifact-encode-details"></a>Details van EDIFACT-code ring
+## <a name="edifact-encode-details"></a>EDIFACT Coderen details
 
-De EDIFACT-connector voor code ring voert de volgende taken uit: 
+De Ecode EDIFACT-connector voert deze taken uit: 
 
-* De overeenkomst oplossen door de kwalificatie-id en-id van de afzender te vergelijken &
-* Serialisatie van de EDI-uitwisseling, waarbij XML-gecodeerde berichten worden geconverteerd naar EDI-transactie sets in de uitwisseling.
-* Kopregel voor transactie sets en trailer-segmenten Toep assen
-* Hiermee genereert u een uitwisselings controle nummer, een groeps controle nummer en een transactie reeks controle nummer voor elke uitgaande uitwisseling
-* Vervangt scheidings tekens in de gegevens van de nettolading
-* Hiermee worden EDI-en partner-specifieke eigenschappen gevalideerd
-  * Schema validatie van de gegevens elementen van de trans actie op basis van het bericht schema.
-  * EDI-validatie uitgevoerd op trans actie-gegevens elementen.
-  * Uitgebreide validatie uitgevoerd op gegevens elementen van trans actie-set
-* Hiermee wordt een XML-document voor elke transactie groep gegenereerd.
-* Verzoekt een technische en/of functionele bevestiging (indien geconfigureerd).
-  * Als technische bevestiging wordt het CONTRL-bericht geeft de ontvangst van een uitwisseling aan.
-  * Als functie bevestiging geeft het CONTRL-bericht aan dat de ontvangen uitwisseling, groep of bericht moet worden geaccepteerd of afgewezen, met een lijst met fouten of niet-ondersteunde functies
+* De overeenkomst oplossen door de kwalificatie voor de afzender &-id en ontvanger kwalificatie en id te matchen
+* Serialiseert de EDI-uitwisseling en converteert XML-gecodeerde berichten naar EDI-transactiesets in de uitwisseling.
+* Past header- en trailersegmenten voor transactieset toe
+* Hiermee genereert u een interchange control-nummer, een groepscontrolenummer en een transactiesetregelnummer voor elke uitgaande uitwisseling
+* Vervangt scheidingstekens in de payloadgegevens
+* Valideert EDI en partnerspecifieke eigenschappen
+  * Schemavalidatie van de gegevenselementen met transactieset en het berichtschema.
+  * EDI-validatie uitgevoerd op gegevenselementen met transactiesets.
+  * Uitgebreide validatie uitgevoerd op gegevenselementen met transactieset
+* Hiermee genereert u een XML-document voor elke transactieset.
+* Hiermee vraagt u een technische en/of functionele bevestiging aan (indien geconfigureerd).
+  * Als technische bevestiging geeft het CONTRL-bericht de ontvangst van een uitwisseling aan.
+  * Als functionele bevestiging geeft het CONTRL-bericht de acceptatie of afwijzing van de ontvangen uitwisseling, groep of bericht aan, met een lijst met fouten of niet-ondersteunde functionaliteit
 
-## <a name="view-swagger-file"></a>Swagger-bestand weer geven
-Zie [EDIFACT](/connectors/edifact/)voor informatie over het weer geven van de Swagger-gegevens voor de EDIFACT-connector.
+## <a name="view-swagger-file"></a>Swagger-bestand weergeven
+Zie [EDIFACT](/connectors/edifact/).
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over de Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Meer informatie over Enterprise Integration Pack") 
+[Meer informatie over het Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Meer informatie over enterprise integration pack") 
 

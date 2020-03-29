@@ -1,6 +1,6 @@
 ---
-title: Oplossen van fouten in Azure Service Bus AMQP | Microsoft Docs
-description: Geeft een lijst van AMQP fouten u mogelijk ontvangt bij het gebruik van Azure Service Bus en ervoor zorgen dat deze fouten.
+title: AMQP-fouten in Azure Service Bus oplossen | Microsoft Documenten
+description: Biedt een lijst met AMQP-fouten die u ontvangen bij het gebruik van Azure Service Bus en de oorzaak van die fouten.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -15,31 +15,31 @@ ms.workload: na
 ms.date: 04/03/2019
 ms.author: aschhab
 ms.openlocfilehash: 85d24a9e7c753ec5dba80c4f259dd3fb51d9c14b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60402782"
 ---
-# <a name="amqp-errors-in-azure-service-bus"></a>Fouten in Azure Service Bus AMQP
-Dit artikel bevat enkele van de fouten die u ontvangt wanneer u AMQP met Azure Service Bus. Ze zijn dat alle standaard gedrag van de service. U kunt ze voorkomen door aanroepen verzenden/ontvangen op de koppeling/verbinding, die automatisch wordt de verbinding of de koppeling opnieuw gemaakt.
+# <a name="amqp-errors-in-azure-service-bus"></a>AMQP-fouten in Azure Service Bus
+In dit artikel worden enkele fouten vermeld die u ontvangt bij het gebruik van AMQP met Azure Service Bus. Ze zijn allemaal standaard gedrag van de dienst. U ze vermijden door te bellen/ontvangen via de verbinding/koppeling, waardoor de verbinding/koppeling automatisch wordt gemaakt.
 
 ## <a name="link-is-closed"></a>Koppeling is gesloten 
-U ziet de volgende fout wanneer het AMQP-verbinding en koppeling actief, maar er worden geen aanroepen zijn (bijvoorbeeld verzenden of ontvangen) worden gedaan met behulp van de koppeling voor 10 minuten. Dus is de koppeling gesloten. De verbinding is nog steeds geopend.
+U ziet de volgende fout wanneer de AMQP-verbinding en koppeling actief zijn, maar er gedurende 10 minuten geen oproepen (bijvoorbeeld verzenden of ontvangen) worden uitgevoerd via de koppeling. Dus, de link is gesloten. De verbinding is nog open.
 
 ```
 amqp:link:detach-forced:The link 'G2:7223832:user.tenant0.cud_00000000000-0000-0000-0000-00000000000000' is force detached by the broker due to errors occurred in publisher(link164614). Detach origin: AmqpMessagePublisher.IdleTimerExpired: Idle timeout: 00:10:00. TrackingId:00000000000000000000000000000000000000_G2_B3, SystemTracker:mynamespace:Topic:MyTopic, Timestamp:2/16/2018 11:10:40 PM
 ```
 
-## <a name="connection-is-closed"></a>De verbinding wordt gesloten
-U ziet de volgende fout op de AMQP-verbinding wanneer alle koppelingen in de verbinding is gesloten omdat er geen activiteit is (niet-actieve) en een nieuwe koppeling niet is gemaakt in vijf minuten.
+## <a name="connection-is-closed"></a>Verbinding is gesloten
+U ziet de volgende fout op de AMQP-verbinding wanneer alle koppelingen in de verbinding zijn gesloten omdat er geen activiteit was (niet actief) en er in 5 minuten geen nieuwe koppeling is gemaakt.
 
 ```
 Error{condition=amqp:connection:forced, description='The connection was inactive for more than the allowed 300000 milliseconds and is closed by container 'LinkTracker'. TrackingId:00000000000000000000000000000000000_G21, SystemTracker:gateway5, Timestamp:2019-03-06T17:32:00', info=null}
 ```
 
-## <a name="link-is-not-created"></a>Koppeling is niet gemaakt. 
-U kunt deze fout ziet wanneer een nieuwe AMQP-verbinding is gemaakt, maar een koppeling niet binnen een minuut van het maken van het AMQP-verbinding wordt gemaakt.
+## <a name="link-is-not-created"></a>Koppeling wordt niet gemaakt 
+U ziet deze fout wanneer een nieuwe AMQP-verbinding wordt gemaakt, maar een koppeling wordt niet gemaakt binnen 1 minuut na het maken van de AMQP-verbinding.
 
 ```
 Error{condition=amqp:connection:forced, description='The connection was inactive for more than the allowed 60000 milliseconds and is closed by container 'LinkTracker'. TrackingId:0000000000000000000000000000000000000_G21, SystemTracker:gateway5, Timestamp:2019-03-06T18:41:51', info=null}
@@ -47,12 +47,12 @@ Error{condition=amqp:connection:forced, description='The connection was inactive
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over het AMQP- en Service Bus, gaat u naar de volgende koppelingen:
+Ga voor meer informatie over AMQP en Service Bus naar de volgende links:
 
-* [Service Bus AMQP-overzicht]
+* [Overzicht servicebus AMQP]
 * [AMQP 1.0-protocolhandleiding]
-* [AMQP in WindowsServer-Servicebus]
+* [AMQP in servicebus voor Windows Server]
 
-[Service Bus AMQP-overzicht]: service-bus-amqp-overview.md
+[Overzicht servicebus AMQP]: service-bus-amqp-overview.md
 [AMQP 1.0-protocolhandleiding]: service-bus-amqp-protocol-guide.md
-[AMQP in WindowsServer-Servicebus]: https://docs.microsoft.com/previous-versions/service-bus-archive/dn282144(v=azure.100)
+[AMQP in servicebus voor Windows Server]: https://docs.microsoft.com/previous-versions/service-bus-archive/dn282144(v=azure.100)

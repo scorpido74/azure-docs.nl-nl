@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met REST-eind punten van Azure Logic Apps
-description: REST-eind punten in geautomatiseerde taken, processen en werk stromen bewaken met behulp van Azure Logic Apps
+title: Verbinding maken met REST-eindpunten vanuit Azure Logic Apps
+description: REST-eindpunten in geautomatiseerde taken, processen en werkstromen bewaken met Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,161 +8,161 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: b34fdc36bd0b1ce294a92b2ae8fa5da01568e5a9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74787366"
 ---
-# <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>REST-eind punten aanroepen met behulp van Azure Logic Apps
+# <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Rest-eindpunten aanroepen met Azure Logic Apps
 
-Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde http + Swagger-connector kunt u werk stromen automatiseren die regel matig een wille keurig rest-eind punt aanroepen via een [Swagger-bestand](https://swagger.io) door Logic apps te bouwen. De trigger en actie voor HTTP + Swagger werken hetzelfde als de [http-trigger en actie](connectors-native-http.md) , maar bieden een betere ervaring in de ontwerp functie voor de logische app door de API-structuur en-uitvoer weer te geven die worden beschreven door het Swagger-bestand. Als u een polling trigger wilt implementeren, volgt u het polling-patroon dat wordt beschreven in [aangepaste Api's maken voor het aanroepen van andere api's, services en systemen vanuit Logic apps](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
+Met [Azure Logic Apps](../logic-apps/logic-apps-overview.md) en de ingebouwde HTTP + Swagger-connector u werkstromen automatiseren die regelmatig een REST-eindpunt aanroepen via een [Swagger-bestand](https://swagger.io) door logische apps te bouwen. De HTTP + Swagger trigger en actie werken hetzelfde als de [HTTP trigger en actie,](connectors-native-http.md) maar bieden een betere ervaring in de Logic App Designer door het blootstellen van de API structuur en uitgangen beschreven door de Swagger bestand. Als u een pollingtrigger wilt implementeren, volgt u het pollingpatroon dat is beschreven in [Aangepaste API's maken om andere API's, services en systemen uit logische apps aan te roepen.](../logic-apps/logic-apps-create-api-app.md#polling-triggers)
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* De URL voor het Swagger-bestand (niet OpenAPI) dat het doel REST-eind punt beschrijft
+* De URL voor het Swagger-bestand (niet OpenAPI) waarin het doel-REST-eindpunt wordt beschreven
 
-  Normaal gesp roken moet het REST-eind punt voldoen aan deze criteria om de connector te laten werken:
+  Het REST-eindpunt moet doorgaans aan deze criteria voldoen om de connector te laten werken:
 
   * Het Swagger-bestand moet worden gehost op een HTTPS-URL die openbaar toegankelijk is.
 
-  * Voor het Swagger-bestand moet [Cross-Origin Resource Sharing (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) zijn ingeschakeld.
+  * Het Swagger-bestand moet [CorS (Cross-Origin Resource Sharing)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) hebben ingeschakeld.
 
-  Als u wilt verwijzen naar een Swagger-bestand dat niet wordt gehost of niet voldoet aan de beveiligings-en cross-Origin-vereisten, kunt u [het Swagger-bestand uploaden naar een BLOB-container in een Azure-opslag account](#host-swagger)en CORS inschakelen voor dat opslag account, zodat u naar het bestand kunt verwijzen.
+  Als u wilt verwijzen naar een Swagger-bestand dat niet wordt gehost of dat niet voldoet aan de vereisten voor beveiliging en cross-origin, u [het Swagger-bestand uploaden naar een blobcontainer in een Azure-opslagaccount](#host-swagger)en CORS inschakelen op dat opslagaccount, zodat u naar het bestand verwijzen.
 
-  In de voor beelden in dit onderwerp wordt gebruikgemaakt van de [Cognitive Services Face-API](https://docs.microsoft.com/azure/cognitive-services/face/overview), waarvoor een [Cognitive Services account en toegangs sleutel](../cognitive-services/cognitive-services-apis-create-account.md)is vereist.
+  De voorbeelden in dit onderwerp maken gebruik van de [Cognitive Services Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview), waarvoor een Cognitive [Services-account en toegangssleutel vereist](../cognitive-services/cognitive-services-apis-create-account.md)zijn.
 
-* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
+* Basiskennis over [het maken van logische apps.](../logic-apps/quickstart-create-first-logic-app-workflow.md) Als u nieuw bent in logische apps, controleert u [Wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-* De logische app waarvan u het doel eindpunt wilt aanroepen. [Maak een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)om te beginnen met de http + Swagger-trigger. Als u de actie HTTP + Swagger wilt gebruiken, start u de logische app met een wille keurige trigger. In dit voor beeld wordt de HTTP + Swagger-trigger als de eerste stap gebruikt.
+* De logische app van waaruit u het doeleindpunt wilt aanroepen. Als u wilt beginnen met de HTTP + Swagger-trigger, [maakt u een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Als u de actie HTTP + Swagger wilt gebruiken, start u uw logische app met elke gewenste trigger. In dit voorbeeld wordt de HTTP + Swagger-trigger als eerste stap gebruikt.
 
 ## <a name="add-an-http--swagger-trigger"></a>Een HTTP + Swagger-trigger toevoegen
 
-Deze ingebouwde trigger verzendt een HTTP-aanvraag naar een URL voor een Swagger-bestand waarin een REST API wordt beschreven en een antwoord wordt geretourneerd dat de inhoud van het bestand bevat.
+Deze ingebouwde trigger stuurt een HTTP-verzoek naar een URL voor een Branieer-bestand waarin een REST-API wordt beschreven en een antwoord retourneert dat de inhoud van dat bestand bevat.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Open uw lege logische app in Logic App Designer.
 
-1. Voer op de ontwerp functie in het zoekvak ' Swagger ' in als uw filter. Selecteer in de lijst **Triggers** de **http + Swagger-** trigger.
+1. Voer op de ontwerper in het zoekvak 'branie' in als filter. Selecteer in de lijst **Triggers** de **HTTP + Swagger-trigger.**
 
-   ![HTTP + Swagger-trigger selecteren](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
+   ![SELECTEER HTTP + Swagger trigger](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
 
-1. Voer in het vak **URL van Swagger-eind punt** de URL voor het SWAGGER-bestand in en selecteer **volgende**.
+1. Voer in het vak **SWAGGER ENDPOINT URL** de URL voor het swaggerbestand in en selecteer **Volgende**.
 
-   In dit voor beeld wordt de Swagger-URL gebruikt die zich bevindt in de regio vs-West voor het [Cognitive Services Face-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
+   In dit voorbeeld wordt de URL van Swagger gebruikt die zich in de regio West-VS bevindt voor de [Cognitive Services Face API:](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![URL voor Swagger-eind punt invoeren](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   ![URL invoeren voor Swagger-eindpunt](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
-1. Wanneer de ontwerp functie de bewerkingen weergeeft die worden beschreven door het Swagger-bestand, selecteert u de bewerking die u wilt gebruiken.
+1. Wanneer de ontwerper de bewerkingen weergeeft die zijn beschreven door het swaggerbestand, selecteert u de bewerking die u wilt gebruiken.
 
-   ![Bewerkingen in het Swagger-bestand](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
+   ![Bewerkingen in swaggerbestand](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
-1. Geef de waarden op voor de trigger parameters, die variëren op basis van de geselecteerde bewerking, die u wilt opnemen in de eindpunt aanroep. Stel het terugkeer patroon in voor de frequentie waarmee u wilt dat de trigger het eind punt aanroept.
+1. Geef de waarden op voor de triggerparameters, die variëren op basis van de geselecteerde bewerking, die u wilt opnemen in de eindpuntaanroep. Stel de herhaling in voor hoe vaak u wilt dat de trigger het eindpunt aanroept.
 
-   In dit voor beeld wordt de naam van de trigger gewijzigd in ' HTTP + Swagger trigger: Face-detect ' zodat de stap een meer beschrijvende naam heeft.
+   In dit voorbeeld wordt de naam van de trigger gewijzigd in 'HTTP + Swagger trigger: Face - Detect' zodat de stap een meer beschrijvende naam heeft.
 
    ![Bewerkingsdetails](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
-1. Als u andere beschik bare para meters wilt toevoegen, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de gewenste para meters.
+1. Als u andere beschikbare parameters wilt toevoegen, opent u de lijst **Nieuwe parameter toevoegen** en selecteert u de gewenste parameters.
 
-   Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over de beschik bare verificatie typen voor http + Swagger.
+   Zie [Verificatie toevoegen aan uitgaande gesprekken](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over verificatietypen die beschikbaar zijn voor HTTP + Swagger.
 
-1. Ga door met het bouwen van de werk stroom van uw logische app met acties die worden uitgevoerd wanneer de trigger wordt geactiveerd.
+1. Ga door met het bouwen van de werkstroom van uw logische app met acties die worden uitgevoerd wanneer de trigger wordt geactiveerd.
 
-1. Wanneer u klaar bent, moet u uw logische app opslaan. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Wanneer u klaar bent, moet u uw logica-app opslaan. Selecteer op de werkbalk van de ontwerper de optie **Opslaan**.
 
 ## <a name="add-an-http--swagger-action"></a>Een HTTP + Swagger-actie toevoegen
 
-Deze ingebouwde actie maakt een HTTP-aanvraag voor de URL voor het Swagger-bestand waarin een REST API wordt beschreven en retourneert een antwoord met daarin de inhoud van dat bestand.
+Met deze ingebouwde actie wordt een HTTP-aanvraag ingediend bij de URL voor het Swagger-bestand waarin een REST-API wordt beschreven en wordt een antwoord geretourneerd dat de inhoud van dat bestand bevat.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Open uw logische app in Logic App Designer.
 
-1. Selecteer **nieuwe stap**onder de stap waar u de http + Swagger-actie wilt toevoegen.
+1. Selecteer Onder de stap waarin u de actie HTTP + Swagger wilt toevoegen, de optie **Nieuwe stap**.
 
-   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie tussen de stappen wilt toevoegen, verplaatst u de aanwijzer over de pijl tussen de stappen. Selecteer het plusteken (**+**) dat wordt weergegeven en selecteer vervolgens Een actie **toevoegen**.
 
-1. Voer op de ontwerp functie in het zoekvak ' Swagger ' in als uw filter. Selecteer in de lijst **acties** de actie **http + Swagger** .
+1. Voer op de ontwerper in het zoekvak 'branie' in als filter. Selecteer **in** de lijst Acties de actie **HTTP + Branie.**
 
-    ![HTTP + Swagger-actie selecteren](./media/connectors-native-http-swagger/select-http-swagger-action.png)
+    ![Selecteer HTTP + Swagger actie](./media/connectors-native-http-swagger/select-http-swagger-action.png)
 
-1. Voer in het vak **URL van Swagger-eind punt** de URL voor het SWAGGER-bestand in en selecteer **volgende**.
+1. Voer in het vak **SWAGGER ENDPOINT URL** de URL voor het swaggerbestand in en selecteer **Volgende**.
 
-   In dit voor beeld wordt de Swagger-URL gebruikt die zich bevindt in de regio vs-West voor het [Cognitive Services Face-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
+   In dit voorbeeld wordt de URL van Swagger gebruikt die zich in de regio West-VS bevindt voor de [Cognitive Services Face API:](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![URL voor Swagger-eind punt invoeren](./media/connectors-native-http-swagger/http-swagger-action-parameters.png)
+   ![URL invoeren voor Swagger-eindpunt](./media/connectors-native-http-swagger/http-swagger-action-parameters.png)
 
-1. Wanneer de ontwerp functie de bewerkingen weergeeft die worden beschreven door het Swagger-bestand, selecteert u de bewerking die u wilt gebruiken.
+1. Wanneer de ontwerper de bewerkingen weergeeft die zijn beschreven door het swaggerbestand, selecteert u de bewerking die u wilt gebruiken.
 
-   ![Bewerkingen in het Swagger-bestand](./media/connectors-native-http-swagger/http-swagger-action-operations.png)
+   ![Bewerkingen in swaggerbestand](./media/connectors-native-http-swagger/http-swagger-action-operations.png)
 
-1. Geef de waarden op voor de actie parameters, die variëren op basis van de geselecteerde bewerking, die u wilt opnemen in de eindpunt aanroep.
+1. Geef de waarden op voor de actieparameters die variëren op basis van de geselecteerde bewerking, die u wilt opnemen in de eindpuntaanroep.
 
-   Dit voor beeld heeft geen para meters, maar de naam van de actie wordt gewijzigd in ' HTTP + Swagger-actie: Face-identify ' zodat de stap een meer beschrijvende naam heeft.
+   In dit voorbeeld zijn geen parameters, maar wordt de actie hernoemd naar 'HTTP + Swagger action: Face - Identify' zodat de stap een meer beschrijvende naam heeft.
 
    ![Bewerkingsdetails](./media/connectors-native-http-swagger/http-swagger-action-operation-details.png)
 
-1. Als u andere beschik bare para meters wilt toevoegen, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de gewenste para meters.
+1. Als u andere beschikbare parameters wilt toevoegen, opent u de lijst **Nieuwe parameter toevoegen** en selecteert u de gewenste parameters.
 
-   Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over de beschik bare verificatie typen voor http + Swagger.
+   Zie [Verificatie toevoegen aan uitgaande gesprekken](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over verificatietypen die beschikbaar zijn voor HTTP + Swagger.
 
-1. Wanneer u klaar bent, moet u uw logische app opslaan. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Wanneer u klaar bent, moet u uw logica-app opslaan. Selecteer op de werkbalk van de ontwerper de optie **Opslaan**.
 
 <a name="host-swagger"></a>
 
-## <a name="host-swagger-in-azure-storage"></a>Swagger in Azure Storage hosten
+## <a name="host-swagger-in-azure-storage"></a>Swagger hosten in Azure Storage
 
-U kunt verwijzen naar een Swagger-bestand dat niet wordt gehost of niet voldoet aan de beveiligings-en cross-Origin-vereisten door dat bestand te uploaden naar BLOB-container in een Azure-opslag account en CORS in te scha kelen voor dat opslag account. Voer de volgende stappen uit om Swagger-bestanden te maken, in te stellen en op te slaan in Azure Storage:
+U verwijzen naar een Swagger-bestand dat niet wordt gehost of dat niet voldoet aan de vereisten voor beveiliging en cross-origine door dat bestand te uploaden naar blobcontainer in een Azure-opslagaccount en CORS in te schakelen op dat opslagaccount. Voer de volgende stappen uit om Swagger-bestanden in Azure Storage te maken, in te stellen en op te slaan:
 
-1. [Maak een Azure Storage-account](../storage/common/storage-create-storage-account.md).
+1. [Maak een Azure-opslagaccount](../storage/common/storage-create-storage-account.md).
 
-1. Schakel nu CORS in voor de blob. Selecteer **CORS**in het menu van uw opslag account. Geef op het tabblad **BLOB service** deze waarden op en selecteer vervolgens **Opslaan**.
+1. Schakel cors nu in voor de blob. Selecteer **CORS**in het menu van uw opslagaccount. Geef op het tabblad **Klodderservice** deze waarden op en selecteer **Opslaan**.
 
    | Eigenschap | Waarde |
    |----------|-------|
    | **Toegestane oorsprongen** | `*` |
    | **Toegestane methoden** | `GET`, `HEAD`, `PUT` |
    | **Toegestane headers** | `*` |
-   | **Weer gegeven kopteksten** | `*` |
-   | **Max. duur** (in seconden) | `200` |
+   | **Weergegeven headers** | `*` |
+   | **Maximale leeftijd** (in seconden) | `200` |
    |||
 
-   Hoewel in dit voor beeld de [Azure Portal](https://portal.azure.com)wordt gebruikt, kunt u een hulp programma zoals [Azure Storage Explorer](https://storageexplorer.com/)gebruiken of deze instelling automatisch configureren met behulp van dit [Power shell](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1)-voorbeeld script.
+   Hoewel in dit voorbeeld de [Azure-portal](https://portal.azure.com)wordt gebruikt, u een hulpprogramma zoals [Azure Storage Explorer](https://storageexplorer.com/)gebruiken of deze instelling automatisch configureren met behulp van dit voorbeeld [PowerShell-script](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1).
 
-1. [Maak een BLOB-container](../storage/blobs/storage-quickstart-blobs-portal.md). Selecteer **toegangs niveau wijzigen**in het deel venster **overzicht** van de container. Selecteer in de lijst **openbaar toegangs niveau** de optie **BLOB (anonieme lees toegang alleen voor blobs)** en selecteer **OK**.
+1. [Een blobcontainer maken.](../storage/blobs/storage-quickstart-blobs-portal.md) Selecteer access level wijzigen in het **deelvenster Overzicht** **van**de container . Selecteer **blob (alleen anonieme leestoegang voor blobs)** en selecteer **OK**in de lijst **Openbaar toegangsniveau.**
 
-1. [Upload het Swagger-bestand naar de BLOB-container](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), hetzij via de [Azure Portal](https://portal.azure.com) of [Azure Storage Explorer](https://storageexplorer.com/).
+1. [Upload het Swagger-bestand naar de blobcontainer,](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob)via de [Azure-portal](https://portal.azure.com) of [Azure Storage Explorer.](https://storageexplorer.com/)
 
-1. Als u wilt verwijzen naar het bestand in de BLOB-container, gebruikt u een HTTPS-koppeling met de volgende indeling, die hoofdletter gevoelig is:
+1. Als u naar het bestand in de blobcontainer wilt verwijzen, gebruikt u een HTTPS-koppeling die deze indeling volgt, die hoofdlettergevoelig is:
 
    `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<swagger-file-name>`
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Hier vindt u meer informatie over de uitvoer van een HTTP + Swagger-trigger of-actie. De HTTP + Swagger-aanroep retourneert deze informatie:
+Hier vindt u meer informatie over de uitgangen van een HTTP + Swagger trigger of actie. De HTTP + Swagger call retourneert deze informatie:
 
 | Naam van eigenschap | Type | Beschrijving |
 |---------------|------|-------------|
-| koppen | object | De headers van de aanvraag |
-| organen | object | JSON-object | Het object met de inhoud van de hoofd tekst van de aanvraag |
-| status code | int | De status code van de aanvraag |
+| Headers | object | De kopteksten van het verzoek |
+| body | object | JSON-object | Het object met de inhoud van de hoofdtekst van het verzoek |
+| statuscode | int | De statuscode van het verzoek |
 |||
 
 | Statuscode | Beschrijving |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Afgewezen |
-| 400 | Ongeldige aanvraag |
+| 202 | Geaccepteerd |
+| 400 | Slecht verzoek |
 | 401 | Niet geautoriseerd |
 | 403 | Verboden |
 | 404 | Niet gevonden |
-| 500 | Interne server fout. Er is een onbekende fout opgetreden. |
+| 500 | Interne serverfout. Er is onbekende fout opgetreden. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)

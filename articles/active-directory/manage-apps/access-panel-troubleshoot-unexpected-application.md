@@ -1,6 +1,6 @@
 ---
-title: Hoe toepassingen worden weergegeven in het toegangsvenster | Microsoft Docs
-description: Waarom een toepassing wordt weergegeven in het toegangsvenster
+title: Hoe toepassingen worden weergegeven in het toegangspaneel | Microsoft Documenten
+description: Problemen oplossen waarom een toepassing wordt weergegeven in het access-paneel
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,141 +17,141 @@ ms.author: mimart
 ms.reviewr: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fa8ea75cc7fda05326c802c25a91d025b66b5ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65784417"
 ---
-# <a name="how-applications-appear-on-the-access-panel"></a>Hoe toepassingen worden weergegeven in het toegangsvenster
+# <a name="how-applications-appear-on-the-access-panel"></a>Hoe toepassingen worden weergegeven in het toegangspaneel
 
-Het toegangsvenster is een portal op Internet, waarmee een gebruiker met een account voor werk of school in Azure Active Directory (Azure AD) om te bekijken en starten van cloud-gebaseerde toepassingen die Azure AD-beheerder heeft deze toegang verleend aan. Deze toepassingen zijn namens de gebruiker in de Azure AD-portal geconfigureerd. De beheerder kan de toepassing voor de gebruiker rechtstreeks inrichten of aan een groep van een gebruiker deel uitmaakt van leidt tot de toepassing die wordt weergegeven in het toegangsvenster van de gebruiker.
+Het Access-paneel is een webportal waarmee een gebruiker met een werk- of schoolaccount in Azure Active Directory (Azure AD) cloudtoepassingen kan weergeven en starten waartoe de Azure AD-beheerder hem toegang heeft verleend. Deze toepassingen zijn geconfigureerd namens de gebruiker in de Azure AD-portal. De beheerder kan de toepassing rechtstreeks aan de gebruiker inrichten of aan een groep waar een gebruiker deel van uitmaakt, waardoor de toepassing wordt weergegeven in het toegangspaneel van de gebruiker.
 
 ## <a name="general-issues-to-check-first"></a>Algemene problemen om eerst te controleren
 
--   Als een toepassing is verwijderd uit een gebruiker of groep die de gebruiker een lid van is, probeert aan te melden en afmelden opnieuw in het toegangsvenster van de gebruiker na een paar minuten om te zien als de toepassing wordt verwijderd.
+-   Als een toepassing is verwijderd uit een gebruiker of groep waarvan de gebruiker lid is, probeert u zich na enkele minuten opnieuw aan- en uit te loggen in het toegangspaneel van de gebruiker om te zien of de toepassing is verwijderd.
 
--   Als u een licentie is verwijderd uit een gebruiker of groep is de gebruiker dat lid is van dit duurt lang duren, afhankelijk van de grootte en complexiteit van de groep voor wijzigingen worden aangebracht. Kan extra tijd voordat het toegangsvenster aan te melden.
+-   Als een licentie is verwijderd uit een gebruiker of groep de gebruiker is een lid van dit kan lang duren, afhankelijk van de grootte en complexiteit van de groep voor wijzigingen worden aangebracht. Geef extra tijd voor het aanmelden bij het toegangspaneel.
 
-## <a name="problems-related-to-assigning-applications-to-users"></a>Problemen met betrekking tot toepassingen aan gebruikers toewijzen
+## <a name="problems-related-to-assigning-applications-to-users"></a>Problemen met betrekking tot het toewijzen van toepassingen aan gebruikers
 
-Een gebruiker mogelijk ziet u een toepassing in hun Toegangsvenster omdat ze was eerder eraan is toegewezen. Hieronder vindt u enkele manieren om te controleren:
+Een gebruiker kan een toepassing in het Access-paneel zien omdat deze eerder was toegewezen. Hieronder volgen enkele manieren om te controleren:
 
--   [Controleren of een gebruiker is toegewezen aan de toepassing](#check-if-a-user-is-assigned-to-the-application)
+-   [Controleren of een gebruiker aan de toepassing is toegewezen](#check-if-a-user-is-assigned-to-the-application)
 
--   [Controleren of een gebruiker een licentie met betrekking tot de toepassing](#check-if-a-user-is-under-a-license-related-to-the-application)
+-   [Controleren of een gebruiker een licentie heeft met betrekking tot de toepassing](#check-if-a-user-is-under-a-license-related-to-the-application)
 
 
-### <a name="check-if-a-user-is-assigned-to-the-application"></a>Controleren of een gebruiker is toegewezen aan de toepassing
+### <a name="check-if-a-user-is-assigned-to-the-application"></a>Controleren of een gebruiker aan de toepassing is toegewezen
 
-Om te zien als een gebruiker is toegewezen aan de toepassing, de volgende stappen uit:
+Voer de volgende stappen uit om te controleren of een gebruiker aan de toepassing is toegewezen:
 
-1. Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2. Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3. Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4. Klik op **bedrijfstoepassingen** in het navigatiemenu aan Azure Active Directory.
+4. klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
 
-5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+5. klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-6. **Search** voor de naam van de betreffende toepassing.
+6. **Zoek naar** de naam van de betreffende toepassing.
 
-7. Klik op **gebruikers en groepen**.
+7. klik op **Gebruikers en groepen**.
 
-8. Controleer of de gebruiker is toegewezen aan de toepassing.
+8. Controleer of uw gebruiker aan de toepassing is toegewezen.
 
-   * Als u wilt verwijderen van de gebruiker van de toepassing **klikt u op de rij** van de gebruiker en selecteer **verwijderen**.
+   * Als u de gebruiker uit de toepassing wilt verwijderen, **klikt u op de rij** van de gebruiker en selecteert u **verwijderen**.
 
-### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>Controleren of een gebruiker een licentie met betrekking tot de toepassing
+### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>Controleren of een gebruiker een licentie heeft met betrekking tot de toepassing
 
-Om te controleren of de toegewezen licenties van een gebruiker, de volgende stappen uit:
+Voer de volgende stappen uit om de toegewezen licenties van een gebruiker te controleren:
 
-1. Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2. Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3. Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4. Klik op **gebruikers en groepen** in het navigatiemenu.
+4. klik op **Gebruikers en groepen** in het navigatiemenu.
 
-5. Klik op **alle gebruikers**.
+5. klik op **Alle gebruikers**.
 
-6. **Search** voor de gebruiker die u geïnteresseerd bent in en **klikt u op de rij** om te selecteren.
+6. **Zoek naar** de gebruiker waarin u geïnteresseerd bent en **klik op de rij** om te selecteren.
 
-7. Klik op **licenties** om te zien welke licenties die de gebruiker die momenteel is toegewezen.
+7. klik op **Licenties** om te zien welke licenties de gebruiker momenteel heeft toegewezen.
 
-   * Als de gebruiker aan een Office-licentie is toegewezen, kunt dit eerste partij Office-toepassingen worden weergegeven in het toegangsvenster van de gebruiker.
+   * Als de gebruiker is toegewezen aan een Office-licentie, kunnen First Party Office-toepassingen worden weergegeven in het Toegangspaneel van de gebruiker.
 
-## <a name="problems-related-to-assigning-applications-to-groups"></a>Problemen met betrekking tot toepassingen aan groepen toewijzen
+## <a name="problems-related-to-assigning-applications-to-groups"></a>Problemen met betrekking tot het toewijzen van toepassingen aan groepen
 
-Een gebruiker mogelijk ziet u een toepassing in hun Toegangsvenster omdat ze deel uitmaken van een groep die de toepassing is toegewezen. Hieronder vindt u enkele manieren om te controleren:
+Een gebruiker kan een toepassing in het Access-paneel zien omdat hij deel uitmaakt van een groep aan de toepassing toegewezen. Hieronder volgen enkele manieren om te controleren:
 
--   [Controleren van groepslidmaatschappen van een gebruiker](#check-a-users-group-memberships)
+-   [Groepslidmaatschappen van een gebruiker controleren](#check-a-users-group-memberships)
 
 -   [Controleren of een gebruiker lid is van een groep die is toegewezen aan een licentie](#check-if-a-user-is-a-member-of-a-group-assigned-to-a-license)
 
-### <a name="check-a-users-group-memberships"></a>Controleren van groepslidmaatschappen van een gebruiker
+### <a name="check-a-users-group-memberships"></a>Groepslidmaatschappen van een gebruiker controleren
 
-Als u wilt controleren van een groep lidmaatschap, de volgende stappen uit:
+Voer de volgende stappen uit om het lidmaatschap van een groep te controleren:
 
-1. Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2. Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3. Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4. Klik op **gebruikers en groepen** in het navigatiemenu.
+4. klik op **Gebruikers en groepen** in het navigatiemenu.
 
-5. Klik op **alle gebruikers**.
+5. klik op **Alle gebruikers**.
 
-6. **Search** voor de gebruiker die u geïnteresseerd bent in en **klikt u op de rij** om te selecteren.
+6. **Zoek naar** de gebruiker waarin u geïnteresseerd bent en **klik op de rij** om te selecteren.
 
-7. Klik op **groepen.**
+7. klik op **Groepen.**
 
-8. Controleer of de gebruiker deel uitmaakt van een groep die is toegewezen aan de toepassing is.
+8. Controleer of uw gebruiker deel uitmaakt van een groep die aan de toepassing is toegewezen.
 
-   * Als u wilt verwijderen van de gebruiker uit de groep **klikt u op de rij** van de groep en selecteer verwijderen.
+   * Als u de gebruiker uit de groep wilt verwijderen, **klikt u op de rij** van de groep en selecteert u verwijderen.
 
 ### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>Controleren of een gebruiker lid is van een groep die is toegewezen aan een licentie
 
-1. Open de [ **Azure-portal** ](https://portal.azure.com/) en meld u aan als een **globale beheerder.**
+1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2. Open de **Azure Active Directory-extensie** door te klikken op **alle services** aan de bovenkant van het menu links hoofdgedeelte voor navigatie.
+2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3. Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4. Klik op **gebruikers en groepen** in het navigatiemenu.
+4. klik op **Gebruikers en groepen** in het navigatiemenu.
 
-5. Klik op **alle gebruikers**.
+5. klik op **Alle gebruikers**.
 
-6. **Search** voor de gebruiker die u geïnteresseerd bent in en **klikt u op de rij** om te selecteren.
+6. **Zoek naar** de gebruiker waarin u geïnteresseerd bent en **klik op de rij** om te selecteren.
 
-7. Klik op **groepen.**
+7. klik op **Groepen.**
 
-8. Klik op de rij van een specifieke groep.
+8. klik op de rij van een specifieke groep.
 
-9. Klik op **licenties** om te zien die de groep licenties zijn toegewezen aan.
+9. Klik op **Licenties** om te zien welke licenties de groep eraan heeft toegewezen.
 
-   * Als de groep is toegewezen aan een licentie voor Office, is dit mogelijk bepaalde eerste partij Office-toepassingen worden weergegeven in het toegangsvenster van de gebruiker.
+   * Als de groep is toegewezen aan een Office-licentie, kan dit bepaalde First Party Office-toepassingen in staat stellen om te worden weergegeven in het Toegangspaneel van de gebruiker.
 
 
-## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Als deze stappen voor probleemoplossing niet oplossen door het probleem doet
+## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Als deze stappen voor het oplossen van problemen het probleem niet oplossen
 
-Open een ondersteuningsticket met de volgende informatie, indien beschikbaar:
+open een support ticket met de volgende informatie indien beschikbaar:
 
--   Correlatie-ID van fout
+-   Correlatiefout-id
 
--   UPN (e-mailadres van gebruiker)
+-   UPN (e-mailadres van de gebruiker)
 
 -   Tenant-id
 
 -   Browsertype
 
--   Tijdzone en de tijd/tijdsbestek tijdens de fout optreedt
+-   Tijdzone en tijd/tijdsbestek tijdens fout treedt op
 
--   Fiddler traceringen
+-   Fiddler sporen
 
 ## <a name="next-steps"></a>Volgende stappen
 [Toepassingen beheren met Azure Active Directory](what-is-application-management.md)

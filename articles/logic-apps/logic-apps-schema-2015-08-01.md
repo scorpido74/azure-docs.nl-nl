@@ -1,6 +1,6 @@
 ---
-title: Schema-updates voor de preview-versie van augustus-1-2015
-description: De schema versie 2015-08-01-preview is bijgewerkt voor de definities van logische apps in Azure Logic Apps
+title: Schema-updates voor de preview-preview van augustus-1-2015
+description: Bijgewerkte schemaversie 2015-08-01-preview voor logische app-definities in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: kevinlam1
@@ -9,39 +9,39 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/31/2016
 ms.openlocfilehash: b6746baaede777eb8c2afcae9eb3fe80b669c468
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792839"
 ---
-# <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Schema-updates voor Azure Logic Apps-1 augustus 2015 preview
+# <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Schema-updates voor Azure Logic Apps - voorbeeld van 1 augustus 2015
 
-Deze schema-en API-versie voor Azure Logic Apps bevat belang rijke verbeteringen die het gebruik van logische apps betrouwbaarder en eenvoudiger maken:
+Deze schema- en API-versie voor Azure Logic Apps bevat belangrijke verbeteringen die logische apps betrouwbaarder en gebruiksvriendelijker maken:
 
-* Het actie type **APIApp** heet nu [**APIConnection**](#api-connections).
-* De **herhalings** actie heet nu [**foreach**](#foreach).
-* De [ **HTTP-listener API-** app](#http-listener) is niet meer vereist.
-* Voor het aanroepen van onderliggende werk stromen wordt een [Nieuw schema](#child-workflows)gebruikt.
+* Het **actietype APIApp** heet nu [**APIConnection**](#api-connections).
+* De **actie Herhalen** heet nu [**Foreach**](#foreach).
+* De [ **HTTP Listener** API App](#http-listener) is niet langer nodig.
+* Met onderliggende werkstromen wordt een [nieuw schema gebruikt.](#child-workflows)
 
 <a name="api-connections"></a>
 
-## <a name="move-to-api-connections"></a>Verplaatsen naar API-verbindingen
+## <a name="move-to-api-connections"></a>Naar API-verbindingen gaan
 
-De grootste wijziging is dat u API Apps niet meer hoeft te implementeren in uw Azure-abonnement, zodat u Api's kunt gebruiken. Hier volgen de manieren waarop u Api's kunt gebruiken:
+De grootste wijziging is dat u API-apps niet langer hoeft te implementeren in uw Azure-abonnement, zodat u API's gebruiken. Dit zijn de manieren waarop u API's gebruiken:
 
-* Beheerde Api's
-* Uw aangepaste web-Api's
+* Beheerde API's
+* Uw aangepaste web-API's
 
-Elke manier wordt enigszins anders behandeld, omdat hun beheer-en hosting modellen verschillend zijn. Een voor deel van dit model is dat u niet langer beperkt bent over resources die zijn geïmplementeerd in uw Azure-resource groep. 
+Elke manier wordt iets anders behandeld omdat hun management- en hostingmodellen verschillend zijn. Een voordeel van dit model is dat u niet langer beperkt bent tot resources die zijn geïmplementeerd in uw Azure-brongroep. 
 
-### <a name="managed-apis"></a>Beheerde Api's
+### <a name="managed-apis"></a>Beheerde API's
 
-Micro soft beheert enkele Api's namens u, zoals Office 365, Sales Force, Twitter en FTP. U kunt een aantal beheerde Api's gebruiken, zoals Bing vertalen, terwijl andere moeten worden geconfigureerd, ook wel een *verbinding*.
+Microsoft beheert namens u enkele API's, zoals Office 365, Salesforce, Twitter en FTP. U sommige beheerde API's gebruiken zoals Bing Translate, terwijl anderen configuratie vereisen, ook wel een *verbinding*genoemd.
 
-Wanneer u bijvoorbeeld Office 365 gebruikt, moet u een verbinding maken die uw Office 365-aanmeldings token bevat. Uw token wordt veilig opgeslagen en vernieuwd zodat uw logische app altijd de Office 365-API kan aanroepen. Als u verbinding wilt maken met uw SQL-of FTP-server, moet u een verbinding maken die de connection string heeft. 
+Wanneer u bijvoorbeeld Office 365 gebruikt, moet u een verbinding maken met uw office 365-aanmeldingstoken. Uw token wordt veilig opgeslagen en vernieuwd, zodat uw logische app altijd de Office 365 API kan aanroepen. Als u verbinding wilt maken met uw SQL- of FTP-server, moet u een verbinding maken met de verbindingstekenreeks. 
 
-In deze definitie worden deze acties de naam `APIConnection`genoemd. Hier volgt een voor beeld van een verbinding die Office 365 aanroept voor het verzenden van een e-mail bericht:
+In deze definitie worden `APIConnection`deze acties genoemd . Hier is een voorbeeld van een verbinding die Office 365 oproept om een e-mail te verzenden:
 
 ``` json
 {
@@ -70,20 +70,20 @@ In deze definitie worden deze acties de naam `APIConnection`genoemd. Hier volgt 
 }
 ```
 
-Het `host`-object maakt deel uit van de invoer die uniek is voor API-verbindingen en bevat de volgende onderdelen: `api` en `connection`. Het `api`-object geeft de runtime-URL op waar de beheerde API wordt gehost. U kunt alle beschik bare beheerde Api's weer geven door deze methode aan te roepen:
+Het `host` object is een deel van de ingangen dat uniek `api` `connection`is voor API-verbindingen en deze onderdelen bevat: en . Het `api` object geeft de runtime-URL op voor waar die beheerde API wordt gehost. U alle beschikbare beheerde API's bekijken door deze methode aan te roepen:
 
 ```text
 GET https://management.azure.com/subscriptions/<Azure-subscription-ID>/providers/Microsoft.Web/locations/<location>/managedApis?api-version=2015-08-01-preview
 ```
 
-Wanneer u een API gebruikt, is het mogelijk dat de API geen *verbindings parameters*heeft gedefinieerd. Als deze para meters niet worden gedefinieerd in de API, is geen verbinding vereist. Als deze para meters in de API worden gedefinieerd, moet u een verbinding maken met een opgegeven naam.  
-U verwijst vervolgens naar die naam in het `connection`-object binnen het `host`-object. Als u een verbinding in een resource groep wilt maken, roept u de volgende methode op:
+Wanneer u een API gebruikt, kan die API al dan niet *verbindingsparameters*hebben gedefinieerd. Als de API deze parameters niet definieert, is er dus geen verbinding vereist. Als de API deze parameters definieert, moet u een verbinding maken met een opgegeven naam.  
+Vervolgens verwijst u naar `connection` die `host` naam in het object in het object. Als u een verbinding in een resourcegroep wilt maken, roept u deze methode aan:
 
 ```text
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Web/connections/<name>?api-version=2015-08-01-preview
 ```
 
-Met de volgende hoofd tekst:
+Met de volgende instantie:
 
 ``` json
 {
@@ -99,10 +99,10 @@ Met de volgende hoofd tekst:
 }
 ```
 
-### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Beheerde Api's implementeren in een Azure Resource Manager sjabloon
+### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Beheerde API's implementeren in een Azure Resource Manager-sjabloon
 
-Als interactieve aanmelding niet is vereist, kunt u een volledige app maken met behulp van een resource manager-sjabloon.
-Als aanmelding vereist is, kunt u nog steeds een resource manager-sjabloon gebruiken, maar u moet de verbindingen via de Azure Portal autoriseren. 
+Wanneer interactieve aanmelding niet vereist is, u een volledige app maken met behulp van een resourcemanagersjabloon.
+Als aanmelden vereist is, u nog steeds een Resource Manager-sjabloon gebruiken, maar u moet de verbindingen autoriseren via de Azure-portal. 
 
 ``` json
 "resources": [ {
@@ -192,13 +192,13 @@ Als aanmelding vereist is, kunt u nog steeds een resource manager-sjabloon gebru
 } ]
 ```
 
-U kunt in dit voor beeld zien dat de verbindingen alleen resources zijn die zich in uw resource groep bevinden. Ze verwijzen naar de beheerde Api's die voor u beschikbaar zijn in uw abonnement.
+U in dit voorbeeld zien dat de verbindingen slechts bronnen zijn die in uw resourcegroep leven. Ze verwijzen naar de beheerde API's die voor u beschikbaar zijn in uw abonnement.
 
-### <a name="your-custom-web-apis"></a>Uw aangepaste web-Api's
+### <a name="your-custom-web-apis"></a>Uw aangepaste web-API's
 
-Als u uw eigen Api's gebruikt in plaats van door micro soft beheerde, gebruikt u de ingebouwde **http** -actie om uw api's aan te roepen. In het ideale geval moet u een Swagger-eind punt voor uw API opgeven. Dit eind punt helpt Logic app Designer de invoer en uitvoer van uw API weer te geven. Zonder een Swagger-eind punt kan de ontwerp functie alleen de invoer en uitvoer weer geven als ondoorzichtige JSON-objecten.
+Als u uw eigen API's gebruikt in plaats van door Microsoft beheerde API's, gebruikt u de ingebouwde **HTTP-actie** om uw API's aan te roepen. Idealiter moet u een Swagger-eindpunt voor uw API bieden. Met dit eindpunt kan Logic App Designer de ingangen en uitvoer van uw API weergeven. Zonder een Swagger-eindpunt kan de ontwerper alleen de ingangen en uitgangen weergeven als ondoorzichtige JSON-objecten.
 
-Hier volgt een voor beeld van de nieuwe eigenschap `metadata.apiDefinitionUrl`:
+Hier is een voorbeeld `metadata.apiDefinitionUrl` van de nieuwe eigenschap:
 
 ``` json
 "actions": {
@@ -215,12 +215,12 @@ Hier volgt een voor beeld van de nieuwe eigenschap `metadata.apiDefinitionUrl`:
 }
 ```
 
-Als u uw web-API op Azure App Service host, wordt uw web-API automatisch weer gegeven in de lijst met acties die beschikbaar zijn in de ontwerp functie. Als dat niet het geval is, moet u de URL rechtstreeks in een plak bewerking plakken. Het Swagger-eind punt moet niet-geverifieerd zijn zodat het kan worden gebruikt in de ontwerp functie voor logische apps, hoewel u de API zelf kunt beveiligen met alle methoden die Swagger ondersteunt.
+Als u uw Web API host in Azure App Service, wordt uw web-API automatisch weergegeven in de lijst met acties die beschikbaar zijn in de ontwerper. Als dit niet het zo is, moet u de URL rechtstreeks plakken. Het Swagger-eindpunt moet niet zijn geverifieerd om bruikbaar te zijn in de Logic App Designer, hoewel u de API zelf beveiligen met alle methoden die Swagger ondersteunt.
 
-### <a name="call-deployed-api-apps-with-2015-08-01-preview"></a>Geïmplementeerde API-apps aanroepen met 2015-08-01-preview
+### <a name="call-deployed-api-apps-with-2015-08-01-preview"></a>Geïmplementeerde API-apps bellen met 2015-08-01-preview
 
-Als u eerder een API-app hebt geïmplementeerd, kunt u die app aanroepen met de **http-** actie.
-Als u bijvoorbeeld Dropbox gebruikt om bestanden weer te geven, kan de schema versie definitie van uw **2014-12-01-voor beeld** er ongeveer als volgt uitzien:
+Als u eerder een API-app hebt geïmplementeerd, u die app bellen met de **HTTP-actie.**
+Als je bijvoorbeeld Dropbox gebruikt om bestanden weer te geven, kan je schemaversiedefinitie **voor 2014-2012-2012-2012-2011** ongeveer als:
 
 ``` json
 "definition": {
@@ -261,7 +261,7 @@ Als u bijvoorbeeld Dropbox gebruikt om bestanden weer te geven, kan de schema ve
 }
 ```
 
-Nu kunt u nu een vergelijk bare HTTP-actie maken en de `parameters` sectie van de Logic app-definitie ongewijzigd laten, bijvoorbeeld:
+Nu u een vergelijkbare HTTP-actie maken en `parameters` de sectie van de logische app-definitie ongewijzigd laten, bijvoorbeeld:
 
 ``` json
 "actions": {
@@ -286,24 +286,24 @@ Nu kunt u nu een vergelijk bare HTTP-actie maken en de `parameters` sectie van d
 }
 ```
 
-Deze eigenschappen één voor één door lopen:
+Wandelen door deze eigenschappen een-voor-een:
 
-| Actie-eigenschap | Beschrijving |
+| Actie, eigenschap | Beschrijving |
 | --- | --- |
-| `type` | `Http` in plaats van `APIapp` |
-| `metadata.apiDefinitionUrl` | Als u deze actie wilt gebruiken in de ontwerp functie voor logische apps, neemt u het eind punt voor meta gegevens op, dat is samengesteld uit: `{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
-| `inputs.uri` | Samengesteld uit: `{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
-| `inputs.method` | Altijd `POST` |
-| `inputs.body` | Hetzelfde als de API-app-para meters |
+| `type` | `Http`In plaats van`APIapp` |
+| `metadata.apiDefinitionUrl` | Als u deze actie wilt gebruiken in de Logic App Designer, neemt u het eindpunt met metagegevens op, dat is opgebouwd uit:`{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
+| `inputs.uri` | Opgebouwd uit:`{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
+| `inputs.method` | Altijd`POST` |
+| `inputs.body` | Hetzelfde als de API-app-parameters |
 | `inputs.authentication` | Hetzelfde als de API-app-verificatie |
 
-Deze aanpak moet worden gebruikt voor alle API-app-acties. Houd er echter rekening mee dat deze vorige API Apps niet meer worden ondersteund. Daarom moet u overstappen op een van de twee andere eerdere opties, een beheerde API of uw aangepaste web-API hosten.
+Deze aanpak moet werken voor alle API-app-acties. Houd er echter rekening mee dat deze eerdere API-apps niet langer worden ondersteund. Dus je moet verhuizen naar een van de twee andere vorige opties, een beheerde API of hosting van uw aangepaste Web API.
 
 <a name="foreach"></a>
 
-## <a name="renamed-repeat-to-foreach"></a>' Repeat ' is gewijzigd in ' foreach '
+## <a name="renamed-repeat-to-foreach"></a>Omgedoopt tot 'repeat' naar 'foreach'
 
-Voor de vorige schema versie hebben we veel feedback van klanten ontvangen dat de naam van de **Herhaal** actie verwarrend was en niet goed werd vastgelegd en dat **herhalen** echt een voor-elke lus was. We hebben de naam van `repeat` gewijzigd in `foreach`. U zou deze actie eerder moeten schrijven, zoals in dit voor beeld:
+Voor de vorige schemaversie kregen we veel feedback van klanten dat de **actienaam Repeat** verwarrend was en niet goed vastte dat **Repeat** echt een voor-elke lus was. Dus hebben we `repeat` `foreach`ons hernoemd naar. Voorheen schreef je deze actie als dit voorbeeld:
 
 ``` json
 "actions": {
@@ -318,7 +318,7 @@ Voor de vorige schema versie hebben we veel feedback van klanten ontvangen dat d
 }
 ```
 
-Nu zou u deze versie in plaats daarvan schrijven:
+Nu zou je deze versie in plaats daarvan schrijven:
 
 ``` json
 "actions": {
@@ -333,13 +333,13 @@ Nu zou u deze versie in plaats daarvan schrijven:
 }
 ```
 
-De `repeatItem()` functie, waarnaar wordt verwezen naar het item dat de lus verwerkt tijdens de huidige iteratie, is nu hernoemd `item()`. 
+Ook wordt `repeatItem()` de functie, die verwijst naar het item dat de lus `item()`verwerkt tijdens de huidige iteratie, nu anders genoemd . 
 
-### <a name="reference-outputs-from-foreach"></a>Referentie-uitvoer van ' foreach '
+### <a name="reference-outputs-from-foreach"></a>Referentie-output van "foreach"
 
-Voor vereenvoudiging worden de uitvoer van `foreach` acties niet langer verpakt in een object met de naam `repeatItems`. Daarnaast worden de functies `repeatItem()`, `repeatBody()`en `repeatOutputs()` verwijderd.
+Voor vereenvoudiging worden de `foreach` uitvoer van acties niet langer `repeatItems`verpakt in een object met de naam . Ook met deze wijzigingen `repeatItem()` `repeatBody()`worden `repeatOutputs()` de , , en functies verwijderd.
 
-Met het voor gaande `repeat`-voor beeld krijgt u de volgende uitvoer:
+Dus, met `repeat` behulp van het vorige voorbeeld, krijg je de volgende uitgangen:
 
 ``` json
 "repeatItems": [ {
@@ -356,7 +356,7 @@ Met het voor gaande `repeat`-voor beeld krijgt u de volgende uitvoer:
 } ]
 ```
 
-Nu krijgt u deze uitvoer in plaats daarvan:
+Nu krijg je deze uitgangen in plaats daarvan:
 
 ``` json
 [ {
@@ -373,7 +373,7 @@ Nu krijgt u deze uitvoer in plaats daarvan:
 } ]
 ```
 
-Als u de `body` van de actie wilt ophalen bij het verwijzen naar deze uitvoer, gaat u als volgt te werk:
+Voorheen, om `body` de van de actie bij het verwijzen naar deze uitgangen:
 
 ``` json
 "actions": {
@@ -389,7 +389,7 @@ Als u de `body` van de actie wilt ophalen bij het verwijzen naar deze uitvoer, g
 }
 ```
 
-Nu kunt u in plaats daarvan deze versie gebruiken:
+Nu u deze versie in plaats daarvan gebruiken:
 
 ``` json
 "actions": {
@@ -407,17 +407,17 @@ Nu kunt u in plaats daarvan deze versie gebruiken:
 
 <a name="http-listener"></a>
 
-## <a name="native-http-listener"></a>Systeem eigen HTTP-listener
+## <a name="native-http-listener"></a>Native HTTP-listener
 
-HTTP-listener-functies zijn nu ingebouwd, dus u hoeft geen HTTP-listener API-app te implementeren. Meer informatie kunt u lezen hoe u [uw logische app-eind punt kunt aanroepen](../logic-apps/logic-apps-http-endpoint.md). 
+HTTP-listenerfuncties zijn nu ingebouwd, zodat u geen HTTP Listener API-app hoeft te implementeren. Voor meer informatie, meer informatie over hoe [u uw logic app endpoint callable maken.](../logic-apps/logic-apps-http-endpoint.md) 
 
-Met deze wijzigingen wordt Logic Apps de functie `@accessKeys()` vervangen door de functie `@listCallbackURL()`, waarmee het eind punt wordt opgehaald wanneer dat nodig is. U moet nu ook ten minste één trigger definiëren in uw logische app. Als u de werk stroom wilt `/run`, moet u een van de volgende trigger typen gebruiken: `Manual`, `ApiConnectionWebhook`of `HttpWebhook`
+Met deze wijzigingen vervangt `@accessKeys()` Logic Apps `@listCallbackURL()` de functie door de functie, die het eindpunt krijgt wanneer dat nodig is. U moet nu ook ten minste één trigger definiëren in uw logische app. Als u `/run` de werkstroom wilt, moet u een `Manual` `ApiConnectionWebhook`van deze triggertypen gebruiken: , of`HttpWebhook`
 
 <a name="child-workflows"></a>
 
-## <a name="call-child-workflows"></a>Onderliggende werk stromen aanroepen
+## <a name="call-child-workflows"></a>Onderliggende werkstromen oproepen
 
-Voorheen aanroepen van de onderliggende werk stromen die nodig zijn om naar de werk stroom te gaan, het toegangs token op te halen en het token te plakken in de definitie van de logische app waar u die onderliggende werk stroom wilt aanroepen. Met dit schema genereert de Logic Apps-Engine automatisch een SAS tijdens runtime voor de onderliggende werk stroom, zodat u geen geheimen hoeft te plakken in de definitie. Hier volgt een voorbeeld:
+Voorheen vereist het aanroepen van onderliggende werkstromen om naar de werkstroom te gaan, het toegangstoken op te halen en het token te plakken in de definitie van de logische app waar u die onderliggende werkstroom wilt aanroepen. Met dit schema genereert de Logic Apps-engine automatisch een SAS tijdens runtime voor de onderliggende werkstroom, zodat u geen geheimen in de definitie hoeft te plakken. Hier volgt een voorbeeld:
 
 ``` json
 "myNestedWorkflow": {
@@ -443,20 +443,20 @@ Voorheen aanroepen van de onderliggende werk stromen die nodig zijn om naar de w
 }
 ```
 
-Daarnaast krijgen onderliggende werk stromen volledige toegang tot de binnenkomende aanvraag. U kunt daarom para meters door geven in de sectie `queries` en in het `headers`-object. U kunt ook volledig de volledige `body` sectie definiëren.
+Ook krijgen onderliggende werkstromen volledige toegang tot de binnenkomende aanvraag. U parameters dus `queries` doorgeven in `headers` de sectie en in het object. U ook het `body` hele gedeelte volledig definiëren.
 
-Ten slotte hebben onderliggende werk stromen deze vereiste wijzigingen. U kunt een onderliggende werk stroom eerder en rechtstreeks aanroepen, maar nu moet u een trigger eindpunt definiëren in de werk stroom voor het bovenliggende item. Over het algemeen voegt u een trigger toe die `Manual` type heeft en die trigger vervolgens gebruiken in de bovenliggende definitie. De eigenschap `host` heeft specifiek een `triggerName` omdat u altijd de trigger moet opgeven die u aanroept.
+Ten slotte hebben onderliggende werkstromen deze vereiste wijzigingen. Hoewel u eerder en rechtstreeks een onderliggende werkstroom aanroepen, moet u nu een triggereindpunt definiëren in de werkstroom voor de bovenliggende oproep. Over het algemeen voegt u `Manual` een trigger toe die tekst heeft en gebruikt u die trigger vervolgens in de bovenliggende definitie. De `host` eigenschap heeft `triggerName` specifiek een omdat u altijd de trigger moet opgeven die u belt.
 
 ## <a name="other-changes"></a>Andere wijzigingen
 
-### <a name="new-queries-property"></a>Nieuwe eigenschap query's
+### <a name="new-queries-property"></a>Nieuwe eigenschap 'queries'
 
-Alle actie typen bieden nu ondersteuning voor een nieuwe invoer met de naam `queries`. Deze invoer kan een Structured object zijn, in plaats van de teken reeks hand matig te assembleren.
+Alle actietypen ondersteunen nu `queries`een nieuwe invoer genaamd . Deze invoer kan een gestructureerd object zijn, in plaats van dat u de tekenreeks met de hand moet monteren.
 
-### <a name="renamed-parse-function-to-json"></a>De naam van de functie parse () is gewijzigd in JSON ()
+### <a name="renamed-parse-function-to-json"></a>Omgedoopt tot 'parse()' functie naar 'json()'
 
-De naam van de functie `parse()` wordt nu gewijzigd van de functie `json()` voor toekomstige inhouds typen.
+De `parse()` functie wordt nu `json()` omgedoopt tot de functie voor toekomstige inhoudstypen.
 
-## <a name="enterprise-integration-apis"></a>Bedrijfsintegratie-Api's
+## <a name="enterprise-integration-apis"></a>API's voor bedrijfsintegratie
 
-Dit schema biedt nog geen ondersteuning voor beheerde versies voor Bedrijfsintegratie Api's, zoals AS2. U kunt bestaande geïmplementeerde BizTalk-Api's echter gebruiken via de HTTP-actie. Zie ' uw al geïmplementeerde API-apps gebruiken ' in het [integratie schema](https://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/)voor meer informatie. 
+Dit schema biedt nog geen ondersteuning voor beheerde versies voor Enterprise Integration API's, zoals AS2. U echter bestaande geïmplementeerde BizTalk-API's gebruiken via de HTTP-actie. Zie 'Uw reeds geïmplementeerde API-apps gebruiken' voor meer informatie in de [integratieroadmap.](https://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/) 

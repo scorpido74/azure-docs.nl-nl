@@ -1,6 +1,6 @@
 ---
-title: Optimalisatie van grote bestanden downloaden met Azure CDN
-description: In dit artikel wordt uitgelegd hoe groot bestand downloads kunnen worden geoptimaliseerd.
+title: Optimalisatie voor het downloaden van grote bestanden met Azure CDN
+description: In dit artikel wordt uitgelegd hoe groot bestandsdownloads kunnen worden geoptimaliseerd.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,130 +15,130 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
 ms.openlocfilehash: 4fe72985a799595908a0ff6bceb1a73dca823c8f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593787"
 ---
-# <a name="large-file-download-optimization-with-azure-cdn"></a>Optimalisatie van grote bestanden downloaden met Azure CDN
+# <a name="large-file-download-optimization-with-azure-cdn"></a>Optimalisatie voor het downloaden van grote bestanden met Azure CDN
 
-Grootte van de inhoud die wordt geleverd via het internet blijven groeien vanwege de uitgebreide functionaliteit, verbeterde afbeeldingen en uitgebreide media-inhoud. Deze groei wordt aangestuurd door vele factoren: breedband indringingstests, grotere goedkope opslagapparaten, wijdverbreid toename van HD-video- en internet verbonden apparaten (IoT). Een leveringsmechanisme voor grote bestanden voor snelle en efficiënte is van essentieel belang om te controleren of de ervaring van een soepele en leuker consumenten.
+Bestandsgrootte van inhoud die via internet wordt geleverd, blijft groeien dankzij verbeterde functionaliteit, verbeterde graphics en rich media-inhoud. Deze groei wordt gedreven door vele factoren: breedbandpenetratie, grotere goedkope opslagapparaten, wijdverspreide toename van high-definition video en met internet verbonden apparaten (IoT). Een snel en efficiënt leveringsmechanisme voor grote bestanden is essentieel om een soepele en plezierige consumentenervaring te garanderen.
 
-Levering van grote bestanden heeft verschillende uitdagingen. Ten eerste kan is de gemiddelde tijd voor het downloaden van een groot bestand aanzienlijk zijn omdat toepassingen mogelijk alle gegevens niet opeenvolgend downloaden. In sommige gevallen mogelijk toepassingen die het laatste deel van een bestand voordat u het eerste deel downloaden. Als slechts een kleine hoeveelheid van een bestand wordt aangevraagd of een gebruiker een download wordt onderbroken, kan het downloaden van het mislukken. Het downloaden van het kan ook worden uitgesteld tot na het content delivery network (CDN) het hele bestand van de oorspronkelijke server haalt. 
+Levering van grote bestanden heeft verschillende uitdagingen. Ten eerste kan de gemiddelde tijd om een groot bestand te downloaden aanzienlijk zijn omdat toepassingen mogelijk niet alle gegevens opeenvolgend downloaden. In sommige gevallen kunnen toepassingen het laatste deel van een bestand downloaden voor het eerste deel. Wanneer slechts een kleine hoeveelheid van een bestand wordt aangevraagd of een gebruiker een download pauzeert, kan de download mislukken. De download kan ook worden uitgesteld tot na het content delivery network (CDN) het hele bestand van de origin-server heeft opgehaald. 
 
-Ten tweede bepaalt de latentie tussen de computer van een gebruiker en het bestand de snelheid waarmee ze inhoud kunnen bekijken. Problemen met het netwerk opstoppingen in het en -capaciteit wordt bovendien ook een doorvoer beïnvloeden. Groter zijn afstanden tussen servers en gebruikers maken als u meer mogelijkheden voor pakketverlies optreden, waardoor de kwaliteit. De vermindering van de kwaliteit veroorzaakt door een beperkte doorvoer en verbeterde pakketverlies verhogen de wachttijd voor het downloaden van een bestand om te voltooien. 
+Ten tweede bepaalt de latentie tussen de machine van een gebruiker en het bestand de snelheid waarmee ze inhoud kunnen bekijken. Daarnaast hebben netwerkcongestie en capaciteitsproblemen ook invloed op de doorvoer. Grotere afstanden tussen servers en gebruikers creëren extra mogelijkheden voor pakketverlies, wat de kwaliteit vermindert. De vermindering van de kwaliteit als gevolg van beperkte doorvoer en een verhoogd pakketverlies kan de wachttijd voor het downloaden van een bestand verhogen. 
 
-Derde veel grote bestanden worden niet in hun geheel geleverd. Gebruikers kunnen halverwege downloaden annuleren of alleen de eerste paar minuten een lange MP4-video bekijken. Software en media delivery-bedrijven willen daarom bieden alleen het gedeelte van een bestand dat wordt aangevraagd. Efficiënte distributie van de aangevraagde delen vermindert het uitgaande verkeer van de oorspronkelijke server. Efficiënte distributie verlaagt u ook het geheugen en i/o-druk op de oorspronkelijke server. 
+Ten derde worden veel grote bestanden niet in hun geheel geleverd. Gebruikers kunnen een download halverwege annuleren of alleen de eerste paar minuten van een lange MP4-video bekijken. Daarom willen software- en mediabezorgers alleen het gedeelte van een aangevraagd bestand leveren. Efficiënte verdeling van de gevraagde gedeelten vermindert het uitgangsverkeer van de oorsprongsserver. Efficiënte distributie vermindert ook het geheugen en de I/O-druk op de origin-server. 
 
 
 ## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-microsoft"></a>Optimaliseren voor de levering van grote bestanden met Azure CDN van Microsoft
 
-**Azure CDN Standard van Microsoft** eindpunten leveren grote bestanden zonder een bovengrens voor bestandsgrootte. Extra functies worden standaard om levering van grote bestanden sneller ingeschakeld.
+**Azure CDN Standard van** Microsoft-eindpunten leveren grote bestanden zonder limiet op bestandsgrootte. Extra functies zijn standaard ingeschakeld om de levering van grote bestanden sneller te maken.
 
-### <a name="object-chunking"></a>Object logische groepen te verdelen 
+### <a name="object-chunking"></a>Objectchunking 
 
-**Azure CDN Standard van Microsoft** maakt gebruik van de techniek object logische groepen te verdelen. Wanneer een groot bestand wordt aangevraagd, wordt in het CDN kleinere delen van het bestand opgehaald uit de oorsprong. Nadat de CDN POP-server een volledige of bereik in bytes bestand-aanvraag ontvangt, vraagt de CDN edge-server het bestand van de oorsprong in chunks van 8 MB. 
+**Azure CDN Standard van Microsoft** maakt gebruik van een techniek genaamd object chunking. Wanneer een groot bestand wordt aangevraagd, haalt het CDN kleinere stukken van het bestand terug van de oorsprong. Nadat de CDN POP-server een volledige of byte-range bestandsaanvraag heeft ontvangen, vraagt de CDN-edgeserver het bestand van de oorsprong aan in brokken van 8 MB. 
 
-Nadat het segment bij de rand van CDN aankomt, is het in de cache opgeslagen en onmiddellijk worden geleverd aan de gebruiker. Het volgende segment parallel wordt vervolgens dat door het CDN. Deze prefetch zorgt ervoor dat de inhoud blijft één segment voor de gebruiker, waardoor latentie. Dit proces gaat door totdat het volledige bestand is gedownload (indien nodig), zijn alle bereiken in bytes beschikbaar zijn (indien nodig), of als de client de verbinding verbreekt. 
+Nadat de brok aan de CDN-rand is aangekomen, wordt het in de cache opgeslagen en onmiddellijk aan de gebruiker geserveerd. Het CDN prefetches vervolgens de volgende brok parallel. Deze prefetch zorgt ervoor dat de inhoud één stuk voor blijft op de gebruiker, wat de latentie vermindert. Dit proces wordt voortgezet totdat het hele bestand is gedownload (indien gevraagd), alle bytebereiken beschikbaar zijn (indien gevraagd) of de client de verbinding beëindigt. 
 
-Zie voor meer informatie over de aanvraag bereik in bytes, [RFC 7233](https://tools.ietf.org/html/rfc7233).
+Zie [RFC 7233](https://tools.ietf.org/html/rfc7233)voor meer informatie over de byte-range aanvraag.
 
-De CDN slaat alle segmenten als ze worden ontvangen. Het hele bestand hoeft niet te worden in de cache op de CDN-cache. Volgende aanvragen voor het bestand of de byte-adresbereiken worden aangeleverd vanuit de CDN-cache. Als niet alle chunks in cache zijn opgeslagen op het CDN, prefetch wordt gebruikt om aan te vragen van segmenten van de oorsprong. Deze optimalisatie is afhankelijk van de mogelijkheid van de oorspronkelijke server voor de ondersteuning van de byte-bereikaanvragen; Als de oorspronkelijke server biedt geen ondersteuning voor byte-bereikaanvragen, is deze optimalisatie niet effectief. 
+De CDN slaat alle brokken in de cache wanneer ze worden ontvangen. Het hele bestand hoeft niet in de cache te worden opgeslagen in de CDN-cache. Latere aanvragen voor het bestand of bytebereiken worden weergegeven vanuit de CDN-cache. Als niet alle segmenten op het CDN in de cache worden opgeslagen, wordt prefetch gebruikt om brokken van de oorsprong op te vragen. Deze optimalisatie is afhankelijk van de mogelijkheid van de oorsprongsserver om byte-range aanvragen te ondersteunen; Als de origin-server geen byte-range aanvragen ondersteunt, is deze optimalisatie niet effectief. 
 
-### <a name="conditions-for-large-file-optimization"></a>Voorwaarden voor de optimalisatie van grote bestanden
-Optimalisatie van grote bestanden voor functies **Azure CDN Standard van Microsoft** zijn standaard ingeschakeld wanneer u de algemene web delivery optimization-type gebruikt. Er zijn geen beperkingen op de maximale bestandsgrootte.
+### <a name="conditions-for-large-file-optimization"></a>Voorwaarden voor grote bestandsoptimalisatie
+Grote bestandsoptimalisatiefuncties voor **Azure CDN Standard van Microsoft** zijn standaard ingeschakeld wanneer u het algemene optimalisatietype voor webweergave gebruikt. Er zijn geen beperkingen op de maximale bestandsgrootte.
 
 
 ## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>Optimaliseren voor de levering van grote bestanden met Azure CDN van Verizon
 
-**Azure CDN Standard van Verizon** en **Azure CDN Premium van Verizon** eindpunten leveren grote bestanden zonder een bovengrens voor bestandsgrootte. Extra functies worden standaard om levering van grote bestanden sneller ingeschakeld.
+**Azure CDN Standard van Verizon** en **Azure CDN Premium van** Verizon-eindpunten leveren grote bestanden zonder een limiet op bestandsgrootte. Extra functies zijn standaard ingeschakeld om de levering van grote bestanden sneller te maken.
 
-### <a name="complete-cache-fill"></a>Volledige cache opvulling
+### <a name="complete-cache-fill"></a>Volledige cachevulling
 
-De standaard volledige cache opvulling functie kunt het CDN voor het ophalen van een bestand in de cache als een eerste aanvraag is afgebroken of verbroken. 
+Met de standaardfunctie voor volledige cachevulling kan het CDN een bestand in de cache optrekken wanneer een eerste aanvraag wordt opgegeven of verloren gaat. 
 
-Opvulling van de volledige cache is vooral nuttig zijn voor grote activa. Normaal gesproken downloaden gebruikers niet van begin tot eind. Ze gebruiken progressief downloaden. Het standaardgedrag zorgt ervoor dat de edge-server om te starten van een op de achtergrond ophalen van de activa van de oorspronkelijke server. Daarna wordt is het actief in lokale cache van de edge-server. Nadat de volledige-object in de cache is, is de edge-server voldoet aan vereisten byte-bereikaanvragen op het CDN voor het object in de cache.
+Volledige cachevulling is het meest nuttig voor grote activa. Gebruikers downloaden ze meestal niet van begin tot eind. Ze maken gebruik van progressieve download. Met het standaardgedrag dwingt de edge-server om een achtergrondophalen van het item van de oorsprongsserver te starten. Daarna bevindt het item zich in de lokale cache van de edge-server. Nadat het volledige object zich in de cache bevindt, vervult de edge-server byte-range aanvragen voor het CDN voor het object in de cache.
 
-Het standaardgedrag kan worden uitgeschakeld via de regelengine in **Azure CDN Premium van Verizon**.
+Het standaardgedrag kan worden uitgeschakeld via de rules engine in **Azure CDN Premium van Verizon**.
 
-### <a name="peer-cache-fill-hot-filing"></a>Peer-cache vult hot archiveren
+### <a name="peer-cache-fill-hot-filing"></a>Peer-cache vullen hot-filing
 
-De standaard peer-cache opvulling hot indiening functie maakt gebruik van een geavanceerde eigen algoritme. Hierbij meer edge cache-servers op basis van bandbreedte en statistische functie aanvragen metrische gegevens om te voldoen aan aanvragen van clients voor grote, veelgebruikte objecten. Deze functie wordt voorkomen dat een situatie waarin grote aantallen extra aanvragen worden verzonden naar de bronserver van de gebruiker. 
+De standaard peer cache fill hot-filing functie maakt gebruik van een geavanceerde eigen algoritme. Het maakt gebruik van extra edge caching servers op basis van bandbreedte en geaggregeerde aanvragen metrics om client aanvragen voor grote, zeer populaire objecten te voldoen. Deze functie voorkomt een situatie waarin grote aantallen extra aanvragen naar de oorspronkelijke server van een gebruiker worden verzonden. 
 
-### <a name="conditions-for-large-file-optimization"></a>Voorwaarden voor de optimalisatie van grote bestanden
+### <a name="conditions-for-large-file-optimization"></a>Voorwaarden voor grote bestandsoptimalisatie
 
-Optimalisatie van grote bestanden voor functies **Azure CDN Standard van Verizon** en **Azure CDN Premium van Verizon** zijn standaard ingeschakeld wanneer u de algemene web delivery optimization-type gebruikt. Er zijn geen beperkingen op de maximale bestandsgrootte. 
+Grote functies voor bestandsoptimalisatie voor **Azure CDN Standard van Verizon** en Azure **CDN Premium van Verizon** zijn standaard ingeschakeld wanneer u het algemene optimalisatietype voor weblevering gebruikt. Er zijn geen beperkingen op de maximale bestandsgrootte. 
 
 
-## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-standard-from-akamai"></a>Optimaliseren voor de levering van grote bestanden met Azure CDN Standard van Akamai
+## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-standard-from-akamai"></a>Optimaliseren voor de levering van grote bestanden met Azure CDN-standaard van Akamai
 
-**Azure CDN Standard van Akamai** profiel-eindpunten bieden een functie waarmee leveren van grote bestanden efficiënt aan gebruikers over de hele wereld op schaal. De functie vermindert latenties omdat de belasting van de bronservers vermindert.
+**Azure CDN Standard van** Akamai-profieleindpunten bieden een functie die grote bestanden efficiënt levert aan gebruikers over de hele wereld op schaal. De functie vermindert latencies omdat het de belasting op de origin-servers vermindert.
 
-De functie voor grote bestanden optimalisatie typen Hiermee schakelt u netwerkoptimalisaties en configuraties die u kunt grote bestanden sneller en meer responsively leveren. Algemene webweergave met **Azure CDN Standard van Akamai** eindpunten in de cache opgeslagen bestanden alleen hieronder 1.8 GB en tunnel (geen cache) bestanden kan maximaal 150 GB. Grote bestanden optimalisatie caches bestanden tot 150 GB.
+De functie groot bestandsoptimalisatietype schakelt netwerkoptimalisaties en -configuraties in om grote bestanden sneller en responsiever te leveren. Algemene weblevering met **Azure CDN Standard van Akamai-eindpunten** caches bestanden alleen onder 1,8 GB en kan tunnel (niet cache) bestanden tot 150 GB. Grote bestandsoptimalisatie caches bestanden tot 150 GB.
 
-Optimalisatie van grote bestanden is effectief wanneer bepaalde voorwaarden is voldaan. Voorwaarden omvatten de werking van de oorspronkelijke server en de grootte en de typen van de bestanden die worden aangevraagd. 
+Grote bestandsoptimalisatie is effectief wanneer aan bepaalde voorwaarden is voldaan. Voorwaarden zijn onder meer hoe de oorsprongsserver werkt en de grootte en soorten van de bestanden die worden aangevraagd. 
 
-### <a name="configure-an-akamai-cdn-endpoint-to-optimize-delivery-of-large-files"></a>Een Akamai CDN-eindpunt voor het optimaliseren van de levering van grote bestanden configureren
+### <a name="configure-an-akamai-cdn-endpoint-to-optimize-delivery-of-large-files"></a>Een Akamai CDN-eindpunt configureren om de levering van grote bestanden te optimaliseren
 
-U kunt uw **Azure CDN Standard van Akamai** eindpunt om te optimaliseren voor grote bestanden via Azure portal. U kunt ook de REST API's of een van de client-SDK's gebruiken om dit te doen. De volgende stappen ziet u het proces via de Azure-portal voor een **Azure CDN Standard van Akamai** profiel:
+U uw **Azure CDN-standaard configureren vanaf Akamai-eindpunt** om de levering voor grote bestanden via de Azure-portal te optimaliseren. U hiervoor ook de REST API's of een van de Client SDK's gebruiken. In de volgende stappen wordt het proces weergegeven via de Azure-portal voor een **Azure CDN-standaard vanuit Akamai-profiel:**
 
-1. Een nieuw eindpunt toevoegen aan een Akamai **CDN-profiel** weergeeft, schakelt **eindpunt**.
+1. Als u een nieuw eindpunt wilt toevoegen, selecteert u Op een Akamai **CDN-profielpagina** **Eindpunt**.
 
     ![Nieuw eindpunt](./media/cdn-large-file-optimization/cdn-new-akamai-endpoint.png)    
  
-2. In de **geoptimaliseerd voor** vervolgkeuzelijst, selecteer **grote bestanden downloaden**.
+2. Selecteer Groot **bestand downloaden**in de vervolgkeuzelijst **Geoptimaliseerd voor** de vervolgkeuzelijst .
 
-    ![Optimalisatie van grote bestanden geselecteerd](./media/cdn-large-file-optimization/cdn-large-file-select.png)
+    ![Grote bestandsoptimalisatie geselecteerd](./media/cdn-large-file-optimization/cdn-large-file-select.png)
 
 
-Nadat u het CDN-eindpunt hebt gemaakt, wordt de optimalisatie van grote bestanden voor alle bestanden die voldoen aan bepaalde criteria is van toepassing. De volgende sectie wordt beschreven in dit proces.
+Nadat u het CDN-eindpunt hebt gemaakt, worden de grote bestandsoptimalisaties voor alle bestanden die aan bepaalde criteria voldoen, van toepassing. In de volgende sectie wordt dit proces beschreven.
 
-### <a name="object-chunking"></a>Object logische groepen te verdelen 
+### <a name="object-chunking"></a>Objectchunking 
 
-Optimalisatie van grote bestanden met **Azure CDN Standard van Akamai** maakt gebruik van de techniek object logische groepen te verdelen. Wanneer een groot bestand wordt aangevraagd, wordt in het CDN kleinere delen van het bestand opgehaald uit de oorsprong. Nadat de CDN POP-server een volledige of bereik in bytes bestand-aanvraag ontvangt, wordt gecontroleerd of het bestandstype wordt ondersteund voor deze optimalisatie. Er wordt ook gecontroleerd of het bestandstype dat voldoet aan de vereisten van de grootte van bestand. Als de bestandsgrootte groter dan 10 MB is, vraagt de CDN edge-server het bestand van de oorsprong in chunks van 2 MB. 
+Grote bestandsoptimalisatie met **Azure CDN Standard van Akamai** maakt gebruik van een techniek genaamd objectchunking. Wanneer een groot bestand wordt aangevraagd, haalt het CDN kleinere stukken van het bestand terug van de oorsprong. Nadat de CDN POP-server een volledige of byte-range bestandsaanvraag heeft ontvangen, wordt gecontroleerd of het bestandstype wordt ondersteund voor deze optimalisatie. Ook wordt gecontroleerd of het bestandstype voldoet aan de vereisten voor bestandsgrootte. Als de bestandsgrootte groter is dan 10 MB, vraagt de CDN-edgeserver het bestand van de oorsprong in brokken van 2 MB aan. 
 
-Nadat het segment bij de rand van CDN aankomt, is het in de cache opgeslagen en onmiddellijk worden geleverd aan de gebruiker. Het volgende segment parallel wordt vervolgens dat door het CDN. Deze prefetch zorgt ervoor dat de inhoud blijft één segment voor de gebruiker, waardoor latentie. Dit proces gaat door totdat het volledige bestand is gedownload (indien nodig), zijn alle bereiken in bytes beschikbaar zijn (indien nodig), of als de client de verbinding verbreekt. 
+Nadat de brok aan de CDN-rand is aangekomen, wordt het in de cache opgeslagen en onmiddellijk aan de gebruiker geserveerd. Het CDN prefetches vervolgens de volgende brok parallel. Deze prefetch zorgt ervoor dat de inhoud één stuk voor blijft op de gebruiker, wat de latentie vermindert. Dit proces wordt voortgezet totdat het hele bestand is gedownload (indien gevraagd), alle bytebereiken beschikbaar zijn (indien gevraagd) of de client de verbinding beëindigt. 
 
-Zie voor meer informatie over de aanvraag bereik in bytes, [RFC 7233](https://tools.ietf.org/html/rfc7233).
+Zie [RFC 7233](https://tools.ietf.org/html/rfc7233)voor meer informatie over de byte-range aanvraag.
 
-De CDN slaat alle segmenten als ze worden ontvangen. Het hele bestand hoeft niet te worden in de cache op de CDN-cache. Volgende aanvragen voor het bestand of de byte-adresbereiken worden aangeleverd vanuit de CDN-cache. Als niet alle chunks in cache zijn opgeslagen op het CDN, prefetch wordt gebruikt om aan te vragen van segmenten van de oorsprong. Deze optimalisatie is afhankelijk van de mogelijkheid van de oorspronkelijke server voor de ondersteuning van de byte-bereikaanvragen; Als de oorspronkelijke server biedt geen ondersteuning voor byte-bereikaanvragen, is deze optimalisatie niet effectief.
+De CDN slaat alle brokken in de cache wanneer ze worden ontvangen. Het hele bestand hoeft niet in de cache te worden opgeslagen in de CDN-cache. Latere aanvragen voor het bestand of bytebereiken worden weergegeven vanuit de CDN-cache. Als niet alle segmenten op het CDN in de cache worden opgeslagen, wordt prefetch gebruikt om brokken van de oorsprong op te vragen. Deze optimalisatie is afhankelijk van de mogelijkheid van de oorsprongsserver om byte-range aanvragen te ondersteunen; Als de origin-server geen byte-range aanvragen ondersteunt, is deze optimalisatie niet effectief.
 
 ### <a name="caching"></a>Caching
-Optimalisatie van grote bestanden maakt gebruik van verschillende standaard opslaan in cache verloopt tijden van algemene webweergave. Het onderscheid gemaakt tussen de caching van positieve en negatieve cache-opslag op basis van HTTP-responscodes. Als de oorspronkelijke server Hiermee geeft u een verlooptijd via een cache-control of expires-header in het antwoord, houdt het CDN die waarde. Wanneer de oorsprong niet wordt opgegeven en het bestand overeenkomt met de voorwaarden van het type en de grootte voor dit optimalisatietype, gebruikt het CDN de standaardwaarden voor de optimalisatie van grote bestanden. Anders worden de standaardwaarden van het CDN gebruikt voor algemene webweergave.
+Grote bestandsoptimalisatie maakt gebruik van verschillende standaardcache-vervaldatums van algemene webbezorging. Het maakt onderscheid tussen positieve caching en negatieve caching op basis van HTTP-antwoordcodes. Als de oorsprongsserver een vervaldatum opgeeft via een cachebeheer of een koptekst in het antwoord verloopt, eert het CDN die waarde. Wanneer de oorsprong niet wordt opgegeven en het bestand overeenkomt met de type- en groottevoorwaarden voor dit optimalisatietype, gebruikt het CDN de standaardwaarden voor grote bestandsoptimalisatie. Anders gebruikt het CDN standaardinstellingen voor algemene webbezorging.
 
 
-|    | Algemene web | Optimalisatie van grote bestanden 
+|    | Algemeen web | Optimalisatie van grote bestanden 
 --- | --- | --- 
-Caching: positieve <br> HTTP 200, 203, 300, <br> 301, 302 en 410 | 7 dagen |1 dag  
-Caching: negatief zijn <br> HTTP 204, 305, 404, <br> en 405 | Geen | 1 seconde 
+Caching: Positief <br> HTTP 200, 203, 300, <br> 301, 302 en 410 | 7 dagen |1 dag  
+Caching: Negatief <br> HTTP 204, 305, 404, <br> en 405 | Geen | 1 seconde 
 
-### <a name="deal-with-origin-failure"></a>Fout bij de oorsprong zijn getroffen
+### <a name="deal-with-origin-failure"></a>Omgaan met oorsprong smislukking
 
-De lengte van de oorsprong-lezen-timeout neemt van twee seconden voor algemene webweergave tot twee minuten voor het type van de optimalisatie van grote bestanden. Deze toename van de accounts voor de grotere bestanden om te voorkomen dat een verbinding voortijdig time-out.
+De lengte van de uitleestime-out van de oorsprong neemt toe van twee seconden voor algemene weblevering tot twee minuten voor het type grote bestandsoptimalisatie. Deze toename is goed voor de grotere bestandsgroottes om een voortijdige time-outverbinding te voorkomen.
 
-Wanneer een verbinding een optreedt time-out, probeert een aantal keer voordat er een fout '504 - time-out voor de Gateway' naar de client verzendt opnieuw door het CDN. 
+Wanneer een verbinding een time-out heeft, probeert het CDN een aantal keren opnieuw voordat het een fout met een time-out van 504 - gateway naar de client verzendt. 
 
-### <a name="conditions-for-large-file-optimization"></a>Voorwaarden voor de optimalisatie van grote bestanden
+### <a name="conditions-for-large-file-optimization"></a>Voorwaarden voor grote bestandsoptimalisatie
 
-De volgende tabel bevat de set criteria worden voldaan voordat voor optimalisatie van grote bestanden:
+In de volgende tabel worden de criteria weergegeven waaraan moet worden voldaan voor grote bestandsoptimalisatie:
 
 Voorwaarde | Waarden 
 --- | --- 
-Ondersteunde bestandstypen | 3g2, 3gp, asf, avi, bz2, dmg, exe, f4v, flv, <br> gz, hdp, iso, jxr, m4v, mkv, mov, mp4, <br> mpeg, mpg, mts, pkg, qt, rm, swf, tar, <br> tgz, wdp, webm, webp, wma, wmv, zip  
+Ondersteunde bestandstypen | 3g2, 3gp, asf, avi, bz2, dmg, exe, f4v, flv, <br> gz, hdp, iso, jxr, m4v, mkv, mov, mp4, <br> mpeg, mpg, mts, pkg, qt, rm, swf, teer, <br> tgz, wdp, webm, webp, wma, wmv, zip  
 Minimale bestandsgrootte | 10 MB 
 Maximale bestandsgrootte | 150 GB 
-De kenmerken van een oorsprong | Byte-bereikaanvragen moet ondersteunen 
+Oorsprongsserverkenmerken | Moet byte-range aanvragen ondersteunen 
 
 ## <a name="additional-considerations"></a>Aanvullende overwegingen
 
 Houd rekening met de volgende aanvullende aspecten voor dit optimalisatietype:
 
-- De chunking proces genereert meer aanvragen naar de oorspronkelijke server. De totale hoeveelheid gegevens die worden geleverd bij de oorsprong is echter veel kleiner. Chunking resulteert in betere opslaan in cache kenmerken op het CDN.
+- Het chunking-proces genereert extra aanvragen voor de oorspronkelijke server. De totale hoeveelheid gegevens die van de oorsprong wordt geleverd, is echter veel kleiner. Chunking resulteert in betere caching kenmerken op het CDN.
 
-- Omdat kleinere delen van het bestand worden geleverd worden bij de oorsprong geheugen en i/o-druk gereduceerd.
+- Geheugen en I/O druk worden verminderd bij de oorsprong omdat kleinere stukken van het bestand worden geleverd.
 
-- Voor de segmenten in de cache opgeslagen op het CDN, zijn er geen aanvullende aanvragen naar de oorsprong totdat de inhoud verloopt of deze wordt verwijderd uit de cache.
+- Voor segmenten die in de cache op het CDN worden opgeslagen, zijn er geen aanvullende aanvragen voor de oorsprong totdat de inhoud is verlopen of deze uit de cache is verwijderd.
 
-- Gebruikers kunnen bereikaanvragen versturen naar de CDN, die net als normale bestanden worden behandeld. Optimalisatie geldt alleen als het is een ongeldig bestandstype en het bereik in bytes tussen 10 MB en 150 GB. Als de gemiddelde grootte aangevraagd kleiner dan 10 MB is, gebruikt u de algemene webweergave.
+- Gebruikers kunnen bereikaanvragen indienen bij het CDN, die worden behandeld als elk normaal bestand. Optimalisatie is alleen van toepassing als het een geldig bestandstype is en het bytebereik tussen 10 MB en 150 GB ligt. Als de gevraagde gemiddelde bestandsgrootte kleiner is dan 10 MB, gebruikt u in plaats daarvan algemene webbezorging.
 

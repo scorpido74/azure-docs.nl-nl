@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services encoding foutcodes | Microsoft Docs
-description: In dit onderwerp worden de foutcodes die kunnen worden geretourneerd in het geval een fout tijdens het coderen taak uitvoeren opgetreden is...
+title: Azure Media Services codeerfoutcodes | Microsoft Documenten
+description: In dit onderwerp worden foutcodes weergegeven die kunnen worden geretourneerd als er een fout is opgetreden tijdens de uitvoering van de coderingstaak..
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,30 +15,30 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64709525"
 ---
 # <a name="encoding-error-codes"></a>Foutcodes voor codering
 
-De volgende tabel bevat de foutcodes die kunnen worden geretourneerd in het geval een fout tijdens de uitvoering van de taak codering opgetreden is.  Als u details van fouten in uw .NET-code, gebruikt de [ErrorDetails](https://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) klasse. Als u details van fouten in uw code REST, gebruikt de [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) REST-API.
+In de volgende tabel worden foutcodes weergegeven die kunnen worden geretourneerd als er een fout is opgetreden tijdens de uitvoering van de coderingstaak.  Als u foutgegevens in uw .NET-code wilt opvragen, gebruikt u de klasse [ErrorDetails.](https://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) Als u foutgegevens in uw REST-code wilt opvragen, gebruikt u de [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) REST API.
 
-| ErrorDetail.Code | Mogelijke oorzaken voor fout |
+| ErrorDetail.Code | Mogelijke oorzaken voor fouten |
 | --- | --- |
 | Onbekend |Onbekende fout tijdens het uitvoeren van de taak |
-| ErrorDownloadingInputAssetMalformedContent |Categorie van fouten die betrekking heeft op fouten bij het downloaden van invoer asset, zoals onjuiste bestandsnamen, nul bestanden met een lengte, onjuist opgemaakt enzovoort. |
-| ErrorDownloadingInputAssetServiceFailure |De categorie van fouten die betrekking heeft op problemen aan de servicezijde - voorbeeld van de netwerk- of fouten tijdens het downloaden. |
-| ErrorParsingConfiguration |Categorie van fouten waar de taak \<Zie cref="MediaTask.PrivateData"/ > (configuratie) is niet geldig, bijvoorbeeld de configuratie is niet een geldig systeem vooraf ingesteld of bevat ongeldige XML. |
-| ErrorExecutingTaskMalformedContent |De categorie van fouten tijdens het uitvoeren van de taak waar de problemen in de invoer mediabestanden mislukken. |
-| ErrorExecutingTaskUnsupportedFormat |Categorie van fouten waarbij de opgegeven bestanden kan niet worden verwerkt door de Mediaprocessor - media-indeling niet ondersteund of komt niet overeen met de configuratie. Bijvoorbeeld, probeert te maken van een alleen-audio-uitvoer van een asset die alleen video heeft |
-| ErrorProcessingTask |De categorie van andere fouten die de Mediaprocessor tegenkomt tijdens de verwerking van de taak die niet gerelateerd aan de inhoud zijn. |
-| ErrorUploadingOutputAsset |Categorie van fouten tijdens het uploaden van de uitvoerasset |
-| ErrorCancelingTask |Categorie van fouten voor fouten bij het annuleren van de taak |
-| TransientError |Categorie van fouten voor tijdelijke problemen (zoals) tijdelijke netwerkproblemen met Azure Storage) |
+| ErrorDownloadingInputAssetMalformedContent |Categorie fouten die fouten in het downloaden van invoeractiva omvat, zoals slechte bestandsnamen, bestanden met nullengte, onjuiste indelingen enzovoort. |
+| FoutdownloadenInputAssetServiceStoring |Categorie fouten die problemen aan de servicezijde dekt - bijvoorbeeld netwerk- of opslagfouten tijdens het downloaden. |
+| ErrorParsingConfiguration |Categorie fouten waarbij \<de taak cref="MediaTask.PrivateData"/> (configuratie) niet geldig is, bijvoorbeeld de configuratie geen geldige systeemvoorinstelling is of ongeldige XML bevat. |
+| ErrorExecutingTaskMalformedContent |Categorie fouten tijdens de uitvoering van de taak waarbij problemen in de invoermediabestanden mislukken. |
+| ErrorExecutingTaskUnsupportedFormat |Categorie fouten waarbij de mediaprocessor de geleverde bestanden niet kan verwerken - media-indeling wordt niet ondersteund of komt niet overeen met de configuratie. Bijvoorbeeld als u probeert een audio-only uitvoer te produceren van een asset die alleen video heeft |
+| Foutverwerkingstaak |Categorie van andere fouten die de mediaprocessor tegenkomt tijdens de verwerking van de taak die geen verband houden met inhoud. |
+| FoutUploadoutputAsset |Categorie fouten bij het uploaden van het uitvoerelement |
+| FoutAnnulerentaak |Categorie fouten om fouten te dekken wanneer u de taak probeert te annuleren |
+| Tijdelijke fout |Categorie fouten om tijdelijke problemen te dekken (bijv. tijdelijke netwerkproblemen met Azure Storage) |
 
-Om de hulp van de **mediaservices** team, open een [ondersteuningsticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Als u hulp wilt krijgen van het **Media Services-team,** opent u een [ondersteuningsticket.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -47,7 +47,7 @@ Om de hulp van de **mediaservices** team, open een [ondersteuningsticket](https:
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Verwante artikelen:
-* [Geavanceerde codering taken uitvoeren door aan te passen voorinstellingen voor Media Encoder Standard](media-services-custom-mes-presets-with-dotnet.md)
+* [Geavanceerde coderingstaken uitvoeren door voorinstellingen van Media Encoder Standard aan te werken](media-services-custom-mes-presets-with-dotnet.md)
 * [Quota en beperkingen](media-services-quotas-and-limitations.md)
 
 <!--Reference links in article-->

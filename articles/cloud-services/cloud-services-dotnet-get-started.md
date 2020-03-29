@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
 ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386728"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Aan de slag met Azure Cloud Services en ASP.NET
@@ -31,7 +31,7 @@ De toepassing is een bulletinboard voor advertenties. Gebruikers maken een adver
 
 De toepassing maakt gebruik van het [wachtrijgerichte werkpatroon](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) om de CPU te ontlasten bij het maken van miniatuurweergaven voor een back-endproces (een CPU-intensieve bewerking).
 
-## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternatieve architectuur: App Service en webjobs
+## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternatieve architectuur: App Service en WebJobs
 Deze zelfstudie laat zien hoe u de front-end en back-end uitvoert in een cloudservice van Azure. Het is ook mogelijk om de front-end uit te voeren in [Azure App Service](/azure/app-service/) en de functie [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) te gebruiken voor de back-end. Zie [Aan de slag met de Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) voor een zelfstudie waarin gebruik wordt gemaakt van WebJobs. Zie [Vergelijking van Azure App Service, Virtual Machines, Service Fabric en Cloud Services](/azure/architecture/guide/technology-choices/compute-decision-tree) voor meer informatie over het kiezen van de services die het meest geschikt zijn voor uw scenario.
 
 ## <a name="what-youll-learn"></a>Wat u leert
@@ -47,7 +47,7 @@ In de zelfstudie wordt ervan uitgegaan dat u bekend bent met de [basisconcepten 
 
 U kunt de app lokaal zonder Azure-abonnement uitvoeren, maar u hebt wel een abonnement nodig om de toepassing in de cloud te implementeren. Als u geen account hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) of [zich aanmelden voor een gratis proefversie](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668).
 
-De instructies voor de zelf studie werken met een van de volgende producten:
+De zelfstudieinstructies werken met een van de volgende producten:
 
 * Visual Studio 2013
 * Visual Studio 2015
@@ -124,7 +124,7 @@ Een Azure-cloudservice is de omgeving waarin de toepassing wordt uitgevoerd.
 5. Kies de regio waarin u de toepassing wilt implementeren.
 
     Dit veld geeft aan in welk datacenter uw cloudservice zal worden gehost. Voor een productietoepassing kiest u de regio die het dichtst bij uw klanten ligt. Voor deze zelfstudie kiest u de regio die het dichtst bij u ligt.
-5. Klik op **Maken**.
+5. Klik **op Maken**.
 
     Op de volgende afbeelding ziet u een cloudservice met de URL CSvccontosoads.cloudapp.net.
 
@@ -153,7 +153,7 @@ Wanneer de app wordt uitgevoerd in de cloud, gebruikt deze een cloudgebaseerde d
 9. Klik op **Selecteren** voor de nieuwe server.
 
     ![Nieuwe SQL Database-server](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Klik op **Maken**.
+10. Klik **op Maken**.
 
 ### <a name="create-an-azure-storage-account"></a>Een Azure-opslagaccount maken
 Een Azure-opslagaccount biedt resources voor het opslaan van wachtrij- en blobgegevens in de cloud.
@@ -176,7 +176,7 @@ In een echte toepassing maakt u meestal afzonderlijke accounts voor toepassingsg
     Wanneer de cloudservice en het opslagaccount zich in verschillende datacenters (verschillende regio's) bevinden, neemt de latentie toe en wordt de bandbreedte buiten het datacenter aan u in rekening gebracht. Bandbreedte binnen een datacenter is gratis.
 
     Azure-affiniteitsgroepen bieden een mechanisme om de afstand tussen resources in een datacenter te minimaliseren, waardoor ze de latentie kunnen verminderen. In deze zelfstudie worden geen affiniteitsgroepen gebruikt. Zie [Een affiniteitsgroep maken in Azure](/previous-versions/azure/reference/gg715317(v=azure.100)) voor meer informatie.
-7. Klik op **Maken**.
+7. Klik **op Maken**.
 
     ![Nieuw opslagaccount](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -229,10 +229,10 @@ Azure-opslagaccountverbindingsreeksen voor het webrolroject en het werkrolprojec
 1. Klik in **Solution Explorer** met de rechtermuisknop op **ContosoAdsWeb** (onder **Roles** in het **ContosoAdsCloudService**-project) en klik vervolgens op **Properties**.
 
     ![Roleigenschappen](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. Klik op het tabblad **instellingen** . Kies **Cloud**in de vervolg keuzelijst **Service configuratie** .
+2. Klik op het tabblad **Instellingen.** Kies **cloud**in het vervolgkeuzevak **Serviceconfiguratie.**
 
     ![Cloudconfiguratie](./media/cloud-services-dotnet-get-started/sccloud.png)
-3. Selecteer de vermelding **StorageConnectionString**. Aan de rechterkant van de regel ziet u nu een knop met weglatingstekens ( **...** ). Klik op deze knop om het dialoogvenster **Create Storage Account Connection String** te openen.
+3. Selecteer de vermelding **StorageConnectionString**. Aan de rechterkant van de regel ziet u nu een knop met weglatingstekens (**...**). Klik op deze knop om het dialoogvenster **Create Storage Account Connection String** te openen.
 
     ![Het dialoogvenster Create Storage Connection String](./media/cloud-services-dotnet-get-started/opencscreate.png)
 4. In het dialoogvenster **Create Storage Connection String** klikt u op **Your subscription**, kiest u het opslagaccount dat u eerder hebt gemaakt en klikt u vervolgens op **OK**. Als u nog niet bent aangemeld, wordt u gevraagd om uw referenties voor uw Azure-account op te geven.
@@ -353,7 +353,7 @@ Nadat de oplossing is gemaakt, bekijkt u de code die uniek is voor cloudservicep
 6. Zoek het NuGet-pakket *Microsoft.WindowsAzure.ConfigurationManager* op en installeer het in het werkrolproject.
 
 ### <a name="set-project-references"></a>Projectverwijzingen instellen
-1. Stel in het project ContosoAdsWeb een verwijzing in naar het project ContosoAdsCommon. Klik met de rechtermuisknop op het project ContosoAdsWeb en klik vervolgens op **References** - **Add References**. Selecteer in het dialoogvenster **Reference Manager** de optie **Solution – Projects** (in het linkerdeelvenster). Selecteer vervolgens **ContosoAdsCommon** en klik op **OK**.
+1. Stel in het project ContosoAdsWeb een verwijzing in naar het project ContosoAdsCommon. Klik met de rechtermuisknop op het ContosoAdsWeb-project en klik vervolgens op **Referenties** - **toevoegen.** Selecteer in het dialoogvenster **Reference Manager** de optie **Solution – Projects** (in het linkerdeelvenster). Selecteer vervolgens **ContosoAdsCommon** en klik op **OK**.
 2. Stel in het project ContosoAdsWorker een verwijzing in naar het project ContosoAdsCommon.
 
     ContosoAdsCommon bevat de Entity Framework-contextklasse en het bijbehorende gegevensmodel die door zowel de front-end als de back-end worden gebruikt.
@@ -398,7 +398,7 @@ In deze sectie configureert u Azure Storage- en SQL-verbindingsreeksen om lokaal
 ### <a name="add-code-files"></a>Codebestanden toevoegen
 In deze sectie kopieert u codebestanden vanuit de gedownloade oplossing naar de nieuwe oplossing. In de volgende secties worden belangrijke onderdelen van deze code weergegeven en uitgelegd.
 
-Als u bestanden wilt toevoegen aan een project of map, klikt u met de rechtermuisknop op het project of de map en klikt u vervolgens op **Add** - **Existing Item**. Selecteer de gewenste bestanden en klik op **Add**. Als u wordt gevraagd of u de bestaande bestanden wilt vervangen, klikt u op **Yes**.
+Als u bestanden wilt toevoegen aan een project of een map, klikt u met de rechtermuisknop op het project of de map en klikt u op**Bestaand item** **toevoegen** - . Selecteer de gewenste bestanden en klik op **Add**. Als u wordt gevraagd of u de bestaande bestanden wilt vervangen, klikt u op **Yes**.
 
 1. Verwijder in het project ContosoAdsCommon het bestand *Class1.cs* en voeg in plaats hiervan de bestanden *Ad.cs* en *ContosoAdscontext.cs* uit het gedownloade project toe.
 2. Voeg in het project ContosoAdsWeb de volgende bestanden uit het gedownloade project toe.
@@ -528,7 +528,7 @@ Het bestand *Views\Home\Index.cshtml* geeft categoriekoppelingen weer op de star
 ```
 
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb - AdController.cs
-In het bestand *AdController.cs* roept de constructor de `InitializeStorage`-methode aan voor het maken van Azure Storage Client-bibliotheekobjecten die een API leveren voor het werken met blobs en wachtrijen.
+In het *AdController.cs-bestand* roept `InitializeStorage` de constructor de methode aan om Azure Storage Client Library-objecten te maken die een API bieden voor het werken met blobs en wachtrijen.
 
 Vervolgens haalt de code een verwijzing op naar de blobcontainer met *afbeeldingen*, zoals u eerder hebt gezien in *Global.asax.cs*. Tijdens het uitvoeren hiervan wordt standaard [beleid voor opnieuw proberen](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) ingesteld dat geschikt is voor een web-app. Toepassing van het standaardbeleid voor opnieuw proberen met exponentieel uitstel kan ertoe leiden dat de web-app bij een tijdelijke fout langer dan een minuut blijft hangen vanwege herhaalde pogingen om het opnieuw te proberen. Het beleid dat hier is opgegeven, schrijft voor dat er na elke poging drie seconden wordt gewacht en dat het aantal pogingen maximaal drie bedraagt.
 
@@ -696,7 +696,7 @@ public override void Run()
 }
 ```
 
-Na elke herhaling van de lus wordt als er geen wachtrij bericht is gevonden de inactieve modus ingeschakeld gedurende een seconde. Zo wordt voorkomen dat de werkrol buitensporig veel CPU-tijd en opslagtransactiekosten verbruikt. Het Microsoft Customer Advisory Team kent het verhaal van een ontwikkelaar die was vergeten dit element op te nemen voordat hij de app live zette en op vakantie ging. Wanneer ze terugkomen, kost het toezicht meer dan de vakantie.
+Na elke herhaling van de lus wordt als er geen wachtrij bericht is gevonden de inactieve modus ingeschakeld gedurende een seconde. Zo wordt voorkomen dat de werkrol buitensporig veel CPU-tijd en opslagtransactiekosten verbruikt. Het Microsoft Customer Advisory Team kent het verhaal van een ontwikkelaar die was vergeten dit element op te nemen voordat hij de app live zette en op vakantie ging. Toen ze terugkwamen, kostte hun toezicht meer dan de vakantie.
 
 Soms veroorzaakt de inhoud van een wachtrijbericht een fout in de verwerking. We spreken dan van een *verontreinigd bericht*. Als u alleen een fout in het logboek hebt geregistreerd en de lus opnieuw hebt gestart, kan dit leiden tot eindeloze pogingen om het bericht te verwerken.  Daarom bevat het catch-blok een if-instructie waarmee wordt gecontroleerd hoe vaak de app heeft geprobeerd het huidige bericht te verwerken. Bij meer dan 5 pogingen wordt het bericht uit de wachtrij verwijderd.
 
@@ -773,7 +773,7 @@ Zie [Microsoft Azure Storage - nieuwe functies, aanbevolen procedures en patrone
 Zie de volgende bronnen voor meer informatie:
 
 * [Deel 1 Azure Cloud Services: Inleiding](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
-* [Cloud Services beheren](cloud-services-how-to-manage-portal.md)
+* [CloudServices beheren](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Een cloudserviceprovider kiezen](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
 

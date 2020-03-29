@@ -1,6 +1,6 @@
 ---
-title: Schema's van Azure Media Services Diagnostische logboeken-Azure
-description: In dit artikel worden de schema's van Azure Media Services Diagnostische logboeken gedemonstreerd.
+title: Diagnostische logboeken van Azure Media Services - Azure
+description: In dit artikel worden de diagnostische logboeken van Azure Media Services getoond.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,41 +14,41 @@ ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
 ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75750871"
 ---
 # <a name="diagnostic-logs-schemas"></a>Schema's van diagnostische logboeken
 
-Met [Azure monitor](../../azure-monitor/overview.md) kunt u metrische gegevens en Diagnostische logboeken bewaken die u helpen begrijpen hoe uw toepassingen worden uitgevoerd. U kunt Media Services Diagnostische logboeken bewaken en waarschuwingen en meldingen maken voor de verzamelde metrische gegevens en Logboeken. U kunt logboeken naar [Azure Storage](https://azure.microsoft.com/services/storage/)verzenden, ze streamen naar [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/)en exporteren naar [log Analytics](https://azure.microsoft.com/services/log-analytics/)of services van derden gebruiken.
+[Azure Monitor](../../azure-monitor/overview.md) stelt u in staat om statistieken en diagnostische logboeken te controleren die u helpen te begrijpen hoe uw toepassingen presteren. U diagnostische logboeken van Media Services controleren en waarschuwingen en meldingen maken voor de verzamelde statistieken en logboeken. U logboeken naar [Azure Storage](https://azure.microsoft.com/services/storage/)verzenden, streamen naar [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)en deze exporteren naar Log [Analytics](https://azure.microsoft.com/services/log-analytics/)of services van derden gebruiken.
 
-Zie [Azure monitor metrische](../../azure-monitor/platform/data-platform.md) gegevens en [Azure monitor Diagnostische logboeken](../../azure-monitor/platform/platform-logs-overview.md)voor meer informatie.
+Zie [Azure Monitor Metrics](../../azure-monitor/platform/data-platform.md) en Azure Monitor Diagnostic [logs](../../azure-monitor/platform/platform-logs-overview.md)voor gedetailleerde informatie.
 
-In dit artikel worden Media Services schema's voor diagnostische Logboeken beschreven.
+In dit artikel worden schema's voor diagnostische logboeken van Media Services beschreven.
 
-## <a name="top-level-diagnostic-logs-schema"></a>Schema voor Diagnostische logboeken op het hoogste niveau
+## <a name="top-level-diagnostic-logs-schema"></a>Schema voor diagnostische logboeken op het hoogste niveau
 
-Zie [ondersteunde services, schema's en categorieën voor Diagnostische logboeken van Azure](../../azure-monitor/platform/tutorial-dashboards.md)voor een gedetailleerde beschrijving van het schema voor Diagnostische logboeken op het hoogste niveau.
+Zie [Ondersteunde services, schema's en categorieën voor Azure Diagnostic Logs voor](../../azure-monitor/platform/tutorial-dashboards.md)een gedetailleerde beschrijving van het schema voor diagnostische logboeken op het hoogste niveau.
 
-## <a name="key-delivery-log-schema"></a>Schema voor sleutel leverings logboek
+## <a name="key-delivery-log-schema"></a>Logboekschema voor sleutellevering
 
 ### <a name="properties"></a>Eigenschappen
 
-Deze eigenschappen zijn specifiek voor het schema van het sleutel leverings logboek.
+Deze eigenschappen zijn specifiek voor het sleutelleveringslogboekschema.
 
 |Name|Beschrijving|
 |---|---|
-|keyId|De ID van de aangevraagde sleutel.|
-|keyType|Dit kan een van de volgende waarden zijn: ' Clear ' (geen versleuteling), ' FairPlay ', ' PlayReady ' of ' Widevine '.|
-|policyName|De Azure Resource Manager naam van het beleid.|
-|tokenType|Het token type.|
-|statusMessage|Het status bericht.|
+|keyId|De ID van de gevraagde sleutel.|
+|Keytype|Kan een van de volgende waarden zijn: "Clear" (geen encryptie), "FairPlay", "PlayReady" of "Widevine".|
+|policyName|De naam Azure Resource Manager van het beleid.|
+|tokenType|Het tokentype.|
+|statusMessage|Het statusbericht.|
 
 ### <a name="examples"></a>Voorbeelden
 
-Eigenschappen van het schema voor de sleutel afleverings aanvragen.
+Eigenschappen van het schema voor belangrijke leveringsaanvragen.
 
 ```json
 {
@@ -110,8 +110,8 @@ Eigenschappen van het schema voor de sleutel afleverings aanvragen.
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en onderworpen aan de servicevoorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Media Services metrische gegevens en Diagnostische logboeken bewaken](media-services-metrics-diagnostic-logs.md)
+[Statistieken en diagnostische logboeken van Media Services bewaken](media-services-metrics-diagnostic-logs.md)

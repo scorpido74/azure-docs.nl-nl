@@ -1,71 +1,71 @@
 ---
-title: Beoordelingen aanpassen voor de evaluatie van Azure Migrate server | Microsoft Docs
-description: Hierin wordt beschreven hoe u de evaluaties aanpast die zijn gemaakt met Azure Migrate server evaluatie
+title: Beoordelingen aanpassen voor Azure Migrate Server Assessment | Microsoft Documenten
+description: Beschrijft hoe u beoordelingen aanpassen die zijn gemaakt met Azure Migrate Server Assessment
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
 ms.openlocfilehash: 2cfac978b0a5af20e9e2fa1e32a7361488f20fbe
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68234272"
 ---
 # <a name="customize-an-assessment"></a>Een beoordeling aanpassen
 
-In dit artikel wordt beschreven hoe u de evaluaties aanpast die zijn gemaakt door Azure Migrate server Assessment.
+In dit artikel wordt beschreven hoe beoordelingen die zijn gemaakt door Azure Migrate Server Assessment kunnen worden aangepast.
 
-[Azure migrate](migrate-services-overview.md) biedt een centrale hub voor het bijhouden van de detectie, beoordeling en migratie van uw on-premises apps en workloads, en persoonlijke/open bare Cloud-Vm's naar Azure. De hub biedt Azure Migrate-hulpprogram ma's voor evaluatie en migratie, evenals onafhankelijke ISV'S-aanbiedingen (Independent Software Vendor) van derden.
+[Azure Migrate](migrate-services-overview.md) biedt een centrale hub om detectie, beoordeling en migratie van uw on-premises apps en workloads en private/public cloud VM's naar Azure bij te houden. De hub biedt Azure Migrate-tools voor beoordeling en migratie, evenals isv-aanbiedingen (onafhankelijke softwareleveranciers) van derden.
 
-U kunt het hulp programma voor het evalueren van Azure Migrate-server gebruiken om evaluaties te maken voor on-premises virtuele VMware-machines en virtuele Hyper-V-machines, in voor bereiding op de migratie naar Azure.
+U het hulpprogramma azure migrate server assessment gebruiken om beoordelingen te maken voor on-premises Vm's vMware en Hyper-VMs, ter voorbereiding op migratie naar Azure.
 
-## <a name="about-assessments"></a>Over evaluaties
+## <a name="about-assessments"></a>Over beoordelingen
 
-Er zijn twee soorten evaluaties die u kunt uitvoeren met behulp van Azure Migrate server-evaluatie.
+Er zijn twee typen beoordelingen die u uitvoeren met Azure Migrate Server Assessment.
 
-**Onderzoek** | **Details** | **Gegevens**
+**Beoordeling** | **Details** | **Gegevens**
 --- | --- | ---
-**Op basis van prestaties** | Evaluaties op basis van verzamelde prestatie gegevens | **Aanbevolen VM-grootte**: Op basis van gegevens van het CPU-en geheugen gebruik.<br/><br/> **Aanbevolen schijf type (Standard of Premium Managed disk)** : Op basis van de IOPS en door Voer van de on-premises schijven.
-**Als on-premises** | Evaluaties op basis van on-premises grootte. | **Aanbevolen VM-grootte**: Op basis van de on-premises VM-grootte<br/><br> **Aanbevolen schijf type**: Op basis van de instelling voor het opslag type die u voor de evaluatie selecteert.
+**Op prestaties gebaseerd** | Beoordelingen op basis van verzamelde prestatiegegevens | **Aanbevolen VM-grootte:** gebaseerd op cpu- en geheugengebruiksgegevens.<br/><br/> **Aanbevolen schijftype (standaard of premium beheerde schijf):** op basis van de IOPS en doorvoer van de on-premises schijven.
+**Als on-premises** | Beoordelingen op basis van on-premises dimensionering. | **Aanbevolen VM-grootte:** op basis van de on-premises VM-grootte<br/><br> **Aanbevolen schijftype:** op basis van de instelling voor het opslagtype die u voor de beoordeling selecteert.
 
 
-## <a name="how-is-an-assessment-done"></a>Hoe wordt een evaluatie uitgevoerd?
+## <a name="how-is-an-assessment-done"></a>Hoe wordt een beoordeling uitgevoerd?
 
-Een beoordeling die in Azure Migrate server beoordeling is uitgevoerd, heeft drie fasen. De evaluatie begint met een geschiktheids analyse, gevolgd door het aanpassen van de grootte, en ten slotte een maandelijkse schatting van de kosten. Een machine wordt alleen verplaatst naar een latere fase als deze de voor gaande wordt door gegeven. Als een machine bijvoorbeeld de Azure-geschiktheids controle niet kan uitvoeren, wordt deze gemarkeerd als ongeschikt voor Azure en wordt de grootte en de kosten voor de berekening niet gewijzigd. [Meer informatie.](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation)
+Een beoordeling in Azure Migrate Server Assessment heeft drie fasen. Beoordeling begint met een geschiktheidsanalyse, gevolgd door het dimensioneren en ten slotte een maandelijkse kostenschatting. Een machine beweegt alleen mee naar een later stadium als deze de vorige passeert. Als een machine bijvoorbeeld niet voldoet aan de Azure-geschiktheidscontrole, wordt deze gemarkeerd als ongeschikt voor Azure en wordt de grootte en kosten niet uitgevoerd. [Meer informatie.](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation)
 
 ## <a name="whats-in-an-assessment"></a>Waaruit bestaat een evaluatie?
 
 **Eigenschap** | **Details**
 --- | ---
-**Doellocatie** | De Azure-locatie waarnaar u wilt migreren.<br/> Server evaluatie ondersteunt momenteel deze doel regio's: Australië-oost, Australië-zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, Centraal-India, centraal VS, China-oost, China-noord, Azië-oost, VS-Oost, Oost-VS2, Duitsland-centraal, Duitsland-noordoost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord VS-centraal, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, UK-west, US Gov-Arizona, US Gov-Texas, US Gov-Virginia, VS-West-Centraal, Europa-west, West-India, westelijke VS en West-VS2.
-**Opslagtype** | U kunt deze eigenschap gebruiken om het type schijven op te geven dat u wilt verplaatsen in Azure.<br/><br/> Voor de inrichtings grootte kunt u het type doel opslag opgeven als een Premium-beheerde schijf, Standard-SSD-beheerde schijven of Standard-HDD-beheerde schijven. Voor een schaal op basis van prestaties kunt u het type doel schijf opgeven als automatische, Premium beheerde schijven, Standard-HDD-beheerde schijven of Standard-SSD-beheerde schijven.<br/><br/> Wanneer u het opslag type opgeeft als automatisch, wordt de aanbevolen schijf uitgevoerd op basis van de prestatie gegevens van de schijven (IOPS en door Voer). Als u het opslag type opgeeft als Premium/standaard, wordt een schijf-SKU aanbevolen binnen het geselecteerde opslag type. Als u een VM-SLA met één exemplaar van 99,9% wilt uitvoeren, kunt u het opslag type opgeven als Premium-beheerde schijven. Dit zorgt ervoor dat alle schijven in de evaluatie worden aanbevolen als Premium-beheerde schijven. Azure
-**Gereserveerde instanties (RI)** | Met deze eigenschap kunt u opgeven of u [gereserveerde instanties](https://azure.microsoft.com/pricing/reserved-vm-instances/) in azure hebt, kosten ramingen in de beoordeling worden uitgevoerd in RI-kortingen. Gereserveerde instanties worden momenteel alleen ondersteund voor de aanbieding betalen naar gebruik in Azure Migrate.
-**Criterium voor het aanpassen van de grootte** | Het criterium dat moet worden gebruikt om virtuele machines met een juiste grootte te gebruiken voor Azure. U kunt de grootte van de virtuele machines aanpassen op *basis van de prestaties* , zonder rekening te *houden*met de prestatie geschiedenis.
-**Prestatiegeschiedenis** | De duur die u moet overwegen om de prestatie gegevens van machines te evalueren. Deze eigenschap is alleen van toepassing als het formaat van het criterium *op basis van prestaties*is.
-**Percentiel gebruik** | De percentielwaarde van de prestatievoorbeeldset waarmee rekening moet worden gehouden voor een juiste groottebepaling. Deze eigenschap is alleen van toepassing wanneer de grootte van het formaat *op basis van prestaties*is.
-**VM-reeks** |     U kunt de VM-reeks opgeven die u wilt overwegen voor de juiste grootte. Als u bijvoorbeeld een productie omgeving hebt die u niet van plan bent om te migreren naar A-serie Vm's in azure, kunt u een-serie uitsluiten van de lijst of reeks en wordt de rechter grootte alleen uitgevoerd in de geselecteerde reeks.
-**Comfortfactor** | Bij het evalueren van Azure Migrate-server wordt een buffer (comfort factor) in rekening gehouden tijdens de evaluatie. Deze buffer wordt toegepast boven op de gegevens over machinegebruik voor VM's (CPU, geheugen, schijf en netwerk). De comfortfactor houdt rekening met factoren zoals seizoensgebonden gebruik, een korte prestatiegeschiedenis en een mogelijke gebruikstoename in de toekomst.<br/><br/> Een VM met 10 kernen en een gebruik van 20% komt bijvoorbeeld gewoonlijk overeen met een VM met 2 kernen. Met een comfortfactor van 2,0x is het resultaat echter een VM met 4 kernen.
-**Aanbieding** | De [Azure-aanbieding](https://azure.microsoft.com/support/legal/offer-details/) waarop u bent geregistreerd. Azure Migrate maakt dienovereenkomstig een schatting van de kosten.
+**Doellocatie** | De Azure-locatie waarnaar u wilt migreren.<br/> Server Assessment ondersteunt momenteel deze doelregio's: Australië Oost, Australië Zuidoost, Brazilië Zuid, Canada Centraal, Canada Oost, Centraal-India, Centraal-VS, China-Oost, China Noord, Oost-Azië, Oost-VS, Oost-VS2, Duitsland Centraal, Duitsland Noordoost, Japan East, Japan West, Korea Central, Korea South, North Central US, North Europe, South Central US, Southeast Asia, South India, UK South, UK West, US Gov Arizona, US Gov Texas, US Gov Virginia, West Central US, West-Europa, West India, West US en West US2.
+**Opslagtype** | U deze eigenschap gebruiken om in Azure het type schijven op te geven waarnaar u wilt verplaatsen.<br/><br/> Voor as-on-premises grootte u het doelopslagtype opgeven als door Premium beheerde schijven, standaard schijven met SSD-beheerde schijven of standaard schijven die door hdd's worden beheerd. Voor prestatiegebaseerde grootte u het doelschijftype opgeven als automatische schijven, schijven met een premium beheerde schijf, standaard schijven met hdd-beheerde schijven of standaard schijven die door ssd's worden beheerd.<br/><br/> Wanneer u het opslagtype als automatisch opgeeft, wordt de schijfaanbeveling uitgevoerd op basis van de prestatiegegevens van de schijven (IOPS en doorvoer). Als u het opslagtype als premium/standaard opgeeft, wordt in de beoordeling een schijf-SKU aanbevolen binnen het geselecteerde opslagtype. Als u een VM-SLA van 99,9% van één exemplaar wilt bereiken, u het opslagtype opgeven als schijven die door Premium worden beheerd. Dit zorgt ervoor dat alle schijven in de beoordeling worden aanbevolen als schijven die door Premium worden beheerd. Azure
+**Gereserveerde exemplaren (RI)** | Met deze eigenschap u opgeven of u [Gereserveerde exemplaren](https://azure.microsoft.com/pricing/reserved-vm-instances/) in Azure hebt, worden kostenschattingen in de beoordeling vervolgens uitgevoerd met RI-kortingen. Gereserveerde exemplaren worden momenteel alleen ondersteund voor betalen per gebruik-aanbieding in Azure Migrate.
+**Criterium voor het aanpassen van de grootte** | Het criterium dat moet worden gebruikt voor vm's van de juiste grootte voor Azure. U *prestatiegerichte* maatvoering uitvoeren of de VM's *als on-premises*aanpassen, zonder rekening te houden met de prestatiegeschiedenis.
+**Prestatiegeschiedenis** | De duur die moet worden overwogen voor de evaluatie van de prestatiegegevens van machines. Deze eigenschap is alleen van toepassing wanneer het maatcriterium *op basis van prestaties is gebaseerd.*
+**Percentiel gebruik** | De percentielwaarde van de prestatievoorbeeldset waarmee rekening moet worden gehouden voor een juiste groottebepaling. Deze eigenschap is alleen van toepassing wanneer de grootte *op basis van prestaties is gebaseerd.*
+**VM-reeks** |     U kunt de VM-reeks opgeven die u wilt overwegen voor de juiste grootte. Als u bijvoorbeeld een productieomgeving hebt die u niet van plan bent te migreren naar VM's uit de A-serie in Azure, u A-reeksen uitsluiten van de lijst of serie en wordt de juiste grootte alleen in de geselecteerde reeks uitgevoerd.
+**Comfortfactor** | Azure Migrate Server Assessment houdt rekening met een buffer (comfortfactor) tijdens de beoordeling. Deze buffer wordt toegepast boven op de gegevens over machinegebruik voor VM's (CPU, geheugen, schijf en netwerk). De comfortfactor houdt rekening met factoren zoals seizoensgebonden gebruik, een korte prestatiegeschiedenis en een mogelijke gebruikstoename in de toekomst.<br/><br/> Een VM met 10 kernen en een gebruik van 20% komt bijvoorbeeld gewoonlijk overeen met een VM met 2 kernen. Met een comfortfactor van 2,0x is het resultaat echter een VM met 4 kernen.
+**Bieden** | De [Azure-aanbieding](https://azure.microsoft.com/support/legal/offer-details/) waarop u bent geregistreerd. Azure Migrate maakt dienovereenkomstig een schatting van de kosten.
 **Valuta** | Factureringsvaluta.
 **Korting (%)** | Een abonnement-specifieke korting die u bovenop de Azure-aanbieding ontvangt.<br/> De standaardinstelling is 0%.
-**VM tijd actief** | Als uw Vm's niet 24x7 worden uitgevoerd in azure, kunt u de duur (aantal dagen per maand en het aantal uren per dag) opgeven waarvoor ze worden uitgevoerd en de kosten ramingen dienovereenkomstig worden uitgevoerd.<br/> De standaardwaarde is 31 dagen per maand en 24 uur per dag.
-**Azure Hybrid Benefit** | Geef op of u Software Assurance hebt en in aanmerking komt voor [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Als deze optie is ingesteld op Ja, worden niet-Windows Azure-prijzen voor Windows-VM's gehanteerd. Standaard is Ja.
+**VM tijd actief** | Als uw VM's niet 24x7 in Azure worden uitgevoerd, u de duur (aantal dagen per maand en aantal uren per dag) opgeven waarvoor ze worden uitgevoerd en de kostenschattingen dienovereenkomstig worden uitgevoerd.<br/> De standaardwaarde is 31 dagen per maand en 24 uur per dag.
+**Azure Hybrid Benefit** | Geef op of u softwarezekerheid hebt en in aanmerking komt voor [Azure Hybrid Benefit.](https://azure.microsoft.com/pricing/hybrid-use-benefit/) Als deze optie is ingesteld op Ja, worden niet-Windows Azure-prijzen voor Windows-VM's gehanteerd. Standaard is Ja.
 
 
-## <a name="edit-assessment-properties"></a>Beoordelings eigenschappen bewerken
+## <a name="edit-assessment-properties"></a>Beoordelingseigenschappen bewerken
 
-Ga als volgt te werk om de evaluatie-eigenschappen te bewerken nadat u een evaluatie hebt gemaakt:
+Ga als volgt te werk om beoordelingseigenschappen te bewerken na het maken van een beoordeling:
 
-1. Klik in het Azure Migrate project op **servers**.
-2. In **Azure migrate: Server evaluatie**, klikt u op het aantal evaluaties.
-3. Klik in de **beoordeling**op de relevante evaluatie > **Eigenschappen bewerken**.
-5. Pas de eigenschappen van de evaluatie aan overeenkomstig de bovenstaande tabel.
-6. Klik op **Opslaan** om de evaluatie bij te werken.
+1. Klik in het Azure Migrate-project op **Servers**.
+2. Klik in **Azure Migrate: Serverbeoordeling**op het aantal beoordelingen.
+3. Klik **in Assessment**op de relevante beoordeling > Eigenschappen **bewerken**.
+5. Pas de beoordelingseigenschappen aan in overeenstemming met de bovenstaande tabel.
+6. Klik **op Opslaan** om de beoordeling bij te werken.
 
 
-U kunt ook de evaluatie-eigenschappen bewerken tijdens het maken van een evaluatie.
+U beoordelingseigenschappen ook bewerken wanneer u een beoordeling maakt.
 
 
 ## <a name="next-steps"></a>Volgende stappen

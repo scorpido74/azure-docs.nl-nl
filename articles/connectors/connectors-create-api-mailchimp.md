@@ -1,6 +1,6 @@
 ---
 title: Verbinding maken met MailChimp
-description: Marketing-e-mails maken en beheren met MailChimp REST-Api's en Azure Logic Apps
+description: Marketinge-mails maken en beheren met MailChimp REST API's en Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,32 +8,32 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: a440f702058abc25bb360111418c451d59c3ab1b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789628"
 ---
 # <a name="get-started-with-the-mailchimp-connector"></a>Aan de slag met de MailChimp-connector
 
-MailChimp is een SaaS-service waarmee bedrijven e-mail marketing activiteiten kunnen beheren en automatiseren, zoals het verzenden van marketing-e-mails, geautomatiseerde berichten en gerichte campagnes.
+MailChimp is een SaaS-service waarmee bedrijven e-mailmarketingactiviteiten kunnen beheren en automatiseren, waaronder het verzenden van marketinge-mails, geautomatiseerde berichten en gerichte campagnes.
 
-U kunt nu aan de slag met het maken van een logische app, Zie [een logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+U nu aan de slag gaan door een Logische-app te maken, zie [Een logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-a-connection-to-mailchimp"></a>Een verbinding met MailChimp maken
 
-Als u logische apps met MailChimp wilt maken, moet u eerst een **verbinding** maken en vervolgens de details opgeven voor de volgende eigenschappen:
+Als u Logische-apps wilt maken met MailChimp, moet u eerst een **verbinding** maken en vervolgens de details opgeven voor de volgende eigenschappen:
 
-| Eigenschap | Verplicht | Beschrijving |
+| Eigenschap | Vereist | Beschrijving |
 | --- | --- | --- |
-| Token |Ja |MailChimp-referenties opgeven |
+| Token |Ja |MailChimp-referenties verstrekken |
 
 > [!INCLUDE [Steps to create a connection to MailChimp](../../includes/connectors-create-api-mailchimp.md)]
 
-## <a name="connector-specific-details"></a>Connector-specifieke Details
+## <a name="connector-specific-details"></a>Connector-specifieke details
 
-Bekijk de triggers en acties die zijn gedefinieerd in Swagger en Zie ook eventuele limieten in de details van de [connector](/connectors/mailchimp/).
+Bekijk alle triggers en acties die in de branie zijn gedefinieerd en zie ook eventuele limieten in de [connectordetails.](/connectors/mailchimp/)
 
-## <a name="more-connectors"></a>Meer connectors
+## <a name="more-connectors"></a>Meer connectoren
 
-Ga terug naar de [lijst met api's](apis-list.md).
+Ga terug naar de [APIs-lijst.](apis-list.md)

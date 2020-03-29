@@ -1,7 +1,7 @@
 ---
-title: .NET gebruiken om een gebruikers delegering SA'S te maken voor een container of BLOB
+title: .NET gebruiken om een SAS voor gebruikersdelegatie te maken voor een container of blob
 titleSuffix: Azure Storage
-description: Meer informatie over het maken van een gebruiker met Azure Active Directory referenties met behulp van de .NET-client bibliotheek voor Azure Storage.
+description: Meer informatie over het maken van een SAS voor gebruikersoverdrachten met Azure Active Directory-referenties met behulp van de .NET-clientbibliotheek voor Azure Storage.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,31 +11,31 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
 ms.openlocfilehash: 385d2c3b88bc2e4d653dae2dc9670cb9e9388faf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75371833"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>Een SAS voor gebruikers overdracht maken voor een container of BLOB met .NET
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>Een gebruikersdelegatie SAS maken voor een container of blob met .NET
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-In dit artikel wordt beschreven hoe u Azure Active Directory (Azure AD)-referenties gebruikt om een gebruikers delegering SA'S te maken voor een container of BLOB met de Azure Storage-client bibliotheek voor .NET.
+In dit artikel ziet u hoe u Azure Active Directory-referenties (Azure AD) gebruikt om een SAS voor gebruikersdelegatie sas te maken voor een container of blob met de Azure Storage-clientbibliotheek voor .NET.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
 ## <a name="assign-rbac-roles-for-access-to-data"></a>RBAC-rollen toewijzen voor toegang tot gegevens
 
-Wanneer een Azure AD-beveiligings-principal probeert toegang te krijgen tot BLOB-gegevens, moet die beveiligingsprincipal machtigingen hebben voor de resource. Of de beveiligingsprincipal een beheerde identiteit in azure of een Azure AD-gebruikers account voor het uitvoeren van code in de ontwikkel omgeving is, moet aan de beveiligingsprincipal een RBAC-rol worden toegewezen die toegang verleent tot BLOB-gegevens in Azure Storage. Voor informatie over het toewijzen van machtigingen via RBAC, zie de sectie **RBAC-rollen toewijzen voor toegangs rechten** in [toegang verlenen tot Azure-blobs en-wacht rijen met behulp van Azure Active Directory](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights).
+Wanneer een Azure AD-beveiligingsprincipal probeert toegang te krijgen tot blobgegevens, moet die beveiligingsprincipal machtigingen voor de bron hebben. Of de beveiligingsprincipal nu een beheerde identiteit is in Azure of een Azure AD-gebruikersaccount met code in de ontwikkelomgeving, de beveiligingsprincipal moet een RBAC-rol krijgen toegewezen die toegang geeft tot blobgegevens in Azure Storage. Zie de sectie getiteld **RBAC-rollen toewijzen voor toegangsrechten** in [Toegang tot Azure-blobs en wachtrijen met Azure Active Directory](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)voor informatie over het toewijzen van machtigingen via RBAC.
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-Voor meer informatie over het verifiëren van de identiteit van de Azure Identity client-bibliotheek van Azure Storage, zie de sectie **verificatie met de Azure Identity-bibliotheek** in [toegang verlenen tot blobs en wacht rijen met Azure Active Directory en beheerde identiteiten voor Azure-resources](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library).
+Zie de sectie getiteld **Authenticeren met de Azure Identity-bibliotheek in Azure-bestanden** voor meer informatie over het verifiëren met de Azure Identity-clientbibliotheek vanuit [Azure Storage.](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library)
 
 ## <a name="add-using-directives"></a>Using-instructies toevoegen
 
-Voeg de volgende `using`-instructies toe aan uw code voor het gebruik van de identiteits-en Azure Storage-client bibliotheken van Azure.
+Voeg de `using` volgende richtlijnen toe aan uw code om de azure identity- en Azure Storage-clientbibliotheken te gebruiken.
 
 ```csharp
 using System;
@@ -48,11 +48,11 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 ```
 
-## <a name="get-an-authenticated-token-credential"></a>Een geverifieerde token referentie ophalen
+## <a name="get-an-authenticated-token-credential"></a>Een geverifieerde tokenreferentie ophalen
 
-Maak een instantie van de [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) -klasse om een token referentie op te halen die door uw code kan worden gebruikt om aanvragen voor Azure Storage te autoriseren.
+Als u een tokenreferentie wilt ontvangen die uw code kan gebruiken om aanvragen voor Azure Storage te autoriseren, maakt u een instantie van de klasse [DefaultAzureCredential.](/dotnet/api/azure.identity.defaultazurecredential)
 
-Het volgende code fragment laat zien hoe de referenties van de geverifieerde token worden opgehaald en gebruikt om een serviceclient voor Blob Storage te maken:
+In het volgende codefragment ziet u hoe u de geverifieerde tokenreferenties krijgen en deze gebruiken om een serviceclient voor Blob-opslag te maken:
 
 ```csharp
 // Construct the blob endpoint from the account name.
@@ -63,18 +63,18 @@ BlobServiceClient blobClient = new BlobServiceClient(new Uri(blobEndpoint),
                                                      new DefaultAzureCredential());
 ```
 
-## <a name="get-the-user-delegation-key"></a>De sleutel voor gebruikers overdracht ophalen
+## <a name="get-the-user-delegation-key"></a>De sleutel voor gebruikersdelegatie ophalen
 
-Elke SAS is ondertekend met een sleutel. Als u een gebruikers delegering SAS wilt maken, moet u eerst een sleutel voor gebruikers overdracht aanvragen, die vervolgens wordt gebruikt om de SAS te ondertekenen. De sleutel voor gebruikers overdracht is vergelijkbaar met de account sleutel die wordt gebruikt om een service-SAS of een account-SAS te ondertekenen, behalve dat deze afhankelijk is van uw Azure AD-referenties. Wanneer een client een sleutel voor gebruikers overdracht aanvraagt met een OAuth 2,0-token, retourneert Azure Storage de gebruikers delegatie sleutel namens de gebruiker.
+Elke SAS is ondertekend met een sleutel. Als u een SAS voor gebruikersdelegatie wilt maken, moet u eerst een gebruikersdelegatiesleutel aanvragen, die vervolgens wordt gebruikt om de SAS te ondertekenen. De gebruikersdelegatiesleutel is analoog aan de accountsleutel die wordt gebruikt om een service SAS of een account SAS te ondertekenen, behalve dat deze is gebaseerd op uw Azure AD-referenties. Wanneer een client een gebruikersdelegatiesleutel aanvraagt met een OAuth 2.0-token, retourneert Azure Storage de gebruikersdelegatiesleutel namens de gebruiker.
 
-Zodra u de sleutel voor gebruikers overdracht hebt, kunt u deze sleutel gebruiken om een wille keurig aantal hand tekeningen voor gedeelde toegang voor gebruikers overdracht te maken, gedurende de levens duur van de sleutel. De sleutel voor gebruikers delegering is onafhankelijk van het OAuth 2,0-token dat is gebruikt om het te verkrijgen, zodat het token niet hoeft te worden vernieuwd, zolang de sleutel nog geldig is. U kunt opgeven dat de sleutel geldig is gedurende een periode van Maxi maal zeven dagen.
+Zodra u de sleutel voor gebruikersoverdracht hebt, u die sleutel gebruiken om een willekeurig aantal gedeelde toegangshandtekeningen voor gebruikersdelegeren te maken gedurende de levensduur van de sleutel. De gebruikersdelegatiesleutel is onafhankelijk van het OAuth 2.0-token dat wordt gebruikt om het te verkrijgen, zodat het token niet hoeft te worden vernieuwd zolang de sleutel nog geldig is. U opgeven dat de sleutel maximaal 7 dagen geldig is.
 
-Gebruik een van de volgende methoden om de sleutel voor gebruikers overdracht aan te vragen:
+Gebruik een van de volgende methoden om de toets voor gebruikersoverdracht op te vragen:
 
 - [GetUserDelegationKey](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.getuserdelegationkey)
 - [GetUserDelegationKeyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.getuserdelegationkeyasync)
 
-Met het volgende code fragment wordt de sleutel voor gebruikers overdracht opgehaald en worden de bijbehorende eigenschappen wegge schreven:
+In het volgende codefragment wordt de toets voor de delegatie van de gebruiker opdeed en worden de eigenschappen ervan uitgeschreven:
 
 ```csharp
 // Get a user delegation key for the Blob service that's valid for seven days.
@@ -94,7 +94,7 @@ Console.WriteLine("Key signed version: {0}", key.SignedVersion);
 
 ## <a name="create-the-sas-token"></a>Het SAS-token maken
 
-In het volgende code fragment wordt een nieuwe [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) gemaakt en worden de para meters voor de gebruikers delegering sa's opgegeven. Het fragment roept vervolgens de [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) aan om de SAS-token teken reeks op te halen. Ten slotte bouwt de code de volledige URI, met inbegrip van het bron adres en het SAS-token.
+In het volgende codefragment wordt een nieuwe [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) gemaakt en worden de parameters voor de sas voor gebruikersdelegatie weergegeven. Het fragment roept vervolgens de [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) aan om de SAS-tekenreeks te krijgen. Ten slotte bouwt de code de volledige URI, inclusief het resourceadres en het SAS-token.
 
 ```csharp
 // Create a SAS token that's valid for one hour.
@@ -123,9 +123,9 @@ UriBuilder fullUri = new UriBuilder()
 };
 ```
 
-## <a name="example-get-a-user-delegation-sas"></a>Voor beeld: een SAS voor gebruikers overdracht ophalen
+## <a name="example-get-a-user-delegation-sas"></a>Voorbeeld: Een gebruikersdelegatie SAS
 
-De volgende voorbeeld methode toont de volledige code voor het verifiëren van de beveiligingsprincipal en het maken van de SA'S voor gebruikers overdracht:
+In de volgende voorbeeldmethode wordt de volledige code weergegeven voor het verifiëren van de beveiligingsprincipal en het maken van de SAS voor gebruikersdelegatie:
 
 ```csharp
 async static Task<Uri> GetUserDelegationSasBlob(string accountName, string containerName, string blobName)
@@ -183,9 +183,9 @@ async static Task<Uri> GetUserDelegationSasBlob(string accountName, string conta
 }
 ```
 
-## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>Voor beeld: een blob met een gebruikers delegering SAS lezen
+## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>Voorbeeld: Een blob lezen met een SAS-delegatie van een gebruikersdelegatie
 
-In het volgende voor beeld worden de SA'S voor gebruikers overdracht getest die in het vorige voor beeld zijn gemaakt vanuit een gesimuleerde client toepassing. Als de SAS geldig is, kan de client toepassing de inhoud van de BLOB lezen. Als de SAS ongeldig is, bijvoorbeeld als deze is verlopen, retourneert Azure Storage fout code 403 (verboden).
+In het volgende voorbeeld wordt de sas voor gebruikersdelegatie sas getest die in het vorige voorbeeld is gemaakt vanuit een gesimuleerde clienttoepassing. Als de SAS geldig is, kan de clienttoepassing de inhoud van de blob lezen. Als de SAS ongeldig is, bijvoorbeeld als deze is verlopen, retourneert Azure Storage foutcode 403 (Verboden).
 
 ```csharp
 private static async Task ReadBlobWithSasAsync(Uri sasUri)
@@ -237,6 +237,6 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 
 ## <a name="see-also"></a>Zie ook
 
-- [Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md)
-- [Sleutel bewerking voor gebruikers overdracht ophalen](/rest/api/storageservices/get-user-delegation-key)
-- [Een SAS (REST API) voor gebruikers overdracht maken](/rest/api/storageservices/create-user-delegation-sas)
+- [Beperkte toegang verlenen tot Azure Storage-bronnen met behulp van gedeelde toegangshandtekeningen (SAS)](../common/storage-sas-overview.md)
+- [De sleutelbewerking voor gebruikersdelegatie uitvoeren](/rest/api/storageservices/get-user-delegation-key)
+- [Een SAS voor gebruikersdelegatie (REST API) maken](/rest/api/storageservices/create-user-delegation-sas)

@@ -1,8 +1,8 @@
 ---
-title: 'Azure AD Connect-synchronisatie: AD-Prullenbak inschakelen | Microsoft Docs'
-description: In dit onderwerp raadt het gebruik van de functie Prullenbak van AD met Azure AD Connect.
+title: 'Synchronisatie van Azure AD Connect: PRULLENBAK VAN AD inschakelen | Microsoft Documenten'
+description: In dit onderwerp wordt aanbevolen de functie AD Prullenbak te gebruiken met Azure AD Connect.
 services: active-directory
-keywords: AD Recycle Bin, per ongeluk verwijderen, bronanker
+keywords: AD-prullenbak, per ongeluk verwijderen, bronanker
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -18,32 +18,32 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5fe7d3ea7d4f6d648438efc1a484d5909ade2f23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60382892"
 ---
-# <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect-synchronisatie: AD-prullenbak inschakelen
-Het is raadzaam dat u de functie AD-Prullenbak inschakelen voor uw on-premises Active Directory's die zijn gesynchroniseerd met Azure AD. 
+# <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Synchronisatie van Azure AD Connect: PRULLENBAK AD inschakelen
+Het wordt aanbevolen om de functie AD-prullenbak in te schakelen voor uw on-premises actieve mappen, die zijn gesynchroniseerd met Azure AD. 
 
-Als u onbedoeld een on-premises AD-gebruikersobject en herstellen met behulp van de functie, Azure AD worden hersteld het overeenkomstige gebruikersobject van Azure AD.  Raadpleeg het artikel voor informatie over de functie AD-Prullenbak, [Scenario-overzicht voor het herstellen van verwijderde Active Directory-objecten](https://technet.microsoft.com/library/dd379542.aspx).
+Als u per ongeluk een on-premises AD-gebruikersobject hebt verwijderd en deze met de functie hebt hersteld, herstelt Azure AD het bijbehorende Azure AD-gebruikersobject.  Raadpleeg artikel [Scenariooverzicht voor het herstellen van verwijderde Active Directory-objecten voor](https://technet.microsoft.com/library/dd379542.aspx)informatie over de functie AD-prullenbak .
 
-## <a name="benefits-of-enabling-the-ad-recycle-bin"></a>Voordelen van de AD-Prullenbak inschakelen
-Deze functie helpt met het herstellen van Azure AD-gebruikersobjecten door het volgende te doen:
+## <a name="benefits-of-enabling-the-ad-recycle-bin"></a>Voordelen van het inschakelen van de PRULLENBAK van het AD
+Deze functie helpt bij het herstellen van Azure AD-gebruikersobjecten door het volgende te doen:
 
-* Als u een on-premises per ongeluk verwijderd object AD-gebruiker, het bijbehorende object van de Azure AD-gebruiker wordt verwijderd in de volgende synchronisatiecyclus. Standaard Azure AD houdt het verwijderde object van de Azure AD-gebruiker voorlopig verwijderde status voor 30 dagen.
+* Als u per ongeluk een on-premises AD-gebruikersobject hebt verwijderd, wordt het bijbehorende Azure AD-gebruikersobject in de volgende synchronisatiecyclus verwijderd. Azure AD houdt het verwijderde Azure AD-gebruikersobject standaard gedurende 30 dagen in zachte status.
 
-* Als u beschikt over on-premises AD Recycle Bin-functie is ingeschakeld, kunt u de verwijderde herstellen op lokale AD-gebruikersobject zonder te hoeven wijzigen van de waarde van het Bronanker. Als de herstelde on-premises AD-gebruikersobject is gesynchroniseerd met Azure AD, Azure AD wordt gebruikersobject herstellen de bijbehorende voorlopig verwijderde Azure AD. Raadpleeg het artikel voor meer informatie over het kenmerk Sourceanchor [Azure AD Connect: Ontwerpconcepten](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor).
+* Als u de functie AD-prullenbak op locatie hebt ingeschakeld, u het verwijderde on-premises AD-gebruikersobject herstellen zonder de waarde bronanker te wijzigen. Wanneer het herstelde on-premises AD-gebruikersobject wordt gesynchroniseerd met Azure AD, herstelt Azure AD het bijbehorende, verwijderde Azure AD-gebruikersobject. Raadpleeg artikel [Azure AD Connect: Ontwerpconcepten](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor)voor informatie over het kenmerk Bronanker .
 
-* Als u geen on-premises AD-Prullenbak-functie is ingeschakeld, kan u worden gevraagd om een AD-gebruiker-object ter vervanging van het verwijderde object te maken. Als Azure AD Connect-synchronisatieservice is geconfigureerd voor het gebruik van het systeem gegenereerde AD-kenmerk (zoals ObjectGuid) voor het kenmerk Bronanker, is het gemaakte object van de AD-gebruiker heeft niet dezelfde Bronanker waarde als het verwijderde object van de AD-gebruiker. Wanneer het zojuist gemaakte AD-gebruikersobject is gesynchroniseerd met Azure AD, Azure AD maakt u een nieuwe Azure AD-gebruikersobject in plaats van het herstellen van het voorlopig verwijderde object voor Azure AD-gebruiker.
+* Als u de functie AD-prullenbak niet hebt ingeschakeld, moet u mogelijk een AD-gebruikersobject maken om het verwijderde object te vervangen. Als Azure AD Connect Synchronization Service is geconfigureerd om door het systeem gegenereerde AD-kenmerk (zoals ObjectGuid) te gebruiken voor het kenmerk Bronanker, heeft het nieuw gemaakte AD-gebruikersobject niet dezelfde waarde voor bronanker als het verwijderde AD-gebruikersobject. Wanneer het nieuw gemaakte AD-gebruikersobject is gesynchroniseerd met Azure AD, maakt Azure AD een nieuw Azure AD-gebruikersobject in plaats van het door zachte verwijderde Azure AD-gebruikersobject te herstellen.
 
 > [!NOTE]
-> Standaard verwijderd Azure AD houdt objecten van Azure AD-gebruiker in staat voorlopig verwijderde voor 30 dagen voordat ze permanent worden verwijderd. Beheerders kunnen echter de verwijdering van dergelijke objecten te versnellen. Zodra de objecten worden definitief verwijderd, kunnen ze niet meer worden hersteld, zelfs niet als on-premises AD-Prullenbak-functie is ingeschakeld.
+> Azure AD bewaart standaard verwijderde Azure AD-gebruikersobjecten gedurende 30 dagen in zachte verwijderde status voordat ze permanent worden verwijderd. Beheerders kunnen het verwijderen van dergelijke objecten echter versnellen. Zodra de objecten permanent zijn verwijderd, kunnen ze niet meer worden hersteld, zelfs als de functie AD-prullenbak op locatie is ingeschakeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 **Overzichtsonderwerpen**
 
-* [Azure AD Connect-synchronisatie: Begrijpen en aanpassen van synchronisatie](how-to-connect-sync-whatis.md)
+* [Synchronisatie van Azure AD Connect: synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)
 
-* [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md)
+* [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)

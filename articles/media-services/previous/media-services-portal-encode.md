@@ -1,6 +1,6 @@
 ---
-title: Een Asset coderen met behulp van Media Encoder Standard in het Azure Portal | Microsoft Docs
-description: In deze zelf studie wordt u begeleid bij de stappen voor het coderen van een Asset door gebruik te maken van Media Encoder Standard in de Azure Portal.
+title: Een asset coderen met Media Encoder Standard in de Azure-portal | Microsoft Documenten
+description: In deze zelfstudie u de stappen doorlopen waarop een asset wordt gecodeerd met Behulp van Media Encoder Standard in de Azure-portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,33 +15,33 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 7c147d99eaabee70316521d1f2bdc41933162ab1
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69542603"
 ---
-# <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Een Asset coderen met behulp van Media Encoder Standard in het Azure Portal
+# <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Een asset coderen met behulp van Media Encoder Standard in de Azure-portal
 
 > [!NOTE]
-> U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie. 
+> U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie gratis [proefversie van Azure voor](https://azure.microsoft.com/pricing/free-trial/)meer informatie. 
 > 
 > 
 
-Een van de meest voorkomende scenario's voor het werken met Azure Media Services levert Adaptive Bitrate Streaming aan uw klanten. Media Services ondersteunt de volgende Adaptive Bitrate Streaming technologieën: Apple HTTP Live Streaming (HLS), micro soft Smooth Streaming en dynamisch adaptief streamen via HTTP (DASH, ook wel MPEG-DASH) genoemd. Als u uw Video's voor Adaptive Bitrate Streaming wilt voorbereiden, moet u eerst uw bron video coderen als multi-bitrate bestanden. U kunt Media Encoder Standard gebruiken om uw Video's te coderen.  
+Een van de meest voorkomende scenario's in het werken met Azure Media Services is het leveren van adaptieve bitrate streaming aan uw klanten. Media Services ondersteunt de volgende adaptieve bitrate streaming technologieën: Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming, en Dynamic Adaptive Streaming over HTTP (DASH, ook wel MPEG-DASH). Om je video's voor te bereiden op adaptieve bitrate streaming, codeer je eerst je bronvideo als multi-bitrate bestanden. Je Media Encoder Standard gebruiken om je video's te coderen.  
 
-Media Services biedt dynamische pakketten. Met dynamische verpakking kunt u uw multi-bitrate Mp4's in HLS, Smooth Streaming en MPEG-DASH leveren zonder dat u deze streaming-indelingen hoeft te verpakken. Wanneer u dynamische pakketten gebruikt, kunt u de bestanden opslaan en betalen in een indeling met één opslag. Media Services bouwt voort en verzendt de juiste reactie op basis van de aanvraag van een client.
+Media Services biedt dynamische pakketten. Met dynamische verpakkingen u uw multibitrate MP4's leveren in HLS, Smooth Streaming en MPEG-DASH, zonder opnieuw te verpakken in deze streamingformaten. Wanneer u dynamische verpakkingen gebruikt, u de bestanden opslaan en betalen in single-storage-indeling. Media Services bouwt en bedient de juiste respons op basis van de aanvraag van een klant.
 
-U moet het bronbestand coderen in een set multi-bitrate MP4-bestanden om van dynamische pakketten gebruik te maken. De coderings stappen worden verderop in dit artikel toegelicht.
+U moet het bronbestand coderen in een set multi-bitrate MP4-bestanden om van dynamische pakketten gebruik te maken. De coderingsstappen worden later in dit artikel gedemonstreerd.
 
-Zie [Media verwerking schalen met behulp van de Azure Portal](media-services-portal-scale-media-processing.md)voor meer informatie over het schalen van media verwerking.
+Zie [Mediaverwerking schalen met behulp van de Azure-portal](media-services-portal-scale-media-processing.md)voor meer informatie over het schalen van mediaverwerking.
 
-## <a name="encode-in-the-azure-portal"></a>Code ring in de Azure Portal
+## <a name="encode-in-the-azure-portal"></a>Coderen in de Azure-portal
 
-Uw inhoud coderen met behulp van Media Encoder Standard:
+Ga als het gaat om het coderen van uw inhoud met Media Encoder Standard:
 
 1. Selecteer uw Azure Media Services-account in [Azure Portal](https://portal.azure.com/).
-2. Selecteer **Instellingen** > **Assets**. Selecteer de asset die u wilt coderen.
+2. Selecteer **Instellingen** > **-middelen**. Selecteer de asset die u wilt coderen.
 3. Selecteer de knop **Coderen**.
 4. Selecteer in het deelvenster **Een asset coderen** de processor **Media Encoder Standard** en een standaardinstelling. Zie [automatisch een bitrate ladder genereren](media-services-autogen-bitrate-ladder-with-mes.md) en [Standaardinstellingen voor taken in Media Encoder Standard](media-services-mes-presets-overview.md) voor informatie over standaardinstellingen. Het is belangrijk om de standaardinstelling te kiezen die het meest geschikt is voor uw invoervideo. Als u bijvoorbeeld weet dat uw invoervideo een resolutie van 1920 x 1080 pixels heeft, kunt u de standaardinstelling **H264 Multiple Bitrate 1080p** gebruiken. Als u een video met lage resolutie hebt (640 x 360), kunt u beter niet de standaardinstelling **H264 Multiple Bitrate 1080p** gebruiken.
    
@@ -57,5 +57,5 @@ Uw inhoud coderen met behulp van Media Encoder Standard:
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Controleer de voortgang van uw coderings taak](media-services-portal-check-job-progress.md) in de Azure Portal.  
+* [Houd de voortgang van uw coderingstaak](media-services-portal-check-job-progress.md) in de Azure-portal in de gaten.  
 

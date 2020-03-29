@@ -1,6 +1,6 @@
 ---
-title: Versleutelen van gegevens van Azure storage-tabel | Microsoft Docs
-description: Meer informatie over versleuteling van de tabel gegevens in Azure storage.
+title: Azure-opslagtabelgegevens versleutelen | Microsoft Documenten
+description: Meer informatie over tabelgegevensversleuteling in Azure-opslag.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -9,26 +9,26 @@ ms.date: 04/11/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: f56946702011968a0fcb31f6fbecbaacdc89ea42
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60326000"
 ---
-# <a name="encrypt-table-data"></a>Versleutelen van gegevens in een tabel
-De clientbibliotheek voor .NET Azure Storage ondersteunt versleuteling van de entiteitseigenschappen tekenreeks voor invoegen en vervangbewerkingen. De gecodeerde tekenreeksen worden opgeslagen op de service als binaire eigenschappen en ze worden geconverteerd naar tekenreeksen na ontsleuteling.    
+# <a name="encrypt-table-data"></a>Tabelgegevens versleutelen
+De .NET Azure Storage Client Library ondersteunt versleuteling van tekenreeksentiteiteigenschappen voor het invoegen en vervangen van bewerkingen. De versleutelde tekenreeksen worden opgeslagen op de service als binaire eigenschappen, en ze worden omgezet terug naar strings na decryptie.    
 
-Gebruikers moeten de eigenschappen moeten worden versleuteld opgeven voor tabellen, naast het coderingsbeleid. Dit kan worden gedaan door een van beide op te geven een kenmerk [EncryptProperty] (voor POCO-entiteiten die zijn afgeleid van TableEntity) of een conflictoplosser versleuteling in Aanvraagopties. Een oplossing versleuteling is een gemachtigde die ervoor zorgt dat een partitiesleutel, een rijsleutel en een naam van de eigenschap retourneert een Booleaanse waarde die aangeeft of deze eigenschap moet worden versleuteld. Tijdens het versleutelen gebruikt de clientbibliotheek van deze informatie om te bepalen of voor het versleutelen van een eigenschap tijdens het schrijven naar de kabel. De gemachtigde biedt ook de mogelijkheid van logica over hoe eigenschappen zijn gecodeerd. (Bijvoorbeeld, als X, vervolgens versleutelen eigenschap A; anders eigenschappen A en B. te versleutelen) Het is niet nodig is om deze informatie tijdens het lezen of uitvoeren van query's entiteiten geven.
+Voor tabellen moeten gebruikers naast het versleutelingsbeleid ook de eigenschappen opgeven die moeten worden versleuteld. Dit kan worden gedaan door een kenmerk [EncryptProperty] op te geven (voor POCO-entiteiten die afkomstig zijn van TableEntity) of een versleutelingsresolver in aanvraagopties. Een versleutelingsresolver is een gemachtigde die een partitiesleutel, rijsleutel en eigendomsnaam neemt en een Booleaan retourneert die aangeeft of die eigenschap moet worden versleuteld. Tijdens versleuteling gebruikt de clientbibliotheek deze informatie om te beslissen of een eigenschap moet worden versleuteld tijdens het schrijven naar de draad. De gemachtigde voorziet ook in de mogelijkheid van logica rond hoe eigenschappen worden versleuteld. (Als X bijvoorbeeld eigenschap A versleutelt; anders eigenschappen A en B versleutelen.) Het is niet nodig om deze informatie te verstrekken tijdens het lezen of opvragen van entiteiten.
 
 ## <a name="merge-support"></a>Ondersteuning voor samenvoegen
 
-Samenvoegen wordt momenteel niet ondersteund. Omdat een subset met eigenschappen kan zijn gecodeerd eerder met behulp van een andere sleutel, wordt gewoon samenvoegen van de nieuwe eigenschappen en het bijwerken van de metagegevens van de resulteert in gegevensverlies. Samenvoegen van een vereist extra service aanroepen om te lezen de reeds bestaande entiteit van de service of met behulp van een nieuwe sleutel per eigenschap, die beide zijn niet geschikt voor betere prestaties.     
+Samenvoegen wordt momenteel niet ondersteund. Omdat een subset van eigenschappen mogelijk eerder is versleuteld met een andere sleutel, resulteert het samenvoegen van de nieuwe eigenschappen en het bijwerken van de metagegevens in gegevensverlies. Het samenvoegen vereist extra serviceoproepen om de reeds bestaande entiteit uit de service te lezen, of het gebruik van een nieuwe sleutel per eigenschap, die beide niet geschikt zijn om prestatieredenen.     
 
-Zie voor meer informatie over het versleutelen van gegevens uit de apparaattabel [Client-Side-versleuteling en Microsoft Azure Storage in Azure Key Vault](../common/storage-client-side-encryption.md).  
+Zie [Client-Side Encryption en Azure Key Vault voor Microsoft Azure Storage voor](../common/storage-client-side-encryption.md)informatie over het versleutelen van tabelgegevens.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Ontwerppatronen voor tabel](table-storage-design-patterns.md)
-- [Waardoor relaties worden gemaakt](table-storage-design-modeling.md)
-- [Waardoor relaties worden gemaakt](table-storage-design-modeling.md)
-- [Ontwerp voor wijziging van gegevens](table-storage-design-for-modification.md)
+- [Tabelontwerppatronen](table-storage-design-patterns.md)
+- [Relaties modelleren](table-storage-design-modeling.md)
+- [Relaties modelleren](table-storage-design-modeling.md)
+- [Ontwerp voor gegevenswijziging](table-storage-design-for-modification.md)

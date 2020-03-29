@@ -1,26 +1,26 @@
 ---
-title: Migratie met minimale downtime met Azure Database voor PostgreSQL - één Server
-description: Dit artikel wordt beschreven hoe u een migratie met minimale downtime van een PostgreSQL-database met Azure Database voor PostgreSQL - één Server met behulp van de Azure Database Migration Service uitvoert.
+title: Minimale downtime-migratie naar Azure Database voor PostgreSQL - Single Server
+description: In dit artikel wordt beschreven hoe u een minimale downtime-migratie van een PostgreSQL-database naar Azure Database voor PostgreSQL - Single Server uitvoeren met behulp van de Azure Database Migration Service.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 93cd390889c023adf1c30a8470e1c2298598439e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65067514"
 ---
-# <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>Migratie met minimale downtime met Azure Database voor PostgreSQL - één Server
-U kunt migratie naar Azure Database for PostgreSQL voor PostgreSQL met minimale downtime uitvoeren met behulp van de onlangs geïntroduceerde **doorlopende synchronisatie mogelijkheid** voor de [Azure Database Migration Service](https://aka.ms/get-dms) (DMS) . Deze functionaliteit beperkt de hoeveelheid uitvaltijd beperkt die worden gemaakt door de toepassing.
+# <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>Minimale downtime-migratie naar Azure Database voor PostgreSQL - Single Server
+U PostgreSQL-migraties naar Azure Database voor PostgreSQL uitvoeren met minimale downtime met behulp van de onlangs geïntroduceerde **synchronisatiemogelijkheid** voor de [Azure Database Migration Service](https://aka.ms/get-dms) (DMS). Deze functionaliteit beperkt de hoeveelheid downtime die door de toepassing wordt opgelopen.
 
 ## <a name="overview"></a>Overzicht
-Azure DMS wordt uitgevoerd van een aanvankelijke belasting van uw on-premises naar Azure Database voor PostgreSQL, en vervolgens continu worden gesynchroniseerd met een nieuwe transacties naar Azure terwijl de toepassing actief blijft. Nadat de gegevens de resultaten op de doel-Azure aan clientzijde, u stop de toepassing voor een korte moment (minimale downtime) en wacht tot de laatste batch van gegevens (vanaf het moment dat u de toepassing stoppen voordat de toepassing effectief niet beschikbaar is voor alle nieuwe verkeer) om af te vangen omhoog in de doel- en werk vervolgens de verbindingsreeks om te verwijzen naar Azure. Wanneer u klaar bent, wordt uw toepassing worden live in Azure!
+Azure DMS voert een eerste belasting van uw on-premises uit naar Azure Database voor PostgreSQL en synchroniseert vervolgens continu alle nieuwe transacties met Azure terwijl de toepassing actief blijft. Nadat de gegevens de doelazure-kant hebben ingehaald, stopt u de toepassing voor een kort moment (minimale downtime), wacht u op de laatste batch gegevens (vanaf het moment dat u de toepassing stopt totdat de toepassing effectief niet beschikbaar is om nieuw verkeer te verwerken) om te vangen in het doel en werk vervolgens uw verbindingstekenreeks bij om naar Azure te wijzen. Wanneer u klaar bent, is uw toepassing live op Azure!
 
-![Doorlopende synchronisatie met de Azure Database Migration Service](./media/howto-migrate-online/ContinuousSync.png)
+![Continue synchronisatie met de Azure Database Migration Service](./media/howto-migrate-online/ContinuousSync.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-- Bekijk de video [App-modernisering met Microsoft Azure](https://medius.studios.ms/Embed/Video/BRK2102?sid=BRK2102), die een demo van het PostgreSQL apps migreren naar Azure Database for PostgreSQL bevat.
-- Zie de zelfstudie [PostgreSQL migreren met Azure Database for PostgreSQL online met behulp van DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online).
+- Bekijk de [video-app modernisering met Microsoft Azure](https://medius.studios.ms/Embed/Video/BRK2102?sid=BRK2102), die een demo bevat die laat zien hoe PostgreSQL-apps migreren naar Azure Database voor PostgreSQL.
+- Zie de zelfstudie [Remigreren PostgreSQL naar Azure Database voor PostgreSQL online met Behulp van DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online).

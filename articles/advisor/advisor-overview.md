@@ -4,71 +4,71 @@ description: Gebruik Azure Advisor om uw Azure-implementaties te optimaliseren.
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: 600bda282d46f86979d0366719826c3a6c1323e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443082"
 ---
 # <a name="introduction-to-azure-advisor"></a>Inleiding tot Azure Advisor
 
-Meer informatie over de belangrijkste mogelijkheden van Azure Advisor en antwoorden op veelgestelde vragen.
+Meer informatie over de belangrijkste mogelijkheden van Azure Advisor en krijg antwoorden op veelgestelde vragen.
 
 ## <a name="what-is-advisor"></a>Wat is Advisor?
-Advisor is een persoonlijke Cloud consultant die u helpt bij het volgen van de aanbevolen procedures voor het optimaliseren van uw Azure-implementaties. Het analyseert uw resourceconfiguratie en gebruikstelemetrie, en raadt vervolgens oplossingen aan die u kunnen helpen de kosteneffectiviteit, prestaties, hoge beschikbaarheid en beveiliging van uw Azure-resources te verbeteren.
+Advisor is een gepersonaliseerde cloudconsultant die u helpt bij het volgen van best practices om uw Azure-implementaties te optimaliseren. Het analyseert uw resourceconfiguratie en gebruikstelemetrie, en raadt vervolgens oplossingen aan die u kunnen helpen de kosteneffectiviteit, prestaties, hoge beschikbaarheid en beveiliging van uw Azure-resources te verbeteren.
 
-Met Advisor kunt u het volgende doen:
+Met Advisor u:
 * Proactieve, bruikbare en aan uw voorkeuren aangepaste aanbevelingen voor best practice ontvangen. 
-* Verbeter de prestaties, beveiliging en hoge Beschik baarheid van uw resources, naarmate u uw verkoop kansen identificeert om uw totale Azure-uitgaven te verminderen.
+* Verbeter de prestaties, beveiliging en hoge beschikbaarheid van uw resources, terwijl u mogelijkheden identificeert om uw totale Azure-uitgaven te verminderen.
 * Aanbevelingen ontvangen met voorgestelde acties inline.
 
-U hebt toegang tot Advisor via de [Azure Portal](https://aka.ms/azureadvisordashboard). Meld u aan bij de [Portal](https://portal.azure.com), zoek **Advisor** in het navigatie menu of zoek ernaar in het menu **alle services** .
+U hebt toegang tot Advisor via de [Azure-portal.](https://aka.ms/azureadvisordashboard) Meld u aan bij de [portal,](https://portal.azure.com)zoek **Advisor** in het navigatiemenu of zoek ernaar in het menu **Alle services.**
 
-In het Advisor-dash board worden persoonlijke aanbevelingen voor al uw abonnementen weer gegeven.  U kunt filters toep assen om aanbevelingen voor specifieke abonnementen en resource typen weer te geven.  De aanbevelingen zijn onderverdeeld in vier categorieën: 
+Het Dashboard Advisor bevat gepersonaliseerde aanbevelingen voor al uw abonnementen.  U filters toepassen om aanbevelingen weer te geven voor specifieke abonnementen en resourcetypen.  De aanbevelingen zijn onderverdeeld in vier categorieën: 
 
-* **Hoge Beschik baarheid**: om de continuïteit van uw bedrijfs kritieke toepassingen te garanderen en te verbeteren. Zie [aanbevelingen voor hoge Beschik baarheid voor Advisor](advisor-high-availability-recommendations.md)voor meer informatie.
-* **Beveiliging**: voor het detecteren van bedreigingen en beveiligings problemen die kunnen leiden tot inbreuk op de beveiliging. Zie [Advisor Security aanbevelingen](advisor-security-recommendations.md)voor meer informatie.
-* **Prestaties**: om de snelheid van uw toepassingen te verbeteren. Zie aanbevelingen voor Advisor- [prestaties](advisor-performance-recommendations.md)voor meer informatie.
-* **Kosten**: om uw totale Azure-uitgaven te optimaliseren en te verlagen. Zie aanbevelingen voor Advisor- [kosten](advisor-cost-recommendations.md)voor meer informatie.
-* **Operationele uitmuntendheid**: om u te helpen proces-en werk stroom efficiëntie, beheer baarheid en aanbevolen procedures voor implementatie te behaalt. . Zie [aanbevelingen voor operationele uitmuntendheid van Advisor](advisor-operational-excellence-recommendations.md)voor meer informatie.
+* **Hoge beschikbaarheid**: Om de continuïteit van uw bedrijfskritische applicaties te waarborgen en te verbeteren. Zie [Aanbevelingen voor hoge beschikbaarheid van adviseur voor](advisor-high-availability-recommendations.md)meer informatie .
+* **Beveiliging:** Om bedreigingen en kwetsbaarheden op te sporen die kunnen leiden tot inbreuken op de beveiliging. Zie [Aanbevelingen voor beveiliging van adviseur voor](advisor-security-recommendations.md)meer informatie.
+* **Prestaties:** Om de snelheid van uw toepassingen te verbeteren. Zie [Aanbevelingen voor prestaties van advisor voor](advisor-performance-recommendations.md)meer informatie .
+* **Kosten:** Om uw totale Azure-uitgaven te optimaliseren en te verminderen. Zie [Aanbevelingen voor Advisor Cost voor](advisor-cost-recommendations.md)meer informatie.
+* **Operational Excellence:** Om u te helpen bij het bereiken van proces- en workflow-efficiëntie, resourcebeheerbaarheid en best practices voor implementatie. . Zie [aanbevelingen voor Advisor Operational Excellence voor](advisor-operational-excellence-recommendations.md)meer informatie.
 
-  ![Aanbevelingen van Advisor](./media/advisor-overview/advisor-dashboard.png)
+  ![Aanbevelingstypen van adviseurs](./media/advisor-overview/advisor-dashboard.png)
 
-U kunt op een categorie klikken om de lijst met aanbevelingen in die categorie weer te geven en een aanbeveling selecteren voor meer informatie hierover.  U kunt ook meer te weten komen over acties die u kunt uitvoeren om gebruik te maken van een verkoop kans of om een probleem op te lossen.
+U op een categorie klikken om de lijst met aanbevelingen in die categorie weer te geven en een aanbeveling selecteren om er meer over te weten te komen.  U ook meer te weten komen over acties die u uitvoeren om gebruik te maken van een verkoopkans of een probleem op te lossen.
 
-![Advies categorie adviseur](./media/advisor-overview/advisor-ha-category-example.png) 
+![Adviseur aanbevelingcategorie](./media/advisor-overview/advisor-ha-category-example.png) 
 
-Selecteer de aanbevolen actie voor een aanbeveling om de aanbeveling te implementeren.  Er wordt een eenvoudige interface geopend waarmee u de aanbeveling kunt implementeren of kunt verwijzen naar documentatie die u helpt bij de implementatie.  Zodra u een aanbeveling hebt geïmplementeerd, kan het tot een dag duren voordat Advisor dit herkent.
+Selecteer de aanbevolen actie voor een aanbeveling om de aanbeveling uit te voeren.  Er wordt een eenvoudige interface geopend waarmee u de aanbeveling implementeren of u doorverwijzen naar documentatie die u helpt bij de implementatie.  Zodra u een aanbeveling implementeert, kan het tot een dag duren voordat Advisor dat erkent.
 
-Als u niet van plan bent om onmiddellijk actie te ondernemen volgens een aanbeveling, kunt u deze uitstellen gedurende een bepaalde periode of deze sluiten.  Als u geen aanbevelingen voor een specifiek abonnement of een specifieke resource groep wilt ontvangen, kunt u Advisor configureren zodat alleen aanbevelingen voor opgegeven abonnementen en resource groepen worden gegenereerd.
+Als u niet van plan bent om onmiddellijk actie te ondernemen op een aanbeveling, u deze voor een bepaalde periode uitstellen of verwijderen.  Als u geen aanbevelingen wilt ontvangen voor een specifiek abonnement of resourcegroep, u Advisor configureren om alleen aanbevelingen voor opgegeven abonnementen en resourcegroepen te genereren.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-### <a name="how-do-i-access-advisor"></a>Hoe kan ik Advisor openen?
-U hebt toegang tot Advisor via de [Azure Portal](https://aka.ms/azureadvisordashboard). Meld u aan bij de [Portal](https://portal.azure.com), zoek **Advisor** in het navigatie menu of zoek ernaar in het menu **alle services** .
+### <a name="how-do-i-access-advisor"></a>Hoe krijg ik toegang tot Advisor?
+U hebt toegang tot Advisor via de [Azure-portal.](https://aka.ms/azureadvisordashboard) Meld u aan bij de [portal,](https://portal.azure.com)zoek **Advisor** in het navigatiemenu of zoek ernaar in het menu **Alle services.**
 
-U kunt aanbevelingen van Advisor ook weer geven via de resource interface van de virtuele machine. Kies een virtuele machine en schuif vervolgens naar Advisor aanbevelingen in het menu. 
+U advisor-aanbevelingen ook bekijken via de resourceinterface voor virtuele machines. Kies een virtuele machine en scrol naar Aanbevelingen van Advisor in het menu. 
 
-### <a name="what-permissions-do-i-need-to-access-advisor"></a>Welke machtigingen heb ik nodig om Advisor te openen?
+### <a name="what-permissions-do-i-need-to-access-advisor"></a>Welke machtigingen heb ik nodig om toegang te krijgen tot Advisor?
  
-U kunt aanbevelingen van Advisor als *eigenaar*, *bijdrager*of *lezer* van een abonnement benaderen.
+U hebt toegang tot aanbevelingen van Advisor als *eigenaar,* *inzender*of *lezer* van een abonnement.
 
-### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Welke resources biedt Advisor aanbevelingen voor?
+### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Voor welke middelen geeft Advisor aanbevelingen?
 
-Advisor biedt aanbevelingen voor Application Gateway, App Services, beschikbaarheids sets, Azure cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, Azure openbaar IP-adressen, SQL Data Warehouse, SQL-servers, opslag accounts, Traffic Manager profielen en virtuele machines.
+Advisor geeft aanbevelingen voor Application Gateway, App Services, beschikbaarheidssets, Azure Cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, Azure public IP-adressen, SQL Data Warehouse, SQL-servers, opslagaccounts, Traffic Manager-profielen en virtuele machines.
 
-Azure Advisor bevat ook uw aanbevelingen van [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) die aanbevelingen kunnen bevatten voor aanvullende resource typen.
+Azure Advisor bevat ook uw aanbevelingen van [Azure Security Center,](https://docs.microsoft.com/azure/security-center/security-center-recommendations) die aanbevelingen voor aanvullende brontypen kunnen bevatten.
 
-### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Kan ik een aanbeveling uitstellen of negeren?
+### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Kan ik een aanbeveling uitstellen of afwijzen?
 
-Als u een aanbeveling wilt uitstellen of verwijderen, klikt u op de koppeling **uitstellen** . U kunt een uitstel periode opgeven of **nooit** selecteren om de aanbeveling te negeren.
+Als u een aanbeveling wilt uitstellen of afwijzen, klikt u op de koppeling **Uitstellen.** U een uitstelperiode opgeven of De aanbeveling **nooit** verwijderen selecteren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over Advisor-aanbevelingen:
+Zie voor meer informatie over aanbevelingen van Advisor:
 
 * [Aan de slag met Advisor](advisor-get-started.md)
-* [Aanbevelingen voor hoge Beschik baarheid van Advisor](advisor-high-availability-recommendations.md)
-* [Aanbevelingen voor de beveiliging van Advisor](advisor-security-recommendations.md)
-* [Aanbevelingen voor Advisor-prestaties](advisor-performance-recommendations.md)
-* [Aanbevelingen voor Advisor-kosten](advisor-cost-recommendations.md)
+* [Aanbevelingen voor hoge beschikbaarheid](advisor-high-availability-recommendations.md)
+* [Aanbevelingen voor beveiliging van adviseur](advisor-security-recommendations.md)
+* [Aanbevelingen voor prestaties van adviseur](advisor-performance-recommendations.md)
+* [Aanbevelingen voor kosten van adviseur](advisor-cost-recommendations.md)

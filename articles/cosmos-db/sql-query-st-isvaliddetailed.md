@@ -1,6 +1,6 @@
 ---
-title: ST_ISVALIDDETAILED in Azure Cosmos DB-query taal
-description: Meer informatie over de SQL-functie ST_ISVALIDDETAILED in Azure Cosmos DB.
+title: ST_ISVALIDDETAILED in Azure Cosmos DB-querytaal
+description: Meer informatie over sql-systeemfunctie ST_ISVALIDDETAILED in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9e640c223c2fef844b9b53e1f4afa3a5d398c8c0
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71349351"
 ---
 # <a name="st_isvaliddetailed-azure-cosmos-db"></a>ST_ISVALIDDETAILED (Azure Cosmos DB)
@@ -26,15 +26,15 @@ ST_ISVALIDDETAILED(<spatial_expr>)
 ## <a name="arguments"></a>Argumenten
   
 *spatial_expr*  
-   Is een geojson-of veelhoek expressie.  
+   Is een GeoJSON-punt of veelhoekexpressie.  
   
-## <a name="return-types"></a>Retour typen
+## <a name="return-types"></a>Retourtypen
   
-  Retourneert een JSON-waarde met een Booleaanse waarde als de opgegeven GeoJSON-veelhoek-punt of de expressie is geldig, en als ongeldig, ook de reden als een string-waarde.  
+  Geeft als resultaat een JSON-waarde met een Booleaanse waarde als het opgegeven GeoJSON-punt of veelhoekexpressie geldig is en als deze ongeldig is, bovendien de reden als tekenreekswaarde.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld wordt beschreven hoe u de geldigheid (met details) controleert met behulp van `ST_ISVALIDDETAILED`.  
+  In het volgende voorbeeld hoe u de `ST_ISVALIDDETAILED`geldigheid (met details) controleert met behulp van .  
   
 ```sql
 SELECT ST_ISVALIDDETAILED({   
@@ -43,7 +43,7 @@ SELECT ST_ISVALIDDETAILED({
 }) AS b 
 ```  
   
- Hier volgt de resultatenset.  
+ Hier is het resultaat ingesteld.  
   
 ```json
 [{  
@@ -57,5 +57,5 @@ SELECT ST_ISVALIDDETAILED({
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Ruimtelijke functies Azure Cosmos DB](sql-query-spatial-functions.md)
-- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
+- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

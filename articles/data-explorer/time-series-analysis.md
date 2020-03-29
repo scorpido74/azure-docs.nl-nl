@@ -1,6 +1,6 @@
 ---
-title: Time Series-gegevens analyseren met Azure Data Explorer
-description: Meer informatie over het analyseren van Time Series-gegevens in de Cloud met behulp van Azure Data Explorer.
+title: Tijdreeksgegevens analyseren met Azure Data Explorer
+description: Meer informatie over het analyseren van tijdreeksgegevens in de cloud met Azure Data Explorer.
 author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
@@ -8,49 +8,49 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
 ms.openlocfilehash: 3873b25394f91ce1c1601c348de2098198ba7fdd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74765480"
 ---
-# <a name="time-series-analysis-in-azure-data-explorer"></a>Time Series-analyse in azure Data Explorer
+# <a name="time-series-analysis-in-azure-data-explorer"></a>Analyse van tijdreeksen in Azure Data Explorer
 
-Azure Data Explorer (ADX) voert een voortdurende verzameling van telemetriegegevens uit van Cloud Services of IoT-apparaten. Deze gegevens kunnen worden geanalyseerd op verschillende inzichten, zoals het bewaken van service status, fysieke productie processen en gebruiks trends. De analyse wordt uitgevoerd op de tijd reeks van geselecteerde metrische gegevens om een afwijking in het patroon te vinden vergeleken met het typische basislijn patroon.
-ADX bevat systeem eigen ondersteuning voor het maken, bewerken en analyseren van meerdere tijd reeksen. In dit onderwerp leert u hoe ADX wordt gebruikt voor het maken en analyseren **van duizenden tijd reeksen in enkele seconden**, waardoor bijna realtime-bewakings oplossingen en-werk stromen mogelijk zijn.
+Azure Data Explorer (ADX) voert doorlopende verzameling telemetriegegevens uit van cloudservices of IoT-apparaten. Deze gegevens kunnen worden geanalyseerd voor verschillende inzichten, zoals het bewaken van de status van de service, fysieke productieprocessen en gebruikstrends. De analyse wordt uitgevoerd op tijdreeksen geselecteerde statistieken om een afwijking in het patroon te vinden in vergelijking met het typische basislijnpatroon.
+ADX bevat native ondersteuning voor het maken, manipuleren en analyseren van meerdere tijdreeksen. Leer in dit onderwerp hoe ADX wordt gebruikt om **duizenden tijdreeksen in seconden**te maken en te analyseren, waardoor near real-time bewakingsoplossingen en workflows mogelijk zijn.
 
-## <a name="time-series-creation"></a>Tijd reeks maken
+## <a name="time-series-creation"></a>Het maken van tijdreeksen
 
-In deze sectie maken we een grote set reguliere tijd reeksen en worden ze intuïtief gebruikt voor het gebruik van de `make-series` operator en worden de ontbrekende waarden indien nodig ingevuld.
-De eerste stap in de tijd reeks analyse is het partitioneren en transformeren van de oorspronkelijke telemetrie-tabel naar een set tijd reeksen. De tabel bevat meestal een time stamp-kolom, contextuele dimensies en optionele metrische gegevens. De dimensies worden gebruikt voor het partitioneren van de gegevens. Het doel is om met regel matige tijds intervallen duizenden tijd reeksen per partitie te maken.
+In deze sectie maken we eenvoudig en intuïtief een grote set `make-series` reguliere tijdreeksen met behulp van de operator en vullen we ontbrekende waarden in als dat nodig is.
+De eerste stap in de analyse van de tijdreeksen is het partitioneren en transformeren van de oorspronkelijke telemetrietabel naar een reeks tijdreeksen. De tabel bevat meestal een tijdstempelkolom, contextuele dimensies en optionele statistieken. De afmetingen worden gebruikt om de gegevens te partitioneren. Het doel is om duizenden tijdreeksen per partitie te maken op regelmatige tijdstippen.
 
-De invoer tabel *demo_make_series1* bevat 600K records voor wille keurige webservice-verkeer. Gebruik de onderstaande opdracht om 10 records te bemonsteren:
+De invoertabel *demo_make_series1* bevat 600K records van willekeurig webserviceverkeer. Gebruik de onderstaande opdracht om 10 records te bekijken:
 
-**\[** [**Klik om de query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03MTo0vTi3KTC02VKhRKAFyFQwNADOyzKUbAAAA) **\]**
+**\[**[**Klik hier om query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03MTo0vTi3KTC02VKhRKAFyFQwNADOyzKUbAAAA)**\]**
 
 ```kusto
 demo_make_series1 | take 10 
 ```
 
-De resulterende tabel bevat een time stamp-kolom, drie contextuele dimensie kolommen en geen metrische gegevens:
+De resulterende tabel bevat een tijdstempelkolom, drie kolommen met contextuele dimensies en geen statistieken:
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
-|   | Neem | BrowserVer | OsVer | Land/regio |
-|   | 2016-08-25 09:12:35.4020000 | Chrome 51,0 | Windows 7 | Verenigd Koninkrijk |
-|   | 2016-08-25 09:12:41.1120000 | Chrome 52,0 | Windows 10 |   |
-|   | 2016-08-25 09:12:46.2300000 | Chrome 52,0 | Windows 7 | Verenigd Koninkrijk |
-|   | 2016-08-25 09:12:46.5100000 | Chrome 52,0 | Windows 10 | Verenigd Koninkrijk |
-|   | 2016-08-25 09:12:46.5570000 | Chrome 52,0 | Windows 10 | Litouwen |
-|   | 2016-08-25 09:12:47.0470000 | Chrome 52,0 | Windows 8.1 | India |
-|   | 2016-08-25 09:12:51.3600000 | Chrome 52,0 | Windows 10 | Verenigd Koninkrijk |
-|   | 2016-08-25 09:12:51.6930000 | Chrome 52,0 | Windows 7 | Nederland |
-|   | 2016-08-25 09:12:56.4240000 | Chrome 52,0 | Windows 10 | Verenigd Koninkrijk |
-|   | 2016-08-25 09:13:08.7230000 | Chrome 52,0 | Windows 10 | India |
+|   | Tijdstempel | BrowserVer BrowserVer | OsVer OsVer | Land/regio |
+|   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | Verenigd Koninkrijk |
+|   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
+|   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | Verenigd Koninkrijk |
+|   | 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | Verenigd Koninkrijk |
+|   | 2016-08-25 09:12:46.5570000 | Chrome 52.0 | Windows 10 | Republiek Litouwen |
+|   | 2016-08-25 09:12:47.0470000 | Chrome 52.0 | Windows 8.1 | India |
+|   | 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | Verenigd Koninkrijk |
+|   | 2016-08-25 09:12:51.6930000 | Chrome 52.0 | Windows 7 | Nederland |
+|   | 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | Verenigd Koninkrijk |
+|   | 2016-08-25 09:13:08.7230000 | Chrome 52.0 | Windows 10 | India |
 
-Omdat er geen metrische gegevens zijn, kunnen we alleen een set tijd reeksen maken die het aantal verkeer zelf vertegenwoordigen, gepartitioneerd door het besturings systeem met behulp van de volgende query:
+Aangezien er geen statistieken zijn, kunnen we alleen een reeks tijdreeksen maken die het aantal verkeer zelf vertegenwoordigen, verdeeld door besturingssysteem met behulp van de volgende query:
 
-**\[** [**Klik om de query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPwQrCMBAE0Hu/Yo4NVLBn6Td4ULyWtV1tMJtIsoEq/XhbC4J48jgw+5h1rBDrW0UDDakjR7HsWUIrdOM2cbScakxIWYSiffJSL49W+KAkd2N2hVsMGv8yaPw2furFhCVu1gifpelC9loa9Hyh7LTZInh8FFiPSP7K5fufap1UoR4Mzg/s04njjEb2PUfofNYNFPUFtJiguAEBAAA=) **\]**
+**\[**[**Klik hier om query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPwQrCMBAE0Hu/Yo4NVLBn6Td4ULyWtV1tMJtIsoEq/XhbC4J48jgw+5h1rBDrW0UDDakjR7HsWUIrdOM2cbScakxIWYSiffJSL49W+KAkd2N2hVsMGv8yaPw2furFhCVu1gifpelC9loa9Hyh7LTZInh8FFiPSP7K5fufap1UoR4Mzg/s04njjEb2PUfofNYNFPUFtJiguAEBAAA=)**\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -60,31 +60,31 @@ demo_make_series1
 | render timechart 
 ```
 
-- Gebruik de operator [`make-series`](/azure/kusto/query/make-seriesoperator) om een set van drie tijd reeksen te maken, waarbij:
-    - `num=count()`: tijd reeks verkeer
-    - `range(min_t, max_t, 1h)`: er wordt een tijd reeks gemaakt in een opslag ruimte van 1 uur in het tijds bereik (oudste en meest recente tijds tempels van tabel records)
-    - `default=0`: Geef de methode Fill op voor ontbrekende opslag locaties om een reguliere tijd reeks te maken. U kunt ook [`series_fill_const()`](/azure/kusto/query/series-fill-constfunction), [`series_fill_forward()`](/azure/kusto/query/series-fill-forwardfunction), [`series_fill_backward()`](/azure/kusto/query/series-fill-backwardfunction) en [`series_fill_linear()`](/azure/kusto/query/series-fill-linearfunction) gebruiken om wijzigingen aan te brengen
-    - `byOsVer`: partitie per besturings systeem
-- De gegevens structuur van de werkelijke tijd reeks is een numerieke matrix van de geaggregeerde waarde per tijd-bak. We gebruiken `render timechart` voor visualisatie.
+- Gebruik [`make-series`](/azure/kusto/query/make-seriesoperator) de operator om een set van drie tijdreeksen te maken, waarbij:
+    - `num=count()`: tijdreeks van het verkeer
+    - `range(min_t, max_t, 1h)`: tijdreekswordt gemaakt in opslaglocaties van 1 uur in het tijdsbereik (oudste en nieuwste tijdstempels van tabelrecords)
+    - `default=0`: geef de vulmethode op voor ontbrekende opslaglocaties om normale tijdreeksen te maken. U kunt [`series_fill_const()`](/azure/kusto/query/series-fill-constfunction) [`series_fill_forward()`](/azure/kusto/query/series-fill-forwardfunction)ook [`series_fill_backward()`](/azure/kusto/query/series-fill-backwardfunction) [`series_fill_linear()`](/azure/kusto/query/series-fill-linearfunction) gebruik maken van , en voor wijzigingen
+    - `byOsVer`: partitie per besturingssysteem
+- De gegevensstructuur werkelijke tijdreeksen is een numerieke array van de geaggregeerde waarde per elke keeropslag. We `render timechart` gebruiken voor visualisatie.
 
-In de bovenstaande tabel zijn er drie partities. We kunnen een afzonderlijke tijd reeks maken: Windows 10 (rood), 7 (blauw) en 8,1 (groen) voor elke versie van het besturings systeem, zoals wordt weer gegeven in de grafiek:
+In de bovenstaande tabel hebben we drie partities. We kunnen een aparte tijdreeks maken: Windows 10 (rood), 7 (blauw) en 8.1 (groen) voor elke OS-versie zoals te zien in de grafiek:
 
-![Time Series-partitie](media/time-series-analysis/time-series-partition.png)
+![Tijdreekspartitie](media/time-series-analysis/time-series-partition.png)
 
-## <a name="time-series-analysis-functions"></a>Functies voor time series-analyse
+## <a name="time-series-analysis-functions"></a>Analysefuncties voor tijdreeksen
 
-In deze sectie worden typische functies voor het verwerken van reeksen uitgevoerd.
-Zodra een set tijd reeksen is gemaakt, ondersteunt ADX een groeiende lijst met functies die u kunt verwerken en analyseren die in de [Time Series-documentatie](/azure/kusto/query/machine-learning-and-tsa)kan worden gevonden. Er worden enkele representatieve functies beschreven voor het verwerken en analyseren van tijd reeksen.
+In deze sectie voeren we typische serieverwerkingsfuncties uit.
+Zodra een set tijdreeksen is gemaakt, ondersteunt ADX een groeiende lijst met functies om ze te verwerken en te analyseren die te vinden zijn in de documentatie van de [tijdreeksen.](/azure/kusto/query/machine-learning-and-tsa) We beschrijven een paar representatieve functies voor het verwerken en analyseren van tijdreeksen.
 
 ### <a name="filtering"></a>Filteren
 
-Filteren is een veelvoorkomende procedure bij het verwerken van signalen en handig voor het verwerkings taken van Time Series
-- Er zijn twee algemene filter functies:
-    - [`series_fir()`](/azure/kusto/query/series-firfunction): het Toep assen van het FIR-filter. Wordt gebruikt voor eenvoudige berekening van het zwevende gemiddelde en differentiatie van de tijd reeks voor de detectie van wijzigingen.
-    - [`series_iir()`](/azure/kusto/query/series-iirfunction): het Toep assen van IIR-filter. Wordt gebruikt voor exponentiële afvlakking en cumulatief totaal.
-- `Extend` de tijd reeks die is ingesteld door een nieuwe zwevende gemiddelde serie van grootte 5 bakken (met de naam *ma_num*) toe te voegen aan de query:
+Filteren is een gangbare praktijk bij signaalverwerking en handig voor tijdreeksverwerkingstaken (bijvoorbeeld een luidruchtig signaal vloeiend signaal, wijzigingsdetectie).
+- Er zijn twee algemene filterfuncties:
+    - [`series_fir()`](/azure/kusto/query/series-firfunction): Toepassing van FIR filter. Wordt gebruikt voor eenvoudige berekening van het voortschrijdend gemiddelde en differentiatie van de tijdreeksen voor wijzigingsdetectie.
+    - [`series_iir()`](/azure/kusto/query/series-iirfunction): IIR-filter toepassen. Wordt gebruikt voor exponentiële smoothing en cumulatieve som.
+- `Extend`de tijdreeksen die zijn ingesteld door een nieuwe voortschrijdende gemiddelde reeks van grootte 5-opslaglocaties (met de naam *ma_num)* aan de query toe te voegen:
 
-**\[** [**Klik om de query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPQavCMBCE7/6KOSYQ4fXgSfobPDx517C2q4bXpLLZQBV/vKkFQTx5WRh25tvZgRUxJK9ooWPuaCAxPcfRR/pnn1kC5wZ35BIjSbjxbDf7EPlXKV6s3a6GmUHTVwya3hkf9tUds1wvEqnEthtLUmPR85HKoO0PxoQXBSFBKJ3YPP9xSyWH5mxxuGKX/1gqlCfl1Neln5EL3R+DmCodhC9MahqHjXVQKbxMW5NScyzQerA7k+gDa1tswzsBAAA=) **\]**
+**\[**[**Klik hier om query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPQavCMBCE7/6KOSYQ4fXgSfobPDx517C2q4bXpLLZQBV/vKkFQTx5WRh25tvZgRUxJK9ooWPuaCAxPcfRR/pnn1kC5wZ35BIjSbjxbDf7EPlXKV6s3a6GmUHTVwya3hkf9tUds1wvEqnEthtLUmPR85HKoO0PxoQXBSFBKJ3YPP9xSyWH5mxxuGKX/1gqlCfl1Neln5EL3R+DmCodhC9MahqHjXVQKbxMW5NScyzQerA7k+gDa1tswzsBAAA=)**\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -95,17 +95,17 @@ demo_make_series1
 | render timechart
 ```
 
-![Filteren van tijd reeksen](media/time-series-analysis/time-series-filtering.png)
+![Tijdreeksfiltering](media/time-series-analysis/time-series-filtering.png)
 
-### <a name="regression-analysis"></a>Regressie analyse
+### <a name="regression-analysis"></a>Regressieanalyse
 
-ADX ondersteunt Gesegmenteerde lineaire regressie analyse om de trend van de tijd reeks te schatten.
-- Gebruik [series_fit_line ()](/azure/kusto/query/series-fit-linefunction) om de beste lijn aan te passen aan een tijd reeks voor algemene trend detectie.
-- Gebruik [series_fit_2lines ()](/azure/kusto/query/series-fit-2linesfunction) voor het detecteren van trend wijzigingen ten opzichte van de basis lijn die nuttig zijn voor bewakings scenario's.
+ADX ondersteunt gesegmenteerde lineaire regressieanalyse om de trend van de tijdreeks te schatten.
+- Gebruik [series_fit_line()](/azure/kusto/query/series-fit-linefunction) om de beste lijn aan te passen aan een tijdreeks voor algemene trenddetectie.
+- Gebruik [series_fit_2lines()](/azure/kusto/query/series-fit-2linesfunction) om trendwijzigingen ten opzichte van de basislijn te detecteren die nuttig zijn voor het bewaken van scenario's.
 
-Voor beeld van `series_fit_line()`-en `series_fit_2lines()` functies in een time series-query:
+Voorbeeld `series_fit_line()` van `series_fit_2lines()` en functies in een tijdreeksquery:
 
-**\[** [**Klik om de query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=) **\]**
+**\[**[**Klik hier om query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=)**\]**
 
 ```kusto
 demo_series2
@@ -113,37 +113,37 @@ demo_series2
 | render linechart with(xcolumn=x)
 ```
 
-![Regressie van tijd reeks](media/time-series-analysis/time-series-regression.png)
+![Regressie van tijdreeksen](media/time-series-analysis/time-series-regression.png)
 
-- Blauw: oorspronkelijke tijd reeks
-- Groen: gemonteerde lijn
-- Rood: twee bijpassende lijnen
+- Blauw: originele tijdreeks
+- Groen: ingerichte lijn
+- Rood: twee ingerichte lijnen
 
 > [!NOTE]
-> De functie heeft het punt om de Jump (niveau wijziging) nauw keurig gedetecteerd.
+> De functie nauwkeurig gedetecteerd de sprong (niveau verandering) punt.
 
-### <a name="seasonality-detection"></a>Seizoensgebonden detectie
+### <a name="seasonality-detection"></a>Seizoensdetectie
 
-Veel metrische gegevens volgen het seizoen (periodieke) patronen. Gebruikers verkeer van Cloud Services bevat meestal dagelijkse en wekelijkse patronen die het beste rond het midden van de zakelijke dag zijn, en in de loop van het weekend. IoT Sens oren meten regel matig. Fysieke metingen, zoals de Tempe ratuur, de druk of de vochtigheids graad, kunnen ook seizoensgebonden gedrag tonen.
+Veel statistieken volgen seizoensgebonden (periodieke) patronen. Gebruikersverkeer van cloudservices bevat meestal dagelijkse en wekelijkse patronen die het hoogst zijn rond het midden van de werkdag en het laagst 's nachts en in het weekend. IoT-sensoren meten in periodieke intervallen. Fysieke metingen zoals temperatuur, druk of vochtigheid kunnen ook seizoensgebonden gedrag vertonen.
 
-In het volgende voor beeld wordt de seizoensgebonden detectie toegepast op één maand verkeer van een webservice (2-uurs opslag locaties):
+In het volgende voorbeeld wordt seizoensdetectie gebruikt op een maand verkeer van een webservice (opslaglocaties van 2 uur):
 
-**\[** [**Klik om de query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuaqUShKzUtJLVIoycxNTc5ILCoBAHrjE80fAAAA) **\]**
+**\[**[**Klik hier om query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuaqUShKzUtJLVIoycxNTc5ILCoBAHrjE80fAAAA)**\]**
 
 ```kusto
 demo_series3
 | render timechart 
 ```
 
-![Seizoensgebonden tijd reeks](media/time-series-analysis/time-series-seasonality.png)
+![Seizoensinvloeden voor tijdreeksen](media/time-series-analysis/time-series-seasonality.png)
 
-- Gebruik [series_periods_detect ()](/azure/kusto/query/series-periods-detectfunction) voor het automatisch detecteren van de peri Oden in de tijd reeks. 
-- Gebruik [series_periods_validate ()](/azure/kusto/query/series-periods-validatefunction) als we weten dat een metriek een specifieke periode (n) moet hebben en we willen controleren of ze bestaan.
+- Gebruik [series_periods_detect()](/azure/kusto/query/series-periods-detectfunction) om de perioden in de tijdreeks automatisch te detecteren. 
+- Gebruik [series_periods_validate()](/azure/kusto/query/series-periods-validatefunction) als we weten dat een statistiek een specifieke specifieke periode(en) moet hebben en we willen controleren of deze bestaan.
 
 > [!NOTE]
-> Het is een afwijkingen als er geen specifieke afzonderlijke Peri Oden bestaan
+> Het is een anomalie als specifieke verschillende perioden niet bestaan
 
-**\[** [**Klik om de query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OwQ6CMBBE737FHKmpVtAr39IguwkYyzZ0IZj48TZSLx533szOEAfxieeR0/XwRpzlwb2iilkSShapl5mTQYvd5QvxxJqd1bQEi8vZor6RawaLxsA5FewcOjBKBOP0PXUMXL7lyrCeeIvdRPjrzIw35Qyoe6W2GY4qJMv9yb91xtX0AS7N323BAAAA) **\]**
+**\[**[**Klik hier om query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OwQ6CMBBE737FHKmpVtAr39IguwkYyzZ0IZj48TZSLx533szOEAfxieeR0/XwRpzlwb2iilkSShapl5mTQYvd5QvxxJqd1bQEi8vZor6RawaLxsA5FewcOjBKBOP0PXUMXL7lyrCeeIvdRPjrzIw35Qyoe6W2GY4qJMv9yb91xtX0AS7N323BAAAA)**\]**
 
 ```kusto
 demo_series3
@@ -154,17 +154,17 @@ demo_series3
 
 |   |   |   |   |
 | --- | --- | --- | --- |
-|   | Peri | scores | resterende |
+|   | Perioden | Scores | Dagen |
 |   | 84 | 0.820622786055595 | 7 |
 |   | 12 | 0.764601405803502 | 1 |
 
-De functie detecteert dagelijkse en wekelijkse seizoensgebondenheid. De dagelijkse scores zijn kleiner dan het wekelijks, omdat weekend dagen verschillen van werk dagen.
+De functie detecteert dagelijkse en wekelijkse seizoensgebondenheid. De dagelijkse scores minder dan de wekelijkse omdat weekend dagen zijn verschillend van weekdagen.
 
-### <a name="element-wise-functions"></a>Element-functies
+### <a name="element-wise-functions"></a>Element-gewijze functies
 
-Reken kundige en logische bewerkingen kunnen worden uitgevoerd op een tijd reeks. Met behulp van [series_subtract ()](/azure/kusto/query/series-subtractfunction) kunnen we een resterende tijd reeks berekenen, dat wil zeggen, het verschil tussen de oorspronkelijke ruwe metriek en een vloeiende vorm, en zoeken naar afwijkingen in het residuele signaal:
+Rekenkundige en logische bewerkingen kunnen worden gedaan op een tijdreeks. Met behulp van [series_subtract()](/azure/kusto/query/series-subtractfunction) kunnen we een resttijdreeks berekenen, dat wil zeggen het verschil tussen originele ruwe metrische en een gladgestreken, en zoeken naar afwijkingen in het restsignaal:
 
-**\[** [**Klik om de query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQQU/DMAyF7/sVT5waqWjrgRPqb+AAgmPltR6LSNLJcdhA+/G4izRAnLhEerbfl2cHVkSfBkUPnfNIgaSZOM5DpDceMovn3OGMXGIk8Z+8jDdPPvKjUjw4d78KC4NO/2LQ6Tfjz/jqjEXeVolUYj/OJWnjMPGOStB+gznhSoFPEEqv3Fz2aWukFt3eYfuBh/zMYlA+KafJmsOCrPRh56Ux2UL4wKRN1+LOtVApXF/37RTOfioUfvpz2arQqBVS2Q7rtc6wa4wlkPLVCLXIqE7DHvcsXOOh73Hz4tM0HzO6zQ1gDOx8UOvZrtayst0Y7z4babkkYQxMyQbGPYnCiGIxTS/fXGpfwk+n7uQBAAA=) **\]**
+**\[**[**Klik hier om query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQQU/DMAyF7/sVT5waqWjrgRPqb+AAgmPltR6LSNLJcdhA+/G4izRAnLhEerbfl2cHVkSfBkUPnfNIgaSZOM5DpDceMovn3OGMXGIk8Z+8jDdPPvKjUjw4d78KC4NO/2LQ6Tfjz/jqjEXeVolUYj/OJWnjMPGOStB+gznhSoFPEEqv3Fz2aWukFt3eYfuBh/zMYlA+KafJmsOCrPRh56Ux2UL4wKRN1+LOtVApXF/37RTOfioUfvpz2arQqBVS2Q7rtc6wa4wlkPLVCLXIqE7DHvcsXOOh73Hz4tM0HzO6zQ1gDOx8UOvZrtayst0Y7z4babkkYQxMyQbGPYnCiGIxTS/fXGpfwk+n7uQBAAA=)**\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -177,17 +177,17 @@ demo_make_series1
 | render timechart
 ```
 
-![Tijdreeks bewerkingen](media/time-series-analysis/time-series-operations.png)
+![Bewerkingen voor tijdreeksen](media/time-series-analysis/time-series-operations.png)
 
-- Blauw: oorspronkelijke tijd reeks
-- Rood: vloeiende tijd reeks
-- Groen: rest tijd reeks
+- Blauw: originele tijdreeks
+- Rood: gladgestreken tijdreeks
+- Groen: resttijdreeks
 
-## <a name="time-series-workflow-at-scale"></a>Time Series-werk stroom op schaal
+## <a name="time-series-workflow-at-scale"></a>Werkstroom voor tijdreeksen op schaal
 
-In het onderstaande voor beeld ziet u hoe deze functies op schaal kunnen worden uitgevoerd op duizenden tijd reeksen in seconden voor afwijkings detectie. Voer de volgende query uit om een aantal voor beelden van telemetriegegevens van de metrische gegevens over het aantal lees bewerkingen van de DB-service over vier dagen te bekijken:
+Het onderstaande voorbeeld laat zien hoe deze functies op schaal kunnen worden uitgevoerd op duizenden tijdreeksen in seconden voor anomaliedetectie. Als u een paar voorbeeldtelemetrierecords van de leestellingsstatistiek van een DB-service gedurende vier dagen wilt bekijken, voert u de volgende query uit:
 
-**\[** [**Klik om de query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKEnMTlUwAQArfAiiGgAAAA==) **\]**
+**\[**[**Klik hier om query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKEnMTlUwAQArfAiiGgAAAA==)**\]**
 
 ```kusto
 demo_many_series1
@@ -196,7 +196,7 @@ demo_many_series1
 
 |   |   |   |   |   |   |
 | --- | --- | --- | --- | --- | --- |
-|   | Neem | Loc | anonOp | Base | DataRead |
+|   | Tijdstempel | Loc | anonOp (anonOp) | Db | Gegevenslezen |
 |   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 262 | 0 |
 |   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 241 | 0 |
 |   | 2016-09-11 21:00:00.0000000 | Loc 9 | -865998331941149874 | 262 | 279862 |
@@ -204,7 +204,7 @@ demo_many_series1
 
 En eenvoudige statistieken:
 
-**\[** [**Klik om de query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVcgrzbVNzi/NK9HQ1FHIzcyLL7EFkhohnr6uwSGOvgEg0cQKkGhiBZIoAEq2dK9VAAAA) **\]**
+**\[**[**Klik hier om query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVcgrzbVNzi/NK9HQ1FHIzcyLL7EFkhohnr6uwSGOvgEg0cQKkGhiBZIoAEq2dK9VAAAA)**\]**
 
 ```kusto
 demo_many_series1
@@ -213,12 +213,12 @@ demo_many_series1
 
 |   |   |   |   |
 | --- | --- | --- | --- |
-|   | steen | min\_t | maximum\_t |
+|   | num | min\_t | max\_t |
 |   | 2177472 | 2016-09-08 00:00:00.0000000 | 2016-09-11 23:00:00.0000000 |
 
-Het bouwen van een tijd reeks in een opslag locatie van 1 uur van de Lees metriek (totaal vier dagen * 24 uur = 96 punten), resulteert in een normale schommeling van het patroon:
+Het bouwen van een tijdreeks in 1 uur bakken van de gelezen metrische (totaal vier dagen * 24 uur = 96 punten), resulteert in normale patroonfluctuatie:
 
-**\[** [**Klik om de query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPMQvCMBSE9/6KGxOoYGfpIOjgUBDtXh7twwabFF6ittIfb2rBQSfHg+8+7joOsMZVATlC72vqSFTDtq8subHyLIZ9hgn+Zi2JefKMq/JQ7M/ltjhqvQGSbrbQ8JeFhm/LTyGZInbl1RIhTI3P6X5ROwp0ikmjd/hYYByE3IXV+1G6TEqRtTqahF3DgmAs1y1JwMOEVo0Rzdf6BbBH5FAHAQAA) **\]**
+**\[**[**Klik hier om query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPMQvCMBSE9/6KGxOoYGfpIOjgUBDtXh7twwabFF6ittIfb2rBQSfHg+8+7joOsMZVATlC72vqSFTDtq8subHyLIZ9hgn+Zi2JefKMq/JQ7M/ltjhqvQGSbrbQ8JeFhm/LTyGZInbl1RIhTI3P6X5ROwp0ikmjd/hYYByE3IXV+1G6TEqRtTqahF3DgmAs1y1JwMOEVo0Rzdf6BbBH5FAHAQAA)**\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -228,13 +228,13 @@ demo_many_series1
 | render timechart with(ymin=0) 
 ```
 
-![Tijd reeks op schaal](media/time-series-analysis/time-series-at-scale.png)
+![Tijdreeksen op schaal](media/time-series-analysis/time-series-at-scale.png)
 
-Het bovenstaande gedrag is misleidend omdat de enkele normale tijd reeks wordt geaggregeerd van duizenden verschillende instanties die mogelijk abnormale patronen hebben. Daarom maken we een tijd reeks per instantie. Een exemplaar wordt gedefinieerd op basis van Loc (locatie), anonOp (Operation) en DB (specifieke machine).
+Het bovenstaande gedrag is misleidend, omdat de enkele normale tijdreeks wordt samengevoegd uit duizenden verschillende instanties die abnormale patronen kunnen hebben. Daarom maken we een tijdreeks per exemplaar. Een instantie wordt gedefinieerd door Loc (locatie), anonOp (bediening) en DB (specifieke machine).
 
-Hoeveel tijd reeksen kan er worden gemaakt?
+Hoeveel tijdseries kunnen we maken?
 
-**\[** [**Klik om de query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVUiqVPDJT9ZR8C/QUXBxAkol55fmlQAAWEsFxjQAAAA=) **\]**
+**\[**[**Klik hier om query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVUiqVPDJT9ZR8C/QUXBxAkol55fmlQAAWEsFxjQAAAA=)**\]**
 
 ```kusto
 demo_many_series1
@@ -244,12 +244,12 @@ demo_many_series1
 
 |   |   |
 | --- | --- |
-|   | Aantal |
+|   | Count |
 |   | 18339 |
 
-Nu gaan we een set van 18339 tijd reeksen van de metriek voor het lees aantal maken. We voegen de `by`-component toe aan de instructie make-Series, passen lineaire regressie toe en selecteren de bovenste twee tijd reeksen die de meest significante dalende trend hadden:
+We gaan een set van 18339 tijdreeksen maken van de meetstatistiek voor het tellen van de gelezen telling. We voegen `by` de clausule toe aan de instructie make-series, passen lineaire regressie toe en selecteren de bovenste twee tijdreeksen met de belangrijkste dalende trend:
 
-**\[** [**Klik om de query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPsU7DQBBE+3zFdLmTTGHSgFAKUCiQiIKIe2u5rJ0T9l3YWwcH5eO5JBIFVJSzmnmz07Gi96FWzKExOepIzIb7WPcUDnVi8ZxKHJGGvifxX3yym+pp+biu7pcv1t4Bk+5EofFfFBp/U/4EJsdse+eri4QwbdKc9q1ZkNJrVhYx4IcCHyAUWjbnRcXlpQLl1uLtgOfoCqx2BRYPGcyjctjASPoYSLhA6uKObR5waasbr3XnA5tzrc0RjTtcn0hnKyg55KtkDAvU9+y2JIpPr1ujXjueT9cse+8YlVDTeIfVoNQymiiZ5ENSCi4vM3FQxAblzWx2a6f2G2UcBRyWAQAA) **\]**
+**\[**[**Klik hier om query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPsU7DQBBE+3zFdLmTTGHSgFAKUCiQiIKIe2u5rJ0T9l3YWwcH5eO5JBIFVJSzmnmz07Gi96FWzKExOepIzIb7WPcUDnVi8ZxKHJGGvifxX3yym+pp+biu7pcv1t4Bk+5EofFfFBp/U/4EJsdse+eri4QwbdKc9q1ZkNJrVhYx4IcCHyAUWjbnRcXlpQLl1uLtgOfoCqx2BRYPGcyjctjASPoYSLhA6uKObR5waasbr3XnA5tzrc0RjTtcn0hnKyg55KtkDAvU9+y2JIpPr1ujXjueT9cse+8YlVDTeIfVoNQymiiZ5ENSCi4vM3FQxAblzWx2a6f2G2UcBRyWAQAA)**\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -261,11 +261,11 @@ demo_many_series1
 | render timechart with(title='Service Traffic Outage for 2 instances (out of 18339)')
 ```
 
-![Tijd reeks bovenste twee](media/time-series-analysis/time-series-top-2.png)
+![Tijdserie top twee](media/time-series-analysis/time-series-top-2.png)
 
-De exemplaren weer geven:
+Geef de instanties weer:
 
-**\[** [**Klik om de query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPvW4CMRCEe55iSlsyBWkjChApIoESAb21udsQg38O26AD8fDx3SEUJVXKWc18s2M5wxmvM6bIIVVkKYqaXdCO/EUnjobTBDekk3MUzZU7u9i+rl4229nqXcpnYGQ7CrX/olD7m/InMLoV24HHg0RkqtOUzjuxoEzroiSCx4MC4xHJ71j0i9TwksLkS+LjgmWoFN4ahcW8gLnN7GuImI4niqyQbGhYlgFDm/40WVvjWfS1skRyaPDUkXorKFXl2MSw5yr/pN9Z31SyxuhbAQAA) **\]**
+**\[**[**Klik hier om query uit te voeren**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPvW4CMRCEe55iSlsyBWkjChApIoESAb21udsQg38O26AD8fDx3SEUJVXKWc18s2M5wxmvM6bIIVVkKYqaXdCO/EUnjobTBDekk3MUzZU7u9i+rl4229nqXcpnYGQ7CrX/olD7m/InMLoV24HHg0RkqtOUzjuxoEzroiSCx4MC4xHJ71j0i9TwksLkS+LjgmWoFN4ahcW8gLnN7GuImI4niqyQbGhYlgFDm/40WVvjWfS1skRyaPDUkXorKFXl2MSw5yr/pN9Z31SyxuhbAQAA)**\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -279,15 +279,15 @@ demo_many_series1
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
-|   | Loc | BTW | Base | helling |
-|   | Loc 15 | 37 | 1151 | -102743,910227889 |
+|   | Loc | Op | Db | Helling |
+|   | Loc 15 | 37 | 1151 | -102743.910227889 |
 |   | Loc 13 | 37 | 1249 | -86303.2334644601 |
 
-In minder dan twee minuten ADX de analyse van de tijd reeks van dichtbij tot 20.000 en ontdekt twee abnormale tijd reeksen waarin het aantal lees bewerkingen plotseling is verwijderd.
+In minder dan twee minuten analyseerde ADX bijna 20.000 tijdreeksen en detecteerde twee abnormale tijdreeksen waarin het aantal leesgegevens plotseling daalde.
 
-Deze geavanceerde mogelijkheden in combi natie met ADX snelle prestaties bieden een unieke en krachtige oplossing voor time series-analyses.
+Deze geavanceerde mogelijkheden in combinatie met ADX-snelle prestaties bieden een unieke en krachtige oplossing voor tijdreeksanalyse.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [afwijkings detectie en prognose van tijd reeksen](/azure/data-explorer/anomaly-detection) in azure Data Explorer.
-* Meer informatie over [machine learning-mogelijkheden](/azure/data-explorer/machine-learning-clustering) in azure Data Explorer.
+* Meer informatie over [detectie en prognoses van tijdreeksen](/azure/data-explorer/anomaly-detection) in Azure Data Explorer.
+* Meer informatie over [machineleermogelijkheden](/azure/data-explorer/machine-learning-clustering) in Azure Data Explorer.

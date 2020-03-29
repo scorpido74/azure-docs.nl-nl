@@ -1,22 +1,22 @@
 ---
-title: Vervolg keuzelijst GEBRUIKERSINTERFACE element
-description: Hierin wordt het micro soft. common. vervolg keuzelijst gebruikers interface-element voor Azure Portal beschreven. Gebruiken om te selecteren uit beschik bare opties bij het implementeren van een beheerde toepassing.
+title: DropDown-gebruikersinterface-element
+description: Beschrijft het Microsoft.Common.DropDown UI-element voor Azure-portal. Gebruik om uit beschikbare opties te kiezen bij het implementeren van een beheerde toepassing.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: a09f9695c18f368a585dbcd0d1e654dee4adfa03
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652383"
 ---
-# <a name="microsoftcommondropdown-ui-element"></a>Micro soft. common. vervolg keuzelijst UI-element
+# <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown UI-element
 
-Een selectie besturings element met een vervolg keuzelijst.
+Een selectiebesturingselement met een vervolgkeuzelijst.
 
-## <a name="ui-sample"></a>UI-voor beeld
+## <a name="ui-sample"></a>UI-voorbeeld
 
 ![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
 
@@ -54,12 +54,12 @@ Een selectie besturings element met een vervolg keuzelijst.
 
 ## <a name="remarks"></a>Opmerkingen
 
-- Het label voor `constraints.allowedValues` is de weergave tekst voor een item en de waarde ervan is de uitvoer waarde van het element wanneer dit is geselecteerd.
-- Indien opgegeven, moet de standaard waarde een label in `constraints.allowedValues`zijn. Als u niets opgeeft, wordt het eerste item in `constraints.allowedValues` geselecteerd. De standaard waarde is **Null**.
-- `constraints.allowedValues` moet ten minste één item bevatten.
-- Als u een waarde wilt emuleren die niet vereist is, voegt u een item met een label en waarde van `""` (lege teken reeks) toe aan `constraints.allowedValues`.
+- Het label `constraints.allowedValues` voor is de weergavetekst voor een item en de waarde ervan is de uitvoerwaarde van het element wanneer deze is geselecteerd.
+- Indien dit is opgegeven, moet de `constraints.allowedValues`standaardwaarde een label zijn dat aanwezig is in . Als dit niet is `constraints.allowedValues` opgegeven, is het eerste item in geselecteerd. De standaardwaarde is **null**.
+- `constraints.allowedValues`moet ten minste één item hebben.
+- Als u een waarde wilt emuleren die niet `""` vereist is, `constraints.allowedValues`voegt u een artikel met een label en de waarde van (lege tekenreeks) toe aan .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
-* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.
+* Zie Aan de slag met [CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van ui-definities.
+* Zie [Elementen van CreateUiDefinition](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in ui-elementen .

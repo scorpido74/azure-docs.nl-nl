@@ -1,6 +1,6 @@
 ---
-title: Andere Attestation-mechanismen gebruiken met de Azure IoT Hub Device Provisioning Service client-SDK
-description: Azure procedures voor het gebruik van verschillende Attestation-mechanismen met de client SDK van Device Provisioning Service (DPS) in azure
+title: Gebruik verschillende attestationmechanismen met de Azure IoT Hub Device Provisioning Service Client SDK
+description: Azure How to - Verschillende attestationmechanismen gebruiken met de DPS-clientSDK (Device Provisioning Service) in Azure
 author: robinsh
 ms.author: robinsh
 ms.date: 03/30/2018
@@ -9,15 +9,15 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: c85d958074ea5d41d32f71350164c3c983e372a2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976652"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Verschillende attestation-mechanismen gebruiken met de SDK van de Device Provisioning Service-client voor C
 
-In dit artikel wordt beschreven hoe u verschillende [attestation-mechanismen](concepts-security.md#attestation-mechanism) gebruikt met de SDK van de Device Provisioning Service-client voor C. U kunt een fysiek apparaat of een simulator gebruiken. De inrichtings service ondersteunt verificatie voor twee typen Attestation-mechanismen: X. 509 en Trusted Platform Module (TPM).
+In dit artikel wordt beschreven hoe u verschillende [attestation-mechanismen](concepts-security.md#attestation-mechanism) gebruikt met de SDK van de Device Provisioning Service-client voor C. U kunt een fysiek apparaat of een simulator gebruiken. De inrichtingsservice ondersteunt twee typen attestation-mechanisms: X.509 en TPM (Trusted Platform Module).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,11 +35,11 @@ Zie [Beveiligingsconcepten](concepts-security.md) en [Concepten van automatische
 
 ## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>Verificatie inschakelen voor ondersteunde attestation-mechanismen
 
-De SDK-verificatie modus (X. 509 of TPM) moet zijn ingeschakeld voor het fysieke apparaat of de Simulator voordat deze kunnen worden inge schreven in de Azure Portal. Navigeer naar de hoofdmap voor azure-iot-sdk-c. Voer vervolgens de opgegeven opdracht uit, afhankelijk van de gekozen verificatiemodus:
+De SDK-verificatiemodus (X.509 of TPM) moet zijn ingeschakeld voor het fysieke apparaat of de simulator voordat deze kunnen worden geregistreerd in Azure Portal. Navigeer naar de hoofdmap voor azure-iot-sdk-c. Voer vervolgens de opgegeven opdracht uit, afhankelijk van de gekozen verificatiemodus:
 
-### <a name="use-x509-with-simulator"></a>X. 509 met Simulator gebruiken
+### <a name="use-x509-with-simulator"></a>X.509 gebruiken met simulator
 
-De inrichtings service wordt geleverd met een engine voor het samen stellen van de apparaat-id, die een **X. 509** -certificaat genereert om het apparaat te verifiëren. Voer de volgende opdracht uit om **X. 509** -verificatie in te scha kelen: 
+De inrichtingsservice wordt geleverd met een DICE-emulator (Device Identity Composition Engine) die een **X.509-certificaat** genereert voor het verifiëren van het apparaat. Voer de volgende opdracht uit om **X.509-verificatie** in te schakelen: 
 
 ```
 cmake -Ddps_auth_type=x509 ..
@@ -47,9 +47,9 @@ cmake -Ddps_auth_type=x509 ..
 
 Informatie met betrekking tot hardware met DICE vindt u [hier](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/).
 
-### <a name="use-x509-with-hardware"></a>X. 509 met hardware gebruiken
+### <a name="use-x509-with-hardware"></a>X.509 gebruiken met hardware
 
-De inrichtings service kan worden gebruikt met **X. 509** op andere hardware. Er is een interface tussen de hardware en de SDK nodig om verbinding te maken. Neem contact op met uw HSM-fabrikant voor informatie over de interface.
+De inprovisioningservice kan met **X.509** op andere hardware worden gebruikt. Er is een interface tussen de hardware en de SDK nodig om verbinding te maken. Neem contact op met uw HSM-fabrikant voor informatie over de interface.
 
 ### <a name="use-tpm"></a>TPM gebruiken
 
@@ -147,9 +147,9 @@ Als u een TPM gebruikt, volgt u de instructies in [Een gesimuleerd apparaat make
       ```
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
-2. Meld u aan bij Azure Portal, klik in het linkermenu op de knop **Alle bronnen** en open Device Provisioning Service.
-   - **X. 509 individuele inschrijving**: Selecteer **inschrijvingen beheren**op de Blade samen vatting van de inrichtings service. Selecteer het tabblad **Individual Enrollments** en klik bovenaan op de knop **Add**. Selecteer **X. 509** als het *mechanisme*voor identiteits attestie en upload het blad certificaat zoals vereist door de Blade. Klik op de knop **Save** als u klaar bent. 
-   - **X. 509-groeps inschrijving**: Selecteer **inschrijvingen beheren**op de Blade samen vatting van de inrichtings service. Selecteer het tabblad **Group Enrollments** en klik bovenaan op de knop **Add**. Selecteer **X. 509** als het *mechanisme*voor identiteits controle, voer een groeps naam en certificerings naam in, upload het CA/tussenliggende certificaat zoals vereist door de Blade. Klik op de knop **Save** als u klaar bent. 
+2. Meld u aan bij de Azure-portal, klik op de knop **Alle bronnen** in het linkermenu en open de service Apparaatvoorziening.
+   - **X.509 Individuele inschrijving:** Selecteer inschrijvingen beheren op het overzichtsblad voor de **inrichtingsservice**. Selecteer het tabblad **Individuele inschrijvingen** en klik bovenaan op de knop **Toevoegen.** Selecteer **X.509** als de identiteit attest *mechanisme*, upload het blad certificaat zoals vereist door het blad. Klik op de knop **Save** als u klaar bent. 
+   - **X.509 Groepsinschrijving:** Selecteer inschrijvingen beheren op het **overzichtsblad**voor de voorzieningsservice . Selecteer het tabblad **Group Enrollments** en klik bovenaan op de knop **Add**. Selecteer **X.509** als het identiteitsattestationmechanisme , voer een groepsnaam en certificeringsnaam in en upload het CA/Intermediate-certificaat zoals vereist door het blad. *Mechanism* Klik op de knop **Save** als u klaar bent. 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>Verificatie inschakelen voor apparaten met een aangepast attestation-mechanisme (optioneel)
 
@@ -181,7 +181,7 @@ Zodra uw bibliotheek zelfstandig kan uitbreiden, moet u deze integreren met de S
 
 ## <a name="connecting-to-iot-hub-after-provisioning"></a>Na inrichting verbinding maken met IoT Hub
 
-Zodra het apparaat is ingericht met de inrichtings service, gebruikt deze API de opgegeven verificatie modus (**X. 509** of TPM) om verbinding te maken met IOT hub: 
+Zodra het apparaat is ingericht met de inrichtingsservice, gebruikt deze API de opgegeven verificatiemodus **(X.509** of TPM) om verbinding te maken met IoT Hub: 
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```

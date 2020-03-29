@@ -1,38 +1,38 @@
 ---
-title: MongoDB-extensie opdrachten voor het beheren van gegevens in de API van Azure Cosmos DB voor MongoDB
-description: In dit artikel wordt beschreven hoe u MongoDB-extensie opdrachten gebruikt voor het beheren van gegevens die zijn opgeslagen in de API van Azure Cosmos DB voor MongoDB.
+title: MongoDB-extensieopdrachten voor het beheren van gegevens in de API van Azure Cosmos DB voor MongoDB
+description: In dit artikel wordt beschreven hoe u MongoDB-extensieopdrachten gebruiken om gegevens te beheren die zijn opgeslagen in de API van Azure Cosmos DB voor MongoDB.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
 ms.openlocfilehash: f57b274715eb1c8a4d517f5655c09c366574d412
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445207"
 ---
-# <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Gebruik MongoDB-extensie opdrachten voor het beheren van gegevens die zijn opgeslagen in de API van Azure Cosmos DB voor MongoDB 
+# <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-extensieopdrachten gebruiken om gegevens te beheren die zijn opgeslagen in de API van Azure Cosmos DB voor MongoDB 
 
-Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt communiceren met de API van de Azure Cosmos DB voor MongoDB door een van de open source [MongoDb-client Stuur Programma's](https://docs.mongodb.org/ecosystem/drivers)te gebruiken. De API van Azure Cosmos DB voor MongoDB maakt het gebruik van bestaande client Stuur Programma's mogelijk door te voldoen aan het [MongoDb wire-protocol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
+Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U communiceren met de API van Azure Cosmos DB voor MongoDB met behulp van een van de open source [MongoDB-clientstuurprogramma's.](https://docs.mongodb.org/ecosystem/drivers) De API van Azure Cosmos DB voor MongoDB maakt het gebruik van bestaande clientstuurprogramma's mogelijk door vast te houden aan het [MongoDB-draadprotocol.](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)
 
-Met de API van de Azure Cosmos DB voor MongoDB kunt u profiteren van de voor delen Cosmos DB zoals wereld wijde distributie, automatische sharding, hoge Beschik baarheid, latentie garanties, Automatische versleuteling op rest, back-ups en nog veel meer, terwijl uw investeringen worden bewaard in uw MongoDB-app.
+Door de API van Azure Cosmos DB voor MongoDB te gebruiken, u genieten van de voordelen van Cosmos DB, zoals wereldwijde distributie, automatische sharding, hoge beschikbaarheid, latentiegaranties, automatische, versleuteling in rust, back-ups en nog veel meer, met behoud van uw investeringen in uw MongoDB app.
 
-## <a name="mongodb-protocol-support"></a>Ondersteuning voor MongoDB-Protocol
+## <a name="mongodb-protocol-support"></a>Ondersteuning voor MongoDB-protocol
 
-De Azure Cosmos DB-API voor MongoDB is standaard compatibel met MongoDB Server versie 3,2, Zie [ondersteunde functies en syntaxis](mongodb-feature-support.md)voor meer informatie. De functies of query operators die zijn toegevoegd in MongoDB versie 3,4 zijn momenteel beschikbaar als een preview in de API van Azure Cosmos DB voor MongoDB. De volgende extensie opdrachten ondersteunen Azure Cosmos DB specifieke functionaliteit bij het uitvoeren van ruwe bewerkingen op de gegevens die zijn opgeslagen in de Azure Cosmos DB-API voor MongoDB:
+Standaard is de API van azure cosmos DB voor MongoDB compatibel met MongoDB-serverversie 3.2, zie [ondersteunde functies en syntaxis](mongodb-feature-support.md)voor meer informatie. De functies of queryoperators die zijn toegevoegd in MongoDB-versie 3.4 zijn momenteel beschikbaar als voorbeeld in de API van Azure Cosmos DB voor MongoDB. De volgende extensieopdrachten ondersteunen azure cosmos DB-specifieke functionaliteit bij het uitvoeren van CRUD-bewerkingen op de gegevens die zijn opgeslagen in de API van Azure Cosmos DB voor MongoDB:
 
-* [Data base maken](#create-database)
-* [Data base bijwerken](#update-database)
-* [Data base ophalen](#get-database)
+* [Database maken](#create-database)
+* [Database bijwerken](#update-database)
+* [Database opdoen](#get-database)
 * [Verzameling maken](#create-collection)
 * [Verzameling bijwerken](#update-collection)
-* [Verzameling ophalen](#get-collection)
+* [Ophalen ophalen](#get-collection)
 
-## <a id="create-database"></a>Data base maken
+## <a name="create-database"></a><a id="create-database"></a>Database maken
 
-Met de opdracht Create Data Base extension maakt u een nieuwe MongoDB-data base. De database naam wordt gebruikt vanuit de data bases-context waartegen de opdracht wordt uitgevoerd. De notatie van de opdracht CreateDatabase is als volgt:
+Met de opdracht Databaseextensie maken wordt een nieuwe MongoDB-database gemaakt. De databasenaam wordt gebruikt vanuit de context van databases waartegen de opdracht wordt uitgevoerd. De opmaak van de opdracht CreateDatabase is als volgt:
 
 ```
 {
@@ -41,40 +41,40 @@ Met de opdracht Create Data Base extension maakt u een nieuwe MongoDB-data base.
 }
 ```
 
-In de volgende tabel worden de para meters in de opdracht beschreven:
+In de volgende tabel worden de parameters in de opdracht beschreven:
 
 |**Veld**|**Type** |**Beschrijving** |
 |---------|---------|---------|
-| Circulatie   |  string  |   De naam van de aangepaste opdracht moet ' CreateDatabase ' zijn.      |
-| offerThroughput | int  | Ingerichte door Voer die u hebt ingesteld voor de data base. Deze parameter is optioneel. |
+| aangepaste actie   |  tekenreeks  |   Naam van de aangepaste opdracht, moet het "CreateDatabase".      |
+| aanbiedingDoorvoer | int  | Ingerichte doorvoer die u in de database instelt. Deze parameter is optioneel. |
 
 ### <a name="output"></a>Uitvoer
 
-Retourneert een standaard aangepast opdracht antwoord. Zie de [standaard uitvoer](#default-output) van een aangepaste opdracht voor de para meters in de uitvoer.
+Retourneert een standaard aangepast opdrachtantwoord. Zie de [standaarduitvoer](#default-output) van de aangepaste opdracht voor de parameters in de uitvoer.
 
 ### <a name="examples"></a>Voorbeelden
 
 **Een database maken**
 
-Als u een Data Base met de naam ' test ' wilt maken, gebruikt u de volgende opdracht:
+Als u een database met de naam 'test' wilt maken, gebruikt u de volgende opdracht:
 
 ```shell
 use test
 db.runCommand({customAction: "CreateDatabase"});
 ```
 
-**Een Data Base maken met door Voer**
+**Een database maken met doorvoer**
 
-Gebruik de volgende opdracht om een Data Base met de naam ' test ' en ingerichte door Voer van 1000 RUs te maken:
+Als u een database met de naam 'test' en ingerichte doorvoer van 1000 RALLY's wilt maken, gebruikt u de volgende opdracht:
 
 ```shell
 use test
 db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 ```
 
-## <a id="update-database"></a>Data base bijwerken
+## <a name="update-database"></a><a id="update-database"></a>Database bijwerken
 
-Met de opdracht data base-extensie bijwerken worden de eigenschappen bijgewerkt die zijn gekoppeld aan de opgegeven Data Base. Op dit moment kunt u alleen de eigenschap ' offerThroughput ' bijwerken.
+Met de opdracht Update-databaseextensie worden de eigenschappen bijgewerkt die zijn gekoppeld aan de opgegeven database. Momenteel u alleen de eigenschap offerThroughput bijwerken.
 
 ```
 {
@@ -83,31 +83,31 @@ Met de opdracht data base-extensie bijwerken worden de eigenschappen bijgewerkt 
 }
 ```
 
-In de volgende tabel worden de para meters in de opdracht beschreven:
+In de volgende tabel worden de parameters in de opdracht beschreven:
 
 |**Veld**|**Type** |**Beschrijving** |
 |---------|---------|---------|
-| Circulatie    |    string     |   De naam van de aangepaste opdracht. Moet ' UpdateDatabase ' zijn.      |
-|  offerThroughput   |  int       |     Nieuwe ingerichte door Voer die u wilt instellen voor de data base.    |
+| aangepaste actie    |    tekenreeks     |   Naam van de aangepaste opdracht. Moet "UpdateDatabase" zijn.      |
+|  aanbiedingDoorvoer   |  int       |     Nieuwe ingerichte doorvoer die u in de database wilt instellen.    |
 
 ### <a name="output"></a>Uitvoer
 
-Retourneert een standaard aangepast opdracht antwoord. Zie de [standaard uitvoer](#default-output) van een aangepaste opdracht voor de para meters in de uitvoer.
+Retourneert een standaard aangepast opdrachtantwoord. Zie de [standaarduitvoer](#default-output) van de aangepaste opdracht voor de parameters in de uitvoer.
 
 ### <a name="examples"></a>Voorbeelden
 
-**De ingerichte door Voer bijwerken die is gekoppeld aan een Data Base**
+**De ingerichte doorvoer bijwerken die is gekoppeld aan een database**
 
-Als u de ingerichte door Voer van een Data Base met de naam test naar 1200 RUs wilt bijwerken, gebruikt u de volgende opdracht:
+Als u de ingerichte doorvoer van een database met de naam "test" wilt bijwerken naar 1200 RALLY's, gebruikt u de volgende opdracht:
 
 ```shell
 use test
 db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 ```
 
-## <a id="get-database"></a>Data base ophalen
+## <a name="get-database"></a><a id="get-database"></a>Database opdoen
 
-De opdracht data base-extensie ophalen retourneert het database object. De database naam wordt gebruikt vanuit de database context waartegen de opdracht wordt uitgevoerd.
+Met de opdracht Databaseextensie verwijderen wordt het databaseobject geretourneerd. De databasenaam wordt gebruikt vanuit de databasecontext waartegen de opdracht wordt uitgevoerd.
 
 ```
 {
@@ -115,39 +115,39 @@ De opdracht data base-extensie ophalen retourneert het database object. De datab
 }
 ```
 
-In de volgende tabel worden de para meters in de opdracht beschreven:
+In de volgende tabel worden de parameters in de opdracht beschreven:
 
 
 |**Veld**|**Type** |**Beschrijving** |
 |---------|---------|---------|
-|  Circulatie   |   string      |   De naam van de aangepaste opdracht. Moet ' GetDatabase ' zijn|
+|  aangepaste actie   |   tekenreeks      |   Naam van de aangepaste opdracht. Moet "GetDatabase" zijn|
         
 ### <a name="output"></a>Uitvoer
 
-Als de opdracht is geslaagd, bevat het antwoord een document met de volgende velden:
+Als de opdracht slaagt, bevat het antwoord een document met de volgende velden:
 
 |**Veld**|**Type** |**Beschrijving** |
 |---------|---------|---------|
-|  `ok`   |   `int`     |   De status van het antwoord. 1 = = geslaagd. 0 = = mislukt.      |
-| `database`    |    `string`        |   De naam van de data base.      |
-|   `provisionedThroughput`  |    `int`      |    Ingerichte door Voer die is ingesteld voor de data base. Dit is een optionele antwoord parameter.     |
+|  `ok`   |   `int`     |   Status van de reactie. 1 == succes. 0 == storing.      |
+| `database`    |    `string`        |   Naam van de database.      |
+|   `provisionedThroughput`  |    `int`      |    Ingerichte doorvoer die is ingesteld op de database. Dit is een optionele reactieparameter.     |
 
-Als de opdracht mislukt, wordt een standaard antwoord voor een aangepaste opdracht geretourneerd. Zie de [standaard uitvoer](#default-output) van een aangepaste opdracht voor de para meters in de uitvoer.
+Als de opdracht mislukt, wordt een standaard aangepast opdrachtantwoord geretourneerd. Zie de [standaarduitvoer](#default-output) van de aangepaste opdracht voor de parameters in de uitvoer.
 
 ### <a name="examples"></a>Voorbeelden
 
-**De data base ophalen**
+**Download de database**
 
-Als u het database object voor een Data Base met de naam ' test ' wilt ophalen, gebruikt u de volgende opdracht:
+Als u het databaseobject voor een database met de naam 'test' wilt opvragen, gebruikt u de volgende opdracht:
 
 ```shell
 use test
 db.runCommand({customAction: "GetDatabase"});
 ```
 
-## <a id="create-collection"></a>Verzameling maken
+## <a name="create-collection"></a><a id="create-collection"></a>Verzameling maken
 
-Met de opdracht verzamelings extensie maken maakt u een nieuwe MongoDB-verzameling. De database naam wordt gebruikt vanuit de data bases-context waartegen de opdracht wordt uitgevoerd. De indeling van de CreateCollection opdracht is als volgt:
+Met de opdracht Verzamelingenextensie maken wordt een nieuwe MongoDB-verzameling gemaakt. De databasenaam wordt gebruikt vanuit de context van databases waartegen de opdracht wordt uitgevoerd. De opmaak van de opdracht CreateCollection is als volgt:
 
 ```
 {
@@ -158,42 +158,42 @@ Met de opdracht verzamelings extensie maken maakt u een nieuwe MongoDB-verzameli
 }
 ```
 
-In de volgende tabel worden de para meters in de opdracht beschreven:
+In de volgende tabel worden de parameters in de opdracht beschreven:
 
 |**Veld**|**Type** |**Beschrijving** |
 |---------|---------|---------|
-| Circulatie    | string | De naam van de aangepaste opdracht. Moet ' CreateCollection ' zijn     |
-| verzameling      | string | Naam van de verzameling                                   |
-| offerThroughput | int    | Ingerichte door Voer om in te stellen op de data base. Dit is een optionele para meter |
-| shardKey        | string | Pad naar Shard om een Shard-verzameling te maken. Dit is een optionele para meter |
+| aangepaste actie    | tekenreeks | Naam van de aangepaste opdracht. Moet "CreateCollection" zijn     |
+| verzameling      | tekenreeks | Naam van de collectie                                   |
+| aanbiedingDoorvoer | int    | Ingerichte doorvoer die in de database moet worden ingesteld. Het is een optionele parameter |
+| shardKey shardKey        | tekenreeks | Shard Key pad om een geshard collectie te maken. Het is een optionele parameter |
 
 ### <a name="output"></a>Uitvoer
 
-Retourneert een standaard aangepast opdracht antwoord. Zie de [standaard uitvoer](#default-output) van een aangepaste opdracht voor de para meters in de uitvoer.
+Retourneert een standaard aangepast opdrachtantwoord. Zie de [standaarduitvoer](#default-output) van de aangepaste opdracht voor de parameters in de uitvoer.
 
 ### <a name="examples"></a>Voorbeelden
 
-**Een unsharded-verzameling maken**
+**Een ongesharde verzameling maken**
 
-Als u een unsharded-verzameling met de naam ' testCollection ' en de ingerichte door Voer van 1000 RUs wilt maken, gebruikt u de volgende opdracht: 
+Als u een ongeshardverzameling wilt maken met de naam "testCollection" en een ingerichte doorvoer van 1000 RALLY's, gebruikt u de volgende opdracht: 
 
 ```shell
 use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection", offerThroughput: 1000});
 ``` 
 
-**Een Shard-verzameling maken**
+**Een geshard verzameling maken**
 
-Als u een Shard-verzameling met de naam ' testCollection ' en de ingerichte door Voer van 1000 RUs wilt maken, gebruikt u de volgende opdracht:
+Als u een geshard verzameling wilt maken met de naam "testCollection" en een ingerichte doorvoer van 1000 RALLY's, gebruikt u de volgende opdracht:
 
 ```shell
 use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection", offerThroughput: 1000, shardKey: "a.b" });
 ```
 
-## <a id="update-collection"></a>Verzameling bijwerken
+## <a name="update-collection"></a><a id="update-collection"></a>Verzameling bijwerken
 
-Met de opdracht verzamelings extensie bijwerken worden de eigenschappen bijgewerkt die zijn gekoppeld aan de opgegeven verzameling.
+Met de opdracht Updateverzamelingsextensie worden de eigenschappen bijgewerkt die zijn gekoppeld aan de opgegeven verzameling.
 
 ```
 {
@@ -203,32 +203,32 @@ Met de opdracht verzamelings extensie bijwerken worden de eigenschappen bijgewer
 }
 ```
 
-In de volgende tabel worden de para meters in de opdracht beschreven:
+In de volgende tabel worden de parameters in de opdracht beschreven:
 
 |**Veld**|**Type** |**Beschrijving** |
 |---------|---------|---------|
-|  Circulatie   |   string      |   De naam van de aangepaste opdracht. Moet ' UpdateCollection ' zijn.      |
-|  verzameling   |   string      |   De naam van de verzameling.       |
-| offerThroughput   |int|   Ingerichte door Voer om in te stellen voor de verzameling.|
+|  aangepaste actie   |   tekenreeks      |   Naam van de aangepaste opdracht. Moet "UpdateCollection" zijn.      |
+|  verzameling   |   tekenreeks      |   Naam van de collectie.       |
+| aanbiedingDoorvoer   |int|   Ingerichte doorvoer om in te stellen op de verzameling.|
 
 ## <a name="output"></a>Uitvoer
 
-Retourneert een standaard aangepast opdracht antwoord. Zie de [standaard uitvoer](#default-output) van een aangepaste opdracht voor de para meters in de uitvoer.
+Retourneert een standaard aangepast opdrachtantwoord. Zie de [standaarduitvoer](#default-output) van de aangepaste opdracht voor de parameters in de uitvoer.
 
 ### <a name="examples"></a>Voorbeelden
 
-**De ingerichte door Voer bijwerken die is gekoppeld aan een verzameling**
+**De ingerichte doorvoer bijwerken die is gekoppeld aan een verzameling**
 
-Als u de ingerichte door Voer van een verzameling met de naam ' testCollection ' wilt bijwerken naar 1200 RUs, gebruikt u de volgende opdracht:
+Als u de ingerichte doorvoer van een verzameling met de naam "testCollection" wilt bijwerken naar 1200 RALLY's, gebruikt u de volgende opdracht:
 
 ```shell
 use test
 db.runCommand({customAction: "UpdateCollection", collection: "testCollection", offerThroughput: 1200 });
 ```
 
-## <a id="get-collection"></a>Verzameling ophalen
+## <a name="get-collection"></a><a id="get-collection"></a>Ophalen ophalen
 
-De opdracht verzameling aangepaste ophalen retourneert het verzamelings object.
+De aangepaste opdracht Verzameling ophalen retourneert het verzamelingsobject.
 
 ```
 {
@@ -237,53 +237,53 @@ De opdracht verzameling aangepaste ophalen retourneert het verzamelings object.
 }
 ```
 
-In de volgende tabel worden de para meters in de opdracht beschreven:
+In de volgende tabel worden de parameters in de opdracht beschreven:
 
 
 |**Veld**|**Type** |**Beschrijving** |
 |---------|---------|---------|
-| Circulatie    |   string      |   De naam van de aangepaste opdracht. Moet ' GetCollection ' zijn.      |
-| verzameling    |    string     |    De naam van de verzameling.     |
+| aangepaste actie    |   tekenreeks      |   Naam van de aangepaste opdracht. Moet "GetCollection" zijn.      |
+| verzameling    |    tekenreeks     |    Naam van de collectie.     |
 
 ### <a name="output"></a>Uitvoer
 
-Als de opdracht is geslaagd, bevat het antwoord een document met de volgende velden:
+Als de opdracht slaagt, bevat het antwoord een document met de volgende velden
 
 
 |**Veld**|**Type** |**Beschrijving** |
 |---------|---------|---------|
-|  `ok`   |    `int`     |   De status van het antwoord. 1 = = geslaagd. 0 = = mislukt.      |
-| `database`    |    `string`     |   De naam van de data base.      |
-| `collection`    |    `string`     |    De naam van de verzameling.     |
-|  `shardKeyDefinition`   |   `document`      |  Index specificatie document dat wordt gebruikt als een Shard-sleutel. Dit is een optionele antwoord parameter.       |
-|  `provisionedThroughput`   |   `int`      |    Ingerichte door Voer om in te stellen voor de verzameling. Dit is een optionele antwoord parameter.     |
+|  `ok`   |    `int`     |   Status van de reactie. 1 == succes. 0 == storing.      |
+| `database`    |    `string`     |   Naam van de database.      |
+| `collection`    |    `string`     |    Naam van de collectie.     |
+|  `shardKeyDefinition`   |   `document`      |  Indexspecificatiedocument dat wordt gebruikt als een shardtoets. Dit is een optionele reactieparameter.       |
+|  `provisionedThroughput`   |   `int`      |    Ingerichte doorvoer om in te stellen op de verzameling. Dit is een optionele reactieparameter.     |
 
-Als de opdracht mislukt, wordt een standaard antwoord voor een aangepaste opdracht geretourneerd. Zie de [standaard uitvoer](#default-output) van een aangepaste opdracht voor de para meters in de uitvoer.
+Als de opdracht mislukt, wordt een standaard aangepast opdrachtantwoord geretourneerd. Zie de [standaarduitvoer](#default-output) van de aangepaste opdracht voor de parameters in de uitvoer.
 
 ### <a name="examples"></a>Voorbeelden
 
-**De verzameling ophalen**
+**Haal de collectie**
 
-Als u het verzamelings object wilt ophalen voor een verzameling met de naam ' testCollection ', gebruikt u de volgende opdracht:
+Gebruik de volgende opdracht om het verzamelobject voor een verzameling met de naam 'testCollectie' op te halen:
 
 ```shell
 use test
 db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 ```
 
-## <a id="default-output"></a>Standaard uitvoer van een aangepaste opdracht
+## <a name="default-output-of-a-custom-command"></a><a id="default-output"></a>Standaarduitvoer van een aangepaste opdracht
 
-Als deze niet is opgegeven, bevat een aangepast antwoord een document met de volgende velden:
+Als dit niet is opgegeven, bevat een aangepast antwoord een document met de volgende velden:
 
 |**Veld**|**Type** |**Beschrijving** |
 |---------|---------|---------|
-|  `ok`   |    `int`     |   De status van het antwoord. 1 = = geslaagd. 0 = = mislukt.      |
-| `code`    |   `int`      |   Wordt alleen geretourneerd als de opdracht is mislukt (bijvoorbeeld OK = = 0). Bevat de fout code MongoDB. Dit is een optionele antwoord parameter.      |
-|  `errMsg`   |  `string`      |    Wordt alleen geretourneerd als de opdracht is mislukt (bijvoorbeeld OK = = 0). Bevat een gebruikers vriendelijk fout bericht. Dit is een optionele antwoord parameter.      |
+|  `ok`   |    `int`     |   Status van de reactie. 1 == succes. 0 == storing.      |
+| `code`    |   `int`      |   Alleen terug wanneer de opdracht is mislukt (ok == 0). Bevat de MongoDB-foutcode. Dit is een optionele reactieparameter.      |
+|  `errMsg`   |  `string`      |    Alleen terug wanneer de opdracht is mislukt (ok == 0). Bevat een gebruiksvriendelijke foutmelding. Dit is een optionele reactieparameter.      |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt nu door gaan met de volgende Azure Cosmos DB concepten: 
+Vervolgens u verder gaan met de volgende Azure Cosmos DB-concepten: 
 
 * [Indexering in Azure Cosmos DB](../cosmos-db/index-policy.md)
 * [Gegevens in Azure Cosmos DB automatisch laten verlopen met TTL](../cosmos-db/time-to-live.md)

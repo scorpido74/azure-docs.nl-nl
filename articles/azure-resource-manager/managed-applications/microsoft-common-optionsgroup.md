@@ -1,22 +1,22 @@
 ---
-title: OptionsGroup UI-element
-description: Hierin wordt het micro soft. common. OptionsGroup UI-element voor Azure Portal beschreven. Hiermee kunnen gebruikers kiezen uit beschik bare opties bij het implementeren van een beheerde toepassing.
+title: Gebruikersinterface-element OptionsGroup
+description: Beschrijft het Microsoft.Common.OptionsGroup-element voor Azure-portal. Hiermee kunnen gebruikers kiezen uit beschikbare opties bij het implementeren van een beheerde toepassing.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: c1da0b0082bfe046adf9596a10397e9063c888be
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652344"
 ---
-# <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft.Common.OptionsGroup UI element
+# <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft.Common.OptionsGroup-element
 
-Een selectie besturings element met een rij beschik bare opties.
+Een selectiebesturingselement met een rij beschikbare opties.
 
-## <a name="ui-sample"></a>UI-voor beeld
+## <a name="ui-sample"></a>UI-voorbeeld
 
 ![Microsoft.Common.OptionsGroup](./media/managed-application-elements/microsoft.common.optionsgroup.png)
 
@@ -54,11 +54,11 @@ Een selectie besturings element met een rij beschik bare opties.
 
 ## <a name="remarks"></a>Opmerkingen
 
-- Het label voor `constraints.allowedValues` is de weergave tekst voor een item en de waarde ervan is de uitvoer waarde van het element wanneer dit is geselecteerd.
-- Indien opgegeven, moet de standaard waarde een label in `constraints.allowedValues`zijn. Als u niets opgeeft, wordt het eerste item in `constraints.allowedValues` standaard geselecteerd. De standaard waarde is **Null**.
-- `constraints.allowedValues` moet ten minste één item bevatten.
+- Het label `constraints.allowedValues` voor is de weergavetekst voor een item en de waarde ervan is de uitvoerwaarde van het element wanneer deze is geselecteerd.
+- Indien dit is opgegeven, moet de `constraints.allowedValues`standaardwaarde een label zijn dat aanwezig is in . Als dit niet is `constraints.allowedValues` opgegeven, is het eerste item standaard geselecteerd. De standaardwaarde is **null**.
+- `constraints.allowedValues`moet ten minste één item hebben.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
-* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.
+* Zie Aan de slag met [CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van ui-definities.
+* Zie [Elementen van CreateUiDefinition](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in ui-elementen .
