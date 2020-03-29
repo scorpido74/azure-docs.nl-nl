@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
 ms.openlocfilehash: f68429a75ddb141c9e42babde3faa9f93fe949cc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74072687"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Verzenden van zoekaanvragen naar de Bing Entiteiten zoeken-API
 
-De Bing Entiteiten zoeken-API verzendt een zoekquery naar Bing en haalt resultaten op die zowel entiteiten als plaatsen bevatten. Plaatsresultaten kunnen restaurants, hotels of andere lokale bedrijven zijn. In het geval van plaatsen kan de query de naam van het lokale bedrijf opgeven of vragen om een lijst (bijvoorbeeld 'restaurants near me'). Entiteitsresultaten zijn personen, plaatsen of dingen. Plaats in deze context zijn toeristische attractions, Staten, landen/regio's enz.
+De Bing Entiteiten zoeken-API verzendt een zoekquery naar Bing en haalt resultaten op die zowel entiteiten als plaatsen bevatten. Plaatsresultaten kunnen restaurants, hotels of andere lokale bedrijven zijn. In het geval van plaatsen kan de query de naam van het lokale bedrijf opgeven of vragen om een lijst (bijvoorbeeld 'restaurants near me'). Entiteitsresultaten zijn personen, plaatsen of dingen. Plaats in deze context is toeristische attracties, staten, landen / regio's, enz.
 
 ## <a name="the-endpoint"></a>Het eindpunt
 
@@ -46,7 +46,7 @@ De aanvraag moet de header [Ocp-Apim-Subscription-Key](https://docs.microsoft.co
 
 De headers ClientIP en Location zijn belangrijk voor het retourneren van locatiespecifieke inhoud.  
 
-Zie [Headers](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) voor een lijst van alle aanvraag- en antwoordheaders.
+Zie [Headers](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) voor een lijst met alle aanvraag- en antwoordheaders.
 
 ## <a name="the-request"></a>De aanvraag
 
@@ -134,5 +134,5 @@ BingAPIs-Market: en-US
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Searching for entities with the Bing Entity API](search-for-entities.md) (Zoeken naar entiteiten met de Bing Entiteiten-API)
+* [Zoeken naar entiteiten met de Bing Entiteiten-API](search-for-entities.md)
 * [Vereisten voor gebruik en weergave van Bing-API](../use-display-requirements.md)

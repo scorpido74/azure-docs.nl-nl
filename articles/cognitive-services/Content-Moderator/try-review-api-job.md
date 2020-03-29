@@ -1,7 +1,7 @@
 ---
-title: Gebruik moderators taken met de REST API-console-Content Moderator
+title: Moderatietaken gebruiken met de REST API-console - Inhoudsmoderator
 titleSuffix: Azure Cognitive Services
-description: Gebruik de taak bewerkingen van de beoordelings-API om end-to-end taken voor het beheer van inhoud te initiëren voor afbeeldings-of tekst inhoud in azure Content Moderator.
+description: Gebruik de taakbewerkingen van de Api controleren om end-to-end contentmoderatietaken voor afbeeldings- of tekstinhoud te starten in Azure Content Moderator.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,57 +11,57 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 83ee8e0c0583cba72da8702e196f0f38128f8d8a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72935937"
 ---
-# <a name="define-and-use-moderation-jobs-rest"></a>Toezicht taken definiëren en gebruiken (REST)
+# <a name="define-and-use-moderation-jobs-rest"></a>Moderatietaken definiëren en gebruiken (REST)
 
-Een toezicht taak fungeert als een soort wrapper voor de functionaliteit van toezicht op inhoud, werk stromen en Beoordelingen. In deze hand leiding wordt beschreven hoe u de taak REST-Api's kunt gebruiken om taken voor inhouds toezicht te initiëren en te controleren. Zodra u de structuur van de Api's begrijpt, kunt u deze aanroepen eenvoudig naar een wille keurig platform met een REST-compatibel poort.
+Een moderatietaak dient als een soort wrapper voor de functionaliteit van contentmoderatie, workflows en reviews. In deze handleiding ziet u hoe u de API's voor taakREST gebruiken om inhoudsmoderatietaken te starten en te controleren. Zodra u de structuur van de API's begrijpt, u deze oproepen eenvoudig naar elk REST-compatibel platform porten.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Meld u aan of maak een account op de site van het Content Moderator [controle programma](https://contentmoderator.cognitive.microsoft.com/) .
-- Beschrijving [Definieer een aangepaste werk stroom](./Review-Tool-User-Guide/Workflows.md) voor gebruik met uw taak. u kunt ook de standaardwerk stroom gebruiken.
+- Meld u aan of maak een account aan op de site van het [hulpprogramma Inhoudsmoderator.](https://contentmoderator.cognitive.microsoft.com/)
+- (Optioneel) [Definieer een aangepaste werkstroom](./Review-Tool-User-Guide/Workflows.md) die u met uw taak wilt gebruiken; u ook de standaardwerkstroom gebruiken.
 
 ## <a name="create-a-job"></a>Een taak maken
 
-Als u een toezicht taak wilt maken, gaat u naar de [taak-API-](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) referentie pagina maken en selecteert u de knop voor uw abonnements regio (u kunt dit vinden in de eind punt-URL op de pagina **referenties** van het [hulp programma voor controle](https://contentmoderator.cognitive.microsoft.com/)). Hiermee wordt de API-console gestart, waar u eenvoudig REST API-aanroepen kunt maken en uitvoeren.
+Als u een moderatietaak wilt maken, gaat u naar de referentiepagina [Taak maken - API maken](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) en selecteert u de knop voor uw abonnementsregio (u dit vinden in de URL van eindpunt op de pagina **Referenties** van het [gereedschap Controleren).](https://contentmoderator.cognitive.microsoft.com/) Hiermee wordt de API-console gestart, waar u eenvoudig REST API-aanroepen samenstellen en uitvoeren.
 
-![Taak-selectie van pagina regio maken](images/test-drive-job-1.png)
+![Taak - Paginaregioselectie maken](images/test-drive-job-1.png)
 
-### <a name="enter-rest-call-parameters"></a>REST Call-para meters invoeren
+### <a name="enter-rest-call-parameters"></a>Rest-oproepparameters invoeren
 
-Voer de volgende waarden in om de REST-aanroep te maken:
+Voer de volgende waarden in om de REST-aanroep te construeren:
 
-- **team**naam: de team-ID die u hebt gemaakt bij het instellen van het account voor het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com/) (gevonden in het veld **id** op het scherm met de referenties van het controle programma).
-- **Content type**: dit kan ' afbeelding ', ' tekst ' of ' video ' zijn.
-- **ContentId**: een aangepaste ID-teken reeks. Deze teken reeks wordt door gegeven aan de API en geretourneerd door de retour aanroep. Het is handig om interne id's of meta gegevens te koppelen aan de resultaten van een toezicht taak.
-- **Workflowactie**: de naam van de werk stroom die u eerder hebt gemaakt (of ' standaard ' voor de standaardwerk stroom).
-- **CallbackEndpoint**: (optioneel) de URL voor het ontvangen van Terugbel informatie wanneer de controle is voltooid.
-- **OCP-APIM-abonnements sleutel**: uw content moderator sleutel. U vindt dit op het tabblad **instellingen** van het [hulp programma voor beoordeling](https://contentmoderator.cognitive.microsoft.com).
+- **teamName:** de team-id die u hebt gemaakt bij het instellen van uw [account met het beoordelingsprogramma](https://contentmoderator.cognitive.microsoft.com/) (gevonden in het veld **Id** op het scherm Referenties van uw gereedschap Controleren).
+- **ContentType**: Dit kan "Image", "Text" of "Video" zijn.
+- **ContentId:** een aangepaste id-tekenreeks. Deze tekenreeks wordt doorgegeven aan de API en wordt teruggestuurd via de callback. Het is handig voor het koppelen van interne id's of metagegevens aan de resultaten van een moderatietaak.
+- **Werkstroomnaam:** de naam van de werkstroom die u eerder hebt gemaakt (of 'standaard' voor de standaardwerkstroom).
+- **CallbackEndpoint**: (Optioneel) De URL om terugbelgegevens te ontvangen wanneer de beoordeling is voltooid.
+- **Ocp-Apim-Subscription-Key:** Uw contentmoderatorsleutel. U vindt dit op het tabblad **Instellingen** van het [gereedschap Controleren](https://contentmoderator.cognitive.microsoft.com).
 
-### <a name="fill-in-the-request-body"></a>Vul de hoofd tekst van de aanvraag in
+### <a name="fill-in-the-request-body"></a>Vul de aanvraaginstantie in
 
-De hoofd tekst van uw REST-aanroep bevat één veld, **ContentValue**. Plak de inhoud van de onbewerkte tekst als u toezicht houdt op tekst, of voer een afbeelding of video-URL in als u de afbeelding/video wilt beelementen. U kunt de volgende URL van de voor beeld-afbeelding gebruiken: [https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
+De hoofdtekst van uw REST-oproep bevat één veld, **ContentValue**. Plak de inhoud van de ruwe tekst in als u tekst modereert of voer een afbeelding of video-URL in als u afbeelding/video modereert. U de volgende URL van de voorbeeldafbeelding gebruiken:[https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
 
-![Taak: console-query parameters, kopteksten en hoofd tekst van aanvraag maken](images/job-api-console-inputs.PNG)
+![Taak - Consolequeryparameters, kopteksten en hoofdvak Aanvragen maken](images/job-api-console-inputs.PNG)
 
-### <a name="submit-your-request"></a>Uw aanvraag verzenden
+### <a name="submit-your-request"></a>Uw aanvraag indienen
 
-Selecteer **Verzenden**. Als de bewerking is geslaagd, is de **antwoord status** `200 OK` en wordt in het vak met de **reactie inhoud** een id voor de taak weer gegeven. Kopieer deze ID voor gebruik in de volgende stappen.
+Selecteer **Verzenden**. Als de bewerking **Response status** slaagt, `200 OK`is de status Antwoord en wordt in het vak **Antwoord-inhoud** een id voor de taak weergegeven. Kopieer deze id naar gebruik in de volgende stappen.
 
-![Beoordeling: inhoud van het dialoog venster voor het maken van een console-antwoord wordt weer gegeven](images/test-drive-job-3.PNG)
+![Controleren - Het inhoudsvak consolerespons maken geeft de controle-id weer](images/test-drive-job-3.PNG)
 
-## <a name="get-job-status"></a>Taak status ophalen
+## <a name="get-job-status"></a>De status van een taak krijgen
 
-Als u de status en Details van een actieve of voltooide taak wilt ophalen, gaat u naar de [taak-API-](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c3) referentie pagina en selecteert u de knop voor uw regio (de regio waarin uw sleutel wordt beheerd).
+Als u de status en details van een lopende of voltooide taak wilt krijgen, gaat u naar de pagina [Taak - API-verwijzing downloaden](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c3) en selecteert u de knop voor uw regio (de regio waarin uw sleutel wordt beheerd).
 
-![Taak-regio selectie ophalen](images/test-drive-region.png)
+![Taak - Regioselectie krijgen](images/test-drive-region.png)
 
-Voer de para meters voor REST-aanroep in, zoals in de bovenstaande sectie. Voor deze stap is **JobId** de unieke id die u hebt ontvangen tijdens het maken van de taak. Selecteer **Verzenden**. Als de bewerking is geslaagd, is de **antwoord status** `200 OK` en wordt in het vak met de **reactie inhoud** de taak in JSON-indeling weer gegeven, zoals in het volgende voor beeld:
+Voer de parameters voor de REST-oproep in zoals in de bovenstaande sectie. Voor deze stap is **JobId** de unieke ID-tekenreeks die u hebt ontvangen toen u de taak maakte. Selecteer **Verzenden**. Als de bewerking **Response status** slaagt, `200 OK`is de status Antwoord en wordt de taak **in** JSON-indeling weergegeven in JSON-indeling, zoals:
 
 ```json
 {  
@@ -111,12 +111,12 @@ Voer de para meters voor REST-aanroep in, zoals in de bovenstaande sectie. Voor 
 }
 ```
 
-![Taak-antwoord van REST-aanroep ophalen](images/test-drive-job-5.png)
+![Job - Ontvang rest-oproepantwoord](images/test-drive-job-5.png)
 
-### <a name="examine-the-new-reviews"></a>Bekijk de nieuwe beoordeling (en)
+### <a name="examine-the-new-reviews"></a>Bekijk de nieuwe review(s)
 
-Als uw inhouds taak heeft geresulteerd in het maken van een beoordeling, kunt u deze weer geven in het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com). Selecteer  > **afbeelding** **bekijken** /**tekst** /**video** (afhankelijk van de inhoud die u hebt gebruikt). De inhoud moet worden weer gegeven, gereed voor menselijke beoordeling. Nadat een menselijke moderator de automatisch toegewezen tags en Voorspellings gegevens heeft beoordeeld en een beslissing van definitieve controle indient, verzendt de taak-API al deze informatie naar het opgegeven eind punt eind punt van de aanroep.
+Als uw inhoudstaak heeft geleid tot het maken van een beoordeling, u deze bekijken in het [hulpprogramma Controleren](https://contentmoderator.cognitive.microsoft.com). Selecteer > **Image**/**Tekstvideo controleren**/**(afhankelijk** van de inhoud die u hebt gebruikt). **Review** De inhoud moet verschijnen, klaar voor menselijke beoordeling. Nadat een menselijke moderator de automatisch toegewezen tags en voorspellingsgegevens heeft beoordeeld en een definitieve moderatiebeslissing heeft ingediend, stuurt de taak-API al deze informatie naar het aangewezen eindpunt van callback.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze hand leiding hebt u geleerd hoe u met de REST API inhouds toezichthouders kunt maken en opvragen. Vervolgens integreert u taken in een end-to-end-beheer scenario, zoals de zelf studie voor [E-commerce toezicht](./ecommerce-retail-catalog-moderation.md) .
+In deze handleiding hebt u geleerd hoe u inhoudsbeheertaken maken en opvragen met behulp van de REST-API. Integreer vervolgens taken in een end-to-end moderatiescenario, zoals de zelfstudie voor [e-commercemoderatie.](./ecommerce-retail-catalog-moderation.md)

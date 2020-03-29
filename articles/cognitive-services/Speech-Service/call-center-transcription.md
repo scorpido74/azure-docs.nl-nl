@@ -1,7 +1,7 @@
 ---
-title: Call Center transcriptie-Speech Service
+title: Call Center Transcriptie - Spraakservice
 titleSuffix: Azure Cognitive Services
-description: Een veelvoorkomend scenario voor spraak naar tekst is het transcriberen van grote hoeveel heden telefoon gegevens die afkomstig zijn van verschillende systemen, zoals Interactive Voice Response (IVR). Met behulp van de speech-service en het Unified speech-model kan een bedrijf transcripties van hoge kwaliteit krijgen met Audio Capture-systemen.
+description: Een veelvoorkomend scenario voor spraak-naar-tekst is het transcriberen van grote hoeveelheden telefoniegegevens die afkomstig zijn van verschillende systemen, zoals Interactive Voice Response (IVR). Met behulp van spraakservice en het Unified speech-model kan een bedrijf transcripties van hoge kwaliteit krijgen met audio-opnamesystemen.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,140 +11,140 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.openlocfilehash: d959f4948d6b848f3b399c1310add06991d72012
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74806317"
 ---
-# <a name="speech-service-for-telephony-data"></a>Spraak service voor telefoon gegevens
+# <a name="speech-service-for-telephony-data"></a>Spraakservice voor telefoniegegevens
 
-Telefoon gegevens die via vaste tekst, mobiele telefoons en radio's worden gegenereerd, zijn doorgaans lage kwaliteit en narrowband in het bereik van 8 KHz, waardoor er uitdagingen ontstaan bij het converteren van spraak-naar-teken. De nieuwste spraakherkennings modellen van de speech-service Excel bij het transcriberen van deze telefoon gegevens, zelfs in gevallen waarin de gegevens moeilijk te begrijpen zijn. Deze modellen zijn getraind met grote hoeveel heden telefoon gegevens en hebben de beste nauw keurigheid van de markt herkenning, zelfs in ruis omgevingen.
+Telefoniegegevens die worden gegenereerd via vaste lijnen, mobiele telefoons en radio's zijn doorgaans van lage kwaliteit en een smalle band in het bereik van 8 KHz, wat uitdagingen creëert bij het converteren van spraak naar tekst. De nieuwste spraakherkenningsmodellen van de Spraakdienst blinken uit in het transcriberen van deze telefoniegegevens, zelfs in gevallen waarin de gegevens voor een mens moeilijk te begrijpen zijn. Deze modellen zijn getraind met grote hoeveelheden telefoniegegevens en hebben de beste nauwkeurigheid van de marktherkenning, zelfs in rumoerige omgevingen.
 
-Een veelvoorkomend scenario voor spraak naar tekst is het transcriberen van grote hoeveel heden telefoon gegevens die afkomstig kunnen zijn van verschillende systemen, zoals Interactive Voice Response (IVR). De audio die deze systemen bieden, kunnen stereo of mono zijn, en RAW met weinig-naar-geen post verwerking op het signaal. Met behulp van de speech-service en het Unified speech-model kan een bedrijf transcripties van hoge kwaliteit krijgen, ongeacht welke systemen worden gebruikt voor het vastleggen van audio.
+Een veelvoorkomend scenario voor spraak-naar-tekst is het transcriberen van grote hoeveelheden telefoniegegevens die afkomstig kunnen zijn van verschillende systemen, zoals Interactive Voice Response (IVR). De audio die deze systemen bieden kan stereo of mono, en rauw met weinig-tot-geen nabewerking gedaan op het signaal. Met behulp van de Spraakservice en het Unified speech-model kan een bedrijf transcripties van hoge kwaliteit krijgen, ongeacht systemen die worden gebruikt om audio vast te leggen.
 
-Telefoon gegevens kunnen worden gebruikt om de behoeften van uw klanten beter te begrijpen, nieuwe marketing kansen te identificeren of de prestaties van call center-agents te evalueren. Nadat de gegevens zijn getranscribeerd, kan een bedrijf de uitvoer gebruiken voor doel einden, zoals verbeterde telemetrie, het identificeren van belang rijke zinnen of het analyseren van de sentiment van de klant.
+Telefoniegegevens kunnen worden gebruikt om de behoeften van uw klanten beter te begrijpen, nieuwe marketingkansen te identificeren of de prestaties van callcentermedewerkers te evalueren. Nadat de gegevens zijn getranscribeerd, kan een bedrijf de uitvoer gebruiken voor doeleinden zoals verbeterde telemetrie, het identificeren van sleutelzinnen of het analyseren van het sentiment van klanten.
 
-De technologieën die op deze pagina worden beschreven, worden door micro soft intern voor verschillende services voor service voor het verwerken van aanroepen, zowel in realtime als in batch modus.
+De technologieën die op deze pagina worden beschreven, zijn intern door Microsoft voor verschillende ondersteuningsoproepverwerkingsservices, zowel in realtime als in batchmodus.
 
-Laten we een aantal van de technologie en verwante functies van de aanbieding voor spraak Services eens bekijken.
+Laten we eens kijken naar een aantal van de technologie en aanverwante functies die de Speech-service biedt.
 
 > [!IMPORTANT]
-> Het uniforme model van de speech-service is getraind met diverse gegevens en biedt een oplossing met één model voor een aantal scenario's van dicteren tot analyse van telefonie.
+> Het Unified-model van spraakservice is getraind met diverse gegevens en biedt een oplossing voor één model voor een aantal scenario's, van dicteren tot telefonie-analyse.
 
-## <a name="azure-technology-for-call-centers"></a>Azure-technologie voor call centers
+## <a name="azure-technology-for-call-centers"></a>Azure-technologie voor callcenters
 
-Buiten het functionele aspect van de functies van de spraak service, hun primaire doel, wanneer dit wordt toegepast op het Call Center – is de klant ervaring te verbeteren. Er zijn drie duidelijke domeinen in dit opzicht:
+Naast het functionele aspect van de Spraakservicefuncties is hun primaire doel – wanneer ze worden toegepast op het callcenter – het verbeteren van de klantervaring. Er bestaan in dit verband drie duidelijke domeinen:
 
-- Post-Call-analyses, die in feite batch verwerking van aanroep opnames hebben na de aanroep.
-- Real-time analyse, waarmee het audio signaal wordt verwerkt om verschillende inzichten te extra heren wanneer de aanroep plaatsvindt (waarbij sentiment een prominente use-case is).
-- Spraak assistenten (bots), de dialoog tussen de klant en de bot in een poging om het probleem van de klant op te lossen zonder deel te nemen aan de agent of de toepassing van de AI-protocollen (kunst matige intelligentie) om de agent te helpen.
+- Post-call analytics, dat is in wezen batch verwerking van gesprekopnames na het gesprek.
+- Real-time analytics, dat is de verwerking van het audiosignaal om verschillende inzichten te extraheren als het gesprek plaatsvindt (met sentiment wordt een prominente use case).
+- Spraakassistenten (bots), ofwel het besturen van de dialoog tussen de klant en de bot in een poging om het probleem van de klant op te lossen zonder agent deelname, of wordt de toepassing van kunstmatige intelligentie (AI) protocollen om de agent te helpen.
 
-Een typisch architectuur diagram van de implementatie van een batch-scenario wordt weer gegeven in de onderstaande afbeelding ![-architectuur voor Call Center](media/scenarios/call-center-transcription-architecture.png)
+Een typisch architectuurdiagram van de implementatie van een batchscenario wordt weergegeven in de afbeelding hieronder ![De transcriptiearchitectuur van het callcenter](media/scenarios/call-center-transcription-architecture.png)
 
-## <a name="speech-analytics-technology-components"></a>Technologie onderdelen voor spraak analyse
+## <a name="speech-analytics-technology-components"></a>Spraakanalyse-technologiecomponenten
 
-Of het domein na het aanroepen of realtime is, Azure biedt een reeks rijpe en opkomende technologieën om de gebruikers ervaring te verbeteren.
+Of het domein nu post-call of real-time is, Azure biedt een reeks volwassen en opkomende technologieën om de klantervaring te verbeteren.
 
-### <a name="speech-to-text-stt"></a>Spraak naar tekst (STT)
+### <a name="speech-to-text-stt"></a>Toespraak tot tekst (STT)
 
-[Spraak naar tekst](speech-to-text.md) is de meest gewenste-na-functie in een aanroep Center-oplossing. Omdat veel van de downstream Analytics-processen zijn gebaseerd op getranscribeerde tekst, is de fout verhouding van Word (_wer_) van het hoogste belang. Een van de belangrijkste uitdagingen in Call Center transcriptie is het geluid dat zich voordoet in het Call Center (bijvoorbeeld andere agents die op de achtergrond praten), de vele taal instellingen en-dialecten, evenals de lage kwaliteit van het daad werkelijke telefoon signaal. WER is zeer gecorreleerd met de manier waarop de akoestische en taal modellen zijn getraind voor een bepaalde land instelling, waardoor de mogelijkheid om het model aan uw land instelling aan te passen, belang rijk is. Onze meest recente gecombineerde versie 4. x modellen zijn de oplossing voor zowel transcriptie nauwkeurigheid als latentie. Getraind met tien duizenden uren aan akoestische gegevens en miljarden aan lexicale informatie, zijn uniforme modellen de meest nauw keurige modellen in de markt om Call Center-gegevens te transcriberen.
+[Spraak-naar-tekst](speech-to-text.md) is de meest gewilde functie in elke call center-oplossing. Omdat veel van de downstream analytics processen afhankelijk zijn van getranscribeerde tekst, is het woord error rate _(WER)_ van het grootste belang. Een van de belangrijkste uitdagingen in call center transcriptie is het geluid dat heerst in het call center (bijvoorbeeld andere agenten spreken op de achtergrond), de rijke verscheidenheid aan taal locales en dialecten, alsmede de lage kwaliteit van de werkelijke telefoonsignaal. WER is sterk gecorreleerd met hoe goed de akoestische en taalmodellen zijn opgeleid voor een bepaalde locale, dus de mogelijkheid om het model aan te passen aan uw landis belangrijk. Onze nieuwste Unified versie 4.x modellen zijn de oplossing voor zowel transcriptie nauwkeurigheid en latentie. Opgeleid met tienduizenden uren aan akoestische gegevens en miljarden lexicale informatie, zijn Unified-modellen de meest nauwkeurige modellen in de markt om callcentergegevens te transcriberen.
 
-### <a name="sentiment"></a>Stemming
+### <a name="sentiment"></a>Sentiment
 
-Gauging of de klant een goede ervaring heeft met een van de belangrijkste aspecten van spraak analyse, wanneer deze wordt toegepast op de oproep centrum ruimte. Onze [batch transcriptie-API](batch-transcription.md) biedt sentiment-analyse per utterance. U kunt de set waarden die zijn verkregen als onderdeel van een transcript van een oproep samen voegen om de sentiment van de oproep voor zowel uw agents als de klant te bepalen.
+Het meten of de klant een goede ervaring had, is een van de belangrijkste gebieden van spraakanalyse wanneer deze wordt toegepast op de callcenterruimte. Onze [Batch Transcription API](batch-transcription.md) biedt sentimentanalyse per utterance. U de set waarden die zijn verkregen als onderdeel van een gesprekstranscript samenvoegen om het gevoel van de oproep voor zowel uw medewerkers als de klant te bepalen.
 
-### <a name="silence-non-talk"></a>Stilte (niet-pratend)
+### <a name="silence-non-talk"></a>Stilte (non-talk)
 
-Het is niet ongebruikelijk dat er 35 procent van een ondersteunings oproep wordt gebeld om niet-pratende tijd te bellen. Enkele scenario's waarvoor niet-pratend gebeurt: agenten die de eerdere Case geschiedenis opzoeken met een klant, agents die hen in staat stellen om toegang te krijgen tot het bureau blad van de klant en functies uit te voeren, klanten die wachten op een overdracht, enzovoort. Het is zeer belang rijk om te meten wanneer stilte plaatsvindt in een aanroep, omdat er sprake is van een belang rijk klant sensitivities dat wordt uitgevoerd door deze scenario's en waar deze zich voordoen in de aanroep.
+Het is niet ongewoon dat 35 procent van een ondersteuningsoproep is wat we non-talktijd noemen. Sommige scenario's waarvoor niet-praten plaatsvindt zijn: agenten die eerdere casegeschiedenis opzoeken met een klant, agenten die tools gebruiken waarmee ze toegang hebben tot het bureaublad van de klant en functies kunnen uitvoeren, klanten die in de wacht zitten te wachten op een overdracht, enzovoort. Het is uiterst belangrijk om te meten wanneer stilte optreedt in een gesprek, omdat er een aantal belangrijke klantgevoeligheden zijn die zich voordoen rond dit soort scenario's en waar ze optreden in de oproep.
 
 ### <a name="translation"></a>Omzetting
 
-Sommige bedrijven experimenteren met het bieden van vertaalde transcripten van ondersteunings gesprekken van vreemde talen zodat bezorg managers de wereld wijde ervaring van hun klanten kunnen begrijpen. Onze [Vertaal](translation.md) mogelijkheden zijn niet meer zo. We kunnen audio-naar-audio-of audio-naar-tekst omzetten voor een groot aantal land instellingen.
+Sommige bedrijven experimenteren met het verstrekken van vertaalde transcripties van ondersteuning seinen in vreemde talen, zodat bezorgers de wereldwijde ervaring van hun klanten kunnen begrijpen. Onze [vertaalmogelijkheden](translation.md) zijn onovertroffen. We kunnen audio-naar-audio of audio-naar-tekst vertalen voor een groot aantal landinstellingen.
 
 ### <a name="text-to-speech"></a>Tekst naar spraak
 
-[Tekst-naar-spraak](text-to-speech.md) is een ander belang rijk gebied bij het implementeren van bots dat communiceert met de klanten. De typische locatie is dat de klant spreekt, hun stem wordt getranscribeerd naar tekst, de tekst wordt geanalyseerd voor intenties, een reactie wordt gecontroleerd op basis van de herkende intentie en vervolgens een activum wordt geoppereerd aan de klant of een gewerkte spraak reactie is gegenereerd. Natuurlijk is dit allemaal snel te doen, waardoor lage latentie een belang rijk onderdeel is van het succes van deze systemen.
+[Text-to-speech](text-to-speech.md) is een ander belangrijk gebied bij het implementeren van bots die communiceren met de klanten. Het typische pad is dat de klant spreekt, zijn stem wordt getranscribeerd naar tekst, de tekst wordt geanalyseerd op intents, een reactie wordt gesynthetiseerd op basis van de erkende intentie en vervolgens wordt een asset opgedoken aan de klant of een gesynthetiseerde stemrespons is Gegenereerd. Natuurlijk moet dit alles snel gebeuren – dus low-latency is een belangrijk onderdeel van het succes van deze systemen.
 
-Onze end-to-end-latentie is aanzienlijk laag voor de verschillende technologieën, zoals [spraak naar tekst](speech-to-text.md), [Luis](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [bot Framework](https://dev.botframework.com/), [tekst naar spraak](text-to-speech.md).
+Onze end-to-end latentie is aanzienlijk laag voor de verschillende betrokken technologieën, zoals [Speech-to-text](speech-to-text.md), [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [Bot Framework](https://dev.botframework.com/), [Text-to-speech](text-to-speech.md).
 
-Onze nieuwe stemmen worden ook niet onderscheiden van mensen stemmen. U kunt onze stemmen gebruiken om uw bot unieke persoonlijkheid te geven.
+Onze nieuwe stemmen zijn ook niet te onderscheiden van menselijke stemmen. U onze stemmen gebruiken om uw bot zijn unieke persoonlijkheid te geven.
 
 ### <a name="search"></a>Search
 
-Een andere nietmachine van analyses is het identificeren van interacties waar een bepaalde gebeurtenis of ervaring heeft plaatsgevonden. Dit gebeurt meestal met een van de twee benaderingen; een ad-hoc-zoek opdracht waarbij de gebruiker simpelweg een woord groep en het systeem reageert, of een meer gestructureerde query waarbij een analist een set logische instructies kan maken die een scenario in een aanroep identificeert en vervolgens elke aanroep kan worden geïndexeerd op basis van die set query's. Een goed Zoek voorbeeld is de alomtegenwoordige-nalevings verklaring "deze oproep moet worden geregistreerd voor kwaliteits doeleinden... ". Veel bedrijven willen er zeker van zijn dat hun agents deze disclaimer aan klanten leveren voordat de aanroep daad werkelijk wordt geregistreerd. De meeste analyse systemen hebben de mogelijkheid om de gedragingen te trenden die worden gevonden door query-en zoek algoritmen, en deze rapportage van trends is uiteindelijk een van de belangrijkste functies van een Analytics-systeem. Met de functie [cognitieve Services](https://azure.microsoft.com/services/cognitive-services/directory/search/) kunt u uw end-to-end-oplossing aanzienlijk verbeteren met indexerings-en zoek mogelijkheden.
+Een ander onderdeel van analytics is het identificeren van interacties waar een specifieke gebeurtenis of ervaring heeft plaatsgevonden. Dit wordt meestal gedaan met een van de twee benaderingen; ofwel een ad hoc zoekopdracht waarbij de gebruiker gewoon een woordgroep typt en het systeem reageert, of een meer gestructureerde query waarbij een analist een set logische instructies kan maken die een scenario in een gesprek identificeren, en vervolgens kan elke oproep worden geïndexeerd aan de hand van die set query's. Een goed zoekvoorbeeld is de alomtegenwoordige nalevingsverklaring "deze oproep wordt opgenomen voor kwaliteitsdoeleinden... ". Veel bedrijven willen ervoor zorgen dat hun agenten deze disclaimer aan klanten verstrekken voordat het gesprek daadwerkelijk wordt opgenomen. De meeste analysesystemen hebben de mogelijkheid om het gedrag van query-/zoekalgoritmen te trenden, en deze rapportage van trends is uiteindelijk een van de belangrijkste functies van een analysesysteem. Via [Cognitive services directory](https://azure.microsoft.com/services/cognitive-services/directory/search/) kan uw end-to-end oplossing aanzienlijk worden verbeterd met indexering en zoekmogelijkheden.
 
 ### <a name="key-phrase-extraction"></a>Sleuteltermextractie
 
-Dit gebied is een van de meest uitdagende analyse toepassingen en één die voor deel uitmaakt van de toepassing van AI en machine learning. Het primaire scenario in dit geval is om klant intentie af te leiden. Waarom wordt de klant gebeld? Wat is het probleem van de klant? Waarom heeft de klant een negatieve ervaring opgedaan? Onze [tekst analyse service](https://azure.microsoft.com/services/cognitive-services/text-analytics/) voorziet in een set analyse van het vak voor het snel upgraden van uw end-to-end oplossing voor het uitpakken van die belang rijke tref woorden of zinsdelen.
+Dit gebied is een van de meer uitdagende analytics-toepassingen en een die profiteert van de toepassing van AI en machine learning. Het primaire scenario in dit geval is om de intentie van de klant af te leiden. Waarom belt de klant? Wat is het probleem van de klant? Waarom had de klant een negatieve ervaring? Onze [tekstanalyseservice](https://azure.microsoft.com/services/cognitive-services/text-analytics/) biedt een set analyses uit de doos voor het snel upgraden van uw end-to-end oplossing voor het extraheren van die belangrijke zoekwoorden of zinnen.
 
-Laten we nu eens kijken naar de batch verwerking en de real-time pijp lijnen voor spraak herkenning in iets meer details.
+Laten we nu eens kijken naar de batch verwerking en de real-time pijplijnen voor spraakherkenning in een beetje meer detail.
 
-## <a name="batch-transcription-of-call-center-data"></a>Batch-transcriptie van Call Center-gegevens
+## <a name="batch-transcription-of-call-center-data"></a>Batch transcriptie van call center data
 
-Voor het transcriberen van bulk audio hebben we de [batch transcriptie-API](batch-transcription.md)ontwikkeld. De batch transcriptie-API is ontwikkeld om grote hoeveel heden audio gegevens asynchroon te transcriberen. Met betrekking tot het transcriberen van Call Center-gegevens is onze oplossing gebaseerd op deze pijlers:
+Voor het transcriberen van bulkaudio hebben we de [Batch Transcription API](batch-transcription.md)ontwikkeld. De Batch Transcription API is ontwikkeld om grote hoeveelheden audiogegevens asynchroon te transcriberen. Met betrekking tot het transcriberen van callcentergegevens is onze oplossing gebaseerd op deze pijlers:
 
-- **Nauw keurigheid** : met geïntegreerde modellen van de vierde generatie bieden we een ongekende transcriptie kwaliteit.
-- **Latentie** : we begrijpen dat bij het uitvoeren van bulk transcripties de transcripties snel nodig zijn. De transcriptie-taken die via de [batch transcriptie-API](batch-transcription.md) worden geïnitieerd, worden onmiddellijk in de wachtrij geplaatst en zodra de taak is gestart, wordt deze sneller uitgevoerd dan in realtime-transcriptie.
-- **Beveiliging** : we begrijpen dat aanroepen mogelijk gevoelige gegevens bevatten. Houd er zeker van dat de beveiliging een van onze hoogste prioriteiten is. Onze service heeft ISO, SOC, HIPAA, PCI-certificeringen verkregen.
+- **Nauwkeurigheid** - Met de vierde generatie Unified-modellen bieden we ongeëvenaarde transcriptiekwaliteit.
+- **Latentie** - We begrijpen dat bij het doen van bulk transcripties, de transcripties snel nodig zijn. De transcriptietaken die via de [Batch Transcription API](batch-transcription.md) worden gestart, worden onmiddellijk in de wachtrij geplaatst en zodra de taak wordt uitgevoerd, wordt deze sneller uitgevoerd dan realtime transcriptie.
+- **Beveiliging** - We begrijpen dat oproepen gevoelige gegevens kunnen bevatten. Wees gerust dat veiligheid een van onze hoogste prioriteiten is. Onze service heeft ISO, SOC, HIPAA, PCI certificeringen verkregen.
 
-Met Call Centers worden dagelijks grote hoeveel heden audio gegevens gegenereerd. Als uw bedrijf telefonische gegevens opslaat op een centrale locatie, zoals Azure Storage, kunt u de [batch transcriptie API](batch-transcription.md) gebruiken voor het asynchroon aanvragen en ontvangen van transcripties.
+Call centers genereren dagelijks grote hoeveelheden audiodata. Als uw bedrijf telefoniegegevens opslaat op een centrale locatie, zoals Azure Storage, u de [Batch Transcription API](batch-transcription.md) gebruiken om asynchroon transcripties op te vragen en te ontvangen.
 
-Een typische oplossing maakt gebruik van de volgende services:
+Een typische oplossing maakt gebruik van deze services:
 
-- De speech-service wordt gebruikt om spraak-naar-tekst te transcriberen. Voor de speech-service is een Standard-abonnement (S0) vereist om de batch transcriptie-API te gebruiken. Gratis abonnementen (F0) werken niet.
-- [Azure Storage](https://azure.microsoft.com/services/storage/) wordt gebruikt voor het opslaan van telefoon gegevens en de transcripten die worden geretourneerd door de batch transcriptie API. Voor dit opslag account moeten meldingen worden gebruikt, specifiek voor wanneer nieuwe bestanden worden toegevoegd. Deze meldingen worden gebruikt om het transcriptie-proces te activeren.
-- [Azure functions](https://docs.microsoft.com/azure/azure-functions/) wordt gebruikt om de SAS-URI (Shared Access signatures) voor elke record te maken en de HTTP POST-aanvraag voor het starten van een transcriptie te activeren. Daarnaast wordt Azure Functions gebruikt voor het maken van aanvragen voor het ophalen en verwijderen van transcripties met behulp van de batch transcriptie-API.
+- De spraakservice wordt gebruikt om spraak-naar-tekst te transcriberen. Een standaardabonnement (S0) voor de Spraakservice is vereist om de Batch Transcription API te gebruiken. Gratis abonnementen (F0) werken niet.
+- [Azure Storage](https://azure.microsoft.com/services/storage/) wordt gebruikt om telefoniegegevens op te slaan en de transcripties die worden geretourneerd door de Batch Transcription API. Dit opslagaccount moet meldingen gebruiken, specifiek voor wanneer nieuwe bestanden worden toegevoegd. Deze meldingen worden gebruikt om het transcriptieproces te activeren.
+- [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) wordt gebruikt om de SAS-uri (Shared Access Signatures) voor elke opname te maken en het HTTP POST-verzoek te activeren om een transcriptie te starten. Daarnaast wordt Azure Functions gebruikt om aanvragen te maken voor het ophalen en verwijderen van transcripties met behulp van de Batch Transcription API.
 
-Intern gebruiken we de bovenstaande technologieën om micro soft-klant gesprekken in batch-modus te ondersteunen.
-![batch architectuur](media/scenarios/call-center-batch-pipeline.png)
+Intern gebruiken we de bovenstaande technologieën om oproepen van Microsoft-klanten te ondersteunen in de batchmodus.
+![Batcharchitectuur](media/scenarios/call-center-batch-pipeline.png)
 
-## <a name="real-time-transcription-for-call-center-data"></a>Real-time transcriptie voor Call Center-gegevens
+## <a name="real-time-transcription-for-call-center-data"></a>Real-time transcriptie voor callcentergegevens
 
-Sommige bedrijven zijn verplicht om gesp rekken in realtime te transcriberen. Realtime-transcriptie kunnen worden gebruikt om sleutel woorden en triggers te identificeren die relevant zijn voor de conversatie, voor het bewaken van sentiment, het verbeteren van de toegankelijkheid of het bieden van vertalingen voor klanten en agents die geen systeem eigen zijn luidsprekers.
+Sommige bedrijven zijn verplicht om gesprekken in realtime te transcriberen. Real-time transcriptie kan worden gebruikt om trefwoorden te identificeren en zoekopdrachten te activeren naar inhoud en bronnen die relevant zijn voor het gesprek, om sentiment te monitoren, om de toegankelijkheid te verbeteren of om vertalingen te leveren aan klanten en agenten die niet native zijn Sprekers.
 
-Voor scenario's waarvoor realtime-transcriptie zijn vereist, kunt u het beste de [Speech SDK](speech-sdk.md)gebruiken. Op dit moment is spraak-naar-tekst beschikbaar in [meer dan 20 talen](language-support.md)en is de SDK beschikbaar in C++, C#, Java, Python, node. js, objectief-C en Java script. Voor beelden zijn beschikbaar in elke taal op [github](https://github.com/Azure-Samples/cognitive-services-speech-sdk). Zie [release opmerkingen](releasenotes.md)voor het laatste nieuws en de meest recente updates.
+Voor scenario's waarvoor realtime transcriptie vereist is, raden we u aan de [SpraakSDK te](speech-sdk.md)gebruiken. Momenteel is spraak-naar-tekst beschikbaar in [meer dan 20 talen](language-support.md)en is de SDK beschikbaar in C++, C#, Java, Python, Node.js, Objective-C en JavaScript. Voorbeelden zijn beschikbaar in elke taal op [GitHub.](https://github.com/Azure-Samples/cognitive-services-speech-sdk) Zie [Release notes voor](releasenotes.md)het laatste nieuws en updates.
 
-Intern gebruiken we de bovenstaande technologieën om in realtime micro soft-klant gesprekken te analyseren wanneer deze zich voordoen, zoals in het volgende diagram wordt geïllustreerd.
+Intern gebruiken we de bovenstaande technologieën om in realtime microsoft-klantoproepen te analyseren, zoals geïllustreerd in het volgende diagram.
 
-![Batch-architectuur](media/scenarios/call-center-reatime-pipeline.png)
+![Batcharchitectuur](media/scenarios/call-center-reatime-pipeline.png)
 
-## <a name="a-word-on-ivrs"></a>Een woord op IVRs
+## <a name="a-word-on-ivrs"></a>Een woord over IVRs
 
-De speech-service kan eenvoudig worden geïntegreerd in een oplossing met behulp van de [spraak-SDK](speech-sdk.md) of de [rest API](rest-apis.md). Call Center transcriptie kan echter extra technologieën vereisen. Normaal gesp roken is er een verbinding tussen een IVR-systeem en Azure vereist. Hoewel we deze onderdelen niet aanbieden, is hier een beschrijving van wat een verbinding met een IVR tot stand brengt.
+De Spraakservice kan eenvoudig in elke oplossing worden geïntegreerd met behulp van de [Speech SDK](speech-sdk.md) of de [REST API.](rest-apis.md) De transcriptie van het callcenter vereist echter mogelijk aanvullende technologieën. Doorgaans is een verbinding tussen een IVR-systeem en Azure vereist. Hoewel we dergelijke componenten niet aanbieden, is hier een beschrijving wat een verbinding met een IVR inhoudt.
 
-Verschillende IVR-of Telephony-service producten (zoals Genesys of AudioCodes) bieden integratie mogelijkheden die kunnen worden gebruikt voor het inschakelen van inkomende en uitgaande audio doorvoer door middel van een Azure-service. In principe kan een aangepaste Azure-service een specifieke interface bieden voor het definiëren van telefoon gesprek sessies (zoals het aanroepen van de start of het aanroepen van een WebSocket) en een API voor het ontvangen van inkomende streams die wordt gebruikt met de spraak service. Uitgaande reacties, zoals conversatie transcriptie of verbindingen met het bot-Framework, kunnen worden gesynthesizerd met de tekst-naar-spraak-service van micro soft en worden teruggestuurd naar de IVR voor afspelen.
+Verschillende IVR- of telefonieserviceproducten (zoals Genesys of AudioCodes) bieden integratiemogelijkheden die kunnen worden benut om inkomende en uitgaande audiodoorvoer naar een Azure-service mogelijk te maken. In principe kan een aangepaste Azure-service een specifieke interface bieden om telefoongesprekkensessies te definiëren (zoals Start van oproepen of oproepeinde) en een WebSocket-API bloot te stellen om binnenkomende streamaudio te ontvangen die wordt gebruikt met de spraakservice. Uitgaande antwoorden, zoals gesprekstranscriptie of verbindingen met het Bot Framework, kunnen worden gesynthetiseerd met de tekst-naar-spraakservice van Microsoft en worden teruggestuurd naar de IVR voor afspelen.
 
-Een ander scenario is directe integratie met behulp van SIP (Session Initiation Protocol). Een Azure-service maakt verbinding met een SIP-server, waardoor een inkomende stroom en een uitgaande stroom worden opgehaald, die wordt gebruikt voor de fase van spraak naar tekst en tekst naar spraak. Als u verbinding wilt maken met een SIP-server, zijn er commerciële software, zoals Ozeki SDK, of [teams die de API aanroepen en vergaderingen](/graph/api/resources/communications-api-overview) (momenteel in bèta) hebben, die zijn ontworpen ter ondersteuning van dit type scenario voor audio-aanroepen.
+Een ander scenario is directe integratie met Session Initiation Protocol (SIP). Een Azure-service maakt verbinding met een SIP-server, waardoor een binnenkomende stream en een uitgaande stream worden uitgevoerd, die wordt gebruikt voor de spraak-naar-tekst- en tekst-naar-spraak-fasen. Om verbinding te maken met een SIP Server zijn er commerciële softwareaanbiedingen, zoals Ozeki SDK, of [de Teams calling and meetings API](/graph/api/resources/communications-api-overview) (momenteel in bèta), die zijn ontworpen om dit type scenario voor audiogesprekken te ondersteunen.
 
 ## <a name="customize-existing-experiences"></a>Bestaande ervaringen aanpassen
 
- De speech-service werkt goed met ingebouwde modellen. Het is echter mogelijk dat u de ervaring voor uw product of omgeving verder wilt aanpassen en afstemmen. Aanpassings opties variëren van het verfijnen van akoestische modellen tot unieke spraak lettertypen voor uw merk. Nadat u een aangepast model hebt gemaakt, kunt u het gebruiken met een van de functies van de speech-service in realtime of in batch modus.
+ De Spraakservice werkt goed met ingebouwde modellen. Het is echter mogelijk dat u de ervaring verder wilt aanpassen en afstemmen op uw product of omgeving. Aanpassingsopties variëren van akoestische modeltuning tot unieke spraaklettertypen voor uw merk. Nadat u een aangepast model hebt gemaakt, u het gebruiken met een van de spraakservicefuncties in realtime of batchmodus.
 
-| Speech-Service | Model | Beschrijving |
+| Speech Service | Model | Beschrijving |
 | -------------- | ----- | ----------- |
-| Spraak naar tekst | [Akoestisch model](how-to-customize-acoustic-models.md) | Maak een aangepast akoestische model voor toepassingen, hulpprogram ma's of apparaten die in bepaalde omgevingen worden gebruikt, zoals in een auto of op een fabriek, elk met specifieke registratie voorwaarden. Voor beelden zijn onder andere geaccentde spraak, specifieke achtergrond geluiden of het gebruik van een specifieke microfoon voor de opname. |
-|                | [Taalmodel](how-to-customize-language-model.md) | Maak een aangepast taal model om transcriptie te verbeteren van de branchespecifieke woorden lijst en grammatica, zoals medische terminologie of het jargon. |
-|                | [Uitspraakmodel](how-to-customize-pronunciation.md) | Met een aangepast uitspraak model kunt u het fonetische formulier definiëren en weer geven voor een woord of term. Dit is handig voor het verwerken van aangepaste voorwaarden, zoals productnamen of afkortingen. Alles wat u nodig hebt om aan de slag te gaan is een bestand met een uitspraak, een eenvoudig `.txt` bestand. |
-| Tekst naar spraak | [Spraakstijl](how-to-customize-voice-font.md) | Met aangepaste spraak lettertypen kunt u een herken bare, een-op-een-spraak voor uw merk maken. Er is slechts een kleine hoeveelheid gegevens nodig om aan de slag te gaan. Hoe meer gegevens u verstrekt, des te meer natuurlijke en Human-like uw gesp roken letter type klinkt. |
+| Spraak naar tekst | [Akoestisch model](how-to-customize-acoustic-models.md) | Maak een aangepast akoestisch model voor toepassingen, gereedschappen of apparaten die worden gebruikt in bepaalde omgevingen, zoals in een auto of op een fabrieksvloer, elk met specifieke opnameomstandigheden. Voorbeelden hiervan zijn geaccentueerde spraak, specifieke achtergrondgeluiden of het gebruik van een specifieke microfoon voor opname. |
+|                | [Taalmodel](how-to-customize-language-model.md) | Maak een aangepast taalmodel om de transcriptie van branchespecifieke woordenschat en grammatica, zoals medische terminologie of IT-jargon, te verbeteren. |
+|                | [Uitspraakmodel](how-to-customize-pronunciation.md) | Met een aangepast uitspraakmodel u de fonetische vorm definiëren en voor een woord of term weergeven. Het is handig voor het verwerken van aangepaste termen, zoals productnamen of afkortingen. Alles wat je nodig hebt om te beginnen `.txt` is een uitspraak bestand, dat is een eenvoudig bestand. |
+| Tekst naar spraak | [Spraakstijl](how-to-customize-voice-font.md) | Met aangepaste spraaklettertypen u een herkenbare, unieke stem voor uw merk maken. Er is slechts een kleine hoeveelheid gegevens nodig om aan de slag te gaan. Hoe meer gegevens u verstrekt, hoe natuurlijker en menselijker uw spraaklettertype klinkt. |
 
 ## <a name="sample-code"></a>Voorbeeldcode
 
-De voorbeeld code is beschikbaar op GitHub voor elk van de functies van de spraak service. Deze voor beelden hebben betrekking op veelvoorkomende scenario's, zoals het lezen van audio van een bestand of stream, continue en eenmalige herkenning en het werken met aangepaste modellen. Gebruik deze koppelingen om SDK-en REST-voor beelden weer te geven:
+Voorbeeldcode is beschikbaar op GitHub voor elk van de spraakservicefuncties. Deze voorbeelden hebben betrekking op veelvoorkomende scenario's zoals het lezen van audio uit een bestand of stream, continue en single-shot herkenning en het werken met aangepaste modellen. Gebruik deze koppelingen om SDK- en REST-voorbeelden weer te geven:
 
-- [Voor beelden van spraak-naar-tekst-en spraak omzetting (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-- [Voor beelden van batch transcriptie (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
-- [Voor beelden van tekst naar spraak (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+- [Voorbeelden van spraak-naar-tekst- en spraakvertaling (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [Batch transcriptie monsters (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+- [Tekst-naar-spraakvoorbeelden (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
 ## <a name="reference-docs"></a>Referentiedocumenten
 
 - [Speech-SDK](speech-sdk-reference.md)
-- [SDK voor spraak apparaten](speech-devices-sdk.md)
-- [REST API: spraak naar tekst](rest-speech-to-text.md)
-- [REST API: tekst-naar-spraak](rest-text-to-speech.md)
-- [REST API: batch transcriptie en-aanpassing](https://westus.cris.ai/swagger/ui/index)
+- [Speech Devices SDK](speech-devices-sdk.md)
+- [REST-API: spraak-naar-tekst](rest-speech-to-text.md)
+- [REST API: Tekst-naar-spraak](rest-text-to-speech.md)
+- [REST API: Batch transcriptie en aanpassing](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
+> [Ontvang gratis een abonnementssleutel voor spraakservice](get-started.md)

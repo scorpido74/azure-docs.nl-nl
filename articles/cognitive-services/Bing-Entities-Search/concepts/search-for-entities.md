@@ -1,7 +1,7 @@
 ---
 title: Zoeken naar entiteiten met de Bing Entiteiten zoeken-API
 titleSuffix: Azure Cognitive Services
-description: Gebruik de Bing Entiteiten zoeken-API om te zoeken naar entiteiten en locaties, en om deze te extraheren uit zoekquery's.
+description: Gebruik de Bing Entiteiten zoeken-API om te zoeken naar entiteiten en locaties en om deze te extraheren uit zoekquery's.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 1805f6f7a61f7e0b0a6e4d5bd6931c0a7d1f1b6f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220312"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Zoeken naar entiteiten met de Bing Entiteiten-API

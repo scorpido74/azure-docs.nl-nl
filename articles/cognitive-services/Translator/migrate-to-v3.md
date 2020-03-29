@@ -1,7 +1,7 @@
 ---
-title: Migreren naar v3-Translator Text-API
+title: Migreren naar V3 - Api voor vertalertekst
 titleSuffix: Azure Cognitive Services
-description: Dit artikel bevat de stappen waarmee u kunt migreren van v2 naar v3 van de Azure Cognitive Services Translator Text-API.
+description: In dit artikel vindt u de stappen waarmee u migreren van V2 naar V3 van de Azure Cognitive Services Translator Text API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,86 +11,86 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: eb43d549d3e0cd449c865d533fc8701c4c3912fd
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73837314"
 ---
-# <a name="translator-text-api-v2-to-v3-migration"></a>Migratie van v2 naar v3 Translator Text-API
+# <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2-naar-V3-migratie
 
 > [!NOTE]
-> V2 is op 30 april 2018 afgeschaft. Migreer uw toepassingen naar v3 om te kunnen profiteren van de nieuwe functionaliteit die alleen beschikbaar is in v3.
+> V2 werd afgeschaft op 30 april 2018. Migreer uw applicaties naar V3 om te profiteren van nieuwe functionaliteit die exclusief beschikbaar is in V3.
 > 
-> De micro soft Translator-hub wordt ingetrokken op 17 mei 2019. [Belang rijke migratie-informatie en-datums weer geven](https://www.microsoft.com/translator/business/hub/).  
+> De Microsoft Translator Hub wordt op 17 mei 2019 met pensioen gegaan. [Bekijk belangrijke migratie-informatie en -datums](https://www.microsoft.com/translator/business/hub/).  
 
-Het team van micro soft Translator heeft versie 3 (v3) van de Translator Text-API uitgebracht. Deze release bevat nieuwe functies, afgeschafte methoden en een nieuwe indeling voor het verzenden van en het ontvangen van gegevens van de micro soft Translator-service. Dit document bevat informatie over het wijzigen van toepassingen voor het gebruik van v3. 
+Het Microsoft Translator-team heeft versie 3 (V3) van de Translator Text API uitgebracht. Deze release bevat nieuwe functies, afgeschafte methoden en een nieuwe indeling voor het verzenden naar en ontvangen van gegevens van de Microsoft Translator Service. Dit document bevat informatie voor het wijzigen van toepassingen om V3 te gebruiken. 
 
-Het einde van dit document bevat nuttige koppelingen voor meer informatie.
+Het einde van dit document bevat handige koppelingen voor meer informatie.
 
 ## <a name="summary-of-features"></a>Overzicht van functies
 
-* Geen tracering in v3 zonder tracering is van toepassing op alle prijs categorieën in de Azure Portal. Deze functie houdt in dat er geen tekst wordt verzonden naar de V3 API, die wordt opgeslagen door micro soft.
-* JSON-XML wordt vervangen door JSON. Alle gegevens die naar de service worden verzonden en die zijn ontvangen van de service, zijn in JSON-indeling.
-* Meerdere doel talen in één aanvraag: de Vertaal methode accepteert meerdere ' aan ' talen voor vertaling in één aanvraag. Een enkele aanvraag kan bijvoorbeeld ' van ' Engels en ' naar ' Duits, Spaans en Japans of een andere groep talen zijn.
-* Tweetalige woorden lijst-er is een tweetalige woordenlijst methode toegevoegd aan de API. Deze methode bevat ' Lookup ' en ' voor beelden '.
-* Trans-transcrib: er is een methode voor trans-isatie toegevoegd aan de API. Met deze methode worden woorden en zinnen in één script geconverteerd (bijvoorbeeld Arabisch) in een ander script (bijvoorbeeld Latijn).
-* Talen: een nieuwe methode ' talen ' levert taal informatie, in JSON-indeling, voor gebruik met de methoden ' vertalen ', ' dictionary ' en ' '.
-* Nieuw in Vertaal: er zijn nieuwe mogelijkheden toegevoegd aan de Vertaal methode om enkele van de functies in de v2-API als afzonderlijke methoden te ondersteunen. Een voor beeld is TranslateArray.
-* Speak-methode: tekst naar spraak functionaliteit wordt niet meer ondersteund in de micro soft Translator-API. Tekst-naar-spraak-functionaliteit is beschikbaar in [micro soft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech).
+* Geen spoor - In V3 is No-Trace van toepassing op alle prijsniveaus in de Azure-portal. Deze functie betekent dat er geen tekst die is ingediend bij de V3 API, wordt opgeslagen door Microsoft.
+* JSON - XML wordt vervangen door JSON. Alle gegevens die naar de service worden verzonden en van de service zijn ontvangen, zijn in JSON-formaat.
+* Meerdere doeltalen in één aanvraag - De methode Vertalen accepteert meerdere 'to'-talen voor vertaling in één aanvraag. Een enkele aanvraag kan bijvoorbeeld 'van' Engels en 'naar' Duits, Spaans en Japans zijn, of een andere groep talen.
+* Tweetalig woordenboek - Er is een tweetalige woordenboekmethode toegevoegd aan de API. Deze methode omvat 'opzoeken' en 'voorbeelden'.
+* Transliterate - Een transliteraat methode is toegevoegd aan de API. Met deze methode worden woorden en zinnen omgezet in één script (bijv. Arabisch) in een ander schrift (bijv. Latijn).
+* Talen - Een nieuwe 'talen'-methode levert taalinformatie, in JSON-formaat, voor gebruik met de methoden 'vertalen', 'woordenboek' en 'transliterate'.
+* Nieuw bij Vertalen - Nieuwe mogelijkheden zijn toegevoegd aan de 'translate'-methode om een aantal functies die zich in de V2-API bevonden als afzonderlijke methoden te ondersteunen. Een voorbeeld is TranslateArray.
+* Spreekmethode - Tekst naar spraak-functionaliteit wordt niet langer ondersteund in de Microsoft Translator API. De functionaliteit voor tekst naar spraak is beschikbaar in [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech).
 
-In de volgende lijst met v2-en V3-methoden worden de V3-methoden en Api's geïdentificeerd waarmee de functionaliteit van v2 wordt geleverd.
+De volgende lijst met V2- en V3-methoden identificeert de V3-methoden en API's die de functionaliteit bieden die bij V2 is bijgekomen.
 
-| V2 API-methode   | Compatibiliteit met v3-API |
+| V2-API-methode   | V3-API-compatibiliteit |
 |:----------- |:-------------|
 | `Translate`     | [Vertalen](reference/v3-0-translate.md)          |
 | `TranslateArray`      | [Vertalen](reference/v3-0-translate.md)        |
 | `GetLanguageNames`      | [Talen](reference/v3-0-languages.md)         |
 | `GetLanguagesForTranslate`     | [Talen](reference/v3-0-languages.md)       |
-| `GetLanguagesForSpeak`      | [Micro soft Speech-Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| `Speak`     | [Micro soft Speech-Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| `GetLanguagesForSpeak`      | [Microsoft-spraakservice](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
+| `Speak`     | [Microsoft-spraakservice](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
 | `Detect`     | [Detecteren](reference/v3-0-detect.md)         |
 | `DetectArray`     | [Detecteren](reference/v3-0-detect.md)         |
-| `AddTranslation`     | De functie wordt niet meer ondersteund       |
-| `AddTranslationArray`    | De functie wordt niet meer ondersteund          |
-| `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
-| `GetTranslations`      | De functie wordt niet meer ondersteund         |
-| `GetTranslationsArray`      | De functie wordt niet meer ondersteund         |
+| `AddTranslation`     | Functie wordt niet meer ondersteund       |
+| `AddTranslationArray`    | Functie wordt niet meer ondersteund          |
+| `BreakSentences`      | [BreakZin](reference/v3-0-break-sentence.md)       |
+| `GetTranslations`      | Functie wordt niet meer ondersteund         |
+| `GetTranslationsArray`      | Functie wordt niet meer ondersteund         |
 
-## <a name="move-to-json-format"></a>Naar JSON-indeling verplaatsen
+## <a name="move-to-json-format"></a>Naar JSON-indeling gaan
 
-Micro soft Translator Text vertalen v2 geaccepteerde en geretourneerde gegevens in XML-indeling. In v3 worden alle gegevens die zijn verzonden en ontvangen met behulp van de API in JSON-indeling. XML wordt niet meer geaccepteerd of geretourneerd in v3.
+Microsoft Translator Text Translation V2 heeft gegevens geaccepteerd en geretourneerd in XML-indeling. In V3 zijn alle verzonden en ontvangen gegevens via de API in JSON-indeling. XML wordt niet langer geaccepteerd of geretourneerd in V3.
 
-Deze wijziging is van invloed op verschillende aspecten van een toepassing die is geschreven voor de v2 Text Translator-API. Voor beeld: de talen-API retourneert taal informatie voor tekst omzetting, vele en de twee woordenlijst methoden. U kunt alle taal informatie voor alle methoden in één gesprek aanvragen of ze afzonderlijk aanvragen.
+Deze wijziging heeft gevolgen voor verschillende aspecten van een toepassing die is geschreven voor de V2 Text Translation API. Als voorbeeld: de API Talen retourneert taalgegevens voor tekstvertaling, transliteratie en de twee woordenboekmethoden. U alle taalinformatie voor alle methoden in één gesprek opvragen of individueel aanvragen.
 
-Voor de methode language is geen verificatie vereist; door op de volgende koppeling te klikken, ziet u alle taal informatie voor v3 in JSON:
+De methode voor talen vereist geen verificatie; door op de volgende link te klikken, zie je alle taalinformatie voor V3 in JSON:
 
-[https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation, woorden lijst, vele](https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,dictionary,transliteration)
+[https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,woordenboek, transliteratie](https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,dictionary,transliteration)
 
-## <a name="authentication-key"></a>Verificatie sleutel
+## <a name="authentication-key"></a>Verificatiesleutel
 
-De verificatie sleutel die u voor v2 gebruikt, wordt geaccepteerd voor v3. U hoeft geen nieuw abonnement te krijgen. U kunt v2 en V3 in uw apps tijdens de Yearlong-migratie periode combi neren, waardoor het eenvoudiger wordt om nieuwe versies vrij te geven terwijl u nog steeds migreert van v2-XML naar v3-JSON.
+De verificatiesleutel die u voor V2 gebruikt, wordt geaccepteerd voor V3. U hoeft geen nieuw abonnement te krijgen. U V2 en V3 in uw apps mengen tijdens de migratieperiode van een jaar, waardoor u gemakkelijker nieuwe versies uitbrengen terwijl u nog steeds migreert van V2-XML naar V3-JSON.
 
 ## <a name="pricing-model"></a>Prijsmodel
 
-Micro soft Translator V3 heeft geprijsd op dezelfde manier als v2 heeft geprijsd. per teken, inclusief spaties. De nieuwe functies in v3 maken enkele wijzigingen in welke tekens worden geteld voor facturering.
+Microsoft Translator V3 is geprijsd op dezelfde manier V2 werd geprijsd; per teken, inclusief spaties. De nieuwe functies in V3 brengen enkele wijzigingen aan in welke tekens worden geteld voor facturering.
 
-| V3-methode   | Tekens die worden geteld voor facturering |
+| V3-methode   | Tekens die zijn geteld voor facturering |
 |:----------- |:-------------|
-| `Languages`     | Geen tekens verzonden, geen geteld, geen kosten.          |
-| `Translate`     | Aantal is gebaseerd op het aantal tekens dat voor vertaling wordt verzonden en hoeveel talen de tekens worden omgezet in. 50 tekens verzonden en vijf gevraagde talen worden 50x5.           |
-| `Transliterate`     | Het aantal tekens dat voor vele wordt verzonden, wordt geteld.         |
-| `Dictionary lookup & example`     | Het aantal tekens dat is verzonden voor het opzoeken van de dictionary en voor beelden worden geteld.         |
+| `Languages`     | Geen tekens ingediend, geen geteld, geen kosten.          |
+| `Translate`     | Count is gebaseerd op het aantal tekens dat voor vertaling wordt ingediend en in hoeveel talen de tekens worden vertaald. 50 tekens ingediend, en 5 gevraagde talen zal 50x5.           |
+| `Transliterate`     | Het aantal tekens dat voor transliteratie is ingediend, wordt geteld.         |
+| `Dictionary lookup & example`     | Het aantal tekens dat is ingediend voor het opzoeken van woordenlijst en voorbeelden worden geteld.         |
 | `BreakSentence`     | Geen kosten.       |
 | `Detect`     | Geen kosten.      |
 
-## <a name="v3-end-points"></a>V3-eind punten
+## <a name="v3-end-points"></a>V3-eindpunten
 
 Wereldwijd
 
 * api.cognitive.microsofttranslator.com
 
-## <a name="v3-api-text-translations-methods"></a>Methoden voor tekst vertalingen van v3 API
+## <a name="v3-api-text-translations-methods"></a>Methoden voor het vertalen van V3-API-tekst
 
 [`Languages`](reference/v3-0-languages.md)
 
@@ -110,40 +110,40 @@ Wereldwijd
 
 > [!NOTE]
 > 
-> De micro soft Translator-hub wordt ingetrokken op 17 mei 2019. [Belang rijke migratie-informatie en-datums weer geven](https://www.microsoft.com/translator/business/hub/).   
+> De Microsoft Translator Hub wordt op 17 mei 2019 met pensioen gegaan. [Bekijk belangrijke migratie-informatie en -datums](https://www.microsoft.com/translator/business/hub/).   
 
-Micro soft Translator V3 maakt standaard gebruik van Neural machine vertalingen. Dit kan niet worden gebruikt in combi natie met de micro soft Translator-hub. De Translator-hub ondersteunt alleen verouderde vertalingen van de statistische machine. Aanpassing voor Neural-vertaling is nu beschikbaar via het aangepaste conversie programma. [Meer informatie over het aanpassen van Neural machine translation](custom-translator/overview.md)
+Microsoft Translator V3 maakt standaard gebruik van neurale machinevertaling. Als zodanig kan het niet worden gebruikt met de Microsoft Translator Hub. De Translator Hub ondersteunt alleen legacy statistische machine vertaling. Aanpassing voor neurale vertaling is nu beschikbaar met behulp van de aangepaste vertaler. [Meer informatie over het aanpassen van neurale machinevertaling](custom-translator/overview.md)
 
-Neural-vertaling met de V3-tekst-API biedt geen ondersteuning voor het gebruik van standaard categorieën (SMT, Speech, Tech, generalnn).
+Neurale vertaling met de V3-tekst-API ondersteunt geen standaardcategorieën (SMT, spraak, tech, generalnn).
 
-| |Eindpunt|    Naleving van AVG-processor|  Translator hub gebruiken| Aangepaste Translator gebruiken (preview-versie)|
+| |Eindpunt|    Naleving GDPR-processor|  Vertalerhub gebruiken| Aangepaste vertaler gebruiken (voorbeeld)|
 |:-----|:-----|:-----|:-----|:-----|
-|Translator Text-API versie 2| api.microsofttranslator.com|    Nee  |Ja    |Nee|
-|Translator Text-API versie 3| api.cognitive.microsofttranslator.com|  Ja|    Nee| Ja|
+|Translator Text API Versie 2| api.microsofttranslator.com|    Nee  |Ja    |Nee|
+|Translator Text API Versie 3| api.cognitive.microsofttranslator.com|  Ja|    Nee| Ja|
 
-**Translator Text-API versie 3**
+**Translator Text API Versie 3**
 * Is algemeen beschikbaar en volledig ondersteund.
-* Is AVG compatibel als een processor en voldoet aan alle ISO 20001 en 20018 en aan SOC 3-certificerings vereisten. 
-* Met kunt u de Neural-netwerk Vertaal systemen aanroepen die u hebt aangepast met aangepaste Translator (preview), de nieuwe functie Translator NMT Customization. 
-* Biedt geen toegang tot aangepaste Vertaal systemen die zijn gemaakt met behulp van de micro soft Translator-hub.
+* Is GDPR-compatibel als processor en voldoet aan alle ISO 20001 en 20018, evenals SOC 3-certificeringsvereisten. 
+* Hiermee u de neurale netwerkvertaalsystemen aanroepen die u hebt aangepast met Custom Translator (Preview), de nieuwe functie voor het aanpassen van vertalers NMT. 
+* Biedt geen toegang tot aangepaste vertaalsystemen die zijn gemaakt met behulp van de Microsoft Translator Hub.
 
-U gebruikt versie 3 van de Translator Text-API als u het api.cognitive.microsofttranslator.com-eind punt gebruikt.
+U gebruikt versie 3 van de Translator Text API Als u het api.cognitive.microsofttranslator.com eindpunt gebruikt.
 
-**Translator Text-API versie 2**
-* Voldoet niet aan alle vereisten voor ISO 20001, 20018 en SOC 3-certificering. 
-* Biedt geen toestemming voor het aanroepen van de Neural-netwerk Vertaal systemen die u hebt aangepast met de functie voor het aanpassen van het conversie programma.
-* Biedt toegang tot aangepaste Vertaal systemen die zijn gemaakt met behulp van de micro soft Translator-hub.
-* U gebruikt versie 2 van de Translator Text-API als u het api.microsofttranslator.com-eind punt gebruikt.
+**Translator Text API Versie 2**
+* Voldoet niet aan alle ISO 20001,20018 en SOC 3 certificeringsvereisten. 
+* Hiermee u geen beroep doen op de neurale netwerkvertaalsystemen die u hebt aangepast met de aanpassingsfunctie Translator.
+* Biedt toegang tot aangepaste vertaalsystemen die zijn gemaakt met de Microsoft Translator Hub.
+* U gebruikt versie 2 van de Translator Text API Als u het api.microsofttranslator.com eindpunt gebruikt.
 
-Er wordt geen versie van de Translator-API gemaakt om een record van uw vertalingen te maken. Uw vertalingen worden nooit met iedereen gedeeld. Meer informatie op de webpagina [Translator No-Trace](https://www.aka.ms/NoTrace) .
+Geen enkele versie van de Translator API maakt een record van uw vertalingen. Uw vertalingen worden nooit met iemand gedeeld. Meer informatie op de [vertaler no-trace](https://www.aka.ms/NoTrace) webpagina.
 
 ## <a name="links"></a>Koppelingen
 
-* [Privacybeleid van micro soft](https://privacy.microsoft.com/privacystatement)
-* [Juridische informatie Microsoft Azure](https://azure.microsoft.com/support/legal)
-* [Voor waarden voor Online Services](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
+* [Microsoft Privacy Policy](https://privacy.microsoft.com/privacystatement)
+* [Microsoft Azure-juridische gegevens](https://azure.microsoft.com/support/legal)
+* [Voorwaarden voor onlineservices](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Documentatie voor V 3.0 weer geven](reference/v3-0-reference.md)
+> [V3.0-documentatie bekijken](reference/v3-0-reference.md)

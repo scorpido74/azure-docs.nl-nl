@@ -1,7 +1,7 @@
 ---
-title: Directe lijn spraak-spraak service
+title: Direct Line Speech - Spraakservice
 titleSuffix: Azure Cognitive Services
-description: Een overzicht van de functies, mogelijkheden en beperkingen voor spraak assistenten met behulp van directe lijn spraak met de speech Software Development Kit (SDK).
+description: Een overzicht van de functies, mogelijkheden en beperkingen voor spraakassistenten met Direct Line Speech met de Speech Software Development Kit (SDK).
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,60 +11,60 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: dapine
 ms.openlocfilehash: 714cdefa7100160a510d1922a2547ae53692d76c
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367802"
 ---
 # <a name="what-is-direct-line-speech"></a>Wat is Direct Line-spraak?
 
-**Direct line speech** is een robuuste, end-to-end oplossing voor het maken van een flexibele, uitbreid bare spraak assistent. Het wordt mogelijk gemaakt door het bot-Framework en het directe-lijn spraak kanaal dat is geoptimaliseerd voor spraak-in-en spraak-interactie met bots.
+**Direct Line Speech** is een robuuste, end-to-end oplossing voor het creëren van een flexibele, uitbreidbare spraakassistent. Het wordt aangedreven door het Bot Framework en zijn Direct Line Speech kanaal, dat is geoptimaliseerd voor voice-in, voice-out interactie met bots.
 
-[Spraak assistenten](voice-assistants.md) worden naar gebruikers geluisterd en nemen een actie in antwoord, vaak gesp roken terug. Ze gebruiken [spraak-naar-tekst](speech-to-text.md) om de spraak van de gebruiker te transcriberen en vervolgens actie te ondernemen op het memorandum van natuurlijke taal van de tekst. Deze actie omvat vaak gesp roken uitvoer van de assistent die is gegenereerd met [tekst-naar-spraak](text-to-speech.md).
+[Spraakassistenten](voice-assistants.md) luisteren naar gebruikers en ondernemen een actie in reactie, vaak terug te spreken. Ze gebruiken [spraak-naar-tekst](speech-to-text.md) om de spraak van de gebruiker te transcriberen en ondernemen vervolgens actie op het natuurlijke taalbegrip van de tekst. Deze actie omvat vaak gesproken uitvoer van de assistent gegenereerd met [tekst-naar-spraak](text-to-speech.md).
 
-Direct line speech biedt de hoogste mate van aanpassing en verfijning voor spraak assistenten. Het is ontworpen voor gespreks scenario's die zijn geopend, natuurlijke of hybriden van de twee met taak voltooiing of opdracht-en controle gebruik. Deze hoge mate van flexibiliteit wordt geleverd met een grotere complexiteit en scenario's die zijn afgestemd op goed gedefinieerde taken met behulp van invoer in natuurlijke taal, is het mogelijk om te denken aan [aangepaste opdrachten (preview)](custom-commands.md) voor een gestroomlijnde oplossing.
+Direct Line Speech biedt de hoogste niveaus van maatwerk en verfijning voor spraakassistenten. Het is ontworpen voor gespreksscenario's die open, natuurlijk of hybriden van de twee zijn met taakvoltooiing of gebruik van opdrachten en besturing. Deze hoge mate van flexibiliteit wordt geleverd met een grotere complexiteit en scenario's die zijn afgestemd op goed gedefinieerde taken met behulp van natuurlijke taalinvoer, kunnen [aangepaste opdrachten (Preview)](custom-commands.md) overwegen voor een gestroomlijnde oplossingservaring.
 
-## <a name="getting-started-with-direct-line-speech"></a>Aan de slag met direct line speech
+## <a name="getting-started-with-direct-line-speech"></a>Aan de slag met Direct Line Speech
 
-De eerste stappen voor het maken van een spraak-assistent met behulp van directe lijn spraak zijn het [verkrijgen van een sleutel voor een spraak abonnement](get-started.md), het maken van een nieuwe bot die is gekoppeld aan dat abonnement, en het verbinden van de bot met het directe lijn spraak kanaal.
+De eerste stappen voor het maken van een spraakassistent met Direct Line Speech zijn het [krijgen van een spraakabonnementssleutel,](get-started.md)het maken van een nieuwe bot die aan dat abonnement is gekoppeld en de bot verbinden met het Direct Line Speech-kanaal.
 
-   ![Conceptueel diagram van de service stroom van de directe lijn spraak indeling](media/voice-assistants/overview-directlinespeech.png "De stroom van het spraak kanaal")
+   ![Conceptueel diagram van de servicestroom van de direct line-spraakorkestratie](media/voice-assistants/overview-directlinespeech.png "De spraakkanaalstroom")
 
-Voor een volledige stapsgewijze hand leiding voor het maken van een eenvoudige spraak assistent met behulp van directe lijn spraak raadpleegt u [de zelf studie voor spraak herkenning met de spraak-SDK en het direct lijn spraak kanaal](tutorial-voice-enable-your-bot-speech-sdk.md).
+Zie [de zelfstudie voor spraakwaarmee u uw bot inschakelt met de Spraak- en Het Kanaal Direct Line Speech](tutorial-voice-enable-your-bot-speech-sdk.md)voor een volledige stapsgewijze handleiding voor het maken van een eenvoudige spraakassistent met Direct Line Speech.
 
-We bieden ook Quick starts die zijn ontworpen om u te laten werken met code en snel de Api's te leren. Deze tabel bevat een lijst met Quick starts voor de Voice Assistant, geordend op taal en platform.
+We bieden ook quickstarts die zijn ontworpen om u code te laten uitvoeren en de API's snel te leren. Deze tabel bevat een lijst met spraakassistenten die snel worden georganiseerd op taal en platform.
 
 | Snelstartgids | Platform | API-verwijzing |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Door](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Door](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Door](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Bladeren](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Bladeren](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Bladeren](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Voorbeeldcode
 
-Voorbeeld code voor het maken van een spraak-assistent is beschikbaar op GitHub. Deze voor beelden beslaan de client toepassing voor het maken van verbinding met uw helper in verschillende populaire programmeer talen.
+Voorbeeldcode voor het maken van een spraakassistent is beschikbaar op GitHub. Deze voorbeelden hebben betrekking op de clienttoepassing voor het verbinden met uw assistent in verschillende populaire programmeertalen.
 
-* [Voor beelden van Voice Assistant (SDK)](https://aka.ms/csspeech/samples)
-* [Zelf studie: spraak inschakelen voor uw assistent met de spraak-SDKC#](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [Voorbeelden van spraakassistenten (SDK)](https://aka.ms/csspeech/samples)
+* [Zelfstudie: Spraakinschakelen van uw assistent met de Spraak-SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="customization"></a>Aanpassing
 
-Spraak assistenten die zijn gemaakt met Speech Service kunnen gebruikmaken van het volledige aanbod aan aanpassings opties voor [spraak naar tekst](speech-to-text.md), [tekst naar spraak](text-to-speech.md)en [aangepaste trefwoord selectie](speech-devices-sdk-create-kws.md).
+Spraakassistenten die zijn gebouwd met spraakservice, kunnen het volledige scala aan aanpassingsopties gebruiken die beschikbaar zijn voor [spraak-naar-tekst,](speech-to-text.md) [tekst-naar-spraak](text-to-speech.md)en [aangepaste trefwoordselectie.](speech-devices-sdk-create-kws.md)
 
 > [!NOTE]
-> Aanpassings opties variëren per taal/land instelling (Zie [ondersteunde talen](supported-languages.md)).
+> Aanpassingsopties verschillen per taal/landtaal (zie [Ondersteunde talen).](supported-languages.md)
 
-Direct line speech en de bijbehorende functionaliteit voor spraak assistenten zijn een ideale aanvulling op de [Virtual assistent-oplossing en de ondernemings sjabloon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). Hoewel directe lijn spraak kan worden gebruikt met een compatibele bot, bieden deze resources een herbruikbare basis lijn voor gesp roken ervaringen van hoge kwaliteit, evenals algemene ondersteunende vaardig heden en modellen om snel aan de slag te gaan.
+Direct Line Speech en de bijbehorende functionaliteit voor spraakassistenten zijn een ideale aanvulling op de [virtual assistant solution en enterprise template.](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) Hoewel Direct Line Speech kan werken met elke compatibele bot, bieden deze bronnen een herbruikbare basislijn voor hoogwaardige conversatie-ervaringen en gemeenschappelijke ondersteunende vaardigheden en modellen om snel aan de slag te gaan.
 
-## <a name="reference-docs"></a>Referentie documenten
+## <a name="reference-docs"></a>Referentiedocumenten
 
 * [Speech-SDK](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
-* [De Speech SDK ophalen](speech-sdk.md)
+* [Ontvang gratis een abonnementssleutel voor spraakservice](get-started.md)
+* [Download de Spraak-SDK](speech-sdk.md)
 * [Een basisbot maken en implementeren](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-* [De Virtual assistent-oplossing en ondernemings sjabloon ophalen](https://github.com/Microsoft/AI)
+* [De sjabloon voor virtuele assistent-oplossingen en ondernemingsoplossingen downloaden](https://github.com/Microsoft/AI)

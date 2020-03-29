@@ -1,64 +1,111 @@
 ---
 title: Wat is er nieuw in Form Recognizer?
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over de meest recente wijzigingen in de API voor formulier herkenning.
+description: Inzicht in de laatste wijzigingen in de API voor formulierherkenning.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 2109d25d3962063c711dcab491855d9ebf1cf694
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 7f20244906581dd2869bbc7fcd997d5245540eda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901879"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80155168"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Wat is er nieuw in Form Recognizer?
 
-In dit artikel worden de belangrijkste wijzigingen met nieuwe versies van de API voor formulier herkenning gemarkeerd.
+De form recognizer-service wordt voortdurend bijgewerkt. Gebruik dit artikel om op de hoogte te blijven van functieverbeteringen, fixes en documentatie-updates.
 
 > [!NOTE]
-> De Quick starts en hand leidingen in deze documentenset gebruiken altijd de nieuwste versie van de API, tenzij ze anders worden opgegeven.
+> De quickstarts en hulplijnen voor Formulierherkenning gebruiken altijd de nieuwste versie van de API, tenzij opgegeven.
 
-## <a name="form-recognizer-20-preview"></a>Formulier Recognizer 2,0 (preview-versie)
+## <a name="march-2020"></a>Maart 2020 
+
+### <a name="extraction-enhancements"></a>Extractieverbeteringen
+
+Deze release bevat extractieverbeteringen en nauwkeurigheidsverbeteringen, met name de mogelijkheid om meerdere sleutel/waardeparen in dezelfde tekstregel te labelen en te extraheren. 
+ 
+### <a name="form-recognizer-sample-labeling-tool-is-now-open-source"></a>Form Recognizer Sample Labeling Tool is nu open-source
+
+De Form Recognizer Sample Labeling Tool is nu beschikbaar als een open-source project. U het integreren in uw oplossingen en klantspecifieke wijzigingen aanbrengen om aan uw behoeften te voldoen.
+
+Voor meer informatie over de Form Recognizer Sample Labeling Tool, bekijk de documentatie beschikbaar op [GitHub](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
+
+### <a name="labeling-value-types"></a>Waardetypen voor etikettering
+
+Waardetypen zijn nu beschikbaar voor gebruik met het voorbeeldlabelingstool voor formulierherkenning. Deze waardetypen worden momenteel ondersteund: 
+
+* Tekenreeks
+* Aantal 
+* Geheel getal
+* Date 
+* Time
+
+Deze afbeelding geeft aan hoe de selectie van het waardetype eruit ziet in het voorbeeldlabelingshulpmiddel Formulierherkenning:
+
+> [!div class="mx-imgBorder"]
+> ![Selectie van waardetype met voorbeeldlabeling](./media/whats-new/formre-value-type.png)
+
+De uitgepakte tabel is beschikbaar in `pageResults`de JSON-uitvoer in .
+
+### <a name="table-visualization"></a>Tabelvisualisatie 
+
+In het labelingshulpmiddel Formulierherkenning worden nu tabellen weergegeven die in het document zijn herkend. Hiermee u de tabellen bekijken die zijn herkend en uit het document zijn gehaald, voordat u het labelt en analyseert met het labelingsprogramma voor formulierherkenning. Deze functie kan aan/uit worden geschakeld met de optie lagen. 
+
+Dit is een voorbeeld van hoe tabellen worden herkend en geëxtraheerd:
+
+> [!div class="mx-imgBorder"]
+> ![Tabelvisualisatie met het voorbeeldlabelgereedschap](./media/whats-new/formre-table-viz.png)
+
+> [!IMPORTANT]
+> Labelen tabellen wordt niet ondersteund. Als tabellen niet worden herkend en automatisch worden geëxtraford, u ze alleen labelen als sleutel-/waardeparen. Wanneer u tabellen labelt als sleutel-/waardeparen, moet u elke cel als waarde labelen.
+
+### <a name="tls-12-enforcement"></a>TLS 1.2 afdwingen
+
+* TLS 1.2 wordt nu afgedwongen voor alle HTTP-aanvragen voor deze service. Zie [Azure Cognitive Services-beveiliging](../cognitive-services-security.md)voor meer informatie.
+
+## <a name="january-2020"></a>Januari 2020
+
+Deze release introduceert de Form Recognizer 2.0 (preview). In de onderstaande secties vindt u meer informatie over nieuwe functies, verbeteringen en wijzigingen. 
 
 ### <a name="new-features"></a>Nieuwe functies
 
 * **Aangepast model**
-  * **Trainen met labels** U kunt nu een aangepast model trainen met hand matig gelabelde gegevens. Dit resulteert in betere uitvoering van modellen en kan modellen produceren die met complexe formulieren of formulieren met waarden zonder sleutels werken.
-  * **ASYNCHRONE API** U kunt asynchrone API-aanroepen gebruiken om met grote gegevens sets en bestanden te trainen en te analyseren.
-  * **Ondersteuning voor TIFF-bestanden** U kunt nu gegevens uit TIFF-documenten trainen en ophalen.
-  * **Verbeteringen in de extractie nauwkeurigheid**
+  * **Trainen met labels** U nu een aangepast model trainen met handmatig gelabelde gegevens. Dit resulteert in beter presterende modellen en kan modellen produceren die werken met complexe formulieren of formulieren die waarden zonder sleutels bevatten.
+  * **Asynchrone API** U async API-aanroepen gebruiken om te trainen met en grote gegevenssets en bestanden te analyseren.
+  * **Ondersteuning voor TIFF-bestanden** U nu trainen met en gegevens extraheren uit TIFF-documenten.
+  * **Verbeteringen in extractienauwkeurigheid**
 
-* **Gebaseerd ontvangst model**
-  * **Fooien** U kunt nu fooie bedragen en andere handgeschreven waarden extra heren.
-  * **Extractie van regel items** U kunt waarden van het regel item extra heren uit de bevestigingen.
-  * **Betrouwbaarheids waarden** U kunt het vertrouwen van het model voor elke geëxtraheerde waarde weer geven.
-  * **Verbeteringen in de extractie nauwkeurigheid**
+* **Vooraf gebouwd ontvangstmodel**
+  * **Tipbedragen** U nu tipbedragen en andere handgeschreven waarden extraheren.
+  * **Extractie van regelitem** U regelartikelwaarden uit ontvangstbewijzen extraheren.
+  * **Betrouwbaarheidswaarden** U het vertrouwen van het model voor elke geëxtraheerde waarde bekijken.
+  * **Verbeteringen in extractienauwkeurigheid**
 
-* **Indelings extractie** U kunt nu de indelings-API gebruiken om tekst gegevens en tabel gegevens op te halen uit uw formulieren.
+* **Indelingextractie** U nu de Layout API gebruiken om tekstgegevens en tabelgegevens uit uw formulieren te extraheren.
 
-### <a name="custom-model-api-changes"></a>Wijzigingen in het aangepaste model-API
+### <a name="custom-model-api-changes"></a>Aangepaste model-API-wijzigingen
 
-Alle Api's voor training en het gebruik van aangepaste modellen zijn hernoemd en sommige synchrone methoden zijn nu asynchroon. De volgende belang rijke wijzigingen zijn:
+Alle API's voor training en het gebruik van aangepaste modellen zijn hernoemd en sommige synchrone methoden zijn nu asynchroon. De volgende zijn belangrijke veranderingen:
 
-* Het proces voor het trainen van een model is nu asynchroon. U initieert training via de API-aanroep van **/Custom/models** . Deze aanroep retourneert een bewerkings-ID, die u kunt door geven aan **aangepaste/modellen/{modelID}** om de resultaten van de training te retour neren.
-* De extractie van sleutel/waarde wordt nu geïnitieerd door de API-aanroep van **/Custom/models/{modelID}/analyze** . Deze aanroep retourneert een bewerkings-ID, die u kunt door geven aan **aangepaste/modellen/{modelID}/analyzeResults/{resultID}** om de resultaten van de extractie te retour neren.
-* Bewerkings-Id's voor de trein bewerking zijn nu gevonden in de **locatie** header van http-antwoorden, niet op de locatie van de **bewerking** .
+* Het proces van het trainen van een model is nu asynchroon. U start training via de **API-aanroep /custom/models.** Met deze aanroep wordt een bewerkings-id geretourneerd, die u doorgeven aan **aangepaste/modellen/{modelID}** om de trainingsresultaten terug te geven.
+* Key/value extraction wordt nu geïnitieerd door de **/custom/models/{modelID}/analyze** API call. Met deze aanroep wordt een bewerkings-id geretourneerd, die u doorgeven aan **aangepaste/modellen/{modelID}/analyzeResults/{resultID}** om de extractieresultaten te retourneren.
+* De bewerkings-id's voor de bewerking Trein worden nu gevonden in de **koplocatie** van HTTP-antwoorden en niet in de **kopfunctie Operatielocatie.**
 
-### <a name="receipt-api-changes"></a>Wijzigingen in de ontvangst-API
+### <a name="receipt-api-changes"></a>Wijziging van ontvangst-API's
 
-De naam van de Api's voor het lezen van de verkoop ontvangst is gewijzigd.
+De API's voor het lezen van verkoopbewijzen zijn hernoemd.
 
-* Het uitpakken van ontvangst gegevens wordt nu geïnitieerd door de API-aanroep van **/prebuilt/Receipt/analyze** . Deze aanroep retourneert een bewerkings-ID, die u kunt door geven aan **/prebuilt/Receipt/analyzeResults/{resultID}** om de resultaten van de extractie te retour neren.
+* Ontvangstgegevensextractie wordt nu gestart door de **/prebuilt/receipt/analyze** API call. Met deze aanroep retourneert een bewerkings-ID, die u doorgeven aan **/prebuilt/receipt/analyzeResults/{resultID}** om de extractieresultaten te retourneren.
 
-### <a name="output-format-changes"></a>Wijzigingen in de uitvoer indeling
+### <a name="output-format-changes"></a>Wijzigingen in uitvoernotatie
 
-De JSON-antwoorden voor alle API-aanroepen hebben nieuwe notaties. Sommige sleutels en waarden zijn toegevoegd, verwijderd of de naam ervan is gewijzigd. Bekijk de Quick starts voor voor beelden van de huidige JSON-indelingen.
+De JSON-antwoorden voor alle API-aanroepen hebben nieuwe indelingen. Sommige sleutels en waarden zijn toegevoegd, verwijderd of hernoemd. Bekijk de quickstarts voor voorbeelden van de huidige JSON-indelingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voer een [Snelstartgids](quickstarts/curl-train-extract.md) uit om aan de slag te gaan met de [API voor formulier herkenning](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm).
+Voltooi een [snelle start](quickstarts/curl-train-extract.md) om aan de slag te gaan met de [FORM Recognizer API's](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm).

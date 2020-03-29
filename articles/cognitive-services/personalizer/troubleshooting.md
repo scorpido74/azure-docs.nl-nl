@@ -1,100 +1,100 @@
 ---
-title: Probleem oplossing-persoonlijker
-description: In dit artikel vindt u antwoorden op veelgestelde vragen over het oplossen van problemen met persoonlijke instellingen.
+title: Probleemoplossing - Personalizer
+description: Dit artikel bevat antwoorden op veelgestelde vragen over het oplossen van problemen over Personalizer.
 ms.topic: troubleshooting
 ms.date: 02/26/2020
 ms.author: diberry
-ms.openlocfilehash: 39db920b663ace12f2fc6ca35f9082a791da1541
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 904953f028eb31afe42cf477ac05be43e8b72a4d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228037"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336017"
 ---
-# <a name="personalizer-troubleshooting"></a>Problemen met persoonlijker oplossen
+# <a name="personalizer-troubleshooting"></a>Probleemoplossing voor gepersonaliseerde problemen
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over het oplossen van problemen met persoonlijke instellingen.
+Dit artikel bevat antwoorden op veelgestelde vragen over het oplossen van problemen over Personalizer.
 
-## <a name="transaction-errors"></a>Transactie fouten
+## <a name="transaction-errors"></a>Transactiefouten
 
 <details>
-<summary><b>Er wordt een reactie van HTTP 429 (te veel aanvragen) ontvangen van de service. Wat kan ik doen?</b></summary>
+<summary><b>Ik krijg een HTTP 429 (Te veel verzoeken) antwoord van de dienst. Wat kan ik doen?</b></summary>
 
-**Antwoord**: als u een gratis prijs categorie hebt gekozen tijdens het maken van het persoonlijk exemplaar, is er een quotum limiet voor het aantal toegestane rang aanvragen. Controleer de API-aanroep frequentie voor de positie-API (in het deel venster metrische gegevens in de Azure Portal voor uw persoonlijke resource) en pas de prijs categorie aan (in het deel venster prijs categorie) als uw oproep volume naar verwachting groter is dan de drempel waarde voor gekozen prijs categorie.
+**Antwoord:** Als u een gratis prijslaag hebt gekozen toen u de instantie Personalizer maakte, is er een quotumlimiet voor het aantal rangaanvragen dat is toegestaan. Controleer uw API-aanroeptarief voor de Rank-API (in het deelvenster Statistieken in de Azure-portal voor uw personalizerbron) en pas de prijscategorie aan (in het deelvenster Prijslagen) als het aantal oproepen naar verwachting zal toenemen boven de drempel voor gekozen prijscategorie.
 
 </details>
 
 <details>
-<summary><b>Er wordt een 5xx-fout weer op de positie-of belonings-Api's. Wat moet ik doen?</b></summary>
+<summary><b>Ik krijg een 5xx fout op Rank of Reward API's. Wat moet ik doen?</b></summary>
 
-**Antwoord**: deze problemen moeten transparant zijn. Als ze door gaan, neemt u contact op met de ondersteuning door **nieuwe ondersteunings aanvraag** te selecteren in het gedeelte **ondersteuning en probleem oplossing** in de Azure portal voor uw persoonlijke resource.
+**Antwoord**: Deze kwesties moeten transparant zijn. Als ze doorgaan, neemt u contact op met ondersteuning door **Nieuw ondersteuningsverzoek te** selecteren in de sectie **Ondersteuning + probleemoplossing** in de Azure-portal voor uw personalizerbron.
 
 </details>
 
-## <a name="learning-loop"></a>Learning-lus
+## <a name="learning-loop"></a>Leerlus
 
 <details>
 <summary>
-<b>De learning-lus bereikt geen 100% in overeenstemming met het systeem zonder persoonlijker. Hoe kan ik dit probleem oplossen?</b></summary>
+<b>De leerlus bereikt geen 100% match met het systeem zonder Personalizer. Hoe los ik dit op?</b></summary>
 
-**Antwoord**: de redenen waarom u uw doel niet bereikt met de learning-lus:
-* Er zijn onvoldoende functies verzonden met de positie-API-aanroep
-* Fouten in de functies die zijn verzonden, zoals het verzenden van niet-geaggregeerde functie gegevens zoals tijds tempels voor het classificeren van de API
-* Fouten met loop-verwerking, zoals het verzenden van belonings gegevens naar belonings-API voor gebeurtenissen
+**Antwoord:** De redenen waarom je je doel niet bereikt met de leerlus:
+* Niet genoeg functies verzonden met Rank API-aanroep
+* Bugs in de verzonden functies, zoals het verzenden van niet-geaggregeerde functiegegevens, zoals tijdstempels naar Rank API
+* Bugs met lusverwerking - zoals het niet verzenden van beloningsgegevens naar Reward API voor gebeurtenissen
 
-Als u dit wilt oplossen, moet u de verwerking wijzigen door de functies te wijzigen die naar de lus worden verzonden, of om ervoor te zorgen dat de beloning een correcte beoordeling is van de kwaliteit van de reactie van de rang schikking.
+Om het probleem op te lossen, moet u de verwerking wijzigen door de functies die naar de lus worden verzonden te wijzigen, of ervoor zorgen dat de beloning een juiste evaluatie is van de kwaliteit van de reactie van de rang.
 
 </details>
 
 <details>
 <summary>
-<b>De learning-lus lijkt niet te leren. Hoe kan ik dit probleem oplossen?</b></summary>
+<b>De leerlus lijkt niet te leren. Hoe los ik dit op?</b></summary>
 
-**Antwoord**: voor de learning-lus zijn enkele duizenden belonings aanvragen vereist voordat de rang schikkingen een efficiënte prioriteit krijgt.
+**Antwoord**: De leerlus heeft een paar duizend Reward-oproepen nodig voordat Rank-oproepen effectief prioriteit geven.
 
-Als u niet zeker weet hoe uw leer proces momenteel zich gedraagt, voert u een [offline-evaluatie](concepts-offline-evaluation.md)uit en past u het gecorrigeerde leer beleid toe.
-
-</details>
-
-<details>
-<summary><b>Ik blijf bij het ophalen van rang resultaten met dezelfde kansen voor alle items. Hoe kan ik weet je dat Personaler leren?</b></summary>
-
-**Antwoord**: personaler retourneert dezelfde waarschijnlijkheid in een rangorde API-resultaat wanneer het zojuist is gestart en een _leeg_ model heeft, of wanneer u de personaler-lus opnieuw instelt en uw model zich nog steeds in de periode van uw **model update** bevindt.
-
-Wanneer de nieuwe update periode begint, wordt het bijgewerkte model gebruikt en ziet u de waarschijnlijke veranderingen.
+Als u niet zeker weet hoe uw leerlus zich momenteel gedraagt, voert u een [offline evaluatie](concepts-offline-evaluation.md)uit en past u het gecorrigeerde leerbeleid toe.
 
 </details>
 
 <details>
-<summary><b>Het leer proces is leren, maar lijkt niet meer te weten en de kwaliteit van de rang resultaten is niet goed. Wat moet ik doen?</b></summary>
+<summary><b>Ik krijg steeds rang resultaten met alle dezelfde waarschijnlijkheden voor alle items. Hoe weet ik dat Personalizer aan het leren is?</b></summary>
+
+**Antwoord:** Personalizer retourneert dezelfde waarschijnlijkheden in een Rank API-resultaat wanneer het net is gestart en een _leeg_ model heeft, of wanneer u de Personalizer Loop opnieuw instelt en uw model zich nog steeds binnen de **frequentieperiode van** de modelupdate bevindt.
+
+Wanneer de nieuwe updateperiode begint, wordt het bijgewerkte model gebruikt en ziet u de waarschijnlijkheidsverandering.
+
+</details>
+
+<details>
+<summary><b>De leerlus was leren, maar lijkt niet meer te leren, en de kwaliteit van de Rank resultaten is niet zo goed. Wat moet ik doen?</b></summary>
 
 **Antwoord**:
-* Zorg ervoor dat u een evaluatie hebt voltooid en toegepast op de Azure Portal voor die persoonlijker resource (Learning-lus).
-* Zorg ervoor dat alle beloningen worden verzonden via de belonings-API en verwerkt.
+* Zorg ervoor dat u één evaluatie hebt voltooid en toegepast in de Azure-portal voor die personalizerbron (leerlus).
+* Zorg ervoor dat alle beloningen worden verzonden, via de Reward API, en verwerkt.
 
 </details>
 
 
 <details>
-<summary><b>Hoe kan ik weet u dat de learning-lus regel matig wordt bijgewerkt en wordt gebruikt om mijn gegevens te scoren?</b></summary>
+<summary><b>Hoe weet ik dat de leerlus regelmatig wordt bijgewerkt en wordt gebruikt om mijn gegevens te scoren?</b></summary>
 
-**Antwoord**: u kunt het tijdstip waarop het model voor het laatst is bijgewerkt, vinden op de pagina **model-en leer instellingen** van de Azure Portal. Als u een oud tijds tempel ziet, is dit waarschijnlijk omdat u niet de Rangings-en belonings aanroepen verzendt. Als de service geen inkomende gegevens heeft, wordt het leer proces niet bijgewerkt. Als u ziet dat de learning-lus niet vaak genoeg wordt bijgewerkt, kunt u de **model update frequentie**van de lus bewerken.
+**Antwoord:** U het tijdstip vinden waarop het model voor het laatst is bijgewerkt op de pagina **Model- en Leerinstellingen** van de Azure-portal. Als u een oude tijdstempel ziet, is dit waarschijnlijk omdat u de rang- en beloningsoproepen niet verzendt. Als de service geen binnenkomende gegevens heeft, wordt het leren niet bijgewerkt. Als u ziet dat de leerlus niet vaak genoeg wordt bijgewerkt, u de **modelupdatefrequentie**van de lus bewerken.
 
 </details>
 
 ## <a name="offline-evaluations"></a>Offline evaluaties
 
 <details>
-<summary><b>De belang rijke functie van een evaluatie versie retourneert een lange lijst met honderden of duizenden items. Wat is er gebeurd?</b></summary>
+<summary><b>Het functiebelang van een offlineevaluatie geeft een lange lijst met honderden of duizenden items. Wat is er gebeurd?</b></summary>
 
-**Antwoord**: dit wordt meestal veroorzaakt door tijds tempels, gebruikers-id's of andere verfijnde functies die worden verzonden in.
+**Antwoord:** Dit is meestal te wijten aan timestamps, gebruikers-id's of een andere fijnkorrelige functies verzonden.
 
 </details>
 
 <details>
-<summary><b>Ik heb een offline-evaluatie gemaakt en deze is bijna onmiddellijk voltooid. Waarom is dat? Ik zie geen resultaten?</b></summary>
+<summary><b>Ik heb een offline evaluatie gemaakt en dat lukte vrijwel direct. Waarom is dat? Zie ik geen resultaten?</b></summary>
 
-**Antwoord**: de offline-evaluatie maakt gebruik van de getrainde model gegevens van de gebeurtenissen in die tijds periode. Als u geen gegevens hebt verzonden binnen de tijds periode tussen de begin-en eind tijd van de evaluatie, wordt deze zonder resultaat voltooid. Verzend een nieuwe offline-evaluatie door een tijds bereik te selecteren met de gebeurtenissen die u naar persoonlijke voor keuren hebt verzonden.
+**Antwoord**: De offline evaluatie maakt gebruik van de getrainde modelgegevens van de gebeurtenissen in die periode. Als u geen gegevens hebt verzonden in de periode tussen begin- en eindtijd van de evaluatie, wordt deze zonder resultaat voltooid. Verzend een nieuwe offline evaluatie door een tijdsbereik te selecteren met gebeurtenissen die naar Personalizer zijn verzonden.
 
 </details>
 
@@ -102,21 +102,21 @@ Wanneer de nieuwe update periode begint, wordt het bijgewerkte model gebruikt en
 ## <a name="learning-policy"></a>Leerbeleid
 
 <details>
-<summary><b>Hoe kan ik een leer beleid importeren?</b></summary>
+<summary><b>Hoe importeer ik een leerbeleid?</b></summary>
 
-**Antwoord**: meer informatie over [concepten van het trainings beleid](concept-active-learning.md#understand-learning-policy-settings) en [het Toep assen](how-to-manage-model.md) van een nieuw leer beleid. Als u geen leer beleid wilt selecteren, kunt u de [offline-evaluatie](how-to-offline-evaluation.md) gebruiken om een leer beleid te suggereren op basis van uw huidige gebeurtenissen.
+**Antwoord:** Meer informatie over [leerbeleidsconcepten](concept-active-learning.md#understand-learning-policy-settings) en hoe u een nieuw leerbeleid [toepast.](how-to-manage-model.md) Als u geen leerbeleid wilt selecteren, u de [offlineevaluatie](how-to-offline-evaluation.md) gebruiken om een leerbeleid voor te stellen op basis van uw huidige gebeurtenissen.
 
 </details>
 
 ## <a name="security"></a>Beveiliging
 
 <details>
-<summary><b>De API-sleutel voor mijn lus is aangetast. Wat kan ik doen?</b></summary>
+<summary><b>De API-sleutel voor mijn lus is gecompromitteerd. Wat kan ik doen?</b></summary>
 
-**Antwoord**: u kunt één sleutel opnieuw genereren nadat u uw clients hebt gewisseld om de andere sleutel te gebruiken. Als u twee sleutels hebt, kunt u de sleutel op een luie manier door geven zonder uitval tijd. U wordt aangeraden dit te doen op een regel matige cyclus als beveiligings maatregel.
+**Antwoord:** U de ene sleutel regenereren nadat u uw klanten hebt verwisseld om de andere sleutel te gebruiken. Met twee sleutels u de sleutel op een luie manier propageren zonder downtime te hoeven hebben. We raden aan om dit op een regelmatige cyclus te doen als een veiligheidsmaatregel.
 
 </details>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[De update frequentie van het model configureren](how-to-settings.md#model-update-frequency)
+[De frequentie van de modelupdate configureren](how-to-settings.md#model-update-frequency)

@@ -1,30 +1,33 @@
 ### YamlMime:Landing
 title: Documentatie over spraak naar tekst
-summary: Spraak-naar-tekst van de speech-service, ook wel spraak herkenning genoemd, biedt realtime transcriptie van audio-streams in tekst.
+summary: Spraak-naar-tekst van de Spraakservice, ook wel spraakherkenning genoemd, maakt real-time en batchtranscriptie van audiostreams in tekst mogelijk.
 metadata:
-  title: Documentatie voor spraak naar tekst-zelf studies, API-verwijzing-Azure Cognitive Services | Microsoft Docs
+  title: Spraak-naar-tekstdocumentatie - Zelfstudies, API-verwijzing - Azure Cognitive Services | Microsoft Documenten
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 03/10/2020
+  ms.date: 03/19/2020
   ms.author: dapine
-  ms.openlocfilehash: 7f3486e9944cf7f01c2a53ca101c5cc26530e086
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: b6f2fed7b5d6722b07b7f996c46e48ea0d86f755
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79370352"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "80052841"
 landingContent:
-- title: Over spraak naar tekst
+- title: Over spraak-naar-tekst
   linkLists:
   - linkListType: overview
     links:
-    - text: Wat is spraak-naar-tekst?
+    - text: Wat is real-time speech-to-text?
       url: speech-to-text.md
+    - text: Wat is batch speech-to-text?
+      url: batch-transcription.md
+    - text: Basisbeginselen van spraakherkenning?
+      url: speech-to-text-basics.md
   - linkListType: quickstart
     links:
     - text: Spraak herkennen met microfooninvoer
@@ -33,7 +36,7 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: Spraak herkennen die is opgeslagen in blobopslag
       url: quickstarts/from-blob.md
-- title: Ontwikkelen met spraak naar tekst
+- title: Ontwikkelen met spraak-naar-tekst
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -45,11 +48,15 @@ landingContent:
       url: how-to-custom-speech.md
     - text: Gecomprimeerde audio-invoerindelingen gebruiken
       url: how-to-use-codec-compressed-audio-input-streams.md
+  - linkListType: tutorial
+    links:
+    - text: Nauwkeurigheid verbeteren met tenantmodellen
+      url: tutorial-tenant-model.md
   - linkListType: concept
     links:
-    - text: Gegevens voorbereiden voor Custom Speech
+    - text: Gegevens voorbereiden op aangepaste spraak
       url: how-to-custom-speech-test-data.md
-    - text: Een model trainen voor Custom Speech
+    - text: Een model trainen voor aangepaste spraak
       url: how-to-custom-speech-train-model.md
     - text: door mensen gelabelde transcripties maken
       url: how-to-custom-speech-human-labeled-transcriptions.md
@@ -61,5 +68,5 @@ landingContent:
       url: language-support.md#speech-to-text
     - text: Veelgestelde vragen over spraak naar tekst
       url: faq-stt.md
-    - text: Prijs informatie voor spraak naar tekst
+    - text: Spraak-naar-tekst-prijzen
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

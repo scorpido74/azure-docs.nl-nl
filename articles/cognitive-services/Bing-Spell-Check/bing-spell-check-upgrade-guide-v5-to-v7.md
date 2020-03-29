@@ -1,7 +1,7 @@
 ---
-title: Upgrade Bing Spellingcontrole-API v5 naar v7
+title: Bing Spell Check API v5 upgraden naar v7
 titleSuffix: Azure Cognitive Services
-description: Identificeert de onderdelen van uw toepassing die u moet bijwerken om versie 7 te gebruiken.
+description: Hiermee worden de onderdelen van uw toepassing geïdentificeerd die u moet bijwerken om versie 7 te kunnen gebruiken.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,65 +11,65 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 545772a28a67310b12eb55cd1fb14e8d12a95a58
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68500822"
 ---
-# <a name="spell-check-api-upgrade-guide"></a>Upgrade handleiding Spell Check-API
+# <a name="spell-check-api-upgrade-guide"></a>Upgradehandleiding voor api-controle van spreukcontrole
 
-Deze upgrade handleiding bevat de wijzigingen tussen versie 5 en versie 7 van de Bing Spellingcontrole-API. Gebruik deze hand leiding om u te helpen bij het identificeren van de onderdelen van uw toepassing die u moet bijwerken om versie 7 te gebruiken.
+Deze upgradehandleiding identificeert de wijzigingen tussen versie 5 en versie 7 van de Bing Spell Check API. Gebruik deze handleiding om u te helpen de onderdelen van uw toepassing te identificeren die u moet bijwerken om versie 7 te gebruiken.
 
 ## <a name="breaking-changes"></a>Wijzigingen die fouten veroorzaken
 
 ### <a name="endpoints"></a>Eindpunten
 
-- Het versie nummer van het eind punt is gewijzigd van v5 naar v7. Bijvoorbeeld `https://api.cognitive.microsoft.com/bing/v7.0/spellcheck`.
+- Het versienummer van het eindpunt is gewijzigd van v5 naar v7. Bijvoorbeeld `https://api.cognitive.microsoft.com/bing/v7.0/spellcheck`.
 
-### <a name="error-response-objects-and-error-codes"></a>Fout bericht objecten en fout codes
+### <a name="error-response-objects-and-error-codes"></a>Foutreactieobjecten en foutcodes
 
-- Alle mislukte aanvragen moeten nu een `ErrorResponse` object bevatten in de hoofd tekst van het antwoord.
+- Alle mislukte aanvragen moeten `ErrorResponse` nu een object in de antwoordinstantie bevatten.
 
-- De volgende velden zijn toegevoegd aan `Error` het object.  
-  - `subCode`&mdash;Partitioneert de fout code indien mogelijk naar discrete buckets
-  - `moreDetails`&mdash;Aanvullende informatie over de fout die in het `message` veld wordt beschreven
+- De volgende velden `Error` aan het object toegevoegd.  
+  - `subCode`&mdash;Partities van de foutcode in discrete buckets, indien mogelijk
+  - `moreDetails`&mdash;Aanvullende informatie over de `message` fout die in het veld is beschreven
    
 
-- De V5-fout codes zijn vervangen door de `code` volgende `subCode` mogelijke en waarden.  
+- Verving de v5-foutcodes `code` door `subCode` de volgende mogelijke en waarden.  
   
-|Code|SubCode|Description
+|Code|Subcode|Beschrijving
 |-|-|-
-|ServerError|UnexpectedError<br/>ResourceError<br/>Niet geïmplementeerd|Bing retourneert server error wanneer een van de voor waarden van de subcode zich voordoet. Het antwoord bevat deze fouten als de HTTP-status code 500 is.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Geblokkeerd|Bing retourneert InvalidRequest wanneer een deel van de aanvraag niet geldig is. Een vereiste para meter ontbreekt bijvoorbeeld of een parameter waarde is niet geldig.<br/><br/>Als de fout ParameterMissing of ParameterInvalidValue is, is de HTTP-status code 400.<br/><br/>Als de fout HttpNotAllowed is, wordt de HTTP-status code 410.
-|RateLimitExceeded||Bing retourneert RateLimitExceeded wanneer u het quotum voor query's per seconde (QPS) of query's per maand (QPM) overschrijdt.<br/><br/>Bing retourneert HTTP-status code 429 als u QPS en 403 hebt overschreden als u QPM hebt overschreden.
-|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing retourneert InvalidAuthorization wanneer Bing de oproepende functie niet kan verifiëren. De `Ocp-Apim-Subscription-Key` koptekst ontbreekt bijvoorbeeld of de abonnements sleutel is niet geldig.<br/><br/>Redundantie treedt op als u meer dan één verificatie methode opgeeft.<br/><br/>Als de fout InvalidAuthorization is, is de HTTP-status code 401.
-|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Bing retourneert InsufficientAuthorization wanneer de aanroeper geen machtigingen heeft voor toegang tot de resource. Dit kan gebeuren als de abonnements sleutel is uitgeschakeld of is verlopen. <br/><br/>Als de fout InsufficientAuthorization is, is de HTTP-status code 403.
+|ServerFout|Onverwachts<br/>ResourceFout<br/>Niet geïmplementeerd|Bing retourneert ServerError wanneer een van de subcodevoorwaarden zich voordoet. Het antwoord bevat deze fouten als de HTTP-statuscode 500 is.
+|Ongeldig verzoek|ParameterMissing<br/>ParameterOngeldigWaarde<br/>HttpNotAtoegestaan<br/>Geblokkeerd|Bing retourneert Ongeldige aanvraag wanneer een deel van de aanvraag niet geldig is. Er ontbreekt bijvoorbeeld een vereiste parameter of een parameterwaarde is ongeldig.<br/><br/>Als de fout ParameterMissing of ParameterInvalidValue is, is de HTTP-status400.<br/><br/>Als de fout httpNota is toegestaan, wordt de HTTP-statuscode 410 weergegeven.
+|RateLimitoverschreden||Bing retourneert RateLimitExceeded wanneer u uw query's per seconde (QPS) of query's per maand (QPM) quotum overschrijdt.<br/><br/>Bing retourneert HTTP-statuscode 429 als u QPS en 403 hebt overschreden als u QPM hebt overschreden.
+|Ongeldig autorisatie|Autorisatieontbreekt<br/>AutorisatieRedundantie|Bing retourneert InvalidAuthorization wanneer Bing de beller niet kan verifiëren. De `Ocp-Apim-Subscription-Key` koptekst ontbreekt bijvoorbeeld of de abonnementssleutel is ongeldig.<br/><br/>Redundantie treedt op als u meer dan één verificatiemethode opgeeft.<br/><br/>Als de fout Ongeldig autorisatie is, is de HTTP-status401.
+|OnvoldoendeAutorisatie|AutorisatieUitgeschakeld<br/>Autorisatie verlopen|Bing retourneert OnvoldoendeAutorisatie wanneer de beller geen machtigingen heeft om toegang te krijgen tot de bron. Dit kan gebeuren als de abonnementssleutel is uitgeschakeld of is verlopen. <br/><br/>Als de fout Onvoldoende autorisatie is, is de HTTP-statuscode 403.
 
-- De volgende fout codes worden toegewezen aan de nieuwe codes. Als u een afhankelijkheid van V5-fout codes hebt genomen, werkt u de code dienovereenkomstig bij.  
+- De volgende geeft de vorige foutcodes een overzicht van de nieuwe codes. Als u afhankelijk bent van v5-foutcodes, werkt u uw code dienovereenkomstig bij.  
   
-|Versie 5-code|Versie 7 code. subcode
+|Versie 5-code|Versie 7 code.subCode
 |-|-
-|RequestParameterMissing|InvalidRequest.ParameterMissing
-RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
-ResourceAccessDenied|InsufficientAuthorization
-ExceededVolume|RateLimitExceeded
-ExceededQpsLimit|RateLimitExceeded
-Uitgeschakeld|InsufficientAuthorization.AuthorizationDisabled
-UnexpectedError|ServerError.UnexpectedError
-DataSourceErrors|ServerError.ResourceError
-AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
-HttpNotAllowed|InvalidRequest.HttpNotAllowed
+|AanvraagParametermissing|InvalidRequest.ParameterMissing
+AanvraagParameterInvalidValue|Ongeldige waarde voor ongeldige aanvragen.parameterongeldig
+ResourceAccess geweigerd|OnvoldoendeAutorisatie
+OverschredenVolume|RateLimitoverschreden
+Limiet overschredenQpsLimit|RateLimitoverschreden
+Uitgeschakeld|OnvoldoendeAutorisatie.AutorisatieUitgeschakeld
+Onverwachts|ServerError.UnexpectedError
+Gegevensbronfouten|ServerError.ResourceError
+Autorisatieontbreekt|InvalidAuthorization.AuthorizationMissing InvalidAuthorization.AuthorizationMissing InvalidAuthorization.AuthorizationMissing InvalidAuthorization
+HttpNotAtoegestaan|InvalidRequest.HttpNotA toegestaan
 UserAgentMissing|InvalidRequest.ParameterMissing
-Niet geïmplementeerd|ServerError.NotImplemented
-InvalidAuthorization|InvalidAuthorization
-InvalidAuthorizationMethod|InvalidAuthorization
+Niet geïmplementeerd|ServerFout.Niet geïmplementeerd
+Ongeldig autorisatie|Ongeldig autorisatie
+Ongeldige autorisatiemethode|Ongeldig autorisatie
 MultipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
-ExpiredAuthorizationToken|InsufficientAuthorization.AuthorizationExpired
-InsufficientScope|InsufficientAuthorization
-Geblokkeerd|InvalidRequest. blocked
+VerlopenAutorisatieToken|OnvoldoendeAutorisatie.Autorisatieverlopen
+OnvoldoendeScope|OnvoldoendeAutorisatie
+Geblokkeerd|Ongeldig verzoek.geblokkeerd
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Vereisten voor gebruik en weergave](./UseAndDisplayRequirements.md)
+> [Gebruiks- en weergavevereisten](./UseAndDisplayRequirements.md)

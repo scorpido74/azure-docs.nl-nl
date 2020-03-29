@@ -1,7 +1,7 @@
 ---
-title: De knop insluitende lezer aanpassen
+title: De knop Meeslepende lezer aanpassen
 titleSuffix: Azure Cognitive Services
-description: In dit artikel wordt uitgelegd hoe u de knop kunt aanpassen waarmee de insluitende lezer wordt gestart.
+description: In dit artikel ziet u hoe u de knop aanpassen die de meeslepende lezer lanceert.
 services: cognitive-services
 author: metanMSFT
 manager: guillasi
@@ -11,61 +11,61 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 6461cc60a237cf834226b07db5e1ea6fbbea7a92
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75946208"
 ---
-# <a name="how-to-customize-the-immersive-reader-button"></a>De knop voor de insluitende lezer aanpassen
+# <a name="how-to-customize-the-immersive-reader-button"></a>De knop Meeslepende lezer aanpassen
 
-In dit artikel wordt beschreven hoe u de knop voor het starten van de insluitende lezer kunt aanpassen, zodat deze voldoet aan de behoeften van uw toepassing.
+In dit artikel wordt uitgelegd hoe u de knop aanpassen die de Immersive Reader start, zodat deze aan de behoeften van uw toepassing voldoet.
 
-## <a name="add-the-immersive-reader-button"></a>De knop insluitende lezer toevoegen
+## <a name="add-the-immersive-reader-button"></a>De knop Meeslepende lezer toevoegen
 
-De insluitende lezer-SDK biedt standaard stijlen voor de knop waarmee de insluitende lezer wordt gestart. Gebruik het kenmerk `immersive-reader-button` class om deze stijl in te scha kelen.
+De Immersive Reader SDK biedt standaard styling voor de knop die de Immersive Reader lanceert. Gebruik `immersive-reader-button` het kenmerk klasse om deze styling in te schakelen.
 
 ```html
 <div class='immersive-reader-button'></div>
 ```
 
-## <a name="customize-the-button-style"></a>De knop stijl aanpassen
+## <a name="customize-the-button-style"></a>De knopstijl aanpassen
 
-Gebruik het `data-button-style` kenmerk om de stijl van de knop in te stellen. De toegestane waarden zijn `icon`, `text`en `iconAndText`. De standaardwaarde is `icon`.
+Gebruik `data-button-style` het kenmerk om de stijl van de knop in te stellen. De toegestane waarden `icon` `text`zijn `iconAndText`, en . De standaardwaarde is `icon`.
 
-### <a name="icon-button"></a>Pictogram knop
+### <a name="icon-button"></a>Pictogramknop
 
 ```html
 <div class='immersive-reader-button' data-button-style='icon'></div>
 ```
 
-Hiermee wordt het volgende weer gegeven:
+Dit geeft het volgende weer:
 
-![Pictogram knop](./media/button-icon.png)
+![Pictogramknop](./media/button-icon.png)
 
-### <a name="text-button"></a>Knop tekst
+### <a name="text-button"></a>Knop Tekst
 
 ```html
 <div class='immersive-reader-button' data-button-style='text'></div>
 ```
 
-Hiermee wordt het volgende weer gegeven:
+Dit geeft het volgende weer:
 
-![Pictogram knop](./media/button-text.png)
+![Pictogramknop](./media/button-text.png)
 
-### <a name="icon-and-text-button"></a>Knop pictogram en tekst
+### <a name="icon-and-text-button"></a>Pictogram en tekstknop
 
 ```html
 <div class='immersive-reader-button' data-button-style='iconAndText'></div>
 ```
 
-Hiermee wordt het volgende weer gegeven:
+Dit geeft het volgende weer:
 
-![Pictogram knop](./media/button-icon-and-text.png)
+![Pictogramknop](./media/button-icon-and-text.png)
 
-## <a name="customize-the-button-text"></a>De knop tekst aanpassen
+## <a name="customize-the-button-text"></a>De knoptekst aanpassen
 
-Configureer de taal en de ALT-tekst voor de knop met behulp van het kenmerk `data-locale`. De standaardtaal is Engels.
+Configureer de taal en de alternatieve `data-locale` tekst voor de knop met het kenmerk. De standaardtaal is Engels.
 
 ```html
 <div class='immersive-reader-button' data-locale='fr-FR'></div>
@@ -73,7 +73,7 @@ Configureer de taal en de ALT-tekst voor de knop met behulp van het kenmerk `dat
 
 ## <a name="customize-the-size-of-the-icon"></a>De grootte van het pictogram aanpassen
 
-De grootte van het pictogram van de insluitende lezer kan worden geconfigureerd met behulp van het kenmerk `data-icon-px-size`. Hiermee stelt u de grootte van het pictogram in pixels. De standaard grootte is 20px.
+De grootte van het pictogram Immersive Reader `data-icon-px-size` kan worden geconfigureerd met behulp van het kenmerk. Hiermee wordt de grootte van het pictogram in pixels ingesteld. De standaardgrootte is 20px.
 
 ```html
 <div class='immersive-reader-button' data-icon-px-size='50'></div>
@@ -81,4 +81,4 @@ De grootte van het pictogram van de insluitende lezer kan worden geconfigureerd 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* De referentie voor de [insluitende lezer-SDK](./reference.md) verkennen
+* Ontdek de [Meeslepende Reader SDK-referentie](./reference.md)

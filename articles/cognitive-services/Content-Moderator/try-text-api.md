@@ -1,7 +1,7 @@
 ---
-title: Gemiddelde tekst met behulp van de API voor tekst toezicht-Content Moderator
+title: Tekst beheren met behulp van de API voor tekstbeheer - Inhoudsmoderator
 titleSuffix: Azure Cognitive Services
-description: 'Test: tekst toezicht testen met behulp van de tekst toezicht-API in de online-console.'
+description: Tekstmoderatie voor testsstation met behulp van de API voor tekstbeheer in de online console.
 services: cognitive-services
 author: PatrickFarley
 ms.author: pafarley
@@ -11,67 +11,67 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.openlocfilehash: e0930558f31b27a77fa2cd6b44fcea2fe9091086
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74538831"
 ---
-# <a name="moderate-text-from-the-api-console"></a>Tekst met gemiddelde van de API-console
+# <a name="moderate-text-from-the-api-console"></a>Tekst uit de API-console matigen
 
-Gebruik de [tekst toezicht-API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) in azure content moderator om de tekst inhoud te scannen voor scheld woorden en deze te vergelijken met aangepaste en gedeelde lijsten.
+Gebruik de [API voor tekstbeheer](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) in Azure-inhoudsmoderator om uw tekstinhoud te scannen op godslastering en deze te vergelijken met aangepaste en gedeelde lijsten.
 
 ## <a name="get-your-api-key"></a>Uw API-sleutel ophalen
 
-Voordat u de API in de online console kunt testen, moet u uw abonnements sleutel hebben. Dit bevindt zich op het tabblad **instellingen** in het vak **OCP-APIM-Subscription-Key** . Zie [Overzicht](overview.md) voor meer informatie.
+Voordat u de API testen in de online console, hebt u uw abonnementssleutel nodig. Dit bevindt zich op het tabblad **Instellingen** in het vak **Ocp-Apim-Subscription-Key.** Zie [Overzicht](overview.md) voor meer informatie.
 
-## <a name="navigate-to-the-api-reference"></a>Ga naar de API-verwijzing
+## <a name="navigate-to-the-api-reference"></a>Navigeren naar de API-verwijzing
 
-Ga naar de [tekst toezicht API-verwijzing](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f). 
+Ga naar de [API-verwijzing voor tekstbeheer](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f). 
 
-  De pagina **tekst scherm** wordt geopend.
+  De **pagina Tekst - Scherm** wordt geopend.
 
-## <a name="open-the-api-console"></a>Open de API-console
+## <a name="open-the-api-console"></a>De API-console openen
 
-Voor **open API-test console**selecteert u de regio die uw locatie het meest beschrijft. 
+Selecteer **voor open API-testconsole**het gebied dat uw locatie het meest beschrijft. 
 
-  ![Pagina regio tekst scherm selecteren](images/test-drive-region.png)
+  ![Tekst - Selectie van schermpaginaregio's](images/test-drive-region.png)
 
-  De API-console voor **tekst schermen** wordt geopend.
+  De **API-console Tekst - Scherm** wordt geopend.
 
-## <a name="select-the-inputs"></a>De invoer selecteren
+## <a name="select-the-inputs"></a>De ingangen selecteren
 
 ### <a name="parameters"></a>Parameters
 
-Selecteer de query parameters die u wilt gebruiken in het tekst scherm. Voor dit voor beeld gebruikt u de standaard waarde voor **taal**. U kunt deze waarde ook leeg laten, omdat de waarschijnlijke taal door de bewerking automatisch wordt gedetecteerd als onderdeel van de uitvoering.
+Selecteer de queryparameters die u in het tekstscherm wilt gebruiken. Gebruik in dit voorbeeld de standaardwaarde voor **taal**. U het ook leeg laten omdat de bewerking automatisch de waarschijnlijke taal detecteert als onderdeel van de uitvoering ervan.
 
 > [!NOTE]
-> Wijs `eng` toe of laat de para meter leeg om de **door de computer** ondersteunde **classificatie** -informatie te zien (preview-functie). **Deze functie ondersteunt alleen Engels**.
+> Wijs deze voor `eng` de **taalparameter** toe of laat deze leeg om het door de machine ondersteunde **classificatieantwoord** (voorbeeldfunctie) te zien. **Deze functie ondersteunt alleen Engels.**
 >
-> Gebruik de [ISO 639-3-code](http://www-01.sil.org/iso639-3/codes.asp) **van de** ondersteunde talen die in dit artikel worden vermeld, of laat het leeg.
+> Gebruik de [ISO 639-3-code](http://www-01.sil.org/iso639-3/codes.asp) van de ondersteunde talen in dit artikel of laat deze leeg voor detectie **van godslasteringstermen.**
 
-Selecteer **waar**voor **auto correctie**, **PII**en **classificeren (preview)** . Laat het veld **ListID** leeg.
+Selecteer **true**voor **autocorrectie**, **PII**en **classificeren (voorbeeld).** Laat het **veld ListId** leeg.
 
-  ![Query parameters voor de console tekst scherm](images/text-api-console-inputs.PNG)
+  ![Tekst - Parameters voor schermconsolequery's](images/text-api-console-inputs.PNG)
 
-### <a name="content-type"></a>Inhouds type
+### <a name="content-type"></a>Inhoudstype
 
-Selecteer bij **inhouds type**het type inhoud dat u wilt scherm. Voor dit voor beeld gebruikt u het standaard type **tekst/onbewerkte** inhoud. Voer in het vak **OCP-APIM-Subscription-Key** uw abonnements sleutel in.
+Selecteer **bij Inhoudstype**het type inhoud dat u wilt screenen. Gebruik in dit voorbeeld het **standaardtekst-/inhoudstype.** Voer in het vak **Ocp-Apim-Subscription-Key** uw abonnementssleutel in.
 
-### <a name="sample-text-to-scan"></a>Te scannen voorbeeld tekst
+### <a name="sample-text-to-scan"></a>Voorbeeldtekst om te scannen
 
-Voer in het vak hoofd tekst van de aanvraag een gedeelte van de **inhoud** in. In het volgende voor beeld ziet u een opzettelijke intypen in de tekst.
+Voer in het vak **Hoofdtekst aanvragen** tekst in. In het volgende voorbeeld ziet u een opzettelijke typefout in de tekst.
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555. These are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 0800 820 3300. Also, 999-99-9999 looks like a social security number (SSN).
 ```
 
-## <a name="analyze-the-response"></a>Het antwoord analyseren
+## <a name="analyze-the-response"></a>De respons analyseren
 
-Het volgende antwoord toont de verschillende inzichten van de API. Het bevat mogelijk ongepaste, persoonlijke gegevens, classificatie (preview) en de automatisch gecorrigeerde versie.
+De volgende reactie toont de verschillende inzichten uit de API. Het bevat potentiële godslastering, persoonlijke gegevens, classificatie (preview) en de automatisch gecorrigeerde versie.
 
 > [!NOTE]
-> De functie ' classificatie ' die door de machine wordt ondersteund, is beschikbaar in de preview-versie en ondersteunt alleen Engels.
+> De machine-ondersteunde 'Classificatie' functie is in preview en ondersteunt alleen Engels.
 
 ```json
 {"OriginalText":"Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.\r\nThese are all UK phone numbers: +44 123 456 7890 or 0234 567 8901 or 0456 789 0123.\r\nAlso, 999-99-9999 looks like a social security number (SSN).",
@@ -167,8 +167,8 @@ Het volgende antwoord toont de verschillende inzichten van de API. Het bevat mog
 }
 ```
 
-Raadpleeg de conceptuele hand leiding voor [tekst toezicht](text-moderation-api.md) voor een gedetailleerde uitleg van alle secties in het JSON-antwoord.
+Raadpleeg de conceptuele gids [Voor tekstmatigheid](text-moderation-api.md) voor een gedetailleerde uitleg van alle secties in de JSON-respons.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de REST API in uw code of volg de [.NET SDK Quick](dotnet-sdk-quickstart.md) start om te integreren met uw toepassing.
+Gebruik de REST API in uw code of volg de [.NET SDK quickstart](dotnet-sdk-quickstart.md) om te integreren met uw toepassing.

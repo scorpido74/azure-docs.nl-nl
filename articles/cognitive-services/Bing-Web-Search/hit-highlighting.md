@@ -1,7 +1,7 @@
 ---
-title: Decoratie markeringen gebruiken om tekst te markeren Bing Webzoekopdrachten-API
+title: Decoratiemarkeringen gebruiken om tekst te markeren - Bing Web Search API
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van tekst decoratie en het markeren van markeringen in uw zoek resultaten met behulp van de Bing Webzoekopdrachten-API.
+description: Meer informatie over het gebruik van tekstdecoraties en het markeren van markeringen in uw zoekresultaten met behulp van de Bing Web Search API.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -12,71 +12,71 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
 ms.openlocfilehash: a6d394fec6e7cf0a230f61ad05c236a1f84dad9d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68854019"
 ---
-# <a name="using-decoration-markers-to-highlight-text"></a>Decoratie markeringen gebruiken om tekst te markeren
+# <a name="using-decoration-markers-to-highlight-text"></a>Decoratiemarkeringen gebruiken om tekst te markeren
 
-Bing ondersteunt treffer markeringen, waarmee query termen (of andere termen die Bing relevant vindt) worden gemarkeerd in de weer gave-teken reeksen van een aantal antwoorden. Een voor beeld van `name`een webpagina resultaat, `displayUrl`en `snippet` velden kunnen gemarkeerde query termen bevatten. 
+Bing ondersteunt hithighlighting, die querytermen (of andere termen die Bing relevant vindt) markeert in de weergavetekenreeksen van sommige antwoorden. De `name`velden `displayUrl`en `snippet` velden van een webpagina kunnen bijvoorbeeld gemarkeerde querytermen bevatten. 
 
-Standaard bevat Bing geen markerings markeringen in weergave teken reeksen. Als u de markeringen wilt inschakelen, neemt `textDecorations` u de query parameter op in uw aanvraag en `true`stelt u deze in op.
+Bing bevat standaard geen markeringsmarkeringen in weergavetekenreeksen. Als u de markeringen `textDecorations` wilt inschakelen, neemt u `true`de queryparameter op in uw aanvraag en stelt u deze in op .
 
-## <a name="hit-highlighting-example"></a>Voor beeld van een markeren van treffers
+## <a name="hit-highlighting-example"></a>Voorbeeld van het markeren van treffers
 
-In het volgende voor beeld wordt een webresultaat weer gegeven voor `Sailing Dinghy`. Bing heeft het begin en het einde van de query term gemarkeerd met de Unicode-tekens E000 en E001.
+In het volgende voorbeeld `Sailing Dinghy`wordt een webresultaat weergegeven voor . Bing heeft het begin en het einde van de queryterm gemarkeerd met de E000- en E001 Unicode-tekens.
   
-![Treffers markeren](./media/cognitive-services-bing-web-api/bing-hit-highlighting.png) 
+![Hit Highlighting](./media/cognitive-services-bing-web-api/bing-hit-highlighting.png) 
 
-Voordat het resultaat in uw gebruikers interface wordt weer gegeven, vervangt u de Unicode-tekens door de letters die geschikt zijn voor uw weer gave-indeling.
+Voordat u het resultaat weergeeft in uw gebruikersinterface, vervangt u de Unicode-tekens door de tekens die geschikt zijn voor uw weergave-indeling.
 
-## <a name="marker-formatting"></a>Markerings opmaak
+## <a name="marker-formatting"></a>Markeringsopmaak
 
-Bing biedt de mogelijkheid om Unicode-tekens of HTML-tags als markeringen te gebruiken. Als u wilt opgeven welke markeringen moeten worden gebruikt, neemt u de query parameter [TextFormat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) op: 
+Bing biedt de mogelijkheid om Unicode-tekens of HTML-tags als markeringen te gebruiken. Als u wilt opgeven welke markeringen u wilt gebruiken, neemt u de parameter [textFormat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) query op: 
 
-| Value             | Tijdlijnmarkeerteken                       |
+| Waarde             | Markering                       |
 |-------------------|------------------------------|
 | `textFormat=Raw`  | Unicode-tekens (standaard) |
 | `textFormat=HTML` | HTML-tekens              |
 
-## <a name="additional-text-decorations"></a>Extra tekst decoratie
+## <a name="additional-text-decorations"></a>Extra tekstdecoraties
 
-Bing kan verschillende tekst decors retour neren. Een `Computation` antwoord kan bijvoorbeeld subscript markeringen bevatten voor de query term `log(2)` in het `expression` veld.
+Bing kan verschillende tekstdecoraties retourneren. Een `Computation` antwoord kan bijvoorbeeld subscriptmarkeertekens bevatten `log(2)` voor `expression` de queryterm in het veld.
 
-![Reken markeringen](./media/cognitive-services-bing-web-api/bing-markers-computation.png) 
+![berekeningsmarkeringen](./media/cognitive-services-bing-web-api/bing-markers-computation.png) 
 
-Als de aanvraag geen decoratie heeft opgegeven, bevat `expression` `log10(2)`het veld. 
+Als het verzoek geen decoraties `expression` heeft `log10(2)`opgegeven, zou het veld . 
 
-Als `textDecorations` dat `true`het geval is, kan Bing de volgende markeringen bevatten in de weergave teken reeksen van antwoorden. Als er geen equivalente HTML-code is, is de tabelcel leeg.
+Als `textDecorations` `true`dat het wel is, kan Bing de volgende markeringen opnemen in de weergavetekenreeksen van antwoorden. Als er geen gelijkwaardige HTML-tag is, is de tabelcel leeg.
 
-|Unicode|HTML-CODE|Description
+|Unicode|HTML|Beschrijving
 |-|-|-
-|U + E000|\<b>|Markeert het begin van de query term (treffers markeren)
-|U+E001|\</b>|Markeert het einde van de query term
-|U + E002|\<i>|Markeert het begin van cursieve inhoud 
-|U + E003|\</i>|Markeert het einde van cursieve inhoud
-|U+E004|\<br/>|Markeert een regel einde
-|U + E005||Markeert het begin van een telefoon nummer
-|U + E006||Markeert het einde van een telefoon nummer
-|U + E007||Markeert het begin van een adres
-|U + E008||Markeert het einde van een adres
-|U+E009|\&nbsp;|Hiermee wordt een vaste spatie gemarkeerd
-|U+E00C|\<strong>|Markeert het begin van vetgedrukte inhoud
-|U + E00D|\</strong>|Markeert het einde van vetgedrukte inhoud
-|U + E00E||Markeert het begin van de inhoud waarvan de achtergrond lichter moet zijn dan de omringende achtergrond
-|U + E00F||Markeert het einde van de inhoud waarvan de achtergrond lichter moet zijn dan de omringende achtergrond
-|U+E010||Markeert het begin van de inhoud waarvan de achtergrond donkerder moet zijn dan de omringende achtergrond
-|U+E011||Markeert het einde van de inhoud waarvan de achtergrond donkerder moet zijn dan de omringende achtergrond
-|U + E012|\<del>|Markeert het begin van de inhoud die moet worden doorgehaald
-|U+E013|\</del>|Markeert het einde van de inhoud die moet worden doorgehaald
-|U + E016|\<sub>|Markeert het begin van de inhoud van het subscript
-|U + E017|\</sub>|Markeert het einde van de inhoud van het subscript
-|U + E018|\<sup >|Markeert het begin van de inhoud van Super script
-|U+E019|\</sup>|Markeert het einde van de inhoud van Super script
+|U+E000|\<b>|Hiermee markeert u het begin van de queryterm (hithighlighting)
+|U+E001|\</b>|Hiermee markeert u het einde van de queryterm
+|U+E002|\<ik>|Markeert het begin van cursieve inhoud 
+|U+E003|\</i>|Markeert het einde van cursieve inhoud
+|U+E004|\<br/>|Markeert een regeleinde
+|U+E005||Markeert het begin van een telefoonnummer
+|U+E006||Markeert het einde van een telefoonnummer
+|U+E007||Markeert het begin van een adres
+|U+E008||Markeert het einde van een adres
+|U+E009|\&nbsp;|Markeert een niet-brekende ruimte
+|U+E00C|\<sterke>|Markeert het begin van vetgedrukte inhoud
+|U+E00D|\</sterke>|Markeert het einde van vetgedrukte inhoud
+|U+E00E||Hiermee markeert u het begin van de inhoud waarvan de achtergrond lichter moet zijn dan de omringende achtergrond
+|U+E00F||Hiermee wordt het einde van de inhoud markeert waarvan de achtergrond lichter moet zijn dan de omringende achtergrond
+|U+E010||Hiermee markeert u het begin van inhoud waarvan de achtergrond donkerder moet zijn dan de omringende achtergrond
+|U+E011||Hiermee markeert u het einde van de inhoud waarvan de achtergrond donkerder moet zijn dan de omringende achtergrond
+|U+E012|\<del>|Markeert het begin van de inhoud die moet worden doorgeslagen
+|U+E013|\</del>|Markeert het einde van de inhoud die moet worden doorgeslagen
+|U+E016|\<sub>|Markeert het begin van subscriptinhoud
+|U+E017|\</sub>|Markeert het einde van subscriptinhoud
+|U+E018|\<sup>|Markeert het begin van superscript-inhoud
+|U+E019|\</sup>|Markeert het einde van superscript-inhoud
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Wat is de Bing Webzoekopdrachten-API?](overview.md) 
-* [Miniatuur weergaven verg Roten/verkleinen en bijsnijden](resize-and-crop-thumbnails.md)
+* [Het formaat van miniaturen wijzigen en miniaturen bijsnijden](resize-and-crop-thumbnails.md)

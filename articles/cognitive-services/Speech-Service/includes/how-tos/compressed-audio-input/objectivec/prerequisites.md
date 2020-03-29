@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: 28f6ef7248fada8286bbe90c868cd9f947f0435d
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943792"
 ---
-Het verwerken van gecomprimeerde audio wordt geïmplementeerd met behulp van [gstreamer](https://gstreamer.freedesktop.org). Om licentie redenen GStreamer binaire bestanden niet worden gecompileerd en gekoppeld aan de spraak-SDK. In plaats daarvan moet een wrapper-bibliotheek met deze functies worden gebouwd en geleverd met de apps met behulp van de SDK.
+Het verwerken van gecomprimeerde audio wordt geïmplementeerd met [GStreamer](https://gstreamer.freedesktop.org). Om licentieredenen worden GStreamer-binaries niet gecompileerd en gekoppeld aan de Speech SDK. In plaats daarvan moet een wrapper-bibliotheek met deze functies worden gebouwd en verzonden met de apps die de SDK gebruiken.
 
-Als u deze wrapper-bibliotheek wilt maken, moet u eerst de [gstreamer-SDK](https://gstreamer.freedesktop.org/data/pkg/ios/1.16.0/gstreamer-1.0-devel-1.16.0-ios-universal.pkg)downloaden en installeren. Down load vervolgens het **Xcode** -project voor de [wrapper-bibliotheek](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/compressed-streams/GStreamerWrapper).
+Om deze wrapper bibliotheek te bouwen, eerst downloaden en installeren van de [GStreamer SDK](https://gstreamer.freedesktop.org/data/pkg/ios/1.16.0/gstreamer-1.0-devel-1.16.0-ios-universal.pkg). Download vervolgens het **Xcode-project** voor de [wrapper-bibliotheek.](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/compressed-streams/GStreamerWrapper)
 
-Open het project in **Xcode** en bouw het voor het **algemene IOS-apparaat** doel--het zal *niet* werken voor een specifiek doel.
+Open het project in **Xcode** en bouw het voor het **algemene iOS-apparaatdoel** - het zal *niet* werken om het te bouwen voor een specifiek doel.
 
-Met de stap build wordt een dynamisch Framework gegenereerd met een dynamische bibliotheek voor alle benodigde architecturen met de naam van `GStreamerWrapper.framework`.
+De buildstap genereert een dynamische frameworkbundel met een dynamische bibliotheek `GStreamerWrapper.framework`voor alle benodigde architecturen met de naam .
 
-Dit framework moet worden opgenomen in alle apps die gebruikmaken van gecomprimeerde audio stromen met de Speech Service SDK.
+Dit framework moet worden opgenomen in alle apps die gecomprimeerde audiostreams gebruiken met de Spraakservice SDK.
 
-Pas de volgende instellingen in uw **Xcode** -project toe om dit te bewerkstelligen:
+Pas de volgende instellingen in uw **Xcode-project** toe om dit te bereiken:
 
-1. Kopieer de `GStreamerWrapper.framework` die u zojuist hebt gemaakt en het Framework van de Cognitive Services Speech SDK, die u [hier](https://aka.ms/csspeech/iosbinary)kunt downloaden, naar de map met uw voorbeeld project.
-1. Wijzig de paden in de kaders in de *project instellingen*.
-   1. Voeg op het tabblad **Algemeen** onder de kop **Inge sloten binaire bestanden** de SDK-bibliotheek toe als Framework: **Voeg inge sloten binaire bestanden** toe > **Voeg andere toe...** > Navigeer naar de map die u hebt gekozen en selecteer beide frameworks.
+1. Kopieer `GStreamerWrapper.framework` de zojuist gebouwde u en het kader van de Cognitive Services Speech SDK, die u vanaf [hier](https://aka.ms/csspeech/iosbinary)downloaden naar de directory met uw voorbeeldproject.
+1. Pas de paden aan de frameworks in de *projectinstellingen aan.*
+   1. Voeg op het tabblad **Algemeen** onder de **koptekst Ingesloten binaire bestanden** de SDK-bibliotheek toe als framework: **Ingesloten binaire bestanden** > toevoegen**Voeg andere...** > Navigeer naar de lijst die u hebt gekozen en selecteer beide frameworks.
    1. Ga naar het tabblad **Build Settings** en activeer **alle** instellingen.
 1. Voeg de map `$(SRCROOT)/..` toe aan de _Framework Search Paths_ onder de kop **Search Paths**.

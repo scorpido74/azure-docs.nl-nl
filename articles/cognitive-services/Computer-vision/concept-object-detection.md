@@ -1,7 +1,7 @@
 ---
-title: Object detectie-Computer Vision
+title: Objectdetectie - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Leer concepten met betrekking tot de functie voor object detectie van de Computer Vision-API-gebruik en-limieten.
+description: Leer concepten met betrekking tot de functie objectdetectie van de Computer Vision API - gebruik en limieten.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0625d8371b9ecaaadd05e302413054948fd4b27b
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 3957e15a09bd7e7ecd814d169451af3241108b64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967037"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131660"
 ---
-# <a name="detect-common-objects-in-images"></a>Algemene objecten detecteren in installatie kopieën
+# <a name="detect-common-objects-in-images"></a>Veelvoorkomende objecten in afbeeldingen detecteren
 
-Object detectie is vergelijkbaar met [labelen](concept-tagging-images.md), maar de API retourneert de coördinaten van het selectie kader (in pixels) voor elk gevonden object. Als een afbeelding bijvoorbeeld een hond, kat en persoon bevat, zal de detectiebewerking deze objecten vermelden, samen met hun coördinaten in de afbeelding. U kunt deze functie gebruiken om de relaties tussen de objecten in een installatie kopie te verwerken. U kunt hiermee ook bepalen of er meerdere exemplaren van dezelfde tag in een afbeelding zijn.
+Objectdetectie is vergelijkbaar met [tags,](concept-tagging-images.md)maar de API retourneert de selectiecoördinaten (in pixels) voor elk gevonden object. Als een afbeelding bijvoorbeeld een hond, kat en persoon bevat, zal de detectiebewerking deze objecten vermelden, samen met hun coördinaten in de afbeelding. U deze functionaliteit gebruiken om de relaties tussen de objecten in een afbeelding te verwerken. U ook bepalen of er meerdere exemplaren van dezelfde tag in een afbeelding zijn.
 
-De detectie-API past tags toe op basis van de objecten of de levens punten die in de installatie kopie zijn geïdentificeerd. Er is momenteel geen formele relatie tussen de labels taxonomie en de object detectie-taxonomie. Op een conceptueel niveau zoekt de detectie-API alleen objecten en levende dingen, terwijl de tag-API ook contextuele termen zoals ' binnen ' kan bevatten, die niet kan worden gelokaliseerd met omsluitende vakken.
+De DETECT API past tags toe op basis van de objecten of levende dingen die in de afbeelding zijn geïdentificeerd. Er is momenteel geen formele relatie tussen de tagging taxonomie en de object detectie taxonomie. Op conceptueel niveau vindt de DETECT API alleen objecten en levende wezens, terwijl de Tag API ook contextuele termen kan bevatten zoals 'binnen', die niet kunnen worden gelokaliseerd met omsluitende vakken.
 
-## <a name="object-detection-example"></a>Voor beeld van object detectie
+## <a name="object-detection-example"></a>Voorbeeld van objectdetectie
 
-In het volgende JSON-antwoord ziet u wat Computer Vision als resultaat geeft bij het detecteren van objecten in de voorbeeld afbeelding.
+De volgende JSON-reactie illustreert wat Computer Vision retourneert bij het detecteren van objecten in de voorbeeldafbeelding.
 
-![Een vrouw die gebruikmaakt van een micro soft Surface-apparaat in een keuken](./Images/windows-kitchen.jpg)
+![Een vrouw die een apparaat van de Oppervlakte van Microsoft in een keuken gebruikt](./Images/windows-kitchen.jpg)
 
 ```json
 {
@@ -89,15 +89,15 @@ In het volgende JSON-antwoord ziet u wat Computer Vision als resultaat geeft bij
 
 ## <a name="limitations"></a>Beperkingen
 
-Het is belang rijk dat u de beperkingen van object detectie noteert, zodat u de effecten van valse negatieven (gemiste objecten) en beperkte Details kunt voor komen of beperken.
+Het is belangrijk om de beperkingen van objectdetectie op te merken, zodat u de effecten van valse negatieven (gemiste objecten) en beperkte details vermijden of beperken.
 
 * Objecten worden over het algemeen niet gedetecteerd als ze klein zijn (minder dan 5% van de afbeelding).
-* Objecten worden over het algemeen niet gedetecteerd als ze samen worden gerangschikt (bijvoorbeeld een stapel platen).
-* Objecten worden niet onderscheiden door merk-of product namen (bijvoorbeeld verschillende soorten fris drank op een Store-plank). U kunt echter merk gegevens ophalen van een installatie kopie met behulp van de [merk detectie](concept-brand-detection.md) functie.
+* Objecten worden over het algemeen niet gedetecteerd als ze dicht bij elkaar zijn gerangschikt (bijvoorbeeld een stapel platen).
+* Objecten worden niet onderscheiden door merk- of productnamen (verschillende soorten frisdranken op een winkelplank bijvoorbeeld). U echter merkinformatie uit een afbeelding halen met behulp van de [functie Merkdetectie.](concept-brand-detection.md)
 
 ## <a name="use-the-api"></a>De API gebruiken
 
-De functie object detectie maakt deel uit van de API voor het [analyseren van afbeeldingen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . U kunt deze API aanroepen via een systeem eigen SDK of via REST-aanroepen. Neem `Objects` in de query parameter **visualFeatures** op. Wanneer u vervolgens het volledige JSON-antwoord krijgt, parseert u de teken reeks voor de inhoud `"objects"` van de sectie.
+De functie objectdetectie maakt deel uit van de [API Voor afbeelding analyseren.](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) U deze API aanroepen via een native SDK of via REST-oproepen. Opnemen `Objects` in de parameter **visualFeatures** query. Wanneer u vervolgens de volledige JSON-respons krijgt, ontleden `"objects"` u gewoon de tekenreeks voor de inhoud van de sectie.
 
-* [Snelstart: Computer Vision .NET SDK)](./quickstarts-sdk/csharp-sdk.md)
-* [Snelstart: Een afbeelding analyseren (REST API)](./quickstarts/csharp-analyze.md)
+* [Snelstart: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Snelstart: een afbeelding analyseren (REST API)](./quickstarts/csharp-analyze.md)

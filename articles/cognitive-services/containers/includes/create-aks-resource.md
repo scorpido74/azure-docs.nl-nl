@@ -1,7 +1,7 @@
 ---
-title: Een Azure Kubernetes service-cluster resource maken
+title: Een Azure Kubernetes Service-clusterbron maken
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het maken van een AKS-resource (Azure Kubernetes service).
+description: Meer informatie over het maken van een AKS-bron (Azure Kubernetes Service).
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,42 +10,42 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 4e3102912e88ef904fed3e680f8cdd23242b1f17
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74383437"
 ---
-## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Een Azure Kubernetes service-cluster resource maken
+## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Een Azure Kubernetes Service-clusterbron maken
 
-1. Ga naar de [Azure Kubernetes-service](https://ms.portal.azure.com/#create/microsoft.aks)en selecteer **maken**.
+1. Ga naar [Azure Kubernetes Service](https://ms.portal.azure.com/#create/microsoft.aks)en selecteer **Maken**.
 
-1. Voer op het tabblad **basis beginselen** de volgende gegevens in:
+1. Voer op het tabblad **Basisbeginselen** de volgende gegevens in:
 
     |Instelling|Waarde|
     |--|--|
     |Abonnement|Selecteer een geschikt abonnement.|
-    |Resourcegroep|Selecteer een beschik bare resource groep.|
-    |Kubernetes-cluster naam|Voer een naam in (kleine letters).|
+    |Resourcegroep|Selecteer een beschikbare resourcegroep.|
+    |Kubernetes-clusternaam|Voer een naam (kleine letters) in.|
     |Regio|Selecteer een locatie in de buurt.|
-    |Kubernetes-versie|Wille keurige waarde is gemarkeerd als **(standaard)** .|
-    |DNS-naam voorvoegsel|Automatisch gemaakt, maar u kunt dit overschrijven.|
-    |Knooppunt grootte|Standard DS2 v2:<br>`2 vCPUs`, `7 GB`|
-    |Aantal knoop punten|Wijzig de schuif regelaar op de standaard waarde.|
+    |Kubernetes-versie|Welke waarde is gemarkeerd als **(standaard)**.|
+    |DNS-naamvoorvoegsel|Automatisch gemaakt, maar u overschrijven.|
+    |Grootte van knooppunt|Standaard DS2 v2:<br>`2 vCPUs`, `7 GB`|
+    |Aantal knooppunts|Laat de schuifregelaar op de standaardwaarde.|
 
-1. Op het tabblad **schaal** kunt u **virtuele knoop punten** en **VM-schaal sets** instellen op de standaard waarden.
-1. Op het tabblad **verificatie** verlaat u **Service-Principal** en **schakelt u RBAC** in op de standaard waarden.
-1. Op het tabblad **netwerken** voert u de volgende selecties in:
+1. Laat op het tabblad **Schalen** **virtuele knooppunten** en **VM-schaalsets** instellen op hun standaardwaarden.
+1. Laat op het tabblad **Verificatie** **serviceprincipal** en **Inschakel RBAC** instellen op de standaardwaarden.
+1. Voer op het tabblad **Netwerken** de volgende selecties in:
 
     |Instelling|Waarde|
     |--|--|
     |Routering van HTTP-toepassing|Nee|
-    |Netwerk configuratie|Basic|
+    |Netwerkconfiguratie|Basic|
 
-1. Controleer op het tabblad **controle** of **container controle inschakelen** is ingesteld op **Ja**en laat **log Analytics werk ruimte** staan als de standaard waarde.
-1. Laat op het tabblad **Tags** de naam/waarde-paren voor nu leeg.
-1. Selecteer **controleren en maken**.
-1. Nadat de validatie is geslaagd, selecteert u **maken**.
+1. Controleer op het tabblad **Controle** of **Containerbewaking inschakelen** is ingesteld op **Ja**en laat de werkruimte **Log Analytics** als standaardwaarde.
+1. Laat op het tabblad **Labels** de naam/waardeparen voorlopig leeg.
+1. Selecteer **Controleren en maken**.
+1. Nadat de validatie is doorgegeven, selecteert **u Maken**.
 
 > [!NOTE]
-> Als de validatie mislukt, kan dit worden veroorzaakt door een ' Service Principal-fout. Ga terug naar het tabblad **verificatie** en ga terug naar weer **geven + maken**, waarbij validatie moet worden uitgevoerd en voer vervolgens door.
+> Als de validatie mislukt, kan dit het gevolg zijn van een fout van de 'Serviceprincipal'. Ga terug naar het tabblad **Verificatie** en ga terug naar **Controleren + maken,** waar validatie moet worden uitgevoerd en vervolgens moet worden uitgevoerd.

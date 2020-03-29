@@ -1,35 +1,35 @@
 ---
-title: Vereiste para meters verzamelen
+title: Vereiste parameters verzamelen
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
-description: De para meters voor alle Cognitive Services containers
+description: De parameters voor alle containers van Cognitive Services
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2019
 ms.author: dapine
 ms.openlocfilehash: bf4e8f06642a4a764794a75e2b49f15958796c61
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73465932"
 ---
-## <a name="gathering-required-parameters"></a>Vereiste para meters verzamelen
+## <a name="gathering-required-parameters"></a>Vereiste parameters verzamelen
 
-Er zijn drie primaire para meters voor alle vereiste containers van Cognitive Services. De gebruiksrecht overeenkomst (EULA) moet aanwezig zijn met een waarde van `accept`. Daarnaast zijn zowel een eind punt-URL als een API-sleutel nodig.
+Er zijn drie primaire parameters voor alle containers van Cognitive Services die vereist zijn. De licentieovereenkomst voor eindgebruikers (EULA) moet aanwezig `accept`zijn met een waarde van . Daarnaast zijn zowel een Endpoint URL als API Key nodig.
 
-### <a name="endpoint-uri-endpoint_uri"></a>`{ENDPOINT_URI}` van eind punt-URI
+### <a name="endpoint-uri-endpoint_uri"></a>Eindpunt URI`{ENDPOINT_URI}`
 
-De URI-waarde van het **eind punt** is beschikbaar op de pagina *overzicht* van Azure portal van de bijbehorende cognitieve service resource. Ga naar de *overzichts* pagina, beweeg de muis aanwijzer over het eind <span class="docon docon-edit-copy x-hidden-focus"></span> punt en er wordt een `Copy to clipboard` pictogram weer gegeven. Kopieer en gebruik waar nodig.
+De **WAARDE ENDpoint** URI is beschikbaar op de pagina *Overzicht* van azure-portal van de bijbehorende Cognitive Service-bron. Navigeer naar de *pagina Overzicht,* plaats de `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> plaats boven het eindpunt en er wordt een pictogram weergegeven. Kopieer en gebruik waar nodig.
 
-![De URI van het eind punt verzamelen voor later gebruik](../media/overview-endpoint-uri.png)
+![Verzamel de eindpunturi voor later gebruik](../media/overview-endpoint-uri.png)
 
-### <a name="keys-api_key"></a>Sleutels `{API_KEY}`
+### <a name="keys-api_key"></a>Sleutels`{API_KEY}`
 
-Deze sleutel wordt gebruikt om de container te starten en is beschikbaar op de pagina sleutels van de Azure Portal van de bijbehorende cognitieve service resource. Ga naar de pagina *sleutels* en klik op het pictogram `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> .
+Deze sleutel wordt gebruikt om de container te starten en is beschikbaar op de pagina Sleutels van de Azure-portal van de bijbehorende Cognitive Service-bron. Navigeer naar de pagina *Sleutels* `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> en klik op het pictogram.
 
-![Een van de twee sleutels ophalen voor later gebruik](../media/keys-copy-api-key.png)
+![Een van de twee toetsen ophalen voor later gebruik](../media/keys-copy-api-key.png)
 
 > [!IMPORTANT]
-> Deze abonnements sleutels worden gebruikt om toegang te krijgen tot uw API voor de cognitieve service. Deel uw sleutels niet. Sla ze veilig op, bijvoorbeeld met behulp van Azure Key Vault. We raden u ook aan deze sleutels regel matig opnieuw te genereren. Er is slechts één sleutel nodig om een API-aanroep te maken. Wanneer u de eerste sleutel opnieuw genereert, kunt u de tweede sleutel gebruiken voor verdere toegang tot de service.
+> Deze abonnementssleutels worden gebruikt om toegang te krijgen tot uw Cognitive Service API. Deel je sleutels niet. Sla ze veilig op, bijvoorbeeld met Azure Key Vault. We raden ook aan om deze sleutels regelmatig te regenereren. Er is slechts één sleutel nodig om een API-aanroep te maken. Bij het regenereren van de eerste sleutel u de tweede sleutel gebruiken voor verdere toegang tot de service.

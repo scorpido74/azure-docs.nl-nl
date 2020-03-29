@@ -1,187 +1,187 @@
 ---
-title: Gesprekken met meerdere schakelingen-QnA Maker
-description: Gebruik prompts en context om de meerdere beurten, ook wel multi-turn genoemd, te beheren voor uw bot van de ene vraag naar de andere. Multi-turn is de mogelijkheid om een back-en-neer-conversatie te hebben waarbij de context van de vorige vraag de volgende vraag en het antwoord beïnvloedt.
+title: Multi-turn gesprekken - QnA Maker
+description: Gebruik prompts en context om de meerdere beurten, bekend als multi-turn, voor uw bot van de ene vraag naar de andere te beheren. Multi-turn is de mogelijkheid om een heen-en-weer gesprek waar de vorige vraag context beïnvloedt de volgende vraag en antwoord.
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: abdde09fbb1f6b066772366c5cea933824cb5864
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220620"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Opvolgprompts gebruiken om meerdere beurten in een gesprek te maken
 
-Gebruik opvolgings prompts en context voor het beheren van de meerdere beurten, ook wel bekend als _multi-turn_, voor uw bot van de ene vraag naar de andere.
+Gebruik vervolgprompts en context om de meerdere beurten te beheren, bekend als _multi-turn,_ voor uw bot van de ene vraag naar de andere.
 
-Bekijk de volgende demonstratie video om te zien hoe u werkt met meerdere zetten:
+Bekijk de volgende demonstratievideo om te zien hoe multi-turn werkt:
 
-[![uitwisseling op meerdere zetten in QnA Maker](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
+[![Multi-turn gesprek in QnA Maker](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
 
-## <a name="what-is-a-multi-turn-conversation"></a>Wat is een gesprek op meerdere locaties?
+## <a name="what-is-a-multi-turn-conversation"></a>Wat is een multi-turn gesprek?
 
-Sommige vragen kunnen niet in één keer worden beantwoord. Wanneer u uw client toepassing (chat-bot) ontwerpt, kan een gebruiker een vraag stellen die moet worden gefilterd of verfijnd om het juiste antwoord te bepalen. U doet dit door de beschik bare vragen te presen teren door de gebruiker *te laten opvolgen*.
+Sommige vragen kunnen niet in één beurt worden beantwoord. Wanneer u uw clienttoepassingsgesprekken (chatbot) ontwerpt, kan een gebruiker een vraag stellen die moet worden gefilterd of verfijnd om het juiste antwoord te bepalen. U maakt deze stroom door de vragen mogelijk door de gebruiker te presenteren met *follow-up prompts*.
 
-Wanneer een gebruiker een vraag stelt, retourneert QnA Maker het antwoord _en_ eventuele vervolg vragen. Met deze reactie kunt u de opvolgings vragen presen teren als keuzes.
+Wanneer een gebruiker een vraag stelt, retourneert QnA Maker het antwoord _en_ eventuele vervolgprompts. Met dit antwoord u de vervolgvragen als keuzes presenteren.
 
 > [!CAUTION]
-> Vragen over meerdere schakelingen worden niet geëxtraheerd uit documenten met veelgestelde vragen. Als u meerdere extra-Schakel extractie nodig hebt, verwijdert u de vraag tekens die de QnA-paren als Veelgestelde vragen aanwijzen.
+> Multi-turn prompts worden niet uit FAQ-documenten gehaald. Als u multi-turn extractie nodig hebt, verwijdert u de vraagtekens die de QnA-paren als veelgestelde vragen aanwijzen.
 
-## <a name="example-multi-turn-conversation-with-chat-bot"></a>Voor beeld van een multi-turn-gesprek met een chat sessie
+## <a name="example-multi-turn-conversation-with-chat-bot"></a>Voorbeeld multi-turn gesprek met chat bot
 
-Met multi-bocht beheert een chat-bot een conversatie met een gebruiker om het laatste antwoord te bepalen, zoals wordt weer gegeven in de volgende afbeelding:
+Met multi-turn beheert een chatbot een gesprek met een gebruiker om het uiteindelijke antwoord te bepalen, zoals in de volgende afbeelding wordt weergegeven:
 
-![Een dialoog venster waarin u wordt gevraagd een gebruiker via een gesprek te begeleiden](../media/conversational-context/conversation-in-bot.png)
+![Een dialoogvenster met meerdere beurten die een gebruiker door een gesprek leiden](../media/conversational-context/conversation-in-bot.png)
 
-Een gebruiker heeft in de voor gaande afbeelding een gesprek gestart door **Mijn account**in te voeren. De Knowledge Base heeft drie gekoppelde vraag-en antwoord paren. Om het antwoord te verfijnen, selecteert de gebruiker een van de drie opties in de Knowledge Base. De vraag (#1) heeft drie opvolgings prompts die in de chat-bot worden weer gegeven als drie opties (#2).
+In de vorige afbeelding heeft een gebruiker een gesprek gestart door **Mijn account**in te voeren . De kennisbank heeft drie gekoppelde vraag-en-antwoordparen. Om het antwoord te verfijnen, selecteert de gebruiker een van de drie keuzes in de kennisbank. De vraag (#1), heeft drie follow-up prompts, die worden gepresenteerd in de chat bot als drie opties (#2).
 
-Wanneer de gebruiker een optie (#3) selecteert, wordt de volgende lijst met verfijnings opties (#4) weer gegeven. Deze reeks blijft (#5) totdat de gebruiker het juiste, laatste antwoord (#6) bepaalt.
+Wanneer de gebruiker een optie (#3) selecteert, wordt de volgende lijst met raffinageopties (#4) weergegeven. Deze volgorde gaat verder (#5) totdat de gebruiker het juiste, uiteindelijke antwoord (#6) bepaalt.
 
 
-### <a name="use-multi-turn-in-a-bot"></a>Meerdere zetten gebruiken in een bot
+### <a name="use-multi-turn-in-a-bot"></a>Multi-turn in een bot gebruiken
 
-Nadat u uw KB hebt gepubliceerd, kunt u de knop **bot maken** selecteren om uw QnA Maker-bot te implementeren op de Azure bot-service. De prompts worden weer gegeven in de chat-clients die u hebt ingeschakeld voor uw bot.
+Nadat u uw KB hebt gepubliceerd, u de knop **Bot maken** selecteren om uw QnA Maker-bot te implementeren in Azure-botservice. De prompts worden weergegeven in de chatclients die u voor uw bot hebt ingeschakeld.
 
-## <a name="create-a-multi-turn-conversation-from-a-documents-structure"></a>Een multi-turn-gesprek maken op basis van de structuur van een document
+## <a name="create-a-multi-turn-conversation-from-a-documents-structure"></a>Een multiturngesprek maken vanuit de structuur van een document
 
-Wanneer u een Knowledge Base maakt, wordt in het gedeelte **uw KB invullen** het selectie vakje **meerdere Schakel extractie van url's, PDF-of DOCX-bestanden inschakelen** .
+Wanneer u een kennisbank maakt, wordt in de sectie **Uw KB invullen** het selectievakje **Meerdere-draaiextractie inschakelen van URL's, .pdf- of .docx-bestanden** weergegeven.
 
-![Selectie vakje voor het inschakelen van meerdere Schakel extractie](../media/conversational-context/enable-multi-turn.png)
+![Selectievakje voor het inschakelen van multi-turn extractie](../media/conversational-context/enable-multi-turn.png)
 
-Wanneer u deze optie selecteert, haalt QnA Maker de hiërarchie op die in de document structuur aanwezig is. De hiërarchie wordt omgezet in om prompts op te volgen en de basis van de hiërarchie fungeert als de bovenliggende QnA. In sommige documenten heeft de hoofdmap van de hiërarchie geen inhoud die als antwoord zou kunnen gebruiken. u kunt de standaard antwoord tekst opgeven als vervangende antwoord tekst om dergelijke hiërarchieën uit te pakken.
+Wanneer u deze optie selecteert, haalt QnA Maker de hiërarchie uit die in de documentstructuur aanwezig is. De hiërarchie wordt omgezet in follow-up prompts en de wortel van de hiërarchie dient als de bovenliggende QnA. In sommige documenten heeft de hoofdmap van de hiërarchie geen inhoud die als antwoord kan dienen, u de 'Standaardantwoordtekst' verstrekken die moet worden gebruikt als vervangende antwoordtekst om dergelijke hiërarchieën te extraheren.
 
-Structuur voor meerdere scha kelen kan alleen worden afgeleid van Url's, PDF-bestanden of DOCX-bestanden. Voor een voor beeld van een structuur bekijkt u een afbeelding van een [hand matig PDF-bestand van micro soft Surface-gebruiker](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf).
+De multiturnstructuur kan alleen worden afgeleid uit URL's, PDF-bestanden of DOCX-bestanden. Bekijk voor een voorbeeld van structuur een afbeelding van een [PDF-bestand met Microsoft Surface-gebruiker](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf).
 
-![! [Voor beeld van structuur in een gebruikers handleiding] (.. /media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
+![! [Voorbeeld van structuur in een gebruikershandleiding] (.. /media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-### <a name="building-your-own-multi-turn-document"></a>Uw eigen document op meerdere zetten bouwen
+### <a name="building-your-own-multi-turn-document"></a>Uw eigen multi-turn document bouwen
 
-Als u een document met meerdere scha kelen maakt, houdt u de volgende richt lijnen in acht:
+Als u een document met meerdere beurten maakt, moet u rekening houden met de volgende richtlijnen:
 
-* Gebruik koppen en subkoppen om de hiërarchie aan te duiden. U kunt bijvoorbeeld H1 de bovenliggende QnA en H2 aanduiden om de QnA aan te duiden die als prompt moet worden beschouwd. Gebruik de kleine grootte van de kop om volgende hiërarchie aan te duiden. Gebruik geen stijl, kleur of een ander mechanisme om de structuur in uw document te impliceren, QnA Maker de prompts voor meerdere schakelingen niet uit te pakken.
+* Gebruik koppen en subkoppen om hiërarchie aan te duiden. U bijvoorbeeld h1 om de bovenliggende QnA en h2 aan te duiden om de QnA aan te duiden die als prompt moet worden genomen. Gebruik kleine kopgrootte om de volgende hiërarchie aan te duiden. Gebruik geen stijl, kleur of een ander mechanisme om structuur in uw document te impliceren, QnA Maker haalt de multi-turn prompts niet uit.
 
-* Het eerste teken van de kop moet worden gekapitaliseerd.
+* Het eerste teken van de rubriek moet worden gekapitaliseerd.
 
-* Beëindig geen koptekst met een vraag teken `?`.
+* Beëindig een kop niet met `?`een vraagteken.
 
-* U kunt het [voorbeeld document](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) gebruiken als voor beeld voor het maken van uw eigen multi-turn-document.
+* U het [voorbeelddocument](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) als voorbeeld gebruiken om uw eigen multiturndocument te maken.
 
-### <a name="adding-files-to-a-multi-turn-kb"></a>Bestanden toevoegen aan een meervoudige Schakel KB
+### <a name="adding-files-to-a-multi-turn-kb"></a>Bestanden toevoegen aan een KB met meerdere beurten
 
-Wanneer u een hiërarchisch document toevoegt, bepaalt QnA Maker opvolgings aanwijzingen van de structuur om een conversatie stroom te maken.
+Wanneer u een hiërarchisch document toevoegt, bepaalt QnA Maker vervolgprompts uit de structuur om een gespreksstroom te maken.
 
-1. In QnA Maker selecteert u een bestaande Knowledge Base die is gemaakt met het **inschakelen van meerdere Schakel extractie vanuit url's, PDF-of DOCX-bestanden.** ingeschakeld.
-1. Ga naar de pagina **instellingen** , selecteer het bestand of de URL die u wilt toevoegen.
-1. Sla de kennis database op **en Train** deze.
+1. Selecteer in QnA Maker een bestaande kennisbank die is gemaakt met **Multi-turnextractie inschakelen uit URL's, .pdf- of .docx-bestanden.** Ingeschakeld.
+1. Ga naar de pagina **Instellingen,** selecteer het bestand of de URL die u wilt toevoegen.
+1. **Red en train** de kennisbank.
 
 > [!Caution]
-> Ondersteuning voor het gebruik van een geëxporteerd TSV-of XLS-Knowledge Base-bestand als gegevens bron voor een nieuwe of lege kennis database wordt niet ondersteund. U moet dit bestands type **importeren** op de pagina **instellingen** van de QnA Maker-Portal om de prompts voor het exporteren van meerdere zetten toe te voegen aan een kennis database.
+> Ondersteuning voor het gebruik van een geëxporteerd TSV- of XLS-multiturn-kennisbestand als gegevensbron voor een nieuwe of lege kennisbank wordt niet ondersteund. U moet dat bestandstype **importeren** vanaf de pagina **Instellingen** van de QnA Maker-portal om geëxporteerde multi-turnprompts toe te voegen aan een kennisbank.
 
 
-## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Maak een kennis database met de prompts in meerdere richtingen met de API maken
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Maak kennisbank met multi-turn prompts met de API maken
 
-U kunt met behulp van de [QnA Maker Create API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)een kennis Case maken met vragen over meerdere schakelingen. De prompts worden toegevoegd in de `prompts` matrix van de `context` eigenschap.
+U een kennisaanvraag maken met multi-turn prompts met behulp van de [QnA Maker Create API.](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create) De prompts worden `context` toegevoegd in `prompts` de array van de eigenschap.
 
-## <a name="show-questions-and-answers-with-context"></a>Vragen en antwoorden met context weer geven
+## <a name="show-questions-and-answers-with-context"></a>Vragen en antwoorden met context weergeven
 
-De weer gegeven vraag-en antwoord paren beperken tot alleen die context afhankelijke gesp rekken.
+Verminder de weergegeven vraag-en-antwoordparen tot alleen die met contextuele gesprekken.
 
-Selecteer **weergave opties**en selecteer vervolgens **context weer geven**. In de lijst worden de vraag-en-antwoord-paren weer gegeven die opvolgings prompts bevatten.
+Selecteer **Weergaveopties**en selecteer **Vervolgens Context weergeven**. In de lijst worden vraag-en-antwoordparen weergegeven die vervolgaanwijzingen bevatten.
 
-![Vraag-en-antwoord paren filteren op contextuele conversaties](../media/conversational-context/filter-question-and-answers-by-context.png)
+![Vraag-en-antwoordparen filteren op contextuele gesprekken](../media/conversational-context/filter-question-and-answers-by-context.png)
 
-De context voor meerdere scha kelen wordt weer gegeven in de eerste kolom.
+De context met meerdere draaien wordt weergegeven in de eerste kolom.
 
-![! [De kolom ' context (PREVIEW) '] (.. /media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+![! [De kolom 'Context (VOORVERTONING)' ] (.. /media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
 
-In de voor gaande afbeelding geeft **#1** vetgedrukte tekst in de kolom op die de huidige vraag aangeeft. De bovenliggende vraag is het bovenste item in de rij. Eventuele vragen hieronder zijn de gekoppelde vraag-en-antwoord paren. Deze items kunnen worden geselecteerd, zodat u direct naar de andere context items kunt gaan.
+In de voorgaande afbeelding geeft **#1** vette tekst in de kolom aan, die de huidige vraag aangeeft. De bovenliggende vraag is het bovenste item in de rij. Alle vragen hieronder zijn de gekoppelde vraag-en-antwoord paren. Deze items zijn selecteerbaar, zodat u onmiddellijk naar de andere contextitems gaan.
 
-## <a name="add-an-existing-question-and-answer-pair-as-a-follow-up-prompt"></a>Een bestaand vraag-en antwoord paar toevoegen als een opvolgings prompt
+## <a name="add-an-existing-question-and-answer-pair-as-a-follow-up-prompt"></a>Een bestaand vraag-en-antwoordpaar toevoegen als vervolgprompt
 
-De oorspronkelijke vraag, **Mijn account**, heeft vervolg vragen, zoals **accounts en aanmelding**.
+De oorspronkelijke vraag, **Mijn account,** heeft follow-up aanwijzingen, zoals **Accounts en aanmelden**.
 
-![De antwoorden ' accounts and signing ' en vervolg vragen](../media/conversational-context/detected-and-linked-follow-up-prompts.png)
+![De antwoorden en follow-upaanwijzingen voor 'Accounts en aanmelden'](../media/conversational-context/detected-and-linked-follow-up-prompts.png)
 
-Voeg een opvolgings prompt toe aan een bestaand vraag-en antwoord paar dat momenteel niet is gekoppeld. Omdat de vraag niet is gekoppeld aan een vraag-en-antwoord paar, moet de huidige weer gave-instelling worden gewijzigd.
+Voeg een vervolgprompt toe aan een bestaand vraag-en-antwoordpaar dat momenteel niet is gekoppeld. Omdat de vraag niet is gekoppeld aan een vraag-en-antwoordpaar, moet de huidige weergave-instelling worden gewijzigd.
 
-1. Als u een bestaand vraag-en antwoord paar wilt koppelen als een opvolgings prompt, selecteert u de rij voor het vraag-en-antwoord paar. Zoek voor de hand leiding voor het Opper vlak naar **Afmelden** om de lijst te verminderen.
-1. In de rij voor **Afmelden**in de kolom **antwoord** selecteert u **opvolgings prompt toevoegen**.
-1. Voer de volgende waarden in in de velden in het pop-upvenster **opvolgings prompt** :
-
-    |Veld|Waarde|
-    |--|--|
-    |Tekst weer geven|**Schakel het apparaat uit**. Dit is aangepaste tekst die in de opvolgings prompt wordt weer gegeven.|
-    |Alleen context| Schakel dit selectie vakje in. Er wordt alleen een antwoord geretourneerd als de vraag context aangeeft.|
-    |Aan antwoord koppelen|Voer **het aanmeldings scherm gebruiken** in om het bestaande vraag-en antwoord paar te vinden.|
-
-
-1.  Er wordt één overeenkomst geretourneerd. Selecteer dit antwoord als opvolging en selecteer vervolgens **Opslaan**.
-
-    ![De pagina opvolgings prompt (PREVIEW-versie)](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
-
-1. Nadat u de opvolgings prompt hebt toegevoegd, selecteert u **opslaan en trainen** in de bovenste navigatie balk.
-
-### <a name="edit-the-display-text"></a>De weergave tekst bewerken
-
-Wanneer er een opvolgings prompt wordt gemaakt en een bestaand vraag-en-antwoord paar wordt ingevoerd als de **koppeling die moet worden beantwoord**, kunt u nieuwe **weergave tekst**invoeren. Met deze tekst wordt de bestaande vraag niet vervangen en er wordt geen nieuwe alternatieve vraag toegevoegd. Deze is gescheiden van die waarden.
-
-1. Als u de weergave tekst wilt bewerken, zoekt en selecteert u de vraag in het veld **context** .
-1. Selecteer in de rij voor die vraag de opvolgings prompt in de kolom antwoord.
-1. Selecteer de weergave tekst die u wilt bewerken en selecteer vervolgens **bewerken**.
-
-    ![De opdracht bewerken voor de weergave tekst](../media/conversational-context/edit-existing-display-text.png)
-
-1. Wijzig de bestaande weergave tekst in het pop-upvenster **opvolgings prompt** .
-1. Wanneer u klaar bent met het bewerken van de weergave tekst, selecteert u **Opslaan**.
-1. In de bovenste navigatie balk kunt u **opslaan en trainen**.
-
-
-## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Een nieuw vraag-en-antwoord paar toevoegen als vervolg prompt
-
-Wanneer u een nieuw vraag-en-antwoord paar toevoegt aan de Knowledge Base, moet elk paar worden gekoppeld aan een bestaande vraag als vervolg prompt.
-
-1. Zoek en selecteer op de werk balk van de Knowledge Base het bestaande vraag-en antwoord paar voor **accounts en meld**u aan.
-
-1. Selecteer in de kolom **antwoord** op deze vraag **opvolgen prompt toevoegen**.
-1. Bij **opvolgings prompt (preview)** maakt u een nieuwe opvolgings prompt door de volgende waarden in te voeren:
+1. Als u een bestaand vraag-en-antwoordpaar als vervolgprompt wilt koppelen, selecteert u de rij voor het vraag- en antwoordpaar. Zoek voor de Surface-handleiding naar **Afmelden** om de lijst te verkleinen.
+1. Selecteer in de rij voor **Afmelden**in de kolom **Antwoord** de optie **Vervolgprompt toevoegen**.
+1. Voer in de velden in het **pop-upvenster Vervolgprompt** de volgende waarden in:
 
     |Veld|Waarde|
     |--|--|
-    |Tekst weer geven|*Maak een Windows-account*. De aangepaste tekst die moet worden weer gegeven in de opvolgings prompt.|
-    |Alleen context|Schakel dit selectie vakje in. Dit antwoord wordt alleen geretourneerd als de vraag context aangeeft.|
-    |Aan antwoord koppelen|Voer de volgende tekst in als antwoord:<br>*[Maak](https://account.microsoft.com/) een Windows-account met een nieuw of bestaand e-mail account*.<br>Wanneer u de data base opslaat en traint, wordt deze tekst geconverteerd. |
+    |Weergavetekst|Voer **Het apparaat uitschakelen in**. Dit is aangepaste tekst die wordt weergegeven in de vervolgprompt.|
+    |Alleen in context| Schakel dit selectievakje in. Een antwoord wordt alleen geretourneerd als de vraag context aangeeft.|
+    |Koppeling naar antwoord|Voer **Het aanmeldingsscherm** gebruiken in om het bestaande vraag- en antwoordpaar te vinden.|
+
+
+1.  Eén wedstrijd is terug. Selecteer dit antwoord als vervolg en selecteer **Opslaan**.
+
+    ![De pagina 'Vervolgprompt (PREVIEW)'](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
+
+1. Nadat u de vervolgprompt hebt toegevoegd, selecteert u **Opslaan en trainen** in de bovenste navigatienavigatie.
+
+### <a name="edit-the-display-text"></a>De weergavetekst bewerken
+
+Wanneer een vervolgprompt wordt gemaakt en een bestaand vraag-en-antwoordpaar wordt ingevoerd als **koppeling naar antwoord,** u nieuwe **weergavetekst**invoeren. Deze tekst vervangt de bestaande vraag niet en voegt geen nieuwe alternatieve vraag toe. Het staat los van die waarden.
+
+1. Als u de weergavetekst wilt bewerken, zoekt en selecteert u de vraag in het veld **Context.**
+1. Selecteer in de rij voor die vraag de vervolgprompt in de antwoordkolom.
+1. Selecteer de weergavetekst die u wilt bewerken en selecteer **vervolgens Bewerken**.
+
+    ![De opdracht Bewerken voor de weergavetekst](../media/conversational-context/edit-existing-display-text.png)
+
+1. Wijzig in het **pop-upvenster Vervolgprompt** de bestaande weergavetekst.
+1. Wanneer u klaar bent met het bewerken van de weergavetekst, selecteert u **Opslaan**.
+1. In de bovenste **navigatiebalk, Opslaan en trainen**.
+
+
+## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Een nieuw vraag-en-antwoordpaar toevoegen als vervolgprompt
+
+Wanneer u een nieuw vraag-en-antwoordpaar toevoegt aan de kennisbank, moet elk paar als vervolgprompt aan een bestaande vraag worden gekoppeld.
+
+1. Zoek op de werkbalk kennisbasis naar en selecteer het bestaande vraag-en-antwoordpaar voor **accounts en aanmelden.**
+
+1. Selecteer in de kolom **Antwoord** voor deze vraag de optie **Vervolgprompt toevoegen**.
+1. Maak onder **Follow-up prompt (PREVIEW)** een nieuwe follow-upprompt door de volgende waarden in te voeren:
+
+    |Veld|Waarde|
+    |--|--|
+    |Weergavetekst|*Een Windows-account maken*. De aangepaste tekst die moet worden weergegeven in de vervolgprompt.|
+    |Alleen in context|Schakel dit selectievakje in. Dit antwoord wordt alleen geretourneerd als de vraag context aangeeft.|
+    |Koppeling naar antwoord|Voer de volgende tekst in als antwoord:<br>* [Maak](https://account.microsoft.com/) een Windows-account met een nieuw of bestaand e-mailaccount*.<br>Wanneer u de database opslaat en traint, wordt deze tekst geconverteerd. |
     |||
 
-    ![Een nieuwe vraag en antwoord op vragen stellen](../media/conversational-context/create-child-prompt-from-parent.png)
+    ![Een nieuwe snelle vraag en antwoord maken](../media/conversational-context/create-child-prompt-from-parent.png)
 
 
-1. Selecteer **nieuwe maken**en selecteer vervolgens **Opslaan**.
+1. Selecteer **Nieuw maken**en selecteer **Opslaan**.
 
-    Met deze actie maakt u een nieuw vraag-en antwoord paar en koppelt u de geselecteerde vraag aan de hand van een opvolgings prompt. De **context** kolom, voor beide vragen, geeft aan dat er een follow-up-prompt relatie is.
+    Met deze actie wordt een nieuw vraag-en-antwoordpaar gemaakt en wordt de geselecteerde vraag als vervolgprompt gekoppeld. De kolom **Context** voor beide vragen geeft een vervolgpromptrelatie aan.
 
-1. Selecteer **weergave opties**en selecteer vervolgens [**context weer geven (preview)** ](#show-questions-and-answers-with-context).
+1. Selecteer **Weergaveopties**en selecteer [**Vervolgens Context weergeven (VOORBEELD)**](#show-questions-and-answers-with-context).
 
-    In de nieuwe vraag ziet u hoe deze is gekoppeld.
+    De nieuwe vraag laat zien hoe het is gekoppeld.
 
-    ![Een nieuwe opvolgings prompt maken](../media/conversational-context/new-qna-follow-up-prompt.png)
+    ![Een nieuwe vervolgprompt maken](../media/conversational-context/new-qna-follow-up-prompt.png)
 
-    De bovenliggende vraag geeft een nieuwe vraag weer als een van de opties.
+    De bovenliggende vraag geeft een nieuwe vraag weer als een van de keuzes.
 
-    ![! [De context kolom, voor beide vragen, geeft aan dat er een follow-up-prompt relatie is] (.. /media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
+    ![! [De kolom Context geeft voor beide vragen een vervolgpromptrelatie aan] (.. /media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
 
-1. Nadat u de opvolgings prompt hebt toegevoegd, selecteert u **opslaan en trainen** in de bovenste navigatie balk.
+1. Nadat u de vervolgprompt hebt toegevoegd, selecteert u **Opslaan en trainen** in de bovenste navigatiebalk.
 
-## <a name="enable-multi-turn-during-testing-of-follow-up-prompts"></a>Meerdere scha kelen inschakelen tijdens het testen van opvolgings prompts
+## <a name="enable-multi-turn-during-testing-of-follow-up-prompts"></a>Multi-turn inschakelen tijdens het testen van vervolgprompts
 
-Wanneer u de vraag test met opvolgings aanwijzingen in het **test** venster, selecteert u **multi-turn inschakelen**en voert u uw vraag in. Het antwoord bevat de opvolgings prompts.
+Wanneer u de vraag test met vervolgprompts in het **deelvenster Testen,** selecteert u **Multi-turn inschakelen**en voert u uw vraag in. Het antwoord bevat de follow-up aanwijzingen.
 
-![Het antwoord bevat de vervolg vragen](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
+![Het antwoord omvat de follow-up aanwijzingen](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
 
-Als u multi-turn niet inschakelt, wordt het antwoord geretourneerd, maar worden er geen opvolgings aanwijzingen weer gegeven.
+Als u multi-turn niet inschakelt, wordt het antwoord geretourneerd, maar worden vervolgprompts niet geretourneerd.
 
-## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>Een JSON-aanvraag om een eerste antwoord en opvolgings prompts te retour neren
+## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>Een JSON-verzoek om een eerste antwoord en follow-upprompts terug te sturen
 
-Gebruik het lege `context`-object om het antwoord op de vraag van de gebruiker aan te vragen en opvolgings prompts op te geven.
+Gebruik het `context` lege object om het antwoord op de vraag van de gebruiker op te vragen en vervolgaanwijzingen op te nemen.
 
 ```JSON
 {
@@ -193,9 +193,9 @@ Gebruik het lege `context`-object om het antwoord op de vraag van de gebruiker a
 }
 ```
 
-## <a name="a-json-response-to-return-an-initial-answer-and-follow-up-prompts"></a>Een JSON-antwoord om een eerste antwoord en opvolgings prompts te retour neren
+## <a name="a-json-response-to-return-an-initial-answer-and-follow-up-prompts"></a>Een JSON-antwoord om een eerste antwoord en follow-upprompts terug te sturen
 
-In de voor gaande sectie is een antwoord aangevraagd en wordt u gevraagd om **accounts in**te voeren en zich aan te melden. Het antwoord bevat de prompt informatie, die zich bevindt in *antwoorden [0]. context*, en de tekst die moet worden weer gegeven voor de gebruiker.
+De vorige sectie vroeg om een antwoord en eventuele follow-up prompts naar **Accounts en aanmelden**. Het antwoord bevat de snelle informatie, die zich bevindt op *antwoorden[0].context*, en de tekst die aan de gebruiker wordt weergegeven.
 
 ```JSON
 {
@@ -260,7 +260,7 @@ In de voor gaande sectie is een antwoord aangevraagd en wordt u gevraagd om **ac
 }
 ```
 
-De `prompts` matrix bevat tekst in de eigenschap `displayText` en de `qnaId` waarde. U kunt deze antwoorden weer geven als de volgende weer gegeven keuzes in de conversatie stroom en vervolgens de geselecteerde `qnaId` terug naar QnA Maker verzenden in de volgende aanvraag.
+De `prompts` array biedt `displayText` tekst in `qnaId` de eigenschap en de waarde. U deze antwoorden weergeven als de volgende weergegeven opties `qnaId` in de gespreksstroom en de geselecteerde antwoorden in het volgende verzoek terugsturen naar QnA Maker.
 
 <!--
 
@@ -268,11 +268,11 @@ The `promptsToDelete` array provides the ...
 
 -->
 
-## <a name="a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Een JSON-aanvraag om een niet-eerste antwoord en opvolgings prompts te retour neren
+## <a name="a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Een JSON-verzoek om een niet-eerste antwoord en follow-upprompts terug te sturen
 
-Vul het `context`-object in om de vorige context op te neemt.
+Vul `context` het object op om de vorige context op te nemen.
 
-In de volgende JSON-aanvraag gebruikt de huidige vraag *Windows hello om u aan te melden* . de vorige vraag is *accounts en*u aan te melden.
+In de volgende JSON-aanvraag is de huidige vraag *Windows Hello gebruiken om in te loggen* en de vorige vraag was accounts en *aanmelden*.
 
 ```JSON
 {
@@ -288,9 +288,9 @@ In de volgende JSON-aanvraag gebruikt de huidige vraag *Windows hello om u aan t
 }
 ```
 
-##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Een JSON-antwoord om een niet-eerste antwoord en opvolgings prompts te retour neren
+##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Een JSON-antwoord om een niet-eerste antwoord en follow-upprompts terug te sturen
 
-Het _GenerateAnswer_ JSON-antwoord QnA Maker bevat de opvolgings aanwijzingen in de eigenschap `context` van het eerste item in het `answers`-object:
+De QnA Maker _GenerateAnswer_ JSON-reactie bevat de `context` follow-upprompts `answers` in de eigenschap van het eerste item in het object:
 
 ```JSON
 {
@@ -348,26 +348,26 @@ Het _GenerateAnswer_ JSON-antwoord QnA Maker bevat de opvolgings aanwijzingen in
 }
 ```
 
-## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>De Knowledge Base doorzoeken met de QnA Maker-ID
+## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>De kennisbank opvragen met de QnA Maker ID
 
-Als u een aangepaste toepassing bouwt met behulp van de functie voor meerdere zetten. In het antwoord van de eerste vraag worden eventuele vervolg vragen en de bijbehorende `qnaId` geretourneerd. Nu u de ID hebt, kunt u deze door geven in de aanvraag tekst van de opvolgings prompt. Als de hoofd tekst van de aanvraag de `qnaId`bevat en het context object (dat de vorige QnA Maker eigenschappen bevat), retourneert GenerateAnswer de exacte vraag op ID, in plaats van het classificatie algoritme te gebruiken om het antwoord te vinden op basis van de vraag tekst.
+Als u een aangepaste toepassing bouwt met behulp van multi-turn-functie. In het antwoord van de eerste vraag worden eventuele `qnaId` vervolgaanwijzingen en de bijbehorende vragen geretourneerd. Nu je de ID hebt, kun je dit doorgeven in de aanvraaginstantie van de vervolgprompt. Als de aanvraaginstantie `qnaId`het , e.a. en het contextobject bevat (dat de vorige eigenschappen van QnA Maker bevat), retourneert GenerateAnswer de exacte vraag per ID, in plaats van het classificatiealgoritme te gebruiken om het antwoord te vinden door de vraagtekst.
 
 
-## <a name="display-order-is-supported-in-the-update-api"></a>Weergave volgorde wordt ondersteund in de API update
+## <a name="display-order-is-supported-in-the-update-api"></a>Weergavevolgorde wordt ondersteund in de Update-API
 
-De [weergave tekst en weergave volgorde](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto), geretourneerd in het JSON-antwoord, worden ondersteund voor bewerking door de [Update-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).
+De [weergavetekst en weergavevolgorde](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto), geretourneerd in het JSON-antwoord, wordt ondersteund voor bewerking door de [Update API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).
 
-## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Vragen om meerdere zetten toe te voegen of te verwijderen met de API voor bijwerken
+## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Multi-turnprompts toevoegen of verwijderen met de Update API
 
-U kunt vragen over meerdere schakelingen toevoegen of verwijderen met de [API QnA Maker update](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).  De prompts worden toegevoegd in de `promptsToAdd` matrix van de `context` eigenschap en de `promptsToDelete` matrix.
+U multi-turn prompts toevoegen of verwijderen met behulp van de [QnA Maker Update API.](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)  De prompts worden `context` toegevoegd in `promptsToAdd` de `promptsToDelete` array van de eigenschap en de array.
 
-## <a name="export-knowledge-base-for-version-control"></a>Knowledge Base exporteren voor versie beheer
+## <a name="export-knowledge-base-for-version-control"></a>Kennisbank exporteren voor versiebeheer
 
-QnA Maker ondersteunt versie beheer door gespreks stappen voor meerdere locaties in het geëxporteerde bestand op te nemen.
+QnA Maker ondersteunt versiebeheer door multi-turn gespreksstappen op te nemen in het geëxporteerde bestand.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over contextuele gesp rekken in dit [dialoog venster](https://aka.ms/qnamakermultiturnsample) vindt u in het voor beeld van een [conceptueel bot-ontwerp voor multi-telegesprekken](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0).
+Meer informatie over contextuele gesprekken in dit [dialoogvenster voorbeeld](https://aka.ms/qnamakermultiturnsample) of meer informatie over [conceptueel botontwerp voor multi-turn gesprekken](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0).
 
 > [!div class="nextstepaction"]
-> [Een Knowledge Base migreren](../Tutorials/migrate-knowledge-base.md)
+> [Een knowledge base migreren](../Tutorials/migrate-knowledge-base.md)

@@ -1,7 +1,7 @@
 ---
-title: Dash board-Language Understanding-LUIS
+title: Dashboard - Taalbegrip - LUIS
 titleSuffix: Azure Cognitive Services
-description: Verhelp de intenties en entiteiten met het dash board van uw getrainde app. In het dash board worden algemene app-gegevens weer gegeven, met de kenmerken van de intenties die moeten worden opgelost.
+description: Herstel intents en entiteiten met het dashboard van uw getrainde app. Het dashboard geeft algemene app-informatie weer, met hoogtepunten van intenties die moeten worden opgelost.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,162 +12,162 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
 ms.openlocfilehash: d9ae126753f55349f9bf3eefd20bc4d222866af1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73888202"
 ---
-# <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Het dash board gebruiken om uw app te verbeteren
+# <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Het dashboard gebruiken om uw app te verbeteren
 
-Zoek en los problemen met de intenties van uw getrainde app op wanneer u bijvoorbeeld uitingen gebruikt. In het dash board worden algemene app-gegevens weer gegeven, met de kenmerken van de intenties die moeten worden opgelost. 
+Problemen met de intenties van uw getrainde app zoeken en oplossen wanneer u voorbeelduitingen gebruikt. Het dashboard geeft algemene app-informatie weer, met hoogtepunten van intenties die moeten worden opgelost. 
 
-Dashboard analyse bekijken is een iteratief proces, herhaal wanneer u uw model wijzigt en verbetert.
+Review Dashboard analyse is een iteratief proces, herhalen als u uw model verandert en verbetert.
 
-Deze pagina heeft geen relevante analyse voor apps waarvoor geen voor beeld-uitingen in de intenties, ook wel _alleen-patroon-_ apps worden genoemd. 
+Op deze pagina wordt geen relevante analyse uitgevoerd voor apps die geen voorbeelduitingen in de intents hebben, bekend als _apps met alleen patronen._ 
 
-## <a name="what-issues-can-be-fixed-from-dashboard"></a>Welke problemen kunnen worden opgelost met het dash board?
+## <a name="what-issues-can-be-fixed-from-dashboard"></a>Welke problemen kunnen worden opgelost vanuit het dashboard?
 
-De drie problemen die worden behandeld in het dash board zijn:
+De drie problemen die in het dashboard worden aangepakt zijn:
 
-|Probleem|Grafiek kleur|Uitleg|
+|Probleem|Grafiekkleur|Uitleg|
 |--|--|--|
-|Onevenwichtige gegevens|-|Dit gebeurt wanneer het aantal voor beeld-uitingen significant varieert. Alle doel stellingen moeten _ongeveer_ hetzelfde aantal voorbeeld uitingen hebben, behalve de geen intentie. Het mag slechts 10%-15% bevatten van het totale aantal uitingen in de app.<br><br> Als de gegevens niet in balans zijn, maar de intentie nauwkeurigheid boven bepaalde drempel waarde ligt, wordt deze onevenwichtigheid niet gerapporteerd als een probleem.<br><br>**Begin met dit probleem: het kan de hoofd oorzaak van de andere problemen zijn.**|
-|Onduidelijke voor spellingen|Orange|Dit doet zich voor wanneer het beste doel en de volgende intentie scores dicht genoeg zijn dat ze in de volgende training kunnen spie gelen, vanwege [negatieve steek proeven](luis-how-to-train.md#train-with-all-data) of meer voorbeeld uitingen die aan de intentie zijn toegevoegd. |
-|Onjuiste voor spellingen|Rood|Dit probleem treedt op wanneer een voor beeld-utterance niet wordt voor speld voor de gelabelde intentie (het doel van de intentie).|
+|Gegevensonbalans|-|Dit gebeurt wanneer de hoeveelheid voorbeelduitingen aanzienlijk varieert. Alle intenties moeten _ongeveer_ hetzelfde aantal voorbeelduitingen hebben - behalve de intentie Geen. Het mag slechts 10%-15% van de totale hoeveelheid uitingen in de app hebben.<br><br> Als de gegevens onevenwichtig zijn, maar de nauwkeurigheid van de intentie boven bepaalde drempelwaarden ligt, wordt deze onbalans niet gerapporteerd als een probleem.<br><br>**Begin met dit probleem - het kan de oorzaak van de andere problemen.**|
+|Onduidelijke voorspellingen|Orange|Dit gebeurt wanneer de bovenste intentie en de scores van de volgende intentie dicht genoeg zijn om de volgende training te spiegelen, als gevolg van [negatieve sampling](luis-how-to-train.md#train-with-all-data) of meer voorbeelduitingen die aan de intentie zijn toegevoegd. |
+|Onjuiste voorspellingen|Rood|Dit gebeurt wanneer een voorbeeldutterance niet wordt voorspeld voor de gelabelde intentie (de intentie waarin deze zich bevindt).|
 
-Corrigerende voor spellingen worden weer gegeven met de kleur blauw.
+De juiste voorspellingen worden weergegeven met de kleur blauw.
 
-In het dash board worden deze problemen weer gegeven en wordt aangegeven welke intenties worden beïnvloed en wordt voorgesteld wat u moet doen om de app te verbeteren. 
+Het dashboard toont deze problemen en vertelt u welke intents worden beïnvloed en suggereert wat u moet doen om de app te verbeteren. 
 
-## <a name="before-app-is-trained"></a>Voordat de app is getraind 
+## <a name="before-app-is-trained"></a>Voordat de app wordt getraind 
 
-Voordat u de app traint, bevat het dash board geen suggesties voor oplossingen. Train uw app om deze suggesties te bekijken.  
+Voordat u de app traint, bevat het dashboard geen suggesties voor oplossingen. Train uw app om deze suggesties te zien.  
 
-## <a name="check-your-publishing-status"></a>De publicatie status controleren
+## <a name="check-your-publishing-status"></a>Uw publicatiestatus controleren
 
-De **publicatie status** kaart bevat informatie over de laatste publicatie van de actieve versie. 
+De **publicatiestatuskaart** bevat informatie over de laatste publicatie van de actieve versie. 
 
-Controleer of de actieve versie de versie is die u wilt herstellen. 
+Controleer of de actieve versie de versie is die u wilt oplossen. 
 
-![Dash board toont de externe services van de app, gepubliceerde regio's en geaggregeerde endpoint treffers.](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
+![Dashboard toont de externe services van de app, gepubliceerde regio's en geaggregeerde eindpunttreffers.](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
 
-Dit toont ook alle externe services, gepubliceerde regio's en geaggregeerde eindpunt treffers. 
+Dit toont ook externe services, gepubliceerde regio's en geaggregeerde eindpunttreffers. 
 
-## <a name="review-training-evaluation"></a>Trainings evaluatie evalueren
+## <a name="review-training-evaluation"></a>Evaluatie van de opleiding herzien
 
-De **trainings evaluatie** kaart bevat de geaggregeerde samen vatting van de algehele nauw keurigheid van uw app op gebied. De score geeft de kwaliteit van de opzet aan. 
+De **evaluatiekaart Training** bevat het geaggregeerde overzicht van de algehele nauwkeurigheid van uw app per gebied. De score geeft intentiekwaliteit aan. 
 
-![De trainings evaluatie kaart bevat het eerste informatie gebied over de algehele nauw keurigheid van uw app.](./media/luis-how-to-use-dashboard/analytics-card-2-shows-app-overall-accuracy.png)
+![De evaluatiekaart Training bevat het eerste gebied met informatie over de algehele nauwkeurigheid van uw app.](./media/luis-how-to-use-dashboard/analytics-card-2-shows-app-overall-accuracy.png)
 
-In de grafiek ziet u de correct voorspelde intenties en de probleem gebieden met verschillende kleuren. Wanneer u de app verbetert met de suggesties, neemt deze score toe. 
+De grafiek geeft de correct voorspelde intenties en de probleemgebieden met verschillende kleuren aan. Naarmate u de app verbetert met de suggesties, neemt deze score toe. 
 
-De voorgestelde oplossingen worden gescheiden door het probleem type en zijn het belangrijkst voor uw app. Als u de problemen per intentie wilt controleren en oplossen, gebruikt u de kaart **[bedoelingen met fouten](#intents-with-errors)** aan de onderkant van de pagina. 
+De voorgestelde oplossingen worden gescheiden door probleemtype en zijn de belangrijkste voor uw app. Als u problemen per intentie liever bekijkt en oplost, gebruikt u de kaart **[Intents with Errors](#intents-with-errors)** onder aan de pagina. 
 
-Elk probleem gebied heeft intenties die moeten worden opgelost. Wanneer u de naam van de doel groep selecteert, wordt de pagina **intentie** geopend met een filter dat is toegepast op de uitingen. Met dit filter kunt u zich richten op de uitingen die het probleem veroorzaken.
+Elk probleemgebied heeft intenties die moeten worden opgelost. Wanneer u de intentienaam selecteert, wordt de pagina **Intent** geopend met een filter dat op de uitingen wordt toegepast. Met dit filter u zich concentreren op de uitingen die het probleem veroorzaken.
 
-### <a name="compare-changes-across-versions"></a>Wijzigingen in versies vergelijken
+### <a name="compare-changes-across-versions"></a>Wijzigingen tussen versies vergelijken
 
-Maak een nieuwe versie voordat u wijzigingen aanbrengt in de app. In de nieuwe versie maakt u de voorgestelde wijzigingen in het voor beeld van het intentie uitingen en traint u het opnieuw. Op **de kaart van de dashboard** pagina kunt u de wijzigingen **weer geven van de getrainde versie** gebruiken. 
+Maak een nieuwe versie voordat u wijzigingen aanbrengt in de app. Breng in de nieuwe versie de voorgestelde wijzigingen aan in de voorbeelduitingen van de intentie en train vervolgens opnieuw. Gebruik op de **evaluatiekaart Training** van de dashboardpagina de **wijziging weergeven van getrainde versie** om de wijzigingen te vergelijken. 
 
-![Wijzigingen in versies vergelijken](./media/luis-how-to-use-dashboard/compare-improvement-across-versions.png)
+![Wijzigingen tussen versies vergelijken](./media/luis-how-to-use-dashboard/compare-improvement-across-versions.png)
 
-### <a name="fix-version-by-adding-or-editing-example-utterances-and-retraining"></a>Corrigeer de versie door voor beeld-uitingen en-training toe te voegen of te bewerken
+### <a name="fix-version-by-adding-or-editing-example-utterances-and-retraining"></a>Versie oplossen door voorbeelduitingen toe te voegen of te bewerken en omte scholen
 
-De primaire methode voor het herstellen van uw app is het toevoegen of bewerken van voor beeld-uitingen en-Retrain. Het nieuwe of gewijzigde uitingen moet voldoen aan de richt lijnen voor [verschillende uitingen](luis-concept-utterance.md).
+De primaire methode voor het herstellen van uw app is het toevoegen of bewerken van voorbeelduitingen en het omscholen. De nieuwe of gewijzigde uitingen moeten richtlijnen volgen voor [uiteenlopende uitingen.](luis-concept-utterance.md)
 
-Het toevoegen van voor beeld-uitingen moet worden uitgevoerd door iemand die:
+Het toevoegen van voorbeelduitingen moet worden gedaan door iemand die:
 
-* heeft een hoge mate van meer informatie over wat uitingen in de verschillende doel stellingen zijn.
-* weet hoe uitingen in één intentie kan worden verward met een ander doel.
-* kan bepalen of twee intenten, die veelvuldig met elkaar worden verward, in één intentie moeten worden samengevouwen. Als dit het geval is, moeten de verschillende gegevens worden opgehaald met entiteiten.
+* heeft een hoge mate van begrip van wat uitingen zijn in de verschillende intents.
+* weet hoe uitingen in de ene intentie kunnen worden verward met een andere intentie.
+* is in staat om te beslissen of twee intenties, die vaak met elkaar worden verward, moeten worden samengevouwen in een enkele intentie. Als dit het geval is, moeten de verschillende gegevens worden uitgetrokken met entiteiten.
 
-### <a name="patterns-and-phrase-lists"></a>Lijsten met patronen en zinsdelen
+### <a name="patterns-and-phrase-lists"></a>Patronen en woordgroepen
 
-De Analytics-pagina geeft niet aan wanneer [patronen](luis-concept-patterns.md) of [woordgroepen lijsten](luis-concept-feature.md)moeten worden gebruikt. Als u ze toevoegt, kan het helpen met onjuiste of onduidelijke voor spellingen, maar niet bij het onevenwicht van de gegevens. 
+De analysepagina geeft niet aan wanneer [patronen](luis-concept-patterns.md) of woordgroepen moeten worden [gebruikt.](luis-concept-feature.md) Als u ze toevoegt, kan het helpen met onjuiste of onduidelijke voorspellingen, maar helpt het niet bij de onbalans van gegevens. 
 
-### <a name="review-data-imbalance"></a>Gegevens onevenwicht controleren
+### <a name="review-data-imbalance"></a>Gegevensonbalans controleren
 
-Begin met dit probleem: het kan de hoofd oorzaak van de andere problemen zijn.
+Begin met dit probleem - het kan de oorzaak van de andere problemen.
 
-De lijst met intenties van **gegevens onevenwichtigheden** bevat intenties die meer uitingen nodig hebben om het onevenwicht van de gegevens te corrigeren. 
+De lijst met intenties voor **gegevensonbalans** toont intents die meer uitingen nodig hebben om de gegevensonbalans te corrigeren. 
 
-**U kunt dit probleem als volgt oplossen**:
+**Ga als volgt te werk om dit probleem op te lossen:**
 
-* Voeg meer uitingen toe aan de intentie en Train opnieuw. 
+* Voeg meer uitingen toe aan de intentie en train vervolgens opnieuw. 
 
-Voeg geen uitingen toe aan de geen intentie, tenzij dit wordt voorgesteld op het dash board.
+Voeg geen uitingen toe aan de intentie Geen, tenzij dat wordt voorgesteld op het dashboard.
 
 > [!Tip]
-> Gebruik de derde sectie op de pagina, **uitingen per intentie** met de instelling **uitingen (aantal)** , als een snelle visuele hulp lijn waarvan de intenties meer uitingen nodig hebben.  
-    ![uitingen (Number) te gebruiken om intenties te vinden met een onevenwichtigheid in de gegevens.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
+> Gebruik het derde gedeelte op de pagina, **Uitingen per intentie** met de instelling **Utterances (getal),** als een snelle visuele handleiding van welke intents meer uitingen nodig hebben.  
+    ![Gebruik 'Uitingen (getal)' om intents te vinden met gegevensonbalans.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
 
-### <a name="review-incorrect-predictions"></a>Bekijk onjuiste voor spellingen
+### <a name="review-incorrect-predictions"></a>Onjuiste voorspellingen bekijken
 
-In de lijst met **onjuiste Voorspellings** intentie worden intenties met uitingen weer gegeven die als voor beeld voor een specifiek doel worden gebruikt, maar worden voor speld voor verschillende doel stellingen. 
+De **lijst met onjuiste** voorspellingsintenties toont intenties met uitingen, die worden gebruikt als voorbeelden voor een specifieke intentie, maar worden voorspeld voor verschillende intents. 
 
-**U kunt dit probleem als volgt oplossen**:
+**Ga als volgt te werk om dit probleem op te lossen:**
 
-* Bewerk uitingen zodat het doel specifiek is en Train het opnieuw.
-* Combi neer intenties als uitingen te nauw keurig zijn uitgelijnd en opnieuw trainen.
+* Bewerk uitingen om specifieker te zijn voor de intentie en train opnieuw.
+* Combineer intenties als uitingen te nauw zijn uitgelijnd en train opnieuw.
 
-### <a name="review-unclear-predictions"></a>Onduidelijke voor spellingen controleren
+### <a name="review-unclear-predictions"></a>Bekijk onduidelijke voorspellingen
 
-De lijst met **onduidelijke Voorspellings** intentie bevat intenties met uitingen met Voorspellings scores die niet ver genoeg zijn vanaf hun dichtstbijzijnde gegelijke manier, waardoor de beste intentie voor de utterance kan worden gewijzigd in de volgende training vanwege [negatieve steek proeven](luis-how-to-train.md#train-with-all-data).
+De **onduidelijke** voorspellingsintentielijst toont intenties met uitingen met voorspellingsscores die niet ver genoeg verwijderd zijn van hun naaste rivaal, dat de bovenste intentie voor de utterance kan veranderen op de volgende training, als gevolg van [negatieve bemonstering.](luis-how-to-train.md#train-with-all-data)
 
 **Om dit probleem op te lossen**;
 
-* Bewerk uitingen zodat het doel specifiek is en Train het opnieuw.
-* Combi neer intenties als uitingen te nauw keurig zijn uitgelijnd en opnieuw trainen.
+* Bewerk uitingen om specifieker te zijn voor de intentie en train opnieuw.
+* Combineer intenties als uitingen te nauw zijn uitgelijnd en train opnieuw.
 
 ## <a name="utterances-per-intent"></a>Uitingen per intentie
 
-Deze kaart toont de totale status van de app voor de doel stellingen. Als u de intenties en de weer gave herstelt, kunt u deze kaart voor problemen blijven bekijken.
+Deze kaart toont de algehele app-status in de bedoelingen. Terwijl u intents en retrain vastzet, blijft u deze kaart bekijken voor problemen.
 
-In het volgende diagram ziet u een app met een goed gebalanceerde toepassing met bijna geen problemen.
+De volgende grafiek toont een goed uitgebalanceerde app met bijna geen problemen op te lossen.
 
-![In het volgende diagram ziet u een app met een goed gebalanceerde toepassing met bijna geen problemen.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-balance.png)
+![De volgende grafiek toont een goed uitgebalanceerde app met bijna geen problemen op te lossen.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-balance.png)
 
-In het volgende diagram ziet u een slecht gebalanceerde app met veel problemen die moeten worden opgelost.
+De volgende grafiek toont een slecht uitgebalanceerde app met veel problemen op te lossen.
 
-![In het volgende diagram ziet u een app met een goed gebalanceerde toepassing met bijna geen problemen.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
+![De volgende grafiek toont een goed uitgebalanceerde app met bijna geen problemen op te lossen.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
 
-Beweeg de muis aanwijzer over elke intentie balk om informatie over de bedoeling op te halen. 
+Plaats de plaats in de balk van elke intentie om informatie over de intentie te krijgen. 
 
-![In het volgende diagram ziet u een app met een goed gebalanceerde toepassing met bijna geen problemen.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
+![De volgende grafiek toont een goed uitgebalanceerde app met bijna geen problemen op te lossen.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
 
-Gebruik de functie **sorteren op** om de intenties te rangschikken op basis van het probleem type, zodat u zich kunt concentreren op de meest problematische doel stellingen van het probleem. 
+Gebruik de functie **Sorteren op** om de intenties te rangschikken op uitgiftetype, zodat u zich concentreren op de meest problematische intenties met dat probleem. 
 
-## <a name="intents-with-errors"></a>Intenties met fouten
+## <a name="intents-with-errors"></a>Intents with errors
 
-Met deze kaart kunt u problemen voor een specifiek doel bekijken. De standaard weergave van deze kaart is de meest problematische intentie, zodat u weet waar u uw inspanningen kunt richten.
+Met deze kaart u problemen met een specifieke intentie bekijken. De standaardweergave van deze kaart is de meest problematische intenties, zodat u weet waar u uw inspanningen moet richten.
 
-![Met de kaart intentie met fouten kunt u problemen voor een specifiek doel bekijken. De kaart wordt standaard gefilterd op de meest problematische doel stellingen, zodat u weet waar u uw inspanningen kunt richten.](./media/luis-how-to-use-dashboard/most-problematic-intents-with-errors.png)
+![Met de intents with errors-kaart u problemen bekijken voor een specifieke intentie. De kaart wordt standaard gefilterd op de meest problematische intenties, zodat u weet waar u uw inspanningen moet richten.](./media/luis-how-to-use-dashboard/most-problematic-intents-with-errors.png)
 
-In het bovenste cirkel diagram ziet u de problemen met de bedoeling van de drie probleem typen. Als er problemen zijn met de drie probleem typen, heeft elk type hieronder een eigen grafiek, samen met alle persoonlijke intenties. 
+De bovenste donutgrafiek toont de problemen met de intentie voor de drie probleemtypen. Als er problemen zijn in de drie probleemtypen, heeft elk type zijn eigen grafiek hieronder, samen met eventuele rivaliserende intenties. 
 
 ### <a name="filter-intents-by-issue-and-percentage"></a>Intenties filteren op uitgifte en percentage
 
-In deze sectie van de kaart kunt u voorbeeld uitingen vinden die buiten uw fout drempel vallen. IDEA liter wilt u de voor spellingen corrigeren. Dit percentage is zakelijk en door de klant gestuurd. 
+Met dit gedeelte van de kaart u voorbeelduitingen vinden die buiten uw foutdrempel vallen. Idealiter wilt u dat de juiste voorspellingen significant zijn. Dat percentage is zakelijk en klantgericht. 
 
-Bepaal de drempel percentages waarmee u vertrouwd bent voor uw bedrijf. 
+Bepaal de drempelpercentages waarmee u zich comfortabel voelt voor uw bedrijf. 
 
-Met het filter kunt u intenties met een specifiek probleem zoeken:
+Met het filter u intents vinden met een specifiek probleem:
 
 |Filteren|Voorgesteld percentage|Doel|
 |--|--|--|
-|Meest problematische doel stellingen|-|**Begin hier** : als u de uitingen in deze intentie herstelt, worden de apps meer dan andere oplossingen verbeterd.|
-|Corrigeer de voor spellingen hieronder|60%|Dit is het percentage uitingen in de geselecteerde intentie die juist zijn, maar waarvoor een betrouw baarheid is ingesteld onder de drempel waarde. |
-|Onduidelijke voor spellingen hierboven|15%|Dit is het percentage van de uitingen in de geselecteerde intentie die worden verward met het dichtstbijzijnde gegelijke doel.|
-|Onjuiste voor spellingen hierboven|15%|Dit is het percentage uitingen in de geselecteerde intentie dat onjuist wordt voor speld. |
+|Meest problematische intenties|-|**Begin hier** - Het herstellen van de uitingen in deze intentie zal de app meer verbeteren dan andere oplossingen.|
+|Juiste voorspellingen hieronder|60%|Dit is het percentage uitingen in de geselecteerde intentie die juist zijn, maar een betrouwbaarheidsscore onder de drempelwaarde hebben. |
+|Onduidelijke voorspellingen hierboven|15%|Dit is het percentage uitingen in de geselecteerde intentie die worden verward met de dichtstbijzijnde rivaliserende intentie.|
+|Bovenstaande onjuiste voorspellingen|15%|Dit is het percentage uitingen in de geselecteerde intentie die onjuist zijn voorspeld. |
 
-### <a name="correct-prediction-threshold"></a>Drempel waarde voor voor spellingen corrigeren
+### <a name="correct-prediction-threshold"></a>Juiste voorspellingsdrempel
 
-Wat is een vertrouw bare Voorspellings score voor u? Aan het begin van de ontwikkeling van apps kan 60% uw doel zijn. Gebruik de **onderstaande juiste voor spellingen** met het percentage van 60% om te zoeken naar uitingen in de geselecteerde intentie die moeten worden opgelost.
+Wat is een zelfverzekerde voorspelling vertrouwen score voor u? Aan het begin van de app-ontwikkeling kan 60% uw doelwit zijn. Gebruik de **onderstaande juiste voorspellingen** met het percentage van 60% om uitingen in de geselecteerde intentie te vinden die moeten worden opgelost.
 
-### <a name="unclear-or-incorrect-prediction-threshold"></a>Onduidelijke of onjuiste Voorspellings drempel
+### <a name="unclear-or-incorrect-prediction-threshold"></a>Onduidelijke of onjuiste voorspellingsdrempel
 
-Deze twee filters bieden u de mogelijkheid om uitingen te vinden in de geselecteerde intentie buiten de drempel waarde. U kunt deze twee percentages beschouwen als fout percentages. Als u vertrouwd bent met een 10-15%-fout frequentie voor voor spellingen, stelt u de drempel waarde voor het filter in op 15% om alle uitingen boven deze waarde te vinden. 
+Met deze twee filters u uitingen in de geselecteerde intentie buiten uw drempelwaarde vinden. U deze twee percentages zien als foutpercentages. Als u zich comfortabel voelt met een foutpercentage van 10-15% voor voorspellingen, stelt u de filterdrempel in op 15% om alle uitingen boven deze waarde te vinden. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

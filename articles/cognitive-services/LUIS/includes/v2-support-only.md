@@ -1,5 +1,5 @@
 ---
-title: Functies die worden ondersteund in v2-Voorspellings eindpunt, maar niet ondersteund in het v3-Voorspellings eindpunt
+title: Functies die worden ondersteund in v2-voorspellingseindpunt, maar niet worden ondersteund in V3-voorspellingseindpunt
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: diberry
 ms.openlocfilehash: 11bedea1f6395d198c17a485ef6f8e45a4a53b52
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73499045"
 ---
 > [!Caution]
-> Deze functie wordt niet ondersteund in de V3 API voor Voorspellings eindpunten. 
+> Deze functie wordt niet ondersteund in de V3 API voor voorspellingseindpunten. 

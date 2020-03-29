@@ -9,47 +9,47 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77086901"
 ---
-## <a name="personal-information-entity-types"></a>Entiteit typen persoonlijke informatie:
+## <a name="personal-information-entity-types"></a>Typen entiteits voor persoonlijke gegevens:
 
 ### <a name="person"></a>Person
-Herken namen van personen in de tekst.
+Persoonsnamen herkennen in tekst.
 
 Talen:
-* Open bare Preview: `English`
+* Openbare preview:`English`
 
-| Naam subtype | Beschrijving                                               | Beschikbaar vanaf model versie |
+| Subtypenaam | Beschrijving                                               | Beschikbaar vanaf modelversie |
 |--------------|-----------------------------------------------------------|----------------------------------------|
-| N.v.t.          | Herkende namen, bijvoorbeeld `Bill Gates`, `Marie Curie` | `2020-02-01`                           |
+| N.v.t.          | Erkende namen, bijvoorbeeld `Bill Gates`,`Marie Curie` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Organisatie  
 
-Organisaties, ondernemingen, agentschappen, bedrijven, klaveren en andere groepen mensen te herkennen.
+Herken organisaties, bedrijven, agentschappen, bedrijven, clubs en andere groepen mensen.
 
 Talen: 
 
-* Open bare Preview: `English`
+* Openbare preview:`English`
 
-| Naam subtype | Beschrijving                                                                                       | Beschikbaar vanaf model versie|
+| Subtypenaam | Beschrijving                                                                                       | Beschikbaar vanaf modelversie|
 |--------------|---------------------------------------------------------------------------------------------------|--------------|
 | N.v.t.          | organisaties, bijvoorbeeld `Microsoft`, `NASA``National Oceanic and Atmospheric Administration` | `2020-02-01` |
 
 ### <a name="phone-number"></a>Telefoonnummer
 
-Telefoon nummers (alleen Amerikaanse telefoon nummers). 
+Telefoonnummers (alleen telefoonnummers in de VS). 
 
 Talen:
 
-* Open bare Preview: `English`
+* Openbare preview:`English`
 
-| Naam subtype | Beschrijving                                    | Beschikbaar vanaf model versie |
+| Subtypenaam | Beschrijving                                    | Beschikbaar vanaf modelversie |
 |--------------|------------------------------------------------|----------------------------------------|
-| N.v.t.          | Telefoon nummers (VS), bijvoorbeeld `(312) 555-0176` | `2020-02-01`                           |
+| N.v.t.          | Amerikaanse telefoonnummers, bijvoorbeeld`(312) 555-0176` | `2020-02-01`                           |
 
 ### <a name="email"></a>Email
 
@@ -57,276 +57,276 @@ E-mailadres.
 
 Talen:
 
-* Open bare Preview: `English`
+* Openbare preview:`English`
 
-| Naam subtype | Beschrijving                                      | Beschikbaar vanaf model versie |
+| Subtypenaam | Beschrijving                                      | Beschikbaar vanaf modelversie |
 |--------------|--------------------------------------------------|----------------------------------------|
-| N.v.t.          | E-mail adres, bijvoorbeeld `support@contoso.com` | `2020-02-01`                           |
+| N.v.t.          | E-mailadres, bijvoorbeeld`support@contoso.com` | `2020-02-01`                           |
 
 ### <a name="url"></a>URL
 
-Internet-Url's.
+Internet-URL's.
 
 Talen:
 
-* Open bare Preview: `English`
+* Openbare preview:`English`
 
-| Naam subtype | Beschrijving                                          | Beschikbaar vanaf model versie |
+| Subtypenaam | Beschrijving                                          | Beschikbaar vanaf modelversie |
 |--------------|------------------------------------------------------|----------------------------------------|
-| N.v.t.          | Url's naar websites, bijvoorbeeld `https://www.bing.com` | `2020-02-01`                           |
+| N.v.t.          | URL's naar websites, bijvoorbeeld`https://www.bing.com` | `2020-02-01`                           |
 
 ### <a name="ip-address"></a>IP-adres
 
-Internet Protocol adres
+Adres van internetprotocol
 
 Talen:
 
-* Open bare Preview: `English`
+* Openbare preview:`English`
 
-| Naam subtype | Beschrijving                              | Beschikbaar vanaf model versie |
+| Subtypenaam | Beschrijving                              | Beschikbaar vanaf modelversie |
 |--------------|------------------------------------------|----------------------------------------|
-| N.v.t.          | Netwerk adres bijvoorbeeld `10.0.0.101` | `2020-02-01`                           |
+| N.v.t.          | Netwerkadres bijvoorbeeld`10.0.0.101` | `2020-02-01`                           |
 
 ### <a name="quantity"></a>Aantal 
 
-Numerieke aantallen
+Numerieke hoeveelheden
 
 Talen:
 
-* Open bare Preview: `English`
+* Openbare preview:`English`
 
-| Naam subtype | Beschrijving                   | Beschikbaar vanaf model versie |
+| Subtypenaam | Beschrijving                   | Beschikbaar vanaf modelversie |
 |--------------|-------------------------------|----------------------------------------|
 | Leeftijd          | `90 days old`, `30 years old` | `2020-02-01`                           |
 
 ### <a name="datetime"></a>DateTime
 
-Datum-en tijd entiteiten
+Datum- en tijdentiteiten
 
 Talen:
 
-* Open bare Preview: `English`
+* Openbare preview:`English`
 
-| Naam subtype | Beschrijving                   | Beschikbaar vanaf model versie |
+| Subtypenaam | Beschrijving                   | Beschikbaar vanaf modelversie |
 |--------------|-------------------------------|----------------------------------------|
 | Date         | `May 2nd, 2017`, `05/02/2017` | `2020-02-01`                           |
 
-### <a name="eu-gps-coordinates"></a>EU GPS-coördinaten
+### <a name="eu-gps-coordinates"></a>EU-GPS-coördinaten
 
  GPS-coördinaten voor locaties binnen de Europese Unie. 
 
 Talen:
 
-* Open bare Preview: `English`
+* Openbare preview:`English`
 
-| Naam subtype | Beschrijving                               | Beschikbaar vanaf model versie |
+| Subtypenaam | Beschrijving                               | Beschikbaar vanaf modelversie |
 |--------------|-------------------------------------------|----------------------------------------|
 | N.v.t.          | GPS-coördinaten binnen de Europese Unie | `2019-10-01`                           |
 
 ### <a name="azure-information"></a>Azure-gegevens
 
-Identificeer bare Azure-informatie, inclusief verificatie gegevens en verbindings reeksen. 
+Identificeerbare Azure-informatie, waaronder verificatiegegevens en verbindingstekenreeksen. 
 
-* Beschikbaar vanaf model versie `2019-10-01`.
+* Beschikbaar vanaf de `2019-10-01`modelversie .
 
 Talen:
 
-* Open bare Preview: `English`
+* Openbare preview:`English`
 
-| Naam subtype                          | Beschrijving                                                                 |
+| Subtypenaam                          | Beschrijving                                                                 |
 |---------------------------------------|-----------------------------------------------------------------------------|
-| Verificatie sleutel voor Azure DocumentDB             | Autorisatie sleutel voor een Azure DocumentDB-server.                           |
-| Verbindings reeks voor Azure IAAS-data base | Verbindings reeks voor een Azure Infrastructure as a service-data base (IaaS). |
-| Azure SQL-verbindings reeks           | De verbindings reeks voor een Azure-SQL database.                                |
-| Azure IoT-verbindings reeks           | De verbindings reeks voor Azure Internet der dingen (IoT).                        |
-| Wacht woord voor de publicatie-instelling van Azure        | Wacht woord voor Azure Publish-instellingen.                                        |
-| Verbindings reeks Azure Redis Cache   | Verbindings reeks voor een Azure-cache voor redis.                             |
-| Azure SAS                             | Verbindings reeks voor Azure-software als een service (SAS).                     |
-| Verbindings reeks Azure Service Bus   | Verbindings reeks voor een Azure service bus.                                |
-| Sleutel van Azure Storage-account             | Account sleutel voor een Azure-opslag account.                                   |
-| Sleutel van Azure Storage-account (algemeen)   | Algemene account sleutel voor een Azure-opslag account.                           |
-| Verbindings reeks SQL Server          | Verbindings reeks voor een SQL-Server.                                         |
+| Azure DocumentDB Auth-sleutel             | Autorisatiesleutel voor een Azure DocumentDB-server.                           |
+| Azure IAAS-databaseverbindingstekenreeks | Verbindingstekenreeks voor een IaaS-database (Azure Infrastructure as a Service). |
+| Azure SQL-verbindingstekenreeks           | Verbindingstekenreeks voor een Azure SQL-database.                                |
+| Azure IoT-verbindingstekenreeks           | Verbindingstekenreeks voor Azure Internet of Things (IoT).                        |
+| Wachtwoord voor azure-publicatie-instelling        | Wachtwoord voor Azure-publicatie-instellingen.                                        |
+| Verbindingstekenreeks azure Redis-cache   | Verbindingstekenreeks voor een Azure-cache voor Redis.                             |
+| Azure SAS                             | Verbindingstekenreeks voor Azure Software as a Service(SAS).                     |
+| Tekenreeks Azure Service Bus-verbinding   | Verbindingstekenreeks voor een Azure-servicebus.                                |
+| Azure-opslagaccountsleutel             | Accountsleutel voor een Azure-opslagaccount.                                   |
+| Azure Storage Account Key (Algemeen)   | Algemene accountsleutel voor een Azure-opslagaccount.                           |
+| SQL Server-verbindingstekenreeks          | Verbindingstekenreeks voor een SQL-server.                                         |
 
-### <a name="identification"></a>Aanduiding
+### <a name="identification"></a>Identificatie
 
-* Beschikbaar vanaf model versie `2019-10-01`.
+* Beschikbaar vanaf de `2019-10-01`modelversie .
 
 Talen:
 
-* Open bare Preview: `English`
+* Openbare preview:`English`
 
-#### <a name="financial-account-identification"></a>Id van financiële rekening
+#### <a name="financial-account-identification"></a>Identificatie van financiële rekening
 
-| Naam subtype               | Beschrijving                                                                |
+| Subtypenaam               | Beschrijving                                                                |
 |----------------------------|----------------------------------------------------------------------------|
-| ABA-route nummers        | Transit routerings nummers van de Amerikaanse Bank (ABA).                  |
-| SWIFT-code                 | SWIFT-codes voor informatie over de betalings instructie.                           |
-| Creditcard                | Creditcard nummers.                                                       |
-| IBAN-code                  | IBAN-codes voor informatie over de betalings instructie.                            |
+| ABA-routeringsnummers        | American Banker Association (ABA) transit routing nummers.                  |
+| SWIFT-code                 | SWIFT-codes voor betalingsinstructies.                           |
+| Creditcard                | Creditcardnummers.                                                       |
+| IBAN-code                  | IBAN-codes voor informatie over betalingsinstructies.                            |
 
-#### <a name="government-and-country-specific-identification"></a>Overheid en land-specifieke identificatie
+#### <a name="government-and-country-specific-identification"></a>Overheid en land-specifiek Identificatie
 
-De onderstaande entiteiten worden gegroepeerd en per land weer gegeven:
+De onderstaande entiteiten zijn gegroepeerd en per land vermeld:
 
 Argentinië
-* Sofi-nummer (National Identity)
+* Nationale Identiteit (DNI) Aantal
 
 Australië
-* BTW-bestands nummer 
-* Licentie-ID van stuur programma
-* Pass Port-ID
-* Medisch account nummer
-* bankrekening nummers (bijvoorbeeld controle, besparingen en debetrekening)
+* Fiscaal dossiernummer 
+* Rijbewijs-ID
+* Paspoort-ID
+* Medisch rekeningnummer
+* bankrekeningnummers (bijvoorbeeld controle-, spaar- en betaalrekeningen)
 
 België
 * Nationaal nummer
 
 Brazilië
-* Nummer van juridische entiteit (CNPJ)
+* Nummer van de rechtspersoon (CNPJ)
 * CPF-nummer
-* National ID-kaart (RG)
+* Nationale identiteitskaart (RG)
 
 Canada
-* Pass Port-ID
-* Licentie-ID van stuur programma
-* Ziektekosten nummer
-* ID-nummer persoonlijke status (PHIN)
-* Sociaal-fiscaal nummer
-* bankrekening nummers (bijvoorbeeld controle, besparingen en debetrekening)
+* Paspoort-ID
+* Rijbewijs-ID
+* Ziekteverzekering Nummer
+* Persoonlijke gezondheids-ID-nummer (PHIN)
+* Sofinummer
+* bankrekeningnummers (bijvoorbeeld controle-, spaar- en betaalrekeningen)
 
 Chili
-* Nummer van de identiteits kaart 
+* Identiteitskaartnummer 
 
 China
-* Nummer van de identiteits kaart
-* Nummer van residente ID-kaart (PRC)
+* Identiteitskaartnummer
+* Resident ID-kaart (PRC) nummer
 
 Kroatië
-* ID-kaart nummer
+* ID-kaartnummer
 * Persoonlijk ID-nummer (OIB)
 
 Tsjechië
-* Nummer van nationale ID-kaart
+* Nummer van de nationale identiteitskaart
 
 Denemarken
 * Persoonlijk ID-nummer
 
 Europese Unie (EU)
-* Sofi-nummer
-* Pass Port-ID
-* Licentie-ID van stuur programma
-* Sofinummer (sofi-nummer) of gelijkwaardige ID
-* BTW-identificatie nummer van de EU
-* Nummer ICL-betaalpas
+* Nationaal ID-nummer
+* Paspoort-ID
+* Rijbewijs-ID
+* SSN -nummer (SSN) of gelijkwaardig identiteitsbewijs
+* EU-belastingidentificatienummer (TIN)
+* EU-betaalkaartnummer
 
 Finland
-* Sofi-nummer
-* Pass Port-ID
+* Nationaal ID-nummer
+* Paspoort-ID
 
 Frankrijk
-* National ID Card (CNI)
-* Sociaal-fiscaal nummer (INSEE)
-* Pass Port-ID
-* Licentie-ID van stuur programma
+* Nationale identiteitskaart (CNI)
+* Sofi-nummer (INSEE)
+* Paspoort-ID
+* Rijbewijs-ID
 
 Duitsland
-* ID-kaart nummer
-* Pass Port-ID
-* Licentie-ID van stuur programma
+* ID-kaartnummer
+* Paspoort-ID
+* Rijbewijs-ID
 
 Griekenland 
-* Nummer van nationale ID-kaart
+* Nummer van de nationale identiteitskaart
 
-Hongkong SAR
-* Nummer van ID-kaart (HKID)
+Hongkong
+* HKID-nummer (ID-kaart)
 
 India
-* Permanent account nummer (PAN)
-* Uniek ID-nummer (Aadhaar)
+* Permanent rekeningnummer (PAN)
+* Uniek ID (Aadhaar) Nummer
 
 Indonesië
-* ID-kaart nummer (KTP)
+* ID-kaartnummer (KTP)
 
 Ierland
-* Nummer van persoonlijke open bare service (PPS)
+* Nummer van de persoonlijke openbare dienst (PPS)
 
 Israël
-* Nationale ID
-* bankrekening nummers (bijvoorbeeld controle, besparingen en debetrekening)
+* Nationale identiteitskaart
+* bankrekeningnummers (bijvoorbeeld controle-, spaar- en betaalrekeningen)
 
 Italië
-* Licentie-ID van stuur programma
+* Rijbewijs-ID
 
 Japan
-* Resident registratie nummer
-* Nummer van verblijfs kaart
-* Licentie-ID van stuur programma
-* Sofi-nummer (SIN)
-* Pass Port-ID
-* bankrekening nummers (bijvoorbeeld controle, besparingen en debetrekening)
+* Kenteken
+* Verblijfskaartnummer
+* Rijbewijs-ID
+* Burgerverzekeringnummer (SIN)
+* Paspoort-ID
+* bankrekeningnummers (bijvoorbeeld controle-, spaar- en betaalrekeningen)
 
 Maleisië
-* ID-kaart nummer
+* ID-kaartnummer
 
 Nederland
-* BSN-nummer (burger service)
+* BSN-nummer (Citizen's Service)
 
 Nieuw-Zeeland
-* Ministerie van gezondheids nummer
+* Ministerie van Volksgezondheid Nummer
 
 Noorwegen
-* ID-kaart nummer
+* ID-kaartnummer
 
 Filipijnen
-* Uniform ID-nummer voor meerdere doel einden
+* Uniform multifunctioneel id-nummer
 
 Polen
-* ID-kaart nummer
-* National ID (PESEL)
-* Pass Port-ID
+* ID-kaartnummer
+* Nationale IDENTITEITSKAART (PESEL)
+* Paspoort-ID
 
 Portugal 
-* Kaart nummer burger
+* Burgerkaartnummer
 
 Saoedi-Arabië
-* Nationale ID
+* Nationale identiteitskaart
 
 Singapore
-* Nummer van de nationale registratie-ID-kaart (NRIC)
+* NRIC-nummer (National Registration ID)
 
 Zuid-Afrika
 * ID-nummer
-* Resident registratie nummer
+* Kenteken
 
 Zuid-Korea
-* Resident registratie nummer
+* Kenteken
 
 Spanje 
-* Sociaal-fiscaal nummer (SSN)
+* SSN (SSN)
 
 Zweden
-* Nationale ID
-* Pass Port-ID
+* Nationale identiteitskaart
+* Paspoort-ID
 
 Taiwan 
-* Nationale ID
-* Nummer van Resident certificaat (ARC/TARC)
-* Pass Port-ID
+* Nationale identiteitskaart
+* Resident Certificate (ARC/TARC) nummer
+* Paspoort-ID
 
 Thailand
-* Identificatie code van populatie
+* Identificatiecode voor de bevolking
 
 Verenigd Koninkrijk
-* Pass Port-ID
-* Licentie-ID van stuur programma
-* Nationaal verzekerings nummer (NINO)
-* National Health Service (NHS)-nummer
+* Paspoort-ID
+* Rijbewijs-ID
+* Nationale Verzekering nummer (NINO)
+* National Health Service (NHS) nummer
 
 Verenigde Staten
-* Sociaal-fiscaal nummer (SSN)
-* Licentie-ID van stuur programma
-* Pass Port-ID
-* Aantal kiezers
-* ID-nummer van afzonderlijke belasting (ITIN)
-* DEA-nummer (medicijn Enforcement Agency)
-* bankrekening nummers (bijvoorbeeld controle, besparingen en debetrekening)
+* SSN (SSN)
+* Rijbewijs-ID
+* Paspoort-ID
+* Kieslijstnummer
+* Individueel btw-nummer (ITIN)
+* Drug Enforcement Agency (DEA) nummer
+* bankrekeningnummers (bijvoorbeeld controle-, spaar- en betaalrekeningen)

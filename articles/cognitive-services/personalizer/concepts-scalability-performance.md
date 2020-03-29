@@ -1,7 +1,7 @@
 ---
-title: Schaal baarheid en prestaties-persoonlijker
+title: Schaalbaarheid en prestaties - Personalizer
 titleSuffix: Azure Cognitive Services
-description: 'Websites en toepassingen met hoge prestaties en hoog verkeer hebben twee belang rijke factoren om te overwegen met persoonlijke instellingen voor schaal baarheid en prestaties: latentie en trainings doorvoer.'
+description: 'Krachtige en krachtige en drukke websites en toepassingen hebben twee belangrijke factoren waarmee u rekening moet houden met Personalizer voor schaalbaarheid en prestaties: latentie en trainingsdoorvoer.'
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,44 +11,44 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: diberry
 ms.openlocfilehash: 5ac9a870cb05328f040febd0f8161a97f0982e09
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73490791"
 ---
-# <a name="scalability-and-performance"></a>Schaal baarheid en prestaties
+# <a name="scalability-and-performance"></a>Schaalbaarheid en prestaties
 
-Websites en toepassingen met hoge prestaties en hoog verkeer hebben twee belang rijke factoren om te kunnen overwegen met persoonlijke instellingen voor schaal baarheid en prestaties:
+Krachtige en drukke websites en toepassingen met veel verkeer hebben twee belangrijke factoren waarmee u rekening moet houden met Personalizer voor schaalbaarheid en prestaties:
 
-* Lage latentie behouden bij het maken van Rank API-aanroepen
-* Zorgen dat de door Voer van de training wordt bijgewerkt met gebeurtenis invoer
+* Lage latentie houden bij het maken van Rank API-aanroepen
+* Ervoor zorgen dat de trainingsdoorvoer gelijke tred houdt met de invoer van gebeurtenissen
 
-Persoonlijke instellingen kunnen snel een absolute waarde Retour neren, met de meeste gespreks duur die is toegewezen aan communicatie via de REST API. Azure schaalt automatisch de mogelijkheid om snel te reageren op aanvragen.
+Personalisatie kan een rang snel retourneren, waarbij het grootste deel van de gespreksduur is gewijd aan communicatie via de REST API. Azure schaalt de mogelijkheid om snel op verzoeken te reageren automatisch op.
 
 ##  <a name="low-latency-scenarios"></a>Scenario's met lage latentie
 
-Voor sommige toepassingen is een lage latentie vereist bij het retour neren van een positie. Er zijn lage latenties nodig:
+Sommige toepassingen vereisen lage latencies bij het retourneren van een rang. Lage latencies zijn noodzakelijk:
 
-* Om te voor komen dat de gebruiker een opvallende hoeveelheid tijd moet wachten voordat geclassificeerde inhoud wordt weer gegeven.
-* Om een server te helpen die extreem veel verkeer ondervindt, vermijdt u het koppelen van schaarse reken tijd en netwerk verbindingen.
+* Om te voorkomen dat de gebruiker een merkbare hoeveelheid tijd wacht voordat de gerangschikte inhoud wordt weergegeven.
+* Om te helpen een server die extreme verkeer te voorkomen dat koppelverkoop schaarse rekentijd en netwerkverbindingen.
 
 
-## <a name="scalability-and-training-throughput"></a>Door Voer voor schaal baarheid en training
+## <a name="scalability-and-training-throughput"></a>Schaalbaarheid en trainingsdoorvoer
 
-Personaler werkt door het bijwerken van een model dat opnieuw wordt getraind op basis van berichten die asynchroon worden verzonden door Personaler na de classificatie en belonings-Api's. Deze berichten worden verzonden met behulp van een Azure-EventHub voor de toepassing.
+Personalizer werkt door een model bij te werken dat wordt aangepast op basis van berichten die asynchroon worden verzonden door Personalizer na rank- en belonings-API's. Deze berichten worden verzonden via een Azure EventHub voor de toepassing.
 
- Het is niet waarschijnlijk dat de meeste toepassingen het maximale lidmaatschap en de door Voer van de persoonlijke voor keuren bereiken. Het bereiken van dit maximum zal de toepassing niet vertragen, maar het impliceert dat Event hub-wacht rijen sneller worden gevuld dan ze kunnen worden opgeruimd.
+ Het is onwaarschijnlijk dat de meeste toepassingen de maximale verbindings- en trainingsdoorvoer van Personalizer zullen bereiken. Hoewel het bereiken van dit maximum de toepassing niet vertraagt, zou dit betekenen dat wachtrijen voor gebeurtenishub intern sneller worden gevuld dan ze kunnen worden opgeschoond.
 
-## <a name="how-to-estimate-your-throughput-requirements"></a>Uw doorvoer vereisten ramen
+## <a name="how-to-estimate-your-throughput-requirements"></a>Hoe u uw doorvoervereisten inschatten
 
-* Schatting van het gemiddelde aantal bytes per rangorde gebeurtenis waarmee de lengte van de context en de JSON-documenten van de actie worden toegevoegd.
-* Deling 20 MB per seconde door dit geschatte gemiddelde aantal bytes.
+* Schat het gemiddelde aantal bytes per rankinggebeurtenis en voeg de lengtes van de context- en actie-JSON-documenten toe.
+* Deel 20MB/sec door deze geschatte gemiddelde bytes.
 
-Als uw gemiddelde Payload bijvoorbeeld 500 functies heeft en elk een geschatte 20 tekens is, dan is elke gebeurtenis ongeveer 10 KB. Met deze schattingen 20.000.000/10.000 = 2.000 gebeurtenissen per seconde, die ongeveer 173.000.000 gebeurtenissen per dag zijn. 
+Als uw gemiddelde payload bijvoorbeeld 500 functies heeft en elk is naar schatting 20 tekens, dan is elke gebeurtenis ongeveer 10 kb. Met deze schattingen, 20.000.000 / 10.000 = 2.000 gebeurtenissen per seconde, dat is ongeveer 173 miljoen evenementen per dag. 
 
-Als u deze limieten bereikt, neemt u contact op met ons ondersteunings team voor architectuur advies.
+Als u deze limieten bereikt, neem dan contact op met ons ondersteuningsteam voor architectuuradvies.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Persoonlijker maken en configureren](how-to-settings.md).
+[Personaliser maken en configureren](how-to-settings.md).

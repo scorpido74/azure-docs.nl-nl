@@ -1,7 +1,7 @@
 ---
 title: Wijzigingen in de API ontwerpen
 titleSuffix: Azure Cognitive Services
-description: De ontwerpen v2-en V3-Api's zijn gewijzigd. Gebruik deze hand leiding om inzicht te krijgen in het gebruik van de ontwerp-Api's.
+description: De authoring V2 en V3 API's zijn veranderd. Gebruik deze handleiding om te begrijpen hoe u de auteurs-API's gebruiken.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: eb01ccc211be55885b945c40bd88553818b0ab78
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73507801"
 ---
-# <a name="authoring-api-changes"></a>Wijzigingen in de API ontwerpen 
+# <a name="authoring-api-changes"></a>API-wijzigingen voor ontwerpen 
 
-De ontwerp-Api's worden voor v3 bijgewerkt, zodat [model ontleding met door machines geleerde entiteiten](luis-concept-data-extraction.md)mogelijk is. 
+De authoring API's worden bijgewerkt, voor V3, om [modelontbinding met machine-aangeleerde entiteiten](luis-concept-data-extraction.md)mogelijk te maken. 
 
-U kunt ontwerpen in de v2-of preview v3-API'S. Dezelfde app kan er ook voor kiezen om v2-of v3-eindpunt reacties te gebruiken. U hoeft niet dezelfde versie van API te hebben voor het maken en Voorspellings eindpunt antwoord.
+U een auteur maken in de V2 of een voorbeeld van V3 APIS. Dezelfde app kan er ook voor kiezen om V2- of V3-voorspellingseindpuntreacties te gebruiken. U hoeft niet dezelfde versie van API te hebben voor het ontwerpen en voorspellen van eindpuntrespons.
 
-De LUIS-Portal maakt alleen gebruik van de V3-ontwerp-Api's.
+De LUIS portal maakt uitsluitend gebruik van de V3 authoring API's.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk [wijzigingen in het Voorspellings eindpunt voor de](luis-migration-api-v3.md) v3 API.
+Wijzigingen [in het voorspellingseindpunt](luis-migration-api-v3.md) voor V3 API bekijken.

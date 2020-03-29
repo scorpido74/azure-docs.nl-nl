@@ -6,10 +6,10 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: bb51a47efc7bcae5014d5ea004674fed7cb33fe0
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851815"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Snelstart: een knowledge base maken in QnA Maker met behulp van Python
@@ -20,14 +20,14 @@ In deze snelstart worden QnA Maker-API's aangeroepen:
 * [KB maken](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Bewerkingsdetails ophalen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[Referentie documentatie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [python](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py) -voor beeld
+[Voorbeeld van referentiedocumentatie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Python](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
 * [Python 3.7](https://www.python.org/downloads/)
-* U moet een [QnA Maker-service ](../How-To/set-up-qnamaker-service-azure.md) hebben. Als u de sleutel en het eind punt (inclusief de resource naam) wilt ophalen, selecteert u **Quick** start voor uw resource in het Azure Portal.
+* U moet een [QnA Maker-service](../How-To/set-up-qnamaker-service-azure.md)hebben. Als u uw sleutel en eindpunt (inclusief de naam van de bron) wilt ophalen, selecteert u **Quickstart** voor uw resource in de Azure-portal.
 
 ## <a name="create-a-knowledge-base-python-file"></a>Een Python-bestand met knowledge base maken
 
@@ -35,19 +35,19 @@ Maak een bestand met de naam `create-new-knowledge-base-3x.py`.
 
 ## <a name="add-the-required-dependencies"></a>De vereiste afhankelijkheden toevoegen
 
-Voeg aan het begin van `create-new-knowledge-base-3x.py` de volgende regels toe om de nodige afhankelijkheden aan het project toe te voegen:
+Voeg bovenaan `create-new-knowledge-base-3x.py` de volgende regels toe om de nodige afhankelijkheden aan het project toe te voegen:
 
 [!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=1-1 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>De vereiste constanten toevoegen
-Voeg de vereiste constanten toe voor toegang tot QnA Maker na de bovenstaande vereiste afhankelijkheden. Vervang de waarde van de `<your-qna-maker-subscription-key>` en `<your-resource-name>` door uw eigen QnA Maker sleutel en resource naam.
+Voeg na de bovenstaande vereiste afhankelijkheden de vereiste constanten toe voor toegang tot QnA Maker. Vervang de waarde `<your-qna-maker-subscription-key>` `<your-resource-name>` van de en door uw eigen QnA Maker-sleutel en resourcenaam.
 
-Voeg boven aan de programma klasse de vereiste constanten toe om toegang te krijgen tot QnA Maker.
+Voeg bovenaan de klasse Programma de vereiste constanten toe om toegang te krijgen tot QnA Maker.
 
 Stel de volgende waarden in:
 
-* `<your-qna-maker-subscription-key>`: de **sleutel** is een teken reeks van 32 en is beschikbaar in de Azure Portal, op de QnA Maker resource, op de pagina Quick Start. Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.
-* `<your-resource-name>`: de **naam** van uw resource wordt gebruikt om de URL voor het ontwerpen van eind punten voor het ontwerpen te maken, in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.
+* `<your-qna-maker-subscription-key>`- De **sleutel** is een tekenreeks met 32 tekens en is beschikbaar in de Azure-portal, op de QnA Maker-bron, op de quickstart-pagina. Dit is niet hetzelfde als de voorspellingeindpuntsleutel.
+* `<your-resource-name>`- Uw **resourcenaam** wordt gebruikt om de URL van het ontwerpeindpunt voor het ontwerpen te construeren in de notatie van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Dit is niet dezelfde URL die wordt gebruikt om het voorspellingseindpunt op te vragen.
 
 [!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=5-13 "Add the required constants")]
 
@@ -133,4 +133,4 @@ Zodra de knowledge base is gemaakt, kunt u deze weergeven in de QnA Maker-portal
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naslaginformatie over REST API voor QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [Naslaginformatie over REST-API voor QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)

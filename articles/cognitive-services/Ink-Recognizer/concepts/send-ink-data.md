@@ -1,7 +1,7 @@
 ---
 title: Inktgegevens naar de Ink Recognizer-API verzenden
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het aanroepen van de Ink Analyzer-API voor verschillende toepassingen
+description: Meer informatie over het aanroepen van de Ink Analyzer API voor verschillende toepassingen
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79221104"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Inktgegevens naar de Ink Recognizer-API verzenden 
 
-Digital Inking verwijst naar technologieën die digitale representaties mogelijk maken van input zoals handgeschreven tekst en tekeningen. Dit wordt doorgaans gerealiseerd met een digitizer waarmee de bewegingen van invoer apparaten, zoals een pen, worden vastgelegd. Omdat apparaten rijke digitale inktwaarneming mogelijk maken, kunnen kunstmatige intelligentie en machine learning geschreven vormen en tekst in vrijwel elke context herkennen. Met de API voor inkt herkenning kunt u inkt streken verzenden en gedetailleerde informatie hierover ophalen. 
+Digital Inking verwijst naar technologieën die digitale representaties mogelijk maken van input zoals handgeschreven tekst en tekeningen. Dit wordt meestal bereikt met behulp van een digitizer die de bewegingen van invoerapparaten vastlegt, zoals een stylus. Omdat apparaten rijke digitale inktwaarneming mogelijk maken, kunnen kunstmatige intelligentie en machine learning geschreven vormen en tekst in vrijwel elke context herkennen. Met de Ink Recognizer API u pennenstreken verzenden en er gedetailleerde informatie over krijgen. 
 
-## <a name="the-ink-recognizer-api-vs-ocr-services"></a>De API voor inkt herkenning versus OCR-Services
+## <a name="the-ink-recognizer-api-vs-ocr-services"></a>De Ink recognizer API vs. OCR-services
 
-De inkt Recognizer-API maakt geen gebruik van optische teken herkenning (OCR). OCR-Services verwerken de pixel gegevens van afbeeldingen om te voorzien in hand schrift-en tekst herkenning. Dit wordt ook wel offline herkenning genoemd. In plaats daarvan vereist de inkt Recognizer-API digitale inkt lijn gegevens die zijn vastgelegd als het invoer apparaat wordt gebruikt. Door digitale inkt gegevens op deze manier te verwerken, kunnen nauw keurige herkennings resultaten worden geproduceerd vergeleken met de OCR-Services. 
+De Ink Recognizer API maakt geen gebruik van Optical Character Recognition (OCR). OCR-services verwerken de pixelgegevens van afbeeldingen om handschrift- en tekstherkenning te bieden. Dit wordt ook wel offline herkenning genoemd. In plaats daarvan vereist de Ink Recognizer API digitale inklijngegevens die worden vastgelegd wanneer het invoerapparaat wordt gebruikt. Het op deze manier verwerken van digitale inktgegevens kan nauwkeurigere herkenningsresultaten opleveren in vergelijking met OCR-services. 
 
-## <a name="sending-ink-data"></a>Inkt gegevens verzenden
+## <a name="sending-ink-data"></a>Inktgegevens verzenden
 
-De inkt Recognizer-API vereist de X-en Y-coördinaten die de door een invoer apparaat gemaakte inkt streken vertegenwoordigen, vanaf het moment dat deze het detectie-Opper vlak aanraakt wanneer het is opgeheven. De punten van elke lijn moeten een teken reeks met door komma's gescheiden waarden zijn en moeten worden ingedeeld in JSON, zoals in het onderstaande voor beeld. Daarnaast moet elke inkt streek een unieke ID in elke aanvraag hebben. Als de ID wordt herhaald binnen dezelfde aanvraag, wordt een fout geretourneerd door de API. Voor de meest nauw keurige herkennings resultaten moet u ten minste acht cijfers achter het decimaal teken hebben. De oorsprong (0,0) van het canvas wordt verondersteld de linkerbovenhoek van het canvas voor inkt te zijn.
+De Ink Recognizer API vereist de X- en Y-coördinaten die de inktlijnen vertegenwoordigen die door een invoerapparaat zijn gemaakt, vanaf het moment dat het detectieoppervlak wordt geraakt tot wanneer het wordt opgeheven. De punten van elke lijn moeten een tekenreeks van door komma's gescheiden waarden zijn en worden opgemaakt in JSON, zoals het onderstaande voorbeeld. Bovendien moet elke pennenstreek een unieke id in elk verzoek hebben. Als de ID binnen dezelfde aanvraag wordt herhaald, retourneert de API een fout. Voor de meest nauwkeurige herkenningsresultaten hebt u ten minste acht cijfers achter het decimaalpunt. De oorsprong (0,0) van het canvas wordt verondersteld de linkerbovenhoek van het inktdoek te zijn.
 
 > [!NOTE]
-> Het volgende voor beeld is geen geldige JSON. U kunt een volledige inkt Recognizer JSON-aanvraag vinden op [github](https://go.microsoft.com/fwlink/?linkid=2089909).
+> Het volgende voorbeeld is geen geldige JSON. U een volledige Ink Recognizer JSON-aanvraag vinden op [GitHub.](https://go.microsoft.com/fwlink/?linkid=2089909)
  
 ```json
 {
@@ -56,40 +56,40 @@ De inkt Recognizer-API vereist de X-en Y-coördinaten die de door een invoer app
 }
 ```
 
-## <a name="ink-recognizer-response"></a>Reactie van inkt herkenning
+## <a name="ink-recognizer-response"></a>Reactie van Ink Recognizer
 
-De inkt Recognizer-API retourneert een analyse reactie op de objecten die worden herkend vanuit de inhoud van de inkt. Het antwoord bevat herkennings eenheden die de relaties tussen verschillende inkt streken beschrijven. Bijvoorbeeld, streken die afzonderlijke vormen maken, worden in verschillende eenheden opgenomen. Elke eenheid bevat gedetailleerde informatie over de inkt streken met inbegrip van het herkende object, de bijbehorende coördinaten en andere teken kenmerken.
+De Ink Recognizer API retourneert een analysereactie over de objecten die deze herkende uit de inktinhoud. Het antwoord bevat herkenningseenheden die de relaties tussen verschillende pennenstreken beschrijven. Lijnen die bijvoorbeeld afzonderlijke, afzonderlijke vormen maken, worden in verschillende eenheden weergegeven. Elke eenheid bevat gedetailleerde informatie over de inktlijnen, waaronder het herkende object, de coördinaten en andere tekenkenmerken.
 
-## <a name="shapes-recognized-by-the-ink-recognizer-api"></a>Vormen die worden herkend door de API voor inkt herkenning
+## <a name="shapes-recognized-by-the-ink-recognizer-api"></a>Shapes die worden herkend door de INK Recognizer API
 
-Met de API voor inkt herkenning kunt u de meest gebruikte vormen identificeren bij het maken van notities. In de onderstaande afbeelding ziet u enkele eenvoudige voor beelden. Zie het [naslag artikel over API](https://go.microsoft.com/fwlink/?linkid=2089907)voor een volledige lijst met shapes en andere inkt inhoud die wordt herkend door de API. 
+De Ink Recognizer API kan de meest gebruikte vormen identificeren bij het maken van notities. De onderstaande afbeelding toont enkele basisvoorbeelden. Zie het [API-verwijzingsartikel](https://go.microsoft.com/fwlink/?linkid=2089907)voor een volledige lijst met vormen en andere inktinhoud die door de API wordt herkend. 
 
-![De lijst met vormen die worden herkend door de API voor inkt herkenning](../media/shapes.png)
+![De lijst met vormen die worden herkend door de INK Recognizer API](../media/shapes.png)
 
-## <a name="recommended-calling-patterns"></a>Aanbevolen aanroep patronen
+## <a name="recommended-calling-patterns"></a>Aanbevolen belpatronen
 
-U kunt de inkt Recognizer REST API in verschillende patronen aanroepen volgens uw toepassing. 
+U de Ink Recognizer REST API in verschillende patronen aanroepen volgens uw toepassing. 
 
 ### <a name="user-initiated-api-calls"></a>Door de gebruiker geïnitieerde API-aanroepen
 
-Als u een app bouwt die gebruikers invoer uitvoert (bijvoorbeeld een notitie-of annotatie-app), wilt u deze mogelijk laten bepalen wanneer en welke inkt wordt verzonden naar de inkt Recognizer-API. Deze functionaliteit is vooral nuttig wanneer tekst en vormen aanwezig zijn op het canvas en gebruikers verschillende acties voor elke actie willen uitvoeren. U kunt selectie functies toevoegen (zoals een lasso of andere geometrische selectie hulpmiddel) waarmee gebruikers kunnen kiezen wat er naar de API wordt verzonden.  
+Als u een app bouwt die gebruikersinvoer nodig heeft (bijvoorbeeld een notitie- of annotatie-app), u hen de controle geven over wanneer en welke inkt naar de Ink Recognizer API wordt verzonden. Deze functionaliteit is vooral handig wanneer tekst en vormen zowel op het canvas aanwezig zijn als gebruikers voor elk van deze functies verschillende acties willen uitvoeren. Overweeg selectiefuncties toe te voegen (zoals een lasso of ander geometrisch selectiegereedschap) waarmee gebruikers kunnen kiezen wat er naar de API wordt verzonden.  
 
 ### <a name="app-initiated-api-calls"></a>Door app geïnitieerde API-aanroepen
 
-U kunt uw app ook de API voor inkt herkenning aanroepen na een time-out. Door de huidige inkt streken naar de API-routine te verzenden, kunt u herkennings resultaten opslaan terwijl ze zijn gemaakt tijdens het verbeteren van de reactie tijd van de API. U kunt bijvoorbeeld een regel handgeschreven tekst verzenden naar de API nadat u hebt gedetecteerd dat de gebruiker deze heeft voltooid. 
+U uw app ook de Ink Recognizer API laten aanroepen na een time-out. Door de huidige pennenstreken routinematig naar de API te verzenden, u herkenningsresultaten opslaan terwijl ze worden gemaakt terwijl de responstijd van de API wordt verbeterd. U bijvoorbeeld een regel handgeschreven tekst naar de API sturen nadat u hebt gedetecteerd dat uw gebruiker deze heeft voltooid. 
 
-Met de herkennings resultaten vooraf vindt u informatie over de kenmerken van inkt streken die met elkaar in verband staan. Bijvoorbeeld, welke streken zijn gegroepeerd om hetzelfde woord, lijn, lijst, alinea of vorm te vormen. Met deze informatie kunt u de functies van de inkt selectie van uw app verbeteren door bijvoorbeeld groepen streken tegelijk te selecteren.
+Het hebben van de erkenning resultaten op voorhand geeft u informatie over de kenmerken van pennenstreken als ze betrekking hebben op elkaar. Welke lijnen worden bijvoorbeeld gegroepeerd om hetzelfde woord, lijn, lijst, alinea of vorm te vormen. Deze informatie kan de inktselectiefuncties van uw app verbeteren door bijvoorbeeld groepen lijnen tegelijk te kunnen selecteren.
 
-## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>De inkt Recognizer-API integreren met Windows Ink
+## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>De Ink Recognizer API integreren met Windows Ink
 
-[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) bevat hulpprogram ma's en technologieën om digitale inkt ervaringen op diverse apparaten mogelijk te maken. U kunt het Windows-inkt platform combi neren met de API voor inkt herkenning om toepassingen te maken die digitale inkt streken weer geven en interpreteren.
+[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) biedt tools en technologieën om digitale inktervaringen op een breed scala aan apparaten mogelijk te maken. U het Windows Ink-platform combineren met de Ink Recognizer API om toepassingen te maken die digitale pennenstreken weergeven en interpreteren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is de API voor inkt herkenning?](../overview.md)
-* [Naslag informatie over REST API van inkt herkenning](https://go.microsoft.com/fwlink/?linkid=2089907)
+* [Wat is de Ink Recognizer-API?](../overview.md)
+* [Verwijzing naar de REST-API voor inktherkenning](https://go.microsoft.com/fwlink/?linkid=2089907)
 
-* Begin met het verzenden van digitale inkt gegevens met behulp van:
-    * [C#](../quickstarts/csharp.md)
+* Begin met het verzenden van digitale pennenstreekgegevens met:
+    * [C #](../quickstarts/csharp.md)
     * [Java](../quickstarts/java.md)
-    * [JavaScript](../quickstarts/javascript.md)
+    * [Javascript](../quickstarts/javascript.md)

@@ -1,7 +1,7 @@
 ---
-title: Aanbevelingen voor SDK-microfoon matrix voor speech-apparaten
+title: Aanbevelingen voor sdk-microfoonarray voor spraakapparaten
 titleSuffix: Azure Cognitive Services
-description: Aanbevelingen voor de SDK van speech-apparaten. Deze matrix geometrie wordt aanbevolen voor gebruik met de micro soft audio-stack.
+description: Aanbevelingen voor de MICROFOONarray van Spraakapparaten SDK. Deze matrixgeometrieën worden aanbevolen voor gebruik met de Microsoft Audio Stack.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,105 +11,105 @@ ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
 ms.openlocfilehash: a87bdd7a55036e8b70f0bc5816d2b587c1569202
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77168141"
 ---
-# <a name="speech-devices-sdk-microphone-array-recommendations"></a>Aanbevelingen voor SDK-microfoon matrix voor speech-apparaten
+# <a name="speech-devices-sdk-microphone-array-recommendations"></a>Aanbevelingen voor SDK-microfoonvoorspraakapparaten
 
-In dit artikel leert u hoe u een microfoon matrix kunt ontwerpen voor de SDK voor spraak apparaten.
+In dit artikel leert u hoe u een microfoonarray ontwerpt voor de Spraakapparaten SDK.
 
-De SDK voor spraak apparaten werkt het beste met een microfoon matrix die is ontworpen volgens de volgende richt lijnen, inclusief de geometrie van de microfoon en de selectie van onderdelen. Richt lijnen worden ook gegeven over integratie-en elektrotechnische overwegingen.
+De SpraakherkenningsSDK werkt het beste met een microfoonarray die is ontworpen volgens de volgende richtlijnen, inclusief de microfoongeometrie en componentselectie. Er wordt ook begeleiding gegeven op het gebied van integratie en elektrische overwegingen.
 
-## <a name="microphone-geometry"></a>Geometrie van microfoon
+## <a name="microphone-geometry"></a>Microfoongeometrie
 
-De volgende matrix geometries worden aanbevolen voor gebruik met de micro soft audio-stack. De locatie van de geluids bronnen en de weigering van het lucht geluid is verbeterd met een groter aantal microfoons met afhankelijkheden van specifieke toepassingen, gebruikers scenario's en de vorm factor van het apparaat.
+De volgende matrixgeometrieën worden aanbevolen voor gebruik met de Microsoft Audio Stack. De locatie van geluidsbronnen en de afwijzing van omgevingsgeluid wordt verbeterd met een groter aantal microfoons met afhankelijkheden van specifieke toepassingen, gebruikersscenario's en de apparaatvormfactor.
 
-|     | Cirkel vormige matrix |     | Lineaire matrix |     |
+|     | Cirkelvormig array |     | Lineaire array |     |
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
-| \# mics | 7 | 4 | 4 | 2 |
-| Geometrie | 6 buitenste, 1 middelste, RADIUS = 42,5 mm, gelijkmatig gespatieerd | 3 buiten, 1 midden, RADIUS = 42,5 mm, gelijkmatig gespatieerd | Lengte = 120 mm, afstand = 40 mm | Afstand = 40 mm |
+| \#Mics | 7 | 4 | 4 | 2 |
+| Geometrie | 6 Buitenste, 1 Centrum, Straal = 42,5 mm, Gelijkmatig verdeeld | 3 Buitenste, 1 Centrum, Straal = 42,5 mm, Gelijkmatig verdeeld | Lengte = 120 mm, Afstand = 40 mm | Afstand = 40 mm |
 
-Microfoon kanalen moeten worden besteld op basis van de nummering die voor elke bovenstaande matrix wordt weer gegeven, verhoogd van 0. Voor de micro soft audio-stack is een extra referentie stroom van audio afspelen vereist om echo annulering uit te voeren.
+Microfoonkanalen moeten worden besteld op basis van de nummering die voor elke bovenstaande array wordt afgebeeld, die toeneemt van 0. De Microsoft Audio Stack vereist een extra referentiestream van audioweergave om echo-onderdrukking uit te voeren.
 
-## <a name="component-selection"></a>Onderdelen selecteren
+## <a name="component-selection"></a>Componentselectie
 
-Microfoon onderdelen moeten worden geselecteerd om een signaal zonder ruis en vervorming nauw keurig te reproduceren.
+Microfooncomponenten moeten worden geselecteerd om een signaal zonder ruis en vervorming nauwkeurig te reproduceren.
 
-De aanbevolen eigenschappen bij het selecteren van een microfoon zijn:
+De aanbevolen eigenschappen bij het selecteren van microfoons zijn:
 
 | Parameter | Aanbevolen |
 | --------- | ----------- |
-| SNR | \>= 65 dB (1 kHz signaal 94 dBSPL, A-gewogen lawaai) |
-| Amplitude overeenkomst | ± 1 dB @ 1 kHz |
-| Fase overeenkomst | ± 2 ° @ 1 kHz |
-| Geluids overbelasting punt (AOP) | \>= 120 dBSPL (THD = 10%) |
-| Bitrate | Mini maal 24 bits |
-| Samplefrequentie | Mini maal 16 kHz\* |
-| Antwoord op frequentie | ± 3 dB, 200-8000 Hz zwevende masker\* |
-| Betrouwbaarheid | Opslag temperatuur bereik-40 °C tot 70 °C<br />Bereik van de bedrijfs temperatuur-20 °C tot 55 °C |
+| Snr | \>= 65 dB (1 kHz signaal 94 dBSPL, A-gewogen ruis) |
+| Amplitude Matching | ± 1 dB bij 1 kHz |
+| Fasematching | ± 2° bij 1 kHz |
+| Akoestisch overbelastingspunt (AOP) | \>= 120 dBSPL (THD = 10%) |
+| Bitsnelheid | Minimaal 24-bits |
+| Samplefrequentie | Minimaal 16 kHz\* |
+| Frequentiebereik | ± 3 dB, 200-8000 Hz zwevend masker\* |
+| Betrouwbaarheid | Opslagtemperatuur -40°C tot 70°C<br />Bedrijfstemperatuur bereik -20°C tot 55°C |
 
-\*_hogere sampling frequenties of ' bredere ' prijsbereiken kunnen nodig zijn voor VoIP-toepassingen (hoogwaardige communicatie)_
+\*_Hogere bemonsteringssnelheden of "bredere" frequentiebereiken kunnen nodig zijn voor hoogwaardige communicatietoepassingen (VoIP)-toepassingen_
 
-De selectie van een goed onderdeel moet worden gekoppeld aan een goede integratie van electroacoustic om te voor komen dat de prestaties van de gebruikte onderdelen worden aangetast. Voor unieke use-cases zijn mogelijk ook extra vereisten vereist (bijvoorbeeld: werk temperatuur bereik).
+Een goede componentselectie moet gepaard gaan met een goede elektro-akoestische integratie om te voorkomen dat de prestaties van de gebruikte componenten worden aangetast. Unieke use cases kunnen ook aanvullende eisen vereisen (bijvoorbeeld bedrijfstemperatuurbereiken).
 
-## <a name="microphone-array-integration"></a>Integratie van microfoon matrix
+## <a name="microphone-array-integration"></a>Integratie van microfoonarrays
 
-De prestaties van de microfoon matrix wanneer deze zijn geïntegreerd in een apparaat verschillen van de onderdeel specificatie. Het is belang rijk om ervoor te zorgen dat de microfoons na de integratie goed overeenkomen. De prestaties van het apparaat gemeten na een vast winst-of EQ-systeem moeten daarom voldoen aan de volgende aanbevelingen:
+De prestaties van de microfoonarray wanneer deze in een apparaat worden geïntegreerd, verschillen van de componentspecificatie. Het is belangrijk om ervoor te zorgen dat de microfoons goed op elkaar zijn afgestemd na integratie. Daarom moeten de prestaties van het apparaat gemeten na een vaste winst of EQ voldoen aan de volgende aanbevelingen:
 
 | Parameter          | Aanbevolen                                        |
 | ------------------ | -------------------------------------------------- |
-| SNR                | \> 63 dB (1 kHz signaal 94 dBSPL, A-gewogen ruis) |
-| Uitvoer gevoeligheid | -26 dBFS/pa @ 1 kHz (aanbevolen)                  |
-| Amplitude overeenkomst | ± 2 dB, 200-8000 Hz                                |
-| THD%\*             | ≤ 1%, 200-8000 Hz, 94 dBSPL, vijfde bestelling             |
-| Antwoord op frequentie | ± 6 dB, 200-8000 Hz zwevend masker\*\*              |
+| Snr                | \>63 dB (1 kHz signaal 94 dBSPL, A-gewogen ruis) |
+| Uitvoergevoeligheid | -26 dBFS/Pa @ 1 kHz (aanbevolen)                  |
+| Amplitude Matching | ± 2 dB, 200-8000 Hz                                |
+| THD%\*             | ≤ 1%, 200-8000 Hz, 94 dBSPL, 5e orde             |
+| Frequentiebereik | ± 6 dB, 200-8000 Hz zwevend masker\*\*              |
 
-\*\*_een spreker met lage vervorming vereist om THD te meten (bijvoorbeeld NEUMANN KH120)_
+\*\*_Een lage vervormingsluidspreker is vereist om THD te meten (bijv. Neumann KH120)_
 
-\*\* _' bredere ' frequentie bereik kan nodig zijn voor VoIP-toepassingen (hoogwaardige communicatie)_
+\*\*_"Bredere" frequentiebereiken kunnen nodig zijn voor hoogwaardige communicatie (VoIP)-toepassingen_
 
-## <a name="speaker-integration-recommendations"></a>Aanbevelingen voor de integratie van de spreker
+## <a name="speaker-integration-recommendations"></a>Aanbevelingen voor integratie van sprekers
 
-Omdat Echo annulering nood zakelijk is voor apparaten voor spraak herkenning die luid sprekers bevatten, worden extra aanbevelingen gegeven voor selectie en integratie van de spreker.
+Aangezien echo-onderdrukking noodzakelijk is voor spraakherkenningsapparaten die luidsprekers bevatten, worden aanvullende aanbevelingen gedaan voor luidsprekerselectie en -integratie.
 
 | Parameter | Aanbevolen |
 | --------- | ----------- |
-| Overwegingen voor lineariteit | Geen niet-lineaire verwerking na de referentie van de spreker, anders is een hardwarematige loop back-referentie stroom vereist |
-| Loop back van de spreker | Verschaft via WASAPI, persoonlijke Api's, aangepaste ALSA-invoeg toepassingen (Linux) of via een firmware kanaal |
-| THD% | 3e octave-banden mini maal vijfde order, 70 dBA afspelen @ 0,8 m ≤ 6,3%, 315-500 Hz ≤ 5%, 630-5000 Hz |
-| ECHO koppeling op microfoons | \>-10 dB TCLw met behulp van ITU-T G. 122 bijlage B. 4 methode, genormaliseerd naar het niveau van de microfoon<br />TCLw = TCLwmeasured \+ (gemeten niveau van doel uitvoer gevoeligheid)<br />TCLw = TCLwmeasured \+ (gemeten niveau-(-26)) |
+| Lineairheidoverwegingen | Geen niet-lineaire verwerking na naverwijzing naar de luidspreker, anders is een op hardware gebaseerde loopback-referentiestream vereist |
+| Luidspreker Loopback | Geleverd via WASAPI, private API's, aangepaste ALSA plug-in (Linux), of geleverd via firmware kanaal |
+| THD% | 3e Octaafbanden minimaal 5e orde, 70 dBA-afspelen @ 0,8 m ≤ 6,3%, 315-500 Hz ≤ 5%, 630-5000 Hz |
+| Echokoppeling aan microfoons | \>-10 dB TCLw met itu-T G.122 bijlage B.4-methode, genormaliseerd tot mic-niveau<br />TCLw = TCLwmeasured \+ (Gemeten niveau - Doeloutputgevoeligheid)<br />TCLw = TCLwmeasured \+ (Gemeten Niveau - (-26)) |
 
-## <a name="integration-design-architecture"></a>Ontwerp architectuur voor integratie
+## <a name="integration-design-architecture"></a>Integratieontwerparchitectuur
 
-De volgende richt lijnen voor architectuur zijn nodig bij het integreren van micro telefoons in een apparaat:
+De volgende richtlijnen voor architectuur zijn nodig bij het integreren van microfoons in een apparaat:
 
 | Parameter | Aanbeveling |
 | --------- | -------------- |
-| Gelijkwaardige microfoon poort | Alle microfoon poorten hebben dezelfde lengte in de matrix |
-| Microfoon poort dimensies | Poort grootte Ø 0,8-1,0 mm. Poort lengte/poort diameter \< 2 |
-| Mic verzegelen         | Gaskets verzegelen uniform geïmplementeerd in de stack-up. Aanbevolen \> 70% compressie ratio voor schuim Gaskets |
-| Betrouw baarheid van Mic     | Net moet worden gebruikt om te voor komen dat stof en inkomend verkeer (tussen PCB'S voor de onderste, getransporteerde microfoons en verzegelde GASKET/top-dekking) |
-| Microfoon isolatie       | Rubber Gaskets en trillingen ontkoppelen via structuur, met name voor het isoleren van trillings paden vanwege geïntegreerde sprekers |
-| Sampling-klok      | De audio van het apparaat mag geen jitter-en drop-outs met lage drift hebben |
-| Record mogelijkheid   | Het apparaat moet tegelijkertijd onbewerkte individuele kanaal gegevens kunnen vastleggen |
-| USB                 | Alle USB-audio-invoer apparaten moeten descriptors instellen volgens de [USB-audio apparaten Rev3 spec](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement) |
-| Geometrie van microfoon | Stuur Programma's moeten [geometrie-descriptors](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) op de juiste wijze implementeren |
-| Detectie     | Apparaten mogen geen niet-opgemaakte of niet-bewerkte hardware, firmware of op software gebaseerde niet-lineaire, niet-gestuurde algoritmen voor audio verwerking van het apparaat hebben |
-| Capture-indeling      | Vastleg indelingen moeten een mini maal sampling frequentie van 16 kHz en een aanbevolen 24-bits diepte gebruiken |
+| Mic Port Gelijkenis | Alle microfoonpoorten hebben dezelfde lengte in array |
+| Afmetingen micpoort | Poortgrootte Ø0,8-1,0 mm. Poortlengte / \< Poortdiameter 2 |
+| Mic Sealing         | Afdichtingspakkingen uniform geïmplementeerd in stack-up. Beveel \> 70% compressieverhouding aan voor schuimpakkingen |
+| Betrouwbaarheid van de microfoon     | Gaas moet worden gebruikt om stof en binnendringen te voorkomen (tussen PCB voor bodemgeporteerde microfoons en afdichtingspakking/bovendeksel) |
+| Mic Isolatie       | Rubberen pakkingen en trillingsontkoppeling door structuur, met name voor het isoleren van trillingspaden dankzij geïntegreerde luidsprekers |
+| Bemonsteringsklok      | Apparaat audio moet vrij zijn van jitter en drop-outs met een lage drift |
+| Recordvermogen   | Het apparaat moet in staat zijn om individuele kanaalruwe stromen tegelijkertijd op te nemen |
+| USB                 | Alle USB-audio-invoerapparaten moeten descriptoren instellen volgens de [REV3-spec van USB-audioapparaten](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement) |
+| Microfoongeometrie | Stuurprogramma's moeten [de beschrijvingen van de microfoonarray](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) correct implementeren |
+| Vindbaarheid     | Apparaten mogen geen onvindbare of oncontroleerbare hardware, firmware of softwaregebaseerde niet-lineaire audioverwerkingsalgoritmen van derden hebben van/naar het apparaat |
+| Opname-indeling      | Capture formaten moeten een minimale sampling rate van 16 kHz en aanbevolen 24-bits diepte gebruiken |
 
-## <a name="electrical-architecture-considerations"></a>Overwegingen voor de elektriciteits architectuur
+## <a name="electrical-architecture-considerations"></a>Elektrische architectuur overwegingen
 
-Waar van toepassing kunnen matrices worden aangesloten op een USB-host (zoals een SoC die de micro soft audio-stack uitvoert) en de interfaces voor spraak Services of andere toepassingen.
+Indien van toepassing kunnen arrays worden aangesloten op een USB-host (zoals een SoC waarop de Microsoft Audio Stack wordt uitgevoerd) en interfaces met spraakservices of andere toepassingen.
 
-Hardwareonderdelen, zoals PDM-naar-TDM-conversie, moeten ervoor zorgen dat het dynamische bereik en de SNR van de microfoons binnen resamplings blijven.
+Hardwarecomponenten zoals PDM-to-TDM-conversie moeten ervoor zorgen dat het dynamisch bereik en de SNR van de microfoons behouden blijven in resamplers.
 
-De High-Speed USB-audio klasse 2,0 moet worden ondersteund in alle audio-Sphere om de benodigde band breedte te bieden voor Maxi maal zeven kanalen met een hogere steek proef frequentie en bitdiepte.
+High-speed USB Audio Class 2.0 moet worden ondersteund in alle audio-MCU's om de nodige bandbreedte te bieden voor maximaal zeven kanalen bij hogere sample rates en bitdiepten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over de SDK voor spraak apparaten](speech-devices-sdk.md)
+> [Meer informatie over de SDK voor spraakapparaten](speech-devices-sdk.md)

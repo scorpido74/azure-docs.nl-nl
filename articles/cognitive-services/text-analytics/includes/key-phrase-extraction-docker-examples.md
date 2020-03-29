@@ -1,7 +1,7 @@
 ---
-title: Voor beelden van Sleuteltermextractie container docker
+title: Voorbeelden van containerdocker van sleutelzinnen
 titleSuffix: Azure Cognitive Services
-description: Voor beelden van Sleuteltermextractie container docker
+description: Voorbeelden van containerdocker van sleutelzinnen
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 08/21/2019
 ms.author: dapine
 ms.openlocfilehash: bc0375369db351038c7ac550cbe51415a0b3e069
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71148395"
 ---
-### <a name="key-phrase-extraction-container-docker-examples"></a>Voor beelden van Sleuteltermextractie container docker
+### <a name="key-phrase-extraction-container-docker-examples"></a>Voorbeelden van containerdocker van sleutelzinnen
 
-De volgende docker-voor beelden zijn voor de Sleuteltermextractie-container.
+De volgende voorbeelden van docker zijn voor de container Key Phrase Extraction.
 
-#### <a name="basic-example"></a>Eenvoudige voorbeeld 
+#### <a name="basic-example"></a>Basisvoorbeeld 
 
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -30,7 +30,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY} 
   ```
 
-#### <a name="logging-example"></a>Voor beeld van logboek registratie 
+#### <a name="logging-example"></a>Voorbeeld van logboekregistratie 
 
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

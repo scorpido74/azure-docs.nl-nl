@@ -1,7 +1,7 @@
 ---
-title: App-LUIS trainen
+title: Trein app - LUIS
 titleSuffix: Azure Cognitive Services
-description: Training is het proces van uw app-versie van de Language Understanding (LUIS) voor het verbeteren van de natuurlijke taal begrijpen lessen. Uw LUIS-app na updates voor het model zoals toevoegen, bewerken, labels of verwijderen van entiteiten, intents of uitingen trainen.
+description: Training is het proces van het onderwijzen van uw Language Understanding (LUIS) app-versie om het natuurlijke taalbegrip te verbeteren. Train uw LUIS-app na updates van het model, zoals het toevoegen, bewerken, labelen of verwijderen van entiteiten, intenties of uitingen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,53 +12,53 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1da8ab3015730c6b3e1962301a34b1ad43b1aad6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219861"
 ---
-# <a name="train-your-active-version-of-the-luis-app"></a>Train uw actieve versie van de LUIS-app 
+# <a name="train-your-active-version-of-the-luis-app"></a>Uw actieve versie van de LUIS-app trainen 
 
-Training is het proces van uw app Language Understanding (LUIS) voor het verbeteren van de natuurlijke taal begrijpen lessen. Uw LUIS-app na updates voor het model zoals toevoegen, bewerken, labels of verwijderen van entiteiten, intents of uitingen trainen. 
+Training is het proces van het onderwijzen van uw Language Understanding (LUIS) app om het natuurlijke taalbegrip te verbeteren. Train uw LUIS-app na updates van het model, zoals het toevoegen, bewerken, labelen of verwijderen van entiteiten, intenties of uitingen. 
 
-Training en [testen](luis-concept-test.md) van een app is een iteratief proces. Nadat u uw LUIS-app trainen, kunt u deze testen met voorbeeldgegevens uitingen om te controleren of de intenties en entiteiten correct worden herkend. Als ze niet zijn, moet u opnieuw updates voor de LUIS-app, trainen en testen. 
+Het [trainen](luis-concept-test.md) en testen van een app is een iteratief proces. Nadat u uw LUIS-app hebt getraind, test u deze met voorbeelduitingen om te zien of de intenties en entiteiten correct worden herkend. Als dit niet het geval is, moet u de LUIS-app bijwerken, trainen en opnieuw testen. 
 
-Training wordt toegepast op de actieve versie in de LUIS-portal. 
+Training wordt toegepast op de actieve versie in het LUIS-portaal. 
 
-## <a name="how-to-train-interactively"></a>Hoe u met het trainen van interactief
+## <a name="how-to-train-interactively"></a>Interactief trainen
 
-Als u het iteratieve proces in de [Luis-Portal](https://www.luis.ai)wilt starten, moet u eerst uw Luis-app ten minste één keer trainen. Zorg ervoor dat elke bedoeling heeft ten minste één utterance voordat een training.
+Als u het iteratieve proces in de [LUIS-portal](https://www.luis.ai)wilt starten, moet u eerst uw LUIS-app minstens één keer trainen. Zorg ervoor dat elke intentie ten minste één uiting heeft voor de training.
 
-1. U hebt toegang tot uw app door de naam ervan te selecteren op de pagina **mijn apps** . 
+1. Toegang tot uw app door de naam ervan te selecteren op de pagina **Mijn apps.** 
 
-1. In uw app selecteert u **trainen** in het bovenste paneel. 
+1. Selecteer in uw app **Trainen** in het bovenste deelvenster. 
 
-1. Wanneer de training is voltooid, wordt boven aan de browser een melding weer gegeven.
+1. Wanneer de training is voltooid, verschijnt er een melding boven aan de browser.
 
-## <a name="training-date-and-time"></a>Datum en tijd van training
+## <a name="training-date-and-time"></a>Trainingsdatum en -tijd
 
-De trainings datum en-tijd zijn GMT + 2. 
+Trainingsdatum en -tijd zijn GMT + 2. 
 
-## <a name="train-with-all-data"></a>Met alle gegevens van de trein
+## <a name="train-with-all-data"></a>Trainen met alle gegevens
 
-Training maakt gebruik van een klein percentage van het negatieve samplen bijhouden. Als u alle gegevens wilt gebruiken in plaats van de kleine negatieve steek proef, gebruikt u de [API](#version-settings-api-use-of-usealltrainingdata).
+Training maakt gebruik van een klein percentage van de negatieve bemonstering. Als u alle gegevens wilt gebruiken in plaats van de kleine negatieve bemonstering, gebruikt u de [API](#version-settings-api-use-of-usealltrainingdata).
 
-### <a name="version-settings-api-use-of-usealltrainingdata"></a>API-gebruik van versie-instellingen van UseAllTrainingData
+### <a name="version-settings-api-use-of-usealltrainingdata"></a>Versie-instellingen API gebruik van UseAllTrainingData
 
-Gebruik de [API Version Settings](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) met de `UseAllTrainingData` ingesteld op True om deze functie uit te scha kelen. 
+Gebruik de API voor `UseAllTrainingData` [versie-instellingen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) met de set true om deze functie uit te schakelen. 
 
 ## <a name="unnecessary-training"></a>Onnodige training
 
-U hoeft niet te trainen na elke één wijziging. Training moet worden uitgevoerd nadat een groep van de wijzigingen worden toegepast op het model en de volgende stap die u wilt doen, is te testen of te publiceren. Als u niet hoeft te testen of te publiceren, training niet nodig. 
+U hoeft niet te trainen na elke verandering. Training moet worden gedaan nadat een groep wijzigingen zijn toegepast op het model, en de volgende stap die u wilt doen is om te testen of te publiceren. Als u niet hoeft te testen of publiceren, is training niet nodig. 
 
-## <a name="training-with-the-rest-apis"></a>Training met de REST API 's
+## <a name="training-with-the-rest-apis"></a>Training met de REST API's
 
-Training in de LUIS-Portal is één stap van het drukken op de **trein** knop. Training met de REST API's is een proces in twee stappen. Eerst moet u [training aanvragen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) met http post. Vraag vervolgens de [trainings status](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) aan met HTTP Get. 
+Training in het LUIS-portaal is een enkele stap om op de **treinknop te** drukken. Training met de REST API's is een proces in twee stappen. De eerste is om [training aan](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) te vragen bij HTTP POST. Vraag vervolgens de [trainingsstatus](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) aan met HTTP Get. 
 
-Als u wilt weten wanneer de training is voltooid, moet u de status te peilen totdat alle modellen met succes zijn getraind. 
+Om te weten wanneer de training is voltooid, moet je de status peilen totdat alle modellen met succes zijn opgeleid. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Interactieve tests](luis-interactive-test.md)
-* [Batch testen](luis-how-to-batch-test.md)
+* [Interactief testen](luis-interactive-test.md)
+* [Batchgewijs testen](luis-how-to-batch-test.md)

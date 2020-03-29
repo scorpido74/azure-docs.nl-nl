@@ -1,7 +1,7 @@
 ---
-title: Ontwerpen met modellen-LUIS
+title: Ontwerp met modellen - LUIS
 titleSuffix: Azure Cognitive Services
-description: Language Standing biedt verschillende types modellen. Sommige modellen kunnen op meer dan één manier worden gebruikt.
+description: Taalbegrip biedt verschillende soorten modellen. Sommige modellen kunnen op meerdere manieren worden gebruikt.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,149 +12,149 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: d721ceb25b3ce2408563a0bed16457d05affe7b4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219993"
 ---
-# <a name="design-with-intent-and-entity-models"></a>Ontwerpen met intentie-en entiteits modellen 
+# <a name="design-with-intent-and-entity-models"></a>Ontwerpen met intentie- en entiteitsmodellen 
 
-Language Standing biedt verschillende types modellen. Sommige modellen kunnen op meer dan één manier worden gebruikt. 
+Taalbegrip biedt verschillende soorten modellen. Sommige modellen kunnen op meerdere manieren worden gebruikt. 
 
-## <a name="v3-authoring-uses-machine-teaching"></a>V3-ontwerpen maakt gebruik van machine onderwijs
+## <a name="v3-authoring-uses-machine-teaching"></a>V3 Authoring maakt gebruik van machine teaching
 
-LUIS biedt mensen de mogelijkheid om eenvoudig concepten te leren aan een machine. De machine kan vervolgens modellen bouwen (functionele benaderingen van concepten zoals classificaties en uittreksels) die kunnen worden gebruikt om intelligente toepassingen uit te scha kelen. Hoewel LUIS wordt aangestuurd door machine learning, is het niet nodig om de machine learning te gebruiken. In plaats daarvan communiceren machine docenten concepten aan LUIS door positieve en negatieve voor beelden van het concept weer te geven en te verklaren hoe een concept moet worden gemodelleerd met behulp van andere gerelateerde concepten. Docenten kunnen het model van de LUIS ook interactief verbeteren door de Voorspellings fouten te identificeren en te verhelpen. 
+LUIS stelt mensen in staat om gemakkelijk concepten te leren aan een machine. De machine kan vervolgens modellen bouwen (functionele benaderingen van concepten zoals classificaties en extractors) die kunnen worden gebruikt om intelligente toepassingen van stroom te voorzien. Hoewel LUIS wordt aangedreven door machine learning, is het niet nodig om machine learning te gebruiken. In plaats daarvan communiceren machinedocenten concepten naar LUIS door positieve en negatieve voorbeelden van het concept te tonen en uit te leggen hoe een concept moet worden gemodelleerd met behulp van andere gerelateerde concepten. Docenten kunnen luis's model ook interactief verbeteren door de voorspellingsfouten te identificeren en vast te stellen. 
 
-## <a name="v3-authoring-model-decomposition"></a>Uitsplitsing van het v3-ontwerp model
+## <a name="v3-authoring-model-decomposition"></a>V3 Authoring model ontbinding
 
-LUIS ondersteunt _model ontleding_ met behulp van de V3-ontwerp-api's, waardoor het model in kleinere delen opsplitst. Zo kunt u uw modellen met vertrouwen bouwen in de manier waarop de verschillende onderdelen zijn geconstrueerd en gedicteerd.
+LUIS ondersteunt _modelontleding_ met de V3 authoring API's, waardoor het model in kleinere delen wordt opgesplitst. Hierdoor u uw modellen bouwen met vertrouwen in hoe de verschillende onderdelen zijn gebouwd en voorspeld.
 
-Model ontleding heeft de volgende onderdelen:
+Modelontleding heeft de volgende onderdelen:
 
-* [intents](#intents-classify-utterances)
-    * [descriptoren](#descriptors-are-features) van functies
-* [door machines geleerde entiteiten](#machine-learned-entities)
-    * [subonderdelen](#entity-subcomponents-help-extract-data) (ook door machines geleerde entiteiten)
-        * [descriptoren](#descriptors-are-features) van functies 
-        * [beperkingen](#constraints-are-text-rules) die worden gegeven door entiteiten die niet door machines zijn geleerd, zoals reguliere expressies en lijsten
+* [intenties](#intents-classify-utterances)
+    * [beschrijvingen](#descriptors-are-features) die worden geleverd door functies
+* [machine-geleerde entiteiten](#machine-learned-entities)
+    * [subcomponenten](#entity-subcomponents-help-extract-data) (ook machine-aangeleerde entiteiten)
+        * [beschrijvingen](#descriptors-are-features) die worden geleverd door functies 
+        * [beperkingen](#constraints-are-text-rules) die worden geboden door niet-machine-geleerde entiteiten zoals reguliere expressies en lijsten
 
-## <a name="v2-authoring-models"></a>V2-modellen ontwerpen
+## <a name="v2-authoring-models"></a>V2-ontwerpmodellen
 
-LUIS ondersteunt samengestelde entiteiten met de v2-ontwerp-Api's. Dit biedt een vergelijk bare model samenstelling, maar is niet hetzelfde als de ontleding van V3-modellen. De aanbevolen model architectuur is om over te stappen op model ontleding in de V3-ontwerp-Api's. 
+LUIS ondersteunt samengestelde entiteiten met de V2-auteurs-API's. Dit biedt een vergelijkbaar model ontbinding, maar is niet hetzelfde als V3 model ontbinding. De aanbevolen modelarchitectuur is om over te stappen op modelontbinding in de V3 authoring API's. 
 
-## <a name="intents-classify-utterances"></a>Intenties classificeren uitingen
+## <a name="intents-classify-utterances"></a>Intents classificeren uitingen
 
-Een intentie classificeert bijvoorbeeld uitingen om LUIS te leren over het doel. Een voor beeld van een uitingen binnen een intentie wordt als positieve voor beeld van de utterance gebruikt. Deze zelfde uitingen worden als negatieve voor beelden in alle andere intenties gebruikt.
+Een intentie classificeert voorbeelduitingen om LUIS over de intentie te onderwijzen. Voorbeelduitingen binnen een intentie worden gebruikt als positieve voorbeelden van de utterance. Deze dezelfde uitingen worden gebruikt als negatieve voorbeelden in alle andere intents.
 
-Overweeg een app die de bedoeling van een gebruiker moet bepalen om een boek te best Ellen en een app die het verzend adres voor de klant nodig heeft. Deze app heeft twee intenties: `OrderBook` en `ShippingLocation`.
+Overweeg een app die de intentie van een gebruiker moet bepalen om een boek te bestellen en een app die het verzendadres voor de klant nodig heeft. Deze app heeft twee `OrderBook` `ShippingLocation`intenties: en .
 
-De volgende utterance is een **positief voor beeld** voor de `OrderBook` intentie en een **negatief voor beeld** voor de `ShippingLocation` en `None` intentie: 
+De volgende utterance is een `OrderBook` positief **voorbeeld** voor de `None` intentie en een negatief **voorbeeld** voor de `ShippingLocation` intenties: 
 
 `Buy the top-rated book on bot architecture.`
 
-Het resultaat van goed ontworpen intenties, met hun voor beeld uitingen, is een hoge intentie voor spelling. 
+Het resultaat van goed ontworpen intents, met hun voorbeelduitingen, is een voorspelling van hoge intenties. 
 
-## <a name="entities-extract-data"></a>Gegevens extra heren door entiteiten
+## <a name="entities-extract-data"></a>Entiteiten extraheren gegevens
 
-Een entiteit vertegenwoordigt een hoeveelheid gegevens die u wilt ophalen uit de utterance. 
+Een entiteit vertegenwoordigt een eenheid gegevens die u uit de utterance wilt halen. 
 
 ### <a name="machine-learned-entities"></a>Door machines geleerde entiteiten
 
-Een door een machine geleerde entiteit is een entiteit op het hoogste niveau met subonderdelen, die ook door machines geleerde entiteiten zijn. 
+Een door machines aangeleerde entiteit is een entiteit op het hoogste niveau die subcomponenten bevat, die ook door de machine geleerde entiteiten zijn. 
 
-**Een door de machine geleerde entiteit gebruiken**:
+**Gebruik een door de machine geleerde entiteit:**
 
-* Wanneer de subonderdelen vereist zijn voor de client toepassing
-* de machine learning Algorithm-algoritme verbreken entiteiten
+* wanneer de subcomponenten nodig zijn door de clienttoepassing
+* om het machine learning-algoritme te helpen entiteiten te ontleden
 
-Elk subonderdeel kan het volgende hebben:
+Elke subcomponent kan beschikken over:
 
-* subonderdelen
-* beperkingen (reguliere expressie-entiteit of lijst entiteit)
-* descriptors (functies zoals een woordgroepen lijst) 
+* Subonderdelen
+* beperkingen (entiteit met reguliere expressie of lijstentiteit)
+* beschrijvingen (functies zoals een woordenlijst) 
 
-Een voor beeld van een door de machine geleerde entiteit is een bestelling voor een vlak ticket. Conceptueel gezien is dit een enkele trans actie met veel kleinere gegevens eenheden, zoals datum, tijd, aantal stoelen, het type Seat, zoals de eerste klasse of de fase, de oorsprongs locatie, de doel locatie en de keuze van de maaltijd.
+Een voorbeeld van een door de machine geleerde entiteit is een order voor een vliegticket. Conceptueel is dit een enkele transactie met veel kleinere eenheden van gegevens, zoals datum, tijd, hoeveelheid stoelen, type stoel, zoals eerste klas of coach, herkomst locatie, bestemming locatie, en maaltijd keuze.
 
 
-### <a name="entity-subcomponents-help-extract-data"></a>Subonderdelen van de entiteit helpen gegevens te extra heren
+### <a name="entity-subcomponents-help-extract-data"></a>Subcomponenten van entiteithelpen gegevens te extraheren
 
-Een subonderdeel is een door de machine geleerd onderliggende entiteit binnen een door de machine geleerde bovenliggende entiteit. 
+Een subcomponent is een door de machine geleerde onderliggende entiteit binnen een door machines geleerde bovenliggende entiteit. 
 
-**Gebruik het subonderdeel voor het**volgende:
+**Gebruik de subcomponent om**:
 
-* de onderdelen van de door de machine geleerde entiteit (bovenliggende entiteit) afbreken.
+* de delen van de door de machine geleerde entiteit (bovenliggende entiteit) te ontleden.
 
-Hieronder staat een door de machine geleerde entiteit met al deze afzonderlijke gegevens items:
+Het volgende vertegenwoordigt een door de machine geleerde entiteit met al deze afzonderlijke gegevens:
 
-* TravelOrder (door machine geleerde entiteit)
-    * DateTime (prebuild datetimeV2)
-    * Locatie (door machine geleerde entiteit)
-        * Oorsprong (rol gevonden via context zoals `from`)
-        * Doel (rol gevonden via context zoals `to`)
-    * Seat (door machine geleerde entiteit)
-        * Aantal (vooraf gebouwd nummer)
-        * Kwaliteit (door machine geleerde entiteit met descriptor van woordgroepen lijst)
-    * Maal tijden (door de machine geleerde entiteit met een beperking van de lijst entiteit als voedings opties)
+* TravelOrder (machine-geleerde entiteit)
+    * DateTime (vooraf ingebouwde datetimeV2)
+    * Locatie (machine-geleerde entiteit)
+        * Oorsprong (rol gevonden door `from`context zoals)
+        * Bestemming (rol gevonden via `to`context zoals)
+    * Zitplaatsen (machine-geleerde entiteit)
+        * Aantal (vooraf opgebouwd aantal)
+        * Kwaliteit (machine-geleerde entiteit met beschrijving van de lijst van zinnen)
+    * Maaltijden (machine-geleerde entiteit met beperking van lijstentiteit als voedselkeuzen)
 
-Sommige van deze gegevens, zoals de oorsprongs locatie en doel locatie, moeten worden geleerd uit de context van de utterance, mogelijk met een dergelijke vermelding als `from` en `to`. Andere gegevens delen kunnen worden geëxtraheerd met exact overeenkomende teken reeksen (`Vegan`) of vooraf gemaakte entiteiten (geographyV2 van `Seattle` en `Cairo`). 
+Sommige van deze gegevens, zoals de herkomstlocatie en de bestemmingslocatie, moeten worden `from` geleerd `to`uit de context van de uiting, misschien met dergelijke bewoordingen als en . Andere delen van gegevens kunnen worden geëxtraheerd met exacte tekenreeksovereenkomsten`Vegan`( `Seattle` `Cairo`) of vooraf gebouwde entiteiten (geografieV2 van en ). 
 
-U ontwerpt hoe de gegevens worden vergeleken en geëxtraheerd door de modellen die u kiest en hoe u ze configureert.
+U ontwerpt hoe de gegevens worden afgestemd en geëxtraheerd met welke modellen u kiest en hoe u ze configureert.
 
-### <a name="constraints-are-text-rules"></a>Beperkingen zijn tekst regels
+### <a name="constraints-are-text-rules"></a>Beperkingen zijn tekstregels
 
-Een beperking is een tekst vergelijkings regel, die wordt aangeboden door een entiteit die niet door een machine is geleerd, zoals de reguliere expressie-entiteit of een lijst entiteit. De beperking wordt toegepast op de Voorspellings tijd om de voor spelling te beperken en de entiteit omzetting te bieden die nodig is voor de client toepassing. U definieert deze regels tijdens het ontwerpen van het subonderdeel. 
+Een beperking is een regel voor het afstemmen van teksten, die wordt verstrekt door een entiteit die niet door de machine is aangeleerd, zoals de entiteit met reguliere expressie of een lijstentiteit. De beperking wordt toegepast op voorspellingstijd om de voorspelling te beperken en entiteitsresolutie te verstrekken die nodig is voor de clienttoepassing. U definieert deze regels tijdens het maken van de subcomponent. 
 
-**Een beperking gebruiken**:
-* Wanneer u precies weet welke tekst u wilt ophalen.
+**Gebruik een beperking:**
+* wanneer u de exacte tekst weet te extraheren.
 
 Beperkingen zijn onder andere:
 
-* entiteiten van [reguliere expressie](reference-entity-regular-expression.md)
-* entiteiten [weer geven](reference-entity-list.md) 
-* [vooraf gemaakte](luis-reference-prebuilt-entities.md) entiteiten
+* [entiteiten met regelmatige expressie](reference-entity-regular-expression.md)
+* [lijstentiteiten](reference-entity-list.md) 
+* [vooraf gebouwde](luis-reference-prebuilt-entities.md) entiteiten
 
-Als u doorgaat met het voor beeld van het vliegtuig ticket, kunnen de luchthaven codes in een lijst entiteit voor exacte tekst overeenkomsten staan. 
+Als u doorgaan met het voorbeeld van het vliegticket, kunnen de luchthavencodes in een entiteit Lijst staan voor exacte tekstovereenkomsten. 
 
-Voor een lijst met lucht havens is de vermelding in de lijst voor Seattle de plaatsnaam, `Seattle` en de synoniemen voor Seattle bevatten de luchthaven code voor Seattle samen met Omringende steden en steden:
+Voor een luchthavenlijst is de lijst vermelding `Seattle` voor Seattle de naam van de stad, en de synoniemen voor Seattle bevatten de luchthaven code voor Seattle, samen met de omliggende steden en steden:
 
-|synoniemen van `Seattle` lijst entiteit|
+|`Seattle`Entiteitssynoniemen van entiteiten weergeven|
 |--|
 |`Sea`|
 |`seatac`|
 |`Bellevue`|
 
-Als u alleen 3 letter codes wilt herkennen voor luchthaven codes, gebruikt u een reguliere expressie als de beperking. 
+Als u slechts 3 lettercodes voor luchthavencodes wilt herkennen, gebruikt u een reguliere expressie als beperking. 
 
 `/^[A-Z]{3}$/`
 
-## <a name="intents-versus-entities"></a>Intenties versus entiteiten
+## <a name="intents-versus-entities"></a>Intents versus entiteiten
 
-Een intentie is het gewenste resultaat van het _hele_ utterance terwijl entiteiten gegevens uit de utterance zijn geëxtraheerd. Doorgaans zijn intenties gekoppeld aan acties die de client toepassing moet uitvoeren en entiteiten zijn informatie die nodig is om deze actie uit te voeren. Vanuit een programmeer perspectief wordt een methode aanroep geactiveerd en worden de entiteiten gebruikt als para meters voor die methode aanroep.
+Een intentie is het gewenste resultaat van de _hele_ utterance, terwijl entiteiten stukjes gegevens zijn die uit de utterance worden gehaald. Meestal zijn intents gekoppeld aan acties die de clienttoepassing moet uitvoeren en entiteiten zijn informatie die nodig is om deze actie uit te voeren. Vanuit het oogpunt van programmeren zou een intentie een methodeaanroep activeren en de entiteiten worden gebruikt als parameters voor die methodeaanroep.
 
 Deze utterance _moet_ een intentie hebben en _kan_ entiteiten hebben:
 
 `Buy an airline ticket from Seattle to Cairo`
 
-Dit utterance heeft één intentie:
+Deze uiting heeft één enkele intentie:
 
-* Een vlieg ticket kopen
+* Het kopen van een vliegticket
 
-Deze utterance _kan_ verschillende entiteiten hebben:
+Deze uiting _kan_ meerdere entiteiten hebben:
 
-* Locaties van Seattle (oorsprong) en Cairo (bestemming)
-* De hoeveelheid van een enkel ticket
+* Locaties van Seattle (herkomst) en Caïro (bestemming)
+* De hoeveelheid van één ticket
 
-## <a name="descriptors-are-features"></a>Descriptors zijn functies
+## <a name="descriptors-are-features"></a>Descriptoren zijn functies
 
-Een descriptor is een functie die wordt toegepast op een model tijdens de trainings tijd, inclusief woordgroepen lijsten en entiteiten. 
+Een beschrijving is een functie die op een model wordt toegepast tijdens de training, inclusief woordgroeplijsten en entiteiten. 
 
-**Gebruik een descriptor als u het volgende wilt**doen:
+**Gebruik een beschrijving wanneer u wilt:**
 
-* het belang van woorden en zinsdelen die worden geïdentificeerd door de descriptor verhogen
-* laat LUIS nieuwe tekst of zinsdelen aanbevelen voor de descriptor
-* een fout op de trainings gegevens oplossen
+* de betekenis van woorden en zinnen die door de descriptor worden geïdentificeerd, te vergroten
+* hebben LUIS raden nieuwe tekst of zinnen aan te bevelen voor de beschrijving
+* een fout op de trainingsgegevens oplossen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over de [intenties](luis-concept-intent.md) en [entiteiten](luis-concept-entity-types.md). 
+* Inzicht in [intenties](luis-concept-intent.md) en [entiteiten](luis-concept-entity-types.md). 

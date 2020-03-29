@@ -1,7 +1,7 @@
 ---
-title: Video inzichten ophalen met behulp van de Bing Video's zoeken-API
+title: Video-inzichten genereren met de Bing Video Search API
 titleSuffix: Azure Cognitive Services
-description: Informatie over het gebruik van de Bing Video's zoeken-API om meer informatie te krijgen over Video's, zoals verwante Video's.
+description: Meer informatie over het gebruik van de Bing Video Search API voor meer informatie over video's, zoals gerelateerde video's.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: 7683930af1de0fc4e4d112c1e559358d5d5d5609
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68500599"
 ---
-# <a name="get-insights-about-a-video"></a>Inzichten over een video verkrijgen
+# <a name="get-insights-about-a-video"></a>Krijg inzicht in een video
 
-Elke video die wordt geretourneerd door de Bing Video's zoeken-API bevat een video-ID die u kunt gebruiken om meer informatie te krijgen, zoals verwante Video's. Als u inzicht wilt krijgen in een video, kunt u het [videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) -Token ophalen in de API-reactie. 
+Elke video die wordt geretourneerd door de Bing Video Search API bevat een video-id die u gebruiken om er meer informatie over te krijgen, zoals gerelateerde video's. Als u inzicht wilt krijgen in een video, krijgt u het [videoId-token](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) in de API-respons. 
 
 ```json
     "value" : [
@@ -34,7 +34,7 @@ Elke video die wordt geretourneerd door de Bing Video's zoeken-API bevat een vid
     ],
 ```
 
-Vervolgens verzendt u een GET-aanvraag naar het eind punt video details met de ID. Stel de [id-](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) query parameter in `videoId` op het token. Stel de query parameter voor [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) in om de inzichten op te geven die u wilt ophalen. Stel `modules` alle inzichten in op alle. Het antwoord bevat alle inzichten die u hebt aangevraagd, indien beschikbaar.
+Stuur daarna een GET-verzoek naar het eindpunt videogegevens met de ID. Stel de parameter [id-query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) in op het `videoId` token. Als u de inzichten wilt opgeven die u wilt opvragen, stelt u de parameter [modulesquery](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) in. Om alle inzichten `modules` te krijgen, ingesteld op Alles. Het antwoord bevat alle inzichten die u hebt aangevraagd, indien beschikbaar.
 
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=All&mkt=en-us HTTP/1.1  
@@ -46,9 +46,9 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ``` 
 
-## <a name="getting-related-videos-insights"></a>Inzichten over gerelateerde Video's ophalen  
+## <a name="getting-related-videos-insights"></a>Gerelateerde video's statistieken krijgen  
 
-Als u Video's wilt ophalen die verwant zijn aan de opgegeven video, [](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) stelt u de para `RelatedVideos`meter voor de module-query in op.
+Als u video's wilt downloaden die gerelateerd zijn `RelatedVideos`aan de opgegeven video, stelt u de parameter [modulesquery](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) in op .
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=RelatedVideos&mkt=en-us HTTP/1.1  
@@ -60,7 +60,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Het antwoord op deze aanvraag heeft een [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) -object op het hoogste niveau in plaats van een [video](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) object.  
+Het antwoord op dit verzoek heeft een [object VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) op het hoogste niveau in plaats van een object [Video's.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos)  
   
 ```json
 {
@@ -97,5 +97,5 @@ Het antwoord op deze aanvraag heeft een [VideoDetails](https://docs.microsoft.co
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zoeken naar trending Video's](trending-videos.md)
+> [Zoeken naar trending video's](trending-videos.md)
 

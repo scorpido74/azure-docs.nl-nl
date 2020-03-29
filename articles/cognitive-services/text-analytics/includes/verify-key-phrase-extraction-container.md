@@ -1,7 +1,7 @@
 ---
-title: De Sleuteltermextractie container instantie controleren
+title: De instantie Van de container sleutelwoordextractie controleren
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het controleren van het exemplaar van de Sleuteltermextractie-container.
+description: Meer informatie over het verifiëren van de containerinstantie Sleutelzinextractie.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,22 +10,22 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: dapine
 ms.openlocfilehash: 1e2001c1f4cb2da195a3dcd0ca8fe198de8dd264
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70968564"
 ---
-### <a name="verify-the-key-phrase-extraction-container-instance"></a>De Sleuteltermextractie container instantie controleren
+### <a name="verify-the-key-phrase-extraction-container-instance"></a>De instantie Van de container sleutelwoordextractie controleren
 
-1. Selecteer het tabblad **overzicht** en kopieer het IP-adres.
-1. Open een nieuw browser tabblad en voer het IP-adres in. Voer `http://<IP-address>:5000 (http://55.55.55.55:5000`bijvoorbeeld in). De start pagina van de container wordt weer gegeven, waarin u kunt zien dat de container wordt uitgevoerd.
+1. Selecteer het tabblad **Overzicht** en kopieer het IP-adres.
+1. Open een nieuw browsertabblad en voer het IP-adres in. Voer bijvoorbeeld `http://<IP-address>:5000 (http://55.55.55.55:5000`in ). De startpagina van de container wordt weergegeven, zodat u weet dat de container wordt uitgevoerd.
 
-    ![De start pagina van de container weer geven om te controleren of deze wordt uitgevoerd](../media/how-tos/container-instance/swagger-docs-on-container.png)
+    ![De startpagina van de container weergeven om te controleren of deze wordt uitgevoerd](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
 1. Selecteer de koppeling **Service-API-beschrijving** om naar de Swagger-pagina van de container te gaan.
 
-1. Kies een van de **post** -api's en selecteer **try-out**. De para meters worden weer gegeven, met inbegrip van de volgende voorbeeld invoer:
+1. Kies een **POST** van de POST-API's en selecteer **Probeer het uit.** De parameters worden weergegeven, waaronder deze voorbeeldinvoer:
 
     ```json
     {
@@ -64,13 +64,13 @@ ms.locfileid: "70968564"
     }
     ```
 
-1. Stel **showStats** in `true`op.
+1. Stel **showStats** in op `true`.
 
-1. Selecteer **uitvoeren** om de sentiment van de tekst te bepalen.
+1. Selecteer **Uitvoeren** om het gevoel van de tekst te bepalen.
 
-    Het model dat in de container is verpakt, genereert een Score van 0 tot 1, waarbij 0 negatief is en 1 positief is.
+    Het model dat in de container is verpakt, genereert een score die varieert van 0 tot 1, waarbij 0 negatief is en 1 positief.
 
-    Het JSON-antwoord dat wordt geretourneerd bevat sentiment voor de bijgewerkte tekst invoer:
+    De JSON-reactie die wordt geretourneerd, bevat het sentiment voor de bijgewerkte tekstinvoer:
 
     ```json
     {
@@ -100,4 +100,4 @@ ms.locfileid: "70968564"
     }
     ```
 
-We kunnen nu het document `id` van de JSON-gegevens van de reactie Payload koppelen aan het oorspronkelijke document `id`met de aanvraag lading. Het resulterende document heeft een `keyPhrases` matrix die de lijst met sleutel zinnen bevat die zijn geëxtraheerd uit het bijbehorende invoer document. Daarnaast zijn er verschillende statistieken, zoals `characterCount` en `transactionCount` voor elk van de resulterende documenten.
+We kunnen nu `id` het document van de JSON-gegevens van `id`de response payload correleren met het oorspronkelijke payloaddocument voor aanvragen. Het resulterende document `keyPhrases` heeft een array, die de lijst bevat met belangrijke zinnen die zijn geëxtraheerd uit het bijbehorende invoerdocument. Daarnaast zijn er verschillende statistieken, zoals `characterCount` en `transactionCount` voor elk resulterend document.

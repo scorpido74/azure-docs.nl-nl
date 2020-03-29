@@ -1,7 +1,7 @@
 ---
-title: Bekende problemen met invoeg toepassingen voor project akoestische
+title: Project Acoustics plug-in bekende problemen
 titlesuffix: Azure Cognitive Services
-description: U kunt de volgende bekende problemen ondervinden in Project akoestische.
+description: Mogelijk ervaart u de volgende bekende problemen in Project Acoustics.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,36 +12,36 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: b71b93f271608d946d964f70dae9eefbef77e87b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72243046"
 ---
-# <a name="project-acoustics-known-issues"></a>Bekende problemen in Project akoestische
-In dit artikel worden problemen beschreven die zich kunnen voordoen wanneer u project akoestische gebruikt.
+# <a name="project-acoustics-known-issues"></a>Project Acoustics bekende problemen
+In dit artikel worden problemen beschreven die u ondervinden wanneer u Project Acoustics gebruikt.
 
-## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>Akoestische para meters gaan verloren wanneer u de naam van een scène wijzigt
+## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>Akoestische parameters gaan verloren wanneer u de naam van een scène wijzigt
 
-Als u de naam van een scène wijzigt, worden alle akoestische para meters die deel uitmaken van die scène, niet automatisch overgedragen naar de nieuwe scène. Maar ze zijn nog steeds aanwezig in het oude activa bestand. Zoek naar het bestand *[scènenaam] _AcousticParameters. Asset* in de map *Editor* naast uw scène bestand. Wijzig de naam van het bestand zodat dit overeenkomt met die van de nieuwe scène.
+Als u de naam van een scène wijzigt, worden alle akoestische parameters die tot die scène behoren, niet automatisch naar de nieuwe scène overgezet. Maar ze bestaan nog steeds in het oude activabestand. Zoek naar het bestand *[SceneName]_AcousticParameters.asset* in de *editormap* naast uw scènebestand. Wijzig de naam van het bestand naar de nieuwe scènenaam.
 
-## <a name="deploy-to-android-bug-from-some-unity-versions"></a>Implementatie van een Android-fout vanuit sommige eenheids versies
+## <a name="deploy-to-android-bug-from-some-unity-versions"></a>Deploy-to-Android bug van sommige Unity-versies
 
-Sommige versies van unit eenheid hebben een [fout](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player) in de manier waarop ze audio-invoeg toepassingen implementeren op Android. Zorg ervoor dat u geen versie gebruikt die door deze bug wordt beïnvloed.
+Sommige versies van Unity hebben een [bug](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player) in de manier waarop ze audioplug-ins implementeren op Android. Zorg ervoor dat u geen versie gebruikt die door deze bug wordt beïnvloed.
 
-## <a name="could-not-find-metadata-file-systemsecuritydll-error"></a>Fout bericht ' kan het bestands systeem voor meta gegevens niet vinden. Security. dll '
+## <a name="could-not-find-metadata-file-systemsecuritydll-error"></a>"Kon niet vinden metadata bestand System.Security.dll" fout
 
-Zorg ervoor dat de **runtime-versie van scripting** in de instellingen van de **speler** *.net 4. x equivalent*is en start eenheid opnieuw op.
+Controleer of de **Runtime-versie scripting** in de **instellingen voor player** *.NET 4.x Equivalent*is en start Unity opnieuw.
 
-## <a name="authentication-problems-when-connecting-to-azure"></a>Verificatie problemen bij het maken van verbinding met Azure
+## <a name="authentication-problems-when-connecting-to-azure"></a>Verificatieproblemen bij het maken van verbinding met Azure
 
-Controleer het volgende:
+Controleer of:
 - U hebt de juiste referenties voor uw Azure-account gebruikt.
-- Uw account ondersteunt het type knoop punt dat u hebt aangevraagd in de maken.
-- De systeem klok is ingesteld op de juiste manier.
+- Uw account ondersteunt het type knooppunt dat u in de bak hebt aangevraagd.
+- Uw systeemklok is correct ingesteld.
 
-## <a name="the-bake-tab-still-shows-deleting-after-you-cancel"></a>Op het tabblad maken wordt nog steeds ' verwijderen ' weer gegeven nadat u hebt geannuleerd
-Met de geluids bestanden van een project worden alle Azure-resources voor een taak opgeschoond nadat het volt ooien of annuleren is voltooid. Dit proces kan Maxi maal vijf minuten duren.
+## <a name="the-bake-tab-still-shows-deleting-after-you-cancel"></a>Op het tabblad Bakken wordt nog steeds 'verwijderen' weergegeven nadat u hebt geannuleerd
+Project Acoustics ruimt alle Azure-resources op voor een taak na succesvolle voltooiing of annulering. Dit proces kan tot 5 minuten duren.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Probeer de voorbeeld inhoud van [Unity](unity-quickstart.md) of [Unreal](unreal-quickstart.md) .
+* Probeer de [unity-](unity-quickstart.md) of [Unreal-voorbeeldinhoud.](unreal-quickstart.md)
