@@ -1,6 +1,6 @@
 ---
-title: Een Azure-data factory programmatisch bewaken
-description: Meer informatie over het bewaken van een pijp lijn in een data factory met behulp van verschillende Sdk's (Software Development Kits).
+title: Een Azure-gegevensfabriek programmatisch controleren
+description: Meer informatie over het bewaken van een pijplijn in een gegevensfabriek met behulp van verschillende softwaredevelopmentkits (SDK's).
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,27 +11,27 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 43a31d588ff6616d7200d9773883ce5da570b100
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927364"
 ---
-# <a name="programmatically-monitor-an-azure-data-factory"></a>Een Azure-data factory programmatisch bewaken
-In dit artikel wordt beschreven hoe u een pijp lijn in een data factory bewaakt met behulp van verschillende Sdk's (Software Development Kits). 
+# <a name="programmatically-monitor-an-azure-data-factory"></a>Een Azure-gegevensfabriek programmatisch controleren
+In dit artikel wordt beschreven hoe u een pijplijn in een gegevensfabriek controleren met behulp van verschillende softwaredevelopmentkits (SDK's). 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="data-range"></a>Gegevens bereik
+## <a name="data-range"></a>Gegevensbereik
 
-Data Factory slaat alleen pijplijn run data op voor 45 dagen. Wanneer u een query uitvoert op programmeer niveau voor gegevens over Data Factory pijplijn uitvoeringen, bijvoorbeeld met de Power shell-opdracht `Get-AzDataFactoryV2PipelineRun`, zijn er geen maximum datums voor de optionele `LastUpdatedAfter` en `LastUpdatedBefore` para meters. Als u bijvoorbeeld een query uitvoert voor gegevens in het afgelopen jaar, retourneert de query geen fout, maar retourneert alleen pijplijn gegevens uit de afgelopen 45 dagen.
+Data Factory slaat alleen pijplijngegevens gedurende 45 dagen op. Wanneer u programmatisch naar gegevens over datafactory-pijplijnuitvoeringen zoekt `Get-AzDataFactoryV2PipelineRun` - bijvoorbeeld met de opdracht `LastUpdatedAfter` `LastUpdatedBefore` PowerShell - zijn er geen maximumdatums voor de optionele en parameters. Maar als u bijvoorbeeld gegevens van het afgelopen jaar opvraagt, geeft de query geen fout weer, maar retourneert de pijplijnalleen gegevens van de afgelopen 45 dagen.
 
-Als u de gegevens van de pijplijn periode langer dan 45 dagen wilt behouden, stelt u uw eigen diagnostische logboek registratie in met [Azure monitor](monitor-using-azure-monitor.md).
+Als u gegevens wilt blijven uitvoeren van pijplijns gedurende meer dan 45 dagen, stelt u uw eigen diagnostische logboekregistratie in met [Azure Monitor](monitor-using-azure-monitor.md).
 
 ## <a name="net"></a>.NET
-Zie [een Data Factory en pijp lijn maken met behulp van .net](quickstart-create-data-factory-dot-net.md)voor een volledig overzicht van het maken en bewaken van een pijp lijn met behulp van .NET SDK.
+Zie [Een gegevensfabriek en pijplijn maken met .NET](quickstart-create-data-factory-dot-net.md)voor een volledige walkthrough van het maken en bewaken van een pijplijn met .NET .
 
-1. Voeg de volgende code toe om continu de status van de pijplijn uitvoering te controleren totdat deze klaar is met het kopiëren van de gegevens.
+1. Voeg de volgende code toe om continu de status van de pijplijn te controleren totdat de gegevens zijn gekopieerd.
 
     ```csharp
     // Monitor the pipeline run
@@ -48,7 +48,7 @@ Zie [een Data Factory en pijp lijn maken met behulp van .net](quickstart-create-
     }
     ```
 
-2. Voeg de volgende code toe om details van de uitvoer van de Kopieer activiteit op te halen, bijvoorbeeld de grootte van de gegevens die zijn gelezen/geschreven.
+2. Voeg de volgende code toe aan die kopieactiviteit smeergegevens ophaalt, bijvoorbeeld de grootte van de gelezen/geschreven gegevens.
 
     ```csharp
     // Check the copy activity run details
@@ -64,12 +64,12 @@ Zie [een Data Factory en pijp lijn maken met behulp van .net](quickstart-create-
     Console.ReadKey();
     ```
 
-Zie [Data Factory Naslag informatie over .NET SDK](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet)voor volledige documentatie over .NET SDK.
+Zie [Data Factory .NET SDK-referentie](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet)voor volledige documentatie over .NET SDK.
 
 ## <a name="python"></a>Python
-Zie [een Data Factory en pijp lijn maken met behulp](quickstart-create-data-factory-python.md)van python voor een volledig overzicht van het maken en bewaken van een pijp lijn met behulp van python SDK.
+Zie [Een gegevensfabriek en pijplijn maken met Python](quickstart-create-data-factory-python.md)voor een volledige walkthrough van het maken en bewaken van een pijplijn met Python.
 
-Als u de uitvoering van de pijp lijn wilt controleren, voegt u de volgende code toe:
+Als u de pijplijnrun wilt controleren, voegt u de volgende code toe:
 
 ```python
 # Monitor the pipeline run
@@ -82,10 +82,10 @@ activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(
 print_activity_run_details(activity_runs_paged[0])
 ```
 
-Zie [Naslag informatie over Data Factory PYTHON SDK](/python/api/overview/azure/datafactory?view=azure-python)voor volledige documentatie over python SDK.
+Zie [Gegevensfabriek Python SDK-verwijzing](/python/api/overview/azure/datafactory?view=azure-python)voor volledige documentatie over Python SDK.
 
-## <a name="rest-api"></a>REST-API
-Zie [een Data Factory en pijp lijn maken met behulp van rest API](quickstart-create-data-factory-rest-api.md)voor een volledig overzicht van het maken en bewaken van een pijp lijn met behulp van rest API.
+## <a name="rest-api"></a>REST API
+Zie [Een gegevensfabriek en -pijplijn maken met REST API](quickstart-create-data-factory-rest-api.md)voor een volledige walkthrough van het maken en bewaken van een pijplijn met REST API.
  
 1. Voer het volgende script uit om continu de status van de pijplijnuitvoering te controleren totdat het kopiëren van de gegevens is voltooid.
 
@@ -112,10 +112,10 @@ Zie [een Data Factory en pijp lijn maken met behulp van rest API](quickstart-cre
     $response | ConvertTo-Json
     ```
 
-Zie [Data Factory rest API Reference](/rest/api/datafactory/)(Engelstalig) voor volledige documentatie over rest API.
+Zie Data Factory REST [API-referentie](/rest/api/datafactory/)voor volledige documentatie over REST API.
 
 ## <a name="powershell"></a>PowerShell
-Zie [een Data Factory en pijp lijn maken met behulp van Power shell](quickstart-create-data-factory-powershell.md)voor een volledig overzicht van het maken en bewaken van een pijp lijn met behulp van Power shell.
+Zie [Een gegevensfabriek en -pijplijn maken met PowerShell](quickstart-create-data-factory-powershell.md)voor een volledige walkthrough van het maken en bewaken van een pijplijn met PowerShell.
 
 1. Voer het volgende script uit om continu de status van de pijplijnuitvoering te controleren totdat het kopiëren van de gegevens is voltooid.
 
@@ -149,8 +149,8 @@ Zie [een Data Factory en pijp lijn maken met behulp van Power shell](quickstart-
     $result.Error -join "`r`n"
     ```
 
-Zie [Data Factory Power shell-cmdlet-Naslag informatie](/powershell/module/az.datafactory)voor volledige documentatie over Power shell-cmdlets.
+Zie [Gegevensfabriek PowerShell-cmdletreferentie](/powershell/module/az.datafactory)voor volledige documentatie over PowerShell-cmdlets.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [pijp lijnen bewaken met behulp van Azure monitor](monitor-using-azure-monitor.md) artikel voor meer informatie over het gebruik van Azure Monitor om Data Factory pijp lijnen te bewaken. 
+Zie [Pijplijnen controleren met behulp van het azure-monitor-artikel](monitor-using-azure-monitor.md) voor meer informatie over het gebruik van Azure Monitor om pijplijnen voor gegevensfabrieken te controleren. 
 

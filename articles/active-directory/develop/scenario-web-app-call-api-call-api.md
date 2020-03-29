@@ -1,6 +1,6 @@
 ---
-title: Een web-API aanroepen vanuit een web-app-micro soft Identity platform | Azure
-description: Meer informatie over het bouwen van een web-app die web-Api's aanroept (waarmee een beveiligde web-API wordt aangeroepen)
+title: Een web-api aanbellen vanuit een web-app - Microsoft-identiteitsplatform | Azure
+description: Meer informatie over het maken van een webapp die web-API's aanroept (een beveiligde web-API aanroepen)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,19 +15,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 28b4be46dc686c6e1b55f1ab36e0607057ebdbbd
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76758968"
 ---
-# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Een web-app die web-Api's aanroept: een web-API aanroepen
+# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Een web-app die web-API's aanroept: een web-API aanroepen
 
-Nu u een token hebt, kunt u een beveiligde web-API aanroepen.
+Nu u een token hebt, u een beveiligde web-API aanroepen.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Hier volgt een vereenvoudigde code voor de actie van de `HomeController`. Met deze code wordt een token opgehaald om Microsoft Graph aan te roepen. Code is toegevoegd om te laten zien hoe Microsoft Graph moet worden aangeroepen als een REST API. De URL voor de Microsoft Graph-API wordt opgegeven in het bestand appSettings. json en wordt in een variabele met de naam `webOptions`gelezen:
+Hier is vereenvoudigde code voor de `HomeController`actie van de . Deze code krijgt een token om Microsoft Graph te bellen. Er is code toegevoegd om te laten zien hoe u Microsoft Graph als REST-API aanroepen. De URL voor de Microsoft Graph API wordt weergegeven in het bestand `webOptions`appsettings.json en wordt gelezen in een variabele met de naam:
 
 ```JSon
 {
@@ -82,11 +82,11 @@ public async Task<IActionResult> Profile()
 ```
 
 > [!NOTE]
-> U kunt dezelfde methode gebruiken om een web-API aan te roepen.
+> U hetzelfde principe gebruiken om elke web-API aan te roepen.
 >
-> De meeste Azure-Web-Api's bieden een SDK die het aanroepen van de API vereenvoudigt. Dit geldt ook voor Microsoft Graph. In het volgende artikel leert u hoe u een zelf studie kunt vinden die API-gebruik illustreert.
+> De meeste Azure-web-API's bieden een SDK die het aanroepen van de API vereenvoudigt. Dit geldt ook voor Microsoft Graph. In het volgende artikel leert u waar u een zelfstudie vinden die het api-gebruik illustreert.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 private String getUserInfoFromGraph(String accessToken) throws Exception {
@@ -112,7 +112,7 @@ private String getUserInfoFromGraph(String accessToken) throws Exception {
 
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 @app.route("/graphcall")
@@ -132,4 +132,4 @@ def graphcall():
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naar productie verplaatsen](scenario-web-app-call-api-production.md)
+> [Verplaatsen naar productie](scenario-web-app-call-api-production.md)

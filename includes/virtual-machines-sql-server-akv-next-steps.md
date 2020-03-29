@@ -5,27 +5,27 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 22f16a7382cb0fe1f3fe2a6ef5e7c00a6989623c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175985"
 ---
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat Azure Key Vault-integratie is ingeschakeld, kunt u SQL Server-versleuteling inschakelen op de SQL-VM. Eerst moet u een asymmetrische sleutel in uw key vault en een symmetrische sleutel in SQL Server op de virtuele machine maken. Vervolgens kunt u zich voor het uitvoeren van T-SQL-instructies gebruikt om versleuteling voor uw databases en de back-ups te schakelen.
+Nadat u Azure Key Vault Integration hebt ingeschakeld, u SQL Server-versleuteling inschakelen op uw SQL VM. Eerst moet u een asymmetrische sleutel in uw sleutelkluis maken en een symmetrische sleutel binnen SQL Server op uw VM. Vervolgens u T-SQL-instructies uitvoeren om versleuteling voor uw databases en back-ups mogelijk te maken.
 
-Er zijn verschillende vormen die u van profiteren kunt versleuteling:
+Er zijn verschillende vormen van versleuteling die u gebruiken:
 
-* [TDE (Transparent Data Encryption)](https://msdn.microsoft.com/library/bb934049.aspx)
+* [Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
 * [Versleutelde back-ups](https://msdn.microsoft.com/library/dn449489.aspx)
-* [Versleuteling op kolom (wissen)](https://msdn.microsoft.com/library/ms173744.aspx)
+* [Versleuteling van kolomniveau (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
 
-De volgende Transact-SQL-scripts vindt u voorbeelden voor elk van deze gebieden.
+De volgende Transact-SQL-scripts geven voorbeelden voor elk van deze gebieden.
 
-### <a name="prerequisites-for-examples"></a>Vereisten voor voorbeelden
+### <a name="prerequisites-for-examples"></a>Voorwaarden voor voorbeelden
 
-Elk voorbeeld is gebaseerd op de twee vereisten: een asymmetrische sleutel van uw key vault met de naam **CONTOSO_KEY** en een referentie die zijn gemaakt door de functie Azure Sleutelkluis-integratie met de naam **Azure_EKM_TDE_cred**. De volgende Transact-SQL-opdrachten deze vereisten voor het uitvoeren van de voorbeelden voor installatie.
+Elk voorbeeld is gebaseerd op de twee vereisten: een asymmetrische sleutel uit uw sleutelkluis genaamd **CONTOSO_KEY** en een referentie die is gemaakt door de AKV-integratiefunctie **Azure_EKM_TDE_cred**. Met de volgende Transact-SQL-opdrachten worden deze vereisten ingesteld voor het uitvoeren van de voorbeelden.
 
 ``` sql
 USE master;
@@ -52,7 +52,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 ### <a name="transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE)
 
-1. Maak een SQL Server-aanmelding moet worden gebruikt door de Database-Engine voor TDE, en vervolgens de referentie aan toe te voegen.
+1. Maak een SQL Server-login die door de Database Engine voor TDE moet worden gebruikt en voeg er vervolgens de referenties aan toe.
 
    ``` sql
    USE master;
@@ -70,7 +70,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-1. Maak de database-versleutelingssleutel die wordt gebruikt voor TDE.
+1. Maak de databaseversleutelingssleutel die wordt gebruikt voor TDE.
 
    ``` sql
    USE ContosoDatabase;
@@ -89,7 +89,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 ### <a name="encrypted-backups"></a>Versleutelde back-ups
 
-1. Een SQL Server-aanmelding moet worden gebruikt door de Database-Engine voor het versleutelen van back-ups maken en de referentie aan toe te voegen.
+1. Maak een SQL Server-login die door de Database Engine moet worden gebruikt voor het versleutelen van back-ups en de referenties eraan toe te voegen.
 
    ``` sql
    USE master;
@@ -106,7 +106,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-1. Back-up van de versleuteling van de database opgeven met de asymmetrische sleutel opgeslagen in de key vault.
+1. Maak een back-up van de database met versleuteling met de asymmetrische sleutel die is opgeslagen in de sleutelkluis.
 
    ``` sql
    USE master;
@@ -117,9 +117,9 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-### <a name="column-level-encryption-cle"></a>Versleuteling op kolom (wissen)
+### <a name="column-level-encryption-cle"></a>Versleuteling van kolomniveau (CLE)
 
-Met dit script maakt een symmetrische sleutel die beveiligd is door de asymmetrische sleutel in de key vault en gebruikt vervolgens de symmetrische sleutel voor het versleutelen van gegevens in de database.
+Dit script creëert een symmetrische sleutel die wordt beschermd door de asymmetrische sleutel in de sleutelkluis en gebruikt vervolgens de symmetrische sleutel om gegevens in de database te versleutelen.
 
 ``` sql
 CREATE SYMMETRIC KEY DATA_ENCRYPTION_KEY
@@ -142,8 +142,8 @@ SELECT CONVERT(VARCHAR, DECRYPTBYKEY(@DATA));
 CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 ```
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-Zie voor meer informatie over het gebruik van deze versleutelingsfuncties [EKM gebruiken met SQL Server-versleutelingsfuncties](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
+Zie [EKM gebruiken met SQL Server-versleutelingsfuncties](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)voor meer informatie over het gebruik van deze versleutelingsfuncties.
 
-Merk op dat de stappen in dit artikel wordt ervan uitgegaan dat u al hebt uitgevoerd op een virtuele machine van Azure SQL-Server. Als dit niet het geval is, Zie [een SQL Server-machine inrichten in Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md). Zie voor andere instructies over het uitvoeren van SQL Server op Azure Virtual machines [SQL Server op Azure Virtual Machines overzicht](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Houd er rekening mee dat de stappen in dit artikel ervan uitgaan dat SQL Server al op een virtuele Azure-machine wordt uitgevoerd. Zie Een [virtuele SQL Server-machine inAzure inrichten.](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md) Zie SQL Server op [Azure Virtual Machines-overzicht](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)voor andere richtlijnen voor het uitvoeren van SQL Server op Azure VM's.

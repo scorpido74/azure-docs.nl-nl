@@ -1,6 +1,6 @@
 ---
-title: De veiligheid van uw StorSimple-apparaat | Microsoft Docs
-description: Veiligheid verdragen, richtlijnen en overwegingen beschreven en wordt uitgelegd hoe u veilig installeren en gebruiken van uw StorSimple-apparaat.
+title: Veiligheid voor uw StorSimple-apparaat | Microsoft Documenten
+description: Beschrijft veiligheidsconventies, richtlijnen en overwegingen en legt uit hoe u uw StorSimple-apparaat veilig installeren en bedienen.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,141 +15,141 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
 ms.openlocfilehash: 66b881ab13e27ee457af4fa1bafb82ad14e9674d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60631627"
 ---
-# <a name="safely-install-and-operate-your-storsimple-device"></a>Veilig installeren en gebruiken van uw StorSimple-apparaat
+# <a name="safely-install-and-operate-your-storsimple-device"></a>Installeer en bedien uw StorSimple-apparaat veilig
 ![Waarschuwingspictogram](./media/storsimple-safety/IC740879.png)
-![lezen veiligheid kennisgeving pictogram](./media/storsimple-safety/IC740885.png) **meer veiligheid en de gezondheid van informatie**
+![Lees veiligheidsberichtpictogram](./media/storsimple-safety/IC740885.png) LEES **VEILIGHEIDS- EN GEZONDHEIDSINFORMATIE**
 
-Lees alle veiligheid en de gezondheid van informatie in dit artikel die van toepassing op uw Microsoft Azure StorSimple-apparaat is. Houd de afgedrukte handleidingen geleverd met uw StorSimple-apparaat voor toekomstig gebruik. Volg de instructies correct ingesteld, gebruiken en zorgt dat er voor dit product kunt verhogen van het risico van ernstige schade of overlijden of aan het apparaat of de apparaten schade is mislukt. Een [downloadbare versie van deze handleiding](https://www.microsoft.com/download/details.aspx?id=44233) is ook beschikbaar.
+Lees alle informatie over veiligheid en gezondheid in dit artikel die van toepassing is op uw Microsoft Azure StorSimple-apparaat. Houd alle gedrukte gidsen verzonden met uw StorSimple-apparaat voor toekomstige referentie. Het niet opvolgen van instructies en het goed instellen, gebruiken en verzorgen van dit product kan het risico op ernstig letsel of overlijden of schade aan het apparaat of de apparaten verhogen. Een [downloadbare versie van deze gids](https://www.microsoft.com/download/details.aspx?id=44233) is ook beschikbaar.
 
-## <a name="safety-icon-conventions"></a>Veiligheid pictogram conventies
-Hier volgen de pictogrammen die u wanneer u de voorzorgsmaatregelen ziet moeten worden genomen bij het instellen en uitvoeren van uw Microsoft Azure StorSimple-apparaat controleren.
+## <a name="safety-icon-conventions"></a>Conventies voor veiligheidspictograms
+Dit zijn de pictogrammen die u zult vinden wanneer u de veiligheidsmaatregelen bekijkt die moeten worden nageleefd bij het instellen en uitvoeren van uw Microsoft Azure StorSimple-apparaat.
 
-| Pictogram | Description |
+| Pictogram | Beschrijving |
 |:--- |:--- |
-| ![Pictogram gevaar](./media/storsimple-safety/IC740879.png) **gevaar!** |Geeft aan dat een gevaarlijke situaties die, als er geen vermeden, in overlijden of ernstige schade resulteert. Dit woord signaal is beperkt tot de meest uitzonderlijke situaties. |
-| ![Waarschuwingspictogram](./media/storsimple-safety/IC740879.png) **waarschuwing!** |Geeft aan dat een gevaarlijke situaties die als niet voorkomen, tot overlijden of ernstige schade leiden kan. |
-| ![Waarschuwingspictogram](./media/storsimple-safety/IC740879.png) **Let op!** |Geeft aan dat een gevaarlijke situaties die als niet voorkomen, tot schade voor kleine of matige leiden kan. |
-| ![Let op het pictogram](./media/storsimple-safety/IC740881.png) **kennisgeving:** |Geeft aan dat beschouwd als belangrijk, maar niet op risico productspecifieke informatie. |
-| ![Pictogram elektrische schudt](./media/storsimple-safety/IC740882.png) **elektrische schudt gevaar** |Hoge voltage |
-| ![Pictogram zware gewicht](./media/storsimple-safety/IC740883.png) **zware gewicht** | |
-| ![Er is geen gebruiker onderhouden pictogram delen](./media/storsimple-safety/IC740879.png) **geen onderdelen voor het onderhouden van gebruiker** |Geen toegang tot tenzij goed zijn opgeleid. |
-| ![Veiligheid kennisgeving pictogram lezen](./media/storsimple-safety/IC740885.png)**eerst alle instructies lezen** | |
-| ![Gevaar tippictogram](./media/storsimple-safety/IC740886.png) **gevaar Tip** | |
+| ![Gevaar](./media/storsimple-safety/IC740879.png) Icoon **GEVAAR!** |Wijst op een gevaarlijke situatie die, indien niet vermeden, zal leiden tot de dood of ernstig letsel. Dit signaal woord moet worden beperkt tot de meest extreme situaties. |
+| ![Waarschuwing](./media/storsimple-safety/IC740879.png) Pictogram **WAARSCHUWING!** |Wijst op een gevaarlijke situatie die, indien niet vermeden, kan leiden tot de dood of ernstig letsel. |
+| ![Waarschuwing](./media/storsimple-safety/IC740879.png) Pictogram **LET!** |Wijst op een gevaarlijke situatie die, indien niet vermeden, kan leiden tot lichte of matige verwondingen. |
+| ![Aankondiging](./media/storsimple-safety/IC740881.png) Pictogram **KENNISGEVING:** |Geeft informatie aan die belangrijk wordt geacht, maar niet met gevaar. |
+| ![Elektrisch schokpictogram](./media/storsimple-safety/IC740882.png) **elektrisch schokgevaar** |Hoogspanning |
+| ![Zwaar gewicht](./media/storsimple-safety/IC740883.png) Icoon **zwaar gewicht** | |
+| ![Geen User Serviceable](./media/storsimple-safety/IC740879.png) Parts Icon **Geen user serviceable parts** |Geen toegang, tenzij goed opgeleid. |
+| ![Lees veiligheidsbericht pictogram](./media/storsimple-safety/IC740885.png)**Lees alle instructies eerst** | |
+| ![Tip Hazard](./media/storsimple-safety/IC740886.png) Icon **Tip Hazard** | |
 
-## <a name="handling-precautions"></a>Afhandeling van voorzorgsmaatregelen
-![Waarschuwingspictogram](./media/storsimple-safety/IC740879.png) ![zware gewicht pictogram](./media/storsimple-safety/IC740883.png) **waarschuwing!** 
+## <a name="handling-precautions"></a>Behandelingsvoorzorgsmaatregelen
+![Waarschuwing](./media/storsimple-safety/IC740879.png) ![Pictogram Zwaar](./media/storsimple-safety/IC740883.png) Gewicht Icon **WAARSCHUWING!** 
 
-Vermindert het risico van de schade:
+Om het risico op letsel te verminderen:
 
-* Een volledig geconfigureerde behuizing wegen maximaal 32 kg (70 lbs); Probeer niet te deze zelf.
-* Voordat u de behuizing, altijd voor zorgen dat twee personen beschikbaar zijn voor het afhandelen van het gewicht. Let erop dat één persoon bij dit gewicht lift het bestand is tegen beschadigingen.
-* Niet de behuizing lift door de ingangen in de stroom en koeling Modules (PCMs) dat zich bevindt in de achterzijde van het apparaat. Deze zijn niet bedoeld om het gewicht.
+* Een volledig geconfigureerde behuizing kan tot 32 kg wegen; probeer het niet zelf op te tillen.
+* Zorg er voor het verplaatsen van de behuizing altijd voor dat er twee personen beschikbaar zijn om het gewicht aan te kunnen. Houd er rekening mee dat een persoon die probeert om dit gewicht te heffen kan verwondingen oplopen.
+* Til de behuizing niet op aan de handgrepen van de power- en koelmodules (PCM's) aan de achterzijde van het apparaat. Deze zijn niet ontworpen om het gewicht te nemen.
 
-## <a name="connection-precautions"></a>Verbinding voorzorgsmaatregelen
-![Waarschuwingspictogram](./media/storsimple-safety/IC740879.png) ![elektrische schudt pictogram](./media/storsimple-safety/IC740882.png) **waarschuwing!**
+## <a name="connection-precautions"></a>Verbindingsvoorzorgsmaatregelen
+![Waarschuwing](./media/storsimple-safety/IC740879.png) ![Pictogram Elektrische](./media/storsimple-safety/IC740882.png) Schok Icon **WAARSCHUWING!**
 
-Om te verminderen de kans op schade, elektrische schudt of overlijden:
+Om de kans op letsel, elektrische schokken of de dood te verminderen:
 
-* Bij het gebruik van meerdere AC-bronnen, verbreekt u alle aanbod kracht voor volledig isoleren.
-* De eenheid permanent verwijderen voordat u deze verplaatst of als u denkt dat deze beschadigd is op geen enkele manier.
-* Geef een veilige elektrische earth-verbinding met het aanbod stroomkabels. Controleer of dat de basiskennis van de behuizing voldoet aan de nationale en lokale voordat u Energiebeheer toepast.
-* Zorg ervoor dat de verbinding met power altijd voor de verwijdering van een PCM van de behuizing is verbroken.
-* Gezien het feit dat de plug op het netsnoer van de levering is de belangrijkste apparaat verbreken, zorg ervoor dat de socket-uitgangen bevinden zich in de buurt van de apparatuur en zijn eenvoudig toegankelijk.
+* Wanneer u wordt aangedreven door meerdere AC-bronnen, koppelt u alle voeding los voor volledige isolatie.
+* Trek het apparaat definitief los voordat u het verplaatst of als u denkt dat het op enigerlei wijze beschadigd is geraakt.
+* Zorg voor een veilige elektrische aardeverbinding met de stroomkabels. Controleer of de aarding van de behuizing voldoet aan de nationale en lokale eisen voordat de stroom wordt toegepast.
+* Zorg ervoor dat de stroomaansluiting altijd wordt losgekoppeld voordat een PCM uit de behuizing wordt verwijderd.
+* Gezien het feit dat de stekker op het voedingskabel het hoofdloskoppelingsapparaat is, moet u ervoor zorgen dat de stopcontacten zich in de buurt van de apparatuur bevinden en gemakkelijk toegankelijk zijn.
 
-![Waarschuwingspictogram](./media/storsimple-safety/IC740879.png) ![elektrische schudt pictogram](./media/storsimple-safety/IC740882.png) **waarschuwing!**
+![Waarschuwing](./media/storsimple-safety/IC740879.png) ![Pictogram Elektrische](./media/storsimple-safety/IC740882.png) Schok Icon **WAARSCHUWING!**
 
-De kans oververhitting of starten van de elektrische verbindingen:
+Om de kans op oververhitting of brand door de elektrische aansluitingen te verkleinen:
 
-* Bieden een geschikte energiebron elektrische overbelasting protection om te voldoen aan de vereisten uiteengezet in de technische specificaties.
-* Gebruik geen bifurcated stroomkabels ("Y" leads).
-* Om te voldoen aan de toepasselijke veiligheid, emissie en warmte vereisten, geen behandelt moeten worden verwijderd en alle bays moeten worden ingevuld met Plug-ins of lege waarden drive.
-* Zorg ervoor dat de apparatuur wordt gebruikt op een manier die is opgegeven door de fabrikant. Als deze apparatuur wordt gebruikt op een manier die niet is opgegeven door de fabrikant, is het mogelijk dat de beveiliging door de apparatuur gehinderd.
+* Zorg voor een geschikte voedingsbron met elektrische overbelastingsbeveiliging om te voldoen aan de eisen die in de technische specificatie worden beschreven.
+* Gebruik geen gespleten netsnoeren ("Y" leads).
+* Om te voldoen aan de toepasselijke veiligheids-, emissie- en thermische voorschriften, mogen geen afdekkingen worden verwijderd en moeten alle baaien worden gevuld met plug-inmodules of schijfblanks.
+* Zorg ervoor dat de apparatuur wordt gebruikt op een door de fabrikant gespecificeerde wijze. Indien deze apparatuur wordt gebruikt op een wijze die niet door de fabrikant is gespecificeerd, kan de door de apparatuur geboden bescherming worden aangetast.
 
-![Let op het pictogram](./media/storsimple-safety/IC740881.png) **kennisgeving:**
+![Aankondiging](./media/storsimple-safety/IC740881.png) Pictogram **KENNISGEVING:**
 
-Voor de goede werking van uw apparatuur en product schade voorkomen:
+Voor de goede werking van uw apparatuur en om productschade te voorkomen:
 
-* De RJ-45-poorten aan het einde van het apparaat zijn voor een Ethernet-verbinding. Deze moeten niet worden verbonden met een telecommunicatienetwerk.
-* Zorg ervoor dat het apparaat installeren op een rek die kan worden aangepast aan een ontwerp voor naar achteren koeling.
-* Alle Plug-ins en lege platen uitmaken deel van de systeembehuizing. Deze moeten alleen worden verwijderd wanneer een vervangende direct kan worden toegevoegd. Het systeem moet niet worden uitgevoerd zonder dat alle modules of lege waarden in de plaats.
+* De RJ45-poorten aan de achterkant van het apparaat zijn alleen voor een Ethernet-verbinding. Deze mogen niet worden aangesloten op een telecommunicatienetwerk.
+* Zorg ervoor dat u het apparaat installeert in een rack dat geschikt is voor een koelontwerp van voor naar achter.
+* Alle plug-in modules en lege platen maken deel uit van de systeembehuizing. Deze mogen alleen worden verwijderd wanneer een vervanging onmiddellijk kan worden toegevoegd. Het systeem mag niet worden uitgevoerd zonder alle modules of spaties op zijn plaats.
 
-## <a name="rack-system-precautions"></a>Rack system voorzorgsmaatregelen
-De volgende vereisten voor de veiligheid van belang wanneer u het apparaat in een rack cab koppelt.
+## <a name="rack-system-precautions"></a>Voorzorgsmaatregelen van het racksysteem
+Bij het monteren van het apparaat in een rekkast moet rekening worden gehouden met de volgende veiligheidseisen.
 
-![Waarschuwingspictogram](./media/storsimple-safety/IC740879.png) ![gevaar Tippictogram](./media/storsimple-safety/IC740886.png) **waarschuwing!**
+![Waarschuwing](./media/storsimple-safety/IC740879.png) ![Pictogram Tip](./media/storsimple-safety/IC740886.png) Gevaar Pictogram **WAARSCHUWING WAARSCHUWING!**
 
-Om te verminderen de kans schade als gevolg van een tip via:
+Om de kans op letsel door een kantelen te verminderen:
 
-* Het ontwerp van de rack moet ondersteuning bieden voor het totaal gewicht van de geïnstalleerde behuizingen en stabilisator functies geschikt om te voorkomen dat het rack storten of via worden gepusht tijdens de installatie of het normale gebruik moet opnemen.
-* Bij het laden van een rack, vul het rack aan de onderkant en leegmaken vanaf de bovenkant omlaag.
-* Schuif de meer dan één behuizing buiten het rack niet op een moment om te voorkomen dat het gevaar van het rack toppling over.
+* Het ontwerp van het rek moet het totale gewicht van de geïnstalleerde behuizingen ondersteunen en moet voorzien zijn van stabiliserende functies die geschikt zijn om te voorkomen dat het rek kantelt of overdeint tijdens de installatie of normaal gebruik.
+* Vul bij het laden van een rek het rek van ondernaar boven en leeg vanaf de bovenkant naar beneden.
+* Schuif niet meer dan één behuizing tegelijk uit het rek om het gevaar te vermijden dat het rek omvalt.
 
-![Waarschuwingspictogram](./media/storsimple-safety/IC740879.png) ![elektrische schudt pictogram](./media/storsimple-safety/IC740882.png) **waarschuwing!**
+![Waarschuwing](./media/storsimple-safety/IC740879.png) ![Pictogram Elektrische](./media/storsimple-safety/IC740882.png) Schok Icon **WAARSCHUWING!**
 
-Om te verminderen de kans op schade, elektrische schudt of overlijden:
+Om de kans op letsel, elektrische schokken of de dood te verminderen:
 
-* Het rack moet beschikken over een veilige elektrische distributie. Het huidige sprake van redundante beveiliging voor de behuizing moet opgeven en moet niet worden overbelast door het totale aantal bijlagen is geïnstalleerd. De stroom verbruik classificatie die wordt weergegeven op de naamplaatje moet worden nageleefd.
-* De elektrische distributiesysteem moet een betrouwbare basis opgeven voor elke bijlage in het rek te plaatsen.
-* Het ontwerp van de elektrische distributiesysteem moet rekening mee te houden de totale grond lekken huidige van alle voedingen in alle bijlagen. Houd er rekening mee dat elke voeding in elke behuizing een huidige grond lekken van 1.0 mA maximale op 60 Hz 264 v heeft. Het rack mogelijk labelen met 'hoge LEKKEN huidige. Verbinding van de grond (aarde) is essentieel voordat u een verbinding maakt."
-* Het rack, wanneer geconfigureerd met de bijlagen moet voldoen aan de vereisten van de veiligheid van UL 60950-1 en IEC 60950-1/EN 60950-1.
+* Het rek moet een veilig elektrisch distributiesysteem hebben. Het moet overstroombescherming bieden voor de behuizing en mag niet worden overbelast door het totale aantal geïnstalleerde behuizingen. De op het naamplaatje weergegeven elektrische stroomverbruik moet in acht worden genomen.
+* Het elektrische distributiesysteem moet voor elke behuizing in het rek een betrouwbare ondergrond bieden.
+* Bij het ontwerp van het elektrische distributiesysteem moet rekening worden gehouden met de totale grondlekkagestroom van alle voedingen in alle behuizingen. Houd er rekening mee dat elke voeding in elke behuizing een grondlekstroom heeft van maximaal 1,0 mA bij 60 Hz, 264 volt. Het rek kan etikettering met "HOGE LEKKAGESTROOM vereisen. Grond (aarde) verbinding is essentieel voor het aansluiten van een levering."
+* Het rek moet, wanneer het is geconfigureerd met de behuizingen, voldoen aan de veiligheidseisen van UL 60950-1 en IEC 60950-1/EN 60950-1.
 
-![Let op het pictogram](./media/storsimple-safety/IC740881.png) **kennisgeving:**
+![Aankondiging](./media/storsimple-safety/IC740881.png) Pictogram **KENNISGEVING:**
 
 Voor de juiste koeling van uw racksysteem:
 
-* Zorg ervoor dat het rack-ontwerp rekening gehouden met de maximale ruimte operationele omgevingstemperatuur van 35 graden Celsius (95 graden Celsius).
-* Het systeem wordt beheerd met low-pressure, achterzijde uitlaatgas installatie (zwaar wordt belast zijn gemaakt door rackdeuren en belemmeringen niet langer zijn dan 5 Pascal [0,5 mm water meter]).
+* Zorg ervoor dat het ontwerp van het rek rekening houdt met de maximale omgevingstemperatuur van 35 graden Celsius (95 graden Fahrenheit).
+* Het systeem wordt bediend met lagedruk- en uitlaatinstallatie (tegendruk die wordt veroorzaakt door rekdeuren en obstakels die niet hoger zijn dan 5 Pascal [0,5 mm watermeter]).
 
-## <a name="power-cooling-module-pcm-precautions"></a>Power koeling Module (PCM) voorzorgsmaatregelen
-Het apparaat is ontworpen om te werken met twee PCMs. Elk van de PCMs heeft een voeding en een dual-as-ventilator. Tijdens een kritieke toestand kan het systeem voor het uitvallen van één voeding terwijl u normale bewerkingen. Twee PCMs (en dus voedingen) moet altijd zijn geïnstalleerd. Een enkele PCM biedt geen redundante voeding. Daarom kan het uitvallen van een PCM leiden tot downtime of gegevensverlies.
+## <a name="power-cooling-module-pcm-precautions"></a>Energiebesparende energiebesparende maatregelen
+Het apparaat is ontworpen om te werken met twee PCM's. Elk van de PCM's heeft een voeding en een dual-axis ventilator. Tijdens een kritieke toestand zorgt het systeem voor een storing van één voeding terwijl de normale werking wordt voortgezet. Er moeten altijd twee PCM's (en dus voedingen) worden geïnstalleerd. Een enkele PCM biedt geen redundante stroom. Daarom kan het uitvallen van zelfs één PCM leiden tot downtime of mogelijk gegevensverlies.
 
-![Waarschuwingspictogram](./media/storsimple-safety/IC740879.png) ![elektrische schudt pictogram](./media/storsimple-safety/IC740882.png) **waarschuwing!**
+![Waarschuwing](./media/storsimple-safety/IC740879.png) ![Pictogram Elektrische](./media/storsimple-safety/IC740882.png) Schok Icon **WAARSCHUWING!**
 
-Om te verminderen de kans op schade, elektrische schudt of overlijden:
+Om de kans op letsel, elektrische schokken of de dood te verminderen:
 
-* Verwijder de achtergrond niet uit de PCM. Er is een gevaar elektriciteit in. De PCM ophalen en u een vervangende [Neem contact op met Microsoft Support](storsimple-contact-microsoft-support.md).
+* Verwijder de deksels niet uit het PCM. Er bestaat gevaar voor een elektrische schok binnenin. Neem [contact op met Microsoft Support om](storsimple-contact-microsoft-support.md)de PCM terug te sturen en een vervanging te verkrijgen.
 
-![Let op het pictogram](./media/storsimple-safety/IC740881.png) **kennisgeving:**
+![Aankondiging](./media/storsimple-safety/IC740881.png) Pictogram **KENNISGEVING:**
 
-Voor de goede werking van uw apparatuur en product schade voorkomen:
+Voor de goede werking van uw apparatuur en om productschade te voorkomen:
 
-* U moet de mislukte PCM vervangen binnen 24 uur. Nadat een PCM vervangen is verwijderd, kan de vervanging moet worden uitgevoerd binnen 10 minuten na het verwijderen.
-* Verwijder een PCM niet, tenzij een vervanging kan direct worden geïnstalleerd. De behuizing moet niet worden beheerd zonder alle modules in plaats.
+* U moet de mislukte PCM binnen 24 uur vervangen. Nadat een PCM is verwijderd voor vervanging, moet de vervanging binnen 10 minuten na verwijdering zijn voltooid.
+* Verwijder een PCM niet tenzij een vervanging onmiddellijk kan worden geïnstalleerd. De behuizing mag niet zonder alle modules worden bediend.
 
-## <a name="electrostatic-discharge-esd-precautions"></a>Voorzorgsmaatregelen elektrostatische ontlading (ESD)
-![Let op het pictogram](./media/storsimple-safety/IC740881.png) **kennisgeving:**
+## <a name="electrostatic-discharge-esd-precautions"></a>Voorzorgsmaatregelen voor elektrostatische ontlading (ESD)
+![Aankondiging](./media/storsimple-safety/IC740881.png) Pictogram **KENNISGEVING:**
 
-Bekijk de volgende met betrekking tot ESD voorzorgsmaatregelen.
+Houd rekening met de volgende ESD-gerelateerde voorzorgsmaatregelen.
 
-* Zorg ervoor dat u hebt geïnstalleerd en een geschikte antistatische pols of ging band gecontroleerd.
-* Bekijk alle conventionele ESD voorzorgsmaatregelen bij het verwerken van modules en -onderdelen.
-* Neem contact op met met backplane onderdelen en module connectors voorkomen.
-* ESD schade niet wordt gedekt door garantie.
+* Zorg ervoor dat u een geschikte antistatische pols- of enkelband hebt geïnstalleerd en gecontroleerd.
+* Let op alle conventionele ESD-voorzorgsmaatregelen bij het hanteren van modules en componenten.
+* Vermijd contact met backplane componenten en module connectoren.
+* ESD schade valt niet onder de garantie.
 
-## <a name="battery-disposal-precautions"></a>Accu verwijdering voorzorgsmaatregelen
-De voeding maakt gebruik van een speciale batterij ter bescherming van de inhoud van het geheugen tijdens stroomstoringen tijdelijke, op korte termijn. De batterij is geplaatst in de PCM. Houd er rekening mee over de batterij van de volgende informatie.
+## <a name="battery-disposal-precautions"></a>Voorzorgsmaatregelen voor het verwijderen van batterijen
+De voeding maakt gebruik van een speciale batterij om de inhoud van het geheugen te beschermen tijdens tijdelijke, korte termijn stroomuitval. De batterij zit in het PCM. Houd rekening met de volgende informatie over de batterij.
 
-![Waarschuwingspictogram](./media/storsimple-safety/IC740879.png) **waarschuwing!**
+![Waarschuwing](./media/storsimple-safety/IC740879.png) Pictogram **WAARSCHUWING!**
 
-Vermindert het risico van korte, worden gestart, explosie, schade of overlijden:
+Om het risico op korte broek, brand, explosie, letsel of de dood te verminderen:
 
-* Buitengebruikstelling van gebruikte accu's in overeenstemming met nationale/regionale voorschriften.
-* Geen disassembleren, maak, of warmte hierboven 60 graden Celsius (140 graden Celsius) of verbranding. De PCM-upbatterij vervangen met een opgegeven batterij alleen. Gebruik van een andere accu kan een gevaar brand of explosie.
-* Gebruik op de accu's beschermende uiteinden als deze worden verwijderd uit de voeding.
+* Gooi gebruikte batterijen weg in overeenstemming met de nationale/regionale regelgeving.
+* Niet demonteren, verpletteren, of warmte boven 60 graden Celsius (140 graden Fahrenheit) of verbranden. Vervang de PCM-batterij alleen door een meegeleverde batterij. Het gebruik van een andere batterij kan brand- of explosiegevaar opleveren.
+* Gebruik beschermende einddoppen op de batterijen als deze uit de voeding worden verwijderd.
 
-![Let op het pictogram](./media/storsimple-safety/IC740881.png) **kennisgeving:**
+![Aankondiging](./media/storsimple-safety/IC740881.png) Pictogram **KENNISGEVING:**
 
-Wanneer verzending of anders vervoer van de accu's door de lucht, voert u het document IATA Lithium accu richtlijnen beschikbaar op [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
+Volg bij het verzenden of anderszins vervoeren van de batterijen door de lucht het IATA Lithium Battery Guidance document beschikbaar op[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
-Nadat u deze meldingen veiligheid hebt doorgenomen, zijn de volgende stappen uit te pakken, op het rek en uw apparaat bekabelen.
+Nadat u deze veiligheidsberichten hebt bekeken, zijn de volgende stappen het uitpakken, rekken en bekabelen van uw apparaat.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Voor een 8100-apparaat, gaat u naar [uw StorSimple 8100-apparaat installeert](storsimple-8100-hardware-installation.md).
-* Voor een 8600-apparaat, gaat u naar [uw StorSimple 8600-apparaat installeert](storsimple-8600-hardware-installation.md).
+* Ga voor een apparaat met 8100 naar [Uw StorSimple 8100-apparaat installeren.](storsimple-8100-hardware-installation.md)
+* Ga voor een apparaat met 8600 naar [Uw StorSimple 8600-apparaat installeren.](storsimple-8600-hardware-installation.md)
 

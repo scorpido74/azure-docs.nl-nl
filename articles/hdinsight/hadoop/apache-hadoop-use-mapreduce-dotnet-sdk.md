@@ -1,6 +1,6 @@
 ---
-title: MapReduce-taken verzenden met HDInsight .NET SDK-Azure
-description: Meer informatie over het verzenden van MapReduce-taken naar Azure HDInsight Apache Hadoop met behulp van HDInsight .NET SDK.
+title: Kaart verzendenTaken verminderen met HDInsight .NET SDK - Azure
+description: Meer informatie over het indienen van mapWerk taken naar Azure HDInsight Apache Hadoop verzenden met HDInsight .NET SDK.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,40 +9,40 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/15/2020
 ms.openlocfilehash: e50510f2420d69be37af584a2648a794e1561ee3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76157046"
 ---
-# <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>MapReduce-taken uitvoeren met HDInsight .NET SDK
+# <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>MapReduce-taken uitvoeren met behulp van de HDInsight .NET-SDK
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Meer informatie over het verzenden van MapReduce-taken met behulp van HDInsight .NET SDK. HDInsight-clusters worden geleverd met een jar-bestand met enkele MapReduce-voor beelden. Het jar-bestand is `/example/jars/hadoop-mapreduce-examples.jar`.  Een van de voor beelden is **WordCount**. U ontwikkelt een C# console toepassing om een WordCount-taak te verzenden.  De taak leest het `/example/data/gutenberg/davinci.txt` bestand en voert de resultaten uit naar `/example/data/davinciwordcount`.  Als u de toepassing opnieuw wilt uitvoeren, moet u de uitvoermap opschonen.
+Meer informatie over het indienen van MapReduce-taken met HDInsight .NET SDK. HDInsight clusters worden geleverd met een pot bestand met een aantal MapReduce monsters. Het potbestand `/example/jars/hadoop-mapreduce-examples.jar`is.  Een van de monsters is **wordcount**. U ontwikkelt een C#-consoletoepassing om een wordcount-taak in te dienen.  De taak `/example/data/gutenberg/davinci.txt` leest het bestand en `/example/data/davinciwordcount`leidt de resultaten uit naar .  Als u de toepassing opnieuw wilt uitvoeren, moet u de uitvoermap opschonen.
 
 > [!NOTE]  
-> De stappen in dit artikel moeten worden uitgevoerd vanaf een Windows-client. Voor informatie over het gebruik van een Linux-, OS X-of UNIX-client om met hive te werken, gebruikt u de tabblad kiezer die boven aan het artikel wordt weer gegeven.
+> De stappen in dit artikel moeten worden uitgevoerd vanuit een Windows-client. Voor informatie over het gebruik van een Linux-, OS X- of Unix-client om met Hive te werken, gebruikt u de tabkiezer boven aan het artikel.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Apache Hadoop cluster in HDInsight. Zie [Apache Hadoop clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
+* Een Apache Hadoop cluster op HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 * [Visual Studio](https://visualstudio.microsoft.com/vs/community/).
 
-## <a name="submit-mapreduce-jobs-using-hdinsight-net-sdk"></a>MapReduce-taken verzenden met behulp van HDInsight .NET SDK
+## <a name="submit-mapreduce-jobs-using-hdinsight-net-sdk"></a>Kaart verzendenWerk verminderen met HDInsight .NET SDK
 
-De HDInsight .NET SDK biedt .NET-client Bibliotheken, waarmee u eenvoudiger met HDInsight-clusters kunt werken vanuit .NET.
+De HDInsight .NET SDK biedt .NET-clientbibliotheken, waarmee u eenvoudiger werken met HDInsight-clusters van .NET.
 
-1. Start Visual Studio en maak een C# console toepassing.
+1. Start Visual Studio en maak een C#-consoletoepassing.
 
-1. Navigeer naar **Tools** > **NuGet package manager** > **Package Manager console** en voer de volgende opdracht in:
+1. Navigeer naar **NuGet** > Package**Manager-console** **NuGet Package Manager** > en voer de volgende opdracht in:
 
     ```   
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
 
-1. Kopieer de onderstaande code naar **Program.cs**. Bewerk de code vervolgens door de waarden in te stellen voor: `existingClusterName`, `existingClusterPassword`, `defaultStorageAccountName`, `defaultStorageAccountKey`en `defaultStorageContainerName`.
+1. Kopieer de onderstaande code in **Program.cs**. Bewerk vervolgens de code door `existingClusterName`de `existingClusterPassword` `defaultStorageAccountName`waarden `defaultStorageAccountKey`in `defaultStorageContainerName`te stellen voor: , , , en .
 
     ```csharp
     using System.Collections.Generic;
@@ -163,16 +163,16 @@ De HDInsight .NET SDK biedt .NET-client Bibliotheken, waarmee u eenvoudiger met 
 
 1. Druk op **F5** om de toepassing uit te voeren.
 
-Als u de taak opnieuw wilt uitvoeren, moet u de naam van de map voor de taak uitvoer wijzigen, in de voorbeeld `/example/data/davinciwordcount`.
+Als u de taak opnieuw wilt uitvoeren, moet u de `/example/data/davinciwordcount`naam van de taakuitvoermap wijzigen in het voorbeeld .
 
-Wanneer de taak is voltooid, wordt de inhoud van het uitvoer bestand door de toepassing afgedrukt `part-r-00000`.
+Wanneer de taak is voltooid, wordt de inhoud `part-r-00000`van het uitvoerbestand in de toepassing afgedrukt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u verschillende manieren geleerd om een HDInsight-cluster te maken. Raadpleeg de volgende artikelen voor meer informatie:
+In dit artikel hebt u verschillende manieren geleerd om een HDInsight-cluster te maken. Zie voor meer informatie de volgende artikelen:
 
-* Zie [Apache Hive Query's uitvoeren met HDInsight .NET SDK](apache-hadoop-use-hive-dotnet-sdk.md)voor informatie over het verzenden van een Hive-taak.
-* Zie voor het maken van HDInsight [-clusters Linux-gebaseerde Apache Hadoop clusters maken in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
-* Zie [Apache Hadoop clusters in HDInsight beheren](../hdinsight-administer-use-portal-linux.md)voor het beheren van HDInsight-clusters.
-* Zie [referentie voor hdinsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)voor meer informatie over de HDINSIGHT .NET SDK.
-* Zie [niet-interactieve verificatie van .net HDInsight-toepassingen maken](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)voor niet-interactieve verificatie naar Azure.
+* Zie [Apache Hive-query's uitvoeren met HDInsight .NET SDK](apache-hadoop-use-hive-dotnet-sdk.md)voor het indienen van een Hive-taak.
+* Zie [Linux-gebaseerde Apache Hadoop-clusters maken in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)voor het maken van HDInsight-clusters.
+* Zie Clusters van [Apache Hadoop beheren in HDInsight](../hdinsight-administer-use-portal-linux.md)voor het beheren van HDInsight-clusters.
+* Zie [HDInsight .NET SDK-referentie](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)voor het leren van de HDInsight .NET SDK.
+* Zie [Niet-interactieve verificatie .NET HDInsight-toepassingen maken](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)voor niet-interactieve verificatie naar Azure.

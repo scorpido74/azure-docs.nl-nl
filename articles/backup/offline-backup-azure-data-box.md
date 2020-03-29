@@ -1,33 +1,33 @@
 ---
-title: Offline back-ups met behulp van Azure Data Box
-description: Meer informatie over hoe u Azure Data Box kunt gebruiken om grote initiële back-upgegevens offline te brengen van de MARS-agent naar een Recovery Services kluis.
+title: Offline back-up met Azure Data Box
+description: Lees hoe u Azure Data Box gebruiken om grote initiële back-upgegevens offline te houden van de MARS-agent naar een vault voor Herstelservices.
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: a031a8cac357e7d212f8f6a3a5dbec749fbccc21
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672973"
 ---
-# <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offline back-up Azure Backup met behulp van Azure Data Box
+# <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Backup offline back-up met Azure Data Box
 
-U kunt [Azure data Box](https://docs.microsoft.com/azure/databox/data-box-overview) gebruiken om de back-ups van uw grote initiële Microsoft Azure Recovery Services (Mars) offline te brengen (zonder gebruik van een netwerk) naar een Recovery Services kluis. Dit proces bespaart tijd en netwerk bandbreedte, waardoor een grote hoeveelheid back-upgegevens online kan worden verplaatst via een netwerk met een hoge latentie. Deze uitbrei ding is momenteel beschikbaar als preview-versie. Offline back-up op basis van Azure Data Box biedt twee verschillende voor delen ten opzichte van [offline back-ups op basis van de Azure import/export-service](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export):
+U [Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) gebruiken om uw grote initiële Mars-back-ups (Microsoft Azure Recovery Services) offline te zetten (zonder netwerk te gebruiken) in een kluis van Recovery Services. Dit proces bespaart tijd en netwerkbandbreedte die anders zouden worden verbruikt door grote hoeveelheden back-upgegevens online te verplaatsen via een netwerk met hoge latentie. Deze verbetering is momenteel in preview. Offline back-up op basis van Azure Data Box biedt twee duidelijke voordelen ten opzichte van [offline back-up op basis van de Azure Import/Export-service:](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export)
 
-* Het is niet nodig om uw eigen Azure-compatibele schijven en connectors te kopen. Azure Data Box stuurt de schijven die zijn gekoppeld aan de geselecteerde [Data Box SKU](https://azure.microsoft.com/services/databox/data/).
-* Azure Backup (MARS-agent) kunnen back-upgegevens rechtstreeks naar de ondersteunde Sku's van Azure Data Box schrijven. Op deze manier hoeft u geen tijdelijke locatie in te richten voor de eerste back-upgegevens. U hebt ook geen hulpprogram ma's nodig om die gegevens op de schijven te Format teren en te kopiëren.
+* Het is niet nodig om uw eigen Azure-compatibele schijven en connectoren aan te schaffen. Azure Data Box verzendt de schijven die zijn gekoppeld aan de geselecteerde [SKU voor gegevens .](https://azure.microsoft.com/services/databox/data/)
+* Azure Backup (MARS Agent) kan back-upgegevens rechtstreeks schrijven naar de ondersteunde SKU's van Azure Data Box. Met deze mogelijkheid hoeft u geen tijdelijke locatie in te richten voor uw eerste back-upgegevens. U hebt ook geen hulpprogramma's nodig om die gegevens op te maken en te kopiëren naar de schijven.
 
-## <a name="azure-data-box-with-the-mars-agent"></a>Azure Data Box met de MARS-agent
+## <a name="azure-data-box-with-the-mars-agent"></a>Azure-gegevensvak met de MARS-agent
 
-In dit artikel wordt uitgelegd hoe u Azure Data Box kunt gebruiken om grote initiële back-upgegevens offline te brengen van de MARS-agent naar een Recovery Services kluis.
+In dit artikel wordt uitgelegd hoe u Azure Data Box gebruiken om grote initiële back-upgegevens offline te houden van de MARS-agent naar een vault voor herstelservices.
 
 ## <a name="supported-platforms"></a>Ondersteunde platforms
 
-Het proces voor het seeden van gegevens van de MARS-agent met behulp van Azure Data Box wordt ondersteund op de volgende Windows-Sku's.
+Het proces om gegevens van de MARS-agent te zaaien met Azure Data Box wordt ondersteund op de volgende Windows SKU's.
 
-| **Besturingssysteem**                                 | **SKU**                                                      |
+| **Besturingssysteem**                                 | **Sku**                                                      |
 | -------------------------------------- | ------------------------------------------------------------ |
-| **Werk station**                        |                                                              |
+| **Werkstation**                        |                                                              |
 | Windows 10 64-bits                     | Enterprise, Pro, Home                                       |
 | Windows 8.1 64-bits                    | Enterprise, Pro                                             |
 | Windows 8 64-bits                      | Enterprise, Pro                                             |
@@ -41,281 +41,281 @@ Het proces voor het seeden van gegevens van de MARS-agent met behulp van Azure D
 | Windows Storage Server 2012 R2 64-bits | Standard, Workgroup, Essential                              |
 | Windows Storage Server 2012 64-bits    | Standard, Workgroup                                         |
 | Windows Server 2008 R2 SP1 64-bits     | Standard, Enterprise, Datacenter, Foundation                |
-| Windows Server 2008 SP2 64 bits        | Standard, Enterprise, Datacenter                            |
+| Windows Server 2008 SP2 64-bits        | Standard, Enterprise, Datacenter                            |
 
-## <a name="backup-data-size-and-supported-data-box-skus"></a>Grootte van back-upgegevens en ondersteunde Data Box Sku's
+## <a name="backup-data-size-and-supported-data-box-skus"></a>Back-upvan gegevens grootte en ondersteunde Data Box SKU's
 
-| Grootte van back-upgegevens (na compressie door MARS) * per server | Ondersteund Azure Data Box SKU                                      |
+| Back-upgegevensgrootte (postcompressie door MARS)* per server | Ondersteunde Azure-gegevensvak SKU                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| < = 7,2 TB                                                    | [Azure Data Box schijf](https://docs.microsoft.com/azure/databox/data-box-disk-overview) |
-| > 7.2 TB en < = 80 TB * *                                      | [Azure Data Box (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
+| <=7,2 TB                                                    | [Azure Data Box-schijf](https://docs.microsoft.com/azure/databox/data-box-disk-overview) |
+| >7,2 TB en <=80 TB**                                      | [Azure-gegevensvak (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
 
-\* Typische compressie tarieven variëren tussen 10% en 20%. <br>
-\* * Als u van plan bent meer dan 80 TB aan initiële back-upgegevens voor één MARS-server te hebben, neemt u contact op met [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
+*Typische compressiesnelheden variëren tussen 10% en 20%. <br>
+**Als u verwacht meer dan 80 TB aan initiële [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)back-upgegevens voor één MARS-server te hebben, neemt u contact op met .
 
 >[!IMPORTANT]
->De eerste back-upgegevens van één server moeten zich in één Azure Data Box exemplaar of Azure Data Box schijf bevinden en kunnen niet worden gedeeld tussen meerdere apparaten van dezelfde of verschillende Sku's. Een Azure Data Box apparaat kan echter eerste back-ups van meerdere servers bevatten.
+>Initiële back-upgegevens van één server moeten zich bevinden in één Azure Data Box-exemplaar of Azure Data Box-schijf en kunnen niet worden gedeeld tussen meerdere apparaten van dezelfde of verschillende SKU's. Maar een Azure Data Box-apparaat kan de eerste back-ups van meerdere servers bevatten.
 
 ## <a name="prerequisites"></a>Vereisten
 
-### <a name="azure-subscription-and-required-permissions"></a>Azure-abonnement en de vereiste machtigingen
+### <a name="azure-subscription-and-required-permissions"></a>Azure-abonnement en vereiste machtigingen
 
 * Voor het proces is een Azure-abonnement vereist.
-* Het proces vereist dat de gebruiker die het offline back-upbeleid uitvoert, een eigenaar van het Azure-abonnement is.
-* De Data Box-taak en de Recovery Services kluis (waartoe de gegevens moeten worden geseedd) moeten zich in dezelfde abonnementen bevinden.
-* We raden aan dat het doel opslag account dat is gekoppeld aan de Azure Data Box-taak en de Recovery Services kluis zich in dezelfde regio bevinden. Dit is echter niet nodig.
+* Het proces vereist dat de gebruiker die is aangewezen om het offline back-upbeleid uit te voeren, eigenaar is van het Azure-abonnement.
+* De taak Gegevensbox en de kluis Herstelservices (waaraan de gegevens moeten worden gezaaid) moeten in dezelfde abonnementen zitten.
+* We raden u aan dat het doelopslagaccount dat is gekoppeld aan de azure-gegevensvaktaak en de kluis Herstelservices zich in dezelfde regio bevindt. Dit is echter niet nodig.
 
-### <a name="get-azure-powershell-370"></a>Azure PowerShell 3.7.0 ophalen
+### <a name="get-azure-powershell-370"></a>Azure PowerShell 3.7.0
 
-*Dit is de belangrijkste vereiste voor het proces*. Voordat u Azure PowerShell installeert, moet u voor versie 3.7.0 de volgende controles uitvoeren.
+*Dit is de belangrijkste voorwaarde voor het proces*. Voordat u Azure PowerShell installeert, voert versie 3.7.0 de volgende controles uit.
 
-#### <a name="step-1-check-the-powershell-version"></a>Stap 1: de Power shell-versie controleren
+#### <a name="step-1-check-the-powershell-version"></a>Stap 1: Controleer de PowerShell-versie
 
-1. Open Windows Power shell en voer de volgende opdracht uit:
+1. Open Windows PowerShell en voer de volgende opdracht uit:
 
     ```powershell
     Get-Module -ListAvailable AzureRM*
     ```
 
-1.  Als in de uitvoer een versie wordt weer gegeven die hoger is dan 3.7.0, voert u ' stap 2 ' uit. Ga anders verder met stap 3.
+1.  Als de uitvoer een versie hoger dan 3.7.0 weergeeft, doet u 'Stap 2'. Ga anders naar Stap 3.
 
-#### <a name="step-2-uninstall-the-powershell-version"></a>Stap 2: de Power shell-versie verwijderen
+#### <a name="step-2-uninstall-the-powershell-version"></a>Stap 2: De PowerShell-versie verwijderen
 
-Verwijder de huidige versie van Power shell.
+Verwijder de huidige versie van PowerShell.
 
-1. Verwijder de afhankelijke modules door de volgende opdracht uit te voeren in Power shell:
+1. Verwijder de afhankelijke modules door de volgende opdracht in PowerShell uit te voeren:
 
     ```powershell
     foreach ($module in (Get-Module -ListAvailable AzureRM*).Name |Get-Unique)  { write-host "Removing Module $module" Uninstall-module $module }
     ```
 
-2. Voer de volgende opdracht uit om ervoor te zorgen dat alle afhankelijke modules goed worden verwijderd:
+2. Voer de volgende opdracht uit om ervoor te zorgen dat alle afhankelijke modules succesvol worden verwijderd:
 
     ```powershell
     Get-Module -ListAvailable AzureRM*
     ```
 
-#### <a name="step-3-install-powershell-version-370"></a>Stap 3: Power shell-versie 3.7.0 installeren
+#### <a name="step-3-install-powershell-version-370"></a>Stap 3: PowerShell-versie 3.7.0 installeren
 
-Nadat u hebt gecontroleerd of er geen AzureRM-modules aanwezig zijn, installeert u versie 3.7.0 met behulp van een van de volgende methoden:
+Nadat u hebt geverifieerd dat er geen AzureRM-modules aanwezig zijn, installeert u versie 3.7.0 met een van de volgende methoden:
 
-* Gebruik [deze koppeling](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017)vanuit github.
+* Gebruik [deze link](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017)via GitHub.
 
-U kunt ook het volgende doen:
+Of u kunt:
 
-* Voer de volgende opdracht uit in het Power shell-venster:
+* Voer de volgende opdracht uit in het PowerShell-venster:
 
     ```powershell
     Install-Module -Name AzureRM -RequiredVersion 3.7.0
     ```
 
-Azure PowerShell kan ook zijn geïnstalleerd met behulp van een MSI-bestand. Als u deze wilt verwijderen, verwijdert u deze met behulp van de optie **Program Ma's verwijderen** in het configuratie scherm.
+Azure PowerShell had ook kunnen worden geïnstalleerd met behulp van een msi-bestand. Verwijder het als u het wilt verwijderen door de optie **Programma's verwijderen** in het Configuratiescherm te gebruiken.
 
-### <a name="order-and-receive-the-data-box-device"></a>Bestel en ontvang het Data Box apparaat
+### <a name="order-and-receive-the-data-box-device"></a>Bestel en ontvang het Data Box-apparaat
 
-Het offline back-upproces met MARS en Azure Data Box vereist dat de Data Box apparaten de status bezorgd hebben voordat u offline back-ups met behulp van de MARS-agent gaat activeren. Als u de meest geschikte SKU voor uw vereiste wilt best Ellen, raadpleegt u [Data Size van back-up en ondersteunde data Box sku's](#backup-data-size-and-supported-data-box-skus). Volg de stappen in de [zelf studie: bestel een Azure data Box schijf](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered) om de data Box-apparaten te best Ellen en te ontvangen.
+Het offline back-upproces met MARS en Azure Data Box vereist dat de Data Box-apparaten in de status Geleverd zijn voordat u offline back-up activeert met behulp van de MARS-agent. Zie [Back-upgegevensgrootte en ondersteunde Gegevensvak SKU's](#backup-data-size-and-supported-data-box-skus)voor het bestellen van de meest geschikte SKU voor uw behoefte. Volg de stappen in [Zelfstudie: bestel een Azure Data Box-schijf](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered) om uw Data Box-apparaten te bestellen en te ontvangen.
 
 > [!IMPORTANT]
-> Selecteer *BlobStorage* voor het **soort account**niet. De MARS-agent vereist een account dat pagina-blobs ondersteunt. dit wordt niet ondersteund wanneer *BlobStorage* is geselecteerd. Selecteer **opslag v2 (algemeen gebruik v2)** als het **soort account** wanneer u het doel opslag account voor uw Azure data Box-taak maakt.
+> Selecteer *BlobStorage* niet voor de **accountsoort**. De MARS-agent vereist een account dat paginablobs ondersteunt, dat niet wordt ondersteund wanneer *BlobStorage* is geselecteerd. Selecteer **Storage V2 (v2 voor algemeen gebruik)** als **accountsoort** wanneer u het doelopslagaccount voor uw Azure Data Box-taak maakt.
 
-![Account type kiezen in details van exemplaar](./media/offline-backup-azure-data-box/instance-details.png)
+![Accountsoort kiezen in instantiedetails](./media/offline-backup-azure-data-box/instance-details.png)
 
 ## <a name="install-and-set-up-the-mars-agent"></a>De MARS-agent installeren en instellen
 
 1. Zorg ervoor dat u eerdere installaties van de MARS-agent verwijdert.
-1. Down load de nieuwste MARS-agent van [deze website](https://aka.ms/azurebackup_agent).
-1. Voer *MARSAgentInstaller. exe*uit en voer *alleen* de stappen uit om [de agent te installeren en registreren](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) bij de Recovery Services kluis waar u uw back-ups wilt opslaan.
+1. Download de nieuwste MARS Agent van [deze website.](https://aka.ms/azurebackup_agent)
+1. Voer *MARSAgentInstaller.exe uit*en voer *alleen* de stappen uit om de agent te installeren en te [registreren bij](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) de vault van Recovery Services, waar u uw back-ups wilt opslaan.
 
    > [!NOTE]
-   > De Recovery Services kluis moet zich in hetzelfde abonnement benemen als de Azure Data Box taak.
+   > De kluis Recovery Services moet zich in hetzelfde abonnement bevinden als de taak Azure Data Box.
 
-   Nadat de agent is geregistreerd bij de Recovery Services kluis, volgt u de stappen in de volgende secties.
+   Nadat de agent is geregistreerd bij de kluis Van Herstelservices, volgt u de stappen in de volgende secties.
 
 ## <a name="set-up-azure-data-box-devices"></a>Azure Data Box-apparaten instellen
 
-Afhankelijk van de Azure Data Box SKU die u hebt besteld, voert u de stappen uit die in de volgende secties worden besproken. De stappen laten zien hoe u de Data Box-apparaten instelt en voorbereidt voor de MARS-agent om de eerste back-upgegevens te identificeren en over te dragen.
+Afhankelijk van de Azure Data Box SKU die u hebt besteld, voert u de stappen uit die worden behandeld in de juiste secties die volgen. De stappen laten u zien hoe u de Data Box-apparaten in- en voorbereidt dat de MARS-agent de eerste back-upgegevens identificeert en overdraagt.
 
-### <a name="set-up-azure-data-box-disks"></a>Azure Data Box schijven instellen
+### <a name="set-up-azure-data-box-disks"></a>Azure Data Box-schijven instellen
 
-Als u een of meer Azure Data Box schijven hebt besteld (Maxi maal 8 TB elk), volgt u de stappen die hier worden beschreven om [uw data Box schijf uit te pakken, te verbinden en te ontgrendelen](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up).
+Als u een of meer Azure Data Box-schijven hebt besteld (tot 8 TB per stuk), volgt u de hier genoemde stappen om [uw Data Box-schijf uit te pakken, verbinding te maken en te ontgrendelen.](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up)
 
 >[!NOTE]
->Het is mogelijk dat de server met de MARS-agent geen USB-poort heeft. In dat geval kunt u uw Azure Data Box schijf aansluiten op een andere server of client en de hoofdmap van het apparaat beschikbaar maken als een netwerk share.
+>Het is mogelijk dat de server met de MARS Agent geen USB-poort heeft. In dat geval u uw Azure Data Box-schijf verbinden met een andere server of client en de hoofdmap van het apparaat blootleggen als een netwerkshare.
 
-### <a name="set-up-azure-data-box"></a>Azure Data Box instellen
+### <a name="set-up-azure-data-box"></a>Azure-gegevensvak instellen
 
-Als u een Azure Data Box-exemplaar (tot 100 TB) hebt besteld, volgt u de onderstaande stappen [om uw data Box-exemplaar in te stellen](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up).
+Als u een Azure Data Box-exemplaar (tot 100 TB) hebt besteld, voert u de stappen hier [uit om uw instantie Gegevensvak in te stellen.](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up)
 
-#### <a name="mount-your-azure-data-box-instance-as-a-local-system"></a>Uw Azure Data Box-exemplaar koppelen als een lokaal systeem
+#### <a name="mount-your-azure-data-box-instance-as-a-local-system"></a>Uw Azure Data Box-instantie als lokaal systeem monteren
 
-De MARS-agent wordt uitgevoerd in de context van het lokale systeem, zodat hiervoor hetzelfde bevoegdheids niveau moet worden gegeven aan het koppelingspad waar het Azure Data Box-exemplaar is verbonden. 
+De MARS-agent werkt in de context van lokaal systeem, dus het vereist hetzelfde niveau van bevoegdheden die moeten worden verstrekt aan het bevestigingspad waar de instantie Azure Data Box is verbonden. 
 
-Om ervoor te zorgen dat u uw Data Box-apparaat als lokaal systeem kunt koppelen met behulp van het NFS-protocol:
+Ga als reactie op het gebruik van het NFS-protocol om ervoor te zorgen dat u uw Data Box-apparaat als lokaal systeem monteren:
 
-1. Schakel de client in voor de NFS-functie op de Windows-Server waarop de MARS-agent is geïnstalleerd. Geef de alternatieve bron- *Wim op: D: \Sources\Install.Wim: 4*.
-1. Down load PSExec van <https://download.sysinternals.com/files/PSTools.zip> naar de server waarop de MARS-agent is geïnstalleerd.
-1. Open een opdracht prompt met verhoogde bevoegdheid en voer de volgende opdracht uit met de map die *PSExec. exe* bevat als de huidige map.
+1. Schakel de client in voor de NFS-functie op de Windows-server waarop de MARS-agent is geïnstalleerd. Geef de alternatieve bron *WIM:D:\Sources\Install.wim:4*op .
+1. Download PSExec <https://download.sysinternals.com/files/PSTools.zip> van naar de server met de MARS Agent geïnstalleerd.
+1. Open een opdrachtprompt met verhoogde bevoegdheid en voer de volgende opdracht uit met de map die *PSExec.exe* als de huidige map bevat.
 
     ```cmd
     psexec.exe  -s  -i  cmd.exe
     ```
 
-   Het opdracht venster dat wordt geopend als gevolg van de vorige opdracht bevindt zich in de context van het lokale systeem. Gebruik dit opdracht venster om de stappen uit te voeren om de Azure page BLOB-share te koppelen als een netwerk station op uw Windows-Server.
-1. Volg de stappen in [verbinding maken met data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-nfs#connect-to-data-box) om uw server te verbinden met de Mars-agent met de data Box apparaat via NFS. Voer de volgende opdracht uit op de opdracht prompt van het lokale systeem om de share Azure-pagina-blobs te koppelen.
+   Het opdrachtvenster dat wordt geopend als gevolg van de vorige opdracht bevindt zich in de context van lokaal systeem. Gebruik dit opdrachtvenster om de stappen uit te voeren om de Azure-paginablobshare te monteren als een netwerkstation op uw Windows-server.
+1. Volg de stappen in [Connect to Data Box om](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-nfs#connect-to-data-box) uw server via NFS met de MARS-agent te verbinden met het Data Box-apparaat. Voer de volgende opdracht uit op de opdrachtprompt Lokaal systeem om de Azure-paginablobs te delen.
 
     ```cmd
     mount -o nolock \\<DeviceIPAddress>\<StorageAccountName_PageBlob X:  
     ```
 
-   Nadat de share is gekoppeld, controleert u of u toegang hebt tot X: vanaf uw server. Als dat mogelijk is, gaat u verder met de volgende sectie van dit artikel.
+   Controleer na het monteren van het aandeel of u toegang hebt tot X: vanaf uw server. Ga zo mogelijk verder met het volgende gedeelte van dit artikel.
 
-## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>Initiële back-upgegevens overdragen naar Azure Data Box-apparaten
+## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>Eerste back-upgegevens overbrengen naar Azure Data Box-apparaten
 
-1. Open de **Microsoft Azure backup** -toepassing op uw server.
-1. Selecteer in het deel venster **acties** de optie **back-up plannen**.
+1. Open de **Microsoft Azure Backup-toepassing** op uw server.
+1. Selecteer **Back-up plannen**in het deelvenster **Handelingen** .
 
     ![Back-up plannen selecteren](./media/offline-backup-azure-data-box/schedule-backup.png)
 
 1. Volg de stappen in de **wizard Back-up plannen**.
 
-1. Voeg items toe door de knop **items toevoegen** te selecteren. Behoud de totale grootte van de items binnen de [grootte limieten die worden ondersteund door de Azure data Box SKU](#backup-data-size-and-supported-data-box-skus) die u hebt besteld en ontvangen.
+1. Voeg items toe door de knop **Items toevoegen te** selecteren. Houd de totale grootte van de items binnen de [groottelimieten die worden ondersteund door de Azure Data Box SKU](#backup-data-size-and-supported-data-box-skus) die u hebt besteld en ontvangen.
 
     ![Items toevoegen aan back-up](./media/offline-backup-azure-data-box/add-items.png)
 
-1. Selecteer het juiste back-upschema en het Bewaar beleid voor **bestanden en mappen** en de **systeem status**. De systeem status is alleen van toepassing op Windows-servers en niet voor Windows-clients.
-1. Selecteer op de pagina **eerste back-uptype selecteren (bestanden en mappen)** van de wizard de optie **overdracht met Microsoft Azure data Box schijven** en selecteer **volgende**.
+1. Selecteer het juiste back-upschema en bewaarbeleid voor **bestanden en mappen** en **systeemstatus**. De systeemstatus is alleen van toepassing op Windows-servers en niet voor Windows-clients.
+1. Selecteer op de pagina **Initiële back-uptype (Bestanden en mappen)** van de wizard de optie **Overdracht met Microsoft Azure Data Box-schijven** en selecteer **Volgende**.
 
-    ![Eerste back-uptype kiezen](./media/offline-backup-azure-data-box/initial-backup-type.png)
+    ![Kies het eerste back-uptype](./media/offline-backup-azure-data-box/initial-backup-type.png)
 
-1. Meld u aan bij Azure wanneer u hierom wordt gevraagd met de gebruikers referenties met de eigenaar van het Azure-abonnement. Nadat u dit hebt gedaan, ziet u een pagina die er ongeveer uit komt te zien.
+1. Meld u aan bij Azure wanneer u daarom wordt gevraagd met behulp van de gebruikersreferenties met eigenaartoegang in het Azure-abonnement. Nadat u erin geslaagd bent dit te doen, ziet u een pagina die lijkt op deze.
 
-    ![Resources maken en vereiste machtigingen Toep assen](./media/offline-backup-azure-data-box/creating-resources.png)
+    ![Resources maken en vereiste machtigingen toepassen](./media/offline-backup-azure-data-box/creating-resources.png)
 
-   De MARS-agent haalt vervolgens de Data Box taken op in het abonnement die de status bezorgd hebben.
+   De MARS-agent haalt vervolgens de gegevensvaktaken op in het abonnement dat zich in de status Geleverd begeeft.
 
-    ![Data Box-taken voor abonnements-ID ophalen](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
+    ![Gegevensvaktaken ophalen voor abonnements-id](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. Selecteer de juiste Data Box order waarvoor u de Data Box schijf hebt uitgepakt, verbonden en ontgrendeld. Selecteer **Next**.
+1. Selecteer de juiste databoxorder waarvoor u uw databoxschijf hebt uitgepakt, aangesloten en ontgrendeld. Selecteer **Volgende**.
 
-    ![Data Box orders selecteren](./media/offline-backup-azure-data-box/select-databox-order.png)
+    ![Gegevensvakorders selecteren](./media/offline-backup-azure-data-box/select-databox-order.png)
 
-1. Selecteer **apparaat detecteren** op de pagina **detectie van data Box apparaten** . Met deze actie wordt de MARS-agent gescand op lokaal gekoppelde Azure Data Box schijven en worden ze gedetecteerd.
+1. Selecteer **Apparaat detecteren** op de pagina **Apparaatdetectie in gegevensvak.** Met deze actie u de MARS-agent scannen op lokaal gekoppelde Azure Data Box-schijven en deze detecteren.
 
-    ![Detectie van Data Box apparaat](./media/offline-backup-azure-data-box/databox-device-detection.png)
+    ![Apparaatdetectie in gegevensvak](./media/offline-backup-azure-data-box/databox-device-detection.png)
 
-    Als u het Azure Data Box-exemplaar als een netwerk share hebt verbonden (vanwege een niet-beschik baarheid van USB-poorten of omdat u het 100-TB Data Box apparaat hebt besteld en gekoppeld), mislukt de detectie eerst. U krijgt de mogelijkheid om het netwerkpad naar het Data Box apparaat in te voeren.
+    Als u de instantie Azure Data Box hebt aangesloten als een netwerkshare (vanwege de onbeschikbaarheid van USB-poorten of omdat u het 100 TB-gegevensbox-apparaat hebt besteld en gemonteerd), mislukt de detectie in eerste instantie. U krijgt de optie om het netwerkpad naar het databox-apparaat in te voeren.
 
     ![Voer het netwerkpad in](./media/offline-backup-azure-data-box/enter-network-path.png)
 
     >[!IMPORTANT]
-    > Geef het netwerkpad naar de hoofdmap van de Azure Data Box schijf op. Deze map moet een map met de naam *PageBlob*bevatten.
+    > Geef het netwerkpad op naar de hoofdmap van de Azure Data Box-schijf. Deze map moet een map bevatten met de naam *PageBlob*.
     >
-    >![Hoofdmap van Azure Data Box schijf](./media/offline-backup-azure-data-box/root-directory.png)
+    >![Hoofdmap van Azure Data Box-schijf](./media/offline-backup-azure-data-box/root-directory.png)
     >
-    >Als het pad van de schijf bijvoorbeeld `\\mydomain\myserver\disk1\` is en *Disk1* een map bevat met de naam *PageBlob*, wordt het pad dat u op de pagina Wizard van de Mars-agent invoert, `\\mydomain\myserver\disk1\`.
+    >Als het pad van de `\\mydomain\myserver\disk1\` schijf bijvoorbeeld is en *disk1* een map bevat met de `\\mydomain\myserver\disk1\`naam *PageBlob,* is het pad dat u invoert op de wizard MARS Agent- pagina .
     >
-    >Als u [een apparaat met Azure Data Box 100-TB instelt](#set-up-azure-data-box-devices), voert u `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` in als het netwerkpad naar het apparaat.
+    >Als u [een Azure Data Box 100 TB-apparaat instelt,](#set-up-azure-data-box-devices)voert u het `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` netwerkpad naar het apparaat in.
 
-1. Selecteer **volgende**en selecteer **volt ooien** op de volgende pagina om het back-up-en bewaar beleid met de configuratie van offline back-up op te slaan met behulp van Azure data box.
+1. Selecteer **Volgende**en selecteer **Voltooien** op de volgende pagina om het back-up- en bewaarbeleid op te slaan met de configuratie van offline back-ups met Azure Data Box.
 
    Op de volgende pagina wordt bevestigd dat het beleid is opgeslagen.
 
-    ![Het beleid is opgeslagen](./media/offline-backup-azure-data-box/policy-saved.png)
+    ![Beleid wordt opgeslagen](./media/offline-backup-azure-data-box/policy-saved.png)
 
-1. Selecteer **sluiten** op de vorige pagina.
+1. Selecteer **Sluiten** op de vorige pagina.
 
-1. Selecteer **Nu back-up** maken in het deel venster **acties** van de Mars agent-console. Selecteer **een back** -up op de wizard pagina.
+1. Selecteer **Nu back-up** maken in het deelvenster **Handelingen** van de MARS-agent-console. Selecteer **Back-up maken** op de wizardpagina.
 
-    ![Wizard nu back-up maken](./media/offline-backup-azure-data-box/backup-now.png)
+    ![Wizard Back-up nu](./media/offline-backup-azure-data-box/backup-now.png)
 
-De MARS-agent begint met het maken van een back-up van de gegevens die u hebt geselecteerd voor het Azure Data Box apparaat. Dit proces kan enkele uren tot enkele dagen duren. De hoeveelheid tijd is afhankelijk van het aantal bestanden en de verbindings snelheid tussen de server en de MARS-agent en de Azure Data Box schijf.
+De MARS-agent maakt een back-up van de gegevens die u hebt geselecteerd op het Azure Data Box-apparaat. Dit proces kan enkele uren tot enkele dagen duren. De hoeveelheid tijd is afhankelijk van het aantal bestanden en de verbindingssnelheid tussen de server met de MARS-agent en de Azure Data Box-schijf.
 
-Nadat het maken van de back-up van de gegevens is voltooid, ziet u een pagina op de MARS-agent die er ongeveer als volgt uitziet.
+Nadat de back-up van de gegevens is voltooid, ziet u een pagina op de MARS-agent die lijkt op deze.
 
-![Voortgang van back-up weer gegeven](./media/offline-backup-azure-data-box/backup-progress.png)
+![Back-upvoortgang weergegeven](./media/offline-backup-azure-data-box/backup-progress.png)
 
-## <a name="post-backup-steps"></a>Stappen na de back-up
+## <a name="post-backup-steps"></a>Stappen na back-up
 
-In deze sectie worden de stappen beschreven die u moet uitvoeren nadat de back-up van de gegevens naar de Azure Data Box Disk is voltooid.
+In dit gedeelte worden de stappen uitgelegd die moeten worden genomen nadat de back-up van de gegevens naar de Azure Data Box Disk is geslaagd.
 
-* Volg de stappen in dit artikel om [de Azure data Box schijf naar Azure te verzenden](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up). Als u een apparaat met Azure Data Box 100-TB hebt gebruikt, volgt u deze stappen om [het Azure data Box-apparaat naar Azure te verzenden](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up).
+* Volg de stappen in dit artikel om [de Azure Data Box-schijf naar Azure te verzenden.](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up) Als u een Azure Data Box 100 TB-apparaat hebt gebruikt, voert u de volgende stappen uit om [het Azure Data Box-apparaat naar Azure te verzenden.](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)
 
-* [Controleer de data Box taak](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify) in de Azure Portal. Nadat de Azure Data Box taak is voltooid, verplaatst de MARS-agent automatisch de gegevens van het opslag account naar de Recovery Services kluis op het moment van de volgende geplande back-up. Vervolgens wordt de back-uptaak als *taak voltooid* gemarkeerd als een herstel punt is gemaakt.
+* [Controleer de taak Gegevensvak](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify) in de Azure-portal. Nadat de Azure Data Box-taak is voltooid, verplaatst de MARS-agent de gegevens automatisch van het opslagaccount naar de kluis Herstelservices op het moment van de volgende geplande back-up. Vervolgens wordt de back-uptaak *als taak voltooid* als een herstelpunt is gemaakt.
 
     >[!NOTE]
-    >De MARS-agent activeert back-ups op de tijden die zijn gepland tijdens het maken van het beleid. Met deze taken wordt de vlag ' wachten tot Azure Data Box taak is voltooid ' geactiveerd totdat de taak is voltooid.
+    >De MARS-agent activeert back-ups op de tijden die zijn gepland tijdens het maken van het beleid. Deze taken markeren 'Wachten tot de taak Azure Data Box is voltooid' totdat de taak is voltooid.
 
-* Nadat de MARS-agent een herstel punt heeft gemaakt dat overeenkomt met de eerste back-up, kunt u het opslag account of de specifieke inhoud verwijderen die aan de Azure Data Box-taak is gekoppeld.
+* Nadat de MARS-agent een herstelpunt heeft gemaakt dat overeenkomt met de eerste back-up, u het opslagaccount of de specifieke inhoud verwijderen die is gekoppeld aan de taak Azure Data Box.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-De Microsoft Azure Backup-Agent (MAB) maakt een Azure Active Directory Azure AD-toepassing voor u in uw Tenant. Voor deze toepassing is een certificaat vereist voor verificatie dat wordt gemaakt en geüpload wanneer u een offline seeding-beleid configureert. We gebruiken Azure PowerShell om het certificaat te maken en te uploaden naar de Azure AD-toepassing.
+De MaB-agent (Microsoft Azure Backup) maakt een Azure Active Directory-toepassing (Azure AD) voor u in uw tenant. Deze toepassing vereist een certificaat voor verificatie dat is gemaakt en geüpload wanneer u een offline zaaibeleid configureert. We gebruiken Azure PowerShell om het certificaat te maken en te uploaden naar de Azure AD-toepassing.
 
 ### <a name="problem"></a>Probleem
 
-Wanneer u offline back-ups configureert, is het mogelijk dat u een probleem ondervindt vanwege een fout in de Azure PowerShell-cmdlet. U kunt mogelijk niet meerdere certificaten toevoegen aan dezelfde Azure AD-toepassing die door de MAB-agent is gemaakt. Dit probleem heeft gevolgen voor u als u een offline seeding-beleid voor dezelfde of een andere server hebt geconfigureerd.
+Wanneer u offline back-ups configureert, u een probleem ondervinden vanwege een bug in de Azure PowerShell-cmdlet. Het is mogelijk dat u niet meerdere certificaten toevoegen aan dezelfde Azure AD-toepassing die is gemaakt door de MAB-agent. Dit probleem heeft invloed op u als u een offline zaaibeleid hebt geconfigureerd voor dezelfde of een andere server.
 
-### <a name="verify-if-the-problem-is-caused-by-this-specific-root-cause"></a>Controleren of het probleem wordt veroorzaakt door deze specifieke hoofd oorzaak
+### <a name="verify-if-the-problem-is-caused-by-this-specific-root-cause"></a>Controleren of het probleem wordt veroorzaakt door deze specifieke hoofdoorzaak
 
-Voer een van de volgende stappen uit om te zien of het probleem hetzelfde is als de eerder beschreven.
+Als u wilt zien of uw probleem hetzelfde is als het eerder beschreven probleem, voert u een van de volgende stappen uit.
 
 #### <a name="step-1"></a>Stap 1
 
-Controleer of het volgende fout bericht wordt weer gegeven in de MAB-console wanneer u offline back-up hebt geconfigureerd.
+Controleer of het volgende foutbericht wordt weergegeven in de MAB-console wanneer u een offline back-up hebt geconfigureerd.
 
 ![Kan geen offline back-upbeleid maken voor het huidige Azure-account](./media/offline-backup-azure-data-box/unable-to-create-policy.png)
 
 #### <a name="step-2"></a>Stap 2
 
-1. Open de map **temp** in het installatiepad. Het standaardpad voor de tijdelijke map is *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*. Zoek naar het *CBUICurr* -bestand en open het bestand.
+1. Open de map **Temp** in het installatiepad. Het standaardpad voor tijdelijke mappen is *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*. Zoek naar het *CBUICurr-bestand* en open het bestand.
 
-1. Ga in het *CBUICurr* -bestand naar de laatste regel en controleer of het probleem hetzelfde is als in dit fout bericht: `Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed`.
+1. Schuif in het *CBUICurr-bestand* naar de laatste regel en controleer of het probleem `Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed`hetzelfde is als het probleem in dit foutbericht: .
 
 ### <a name="workaround"></a>Tijdelijke oplossing
 
-Als tijdelijke oplossing om dit probleem op te lossen, voert u de volgende stappen uit en probeert u de beleids configuratie opnieuw uit te voeren.
+Als tijdelijke oplossing om dit probleem op te lossen, voert u de volgende stappen uit en probeert u de beleidsconfiguratie opnieuw.
 
 #### <a name="step-1"></a>Stap 1
 
-Meld u aan bij Power shell die wordt weer gegeven in de gebruikers interface van MAB met behulp van een ander account met beheerders toegang voor het abonnement waarop de import-of export taak wordt gemaakt.
+Meld u aan bij PowerShell die wordt weergegeven op de MAB-gebruikersinterface met behulp van een ander account met beheerderstoegang bij het abonnement waarop de import- of exporttaak wordt gemaakt.
 
 #### <a name="step-2"></a>Stap 2
 
-Als voor geen enkele andere server offline seeding is geconfigureerd en er geen andere server afhankelijk is van de `AzureOfflineBackup_<Azure User Id>` toepassing, moet u deze toepassing verwijderen. Selecteer **Azure Portal** > **Azure Active Directory** > **app-registraties**.
+Als er geen andere server offline seeding heeft geconfigureerd `AzureOfflineBackup_<Azure User Id>` en geen enkele andere server afhankelijk is van de toepassing, verwijdert u deze toepassing. Selecteer **Azure Portal** > **Azure Active Directory** > **App-registraties**.
 
 >[!NOTE]
-> Controleer of er voor de `AzureOfflineBackup_<Azure User Id>` toepassing geen andere offline-seeding is geconfigureerd, ook als geen andere server afhankelijk is van deze toepassing. Ga naar **instellingen** > **sleutels** onder de sectie **open bare sleutels** . Er mogen geen andere open bare sleutels worden toegevoegd. Zie de volgende scherm afbeelding voor naslag informatie.
+> Controleer of de `AzureOfflineBackup_<Azure User Id>` toepassing geen andere offline zaaifunctie heeft geconfigureerd en ook of er geen andere server afhankelijk is van deze toepassing. Ga naar > **Instellingentoetsen** onder de sectie **Openbare sleutels.** **Settings** Het zou geen andere openbare sleutels moeten hebben toegevoegd. Zie de volgende screenshot voor referentie.
 >
->![Open bare sleutels](./media/offline-backup-azure-data-box/public-keys.png)
+>![Openbare sleutels](./media/offline-backup-azure-data-box/public-keys.png)
 
 #### <a name="step-3"></a>Stap 3
 
-Voer de volgende acties uit vanaf de-server die u wilt configureren voor offline back-ups.
+Voer vanaf de server die u probeert te configureren voor offline back-up, de volgende acties uit.
 
-1. Ga naar het tabblad **computer certificaat toepassing beheren** > **persoonlijk** en zoek naar het certificaat met de naam `CB_AzureADCertforOfflineSeeding_<ResourceId>`.
+1. Ga naar het tabblad **Persoonlijke aanvraag voor computercertificaten** > **Personal** beheren `CB_AzureADCertforOfflineSeeding_<ResourceId>`en zoek naar het certificaat met de naam .
 
-2. Selecteer het certificaat, klik met de rechter muisknop op **alle taken**en selecteer **exporteren** zonder persoonlijke sleutel in de. CER-indeling.
+2. Selecteer het certificaat, klik met de rechtermuisknop op **Alle taken**en selecteer **Exporteren** zonder privésleutel in de .cer-indeling.
 
-3. Ga naar de Azure offline back-uptoepassing die u in stap 2 hebt genoemd. Selecteer **instellingen** > **sleutels** > **open bare sleutel uploaden**. Upload het certificaat dat u in de vorige stap hebt geëxporteerd.
+3. Ga naar de azure offline back-uptoepassing die in stap 2 wordt genoemd. Selecteer > **Instellingentoetsen** > **Openbare sleutel uploaden**. **Settings** Upload het certificaat dat u in de vorige stap hebt geëxporteerd.
 
-    ![Open bare sleutel uploaden](./media/offline-backup-azure-data-box/upload-public-key.png)
+    ![Openbare sleutel uploaden](./media/offline-backup-azure-data-box/upload-public-key.png)
 
-4. Open het REGI ster in de-server door in het venster uitvoeren **regedit** in te voeren.
+4. Open het register in de server door **regedit** in het run-venster in te voeren.
 
-5. Ga naar de register *computer \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider.* Klik met de rechter muisknop op **CloudBackupProvider**en voeg een nieuwe teken reeks waarde toe met de naam `AzureADAppCertThumbprint_<Azure User Id>`.
+5. Ga naar het register *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider.* Klik met de rechtermuisknop op **CloudBackupProvider**en `AzureADAppCertThumbprint_<Azure User Id>`voeg een nieuwe tekenreekswaarde toe met de naam .
 
     >[!NOTE]
-    > Voer een van de volgende acties uit om de gebruikers-ID van Azure op te halen:
+    > Voer een van de volgende acties uit om de Azure-gebruikers-id op te halen:
     >
-    >* Voer in de met Azure verbonden Power shell de opdracht `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` uit.
-    > * Ga naar het registerpad *computer \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\DbgSettings\OnlineBackup* met de naam *CurrentUserId*.
+    >* Voer de `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` opdracht uit vanuit de PowerShell met Azure verbonden.
+    > * Ga naar het registerpad *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup* met de naam *CurrentUserId*.
 
-6. Klik met de rechter muisknop op de teken reeks die u in de vorige stap hebt toegevoegd en selecteer **wijzigen**. Geef in de waarde de vinger afdruk op van het certificaat dat u in stap 2 hebt geëxporteerd. Selecteer **OK**.
+6. Klik met de rechtermuisknop op de tekenreeks die in de vorige stap is toegevoegd en selecteer **Wijzigen**. Geef in de waarde de duimafdruk op van het certificaat dat u in stap 2 hebt geëxporteerd. Selecteer **OK**.
 
-7. Als u de waarde van de vinger afdruk wilt ophalen, dubbelklikt u op het certificaat. Selecteer het tabblad **Details** en schuif omlaag totdat u het veld vinger afdruk ziet. Selecteer **vinger afdruk**en kopieer de waarde.
+7. Dubbelklik op het certificaat om de waarde van de duimafdruk te krijgen. Selecteer het tabblad **Details** en schuif omlaag totdat u het veld duimafdruk ziet. Selecteer **Duimafdruk**en kopieer de waarde.
 
-    ![Vingerafdruk veld van certificaat](./media/offline-backup-azure-data-box/thumbprint-field.png)
+    ![Duimafdrukveld van certificaat](./media/offline-backup-azure-data-box/thumbprint-field.png)
 
-## <a name="questions"></a>Beantwoorden
+## <a name="questions"></a>Vragen
 
-Neem contact op met [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)voor alle vragen of uitleg over problemen die u ondervindt.
+Voor vragen of verduidelijkingen over eventuele [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)problemen die u geconfronteerd, contact op .

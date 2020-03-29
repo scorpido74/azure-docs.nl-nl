@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB-bron tokens gebruiken met de Gremlin-SDK
-description: Meer informatie over het maken van resource tokens en het gebruik ervan om toegang te krijgen tot de Graph-data base.
+title: Azure Cosmos DB-brontokens gebruiken met de Gremlin SDK
+description: Meer informatie over het maken van resourcetokens en deze gebruiken om toegang te krijgen tot de Graph-database.
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
@@ -8,29 +8,29 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 42f3c7f3351bddab429489dccf28587549d76e18
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78897848"
 ---
-# <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Azure Cosmos DB-bron tokens gebruiken met de Gremlin-SDK
+# <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Azure Cosmos DB-brontokens gebruiken met de Gremlin SDK
 
-In dit artikel wordt uitgelegd hoe u [Azure Cosmos DB-bron tokens](secure-access-to-data.md) gebruikt om toegang te krijgen tot de Graph-data base via de GREMLIN-SDK.
+In dit artikel wordt uitgelegd hoe [u Azure Cosmos DB-brontokens](secure-access-to-data.md) gebruiken om toegang te krijgen tot de Graph-database via de Gremlin SDK.
 
-## <a name="create-a-resource-token"></a>Een bron token maken
+## <a name="create-a-resource-token"></a>Een resourcetoken maken
 
-De Apache TinkerPop Gremlin SDK heeft geen API voor het maken van bron tokens. De term *resource token* is een Azure Cosmos DB concept. Als u resource tokens wilt maken, moet u de [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)downloaden. Als uw toepassing resource tokens moet maken en gebruiken om toegang te krijgen tot de Graph-data base, zijn er twee afzonderlijke Sdk's vereist.
+De Apache TinkerPop Gremlin SDK heeft geen API om resourcetokens te maken. De term *resource token* is een Azure Cosmos DB concept. Download de [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)om brontokens te maken. Als uw toepassing brontokens moet maken en deze moet gebruiken om toegang te krijgen tot de Graph-database, zijn twee afzonderlijke SDK's nodig.
 
-De hiërarchie object model boven bron tokens wordt geïllustreerd in het volgende overzicht:
+De hiërarchie van objectmodellen boven resourcetokens wordt geïllustreerd in het volgende overzicht:
 
-- **Azure Cosmos DB account** : de entiteit op het hoogste niveau waaraan een DNS is gekoppeld (bijvoorbeeld `contoso.gremlin.cosmos.azure.com`).
-  - **Azure Cosmos DB-Data Base**
+- **Azure Cosmos DB-account** - De entiteit op het hoogste niveau `contoso.gremlin.cosmos.azure.com`met een DNS die eraan is gekoppeld (bijvoorbeeld ).
+  - **Azure Cosmos DB-database**
     - **Gebruiker**
-      - **Hebt**
-        - **Token** : een eigenschap van het machtigings object waarmee wordt aangegeven welke acties worden toegestaan of geweigerd.
+      - **Machtiging**
+        - **Token** - Een eigenschap van het object Machtiging dat aangeeft welke acties zijn toegestaan of geweigerd.
 
-Een bron token gebruikt de volgende indeling: `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`. Deze teken reeks is ondoorzichtig voor de clients en moet worden gebruikt als, zonder aanpassing of interpretatie.
+Een resourcetoken gebruikt de `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`volgende indeling: . Deze tekenreeks is ondoorzichtig voor de clients en moet worden gebruikt zoals het is, zonder wijziging of interpretatie.
 
 ```csharp
 // Notice that document client is created against .NET SDK endpoint, rather than Gremlin.
@@ -54,8 +54,8 @@ DocumentClient client = new DocumentClient(
 }
 ```
 
-## <a name="use-a-resource-token"></a>Een resource token gebruiken
-U kunt bron tokens rechtstreeks als een ' wacht woord '-eigenschap gebruiken wanneer u de klasse GremlinServer maakt.
+## <a name="use-a-resource-token"></a>Een resourcetoken gebruiken
+U resourcetokens rechtstreeks gebruiken als eigenschap 'wachtwoord' wanneer u de klasse GremlinServer maakt.
 
 ```csharp
 // The Gremlin application needs to be given a resource token. It can't discover the token on its own.
@@ -78,7 +78,7 @@ GremlinServer server = new GremlinServer(
   }
 ```
 
-Dezelfde benadering werkt in alle TinkerPop Gremlin Sdk's.
+Dezelfde aanpak werkt in alle TinkerPop Gremlin SDKs.
 
 ```java
 Cluster.Builder builder = Cluster.build();
@@ -95,12 +95,12 @@ builder.authProperties(authenticationProperties);
 
 ## <a name="limit"></a>Limiet
 
-Met één Gremlin-account kunt u een onbeperkt aantal tokens uitgeven. U kunt echter Maxi maal 100 tokens gelijktijdig gebruiken binnen één uur. Als een toepassing de token limiet per uur overschrijdt, wordt een verificatie aanvraag geweigerd en wordt het volgende fout bericht weer gegeven: overschrijding van de toegestane limiet voor de resource token van 100 die gelijktijdig kan worden gebruikt. Het is niet mogelijk actieve verbindingen die gebruikmaken van specifieke tokens te sluiten om sleuven voor nieuwe tokens vrij te maken. De Azure Cosmos DB Gremlin data base-engine houdt tijdens het uur direct vóór de verificatie aanvraag unieke tokens bij.
+Met één Gremlin-account u een onbeperkt aantal tokens uitgeven. U echter slechts tot 100 tokens tegelijk gebruiken binnen 1 uur. Als een toepassing de tokenlimiet per uur overschrijdt, wordt een verificatieverzoek geweigerd en ontvangt u het volgende foutbericht: 'Overschreden toegestane resourcetokenlimiet van 100 die gelijktijdig kan worden gebruikt.' Het werkt niet om actieve verbindingen te sluiten die specifieke tokens gebruiken om slots vrij te maken voor nieuwe tokens. De Azure Cosmos DB Gremlin-databaseengine houdt unieke tokens bij gedurende het uur voorafgaand aan de verificatieaanvraag.
 
 ## <a name="permission"></a>Machtiging
 
-Een veelvoorkomende fout die toepassingen tegen komen tijdens het gebruik van resource tokens is ' onvoldoende machtigingen in de autorisatie-header voor de bijbehorende aanvraag. Probeer het opnieuw met een andere autorisatie-header. Deze fout wordt geretourneerd wanneer een Gremlin-passage een rand of een hoek punt probeert te schrijven, maar het bron token alleen *Lees* machtigingen verleent. Inspecteer uw passage om te zien of het een van de volgende stappen bevat: *. addV ()* , *. addE ()* , *. drop ()* of *. eigenschap ()* .
+Een veelvoorkomende fout die toepassingen tegenkomen tijdens het gebruik van resourcetokens is: "Onvoldoende machtigingen die zijn opgegeven in de autorisatiekopvoor de bijbehorende aanvraag. Probeer het opnieuw met een andere autorisatiekoptekst." Deze fout wordt geretourneerd wanneer een Gremlin traversal probeert een rand of een hoekpunt te schrijven, maar het resourcetoken geeft alleen *Leesmachtigingen* toe. Controleer uw traversal om te zien of deze een van de volgende stappen bevat: *.addV()*, *.addE()*, *.drop()* of *.property()*.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Toegangs beheer op basis van rollen](role-based-access-control.md) in azure Cosmos db
-* [Meer informatie over het beveiligen van toegang tot gegevens](secure-access-to-data.md) in azure Cosmos db
+* [Op rollen gebaseerdtoegangsbeheer](role-based-access-control.md) in Azure Cosmos DB
+* [Meer informatie over het beveiligen van toegang tot gegevens](secure-access-to-data.md) in Azure Cosmos DB

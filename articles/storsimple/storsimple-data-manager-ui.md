@@ -1,26 +1,26 @@
 ---
-title: Microsoft Azure StorSimple Data Manager gebruikers interface
-description: Hierin wordt beschreven hoe u StorSimple Data Manager service-UI gebruikt
+title: Microsoft Azure StorSimple Data Manager-gebruikersinterface
+description: Beschrijft hoe u de gebruikersinterface van de StorSimple Data Manager-service gebruikt
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78933749"
 ---
-# <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>De StorSimple Data Manager-service beheren in Azure Portal
+# <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>De StorSimple Data Manager-service beheren in Azure-portal
 
-In dit artikel wordt uitgelegd hoe u de StorSimple Data Manager-gebruikers interface kunt gebruiken om de gegevens op de StorSimple 8000 Series-apparaten te transformeren. De getransformeerde gegevens kunnen vervolgens worden gebruikt door andere Azure-Services, zoals Azure Media Services, Azure HDInsight, Azure Machine Learning en Azure Cognitive Search.
+In dit artikel wordt uitgelegd hoe u de StorSimple Data Manager-gebruikersinterface gebruiken om de gegevens die zich op de Apparaten uit de StorSimple 8000-serie bevinden, te transformeren. De getransformeerde gegevens kunnen vervolgens worden verbruikt door andere Azure-services, zoals Azure Media Services, Azure HDInsight, Azure Machine Learning en Azure Cognitive Search.
 
 
-## <a name="use-storsimple-data-transformation"></a>StorSimple-gegevens transformatie gebruiken
+## <a name="use-storsimple-data-transformation"></a>StorSimple-gegevenstransformatie gebruiken
 
-De StorSimple Data Manager is de resource waarbinnen gegevens transformatie wordt geïnstantieerd. Met de service voor gegevens transformatie kunt u gegevens van de StorSimple-indeling omzetten in een systeem eigen indeling in blobs of Azure Files. Als u de StorSimple systeem eigen indelings gegevens wilt transformeren, moet u de details van uw StorSimple 8000-serie apparaat opgeven en de gegevens van belang die u wilt transformeren.
+De StorSimple Data Manager is de bron waarbinnen gegevenstransformatie wordt geinstantieerd. Met de service Gegevenstransformatie u gegevens transformeren van de Indeling StorSimple naar native indeling in blobs of Azure-bestanden. Als u de gegevens van de StorSimple-native indeling wilt transformeren, moet u de details opgeven over uw StorSimple 8000-serieapparaat en de gegevens die u wilt transformeren.
 
 ### <a name="create-a-storsimple-data-manager-service"></a>Een StorSimple Data Manager-service maken
 
@@ -28,135 +28,135 @@ Voer de volgende stappen uit om een StorSimple Data Manager-service te maken.
 
 1. Gebruik de referenties van uw Microsoft-account om u aan te melden bij [Azure Portal](https://portal.azure.com/).
 
-2. Klik op **+ een resource maken** en zoek naar StorSimple Data Manager.
+2. Klik **op + Maak een bron** en zoek naar StorSimple Data Manager.
 
     ![Een StorSimple Data Manager-service maken 1](./media/storsimple-data-manager-ui/create-service-1.png)
 
-3. Klik op StorSimple Data Manager en klik vervolgens op **maken**.
+3. Klik op StorSimple Data Manager en klik vervolgens op **Maken.**
     
     ![Een StorSimple Data Manager-service maken 2](./media/storsimple-data-manager-ui/create-service-3.png)
 
-3. Voor de nieuwe service, geeft u het volgende op:
+3. Geef voor de nieuwe service het volgende op:
 
-   1. Geef een unieke **service naam** op voor uw StorSimple Data Manager. Dit is een beschrijvende naam die kan worden gebruikt om de service te identificeren. De naam kan tussen 3 en 24 tekens bevatten (letters, cijfers en afbreekstreepjes). De naam moet beginnen en eindigen met een letter of cijfer.
+   1. Geef een unieke **servicenaam** voor uw StorSimple Data Manager. Dit is een beschrijvende naam die kan worden gebruikt om de service te identificeren. De naam kan tussen 3 en 24 tekens bevatten (letters, cijfers en afbreekstreepjes). De naam moet beginnen en eindigen met een letter of cijfer.
 
-   2. Kies een **abonnement** in de vervolg keuzelijst. Het abonnement is gekoppeld aan uw factureringsrekening. Dit veld wordt automatisch ingevuld (en kan niet worden geselecteerd) als u slechts één abonnement hebt.
+   2. Kies een **abonnement** in de vervolgkeuzelijst. Het abonnement is gekoppeld aan uw factureringsrekening. Dit veld wordt automatisch ingevuld (en niet selecteerbaar) als u slechts één abonnement hebt.
 
-   3. Selecteer een bestaande resource groep of maak een nieuwe groep. Zie [Azure-resourcegroepen](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/) voor meer informatie.
+   3. Selecteer een bestaande resourcegroep of maak een nieuwe groep. Zie [Azure-resourcegroepen](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/) voor meer informatie.
 
-   4. Geef de **locatie** voor uw service op die uw opslag accounts en uw StorSimple Data Manager-service inneemt. Uw StorSimple-Apparaatbeheer service, Data Manager-service en het bijbehorende opslag account moeten allemaal in de ondersteunde regio's staan.
+   4. Geef de **locatie** voor uw service op waarin uw opslagaccounts en uw StorSimple Data Manager-service zijn opgenomen. Uw StorSimple Device Manager-service, de Data Manager-service en het bijbehorende opslagaccount moeten zich allemaal in de ondersteunde regio's bevinden.
     
-   5. Als u een koppeling naar deze service op uw dash board wilt ontvangen, selecteert **u vastmaken aan dash board**.
+   5. Als u een koppeling naar deze service op uw dashboard wilt krijgen, selecteert u **Vastmaken aan dashboard**.
     
-   6. Klik op **Create**.
+   6. Klik **op Maken**.
 
       ![Een StorSimple Data Manager-service maken 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
-Het maken van de service duurt enkele minuten. U ziet een melding nadat de service is gemaakt en de nieuwe service wordt weer gegeven.
+Het maken van de service duurt enkele minuten. U ziet een melding nadat de service is gemaakt en de nieuwe service wordt weergegeven.
 
-### <a name="create-a-data-transformation-job-definition"></a>Een definitie voor een gegevens transformatie taak maken
+### <a name="create-a-data-transformation-job-definition"></a>Een taakdefinitie voor gegevenstransformatie maken
 
-Binnen een StorSimple Data Manager-service moet u een definitie van een gegevens transformatie taak maken. Een taak definitie bevat details van de StorSimple-gegevens die u wilt verplaatsen naar een opslag account in de oorspronkelijke indeling. Als u een taak definitie hebt gemaakt, kunt u deze taak opnieuw uitvoeren met verschillende runtime-instellingen.
+Binnen een StorSimple Data Manager-service moet u een taakdefinitie voor gegevenstransformatie maken. Een taakdefinitie geeft details op van de StorSimple-gegevens die u wilt verplaatsen naar een opslagaccount in de oorspronkelijke indeling. Zodra u een taakdefinitie hebt gemaakt, u deze taak opnieuw uitvoeren met verschillende runtime-instellingen.
 
-Voer de volgende stappen uit om een taak definitie te maken.
+Voer de volgende stappen uit om een taakdefinitie te maken.
 
-1. Ga naar de service die u hebt gemaakt. Ga naar **beheer > taak definities**.
+1. Navigeer naar de service die u hebt gemaakt. Ga naar **management > functiedefinities**.
 
-2. Klik op **+ taak definitie**.
+2. Klik **op + Taakdefinitie**.
 
-    ![Klik op + taak definitie](./media/storsimple-data-manager-ui/create-job-definition-1.png)
+    ![Klik op +Taakdefinitie](./media/storsimple-data-manager-ui/create-job-definition-1.png)
 
-3. Geef een naam op voor de taak definitie. De naam kan tussen de 3 en 63 tekens lang zijn. De naam kan hoofd letters en kleine letters, cijfers en afbreek streepjes bevatten.
+3. Geef een naam op voor uw taakdefinitie. De naam kan tussen de 3 en 63 tekens liggen. De naam kan hoofdletters, cijfers en koppeltekens bevatten.
 
-4. Geef een locatie op waar de taak wordt uitgevoerd. Deze locatie kan afwijken van de locatie waar de service wordt geïmplementeerd.
+4. Geef een locatie op waar uw taak wordt uitgevoerd. Deze locatie kan afwijken van de locatie waar de service wordt geïmplementeerd.
 
-5. Klik op **bron** om de opslag plaats voor de bron gegevens op te geven.
+5. Klik op **Bron** om de brongegevensopslagplaats op te geven.
 
-    ![Bron gegevens opslag plaats configureren](./media/storsimple-data-manager-ui/create-job-definition-2.png)
+    ![Repo brongegevens configureren](./media/storsimple-data-manager-ui/create-job-definition-2.png)
 
-6. Omdat dit een nieuwe Data Manager-service is, zijn er geen opslag plaatsen voor gegevens geconfigureerd. In **gegevens bron configureren**geeft u de details op van uw StorSimple 8000 Series-apparaat en de gegevens van belang.
+6. Aangezien dit een nieuwe Data Manager-service is, zijn er geen gegevensopslagplaatsen geconfigureerd. Geef in **Gegevensbron configureren**de details op van uw StorSimple 8000-serie apparaat en de gegevens van belang.
 
-   Als u uw StorSimple Apparaatbeheer wilt toevoegen als gegevens opslagplaats, klikt u op **Nieuw toevoegen** in de vervolg keuzelijst gegevens opslagplaats en klikt u vervolgens op **Gegevens opslagplaats toevoegen**.
+   Als u uw StorSimple-apparaatbeheer als gegevensopslagplaats wilt toevoegen, klikt u op **Nieuw toevoegen** in de vervolgkeuzelijst van de gegevensopslagplaats en klikt u vervolgens op **Gegevensopslagplaats toevoegen.**
 
-    ![Nieuwe gegevens opslag plaats toevoegen](./media/storsimple-data-manager-ui/create-job-definition-3.png)
+    ![Nieuwe gegevensrepo toevoegen](./media/storsimple-data-manager-ui/create-job-definition-3.png)
   
-   1. Kies **StorSimple 8000 Series Manager** als het type gegevens opslagplaats.
+   1. Kies **StorSimple 8000-serie Manager** als gegevensopslagplaatstype.
     
-   2. Voer een beschrijvende naam in voor de opslag van de bron gegevens.
+   2. Voer een vriendelijke naam in voor uw brongegevensopslagplaats.
     
-   3. Kies in de vervolg keuzelijst een abonnement dat is gekoppeld aan uw StorSimple-Apparaatbeheer service.
+   3. Kies in de vervolgkeuzelijst een abonnement dat is gekoppeld aan uw StorSimple Device Manager-service.
     
-   4. Geef de naam op van de StorSimple-Apparaatbeheer voor de **resource**.
+   4. Geef de naam op van de StorSimple Device Manager voor de **resource.**
 
-   5. Voer de **versleutelings sleutel voor service gegevens** voor de StorSimple-Apparaatbeheer service in. 
+   5. Voer de **versleutelingssleutel servicegegevens** in voor de StorSimple Device Manager-service. 
 
-      ![Bron gegevens configureren opslag plaats 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
+      ![Brongegevens repo 1 configureren](./media/storsimple-data-manager-ui/create-job-definition-4.png)
 
-      Klik op **OK** wanneer u klaar bent. Hiermee wordt uw gegevensopslag plaats opgeslagen. Gebruik deze StorSimple Apparaatbeheer in andere taak definities zonder deze para meters opnieuw in te voeren. Het duurt enkele seconden nadat u op **OK** hebt geklikt voor de zojuist gemaakte opslag plaats voor de bron gegevens die u in de vervolg keuzelijst wilt weer geven.
+      Klik op **OK** als u klaar bent. Dit slaat uw data repository op. Gebruik deze StorSimple Device Manager opnieuw in andere taakdefinities zonder deze parameters opnieuw in te voeren. Het duurt een paar seconden nadat u op **OK** hebt geklikt voor de nieuw gemaakte brongegevensopslagplaats die wordt weergegeven in de vervolgkeuzelijst.
 
-7. Selecteer in de vervolg keuzelijst voor **Gegevens opslagplaats**de gegevensopslag plaats die u hebt gemaakt. 
+7. Selecteer in de vervolgkeuzelijst voor **gegevensopslagplaats**de gegevensopslagplaats die u hebt gemaakt. 
 
-   1. Voer de naam in van het StorSimple 8000-serie apparaat dat de gegevens van belang bevat.
+   1. Voer de naam in van het apparaat uit de StorSimple 8000-serie dat de gegevens bevat die van belang zijn.
 
-   2. Geef de naam op van het volume op het StorSimple-apparaat waarop uw gegevens van belang zijn.
+   2. Geef de naam op van het volume dat zich op het StorSimple-apparaat bevindt met uw gegevens van belang.
 
-   3. Voer in de Subsectie **filter** de hoofdmap in die de gegevens bevat die van belang zijn in de _\MyRootDirectory\Data_ -indeling. Stationsletters zoals _\c: \Data_ worden niet ondersteund. U kunt ook alle bestands filters toevoegen.
+   3. Voer in de subsectie **Filter** de hoofdmap in die uw gegevens bevat die van belang zijn in _de indeling \MyRootDirectory\Data._ Stationsletters zoals _\C:\Gegevens_ worden niet ondersteund. U hier ook bestandsfilters toevoegen.
 
-   4. De service voor gegevens transformatie werkt alleen met de laatste moment opname van de gegevens die naar Azure worden gepusht.
+   4. De gegevenstransformatieservice werkt alleen op de nieuwste momentopname van de gegevens die naar Azure worden gepusht.
 
    5. Klik op **OK**.
 
-      ![Bron gegevens configureren opslag plaats 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
+      ![Brongegevens repo 2 configureren](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
-8. Vervolgens moet de doel gegevens opslagplaats worden geconfigureerd. Kies opslag accounts om bestanden in blobs in dat account in te voegen. Selecteer in de vervolg keuzelijst **nieuwe toevoegen** en **Configureer vervolgens instellingen**.
+8. Vervolgens moet de doelgegevensopslagplaats worden geconfigureerd. Kies opslagaccounts om bestanden in blobs in dat account te plaatsen. Selecteer in de vervolgkeuzelijst **Nieuw toevoegen** en **configureer**vervolgens instellingen .
 
-9. Selecteer het type doel opslagplaats dat u wilt toevoegen en de andere para meters die zijn gekoppeld aan de opslag plaats.
+9. Selecteer het type doelopslagplaats dat u wilt toevoegen en de andere parameters die aan de opslagplaats zijn gekoppeld.
 
-    Als u een type doel voor het opslag account selecteert, kunt u een beschrijvende naam, een abonnement (Kies hetzelfde als die van de service of andere) en een opslag account opgeven.
-        ![voor het configureren van doel gegevens opslag plaats 1](./media/storsimple-data-manager-ui/create-job-definition-10.png)
+    Als u een opslagaccounttypedoel selecteert, u een vriendelijke naam, abonnement (kies hetzelfde als die van de service of een andere) en een opslagaccount opgeven.
+        ![Doelgegevens repo 1 configureren](./media/storsimple-data-manager-ui/create-job-definition-10.png)
 
-    Er wordt een opslag wachtrij gemaakt wanneer de taak wordt uitgevoerd. Deze wachtrij wordt gevuld met berichten over getransformeerde blobs wanneer deze gereed zijn. De naam van deze wachtrij is hetzelfde als de naam van de taakdefinitie.
+    Er wordt een opslagwachtrij gemaakt wanneer de taak wordt uitgevoerd. Deze wachtrij wordt gevuld met berichten over getransformeerde blobs wanneer deze gereed zijn. De naam van deze wachtrij is hetzelfde als de naam van de taakdefinitie.
     
-10. Nadat u de gegevens opslagplaats hebt toegevoegd, wacht u enkele minuten.
+10. Nadat u de gegevensopslagplaats hebt toegevoegd, wacht u een paar minuten.
     
-    1. Selecteer de opslag plaats die u als doel hebt gemaakt in de vervolg keuzelijst in de naam van het **doel account**.
+    1. Selecteer de opslagplaats die u als doel hebt gemaakt in de vervolgkeuzelijst in de **naam van het doelaccount**.
 
-    2. Kies het opslag type als blobs of bestanden. Geef de naam op van de opslag container waarin de getransformeerde gegevens zich bevinden. Klik op **OK**.
+    2. Kies het opslagtype als blobs of bestanden. Geef de naam op van de opslagcontainer waar de getransformeerde gegevens zich bevinden. Klik op **OK**.
 
-        ![Opslag plaats-opslag account voor doel gegevens configureren](./media/storsimple-data-manager-ui/create-job-definition-16.png)
+        ![Repo-opslagaccount voor doelgegevens configureren](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 
-11. U kunt ook de optie controleren om een schatting van de taak duur te presen teren voordat u de taak uitvoert. Klik op **OK** om de taak definitie te maken. De taak definitie is nu voltooid. U kunt deze taak definitie meerdere keren gebruiken via de gebruikers interface met verschillende runtime-instellingen.
+11. U ook de optie controleren om een schatting van de duur van de taak weer te geven voordat u de taak uitvoert. Klik op **OK** om de taakdefinitie te maken. Uw taakdefinitie is nu voltooid. U deze taakdefinitie meerdere keren gebruiken via de gebruikersinterface met verschillende runtime-instellingen.
 
-    ![Taak definitie volt ooien](./media/storsimple-data-manager-ui/create-job-definition-13.png)
+    ![Volledige taakdefinitie](./media/storsimple-data-manager-ui/create-job-definition-13.png)
 
-    De zojuist gemaakte taak definitie wordt toegevoegd aan de lijst met taak definities voor deze service.
+    De nieuw gemaakte taakdefinitie wordt toegevoegd aan de lijst met taakdefinities voor deze service.
 
-### <a name="run-the-job-definition"></a>De taak definitie uitvoeren
+### <a name="run-the-job-definition"></a>De taakdefinitie uitvoeren
 
-Wanneer u gegevens moet verplaatsen van StorSimple naar het opslag account dat u in de taak definitie hebt opgegeven, moet u het uitvoeren. Tijdens runtime kunnen sommige para meters anders worden opgegeven. De stappen zijn als volgt:
+Wanneer u gegevens van StorSimple moet verplaatsen naar het opslagaccount dat u in de taakdefinitie hebt opgegeven, moet u deze uitvoeren. Bij runtime kunnen sommige parameters anders worden opgegeven. De stappen zijn als volgt:
 
-1. Selecteer uw StorSimple Data Manager-service en ga naar **beheer > taak definities**. Selecteer en klik op de taak definitie die u wilt uitvoeren.
+1. Selecteer uw StorSimple Data Manager-service en ga naar **Management > Job definities**. Selecteer en klik op de taakdefinitie die u wilt uitvoeren.
      
-     ![Taak uitvoeren 1 starten](./media/storsimple-data-manager-ui/start-job-run1.png)
+     ![Taakrun starten 1](./media/storsimple-data-manager-ui/start-job-run1.png)
 
-2. Klik op **nu uitvoeren**.
+2. Klik **op Nu uitvoeren**.
      
-     ![Taak 2 starten](./media/storsimple-data-manager-ui/start-job-run2.png)
+     ![Taakloop 2 starten](./media/storsimple-data-manager-ui/start-job-run2.png)
 
-3. Klik op **instellingen uitvoeren** om de instellingen te wijzigen die u mogelijk wilt wijzigen voor deze taak uitvoering. Klik op **OK** en klik vervolgens op **uitvoeren** om de taak te starten.
+3. Klik **op Instellingen uitvoeren** om alle instellingen te wijzigen die u mogelijk wilt wijzigen voor deze taaktaak. Klik op **OK** en klik vervolgens op **Uitvoeren** om uw taak te starten.
 
-    ![Taak uitvoeren 3 starten](./media/storsimple-data-manager-ui/start-job-run3.png)
+    ![Taakrun 3 starten](./media/storsimple-data-manager-ui/start-job-run3.png)
 
-4. Als u deze taak wilt bewaken, gaat u naar **taken** in uw StorSimple Data Manager. Naast bewaking op de Blade **taken** kunt u ook Luis teren naar de opslag wachtrij waar een bericht wordt toegevoegd telkens wanneer een bestand wordt verplaatst van StorSimple naar het opslag account.
+4. Om deze taak te controleren, ga je naar **Vacatures** in je StorSimple Data Manager. Naast controle in het **blade Van Jobs,** u ook luisteren in de opslagwachtrij waar een bericht wordt toegevoegd telkens wanneer een bestand wordt verplaatst van StorSimple naar het opslagaccount.
 
-    ![Taak uitvoeren 4 starten](./media/storsimple-data-manager-ui/start-job-run4.png)
+    ![Taakloop starten 4](./media/storsimple-data-manager-ui/start-job-run4.png)
 
-### <a name="view-logs-after-job-completion"></a>Logboeken weer geven na voltooiing van de taak
+### <a name="view-logs-after-job-completion"></a>Logboeken weergeven na voltooiing van de taak
 
-Nadat een taak is voltooid, kunt u de status van de taak bekijken. De taak status kan worden **geslaagd**, **gedeeltelijk geslaagd** en **mislukt**. U kunt de lijst weer geven met bestanden die zijn gekopieerd en bestanden die niet konden worden gekopieerd. Deze lijsten zijn beschikbaar in een container met de naam **' storsimple-Data-Manager-joblogs '** binnen uw doel-opslag account. In deze container kunt u zoeken naar een map met dezelfde naam als uw taak definitie. Binnen deze, wordt er een map gemaakt voor elke uitvoering van de taak die uw lijsten bevat. De naam van deze map is de GUID van de taak, die u kunt verkrijgen op de pagina met taak Details. In de meeste gevallen ziet u een koppeling voor de kopie logboeken op de pagina taken zelf.
-Er zijn twee sets CSV-bestanden die in deze map worden weer geven. Alle bestanden die beginnen met **copiedfilelist...** , bevatten de lijst met correct gekopieerde bestanden. Alle bestanden die beginnen met **failedfilelist...** bevatten bestanden die niet konden worden gekopieerd, samen met een fout bericht.
+Na het voltooien van een taak u de status van de taak bekijken. Functiestatus kan worden **opgevolgd,** **gedeeltelijk geslaagd** en **mislukt**. U de lijst met bestanden bekijken die zijn gekopieerd en bestanden die niet zijn gekopieerd. Deze lijsten zijn beschikbaar in een container genaamd **"storsimple-data-manager-joblogs"** binnen uw doelopslagaccount. In deze container u zoeken naar een map met dezelfde naam als uw taakdefinitie. Hierin wordt een map gemaakt voor elke taakrun die uw lijsten bevat. De naam van deze map is de GUID van de taak, die u krijgen van de pagina taakgegevens. Als alternatief ziet u in de meeste gevallen een koppeling voor de kopieerlogboeken binnen de banenpagina zelf.
+Er zijn 2 set csv-bestanden die u in deze map ziet. Alle bestanden die beginnen met **gekopieerde bestandslijst ...** bevat de lijst met met succes gekopieerde bestanden. Alle bestanden die beginnen met **mislukte filelist ...** bevatten bestanden die niet konden worden gekopieerd, samen met een foutmelding.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Gebruik .NET SDK om StorSimple Data Manager taken te starten](storsimple-data-manager-dotnet-jobs.md).
+[Gebruik .NET SDK om StorSimple Data Manager-taken te starten.](storsimple-data-manager-dotnet-jobs.md)

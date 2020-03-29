@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren-hulp programma Azure Data Factory
-description: Bevat informatie over het hulp programma Gegevens kopiëren in Azure Data Factory gebruikers interface
+title: Gegevenshulpprogramma Kopiëren Azure Data Factory
+description: Bevat informatie over het hulpprogramma Gegevens kopiëren in de gebruikersinterface van Azure Data Factory
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -12,75 +12,75 @@ ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
 ms.openlocfilehash: a6de5c28115d3a451256cc43d26552c269ba245a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927502"
 ---
-# <a name="copy-data-tool-in-azure-data-factory"></a>Gegevens kopiëren-hulp programma in Azure Data Factory
-Het hulp programma Azure Data Factory Gegevens kopiëren vereenvoudigt en optimaliseert het proces van het opnemen van gegevens in een Data Lake. Dit is meestal een eerste stap in een end-to-end gegevens integratie scenario.  Het bespaart tijd, vooral wanneer u Azure Data Factory gebruikt om gegevens van een gegevens bron voor de eerste keer op te nemen. Enkele voor delen van het gebruik van dit hulp programma:
+# <a name="copy-data-tool-in-azure-data-factory"></a>Hulpprogramma voor gegevens kopiëren in Azure Data Factory
+De azure data factory copy data tool vereenvoudigt en optimaliseert het proces van het opnemen van gegevens in een data lake, wat meestal een eerste stap is in een end-to-end data-integratiescenario.  Het bespaart tijd, vooral wanneer u Azure Data Factory gebruikt om voor het eerst gegevens uit een gegevensbron in te nemen. Enkele van de voordelen van het gebruik van deze tool zijn:
 
-- Wanneer u het Azure Data Factory Gegevens kopiëren-hulp programma gebruikt, hebt u geen inzicht in Data Factory definities voor gekoppelde services, gegevens sets, pijp lijnen, activiteiten en triggers. 
-- De stroom van Gegevens kopiëren hulp programma is intuïtief voor het laden van gegevens in een Data Lake. Het hulp programma maakt automatisch alle benodigde Data Factory resources om gegevens van de geselecteerde bron gegevens opslag te kopiëren naar het geselecteerde doel/Sink-gegevens archief. 
-- Het hulp programma Gegevens kopiëren helpt u bij het valideren van de gegevens die op het moment van ontwerpen worden opgenomen, zodat u eventuele mogelijke fouten aan het begin van zichzelf kunt voor komen.
-- Als u complexe bedrijfs logica wilt implementeren om gegevens in een Data Lake te laden, kunt u de Data Factory resources die zijn gemaakt door het Gegevens kopiëren hulp programma nog steeds bewerken met behulp van de ontwerp functie per activiteit in Data Factory gebruikers interface. 
+- Wanneer u het hulpprogramma Voor kopiëren van Azure Data Factory gebruikt, hebt u geen informatie nodig over definities van Gegevensfabriek voor gekoppelde services, gegevenssets, pijplijnen, activiteiten en triggers. 
+- De stroom van Copy Data tool is intuïtief voor het laden van gegevens in een data lake. De tool maakt automatisch alle benodigde Data Factory-bronnen om gegevens uit het geselecteerde brongegevensarchief naar het geselecteerde doel-/sink-gegevensarchief te kopiëren. 
+- Met het hulpprogramma Gegevens kopiëren u de gegevens valideren die worden ingenomen op het moment van ontwerpen, zodat u eventuele fouten in het begin zelf voorkomen.
+- Als u complexe bedrijfslogica moet implementeren om gegevens in een gegevensmeer te laden, u de gegevensfabriekbronnen die zijn gemaakt door het hulpprogramma Gegevens kopiëren nog steeds bewerken met behulp van de auteur per activiteit in de gebruikersinterface van datafabriek. 
 
-De volgende tabel bevat richt lijnen voor het gebruik van het hulp programma Gegevens kopiëren versus het ontwerpen per activiteit in Data Factory gebruikers interface: 
+In de volgende tabel vindt u informatie over het gebruik van het gereedschap Gegevens kopiëren versus het ontwerpen per activiteit in de gebruikersinterface van gegevensfabriek: 
 
-| Hulpprogramma voor het kopiëren van gegevens | Ontwerpen per activiteit (Kopieer activiteit) |
+| Hulpprogramma voor het kopiëren van gegevens | Per activiteit (Activiteit kopiëren) ontwerpen |
 | -------------- | -------------------------------------- |
-| U wilt eenvoudig een taak voor het laden van gegevens maken zonder te leren over Azure Data Factory entiteiten (gekoppelde services, gegevens sets, pijp lijnen, enzovoort) | U wilt complexe en flexibele logica implementeren voor het laden van gegevens in Lake. |
-| U wilt snel een groot aantal gegevens artefacten laden in een Data Lake. | U wilt Kopieer activiteiten koppelen met volgende activiteiten voor het opschonen of verwerken van gegevens. |
+| U wilt eenvoudig een taak voor het laden van gegevens bouwen zonder meer te weten te komen over azure data factory-entiteiten (gekoppelde services, gegevenssets, pijplijnen, enz.) | U wilt complexe en flexibele logica implementeren voor het laden van gegevens in lake. |
+| U wilt snel een groot aantal gegevensartefacten in een gegevensmeer laden. | U wilt Kopieeractiviteiten met volgende activiteiten voor het reinigen of verwerken van gegevens ketenen. |
 
-Als u het hulp programma Gegevens kopiëren wilt starten, klikt u op de tegel **gegevens kopiëren** op de start pagina van uw Data Factory.
+Als u het gereedschap Gegevens kopiëren wilt starten, klikt u op de tegel **Gegevens kopiëren** op de startpagina van uw gegevensfabriek.
 
-![Pagina aan de slag-koppeling naar het hulp programma Gegevens kopiëren](./media/copy-data-tool/get-started-page.png)
+![Pagina aan de slag - koppeling naar hulpprogramma Gegevens kopiëren](./media/copy-data-tool/get-started-page.png)
 
 
-## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>Intuïtieve stroom voor het laden van gegevens in een Data Lake
-Met dit hulp programma kunt u eenvoudig gegevens verplaatsen van een groot aantal bronnen naar bestemmingen in enkele minuten met een intuïtieve stroom:  
+## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>Intuïtieve stroom voor het laden van gegevens in een datalake
+Met deze tool u eenvoudig gegevens van een breed scala aan bronnen naar bestemmingen verplaatsen in enkele minuten met een intuïtieve stroom:  
 
-1. Configureer de instellingen voor de **bron**.
-2. Configureer de instellingen voor de **doel locatie**. 
-3. **Geavanceerde instellingen** configureren voor de Kopieer bewerking, zoals kolom toewijzing, prestatie-instellingen en fout tolerantie-instellingen. 
+1. Instellingen configureren voor de **bron**.
+2. Instellingen voor de **bestemming**configureren . 
+3. Configureer **geavanceerde instellingen** voor de kopieerbewerking, zoals kolomtoewijzing, prestatie-instellingen en fouttolerantieinstellingen. 
 4. Geef een **planning** op voor de taak voor het laden van gegevens. 
-5. Bekijk een **samen vatting** van de Data Factory entiteiten die moeten worden gemaakt. 
-6. **Bewerk** de pijp lijn zo nodig om de instellingen voor de Kopieer activiteit bij te werken. 
+5. Bekijk **een overzicht** van de entiteiten van Data Factory die moeten worden gemaakt. 
+6. **Bewerk** de pijplijn om de instellingen voor de kopieeractiviteit zo nodig bij te werken. 
 
-   Het hulp programma is ontworpen met big data van het begin, met ondersteuning voor diverse gegevens en object typen. U kunt deze gebruiken om honderden mappen, bestanden of tabellen te verplaatsen. Het hulp programma ondersteunt automatische gegevens weergave, schema-vastleg ging en automatische toewijzing en gegevens filtering.
+   De tool is ontworpen met big data in het achterhoofd vanaf het begin, met ondersteuning voor diverse gegevens- en objecttypen. U het gebruiken om honderden mappen, bestanden of tabellen te verplaatsen. De tool ondersteunt automatische gegevensvoorbeeld, schema-vastleggen en automatische toewijzing, en gegevensfiltering ook.
 
 ![Hulpprogramma voor het kopiëren van gegevens](./media/copy-data-tool/copy-data-tool.png)
 
-## <a name="automatic-data-preview"></a>Automatische gegevens voorbeeld
-U kunt een voor beeld bekijken van een deel van de gegevens uit de geselecteerde brongegevens opslag, zodat u de gegevens kunt valideren die worden gekopieerd. Als de bron gegevens zich in een tekst bestand bevinden, parseert het Gegevens kopiëren-hulp programma bovendien het tekst bestand om automatisch de rij-en kolom scheidings tekens en het schema op te sporen.
+## <a name="automatic-data-preview"></a>Automatische gegevensvoorbeeld
+U een voorbeeld van een voorbeeld van een voorbeeld van een deel van de gegevens uit het geselecteerde brongegevensarchief bekijken, waarmee u de gegevens die worden gekopieerd, valideren. Als de brongegevens zich in een tekstbestand bevindt, wordt het tekstbestand bovendien door het gereedschap Gegevens kopiëren ontlijnt om automatisch de scheidingstekens en het schema van de rij- en kolomscheidingen te detecteren.
 
-![Bestands instellingen](./media/copy-data-tool/file-format-settings.png)
+![Bestandsinstellingen](./media/copy-data-tool/file-format-settings.png)
 
 Na de detectie:
 
-![Gedetecteerde Bestands instellingen en voor beeld](./media/copy-data-tool/after-detection.png)
+![Gedetecteerde bestandsinstellingen en voorbeeld](./media/copy-data-tool/after-detection.png)
 
-## <a name="schema-capture-and-automatic-mapping"></a>Schema's vastleggen en automatisch toewijzen
-Het schema van de gegevens bron is in veel gevallen niet hetzelfde als het schema van de gegevens bestemming. In dit scenario moet u kolommen uit het bron schema toewijzen aan kolommen uit het doel schema.
+## <a name="schema-capture-and-automatic-mapping"></a>Schemavastleggen en automatisch toewijzen
+Het schema van de gegevensbron is in veel gevallen mogelijk niet hetzelfde als het schema van de bestemming van gegevens. In dit scenario moet u kolommen van het bronschema toewijzen aan kolommen uit het doelschema.
 
-Het hulp programma Gegevens kopiëren bewaakt en leert uw gedrag wanneer u kolommen tussen de bron-en doel opslag toewijst. Nadat u een of enkele kolommen uit het brongegevens archief hebt gekozen en deze hebt toegewezen aan het doel schema, begint het Gegevens kopiëren-hulp programma met het analyseren van het patroon voor kolom paren die u aan beide zijden hebt gekozen. Vervolgens wordt hetzelfde patroon toegepast op de rest van de kolommen. Daarom ziet u dat alle kolommen zijn toegewezen aan de bestemming op een manier die u net na verschillende klikken hebt.  Als u niet tevreden bent met de keuze van kolom toewijzing die wordt geboden door Gegevens kopiëren tool, kunt u deze negeren en door gaan met het hand matig toewijzen van de kolommen. Ondertussen leert het Gegevens kopiëren-hulp programma het patroon voortdurend te zien en bij te werken, en uiteindelijk bereikt u het juiste patroon voor de kolom toewijzing die u wilt bereiken. 
+Het gereedschap Gegevens kopiëren controleert en leert uw gedrag wanneer u kolommen in kaart brengt tussen bron- en doelopslag. Nadat u een of enkele kolommen uit het brongegevensarchief hebt gekozen en deze hebt toegewezen aan het doelschema, begint het gereedschap Gegevens kopiëren het patroon te analyseren voor kolomparen die u van beide zijden hebt gekozen. Vervolgens wordt hetzelfde patroon op de rest van de kolommen gebruikt. Daarom ziet u dat alle kolommen zijn toegewezen aan de bestemming op een manier die u wilt net na een aantal klikken.  Als u niet tevreden bent met de keuze van kolomtoewijzing die wordt geleverd door het hulpprogramma Gegevens kopiëren, u deze negeren en doorgaan met het handmatig in kaart brengen van de kolommen. Ondertussen leert en actualiseert de tool Gegevens kopiëren voortdurend het patroon en bereikt uiteindelijk het juiste patroon voor de kolomtoewijzing die u wilt bereiken. 
 
 > [!NOTE]
-> Wanneer u gegevens van SQL Server of Azure SQL Database naar Azure SQL Data Warehouse kopieert en de tabel niet bestaat in het doel archief, ondersteunt Gegevens kopiëren hulp programma automatisch het maken van de tabel met behulp van het bron schema. 
+> Wanneer u gegevens uit SQL Server of Azure SQL Database kopieert naar Azure SQL Data Warehouse, als de tabel niet bestaat in het doelarchief, ondersteunt het hulpprogramma Gegevens kopiëren het automatisch maken van de tabel met behulp van het bronschema. 
 
 ## <a name="filter-data"></a>Gegevens filteren
-U kunt bron gegevens filteren om alleen de gegevens te selecteren die moeten worden gekopieerd naar de Sink-gegevens opslag. Filteren vermindert het volume van de gegevens die moeten worden gekopieerd naar de Sink-gegevens opslag en verhoogt daarom de door Voer van de Kopieer bewerking. Gegevens kopiëren tool biedt een flexibele manier om gegevens in een relationele data base te filteren met behulp van de SQL-query taal of bestanden in een Azure Blob-map. 
+U brongegevens filteren om alleen de gegevens te selecteren die naar het opslagarchief voor gootsteengegevens moeten worden gekopieerd. Filteren vermindert het volume van de gegevens die naar het gootsteengegevensarchief moeten worden gekopieerd en verbetert daarom de doorvoer van de kopieerbewerking. Copy Data tool biedt een flexibele manier om gegevens in een relationele database te filteren met behulp van de SQL-querytaal of bestanden in een Azure blob-map. 
 
-### <a name="filter-data-in-a-database"></a>Gegevens in een Data Base filteren
-De volgende scherm afbeelding toont een SQL-query om de gegevens te filteren.
+### <a name="filter-data-in-a-database"></a>Gegevens in een database filteren
+In de volgende schermafbeelding wordt een SQL-query weergegeven om de gegevens te filteren.
 
-![Gegevens in een Data Base filteren](./media/copy-data-tool/filter-data-in-database.png)
+![Gegevens in een database filteren](./media/copy-data-tool/filter-data-in-database.png)
 
-### <a name="filter-data-in-an-azure-blob-folder"></a>Gegevens in een Azure Blob-map filteren
-U kunt variabelen in het mappad gebruiken om gegevens uit een map te kopiëren. De ondersteunde variabelen zijn: **{Year}** , **{Month}** , **{Day}** , **{Hour}** en **{Minute}** . Bijvoorbeeld: inputfolder/{year}/{month}/{Day}. 
+### <a name="filter-data-in-an-azure-blob-folder"></a>Gegevens filteren in een Azure blob-map
+U variabelen in het mappad gebruiken om gegevens uit een map te kopiëren. De ondersteunde variabelen zijn: **{year}**, **{month}**, **{day}**, **{hour}**, en **{minute}**. Bijvoorbeeld: invoermap/{year}/{month}/{day}. 
 
-Stel dat u een invoer mappen hebt met de volgende indeling: 
+Stel dat u invoermappen in de volgende indeling hebt: 
 
 ```
 2016/03/01/01
@@ -89,25 +89,25 @@ Stel dat u een invoer mappen hebt met de volgende indeling:
 ...
 ```
 
-Klik op de knop **Bladeren** voor **bestand of map**, blader naar een van deze mappen (bijvoorbeeld 2016-> 03-> 01-> 02) en klik op **kiezen**. U ziet 2016/03/01/02 in het tekstvak. 
+Klik **op de** knop Bladeren voor **Bestand of map,** blader naar een van deze mappen (bijvoorbeeld 2016->03->01->02) en klik op **Kiezen**. U ziet 2016/03/01/02 in het tekstvak. 
 
-Vervang vervolgens **2016** door **{Year}** , **03** met **{Month}** , **01** met **{Day}** en **02** met **{Hour}** en druk op de **Tab** -toets. Er moeten vervolg keuzelijsten worden weer gegeven om de indeling voor deze vier variabelen te selecteren:
+Vervang **2016** vervolgens door **{jaar}**, **03** met **{maand}**, **01** met **{day}** en **02** met **{hour}** en druk op de **Tab-toets.** U ziet vervolgkeuzelijsten om de indeling voor deze vier variabelen te selecteren:
 
 ![Bestand of map filteren](./media/copy-data-tool/filter-file-or-folder.png)
 
-Het hulp programma Gegevens kopiëren genereert para meters met expressies, functies en systeem variabelen die kunnen worden gebruikt om {Year}, {month}, {Day}, {Hour} en {Minute} aan te geven bij het maken van de pijp lijn.
+Met het gereedschap Gegevens kopiëren worden parameters gegenereerd met expressies, functies en systeemvariabelen die kunnen worden gebruikt om {year}, {month}, {day}, {hour} en {minute} weer te geven bij het maken van pijplijn.
 
-## <a name="scheduling-options"></a>Plannings opties
-U kunt de Kopieer bewerking eenmaal of volgens een schema uitvoeren (elk uur, dagelijks, enzovoort). Deze opties kunnen worden gebruikt voor de connectors in verschillende omgevingen, waaronder on-premises, Cloud en lokale bureau blad. 
+## <a name="scheduling-options"></a>Planningsopties
+U de kopieerbewerking één keer of volgens een schema uitvoeren (per uur, per dag, enzovoort). Deze opties kunnen worden gebruikt voor de connectors in verschillende omgevingen, waaronder on-premises, cloud en lokaal bureaublad. 
 
-Een eenmalige Kopieer bewerking maakt het verplaatsen van gegevens van een bron naar een bestemming slechts één keer mogelijk. Dit is van toepassing op gegevens van elke grootte en een ondersteunde indeling. Met de geplande kopie kunt u gegevens kopiëren naar een terugkeer patroon dat u opgeeft. U kunt uitgebreide instellingen (zoals nieuwe poging, time-out en waarschuwingen) gebruiken om de geplande kopie te configureren.
+Een eenmalige kopieerbewerking maakt gegevensverkeer van een bron naar een bestemming slechts één keer mogelijk. Het is van toepassing op gegevens van elke grootte en elke ondersteunde indeling. Met de geplande kopie u gegevens kopiëren over een herhaling die u opgeeft. U uitgebreide instellingen (zoals opnieuw proberen, time-out en waarschuwingen) gebruiken om de geplande kopie te configureren.
 
-![Plannings opties](./media/copy-data-tool/scheduling-options.png)
+![Planningsopties](./media/copy-data-tool/scheduling-options.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Probeer deze zelf studies die gebruikmaken van het Gegevens kopiëren-hulp programma:
+Probeer deze zelfstudies die het gereedschap Gegevens kopiëren gebruiken:
 
-- [Snelstartgids: een data factory maken met het Gegevens kopiëren-hulp programma](quickstart-create-data-factory-copy-data-tool.md)
-- [Zelf studie: gegevens kopiëren in azure met behulp van het Gegevens kopiëren](tutorial-copy-data-tool.md) 
-- [Zelf studie: on-premises gegevens naar Azure kopiëren met behulp van het Gegevens kopiëren](tutorial-hybrid-copy-data-tool.md)
+- [Snelstart: een gegevensfabriek maken met het gereedschap Gegevens kopiëren](quickstart-create-data-factory-copy-data-tool.md)
+- [Zelfstudie: gegevens kopiëren in Azure met het gereedschap Gegevens kopiëren](tutorial-copy-data-tool.md) 
+- [Zelfstudie: on-premises gegevens kopiëren naar Azure met het hulpprogramma Gegevens kopiëren](tutorial-hybrid-copy-data-tool.md)

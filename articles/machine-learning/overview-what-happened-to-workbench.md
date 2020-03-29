@@ -1,7 +1,7 @@
 ---
 title: Wat is er gebeurd met Workbench?
 titleSuffix: Azure Machine Learning
-description: Meer informatie over wat er mogelijk is zonder de toepassing Workbench en wat de ondersteunings tijdlijn is.
+description: Meer informatie over wat er mogelijk is zonder Workbench-toepassing en wat de ondersteuningstijdlijn is.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,43 +11,43 @@ author: j-martens
 ms.author: jmartens
 ms.date: 03/05/2020
 ms.openlocfilehash: 9b49eb6237346a76903202a118331383c5a8f623
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944258"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Wat is er gebeurd met Azure Machine Learning Workbench?
 
-De Azure Machine Learning Workbench-toepassing en enkele andere vroege functies zijn afgeschaft en vervangen in de release van **September 2018** om een verbeterde [architectuur](concept-azure-machine-learning-architecture.md)te maken.
+De Azure Machine Learning Workbench-toepassing en enkele andere vroege functies zijn afgeschaft en vervangen in de release van **september 2018** om plaats te maken voor een verbeterde [architectuur.](concept-azure-machine-learning-architecture.md)
 
-De nieuwe versie bevat veel belangrijke updates op basis van feedback van klanten, om uw ervaring te verbeteren. De kernfunctionaliteit voor experimentele uitvoeringen tot modelimplementatie is niet gewijzigd. U kunt nu echter de robuuste <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">PYTHON SDK</a>, R SDK en de [Azure cli](reference-azure-machine-learning-cli.md) gebruiken om uw machine learning taken en pijp lijnen uit te voeren.
+De nieuwe versie bevat veel belangrijke updates op basis van feedback van klanten, om uw ervaring te verbeteren. De kernfunctionaliteit voor experimentele uitvoeringen tot modelimplementatie is niet gewijzigd. Maar nu u de robuuste <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a>, R SDK en de [Azure CLI](reference-azure-machine-learning-cli.md) gebruiken om uw machine learning-taken en -pijplijnen uit te voeren.
 
-De meeste artefacten die zijn gemaakt in de eerdere versie van Azure Machine Learning worden opgeslagen in uw eigen lokale of Cloud opslag. Deze artefacten worden nooit verwijderd.
+De meeste artefacten die zijn gemaakt in de eerdere versie van Azure Machine Learning, worden opgeslagen in uw eigen lokale of cloudopslag. Deze artefacten worden nooit verwijderd.
 
 In dit artikel leest u wat er is veranderd en hoe dit van invloed is op uw bestaande werk met de Azure Machine Learning Workbench en de bijbehorende API's.
 
 >[!Warning]
->Dit artikel is niet bedoeld voor gebruikers van Azure Machine Learning Studio, Het is voor Azure Machine Learning klanten die de workbench-toepassing (preview) hebben geïnstalleerd en/of een preview-account hebben voor experimenteren en model beheer.
+>Dit artikel is niet bedoeld voor gebruikers van Azure Machine Learning Studio, Het is voor Azure Machine Learning-klanten die de Workbench-toepassing (preview) hebben geïnstalleerd en/of voorbeeldaccounts voor experimenten en modellenbeheer hebben.
 
 
 ## <a name="what-changed"></a>Wat is er veranderd?
 
 De nieuwste versie van Azure Machine Learning bevat de volgende functies:
-+ Een [vereenvoudigd model voor Azure-resources](concept-azure-machine-learning-architecture.md).
++ Een [vereenvoudigd Azure-bronnenmodel](concept-azure-machine-learning-architecture.md).
 + Een [nieuwe gebruikersinterface in de portal](how-to-track-experiments.md) voor het beheren van uw experimenten en compute-doelen.
 + Een nieuwe, uitgebreidere Python-<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>.
 + De nieuwe, uitgebreide [Azure CLI-extensie](reference-azure-machine-learning-cli.md) voor machine learning.
 
 De [architectuur](concept-azure-machine-learning-architecture.md) is vernieuwd voor meer gebruiksgemak. In plaats van meerdere Azure-resources en -accounts, hebt u alleen een [Azure Machine Learning-werkruimte](concept-workspace.md) nodig. U kunt snel werkruimten maken in de [Azure-portal](how-to-manage-workspace.md). Met een werkruimte kunnen meerdere gebruikers rekendoelen voor training en implementatie, modelexperimenten, Docker-installatiekopieën, geïmplementeerde modellen, enzovoort, opslaan.
 
-De huidige versie bevat nieuwe en verbeterde CLI- en SDK-clients, maar de Workbench-bureaubladtoepassing zelf is afgeschaft. Experimenten kunnen in Azure Machine Learning Studio worden beheerd in het [dash board werk ruimte](how-to-track-experiments.md#view-the-experiment-in-the-web-portal). Gebruik het dashboard om uw experimentgeschiedenis op te halen, de compute-doelen die zijn gekoppeld aan uw werkruimte te beheren, uw modellen en Docker-installatiekopieën te beheren en zelfs om webservices te implementeren.
+De huidige versie bevat nieuwe en verbeterde CLI- en SDK-clients, maar de Workbench-bureaubladtoepassing zelf is afgeschaft. Experimenten kunnen worden beheerd in het dashboard van de [werkruimte in Azure Machine Learning-studio.](how-to-track-experiments.md#view-the-experiment-in-the-web-portal) Gebruik het dashboard om uw experimentgeschiedenis op te halen, de compute-doelen die zijn gekoppeld aan uw werkruimte te beheren, uw modellen en Docker-installatiekopieën te beheren en zelfs om webservices te implementeren.
 
 <a name="timeline"></a>
 
 ## <a name="support-timeline"></a>Ondersteuningstijdlijn
 
-Op 9 januari 2019 wordt ondersteuning geboden voor Machine Learning Workbench, Azure Machine Learning Experimenten-en Modelbeheer-accounts, en de bijbehorende SDK en CLI zijn geëindigd.
+Op 9 januari 2019 is de ondersteuning voor Machine Learning Workbench, Azure Machine Learning Experimentation en Model Management-accounts en de bijbehorende SDK en CLI beëindigd.
 
 Alle nieuwste mogelijkheden zijn beschikbaar via deze nieuwe <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>, de [CLI](reference-azure-machine-learning-cli.md) en de [portal](how-to-manage-workspace.md).
 
@@ -55,31 +55,31 @@ Alle nieuwste mogelijkheden zijn beschikbaar via deze nieuwe <a href="https://do
 
 Oudere uitvoeringsgeschiedenissen zijn niet meer toegankelijk, maar uw uitvoeringen zijn nog wel zichtbaar in de nieuwste versie.
 
-Uitvoeringsgeschiedenissen heten voortaan **experimenten**. U kunt de experimenten van uw model verzamelen en deze verkennen met behulp van de SDK, de CLI of de Azure Machine Learning Studio.
+Uitvoeringsgeschiedenissen heten voortaan **experimenten**. U de experimenten van uw model verzamelen en deze verkennen met behulp van de SDK, de CLI of de Azure Machine Learning-studio.
 
 Het werkruimtedashboard van de portal wordt alleen ondersteund in Microsoft Edge, Chrome en Firefox:
 
-[Online Portal ![](./media/overview-what-happened-to-workbench/image001.png)](./media/overview-what-happened-to-workbench/image001.png#lightbox)
+[![Online portal](./media/overview-what-happened-to-workbench/image001.png)](./media/overview-what-happened-to-workbench/image001.png#lightbox)
 
-Gebruik de nieuwe CLI en SDK om uw modellen te trainen en de uitvoeringsgeschiedenis bij te houden. U kunt lezen hoe u met de [zelf studie modellen traint met Azure machine learning](tutorial-train-models-with-aml.md).
+Gebruik de nieuwe CLI en SDK om uw modellen te trainen en de uitvoeringsgeschiedenis bij te houden. U leren hoe u met de [zelfstudie: modellen trainen met Azure Machine Learning](tutorial-train-models-with-aml.md).
 
 ## <a name="will-projects-persist"></a>Blijven projecten behouden?
 
-U verliest geen code of werk. Projecten zijn in de oudere versie cloudentiteiten met een lokale map. In de nieuwste versie koppelt u lokale mappen aan de Azure Machine Learning-werk ruimte met behulp van een lokaal configuratie bestand. Bekijk een [diagram van de meest recente architectuur](concept-azure-machine-learning-architecture.md).
+U verliest geen code of werk. Projecten zijn in de oudere versie cloudentiteiten met een lokale map. In de nieuwste versie koppelt u lokale mappen aan de Azure Machine Learning-werkruimte met behulp van een lokaal config-bestand. Bekijk een [diagram van de meest recente architectuur](concept-azure-machine-learning-architecture.md).
 
-Veel van de projectinhoud staat al op uw lokale computer. U hoeft alleen een configuratiebestand in die map te maken en ernaar te verwijzen in uw code om het aan uw werkruimte te koppelen. Als u wilt door gaan met het gebruik van de lokale map met uw bestanden en scripts, geeft u de naam van de map op in de opdracht [' experiment. verzenden '](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) van python of met behulp van de `az ml project attach` cli-opdracht.  Bijvoorbeeld:
+Veel van de projectinhoud staat al op uw lokale computer. U hoeft alleen een configuratiebestand in die map te maken en ernaar te verwijzen in uw code om het aan uw werkruimte te koppelen. Als u de lokale map met uw bestanden en scripts wilt blijven gebruiken, geeft u `az ml project attach` de naam van de map op in de opdracht [Python 'experiment.submit'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) of met de opdracht CLI.  Bijvoorbeeld:
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)
 ```
 
-[Maak een werk ruimte](how-to-manage-workspace.md) om aan de slag te gaan.
+[Maak een werkruimte](how-to-manage-workspace.md) om aan de slag te gaan.
 
 ## <a name="what-about-my-registered-models-and-images"></a>Hoe zit het met mijn geregistreerde modellen en installatiekopieën?
 
 De modellen die u in uw oude modelregister hebt geregistreerd, moeten worden gemigreerd naar uw nieuwe werkruimte als u ze wilt blijven gebruiken. Voor het migreren van uw modellen downloadt u de modellen en registreert u deze opnieuw in uw nieuwe werkruimte.
 
-De installatie kopieën die u in het oude installatie kopie register hebt gemaakt, kunnen niet rechtstreeks naar de nieuwe werk ruimte worden gemigreerd. In de meeste gevallen kan het model worden geïmplementeerd zonder dat er een installatie kopie hoeft te worden gemaakt. Als dat nodig is, kunt u een installatie kopie maken voor het model in de nieuwe werk ruimte. Zie [machine learning modellen beheren, registreren, implementeren en bewaken](concept-model-management-and-deployment.md)voor meer informatie.
+De afbeeldingen die u in uw oude afbeeldingsregister hebt gemaakt, kunnen niet rechtstreeks naar de nieuwe werkruimte worden gemigreerd. In de meeste gevallen kan het model worden geïmplementeerd zonder dat u een afbeelding hoeft te maken. Indien nodig u een afbeelding voor het model maken in de nieuwe werkruimte. Zie [Machine learning-modellen beheren, registreren, implementeren en monitoren](concept-model-management-and-deployment.md)voor meer informatie.
 
 ## <a name="what-about-deployed-web-services"></a>Hoe zit het met geïmplementeerde webservices?
 
@@ -89,17 +89,17 @@ In de nieuwste versie worden modellen als webservices geïmplementeerd in ACI-cl
 
 Ga voor meer informatie naar deze artikelen:
 + [Modellen implementeren met Azure Machine Learning Service](how-to-deploy-and-where.md)
-+ [Zelf studie: modellen implementeren met Azure Machine Learning](tutorial-deploy-models-with-aml.md)
++ [Zelfstudie: Modellen implementeren met Azure Machine Learning](tutorial-deploy-models-with-aml.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de [nieuwste architectuur voor Azure machine learning](concept-azure-machine-learning-architecture.md).
+Meer informatie over de [nieuwste architectuur voor Azure Machine Learning](concept-azure-machine-learning-architecture.md).
 
-Lees [Wat is Azure machine learning?](overview-what-is-azure-ml.md)voor een overzicht van de service.
+Lees Wat is Azure [Machine Learning voor](overview-what-is-azure-ml.md)een overzicht van de service?
 
-Maak uw eerste experiment met uw voorkeurs methode:
-  + [Python-notebooks gebruiken](tutorial-1st-experiment-sdk-setup.md)
-  + [R-prijs verlaging gebruiken](tutorial-1st-r-experiment.md) 
-  + [Automatische machine learning gebruiken](tutorial-designer-automobile-price-train-score.md) 
-  + [De Sleep mogelijkheden van de ontwerp functie voor het Designer-& gebruiken](tutorial-first-experiment-automated-ml.md) 
-  + [De uitbrei ding voor ML van de CLI gebruiken](tutorial-train-deploy-model-cli.md)
+Maak uw eerste experiment met de methode van uw voorkeur:
+  + [Python-notitieblokken gebruiken](tutorial-1st-experiment-sdk-setup.md)
+  + [R-markering gebruiken](tutorial-1st-r-experiment.md) 
+  + [Gebruik geautomatiseerde machine learning](tutorial-designer-automobile-price-train-score.md) 
+  + [De mogelijkheden voor slepen & van de ontwerper gebruiken](tutorial-first-experiment-automated-ml.md) 
+  + [Gebruik de ML-extensie naar de CLI](tutorial-train-deploy-model-cli.md)

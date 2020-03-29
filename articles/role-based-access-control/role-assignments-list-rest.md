@@ -1,6 +1,6 @@
 ---
-title: Roltoewijzingen weer geven met behulp van Azure RBAC en de REST API
-description: Meer informatie over hoe u kunt bepalen welke resources gebruikers, groepen, service-principals of beheerde identiteiten hebben toegang tot het gebruik van op rollen gebaseerd toegangs beheer (RBAC) en de REST API.
+title: Roltoewijzingen weergeven met Azure RBAC en de REST API
+description: Meer informatie over het bepalen van welke resources gebruikers, groepen, serviceprincipals of beheerde identiteiten toegang hebben tot het gebruik van RBAC (Azure role-based access control) en de REST API.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,26 +12,26 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0db3e1b222aad7d2a5aa9fc20663fc6e17ea4f8c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a494e7fd4c9fb79faa6a1d8cb2c3c871796ccdc5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981079"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062157"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>Roltoewijzingen weer geven met behulp van Azure RBAC en de REST API
+# <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>Roltoewijzingen weergeven met Azure RBAC en de REST API
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] in dit artikel wordt beschreven hoe u roltoewijzingen kunt weer geven met behulp van de REST API.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]In dit artikel wordt beschreven hoe u roltoewijzingen weergeven met behulp van de REST API.
 
 > [!NOTE]
-> Als uw organisatie uitbestede beheer functies heeft voor een service provider die gebruikmaakt van [Azure delegated resource management](../lighthouse/concepts/azure-delegated-resource-management.md), worden roltoewijzingen die door die service provider worden toegestaan, hier niet weer gegeven.
+> Als uw organisatie beheerfuncties heeft uitbesteed aan een serviceprovider die [azure-gedelegeerd resourcebeheer](../lighthouse/concepts/azure-delegated-resource-management.md)gebruikt, worden roltoewijzingen die zijn geautoriseerd door die serviceprovider, hier niet weergegeven.
 
 ## <a name="list-role-assignments"></a>Lijst met roltoewijzingen weergeven
 
-In RBAC kunt u de roltoewijzingen weer geven om toegang weer te geven. Als u roltoewijzingen wilt weer geven, gebruikt u een van de [roltoewijzingen-lijst rest-](/rest/api/authorization/roleassignments/list) api's. Als u uw resultaten wilt verfijnen, geeft u een bereik en een optioneel filter op.
+In RBAC, om toegang te geven, geeft u een lijst van de roltoewijzingen. Als u roltoewijzingen wilt aanbieden, gebruikt u een van de [roltoewijzingen -](/rest/api/authorization/roleassignments/list) REST-API's weergeven. Als u uw resultaten wilt verfijnen, geeft u een bereik en een optioneel filter op.
 
 1. Begin met de volgende aanvraag:
 
@@ -39,26 +39,29 @@ In RBAC kunt u de roltoewijzingen weer geven om toegang weer te geven. Als u rol
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter={filter}
     ```
 
-1. Vervang *{Scope}* in de URI door het bereik waarvoor u de roltoewijzingen wilt weer geven.
+1. Vervang *{scope}* binnen de URI door het bereik waarvoor u de roltoewijzingen wilt weergeven.
 
-    | Scope | Type |
-    | --- | --- |
-    | `providers/Microsoft.Management/managementGroups/{groupId1}` | Beheergroep |
-    | `subscriptions/{subscriptionId1}` | Abonnement |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resourcegroep |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Bron |
+    > [!div class="mx-tableFixed"]
+    > | Bereik | Type |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Beheergroep |
+    > | `subscriptions/{subscriptionId1}` | Abonnement |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resourcegroep |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Resource |
 
-    In het vorige voor beeld is micro soft. web een resource provider die verwijst naar een App Service-exemplaar. U kunt ook andere resource providers gebruiken en het bereik opgeven. Zie voor meer informatie [Azure-resource providers en-typen](../azure-resource-manager/management/resource-providers-and-types.md) en ondersteunde Azure Resource Manager van de [resource provider](resource-provider-operations.md).  
+    In het vorige voorbeeld is microsoft.web een resourceprovider die verwijst naar een app-service-exemplaar. U ook andere resourceproviders gebruiken en het bereik opgeven. Zie [Azure Resource providers en -typen en](../azure-resource-manager/management/resource-providers-and-types.md) ondersteunde Azure Resource [Manager-resourceproviderbewerkingen](resource-provider-operations.md)voor meer informatie.  
      
-1. Vervang *{filter}* door de voor waarde die u wilt Toep assen om de roltoewijzings lijst te filteren.
+1. Vervang *{filter}* door de voorwaarde die u wilt toepassen om de lijst met roltoewijzingen te filteren.
 
-    | Filter | Beschrijving |
-    | --- | --- |
-    | `$filter=atScope()` | Hier worden roltoewijzingen voor alleen het opgegeven bereik weer gegeven, met inbegrip van de roltoewijzingen in subbereiken. |
-    | `$filter=principalId%20eq%20'{objectId}'` | Hier worden roltoewijzingen voor een opgegeven gebruiker, groep of Service-Principal weer gegeven. |
-    | `$filter=assignedTo('{objectId}')` | Hier worden roltoewijzingen voor een opgegeven gebruiker of Service-Principal weer gegeven. Als de gebruiker lid is van een groep die een roltoewijzing heeft, wordt die roltoewijzing ook weer gegeven. Dit filter is transitief voor groepen. Dit betekent dat als de gebruiker lid is van een groep en die groep lid is van een andere groep die een roltoewijzing heeft, die roltoewijzing ook wordt vermeld. Dit filter accepteert alleen een object-ID voor een gebruiker of een service-principal. U kunt geen object-ID door geven voor een groep. |
+    > [!div class="mx-tableFixed"]
+    > | Filteren | Beschrijving |
+    > | --- | --- |
+    > | `$filter=atScope()` | Hiermee worden roltoewijzingen weergegeven voor alleen het opgegeven bereik, met geen roltoewijzingen bij subscopen. |
+    > | `$filter=assignedTo('{objectId}')` | Hiermee worden roltoewijzingen voor een opgegeven gebruiker of serviceprincipal weergegeven.<br/>Als de gebruiker lid is van een groep met een roltoewijzing, wordt die roltoewijzing ook weergegeven. Dit filter is transitief voor groepen, wat betekent dat als de gebruiker lid is van een groep en die groep lid is van een andere groep die een roltoewijzing heeft, die roltoewijzing ook wordt vermeld.<br/>Dit filter accepteert alleen een object-id voor een gebruiker of een serviceprincipal. U een object-id voor een groep niet doorgeven. |
+    > | `$filter=atScope()+and+assignedTo('{objectId}')` | Hiermee worden roltoewijzingen weergegeven voor de opgegeven gebruiker of serviceprincipal en op het opgegeven bereik. |
+    > | `$filter=principalId+eq+'{objectId}'` | Hiermee worden roltoewijzingen voor een opgegeven gebruiker, groep of serviceprincipal weergegeven. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de REST API](role-assignments-rest.md)
-- [Azure REST API-naslaginformatie](/rest/api/azure/)
+- [Roltoewijzingen toevoegen of verwijderen met Azure RBAC en de REST API](role-assignments-rest.md)
+- [Azure REST API-verwijzing](/rest/api/azure/)

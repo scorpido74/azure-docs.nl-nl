@@ -1,6 +1,6 @@
 ---
-title: SSIS-pakketten (Execute SQL Server Integration Services) met het met Azure ingeschakelde dtexec-hulp programma
-description: Meer informatie over het uitvoeren van SQL Server Integration Services (SSIS)-pakketten met het met Azure ingeschakelde dtexec-hulp programma.
+title: SQL Server Integration Services -pakketten (SSIS) uitvoeren met het Azure-hulpprogramma dtexec
+description: Meer informatie over het uitvoeren van SQL Server Integration Services-pakketten (SSIS) met het Azure-hulpprogramma dtexec.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,62 +12,62 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.openlocfilehash: a5540eea91937319a6ac947b50698ccaa8b25847
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931703"
 ---
-# <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>SQL Server Integration Services-pakketten uitvoeren met het Azure-hulp programma dtexec
-In dit artikel wordt het opdracht prompt hulpprogramma voor Azure-dtexec (AzureDTExec) beschreven. Dit wordt gebruikt om SQL Server Integration Services (SSIS)-pakketten uit te voeren op de Azure-SSIS Integration Runtime (IR) in Azure Data Factory.
+# <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>SQL Server Integration Services-pakketten uitvoeren met het Azure-hulpprogramma dtexec
+In dit artikel wordt het azure-enabled dtexec -functie (AzureDTExec) beschreven. Het wordt gebruikt om SQL Server Integration Services (SSIS)-pakketten uit te voeren op de Azure-SSIS Integration Runtime (IR) in Azure Data Factory.
 
-Het traditionele dtexec-hulp programma wordt geleverd met SQL Server. Zie [dtexec Utility](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017)(Engelstalig) voor meer informatie. Het wordt vaak aangeroepen door Orchestrator of planners van derden, zoals ActiveBatch en Control-M, om SSIS-pakketten on-premises uit te voeren. 
+Het traditionele dtexec-hulpprogramma wordt geleverd met SQL Server. Zie [dtexec utility](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017)voor meer informatie. Het wordt vaak aangeroepen door externe orchestrators of planners, zoals ActiveBatch en Control-M, om SSIS-pakketten on-premises uit te voeren. 
 
-Het hulp programma modern AzureDTExec wordt geleverd met een hulp programma van SQL Server Management Studio (SSMS). Het kan ook worden opgeroepen door Orchestrator of planners van derden om SSIS-pakketten uit te voeren in Azure. Het vereenvoudigt de opheffing en verschuiving van uw SSIS-pakketten naar de Cloud. Als u na de migratie het gebruik van Orchestrator of planners van derden wilt blijven gebruiken in uw dagelijkse activiteiten, kunnen ze nu AzureDTExec aanroepen in plaats van dtexec.
+Het moderne AzureDTExec-hulpprogramma wordt geleverd met een SQL Server Management Studio -tool (SSMS). Het kan ook worden aangeroepen door externe orchestrators of planners om SSIS-pakketten in Azure uit te voeren. Het vergemakkelijkt het opheffen en verschuiven of migreren van uw SSIS-pakketten naar de cloud. Als u na de migratie orkestortors of planners van derden wilt blijven gebruiken in uw dagelijkse bewerkingen, kunnen ze nu een beroep doen op AzureDTExec in plaats van dtexec.
 
-AzureDTExec voert uw pakketten uit als uitvoering van SSIS-pakket activiteiten in Data Factory pijp lijnen. Zie [SSIS-pakketten uitvoeren als Azure Data Factory activiteiten](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)voor meer informatie. 
+AzureDTExec voert uw pakketten uit als SSIS-pakketactiviteiten uitvoeren in Data Factory-pijplijnen. Zie [SSIS-pakketten uitvoeren als Azure Data Factory-activiteiten voor](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)meer informatie. 
 
-AzureDTExec kan via SSMS worden geconfigureerd om een Azure Active Directory-toepassing (Azure AD) te gebruiken die pijp lijnen in uw data factory genereert. Het kan ook worden geconfigureerd voor toegang tot bestands systemen, bestands shares of Azure Files waar u uw pakketten opslaat. Op basis van de waarden die u geeft voor de aanroep opties, genereert AzureDTExec een unieke Data Factory-pijp lijn met een activiteit voor het uitvoeren van SSIS-pakketten. Wanneer u AzureDTExec aanroept met dezelfde waarden voor de opties, wordt de bestaande pijp lijn opnieuw uitgevoerd.
+AzureDTExec kan via SSMS worden geconfigureerd om een Azure Active Directory-toepassing (Azure AD) te gebruiken die pijplijnen genereert in uw gegevensfabriek. Het kan ook worden geconfigureerd om toegang te krijgen tot bestandssystemen, bestandsshares of Azure-bestanden waar u uw pakketten opslaat. Op basis van de waarden die u geeft voor de aanroepopties, genereert en voert AzureDTExec een unieke Data Factory-pijplijn uit met een SSIS-pakketactiviteit uitvoeren. Als u een beroep doet op AzureDTExec met dezelfde waarden voor de opties, wordt de bestaande pijplijn opnieuw uitgevoerd.
 
 ## <a name="prerequisites"></a>Vereisten
-Als u AzureDTExec wilt gebruiken, downloadt en installeert u de meest recente versie van SSMS. Dit is versie 18,3 of hoger. Down load deze van [deze website](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
+Als u AzureDTExec wilt gebruiken, downloadt en installeert u de nieuwste versie van SSMS, versie 18.3 of hoger. Download het van [deze website.](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)
 
-## <a name="configure-the-azuredtexec-utility"></a>Het hulp programma AzureDTExec configureren
-Als u SSMS op uw lokale computer installeert, wordt ook AzureDTExec geïnstalleerd. Als u de instellingen wilt configureren, start u SSMS met de optie **als administrator uitvoeren** . Selecteer vervolgens **Hulpprogram ma's** > **migreren naar Azure** > **Azure-DTExec configureren**.
+## <a name="configure-the-azuredtexec-utility"></a>Het AzureDTExec-hulpprogramma configureren
+Als u SSMS op uw lokale machine installeert, wordt ook AzureDTExec geïnstalleerd. Als u de instellingen wilt configureren, start u SSMS met de optie **Uitvoeren als administrator.** Selecteer vervolgens **Extra** > **migreren naar Azure** > **Configure Azure-enabled DTExec**.
 
-![Het dtexec-menu voor Azure ingeschakeld configureren](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png)
+![Dtexec-menu met Azure-ingeschakeld](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png)
 
-Met deze actie opent u een **AzureDTExecConfig** -venster dat moet worden geopend met beheerders bevoegdheden zodat het kan worden geschreven naar het bestand *AzureDTExec. settings* . Als u SSMS niet als beheerder hebt uitgevoerd, wordt het venster Gebruikersaccountbeheer (UAC) geopend. Voer uw beheerders wachtwoord in om uw bevoegdheden uit te breiden.
+Met deze actie wordt een **AzureDTExecConfig-venster** geopend dat moet worden geopend met beheerdersbevoegdheden om in het *azureDTExec.settings-bestand* te schrijven. Als u SSMS niet als beheerder hebt uitgevoerd, wordt een UAC-venster (User Account Control) geopend. Voer uw beheerderswachtwoord in om uw bevoegdheden te verhogen.
 
-![Instellingen voor Azure enabled dtexec configureren](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-settings.png)
+![Dtexec-instellingen met Azure-instellingen configureren](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-settings.png)
 
-Voer in het venster **AzureDTExecConfig** uw configuratie-instellingen als volgt in:
+Voer in het venster **AzureDTExecConfig** de volgende configuratie-instellingen in:
 
-- **ApplicationId**: Voer de unieke id in van de Azure AD-app die u hebt gemaakt met de juiste machtigingen voor het genereren van pijp lijnen in uw Data Factory. Zie [een Azure AD-app en-service-principal maken via Azure Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)voor meer informatie.
-- **AuthenticationKey**: Voer de verificatie sleutel in voor uw Azure AD-app.
-- **TenantId**: Voer de unieke id in van de Azure AD-Tenant, waaronder uw Azure AD-app wordt gemaakt.
-- **SubscriptionId**: Voer de unieke id in van het Azure-abonnement waarmee uw Data Factory is gemaakt.
-- **ResourceGroup**: Voer de naam in van de Azure-resource groep waarin uw Data Factory is gemaakt.
-- **DataFactory**: Voer de naam in van uw Data Factory waarin unieke pijp lijnen met de activiteit EXECUTe SSIS-pakket worden gegenereerd op basis van de waarden van de opties die worden opgegeven wanneer u AzureDTExec aanroept.
-- **IRName**: Voer de naam in van de Azure-SSIS IR in uw Data Factory, waarop de pakketten die zijn opgegeven in het UNC-pad (Universal Naming Convention) worden uitgevoerd wanneer u AzureDTExec aanroept.
-- **PackageAccessDomain**: Voer de domein referentie in voor toegang tot uw pakketten in het UNC-pad dat wordt opgegeven wanneer u AzureDTExec aanroept.
-- **PackageAccessUserName**: Voer de gebruikers naam referentie in voor toegang tot uw pakketten in het UNC-pad dat is opgegeven wanneer u AzureDTExec aanroept.
-- **PackageAccessPassword**: Voer de wachtwoord referentie in om toegang te krijgen tot uw pakketten in het UNC-pad dat is opgegeven wanneer u AzureDTExec aanroept.
-- **LogPath**: Voer het UNC-pad in van de logboekmap, waarin de logboek bestanden van de pakket uitvoeringen op de Azure-SSIS IR zijn geschreven.
-- **LogLevel**: Voer het geselecteerde registratie bereik in op basis van vooraf gedefinieerde **waarden voor Null**-, **basis**-, **uitgebreide**of **prestatie** opties voor uw pakket uitvoeringen op de Azure-SSIS IR.
-- **LogAccessDomain**: Voer de domein referentie in voor toegang tot uw Logboekmap in het UNC-pad wanneer u logboek bestanden schrijft. Dit is vereist wanneer **logPath** is opgegeven en **LogLevel** niet **Null**is.
-- **LogAccessUserName**: Voer de gebruikers naam in om toegang te krijgen tot de logboekmap in het UNC-pad wanneer u logboek bestanden schrijft, wat vereist is wanneer **logPath** is opgegeven en **LogLevel** niet **Null**is.
-- **LogAccessPassword**: Voer de wachtwoord referentie in om toegang te krijgen tot de logboekmap in het UNC-pad wanneer u logboek bestanden schrijft, wat vereist is wanneer **logPath** is opgegeven en **LogLevel** niet **Null**is.
-- **PipelineNameHashStrLen**: Geef de lengte van de hash-teken reeksen op die moeten worden gegenereerd op basis van de waarden van de opties die u opgeeft wanneer u AzureDTExec aanroept. De teken reeksen worden gebruikt om unieke namen te vormen voor Data Factory pijp lijnen die uw pakketten uitvoeren op de Azure-SSIS IR. Meestal is een lengte van 32 tekens voldoende.
+- **ApplicationId:** voer de unieke id in van de Azure AD-app die u maakt met de juiste machtigingen om pijplijnen in uw gegevensfabriek te genereren. Zie [Een Azure AD-app en serviceprincipal maken via Azure-portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)voor meer informatie.
+- **Verificatiesleutel:** voer de verificatiesleutel in voor uw Azure AD-app.
+- **TenantId:** voer de unieke id in van de Azure AD-tenant, waaronder uw Azure AD-app is gemaakt.
+- **SubscriptionId**: Voer de unieke id van het Azure-abonnement in, waaronder uw gegevensfabriek is gemaakt.
+- **ResourceGroup:** voer de naam in van de Azure-brongroep waarin uw gegevensfabriek is gemaakt.
+- **DataFactory:** Voer de naam in van uw gegevensfabriek waarin unieke pijplijnen met SSIS-pakketactiviteit uitvoeren worden gegenereerd op basis van de waarden van de geboden opties wanneer u AzureDTExec aanroept.
+- **IRName**: Voer de naam in van de Azure-SSIS IR in uw gegevensfabriek, waarop de pakketten die zijn opgegeven in hun UNC-pad (Universal Naming Convention) worden uitgevoerd wanneer u AzureDTExec aanroept.
+- **PackageAccessDomain:** Voer de domeinreferenties in om toegang te krijgen tot uw pakketten in hun UNC-pad dat is opgegeven wanneer u AzureDTExec aanroept.
+- **PackageAccessUserName:** Voer de gebruikersnaam in om toegang te krijgen tot uw pakketten in hun UNC-pad dat is opgegeven wanneer u AzureDTExec aanroept.
+- **PackageAccessPassword:** voer de wachtwoordreferenties in om toegang te krijgen tot uw pakketten in hun UNC-pad dat is opgegeven wanneer u AzureDTExec aanroept.
+- **LogPath:** Voer het UNC-pad van de logboekmap in, waarin logboekbestanden van uw pakketuitvoeringen op de Azure-SSIS IR zijn geschreven.
+- **LogLevel:** Voer het geselecteerde bereik van logboekregistratie in van vooraf gedefinieerde **null-,** **Basis-,** **Verbose-** of **Prestatieopties** voor uw pakketuitvoeringen op azure-SSIS IR.
+- **LogAccessDomain:** Voer de domeinreferenties in om toegang te krijgen tot uw logboekmap in het UNC-pad wanneer u logboekbestanden schrijft, wat vereist is wanneer **LogPath** is opgegeven en **LogLevel** niet **null**is.
+- **LogAccessUserName:** Voer de gebruikersnaam in om toegang te krijgen tot uw logmap in het UNC-pad wanneer u logboekbestanden schrijft, wat vereist is wanneer **LogPath** is opgegeven en **LogLevel** niet **null**is.
+- **LogAccessPassword:** Voer de wachtwoordreferenties in om toegang te krijgen tot uw logboekmap in het UNC-pad wanneer u logboekbestanden schrijft, wat vereist is wanneer **LogPath** is opgegeven en **LogLevel** niet **null**is.
+- **PipelineNameHashStrLen:** Voer de lengte in van hashstrings die moeten worden gegenereerd op basis van de waarden van de opties die u opgeeft wanneer u AzureDTExec aanroept. De tekenreeksen worden gebruikt om unieke namen te vormen voor Data Factory-pijplijnen die uw pakketten uitvoeren op de Azure-SSIS IR. Meestal volstaat een lengte van 32 tekens.
 
-Als u uw pakketten en logboek bestanden wilt opslaan in bestands systemen of bestands shares op locatie, voegt u uw Azure-SSIS IR toe aan een virtueel netwerk dat is verbonden met uw on-premises netwerk, zodat het uw pakketten kan ophalen en uw logboek bestanden kan schrijven. Zie [een Azure-SSIS IR toevoegen aan een virtueel netwerk](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)voor meer informatie.
+Als u uw pakketten en logboekbestanden wilt opslaan in bestandssystemen of on-premises bestandsshares, sluit u uw Azure-SSIS IR aan bij een virtueel netwerk dat is aangesloten op uw on-premises netwerk, zodat u uw pakketten kan ophalen en uw logboekbestanden kan schrijven. Zie [Een Azure-SSIS IR deelnemen aan een virtueel netwerk](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)voor meer informatie.
 
-Om te voor komen dat gevoelige waarden worden weer gegeven in het bestand *AzureDTExec. settings* in tekst zonder opmaak, worden ze gecodeerd in teken reeksen van base64-code ring. Wanneer u AzureDTExec aanroept, worden alle met base64 gecodeerde teken reeksen gedecodeerd in hun oorspronkelijke waarden. U kunt het bestand *AzureDTExec. settings* verder beveiligen door de accounts te beperken waarmee toegang kan worden gezocht.
+Om te voorkomen dat gevoelige waarden in het bestand *AzureDTExec.settings* in platte tekst worden weergegeven, coderen we ze in tekenreeksen van Base64-codering. Wanneer u AzureDTExec aanroept, worden alle door Base64 gecodeerde tekenreeksen teruggecodeerd naar hun oorspronkelijke waarden. U het bestand *AzureDTExec.settings* verder beveiligen door de accounts te beperken die er toegang toe hebben.
 
-## <a name="invoke-the-azuredtexec-utility"></a>Het hulp programma AzureDTExec aanroepen
-U kunt AzureDTExec aanroepen bij de opdracht regel prompt en de relevante waarden opgeven voor specifieke opties in uw gebruiks scenario.
+## <a name="invoke-the-azuredtexec-utility"></a>Het AzureDTExec-hulpprogramma aanroepen
+U AzureDTExec aanroepen bij de opdrachtregelprompt en de relevante waarden opgeven voor specifieke opties in uw use-case scenario.
 
-Het hulp programma wordt op `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn`geïnstalleerd. U kunt het pad toevoegen aan de omgevings variabele PATH zodat het kan worden aangeroepen vanaf elke locatie.
+Het hulpprogramma is `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn`geïnstalleerd op . U het pad toevoegen aan de omgevingsvariabele 'PATH' om het overal aan te roepen.
 
 ```dos
 > cd "C:\Program Files (x86)\Microsoft SQL Server Management Studio 18\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn"
@@ -79,20 +79,20 @@ Het hulp programma wordt op `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsof
   /De MyEncryptionPassword
 ```
 
-Het aanroepen van AzureDTExec biedt vergelijk bare opties als het aanroepen van dtexec. Zie [Dtexec Utility](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017)(Engelstalig) voor meer informatie. Dit zijn de opties die momenteel worden ondersteund:
+Een beroep doen op AzureDTExec biedt vergelijkbare opties als een beroep doen op dtexec. Zie [dtexec Utility](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017)voor meer informatie. Dit zijn de opties die momenteel worden ondersteund:
 
-- **/F [estand]** : laadt een pakket dat is opgeslagen in bestands systeem, bestands share of Azure files. Als de waarde voor deze optie kunt u het UNC-pad opgeven voor het pakket bestand in bestands systeem, bestands share of Azure Files met de extensie. dtsx. Als het UNC-pad is opgegeven, plaatst u aanhalings tekens rond het hele pad.
-- **/Conf [igFile]** : Hiermee geeft u een configuratie bestand op waaruit waarden moeten worden opgehaald. Met deze optie kunt u een runtime-configuratie voor uw pakket instellen die afwijkt van de versie die tijdens de ontwerp fase is opgegeven. U kunt verschillende instellingen in een XML-configuratie bestand opslaan en deze vervolgens laden vóór de uitvoering van het pakket. Zie [SSIS-pakket configuraties](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017)voor meer informatie. Als u de waarde voor deze optie wilt opgeven, gebruikt u het UNC-pad voor uw configuratie bestand in bestands systeem, bestands share of Azure Files met de dtsConfig-extensie. Als het UNC-pad is opgegeven, plaatst u aanhalings tekens rond het hele pad.
-- **/Conn [eveiliging]** : Hiermee geeft u de verbindings reeksen voor bestaande verbindings beheer in uw pakket op. Met deze optie kunt u run-time verbindings reeksen instellen voor bestaande verbindings beheer in uw pakket dat verschilt van het aantal dat tijdens de ontwerp fase is opgegeven. Geef als volgt de waarde voor deze optie op: `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]`.
-- **/Set**: onderdrukt de configuratie van een para meter, variabele, eigenschap, container, logboek provider, foreach-enumerator of verbinding in uw pakket. Deze optie kan meerdere keren worden opgegeven. Geef als volgt de waarde voor deze optie op: `property_path;value`. `\package.variables[counter].Value;1` overschrijft bijvoorbeeld de waarde van `counter` variabele als 1. Met de wizard **pakket configuratie** kunt u de waarde van `property_path` zoeken, kopiëren en plakken voor items in het pakket waarvan u de waarde wilt overschrijven. Zie de [wizard pakket configureren](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014)voor meer informatie.
-- **/De [crypt]** : Hiermee stelt u het wacht woord voor ontsleuteling in voor uw pakket dat is geconfigureerd met het beveiligings niveau **EncryptAllWithPassword**/**EncryptSensitiveWithPassword** .
+- **/F[ile]**: hiermee wordt een pakket geladen dat is opgeslagen in bestandssysteem, bestandsshare of Azure-bestanden. Als waarde voor deze optie u het UNC-pad voor uw pakketbestand opgeven in bestandssysteem, bestandsshare of Azure-bestanden met de .dtsx-extensie. Als het opgegeven UNC-pad ruimte bevat, plaatst u aanhalingstekens rond het hele pad.
+- **/Conf[igFile]**: Hiermee geeft u een configuratiebestand op om waarden uit te extraheren. Met deze optie u een runtime-configuratie voor uw pakket instellen die verschilt van de configuratie die is opgegeven tijdens het ontwerp. U verschillende instellingen opslaan in een XML-configuratiebestand en deze vervolgens laden voordat het pakket wordt uitgevoerd. Zie [SSIS-pakketconfiguraties](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017)voor meer informatie. Als u de waarde voor deze optie wilt opgeven, gebruikt u het UNC-pad voor uw configuratiebestand in bestandssysteem, bestandsshare of Azure-bestanden met de dtsConfig-extensie. Als het opgegeven UNC-pad ruimte bevat, plaatst u aanhalingstekens rond het hele pad.
+- **/Conn[uitwerping]**: Hiermee geeft u verbindingstekenreeksen op voor bestaande verbindingsbeheerders in uw pakket. Met deze optie u runtime-verbindingstekenreeksen instellen voor bestaande verbindingsbeheerders in uw pakket die verschillen van de tekenreeksen die tijdens het ontwerp zijn opgegeven. Geef de waarde voor deze `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]`optie als volgt op: .
+- **/Set**: overschrijft de configuratie van een parameter, variabele, eigenschap, container, logprovider, Foreach enumerator of verbinding in uw pakket. Deze optie kan meerdere keren worden opgegeven. Geef de waarde voor deze `property_path;value`optie als volgt op: . Bijvoorbeeld, `\package.variables[counter].Value;1` overschrijft de `counter` waarde van variabele als 1. U de wizard **Pakketconfiguratie** gebruiken om de `property_path` waarde van items in uw pakket waarvan u de waarde wilt overschrijven, te zoeken, te kopiëren en te plakken. Zie [wizard Pakketconfiguratie](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014)voor meer informatie .
+- **/De[crypt]**: Hiermee stelt u het decryptiewachtwoord in voor uw pakket dat is geconfigureerd met het **encryptAllWithPassword**/**EncryptSensitiveWithPassword-beveiligingsniveau.**
 
 > [!NOTE]
-> Als AzureDTExec wordt aangeroepen met nieuwe waarden voor de opties, wordt een nieuwe pijp lijn gegenereerd, met uitzonde ring van de optie **/de [script]** .
+> Als u een beroep doet op AzureDTExec met nieuwe waarden voor de opties, genereert u een nieuwe pijplijn, behalve de optie **/De[cript]**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat unieke pijp lijnen met de activiteit run SSIS-pakket in worden gegenereerd en worden uitgevoerd nadat u AzureDTExec aanroept, kunnen ze worden gecontroleerd op de Data Factory Portal. Zie [SSIS-pakketten uitvoeren als Data Factory activiteiten](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)voor meer informatie.
+Nadat unieke pijplijnen met de activiteit SSIS-pakket uitvoeren erin zijn gegenereerd en uitgevoerd nadat u AzureDTExec hebt aangenomen, kunnen ze worden gecontroleerd op de Portal Gegevensfabriek. Zie [SSIS-pakketten uitvoeren als Data Factory-activiteiten voor](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)meer informatie.
 
 > [!WARNING]
-> De gegenereerde pijp lijn wordt verwacht alleen te worden gebruikt door AzureDTExec. De eigenschappen of para meters worden in de toekomst mogelijk gewijzigd, dus niet voor andere doel einden. Wijzigingen kunnen AzureDTExec afnemen. Als dit gebeurt, verwijdert u de pijp lijn. AzureDTExec genereert een nieuwe pijp lijn de volgende keer dat deze wordt aangeroepen.
+> De gegenereerde pijplijn wordt naar verwachting alleen gebruikt door AzureDTExec. De eigenschappen of parameters kunnen in de toekomst veranderen, dus wijzig of gebruik ze niet voor andere doeleinden. Wijzigingen kunnen AzureDTExec verbreken. Als dit gebeurt, verwijdert u de pijplijn. AzureDTExec genereert een nieuwe pijplijn de volgende keer dat deze wordt aangeroepen.

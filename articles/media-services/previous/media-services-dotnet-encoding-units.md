@@ -1,6 +1,6 @@
 ---
-title: Media verwerking schalen door coderings eenheden toe te voegen-Azure |  Microsoft Docs
-description: In dit artikel wordt beschreven hoe u coderings eenheden kunt toevoegen met Azure Media Services .NET.
+title: Mediaverwerking schalen door coderingseenheden toe te voegen - Azure |  Microsoft Documenten
+description: In dit artikel wordt uitgelegd hoe u coderingseenheden toevoegt met Azure Media Services .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -16,29 +16,29 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milangada
 ms.openlocfilehash: 86fd923c121b9d46109529f75bc3d0d040f1a7a9
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74887285"
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>Codering schalen met .NET SDK
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-scale-media-processing.md)
 > * [.NET](media-services-dotnet-encoding-units.md)
-> * [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
+> * [Rest](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
-> * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
+> * [Php](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
 > 
 
 ## <a name="overview"></a>Overzicht
 > [!IMPORTANT]
-> Controleer het [overzicht](media-services-scale-media-processing-overview.md) voor meer informatie over het schalen van media-verwerkingen.
+> Controleer het [overzicht](media-services-scale-media-processing-overview.md) voor meer informatie over het schalen van mediaverwerking.
 > 
 > 
 
-Ga als volgt te werk om het gereserveerde eenheids type en het aantal gereserveerde encoding-eenheden te wijzigen met behulp van .NET SDK:
+Ga als volgt te werk om het gereserveerde eenheidstype en het aantal gereserveerde eenheden met .NET SDK te wijzigen:
 
     IEncodingReservedUnit encodingS1ReservedUnit = _context.EncodingReservedUnits.FirstOrDefault();
     encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1
@@ -50,9 +50,9 @@ Ga als volgt te werk om het gereserveerde eenheids type en het aantal gereservee
 
     Console.WriteLine("Number of reserved units: {0}", encodingS1ReservedUnit.CurrentReservedUnits);
 
-## <a name="opening-a-support-ticket"></a>Een ondersteunings ticket openen
+## <a name="opening-a-support-ticket"></a>Een ondersteuningsticket openen
 
-Elke Media Services-account kan standaard worden geschaald naar Maxi maal 10 S2-of S3-media gereserveerde eenheden (MRUs) of 25 S1 MRUs en 5 gereserveerde on-demand streaming-eenheden. U kunt een hogere limiet aanvragen door een ondersteunings ticket te openen.
+Standaard kan elk Media Services-account worden geschaald naar maximaal 10 S2- of S3-mediagereserveerde eenheden (MRU's) of 25 S1-ID's en 5 on-demand streaming gereserveerde eenheden. U een hogere limiet aanvragen door een ondersteuningsticket te openen.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,6 +1,6 @@
 ---
 title: Variabele activiteit instellen in Azure Data Factory
-description: Meer informatie over het gebruik van de activiteit variabele instellen om de waarde in te stellen van een bestaande variabele die in een Data Factory pijp lijn is gedefinieerd
+description: Meer informatie over het gebruik van de activiteit Variabele instellen om de waarde in te stellen van een bestaande variabele die is gedefinieerd in een datafabriekpijplijn
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,28 +12,28 @@ ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
 ms.openlocfilehash: 88500ecbc56b34551a0cbd3ca94727ba4bbcda9f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930649"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Variabele activiteit instellen in Azure Data Factory
 
-Gebruik de activiteit variabele instellen om de waarde in te stellen van een bestaande variabele van het type teken reeks, BOOL of matrix die in een Data Factory pijp lijn is gedefinieerd.
+Gebruik de variabele activiteit instellen om de waarde in te stellen van een bestaande variabele van het type String, Bool of Array die is gedefinieerd in een pijplijn gegevensfabriek.
 
-## <a name="type-properties"></a>Type-eigenschappen
+## <a name="type-properties"></a>Eigenschappen typen
 
-Eigenschap | Beschrijving | Verplicht
+Eigenschap | Beschrijving | Vereist
 -------- | ----------- | --------
-name | De naam van de activiteit in de pijp lijn | Ja
-description | Tekst die beschrijft wat de activiteit doet | nee
-type | Type activiteit is SetVariable | ja
-waarde | Waarde van de teken reeks of expressie object die wordt gebruikt om de opgegeven variabele in te stellen | ja
-variableName | Naam van de variabele die wordt ingesteld door deze activiteit | ja
+name | Naam van de activiteit in de pijplijn | Ja
+description | Tekst waarin wordt beschreven wat de activiteit doet | nee
+type | Activiteitstype is SetVariable | ja
+waarde | Tekenreeksletterlijke of expressieobjectwaarde die wordt gebruikt om opgegeven variabele in te stellen | ja
+variableName | Naam van de variabele die door deze activiteit wordt ingesteld | ja
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over een gerelateerde controle stroom activiteit die wordt ondersteund door Data Factory: 
+Meer informatie over een gerelateerde controlestroomactiviteit die wordt ondersteund door Data Factory: 
 
-- [Variabele activiteit toevoegen](control-flow-append-variable-activity.md)
+- [Activiteit variabele toevoegen](control-flow-append-variable-activity.md)

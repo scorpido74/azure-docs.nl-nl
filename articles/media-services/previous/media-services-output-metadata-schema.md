@@ -1,6 +1,6 @@
 ---
-title: Meta gegevens schema voor uitvoer Azure Media Services | Microsoft Docs
-description: Dit artikel bevat een overzicht van Azure Media Services schema voor uitvoer van meta gegevens.
+title: Metagegevensschema azure Media Services uitvoer | Microsoft Documenten
+description: In dit artikel vindt u een overzicht van het metagegevensschema voor uitvoer van Azure Media Services.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,152 +15,152 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 3f0c6b60e2be625d1f869c3eda4acb9dfd3c6e9e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74886809"
 ---
-# <a name="output-metadata"></a>Uitvoer meta gegevens
+# <a name="output-metadata"></a>Uitvoermetagegevens
 ## <a name="overview"></a>Overzicht
-Een coderings taak is gekoppeld aan een invoer element (of activa) waarvoor u bepaalde coderings taken wilt uitvoeren. U kunt bijvoorbeeld een MP4-bestand coderen naar H. 264 MP4 Adaptive bitrate sets; Maak een miniatuur. Maak overlays. Wanneer een taak is voltooid, wordt een uitvoer activum geproduceerd.  Het uitvoer element bevat video, audio, miniaturen, enzovoort. Het uitvoer activum bevat ook een bestand met meta gegevens over het uitvoer element. De naam van het XML-bestand met meta gegevens heeft de volgende indeling: &lt;source_file_name&gt;_manifest. XML (bijvoorbeeld BigBuckBunny_manifest. XML).  
+Een coderingstaak is gekoppeld aan een invoerelement (of elementen) waarop u bepaalde coderingstaken wilt uitvoeren. Codeer bijvoorbeeld een MP4-bestand in adaptieve bitratesets met H.264 MP4. een miniatuur maken; overlays maken. Na voltooiing van een taak wordt een uitvoeractief geproduceerd.  Het uitvoerelement bevat video, audio, miniaturen, enz. Het uitvoerelement bevat ook een bestand met metagegevens over het uitvoerelement. De naam van het XML-bestand &lt;met&gt;ametjes heeft de volgende indeling: source_file_name _manifest.xml (bijvoorbeeld BigBuckBunny_manifest.xml).  
 
-Media Services voert geen bekend in voor het genereren van meta gegevens. Invoer meta gegevens worden alleen gegenereerd als een artefact wanneer een invoer element in een taak wordt verwerkt. Dit artefact wordt daarom geschreven naar de uitvoer Asset. Er worden verschillende hulpprogram ma's gebruikt voor het genereren van meta gegevens voor invoer assets en uitvoer assets. Daarom heeft de invoer meta gegevens een iets ander schema dan de uitvoer meta gegevens.
+Media Services scant geen input-assets om metadata te genereren. Invoermetagegevens worden alleen gegenereerd als een artefact wanneer een invoerelement wordt verwerkt in een taak. Vandaar dat dit artefact is geschreven naar de output Asset. Verschillende tools worden gebruikt om metadata te genereren voor invoerassets en uitvoerassets. Daarom hebben de invoermetagegevens een iets ander schema dan de uitvoermetagegevens.
 
-Als u het meta gegevensbestand wilt controleren, kunt u een **SAS** -Locator maken en het bestand downloaden naar uw lokale computer.  
+Als u het metagegevensbestand wilt onderzoeken, u een **SAS-locator** maken en het bestand downloaden naar uw lokale computer.  
 
-In dit artikel worden de elementen en typen beschreven van het XML-schema waarop de uitvoer-metada (&lt;source_file_name&gt;_manifest. XML) is gebaseerd. Zie invoer van meta gegevens voor informatie over het bestand dat meta gegevens bevat over het invoer element.  
+In dit artikel worden de elementen en typen van het&lt;&gt;XML-schema besproken waarop de uitvoermetada (source_file_name _manifest.xml) is gebaseerd. Zie Invoermetaal voor informatie over het bestand met metagegevens over het invoerelement.  
 
-Aan het eind van dit artikel vindt u de volledige schema code en het XML-voor beeld.  
+Aan het einde van dit artikel vindt u de volledige schemacode en het XML-voorbeeld.  
 
-## <a name="AssetFiles"></a>AssetFiles-hoofd element
-Verzameling van AssetFile-vermeldingen voor de coderings taak.  
+## <a name="assetfiles-root-element"></a><a name="AssetFiles"></a>Hoofdelement AssetFiles
+Verzameling van AssetFile-items voor de coderingstaak.  
 
 ### <a name="child-elements"></a>Onderliggende elementen
-| Naam | Beschrijving |
+| Name | Beschrijving |
 | --- | --- |
-| **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |Een AssetFile-element dat deel uitmaakt van de AssetFiles-verzameling. |
+| **AssetFile (AssetFile)**<br/><br/> minOccurs="0" maxOccurs="1" |Een Element AssetFile dat deel uitmaakt van de AssetFiles-verzameling. |
 
-## <a name="AssetFile"></a>AssetFile-element
-U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
+## <a name="assetfile-element"></a><a name="AssetFile"></a>Element AssetFile
+U een [XML-voorbeeld XML-voorbeeld](#xml)vinden.  
 
 ### <a name="attributes"></a>Kenmerken
-| Naam | Type | Beschrijving |
+| Name | Type | Beschrijving |
 | --- | --- | --- |
-| **Naam**<br/><br/> Verplicht |**XS: teken reeks** |De bestands naam voor het Media-activum. |
-| **Grootte**<br/><br/> minInclusive = "0"<br/><br/> Verplicht |**XS: Long** |Grootte van het activa bestand in bytes. |
-| **Hebben**<br/><br/> Verplicht |**XS: duration** |Duur van het afspelen van inhoud. |
+| **Naam**<br/><br/> Vereist |**xs:tekenreeks** |De bestandsnaam van mediaasset. |
+| **Grootte**<br/><br/> minInclusive ="0"<br/><br/> Vereist |**xs:lang** |Grootte van het assetbestand in bytes. |
+| **Duur**<br/><br/> Vereist |**xs:duur** |Inhoud afspelen duur. |
 
 ### <a name="child-elements"></a>Onderliggende elementen
-| Naam | Beschrijving |
+| Name | Beschrijving |
 | --- | --- |
-| **Beperken** |Verzameling van invoer/bron media bestanden, die zijn verwerkt om deze AssetFile te maken. Zie bron element voor meer informatie. |
-| **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Elk fysiek AssetFile kan in de waarde nul bevatten of meer Video's worden getraceerd in een geschikte container indeling. Zie het element VideoTracks voor meer informatie. |
-| **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Elk fysiek AssetFile kan in de waarde nul of meer audio tracks Interleaved in een geschikte container indeling bevatten. Dit is de verzameling van al deze audio sporen. Zie het element AudioTracks voor meer informatie. |
+| **Bronnen** |Verzameling van input/bronmediabestanden, die zijn verwerkt om deze AssetFile te produceren. Zie Bronelement voor meer informatie. |
+| **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Elke fysieke AssetFile kan daarin nul of meer video's bevatten die zijn verbonden tot een geschikte containerindeling. Zie Het element VideoTracks voor meer informatie. |
+| **Audiotracks**<br/><br/> minOccurs="0" maxOccurs="1" |Elke fysieke AssetFile kan daarin nul of meer audiotracks bevatten die zijn verweven tot een geschikte containerindeling. Dit is de collectie van al die audiotracks. Zie Element AudioTracks voor meer informatie. |
 
-## <a name="Sources"></a>Bron element
-Verzameling van invoer/bron media bestanden, die zijn verwerkt om deze AssetFile te maken.  
+## <a name="sources-element"></a><a name="Sources"></a>Bronnenelement
+Verzameling van input/bronmediabestanden, die zijn verwerkt om deze AssetFile te produceren.  
 
-U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
+U een [XML-voorbeeld XML-voorbeeld](#xml)vinden.  
 
 ### <a name="child-elements"></a>Onderliggende elementen
-| Naam | Beschrijving |
+| Name | Beschrijving |
 | --- | --- |
-| **Bron**<br/><br/> minOccurs = "1" maxOccurs = "ontgrensd" |Een invoer-of bron bestand dat wordt gebruikt bij het genereren van deze asset. Zie bron element voor meer informatie. |
+| **Bron**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Een invoer-/bronbestand dat wordt gebruikt bij het genereren van dit element. Zie Bronelement voor meer informatie. |
 
-## <a name="Source"></a>Bron element
-Een invoer-of bron bestand dat wordt gebruikt bij het genereren van deze asset.  
+## <a name="source-element"></a><a name="Source"></a>Bronelement
+Een invoer-/bronbestand dat wordt gebruikt bij het genereren van dit element.  
 
-U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
+U een [XML-voorbeeld XML-voorbeeld](#xml)vinden.  
 
 ### <a name="attributes"></a>Kenmerken
-| Naam | Type | Beschrijving |
+| Name | Type | Beschrijving |
 | --- | --- | --- |
-| **Naam**<br/><br/> Verplicht |**XS: teken reeks** |Bestands naam van invoer bron. |
+| **Naam**<br/><br/> Vereist |**xs:tekenreeks** |Invoerbronbestandsnaam. |
 
-## <a name="VideoTracks"></a>VideoTracks-element
-Elk fysiek AssetFile kan in de waarde nul bevatten of meer Video's worden getraceerd in een geschikte container indeling. Het **VideoTracks** -element vertegenwoordigt een verzameling van alle video tracks.  
+## <a name="videotracks-element"></a><a name="VideoTracks"></a>VideoTracks-element
+Elke fysieke AssetFile kan daarin nul of meer video's bevatten die zijn verbonden tot een geschikte containerindeling. Het element **VideoTracks** vertegenwoordigt een verzameling van alle videotracks.  
 
-U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
+U een [XML-voorbeeld XML-voorbeeld](#xml)vinden.  
 
 ### <a name="child-elements"></a>Onderliggende elementen
-| Naam | Beschrijving |
+| Name | Beschrijving |
 | --- | --- |
-| **VideoTrack**<br/><br/> minOccurs = "1" maxOccurs = "ontgrensd" |Een specifiek video spoor in het bovenliggende AssetFile. Zie het element VideoTrack voor meer informatie. |
+| **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Een specifieke videotrack in het bovenliggende AssetFile. Zie VideoTrack-element voor meer informatie. |
 
-## <a name="VideoTrack"></a>VideoTrack-element
-Een specifiek video spoor in het bovenliggende AssetFile.  
+## <a name="videotrack-element"></a><a name="VideoTrack"></a>VideoTrack-element
+Een specifieke videotrack in het bovenliggende AssetFile.  
 
-U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
+U een [XML-voorbeeld XML-voorbeeld](#xml)vinden.  
 
 ### <a name="attributes"></a>Kenmerken
-| Naam | Type | Beschrijving |
+| Name | Type | Beschrijving |
 | --- | --- | --- |
-| **Id**<br/><br/> minInclusive = "0"<br/><br/> Verplicht |**XS: int** |Op nul gebaseerde index van deze video track. **Opmerking:**  Deze **id** is niet noodzakelijkerwijs de TrackID die in een MP4-bestand wordt gebruikt. |
-| **FourCC**<br/><br/> Verplicht |**XS: teken reeks** |Code van de video-codec FourCC. |
-| **Profiel** |**XS: teken reeks** |H264-Profiel (alleen van toepassing op H264-codec). |
-| **Niveau** |**XS: teken reeks** |Niveau H264 (alleen van toepassing op H264-codec). |
-| **Breedte**<br/><br/> minInclusive = "0"<br/><br/> Verplicht |**XS: int** |Breedte van gecodeerde video in pixels. |
-| **Hoogte**<br/><br/> minInclusive = "0"<br/><br/> Verplicht |**XS: int** |Versleutelde video hoogte in pixels. |
-| **DisplayAspectRatioNumerator**<br/><br/> minInclusive = "0"<br/><br/> Verplicht |**XS: Double** |Teller voor hoogte-breedte verhouding video weergave. |
-| **DisplayAspectRatioDenominator**<br/><br/> minInclusive = "0"<br/><br/> Verplicht |**XS: Double** |Noemer van hoogte-breedte verhouding video weergave. |
-| **Framerate**<br/><br/> minInclusive = "0"<br/><br/> Verplicht |**XS: decimaal** |Gemeten video frame frequentie in. 3F-indeling. |
-| **TargetFramerate**<br/><br/> minInclusive = "0"<br/><br/> Verplicht |**XS: decimaal** |Vooraf ingestelde doel video frame frequentie in. 3F-indeling. |
-| **Bitrate**<br/><br/> minInclusive = "0"<br/><br/> Verplicht |**XS: int** |De gemiddelde bitsnelheid voor video in kilobits per seconde, zoals berekend op basis van de AssetFile. Telt alleen de elementaire stream Payload en bevat niet de verpakkings belasting. |
-| **TargetBitrate**<br/><br/> minInclusive = "0"<br/><br/> Verplicht |**XS: int** |De gemiddelde bitrate van het doel voor dit video spoor, zoals aangevraagd via de voor instelling voor versleuteling, in kilobits per seconde. |
-| **MaxGOPBitrate**<br/><br/> minInclusive = "0" |**XS: int** |Maximale GOP terug gemiddelde bitrate voor dit video spoor, in kilobits per seconde. |
+| **Id**<br/><br/> minInclusive ="0"<br/><br/> Vereist |**xs:int** |Zero-based index van deze video track. **Let op:**  Deze **id** is niet noodzakelijkerwijs de TrackID zoals gebruikt in een MP4-bestand. |
+| **Fourcc**<br/><br/> Vereist |**xs:tekenreeks** |Videocodec FourCC-code. |
+| **Profiel** |**xs:tekenreeks** |H264-profiel (alleen van toepassing op H264-codec). |
+| **Niveau** |**xs:tekenreeks** |H264-niveau (alleen van toepassing op H264-codec). |
+| **Width**<br/><br/> minInclusive ="0"<br/><br/> Vereist |**xs:int** |Gecodeerde videobreedte in pixels. |
+| **Height**<br/><br/> minInclusive ="0"<br/><br/> Vereist |**xs:int** |Gecodeerde videohoogte in pixels. |
+| **DisplayAspectRatioNumerator**<br/><br/> minInclusive ="0"<br/><br/> Vereist |**xs:dubbel** |Beeldverhouding van de videoweergave. |
+| **DisplayAspectRatioNoemer**<br/><br/> minInclusive ="0"<br/><br/> Vereist |**xs:dubbel** |De noemer van de beeldverhouding van de videoweergave. |
+| **Framesnelheid**<br/><br/> minInclusive ="0"<br/><br/> Vereist |**xs:decimal** |Gemeten videoframesnelheid in .3f-indeling. |
+| **Doelframerate**<br/><br/> minInclusive ="0"<br/><br/> Vereist |**xs:decimal** |Vooraf ingestelde doelvideoframesnelheid in .3f-indeling. |
+| **Bitrate**<br/><br/> minInclusive ="0"<br/><br/> Vereist |**xs:int** |Gemiddelde videobitsnelheid in kilobits per seconde, berekend op basis van de AssetFile. Telt alleen de elementaire stroom lading, en omvat niet de verpakking overhead. |
+| **TargetBitrate TargetBitrate TargetBitrate TargetBit**<br/><br/> minInclusive ="0"<br/><br/> Vereist |**xs:int** |Doel gemiddelde bitrate voor deze video track, zoals gevraagd via de codering preset, in kilobits per seconde. |
+| **MaxGOPBitrate MaxGOPBitrate**<br/><br/> minInclusive ="0" |**xs:int** |Max GOP gemiddelde bitrate voor deze video track, in kilobits per seconde. |
 
-## <a name="AudioTracks"></a>AudioTracks-element
-Elk fysiek AssetFile kan in de waarde nul of meer audio tracks Interleaved in een geschikte container indeling bevatten. Het **AudioTracks** -element vertegenwoordigt een verzameling van al deze audio sporen.  
+## <a name="audiotracks-element"></a><a name="AudioTracks"></a>Element AudioTracks
+Elke fysieke AssetFile kan daarin nul of meer audiotracks bevatten die zijn verweven tot een geschikte containerindeling. Het element **AudioTracks** vertegenwoordigt een verzameling van al die audiotracks.  
 
-U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
+U een [XML-voorbeeld XML-voorbeeld](#xml)vinden.  
 
 ### <a name="child-elements"></a>Onderliggende elementen
-| Naam | Beschrijving |
+| Name | Beschrijving |
 | --- | --- |
-| **AudioTrack**<br/><br/> minOccurs = "1" maxOccurs = "ontgrensd" |Een specifiek audio spoor in het bovenliggende AssetFile. Zie het element AudioTrack voor meer informatie. |
+| **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Een specifieke audiotrack in het bovenliggende AssetFile. Zie AudioTrack-element voor meer informatie. |
 
-## <a name="AudioTrack"></a>AudioTrack-element
-Een specifiek audio spoor in het bovenliggende AssetFile.  
+## <a name="audiotrack-element"></a><a name="AudioTrack"></a>AudioTrack-element
+Een specifieke audiotrack in het bovenliggende AssetFile.  
 
-U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
+U een [XML-voorbeeld XML-voorbeeld](#xml)vinden.  
 
 ### <a name="attributes"></a>Kenmerken
-| Naam | Type | Beschrijving |
+| Name | Type | Beschrijving |
 | --- | --- | --- |
-| **Id**<br/><br/> minInclusive = "0"<br/><br/> Verplicht |**XS: int** |Op nul gebaseerde index van dit audio spoor. **Opmerking:**  Dit is niet noodzakelijkerwijs de TrackID die in een MP4-bestand wordt gebruikt. |
-| **Videocodec** |**XS: teken reeks** |Teken reeks van codec audio track. |
-| **EncoderVersion** |**XS: teken reeks** |Optionele Encoder-versie teken reeks, vereist voor EAC3. |
-| **Kanalen**<br/><br/> minInclusive = "0"<br/><br/> Verplicht |**XS: int** |Aantal audio kanalen. |
-| **SamplingRate**<br/><br/> minInclusive = "0"<br/><br/> Verplicht |**XS: int** |Audio sampling frequentie in samples/sec of Hz. |
-| **Bitrate**<br/><br/> minInclusive = "0"<br/><br/> Verplicht |**XS: int** |De gemiddelde bitsnelheid van audio in bits per seconde, zoals berekend op basis van de AssetFile. Telt alleen de elementaire stream Payload en bevat niet de verpakkings belasting. |
-| **BitsPerSample**<br/><br/> minInclusive = "0"<br/><br/> Verplicht |**XS: int** |Bits per voor beeld voor het wFormatTag-indelings type. |
+| **Id**<br/><br/> minInclusive ="0"<br/><br/> Vereist |**xs:int** |Zero-based index van deze audio track. **Let op:**  Dit is niet noodzakelijkerwijs de TrackID zoals gebruikt in een MP4-bestand. |
+| **Codec** |**xs:tekenreeks** |Audio track codec string. |
+| **EncoderVersie** |**xs:tekenreeks** |Optionele encoderversietekenreeks, vereist voor EAC3. |
+| **Kanalen**<br/><br/> minInclusive ="0"<br/><br/> Vereist |**xs:int** |Aantal audiokanalen. |
+| **Bemonsteringsfrequentie**<br/><br/> minInclusive ="0"<br/><br/> Vereist |**xs:int** |Audiosamplingsnelheid in samples/sec of Hz. |
+| **Bitrate**<br/><br/> minInclusive ="0"<br/><br/> Vereist |**xs:int** |Gemiddelde audiobitsnelheid in bits per seconde, berekend op basis van de AssetFile. Telt alleen de elementaire stroom lading, en omvat niet de verpakking overhead. |
+| **Bitspersample**<br/><br/> minInclusive ="0"<br/><br/> Vereist |**xs:int** |Bits per voorbeeld voor het formaattype wFormatTag. |
 
 ### <a name="child-elements"></a>Onderliggende elementen
-| Naam | Beschrijving |
+| Name | Beschrijving |
 | --- | --- |
-| **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Para meters voor Loudness-meet resultaten. Zie het element LoudnessMeteringResultParameters voor meer informatie. |
+| **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Luidheid meten resultaat parameters. Zie Element LoudnessMeteringResultParameters voor meer informatie. |
 
-## <a name="LoudnessMeteringResultParameters"></a>LoudnessMeteringResultParameters-element
-Para meters voor Loudness-meet resultaten.  
+## <a name="loudnessmeteringresultparameters-element"></a><a name="LoudnessMeteringResultParameters"></a>LuidheidMetingResultParameters element
+Luidheid meten resultaat parameters.  
 
-U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.  
+U een [XML-voorbeeld XML-voorbeeld](#xml)vinden.  
 
 ### <a name="attributes"></a>Kenmerken
-| Naam | Type | Beschrijving |
+| Name | Type | Beschrijving |
 | --- | --- | --- |
-| **DPLMVersionInformation** |**XS: teken reeks** |Versie van **Dolby** Professional LOUDNESS meter Development Kit. |
-| **DialogNormalization**<br/><br/> minInclusive="-31" maxInclusive="-1"<br/><br/> Verplicht |**XS: int** |DialogNormalization gegenereerd via DPLM, vereist wanneer LoudnessMetering is ingesteld |
-| **IntegratedLoudness**<br/><br/> minInclusive="-70" maxInclusive="10"<br/><br/> Verplicht |**xs:float** |Geïntegreerde Loudness |
-| **IntegratedLoudnessUnit**<br/><br/> Verplicht |**XS: teken reeks** |Geïntegreerde LOUDNESS-eenheid. |
-| **IntegratedLoudnessGatingMethod**<br/><br/> Verplicht |**XS: teken reeks** |Beperking-id |
-| **IntegratedLoudnessSpeechPercentage**<br/><br/> minInclusive ="0" maxInclusive="100" |**xs:float** |Spraak inhoud over het programma, uitgedrukt als percentage. |
-| **SamplePeak**<br/><br/> Verplicht |**xs:float** |De absolute waarde van een absoluut voor beeld, sinds het opnieuw instellen of sinds de laatste keer dat deze is gewist, per kanaal.  Eenheden zijn dBFS. |
-| **SamplePeakUnit**<br/><br/> fixed="dBFS"<br/><br/> Verplicht |**xs:anySimpleType** |Voor beeld piek eenheid. |
-| **TruePeak**<br/><br/> Verplicht |**xs:float** |Maximale waarde voor echte piek, conform de ITU-R BS. 1770-2, sinds opnieuw instellen of sinds de laatste keer dat deze is gewist, per kanaal. Eenheden zijn dBTP. |
-| **TruePeakUnit**<br/><br/> Fixed = "dBTP"<br/><br/> Verplicht |**xs:anySimpleType** |Echte piek eenheid. |
+| **DPLMVersionInformatie** |**xs:tekenreeks** |**Dolby** professionele luidheid meting ontwikkeling kit versie. |
+| **Dialoogvenster Normalisatie**<br/><br/> minInclusive="-31" maxInclusive="-1"<br/><br/> Vereist |**xs:int** |DialogEnNormalisatie gegenereerd via DPLM, vereist wanneer LoudnessMetering is ingesteld |
+| **Geïntegreerde luidheid**<br/><br/> minInclusive="-70" maxInclusive="10"<br/><br/> Vereist |**xs:float** |Geïntegreerde luidheid |
+| **Geïntegreerde LoudnessUnit**<br/><br/> Vereist |**xs:tekenreeks** |Geïntegreerde luidheidseenheid. |
+| **Geïntegreerde LoudnessGatingMethod**<br/><br/> Vereist |**xs:tekenreeks** |Gating-id |
+| **Geïntegreerde LoudnessSpeechPercentage**<br/><br/> minInclusive ="0" maxInclusive="100" |**xs:float** |Spraakinhoud over het programma, als percentage. |
+| **VoorbeeldPiek**<br/><br/> Vereist |**xs:float** |Piek absolute monsterwaarde, sinds reset of sinds het laatst werd gewist, per kanaal.  Eenheden zijn dBFS. |
+| **VoorbeeldPiekEenheid**<br/><br/> fixed="dBFS"<br/><br/> Vereist |**xs:anySimpleType** |Voorbeeld piekeenheid. |
+| **TruePeak TruePeak TruePeak TruePeak**<br/><br/> Vereist |**xs:float** |Maximale werkelijke piekwaarde, zoals per ITU-R BS.1770-2, sinds reset of sinds het laatst werd gewist, per kanaal. Eenheden zijn dBTP. |
+| **TruePeakUnit TruePeakUnit**<br/><br/> fixed="dBTP"<br/><br/> Vereist |**xs:anySimpleType** |Echte piekeenheid. |
 
-## <a name="schema-code"></a>Schema code
+## <a name="schema-code"></a>Schemacode
     <?xml version="1.0" encoding="utf-8"?>  
     <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.2"  
                xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2013/05/mediaencoder/metadata"  
@@ -509,9 +509,9 @@ U kunt een XML-voor beeld [-XML-voor](#xml)beeld vinden.
 
 
 
-## <a name="xml"></a>XML-voor beeld
+## <a name="xml-example"></a><a name="xml"></a>XML-voorbeeld
 
-Het volgende XML-bestand is een voor beeld van het meta gegevensbestand voor uitvoer.  
+De volgende XML is een voorbeeld van het metagegevensbestand Uitvoer.  
 
     <AssetFiles xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema"   
                 xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2013/05/mediaencoder/metadata">  

@@ -1,6 +1,6 @@
 ---
-title: Edge-gebeurtenissen door sturen naar Event Grid Cloud-Azure Event Grid IoT Edge | Microsoft Docs
-description: Edge-gebeurtenissen naar Event Grid Cloud door sturen
+title: Randgebeurtenissen doorsturen naar gebeurtenisrastercloud - Azure Event Grid IoT Edge | Microsoft Documenten
+description: Randgebeurtenissen doorsturen naar gebeurtenisrasterwolk
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,41 +10,41 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844714"
 ---
-# <a name="tutorial-forward-events-to-event-grid-cloud"></a>Zelf studie: gebeurtenissen door sturen naar Event Grid Cloud
+# <a name="tutorial-forward-events-to-event-grid-cloud"></a>Zelfstudie: Gebeurtenissen doorsturen naar de cloud van gebeurtenisraster
 
-In dit artikel worden alle stappen beschreven die nodig zijn voor het door sturen van Edge-gebeurtenissen naar Event Grid in de Azure-Cloud. U kunt dit het beste doen om de volgende redenen:
+In dit artikel worden alle stappen doorlopen die nodig zijn om randgebeurtenissen door te sturen naar gebeurtenisraster in de Azure-cloud. Misschien wilt u dit doen om de volgende redenen:
 
-* Reageren op Edge-gebeurtenissen in de Cloud.
-* Stuur gebeurtenissen door naar Event Grid in de Cloud en gebruik Azure Event Hubs of Azure Storage wacht rijen om gebeurtenissen te bufferen voordat ze in de cloud worden verwerkt.
+* Reageer op randgebeurtenissen in de cloud.
+* Gebeurtenissen doorsturen naar gebeurtenisraster in de cloud en Azure Event Hubs of Azure Storage-wachtrijen gebruiken om gebeurtenissen te bufferen voordat ze in de cloud worden verwerkt.
 
- Voor het volt ooien van deze zelf studie hebt u een goed idee van Event Grid concepten over [Edge](concepts.md) en [Azure](../concepts.md). Zie voor aanvullende doel typen [gebeurtenis-handlers](event-handlers.md). 
+ Als u deze zelfstudie wilt voltooien, moet u inzicht hebben in concepten voor [gebeurtenisrasters](concepts.md) op edge en [Azure.](../concepts.md) Zie [gebeurtenishandlers](event-handlers.md)voor extra doeltypen . 
 
 ## <a name="prerequisites"></a>Vereisten 
-Als u deze zelf studie wilt volt ooien, hebt u het volgende nodig:
+Om deze tutorial te voltooien, moet je:
 
-* **Azure-abonnement** : Maak een [gratis account](https://azure.microsoft.com/free) als u er nog geen hebt. 
-* **Azure IOT hub en IOT edge apparaat** : Volg de stappen in de Quick start voor [Linux](../../iot-edge/quickstart-linux.md) -of [Windows-apparaten](../../iot-edge/quickstart.md) als u er nog geen hebt.
+* **Azure-abonnement** - Maak een [gratis account](https://azure.microsoft.com/free) als u er nog geen hebt. 
+* **Azure IoT Hub en IoT Edge-apparaat** - Volg de stappen in de snelle start voor [Linux-](../../iot-edge/quickstart-linux.md) of [Windows-apparaten](../../iot-edge/quickstart.md) als u er nog geen hebt.
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)] 
-## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>Een onderwerp en een abonnement op gebeurtenis raster maken in de Cloud
+## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>Gebeurtenisrasteronderwerp en -abonnement maken in de cloud
 
-Maak een event grid-onderwerp en-abonnement in de Cloud door [deze zelf studie](../custom-event-quickstart-portal.md)te volgen. Noteer `topicURL`, `sasKey`en `topicName` van het zojuist gemaakte onderwerp dat u later in de zelf studie gaat gebruiken.
+Maak een gebeurtenisrasteronderwerp en -abonnement in de cloud door [deze zelfstudie te](../custom-event-quickstart-portal.md)volgen. Noteer `topicURL` `sasKey`, `topicName` en van het nieuw gemaakte onderwerp dat u later in de zelfstudie zult gebruiken.
 
-Als u bijvoorbeeld een onderwerp met de naam `testegcloudtopic` hebt gemaakt in VS West, zien de waarden er ongeveer als volgt uit:
+Als u bijvoorbeeld een onderwerp `testegcloudtopic` hebt gemaakt met de naam In West-VS, zien de waarden er ongeveer als:
 
-* **TopicUrl**: `https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
-* **Onderwerpnaam**: `testegcloudtopic`
-* **SasKey**: beschikbaar onder **accessKey** van uw onderwerp. Gebruik **key1**.
+* **TopicUrl**:`https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
+* **TopicName**:`testegcloudtopic`
+* **SasKey**: Beschikbaar onder **AccessKey** van uw onderwerp. Toets **1 gebruiken**.
 
-## <a name="create-event-grid-topic-at-the-edge"></a>Event grid-onderwerp maken aan de rand
+## <a name="create-event-grid-topic-at-the-edge"></a>Gebeurtenisrasteronderwerp aan de rand maken
 
-1. Maak topic3. json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak topic3.json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
 
     ```json
         {
@@ -54,12 +54,12 @@ Als u bijvoorbeeld een onderwerp met de naam `testegcloudtopic` hebt gemaakt in 
           }
         }
     ```
-1. Voer de volgende opdracht uit om het onderwerp te maken. De HTTP-status code van 200 OK moet worden geretourneerd.
+1. Voer de volgende opdracht uit om het onderwerp te maken. HTTP-statuscode van 200 OK moet worden geretourneerd.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
     ```
-1. Voer de volgende opdracht uit om het onderwerp te controleren dat is gemaakt. De HTTP-status code van 200 OK moet worden geretourneerd.
+1. Voer de volgende opdracht uit om te controleren of het onderwerp is gemaakt. HTTP-statuscode van 200 OK moet worden geretourneerd.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
@@ -81,11 +81,11 @@ Als u bijvoorbeeld een onderwerp met de naam `testegcloudtopic` hebt gemaakt in 
         ]
    ```
   
-## <a name="create-event-grid-subscription-at-the-edge"></a>Event Grid abonnement maken aan de rand
+## <a name="create-event-grid-subscription-at-the-edge"></a>Abonnement op gebeurtenisraster aan de rand maken
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Maak subscription3. json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak subscription3.json met de volgende content. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
 
    ```json
         {
@@ -103,7 +103,7 @@ Als u bijvoorbeeld een onderwerp met de naam `testegcloudtopic` hebt gemaakt in 
    ```
 
    >[!NOTE]
-   > De **endpointUrl** geeft aan dat de URL van het event grid onderwerp in de Cloud. De **sasKey** verwijst naar Event grid de sleutel van het Cloud onderwerp. De waarde in **topic** wordt gebruikt om alle uitgaande gebeurtenissen te stempelen Event grid. Dit kan handig zijn wanneer u naar een onderwerp van een Event Grid domein boekt. Zie [gebeurtenis domeinen](../event-domains.md) voor meer informatie over het onderwerp van Event grid domein
+   > De **endpointUrl** geeft aan dat de URL van het gebeurtenisrasteronderwerp in de cloud. De **sasKey** verwijst naar de sleutel van event grid cloud topic. De waarde in **topicName** wordt gebruikt om alle uitgaande gebeurtenissen te stempelen op Gebeurtenisraster. Dit kan handig zijn bij het plaatsen naar een gebeurtenisrasterdomeinonderwerp. Zie Gebeurtenisdomeinen voor meer informatie over het domeinonderwerp [EventGrid](../event-domains.md)
 
     Bijvoorbeeld:
   
@@ -122,13 +122,13 @@ Als u bijvoorbeeld een onderwerp met de naam `testegcloudtopic` hebt gemaakt in 
         }
     ```
 
-2. Voer de volgende opdracht uit om het abonnement te maken. De HTTP-status code van 200 OK moet worden geretourneerd.
+2. Voer de volgende opdracht uit om het abonnement te maken. HTTP-statuscode van 200 OK moet worden geretourneerd.
 
      ```sh
      curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/eventSubscriptions/sampleSubscription3?api-version=2019-01-01-preview
      ```
 
-3. Voer de volgende opdracht uit om het abonnement te controleren dat is gemaakt. De HTTP-status code van 200 OK moet worden geretourneerd.
+3. Voer de volgende opdracht uit om te controleren of het abonnement is gemaakt. HTTP-statuscode van 200 OK moet worden geretourneerd.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/eventSubscriptions/sampleSubscription3?api-version=2019-01-01-preview
@@ -157,7 +157,7 @@ Als u bijvoorbeeld een onderwerp met de naam `testegcloudtopic` hebt gemaakt in 
 
 ## <a name="publish-an-event-at-the-edge"></a>Een gebeurtenis aan de rand publiceren
 
-1. Maak event3. json met de volgende inhoud. Zie [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak event3.json met de volgende inhoud. Zie [API-documentatie](api.md) voor meer informatie over de payload.
 
     ```json
         [
@@ -181,25 +181,25 @@ Als u bijvoorbeeld een onderwerp met de naam `testegcloudtopic` hebt gemaakt in 
     curl -k -H "Content-Type: application/json" -X POST -g -d @event3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/events?api-version=2019-01-01-preview
     ```
 
-## <a name="verify-edge-event-in-cloud"></a>De rand gebeurtenis in de Cloud controleren
+## <a name="verify-edge-event-in-cloud"></a>Randgebeurtenis in de cloud verifiëren
 
-Raadpleeg de [zelf studie](../custom-event-quickstart-portal.md)voor meer informatie over het weer geven van gebeurtenissen die worden geleverd door het Cloud onderwerp.
+Zie de [zelfstudie](../custom-event-quickstart-portal.md)voor informatie over het bekijken van gebeurtenissen die door het cloudonderwerp worden geleverd.
 
 ## <a name="cleanup-resources"></a>Resources opruimen
 
-* Voer de volgende opdracht uit om het onderwerp en alle bijbehorende abonnementen te verwijderen
+* Voer de volgende opdracht uit om het onderwerp en alle abonnementen te verwijderen
 
     ```sh
     curl -k -H "Content-Type: application/json" -X DELETE https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
     ```
 
-* Verwijder ook het onderwerp en de abonnementen die in de Cloud (Azure Event Grid) zijn gemaakt.
+* Verwijder ook onderwerp en abonnementen die in de cloud zijn gemaakt (Azure Event Grid).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een gebeurtenis op de rand gepubliceerd en doorgestuurd naar Event Grid in de Azure-Cloud. Nu u weet welke basis stappen u kunt door sturen naar Event Grid in de Cloud:
+In deze zelfstudie hebt u een gebeurtenis op de rand gepubliceerd en doorgestuurd naar gebeurtenisraster in de Azure-cloud. Nu u de basisstappen kent om door te sturen naar Event Grid in de cloud:
 
-* Zie [probleemoplossings gids voor informatie](troubleshoot.md)over het oplossen van problemen met het gebruik van Azure Event Grid op IOT Edge.
-* Door sturen van gebeurtenissen naar IoTHub door deze [zelf studie](forward-events-iothub.md) te volgen
-* Door sturen van gebeurtenissen naar webhook in de Cloud door deze [zelf studie](pub-sub-events-webhook-cloud.md) te volgen
-* [Onderwerpen en abonnementen bewaken aan de rand](monitor-topics-subscriptions.md)
+* Zie [Gids voor probleemoplossing](troubleshoot.md)voor het oplossen van problemen met het gebruik van Azure Event Grid op IoT Edge.
+* Gebeurtenissen doorsturen naar IoTHub door deze [zelfstudie](forward-events-iothub.md) te volgen
+* Gebeurtenissen doorsturen naar Webhook in de cloud door deze [zelfstudie te volgen](pub-sub-events-webhook-cloud.md)
+* [Onderwerpen en abonnementen op de rand bewaken](monitor-topics-subscriptions.md)

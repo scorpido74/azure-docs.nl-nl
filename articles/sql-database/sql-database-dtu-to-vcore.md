@@ -1,6 +1,6 @@
 ---
 title: Migreren van DTU naar vCore
-description: Migreer vanuit het DTU-model naar het vCore-model. Migreren naar vCore is vergelijkbaar met het bijwerken of downgradeen tussen de Standard-en Premium-lagen.
+description: Migreer van het DTU-model naar het vCore-model. Migreren naar vCore is vergelijkbaar met upgraden of downgraden tussen de standaard- en premiumlagen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,58 +10,58 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 03/09/2020
 ms.openlocfilehash: 693065046f92e0e9eade14c43e9942772440937d
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78945403"
 ---
-# <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migreren van het DTU-model naar het model op basis van vCore
+# <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migreren van het DTU-model naar het vCore-model
 
 ## <a name="migrate-a-database"></a>Een database migreren
 
-Het migreren van een Data Base van het DTU-gebaseerde aankoop model naar het op vCore gebaseerde aankoop model is vergelijkbaar met het bijwerken of downgradeen tussen de Standard-en Premium-Service lagen in het op DTU gebaseerde aankoop model.
+Het migreren van een database van het Op DTU gebaseerde inkoopmodel naar het vCore-gebaseerde inkoopmodel is vergelijkbaar met het upgraden of verlagen tussen de standaard- en premiumservicelagen in het Op DTU gebaseerde inkoopmodel.
 
-## <a name="migrate-databases-that-use-geo-replication"></a>Data bases migreren die gebruikmaken van geo-replicatie
+## <a name="migrate-databases-that-use-geo-replication"></a>Databases migreren die georeplicatie gebruiken
 
-Migreren van het DTU-model naar het op vCore gebaseerde aankoop model is vergelijkbaar met het bijwerken of verlagen van de geo-replicatie relaties tussen data bases in de Standard-en Premium-Service lagen. Tijdens de migratie hoeft u geo-replicatie niet te stoppen, maar moet u deze regels voor volgorde bepaling volgen:
+Migreren van het DTU-model naar het vCore-gebaseerde inkoopmodel is vergelijkbaar met het upgraden of downgraden van de georeplicatierelaties tussen databases in de standaard- en premiumservicelagen. Tijdens de migratie hoeft u georeplicatie niet te stoppen, maar moet u de volgende regels volgen:
 
-- Wanneer u een upgrade uitvoert, moet u eerst de secundaire data base upgraden en vervolgens een upgrade uitvoeren van de primaire.
-- Wanneer u een downgrade uitvoert, maakt u de volg orde ongedaan: u moet eerst de primaire data base opdowngradeen en vervolgens het secundaire database downgrade verlagen.
+- Bij het upgraden moet u eerst de secundaire database upgraden en vervolgens de primaire database upgraden.
+- Bij het downgraden u de volgorde omkeren: u moet eerst de primaire database downgraden en vervolgens de secundaire indeling verlagen.
 
-Wanneer u geo-replicatie tussen twee elastische Pools gebruikt, raden we u aan om één groep als primair en als de secundaire groep aan te wijzen. In dat geval moet u bij het migreren van elastische Pools dezelfde richt lijnen voor sequentiëren gebruiken. Als u echter elastische Pools hebt die zowel primaire als secundaire data bases bevatten, behandelt u de pool met het hogere gebruik als primair en volgt u de regels voor volgorde bepaling dienovereenkomstig.  
+Wanneer u georeplicatie tussen twee elastische groepen gebruikt, raden we u aan de ene groep aan te wijzen als de primaire en de andere als secundaire. In dat geval moet u bij het migreren van elastische pools dezelfde sequencingrichtlijnen gebruiken. Als u echter elastische pools hebt die zowel primaire als secundaire databases bevatten, behandelt u de groep met het hogere gebruik als de primaire en volgt u de sequencingregels dienovereenkomstig.  
 
-De volgende tabel bevat richt lijnen voor specifieke migratie scenario's:
+In de volgende tabel vindt u richtlijnen voor specifieke migratiescenario's:
 
-|Huidige servicelaag|Doel service-laag|Type migratie|Gebruikers acties|
+|Huidige servicelaag|Doelservicelaag|Migratietype|Gebruikersacties|
 |---|---|---|---|
-|Standard|Algemeen doel|Zij|Kan in een wille keurige volg orde worden gemigreerd, maar moet de juiste vCore-grootte worden gegarandeerd *|
-|Premium|Bedrijfs kritiek|Zij|Kan in een wille keurige volg orde worden gemigreerd, maar moet de juiste vCore-grootte worden gegarandeerd *|
-|Standard|Bedrijfs kritiek|Upgraden|Moet secundair eerst worden gemigreerd|
-|Bedrijfs kritiek|Standard|Downgrade|Moet primair eerst worden gemigreerd|
-|Premium|Algemeen doel|Downgrade|Moet primair eerst worden gemigreerd|
-|Algemeen doel|Premium|Upgraden|Moet secundair eerst worden gemigreerd|
-|Bedrijfs kritiek|Algemeen doel|Downgrade|Moet primair eerst worden gemigreerd|
-|Algemeen doel|Bedrijfs kritiek|Upgraden|Moet secundair eerst worden gemigreerd|
+|Standard|Algemeen doel|Laterale|Kan migreren in elke volgorde, maar moeten zorgen voor de juiste vCore-grootte *|
+|Premium|Bedrijfskritisch|Laterale|Kan migreren in elke volgorde, maar moeten zorgen voor de juiste vCore-grootte *|
+|Standard|Bedrijfskritisch|Upgraden|Moet eerst secundair migreren|
+|Bedrijfskritisch|Standard|Downgrade|Moet eerst primaire migreren|
+|Premium|Algemeen doel|Downgrade|Moet eerst primaire migreren|
+|Algemeen doel|Premium|Upgraden|Moet eerst secundair migreren|
+|Bedrijfskritisch|Algemeen doel|Downgrade|Moet eerst primaire migreren|
+|Algemeen doel|Bedrijfskritisch|Upgraden|Moet eerst secundair migreren|
 ||||
 
-\* als vuist regel, is voor elke 100-Dtu's in de laag standaard Mini maal 1 vCore vereist en moet elke 125 Dtu's in de laag Premium ten minste één vCore vereisen. Zie [vCore-gebaseerd inkoop model](https://docs.microsoft.com/azure/sql-database/sql-database-purchase-models#vcore-based-purchasing-model)voor meer informatie.
+\*Als vuistregel geldt dat elke 100 DTU's in de standaardlaag ten minste 1 vCore vereisen en elke 125 DTU's in de premiumlaag ten minste 1 vCore vereisen. Zie voor meer informatie [het op vCore gebaseerde inkoopmodel](https://docs.microsoft.com/azure/sql-database/sql-database-purchase-models#vcore-based-purchasing-model).
 
-## <a name="migrate-failover-groups"></a>Failover-groepen migreren
+## <a name="migrate-failover-groups"></a>Failovergroepen migreren
 
-Migratie van failover-groepen met meerdere data bases vereist een afzonderlijke migratie van de primaire en secundaire data bases. Tijdens dat proces gelden dezelfde aandachtspunten en sequentiëren. Nadat de data bases zijn geconverteerd naar het op vCore gebaseerde aankoop model, blijft de failovergroep van kracht met dezelfde beleids instellingen.
+Migratie van failovergroepen met meerdere databases vereist individuele migratie van de primaire en secundaire databases. Tijdens dat proces gelden dezelfde overwegingen en volgorderegels. Nadat de databases zijn geconverteerd naar het op vCore gebaseerde inkoopmodel, blijft de failovergroep van kracht met dezelfde beleidsinstellingen.
 
-### <a name="create-a-geo-replication-secondary-database"></a>Een secundaire data base met geo-replicatie maken
+### <a name="create-a-geo-replication-secondary-database"></a>Een secundaire georeplicatiedatabase maken
 
-U kunt een secundaire data base met geo-replicatie (een geo-secundair) alleen maken door dezelfde servicelaag te gebruiken als u hebt gebruikt voor de primaire data base. Voor data bases met een hoge frequentie voor het genereren van het logboek, wordt aangeraden om de geo-secundair te maken met dezelfde reken grootte als de primaire.
+U een secundaire georeplicatiedatabase (een geo-secundaire) alleen maken met dezelfde servicelaag als u voor de primaire database hebt gebruikt. Voor databases met een hoge loggeneratiesnelheid raden we aan de geo-secundaire te maken met dezelfde rekengrootte als de primaire.
 
-Als u een geo-secundair maakt in de elastische pool voor één primaire data base, moet u ervoor zorgen dat de `maxVCore` instelling voor de pool overeenkomt met de reken grootte van de primaire data base. Als u een geo-secundair maakt voor een primaire groep in een andere elastische pool, raden we aan dat de groepen dezelfde `maxVCore`-instellingen hebben.
+Als u een geo-secundaire instelling maakt in de elastische `maxVCore` groep voor één primaire database, controleert u of de instelling voor de groep overeenkomt met de rekengrootte van de primaire database. Als u een geo-secundaire instelling maakt voor een primaire in een `maxVCore` andere elastische groep, raden we u aan dat de groepen dezelfde instellingen hebben.
 
-## <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Database kopie gebruiken om een DTU-gebaseerde data base te converteren naar een op vCore gebaseerde data base
+## <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Databasekopie gebruiken om een DTU-database om te zetten naar een vCore-database
 
-U kunt elke Data Base met een op DTU gebaseerde reken grootte kopiëren naar een Data Base met een op vCore gebaseerde reken grootte zonder beperkingen of speciale sequentiëren, zolang de doel berekenings grootte de maximale database grootte van de bron database ondersteunt. De kopie van de data base maakt een moment opname van de gegevens vanaf de begin tijd van de Kopieer bewerking en synchroniseert geen gegevens tussen de bron en het doel.
+U elke database met een Op DTU gebaseerde rekengrootte kopiëren naar een database met een op vCore gebaseerde rekengrootte zonder beperkingen of speciale sequencing, zolang de doelgrootte de maximale databasegrootte van de brondatabase ondersteunt. De databasekopie maakt een momentopname van de gegevens vanaf de begintijd van de kopieerbewerking en synchroniseert geen gegevens tussen de bron en het doel.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [SQL database resource limieten op basis van vCore voor afzonderlijke data](sql-database-vcore-resource-limits-single-databases.md)bases voor de specifieke berekenings grootte en beschik bare opslag grootte voor afzonderlijke data bases.
-- Zie [SQL database op vCore gebaseerde resource limieten voor elastische Pools](sql-database-vcore-resource-limits-elastic-pools.md)voor de specifieke berekenings grootten en opties voor opslag grootte die beschikbaar zijn voor elastische Pools.
+- Zie [SQL Database vCore-gebaseerde resourcelimieten voor afzonderlijke databases voor](sql-database-vcore-resource-limits-single-databases.md)de specifieke rekengroottes en opslaggroottekeuzes die beschikbaar zijn voor afzonderlijke databases.
+- Zie [SQL Database vCore-gebaseerde resourcelimieten voor elastische pools voor](sql-database-vcore-resource-limits-elastic-pools.md)de specifieke rekengroottes en opties voor opslaggroottes die beschikbaar zijn voor elastische pools.

@@ -1,10 +1,9 @@
 ---
-title: Uw app weer geven in de Azure AD-toepassings galerie | Microsoft Docs
-description: Meer informatie over het weer geven van een toepassing die eenmalige aanmelding in de app-galerie van Azure Active Directory ondersteunt
+title: Uw app weergeven in de Azure AD-toepassingsgalerie | Microsoft Documenten
+description: Meer informatie over het weergeven van een toepassing die eenmalige aanmelding ondersteunt in de Azure Active Directory-app-galerie
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.topic: conceptual
@@ -12,148 +11,149 @@ ms.workload: identity
 ms.date: 12/06/2019
 ms.author: ryanwi
 ms.reviewer: jeedes
-ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 99c7d7fccf674fe8cda9d1f64cdf303f1e7764fd
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.custom: aaddev
+ROBOTS: NOINDEX
+ms.openlocfilehash: 969193b2c0843c4eb217d2bdb9f9ad9a40ccf9af
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164836"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154964"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uw toepassing weergeven in de Azure Active Directory-toepassingsgalerie
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-In dit artikel wordt beschreven hoe u een toepassing kunt weer geven in de toepassings galerie van Azure Active Directory (Azure AD), eenmalige aanmelding (SSO) implementeert en de vermelding beheert.
+In dit artikel ziet u hoe u een toepassing aanbieden in de azure active directory -toepassingsgalerie (Azure AD), eenmalige aanmelding (SSO) implementeren en de vermelding beheren.
 
-## <a name="what-is-the-azure-ad-application-gallery"></a>Wat is de Azure AD-toepassings galerie?
+## <a name="what-is-the-azure-ad-application-gallery"></a>Wat is de Azure AD-toepassingsgalerie?
 
-- Klanten vinden de best mogelijke eenmalige aanmelding.
-- De configuratie van de toepassing is eenvoudig en mini maal.
-- Met een snelle zoek opdracht vindt u uw toepassing in de galerie.
-- Gratis, Basic en Premium Azure AD-klanten kunnen deze integratie gebruiken.
-- Wederzijdse klanten krijgen een stapsgewijze zelf studie voor configuratie.
-- Klanten die het systeem voor Cross-Domain Identity Management ([scim](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) gebruiken, kunnen inrichten voor dezelfde app gebruiken.
+- Klanten vinden de best mogelijke single sign-on ervaring.
+- Configuratie van de applicatie is eenvoudig en minimaal.
+- Bij een snelle zoekopdracht vindt u uw toepassing in de galerie.
+- Gratis, Basic- en Premium Azure AD-klanten kunnen deze integratie allemaal gebruiken.
+- Wederzijdse klanten krijgen een stapsgewijze configuratie-zelfstudie.
+- Klanten die het Systeem voor Cross-domain Identity Management[(SCIM)](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)gebruiken, kunnen inrichten voor dezelfde app gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voor federatieve toepassingen (Open-ID en SAML/WS-voeder) moet de toepassing het SaaS-model (Software-as-a-Service) ondersteunen om te worden weer gegeven in de Azure AD-App-galerie. De Enter prise Gallery-toepassingen moeten ondersteuning bieden voor meerdere klant configuraties en niet voor een specifieke klant.
-- Voor Open ID Connect moet de toepassing meerdere tenants zijn en moet het [Azure AD toestemmings raamwerk](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) goed worden geïmplementeerd voor de toepassing. De gebruiker kan de aanmeldings aanvraag naar een gemeen schappelijk eind punt verzenden, zodat elke klant toestemming kan geven voor de toepassing. U kunt de gebruikers toegang beheren op basis van de Tenant-ID en de UPN van de gebruiker die in het token is ontvangen.
-- Voor SAML 2.0/WS-voeder moet uw toepassing de mogelijkheid hebben om de integratie van SAML/WS-invoerende SSO in de SP-of IDP-modus te kunnen uitvoeren. Zorg ervoor dat deze functie correct werkt voordat u de aanvraag indient.
-- Zorg ervoor dat uw toepassing ondersteuning biedt voor formulier verificatie, zodat wachtwoord kluizen kan worden uitgevoerd om eenmalige aanmelding te kunnen werken.
-- U hebt een permanent account nodig om te testen met ten minste twee gebruikers die zijn geregistreerd.
+- Voor federatieve toepassingen (Open ID en SAML/WS-Fed) moet de toepassing het saas-model (software-as-a-service) ondersteunen om te worden weergegeven in de azure AD-app-galerie. De enterprise gallery-toepassingen moeten meerdere klantconfiguraties ondersteunen en geen specifieke klant.
+- Voor Open ID Connect moet de toepassing multitenant zijn en moet het [Azure AD-toestemmingskader](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) correct zijn geïmplementeerd voor de toepassing. De gebruiker kan de aanmeldingsaanvraag naar een gemeenschappelijk eindpunt sturen, zodat elke klant toestemming kan geven voor de toepassing. U de gebruikerstoegang beheren op basis van de tenant-id en de UPN van de gebruiker die in het token is ontvangen.
+- Voor SAML 2.0/WS-Fed moet uw toepassing de mogelijkheid hebben om de SAML/WS-Fed SSO-integratie in sp- of IDP-modus uit te voeren. Zorg ervoor dat deze mogelijkheid correct werkt voordat u de aanvraag indient.
+- Voor wachtwoord SSO moet u ervoor zorgen dat uw toepassing formulierverificatie ondersteunt, zodat wachtwoordkluising kan worden gedaan om eenmalige aanmelding te laten werken zoals verwacht.
+- Je hebt een permanent account nodig voor het testen met ten minste twee geregistreerde gebruikers.
 
-**Hoe kan ik Azure AD voor ontwikkel aars ophalen?**
+**Hoe krijg je Azure AD voor ontwikkelaars?**
 
-U kunt een gratis test account krijgen met alle Premium Azure AD-functies-90 dagen gratis en kunnen zo lang worden uitgebreid als u er ontwikkel aars mee werkt: https://docs.microsoft.com/office/developer-program/office-365-developer-program
+U een gratis testaccount krijgen met alle premium Azure AD-functies - 90 dagen gratis en kan worden verlengd zolang u er dev mee werkt:https://docs.microsoft.com/office/developer-program/office-365-developer-program
 
-## <a name="submit-the-request-in-the-portal"></a>De aanvraag verzenden in de portal
+## <a name="submit-the-request-in-the-portal"></a>Dien de aanvraag in in het portaal
 
-Nadat u hebt gecontroleerd of uw toepassings integratie werkt met Azure AD, moet u uw verzoek om toegang verzenden in de portal voor het [toepassings netwerk](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Als u een Office 365-account hebt, kunt u dit gebruiken om u aan te melden bij deze portal. Als dat niet het geval is, gebruikt u uw Microsoft-account, zoals Outlook of Hotmail, om u aan te melden.
+Nadat u hebt getest of uw toepassingsintegratie werkt met Azure AD, dient u uw verzoek om toegang in de [portal voor toepassingsnetwerk](https://microsoft.sharepoint.com/teams/apponboarding/Apps)in. Als u een Office 365-account hebt, gebruikt u deze om u aan te melden bij deze portal. Als dit niet het zo is, gebruikt u uw Microsoft-account, zoals Outlook of Hotmail, om u aan te melden.
 
-Als de volgende pagina wordt weer gegeven nadat u zich hebt aangemeld, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Geef het e-mail account op dat u wilt gebruiken voor het verzenden van de aanvraag. Het team van Azure AD voegt het account toe aan de portal van het micro soft-toepassings netwerk.
+Als de volgende pagina wordt weergegeven nadat u zich hebt aangemeld, neemt u contact op met het [Azure AD SSO-integratieteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Geef het e-mailaccount op dat u wilt gebruiken voor het indienen van de aanvraag. Het Azure AD-team voegt het account toe in de Portal van het Microsoft Application Network.
 
-![Bericht over toegangs aanvraag in share Point Portal](./media/howto-app-gallery-listing/errorimage.png)
+![Bericht voor toegangsaanvragen op SharePoint-portal](./media/howto-app-gallery-listing/errorimage.png)
 
-Nadat het account is toegevoegd, kunt u zich aanmelden bij de portal van het micro soft-toepassings netwerk.
+Nadat het account is toegevoegd, u zich aanmelden bij de Portal van het Microsoft Application Network.
 
-Als de volgende pagina wordt weer gegeven nadat u zich hebt aangemeld, moet u een zakelijke reden opgeven voor toegang tot het tekstvak. Selecteer vervolgens **toegang aanvragen**.
+Als de volgende pagina wordt weergegeven nadat u zich hebt aangemeld, geeft u een zakelijke rechtvaardiging voor het nodig hebben van toegang in het tekstvak. Selecteer vervolgens **Toegang aanvragen**.
 
-  ![Vak zakelijke rechtvaardiging in share Point Portal](./media/howto-app-gallery-listing/accessrequest.png)
+  ![Vak Ondernemingsrechtvaardiging op SharePoint-portal](./media/howto-app-gallery-listing/accessrequest.png)
 
-Ons team bekijkt de details en geeft u de juiste toegang. Nadat uw aanvraag is goedgekeurd, kunt u zich aanmelden bij de portal en de aanvraag indienen door de tegel **aanvraag indienen (ISV)** op de start pagina te selecteren.
+Ons team beoordeelt de details en geeft u dienovereenkomstig toegang. Nadat uw aanvraag is goedgekeurd, u zich aanmelden bij de portal en de aanvraag indienen door de tegel **Verzoek verzenden (ISV)** op de startpagina te selecteren.
 
-![Tegel Request (ISV) verzenden op Start pagina](./media/howto-app-gallery-listing/homepage.png)
+![Tegel Aanvraag (ISV) verzenden op startpagina](./media/howto-app-gallery-listing/homepage.png)
 
-## <a name="issues-on-logging-into-portal"></a>Problemen bij het aanmelden bij de portal
+## <a name="issues-on-logging-into-portal"></a>Problemen bij het inloggen op portal
 
-Als deze fout optreedt tijdens het aanmelden, ziet u hier de details over het probleem en hoe u het kunt oplossen.
+Als u deze fout ziet tijdens het inloggen dan hier zijn de details over het probleem en dit is hoe je het oplossen.
 
-* Als uw aanmelding is geblokkeerd, zoals hieronder wordt weer gegeven:
+* Als uw aanmelding is geblokkeerd, zoals hieronder wordt weergegeven:
 
-  ![problemen met het omzetten van toepassingen in de galerie](./media/howto-app-gallery-listing/blocked.png)
+  ![problemen met het oplossen van toepassing in de galerie](./media/howto-app-gallery-listing/blocked.png)
 
 **Wat gebeurt er:**
 
-De gast gebruiker is federatief voor een thuis Tenant die ook een Azure AD is. De gast gebruiker heeft een hoog risico. Micro soft staat gebruikers met een hoog risico niet toe om toegang te krijgen tot de resources. Alle gebruikers met een hoog risico (werk nemers of gasten/leveranciers) moeten hun risico voor toegang tot micro soft-resources herstellen/sluiten. Voor gast gebruikers is dit risico van de gebruiker afkomstig van de thuis Tenant en is het beleid afkomstig van de resource Tenant (micro soft in dit geval).
+De gastgebruiker wordt gefedeerd naar een thuistenant die ook een Azure AD is. De gastgebruiker loopt een hoog risico. Microsoft staat gebruikers met een hoog risico geen toegang toe om toegang te krijgen tot de bronnen. Alle gebruikers met een hoog risico (werknemers of gasten/leveranciers) moeten hun risico herstellen / sluiten om toegang te krijgen tot Microsoft-bronnen. Voor gastgebruikers is dit gebruikersrisico afkomstig van de thuistenant en het beleid komt van de resourcetenant (Microsoft in dit geval).
  
 **Veilige oplossingen:**
 
-* Door MFA geregistreerde gast gebruikers herstellen hun eigen gebruikers risico. Dit kan door de gast gebruiker worden uitgevoerd om een beveiligd wacht woord te wijzigen of opnieuw in te stellen (https://aka.ms/sspr) bij hun thuis Tenant (dit vereist MFA en SSPR bij de thuis Tenant). Het beveiligde wacht woord wijzigen of opnieuw instellen moet worden gestart op Azure AD en niet on-premises.
+* MFA geregistreerde gastgebruikers saneren hun eigen gebruikersrisico. Dit kan worden gedaan door de gastgebruiker hethttps://aka.ms/sspr) uitvoeren van een beveiligde wachtwoord te wijzigen of opnieuw (bij hun huis huurder (dit moet MFA en SSPR bij de woning huurder). De beveiligde wachtwoordwijziging of -reset moet worden gestart op Azure AD en niet on-prem.
 
-* Gast gebruikers hebben hun beheerders hun risico hersteld. In dit geval voert de beheerder een wachtwoord herstel uit (tijdelijke wacht woorden genereren). Dit vereist geen identiteits beveiliging. De beheerder van de gast gebruiker kan naar https://aka.ms/RiskyUsers gaan en op wacht woord opnieuw instellen klikken.
+* Gastgebruikers hebben hun beheerders hun risico te verzien. In dit geval voert de beheerder een wachtwoordreset uit (tijdelijke wachtwoordgeneratie). Dit heeft geen identiteitsbescherming nodig. De beheerder van de gastgebruiker kan naar https://aka.ms/RiskyUsers 'Wachtwoord opnieuw instellen' klikken.
 
-* Gast gebruikers hebben hun beheerders hun Risico's sluiten/verwijderen. Opnieuw, hiervoor is geen identiteits beveiliging vereist. De beheerder kan naar https://aka.ms/RiskyUsers gaan en op gebruikers risico negeren klikken. De beheerder moet er echter rekening mee houden dat dit een onjuiste positieve risico analyse was voordat het gebruikers risico wordt gesloten. Anders zetten ze hun en micro soft-bronnen risico door een risico analyse zonder onderzoek te onderdrukken.
+* Gastgebruikers hebben hun admins dicht / ontslaan hun risico. Nogmaals, dit heeft geen identiteitsbescherming nodig. De beheerder kan https://aka.ms/RiskyUsers naar toe gaan en op 'Gebruikersrisico afwijzen' klikken. Echter, de admin moet de due diligence doen om ervoor te zorgen dat dit een vals-positieve risicobeoordeling was voordat het gebruikersrisico werd gesloten. Anders brengen ze de middelen van hun en Microsoft in gevaar door een risicobeoordeling zonder onderzoek te onderdrukken.
 
 > [!NOTE]
-> Als u problemen hebt met Access, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+> Als u problemen hebt met de toegang, neemt u contact op met het [Azure AD SSO Integration Team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-## <a name="implement-sso-by-using-the-federation-protocol"></a>SSO implementeren met behulp van het Federation-Protocol
+## <a name="implement-sso-by-using-the-federation-protocol"></a>SSO implementeren met behulp van het federatieprotocol
 
-Als u een toepassing in de Azure AD-App-galerie wilt weer geven, moet u eerst een van de volgende Federatie protocollen implementeren die door Azure AD worden ondersteund. U moet ook akkoord gaan met de voor waarden van de Azure AD-toepassings galerie. Lees de voor waarden van de Azure AD-toepassings galerie op [deze website](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/).
+Als u een toepassing wilt aanbieden in de azure AD-app-galerie, moet u eerst een van de volgende federatieprotocollen implementeren die worden ondersteund door Azure AD. U moet ook akkoord gaan met de algemene voorwaarden van de Azure AD-toepassingsgalerie. Lees de algemene voorwaarden van de Azure AD-toepassingsgalerie op [deze website](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/).
 
-- **OpenID Connect Connect**: als u uw toepassing wilt integreren met Azure AD met behulp van het Open-ID Connect-protocol, volgt u de instructies van de [ontwikkel aars](v1-authentication-scenarios.md).
+- **OpenID Connect**: Als u uw toepassing wilt integreren met Azure AD met behulp van het Open ID [Connect-protocol,](v1-authentication-scenarios.md)volgt u de instructies van de ontwikkelaars.
 
-    ![Een OpenID Connect Connect-toepassing in de galerie weer geven](./media/howto-app-gallery-listing/openid.png)
+    ![Een OpenID Connect-toepassing in de galerie aanbieden](./media/howto-app-gallery-listing/openid.png)
 
-    * Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van OpenID Connect Connect, selecteert u **OpenID Connect connect & OAuth 2,0** , zoals wordt weer gegeven.
-    * Als u problemen hebt met Access, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+    * Als u uw toepassing wilt toevoegen aan de lijst in de galerie met OpenID Connect, selecteert u **OpenID Connect & OAuth 2.0** zoals weergegeven.
+    * Als u problemen hebt met de toegang, neemt u contact op met het [Azure AD SSO Integration Team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-- **Saml 2,0** of **WS-voeder**: als uw app SAML 2,0 ondersteunt, kunt u deze rechtstreeks integreren met een Azure AD-Tenant door de [instructies te volgen om een aangepaste toepassing toe te voegen](../active-directory-saas-custom-apps.md).
+- **SAML 2.0** of **WS-Fed:** Als uw app SAML 2.0 ondersteunt, u deze rechtstreeks integreren met een Azure AD-tenant door de instructies te volgen [om een aangepaste toepassing toe te voegen.](../active-directory-saas-custom-apps.md)
 
-  ![Een SAML 2,0-of WS--toepassing in de galerie weer geven](./media/howto-app-gallery-listing/saml.png)
+  ![Een SAML 2.0- of WS-Fed-toepassing in de galerie aanbieden](./media/howto-app-gallery-listing/saml.png)
 
-  * Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van **saml 2,0** of **WS-voeder**, selecteert u **SAML 2.0/WS-wordt gevoederd** zoals weer gegeven.
+  * Als u uw toepassing wilt toevoegen aan de lijst in de galerie met **SAML 2.0** of **WS-Fed,** selecteert u **SAML 2.0/WS-Fed** zoals weergegeven.
 
-  * Als u problemen hebt met Access, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+  * Als u problemen hebt met de toegang, neemt u contact op met het [Azure AD SSO Integration Team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-## <a name="implement-sso-by-using-the-password-sso"></a>SSO implementeren met behulp van de SSO van het wacht woord
+## <a name="implement-sso-by-using-the-password-sso"></a>SSO implementeren met het wachtwoord SSO
 
-Maak een webtoepassing met een HTML-aanmeldings pagina voor het configureren [van eenmalige aanmelding op basis van wacht woorden](../manage-apps/what-is-single-sign-on.md). Met SSO op basis van wacht woorden, ook wel wachtwoord kluizen genoemd, kunt u gebruikers toegang en-wacht woorden beheren voor webtoepassingen die geen identiteits Federatie ondersteunen. Het is ook handig voor scenario's waarin meerdere gebruikers één account moeten delen, zoals de accounts voor de sociale media-app van uw organisatie.
+Maak een webtoepassing met een HTML-aanmeldingspagina om [een enkele aanmelding op basis van een wachtwoord](../manage-apps/what-is-single-sign-on.md)te configureren. Met sso op basis van wachtwoorden, ook wel wachtwoordkluis genoemd, u gebruikerstoegang en wachtwoorden beheren voor webtoepassingen die identiteitsfederatie niet ondersteunen. Het is ook handig voor scenario's waarin meerdere gebruikers één account moeten delen, zoals de sociale media-app-accounts van uw organisatie.
 
-![Een SSO-toepassing voor wacht woorden in de galerie weer geven](./media/howto-app-gallery-listing/passwordsso.png)
+![Een SSO-toepassing voor wachtwoorden in de galerie vermelden](./media/howto-app-gallery-listing/passwordsso.png)
 
-* Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van wacht woord-SSO, selecteert u **SSO van wacht woord** , zoals wordt weer gegeven.
-* Als u problemen hebt met Access, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+* Als u uw toepassing wilt toevoegen aan de lijst in de galerie met wachtwoord SSO, selecteert u **Wachtwoord SSO** zoals weergegeven.
+* Als u problemen hebt met de toegang, neemt u contact op met het [Azure AD SSO Integration Team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-## <a name="request-for-user-provisioning"></a>Aanvraag voor gebruikers inrichting
+## <a name="request-for-user-provisioning"></a>Aanvraag voor gebruikersinrichting
 
-Volg het proces dat wordt weer gegeven in de volgende afbeelding om het inrichten van gebruikers aan te vragen.
+Volg het proces in de volgende afbeelding om gebruikersinrichting aan te vragen.
 
-   ![Aanvraag voor gebruikers inrichting](./media/howto-app-gallery-listing/user-provisioning.png)
+   ![Aanvraag voor gebruikersinrichting](./media/howto-app-gallery-listing/user-provisioning.png)
 
-## <a name="update-or-remove-an-existing-listing"></a>Een bestaande vermelding bijwerken of verwijderen
+## <a name="update-or-remove-an-existing-listing"></a>Een bestaande aanbieding bijwerken of verwijderen
 
-Als u een bestaande toepassing wilt bijwerken of verwijderen in de app-galerie van Azure AD, moet u de aanvraag eerst indienen in de portal voor het [toepassings netwerk](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Als u een Office 365-account hebt, kunt u dit gebruiken om u aan te melden bij deze portal. Als dat niet het geval is, gebruikt u uw Microsoft-account, zoals Outlook of Hotmail, om u aan te melden.
+Als u een bestaande toepassing wilt bijwerken of verwijderen in de azure AD-app-galerie, moet u de aanvraag eerst indienen in de [portal van het toepassingsnetwerk.](https://microsoft.sharepoint.com/teams/apponboarding/Apps) Als u een Office 365-account hebt, gebruikt u deze om u aan te melden bij deze portal. Als dit niet het zo is, gebruikt u uw Microsoft-account, zoals Outlook of Hotmail, om u aan te melden.
 
-- Selecteer de gewenste optie, zoals wordt weer gegeven in de volgende afbeelding.
+- Selecteer de juiste optie zoals weergegeven in de volgende afbeelding.
 
-    ![Een SAML-toepassing in de galerie weer geven](./media/howto-app-gallery-listing/updateorremove.png)
+    ![Een SAML-toepassing in de galerie aanbieden](./media/howto-app-gallery-listing/updateorremove.png)
 
-    * Als u een bestaande toepassing wilt bijwerken, selecteert u de gewenste optie volgens uw vereiste.
-    * Als u een bestaande toepassing uit de Azure AD-App-galerie wilt verwijderen, selecteert u **mijn toepassings vermelding verwijderen in de galerie**.
-    * Als u problemen hebt met Access, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+    * Als u een bestaande toepassing wilt bijwerken, selecteert u de juiste optie volgens uw vereiste.
+    * Als u een bestaande toepassing wilt verwijderen uit de azure AD-app-galerie, selecteert u **Mijn toepassingsvermelding verwijderen uit de galerie**.
+    * Als u problemen hebt met de toegang, neemt u contact op met het [Azure AD SSO Integration Team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-## <a name="list-requests-by-customers"></a>Aanvragen van klanten weer geven
+## <a name="list-requests-by-customers"></a>Lijstaanvragen van klanten
 
-Klanten kunnen een aanvraag indienen om een toepassing weer te geven door **app-aanvragen per klant** te selecteren > **nieuwe aanvraag**in te dienen.
+Klanten kunnen een aanvraag indienen om een aanvraag aan te bieden door **app-aanvragen van klanten** > te selecteren**Dien een nieuwe aanvraag in.**
 
-![Toont de tegel door de klant aangevraagde apps](./media/howto-app-gallery-listing/customer-submit-request.png)
+![Toont de tegel met door de klant aangevraagde apps](./media/howto-app-gallery-listing/customer-submit-request.png)
 
-Hier volgt de stroom van door de klant aangevraagde toepassingen.
+Hier is de stroom van door de klant aangevraagde toepassingen.
 
-![Toont de stroom van de door de klant aangevraagde apps](./media/howto-app-gallery-listing/customerrequest.png)
+![Toont de door de klant gevraagde appsstroom](./media/howto-app-gallery-listing/customerrequest.png)
 
-## <a name="timelines"></a>Tijd lijnen
+## <a name="timelines"></a>Tijdlijnen
 
-De tijd lijn voor het proces van het weer geven van een SAML 2,0-of WS-set-toepassing in de galerie is 7 tot 10 werk dagen.
+De tijdlijn voor het proces van het aanbieden van een SAML 2.0 of WS-Fed applicatie in de galerij is 7 tot 10 werkdagen.
 
-  ![Tijd lijn voor het weer geven van een SAML-toepassing in de galerie](./media/howto-app-gallery-listing/timeline.png)
+  ![Tijdlijn voor het aanbieden van een SAML-toepassing in de galerie](./media/howto-app-gallery-listing/timeline.png)
 
-De tijd lijn voor het proces van het weer geven van een OpenID Connect Connect-toepassing in de galerie is 2 tot 5 werk dagen.
+De tijdlijn voor het proces van het aanbieden van een OpenID Connect-toepassing in de galerie is 2 tot 5 werkdagen.
 
-  ![Tijd lijn voor het weer geven van een OpenID Connect Connect-toepassing in de galerie](./media/howto-app-gallery-listing/timeline2.png)
+  ![Tijdlijn voor het aanbieden van een OpenID Connect-toepassing in de galerie](./media/howto-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>Escalaties
 
-Verzend voor eventuele escalaties e-mail naar het [Azure AD SSO-integratie team](mailto:SaaSApplicationIntegrations@service.microsoft.com) op SaaSApplicationIntegrations@service.microsoft.comen wij zullen zo snel mogelijk reageren.
+Voor escalaties stuurt u e-mail naar het [Azure AD SSO Integration Team](mailto:SaaSApplicationIntegrations@service.microsoft.com) op SaaSApplicationIntegrations@service.microsoft.com, en we reageren zo snel mogelijk.

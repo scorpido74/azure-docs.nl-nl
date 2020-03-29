@@ -1,85 +1,85 @@
 ---
-title: Switch-instructies toevoegen aan werk stromen
-description: Switch instructies maken waarmee werk stroom acties worden beheerd op basis van specifieke waarden in Azure Logic Apps
+title: Schakelinstructies toevoegen aan werkstromen
+description: Schakelinstructies maken die werkstroomacties beheren op basis van specifieke waarden in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 5c40feec2dca65e4bc9617a71a6d0a8e4c872a3a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74793233"
 ---
-# <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Switch-instructies maken waarmee werk stroom acties worden uitgevoerd op basis van specifieke waarden in Azure Logic Apps
+# <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Schakelinstructies maken die werkstroomacties uitvoeren op basis van specifieke waarden in Azure Logic Apps
 
-Als u specifieke acties wilt uitvoeren op basis van de waarden van objecten, expressies of tokens, voegt u een instructie *Switch* toe. Deze structuur evalueert het object, de expressie of het token, kiest het geval dat overeenkomt met het resultaat en voert alleen specifieke acties voor die aanvraag uit. Wanneer de switch-instructie wordt uitgevoerd, moet er slechts één geval overeenkomen met het resultaat.
+Als u specifieke acties wilt uitvoeren op basis van de waarden van objecten, expressies of tokens, voegt u een *switchinstructie* toe. Deze structuur evalueert het object, de expressie of het token, kiest de case die overeenkomt met het resultaat en voert alleen specifieke acties uit voor die case. Wanneer de switchinstructie wordt uitgevoerd, moet slechts één geval overeenkomen met het resultaat.
 
-Stel dat u een logische app wilt die verschillende stappen uitvoert op basis van een optie die is geselecteerd in het e-mail bericht. In dit voor beeld controleert de logische app de RSS-feed van een website op nieuwe inhoud. Wanneer een nieuw item wordt weer gegeven in de RSS-feed, verzendt de logische app een e-mail bericht naar een goed keurder. Op basis van het feit of de fiatteur ' goed keuren ' of ' afwijzen ' selecteert, volgt de logische app verschillende stappen.
+Stel dat u een logische app wilt die verschillende stappen neemt op basis van een optie die in e-mail is geselecteerd. In dit voorbeeld controleert de logische app de RSS-feed van een website op nieuwe inhoud. Wanneer een nieuw item wordt weergegeven in de RSS-feed, stuurt de logische app e-mail naar een goedkeurder. Op basis van de vraag of de keurgever 'Goedkeuren' of 'Weigeren' selecteert, volgt de logische app verschillende stappen.
 
 > [!TIP]
-> Net als alle programmeer talen ondersteunen switch-instructies alleen gelijkheids operatoren. Als u andere relationele Opera tors nodig hebt, zoals ' groter dan ', gebruikt u een [voorwaardelijke instructie](../logic-apps/logic-apps-control-flow-conditional-statement.md).
-> Om het deterministische uitvoerings gedrag te garanderen, moeten cases een unieke en statische waarde bevatten in plaats van dynamische tokens of expressies.
+> Net als alle programmeertalen ondersteunen switchstatements alleen gelijkheidsoperatoren. Als u andere relationele operatoren nodig hebt, zoals "groter dan", gebruikt u een [voorwaardelijke instructie](../logic-apps/logic-apps-control-flow-conditional-statement.md).
+> Om deterministisch uitvoeringsgedrag te garanderen, moeten aanvragen een unieke en statische waarde bevatten in plaats van dynamische tokens of expressies.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Als u het voor beeld in dit artikel wilt volgen, [maakt u deze voorbeeld logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md) met een Outlook.com-of Office 365 Outlook-account.
+* Als u het voorbeeld in dit artikel wilt volgen, [maakt u deze voorbeeldlogica-app](../logic-apps/quickstart-create-first-logic-app-workflow.md) met een Outlook.com- of Office 365 Outlook-account.
 
-  1. Wanneer u de actie voor het verzenden van e-mail toevoegt, zoekt en selecteert u in plaats daarvan deze actie: **een goedkeurings-e-mail verzenden**
+  1. Wanneer u de actie toevoegt om e-mail te verzenden, zoekt en selecteert u deze actie in plaats daarvan: **Een goedkeuringse-mail verzenden**
 
-     ![Selecteer e-mail voor goed keuring verzenden](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
+     ![Selecteer 'Een goedkeuringse-mail verzenden'](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
 
-  1. Geef de vereiste velden op, zoals het e-mail adres van de persoon die de goedkeurings-e-mail ontvangt. 
-  Onder **gebruikers opties**voert u ' goed keuren, afwijzen ' in.
+  1. Geef de vereiste velden op, zoals het e-mailadres voor de persoon die de goedkeuringse-mail krijgt. 
+  Voer **onder Gebruikersopties**'Goedkeuren, afwijzen' in.
 
-     ![E-mail gegevens invoeren](./media/logic-apps-control-flow-switch-statement/send-approval-email-details.png)
+     ![E-mailgegevens invoeren](./media/logic-apps-control-flow-switch-statement/send-approval-email-details.png)
 
 ## <a name="add-switch-statement"></a>Switch-instructie toevoegen
 
-1. Voor dit voor beeld voegt u een instructie switch toe aan het einde van uw voorbeeld werk stroom. Klik na de laatste stap op **nieuwe stap**.
+1. Voeg in dit voorbeeld een switchinstructie toe aan het einde van uw voorbeeldwerkstroom. Kies Na de laatste stap De optie **Nieuwe stap**.
 
-   Wanneer u een switch-instructie tussen de stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl waaraan u de instructie switch wilt toevoegen. Kies het **plus teken** ( **+** ) dat wordt weer gegeven en kies vervolgens **een actie toevoegen**.
+   Wanneer u een switchinstructie tussen de stappen wilt toevoegen, verplaatst u de aanwijzer over de pijl waar u de switchinstructie wilt toevoegen. Kies het **plusteken** (**+**) dat wordt weergegeven en kies **vervolgens Een actie toevoegen**.
 
-1. In het zoekvak voert u "switch" in als uw filter. Selecteer deze actie: **Switch-Control**
+1. Voer in het zoekvak 'switch' in als filter. Selecteer deze actie: **Switch - Control**
 
-   ![Switch toevoegen](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
+   ![Schakelaar toevoegen](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
 
-   Een switch-instructie wordt weer gegeven met één geval en een standaard geval. 
-   Voor een switch-instructie is standaard ten minste één aanvraag vereist plus het standaard geval. 
+   Er verschijnt een switch-instructie met één aanvraag en een standaardaanvraag. 
+   Standaard vereist een switch-instructie ten minste één case plus de standaardcase. 
 
-   ![Lege standaard Switch-instructie](./media/logic-apps-control-flow-switch-statement/empty-switch.png)
+   ![Standaardswitchinstructie leeg maken](./media/logic-apps-control-flow-switch-statement/empty-switch.png)
 
-1. Klik in het vak **aan** zodat de lijst met dynamische inhoud wordt weer gegeven. Selecteer in de lijst het veld **token** waarvan de uitvoer bepaalt welke actie moet worden uitgevoerd. 
+1. Klik in het vak **Aan,** zodat de lijst met dynamische inhoud wordt weergegeven. Selecteer in die lijst het veld **SelectedOption** waarvan de uitvoer de uit te voeren actie bepaalt. 
 
-   ![Selecteer ' token '](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
+   ![Selecteer 'SelectedOption'](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
 
-1. Voor het afhandelen van de gevallen waarin de fiatteur `Approve` of `Reject`selecteert, voegt u een andere case toe tussen **Case** en **default**. 
+1. Als u de gevallen wilt `Approve` afhandelen waarin de goedkeurder een andere aanvraag selecteert of `Reject`toevoegt tussen **Aanvraag** en **Standaard**. 
 
-   ![Een andere case toevoegen](./media/logic-apps-control-flow-switch-statement/switch-plus.png)
+   ![Een ander aanvraag toevoegen](./media/logic-apps-control-flow-switch-statement/switch-plus.png)
 
-1. Voeg deze acties toe aan de bijbehorende cases:
+1. Voeg deze acties toe aan de bijbehorende aanvragen:
 
-   | Casu # | **Token** | Bewerking |
+   | Geval # | **Geselecteerde optie** | Actie |
    |--------|--------------------|--------|
-   | Voor beeld 1 | **Beoordelaar** | Voeg de actie Outlook **een E-mail verzenden** toe om alleen gegevens over het RSS-item te verzenden wanneer de fiatteur **goed keuren**heeft geselecteerd. |
-   | Case 2 | **Geweigerd** | Voeg de actie Outlook **een E-mail verzenden** toe voor het melden van andere goed keurders die het RSS-item heeft afgewezen. |
-   | Standaard | Geen | Geen actie vereist. In dit voor beeld is de **standaard** situatie leeg, omdat **token** slechts twee opties heeft. |
+   | Zaak 1 | **Goedkeuren** | Voeg de **outlook-actie Voor** het verzenden van gegevens over het RSS-item alleen toe als de goedgekeurde goedkeuring heeft geselecteerd **Goedkeuren**. |
+   | Zaak 2 | **Afwijzen** | Voeg de actie Outlook **Toe Stuur een e-mailactie** toe om andere fiatteurs te laten weten dat het RSS-item is afgewezen. |
+   | Standaard | Geen | Geen actie nodig. In dit voorbeeld is de **standaardaanvraag** leeg omdat **SelectedOption** slechts twee opties heeft. |
    |||
 
-   ![Instructie switch is voltooid](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
+   ![Voltooide switchinstructie](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
 
 1. Sla uw logische app op. 
 
-   Als u dit voor beeld hand matig wilt testen, kiest u **uitvoeren** totdat de logische app een nieuw RSS-item vindt en een goedkeurings-e-mail verzendt. 
-   Selecteer **goed keuren** om de resultaten te bekijken.
+   Als u dit voorbeeld handmatig wilt testen, kiest u **Uitvoeren** totdat de logische app een nieuw RSS-item heeft gevonden en een goedkeuringse-mail verzendt. 
+   Selecteer **Goedkeuren** om de resultaten te observeren.
 
 ## <a name="json-definition"></a>JSON-definitie
 
-Nu u een logische app hebt gemaakt met behulp van een instructie switch, kijken we naar de code definitie op hoog niveau achter de switch-instructie.
+Nu u een logische app hebt gemaakt met behulp van een switch-instructie, kijken we naar de codedefinitie op hoog niveau achter de switch-instructie.
 
 ``` json
 "Switch": {
@@ -112,21 +112,21 @@ Nu u een logische app hebt gemaakt met behulp van een instructie switch, kijken 
 
 | Label | Beschrijving |
 |-------|-------------|
-| `"Switch"`         | De naam van de instructie switch, die u de naam van de Lees baarheid kunt wijzigen |
-| `"type": "Switch"` | Geeft aan dat de actie een switch instructie is |
-| `"expression"`     | In dit voor beeld geeft u de geselecteerde optie van de fiatteur op die wordt geëvalueerd op basis van elke case, zoals later in de definitie wordt gedeclareerd. |
-| `"cases"` | Hiermee definieert u een wille keurig aantal cases. Voor elk geval is `"Case_*"` de standaard naam voor dat geval, waarmee u de Lees baarheid kunt wijzigen |
-| `"case"` | Hiermee geeft u de waarde van de case op. dit moet een constante en een unieke waarde zijn die de instructie switch gebruikt voor vergelijking. Als er geen gevallen overeenkomen met het resultaat van de switch-expressie, worden de acties in de sectie `"default"` uitgevoerd. | 
+| `"Switch"`         | De naam van de switch-instructie, die u hernoemen voor leesbaarheid |
+| `"type": "Switch"` | Hiermee geeft u op dat de actie een switch-instructie is |
+| `"expression"`     | Hiermee geeft u de geselecteerde optie van de keurgever op die voor elk geval wordt geëvalueerd, zoals later in de definitie wordt aangegeven |
+| `"cases"` | Hiermee definieert u een willekeurig aantal gevallen. Voor elk `"Case_*"` geval is dit de standaardnaam voor die aanvraag, waarmee u de naam voor leesbaarheid wijzigen |
+| `"case"` | Hiermee geeft u de waarde van de aanvraag op, die een constante en unieke waarde moet zijn die de switchinstructie gebruikt voor vergelijking. Als er geen aanvragen overeenkomen met het `"default"` resultaat van de switchexpressie, worden de acties in de sectie uitgevoerd. | 
 | | | 
 
-## <a name="get-support"></a>Krijg ondersteuning
+## <a name="get-support"></a>Ondersteuning krijgen
 
 * Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
-* Ga naar de [site voor Azure Logic Apps gebruikers feedback](https://aka.ms/logicapps-wish)om functies of suggesties te verzenden of hierop te stemmen.
+* Ga naar de [feedbacksite](https://aka.ms/logicapps-wish)van Azure Logic Apps om functies of suggesties in te dienen of te stemmen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Stappen uitvoeren op basis van een voor waarde (voorwaardelijke instructies)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [Stappen uitvoeren op basis van een voorwaarde (voorwaardelijke instructies)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [Stappen uitvoeren en herhalen (lussen)](../logic-apps/logic-apps-control-flow-loops.md)
-* [Parallelle stappen uitvoeren of samen voegen (vertakkingen)](../logic-apps/logic-apps-control-flow-branches.md)
-* [Stappen uitvoeren op basis van de gegroepeerde actie status (bereiken)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* [Parallelle stappen uitvoeren of samenvoegen (branches)](../logic-apps/logic-apps-control-flow-branches.md)
+* [Stappen uitvoeren op basis van gegroepeerde actiestatus (scopes)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)

@@ -1,33 +1,33 @@
 ---
-title: Gebruik een statisch IP-adres en een DNS-label met de Azure Kubernetes-service (AKS) load balancer
-description: Meer informatie over het maken en gebruiken van een statisch IP-adres met de Azure Kubernetes service (AKS) load balancer.
+title: Een statisch IP-adres en DNS-label gebruiken met de Laadbalans van Azure Kubernetes Service (AKS)
+description: Meer informatie over het maken en gebruiken van een statisch IP-adres met de Azure Kubernetes Service (AKS) load balancer.
 services: container-service
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: 32889dbbcafd9510f8d04cb9c602d4802c6d1a1a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 6c219976db21fb05ea1ad313b4effdf95906f986
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943568"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80047956"
 ---
-# <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Gebruik een statisch openbaar IP-adres en een DNS-label met de Azure Kubernetes-service (AKS) load balancer
+# <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Een statisch openbaar IP-adres en DNS-label gebruiken met de Laadbalans (Azure Kubernetes Service)
 
-Het open bare IP-adres dat is toegewezen aan een load balancer bron die is gemaakt met een AKS-cluster, is standaard alleen geldig voor de levens duur van die resource. Als u de Kubernetes-service verwijdert, worden ook de gekoppelde load balancer en het IP-adres verwijderd. Als u een specifiek IP-adres wilt toewijzen of een IP-adres voor opnieuw geïmplementeerde Kubernetes-Services wilt behouden, kunt u een statisch openbaar IP-adres maken en gebruiken.
+Het openbare IP-adres dat is toegewezen aan een load balancer-bron die is gemaakt door een AKS-cluster, is standaard alleen geldig voor de levensduur van die bron. Als u de Kubernetes-service verwijdert, worden ook de bijbehorende load balancer en IP-adres verwijderd. Als u een specifiek IP-adres wilt toewijzen of een IP-adres wilt behouden voor opnieuw geïmplementeerde Kubernetes-services, u een statisch openbaar IP-adres maken en gebruiken.
 
-In dit artikel wordt beschreven hoe u een statisch openbaar IP-adres maakt en dit toewijst aan uw Kubernetes-service.
+In dit artikel ziet u hoe u een statisch openbaar IP-adres maakt en het aan uw Kubernetes-service toewijst.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
+In dit artikel wordt ervan uitgegaan dat u een bestaand AKS-cluster hebt. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS snelstart [met de Azure CLI][aks-quickstart-cli] of met behulp van de [Azure-portal][aks-quickstart-portal].
 
-Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
+U hebt ook de Azure CLI-versie 2.0.59 of hoger geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
 
-In dit artikel wordt gebruikgemaakt van een *standaard* SKU-IP-adres met een *standaard* SKU-Load Balancer. Zie [IP-adres typen en toewijzings methoden in azure][ip-sku]voor meer informatie.
+Dit artikel gaat over het gebruik van een *Standaard* SKU IP met een *Standaard* SKU load balancer. Zie [IP-adrestypen en toewijzingsmethoden in Azure][ip-sku]voor meer informatie.
 
 ## <a name="create-a-static-ip-address"></a>Een statisch IP-adres maken
 
-Maak een statisch openbaar IP-adres met de opdracht [AZ Network open bare IP Create][az-network-public-ip-create] . Hieronder maakt u een statische IP-bron met de naam *myAKSPublicIP* in de resource groep *myResourceGroup* :
+Maak een statisch openbaar IP-adres met de openbare [ip-opdracht voor het az-netwerk.][az-network-public-ip-create] Als volgt wordt een statische IP-bron met de naam *myAKSPublicIP* gemaakt in de *brongroep myResourceGroup:*
 
 ```azurecli-interactive
 az network public-ip create \
@@ -38,9 +38,9 @@ az network public-ip create \
 ```
 
 > [!NOTE]
-> Als u een *basis* -SKU gebruikt Load Balancer in uw AKS-cluster, gebruikt u *Basic* voor de *SKU* -para meter bij het definiëren van een openbaar IP-adres. Alleen *Basic* SKU-IP-adressen werken met de *basis* -SKU Load Balancer en alleen *standaard* -SKU-ip's werken met *Standard* SKU load balancers. 
+> Als u een *Basic* SKU-loadbalancer gebruikt in uw AKS-cluster, gebruikt u *Basis* voor de *parameter sku* bij het definiëren van een openbaar IP-adres. Alleen *Basic* SKU IP's werken met de *Basic* SKU load balancer en alleen *Standard* SKU IP's werken met *standaard* SKU load balancers. 
 
-Het IP-adres wordt weer gegeven, zoals wordt weer gegeven in de volgende verkorte voorbeeld uitvoer:
+Het IP-adres wordt weergegeven, zoals weergegeven in de volgende verkorte voorbeelduitvoer:
 
 ```json
 {
@@ -52,7 +52,7 @@ Het IP-adres wordt weer gegeven, zoals wordt weer gegeven in de volgende verkort
 }
 ```
 
-U kunt later het open bare IP-adres ophalen met de opdracht [AZ Network Public-IP List][az-network-public-ip-list] . Geef de naam op van de knooppunt resource groep en het open bare IP-adres dat u hebt gemaakt, en voer een query uit voor het *IP* -adres, zoals weer gegeven in het volgende voor beeld:
+U later het openbare IP-adres krijgen met behulp van de opdracht [openbare-ip-lijst van het AZ-netwerk.][az-network-public-ip-list] Geef de naam op van de knooppuntbrongroep en het openbare IP-adres dat u hebt gemaakt en query voor het *ipAdres* zoals weergegeven in het volgende voorbeeld:
 
 ```azurecli-interactive
 $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicIP --query ipAddress --output tsv
@@ -60,9 +60,9 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 40.121.183.52
 ```
 
-## <a name="create-a-service-using-the-static-ip-address"></a>Een service maken met behulp van het statische IP-adres
+## <a name="create-a-service-using-the-static-ip-address"></a>Een service maken met het statische IP-adres
 
-Voordat u een service maakt, moet u ervoor zorgen dat de service-principal die wordt gebruikt door het AKS-cluster gedelegeerde machtigingen heeft voor de andere resource groep. Bijvoorbeeld:
+Voordat u een service maakt, moet u ervoor zorgen dat de serviceprincipal die wordt gebruikt door het AKS-cluster machtigingen heeft gedelegeerd aan de andere resourcegroep. Bijvoorbeeld:
 
 ```azurecli-interactive
 az role assignment create \
@@ -71,7 +71,9 @@ az role assignment create \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
-Als u een *Load Balancer* -service met het statische open bare IP-adres wilt maken, voegt u de eigenschap `loadBalancerIP` en de waarde van het statische open bare IP-adres toe aan het yaml-manifest. Maak een bestand met de naam `load-balancer-service.yaml` en kopieer de volgende YAML. Geef uw eigen open bare IP-adres op dat u in de vorige stap hebt gemaakt. In het volgende voor beeld wordt de aantekening ook ingesteld op de resource groep met de naam *myResourceGroup*. Geef de naam van uw eigen resource groep op.
+U ook de beheerde identiteit met het systeem gebruiken voor machtigingen in plaats van de serviceprincipal. Zie [Beheerde identiteiten gebruiken voor](use-managed-identity.md)meer informatie .
+
+Als u een *LoadBalancer-service* wilt maken `loadBalancerIP` met het statische openbare IP-adres, voegt u de eigenschap en de waarde van het statische openbare IP-adres toe aan het YAML-manifest. Maak een `load-balancer-service.yaml` bestand met de naam en kopie in de volgende YAML. Geef uw eigen openbare IP-adres op dat in de vorige stap is gemaakt. In het volgende voorbeeld wordt ook de annotatie ingesteld op de resourcegroep met de naam *myResourceGroup*. Geef uw eigen naam van de resourcegroep op.
 
 ```yaml
 apiVersion: v1
@@ -89,17 +91,17 @@ spec:
     app: azure-load-balancer
 ```
 
-Maak de service en de implementatie met behulp van de `kubectl apply` opdracht.
+Maak de service en `kubectl apply` implementatie met de opdracht.
 
 ```console
 kubectl apply -f load-balancer-service.yaml
 ```
 
-## <a name="apply-a-dns-label-to-the-service"></a>Een DNS-label op de service Toep assen
+## <a name="apply-a-dns-label-to-the-service"></a>Een DNS-label toepassen op de service
 
-Als uw service gebruikmaakt van een dynamisch of statisch openbaar IP-adres, kunt u de aantekening van de service gebruiken `service.beta.kubernetes.io/azure-dns-label-name` om een openbaar DNS-label in te stellen. Hiermee publiceert u een Fully Qualified Domain Name voor uw service met behulp van de open bare DNS-servers van Azure en het domein op het hoogste niveau. De annotatie waarde moet uniek zijn binnen de Azure-locatie. Daarom is het raadzaam om een voldoende gekwalificeerd label te gebruiken.   
+Als uw service een dynamisch of statisch openbaar IP-adres gebruikt, u de service-annotatie `service.beta.kubernetes.io/azure-dns-label-name` gebruiken om een openbaar DNS-label in te stellen. Hiermee wordt een volledig gekwalificeerde domeinnaam voor uw service gepubliceerd met behulp van de openbare DNS-servers en het domein op het hoogste niveau van Azure. De annotatiewaarde moet uniek zijn binnen de Azure-locatie, dus het wordt aanbevolen om een voldoende gekwalificeerd label te gebruiken.   
 
-Azure voegt vervolgens automatisch een standaard subnet toe, zoals `<location>.cloudapp.azure.com` (waarbij locatie de regio is die u hebt geselecteerd), naar de naam die u opgeeft, om de volledig gekwalificeerde DNS-naam te maken. Bijvoorbeeld:
+Azure voegt dan automatisch een standaardsubnet `<location>.cloudapp.azure.com` toe, zoals (waar locatie het geselecteerde gebied is), aan de door u opteerde naam om de volledig gekwalificeerde DNS-naam te maken. Bijvoorbeeld:
 
 ```yaml
 apiVersion: v1
@@ -117,17 +119,17 @@ spec:
 ```
 
 > [!NOTE] 
-> Zie [Azure DNS][azure-dns-zone] en het [externe DNS][external-dns] -project om de service op uw eigen domein te publiceren.
+> Zie [Azure DNS][azure-dns-zone] en het [externe dns-project][external-dns] om de service op uw eigen domein te publiceren.
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
-Als het statische IP-adres dat is gedefinieerd in de eigenschap *loadBalancerIP* van het Kubernetes-service manifest niet bestaat of niet is gemaakt in de resource groep node en er geen aanvullende delegaties zijn geconfigureerd, mislukt het maken van de Load Balancer-service. Als u problemen wilt oplossen, controleert u de gebeurtenissen voor het maken van een service met de opdracht [kubectl beschrijven][kubectl-describe] . Geef de naam van de service op zoals opgegeven in het YAML-manifest, zoals wordt weer gegeven in het volgende voor beeld:
+Als het statische IP-adres dat is gedefinieerd in de eigenschap *loadBalancerIP* van het Kubernetes-servicemanifest niet bestaat of niet is gemaakt in de knooppuntbrongroep en er geen extra delegaties is geconfigureerd, mislukt de taakverzamelingsservicecreatie. Als u problemen wilt oplossen, controleert u de gebeurtenissen voor het maken van services met de opdracht [kubectl-beschrijving.][kubectl-describe] Geef de naam van de service op zoals gespecificeerd in het YAML-manifest, zoals in het volgende voorbeeld wordt weergegeven:
 
 ```console
 kubectl describe service azure-load-balancer
 ```
 
-Informatie over de Kubernetes-service resource wordt weer gegeven. De *gebeurtenissen* aan het einde van de volgende voorbeeld uitvoer geven aan dat het door de *gebruiker opgegeven IP-adres niet is gevonden*. Controleer in deze scenario's of u het statische open bare IP-adres in de knooppunt resource groep hebt gemaakt en of het IP-adres dat is opgegeven in het Kubernetes-service manifest juist is.
+Er wordt informatie weergegeven over de Kubernetes-servicebron. De *gebeurtenissen* aan het einde van de volgende voorbeelduitvoer geven aan dat de *door de gebruiker opgegeven IP-adres niet is gevonden*. Controleer in deze scenario's of u het statische openbare IP-adres in de knooppuntbrongroep hebt gemaakt en of het IP-adres dat is opgegeven in het Kubernetes-servicemanifest juist is.
 
 ```
 Name:                     azure-load-balancer
@@ -153,7 +155,7 @@ Events:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u meer controle over het netwerk verkeer voor uw toepassingen wilt, kunt u in plaats daarvan [een ingangs controller maken][aks-ingress-basic]. U kunt ook [een ingangs controller met een statisch openbaar IP-adres maken][aks-static-ingress].
+Voor extra controle over het netwerkverkeer naar uw toepassingen u in plaats daarvan [een invallende controller maken.][aks-ingress-basic] U ook [een invallende controller maken met een statisch openbaar IP-adres.][aks-static-ingress]
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

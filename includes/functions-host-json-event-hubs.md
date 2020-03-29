@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: b5d8f67a70961aab21312b6f241081dcb33f66fb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175829"
 ---
 ```json
@@ -21,8 +21,8 @@ ms.locfileid: "67175829"
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|maxBatchSize|64|Het maximale aantal ontvangen gebeurtenissen per ontvangen lus.|
-|prefetchCount|N.v.t.|De standaard PrefetchCount die wordt gebruikt door de onderliggende EventProcessorHost.| 
-|batchCheckpointFrequency|1|Het aantal batches van gebeurtenissen te verwerken voordat u een controlepunt van de cursor Event hub maakt.| 
+|maxBatchSize maxBatchSize|64|Het maximale aantal gebeurtenissen per ontvangen lus.|
+|prefetchCount prefetchCount prefetchCount prefetch|N.v.t.|De standaard PrefetchCount die wordt gebruikt door de onderliggende EventProcessorHost.| 
+|batchCheckpointFrequentie|1|Het aantal gebeurtenisbatches dat moet worden verwerkt voordat u een EventHub-cursorcontrolepunt maakt.| 

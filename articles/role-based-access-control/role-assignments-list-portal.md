@@ -1,6 +1,6 @@
 ---
-title: Roltoewijzingen weer geven met behulp van Azure RBAC en de Azure Portal
-description: Meer informatie over hoe u kunt bepalen welke resources gebruikers, groepen, service-principals of beheerde identiteiten hebben toegang tot het gebruik van op rollen gebaseerd toegangs beheer (RBAC) en de Azure Portal.
+title: Roltoewijzingen weergeven met Azure RBAC en de Azure-portal
+description: Meer informatie over het bepalen van welke resources gebruikers, groepen, serviceprincipals of beheerde identiteiten toegang hebben tot het gebruik van RBAC (Azure role-based access control) en de Azure-portal.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,78 +11,78 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/23/2020
+ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 63aef8d2036e442659145e031d384e9677c779a1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 03a3d3c7d572d7ec5b8d3ac3d527d0d59e649bc2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79245614"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062244"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Roltoewijzingen weer geven met behulp van Azure RBAC en de Azure Portal
+# <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Roltoewijzingen weergeven met Azure RBAC en de Azure-portal
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] in dit artikel wordt beschreven hoe u roltoewijzingen kunt weer geven met behulp van de Azure Portal.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]In dit artikel wordt beschreven hoe u roltoewijzingen weergeven met behulp van de Azure-portal.
 
 > [!NOTE]
-> Als uw organisatie uitbestede beheer functies heeft voor een service provider die gebruikmaakt van [Azure delegated resource management](../lighthouse/concepts/azure-delegated-resource-management.md), worden roltoewijzingen die door die service provider worden toegestaan, hier niet weer gegeven.
+> Als uw organisatie beheerfuncties heeft uitbesteed aan een serviceprovider die [azure-gedelegeerd resourcebeheer](../lighthouse/concepts/azure-delegated-resource-management.md)gebruikt, worden roltoewijzingen die zijn geautoriseerd door die serviceprovider, hier niet weergegeven.
 
-## <a name="list-role-assignments-for-a-user-or-group"></a>Roltoewijzingen voor een gebruiker of groep weer geven
+## <a name="list-role-assignments-for-a-user-or-group"></a>Roltoewijzingen voor een gebruiker of groep weergeven
 
-De eenvoudigste manier om de rollen weer te geven die zijn toegewezen aan een gebruiker of groep in een abonnement is het gebruik van het deel venster **Azure-resources** .
+De eenvoudigste manier om de rollen te zien die zijn toegewezen aan een gebruiker of groep in een abonnement, is door het deelvenster **Azure-bronnen** te gebruiken.
 
-1. Klik in de Azure Portal op **alle services** en selecteer vervolgens **gebruikers** of **groepen**.
+1. Klik in de Azure-portal op **Alle services** en selecteer **Vervolgens Gebruikers** of **groepen**.
 
-1. Klik op de gebruiker of groep waarvoor u de roltoewijzingen wilt weer geven.
+1. Klik op de gewenste gebruiker of groep, de roltoewijzingen voor.
 
 1. Klik op **Azure-resources**.
 
-    U ziet een lijst met de rollen die zijn toegewezen aan de geselecteerde gebruiker of groep in verschillende bereiken, zoals de beheer groep, het abonnement, de resource groep of de resource. Deze lijst bevat alle roltoewijzingen waarvoor u lees machtigingen hebt.
+    U ziet een lijst met rollen die aan de geselecteerde gebruiker of groep zijn toegewezen op verschillende scopes, zoals beheergroep, abonnement, resourcegroep of resource. Deze lijst bevat alle roltoewijzingen die u lezen.
 
     ![Roltoewijzingen voor een gebruiker](./media/role-assignments-list-portal/azure-resources-user.png)    
 
-1. Als u het abonnement wilt wijzigen, klikt u op de lijst **abonnementen** .
+1. Als u het abonnement wilt wijzigen, klikt u op de lijst **Abonnementen.**
 
-## <a name="list-owners-of-a-subscription"></a>Eigen aren van een abonnement weer geven
+## <a name="list-owners-of-a-subscription"></a>Eigenaren van een abonnement aanbieden
 
-Gebruikers aan wie de rol van [eigenaar](built-in-roles.md#owner) voor een abonnement is toegewezen, kunnen alles in het abonnement beheren. Volg deze stappen om de eigen aars van een abonnement weer te geven.
+Gebruikers aan de [eigenaarrol](built-in-roles.md#owner) voor een abonnement kunnen alles in het abonnement beheren. Volg deze stappen om de eigenaren van een abonnement aan te geven.
 
 1. Klik in de Azure-portal op de optie **Alle services** en vervolgens op **Abonnementen**.
 
-1. Klik op het abonnement waarvan u de eigen aren wilt vermelden.
+1. Klik op het abonnement waarvan u de eigenaren wilt vermelden.
 
-1. Klik op **Toegangsbeheer (IAM)** .
+1. Klik op **Toegangsbeheer (IAM)**.
 
 1. Klik op het tabblad **Roltoewijzingen** om alle roltoewijzingen voor dit abonnement weer te geven.
 
-1. Ga naar de sectie **eigen aren** om alle gebruikers weer te geven aan wie de rol van eigenaar voor dit abonnement is toegewezen.
+1. Blader naar de sectie **Eigenaren** om alle gebruikers te zien die de rol Eigenaar voor dit abonnement hebben toegewezen.
 
-   ![Toegangs beheer voor abonnementen-tabblad roltoewijzingen](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
+   ![Besturingselement voor abonnementstoegang - tabblad Toewijzingen van rollen](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
 
-## <a name="list-role-assignments-at-a-scope"></a>Roltoewijzingen in een bereik weer geven
+## <a name="list-role-assignments-at-a-scope"></a>Roltoewijzingen op een bereik aanbieden
 
-1. Klik in de Azure Portal op **alle services** en selecteer vervolgens het bereik. U kunt bijvoorbeeld **beheer groepen**, **abonnementen**, **resource groepen**of een resource selecteren.
-
-1. Klik op de specifieke resource.
-
-1. Klik op **Toegangsbeheer (IAM)** .
-
-1. Klik op **het tabblad roltoewijzingen om** alle roltoewijzingen in dit bereik weer te geven.
-
-   ![Toegangs beheer-tabblad roltoewijzingen](./media/role-assignments-list-portal/access-control-role-assignments.png)
-
-   Op het tabblad roltoewijzingen kunt u zien wie toegang heeft tot dit bereik. U ziet dat voor sommige rollen het bereik is ingesteld op **Deze resource**, terwijl andere zijn **(Overgenomen)** uit een ander bereik. De toegang wordt specifiek aan deze resource toegewezen of overgenomen van een toewijzing aan het bovenliggende bereik.
-
-## <a name="list-role-assignments-for-a-user-at-a-scope"></a>Roltoewijzingen voor een gebruiker in een bereik weer geven
-
-Als u de toegang wilt weer geven voor een gebruiker, groep, Service-Principal of beheerde identiteit, vermeldt u hun roltoewijzingen. Volg deze stappen om de roltoewijzingen voor één gebruiker, groep, Service-Principal of beheerde identiteit in een bepaald bereik weer te geven.
-
-1. Klik in de Azure Portal op **alle services** en selecteer vervolgens het bereik. U kunt bijvoorbeeld **beheer groepen**, **abonnementen**, **resource groepen**of een resource selecteren.
+1. Klik in de Azure-portal op **Alle services** en selecteer het bereik. U bijvoorbeeld **Beheergroepen,** **Abonnementen,** **Resourcegroepen**of een resource selecteren.
 
 1. Klik op de specifieke resource.
 
-1. Klik op **Toegangsbeheer (IAM)** .
+1. Klik op **Toegangsbeheer (IAM)**.
+
+1. Klik op het tabblad **Roltoewijzingen** om alle roltoewijzingen in dit bereik weer te geven.
+
+   ![Toegangsbeheer - tabblad Toewijzingen van rollen](./media/role-assignments-list-portal/access-control-role-assignments.png)
+
+   Op het tabblad Toewijzingen van rollen u zien wie toegang heeft tot dit bereik. U ziet dat voor sommige rollen het bereik is ingesteld op **Deze resource**, terwijl andere zijn **(Overgenomen)** uit een ander bereik. Toegang is specifiek toegewezen aan deze bron of overgenomen van een toewijzing aan het bovenliggende bereik.
+
+## <a name="list-role-assignments-for-a-user-at-a-scope"></a>Roltoewijzingen voor een gebruiker op een bereik aanbieden
+
+Als u toegang wilt aanbieden voor een gebruiker, groep, serviceprincipal of beheerde identiteit, geeft u hun roltoewijzingen aan. Volg deze stappen om de roltoewijzingen voor één gebruiker, groep, serviceprincipal of beheerde identiteit op een bepaald bereik weer te geven.
+
+1. Klik in de Azure-portal op **Alle services** en selecteer het bereik. U bijvoorbeeld **Beheergroepen,** **Abonnementen,** **Resourcegroepen**of een resource selecteren.
+
+1. Klik op de specifieke resource.
+
+1. Klik op **Toegangsbeheer (IAM)**.
 
 1. Klik op het tabblad **Toegang controleren**.
 
@@ -100,43 +100,43 @@ Als u de toegang wilt weer geven voor een gebruiker, groep, Service-Principal of
 
     In dit deelvenster ziet u de rollen die zijn toegewezen aan de geselecteerde beveiligings-principal en het bereik. Als er een in dit bereik toewijzingen zijn geweigerd of zijn overgenomen, worden deze weergegeven.
 
-## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>Roltoewijzingen weer geven voor een door het systeem toegewezen beheerde identiteit
+## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>Roltoewijzingen voor een door het systeem toegewezen beheerde identiteit weergeven
 
-1. Open een door het systeem toegewezen beheerde identiteit in het Azure Portal.
+1. Open in de Azure-portal een door het systeem toegewezen beheerde identiteit.
 
-1. Klik in het linkermenu op **identiteit**.
+1. Klik in het linkermenu op **Identiteit**.
 
     ![Door het systeem toegewezen beheerde identiteit](./media/role-assignments-list-portal/identity-system-assigned.png)
 
-1. Klik **onder roltoewijzingen**op **de Azure RBAC-rollen weer geven die zijn toegewezen aan deze beheerde identiteit**.
+1. Klik **onder Toewijzingen voor**rollen op De Azure **RBAC-rollen weergeven die aan deze beheerde identiteit zijn toegewezen**.
 
-    U ziet een lijst met rollen die zijn toegewezen aan de geselecteerde door het systeem toegewezen beheerde identiteit in verschillende bereiken, zoals beheer groep, abonnement, resource groep of resource. Deze lijst bevat alle roltoewijzingen waarvoor u lees machtigingen hebt.
+    U ziet een lijst met rollen die zijn toegewezen aan de geselecteerde door het systeem toegewezen beheerde identiteit op verschillende scopes, zoals beheergroep, abonnement, resourcegroep of resource. Deze lijst bevat alle roltoewijzingen die u lezen.
 
     ![Roltoewijzingen voor een door het systeem toegewezen beheerde identiteit](./media/role-assignments-list-portal/azure-resources-system-assigned.png)
 
-## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Roltoewijzingen weer geven voor een door de gebruiker toegewezen beheerde identiteit
+## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Roltoewijzingen voor een door de gebruiker toegewezen beheerde identiteit weergeven
 
-1. Open een door de gebruiker toegewezen beheerde identiteit in het Azure Portal.
+1. Open in de Azure-portal een door de gebruiker toegewezen beheerde identiteit.
 
 1. Klik op **Azure-resources**.
 
-    U ziet een lijst met rollen die zijn toegewezen aan de geselecteerde door de gebruiker toegewezen beheerde identiteit in verschillende bereiken, zoals beheer groep, abonnement, resource groep of resource. Deze lijst bevat alle roltoewijzingen waarvoor u lees machtigingen hebt.
+    U ziet een lijst met rollen die zijn toegewezen aan de geselecteerde door de gebruiker toegewezen beheerde identiteit op verschillende scopes, zoals beheergroep, abonnement, resourcegroep of resource. Deze lijst bevat alle roltoewijzingen die u lezen.
 
     ![Roltoewijzingen voor een door het systeem toegewezen beheerde identiteit](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
 
-1. Als u het abonnement wilt wijzigen, klikt u op de lijst **abonnementen** .
+1. Als u het abonnement wilt wijzigen, klikt u op de lijst **Abonnementen.**
 
-## <a name="list-number-of-role-assignments"></a>Aantal roltoewijzingen weer geven
+## <a name="list-number-of-role-assignments"></a>Lijst aantal roltoewijzingen
 
-U kunt Maxi maal **2000** roltoewijzingen in elk abonnement hebben. Het tabblad roltoewijzingen bevat een grafiek **waarin het huidige** aantal roltoewijzingen wordt weer gegeven, zodat u deze limieten kunt bijhouden.
+U maximaal **2000** roltoewijzingen in elk abonnement uitvoeren. Om u te helpen deze limiet bij te houden, bevat het tabblad **Toewijzingen van rollen** een grafiek met het aantal roltoewijzingen voor het huidige abonnement.
 
-![Toegangs beheer-aantal roltoewijzingen grafiek](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
+![Toegangsbeheer - Aantal toewijzingengrafiek](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 
-Als u het maximum aantal krijgt en u probeert meer roltoewijzingen toe te voegen, wordt er een waarschuwing weer gegeven in het deel venster **roltoewijzing toevoegen** . U kunt het aantal roltoewijzingen beperken door roltoewijzingen te verwijderen die niet meer nodig zijn of door rollen toe te wijzen aan groepen in plaats van afzonderlijke gebruikers.
+Als u dicht bij het maximumaantal komt en u probeert meer roltoewijzingen toe te voegen, ziet u een waarschuwing in het deelvenster **Roltoewijzing toevoegen.** Zie [Problemen met Azure RBAC](troubleshooting.md#azure-role-assignments-limit)oplossen voor manieren waarop u het aantal roltoewijzingen verminderen.
 
-![Toegangs beheer-waarschuwing functie toewijzing toevoegen](./media/role-assignments-list-portal/add-role-assignment-warning.png)
+![Toegangsbeheer - Waarschuwing voor roltoewijzing toevoegen](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de Azure Portal](role-assignments-portal.md)
+- [Roltoewijzingen toevoegen of verwijderen met Azure RBAC en de Azure-portal](role-assignments-portal.md)
 - [Problemen met RBAC voor Azure-resources oplossen](troubleshooting.md)

@@ -1,6 +1,6 @@
 ---
-title: Een lijst met de REST API voor het weigeren van toewijzingen voor Azure-resources
-description: Meer informatie over het weigeren van toewijzingen voor gebruikers, groepen en toepassingen die gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources en de REST API.
+title: Weigeren toewijzingen voor Azure-resources weergeven met de REST API
+description: Meer informatie over het weergeven van weigeringstoewijzingen voor gebruikers, groepen en toepassingen met behulp van RBAC (Role-based access control) voor Azure-resources en de REST API.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,30 +12,30 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9e6214b3cb2cdca2d80ebae43771b206e3396d8b
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 0f648405a3d71bf27c64dacbb3fd78f3e9801137
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137326"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063018"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Toewijzing van toewijzingen voor Azure-resources met behulp van de REST API weer geven
+# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Weigeren toewijzingen voor Azure-resources weergeven met behulp van de REST API
 
-[Toewijzingen weigeren](deny-assignments.md) blok keren dat gebruikers specifieke Azure-resource acties kunnen uitvoeren, zelfs als een roltoewijzing deze toegang verleent. In dit artikel wordt beschreven hoe u toewijzingen voor weigeren kunt weer geven met behulp van de REST API.
+[Toewijzingen weigeren](deny-assignments.md) blokkeren gebruikers om specifieke Azure-bronacties uit te voeren, zelfs als een roltoewijzing hen toegang verleent. In dit artikel wordt beschreven hoe u toewijzingen voor weigeren weergeven met behulp van de REST API.
 
 > [!NOTE]
-> U kunt niet rechtstreeks uw eigen weigerings toewijzingen maken. Zie [toewijzingen weigeren](deny-assignments.md)voor meer informatie over hoe weigerings toewijzingen worden gemaakt.
+> Je niet direct je eigen weigeringsopdrachten maken. Zie Toewijzingen weigeren voor informatie over het maken van [weigeringsopdrachten.](deny-assignments.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u informatie wilt ophalen over een weiger toewijzing, hebt u het volgende nodig:
+Als u informatie wilt krijgen over een weigeringsopdracht, moet u het:
 
-- `Microsoft.Authorization/denyAssignments/read` machtiging, die is opgenomen in de meeste [ingebouwde rollen voor Azure-resources](built-in-roles.md).
+- `Microsoft.Authorization/denyAssignments/read`machtigingen, die is opgenomen in de meeste [ingebouwde rollen voor Azure-resources.](built-in-roles.md)
 
-## <a name="list-a-single-deny-assignment"></a>Een enkele weigerings toewijzing weer geven
+## <a name="list-a-single-deny-assignment"></a>Een enkele weigeringstoewijzing weergeven
 
 1. Begin met de volgende aanvraag:
 
@@ -43,17 +43,18 @@ Als u informatie wilt ophalen over een weiger toewijzing, hebt u het volgende no
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/denyAssignments/{deny-assignment-id}?api-version=2018-07-01-preview
     ```
 
-1. Vervang *{Scope}* in de URI door het bereik waarvoor u de weigerings toewijzingen wilt weer geven.
+1. Vervang *{scope}* binnen de URI door het bereik waarvoor u de weigeringstoewijzingen wilt weergeven.
 
-    | Bereik | Type |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | Abonnement |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resourcegroep |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    > [!div class="mx-tableFixed"]
+    > | Bereik | Type |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId}` | Abonnement |
+    > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resourcegroep |
+    > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Resource |
 
-1. Vervang *{deny-Assignment-id}* door de id van de weigerings toewijzing die u wilt ophalen.
+1. Vervang *{deny-assignment-id}* door de toewijzings-id weigeren die u wilt ophalen.
 
-## <a name="list-multiple-deny-assignments"></a>Meerdere weigerings toewijzingen weer geven
+## <a name="list-multiple-deny-assignments"></a>Meerdere weigeringstoewijzingen weergeven
 
 1. Begin met een van de volgende aanvragen:
 
@@ -61,31 +62,36 @@ Als u informatie wilt ophalen over een weiger toewijzing, hebt u het volgende no
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview
     ```
 
-    Met optionele para meters:
+    Met optionele parameters:
 
     ```http
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter={filter}
     ```
 
-1. Vervang *{Scope}* in de URI door het bereik waarvoor u de weigerings toewijzingen wilt weer geven.
+1. Vervang *{scope}* binnen de URI door het bereik waarvoor u de weigeringstoewijzingen wilt weergeven.
 
-    | Bereik | Type |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | Abonnement |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resourcegroep |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    > [!div class="mx-tableFixed"]
+    > | Bereik | Type |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId}` | Abonnement |
+    > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resourcegroep |
+    > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Resource |
 
-1. Vervang *{filter}* door de voor waarde die u wilt Toep assen om de lijst met geweigerde toewijzingen te filteren.
+1. Vervang *{filter}* door de voorwaarde die u wilt toepassen om de lijst met toewijzing weigeren te filteren.
 
-    | Filteren | Beschrijving |
-    | --- | --- |
-    | (geen filter) | Een lijst met alle weigerings toewijzingen op hierboven en onder het opgegeven bereik. |
-    | `$filter=atScope()` | Alleen toewijzingen voor het opgegeven bereik en de bovenstaande lijst weigeren. Omvat niet de weigerings toewijzingen in subbereiken. |
-    | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | Weiger toewijzingen met de opgegeven naam. |
+    > [!div class="mx-tableFixed"]
+    > | Filteren | Beschrijving |
+    > | --- | --- |
+    > | (geen filter) | Hiermee worden alle weigeringstoewijzingen op, boven en onder het opgegeven bereik weergegeven. |
+    > | `$filter=atScope()` | Lijsten weigeren toewijzingen voor alleen het opgegeven bereik en hoger. Omvat niet de weigeringstoewijzingen bij subscopen. |
+    > | `$filter=assignedTo('{objectId}')` | Lijsten weigeren toewijzingen voor de opgegeven gebruiker of serviceprincipal.<br/>Als de gebruiker lid is van een groep met een weigeringstoewijzing, wordt die toewijzing voor weigeren ook weergegeven. Dit filter is transitief voor groepen, wat betekent dat als de gebruiker lid is van een groep en die groep lid is van een andere groep die een weigeringstoewijzing heeft, die toewijzing voor weigeren ook wordt vermeld.<br/>Dit filter accepteert alleen een object-id voor een gebruiker of een serviceprincipal. U een object-id voor een groep niet doorgeven. |
+    > | `$filter=atScope()+and+assignedTo('{objectId}')` | Lijsten weigeren toewijzingen voor de opgegeven gebruiker of serviceprincipal en op het opgegeven bereik. |
+    > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | Lijsten weigeren toewijzingen met de opgegeven naam. |
+    > | `$filter=principalId+eq+'{objectId}'` | Lijsten weigeren toewijzingen voor de opgegeven gebruiker, groep of serviceprincipal. |
 
-## <a name="list-deny-assignments-at-the-root-scope-"></a>Lijst met geweigerde toewijzingen in het hoofd bereik (/)
+## <a name="list-deny-assignments-at-the-root-scope-"></a>Toewijzingen weigeren aan het hoofdbereik (/)
 
-1. Breid uw toegang uit, zoals wordt beschreven in [toegang verhogen voor een globale beheerder in azure Active Directory](elevate-access-global-admin.md).
+1. Verhoog uw toegang zoals beschreven in [Elevate access for a Global Administrator in Azure Active Directory.](elevate-access-global-admin.md)
 
 1. Gebruik de volgende aanvraag:
 
@@ -93,17 +99,18 @@ Als u informatie wilt ophalen over een weiger toewijzing, hebt u het volgende no
     GET https://management.azure.com/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter={filter}
     ```
 
-1. Vervang *{filter}* door de voor waarde die u wilt Toep assen om de lijst met geweigerde toewijzingen te filteren. U moet een filter opgeven.
+1. Vervang *{filter}* door de voorwaarde die u wilt toepassen om de lijst met toewijzing weigeren te filteren. Er is een filter nodig.
 
-    | Filteren | Beschrijving |
-    | --- | --- |
-    | `$filter=atScope()` | Lijst weigeren alleen toewijzingen voor het hoofd bereik. Omvat niet de weigerings toewijzingen in subbereiken. |
-    | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | Weiger toewijzingen met de opgegeven naam. |
+    > [!div class="mx-tableFixed"]
+    > | Filteren | Beschrijving |
+    > | --- | --- |
+    > | `$filter=atScope()` | Lijst weigert toewijzingen voor alleen het hoofdbereik. Omvat niet de weigeringstoewijzingen bij subscopen. |
+    > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | Lijst weigeren toewijzingen met de opgegeven naam. |
 
-1. Verwijder verhoogde toegang.
+1. Verhoogde toegang verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie over het weigeren van toewijzingen voor Azure-resources](deny-assignments.md)
+- [Inzicht in weigeringstoewijzingen voor Azure-resources](deny-assignments.md)
 - [Toegangsbevoegdheid voor een globale beheerder verhogen in Azure Active Directory](elevate-access-global-admin.md)
-- [Azure REST API-naslaginformatie](/rest/api/azure/)
+- [Azure REST API-verwijzing](/rest/api/azure/)
