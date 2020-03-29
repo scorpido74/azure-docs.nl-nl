@@ -1,6 +1,6 @@
 ---
-title: Apparaten inrichten voor multitenancy in azure IoT Hub Device Provisioning Service
-description: Apparaten voor multitenancy inrichten met het DPS-exemplaar (Device Provisioning Service)
+title: Apparaten inrichten voor multitenancy in Azure IoT Hub Device Provisioning Service
+description: Apparaten inrichten voor multitenancy met uw DPS-exemplaar (Device Provisioning Service)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -8,29 +8,29 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75434743"
 ---
-# <a name="how-to-provision-for-multitenancy"></a>Inrichten voor multitenancy 
+# <a name="how-to-provision-for-multitenancy"></a>Hoe te voorzien in multitenancy 
 
-Het toewijzings beleid dat is gedefinieerd door de inrichtings service ondersteunt diverse toewijzings scenario's. Twee veelvoorkomende scenario's zijn:
+Het toewijzingsbeleid dat door de inprovisioningservice is gedefinieerd, ondersteunt verschillende toewijzingsscenario's. Twee veelvoorkomende scenario's zijn:
 
-* **Geolocatie/geolatentie**: wanneer een apparaat tussen locaties wordt verplaatst, wordt de netwerk latentie verbeterd doordat het apparaat wordt ingericht voor de IOT-hub die het dichtst bij elke locatie is. In dit scenario worden een groep IoT-hubs, die over verschillende regio's vallen, geselecteerd voor inschrijvingen. Het **laagste** toewijzings beleid voor de latentie is geselecteerd voor deze inschrijvingen. Dit beleid zorgt ervoor dat de Device Provisioning Service de latentie van het apparaat evalueert en de kast IoT-hub uit de groep van IoT-hubs bepaalt. 
+* **Geolocatie / GeoLatentie:** Als een apparaat tussen locaties beweegt, wordt de netwerklatentie verbeterd door het apparaat te laten inrichten aan de IoT-hub die het dichtst bij elke locatie ligt. In dit scenario wordt een groep IoT-hubs geselecteerd die zich uitstrekken over verschillende regio's. Voor deze inschrijvingen wordt het beleid voor toewijzing met **de laagste latentie** geselecteerd. Dit beleid zorgt ervoor dat de apparaatinrichtingsservice de gebruikslaten van apparaten evalueert en de IoT-hub van de kast uit de groep IoT-hubs bepaalt. 
 
-* **Multitenancy: apparaten**die worden gebruikt binnen een IOT-oplossing moeten mogelijk worden toegewezen aan een specifieke IOT-hub of groep van IOT-hubs. De oplossing vereist mogelijk dat alle apparaten voor een bepaalde Tenant communiceren met een specifieke groep IoT hubs. In sommige gevallen kan een Tenant eigenaar zijn van IoT-hubs en vereisen dat apparaten worden toegewezen aan hun IoT-hubs.
+* **Multi-tenancy**: Apparaten die worden gebruikt in een IoT-oplossing moeten mogelijk worden toegewezen aan een specifieke IoT-hub of groep IoT-hubs. De oplossing vereist mogelijk dat alle apparaten voor een bepaalde tenant communiceren met een specifieke groep IoT-hubs. In sommige gevallen kan een tenant eigenaar zijn van IoT-hubs en vereisen dat apparaten worden toegewezen aan hun IoT-hubs.
 
-Het is gebruikelijk om deze twee scenario's te combi neren. Zo zal een multi tenant IoT-oplossing meestal Tenant apparaten toewijzen met behulp van een groep IoT-hubs die verspreid over verschillende regio's zijn. Deze Tenant apparaten kunnen worden toegewezen aan de IoT-hub in die groep, met de laagste latentie op basis van de geografische locatie.
+Het is gebruikelijk om deze twee scenario's te combineren. Een IoT-oplossing met meerdere tenant's wijst bijvoorbeeld vaak tenantapparaten toe met behulp van een groep IoT-hubs die verspreid zijn over regio's. Deze tenantapparaten kunnen worden toegewezen aan de IoT-hub in die groep, die de laagste latentie heeft op basis van geografische locatie.
 
-In dit artikel wordt een voor beeld van een gesimuleerd apparaat uit de [Azure IOT C SDK](https://github.com/Azure/azure-iot-sdk-c) gebruikt om te demonstreren hoe u apparaten inricht in een multi tenant-scenario in verschillende regio's. In dit artikel voert u de volgende stappen uit:
+In dit artikel wordt een gesimuleerd apparaatvoorbeeld van de [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) gebruikt om aan te tonen hoe apparaten in een multitenant-scenario in verschillende regio's kunnen worden ingericht. U voert de volgende stappen uit in dit artikel:
 
-* De Azure CLI gebruiken om twee regionale IoT-hubs te maken (VS-**West** en **VS-Oost**)
-* Een multi tenant-inschrijving maken
-* De Azure CLI gebruiken om twee regionale virtuele Linux-machines te maken die als apparaten in dezelfde regio's kunnen fungeren (**VS-West** en **VS-Oost**)
-* De ontwikkel omgeving voor de Azure IoT C-SDK instellen op virtuele Linux-machines
-* Simuleer de apparaten om te zien dat ze zijn ingericht voor dezelfde Tenant in de dichtstbijzijnde regio.
+* Gebruik de Azure CLI om twee regionale IoT-hubs **(West US** en **East US)** te maken.
+* Een inschrijving voor meerdere tenanten maken
+* Gebruik de Azure CLI om twee regionale Linux-VM's te maken om als apparaten in dezelfde regio's **(West-VS** en **Oost-VS)** op te treden.
+* De ontwikkelomgeving voor de Azure IoT C SDK instellen op beide Linux VM's
+* Simuleer de apparaten om te zien dat ze zijn ingericht voor dezelfde tenant in de dichtstbijzijnde regio.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -38,7 +38,7 @@ In dit artikel wordt een voor beeld van een gesimuleerd apparaat uit de [Azure I
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Volt ooien van het [instellen van IOT hub Device Provisioning Service met de Azure Portal](./quick-setup-auto-provision.md) Snelstartgids.
+* Voltooiing van de Service Voor het inrichten van [IoT-hubapparaten snel aan de slag met de Azure-portal.](./quick-setup-auto-provision.md)
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -46,94 +46,94 @@ In dit artikel wordt een voor beeld van een gesimuleerd apparaat uit de [Azure I
 
 ## <a name="create-two-regional-iot-hubs"></a>Twee regionale IoT-hubs maken
 
-In deze sectie gebruikt u de Azure Cloud Shell om twee nieuwe regionale IoT-hubs te maken in de regio's **VS-West** en VS- **Oost** voor een Tenant.
+In deze sectie gebruikt u de Azure Cloud Shell om twee nieuwe regionale IoT-hubs in de **regio's West-VS** en **Oost-VS** te maken voor een tenant.
 
 
-1. Gebruik de Azure Cloud Shell om een resource groep te maken met de opdracht [AZ Group Create](/cli/azure/group#az-group-create) . Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. 
+1. Gebruik de Azure Cloud Shell om een resourcegroep te maken met de opdracht [AZ-groep maken.](/cli/azure/group#az-group-create) Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. 
 
-    In het volgende voor beeld wordt een resource groep met de naam *Contoso-US-Resource-Group* in de regio *eastus* gemaakt. Het wordt aanbevolen deze groep te gebruiken voor alle resources die in dit artikel zijn gemaakt. Dit maakt de opschoon bewerking gemakkelijker nadat u klaar bent.
+    In het volgende voorbeeld wordt een resourcegroep met de naam *contoso-us-resource-group* in de *eastus-regio.* Het wordt aanbevolen deze groep te gebruiken voor alle bronnen die in dit artikel zijn gemaakt. Dit zal opruimen gemakkelijker maken nadat u klaar bent.
 
     ```azurecli-interactive 
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. Gebruik de Azure Cloud Shell om een IoT-hub in de regio **Oost** te maken met de opdracht [AZ IOT hub Create](/cli/azure/iot/hub#az-iot-hub-create) . De IoT-hub wordt toegevoegd aan de *groep contoso-US-Resource-Group*.
+2. Gebruik de Azure Cloud Shell om een IoT-hub in de **eastusregio** te maken met de opdracht [az iot-hub.](/cli/azure/iot/hub#az-iot-hub-create) De IoT-hub wordt toegevoegd aan de *contoso-us-resource-group.*
 
-    In het volgende voor beeld wordt een IoT-hub gemaakt met de naam *Contoso-Oost-hub* op de locatie *eastus* . U moet uw eigen unieke naaf naam gebruiken in plaats van **Contoso-Oost-hub**.
+    In het volgende voorbeeld wordt een IoT-hub gemaakt met de naam *contoso-east-hub* op de *eastus-locatie.* U moet uw eigen unieke hubnaam gebruiken in plaats van **contoso-east-hub.**
 
     ```azurecli-interactive 
     az iot hub create --name contoso-east-hub --resource-group contoso-us-resource-group --location eastus --sku S1
     ```
     
-    Het kan enkele minuten duren voordat deze opdracht is voltooid.
+    Deze opdracht kan enkele minuten in beslag nemen.
 
-3. Gebruik de Azure Cloud Shell om een IoT-hub in de regio **westus** te maken met de opdracht [AZ IOT hub Create](/cli/azure/iot/hub#az-iot-hub-create) . Deze IoT-hub wordt ook toegevoegd aan de *groep contoso-US-Resource-Group*.
+3. Gebruik de Azure Cloud Shell om een IoT-hub in de **westusregio** te maken met de opdracht [AZ Iot-hub.](/cli/azure/iot/hub#az-iot-hub-create) Deze IoT-hub wordt ook toegevoegd aan de *contoso-us-resource-group.*
 
-    In het volgende voor beeld wordt een IoT-hub met de naam *Contoso-West-hub* in de locatie *westus* gemaakt. U moet uw eigen unieke naaf naam gebruiken in plaats van **Contoso-West-hub**.
+    In het volgende voorbeeld wordt een IoT-hub gemaakt met de naam *contoso-west-hub* op de *westuslocatie.* U moet uw eigen unieke hubnaam gebruiken in plaats van **contoso-west-hub.**
 
     ```azurecli-interactive 
     az iot hub create --name contoso-west-hub --resource-group contoso-us-resource-group --location westus --sku S1
     ```
 
-    Het kan enkele minuten duren voordat deze opdracht is voltooid.
+    Deze opdracht kan enkele minuten in beslag nemen.
 
 
 
-## <a name="create-the-multitenant-enrollment"></a>Multi tenant-inschrijving maken
+## <a name="create-the-multitenant-enrollment"></a>De inschrijving voor meerdere tenanten maken
 
-In deze sectie maakt u een nieuwe registratie groep voor de Tenant apparaten.  
+In deze sectie maakt u een nieuwe inschrijvingsgroep voor de tenantapparaten.  
 
-Ter vereenvoudiging maakt dit artikel gebruik van [symmetrische sleutel attest](concepts-symmetric-key-attestation.md) met de inschrijving. Voor een veiligere oplossing kunt u het gebruik van [X. 509-certificaat attest](concepts-security.md#x509-certificates) met een vertrouwens keten gebruiken.
+Voor de eenvoud maakt dit artikel gebruik [van symmetrische sleutelattest](concepts-symmetric-key-attestation.md) bij de inschrijving. Voor een veiligere oplossing u overwegen [om X.509-certificaatattest te](concepts-security.md#x509-certificates) gebruiken met een vertrouwensketen.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open uw Device Provisioning service-exemplaar.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com)en open de instantie Device Provisioning Service.
 
-2. Selecteer het tabblad **inschrijvingen beheren** en klik vervolgens op de knop **registratie groep toevoegen** boven aan de pagina. 
+2. Selecteer het tabblad **Inschrijvingen beheren** en klik boven aan de pagina op de knop **Inschrijvingsgroep toevoegen.** 
 
-3. Voer in **registratie groep toevoegen**de volgende gegevens in en klik op de knop **Opslaan** .
+3. Voer **bij Groep inschrijving toevoegen**de volgende gegevens in en klik op **Opslaan.**
 
-    **Groeps naam**: Voer **Contoso-VS-devices**in.
+    **Groepsnaam**: Voer **contoso-us-devices in.**
 
-    **Attestation-type**: Selecteer **symmetrische sleutel**.
+    **Attesttype**: **Symmetrische toets selecteren**.
 
-    **Sleutels automatisch genereren**: dit selectie vakje moet al zijn ingeschakeld.
+    **Automatisch genereren sleutels:** Dit selectievakje moet al worden aangevinkt.
 
-    **Selecteer de manier waarop u apparaten aan hubs wilt toewijzen**: Selecteer de **laagste latentie**.
+    **Selecteer hoe u apparaten wilt toewijzen aan hubs:** Selecteer **Laagste latentie**.
 
-    ![Multi tenant-registratie groep voor symmetrische sleutel attest toevoegen](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
-
-
-4. Klik in de **groep inschrijving toevoegen**op **een nieuwe IOT-hub koppelen** om beide regionale hubs te koppelen.
-
-    **Abonnement**: als u meerdere abonnementen hebt, kiest u het abonnement waar u de regionale IOT-hubs hebt gemaakt.
-
-    **IOT hub**: Selecteer een van de regionale hubs die u hebt gemaakt.
-
-    **Toegangs beleid**: Kies **iothubowner**.
-
-    ![De regionale IoT-hubs koppelen aan de inrichtings service](./media/how-to-provision-multitenant/link-regional-hubs.png)
+    ![Multitenant-inschrijvingsgroep toevoegen voor symmetrische sleutelattest](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
 
 
-5. Als beide regionale IoT-hubs zijn gekoppeld, moet u ze selecteren voor de registratie groep en op **Opslaan** klikken om de regionale IOT hub-groep voor de registratie te maken.
+4. Klik op **Inschrijvingsgroep toevoegen**op **Een nieuwe IoT-hub koppelen** om beide regionale hubs te koppelen.
 
-    ![De regionale hub-groep voor de inschrijving maken](./media/how-to-provision-multitenant/enrollment-regional-hub-group.png)
+    **Abonnement**: Als u meerdere abonnementen hebt, kiest u het abonnement waarbij u de regionale IoT-hubs hebt gemaakt.
+
+    **IoT-hub**: selecteer een van de regionale hubs die u hebt gemaakt.
+
+    **Toegangsbeleid:** kies **iothubowner**.
+
+    ![Koppel de regionale IoT-hubs aan de inrichtingsservice](./media/how-to-provision-multitenant/link-regional-hubs.png)
 
 
-6. Nadat u de inschrijving hebt opgeslagen, opent u deze opnieuw en noteert u de **primaire sleutel**. U moet de inschrijving eerst opslaan om de sleutels te genereren. Deze sleutel wordt gebruikt voor het later genereren van unieke apparaatinstellingen voor beide gesimuleerde apparaten.
+5. Zodra beide regionale IoT-hubs zijn gekoppeld, moet u ze selecteren voor de inschrijvingsgroep en op **Opslaan** klikken om de regionale IoT-hubgroep voor de inschrijving te maken.
+
+    ![De regionale hubgroep voor de inschrijving maken](./media/how-to-provision-multitenant/enrollment-regional-hub-group.png)
 
 
-## <a name="create-regional-linux-vms"></a>Regionale Linux-Vm's maken
+6. Nadat u de inschrijving hebt opgeslagen, opent u deze opnieuw en maakt u een notitie van de **primaire sleutel.** U moet de inschrijving eerst opslaan om de sleutels te laten genereren. Deze sleutel wordt later gebruikt om unieke apparaatsleutels voor beide gesimuleerde apparaten te genereren.
 
-In deze sectie maakt u twee regionale virtuele Linux-machines (Vm's). Deze Vm's voeren een voor beeld van een apparaat simulatie uit vanuit elke regio om het inrichten van apparaten voor Tenant apparaten uit beide regio's te demonstreren.
 
-Als u het opschonen eenvoudiger wilt maken, worden deze Vm's toegevoegd aan dezelfde resource groep die de IoT-hubs bevat die zijn gemaakt, *Contoso-US-Resource-Group*. De virtuele machines worden echter uitgevoerd in afzonderlijke regio's (VS-**West** en **VS-Oost**).
+## <a name="create-regional-linux-vms"></a>Regionale Linux VM's maken
 
-1. Voer in de Azure Cloud Shell de volgende opdracht uit voor het maken van een VM in de regio **VS-Oost** , nadat u de volgende para meters in de opdracht hebt gewijzigd:
+In deze sectie maak je twee regionale Linux virtuele machines (VM's). Deze VM's worden vanuit elke regio een apparaatsimulatiemonster uitgevoerd om de inrichting van apparaten voor tenantapparaten uit beide regio's aan te tonen.
 
-    **--naam**: Voer een unieke naam in voor de VM van het lokale **Amerikaanse** land. 
+Om het opruimen gemakkelijker te maken, worden deze VM's toegevoegd aan dezelfde resourcegroep die de IoT-hubs bevat die zijn gemaakt, *contoso-us-resource-group.* De VM's zullen echter in afzonderlijke regio's **(West-VS** en **Oost-VS)** worden uitgevoerd.
 
-    **--Administrator-gebruikers**naam: gebruik uw eigen beheerders gebruikersnaam.
+1. Voer in de Azure Cloud Shell de volgende opdracht uit om een VM in **de Oost-VS-regio** te maken nadat u de volgende parameterwijzigingen in de opdracht hebt aangebracht:
 
-    **--Administrator-wacht woord**: gebruik uw eigen beheerders wachtwoord.
+    **--naam:** Voer een unieke naam in voor de VM van uw regionale apparaat in **de Vs.** 
+
+    **--admin-gebruikersnaam:** Gebruik uw eigen gebruikersnaam voor beheerders.
+
+    **--admin-wachtwoord:** Gebruik uw eigen beheerderswachtwoord.
 
     ```azurecli-interactive
     az vm create \
@@ -146,15 +146,15 @@ Als u het opschonen eenvoudiger wilt maken, worden deze Vm's toegevoegd aan deze
     --authentication-type password
     ```
 
-    Het uitvoeren van deze opdracht duurt enkele minuten. Nadat de opdracht is voltooid, noteert u de waarde voor **publicIpAddress** voor de VM in de regio VS-Oost.
+    Het uitvoeren van deze opdracht duurt enkele minuten. Zodra de opdracht is voltooid, noteert u de **publicIpAddress-waarde** voor de VM van uw Oost-Amerikaanse regio.
 
-1. Voer in het Azure Cloud Shell de opdracht uit voor het maken van een VM met de regio **VS-West** nadat u de volgende para meters in de opdracht hebt gewijzigd:
+1. Voer in de Azure Cloud Shell de opdracht uit om een **WEST-AMERIKAANSE** regio VM te maken nadat u de volgende parameterwijzigingen in de opdracht hebt aangebracht:
 
-    **--naam**: Voer een unieke naam in voor de VM van uw **VS-West** . 
+    **--naam:** Voer een unieke naam in voor de VM van uw **west-Amerikaanse** regionale apparaat. 
 
-    **--Administrator-gebruikers**naam: gebruik uw eigen beheerders gebruikersnaam.
+    **--admin-gebruikersnaam:** Gebruik uw eigen gebruikersnaam voor beheerders.
 
-    **--Administrator-wacht woord**: gebruik uw eigen beheerders wachtwoord.
+    **--admin-wachtwoord:** Gebruik uw eigen beheerderswachtwoord.
 
     ```azurecli-interactive
     az vm create \
@@ -167,11 +167,11 @@ Als u het opschonen eenvoudiger wilt maken, worden deze Vm's toegevoegd aan deze
     --authentication-type password
     ```
 
-    Het uitvoeren van deze opdracht duurt enkele minuten. Nadat de opdracht is voltooid, noteert u de waarde voor **publicIpAddress** voor de VM van de regio vs-West.
+    Het uitvoeren van deze opdracht duurt enkele minuten. Zodra de opdracht is voltooid, noteer t.a.v. de **publicIpAddress-waarde** voor de VM van uw West-VS-regio.
 
-1. Open twee opdracht regel shells. Maak via SSH verbinding met een van de regionale Vm's in elke shell. 
+1. Open twee command-line shells. Maak verbinding met een van de regionale VM's in elke shell met behulp van SSH. 
 
-    Geef de gebruikers naam van uw beheerder en het open bare IP-adres dat u voor de virtuele machine hebt genoteerd als para meters voor SSH. Geef het beheerders wachtwoord op wanneer u hierom wordt gevraagd.
+    Geef uw gebruikersnaam voor beheerders door en het openbare IP-adres dat u voor de VM hebt genoteerd als parameters aan SSH. Voer het beheerderswachtwoord in wanneer daarom wordt gevraagd.
 
     ```bash
     ssh contosoadmin@1.2.3.4
@@ -187,20 +187,20 @@ Als u het opschonen eenvoudiger wilt maken, worden deze Vm's toegevoegd aan deze
 
 
 
-## <a name="prepare-the-azure-iot-c-sdk-development-environment"></a>De Azure IoT C SDK-ontwikkel omgeving voorbereiden
+## <a name="prepare-the-azure-iot-c-sdk-development-environment"></a>De Azure IoT C SDK-ontwikkelomgeving voorbereiden
 
-In deze sectie kloont u de Azure IoT C SDK op elke VM. De SDK bevat een voor beeld waarmee de inrichting van een Tenant apparaat van elke regio wordt gesimuleerd.
+In deze sectie kloont u de Azure IoT C SDK op elke VM. De SDK bevat een voorbeeld dat de inrichting van het apparaat van een tenant vanuit elke regio simuleert.
 
-1. Installeer **cmake**, **g + +** , **gcc**en [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) voor elke VM met behulp van de volgende opdrachten:
+1. Installeer voor elke virtuele machine **CMake**, **g++**, **gcc**en [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) met de volgende opdrachten:
 
     ```bash
     sudo apt-get update
     sudo apt-get install cmake build-essential libssl-dev libcurl4-openssl-dev uuid-dev git-all
     ```
 
-1. Zoek de code naam voor de [nieuwste versie](https://github.com/Azure/azure-iot-sdk-c/releases/latest) van de SDK.
+1. Zoek de tagnaam voor de [nieuwste versie](https://github.com/Azure/azure-iot-sdk-c/releases/latest) van de SDK.
 
-1. Kloon de [Azure IOT C-SDK](https://github.com/Azure/azure-iot-sdk-c) op beide vm's.  Gebruik het label dat u in de vorige stap hebt gevonden als waarde voor de para meter `-b`:
+1. Kloon de [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) op beide VM's.  Gebruik de tag die u in de `-b` vorige stap hebt gevonden als de waarde voor de parameter:
 
     ```bash
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -210,14 +210,14 @@ In deze sectie kloont u de Azure IoT C SDK op elke VM. De SDK bevat een voor bee
 
     Deze bewerking kan enkele minuten in beslag nemen.
 
-1. Voor beide Vm's maakt u een nieuwe **cmake** -map in de opslag plaats en gaat u naar die map.
+1. Maak voor beide VM's een nieuwe **cmake-map** in de repository en wijzigt deze in die map.
 
     ```bash
     mkdir ~/azure-iot-sdk-c/cmake
     cd ~/azure-iot-sdk-c/cmake
     ```
 
-1. Voor beide Vm's voert u de volgende opdracht uit, waarmee u een versie van de SDK bouwt die specifiek is voor uw ontwikkelings-client platform. 
+1. Voer voor beide VM's de volgende opdracht uit, waarmee een versie van de SDK wordt gebouwd die specifiek is voor uw ontwikkelclientplatform. 
 
     ```bash
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
@@ -245,21 +245,21 @@ In deze sectie kloont u de Azure IoT C SDK op elke VM. De SDK bevat een voor bee
     ```    
 
 
-## <a name="derive-unique-device-keys"></a>Unieke Apparaatinstellingen afleiden
+## <a name="derive-unique-device-keys"></a>Unieke apparaatsleutels afleiden
 
-Wanneer u gebruikmaakt van symmetrische sleutel attest met groeps registraties, gebruikt u de sleutels van de registratie groep niet rechtstreeks. In plaats daarvan maakt u een unieke afgeleide sleutel voor elk apparaat dat wordt vermeld in [groeps registraties met symmetrische sleutels](concepts-symmetric-key-attestation.md#group-enrollments).
+Wanneer u symmetrische sleutelattestation met groepsinschrijvingen gebruikt, gebruikt u de inschrijvingsgroepsleutels niet rechtstreeks. In plaats daarvan maakt u een unieke afgeleide sleutel voor elk apparaat en wordt vermeld in [groepsinschrijvingen met symmetrische toetsen.](concepts-symmetric-key-attestation.md#group-enrollments)
 
-Als u de apparaatcode wilt genereren, gebruikt u de groeps hoofd sleutel om een [HMAC-sha256](https://wikipedia.org/wiki/HMAC) van de unieke registratie-id voor het apparaat te berekenen en converteert u het resultaat naar Base64-indeling.
+Als u de apparaatsleutel wilt genereren, gebruikt u de hoofdsleutel van de groep om een [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) van de unieke registratie-ID voor het apparaat te berekenen en het resultaat om te zetten in Base64-indeling.
 
-Neem uw groeps hoofd sleutel niet op in de code van uw apparaat.
+Neem de groepshoofdsleutel niet op in de apparaatcode.
 
-Gebruik het voor beeld van de bash-shell om een afgeleide apparaatwachtwoord voor elk apparaat te maken met behulp van **openssl**.
+Gebruik het voorbeeld van de Bash-shell om een afgeleide apparaatsleutel voor elk apparaat te maken met **openssl.**
 
-- Vervang de waarde voor **Key** door de **primaire sleutel** die u eerder hebt genoteerd voor uw registratie.
+- Vervang de waarde voor **KEY** door de **primaire sleutel die** u eerder voor uw inschrijving hebt opgemerkt.
 
-- Vervang de waarde voor **REG_ID** door uw eigen unieke registratie-id voor elk apparaat. Gebruik kleine letters, alfanumerieke tekens en streepjes ('-') om beide Id's te definiëren.
+- Vervang de waarde voor **REG_ID** door uw eigen unieke registratie-ID voor elk apparaat. Gebruik alfanumerieke en streepjestekens ('-') om beide id's te definiëren.
 
-Voor beeld van genereren van een apparaatcode voor *Contoso-simdevice-Oost*:
+Voorbeeld apparaat sleutel generatie voor *contoso-simdevice-oost:*
 
 ```bash
 KEY=rLuyBPpIJ+hOre2SFIP9Ajvdty3j0EwSP/WvTVH9eZAw5HpDuEmf13nziHy5RRXmuTy84FCLpOnhhBPASSbHYg==
@@ -273,7 +273,7 @@ echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | ba
 p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=
 ```
 
-Voor beeld van genereren van een apparaatcode voor *Contoso-simdevice-West*:
+Voorbeeld apparaat sleutel generatie voor *contoso-simdevice-west:*
 
 ```bash
 KEY=rLuyBPpIJ+hOre2SFIP9Ajvdty3j0EwSP/WvTVH9eZAw5HpDuEmf13nziHy5RRXmuTy84FCLpOnhhBPASSbHYg==
@@ -288,23 +288,23 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 ```
 
 
-De Tenant apparaten gebruiken elk een afgeleide-apparaatwachtwoord en de unieke registratie-ID voor het uitvoeren van de symmetrische sleutel attest met de registratie groep tijdens het inrichten van de IoT-hubs van de Tenant.
+De tenant-apparaten gebruiken elk hun afgeleide apparaatsleutel en unieke registratie-ID om symmetrische sleutelattest uit te voeren met de inschrijvingsgroep tijdens de inrichting van de Tenant IoT-hubs.
 
 
 
 
-## <a name="simulate-the-devices-from-each-region"></a>De apparaten van elke regio simuleren
+## <a name="simulate-the-devices-from-each-region"></a>De apparaten uit elke regio simuleren
 
 
-In deze sectie gaat u een voor beeld van een inrichting bijwerken in de Azure IoT C-SDK voor beide regionale Vm's. 
+In deze sectie werkt u een inrichtingsvoorbeeld in de Azure IoT C SDK bij voor beide regionale VM's. 
 
-Met de voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd die de inrichtings aanvraag naar uw Device Provisioning service-exemplaar verzendt. De opstart procedure zorgt ervoor dat het apparaat wordt herkend en toegewezen aan de IoT-hub die het dichtst op basis van de latentie ligt.
+De voorbeeldcode simuleert een opstartreeks voor apparaten die het inrichtingsverzoek naar het instantie-exemplaar Apparaatinrichtingsservice verzendt. De opstartreeks zorgt ervoor dat het apparaat wordt herkend en toegewezen aan de IoT-hub die het dichtst bij elkaar staat op basis van latentie.
 
-1. Selecteer in Azure Portal het tabblad **Overzicht** voor uw Device Provisioning-service en noteer de waarde van het **_Id-bereik_** .
+1. Selecteer in Azure Portal het tabblad **Overzicht** voor uw Device Provisioning-service en noteer de waarde van het **_Id-bereik_**.
 
     ![Device Provisioning Service-eindpuntgegevens uit de portalblade extraheren](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-1. Open **~/azure-iot-sdk-c/provisioning\_client/samples/prov\_dev\_client\_voor beeld/prov\_dev\_client\_sample. c** voor bewerking op beide vm's.
+1. Open **\_~/azure-iot-sdk-c/provisioning client/samples/prov\_\_\_\_\_\_dev client sample/prov dev client sample.c** voor bewerking op beide VM's.
 
     ```bash
     vi ~/azure-iot-sdk-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c
@@ -316,9 +316,9 @@ Met de voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd die 
     static const char* id_scope = "0ne00002193";
     ```
 
-1. Zoek de definitie voor de functie `main()` op in hetzelfde bestand. Zorg ervoor dat de variabele `hsm_type` is ingesteld op `SECURE_DEVICE_TYPE_SYMMETRIC_KEY`, zoals hieronder wordt weer gegeven, zodat deze overeenkomt met de Attestation-methode van de registratie groep. 
+1. Zoek de definitie voor de functie `main()` op in hetzelfde bestand. Zorg ervoor `hsm_type` dat de `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` variabele is ingesteld op zoals hieronder wordt weergegeven, zodat deze overeenkomt met de attestmethode voor de inschrijvingsgroep. 
 
-    Sla de wijzigingen in de bestanden op beide Vm's op.
+    Sla uw wijzigingen op in de bestanden op beide VM's.
 
     ```c
     SECURE_DEVICE_TYPE hsm_type;
@@ -327,22 +327,22 @@ Met de voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd die 
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-1. Op beide Vm's vindt u de aanroep van `prov_dev_set_symmetric_key_info()` in **prov\_dev\_client\_sample. c** .
+1. Op beide VM's, `prov_dev_set_symmetric_key_info()` zoek de oproep naar in **prov\_dev\_client\_sample.c** die wordt becommentarieerd.
 
     ```c
     // Set the symmetric key if using they auth type
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    Verwijder de opmerking over de functie aanroepen en vervang de tijdelijke aanduidingen (inclusief de punt haken) door de unieke registratie-Id's en de afgeleide apparaatinstellingen voor elk apparaat. De sleutels die hieronder worden weer gegeven, zijn alleen bedoeld als voor beeld. Gebruik de sleutels die u eerder hebt gegenereerd.
+    Maak de functieoproepen ongedaan en vervang de tijdelijke aanduidingswaarden (inclusief de hoekhaakjes) door de unieke registratie-id's en afgeleide apparaatsleutels voor elk apparaat. De onderstaande toetsen zijn bijvoorbeeld alleen voor doeleinden. Gebruik de sleutels die u eerder hebt gegenereerd.
 
-    VS-Oost:
+    Oost-VS:
     ```c
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("contoso-simdevice-east", "p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=");
     ```
 
-    VS-West:
+    West-VS:
     ```c
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("contoso-simdevice-west", "J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=");
@@ -350,21 +350,21 @@ Met de voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd die 
 
     Sla de bestanden op.
 
-1. Navigeer op beide Vm's naar de voor beeld-map die hieronder wordt weer gegeven en bouw het voor beeld.
+1. Navigeer op beide VM's naar de onderstaande voorbeeldmap en bouw het voorbeeld.
 
     ```bash
     cd ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/
     cmake --build . --target prov_dev_client_sample --config Debug
     ```
 
-1. Zodra de build is gelukt, voert u **prov\_dev\_-client\_voorbeeld. exe** uit op beide vm's om een Tenant apparaat uit elke regio te simuleren. U ziet dat elk apparaat wordt toegewezen aan de Tenant IoT-hub die het dichtst bij de regio's van het gesimuleerde apparaat ligt.
+1. Zodra de build is geslaagd, voert u **prov\_dev\_client\_sample.exe** uit op beide VM's om een tenantapparaat uit elke regio te simuleren. Merk op dat elk apparaat is toegewezen aan de tenant IoT-hub die het dichtst bij de regio's van het gesimuleerde apparaat ligt.
 
-    De simulatie uitvoeren:
+    Voer de simulatie uit:
     ```bash
     ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample
     ```
 
-    Voor beeld van uitvoer van de VS-Oost-VM:
+    Voorbeeld uitvoer van de VM Oost-VS:
 
     ```bash
     contosoadmin@ContosoSimDeviceEast:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
@@ -381,7 +381,7 @@ Met de voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd die 
 
     ```
 
-    Voorbeeld uitvoer van de VS-West-VM:
+    Voorbeeld uitvoer van de West US VM:
     ```bash
     contosoadmin@ContosoSimDeviceWest:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
     Provisioning API Version: 1.2.9
@@ -400,19 +400,19 @@ Met de voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd die 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent om verder te gaan met de resources die in dit artikel zijn gemaakt, kunt u ze blijven gebruiken. Als u niet van plan bent om door te gaan met het gebruik van de resource, gebruikt u de volgende stappen om alle resources te verwijderen die zijn gemaakt in dit artikel om onnodige kosten te voor komen.
+Als u van plan bent om te blijven werken met resources die in dit artikel zijn gemaakt, u deze verlaten. Als u niet van plan bent de resource te blijven gebruiken, gebruikt u de volgende stappen om alle bronnen die door dit artikel zijn gemaakt te verwijderen om onnodige kosten te voorkomen.
 
-In de volgende stappen wordt ervan uitgegaan dat u alle resources in dit artikel hebt gemaakt, zoals u hebt opgegeven in dezelfde resource groep met de naam **Contoso-US-Resource-Group**.
+De stappen hier aannemen dat u alle resources in dit artikel hebt gemaakt, zoals geïnstrueerd in dezelfde resourcegroep met de naam **contoso-us-resource-group**.
 
 > [!IMPORTANT]
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle resources daarin worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de IoT Hub in een bestaande resourcegroep hebt gemaakt met resources die u wilt behouden, moet u alleen de IoT Hub-resource zelf verwijderen in plaats van de resourcegroep te verwijderen.
 >
 
-De resource groep op naam verwijderen:
+Ga als u de brongroep op naam verwijderen:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en klik op **Resourcegroepen**.
 
-2. Typ in het tekstvak **filteren op naam...** de naam van de resource groep met uw resources, **Contoso-US-Resource-Group**. 
+2. Typ in het tekstvak **Filteren op naam...** de naam van de resourcegroep met uw resources, **contoso-us-resource-group.** 
 
 3. Klik rechts van de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
 
@@ -420,8 +420,8 @@ De resource groep op naam verwijderen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [IOT hub-concepten](concepts-device-reprovision.md) voor het opnieuw inrichten van apparaten voor meer informatie. 
-- Zie voor meer informatie over het ongedaan maken van de inrichting van [apparaten die eerder automatisch zijn ingericht](how-to-unprovision-devices.md) , ongedaan maken 
+- Zie Concepten voor het opnieuw inrichten van IoT Hub Device voor meer informatie over het opnieuw [inrichten van iot-hubapparaten](concepts-device-reprovision.md) 
+- Zie [Apparaten deprovisionen die voorheen automatisch zijn ingericht](how-to-unprovision-devices.md) voor meer deprovisioning. 
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: De regio of SKU-serie is niet beschikbaar-Azure
-description: Sommige SKU-reeksen zijn niet beschikbaar voor het geselecteerde abonnement voor deze regio. hiervoor is mogelijk een ondersteunings aanvraag voor abonnements beheer vereist.
+title: Regio- of SKU-serie niet beschikbaar - Azure
+description: Sommige SKU-series zijn niet beschikbaar voor het geselecteerde abonnement voor deze regio, waarvoor mogelijk ondersteuning voor abonnementsbeheer vereist is.
 services: Azure Supportability
 author: stevendotwang
 ms.service: azure-supportability
@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: xingwan
 ms.openlocfilehash: b0f0762ded6804c0b0d90a19223c082f0fb8fd49
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76843623"
 ---
 # <a name="region-or-sku-unavailable"></a>Regio of SKU is niet beschikbaar
 
-In dit artikel wordt beschreven hoe u het probleem oplost van een Azure-abonnement dat geen toegang heeft tot een regio of een VM-SKU.
+In dit artikel wordt beschreven hoe u het probleem oplost dat een Azure-abonnement geen toegang heeft tot een regio of een VM-SKU.
 
 ## <a name="symptoms"></a>Symptomen
 
-Wanneer u een virtuele machine implementeert, wordt een van de volgende fout berichten weer gegeven:
+Wanneer u een virtuele machine implementeert, ontvangt u een van de volgende foutmeldingen:
 
 ```
 Code: SkuNotAvailable
@@ -39,7 +39,7 @@ Code: NotAvailableForSubscription
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-Bij het kopen van gereserveerde exemplaren van virtuele machines, wordt een van de volgende fout berichten weer gegeven:
+Wanneer u gereserveerde virtuele machine-exemplaren koopt, ontvangt u een van de volgende foutmeldingen:
 
 ```
 Message: Your subscription doesn’t support virtual machine reservation in <location>. Choose a 
@@ -50,38 +50,38 @@ different location. Supported locations are: <list of locations>
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-Bij het maken van een ondersteunings aanvraag om het quotum voor reken kernen te verhogen, is een regio of SKU-familie niet beschikbaar voor selectie.
+Wanneer u een ondersteuningsaanvraag maakt om het rekenkernquotum te verhogen, is een regio of een SKU-gezin niet beschikbaar voor selectie.
 
 ## <a name="solution"></a>Oplossing
 
-We raden u aan om een alternatieve regio of SKU te beschouwen die voldoet aan de behoeften van uw bedrijf.
+We raden u aan eerst een alternatieve regio of SKU te overwegen die aan uw bedrijfsbehoeften voldoet.
 
-Als u geen geschikte regio of SKU kunt vinden, maakt u een [ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) voor **abonnements beheer** aan de hand van de volgende stappen:
+Als u geen geschikte regio of SKU vinden, maakt u de volgende stappen een [ondersteuningsaanvraag voor](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) **abonnementsbeheer:**
 
-1. Selecteer in het menu [Azure Portal](https://portal.azure.com) de optie **Help en ondersteuning**. Selecteer vervolgens **nieuwe ondersteunings aanvraag**.
+1. Selecteer **Help + ondersteuning**in het menu Azure [portal.](https://portal.azure.com) Selecteer vervolgens **Nieuw ondersteuningsverzoek**.
 
-1. In de **basis beginselen**, voor het **type probleem**, selecteert u **abonnements beheer**.
+1. Selecteer **Abonnementsbeheer**selecteren in **Basisbeginselen**voor **Probleemtype**.
 
-1. Selecteer een **abonnement** en voer een korte beschrijving in **samen vatting**in.
+1. Selecteer een **abonnement** en voer een korte beschrijving in **samenvatting**in.
 
-   ![Tabblad basis van nieuwe ondersteunings aanvraag](./media/SKU-series-unavailable/support-request-basics.png)
+   ![Tabblad Basisbeginselen van Nieuw ondersteuningsverzoek](./media/SKU-series-unavailable/support-request-basics.png)
 
-1. Voor **probleem type**kiest **u probleem type selecteren**.
+1. Kies Probleemtype selecteren voor probleemtype selecteren voor **Probleemtype** **selecteren**.
 
-1. Kies bij **type probleem selecteren**een optie, bijvoorbeeld, **geen toegang tot mijn abonnement of resource** > **mijn probleem niet hierboven wordt vermeld**. Selecteer **Opslaan**.
+1. Kies voor **Probleemtype selecteren**een optie, bijvoorbeeld **Geen toegang tot mijn abonnement of bron** > **Mijn probleem staat hierboven niet vermeld.** Selecteer **Opslaan**.
 
-   ![Geef een probleem op voor de aanvraag](./media/SKU-series-unavailable/support-request-select-problem-type.png)
+   ![Een probleem voor de aanvraag opgeven](./media/SKU-series-unavailable/support-request-select-problem-type.png)
 
-1. Selecteer **volgende: oplossingen** om mogelijke oplossingen te verkennen. Selecteer indien nodig **volgende: Details** om door te gaan.
+1. Selecteer **Volgende: Oplossingen** om mogelijke oplossingen te verkennen. Selecteer indien nodig **Volgende: Details** om door te gaan.
 
-1. Voer aanvullende informatie in, samen met uw contact gegevens.
+1. Voer alle aanvullende informatie in die u verstrekken, samen met uw contactgegevens.
 
-1. Selecteer **Controleren + maken**. Nadat u uw gegevens hebt gecontroleerd, selecteert u **maken** om de aanvraag te maken.
+1. Selecteer **Controleren + maken**. Nadat u uw gegevens hebt geverifieerd, selecteert **u Maken** om de aanvraag te maken.
 
 ## <a name="send-us-your-suggestions"></a>Stuur ons uw suggesties
 
-We zijn altijd te openen voor feedback en suggesties. Stuur ons uw [suggesties](https://feedback.azure.com/forums/266794-support-feedback). Daarnaast kunt u aan de slag met ons op [Twitter](https://twitter.com/azuresupport) of de [MSDN-Forums](https://social.msdn.microsoft.com/Forums/azure).
+We staan altijd open voor feedback en suggesties! Stuur ons uw [suggesties.](https://feedback.azure.com/forums/266794-support-feedback) Daarnaast u contact met ons op [Twitter](https://twitter.com/azuresupport) of de [MSDN forums](https://social.msdn.microsoft.com/Forums/azure).
 
 ## <a name="learn-more"></a>Meer informatie
 
-[Veelgestelde vragen over ondersteuning voor Azure](https://azure.microsoft.com/support/faq)
+[Veelgestelde vragen over Azure Support](https://azure.microsoft.com/support/faq)

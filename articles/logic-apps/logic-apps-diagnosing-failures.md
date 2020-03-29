@@ -1,87 +1,87 @@
 ---
-title: Problemen met werk stromen oplossen en fouten opsporen
-description: Meer informatie over het oplossen en diagnosticeren van problemen, fouten en fouten in uw werk stromen in Azure Logic Apps
+title: Problemen met werkstromen vaststellen en oplossen
+description: Meer informatie over het oplossen en diagnosticeren van problemen, fouten en fouten in uw werkstromen in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905078"
 ---
-# <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Problemen met werk stromen oplossen en fouten opsporen in Azure Logic Apps
+# <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Problemen met werkstromen in Azure Logic Apps vaststellen en oplossen
 
-Uw logische app genereert informatie die u kan helpen bij het vaststellen en oplossen van problemen in uw app. U kunt een logische app diagnosticeren door elke stap in de werk stroom te bekijken via de Azure Portal. U kunt ook enkele stappen toevoegen aan een werk stroom voor runtime-fout opsporing.
+Uw logica-app genereert informatie waarmee u problemen in uw app diagnosticeren en opsporen. U een logische app diagnosticeren door elke stap in de werkstroom te bekijken via de Azure-portal. U ook enkele stappen toevoegen aan een werkstroom voor foutopsporing van runtime.
 
 <a name="check-trigger-history"></a>
 
-## <a name="check-trigger-history"></a>Trigger geschiedenis controleren
+## <a name="check-trigger-history"></a>Triggergeschiedenis controleren
 
-De uitvoering van elke logische app begint met een trigger poging, dus als de trigger niet wordt gestart, voert u de volgende stappen uit:
+Elke logische app-run begint met een triggerpoging, dus als de trigger niet wordt geactiveerd, voert u de volgende stappen uit:
 
-1. Controleer de status van de trigger door [de trigger geschiedenis te controleren](../logic-apps/monitor-logic-apps.md#review-trigger-history). Als u meer informatie over de trigger poging wilt weer geven, selecteert u die trigger gebeurtenis, bijvoorbeeld:
+1. Controleer de status van de trigger door [de triggergeschiedenis te controleren.](../logic-apps/monitor-logic-apps.md#review-trigger-history) Als u meer informatie over de triggerpoging wilt weergeven, selecteert u die triggergebeurtenis, bijvoorbeeld:
 
-   ![Trigger status en geschiedenis weer geven](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
+   ![Triggerstatus en -geschiedenis weergeven](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
 
-1. Controleer de invoer van de trigger om te bevestigen dat ze worden weer gegeven zoals u verwacht. Selecteer onder **invoer koppeling**de koppeling, waarin het deel venster **invoer** wordt weer gegeven.
+1. Controleer de ingangen van de trigger om te bevestigen dat ze verschijnen zoals u verwacht. Selecteer **onder de koppeling Invoer**de koppeling, waarin het deelvenster **Invoer** wordt weergegeven.
 
-   Trigger invoer bevat de gegevens die de trigger verwacht en vereist om de werk stroom te starten. Door deze invoer te controleren, kunt u bepalen of de trigger invoer juist is en of aan de voor waarde is voldaan, zodat de werk stroom kan door gaan.
+   Triggeringangen bevatten de gegevens die de trigger verwacht en vereist om de werkstroom te starten. Als u deze ingangen bekijkt, u bepalen of de triggeringangen correct zijn en of aan de voorwaarde is voldaan, zodat de werkstroom kan worden voortgezet.
 
-   Zo heeft de eigenschap `feedUrl` hier een onjuiste waarde voor de RSS-feed:
+   De `feedUrl` eigenschap heeft bijvoorbeeld een onjuiste RSS-feedwaarde:
 
-   ![Invoer van triggers controleren op fouten](./media/logic-apps-diagnosing-failures/review-trigger-inputs-for-errors.png)
+   ![Triggeringangen controleren op fouten](./media/logic-apps-diagnosing-failures/review-trigger-inputs-for-errors.png)
 
-1. Controleer de triggers-uitvoer, indien van toepassing, om te bevestigen dat ze worden weer gegeven zoals verwacht. Selecteer onder **uitvoer koppeling**de koppeling, waarin het deel venster **uitvoer** wordt weer gegeven.
+1. Controleer de eventuele triggers-uitvoer om te bevestigen dat ze worden weergegeven zoals u verwacht. Selecteer **onder de koppeling Uitvoer**de koppeling, waarin het deelvenster **Uitvoer** wordt weergegeven.
 
-   Trigger uitvoer bevat de gegevens die door de trigger worden door gegeven aan de volgende stap in uw werk stroom. Door deze uitvoer te bekijken, kunt u bepalen of de juiste of verwachte waarden zijn door gegeven aan de volgende stap in uw werk stroom, bijvoorbeeld:
+   Triggeruitvoer bevat de gegevens die de trigger doorgeeft aan de volgende stap in uw werkstroom. Als u deze uitvoer bekijkt, u bepalen of de juiste of verwachte waarden worden doorgegeven aan de volgende stap in uw werkstroom, bijvoorbeeld:
 
-   ![Activerings uitvoer controleren op fouten](./media/logic-apps-diagnosing-failures/review-trigger-outputs-for-errors.png)
+   ![Triggeroutputs controleren op fouten](./media/logic-apps-diagnosing-failures/review-trigger-outputs-for-errors.png)
 
    > [!TIP]
-   > Als u inhoud vindt die u niet herkent, kunt u meer te weten komen over [verschillende inhouds typen](../logic-apps/logic-apps-content-type.md) in azure Logic apps.
+   > Als u inhoud vindt die u niet herkent, leest u meer over [verschillende inhoudstypen](../logic-apps/logic-apps-content-type.md) in Azure Logic Apps.
 
 <a name="check-runs-history"></a>
 
-## <a name="check-runs-history"></a>Geschiedenis van uitvoeringen controleren
+## <a name="check-runs-history"></a>De uitvoeringen van de uitvoering controleren
 
-Telkens wanneer de trigger wordt geactiveerd voor een item of gebeurtenis, maakt en voert de Logic Apps Engine een afzonderlijk werk stroom exemplaar voor elk item of elke gebeurtenis. Als een uitvoering mislukt, volgt u deze stappen om te controleren wat er is gebeurd tijdens de uitvoering, inclusief de status van elke stap in de werk stroom plus de invoer en uitvoer voor elke stap.
+Elke keer dat de trigger wordt geactiveerd voor een item of gebeurtenis, maakt en voert de Engine Logic Apps een afzonderlijke werkstroominstantie uit voor elk item of gebeurtenis. Als een run mislukt, volgt u deze stappen om te controleren wat er tijdens die uitvoering is gebeurd, inclusief de status voor elke stap in de werkstroom plus de ingangen en uitvoer voor elke stap.
 
-1. Controleer de uitvoerings status van de werk stroom door [de runs History te controleren](../logic-apps/monitor-logic-apps.md#review-runs-history). Als u meer informatie wilt weer geven over een mislukte uitvoering, inclusief alle stappen in die worden uitgevoerd in hun status, selecteert u de mislukte uitvoering.
+1. Controleer de runstatus van de werkstroom door [de uitvoeringsgeschiedenis te controleren.](../logic-apps/monitor-logic-apps.md#review-runs-history) Als u meer informatie wilt weergeven over een mislukte run, inclusief alle stappen in die run in hun status, selecteert u de mislukte run.
 
-   ![Uitvoerings geschiedenis weer geven en mislukte uitvoering selecteren](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
+   ![Run-geschiedenis weergeven en mislukte run selecteren](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 
-1. Als alle stappen in de uitvoering worden weer gegeven, vouwt u de eerste mislukte stap uit.
+1. Nadat alle stappen in de run worden weergegeven, vouwt u de eerste mislukte stap uit.
 
    ![Eerste mislukte stap uitvouwen](./media/logic-apps-diagnosing-failures/logic-app-run-pane.png)
 
-1. Controleer de invoer van de mislukte stap om te controleren of ze worden weer gegeven zoals verwacht.
+1. Controleer de ingangen van de mislukte stap om te bevestigen of ze worden weergegeven zoals u verwacht.
 
-1. Bekijk de details van elke stap in een specifieke uitvoering. Selecteer onder uitvoerings **geschiedenis**de uitvoering die u wilt onderzoeken.
+1. Bekijk de details voor elke stap in een specifieke run. Selecteer **onder De geschiedenis Van Uitvoering**de run die u wilt onderzoeken.
 
-   ![Geschiedenis van uitvoeringen controleren](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
+   ![Beoordeling voert geschiedenis uit](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 
    ![Details bekijken van een run van een logische app](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-1. Als u de invoer, uitvoer en eventuele fout berichten voor een specifieke stap wilt onderzoeken, kiest u die stap zodat de shape wordt uitgebreid en de details worden weer gegeven. Bijvoorbeeld:
+1. Als u de ingangen, uitvoer en eventuele foutberichten voor een specifieke stap wilt onderzoeken, kiest u die stap zodat de vorm wordt uitgebreid en de details worden weergegeven. Bijvoorbeeld:
 
    ![Details van de stappen bekijken](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 
-## <a name="perform-runtime-debugging"></a>Runtime-fout opsporing uitvoeren
+## <a name="perform-runtime-debugging"></a>Fouten in runtime opsporen
 
-Als u hulp nodig hebt bij het opsporen van fouten, kunt u diagnostische stappen toevoegen aan een werk stroom voor logische apps, samen met het controleren van de trigger-en uitvoerings geschiedenis. U kunt bijvoorbeeld stappen toevoegen die gebruikmaken van de [webhook tester](https://webhook.site/) -service, zodat u HTTP-aanvragen kunt inspecteren en de exacte grootte, vorm en indeling bepaalt.
+Als u wilt helpen met foutopsporing, u diagnostische stappen toevoegen aan een werkstroom voor logische apps, samen met het controleren van de trigger en het uitvoeren van de geschiedenis. U bijvoorbeeld stappen toevoegen die de [Webhook Tester-service](https://webhook.site/) gebruiken, zodat u HTTP-aanvragen inspecteren en de exacte grootte, vorm en indeling bepalen.
 
-1. Ga naar de website van de [webhook-tester](https://webhook.site/) en kopieer de gegenereerde unieke URL.
+1. Ga naar de [Webhook Tester-site](https://webhook.site/) en kopieer de gegenereerde unieke URL.
 
-1. Voeg in uw logische app een HTTP POST-actie plus de hoofd inhoud toe die u wilt testen, bijvoorbeeld een expressie of een andere stap uitvoer.
+1. Voeg in uw logische app een HTTP POST-actie toe plus de hoofdinhoud die u wilt testen, bijvoorbeeld een expressie of een andere stapuitvoer.
 
-1. Plak de URL van de webhook-tester in de actie HTTP POST.
+1. Plak uw URL van Webhook Tester in de actie HTTP POST.
 
-1. Als u wilt zien hoe een aanvraag wordt gevormd wanneer deze wordt gegenereerd vanuit de Logic Apps-Engine, voert u de logische app uit en bezoekt u de site van de webhook-tester voor meer informatie.
+1. Als u wilt controleren hoe een aanvraag wordt gevormd wanneer deze wordt gegenereerd vanuit de Logic Apps-engine, voert u de logische app uit en bezoekt u de Website van Webhook Tester opnieuw voor meer details.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Uw logische app bewaken](../logic-apps/monitor-logic-apps.md)
+* [Uw logica-app controleren](../logic-apps/monitor-logic-apps.md)

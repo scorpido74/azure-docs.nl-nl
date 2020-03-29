@@ -1,7 +1,7 @@
 ---
-title: Een technisch profiel voor een SAML-Uitgever definiëren in een aangepast beleid
+title: Een technisch profiel definiëren voor een SAML-uitgever in een aangepast beleid
 titleSuffix: Azure AD B2C
-description: Definieer een technisch profiel voor een SAML-verlener (Security Assertion Markup Language token) in een aangepast beleid in Azure Active Directory B2C.
+description: Definieer een technisch profiel voor een SAML-token (Security Assertion Markup Language) in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,23 +12,23 @@ ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c35f85b9ec5d86d1cd61f165b891c576c06a03db
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78967274"
 ---
-# <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel voor een SAML-token Uitgever definiëren in een Azure Active Directory B2C aangepast beleid
+# <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel definiëren voor een SAML-tokenuitgever in een aangepast Azure Directory B2C-beleid
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) worden verschillende typen beveiligings tokens meegegeven wanneer elke verificatie stroom wordt verwerkt. Een technisch profiel voor een SAML-token uitgever verzendt een SAML-token dat terugkeert naar de Relying Party toepassing (service provider). Normaal gesp roken is dit technische profiel de laatste Orchestration-stap in de gebruikers reis.
+Azure Active Directory B2C (Azure AD B2C) zendt verschillende soorten beveiligingstokens uit terwijl elke verificatiestroom wordt verwerkt. Een technisch profiel voor een SAML-tokenuitgever zendt een SAML-token uit dat wordt teruggestuurd naar de toepassing van de relying party (serviceprovider). Meestal is dit technische profiel de laatste orkestratiestap in de gebruikersreis.
 
 ## <a name="protocol"></a>Protocol
 
-Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `None`. Stel het element **OutputTokenFormat** in op `SAML2`.
+Het kenmerk **Naam** van het element `None` **Protocol** moet worden ingesteld op . Stel het element **OutputTokenFormat** in op `SAML2`.
 
-In het volgende voor beeld ziet u een technisch profiel voor `Saml2AssertionIssuer`:
+In het volgende voorbeeld `Saml2AssertionIssuer`ziet u een technisch profiel voor :
 
 ```XML
 <TechnicalProfile Id="Saml2AssertionIssuer">
@@ -48,32 +48,32 @@ In het volgende voor beeld ziet u een technisch profiel voor `Saml2AssertionIssu
 </TechnicalProfile>
 ```
 
-## <a name="input-output-and-persist-claims"></a>Invoer, uitvoer en persistente claims
+## <a name="input-output-and-persist-claims"></a>Beweringen voor invoer, uitvoer en aanhouden
 
-De **InputClaims**-, **OutputClaims**-en **PersistClaims** -elementen zijn leeg of ontbreken. De **InutputClaimsTransformations** -en **OutputClaimsTransformations** -elementen zijn ook afwezig.
+De elementen **InputClaims,** **OutputClaims**en **PersistClaims** zijn leeg of afwezig. De **Elementen InutputClaimsTransformations** en **OutputClaimsTransformations** ontbreken ook.
 
 ## <a name="metadata"></a>Metagegevens
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| IssuerUri | Nee | De naam van de verlener die wordt weer gegeven in het SAML-antwoord. De waarde moet overeenkomen met de naam die is geconfigureerd in de Relying Party-toepassing. |
+| IssuerUri | Nee | De naam van de uitgever die wordt weergegeven in het SAML-antwoord. De waarde moet dezelfde naam hebben als geconfigureerd in de toepassing van de relying party. |
 
-## <a name="cryptographic-keys"></a>Cryptografische sleutels
+## <a name="cryptographic-keys"></a>Cryptografische toetsen
 
-Het CryptographicKeys-element bevat de volgende kenmerken:
+Het element CryptographicKeys bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| MetadataSigning | Ja | Het x509-certificaat (RSA key set) dat wordt gebruikt voor het ondertekenen van SAML-meta gegevens. Azure AD B2C gebruikt deze sleutel om de meta gegevens te ondertekenen. |
-| SamlMessageSigning| Ja| Geef het x509-certificaat (RSA key set) op dat moet worden gebruikt voor het ondertekenen van SAML-berichten. Azure AD B2C gebruikt deze sleutel om de reactie te ondertekenen `<samlp:Response>` verzenden naar de Relying Party.|
+| Metagegevenstekenen | Ja | De X509-certificaat (RSA-toetsset) die moet worden gebruikt om SAML-metagegevens te ondertekenen. Azure AD B2C gebruikt deze sleutel om de metagegevens te ondertekenen. |
+| SamlMessageSigning SamlMessageSigning| Ja| Geef het X509-certificaat (RSA-sleutelset) op dat moet worden gebruikt om SAML-berichten te ondertekenen. Azure AD B2C gebruikt deze `<samlp:Response>` sleutel om het antwoord te ondertekenen dat naar de relying party wordt verzonden.|
 
 ## <a name="session-management"></a>Sessiebeheer
 
-Voor het configureren van de Azure AD B2C SAML-sessies tussen een Relying Party toepassing, het kenmerk van het `UseTechnicalProfileForSessionManagement`-element, verwijzen naar de [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider) SSO-sessie.
+Als u de Azure AD B2C SAML-sessies wilt configureren `UseTechnicalProfileForSessionManagement` tussen een toepassing van een relying party, het kenmerk van het element, verwijzing naar [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider) SSO-sessie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het volgende artikel voor een voor beeld van het gebruik van een SAML-Uitgever technisch profiel:
+Zie bijvoorbeeld het volgende artikel over het gebruik van een technisch profiel van de SAML-uitgever:
 
 - [Een SAML-toepassing registreren in Azure AD B2C](connect-with-saml-service-providers.md)
 

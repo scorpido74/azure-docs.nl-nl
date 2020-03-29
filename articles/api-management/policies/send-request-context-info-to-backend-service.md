@@ -1,7 +1,7 @@
 ---
-title: Voor beeld-API-beheer beleid-informatie over context van aanvragen verzenden naar back-end-service
+title: Voorbeeld van API-beheerbeleid - Contextgegevens van aanvragen verzenden naar backendservice
 titleSuffix: Azure API Management
-description: 'Voor beeld van Azure API management-beleid: demonstreert hoe context gegevens van een aanvraag naar de back-end-service worden verzonden.'
+description: 'Voorbeeld van azure API-beheerbeleid : toont aan hoe u contextgegevens van aanvragen naar de backendservice verzendt.'
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 8cef989ca7ce8ee649c4f4aeb579c43bf8a8d6ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442410"
 ---
-# <a name="send-request-context-information-to-the-backend-service"></a>Informatie over aanvraag context verzenden naar de back-end-service
+# <a name="send-request-context-information-to-the-backend-service"></a>Aanvraag contextinformatie sturen naar de back-endservice
 
-In dit artikel wordt een voor beeld van een Azure API management-beleid weer gegeven waarin wordt getoond hoe u informatie over aanvraag context verzendt naar de back-end-service. Volg de stappen die worden beschreven in [een beleid instellen of bewerken](../set-edit-policies.md)om een beleids code in te stellen of te bewerken. Zie voor andere voor beelden [beleids voorbeelden](../policy-samples.md).
+In dit artikel wordt een voorbeeld van een Azure API-beheerbeleidsvoorbeeld weergegeven waarin wordt uitgelegd hoe u contextgegevens van aanvragen naar de backendservice verzenden. Als u een beleidscode wilt instellen of bewerken, volgt u de stappen die zijn beschreven in [Een beleid instellen of bewerken](../set-edit-policies.md). Zie [Beleidsvoorbeelden](../policy-samples.md)voor andere voorbeelden .
 
 ## <a name="policy"></a>Beleid
 
@@ -35,5 +35,5 @@ Plak de code in het **binnenkomende** blok.
 Meer informatie over APIM-beleid:
 
 + [Transformatiebeleid](../api-management-transformation-policies.md)
-+ [Voor beelden van beleid](../policy-samples.md)
++ [Beleidsvoorbeelden](../policy-samples.md)
 

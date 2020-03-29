@@ -1,7 +1,7 @@
 ---
-title: Geneste Traffic Manager profielen in azure
+title: Geneste trafficmanagerprofielen in Azure
 titleSuffix: Azure Traffic Manager
-description: In dit artikel wordt de functie geneste profielen van Azure Traffic Manager uitgelegd
+description: In dit artikel wordt de functie 'Geneste profielen' van Azure Traffic Manager uitgelegd
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -14,106 +14,106 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: rohink
 ms.openlocfilehash: 282099cb274c1ea872a0df9c2753a939ef31421f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938578"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Geneste Traffic Manager-profielen
 
-Traffic Manager bevat een reeks methoden voor het routeren van verkeer waarmee u kunt bepalen hoe Traffic Manager kiest welk eind punt verkeer van elke eind gebruiker moet ontvangen. Zie [Traffic Manager methoden voor het routeren van verkeer](traffic-manager-routing-methods.md)voor meer informatie.
+Traffic Manager bevat een reeks verkeersrouteringsmethoden waarmee u bepalen hoe Traffic Manager kiest welk eindpunt verkeer van elke eindgebruiker moet ontvangen. Zie [Verkeersbeheermethoden voor](traffic-manager-routing-methods.md)meer informatie .
 
-Elk Traffic Manager profiel bevat één methode voor het routeren van verkeer. Er zijn echter scenario's die meer geavanceerde verkeers routering vereisen dan de route ring van een enkel Traffic Manager profiel. U kunt Traffic Manager profielen nesten om de voor delen van meer dan één Traffic-routerings methode te combi neren. Met geneste profielen kunt u het standaard gedrag van Traffic Manager onderdrukken om grotere en complexere toepassings implementaties te ondersteunen.
+Elk Traffic Manager-profiel geeft één verkeersrouteringsmethode op. Er zijn echter scenario's die een geavanceerdere verkeersroutering vereisen dan de routebepaling die wordt geboden door één Traffic Manager-profiel. U Traffic Manager-profielen nesten om de voordelen van meer dan één verkeersrouteringsmethode te combineren. Met geneste profielen u het standaard gedrag van Traffic Manager overschrijven om grotere en complexere toepassingsimplementaties te ondersteunen.
 
-De volgende voor beelden laten zien hoe u geneste Traffic Manager profielen kunt gebruiken in verschillende scenario's.
+In de volgende voorbeelden ziet u hoe u geneste Traffic Manager-profielen in verschillende scenario's gebruiken.
 
-## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Voor beeld 1: het combi neren van prestaties en gewogen verkeers routering
+## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Voorbeeld 1: 'Prestaties' en 'Gewogen' verkeersroutering combineren
 
-Stel dat u een toepassing hebt geïmplementeerd in de volgende Azure-regio's: VS-West, Europa-west en Azië-oost. U gebruikt de verkeers routerings methode van Traffic Manager prestaties om verkeer te distribueren naar de regio die het dichtst bij de gebruiker ligt.
+Stel dat u een toepassing hebt geïmplementeerd in de volgende Azure-regio's: West-VS, West-Europa en Oost-Azië. U gebruikt de verkeersrouteringsmethode 'Prestaties' van Traffic Manager om verkeer te distribueren naar de regio die het dichtst bij de gebruiker staat.
 
-![Profiel voor één Traffic Manager][4]
+![Profiel van één verkeersmanager][4]
 
-Stel nu dat u een update naar uw service wilt testen voordat u deze uitgebreid uitbreidt. U wilt de ' gewogen ' Traffic-routerings methode gebruiken om een klein percentage verkeer naar uw test implementatie te sturen. U stelt de test implementatie in naast de bestaande productie-implementatie in Europa-west.
+Stel dat u een update van uw service wilt testen voordat u deze op grotere schaal uitrolt. U wilt de 'gewogen' verkeersrouteringsmethode gebruiken om een klein percentage verkeer naar uw testimplementatie te leiden. U stelt de testimplementatie in naast de bestaande productie-implementatie in West-Europa.
 
-U kunt niet zowel ' gewogen ' als ' prestatie verkeer-route ring combi neren in één profiel. Ter ondersteuning van dit scenario maakt u een Traffic Manager profiel met behulp van de twee Europa-west-eind punten en de ' gewogen ' Traffic-routerings methode. Vervolgens voegt u dit onderliggende profiel als een eind punt toe aan het bovenliggende profiel. Het bovenliggende profiel maakt nog steeds gebruik van de routerings methode voor prestatie verkeer en bevat de andere globale implementaties als eind punten.
+U zowel 'Gewogen' als 'Prestatieverkeersroutering' niet combineren in één profiel. Om dit scenario te ondersteunen, maakt u een Traffic Manager-profiel met behulp van de twee West-Europese eindpunten en de 'Gewogen' verkeersrouteringsmethode. Vervolgens voegt u dit 'onderliggende' profiel toe als eindpunt aan het 'bovenliggende' profiel. Het bovenliggende profiel gebruikt nog steeds de methode Voor het genereren van verkeer uitvoeren en bevat de andere globale implementaties als eindpunten.
 
-In het volgende diagram ziet u dit voor beeld:
+In het volgende diagram wordt het volgende voorbeeld geïllustreerd:
 
 ![Geneste Traffic Manager-profielen][2]
 
-In deze configuratie wordt verkeer dat via het bovenliggende profiel wordt gestuurd, doorgaans verkeer verdeeld over regio's. Binnen Europa-west, distribueert het geneste profiel het verkeer naar de productie-en test eindpunten op basis van de toegewezen gewichten.
+In deze configuratie verdeelt verkeer dat via het bovenliggende profiel wordt geleid, het verkeer normaal over regio's. Binnen West-Europa verdeelt het geneste profiel het verkeer naar de productie- en testeindpunten volgens de toegewezen gewichten.
 
-Wanneer het bovenliggende profiel de routerings methode voor prestaties verkeer gebruikt, moet aan elk eind punt een locatie worden toegewezen. De locatie wordt toegewezen wanneer u het eind punt configureert. Kies de Azure-regio die het dichtst bij uw implementatie ligt. De Azure-regio's zijn de locatie waarden die worden ondersteund door de tabel Internet latentie. Zie voor meer informatie [Traffic Manager ' prestaties ' verkeer routerings methode](traffic-manager-routing-methods.md#performance).
+Wanneer het bovenliggende profiel de verkeersrouteringsmethode 'Prestaties' gebruikt, moet elk eindpunt een locatie toegewezen krijgen. De locatie wordt toegewezen wanneer u het eindpunt configureert. Kies het Azure-gebied dat het dichtst bij uw implementatie ligt. De Azure-regio's zijn de locatiewaarden die worden ondersteund door de InternetLatency Table. Zie [Traffic Manager 'Performance'-routeringsmethode voor](traffic-manager-routing-methods.md#performance)meer informatie .
 
-## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Voor beeld 2: eindpunt bewaking in geneste profielen
+## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Voorbeeld 2: Eindpuntbewaking in geneste profielen
 
-Traffic Manager bewaakt de status van elk service-eind punt actief. Als een eind punt is beschadigd, stuurt Traffic Manager gebruikers naar alternatieve eind punten om de beschik baarheid van uw service te behouden. Dit endpoint-bewakings-en failover-gedrag is van toepassing op alle methoden voor het routeren van verkeer. Zie [Traffic Manager endpoint monitoring](traffic-manager-monitoring.md)voor meer informatie. Eindpunt controle werkt anders voor geneste profielen. Bij geneste profielen voert het bovenliggende profiel niet rechtstreeks status controles uit op het kind. In plaats daarvan wordt de status van de eind punten van het onderliggende profiel gebruikt voor het berekenen van de algemene status van het onderliggende profiel. Deze status informatie wordt door gegeven aan de hiërarchie van geneste profielen. Het bovenliggende profiel gebruikt deze geaggregeerde status om te bepalen of het verkeer naar het onderliggende profiel moet worden omgeleid. Raadpleeg de [Veelgestelde vragen](traffic-manager-FAQs.md#traffic-manager-nested-profiles) voor volledige informatie over de status controle van geneste profielen.
+Traffic Manager bewaakt actief de status van elk serviceeindpunt. Als een eindpunt niet in orde is, leidt Traffic Manager gebruikers naar alternatieve eindpunten om de beschikbaarheid van uw service te behouden. Dit gedrag voor endpointbewaking en failover is van toepassing op alle methoden voor het routeren van verkeer. Zie [Eindpuntbewaking van verkeersbeheer voor](traffic-manager-monitoring.md)meer informatie . Endpoint monitoring werkt anders voor geneste profielen. Met geneste profielen voert het bovenliggende profiel niet rechtstreeks gezondheidscontroles uit op het kind. In plaats daarvan wordt de status van de eindpunten van het kindprofiel gebruikt om de algehele status van het onderliggende profiel te berekenen. Deze statusgegevens worden gepropageerd in de geneste profielhiërarchie. Het bovenliggende profiel gebruikt deze geaggregeerde status om te bepalen of verkeer naar het onderliggende profiel moet worden doorgestroomd. Zie de [veelgestelde vragen](traffic-manager-FAQs.md#traffic-manager-nested-profiles) over de gezondheid van geneste profielen.
 
-Als u terugkeert naar het vorige voor beeld, mislukt de productie-implementatie in Europa-west. Standaard stuurt het onderliggende profiel alle verkeer naar de test implementatie. Als de test implementatie ook mislukt, bepaalt het bovenliggende profiel dat het onderliggende profiel geen verkeer mag ontvangen omdat alle onderliggende eind punten niet in orde zijn. Vervolgens distribueert het bovenliggende profiel het verkeer naar de andere regio's.
+Terug naar het vorige voorbeeld, stel dat de productie-inzet in West-Europa mislukt. Standaard leidt het 'onderliggende' profiel al het verkeer naar de testimplementatie. Als de testimplementatie ook mislukt, bepaalt het bovenliggende profiel dat het onderliggende profiel geen verkeer mag ontvangen omdat alle onderliggende eindpunten niet in orde zijn. Vervolgens verdeelt het bovenliggende profiel verkeer naar de andere regio's.
 
-![Failover genest Profiel (standaard gedrag)][3]
+![Mislukte geneste profielfailover (standaardgedrag)][3]
 
-Misschien bent u tevreden over deze rang schikking. U kunt er ook voor zorgen dat al het verkeer voor Europa-west nu naar de test implementatie gaat in plaats van een beperkt deel verkeer. Ongeacht de status van de test implementatie, wilt u een failover uitvoeren naar de andere regio's wanneer de productie-implementatie in Europa-west mislukt. Als u deze failover wilt inschakelen, kunt u de para meter ' MinChildEndpoints ' opgeven bij het configureren van het onderliggende profiel als een eind punt in het bovenliggende profiel. De para meter bepaalt het minimale aantal beschik bare eind punten in het onderliggende profiel. De standaard waarde is 1. Voor dit scenario stelt u de waarde voor MinChildEndpoints in op 2. Onder deze drempel waarde houdt het bovenliggende profiel in dat het hele onderliggende profiel niet beschikbaar is en stuurt het verkeer naar de andere eind punten.
+Je zou blij kunnen zijn met deze regeling. Of u zou bezorgd kunnen zijn dat al verkeer voor West-Europa nu naar de testimplementatie in plaats van een beperkt subsetverkeer gaat. Ongeacht de gezondheid van de testimplementatie, wilt u niet naar de andere regio's wanneer de productie-implementatie in West-Europa mislukt. Als u deze failover wilt inschakelen, u de parameter 'MinChildEndpoints' opgeven bij het configureren van het onderliggende profiel als eindpunt in het bovenliggende profiel. De parameter bepaalt het minimumaantal beschikbare eindpunten in het onderliggende profiel. De standaardwaarde is '1'. Voor dit scenario stelt u de waarde MinChildEndpoints in op 2. Onder deze drempel wordt het bovenliggende profiel als beschikbaar beschouwt en wordt het verkeer naar de andere eindpunten doorgestroomd.
 
-In de volgende afbeelding ziet u deze configuratie:
+De volgende figuur illustreert deze configuratie:
 
-![Failover van geneste profielen met ' MinChildEndpoints ' = 2][4]
+![Geneste profielfailover met 'MinChildEndpoints' = 2][4]
 
 > [!NOTE]
-> Met de methode voor het routerings verkeer met prioriteit wordt al het verkeer gedistribueerd naar een enkel eind punt. Er is dus weinig doel in een MinChildEndpoints-instelling dan ' 1 ' voor een onderliggend profiel.
+> De routeringsmethode 'Prioriteit' verdeelt al het verkeer naar één eindpunt. Er is dus weinig zin in een MinChildEndpoints-instelling anders dan '1' voor een kindprofiel.
 
-## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Voor beeld 3: failover-regio's met prioriteit in prestaties verkeer routeren
+## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Voorbeeld 3: Prioriteit geven aan failoverregio's in 'Prestatie'-verkeersroutering
 
-Het standaard gedrag voor de routerings methode ' prestaties ' is wanneer u eind punten in verschillende geografische locaties hebt, worden de eind gebruikers doorgestuurd naar het dichtstbijzijnde eind punt in termen van de laagste netwerk latentie.
+Het standaardgedrag voor de verkeersrouteringsmethode 'Prestaties' is wanneer u eindpunten op verschillende geografische locaties hebt, worden de eindgebruikers naar het 'dichtstbijzijnde' eindpunt geleid in termen van de laagste netwerklatentie.
 
-Stel dat u de voor keur geeft aan de failover van Europa-west verkeer naar VS-West en alleen directe verkeer naar andere regio's wanneer beide eind punten niet beschikbaar zijn. U kunt deze oplossing maken met behulp van een onderliggend profiel met de methode voor het routeren van verkeer.
+Stel dat u de voorkeur geeft aan de failover van West-Europa naar West-VS en alleen het verkeer naar andere regio's leidt wanneer beide eindpunten niet beschikbaar zijn. U deze oplossing maken met behulp van een onderliggend profiel met de verkeersrouteringsmethode 'Prioriteit'.
 
-![Verkeers routering voor prestaties met voorkeurs failover][6]
+!['Performance' verkeersroutering met preferentiële failover][6]
 
-Omdat het Europa-west-eind punt een hogere prioriteit heeft dan het eind punt van de VS West, wordt al het verkeer naar het Europa-west eind punt verzonden wanneer beide eind punten online zijn. Als Europa-west mislukt, wordt het verkeer omgeleid naar de VS-West. Met het geneste profiel wordt verkeer alleen omgeleid naar Azië-oost als zowel Europa-west als de VS-West mislukt.
+Aangezien het Eindpunt van West-Europa een hogere prioriteit heeft dan het West-Amerikaanse eindpunt, wordt al het verkeer naar het eindpunt van West-Europa gestuurd wanneer beide eindpunten online zijn. Als West-Europa faalt, wordt het verkeer naar West-VS geleid. Met het geneste profiel wordt het verkeer alleen naar Oost-Azië geleid wanneer zowel West-Europa als West-VS falen.
 
-U kunt dit patroon herhalen voor alle regio's. Vervang alle drie de eind punten in het bovenliggende profiel door drie onderliggende profielen, elk met een failover-volg orde met prioriteit.
+U dit patroon voor alle regio's herhalen. Vervang alle drie eindpunten in het bovenliggende profiel door drie onderliggende profielen, die elk een geprioritteerde failover-reeks bieden.
 
-## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>Voor beeld 4: de route ring van verkeer van de prestaties tussen meerdere eind punten in dezelfde regio beheren
+## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>Voorbeeld 4: Verkeersroutering 'Prestaties' tussen meerdere eindpunten in dezelfde regio beheren
 
-Stel dat de methode voor verkeers routering voor prestaties wordt gebruikt in een profiel met meer dan één eind punt in een bepaalde regio. Verkeer dat naar die regio wordt gestuurd, wordt standaard gelijkmatig verdeeld over alle beschik bare eind punten in die regio.
+Stel dat de verkeersrouteringsmethode 'Prestaties' wordt gebruikt in een profiel dat meer dan één eindpunt in een bepaalde regio heeft. Het verkeer dat naar die regio wordt geleid, wordt standaard gelijkmatig verdeeld over alle beschikbare eindpunten in die regio.
 
-![' Prestaties ' verkeers routering in-Region-verkeer distributie (standaard gedrag)][7]
+!['Performance' verkeersroutering in de regio verkeersverdeling (standaardgedrag)][7]
 
-In plaats van meerdere eind punten toe te voegen aan Europa-west, worden deze eind punten Inge sloten in een afzonderlijk onderliggend profiel. Het onderliggende profiel wordt toegevoegd aan de bovenliggende sleutel als het enige eind punt in Europa-west. De instellingen op het onderliggende profiel kunnen de verkeers distributie met Europa-west bepalen door de route ring op basis van prioriteit of gewogen verkeer in die regio in te scha kelen.
+In plaats van meerdere eindpunten toe te voegen in West-Europa, zijn deze eindpunten ingesloten in een apart onderliggend profiel. Het onderliggende profiel wordt aan de ouder toegevoegd als het enige eindpunt in West-Europa. De instellingen op het onderliggende profiel kunnen de verkeersverdeling met West-Europa regelen door prioriteitsafhankelijke of gewogen verkeersroutering binnen die regio mogelijk te maken.
 
-![' Prestaties ' verkeers routering met aangepaste verkeer distributie in regio's][8]
+!['Performance' verkeersroutering met aangepaste verkeersverdeling in de regio][8]
 
-## <a name="example-5-per-endpoint-monitoring-settings"></a>Voor beeld 5: instellingen voor bewaking per eind punt
+## <a name="example-5-per-endpoint-monitoring-settings"></a>Voorbeeld 5: Instellingen voor bewaking per eindpunt
 
-Stel dat u gebruikmaakt van Traffic Manager om het verkeer van een oude on-premises website soepel te migreren naar een nieuwe Cloud versie die wordt gehost in Azure. Voor de oude site wilt u de URL van de start pagina gebruiken om de status van de site te controleren. Voor de nieuwe Cloud versie implementeert u echter een aangepaste controle pagina (Path '/monitor.aspx ') met aanvullende controles.
+Stel dat u Traffic Manager gebruikt om verkeer soepel te migreren van een verouderde on-premises website naar een nieuwe cloudversie die wordt gehost in Azure. Voor de verouderde site wilt u de startpagina URI gebruiken om de status van de site te controleren. Maar voor de nieuwe cloudversie implementeert u een aangepaste bewakingspagina (pad '/monitor.aspx') met extra controles.
 
-![Eindpunt bewaking Traffic Manager (standaard gedrag)][9]
+![Eindpuntbewaking van Traffic Manager (standaardgedrag)][9]
 
-De controle-instellingen in een Traffic Manager profiel zijn van toepassing op alle eind punten binnen één profiel. Met geneste profielen gebruikt u een ander onderliggend profiel per site om verschillende bewakings instellingen te definiëren.
+De bewakingsinstellingen in een Traffic Manager-profiel zijn van toepassing op alle eindpunten binnen één profiel. Met geneste profielen gebruikt u een ander onderliggend profiel per site om verschillende bewakingsinstellingen te definiëren.
 
-![Endpoint-bewaking Traffic Manager met instellingen per eind punt][10]
+![Eindpuntbewaking van Traffic Manager met per-endpoint-instellingen][10]
 
 ## <a name="faqs"></a>Veelgestelde vragen
 
-* [Hoe kan ik geneste profielen configureren?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
+* [Hoe configureer ik geneste profielen?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
 
-* [Hoeveel lagen nesten ondersteunt Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
+* [Hoeveel nestlagen ondersteunt Traffic Manger?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
 
-* [Kan ik andere eindpunt typen met geneste onderliggende profielen combi neren in hetzelfde Traffic Manager profiel?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
+* [Kan ik andere eindpunttypen mengen met geneste onderliggende profielen in hetzelfde Traffic Manager-profiel?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
 
-* [Hoe is het facturerings model van toepassing op geneste profielen?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
+* [Hoe is het factureringsmodel van toepassing op geneste profielen?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
 
-* [Is er sprake van invloed op de prestaties van geneste profielen?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
+* [Is er een prestatie-impact voor geneste profielen?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
 
-* [Hoe berekent Traffic Manager de status van een genest eind punt in een bovenliggend profiel?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
+* [Hoe berekent Traffic Manager de status van een genest eindpunt in een bovenliggend profiel?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [Traffic Manager profielen](traffic-manager-overview.md)
+Meer informatie over [Traffic Manager-profielen](traffic-manager-overview.md)
 
-Meer informatie over het [maken van een Traffic Manager profiel](traffic-manager-create-profile.md)
+Meer informatie over het [maken van een Traffic Manager-profiel](traffic-manager-create-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-nested-profiles/figure-1.png

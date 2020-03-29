@@ -1,6 +1,6 @@
 ---
-title: Integratie van Azure Data Explorer met Azure Data Factory
-description: In dit onderwerp integreert u Azure Data Explorer met Azure Data Factory om de activiteiten Copy, lookup en Command te gebruiken
+title: Azure Data Explorer-integratie met Azure Data Factory
+description: Integreer in dit onderwerp Azure Data Explorer met Azure Data Factory om de kopieer-, opzoek- en opdrachttakenactiviteiten te gebruiken
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,176 +9,176 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: bb08cf4db45a378b35a8245eadd56a2ab3e48bab
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76293620"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Azure Data Explorer integreren met Azure Data Factory
 
-[Azure Data Factory](/azure/data-factory/) (ADF) is een service voor gegevens integratie in de Cloud waarmee u verschillende gegevens archieven kunt integreren en activiteiten op de gegevens moet uitvoeren. Met ADF kunt u gegevensgestuurde werk stromen maken voor het organiseren en automatiseren van gegevens verplaatsing en gegevens transformatie. Azure Data Explorer is een van de [ondersteunde gegevens archieven](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) in azure Data Factory. 
+[Azure Data Factory](/azure/data-factory/) (ADF) is een cloudgebaseerde data-integratieservice waarmee u verschillende gegevensarchieven integreren en activiteiten op de gegevens uitvoeren. Met ADF u datagestuurde workflows maken voor het orkestreren en automatiseren van gegevensverplaatsing en gegevenstransformatie. Azure Data Explorer is een van de [ondersteunde gegevensopslagin](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) Azure Data Factory. 
 
-## <a name="azure-data-factory-activities-for-azure-data-explorer"></a>Azure Data Factory activiteiten voor Azure Data Explorer
+## <a name="azure-data-factory-activities-for-azure-data-explorer"></a>Azure Data Factory-activiteiten voor Azure Data Explorer
 
-Er zijn verschillende integraties met Azure Data Factory beschikbaar voor Azure Data Explorer-gebruikers:
+Verschillende integraties met Azure Data Factory zijn beschikbaar voor Azure Data Explorer-gebruikers:
 
 ### <a name="copy-activity"></a>Kopieeractiviteit
  
-Azure Data Factory Kopieer activiteit wordt gebruikt om gegevens over te dragen tussen gegevens archieven. Azure Data Explorer wordt ondersteund als een bron, waarbij gegevens worden gekopieerd van Azure Data Explorer naar elk ondersteund gegevens archief en een sink, waarbij gegevens worden gekopieerd uit een ondersteund gegevens archief naar Azure Data Explorer. Zie [gegevens kopiëren naar of van Azure Data Explorer met behulp van Azure Data Factory](/azure/data-factory/connector-azure-data-explorer)voor meer informatie. en voor een gedetailleerde stapsgewijze Zie [laad gegevens van Azure Data Factory in Azure Data Explorer](data-factory-load-data.md).
-Azure Data Explorer wordt ondersteund door Azure IR (Integration Runtime), gebruikt wanneer gegevens worden gekopieerd binnen Azure en zelf-hostende IR, die wordt gebruikt bij het kopiëren van gegevens van/naar gegevens archieven op locatie of in een netwerk met toegangs beheer, zoals een Azure-Virtual Network. Zie voor meer informatie [welke IR u moet gebruiken](/azure/data-factory/concepts-integration-runtime#determining-which-ir-to-use)
+Azure Data Factory Copy-activiteit wordt gebruikt om gegevens over te dragen tussen gegevensopslag. Azure Data Explorer wordt ondersteund als een bron, waarbij gegevens worden gekopieerd van Azure Data Explorer naar een ondersteund gegevensarchief en een sink, waar gegevens worden gekopieerd van een ondersteund gegevensarchief naar Azure Data Explorer. Zie [Gegevens kopiëren naar of vanuit Azure Data Explorer met Azure Data Factory](/azure/data-factory/connector-azure-data-explorer)voor meer informatie. en voor een gedetailleerde doorloop zie [laadgegevens van Azure Data Factory naar Azure Data Explorer.](data-factory-load-data.md)
+Azure Data Explorer wordt ondersteund door Azure IR (Integration Runtime), wordt gebruikt wanneer gegevens worden gekopieerd binnen Azure en zelfgehoste IR, die wordt gebruikt bij het kopiëren van gegevens van/naar gegevensarchieven die zich on-premises of in een netwerk met toegangscontrole bevinden, zoals een Azure Virtual Network. Zie voor meer informatie [welke IR u moet gebruiken](/azure/data-factory/concepts-integration-runtime#determining-which-ir-to-use)
  
 > [!TIP]
-> Wanneer u de Kopieer activiteit gebruikt en een **gekoppelde service** of een **gegevensset**maakt, selecteert u de gegevens opslag **Azure Data Explorer (Kusto)** en niet de oude **Kusto**van het gegevens archief.  
+> Wanneer u de kopieeractiviteit gebruikt en een **gekoppelde service** of een **gegevensset maakt,** selecteert u het gegevensarchief **Azure Data Explorer (Kusto)** en niet het oude gegevensarchief **Kusto**.  
 
-### <a name="lookup-activity"></a>Opzoek activiteit
+### <a name="lookup-activity"></a>Opzoekactiviteit
  
-De opzoek activiteit wordt gebruikt voor het uitvoeren van query's op Azure Data Explorer. Het resultaat van de query wordt geretourneerd als de uitvoer van de lookup-activiteit en kan worden gebruikt in de volgende activiteit in de pijp lijn zoals beschreven in de [documentatie bij ADF-Zoek opdrachten](/azure/data-factory/control-flow-lookup-activity#use-the-lookup-activity-result-in-a-subsequent-activity).  
-Naast de limiet voor de antwoord grootte van 5.000 rijen en 2 MB, heeft de activiteit ook een limiet voor de querytime-out van 1 uur.
+De opzoekactiviteit wordt gebruikt voor het uitvoeren van query's in Azure Data Explorer. Het resultaat van de query wordt geretourneerd als de uitvoer van de opzoekactiviteit en kan worden gebruikt in de volgende activiteit in de pijplijn, zoals beschreven in de [ADF-opzoekdocumentatie](/azure/data-factory/control-flow-lookup-activity#use-the-lookup-activity-result-in-a-subsequent-activity).  
+Naast de responsgroottelimiet van 5.000 rijen en 2 MB heeft de activiteit ook een querytime-outlimiet van 1 uur.
 
-### <a name="command-activity"></a>Opdracht activiteit
+### <a name="command-activity"></a>Opdrachtactiviteit
 
-Met de opdracht activiteit kan de Azure Data Explorer- [besturings opdrachten](/azure/kusto/concepts/#control-commands)worden uitgevoerd. In tegens telling tot query's kunnen de besturings opdrachten gegevens of meta gegevens wijzigen. Sommige besturings opdrachten zijn bedoeld om gegevens op te nemen in azure Data Explorer, met behulp van opdrachten als `.ingest`of `.set-or-append`) of door gegevens te kopiëren van Azure-Data Explorer naar externe gegevens archieven met behulp van opdrachten als `.export`.
-Zie [Azure Data Factory opdracht activiteit gebruiken om Azure Data Explorer-besturings opdrachten uit te voeren](data-factory-command-activity.md)voor een gedetailleerde uitleg van de opdracht activiteit.  Het gebruik van een besturings opdracht om gegevens te kopiëren kan op elk moment een snellere en goedkopere optie zijn dan de Kopieer activiteit. Zie [selecteren tussen kopiëren en opdracht activiteiten bij het kopiëren van gegevens](#select-between-copy-and-azure-data-explorer-command-activities-when-copy-data)om te bepalen wanneer u de opdracht activiteit wilt gebruiken in plaats van de Kopieer activiteit.
+Met de opdrachtactiviteit kunnen [de besturingselementopdrachten](/azure/kusto/concepts/#control-commands)van Azure Data Explorer worden uitgevoerd. In tegenstelling tot query's kunnen de besturingselementopdrachten mogelijk gegevens of metagegevens wijzigen. Sommige besturingsopdrachten zijn gericht op het opnemen van gegevens in `.ingest`Azure `.set-or-append`Data Explorer, met opdrachten zoals of ) of `.export`gegevens van Azure Data Explorer kopiëren naar externe gegevensopslag met opdrachten zoals .
+Zie [Opdrachtactiviteit Azure Data Factory gebruiken om de besturingselementopdrachten](data-factory-command-activity.md)van Azure Data Explorer uit te voeren voor een gedetailleerde doorloop van de opdrachtactiviteit.  Het gebruik van een besturingselementopdracht om gegevens te kopiëren kan soms een snellere en goedkopere optie zijn dan de activiteit Kopiëren. Zie [Selecteren tussen Kopieer- en Opdrachtactiviteiten bij het kopiëren van gegevens](#select-between-copy-and-azure-data-explorer-command-activities-when-copy-data)als u wilt bepalen wanneer u de opdrachtactiviteit versus de activiteit Kopiëren wilt gebruiken.
 
-### <a name="copy-in-bulk-from-a-database-template"></a>Bulksgewijs kopiëren uit een database sjabloon
+### <a name="copy-in-bulk-from-a-database-template"></a>In bulk kopiëren vanuit een databasesjabloon
 
-De [kopie in bulk van een Data Base naar Azure Data Explorer met behulp van de Azure Data Factory sjabloon](data-factory-template.md) is een vooraf gedefinieerde Azure Data Factory pijp lijn. De sjabloon wordt gebruikt om een groot aantal pijp lijnen per data base of per tabel te maken voor het sneller kopiëren van gegevens. 
+De [kopie in bulk van een database naar Azure Data Explorer met behulp van de sjabloon Azure Data Factory](data-factory-template.md) is een vooraf gedefinieerde Azure Data Factory-pijplijn. De sjabloon wordt gebruikt om veel pijplijnen per database of per tabel te maken voor sneller gegevens kopiëren. 
 
 ### <a name="mapping-data-flows"></a>Toewijzing gegevensstromen 
 
-[Azure Data Factory gegevens stromen](/azure/data-factory/concepts-data-flow-overview) zijn visueel ontworpen gegevens transformaties waarmee data engineers grafische gegevens transformatie logica kunnen ontwikkelen zonder code te hoeven schrijven. Als u een gegevens stroom en opname gegevens wilt maken naar Azure Data Explorer, gebruikt u de volgende methode:
+[Azure Data Factory mapping data flows](/azure/data-factory/concepts-data-flow-overview) zijn visueel ontworpen gegevenstransformaties waarmee data engineers grafische gegevenstransformatielogica kunnen ontwikkelen zonder code te schrijven. Als u een gegevensstroom wilt maken en gegevens wilt opnemen in Azure Data Explorer, gebruikt u de volgende methode:
 
-1. Maak de [toewijzings gegevens stroom](/azure/data-factory/data-flow-create).
-1. [De gegevens exporteren naar een Azure-Blob](/azure/data-factory/data-flow-sink). 
-1. Definieer [Event grid](/azure/data-explorer/ingest-data-event-grid) of een [ADF-Kopieer activiteit](/azure/data-explorer/data-factory-load-data) om de gegevens op te nemen in azure Data Explorer.
+1. Maak de [kaartgegevensstroom](/azure/data-factory/data-flow-create).
+1. [Exporteer de gegevens naar Azure Blob](/azure/data-factory/data-flow-sink). 
+1. Definieer [gebeurtenisraster-](/azure/data-explorer/ingest-data-event-grid) of [ADF-kopieeractiviteit](/azure/data-explorer/data-factory-load-data) om de gegevens in te nemen in Azure Data Explorer.
 
-## <a name="select-between-copy-and-azure-data-explorer-command-activities-when-copy-data"></a>Selecteer tussen Kopieer-en Azure Data Explorer-opdracht activiteiten wanneer u gegevens kopieert 
+## <a name="select-between-copy-and-azure-data-explorer-command-activities-when-copy-data"></a>Kiezen tussen opdrachten kopiëren en Azure Data Explorer wanneer gegevens worden gekopieerd 
 
-Deze sectie helpt u bij het selecteren van de juiste activiteit voor het kopiëren van uw gegevens.
+In deze sectie u de juiste activiteit selecteren voor uw gegevenskopieerbehoeften.
 
-Bij het kopiëren van gegevens van of naar Azure Data Explorer zijn er twee beschik bare opties in Azure Data Factory:
-* Kopieer activiteit.
-* Azure Data Explorer-opdracht activiteit, waarmee een van de besturings opdrachten wordt uitgevoerd waarmee gegevens worden overgebracht in azure Data Explorer. 
+Bij het kopiëren van gegevens van of naar Azure Data Explorer zijn er twee beschikbare opties in Azure Data Factory:
+* Activiteit kopiëren.
+* Opdrachtvoor Azure Data Explorer, waarbij een van de besturingselementopdrachten wordt uitgevoerd die gegevens overbrengen in Azure Data Explorer. 
 
-### <a name="copy-data-from-azure-data-explorer"></a>Gegevens kopiëren van Azure Data Explorer
+### <a name="copy-data-from-azure-data-explorer"></a>Gegevens kopiëren vanuit Azure Data Explorer
   
-U kunt gegevens uit Azure Data Explorer kopiëren met behulp van de Kopieer activiteit of de [`.export`](/azure/kusto/management/data-export/) opdracht. De `.export` opdracht voert een query uit en exporteert vervolgens de resultaten van de query. 
+U gegevens uit Azure Data Explorer [`.export`](/azure/kusto/management/data-export/) kopiëren met de kopieeractiviteit of de opdracht. De `.export` opdracht voert een query uit en exporteert vervolgens de resultaten van de query. 
 
-Raadpleeg de volgende tabel voor een vergelijking van de Kopieer activiteit en `.export` opdracht voor het kopiëren van gegevens uit Azure Data Explorer.
+Zie de volgende tabel voor een `.export` vergelijking van de activiteit kopiëren en opdracht voor het kopiëren van gegevens uit Azure Data Explorer.
 
-| | Kopieeractiviteit | . de opdracht exporteren |
+| | Kopieeractiviteit | .export, opdracht |
 |---|---|---|
-| **Stroom beschrijving** | ADF voert een query uit op Kusto, verwerkt het resultaat en verzendt het naar het doel gegevens archief. <br>(**ADX > ADF > Sink-gegevens archief**) | ADF verzendt een `.export` controle opdracht naar Azure Data Explorer, waarmee de opdracht wordt uitgevoerd en de gegevens rechtstreeks naar de doel gegevens opslag worden verzonden. <br>(**ADX > Sink-gegevens opslag**) |
-| **Ondersteunde doel gegevens archieven** | Een groot aantal [ondersteunde gegevens archieven](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLSv2, Azure-Blob, SQL Database |
-| **Prestaties** | Gecentraliseerde | <ul><li>Gedistribueerd (standaard), gegevens van meerdere knoop punten gelijktijdig exporteren</li><li>Sneller en COGS efficiënt.</li></ul> |
-| **Server limieten** | [Query limieten](/azure/kusto/concepts/querylimits) kunnen worden uitgebreid/uitgeschakeld. ADF-query's bevatten standaard: <ul><li>De maximale grootte van 500.000 records of 64 MB.</li><li>Tijds limiet van 10 minuten.</li><li>`noTruncation` ingesteld op false.</li></ul> | De query limieten worden standaard uitgebreid of uitgeschakeld: <ul><li>Grootte limieten zijn uitgeschakeld.</li><li>De time-out van de server is verlengd tot 1 uur.</li><li>`MaxMemoryConsumptionPerIterator` en `MaxMemoryConsumptionPerQueryPerNode` zijn uitgebreid tot Maxi maal (5 GB, TotalPhysicalMemory/2).</li></ul>
+| **Stroombeschrijving** | ADF voert een query uit op Kusto, verwerkt het resultaat en stuurt deze naar het doelgegevensarchief. <br>(**ADX > ADF > sink data store)** | ADF stuurt `.export` een besturingselementopdracht naar Azure Data Explorer, dat de opdracht uitvoert, en stuurt de gegevens rechtstreeks naar het doelgegevensarchief. <br>(**ADX > wastafelgegevensarchief)** |
+| **Ondersteunde doelgegevensarchieven** | Een breed scala aan [ondersteunde gegevensarchieven](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLSv2, Azure Blob, SQL-database |
+| **Prestaties** | Gecentraliseerde | <ul><li>Gedistribueerd (standaard), gegevens tegelijk exporteren van meerdere knooppunten</li><li>Sneller en COGS efficiënt.</li></ul> |
+| **Serverlimieten** | [Querylimieten](/azure/kusto/concepts/querylimits) kunnen worden verlengd/uitgeschakeld. Adf-query's bevatten standaard: <ul><li>Groottelimiet van 500.000 records of 64 MB.</li><li>Tijdslimiet van 10 minuten.</li><li>`noTruncation`ingesteld op false.</li></ul> | De querylimieten standaard uit- of uitschakelen: <ul><li>Groottelimieten zijn uitgeschakeld.</li><li>Servertime-out wordt verlengd tot 1 uur.</li><li>`MaxMemoryConsumptionPerIterator`en `MaxMemoryConsumptionPerQueryPerNode` worden uitgebreid tot max (5 GB, TotalPhysicalMemory/2).</li></ul>
 
 > [!TIP]
-> Als uw Kopieer doel een van de gegevens archieven is die worden ondersteund door de `.export`-opdracht en als geen van de functies van de Kopieer activiteit cruciaal is voor uw behoeften, selecteert u de `.export` opdracht.
+> Als uw kopieerbestemming een van de gegevensopslag is die door de `.export` opdracht wordt ondersteund en `.export` als geen van de functies Voor de kopieeractiviteit van cruciaal belang is voor uw behoeften, selecteert u de opdracht.
 
 ### <a name="copying-data-to-azure-data-explorer"></a>Gegevens kopiëren naar Azure Data Explorer
 
-U kunt gegevens naar Azure Data Explorer kopiëren met behulp van de kopieer-of opname opdrachten, zoals [opname van query's](/azure/kusto/management/data-ingestion/ingest-from-query) (`.set-or-append`, `.set-or-replace`, `.set`, `.replace)`en opnemen [vanuit Storage](/azure/kusto/management/data-ingestion/ingest-from-storage) (`.ingest`). 
+U gegevens kopiëren naar Azure Data Explorer met behulp van de`.set-or-append` `.set-or-replace`kopieeractiviteit of innameopdrachten, zoals [inname uit query](/azure/kusto/management/data-ingestion/ingest-from-query) (, , `.set`, `.replace)`en [inslikken vanuit opslag](/azure/kusto/management/data-ingestion/ingest-from-storage) (`.ingest`). 
 
-Raadpleeg de volgende tabel voor een vergelijking van de Kopieer activiteit en opname opdrachten voor het kopiëren van gegevens naar Azure Data Explorer.
+Zie de volgende tabel voor een vergelijking van de kopieeractiviteit en innameopdrachten voor het kopiëren van gegevens naar Azure Data Explorer.
 
-| | Kopieeractiviteit | Opnemen uit query<br> `.set-or-append` / `.set-or-replace` / `.set` / `.replace` | Opnemen uit opslag <br> `.ingest` |
+| | Kopieeractiviteit | Inname van query<br> `.set-or-append` / `.set-or-replace` / `.set` / `.replace` | Inname uit opslag <br> `.ingest` |
 |---|---|---|---|
-| **Stroom beschrijving** | ADF haalt de gegevens op uit de brongegevens opslag, converteert deze naar een tabellaire indeling en voert de vereiste schema toewijzing wijzigingen door. ADF laadt vervolgens de gegevens naar Azure-blobs, splitst deze op in segmenten en downloadt vervolgens de blobs om deze op te nemen in de tabel ADX. <br> (**Brongegevens opslag > ADF > Azure-blobs > ADX**) | Met deze opdrachten kan een query of een `.show` opdracht worden uitgevoerd en worden de resultaten van de query opgenomen in een tabel (**ADX > ADX**). | Met deze opdracht worden gegevens opgenomen in een tabel door de gegevens van een of meer opslag artefacten in de Cloud op te halen. |
-| **Ondersteunde gegevens archieven voor bronnen** |  [verschillende opties](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS gen 2, Azure Blob, SQL (met behulp van de sql_request-invoeg toepassing), Cosmos (met behulp van de cosmosdb_sql_request-invoeg toepassing) en een ander gegevens archief dat HTTP-of python-Api's levert. | File System, Azure Blob Storage, ADLS gen 1, ADLS gen 2 |
-| **Prestaties** | Opname is in de wachtrij geplaatst en beheerd, waardoor kleine opname mogelijkheden worden gegarandeerd en de maximale Beschik baarheid wordt gegarandeerd door taak verdeling, nieuwe pogingen en fout afhandeling te bieden. | <ul><li>Deze opdrachten zijn niet bedoeld voor het importeren van grote hoeveel heden gegevens.</li><li>Werkt zoals verwacht en goed koper. Maar voor productie scenario's en wanneer de verkeers frequentie en de grootte van de gegevens groot zijn, gebruikt u de Kopieer activiteit.</li></ul> |
-| **Server limieten** | <ul><li>Geen maximale grootte.</li><li>Maximale time-outlimiet: 1 uur per opgenomen blob. |<ul><li>Er is slechts een maximale grootte voor het query onderdeel, dat kan worden overgeslagen door `noTruncation=true`op te geven.</li><li>Maximale time-outlimiet: 1 uur.</li></ul> | <ul><li>Geen maximale grootte.</li><li>Maximale time-outlimiet: 1 uur.</li></ul>|
+| **Stroombeschrijving** | ADF haalt de gegevens uit het brongegevensarchief, zet deze om in een tabelindeling en brengt de vereiste schematoewijzingswijzigingen uit. ADF uploadt de gegevens vervolgens naar Azure-blobs, splitst deze in brokken en downloadt vervolgens de blobs om ze in de ADX-tabel in te nemen. <br> (**Brongegevensarchief > ADF-> Azure-blobs > ADX)** | Deze opdrachten kunnen een query `.show` of opdracht uitvoeren en de resultaten van de query ineennemen in een tabel **(ADX > ADX).** | Deze opdracht neemt gegevens in een tabel op door de gegevens uit een of meer artefacten voor cloudopslag te "trekken". |
+| **Ondersteunde brongegevensarchieven** |  [verschillende opties](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS Gen 2, Azure Blob, SQL (met behulp van de sql_request-plug-in), Cosmos (met behulp van de cosmosdb_sql_request-plug-in) en elk ander gegevensarchief dat HTTP- of Python-API's biedt. | Bestandssysteem, Azure Blob-opslag, ADLS Gen 1, ADLS Gen 2 |
+| **Prestaties** | Inname wordt in de wachtrij geplaatst en beheerd, wat zorgt voor kleine inname en zorgt voor een hoge beschikbaarheid door het bieden van load balancing, retries en foutafhandeling. | <ul><li>Deze opdrachten zijn niet ontworpen voor het importeren van gegevens met een hoog volume.</li><li>Werkt zoals verwacht en goedkoper. Maar voor productiescenario's en wanneer de verkeerssnelheden en gegevensgroottegroot zijn, gebruikt u de activiteit Kopiëren.</li></ul> |
+| **Serverlimieten** | <ul><li>Geen groottelimiet.</li><li>Maximale time-out limiet: 1 uur per ingenomen blob. |<ul><li>Er is alleen een limiet voor de grootte van het `noTruncation=true`querygedeelte, die kan worden overgeslagen door op te geven .</li><li>Maximale time-out limiet: 1 uur.</li></ul> | <ul><li>Geen groottelimiet.</li><li>Maximale time-out limiet: 1 uur.</li></ul>|
 
 > [!TIP]
-> * Bij het kopiëren van gegevens van ADF naar Azure Data Explorer de `ingest from query`-opdrachten gebruiken.  
-> * Gebruik voor grote gegevens sets (> 1 GB) de Kopieer activiteit.  
+> * Wanneer u gegevens van ADF naar `ingest from query` Azure Data Explorer kopieert, gebruikt u de opdrachten.  
+> * Voor grote gegevenssets (>1 GB) gebruikt u de activiteit Kopiëren.  
 
 ## <a name="required-permissions"></a>Vereiste machtigingen
 
-De volgende tabel geeft een lijst van de vereiste machtigingen voor verschillende stappen in de integratie met Azure Data Factory.
+In de volgende tabel worden de vereiste machtigingen weergegeven voor verschillende stappen in de integratie met Azure Data Factory.
 
-| Stap | Bewerking | Mini maal machtigings niveau | Opmerkingen |
+| Stap | Bewerking | Minimumniveau van machtigingen | Opmerkingen |
 |---|---|---|---|
-| **Een gekoppelde service maken** | Database navigatie | *Database Viewer* <br>De aangemelde gebruiker die gebruikmaakt van ADF moet gemachtigd zijn om meta gegevens van de data base te lezen. | De gebruiker kan de database naam hand matig opgeven. |
-| | Verbinding testen | *database monitor* of *tabel opname* <br>De Service-Principal moet worden gemachtigd om database niveau `.show` opdrachten of opname op tabel niveau uit te voeren. | <ul><li>TestConnection controleert de verbinding met het cluster en niet naar de-data base. Dit kan zelfs lukken als de data base niet bestaat.</li><li>De machtigingen voor de tabel beheerder zijn niet voldoende.</li></ul>|
-| **Een gegevensset maken** | Tabel navigatie | *database monitor* <br>De aangemelde gebruiker die gebruikmaakt van ADF, moet gemachtigd zijn om `.show`-opdrachten op database niveau uit te voeren. | De gebruiker kan de tabel naam hand matig opgeven.|
-| **Een gegevensset** of **Kopieer activiteit** maken | Preview-gegevens | *Database Viewer* <br>De Service-Principal moet worden gemachtigd om meta gegevens van de data base te lezen. | | 
-|   | Schema importeren | *Database Viewer* <br>De Service-Principal moet worden gemachtigd om meta gegevens van de data base te lezen. | Wanneer ADX de bron is van een kopie in tabel vorm-naar-tabel, wordt het schema automatisch geïmporteerd door ADF, zelfs als de gebruiker het schema niet expliciet heeft geïmporteerd. |
-| **ADX als Sink** | Een kolom toewijzing met een naam maken | *database monitor* <br>De Service-Principal moet worden gemachtigd om `.show` opdrachten op database niveau uit te voeren. | <ul><li>Alle verplichte bewerkingen werken met een *tabel opname*.</li><li> Sommige optionele bewerkingen kunnen mislukken.</li></ul> |
-|   | <ul><li>Een CSV-toewijzing maken voor de tabel</li><li>Toewijzing verwijderen</li></ul>| *tabel opname* of *database beheerder* <br>De Service-Principal moet worden gemachtigd om wijzigingen aan te brengen in een tabel. | |
-|   | Gegevens opnemen | *tabel opname* of *database beheerder* <br>De Service-Principal moet worden gemachtigd om wijzigingen aan te brengen in een tabel. | | 
-| **ADX als bron** | Query uitvoeren | *Database Viewer* <br>De Service-Principal moet worden gemachtigd om meta gegevens van de data base te lezen. | |
-| **Opdracht Kusto** | | Op basis van het machtigings niveau van elke opdracht. |
+| **Een gekoppelde service maken** | Databasenavigatie | *databaseviewer* <br>De ingelogde gebruiker die ADF gebruikt, moet gemachtigd zijn om databasemetagegevens te lezen. | De gebruiker kan de naam van de database handmatig opgeven. |
+| | Verbinding testen | *databasemonitor* of *tabelinname* <br>Serviceprincipal moet worden gemachtigd om `.show` opdrachten op databaseniveau of opname op tabelniveau uit te voeren. | <ul><li>TestConnection controleert de verbinding met het cluster en niet met de database. Het kan slagen, zelfs als de database niet bestaat.</li><li>Machtigingen voor tabelbeheerders zijn niet voldoende.</li></ul>|
+| **Een gegevensset maken** | Tabelnavigatie | *databasemonitor* <br>De ingelogde gebruiker die ADF gebruikt, moet `.show` gemachtigd zijn om opdrachten op databaseniveau uit te voeren. | De gebruiker kan de tabelnaam handmatig opgeven.|
+| **Een gegevensset maken** of **activiteit kopiëren** | Voorbeeld van gegevens bekijken | *databaseviewer* <br>Serviceprincipal moet gemachtigd zijn om databasemetadata te lezen. | | 
+|   | Importschema | *databaseviewer* <br>Serviceprincipal moet gemachtigd zijn om databasemetadata te lezen. | Wanneer ADX de bron is van een tabelvormige-naar-tabelvormige kopie, importeert ADF automatisch schema, zelfs als de gebruiker het schema niet expliciet heeft geïmporteerd. |
+| **ADX als Sink** | Een kolomtoewijzing met voornaam maken | *databasemonitor* <br>Serviceprincipal moet gemachtigd zijn om `.show` opdrachten op databaseniveau uit te voeren. | <ul><li>Alle verplichte bewerkingen werken met *tabelinname.*</li><li> Sommige optionele bewerkingen kunnen mislukken.</li></ul> |
+|   | <ul><li>Een CSV-toewijzing op de tabel maken</li><li>De toewijzing laten vallen</li></ul>| *tabelinname of* *databasebeheerder* <br>Serviceprincipal moet gemachtigd zijn om wijzigingen aan te brengen in een tabel. | |
+|   | Gegevens opnemen | *tabelinname of* *databasebeheerder* <br>Serviceprincipal moet gemachtigd zijn om wijzigingen aan te brengen in een tabel. | | 
+| **ADX als bron** | Query uitvoeren | *databaseviewer* <br>Serviceprincipal moet gemachtigd zijn om databasemetadata te lezen. | |
+| **Kusto, opdracht** | | Volgens het machtigingsniveau van elke opdracht. |
 
 ## <a name="performance"></a>Prestaties 
 
-Als Azure Data Explorer de bron is en u de opzoek-, kopieer-of opdracht activiteit gebruikt die een query bevat, raadpleegt u de [Aanbevolen procedures](/azure/kusto/query/best-practices) voor het uitvoeren van query's en de [ADF-documentatie voor kopieer activiteiten](/azure/data-factory/copy-activity-performance).
+Als Azure Data Explorer de bron is en u de activiteit Opzoeken, kopiëren of opdracht gebruikt die een query bevat waar u aanbevolen [procedures](/azure/kusto/query/best-practices) voor prestatiegegevens en [ADF-documentatie](/azure/data-factory/copy-activity-performance)voor kopieeractiviteit raadpleegt.
   
-In deze sectie wordt het gebruik van de Kopieer activiteit opgelost, waarbij Azure Data Explorer de sink is. De geschatte door Voer voor Azure Data Explorer sink is 11-13 MBps. De volgende tabel bevat informatie over de para meters die de prestaties van de Azure Data Explorer Sink beïnvloeden.
+In deze sectie wordt het gebruik van kopieeractiviteit waar Azure Data Explorer de gootsteen is, verhelpt. De geschatte doorvoer voor Azure Data Explorer-sink is 11-13 MBps. In de volgende tabel worden de parameters beschreven die van invloed zijn op de prestaties van de azure data explorer-sink.
 
 | Parameter | Opmerkingen |
 |---|---|
-| **Onderdelen geografische nabijheid** | Plaats alle onderdelen in dezelfde regio:<ul><li>Bron-en Sink-gegevens opslag.</li><li>ADF Integration runtime.</li><li>Uw ADX-cluster.</li></ul>Zorg ervoor dat ten minste uw Integration runtime zich in dezelfde regio bevindt als uw ADX-cluster. |
-| **Aantal DIUs** | 1 VM voor elke 4 DIUs die wordt gebruikt door ADF. <br>Het verhogen van de DIUs is alleen nuttig als uw bron een archief op basis van bestanden met meerdere bestanden is. Elke virtuele machine verwerkt vervolgens een ander bestand parallel. Het kopiëren van één groot bestand heeft daarom een hogere latentie dan het kopiëren van meerdere kleinere bestanden.|
-|**Hoeveelheid en SKU van uw ADX-cluster** | Een groot aantal ADX-knoop punten verhoogt de verwerkings tijd voor opname.|
-| **Parallelle uitvoering** | Als u een zeer grote hoeveelheid gegevens uit een Data Base wilt kopiëren, moet u uw gegevens partitioneren en vervolgens een ForEach-lus gebruiken waarmee elke partitie parallel wordt gekopieerd of de [bulk kopie van de Data Base naar Azure Data Explorer sjabloon](data-factory-template.md)gebruiken. Opmerking: **instellingen** > **mate van parallellisme** in de Kopieer activiteit zijn niet relevant voor ADX. |
-| **Complexiteit van gegevens verwerking** | De latentie varieert afhankelijk van de bron bestands indeling, de kolom toewijzing en de compressie.|
-| **De virtuele machine waarop uw Integration runtime wordt uitgevoerd** | <ul><li>Voor Azure copy kunnen ADF-Vm's en machine-Sku's niet worden gewijzigd.</li><li> Bepaal voor on-premises naar Azure kopiëren of de virtuele machine die als host fungeert voor uw zelf-hostende IR krachtig genoeg is.</li></ul>|
+| **Geografische nabijheid van componenten** | Plaats alle componenten in hetzelfde gebied:<ul><li>bron- en sinkgegevensarchieven.</li><li>Runtime voor ADF-integratie.</li><li>Uw ADX-cluster.</li></ul>Zorg ervoor dat uw inburgeringsruntime zich in ieder geval in dezelfde regio bevindt als uw ADX-cluster. |
+| **Aantal DIU's** | 1 VM voor elke 4 DIU's die door ADF worden gebruikt. <br>Het verhogen van de DIU's helpt alleen als uw bron een bestandsgebaseerde winkel is met meerdere bestanden. Elke VM verwerkt dan een ander bestand parallel. Daarom heeft het kopiëren van één groot bestand een hogere latentie dan het kopiëren van meerdere kleinere bestanden.|
+|**Bedrag en SKU van uw ADX-cluster** | Een hoog aantal ADX-knooppunten verhoogt de verwerkingstijd van de opname.|
+| **Parallellisme** | Als u een zeer grote hoeveelheid gegevens uit een database wilt kopiëren, partitiet u uw gegevens en gebruikt u vervolgens een ForEach-lus die elke partitie parallel kopieert of gebruikt u de [bulkkopie van database naar Azure Data Explorer-sjabloon.](data-factory-template.md) Opmerking: **Instellingen** > **Mate van Parallelisme** in de kopieeractiviteit is niet relevant voor ADX. |
+| **Complexiteit van gegevensverwerking** | Latentie is afhankelijk van de bronbestandsindeling, kolomtoewijzing en compressie.|
+| **De VM die uw ingebruikmaaktijd voor integratie uitvoert** | <ul><li>Voor Azure-kopie kunnen ADF-VM's en machine-SKU's niet worden gewijzigd.</li><li> Voor on-prem naar Azure-kopie u bepalen dat de VM die uw zelfgehoste IR host, sterk genoeg is.</li></ul>|
 
-## <a name="tips-and-common-pitfalls"></a>Tips en algemene Valk uilen
+## <a name="tips-and-common-pitfalls"></a>Tips en veelvoorkomende valkuilen
 
-### <a name="monitor-activity-progress"></a>Voortgang van activiteit bewaken
+### <a name="monitor-activity-progress"></a>Activiteitsvoortgang controleren
 
-* Bij het bewaken van de voortgang van de activiteit kan de eigenschap voor het *schrijven van gegevens* veel groter zijn dan de eigenschap voor het *lezen* van gegevens omdat de gegevens die worden *gelezen* , worden berekend volgens de binaire bestands grootte, terwijl gegevens die zijn *geschreven* , worden berekend op basis van de grootte in het geheugen, nadat de gegevens zijn gedeserialiseerd en gedecomprimeerd.
+* Bij het bewaken van de voortgang van de activiteit kan de eigenschap *Gegevens geschreven* veel groter zijn dan de eigenschap *Gegevens lezen* omdat het lezen *van gegevens* wordt berekend op basis van de binaire bestandsgrootte, terwijl de *geschreven gegevens* worden berekend op basis van de grootte van het geheugen, nadat gegevens zijn gedeserialiseerd en gedecomprimeerd.
 
-* Wanneer u de voortgang van de activiteit bewaken, kunt u zien dat de gegevens naar de Azure Data Explorer-Sink zijn geschreven. Wanneer u een query uitvoert op de Azure Data Explorer-tabel, ziet u dat er geen gegevens zijn aangekomen. Dit komt doordat er twee fasen zijn bij het kopiëren naar Azure Data Explorer. 
-    * In eerste instantie worden de bron gegevens gelezen, gesplitst naar segmenten van 900 MB en wordt elk segment geüpload naar een Azure-Blob. De eerste fase wordt gezien door de voortgangs weergave van de ADF-activiteit. 
-    * De tweede fase begint zodra alle gegevens zijn geüpload naar Azure-blobs. De knoop punten van de Azure Data Explorer-engine downloaden de blobs en nemen de gegevens op in de Sink-tabel. De gegevens worden vervolgens weer gegeven in de Azure Data Explorer-tabel.
+* Wanneer u de voortgang van de activiteit bijhoudt, u zien dat gegevens zijn geschreven naar de azure data explorer-sink. Wanneer u de tabel Azure Data Explorer opvraagt, ziet u dat er geen gegevens zijn aangekomen. Dit komt omdat er twee fasen zijn bij het kopiëren naar Azure Data Explorer. 
+    * In de eerste fase worden de brongegevens gelezen, worden deze opgesplitst in brokken van 900 MB en wordt elk segment geüpload naar een Azure Blob. De eerste fase wordt gezien door de adf-activiteitsvoortgangsweergave. 
+    * De tweede fase begint zodra alle gegevens zijn geüpload naar Azure Blobs. De Azure Data Explorer-engineknooppunten downloaden de blobs en nemen de gegevens in de gootsteentabel. De gegevens worden vervolgens gezien in de tabel Azure Data Explorer.
 
-### <a name="failure-to-ingest-csv-files-due-to-improper-escaping"></a>Fout bij het opnemen van CSV-bestanden vanwege onjuiste aanhalings tekens
+### <a name="failure-to-ingest-csv-files-due-to-improper-escaping"></a>Niet inslikken CSV-bestanden als gevolg van onjuiste ontsnapping
 
 Azure Data Explorer verwacht dat CSV-bestanden worden uitgelijnd met [RFC 4180](https://www.ietf.org/rfc/rfc4180.txt).
-Verwacht:
-* Velden die tekens bevatten die moeten worden opgenomen in een escape-teken (zoals ' en nieuwe regels), moeten beginnen en eindigen met een **' character '** zonder spaties. Alle **"** tekens *in* het veld worden voorafgegaan door **een dubbel teken** ( **" "** ). Bijvoorbeeld _' Hallo ', ' wereld_ ' ' is een geldig CSV-bestand met één record met één kolom of veld met de inhoud _Hello, World_.
-* Alle records in het bestand moeten hetzelfde aantal kolommen en velden bevatten.
+Zij verwacht:
+* Velden die tekens bevatten die moeten ontsnappen (zoals " en nieuwe regels) moeten beginnen en eindigen met een **"** teken, zonder witruimte. Alle **"** personages *in* het veld worden ontsnapt door het gebruik van een dubbele **"** karakter (**""**). _'Hallo, ''Wereld',_ is bijvoorbeeld een geldig CSV-bestand met één record met één kolom of veld met de inhoud _Hello, 'World'._
+* Alle records in het bestand moeten hetzelfde aantal kolommen en velden hebben.
 
-Azure Data Factory staat het back slash-teken (Escape) toe. Als u een CSV-bestand met een back slash-teken genereert met behulp van Azure Data Factory, mislukt het opnemen van het bestand naar Azure Data Explorer.
+Azure Data Factory staat het backslash (escape) teken toe. Als u een CSV-bestand genereert met een backslash-teken met Azure Data Factory, mislukt de opname van het bestand naar Azure Data Explorer.
 
 #### <a name="example"></a>Voorbeeld
 
-De volgende tekst waarden: Hallo, wereld<br/>
-ABC-DEF<br/>
-"ABC\D" EF<br/>
-"ABC-DEF<br/>
+De volgende tekstwaarden: Hallo, "Wereld"<br/>
+ABC DEF<br/>
+"ABC\D"EF<br/>
+"ABC DEF<br/>
 
-Moet worden weer gegeven in een correct CSV-bestand als volgt: "Hallo," "wereld" ""<br/>
-"ABC-DEF"<br/>
-"" "ABC-DEF"<br/>
-"" "ABC\D" "EF"<br/>
+Moet verschijnen in een goede CSV-bestand als volgt: "Hallo, ""World"""<br/>
+"ABC DEF"<br/>
+"""ABC DEF"<br/>
+"""ABC\D""EF"<br/>
 
-Met behulp van het standaard escape teken (back slash) werkt de volgende CSV niet met Azure Data Explorer: "Hallo, \"World\""<br/>
-"ABC-DEF"<br/>
-"\"ABC-DEF."<br/>
+Met het standaard escape-teken (backslash) werkt de volgende CSV niet \"met\"Azure Data Explorer: "Hallo, Wereld"<br/>
+"ABC DEF"<br/>
+"\"ABC DEF"<br/>
 "\"ABC\D\"EF"<br/>
 
 ### <a name="nested-json-objects"></a>Geneste JSON-objecten
 
-Houd rekening met het volgende wanneer u een JSON-bestand naar Azure Data Explorer kopieert:
-* Matrices worden niet ondersteund.
-* Als uw JSON-structuur object gegevens typen bevat, worden de onderliggende items van het object door Azure Data Factory afgevlakt en wordt geprobeerd om elk onderliggend item toe te wijzen aan een andere kolom in uw Azure Data Explorer-tabel. Als u wilt dat het volledige object item wordt toegewezen aan één kolom in azure Data Explorer:
-    * De volledige JSON-rij opnemen in een enkele dynamische kolom in azure Data Explorer.
-    * Bewerk de pijplijn definitie hand matig met behulp van de JSON-editor van Azure Data Factory. In **toewijzingen**
-       * Verwijder de meerdere toewijzingen die zijn gemaakt voor elk onderliggend item en voeg één toewijzing toe waarmee u uw object type kunt toewijzen aan de tabel kolom.
-       * Voeg na het sluiten vier kant haakje een komma toe, gevolgd door:<br/>
+Wanneer u een JSON-bestand kopieert naar Azure Data Explorer, moet u er rekening mee houden dat:
+* Arrays worden niet ondersteund.
+* Als uw JSON-structuur objectgegevenstypen bevat, wordt de onderliggende items van het object afgevlakt en wordt geprobeerd elk onderliggend item aan een andere kolom in uw tabel Azure Data Explorer toe te voegen. Als u wilt dat het volledige objectitem wordt toegewezen aan één kolom in Azure Data Explorer:
+    * De hele JSON-rij innemen in één dynamische kolom in Azure Data Explorer.
+    * Bewerk de pijplijndefinitie handmatig met de JSON-editor van Azure Data Factory. In **toewijzingen**
+       * Verwijder de meerdere toewijzingen die voor elk onderliggend item zijn gemaakt en voeg één toewijzing toe die uw objecttype aan uw tabelkolom toebrengt.
+       * Voeg na de afsluitende vierkante beugel een komma toe, gevolgd door:<br/>
        `"mapComplexValuesToString": true`.
 
-### <a name="specify-additionalproperties-when-copying-to-azure-data-explorer"></a>AdditionalProperties opgeven bij het kopiëren naar Azure Data Explorer
+### <a name="specify-additionalproperties-when-copying-to-azure-data-explorer"></a>Aanvullende eigenschappen opgeven bij het kopiëren naar Azure Data Explorer
 
 > [!NOTE]
-> Deze functie is momenteel beschikbaar door de JSON-Payload hand matig te bewerken. 
+> Deze functie is momenteel beschikbaar door de JSON-payload handmatig te bewerken. 
 
-Voeg als volgt één rij toe onder het gedeelte ' sink ' van de Kopieer activiteit:
+Voeg als volgt één rij toe onder het gedeelte 'gootsteen' van de kopieeractiviteit:
 
 ```json
 "sink": {
@@ -187,7 +187,7 @@ Voeg als volgt één rij toe onder het gedeelte ' sink ' van de Kopieer activite
 },
 ```
 
-Het maken van een Escape van de waarde kan lastig zijn. Gebruik het volgende code fragment als referentie:
+Ontsnappen aan de waarde kan lastig zijn. Gebruik het volgende codefragment als referentie:
 
 ```csharp
 static void Main(string[] args)
@@ -213,10 +213,10 @@ De afgedrukte waarde:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [kopiëren van gegevens naar Azure Data Explorer met behulp van Azure Data Factory](data-factory-load-data.md).
-* Meer informatie over [het gebruik van Azure Data Factory sjabloon voor bulksgewijs kopiëren van de Data Base naar Azure Data Explorer](data-factory-template.md).
-* Meer informatie over [het gebruik van Azure Data Factory opdracht activiteit voor het uitvoeren van Azure Data Explorer-besturings opdrachten](data-factory-command-activity.md).
-* Meer informatie over [Azure Data Explorer query's](/azure/data-explorer/web-query-data) voor het uitvoeren van gegevens query's.
+* Meer informatie over het [kopiëren van gegevens naar Azure Data Explorer met Azure Data Factory](data-factory-load-data.md).
+* Meer informatie over het gebruik van [Azure Data Factory-sjabloon voor bulkkopiëren van database naar Azure Data Explorer](data-factory-template.md).
+* Meer informatie over het gebruik van [azure data factory-opdrachtactiviteit om besturingselementopdrachten van Azure Data Explorer uit te voeren](data-factory-command-activity.md).
+* Meer informatie over [Azure Data Explorer-query's](/azure/data-explorer/web-query-data) voor gegevensquery's.
 
 
 

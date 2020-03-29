@@ -1,5 +1,5 @@
 ---
-title: KEUR Quick Start-Azure Kubernetes-cluster voor Windows
+title: (AFGESCHAFT) Quickstart - Azure Kubernetes-cluster voor Windows
 description: Leer snel een Kubernetes-cluster te maken voor Windows-containers in Azure Container Service met de Azure CLI.
 author: dlepow
 ms.service: container-service
@@ -8,19 +8,19 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: 2e36de9f2a6af3643b6f609339d413968f6a8d6e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277648"
 ---
-# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>KEUR Kubernetes-cluster voor Windows-containers implementeren
+# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(AFGESCHAFT) Kubernetes-cluster implementeren voor Windows-containers
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 De Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts. In deze handleiding vindt u informatie over het gebruik van de Azure CLI voor de implementatie van een [Kubernetes](https://kubernetes.io/docs/home/)-cluster in [Azure Container Service](../container-service-intro.md). Zodra het cluster is geïmplementeerd, verbindt u het met het Kubernetes `kubectl`-opdrachtregelprogramma en implementeert u uw eerste Windows-container.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -61,7 +61,7 @@ Na enkele minuten is de opdracht voltooid en ziet u informatie over uw implement
 
 ## <a name="install-kubectl"></a>Kubectl installeren
 
-Gebruik [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/), de Kubernetes-opdrachtregelclient, als u vanaf uw clientcomputer verbinding wilt maken met het Kubernetes-cluster. 
+Als u verbinding wilt maken met [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)het Kubernetes-cluster vanaf uw clientcomputer, gebruikt u de Kubernetes-opdrachtregelclient. 
 
 Als u Azure CloudShell gebruikt, is `kubectl` al geïnstalleerd. Als u lokaal wilt installeren, kunt u de opdracht [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) gebruiken.
 
@@ -160,7 +160,7 @@ Als u de schil beschikbaar wilt maken met een openbaar IP-adres, typt u de volge
 kubectl expose pods iis --port=80 --type=LoadBalancer
 ```
 
-Met deze opdracht maakt Kubernetes een service en een Azure load balancer-regel met een openbaar IP-adres voor de service. 
+Deze opdracht zorgt ervoor dat Kubernetes een service en een Azure load balancer-regel met een openbaar IP-adres voor de service maakt. 
 
 Voer de volgende opdracht uit om de status van de service te bekijken.
 

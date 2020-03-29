@@ -1,7 +1,7 @@
 ---
 title: SQL-transformatie toepassen
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module SQL-trans formatie Toep assen in Azure Machine Learning om een SQLite-query uit te voeren op invoer gegevens sets om de gegevens te transformeren.
+description: Meer informatie over het gebruik van de module SQL-transformatie toepassen in Azure Machine Learning om een SQLite-query uit te voeren op invoergegevenssets om de gegevens te transformeren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,59 +9,59 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 9a195497b4376633bd3c767d7d0ea029109fdf9d
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76314535"
 ---
 # <a name="apply-sql-transformation"></a>SQL-transformatie toepassen
 
-In dit artikel wordt een module van Azure Machine Learning Designer beschreven.
+In dit artikel wordt een module van Azure Machine Learning designer (preview) beschreven.
 
-Met de module voor het Toep assen van SQL-trans formatie kunt u het volgende doen:
+Met de module SQL-transformatie toepassen u het ware doen:
   
--   Maak tabellen voor resultaten en sla de gegevens sets op in een draag bare data base.  
+-   Maak tabellen voor resultaten en sla de gegevenssets op in een draagbare database.  
   
--   Aangepaste trans formaties uitvoeren op gegevens typen of aggregaties maken.  
+-   Voer aangepaste transformaties uit op gegevenstypen of maak aggregaten.  
   
--   Voer SQL-query-instructies uit om gegevens te filteren of te wijzigen en de query resultaten te retour neren als een gegevens tabel.  
+-   Sql-queryinstructies uitvoeren om gegevens te filteren of te wijzigen en de queryresultaten als gegevenstabel te retourneren.  
 
 > [!IMPORTANT]
-> De SQL-engine die in deze module wordt gebruikt, is **sqlite**. Voor meer informatie over de syntaxis van SQLite raadpleegt u [SQL zoals geïnterpreteerd door sqlite](https://www.sqlite.org/index.html) voor meer informatie.  
+> De SQL-engine die in deze module wordt gebruikt, is **SQLite.** Zie [SQL zoals onderbegrepen door SQLite](https://www.sqlite.org/index.html) voor meer informatie over de syntaxis van SQLite voor meer informatie.  
 
-## <a name="how-to-configure-apply-sql-transformation"></a>SQL-trans formatie Toep assen configureren  
+## <a name="how-to-configure-apply-sql-transformation"></a>SQL-transformatie configureren  
 
-De module kan Maxi maal drie gegevens sets als invoer hebben. Wanneer u verwijst naar de gegevens sets die zijn verbonden met elke invoer poort, moet u de namen `t1`, `t2`en `t3`gebruiken. Het tabel nummer geeft de index van de invoer poort aan.  
+De module kan maximaal drie gegevenssets als ingangen gebruiken. Wanneer u verwijst naar de gegevenssets die zijn `t1`verbonden `t2`met `t3`elke invoerpoort, moet u de namen en . Het tabelnummer geeft de index van de invoerpoort aan.  
   
-De resterende para meter is een SQL-query die gebruikmaakt van de SQLite-syntaxis. Wanneer u meerdere regels in het tekstvak **SQL script** typt, gebruikt u een punt komma om elke instructie te beëindigen. Anders worden regel einden geconverteerd naar spaties.  
+De resterende parameter is een SQL-query, die de syntaxis van SQLite gebruikt. Wanneer u meerdere regels typt in het SQL Script-tekstvak, gebruikt u een puntkomma om elke instructie te beëindigen. **SQL Script** Anders worden regeleinden omgezet in spaties.  
 
-Deze module biedt ondersteuning voor alle standaard instructies van de SQLite-syntaxis. Zie de sectie [technische opmerkingen](#technical-notes) voor een lijst met niet-ondersteunde instructies.
+Deze module ondersteunt alle standaardinstructies van de syntaxis van SQLite. Zie de sectie [Technische notities](#technical-notes) voor een lijst met niet-ondersteunde verklaringen.
 
-##  <a name="technical-notes"></a>Technische opmerkingen  
+##  <a name="technical-notes"></a>Technische notities  
 
-Deze sectie bevat implementatie details, tips en antwoorden op veelgestelde vragen.
+Deze sectie bevat implementatiedetails, tips en antwoorden op veelgestelde vragen.
 
--   Er is altijd een invoer vereist op poort 1.  
+-   Een ingang is altijd vereist op poort 1.  
   
--   Voor kolom-id's die spaties of andere speciale tekens bevatten, plaatst u de kolom-id altijd tussen vier Kante haken of dubbele aanhalings teken bij verwijzing naar de kolom in de componenten `SELECT` of `WHERE`.  
+-   Voor kolom-id's die een spatie of andere speciale tekens bevatten, sluit u altijd de kolom-id in vierkante haakjes of dubbele aanhalingstekens bij verwijzing naar de kolom in de `SELECT` of-clausules. `WHERE`  
   
-### <a name="unsupported-statements"></a>Niet-ondersteunde instructies  
+### <a name="unsupported-statements"></a>Niet-ondersteunde verklaringen  
 
-Hoewel SQLite veel van de ANSI SQL-standaard ondersteunt, bevat het niet veel functies die worden ondersteund door commerciële relationele database systemen. Zie [SQL as begrepen door sqlite](http://www.sqlite.org/lang.html)voor meer informatie. Houd ook rekening met de volgende beperkingen bij het maken van SQL-instructies:  
+Hoewel SQLite een groot deel van de ANSI SQL-standaard ondersteunt, bevat het niet veel functies die worden ondersteund door commerciële relationele databasesystemen. Zie [SQL zoals begrepen door SQLite](http://www.sqlite.org/lang.html)voor meer informatie. Houd ook rekening met de volgende beperkingen bij het maken van SQL-instructies:  
   
-- SQLite gebruikt dynamische typen voor waarden, in plaats van een type toe te wijzen aan een kolom, zoals in de meeste relationele database systemen. Het is zwak getypt en maakt impliciete type conversie mogelijk.  
+- SQLite gebruikt dynamisch typen voor waarden, in plaats van een type toe te wijs aan een kolom zoals in de meeste relationele databasesystemen. Het is zwak getypt, en maakt impliciete typeconversie mogelijk.  
   
-- `LEFT OUTER JOIN` is geïmplementeerd, maar niet `RIGHT OUTER JOIN` of `FULL OUTER JOIN`.  
+- `LEFT OUTER JOIN`wordt uitgevoerd, maar `RIGHT OUTER JOIN` `FULL OUTER JOIN`niet of .  
 
-- U kunt `RENAME TABLE`-en `ADD COLUMN`-instructies gebruiken met de `ALTER TABLE` opdracht, maar andere componenten worden niet ondersteund, waaronder `DROP COLUMN`, `ALTER COLUMN`en `ADD CONSTRAINT`.  
+- U kunt `RENAME TABLE` `ADD COLUMN` instructies en `ALTER TABLE` instructies met de opdracht gebruiken, `DROP COLUMN` `ALTER COLUMN`maar `ADD CONSTRAINT`andere clausules worden niet ondersteund, waaronder , en .  
   
-- U kunt een weer gave maken in SQLite, maar daarna zijn de weer gaven alleen-lezen. U kunt een `DELETE`-, `INSERT`-of `UPDATE`-instructie niet uitvoeren op een weer gave. U kunt echter een trigger maken die wordt geactiveerd op een poging om `DELETE`, `INSERT`of `UPDATE` op te geven in een weer gave en andere bewerkingen uit te voeren in de hoofd tekst van de trigger.  
+- U een weergave binnen SQLite maken, maar daarna worden weergaven alleen-lezen. U `DELETE`een `INSERT`, `UPDATE` of een instructie in een weergave niet uitvoeren. U echter een trigger maken die `DELETE` `INSERT`wordt `UPDATE` geactiveerd bij een poging om, of op een weergave, andere bewerkingen uit te voeren in het hoofd van de trigger.  
   
 
-Naast de lijst met niet-ondersteunde functies die beschikbaar zijn op de officiële SQLite-site, biedt de volgende wiki een lijst met andere niet-ondersteunde functies: [sqlite-niet-ondersteunde SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  
+Naast de lijst van niet-ondersteunde functies op de officiële SQLite-site, biedt de volgende wiki een lijst met andere niet-ondersteunde functies: [SQLite - Niet-ondersteunde SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  
     
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 

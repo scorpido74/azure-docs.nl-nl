@@ -1,6 +1,6 @@
 ---
-title: Netwerk toegangs beheer
-description: Overzicht van netwerk toegangs beheer voor Azure SQL Database en Data Warehouse voor het beheren van toegang en het configureren van een enkele of gegroepeerde Data Base.
+title: Besturingselementen voor netwerktoegang
+description: Overzicht van netwerktoegangsbesturingselementen voor Azure SQL Database en Data Warehouse om toegang te beheren en een enkele of samengevoegde database te configureren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -13,59 +13,59 @@ ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
 ms.openlocfilehash: 822fab5c00501d415c3c184587141e869523e417
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78945379"
 ---
-# <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Netwerk toegangs beheer van Azure SQL Database en Data Warehouse
+# <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database- en Data Warehouse-netwerktoegangsbesturingselementen
 
 > [!NOTE]
-> Dit artikel is van toepassing op Azure SQL Server en op zowel SQL Database-als SQL Data Warehouse-data bases die zijn gemaakt op de Azure SQL-Server. Voor het gemak wordt de term 'SQL Database' gebruikt wanneer er wordt verwezen naar zowel SQL Database als SQL Data Warehouse.
+> Dit artikel is van toepassing op Azure SQL-server en op zowel SQL Database- als SQL Data Warehouse-databases die zijn gemaakt op de Azure SQL-server. Voor het gemak wordt de term 'SQL Database' gebruikt wanneer er wordt verwezen naar zowel SQL Database als SQL Data Warehouse.
 
 > [!IMPORTANT]
-> Dit artikel is *niet* van toepassing op **Azure SQL database Managed instance**. Zie [verbinding maken met een beheerd exemplaar](sql-database-managed-instance-connect-app.md) voor meer informatie over de netwerk configuratie.
+> Dit artikel is *niet* van toepassing op **Azure SQL Database Managed Instance**. Zie [Verbinding maken met een beheerde instantie voor](sql-database-managed-instance-connect-app.md) meer informatie over de netwerkconfiguratie.
 
-Wanneer u een nieuw Azure-SQL Server maakt op basis van de [Azure Portal](sql-database-single-database-get-started.md), is het resultaat een openbaar eind punt met de notatie *yourservername.database.Windows.net*.
+Wanneer u een nieuwe Azure SQL Server maakt vanuit de [Azure-portal,](sql-database-single-database-get-started.md)is het resultaat een openbaar eindpunt in de indeling, *yourservername.database.windows.net*.
 
-U kunt de volgende besturings elementen voor netwerk toegang gebruiken om selectief toegang te verlenen tot de SQl-data base via het open bare eind punt:
-- Azure-Services toestaan: als deze is ingesteld op aan, kunnen andere resources binnen de grens van Azure, bijvoorbeeld een virtuele machine van Azure, toegang krijgen tot SQL Database
+U de volgende besturingselementen voor netwerktoegang gebruiken om selectief toegang tot de SQl-database toe te staan via het openbare eindpunt:
+- Azure Services toestaan: wanneer u bent ingesteld op AAN, kunnen andere bronnen binnen de Azure-grens, bijvoorbeeld een Azure Virtual Machine, toegang krijgen tot SQL-database
 
-- IP-firewall regels: gebruik deze functie om expliciet verbindingen toe te staan van een specifiek IP-adres, bijvoorbeeld van on-premises machines
+- IP-firewallregels: gebruik deze functie om verbindingen vanaf een specifiek IP-adres expliciet toe te staan, bijvoorbeeld van on-premises machines
 
-U kunt ook persoonlijke toegang tot de SQL Database via [virtuele netwerken](../virtual-network/virtual-networks-overview.md) toestaan via:
-- Virtual Network Firewall regels: gebruik deze functie om verkeer toe te staan van een specifieke Virtual Network binnen de Azure-grens
+U ook privétoegang tot de SQL-database toestaan vanuit [virtuele netwerken](../virtual-network/virtual-networks-overview.md) via:
+- Firewallregels voor virtuele netwerken: gebruik deze functie om verkeer van een specifiek virtueel netwerk binnen de Azure-grens toe te staan
 
-- Privé-koppeling: gebruik deze functie om een persoonlijk eind punt voor Azure SQL Server te maken binnen een specifieke Virtual Network
+- Private Link: gebruik deze functie om een privéeindpunt voor Azure SQL Server te maken binnen een specifiek virtueel netwerk
 
 
 
-Zie de onderstaande video voor een uitleg van deze toegangs controles en wat ze doen:
+Zie de onderstaande video voor een uitleg op hoog niveau van deze toegangscontroles en wat ze doen:
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
 
 
-## <a name="allow-azure-services"></a>Azure-Services toestaan 
-Tijdens het maken van een nieuwe Azure-SQL Server [van Azure Portal](sql-database-single-database-get-started.md), wordt deze instelling uitgeschakeld.
+## <a name="allow-azure-services"></a>Azure-services toestaan 
+Tijdens het maken van een nieuwe Azure SQL Server [vanuit Azure-portal](sql-database-single-database-get-started.md)blijft deze instelling onaangevinkt.
 
 
 
-U kunt deze instelling ook wijzigen via het deel venster Firewall nadat de Azure-SQL Server is gemaakt als volgt.
+U deze instelling ook wijzigen via het firewalldeelvenster nadat de Azure SQL Server als volgt is gemaakt.
   
- ![Scherm opname van Server Firewall beheren][2]
+ ![Schermafbeelding van serverfirewall beheren][2]
 
-Als deze functie is ingesteld op **op** Azure SQL Server worden communicaties van alle resources binnen de Azure-grens toegestaan die al dan niet deel uitmaken van uw abonnement.
+Wanneer u bent ingesteld **op ON** Azure SQL Server, staat u communicatie toe van alle bronnen binnen de Azure-grens, die al dan niet deel uitmaken van uw abonnement.
 
-In veel gevallen is de instelling **on** moeilijker dan de meeste klanten. Ze willen deze instelling mogelijk instellen op **uit** en vervangen door meer beperkende IP-firewall regels of Virtual Network Firewall regels. Dit heeft gevolgen voor de volgende functies die worden uitgevoerd op Vm's in azure die geen deel uitmaken van uw VNet en daarom verbinding maken met SQL data base via een Azure IP-adres.
+In veel gevallen is de **ON-instelling** toleranter dan wat de meeste klanten willen. Ze willen deze instelling mogelijk instellen op **UIT** en vervangen door meer beperkende IP-firewallregels of firewallregels voor virtuele netwerken. Dit heeft gevolgen voor de volgende functies die worden uitgevoerd op VM's in Azure die geen deel uitmaken van uw VNet en dus verbinding maken met Sql Database via een Azure IP-adres.
 
-### <a name="import-export-service"></a>Import export service
-Bij import export service werkt **Azure-Services niet om toegang te krijgen** tot de server. U kunt het probleem echter omzeilen [door sqlpackage. exe hand matig uit te voeren vanuit een Azure VM of door de export](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) rechtstreeks in uw code uit te voeren met behulp van de DACFX-API.
+### <a name="import-export-service"></a>Exportservice importeren
+Exportservice importeren werkt niet **Toestaan dat Azure-services toegang hebben tot server** die is ingesteld op UIT. U het probleem echter oplossen [door sqlpackage.exe handmatig uit te voeren vanaf een Azure VM of de export](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) rechtstreeks in uw code uit te voeren met behulp van de DACFx API.
 
 ### <a name="data-sync"></a>Gegevens synchroniseren
-Als u de functie gegevens synchronisatie wilt gebruiken om **Azure-Services toegang te geven** tot de server, moet u afzonderlijke firewall regel vermeldingen maken om [IP-adressen toe te voegen](sql-database-server-level-firewall-rule.md) van de **SQL-service-tag** voor de regio die als host fungeert voor de **hub** -data base.
-Voeg deze firewall regels op server niveau toe aan de logische servers die fungeren als host voor de data bases van de **hub** en het **lid** (deze kunnen zich in verschillende regio's bevinden)
+Als u de functie Gegevenssynchronisatie wilt gebruiken met **Azure-services toestaan toegang te krijgen tot server** ingesteld op UIT, moet u afzonderlijke firewallregelvermeldingen maken om [IP-adressen toe](sql-database-server-level-firewall-rule.md) te voegen van de **Sql-servicetag** voor de regio die de **Hub-database** host.
+Voeg deze firewallregels op serverniveau toe aan de logische servers die zowel **hub-** als **liddatabases** hosten (die zich in verschillende regio's kunnen bevinden)
 
-Gebruik het volgende Power shell-script om de IP-adressen te genereren die overeenkomen met de SQL service-tag voor de regio vs West
+Gebruik het volgende PowerShell-script om de IP-adressen te genereren die overeenkomen met sql-servicetag voor de regio West-VS
 ```powershell
 PS C:\>  $serviceTags = Get-AzNetworkServiceTag -Location eastus2
 PS C:\>  $sql = $serviceTags.Values | Where-Object { $_.Name -eq "Sql.WestUS" }
@@ -81,9 +81,9 @@ PS C:\> $sql.Properties.AddressPrefixes
 ```
 
 > [!TIP]
-> Get-AzNetworkServiceTag retourneert het globale bereik voor SQL service-tag ondanks het opgeven van de locatie parameter. Zorg ervoor dat u deze filtert op de regio die de hub-data base host die door de synchronisatie groep wordt gebruikt
+> Get-AzNetworkServiceTag retourneert het globale bereik voor Sql Service Tag, ondanks het opgeven van de parameter Locatie. Zorg ervoor dat u deze filtert naar de regio waar de Hub-database wordt gebruikt door uw synchronisatiegroep
 
-Houd er rekening mee dat de uitvoer van het Power shell-script in CIDR-notatie (Classless Inter-Domain Routing) is en dat deze moet worden geconverteerd naar een indeling van het begin-en eind-IP-adres met behulp van [Get-IPrangeStartEnd. ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) als volgt
+Houd er rekening mee dat de uitvoer van het PowerShell-script zich bevindt in CIDR-notatie (Classless Inter-Domain Routing) en dit moet worden geconverteerd naar een indeling van het IP-adres start en einde met [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) als volgt
 ```powershell
 PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26                                                                   
 start        end
@@ -91,7 +91,7 @@ start        end
 52.229.17.64 52.229.17.127
 ```
 
-Voer de volgende aanvullende stappen uit om alle IP-adressen van CIDR te converteren naar de notatie voor begin-en eind adres van IP.
+Volg de volgende aanvullende stappen om alle IP-adressen van CIDR om te zetten naar ip-adresindeling starten en beëindigen.
 
 ```powershell
 PS C:\>foreach( $i in $sql.Properties.AddressPrefixes) {$ip,$cidr= $i.split('/') ; Get-IPrangeStartEnd -ip $ip -cidr $cidr;}                                                                                                                
@@ -101,59 +101,59 @@ start          end
 13.86.216.128  13.86.216.191
 13.86.216.192  13.86.216.223
 ```
-U kunt deze nu als afzonderlijke firewall regels toevoegen en vervolgens instellen **dat Azure-Services toegang heeft** tot de server.
+U deze nu toevoegen als afzonderlijke firewallregels en vervolgens **Azure-services toestaan om toegang te krijgen tot de server naar** UIT.
 
 
-## <a name="ip-firewall-rules"></a>IP-firewall regels
-Op IP gebaseerde firewall is een functie van Azure SQL Server die ervoor zorgt dat toegang tot uw database server pas wordt voor komen wanneer u de [IP-adressen](sql-database-server-level-firewall-rule.md) van de client computers expliciet toevoegt.
+## <a name="ip-firewall-rules"></a>IP-firewallregels
+Ip-gebaseerde firewall is een functie van Azure SQL Server die alle toegang tot uw databaseserver verhindert totdat u expliciet [IP-adressen](sql-database-server-level-firewall-rule.md) van de clientmachines toevoegt.
 
 
-## <a name="virtual-network-firewall-rules"></a>Firewall regels voor Virtual Network
+## <a name="virtual-network-firewall-rules"></a>Firewallregels voor virtuele netwerken
 
-Naast de IP-regels, kunt u met de firewall van Azure SQL Server *virtuele netwerk regels*definiëren.  
-Zie voor meer informatie [Virtual Network Service-eind punten en-regels voor Azure SQL database](sql-database-vnet-service-endpoint-rule-overview.md) of Bekijk deze video:
+Naast IP-regels u met de Azure SQL Server-firewall *virtuele netwerkregels*definiëren.  
+Zie [Eindpunten en regels voor de Virtual Network-service voor Azure SQL Database](sql-database-vnet-service-endpoint-rule-overview.md) of bekijk deze video voor meer informatie:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--Demo--Vnet-Firewall-Rules-for-SQL-Database/player?WT.mc_id=dataexposed-c9-niner]
 
- ### <a name="azure-networking-terminology"></a>Terminologie van Azure Networking  
-Houd rekening met de volgende Azure-netwerk termen wanneer u Virtual Network Firewall-regels bekijkt
+ ### <a name="azure-networking-terminology"></a>Azure-netwerkterminologie  
+Wees je bewust van de volgende Azure Networking-voorwaarden terwijl je firewallregels voor virtuele netwerken verkent
 
-**Virtueel netwerk:** U kunt virtuele netwerken koppelen aan uw Azure-abonnement 
+**Virtueel netwerk:** U virtuele netwerken aan uw Azure-abonnement laten gekoppeld 
 
-**Subnet:** Een virtueel netwerk bevat **subnetten**. Alle Azure virtual machines (Vm's) die u hebt toegewezen aan subnetten. Eén subnet kan meerdere Vm's of andere reken knooppunten bevatten. Reken knooppunten die zich buiten uw virtuele netwerk bevinden, hebben geen toegang tot het virtuele netwerk tenzij u de beveiliging zo configureert dat toegang wordt toegestaan.
+**Subnet:** Een virtueel netwerk bevat **subnetten.** Alle Azure virtuele machines (VM's) die u hebt toegewezen aan subnetten. Eén subnet kan meerdere VM's of andere compute nodes bevatten. Compute-knooppunten die zich buiten uw virtuele netwerk bevinden, hebben geen toegang tot uw virtuele netwerk, tenzij u uw beveiliging configureert om toegang toe te staan.
 
-**Service-eind punt Virtual Network:** Een [Virtual Network Service-eind punt](../virtual-network/virtual-network-service-endpoints-overview.md) is een subnet waarvan de eigenschaps waarden een of meer formele namen van Azure-service typen bevatten. In dit artikel bent u geïnteresseerd in de type naam van **micro soft. SQL**, die verwijst naar de Azure-service met de naam SQL database.
+**Eindpunt van de virtuele netwerkservice:** Een [eindpunt van de service voor virtuele netwerken](../virtual-network/virtual-network-service-endpoints-overview.md) is een subnet waarvan de eigenschapswaarden een of meer formele namen van azure-servicetypen bevatten. In dit artikel zijn we geïnteresseerd in de typenaam van **Microsoft.Sql**, die verwijst naar de Azure-service met de naam SQL Database.
 
-**Regel voor virtueel netwerk:** Een regel voor het virtuele netwerk voor uw SQL Database-Server is een subnet dat wordt vermeld in de toegangs beheer lijst (ACL) van uw SQL Database-Server. Het subnet moet de naam van het **micro soft. SQL** -type bevatten als u de toegangs beheer lijst voor uw SQL database wilt. Met een regel voor het virtuele netwerk krijgt uw SQL Database-Server de communicatie van elk knoop punt dat zich in het subnet bevindt, te accepteren.
+**Virtuele netwerkregel:** Een virtuele netwerkregel voor uw SQL Database-server is een subnet dat wordt vermeld in de lijst met toegangscontrole (ACL) van uw SQL Database-server. Als u zich in de ACL voor uw SQL-database wilt bevinden, moet het subnet de typenaam **Microsoft.Sql** bevatten. Een virtuele netwerkregel vertelt uw SQL Database-server om communicatie te accepteren vanaf elk knooppunt dat zich op het subnet bevindt.
 
 
-## <a name="ip-vs-virtual-network-firewall-rules"></a>IP versus Virtual Network Firewall regels
+## <a name="ip-vs-virtual-network-firewall-rules"></a>IP vs. Firewallregels voor virtuele netwerken
 
-Met de firewall van Azure SQL Server kunt u IP-adresbereiken opgeven waarvan de communicatie in SQL Database wordt geaccepteerd. Deze aanpak is nauw keurig voor stabiele IP-adressen die zich buiten het particuliere Azure-netwerk bevinden. Virtuele machines (Vm's) in het particuliere Azure-netwerk zijn echter geconfigureerd met *dynamische* IP-adressen. Dynamische IP-adressen kunnen veranderen wanneer de virtuele machine opnieuw wordt opgestart en de op IP gebaseerde firewall regel ongeldig maken. Het is Folly om een dynamisch IP-adres op te geven in een firewall regel, in een productie omgeving.
+Met de Azure SQL Server-firewall u IP-adresbereiken opgeven waaruit communicatie wordt geaccepteerd in SQL Database. Deze aanpak is prima voor stabiele IP-adressen die zich buiten het Azure-privénetwerk bevinden. Virtuele machines (VM's) binnen het Azure-privénetwerk zijn echter geconfigureerd met *dynamische* IP-adressen. Dynamische IP-adressen kunnen veranderen wanneer uw VM opnieuw wordt opgestart en op hun beurt de IP-gebaseerde firewallregel ongeldig maken. Het zou dwaasheid zijn om een dynamisch IP-adres op te geven in een firewallregel, in een productieomgeving.
 
-U kunt deze beperking omzeilen door een *statisch* IP-adres voor uw virtuele machine te verkrijgen. Zie voor meer informatie [privé IP-adressen configureren voor een virtuele machine met behulp van de Azure Portal](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). De aanpak van een statisch IP-adres kan echter moeilijk te beheren zijn, en het kost goed wanneer deze op schaal wordt uitgevoerd. 
+U deze beperking omzeilen door een *statisch* IP-adres voor uw VM te verkrijgen. Zie [Privé-IP-adressen configureren voor een virtuele machine voor](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)meer informatie met behulp van de Azure-portal. Echter, de statische IP-aanpak kan moeilijk te beheren, en het is duur wanneer gedaan op schaal. 
 
-Regels voor virtuele netwerken zijn eenvoudiger om de toegang tot stand te brengen en te beheren vanaf een specifiek subnet dat uw virtuele machines bevat.
+Virtuele netwerkregels zijn eenvoudiger om toegang op te stellen en te beheren vanaf een specifiek subnet dat uw VM's bevat.
 
 > [!NOTE]
-> U kunt nog geen SQL Database in een subnet hebben. Als uw Azure SQL Database Server een knoop punt in een subnet in het virtuele netwerk is, kunnen alle knoop punten in het virtuele netwerk communiceren met uw SQL Database. In dit geval kunnen uw Vm's communiceren met SQL Database zonder dat er regels voor het virtuele netwerk of IP-regels nodig zijn.
+> U SQL Database nog niet op een subnet hebben. Als uw Azure SQL Database-server een knooppunt was op een subnet in uw virtuele netwerk, kunnen alle knooppunten binnen het virtuele netwerk communiceren met uw SQL-database. In dit geval kunnen uw VM's communiceren met SQL Database zonder dat er virtuele netwerkregels of IP-regels nodig zijn.
 
 ## <a name="private-link"></a>Private Link 
-Met persoonlijke koppeling kunt u verbinding maken met Azure SQL Server via een **persoonlijk eind punt**. Een persoonlijk eind punt is een privé-IP-adres binnen een specifiek [Virtual Network](../virtual-network/virtual-networks-overview.md) en subnet.
+Met Private Link u verbinding maken met Azure SQL Server via een **privéeindpunt.** Een privéeindpunt is een privé-IP-adres binnen een specifiek [virtueel netwerk](../virtual-network/virtual-networks-overview.md) en subnet.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie een [Azure-SQL database maken](sql-database-single-database-get-started.md)voor een Snelstartgids voor het maken van een IP-firewall regel op server niveau.
+- Zie [Een Azure SQL-database maken](sql-database-single-database-get-started.md)voor een snelle start bij het maken van een IP-firewallregel op serverniveau.
 
-- Zie [Virtual Network Service-eind punten en-regels voor Azure SQL database](sql-database-vnet-service-endpoint-rule-overview.md)voor een Snelstartgids voor het maken van een Vnet-firewall regel op server niveau.
+- Zie [Eindpunten en regels voor De Service voor extern](sql-database-vnet-service-endpoint-rule-overview.md)netwerk voor Azure SQL Database voor een snelle start bij het maken van een Vnet-firewallregel op serverniveau.
 
-- Voor hulp bij het maken van verbinding met een Azure-SQL database van open-source of toepassingen van derden raadpleegt [u Quick Start code samples to SQL database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
+- Zie [Client quickstart](https://msdn.microsoft.com/library/azure/ee336282.aspx)code samples naar SQL Database voor hulp bij het maken van verbinding met een Azure SQL-database vanuit open source of toepassingen van derden.
 
-- Voor informatie over aanvullende poorten die u mogelijk moet openen, raadpleegt u de sectie **SQL database: buiten** bevindend in poorten van meer [dan 1433 voor ADO.NET 4,5 en SQL database](sql-database-develop-direct-route-ports-adonet-v12.md)
+- Zie de **SQL-database: Buiten vs binnen- en binnenkant** van [ports na 1433 voor ADO.NET 4.5 en SQL Database voor](sql-database-develop-direct-route-ports-adonet-v12.md) informatie over aanvullende poorten die u mogelijk moet openen.
 
-- Zie [Azure SQL-connectiviteits architectuur](sql-database-connectivity-architecture.md) voor een overzicht van Azure SQL database connectiviteit
+- Zie [Azure SQL Connectivity Architecture](sql-database-connectivity-architecture.md) voor een overzicht van Azure SQL Database Connectivity
 
-- Zie [uw data base beveiligen](sql-database-security-overview.md) voor een overzicht van Azure SQL database beveiliging
+- Zie [Uw database beveiligen](sql-database-security-overview.md) voor een overzicht van azure SQL-databasebeveiliging
 
 <!--Image references-->
 [1]: ./media/sql-database-get-started-portal/new-server2.png

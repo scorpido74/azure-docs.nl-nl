@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen met het starten en stoppen van Vm's-Azure Automation
-description: Dit artikel bevat informatie over het oplossen van problemen met het starten en stoppen van Vm's in Azure Automation.
+title: Problemen met het starten en stoppen van VM's oplossen - Azure Automation
+description: In dit artikel vindt u informatie over het oplossen van problemen met het starten en stoppen van VM's in Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -10,19 +10,19 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851392"
 ---
-# <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Problemen oplossen met het starten/stoppen van Vm's buiten kantoor uren
+# <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Problemen met de VM's starten/stoppen tijdens de oplossing voor buitenkantoor
 
-## <a name="deployment-failure"></a>Scenario: de oplossing VM starten/stoppen kan niet goed worden geïmplementeerd
+## <a name="scenario-the-startstop-vm-solution-fails-to-properly-deploy"></a><a name="deployment-failure"></a>Scenario: De VM-oplossing Start/Stop wordt niet correct geïmplementeerd
 
 ### <a name="issue"></a>Probleem
 
-Bij het implementeren van de oplossing voor het [starten/stoppen van vm's tijdens een off-periode](../automation-solution-vm-management.md), wordt een van de volgende fouten weer gegeven:
+Wanneer u de [VM's start/stop tijdens de oplossing voor buitenkantooruren implementeert,](../automation-solution-vm-management.md)ontvangt u een van de volgende fouten:
 
 ```error
 Account already exists in another resourcegroup in a subscription. ResourceGroupName: [MyResourceGroup].
@@ -56,49 +56,49 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
 Implementaties kunnen mislukken vanwege een van de volgende redenen:
 
-1. Er is al een Automation-account met dezelfde naam in de geselecteerde regio.
-2. Er is een beleid aanwezig waarmee de implementatie van de virtuele machines van het starten/stoppen van Vm's niet is toegestaan.
-3. De resource typen `Microsoft.OperationsManagement`, `Microsoft.Insights`of `Microsoft.Automation` zijn niet geregistreerd.
-4. Er is een vergren deling van uw Log Analytics-werk ruimte.
-5. U hebt een verouderde versie van AzureRM modules of de oplossing starten/stoppen.
+1. Er is al een automatiseringsaccount met dezelfde naam in de geselecteerde regio.
+2. Er is een beleid dat de implementatie van de VM's start/stop-v.c. niet kan implementeren.
+3. De `Microsoft.OperationsManagement` `Microsoft.Insights`, `Microsoft.Automation` - of resourcetypen worden niet geregistreerd.
+4. Op uw Log Analytics-werkruimte wordt een vergrendeling gesloten.
+5. U hebt een verouderde versie van AzureRM-modules of de Start/Stop-oplossing.
 
 ### <a name="resolution"></a>Oplossing
 
-Raadpleeg de volgende lijst voor mogelijke oplossingen voor uw probleem of voor het zoeken naar:
+Bekijk de volgende lijst voor mogelijke oplossingen voor uw probleem of plaatsen om te zoeken:
 
-1. Automation-accounts moeten uniek zijn binnen een Azure-regio, zelfs als ze zich in verschillende resource groepen bevinden. Controleer uw bestaande Automation-accounts in de doel regio.
-2. Een bestaand beleid voor komt dat een resource die vereist is voor het implementeren van de oplossing VM starten/stoppen. Ga naar de beleids toewijzingen in de Azure Portal en controleer of u een beleids toewijzing hebt die de implementatie van deze resource niet toestaat. Zie [RequestDisallowedByPolicy](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md)voor meer informatie over dit onderwerp.
-3. Als u de oplossing voor het starten/stoppen van de VM wilt implementeren, moet uw abonnement worden geregistreerd bij de volgende Azure-resource-naam ruimten:
+1. Automatiseringsaccounts moeten uniek zijn binnen een Azure-gebied, zelfs als ze zich in verschillende brongroepen bevinden. Controleer uw bestaande automatiseringsaccounts in de doelregio.
+2. Een bestaand beleid voorkomt dat een resource nodig is om de VM-oplossing start/stop te implementeren. Ga naar uw beleidstoewijzingen in de Azure-portal en controleer of u een beleidstoewijzing hebt die de implementatie van deze bron verbiedt. Zie [Beleid aanvragen](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md)voor meer informatie .
+3. Als u de VM-oplossing Start/Stop wilt implementeren, moet uw abonnement worden geregistreerd op de volgende naamruimten van Azure-bronnen:
     * `Microsoft.OperationsManagement`
     * `Microsoft.Insights`
     * `Microsoft.Automation`
 
-   Zie [fouten voor de registratie van de resource provider oplossen](../../azure-resource-manager/templates/error-register-resource-provider.md) voor meer informatie over fouten bij het registreren van providers.
-4. Als u een vergren deling op uw Log Analytics-werk ruimte hebt, gaat u naar uw werk ruimte in de Azure Portal en verwijdert u de vergren delingen van de resource.
-5. Als de bovenstaande oplossingen het probleem niet oplossen, volgt u de instructies onder [Update de oplossing](../automation-solution-vm-management.md#update-the-solution) om de oplossing start/stop opnieuw te implementeren.
+   Zie, [Fouten oplossen voor de registratie van resourceproviders](../../azure-resource-manager/templates/error-register-resource-provider.md) voor meer informatie over fouten bij het registreren van providers.
+4. Als u een vergrendeling hebt op uw Log Analytics-werkruimte, gaat u naar uw werkruimte in de Azure-portal en verwijdert u eventuele vergrendelingen op de bron.
+5. Als de bovenstaande oplossingen het probleem niet oplossen, volgt u de instructies onder [Update de oplossing](../automation-solution-vm-management.md#update-the-solution) om de Start/Stop-oplossing opnieuw te implementeren.
 
-## <a name="all-vms-fail-to-startstop"></a>Scenario: alle Vm's kunnen niet worden gestart/gestopt
+## <a name="scenario-all-vms-fail-to-startstop"></a><a name="all-vms-fail-to-startstop"></a>Scenario: Alle VM's kunnen niet starten/stoppen
 
 ### <a name="issue"></a>Probleem
 
-U hebt de oplossing VM starten/stoppen geconfigureerd, maar niet alle geconfigureerde Vm's worden gestart of gestopt.
+U hebt de VM-oplossing Start/Stop geconfigureerd, maar deze start of stopt niet alle geconfigureerde VM's.
 
 ### <a name="cause"></a>Oorzaak
 
-Deze fout kan een van de volgende oorzaken hebben:
+Deze fout kan worden veroorzaakt door een van de volgende redenen:
 
-1. Een planning is niet juist geconfigureerd
-2. Het runas-account is mogelijk niet juist geconfigureerd
-3. Er kunnen fouten in een runbook worden uitgevoerd
-4. De Vm's zijn mogelijk uitgesloten
+1. Een planning is niet correct geconfigureerd
+2. Het RunAs-account is mogelijk niet correct geconfigureerd
+3. Een runbook kan fouten hebben opgelopen
+4. De VM's kunnen zijn uitgesloten
 
 ### <a name="resolution"></a>Oplossing
 
-Raadpleeg de volgende lijst voor mogelijke oplossingen voor uw probleem of voor het zoeken naar:
+Bekijk de volgende lijst voor mogelijke oplossingen voor uw probleem of plaatsen om te zoeken:
 
-* Controleer of u een planning hebt geconfigureerd voor de oplossing VM starten/stoppen. Zie het artikel [planningen](../automation-schedules.md) voor meer informatie over het configureren van een schema.
+* Controleer of u een planning voor de VM-oplossing start/stop hebt geconfigureerd. Zie het artikel [Schema's](../automation-schedules.md) voor meer informatie over het configureren van een planning.
 
-* Controleer de [taak stromen](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) om te controleren of er fouten zijn opgetreden. Ga in de portal naar uw Automation-account en selecteer **taken** onder **proces automatisering**. Ga op de pagina **taken** naar taken van een van de volgende runbooks:
+* Controleer de [taakstromen](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) om te zoeken naar eventuele fouten. Ga in de portal naar uw automatiseringsaccount en selecteer **Taken** onder **Procesautomatisering.** Zoek op de pagina **Vacatures** naar vacatures uit een van de volgende runbooks:
 
   * AutoStop_CreateAlert_Child
   * AutoStop_CreateAlert_Parent
@@ -110,126 +110,126 @@ Raadpleeg de volgende lijst voor mogelijke oplossingen voor uw probleem of voor 
   * ScheduledStartStop_Parent
   * SequencedStartStop_Parent
 
-* Controleer of uw [runas-account](../manage-runas-account.md) de juiste machtigingen heeft voor de vm's die u probeert te starten of te stoppen. Zie voor meer informatie over het controleren van de machtigingen voor een resource [Quick Start: rollen weer geven die zijn toegewezen aan een gebruiker met behulp van de Azure Portal](../../role-based-access-control/check-access.md). U moet de toepassings-ID opgeven voor de service-principal die wordt gebruikt door het run as-account. U kunt deze waarde ophalen door naar uw Automation-account in de Azure Portal te gaan en **uitvoeren als-accounts** te selecteren onder **account instellingen** en te klikken op het desbetreffende run as-account.
+* Controleer of je [RunAs-account](../manage-runas-account.md) de juiste machtigingen heeft voor de VM's die je probeert te starten of te stoppen. Zie [Snelstart: Rollen weergeven die zijn toegewezen aan een gebruiker met de Azure-portal](../../role-based-access-control/check-access.md)voor meer informatie over het controleren van de machtigingen voor een resource. U moet de toepassings-id voor de serviceprincipal die wordt gebruikt door het run As-account, verstrekken. U deze waarde ophalen door naar uw automatiseringsaccount te gaan in de Azure-portal, **Uitvoeren als accounts** te selecteren onder **Accountinstellingen** en op de juiste Run As-account te klikken.
 
-* Vm's mogen niet worden gestart of gestopt als ze expliciet worden uitgesloten. Uitgesloten Vm's op ingesteld in de variabele **External_ExcludeVMNames** in het Automation-account waarop de oplossing is geïmplementeerd. In het volgende voor beeld ziet u hoe u een query kunt uitvoeren op die waarde met Power shell.
+* VM's mogen niet worden gestart of gestopt als ze expliciet worden uitgesloten. Uitgesloten VM's in de **External_ExcludeVMNames** variabele in het automatiseringsaccount waar de oplossing naar wordt geïmplementeerd. In het volgende voorbeeld ziet u hoe u die waarde opvragen met PowerShell.
 
   ```powershell-interactive
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-## <a name="some-vms-fail-to-startstop"></a>Scenario: sommige Vm's kunnen niet worden gestart of gestopt
+## <a name="scenario-some-of-my-vms-fail-to-start-or-stop"></a><a name="some-vms-fail-to-startstop"></a>Scenario: Sommige van mijn VM's kunnen niet starten of stoppen
 
 ### <a name="issue"></a>Probleem
 
-U hebt de oplossing VM starten/stoppen geconfigureerd, maar er worden geen enkele geconfigureerde Vm's gestart of gestopt.
+U hebt de VM-oplossing Start/Stop geconfigureerd, maar deze start of stopt sommige VM's niet.
 
 ### <a name="cause"></a>Oorzaak
 
-Deze fout kan een van de volgende oorzaken hebben:
+Deze fout kan worden veroorzaakt door een van de volgende redenen:
 
-1. Als u het sequentie scenario gebruikt, kan een tag ontbreken of onjuist zijn
-2. De virtuele machine kan worden uitgesloten
-3. Het runas-account heeft mogelijk onvoldoende machtigingen voor de virtuele machine
-4. Er is een fout opgetreden bij het starten of stoppen van de virtuele machine
+1. Als u het sequentiescenario gebruikt, kan een tag ontbreken of onjuist zijn
+2. De VM kan worden uitgesloten
+3. Het RunAs-account heeft mogelijk niet genoeg machtigingen op de VM
+4. De VM kan iets hebben dat het stoppen of stoppen ervan weerhield
 
 ### <a name="resolution"></a>Oplossing
 
-Raadpleeg de volgende lijst voor mogelijke oplossingen voor uw probleem of voor het zoeken naar:
+Bekijk de volgende lijst voor mogelijke oplossingen voor uw probleem of plaatsen om te zoeken:
 
-* Wanneer u het [Sequence-scenario](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags) van de oplossing voor het starten/stoppen van de virtuele machine gedurende een vrije tijd gebruikt, moet u ervoor zorgen dat elke VM die u wilt starten of stoppen de juiste tag heeft. Zorg ervoor dat de virtuele machines die u wilt starten de `sequencestart`-tag hebben en dat de virtuele machines die u wilt stoppen, de `sequencestop`-tag hebben. Voor beide tags is een positief geheel getal vereist. U kunt een query gebruiken die vergelijkbaar is met het volgende voor beeld om te zoeken naar alle virtuele machines met de labels en hun waarden.
+* Wanneer u het [sequentiescenario](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags) van de VM Start/Stop tijdens de oplossing voor buitenkantooruren gebruikt, moet u ervoor zorgen dat elke vm die u wilt starten of stoppen de juiste tag heeft. Zorg ervoor dat de VM's `sequencestart` die u wilt starten de tag `sequencestop` en de VM's hebben die u wilt stoppen, de tag. Beide tags vereisen een positieve gehele waarde. U een query gebruiken die vergelijkbaar is met het volgende voorbeeld om te zoeken naar alle VM's met de tags en hun waarden.
 
   ```powershell-interactive
   Get-AzureRmResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
   ```
 
-* Vm's mogen niet worden gestart of gestopt als ze expliciet worden uitgesloten. Uitgesloten Vm's op ingesteld in de variabele **External_ExcludeVMNames** in het Automation-account waarop de oplossing is geïmplementeerd. In het volgende voor beeld ziet u hoe u een query kunt uitvoeren op die waarde met Power shell.
+* VM's mogen niet worden gestart of gestopt als ze expliciet worden uitgesloten. Uitgesloten VM's in de **External_ExcludeVMNames** variabele in het automatiseringsaccount waar de oplossing naar wordt geïmplementeerd. In het volgende voorbeeld ziet u hoe u die waarde opvragen met PowerShell.
 
   ```powershell-interactive
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-* Voor het starten en stoppen van Vm's moet het runas-account voor het Automation-account de juiste machtigingen hebben voor de virtuele machine. Zie voor meer informatie over het controleren van de machtigingen voor een resource [Quick Start: rollen weer geven die zijn toegewezen aan een gebruiker met behulp van de Azure Portal](../../role-based-access-control/check-access.md). U moet de toepassings-ID opgeven voor de service-principal die wordt gebruikt door het run as-account. U kunt deze waarde ophalen door naar uw Automation-account in de Azure Portal te gaan en **uitvoeren als-accounts** te selecteren onder **account instellingen** en te klikken op het desbetreffende run as-account.
+* Als u VM's wilt starten en stoppen, moet het RunAs-account voor het automatiseringsaccount over de juiste machtigingen voor de VM beschikken. Zie [Snelstart: Rollen weergeven die zijn toegewezen aan een gebruiker met de Azure-portal](../../role-based-access-control/check-access.md)voor meer informatie over het controleren van de machtigingen voor een resource. U moet de toepassings-id voor de serviceprincipal die wordt gebruikt door het run As-account, verstrekken. U deze waarde ophalen door naar uw automatiseringsaccount te gaan in de Azure-portal, **Uitvoeren als accounts** te selecteren onder **Accountinstellingen** en op de juiste Run As-account te klikken.
 
-* Als de virtuele machine een probleem ondervindt met het starten of ongedaan maken van de toewijzing, kan dit gedrag worden veroorzaakt door een probleem op de VM zelf. Sommige voor beelden of mogelijke problemen zijn, een update wordt toegepast wanneer wordt geprobeerd om af te breken, een service loopt vast en meer). Ga naar de VM-resource en controleer de **activiteiten logboeken** om te zien of er fouten in de logboeken zijn. U kunt zich ook aanmelden bij de virtuele machine om te controleren of er fouten zijn opgetreden in de gebeurtenis Logboeken. Zie [problemen met virtuele Azure-machines oplossen](../../virtual-machines/troubleshooting/index.yml) voor meer informatie over het oplossen van problemen met uw virtuele machine
+* Als de VM een probleem heeft met het starten of deallocatie, kan dit gedrag worden veroorzaakt door een probleem op de VM zelf. Enkele voorbeelden of mogelijke problemen zijn, een update wordt toegepast wanneer u probeert af te sluiten, een service vastloopt en meer). Navigeer naar uw VM-bron en controleer de **activiteitslogboeken** om te zien of er fouten in de logboeken zijn. U ook proberen u bij de VM aan te melden om te zien of er fouten zijn in de gebeurtenislogboeken. Zie [Probleemoplossing voor azure virtuele machines](../../virtual-machines/troubleshooting/index.yml) voor meer informatie over het oplossen van problemen met uw vm
 
-* Controleer de [taak stromen](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) om te controleren of er fouten zijn opgetreden. Ga in de portal naar uw Automation-account en selecteer **taken** onder **proces automatisering**.
+* Controleer de [taakstromen](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) om te zoeken naar eventuele fouten. Ga in de portal naar uw automatiseringsaccount en selecteer **Taken** onder **Procesautomatisering.**
 
-## <a name="custom-runbook"></a>Scenario: mijn aangepaste runbook kan mijn Vm's niet starten of stoppen
+## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>Scenario: Mijn aangepaste runbook kan mijn VM's niet starten of stoppen
 
 ### <a name="issue"></a>Probleem
 
-U hebt een aangepast runbook gemaakt of een gedownloade versie van het PowerShell Gallery en deze werkt niet goed.
+Je hebt een aangepast runbook geschreven of er een gedownload uit de PowerShell Gallery en het werkt niet goed.
 
 ### <a name="cause"></a>Oorzaak
 
-De oorzaak van de fout kan een van de vele dingen zijn. Ga naar uw Automation-account in de Azure Portal en selecteer **taken** onder **proces automatisering**. Zoek op de pagina **taken** naar taken van uw runbook om eventuele taak fouten weer te geven.
+De oorzaak van de storing kan een van de vele dingen zijn. Ga naar uw automatiseringsaccount in de Azure-portal en selecteer **Taken** onder **Procesautomatisering**. Zoek op de pagina **Vacatures** naar vacatures uit uw runbook om eventuele taakfouten weer te geven.
 
 ### <a name="resolution"></a>Oplossing
 
-Het is raadzaam om de virtuele [machines voor het starten/stoppen van vm's](../automation-solution-vm-management.md) te gebruiken voor het starten en stoppen van vm's in azure Automation. Deze oplossing is gemaakt door micro soft. Aangepaste runbooks worden niet ondersteund door micro soft. U kunt een oplossing voor uw aangepaste runbook vinden door het artikel [over het oplossen](runbooks.md) van het runbook te bezoeken. Dit artikel bevat algemene richt lijnen en probleem oplossing voor runbooks van alle typen. Controleer de [taak stromen](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) om te controleren of er fouten zijn opgetreden. Ga in de portal naar uw Automation-account en selecteer **taken** onder **proces automatisering**.
+Het wordt aanbevolen om de [VM's starten/stoppen tijdens de oplossing voor uren](../automation-solution-vm-management.md) buiten kantooruren te gebruiken om VM's in Azure Automation te starten en te stoppen. Deze oplossing is geschreven door Microsoft. Aangepaste runbooks worden niet ondersteund door Microsoft. U vindt mogelijk een oplossing voor uw aangepaste runbook door het artikel [over probleemoplossing voor runbook](runbooks.md) te bezoeken. Dit artikel biedt algemene richtlijnen en probleemoplossing voor alle soorten runbooks. Controleer de [taakstromen](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) om te zoeken naar eventuele fouten. Ga in de portal naar uw automatiseringsaccount en selecteer **Taken** onder **Procesautomatisering.**
 
-## <a name="dont-start-stop-in-sequence"></a>Scenario: Vm's worden niet in de juiste volg orde gestart of gestopt
+## <a name="scenario-vms-dont-start-or-stop-in-the-correct-sequence"></a><a name="dont-start-stop-in-sequence"></a>Scenario: VM's starten of stoppen niet in de juiste volgorde
 
 ### <a name="issue"></a>Probleem
 
-De Vm's die u in de oplossing hebt geconfigureerd, worden niet in de juiste volg orde gestart of gestopt.
+De VM's die u in de oplossing hebt geconfigureerd, starten of stoppen niet in de juiste volgorde.
 
 ### <a name="cause"></a>Oorzaak
 
-Dit wordt veroorzaakt door onjuiste tagging op de Vm's.
+Dit wordt veroorzaakt door onjuiste tagging op de VM's.
 
 ### <a name="resolution"></a>Oplossing
 
-Voer de volgende stappen uit om ervoor te zorgen dat de oplossing correct is geconfigureerd.
+Neem de volgende stappen om ervoor te zorgen dat de oplossing correct is geconfigureerd.
 
-1. Zorg ervoor dat alle Vm's die moeten worden gestart of gestopt, een `sequencestart` of `sequencestop`-tag hebben, afhankelijk van uw situatie. Voor deze tags is een positief geheel getal vereist als waarde. Vm's worden in oplopende volg orde verwerkt op basis van deze waarde.
-2. Zorg ervoor dat de resource groepen voor de Vm's die moeten worden gestart of gestopt, zich in de `External_Start_ResourceGroupNames`-of `External_Stop_ResourceGroupNames` variabelen bevinden, afhankelijk van uw situatie.
-3. Test uw wijzigingen door het `SequencedStartStop_Parent` runbook uit te voeren waarbij de para meter WHATIF is ingesteld op True om een voor beeld van de wijzigingen weer te geven.
+1. Zorg ervoor dat alle VM's `sequencestart` `sequencestop` worden gestart of gestopt hebben een of tag, afhankelijk van uw situatie. Deze tags hebben een positief geheel getal als waarde nodig. VM's worden in oplopende volgorde verwerkt op basis van deze waarde.
+2. Zorg ervoor dat de resourcegroepen voor de VM's die moeten worden gestart of gestopt, zich in de `External_Start_ResourceGroupNames` of `External_Stop_ResourceGroupNames` variabelen bevinden, afhankelijk van uw situatie.
+3. Test uw wijzigingen door `SequencedStartStop_Parent` het runbook uit te voeren met de parameter WHATIF ingesteld op True om een voorbeeld van uw wijzigingen te bekijken.
 
-Zie [vm's in volg orde starten/stoppen](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags)voor meer gedetailleerde en aanvullende instructies voor het gebruik van de oplossing om vm's op volg orde te starten en te stoppen.
+Zie [VM's starten/stoppen in de juiste volgorde voor](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags)meer gedetailleerde en aanvullende instructies over het gebruik van de oplossing om VM's achter elkaar te starten en te stoppen.
 
-## <a name="403"></a>Scenario: taak VM starten/stoppen mislukt met status van 403 verboden
+## <a name="scenario-startstop-vm-job-fails-with-403-forbidden-status"></a><a name="403"></a>Scenario: Start/Stop VM-taak mislukt met 403 verboden status
 
 ### <a name="issue"></a>Probleem
 
-U vindt taken die zijn mislukt met een `403 forbidden` fout voor de runbooks voor het starten/stoppen van Vm's tijdens off-banen oplossingen.
+U vindt taken die `403 forbidden` zijn mislukt met een fout voor de VM's starten/stoppen tijdens runbooks voor buitenkantooroplossings.
 
 ### <a name="cause"></a>Oorzaak
 
-Dit probleem kan worden veroorzaakt door een onjuist geconfigureerd of verlopen uitvoeren als-account. Dit kan ook worden veroorzaakt door ontoereikende machtigingen voor de VM-bronnen door het run as-account voor Automation-accounts.
+Dit probleem kan worden veroorzaakt door een onjuist geconfigureerde of verlopen Run As-account. Het kan ook zijn vanwege onvoldoende machtigingen voor de VM-resources door de automatiseringsaccounts die als account worden uitgevoerd.
 
 ### <a name="resolution"></a>Oplossing
 
-Als u wilt controleren of het run as-account correct is geconfigureerd, gaat u naar uw Automation-account in het Azure Portal en selecteert u **uitvoeren als-accounts** onder **account instellingen**. Hier ziet u de status van uw uitvoeren als-accounts, als een uitvoeren als-account onjuist is geconfigureerd of is verlopen. de status wordt hier weer gegeven.
+Als u wilt controleren of uw Run As-account goed is geconfigureerd, gaat u naar uw automatiseringsaccount in de Azure-portal en selecteert **u Uitvoeren als accounts** onder **Accountinstellingen**. Hier ziet u de status van uw run als accounts, als een Run As-account onjuist is geconfigureerd of verlopen, wordt de status weergegeven.
 
-Als uw uitvoeren als-account onjuist is geconfigureerd, moet u het uitvoeren als-account verwijderen en opnieuw maken. Zie [Azure Automation uitvoeren als-accounts beheren](../manage-runas-account.md).
+Als uw Run As-account verkeerd is geconfigureerd, moet u uw Run As-account verwijderen en opnieuw maken. Zie [Azure Automation Run As-accounts beheren](../manage-runas-account.md).
 
-Als het certificaat is verlopen voor uw uitvoeren als-account, volgt u de stappen die worden vermeld bij [zelfondertekend certificaat vernieuwen](../manage-runas-account.md#cert-renewal) om het certificaat te vernieuwen.
+Als het certificaat is verlopen voor uw Run As-account, voert u de stappen uit die worden aangeboden bij [zelfondertekende certificaatverlenging](../manage-runas-account.md#cert-renewal) om het certificaat te vernieuwen.
 
-Het probleem wordt mogelijk veroorzaakt door ontbrekende machtigingen. Zie voor meer informatie over het controleren van de machtigingen voor een resource [Quick Start: rollen weer geven die zijn toegewezen aan een gebruiker met behulp van de Azure Portal](../../role-based-access-control/check-access.md). U moet de toepassings-ID opgeven voor de service-principal die wordt gebruikt door het run as-account. U kunt deze waarde ophalen door naar uw Automation-account in de Azure Portal te gaan en **uitvoeren als-accounts** te selecteren onder **account instellingen** en te klikken op het desbetreffende run as-account.
+Het probleem kan worden veroorzaakt door ontbrekende machtigingen. Zie [Snelstart: Rollen weergeven die zijn toegewezen aan een gebruiker met de Azure-portal](../../role-based-access-control/check-access.md)voor meer informatie over het controleren van de machtigingen voor een resource. U moet de toepassings-id voor de serviceprincipal die wordt gebruikt door het run As-account, verstrekken. U deze waarde ophalen door naar uw automatiseringsaccount te gaan in de Azure-portal, **Uitvoeren als accounts** te selecteren onder **Accountinstellingen** en op de juiste Run As-account te klikken.
 
-## <a name="other"></a>Scenario: mijn probleem komt niet voor in de lijst hierboven
+## <a name="scenario-my-problem-isnt-listed-above"></a><a name="other"></a>Scenario: Mijn probleem wordt hierboven niet vermeld
 
 ### <a name="issue"></a>Probleem
 
-U ondervindt een probleem of onverwacht resultaat wanneer u de VM's buiten bedrijfsuren starten/stoppen oplossing gebruikt die niet op deze pagina wordt vermeld.
+U ervaart een probleem of onverwacht resultaat wanneer u de VM's start/stop gebruikt tijdens de oplossing buiten kantooruren die niet op deze pagina wordt vermeld.
 
 ### <a name="cause"></a>Oorzaak
 
-Vaak kunnen fouten worden veroorzaakt door gebruik te maken van een oude en verouderde versie van de oplossing.
+Vele malen fouten kunnen worden veroorzaakt door het gebruik van een oude en verouderde versie van de oplossing.
 
 > [!NOTE]
-> De VM's buiten bedrijfsuren starten/stoppen oplossing is getest met de Azure-modules die worden geïmporteerd in uw Automation-account wanneer u de oplossing implementeert. De oplossing werkt momenteel niet met nieuwere versies van de Azure-module. Dit is alleen van invloed op het Automation-account dat u gebruikt om de VM's buiten bedrijfsuren starten/stoppen-oplossing uit te voeren. U kunt nog steeds nieuwere versies van de Azure-module gebruiken in uw andere Automation-accounts, zoals beschreven in [Azure PowerShell-modules bijwerken in azure Automation](../automation-update-azure-modules.md)
+> De start/stop VM's tijdens off-hours oplossing is getest met de Azure-modules die worden geïmporteerd in uw automatiseringsaccount wanneer u de oplossing implementeert. De oplossing werkt momenteel niet met nieuwere versies van de Azure-module. Dit heeft alleen invloed op het automatiseringsaccount dat u gebruikt om de VM's starten/stoppen uit te voeren tijdens off-hours oplossing. U nog steeds nieuwere versies van de Azure-module gebruiken in uw andere automatiseringsaccounts, zoals beschreven in [Hoe Azure PowerShell-modules bijwerken in Azure Automation](../automation-update-azure-modules.md)
 
 ### <a name="resolution"></a>Oplossing
 
-Om veel fouten op te lossen, is het raadzaam om de oplossing te verwijderen en bij te werken. Voor informatie over het bijwerken van de oplossing raadpleegt u [de oplossing Vm's starten/stoppen tijdens buiten kantoor uren bijwerken](../automation-solution-vm-management.md#update-the-solution). Daarnaast kunt u de [taak stromen](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) controleren om fouten op te sporen. Ga in de portal naar uw Automation-account en selecteer **taken** onder **proces automatisering**.
+Om veel fouten op te lossen, is het raadzaam om de oplossing te verwijderen en bij te werken. Zie [Vm's starten/stoppen tijdens de oplossing voor buitenkantoor uren](../automation-solution-vm-management.md#update-the-solution)bijwerken voor meer informatie over het bijwerken van de oplossing. Daarnaast u de [taakstromen](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) controleren om te zoeken naar eventuele fouten. Ga in de portal naar uw automatiseringsaccount en selecteer **Taken** onder **Procesautomatisering.**
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
+Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
 
 * Krijg antwoorden van Azure-experts op [Azure-Forums](https://azure.microsoft.com/support/forums/)
-* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport), het officiële Microsoft Azure-account voor het verbeteren van de gebruikerservaring door de Azure-community in contact te brengen met de juiste resources: antwoorden, ondersteuning en experts.
-* Als u meer hulp nodig hebt, kunt u een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
+* Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met – het officiële Microsoft Azure-account voor het verbeteren van de klantervaring door de Azure-community te verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
+* Als u meer hulp nodig hebt, u een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer **Ondersteuning opdoen**.

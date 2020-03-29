@@ -1,7 +1,7 @@
 ---
-title: Automated ML externe Compute-doelen
+title: Geautomatiseerde ML remote compute targets
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het bouwen van modellen met behulp van geautomatiseerde machine learning op een Azure Machine Learning extern Compute-doel met Azure Machine Learning
+description: Meer informatie over het bouwen van modellen met behulp van geautomatiseerde machine learning op een Azure Machine Learning remote compute target met Azure Machine Learning
 services: machine-learning
 author: cartacioS
 ms.author: sacartac
@@ -12,27 +12,27 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 9e499d609a3f78dc5f422b9ed90df09be30f2e7c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79080408"
 ---
-# <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trainen van modellen met geautomatiseerde machine learning in de cloud
+# <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Modellen trainen met geautomatiseerde machine learning in de cloud
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In Azure Machine Learning, door uw model op verschillende soorten compute-resources die u beheert te trainen. Het Compute-doel kan een lokale computer of een bron in de Cloud zijn.
+In Azure Machine Learning traint u uw model op verschillende typen rekenresources die u beheert. Het rekendoel kan een lokale computer of een bron in de cloud zijn.
 
-U kunt uw machine learning experiment eenvoudig opschalen of uitschalen door extra reken doelen toe te voegen, zoals Azure Machine Learning Compute (AmlCompute). AmlCompute is een infrastructuur voor beheerde berekeningen waarmee u eenvoudig een berekening met één of meerdere knooppunten kunt maken.
+U uw machine learning-experiment eenvoudig opschalen of schalen door extra rekendoelen toe te voegen, zoals Azure Machine Learning Compute (AmlCompute). AmlCompute is een infrastructuur voor beheerde berekeningen waarmee u eenvoudig een berekening met één of meerdere knooppunten kunt maken.
 
-In dit artikel leert u hoe u een model bouwt met behulp van geautomatiseerde MILLILITERs met AmlCompute.
+In dit artikel leert u hoe u een model bouwen met behulp van geautomatiseerde ML met AmlCompute.
 
-## <a name="how-does-remote-differ-from-local"></a>Hoe verschilt afstand van lokale?
+## <a name="how-does-remote-differ-from-local"></a>Hoe verschilt de afstandsbediening van lokaal?
 
-In de zelf studie "[een classificatie model trainen met geautomatiseerde machine learning](tutorial-auto-train-models.md)" leert u hoe u een lokale computer kunt gebruiken om een model met automatische ml te trainen. De werkstroom bij het trainen van lokaal ook van toepassing is ook externe doelen. Echter met externe compute geautomatiseerde ML-iteraties uitgevoerd asynchroon. Deze functie kunt u een bepaalde iteratie annuleren, bekijk de status van de uitvoering of blijven werken van andere cellen in de Jupyter-notebook. Als u op afstand wilt trainen, maakt u eerst een extern Compute-doel zoals AmlCompute. Vervolgens de externe bron te configureren en verzenden van uw code er.
+De tutorial[Train een classificatiemodel met geautomatiseerde machine learning](tutorial-auto-train-models.md)leert je hoe je een lokale computer gebruiken om een model te trainen met geautomatiseerde ML. De workflow bij het lokaal trainen geldt ook voor externe doelen. Echter, met remote compute, geautomatiseerde ML experiment iteraties worden asynchroon uitgevoerd. Met deze functionaliteit u een bepaalde iteratie annuleren, de status van de uitvoering bekijken of blijven werken aan andere cellen in het Jupyter-notitieblok. Als u op afstand wilt trainen, maakt u eerst een extern rekendoel zoals AmlCompute. Vervolgens configureert u de externe bron en dient u daar uw code in.
 
-In dit artikel worden de extra stappen beschreven die nodig zijn voor het uitvoeren van een geautomatiseerd experiment op een extern AmlCompute-doel. Het werkruimte object, `ws`, uit de zelf studie wordt in de hele code gebruikt.
+In dit artikel ziet u de extra stappen die nodig zijn om een geautomatiseerd ML-experiment uit te voeren op een extern AmlCompute-doel. Het werkruimteobject `ws`van de zelfstudie wordt hier in de hele code gebruikt.
 
 ```python
 ws = Workspace.from_config()
@@ -40,9 +40,9 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>Bron maken
 
-Maak het [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) doel in uw werk ruimte (`ws`) als deze nog niet bestaat.
+Maak [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) het doel in`ws`uw werkruimte ( ) als het nog niet bestaat.
 
-**Geschatte tijd**: het maken van het AmlCompute-doel duurt ongeveer 5 minuten.
+**Tijdsschatting**: Het maken van het AmlCompute-doel duurt ongeveer 5 minuten.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -79,17 +79,17 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-U kunt nu het `compute_target`-object gebruiken als het externe Compute-doel.
+U het `compute_target` object nu gebruiken als het externe rekendoel.
 
-De beperkingen voor de cluster naam zijn onder andere:
-+ Moet korter zijn dan 64 tekens lang zijn.
-+ Kan geen van de volgende tekens bevatten: `\` ~! @ # $% ^ & * () = + _ [] {} \\\\ |; : \' \\", < >/?. `
+Clusternaambeperkingen zijn onder meer:
++ Moet korter zijn dan 64 tekens.
++ Kan geen van de `\` volgende tekens bevatten: ~ ! @ # $ % ^ & * ( \\ \\ ) = [ ] [ ] } | ; : \' \\" , < > / ?. `
 
 ## <a name="access-data-using-tabulardataset-function"></a>Toegang tot gegevens met de functie TabularDataset
 
-Gedefinieerd training_data als [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) en het label, dat wordt door gegeven aan de geautomatiseerde milliliters in de [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py). De `TabularDataset` methode `from_delimited_files`standaard de `infer_column_types` ingesteld op True, waardoor het kolommen type automatisch wordt afleiden. 
+Gedefinieerd training_data [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) als en het etiket, die worden [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)doorgegeven aan Automated ML in de . De `TabularDataset` `from_delimited_files`methode stelt standaard `infer_column_types` het true in, waardoor het kolommentype automatisch wordt ingesteld. 
 
-Als u de kolom typen hand matig wilt instellen, kunt u het argument `set_column_types` instellen om het type van elke kolom hand matig in te stellen. In het volgende codevoorbeeld wordt de gegevens zijn afkomstig uit het pakket sklearn.
+Als u de kolomtypen handmatig wilt instellen, `set_column_types` kunt u het argument instellen om het type van elke kolom handmatig in te stellen. In het volgende codevoorbeeld komen de gegevens uit het sklearn-pakket.
 
 ```python
 from sklearn import datasets
@@ -122,8 +122,8 @@ ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progr
 training_data = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/digits.csv'))
 ```
 
-## <a name="configure-experiment"></a>Configureren van experiment
-Geef de instellingen voor `AutoMLConfig`op.  (Zie een [volledige lijst met para meters](how-to-configure-auto-train.md#configure-experiment) en de bijbehorende mogelijke waarden.)
+## <a name="configure-experiment"></a>Experiment configureren
+Geef de `AutoMLConfig`instellingen op voor .  (Zie een [volledige lijst met parameters](how-to-configure-auto-train.md#configure-experiment) en hun mogelijke waarden.)
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -152,7 +152,7 @@ automl_config = AutoMLConfig(task='classification',
 
 ## <a name="submit-training-experiment"></a>Trainingsexperiment verzenden
 
-Nu de configuratie voor het automatisch selecteren van het algoritme, de hyper-parameters indienen en het model te trainen.
+Dien nu de configuratie in om automatisch het algoritme, hyperparameters te selecteren en het model te trainen.
 
 ```python
 from azureml.core.experiment import Experiment
@@ -160,7 +160,7 @@ experiment = Experiment(ws, 'automl_remote')
 remote_run = experiment.submit(automl_config, show_output=True)
 ```
 
-Hier ziet u uitvoer die vergelijkbaar is met het volgende voorbeeld:
+U ziet uitvoer vergelijkbaar met het volgende voorbeeld:
 
     Running on remote compute: mydsvmParent Run ID: AutoML_015ffe76-c331-406d-9bfd-0fd42d8ab7f6
     ***********************************************************************************************
@@ -194,37 +194,37 @@ Hier ziet u uitvoer die vergelijkbaar is met het volgende voorbeeld:
             19      Robust Scaler kNN                     0:02:32                  0.983     0.989
 
 
-## <a name="explore-results"></a>Resultaten verkennen
+## <a name="explore-results"></a>Bekijk de resultaten
 
-U kunt dezelfde Jupyter- [widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) gebruiken zoals weer gegeven in [de trainings zelfstudie](tutorial-auto-train-models.md#explore-the-results) om een grafiek en een tabel met resultaten weer te geven.
+U dezelfde [Jupyter-widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) gebruiken zoals in [de trainingszelfstudie](tutorial-auto-train-models.md#explore-the-results) wordt weergegeven om een grafiek en een tabel met resultaten te zien.
 
 ```python
 from azureml.widgets import RunDetails
 RunDetails(remote_run).show()
 ```
 
-Hier ziet u een statische afbeelding van de widget.  In het notitieblok, kunt u klikken op elke regel in de tabel om te zien van de eigenschappen voor de uitvoerbewerking en uitvoer van Logboeken voor die worden uitgevoerd.   U kunt ook de vervolgkeuzelijst boven de grafiek gebruiken om een grafiek van elke beschikbare metrische gegevens voor elke herhaling van weer te geven.
+Hier ziet u een statische afbeelding van de widget.  In het notitieblok u op elke regel in de tabel klikken om uitvoereigenschappen en uitvoerlogboeken voor die run te bekijken.   U de vervolgkeuzelijst boven de grafiek ook gebruiken om een grafiek van elke beschikbare statistiek voor elke iteratie weer te geven.
 
 ![tabel van widget](./media/how-to-auto-train-remote/table.png)
 ![grafiek van widget](./media/how-to-auto-train-remote/plot.png)
 
-De widget wordt weergegeven een URL die u gebruiken kunt om te zien en de details uitvoering van afzonderlijke verkennen.  
+De widget geeft een URL weer die u gebruiken om de afzonderlijke rundetails te bekijken en te verkennen.  
 
-Als u zich niet in een Jupyter-notebook bevindt, kunt u de URL van de uitvoeringsrun zelf weer geven:
+Als u zich niet in een Jupyter-notitieblok bevindt, u de URL van de run zelf weergeven:
 
 ```
 remote_run.get_portal_url()
 ```
 
-Dezelfde informatie is beschikbaar in uw werk ruimte.  Zie [inzicht in geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md)voor meer informatie over deze resultaten.
+Dezelfde informatie is beschikbaar in uw werkruimte.  Zie [Geautomatiseerde machine learning-resultaten begrijpen](how-to-understand-automated-ml.md)voor meer informatie over deze resultaten.
 
 ## <a name="example"></a>Voorbeeld
 
-In het volgende [notitie blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression/auto-ml-regression.ipynb) worden concepten in dit artikel gedemonstreerd.
+Het volgende [notitieblok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression/auto-ml-regression.ipynb) toont concepten in dit artikel.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie [over het configureren van instellingen voor automatische training](how-to-configure-auto-train.md).
-* Bekijk de [functie voor het inschakelen](how-to-machine-learning-interpretability-automl.md) van model interpret functies in geautomatiseerde ml experimenten.
+* Meer informatie over [het configureren van instellingen voor automatische training](how-to-configure-auto-train.md).
+* Bekijk de [how-to](how-to-machine-learning-interpretability-automl.md) on inschakelen van modelinterpreteerbaarheidsfuncties in geautomatiseerde ML-experimenten.

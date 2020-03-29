@@ -1,5 +1,5 @@
 ---
-title: Azure Data Box Gateway-gebruikers beheren | Microsoft Docs
+title: De Azure Portal gebruiken om gebruikers te beheren in Azure Data Box Gateway | Microsoft Docs
 description: Beschrijft hoe u Azure Portal gebruikt om gebruikers te beheren in uw Azure Data Box Gateway.
 services: databox
 author: alkohli
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 60fd5476d687d9f44aec885cdf888572e8e523a4
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78946122"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Azure Portal gebruiken om gebruikers te beheren in uw Azure Data Box Gateway
@@ -33,13 +33,13 @@ Gebruikers kunnen het recht alleen-lezen of volledige bevoegdheid hebben. Zoals 
  - **Gebruiker met volledige bevoegdheden** - een lokale gebruiker met volledige toegang.
  - **Alleen-lezengebruiker** - een lokale gebruiker met alleen-lezentoegang. Deze gebruikers zijn gekoppeld aan shares waarmee alleen-lezenbewerkingen mogelijk zijn.
 
-De gebruikersmachtigingen worden eerst gedefinieerd wanneer de gebruiker wordt gemaakt tijdens het maken van de share. Het wijzigen van machtigingen op share niveau wordt momenteel niet ondersteund.
+De gebruikersmachtigingen worden eerst gedefinieerd wanneer de gebruiker wordt gemaakt tijdens het maken van de share. Wijziging van machtigingen op share-level wordt momenteel niet ondersteund.
 
 ## <a name="add-a-user"></a>Een gebruiker toevoegen
 
 Voer in Azure Portal de volgende stappen uit om een gebruiker toe te voegen.
 
-1. Ga in Azure Portal naar uw Data Box Gateway-resource en navigeer vervolgens naar **Overzicht**. Klik in de opdrachtbalk op **+ Gebruiker toevoegen**.
+1. Ga in de Azure Portal naar uw Data Box Gateway-resource en navigeer vervolgens naar **Overzicht**. Klik in de opdrachtbalk op **+ Gebruiker toevoegen**.
 
     ![Klikken op Gebruiker toevoegen](media/data-box-gateway-manage-users/add-user-1.png)
 

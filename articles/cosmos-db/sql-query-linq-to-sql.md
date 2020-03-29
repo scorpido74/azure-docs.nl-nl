@@ -1,29 +1,29 @@
 ---
-title: LINQ to SQL vertaling in Azure Cosmos DB
-description: Meer informatie over de LINQ-Opera tors die worden ondersteund en hoe de LINQ-query's worden toegewezen aan SQL-query's in Azure Cosmos DB.
+title: LINQ naar SQL-vertaling in Azure Cosmos DB
+description: Lees de ondersteunde LINQ-operatoren en hoe de LINQ-query's zijn toegewezen aan SQL-query's in Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441260"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL-omzetting
 
-De Azure Cosmos DB-query provider voert een beste toewijzing van een LINQ-query in een Cosmos DB SQL-query uit. In de volgende beschrijving wordt uitgegaan van een basis kennis van LINQ.
+De Azure Cosmos DB-queryprovider voert een best effort mapping uit van een LINQ-query naar een Cosmos DB SQL-query. De volgende beschrijving gaat uit van een fundamentele vertrouwdheid met LINQ.
 
-Het query provider type systeem ondersteunt alleen de JSON-primitieve typen: numeric, Boolean, String en null.
+Het typesysteem van de queryprovider ondersteunt alleen de primitieve JSON-typen: numeriek, Booleaans, tekenreeks en null.
 
-De query provider ondersteunt de volgende scalaire expressies:
+De queryprovider ondersteunt de volgende scalaire expressies:
 
-- Constante waarden, met inbegrip van constante waarden van de primitieve gegevens typen bij de evaluatie tijd van de query.
+- Constante waarden, inclusief constante waarden van de primitieve gegevenstypen tijdens de evaluatietijd van query's.
   
-- Eigenschap/matrix index expressies die verwijzen naar de eigenschap van een object of een matrix element. Bijvoorbeeld:
+- Eigenschap-/arrayindexexpressies die verwijzen naar de eigenschap van een object of een arrayelement. Bijvoorbeeld:
   
   ```
     family.Id;
@@ -32,21 +32,21 @@ De query provider ondersteunt de volgende scalaire expressies:
     family.children[n].grade; //n is an int variable
   ```
   
-- Reken kundige expressies, waaronder veelvoorkomende reken kundige expressies voor numerieke en Booleaanse waarden. Zie de [Azure Cosmos DB SQL-specificatie](https://go.microsoft.com/fwlink/p/?LinkID=510612)voor de volledige lijst.
+- Rekenkundige uitdrukkingen, waaronder algemene rekenkundige uitdrukkingen over numerieke en Booleaanse waarden. Zie de [Azure Cosmos DB SQL-specificatie](https://go.microsoft.com/fwlink/p/?LinkID=510612)voor de volledige lijst.
   
   ```
     2 * family.children[0].grade;
     x + y;
   ```
   
-- Teken reeks vergelijkings expressies, die een teken reeks waarde vergelijken met een constante teken reeks waarde.  
+- Tekenreeksvergelijkingsexpressies, waaronder het vergelijken van een tekenreekswaarde met een constante tekenreekswaarde.  
   
   ```
     mother.familyName == "Wakefield";
     child.givenName == s; //s is a string variable
   ```
   
-- Expressies voor object/matrix maken, die een object van het type samengestelde waarde of anoniem type of een matrix van dergelijke objecten retour neren. U kunt deze waarden nesten.
+- Object/arraycreatieexpressies, die een object van samengestelde waardetype of anoniem type of een array van dergelijke objecten retourneren. U deze waarden nesten.
   
   ```
     new Parent { familyName = "Wakefield", givenName = "Robin" };
@@ -54,33 +54,33 @@ De query provider ondersteunt de volgende scalaire expressies:
     new int[] { 3, child.grade, 5 };
   ```
 
-## <a id="SupportedLinqOperators"></a>Ondersteunde LINQ-Opera tors
+## <a name="supported-linq-operators"></a><a id="SupportedLinqOperators"></a>Ondersteunde LINQ-operators
 
-De LINQ-provider die is opgenomen in de SQL .NET SDK ondersteunt de volgende Opera tors:
+De LINQ-provider die bij de SQL .NET SDK is opgenomen, ondersteunt de volgende operatoren:
 
-- **Select**: projecties vertalen naar SQL SELECT, inclusief object constructie.
-- **Waar**: filters vertalen naar SQL waarbij en ondersteunen de vertaling van `&&`, `||`en `!` naar de SQL-Opera tors
-- **SelectMany**: maakt het mogelijk om matrices af te wikkelen naar de SQL-JOIN-component. Gebruiken voor het koppelen of nesten van expressies voor het filteren op matrix elementen.
-- **OrderBy** en **OrderByDescending**: vertalen naar order by met ASC of DESC.
+- **Selecteer**: Projecties vertalen naar SQL SELECT, inclusief objectconstructie.
+- **Waar**: Filters vertalen naar SQL `&&`WHERE `||`en `!` ondersteunen vertaling tussen , en naar de SQL-operatoren
+- **SelectMany**: maakt het mogelijk om matrices af te wikkelen naar de SQL-JOIN-component. Met deze optie u expressies vastketenen of nesten om op matrixelementen te filteren.
+- **OrderBy** en **OrderByDescending**: Vertalen naar ORDE BY met ASC of DESC.
 - Operatoren **Count**, **Sum**, **Min**, **Max** en **Average** voor statistische functies en de bijbehorende asynchrone equivalenten **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync** en **AverageAsync**.
-- **CompareTo**: wordt omgezet naar bereikvergelijkingen. Wordt meestal gebruikt voor teken reeksen, omdat ze niet vergelijkbaar zijn in .NET.
-- **Overs Laan** en **uitvoeren**: VERtaalt de SQL-offset en-limiet voor het beperken van de resultaten van een query en het uitvoeren van paginering.
-- **Wiskundige functies**: ondersteunt de vertaling van .net `Abs`, `Acos`, `Asin`, `Atan`, `Ceiling`, `Cos`, `Exp`, `Floor`, `Log`, `Log10`, `Pow`, `Round`, `Sign`, `Sin`, `Sqrt`, `Tan`en `Truncate` naar de equivalente ingebouwde functies van SQL.
-- **Teken reeks functies**: ondersteunt de vertaling van .net `Concat`, `Contains`, `Count`, `EndsWith`,`IndexOf`, `Replace`, `Reverse`, `StartsWith`, `SubString`, `ToLower`, `ToUpper`, `TrimEnd`en `TrimStart` naar de equivalente ingebouwde functies van SQL.
-- **Matrix functies**: ondersteunt de vertaling van .net `Concat`, `Contains`en `Count` naar de equivalente ingebouwde functies van SQL.
-- **Georuimtelijke extensie functies**: ondersteunt de vertaling van stub-methoden `Distance`, `IsValid`, `IsValidDetailed`en `Within` naar de equivalente ingebouwde functies van SQL.
-- Door de **gebruiker gedefinieerde functie-extensie functie**: ondersteunt de vertaling van de stub-methode `UserDefinedFunctionProvider.Invoke` naar de bijbehorende door de gebruiker gedefinieerde functie.
-- **Diversen**: ondersteunt de vertaling van `Coalesce` en voorwaardelijke Opera tors. Kan `Contains` omzetten naar een teken reeks, ARRAY_CONTAINS of SQL IN, afhankelijk van de context.
+- **CompareTo**: wordt omgezet naar bereikvergelijkingen. Vaak gebruikt voor tekenreeksen, omdat ze niet vergelijkbaar zijn in .NET.
+- **Overslaan** en **nemen:** vertaalt naar SQL OFFSET en LIMIT voor het beperken van de resultaten van een query en het uitvoeren van pagination.
+- **Wiskundige functies**: Ondersteunt `Abs`vertaling `Acos` `Asin`van `Atan` `Ceiling`.NET , `Log` `Log10`, `Pow` `Round`, `Sign` `Sin`, `Sqrt` `Tan` `Cos` `Exp`, `Floor` `Truncate` , , , , , , , , , en naar de gelijkwaardige SQL-ingebouwde functies.
+- **Tekenreeksfuncties**: Ondersteunt vertaling `Concat` `Contains`van `Count` `EndsWith`.NET `Replace` `Reverse`, , , `TrimEnd`, `TrimStart` `IndexOf`, , `StartsWith` `SubString`, , `ToLower`, `ToUpper`, en naar de gelijkwaardige SQL-ingebouwde functies.
+- **Arrayfuncties**: ondersteunt vertaling `Concat` `Contains`van `Count` .NET en naar de gelijkwaardige SQL-ingebouwde functies.
+- **Geospatial Extension-functies**: Ondersteunt `Distance`vertaling `IsValid` `IsValidDetailed`van `Within` stompmethoden , , en naar de gelijkwaardige SQL-ingebouwde functies.
+- **Door de gebruiker gedefinieerde functie-extensiefunctie**: `UserDefinedFunctionProvider.Invoke` ondersteunt vertaling van de stompmethode naar de overeenkomstige door de gebruiker gedefinieerde functie.
+- **Diversen**: `Coalesce` Ondersteunt vertaling van en voorwaardelijke operatoren. Kan `Contains` vertalen naar String CONTAINS, ARRAY_CONTAINS of SQL IN, afhankelijk van de context.
 
 ## <a name="examples"></a>Voorbeelden
 
-In de volgende voor beelden ziet u hoe sommige van de standaard LINQ-query operators worden vertaald naar Cosmos DB query's.
+De volgende voorbeelden illustreren hoe sommige van de standaard LINQ-queryoperatoren vertalen naar Cosmos DB-query's.
 
 ### <a name="select-operator"></a>Operator selecteren
 
 De syntaxis is `input.Select(x => f(x))`. Hierbij is `f` een scalaire expressie.
 
-**Operator selecteren, voor beeld 1:**
+**Selecteer operator, voorbeeld 1:**
 
 - **LINQ lambda-expressie**
   
@@ -95,7 +95,7 @@ De syntaxis is `input.Select(x => f(x))`. Hierbij is `f` een scalaire expressie.
       FROM Families f
     ```
   
-**Operator selecteren, voor beeld 2:** 
+**Selecteer operator, voorbeeld 2:** 
 
 - **LINQ lambda-expressie**
   
@@ -110,7 +110,7 @@ De syntaxis is `input.Select(x => f(x))`. Hierbij is `f` een scalaire expressie.
       FROM Families f
   ```
   
-**Operator selecteren, voor beeld 3:**
+**Selecteer operator, voorbeeld 3:**
 
 - **LINQ lambda-expressie**
   
@@ -151,7 +151,7 @@ De syntaxis is `input.SelectMany(x => f(x))`. Hierbij is `f` een scalaire expres
 
 De syntaxis is `input.Where(x => f(x))`. Hierbij is `f` een scalaire expressie die een Booleaanse waarde retourneert.
 
-**De operator where, voor beeld 1:**
+**Wanneer exploitant, voorbeeld 1:**
 
 - **LINQ lambda-expressie**
   
@@ -167,7 +167,7 @@ De syntaxis is `input.Where(x => f(x))`. Hierbij is `f` een scalaire expressie d
       WHERE f.parents[0].familyName = "Wakefield"
   ```
   
-**De operator where, voor beeld 2:**
+**Wanneer exploitant, voorbeeld 2:**
 
 - **LINQ lambda-expressie**
   
@@ -188,13 +188,13 @@ De syntaxis is `input.Where(x => f(x))`. Hierbij is `f` een scalaire expressie d
 
 ## <a name="composite-sql-queries"></a>Samengestelde SQL-query's
 
-U kunt de voor gaande Opera tors samen stellen om krachtiger query's te maken. Omdat Cosmos DB geneste containers ondersteunt, kunt u de samen stelling samen voegen of nesten.
+U de voorgaande operatoren samenstellen om krachtigere query's te vormen. Aangezien Cosmos DB geneste containers ondersteunt, u de samenstelling samenbrengen of nesten.
 
 ### <a name="concatenation"></a>Samenvoegen
 
-De syntaxis is `input(.|.SelectMany())(.Select()|.Where())*`. Een samengevoegde query kan beginnen met een optionele `SelectMany` query, gevolgd door meerdere `Select` of `Where` Opera tors.
+De syntaxis is `input(.|.SelectMany())(.Select()|.Where())*`. Een gelijktijdige query kan beginnen met `SelectMany` een optionele query, gevolgd door meerdere `Select` of `Where` operatoren.
 
-**Samen voegen, voor beeld 1:**
+**Samenvoeging, voorbeeld 1:**
 
 - **LINQ lambda-expressie**
   
@@ -211,7 +211,7 @@ De syntaxis is `input(.|.SelectMany())(.Select()|.Where())*`. Een samengevoegde 
       WHERE f.parents[0].familyName = "Wakefield"
   ```
 
-**Samen voegen, voor beeld 2:**
+**Samenvoeging, voorbeeld 2:**
 
 - **LINQ lambda-expressie**
   
@@ -228,7 +228,7 @@ De syntaxis is `input(.|.SelectMany())(.Select()|.Where())*`. Een samengevoegde 
       WHERE f.children[0].grade > 3
   ```
 
-**Samen voegen, voor beeld 3:**
+**Samenvoeging, voorbeeld 3:**
 
 - **LINQ lambda-expressie**
   
@@ -245,7 +245,7 @@ De syntaxis is `input(.|.SelectMany())(.Select()|.Where())*`. Een samengevoegde 
       WHERE ({grade: f.children[0].grade}.grade > 3)
   ```
 
-**Samen voegen, voor beeld 4:**
+**Samenvoeging, voorbeeld 4:**
 
 - **LINQ lambda-expressie**
   
@@ -264,11 +264,11 @@ De syntaxis is `input(.|.SelectMany())(.Select()|.Where())*`. Een samengevoegde 
 
 ### <a name="nesting"></a>Nesten
 
-De syntaxis is `input.SelectMany(x=>x.Q())` waarbij `Q` een operator `Select`, `SelectMany`of `Where` is.
+De syntaxis `Q` is `Select` `input.SelectMany(x=>x.Q())` `SelectMany`waar `Where` een , , of operator is.
 
-Een geneste query past de interne query toe op elk element van de buitenste container. Een belang rijke functie is dat de binnenste query kan verwijzen naar de velden van de elementen in de buitenste container, zoals een self-join.
+Een geneste query past de innerlijke query toe op elk element van de buitenste container. Een belangrijk kenmerk is dat de binnenste query kan verwijzen naar de velden van de elementen in de buitenste container, zoals een zelf-join.
 
-**Nesten, voor beeld 1:**
+**Nesten, voorbeeld 1:**
 
 - **LINQ lambda-expressie**
   
@@ -285,7 +285,7 @@ Een geneste query past de interne query toe op elk element van de buitenste cont
       JOIN p IN f.parents
   ```
 
-**Nesten, voor beeld 2:**
+**Nesten, voorbeeld 2:**
 
 - **LINQ lambda-expressie**
   
@@ -303,7 +303,7 @@ Een geneste query past de interne query toe op elk element van de buitenste cont
       WHERE c.familyName = "Jeff"
   ```
 
-**Nesten, voor beeld 3:**
+**Nesten, voorbeeld 3:**
 
 - **LINQ lambda-expressie**
   
@@ -325,4 +325,4 @@ Een geneste query past de interne query toe op elk element van de buitenste cont
 ## <a name="next-steps"></a>Volgende stappen
 
 - [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [Document gegevens model leren](modeling-data.md)
+- [Documentgegevens modelleren](modeling-data.md)

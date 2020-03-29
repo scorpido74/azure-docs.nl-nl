@@ -1,35 +1,35 @@
 ---
-title: Een klassieke waarschuwing voor metrische gegevens maken in azure met een resource manager-sjabloon
-description: Meer informatie over het gebruik van een resource manager-sjabloon voor het maken van een klassieke metrische waarschuwing voor het ontvangen van meldingen per e-mail of webhook.
+title: Een klassieke metrische waarschuwing maken in Azure met een resourcebeheersjabloon
+description: Meer informatie over het gebruik van een resourcemanagersjabloon om een klassieke metrische waarschuwing te maken om meldingen per e-mail of webhook te ontvangen.
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
 ms.openlocfilehash: 4f840d3771c2520e239d8ff3416722429f9502f3
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79037224"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Een klassieke waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 > [!WARNING]
 > 
-> In dit artikel wordt beschreven hoe u **klassieke metrische waarschuwingen** maakt met behulp van Resource Manager-sjablonen. Klassieke waarschuwingen werden in augustus 2019 buiten gebruik gesteld en zijn in juni 2020 volledig afgeschaft. U kunt geen nieuwe klassieke open bare Azure-waarschuwingen maken. Sommige regionale versies van Azure hebben mogelijk nog steeds de optie, maar we raden u aan in plaats daarvan [nieuwe metrische waarschuwingen](../../azure-monitor/platform/alerts-metric-near-real-time.md) te maken met behulp van sjablonen, indien dit mogelijk is. In [dit artikel](alerts-metric-create-templates.md) vindt u meer informatie.
+> In dit artikel worden **klassieke metrische waarschuwingen** gemaakt met behulp van Resource Manager-sjablonen. Klassieke waarschuwingen werden in augustus 2019 ingetrokken en zullen in juni 2020 volledig worden afgeschaft. U geen nieuwe klassieke waarschuwingen maken voor Azure. Sommige regionale versies van Azure hebben mogelijk nog steeds de optie, maar we raden u aan in plaats daarvan [nieuwere metrische waarschuwingen](../../azure-monitor/platform/alerts-metric-near-real-time.md) te maken met sjablonen als dat mogelijk is. [Dit artikel](alerts-metric-create-templates.md) bevat de details.
 >
 
-In dit artikel wordt beschreven hoe u een [Azure Resource Manager sjabloon](../../azure-resource-manager/templates/template-syntax.md) kunt gebruiken voor het configureren van klassieke Azure-waarschuwingen. Hierdoor kunt u automatisch waarschuwingen instellen voor uw resources wanneer ze worden gemaakt om ervoor te zorgen dat alle resources correct worden gecontroleerd.
+In dit artikel ziet u hoe u een [Azure Resource Manager-sjabloon](../../azure-resource-manager/templates/template-syntax.md) gebruiken om klassieke metrische waarschuwingen voor Azure te configureren. Hierdoor u automatisch waarschuwingen instellen op uw resources wanneer deze worden gemaakt om ervoor te zorgen dat alle resources correct worden gecontroleerd.
 
-De basis stappen zijn als volgt:
+De basisstappen zijn als volgt:
 
-1. Maak een sjabloon als een JSON-bestand waarin wordt beschreven hoe de waarschuwing moet worden gemaakt.
-2. [Implementeer de sjabloon met een implementatie methode](../../azure-resource-manager/templates/deploy-powershell.md).
+1. Maak een sjabloon als een JSON-bestand waarin wordt beschreven hoe u de waarschuwing maakt.
+2. [Implementeer de sjabloon met behulp van een implementatiemethode](../../azure-resource-manager/templates/deploy-powershell.md).
 
-Hieronder wordt beschreven hoe u eerst een resource manager-sjabloon maakt voor een waarschuwing, waarna een waarschuwing wordt weer gegeven tijdens het maken van een andere resource.
+Hieronder beschrijven we hoe u eerst een resourcemanagersjabloon maakt voor een waarschuwing alleen, vervolgens voor een waarschuwing tijdens het maken van een andere resource.
 
-## <a name="resource-manager-template-for-a-classic-metric-alert"></a>Resource Manager-sjabloon voor een klassieke waarschuwing voor metrische gegevens
-Als u een waarschuwing wilt maken met behulp van een resource manager-sjabloon, maakt u een resource van het type `Microsoft.Insights/alertRules` en vult u alle gerelateerde eigenschappen in. Hieronder ziet u een sjabloon waarmee een waarschuwings regel wordt gemaakt.
+## <a name="resource-manager-template-for-a-classic-metric-alert"></a>Resourcemanager-sjabloon voor een klassieke metrische waarschuwing
+Als u een waarschuwing wilt maken met een `Microsoft.Insights/alertRules` resourcemanagersjabloon, maakt u een bron van tekst en vult u alle gerelateerde eigenschappen in. Hieronder vindt u een sjabloon waarmee een waarschuwingsregel wordt gemaakt.
 
 ```json
 {
@@ -176,10 +176,10 @@ Als u een waarschuwing wilt maken met behulp van een resource manager-sjabloon, 
 }
 ```
 
-[Hier](https://msdn.microsoft.com/library/azure/dn933805.aspx)vindt u een uitleg van het schema en de eigenschappen voor een waarschuwings regel.
+Een uitleg van het schema en de eigenschappen voor een waarschuwingsregel [is hier beschikbaar.](https://msdn.microsoft.com/library/azure/dn933805.aspx)
 
-## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Resource Manager-sjabloon voor een resource met een klassieke waarschuwing voor metrische gegevens
-Een waarschuwing voor een resource manager-sjabloon is het vaakst handig bij het maken van een waarschuwing tijdens het maken van een resource. U kunt er bijvoorbeeld voor zorgen dat de regel ' CPU% > 80 ' wordt ingesteld telkens wanneer u een virtuele machine implementeert. Als u dit wilt doen, voegt u de waarschuwings regel als resource toe aan de resource matrix voor uw VM-sjabloon en voegt u een afhankelijkheid toe met behulp van de eigenschap `dependsOn` aan de resource-ID van de virtuele machine. Hier volgt een volledig voor beeld van het maken van een Windows-VM en het toevoegen van een waarschuwing waarmee abonnements beheerders worden gewaarschuwd wanneer het CPU-gebruik meer dan 80% overschrijdt.
+## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Resourcemanager-sjabloon voor een resource met een klassieke metrische waarschuwing
+Een waarschuwing op een resourcemanagersjabloon is meestal handig bij het maken van een waarschuwing tijdens het maken van een resource. U er bijvoorbeeld voor zorgen dat elke keer dat u een virtuele machine implementeert, een regel 'CPU% > 80' wordt ingesteld. Om dit te doen, voegt u de waarschuwingsregel toe als resource in de `dependsOn` resourcearray voor uw VM-sjabloon en voegt u een afhankelijkheid toe met behulp van de eigenschap aan de VM-bron-id. Hier is een volledig voorbeeld dat een Windows VM maakt en een waarschuwing toevoegt die abonnementsbeheerders waarschuwt wanneer het CPU-gebruik boven de 80% komt.
 
 ```json
 {
@@ -399,7 +399,7 @@ Een waarschuwing voor een resource manager-sjabloon is het vaakst handig bij het
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Meer informatie over waarschuwingen](alerts-overview.md)
-* [Diagnostische instellingen toevoegen](../../azure-monitor/platform/diagnostic-settings-template.md) aan uw Resource Manager-sjabloon
-* Zie [micro soft. Insights/alertrules-](/azure/templates/microsoft.insights/alertrules) sjabloon Naslag informatie voor de JSON-syntaxis en-eigenschappen.
+* [Lees meer over waarschuwingen](alerts-overview.md)
+* [Diagnostische instellingen toevoegen](../../azure-monitor/platform/diagnostic-settings-template.md) aan de sjabloon Resourcemanager
+* Zie [Microsoft.Insights/sjabloonverwijzing voor](/azure/templates/microsoft.insights/alertrules) JSON-syntaxis en -eigenschappen voor de syntaxis en eigenschappen van JSON.
 

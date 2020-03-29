@@ -1,66 +1,66 @@
 ---
-title: Azure Service Fabric CLI-implementatie van sfctl-net
-description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het maken van Service Fabric netresources.
+title: Azure Service Fabric CLI- sfctl-mesh-implementatie
+description: Meer informatie over sfctl, de Azure Service Fabric-opdrachtregelinterface. Bevat een lijst met opdrachten voor het maken van Service Fabric Mesh-bronnen.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 108389407221779ed20e81310f084b7b5c23b8c7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906036"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
-Service Fabric netresources maken.
+Maak mesh-bronnen voor servicefabric.Create Service Fabric Mesh resources.
 
 ## <a name="commands"></a>Opdrachten
 
 |Opdracht|Beschrijving|
 | --- | --- |
-| maken | Hiermee maakt u een implementatie van Service Fabric netresources. |
+| maken | Hiermee maakt u een implementatie van mesh-bronnen voor servicestructuur. |
 
-## <a name="sfctl-mesh-deployment-create"></a>implementatie van sfctl-net maken
-Hiermee maakt u een implementatie van Service Fabric netresources.
+## <a name="sfctl-mesh-deployment-create"></a>sfctl mesh-implementatie maken
+Hiermee maakt u een implementatie van mesh-bronnen voor servicestructuur.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --input-YAML-files [required] | Door komma's gescheiden of absolute bestands paden van alle YAML-bestanden of relatief of absoluut pad van de directory (recursieve) die YAML-bestanden bevatten. |
-| --parameters | Een relatief of absoluut pad naar een yaml-bestand of een JSON-object dat de para meters bevat die moeten worden overschreven. |
+| --input-yaml-bestanden [Vereist] | Door komma's gescheiden relatieve of absolute bestandspaden van alle yaml-bestanden of relatief of absoluut pad van de map (recursieve) die yaml-bestanden bevatten. |
+| --parameters | Een relatief of absoluut pad naar een yaml-bestand of een json-object dat de parameters bevat die moeten worden overschreven. |
 
-### <a name="global-arguments"></a>Algemene argumenten
+### <a name="global-arguments"></a>Globale argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
-| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
-| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
-| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
+| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
+| --help -h | Dit helpbericht weergeven en afsluiten. |
+| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
+| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
+| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
 
 ### <a name="examples"></a>Voorbeelden
 
-Consolideert en implementeert alle resources naar het cluster door de para meters die worden vermeld in het yaml-bestand te overschrijven.
+Consolideert en implementeert alle resources om te clusteren door de parameters in het yaml-bestand te overschrijven
 ``` 
 sfctl mesh deployment create --input-yaml-files ./app.yaml,./network.yaml --parameters  
 ./param.yaml    
 ```
 
-Consolideert en implementeert alle resources in een directory naar het cluster door de para meters die worden vermeld in het yaml-bestand te overschrijven.
+Consolideert en implementeert alle resources in een map om te clusteren door de parameters in het yaml-bestand te overschrijven
 
 ``` 
 sfctl mesh deployment create --input-yaml-files ./resources --parameters ./param.yaml
 ```
 
-Consolideert en implementeert alle resources in een directory naar een cluster door de para meters die rechtstreeks worden door gegeven als JSON-object te overschrijven
+Hiermee worden alle resources in een map geconsolideerd en geïmplementeerd om te clusteren door de parameters die rechtstreeks als json-object worden doorgegeven, over te schrijven
 ``` 
 sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_param' :    
 {'value' : 'my_value'} }"   
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Stel](service-fabric-cli.md) de service Fabric cli in.
-- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Stel de SERVICE Fabric CLI [in.](service-fabric-cli.md)
+- Meer informatie over het gebruik van de CLI van de ServiceFabric met behulp van de [voorbeeldscripts](/azure/service-fabric/scripts/sfctl-upgrade-application).

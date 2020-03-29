@@ -1,6 +1,6 @@
 ---
-title: Docker-machine gebruiken voor het maken van Linux-hosts
-description: Hierin wordt beschreven hoe u docker machine gebruikt om docker-hosts in azure te maken.
+title: Docker Machine gebruiken om Linux-hosts te maken
+description: Beschrijft hoe u Docker Machine gebruiken om Docker-hosts in Azure te maken.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.devlang: multiple
@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: c3165410809d98fd0ac4eeb515fbf30578633ef3
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78968804"
 ---
-# <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Docker machine gebruiken om hosts in azure te maken
-In dit artikel wordt beschreven hoe u [docker machine](https://docs.docker.com/machine/) gebruikt voor het maken van hosts in Azure. Met de `docker-machine` opdracht wordt een virtuele Linux-machine (VM) in azure gemaakt en vervolgens docker geïnstalleerd. U kunt uw docker-hosts vervolgens beheren in azure met behulp van dezelfde lokale hulpprogram ma's en werk stromen. Als u docker-machine in Windows 10 wilt gebruiken, moet u Linux bash gebruiken.
+# <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Docker Machine gebruiken om hosts in Azure te maken
+In dit artikel wordt beschreven hoe u [Docker Machine gebruikt](https://docs.docker.com/machine/) om hosts in Azure te maken. De `docker-machine` opdracht maakt een Virtuele Linux-machine (VM) in Azure en installeert Docker. Vervolgens u uw Docker-hosts in Azure beheren met dezelfde lokale hulpprogramma's en werkstromen. Als u docker-machine wilt gebruiken in Windows 10, moet u Linux bash gebruiken.
 
-## <a name="create-vms-with-docker-machine"></a>Vm's maken met docker-machine
-Verschaf eerst uw Azure-abonnements-ID met [AZ account show](/cli/azure/account) :
+## <a name="create-vms-with-docker-machine"></a>VM's maken met Docker Machine
+Ten eerste, het verkrijgen van uw Azure-abonnement ID met [AZ-account te tonen](/cli/azure/account) als volgt:
 
 ```azurecli
 sub=$(az account show --query "id" -o tsv)
 ```
 
-U maakt docker host-Vm's in azure met `docker-machine create` door *Azure* op te geven als het stuur programma. Zie de [documentatie van docker Azure-stuur programma](https://docs.docker.com/machine/drivers/azure/) voor meer informatie.
+U maakt Docker-hostVM's in Azure met `docker-machine create` azure als stuurprogramma. *azure* Zie de documentatie [van Docker Azure Driver](https://docs.docker.com/machine/drivers/azure/) voor meer informatie
 
-In het volgende voor beeld wordt een virtuele machine gemaakt met de naam *myVM*, op basis van het plan Standard D2 v2, wordt een gebruikers account met de naam *azureuser*gemaakt en wordt poort *80* geopend op de host-VM. Volg de aanwijzingen om u aan te melden bij uw Azure-account en docker-computer machtigingen te verlenen voor het maken en beheren van resources.
+In het volgende voorbeeld wordt een VM met de naam *myVM*gemaakt op basis van het 'Standard D2 v2'-abonnement, wordt een gebruikersaccount met de naam *azureuser*gemaakt en wordt poort *80* geopend op de host-VM. Volg alle aanwijzingen om in te loggen op uw Azure-account en geef Docker Machine machtigingen om resources te maken en te beheren.
 
 ```bash
 docker-machine create -d azure \
@@ -37,7 +37,7 @@ docker-machine create -d azure \
     myvm
 ```
 
-De uitvoer ziet er ongeveer uit als in het volgende voor beeld:
+De uitvoer lijkt op het volgende voorbeeld:
 
 ```bash
 Creating CA: /Users/user/.docker/machine/certs/ca.pem
@@ -70,8 +70,8 @@ Docker is up and running!
 To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env myvm
 ```
 
-## <a name="configure-your-docker-shell"></a>Uw docker-shell configureren
-Als u verbinding wilt maken met uw docker-host in azure, definieert u de juiste verbindings instellingen. Zoals vermeld aan het einde van de uitvoer, kunt u als volgt de verbindings gegevens voor uw docker-host weer geven: 
+## <a name="configure-your-docker-shell"></a>De shell Docker configureren
+Als u verbinding wilt maken met uw Docker-host in Azure, definieert u de juiste verbindingsinstellingen. Zoals aan het einde van de uitvoer is opgemerkt, bekijkt u de verbindingsgegevens voor uw Docker-host als volgt: 
 
 ```bash
 docker-machine env myvm
@@ -88,10 +88,10 @@ export DOCKER_MACHINE_NAME="machine"
 # eval $(docker-machine env myvm)
 ```
 
-Als u de verbindings instellingen wilt definiëren, kunt u de aanbevolen configuratie opdracht (`eval $(docker-machine env myvm)`) uitvoeren, of u kunt de omgevings variabelen hand matig instellen. 
+Als u de verbindingsinstellingen wilt definiëren, kunt`eval $(docker-machine env myvm)`u de voorgestelde configuratieopdracht () uitvoeren of de omgevingsvariabelen handmatig instellen. 
 
 ## <a name="run-a-container"></a>Een container uitvoeren
-Als u een container in actie wilt zien, kunt u een eenvoudige NGINX-webserver uitvoeren. Maak een container met `docker run` en open poort 80 voor webverkeer als volgt:
+Als u een container in actie wilt zien, u een eenvoudige NGINX-webserver uitvoeren. Maak een `docker run` container met en stel poort 80 voor webverkeer als volgt bloot:
 
 ```bash
 docker run -d -p 80:80 --restart=always nginx
@@ -110,24 +110,24 @@ Status: Downloaded newer image for nginx:latest
 675e6056cb81167fe38ab98bf397164b01b998346d24e567f9eb7a7e94fba14a
 ```
 
-Actieve containers weer geven met `docker ps`. In de volgende voorbeeld uitvoer ziet u de NGINX-container met poort 80 beschikbaar:
+Bekijk lopende `docker ps`containers met . In het volgende voorbeeld wordt weergegeven dat de NGINX-container wordt uitgevoerd met poort 80:
 
 ```bash
 CONTAINER ID    IMAGE    COMMAND                   CREATED          STATUS          PORTS                          NAMES
 d5b78f27b335    nginx    "nginx -g 'daemon off"    5 minutes ago    Up 5 minutes    0.0.0.0:80->80/tcp, 443/tcp    festive_mirzakhani
 ```
 
-## <a name="test-the-container"></a>De container testen
-U krijgt als volgt het open bare IP-adres van de docker-host:
+## <a name="test-the-container"></a>Test de container
+Verkrijg het openbare IP-adres van Docker host als volgt:
 
 
 ```bash
 docker-machine ip myvm
 ```
 
-Als u de container in actie wilt zien, opent u een webbrowser en voert u het open bare IP-adres in dat wordt vermeld in de uitvoer van de voor gaande opdracht:
+Als u de container in actie wilt zien, opent u een webbrowser en voert u het openbare IP-adres in dat is vermeld in de uitvoer van de vorige opdracht:
 
-![Ngnix-container uitvoeren](./media/docker-machine/nginx.png)
+![Lopende ngnix container](./media/docker-machine/nginx.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor voor beelden van het gebruik van docker opstellen, Zie [aan de slag met docker en samen stellen in azure](docker-compose-quickstart.md).
+Zie Aan de slag met [Docker en Compose in Azure](docker-compose-quickstart.md)voor voorbeelden over het gebruik van Docker Compose.

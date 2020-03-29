@@ -1,6 +1,6 @@
 ---
-title: Overzicht van de bibliotheek bulk-uitvoeringen Azure Cosmos DB
-description: Voer bulk bewerkingen uit in Azure Cosmos DB via bulksgewijze import-en bulk update-Api's die worden aangeboden door de bibliotheek voor bulk-uitvoerder.
+title: 'Azure Cosmos DB: overzicht van BulkExecutor-bibliotheek'
+description: Bulkbewerkingen uitvoeren in Azure Cosmos DB via bulkimport- en bulkupdate-API's die worden aangeboden door de bulkexecutorbibliotheek.
 author: tknandu
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: 9d335bcf6daf0b38e7a68ca2d40894dd64c93e40
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442158"
 ---
-# <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Overzicht van de bibliotheek bulk-uitvoeringen Azure Cosmos DB
+# <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB: overzicht van BulkExecutor-bibliotheek
  
 Azure Cosmos DB is een snelle, flexibele en wereldwijd gedistribueerde databaseservice die ontworpen is om elastisch naar ondersteuning uit te schalen: 
 
@@ -24,31 +24,31 @@ Azure Cosmos DB is een snelle, flexibele en wereldwijd gedistribueerde databases
 De BulkExecutor-bibliotheek helpt u bij het benutten van deze enorme doorvoer en opslag. De BulkExecutor-bibliotheek stelt u in staat om bulkbewerkingen in Azure Cosmos DB uit te voeren door middel van API’s voor bulksgewijs importeren en bijwerken. U kunt meer lezen over de functies van de BulkExecutor-bibliotheek in de volgende secties. 
 
 > [!NOTE] 
-> De bibliotheek voor bulk-uitvoerbaar ondersteunt nu import-en update bewerkingen en deze bibliotheek wordt alleen ondersteund door Azure Cosmos DB SQL API-en Gremlin-API-accounts.
+> Momenteel ondersteunt de bulkexecutorbibliotheek import- en updatebewerkingen en deze bibliotheek wordt alleen ondersteund door Azure Cosmos DB SQL API- en Gremlin-API-accounts.
  
-## <a name="key-features-of-the-bulk-executor-library"></a>Belangrijkste functies van de bibliotheek voor bulk-uitvoerder  
+## <a name="key-features-of-the-bulk-executor-library"></a>Belangrijkste kenmerken van de bibliotheek voor bulkuitvoerbedrijven  
  
-* Het vermindert ook de reken resources aan de client zijde die nodig zijn om de door voer te verzadigen die aan een container is toegewezen. Een single-thread toepassing die gegevens schrijft met behulp van de API voor bulk import, behaalt tien keer meer schrijf doorvoer in vergelijking met een multi thread-toepassing die parallel gegevens schrijft terwijl de CPU van de client computer wordt geverzadigd.  
+* Het vermindert aanzienlijk de client-side compute resources die nodig zijn om de doorvoer toegewezen aan een container te verzadigen. Een single threaded applicatie die gegevens schrijft met behulp van de bulk import API bereikt 10 keer meer schrijfdoorvoer in vergelijking met een multi-threaded applicatie die gegevens schrijft in parallel, terwijl het verzadigen van de client machine CPU.  
 
-* Er wordt een overzicht van de tijdrovende taken voor het schrijven van toepassings logica voor het afhandelen van de verwerkings frequentie van aanvragen, time-outs en andere tijdelijke uitzonde ringen door ze in de bibliotheek efficiënt te verwerken.  
+* Het abstraheert de vervelende taken van het schrijven van toepassingslogica om tariefbeperkende van de aanvraag, time-outs van aanvragen en andere tijdelijke uitzonderingen te verwerken door ze efficiënt in de bibliotheek te verwerken.  
 
-* Het biedt een vereenvoudigd mechanisme voor toepassingen die bulk bewerkingen uitvoeren om uit te breiden. Een exemplaar van een bulk-uitvoerder dat wordt uitgevoerd op een virtuele machine van Azure kan meer dan 500.000 RU/s gebruiken en u kunt een hogere doorvoer snelheid krijgen door extra instanties toe te voegen op afzonderlijke client-Vm's.  
+* Het biedt een vereenvoudigd mechanisme voor toepassingen die bulkbewerkingen uitvoeren om uit te schalen. Een enkele bulkexecutorinstantie die wordt uitgevoerd op een Azure VM kan meer dan 500K RU/s verbruiken en u een hogere doorvoersnelheid bereiken door extra exemplaren toe te voegen aan afzonderlijke client-VM's.  
  
-* Het kan bulksgewijs meer dan een terabyte van gegevens binnen een uur importeren met behulp van een scale-out architectuur.  
+* Het kan bulk importeren meer dan een terabyte aan gegevens binnen een uur met behulp van een scale-out architectuur.  
 
-* Bestaande gegevens in azure Cosmos-containers kunnen bulksgewijs worden bijgewerkt als patches. 
+* Het kan bestaande gegevens in Azure Cosmos-containers bulkbijwerken als patches. 
  
-## <a name="how-does-the-bulk-executor-operate"></a>Hoe werkt de bulk-uitvoerder? 
+## <a name="how-does-the-bulk-executor-operate"></a>Hoe werkt de bulkuitvoerder? 
 
-Wanneer een bulk bewerking voor het importeren of bijwerken van documenten wordt geactiveerd met een batch-entiteit, worden deze in eerste instantie in een wille keurige volg orde gerangschikt die overeenkomt met het Azure Cosmos DB partitie sleutel bereik. Binnen elke Bucket die overeenkomt met een partitie sleutel bereik, worden deze onderverdeeld in Mini batches en elke mini-batch fungeert als een Payload die aan de server zijde wordt doorgevoerd. De bibliotheek voor bulk-uitvoerder bevat optimalisaties voor gelijktijdige uitvoering van deze mini-batches binnen en tussen partitie sleutel bereik. In de volgende afbeelding ziet u hoe bulk-uitvoerder batch gegevens omzetten in verschillende partitie sleutels:  
+Wanneer een bulkbewerking voor het importeren of bijwerken van documenten wordt geactiveerd met een batch entiteiten, worden ze in eerste instantie geschud in buckets die overeenkomen met hun Azure Cosmos DB-partitiesleutelbereik. Binnen elke bucket die overeenkomt met een partitiesleutelbereik, worden ze opgesplitst in minibatches en elke minibatch fungeert als een payload die is vastgelegd aan de serverkant. De bulk executor bibliotheek heeft ingebouwde optimalisaties voor gelijktijdige uitvoering van deze mini-batches, zowel binnen als tussen partitie sleutel bereiken. Onderstaande afbeelding illustreert hoe bulkuitvoerdergegevens batches in verschillende partitiesleutels:  
 
-![Architectuur voor bulk-uitvoerder](./media/bulk-executor-overview/bulk-executor-architecture.png)
+![Architectuur voor bulkuitvoerbeleid](./media/bulk-executor-overview/bulk-executor-architecture.png)
 
-De bibliotheek bulk-uitvoerder zorgt ervoor dat de door Voer die is toegewezen aan een verzameling maximally wordt gebruikt. Het maakt gebruik van een [AIMD-mechanisme](https://tools.ietf.org/html/rfc5681) voor elk Azure Cosmos DB partitie sleutel bereik om frequentie limieten en time-outs efficiënt te kunnen afhandelen. 
+De bulk executor bibliotheek zorgt ervoor dat maximaal gebruik maken van de doorvoer toegewezen aan een verzameling. Het maakt gebruik van een [AIMD-stijl congestie controlemechanisme](https://tools.ietf.org/html/rfc5681) voor elke Azure Cosmos DB partitie sleutel bereik om efficiënt omgaan met tarief beperking en time-outs. 
 
 ## <a name="next-steps"></a>Volgende stappen 
   
-* Meer informatie over het uitproberen van de voorbeeld toepassingen die de bulk-uitvoerder bibliotheek in [.net](bulk-executor-dot-net.md) en [Java](bulk-executor-java.md)gebruiken.  
-* Bekijk de informatie over de bulk-uitvoerder-SDK en release opmerkingen in [.net](sql-api-sdk-bulk-executor-dot-net.md) en [Java](sql-api-sdk-bulk-executor-java.md).
-* De bibliotheek bulk-uitvoerder is geïntegreerd in de Cosmos DB Spark-connector, Zie [Azure Cosmos DB artikel Spark-connector](spark-connector.md) voor meer informatie.  
-* De bibliotheek bulk-uitvoerder is ook geïntegreerd in een nieuwe versie van [Azure Cosmos DB connector](https://aka.ms/bulkexecutor-adf-v2) voor Azure Data Factory om gegevens te kopiëren.
+* Meer informatie door de voorbeeldtoepassingen uit te proberen die de bibliotheek voor bulkuitvoerbestanden in [.NET](bulk-executor-dot-net.md) en [Java gebruiken](bulk-executor-java.md).  
+* Bekijk de bulk executor SDK informatie en release notes in [.NET](sql-api-sdk-bulk-executor-dot-net.md) en [Java](sql-api-sdk-bulk-executor-java.md).
+* De bulkexecutorbibliotheek is geïntegreerd in de Cosmos DB Spark-connector, zie het artikel [azure cosmos DB Spark-connector.](spark-connector.md)  
+* De bulkexecutorbibliotheek is ook geïntegreerd in een nieuwe versie van [azure cosmos DB-connector](https://aka.ms/bulkexecutor-adf-v2) voor Azure Data Factory om gegevens te kopiëren.

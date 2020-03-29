@@ -1,6 +1,6 @@
 ---
-title: Twitter-gegevens analyseren met Apache Hive-Azure HDInsight
-description: Meer informatie over het gebruik van Apache Hive en Apache Hadoop op HDInsight om onbewerkte TWitter-gegevens te transformeren in een Doorzoek bare Hive-tabel.
+title: Twitter-gegevens analyseren met Apache Hive - Azure HDInsight
+description: Meer informatie over het gebruik van Apache Hive en Apache Hadoop op HDInsight om ruwe TWitter-gegevens om te zetten in een doorzoekbare Hive-tabel.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,30 +9,30 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: f3705170be28f33e5994bd00e363dc7ec7f94642
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435621"
 ---
-# <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Twitter-gegevens analyseren met Apache Hive en Apache Hadoop op HDInsight
+# <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Analyseer Twitter-gegevens met Apache Hive en Apache Hadoop op HDInsight
 
-Meer informatie over het gebruik van [Apache Hive](https://hive.apache.org/) voor het verwerken van Twitter-gegevens. Het resultaat is een lijst met Twitter-gebruikers die de meest tweets hebben verzonden die een bepaald woord bevatten.
+Meer informatie over het gebruik van [Apache Hive](https://hive.apache.org/) om Twitter-gegevens te verwerken. Het resultaat is een lijst van Twitter-gebruikers die de meeste tweets die een bepaald woord bevatten verzonden.
 
 > [!IMPORTANT]  
-> De stappen in dit document zijn getest op HDInsight 3,6.
+> De stappen in dit document zijn getest op HDInsight 3.6.
 
 ## <a name="get-the-data"></a>De gegevens ophalen
 
-Met Twitter kunt u de gegevens voor elke Tweet ophalen als een JavaScript Object Notation (JSON)-document via een REST API. [OAuth](https://oauth.net) is vereist voor verificatie voor de API.
+Met Twitter u de gegevens voor elke tweet ophalen als een Json-document (JavaScript Object Notation) via een REST API. [OAuth](https://oauth.net) is vereist voor verificatie naar de API.
 
 ### <a name="create-a-twitter-application"></a>Een Twitter-toepassing maken
 
-1. Meld u vanuit een webbrowser aan bij [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/). Selecteer de koppeling **nu aanmelden** als u geen Twitter-account hebt.
+1. Log vanuit een webbrowser [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/)in bij . Selecteer de link Aanmelden nu als je geen **Twitter-account** hebt.
 
-2. Selecteer **nieuwe app maken**.
+2. Selecteer **Nieuwe app maken**.
 
-3. Voer de **naam**, **Beschrijving**, **website**in. U kunt een URL maken voor het veld **website** . In de volgende tabel ziet u een aantal voorbeeld waarden die moeten worden gebruikt:
+3. Voer **naam**, **beschrijving**, **website**in . U een URL voor het veld **Website** vormen. In de volgende tabel worden enkele voorbeeldwaarden weergegeven die u wilt gebruiken:
 
    | Veld | Waarde |
    |--- |--- |
@@ -40,32 +40,32 @@ Met Twitter kunt u de gegevens voor elke Tweet ophalen als een JavaScript Object
    | Beschrijving |MyHDInsightApp |
    | Website |`https://www.myhdinsightapp.com` |
 
-4. Selecteer **Ja, ik ga akkoord**en selecteer vervolgens **uw Twitter-toepassing maken**.
+4. Selecteer **Ja, ik ga akkoord**en selecteer vervolgens Uw **Twitter-toepassing maken**.
 
-5. Selecteer het tabblad **machtigingen** . De standaard machtiging is **alleen-lezen**.
+5. Selecteer het tabblad **Machtigingen.** De standaardmachtiging is **Alleen lezen**.
 
-6. Selecteer het tabblad **sleutels en toegangs tokens** .
+6. Selecteer het tabblad **Sleutels en Toegangstokens.**
 
-7. Selecteer **mijn toegangs token maken**.
+7. Selecteer **Mijn toegangstoken maken**.
 
-8. Selecteer in de rechter bovenhoek van de pagina **OAuth testen** .
+8. Selecteer **OAuth testen** in de rechterbovenhoek van de pagina.
 
-9. Schrijf de **consument sleutel**, het geheim van de **consument**, het **toegangs token**en het **toegangs token geheim**in.
+9. Schrijf **consumentensleutel**, **Consumentengeheim**, **Access-token**en **Access-tokengeheim op**.
 
 ### <a name="download-tweets"></a>Tweets downloaden
 
-Met de volgende python-code wordt 10.000 tweets van Twitter gedownload en opgeslagen in een bestand met de naam **tweets. txt**.
+De volgende Python-code downloadt 10.000 tweets van Twitter en slaat ze op in een bestand met de naam **tweets.txt**.
 
 > [!NOTE]  
-> De volgende stappen worden uitgevoerd op het HDInsight-cluster, omdat python al is geïnstalleerd.
+> De volgende stappen worden uitgevoerd op het HDInsight-cluster, omdat Python al is geïnstalleerd.
 
-1. Gebruik de [SSH-opdracht](./hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
+1. Gebruik [de ssh-opdracht](./hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer de opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Gebruik de volgende opdrachten om [Tweepy](https://www.tweepy.org/), [voortgangs balk](https://pypi.python.org/pypi/progressbar/2.2)en andere vereiste pakketten te installeren:
+1. Gebruik de volgende opdrachten om [Tweepy,](https://www.tweepy.org/) [Voortgangsbalk](https://pypi.python.org/pypi/progressbar/2.2)en andere vereiste pakketten te installeren:
 
    ```bash
    sudo apt install python-dev libffi-dev libssl-dev
@@ -84,7 +84,7 @@ Met de volgende python-code wordt 10.000 tweets van Twitter gedownload en opgesl
    nano gettweets.py
    ```
 
-1. Bewerk de onderstaande code door `Your consumer secret`, `Your consumer key`, `Your access token`en `Your access token secret` te vervangen door de relevante gegevens van uw Twitter-toepassing. Plak vervolgens de bewerkte code als de inhoud van het **gettweets.py** -bestand.
+1. Bewerk de onderstaande `Your consumer secret`code `Your consumer key` `Your access token`door `Your access token secret` het vervangen van , , en met de relevante informatie uit uw twitter applicatie. Plak vervolgens de bewerkte code als de inhoud van het **gettweets.py** bestand.
 
    ```python
    #!/usr/bin/python
@@ -141,9 +141,9 @@ Met de volgende python-code wordt 10.000 tweets van Twitter gedownload en opgesl
    ```
 
     > [!TIP]  
-    > Pas het filter onderwerpen op de laatste regel aan om de populaire tref woorden te volgen. Het gebruik van tref woorden populair op het moment dat u het script uitvoert, maakt het snel vastleggen van gegevens mogelijk.
+    > Pas het filter van onderwerpen op de laatste regel aan om populaire zoekwoorden bij te houden. Met behulp van zoekwoorden populair op het moment dat u het script uitvoert zorgt voor een snellere vastlegging van gegevens.
 
-1. Gebruik **CTRL + X**en vervolgens **Y** om het bestand op te slaan.
+1. Gebruik **Ctrl + X**en vervolgens **Y** om het bestand op te slaan.
 
 1. Gebruik de volgende opdracht om het bestand uit te voeren en tweets te downloaden:
 
@@ -151,10 +151,10 @@ Met de volgende python-code wordt 10.000 tweets van Twitter gedownload en opgesl
     python gettweets.py
     ```
 
-    Er wordt een voortgangs indicator weer gegeven. De waarde voor het aantal tweets is Maxi maal 100%.
+    Er verschijnt een voortgangsindicator. Het telt tot 100% als de tweets worden gedownload.
 
    > [!NOTE]  
-   > Als het veel tijd kost om de voortgangs balk te vervangen, moet u het filter wijzigen om trends in te houden. Wanneer er veel tweets over het onderwerp in uw filter bestaan, kunt u snel de 100-tweets ophalen die nodig is.
+   > Als het lang duurt voordat de voortgangsbalk wordt gevorderd, moet u het filter wijzigen om trending onderwerpen bij te houden. Wanneer er veel tweets over het onderwerp in uw filter, u snel de 100 tweets die nodig zijn.
 
 ### <a name="upload-the-data"></a>De gegevens uploaden
 
@@ -165,11 +165,11 @@ hdfs dfs -mkdir -p /tutorials/twitter/data
 hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 ```
 
-Met deze opdrachten worden de gegevens opgeslagen op een locatie waartoe alle knoop punten in het cluster toegang hebben.
+Met deze opdrachten worden de gegevens opgeslagen op een locatie waaralle knooppunten in het cluster toegang toe hebben.
 
 ## <a name="run-the-hiveql-job"></a>De HiveQL-taak uitvoeren
 
-1. Gebruik de volgende opdracht om een bestand te maken met [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) -instructies:
+1. Gebruik de volgende opdracht om een bestand te maken met [HiveQL-instructies:](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
    ```bash
    nano twitter.hql
@@ -283,17 +283,17 @@ Met deze opdrachten worden de gegevens opgeslagen op een locatie waartoe alle kn
    WHERE (length(json_response) > 500);
    ```
 
-1. Druk op **CTRL + X**en druk vervolgens op **j** om het bestand op te slaan.
+1. Druk op **Ctrl + X**en druk vervolgens op **Y** om het bestand op te slaan.
 
-1. Gebruik de volgende opdracht om de HiveQL uit het bestand uit te voeren:
+1. Gebruik de volgende opdracht om de HiveQL in het bestand uit te voeren:
 
    ```bash
    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i twitter.hql
    ```
 
-    Met deze opdracht voert u het bestand **Twitter. HQL** uit. Wanneer de query is voltooid, ziet u een `jdbc:hive2//localhost:10001/>` prompt.
+    Dit commando draait het **twitter.hql** bestand. Zodra de query is voltooid, ziet u een `jdbc:hive2//localhost:10001/>` prompt.
 
-1. Gebruik in de Beeline-prompt de volgende query om te controleren of de gegevens zijn geïmporteerd:
+1. Gebruik de volgende query om te controleren of gegevens zijn geïmporteerd vanuit de bijenlijnprompt:
 
    ```hiveql
    SELECT name, screen_name, count(1) as cc
@@ -303,14 +303,14 @@ Met deze opdrachten worden de gegevens opgeslagen op een locatie waartoe alle kn
    ORDER BY cc DESC LIMIT 10;
    ```
 
-    Deze query retourneert Maxi maal 10 tweets die het woord **Azure** bevatten in de tekst van het bericht.
+    Met deze query worden maximaal 10 tweets geretourneerd die het woord **Azure** in de berichttekst bevatten.
 
     > [!NOTE]  
-    > Als u het filter in het `gettweets.py` script hebt gewijzigd, vervangt u **Azure** door een van de filters die u hebt gebruikt.
+    > Als u het filter `gettweets.py` in het script hebt gewijzigd, vervangt u **Azure** door een van de filters die u hebt gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt geleerd hoe u een ongestructureerde JSON-gegevensset kunt transformeren naar een gestructureerde [Apache Hive](https://hive.apache.org/) tabel. Raadpleeg de volgende documenten voor meer informatie over Hive op HDInsight:
+U hebt geleerd hoe u een ongestructureerde JSON-gegevensset omzetten in een gestructureerde [Apache Hive-tabel.](https://hive.apache.org/) Zie de volgende documenten voor meer informatie over Hive op HDInsight:
 
 * [Aan de slag met HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Gegevens van de vlucht vertraging analyseren met HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [Vluchtvertragingsgegevens analyseren met HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)

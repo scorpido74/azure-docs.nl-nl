@@ -1,6 +1,6 @@
 ---
-title: Overzicht van de agent voor virtuele Azure-machines
-description: Overzicht van de agent voor virtuele Azure-machines
+title: Overzicht van Azure Virtual Machine Agent
+description: Overzicht van Azure Virtual Machine Agent
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: mimckitt
@@ -15,29 +15,29 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
 ms.openlocfilehash: 3d9c178201ab0c22ed4eab9cf65f7d48e59e1359
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78246128"
 ---
-# <a name="azure-virtual-machine-agent-overview"></a>Overzicht van de agent voor virtuele Azure-machines
-De Microsoft Azure-agent van de virtuele machine (VM-agent) is een veilig, licht gewicht proces dat interactie van de virtuele machine (VM) beheert met de Azure Fabric-controller. De VM-agent heeft een primaire rol bij het inschakelen en uitvoeren van extensies van virtuele Azure-machines. VM-extensies maken de configuratie van de na de implementatie van de VM mogelijk, zoals het installeren en configureren van software. VM-extensies bieden ook herstel functies, zoals het opnieuw instellen van het beheerders wachtwoord van een virtuele machine. Zonder de VM-agent van Azure kunnen VM-extensies niet worden uitgevoerd.
+# <a name="azure-virtual-machine-agent-overview"></a>Overzicht van Azure Virtual Machine Agent
+De Microsoft Azure Virtual Machine Agent (VM Agent) is een veilig, lichtgewicht proces dat de virtuele machine (VM) interactie met de Azure Fabric Controller beheert. De VM-agent heeft een primaire rol bij het in- en uitvoeren van Azure-extensies voor virtuele machines. VM-extensies maken post-deployment configuratie van VM mogelijk, zoals het installeren en configureren van software. VM-extensies maken ook herstelfuncties mogelijk, zoals het opnieuw instellen van het beheerderswachtwoord van een virtuele machine. Zonder de Azure VM-agent kunnen VM-extensies niet worden uitgevoerd.
 
-In dit artikel vindt u informatie over de installatie en detectie van de agent van de virtuele machine van Azure.
+In dit artikel wordt de installatie en detectie van de Azure Virtual Machine Agent beschreven.
 
 ## <a name="install-the-vm-agent"></a>De VM-agent installeren
 
-### <a name="azure-marketplace-image"></a>Azure Marketplace-installatie kopie
+### <a name="azure-marketplace-image"></a>Azure Marketplace-afbeelding
 
-De Azure VM-agent wordt standaard geïnstalleerd op een virtuele Windows-machine die is geïmplementeerd vanuit een Azure Marketplace-installatie kopie. Wanneer u een installatie kopie van Azure Marketplace implementeert vanuit de portal, Power shell, de opdracht regel interface of een Azure Resource Manager sjabloon, wordt de Azure VM-agent ook geïnstalleerd.
+De Azure VM-agent is standaard geïnstalleerd op elke Windows VM die is geïmplementeerd vanuit een Azure Marketplace-afbeelding. Wanneer u een Azure Marketplace-afbeelding implementeert vanuit de portal, PowerShell, Command Line Interface of een Azure Resource Manager-sjabloon, wordt ook de Azure VM Agent geïnstalleerd.
 
-Het pakket voor de Windows-gast agent is onderverdeeld in twee delen:
+Het Windows Guest Agent-pakket is opgesplitst in twee delen:
 
-- Inrichtings agent (PA)
-- Windows-gast agent (Vleugela)
+- Provisioning Agent (PA)
+- Windows Guest Agent (WinGA)
 
-Als u een virtuele machine wilt opstarten, moet u de PA geïnstalleerd hebben op de virtuele machine. de vleugels hoeven echter niet te worden geïnstalleerd. Op de implementatie tijd van de VM kunt u de Vleugela niet installeren. In het volgende voor beeld ziet u hoe u de optie *provisionVmAgent* selecteert met een Azure Resource Manager sjabloon:
+Als u een VM wilt opstarten, moet u de PA op de VM hebben geïnstalleerd, maar de WinGA hoeft niet te worden geïnstalleerd. Op VM-implementatietijd u ervoor kiezen de WinGA niet te installeren. In het volgende voorbeeld ziet u hoe u de optie *provisionVmAgent* selecteert met een azure resourcemanager-sjabloon:
 
 ```json
 "resources": [{
@@ -56,13 +56,13 @@ Als u een virtuele machine wilt opstarten, moet u de PA geïnstalleerd hebben op
 }
 ```
 
-Als u de agents niet hebt geïnstalleerd, kunt u bepaalde Azure-Services, zoals Azure Backup of Azure-beveiliging, niet gebruiken. Deze services vereisen een uitbrei ding die moet worden geïnstalleerd. Als u een virtuele machine zonder Vleugela hebt geïmplementeerd, kunt u later de meest recente versie van de agent installeren.
+Als de Agents niet zijn geïnstalleerd, u bepaalde Azure-services, zoals Azure Backup of Azure Security, niet gebruiken. Voor deze services moet een extensie worden geïnstalleerd. Als u een VM zonder de WinGA hebt geïmplementeerd, u de nieuwste versie van de agent later installeren.
 
 ### <a name="manual-installation"></a>Handmatige installatie
-De Windows VM-agent kan hand matig worden geïnstalleerd met een Windows Installer-pakket. Hand matige installatie kan nodig zijn wanneer u een aangepaste VM-installatie kopie maakt die is geïmplementeerd in Azure. Als u de Windows VM-agent hand matig wilt installeren, [downloadt u het installatie programma van de VM-agent](https://go.microsoft.com/fwlink/?LinkID=394789). De VM-agent wordt ondersteund op Windows Server 2008 R2 of hoger.
+De Windows VM-agent kan handmatig worden geïnstalleerd met een Windows-installatiepakket. Handmatige installatie kan nodig zijn wanneer u een aangepaste VM-afbeelding maakt die is geïmplementeerd in Azure. Als u de Windows VM-agent handmatig wilt installeren, [downloadt u het installatieprogramma VM-agent](https://go.microsoft.com/fwlink/?LinkID=394789). De VM-agent wordt ondersteund op Windows Server 2008 R2 en hoger.
 
 > [!NOTE]
-> Het is belang rijk dat u de AllowExtensionOperations-optie bijwerkt nadat u de VMAgent hand matig hebt geïnstalleerd op een virtuele machine die is geïmplementeerd vanuit de installatie kopie zonder ProvisionVMAgent in te scha kelen.
+> Het is belangrijk om de optie AllowExtensionOperations bij te werken nadat u de VMAgent handmatig hebt geïnstalleerd op een VM die is geïmplementeerd vanuit de afbeelding zonder dat ProvisionVMAgent is ingeschakeld.
 
 ```powershell
 $vm.OSProfile.AllowExtensionOperations = $true
@@ -70,21 +70,21 @@ $vm | Update-AzVM
 ```
 
 ### <a name="prerequisites"></a>Vereisten
-- De Windows VM-agent moet ten minste Windows Server 2008 R2 (64-bits) uitvoeren, met .NET Framework 4,0. Bekijk de [minimale versie ondersteuning voor Virtual Machine agents in azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+- De Windows VM-agent moet ten minste Windows Server 2008 R2 (64-bits) worden uitgevoerd, met de .Net Framework 4.0. Zie [Minimale versieondersteuning voor virtuele machineagents in Azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
 
-- Zorg ervoor dat uw virtuele machine toegang heeft tot het IP-adres 168.63.129.16. Zie [Wat is IP-adres 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)? voor meer informatie.
+- Zorg ervoor dat uw vm toegang heeft tot IP-adres 168.63.129.16. Zie Voor meer informatie [Wat is IP-adres 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
 
 ## <a name="detect-the-vm-agent"></a>De VM-agent detecteren
 
 ### <a name="powershell"></a>PowerShell
 
-De Azure Resource Manager Power shell-module kan worden gebruikt om informatie over virtuele Azure-machines op te halen. Als u informatie wilt weer geven over een virtuele machine, zoals de inrichtings status van de Azure VM-agent, gebruikt u [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm):
+De PowerShell-module Azure Resource Manager kan worden gebruikt om informatie over Azure VM's op te halen. Als u informatie over een vm wilt bekijken, zoals de inrichtingsstatus voor de Azure VM-agent, gebruikt u [Get-AzVM:](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)
 
 ```powershell
 Get-AzVM
 ```
 
-In de volgende gecomprimeerde voorbeeld uitvoer ziet u de eigenschap *ProvisionVMAgent* geneste in *OSProfile*. Deze eigenschap kan worden gebruikt om te bepalen of de VM-agent is geïmplementeerd op de VM:
+In de volgende verkorte voorbeelduitvoer ziet u de eigenschap *ProvisionVMAgent* die is genest in *OSProfile*. Deze eigenschap kan worden gebruikt om te bepalen of de VM-agent is geïmplementeerd op de VM:
 
 ```powershell
 OSProfile                  :
@@ -95,7 +95,7 @@ OSProfile                  :
     EnableAutomaticUpdates : True
 ```
 
-Het volgende script kan worden gebruikt om een beknopt overzicht van de VM-namen en de status van de VM-agent te retour neren:
+Het volgende script kan worden gebruikt om een beknopte lijst met VM-namen en de status van de VM-agent terug te sturen:
 
 ```powershell
 $vms = Get-AzVM
@@ -106,16 +106,16 @@ foreach ($vm in $vms) {
 }
 ```
 
-### <a name="manual-detection"></a>Hand matige detectie
+### <a name="manual-detection"></a>Handmatige detectie
 
-Wanneer u bent aangemeld bij een Windows-VM, kan taak beheer worden gebruikt voor het onderzoeken van actieve processen. Als u wilt controleren of de Azure VM-agent is, opent u taak beheer, klikt u op het tabblad *Details* en zoekt u naar een proces naam **WindowsAzureGuestAgent. exe**. De aanwezigheid van dit proces geeft aan dat de VM-agent is geïnstalleerd.
+Wanneer u bent aangemeld bij een Windows-vm, kan Taakbeheer worden gebruikt om lopende processen te onderzoeken. Als u wilt controleren of de Azure VM-agent de Azure VM-agent opent, opent u Taakbeheer, klikt u op het tabblad *Details* en zoekt u naar de procesnaam **WindowsAzureGuestAgent.exe**. De aanwezigheid van dit proces geeft aan dat de VM-agent is geïnstalleerd.
 
 
 ## <a name="upgrade-the-vm-agent"></a>De VM-agent bijwerken
-De Azure VM-agent voor Windows wordt automatisch bijgewerkt. Wanneer er nieuwe virtuele machines worden geïmplementeerd in azure, ontvangen ze de nieuwste VM-agent op de VM-inrichtings tijd. Aangepaste VM-installatie kopieën moeten hand matig worden bijgewerkt met de nieuwe VM-agent op het moment waarop de installatie kopie wordt gemaakt.
+De Azure VM-agent voor Windows wordt automatisch geüpgraded. Als nieuwe VM's worden geïmplementeerd in Azure, ontvangen ze de nieuwste VM-agent op VM-provisiontime. Aangepaste VM-afbeeldingen moeten handmatig worden bijgewerkt om de nieuwe VM-agent op te nemen tijdens het maken van afbeeldingen.
 
-## <a name="windows-guest-agent-automatic-logs-collection"></a>Verzameling automatische logboeken voor Windows-gast agent
-Windows Guest agent heeft een functie voor het automatisch verzamelen van Logboeken. Deze functie is controller door het proces CollectGuestLogs. exe. Deze bestaat zowel voor PaaS Cloud Services als IaaS Virtual Machines en het doel is om & snel een aantal Diagnostische logboeken te verzamelen van een VM, zodat deze kunnen worden gebruikt voor offline analyse. De verzamelde logboeken zijn gebeurtenis logboeken, logboeken van het besturings systeem, Azure-logboeken en bepaalde register sleutels. Er wordt een ZIP-bestand gegenereerd dat wordt overgedragen naar de host van de virtuele machine. Dit ZIP-bestand kan vervolgens worden bekeken door technische teams en ondersteunings medewerkers om problemen te onderzoeken op verzoek van de klant die eigenaar is van de virtuele machine.
+## <a name="windows-guest-agent-automatic-logs-collection"></a>Verzameling automatische logboeken van Windows Guest Agent
+Windows Guest Agent heeft een functie om automatisch een aantal logboeken te verzamelen. Deze functie wordt gecontroller door het CollectGuestLogs.exe-proces. Het bestaat voor zowel PaaS Cloud Services en IaaS Virtual Machines en het doel is om snel & automatisch verzamelen van een aantal diagnostische logs van een VM - zodat ze kunnen worden gebruikt voor offline analyse. De verzamelde logboeken zijn gebeurtenislogboeken, OS-logboeken, Azure-logboeken en enkele registersleutels. Het produceert een ZIP-bestand dat wordt overgedragen aan de host van de VM. Dit ZIP-bestand kan vervolgens worden bekeken door Engineering Teams en Support professionals om problemen te onderzoeken op verzoek van de klant die eigenaar is van de VM.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [overzicht van virtuele machines en functies van Azure](overview.md)voor meer informatie over VM-uitbrei dingen.
+Zie overzicht van [Azure-functies voor virtuele machine-extensies en -functies](overview.md)voor meer informatie over VM-extensies.

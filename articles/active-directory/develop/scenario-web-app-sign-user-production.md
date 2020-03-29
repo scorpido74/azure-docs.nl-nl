@@ -1,6 +1,6 @@
 ---
-title: Een web-app die zich aanmeldt bij gebruikers verplaatsen naar productie-micro soft Identity-platform | Azure
-description: Meer informatie over het bouwen van een web-app die wordt aangemeld bij gebruikers (verplaatsen naar productie)
+title: Web-app verplaatsen die gebruikers aanmeldt bij productie - Microsoft-identiteitsplatform | Azure
+description: Meer informatie over het bouwen van een web-app die gebruikers aantekent (overstappen naar productie)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,15 +15,15 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 6c486e59f32afd09a9934ae2298172ccb4ee2414
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76768110"
 ---
-# <a name="web-app-that-signs-in-users-move-to-production"></a>Web-app die zich aanmeldt bij gebruikers: verplaatsen naar productie
+# <a name="web-app-that-signs-in-users-move-to-production"></a>Web-app die gebruikers aantekent: Overstappen naar productie
 
-Nu u weet hoe u een token kunt ophalen om Web-Api's aan te roepen, lees dan hoe u het kunt verplaatsen naar productie.
+Nu u weet hoe u een token krijgen om web-API's te bellen, leert u hoe u deze naar productie verplaatsen.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
@@ -31,36 +31,36 @@ Nu u weet hoe u een token kunt ophalen om Web-Api's aan te roepen, lees dan hoe 
 
 ### <a name="same-site"></a>Dezelfde site
 
-Zorg ervoor dat u bekend bent met mogelijke problemen met nieuwe versies van de Chrome-browser
+Zorg ervoor dat u mogelijke problemen met nieuwe versies van de Chrome-browser begrijpt
 
 > [!div class="nextstepaction"]
-> [Wijzigingen in SameSite-cookies afhandelen in de Chrome-browser](howto-handle-samesite-cookie-changes-chrome-browser.md)
+> [Hoe om te gaan met SameSite-cookiewijzigingen in de Chrome-browser](howto-handle-samesite-cookie-changes-chrome-browser.md)
 
-### <a name="scenario-for-calling-web-apis"></a>Scenario voor het aanroepen van web-Api's
+### <a name="scenario-for-calling-web-apis"></a>Scenario voor het aanroepen van web-API's
 
-Nadat uw web-app zich heeft aangemeld bij gebruikers, kan deze web-Api's namens de aangemelde gebruikers aanroepen. Het aanroepen van web-Api's vanuit de web-app is het object van het volgende scenario:
+Nadat uw webapp zich aanmeldt bij gebruikers, kan deze namens de aangemelde gebruikers web-API's aanroepen. Het aanroepen van web-API's vanuit de web-app is het doelwit van het volgende scenario:
 
 > [!div class="nextstepaction"]
 > [Web-app die web-API's aanroept](scenario-web-app-call-api-overview.md)
 
-## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Grondige kennis: zelf studie voor ASP.NET Core web-app
+## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Deep dive: ASP.NET Core web app tutorial
 
-Meer informatie over andere manieren om gebruikers aan te melden bij deze ASP.NET Core-zelf studie: 
+Meer informatie over andere manieren om gebruikers aan te melden met deze ASP.NET Core-zelfstudie: 
 
 > [!div class="nextstepaction"]
-> [Uw web-apps inschakelen voor het aanmelden van gebruikers en het aanroepen van Api's met het micro soft-identiteits platform voor ontwikkel aars](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
+> [Uw web-apps inschakelen om gebruikers aan te melden en API's te bellen met het Microsoft-identiteitsplatform voor ontwikkelaars](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
 
-Deze progressieve zelf studie heeft productie-gereed code voor een web-app, waaronder het toevoegen van een aanmelding met accounts in:
+Deze progressieve zelfstudie heeft code die klaar is voor de productie voor een web-app, inclusief het toevoegen van aanmelding met accounts in:
 
 - Uw organisatie
 - Meerdere organisaties
-- Werk-of school accounts of persoonlijke micro soft-accounts
+- Werk- of schoolaccounts of persoonlijke Microsoft-accounts
 - [Azure AD B2C](https://aka.ms/aadb2c)
-- Nationale Clouds
+- Nationale wolken
 
-## <a name="sample-code-java-web-app"></a>Voorbeeld code: Java-Web-app
+## <a name="sample-code-java-web-app"></a>Voorbeeldcode: Java-web-app
 
-Meer informatie over de Java-Web-app in dit voor beeld op GitHub: 
+Meer informatie over de Java-webapp vindt u in dit voorbeeld op GitHub: 
 
 > [!div class="nextstepaction"]
-> [Een Java-webtoepassing die zich aanmeldt bij gebruikers met het micro soft-identiteits platform en aanroepen Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
+> [Een Java-webtoepassing die gebruikers inlogt met het Microsoft-identiteitsplatform en Microsoft Graph aanroept](https://github.com/Azure-Samples/ms-identity-java-webapp)

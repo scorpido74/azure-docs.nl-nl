@@ -1,6 +1,6 @@
 ---
-title: RECHTS in Azure Cosmos DB query taal
-description: Meer informatie over de functie voor SQL-systeem functies in Azure Cosmos DB.
+title: RECHTS in Azure Cosmos DB-querytaal
+description: Meer informatie over SQL-systeemfunctie RIGHT in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 247616d2ac4f2a5799a5896d679f6e6d5917d5a6
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302148"
 ---
-# <a name="right-azure-cosmos-db"></a>RIGHT (Azure Cosmos DB)
+# <a name="right-azure-cosmos-db"></a>RECHTS (Azure Cosmos DB)
  Retourneert het rechterdeel van een tekenreeks met het opgegeven aantal tekens.  
   
 ## <a name="syntax"></a>Syntaxis
@@ -26,24 +26,24 @@ RIGHT(<str_expr>, <num_expr>)
 ## <a name="arguments"></a>Argumenten
   
 *str_expr*  
-   Is de teken reeks expressie waaruit tekens moeten worden geëxtraheerd.  
+   Is de tekenreeksexpressie om tekens uit te extraheren.  
   
 *num_expr*  
-   Is een numerieke expressie waarmee het aantal tekens wordt opgegeven.  
+   Is een numerieke expressie die het aantal tekens opgeeft.  
   
-## <a name="return-types"></a>Retour typen
+## <a name="return-types"></a>Retourtypen
   
   Retourneert een tekenreeksexpressie.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  Het volgende voorbeeld wordt het rechterdeel van "abc" voor verschillende waarden voor lengte.  
+  In het volgende voorbeeld wordt het rechterdeel van "abc" voor verschillende lengtewaarden geretourneerd.  
   
 ```sql
 SELECT RIGHT("abc", 1) AS r1, RIGHT("abc", 2) AS r2 
 ```  
   
- Hier volgt de resultatenset.  
+ Hier is het resultaat ingesteld.  
   
 ```json
 [{"r1": "c", "r2": "bc"}]  
@@ -51,10 +51,10 @@ SELECT RIGHT("abc", 1) AS r1, RIGHT("abc", 2) AS r2
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeem functie maakt geen gebruik van de index.
+Deze systeemfunctie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Teken reeks functies Azure Cosmos DB](sql-query-string-functions.md)
-- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
+- [Tekenreeksfuncties Azure Cosmos DB](sql-query-string-functions.md)
+- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

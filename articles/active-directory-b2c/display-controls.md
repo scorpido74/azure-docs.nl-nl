@@ -1,7 +1,7 @@
 ---
-title: Verwijzing naar besturings element weer geven
+title: Referentie voor weergavebesturingselement
 titleSuffix: Azure AD B2C
-description: Verwijzing voor de besturings elementen Azure AD B2C weer geven. Gebruik weer gave-besturings elementen voor het aanpassen van de gebruikers trajecten die zijn gedefinieerd in uw aangepaste beleids regels.
+description: Referentie voor Azure AD B2C-weergavebesturingselementen. Gebruik weergavebesturingselementen voor het aanpassen van gebruikersreizen die zijn gedefinieerd in uw aangepaste beleid.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,27 +12,27 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4998fb19e42e123edd57bfcf10931d594ac4cb44
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188729"
 ---
-# <a name="display-controls"></a>Besturings elementen weer geven
+# <a name="display-controls"></a>Besturingselementen weergeven
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Een **Weergave besturings element** is een gebruikers interface-element met speciale functionaliteit en interactie met de Azure Active Directory B2C (Azure AD B2C) back-end-service. Hiermee kan de gebruiker acties uitvoeren op de pagina die een [validatie technische profiel](validation-technical-profile.md) aan de back-end aanroept. Besturings elementen voor weer gave worden op de pagina weer gegeven en er wordt verwezen door een [zelf-bevestigd technisch profiel](self-asserted-technical-profile.md).
+Een **weergavebesturingselement** is een element van de gebruikersinterface dat speciale functionaliteit heeft en interageert met de Azure Active Directory B2C (Azure AD B2C) back-endservice. Hiermee kan de gebruiker acties uitvoeren op de pagina die een [validatietechnisch profiel](validation-technical-profile.md) aan de achterkant aanroepen. Display besturingselementen worden weergegeven op de pagina en worden verwezen door een [zelf-beweerde technisch profiel](self-asserted-technical-profile.md).
 
-In de volgende afbeelding ziet u een zelf-bevestigde aanmeldings pagina met twee besturings elementen voor weer gave waarmee een primair en secundair e-mail adres wordt gevalideerd.
+De volgende afbeelding illustreert een zelfverklaarde aanmeldingspagina met twee besturingselementen die een primair en secundair e-mailadres valideren.
 
-![Voor beeld van weer gave-besturings element](media/display-controls/display-control-email.png)
+![Voorbeeld van gerenderd weergavebesturingselement](media/display-controls/display-control-email.png)
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
- In de sectie [meta gegevens](self-asserted-technical-profile.md#metadata) van een niet [-bevestigd technisch profiel](self-asserted-technical-profile.md)moet de [ContentDefinition](contentdefinitions.md) waarnaar wordt verwezen, `DataUri` instellen op pagina-contract versie 2.0.0 of hoger. Bijvoorbeeld:
+ In de sectie [Metagegevens](self-asserted-technical-profile.md#metadata) van een [zelfgeclaimd technisch profiel](self-asserted-technical-profile.md) `DataUri` moet de verwezen [ContentDefinition](contentdefinitions.md) zijn ingesteld op paginacontractversie 2.0.0 of hoger. Bijvoorbeeld:
 
 ```XML
 <ContentDefinition Id="api.selfasserted">
@@ -42,29 +42,29 @@ In de volgende afbeelding ziet u een zelf-bevestigde aanmeldings pagina met twee
   ...
 ```
 
-## <a name="defining-display-controls"></a>Besturings elementen voor weer gave definiëren
+## <a name="defining-display-controls"></a>Weergavebesturingselementen definiëren
 
-Het element **DisplayControl** bevat de volgende kenmerken:
+Het **element DisplayControl** bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Id | Ja | Een id die wordt gebruikt voor het weergave besturings element. Hiernaar kan worden [verwezen](#referencing-display-controls). |
-| UserInterfaceControlType | Ja | Het type van het weergave besturings element. Momenteel wordt de [VerificationControl](display-control-verification.md) ondersteund |
+| Id | Ja | Een id die wordt gebruikt voor het weergavebesturingselement. Er kan [naar](#referencing-display-controls)verwezen worden. |
+| UserInterfaceControlType | Ja | Het type weergavebesturingselement. Momenteel wordt [VerificationControl](display-control-verification.md) ondersteund |
 
-Het element **DisplayControl** bevat de volgende elementen:
+Het **element DisplayControl** bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Voorvallen | Beschrijving |
 | ------- | ----------- | ----------- |
-| InputClaims | 0:1 | **InputClaims** worden gebruikt om vooraf de waarde in te vullen van de claims die moeten worden verzameld van de gebruiker. |
-| DisplayClaims | 0:1 | **DisplayClaims** worden gebruikt om claims weer te geven die van de gebruiker moeten worden verzameld. |
-| OutputClaims | 0:1 | **OutputClaims** worden gebruikt om claims weer te geven die tijdelijk moeten worden opgeslagen voor dit **besturings element**. |
-| Acties | 0:1 | **Acties** worden gebruikt om de technische profielen voor validatie weer te geven die moeten worden aangeroepen voor gebruikers acties die worden uitgevoerd op de front-end. |
+| Invoerclaims | 0:1 | **InputClaims** worden gebruikt om de waarde van de claims die van de gebruiker moeten worden verzameld vooraf in te vullen. |
+| Weergaveclaims | 0:1 | **DisplayClaims** worden gebruikt om claims weer te geven die van de gebruiker moeten worden verzameld. |
+| Uitvoerclaims | 0:1 | **Uitvoerclaims** worden gebruikt om claims weer te geven die tijdelijk zijn opgeslagen voor deze **DisplayControl**. |
+| Acties | 0:1 | **Acties** worden gebruikt om de validatietechnische profielen weer te geven die u wilt aanroepen voor acties van gebruikers die aan de front-end plaatsvinden. |
 
-### <a name="input-claims"></a>Invoer claims
+### <a name="input-claims"></a>Invoerclaims
 
-In een besturings element voor weer gave kunt u **InputClaims** -elementen gebruiken om de waarde van claims die van de gebruiker op de pagina moeten worden verzameld vooraf in te vullen. Alle **InputClaimsTransformations** kunnen worden gedefinieerd in het door uzelf beweringen technische profiel dat verwijst naar dit weergave besturings element.
+In een weergavebesturingselement u **inputclaims-elementen** gebruiken om de waarde van claims die van de gebruiker op de pagina moeten worden verzameld, vooraf in te vullen. **Alle InputClaimsTransformations** kunnen worden gedefinieerd in het zelfverklaarde technische profiel dat verwijst naar dit weergavebesturingselement.
 
-In het volgende voor beeld wordt het e-mail adres dat is gecontroleerd met het adres dat al aanwezig is, vooraf ingevuld.
+In het volgende voorbeeld wordt vooraf het e-mailadres ingevuld dat moet worden geverifieerd met het adres dat al aanwezig is.
 
 ```XML
 <DisplayControl Id="emailControl" UserInterfaceControlType="VerificationControl">
@@ -74,31 +74,31 @@ In het volgende voor beeld wordt het e-mail adres dat is gecontroleerd met het a
   ...
 ```
 
-### <a name="display-claims"></a>Claims weer geven
+### <a name="display-claims"></a>Claims weergeven
 
-Elk type weergave besturings element vereist een andere set weer gave claims, [uitvoer claims](#output-claims)en [acties](#display-control-actions) die moeten worden uitgevoerd.
+Elk type weergavebesturingselement vereist een andere set weergaveclaims, [uitvoerclaims](#output-claims)en [acties die](#display-control-actions) moeten worden uitgevoerd.
 
-Net als de **weer gave-claims** die in een niet [-bevestigd technisch profiel](self-asserted-technical-profile.md#display-claims)zijn gedefinieerd, vertegenwoordigen de weer gave claims de claims die moeten worden verzameld van de gebruiker in het besturings element voor weer gave. Voor het element **claim** type waarnaar wordt verwezen, moet het **UserInputType** -element worden opgegeven voor een gebruikers invoer die wordt ondersteund door Azure AD B2C, zoals `TextBox` of `DropdownSingleSelect`. Als een aanvraag waarde voor weer geven vereist is voor een **actie**, stelt u het **vereiste** kenmerk in op `true` om ervoor te zorgen dat de gebruiker een waarde voor die specifieke weergave claim opgeeft.
+Net als bij de **weergaveclaims** die zijn gedefinieerd in een [zelfgeclaimd technisch profiel,](self-asserted-technical-profile.md#display-claims)vertegenwoordigen de weergaveclaims de claims die moeten worden verzameld van de gebruiker binnen het weergavebesturingselement. Het **element ClaimType** waarnaar wordt verwezen, moet het element **UserInputType** opgeven voor een `TextBox` `DropdownSingleSelect`gebruikersinvoertype dat wordt ondersteund door Azure AD B2C, zoals of . Als een weergaveclaimwaarde vereist is door **Required** een `true` **actie,** stelt u het kenmerk Vereist in om de gebruiker te dwingen een waarde voor die specifieke weergaveclaim te geven.
 
-Bepaalde weergave claims zijn vereist voor bepaalde typen weergave besturings elementen. **VerificationCode** is bijvoorbeeld vereist voor het besturings element weer gave van het type **VerificationControl**. Gebruik het kenmerk **ControlClaimType** om op te geven welke DisplayClaim is aangewezen voor die vereiste claim. Bijvoorbeeld:
+Bepaalde weergaveclaims zijn vereist voor bepaalde typen weergavebeheer. **Verificatiecode** is bijvoorbeeld vereist voor het weergavebesturingselement van type **VerificationControl**. Gebruik het kenmerk **ControlClaimType** om op te geven welke DisplayClaim is aangewezen voor die vereiste claim. Bijvoorbeeld:
 
 ```XML
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
 ```
 
-### <a name="output-claims"></a>Uitvoer claims
+### <a name="output-claims"></a>Outputclaims
 
-De **uitvoer claims** van een besturings element voor weer gave worden niet naar de volgende Orchestration-stap verzonden. Ze worden tijdelijk alleen opgeslagen voor de huidige sessie voor weergave beheer. Deze tijdelijke claims kunnen worden gedeeld tussen de verschillende acties van hetzelfde weergave besturings element.
+De **uitvoerclaims** van een weergavebesturingselement worden niet naar de volgende orchestration-stap verzonden. Ze worden tijdelijk alleen opgeslagen voor de huidige weergavecontrolesessie. Deze tijdelijke claims kunnen worden gedeeld tussen de verschillende acties van hetzelfde weergavebesturingselement.
 
-Als u de uitvoer claims wilt samen stellen aan de volgende indelings stap, gebruikt u de **OutputClaims** van het daad werkelijke zelf-beweringen technische profiel dat verwijst naar dit weergave besturings element.
+Als u de uitvoerclaims naar de volgende orchestration-stap wilt opborrelen, gebruikt u de **uitvoerclaims** van het werkelijke zelfverklaarde technische profiel dat verwijst naar dit weergavebesturingselement.
 
-### <a name="display-control-actions"></a>Besturings acties weer geven
+### <a name="display-control-actions"></a>Controleacties weergeven
 
-De **acties** van een weergave besturings element zijn procedures die zich voordoen in de Azure AD B2C back-end wanneer een gebruiker een bepaalde actie uitvoert aan de client zijde (de browser). Bijvoorbeeld de validaties die moeten worden uitgevoerd wanneer de gebruiker een knop op de pagina selecteert.
+De **acties** van een weergavebesturingselement zijn procedures die plaatsvinden in de Azure AD B2C back-end wanneer een gebruiker een bepaalde actie uitvoert aan de clientzijde (de browser). Bijvoorbeeld de validaties die moeten worden uitgevoerd wanneer de gebruiker een knop op de pagina selecteert.
 
-Een actie definieert een lijst met **technische profielen voor validatie**. Ze worden gebruikt voor het valideren van enkele of alle weer gave claims van het besturings element voor weer gave. Het validatie-technische profiel valideert de gebruikers invoer en retourneert mogelijk een fout naar de gebruiker. U kunt **ContinueOnError**, **ContinueOnSuccess**en **voor waarden** in de actie voor het weer geven van besturings elementen gebruiken die vergelijkbaar zijn met de manier waarop ze worden gebruikt bij [validatie van technische profielen](validation-technical-profile.md) in een zelf bevestigd technisch profiel.
+Een actie definieert een lijst met **technische validatieprofielen**. Ze worden gebruikt voor het valideren van sommige of alle weergaveclaims van het weergavebesturingselement. Het technische validatieprofiel valideert de gebruikersinvoer en kan een fout naar de gebruiker retourneren. U **ContinueOnError,** **ContinueOnSuccess**en **Randvoorwaarden** in de displaycontrol Action gebruiken, vergelijkbaar met de manier waarop ze worden gebruikt in [technische validatieprofielen](validation-technical-profile.md) in een zelf geclaimd technisch profiel.
 
-In het volgende voor beeld wordt een code verzonden via e-mail of SMS op basis van de selectie van de **mfaType** claim van de gebruiker.
+In het volgende voorbeeld wordt een code per e-mail of sms gestuurd op basis van de selectie van de **mfaType-claim** door de gebruiker.
 
 ```XML
 <Action Id="SendCode">
@@ -125,9 +125,9 @@ In het volgende voor beeld wordt een code verzonden via e-mail of SMS op basis v
 </Action>
 ```
 
-## <a name="referencing-display-controls"></a>Verwijzen naar weergave besturings elementen
+## <a name="referencing-display-controls"></a>Weergavebesturingselementen verwijzen
 
-Er wordt verwezen naar weer gave-besturings elementen in de [weer gave claims](self-asserted-technical-profile.md#display-claims) van het [zelf-beweringen technische profiel](self-asserted-technical-profile.md).
+Display besturingselementen worden verwezen in de [display claims](self-asserted-technical-profile.md#display-claims) van de [self-asserted technische profiel](self-asserted-technical-profile.md).
 
 Bijvoorbeeld:
 

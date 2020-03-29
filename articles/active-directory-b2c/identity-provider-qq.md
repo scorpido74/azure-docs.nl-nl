@@ -1,6 +1,6 @@
 ---
-title: Stel registratie in en meld u aan met een QQ-account met behulp van Azure Active Directory B2C
-description: Gebruik Azure Active Directory B2C om u aan te melden en u aan te melden bij klanten met QQ-accounts in uw toepassingen.
+title: Aanmelden en aanmelden met een QQ-account instellen met Azure Active Directory B2C
+description: Geef aanmeldingen en aanmelding aan klanten met QQ-accounts in uw toepassingen met Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,47 +11,47 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b0f15124c64e5cca54112987d486ddadaca79452
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187984"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Stel registratie in en meld u aan met een QQ-account met behulp van Azure Active Directory B2C
+# <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Aanmelden en aanmelden met een QQ-account instellen met Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="create-a-qq-application"></a>Een QQ-toepassing maken
 
-Als u een QQ-account wilt gebruiken als een id-provider in Azure Active Directory B2C (Azure AD B2C), moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen QQ-account hebt, kunt u zich aanmelden bij [https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033).
+Als u een QQ-account wilt gebruiken als identiteitsprovider in Azure Active Directory B2C (Azure AD B2C), moet u een toepassing maken in uw tenant die deze vertegenwoordigt. Als je nog geen QQ-account hebt, kun [https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033)je je aanmelden bij .
 
-### <a name="register-for-the-qq-developer-program"></a>Registreren voor het QQ-ontwikkelaars programma
+### <a name="register-for-the-qq-developer-program"></a>Registreren voor het QQ-ontwikkelaarsprogramma
 
-1. Meld u aan bij de [QQ-ontwikkelaars Portal](http://open.qq.com) met uw QQ-account referenties.
-1. Nadat u zich hebt aangemeld, gaat u naar [https://open.qq.com/reg](https://open.qq.com/reg) om u als ontwikkelaar te registreren.
-1. Selecteer**个人**(afzonderlijke ontwikkelaar).
-1. Voer de vereiste gegevens in en selecteer**下一步**(volgende stap).
-1. Voltooi het e-mail verificatie proces. Nadat u zich hebt geregistreerd als ontwikkelaar, moet u een paar dagen wachten.
+1. Meld u aan bij de [QQ-ontwikkelaarsportal](http://open.qq.com) met uw QQ-accountreferenties.
+1. Ga na het [https://open.qq.com/reg](https://open.qq.com/reg) aanmelden naar om jezelf te registreren als ontwikkelaar.
+1. Selecteer **??(individuele** ontwikkelaar).
+1. Voer de vereiste informatie in en selecteer **de** volgende stap.
+1. Voltooi het verificatieproces voor e-mail. U moet een paar dagen wachten om te worden goedgekeurd nadat u zich als ontwikkelaar hebt geregistreerd.
 
 ### <a name="register-a-qq-application"></a>Een QQ-toepassing registreren
 
-1. Ga naar [https://connect.qq.com/index.html](https://connect.qq.com/index.html).
-1. Selecteer**应用管理**(app Management).
-1. Selecteer**创建应用**(app maken) en voer de vereiste gegevens in.
-1. Geef `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp` op in**授权回调域**(call back-URL). Als uw `tenant_name` bijvoorbeeld contoso is, stelt u de URL in op `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
-1. Selecteer**创建应用**(app maken).
-1. Selecteer op de pagina Bevestiging**应用管理**(app Management) om terug te keren naar de pagina voor het beheren van apps.
-1. Selecteer**查看**(weer geven) naast de app die u hebt gemaakt.
-1. Selecteer**修改**(bewerken).
-1. Kopieer de **App-ID** en **app-sleutel**. U hebt beide waarden nodig om de ID-provider toe te voegen aan uw Tenant.
+1. Ga [https://connect.qq.com/index.html](https://connect.qq.com/index.html)naar.
+1. Selecteer **het beheer van de** app.
+1. Selecteer de optie **(app maken)** en voer de vereiste gegevens in.
+1. Voer `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp` de URL (callback) **in.** Als uw `tenant_name` contoso bijvoorbeeld is, stelt `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`u de URL in als .
+1. Selecteer de app (app **maken).**
+1. Selecteer op de bevestigingspagina het beheer **van de** app om terug te keren naar de pagina appbeheer.
+1. Selecteer **de optie** (weergave) naast de app die u hebt gemaakt.
+1. Selecteer **??**
+1. Kopieer de **app-id** en **app-sleutel**. U hebt beide waarden nodig om de identiteitsprovider aan uw tenant toe te voegen.
 
-## <a name="configure-qq-as-an-identity-provider"></a>QQ configureren als een id-provider
+## <a name="configure-qq-as-an-identity-provider"></a>QQ configureren als identiteitsprovider
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
-1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
-1. Selecteer **id-providers**en selecteer vervolgens **QQ (preview)** .
-1. Voer een **naam**in. Bijvoorbeeld *QQ*.
-1. Voer voor de **client-id**de app-id in van de QQ-toepassing die u eerder hebt gemaakt.
-1. Voor het **client geheim**voert u de app-sleutel in die u hebt vastgelegd.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Selecteer het pictogram **Directory + Abonnement** op de werkbalk van de portal en selecteer vervolgens de map met uw Azure AD B2C-tenant.
+1. Zoek en selecteer **Azure AD B2C**in de Azure-portal .
+1. Selecteer **Identiteitsproviders**en selecteer **QQ (Voorbeeld)**.
+1. Voer een **naam**in . Bijvoorbeeld *QQ*.
+1. Voer voor de **client-id**de APP-id in van de QQ-toepassing die u eerder hebt gemaakt.
+1. Voer **voor**het geheim van de client de APP-sleutel in die u hebt opgenomen.
 1. Selecteer **Opslaan**.

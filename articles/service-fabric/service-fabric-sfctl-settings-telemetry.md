@@ -1,47 +1,47 @@
 ---
-title: Azure Service Fabric CLI-sfctl-instellingen telemetrie
-description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het configureren van sfctl-telemetrie.
+title: Azure Service Fabric CLI- sfctl-instellingen telemetrie
+description: Meer informatie over sfctl, de opdrachtregelinterface van Azure Service Fabric. Bevat een lijst met opdrachten voor het configureren van sfctl-telemetrie.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 6af5fa944ef399756f9e890ddd77a7f5f32e2bfb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76903026"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl settings telemetry
-Telemetrie-instellingen configureren die lokaal zijn voor dit exemplaar van sfctl.
+Configureer telemetrie-instellingen lokaal naar dit exemplaar van sfctl.
 
-Sfctl-telemetrie verzamelt opdracht naam zonder opgegeven para meters of hun waarden, Sfctl versie, type besturings systeem, python-versie, het slagen of mislukken van de opdracht, het fout bericht dat wordt geretourneerd.
+Sfctl telemetrie verzamelt opdrachtnaam zonder parameters opgegeven of hun waarden, sfctl versie, OS type, python versie, het succes of falen van de opdracht, het foutbericht geretourneerd.
 
 ## <a name="commands"></a>Opdrachten
 
 |Opdracht|Beschrijving|
 | --- | --- |
-| set-telemetrie | Telemetrie in-of uitschakelen. |
+| set-telemetrie | Telemetrie in- of uitschakelen. |
 
-## <a name="sfctl-settings-telemetry-set-telemetry"></a>sfctl-instellingen telemetrie-set-telemetrie
-Telemetrie in-of uitschakelen.
+## <a name="sfctl-settings-telemetry-set-telemetry"></a>sfctl-instellingen telemetrie
+Telemetrie in- of uitschakelen.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
 | --uit | Schakel telemetrie uit. |
-| --aan | Schakel telemetrie in. Dit is de standaardwaarde. |
+| --on | Schakel telemetrie in. Dit is de standaardwaarde. |
 
-### <a name="global-arguments"></a>Algemene argumenten
+### <a name="global-arguments"></a>Globale argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
-| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
-| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
-| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
+| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
+| --help -h | Dit helpbericht weergeven en afsluiten. |
+| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
+| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
+| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
 
 ### <a name="examples"></a>Voorbeelden
 
@@ -59,5 +59,5 @@ sfctl settings telemetry set_telemetry --on
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Stel](service-fabric-cli.md) de service Fabric cli in.
-- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Stel de SERVICE Fabric CLI [in.](service-fabric-cli.md)
+- Meer informatie over het gebruik van de CLI van de ServiceFabric met behulp van de [voorbeeldscripts](/azure/service-fabric/scripts/sfctl-upgrade-application).

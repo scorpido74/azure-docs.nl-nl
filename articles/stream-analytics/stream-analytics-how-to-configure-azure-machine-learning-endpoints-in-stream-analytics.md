@@ -1,6 +1,6 @@
 ---
-title: Machine Learning-eindpunten in Azure Stream Analytics gebruiken
-description: In dit artikel wordt beschreven hoe u Machine taal door de gebruiker gedefinieerde functies gebruiken in Azure Stream Analytics.
+title: Machine Learning-eindpunten gebruiken in Azure Stream Analytics
+description: In dit artikel wordt beschreven hoe u door de gebruiker van Machinelanguage gedefinieerde functies gebruikt in Azure Stream Analytics.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
@@ -8,46 +8,46 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.openlocfilehash: 239955025f21d8679cbcf0bbfe68f9070f0217c6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426187"
 ---
-# <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Integratie van Azure Machine Learning Studio (klassiek) in Stream Analytics (preview-versie)
-Stream Analytics ondersteunt door de gebruiker gedefinieerde functies die naar Azure Machine Learning Studio (klassieke) eind punten aanroepen. REST-API-ondersteuning voor deze functie wordt beschreven in de [REST-API voor Stream Analytics-bibliotheek](https://msdn.microsoft.com/library/azure/dn835031.aspx). In dit artikel bevat aanvullende informatie die nodig zijn voor een succesvolle implementatie van deze mogelijkheid in Stream Analytics. Een zelfstudie is ook geboekt en is beschikbaar [hier](stream-analytics-machine-learning-integration-tutorial.md).
+# <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Azure Machine Learning Studio (klassieke) integratie in Stream Analytics (Preview)
+Stream Analytics ondersteunt door de gebruiker gedefinieerde functies die oproepen tot Azure Machine Learning Studio (klassieke) eindpunten. REST API-ondersteuning voor deze functie wordt beschreven in de [STREAM Analytics REST API-bibliotheek.](https://msdn.microsoft.com/library/azure/dn835031.aspx) Dit artikel bevat aanvullende informatie die nodig is voor een succesvolle implementatie van deze mogelijkheid in Stream Analytics. Een tutorial is ook gepost en is [hier](stream-analytics-machine-learning-integration-tutorial.md)beschikbaar .
 
-## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>Overzicht: Azure Machine Learning Studio (klassiek) terminologie
-Microsoft Azure Machine Learning Studio (klassiek) biedt een hulp programma dat u kunt gebruiken om predictive analytics oplossingen voor uw gegevens te bouwen, te testen en te implementeren. Dit hulp programma wordt de *Azure machine learning Studio (klassiek)* genoemd. De studio wordt gebruikt om te communiceren met de Machine Learning-resources eenvoudig bouwen, testen en herhalen op uw ontwerp. Deze resources en de bijbehorende definities staan hieronder.
+## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>Overzicht: Azure Machine Learning Studio (klassieke) terminologie
+Microsoft Azure Machine Learning Studio (klassiek) biedt een samenwerkingstool voor slepen en neerzetten die u gebruiken om voorspellende analyseoplossingen op uw gegevens te bouwen, testen en implementeren. Deze tool wordt de *Azure Machine Learning Studio (klassiek) genoemd.* De studio wordt gebruikt om te communiceren met de Machine Learning-bronnen en eenvoudig uw ontwerp te bouwen, te testen en te herhalen. Deze bronnen en hun definities zijn hieronder.
 
-* **Werkruimte**: de *werkruimte* is een container met alle andere Machine Learning-resources samen in een container voor controle en beheer.
-* **Experiment**: *experimenten* zijn gemaakt door de datawetenschappers gebruikmaken van gegevenssets en een machine learning-model te trainen.
-* **Eind punt**: *eind punten* zijn het Azure machine learning Studio (klassiek)-object dat wordt gebruikt om functies als invoer te gebruiken, een opgegeven machine learning model toe te passen en de gescoorde uitvoer te retour neren.
-* **Scoring-Webservice**: A *scoring-webservice* is een verzameling van eindpunten, zoals hierboven vermeld.
+* **Werkruimte:** de *werkruimte* is een container die alle andere Machine Learning-resources bij elkaar houdt in een container voor beheer en beheer.
+* **Experiment**: *Experimenten* worden gemaakt door gegevenswetenschappers om datasets te gebruiken en een machine learning-model te trainen.
+* **Eindpunt:** *Eindpunten* zijn het Azure Machine Learning Studio -object (klassiek) object dat wordt gebruikt om functies als invoer te gebruiken, een opgegeven machine learning-model toe te passen en de uitvoer van retourpunten toe te passen.
+* **Webservice scoren**: Een *scorende webservice* is een verzameling eindpunten zoals hierboven vermeld.
 
-Elk eindpunt heeft API's voor Batchuitvoering en synchrone uitvoering. Stream Analytics maakt gebruik van synchrone uitvoering. De specifieke service heet een [aanvraag/antwoord service](../machine-learning/studio/consume-web-services.md) in azure machine learning Studio (klassiek).
+Elk eindpunt heeft api's voor batchuitvoering en synchrone uitvoering. Stream Analytics maakt gebruik van synchrone uitvoering. De specifieke service wordt een [request/response-service](../machine-learning/studio/consume-web-services.md) genoemd in Azure Machine Learning Studio (klassiek).
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Machine Learning-resources die nodig zijn voor Stream Analytics-taken
-Taak voor de doeleinden van Stream Analytics verwerkt, een verzoek/reactie-eindpunt, een [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md), en een swagger-definitie zijn alle die nodig zijn voor de uitvoering is geslaagd. Stream Analytics is een extra eindpunt dat de swagger-eindpunt-url samenstelt, zoekt de interface en retourneert een standaard UDF-definitie voor de gebruiker.
+Voor de verwerking van de taak van Stream Analytics zijn een eindpunt voor aanvragen/antwoorden, een [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md)en een branie-definitie allemaal nodig voor een succesvolle uitvoering. Stream Analytics heeft een extra eindpunt dat de url voor branieeindpunt construeert, de interface opzoekt en een standaard UDF-definitie naar de gebruiker retourneert.
 
-## <a name="configure-a-stream-analytics-and-machine-learning-udf-via-rest-api"></a>Configureren van een Stream Analytics en Machine Learning-UDF via REST-API
-U kunt de taak voor het aanroepen van functies van de Azure machinetaal configureren met behulp van REST-API's. De stappen zijn als volgt:
+## <a name="configure-a-stream-analytics-and-machine-learning-udf-via-rest-api"></a>Een Stream Analytics en Machine Learning UDF configureren via REST API
+Door REST API's te gebruiken, u uw taak configureren om Azure Machine Language-functies aan te roepen. De stappen zijn als volgt:
 
 1. Een Stream Analytics-taak maken
-2. Invoer definiëren
-3. Uitvoer definiëren
-4. Een door de gebruiker gedefinieerde functie (UDF's) maken
-5. Schrijven van een Stream Analytics-transformatie die de UDF-aanroepen
+2. Een invoer definiëren
+3. Een uitvoer definiëren
+4. Een door de gebruiker gedefinieerde functie (UDF) maken
+5. Schrijf een Stream Analytics-transformatie die de UDF aanroept
 6. Taak starten
 
-## <a name="creating-a-udf-with-basic-properties"></a>Het maken van een UDF met basiseigenschappen
-Met de volgende voorbeeld code wordt bijvoorbeeld een scalaire UDF gemaakt met de naam *newudf* die aan een Azure machine learning Studio (klassiek)-eind punt is gekoppeld. Houd er rekening mee dat de *eindpunt* (service-URI) kunt u vinden op de API help-pagina voor de gekozen service en de *apiKey* vindt u op de hoofdpagina van Services.
+## <a name="creating-a-udf-with-basic-properties"></a>Een UDF maken met basiseigenschappen
+Als voorbeeld maakt de volgende voorbeeldcode een scalaire UDF met de naam *newudf* die wordt gekoppeld aan een Azure Machine Learning Studio (klassiek) eindpunt. Houd er rekening mee dat het *eindpunt* (service URI) te vinden is op de API-helppagina voor de gekozen service en dat de *apiKey* te vinden is op de hoofdpagina van Services.
 
 ```
     PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
 ```
 
-Voorbeeld van de aanvraag hoofdtekst:
+Voorbeeldaanvraaginstantie:
 
 ```json
     {
@@ -67,14 +67,14 @@ Voorbeeld van de aanvraag hoofdtekst:
     }
 ```
 
-## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>Aanroep RetrieveDefaultDefinition-eindpunt voor standaard UDF
-Zodra het basisproject UDF is gemaakt wordt de volledige definitie van de UDF nodig. Het RetrieveDefaultDefinition-eind punt helpt u de standaard definitie te verkrijgen voor een scalaire functie die is gebonden aan een Azure Machine Learning Studio (klassiek)-eind punt. De nettolading van de onderstaande moet u de standaard UDF-definitie voor een scalaire functie die is gekoppeld aan een Azure Machine Learning-eindpunt ophalen. Hierin worden de werkelijke eindpunt niet opgegeven als deze al is opgegeven tijdens de PUT-aanvraag. Stream Analytics roept het eindpunt dat is opgegeven in de aanvraag als het expliciet is opgegeven. Als deze wordt gebruikt met een oorspronkelijk waarnaar wordt verwezen. De UDF-wordt één parameter (een zin) en retourneert één uitvoer van het type tekenreeks tekenreeks hier wat het label 'gevoel' voor de zin dat aangeeft.
+## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>Call RetrieveDefaultDefinition-eindpunt voor standaard UDF
+Zodra het skelet UDF is gemaakt de volledige definitie van de UDF nodig is. Met het eindpunt RetrieveDefaultDefinition u de standaarddefinitie krijgen voor een scalaire functie die is gekoppeld aan een Azure Machine Learning Studio (klassiek) eindpunt. De payload hieronder vereist dat u de standaard UDF-definitie krijgt voor een scalaire functie die is gekoppeld aan een Azure Machine Learning-eindpunt. Het geeft niet het werkelijke eindpunt op, omdat het al is opgegeven tijdens PUT-aanvraag. Stream Analytics roept het eindpunt aan dat in de aanvraag wordt opgegeven als het expliciet wordt verstrekt. Anders gebruikt het oorspronkelijk verwezen. Hier neemt de UDF een enkele tekenreeksparameter (een zin) en retourneert een enkele uitvoer van typetekenreeks die het label 'sentiment' voor die zin aangeeft.
 
 ```
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>
 ```
 
-Voorbeeld van de aanvraag hoofdtekst:
+Voorbeeldaanvraaginstantie:
 
 ```json
     {
@@ -86,7 +86,7 @@ Voorbeeld van de aanvraag hoofdtekst:
     }
 ```
 
-Een voorbeeld van uitvoer van deze wilt zoekt u naar iets dat hieronder.
+Een voorbeeld output van deze zou er iets als hieronder.
 
 ```json
     {
@@ -126,14 +126,14 @@ Een voorbeeld van uitvoer van deze wilt zoekt u naar iets dat hieronder.
     }
 ```
 
-## <a name="patch-udf-with-the-response"></a>Patch UDF met de reactie
-De UDF moet nu worden gevuld met het vorige antwoord, zoals hieronder wordt weergegeven.
+## <a name="patch-udf-with-the-response"></a>Patch UDF met de respons
+Nu moet de UDF worden gepatcht met het vorige antwoord, zoals hieronder wordt weergegeven.
 
 ```
 PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
 ```
 
-Aanvraagtekst (uitvoer van de RetrieveDefaultDefinition):
+Aanvraaghoofdtekst (uitvoer van RetrieveDefaultDefinition):
 
 ```json
     {
@@ -173,8 +173,8 @@ Aanvraagtekst (uitvoer van de RetrieveDefaultDefinition):
     }
 ```
 
-## <a name="implement-stream-analytics-transformation-to-call-the-udf"></a>Stream Analytics-transformatie om aan te roepen de UDF implementeren
-Nu de UDF (hier met de naam scoreTweet) op te vragen voor elke invoer gebeurtenis en een antwoord voor die gebeurtenis naar uitvoer schrijven.
+## <a name="implement-stream-analytics-transformation-to-call-the-udf"></a>Stream Analytics-transformatie implementeren om de UDF aan te roepen
+Query er nu de UDF (hier genaamd scoreTweet) voor elke invoergebeurtenis en schrijf een antwoord voor die gebeurtenis op een uitvoer.
 
 ```json
     {
@@ -187,7 +187,7 @@ Nu de UDF (hier met de naam scoreTweet) op te vragen voor elke invoer gebeurteni
 ```
 
 
-## <a name="get-help"></a>Hulp krijgen
+## <a name="get-help"></a>Help opvragen
 Voor verdere hulp kunt u mogelijk terecht op het [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Volgende stappen

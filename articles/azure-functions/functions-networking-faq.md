@@ -1,70 +1,70 @@
 ---
-title: Veelgestelde vragen over netwerken in Azure Functions
-description: Antwoord op enkele van de meest voorkomende vragen en scenario's voor netwerken met Azure Functions.
+title: Veelgestelde vragen over netwerken in Azure-functies
+description: Antwoorden op enkele van de meest voorkomende vragen en scenario's voor netwerken met Azure-functies.
 author: alexkarcher-msft
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche
 ms.reviewer: glenga
 ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75409530"
 ---
-# <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Veelgestelde vragen over netwerken in Azure Functions
+# <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Veelgestelde vragen over netwerken in Azure-functies
 
-In dit artikel vindt u een lijst met veelgestelde vragen over netwerken in Azure Functions. Zie [functions Network options](functions-networking-options.md)(Engelstalig) voor een uitgebreidere beschrijving.
+In dit artikel worden veelgestelde vragen over netwerken in Azure-functies weergegeven. Zie [Netwerkopties functies](functions-networking-options.md)voor een uitgebreider overzicht.
 
-## <a name="how-do-i-set-a-static-ip-in-functions"></a>Hoe kan ik een statisch IP-adres instellen in functions?
+## <a name="how-do-i-set-a-static-ip-in-functions"></a>Hoe stel ik een statisch IP in functies in?
 
-Het implementeren van een functie in een App Service Environment is momenteel de enige manier om een statisch inkomend en uitgaand IP-adres voor uw functie te gebruiken. Voor meer informatie over het gebruik van een App Service Environment begint u met het artikel [een interne Load Balancer met een app service Environment maken en gebruiken](../app-service/environment/create-ilb-ase.md).
+Het implementeren van een functie in een App-serviceomgeving is momenteel de enige manier om een statisch in- en uitgaand IP voor uw functie te hebben. Voor meer informatie over het gebruik van een App Service-omgeving, begint u met het artikel [Een interne load balancer maken en gebruiken met een App Service-omgeving.](../app-service/environment/create-ilb-ase.md)
 
-## <a name="how-do-i-restrict-internet-access-to-my-function"></a>Hoe kan ik Internet toegang tot mijn functie beperken?
+## <a name="how-do-i-restrict-internet-access-to-my-function"></a>Hoe beperk ik de toegang tot internet tot mijn functie?
 
-U kunt Internet toegang op een aantal manieren beperken:
+U de toegang tot internet op een aantal manieren beperken:
 
-* [IP-beperkingen](../app-service/app-service-ip-restrictions.md): Beperk het binnenkomende verkeer naar uw functie-app op IP-bereik.
-    * Onder IP-beperkingen kunt u ook [service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md)configureren, waardoor de functie wordt beperkt zodat alleen binnenkomend verkeer van een bepaald virtueel netwerk wordt geaccepteerd.
-* Alle HTTP-triggers worden verwijderd. Voor sommige toepassingen is het voldoende om HTTP-triggers te vermijden en gebruik te maken van andere gebeurtenis bronnen om uw functie te activeren.
+* [IP-beperkingen](../app-service/app-service-ip-restrictions.md): Beperk binnenkomend verkeer naar uw functie-app op IP-bereik.
+    * Onder IP-beperkingen u ook [Service-eindpunten](../virtual-network/virtual-network-service-endpoints-overview.md)configureren, waardoor uw functie alleen binnenkomend verkeer van een bepaald virtueel netwerk wordt geaccepteerd.
+* Verwijdering van alle HTTP-triggers. Voor sommige toepassingen is het voldoende om http-triggers te vermijden en elke andere gebeurtenisbron te gebruiken om uw functie te activeren.
 
-Houd er wel voor dat de Azure Portal editor rechtstreekse toegang tot uw actieve functie nodig heeft. Voor code wijzigingen via de Azure Portal is het apparaat dat u gebruikt om te bladeren door de portal voor de IP-white list. U kunt nog steeds iets gebruiken op het tabblad platform functies met netwerk beperkingen.
+Houd er rekening mee dat de Azure-portaleditor directe toegang tot uw hardloopfunctie vereist. Voor wijzigingen in de code via de Azure-portal moet het apparaat dat u gebruikt door de portal bladeren om het IP-adres op de witte lijst te krijgen. Maar je nog steeds alles gebruiken onder het tabblad platformfuncties met netwerkbeperkingen.
 
-## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>Hoe kan ik mijn functie-app beperken tot een virtueel netwerk?
+## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>Hoe beperk ik mijn functie-app tot een virtueel netwerk?
 
-U kunt **Inkomend** verkeer voor een functie-app beperken tot een virtueel netwerk met behulp van [service-eind punten](./functions-networking-options.md#private-site-access). Met deze configuratie kan de functie-app nog steeds uitgaande aanroepen naar Internet maken.
+U **binnenkomend** verkeer voor een functie-app beperken tot een virtueel netwerk met [serviceeindpunten.](./functions-networking-options.md#private-site-access) Met deze configuratie kan de functie-app nog steeds uitgaande gesprekken voeren naar het internet.
 
-De enige manier om een functie zodanig te beperken dat alle verkeer via een virtueel netwerk loopt, is door gebruik te maken van een App Service Environment met interne taak verdeling. Met deze optie wordt uw site geïmplementeerd op een speciale infra structuur binnen een virtueel netwerk en worden alle triggers en verkeer via het virtuele netwerk verzonden. 
+De enige manier om een functie zodanig volledig te beperken dat al het verkeer door een virtueel netwerk stroomt, is door een intern belaste App Service-omgeving te gebruiken. Met deze optie wordt uw site geïmplementeerd op een speciale infrastructuur binnen een virtueel netwerk en worden alle triggers en verkeer door het virtuele netwerk verzenden. 
 
-Voor meer informatie over het gebruik van een App Service Environment begint u met het artikel [een interne Load Balancer met een app service Environment maken en gebruiken](../app-service/environment/create-ilb-ase.md).
+Voor meer informatie over het gebruik van een App Service-omgeving, begint u met het artikel [Een interne load balancer maken en gebruiken met een App Service-omgeving.](../app-service/environment/create-ilb-ase.md)
 
-## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>Hoe kan ik toegang krijgen tot resources in een virtueel netwerk vanuit een functie-app?
+## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>Hoe kan ik toegang krijgen tot bronnen in een virtueel netwerk vanuit een functie-app?
 
-U kunt toegang krijgen tot bronnen in een virtueel netwerk van een actieve functie met behulp van virtuele netwerk integratie. Zie [Virtual Network Integration](functions-networking-options.md#virtual-network-integration)(Engelstalig) voor meer informatie.
+U hebt toegang tot bronnen in een virtueel netwerk vanuit een bedrijfsfunctie met behulp van virtuele netwerkintegratie. Zie [Virtuele netwerkintegratie](functions-networking-options.md#virtual-network-integration)voor meer informatie.
 
-## <a name="how-do-i-access-resources-protected-by-service-endpoints"></a>Hoe kan ik toegang tot bronnen die worden beveiligd door service-eind punten?
+## <a name="how-do-i-access-resources-protected-by-service-endpoints"></a>Hoe krijg ik toegang tot bronnen die worden beschermd door serviceeindpunten?
 
-Door gebruik te maken van virtuele netwerk integratie kunt u toegang krijgen tot service-Endpoint-beveiligde resources van een actieve functie. Zie [Virtual Network Integration](functions-networking-options.md#virtual-network-integration)(Engelstalig) voor meer informatie.
+Door gebruik te maken van virtuele netwerkintegratie hebt u toegang tot service-endpoint-beveiligde bronnen vanuit een bedrijfsfunctie. Zie voor meer informatie [de integratie van virtuele netwerken](functions-networking-options.md#virtual-network-integration).
 
-## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>Hoe kan ik een functie activeren vanuit een resource in een virtueel netwerk?
+## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>Hoe kan ik een functie activeren vanuit een bron in een virtueel netwerk?
 
-U kunt HTTP-triggers toestaan van een virtueel netwerk met behulp van [service-eind punten](./functions-networking-options.md#private-site-access). 
+U toestaan dat HTTP-triggers vanuit een virtueel netwerk worden aangeroepen met [Service-eindpunten.](./functions-networking-options.md#private-site-access) 
 
-U kunt ook een functie activeren vanuit alle andere resources in een virtueel netwerk door uw functie-app te implementeren in een Premium-abonnement, App Service plan of App Service Environment. Zie [niet-http-triggers voor virtuele netwerken](./functions-networking-options.md#virtual-network-triggers-non-http) voor meer informatie
+U ook een functie activeren van alle andere bronnen in een virtueel netwerk door uw functie-app te implementeren in een Premium-abonnement, App Service-abonnement of App Service-omgeving. Zie [niet-HTTP virtuele netwerktriggers](./functions-networking-options.md#virtual-network-triggers-non-http) voor meer informatie
 
-## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Hoe kan ik mijn functie-app in een virtueel netwerk implementeren?
+## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Hoe kan ik mijn functie-app implementeren in een virtueel netwerk?
 
-Implementeren op een App Service Environment is de enige manier om een functie-app te maken die volledig in een virtueel netwerk is. Voor meer informatie over het gebruik van een interne load balancer met een App Service Environment, begint u met het artikel [een interne Load Balancer maken en gebruiken met een app service Environment](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase).
+Implementeren in een App-serviceomgeving is de enige manier om een functie-app te maken die volledig binnen een virtueel netwerk zit. Voor meer informatie over het gebruik van een interne load balancer met een App Service-omgeving, begint u met het artikel [Een interne load balancer maken en gebruiken met een App Service-omgeving.](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase)
 
-Zie het [Overzicht functies netwerken](functions-networking-options.md)voor scenario's waarbij u slechts één richting toegang wilt geven tot virtuele netwerk bronnen of minder uitgebreide netwerk isolatie.
+Zie het [netwerkoverzicht Functies](functions-networking-options.md)voor scenario's waarbij u slechts één richting toegang tot virtuele netwerkbronnen of minder uitgebreide netwerkisolatie nodig hebt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over netwerken en functies: 
+Ga als voor meer informatie over netwerken en functies: 
 
-* [Volg de zelf studie over het aan de slag gaan met virtuele netwerk integratie](./functions-create-vnet.md)
-* [Meer informatie over de netwerk opties in Azure Functions](./functions-networking-options.md)
-* [Meer informatie over de integratie van virtuele netwerken met App Service en functions](../app-service/web-sites-integrate-with-vnet.md)
-* [Meer informatie over virtuele netwerken in azure](../virtual-network/virtual-networks-overview.md)
-* [Meer netwerk functies en-beheer inschakelen met App Service omgevingen](../app-service/environment/intro.md)
+* [Volg de zelfstudie over aan de slag gaan met virtuele netwerkintegratie](./functions-create-vnet.md)
+* [Meer informatie over de netwerkopties in Azure-functies](./functions-networking-options.md)
+* [Meer informatie over virtuele netwerkintegratie met App-service en -functies](../app-service/web-sites-integrate-with-vnet.md)
+* [Meer informatie over virtuele netwerken in Azure](../virtual-network/virtual-networks-overview.md)
+* [Meer netwerkfuncties en -bediening inschakelen met App-serviceomgevingen](../app-service/environment/intro.md)

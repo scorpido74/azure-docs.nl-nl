@@ -1,46 +1,46 @@
 ---
-title: Implementeren op specifieke host
-description: Gebruik een specifieke host om te profiteren van de echte isolatie op hostniveau voor uw Azure Container Instances-workloads
+title: Implementeren op dedicated host
+description: Gebruik een speciale host om echte isolatie op hostniveau te bereiken voor uw Azure Container Instances-workloads
 ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: adad0ddfc78530b3a3a7c139d9a95ec4790c8053
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76934151"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Implementeren op toegewezen hosts
 
-' Dedicated ' is een Azure Container Instances-SKU (ACI) die een geïsoleerde en toegewezen reken omgeving biedt voor het veilig uitvoeren van containers. Het gebruik van de toegewezen SKU resulteert in elke container groep die een speciale fysieke server heeft in een Azure-Data Center, zodat de isolatie van de volledige werk belasting wordt gewaarborgd om te voldoen aan de beveiligings-en nalevings vereisten van uw organisatie. 
+"Dedicated" is een Azure Container Instances (ACI) sku die een geïsoleerde en speciale compute-omgeving biedt voor het veilig uitvoeren van containers. Het gebruik van de speciale sku resulteert in elke containergroep met een speciale fysieke server in een Azure-datacenter, zodat volledige workloadisolatie wordt gegarandeerd om te voldoen aan de beveiligings- en nalevingsvereisten van uw organisatie. 
 
-De toegewezen SKU is geschikt voor werkbelastingen van containers waarvoor isolatie van de werk belasting vereist is vanuit een oogpunt van een fysieke server.
+De speciale sku is geschikt voor containerworkloads waarvoor workloads moeten worden geïsoleerd vanuit een fysiek serverperspectief.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De standaard limiet voor elk abonnement voor het gebruik van de toegewezen SKU is 0. Als u deze SKU wilt gebruiken voor de implementaties van productie containers, maakt u een [Azure-ondersteuningsaanvraag][azure-support] om de limiet te verhogen.
+* De standaardlimiet voor elk abonnement om de speciale sku te gebruiken is 0. Als u deze sku wilt gebruiken voor uw productiecontainerimplementaties, maakt u een [Azure Support-aanvraag][azure-support] om de limiet te verhogen.
 
-## <a name="use-the-dedicated-sku"></a>De toegewezen SKU gebruiken
+## <a name="use-the-dedicated-sku"></a>Gebruik de speciale sku
 
 > [!IMPORTANT]
-> Het gebruik van de toegewezen SKU is alleen beschikbaar in de nieuwste API-versie (2019-12-01) die momenteel wordt geïmplementeerd. Geef deze API-versie op in uw implementatie sjabloon.
+> Het gebruik van de speciale sku is alleen beschikbaar in de nieuwste API-versie (2019-12-01) die momenteel wordt uitgerold. Geef deze API-versie op in uw implementatiesjabloon.
 >
 
-Vanaf API versie 2019-12-01 is er een `sku` eigenschap in de sectie eigenschappen van container groep van een implementatie sjabloon, die vereist is voor een ACI-implementatie. Op dit moment kunt u deze eigenschap gebruiken als onderdeel van een Azure Resource Manager implementatie sjabloon voor ACI. Meer informatie over het implementeren van ACI-resources met een sjabloon in de [zelf studie: een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Vanaf API-versie 2019-12-01 is `sku` er een eigenschap onder de sectie eigenschappen van containergroep van een implementatiesjabloon, die vereist is voor een ACI-implementatie. Momenteel u deze eigenschap gebruiken als onderdeel van een Azure Resource Manager-implementatiesjabloon voor ACI. Meer informatie over het implementeren van ACI-resources met een sjabloon in de [zelfstudie: een groep met meerdere containers implementeren met behulp van een resourcemanagersjabloon](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
 
-De eigenschap `sku` kan een van de volgende waarden hebben:
-* `Standard`-de standaard implementatie keuze van ACI, die nog steeds beveiliging op Hyper Visor niveau garandeert 
-* `Dedicated`: wordt gebruikt voor isolatie op werkbelasting niveau met toegewezen fysieke hosts voor de container groep
+De `sku` eigenschap kan een van de volgende waarden hebben:
+* `Standard`- de standaard ACI-implementatiekeuze, die nog steeds beveiliging op hypervisorniveau garandeert 
+* `Dedicated`- gebruikt voor isolatie op werkbelastingsniveau met speciale fysieke hosts voor de containergroep
 
-## <a name="modify-your-json-deployment-template"></a>De JSON-implementatie sjabloon wijzigen
+## <a name="modify-your-json-deployment-template"></a>Uw JSON-implementatiesjabloon wijzigen
 
-Wijzig of Voeg in uw implementatie sjabloon de volgende eigenschappen toe:
-* Stel onder `resources``apiVersion` in op `2012-12-01`.
-* Voeg onder de eigenschappen van de container groep een `sku` eigenschap toe met de waarde `Dedicated`.
+Wijzig of voeg in uw implementatiesjabloon de volgende eigenschappen toe:
+* Onder `resources`, `apiVersion` `2012-12-01`ingesteld op .
+* Voeg onder de eigenschappen `sku` van de `Dedicated`containergroep een eigenschap met waarde toe .
 
-Hier volgt een voorbeeld fragment voor het gedeelte resources van een sjabloon voor container groep implementatie die gebruikmaakt van de toegewezen SKU:
+Hier vindt u een voorbeeldfragment voor het gedeelte resources van een implementatiesjabloon voor containergroepen waarmee de speciale sku wordt gebruikt:
 
 ```json
 [...]
@@ -60,7 +60,7 @@ Hier volgt een voorbeeld fragment voor het gedeelte resources van een sjabloon v
 ]
 ```
 
-Hieronder volgt een volledige sjabloon die een voor beeld-container groep implementeert waarop één container exemplaar wordt uitgevoerd:
+Hieronder volgt een volledige sjabloon waarmee een voorbeeldcontainergroep met één containerinstantie wordt geïmplementeerd:
 
 ```json
 {
@@ -127,9 +127,9 @@ Hieronder volgt een volledige sjabloon die een voor beeld-container groep implem
 }
 ```
 
-## <a name="deploy-your-container-group"></a>Uw container groep implementeren
+## <a name="deploy-your-container-group"></a>Uw containergroep implementeren
 
-Als u het implementatie sjabloon bestand op uw bureau blad hebt gemaakt en bewerkt, kunt u het uploaden naar uw Cloud Shell Directory door het bestand naar de map te slepen. 
+Als u het implementatiesjabloonbestand op uw bureaublad hebt gemaakt en bewerkt, u het uploaden naar uw Cloud Shell-map door het bestand erin te slepen. 
 
 Een resourcegroep maken met de opdracht [az group create][az-group-create].
 
@@ -137,13 +137,13 @@ Een resourcegroep maken met de opdracht [az group create][az-group-create].
 az group create --name myResourceGroup --location eastus
 ```
 
-Implementeer de sjabloon met de opdracht [AZ Group Deployment Create][az-group-deployment-create] .
+Implementeer de sjabloon met de [opdracht Implementatie van az-groep.][az-group-deployment-create]
 
 ```azurecli-interactive
 az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
-U ontvangt binnen enkele seconden een eerste reactie van Azure. Een geslaagde implementatie vindt plaats op een specifieke host.
+U ontvangt binnen enkele seconden een eerste reactie van Azure. Een succesvolle implementatie vindt plaats op een speciale host.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create

@@ -1,6 +1,6 @@
 ---
-title: Problemen met Azure IoT Hub-fout 404001 DeviceNotFound
-description: Meer informatie over het oplossen van fout 404001 DeviceNotFound
+title: Problemen met Azure IoT Hub-fout 404001 DeviceNotFound oplossen
+description: Begrijpen hoe u fout 404001 DeviceNotFound oplossen
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -9,23 +9,23 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 15aa21c2ec2c11bb251f7208fd22c92ceb859d6d
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76960826"
 ---
 # <a name="404001-devicenotfound"></a>404001 DeviceNotFound
 
-In dit artikel worden de oorzaken en oplossingen voor **404001 DeviceNotFound** -fouten beschreven.
+In dit artikel worden de oorzaken en oplossingen voor **404001 DeviceNotFound-fouten beschreven.**
 
 ## <a name="symptoms"></a>Symptomen
 
-Tijdens een Cloud-naar-apparaat-communicatie (C2D), zoals C2D-bericht, dubbele update of directe methode, mislukt de bewerking met fout **404001 DeviceNotFound**.
+Tijdens een Cloud-to-device (C2D) communicatie, zoals C2D-bericht, dubbele update of directe methode, mislukt de bewerking met fout **404001 DeviceNotFound**.
 
 ## <a name="cause"></a>Oorzaak
 
-De bewerking is mislukt omdat het apparaat niet kan worden gevonden door IoT Hub. Het apparaat is niet geregistreerd of is uitgeschakeld.
+De bewerking is mislukt omdat het apparaat niet kan worden gevonden door IoT Hub. Het apparaat is niet geregistreerd of uitgeschakeld.
 
 ## <a name="solution"></a>Oplossing
 

@@ -1,118 +1,118 @@
 ---
-title: Aantal resources zonder limiet van 800
-description: Geeft een lijst van de Azure-resource typen die meer dan 800 exemplaren in een resource groep kunnen bevatten.
+title: Resources zonder limiet voor 800 tellingen
+description: Hiermee worden de Azure-brontypen weergegeven die meer dan 800 exemplaren in een resourcegroep kunnen bevatten.
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76937937"
 ---
-# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Resources die niet beperkt zijn tot 800 exemplaren per resource groep
+# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Resources die niet zijn beperkt tot 800 exemplaren per resourcegroep
 
-Standaard kunt u Maxi maal 800 exemplaren van een resource type implementeren in elke resource groep. Sommige resource typen zijn echter uitgezonderd van de limiet van 800-exemplaren. In dit artikel vindt u een overzicht van de Azure-resource typen die meer dan 800 exemplaren in een resource groep kunnen bevatten. Alle andere typen resources zijn beperkt tot 800 exemplaren.
+Standaard u in elke resourcegroep maximaal 800 exemplaren van een resourcetype implementeren. Sommige resourcetypen zijn echter vrijgesteld van de 800-instantielimiet. In dit artikel worden de Azure-brontypen weergegeven die meer dan 800 exemplaren in een resourcegroep kunnen bevatten. Alle andere resources typen zijn beperkt tot 800 exemplaren.
 
-Voor sommige resource typen moet u contact opnemen met ondersteuning om de limiet van 800-exemplaren te verwijderen. Deze resource typen worden in dit artikel vermeld.
+Voor sommige resourcetypen moet u contact opnemen met ondersteuning om de 800-instantielimiet te laten verwijderen. Deze resourcetypen worden in dit artikel vermeld.
 
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
-* automationAccounts
+* automatiseringAccounts
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
-* registraties
-* registrations/customerSubscriptions
+* Registraties
+* registraties/klantAbonnementen
 * registraties/producten
-* verificationKeys
+* verificatieToetsen
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
-* botServices: standaard beperkt tot 800 exemplaren. Deze limiet kan worden verhoogd door contact op te nemen met de ondersteuning.
+* botServices - Standaard beperkt tot 800 exemplaren. Die limiet kan worden verhoogd door contact op te nemen met ondersteuning.
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
-* cd's
+* Schijven
 * images
 * momentopnamen
-* Informatie
+* virtueleMachines
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
-* containerGroups
+* containerGroepen
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
-* registers/buildTasks
-* registers/buildTasks/listSourceRepositoryProperties
-* registers/buildTasks/stappen
-* registers/buildTasks/stappen/listBuildArguments
-* registries/eventGridFilters
+* registers/buildTaken
+* registers/buildTaken/listSourceRepositoryProperties
+* registers/buildTaken/stappen
+* registers/buildTaken/steps/listBuildArguments
+* registers/eventGridFilters
 * registers/replicaties
 * registers/taken
 * registers/webhooks
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
-* servers
+* Servers
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
-* servers
+* Servers
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
-* serverGroups
-* servers
+* serverGroepen
+* Servers
 * serversv2
 
-## <a name="microsoftenterpriseknowledgegraph"></a>Micro soft. EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
 * services
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
-* clusters
-* naam ruimten
+* Clusters
+* Naamruimten
 
-## <a name="microsoftexperimentation"></a>Micro soft. experimenten
+## <a name="microsoftexperimentation"></a>Microsoft.Experimenteren
 
-* experimentWorkspaces
+* experimentWerkruimten
 
-## <a name="microsoftguestconfiguration"></a>Micro soft. GuestConfiguration
+## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 * autoManagedVmConfigurationProfiles
-* configurationProfileAssignments
-* guestConfigurationAssignments
-* software
-* softwareUpdateProfile
+* configuratieProfielToewijzingen
+* gastConfiguratieToewijzingen
+* Software
+* softwareUpdateProfiel
 * softwareUpdates
 
 ## <a name="microsoftinsights"></a>Microsoft.Insights
 
-* metricalerts
+* metrische waarschuwingen
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
-* integrationAccounts
-* stroom
+* integratieAccounts
+* Werkstromen
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
 * netAppAccounts
-* netAppAccounts/capacityPools
-* netAppAccounts/capacityPools/volumes
+* netAppAccounts/capaciteitspools
+* netAppAccounts/capaciteitspools/volumes
 * netAppAccounts/capacityPools/volumes/mountTargets
-* netAppAccounts/capacityPools/volumes/moment opnamen
+* netAppAccounts/capacityPools/volumes/snapshots
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
-* applicationGatewayWebApplicationFirewallPolicies
+* applicationGatewayWebApplicationFirewallBeleid
 * applicationSecurityGroups
 * bastionHosts
-* ddosProtectionPlans
+* ddosProtectionPlans ddosProtectionPlans
 * dnszones
 * dnszones/A
 * dnszones/AAAA
@@ -124,10 +124,10 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 * dnszones/SOA
 * dnszones/SRV
 * dnszones/TXT
-* dnszones/all
+* dnszones/alle
 * dnszones/recordsets
-* networkIntentPolicies
-* networkInterfaces
+* netwerkIntentPolicies
+* netwerkInterfaces
 * privateDnsZones
 * privateDnsZones/A
 * privateDnsZones/AAAA
@@ -139,39 +139,39 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 * privateDnsZones/TXT
 * privateDnsZones/alle
 * privateDnsZones/virtualNetworkLinks
-* privateEndpoints
+* privéeindpunten
 * privateLinkServices
-* publicIPAddresses: standaard beperkt tot 800 exemplaren. Deze limiet kan worden verhoogd door contact op te nemen met de ondersteuning.
-* serviceEndpointPolicies
-* trafficmanagerprofiles
+* publicIPAddresses - Standaard beperkt tot 800 exemplaren. Die limiet kan worden verhoogd door contact op te nemen met ondersteuning.
+* serviceEndpointBeleid
+* trafficmanagerprofielen
 * virtualNetworkTaps
 
-## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
+## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk Microsoft.PortalSdk
 
 * rootResources
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
-* workspaceCollections: standaard beperkt tot 800 exemplaren. Deze limiet kan worden verhoogd door contact op te nemen met de ondersteuning.
+* werkruimtecollecties - Standaard beperkt tot 800 exemplaren. Die limiet kan worden verhoogd door contact op te nemen met ondersteuning.
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
-* naam ruimten
+* Naamruimten
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
-* jobcollections
+* jobcollecties
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-* naam ruimten
+* Naamruimten
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
 * toepassingen
-* containerGroups
-* gateways
-* netwerken
+* containerGroepen
+* Gateways
+* Netwerken
 * geheimen
 * volumes
 
@@ -181,9 +181,9 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
-* apiManagementAccounts/apis
+* apiManagementAccounts/api's
 * sites
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure-abonnement en service limieten, quota's en beperkingen](azure-subscription-service-limits.md)voor een volledige lijst met quota's en limieten.
+Zie [Azure-abonnements- en servicelimieten, quota en beperkingen](azure-subscription-service-limits.md)voor een volledige lijst met quota en limieten.

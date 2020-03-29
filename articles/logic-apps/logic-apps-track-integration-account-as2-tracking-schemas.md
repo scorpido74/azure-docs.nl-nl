@@ -1,6 +1,6 @@
 ---
-title: AS2 tracking-schema's voor B2B-berichten
-description: Tracking schema's maken voor het bewaken van AS2-berichten in Azure Logic Apps
+title: AS2-trackingschema's voor B2B-berichten
+description: Trackingschema's maken om AS2-berichten in Azure Logic Apps te controleren
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,20 +9,20 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: bccf69362279afd9e8148b20b61ff3ea9b472a03
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906969"
 ---
 # <a name="create-schemas-for-tracking-as2-messages-in-azure-logic-apps"></a>Schema's maken voor het bijhouden van AS2-berichten in Azure Logic Apps
 
-Als hulp bij het bewaken van geslaagde, fout-en bericht eigenschappen voor Business-to-Business (B2B)-trans acties, kunt u deze AS2-tracking schema's gebruiken in uw integratie account:
+Om u te helpen succes, fouten en berichteigenschappen voor B2B-transacties (business-to-business) te controleren, u deze AS2-trackingschema's gebruiken in uw integratieaccount:
 
-* AS2-schema voor het bijhouden van berichten
-* Tracking schema voor het bijhouden van AS2-bericht (MDN)
+* AS2-trackingschema voor berichten
+* AS2 Message Disposition Notification (MDN) tracking schema
 
-## <a name="as2-message-tracking-schema"></a>AS2-schema voor het bijhouden van berichten
+## <a name="as2-message-tracking-schema"></a>AS2-trackingschema voor berichten
 
 ```json
 {
@@ -52,30 +52,30 @@ Als hulp bij het bewaken van geslaagde, fout-en bericht eigenschappen voor Busin
 }
 ```
 
-| Eigenschap | Verplicht | Type | Beschrijving |
+| Eigenschap | Vereist | Type | Beschrijving |
 |----------|----------|------|-------------|
-| senderPartnerName | Nee | Tekenreeks | Partner naam van de afzender van het AS2-bericht |
-| receiverPartnerName | Nee | Tekenreeks | Partner naam van AS2-bericht ontvanger |
-| as2To | Ja | Tekenreeks | Naam van AS2-bericht ontvanger uit de kopteksten van het AS2-bericht |
-| as2From | Ja | Tekenreeks | De naam van de afzender van het AS2 bericht uit de kopteksten van het AS2-bericht |
-| agreementName | Nee | Tekenreeks | De naam van de AS2-overeenkomst waarop de berichten worden omgezet |
-| richting | Ja | Tekenreeks | Richting van de berichten stroom, die `receive` of `send` |
-| messageId | Nee | Tekenreeks | AS2 bericht-ID uit de kopteksten van het AS2-bericht |
-| dispositionType | Nee | Tekenreeks | Waarde van het type voor het verplaatsen van berichten (MDN) |
-| fileName | Nee | Tekenreeks | Bestands naam van de header van het AS2-bericht |
+| senderPartnerName | Nee | Tekenreeks | De partnernaam van as2-berichtafzender |
+| receiverPartnerName | Nee | Tekenreeks | De partnernaam van as2-berichtontvanger |
+| as2To | Ja | Tekenreeks | De naam van de AS2-berichtontvanger uit de kopteksten van het AS2-bericht |
+| as2Van | Ja | Tekenreeks | De naam van as2-afzender uit de kopteksten van het AS2-bericht |
+| overeenkomstNaam | Nee | Tekenreeks | Naam van de AS2-overeenkomst waarop de berichten zijn opgelost |
+| richting | Ja | Tekenreeks | Richting van de berichtstroom, `receive` die is of`send` |
+| messageId | Nee | Tekenreeks | AS2-bericht-id van de kopteksten van het AS2-bericht |
+| dispositieType | Nee | Tekenreeks | Typewaarde van de Dispositie (Message Disposition Notification) |
+| fileName | Nee | Tekenreeks | Bestandsnaam van de koptekst van het AS2-bericht |
 | isMessageFailed | Ja | Booleaans | Of het AS2-bericht is mislukt |
 | isMessageSigned | Ja | Booleaans | Of het AS2-bericht is ondertekend |
 | isMessageEncrypted | Ja | Booleaans | Of het AS2-bericht is versleuteld |
-| isMessageCompressed | Ja | Booleaans | Of het AS2-bericht is gecomprimeerd |
-| correlationMessageId | Nee | Tekenreeks | AS2 bericht-ID voor het correleren van berichten met MDNs |
-| incomingHeaders | Nee | Woorden lijst met JToken | Details binnenkomende AS2-bericht header |
-| outgoingHeaders | Nee | Woorden lijst met JToken | Details van header van uitgaand AS2-bericht |
-| isNrrEnabled | Ja | Booleaans | Hiermee wordt aangegeven of de standaard waarde moet worden gebruikt als de waarde niet bekend is |
-| isMdnExpected | Ja | Booleaans | Hiermee wordt aangegeven of de standaard waarde moet worden gebruikt als de waarde niet bekend is |
-| mdnType | Ja | Enum | Toegestane waarden: `NotConfigured`, `Sync`en `Async` |
+| isMessageGecomprimeerd | Ja | Booleaans | Of het AS2-bericht is gecomprimeerd |
+| correlatieMessageId | Nee | Tekenreeks | AS2-bericht-id, om berichten te correleren met MDN's |
+| inkomende headers | Nee | Woordenboek van JToken | Inkomende AS2-berichtkoptekstdetails |
+| uitgaande headers | Nee | Woordenboek van JToken | Uitgaande AS2-berichtkopgegevens |
+| isNrrEnabled | Ja | Booleaans | Standaardwaarde gebruiken als de waarde niet bekend is |
+| isMdnVerwacht | Ja | Booleaans | De standaardwaarde gebruiken als de waarde niet bekend is |
+| mdnType | Ja | Enum | Toegestane waarden: `NotConfigured` `Sync`, , en`Async` |
 |||||
 
-## <a name="as2-mdn-tracking-schema"></a>Tracking schema voor AS2-MDN
+## <a name="as2-mdn-tracking-schema"></a>AS2 MDN-trackingschema
 
 ```json
 {
@@ -105,33 +105,33 @@ Als hulp bij het bewaken van geslaagde, fout-en bericht eigenschappen voor Busin
 }
 ```
 
-| Eigenschap | Verplicht | Type | Beschrijving |
+| Eigenschap | Vereist | Type | Beschrijving |
 |----------|----------|------|-------------|
-| senderPartnerName | Nee | Tekenreeks | Partner naam van de afzender van het AS2-bericht |
-| receiverPartnerName | Nee | Tekenreeks | Partner naam van AS2-bericht ontvanger |
-| as2To | Ja | Tekenreeks | De naam van de partner die het AS2-bericht ontvangt |
-| as2From | Ja | Tekenreeks | De naam van de partner die het AS2-bericht verzendt |
-| agreementName | Nee | Tekenreeks | De naam van de AS2-overeenkomst waarop de berichten worden omgezet |
-| richting | Ja | Tekenreeks | Richting van de berichten stroom, die `receive` of `send` |
-| messageId | Nee | Tekenreeks | AS2-bericht-ID |
-| originalMessageId | Nee | Tekenreeks | AS2 oorspronkelijke bericht-ID |
-| dispositionType | Nee | Tekenreeks | Waarde van MDN-indelings type |
+| senderPartnerName | Nee | Tekenreeks | De partnernaam van as2-berichtafzender |
+| receiverPartnerName | Nee | Tekenreeks | De partnernaam van as2-berichtontvanger |
+| as2To | Ja | Tekenreeks | Partnernaam die het AS2-bericht ontvangt |
+| as2Van | Ja | Tekenreeks | Partnernaam die het AS2-bericht verzendt |
+| overeenkomstNaam | Nee | Tekenreeks | Naam van de AS2-overeenkomst waarop de berichten zijn opgelost |
+| richting | Ja | Tekenreeks | Richting van de berichtstroom, `receive` die is of`send` |
+| messageId | Nee | Tekenreeks | AS2-bericht-id |
+| origineleMessageId | Nee | Tekenreeks | AS2 oorspronkelijke bericht-id |
+| dispositieType | Nee | Tekenreeks | Waarde van mdn-dispositie |
 | isMessageFailed | Ja | Booleaans | Of het AS2-bericht is mislukt |
 | isMessageSigned | Ja | Booleaans | Of het AS2-bericht is ondertekend |
-| isNrrEnabled | Ja | Booleaans | Hiermee wordt aangegeven of de standaard waarde moet worden gebruikt als de waarde niet bekend is |
-| Status code | Ja | Enum | Toegestane waarden: `Accepted`, `Rejected`en `AcceptedWithErrors` |
-| micVerificationStatus | Ja | Enum | Toegestane waarden:`NotApplicable`, `Succeeded`en `Failed` |
-| correlationMessageId | Nee | Tekenreeks | Correlatie-ID: de ID van het oorspronkelijke bericht waarvan de MDN is geconfigureerd |
-| incomingHeaders | Nee | Woorden lijst met JToken | Details van koptekst van binnenkomend bericht |
-| outgoingHeaders | Nee | Woorden lijst met JToken | Details van berichtkop uitgaande berichten |
+| isNrrEnabled | Ja | Booleaans | De standaardwaarde gebruiken als de waarde niet bekend is |
+| statusCode | Ja | Enum | Toegestane waarden: `Accepted` `Rejected`, , en`AcceptedWithErrors` |
+| micVerificationStatus | Ja | Enum | Toegestane waarden:`NotApplicable` `Succeeded`, , en`Failed` |
+| correlatieMessageId | Nee | Tekenreeks | Correlatie-id, de id voor het oorspronkelijke bericht waarop de MDN is geconfigureerd |
+| inkomende headers | Nee | Woordenboek van JToken | Details van de inkomende berichtkoptekst |
+| uitgaande headers | Nee | Woordenboek van JToken | Details van de uitgaande berichtkoptekst |
 |||||
 
-## <a name="b2b-protocol-tracking-schemas"></a>Schema's voor het bijhouden van B2B-protocollen
+## <a name="b2b-protocol-tracking-schemas"></a>B2B-protocoltrackingschema's
 
-Voor informatie over schema's voor het bijhouden van B2B-protocollen raadpleegt u:
+Zie voor informatie over b2b-protocoltrackingschema's:
 
 * [Volgschema’s voor X12](logic-apps-track-integration-account-x12-tracking-schema.md)
-* [Aangepaste B2B-tracking schema's](logic-apps-track-integration-account-custom-tracking-schema.md)
+* [B2B aangepaste trackingschema's](logic-apps-track-integration-account-custom-tracking-schema.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,13 +1,13 @@
 ---
-title: Een Java-toepassing met Azure Service Fabric reliable actors maken in Linux
+title: Maak een Azure Service Fabric betrouwbare acteurs Java-toepassing op Linux
 description: Lees hoe u een betrouwbare Service Fabric Java-actortoepassing in vijf minuten kunt maken en implementeren.
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.openlocfilehash: 82d4446d76254657adfe64ed41386c06a0a873eb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458163"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Uw eerste betrouwbare Service Fabric Java-actortoepassing maken in Linux
@@ -208,18 +208,18 @@ Nadat de toepassing is geïmplementeerd, opent u een browser en gaat u naar [Ser
 Vouw vervolgens het knooppunt **Toepassingen** uit. U ziet dat er nu een vermelding is voor uw toepassingstype en nog een voor het eerste exemplaar van dat type.
 
 > [!IMPORTANT]
-> Als u de toepassing wilt implementeren in een beveiligd Linux-cluster in azure, moet u een certificaat configureren om uw toepassing te valideren met de Service Fabric runtime. Hierdoor kunnen uw Reliable Actors-services communiceren met de onderliggende Service Fabric runtime-Api's. Zie [een reliable Services-app configureren voor het uitvoeren van Linux-clusters](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)voor meer informatie.  
+> Als u de toepassing wilt implementeren op een beveiligd Linux-cluster in Azure, moet u een certificaat configureren om uw toepassing te valideren met de runtime van Service Fabric. Hierdoor kunnen uw Reliable Actors-services communiceren met de onderliggende Service Fabric runtime API's. Zie Een [app Voor betrouwbare services configureren om te draaien op Linux-clusters](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)voor meer informatie.  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>De testclient starten en een failover uitvoeren
 Actoren doen niets uit zichzelf, ze hebben een andere service of client nodig die hen berichten stuurt. De actorsjabloon bevat een eenvoudig testscript dat u kunt gebruiken om te communiceren met de actorservice.
 
 > [!Note]
-> De test-client maakt gebruik van de actor proxy-klasse om te communiceren met actors, die moeten worden uitgevoerd binnen hetzelfde cluster als de actor-service, of dezelfde IP-adres ruimte delen.  U kunt de test-client uitvoeren op dezelfde computer als het lokale ontwikkel cluster.  Als u wilt communiceren met actors in een extern cluster, moet u echter een gateway implementeren op het cluster dat externe communicatie met de actors verwerkt.
+> De testclient gebruikt de klasse ActorProxy om te communiceren met actoren, die binnen hetzelfde cluster moeten worden uitgevoerd als de actorservice of dezelfde IP-adresruimte moeten delen.  U de testclient uitvoeren op dezelfde computer als het cluster lokale ontwikkeling.  Als u wilt communiceren met actoren in een extern cluster, moet u echter een gateway implementeren op het cluster die externe communicatie met de actoren verwerkt.
 
 1. Voer het script uit met behulp van het controleprogramma om de uitvoer van de actorservice te bekijken.  Via het testscript wordt de methode `setCountAsync()` op de actor aangeroepen om een teller te verhogen, wordt de methode `getCountAsync()` op de actor aangeroepen om de nieuwe tellerwaarde op te halen en wordt deze waarde weergegeven op de console.
 
-   In het geval van MAC OS X moet u de HelloWorldTestClient-map naar een bepaalde locatie in de container kopiëren door de volgende extra opdrachten uit te voeren.    
+   In het geval van MAC OS X moet u de map HelloWorldTestClient kopiëren naar de locatie in de container door de volgende extra opdrachten uit te voeren.    
     
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home
@@ -232,7 +232,7 @@ Actoren doen niets uit zichzelf, ze hebben een andere service of client nodig di
     watch -n 1 ./testclient.sh
     ```
 
-2. Zoek in Service Fabric Explorer het knooppunt op dat als host fungeert voor de primaire replica voor de actorservice. In de onderstaande schermafbeelding is dit knooppunt 3. Via de primaire servicereplica worden lees- en schrijfbewerkingen verwerkt.  Wijzigingen in de status van de service worden vervolgens gerepliceerd naar de secundaire replica's die worden uitgevoerd op de knoop punten 0 en 1 in de onderstaande scherm afbeelding.
+2. Zoek in Service Fabric Explorer het knooppunt op dat als host fungeert voor de primaire replica voor de actorservice. In de onderstaande schermafbeelding is dit knooppunt 3. Via de primaire servicereplica worden lees- en schrijfbewerkingen verwerkt.  Wijzigingen in de servicestatus worden vervolgens gerepliceerd naar de secundaire replica's, uitgevoerd op knooppunten 0 en 1 in de onderstaande schermafbeelding.
 
     ![Zoeken naar de primaire replica in Service Fabric Explorer][sfx-primary]
 
@@ -292,7 +292,7 @@ Ondersteuning van Reliable Services in Service Fabric voor uw toepassing.
   }
   ```
 
-### <a name="others"></a>Overige
+### <a name="others"></a>Andere
 #### <a name="transport"></a>Transport
 
 Ondersteuning van transportlaag voor Service Fabric Java-toepassing. U hoeft deze afhankelijkheid niet expliciet toe te voegen aan uw Reliable Actor- of Service-toepassingen, tenzij u programmeert op de transportlaag.

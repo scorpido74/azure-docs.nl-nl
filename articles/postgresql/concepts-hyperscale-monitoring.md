@@ -1,45 +1,45 @@
 ---
-title: Monitor and Tune-grootschalige (Citus)-Azure Database for PostgreSQL
-description: In dit artikel worden de functies voor het controleren en afstemmen in Azure Database for PostgreSQL-grootschalige (Citus) beschreven.
+title: Monitoren en afstemmen - Hyperscale (Citus) - Azure Database voor PostgreSQL
+description: In dit artikel worden monitoring- en tuningfuncties beschreven in Azure Database voor PostgreSQL - Hyperscale (Citus)
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d2e9fcd6f6292c1da76e725e90deda4547b3682d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975513"
 ---
-# <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-grootschalige (Citus) bewaken en afstemmen
+# <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database voor PostgreSQL - Hyperscale (Citus) bewaken en afstemmen
 
-Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Grootschalige (Citus) biedt verschillende bewakings opties om inzicht te krijgen in het gedrag van knoop punten in een server groep.
+Door gegevens over uw servers te bewaken, u problemen oplossen en optimaliseren voor uw werkbelasting. Hyperscale (Citus) biedt verschillende bewakingsopties om inzicht te geven in het gedrag van knooppunten in een servergroep.
 
 ## <a name="metrics"></a>Metrische gegevens
 
-Grootschalige (Citus) geeft metrische gegevens voor elk knoop punt in een server groep. De metrische gegevens bieden inzicht in het gedrag van ondersteunende resources. Elke metriek wordt verzonden met een frequentie van één minuut en heeft tot wel 30 dagen aan geschiedenis.
+Hyperscale (Citus) biedt statistieken voor elk knooppunt in een servergroep. De statistieken geven inzicht in het gedrag van ondersteunende resources. Elke statistiek wordt uitgezonden op een frequentie van één minuut en heeft tot 30 dagen geschiedenis.
 
-Naast het weer geven van grafieken van de metrische gegevens kunt u waarschuwingen configureren. Zie voor stapsgewijze instructies voor [het instellen van waarschuwingen](howto-hyperscale-alert-on-metric.md).  Andere taken zijn onder andere het instellen van geautomatiseerde acties, het uitvoeren van geavanceerde analyses en het archiveren van geschiedenis. Zie het overzicht van Azure- [metrische](../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie.
+Naast het bekijken van grafieken van de statistieken, u waarschuwingen configureren. Zie [Waarschuwingen instellen](howto-hyperscale-alert-on-metric.md)voor stapsgewijze richtlijnen.  Andere taken zijn het instellen van geautomatiseerde acties, het uitvoeren van geavanceerde analyses en het archiveren van geschiedenis. Zie het overzicht [van Azure Metrics](../monitoring-and-diagnostics/monitoring-overview-metrics.md)voor meer informatie.
 
-### <a name="list-of-metrics"></a>Lijst met metrische gegevens
+### <a name="list-of-metrics"></a>Lijst met statistieken
 
-Deze metrische gegevens zijn beschikbaar voor grootschalige-knoop punten (Citus):
+Deze statistieken zijn beschikbaar voor Citus-knooppunten (Hyperscale):
 
-|Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Beschrijving|
+|Gegevens|Metrische weergavenaam|Eenheid|Beschrijving|
 |---|---|---|---|
-|active_connections|Actieve verbindingen|Aantal|Het aantal actieve verbindingen met de server.|
-|cpu_percent|CPU-percentage|Procent|Het percentage CPU-gebruik.|
-|IOPS|IOPS|Aantal|De [IOPS-definitie](../virtual-machines/linux/premium-storage-performance.md#iops) en [grootschalige-door Voer](concepts-hyperscale-configuration-options.md) bekijken|
-|memory_percent|Geheugen percentage|Procent|Het percentage geheugen dat in gebruik is.|
-|network_bytes_ingress|Netwerk in|Bytes|Netwerk in meerdere actieve verbindingen.|
-|network_bytes_egress|Netwerk uit|Bytes|Netwerk uit over actieve verbindingen.|
-|storage_percent|Opslag percentage|Procent|Het percentage van de opslag ruimte dat uit het maximum van de server wordt gebruikt.|
-|storage_used|Gebruikte opslag|Bytes|De hoeveelheid opslag ruimte die wordt gebruikt. De opslag die door de service wordt gebruikt, kan de database bestanden, transactie logboeken en de server logboeken bevatten.|
+|active_connections|Actieve verbindingen|Count|Het aantal actieve verbindingen met de server.|
+|cpu_percent|CPU-percentage|Percentage|Het percentage CPU in gebruik.|
+|iops iops|IOPS|Count|Zie de [IOPS-definitie](../virtual-machines/linux/premium-storage-performance.md#iops) en [Hyperscale-doorvoer](concepts-hyperscale-configuration-options.md)|
+|memory_percent|Geheugenpercentage|Percentage|Het percentage geheugen in gebruik.|
+|network_bytes_ingress|Netwerk in|Bytes|Netwerk In over actieve verbindingen.|
+|network_bytes_egress|Netwerk uit|Bytes|Netwerk out via actieve verbindingen.|
+|storage_percent|Opslagpercentage|Percentage|Het percentage opslagruimte dat buiten het maximum van de server wordt gebruikt.|
+|storage_used|Gebruikte opslag|Bytes|De hoeveelheid opslagruimte die in gebruik is. De opslag die door de service wordt gebruikt, kan de databasebestanden, transactielogboeken en de serverlogboeken bevatten.|
 
-Azure levert geen statistische metrische gegevens voor het cluster als geheel, maar de metrische gegevens voor meerdere knoop punten kunnen in dezelfde grafiek worden geplaatst.
+Azure levert geen geaggregeerde statistieken voor het cluster als geheel, maar metrische gegevens voor meerdere knooppunten kunnen op dezelfde grafiek worden geplaatst.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [waarschuwingen instellen](howto-hyperscale-alert-on-metric.md) voor hulp bij het maken van een waarschuwing op metrische gegevens.
+- Bekijk [hoe u waarschuwingen instelt](howto-hyperscale-alert-on-metric.md) voor richtlijnen voor het maken van een waarschuwing op een statistiek.

@@ -1,6 +1,6 @@
 ---
-title: 'Power shell: proximity-plaatsings groepen gebruiken'
-description: Meer informatie over het maken en gebruiken van proximity placement groups met behulp van Azure PowerShell.
+title: 'PowerShell: nabijheidsplaatsingsgroepen gebruiken'
+description: Meer informatie over het maken en gebruiken van nabijheidsplaatsingsgroepen met Azure PowerShell.
 services: virtual-machines
 ms.service: virtual-machines
 ms.topic: article
@@ -9,22 +9,22 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: cynthn
 ms.openlocfilehash: f69e245d72a63b942896cdd9f4a2225cb4c1706d
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78208522"
 ---
-# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Vm's implementeren op proximity-plaatsings groepen met Power shell
+# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>VM's implementeren voor nabijheidsplaatsingsgroepen met PowerShell
 
 
-Als u virtuele machines zo dicht mogelijk wilt ophalen, moet u deze implementeren in een [proximity-plaatsings groep](co-location.md#proximity-placement-groups).
+Als u VM's zo dicht mogelijk wilt plaatsen en de laagst mogelijke latentie wilt bereiken, moet u deze implementeren binnen een [plaatsingsgroep voor de nabijheid.](co-location.md#proximity-placement-groups)
 
-Een proximity-plaatsings groep is een logische groepering die wordt gebruikt om ervoor te zorgen dat Azure Compute-resources zich fysiek dicht bij elkaar bevinden. Proximity-plaatsings groepen zijn handig voor werk belastingen waarbij lage latentie een vereiste is.
+Een plaatsingsgroep voor nabijheid is een logische groepering die wordt gebruikt om ervoor te zorgen dat Azure-rekenbronnen fysiek dicht bij elkaar staan. Plaatsingsgroepen voor nabijheidzijn handig voor workloads waarbij lage latentie een vereiste is.
 
 
 ## <a name="create-a-proximity-placement-group"></a>Een nabijheidsplaatsingsgroep maken
-Maak een proximity-plaatsings groep met behulp van de cmdlet [New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) . 
+Maak een plaatsingsgroep voor nabijheid met de cmdlet [Nieuw-AzProximityPlacementGroep.](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -38,9 +38,9 @@ $ppg = New-AzProximityPlacementGroup `
    -ProximityPlacementGroupType Standard
 ```
 
-## <a name="list-proximity-placement-groups"></a>Proximity-plaatsings groepen weer geven
+## <a name="list-proximity-placement-groups"></a>Plaatsingsgroepen voor nabijheid weergeven
 
-U kunt alle proximity-plaatsings groepen weer geven met behulp van de cmdlet [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup) .
+U alle nabijheidsplaatsingsgroepen weergeven met de cmdlet [Get-AzProximityPlacementGroup.](/powershell/module/az.compute/get-azproximityplacementgroup)
 
 ```azurepowershell-interactive
 Get-AzProximityPlacementGroup
@@ -49,7 +49,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 
-Maak een virtuele machine in de plaatsings groep met behulp van `-ProximityPlacementGroup $ppg.Id` om te verwijzen naar de locatie-ID van de Proximity-groep wanneer u [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) gebruikt om de virtuele machine te maken.
+Maak een VM in de `-ProximityPlacementGroup $ppg.Id` plaatsingsgroep in de nabijheid met de verwijzing naar de groeps-id voor plaatsing in de nabijheid wanneer u [Nieuw-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) gebruikt om de VM te maken.
 
 ```azurepowershell-interactive
 $vmName = "myVM"
@@ -62,16 +62,16 @@ New-AzVm `
   -ProximityPlacementGroup $ppg.Id
 ```
 
-U kunt de virtuele machine in de plaatsings groep weer geven met behulp van [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup).
+U de VM in de plaatsingsgroep zien met [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup).
 
 ```azurepowershell-interactive
 Get-AzProximityPlacementGroup -ResourceId $ppg.Id |
     Format-Table -Property VirtualMachines -Wrap
 ```
 
-### <a name="move-an-existing-vm-into-a-proximity-placement-group"></a>Een bestaande virtuele machine verplaatsen naar een plaatsings groep voor nabijheid
+### <a name="move-an-existing-vm-into-a-proximity-placement-group"></a>Een bestaande virtuele machine verplaatsen naar een plaatsingsgroep voor nabijheid
 
-U kunt ook een bestaande virtuele machine toevoegen aan een proximity-plaatsings groep. U moet eerst de virtuele machine stop\deallocate en vervolgens de virtuele machine bijwerken en opnieuw starten.
+U ook een bestaande vm toevoegen aan een plaatsingsgroep voor nabijheid. U moet eerst stoppen met de VM, vervolgens de VM bijwerken en opnieuw starten.
 
 ```azurepowershell-interactive
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
@@ -81,9 +81,9 @@ Update-AzVM -VM $vm -ResourceGroupName $vm.ResourceGroupName -ProximityPlacement
 Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 ```
 
-### <a name="move-an-existing-vm-out-of-a-proximity-placement-group"></a>Een bestaande virtuele machine uit een proximity-plaatsings groep verplaatsen
+### <a name="move-an-existing-vm-out-of-a-proximity-placement-group"></a>Een bestaande virtuele machine uit een plaatsingsgroep voor nabijheid verplaatsen
 
-Als u een virtuele machine uit een proximity-plaatsings groep wilt verwijderen, moet u eerst de virtuele machine stop\deallocate en vervolgens de virtuele machine bijwerken en opnieuw starten.
+Als u een VM uit een plaatsingsgroep voor nabijheid wilt verwijderen, moet u eerst de VM stoppen en vervolgens de VM bijwerken en opnieuw opstarten.
 
 ```azurepowershell-interactive
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
@@ -96,11 +96,11 @@ Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 
 
 ## <a name="availability-sets"></a>Beschikbaarheidssets
-U kunt ook een beschikbaarheidsset maken in de plaatsings groep voor proximity. Gebruik dezelfde `-ProximityPlacementGroup`-para meter met de cmdlet [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) voor het maken van een beschikbaarheidsset en alle virtuele machines die zijn gemaakt in de beschikbaarheidsset, worden ook gemaakt in dezelfde plaatsings groep.
+U ook een beschikbaarheidsset maken in uw nabijheidsplaatsingsgroep. Gebruik dezelfde `-ProximityPlacementGroup` parameter met de cmdlet [Nieuw-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) om een beschikbaarheidsset te maken en alle VM's die in de beschikbaarheidsset zijn gemaakt, worden ook in dezelfde plaatsingsgroep voor nabijheid gemaakt.
 
-Als u een bestaande beschikbaarheidsset wilt toevoegen aan of verwijderen uit een proximity-plaatsings groep, moet u eerst alle virtuele machines in de beschikbaarheidsset stoppen. 
+Als u een bestaande beschikbaarheidsset wilt toevoegen of verwijderen aan een groep nabijheidsplaatsing, moet u eerst alle VM's in de beschikbaarheidsset stoppen. 
 
-### <a name="move-an-existing-availability-set-into-a-proximity-placement-group"></a>Een bestaande beschikbaarheidsset verplaatsen naar een proximity-plaatsings groep
+### <a name="move-an-existing-availability-set-into-a-proximity-placement-group"></a>Een bestaande beschikbaarheidsset verplaatsen naar een groep nabijheidsplaatsing
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
@@ -122,7 +122,7 @@ foreach ($vmId in $vmIDs){
     } 
 ```
 
-### <a name="move-an-existing-availability-set-out-of-a-proximity-placement-group"></a>Een bestaande Beschik baarheid uit een plaatsings groep voor nabijheid verplaatsen
+### <a name="move-an-existing-availability-set-out-of-a-proximity-placement-group"></a>Een bestaande beschikbaarheid uit een nabijheidsplaatsingsgroep verplaatsen
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
@@ -146,12 +146,12 @@ foreach ($vmId in $vmIDs){
 
 ## <a name="scale-sets"></a>Schaalsets
 
-U kunt ook een schaalset maken in de plaatsings groep voor proximity. Gebruik dezelfde `-ProximityPlacementGroup`-para meter met [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) om een schaalset te maken en alle instanties worden gemaakt in dezelfde plaatsings groep.
+U ook een schaalset maken in uw plaatsingsgroep voor nabijheid. Gebruik dezelfde `-ProximityPlacementGroup` parameter met [Nieuw-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) om een schaalset te maken en alle exemplaren worden gemaakt in dezelfde plaatsingsgroep voor nabijheid.
 
 
-Als u een bestaande schaalset wilt toevoegen aan of verwijderen uit een proximity-plaatsings groep, moet u eerst de schaalset stoppen. 
+Als u een bestaande schaalset wilt toevoegen of verwijderen aan een plaatsingsgroep voor nabijheid, moet u eerst de schaalset stoppen. 
 
-### <a name="move-an-existing-scale-set-into-a-proximity-placement-group"></a>Een bestaande schaalset verplaatsen naar een proximity-plaatsings groep
+### <a name="move-an-existing-scale-set-into-a-proximity-placement-group"></a>Een bestaande schaalset verplaatsen naar een plaatsingsgroep voor nabijheid
 
 ```azurepowershell-interactive
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPG -Name myPPG
@@ -161,7 +161,7 @@ Update-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupN
 Start-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
 ```
 
-### <a name="move-an-existing-scale-set-out-of-a-proximity-placement-group"></a>Een bestaande schaalset uit een proximity-plaatsings groep verplaatsen
+### <a name="move-an-existing-scale-set-out-of-a-proximity-placement-group"></a>Een bestaande schaal die is ingesteld uit een groep nabijheidsplaatsing verplaatsen
 
 ```azurepowershell-interactive
 $vmss = Get-AzVmss -ResourceGroupName myVMSSResourceGroup -VMScaleSetName myScaleSet
@@ -173,4 +173,4 @@ Start-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupNa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt ook de [Azure cli](../linux/proximity-placement-groups.md) gebruiken om proximity-plaatsings groepen te maken.
+U de [Azure CLI](../linux/proximity-placement-groups.md) ook gebruiken om nabijheidsplaatsingsgroepen te maken.

@@ -1,7 +1,7 @@
 ---
-title: OWIN-based web-Api's migreren naar b2clogin.com
+title: OWIN-gebaseerde web-API's migreren naar b2clogin.com
 titleSuffix: Azure AD B2C
-description: Meer informatie over het inschakelen van een .NET-Web-API voor het ondersteunen van tokens die zijn uitgegeven door meerdere token verleners terwijl u uw toepassingen migreert naar b2clogin.com.
+description: Meer informatie over hoe u een .NET-web-API inschakelen om tokens te ondersteunen die zijn uitgegeven door meerdere token-instellingen terwijl u uw toepassingen migreert naar b2clogin.com.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,49 +12,49 @@ ms.date: 07/31/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5daf88e746ea803f345c79bd31d656f2615b6754
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78184091"
 ---
-# <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Een op OWIN gebaseerde web-API migreren naar b2clogin.com
+# <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Een OWIN-gebaseerde web-API migreren naar b2clogin.com
 
-In dit artikel wordt een techniek beschreven voor het inschakelen van ondersteuning voor meerdere token verleners in Web-Api's die de [open web interface voor .net (OWIN)](http://owin.org/)implementeren. Het ondersteunen van meerdere token-eind punten is handig wanneer u Azure Active Directory B2C (Azure AD B2C) Api's en hun toepassingen migreert van *login.microsoftonline.com* naar *b2clogin.com*.
+In dit artikel wordt een techniek beschreven voor het inschakelen van ondersteuning voor meerdere token-emittenten in web-API's die de [Open Web Interface voor .NET (OWIN)](http://owin.org/)implementeren. Ondersteuning van meerdere tokeneindpunten is handig wanneer u Azure Active Directory B2C (Azure AD B2C) API's en hun toepassingen migreert van *login.microsoftonline.com* naar *b2clogin.com*.
 
-Door ondersteuning toe te voegen aan uw API voor het accepteren van tokens die zijn uitgegeven door zowel b2clogin.com als login.microsoftonline.com, kunt u uw webtoepassingen op een gefaseerde manier migreren voordat u ondersteuning voor login.microsoftonline.com-uitgegeven tokens uit de API verwijdert.
+Door ondersteuning toe te voegen aan uw API voor het accepteren van tokens die zijn uitgegeven door zowel b2clogin.com als login.microsoftonline.com, u uw webtoepassingen gefaseerd migreren voordat u ondersteuning voor login.microsoftonline.com uitgegeven tokens uit de API verwijdert.
 
-De volgende secties bevatten een voor beeld van het inschakelen van meerdere verleners in een web-API die gebruikmaakt van de [micro soft OWIN][katana] middleware Components (Katana). Hoewel de code voorbeelden specifiek zijn voor de micro soft OWIN-middleware, moet de algemene techniek van toepassing zijn op andere OWIN-bibliotheken.
+In de volgende secties wordt een voorbeeld gegeven van hoe u meerdere emittenten inschakelt in een web-API die gebruikmaakt van de [Microsoft OWIN][katana] middleware-componenten (Katana). Hoewel de codevoorbeelden specifiek zijn voor de Microsoft OWIN middleware, moet de algemene techniek van toepassing zijn op andere OWIN-bibliotheken.
 
 > [!NOTE]
-> Dit artikel is bedoeld voor Azure AD B2C klanten met momenteel geïmplementeerde Api's en toepassingen die verwijzen naar `login.microsoftonline.com` en die naar het aanbevolen `b2clogin.com`-eind punt willen migreren. Als u een nieuwe toepassing wilt instellen, gebruikt u [b2clogin.com](b2clogin.md) als gestuurde.
+> Dit artikel is bedoeld voor Azure AD B2C-klanten met `login.microsoftonline.com` momenteel geïmplementeerde API's `b2clogin.com` en toepassingen die verwijzen naar en die willen migreren naar het aanbevolen eindpunt. Als u een nieuwe toepassing instelt, gebruikt u [b2clogin.com](b2clogin.md) zoals aangegeven.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende Azure AD B2C resources nodig om door te gaan met de stappen in dit artikel:
+U hebt de volgende Azure AD B2C-resources nodig voordat u verdergaat met de stappen in dit artikel:
 
-* [Gebruikers stromen](tutorial-create-user-flows.md) of [aangepaste beleids regels](custom-policy-get-started.md) die zijn gemaakt in uw Tenant
+* [Gebruikersstromen](tutorial-create-user-flows.md) of [aangepast beleid](custom-policy-get-started.md) dat in uw tenant is gemaakt
 
-## <a name="get-token-issuer-endpoints"></a>Eind punten van token Uitgever ophalen
+## <a name="get-token-issuer-endpoints"></a>Eindpunten van tokenuitgevende instellingen
 
-U moet eerst de eind punt-Uri's van de token Uitgever ophalen voor elke verlener die u wilt ondersteunen in uw API. Als u de *b2clogin.com* -en *login.microsoftonline.com* -eind punten wilt ophalen die worden ondersteund door uw Azure AD B2C-Tenant, gebruikt u de volgende procedure in de Azure Portal.
+U moet eerst de url's van het token-emittenteindpunt krijgen voor elke uitgever die u in uw API wilt ondersteunen. Als u de *b2clogin.com* en *login.microsoftonline.com* eindpunten wilt krijgen die worden ondersteund door uw Azure AD B2C-tenant, gebruikt u de volgende procedure in de Azure-portal.
 
-Begin met het selecteren van een van uw bestaande gebruikers stromen:
+Begin met het selecteren van een van uw bestaande gebruikersstromen:
 
-1. Navigeer naar uw Azure AD B2C-Tenant in de [Azure Portal](https://portal.azure.com)
-1. Selecteer onder **beleids regels** **gebruikers stromen (beleid)**
-1. Selecteer een bestaand beleid, bijvoorbeeld *B2C_1_signupsignin1*, en selecteer vervolgens **gebruikers stroom uitvoeren**
-1. Selecteer onder de kop **gebruikers stroom uitvoeren** aan de bovenkant van de pagina de Hyper link om naar het OpenID Connect Connect-detectie-eind punt voor die gebruikers stroom te gaan.
+1. Navigeren naar uw Azure AD B2C-tenant in de [Azure-portal](https://portal.azure.com)
+1. Selecteer **onder Beleid** **gebruikersstromen (beleidsregels)**
+1. Selecteer een bestaand beleid, *bijvoorbeeld B2C_1_signupsignin1*, selecteer **Vervolgens Gebruikersstroom uitvoeren**
+1. Selecteer onder de kop **Gebruikersstroom uitvoeren** boven aan de pagina de hyperlink om naar het eindpunt voor detectie van OpenID Connect voor die gebruikersstroom te navigeren.
 
-    ![Bekende URI-Hyper link op de pagina nu uitvoeren van de Azure Portal](media/multi-token-endpoints/portal-01-policy-link.png)
+    ![Bekende URI-hyperlink op de nu-pagina uitvoeren van de Azure-portal](media/multi-token-endpoints/portal-01-policy-link.png)
 
-1. Noteer de `issuer` waarde op de pagina die in de browser wordt geopend, bijvoorbeeld:
+1. Neem op de pagina die in `issuer` uw browser wordt geopend de waarde op, bijvoorbeeld:
 
     `https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/`
 
-1. Gebruik de vervolg keuzelijst **domein selecteren** om het andere domein te selecteren en voer de vorige twee stappen opnieuw uit en noteer de `issuer` waarde.
+1. Gebruik de vervolgkeuzelijst **Domein selecteren** om het andere domein te selecteren `issuer` en vervolgens de vorige twee stappen opnieuw uit te voeren en de waarde ervan vast te leggen.
 
-Er zijn nu twee Uri's opgenomen die vergelijkbaar zijn met:
+U moet nu twee opgenomen URI's hebben die vergelijkbaar zijn met:
 
 ```
 https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/
@@ -63,36 +63,36 @@ https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/
 
 ### <a name="custom-policies"></a>Aangepast beleid
 
-Als u aangepaste beleids regels hebt in plaats van gebruikers stromen, kunt u een vergelijkbaar proces gebruiken om de Issuer-Uri's op te halen.
+Als u aangepaste beleidsregels hebt in plaats van gebruikersstromen, u een vergelijkbaar proces gebruiken om de URL's van de uitgever op te halen.
 
-1. Navigeer naar uw Azure AD B2C-Tenant
-1. **Identiteits ervaring-Framework** selecteren
-1. Selecteer een van de Relying Party-beleids regels, bijvoorbeeld *B2C_1A_signup_signin*
-1. Gebruik de vervolg keuzelijst **domein selecteren** om een domein te selecteren, bijvoorbeeld *yourtenant.b2clogin.com*
-1. Selecteer de Hyper link die wordt weer gegeven onder **OpenID Connect Connect Discovery-eind punt**
+1. Navigeren naar uw Azure AD B2C-tenant
+1. Selecteer **Identity Experience Framework**
+1. Selecteer een van uw beleid voor relying party, bijvoorbeeld *B2C_1A_signup_signin*
+1. Gebruik de vervolgkeuzelijst **Domein selecteren** om een domein te selecteren, bijvoorbeeld *yourtenant.b2clogin.com*
+1. De hyperlink selecteren die wordt weergegeven onder **detectieeindpunt Van OpenID Connect**
 1. De `issuer` waarde vastleggen
-1. Voer de stappen 4-6 voor het andere domein uit, bijvoorbeeld *login.microsoftonline.com*
+1. Voer de stappen 4-6 uit voor het andere domein, bijvoorbeeld *login.microsoftonline.com*
 
 ## <a name="get-the-sample-code"></a>De voorbeeldcode halen
 
-Nu u beide token eindpunt-Uri's hebt, moet u de code bijwerken om op te geven dat beide eind punten geldige verleners zijn. Als u een voor beeld wilt door lopen, kunt u de voorbeeld toepassing downloaden of klonen en vervolgens het voor beeld bijwerken zodat beide eind punten als geldige verleners worden ondersteund.
+Nu u beide token-eindpunt-URI's hebt, moet u uw code bijwerken om op te geven dat beide eindpunten geldige emittenten zijn. Als u een voorbeeld wilt doorlopen, downloadt of kloont u de voorbeeldtoepassing en werkt u het voorbeeld bij om beide eindpunten te ondersteunen als geldige emittenten.
 
-Het archief downloaden: [Active-Directory-B2C-DotNet-webapp-and-webapi-Master. zip][sample-archive]
+Download het archief: [active-directory-b2c-dotnet-webapp-and-webapi-master.zip][sample-archive]
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-## <a name="enable-multiple-issuers-in-web-api"></a>Meerdere verleners inschakelen in de Web-API
+## <a name="enable-multiple-issuers-in-web-api"></a>Meerdere emittenten inschakelen in web-API
 
-In deze sectie werkt u de code bij om aan te geven dat beide eind punten van de token Uitgever geldig zijn.
+In deze sectie werkt u de code bij om op te geven dat beide eindpunten van tokenuitgevende instellingen geldig zijn.
 
-1. Open de oplossing **B2C-WebAPI-dotnet. SLN** in Visual Studio
-1. Open in het project **TaskService** het bestand *TaskService\\App_Start\\* * startup.auth.cs** * in uw editor
-1. Voeg de volgende `using`-instructie toe aan het begin van het bestand:
+1. Open de **B2C-WebAPI-DotNet.sln-oplossing** in Visual Studio
+1. Open in het **Taakserviceproject** het *bestand\\TaskService App_Start\\**Startup.Auth.cs*** in uw editor
+1. Voeg de `using` volgende richtlijn toe aan de bovenkant van het bestand:
 
     `using System.Collections.Generic;`
-1. Voeg de eigenschap [`ValidIssuers`][validissuers] aan de [`TokenValidationParameters`][tokenvalidationparameters] definitie toe en geef beide uri's op die u in de vorige sectie hebt genoteerd:
+1. Voeg [`ValidIssuers`][validissuers] de eigenschap [`TokenValidationParameters`][tokenvalidationparameters] toe aan de definitie en geef beide URI's op die u in de vorige sectie hebt opgenomen:
 
     ```csharp
     TokenValidationParameters tvps = new TokenValidationParameters
@@ -107,7 +107,7 @@ In deze sectie werkt u de code bij om aan te geven dat beide eind punten van de 
     };
     ```
 
-`TokenValidationParameters` wordt door MSAL.NET gegeven en wordt gebruikt door de OWIN-middleware in de volgende sectie van code in *Startup.auth.cs*. Als er meerdere geldige verleners zijn opgegeven, wordt de OWIN-toepassings pijplijn op de hoogte gesteld dat beide token-eind punten geldige verleners zijn.
+`TokenValidationParameters`wordt geleverd door MSAL.NET en wordt verbruikt door de OWIN middleware in het volgende gedeelte van de code in *Startup.Auth.cs*. Als meerdere geldige emittenten zijn opgegeven, wordt de OWIN-toepassingspijplijn ervan bewust gemaakt dat beide tokeneindpunten geldige emittenten zijn.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
@@ -117,15 +117,15 @@ app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
 });
 ```
 
-Zoals eerder vermeld, bieden andere OWIN-bibliotheken doorgaans een vergelijk bare faciliteit voor het ondersteunen van meerdere verleners. Hoewel voor beelden worden gegeven voor elke bibliotheek buiten het bereik van dit artikel, kunt u een soort gelijke techniek gebruiken voor de meeste bibliotheken.
+Zoals eerder vermeld, bieden andere OWIN-bibliotheken doorgaans een vergelijkbare faciliteit voor het ondersteunen van meerdere emittenten. Hoewel het geven van voorbeelden voor elke bibliotheek buiten het bereik van dit artikel valt, u voor de meeste bibliotheken een vergelijkbare techniek gebruiken.
 
-## <a name="switch-endpoints-in-web-app"></a>Scha kelen tussen eind punten in web-app
+## <a name="switch-endpoints-in-web-app"></a>Eindpunten in web-app schakelen
 
-Wanneer beide Uri's nu door de Web-API worden ondersteund, moet u uw webtoepassing nu bijwerken zodat de tokens worden opgehaald uit het b2clogin.com-eind punt.
+Met beide URI's die nu door uw web-API worden ondersteund, hebt u nu uw webtoepassing bijgewerkt, zodat deze tokens uit het b2clogin.com eindpunt ophaalt.
 
-U kunt bijvoorbeeld de voor beeld-webtoepassing zodanig configureren dat het nieuwe eind punt wordt gebruikt door de `ida:AadInstance` waarde in het bestand *project taskwebapp\\* * web. config** * van het **project taskwebapp** -project te wijzigen.
+U de voorbeeldwebtoepassing bijvoorbeeld configureren om het nieuwe `ida:AadInstance` eindpunt te gebruiken door de waarde in het *bestand TaskWebApp\\**Web.config*** van het **TaakWebApp-project** te wijzigen.
 
-Wijzig de `ida:AadInstance` waarde in *Web. config* of project taskwebapp zodat deze verwijst naar `{your-b2c-tenant-name}.b2clogin.com` in plaats van `login.microsoftonline.com`.
+Wijzig `ida:AadInstance` de waarde in de *Web.config* van TaskWebApp, zodat deze verwijst `{your-b2c-tenant-name}.b2clogin.com` in plaats van `login.microsoftonline.com`.
 
 Voor:
 
@@ -134,20 +134,20 @@ Voor:
 <add key="ida:AadInstance" value="https://login.microsoftonline.com/tfp/{0}/{1}" />
 ```
 
-Na (Vervang `{your-b2c-tenant}` door de naam van uw B2C-Tenant):
+Na (vervangen `{your-b2c-tenant}` door de naam van uw B2C huurder):
 
 ```xml
 <!-- New value -->
 <add key="ida:AadInstance" value="https://{your-b2c-tenant}.b2clogin.com/tfp/{0}/{1}" />
 ```
 
-Wanneer de eindpunt teken reeksen zijn gemaakt tijdens de uitvoering van de web-app, worden de b2clogin.com-eind punten gebruikt bij het aanvragen van tokens.
+Wanneer de eindpunttekenreeksen worden opgebouwd tijdens de uitvoering van de web-app, worden de op b2clogin.com gebaseerde eindpunten gebruikt wanneer deze tokens aanvragen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel vindt u een methode voor het configureren van een web-API die de micro soft OWIN middleware (Katana) implementeert voor het accepteren van tokens van meerdere issue-eind punten. Zoals u ziet, zijn er verschillende andere teken reeksen in de *Web. config* -bestanden van de TaskService-en project taskwebapp-projecten die moeten worden gewijzigd als u deze projecten wilt bouwen en uitvoeren met uw eigen Tenant. U kunt de projecten op de juiste manier aanpassen als u ze in actie wilt zien, maar een volledig overzicht van het uitvoeren van dit artikel.
+In dit artikel wordt een methode gepresenteerd voor het configureren van een web-API die de Microsoft OWIN middleware (Katana) implementeert om tokens van meerdere emittenteindpunten te accepteren. Zoals u wellicht opmerkt, zijn er verschillende andere tekenreeksen in de *Web.Config-bestanden* van zowel de TaskService- als TaskWebApp-projecten die moeten worden gewijzigd als u deze projecten wilt bouwen en uitvoeren tegen uw eigen tenant. U bent van harte welkom om de projecten op de juiste manier te wijzigen als u ze in actie wilt zien, maar een volledige walk-through om dit te doen valt buiten het bereik van dit artikel.
 
-Zie [overzicht van tokens in azure Active Directory B2C](tokens-overview.md)voor meer informatie over de verschillende typen beveiligings tokens die worden gegenereerd door Azure AD B2C.
+Zie [Overzicht van tokens in Azure Active Directory B2C](tokens-overview.md)voor meer informatie over de verschillende typen beveiligingstokens die worden uitgezonden door Azure AD B2C.
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip

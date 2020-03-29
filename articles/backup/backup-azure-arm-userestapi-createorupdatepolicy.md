@@ -1,51 +1,51 @@
 ---
-title: Back-upbeleid maken met behulp van REST API
-description: In dit artikel vindt u informatie over het maken en beheren van back-upbeleid (planning en retentie) met behulp van REST API.
+title: Back-upbeleid maken met REST API
+description: In dit artikel leert u hoe u back-upbeleid (planning en retentie) maken en beheren met behulp van REST API.
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76963849"
 ---
-# <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Back-upbeleid voor Azure Recovery Services maken met behulp van REST API
+# <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Back-upbeleid voor Azure Recovery Services maken met rest-API
 
-De stappen voor het maken van een back-upbeleid voor een Azure Recovery Services-kluis worden beschreven in het [beleid rest API document](/rest/api/backup/protectionpolicies/createorupdate). Laat ons dit document gebruiken als referentie voor het maken van een beleid voor back-ups van Azure-VM'S.
+De stappen voor het maken van een back-upbeleid voor een Azure Recovery Services-kluis worden beschreven in het [DOCUMENT REST API-document voor het beleid.](/rest/api/backup/protectionpolicies/createorupdate) Laten we dit document gebruiken als referentie om een beleid voor Azure VM-back-up te maken.
 
 ## <a name="create-or-update-a-policy"></a>Een beleid maken of bijwerken
 
-Als u een Azure Backup beleid wilt maken of bijwerken, gebruikt u de volgende *put* -bewerking
+Als u een Azure Backup-beleid wilt maken of bijwerken, gebruikt u de volgende *PUT-bewerking*
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2019-05-13
 ```
 
-De `{policyName}` en `{vaultName}` zijn opgenomen in de URI. Meer informatie vindt u in de hoofd tekst van de aanvraag.
+De `{policyName}` `{vaultName}` en zijn voorzien in de URI. Aanvullende informatie wordt verstrekt in de aanvraaginstantie.
 
-## <a name="create-the-request-body"></a>De aanvraag tekst maken
+## <a name="create-the-request-body"></a>De aanvraaginstantie maken
 
-Als u bijvoorbeeld een beleid voor Azure VM backup wilt maken, volgt u de onderdelen van de hoofd tekst van de aanvraag.
+Als u bijvoorbeeld een beleid voor Azure VM-back-up wilt maken, volgt u de onderdelen van de aanvraaginstantie.
 
-|Name  |Verplicht  |Type  |Beschrijving  |
+|Name  |Vereist  |Type  |Beschrijving  |
 |---------|---------|---------|---------|
-|properties     |   Waar      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource-eigenschappen        |
+|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource eigenschappen        |
 |tags     |         | Object        |  Resourcetags       |
 
-Raadpleeg het [back-upbeleid rest API document](/rest/api/backup/protectionpolicies/createorupdate)voor een volledige lijst met definities in de hoofd tekst van de aanvraag.
+Raadpleeg voor de volledige lijst met definities in de aanvraaginstantie het [REST API-document voor back-upbeleid](/rest/api/backup/protectionpolicies/createorupdate).
 
-### <a name="example-request-body"></a>Voorbeeld aanvraag tekst
+### <a name="example-request-body"></a>Voorbeeldaanvraaginstantie
 
-De volgende aanvraag tekst definieert een back-upbeleid voor back-ups van virtuele Azure-machines.
+In de volgende aanvraaginstantie wordt een back-upbeleid voor Azure VM-back-ups gedefinieerd.
 
-Het beleid vertelt:
+Het beleid zegt:
 
-- Neem elke maandag, woensdag, donderdag om 10:00 AM Pacific Standard Time een wekelijkse back-up.
-- Bewaar de back-ups die zijn gemaakt op elke maandag, woensdag, donderdag gedurende één week.
-- Bewaar de back-ups die zijn gemaakt op elke eerste woensdag en derde donderdag van een maand voor twee maanden (overschrijft de eerdere Bewaar voorwaarden, indien van toepassing).
-- Bewaar de back-ups die zijn gemaakt op de vierde maandag en vierde donderdag in februari en november voor vier jaar (overschrijft de eerdere Bewaar voorwaarden, indien van toepassing).
+- Neem een wekelijkse back-up elke maandag, woensdag, donderdag om 10:00 AM Pacific Standard Time.
+- Bewaar de back-ups genomen op elke maandag, woensdag, donderdag voor een week.
+- Bewaar de back-ups genomen op elke eerste woensdag en de derde donderdag van een maand voor twee maanden (overschrijft de vorige retentie voorwaarden, indien van toepassing).
+- Bewaar de back-ups genomen op de vierde maandag en de vierde donderdag in februari en november voor vier jaar (overschrijft de vorige retentie voorwaarden, indien van toepassing).
 
 ```json
 {
@@ -129,22 +129,22 @@ Het beleid vertelt:
 ```
 
 > [!IMPORTANT]
-> De tijd notaties voor planning en retentie ondersteunen alleen DateTime. Ze ondersteunen geen tijd notatie.
+> De tijdnotaties voor planning en retentie ondersteunen alleen DateTime. Ze ondersteunen niet alleen het tijdsformaat.
 
 ## <a name="responses"></a>Antwoorden
 
-Het maken/bijwerken van het back-upbeleid is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
+De creatie/update van het back-upbeleid is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat deze bewerking een andere bewerking maakt die afzonderlijk moet worden bijgehouden.
 
-Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
+Het retourneert twee antwoorden: 202 (Geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer die bewerking is voltooid.
 
 |Name  |Type  |Beschrijving  |
 |---------|---------|---------|
-|200 OK     |    [Beveiligings PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
-|202 geaccepteerd     |         |     Afgewezen    |
+|200 OK     |    [Protection PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
+|202 Geaccepteerd     |         |     Geaccepteerd    |
 
-### <a name="example-responses"></a>Voorbeeld reacties
+### <a name="example-responses"></a>Voorbeeldreacties
 
-Zodra u de *put* -aanvraag voor het maken of bijwerken van beleid hebt verzonden, is het eerste antwoord 202 (geaccepteerd) met een locatie header of Azure-async-header.
+Zodra u de *PUT-aanvraag* voor het maken of bijwerken van het beleid hebt ingediend, is het eerste antwoord 202 (Geaccepteerd) met een locatiekop- of Azure-async-header.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -164,13 +164,13 @@ Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000
 X-Powered-By: ASP.NET
 ```
 
-Volg vervolgens de resulterende bewerking met behulp van de locatie header of de Azure-AsyncOperation-header met een eenvoudige *Get* -opdracht.
+Houd vervolgens de resulterende bewerking bij met behulp van de locatiekop- of Azure-AsyncOperation-header met een eenvoudige *OPDRACHT GET.*
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 ```
 
-Zodra de bewerking is voltooid, wordt 200 (OK) geretourneerd met de beleids inhoud in de hoofd tekst van het antwoord.
+Zodra de bewerking is voltooid, retourneert deze 200 (OK) met de beleidsinhoud in de reactieinstantie.
 
 ```json
 {
@@ -258,13 +258,13 @@ Zodra de bewerking is voltooid, wordt 200 (OK) geretourneerd met de beleids inho
 }
 ```
 
-Als er al een beleid wordt gebruikt om een item te beveiligen, wordt bij elke update in het beleid de beveiliging voor alle gekoppelde items [gewijzigd](backup-azure-arm-userestapi-backupazurevms.md#changing-the-policy-of-protection) .
+Als een beleid al wordt gebruikt om een item te beschermen, leidt elke update in het beleid tot [het wijzigen van](backup-azure-arm-userestapi-backupazurevms.md#changing-the-policy-of-protection) de beveiliging voor al deze bijbehorende items.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Schakel de beveiliging voor een niet-beveiligde Azure-vm in](backup-azure-arm-userestapi-backupazurevms.md).
+[Beveiliging inschakelen voor een onbeveiligde Azure VM.](backup-azure-arm-userestapi-backupazurevms.md)
 
-Raadpleeg de volgende documenten voor meer informatie over de Azure Backup REST-Api's:
+Zie de volgende documenten voor meer informatie over de AZURE Backup REST API's:
 
-- [REST API Azure Recovery Services provider](/rest/api/recoveryservices/)
+- [REST-API van Azure Recovery Services-provider](/rest/api/recoveryservices/)
 - [Aan de slag gaan met Azure REST API](/rest/api/azure/)

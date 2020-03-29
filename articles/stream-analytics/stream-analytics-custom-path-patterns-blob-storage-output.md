@@ -1,6 +1,6 @@
 ---
-title: Aangepaste BLOB-uitvoer partitioneren Azure Stream Analytics
-description: In dit artikel worden de aangepaste paden voor het pad naar de tijd en de aangepaste velden of kenmerken van de Blob Storage-uitvoer van Azure Stream Analytics-taken beschreven.
+title: Aangepaste blob-uitvoerpartities van Azure Stream Analytics
+description: In dit artikel worden de aangepaste DateTime-padpatronen en de aangepaste veld- of kenmerkenfuncties voor blob-opslaguitvoer van Azure Stream Analytics-taken beschreven.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,103 +9,103 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
 ms.openlocfilehash: e978771eaafafe4120f9eec802525c293fb9c7c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426385"
 ---
-# <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Aangepaste BLOB-uitvoer partitioneren Azure Stream Analytics
+# <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Aangepaste blob-uitvoerpartities van Azure Stream Analytics
 
-Azure Stream Analytics ondersteunt aangepaste BLOB-uitvoer partities met aangepaste velden of kenmerken en aangepaste DateTime-paden. 
+Azure Stream Analytics ondersteunt aangepaste blob-uitvoerpartities met aangepaste velden of kenmerken en aangepaste DateTime-padpatronen. 
 
-## <a name="custom-field-or-attributes"></a>Aangepaste velden of kenmerken
+## <a name="custom-field-or-attributes"></a>Aangepast veld of kenmerken
 
-Aangepaste veld-of invoer kenmerken verbeteren stroomafwaartse werk stromen voor gegevens verwerking en rapporten door meer controle over de uitvoer toe te staan.
+Aangepaste veld- of invoerkenmerken verbeteren downstream-gegevensverwerkings- en rapportageworkflows door dat er meer controle over de uitvoer mogelijk is.
 
-### <a name="partition-key-options"></a>Opties voor partitie sleutels
+### <a name="partition-key-options"></a>Opties voor partitiesleutel
 
-De partitie sleutel of kolom naam die wordt gebruikt voor het partitioneren van invoer gegevens mag alfanumerieke tekens bevatten met afbreek streepjes, onderstrepingen en spaties. Het is niet mogelijk om geneste velden te gebruiken als partitie sleutel, tenzij u deze gebruikt in combi natie met aliassen. De partitie sleutel moet NVARCHAR (MAX) zijn.
+De partitiesleutel of kolomnaam die wordt gebruikt om invoergegevens te partitioneren, kan alfanumerieke tekens bevatten met koppeltekens, onderdoelpunten en spaties. Het is niet mogelijk om geneste velden als partitiesleutel te gebruiken, tenzij deze wordt gebruikt in combinatie met aliassen. De partitiesleutel moet NVARCHAR(MAX) zijn.
 
 ### <a name="example"></a>Voorbeeld
 
-Stel dat een taak invoer gegevens ontvangt van Live gebruikers sessies die zijn verbonden met een externe video game service, waarbij opgenomen gegevens een kolom bevatten **client_id** om de sessies te identificeren. Als u de gegevens wilt partitioneren op **client_id**, stelt u het veld patroon van BLOB-pad in om een partitie token **{client_id}** op te nemen in BLOB-uitvoer eigenschappen bij het maken van een taak. Als gegevens met verschillende **client_id** waarden door de stream Analytics taak worden uitgevoerd, worden de uitvoer gegevens opgeslagen in afzonderlijke mappen op basis van één **client_id** waarde per map.
+Stel dat een taak invoergegevens bevat van live gebruikerssessies die zijn gekoppeld aan een externe videogameservice waarbij ingenomen gegevens een kolom **bevatten client_id** om de sessies te identificeren. Als u de gegevens wilt verdelen op **client_id,** stelt u het veld Blobpadpatroon in om een partitietoken **{client_id}** op te nemen in blobuitvoereigenschappen bij het maken van een taak. Terwijl gegevens met verschillende **client_id** waarden door de taak Stream Analytics stromen, worden de uitvoergegevens opgeslagen in afzonderlijke mappen op basis van één **client_id** waarde per map.
 
-![Pad patroon met client-id](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
+![Padpatroon met client-id](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
 
-En als de taak invoer sensor gegevens van miljoenen Sens oren bevat, waarbij elke sensor een **sensor_id**heeft, zou het patroon van het pad **{sensor_id}** zijn voor het partitioneren van elke sensor gegevens naar andere mappen.  
+Als de taakinvoer sensorgegevens was van miljoenen sensoren waar elke sensor een **sensor_id**had, zou het padpatroon **{sensor_id}** zijn om elke sensorgegevens te verdelen in verschillende mappen.  
 
 
-Met behulp van de REST API kan het gedeelte uitvoer van een JSON-bestand dat voor de aanvraag wordt gebruikt, er als volgt uitzien:  
+Met de REST API kan de uitvoersectie van een JSON-bestand dat voor dat verzoek wordt gebruikt, er als volgt uitzien:  
 
-![REST API uitvoer](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-rest-output.png)
+![REST API-uitvoer](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-rest-output.png)
 
 Zodra de taak wordt uitgevoerd, kan de container *clients* er als volgt uitzien:  
 
-![Container clients](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
+![Clients container](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
 
-Elke map kan meerdere blobs bevatten waarbij elke Blob een of meer records bevat. In het bovenstaande voor beeld bevindt zich één Blob in een 06000000 map met de volgende inhoud:
+Elke map kan meerdere blobs bevatten waarbij elke blob een of meer records bevat. In het bovenstaande voorbeeld is er één blob in een map met het label "06000000" met de volgende inhoud:
 
-![Inhoud van BLOB](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
+![Blob-inhoud](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
 
-U ziet dat elke record in de BLOB een **client_id** kolom heeft die overeenkomt met de mapnaam, aangezien de kolom die wordt gebruikt voor het partitioneren van de uitvoer in het uitvoerpad, is **client_id**.
+Elke record in de blob heeft een **client_id** kolom die overeenkomt met de mapnaam, omdat de kolom die wordt gebruikt om de uitvoer in het uitvoerpad te partitioneren **client_id**is.
 
 ### <a name="limitations"></a>Beperkingen
 
-1. Er is slechts één aangepaste partitie sleutel toegestaan in de BLOB-uitvoer eigenschap van het pad patroon. Alle volgende paden zijn geldig:
+1. Er is slechts één aangepaste partitiesleutel toegestaan in de eigenschap Path Pattern blob output. Alle volgende padpatronen zijn geldig:
 
-   * cluster1/{date}/{aFieldInMyData}  
+   * cluster1/{datum}/{aFieldInMyData}  
    * cluster1/{time}/{aFieldInMyData}  
    * cluster1/{aFieldInMyData}  
-   * cluster1/{date}/{time}/{aFieldInMyData} 
+   * cluster1/{datum}/{time}/{aFieldInMyData} 
    
-2. Partitie sleutels zijn niet hoofdletter gevoelig, waardoor partitie sleutels als ' John ' en ' John ' gelijkwaardig zijn. Expressies kunnen ook niet worden gebruikt als partitie sleutels. Bijvoorbeeld: **{Columna + columnB}** werkt niet.  
+2. Partitiesleutels zijn hoofdletters ongevoelig, dus partitiesleutels zoals 'John' en 'john' zijn gelijkwaardig. Ook kunnen expressies niet worden gebruikt als partitiesleutels. **{columnA + columnB}** werkt bijvoorbeeld niet.  
 
-3. Wanneer een invoer stroom bestaat uit records met een kardinaliteit van de partitie sleutel onder 8000, worden de records toegevoegd aan bestaande blobs en worden alleen nieuwe blobs gemaakt wanneer dat nodig is. Als de kardinaliteit meer dan 8000 is, is er geen garantie dat er bestaande blobs worden geschreven naar en er geen nieuwe blobs worden gemaakt voor een wille keurig aantal records met dezelfde partitie sleutel.
+3. Wanneer een invoerstroom bestaat uit records met een partitiesleutelhoofddaliteit onder 8000, worden de records toegevoegd aan bestaande blobs en worden ze alleen nieuwe blobs gemaakt wanneer dat nodig is. Als de kardinaliteit meer dan 8000 is, is er geen garantie dat bestaande blobs worden geschreven en dat er geen nieuwe blobs worden gemaakt voor een willekeurig aantal records met dezelfde partitiesleutel.
 
-## <a name="custom-datetime-path-patterns"></a>Patronen voor aangepaste DateTime-paden
+## <a name="custom-datetime-path-patterns"></a>Aangepaste datetime-padpatronen
 
-Aangepaste datum/tijd-padpatronen kunnen u opgeven de indeling van een uitvoer die overeenstemt met Hive-Streaming-conventies, waardoor Azure Stream Analytics om gegevens te verzenden naar Azure HDInsight en Azure Databricks voor downstream verwerken. Aangepaste datum/tijd-padpatronen eenvoudig worden geïmplementeerd met behulp van de `datetime` sleutelwoord in het veld pad naar het voorvoegsel van de uitvoer, samen met de indelingsopgave blob. Bijvoorbeeld `{datetime:yyyy}`.
+Met aangepaste DateTime-padpatronen u een uitvoerindeling opgeven die aansluit bij Hive Streaming-conventies, waardoor Azure Stream Analytics gegevens naar Azure HDInsight en Azure Databricks kan verzenden voor downstreamverwerking. Aangepaste DateTime-padpatronen kunnen eenvoudig `datetime` worden geïmplementeerd met het trefwoord in het veld Padvoorvoegsel van uw blob-uitvoer, samen met de indelingsspecificatie. Bijvoorbeeld `{datetime:yyyy}`.
 
 ### <a name="supported-tokens"></a>Ondersteunde tokens
 
-De volgende indeling aanduiding tokens kunnen zelfstandig of in combinatie worden gebruikt om aangepaste datum/tijd-notatie:
+De volgende formaataanduidingstokens kunnen alleen of in combinatie worden gebruikt om aangepaste DateTime-indelingen te bereiken:
 
-|Indelingsopgave   |Beschrijving   |De resultaten in het voorbeeld van de tijd 2018-01-02T10:06:08|
+|Specificatie opmaken   |Beschrijving   |Resultaten op voorbeeldtijd 2018-01-02T10:06:08|
 |----------|-----------|------------|
-|{datetime:yyyy}|Een getal van vier cijfers van het jaar|2018|
-|{datetime:MM}|Maand vanaf 01 en 12|01|
-|{datetime:M}|Maand van 1 tot en met 12|1|
-|{datetime:dd}|Dag vanaf 01 tot en met 31|02|
-|{datetime:d}|Dag van 1 tot en met 12|2|
-|{datetime:HH}|Met behulp van de 24-uurs tijdnotatie, tussen 00 en 23 uur|10|
-|{datetime:mm}|Minuten van 00 24 uur per dag|06|
-|{datetime:m}|Minuten van 0 tot en met 24|6|
-|{datetime:ss}|Seconden tussen 00 en 60|08|
+|{datetime:yyyy}|Het jaar als een viercijferig getal|2018|
+|{datetime:MM}|Maand van 01 tot 12|01|
+|{datetime:M}|Maand van 1 tot 12|1|
+|{datetime:dd}|Dag van 01 tot 31|02|
+|{datetime:d}|Dag van 1 tot 12|2|
+|{datetime:HH}|Uur met de 24-uursnotatie, van 00 tot 23|10|
+|{datetime:mm}|Minuten van 00 tot 24|06|
+|{datetime:m}|Minuten van 0 tot 24|6|
+|{datetime:ss}|Seconden van 00 tot 60|08|
 
-Als u niet gebruiken van aangepaste datum/tijd-patronen wilt, u kunt toevoegen van de {date} en/of {time}-token voor het voorvoegsel voor het pad voor het genereren van een vervolgkeuzelijst met ingebouwde notaties voor datum/tijd.
+Als u geen aangepaste DateTime-patronen wilt gebruiken, u het token {date} en/of {time} toevoegen aan het padvoorvoegsel om een vervolgkeuzelijst te genereren met ingebouwde DateTime-indelingen.
 
-![Stream Analytics oude datum-/ tijdindelingen](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-old-date-time-formats.png)
+![Oude DateTime-indelingen van Stream Analytics](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-old-date-time-formats.png)
 
 ### <a name="extensibility-and-restrictions"></a>Uitbreidbaarheid en beperkingen
 
-U kunt zoveel tokens `{datetime:<specifier>}`, zoals u in het padpatroon wilt, totdat het voorvoegsel van pad tekenlimiet is bereikt. Indeling weergaven kunnen niet worden gecombineerd in een enkele token buiten de al vermeld door de datum en tijd vervolgkeuzelijsten combinaties. 
+Je zoveel tokens `{datetime:<specifier>}`gebruiken als je wilt in het padpatroon totdat je de padvoorvoeging hebt bereikt. Indelingsaanduidingen kunnen niet worden gecombineerd binnen één token buiten de combinaties die al zijn vermeld op basis van de datum- en tijdsneerzetdropdowns. 
 
-Voor de partitie van een pad van `logs/MM/dd`:
+Voor een padpartitie van `logs/MM/dd`:
 
 |Geldige expressie   |Ongeldige expressie   |
 |----------|-----------|
 |`logs/{datetime:MM}/{datetime:dd}`|`logs/{datetime:MM/dd}`|
 
-U kunt de dezelfde indelingsopgave meerdere keren gebruiken in het voorvoegsel voor het pad. Het token moet telkens worden herhaald.
+U dezelfde indelingsaanduiding meerdere keren gebruiken in het padvoorvoegsel. Het token moet elke keer worden herhaald.
 
-### <a name="hive-streaming-conventions"></a>Conventies voor hive-Streaming
+### <a name="hive-streaming-conventions"></a>Hive Streaming conventies
 
-Aangepaste padpatronen voor blob-opslag kunnen worden gebruikt met de Hive-Streaming-overeenkomst, die wordt verwacht dat de mappen die moeten worden gelabeld met `column=` in naam van de map.
+Aangepaste padpatronen voor blobopslag kunnen worden gebruikt met de Hive Streaming-conventie, die verwacht dat mappen worden gelabeld met `column=` de naam van de map.
 
 Bijvoorbeeld `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}`.
 
-Aangepaste uitvoer wordt voorkomen dat de moeite van het wijzigen van tabellen en partities handmatig toe te voegen aan poortgegevens tussen Azure Stream Analytics en Hive. Veel mappen kunnen in plaats daarvan worden toegevoegd automatisch met behulp van:
+Aangepaste uitvoer elimineert het gedoe van het wijzigen van tabellen en het handmatig toevoegen van partities aan poortgegevens tussen Azure Stream Analytics en Hive. In plaats daarvan kunnen veel mappen automatisch worden toegevoegd met behulp van:
 
 ```SQL
 MSCK REPAIR TABLE while hive.exec.dynamic.partition true
@@ -113,22 +113,22 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 ### <a name="example"></a>Voorbeeld
 
-Maken van een storage-account, een resourcegroep, een Stream Analytics-taak en een invoerbron volgens de [Azure Stream Analytics-Azure Portal](stream-analytics-quick-create-portal.md) snelstartgids. Gebruik de dezelfde voorbeeldgegevens gebruikt in de Quick Start guide, die ook beschikbaar in de [GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json).
+Maak een opslagaccount, een brongroep, een Stream Analytics-taak en een invoerbron volgens de quickstart-handleiding [azure portal van Azure Stream Analytics.](stream-analytics-quick-create-portal.md) Gebruik dezelfde voorbeeldgegevens die worden gebruikt in de quickstart-handleiding, die ook beschikbaar is op [GitHub.](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json)
 
-Maak een uitvoerlocatie blob met de volgende configuratie:
+Maak een blobuitvoersink met de volgende configuratie:
 
-![Stream Analytics maken uitvoerlocatie blob](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-create-output-sink.png)
+![Stream Analytics maakt blob-uitvoersink](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-create-output-sink.png)
 
-Het patroon volledig pad is als volgt:
+Het volledige padpatroon ziet er als volgt uit:
 
 
 `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}`
 
 
-Wanneer u de taak start, wordt de mapstructuur van een op basis van het padpatroon gemaakt in uw blobcontainer. U kunt inzoomen op het niveau van de dag.
+Wanneer u de taak start, wordt er een mapstructuur gemaakt op basis van het padpatroon in de blobcontainer. U inzoomen op het dagniveau.
 
-![Stream Analytics blob uitvoer met de aangepaste padpatroon](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-output-folder-structure.png)
+![Stream Analytics blob output met aangepast padpatroon](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-output-folder-structure.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Inzicht in de uitvoer van Azure Stream Analytics](stream-analytics-define-outputs.md)
+* [Inzicht krijgen in uitvoer vanuit Azure Stream Analytics](stream-analytics-define-outputs.md)

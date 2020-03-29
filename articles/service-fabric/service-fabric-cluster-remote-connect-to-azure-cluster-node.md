@@ -1,58 +1,58 @@
 ---
-title: Externe verbinding maken met een Azure Service Fabric-cluster knooppunt
-description: Meer informatie over hoe u extern verbinding maakt met een exemplaar van een schaalset (een Service Fabric cluster knooppunt).
+title: Verbinding maken met een Azure Service Fabric-clusterknooppunt
+description: Meer informatie over het op afstand maken van een verbinding met een schaalsetinstantie (een clusterknooppunt servicestructuur).
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458314"
 ---
-# <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Externe verbinding maken met een virtuele-machine Scale set-exemplaar of een cluster knooppunt
-In een Service Fabric cluster dat in azure wordt uitgevoerd, stelt elk type cluster knooppunt dat u definieert [een afzonderlijke schaal in voor een virtuele machine](service-fabric-cluster-nodetypes.md).  U kunt externe verbinding maken met specifieke instanties van de schaalset (cluster knooppunten).  In tegens telling tot Vm's met één exemplaar hebben instanties van een schaalset niet hun eigen virtuele IP-adressen. Dit kan lastig zijn wanneer u zoekt naar een IP-adres en poort die u kunt gebruiken om extern verbinding te maken met een specifiek exemplaar.
+# <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Verbinding maken met een instantie voor het schalen van virtuele machines of een clusterknooppunt
+In een cluster servicestructuur die in Azure wordt uitgevoerd, stelt elk clusterknooppunttype dat u [definieert een afzonderlijke schaal voor virtuele machines in.](service-fabric-cluster-nodetypes.md)  U op afstand verbinding maken met specifieke schaalset-exemplaren (clusterknooppunten).  In tegenstelling tot vm's met één instantie hebben schaalset-instanties geen eigen virtuele IP-adressen. Dit kan een uitdaging zijn wanneer u op zoek bent naar een IP-adres en poort die u gebruiken om op afstand verbinding te maken met een specifieke instantie.
 
-Voer de volgende stappen uit om een IP-adres en poort te vinden die u kunt gebruiken om extern verbinding te maken met een specifiek exemplaar.
+Voer de volgende stappen uit om een IP-adres en poort te vinden die u op afstand gebruiken om verbinding te maken met een specifieke instantie.
 
-1. De binnenkomende NAT-regels voor Remote Desktop Protocol (RDP) ophalen.
+1. Download de binnenkomende NAT-regels voor Extern bureaublad-protocol (RDP).
 
-    Normaal gesp roken heeft elk knooppunt type dat in uw cluster is gedefinieerd, een eigen virtueel IP-adres en een toegewezen load balancer. Standaard wordt de load balancer voor een knooppunt type met de volgende indeling genoemd: *lb-{cluster name}-{Node-type}* ; bijvoorbeeld *lb-mycluster-front-end*. 
+    Normaal gesproken heeft elk knooppunttype dat in uw cluster is gedefinieerd, zijn eigen virtuele IP-adres en een speciale load balancer. Standaard wordt de load balancer voor een knooppunttype benoemd met de volgende indeling: *LB-{cluster-name}-{node-type}*; *LB-mycluster-FrontEnd*. 
     
-    Selecteer op de pagina voor uw load balancer in Azure Portal **instellingen** > **binnenkomende NAT-regels**: 
+    Selecteer op de pagina voor uw load balancer in Azure-portal **de instellingen** > **inkomende NAT-regels:** 
 
-    ![Binnenkomende NAT-regels voor Load Balancer](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
+    ![Regels voor inkomende INkomende laadbalansen](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
-    De volgende scherm afbeelding toont de binnenkomende NAT-regels voor een knooppunt type met de naam front-end: 
+    In de volgende schermafbeelding worden de binnenkomende NAT-regels weergegeven voor een knooppunttype met de naam FrontEnd: 
 
-    ![Binnenkomende NAT-regels voor Load Balancer](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
+    ![Regels voor inkomende INkomende laadbalansen](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
 
-    Voor elk knoop punt wordt het IP-adres weer gegeven in de **doel** kolom, de **doel** kolom bevat het exemplaar van de schaalset en de kolom **service** geeft het poort nummer. Voor externe verbinding worden poorten toegewezen aan elk knoop punt in oplopende volg orde, beginnend met poort 3389.
+    Voor elk knooppunt wordt het IP-adres weergegeven in de kolom **BESTEMMING,** geeft de kolom **DOEL** de schaalsetinstantie en de kolom **SERVICE** het poortnummer. Voor externe verbindingen worden poorten toegewezen aan elk knooppunt in oplopende volgorde, te beginnen met poort 3389.
 
-    U kunt ook de binnenkomende NAT-regels vinden in het gedeelte `Microsoft.Network/loadBalancers` van de Resource Manager-sjabloon voor uw cluster.
+    U ook de inkomende `Microsoft.Network/loadBalancers` NAT-regels vinden in het gedeelte van de sjabloon Resourcemanager voor uw cluster.
     
-2. Als u de poort toewijzing van de binnenkomende poort voor een knoop punt wilt bevestigen, klikt u op de bijbehorende regel en kijkt u naar de waarde van de **doel poort** . De volgende scherm afbeelding toont de binnenkomende NAT-regel voor het front **-End-knoop punt (instance 1)** in de vorige stap. U ziet dat, hoewel het (inkomend) poort nummer 3390 is, de doel poort wordt toegewezen aan poort 3389, de poort voor de RDP-service op het doel.  
+2. Als u wilt bevestigen dat de binnenkomende poort om poorttoewijzing voor een knooppunt te targeten, klikt u op de regel en kijkt u naar de waarde van de **doelpoort.** In de volgende schermafbeelding wordt de inkomende NAT-regel voor het knooppunt **FrontEnd (Instantie 1)** in de vorige stap weergegeven. Hoewel het (inbound) poortnummer 3390 is, wordt de doelpoort toegewezen aan poort 3389, de poort voor de RDP-service op het doel.  
 
-    ![Doel poort toewijzing](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/port-mapping.png)
+    ![Toewijzing van doelpoorten](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/port-mapping.png)
 
-    Voor Windows-clusters is de doel poort standaard poort 3389, die wordt toegewezen aan de RDP-service op het doel knooppunt. Voor Linux-clusters is poort 22 de doel poort, die wordt toegewezen aan de Secure shell-service (SSH).
+    Standaard is de doelpoort poort 3389 voor Windows-clusters, die wordt toegewezen aan de RDP-service op het doelknooppunt. Voor Linux-clusters is de doelpoort poort 22, die wordt toegewezen aan de Secure Shell (SSH) service.
 
-3. Extern verbinding maken met het specifieke knoop punt (scale set-exemplaar). U kunt de gebruikers naam en het wacht woord gebruiken die u hebt ingesteld tijdens het maken van het cluster of andere referenties die u hebt geconfigureerd. 
+3. Maak op afstand verbinding met het specifieke knooppunt (schaalsetinstantie). U de gebruikersnaam en het wachtwoord gebruiken die u hebt ingesteld toen u het cluster hebt gemaakt of andere referenties die u hebt geconfigureerd. 
 
-    De volgende scherm afbeelding toont het gebruik van Verbinding met extern bureaublad om verbinding te maken met het front **-End (exemplaar 1)-** knoop punt in een Windows-cluster:
+    In de volgende schermafbeelding wordt weergegeven dat verbinding met extern bureaublad wordt gebruikt om verbinding te maken met het knooppunt **FrontEnd (Instantie 1)** in een Windows-cluster:
     
     ![Verbinding met extern bureaublad](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/rdp-connect.png)
 
-    Op Linux-knoop punten kunt u verbinding maken met SSH (in het volgende voor beeld worden hetzelfde IP-adres en dezelfde poort opnieuw gebruikt voor de boog):
+    Op Linux-knooppunten u verbinding maken met SSH (in het volgende voorbeeld wordt hetzelfde IP-adres en dezelfde poort opnieuw gebruikt voor beknoptheid):
 
     ``` bash
     ssh SomeUser@40.117.156.199 -p 3390
     ```
 
 
-Lees de volgende artikelen voor de volgende stappen:
-* Zie het [overzicht van de functie overal implementeren en een vergelijking met door Azure beheerde clusters](service-fabric-deploy-anywhere.md).
-* Meer informatie over [cluster beveiliging](service-fabric-cluster-security.md).
-* [De waarden voor het RDP-poort bereik bijwerken na de](./scripts/service-fabric-powershell-change-rdp-port-range.md) implementatie van cluster-vm's
-* [De gebruikers naam en het wacht woord van de beheerder](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) voor cluster-vm's wijzigen
+Lees voor de volgende stappen de volgende artikelen:
+* Bekijk het [overzicht van de functie 'Overal implementeren' en een vergelijking met door Azure beheerde clusters.](service-fabric-deploy-anywhere.md)
+* Meer informatie over [clusterbeveiliging](service-fabric-cluster-security.md).
+* [De RDP-poortbereikwaarden](./scripts/service-fabric-powershell-change-rdp-port-range.md) na implementatie bijwerken
+* [De gebruikersnaam en het wachtwoord van de beheerder voor](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) clusterVM's wijzigen
 

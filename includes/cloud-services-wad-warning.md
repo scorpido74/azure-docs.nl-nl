@@ -5,24 +5,24 @@ ms.service: cloud-services
 ms.topic: include
 ms.date: 11/25/2018
 ms.openlocfilehash: 5deba9d8968f71ef1b21517e74e6af4c39aa9271
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76279491"
 ---
 > [!WARNING]
-> Wanneer u Diagnostische gegevens inschakelt voor een bestaande rol, worden alle uitbrei dingen die u al hebt ingesteld, uitgeschakeld wanneer het pakket wordt geïmplementeerd. Deze omvatten:
+> Wanneer u diagnose staken voor een bestaande rol, worden alle extensies die u al hebt ingesteld, uitgeschakeld wanneer het pakket wordt geïmplementeerd. Deze omvatten:
 >
-> * Diagnostische gegevens van micro soft Monitoring Agent
-> * Beveiligings bewaking Microsoft Azure
+> * Microsoft Monitoring Agent Diagnostics
+> * Microsoft Azure-beveiligingscontrole
 > * Microsoft Antimalware                 
 > * Microsoft Monitoring Agent
-> * Micro soft Service Profiler-agent      
-> * Windows Azure-domein extensie        
-> * Extensie voor Windows-Azure Diagnostics   
-> * Uitbrei ding voor Windows Azure Extern bureaublad
-> * Windows Azure-logboek verzamelaar
+> * Microsoft Service Profiler-agent      
+> * Windows Azure-domeinextensie        
+> * Windows Azure Diagnostics-extensie   
+> * Windows Azure Remote Desktop Extension
+> * Windows Azure-logboekverzamelaar
 >
-> Nadat u de bijgewerkte rol hebt geïmplementeerd, kunt u de uitbrei dingen opnieuw instellen via de Azure Portal of Power shell.
+> U uw extensies opnieuw instellen via de Azure-portal of PowerShell nadat u de bijgewerkte rol hebt geïmplementeerd.
 >

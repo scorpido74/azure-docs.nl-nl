@@ -1,5 +1,5 @@
 ---
-title: Hoge Beschik baarheid met Apache Kafka-Azure HDInsight
+title: Hoge beschikbaarheid met Apache Kafka - Azure HDInsight
 description: Informatie over hoge beschikbaarheid garanderen met Apache Kafka in Azure HDInsight. Informatie over het opnieuw verdelen van partitiereplica's in Kafka zodat deze zich bevinden op verschillende foutdomeinen binnen de Azure-regio met HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/09/2019
 ms.openlocfilehash: a90be471ca068869ee26fb02bba77dfdd476a44e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435290"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>Hoge beschikbaarheid van uw gegevens met Apache Kafka in HDInsight
 
-Meer informatie over het configureren van partitie replica's voor Apache Kafka-onderwerpen om te profiteren van de onderliggende configuratie van de hardwareconfiguratie. Deze configuratie waarborgt de beschikbaarheid van gegevens die zijn opgeslagen in Apache Kafka op HDInsight.
+Meer informatie over het configureren van partitiereplica's voor Apache Kafka-onderwerpen om te profiteren van de onderliggende configuratie van hardwarerack. Deze configuratie waarborgt de beschikbaarheid van gegevens die zijn opgeslagen in Apache Kafka op HDInsight.
 
-## <a name="fault-and-update-domains-with-apache-kafka"></a>Fout-en update domeinen met Apache Kafka
+## <a name="fault-and-update-domains-with-apache-kafka"></a>Fout- en updatedomeinen met Apache Kafka
 
 Een foutdomein is een logische groepering van de onderliggende hardware in een Azure-datacenter. Elk foutdomein deelt een algemene voedingsbron en netwerkswitch. De virtuele machines en beheerde schijven die de knooppunten in een HDInsight-cluster implementeren zijn verdeeld over deze foutdomeinen. Deze architectuur beperkt de potentiële impact van problemen met de fysieke hardware.
 
@@ -43,15 +43,15 @@ Om de hoogst mogelijke beschikbaarheid van uw Kafka-gegevens te waarborgen, moet
 
 Als u een regio met slechts twee foutdomeinen moet gebruiken, gebruik dan een replicatiefactor van 4 om de replica's gelijkmatig te verdelen over de twee foutdomeinen.
 
-Zie het document [beginnen met Apache Kafka in HDInsight](apache-kafka-get-started.md) voor een voor beeld van het maken van onderwerpen en het instellen van de replicatie factor.
+Zie het document Start with Apache Kafka [op HDInsight](apache-kafka-get-started.md) voor een voorbeeld van het maken van onderwerpen en het instellen van de replicatiefactor.
 
 ## <a name="how-to-rebalance-partition-replicas"></a>Hoe partitiereplica 's opnieuw moeten worden ingedeeld
 
-Gebruik het [Apache Kafka hulp programma](https://github.com/hdinsight/hdinsight-kafka-tools) voor het opnieuw verdelen van partities om geselecteerde onderwerpen te herverdelen. Dit hulpprogramma moet vanaf een SSH-sessie naar het hoofdknooppunt van het Kafka-cluster worden uitgevoerd.
+Gebruik het gereedschap Opnieuw in evenwicht brengen van geselecteerde onderwerpen [door de Apache Kafka-partitie.](https://github.com/hdinsight/hdinsight-kafka-tools) Dit hulpprogramma moet vanaf een SSH-sessie naar het hoofdknooppunt van het Kafka-cluster worden uitgevoerd.
 
 Zie het document [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie over verbinding maken met HDInsight met behulp van SSH.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Schaal baarheid van Apache Kafka op HDInsight](apache-kafka-scalability.md)
-* [Spie gelen met Apache Kafka op HDInsight](apache-kafka-mirroring.md)
+* [Schaalbaarheid van Apache Kafka op HDInsight](apache-kafka-scalability.md)
+* [Spiegelen met Apache Kafka op HDInsight](apache-kafka-mirroring.md)

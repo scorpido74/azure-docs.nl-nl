@@ -1,6 +1,6 @@
 ---
-title: Controleren en beheren van Azure Stream Analytics-taken via een programma
-description: In dit artikel wordt beschreven hoe u programmatisch bewaken Stream Analytics-taken die zijn gemaakt via de REST-API's, Azure-SDK of PowerShell.
+title: Azure Stream Analytics-taken programmatisch bewaken en beheren
+description: In dit artikel wordt beschreven hoe u streamanalytics-taken die zijn gemaakt via REST API's, Azure SDK of PowerShell, programmatisch controleren.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
@@ -8,35 +8,35 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.openlocfilehash: 23c0cc0d0e4a007fdf46021f857b559266f6a193
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75431673"
 ---
-# <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Een Stream Analytics-taak monitor via een programma maken
+# <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programmatisch een Functiemonitor van Stream Analytics maken
 
-In dit artikel ziet u hoe u bewaking voor een Stream Analytics-taak inschakelen. Stream Analytics-taken die zijn gemaakt via een REST-API's, Azure-SDK of PowerShell geen bewaking standaard ingeschakeld. U kunt deze functie handmatig inschakelen in Azure portal door te gaan naar de pagina van de Monitor van de taak en te klikken op de knop inschakelen of u kunt dit proces automatiseren door de stappen in dit artikel te volgen. De bewakingsgegevens worden weergegeven in het gebied van de metrische gegevens van de Azure-portal voor uw Stream Analytics-taak.
+In dit artikel wordt uitgelegd hoe u monitoring inschakelt voor een Stream Analytics-taak. Stream Analytics-taken die zijn gemaakt via REST API's, Azure SDK of PowerShell, hebben geen standaardbewaking ingeschakeld. U het handmatig inschakelen in de Azure-portal door naar de monitorpagina van de taak te gaan en op de knop Inschakelen te klikken of u dit proces automatiseren door de stappen in dit artikel te volgen. De bewakingsgegevens worden weergegeven in het gebied Metriek van de Azure-portal voor uw Stream Analytics-taak.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u met dit proces begint, moet u beschikken over de volgende vereisten:
+Voordat u met dit proces begint, moet u de volgende vereisten hebben:
 
 * Visual Studio 2019 of 2015
-* [Azure SDK voor .NET](https://azure.microsoft.com/downloads/) gedownload en geïnstalleerd
-* Een bestaande Stream Analytics-taak die moet worden ingeschakeld controleren
+* [Azure .NET SDK](https://azure.microsoft.com/downloads/) gedownload en geïnstalleerd
+* Een bestaande Stream Analytics-taak die monitoring moet hebben ingeschakeld
 
 ## <a name="create-a-project"></a>Een project maken
 
 1. Maak een Visual Studio C# .NET-consoletoepassing.
-2. Voer de volgende opdrachten om de NuGet-pakketten te installeren in de Package Manager-Console. De eerste is de Azure Stream Analytics Management .NET SDK. De tweede waarde is de SDK van Azure Monitor die wordt gebruikt voor het inschakelen van bewaking. Het laatste item is de Azure Active Directory-client die wordt gebruikt voor verificatie.
+2. Voer in de Package Manager-console de volgende opdrachten uit om de NuGet-pakketten te installeren. De eerste is het Azure Stream Analytics Management .NET SDK. De tweede is de Azure Monitor SDK die wordt gebruikt om monitoring in te schakelen. De laatste is de Azure Active Directory-client die wordt gebruikt voor verificatie.
    
    ```powershell
    Install-Package Microsoft.Azure.Management.StreamAnalytics
    Install-Package Microsoft.Azure.Insights -Pre
    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
    ```
-3. Voeg de volgende sectie appSettings aan het bestand App.config.
+3. Voeg de volgende sectie appInstellingen toe aan het app.config-bestand.
    
    ```csharp
    <appSettings>
@@ -53,7 +53,7 @@ Voordat u met dit proces begint, moet u beschikken over de volgende vereisten:
      <add key="ActiveDirectoryTenantId" value="YOUR TENANT ID" />
    </appSettings>
    ```
-   Vervang de waarden in *SubscriptionId* en *ActiveDirectoryTenantId* met uw Azure-abonnement en tenant-id. U kunt deze waarden kunt krijgen door het uitvoeren van de volgende PowerShell-cmdlet:
+   Vervang waarden voor *SubscriptionId* en *ActiveDirectoryTenantId* door uw Azure-abonnement en tenant-id's. U deze waarden krijgen door de volgende PowerShell-cmdlet uit te voeren:
    
    ```powershell
    Get-AzureAccount
@@ -71,7 +71,7 @@ Voordat u met dit proces begint, moet u beschikken over de volgende vereisten:
      using Microsoft.Azure.Management.StreamAnalytics.Models;
      using Microsoft.IdentityModel.Clients.ActiveDirectory;
    ```
-5. Toevoegen van een Help-methode voor verificatie.
+5. Voeg een verificatiehelpermethode toe.
 
    ```csharp   
    public static string GetAuthorizationHeader()
@@ -109,9 +109,9 @@ Voordat u met dit proces begint, moet u beschikken over de volgende vereisten:
    }
    ```
 
-## <a name="create-management-clients"></a>Maken van beheer van clients
+## <a name="create-management-clients"></a>Beheerclients maken
 
-De volgende code stelt de benodigde variabelen en beheer van clients.
+De volgende code zal het opzetten van de nodige variabelen en management clients.
 
    ```csharp
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
@@ -133,18 +133,18 @@ De volgende code stelt de benodigde variabelen en beheer van clients.
     InsightsManagementClient(aadTokenCredentials, resourceManagerUri);
    ```
 
-## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Schakel bewaking voor een bestaande Stream Analytics-taak
+## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Monitoring inschakelen voor een bestaande Stream Analytics-taak
 
-De volgende code wordt de bewaking voor een **bestaande** Stream Analytics-taak. Het eerste deel van de code wordt een GET-aanvraag indient voor de Stream Analytics-service informatie ophalen over de specifieke Stream Analytics-taak uitgevoerd. De eigenschap *id* (opgehaald van de GET-aanvraag) wordt gebruikt als een para meter voor de put-methode in de tweede helft van de code, waarmee een put-aanvraag wordt verzonden naar de Insights-service om controle voor de stream Analytics-taak in te scha kelen.
+Met de volgende code u controleren voor een **bestaande** Stream Analytics-taak. In het eerste deel van de code wordt een GET-aanvraag uitgevoerd tegen de Stream Analytics-service om informatie over de specifieke Stream Analytics-taak op te halen. Het gebruikt de eigenschap *ID* (opgehaald uit de GET-aanvraag) als parameter voor de methode Put in de tweede helft van de code, die een PUT-verzoek naar de Insights-service verzendt om monitoring voor de streamanalytics-taak mogelijk te maken.
 
 > [!WARNING]
-> Als u eerder hebt ingeschakeld bewaking voor een andere taak van Stream Analytics, via Azure portal of programmatisch via de onderstaande code, **wordt aangeraden dat u dezelfde naam van het opslagaccount dat u hebt gebruikt tijdens leveren u eerder hebt ingeschakeld voor bewaking.**
+> Als u monitoring eerder hebt ingeschakeld voor een andere Stream Analytics-taak, via de Azure-portal of programmatisch via de onderstaande code, **raden we u aan dezelfde naam van het opslagaccount op te geven dat u hebt gebruikt toen u de bewaking eerder in- of toestond.**
 > 
-> Het opslagaccount dat is gekoppeld aan de regio die u hebt gemaakt met uw Stream Analytics-taak in, niet specifiek voor de taak zelf.
+> Het opslagaccount is gekoppeld aan de regio waarin u uw Stream Analytics-taak hebt gemaakt, niet specifiek aan de taak zelf.
 > 
-> Alle Stream Analytics-taken (en alle andere Azure-resources) in die dezelfde regio delen dit opslagaccount wordt gebruikt voor het opslaan van gegevens. Als u een ander opslagaccount opgeeft, kan dit ertoe leiden dat onbedoelde neveneffecten in de bewaking van uw Stream Analytics-taken of andere Azure-resources.
+> Alle Stream Analytics-taken (en alle andere Azure-bronnen) in dezelfde regio delen dit opslagaccount om bewakingsgegevens op te slaan. Als u een ander opslagaccount opgeeft, kan dit onbedoelde bijwerkingen veroorzaken bij het controleren van uw andere Stream Analytics-taken of andere Azure-bronnen.
 > 
-> Naam van het opslagaccount dat u gebruiken om te vervangen `<YOUR STORAGE ACCOUNT NAME>` in de volgende code moet een opslagaccount die zich in hetzelfde abonnement als de Stream Analytics-taak die u inschakelen wilt voor bewaking.
+> De naam van het opslagaccount dat u in de volgende code wilt vervangen, `<YOUR STORAGE ACCOUNT NAME>` moet een opslagaccount zijn dat zich in hetzelfde abonnement bevindt als de Stream Analytics-taak waarvoor u bewaking inschakelt.
 > 
 > 
 >    ```csharp
@@ -167,9 +167,9 @@ De volgende code wordt de bewaking voor een **bestaande** Stream Analytics-taak.
 >   ```
 
 
-## <a name="get-support"></a>Krijg ondersteuning
+## <a name="get-support"></a>Ondersteuning krijgen
 
-Voor verdere ondersteuning kunt u proberen onze [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Probeer ons Azure [Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
 
 ## <a name="next-steps"></a>Volgende stappen
 

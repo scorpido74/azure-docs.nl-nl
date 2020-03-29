@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen met Privileged Identity Management-Azure Active Directory | Microsoft Docs
-description: Informatie over het oplossen van systeem fouten met rollen in Azure AD Privileged Identity Management (PIM).
+title: Een probleem met Privileged Identity Management oplossen - Azure Active Directory | Microsoft Documenten
+description: Meer informatie over het oplossen van systeemfouten met rollen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,32 +14,32 @@ ms.date: 10/18/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 474f2634e6f7ddc1840548c39ae86cb54c3bf08e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78299666"
 ---
-# <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>Problemen met Privileged Identity Management oplossen
+# <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>Een probleem met Privileged Identity Management oplossen
 
-Ondervindt u een probleem met Privileged Identity Management (PIM) in Azure Active Directory (Azure AD)? De volgende informatie kan u helpen bij het ophalen van dingen.
+Heeft u een probleem met Privileged Identity Management (PIM) in Azure Active Directory (Azure AD)? De informatie die volgt kan u helpen om dingen weer aan het werk te krijgen.
 
-## <a name="access-to-azure-resources-denied"></a>Toegang tot Azure-resources geweigerd
+## <a name="access-to-azure-resources-denied"></a>Toegang tot Azure-bronnen geweigerd
 
 ### <a name="problem"></a>Probleem
 
-Als een actieve eigenaar of beheerder van de gebruikers toegang voor een Azure-resource kunt u uw resource in Privileged Identity Management zien, maar u kunt geen acties uitvoeren zoals het maken van een in aanmerking komende toewijzing of het weer geven van een lijst met roltoewijzingen van de resource overzichts pagina. Een van deze acties resulteert in een autorisatie fout.
+Als actieve eigenaar of gebruikerstoegangsbeheerder voor een Azure-bron u uw bron zien in Privileged Identity Management, maar u geen acties uitvoeren, zoals het maken van een in aanmerking komende toewijzing of het weergeven van een lijst met roltoewijzingen uit de bron overzichtspagina. Een van deze acties resulteert in een autorisatiefout.
 
 ### <a name="cause"></a>Oorzaak
 
-Dit probleem kan zich voordoen wanneer de rol beheerder voor gebruikers toegang voor de PIM-Service-Principal per ongeluk is verwijderd uit het abonnement. De Privileged Identity Management-service kan alleen toegang krijgen tot Azure-resources als de MS-PIM-Service-Principal altijd wordt toegewezen aan de [rol van beheerder voor gebruikers toegang](../../role-based-access-control/built-in-roles.md#user-access-administrator) via het Azure-abonnement.
+Dit probleem kan optreden wanneer de rol gebruikerstoegangsbeheerders voor de PIM-serviceprincipal per ongeluk uit het abonnement is verwijderd. Als de service Privileged Identity Management toegang wil krijgen tot Azure-bronnen, moet de MS-PIM-serviceprincipal altijd de [functie Gebruikerstoegangsbeheerder](../../role-based-access-control/built-in-roles.md#user-access-administrator) boven het Azure-abonnement hebben toegewezen.
 
 ### <a name="resolution"></a>Oplossing
 
-Wijs de rol beheerder voor gebruikers toegang toe aan de privileged Identity Management Service Principal Name (MS-PIM) op abonnements niveau. Deze toewijzing moet de privileged Identity Management-service toestaan om toegang te krijgen tot de Azure-resources. De rol kan worden toegewezen op een niveau van de beheer groep of op het abonnements niveau, afhankelijk van uw vereisten. Zie [een toepassing toewijzen aan een rol](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)voor meer informatie over service-principals.
+Wijs de functie Gebruikerstoegangsbeheerder toe aan de hoofdnaam van de Privileged Identity Management-service (MS–PIM) op abonnementsniveau. Met deze toewijzing moet de service Voor beheer van de bevoegde identiteit toegang krijgen tot de Azure-bronnen. De rol kan worden toegewezen op het niveau van de managementgroep of op abonnementsniveau, afhankelijk van uw vereisten. Zie Een toepassing toewijzen [aan een rol voor](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)meer informatieserviceprincipals.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Licentie vereisten voor het gebruik van Privileged Identity Management](subscription-requirements.md)
+- [Licentievereisten voor het gebruik van Privileged Identity Management](subscription-requirements.md)
 - [Bevoegde toegang beveiligen voor hybride implementaties en cloudimplementaties in Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 - [Privileged Identity Management implementeren](pim-deployment-plan.md)

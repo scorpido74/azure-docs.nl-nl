@@ -1,35 +1,35 @@
 ---
-title: Azure dev Spaces inschakelen op AKS & de hulpprogram ma's aan de client zijde installeren
+title: Azure Dev Spaces op AKS inschakelen & de hulpprogramma's aan clientzijde installeren
 services: azure-dev-spaces
 ms.date: 07/24/2019
 ms.topic: conceptual
-description: Meer informatie over het inschakelen van Azure dev Spaces in een AKS-cluster en het installeren van de hulpprogram ma's aan de client zijde.
-keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
+description: Meer informatie over het inschakelen van Azure Dev Spaces op een AKS-cluster en het installeren van de client-side tools.
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
 ms.openlocfilehash: a6b3be5ceba5e60b99b2f75e060f3321cd3151f2
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898956"
 ---
-# <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Azure dev Spaces inschakelen op een AKS-cluster en de hulpprogram ma's aan de client zijde installeren
+# <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Azure Dev Spaces inschakelen op een AKS-cluster en de hulpprogramma's aan de clientzijde installeren
 
-In dit artikel wordt beschreven hoe u op verschillende manieren Azure dev-ruimten kunt inschakelen op een AKS-cluster en hoe u de hulpprogram ma's aan de client zijde installeert.
+In dit artikel ziet u verschillende manieren om Azure Dev Spaces in te schakelen op een AKS-cluster en de hulpprogramma's aan de clientzijde te installeren.
 
-## <a name="enable-or-remove-azure-dev-spaces-using-the-cli"></a>Azure-ontwikkel ruimten in-of uitschakelen met de CLI
+## <a name="enable-or-remove-azure-dev-spaces-using-the-cli"></a>Azure Dev-ruimten in- of verwijderen met de CLI
 
-Voordat u ontwikkel ruimten kunt inschakelen met behulp van de CLI, hebt u het volgende nodig:
-* Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account][az-portal-create-account] maken.
-* [De Azure-cli is geïnstalleerd][install-cli].
+Voordat u Dev Spaces inschakelen met de CLI, hebt u het:
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, u een [gratis account][az-portal-create-account]maken.
+* [De Azure CLI geïnstalleerd][install-cli].
 * [Een AKS-cluster][create-aks-cli] in een [ondersteunde regio][supported-regions].
 
-Gebruik de `use-dev-spaces` opdracht om ontwikkel ruimten in uw AKS-cluster in te scha kelen en de prompts te volgen.
+Gebruik `use-dev-spaces` de opdracht om Dev Spaces in te schakelen op uw AKS-cluster en volg de aanwijzingen.
 
 ```azurecli
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
 ```
 
-De bovenstaande opdracht maakt ontwikkel ruimten in het *myAKSCluster* -cluster in de *myResourceGroup* -groep mogelijk en maakt een *standaard* dev-ruimte.
+Met de bovenstaande opdracht schakelt U Spaties in op het *cluster myAKSCluster* in de *groep myResourceGroup* in en wordt een standaarddev-ruimte gemaakt. *default*
 
 ```console
 'An Azure Dev Spaces Controller' will be created that targets resource 'myAKSCluster' in resource group 'myResourceGroup'. Continue? (y/N): y
@@ -47,9 +47,9 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-Met de opdracht `use-dev-spaces` wordt ook de Azure dev Space CLI geïnstalleerd.
+De `use-dev-spaces` opdracht installeert ook de Azure Dev Spaces CLI.
 
-Als u Azure dev Spaces wilt verwijderen uit uw AKS-cluster, gebruikt u de `azds remove` opdracht. Bijvoorbeeld:
+Als u Azure Dev Spaces uit uw `azds remove` AKS-cluster wilt verwijderen, gebruikt u de opdracht. Bijvoorbeeld:
 
 ```azurecli
 $ azds remove -g MyResourceGroup -n MyAKS
@@ -58,41 +58,41 @@ Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that tar
 Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAks' in resource group 'MyResourceGroup' (takes a few minutes)...
 ```
 
-Met de bovenstaande opdracht worden Azure dev Spaces verwijderd uit het *MyAKS* -cluster in *MyResourceGroup*. Alle naam ruimten die u met Azure dev Spaces hebt gemaakt, blijven samen met hun werk belastingen, maar nieuwe werk belastingen in deze naam ruimten worden niet met Azure dev-ruimten geinstrumenteerd. Als u een bestaand van de bestaande peulen met Azure dev Spaces opnieuw start, worden er bovendien fouten weer geven. Deze bestanden moeten opnieuw worden geïmplementeerd zonder Azure dev Spaces-hulpprogram ma's. Als u Azure dev Spaces volledig uit uw cluster wilt verwijderen, verwijdert u alle peulen in alle naam ruimten waar Azure dev Spaces is ingeschakeld.
+Met de bovenstaande opdracht worden Azure Dev Spaces verwijderd uit het *MyAKS-cluster* in *MyResourceGroup*. Alle naamruimten die u met Azure Dev Spaces hebt gemaakt, blijven samen met hun workloads, maar nieuwe workloads in die naamruimten worden niet uitgevoerd met Azure Dev Spaces. Als u bovendien bestaande pods opnieuw start die zijn uitgerust met Azure Dev Spaces, ziet u mogelijk fouten. Deze pods moeten opnieuw worden geïmplementeerd zonder Azure Dev Spaces-tooling. Als u Azure Dev Spaces volledig uit uw cluster wilt verwijderen, verwijdert u alle pods in alle naamruimten waar Azure Dev Spaces is ingeschakeld.
 
-## <a name="enable-or-remove-azure-dev-spaces-using-the-azure-portal"></a>Azure-ontwikkel ruimten in-of uitschakelen met behulp van de Azure Portal
+## <a name="enable-or-remove-azure-dev-spaces-using-the-azure-portal"></a>Azure Dev-ruimten in- of verwijderen met behulp van de Azure-portal
 
-Voordat u ontwikkel ruimten kunt inschakelen met behulp van de Azure Portal, hebt u het volgende nodig:
-* Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account][az-portal-create-account] maken.
+Voordat u Dev Spaces inschakelen met de Azure-portal, moet u het:
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, u een [gratis account][az-portal-create-account]maken.
 * [Een AKS-cluster][create-aks-portal] in een [ondersteunde regio][supported-regions].
 
-Azure-ontwikkel ruimten inschakelen met behulp van de Azure Portal:
-1. Meld u aan bij de [Azure-portal][az-portal].
+Ga als eerste voor azure dev-ruimten met de Azure-portal:
+1. Meld u aan bij [Azure Portal][az-portal].
 1. Navigeer naar uw AKS-cluster.
-1. Selecteer de menu opdracht *dev Spaces* .
-1. Wijzig *dev-ruimten* in *Ja* en klik op *Opslaan*.
+1. Selecteer het *menu-item Dev Spaces.*
+1. Schakel *Spaties inschakelen wijzigen* in *Ja* en klik op *Opslaan*.
 
-![Ontwikkel ruimten in de Azure Portal inschakelen](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
+![Dev-spaties inschakelen in de Azure-portal](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
 
-Wanneer u Azure dev Spaces inschakelt met behulp van de Azure Portal **, worden geen** hulpprogram Ma's voor Azure-ontwikkel ruimten geïnstalleerd.
+Als u Azure Dev Spaces inschakelt met de Azure-portal, worden **geen** client-side tools voor Azure Dev Spaces geïnstalleerd.
 
-Als u Azure-ontwikkel ruimten wilt verwijderen uit uw AKS-cluster, wijzigt u de *optie ontwikkel ruimten* in *Nee* en klikt u op *Opslaan*. Alle naam ruimten die u met Azure dev Spaces hebt gemaakt, blijven samen met hun werk belastingen, maar nieuwe werk belastingen in deze naam ruimten worden niet met Azure dev-ruimten geinstrumenteerd. Als u een bestaand van de bestaande peulen met Azure dev Spaces opnieuw start, worden er bovendien fouten weer geven. Deze bestanden moeten opnieuw worden geïmplementeerd zonder Azure dev Spaces-hulpprogram ma's. Als u Azure dev Spaces volledig uit uw cluster wilt verwijderen, verwijdert u alle peulen in alle naam ruimten waar Azure dev Spaces is ingeschakeld.
+Als u Azure Dev Spaces uit uw AKS-cluster wilt verwijderen, wijzigt u *Dev Spaces inschakelen* in *Nee* en klikt u op *Opslaan*. Alle naamruimten die u met Azure Dev Spaces hebt gemaakt, blijven samen met hun workloads, maar nieuwe workloads in die naamruimten worden niet uitgevoerd met Azure Dev Spaces. Als u bovendien bestaande pods opnieuw start die zijn uitgerust met Azure Dev Spaces, ziet u mogelijk fouten. Deze pods moeten opnieuw worden geïmplementeerd zonder Azure Dev Spaces-tooling. Als u Azure Dev Spaces volledig uit uw cluster wilt verwijderen, verwijdert u alle pods in alle naamruimten waar Azure Dev Spaces is ingeschakeld.
 
-## <a name="install-the-client-side-tools"></a>De hulpprogram ma's aan de client zijde installeren
+## <a name="install-the-client-side-tools"></a>De hulpprogramma's aan de clientzijde installeren
 
-U kunt de Azure dev Spaces-client-side hulp middelen gebruiken om te communiceren met ontwikkel ruimten in een AKS-cluster vanaf uw lokale computer. Er zijn verschillende manieren om de hulpprogram ma's aan de client zijde te installeren:
+U de hulpprogramma's aan de clientzijde van Azure Dev Spaces gebruiken om vanaf uw lokale machine te communiceren met dev-ruimten op een AKS-cluster. Er zijn verschillende manieren om de client-side tools te installeren:
 
-* Installeer de [Azure dev Space-extensie][vscode-extension]in [Visual Studio code][vscode].
-* Installeer de werk belasting Azure Development in [Visual Studio 2019][visual-studio].
-* Installeer in Visual Studio 2017 de workload Web Development-en [Visual Studio Tools voor Kubernetes][visual-studio-k8s-tools].
-* Down load en installeer de [Windows][cli-win]-, [Mac][cli-mac]-of [Linux][cli-linux] -cli.
+* Installeer in [Visual Studio Code][vscode]de azure [dev spaces-extensie][vscode-extension].
+* Installeer in [Visual Studio 2019][visual-studio]de Azure Development-workload.
+* Installeer in Visual Studio 2017 de Web Development-workload en [Visual Studio Tools voor Kubernetes.][visual-studio-k8s-tools]
+* Download en installeer de [Windows,][cli-win] [Mac][cli-mac]of [Linux][cli-linux] CLI.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te ontwikkelen in meerdere containers en hoe u samenwerkings ontwikkeling kunt vereenvoudigen door te werken met verschillende versies of vertakkingen van uw code in verschillende ruimten.
+Ontdek hoe Azure Dev Spaces u helpt complexere toepassingen te ontwikkelen voor meerdere containers en hoe u de samenwerking vereenvoudigen door te werken met verschillende versies of branches van uw code in verschillende ruimten.
 
 > [!div class="nextstepaction"]
-> [Team ontwikkeling in azure dev Spaces][team-development-qs]
+> [Teamontwikkeling in Azure Dev Spaces][team-development-qs]
 
 [create-aks-cli]: ../../aks/kubernetes-walkthrough.md#create-a-resource-group
 [create-aks-portal]: ../../aks/kubernetes-walkthrough-portal.md#create-an-aks-cluster

@@ -1,6 +1,6 @@
 ---
-title: Voor beelden van Azure Notification Hubs
-description: Een lijst met beschik bare Azure Notification Hubs-voor beelden.
+title: Voorbeelden van Azure-meldingshubs
+description: Een lijst met beschikbare Azure Notification Hubs-voorbeelden.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -14,15 +14,15 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/28/2019
 ms.openlocfilehash: eb382a66ac901853d28b4d63d31a30ed2f65b96c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263928"
 ---
-# <a name="azure-notification-hubs-samples"></a>Voor beelden van Azure Notification Hubs
+# <a name="azure-notification-hubs-samples"></a>Voorbeelden van Azure-meldingshubs
 
-In dit artikel vindt u koppelingen naar voor beelden van belang rijke functies in azure Notification Hubs.
+In dit artikel worden koppelingen naar voorbeelden weergegeven die belangrijke functies in Azure Notification Hubs demonstreren.
 
 ## <a name="samples"></a>Voorbeelden
 
@@ -34,4 +34,4 @@ In dit artikel vindt u koppelingen naar voor beelden van belang rijke functies i
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie zelf studies in het gedeelte **zelf studies** van de inhouds opgave.
+Zie zelfstudies in de sectie **Zelfstudies** van de inhoudsopgave.
