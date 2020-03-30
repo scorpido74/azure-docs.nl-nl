@@ -1,6 +1,6 @@
 ---
-title: Overzicht van gespecialiseerde Event hubs-Azure Event Hubs | Microsoft Docs
-description: Dit artikel bevat een overzicht van toegewezen Azure-Event Hubs, dat implementaties met één Tenant van Event hubs biedt.
+title: Overzicht van speciale gebeurtenishubs - Azure Event Hubs | Microsoft Documenten
+description: In dit artikel vindt u een overzicht van speciale Azure-gebeurtenishubs, die implementaties van gebeurtenishubs met één tenant aanbieden.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -16,92 +16,92 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: f67be1d31125b21048deca4d9cafcc76f4ffc3b1
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72516743"
 ---
-# <a name="overview-of-event-hubs-dedicated"></a>Overzicht van Event Hubs Dedicated
+# <a name="overview-of-event-hubs-dedicated"></a>Overzicht van evenementhubs gewijd
 
-*Event hubs-clusters* bieden implementaties met één Tenant voor klanten met de meest veeleisende streaming behoeften. Dit aanbod met één tenant heeft een gegarandeerde SLA van 99,99 procent en is alleen beschikbaar in onze speciale prijscategorie. Een Event Hubs cluster kan miljoenen gebeurtenissen per seconde met gegarandeerde capaciteit en een subseconde van de seconden binnenkomen. Naam ruimten en Event hubs die zijn gemaakt in het toegewezen cluster, bevatten alle functies van de Standard-aanbieding en meer, maar zonder ingangs limieten. Het bevat ook de populaire [Event hubs Capture](event-hubs-capture-overview.md) -functie zonder extra kosten, zodat u automatisch gegevens stromen naar Azure Storage of Azure data Lake kunt vastleggen. 
+*Event Hubs-clusters* bieden implementaties met één tenant voor klanten met de meest veeleisende streamingbehoeften. Dit single-tenant aanbod heeft een gegarandeerde SLA van 99,99% en is alleen beschikbaar op onze dedicated pricing tier. Een cluster van Gebeurtenishubs kan miljoenen gebeurtenissen per seconde binnendringen met gegarandeerde capaciteit en latentie onder één seconde. Naamruimten en gebeurtenishubs die binnen het dedicated cluster zijn gemaakt, bevatten alle functies van het standaardaanbod en meer, maar zonder invallen. Het bevat ook de populaire [functie voor het vastleggen van gebeurtenishubs](event-hubs-capture-overview.md) zonder extra kosten, zodat u automatisch gegevensstromen batchen en logboeken naar Azure Storage of Azure Data Lake. 
 
-Clusters worden ingericht en gefactureerd op basis van **capaciteits eenheden (CUs)** , een vooraf toegewezen hoeveelheid CPU-en geheugen bronnen. U kunt 1, 2, 4, 8, 12, 16 of 20 voor elk cluster aanschaffen. Hoeveel u kunt opnemen en streamen per CU, is afhankelijk van verschillende factoren, zoals het aantal producenten en consumenten, de shape nettolading, het uitgangs bedrag (Zie de onderstaande benchmark resultaten voor meer informatie). 
+Clusters worden ingericht en gefactureerd door **Capaciteitseenheden (CPU's),** een vooraf toegewezen hoeveelheid CPU- en geheugenbronnen. U voor elk cluster 1, 2, 4, 8, 12, 16 of 20 CPU's kopen. Hoeveel u per CU innemen en streamen, hangt af van verschillende factoren, zoals het aantal producenten en consumenten, payload-vorm, uitgangssnelheid (zie benchmarkresultaten hieronder voor meer details). 
 
 > [!NOTE]
-> Alle Event Hubs clusters Kafka standaard ingeschakeld en ondersteunen Kafka-eind punten die kunnen worden gebruikt door uw bestaande op Kafka gebaseerde toepassingen. Als Kafka in uw cluster is ingeschakeld, heeft dit geen invloed op uw gebruik van niet-Kafka. Er is geen optie of het is niet nodig om Kafka uit te scha kelen op een cluster.
+> Alle clusterclusters van gebeurtenishubs zijn standaard ingeschakeld voor Kafka en ondersteunen Kafka-eindpunten die kunnen worden gebruikt door uw bestaande op Kafka gebaseerde toepassingen. Het hebben van Kafka ingeschakeld op uw cluster heeft geen invloed op uw niet-Kafka-gebruiksaanvragen; er is geen optie of noodzaak om Kafka uit te schakelen op een cluster.
 
-## <a name="why-dedicated"></a>Wat is er specifiek?
+## <a name="why-dedicated"></a>Waarom Dedicated?
 
-Dedicated Event Hubs biedt drie aantrekkelijke voor delen voor klanten die behoefte hebben aan capaciteit op bedrijfs niveau:
+Dedicated Event Hubs biedt drie overtuigende voordelen voor klanten die capaciteit op ondernemingsniveau nodig hebben:
 
-#### <a name="single-tenancy-guarantees-capacity-for-better-performance"></a>De capaciteit van één pacht garandeert voor betere prestaties
+#### <a name="single-tenancy-guarantees-capacity-for-better-performance"></a>Single-tenancy garandeert capaciteit voor betere prestaties
 
-Een toegewezen cluster garandeert voldoende capaciteit op de volledige schaal en kan Maxi maal gigabytes aan streaminggegevens met volledig duurzame opslag en een subseconde met een latentie van elke burst in verkeer. 
+Een dedicated cluster garandeert capaciteit op volledige schaal en kan tot gigabyte aan streaminggegevens binnendringen met volledig duurzame opslag en latentie van subseconden om elke uitbarsting in het verkeer mogelijk te maken. 
 
-#### <a name="inclusive-and-exclusive-access-to-features"></a>Inclusief en exclusieve toegang tot functies 
-De speciale aanbieding bevat functies zoals vastleggen zonder extra kosten en exclusieve toegang tot aanstaande functies als Bring Your Own Key (BYOK). De service beheert ook taak verdeling, updates van het besturings systeem, beveiligings patches en partitioneren voor de klant, zodat u minder tijd kunt best Eden aan het onderhoud van de infra structuur en meer tijd hebt bij het bouwen van client-side-functies.  
+#### <a name="inclusive-and-exclusive-access-to-features"></a>Inclusieve en exclusieve toegang tot functies 
+Het speciale aanbod bevat functies zoals Capture zonder extra kosten, evenals exclusieve toegang tot aankomende functies zoals Bring Your Own Key (BYOK). De service beheert ook taakverdeling, OS-updates, beveiligingspatches en partitionering voor de klant, zodat u minder tijd besteden aan onderhoud van de infrastructuur en meer tijd aan het bouwen van client-side functies.  
 
-#### <a name="cost-savings"></a>Kosten besparingen
-Bij hoge ingangs volumes (> 100 TUs), kost het cluster aanzienlijk minder per uur dan het kopen van een vergelijkbaar aantal doorvoer eenheden in de standaard aanbieding.
+#### <a name="cost-savings"></a>Kostenbesparingen
+Bij hoge instroomvolumes (>100 TV's) kost een cluster aanzienlijk minder per uur dan de aankoop van een vergelijkbare hoeveelheid doorvoereenheden in het standaardaanbod.
 
 
-## <a name="event-hubs-dedicated-quotas-and-limits"></a>Quota en limieten Event Hubs Dedicated
+## <a name="event-hubs-dedicated-quotas-and-limits"></a>Speciale quota en limieten voor gebeurtenishubs
 
-De Event Hubs Dedicated aanbieding wordt gefactureerd tegen een vaste maandelijkse prijs, met een minimum van 4 uur gebruik. De toegewezen laag biedt alle functies van het Standard-abonnement, maar met de schaal capaciteit van bedrijven en limieten voor klanten met veeleisende workloads. 
+Het Evenement Hubs Dedicated-aanbod wordt gefactureerd tegen een vaste maandelijkse prijs, met een minimum van 4 uur gebruik. De Dedicated-laag biedt alle functies van het Standaard-plan, maar met capaciteit en limieten op bedrijfsschaal voor klanten met veeleisende workloads. 
 
 | Functie | Standard | Toegewezen |
 | --- |:---:|:---:|
-| Bandbreedte | 20 TUs (Maxi maal 40 TUs) | 20 CUs |
+| Bandbreedte | 20 amerikaanse sus's (tot 40 amerikaanse) | 20 C's |
 | Naamruimten |  1 | 50 per CU |
-| Event Hubs |  10 per naam ruimte | 1000 per naam ruimte |
-| Ingangsgebeurtenissen | Betalen per miljoen gebeurtenissen | Inbegrepen |
-| Berichtgrootte | 1\.000.000 bytes | 1\.000.000 bytes |
-| Partities | 32 per Event hub | 1024 per Event hub |
-| Consumentengroepen | 20 per Event hub | Geen limiet per CU, 1000 per Event Hub |
-| Brokered Connections | 1\.000 inbegrepen, 5.000 Maxi maal | 100 K inbegrepen en Max. |
-| Bewaartermijn voor berichten | 7 dagen, 84 GB inbegrepen per di | 90 dagen, 10 TB inbegrepen per CU |
+| Event Hubs |  10 per naamruimte | 1000 per naamruimte |
+| Invallende gebeurtenissen | Betaal per miljoen evenementen | Inbegrepen |
+| Berichtgrootte | 1 miljoen bytes | 1 miljoen bytes |
+| Partities | 32 per gebeurtenishub | 1024 per gebeurtenishub |
+| Consumergroepen | 20 per gebeurtenishub | Geen limiet per CU, 1000 per gebeurtenishub |
+| Brokered connections | 1.000 inbegrepen, 5.000 max. | 100 K inbegrepen en max. |
+| Behoud van berichten | 7 dagen, 84 GB inbegrepen per TU | 90 dagen, 10 TB inbegrepen per CU |
 | Capture | Betalen per uur | Inbegrepen |
 
-## <a name="how-to-onboard"></a>Onboarding
+## <a name="how-to-onboard"></a>Hoe aan boord
 
-De eigen ervaring voor het [maken van een event hubs cluster](event-hubs-dedicated-cluster-create-portal.md) via [Azure Portal](https://aka.ms/eventhubsclusterquickstart) is nu beschikbaar als preview-versie. Als u vragen hebt of hulp nodig hebt bij het voorbereiden van Event Hubs Dedicated, neemt u contact op met het [Event hubs team](mailto:askeventhubs@microsoft.com).
+De self-serve-ervaring voor [het maken van een cluster van gebeurtenishubs](event-hubs-dedicated-cluster-create-portal.md) via de Azure [Portal](https://aka.ms/eventhubsclusterquickstart) bevindt zich nu in Preview. Als je vragen hebt of hulp nodig hebt bij het instappen naar Event Hubs Dedicated, neem dan contact op met het [Event Hubs-team.](mailto:askeventhubs@microsoft.com)
 
 ## <a name="faqs"></a>Veelgestelde vragen
 
-#### <a name="what-can-i-achieve-with-a-cluster"></a>Wat kan ik met een cluster krijgen?
+#### <a name="what-can-i-achieve-with-a-cluster"></a>Wat kan ik bereiken met een cluster?
 
-Hoeveel u voor een Event Hubs cluster kunt opnemen en streamen, is afhankelijk van verschillende factoren, zoals uw producenten, consumenten, de snelheid waarmee u opnameert en verwerkt, en nog veel meer. 
+Voor een cluster van Event Hubs is hoeveel u innemen en streamen afhankelijk van verschillende factoren, zoals uw producenten, consumenten, de snelheid waarmee u inneemt en verwerkt, en nog veel meer. 
 
-De volgende tabel toont de Bench Mark-resultaten die we hebben behaald tijdens onze tests:
+Onderstaande tabel toont de benchmarkresultaten die we tijdens onze tests hebben behaald:
 
-| De shape Payload | Ontvangers | Ingangs bandbreedte| Berichten binnenkomend | Uitgangs band breedte | Uitstaande berichten | Totaal aantal TUs | TUs per CU |
+| Payload-vorm | Ontvangers | Binnenvallende bandbreedte| Binnenkomende berichten | Bandbreedte uit de uitgang | Berichten uit de uitgang | Totaal amerikaanse tus | Amerikaanse sus's per CU |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| Batches van 100x1KB | 2 | 400 MB/sec. | 400k berichten per seconde | 800 MB/sec. | 800k berichten per seconde | 400 TUs | 100 TUs | 
-| Batches van 10x10KB | 2 | 666 MB/sec. | 66.6 k-berichten/sec | 1,33 GB/sec. | 133k berichten per seconde | 666 TUs | 166 TUs |
-| Batches van 6x32KB | 1 | 1,05 GB/sec. | 34k berichten per seconde | 1,05 GB/sec. | 34k berichten per seconde | 1000 TUs | 250 TUs |
+| Batches van 100x1KB | 2 | 400 MB/s | 400k berichten per seconde | 800 MB/s | 800k berichten per seconde | 400 tUs | 100 tus | 
+| Batches van 10x10KB | 2 | 666 MB/s | 66,6k berichten per seconde | 1,33 GB/s | 133k berichten per seconde | 666 tus's | 166 tUs |
+| Batches van 6x32KB | 1 | 1,05 GB/s | 34k berichten / sec | 1,05 GB/s | 34k berichten per seconde | 1000 tus | 250 amerikaanse sus's |
 
-Bij het testen zijn de volgende criteria gebruikt:
+Bij de tests werden de volgende criteria gebruikt:
 
-- Er is een toegewezen Event Hubs cluster met vier capaciteits eenheden (CUs) gebruikt. 
-- De Event Hub die wordt gebruikt voor opname, had 200 partities. 
-- De gegevens die zijn opgenomen, zijn ontvangen door twee receiver-toepassingen die van alle partities ontvangen.
+- Er is gebruik gemaakt van een cluster met gebeurtenishubs met vier capaciteitseenheden (CPU's). 
+- De gebeurtenishub die voor inname wordt gebruikt had 200 partities. 
+- De gegevens die werd ingenomen werd ontvangen door twee ontvanger toepassingen ontvangen van alle partities.
 
-#### <a name="can-i-scale-updown-my-cluster"></a>Kan ik mijn cluster omhoog/omlaag schalen?
+#### <a name="can-i-scale-updown-my-cluster"></a>Kan ik mijn cluster opschalen/omlaag?
 
-Na het maken van clusters worden er mini maal vier uur verbruik in rekening gebracht. In de preview-versie van de zelf-onderhouds ervaring kunt u een [ondersteunings aanvraag](https://ms.portal.azure.com/#create/Microsoft.Support) indienen bij het event hubs team onder *technisch > quotum > aanvraag om een toegewezen cluster* omhoog of omlaag te schalen om het cluster omhoog of omlaag te schalen. Het kan tot 7 dagen duren voordat de aanvraag is voltooid om uw cluster omlaag te schalen. 
+Na het maken worden clusters gefactureerd voor minimaal 4 uur gebruik. In de preview-versie van de zelfbedieningservaring u een [ondersteuningsaanvraag](https://ms.portal.azure.com/#create/Microsoft.Support) indienen bij het Team Gebeurtenishubs onder *Technische > Quota >-aanvraag om dedicated cluster op te schalen of op te schalen* om uw cluster omhoog of omlaag te schalen. Het kan tot 7 dagen duren voordat de aanvraag is voltooid om uw cluster te schalen. 
 
-#### <a name="how-will-geo-dr-work-with-my-cluster"></a>Hoe werkt geo-DR met mijn cluster?
+#### <a name="how-will-geo-dr-work-with-my-cluster"></a>Hoe werkt Geo-DR met mijn cluster?
 
-U kunt geografisch koppelen aan een naam ruimte onder een cluster met een specifieke laag met een andere naam ruimte onder een cluster met een specifieke laag. Het is niet raadzaam om een naam ruimte met een toegewezen laag te koppelen aan een naam ruimte in onze standaard aanbieding, omdat de doorvoer limiet incompatibel is. 
+U een naamruimte koppelen onder een cluster met dedicated-tier met een andere naamruimte onder een cluster met speciale lagen. We moedigen het koppelen van een dedicated-tier naamruimte met een naamruimte in ons standaardaanbod niet aan, omdat de doorvoerlimiet onverenigbaar zal zijn, wat tot fouten zal leiden. 
 
-#### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Kan ik mijn standaard naam ruimten migreren naar een cluster met een toegewezen laag?
-Momenteel ondersteunen we geen geautomatiseerd migratie proces voor het migreren van uw event hubs-gegevens uit een standaard naam ruimte naar een speciaal voor beeld. 
+#### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Kan ik mijn standaardnaamruimten migreren om deel uit te maken van een dedicated-tier cluster?
+We ondersteunen momenteel geen geautomatiseerd migratieproces voor het migreren van uw gebeurtenishubsgegevens van een standaardnaamruimte naar een dedicated-status. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Neem contact op met uw micro soft-verkoop vertegenwoordiger of Microsoft Ondersteuning voor meer informatie over Event Hubs Dedicated. U kunt ook een cluster maken of meer informatie over Event Hubs prijs categorieën door de volgende koppelingen te bezoeken:
+Neem contact op met uw Microsoft-vertegenwoordiger of Microsoft Support voor meer informatie over Dedicated Event Hubs. U ook een cluster maken of meer informatie krijgen over prijsniveaus van gebeurtenishubs door naar de volgende koppelingen te gaan:
 
-- [Een Event Hubs-cluster maken via de Azure-Portal](https://aka.ms/eventhubsclusterquickstart) 
-- [Event hubs dedicated prijzen](https://azure.microsoft.com/pricing/details/event-hubs/). U kunt ook contact opnemen met uw micro soft-verkoop medewerker of Microsoft Ondersteuning om meer informatie over Event Hubs Dedicated capaciteit te krijgen.
-- De [Veelgestelde](event-hubs-faq.md) vragen over de Event hubs bevatten prijs informatie en antwoorden op veelgestelde vragen over Event hubs.
+- [Een cluster van gebeurtenishubs maken via de Azure Portal](https://aka.ms/eventhubsclusterquickstart) 
+- [Speciale prijzen voor gebeurtenishubs](https://azure.microsoft.com/pricing/details/event-hubs/). U ook contact opnemen met uw Microsoft-vertegenwoordiger of Microsoft Support voor meer informatie over de toegewezen capaciteit van gebeurtenishubs.
+- De [veelgestelde vragen over gebeurtenishubs](event-hubs-faq.md) bevat prijsinformatie en beantwoordt een aantal veelgestelde vragen over eventhubs.

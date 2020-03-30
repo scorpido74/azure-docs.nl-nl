@@ -1,6 +1,6 @@
 ---
-title: Statisch groepslid maatschap wijzigen in dynamisch-Azure AD | Microsoft Docs
-description: Lidmaatschaps regels maken voor het automatisch invullen van groepen en een verwijzing naar een regel.
+title: Statisch groepslidmaatschap wijzigen in dynamisch - Azure AD | Microsoft Documenten
+description: Lidmaatschapsregels maken om groepen automatisch te vullen en een regelverwijzing.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,51 +15,51 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34451fcc4597f77464e5e9566613e21e9fecdbc6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74027318"
 ---
-# <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Statisch groepslid maatschap wijzigen in Azure Active Directory
+# <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Statisch groepslidmaatschap wijzigen in dynamisch in Azure Active Directory
 
-U kunt het lidmaatschap van een groep wijzigen van statisch in dynamisch (of omgekeerd) in Azure Active Directory (Azure AD). Azure AD houdt dezelfde groeps naam en ID in het systeem, zodat alle bestaande verwijzingen naar de groep nog geldig zijn. Als u in plaats daarvan een nieuwe groep maakt, moet u deze verwijzingen bijwerken. Dynamisch groepslid maatschap elimineert beheer overhead waarmee gebruikers worden toegevoegd en verwijderd. In dit artikel leest u hoe u bestaande groepen van statisch naar dynamisch lidmaatschap kunt converteren met behulp van het Azure AD-beheer centrum of de Power shell-cmdlets.
+U het lidmaatschap van een groep wijzigen van statisch naar dynamisch (of vice versa) in Azure Active Directory (Azure AD). Azure AD behoudt dezelfde groepsnaam en -id in het systeem, zodat alle bestaande verwijzingen naar de groep nog steeds geldig zijn. Als u in plaats daarvan een nieuwe groep maakt, moet u deze verwijzingen bijwerken. Dynamisch groepslidmaatschap elimineert het toevoegen en verwijderen van gebruikers in beheeroverhead. In dit artikel vindt u hoe u bestaande groepen converteert van statisch naar dynamisch lidmaatschap met Azure AD-beheercentrum of PowerShell-cmdlets.
 
 > [!WARNING]
-> Wanneer u een bestaande statische groep wijzigt in een dynamische groep, worden alle bestaande leden uit de groep verwijderd en wordt de lidmaatschaps regel verwerkt om nieuwe leden toe te voegen. Als de groep wordt gebruikt om de toegang tot apps of bronnen te beheren, moet u er rekening mee houden dat de oorspronkelijke leden de toegang kunnen verliezen tot de lidmaatschaps regel volledig is verwerkt.
+> Wanneer u een bestaande statische groep wijzigt in een dynamische groep, worden alle bestaande leden uit de groep verwijderd en vervolgens wordt de lidmaatschapsregel verwerkt om nieuwe leden toe te voegen. Als de groep wordt gebruikt om de toegang tot apps of bronnen te beheren, moet u er rekening mee houden dat de oorspronkelijke leden de toegang kunnen verliezen totdat de lidmaatschapsregel volledig is verwerkt.
 >
-> We raden u aan om de nieuwe lidmaatschaps regel vooraf te testen om ervoor te zorgen dat het nieuwe lidmaatschap van de groep op de verwachte manier wordt verwacht.
+> We raden u aan de nieuwe lidmaatschapsregel vooraf te testen om ervoor te zorgen dat het nieuwe lidmaatschap van de groep is zoals verwacht.
 
-## <a name="change-the-membership-type-for-a-group"></a>Het lidmaatschaps type voor een groep wijzigen
+## <a name="change-the-membership-type-for-a-group"></a>Het lidmaatschapstype voor een groep wijzigen
 
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat een globale beheerder of een gebruikers beheerder in uw Tenant is.
-2. Selecteer **groepen**.
-3. Open de groep die u wilt wijzigen in de lijst **alle groepen** .
+1. Meld u aan bij het [Azure AD-beheercentrum](https://aad.portal.azure.com) met een account dat een globale beheerder of een gebruikersbeheerder in uw tenant is.
+2. Selecteer **Groepen**.
+3. Open in de lijst **Alle groepen** de groep die u wilt wijzigen.
 4. Selecteer **Eigenschappen**.
-5. Selecteer op de pagina **Eigenschappen** van de groep een **type lidmaatschap** van toegewezen (statisch), dynamische gebruiker of dynamisch apparaat, afhankelijk van het gewenste lidmaatschaps type. Voor dynamisch lidmaatschap kunt u de regel Builder gebruiken om opties voor een eenvoudige regel te selecteren of zelf een lidmaatschaps regel te schrijven. 
+5. Selecteer **op** de pagina Eigenschappen voor de groep een **lidmaatschapstype** toegewezen (statisch), Dynamische gebruiker of Dynamisch apparaat, afhankelijk van het gewenste lidmaatschapstype. Voor dynamisch lidmaatschap u de regelbouwer gebruiken om opties voor een eenvoudige regel te selecteren of zelf een lidmaatschapsregel te schrijven. 
 
-De volgende stappen zijn een voor beeld van het wijzigen van een groep van statisch naar dynamisch lidmaatschap voor een groep gebruikers.
+De volgende stappen zijn een voorbeeld van het wijzigen van een groep van statisch naar dynamisch lidmaatschap voor een groep gebruikers.
 
-1. Selecteer op de pagina **Eigenschappen** voor de geselecteerde groep het **lidmaatschaps type** **dynamisch gebruiker**en selecteer vervolgens Ja in het dialoog venster met uitleg over de wijzigingen in het groepslid maatschap om door te gaan. 
+1. Selecteer **op** de pagina Eigenschappen voor de geselecteerde groep een **lidmaatschapstype** **dynamische gebruiker**en selecteer Vervolgens Ja in het dialoogvenster waarin de wijzigingen in het groepslidmaatschap worden uitgelegd om door te gaan. 
   
-   ![lidmaatschaps type van dynamische gebruiker selecteren](./media/groups-change-type/select-group-to-convert.png)
+   ![het lidmaatschapstype dynamische gebruiker selecteren](./media/groups-change-type/select-group-to-convert.png)
   
-2. Selecteer **dynamische query toevoegen**en geef vervolgens de regel op.
+2. Selecteer **Dynamische query toevoegen**en geef de regel op.
   
-   ![de regel voor de dynamische groep invoeren](./media/groups-change-type/enter-rule.png)
+   ![voer de regel in voor de dynamische groep](./media/groups-change-type/enter-rule.png)
   
-3. Nadat u de regel hebt gemaakt, selecteert u onder aan de pagina **query toevoegen** .
-4. Selecteer **Opslaan** op de pagina **Eigenschappen** voor de groep om uw wijzigingen op te slaan. Het **lidmaatschaps type** van de groep wordt onmiddellijk in de groeps lijst bijgewerkt.
+3. Nadat u de regel hebt hebt hebt geselecteerd, selecteert u Query onder aan de pagina **toevoegen.**
+4. Selecteer **Opslaan** op de pagina **Eigenschappen** voor de groep om uw wijzigingen op te slaan. Het **lidmaatschapstype** van de groep wordt onmiddellijk bijgewerkt in de groepslijst.
 
 > [!TIP]
-> Groeps conversie kan mislukken als de ingevoerde lidmaatschaps regel onjuist is. Er wordt in de rechter bovenhoek van de portal een melding weer gegeven waarin wordt uitgelegd waarom de regel niet kan worden geaccepteerd door het systeem. Lees het zorgvuldig om te begrijpen hoe u de regel kunt aanpassen om deze geldig te maken. Zie voor voor beelden van regel syntaxis en een volledige lijst met ondersteunde eigenschappen, Opera tors en waarden voor een lidmaatschaps regel [dynamische lidmaatschaps regels voor groepen in azure Active Directory](groups-dynamic-membership.md).
+> Groepsconversie kan mislukken als de lidmaatschapsregel die u hebt ingevoerd onjuist was. Een melding wordt weergegeven in de rechterbovenhoek van het portaal dat het een uitleg bevat waarom de regel niet door het systeem kan worden geaccepteerd. Lees het zorgvuldig om te begrijpen hoe u de regel aanpassen om deze geldig te maken. Zie [Dynamische lidmaatschapsregels voor groepen in Azure Active Directory](groups-dynamic-membership.md)voor voorbeelden van syntaxis en een volledige lijst met de ondersteunde eigenschappen, operators en waarden voor een lidmaatschapsregel.
 
-## <a name="change-membership-type-for-a-group-powershell"></a>Type lidmaatschap voor een groep wijzigen (Power shell)
+## <a name="change-membership-type-for-a-group-powershell"></a>Lidmaatschapstype voor een groep wijzigen (PowerShell)
 
 > [!NOTE]
-> Als u de eigenschappen van dynamische groepen wilt wijzigen, moet u cmdlets uit **de preview-versie van** [Azure AD Power shell versie 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)gebruiken. U kunt de preview-versie van de [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureADPreview)installeren.
+> Als u dynamische groepseigenschappen wilt wijzigen, moet u cmdlets gebruiken vanaf **de preview-versie van** [Azure AD PowerShell-versie 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0). U de preview installeren vanuit de [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureADPreview).
 
-Hier volgt een voor beeld van functies die het lidmaatschaps beheer voor een bestaande groep wijzigen. In dit voor beeld wordt ervoor gezorgd dat de eigenschap GroupTypes correct kan worden gemanipuleerd en alle waarden worden behouden die geen verband houden met het dynamische lidmaatschap.
+Hier is een voorbeeld van functies die het lidmaatschapsbeheer op een bestaande groep veranderen. In dit voorbeeld wordt ervoor gezorgd dat de eigenschap GroupTypes correct wordt gemanipuleerd en waarden behouden die geen verband houden met dynamisch lidmaatschap.
 
 ```powershell
 #The moniker for dynamic groups as used in the GroupTypes property of a group object
@@ -103,7 +103,7 @@ function ConvertStaticGroupToDynamic
     Set-AzureAdMsGroup -Id $groupId -GroupTypes $groupTypes.ToArray() -MembershipRuleProcessingState "On" -MembershipRule $dynamicMembershipRule
 }
 ```
-Een groep statisch maken:
+Ga als u een groep statisch maken:
 
 ```powershell
 ConvertDynamicGroupToStatic "a58913b2-eee4-44f9-beb2-e381c375058f"
@@ -117,7 +117,7 @@ ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.display
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze artikelen vindt u aanvullende informatie over groepen in Azure Active Directory.
+Deze artikelen bevatten aanvullende informatie over groepen in Azure Active Directory.
 
 * [Bestaande groepen weergeven](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Een nieuwe groep maken en leden toevoegen](../fundamentals/active-directory-groups-create-azure-portal.md)

@@ -1,6 +1,6 @@
 ---
-title: Proximity-plaatsings groepen gebruiken voor Linux-Vm's
-description: Meer informatie over het maken en gebruiken van proximity-plaatsings groepen voor virtuele Linux-machines in Azure.
+title: Nabijheidsplaatsingsgroepen gebruiken voor Linux VM's
+description: Meer informatie over het maken en gebruiken van nabijheidsplaatsingsgroepen voor virtuele Linux-machines in Azure.
 services: virtual-machines-linux
 author: cynthn
 manager: gwallace
@@ -11,21 +11,21 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
 ms.openlocfilehash: 353a266b647c299515c15889c302ba4409aa511b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73171050"
 ---
-# <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Vm's implementeren op proximity-plaatsings groepen met behulp van Azure CLI
+# <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>VM's implementeren voor nabijheidsplaatsingsgroepen met Azure CLI
 
-Als u virtuele machines zo dicht mogelijk wilt ophalen, moet u deze implementeren in een [proximity-plaatsings groep](co-location.md#proximity-placement-groups).
+Als u VM's zo dicht mogelijk wilt plaatsen en de laagst mogelijke latentie wilt bereiken, moet u deze implementeren binnen een [plaatsingsgroep voor de nabijheid.](co-location.md#proximity-placement-groups)
 
-Een proximity-plaatsings groep is een logische groepering die wordt gebruikt om ervoor te zorgen dat Azure Compute-resources zich fysiek dicht bij elkaar bevinden. Proximity-plaatsings groepen zijn handig voor werk belastingen waarbij lage latentie een vereiste is.
+Een plaatsingsgroep voor nabijheid is een logische groepering die wordt gebruikt om ervoor te zorgen dat Azure-rekenbronnen fysiek dicht bij elkaar staan. Plaatsingsgroepen voor nabijheidzijn handig voor workloads waarbij lage latentie een vereiste is.
 
 
-## <a name="create-the-proximity-placement-group"></a>De plaatsings groep voor proximity maken
-Maak een proximity-plaatsings groep met behulp van [`az ppg create`](/cli/azure/ppg#az-ppg-create). 
+## <a name="create-the-proximity-placement-group"></a>De plaatsingsgroep voor nabijheid maken
+Maak een plaatsingsgroep [`az ppg create`](/cli/azure/ppg#az-ppg-create)voor nabijheid met behulp van . 
 
 ```azurecli-interactive
 az group create --name myPPGGroup --location westus
@@ -36,17 +36,17 @@ az ppg create \
    -t standard 
 ```
 
-## <a name="list-proximity-placement-groups"></a>Proximity-plaatsings groepen weer geven
+## <a name="list-proximity-placement-groups"></a>Plaatsingsgroepen voor nabijheid weergeven
 
-U kunt al uw proximity-plaatsings groepen weer geven met [AZ PPG List](/cli/azure/ppg#az-ppg-list).
+U al uw nabijheidsplaatsingsgroepen vermelden met behulp van [de AZ PPG-lijst.](/cli/azure/ppg#az-ppg-list)
 
 ```azurecli-interactive
 az ppg list -o table
 ```
 
-## <a name="create-a-vm"></a>Een VM maken
+## <a name="create-a-vm"></a>Een virtuele machine maken
 
-Maak een virtuele machine binnen de plaatsings groep met een [nieuwe AZ VM](/cli/azure/vm#az-vm-create).
+Maak een VM in de plaatsingsgroep nabijheid met behulp van [de nieuwe az-vm](/cli/azure/vm#az-vm-create).
 
 ```azurecli-interactive
 az vm create \
@@ -59,19 +59,19 @@ az vm create \
    -l westus
 ```
 
-U kunt de virtuele machine weer geven in de plaatsings groep van proximity met [AZ PPG show](/cli/azure/ppg#az-ppg-show).
+U de VM in de plaatsingsgroep nabijheid zien met behulp van [az ppg-show](/cli/azure/ppg#az-ppg-show).
 
 ```azurecli-interactive
 az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 ```
 
 ## <a name="availability-sets"></a>Beschikbaarheidssets
-U kunt ook een beschikbaarheidsset maken in de plaatsings groep voor proximity. Gebruik dezelfde `--ppg`-para meter met [AZ VM Availability-set Create](/cli/azure/vm/availability-set#az-vm-availability-set-create) om een beschikbaarheidsset te maken en alle virtuele machines in de beschikbaarheidsset worden ook gemaakt in dezelfde plaatsings groep.
+U ook een beschikbaarheidsset maken in uw nabijheidsplaatsingsgroep. Gebruik dezelfde `--ppg` parameter met [de beschikbaarheidsset van AZ VM om](/cli/azure/vm/availability-set#az-vm-availability-set-create) een beschikbaarheidsset te maken en alle VM's in de beschikbaarheidsset worden ook in dezelfde plaatsingsgroep voor nabijheid gemaakt.
 
 ## <a name="scale-sets"></a>Schaalsets
 
-U kunt ook een schaalset maken in de plaatsings groep voor proximity. Gebruik dezelfde `--ppg`-para meter met [AZ vmss Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) om een schaalset te maken en alle instanties worden gemaakt in dezelfde plaatsings groep.
+U ook een schaalset maken in uw plaatsingsgroep voor nabijheid. Gebruik dezelfde `--ppg` parameter met [az vmss maken](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) om een schaalset te maken en alle exemplaren worden gemaakt in dezelfde nabijheidsplaatsingsgroep.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de [Azure cli](/cli/azure/ppg) -opdrachten voor proximity placement groups.
+Meer informatie over de [Azure CLI-opdrachten](/cli/azure/ppg) voor plaatsingsgroepen voor nabijheidsplaatsing.

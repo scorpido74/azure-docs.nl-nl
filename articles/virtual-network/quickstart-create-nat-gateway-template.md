@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: een NAT-gateway maken-Resource Manager-sjabloon'
+title: 'Snelstart: een NAT-gateway maken - Sjabloon Resourcebeheer'
 titleSuffix: Azure Virtual Network NAT
-description: In deze Quick start ziet u hoe u een NAT-gateway maakt met behulp van de sjabloon Azure Resource Manager.
+description: In deze snelstart ziet u hoe u een NAT-gateway maakt met behulp van de sjabloon Azure Resource Manager.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -15,64 +15,64 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
-ms.openlocfilehash: 051b1bd22b2e04f92c02b63a416160d824d1be10
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 6b3dee698e63ed2b0a44f05b593b8840d1cd23ee
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79216994"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80066403"
 ---
-# <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>Snelstartgids: een NAT-gateway maken-Resource Manager-sjabloon
+# <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>Snelstart: een NAT-gateway maken - sjabloon Resourcemanager
 
-Ga aan de slag met Virtual Network NAT met behulp van een Azure Resource Manager sjabloon.  Met deze sjabloon implementeert u een virtueel netwerk, een NAT-gateway en een virtuele Ubuntu-machine. De virtuele Ubuntu-machine wordt geïmplementeerd op een subnet dat is gekoppeld aan de NAT-gateway.
+Ga aan de slag met Virtual Network NAT met behulp van een Azure Resource Manager-sjabloon.  Deze sjabloon implementeert een virtueel netwerk, een NAT-gatewaybron en een virtuele ubuntu-machine. De virtuele ubuntu-machine wordt geïmplementeerd in een subnet dat is gekoppeld aan de NAT-gatewaybron.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
-## <a name="create-a-nat-gateway-and-supporting-resources"></a>Een NAT-gateway en ondersteunende bronnen maken
+## <a name="create-a-nat-gateway-and-supporting-resources"></a>Een NAT-gateway maken en resources ondersteunen
 
-Deze sjabloon is geconfigureerd voor het maken van een 
+Deze sjabloon is geconfigureerd om een 
 
 * Virtueel netwerk 
-* NAT-gateway resource
-* Virtuele machine Ubuntu
+* NAT-gatewaybron
+* Ubuntu virtuele machine
 
-De Ubuntu-VM wordt geïmplementeerd op een subnet dat is gekoppeld aan de NAT-gateway bron.
+De Ubuntu VM wordt geïmplementeerd in een subnet dat is gekoppeld aan de NAT-gatewaybron.
 
-### <a name="review-the-template"></a>De sjabloon controleren
+### <a name="review-the-template"></a>De sjabloon bekijken
 
-De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-nat-gateway-1-vm/azuredeploy.json) start-sjablonen
+De sjabloon die in deze quickstart wordt gebruikt, is afkomstig van [Azure Quickstart-sjablonen](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-nat-gateway-1-vm/azuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="1-335" highlight="256-282":::
 
-Er zijn negen Azure-resources gedefinieerd in de sjabloon:
+Negen Azure-resources worden gedefinieerd in de sjabloon:
 
-**Micro soft. Network**
+**Microsoft.Network**
 
-* **[Micro soft. Network/natGateways](https://docs.microsoft.com/azure/templates/microsoft.network/natgateways)** : Hiermee wordt een NAT-gateway bron gemaakt.
+* **[Microsoft.Network/natGateways:](https://docs.microsoft.com/azure/templates/microsoft.network/natgateways)** hiermee wordt een NAT-gatewaybron gemaakt.
 
-* **[Micro soft. Network/networkSecurityGroups](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)** : Hiermee wordt een netwerk beveiligings groep gemaakt.
+* **[Microsoft.Network/networkSecurityGroups](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)**: Hiermee maakt u een netwerkbeveiligingsgroep.
 
-    * **[Micro soft. Network/networkSecurityGroups/securityRules](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)** : Hiermee maakt u een beveiligings regel.
+    * **[Microsoft.Network/networkSecurityGroups/securityRules:](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)** Maakt een beveiligingsregel.
 
-* **[Micro soft. Network/publicIPAddresses](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)** : maakt een openbaar IP-adres.
+* **[Microsoft.Network/publicIPAddresses:](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)** Hiermee maakt u een openbaar IP-adres.
 
-* **[Micro soft. Network/publicIPPrefixes](https://docs.microsoft.com/azure/templates/microsoft.network/publicipprefixes)** : maakt een openbaar IP-voor voegsel.
+* **[Microsoft.Network/publicIPPrefixes:](https://docs.microsoft.com/azure/templates/microsoft.network/publicipprefixes)** Maakt een openbaar IP-voorvoegsel.
 
-* **[Micro soft. Network/virtualNetworks](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)** : Hiermee maakt u een virtueel netwerk.
+* **[Microsoft.Network/virtualNetworks](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)**: Maakt een virtueel netwerk.
 
-    * **[Micro soft. Network/virtualNetworks/subnets](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks/subnets)** : Hiermee maakt u een subnet van een virtueel netwerk.
+    * **[Microsoft.Network/virtualNetworks/subnetten:](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks/subnets)** Hiermee maakt u een virtueel netwerksubnet.
 
-* **[Micro soft. Network/networkinterfaces](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)** : Hiermee maakt u een netwerk interface.
+* **[Microsoft.Network/networkinterfaces](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)**: Hiermee maakt u een netwerkinterface.
 
-**Micro soft. compute**
+**Microsoft.Compute**
 
-* **[Micro soft. Compute/informatie](https://docs.microsoft.com/azure/templates/Microsoft.Compute/virtualMachines)** : Hiermee maakt u een virtuele machine.
+* **[Microsoft.Compute/virtualMachines](https://docs.microsoft.com/azure/templates/Microsoft.Compute/virtualMachines)**: Maakt een virtuele machine.
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
-**Azure CLI**
+**Azure-CLI**
 
 ```azurecli-interactive
 read -p "Enter the location (i.e. westcentralus): " location
@@ -102,25 +102,25 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 **Azure-portal**
 
-[![Implementeren in Azure](./media/quick-create-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
+[![Implementeren naar Azure](./media/quick-create-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>Geïmplementeerde resources controleren
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-2. Selecteer **resource groepen** in het linkerdeel venster.
+2. Selecteer **Resourcegroepen** in het linkerdeelvenster.
 
-3. Selecteer de resource groep die u in de vorige sectie hebt gemaakt. De standaard naam van de resource groep is **myResourceGroupNAT**
+3. Selecteer de resourcegroep die u in de vorige sectie hebt gemaakt. De standaardnaam van de resourcegroep is **myResourceGroupNAT**
 
-4. Controleer of de volgende resources zijn gemaakt in de resource groep:
+4. Controleer of de volgende resources zijn gemaakt in de resourcegroep:
 
-    ![NAT-resource groep Virtual Network](./media/quick-create-template/nat-gateway-template-rg.png)
+    ![Nat-brongroep voor virtuele netwerken](./media/quick-create-template/nat-gateway-template-rg.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-**Azure CLI**
+**Azure-CLI**
 
-U kunt de opdracht [AZ Group delete](/cli/azure/group#az-group-delete) gebruiken om de resource groep en alle resources in te verwijderen wanneer u deze niet meer nodig hebt.
+Wanneer dit niet meer nodig is, u de opdracht verwijderen van de [AZ-groep](/cli/azure/group#az-group-delete) gebruiken om de brongroep en alle bronnen binnen te verwijderen.
 
 ```azurecli-interactive 
   az group delete \
@@ -129,7 +129,7 @@ U kunt de opdracht [AZ Group delete](/cli/azure/group#az-group-delete) gebruiken
 
 **Azure PowerShell**
 
-U kunt de opdracht [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) gebruiken om de resource groep en alle resources in te verwijderen wanneer u deze niet meer nodig hebt.
+Wanneer dit niet meer nodig is, u de opdracht [Verwijderen-AzResourceGroep](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) gebruiken om de resourcegroep en alle bronnen binnen te verwijderen.
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupNAT
@@ -137,20 +137,20 @@ Remove-AzResourceGroup -Name myResourceGroupNAT
 
 **Azure-portal**
 
-Als u deze niet meer nodig hebt, verwijdert u de resource groep, de NAT-gateway en alle gerelateerde resources. Selecteer de **myResourceGroupNAT** van de resource groep die de NAT-gateway bevat en selecteer vervolgens **verwijderen**.
+Verwijder de brongroep, NAT-gateway en alle gerelateerde bronnen wanneer dit niet meer nodig is. Selecteer de brongroep **myResourceGroupNAT** die de NAT-gateway bevat en selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Snelstartgids hebt u het volgende gemaakt:
+In deze snelstart hebt u een:
 
-* NAT-gateway resource
+* NAT-gatewaybron
 * Virtueel netwerk
-* Virtuele machine Ubuntu
+* Ubuntu virtuele machine
 
-De virtuele machine wordt geïmplementeerd naar een subnet van een virtueel netwerk dat is gekoppeld aan de NAT-gateway. 
+De virtuele machine wordt geïmplementeerd in een virtueel netwerksubnet dat is gekoppeld aan de NAT-gateway. 
 
-Ga door naar de volgende artikelen voor meer informatie over Virtual Network NAT en Azure Resource Manager.
+Ga verder naar de onderstaande artikelen voor meer informatie over Nat voor virtueel netwerk NAT en Azure Resource Manager.
 
-* Een [overzicht van Virtual Network NAT](nat-overview.md) lezen
-* Meer informatie over de [NAT-gateway resource](nat-gateway-resource.md)
+* Lees een [overzicht van Virtual Network NAT](nat-overview.md)
+* Lees meer over de [NAT Gateway-bron](nat-gateway-resource.md)
 * Meer informatie over [Azure Resource Manager](../azure-resource-manager/management/overview.md)

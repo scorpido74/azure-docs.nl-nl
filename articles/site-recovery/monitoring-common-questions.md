@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen over Azure Site Recovery bewaking
-description: Krijg antwoorden op veelgestelde vragen over Azure Site Recovery bewaking, met behulp van ingebouwde bewaking en Azure Monitor (Log Analytics)
+title: Veelgestelde vragen over Azure Site Recovery-controle
+description: Antwoorden op veelgestelde vragen over Azure Site Recovery monitoring, met ingebouwde monitoring en Azure Monitor (Log Analytics)
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -9,68 +9,68 @@ ms.date: 07/31/2019
 ms.topic: conceptual
 ms.author: raynew
 ms.openlocfilehash: c1d30a9cdd2cd6ca288edd609a2e2e7bee9174d7
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68718260"
 ---
-# <a name="common-questions-about-site-recovery-monitoring"></a>Veelgestelde vragen over Site Recovery bewaking
+# <a name="common-questions-about-site-recovery-monitoring"></a>Veelgestelde vragen over siteherstelbewaking
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over het controleren van Azure [site Recovery](site-recovery-overview.md), het gebruik van inbouw site Recovery bewaking en Azure Monitor (log Analytics).
+In dit artikel worden veelgestelde vragen beantwoord over het bewaken van Azure [Site Recovery](site-recovery-overview.md), met behulp van ingebouwde siteherstelbewaking en Azure Monitor (Log Analytics).
 
 ## <a name="general"></a>Algemeen
 
-### <a name="how-is-the-rpo-value-logged-different-from-the-latest-available-recovery-point"></a>Hoe verschilt de RPO-waarde die is vastgelegd in het meest recente beschik bare herstel punt?
+### <a name="how-is-the-rpo-value-logged-different-from-the-latest-available-recovery-point"></a>Hoe verschilt de RPO-waarde van het laatst beschikbare herstelpunt?
 
-Site Recovery gebruikt een met meerdere stappen asynchroon proces voor het repliceren van machines naar Azure.
+Siteherstel maakt gebruik van een asynchrone proces in meerdere stappen om machines te repliceren naar Azure.
 
-- In de Penultimate stap van replicatie worden recente wijzigingen op de computer, samen met meta gegevens, gekopieerd naar een logboek/cache-opslag account.
-- Deze wijzigingen, samen met de tag waarmee een herstel bare punt wordt geïdentificeerd, worden geschreven naar het opslag account/de beheerde schijf in de doel regio.
-- Site Recovery kan nu een herstel bare punt genereren voor de machine.
-- Op dit moment is de RPO voldaan aan de wijzigingen die tot nu toe zijn geüpload naar het opslag account. Met andere woorden, de computer-RPO op dit moment is gelijk aan de tijd die is verstreken van de tijds tempel die overeenkomt met het herstel bare punt.
-- Site Recovery kiest nu de geüploade gegevens uit het opslag account en past deze toe op de replica schijven die zijn gemaakt voor de machine.
-- Site Recovery vervolgens een herstel punt gegenereerd en maakt dit punt beschikbaar voor herstel bij een failover.
-- Het meest recente beschik bare herstel punt geeft dus de tijds tempel aan die overeenkomt met het laatste herstel punt dat al is verwerkt en toegepast op de replica schijven.
-
-
-Een onjuiste systeem tijd op de replicerende bron machine, of op on-premises infrastructuur servers, scheef de berekende RPO-waarde. Voor nauw keurige RPO-rapportage moet u ervoor zorgen dat de systeem klok nauw keurig is op alle servers en machines.
+- In de voorlaatste stap van replicatie worden recente wijzigingen op de machine, samen met metagegevens, gekopieerd naar een opslagaccount in het logboek/cache.
+- Deze wijzigingen, samen met de tag die een herstelbaar punt identificeert, worden geschreven naar de opslagaccount /beheerde schijf in het doelgebied.
+- Site Recovery kan nu een herstelbaar punt voor de machine genereren.
+- Op dit punt, de RPO is voldaan voor de wijzigingen geüpload naar de opslag account tot nu toe. Met andere woorden, de machine RPO is op dit punt gelijk aan de hoeveelheid tijd die is verstreken vanaf de tijdstempel die overeenkomt met het herstelbare punt.
+- Nu kiest Site recovery de geüploade gegevens uit het opslagaccount en past deze toe op de replicaschijven die voor de machine zijn gemaakt.
+- Site Recovery genereert vervolgens een herstelpunt en maakt dit punt beschikbaar voor herstel bij failover.
+- Het meest recente beschikbare herstelpunt geeft dus de tijdstempel aan die overeenkomt met het laatste herstelpunt dat al is verwerkt en toegepast op de replicaschijven.
 
 
+Als u een onjuiste systeemtijd op de replicerende bronmachine of op on-premises infrastructuurservers hebt, wordt de berekende RPO-waarde scheefgesteld. Voor nauwkeurige RPO-rapportage moet u ervoor zorgen dat de systeemklok nauwkeurig is op alle servers en machines.
 
-## <a name="inbuilt-site-recovery-logging"></a>Inbouw Site Recovery logboek registratie
 
 
-### <a name="why-is-the-vm-count-in-the-vault-infrastructure-view-different-from-the-total-count-shown-in-replicated-items"></a>Waarom is het aantal VM'S in de weer gave kluis infrastructuur verschillend van het totale aantal dat wordt weer gegeven in gerepliceerde items?
+## <a name="inbuilt-site-recovery-logging"></a>Ingebouwde logboekregistratie voor siteherstel
 
-De weer gave kluis infrastructuur bevindt zich in het bereik van replicatie scenario's. Alleen machines in het momenteel geselecteerde replicatie scenario zijn opgenomen in de telling voor de weer gave. Daarnaast tellen we alleen Vm's die zijn geconfigureerd voor replicatie naar Azure. Machines waarvoor failover is uitgevoerd, of computers die worden gerepliceerd naar een on-premises site, worden niet meegeteld in de weer gave.
 
-### <a name="why-is-the-count-of-replicated-items-in-essentials-different-from-the-total-count-of-replicated-items-on-the-dashboard"></a>Waarom wijkt het aantal gerepliceerde items in Essentials af van het totale aantal gerepliceerde items op het dash board?
+### <a name="why-is-the-vm-count-in-the-vault-infrastructure-view-different-from-the-total-count-shown-in-replicated-items"></a>Waarom verschilt het aantal vm's in de weergave van de kluisinfrastructuur van het totale aantal dat wordt weergegeven in gerepliceerde items?
 
-Alleen machines waarvoor de initiële replicatie is voltooid, worden opgenomen in het aantal dat wordt weer gegeven in Essentials. Het totaal aantal gerepliceerde items omvat alle computers in de kluis, met inbegrip van de machines waarvoor de initiële replicatie momenteel wordt uitgevoerd.
+De weergave kluisinfrastructuur wordt beperkt door replicatiescenario's. Alleen machines in het geselecteerde replicatiescenario zijn opgenomen in de telling voor de weergave. Bovendien tellen we alleen VM's die zijn geconfigureerd om te repliceren naar Azure. Mislukt ten opzichte van machines of machines die worden gerepliceerd naar een on-premises site, worden niet meegeteld in de weergave.
+
+### <a name="why-is-the-count-of-replicated-items-in-essentials-different-from-the-total-count-of-replicated-items-on-the-dashboard"></a>Waarom verschilt het aantal gerepliceerde items in Essentials van het totale aantal gerepliceerde items op het dashboard?
+
+Alleen machines waarvoor de eerste replicatie is voltooid, worden opgenomen in de telling die in Essentials wordt weergegeven. Het totaal van de gerepliceerde items omvat alle machines in de kluis, inclusief de machines waarvoor momenteel de eerste replicatie wordt uitgevoerd.
 
 ## <a name="azure-monitor-logging"></a>Logboekregistratie van Azure Monitor
 
 
-### <a name="how-often-does-site-recovery-send-diagnostic-logs-to-azure-monitor-log"></a>Hoe vaak Site Recovery Diagnostische logboeken naar Azure Monitor logboek verzenden? 
+### <a name="how-often-does-site-recovery-send-diagnostic-logs-to-azure-monitor-log"></a>Hoe vaak verzendt Site Recovery diagnostische logboeken naar Azure Monitor Log? 
 
 - AzureSiteRecoveryReplicationStats en AzureSiteRecoveryRecoveryPoints worden elke 15 minuten verzonden.  
-- AzureSiteRecoveryReplicationDataUploadRate en AzureSiteRecoveryProtectedDiskDataChurn worden elke vijf minuten verzonden. 
-- AzureSiteRecoveryJobs wordt verzonden naar de trigger en de voltooiing van een taak.
+- AzureSiteRecoveryReplicatieDataUploadRate en AzureSiteRecoveryProtectedDiskDataChurn worden elke vijf minuten verzonden. 
+- AzureSiteRecoveryJobs wordt verzonden bij de trigger en voltooiing van een taak.
 - AzureSiteRecoveryEvents wordt verzonden wanneer een gebeurtenis wordt gegenereerd. 
-- AzureSiteRecoveryReplicatedItems wordt verzonden wanneer er omgevings wijzigingen zijn. Normaal gesp roken is de tijd voor het vernieuwen van gegevens 15 minuten na een wijziging. 
+- AzureSiteRecoveryReplicatedItems wordt verzonden wanneer er een omgevingswijziging is. Doorgaans is de vernieuwingstijd van gegevens 15 minuten na een wijziging. 
 
-### <a name="how-long-is-data-kept-in-azure-monitor-logs"></a>Hoe lang worden gegevens opgeslagen in Azure Monitor logboeken? 
+### <a name="how-long-is-data-kept-in-azure-monitor-logs"></a>Hoe lang worden gegevens bewaard in Azure Monitor-logboeken? 
 
-Bewaar periode is standaard 31 dagen. U kunt de periode verhogen in het gedeelte **gebruik en geschatte kosten** in de werk ruimte log Analytics. Klik op **gegevens**retentie en kies het bereik.
+Standaard geldt de retentie voor 31 dagen. U de periode in de sectie **Gebruik en Geschatte kosten** in de werkruimte Log Analytics verlengen. Klik op **Gegevensbehoud**en kies het bereik.
 
 ### <a name="whats-the-size-of-the-diagnostic-logs"></a>Wat is de grootte van de diagnostische logboeken? 
 
-Normaal gesp roken is de grootte van een logboek 15-20 KB. 
+Meestal is de grootte van een logboek 15-20 KB. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het bewaken met [site Recovery ingebouwde bewaking](site-recovery-monitor-and-troubleshoot.md)of [Azure monitor](monitor-log-analytics.md).
+Meer informatie over het bewaken met [ingebouwde monitoring van SiteHerstel](site-recovery-monitor-and-troubleshoot.md)of [Azure Monitor](monitor-log-analytics.md).
 
 

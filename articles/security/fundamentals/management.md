@@ -1,6 +1,6 @@
 ---
 title: De beveiliging van extern beheer verbeteren in Azure | Microsoft Docs
-description: In dit artikel worden de stappen beschreven voor het verbeteren van de beveiliging van extern beheer bij het beheren van Microsoft Azure omgevingen, inclusief Cloud Services, virtuele machines en aangepaste toepassingen.
+description: In dit artikel worden stappen besproken voor het verbeteren van de beveiliging van extern beheer tijdens het beheer van Microsoft Azure-omgevingen, waaronder cloudservices, virtuele machines en aangepaste toepassingen.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
 ms.openlocfilehash: 45efaadf7d15fff290165fe831c45c0bc063db53
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73643802"
 ---
 # <a name="security-management-in-azure"></a>Beveiligingsbeheer in Azure
@@ -92,7 +92,7 @@ Op een beperkt werkstation voert de beheerder een standaardgebruikersaccount uit
 * Beperkte functionaliteit. Verwijder alle toepassingen die niet nodig zijn en schakel onnodige (opstart)services uit.
 * Beperkte netwerktoegang. Gebruik Windows Firewall-regels om alleen geldige IP-adressen, poorten en URL's met betrekking tot het beheer van Azure toe te staan. Zorg er ook voor dat inkomende externe verbindingen met het werkstation worden geblokkeerd.
 * Beperkte uitvoering van software. Sta alleen een aantal vooraf gedefinieerde uitvoerbare bestanden toe die nodig zijn voor uitvoering van het beheer (de standaardinstelling is 'Niet toestaan'). Standaard moeten gebruikers geen toestemming hebben voor het uitvoeren van programma's, tenzij expliciet gedefinieerd in de acceptatielijst.
-* Minimale bevoegdheden. Gebruikers van beheerwerkstations mogen geen beheerdersbevoegdheden hebben op de lokale computer. Op deze manier kunnen zij niet per ongeluk of met opzet{b> <b}wijzigen aanbrengen in de systeemconfiguratie of de systeembestanden.
+* Minimale bevoegdheden. Gebruikers van beheerwerkstations mogen geen beheerdersbevoegdheden hebben op de lokale computer. Op deze manier kunnen zij niet per ongeluk of met opzetwijzigen aanbrengen in de systeemconfiguratie of de systeembestanden.
 
 U kunt dit afdwingen via [Groepsbeleidsobjecten](../../active-directory-domain-services/manage-group-policy.md) (GPO's) in Active Directory Domain Services (AD DS) en door uw (lokale) beheerdomein toe te passen op alle beheeraccounts.
 
@@ -106,7 +106,7 @@ U kunt de toegang tot de infrastructuur en het beheer van platformservices in Az
 ### <a name="management-gateway"></a>Beheergateway
 Als u alle beheerderstoegang wilt centraliseren en controle en logboekregistratie wilt vereenvoudigen, kunt u in uw on-premises netwerk een speciale [Extern bureaublad-gateway](https://technet.microsoft.com/library/dd560672)-server implementeren, die is verbonden met uw Azure-omgeving.
 
-Een Extern bureaublad-gateway is een op beleid gebaseerde RDP-proxyservice die beveiligingsvereisten afdwingt. Door een Extern bureaublad-gateway samen met netwerktoegangsbeveiliging (NAP) voor Windows-servers te implementeren, zorgt u ervoor dat alleen clients die voldoen aan de specifieke criteria voor beveiligingsstatus, tot stand gebracht met groepsbeleidsobjecten (GPO's) van Active Directory Domain Services (AD DS), verbinding kunnen maken. Daarnaast:
+Een Extern bureaublad-gateway is een op beleid gebaseerde RDP-proxyservice die beveiligingsvereisten afdwingt. Door een Extern bureaublad-gateway samen met netwerktoegangsbeveiliging (NAP) voor Windows-servers te implementeren, zorgt u ervoor dat alleen clients die voldoen aan de specifieke criteria voor beveiligingsstatus, tot stand gebracht met groepsbeleidsobjecten (GPO's) van Active Directory Domain Services (AD DS), verbinding kunnen maken. Daarnaast doet u het volgende:
 
 * Richt een [Azure-beheercertificaat](https://msdn.microsoft.com/library/azure/gg551722.aspx) in op de Extern bureaublad-gateway, zodat deze de enige toegestane host is voor toegang tot Azure Portal.
 * Maak de Extern bureaublad-gateway lid van hetzelfde [beheerdomein](https://technet.microsoft.com/library/bb727085.aspx) als de werkstations van de beheerders. Dit is nodig als u een IPsec-VPN tussen sites of een ExpressRoute gebruikt binnen een domein met een eenzijdige vertrouwensrelatie naar Azure AD, of als u referenties tussen uw on-premises exemplaar van AD DS en Azure AD federeert.

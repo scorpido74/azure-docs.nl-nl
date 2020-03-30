@@ -1,6 +1,6 @@
 ---
-title: Overzicht van een scenario voor herstel na nood geval van Oracle in uw Azure-omgeving | Microsoft Docs
-description: Een scenario voor herstel na nood gevallen voor een Oracle Database 12c-data base in uw Azure-omgeving
+title: Overzicht van een Oracle-scenario voor noodherstel in uw Azure-omgeving | Microsoft Documenten
+description: Een scenario voor noodherstel voor een Oracle Database 12c-database in uw Azure-omgeving
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
@@ -15,95 +15,95 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: f6f678f91e74ea9b0b68127c1786fee745508b99
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70101462"
 ---
-# <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Herstel na nood geval voor een Oracle Database 12c-data base in een Azure-omgeving
+# <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Disaster recovery voor een Oracle Database 12c-database in een Azure-omgeving
 
 ## <a name="assumptions"></a>Veronderstellingen
 
-- U hebt een goed idee van het ontwerp van Oracle Data Guard en Azure-omgevingen.
+- U hebt inzicht in het ontwerp van Oracle Data Guard en Azure-omgevingen.
 
 
 ## <a name="goals"></a>Doelstellingen
-- Ontwerp de topologie en configuratie die voldoen aan de vereisten voor nood herstel (DR).
+- Ontwerp de topologie en configuratie die voldoen aan uw DR-vereisten (disaster recovery).
 
 ## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>Scenario 1: Primaire en DR-sites op Azure
 
-Een klant heeft een Oracle-data base die is ingesteld op de primaire site. Een DR-site bevindt zich in een andere regio. De klant gebruikt Oracle Data Guard voor snelle herstel tussen deze sites. De primaire site heeft ook een secundaire Data Base voor rapportage en andere doel einden. 
+Een klant heeft een Oracle-database ingesteld op de primaire site. Een DR-site bevindt zich in een andere regio. De klant gebruikt Oracle Data Guard voor snel herstel tussen deze sites. De primaire site heeft ook een secundaire database voor rapportage en andere toepassingen. 
 
 ### <a name="topology"></a>Topologie
 
-Hier volgt een overzicht van de installatie van Azure:
+Hier vindt u een overzicht van de Azure-installatie:
 
 - Twee sites (een primaire site en een DR-site)
 - Twee virtuele netwerken
-- Twee Oracle-data bases met Data Guard (primair en stand-by)
-- Twee Oracle-data bases met een gouden Gate of Data Guard (alleen primaire site)
-- Twee toepassings Services, één primair en één op de DR-site
-- Een beschikbaarheidsset die wordt gebruikt voor de Data Base *-* en toepassings service op de primaire site
-- Eén JumpBox op elke site, die de toegang tot het particuliere netwerk beperkt en alleen aanmelding door een beheerder toestaat
-- Een JumpBox, toepassings service, data base en VPN-gateway op afzonderlijke subnetten
-- NSG afgedwongen op toepassings-en database subnetten
+- Twee Oracle-databases met Data Guard (primair en stand-by)
+- Twee Oracle-databases met Golden Gate of Data Guard (alleen primaire site)
+- Twee toepassingsservices, één primair en één op de DR-site
+- Een *beschikbaarheidsset,* die wordt gebruikt voor database- en toepassingsservice op de primaire site
+- Eén jumpbox op elke site, die de toegang tot het privénetwerk beperkt en alleen aanmelding door een beheerder toestaat
+- Een jumpbox, applicatieservice, database en VPN-gateway op afzonderlijke subnetten
+- NSG afgedwongen op applicatie- en database-subnetten
 
-![Scherm afbeelding van de pagina met de DR-topologie](./media/oracle-disaster-recovery/oracle_topology_01.png)
+![Schermafbeelding van de pagina DR-topologie](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
-## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>Scenario 2: Primaire site on-premises en DR-site op Azure
+## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>Scenario 2: On-premises primaire site en DR-site op Azure
 
-Een klant heeft een on-premises Oracle-data base-installatie (primaire site). Een DR-site bevindt zich in Azure. Oracle Data Guard wordt gebruikt voor snelle herstel tussen deze sites. De primaire site heeft ook een secundaire Data Base voor rapportage en andere doel einden. 
+Een klant heeft een on-premises Oracle-database-installatie (primaire site). Een DR-site bevindt zich op Azure. Oracle Data Guard wordt gebruikt voor snel herstel tussen deze sites. De primaire site heeft ook een secundaire database voor rapportage en andere toepassingen. 
 
-Er zijn twee benaderingen voor deze installatie.
+Er zijn twee benaderingen voor deze setup.
 
-### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>Benadering 1: Directe verbindingen tussen on-premises en Azure, waarvoor open TCP-poorten op de firewall zijn vereist 
+### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>Aanpak 1: Directe verbindingen tussen on-premises en Azure, waarvoor open TCP-poorten op de firewall nodig zijn 
 
-We raden geen directe verbindingen aan omdat ze de TCP-poorten beschikbaar maken voor de buiten wereld.
+We raden geen directe verbindingen aan omdat ze de TCP-poorten blootstellen aan de buitenwereld.
 
 #### <a name="topology"></a>Topologie
 
-Hier volgt een samen vatting van de installatie van Azure:
+Hieronder volgt een overzicht van de Azure-installatie:
 
 - Eén DR-site 
 - Eén virtueel netwerk
-- Eén Oracle-data base met Data Guard (actief)
-- Eén toepassings service op de DR-site
-- Een JumpBox, waarmee de toegang wordt beperkt tot het particuliere netwerk en waarmee alleen aanmelding door een beheerder wordt toegestaan
-- Een JumpBox, toepassings service, data base en VPN-gateway op afzonderlijke subnetten
-- NSG afgedwongen op toepassings-en database subnetten
-- Een NSG-beleid/regel voor het toestaan van binnenkomende TCP-poort 1521 (of een door de gebruiker gedefinieerde poort)
-- Een NSG-beleid/regel voor het beperken van alleen het IP-adres/de lokale adressen (DB of toepassing) voor toegang tot het virtuele netwerk
+- Eén Oracle-database met Data Guard (actief)
+- Eén toepassingsservice op de DR-site
+- Eén jumpbox, die de toegang tot het privénetwerk beperkt en alleen aanmelding door een beheerder toestaat
+- Een jumpbox, applicatieservice, database en VPN-gateway op afzonderlijke subnetten
+- NSG afgedwongen op applicatie- en database-subnetten
+- Een NSG-beleid/regel om binnenkomende TCP-poort 1521 (of een door de gebruiker gedefinieerde poort) toe te staan
+- Een NSG-beleid/regel om alleen het IP-adres/de on-premises (DB of toepassing) te beperken tot toegang tot het virtuele netwerk
 
-![Scherm afbeelding van de pagina met de DR-topologie](./media/oracle-disaster-recovery/oracle_topology_02.png)
+![Schermafbeelding van de pagina DR-topologie](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
-### <a name="approach-2-site-to-site-vpn"></a>Benadering 2: Site-naar-site-VPN
-Site-naar-site-VPN is een betere benadering. Zie [een virtueel netwerk maken met een site-naar-site-VPN-verbinding met behulp van CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)voor meer informatie over het instellen van een VPN.
+### <a name="approach-2-site-to-site-vpn"></a>Aanpak 2: Site-to-site VPN
+Site-to-site VPN is een betere aanpak. Zie Een virtueel netwerk maken [met een Site-to-Site VPN-verbinding met CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)voor meer informatie over het instellen van een VPN.
 
 #### <a name="topology"></a>Topologie
 
-Hier volgt een samen vatting van de installatie van Azure:
+Hieronder volgt een overzicht van de Azure-installatie:
 
 - Eén DR-site 
 - Eén virtueel netwerk 
-- Eén Oracle-data base met Data Guard (actief)
-- Eén toepassings service op de DR-site
-- Een JumpBox, waarmee de toegang wordt beperkt tot het particuliere netwerk en waarmee alleen aanmelding door een beheerder wordt toegestaan
-- Een JumpBox, toepassings service, data base en VPN-gateway bevinden zich op verschillende subnetten
-- NSG afgedwongen op toepassings-en database subnetten
-- Site-naar-site-VPN-verbinding tussen on-premises en Azure
+- Eén Oracle-database met Data Guard (actief)
+- Eén toepassingsservice op de DR-site
+- Eén jumpbox, die de toegang tot het privénetwerk beperkt en alleen aanmelding door een beheerder toestaat
+- Een jumpbox, applicatieservice, database en VPN-gateway staan op afzonderlijke subnetten
+- NSG afgedwongen op applicatie- en database-subnetten
+- Vpn-verbinding van site naar site tussen on-premises en Azure
 
-![Scherm afbeelding van de pagina met de DR-topologie](./media/oracle-disaster-recovery/oracle_topology_03.png)
+![Schermafbeelding van de pagina DR-topologie](./media/oracle-disaster-recovery/oracle_topology_03.png)
 
-## <a name="additional-reading"></a>Meer lezen
+## <a name="additional-reading"></a>Aanvullende lezing
 
-- [Een Oracle-data base ontwerpen en implementeren in azure](oracle-design.md)
+- [Een Oracle-database ontwerpen en implementeren op Azure](oracle-design.md)
 - [Oracle Data Guard configureren](configure-oracle-dataguard.md)
-- [Een Oracle Golden-Gate configureren](configure-oracle-golden-gate.md)
-- [Oracle-back-up en-herstel](oracle-backup-recovery.md)
+- [Oracle Golden Gate configureren](configure-oracle-golden-gate.md)
+- [Oracle back-up en herstel](oracle-backup-recovery.md)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelfstudie: Maxi maal beschik bare Vm's maken](../../linux/create-cli-complete.md)
-- [Azure CLI-voor beelden van VM-implementatie verkennen](../../linux/cli-samples.md)
+- [Zelfstudie: zeer beschikbare VM's maken](../../linux/create-cli-complete.md)
+- [Azure CLI-voorbeelden voor VM-implementatie verkennen](../../linux/cli-samples.md)

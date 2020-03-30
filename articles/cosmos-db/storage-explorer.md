@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB-resources beheren met Azure Storage Explorer
-description: Meer informatie over het maken van verbinding met Azure Cosmos DB en het beheren van de resources met behulp van Azure Storage Explorer.
+description: Meer informatie over hoe u verbinding maken met Azure Cosmos DB en de bronnen beheren met Azure Storage Explorer.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,22 +8,22 @@ ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18
 ms.openlocfilehash: fd044d4f32aefc00e1b04f7060e0fc0dc74fd6c7
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72882354"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Werken met gegevens in Azure Storage Explorer
 
-Het gebruik van Azure Cosmos DB in Azure Storage Explorer stelt gebruikers in staat om Azure Cosmos DB entiteiten te beheren, gegevens te manipuleren, en opgeslagen procedures en triggers bij te werken samen met andere Azure entiteiten zoals opslagblobs en wachtrijen. U kunt nu hetzelfde hulpprogramma gebruiken om uw verschillende Azure entiteiten op één plek te beheren. Op dit moment biedt Azure Storage Explorer ondersteuning voor Cosmos-accounts die zijn geconfigureerd voor SQL-, MongoDB-, Graph-en Table-Api's.
+Het gebruik van Azure Cosmos DB in Azure Storage Explorer stelt gebruikers in staat om Azure Cosmos DB entiteiten te beheren, gegevens te manipuleren, en opgeslagen procedures en triggers bij te werken samen met andere Azure entiteiten zoals opslagblobs en wachtrijen. U kunt nu hetzelfde hulpprogramma gebruiken om uw verschillende Azure entiteiten op één plek te beheren. Op dit moment ondersteunt Azure Storage Explorer Cosmos-accounts die zijn geconfigureerd voor SQL-, MongoDB-, Graph- en Table API's.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Een Cosmos-account met de SQL-API of de API van Azure Cosmos DB voor MongoDB. Als u geen account hebt, kunt u er een maken in de Azure-portal, zoals beschreven in [Azure Cosmos DB: een SQL API-web-app ontwikkelen met .NET en de Azure Portal](create-sql-api-dotnet.md).
+Een Cosmos-account met SQL API of Azure Cosmos DB's API voor MongoDB. Als u geen account hebt, kunt u er een maken in de Azure-portal, zoals beschreven in [Azure Cosmos DB: een SQL API-web-app ontwikkelen met .NET en de Azure Portal](create-sql-api-dotnet.md).
 
-## <a name="installation"></a>Installatie
+## <a name="installation"></a>Installeren
 
 Installeer hier de nieuwste Azure Storage Explorer-bits: [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), nu ondersteunen we Windows, Linux en MAC-versie.
 
@@ -43,7 +43,7 @@ Installeer hier de nieuwste Azure Storage Explorer-bits: [Azure Storage Explorer
 
 3. Selecteer uw abonnement in de lijst en klik op **Toepassen**.
 
-    ![Aanvragen](./media/storage-explorer/apply-subscription.png)
+    ![Toepassen](./media/storage-explorer/apply-subscription.png)
 
     Het Verkenner-venster wordt bijgewerkt en de accounts in het geselecteerde abonnement worden weergegeven.
 
@@ -59,7 +59,7 @@ Een andere manier van verbinding maken met een Azure Cosmos DB is het gebruik va
 
     ![Verbinding maken met Cosmos DB met een verbindingsreeks](./media/storage-explorer/connect-to-db-by-connection-string.png)
 
-2. Momenteel is er alleen ondersteuning voor de SQL- en Table-API. Kies een API, plak uw **verbindingsreeks**, voer het **accountlabel** in, klik op **Volgende** om het overzicht te controleren en klik vervolgens op **Verbinden** om verbinding te maken met de Azure Cosmos DB-account. Zie [de Connection String ophalen](manage-with-powershell.md#list-keys)voor informatie over het ophalen van de primaire Connection String.
+2. Momenteel is er alleen ondersteuning voor de SQL- en Table-API. Kies een API, plak uw **verbindingsreeks**, voer het **accountlabel** in, klik op **Volgende** om het overzicht te controleren en klik vervolgens op **Verbinden** om verbinding te maken met de Azure Cosmos DB-account. Zie [De verbindingstekenreeks ophalen](manage-with-powershell.md#list-keys)voor informatie over het ophalen van de primaire verbindingstekenreeks .
 
     ![Verbindingsreeks](./media/storage-explorer/connection-string.png)
 
@@ -73,7 +73,7 @@ Gebruik de volgende stappen uit om verbinding te maken met een Cosmos Azure DB v
 
     ![Verbinding maken met Cosmos DB Emulator](./media/storage-explorer/emulator-entry.png)
 
-3. Momenteel is er alleen ondersteuning voor de SQL-API. Plak uw **verbindingsreeks**, voer het **accountlabel** in, klik op **Volgende** om het overzicht te controleren en klik vervolgens op **Verbinden** om verbinding te maken met de Azure Cosmos DB-account. Zie [de Connection String ophalen](manage-with-powershell.md#list-keys)voor informatie over het ophalen van de primaire Connection String.
+3. Momenteel is er alleen ondersteuning voor de SQL-API. Plak uw **verbindingsreeks**, voer het **accountlabel** in, klik op **Volgende** om het overzicht te controleren en klik vervolgens op **Verbinden** om verbinding te maken met de Azure Cosmos DB-account. Zie [De verbindingstekenreeks ophalen](manage-with-powershell.md#list-keys)voor informatie over het ophalen van de primaire verbindingstekenreeks .
 
     ![Het dialoogvenster Verbinding maken met Cosmos DB Emulator](./media/storage-explorer/emulator-dialog.png)
 
@@ -103,20 +103,20 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
     ![zoeken vanaf hier](./media/storage-explorer/search-from-here.png) 
 
 ### <a name="database-and-collection-management"></a>Database- en verzamelingbeheer
-#### <a name="create-a-database"></a>Een database maken 
+#### <a name="create-a-database"></a>Database maken 
 -   Klik met de rechtermuisknop op het Azure Cosmos DB-account, kies **Database maken**, voer de naam van de database in en druk op **Enter**.
        
     ![Database maken](./media/storage-explorer/create-database.png) 
 
 #### <a name="delete-a-database"></a>Een database verwijderen
-- Klik met de rechtermuisknop op de database, klik op **Database verwijderen** en klik in het pop-upvenster op **Ja**. Het databaseknooppunt wordt verwijderd en het Azure Cosmos DB die Cosmos-account wordt automatisch vernieuwd.
+- Klik met de rechtermuisknop op de database, klik op **Database verwijderen **en klik in het pop-upvenster op **Ja**. Het databaseknooppunt wordt verwijderd en het Azure Cosmos DB die Cosmos-account wordt automatisch vernieuwd.
 
     ![Database1 verwijderen](./media/storage-explorer/delete-database1.png)  
 
     ![Database2 verwijderen](./media/storage-explorer/delete-database2.png) 
 
 #### <a name="create-a-collection"></a>Een verzameling maken
-1. Klik met de rechter muisknop op uw data base, kies **verzameling maken**en geef de volgende informatie op, zoals **verzamelings-id**, **opslag capaciteit**, enzovoort. Klik op **OK** om te volt ooien. 
+1. Klik met de rechtermuisknop op uw database, kies **Verzameling maken**en geef vervolgens de volgende informatie op, zoals **verzamelings-id,** **opslagcapaciteit,** enz. Klik op **OK** om het af te maken. 
 
     ![Verzameling1 maken](./media/storage-explorer/create-collection.png)
 
@@ -158,7 +158,7 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
 1. Als u een nieuw hoekpunt wilt maken, opent u **Grafiek** vanuit het linkervenster, klikt u op **Nieuw hoekpunt**, bewerkt u de inhoud en klikt u vervolgens op **OK**.    
 2. Als u een bestaand hoekpunt wilt wijzigen, klikt u op het penpictogram in het rechterdeelvenster.   
 
-    ![Grafiek](./media/storage-explorer/vertex.png)
+    ![Graph](./media/storage-explorer/vertex.png)
 
 #### <a name="delete-a-graph"></a>Een grafiek verwijderen
 - Als u een hoekpunt wilt verwijderen, klikt u op het prullenbakpictogram naast de naam van het hoekpunt.
@@ -213,7 +213,7 @@ Probeer uw toepassing opnieuw op te starten en kijk of de problemen kunnen worde
 
 Er zijn enkele redenen waarom u deze fout mogelijk ziet. Dit zijn de twee meest voorkomende:
 
-+ U bevindt zich achter een *transparante proxy*, wat betekent dat iemand (zoals uw IT-afdeling) HTTPS-verkeer onderschept, ontsleutelt en vervolgens versleutelt met een zelfondertekend certificaat.
++ U zit achter een *transparante proxy,* wat betekent dat iemand (zoals uw IT-afdeling) HTTPS-verkeer onderschept, ontsleutelt en deze vervolgens versleutelt met een zelfondertekend certificaat.
 
 + U voert software uit, zoals antivirussoftware, die zelfondertekende SSL-certificaten injecteert in de HTTPS-berichten die u ontvangt.
 
@@ -228,7 +228,7 @@ Wanneer Storage Explorer een van deze zelfondertekende certificaten tegenkomt, k
 3. Voer `s_client -showcerts -connect microsoft.com:443` uit
 4. Zoek naar zelfondertekende certificaten. Als u niet zeker weet welke certificaten zelfondertekend zijn, zoek dan overal waar het onderwerp ('s:') en de certificaatverlener ('i') hetzelfde zijn.
 5.  Als u zelfondertekende certificaten hebt gevonden, kopieert en plakt u alles vanaf **---BEGIN CERTIFICATE---** tot en met **---END CERTIFICATE---** naar een nieuw .cer-bestand. Doe dit voor elk certificaat.
-6.  Open Storage Explorer en ga naar **Bewerken** > **SSL-certificaten** > **Certificaten importeren**. Gebruik de bestandskiezer en zoek, selecteer en open de cer-bestanden die u hebt gemaakt.
+6.  Open Storage Explorer en ga naar**SSL-certificaten** >  **bewerken.** > **Import Certificates** Gebruik de bestandskiezer en zoek, selecteer en open de cer-bestanden die u hebt gemaakt.
 
 Als u met behulp van de bovenstaande stappen geen zelfondertekende certificaten kunt vinden, stuur ons dan feedback, zodat we u verder kunnen helpen.
 
@@ -266,7 +266,7 @@ Als het niet lukt om een account te verwijderen of als de koppeling om opnieuw t
   - .extaccounts
 - Als u aan SAS gekoppelde opslagbronnen wilt verwijderen, verwijder dan:
   - De map %AppData%/StorageExplorer voor Windows
-  - /Gebruikers/< your_name >/Library/Application-ondersteuning/StorageExplorer voor Mac
+  - /Gebruikers/<your_name>/Library/Application SUpport/StorageExplorer voor Mac
   - ~/.config/StorageExplorer voor Linux
   - **U moet echter al uw referenties opnieuw invoeren** als u deze bestanden verwijdert.
 
@@ -300,7 +300,7 @@ Probeer de volgende suggesties:
 
 ## <a name="contact-us"></a>Contact opnemen
 
-Als geen van de oplossingen voor u werken, stuurt u een e-mail naar het Azure Cosmos DB Dev Tooling Team ([cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)) met informatie over het probleem. Wij gaan hiermee dan aan de slag.
+Als geen van de oplossingen voor u werkt, stuurt u[cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)e-mail naar Azure Cosmos DB Dev Tooling Team ( ) met details over het probleem, voor het oplossen van de problemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

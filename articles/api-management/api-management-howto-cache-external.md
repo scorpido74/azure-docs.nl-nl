@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: apimpm
 ms.openlocfilehash: 2e8863eed774884a99de8643c9e497378368d166
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70072490"
 ---
 # <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>Een externe Azure-cache voor Redis gebruiken in Azure API Management
@@ -47,22 +47,22 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 + [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 + Inzicht in [Aangepast opslaan in cache in Azure API Management](api-management-howto-cache.md)
 
-## <a name="create-cache"> </a> Een Azure-cache voor Redis maken
+## <a name="create-azure-cache-for-redis"></a><a name="create-cache"> </a> Een Azure-cache voor Redis maken
 
 In dit gedeelte wordt uitgelegd hoe u een Azure-cache voor Redis maakt in Azure. Als u al een Azure-cache voor Redis hebt, binnen of buiten Azure, kunt u <a href="#add-external-cache">doorgaan</a> naar het volgende gedeelte.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="add-external-cache"> </a>Een externe cache toevoegen
+## <a name="add-an-external-cache"></a><a name="add-external-cache"> </a>Een externe cache toevoegen
 
 Volg de onderstaande stappen als u een externe Azure-cache voor Redis wilt toevoegen in Azure API Management.
 
 ![Uw eigen cache gebruiken in API Management](media/api-management-howto-cache-external/add-external-cache.png)
 
 > [!NOTE]
-> De instelling **gebruiken vanuit** geeft aan welke API Management regionale implementatie zal communiceren met de geconfigureerde cache in het geval van een configuratie met meerdere regio's van API management. De cache die als **Standaard** is opgegeven, wordt overschreven door caches met een regionale waarde.
+> De instelling **Gebruik van** geeft aan welke regionale implementatie API-beheer met de geconfigureerde cache communiceert in het geval van een multiregionale configuratie van API-beheer. De cache die als **Standaard** is opgegeven, wordt overschreven door caches met een regionale waarde.
 >
-> Bijvoorbeeld, als API Management wordt gehost in de regio's US - oost, Azië - zuidoost en Europa - west, en er twee caches zijn geconfigureerd, één voor **Default** en één voor **Azië - zuidoost**, dan zal API Management in **Azië - zuidoost** een eigen cache gebruiken, terwijl de andere twee regio's de cachevermelding **Standaard** gebruiken.
+> Bijvoorbeeld, als API Management wordt gehost in de regio's VS - oost, Azië - zuidoost en Europa - west, en er twee caches zijn geconfigureerd, één voor **Default** en één voor **Azië - zuidoost**, dan zal API Management in **Azië - zuidoost** een eigen cache gebruiken, terwijl de andere twee regio's de cachevermelding **Standaard** gebruiken.
 
 ### <a name="add-an-azure-cache-for-redis-from-the-same-subscription"></a>Een Azure-cache voor Redis toevoegen uit hetzelfde abonnement
 
@@ -70,7 +70,7 @@ Volg de onderstaande stappen als u een externe Azure-cache voor Redis wilt toevo
 2. Selecteer het tabblad **Externe cache** in het menu aan de linkerkant.
 3. Klik op de knop **+ Toevoegen**.
 4. Selecteer uw cache in de vervolgkeuzelijst **Cache-instantie**.
-5. Selecteer **standaard** of geef de gewenste regio op in het veld **gebruiken vanuit** vervolg keuzelijst.
+5. Selecteer **Standaard** of geef het gewenste gebied op in het veld **Gebruiken in** vervolgkeuzelijst.
 6. Klik op **Opslaan**.
 
 ### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>Een Azure-cache voor Redis toevoegen dat wordt gehost buiten het huidige Azure-abonnement of Azure in het algemeen
@@ -79,7 +79,7 @@ Volg de onderstaande stappen als u een externe Azure-cache voor Redis wilt toevo
 2. Selecteer het tabblad **Externe cache** in het menu aan de linkerkant.
 3. Klik op de knop **+ Toevoegen**.
 4. Selecteer **Aangepast** in de vervolgkeuzelijst **Cache-instantie**.
-5. Selecteer **standaard** of geef de gewenste regio op in het veld **gebruiken vanuit** vervolg keuzelijst.
+5. Selecteer **Standaard** of geef het gewenste gebied op in het veld **Gebruiken in** vervolgkeuzelijst.
 6. Geef de verbindingsreeks van uw Azure-cache voor Redis op in het veld **Verbindingsreeks**.
 7. Klik op **Opslaan**.
 
@@ -87,7 +87,7 @@ Volg de onderstaande stappen als u een externe Azure-cache voor Redis wilt toevo
 
 Wanneer de externe cache in Azure API Management is geconfigureerd, kan deze worden gebruikt via cachebeleidsregels. Zie [Opslaan in cache toevoegen om de prestaties in Azure API Management te verbeteren](api-management-howto-cache.md) voor gedetailleerde stappen.
 
-## <a name="next-steps"> </a>Volgende stappen
+## <a name="next-steps"></a><a name="next-steps"> </a>Volgende stappen
 
 * Zie [Cachebeleidsregels][Caching policies] in [Naslaginformatie over beleid voor API Management][API Management policy reference] voor meer informatie over cachebeleidsregels.
 * Zie [Aangepast opslaan in cache in Azure API Management](api-management-sample-cache-by-key.md) voor informatie over het opslaan van items in de cache per sleutel met behulp van beleidsexpressies.

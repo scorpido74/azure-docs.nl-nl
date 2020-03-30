@@ -1,5 +1,5 @@
 ---
-title: Quick Start beleid groeps beleidsobjecten-Azure AD | Microsoft Docs
+title: Snel start beleid voor het verlopen van groepen - Azure AD | Microsoft Documenten
 description: Verloop voor Office 365-groepen - Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16b6e4f521568c89e415e6e9fa621175052cf34d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74026900"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Snelstart: Office 365-groepen voor verloop instellen in Azure Active Directory
@@ -27,27 +27,27 @@ In deze snelstart stelt u het verloopbeleid in voor uw Office 365-groepen. Wanne
 
 Verloopbeleid maken is eenvoudig:
 
-- Groepen met gebruikers activiteiten worden automatisch vernieuwd als de verlopen bijna
+- Groepen met gebruikersactiviteiten worden automatisch verlengd naarmate de vervaldatum nadert
 - Groepseigenaren worden op de hoogte gesteld als een groep moet worden vernieuwd die op het punt staat te verlopen
 - Een groep die niet wordt vernieuwd, wordt verwijderd
 - Een verwijderde Office 365-groep kan binnen dertig dagen door een groepseigenaar of een Azure AD-beheerder worden hersteld
 
 > [!NOTE]
-> Groepen gebruiken nu Azure AD Intelligence om automatisch te worden vernieuwd op basis van het feit of ze al recent zijn gebruikt. Deze vernieuwings beslissing is gebaseerd op gebruikers activiteit in groepen in Office 365-services zoals Outlook, share point, teams, Yammer en anderen.
+> Groepen gebruiken nu Azure AD-intelligentie om automatisch te worden vernieuwd op basis van de vraag of ze recent zijn gebruikt. Deze verlengingsbeslissing is gebaseerd op gebruikersactiviteiten in groepen in Office 365-services zoals Outlook, SharePoint, Teams, Yammer en anderen.
 
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisite"></a>Vereiste
 
- De rol die is vereist voor het instellen van de groep met minimale bevoegdheden is gebruikers beheerder in de organisatie.
+ De minst bevoorrechte rol die nodig is om groepsvervaldatum in te stellen, is gebruikersbeheerder in de organisatie.
 
 ## <a name="turn-on-user-creation-for-groups"></a>Maken van gebruikers voor groepen inschakelen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met een beheerders account van de gebruiker.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een gebruikersbeheerdersaccount.
 
 2. Selecteer **Groepen** en vervolgens **Algemeen**.
   
-   ![Pagina instellingen voor selfservice groep](./media/groups-quickstart-expiration/self-service-settings.png)
+   ![Pagina Instellingen voor selfservicegroepen](./media/groups-quickstart-expiration/self-service-settings.png)
 
 3. Stel **Users can create Office 365 groups** in op **Ja**.
 
@@ -55,9 +55,9 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="set-group-expiration"></a>Verloopdatum van de groep instellen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com), selecteer **Azure Active Directory** > **groepen** > **verval datum** om de verloop instellingen te openen.
+1. Meld u aan bij de [Azure-portal,](https://portal.azure.com) > selecteer Azure Active **Azure Active Directory** > **Directory-groepen****die verlopen** om de vervaldatum-instellingen te openen.
   
-   ![Pagina verloop instellingen voor groep](./media/groups-quickstart-expiration/expiration-settings.png)
+   ![Pagina Met de instellingen voor de verwerking voor groep](./media/groups-quickstart-expiration/expiration-settings.png)
 
 2. Stel het verloopinterval in. Selecteer een vooraf ingestelde waarde of voer een aangepaste waarde van meer dan 31 dagen in. 
 
@@ -71,20 +71,20 @@ Dat is alles. In deze snelstart hebt u het verloopbeleid ingesteld voor de gesel
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-### <a name="to-remove-the-expiration-policy"></a>Het verloop beleid verwijderen
+### <a name="to-remove-the-expiration-policy"></a>Verloopbeleid verwijderen
 
 1. Zorg dat u bent aangemeld bij de [Azure-portal](https://portal.azure.com) met een account van een globale beheerder voor de tenant.
-2. Selecteer **Azure Active Directory** > **Groepen** > **Verlooptijd**.
+2. Selecteer de**vervaldatum**van Azure Active**Directory-groepen** >  **Azure Active Directory** > .
 3. Stel **Enable expiration for these Office 365 groups** in op **Geen**.
 
-### <a name="to-turn-off-user-creation-for-groups"></a>Het maken van gebruikers voor groepen uitschakelen
+### <a name="to-turn-off-user-creation-for-groups"></a>Maken van gebruikers voor groepen uitschakelen
 
-1. Selecteer **Azure Active Directory** > **Groepen** > **Algemeen**. 
+1. Selecteer **Algemeen Azure Active Directory** > **Groups** > **.** 
 2. Stel **Users can create Office 365 groups in Azure portals** in op **Nee**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het volgende artikel voor meer informatie over de verval datum, inclusief instructies voor Power shell en technische beperkingen:
+Zie het volgende artikel voor meer informatie over het verlopen, inclusief PowerShell-instructies en technische beperkingen:
 
 > [!div class="nextstepaction"]
-> [Verloop beleid Power shell](groups-lifecycle.md)
+> [Verloopbeleid PowerShell](groups-lifecycle.md)

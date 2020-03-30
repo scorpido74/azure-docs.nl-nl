@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Data Box Gateway use cases | Microsoft Docs
-description: Beschrijft de use cases voor Azure Data Box Gateway, een opslag oplossing voor virtuele apparaten waarmee u gegevens kunt overdragen naar Azure
+title: Use cases van Microsoft Azure Data Box Gateway | Microsoft Documenten
+description: Beschrijft de use cases voor Azure Data Box Gateway, een oplossing voor opslag van virtuele apparaten waarmee u gegevens overbrengen naar Azure
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,89 +9,89 @@ ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
 ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022678"
 ---
-# <a name="use-cases-for-azure-data-box-gateway"></a>Gebruiks voorbeelden voor Azure Data Box Gateway
+# <a name="use-cases-for-azure-data-box-gateway"></a>Gebruiksvoorbeelden voor Azure Data Box Gateway
 
-Azure Data Box Gateway is een gateway apparaat in de cloud dat zich op uw locatie bevindt en uw installatie kopie, media en andere gegevens naar Azure verzendt. Deze Cloud Storage Gateway is een virtuele machine die is ingericht in uw Hyper Visor. U schrijft gegevens naar dit virtuele apparaat met behulp van de NFS-en SMB-protocollen, die vervolgens naar Azure worden verzonden. In dit artikel vindt u een gedetailleerde beschrijving van de scenario's waarin u dit apparaat kunt implementeren.
+Azure Data Box Gateway is een cloudopslaggatewayapparaat dat zich op uw locatie bevindt en uw afbeelding, media en andere gegevens naar Azure stuurt. Deze cloud storage gateway is een virtuele machine ingericht in uw hypervisor. U schrijft gegevens naar dit virtuele apparaat met behulp van de NFS- en SMB-protocollen, die vervolgens naar Azure worden verzendt. In dit artikel vindt u een gedetailleerde beschrijving van de scenario's waarin u dit apparaat implementeren.
 
 Gebruik Data Box Gateway voor de volgende scenario's:
 
-- Om voortdurend enorme hoeveel heden gegevens op te nemen.
-- Voor de Cloud archivering van gegevens op een veilige en efficiënte manier.
-- Voor incrementele gegevens overdracht via het netwerk nadat de eerste bulk overdracht is uitgevoerd met behulp van Data Box.
+- Om continu enorme hoeveelheden data in te nemen.
+- Voor cloud archivering van gegevens op een veilige en efficiënte manier.
+- Voor incrementele gegevensoverdracht via het netwerk nadat de eerste bulkoverdracht is uitgevoerd met behulp van Data Box.
 
-Elk van deze scenario's wordt gedetailleerd beschreven in de volgende secties.
+Elk van deze scenario's wordt in detail beschreven in de volgende secties.
 
 
-## <a name="continuous-data-ingestion"></a>Doorlopende gegevens opname
+## <a name="continuous-data-ingestion"></a>Continue gegevensopname
 
-Een van de belangrijkste voor delen van Data Box Gateway is de mogelijkheid om voortdurend gegevens op te nemen in het apparaat om te kopiëren naar de Cloud, ongeacht de grootte van de gegevens.
+Een van de belangrijkste voordelen van Data Box Gateway is de mogelijkheid om continu gegevens in te nemen in het apparaat om naar de cloud te kopiëren, ongeacht de gegevensgrootte.
 
-Wanneer de gegevens naar het gateway apparaat worden geschreven, uploadt het apparaat de gegevens naar Azure Storage. Het apparaat beheert opslag automatisch door de bestanden lokaal te verwijderen en de meta gegevens te behouden wanneer er een bepaalde drempel waarde wordt bereikt. Door een lokale kopie van de meta gegevens te bewaren, kan het gateway apparaat alleen de wijzigingen uploaden wanneer het bestand wordt bijgewerkt. De gegevens die naar uw gateway apparaat worden geüpload, moeten volgens de richt lijnen in het voor [behoud van gegevens uploads](data-box-gateway-limits.md#data-upload-caveats)zijn.
+Als de gegevens naar het gateway-apparaat worden geschreven, worden de gegevens door het apparaat geüpload naar Azure Storage. Het apparaat beheert automatisch de opslag door de bestanden lokaal te verwijderen met behoud van de metagegevens wanneer het een bepaalde drempel bereikt. Door een lokale kopie van de metagegevens te bewaren, kan het gatewayapparaat de wijzigingen alleen uploaden wanneer het bestand wordt bijgewerkt. De gegevens die naar uw gatewayapparaat worden geüpload, moeten volgens de richtlijnen in [waarschuwingen voor het uploaden van gegevens](data-box-gateway-limits.md#data-upload-caveats)zijn.
 
-Wanneer het apparaat wordt gevuld met gegevens, begint het met het beperken van de ingangs snelheid (indien nodig) om overeen te komen met de snelheid waarmee gegevens naar de cloud worden geüpload. U kunt waarschuwingen gebruiken om de doorlopende opname op het apparaat te controleren. Deze waarschuwingen worden gegenereerd zodra de beperking is gestart en worden gewist zodra de beperking is gestopt.
+Als het apparaat zich vult met gegevens, begint het de invallende snelheid (indien nodig) te beperken om de snelheid te evenaren waarmee gegevens naar de cloud worden geüpload. Om de continue inname op het apparaat te controleren, gebruikt u waarschuwingen. Deze waarschuwingen worden verhoogd zodra de beperking begint en worden gewist zodra de beperking is gestopt.
 
-## <a name="cloud-archival-of-data"></a>Cloud archivering van gegevens
+## <a name="cloud-archival-of-data"></a>Cloudarchivering van gegevens
 
-Gebruik Data Box Gateway wanneer u uw gegevens lange termijn in de Cloud wilt bewaren. U kunt de **Archief** laag van de opslag gebruiken voor lange termijn retentie.
+Gebruik Data Box Gateway wanneer u uw gegevens voor lange termijn in de cloud wilt bewaren. U de **opslaglaag Archief** gebruiken voor langdurige bewaring.
 
-De archief laag is geoptimaliseerd voor het opslaan van gegevens die zelden worden gebruikt gedurende ten minste 180 dagen. De **Archief** laag biedt de laagste opslag kosten, maar heeft de hoogste toegangs kosten. Ga naar de [Access-laag](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier)van het Archief voor meer informatie.
+De archieflaag is geoptimaliseerd om zelden geopende gegevens gedurende ten minste 180 dagen op te slaan. De **archieflaag** biedt de laagste opslagkosten, maar heeft de hoogste toegangskosten. Ga voor meer informatie naar [De toegangslaag voor archief](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier).
 
-### <a name="move-data-to-archive-tier"></a>Gegevens verplaatsen naar archief-laag
+### <a name="move-data-to-archive-tier"></a>Gegevens verplaatsen naar archieflaag
 
-Voordat u begint, moet u ervoor zorgen dat u een actief Data Box Gateway apparaat hebt. Volg de stappen die worden beschreven in de [zelf studie: bereid u voor op de implementatie van Azure data Box gateway](data-box-gateway-deploy-prep.md) en blijf door gaan met de volgende zelf studie totdat u een operationeel apparaat hebt.
+Controleer voordat u begint of u een uitgevoerd Data Box Gateway-apparaat hebt. Volg de stappen die worden beschreven in [Zelfstudie: Bereid u voor om Azure Data Box Gateway te implementeren](data-box-gateway-deploy-prep.md) en blijf doorgaan naar de volgende zelfstudie totdat u een operationeel apparaat hebt.
 
-- Gebruik het Data Box Gateway apparaat om gegevens te uploaden naar Azure via de gebruikelijke procedure voor het overdragen van [gegevens via data Box gateway](data-box-gateway-deploy-add-shares.md).
-- Nadat de gegevens zijn geüpload, moet u deze naar de laag archief verplaatsen. U kunt de BLOB-laag op twee manieren instellen: Azure PowerShell script of een Azure Storage levenscyclus beheer beleid.  
-    - Als u Azure PowerShell gebruikt, voert u de volgende [stappen uit](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) om de gegevens naar de archief laag te verplaatsen.
-    - Als u Azure levenscyclus beheer gebruikt, voert u de volgende stappen uit om de gegevens naar de archief laag te verplaatsen.
-        - [Meld](/azure/storage/common/storage-lifecycle-management-concepts) u aan voor de preview-versie van de BLOB-levenscyclus beheer service om de laag Archive te gebruiken.
-        - Gebruik het volgende beleid om [gegevens op opname te archiveren](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-after-ingest).
-- Zodra de blobs zijn gemarkeerd als Archive, kunnen ze niet meer worden gewijzigd door de gateway, tenzij ze worden verplaatst naar de laag warm of koude. Als het bestand zich in de lokale opslag bevindt, worden de wijzigingen die zijn aangebracht in de lokale kopie (inclusief verwijderingen) niet geüpload naar de archief laag.
-- Voor het lezen van gegevens in archief opslag moet deze opnieuw worden gehydrateerd door de BLOB-laag te wijzigen in Hot of cool. Als [de share](data-box-gateway-manage-shares.md#refresh-shares) op de gateway wordt vernieuwd, wordt de BLOB niet opnieuw gehydrateerd.
+- Gebruik het Data Box Gateway-apparaat om gegevens naar Azure te uploaden via de gebruikelijke overdrachtsprocedure zoals beschreven in [Gegevens overdracht via Data Box Gateway.](data-box-gateway-deploy-add-shares.md)
+- Nadat de gegevens zijn geüpload, moet u deze verplaatsen naar de archieflaag. U de blob-laag op twee manieren instellen: Azure PowerShell-script of een Azure Storage Lifecycle Management-beleid.  
+    - Als u Azure PowerShell gebruikt, voert u de volgende [stappen](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) uit om de gegevens naar de laag Archiveren te verplaatsen.
+    - Als u Azure Lifecycle Management gebruikt, voert u de volgende stappen uit om de gegevens naar de laag Archiveren te verplaatsen.
+        - [Registreer u](/azure/storage/common/storage-lifecycle-management-concepts) voor de preview van de Blob Lifecycle management-service om de archieflaag te gebruiken.
+        - Gebruik het volgende beleid om [gegevens te archiveren over inname.](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-after-ingest)
+- Zodra de blobs zijn gemarkeerd als Archief, kunnen ze niet meer worden gewijzigd door de gateway, tenzij ze worden verplaatst naar warme of koude laag. Als het bestand zich in de lokale opslag bevindt, worden wijzigingen in de lokale kopie (inclusief verwijderingen) niet geüpload naar de archieflaag.
+- Als u gegevens wilt lezen in archiefopslag, moet deze worden gerehydrateerd door de bloblaag te wijzigen in warm of koel. [Als u het aandeel](data-box-gateway-manage-shares.md#refresh-shares) op de gateway vernieuwt, wordt de blob niet gehydrateerd.
 
-Meer informatie over het [beheren van Azure Blob Storage Lifecycle](/azure/storage/common/storage-lifecycle-management-concepts).
+Voor meer informatie vindt u meer informatie over het [beheren van de levenscyclus van Azure Blob-opslag](/azure/storage/common/storage-lifecycle-management-concepts).
 
-## <a name="initial-bulk-transfer-followed-by-incremental-transfer"></a>Eerste bulk overdracht, gevolgd door incrementele overdracht
+## <a name="initial-bulk-transfer-followed-by-incremental-transfer"></a>Initiële bulkoverdracht gevolgd door incrementele overdracht
 
-Gebruik Data Box en Data Box Gateway samen wanneer u een grote hoeveelheid gegevens wilt uploaden, gevolgd door incrementele overdrachten. Gebruik Data Box voor de bulk overdracht in een offline modus (eerste seed) en Data Box Gateway voor incrementele overdrachten (doorlopende invoer) via het netwerk.
+Gebruik Data Box en Data Box Gateway samen wanneer u een bulkupload van een grote hoeveelheid gegevens wilt uploaden, gevolgd door incrementele overdrachten. Gebruik Data Box voor de bulkoverdracht in een offlinemodus (eerste seed) en Data Box Gateway voor incrementele overdrachten (doorlopende feed) via het netwerk.
 
-### <a name="seed-the-data-with-data-box"></a>De gegevens met Data Box seeden
+### <a name="seed-the-data-with-data-box"></a>De gegevens met gegevensvak zaaien
 
-Volg deze stappen om de gegevens te kopiëren naar Data Box en te uploaden naar Azure Storage.
+Volg deze stappen om de gegevens naar gegevensvak te kopiëren en te uploaden naar Azure Storage.
 
-1. [Bestel uw data Box](/azure/databox/data-box-deploy-ordered).
-2. [Stel uw data Box](/azure/databox/data-box-deploy-set-up)in.
-3. [Gegevens kopiëren naar Data box via SMB](/azure/databox/data-box-deploy-copy-data).
-4. [Ga terug naar de data box, Controleer of de gegevens uploadt naar Azure](/azure/databox/data-box-deploy-picked-up).
-5. Zodra het uploaden van gegevens naar Azure is voltooid, moeten alle gegevens zich in azure Storage-containers bevindt. Ga in het opslag account voor Data Box naar de container voor de BLOB (en het bestand) om ervoor te zorgen dat alle gegevens worden gekopieerd. Noteer de naam van de container, zoals u deze naam later gebruikt. Zo wordt in de volgende scherm afbeelding `databox` container gebruikt voor de incrementele overdracht.
+1. [Bestel uw databox.](/azure/databox/data-box-deploy-ordered)
+2. [Stel uw gegevensvak in.](/azure/databox/data-box-deploy-set-up)
+3. [Kopieer gegevens naar gegevensvak via SMB](/azure/databox/data-box-deploy-copy-data).
+4. [Retourneer het gegevensvak en controleer de gegevens uploadnaar Azure.](/azure/databox/data-box-deploy-picked-up)
+5. Zodra de gegevensupload naar Azure is voltooid, moeten alle gegevens in Azure-opslagcontainers staan. Ga in het opslagaccount voor Gegevensvak naar de container Blob (en Bestand) om te zien of alle gegevens worden gekopieerd. Noteer de naam van de container, want u gebruikt deze naam later. In de volgende schermafbeelding `databox` wordt bijvoorbeeld de container gebruikt voor de incrementele overdracht.
 
-    ![Container met gegevens op Data Box](media/data-box-gateway-use-cases/data-container1.png)
+    ![Container met gegevens op gegevensvak](media/data-box-gateway-use-cases/data-container1.png)
 
-Deze bulk overdracht voltooit de initiële seeding-fase.
+Deze bulkoverdracht voltooit de eerste zaaifase.
 
-### <a name="ongoing-feed-with-data-box-gateway"></a>Voortdurende feed met Data Box Gateway
+### <a name="ongoing-feed-with-data-box-gateway"></a>Doorlopende feed met Data Box Gateway
 
-Volg deze stappen voor een doorlopende opname door Data Box Gateway.
+Volg deze stappen voor de lopende opname door Data Box Gateway.
 
-1. Maak een Cloud share op Data Box Gateway. Deze share uploadt automatisch alle gegevens naar het Azure Storage-account. Ga naar **shares** in uw data Box gateway-resource en klik op **+ share toevoegen**.
+1. Maak een cloudshare op Data Box Gateway. Met dit aandeel worden alle gegevens automatisch geüpload naar het Azure Storage-account. Ga naar **Shares** in uw Data Box Gateway-bron en klik op **+ Delen toevoegen**.
 
-    ![Klik op + share toevoegen](media/data-box-gateway-use-cases/add-share1.png)
+    ![Klik op +Delen toevoegen](media/data-box-gateway-use-cases/add-share1.png)
 
-2. Zorg ervoor dat deze share is gekoppeld aan de container die de seeded-gegevens bevat. Voor **Selecteer BLOB-container**kiest **u bestaande gebruiken** en bladert u naar de container waar de gegevens van data box zijn overgedragen.
+2. Zorg ervoor dat dit kaarten deelt met de container die de ingezaaide gegevens bevat. Kies bij **Blobcontainer selecteren** **bestaande optie Bestaande gebruiken** en blader naar de container waar de gegevens uit Gegevensvak zijn overgedragen.
 
-    ![Share-instellingen](media/data-box-gateway-use-cases/share-settings-select-existing-container1.png)
+    ![Instellingen voor delen](media/data-box-gateway-use-cases/share-settings-select-existing-container1.png)
 
-3. Nadat de share is gemaakt, vernieuwt u de share. Met deze bewerking wordt de on-premises share vernieuwd met de inhoud van Azure.
+3. Nadat het aandeel is gemaakt, vernieuwt u het aandeel. Met deze bewerking wordt het on-premises delen met de inhoud van azure vernieuwd.
 
-    ![Share vernieuwen](media/data-box-gateway-use-cases/refresh-share1.png)
+    ![Aandeel vernieuwen](media/data-box-gateway-use-cases/refresh-share1.png)
 
-    Wanneer de share is gesynchroniseerd, worden de incrementele wijzigingen door de Data Box Gateway geüpload als de bestanden op de client zijn gewijzigd.
+    Wanneer het aandeel wordt gesynchroniseerd, uploadt de Data Box Gateway de incrementele wijzigingen als de bestanden op de client zijn gewijzigd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

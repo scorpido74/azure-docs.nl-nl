@@ -1,7 +1,7 @@
 ---
-title: De juiste VM-grootte voor uw Azure HDInsight-cluster selecteren
+title: De juiste VM-grootte selecteren voor uw Azure HDInsight-cluster
 description: Meer informatie over het selecteren van de juiste VM-grootte voor uw HDInsight-cluster.
-keywords: VM-grootten, cluster grootte, cluster configuratie
+keywords: vm-grootten, clustergroottes, clusterconfiguratie
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,68 +10,68 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73682210"
 ---
-# <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>De juiste VM-grootte voor uw Azure HDInsight-cluster selecteren
+# <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>De juiste vm-grootte selecteren voor uw Azure HDInsight-cluster
 
-In dit artikel wordt beschreven hoe u de juiste VM-grootte kunt selecteren voor de verschillende knoop punten in uw HDInsight-cluster. 
+In dit artikel wordt besproken hoe u de juiste VM-grootte selecteert voor de verschillende knooppunten in uw HDInsight-cluster. 
 
-Begin door te weten hoe de eigenschappen van een virtuele machine, zoals CPU-verwerking, RAM-grootte en netwerk latentie, van invloed zijn op de verwerking van uw workloads. Denk vervolgens na over uw toepassing en hoe deze overeenkomt met de verschillende VM-families die zijn geoptimaliseerd voor. Zorg ervoor dat de VM-familie die u wilt gebruiken, compatibel is met het cluster type dat u wilt implementeren. Zie door [Azure HDInsight ondersteunde knooppunt configuraties](hdinsight-supported-node-configuration.md)voor een lijst met alle ondersteunde en aanbevolen VM-grootten voor elk cluster type. Ten slotte kunt u een benchmark procedure gebruiken om een aantal voorbeeld workloads te testen en te controleren welke SKU binnen die familie geschikt is voor u.
+Begin met te begrijpen hoe de eigenschappen van een virtuele machine, zoals CPU-verwerking, RAM-grootte en netwerklatentie, de verwerking van uw workloads beïnvloeden. Denk vervolgens na over uw toepassing en hoe deze overeenkomt met waarvoor verschillende VM-families zijn geoptimaliseerd. Zorg ervoor dat de VM-familie die u wilt gebruiken, compatibel is met het clustertype dat u wilt implementeren. Zie [Azure HDInsight-ondersteunde knooppuntconfiguraties](hdinsight-supported-node-configuration.md)voor een lijst met alle ondersteunde en aanbevolen VM-formaten voor elk clustertype. Ten slotte u een benchmarkingproces gebruiken om een aantal voorbeeldworkloads te testen en te controleren welke SKU binnen dat gezin bij u geschikt is.
 
-Zie [capaciteits planning voor HDInsight-clusters](hdinsight-capacity-planning.md)voor meer informatie over het plannen van andere aspecten van het cluster, zoals het selecteren van een opslag type of cluster grootte.
+Zie [Capaciteitsplanning voor HDInsight-clusters voor](hdinsight-capacity-planning.md)meer informatie over het plannen van andere aspecten van uw cluster, zoals het selecteren van een opslagtype of clustergrootte.
 
 ## <a name="vm-properties-and-big-data-workloads"></a>VM-eigenschappen en big data-workloads
 
-De grootte en het type van de virtuele machine zijn afhankelijk van CPU-verwerkings kracht, RAM-grootte en netwerk latentie:
+De VM-grootte en -type worden bepaald door cpu-verwerkingskracht, RAM-grootte en netwerklatentie:
 
-- CPU: de grootte van de virtuele machine bepaalt het aantal kernen. Hoe meer kernen, des te groter de mate van parallelle reken kracht van elk knoop punt kan worden gerealiseerd. Daarnaast hebben sommige VM-typen snellere kernen.
+- CPU: De VM-grootte bepaalt het aantal cores. Hoe meer kernen, hoe groter de mate van parallelle berekening die elk knooppunt kan bereiken. Sommige VM-typen hebben ook snellere cores.
 
-- RAM: de VM-grootte bepaalt ook de hoeveelheid RAM-geheugen dat beschikbaar is in de virtuele machine. Voor werk belastingen waarbij gegevens in het geheugen worden opgeslagen voor verwerking, in plaats van de schijf te lezen, moet u ervoor zorgen dat uw worker-knoop punten voldoende geheugen hebben om de gegevens te passen.
+- RAM: De VM-grootte bepaalt ook de hoeveelheid RAM beschikbaar in de VM. Voor workloads die gegevens opslaan in het geheugen voor verwerking, in plaats van het lezen vanaf de schijf, moet u ervoor zorgen dat uw werknemersknooppunten voldoende geheugen hebben om aan de gegevens te voldoen.
 
-- Netwerk: voor de meeste cluster typen worden de gegevens die door het cluster worden verwerkt, niet op de lokale schijf opgeslagen, maar in een externe opslag service, zoals Data Lake Storage of Azure Storage. Houd rekening met de netwerk bandbreedte en door Voer tussen de VM van het knoop punt en de opslag service. De netwerk bandbreedte die beschikbaar is voor een virtuele machine neemt doorgaans toe met grotere grootten. Zie [overzicht van VM-grootten](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)voor meer informatie.
+- Netwerk: Voor de meeste clustertypen bevinden de gegevens die door het cluster worden verwerkt, niet op lokale schijf, maar in een externe opslagservice zoals Data Lake Storage of Azure Storage. Houd rekening met de netwerkbandbreedte en -doorvoer tussen de VM van knooppunt's en de opslagservice. De netwerkbandbreedte die beschikbaar is voor een VM neemt doorgaans toe met grotere formaten. Zie overzicht [van VM-formaten](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)voor meer informatie.
 
-## <a name="understanding-vm-optimization"></a>Meer informatie over VM-optimalisatie
+## <a name="understanding-vm-optimization"></a>Informatie over VM-optimalisatie
 
-Virtuele-machine families in azure zijn geoptimaliseerd voor verschillende use cases. In de onderstaande tabel vindt u enkele van de populairste use cases en de VM-families die overeenkomen.
+Virtuele machinefamilies in Azure zijn geoptimaliseerd voor verschillende use cases. In de onderstaande tabel vindt u enkele van de populairste use cases en de VM-families die bij hen passen.
 
 | Type                     | Grootten           |    Beschrijving       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Instap niveau](../virtual-machines/linux/sizes-general.md)          | A, Av2  | Beschikken over CPU-prestaties en geheugen configuraties die het meest geschikt zijn voor workloads op instap niveau, zoals ontwikkelen en testen. Deze machines vormen een betaalbare optie om met Azure aan de slag te gaan. |
-| [Algemeen doel](../virtual-machines/linux/sizes-general.md)          | D, DSv2, dv2  | Evenwichtige CPU-geheugenverhouding. Ideaal voor testen en ontwikkelen, kleine tot middelgrote databases en webservers met weinig of gemiddeld verkeer. |
-| [Geoptimaliseerde rekenkracht](../virtual-machines/linux/sizes-compute.md)        | F           | Hoge CPU-geheugenverhouding. Goed voor webservers met gemiddeld verkeer, netwerkapparatuur, batchprocessen en toepassingsservers.        |
-| [Geoptimaliseerd geheugen](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Hoge geheugen-naar-CPU-verhouding. Uiterst geschikt voor relationele-databaseservers, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
+| [Entry-level](../virtual-machines/linux/sizes-general.md)          | A, Av2  | Cpu-prestaties en geheugenconfiguraties die het meest geschikt zijn voor instapworkloads zoals ontwikkeling en test. Ze zijn zuinig en bieden een goedkope optie om aan de slag te gaan met Azure. |
+| [Algemeen doel](../virtual-machines/linux/sizes-general.md)          | D, DSv2, Dv2  | Gebalanceerde CPU-geheugenverhouding. Dit is ideaal voor testen en ontwikkelen, voor kleine tot middelgrote databases, en webservers met weinig tot gemiddeld verkeer. |
+| [Geoptimaliseerde rekenkracht](../virtual-machines/linux/sizes-compute.md)        | F           | Hoge CPU-geheugenverhouding. Goed voor medium traffic webservers, netwerkapparaten, batchprocessen en applicatieservers.        |
+| [Geoptimaliseerd geheugen](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Hoge geheugen-cpu-verhouding. Zeer geschikt voor relationele databaseservers, middelgrote tot grote caches, en analysefuncties in het geheugen.                 |
 
-- Zie [prijzen voor hdinsight](https://azure.microsoft.com/pricing/details/hdinsight/)voor meer informatie over de prijzen van beschik bare VM-exemplaren in de regio's die door hdinsight worden ondersteund.
+- Zie [HDInsight Pricing](https://azure.microsoft.com/pricing/details/hdinsight/)voor informatie over de prijzen van beschikbare VM-exemplaren in door HDInsight ondersteunde regio's.
 
-## <a name="cost-saving-vm-types-for-light-workloads"></a>Kosten besparing van VM-typen voor lichte workloads
+## <a name="cost-saving-vm-types-for-light-workloads"></a>Kostenbesparende VM-typen voor lichte workloads
 
-Als er lichte verwerkings vereisten gelden, kan de [F-serie](https://azure.microsoft.com/blog/f-series-vm-size/) een goede keuze zijn om aan de slag te gaan met HDInsight. Tegen een lagere prijs per uur levert de F-serie de beste prijs/kwaliteit-verhouding van de Azure-portfolio, gebaseerd op de ACU (Azure Compute Unit) per vCPU.
+Als u vereisten heeft voor lichte verwerking, kan de [F-serie](https://azure.microsoft.com/blog/f-series-vm-size/) een goede keuze zijn om aan de slag te gaan met HDInsight. Tegen een lagere prijs per uur levert de F-serie de beste prijs/kwaliteit-verhouding van de Azure-portfolio, gebaseerd op de ACU (Azure Compute Unit) per vCPU.
 
-De volgende tabel beschrijft de cluster typen en knooppunt typen die kunnen worden gemaakt met de virtuele machines uit de Fsv2-serie.
+In de volgende tabel worden de clustertypen en knooppunttypen beschreven, die kunnen worden gemaakt met de VM's uit de Fsv2-serie.
 
-| Clustertype | Versie | Werkknooppunt | Hoofdknooppunt | ZooKeeper-knooppunt |
+| Clustertype | Versie | Worker Node | Hoofdknooppunt | Dierenverzorger Knooppunt |
 |---|---|---|---|---|
 | Spark | Alle | F4 en hoger | nee | nee |
 | Hadoop | Alle | F4 en hoger | nee | nee |
 | Kafka | Alle | F4 en hoger | nee | nee |
 | HBase | Alle | F4 en hoger | nee | nee |
-| LLAP | geblokkeerd | nee | nee | nee |
-| Storm | geblokkeerd | nee | nee | nee |
-| ML-service | ALLEEN HDI 3,6 | F4 en hoger | nee | nee |
+| LLAP LLAP | Handicap | nee | nee | nee |
+| Storm | Handicap | nee | nee | nee |
+| ML-service | HDI 3.6 ALLEEN | F4 en hoger | nee | nee |
 
-Zie [VM-grootten](https://azure.microsoft.com/blog/f-series-vm-size/)van de f-serie voor een overzicht van de specificaties van elke SKU uit de f-serie.
+Zie VM-formaten uit de [F-serie](https://azure.microsoft.com/blog/f-series-vm-size/)om de specificaties van elke F-serie SKU te bekijken.
 
 ## <a name="benchmarking"></a>Benchmarking
 
-Benchmarking is het proces van het uitvoeren van gesimuleerde werk belastingen op verschillende Vm's om te meten hoe goed ze worden uitgevoerd voor uw productie workloads. 
+Benchmarking is het proces van het uitvoeren van gesimuleerde workloads op verschillende VM's om te meten hoe goed ze zullen presteren voor uw productieworkloads. 
 
-Zie [cluster capaciteit plannen in azure HDInsight ](hdinsight-capacity-planning.md#choose-the-vm-size-and-type)voor meer informatie over de benchmarking voor VM-sku's en cluster groottes.
+Zie [Clustercapaciteitsplanning in Azure HDInsight ](hdinsight-capacity-planning.md#choose-the-vm-size-and-type)voor meer informatie over benchmarking voor VM SKU's en clusterformaten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Ondersteunde knooppunt configuraties van Azure HDInsight](hdinsight-supported-node-configuration.md)
+- [Azure HDInsight ondersteunde knooppuntconfiguraties](hdinsight-supported-node-configuration.md)
 - [Grootten voor Linux Virtual Machines in Azure](../virtual-machines/linux/sizes.md)

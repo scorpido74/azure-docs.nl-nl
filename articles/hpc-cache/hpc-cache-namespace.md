@@ -1,5 +1,5 @@
 ---
-title: Een HPC-cache van Azure maken
+title: Een Azure HPC-cache maken
 description: Een Azure HPC-cache-exemplaar maken
 author: ekpgh
 ms.service: hpc-cache
@@ -7,58 +7,58 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: aaa939051a1aeafdb0650119772fc7214506aa8d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73582183"
 ---
 # <a name="plan-the-aggregated-namespace"></a>De geaggregeerde naamruimte plannen
 
-Met de HPC-cache van Azure kunnen clients toegang krijgen tot diverse opslag systemen via een virtuele naam ruimte die de details van het back-end-opslag systeem verbergt.
+Azure HPC Cache biedt clients toegang tot verschillende opslagsystemen via een virtuele naamruimte die de details van het back-endopslagsysteem verbergt.
 
-Wanneer u een opslag doel toevoegt, stelt u het op de client gerichte bestandspad in. Client computers koppelen dit bestandspad en kunnen aanvragen voor het lezen van bestanden naar de cache maken in plaats van het opslag systeem rechtstreeks te koppelen.
+Wanneer u een opslagdoel toevoegt, stelt u het clientgerichte bestandspad in. Clientmachines monteren dit bestandspad en kunnen bestandsleesverzoeken indienen in de cache in plaats van het opslagsysteem rechtstreeks te monteren.
 
-Omdat Azure HPC cache dit virtuele bestands systeem beheert, kunt u het opslag doel wijzigen zonder het client gerichte pad te wijzigen. U kunt bijvoorbeeld een hardware-opslag systeem vervangen door de Cloud opslag zonder dat u client gerichte procedures moet herschrijven.
+Omdat Azure HPC Cache dit virtuele bestandssysteem beheert, u het opslagdoel wijzigen zonder het pad dat naar de client gericht is te wijzigen. U bijvoorbeeld een hardwareopslagsysteem vervangen door cloudopslag zonder dat u clientgerichte procedures hoeft te herschrijven.
 
-## <a name="aggregated-namespace-example"></a>Voor beeld van geaggregeerde naam ruimte
+## <a name="aggregated-namespace-example"></a>Voorbeeld van geaggregeerde naamruimte
 
-Plan uw geaggregeerde naam ruimte, zodat de client computers de benodigde informatie kunnen bereiken, zodat beheerders en werk stroom engineers de paden eenvoudig kunnen onderscheiden.
+Plan uw geaggregeerde naamruimte zo dat clientmachines gemakkelijk de informatie kunnen bereiken die ze nodig hebben, zodat beheerders en workflowengineers de paden gemakkelijk kunnen onderscheiden.
 
-Denk bijvoorbeeld aan een systeem waarbij een Azure HPC-cache-exemplaar wordt gebruikt voor het verwerken van gegevens die zijn opgeslagen in Azure Blob. De analyse vereist sjabloon bestanden die zijn opgeslagen in een on-premises Data Center.
+Denk bijvoorbeeld aan een systeem waarbij een Azure HPC-cache-exemplaar wordt gebruikt om gegevens te verwerken die zijn opgeslagen in Azure Blob. De analyse vereist sjabloonbestanden die zijn opgeslagen in een on-premises datacenter.
 
-De sjabloon gegevens worden opgeslagen in een Data Center en de informatie die nodig is voor deze taak wordt opgeslagen in de volgende submappen:
+De sjabloongegevens worden opgeslagen in een datacenter en de informatie die nodig is voor deze taak wordt opgeslagen in deze submappen:
 
     /goldline/templates/acme2017/sku798
     /goldline/templates/acme2017/sku980 
 
-In het Data Center-opslag systeem zijn de volgende export bewerkingen beschikbaar:
+Het datacenteropslagsysteem legt deze export bloot:
 
     /
     /goldline
     /goldline/templates
 
-De gegevens die moeten worden geanalyseerd, zijn gekopieerd naar een Azure Blob Storage-container met de naam ' sourcecollection ' met het [hulp programma CLFSLoad](hpc-cache-ingest.md#pre-load-data-in-blob-storage-with-clfsload).
+De te analyseren gegevens zijn gekopieerd naar een Azure Blob-opslagcontainer met de naam 'bronverzameling' met behulp van het [HULPPROGRAMMA CLFSLoad.](hpc-cache-ingest.md#pre-load-data-in-blob-storage-with-clfsload)
 
-Als u eenvoudige toegang via de cache wilt toestaan, kunt u overwegen om opslag doelen met deze virtuele naam ruimte paden te maken:
+Als u eenvoudig toegang wilt verlenen via de cache, u overwegen opslagdoelen te maken met deze virtuele naamruimtepaden:
 
-| Back-end-opslag systeem <br/> (NFS-bestandspad of BLOB-container) | Pad naar virtuele naam ruimte |
+| Back-end opslagsysteem <br/> (NFS-bestandspad of Blob-container) | Pad voor virtuele naamruimte |
 |-----------------------------------------|------------------------|
-| /goldline/templates/acme2017/sku798     | /templates/sku798      |
-| /goldline/templates/acme2017/sku980     | /templates/sku980      |
-| sourcecollection                        | /source               |
+| /goldline/templates/acme2017/sku798     | /sjablonen/sku798      |
+| /goldline/templates/acme2017/sku980     | /sjablonen/sku980      |
+| bronverzameling                        | /bron/               |
 
-Een NFS-opslag doel kan meerdere paden voor virtuele naam ruimten hebben, zolang elk een pad naar een uniek exportpad verwijst.
+Een NFS-opslagdoel kan meerdere virtuele naamruimtepaden hebben, zolang elk doel verwijst naar een uniek exportpad.
 
-Omdat de NFS-bron paden submappen van dezelfde export zijn, moet u meerdere naam ruimte paden van hetzelfde opslag doel definiëren.
+Omdat de NFS-bronpaden submappen van dezelfde export zijn, moet u meerdere naamruimtepaden definiëren vanuit hetzelfde opslagdoel.
 
-| Hostnaam van opslag doel  | Pad naar NFS-export      | Pad naar submap | Pad naar naam ruimte    |
+| Hostname van opslagdoel  | NFS-exportpad      | Submappad | Naamruimtepad    |
 |--------------------------|----------------------|-------------------|-------------------|
-| *IP-adres of hostnaam* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
-| *IP-adres of hostnaam* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
+| *IP-adres of hostnaam* | /goldline/sjablonen  | acme2017/sku798   | /sjablonen/sku798 |
+| *IP-adres of hostnaam* | /goldline/sjablonen  | acme2017/sku980   | /sjablonen/sku980 |
 
-Een client toepassing kan de cache koppelen en eenvoudig toegang krijgen tot de geaggregeerde naam ruimte bestands paden ``/source``, ``/templates/sku798``en ``/templates/sku980``.
+Een clienttoepassing kan de cache monteren en eenvoudig ``/source``toegang ``/templates/sku798``krijgen ``/templates/sku980``tot de geaggregeerde bestandspaden voor naamruimte , en .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u hebt bepaald hoe uw virtuele bestands systeem moet worden ingesteld, [maakt u opslag doelen](hpc-cache-add-storage.md) om uw back-end-opslag toe te wijzen aan de client gerichte virtuele bestands paden.
+Nadat u hebt besloten hoe u uw virtuele bestandssysteem instelt, [maakt u opslagdoelen](hpc-cache-add-storage.md) om uw back-endopslag in kaart te brengen op uw clientgerichte virtuele bestandspaden.

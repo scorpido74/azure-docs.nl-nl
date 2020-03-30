@@ -1,6 +1,6 @@
 ---
-title: Wat is een hybride identiteit met Azure Active Directory?
-description: Hybride identiteiten hebben een gemeen schappelijke gebruikers identiteit voor verificatie en autorisatie zowel on-premises als in de Cloud.
+title: Wat is hybride identiteit met Azure Active Directory?
+description: Hybride identiteit heeft een gemeenschappelijke gebruikersidentiteit voor verificatie en autorisatie, zowel on-premises als in de cloud.
 keywords: inleiding tot Azure AD Connect, overzicht Azure AD Connect, wat is Azure AD Connect, Active Directory installeren
 services: active-directory
 author: billmath
@@ -14,21 +14,21 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3d681dd06f07f6174e31b59cccf42df5dc16a1e
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68779852"
 ---
-# <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Wat is een hybride identiteit met Azure Active Directory?
+# <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Wat is hybride identiteit met Azure Active Directory?
 
-Vandaag de dag maken organisaties en bedrijven steeds meer gebruik van een mix van on-premises toepassingen en cloudtoepassingen.  Gebruikers hebben zowel on-premises als in de cloud toegang tot deze toepassingen nodig. Het beheer van gebruikers zowel on-premises als in de Cloud vormt een uitdagende scenario. 
+Vandaag de dag maken organisaties en bedrijven steeds meer gebruik van een mix van on-premises toepassingen en cloudtoepassingen.  Gebruikers hebben zowel on-premises als in de cloud toegang tot deze toepassingen nodig. Het beheren van gebruikers, zowel on-premises als in de cloud, biedt uitdagende scenario's. 
 
 De identiteitsoplossingen van Microsoft kunnen zowel on-premises als in de cloud worden gebruikt.  Met deze oplossingen wordt een algemene gebruikersidentiteit gemaakt voor verificatie en autorisatie voor alle resources, ongeacht de locatie. We noemen dit **hybride identiteit**.
 
-Met hybride identiteit aan Azure AD en hybride identiteits beheer worden deze scenario's mogelijk.
+Met hybride identiteit naar Azure AD en hybride identiteitsbeheer worden deze scenario's mogelijk.
 
-Voor een hybride identiteit met Azure AD kan een van de drie verificatie methoden worden gebruikt, afhankelijk van uw scenario's.   Deze methoden zijn: 
+Om een hybride identiteit met Azure AD te bereiken, kan een van de drie verificatiemethoden worden gebruikt, afhankelijk van uw scenario's.   Deze methoden zijn: 
 
 - **[Synchronisatie van wachtwoord-hashes (PHS)](whatis-phs.md)**  
 - **[Pass-through-verificatie (PTA)](how-to-connect-pta.md)**  
@@ -63,13 +63,13 @@ Hieronder volgen enkele veelvoorkomende hybride identiteits- en beheerscenario's
 > <sup>4</sup> AD FS kan worden geïntegreerd met uw Enterprise PKI om aanmelding met certificaten toe te staan. Deze certificaten kunnen voorlopige certificaten zijn die worden geïmplementeerd via vertrouwde inrichtingskanalen, zoals MDM-, GPO- of smartcardcertificaten (waaronder PIV/CAC-kaarten) of Hello voor Bedrijven (cert-trust). Zie [dit blog](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/) (Engelstalig) voor meer informatie over ondersteuning voor smartcardverificatie. 
 > 
 
-## <a name="license-requirements-for-using-azure-ad-connect"></a>Licentie vereisten voor het gebruik van Azure AD Connect
+## <a name="license-requirements-for-using-azure-ad-connect"></a>Licentievereisten voor het gebruik van Azure AD Connect
 
 [!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-free-license.md)]
 
 ## <a name="next-steps"></a>Volgende stappen 
 
-- [Wat zijn Azure AD Connect en Connect Health?](whatis-azure-ad-connect.md) 
+- [Wat is Azure AD Connect en Connect Health?](whatis-azure-ad-connect.md) 
 - [Wat is synchronisatie van wachtwoord-hashes (PHS)?](whatis-phs.md) 
 - [Wat is pass-through-verificatie (PTA)?](how-to-connect-pta.md) 
 - [Wat is federatie?](whatis-fed.md) 

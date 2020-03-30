@@ -1,48 +1,48 @@
 ---
-title: Opgeslagen procedures voor beheer-Azure Database for MySQL
-description: Informatie over welke opgeslagen procedures in Azure Database for MySQL nuttig zijn om u te helpen bij het configureren van replicatie van gegevens in, het instellen van de tijd zone en het beëindigen van query's.
+title: Beheer opgeslagen procedures - Azure Database voor MySQL
+description: Ontdek welke opgeslagen procedures in Azure Database voor MySQL nuttig zijn om u te helpen bij het configureren van gegevens-in-replicatie, het instellen van de tijdzone en het doden van query's.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 7ab77f822ace61ccb023dffe6d79fb1d08278d11
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 6a3fa40eaae174d3616fd0318f81576b7c59eac7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74774937"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067704"
 ---
-# <a name="azure-database-for-mysql-management-stored-procedures"></a>Opgeslagen procedures voor Azure Database for MySQL beheer
+# <a name="azure-database-for-mysql-management-stored-procedures"></a>Azure Database voor opgeslagen procedures voor MySQL-beheer
 
-Opgeslagen procedures zijn beschikbaar op Azure Database for MySQL servers om uw MySQL-server te beheren. Dit omvat het beheren van de verbindingen van uw server, het uitvoeren van query's en het instellen van Replicatie van inkomende gegevens.  
+Opgeslagen procedures zijn beschikbaar in Azure Database voor MySQL-servers om uw MySQL-server te beheren. Dit omvat het beheren van de verbindingen, query's en het instellen van gegevens-in-replicatie van uw server.  
 
-## <a name="data-in-replication-stored-procedures"></a>Opgeslagen procedures Replicatie van inkomende gegevens
+## <a name="data-in-replication-stored-procedures"></a>Opgeslagen procedures voor replicatie in gegevens
 
 Met replicatie van inkomende gegevens kunt u gegevens synchroniseren die afkomstig zijn van een MySQL-server die wordt uitgevoerd on-premises, in virtuele machines (VM's) of in databaseservices gehost door andere cloudproviders in de Azure Database for MySQL-service.
 
-De volgende opgeslagen procedures worden gebruikt om Replicatie van inkomende gegevens in te stellen of te verwijderen tussen een hoofd database en een replica.
+De volgende opgeslagen procedures worden gebruikt om Gegevens-in-replicatie tussen een stramien en replica in te stellen of te verwijderen.
 
-|**Naam van opgeslagen procedure**|**Invoerparameters**|**Uitvoer parameters**|**Opmerking over gebruik**|
+|**Naam opgeslagen procedure**|**Invoerparameters**|**Uitvoerparameters**|**Opmerking voor gebruik**|
 |-----|-----|-----|-----|
-|*MySQL. az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|N/A|Als u gegevens wilt overdragen met de SSL-modus, geeft u de context van het CA-certificaat door aan de para meter master_ssl_ca. </br><br>Als u gegevens zonder SSL wilt overdragen, geeft u een lege teken reeks door in de para meter master_ssl_ca.|
-|*MySQL. az_replication _start*|N/A|N/A|Replicatie wordt gestart.|
-|*MySQL. az_replication _stop*|N/A|N/A|De replicatie wordt gestopt.|
-|*MySQL. az_replication _remove_master*|N/A|N/A|Hiermee verwijdert u de replicatie relatie tussen het hoofd en de replica.|
-|*MySQL. az_replication_skip_counter*|N/A|N/A|Hiermee wordt één replicatie fout overs Laan.|
+|*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|N.v.t.|Als u gegevens wilt overbrengen met de SSL-modus, geeft u in de context van het CA-certificaat door naar de parameter master_ssl_ca. </br><br>Als u gegevens zonder SSL wilt overbrengen, geeft u een lege tekenreeks door in de parameter master_ssl_ca.|
+|*mysql.az_replication _start*|N.v.t.|N.v.t.|Hiermee wordt de replicatie gestart.|
+|*mysql.az_replication _stop*|N.v.t.|N.v.t.|Stopt replicatie.|
+|*mysql.az_replication _remove_master*|N.v.t.|N.v.t.|Hiermee verwijdert u de replicatierelatie tussen het stramien en de replica.|
+|*mysql.az_replication_skip_counter*|N.v.t.|N.v.t.|Hiermee slaat u één replicatiefout over.|
 
-Zie [replicatie van inkomende gegevens configureren voor informatie over het](howto-data-in-replication.md)instellen van replicatie van inkomende gegevens tussen een Master en een replica in azure database for MySQL.
+Als u Gegevens-in-replicatie wilt instellen tussen een stramien en een replica in Azure Database voor MySQL, raadpleegt u [hoe u Gegevens-in-replicatie configureert.](howto-data-in-replication.md)
 
 ## <a name="other-stored-procedures"></a>Andere opgeslagen procedures
 
-De volgende opgeslagen procedures zijn beschikbaar in Azure Database for MySQL voor het beheren van uw server.
+De volgende opgeslagen procedures zijn beschikbaar in Azure Database voor MySQL om uw server te beheren.
 
-|**Naam van opgeslagen procedure**|**Invoerparameters**|**Uitvoer parameters**|**Opmerking over gebruik**|
+|**Naam opgeslagen procedure**|**Invoerparameters**|**Uitvoerparameters**|**Opmerking voor gebruik**|
 |-----|-----|-----|-----|
-|*MySQL. az_kill*|processlist_id|N/A|Gelijk aan [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) opdracht. De verbinding die is gekoppeld aan de geleverde processlist_id na het beëindigen van een instructie die wordt uitgevoerd, wordt beëindigd.|
-|*MySQL. az_kill_query*|processlist_id|N/A|Gelijk aan [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) opdracht. Hiermee wordt de instructie beëindigd die momenteel wordt uitgevoerd door de verbinding. De verbinding zelf blijft actief.|
-|*MySQL. az_load_timezone*|N/A|N/A|Hiermee worden tijd zone tabellen geladen zodat de para meter `time_zone` kan worden ingesteld op benoemde waarden (bijvoorbeeld "VS/Pacific").|
+|*mysql.az_kill*|processlist_id|N.v.t.|Gelijk [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) aan commando. Hiermee beëindigt u de verbinding die is gekoppeld aan de verstrekte processlist_id na beëindiging van een instructie die de verbinding uitvoert.|
+|*mysql.az_kill_query*|processlist_id|N.v.t.|Gelijk [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) aan commando. Beëindigt de instructie die de verbinding momenteel uitvoert. Laat de verbinding zelf in leven.|
+|*mysql.az_load_timezone*|N.v.t.|N.v.t.|Laadt tijdzonetabellen op `time_zone` zodat de parameter kan worden ingesteld op benoemde waarden (bijvoorbeeld. "VS/Pacific").|
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over het instellen van [replicatie van inkomende gegevens](howto-data-in-replication.md)
-- Meer informatie over het gebruik van de [tabellen met tijd zones](howto-server-parameters.md#working-with-the-time-zone-parameter)
+- Meer informatie over het instellen van [gegevens-in-replicatie](howto-data-in-replication.md)
+- Meer informatie over het gebruik van de [tijdzonetabellen](howto-server-parameters.md#working-with-the-time-zone-parameter)

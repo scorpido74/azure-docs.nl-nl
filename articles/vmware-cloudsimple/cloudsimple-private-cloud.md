@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossingen (AVS)-persoonlijke Clouds van AVS
-description: Meer informatie over uw persoonlijke Clouds en concepten van AVS.
+title: Azure VMware-oplossing door CloudSimple - Private Clouds
+description: Meer informatie over CloudSimple Private Clouds en concepten.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,131 +8,131 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2688edf281a6d8bc3d61e8e294c920f115f0f3f6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4fb930603455ed1a5df5d357fcab669f41a0c28c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024942"
 ---
-# <a name="avs-private-cloud-overview"></a>Overzicht van de persoonlijke cloud van AVS
+# <a name="cloudsimple-private-cloud-overview"></a>Overzicht van CloudSimple Private Cloud
 
-Met AVS worden VMware-workloads binnen enkele minuten getransformeerd en uitgebreid naar open bare Clouds. Met de AVS-service kunt u VMware systeem eigen implementeren op een Azure bare-metal infra structuur. Uw implementatie bevindt zich op Azure-locaties en integreert volledig met de rest van de Azure-Cloud.
+CloudSimple transformeert en breidt VMware-workloads binnen enkele minuten uit naar openbare clouds. Met de CloudSimple-service u VMware native implementeren op azure bare metal-infrastructuur. Uw implementatie leeft op Azure-locaties en integreert volledig met de rest van de Azure-cloud.
 
-De AVS-oplossing biedt volledige VMware-operationele continuïteit. Deze oplossing biedt u de voor delen van de open bare cloud van:
+De CloudSimple-oplossing biedt volledige operationele continuïteit van VMware. Deze oplossing biedt u de voordelen van de public cloud van:
 
 * Elasticiteit
 * Innovatie
 * Efficiëntie
 
-Met AVS profiteert u van een model voor Cloud verbruik dat uw total cost of ownership verlaagt. Het biedt ook mogelijkheden voor inrichting op aanvraag, betalen per gebruik en capaciteits optimalisatie.
+Met CloudSimple profiteert u van een cloudconsumptiemodel dat uw totale eigendomskosten verlaagt. Het biedt ook on-demand provisioning, pay-as-you-grow en capaciteitsoptimalisatie.
 
-AVS is volledig compatibel met:
+CloudSimple is volledig compatibel met:
 
-* Bestaande hulpprogram ma's
-* Lacune
+* Bestaande hulpprogramma's
+* Vaardigheden
 * Processen
 
-Met deze compatibiliteit kunnen uw teams werk belastingen op de Azure-Cloud beheren zonder dat dit soort beleid wordt verstoord:
+Met deze compatibiliteit kunnen uw teams workloads beheren in de Azure-cloud, zonder dit soort beleidsregels te verstoren:
 
 * Netwerk
 * Beveiliging  
-* Databeveiliging  
+* Gegevensbeveiliging  
 * Controleren
 
-AVS beheert de infra structuur en alle benodigde netwerk-en beheer Services. Met de AVS-service kan uw team zich richten op het volgende:
+CloudSimple beheert de infrastructuur en alle benodigde netwerk- en beheerdiensten. De CloudSimple-service stelt uw team in staat zich te concentreren op:
 
-* Bedrijfs waarde
-* Toepassing inrichten
+* Bedrijfswaarde
+* Toepassingsinrichting
 * Bedrijfscontinuïteit
 * Ondersteuning
 * Beleidsafdwinging
 
-## <a name="avs-private-cloud-environment-overview"></a>Overzicht van de persoonlijke cloud omgeving van AVS
+## <a name="private-cloud-environment-overview"></a>Overzicht van de Private Cloud-omgeving
 
-Een AVS-Privécloud is een geïsoleerde VMware-stack die ondersteuning biedt voor:
+Een Private Cloud is een geïsoleerde VMware-stack die ondersteunt:
 
 * ESXi-hosts
 * vCenter
 * vSAN
-* NSX
+* NSX (NSX)
 
-Persoonlijke Clouds van AVS worden beheerd via de AVS-Portal. Ze hebben hun eigen vCenter-Server in een eigen beheer domein.
+Private Clouds worden beheerd via de CloudSimple portal. Ze hebben hun eigen vCenter server in een eigen beheerdomein.
 
-De stack wordt uitgevoerd op:
+De stapel draait op:
 
 * Toegewezen knooppunten
-* Geïsoleerde bare metal-hardwareprofielen
+* Geïsoleerde bare metal hardwareknooppunten
 
-Gebruikers gebruiken de stack via systeem eigen VMware-hulpprogram ma's, waaronder:
+Gebruikers gebruiken de stack via native VMware-tools, waaronder:
 
 * vCenter
 * NSX Manager
 
-U kunt toegewezen knoop punten implementeren op Azure-locaties. Vervolgens kunt u ze beheren met Azure en AVS. Een automatische AVS-Cloud bestaat uit een of meer vSphere-clusters en elk cluster bevat 3 tot 16 knoop punten.
+U dedicated nodes implementeren in Azure-locaties. Vervolgens u ze beheren met Azure en CloudSimple. Een Private Cloud bestaat uit een of meer vSphere-clusters en elk cluster bevat 3 tot 16 knooppunten.
 
-U kunt een Privécloud maken met behulp van ingekochte, betalen naar gebruik-knoop punten of gereserveerde, toegewezen knoop punten.
+U een private cloud maken met gekochte, betalenper-je-gaan-knooppunten of gereserveerde, speciale knooppunten.
 
-U kunt de automatische AVS-cloud verbinden met uw on-premises omgeving en het Azure-netwerk met behulp van de volgende verbindingen:
+U de Private Cloud verbinden met uw on-premises omgeving en het Azure-netwerk via de volgende verbindingen:
 
-* Veilig
-* Particuliere VPN
-* ExpressRoute van Azure
+* Beveiligen
+* Privé VPN
+* Azure ExpressRoute
 
-De cloud omgeving van de AVS is ontworpen om individuele storings punten te elimineren:
+De Private Cloud-omgeving is ontworpen om afzonderlijke uitvalpunten te elimineren:
 
-* ESXi-clusters zijn geconfigureerd met een hoge Beschik baarheid van vSphere en hebben een grootte van ten minste één reserve knooppunt voor tolerantie.
-* vSAN biedt redundante primaire opslag. vSan vereist ten minste drie knoop punten om bescherming te bieden tegen één fout. U kunt vSAN configureren om hogere toleranties voor grotere clusters te bieden.
-* U kunt vCenter-, PSC-en NSX-beheer machines configureren met RAID-10-opslag beleid om te beschermen tegen opslag storingen. vSphere HA beschermt op knoop punten en netwerk fouten.
+* ESXi-clusters zijn geconfigureerd met vSphere-hoge beschikbaarheid en hebben een formaat om ten minste één reserveknooppunt voor tolerantie te hebben.
+* vSAN biedt redundante primaire opslag. vSan vereist ten minste drie knooppunten om bescherming te bieden tegen een enkele storing. U vSAN configureren om een hogere tolerantie te bieden voor grotere clusters.
+* U vCenter-, PSC- en NSX-beheerVM's configureren met RAID-10-opslagbeleid om te beschermen tegen opslagfouten. vSphere HA beschermt tegen knooppunt- en netwerkstoringen.
 
-## <a name="scenarios-for-deploying-an-avs-private-cloud"></a>Scenario's voor het implementeren van een AVS-Privécloud
+## <a name="scenarios-for-deploying-a-private-cloud"></a>Scenario's voor het implementeren van een Private Cloud
 
-Hier volgen enkele voor beelden van gebruiks voorbeelden voor de implementatie van een Privécloud in de Cloud.
+Hier volgen enkele voorbeeldvoorbeelden voor Private Cloud-implementatie.
 
-### <a name="data-center-retirement-or-migration"></a>Buiten gebruik stellen of migreren van data centers
+### <a name="data-center-retirement-or-migration"></a>Pensioen of migratie van datacenters
 
-* Krijg extra capaciteit wanneer u de limieten bereikt van uw bestaande Data Center of hardware vernieuwt.
-* Voeg de benodigde capaciteit toe in de Cloud en Elimineer het beheer van de hardware vernieuwt.
-* Verminder het risico en de kosten voor Cloud migraties vergeleken met tijdrovende conversies of herarchitectuur.
-* Gebruik vertrouwde VMware-hulpprogram ma's en-vaardig heden om Cloud migraties te versnellen. Gebruik Azure-Services in de cloud om uw toepassingen in uw tempo te moderniseren.
+* Profiteer van extra capaciteit wanneer u de limieten van uw bestaande datacenter bereikt of hardware vernieuwt.
+* Voeg de benodigde capaciteit toe in de cloud en elimineer de hoofdpijn van het beheren van hardwarevernieuwingen.
+* Verlaag het risico en de kosten van cloudmigraties in vergelijking met tijdrovende conversies of rearchitectuur.
+* Gebruik bekende VMware-tools en -vaardigheden om cloudmigraties te versnellen. Gebruik in de cloud Azure-services om uw toepassingen op uw tempo te moderniseren.
 
-### <a name="expand-on-demand"></a>Op aanvraag uitvouwen
+### <a name="expand-on-demand"></a>Uitbreiden op aanvraag
 
-* Breid uit naar de cloud om te voldoen aan niet-verwachte behoeften, zoals nieuwe ontwikkelings omgevingen of bursts met een seizoen capaciteit.
-* Maak op aanvraag nieuwe capaciteit en bewaar deze alleen zolang u dat nodig hebt.
-* Verminder uw investering in de voor grond, Versnel snelheid van het inrichten en verminder de complexiteit met dezelfde architectuur en hetzelfde beleid in zowel on-premises als in de Cloud.
+* Breid uit naar de cloud om te voldoen aan onverwachte behoeften, zoals nieuwe ontwikkelomgevingen of seizoenscapaciteitsuitbarstingen.
+* Creëer nieuwe capaciteit op aanvraag en bewaar deze alleen zolang als u die nodig hebt.
+* Verlaag uw investering vooraf, versnel de beprovisioningsnelheid en verminder de complexiteit met dezelfde architectuur en hetzelfde beleid in zowel on-premises als de cloud.
 
-### <a name="disaster-recovery-and-virtual-desktops-in-the-azure-cloud"></a>Herstel na nood gevallen en virtuele Bureau bladen in de Azure-Cloud
+### <a name="disaster-recovery-and-virtual-desktops-in-the-azure-cloud"></a>Disaster recovery en virtuele desktops in de Azure-cloud
 
-* Externe toegang tot gegevens, apps en Bureau bladen in de Azure-Cloud tot stand brengen. Met verbindingen met een hoge band breedte kunt u snel gegevens uploaden/downloaden om van incidenten te herstellen. Netwerken met lage latentie bieden snelle reactie tijden die gebruikers verwachten van een desktop-app.
+* Externe toegang tot gegevens, apps en bureaubladen instellen in de Azure-cloud. Met verbindingen met een hoge bandbreedte uploadt/ downloadt u snel gegevens om te herstellen van incidenten. Netwerken met lage latentie bieden u snelle responstijden die gebruikers verwachten van een desktop-app.
 
-* Repliceer al uw beleids regels en netwerken in de Cloud met behulp van de AVS-Portal en vertrouwde VMware-hulpprogram ma's. Replicatie vermindert de inspanning en het risico van het maken en beheren van DR-en VDI-implementaties.
+* Repliceer al uw beleid en netwerken in de cloud met behulp van de CloudSimple-portal en bekende VMware-tools. Replicatie vermindert de inspanning en het risico van het maken en beheren van DR- en VDI-implementaties.
 
-### <a name="high-performance-applications-and-databases"></a>Toepassingen en data bases met hoge prestaties
+### <a name="high-performance-applications-and-databases"></a>Krachtige toepassingen en databases
 
-* Voer uw meest veeleisende workloads uit met de hypergeconvergeerd-architectuur die door AVS wordt verschaft.
-* Voer Oracle, micro soft SQL Server, middleware Systems en no-SQL-data bases met hoge prestaties uit.
-* Ervaar de Cloud als uw eigen Data Center met hoge snelheid van 25 Gbps netwerk verbindingen. Met verbindingen met hoge snelheid kunt u hybride apps uitvoeren die on-premises, VMware op Azure en persoonlijke werk belastingen van Azure omvatten, zonder de prestaties te verbeteren.
+* Voer uw meest veeleisende workloads uit met de hyperconverged architectuur van CloudSimple.
+* Voer Oracle, Microsoft SQL-server, middleware-systemen en krachtige no-SQL-databases uit.
+* Ervaar de cloud als uw eigen datacenter met snelle 25-Gbps netwerkverbindingen. Met snelle verbindingen u hybride apps uitvoeren die on-premises, VMware op Azure en Azure-privéworkloads omvatten, zonder dat dit ten koste gaat van de prestaties.
 
-### <a name="true-hybrid"></a>Waar hybride
+### <a name="true-hybrid"></a>Echte hybride
 
-* Verdeel DevOps tussen VMware en Azure-Services.
-* Optimaliseer VMware-beheer voor Azure-Services en-oplossingen die in al uw workloads kunnen worden toegepast.
-* Toegang tot open bare Cloud Services zonder uw Data Center uit te breiden of uw toepassingen opnieuw te ontwerpen.
-* Centraliseer identiteiten, Toegangs beheer beleid, logboek registratie en controle voor VMware-toepassingen op Azure.
+* Unify DevOps voor VMware- en Azure-services.
+* Optimaliseer VMware-beheer voor Azure-services en -oplossingen die kunnen worden toegepast op al uw workloads.
+* Krijg toegang tot openbare cloudservices zonder dat u uw datacenter hoeft uit te breiden of uw toepassingen opnieuw hoeft te ontwerpen.
+* Identiteiten, toegangscontrolebeleid, logboekregistratie en bewaking voor VMware-toepassingen op Azure centraliseren.
 
-## <a name="limits"></a>Beperkingen
+## <a name="limits"></a>Limieten
 
-De volgende tabel bevat de limieten voor knoop punten van resources van een Privécloud in de Cloud.
+In de volgende tabel worden de knooppuntlimieten voor resources van een private cloud weergegeven.
 
-| Bron | Limiet |
+| Resource | Limiet |
 |----------|-------|
-| Minimum aantal knoop punten voor het maken van een AVS-Privécloud | 3 |
-| Maximum aantal knoop punten in een cluster op een Privécloud-Cloud | 16 |
-| Maximum aantal knoop punten in een Privécloud in de Cloud | 64 |
-| Minimum aantal knoop punten op een nieuw cluster | 3 |
+| Minimum aantal knooppunten om een private cloud te maken | 3 |
+| Maximaal aantal knooppunten in een cluster op een private cloud | 16 |
+| Maximaal aantal knooppunten in een private cloud | 64 |
+| Minimumaantal knooppunten op een nieuw cluster | 3 |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [maken van een AVS-privécloud](create-private-cloud.md)
-* Meer informatie over het [configureren van een persoonlijke cloud omgeving van een AVS](quickstart-create-private-cloud.md)
+* Meer informatie over het [maken van een private cloud](create-private-cloud.md)
+* Meer informatie over het [configureren van een Private Cloud-omgeving](quickstart-create-private-cloud.md)

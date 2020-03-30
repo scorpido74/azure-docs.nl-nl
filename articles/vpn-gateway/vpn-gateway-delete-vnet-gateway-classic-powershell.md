@@ -1,6 +1,6 @@
 ---
-title: 'Een virtuele netwerk gateway verwijderen: klassiek Azure'
-description: Verwijder een virtuele netwerk gateway met behulp van Power shell in het klassieke implementatie model.
+title: 'Een virtuele netwerkgateway verwijderen: Azure-klassieker'
+description: Een virtuele netwerkgateway verwijderen met PowerShell in het klassieke implementatiemodel.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: e7283f5e28edc6f7beaad3a2743aa155f6ea6e14
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198646"
 ---
-# <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>Een virtuele netwerk gateway verwijderen met behulp van Power shell (klassiek)
+# <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>Een virtuele netwerkgateway verwijderen met PowerShell (klassiek)
 
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-> * [Klassiek-Power shell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+> * [Klassiek - PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
 
-Dit artikel helpt u bij het verwijderen van een VPN-gateway in het klassieke implementatie model met behulp van Power shell. Nadat de virtuele netwerk gateway is verwijderd, wijzigt u het netwerk configuratie bestand om elementen te verwijderen die u niet meer gebruikt.
+Met dit artikel u een VPN-gateway in het klassieke implementatiemodel verwijderen met PowerShell. Nadat de virtuele netwerkgateway is verwijderd, wijzigt u het netwerkconfiguratiebestand om elementen te verwijderen die u niet meer gebruikt.
 
-## <a name="connect"></a>Stap 1: verbinding maken met Azure
+## <a name="step-1-connect-to-azure"></a><a name="connect"></a>Stap 1: Verbinding maken met Azure
 
-### <a name="1-install-the-latest-powershell-cmdlets"></a>1. Installeer de meest recente Power shell-cmdlets.
+### <a name="1-install-the-latest-powershell-cmdlets"></a>1. Installeer de nieuwste PowerShell-cmdlets.
 
 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
@@ -35,7 +35,7 @@ Dit artikel helpt u bij het verwijderen van een VPN-gateway in het klassieke imp
 
 Open de PowerShell-console met verhoogde rechten en maak verbinding met uw account. Gebruik het volgende voorbeeld als hulp bij het maken van de verbinding:
 
-1. Open de Power shell-console met verhoogde bevoegdheden. Als u wilt overschakelen naar Service beheer, gebruikt u deze opdracht:
+1. Open uw PowerShell-console met verhoogde rechten. Als u wilt overschakelen naar servicebeheer, gebruikt u deze opdracht:
 
    ```powershell
    azure config mode asm
@@ -46,9 +46,9 @@ Open de PowerShell-console met verhoogde rechten en maak verbinding met uw accou
    Add-AzureAccount
    ```
 
-## <a name="export"></a>Stap 2: het netwerk configuratie bestand exporteren en weer geven
+## <a name="step-2-export-and-view-the-network-configuration-file"></a><a name="export"></a>Stap 2: Het netwerkconfiguratiebestand exporteren en weergeven
 
-Maak een map op de computer en exporteer vervolgens het netwerkconfiguratiebestand naar de map. U gebruikt dit bestand om de huidige configuratie gegevens weer te geven en om de netwerk configuratie te wijzigen.
+Maak een map op de computer en exporteer vervolgens het netwerkconfiguratiebestand naar de map. U gebruikt dit bestand om zowel de huidige configuratie-informatie weer te geven als om de netwerkconfiguratie te wijzigen.
 
 In dit voorbeeld wordt het netwerkconfiguratiebestand geëxporteerd naar C:\AzureNet.
 
@@ -56,31 +56,31 @@ In dit voorbeeld wordt het netwerkconfiguratiebestand geëxporteerd naar C:\Azur
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-Open het bestand met een tekst editor en Bekijk de naam voor uw klassieke VNet. Wanneer u een VNet maakt in de Azure Portal, wordt de volledige naam die door Azure wordt gebruikt, niet weer gegeven in de portal. Zo kan een VNet dat in het Azure Portal met de naam ' ClassicVNet1 ' wordt genoemd, een veel langere naam hebben in het netwerk configuratie bestand. De naam kan er ongeveer als volgt uitzien: ' Group ClassicRG1 ClassicVNet1 '. Namen van virtuele netwerken worden vermeld als **' VirtualNetworkSite name = '** . Gebruik de namen in het netwerk configuratie bestand bij het uitvoeren van uw Power shell-cmdlets.
+Open het bestand met een teksteditor en bekijk de naam voor uw klassieke VNet. Wanneer u een VNet maakt in de Azure-portal, is de volledige naam die Azure gebruikt niet zichtbaar in de portal. Een VNet met de naam 'ClassicVNet1' in de Azure-portal kan bijvoorbeeld een veel langere naam hebben in het netwerkconfiguratiebestand. De naam lijkt misschien op: 'Group ClassicRG1 ClassicVNet1'. Virtuele netwerknamen worden vermeld als **'VirtualNetworkSite name='**. Gebruik de namen in het netwerkconfiguratiebestand bij het uitvoeren van uw PowerShell-cmdlets.
 
-## <a name="delete"></a>Stap 3: de gateway van het virtuele netwerk verwijderen
+## <a name="step-3-delete-the-virtual-network-gateway"></a><a name="delete"></a>Stap 3: De virtuele netwerkgateway verwijderen
 
-Wanneer u een virtuele netwerk gateway verwijdert, worden alle verbindingen met het VNet via de gateway verbroken. Als er P2S-clients zijn verbonden met het VNet, wordt de verbinding zonder waarschuwing verbroken.
+Wanneer u een virtuele netwerkgateway verwijdert, worden alle verbindingen met het VNet via de gateway verbroken. Als P2S-clients zijn verbonden met het VNet, worden deze zonder waarschuwing verbroken.
 
-In dit voor beeld wordt de gateway van het virtuele netwerk verwijderd. Zorg ervoor dat u de volledige naam van het virtuele netwerk van het netwerk configuratie bestand gebruikt.
+In dit voorbeeld wordt de virtuele netwerkgateway verwijderd. Zorg ervoor dat u de volledige naam van het virtuele netwerk uit het netwerkconfiguratiebestand gebruikt.
 
 ```powershell
 Remove-AzureVNetGateway -VNetName "Group ClassicRG1 ClassicVNet1"
 ```
 
-Als de waarde is geslaagd, wordt het volgende weer gegeven:
+Als dit lukt, wordt het rendement weergegeven:
 
 ```
 Status : Successful
 ```
 
-## <a name="modify"></a>Stap 4: het netwerk configuratie bestand wijzigen
+## <a name="step-4-modify-the-network-configuration-file"></a><a name="modify"></a>Stap 4: Het netwerkconfiguratiebestand wijzigen
 
-Wanneer u een virtuele netwerk gateway verwijdert, wordt het netwerk configuratie bestand niet door de cmdlet gewijzigd. U moet het bestand wijzigen om de elementen te verwijderen die niet meer worden gebruikt. De volgende secties helpen u bij het wijzigen van het netwerk configuratie bestand dat u hebt gedownload.
+Wanneer u een virtuele netwerkgateway verwijdert, wijzigt de cmdlet het netwerkconfiguratiebestand niet. U moet het bestand wijzigen om de elementen te verwijderen die niet meer worden gebruikt. Met de volgende secties u het netwerkconfiguratiebestand wijzigen dat u hebt gedownload.
 
-### <a name="lnsref"></a>Verwijzingen naar lokale netwerk sites
+### <a name="local-network-site-references"></a><a name="lnsref"></a>Verwijzingen naar lokale netwerksite
 
-Als u site referentie gegevens wilt verwijderen, moet u configuratie wijzigingen aanbrengen in **ConnectionsToLocalNetwork/LocalNetworkSiteRef**. Als u een lokale site verwijzing verwijdert, wordt Azure geactiveerd om een tunnel te verwijderen. Afhankelijk van de configuratie die u hebt gemaakt, is er mogelijk geen **LocalNetworkSiteRef** vermeld.
+Als u sitereferentiegegevens wilt verwijderen, voert u configuratiewijzigingen aan in **ConnectionsToLocalNetwork/LocalNetworkSiteRef**. Als u een lokale siteverwijzing verwijdert, wordt Azure geactiveerd om een tunnel te verwijderen. Afhankelijk van de configuratie die u hebt gemaakt, wordt er mogelijk geen **LocalNetworkSiteRef** weergegeven.
 
 ```
 <Gateway>
@@ -101,9 +101,9 @@ Voorbeeld:
  </Gateway>
 ```
 
-### <a name="lns"></a>Lokale netwerk sites
+### <a name="local-network-sites"></a><a name="lns"></a>Lokale netwerksites
 
-Verwijder alle lokale sites die u niet meer gebruikt. Afhankelijk van de configuratie die u hebt gemaakt, is het mogelijk dat er geen **LocalNetworkSite** wordt weer gegeven.
+Verwijder alle lokale sites die u niet meer gebruikt. Afhankelijk van de configuratie die u hebt gemaakt, is het mogelijk dat u geen **LocalNetworkSite** hebt vermeld.
 
 ```
 <LocalNetworkSites>
@@ -122,7 +122,7 @@ Verwijder alle lokale sites die u niet meer gebruikt. Afhankelijk van de configu
  </LocalNetworkSites>
 ```
 
-In dit voor beeld zijn alleen Site3 verwijderd.
+In dit voorbeeld hebben we alleen Site3 verwijderd.
 
 ```
 <LocalNetworkSites>
@@ -135,9 +135,9 @@ In dit voor beeld zijn alleen Site3 verwijderd.
  </LocalNetworkSites>
 ```
 
-### <a name="clientaddresss"></a>Client adres groep client
+### <a name="client-addresspool"></a><a name="clientaddresss"></a>Clientadrespool
 
-Als u een P2S-verbinding hebt met uw VNet, hebt u een **VPNClientAddressPool**. Verwijder de client adres groepen die overeenkomen met de gateway van het virtuele netwerk die u hebt verwijderd.
+Als je een P2S-verbinding met je VNet hebt, heb je een **VPNClientAddressPool.** Verwijder de groepen clientadres die overeenkomen met de virtuele netwerkgateway die u hebt verwijderd.
 
 ```
 <Gateway>
@@ -156,9 +156,9 @@ Voorbeeld:
  </Gateway>
 ```
 
-### <a name="gwsub"></a>GatewaySubnet
+### <a name="gatewaysubnet"></a><a name="gwsub"></a>GatewaySubnet
 
-Verwijder de **GatewaySubnet** die overeenkomt met het VNet.
+Verwijder het **GatewaySubnet** dat overeenkomt met het VNet.
 
 ```
 <Subnets>
@@ -181,15 +181,15 @@ Voorbeeld:
  </Subnets>
 ```
 
-## <a name="upload"></a>Stap 5: het netwerk configuratie bestand uploaden
+## <a name="step-5-upload-the-network-configuration-file"></a><a name="upload"></a>Stap 5: Het netwerkconfiguratiebestand uploaden
 
-Sla uw wijzigingen op en upload het netwerk configuratie bestand naar Azure. Zorg ervoor dat u het bestandspad zo nodig wijzigt voor uw omgeving.
+Sla uw wijzigingen op en upload het netwerkconfiguratiebestand naar Azure. Zorg ervoor dat u het bestandspad wijzigt indien nodig voor uw omgeving.
 
 ```powershell
 Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
 ```
 
-Als de bewerking is gelukt, ziet de retour waarde er ongeveer uit als in dit voor beeld:
+Als deze succesvol is, wordt in het rendement iets weergegeven dat lijkt op dit voorbeeld:
 
 ```
 OperationDescription        OperationId                      OperationStatus                                                

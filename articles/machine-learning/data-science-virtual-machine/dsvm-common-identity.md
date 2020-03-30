@@ -1,8 +1,8 @@
 ---
-title: Een algemene identiteit instellen
+title: Een gemeenschappelijke identiteit instellen
 titleSuffix: Azure Data Science Virtual Machine
-description: Informatie over het maken van algemene gebruikersaccounts die kunnen worden gebruikt voor meerdere virtuele Machines voor Datatechnologie. U kunt Azure Active Directory of een on-premises Active Directory gebruiken voor verificatie van gebruikers aan de Data Science Virtual Machine.
-keywords: deep learning, AI, hulpprogramma's voor data science, virtuele machine voor datatechnologie, georuimtelijke analyses, team data science process
+description: Meer informatie over het maken van algemene gebruikersaccounts die kunnen worden gebruikt voor meerdere virtuele gegevensmachines van Data Science. U Azure Active Directory of een on-premises Active Directory gebruiken om gebruikers te verifiëren bij de Virtual Machine data science.
+keywords: deep learning, AI, data science tools, data science virtual machine, geospatial analytics, team data science proces
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -11,74 +11,74 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 44f1f7ae3b290e1dbf01877f3881e1d95a238446
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70208144"
 ---
-# <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Stel een gemeen schappelijke identiteit in op een Data Science Virtual Machine
+# <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Een gemeenschappelijke identiteit instellen op een virtuele machine van Data Science
 
-Op een Microsoft Azure virtuele machine (VM), met inbegrip van een Data Science Virtual Machine (DSVM), maakt u lokale gebruikers accounts tijdens het inrichten van de VM. Gebruikers worden vervolgens geverifieerd aan de virtuele machine met behulp van deze referenties. Als u meerdere virtuele machines hebt waartoe uw gebruikers toegang moeten hebben, kan het beheren van referenties zeer onlastig zijn. Een uitstekende oplossing is het implementeren van algemene gebruikers accounts en-beheer via een op standaarden gebaseerde ID-provider. Met deze aanpak kunt u één set met referenties gebruiken om toegang te krijgen tot meerdere resources op Azure, met inbegrip van meerdere Dsvm.
+Op een virtuele Microsoft Azure-machine (VM), inclusief een Virtual Machine (Data Science Virtual Machine), maakt u lokale gebruikersaccounts terwijl u de VM indient. Gebruikers verifiëren vervolgens naar de VM met behulp van deze referenties. Als u meerdere VM's hebt die uw gebruikers moeten openen, kan het beheren van referenties erg omslachtig worden. Een uitstekende oplossing is het implementeren van gemeenschappelijke gebruikersaccounts en -beheer via een op standaarden gebaseerde identiteitsprovider. Via deze benadering u één set referenties gebruiken om toegang te krijgen tot meerdere bronnen op Azure, waaronder meerdere DSVMs.
 
-Active Directory is een populaire ID-provider en wordt ondersteund in azure als een Cloud service en als een on-premises Directory. U kunt Azure Active Directory (Azure AD) of het on-premises Active Directory om gebruikers op een zelfstandige DSVM of een Datatechnologie-cluster in een schaalset voor virtuele machine van Azure te verifiëren. U doen dit door de DSVM-exemplaren toevoegen aan een Active Directory-domein.
+Active Directory is een populaire identiteitsprovider en wordt ondersteund op Azure, zowel als cloudservice als als on-premises directory. U Azure Active Directory (Azure AD) of on-premises Active Directory gebruiken om gebruikers te verifiëren op een zelfstandige DSVM of een cluster van DSVMs in een Azure-set voor virtuele machine. U doet dit door de DSVM-exemplaren toe te voegen aan een Active Directory-domein.
 
-Als u Active Directory al hebt, kunt u deze gebruiken als uw algemene ID-provider. Als u niet beschikt over Active Directory, kunt u een beheerd Active Directory exemplaar uitvoeren op Azure via [Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) (Azure AD DS).
+Als u al Active Directory hebt, u deze gebruiken als uw gemeenschappelijke identiteitsprovider. Als u geen Active Directory hebt, u een beheerd Active Directory-exemplaar op Azure uitvoeren via [Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) (Azure AD DS).
 
-De documentatie voor [Azure AD](https://docs.microsoft.com/azure/active-directory/) bevat gedetailleerde [beheer instructies](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution), inclusief informatie over het verbinden van Azure AD met uw on-premises Directory als u er een hebt.
+De documentatie voor [Azure AD](https://docs.microsoft.com/azure/active-directory/) bevat gedetailleerde [beheerinstructies,](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution)waaronder richtlijnen voor het verbinden van Azure AD met uw on-premises directory als u er een hebt.
 
-In dit artikel wordt beschreven hoe u een volledig beheerde Active Directory domein service in azure instelt met behulp van Azure AD DS. U kunt vervolgens uw Dsvm toevoegen aan het beheerde Active Directory domein. Deze benadering stelt gebruikers in staat om toegang te krijgen tot een groep Dsvm (en andere Azure-bronnen) via een gemeen schappelijk gebruikers account en referenties.
+In dit artikel wordt beschreven hoe u een volledig beheerde Active Directory-domeinservice inStelt op Azure met Azure AD DS. U vervolgens uw DSVMs aansluiten bij het beheerde Active Directory-domein. Met deze aanpak kunnen gebruikers toegang krijgen tot een pool van DSVM's (en andere Azure-bronnen) via een gemeenschappelijk gebruikersaccount en referenties.
 
-## <a name="set-up-a-fully-managed-active-directory-domain-on-azure"></a>Een volledig beheerde Active Directory-domein in Azure instellen
+## <a name="set-up-a-fully-managed-active-directory-domain-on-azure"></a>Een volledig beheerd Active Directory-domein instellen op Azure
 
-Azure AD DS, kunt u eenvoudig uw identiteiten beheren door te voorzien in een volledig beheerde service in Azure. Op deze Active Directory-domein beheert u gebruikers en groepen. Voer de volgende stappen uit om een door Azure gehoste Active Directory domein en gebruikers accounts in uw directory in te stellen:
+Azure AD DS maakt het eenvoudig om uw identiteit te beheren door een volledig beheerde service op Azure te bieden. In dit Active Directory-domein beheert u gebruikers en groepen. Voer de volgende stappen uit om een Active Directory-domein en gebruikersaccounts met Azure in Te stellen in uw map:
 
-1. In de Azure-portal, moet u de gebruiker toevoegen aan Active Directory: 
+1. Voeg de gebruiker in de Azure-portal toe aan Active Directory: 
 
-   1. Meld u aan bij het [Azure Active Directory-beheer centrum](https://aad.portal.azure.com) met behulp van een account dat een globale beheerder voor de Directory is.
+   1. Meld u aan bij het [Azure Active Directory-beheercentrum](https://aad.portal.azure.com) met een account dat een globale beheerder is voor de directory.
     
    1. Selecteer **Azure Active Directory** en vervolgens **Gebruikers en groepen**.
     
-   1. Selecteer in **gebruikers en groepen** **alle gebruikers**en selecteer vervolgens **nieuwe gebruiker**.
+   1. Selecteer **alle gebruikers**in gebruikers **en groepen**en selecteer Vervolgens **Nieuwe gebruiker**.
    
            The **User** pane opens:
       
-      ![Het deelvenster 'Gebruiker'](./media/add-user.png)
+      ![Het deelvenster Gebruiker](./media/add-user.png)
     
-   1. Voer de details voor de gebruiker in, zoals **Naam** en **Gebruikersnaam**. Het domeingedeelte van de gebruikersnaam moet de eerste instantie domein naam '[naam].onmicrosoft.com' of een geverifieerde, niet-gefedereerde [aangepaste domeinnaam](../../active-directory/add-custom-domain.md) zoals 'contoso.com'.
+   1. Voer de details voor de gebruiker in, zoals **Naam** en **Gebruikersnaam**. Het domeinnaamgedeelte van de gebruikersnaam moet de oorspronkelijke standaarddomeinnaam "[domeinnaam].onmicrosoft.com" zijn of een geverifieerde, niet-federatieve [aangepaste domeinnaam](../../active-directory/add-custom-domain.md) zoals 'contoso.com'.
     
    1. Kopieer of noteer het gegenereerde gebruikerswachtwoord zodat u dit aan de gebruiker kunt doorgeven nadat dit proces is voltooid.
     
    1. U kunt er ook voor kiezen om de informatie bij **Profiel**, **Groepen** of **Directory-rol** in te vullen voor de gebruiker. 
     
-   1. Onder **gebruiker**, selecteert u **maken**.
+   1. Selecteer **onder Gebruiker**de optie **Maken**.
     
-   1. Het gegenereerde wacht woord veilig distribueren naar de nieuwe gebruiker zodat deze zich kan aanmelden.
+   1. Distribueer het gegenereerde wachtwoord veilig naar de nieuwe gebruiker, zodat deze zich kan aanmelden.
 
-1. Maak een Azure AD DS-exemplaar. Volg de instructies in [enable Azure Active Directory Domain Services using the Azure Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) (de sectie ' een instantie maken en basis instellingen configureren '). Het is belangrijk om bij te werken van de bestaande gebruikerswachtwoorden in Active Directory, zodat het wachtwoord in Azure AD DS is gesynchroniseerd. Het is ook belang rijk om DNS toe te voegen aan Azure AD DS, zoals wordt beschreven onder ' Vul de velden in het venster basis principes van de Azure Portal om een Azure AD DS-exemplaar te maken ' in die sectie.
+1. Een Azure AD DS-exemplaar maken. Volg de instructies in [Azure Active Directory Domain Services inschakelen met de Azure-portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) (de sectie 'Een instantie maken en basisinstellingen configureren'). Het is belangrijk om de bestaande gebruikerswachtwoorden in Active Directory bij te werken, zodat het wachtwoord in Azure AD DS wordt gesynchroniseerd. Het is ook belangrijk om DNS toe te voegen aan Azure AD DS, zoals beschreven onder 'De velden in het venster Basisbeginselen van de Azure-portal voltooien om een Azure AD DS-exemplaar te maken' in die sectie.
 
-1. Maak een afzonderlijk DSVM-subnet in het virtuele netwerk dat u hebt gemaakt in de sectie ' het virtuele netwerk maken en configureren ' van de voor gaande stap.
-1. Maak een of meer DSVM-instanties in het DSVM-subnet.
+1. Maak een apart DSVM-subnet in het virtuele netwerk dat is gemaakt in de sectie 'Het virtuele netwerk maken en configureren' van de vorige stap.
+1. Maak een of meer DSVM-exemplaren in het DSVM-subnet.
 1. Volg de [instructies](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm ) om de DSVM toe te voegen aan Active Directory. 
-1. Koppel een Azure Files-share om uw thuis-of notitieblokmap te hosten, zodat uw werk ruimte op elke machine kan worden gekoppeld. (Als u nauw keurig machtigingen op bestands niveau nodig hebt, moet NFS (Network File System) worden uitgevoerd op een of meer virtuele machines.)
+1. Stel een Azure Files-share in om uw huis- of notitieblokmap te hosten, zodat uw werkruimte op elke machine kan worden gemonteerd. (Als u strikte machtigingen op bestandsniveau nodig hebt, moet network file system [NFS] worden uitgevoerd op een of meer VM's.)
 
-   1. [Maak een Azure Files-share](../../storage/files/storage-how-to-create-file-share.md).
+   1. [Maak een Azure-bestandenshare](../../storage/files/storage-how-to-create-file-share.md).
     
-   2.  Koppel deze share aan de Linux-DSVM. Wanneer u **verbinding maken** selecteert voor de Azure Files share in uw opslag account in de Azure Portal, wordt de opdracht uitgevoerd in de bash-shell op de Linux DSVM wordt weer gegeven. De opdracht ziet er als volgt:
+   2.  Monteer dit aandeel op de Linux DSVM. Wanneer u **Verbinding** voor het Azure-bestandenaandeel selecteert in uw opslagaccount in de Azure-portal, wordt de opdracht weergegeven die moet worden uitgevoerd in de bashshell op de Linux DSVM. De opdracht ziet er als volgt uit:
    
    ```
    sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
    ```
-1. Stel dat u uw Azure Files-share in/data/Workspace. hebt gekoppeld Maak nu mappen voor elk van uw gebruikers in de share:/data/Workspace/user1,/data/Workspace/user2, enzovoort. Maak een `notebooks` map in de werkruimte van elke gebruiker. 
-1. Symbolische koppelingen maken voor `notebooks` in `$HOME/userx/notebooks/remote`.   
+1. Stel dat u uw Azure-bestandenaandeel hebt gemonteerd in /data/workspace. Maak nu mappen voor elk van uw gebruikers in het aandeel: /data/workspace/user1, /data/workspace/user2, enzovoort. Maak `notebooks` een map in de werkruimte van elke gebruiker. 
+1. Symbolische koppelingen `notebooks` maken `$HOME/userx/notebooks/remote`voor in .   
 
-U hebt nu de gebruikers in uw Active Directory-exemplaar dat wordt gehost in Azure. Door Active Directory referenties te gebruiken, kunnen gebruikers zich aanmelden bij elk DSVM (SSH of JupyterHub) dat is gekoppeld aan Azure AD DS. Omdat de werkruimte voor gebruikers op een Azure-bestandsshare is, hebben gebruikers toegang tot hun laptops en andere werkzaamheden van een DSVM wanneer ze JupyterHub.
+U hebt nu de gebruikers in uw Active Directory-exemplaar gehost in Azure. Met Active Directory-referenties kunnen gebruikers zich aanmelden bij elke DSVM (SSH of JupyterHub) die is verbonden met Azure AD DS. Omdat de gebruikerswerkruimte zich op een Azure-bestanden-share bevindt, hebben gebruikers toegang tot hun notitieblokken en ander werk vanaf elke DSVM wanneer ze JupyterHub gebruiken.
 
-Voor automatisch schalen, kunt u een virtuele-machineschaalset maken van een pool van virtuele machines die zijn gekoppeld aan het domein op deze manier en met de gedeelde schijf die is gekoppeld. Gebruikers kunnen zich aanmelden bij elke beschik bare computer in de schaalset voor virtuele machines en toegang hebben tot de gedeelde schijf waarop hun notitie blokken zijn opgeslagen. 
+Voor automatisch schalen u een virtuele machineschaalset gebruiken om een groep VM's te maken die allemaal op deze manier en met de gedeelde schijf zijn verbonden met het domein. Gebruikers kunnen zich aanmelden bij elke beschikbare machine in de virtuele machineschaalset en toegang hebben tot de gedeelde schijf waar hun notitieblokken worden opgeslagen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Veilig opslaan van referenties voor toegang tot cloud-bronnen](dsvm-secure-access-keys.md)
+* [Veilige referenties opslaan om toegang te krijgen tot cloudbronnen](dsvm-secure-access-keys.md)
 
 
 

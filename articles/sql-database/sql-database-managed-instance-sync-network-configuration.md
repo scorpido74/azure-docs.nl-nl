@@ -1,6 +1,6 @@
 ---
-title: Azure App Service-netwerk configuratie synchroniseren
-description: In dit artikel wordt beschreven hoe u uw netwerk configuratie synchroniseert voor Azure App Service hosting abonnement.
+title: Azure App Service - netwerkconfiguratie synchroniseren
+description: In dit artikel wordt besproken hoe u uw netwerkconfiguratie voor Azure App Service-hostingplan synchroniseren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,38 +12,38 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 12/13/2018
 ms.openlocfilehash: e7263d6a7716caf9f53e8496c6fb02b6d17b5509
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73687897"
 ---
-# <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>De netwerk configuratie voor het hosting abonnement voor Azure App Service synchroniseren
+# <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>Netwerkconfiguratie synchroniseren voor Azure App Service-hostingplan
 
-Het kan gebeuren dat u [uw app hebt geïntegreerd met een Azure-Virtual Network](../app-service/web-sites-integrate-with-vnet.md), maar u kunt geen verbinding maken met het beheerde exemplaar. U kunt proberen om de netwerk configuratie voor uw service abonnement te vernieuwen.
+Het kan voorkomen dat u uw app hebt [geïntegreerd met een Azure Virtual Network,](../app-service/web-sites-integrate-with-vnet.md)maar dat u geen verbinding maken met Beheerde instantie. Een ding dat u proberen is het vernieuwen van de netwerkconfiguratie voor uw serviceplan.
 
-## <a name="sync-network-configuration-for-app-service-hosting-plan"></a>Netwerk configuratie voor App Service hosting abonnement synchroniseren
+## <a name="sync-network-configuration-for-app-service-hosting-plan"></a>Netwerkconfiguratie synchroniseren voor app-hostingplan
 
 Voer hiervoor de volgende stappen uit:  
 
-1. Ga naar uw web apps App Service plan.
+1. Ga naar uw App Service-abonnement voor webapps.
 
-   ![app service-plan](./media/sql-database-managed-instance-sync-networking/app-service-plan.png)
+   ![app-serviceplan](./media/sql-database-managed-instance-sync-networking/app-service-plan.png)
 
-2. Klik op **netwerken** en klik vervolgens op **Klik hier om te beheren**.
+2. Klik **op Netwerken** en klik hier om te **beheren.**
 
-   ![service abonnement beheren](./media/sql-database-managed-instance-sync-networking/manage-plan.png)
+   ![serviceplan beheren](./media/sql-database-managed-instance-sync-networking/manage-plan.png)
 
-3. Selecteer uw **VNet** en klik op **netwerk synchroniseren**.
+3. Selecteer uw **VNet** en klik op **Netwerk synchroniseren**.
 
-   ![netwerk synchroniseren](./media/sql-database-managed-instance-sync-networking/sync.png)
+   ![synchronisatienetwerk](./media/sql-database-managed-instance-sync-networking/sync.png)
 
-4. Wacht totdat de synchronisatie is voltooid.
+4. Wacht tot de synchronisatie is gedaan.
   
-   ![synchronisatie is voltooid](./media/sql-database-managed-instance-sync-networking/sync-done.png)
+   ![synchronisatie gedaan](./media/sql-database-managed-instance-sync-networking/sync-done.png)
 
-U kunt nu proberen om de verbinding met uw beheerde exemplaar te herstellen.
+U bent nu klaar om te proberen uw verbinding met uw beheerde instantie te herstellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer informatie over het configureren van uw VNet voor beheerde exemplaren [beheerde exemplaar VNet-architectuur](sql-database-managed-instance-connectivity-architecture.md) en [het configureren van bestaande vnet](sql-database-managed-instance-configure-vnet-subnet.md).
+- Zie [Managed Instance VNet-architectuur](sql-database-managed-instance-connectivity-architecture.md) en Het configureren van [bestaande VNet](sql-database-managed-instance-configure-vnet-subnet.md)voor informatie over het configureren van uw VNet voor beheerde instantie.

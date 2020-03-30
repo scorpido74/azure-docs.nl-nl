@@ -1,6 +1,6 @@
 ---
-title: Versneld netwerken inschakelen voor nood herstel door Azure VM met Azure Site Recovery
-description: Hierin wordt beschreven hoe u versneld netwerken met Azure Site Recovery voor nood herstel van virtuele Azure-machines inschakelt
+title: Versnelde netwerken inschakelen voor Azure VM-noodherstel met Azure Site Recovery
+description: Beschrijft hoe u versneld netwerken inschakelt met Azure Site Recovery voor azure virtual machine disaster recovery
 services: site-recovery
 documentationcenter: ''
 author: mayurigupta13
@@ -10,82 +10,82 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 27691d8fab3e7c8ccd60351dc0be83898ff984ed
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73622436"
 ---
-# <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Versneld netwerken met nood herstel voor Azure virtual machine
+# <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Versnelde netwerken met azure virtual machine disaster recovery
 
-Versneld netwerken maken gebruik van I/O-virtualisatie met één hoofdmap (SR-IOV) naar een virtuele machine, waardoor de netwerk prestaties aanzienlijk worden verbeterd. Dit pad met hoge prestaties omzeilt de host van de DataPath, vermindert latentie, jitter en CPU-gebruik, voor gebruik met de meest veeleisende netwerk workloads op ondersteunde VM-typen. In de volgende afbeelding ziet u communicatie tussen twee Vm's met en zonder versneld netwerken:
+Accelerated Networking maakt single root I/O virtualisatie (SR-IOV) mogelijk voor een VM, waardoor de netwerkprestaties aanzienlijk worden verbeterd. Dit krachtige pad omzeilt de host vanaf het gegevenspad en vermindert latentie, jitter en CPU-gebruik, voor gebruik met de meest veeleisende netwerkworkloads op ondersteunde VM-typen. De volgende foto toont communicatie tussen twee VM's met en zonder versnelde netwerken:
 
 ![Vergelijking](./media/azure-vm-disaster-recovery-with-accelerated-networking/accelerated-networking-benefit.png)
 
-Met Azure Site Recovery kunt u gebruikmaken van de voor delen van versneld netwerken, voor virtuele Azure-machines waarvoor een failover wordt uitgevoerd naar een andere Azure-regio. In dit artikel wordt beschreven hoe u versneld netwerken kunt inschakelen voor virtuele Azure-machines die met Azure Site Recovery worden gerepliceerd.
+Azure Site Recovery stelt u in staat om de voordelen van Accelerated Networking te gebruiken voor virtuele Azure-machines die niet zijn overgegaan naar een andere Azure-regio. In dit artikel wordt beschreven hoe u Versnelde netwerken voor virtuele Azure-machines inschakelen die zijn gerepliceerd met Azure Site Recovery.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, moet u het volgende weten:
--   Azure virtual machine- [replicatie architectuur](azure-to-azure-architecture.md)
+Voordat u begint, moet u ervoor zorgen dat u het volgende begrijpt:
+-   [Azure-replicatiearchitectuur voor](azure-to-azure-architecture.md) virtuele machines
 -   [Replicatie instellen](azure-to-azure-tutorial-enable-replication.md) voor virtuele Azure-machines
--   [Failover uitvoeren](azure-to-azure-tutorial-failover-failback.md) Virtuele machines van Azure
+-   [Niet voorbij](azure-to-azure-tutorial-failover-failback.md) Virtuele Azure-machines
 
-## <a name="accelerated-networking-with-windows-vms"></a>Versneld netwerken met Windows-Vm's
+## <a name="accelerated-networking-with-windows-vms"></a>Versneld netwerken met Windows VM's
 
-Azure Site Recovery ondersteunt het inschakelen van versneld netwerken alleen voor gerepliceerde virtuele machines als de virtuele bron machine versneld netwerken heeft ingeschakeld. Als uw virtuele bron machine geen versneld netwerken heeft ingeschakeld, kunt u [hier](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms)meer informatie vinden over het inschakelen van versnelde netwerken voor virtuele Windows-machines.
+Azure Site Recovery ondersteunt het inschakelen van Versnelde netwerken voor gerepliceerde virtuele machines alleen als de virtuele bronmachine Accelerated Networking heeft ingeschakeld. Als uw virtuele bronmachine geen Accelerated Networking heeft ingeschakeld, u hier leren hoe u Accelerated Networking voor virtuele Windows-machines [inschakelt.](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms)
 
 ### <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
-De volgende distributies worden ondersteund uit het vak van de Azure-galerie:
-* **Windows Server 2016 Data Center**
-* **Windows Server 2012 R2 Data Center**
+De volgende distributies worden uit het vak ondersteund vanuit de Azure Gallery:
+* **Windows Server 2016 Datacenter**
+* **Windows Server 2012 R2 Datacenter**
 
 ### <a name="supported-vm-instances"></a>Ondersteunde VM-exemplaren
-Versnelde netwerken worden ondersteund in de meeste algemene doel stellingen en met Compute geoptimaliseerde exemplaar grootten met twee of meer Vcpu's.  Deze ondersteunde reeksen zijn: D/DSv2 en F/FS
+Accelerated Networking wordt ondersteund op de meeste algemene en voor compute geoptimaliseerde instantieformaten met 2 of meer vCPU's.  Deze ondersteunde series zijn: D/DSv2 en F/Fs
 
-Op instanties die HyperThreading ondersteunen, wordt versneld netwerken ondersteund op VM-exemplaren met vier of meer Vcpu's. Ondersteunde reeksen zijn: D/DSv3, E-ESv3, Fsv2 en MS/MMS
+Op gevallen die hyperthreading ondersteunen, wordt Accelerated Networking ondersteund op VM-exemplaren met 4 of meer vCPU's. Ondersteunde series zijn: D/DSv3, E/ESv3, Fsv2 en Ms/Mms
 
-Zie [Windows VM-grootten](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over VM-exemplaren.
+Zie [Windows VM-formaten](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over VM-exemplaren .
 
-## <a name="accelerated-networking-with-linux-vms"></a>Versneld netwerken met virtuele Linux-machines
+## <a name="accelerated-networking-with-linux-vms"></a>Versneld netwerken met Linux VM's
 
-Azure Site Recovery ondersteunt het inschakelen van versneld netwerken alleen voor gerepliceerde virtuele machines als de virtuele bron machine versneld netwerken heeft ingeschakeld. Als uw virtuele bron machine geen versneld netwerken heeft ingeschakeld, kunt u [hier](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms)meer informatie vinden over het inschakelen van versnelde netwerken voor virtuele Linux-machines.
+Azure Site Recovery ondersteunt het inschakelen van Versnelde netwerken voor gerepliceerde virtuele machines alleen als de virtuele bronmachine Accelerated Networking heeft ingeschakeld. Als uw bron virtuele machine niet heeft Accelerated Networking ingeschakeld, u leren hoe u accelerated networking in te schakelen voor Linux virtuele machines [hier](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
 ### <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
-De volgende distributies worden ondersteund uit het vak van de Azure-galerie:
-* **Ubuntu 16,04**
+De volgende distributies worden uit het vak ondersteund vanuit de Azure Gallery:
+* **Ubuntu 16.04**
 * **SLES 12 SP3**
-* **RHEL 7,4**
+* **RHEL 7.4**
 * **CentOS 7.4**
 * **CoreOS Linux**
-* **Debian ' Stretch ' met backports-kernel**
-* **Oracle Linux 7,4**
+* **Debian "Stretch" met backports kernel**
+* **Oracle Linux 7.4**
 
 ### <a name="supported-vm-instances"></a>Ondersteunde VM-exemplaren
-Versnelde netwerken worden ondersteund in de meeste algemene doel stellingen en met Compute geoptimaliseerde exemplaar grootten met twee of meer Vcpu's.  Deze ondersteunde reeksen zijn: D/DSv2 en F/FS
+Accelerated Networking wordt ondersteund op de meeste algemene en voor compute geoptimaliseerde instantieformaten met 2 of meer vCPU's.  Deze ondersteunde series zijn: D/DSv2 en F/Fs
 
-Op instanties die HyperThreading ondersteunen, wordt versneld netwerken ondersteund op VM-exemplaren met vier of meer Vcpu's. Ondersteunde reeksen zijn: D/DSv3, E/ESv3, Fsv2 en MS/MMS.
+Op gevallen die hyperthreading ondersteunen, wordt Accelerated Networking ondersteund op VM-exemplaren met 4 of meer vCPU's. Ondersteunde series zijn: D/DSv3, E/ESv3, Fsv2 en Ms/Mms.
 
-Zie [Linux VM-grootten](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over VM-exemplaren.
+Zie Linux VM-formaten voor meer informatie over [VM-exemplaren.](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
-## <a name="enabling-accelerated-networking-for-replicated-vms"></a>Versneld netwerken inschakelen voor gerepliceerde Vm's
+## <a name="enabling-accelerated-networking-for-replicated-vms"></a>Versnelde netwerken inschakelen voor gerepliceerde VM's
 
-Wanneer u replicatie voor virtuele Azure-machines [inschakelt](azure-to-azure-tutorial-enable-replication.md) , detecteert site Recovery automatisch of de netwerk interfaces van de virtuele machine versneld netwerken hebben ingeschakeld. Als versneld netwerken al is ingeschakeld, configureert Site Recovery automatisch versneld netwerken op de netwerk interfaces van de gerepliceerde virtuele machine.
+Wanneer u [replicatie inschakelt](azure-to-azure-tutorial-enable-replication.md) voor virtuele Azure-machines, detecteert Site Recovery automatisch of de netwerkinterfaces voor virtuele machines Accelerated Networking hebben ingeschakeld. Als Accelerated Networking al is ingeschakeld, configureert Site Recovery accelerated networking automatisch op de netwerkinterfaces van de gerepliceerde virtuele machine.
 
-De status van versneld netwerken kan worden gecontroleerd onder het gedeelte **netwerk interfaces** van de **reken-en netwerk** instellingen voor de gerepliceerde virtuele machine.
+De status van Accelerated Networking kan worden geverifieerd onder de sectie **Netwerkinterfaces** van de **compute- en netwerkinstellingen** voor de gerepliceerde virtuele machine.
 
-![Instelling voor versneld netwerk](./media/azure-vm-disaster-recovery-with-accelerated-networking/compute-network-accelerated-networking.png)
+![Versnelde netwerkinstelling](./media/azure-vm-disaster-recovery-with-accelerated-networking/compute-network-accelerated-networking.png)
 
-Als u versneld netwerken op de virtuele bron machine hebt ingeschakeld na het inschakelen van replicatie, kunt u versneld netwerken inschakelen voor de netwerk interfaces van de gerepliceerde virtuele machine door het volgende proces:
-1. **Berekenings-en netwerk** instellingen voor de gerepliceerde virtuele machine openen
-2. Klik op de naam van de netwerk interface in het gedeelte **netwerk interfaces**
-3. Selecteer **ingeschakeld** in de vervolg keuzelijst voor versneld netwerken onder de **doel** kolom
+Als u Accelerated Networking op de virtuele bronmachine hebt ingeschakeld nadat u replicatie hebt ingeschakeld, u versnelde netwerken voor de netwerkinterfaces van de gerepliceerde virtuele machine inschakelen volgens het volgende proces:
+1. Compute- **en netwerkinstellingen** openen voor de gerepliceerde virtuele machine
+2. Klik op de naam van de netwerkinterface onder de sectie **Netwerkinterfaces**
+3. Selecteer **Ingeschakeld** in de vervolgkeuzelijst voor versnelde netwerken onder de kolom **Doel**
 
 ![Versneld netwerken inschakelen](./media/azure-vm-disaster-recovery-with-accelerated-networking/network-interface-accelerated-networking-enabled.png)
 
-Het bovenstaande proces moet ook worden gevolgd voor bestaande gerepliceerde virtuele machines, waarbij niet eerder versnelde netwerken automatisch zijn ingeschakeld door Site Recovery.
+Het bovenstaande proces moet ook worden gevolgd voor bestaande gerepliceerde virtuele machines, die niet eerder Accelerated Networking automatisch hebben ingeschakeld door Site Recovery.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over de [voor delen van versneld netwerken](../virtual-network/create-vm-accelerated-networking-powershell.md#benefits).
-- Meer informatie over beperkingen en beperkingen van versneld netwerken voor [virtuele Windows-machines](../virtual-network/create-vm-accelerated-networking-powershell.md#limitations-and-constraints) en [virtuele Linux-machines](../virtual-network/create-vm-accelerated-networking-cli.md#limitations-and-constraints).
-- Meer informatie over [herstel plannen](site-recovery-create-recovery-plans.md) voor het automatiseren van de failover van de toepassing.
+- Meer informatie over [de voordelen van Accelerated Networking](../virtual-network/create-vm-accelerated-networking-powershell.md#benefits).
+- Meer informatie over beperkingen en beperkingen van accelerated networking voor [virtuele Windows-machines](../virtual-network/create-vm-accelerated-networking-powershell.md#limitations-and-constraints) en [virtuele Linux-machines](../virtual-network/create-vm-accelerated-networking-cli.md#limitations-and-constraints).
+- Meer informatie over [herstelplannen](site-recovery-create-recovery-plans.md) om failover van toepassingen te automatiseren.

@@ -1,6 +1,6 @@
 ---
-title: Afgeleide kolom transformatie bij toewijzing van gegevens stroom
-description: Meer informatie over het transformeren van gegevens op schaal in Azure Data Factory met de toewijzing gegevens stroom die is afgeleide kolom transformatie.
+title: Afgeleide kolomtransformatie in kaartgegevensstroom
+description: Meer informatie over het transformeren van gegevens op schaal in Azure Data Factory met de toewijzingsgegevensstroom Afgeleide kolomtransformatie.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
@@ -8,33 +8,33 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
 ms.openlocfilehash: 66396de52b3709c1d9357f32a375a29a8dcdbd1d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77048741"
 ---
-# <a name="derived-column-transformation-in-mapping-data-flow"></a>Afgeleide kolom transformatie bij toewijzing van gegevens stroom
+# <a name="derived-column-transformation-in-mapping-data-flow"></a>Afgeleide kolomtransformatie in kaartgegevensstroom
 
-Gebruik de afgeleide kolom transformatie om nieuwe kolommen in uw gegevens stroom te genereren of om bestaande velden te wijzigen.
+Gebruik de afgeleide kolomtransformatie om nieuwe kolommen in uw gegevensstroom te genereren of om bestaande velden te wijzigen.
 
-## <a name="derived-column-settings"></a>Afgeleide kolom instellingen
+## <a name="derived-column-settings"></a>Afgeleide kolominstellingen
 
-Als u een bestaande kolom wilt overschrijven, selecteert u deze via de vervolg keuzelijst kolom. Als dat niet het geval is, gebruikt u het veld kolom selectie als tekstvak en typt u de naam van de nieuwe kolom. Als u de expressie van de afgeleide kolom wilt maken, klikt u op het vak expressie invoeren om de [opbouw functie voor de data flow-expressie](concepts-data-flow-expression-builder.md)te openen.
+Als u een bestaande kolom wilt overschrijven, selecteert u deze via de vervolgkeuzelijst kolom. Gebruik anders het kolomselectieveld als tekstvak en typ de naam van de nieuwe kolom. Als u de expressie van de afgeleide kolom wilt maken, klikt u op het vak Expressie invoeren om de opbouwvan de [opbouwvan gegevensstroomexpressies](concepts-data-flow-expression-builder.md)te openen.
 
-![Afgeleide kolom instellingen](media/data-flow/dc1.png "Afgeleide kolom instellingen")
+![Afgeleide kolominstellingen](media/data-flow/dc1.png "Afgeleide kolominstellingen")
 
-Beweeg de muis aanwijzer over een bestaande afgeleide kolom en klik op het plus pictogram om extra afgeleide kolommen toe te voegen. Kies **kolom toevoegen** of een **kolom patroon toevoegen**. Kolom patronen kunnen handig zijn als uw kolom namen van uw bronnen variabel zijn. Zie [kolom patronen](concepts-data-flow-column-pattern.md)voor meer informatie.
+Als u extra afgeleide kolommen wilt toevoegen, houdt u de muisaanwijzer op een bestaande afgeleide kolom en klikt u op het pluspictogram. Kies **Kolom toevoegen** of **Kolompatroon toevoegen**. Kolompatronen kunnen handig zijn als uw kolomnamen variabel zijn uit uw bronnen. Zie [Kolompatronen](concepts-data-flow-column-pattern.md)voor meer informatie .
 
-![Nieuwe afgeleide kolom selectie](media/data-flow/columnpattern.png "Nieuwe afgeleide kolom selectie")
+![Nieuwe afgeleide kolomselectie](media/data-flow/columnpattern.png "Nieuwe afgeleide kolomselectie")
 
-## <a name="build-schemas-in-output-schema-pane"></a>Schema's maken in het deel venster uitvoer schema
+## <a name="build-schemas-in-output-schema-pane"></a>Schema's bouwen in deelvenster Uitvoerschema
 
-De kolommen die u wilt wijzigen en toevoegen aan uw schema worden weer gegeven in het deel venster uitvoer schema. U kunt hier interactief eenvoudige en complexe gegevens structuren bouwen. Selecteer **kolom toevoegen**om extra velden toe te voegen. Selecteer **subkolom toevoegen**om hiërarchieën te bouwen.
+De kolommen die u wijzigt en aan uw schema toevoegt, worden weergegeven in het deelvenster Uitvoerschema.The columns you're modifying and add to your schema are listed in the Output Schema pane,. U hier interactief eenvoudige en complexe gegevensstructuren bouwen. Als u extra velden wilt toevoegen, selecteert u **Kolom toevoegen**. Als u hiërarchieën wilt opbouwen, selecteert u **Subkolom toevoegen**.
 
 ![Subkolom toevoegen](media/data-flow/addsubcolumn.png "Subkolom toevoegen")
 
-Zie [JSON handling in mapping data flow](format-json.md#mapping-data-flow-properties)(Engelstalig) voor meer informatie over het verwerken van complexe typen in de gegevens stroom.
+Zie [JSON handling in mapping data flow](format-json.md#mapping-data-flow-properties)voor meer informatie over het verwerken van complexe typen in de gegevensstroom.
 
 ![Complexe kolom toevoegen](media/data-flow/complexcolumn.png "Kolommen toevoegen")
 
@@ -57,13 +57,13 @@ Zie [JSON handling in mapping data flow](format-json.md#mapping-data-flow-proper
 
 ### <a name="example"></a>Voorbeeld
 
-Het onderstaande voor beeld is een afgeleide kolom met de naam `CleanData` die een binnenkomende stream `MoviesYear` en twee afgeleide kolommen maakt. De eerste afgeleide kolom vervangt kolom `Rating` met waarde van de classificatie als een geheel getal. De tweede afgeleide kolom is een patroon dat overeenkomt met elke kolom waarvan de naam begint met ' films '. Voor elke overeenkomende kolom maakt een kolom `movie` die gelijk is aan de waarde van de overeenkomende kolom, voorafgegaan door ' movie_ '. 
+Het onderstaande voorbeeld is `CleanData` een afgeleide kolom `MoviesYear` met de naam die een binnenkomende stroom neemt en twee afgeleide kolommen maakt. De eerste afgeleide `Rating` kolom vervangt kolom met de waarde van de classificatie als een geheel getaltype. De tweede afgeleide kolom is een patroon dat overeenkomt met elke kolom waarvan de naam begint met 'films'. Voor elke overeenkomende kolom wordt `movie` een kolom gemaakt die gelijk is aan de waarde van de overeenkomende kolom die vooraf is gekoppeld aan 'movie_'. 
 
-In de Data Factory UX ziet deze trans formatie er als volgt uit:
+In de UX van de Data Factory lijkt deze transformatie op de onderstaande afbeelding:
 
-![Voor beeld afleiden](media/data-flow/derive-script1.png "Voor beeld afleiden")
+![Voorbeeld afleiden](media/data-flow/derive-script1.png "Voorbeeld afleiden")
 
-Het gegevens stroom script voor deze trans formatie bevindt zich in het volgende fragment:
+Het gegevensstroomscript voor deze transformatie bevindt zich in het onderstaande fragment:
 
 ```
 MoviesYear derive(
@@ -77,4 +77,4 @@ MoviesYear derive(
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [taal van de toewijzings gegevens stroom](data-flow-expression-functions.md).
+- Meer informatie over de [expressietaal Gegevensstroom toewijzen](data-flow-expression-functions.md).

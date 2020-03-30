@@ -1,6 +1,6 @@
 ---
-title: Container share voor het FSLogix-Profiel van Windows-virtueel bureau blad-Azure
-description: Een FSLogix-profiel container instellen voor een Windows Virtual Desktop-hostgroep met behulp van een bestands share op basis van een virtuele machine.
+title: Windows Virtual Desktop FSLogix-profielcontainershare - Azure
+description: Een FSLogix-profielcontainer instellen voor een Windows Virtual Desktop-hostgroep met behulp van een bestandsshare op basis van virtuele machines.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,67 +9,67 @@ ms.date: 08/20/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 96b593f544aa4bbf126c06747a01902581f5ffb4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250918"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Een profielcontainer maken voor een hostpool met behulp van een bestandsshare
 
-De virtueel-bureaublad service van Windows biedt FSLogix-profiel containers als de aanbevolen gebruikers profiel oplossing. Het is niet raadzaam om de oplossing voor de gebruikers profiel schijf (UPD) te gebruiken, die wordt afgeschaft in toekomstige versies van Windows virtueel bureau blad.
+De Windows Virtual Desktop-service biedt FSLogix-profielcontainers als de aanbevolen gebruikersprofieloplossing. We raden het gebruik van de UPD-oplossing (User Profile Disk) af, die wordt afgeschaft in toekomstige versies van Windows Virtual Desktop.
 
-In dit artikel wordt uitgelegd hoe u een FSLogix voor een hostgroep instelt met behulp van een bestands share op basis van een virtuele machine. Zie de [FSLogix-site](https://docs.fslogix.com/)voor meer documentatie over FSLogix.
+In dit artikel vindt u hoe u een FSLogix-profielcontainershare instelt voor een hostgroep met behulp van een virtuele machinegebaseerde bestandsshare. Zie de [FSLogix-site](https://docs.fslogix.com/)voor meer FSLogix-documentatie.
 
 >[!NOTE]
->Zie [opslag opties voor FSLogix-profiel containers](store-fslogix-profile.md)als u op zoek bent naar het vergelijkings materiaal over de verschillende FSLogix-profiel container opslag opties in Azure.
+>Zie Opslagopties voor [FSLogix-profielcontainers](store-fslogix-profile.md)als u op zoek bent naar vergelijkingsmateriaal over de verschillende opslagopties voor FSLogix-profiel .
 
-## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Een nieuwe virtuele machine maken die zal fungeren als een bestands share
+## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Een nieuwe virtuele machine maken die fungeert als bestandsshare
 
-Zorg er bij het maken van de virtuele machine voor dat u deze plaatst op hetzelfde virtuele netwerk als de virtuele machines van de hostgroep of op een virtueel netwerk dat verbinding heeft met de virtuele machines van de hostgroep. U kunt op verschillende manieren een virtuele machine maken:
+Wanneer u de virtuele machine maakt, moet u deze op hetzelfde virtuele netwerk plaatsen als virtuele machines van de hostpool of op een virtueel netwerk dat verbinding heeft met virtuele machines voor de hostpool. U een virtuele machine op meerdere manieren maken:
 
-- [Een virtuele machine maken op basis van een installatie kopie van Azure galerie](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
-- [Een virtuele machine maken op basis van een beheerde installatie kopie](../virtual-machines/windows/create-vm-generalized-managed.md)
-- [Een virtuele machine maken op basis van een onbeheerde installatie kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+- [Een virtuele machine maken op basis van een Azure Gallery-afbeelding](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [Een virtuele machine maken op basis van een beheerde afbeelding](../virtual-machines/windows/create-vm-generalized-managed.md)
+- [Een virtuele machine maken op basis van een niet-beheerde afbeelding](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
-Nadat u de virtuele machine hebt gemaakt, voegt u deze toe aan het domein door de volgende handelingen uit te voeren:
+Nadat u de virtuele machine hebt gemaakt, u deze aansluiten bij het domein door de volgende dingen te doen:
 
-1. [Maak verbinding met de virtuele machine](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) met de referenties die u hebt ingevoerd tijdens het maken van de virtuele machine.
-2. Start **configuratie scherm** op de virtuele machine en selecteer **systeem**.
-3. Selecteer **computer naam**, selecteer **instellingen wijzigen**en selecteer vervolgens **wijzigen...**
-4. Selecteer **domein** en voer vervolgens het Active Directory domein in op het virtuele netwerk.
-5. Verifieer met een domein account dat bevoegdheden heeft voor computers die lid zijn van een domein.
+1. [Maak verbinding met de virtuele machine](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) met de referenties die u hebt opgegeven bij het maken van de virtuele machine.
+2. Start op de virtuele machine het **Configuratiescherm** en selecteer **Systeem**.
+3. Selecteer **Computernaam**, selecteer **Instellingen wijzigen**en selecteer **Wijzigen...**
+4. Selecteer **Domein** en voer het Active Directory-domein in op het virtuele netwerk.
+5. Verifieer met een domeinaccount met bevoegdheden voor machines die lid zijn van het domein.
 
-## <a name="prepare-the-virtual-machine-to-act-as-a-file-share-for-user-profiles"></a>De virtuele machine voorbereiden om te fungeren als een bestands share voor gebruikers profielen
+## <a name="prepare-the-virtual-machine-to-act-as-a-file-share-for-user-profiles"></a>De virtuele machine voorbereiden om te fungeren als bestandsshare voor gebruikersprofielen
 
-Hieronder vindt u algemene instructies voor het voorbereiden van een virtuele machine om te fungeren als een bestands share voor gebruikers profielen:
+Hieronder volgen algemene instructies voor het voorbereiden van een virtuele machine om als bestandsshare voor gebruikersprofielen op te treden:
 
-1. Voeg het virtuele bureau blad van Windows Active Directory gebruikers toe aan een [Active Directory beveiligings groep](/windows/security/identity-protection/access-control/active-directory-security-groups/). Deze beveiligings groep wordt gebruikt om de virtuele Windows-bureaublad gebruikers te verifiëren op de bestands share-virtuele machine die u zojuist hebt gemaakt.
-2. [Maak verbinding met de virtuele machine van de bestands share](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine).
-3. Op de bestands share-virtuele machine maakt u een map op **station C** die wordt gebruikt als de profiel share.
-4. Klik met de rechter muisknop op de nieuwe map, selecteer **Eigenschappen**, **delen**en selecteer vervolgens **Geavanceerd delen...** .
-5. Selecteer **deze map delen**, selecteer **machtigingen..** . en selecteer vervolgens **toevoegen...** .
-6. Zoek naar de beveiligings groep waaraan u de Windows-gebruikers van het virtuele bureau blad hebt toegevoegd en zorg ervoor dat de groep **volledig beheer**heeft.
-7. Nadat u de beveiligings groep hebt toegevoegd, klikt u met de rechter muisknop op de map, selecteert u **Eigenschappen**, **delen**selecteren en kopieert u het **netwerkpad dat u wilt gebruiken voor later** gebruik.
+1. Voeg de Active Directory-gebruikers van Windows Virtual Desktop toe aan een [Active Directory-beveiligingsgroep](/windows/security/identity-protection/access-control/active-directory-security-groups/). Deze beveiligingsgroep wordt gebruikt om de Windows Virtual Desktop-gebruikers te verifiëren bij de virtuele machine voor bestandsshare die u zojuist hebt gemaakt.
+2. [Maak verbinding met de virtuele machine voor bestandsshare](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine).
+3. Maak op de virtuele machine voor het delen van bestanden een map op het **C-station** die wordt gebruikt als profielaandeel.
+4. Klik met de rechtermuisknop op de nieuwe map, selecteer **Eigenschappen,** selecteer **Delen**en selecteer **Geavanceerd delen...**.
+5. Selecteer **Deze map delen**, selecteer **Machtigingen...**, selecteer vervolgens **Toevoegen...**.
+6. Zoek naar de beveiligingsgroep waaraan u de Windows Virtual Desktop-gebruikers hebt toegevoegd en zorg ervoor dat de groep **volledige controle**heeft.
+7. Nadat u de beveiligingsgroep hebt toegevoegd, klikt u met de rechtermuisknop op de map, selecteert u **Eigenschappen**, selecteert **u Delen**en kopieert u het **netwerkpad** dat u later wilt gebruiken.
 
-Zie de [FSLogix-documentatie](/fslogix/fslogix-storage-config-ht/)voor meer informatie over machtigingen.
+Zie de [FSLogix-documentatie voor](/fslogix/fslogix-storage-config-ht/)meer informatie over machtigingen.
 
-## <a name="configure-the-fslogix-profile-container"></a>De FSLogix-profiel container configureren
+## <a name="configure-the-fslogix-profile-container"></a>De profielcontainer FSLogix configureren
 
-Als u de virtuele machines met de FSLogix-software wilt configureren, gaat u als volgt te werk op elke computer die is geregistreerd bij de hostgroep:
+Ga als volgt te werk om de virtuele machines te configureren met de FSLogix-software:
 
-1. [Maak verbinding met de virtuele machine](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) met de referenties die u hebt ingevoerd tijdens het maken van de virtuele machine.
-2. Start een Internet browser en navigeer naar [deze koppeling](https://go.microsoft.com/fwlink/?linkid=2084562) om de FSLogix-agent te downloaden.
-3. Navigeer naar \\\\Win32\\release of \\\\x64\\release in het zip-bestand en voer **FSLogixAppsSetup** uit om de FSLogix-agent te installeren.  Zie [FSLogix downloaden en installeren](/fslogix/install-ht/)voor meer informatie over het installeren van FSLogix.
-4. Ga naar **programma bestanden** > **FSLogix** > **apps** om te bevestigen dat de agent is geïnstalleerd.
-5. Voer in het menu Start **regedit** uit als Administrator. Navigeer naar **Computer\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
-6. Maak een sleutel met de naam **profielen**.
-7. Maak de volgende waarden voor de sleutel profielen:
+1. [Maak verbinding met de virtuele machine](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) met de referenties die u hebt opgegeven bij het maken van de virtuele machine.
+2. Start een internetbrowser en navigeer naar [deze link](https://go.microsoft.com/fwlink/?linkid=2084562) om de FSLogix-agent te downloaden.
+3. Navigeer naar \\ \\Win32\\ \\ \\Release of\\X64 Release in het .zip-bestand en voer **FSLogixAppsSetup** uit om de FSLogix-agent te installeren.  Zie FSLogix downloaden en installeren voor meer informatie over het installeren van [FSLogix.](/fslogix/install-ht/)
+4. Navigeer naar **Programmabestanden** > **FSLogix** > **Apps** om de installatie van de agent te bevestigen.
+5. Voer **RegEdit** in het startmenu uit als beheerder. Navigeer naar **computerHKEY_LOCAL_MACHINE\\\\software\\FSLogix**.
+6. Een sleutel met de naam **Profielen maken**.
+7. Maak de volgende waarden voor de toets Profielen:
 
-| Naam                | Type               | Gegevens/waarde                        |
+| Name                | Type               | Gegevens/waarde                        |
 |---------------------|--------------------|-----------------------------------|
-| Ingeschakeld             | 32              | 1                                 |
-| VHDLocations        | Waarde met meerdere teken reeksen | "Netwerkpad voor bestands share"     |
+| Ingeschakeld             | DWORD              | 1                                 |
+| VHDLocaties        | Waarde voor meerdere tekenreeksen | "Netwerkpad voor bestandsshare"     |
 
 >[!IMPORTANT]
->Voor het beveiligen van uw virtuele bureau blad-omgeving in azure, raden we u aan om de binnenkomende poort 3389 niet te openen op uw virtuele machines. Voor het virtuele bureau blad van Windows is geen open bare poort 3389 voor gebruikers nodig om toegang te krijgen tot de virtuele machines van de hostgroep. Als u poort 3389 moet openen voor het oplossen van problemen, raden we u aan [just-in-time-VM-toegang](../security-center/security-center-just-in-time.md)te gebruiken.
+>Om uw Windows Virtual Desktop-omgeving in Azure te beveiligen, raden we u aan de binnenkomende poort 3389 niet op uw VM's te openen. Voor Windows Virtual Desktop is geen open inkomende poort 3389 vereist voor gebruikers om toegang te krijgen tot de VM's van de hostgroep. Als u poort 3389 moet openen voor probleemoplossingsdoeleinden, raden we u aan [just-in-time VM-toegang te](../security-center/security-center-just-in-time.md)gebruiken.

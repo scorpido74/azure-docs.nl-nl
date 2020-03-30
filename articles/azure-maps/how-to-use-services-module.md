@@ -1,6 +1,6 @@
 ---
-title: De Azure Maps Services-module gebruiken | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u met behulp van de Azure Maps Services-module de Microsoft Azure Maps REST-services kunt gebruiken.
+title: De Azure Maps Services-module gebruiken | Microsoft Azure Maps
+description: In dit artikel leert u hoe u de Microsoft Azure Maps REST-services gebruiken met de Azure Maps-servicesmodule.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -9,39 +9,39 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.openlocfilehash: e985fdda4638529e8ade2c700456d595ff355e8a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988733"
 ---
-# <a name="use-the-azure-maps-services-module"></a>De Azure Maps Services-module gebruiken
+# <a name="use-the-azure-maps-services-module"></a>De azure maps-servicesmodule gebruiken
 
-De Azure Maps Web-SDK biedt een *Services-module*. Deze module is een helper-bibliotheek waarmee u gemakkelijk de Azure Maps REST-services in web-of node. js-toepassingen kunt gebruiken met behulp van Java script of type script.
+De Azure Maps Web SDK biedt een *servicesmodule.* Deze module is een helperbibliotheek waarmee u de Azure Maps REST-services eenvoudig gebruiken in web- of Node.js-toepassingen met JavaScript of TypeScript.
 
-## <a name="use-the-services-module-in-a-webpage"></a>De Services-module op een webpagina gebruiken
+## <a name="use-the-services-module-in-a-webpage"></a>De servicesmodule op een webpagina gebruiken
 
-1. Maak een nieuw HTML-bestand.
-1. Laad de Azure Maps Services-module. U kunt deze op twee manieren laden:
-    - Gebruik de wereld wijd gehoste Azure Content Delivery Network-versie van de module Azure Maps Services. Voeg een script verwijzing toe naar het `<head>`-element van het bestand:
+1. Een nieuw HTML-bestand maken.
+1. Laad de Azure Maps-servicesmodule. U het op twee manieren laden:
+    - Gebruik de wereldwijd gehoste Azure Content Delivery Network-versie van de Azure Maps-servicesmodule. Voeg een scriptverwijzing `<head>` toe aan het element van het bestand:
 
         ```html
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
         ```
 
-    - U kunt ook de Services-module voor de Azure Maps Web SDK-bron code lokaal laden met behulp van het [Azure-Maps-rest NPM-](https://www.npmjs.com/package/azure-maps-rest) pakket en dit vervolgens hosten met uw app. Dit pakket bevat ook type script definities. Gebruik deze opdracht:
+    - U ook de servicesmodule voor de Azure Maps Web SDK-broncode lokaal laden met behulp van het [npm-pakket azure-maps-rest](https://www.npmjs.com/package/azure-maps-rest) en vervolgens hosten met uw app. Dit pakket bevat ook TypeScript-definities. Gebruik deze opdracht:
     
-        > **NPM Azure-Maps installeren-rest**
+        > **npm install azure-maps-rest**
     
-        Voeg vervolgens een script verwijzing toe naar het `<head>`-element van het bestand:
+        Voeg vervolgens een scriptverwijzing `<head>` toe naar het element van het bestand:
 
          ```html
         <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
          ```
 
-1. Maak een verificatie pijplijn. De pijp lijn moet worden gemaakt voordat u een service-URL-client eindpunt kunt initialiseren. Gebruik uw eigen Azure Maps account sleutel of Azure Active Directory (Azure AD)-referenties om een Azure Maps Search-serviceclient te verifiëren. In dit voor beeld wordt de URL-client van de zoek service gemaakt. 
+1. Maak een verificatiepijplijn. De pijplijn moet worden gemaakt voordat u een eindpunt van de service-URL-client initialiseren. Gebruik uw eigen Azure Maps-accountsleutel of Azure Active Directory-referenties (Azure AD) om een Azure Maps Search-serviceclient te verifiëren. In dit voorbeeld wordt de URL-client zoekservice gemaakt. 
 
-    Als u een abonnements sleutel voor verificatie gebruikt:
+    Als u een abonnementssleutel gebruikt voor verificatie:
 
     ```javascript
     // Get an Azure Maps key at https://azure.com/maps.
@@ -122,9 +122,9 @@ De Azure Maps Web-SDK biedt een *Services-module*. Deze module is een helper-bib
     }
     ```
 
-    Zie [verificatie met Azure Maps](azure-maps-authentication.md)voor meer informatie.
+    Zie [Verificatie met Azure Maps](azure-maps-authentication.md)voor meer informatie.
 
-1. De volgende code maakt gebruik van de zojuist gemaakte Azure Maps Search service URL-client naar Geocode a address: "1 micro soft Way, Redmond, WA". De code gebruikt de functie `searchAddress` en geeft de resultaten weer als een tabel in de hoofd tekst van de pagina.
+1. De volgende code gebruikt de nieuw gemaakte URL-client azure maps-zoekservice om een adres te geocoderen: "1 Microsoft Way, Redmond, WA". De code `searchAddress` gebruikt de functie en geeft de resultaten weer als een tabel in de hoofdtekst van de pagina.
 
     ```javascript
     // Search for "1 microsoft way, redmond, wa".
@@ -155,45 +155,45 @@ De Azure Maps Web-SDK biedt een *Services-module*. Deze module is een helper-bib
     });
     ```
 
-    Hier volgt het volledige, actieve code voorbeeld:
+    Hier is het volledige, lopende codevoorbeeld:
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="De Services-module gebruiken" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Bekijk de pen <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>met behulp van de Services-module</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="De servicesmodule gebruiken" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Zie de Pen Die de Services<a href='https://codepen.io/azuremaps'>@azuremaps</a>Module <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>by</a> Azure Maps () gebruikt op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 <br/>
 
-## <a name="azure-government-cloud-support"></a>Cloud ondersteuning Azure Government
+## <a name="azure-government-cloud-support"></a>Cloudondersteuning voor Azure Government
 
-De Azure Maps Web-SDK ondersteunt de Azure Government Cloud. Alle Java script-en CSS-Url's die worden gebruikt voor toegang tot de Azure Maps Web-SDK blijven hetzelfde, maar de volgende taken moeten worden uitgevoerd om verbinding te maken met de Azure Government Cloud versie van het Azure Maps platform.
+De Azure Maps Web SDK ondersteunt de Azure Government-cloud. Alle JavaScript- en CSS-URL's die worden gebruikt om toegang te krijgen tot de Azure Maps Web SDK blijven hetzelfde, maar de volgende taken moeten worden uitgevoerd om verbinding te maken met de Azure Government-cloudversie van het Azure Maps-platform.
 
-Wanneer u het besturings element interactieve map gebruikt, voegt u de volgende regel code toe voordat u een instantie van de klasse `Map` maakt. 
+Wanneer u het interactieve kaartbesturingselement gebruikt, voegt u `Map` de volgende coderegel toe voordat u een instantie van de klasse maakt. 
 
 ```javascript
 atlas.setDomain('atlas.azure.us');
 ```
 
-Zorg ervoor dat u een Azure Maps verificatie gegevens van het Azure Government Cloud platform gebruikt wanneer u de kaart en services verifieert.
+Zorg ervoor dat u een Azure Maps-verificatiegegevens van het Azure Government-cloudplatform gebruikt wanneer u de kaart en services authenticeren.
 
-Wanneer u de Services-module gebruikt, moet het domein voor de services worden ingesteld bij het maken van een exemplaar van een API-URL-eind punt. Met de volgende code wordt bijvoorbeeld een instantie van de klasse `SearchURL` gemaakt en wordt het domein naar de Azure Government Cloud gewijst.
+Bij het gebruik van de servicesmodule moet het domein voor de services worden ingesteld bij het maken van een instantie van een API-URL-eindpunt. Met de volgende code wordt bijvoorbeeld `SearchURL` een instantie van de klasse gemaakt en wordt het domein naar de Azure Government-cloud getoverd.
 
 ```javascript
 var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 ```
 
-Als u rechtstreeks toegang hebt tot de Azure Maps REST-services, wijzigt u het URL-domein in `atlas.azure.us`. Als u bijvoorbeeld de Search API-service gebruikt, wijzigt u het URL-domein van `https://atlas.microsoft.com/search/` naar `https://atlas.azure.us/search/`.
+Als u rechtstreeks toegang hebt tot de Azure `atlas.azure.us`Maps REST-services, wijzigt u het URL-domein in . Als u bijvoorbeeld de API-service voor zoeken `https://atlas.microsoft.com/search/` `https://atlas.azure.us/search/`gebruikt, wijzigt u het URL-domein van .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
+Meer informatie over de lessen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
 > [MapsURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.mapsurl?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [SearchURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-maps-typescript-latest)
+> [ZoekURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [RouteURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-maps-typescript-latest)
@@ -204,13 +204,13 @@ Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 > [!div class="nextstepaction"]
 > [TokenCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.tokencredential?view=azure-maps-typescript-latest)
 
-Zie de volgende artikelen voor meer code voorbeelden die gebruikmaken van de Services-module:
+Zie de volgende artikelen voor meer codevoorbeelden die de servicesmodule gebruiken:
 
 > [!div class="nextstepaction"]
-> [Zoek resultaten weer geven op de kaart](./map-search-location.md)
+> [Zoekresultaten weergeven op de kaart](./map-search-location.md)
 
 > [!div class="nextstepaction"]
 > [Informatie ophalen uit een coördinaat](./map-get-information-from-coordinate.md)
 
 > [!div class="nextstepaction"]
-> [Route beschrijving van A naar B weer geven](./map-route.md)
+> [Routebeschrijving van A naar B](./map-route.md)

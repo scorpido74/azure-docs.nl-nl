@@ -1,5 +1,5 @@
 ---
-title: Inleiding tot Data Factory, een service voor gegevens integratie
+title: Inleiding tot Data Factory, een data-integratieservice
 description: 'Leer wat een Data Factory is: een cloudgebaseerde gegevensintegratieservice waarmee de verplaatsing en transformatie van gegevens wordt beheerd en geautomatiseerd.'
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
 ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73666805"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Inleiding tot Azure Data Factory 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](data-factory-introduction.md)
 > * [Versie 2 (huidige versie)](../introduction.md)
 
@@ -83,7 +83,7 @@ Een gegevensfactory kan één of meer pijplijnen hebben. Een pijplijn is een gro
 Zo kan een pijplijn bijvoorbeeld een groep activiteiten bevatten die gegevens van een Azure-blob opnemen en vervolgens een Hive-query uitvoeren op een HDInsight-cluster om de gegevens te partitioneren. Het voordeel van een pijplijn is dat u de activiteiten kunt beheren als een groep in plaats van afzonderlijke activiteiten. U kunt de pijplijn bijvoorbeeld in zijn geheel implementeren en plannen, in plaats van onafhankelijke activiteiten te plannen. 
 
 ### <a name="activity"></a>Activiteit
-Een pijplijn kan één of meer activiteiten bevatten. Activiteiten definiëren de acties die voor uw gegevens moeten worden uitgevoerd. U kunt bijvoorbeeld een kopieeractiviteit gebruiken om gegevens van het ene gegevensarchief naar het andere te kopiëren. U kunt ook een Hive-activiteit gebruiken. Hiermee wordt een Hive-query uitgevoerd voor een Azure HDInsight-cluster om uw gegevens te transformeren of analyseren. Data Factory ondersteunt twee soorten activiteiten: activiteiten voor gegevensverplaatsing en activiteiten voor gegevenstransformatie.
+Een pijplijn kan één of meer activiteiten bevatten. Met activiteiten definieert u welk acties moeten worden uitgevoerd voor uw gegevens. U kunt bijvoorbeeld een kopieeractiviteit gebruiken om gegevens van het ene gegevensarchief naar het andere te kopiëren. U kunt ook een Hive-activiteit gebruiken. Hiermee wordt een Hive-query uitgevoerd voor een Azure HDInsight-cluster om uw gegevens te transformeren of analyseren. Data Factory ondersteunt twee soorten activiteiten: activiteiten voor gegevensverplaatsing en activiteiten voor gegevenstransformatie.
 
 ### <a name="data-movement-activities"></a>Activiteiten voor gegevensverplaatsing
 De kopieeractiviteit in Data Factory kopieert gegevens van een brongegevensarchief naar een sinkgegevensarchief. Gegevens vanuit elke willekeurige bron kunnen naar een sink worden geschreven. Selecteer een gegevensarchief voor informatie over het kopiëren van gegevens naar en van dat archief. Data Factory ondersteunt de volgende gegevensarchieven:
@@ -92,7 +92,7 @@ De kopieeractiviteit in Data Factory kopieert gegevens van een brongegevensarchi
 
 Zie [Move data by using Copy Activity](data-factory-data-movement-activities.md) (Gegevens verplaatsen met kopieeractiviteit) voor meer informatie.
 
-### <a name="data-transformation-activities"></a>Gegevenstransformatieactiviteiten
+### <a name="data-transformation-activities"></a>Activiteiten voor gegevenstransformatie
 [!INCLUDE [data-factory-transformation-activities](../../../includes/data-factory-transformation-activities.md)]
 
 Zie [Move data by using Copy Activity](data-factory-data-transformation-activities.md) (Gegevens verplaatsen met kopieeractiviteit) voor meer informatie.
@@ -114,7 +114,7 @@ Gekoppelde services worden voor twee doeleinden gebruikt in Data Factory:
 
 * Als vertegenwoordiging van een *gegevensarchief*, zoals een on-premises SQL Server-database, een Oracle-database, een bestandsshare of een Azure Blob Storage-account. Zie het gedeelte [Activiteiten voor gegevensverplaatsing](#data-movement-activities) voor een lijst met ondersteunde gegevensarchieven.
 
-* Ter vertegenwoordiging van een *rekenresource* die de uitvoering van een activiteit kan hosten. De activiteit HDInsightHive wordt bijvoorbeeld uitgevoerd in een HDInsight Hadoop-cluster. Zie de sectie [Activiteiten voor gegevenstransformatie](#data-transformation-activities) voor een lijst met ondersteunde rekenomgevingen.
+* Een *rekenbron* weergeven die de uitvoering van een activiteit kan hosten. De activiteit HDInsightHive wordt bijvoorbeeld uitgevoerd in een HDInsight Hadoop-cluster. Zie de sectie [Activiteiten voor gegevenstransformatie](#data-transformation-activities) voor een lijst met ondersteunde rekenomgevingen.
 
 ### <a name="relationship-between-data-factory-entities"></a>Relatie tussen Data Factory-entiteiten
 
@@ -125,7 +125,7 @@ U kunt op dit moment gegevensfactory’s maken in de regio’s VS - west, VS - o
 
 Azure Data Factory zelf slaat geen gegevens op. Hiermee kunt u gegevensgestuurde werkstromen maken om het verplaatsen van gegevens tussen [ondersteunde gegevensarchieven](#data-movement-activities) in te delen. U kunt er ook gegevens mee verwerken met behulp van [rekenservices](#data-transformation-activities) in andere regio's of in een on-premises omgeving. U kunt er ook [werkstromen mee bewaken en beheren](data-factory-monitor-manage-pipelines.md) met zowel programmatische als gebruikersinterfacemechanismen.
 
-Data Factory is alleen beschikbaar in de regio VS - west, VS - oost en Europa - noord. De service die de gegevensverplaatsing in Data Factory verzorgt, is echter [internationaal](data-factory-data-movement-activities.md#global) beschikbaar in meerdere regio's. Als een gegevensarchief zich achter een firewall bevindt, worden de gegevens verplaatst middels een [gegevensbeheergateway](data-factory-move-data-between-onprem-and-cloud.md) die is geïnstalleerd in uw on-premises omgeving.
+Data Factory is alleen beschikbaar in de regio VS - west, VS - oost en Europa - noord. De service die de gegevensverplaatsing in Data Factory verzorgt, is echter [internationaal](data-factory-data-movement-activities.md#global) beschikbaar in meerdere regio's. Als een gegevensarchief zich achter een firewall bevindt, verplaatst een [Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md) die is geïnstalleerd in uw on-premises omgeving de gegevens in plaats daarvan.
 
 Stel dat uw rekenomgevingen, bijvoorbeeld een Azure HDInsight-cluster en Azure Machine Learning, worden uitgevoerd in de regio Europa - west. U kunt een exemplaar van Azure Data Factory in Europa -noord maken en gebruiken. Vervolgens kunt u het gebruiken om taken te plannen voor uw rekenomgevingen in Europa - west. Het duurt enkele milliseconden voordat Data Factory de taak in uw rekenomgeving activeert, maar de uitvoertijd van de taak verandert niet in uw rekenomgeving.
 

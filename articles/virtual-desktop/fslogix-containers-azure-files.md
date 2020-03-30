@@ -1,6 +1,6 @@
 ---
-title: Container bestanden voor het FSLogix-Profiel van Windows virtueel bureau blad-Azure
-description: In dit artikel worden FSLogix-profiel containers in virtueel bureau blad van Windows en Azure files beschreven.
+title: Bestanden van Windows Virtual Desktop FSLogix-profielcontainers - Azure
+description: In dit artikel worden FSLogix-profielcontainers beschreven in Windows Virtual Desktop- en Azure-bestanden.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,98 +9,98 @@ ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 1dc5d54fa24217c91e14a8f37e092888b2bb6474
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127875"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profielcontainers en Azure Files
 
-De Windows Virtual Desktop-service beveelt FSLogix-profiel containers aan als een gebruikers profiel oplossing. FSLogix is ontworpen om profielen te roamen in omgevingen met externe computers, zoals Windows virtueel bureau blad. Er wordt een volledig gebruikers profiel opgeslagen in één container. Bij het aanmelden wordt deze container dynamisch gekoppeld aan de computer omgeving met behulp van systeem eigen ondersteunde virtuele harde schijven (VHD) en Hyper-V virtuele harde schijf (VHDX). Het gebruikers profiel is onmiddellijk beschikbaar en wordt in het systeem weer gegeven op dezelfde manier als een systeem eigen gebruikers profiel. In dit artikel wordt beschreven hoe FSLogix-profiel containers die worden gebruikt met Azure Files functie in Windows virtueel bureau blad.
+De Windows Virtual Desktop-service raadt FSLogix-profielcontainers aan als gebruikersprofieloplossing. FSLogix is ontworpen om te roamen met profielen in externe computeromgevingen, zoals Windows Virtual Desktop. Het slaat een volledig gebruikersprofiel op in één container. Bij het aanmelden is deze container dynamisch verbonden met de computeromgeving met behulp van native ondersteunde Virtual Hard Disk (VHD) en Hyper-V Virtual Hard Disk (VHDX). Het gebruikersprofiel is onmiddellijk beschikbaar en verschijnt in het systeem precies als een native gebruikersprofiel. In dit artikel wordt beschreven hoe FSLogix-profielcontainers worden gebruikt met de functie Azure Files in Windows Virtual Desktop.
 
 >[!NOTE]
->Zie [opslag opties voor FSLogix-profiel containers](store-fslogix-profile.md)als u op zoek bent naar het vergelijkings materiaal over de verschillende FSLogix-profiel container opslag opties in Azure.
+>Zie Opslagopties voor [FSLogix-profielcontainers](store-fslogix-profile.md)als u op zoek bent naar vergelijkingsmateriaal over de verschillende opslagopties voor FSLogix-profiel .
 
 ## <a name="user-profiles"></a>Gebruikersprofielen
 
-Een gebruikers profiel bevat gegevens elementen over een individu, inclusief configuratie gegevens zoals bureaublad instellingen, permanente netwerk verbindingen en toepassings instellingen. Windows maakt standaard een lokaal gebruikers profiel dat nauw geïntegreerd is met het besturings systeem.
+Een gebruikersprofiel bevat gegevenselementen over een individu, waaronder configuratie-informatie zoals bureaubladinstellingen, permanente netwerkverbindingen en toepassingsinstellingen. Standaard maakt Windows een lokaal gebruikersprofiel dat nauw is geïntegreerd met het besturingssysteem.
 
-Een profiel voor externe gebruikers biedt een partitie tussen gebruikers gegevens en het besturings systeem. Hiermee kan het besturings systeem worden vervangen of gewijzigd zonder dat dit van invloed is op de gebruikers gegevens. In Extern bureaublad Session Host (RDSH) en Virtual Desktop Infrastructure (VDI) kan het besturings systeem om de volgende redenen worden vervangen:
+Een extern gebruikersprofiel biedt een partitie tussen gebruikersgegevens en het besturingssysteem. Hiermee kan het besturingssysteem worden vervangen of gewijzigd zonder dat dit gevolgen heeft voor de gebruikersgegevens. In RdSH (Remote Desktop Session Host) en Virtual Desktop Infrastructures (VDI) kan het besturingssysteem om de volgende redenen worden vervangen:
 
-- Een upgrade van het besturings systeem
-- Een bestaande virtuele machine (VM) vervangen
-- Een gebruiker die deel uitmaakt van een gegroepeerde (niet-permanente) RDSH-of VDI-omgeving
+- Een upgrade van het besturingssysteem
+- Een vervanging van een bestaande virtuele machine (VM)
+- Een gebruiker die deel uitmaakt van een gepoolde (niet-permanente) RDSH- of VDI-omgeving
 
-Micro soft-producten kunnen worden gebruikt voor verschillende technologieën voor externe gebruikers profielen, waaronder deze technologieën:
-- Zwervende gebruikers profielen (ZWERVENDE gebruikers profielen)
-- Gebruikers profiel schijven (UDP)
-- Enter prise State roaming (ESR)
+Microsoft-producten werken met verschillende technologieën voor externe gebruikersprofielen, waaronder deze technologieën:
+- Zwervende gebruikersprofielen (RUP)
+- Schijven voor gebruikersprofiel (UPD)
+- Bedrijfsstatusroaming (ESR)
 
-UPD en ZWERVENDE gebruikers profielen zijn de meest gebruikte technologieën voor gebruikers profielen in de omgevingen met Extern bureaublad sessiehost en virtuele harde schijven (VHD).
+UPD en RUP zijn de meest gebruikte technologieën voor gebruikersprofielen in RDSH- en Virtual Hard Disk(VHD)-omgevingen (Remote Desktop Session Host).
 
-### <a name="challenges-with-previous-user-profile-technologies"></a>Uitdagingen met eerdere gebruikers profiel technologieën
+### <a name="challenges-with-previous-user-profile-technologies"></a>Uitdagingen met eerdere gebruikersprofieltechnologieën
 
-Bestaande en verouderde micro soft-oplossingen voor gebruikers profielen zijn met diverse uitdagingen gearriveerd. Geen van de voor gaande oplossingen heeft alle gebruikers profielen afgehandeld die bij een RDSH-of VDI-omgeving worden geleverd. Bijvoorbeeld, UPD kan geen grote OST-bestanden verwerken en ZWERVENDE gebruikers profielen de moderne instellingen niet behouden.
+Bestaande en verouderde Microsoft-oplossingen voor gebruikersprofielen kwamen met verschillende uitdagingen. Geen eerdere oplossing behandeld alle gebruikersprofiel behoeften die worden geleverd met een RDSH of VDI-omgeving. UPD kan bijvoorbeeld geen grote OST-bestanden verwerken en RUP blijft niet bestaan uit moderne instellingen.
 
 #### <a name="functionality"></a>Functionaliteit
 
-In de volgende tabel worden de voor delen en beperkingen van eerdere gebruikers profiel technologieën weer gegeven.
+In de volgende tabel ziet u voordelen en beperkingen van eerdere gebruikersprofieltechnologieën.
 
-| Technologie | Moderne instellingen | Win32-instellingen | BESTURINGSSYSTEEM instellingen | Gebruikersgegevens | Ondersteund op de server-SKU | Back-end-opslag in azure | On-premises back-end-opslag | Versie ondersteuning | Volgende aanmeldings tijd |Opmerkingen|
+| Technologie | Moderne instellingen | Win32-instellingen | BE-instellingen | Gebruikersgegevens | Ondersteund op server SKU | Back-endopslag op Azure | Back-end opslag on-premises | Versieondersteuning | Volgende aanmeldingstijd |Opmerkingen|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Gebruikers profiel schijven (UDP)** | Ja | Ja | Ja | Ja | Ja | Nee | Ja | Win 7+ | Ja | |
-| **Zwervend gebruikers profiel (ZWERVENDE gebruikers profielen), onderhouds modus** | Nee | Ja | Ja | Ja | Ja| Nee | Ja | Win 7+ | Nee | |
-| **Enterprise State Roaming (ESR)** | Ja | Nee | Ja | Nee | Opmerkingen weer geven | Ja | Nee | Win 10 | Nee | Functies op de server-SKU, maar geen ondersteunende gebruikers interface |
-| **User Experience Virtualization (UE-V)** | Ja | Ja | Ja | Nee | Ja | Nee | Ja | Win 7+ | Nee |  |
-| **OneDrive-Cloud bestanden** | Nee | Nee | Nee | Ja | Opmerkingen weer geven | Opmerkingen weer geven  | Opmerkingen weer geven | Win 10 RS3 | Nee | Niet getest op server-SKU. Back-end-opslag in Azure is afhankelijk van de synchronisatieclient. On-premises back-end-opslag moet een synchronisatieclient hebben. |
+| **Schijven voor gebruikersprofielen (UPD)** | Ja | Ja | Ja | Ja | Ja | Nee | Ja | Win 7+ | Ja | |
+| **Roaming-gebruikersprofiel (RUP), onderhoudsmodus** | Nee | Ja | Ja | Ja | Ja| Nee | Ja | Win 7+ | Nee | |
+| **Roaming van enterprise state (ESR)** | Ja | Nee | Ja | Nee | Zie notities | Ja | Nee | Win 10 | Nee | Functies op server SKU, maar geen ondersteunende gebruikersinterface |
+| **Personalisatie van gebruikerservaring (UE-V)** | Ja | Ja | Ja | Nee | Ja | Nee | Ja | Win 7+ | Nee |  |
+| **OneDrive-cloudbestanden** | Nee | Nee | Nee | Ja | Zie notities | Zie notities  | Zie Notities | Win 10 RS3 | Nee | Niet getest op server SKU. Back-endopslag op Azure is afhankelijk van de synchronisatieclient. Back-end opslag on-prem heeft een synchronisatieclient nodig. |
 
 #### <a name="performance"></a>Prestaties
 
-UPD vereist [opslagruimten direct (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) om prestatie vereisten te verhelpen. UPD maakt gebruik van het SMB-protocol (Server Message Block). Het profiel wordt gekopieerd naar de virtuele machine waarin de gebruiker wordt geregistreerd. UPD met S2D is de oplossing die we voor het virtuele bureau blad van Windows raden.  
+UPD vereist [Storage Spaces Direct (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) om aan de prestatievereisten te voldoen. UPD maakt gebruik van het SMB-protocol (Server Message Block). Het kopieert het profiel naar de VM waarin de gebruiker wordt geregistreerd. UPD met S2D is de oplossing die we aanbevelen voor Windows Virtual Desktop.  
 
 #### <a name="cost"></a>Kosten
 
-Terwijl S2D-clusters de benodigde prestaties behaalden, zijn de kosten duur voor zakelijke klanten, maar met name kostbaar voor klanten met een kleine en middel grote onderneming (SMB). Voor deze oplossing betalen bedrijven voor opslag schijven, samen met de kosten van de virtuele machines die gebruikmaken van de schijven voor een share.
+Hoewel S2D-clusters de nodige prestaties leveren, zijn de kosten duur voor zakelijke klanten, maar vooral duur voor kleine en middelgrote (MKB)-klanten. Voor deze oplossing betalen bedrijven voor opslagschijven, samen met de kosten van de VM's die de schijven gebruiken voor een aandeel.
 
-#### <a name="administrative-overhead"></a>Administratieve overhead
+#### <a name="administrative-overhead"></a>Meer beheertaken
 
-S2D-clusters vereisen een besturings systeem dat met een patch in een beveiligde status wordt bijgewerkt en onderhouden. Deze processen en de complexiteit van het instellen van S2D-nood herstel, maken S2D alleen voor ondernemingen met een speciaal IT-personeel.
+S2D-clusters vereisen een besturingssysteem dat is gepatcht, bijgewerkt en in een veilige staat wordt onderhouden. Deze processen en de complexiteit van het opzetten van S2D disaster recovery maken S2D alleen haalbaar voor bedrijven met een toegewijde IT-staf.
 
-## <a name="fslogix-profile-containers"></a>FSLogix-profiel containers
+## <a name="fslogix-profile-containers"></a>FSLogix profielcontainers
 
-Op 19 november 2018 heeft [micro soft FSLogix aangeschaft](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix is een oplossing voor veel uitdagingen met een profiel container. De sleutel is onder andere:
+Op 19 november 2018 [heeft Microsoft FSLogix overgenomen.](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/) FSLogix pakt veel uitdagingen op het gebied van profielcontainers aan. Sleutel onder hen zijn:
 
-- **Prestaties:** De [FSLogix-profiel containers](/fslogix/configure-profile-container-tutorial/) zijn hoge prestaties en kunnen prestatie problemen oplossen die de Exchange-modus met een historische cache hebben geblokkeerd.
-- **OneDrive:** Zonder FSLogix-profiel containers wordt OneDrive voor bedrijven niet ondersteund in niet-permanente RDSH-of VDI-omgevingen. In de [Best practices voor OneDrive voor bedrijven en FSLogix](/fslogix/overview/) wordt beschreven hoe ze communiceren. Zie [de Synchronisatieclient gebruiken op virtuele Bureau bladen](/deployoffice/rds-onedrive-business-vdi/)voor meer informatie.
-- **Aanvullende mappen:** FSLogix biedt de mogelijkheid om gebruikers profielen uit te breiden voor het toevoegen van extra mappen.
+- **Prestaties:** De [FSLogix-profielcontainers](/fslogix/configure-profile-container-tutorial/) zijn hoge prestaties en lossen prestatieproblemen op die in het verleden de exchange-modus in de cache hebben geblokkeerd.
+- **OneDrive:** Zonder FSLogix-profielcontainers wordt OneDrive for Business niet ondersteund in niet-persistente RDSH- of VDI-omgevingen. [Met de best practices van OneDrive voor Bedrijven en FSLogix](/fslogix/overview/) worden de manier waarop ze met elkaar omgaan beschreven. Zie [De synchronisatieclient gebruiken op virtuele bureaubladen](/deployoffice/rds-onedrive-business-vdi/)voor meer informatie .
+- **Aanvullende mappen:** FSLogix biedt de mogelijkheid om gebruikersprofielen uit te breiden met extra mappen.
 
-Sinds de aanschaf is micro soft begonnen met het vervangen van bestaande gebruikers profiel oplossingen, zoals UPD, met FSLogix-profiel containers.
+Sinds de overname is Microsoft begonnen met het vervangen van bestaande gebruikersprofieloplossingen, zoals UPD, door FSLogix profielcontainers.
 
-## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Integratie met Azure Active Directory-domein service Azure Files
+## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure-bestanden-integratie met Azure Active Directory Domain Service
 
-De prestaties en functies van FSLogix-profiel containers profiteren van de Cloud. Op 2019 7 augustus heeft Microsoft Azure bestanden de algemene Beschik baarheid aangekondigd van [Azure files verificatie met Azure Active Directory Domain Service (AD DS)](../storage/files/storage-files-active-directory-overview.md). Door zowel kosten als administratieve overhead te adresseren, Azure Files met Azure AD DS-verificatie een Premium-oplossing voor gebruikers profielen in de virtueel-bureaublad service van Windows.
+De prestaties en functies van FSLogix-profielcontainers maken gebruik van de cloud. Op 7 augustus 2019 heeft Microsoft Azure Files de algemene beschikbaarheid van [Azure Files-verificatie aangekondigd met Azure Active Directory Domain Service (AD DS).](../storage/files/storage-files-active-directory-overview.md) Door zowel kosten als administratieve overhead aan te pakken, is Azure Files met Azure AD DS-verificatie een premium oplossing voor gebruikersprofielen in de Windows Virtual Desktop-service.
 
-## <a name="best-practices-for-windows-virtual-desktop"></a>Aanbevolen procedures voor virtueel bureau blad van Windows
+## <a name="best-practices-for-windows-virtual-desktop"></a>Aanbevolen procedures voor Windows Virtual Desktop
 
-Virtueel bureau blad van Windows biedt volledige controle over de grootte, het type en het aantal Vm's dat door klanten wordt gebruikt. Zie [Wat is Windows virtueel bureau blad?](overview.md)voor meer informatie.
+Windows Virtual Desktop biedt volledige controle over de grootte, het type en het aantal VM's die door klanten worden gebruikt. Zie Wat is Windows Virtual Desktop voor meer [informatie?](overview.md).
 
-Om ervoor te zorgen dat uw virtuele Windows-bureau blad-omgeving de best practices volgt:
+Ga als volgt om ervoor te zorgen dat uw Windows Virtual Desktop-omgeving de beste procedures volgt:
 
-- Azure Files Storage-account moet zich in dezelfde regio bevinden als de virtuele machines van de host.
-- Azure Files machtigingen moeten overeenkomen met de machtigingen die zijn beschreven in [vereisten-profiel containers](/fslogix/fslogix-storage-config-ht).
-- Elke hostgroep moet zijn gebaseerd op hetzelfde type en dezelfde grootte VM op basis van dezelfde hoofd installatie kopie.
-- Elke VM van een hostgroep moet zich in dezelfde resource groep beheersen voor het beheren, schalen en bijwerken.
-- Voor optimale prestaties moeten de opslag oplossing en de FSLogix-profiel container zich op dezelfde locatie in het Data Center bevinden.
-- Het opslag account met de master installatie kopie moet zich in dezelfde regio en hetzelfde abonnement bevinden als de virtuele machines die worden ingericht.
+- Azure Files-opslagaccount moet zich in dezelfde regio bevinden als de VM's voor sessiehost.
+- Azure Files-machtigingen moeten overeenkomen met machtigingen die zijn beschreven in [Vereisten - Profielcontainers](/fslogix/fslogix-storage-config-ht).
+- Elke hostgroep moet worden gebouwd van hetzelfde type en dezelfde grootte VM op basis van dezelfde hoofdafbeelding.
+- Elke vm van de hostgroep moet zich in dezelfde resourcegroep bevindt om het beheer, de schaling en het bijwerken te ondersteunen.
+- Voor optimale prestaties moeten de opslagoplossing en de FSLogix-profielcontainer zich op dezelfde datacenterlocatie bevinden.
+- Het opslagaccount met de hoofdafbeelding moet zich in dezelfde regio bevinden en een abonnement waarbij de VM's worden ingericht.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de volgende hand leidingen om een virtuele Windows-desktop omgeving in te stellen.
+Gebruik de volgende hulplijnen om een Windows Virtual Desktop-omgeving in te stellen.
 
-- Zie [een Tenant maken in Windows virtueel bureau blad](tenant-setup-azure-active-directory.md)om te beginnen met het bouwen van de oplossing voor desktop virtualisatie.
-- Zie [een hostgroep maken met Azure Marketplace](create-host-pools-azure-marketplace.md)voor meer informatie over het maken van een hostgroep in uw virtuele Windows-bureau blad-Tenant.
-- Zie [Azure Files share instellen](/azure/storage/files/storage-files-active-directory-enable/)voor meer informatie over het instellen van volledig beheerde bestands shares in de Cloud.
-- Zie [een profiel container maken voor een hostgroep met een bestands share voor](create-host-pools-user-profile.md)meer informatie over het configureren van FSLogix-profiel containers.
-- Zie [app-groepen beheren voor Windows virtueel bureau blad](manage-app-groups.md)om gebruikers toe te wijzen aan een hostgroep.
-- Zie [verbinding maken met het virtuele bureau blad van Windows](connect-web.md)voor toegang tot uw virtuele bureau blad-resources via een webbrowser.
+- Zie [Een tenant maken in Windows Virtual Desktop](tenant-setup-azure-active-directory.md)als u wilt beginnen met het uitbouwen van uw desktopvirtualisatieoplossing.
+- Zie [Een hostgroep](create-host-pools-azure-marketplace.md)maken met Azure Marketplace als u een hostgroep wilt maken in uw Windows Virtual Desktop-tenant.
+- Zie Azure Files share instellen als u volledig beheerde bestandsshares in de cloud wilt [instellen.](/azure/storage/files/storage-files-active-directory-enable/)
+- Zie [Een profielcontainer maken voor een hostgroep maken met een bestandsshare](create-host-pools-user-profile.md)als u de profielcontainers van FSLogix wilt configureren.
+- Zie [App-groepen voor Windows Virtueel bureaublad](manage-app-groups.md)beheren als u gebruikers wilt toewijzen aan een hostgroep.
+- Zie Verbinding maken met [Windows Virtual Desktop](connect-web.md)voor toegang tot uw Windows Virtual Desktop-bronnen vanuit een webbrowser.

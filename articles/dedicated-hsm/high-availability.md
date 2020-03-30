@@ -1,6 +1,6 @@
 ---
-title: Hoge beschikbaarheid - Azure toegewezen HSM | Microsoft Docs
-description: Voorbeeld van een hoge beschikbaarheid Azure toegewezen HSM en algemene overwegingen
+title: Hoge beschikbaarheid - Azure Dedicated HSM | Microsoft Documenten
+description: Azure Dedicated HSM-voorbeeld voor hoge beschikbaarheid en basisoverwegingen
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,33 +13,33 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70882245"
 ---
-# <a name="azure-dedicated-hsm-high-availability"></a>Azure toegewezen HSM hoge beschikbaarheid
+# <a name="azure-dedicated-hsm-high-availability"></a>Azure Dedicated HSM hoge beschikbaarheid
 
-Azure toegewezen HSM wordt ondersteund door de maximaal beschikbare datacenters van Microsoft. Een zeer beschikbaar datacenter is echter kwetsbaar gelokaliseerde fouten en in extreme omstandigheden, storingen in andere niveaus. Microsoft implementeert HSM-apparaten in verschillende datacenters binnen een regio om te controleren of het inrichten van meerdere apparaten niet leidt tot die apparaten delen van één rack. U kunt een hoger niveau voor hoge Beschik baarheid bereiken door deze Hsm's te koppelen aan de data centers in een regio met behulp van de functie Gemalto HA Group. Het is ook mogelijk op apparaten van de combinatie van verschillende regio's om de regionale failover in een herstel na noodgevallen situatie. Met deze configuratie met meerdere lagen hoge beschikbaarheid wordt een storing van het apparaat automatisch opgelost om te voorkomen dat toepassingen werken. Alle datacenters ook hebben spare apparaten en -onderdelen on-site zodat elk apparaat is mislukt in tijdig kan worden vervangen.
+Azure Dedicated HSM wordt ondersteund door de zeer beschikbare datacenters van Microsoft. Elk zeer beschikbaar datacenter is echter kwetsbaar voor gelokaliseerde fouten en in extreme omstandigheden storingen op regionaal niveau. Microsoft implementeert HSM-apparaten in verschillende datacenters binnen een regio om ervoor te zorgen dat het inrichten van meerdere apparaten er niet toe leidt dat apparaten één rack delen. Een ander niveau van hoge beschikbaarheid kan worden bereikt door deze HSM's te koppelen aan de datacenters in een regio met behulp van de Gemalto HA Group-functie. Het is ook mogelijk om apparaten in verschillende regio's te koppelen om regionale failover in een situatie met noodherstel aan te pakken. Met deze configuratie met meerdere lagen hoge beschikbaarheid wordt elke apparaatfout automatisch verholpen om toepassingen te laten werken. Alle datacenters hebben ook reserveapparaten en onderdelen op locatie, zodat elk mislukt apparaat tijdig kan worden vervangen.
 
 ## <a name="high-availability-example"></a>Voorbeeld van hoge beschikbaarheid
 
-Informatie over het configureren van HSM-apparaten voor hoge beschikbaarheid op het softwareniveau van de is in de 'Gemalto Luna netwerk HSM Administration Guide'. Dit document is beschikbaar op de [GEMALTO HSM-pagina](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/).
+Informatie over het configureren van HSM-apparaten voor hoge beschikbaarheid op softwareniveau vindt u in de 'Gemalto Luna Network HSM Administration Guide'. Dit document is beschikbaar op de [Gemalto HSM-pagina.](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)
 
-Het volgende diagram toont een architectuur met hoge beschikbaarheid. Maakt gebruik van meerdere apparaten in de regio en meerdere apparaten die zijn gekoppeld in een apart gebied. Deze architectuur maakt gebruik van ten minste vier HSM-apparaten en virtuele netwerkonderdelen.
+Het volgende diagram toont een zeer beschikbare architectuur. Het maakt gebruik van meerdere apparaten in de regio en meerdere apparaten gekoppeld in een aparte regio. Deze architectuur maakt gebruik van minimaal vier HSM-apparaten en virtuele netwerkcomponenten.
 
-![Diagram van hoge beschikbaarheid](media/high-availability/high-availability.png)
+![Diagram met hoge beschikbaarheid](media/high-availability/high-availability.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Het is raadzaam dat alle belangrijke concepten van de service, zoals hoge beschikbaarheid en beveiliging, voor apparaatinrichting en ontwerp van toepassingen of implementatie goed wordt begrepen.
+Het wordt aanbevolen dat alle belangrijke concepten van de service, zoals hoge beschikbaarheid en beveiliging, goed worden begrepen voordat apparaatinrichting en toepassingsontwerp of -implementatie worden geïmplementeerd.
 Verdere concept niveau onderwerpen:
 
-* [Implementatie-architectuur](deployment-architecture.md)
+* [Implementatiearchitectuur](deployment-architecture.md)
 * [Fysieke beveiliging](physical-security.md)
-* [Netwerken](networking.md)
+* [Networking](networking.md)
 * [Ondersteuning](supportability.md)
-* [Controle](monitoring.md)
+* [Monitoring](monitoring.md)
 
-Verwijzen naar de Portal voor Gemalto klanten ondersteuning voor de Administrator-handleidingen en Zie sectie 6 voor specifieke informatie over het configureren van HSM-apparaten voor hoge beschikbaarheid.
+Voor specifieke informatie over het configureren van HSM-apparaten voor hoge beschikbaarheid verwijzen wij u naar de Gemalto Customer Support Portal voor de beheerdershandleidingen en zie sectie 6.

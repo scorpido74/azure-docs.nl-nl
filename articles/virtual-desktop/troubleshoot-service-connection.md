@@ -1,6 +1,6 @@
 ---
-title: Problemen met de service verbinding oplossen Windows virtueel bureau blad-Azure
-description: Problemen oplossen bij het instellen van client verbindingen in een Windows Virtual Desktop-Tenant omgeving.
+title: Problemen met de serviceverbinding Windows Virtual Desktop oplossen - Azure
+description: Problemen oplossen wanneer u clientverbindingen instelt in een Windows Virtual Desktop-tenantomgeving.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,25 +9,25 @@ ms.date: 12/13/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 57d5198cb54dc096fb09bb52d76539b1e4bbc1f2
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127461"
 ---
-# <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop service-verbindingen
+# <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop-serviceverbindingen
 
-Gebruik dit artikel voor het oplossen van problemen met Windows-client verbindingen met virtueel bureau blad.
+Gebruik dit artikel om problemen met Windows Virtual Desktop-clientverbindingen op te lossen.
 
 ## <a name="provide-feedback"></a>Feedback geven
 
-U kunt ons feedback geven en de Windows Virtual Desktop-service bespreken met het product team en andere Active community-leden op de [technische community van het Windows Virtual Desktop](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
+U ons feedback geven en de Windows Virtual Desktop Service bespreken met het productteam en andere actieve communityleden van de [Windows Virtual Desktop Tech Community.](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
 
-## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Gebruiker maakt verbinding, maar er wordt niets weer gegeven (geen feed)
+## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Gebruiker maakt verbinding, maar er wordt niets weergegeven (geen feed)
 
-Een gebruiker kan Extern bureaublad-clients starten en kan worden geverifieerd, maar de gebruiker ziet geen pictogrammen in de feed voor webdetectie.
+Een gebruiker kan Extern bureaublad-clients starten en kan zich verifiëren, maar de gebruiker ziet geen pictogrammen in de webdetectiefeed.
 
-Controleer of de gebruiker die de problemen rapporteert, is toegewezen aan toepassings groepen met behulp van deze opdracht regel:
+Controleer met de gebruiksregel of de gebruiker die de problemen rapporteert, aan toepassingsgroepen is toegewezen:
 
 ```PowerShell
 Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
@@ -35,19 +35,19 @@ Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 
 Controleer of de gebruiker zich aanmeldt met de juiste referenties.
 
-Als de WebClient wordt gebruikt, controleert u of er geen problemen met de referenties in de cache zijn.
+Als de webclient wordt gebruikt, bevestigt u dat er geen problemen met referenties in de cache zijn.
 
-## <a name="windows-10-enterprise-multi-session-virtual-machines-dont-respond"></a>Windows 10 Enter prise-virtuele machines voor meerdere sessies reageren niet
+## <a name="windows-10-enterprise-multi-session-virtual-machines-dont-respond"></a>Virtuele machines met meerdere sessies van Windows 10 Enterprise reageren niet
 
-Als een virtuele machine niet reageert en u geen toegang via RDP hebt, moet u deze met de diagnostische functie oplossen door de status van de host te controleren.
+Als een virtuele machine niet reageert en u deze niet openen via RDP, moet u deze probleemoplossen met de diagnostische functie door de status van de host te controleren.
 
-Voer de volgende cmdlet uit om de status van de host te controleren:
+Voer deze cmdlet uit om de status van de host te controleren:
 
 ```powershell
 Get-RdsSessionHost -TenantName $TenantName -HostPoolName $HostPool | ft SessionHostName, LastHeartBeat, AllowNewSession, Status
 ```
 
-Als de status van de host `NoHeartBeat`is, betekent dit dat de virtuele machine niet reageert en de agent niet kan communiceren met de virtueel-bureaublad service van Windows.
+Als de status `NoHeartBeat`van de host is, betekent dit dat de VM niet reageert en de agent niet kan communiceren met de Windows Virtual Desktop-service.
 
 ```powershell
 SessionHostName          LastHeartBeat     AllowNewSession    Status 
@@ -59,18 +59,18 @@ WVDHost4.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat
 WVDHost5.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
 ```
 
-Er zijn enkele dingen die u kunt doen om de status van de HeartBeat te herstellen.
+Er zijn een paar dingen die je doen om de NoHeartBeat-status op te lossen.
 
-### <a name="update-fslogix"></a>FSLogix bijwerken
+### <a name="update-fslogix"></a>Update FSLogix
 
-Als uw FSLogix niet up-to-date is, met name als het versie 2.9.7205.27375 van frxdrvvt. sys is, kan dit leiden tot een deadlock. Zorg ervoor dat u [FSLogix bijwerkt naar de nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2084562).
+Als uw FSLogix niet up-to-date is, vooral als het versie 2.9.7205.27375 van frxdrvvt.sys is, kan dit een impasse veroorzaken. Zorg ervoor dat [fslogix wordt bijgewerkt naar de nieuwste versie.](https://go.microsoft.com/fwlink/?linkid=2084562)
 
-### <a name="disable-bgtaskregistrationmaintenancetask"></a>BgTaskRegistrationMaintenanceTask uitschakelen
+### <a name="disable-bgtaskregistrationmaintenancetask"></a>Onderhoudstaak bgTaskRegistrations uitschakelen
 
-Als het bijwerken van FSLogix niet werkt, is het probleem mogelijk dat een BiSrv-onderdeel systeem bronnen uitgeput tijdens een wekelijkse onderhouds taak. Schakel de onderhouds taak tijdelijk uit door de BgTaskRegistrationMaintenanceTask uit te scha kelen met een van de volgende twee methoden:
+Als het bijwerken van FSLogix niet werkt, kan het probleem zijn dat een BiSrv-component systeembronnen uithaalt tijdens een wekelijkse onderhoudstaak. Schakel de onderhoudstaak tijdelijk uit door de BgTaskRegistrationMaintenanceTask uit te schakelen met een van de twee methoden:
 
-- Ga naar het menu Start en zoek naar **taak planner**. Navigeer naar de bibliotheek van de **taak planner** > **micro soft** > **Windows** > **BrokerInfrastructure**. Zoek naar een taak met de naam **BgTaskRegistrationMaintenanceTask**. Wanneer u het bestand hebt gevonden, klikt u er met de rechter muisknop op en selecteert u **uitschakelen** in de vervolg keuzelijst.
-- Open een opdracht regel menu als beheerder en voer de volgende opdracht uit:
+- Ga naar het menu Start en zoek naar **Taakplanner**. Navigeer naar **Taakplannerbibliotheek** > **Microsoft** > **Windows** > **BrokerInfrastructure**. Zoek naar een taak met de naam **BgTaskRegistrationMaintenanceTask**. Wanneer u deze vindt, klikt u er met de rechtermuisknop op en selecteert **u Uitschakelen** in het vervolgkeuzemenu.
+- Open een opdrachtregelmenu als beheerder en voer de volgende opdracht uit:
     
     ```cmd
     schtasks /change /tn "\Microsoft\Windows\BrokerInfrastructure\BgTaskRegistrationMaintenanceTask" /disable 
@@ -78,8 +78,8 @@ Als het bijwerken van FSLogix niet werkt, is het probleem mogelijk dat een BiSrv
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [probleemoplossings overzicht, feedback en ondersteuning](troubleshoot-set-up-overview.md)voor een overzicht van het oplossen van problemen met het virtuele bureau blad van Windows en de escalatie trajecten.
-- Zie [Tenant en hostgroep maken](troubleshoot-set-up-issues.md)voor informatie over het oplossen van problemen bij het maken van een Tenant en een hostgroep in een virtueel-bureaublad omgeving van Windows.
-- Zie voor het oplossen van problemen bij het configureren van een virtuele machine (VM) in Windows virtueel bureau blad de [virtuele machine configuratie](troubleshoot-vm-configuration.md)van de host.
-- Zie [Windows Virtual Desktop Power shell](troubleshoot-powershell.md)(Engelstalig) voor informatie over het oplossen van problemen met het gebruik van Power shell met Windows virtueel bureau blad.
-- Zie [zelf studie: problemen met implementaties van Resource Manager-sjablonen oplossen](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)om de zelf studie voor problemen oplossen op te lossen.
+- Zie [Overzicht, feedback en ondersteuning](troubleshoot-set-up-overview.md)voor een overzicht van probleemoplossing voor het oplossen van problemen met Windows Virtual Desktop en de escalatietracks.
+- Zie [Tenant en hostpool maken](troubleshoot-set-up-issues.md)als u problemen wilt oplossen tijdens het maken van een tenant en hostpool in een Windows Virtual Desktop-omgeving.
+- Zie Configuratie van de [virtuele machine sessiehost](troubleshoot-vm-configuration.md)voor het oplossen van problemen tijdens het configureren van een virtuele machine (VM) in Windows Virtual Desktop.
+- Zie [Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)voor het oplossen van problemen bij het gebruik van PowerShell met Windows Virtual Desktop.
+- Zie [Zelfstudie: Problemen met resourcebeheersjabloonimplementaties](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)oplossen.

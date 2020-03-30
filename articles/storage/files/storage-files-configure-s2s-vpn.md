@@ -1,117 +1,102 @@
 ---
-title: Een site-naar-site-VPN (S2S) configureren voor gebruik met Azure Files | Microsoft Docs
-description: Een site-naar-site-VPN (S2S) configureren voor gebruik met Azure Files
+title: Een Site-to-Site (S2S) VPN configureren voor gebruik met Azure Files | Microsoft Documenten
+description: Een Site-to-Site (S2S) VPN configureren voor gebruik met Azure Files
 author: roygara
 ms.service: storage
 ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7762366f68bee2cd8c44e81bb22366c504ff1a73
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: ae3d38d92990d7a1af4146c25b017286ebd29352
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484415"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061040"
 ---
-# <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Een site-naar-site-VPN configureren voor gebruik met Azure Files
-U kunt een S2S-VPN-verbinding (site-naar-site) gebruiken om uw Azure-bestands shares te koppelen via SMB vanaf uw on-premises netwerk, zonder poort 445 te openen. U kunt een site-naar-site-VPN instellen met behulp van [azure VPN gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md), een Azure-resource die VPN-services aanbiedt en wordt geïmplementeerd in een resource groep naast opslag accounts of andere Azure-resources.
+# <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Een Site-to-Site VPN configureren voor gebruik met Azure Files
+U een Site-to-Site (S2S) VPN-verbinding gebruiken om uw Azure-bestandsshares via SMB te monteren vanuit uw on-premises netwerk, zonder poort 445 te openen. U een Site-to-Site VPN instellen met [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md), een Azure-bron die VPN-services aanbiedt, en wordt geïmplementeerd in een brongroep naast opslagaccounts of andere Azure-bronnen.
 
-![Een topologie diagram van de topologie van een Azure VPN-gateway die een Azure-bestands share verbindt met een on-premises site met behulp van een S2S VPN](media/storage-files-configure-s2s-vpn/s2s-topology.png)
+![Een topologiegrafiek die de topologie van een Azure VPN-gateway illustreert die een Azure-bestandsshare verbindt met een on-premises site met behulp van een S2S VPN](media/storage-files-configure-s2s-vpn/s2s-topology.png)
 
-We raden u ten zeerste aan [Azure files netwerk overzicht](storage-files-networking-overview.md) te lezen voordat u verdergaat met dit artikel voor een volledige bespreking van de beschik bare netwerk opties voor Azure files.
+We raden u ten zeerste aan [het netwerkoverzicht azure files](storage-files-networking-overview.md) te lezen voordat u verdergaat met dit artikel voor een volledige bespreking van de netwerkopties die beschikbaar zijn voor Azure Files.
 
-In het artikel worden de stappen beschreven voor het configureren van een site-naar-site-VPN om on-premises Azure-bestands shares rechtstreeks te koppelen. Als u synchronisatie verkeer voor Azure File Sync wilt omleiden via een site-naar-site-VPN, raadpleegt u [Azure file sync proxy-en Firewall instellingen configureren](storage-sync-files-firewall-and-proxy.md).
+In het artikel worden de stappen beschreven om een Site-to-Site VPN te configureren om Azure-bestandsshares direct on-premises te monteren. Als u synchronisatieverkeer wilt routeren voor Azure File Sync via een site-naar-site VPN, raadpleegt u [de proxy- en firewall-instellingen voor Azure File Sync configureren.](storage-sync-files-firewall-and-proxy.md)
 
 ## <a name="prerequisites"></a>Vereisten
-- Een Azure-bestands share die u on-premises wilt koppelen. U kunt een [standaard](storage-how-to-create-file-share.md) -of Premium- [Azure-bestands share](storage-how-to-create-premium-fileshare.md) gebruiken met uw site-naar-site-VPN.
+- Een Azure-bestandsshare dat u on-premises wilt monteren. Azure-bestandsshares worden geïmplementeerd in opslagaccounts, die beheerconstructies zijn die een gedeelde opslaggroep vertegenwoordigen waarin u meerdere bestandsshares implementeren, evenals andere opslagbronnen, zoals blobcontainers of wachtrijen. Meer informatie over het implementeren van Azure-bestandsshares en opslagaccounts in [Een Azure-bestandsshare maken.](storage-how-to-create-file-share.md)
 
-- Een netwerk apparaat of-server in uw on-premises Data Center dat compatibel is met Azure VPN Gateway. Azure Files is het neutraal van het on-premises netwerk apparaat, maar Azure VPN Gateway houdt een [lijst bij van geteste apparaten](../../vpn-gateway/vpn-gateway-about-vpn-devices.md). Verschillende netwerk apparaten bieden verschillende functies, prestatie kenmerken en beheer functionaliteit, dus houd er rekening mee bij het selecteren van een netwerk apparaat.
+- Een privéeindpunt voor het opslagaccount met het Azure-bestandsaandeel dat u on-premises wilt monteren. Zie [Eindpunten voor Azure Files-netwerk configureren](storage-files-networking-endpoints.md?tabs=azure-portal)voor meer informatie over het maken van een privéeindpunt. 
 
-    Als u geen bestaand netwerk apparaat hebt, bevat Windows Server een ingebouwde serverrol, route ring en RAS (RRAS), die kan worden gebruikt als een on-premises netwerk apparaat. Zie voor meer informatie over het configureren van route ring en RAS in Windows Server [RAS-gateway](https://docs.microsoft.com/windows-server/remote/remote-access/ras-gateway/ras-gateway).
+- Een netwerktoestel of -server in uw on-premises datacenter dat compatibel is met Azure VPN Gateway. Azure Files is agnost van het gekozen on-premises netwerktoestel, maar Azure VPN Gateway houdt een [lijst bij met geteste apparaten.](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) Verschillende netwerkapparaten bieden verschillende functies, prestatiekenmerken en beheerfunctionaliteiten, dus houd hier rekening mee bij het selecteren van een netwerktoestel.
 
-## <a name="add-storage-account-to-vnet"></a>Opslag account toevoegen aan VNet
-Navigeer in het Azure Portal naar het opslag account met de Azure-bestands share die u on-premises wilt koppelen. Selecteer in de inhouds opgave voor het opslag account de vermelding **firewalls en virtuele netwerken** . Tenzij u een virtueel netwerk aan uw opslag account hebt toegevoegd tijdens het maken hiervan, moet het deel venster **toegang toestaan van** het keuze rondje voor **alle geselecteerde netwerken** zijn ingeschakeld.
+    Als u geen bestaand netwerktoestel hebt, bevat Windows Server een ingebouwde serverrol, routering en rastoegang (RRAS), die kan worden gebruikt als het on-premises netwerktoestel. Zie [RAS Gateway](https://docs.microsoft.com/windows-server/remote/remote-access/ras-gateway/ras-gateway)voor meer informatie over het configureren van routering en rastoegang in Windows Server.
 
-Selecteer **geselecteerde netwerken**om uw opslag account toe te voegen aan het gewenste virtuele netwerk. Klik onder de subkoppen **virtuele netwerken** op een **bestaand virtueel netwerk toevoegen** of **+ nieuw virtueel netwerk toevoegen** , afhankelijk van de gewenste status. Als u een nieuw virtueel netwerk maakt, wordt er een nieuwe Azure-resource gemaakt. De nieuwe of bestaande VNet-resource hoeft zich niet in dezelfde resource groep of hetzelfde abonnement als het opslag account te bevinden, maar moet zich in dezelfde regio bevinden als het opslag account en de resource groep en het abonnement waar u uw VNet implementeert, moet overeenkomen met het bestand dat u wilt  Implementeer uw VPN Gateway in. 
+## <a name="add-storage-account-to-vnet"></a>Opslagaccount toevoegen aan VNet
+Navigeer in de Azure-portal naar het opslagaccount met het Azure-bestandsaandeel dat u on-premises wilt monteren. Selecteer in de inhoudsopgave voor het opslagaccount de invoer **van firewalls en virtuele netwerken.** Tenzij u een virtueel netwerk aan uw opslagaccount hebt toegevoegd toen u het hebt gemaakt, moet het resulterende deelvenster de **knop Toegang toestaan via** de keuzerondje voor alle **netwerken** hebben geselecteerd.
 
-![Scherm afbeelding van de Azure Portal waarmee een bestaand of nieuw virtueel netwerk aan het opslag account wordt toegevoegd](media/storage-files-configure-s2s-vpn/add-vnet-1.png)
+Als u uw opslagaccount wilt toevoegen aan het gewenste virtuele netwerk, selecteert u **Geselecteerde netwerken**. Klik onder de onderverdeling **Virtuele netwerken** op + Bestaand virtueel **netwerk toevoegen** of **+Nieuw virtueel netwerk toevoegen,** afhankelijk van de gewenste status. Als u een nieuw virtueel netwerk maakt, wordt een nieuwe Azure-bron gemaakt. De nieuwe of bestaande VNet-bron hoeft zich niet in dezelfde brongroep of hetzelfde abonnement te bevinden als het opslagaccount, maar moet zich in dezelfde regio bevinden als het opslagaccount en de brongroep en het abonnement waarin u uw VNet implementeert, moet overeenkomen met het account waarop u uw VPN-gateway in te zetten. 
 
-Als u een bestaand virtueel netwerk toevoegt, wordt u gevraagd een of meer subnetten van het virtuele netwerk te selecteren waaraan het opslag account moet worden toegevoegd. Als u een nieuw virtueel netwerk selecteert, maakt u een subnet als onderdeel van het maken van het virtuele netwerk en kunt u later meer toevoegen via de resulterende Azure-resource voor het virtuele netwerk.
+![Schermafbeelding van de Azure-portal met de optie om een bestaand of nieuw virtueel netwerk toe te voegen aan het opslagaccount](media/storage-files-configure-s2s-vpn/add-vnet-1.png)
 
-Als u nog geen opslag account aan uw abonnement hebt toegevoegd, moet u het service-eind punt van micro soft. Storage toevoegen aan het virtuele netwerk. Dit kan enige tijd duren en totdat deze bewerking is voltooid, hebt u geen toegang meer tot de Azure-bestands shares in dat opslag account, inclusief via de VPN-verbinding. 
+Als u een bestaand virtueel netwerk toevoegt, wordt u gevraagd een of meer subnetten van dat virtuele netwerk te selecteren waaraan het opslagaccount moet worden toegevoegd. Als u een nieuw virtueel netwerk selecteert, maakt u een subnet als onderdeel van het maken van het virtuele netwerk en u later meer toevoegen via de resulterende Azure-bron voor het virtuele netwerk.
 
-## <a name="deploy-an-azure-vpn-gateway"></a>Een Azure-VPN Gateway implementeren
-Selecteer in de inhouds opgave voor de Azure Portal **een nieuwe resource maken** en zoek naar *virtuele netwerk gateway*. De gateway van uw virtuele netwerk moet zich in hetzelfde abonnement, dezelfde Azure-regio en resource groep bevinden als het virtuele netwerk dat u in de vorige stap hebt geïmplementeerd (Houd er rekening mee dat de resource groep automatisch wordt geselecteerd wanneer het virtuele netwerk wordt gekozen). 
+Als u nog niet eerder een opslagaccount aan uw abonnement hebt toegevoegd, moet het eindpunt van de Microsoft.Storage-service aan het virtuele netwerk worden toegevoegd. Dit kan enige tijd duren en totdat deze bewerking is voltooid, hebt u geen toegang tot de Azure-bestandsshares binnen dat opslagaccount, ook niet via de VPN-verbinding. 
 
-Voor de implementatie van een Azure VPN Gateway moet u de volgende velden invullen:
+## <a name="deploy-an-azure-vpn-gateway"></a>Een Azure VPN-gateway implementeren
+Selecteer in de inhoudsopgave voor de Azure-portal de optie **Een nieuwe bron maken** en zoeken naar virtuele *netwerkgateway*. Uw virtuele netwerkgateway moet zich in dezelfde abonnements-, Azure-regio en resourcegroep bevinden als het virtuele netwerk dat u in de vorige stap hebt geïmplementeerd (houd er rekening mee dat de brongroep automatisch wordt geselecteerd wanneer het virtuele netwerk wordt gekozen). 
 
-- **Naam**: de naam van de Azure-resource voor de VPN gateway. Deze naam kan een naam zijn die u nuttig vindt voor uw beheer.
-- **Regio**: de regio waarin de VPN gateway wordt geïmplementeerd.
-- **Gateway type**: als u een site-naar-site-VPN wilt implementeren, moet u **VPN**selecteren.
-- **VPN-type**: u kunt kiezen voor op *route gebaseerd** of **op basis van beleid** , afhankelijk van uw VPN-apparaat. Op route gebaseerde Vpn's ondersteunen IKEv2, terwijl op beleid gebaseerde Vpn's alleen IKEv1 ondersteunen. Zie [informatie over op beleid gebaseerde en op route gebaseerde VPN-gateways](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about) voor meer informatie over de twee typen VPN-gateways
-- **SKU**: de SKU bepaalt het aantal toegestane site-naar-site tunnels en de gewenste prestaties van de VPN. Als u de juiste SKU voor uw use-case wilt selecteren, raadpleegt u de lijst met [Gateway-sku's](../../vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) . De SKU van de VPN Gateway kan indien nodig later worden gewijzigd.
-- **Virtueel netwerk**: het virtuele netwerk dat u in de vorige stap hebt gemaakt.
-- **Openbaar IP-adres**: het IP-adres van VPN gateway dat wordt blootgesteld aan Internet. Waarschijnlijk moet u een nieuw IP-adres maken, maar u kunt ook een bestaand ongebruikt IP-adres gebruiken, indien van toepassing. Als u selecteert om **nieuwe te maken**, wordt er een nieuw IP-adres Azure-resource gemaakt in dezelfde resource groep als de VPN gateway en is de naam van het **open bare IP-adres** de naam van het nieuwe IP-adres. Als u **bestaande gebruiken**selecteert, moet u het bestaande ongebruikte IP-adres selecteren.
-- **Modus actief-actief inschakelen**: Selecteer **ingeschakeld** als u een configuratie voor Active-Active-gateway maakt, anders **uitgeschakeld laten uitschakelen** geselecteerd. Zie voor meer informatie over de modus actief-actief [Maxi maal beschik bare cross-premises en vnet-naar-vnet-connectiviteit](../../vpn-gateway/vpn-gateway-highlyavailable.md).
-- **BGP ASN configureren**: Selecteer **ingeschakeld** als deze instelling specifiek is vereist voor uw configuratie. Zie [over BGP met Azure VPN gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md)voor meer informatie over deze instelling.
+Voor het implementeren van een Azure VPN Gateway moet u de volgende velden invullen:
 
-Selecteer **controleren + maken** om de VPN gateway te maken. Het kan 45 minuten duren voordat een VPN Gateway volledig te maken en te implementeren.
+- **Naam:** De naam van de Azure-bron voor de VPN-gateway. Deze naam kan elke naam zijn die u nuttig vindt voor uw management.
+- **Regio**: De regio waarin de VPN-gateway wordt geïmplementeerd.
+- **Gatewaytype:** Met het oog op het implementeren van een Site-to-Site VPN moet u **VPN**selecteren.
+- **VPN-type**: U kiezen voor *routegebaseerde** of **beleidsgebaseerde,** afhankelijk van uw VPN-apparaat. Route-gebaseerde VPN's ondersteunen IKEv2, terwijl op beleid gebaseerde VPN's alleen IKEv1 ondersteunen. Zie [Over beleidsgebaseerde en routegebaseerde VPN-gateways](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about) voor meer informatie over de twee typen VPN-gateways
+- **SKU**: De SKU regelt het aantal toegestane Site-to-Site tunnels en de gewenste prestaties van de VPN. Raadpleeg de [Gateway SKU-vermelding](../../vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) om de juiste SKU voor uw use case te selecteren. De SKU van de VPN Gateway kan later worden gewijzigd indien nodig.
+- **Virtueel netwerk:** het virtuele netwerk dat u in de vorige stap hebt gemaakt.
+- **Openbaar IP-adres**: het IP-adres van VPN Gateway dat wordt blootgesteld aan het internet. Waarschijnlijk moet u een nieuw IP-adres maken, maar u ook een bestaand ongebruikt IP-adres gebruiken als dat geschikt is. Als u kiest voor **Nieuw maken,** wordt een nieuwe AZURE-bron van een NIEUW IP-adres gemaakt in dezelfde brongroep als de VPN-gateway en is de naam van het **openbare IP-adres** de naam van het nieuw gemaakte IP-adres. Als u **Bestaand gebruiken**selecteert, moet u het bestaande ongebruikte IP-adres selecteren.
+- **Actieve actieve modus inschakelen:** selecteer alleen **Ingeschakeld** als u een actief actieve gatewayconfiguratie maakt, anders **uitgeschakeld ingeschakeld.** Zie [Hoog beschikbare cross-premises en VNet-to-VNet-connectiviteit](../../vpn-gateway/vpn-gateway-highlyavailable.md)voor meer informatie over de actieve modus.
+- **BGP ASN configureren:** selecteer alleen **Ingeschakeld** als uw configuratie specifiek deze instelling vereist. Zie [Over BGP met Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md)voor meer informatie over deze instelling.
 
-### <a name="create-a-local-network-gateway-for-your-on-premises-gateway"></a>Een lokale netwerk gateway maken voor uw on-premises gateway 
-Een lokale netwerk gateway is een Azure-resource die uw on-premises netwerk apparaat weergeeft. Selecteer in de inhouds opgave voor de Azure Portal **een nieuwe resource maken** en zoeken naar de *lokale netwerk gateway*. De lokale netwerk gateway is een Azure-resource die naast uw opslag account, virtueel netwerk en VPN Gateway wordt geïmplementeerd, maar niet in dezelfde resource groep of hetzelfde abonnement als het opslag account moet zijn. 
+Selecteer **Controleren + maken** om de VPN-gateway te maken. Het kan tot 45 minuten duren voordat een VPN-gateway volledig is gemaakt en geïmplementeerd.
 
-Voor de implementatie van de lokale netwerk gateway resource moet u de volgende velden invullen:
+### <a name="create-a-local-network-gateway-for-your-on-premises-gateway"></a>Een lokale netwerkgateway maken voor uw on-premises gateway 
+Een lokale netwerkgateway is een Azure-bron die uw on-premises netwerktoestel vertegenwoordigt. Selecteer in de inhoudsopgave voor de Azure-portal de optie **Een nieuwe bron maken** en zoeken naar lokale *netwerkgateway.* De lokale netwerkgateway is een Azure-bron die wordt geïmplementeerd naast uw opslagaccount, virtueel netwerk en VPN-gateway, maar hoeft zich niet in dezelfde brongroep of -abonnement te bevinden als het opslagaccount. 
 
-- **Naam**: de naam van de Azure-resource voor de lokale netwerk gateway. Deze naam kan een naam zijn die u nuttig vindt voor uw beheer.
-- **IP-adres**: het open bare IP-adres van uw lokale gateway on-premises.
-- **Adres ruimte**: de adresbereiken voor het netwerk die door deze lokale netwerk gateway worden vertegenwoordigd. U kunt meerdere adresbereiken voor de adres ruimte toevoegen, maar zorg ervoor dat de bereiken die u hier opgeeft, elkaar niet overlappen met bereiken van andere netwerken waarmee u verbinding wilt maken. 
-- **BGP-instellingen configureren**: CONFIGUREER alleen BGP-instellingen als deze instelling is vereist voor uw configuratie. Zie [over BGP met Azure VPN gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md)voor meer informatie over deze instelling.
-- **Abonnement**: het gewenste abonnement. Dit hoeft niet overeen te komen met het abonnement dat wordt gebruikt voor de VPN Gateway of het opslag account.
-- **Resource groep**: de gewenste resource groep. Dit hoeft niet overeen te komen met de resource groep die wordt gebruikt voor de VPN Gateway of het opslag account.
-- **Locatie**: de Azure-regio waarin de lokale netwerk gateway resource moet worden gemaakt. Dit moet overeenkomen met de regio die u hebt geselecteerd voor de VPN Gateway en het opslag account.
+Voor het implementeren van de lokale netwerkgatewaybron moet u de volgende velden invullen:
 
-Selecteer **maken** om de lokale netwerk gateway resource te maken.  
+- **Naam:** de naam van de Azure-bron voor de lokale netwerkgateway. Deze naam kan elke naam zijn die u nuttig vindt voor uw management.
+- **IP-adres**: het openbare IP-adres van uw lokale gateway on-premises.
+- **Adresruimte:** de adresbereiken voor het netwerk dat deze lokale netwerkgateway vertegenwoordigt. U meerdere adresruimtebereiken toevoegen, maar zorg ervoor dat de bereiken die u hier opgeeft niet overlappen met bereiken van andere netwerken waarmee u verbinding wilt maken. 
+- **BGP-instellingen configureren:** configureer alleen BGP-instellingen als deze instelling voor uw configuratie vereist is. Zie [Over BGP met Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md)voor meer informatie over deze instelling.
+- **Abonnement**: Het gewenste abonnement. Dit hoeft niet overeen te komen met het abonnement dat wordt gebruikt voor de VPN Gateway of het opslagaccount.
+- **Resourcegroep:** de gewenste resourcegroep. Dit hoeft niet overeen te komen met de brongroep die wordt gebruikt voor de VPN-gateway of het opslagaccount.
+- **Locatie**: de Azure-regio waarin de lokale netwerkgatewaybron moet worden gemaakt. Dit moet overeenkomen met de regio die u hebt geselecteerd voor de VPN-gateway en het opslagaccount.
 
-## <a name="configure-on-premises-network-appliance"></a>On-premises netwerk apparaat configureren
-De specifieke stappen voor het configureren van uw on-premises netwerk apparaat zijn afhankelijk van het netwerk apparaat dat door uw organisatie is geselecteerd. Afhankelijk van het apparaat dat uw organisatie heeft gekozen, kan de [lijst met geteste apparaten](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) een koppeling hebben met de instructies van de leverancier van uw apparaat voor het configureren van Azure VPN gateway.
+Selecteer **Maken** om de lokale netwerkgatewaybron te maken.  
 
-## <a name="create-private-endpoint-preview"></a>Persoonlijk eind punt maken (preview-versie)
-Het maken van een persoonlijk eind punt voor uw opslag account geeft uw opslag account een IP-adres binnen de IP-adres ruimte van uw virtuele netwerk. Wanneer u uw Azure-bestands share van on-premises koppelt met dit privé-IP-adres, stuurt de door de VPN-installatie automatisch gedefinieerde routerings regels uw koppelings aanvraag door via de VPN naar het opslag account. 
-
-Selecteer op de Blade opslag account de optie **privé-eindpunt verbindingen** in de linkerkolom en het **persoonlijke eind punt** om een nieuw persoonlijk eind punt te maken. De resulterende wizard heeft meerdere pagina's om te volt ooien:
-
-![Een scherm afbeelding van de sectie basis beginselen van de sectie persoonlijk eind punt maken](media/storage-files-configure-s2s-vpn/create-private-endpoint-1.png)
-
-Selecteer op het tabblad **basis beginselen** de gewenste resource groep, naam en regio voor uw persoonlijke eind punt. Deze kunnen wille keurig zijn, maar moeten niet overeenkomen met het opslag account, hoewel u het persoonlijke eind punt moet maken in dezelfde regio als het virtuele netwerk waarin u het persoonlijke eind punt wilt maken.
-
-Op het tabblad **resource** selecteert u het keuze rondje om **verbinding te maken met een Azure-resource in mijn Directory**. Onder **resource type**selecteert u **micro soft. Storage/Storage accounts** voor het bron type. Het veld **resource** is het opslag account met de Azure-bestands share waarmee u verbinding wilt maken. Doel-subresource is een **bestand**, omdat dit voor Azure files is.
-
-Op het tabblad **configuratie** kunt u het specifieke virtuele netwerk en subnet selecteren waaraan u uw persoonlijke eind punt wilt toevoegen. Selecteer het virtuele netwerk dat u hierboven hebt gemaakt. U moet een uniek subnet selecteren in het subnet waaraan u het service-eind punt hebt toegevoegd.
-
-Op het tabblad **configuratie** kunt u ook een privé-DNS-zone instellen. Dit is niet vereist, maar u kunt een beschrijvende UNC-pad (zoals `\\mystorageaccount.privatelink.file.core.windows.net\myshare`) gebruiken in plaats van een UNC-pad met een IP-adres om de Azure-bestands share te koppelen. Dit kan ook worden gedaan met uw eigen DNS-servers in uw virtuele netwerk.
-
-Klik op **beoordeling + maken** om het persoonlijke eind punt te maken. Zodra het persoonlijke eind punt is gemaakt, worden er twee nieuwe resources weer geven: een persoonlijke eindpunt resource en een gekoppelde virtuele netwerk interface. De resource van de virtuele netwerk interface heeft het specifieke privé-IP-adres van het opslag account. 
+## <a name="configure-on-premises-network-appliance"></a>On-premises netwerktoestel configureren
+De specifieke stappen om uw on-premises netwerktoestel te configureren, zijn afhankelijk van het netwerktoestel dat uw organisatie heeft geselecteerd. Afhankelijk van het apparaat dat uw organisatie heeft gekozen, kan de [lijst met geteste apparaten](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) een koppeling hebben naar de instructies van uw apparaatleverancier voor het configureren met Azure VPN Gateway.
 
 ## <a name="create-the-site-to-site-connection"></a>De site-naar-site-verbinding maken
-Als u de implementatie van een S2S VPN wilt volt ooien, moet u een verbinding maken tussen uw on-premises netwerk apparaat (vertegenwoordigd door de bron van de lokale netwerk gateway) en de VPN Gateway. Ga hiervoor naar de VPN Gateway die u hierboven hebt gemaakt. Selecteer in de inhouds opgave voor de VPN Gateway **verbindingen**en klik op **toevoegen**. In het deel venster voor het toevoegen van een **verbinding** zijn de volgende velden vereist:
+Als u de implementatie van een S2S VPN wilt voltooien, moet u een verbinding maken tussen uw on-premises netwerktoestel (vertegenwoordigd door de lokale netwerkgatewaybron) en de VPN-gateway. Ga hiervoor naar de VPN-gateway die u hierboven hebt gemaakt. Selecteer **Verbindingen**in de inhoudsopgave voor de VPN-gateway en klik op **Toevoegen**. Voor het resulterende **verbindingsvenster toevoegen** zijn de volgende velden vereist:
 
-- **Naam**: de naam van de verbinding. Een VPN Gateway kan meerdere verbindingen hosten, dus kies een naam die nuttig is voor uw beheer, zodat deze specifieke verbinding wordt onderscheiden.
-- **Verbindings type**: Selecteer sinds deze S2S-verbinding de optie **site-naar-site (IPSec)** in de vervolg keuzelijst.
-- **Gateway van virtueel netwerk**: dit veld wordt automatisch geselecteerd voor het VPN gateway u de verbinding maakt en kan niet worden gewijzigd.
-- **Lokale netwerk gateway**: dit is de lokale netwerk gateway die u wilt verbinden met uw VPN gateway. Het deel venster resulterende selectie moet de naam hebben van de lokale netwerk gateway die u hierboven hebt gemaakt.
-- **Gedeelde sleutel (PSK)** : een combi natie van letters en cijfers die wordt gebruikt om versleuteling voor de verbinding tot stand te brengen. Dezelfde gedeelde sleutel moet zowel in het virtuele netwerk als in de lokale netwerk gateways worden gebruikt. Als uw gateway apparaat er geen biedt, kunt u hier een maken en dit aan uw apparaat geven.
+- **Naam:** De naam van de verbinding. Een VPN-gateway kan meerdere verbindingen hosten, dus kies een naam die nuttig is voor uw beheer en die deze specifieke verbinding onderscheidt.
+- **Verbindingstype:** Aangezien dit een S2S-verbinding is, selecteert u **Site-to-site (IPSec)** in de vervolgkeuzelijst.
+- **Virtuele netwerkgateway**: Dit veld is automatisch geselecteerd op de VPN-gateway waartoe u de verbinding maakt en kan niet worden gewijzigd.
+- **Lokale netwerkgateway:** dit is de lokale netwerkgateway die u wilt verbinden met uw VPN-gateway. Het resulterende selectievenster moet de naam hebben van de lokale netwerkgateway die u hierboven hebt gemaakt.
+- **Gedeelde sleutel (PSK):** Een mengsel van letters en cijfers, gebruikt om encryptie voor de verbinding vast te stellen. Dezelfde gedeelde sleutel moet worden gebruikt in zowel het virtuele netwerk als de lokale netwerkgateways. Als uw gateway-apparaat er geen biedt, u er hier een maken en het aan uw apparaat verstrekken.
 
-Selecteer **OK** om de verbinding te maken. U kunt controleren of de verbinding tot stand is gebracht via de pagina **verbindingen** .
+Selecteer **OK** om de verbinding te maken. U controleren of de verbinding is gemaakt via de pagina **Verbindingen.**
 
-## <a name="mount-azure-file-share"></a>Azure-bestands share koppelen 
-Bij de laatste stap bij het configureren van een S2S-VPN wordt gecontroleerd of deze werkt voor Azure Files. U kunt dit doen door uw Azure-bestands share on-premises te koppelen met uw voorkeurs besturingssysteem. Zie de instructies voor het koppelen van het besturings systeem:
+## <a name="mount-azure-file-share"></a>Azure-bestandsshare monteren 
+De laatste stap in het configureren van een S2S VPN is om te controleren of deze werkt voor Azure Files. U dit doen door uw Azure-bestandsshare on-premises te monteren met uw favoriete besturingssysteem. Zie de instructies te monteren door OS hier:
 
 - [Windows](storage-how-to-use-files-windows.md)
-- [MacOS](storage-how-to-use-files-mac.md)
+- [Macos](storage-how-to-use-files-mac.md)
 - [Linux](storage-how-to-use-files-linux.md)
 
 ## <a name="see-also"></a>Zie ook
-- [Overzicht van Azure Files netwerken](storage-files-networking-overview.md)
-- [Een punt-naar-site-VPN (P2S) in Windows configureren voor gebruik met Azure Files](storage-files-configure-p2s-vpn-windows.md)
-- [Een punt-naar-site-VPN (P2S) op Linux configureren voor gebruik met Azure Files](storage-files-configure-p2s-vpn-linux.md)
+- [Overzicht van Azure Files-netwerken](storage-files-networking-overview.md)
+- [Een Point-to-Site (P2S) VPN op Windows configureren voor gebruik met Azure Files](storage-files-configure-p2s-vpn-windows.md)
+- [Een Point-to-Site (P2S) VPN op Linux configureren voor gebruik met Azure Files](storage-files-configure-p2s-vpn-linux.md)

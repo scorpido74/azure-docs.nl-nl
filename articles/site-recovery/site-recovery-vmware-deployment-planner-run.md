@@ -1,6 +1,6 @@
 ---
-title: Voer de Deployment Planner voor nood herstel van VMware met Azure Site Recovery uit
-description: In dit artikel wordt beschreven hoe u Azure Site Recovery Deployment Planner uitvoert voor VMware-herstel na nood gevallen naar Azure.
+title: De implementatieplanner voor VMware-noodherstel uitvoeren met Azure Site Recovery
+description: In dit artikel wordt beschreven hoe u Azure Site Recovery Deployment Planner voor VMware-noodherstel uitvoert in Azure.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
 ms.openlocfilehash: 044e5c5df8e0af67e4717b864de1e31fc2520408
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953288"
 ---
-# <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>De Deployment Planner voor nood herstel van VMware uitvoeren
+# <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>De implementatieplanner voor VMware-noodherstel uitvoeren
 Dit artikel is de gebruikershandleiding voor de Azure Site Recovery-implementatieplanner voor productie-installaties van het type VMware-naar-Azure.
 
 
 ## <a name="modes-of-running-deployment-planner"></a>Modi waarin de implementatieplanner kan worden uitgevoerd
 Het opdrachtregelprogramma (ASRDeploymentPlanner.exe) kunt u uitvoeren in een van de volgende drie modi:
 
-1.  [Profileren](#profile-vmware-vms)
+1.  [Profiling](#profile-vmware-vms)
 2.  [Rapporten genereren](#generate-report)
 3.  [Doorvoer bepalen](#get-throughput)
 
@@ -42,7 +42,7 @@ U moet eerst een lijst maken met de virtuele machines die u wilt profileren. U k
 
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
-4. U kunt eventueel de volgende opdracht uitvoeren als Connect-VIServer niet wordt herkend als de naam van de cmdlet.
+4. Het is mogelijk dat u de volgende opdracht moet uitvoeren als Connect-VIServer niet wordt herkend als de naam van cmdlet.
 
             Add-PSSnapin VMware.VimAutomation.Core
 
@@ -81,7 +81,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Protocol| (Optioneel) Duidt het protocol aan dat 'http' of 'https' is, om verbinding te maken met vCenter. Het standaardprotocol is https.|
 | -StorageAccountName | (Optioneel) De naam van het opslagaccount dat wordt gebruikt om de bereikbare doorvoer te vinden voor gegevensreplicatie van on-premises naar Azure. Het hulpprogramma uploadt testgegevens naar dit opslagaccount om de doorvoer te berekenen. Het opslagaccount moet v1 (GPv1) voor algemene doeleinden zijn. |
 | -StorageAccountKey | (Optioneel) De sleutel die wordt gebruikt voor toegang tot het opslagaccount. Ga naar Azure Portal > Opslagaccounts > <*naam van opslagaccount*> > Instellingen > Toegangssleutels > Key1. |
-| -Environment | (optioneel) Dit is uw doelomgeving voor het Azure Storage-account. Dit kan een van de volgende drie waarden zijn: AzureCloud, AzureUSGovernment, AzureChinaCloud. De standaardwaarde is AzureCloud. Gebruik de para meter wanneer uw Azure-doel regio een Azure-Amerikaanse overheid of een Azure-China 21Vianet is. |
+| -Environment | (optioneel) Dit is uw doelomgeving voor het Azure Storage-account. Dit kan een van de volgende drie waarden zijn: AzureCloud, AzureUSGovernment, AzureChinaCloud. De standaardwaarde is AzureCloud. Gebruik de parameter wanneer uw doelazure-regio Azure US Government of Azure China 21Vianet is. |
 
 
 Het is raadzaam om de virtuele machines gedurende meer dan 7 dagen te profileren. Als het verlooppatroon varieert binnen een maand, raden wij u aan de profilering door de week uit te voeren wanneer zich het maximale verloop voordoet. Het beste is het om de profilering gedurende 31 dagen uit te voeren, omdat u dan een betere aanbeveling krijgt. Gedurende de periode voor profilering blijft ASRDeploymentPlanner.exe actief. Het hulpprogramma noteert de invoer van de profileringstijd in dagen. Voor het uitvoeren van een snelle test of concepttest van het hulpprogramma, kunt u een profilering van een paar uur of van een paar minuten uitvoeren. De minimaal toegestane tijd voor profilering is 30 minuten.
@@ -90,12 +90,12 @@ Tijdens het profileren kunt u eventueel de naam en sleutel van een opslagaccount
 
 U kunt meerdere exemplaren van het hulpprogramma uitvoeren voor verschillende sets virtuele machines. Zorg ervoor dat de namen van de virtuele machines niet worden herhaald in een van de profileringssets. Als u bijvoorbeeld tien virtuele machines hebt geprofileerd (VM1 tot en met VM10) en na een paar dagen vijf andere virtuele machines wilt profileren (VM11 tot en met VM15), kunt u voor de tweede set virtuele machines (VM11 tot en met VM15) het hulpprogramma uitvoeren vanuit een andere opdrachtregelconsole. Zorg er wel voor dat de tweede set virtuele machines geen namen bevat van de eerste reeks geprofileerde virtuele machines of gebruik voor de tweede set een andere uitvoerdirectory. Als er voor het profileren van dezelfde virtuele machines twee exemplaren van het hulpprogramma worden gebruikt en dezelfde uitvoerdirectory wordt gebruikt, is het gegenereerde rapport niet correct.
 
-Het hulp programma is standaard geconfigureerd voor het profiel en genereren van een rapport van Maxi maal 1000 Vm's. U kunt de limiet wijzigen door de sleutelwaarde MaxVMsSupported in het bestand *ASRDeploymentPlanner.exe.config* te wijzigen.
+Standaard is het hulpprogramma geconfigureerd om rapport tot 1000 VM's te profileren en te genereren. U kunt de limiet wijzigen door de sleutelwaarde MaxVMsSupported in het bestand *ASRDeploymentPlanner.exe.config* te wijzigen.
 ```
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
-Met de standaardinstellingen worden er twee VMList.txt-bestanden gemaakt om bijvoorbeeld 1500 VM's te profileren. Een met 1000 VM's en een ander met 500 VM's. Voer de twee exemplaren van Azure Site Recovery Deployment Planner uit, een met VMList1. txt en een andere met VMList2. txt. U kunt hetzelfde directorypad gebruiken om de geprofileerde gegevens van beide VMList-VM's op te slaan.
+Met de standaardinstellingen worden er twee VMList.txt-bestanden gemaakt om bijvoorbeeld 1500 VM's te profileren. Een met 1000 VM's en een ander met 500 VM's. Voer de twee exemplaren van Azure Site Recovery Deployment Planner uit, een met VMList1.txt en andere met VMList2.txt. U kunt hetzelfde directorypad gebruiken om de geprofileerde gegevens van beide VMList-VM's op te slaan.
 
 Op basis van de hardwareconfiguratie hebben we gezien dat de bewerking kan mislukken vanwege onvoldoende geheugen, met name wat de omvang betreft van het RAM van de server waarop het hulpprogramma wordt uitgevoerd om het rapport te genereren. Als u goede hardware hebt, kunt u de waarde MaxVMsSupported verhogen.  
 
@@ -136,10 +136,10 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 
 ## <a name="generate-report"></a>Rapport genereren
-Het hulpprogramma genereert een Microsoft Excel-bestand met ingeschakelde macro's (XLSM-bestand) als de rapportuitvoer, met daarin een overzicht van alle aanbevelingen voor de implementatie. Het rapport heeft de naam `DeploymentPlannerReport_<unique numeric identifier>.xlsm` en geplaatst in de opgegeven map.
+Het hulpprogramma genereert een Microsoft Excel-bestand met ingeschakelde macro's (XLSM-bestand) als de rapportuitvoer, met daarin een overzicht van alle aanbevelingen voor de implementatie. Het rapport `DeploymentPlannerReport_<unique numeric identifier>.xlsm` wordt benoemd en geplaatst in de opgegeven map.
 
 >[!NOTE]
->Voor het genereren van het rapport is een Windows-PC of Windows-Server met Excel 2013 of hoger vereist. Het decimaal teken op deze computer moet worden geconfigureerd als '. ' om de kosten ramingen te produceren. Als u ', ' als decimaal teken hebt ingesteld, gaat u naar ' datum-, tijd-of getalnotaties wijzigen ' in het configuratie scherm en gaat u naar ' aanvullende instellingen ' om het decimaal teken te wijzigen in '. '.
+>Voor het genereren van rapporten is een Windows-pc of Windows Server met Excel 2013 of hoger vereist. Het decimale symbool op deze machine moet worden geconfigureerd als '' om de kostenramingen te produceren. Als u de instelling '' als decimale symbool hebt ingesteld, gaat u naar 'Datum- en tijd- of getalnotaties wijzigen' in het Configuratiescherm en gaat u naar 'Aanvullende instellingen' om het decimale symbool te wijzigen in ''.
 
 Nadat de profilering is voltooid, kunt u het hulpprogramma uitvoeren in de modus voor het genereren van een rapport. Hieronder ziet u een tabel met verplichte en optionele parameters van het hulpprogramma die u kunt uitvoeren in de profileringsmodus.
 
@@ -159,16 +159,16 @@ Nadat de profilering is voltooid, kunt u het hulpprogramma uitvoeren in de modus
 |-Protocol|(Optioneel) Duidt het protocol aan dat 'http' of 'https' is, om verbinding te maken met vCenter. Het standaardprotocol is https.|
 | -DesiredRPO | (Optioneel) Het gewenste beoogde herstelpunt (Recovery Point Objective [RPO]) in minuten. Standaard is dit 15 minuten.|
 | -Bandwidth | De bandbreedte in Mbps. De parameter voor het berekenen van de RPO die voor de opgegeven bandbreedte kan worden bereikt. |
-| -StartDate | (Optioneel) De begindatum en -tijd in de notatie MM-DD-JJJJ:UU:MM (in 24-uursindeling). Als u *StartDate* opgeeft, moet u ook *EndDate* opgeven. Het rapport wordt dan gegenereerd voor de geprofileerde gegevens die zijn verzameld tussen StartDate en EndDate. |
-| -EndDate | (Optioneel) De einddatum en -tijd in de notatie MM-DD-JJJJ:UU:MM (in 24 uursindeling). Als u *EndDate* opgeeft, moet u ook *StartDate* opgeven. Het rapport wordt dan gegenereerd voor de geprofileerde gegevens die zijn verzameld tussen StartDate en EndDate. |
+| -StartDate | (Optioneel) De begindatum en -tijd in de notatie MM-DD-JJJJ:UU:MM (in 24-uursindeling). *Begindatum* moet samen met *Einddatum*worden opgegeven . Het rapport wordt dan gegenereerd voor de geprofileerde gegevens die zijn verzameld tussen StartDate en EndDate. |
+| -EndDate | (Optioneel) De einddatum en -tijd in de notatie MM-DD-JJJJ:UU:MM (in 24 uursindeling). *Einddatum* moet samen met *StartDate*worden opgegeven . Het rapport wordt dan gegenereerd voor de geprofileerde gegevens die zijn verzameld tussen StartDate en EndDate. |
 | -GrowthFactor | (Optioneel) De groeifactor, uitgedrukt als een percentage. De standaardwaarde is 30 procent. |
 | -UseManagedDisks | (Optioneel) UseManagedDisks - Ja/Nee. Standaard is Ja. Het aantal virtuele machines dat kan worden ondergebracht in een enkel opslagaccount, wordt berekend afgaande op het feit of de Failover/Test-testfailover van virtuele machines is uitgevoerd op een beheerde schijf in plaats van op een niet-beheerde schijf. |
-|-SubscriptionId |(Optioneel) De abonnement-GUID. Houd er rekening mee dat deze para meter is vereist wanneer u het rapport met kosten ramingen wilt genereren met de nieuwste prijs op basis van uw abonnement, de aanbieding die aan uw abonnement is gekoppeld en voor uw specifieke Azure-doel regio in de **opgegeven valuta** .|
+|-SubscriptionId |(Optioneel) De abonnement-GUID. Houd er rekening mee dat deze parameter vereist is wanneer u het kostenschattingsrapport moet genereren met de meest recente prijs op basis van uw abonnement, de aanbieding die is gekoppeld aan uw abonnement en voor uw specifieke doelAzure-regio in de **opgegeven valuta**.|
 |-TargetRegion|(Optioneel) De Azure-regio waarop de replicatie is gericht. Omdat er voor Azure verschillende kosten per regio worden berekend, moet u voor het genereren van dit rapport deze parameter met een specifieke Azure-doelregio gebruiken.<br>De standaardwaarde is WestUS2, of de laatst gebruikte doelregio.<br>Raadpleeg de lijst met [ondersteunde doelregio's](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions).|
 |-OfferId|(Optioneel) De aanbieding is gekoppeld aan het vermelde abonnement. De standaardwaarde is MS-AZR-0003P (betalen naar gebruik).|
 |-Currency|(Optioneel) De valuta waarin de kosten in het gegenereerde rapport worden weergegeven. Standaard is Amerikaanse Dollar ($) of de laatst gebruikte valuta.<br>Raadpleeg de lijst met [ondersteunde valuta's](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies).|
 
-Het hulp programma is standaard geconfigureerd voor het profiel en genereren van een rapport van Maxi maal 1000 Vm's. U kunt de limiet wijzigen door de sleutelwaarde MaxVMsSupported in het bestand *ASRDeploymentPlanner.exe.config* te wijzigen.
+Standaard is het hulpprogramma geconfigureerd om rapport tot 1000 VM's te profileren en te genereren. U kunt de limiet wijzigen door de sleutelwaarde MaxVMsSupported in het bestand *ASRDeploymentPlanner.exe.config* te wijzigen.
 ```xml
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
@@ -208,7 +208,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Serve
 
 #### <a name="example-7-generate-a-report-for-south-india-azure-region-with-indian-rupee-and-specific-offer-id"></a>Voorbeeld 7: een rapport genereren voor de Azure-regio India - zuid met de Indiase roepie en een specifieke aanbiedings-ID
 
-Houd er rekening mee dat de abonnements-ID is vereist voor het genereren van een kosten rapport in een specifieke valuta.
+Houd er rekening mee dat de abonnements-ID vereist is om kostenrapport te genereren in een specifieke valuta.
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -SubscriptionID 4d19f16b-3e00-4b89-a2ba-8645edf42fe5 -OfferID MS-AZR-0148P -TargetRegion southindia -Currency INR
 ```
@@ -240,12 +240,12 @@ We raden het dan ook sterk aan om rekening te houden met groei tijdens het plann
 
 Het gegenereerde Microsoft Excel-rapport bevat de volgende informatie:
 
-* [Samenvatting on-premises](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
+* [On-premises samenvatting](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
 * [Aanbevelingen](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)
-* [VM<->Opslagplaatsing](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
+* [VM-< >->->](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
 * [Compatibele VM's](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms)
 * [Niet-compatibele VM's](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms)
-* [Kostenraming](site-recovery-vmware-deployment-planner-cost-estimation.md)
+* [Kostenschatting](site-recovery-vmware-deployment-planner-cost-estimation.md)
 
 ![Implementatieplanner](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)
 
@@ -265,7 +265,7 @@ Open een opdrachtregelconsole en ga naar de map met het hulpprogramma voor de Si
 | -StorageAccountName | De naam van het opslagaccount dat wordt gebruikt om de bandbreedte te bepalen die wordt gebruikt voor gegevensreplicatie van on-premises naar Azure. Het hulpprogramma uploadt testgegevens naar dit opslagaccount om de gebruikte bandbreedte te bepalen. Het opslagaccount moet v1 (GPv1) voor algemene doeleinden zijn.|
 | -StorageAccountKey | De sleutel die wordt gebruikt voor toegang tot het opslagaccount. Ga naar Azure Portal > Opslagaccounts > <*naam van het opslagaccount*> > Instellingen > Toegangssleutels > Key1 (of primaire toegangssleutel voor klassieke opslagaccount). |
 | -VMListFile | Het bestand met de lijst met virtuele machines die moeten worden geprofileerd voor het berekenen van de gebruikte bandbreedte. Het bestandspad kan absoluut of relatief zijn. Het bestand moet per regel één naam of IP-adres van een virtuele machine bevatten. De namen van de virtuele machines in het bestand moeten identiek zijn met de namen van de virtuele machine op de vCenter-server of vSphere ESXi-host.<br>Het bestand ProfileVMList bevat bijvoorbeeld de volgende virtuele machines:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
-| -Environment | (optioneel) Dit is uw doelomgeving voor het Azure Storage-account. Dit kan een van de volgende drie waarden zijn: AzureCloud, AzureUSGovernment, AzureChinaCloud. De standaardwaarde is AzureCloud. Gebruik de para meter wanneer uw Azure-doel regio een Azure-Amerikaanse overheid of een Azure-China 21Vianet is. |
+| -Environment | (optioneel) Dit is uw doelomgeving voor het Azure Storage-account. Dit kan een van de volgende drie waarden zijn: AzureCloud, AzureUSGovernment, AzureChinaCloud. De standaardwaarde is AzureCloud. Gebruik de parameter wanneer uw doelazure-regio Azure US Government of Azure China 21Vianet is. |
 
 Het hulpprogramma maakt in de opgegeven directory verschillende asrvhdfile<#>.vhd-bestanden van 64 MB (# is het volgnummer). Deze bestanden worden geüpload naar het opslagaccount om de doorvoer te bepalen. Nadat de doorvoer is gemeten, worden al deze bestanden verwijderd uit het opslagaccount en van de lokale server. Als het hulpprogramma om wat voor reden dan ook wordt beëindigd tijdens het berekenen van de doorvoer, worden de bestanden niet verwijderd uit het account of van de lokale server. U moet de bestanden dan handmatig verwijderen.
 
@@ -291,4 +291,4 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 >  4. Wijzig de Site Recovery-instellingen op de processerver om [de voor replicatie gebruikte netwerkbandbreedte te vergroten](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Het gegenereerde rapport analyseren](site-recovery-vmware-deployment-planner-analyze-report.md).
+* [Analyseer het gegenereerde rapport](site-recovery-vmware-deployment-planner-analyze-report.md).

@@ -1,6 +1,6 @@
 ---
 title: Oplossingen voor de overheid bouwen met Azure IoT Central
-description: Meer informatie over het bouwen van Smart City-oplossingen met behulp van Azure IoT Central-toepassings sjablonen.
+description: Leer smart city-oplossingen te bouwen met Azure IoT Central-toepassingssjablonen.
 author: miriambrus
 ms.author: miriamb
 ms.date: 10/23/2019
@@ -8,76 +8,76 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 159691ee101e586419d2fd8df314947af28219dd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77016507"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Oplossingen voor de overheid bouwen met Azure IoT Central
 
 
 
-Aan de slag met het bouwen van Smart City-oplossingen met behulp van Azure IoT Central-toepassings sjablonen. Begin nu met de **bewaking van water kwaliteit**, **bewaking van water verbruik**en het **beheer van verbonden afval**.
+Ga aan de slag met het bouwen van smart city-oplossingen met Azure IoT Central-toepassingssjablonen. Begin nu met **het monitoren van de waterkwaliteit**, het monitoren van het **waterverbruik**en **het aangesloten afvalbeheer**.
 
-## <a name="what-is-water-quality-monitoring-application-template"></a>Wat is de toepassings sjabloon water kwaliteit controleren?   
+## <a name="what-is-water-quality-monitoring-application-template"></a>Wat is de toepassingsjabloon Waterkwaliteitmonitoring?   
 
-Bewaking van traditionele water kwaliteit is afhankelijk van de hand matige bemonsterings technieken en veld laboratorium analyse, wat tijd verbruikt en kostbaar is. Door de water kwaliteit op afstand in realtime te bewaken, kunnen problemen met water kwaliteit worden beheerd voordat de burgers worden aangetast. Bovendien kunnen met geavanceerde analyses, water hulpprogramma's en omgevings organisaties vroegtijdige waarschuwingen over mogelijke problemen met water kwaliteit optreden en vooraf worden gepland.  
+Traditionele waterkwaliteitsmonitoring is afhankelijk van handmatige bemonsteringstechnieken en veldlaboratoriumanalyse, wat tijdrovend en kostbaar is. Door de waterkwaliteit op afstand in real-time te monitoren, kunnen problemen met de waterkwaliteit worden beheerd voordat burgers worden getroffen. Bovendien kunnen met geavanceerde analyses, waterbedrijven en milieuagentschappen vroegtijdig worden gewaarschuwd voor mogelijke problemen met de waterkwaliteit en van tevoren plannen voor waterbehandeling.  
 
-De app voor het controleren van water kwaliteit is een IoT Central app-sjabloon waarmee u de ontwikkeling van uw IoT-oplossing kunt kickstart en water-hulpprogram ma's kunt inschakelen voor het digitaal bewaken van de water kwaliteit in Smart steden. 
+De app Voor waterkwaliteitsbewaking is een IoT Central-appsjabloon om u te helpen uw IoT-oplossingsontwikkeling op gang te brengen en waterbedrijven in staat te stellen de waterkwaliteit in slimme steden digitaal te monitoren. 
 
-![App-sjabloon voor het controleren van water kwaliteit](./media/overview-iotcentral-government/waterqualitymonitoring-dashboard-full.png)
+![Sjabloon voor het bewaken van waterkwaliteit](./media/overview-iotcentral-government/waterqualitymonitoring-dashboard-full.png)
 
-De app-sjabloon bestaat uit:
-* Voor beeld-operator dashboards
-* Voor beeld van een monitor met water kwaliteit Apparaatbeheer
-* Bewakings apparaten voor gesimuleerde water kwaliteit
+De sjabloon App bestaat uit:
+* Voorbeeldoperatordashboards
+* Voorbeeld van apparaatsjablonen voor beeldschermen voor waterkwaliteit
+* Gesimuleerde monitorapparaten voor waterkwaliteit
 * Vooraf geconfigureerde regels en taken
-* Huis stijl met wit labelen 
+* Branding met behulp van white labeling 
 
-Aan de slag met de zelf studie voor het controleren van de [water kwaliteit-toepassing](./tutorial-water-quality-monitoring.md).
-
-
-## <a name="what-is-water-consumption-monitoring-application-template"></a>Wat is een toepassings sjabloon voor het bewaken van water verbruik? 
-
-Het bijhouden van traditionele water verbruiks is afhankelijk van water deelnemers die hand matig water verbruiks meters lezen op de meet punten. Voor meer en meer steden worden traditionele meters vervangen door geavanceerde slimme meters die het op afstand meten van verbruik en het op afstand beheren van kleppen mogelijk maakt. Bewaking van water verbruik, gecombineerd met digitaal feedback bericht aan de burger, kan het bewustzijn verhogen en het water verbruik verminderen. 
+Ga aan de slag met de tutorial voor het bewaken van de [waterkwaliteit.](./tutorial-water-quality-monitoring.md)
 
 
-De bewakings-app voor water verbruik is een IoT Central app-sjabloon waarmee u de ontwikkeling van uw IoT-oplossing kunt kickstart om water middelen en steden op afstand te bewaken en te beheren om het verbruik te verminderen. 
+## <a name="what-is-water-consumption-monitoring-application-template"></a>Wat is de toepassingssjabloon Waterverbruikmonitoring? 
 
-  ![App-sjabloon voor bewaking van water verbruik](./media/overview-iotcentral-government/waterconsumptionmonitoring-dashboardfull.png)
+Traditionele waterverbruik tracking is afhankelijk van water exploitanten handmatig lezen waterverbruik meters op de meterplaatsen. Steeds meer steden vervangen traditionele meters door geavanceerde slimme meters die het mogelijk maken om het verbruik op afstand te monitoren en op afstand kleppen te bedienen om de waterstroom te regelen. Monitoring van het waterverbruik in combinatie met een digitale feedbackboodschap aan de burger kan het bewustzijn vergroten en het waterverbruik verminderen. 
 
-De sjabloon voor de bewaking van water verbruik-apps bestaat uit vooraf geconfigureerd:
-* Voor beeld-operator dashboards
-* Voor beeld van een monitor met water kwaliteit Apparaatbeheer
-* Bewakings apparaten voor gesimuleerde water kwaliteit
+
+Waterverbruik Monitoring app is een IoT Central app template om u te helpen kickstart uw IoT-oplossing ontwikkeling om water nutsbedrijven en steden op afstand te controleren en te controleren waterstroom om het verbruik te verminderen. 
+
+  ![Sjabloon voor het bewaken van waterverbruik](./media/overview-iotcentral-government/waterconsumptionmonitoring-dashboardfull.png)
+
+De app template waterverbruikmonitoring bestaat uit vooraf geconfigureerd:
+* Voorbeeldoperatordashboards
+* Voorbeeld van apparaatsjablonen voor beeldschermen voor waterkwaliteit
+* Gesimuleerde monitorapparaten voor waterkwaliteit
 * Vooraf geconfigureerde regels en taken
-* Huis stijl met wit labelen 
+* Branding met behulp van white labeling 
 
- Ga aan de slag met de [zelf studie voor de controle van water verbruik](./tutorial-water-consumption-monitoring.md).
+ Aan de slag met de [tutorial voor het monitoren van waterverbruik.](./tutorial-water-consumption-monitoring.md)
 
-## <a name="what-is-connected-waste-management-application-template"></a>Wat is een verbonden afval beheer toepassings sjabloon? 
+## <a name="what-is-connected-waste-management-application-template"></a>Wat is de toepassingssjabloon Verbonden Afvalbeheer? 
 
-De verbonden afval beheer-app is een IoT Central app-sjabloon waarmee u de ontwikkeling van uw IoT-oplossing kunt kickstart, zodat Smart steden op afstand kunnen worden bewaakt om efficiënte afval verzameling te maximaliseren. 
+Connected Waste Management-app is een IoT Central-appsjabloon waarmee u uw IoT-oplossingsontwikkeling starten, zodat slimme steden op afstand kunnen monitoren om een efficiënte afvalinzameling te maximaliseren. 
 
-![Sjabloon voor verbonden afval beheer-app](media/overview-iotcentral-government/connectedwastemanagement-dashboard.png) 
+![Sjabloon verbonden afvalbeheer-app](media/overview-iotcentral-government/connectedwastemanagement-dashboard.png) 
 
 
-De sjabloon voor het verbonden afval beheer van de toepassing bestaat uit vooraf geconfigureerd:
-* Voor beeld-operator dashboards
-* Voor beelden van sjablonen voor aangesloten afval bakken
-* Gesimuleerde gekoppelde afval bakken-apparaten
+De sjabloon verbonden afvalbeheer-app bestaat uit vooraf geconfigureerd:
+* Voorbeeldoperatordashboards
+* Voorbeeld van apparaatsjablonen voor verbonden afvalopslag
+* Gesimuleerde aangesloten afvalbakapparaten
 * Vooraf geconfigureerde regels en taken
-* Huis stijl met wit labelen 
+* Branding met behulp van white labeling 
 
-Aan de slag met de [zelf studie voor de gekoppelde afval beheer toepassing](./tutorial-connected-waste-management.md).
+Ga aan de slag met de zelfstudie van de [toepassing Connected Waste Management.](./tutorial-connected-waste-management.md)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Probeer een van de overheids toepassings sjablonen in IoT Central gratis [app maken](https://apps.azureiotcentral.com/build/government)
-* Meer informatie over de [bewakings concepten voor water kwaliteit](./concepts-waterqualitymonitoring-architecture.md)
-* Meer informatie over de [bewakings concepten water verbruik](./concepts-waterconsumptionmonitoring-architecture.md)
-* Meer informatie over de [beginselen van verbonden afval beheer](./concepts-connectedwastemanagement-architecture.md)  
-* Zie [overzicht IOT Central](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central) voor meer informatie over IOT Central
+* Probeer een van de toepassingssjablonen van de overheid in IoT Central voor het gratis [maken van de app](https://apps.azureiotcentral.com/build/government)
+* Meer informatie over [concepten voor het bewaken van waterkwaliteit](./concepts-waterqualitymonitoring-architecture.md)
+* Meer informatie over [concepten voor monitoring van waterverbruik](./concepts-waterconsumptionmonitoring-architecture.md)
+* Meer informatie over [connected waste management concepten](./concepts-connectedwastemanagement-architecture.md)  
+* Meer informatie over IoT Central, zie [IoT Central-overzicht](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)
  

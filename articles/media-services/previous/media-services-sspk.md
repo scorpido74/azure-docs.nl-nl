@@ -1,6 +1,6 @@
 ---
-title: Licenties voor micro soft® Smooth Streaming client Porting kit
-description: Meer informatie over licenties voor micro soft® Smooth Streaming client Porting kit.
+title: Microsoft® Smooth Streaming Client Porting Kit licenties
+description: Meer informatie over het verlenen van licenties voor de Microsoft® Smooth Streaming Client Porting Kit.
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -15,83 +15,83 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
 ms.openlocfilehash: 59ac3ab2e70bfa00f19bae7e551780f2b2bb8ccb
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79096707"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licenties voor micro soft® Smooth Streaming client Porting kit 
+# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Microsoft® Smooth Streaming Client Porting Kit licenties 
 ## <a name="overview"></a>Overzicht
-Micro soft Smooth Streaming client Porting kit (**SSPK** for Short) is een Smooth streaming-client implementatie die is geoptimaliseerd voor het helpen van Inge sloten hardwarefabrikanten, kabel en mobiele Opera Tors, aanbieders van leveranciers, leveranciers van Hoorn, onafhankelijke software leveranciers (isv's) en oplossingen voor het maken van adaptieve inhoud in Smooth streaming indeling. SSPK is een apparaat-en platform onafhankelijke implementatie van Smooth Streaming-client die door de licentie kan worden getransporteerd naar elk apparaat en platform. 
+Microsoft Smooth Streaming Client Porting Kit **(SSPK** voor kort) is een Smooth Streaming client implementatie die is geoptimaliseerd om embedded apparaat fabrikanten, kabel-en mobiele operators, content service providers, handset fabrikanten, onafhankelijke software leveranciers (ISV's), en solution providers om producten en diensten voor streaming adaptieve inhoud in Smooth Streaming formaat te creëren. SSPK is een apparaat- en platformonafhankelijke implementatie van Smooth Streaming-client die door de licentiehouder naar elk apparaat en platform kan worden geport. 
 
-Hieronder vindt u een architectuur op hoog niveau en het vak IIS Smooth Streaming Porting kit is de Smooth Streaming-client implementatie die door micro soft wordt geleverd en bevat alle hoofd logica voor het afspelen van Smooth Streaming inhoud. Deze inhoud wordt vervolgens getransporteerd door partners voor een specifiek apparaat of platform door de juiste interfaces te implementeren. 
+Hieronder is een architectuur op hoog niveau en IIS Smooth Streaming Porting Kit box is de Smooth Streaming Client implementatie die door Microsoft en bevat alle kern logica voor het afspelen van Smooth Streaming content. Deze inhoud wordt vervolgens geport door partners voor een specifiek apparaat of platform door het implementeren van geschikte interfaces. 
 
-![SSPK](./media/media-services-sspk/sspk-arch.png)
+![SSPK (SSPK)](./media/media-services-sspk/sspk-arch.png)
 
 ## <a name="description"></a>Beschrijving
-SSPK wordt in licentie gegeven voor termen die uitstekende bedrijfs waarde bieden. SSPK-licentie biedt de branche de volgende mogelijkheden:
+SSPK is gelicentieerd op voorwaarden die een uitstekende bedrijfswaarde bieden. SSPK licentie biedt de industrie met:
 
-* Smooth Streaming Porting kit-bron inC++ 
-  * implementeert Smooth Streaming-client functionaliteit
-  * voegt indelings parsering, heuristiek, buffer logica, enzovoort toe.
-* Api's voor de Player-toepassing 
-  * programmeer interfaces voor interactie met een Media Player-toepassing
-* Interface voor de PAL-laag (platform Abstraction Layer) 
-  * programmeer interfaces voor interactie met het besturings systeem (threads, sockets)
-* HAL-interface (Hardware Abstraction Layer) 
-  * programmeer interfaces voor interactie met hardware A/V-decoders (decoderen, rendering)
-* Digital Rights Management (DRM)-interface 
-  * programmeer interfaces voor het verwerken van DRM via de DRM Abstraction Layer (DAL)
-  * Micro soft PlayReady Porting kit wordt afzonderlijk verzonden, maar via deze interface geïntegreerd. Klik [hier](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)voor meer informatie over de licentie verlening voor micro soft PlayReady-apparaten.
-* Implementatie voorbeelden 
-  * voor beeld PAL-implementatie voor Linux
-  * voor beeld van een HAL-implementatie voor GStreamer
+* Smooth Streaming Porting Kit-bron in C++ 
+  * implementeert functionaliteit voor smooth streaming client
+  * voegt formaat parsing, heuristiek, bufferen logica, enz.
+* API's voor spelerstoepassingen 
+  * programmeerinterfaces voor interactie met een mediaspelertoepassing
+* Pal-interface (Platform Abstraction Layer) 
+  * programmeerinterfaces voor interactie met het besturingssysteem (threads, sockets)
+* HAL-interface (Hardware Abstractie Layer) 
+  * programmeerinterfaces voor interactie met hardware A/V-decoders (decoderen, renderen)
+* DRM-interface (Digital Rights Management) 
+  * programmeerinterfaces voor het verwerken van DRM via de DRM Abstraction Layer (DAL)
+  * Microsoft PlayReady Porting Kit wordt afzonderlijk geleverd, maar integreert via deze interface. Klik [hier](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)voor meer informatie over microsoft PlayReady Device-licenties.
+* Uitvoeringsmonsters 
+  * voorbeeld PAL-implementatie voor Linux
+  * voorbeeld HAL-implementatie voor GStreamer
 
-## <a name="licensing-options"></a>Licentie opties
-Micro soft Smooth Streaming client Porting kit wordt beschikbaar gesteld voor licentie verlening onder twee verschillende licentie overeenkomsten: één voor het ontwikkelen van Smooth Streaming client interim-producten en een andere voor het distribueren van eind producten van Smooth Streaming client naar eind gebruikers.
+## <a name="licensing-options"></a>Licentieopties
+Microsoft Smooth Streaming Client Porting Kit wordt beschikbaar gesteld aan licentiehouders onder twee verschillende licentieovereenkomsten: een voor het ontwikkelen van Smooth Streaming Client Interim-producten en een voor het distribueren van Smooth Streaming Client Final Products aan eindgebruikers.
 
-* Voor chipset-fabrikanten, systeem integrators of onafhankelijke software leveranciers (Isv's) die een bron code-kit nodig hebben voor het ontwikkelen van interim-producten, moet een micro soft Smooth Streaming client porting Kit **interim-product licentie** worden uitgevoerd.
-* Voor fabrikanten van apparaten of Isv's die distributie rechten nodig hebben voor de eind gebruikers van Smooth Streaming client, moet de micro soft Smooth Streaming client porting Kit- **product licentie** worden uitgevoerd.
+* Voor chipsetfabrikanten, systeemintegratoren of onafhankelijke softwareleveranciers (ISV's) die een broncodeportingkit nodig hebben om Interim-producten te ontwikkelen, moet een Microsoft Smooth Streaming Client Porting Kit **Interim-productlicentie** worden uitgevoerd.
+* Voor apparaatfabrikanten of ISV's die distributierechten nodig hebben voor smooth streaming client-eindproducten aan eindgebruikers, moet de **definitieve productlicentie** voor Microsoft Smooth Streaming Client Porting Kit worden uitgevoerd.
 
-### <a name="microsoft-smooth-streaming-client-porting-kit-interim-product-license"></a>Interim product licentie voor micro soft Smooth Streaming client Porting kit
-Onder deze licentie biedt micro soft een Smooth Streaming client Porting kit en de benodigde intellectuele eigendoms rechten voor het ontwikkelen en distribueren van Smooth Streaming client interim-producten naar andere Smooth Streaming client Porting kit-apparaatlicentie die Eind producten van Smooth Streaming-client distribueren.
+### <a name="microsoft-smooth-streaming-client-porting-kit-interim-product-license"></a>Microsoft Smooth Streaming Client Porting Kit Interim Product License
+Onder deze licentie biedt Microsoft een Smooth Streaming Client Porting Kit en de nodige intellectuele eigendomsrechten om Smooth Streaming Client Interim-producten te ontwikkelen en te distribueren naar andere licenties voor smooth streaming client porting kit die Smooth Streaming Client Final Products distribueren.
 
-#### <a name="fee-structure"></a>Kosten structuur
-Een Amerikaanse versie van $50.000 licentie kosten biedt toegang tot de Smooth Streaming client Porting kit. 
+#### <a name="fee-structure"></a>Vergoedingsstructuur
+Een amerikaanse licentievergoeding van $ 50.000 biedt toegang tot de Smooth Streaming Client Porting Kit. 
 
-### <a name="microsoft-smooth-streaming-client-porting-kit-final-product-license"></a>Micro soft Smooth Streaming client Porting kit-eind product licentie
-Onder deze licentie biedt micro soft alle benodigde intellectuele eigendoms rechten om Smooth Streaming client interim-producten te ontvangen van andere Smooth Streaming-licenties voor client Porting kit en om bedrijfs merken Smooth Streaming client definitief te distribueren Producten aan eind gebruikers.
+### <a name="microsoft-smooth-streaming-client-porting-kit-final-product-license"></a>Microsoft Smooth Streaming Client Porting Kit Final Product License
+Onder deze licentie biedt Microsoft alle benodigde intellectuele eigendomsrechten om Smooth Streaming Client Interim-producten van andere Smooth Streaming Client Porting Kit-licentiehouders te ontvangen en om smooth streaming client final van het bedrijf te distribueren Producten voor eindgebruikers.
 
-#### <a name="fee-structure"></a>Kosten structuur
-Het eind product van de Smooth Streaming-client wordt aangeboden onder een royalty-model zoals in:
+#### <a name="fee-structure"></a>Vergoedingsstructuur
+Het Smooth Streaming Client Final Product wordt aangeboden onder een royaltymodel als onder:
 
-* $0,10 per apparaat-implementatie verzonden
-* De royalty wordt elk jaar gelimiteerd op $50.000
-* Geen royalty voor eerste 10.000-apparaat-implementaties per jaar 
+* $ 0,10 per verzonden apparaatimplementatie
+* De royalty wordt gemaximeerd op $ 50.000 per jaar
+* Geen royalty's voor de eerste 10.000 apparaatimplementaties per jaar 
 
-## <a name="licensing-procedure-and-sspk-access"></a>Licentie procedure en SSPK-toegang
-E-mail [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com) voor alle licentie query's.
+## <a name="licensing-procedure-and-sspk-access"></a>Licentieprocedure en SSPK-toegang
+E-mail [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com) voor alle licentiequery's.
 
-De [SSPK-distributie Portal](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) is toegankelijk voor geregistreerde interim-licenties.
+Het [SSPK Distribution portal](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) is toegankelijk voor geregistreerde Interim licentiehouders.
 
-Interim-en finale SSPK-licenties kunnen technische vragen naar [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)verzenden.
+Interim en Final SSPK licentiehouders [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)kunnen technische vragen stellen aan .
 
-## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Licentie voor micro soft Smooth Streaming client interim-product overeenkomst
+## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Smooth Streaming Client Interim Product Agreement Licensees
 
 * Adroit Business Solutions, Inc
-* Advanced Digital Broadcast SA
-* Kablosuz Iletism Sanayive dis Ticaret W.S.
+* Geavanceerde digitale uitzending SA
+* AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
 * Albis Technologies Ltd.
 * Alticast Corporation
 * Amazon Digital Services, Inc.
 * Arion Technology, Inc.
-* AVC multi media-software co., Ltd.
+* AVC Multimedia Software Co., Ltd.
 * Cavium, Inc.
-* EchoStar-aankoop maatschappij
+* EchoStar Inkoop corporation
 * Enseo, Inc.
 * Fluendo S.A.
-* Guangzhou Shikun elektronica., Ltd.
+* Guangzhou Shikun Electronics., Ltd.
 * HANDAN BroadInfoCom Co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
@@ -100,62 +100,62 @@ Interim-en finale SSPK-licenties kunnen technische vragen naar [smoothpk@microso
 * MStar Co, Ltd
 * Nintendo Co., Ltd.
 * OpenTV, Inc.
-* Saffron digitaal beperkt
+* Saffraan Digital Limited
 * Sichuan Changhong Electric Co., Ltd
-* SoftAtHome
+* SoftAtHome SoftAtHome
 * Sony Corporation
 * Tatung Technology Inc.
-* Belangrijkste Victory-investeringen, Ltd.
-* Vestel Elektronik Sanayi ve Ticaret W.S.
+* Top Victory Investments, Ltd.
+* Vestel Elektronik Sanayi ve Ticaret A.S.
 * VisualOn, Inc.
 * ZTE Corporation
 
-## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Licenties voor micro soft Smooth Streaming-client eindproduct overeenkomst
-* Advanced Digital Broadcast SA
-* Kablosuz Iletism Sanayive dis Ticaret W.S.
+## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft Smooth Streaming Client Final Product Agreement Licensees
+* Geavanceerde digitale uitzending SA
+* AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
 * Albis Technologies Ltd.
 * Amazon Digital Services, Inc.
 * AmTRAN Technology Co., Ltd.
 * Arcadyan Technology Corporation
 * Arion Technology, Inc.
-* ATMACA ELEKTRONIK-SAN. VE BOTER. A.Ş
-* Britse lucht Broadcasting beperkt
+* ATMACA ELEKTRONİK SAN. VE TİC. A.ş
+* British Sky Broadcasting Limited
 * CastPal Technology Inc., Shenzhen
-* Comp-elektronica, Inc.
+* Compal Electronics, Inc.
 * Dongguan Digital AV Technology Corp., Ltd.
-* EchoStar-aankoop maatschappij
+* EchoStar Inkoop corporation
 * Enseo, Inc.
 * FilmFlex Movies Limited
 * Fluendo S.A.
 * FUNAI ELECTRIC CO., LTD
-* Gibson-innovaties beperkt
-* Haier-informatie aanvrager S. R. L
+* Gibson Innovations Limited
+* Haier Informatie AanvragersIon S.R.L
 * HANDAN BroadInfoCom Co., Ltd.
 * Hisense International Co., Ltd. 
 * Homecast Co., Ltd
 * Hon Hai Precision Industry Co., Ltd.
 * Infomir GMBH
-* Kaonmedia co., Ltd.
+* Kaonmedia Co., Ltd.
 * KDDI Corporation
 * Nintendo Co., Ltd.
 * Oranje SA
-* Saffron digitaal beperkt
-* Sagemcom Broadband SAS
-* Shenzhen Chuangwei-RGB co., Ltd.
+* Saffraan Digital Limited
+* Sagemcom Breedband SAS
+* Shenzhen Chuangwei-RGB Electronics Co.,Ltd.
 * Shenzhen Coship Electronics CO., LTD
 * Shenzhen Jiuzhou Electric Co., Ltd
-* Shenzhen Skyworth Digital Technology Co., Ltd
+* Shenzhen Skyworth Digital Technology Co,, Ltd
 * Sichuan Changhong Electric Co., Ltd.
-* Skardin industrieel Corp.
-* Deutschland Fernsehen GmbH & Co. KG
+* Skardin Industrial Corp.
+* Sky Deutschland Fernsehen GmbH & Co. KG
 * SmarDTV S.A.
-* SoftAtHome
+* SoftAtHome SoftAtHome
 * Sony Corporation
-* Technicolor-bezorgings technologieën, SAS
+* Technicolor Delivery Technologies, SAS
 * Tongfang Global Ltd.
-* Belangrijkste Victory-investeringen, Ltd.
-* Toshibay Products & Services Corporation
-* Universele media Corporation/Slovakia/s.r.o.
+* Top Victory Investments, Ltd.
+* Toshiba Lifestyle Producten & Services Corporation
+* Universal Media Corporation /Slowakije/ s.r.o.
 * VIZIO, Inc.
 * Wistron Corporation
 * ZTE Corporation

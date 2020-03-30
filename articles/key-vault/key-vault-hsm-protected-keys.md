@@ -1,6 +1,6 @@
 ---
-title: Met HSM beveiligde sleutels genereren en overdragen voor Azure Key Vault-Azure Key Vault | Microsoft Docs
-description: Gebruik dit artikel om u te helpen bij het plannen, genereren en overdragen van uw eigen met HSM beveiligde sleutels voor gebruik met Azure Key Vault. Ook wel bekend als BYOK of uw eigen sleutel nemen.
+title: HSM-beveiligde sleutels genereren en overdragen voor Azure Key Vault - Azure Key Vault | Microsoft Documenten
+description: Gebruik dit artikel om u te helpen bij het plannen, genereren en vervolgens overdragen van uw eigen HSM-beveiligde sleutels voor gebruik met Azure Key Vault. Ook wel bekend als BYOK of breng je eigen sleutel.
 services: key-vault
 author: amitbapat
 manager: devtiw
@@ -11,31 +11,31 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
 ms.openlocfilehash: 048e5072c592cf2de32e533014c99034572a1c47
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79082894"
 ---
-# <a name="import-hsm-protected-keys-to-key-vault"></a>Met HSM beveiligde sleutels importeren in Key Vault
+# <a name="import-hsm-protected-keys-to-key-vault"></a>HSM-beveiligde sleutels importeren in Key Vault
 
-Voor extra zekerheid kunt u, wanneer u Azure Key Vault gebruikt, sleutels importeren of genereren in Hardware Security modules (Hsm's) die de HSM-grens nooit verlaten. Dit scenario wordt vaak *uw eigen sleutel*of BYOK genoemd. Azure Key Vault maakt gebruik van nCipher nShield-familie van Hsm's (FIPS 140-2 level 2 gevalideerd) om uw sleutels te beveiligen.
+Voor extra zekerheid u bij het gebruik van Azure Key Vault sleutels importeren of genereren in hardwarebeveiligingsmodules (HSM's) die nooit de HSM-grens verlaten. Dit scenario wordt vaak *Bring Your Own Key* of BYOK genoemd. Azure Key Vault maakt gebruik van nCipher nShield-familie hsm's (FIPS 140-2 Level 2 gevalideerd) om uw sleutels te beschermen.
 
 Deze functionaliteit is niet beschikbaar voor Azure China 21Vianet.
 
 > [!NOTE]
-> Zie [Wat is Azure Key Vault?](key-vault-overview.md) voor meer informatie over Azure Key Vault.  
-> Zie [Wat is Azure Key Vault?](key-vault-overview.md)voor een zelf studie waarmee u aan de slag kunt gaan met het maken van een sleutel kluis voor met HSM beschermde sleutels.
+> Zie Wat is Azure Key Vault voor meer informatie over Azure Key [Vault?](key-vault-overview.md)  
+> Zie [Wat is Azure Key Vault?](key-vault-overview.md)
 
-## <a name="supported-hsms"></a>Ondersteunde Hsm's
+## <a name="supported-hsms"></a>Ondersteunde HSM's
 
-Het overdragen van met HSM beveiligde sleutels naar Key Vault wordt ondersteund via twee verschillende methoden, afhankelijk van de Hsm's die u gebruikt. Gebruik de onderstaande tabel om te bepalen welke methode moet worden gebruikt voor het genereren van uw Hsm's en vervolgens uw eigen met HSM beveiligde sleutels overdragen om te gebruiken met Azure Key Vault. 
+Het overbrengen van HSM-beveiligde sleutels naar Key Vault wordt ondersteund via twee verschillende methoden, afhankelijk van de HSM's die u gebruikt. Gebruik de onderstaande tabel om te bepalen welke methode moet worden gebruikt voor uw HSM's om te genereren en vervolgens uw eigen HSM-beveiligde sleutels over te dragen om te gebruiken met Azure Key Vault. 
 
-|Leveranciers naam|Leveranciers type|Ondersteunde HSM-modellen|Ondersteunde methode voor het overdragen van HSM-sleutels|
+|Naam van leverancier|Type leverancier|Ondersteunde HSM-modellen|Ondersteunde HSM-sleuteloverdrachtsmethode|
 |---|---|---|---|
-|nCipher|Fabrikant|<ul><li>nShield-serie van Hsm's</li></ul>|[Verouderde BYOK-methode gebruiken](hsm-protected-keys-legacy.md)|
-|Thales|Fabrikant|<ul><li>SafeNet Luna HSM 7-familie met firmware versie 7,3 of hoger</li></ul>| [De nieuwe methode BYOK gebruiken (preview-versie)](hsm-protected-keys-vendor-agnostic-byok.md)|
-|Fortanix|HSM as a Service|<ul><li>Zelf-verdediging van de service voor sleutel beheer (SDKMS)</li></ul>|[De nieuwe methode BYOK gebruiken (preview-versie)](hsm-protected-keys-vendor-agnostic-byok.md)|
+|nCipher|Fabrikant|<ul><li>nShield-familie van HSM's</li></ul>|[Verouderde BYOK-methode gebruiken](hsm-protected-keys-legacy.md)|
+|Thales|Fabrikant|<ul><li>SafeNet Luna HSM 7 familie met firmware versie 7.3 of nieuwer</li></ul>| [Nieuwe BYOK-methode gebruiken (voorbeeld)](hsm-protected-keys-vendor-agnostic-byok.md)|
+|Fortanix Fortanix|HSM as a Service|<ul><li>Self-Defending Key Management Service (SDKMS)</li></ul>|[Nieuwe BYOK-methode gebruiken (voorbeeld)](hsm-protected-keys-vendor-agnostic-byok.md)|
 
 
 
@@ -48,4 +48,4 @@ Het overdragen van met HSM beveiligde sleutels naar Key Vault wordt ondersteund 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg [Key Vault aanbevolen procedures](key-vault-best-practices.md) om de beveiliging, duurzaamheid en bewaking voor uw sleutels te garanderen.
+Volg [de best practices](key-vault-best-practices.md) van Key Vault om de veiligheid, duurzaamheid en bewaking van uw sleutels te garanderen.

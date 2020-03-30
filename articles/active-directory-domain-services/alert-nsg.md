@@ -1,6 +1,6 @@
 ---
-title: Waarschuwingen voor netwerk beveiligings groepen oplossen in azure AD DS | Microsoft Docs
-description: Meer informatie over het oplossen van problemen met configuratie waarschuwingen voor netwerk beveiligings groepen voor Azure Active Directory Domain Services
+title: Waarschuwingen voor netwerkbeveiligingsgroepen oplossen in Azure AD DS | Microsoft Documenten
+description: Meer informatie over het oplossen en oplossen van waarschuwingen voor netwerkbeveiligingvoor configuratie voor Azure Active Directory Domain Services
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,78 +12,78 @@ ms.topic: troubleshooting
 ms.date: 09/19/2019
 ms.author: iainfou
 ms.openlocfilehash: 959f1e3f25602938d769c574ea975c4bba9300e1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71257992"
 ---
-# <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Bekende problemen: Waarschuwingen voor netwerk configuratie in Azure Active Directory Domain Services
+# <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Bekende problemen: netwerkconfiguratiewaarschuwingen in Azure Active Directory Domain Services
 
-Om ervoor te zorgen dat toepassingen en services op de juiste wijze communiceren met Azure Active Directory Domain Services (Azure AD DS), moeten specifieke netwerk poorten open zijn om verkeer toe te staan. In azure beheert u de stroom van verkeer met behulp van netwerk beveiligings groepen. In de status van een beheerd domein van Azure AD DS wordt een waarschuwing weer gegeven als de vereiste regels voor de netwerk beveiligings groep niet aanwezig zijn.
+Als u toepassingen en services correct wilt laten communiceren met Azure Active Directory Domain Services (Azure AD DS), moeten specifieke netwerkpoorten open staan om verkeer te laten stromen. In Azure beheert u de verkeersstroom met behulp van netwerkbeveiligingsgroepen. De status van een door Azure AD DS beheerd domein wordt een waarschuwing weergegeven als de vereiste regels voor netwerkbeveiligingsgroepen niet zijn ingevoerd.
 
-Dit artikel helpt u bij het begrijpen en oplossen van veelvoorkomende waarschuwingen voor problemen met de configuratie van netwerk beveiligings groepen.
+In dit artikel u veelvoorkomende waarschuwingen voor problemen met de configuratie van netwerkbeveiligingsgroepen begrijpen en oplossen.
 
-## <a name="alert-aadds104-network-error"></a>AADDS104 waarschuwing: Netwerkfout
+## <a name="alert-aadds104-network-error"></a>Waarschuwing AADDS104: Netwerkfout
 
-### <a name="alert-message"></a>Waarschuwings bericht
+### <a name="alert-message"></a>Waarschuwingsbericht
 
-*Micro soft kan de domein controllers voor dit beheerde domein niet bereiken. Dit kan gebeuren als een netwerk beveiligings groep (NSG) die in uw virtuele netwerk is geconfigureerd, de toegang tot het beheerde domein blokkeert. Een andere mogelijke reden is als er een door de gebruiker gedefinieerde route is die inkomend verkeer van het Internet blokkeert.*
+*Microsoft kan de domeincontrollers voor dit beheerde domein niet bereiken. Dit kan gebeuren als een NSG-netwerkbeveiligingsgroep (NSG) die is geconfigureerd op uw virtuele netwerk de toegang tot het beheerde domein blokkeert. Een andere mogelijke reden is als er een door de gebruiker gedefinieerde route is die binnenkomend verkeer van het internet blokkeert.*
 
-Ongeldige regels voor netwerk beveiligings groepen zijn de meest voorkomende oorzaak van netwerk fouten voor Azure AD DS. De netwerk beveiligings groep voor het virtuele netwerk moet toegang tot specifieke poorten en protocollen toestaan. Als deze poorten zijn geblokkeerd, kan het Azure-platform het beheerde domein niet bewaken of bijwerken. De synchronisatie tussen de Azure AD-Directory en Azure AD DS beheerde domein wordt ook beïnvloed. Zorg ervoor dat u de standaard poorten opent om te voor komen dat de service wordt onderbroken.
+Ongeldige netwerkbeveiligingsgroepregels zijn de meest voorkomende oorzaak van netwerkfouten voor Azure AD DS. De netwerkbeveiligingsgroep voor het virtuele netwerk moet toegang bieden tot specifieke poorten en protocollen. Als deze poorten zijn geblokkeerd, kan het Azure-platform het beheerde domein niet controleren of bijwerken. De synchronisatie tussen de Azure AD-map en het beheerde domein azure AD DS wordt ook beïnvloed. Zorg ervoor dat u de standaardpoorten open houdt om onderbreking van de service te voorkomen.
 
 ## <a name="default-security-rules"></a>Standaardbeveiligingsregels
 
-De volgende standaard regels voor binnenkomend en uitgaand verkeer worden toegepast op de netwerk beveiligings groep voor een beheerd domein van Azure AD DS. Met deze regels blijven Azure AD DS beveiligd en kan het Azure-platform het beheerde domein bewaken, beheren en bijwerken. Mogelijk hebt u ook een extra regel waarmee inkomend verkeer wordt toegestaan als u [beveiligde LDAP configureert][configure-ldaps].
+De volgende standaardinkomende en uitgaande beveiligingsregels worden toegepast op de netwerkbeveiligingsgroep voor een door Azure AD DS beheerd domein. Deze regels houden Azure AD DS veilig en stellen het Azure-platform in staat om het beheerde domein te bewaken, te beheren en bij te werken. U ook een aanvullende regel hebben die binnenkomend verkeer toestaat als u [beveiligde LDAP configureert.][configure-ldaps]
 
 ### <a name="inbound-security-rules"></a>Inkomende beveiligingsregels
 
-| Priority | Name | Port | Protocol | Bron | Destination | Action |
+| Prioriteit | Name | Poort | Protocol | Bron | Doel | Actie |
 |----------|------|------|----------|--------|-------------|--------|
-| 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Any | Allow |
-| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Any | Allow |
-| 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Any | Allow |
-| 65000    | AllVnetInBound | Any | Any | VirtualNetwork | VirtualNetwork | Allow |
-| 65001    | AllowAzureLoadBalancerInBound | Any | Any | AzureLoadBalancer | Any | Allow |
-| 65500    | DenyAllInBound | Any | Any | Any | Any | Weigeren |
+| 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Alle | Toestaan |
+| 201      | AllowRD | 3389 | TCP | CorpNetSaw (CorpNetSaw) | Alle | Toestaan |
+| 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Alle | Toestaan |
+| 65000    | AllVnetInBound | Alle | Alle | VirtualNetwork | VirtualNetwork | Toestaan |
+| 65001    | AllowAzureLoadBalancerInBound | Alle | Alle | AzureLoadBalancer | Alle | Toestaan |
+| 65500    | DenyAllInBound | Alle | Alle | Alle | Alle | Weigeren |
 
 ### <a name="outbound-security-rules"></a>Uitgaande beveiligingsregels
 
-| Priority | Name | Port | Protocol | Bron | Destination | Action |
+| Prioriteit | Name | Poort | Protocol | Bron | Doel | Actie |
 |----------|------|------|----------|--------|-------------|--------|
-| 65000    | AllVnetOutBound | Any | Any | VirtualNetwork | VirtualNetwork | Allow |
-| 65001    | AllowAzureLoadBalancerOutBound | Any | Any |  Any | Internet | Allow |
-| 65500    | DenyAllOutBound | Any | Any | Any | Any | Weigeren |
+| 65000    | AllVnetOutBound | Alle | Alle | VirtualNetwork | VirtualNetwork | Toestaan |
+| 65001    | AllowAzureLoadBalancerOutBound | Alle | Alle |  Alle | Internet | Toestaan |
+| 65500    | DenyAllOutBound | Alle | Alle | Alle | Alle | Weigeren |
 
 >[!NOTE]
-> Azure AD DS heeft onbeperkte uitgaande toegang nodig van het virtuele netwerk. Het is niet raadzaam extra regels te maken die de uitgaande toegang voor het virtuele netwerk beperken.
+> Azure AD DS heeft onbeperkte uitgaande toegang van het virtuele netwerk nodig. We raden u af om aanvullende regels te maken die uitgaande toegang voor het virtuele netwerk beperken.
 
-## <a name="verify-and-edit-existing-security-rules"></a>Bestaande beveiligings regels controleren en bewerken
+## <a name="verify-and-edit-existing-security-rules"></a>Bestaande beveiligingsregels verifiëren en bewerken
 
-Voer de volgende stappen uit om de bestaande beveiligings regels te controleren en te controleren of de standaard poorten open zijn:
+Voer de volgende stappen uit om de bestaande beveiligingsregels te verifiëren en ervoor te zorgen dat de standaardpoorten zijn geopend:
 
-1. In de Azure Portal zoekt en selecteert u **netwerk beveiligings groepen**.
-1. Kies de netwerk beveiligings groep die is gekoppeld aan uw beheerde domein, zoals *AADDS-contoso.com-NSG*.
-1. De bestaande binnenkomende en uitgaande beveiligings regels worden weer gegeven op de pagina **overzicht** .
+1. Zoek en selecteer **netwerkbeveiligingsgroepen**in de Azure-portal.
+1. Kies de netwerkbeveiligingsgroep die is gekoppeld aan uw beheerde domein, zoals *AADDS-contoso.com-NSG*.
+1. Op de pagina **Overzicht** worden de bestaande inkomende en uitgaande beveiligingsregels weergegeven.
 
-    Controleer de regels voor binnenkomend en uitgaand verkeer en vergelijkt u met de lijst met vereiste regels in de vorige sectie. Selecteer, indien nodig, alle aangepaste regels die het vereiste verkeer blok keren. Als een van de vereiste regels ontbreekt, voegt u in de volgende sectie een regel toe.
+    Bekijk de binnenkomende en uitgaande regels en vergelijk met de lijst met vereiste regels in het vorige gedeelte. Selecteer indien nodig aangepaste regels die vereist verkeer blokkeren en verwijder deze. Als een van de vereiste regels ontbreekt, voegt u een regel toe in de volgende sectie.
 
-    Nadat u regels hebt toegevoegd of verwijderd om het vereiste verkeer toe te staan, wordt de status van het beheerde domein van Azure AD DS binnen twee uur automatisch bijgewerkt en wordt de waarschuwing verwijderd.
+    Nadat u regels hebt toegevoegd of verwijderd om het vereiste verkeer toe te staan, wordt de status van het Azure AD DS-domein binnen twee uur automatisch bijgewerkt en wordt de waarschuwing verwijderd.
 
-### <a name="add-a-security-rule"></a>Een beveiligings regel toevoegen
+### <a name="add-a-security-rule"></a>Een beveiligingsregel toevoegen
 
-Als u een ontbrekende beveiligings regel wilt toevoegen, voert u de volgende stappen uit:
+Voer de volgende stappen uit om een ontbrekende beveiligingsregel toe te voegen:
 
-1. In de Azure Portal zoekt en selecteert u **netwerk beveiligings groepen**.
-1. Kies de netwerk beveiligings groep die is gekoppeld aan uw beheerde domein, zoals *AADDS-contoso.com-NSG*.
-1. Klik onder **instellingen** in het linkerdeel venster op *inkomende beveiligings regels* of *uitgaande beveiligings regels* , afhankelijk van de regel die u wilt toevoegen.
-1. Selecteer **toevoegen**en maak vervolgens de vereiste regel op basis van de poort, het Protocol, de richting, enzovoort. Wanneer u klaar bent, selecteert u **OK**.
+1. Zoek en selecteer **netwerkbeveiligingsgroepen**in de Azure-portal.
+1. Kies de netwerkbeveiligingsgroep die is gekoppeld aan uw beheerde domein, zoals *AADDS-contoso.com-NSG*.
+1. Klik **onder Instellingen** in het linkerdeelvenster op *Binnenkomende beveiligingsregels* of *uitgaande beveiligingsregels,* afhankelijk van welke regel u moet toevoegen.
+1. Selecteer **Toevoegen**en maak vervolgens de vereiste regel op basis van de poort, het protocol, de richting, enz. Wanneer u klaar bent, selecteert u **OK**.
 
-Het kan even duren voordat de beveiligings regel is toegevoegd en weer gegeven in de lijst.
+Het duurt even voordat de beveiligingsregel is toegevoegd en in de lijst wordt weergegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u nog steeds problemen ondervindt, [opent u een ondersteunings aanvraag voor Azure][azure-support] voor aanvullende hulp bij het oplossen van problemen.
+Als u nog steeds problemen hebt, [opent u een Azure-ondersteuningsaanvraag][azure-support] voor extra hulp bij het oplossen van problemen.
 
 <!-- INTERNAL LINKS -->
 [azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md

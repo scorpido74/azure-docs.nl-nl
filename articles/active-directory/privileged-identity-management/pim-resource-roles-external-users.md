@@ -1,6 +1,6 @@
 ---
-title: Azure-resource rollen toewijzen aan gasten in PIM-Azure AD | Microsoft Docs
-description: Meer informatie over het uitnodigen van externe gast gebruikers en het toewijzen van Azure-resource rollen in Azure AD Privileged Identity Management (PIM).
+title: Azure-bronrollen toewijzen aan gasten in PIM - Azure AD | Microsoft Documenten
+description: Meer informatie over het uitnodigen van externe gastgebruikers en het toewijzen van Azure resource rollen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,154 +16,154 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2efcf77d65fa2f9e203ed805cd7d78b9802ee3aa
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74021943"
 ---
-# <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Gast gebruikers uitnodigen en Azure-resource rollen toewijzen in Privileged Identity Management
+# <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Gasten uitnodigen en Azure-bronrollen toewijzen in Privileged Identity Management
 
-Azure Active Directory (Azure AD) gast gebruikers maken deel uit van de samenwerkings mogelijkheden van Business-to-Business (B2B) in azure AD, zodat u externe gast gebruikers en-leveranciers als gasten kunt beheren in azure AD. Wanneer u B2B-samen werking combineert met Azure AD Privileged Identity Management (PIM), kunt u uw vereisten voor naleving en governance voor gasten uitbreiden. U kunt bijvoorbeeld deze Privileged Identity Management functies gebruiken voor Azure-identiteits taken met gasten:
+Azure Active Directory (Azure AD) gastgebruikers maken deel uit van de Business-to-business (B2B) samenwerkingsmogelijkheden binnen Azure AD, zodat u externe gastgebruikers en leveranciers beheren als gasten in Azure AD. Wanneer u B2B-samenwerking combineert met Azure AD Privileged Identity Management (PIM), u uw nalevings- en governancevereisten uitbreiden naar gasten. U bijvoorbeeld deze functies voor beheer van privileged identity management gebruiken voor Azure-identiteitstaken met gasten:
 
-- Toegang tot specifieke Azure-resources toewijzen
-- Just-in-time-toegang inschakelen
-- De duur en eind datum van de toewijzing opgeven
-- Multi-factor Authentication vereisen voor actieve toewijzing of activering
-- Toegangs beoordelingen uitvoeren
-- Waarschuwingen en controle Logboeken gebruiken
+- Toegang toewijzen aan specifieke Azure-bronnen
+- Just-in-time toegang inschakelen
+- Toewijzingsduur en einddatum opgeven
+- Meervoudige verificatie vereisen bij actieve toewijzing of activering
+- Toegangsbeoordelingen uitvoeren
+- Waarschuwingen en controlelogboeken gebruiken
 
-In dit artikel wordt beschreven hoe u een gast kunt uitnodigen voor uw organisatie en hoe u de toegang tot Azure-resources kunt beheren met Privileged Identity Management.
+In dit artikel wordt beschreven hoe u een gast uitnodigt voor uw organisatie en hun toegang tot Azure-bronnen beheert met behulp van Privileged Identity Management.
 
-## <a name="when-would-you-invite-guests"></a>Wanneer wilt u gasten uitnodigen?
+## <a name="when-would-you-invite-guests"></a>Wanneer zou je gasten uitnodigen?
 
-Hier volgen enkele voor beelden van wanneer u gasten kunt uitnodigen voor uw organisatie:
+Hier volgen enkele voorbeelden van wanneer u gasten uitnodigen voor uw organisatie:
 
-- Een externe selfservice leverancier toestaan die alleen een e-mail account heeft voor toegang tot uw Azure-resources voor een project.
-- Een externe partner toestaan in een grote organisatie die gebruikmaakt van on-premises Active Directory Federation Services om toegang te krijgen tot uw onkosten toepassing.
-- Ondersteunings medewerkers die niet in uw organisatie (zoals micro soft support) zijn, toestaan om tijdelijk toegang te krijgen tot uw Azure-resource om problemen op te lossen.
+- Sta een externe zelfstandige leverancier toe die alleen een e-mailaccount heeft om toegang te krijgen tot uw Azure-bronnen voor een project.
+- Sta een externe partner toe in een grote organisatie die on-premises Active Directory Federation Services gebruikt om toegang te krijgen tot uw onkostentoepassing.
+- Sta ondersteuningstechnici toe die niet in uw organisatie zijn (zoals Microsoft-ondersteuning) om tijdelijk toegang te krijgen tot uw Azure-bron om problemen op te lossen.
 
-## <a name="how-does-collaboration-using-b2b-guests-work"></a>Hoe werkt samen werking met B2B-gasten?
+## <a name="how-does-collaboration-using-b2b-guests-work"></a>Hoe werkt samenwerking met B2B-gasten?
 
-Wanneer u B2B-samen werking gebruikt, kunt u een externe gebruiker als gast uitnodigen voor uw organisatie. De gast kan worden beheerd als een gebruiker in uw organisatie, maar een gast moet worden geverifieerd in hun eigen organisatie en niet in uw Azure AD-organisatie. Dit betekent dat als de gast geen toegang meer heeft tot hun thuis organisatie, ook de toegang tot uw organisatie verloren gaat. Als de gast bijvoorbeeld hun organisatie verlaat, verliezen ze automatisch de toegang tot resources die u met hen hebt gedeeld in azure AD zonder dat u iets hoeft te doen. Zie [Wat is gast gebruikers toegang in azure Active Directory B2B?](../b2b/what-is-b2b.md)voor meer informatie over B2B-samen werking.
+Wanneer u B2B-samenwerking gebruikt, u een externe gebruiker uitnodigen voor uw organisatie als gast. De gast kan worden beheerd als gebruiker in uw organisatie, maar een gast moet worden geverifieerd in zijn thuisorganisatie en niet in uw Azure AD-organisatie. Dit betekent dat als de gast geen toegang meer heeft tot zijn thuisorganisatie, hij of zij ook geen toegang meer heeft tot uw organisatie. Als de gast bijvoorbeeld zijn organisatie verlaat, verliest hij of zij automatisch de toegang tot resources die u met hem of haar hebt gedeeld in Azure AD zonder dat u iets hoeft te doen. Zie [Wat is gastgebruikerstoegang in Azure Active Directory B2B?](../b2b/what-is-b2b.md).
 
-![Diagram waarin wordt getoond hoe een gast gebruiker wordt geverifieerd in de hoofdmap](./media/pim-resource-roles-external-users/b2b-external-user.png)
+![Diagram met de manier waarop een gastgebruiker is geverifieerd in zijn thuismap](./media/pim-resource-roles-external-users/b2b-external-user.png)
 
-## <a name="check-guest-collaboration-settings"></a>Instellingen voor samen werking van gast controleren
+## <a name="check-guest-collaboration-settings"></a>Instellingen voor gastsamenwerking controleren
 
-Om ervoor te zorgen dat u gasten kunt uitnodigen voor uw organisatie, moet u de instellingen voor de samen werking van uw gast controleren.
+Om ervoor te zorgen dat u gasten uitnodigen voor uw organisatie, moet u uw instellingen voor gastsamenwerking controleren.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-1. Selecteer **Azure Active Directory** > **gebruikers instellingen**.
+1. Selecteer Azure Active**Directory-gebruikersinstellingen** **Azure Active Directory** > .
 
-1. Selecteer **externe instellingen voor samen werking beheren**.
+1. Selecteer **Instellingen voor externe samenwerking beheren**.
 
-    ![Pagina instellingen voor externe samen werking met instellingen voor beperkingen voor machtigingen, uitnodigen en samen werking](./media/pim-resource-roles-external-users/external-collaboration-settings.png)
+    ![Pagina instellingen voor externe samenwerking met instellingen voor machtiging, uitnodiging en samenwerkingsbeperking](./media/pim-resource-roles-external-users/external-collaboration-settings.png)
 
-1. Zorg ervoor dat de **beheerders en gebruikers in de rol gast uitnodigen de schakel optie voor uitnodigingen kunnen** **kiezen.**
+1. Controleer of de **beheerders en gebruikers in de gastuitnodigingsrol de** switch kunnen uitnodigen is ingesteld op **Ja**.
 
 ## <a name="invite-a-guest-and-assign-a-role"></a>Een gast uitnodigen en een rol toewijzen
 
-Met Privileged Identity Management kunt u een gast uitnodigen en deze in aanmerking komen voor een Azure-resource functie.
+Met Privileged Identity Management u een gast uitnodigen en deze in aanmerking laten komen voor een Azure-bronrol.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker die lid is van de rol [privileged Role Administrator](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) of [user Administrator](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) .
+1. Meld u aan bij [azure portal](https://portal.azure.com/) met een gebruiker die lid is van de functie Privileged [Role Administrator](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) of [User Administrator.](../users-groups-roles/directory-assign-admin-roles.md#user-administrator)
 
-1. Open **Azure AD privileged Identity Management**.
+1. Azure **AD Privileged Identity Management openen**.
 
 1. Selecteer **Azure-resources**.
 
-1. Gebruik het **resource filter** om de lijst met beheerde resources te filteren.
+1. Gebruik het **filter Resource** om de lijst met beheerde resources te filteren.
 
-1. Selecteer de resource die u wilt beheren, zoals een resource, resource groep, abonnement of beheer groep.
+1. Selecteer de resource die u wilt beheren, zoals een resource, resourcegroep, abonnement of beheergroep.
 
-    Stel het bereik in op alleen de vereisten van de gast.
+    U moet de scope alleen instellen op wat de gast nodig heeft.
 
-1. Selecteer onder beheren de optie **rollen** om de lijst met rollen voor Azure-resources weer te geven.
+1. Selecteer Onder Beheren de optie **Rollen** om de lijst met rollen voor Azure-resources weer te geven.
 
-    ![De lijst met Azure-resources rollen met het aantal gebruikers dat actief en in aanmerking komt](./media/pim-resource-roles-external-users/resources-roles.png)
+    ![Lijst met Azure-resources-rollen met het aantal gebruikers dat actief is en in aanmerking komt](./media/pim-resource-roles-external-users/resources-roles.png)
 
 1. Selecteer de minimale rol die de gebruiker nodig heeft.
 
-    ![Geselecteerde functie pagina waarop de huidige leden van de rol worden weer gegeven](./media/pim-resource-roles-external-users/selected-role.png)
+    ![Geselecteerde rolpagina met de huidige leden van die rol](./media/pim-resource-roles-external-users/selected-role.png)
 
-1. Selecteer **lid toevoegen** op de pagina rol om het deel venster nieuwe toewijzing te openen.
+1. Selecteer op de rolpagina **Lid toevoegen** om het deelvenster Nieuwe toewijzing te openen.
 
-1. Klik op **een lid of groep selecteren**.
+1. Klik **op Een lid of groep selecteren**.
 
-    ![Nieuwe toewijzing: een lid of groeps paneel selecteren gebruikers en groepen weer geven samen met een optie voor uitnodigen](./media/pim-resource-roles-external-users/select-member-group.png)
+    ![Nieuwe toewijzing - Selecteer een lid of groepsvenster met gebruikers en groepen samen met een optie Uitnodigen](./media/pim-resource-roles-external-users/select-member-group.png)
 
-1. Als u een gast wilt uitnodigen, klikt u op **uitnodigen**.
+1. Als u een gast wilt uitnodigen, klikt u op **Uitnodigen**.
 
-    ![Een gast pagina uitnodigen met vakken om een e-mail adres in te voeren en een persoonlijk bericht op te geven](./media/pim-resource-roles-external-users/invite-guest.png)
+    ![Een gastpagina met vakken uitnodigen om een e-mailadres in te voeren en een persoonlijk bericht op te geven](./media/pim-resource-roles-external-users/invite-guest.png)
 
-1. Nadat u een gast hebt geselecteerd, klikt u op **uitnodigen**.
+1. Nadat u een gast hebt geselecteerd, klikt u op **Uitnodigen**.
 
-    De gast moet worden toegevoegd als een geselecteerd lid.
+    De gast moet worden toegevoegd als geselecteerd lid.
 
-1. Klik in het deel venster **een lid of groep selecteren** op **selecteren**.
+1. Klik **in het deelvenster Een lid of groeps** selecteren op **Selecteren**.
 
-1. Selecteer in het deel venster **lidmaatschaps instellingen** het toewijzings type en de duur.
+1. Selecteer in het deelvenster **Lidmaatschapsinstellingen** het toewijzingstype en de duur.
 
-    ![Pagina nieuwe toewijzings instellingen voor lidmaatschap met opties om het toewijzings type, de begin datum en de eind datum op te geven](./media/pim-resource-roles-external-users/membership-settings.png)
+    ![Nieuwe toewijzing - pagina Lidmaatschapsinstellingen met opties om toewijzingstype, begindatum en einddatum op te geven](./media/pim-resource-roles-external-users/membership-settings.png)
 
-1. Als u de toewijzing wilt volt ooien, selecteert u **gereed** en vervolgens **toevoegen**.
+1. Als u de toewijzing wilt voltooien, selecteert u **Gereed** en **voegt u vervolgens Toe**.
 
-    De roltoewijzing van de gast wordt weer gegeven in de lijst met rollen.
+    De toewijzing van gastrollen wordt weergegeven in uw takenlijst.
 
-    ![Pagina rollen die de gast aanbieden als in aanmerking komend](./media/pim-resource-roles-external-users/role-assignment.png)
+    ![Rolpagina waarin de gast als in aanmerking komen](./media/pim-resource-roles-external-users/role-assignment.png)
 
 ## <a name="activate-role-as-a-guest"></a>Rol activeren als gast
 
-Als u een externe gebruiker bent, moet u de uitnodiging accepteren als gast in de Azure AD-organisatie en mogelijk uw roltoewijzing activeren.
+Als u een externe gebruiker bent, moet u de uitnodiging accepteren om gast te zijn in de Azure AD-organisatie en mogelijk uw roltoewijzing activeren.
 
-1. Open het e-mail bericht met uw uitnodiging. Het e-mail bericht ziet er ongeveer als volgt uit.
+1. Open de e-mail met uw uitnodiging. De e-mail ziet er hetzelfde uit als het volgende.
 
-    ![Uitnodiging voor e-mail met mapnaam, persoonlijk bericht en een koppeling aan de slag](./media/pim-resource-roles-external-users/email-invite.png)
+    ![E-mailuitnodiging met naam van de map, persoonlijk bericht en een koppeling Aan de slag](./media/pim-resource-roles-external-users/email-invite.png)
 
-1. Selecteer de koppeling **aan de slag** in het e-mail bericht.
+1. Selecteer de koppeling **Aan de slag** in de e-mail.
 
-1. Nadat u de machtigingen hebt bekeken, klikt u op **accepteren**.
+1. Nadat u de machtigingen hebt bekeken, klikt u op **Accepteren**.
 
-    ![De pagina Machtigingen controleren in een browser met een lijst met machtigingen die de organisatie wil laten beoordelen](./media/pim-resource-roles-external-users/invite-accept.png)
+    ![De pagina Machtigingen controleren in een browser met een lijst met machtigingen die u moet controleren](./media/pim-resource-roles-external-users/invite-accept.png)
 
-1. U wordt mogelijk gevraagd om een gebruiksrecht overeenkomst te accepteren en op te geven of u aangemeld wilt blijven. Als u in *aanmerking komt* voor een rol, hebt u In de Azure Portal nog geen toegang tot resources.
+1. Mogelijk wordt u gevraagd een gebruiksvoorwaarden te accepteren en aan te geven of u wilt blijven aangemeld. Als u in de Azure-portal *in aanmerking komt* voor een rol, hebt u nog geen toegang tot bronnen.
 
-1. Als u de roltoewijzing wilt activeren, opent u het e-mail bericht met de koppeling rol activeren. Het e-mail bericht ziet er ongeveer als volgt uit.
+1. Als u uw roltoewijzing wilt activeren, opent u de e-mail met uw functiekoppeling activeren. De e-mail ziet er hetzelfde uit als het volgende.
 
-    ![E-mail die aangeeft dat u in aanmerking komt voor een rol met de koppeling rol activeren](./media/pim-resource-roles-external-users/email-role-assignment.png)
+    ![E-mail waarin staat dat u in aanmerking komt voor een rol met een koppeling Activeren rol](./media/pim-resource-roles-external-users/email-role-assignment.png)
 
-1. Selecteer **rol activeren** om uw in aanmerking komende rollen te openen in privileged Identity Management.
+1. Selecteer **Rol activeren** om uw in aanmerking komende rollen in Privileged Identity Management te openen.
 
-    ![Pagina mijn rollen in Privileged Identity Management uw in aanmerking komende rollen weer geven](./media/pim-resource-roles-external-users/my-roles-eligible.png)
+    ![Pagina Mijn rollen in Privileged Identity Management met uw in aanmerking komende rollen](./media/pim-resource-roles-external-users/my-roles-eligible.png)
 
-1. Selecteer onder actie de koppeling **activeren** .
+1. Selecteer onder Actie de koppeling **Activeren.**
 
     Afhankelijk van de rolinstellingen moet u bepaalde informatie opgeven om de rol te activeren.
 
-1. Zodra u de instellingen voor de rol hebt opgegeven, klikt u op **activeren** om de rol te activeren.
+1. Nadat u de instellingen voor de rol hebt opgegeven, klikt u op **Activeren** om de rol te activeren.
 
-    ![Het bereik en de opties van de pagina vermelding activeren om de begin tijd, duur en reden op te geven](./media/pim-resource-roles-external-users/activate-role.png)
+    ![Paginaaanbiedingsbereik en opties activeren om de begintijd, duur en reden op te geven](./media/pim-resource-roles-external-users/activate-role.png)
 
-    Tenzij de beheerder vereist is om uw aanvraag goed te keuren, moet u toegang hebben tot de opgegeven resources.
+    Tenzij de beheerder uw aanvraag moet goedkeuren, moet u toegang hebben tot de opgegeven bronnen.
 
-## <a name="view-activity-for-a-guest"></a>Activiteit voor een gast weer geven
+## <a name="view-activity-for-a-guest"></a>Activiteit voor een gast weergeven
 
-U kunt audit logboeken bekijken om bij te houden wat gasten doen.
+U controlelogboeken bekijken om bij te houden wat gasten doen.
 
-1. Als beheerder opent u Privileged Identity Management en selecteert u de resource die is gedeeld.
+1. Open als beheerder Privileged Identity Management en selecteer de bron die is gedeeld.
 
-1. Selecteer **resource audit** om de activiteit voor die resource weer te geven. Hieronder ziet u een voor beeld van de activiteit voor een resource groep.
+1. Selecteer **Resourcecontrole** om de activiteit voor die resource weer te geven. Hieronder ziet u een voorbeeld van de activiteit voor een resourcegroep.
 
-    ![Azure-resources-resource audit pagina met een lijst met de tijd, aanvrager en actie](./media/pim-resource-roles-external-users/audit-resource.png)
+    ![Azure-bronnen - Pagina resourcecontrole met de tijd, aanvrager en actie](./media/pim-resource-roles-external-users/audit-resource.png)
 
-1. Als u de activiteit voor de gast wilt weer geven, selecteert u **Azure Active Directory** > **gebruikers** > naam van de *gast*.
+1. Als u de activiteit voor de gast wilt weergeven, selecteert u de*gastnaam* **van Azure Active Directory** > **Users** > .
 
-1. Selecteer **audit logboeken** om de audit logboeken voor de organisatie te bekijken. Als dat nodig is, kunt u filters opgeven.
+1. Selecteer **Controlelogboeken** om de controlelogboeken voor de organisatie te bekijken. Indien nodig u filters opgeven.
 
-    ![Map audit logboeken datum, doel, geïnitieerd door en activiteit](./media/pim-resource-roles-external-users/audit-directory.png)
+    ![Adreslijstlogboeken die datum, doel, geïnitieerd door en activiteit vermelden](./media/pim-resource-roles-external-users/audit-directory.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure AD-beheerders rollen toewijzen in Privileged Identity Management](pim-how-to-add-role-to-user.md)
-- [Wat is gast gebruikers toegang in azure AD B2B-samen werking?](../b2b/what-is-b2b.md)
+- [Azure AD-beheerrollen toewijzen in Privileged Identity Management](pim-how-to-add-role-to-user.md)
+- [Wat is toegang tot gastgebruikers in Azure AD B2B-samenwerking?](../b2b/what-is-b2b.md)

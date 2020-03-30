@@ -1,66 +1,66 @@
 ---
-title: Toegang tot Azure Data Catalog beveiligen
-description: In dit artikel wordt uitgelegd hoe u een gegevens catalogus en de gegevensassets in Azure Data Catalog kunt beveiligen.
+title: Toegang tot Azure-gegevenscatalogus beveiligen
+description: In dit artikel wordt uitgelegd hoe u een gegevenscatalogus en de bijbehorende gegevenselementen in Azure-gegevenscatalogus beveiligen.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: b0972be2b8a6e05d3d90cde7354b4890ea95cbe4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68976769"
 ---
-# <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>Toegang tot Data Catalog-en gegevensassets beveiligen
+# <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>Toegang tot gegevenscatalogus- en gegevenselementenassets beveiligen
 
 > [!IMPORTANT]
-> Deze functie is alleen beschikbaar in de Standard-editie van Azure Data Catalog.
+> Deze functie is alleen beschikbaar in de standaardeditie van Azure Data Catalog.
 
-Met Azure Data Catalog kunt u opgeven wie toegang heeft tot de gegevens catalogus en welke bewerkingen (REGI Steren, aantekeningen maken, eigenaar worden) op meta gegevens kunnen worden uitgevoerd in de catalogus. 
+Met Azure Data Catalog u opgeven wie toegang heeft tot de gegevenscatalogus en welke bewerkingen (registreren, annoteren, eigendom nemen) ze kunnen uitvoeren op metagegevens in de catalogus. 
 
-## <a name="catalog-users-and-permissions"></a>Gebruikers en machtigingen van de catalogus
+## <a name="catalog-users-and-permissions"></a>Catalogusgebruikers en machtigingen
 
-Een gebruiker of groep toegang verlenen tot een gegevens catalogus en machtigingen instellen:
+Ga als u een gebruiker of een groep toegang geven tot een gegevenscatalogus en stelt machtigingen in:
 
-1. Klik op de [Start pagina van de gegevens catalogus](https://www.azuredatacatalog.com)op **instellingen** op de werk balk.
+1. Klik op de [startpagina van uw gegevenscatalogus](https://www.azuredatacatalog.com)op **Instellingen** op de werkbalk.
 
-   ![Knop instellingen van Azure Data Catalog start pagina](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
+   ![Knop Startpagina-instellingen voor Azure Data Catalog](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
 
-2. Vouw op de pagina instellingen het gedeelte **catalogus gebruikers** uit.
+2. Vouw op de pagina Instellingen de sectie **Catalogusgebruikers** uit.
 
-   ![Knop toevoegen Azure Data Catalog gebruikers](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
+   ![Knop Azure-gegevenscatalogusgebruikers toevoegen](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
 
-3. Klik op **Toevoegen**.
+3. Klik op**toevoegen**.
 
-4. Voer de volledig gekwalificeerde **gebruikers naam** of naam in van de **beveiligings groep** in de Azure Active Directory (Aad) die aan de catalogus zijn gekoppeld. Gebruik een komma (', ') als scheidings teken als u meer dan één gebruiker of groep toevoegt.
+4. Voer de volledig gekwalificeerde **gebruikersnaam** of -naam van de **beveiligingsgroep** in de Azure Active Directory (AAD) in die aan de catalogus is gekoppeld. Gebruik komma (',') als scheidingsteken als u meer dan één gebruiker of groep toevoegt.
 
-   ![Azure Data Catalog gebruikers-gebruikers of groepen](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
+   ![Azure Data Catalog-gebruikers - gebruikers of groepen](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
 
-5. Druk op **Enter** of **Tab** uit het tekstvak. 
+5. Druk **op ENTER** of **TAB** uit het tekstvak. 
 
-6. Controleer of alle machtigingen (**aantekeningen**maken, **registreren**en **eigenaar**blijven) standaard worden toegewezen aan deze gebruikers of groepen. Dat wil zeggen dat de gebruiker of groep [gegevens assets kan registreren]( data-catalog-how-to-register.md), gegevensassets kan [aantekeningen]( data-catalog-how-to-annotate.md)maken en [eigenaar van]( data-catalog-how-to-manage.md)gegevensassets kan worden. 
+6. Controleer of alle machtigingen (**Annotate**, **Register**en **Take Ownership**) standaard aan deze gebruikers of groepen zijn toegewezen. Dat wil zeggen dat de gebruiker of groep [gegevensactiva]( data-catalog-how-to-register.md)kan registreren , [gegevensactiva kan annoteren]( data-catalog-how-to-annotate.md)en [eigenaar kan worden van gegevensactiva]( data-catalog-how-to-manage.md). 
 
-   ![Azure Data Catalog gebruikers-standaard machtigingen](media/data-catalog-how-to-secure-catalog/data-catalog-default-permissions.png)
+   ![Azure Data Catalog-gebruikers - standaardmachtigingen](media/data-catalog-how-to-secure-catalog/data-catalog-default-permissions.png)
 
-7. Als u een gebruiker of groep alleen lees toegang wilt geven tot de catalogus, wist u de optie **aantekeningen** voor die gebruiker of groep. Wanneer u dit doet, kan de gebruiker of groep geen aantekeningen toevoegen aan gegevensassets in de catalogus, maar ze kunnen ze weer geven. 
+7. Als u een gebruiker of groep alleen de leestoegang tot de catalogus wilt geven, wist u de **optie annoteren** voor die gebruiker of groep. Wanneer u dit doet, kan de gebruiker of groep gegevenselementen in de catalogus niet annoteren, maar ze kunnen ze wel bekijken. 
 
-8. Als u wilt voor komen dat een gebruiker of groep gegevens assets registreert, schakelt u de **registratie** optie voor die gebruiker of groep uit.
+8. Als u een gebruiker of groep wilt ontzeggen gegevensassets te registreren, moet u de **registeroptie** voor die gebruiker of groep wissen.
 
-9. Als u wilt voor komen dat een gebruiker eigenaar kan worden van een gegevensasset, schakelt u de optie **eigenaar nemen** voor die gebruiker of groep uit. 
+9. Als u wilt voorkomen dat een gebruiker eigenaar wordt van een gegevenselement, ziet u de optie **eigendom overnemen** voor die gebruiker of groep. 
 
-10. Als u een gebruiker of groep uit catalogus gebruikers wilt verwijderen, klikt u op **x** voor de gebruiker/groep onder aan de lijst. 
+10. Als u een gebruiker/groep wilt verwijderen uit catalogusgebruikers, klikt u onder aan de lijst op **x** voor de gebruiker/groep. 
 
-   ![Azure Data Catalog catalogus gebruikers-pictogram gebruiker X verwijderen](media/data-catalog-how-to-secure-catalog/data-catalog-delete-user.png)
+   ![Gebruikers van azure datacataloguscatalogus - pictogram gebruiker X verwijderen](media/data-catalog-how-to-secure-catalog/data-catalog-delete-user.png)
 
    > [!IMPORTANT]
-   > Het is raadzaam om beveiligings groepen toe te voegen aan Catalog-gebruikers in plaats van gebruikers rechtstreeks toe te voegen en machtigingen toe te wijzen. Voeg vervolgens gebruikers toe aan de beveiligings groepen die overeenkomen met hun rollen en de vereiste toegang tot de catalogus.
+   > We raden u aan beveiligingsgroepen toe te voegen aan gebruikers van catalogi in plaats van gebruikers rechtstreeks toe te voegen en machtigingen toe te wijzen. Voeg vervolgens gebruikers toe aan de beveiligingsgroepen die overeenkomen met hun rollen en hun vereiste toegang tot de catalogus.
 
-## <a name="special-considerations"></a>Speciale overwegingen
+## <a name="special-considerations"></a>Bijzondere overwegingen
 
-- De machtigingen die zijn toegewezen aan beveiligings groepen, zijn additief. Stel dat een gebruiker zich in twee groepen bevindt. Een groep heeft aantekeningen machtigingen en een andere groep heeft geen machtigingen voor aantekeningen. Vervolgens heeft de gebruiker aantekeningen machtigingen. 
-- De machtigingen die expliciet aan een gebruiker worden toegewezen, overschrijven de machtigingen die zijn toegewezen aan groepen waartoe de gebruiker behoort. In het vorige voor beeld hebt u de gebruiker expliciet toegevoegd aan catalogus gebruikers en geen machtigingen voor aantekeningen toewijzen. De gebruiker kan geen aantekeningen toevoegen aan gegevensassets, zelfs als de gebruiker lid is van een groep die machtigingen voor aantekeningen heeft.
+- De machtigingen die aan beveiligingsgroepen zijn toegewezen, zijn additief. Een gebruiker zit bijvoorbeeld in twee groepen. De ene groep heeft annotaatmachtigingen en de andere groep heeft geen annoterende machtigingen. Vervolgens heeft de gebruiker annotaatmachtigingen. 
+- De machtigingen die expliciet aan een gebruiker zijn toegewezen, overschrijven de machtigingen die zijn toegewezen aan groepen waartoe de gebruiker behoort. In het vorige voorbeeld hebt u bijvoorbeeld expliciet de gebruiker toegevoegd aan catalogusgebruikers en geen annotatemachtigingen toegewezen. De gebruiker kan gegevenselementen niet annoteren, ook al is de gebruiker lid van een groep die wel annotaatmachtigingen heeft.
 
 ## <a name="next-steps"></a>Volgende stappen
 

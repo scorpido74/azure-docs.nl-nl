@@ -1,6 +1,6 @@
 ---
-title: Woorden lijst voor Elastic Database-hulpprogram ma's
-description: Uitleg van de termen die worden gebruikt voor Elastic data base-hulpprogram ma's
+title: Woordenlijst met elastische databasegereedschappen
+description: Uitleg van termen die worden gebruikt voor elastische databasetools
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,76 +12,76 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: ab972db78cd213497fb96486b3e16b01f2c4c6eb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823631"
 ---
-# <a name="elastic-database-tools-glossary"></a>Woorden lijst voor Elastic Database-hulpprogram ma's
+# <a name="elastic-database-tools-glossary"></a>Woordenlijst met elastische databasegereedschappen
 
-De volgende termen worden gedefinieerd voor de [Elastic database-hulpprogram ma's](sql-database-elastic-scale-introduction.md), een functie van Azure SQL database. De hulpprogram ma's worden gebruikt voor het beheren van [Shard Maps](sql-database-elastic-scale-shard-map-management.md), en het toevoegen van de [client bibliotheek](sql-database-elastic-database-client-library.md), het [hulp programma voor splitsen en samen voegen](sql-database-elastic-scale-overview-split-and-merge.md), [elastische Pools](sql-database-elastic-pool.md)en [query's](sql-database-elastic-query-overview.md). 
+De volgende termen zijn gedefinieerd voor de [tools voor Elastic Database](sql-database-elastic-scale-introduction.md), een functie van Azure SQL Database. De hulpprogramma's worden gebruikt voor het beheren [van shardkaarten](sql-database-elastic-scale-shard-map-management.md)en omvatten de [clientbibliotheek,](sql-database-elastic-database-client-library.md)het [gereedschap splitsen samenvoegen,](sql-database-elastic-scale-overview-split-and-merge.md) [elastische pools](sql-database-elastic-pool.md)en [query's](sql-database-elastic-query-overview.md). 
 
-Deze voor waarden worden gebruikt in het [toevoegen van een Shard met Elastic database-hulpprogram ma's](sql-database-elastic-scale-add-a-shard.md) en [het gebruik van de klasse toewijzingen oplossen om problemen met de Shard-kaart op te lossen](sql-database-elastic-database-recovery-manager.md)
+Deze termen worden gebruikt bij [het toevoegen van een scherf met behulp van Elastic Database-gereedschappen](sql-database-elastic-scale-add-a-shard.md) en het gebruik van de klasse [RecoveryManager om problemen met de shardkaart op te lossen.](sql-database-elastic-database-recovery-manager.md)
 
-![Termen voor Elastic Scale][1]
+![Elastische schaaltermen][1]
 
-**Data Base**: een Azure-SQL database. 
+**Database:** een Azure SQL-database. 
 
-**Gegevens afhankelijke route ring**: de functionaliteit waarmee een toepassing verbinding kan maken met een Shard op basis van een specifieke sharding-sleutel. Zie [gegevens afhankelijke route ring](sql-database-elastic-scale-data-dependent-routing.md). Vergelijk met een **[multi-Shard-query](sql-database-elastic-scale-multishard-querying.md)** .
+**Gegevensafhankelijke routering:** de functionaliteit waarmee een toepassing verbinding kan maken met een shard gegeven door een specifieke shardingsleutel. Zie [Routebeschrijving sme.nl afhankelijk](sql-database-elastic-scale-data-dependent-routing.md)van gegevens . Vergelijk met **[Multi-Shard Query](sql-database-elastic-scale-multishard-querying.md)**.
 
-**Overzicht van globale Shard**: de kaart tussen sharding sleutels en hun respectieve Shards binnen een **Shard-set**. De globale Shard-toewijzing wordt opgeslagen in **Shard-toewijzings beheer**. Vergelijken met de **lokale Shard-toewijzing**.
+**Globale shardkaart**: De kaart tussen shardingsleutels en hun respectieve scherven binnen een **shardreeks.** De globale shardkaart wordt opgeslagen in de **shardmapmanager.** Vergelijk met **de lokale shardkaart.**
 
-**Lijst met Shard-toewijzing**: een Shard-toewijzing waarbij sharding sleutels afzonderlijk worden toegewezen. Vergelijkt met de **Shard-kaart**.   
+**Lijst shard kaart**: Een shard kaart waarin sharding toetsen individueel worden toegewezen. Vergelijk met **Range Shard Map**.   
 
-**Lokale Shard-toewijzing**: opgeslagen op een Shard, de lokale Shard-toewijzing bevat toewijzingen voor de shardlets die zich op de Shard bevinden.
+**Lokale scherfkaart**: Opgeslagen op een scherf, bevat de lokale shardkaart toewijzingen voor de shardlets die zich op de scherf bevinden.
 
-**Multi-Shard query**: de mogelijkheid om een query uit te geven op meerdere Shards; resultaten sets worden geretourneerd met behulp van UNION alle semantiek (ook wel ' ventilator-out-query ' genoemd). Vergelijkt met **gegevens afhankelijke route ring**.
+**Multi-shard query:** de mogelijkheid om een query uit te geven tegen meerdere scherven; resultatensets worden geretourneerd met union all-semantiek (ook wel 'fan-outquery' genoemd). Vergelijk met **routebepaling van gegevensafhankelijk**.
 
-**Multi tenant** en **single-tenant**: hier ziet u een Data Base met één Tenant en een multi tenant-Data Base:
+**Multi-tenant** en **single-tenant:** dit toont een single-tenant database en een multi-tenant database:
 
-![Single-en multi tenant-data bases](./media/sql-database-elastic-scale-glossary/multi-single-simple.png)
+![Databases met één en meerdere tenant](./media/sql-database-elastic-scale-glossary/multi-single-simple.png)
 
-Hier volgt een representatie van **Shard** single-en multi tenant-data bases. 
+Hier is een weergave van **geshard** single en multi-tenant databases. 
 
-![Single-en multi tenant-data bases](./media/sql-database-elastic-scale-glossary/shards-single-multi.png)
+![Databases met één en meerdere tenant](./media/sql-database-elastic-scale-glossary/shards-single-multi.png)
 
-**Toewijzing van bereik Shard**: een Shard-toewijzing waarbij de Shard-distributie strategie is gebaseerd op meerdere bereiken aaneengesloten waarden. 
+**De shardkaart**van het bereik : Een scherfkaart waarin de sharddistributiestrategie op veelvoudige waaiers van aaneengesloten waarden wordt gebaseerd. 
 
-**Naslag tabellen**: tabellen die niet worden Shard, maar die worden gerepliceerd tussen Shards. Post codes kunnen bijvoorbeeld worden opgeslagen in een verwijzings tabel. 
+**Referentietabellen:** tabellen die niet zijn gehard, maar die worden gerepliceerd over shards. Postcodes kunnen bijvoorbeeld worden opgeslagen in een referentietabel. 
 
-**Shard**: een Azure-SQL database die gegevens uit een Shard gegevensset opslaat. 
+**Shard:** een Azure SQL-database die gegevens opslaat van een geshard gegevensset. 
 
-**Shard elasticiteit**: de mogelijkheid om **horizon taal schalen** en **verticaal schalen**uit te voeren.
+**Shardelasticiteit**: De mogelijkheid om zowel **horizontale schaling** als **verticale schaling**uit te voeren.
 
-**Shard-tabellen**: tabellen die Shard zijn, dat wil zeggen, waarvan de gegevens worden verdeeld over Shards op basis van hun sharding sleutel waarden. 
+**Geshardtabellen**: tabellen die zijn geshard, d.w.z. waarvan de gegevens over shards worden verdeeld op basis van de kernwaarden voor sharding. 
 
-**Sharding-sleutel**: een kolom waarde die bepaalt hoe gegevens worden gedistribueerd over Shards. Het waardetype kan een van de volgende waarden hebben: **int**, **bigint**, **varbinary**of **uniqueidentifier**. 
+**Sharding-toets:** een kolomwaarde die bepaalt hoe gegevens over shards worden verdeeld. Het waardetype kan een van de volgende zijn: **int,** **bigint,** **varbinary**, of **uniqueidentifier**. 
 
-**Shard ingesteld**: de verzameling van Shards die worden toegeschreven aan dezelfde Shard-toewijzing in de Shard-kaart Manager.  
+**Shard set**: De verzameling van scherven die worden toegeschreven aan dezelfde shard kaart in de shard map manager.  
 
-**Shardlet**: alle gegevens die zijn gekoppeld aan één waarde van een sharding-sleutel op een Shard. Een shardlet is de kleinste eenheid van gegevens verplaatsing tijdens het opnieuw distribueren van Shard-tabellen. 
+**Shardlet**: Alle gegevens die zijn gekoppeld aan een enkele waarde van een shardingssleutel op een shard. Een shardlet is de kleinste eenheid van gegevensverplaatsing mogelijk bij het herverdelen van gehard tabellen. 
 
-**Shard-toewijzing**: de set toewijzingen tussen sharding-sleutels en hun respectieve Shards.
+**Shard kaart**: De set van mappings tussen sharding toetsen en hun respectieve scherven.
 
-**Shard-toewijzings beheer**: een beheer object en gegevens opslag dat de Shard-kaart (en), Shard locaties en toewijzingen bevat voor een of meer Shard sets.
+**Shardmapmanager**: een beheerobject en gegevensarchief dat de shardmap(s), shardlocaties en toewijzingen voor een of meer shardsets bevat.
 
 ![Toewijzingen][2]
 
 ## <a name="verbs"></a>Termen
-**Horizon taal schalen**: de handeling van het uitschalen (of in) een verzameling Shards door Shards toe te voegen aan of te verwijderen uit een Shard-kaart, zoals hieronder wordt weer gegeven.
+**Horizontale schaling**: De handeling van het uitschalen (of in) van een verzameling scherven door het toevoegen of verwijderen van scherven aan een shardkaart, zoals hieronder weergegeven.
 
-![Horizon taal en verticaal schalen][3]
+![Horizontaal en verticaal schalen][3]
 
-**Samen voegen**: de handeling van het verplaatsen van shardlets van twee Shards naar een Shard en het bijwerken van de Shard-kaart dienovereenkomstig.
+**Samenvoegen**: De handeling van het verplaatsen van shardlets van twee scherven naar een scherf en het bijwerken van de shard kaart dienovereenkomstig.
 
-**Shardlet verplaatsen**: de handeling waarbij één Shardlet naar een andere Shard wordt verplaatst. 
+**Shardlet move**: De handeling van het verplaatsen van een enkele shardlet naar een andere scherf. 
 
-**Shard**: de handel van het Horizon taal partitioneren van identieke gestructureerde gegevens over meerdere data bases op basis van een sharding-sleutel.
+**Shard**: De handeling van het horizontaal partitioneren van identiek gestructureerde gegevens over meerdere databases op basis van een sharding sleutel.
 
-**Splitsen**: de handeling van het verplaatsen van verschillende shardlets van een Shard naar een andere (doorgaans nieuwe) Shard. Een sharding-sleutel wordt door de gebruiker als het Splits punt verschaft.
+**Split**: De handeling van het verplaatsen van verschillende shardlets van de ene scherf naar de andere (meestal nieuwe) scherf. Een sharding sleutel wordt geleverd door de gebruiker als het split point.
 
-**Verticaal schalen**: de kracht van het schalen van de reken grootte van een afzonderlijke Shard. U kunt bijvoorbeeld een Shard wijzigen van Standard in Premium (wat resulteert in meer computer bronnen). 
+**Verticale schaling:** de handeling van het opschalen (of omlaag) van de rekengrootte van een afzonderlijke shard. Bijvoorbeeld het wijzigen van een scherf van Standaard naar Premium (wat resulteert in meer computerbronnen). 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

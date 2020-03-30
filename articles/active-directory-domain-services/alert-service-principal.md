@@ -1,6 +1,6 @@
 ---
-title: Service-Principal-waarschuwingen in Azure AD Domain Services oplossen | Microsoft Docs
-description: Meer informatie over het oplossen van problemen met de configuratie van service-principals voor Azure Active Directory Domain Services
+title: Hoofdwaarschuwingen voor services oplossen in Azure AD Domain Services | Microsoft Documenten
+description: Informatie over het oplossen van serviceprincipal configuration alerts voor Azure Active Directory Domain Services
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,91 +12,91 @@ ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: iainfou
 ms.openlocfilehash: 175bfe63176b78c5aeafc7147c46dd5ab1110325
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71257967"
 ---
-# <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Bekende problemen: Waarschuwingen voor service-principals in Azure Active Directory Domain Services
+# <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Bekende problemen: serviceprincipal alerts in Azure Active Directory Domain Services
 
-[Service-principals](../active-directory/develop/app-objects-and-service-principals.md) zijn toepassingen die door het Azure-platform worden gebruikt voor het beheren, bijwerken en onderhouden van een door Azure AD DS beheerd domein. Als een service-principal wordt verwijderd, wordt de functionaliteit van de Azure AD DS Managed Domain beïnvloed.
+[Serviceprincipals](../active-directory/develop/app-objects-and-service-principals.md) zijn toepassingen die het Azure-platform gebruikt voor het beheren, bijwerken en onderhouden van een door Azure AD DS beheerd domein. Als een serviceprincipal wordt verwijderd, wordt de functionaliteit in het door Azure AD DS beheerde domein beïnvloed.
 
-Dit artikel helpt u bij het oplossen van problemen met Service-Principal-configuratie waarschuwingen.
+Met dit artikel u serviceprincipal-gerelateerde configuratiewaarschuwingen oplossen en oplossen.
 
-## <a name="alert-aadds102-service-principal-not-found"></a>AADDS102 waarschuwing: Service-Principal is niet gevonden
+## <a name="alert-aadds102-service-principal-not-found"></a>Waarschuwing AADDS102: Serviceprincipal niet gevonden
 
-### <a name="alert-message"></a>Waarschuwings bericht
+### <a name="alert-message"></a>Waarschuwingsbericht
 
-*Een service-principal die vereist is voor een goede werking van Azure AD Domain Services, is verwijderd uit uw Azure AD-adres lijst. Deze configuratie is van invloed op de mogelijkheid van micro soft om uw beheerde domein te bewaken, te beheren, te patchen en te synchroniseren.*
+*Een Service Principal die vereist is om Azure AD Domain Services goed te laten functioneren, is verwijderd uit uw Azure AD-map. Deze configuratie heeft invloed op de mogelijkheid van Microsoft om uw beheerde domein te controleren, beheren, patchen en synchroniseren.*
 
-Als een vereiste service-principal is verwijderd, kan het Azure-platform geen geautomatiseerde beheer taken uitvoeren. Het door Azure AD DS beheerde domein kan mogelijk geen updates Toep assen of back-ups maken.
+Als een vereiste serviceprincipal wordt verwijderd, kan het Azure-platform geen geautomatiseerde beheertaken uitvoeren. Het door Azure AD DS beheerde domein past mogelijk geen updates toe of maakt geen back-ups.
 
-### <a name="check-for-missing-service-principals"></a>Controleren op ontbrekende service-principals
+### <a name="check-for-missing-service-principals"></a>Controleren op ontbrekende serviceprincipals
 
-Voer de volgende stappen uit om te controleren welke service-principal ontbreekt en opnieuw moet worden gemaakt:
+Voer de volgende stappen uit om te controleren welke serviceprincipal ontbreekt en opnieuw moet worden gemaakt:
 
-1. Selecteer in de Azure Portal **Azure Active Directory** in het navigatie menu aan de linkerkant.
-1. Selecteer **bedrijfs toepassingen**. Kies *alle toepassingen* in de vervolg keuzelijst **toepassings type** en selecteer vervolgens **Toep assen**.
-1. Zoek naar elk van de toepassings-Id's. Als er geen bestaande toepassing wordt gevonden, volgt u *de stappen voor het maken* van de service-principal of het opnieuw registreren van de naam ruimte.
+1. Selecteer Azure Active **Directory** in de Azure-portal in het linkernavigatiemenu.
+1. Selecteer **Enterprise-toepassingen**. Kies *Alle toepassingen* in het vervolgkeuzemenu **Toepassingstype** en selecteer **Vervolgens Toepassen**.
+1. Zoek naar elk van de toepassings-id's. Als er geen bestaande toepassing wordt gevonden, volgt u de *stappen Voor het oplossen* van de serviceprincipal of registreert u de naamruimte opnieuw.
 
     | Toepassings-id | Oplossing |
     | :--- | :--- |
-    | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [Een ontbrekende Service-Principal opnieuw maken](#recreate-a-missing-service-principal) |
-    | 443155a6-77f3-45e3-882b-22b3a8d431fb | [Registreer de micro soft. AAD-naam ruimte opnieuw](#re-register-the-microsoft-aad-namespace) |
-    | abba844e-bc0e-44b0-947a-dc74e5d09022 | [Registreer de micro soft. AAD-naam ruimte opnieuw](#re-register-the-microsoft-aad-namespace) |
-    | d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [Registreer de micro soft. AAD-naam ruimte opnieuw](#re-register-the-microsoft-aad-namespace) |
+    | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [Een ontbrekende serviceprincipal opnieuw maken](#recreate-a-missing-service-principal) |
+    | 443155a6-77f3-45e3-882b-22b3a8d431fb | [De Microsoft.AAD-naamruimte opnieuw registreren](#re-register-the-microsoft-aad-namespace) |
+    | abba844e-bc0e-44b0-947a-dc74e5d09022 | [De Microsoft.AAD-naamruimte opnieuw registreren](#re-register-the-microsoft-aad-namespace) |
+    | d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [De Microsoft.AAD-naamruimte opnieuw registreren](#re-register-the-microsoft-aad-namespace) |
 
-### <a name="recreate-a-missing-service-principal"></a>Een ontbrekende Service-Principal opnieuw maken
+### <a name="recreate-a-missing-service-principal"></a>Een ontbrekende serviceprincipal opnieuw maken
 
-Als de *2565bd9d-DA50-47d4-8b85-4c97f669dc36* van de toepassings-id ontbreekt in uw Azure AD-adres lijst, kunt u Azure AD Power shell gebruiken om de volgende stappen uit te voeren. Zie voor meer informatie [Azure AD Power Shell installeren](/powershell/azure/active-directory/install-adv2).
+Als toepassings-id *2565bd9d-da50-47d4-8b85-4c97f669dc36* ontbreekt in uw Azure AD-map, gebruikt u Azure AD PowerShell om de volgende stappen uit te voeren. Zie [Azure AD PowerShell installeren](/powershell/azure/active-directory/install-adv2)voor meer informatie .
 
-1. Installeer de Azure AD Power shell-module en importeer deze als volgt:
+1. Installeer de Azure AD PowerShell-module en importeer deze als volgt:
 
     ```powershell
     Install-Module AzureAD
     Import-Module AzureAD
     ```
 
-1. Maak de Service-Principal nu opnieuw met behulp van de cmdlet [New-azureadserviceprincipal namelijk niet][New-AzureAdServicePrincipal] :
+1. Maak nu de serviceprincipal opnieuw met de cmdlet [Nieuw-AzureAdServicePrincipal:][New-AzureAdServicePrincipal]
 
     ```powershell
     New-AzureAdServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     ```
 
-De status van het beheerde domein van Azure AD DS wordt binnen twee uur automatisch bijgewerkt en de waarschuwing wordt verwijderd.
+De status van het Azure AD DS-domein wordt automatisch binnen twee uur bijgewerkt en verwijdert de waarschuwing.
 
-### <a name="re-register-the-microsoft-aad-namespace"></a>De micro soft AAD-naam ruimte opnieuw registreren
+### <a name="re-register-the-microsoft-aad-namespace"></a>De Microsoft AAD-naamruimte opnieuw registreren
 
-Als de toepassings-ID *443155a6-77f3-45e3-882b-22b3a8d431fb*, *abba844e-bc0e-44b0-947a-dc74e5d09022*of *D87DCBC6-A371-462E-88E3-28AD15EC4E64* ontbreekt in uw Azure AD-adres lijst, voert u de volgende stappen uit om Registreer de resource provider *micro soft. Aad* opnieuw:
+Bij aanvraag ID *443155a6-77f3-45e3-882b-22b3a8d431fb*, *abba844e-bc0e-44b0-947 a-dc74e5d09022*, of *d87dcbc6-a371-462e-88e3-28ad15ec4e64* ontbreekt in uw Azure AD-directory, voer de volgende stappen uit om de *Microsoft.AAD-bronprovider* opnieuw te registreren:
 
-1. Zoek in het Azure Portal naar en selecteer **abonnementen**.
-1. Kies het abonnement dat is gekoppeld aan uw door Azure AD DS beheerd domein.
-1. Kies **resource providers**in de linkernavigatiebalk.
-1. Zoek naar *micro soft. Aad*en selecteer **opnieuw registreren**.
+1. Zoek en selecteer in de Azure-portal abonnementen en selecteer **deze.**
+1. Kies het abonnement dat is gekoppeld aan uw door Azure AD DS beheerde domein.
+1. Kies **resourceproviders**in de linkernavigatie.
+1. Zoek naar *Microsoft.AAD*en selecteer **Opnieuw registreren**.
 
-De status van het beheerde domein van Azure AD DS wordt binnen twee uur automatisch bijgewerkt en de waarschuwing wordt verwijderd.
+De status van het Azure AD DS-domein wordt automatisch binnen twee uur bijgewerkt en verwijdert de waarschuwing.
 
-## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>AADDS105 waarschuwing: De toepassing voor wachtwoord synchronisatie is verouderd
+## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>Waarschuwing AADDS105: Wachtwoordsynchronisatietoepassing is verouderd
 
-### <a name="alert-message"></a>Waarschuwings bericht
+### <a name="alert-message"></a>Waarschuwingsbericht
 
-*De service-principal met de toepassings-ID ' d87dcbc6-a371-462e-88e3-28ad15ec4e64 ' is verwijderd en opnieuw gemaakt. De recreatie verloopt achter inconsistente machtigingen voor Azure AD Domain Services resources die nodig zijn om uw beheerde domein te onderhouden. De synchronisatie van wacht woorden op uw beheerde domein kan worden beïnvloed.*
+*De service principal met de applicatie-ID "d87dcbc6-a371-462e-88e3-28ad15ec4e64" werd verwijderd en vervolgens opnieuw gemaakt. De recreatie laat inconsistente machtigingen achter op Azure AD Domain Services-bronnen die nodig zijn om uw beheerde domein te onderhouden. Synchronisatie van wachtwoorden op uw beheerde domein kan worden beïnvloed.*
 
-Azure AD DS synchroniseert automatisch gebruikers accounts en referenties van Azure AD. Als er een probleem is met de Azure AD-toepassing die wordt gebruikt voor dit proces, mislukt de synchronisatie van referenties tussen Azure AD DS en Azure AD.
+Azure AD DS synchroniseert automatisch gebruikersaccounts en referenties vanuit Azure AD. Als er een probleem is met de Azure AD-toepassing die voor dit proces wordt gebruikt, mislukt de synchronisatie van referenties tussen Azure AD DS en Azure AD.
 
 ### <a name="resolution"></a>Oplossing
 
-Als u de Azure AD-toepassing die wordt gebruikt voor referentie synchronisatie opnieuw wilt maken, gebruikt u Azure AD Power shell om de volgende stappen uit te voeren. Zie voor meer informatie [Azure AD Power Shell installeren](/powershell/azure/active-directory/install-adv2).
+Als u de Azure AD-toepassing wilt opnieuw maken die wordt gebruikt voor het synchroniseren van referenties, gebruikt u Azure AD PowerShell om de volgende stappen uit te voeren. Zie [Azure AD PowerShell installeren](/powershell/azure/active-directory/install-adv2)voor meer informatie .
 
-1. Installeer de Azure AD Power shell-module en importeer deze als volgt:
+1. Installeer de Azure AD PowerShell-module en importeer deze als volgt:
 
     ```powershell
     Install-Module AzureAD
     Import-Module AzureAD
     ```
 
-2. Verwijder nu de oude toepassing en het object met behulp van de volgende Power shell-cmdlets:
+2. Verwijder nu de oude toepassing en het object met de volgende PowerShell-cmdlets:
 
     ```powershell
     $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
@@ -105,11 +105,11 @@ Als u de Azure AD-toepassing die wordt gebruikt voor referentie synchronisatie o
     Remove-AzureADServicePrincipal -ObjectId $app.ObjectId
     ```
 
-Wanneer u beide toepassingen verwijdert, maakt het Azure-platform deze automatisch opnieuw en probeert wachtwoord synchronisatie te hervatten. De status van het beheerde domein van Azure AD DS wordt binnen twee uur automatisch bijgewerkt en de waarschuwing wordt verwijderd.
+Nadat u beide toepassingen hebt verwijderd, maakt het Azure-platform deze automatisch opnieuw en probeert het wachtwoordsynchronisatie te hervatten. De status van het Azure AD DS-domein wordt automatisch binnen twee uur bijgewerkt en verwijdert de waarschuwing.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u nog steeds problemen ondervindt, [opent u een ondersteunings aanvraag voor Azure][azure-support] voor aanvullende hulp bij het oplossen van problemen.
+Als u nog steeds problemen hebt, [opent u een Azure-ondersteuningsaanvraag][azure-support] voor extra hulp bij het oplossen van problemen.
 
 <!-- INTERNAL LINKS -->
 [azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md

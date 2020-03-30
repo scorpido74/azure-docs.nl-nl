@@ -1,6 +1,6 @@
 ---
-title: Queue Storage gebruiken via PHP-Azure Storage
-description: Informatie over het gebruik van de Azure Queue Storage-service voor het maken en verwijderen van wacht rijen en het invoegen, ophalen en verwijderen van berichten. Voor beelden zijn geschreven in PHP.
+title: Wachtrijopslag gebruiken vanuit PHP - Azure Storage
+description: Meer informatie over het gebruik van de Azure Queue-opslagservice om wachtrijen te maken en te verwijderen en berichten in te voegen, op te halen en te verwijderen. Voorbeelden zijn geschreven in PHP.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 01/11/2018
@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.openlocfilehash: 692c943e48c08771b5f1c60b66412270081cf0e6
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72302964"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>Queue Storage gebruiken met PHP
@@ -21,7 +21,7 @@ ms.locfileid: "72302964"
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
-In deze hand leiding wordt beschreven hoe u algemene scenario's uitvoert met behulp van de Azure Queue Storage-service. De voor beelden zijn geschreven via klassen uit de [Azure Storage-client bibliotheek voor php][download]. De gedekte scenario's zijn het invoegen, inspecteren, ophalen en verwijderen van wachtrij berichten, en het maken en verwijderen van wacht rijen.
+In deze handleiding ziet u hoe u veelvoorkomende scenario's uitvoeren met behulp van de Azure Queue-opslagservice. De voorbeelden worden geschreven via klassen uit de [Azure Storage Client Library voor PHP.][download] De gedekte scenario's omvatten het invoegen, gluren, opvragen en verwijderen van wachtrijberichten, evenals het maken en verwijderen van wachtrijen.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -29,15 +29,15 @@ In deze hand leiding wordt beschreven hoe u algemene scenario's uitvoert met beh
 
 ## <a name="create-a-php-application"></a>Een PHP-toepassing maken
 
-De enige vereiste voor het maken van een PHP-toepassing die toegang heeft tot Azure Queue-opslag is het verwijzen van klassen in de [Azure Storage-client bibliotheek voor php][download] vanuit uw code. U kunt elk ontwikkelprogramma gebruiken om uw toepassing te maken, waaronder Kladblok.
+De enige vereiste voor het maken van een PHP-toepassing die toegang heeft tot Azure Queue-opslag is de verwijzing naar klassen in de [Azure Storage Client Library voor PHP][download] vanuit uw code. U kunt elk ontwikkelprogramma gebruiken om uw toepassing te maken, waaronder Kladblok.
 
-In deze hand leiding gebruikt u de functies van Queue Storage-service die lokaal kunnen worden aangeroepen binnen een PHP-toepassing, of in code die wordt uitgevoerd in een webtoepassing in Azure.
+In deze handleiding gebruikt u de wachtrijopslagservicefuncties die lokaal kunnen worden aangeroepen binnen een PHP-toepassing of in code die wordt uitgevoerd in een webtoepassing in Azure.
 
-## <a name="get-the-azure-client-libraries"></a>De Azure-client bibliotheken ophalen
+## <a name="get-the-azure-client-libraries"></a>De Azure-clientbibliotheken opgebruiken
 
-### <a name="install-via-composer"></a>Installeren via Composer
+### <a name="install-via-composer"></a>Installeren via componist
 
-1. Maak een bestand met de naam **Composer. json** in de hoofdmap van het project en voeg de volgende code toe:
+1. Maak een bestand met de naam **composer.json** in de hoofdmap van uw project en voeg er de volgende code aan toe:
    
     ```json
     {
@@ -46,51 +46,51 @@ In deze hand leiding gebruikt u de functies van Queue Storage-service die lokaal
       }
     }
     ```
-2. Down load **[Composer. Phar][composer-phar]** in de hoofdmap van het project.
-3. Open een opdracht prompt en voer de volgende opdracht uit in de project root
+2. Download **[composer.phar][composer-phar]** in uw projectroot.
+3. Een opdrachtprompt openen en de volgende opdracht uitvoeren in de projecthoofdmap
    
     ```
     php composer.phar install
     ```
 
-Ga ook naar de [Azure Storage php-client bibliotheek][download] op github om de bron code te klonen.
+U ook naar de [Azure Storage PHP-clientbibliotheek][download] op GitHub gaan om de broncode te klonen.
 
-## <a name="configure-your-application-to-access-queue-storage"></a>Uw toepassing configureren voor toegang tot de wachtrij opslag
+## <a name="configure-your-application-to-access-queue-storage"></a>Uw toepassing configureren om toegang te krijgen tot wachtrijopslag
 
-Als u de Api's voor Azure Queue Storage wilt gebruiken, moet u het volgende doen:
+Als u de API's voor Azure Queue-opslag wilt gebruiken, moet u het:
 
-1. Refereer met de [require_once] -instructie naar het autoloader-bestand.
-2. Verwijs naar klassen die u mogelijk gebruikt.
+1. Verwijs naar het autoloaderbestand met behulp van de [require_once-instructie.]
+2. Verwijs naar alle klassen die u zou kunnen gebruiken.
 
-In het volgende voor beeld ziet u hoe u het autoloader-bestand opneemt en naar de klasse **QueueRestProxy** verwijst.
+In het volgende voorbeeld ziet u hoe u het bestand voor autoloader opneemt en verwijst naar de klasse **QueueRestProxy.**
 
 ```php
 require_once 'vendor/autoload.php';
 use MicrosoftAzure\Storage\Queue\QueueRestProxy;
 ```
 
-In de volgende voor beelden wordt de instructie `require_once` altijd weer gegeven, maar alleen de klassen die nodig zijn om het voor beeld uit te voeren, worden verwezen.
+In de volgende voorbeelden `require_once` wordt de instructie altijd weergegeven, maar alleen naar de klassen die nodig zijn voor het voorbeeld dat moet worden uitgevoerd, wordt verwezen.
 
-## <a name="set-up-an-azure-storage-connection"></a>Een Azure Storage-verbinding instellen
+## <a name="set-up-an-azure-storage-connection"></a>Een Azure-opslagverbinding instellen
 
-Als u een Azure Queue Storage-client wilt instantiëren, moet u eerst een geldig connection string hebben. De indeling voor de wachtrij service connection string is als volgt.
+Als u een Azure Queue-opslagclient wilt instantiëren, moet u eerst over een geldige verbindingstekenreeks beschikken. De indeling voor de verbindingstekenreeks voor wachtrijservice is als volgt.
 
-Voor toegang tot een Live-service:
+Voor toegang tot een live service:
 
 ```php
 DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
 ```
 
-Voor toegang tot de emulator-opslag:
+Voor toegang tot de emulatoropslag:
 
 ```php
 UseDevelopmentStorage=true
 ```
 
-Als u een Azure Queue-service-client wilt maken, moet u de **QueueRestProxy** -klasse gebruiken. U kunt een van de volgende technieken gebruiken:
+Als u een Azure Queue-serviceclient wilt maken, moet u de klasse **QueueRestProxy** gebruiken. U een van de volgende technieken gebruiken:
 
-* Geef het connection string rechtstreeks door aan het bestand.
-* Gebruik omgevings variabelen in uw web-app om de connection string op te slaan. Zie [configuratie-instellingen document van Azure web app](../../app-service/configure-common.md) voor het configureren van verbindings reeksen.
+* Geef de verbindingstekenreeks er rechtstreeks aan door.
+* Gebruik omgevingsvariabelen in uw web-app om de verbindingstekenreeks op te slaan. Zie [het document met configuratie-instellingen voor azure-web-apps](../../app-service/configure-common.md) voor het configureren van verbindingstekenreeksen.
 In de voorbeelden die hier worden beschreven, wordt de verbindingsreeks rechtstreeks doorgegeven.
 
 ```php
@@ -104,7 +104,7 @@ $queueClient = QueueRestProxy::createQueueService($connectionString);
 
 ## <a name="create-a-queue"></a>Een wachtrij maken
 
-Met een **QueueRestProxy** -object kunt u een wachtrij maken met behulp van de methode **createQueue** . Bij het maken van een wachtrij kunt u opties instellen in de wachtrij, maar dit is niet vereist. (In het onderstaande voor beeld ziet u hoe u meta gegevens in een wachtrij kunt instellen.)
+Met een object **QueueRestProxy** u een wachtrij maken met de methode **createQueue.** Bij het maken van een wachtrij u opties instellen in de wachtrij, maar dit is niet vereist. (In het onderstaande voorbeeld ziet u hoe u metagegevens instelt in een wachtrij.)
 
 ```php
 require_once 'vendor/autoload.php';
@@ -138,13 +138,13 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> U moet niet vertrouwen op hoofdletter gevoeligheid voor meta gegevens sleutels. Alle sleutels worden in kleine letters in de service gelezen.
+> U moet niet vertrouwen op de gevoeligheid van de aanvraag voor metagegevenssleutels. Alle toetsen worden gelezen van de service in kleine letters.
 > 
 > 
 
-## <a name="add-a-message-to-a-queue"></a>Een bericht aan een wachtrij toevoegen
+## <a name="add-a-message-to-a-queue"></a>Een bericht toevoegen aan een wachtrij
 
-Gebruik **QueueRestProxy-> createMessage**om een bericht toe te voegen aan een wachtrij. De-methode heeft de naam van de wachtrij, de bericht tekst en bericht opties (optioneel).
+Als u een bericht aan een wachtrij wilt toevoegen, gebruikt u **QueueRestProxy->makenMessage**. De methode neemt de naam van de wachtrij, de berichttekst en de berichtopties (die optioneel zijn).
 
 ```php
 require_once 'vendor/autoload.php';
@@ -174,7 +174,7 @@ catch(ServiceException $e){
 
 ## <a name="peek-at-the-next-message"></a>Bekijken van het volgende bericht
 
-U kunt een bericht (of berichten) aan de voor kant van een wachtrij weer geven zonder het uit de wachtrij te verwijderen door het aanroepen van **QueueRestProxy-> peekMessages**. De methode **peekMessage** retourneert standaard één bericht, maar u kunt deze waarde wijzigen met behulp van de **PeekMessagesOptions-> methode setNumberOfMessages** .
+U een bericht (of berichten) aan de voorkant van een wachtrij bekijken zonder het uit de wachtrij te verwijderen door **QueueRestProxy->peekMessages**te bellen. Standaard retourneert de **methode peekMessage** één bericht, maar u die waarde wijzigen met de methode **PeekMessagesOptions->setNumberMessages.**
 
 ```php
 require_once 'vendor/autoload.php';
@@ -223,7 +223,7 @@ else{
 
 ## <a name="de-queue-the-next-message"></a>Het volgende bericht uit de wachtrij verwijderen
 
-Uw code verwijdert een bericht uit een wachtrij in twee stappen. Eerst roept u **QueueRestProxy-> listMessages**aan, waardoor het bericht onzichtbaar wordt voor alle andere code die vanuit de wachtrij wordt gelezen. Standaard blijft het bericht onzichtbaar gedurende 30 seconden. (Als het bericht niet binnen deze tijds periode wordt verwijderd, wordt het opnieuw weer gegeven in de wachtrij.) Om het verwijderen van het bericht uit de wachtrij te volt ooien, moet u **QueueRestProxy-> deleteMessage**aanroepen. Dit proces met twee stappen voor het verwijderen van een bericht zorgt ervoor dat wanneer uw code een bericht niet kan verwerken als gevolg van een hardware-of software fout, een ander exemplaar van uw code hetzelfde bericht kan ophalen en het opnieuw proberen. Uw code aanroepen **deleteMessage** direct nadat het bericht is verwerkt.
+Uw code verwijdert een bericht uit een wachtrij in twee stappen. Eerst belt u **QueueRestProxy->listMessages**, waardoor het bericht onzichtbaar is voor elke andere code die uit de wachtrij wordt gelezen. Standaard blijft het bericht onzichtbaar gedurende 30 seconden. (Als het bericht in deze periode niet wordt verwijderd, wordt het weer zichtbaar in de wachtrij.) Als u wilt eindigen met het verwijderen van het bericht uit de wachtrij, moet u **QueueRestProxy->deleteMessage**aanroepen. Dit proces in twee stappen van het verwijderen van een bericht zorgt ervoor dat wanneer uw code een bericht niet verwerkt als gevolg van hardware- of softwarefouten, een ander exemplaar van uw code hetzelfde bericht kan ontvangen en het opnieuw kan proberen. Uw coderoept **deleteMessage** direct nadat het bericht is verwerkt.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -265,7 +265,7 @@ catch(ServiceException $e){
 
 ## <a name="change-the-contents-of-a-queued-message"></a>De inhoud van een bericht in de wachtrij wijzigen
 
-U kunt de inhoud van een bericht in de wachtrij wijzigen door **QueueRestProxy-> updateMessage**aan te roepen. Als het bericht een werktaak vertegenwoordigt, kunt u deze functie gebruiken om de status van de werktaak bij te werken. Met de volgende code wordt het bericht in de wachtrij bijgewerkt met nieuwe inhoud en wordt de time-out voor de zicht baarheid ingesteld op een waarde van 60 seconden. Hiermee wordt de status van het werk dat is gekoppeld aan het bericht opgeslagen en wordt de client nog een minuut om te blijven werken met het bericht. U kunt deze techniek gebruiken om uit meerdere stappen bestaande werkstromen in berichten in de wachtrij te volgen zonder dat u helemaal opnieuw hoeft te beginnen als een verwerkingsstap vanwege een hardware- of softwarefout is mislukt. Doorgaans houdt u ook het aantal nieuwe pogingen bij en als het bericht meer dan *n* keer opnieuw is geprobeerd, verwijdert u het. Dit biedt bescherming tegen berichten die een toepassingsfout activeren telkens wanneer ze worden verwerkt.
+U de inhoud van een bericht in de wachtrij wijzigen door **QueueRestProxy->updateMessage te**bellen. Als het bericht een werktaak vertegenwoordigt, kunt u deze functie gebruiken om de status van de werktaak bij te werken. Met de volgende code wordt het wachtrijbericht bijgewerkt met nieuwe inhoud en wordt de time-out voor zichtbaarheid ingesteld om nog eens 60 seconden uit te breiden. Dit slaat de stand van het werk op dat aan het bericht is gekoppeld en geeft de client nog een minuut om aan het bericht te blijven werken. U kunt deze techniek gebruiken om uit meerdere stappen bestaande werkstromen in berichten in de wachtrij te volgen zonder dat u helemaal opnieuw hoeft te beginnen als een verwerkingsstap vanwege een hardware- of softwarefout is mislukt. Doorgaans houdt u ook het aantal nieuwe pogingen bij en als het bericht meer dan *n* keer opnieuw is geprobeerd, verwijdert u het. Dit biedt bescherming tegen berichten die een toepassingsfout activeren telkens wanneer ze worden verwerkt.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -309,9 +309,9 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="additional-options-for-de-queuing-messages"></a>Aanvullende opties voor de wachtrij berichten
+## <a name="additional-options-for-de-queuing-messages"></a>Extra opties voor het ontgenereren van berichten
 
-Er zijn twee manieren waarop u het ophalen van berichten uit een wachtrij kunt aanpassen. Ten eerste kunt u berichten batchgewijs (maximaal 32) ophalen. Ten tweede kunt u een langere of korte time-out voor de zicht baarheid instellen, waardoor uw code meer of minder tijd nodig is om elk bericht volledig te verwerken. In het volgende code voorbeeld wordt de methode **getMessages** gebruikt om 16 berichten in één aanroep op te halen. Vervolgens wordt elk bericht verwerkt met behulp **van een for** -lus. De time-out voor onzichtbaarheid wordt ingesteld op vijf minuten voor elk bericht.
+Er zijn twee manieren waarop u het ophalen van berichten uit een wachtrij aanpassen. Ten eerste kunt u berichten batchgewijs (maximaal 32) ophalen. Ten tweede u een langere of kortere time-out voor zichtbaarheid instellen, zodat uw code meer of minder tijd heeft om elk bericht volledig te verwerken. In het volgende codevoorbeeld wordt de methode **getMessages** gebruikt om 16 berichten in één gesprek te ontvangen. Vervolgens verwerkt het elk bericht met behulp van een **voor** lus. De time-out voor onzichtbaarheid wordt ingesteld op vijf minuten voor elk bericht.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -360,9 +360,9 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="get-queue-length"></a>Wachtrij lengte ophalen
+## <a name="get-queue-length"></a>Wachtrijlengte opdoen
 
-U kunt een schatting ophalen van het aantal berichten in de wachtrij. De **QueueRestProxy-> getQueueMetadata-** methode vraagt de wachtrij service om meta gegevens over de wachtrij te retour neren. Het aanroepen van de methode **getApproximateMessageCount** voor het geretourneerde object biedt een telling van het aantal berichten in een wachtrij. De telling is alleen geschatte omdat berichten kunnen worden toegevoegd of verwijderd nadat de wachtrij service op uw aanvraag reageert.
+U kunt een schatting ophalen van het aantal berichten in de wachtrij. De methode **QueueRestProxy->getQueueMetadata** vraagt de wachtrijservice om metagegevens over de wachtrij terug te sturen. Als u de methode **getApproximateMessageCount** aanroept op het geretourneerde object, wordt geteld hoeveel berichten zich in een wachtrij bevinden. Het aantal is slechts bij benadering omdat berichten kunnen worden toegevoegd of verwijderd nadat de wachtrijservice op uw verzoek reageert.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -394,7 +394,7 @@ echo $approx_msg_count;
 
 ## <a name="delete-a-queue"></a>Een wachtrij verwijderen
 
-Als u een wachtrij en alle berichten erin wilt verwijderen, roept u de **QueueRestProxy-> delete Queue-** methode aan.
+Als u een wachtrij en alle berichten in deze wachtrij wilt verwijderen, roept u de methode **QueueRestProxy->deleteQueue** aan.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -423,12 +423,12 @@ catch(ServiceException $e){
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de basis principes van Azure Queue Storage hebt geleerd, volgt u deze koppelingen voor meer informatie over complexere opslag taken:
+Volg de basisbeginselen van Azure Queue-opslag nu u de basisbeginselen van Azure Queue-opslag hebt geleerd, voordat u meer te weten komt over complexere opslagtaken:
 
-* Ga naar de [API-verwijzing voor Azure Storage php-client bibliotheek](https://azure.github.io/azure-storage-php/)
-* Bekijk het [voor beeld van een geavanceerde wachtrij](https://github.com/Azure/azure-storage-php/blob/master/samples/QueueSamples.php).
+* Ga naar de [API-verwijzing voor Azure Storage PHP-clientbibliotheek](https://azure.github.io/azure-storage-php/)
+* Zie het [voorbeeld Geavanceerde wachtrij](https://github.com/Azure/azure-storage-php/blob/master/samples/QueueSamples.php).
 
-Zie ook het [PHP-ontwikkelaars centrum](https://azure.microsoft.com/develop/php/)voor meer informatie.
+Zie voor meer informatie ook het [PHP Developer Center.](https://azure.microsoft.com/develop/php/)
 
 [download]: https://github.com/Azure/azure-storage-php
 [require_once]: https://www.php.net/manual/en/function.require-once.php

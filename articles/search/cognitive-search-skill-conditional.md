@@ -1,7 +1,7 @@
 ---
 title: Voorwaardelijke cognitieve vaardigheid
 titleSuffix: Azure Cognitive Search
-description: Met de voorwaardelijke vaardigheid in azure Cognitive Search filteren, standaard instellingen maken en waarden samen voegen in een definitie van een vakkennisset.
+description: De voorwaardelijke vaardigheid in Azure Cognitive Search maakt het mogelijk om standaardwaarden te filteren, standaardwaarden te maken en waarden samen te voegen in een skillset-definitie.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792047"
 ---
 # <a name="conditional-cognitive-skill"></a>Voorwaardelijke cognitieve vaardigheid
 
-De **voorwaardelijke** vaardigheid maakt Azure Cognitive Search scenario's mogelijk waarvoor een Booleaanse bewerking is vereist om te bepalen welke gegevens moeten worden toegewezen aan een uitvoer. Deze scenario's zijn onder andere het filteren, het toewijzen van een standaard waarde en het samen voegen van gegevens op basis van een voor waarde.
+Met **de voorwaardelijke** vaardigheid kunnen Azure Cognitive Search-scenario's worden uitgevoerd waarvoor een Booleaanse bewerking nodig is om de gegevens te bepalen die aan een uitvoer moeten worden toegewezen. Deze scenario's omvatten filteren, het toewijzen van een standaardwaarde en het samenvoegen van gegevens op basis van een voorwaarde.
 
-De volgende pseudocode laat zien wat de voorwaardelijke vaardigheid heeft:
+De volgende pseudocode laat zien wat de voorwaardelijke vaardigheid bereikt:
 
 ```
 if (condition) 
@@ -29,19 +29,19 @@ else
 ```
 
 > [!NOTE]
-> Deze vaardigheid is niet gebonden aan een Azure Cognitive Services-API en er worden geen kosten in rekening gebracht voor het gebruik ervan. U moet echter wel [een Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md) om de resource optie ' gratis ' te onderdrukken, waardoor u een klein aantal verrijkingen per dag beperkt.
+> Deze vaardigheid is niet gebonden aan een Azure Cognitive Services API en u wordt niet in rekening gebracht voor het gebruik ervan. U moet echter nog steeds [een resource voor Cognitive Services koppelen](cognitive-search-attach-cognitive-services.md) om de resourceoptie 'Gratis' te overschrijven die u beperkt tot een klein aantal verrijkingen per dag.
 
 ## <a name="odatatype"></a>@odata.type  
-Micro soft. skills. util. ConditionalSkill
+Microsoft.Skills.Util.ConditionalSkill
 
 
 ## <a name="evaluated-fields"></a>Geëvalueerde velden
 
-Deze vaardigheid is speciaal omdat de invoer ervan geëvalueerde velden zijn.
+Deze vaardigheid is speciaal omdat de ingangen worden geëvalueerd velden.
 
 De volgende items zijn geldige waarden van een expressie:
 
--   Aantekening paden (paden in expressies moeten worden gescheiden door $ (en))
+-   Annotatiepaden (paden in expressies moeten worden afgebakend door '$(" en ')')
  <br/>
     Voorbeelden:
     ```
@@ -49,7 +49,7 @@ De volgende items zijn geldige waarden van een expressie:
         "= $(/document/content)"
     ```
 
--  Letterlijke tekens (teken reeksen, getallen, waar, onwaar, null) <br/>
+-  Literals (tekenreeksen, getallen, waar, onwaar, null) <br/>
     Voorbeelden:
     ```
        "= 'this is a string'"   // string (note the single quotation marks)
@@ -58,21 +58,21 @@ De volgende items zijn geldige waarden van een expressie:
        "= null"                 // null value
     ```
 
--  Expressies die gebruikmaken van vergelijkings operatoren (= =,! =, > =, >, < =, <) <br/>
+-  Expressies die vergelijkingsoperatoren gebruiken (==, !=, >=, >, <=, <) <br/>
     Voorbeelden:
     ```
         "= $(/document/language) == 'en'"
         "= $(/document/sentiment) >= 0.5"
     ```
 
--   Expressies die gebruikmaken van Booleaanse Opera tors (& &, | |,!, ^) <br/>
+-   Expressies die Booleaanse operatoren gebruiken (&&, ||, !, ^) <br/>
     Voorbeelden:
     ```
         "= $(/document/language) == 'en' && $(/document/sentiment) > 0.5"
         "= !true"
     ```
 
--   Expressies die gebruikmaken van numerieke Opera tors (+,-, \*,/,%) <br/>
+-   Expressies die numerieke operatoren \*gebruiken (+, -, , /, %) <br/>
     Voorbeelden: 
     ```
         "= $(/document/sentiment) + 0.5"         // addition
@@ -80,25 +80,25 @@ De volgende items zijn geldige waarden van een expressie:
         "= $(/document/lengthInMeters) / 0.3049" // division
     ```
 
-Omdat de voorwaardelijke vaardigheid evaluatie ondersteunt, kunt u deze gebruiken in scenario's voor kleine trans formatie. Zie bijvoorbeeld [vaardigheids definitie 4](#transformation-example).
+Omdat de voorwaardelijke vaardigheid evaluatie ondersteunt, u deze gebruiken in scenario's voor kleine transformatie. Zie bijvoorbeeld [vaardigheidsdefinitie 4](#transformation-example).
 
-## <a name="skill-inputs"></a>Vaardigheids invoer
+## <a name="skill-inputs"></a>Vaardigheidsingangen
 De invoer is hoofdlettergevoelig.
 
 | Invoer   | Beschrijving |
 |-------------|-------------|
-| regeling   | Deze invoer is een [geëvalueerd veld](#evaluated-fields) dat staat voor de voor waarde die moet worden geëvalueerd. Deze voor waarde moet resulteren in een Booleaanse waarde (*waar* of *Onwaar*).   <br/>  Voorbeelden: <br/> "= True" <br/> "= $ (/document/Language) = = ' fr '" <br/> "= $ (/document/pages/\*/Language) = = $ (/document/expectedLanguage)" <br/> |
-| whenTrue    | Deze invoer is een [geëvalueerd veld](#evaluated-fields) dat de waarde vertegenwoordigt die moet worden geretourneerd als de voor waarde wordt geëvalueerd als *waar*. Constanten teken reeksen moeten worden geretourneerd tussen enkele aanhalings tekens (' en '). <br/>Voorbeeld waarden: <br/> "=" contract ""<br/>"= $ (/document/contractType)" <br/> "= $ (/document/entities/\*)" <br/> |
-| whenFalse   | Deze invoer is een [geëvalueerd veld](#evaluated-fields) dat de waarde vertegenwoordigt die moet worden geretourneerd als de voor waarde wordt geëvalueerd als *Onwaar*. <br/>Voorbeeld waarden: <br/> "=" contract ""<br/>"= $ (/document/contractType)" <br/> "= $ (/document/entities/\*)" <br/>
+| Voorwaarde   | Deze invoer is een [geëvalueerd veld](#evaluated-fields) dat de voorwaarde vertegenwoordigt om te evalueren. Deze voorwaarde moet worden geëvalueerd op een Booleaanse waarde *(waar* of *onwaar).*   <br/>  Voorbeelden: <br/> "= waar" <br/> "= $(/document/taal) =='fr'" <br/> "= $(/document/pages/\*/taal) == $(/document/expectedLanguage)" <br/> |
+| wanneerTrue    | Deze invoer is een [geëvalueerd veld](#evaluated-fields) dat de waarde vertegenwoordigt die moet worden retournerd als de voorwaarde wordt geëvalueerd op *true*. Constanten tekenreeksen moeten worden geretourneerd in enkele aanhalingstekens (' en '). <br/>Voorbeeldwaarden: <br/> "= 'contract'"<br/>"= $(/document/contractType)" <br/> "= $(/document/entiteiten/\*)" <br/> |
+| wanneerFalse   | Deze invoer is een [geëvalueerd veld](#evaluated-fields) dat de waarde vertegenwoordigt die moet worden geretourneerd als de voorwaarde wordt geëvalueerd op *false*. <br/>Voorbeeldwaarden: <br/> "= 'contract'"<br/>"= $(/document/contractType)" <br/> "= $(/document/entiteiten/\*)" <br/>
 
-## <a name="skill-outputs"></a>Vaardigheids uitvoer
-Er is één uitvoer die gewoon "uitvoer" wordt genoemd. Retourneert de waarde *whenFalse* als de voor waarde ONWAAR is of *whenTrue* als de voor waarde waar is.
+## <a name="skill-outputs"></a>Vaardigheidsuitvoer
+Er is een enkele output die simpelweg 'output' wordt genoemd. Het retourneert de waarde *wanneerFalse* als de voorwaarde vals is of *wanneerTrue* als de voorwaarde waar is.
 
 ## <a name="examples"></a>Voorbeelden
 
-### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>Voor beeld van vaardigheids definitie 1: documenten filteren om alleen Franse documenten te retour neren
+### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>Voorbeeldvaardigheiddefinitie 1: Documenten filteren om alleen Franse documenten terug te sturen
 
-De volgende uitvoer retourneert een matrix met zinnen ("/document/frenchSentences") als de taal van het document Frans is. Als de taal niet Frans is, wordt de waarde ingesteld op *Null*.
+De volgende uitvoer retourneert een reeks zinnen ("/document/frenchZinnen") als de taal van het document Frans is. Als de taal niet Frans is, wordt de waarde ingesteld op *null*.
 
 ```json
 {
@@ -112,12 +112,12 @@ De volgende uitvoer retourneert een matrix met zinnen ("/document/frenchSentence
     "outputs": [ { "name": "output", "targetName": "frenchSentences" } ]
 }
 ```
-Als "/document/frenchSentences" wordt gebruikt als de *context* van een andere vaardigheid, wordt die vaardigheid alleen uitgevoerd als "/document/frenchSentences" niet is ingesteld op *Null*.
+Als "/document/frenchSentences" wordt gebruikt als de *context* van een andere vaardigheid, wordt die vaardigheid alleen uitgevoerd als "/document/frenchSentences" niet is ingesteld op *null.*
 
 
-### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>Voor beeld van vaardigheids definitie 2: Stel een standaard waarde in voor een waarde die niet bestaat
+### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>Voorbeeldvaardigheiddefinitie 2: Een standaardwaarde instellen voor een waarde die niet bestaat
 
-Met de volgende uitvoer wordt een aantekening ("/document/languageWithDefault") gemaakt die is ingesteld op de taal van het document of op "ES" als de taal niet is ingesteld.
+Met de volgende uitvoer wordt een annotatie gemaakt ("/document/languageWithDefault") die is ingesteld op de taal van het document of op 'es' als de taal niet is ingesteld.
 
 ```json
 {
@@ -132,9 +132,9 @@ Met de volgende uitvoer wordt een aantekening ("/document/languageWithDefault") 
 }
 ```
 
-### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>Voor beeld van vaardigheids definitie 3: waarden uit twee velden samen voegen tot één
+### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>Voorbeeldvaardigheiddefinitie 3: Waarden uit twee velden samenvoegen tot één
 
-In dit voor beeld hebben sommige zinnen een eigenschap *frenchSentiment* . Wanneer de eigenschap *frenchSentiment* null is, willen we de *englishSentiment* -waarde gebruiken. We wijzen de uitvoer toe aan een lid met de naam *sentiment* ("/document/sentiment/*/sentiment").
+In dit voorbeeld hebben sommige zinnen een *eigenschap frenchSentiment.* Wanneer de *frenchSentiment* eigenschap is null, willen we de *EnglishSentiment* waarde te gebruiken. We wijzen de uitvoer toe aan een lid dat *sentiment* wordt genoemd ("/document/sentiment/*/sentiment").
 
 ```json
 {
@@ -149,12 +149,12 @@ In dit voor beeld hebben sommige zinnen een eigenschap *frenchSentiment* . Wanne
 }
 ```
 
-## <a name="transformation-example"></a>Voor beeld van trans formatie
-### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>Voor beeld van vaardigheids definitie 4: gegevens transformatie voor één veld
+## <a name="transformation-example"></a>Voorbeeld van transformatie
+### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>Voorbeeldvaardigheiddefinitie 4: Gegevenstransformatie op één veld
 
-In dit voor beeld ontvangen we een *sentiment* tussen 0 en 1. We willen deze transformeren tussen-1 en 1. We kunnen de voorwaardelijke vaardigheid gebruiken om deze secundaire trans formatie uit te voeren.
+In dit voorbeeld ontvangen we een *gevoel* dat tussen 0 en 1 ligt. We willen het transformeren om tussen -1 en 1 te zijn. We kunnen de voorwaardelijke vaardigheid gebruiken om deze kleine transformatie te doen.
 
-In dit voor beeld gebruiken we niet het voorwaardelijke aspect van de vaardigheid, omdat de voor waarde altijd *waar*is.
+In dit voorbeeld gebruiken we het voorwaardelijke aspect van de vaardigheid niet omdat de voorwaarde altijd *waar*is.
 
 ```json
 {
@@ -169,11 +169,11 @@ In dit voor beeld gebruiken we niet het voorwaardelijke aspect van de vaardighei
 }
 ```
 
-## <a name="special-considerations"></a>Speciale overwegingen
-Sommige para meters worden geëvalueerd, dus u moet er met name op letten dat u het gedocumenteerde patroon volgt. Expressies moeten met een gelijkteken beginnen. Een pad moet worden gescheiden door $ (en). Zorg ervoor dat teken reeksen tussen enkele aanhalings tekens worden geplaatst. Dit helpt de evaluator onderscheid te maken tussen teken reeksen en werkelijke paden en Opera tors. Zorg er ook voor dat u witruimte rond Opera tors plaatst (bijvoorbeeld, een ' * ' in een pad betekent iets anders dan vermenigvuldigen).
+## <a name="special-considerations"></a>Bijzondere overwegingen
+Sommige parameters worden geëvalueerd, dus je moet vooral voorzichtig zijn om het gedocumenteerde patroon te volgen. Expressies moeten beginnen met een gelijk teken. Een pad moet worden afgebakend door "$(" en ")". Zorg ervoor dat u tekenreeksen in enkele aanhalingstekens plaatst. Dat helpt de evaluator onderscheid te maken tussen tekenreeksen en werkelijke paden en operatoren. Zorg er ook voor dat u witte ruimte rond operatoren plaatst (bijvoorbeeld een "*" in een pad betekent iets anders dan vermenigvuldigen).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-+ [Ingebouwde vaardig heden](cognitive-search-predefined-skills.md)
-+ [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
++ [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
++ [Een vaardighedenset definiëren](cognitive-search-defining-skillset.md)

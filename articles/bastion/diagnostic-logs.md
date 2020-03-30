@@ -1,6 +1,6 @@
 ---
-title: Diagnostische logboeken van Azure Bastion inschakelen en gebruiken
-description: In dit artikel vindt u informatie over het inschakelen en gebruiken van Diagnostische logboeken van Azure Bastion.
+title: Diagnostische logboeken van Azure Bastion inschakelen en ermee werken
+description: In dit artikel leest u hoe u diagnostische logboeken van Azure Bastion inschakelt en ermee werkt.
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,47 +8,47 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 2167a17d5d388c97ad357398c4ac2676e43be5a4
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76989447"
 ---
-# <a name="enable-and-work-with-bastion-diagnostic-logs"></a>Bastion Diagnostische logboeken inschakelen en gebruiken
+# <a name="enable-and-work-with-bastion-diagnostic-logs"></a>Diagnostische logboeken van Bastion inschakelen en ermee werken
 
-Wanneer gebruikers verbinding maken met werk belastingen met behulp van Azure Bastion, kan Bastion de diagnostische gegevens van de externe sessies registreren. Vervolgens kunt u de diagnostische gegevens gebruiken om te zien welke gebruikers zijn verbonden met welke werk belastingen, op welk tijdstip, waar en andere relevante logboek gegevens. Als u de diagnostische gegevens wilt gebruiken, moet u Diagnostische logboeken inschakelen op Azure Bastion. Dit artikel helpt u bij het inschakelen van Diagnostische logboeken en het weer geven van de logboeken.
+Als gebruikers verbinding maken met workloads met Azure Bastion, kan Bastion diagnoses van de externe sessies registreren. U vervolgens de diagnose gebruiken om te bekijken welke gebruikers zijn verbonden met welke workloads, op welk tijdstip, van waar en andere dergelijke relevante logboekinformatie. Als u de diagnose wilt gebruiken, moet u diagnostische logboeken op Azure Bastion inschakelen. Met dit artikel u diagnostische logboeken inschakelen en vervolgens de logboeken bekijken.
 
-## <a name="enable"></a>Het diagnostische logboek inschakelen
+## <a name="enable-the-diagnostics-log"></a><a name="enable"></a>Het diagnoselogboek inschakelen
 
-1. Ga in het [Azure Portal](https://portal.azure.com)naar uw Azure Bastion-resource en selecteer **Diagnostische instellingen** op de pagina Azure Bastion.
+1. Navigeer in de [Azure-portal](https://portal.azure.com)naar uw Azure Bastion-bron en selecteer **Diagnostische instellingen** op de Azure Bastion-pagina.
 
-   ![Diagnostische instellingen](./media/diagnostic-logs/1diagnostics-settings.png)
-2. Selecteer **instellingen voor diagnostische gegevens**en selecteer vervolgens **Diagnostische instelling toevoegen** om een doel voor de Logboeken toe te voegen.
+   ![diagnose-instellingen](./media/diagnostic-logs/1diagnostics-settings.png)
+2. Selecteer **Diagnostische instellingen**en selecteer **+Diagnostische instelling toevoegen** om een bestemming voor de logboeken toe te voegen.
 
    ![diagnostische instelling toevoegen](./media/diagnostic-logs/2add-diagnostic-setting.png)
-3. Selecteer op de pagina **Diagnostische instellingen** het type opslag account dat moet worden gebruikt voor het opslaan van Diagnostische logboeken.
+3. Selecteer **op** de pagina Diagnostische instellingen het type opslagaccount dat moet worden gebruikt voor het opslaan van diagnostische logboeken.
 
-   ![opslag locatie selecteren](./media/diagnostic-logs/3add-storage-account.png)
-4. Wanneer u de instellingen hebt voltooid, ziet deze er ongeveer uit als in dit voor beeld:
+   ![opslaglocatie selecteren](./media/diagnostic-logs/3add-storage-account.png)
+4. Wanneer u de instellingen voltooit, ziet deze er hetzelfde uit als dit voorbeeld:
 
-   ![voorbeeld instellingen](./media/diagnostic-logs/4example-settings.png)
+   ![voorbeeldinstellingen](./media/diagnostic-logs/4example-settings.png)
 
-## <a name="view"></a>Diagnostische logboek weer geven
+## <a name="view-diagnostics-log"></a><a name="view"></a>Diagnoselogboek weergeven
 
-Voor toegang tot uw Diagnostische logboeken kunt u rechtstreeks het opslag account gebruiken dat u hebt opgegeven tijdens het inschakelen van de diagnostische instellingen.
+Als u toegang wilt krijgen tot uw diagnostische logboeken, u direct het opgegeven opslagaccount gebruiken terwijl u de diagnose-instellingen inschakelt.
 
-1. Navigeer naar de resource van uw opslag account en vervolgens naar **containers**. U ziet de BLOB **Insights-logs-bastionauditlogs** die u hebt gemaakt in de BLOB-container van uw opslag account.
+1. Navigeer naar de bron van uw opslagaccount en vervolgens naar **Containers.** U ziet de **blob insights-logs-bastionauditlogs** die zijn gemaakt in de blobcontainer voor uw opslagaccount.
 
-   ![Diagnostische instellingen](./media/diagnostic-logs/1-navigate-to-logs.png)
-2. Terwijl u in de container navigeert, ziet u verschillende mappen in uw blog. Deze mappen geven de resource hiërarchie voor uw Azure Bastion-resource aan.
+   ![diagnose-instellingen](./media/diagnostic-logs/1-navigate-to-logs.png)
+2. Terwijl je naar de container navigeert, zie je verschillende mappen in je blog. Deze mappen geven de resourcehiërarchie voor uw Azure Bastion-bron aan.
 
    ![diagnostische instelling toevoegen](./media/diagnostic-logs/2-resource-h.png)
-3. Ga naar de volledige hiërarchie van uw Azure Bastion-resource waarvan u de diagnostische logboeken wilt openen of weer geven. De ' y = ', ' = ', 'd = ', ' h = ' en ' = ' geven het jaar, de maand, de dag, het uur en het aantal minuten voor de diagnostische logboeken aan.
+3. Navigeer naar de volledige hiërarchie van uw Azure Bastion-bron waarvan u de diagnostische gegevens wilt openen/weergeven. De 'y=', 'm=', 'd=', 'h=' en 'm=' geven respectievelijk het jaar, de maand, de dag, het uur en de minuut aan voor de diagnostische logboeken.
 
-   ![opslag locatie selecteren](./media/diagnostic-logs/3-resource-location.png)
-4. Zoek het JSON-bestand dat is gemaakt door Azure Bastion dat de diagnostische logboek gegevens bevat voor de tijds periode naar.
+   ![opslaglocatie selecteren](./media/diagnostic-logs/3-resource-location.png)
+4. Zoek het json-bestand dat is gemaakt door Azure Bastion en dat de gegevens van het diagnostisch logboek bevat voor de periode waarop u naartoe is genavigeerd.
 
-5. Down load het JSON-bestand van uw opslag-BLOB-container. Hieronder ziet u een voor beeld van een vermelding uit het JSON-bestand:
+5. Download het json-bestand uit uw opslagblobcontainer. Een voorbeeld vermelding uit het json-bestand wordt hieronder weergegeven voor referentie:
 
    ```json
    { 
@@ -79,4 +79,4 @@ Voor toegang tot uw Diagnostische logboeken kunt u rechtstreeks het opslag accou
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees de [Veelgestelde vragen over Bastion](bastion-faq.md).
+Lees de [Bastion FAQ](bastion-faq.md).

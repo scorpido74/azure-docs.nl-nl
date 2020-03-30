@@ -1,6 +1,6 @@
 ---
-title: Taak verdeling van hostgroep voor Windows Virtual Desktop-Azure
-description: Methoden voor het verdelen van de hostgroep voor een virtueel-bureaublad omgeving van Windows.
+title: Windows Virtual Desktop-hostpool load-balancing - Azure
+description: Load-balancing-methoden voor hostpool voor een Windows Virtual Desktop-omgeving.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,34 +9,34 @@ ms.date: 03/21/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 193821ed0df09b87f19e45a82ca42026405a0dc4
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127869"
 ---
 # <a name="host-pool-load-balancing-methods"></a>Taakverdelingsmethoden voor hostpool
 
-Virtueel bureau blad van Windows ondersteunt twee methoden voor taak verdeling. Elke methode bepaalt welke sessie-host als host fungeert voor de sessie van een gebruiker wanneer deze verbinding maakt met een bron in een hostgroep.
+Windows Virtual Desktop ondersteunt twee methoden voor het balanceren van belastingsering. Elke methode bepaalt welke sessiehost de sessie van een gebruiker host wanneer deze verbinding maakt met een resource in een hostgroep.
 
-De volgende taakverdelings methoden zijn beschikbaar in het virtuele bureau blad van Windows:
+De volgende taakverdelingsmethoden zijn beschikbaar in Windows Virtual Desktop:
 
-- Met breedte-eerste taak verdeling kunt u gebruikers sessies gelijkmatig verdelen over de sessie-hosts in een hostgroep.
-- Diepte-First Load Balancing biedt u de mogelijkheid om een sessie-host te verzadigen met gebruikers sessies in een hostgroep. Zodra de eerste sessie de drempel waarde voor de sessie limiet bereikt, stuurt de load balancer eventuele nieuwe gebruikers verbindingen met de volgende sessie-host in de hostgroep door totdat de limiet is bereikt, enzovoort.
+- Met breadth-first load balancing u gebruikerssessies gelijkmatig verdelen over de sessiehosts in een hostpool.
+- Met diepte-first load balancing u een sessiehost verzadigen met gebruikerssessies in een hostpool. Zodra de eerste sessie de drempelwaarde voor de sessielimiet heeft bereikt, stuurt de load balancer eventuele nieuwe gebruikersverbindingen naar de volgende sessiehost in de hostgroep totdat deze de limiet heeft bereikt, enzovoort.
 
-Elke hostgroep kan alleen een specifiek type taak verdeling configureren. Beide taakverdelings methoden delen echter het volgende gedrag, ongeacht in welke hostgroep ze zich bevinden:
+Elke hostpool kan slechts één type load-balancing configureren dat specifiek is voor het type. Beide methoden voor het balanceren van de taak delen echter het volgende gedrag, ongeacht in welke hostgroep ze zich bevindt:
 
-- Als een gebruiker al een sessie in de hostgroep heeft en opnieuw verbinding maakt met die sessie, stuurt de load balancer deze door naar de sessiehost met hun bestaande sessie. Dit gedrag geldt ook als de eigenschap AllowNewConnections van de sessie-host is ingesteld op false.
-- Als een gebruiker nog niet beschikt over een sessie in de hostgroep, beschouwt de load balancer geen hosts voor sessies waarvan de eigenschap AllowNewConnections is ingesteld op false tijdens taak verdeling.
+- Als een gebruiker al een sessie in de hostgroep heeft en opnieuw verbinding maakt met die sessie, wordt deze door de load balancer met hun bestaande sessie doorgestuurd naar de sessiehost. Dit gedrag is van toepassing, zelfs als de eigenschap AllowNewConnections van die sessiehost is ingesteld op False.
+- Als een gebruiker nog geen sessie in de hostgroep heeft, wordt de load balancer niet in overweging nemen bij sessiehosts waarvan de eigenschap AllowNewConnections is ingesteld op False tijdens het balanceren van de belasting.
 
-## <a name="breadth-first-load-balancing-method"></a>Breedte-eerste methode voor taak verdeling
+## <a name="breadth-first-load-balancing-method"></a>Breedte-eerste load-balancing methode
 
-Met de gelijkmatige methode voor taak verdeling kunt u gebruikers verbindingen distribueren om te optimaliseren voor dit scenario. Deze methode is ideaal voor organisaties die de beste ervaring willen bieden voor gebruikers die verbinding willen maken met hun gegroepeerde virtueel-bureaublad omgeving.
+Met de methode voor het in de eerste breedte laden u gebruikersverbindingen distribueren om te optimaliseren voor dit scenario. Deze methode is ideaal voor organisaties die de beste ervaring willen bieden voor gebruikers die verbinding maken met hun gepoolde virtuele desktopomgeving.
 
-Met de methode breedte-eerste wordt eerst een query uitgevoerd op sessie-hosts die nieuwe verbindingen toestaan. De-methode selecteert vervolgens de sessiehost met het minste aantal sessies. Als er sprake is van een das, selecteert de methode de eerste sessie-host in de query.
+De eerste sessiehost voor de eerste methode in de breedte wordt geopperd en nieuwe verbindingen mogelijk gemaakt. De methode selecteert vervolgens de sessiehost met het minste aantal sessies. Als er een gelijkspel is, selecteert de methode de eerste sessiehost in de query.
 
-## <a name="depth-first-load-balancing-method"></a>Diepte: eerste methode voor taak verdeling
+## <a name="depth-first-load-balancing-method"></a>Diepte-eerste load-balancing methode
 
-Met de functie voor diepte en eerste taak verdeling kunt u één sessie-host op een moment verzadigen om te optimaliseren voor dit scenario. Deze methode is ideaal voor prijs bewuste organisaties die meer nauw keuriger willen controleren op het aantal virtuele machines dat ze voor een hostgroep hebben toegewezen.
+Met de diepte-eerste load-balancing-methode u één sessiehost tegelijk verzadigen om te optimaliseren voor dit scenario. Deze methode is ideaal voor kostenbewuste organisaties die meer gedetailleerde controle willen over het aantal virtuele machines dat ze hebben toegewezen voor een hostpool.
 
-De methode depth-first voert eerst een query uit op sessie-hosts die nieuwe verbindingen toestaan en de maximale sessie limiet niet hebben overschreden. De-methode selecteert vervolgens de sessiehost met het hoogste aantal sessies. Als er sprake is van een das, selecteert de-methode de eerste sessie-host in de query.
+De eerste sessiesessie met de eerste diepte-methode wordt geopperd die nieuwe verbindingen mogelijk maakt en niet meer dan hun maximale sessielimiet heeft bereikt. De methode selecteert vervolgens de sessiehost met het hoogste aantal sessies. Als er een gelijkspel is, selecteert de methode de eerste sessiehost in de query.

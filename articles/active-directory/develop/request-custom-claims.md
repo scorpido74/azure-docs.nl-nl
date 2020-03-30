@@ -18,27 +18,27 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 44158296faaf238fd72f2360149d3d93f68c5ba0
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085601"
 ---
-# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Procedure: aangepaste claims aanvragen met MSAL voor iOS en macOS
+# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>How to: Aangepaste claims aanvragen met MSAL voor iOS en macOS
 
-Met OpenID Connect Connect kunt u optioneel het retour neren van afzonderlijke claims aanvragen van het user info-eind punt en/of in het ID-token. Een claim aanvraag wordt weer gegeven als een JSON-object dat een lijst met aangevraagde claims bevat. Zie [OpenID Connect Connect Core 1,0](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) voor meer informatie.
+Met OpenID Connect u optioneel de terugkeer van individuele claims aanvragen bij het UserInfo-eindpunt en/of in het ID-token. Een claimaanvraag wordt weergegeven als een JSON-object dat een lijst met aanvragen bevat. Zie [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) voor meer informatie.
 
-Met de micro soft Authentication Library (MSAL) voor iOS en macOS kunt u specifieke claims aanvragen in zowel interactieve als Silent-verwervings scenario's. Dit doet u door de para meter `claimsRequest`.
+De Microsoft Authentication Library (MSAL) voor iOS en macOS maakt het aanvragen van specifieke claims mogelijk in zowel interactieve als stille tokenacquisitiescenario's. Het doet dit `claimsRequest` via de parameter.
 
 Er zijn meerdere scenario's waarin dit nodig is. Bijvoorbeeld:
 
-- Claims aanvragen buiten de standaardset voor uw toepassing.
-- Specifieke combi Naties van de standaard claims aanvragen die niet kunnen worden opgegeven met scopes voor uw toepassing. Als een toegangs token bijvoorbeeld wordt afgewezen als gevolg van ontbrekende claims, kan de toepassing de ontbrekende claims aanvragen met behulp van MSAL.
+- Het aanvragen van claims buiten de standaardset voor uw aanvraag.
+- Het aanvragen van specifieke combinaties van de standaardclaims die niet kunnen worden opgegeven met behulp van scopes voor uw toepassing. Als een toegangstoken bijvoorbeeld wordt geweigerd vanwege ontbrekende claims, kan de toepassing de ontbrekende claims aanvragen met MSAL.
 
 > [!NOTE]
-> Met MSAL wordt de cache van het toegangs token omzeild wanneer een claim aanvraag wordt opgegeven. Het is belang rijk om alleen `claimsRequest` para meter op te geven wanneer er aanvullende claims nodig zijn (in plaats van altijd dezelfde `claimsRequest`-para meter in elke API-aanroep van MSAL te leveren).
+> MSAL omzeilt de cache van het toegangstoken wanneer een claimaanvraag is opgegeven. Het is belangrijk om `claimsRequest` alleen parameter te bieden wanneer aanvullende `claimsRequest` claims nodig zijn (in tegenstelling tot altijd dezelfde parameter in elke MSAL API-aanroep).
 
-`claimsRequest` kunnen worden opgegeven in `MSALSilentTokenParameters` en `MSALInteractiveTokenParameters`:
+`claimsRequest`kunnen worden `MSALSilentTokenParameters` gespecificeerd `MSALInteractiveTokenParameters`in en :
 
 ```objc
 /*!
@@ -54,16 +54,16 @@ Er zijn meerdere scenario's waarin dit nodig is. Bijvoorbeeld:
 
 @end
 ```
-`MSALClaimsRequest` kan worden samengesteld uit een NSStringe weer gave van een JSON-claim aanvraag. 
+`MSALClaimsRequest`kan worden opgebouwd uit een NSString-weergave van JSON-claimaanvragen. 
 
-Doel-C:
+Doelstelling-C:
 
 ```objc
 NSError *claimsError = nil;
 MSALClaimsRequest *request = [[MSALClaimsRequest alloc] initWithJsonString:@"{\"id_token\":{\"auth_time\":{\"essential\":true},\"acr\":{\"values\":[\"urn:mace:incommon:iap:silver\"]}}}" error:&claimsError];
 ```
 
-Swift
+Swift:
 
 ```swift
 var requestError: NSError? = nil
@@ -75,7 +75,7 @@ let request = MSALClaimsRequest(jsonString: "{\"id_token\":{\"auth_time\":{\"ess
 
 Het kan ook worden gewijzigd door aanvullende specifieke claims aan te vragen:
 
-Doel-C:
+Doelstelling-C:
 
 ```objc
 MSALIndividualClaimRequest *individualClaimRequest = [[MSALIndividualClaimRequest alloc] initWithName:@"custom_claim"];
@@ -85,7 +85,7 @@ individualClaimRequest.additionalInfo.value = @"myvalue";
 [request requestClaim:individualClaimRequest forTarget:MSALClaimsRequestTargetIdToken error:&claimsError];
 ```
 
-Swift
+Swift:
 
 ```swift
 let individualClaimRequest = MSALIndividualClaimRequest(name: "custom-claim")
@@ -103,9 +103,9 @@ do {
 
 
 
-`MSALClaimsRequest` moet vervolgens worden ingesteld in de token parameters en worden opgegeven voor een van de MSAL-Api's voor het ophalen van tokens:
+`MSALClaimsRequest`moet vervolgens worden ingesteld in de tokenparameters en worden verstrekt aan een van de API's voor MSAL-tokenacquisities:
 
-Doel-C:
+Doelstelling-C:
 
 ```objc
 MSALPublicClientApplication *application = ...;
@@ -118,7 +118,7 @@ parameters.claimsRequest = request;
 [application acquireTokenWithParameters:parameters completionBlock:completionBlock];
 ```
 
-Swift
+Swift:
 
 ```swift
 let application: MSALPublicClientApplication!
@@ -135,4 +135,4 @@ application.acquireToken(with: parameters) { (result: MSALResult?, error: Error?
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [verificatie stromen en toepassings scenario's](authentication-flows-app-scenarios.md)
+Meer informatie over [verificatiestromen en toepassingsscenario's](authentication-flows-app-scenarios.md)

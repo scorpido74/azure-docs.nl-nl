@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68726460"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Quickstart: blobs downloaden, uploaden en vermelden met behulp van Go
@@ -50,14 +50,14 @@ Met deze opdracht wordt de opslagplaats naar uw lokale git-map gekloond. Om het 
 ## <a name="configure-your-storage-connection-string"></a>De opslagverbindingsreeks configureren
 Deze oplossing vereist dat uw opslagaccountnaam en -sleutel veilig zijn opgeslagen in omgevingsvariabelen die lokaal op de computer staan waarop u het voorbeeld uitvoert. Volg afhankelijk van uw besturingssysteem een van de onderstaande voorbeelden voor het maken van de omgevingsvariabelen.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```
 export AZURE_STORAGE_ACCOUNT="<youraccountname>"
 export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
@@ -108,9 +108,9 @@ Als eerste moeten verwijzingen worden gemaakt naar de ContainerURL- en BlobURL-o
 Zodra u de ContainerURL hebt, kunt u het **BlobURL**-object maken dat verwijst naar een blob en bewerkingen uitvoeren zoals uploaden, downloaden en kopiëren.
 
 > [!IMPORTANT]
-> Containernamen moeten uit kleine letters bestaan. Zie [Naming and Referencing Containers, Blobs, and Metadata](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Containers, blobs en metagegevens een naam geven en hiernaar verwijzen) voor meer informatie over de namen van containers en blobs.
+> Containernamen moeten uit kleine letters bestaan. Zie [Naming and referencing containers, blobs, and metadata](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Containers, blobs en metagegevens een naam geven en hiernaar verwijzen) voor meer informatie over namen voor blobs en containers.
 
-In deze sectie maakt u een nieuwe container. De container heeft de naam **quickstartblobs-[random string]** . 
+In deze sectie maakt u een nieuwe container. De container heeft de naam **quickstartblobs-[random string]**. 
 
 ```go 
 // From the Azure portal, get your storage account name and key and set environment variables.
@@ -147,11 +147,11 @@ handleErrors(err)
 
 Blob-opslag ondersteunt blok-blobs, toevoeg-blobs en pagina-blobs. Omdat blok-blobs het meest worden gebruikt, worden ze in deze Quick Start gebruikt.  
 
-Als u een bestand wilt uploaden naar een blob, opent u het bestand met **os. Open**. Daarna kunt u het bestand met behulp van een van de REST API's uploaden naar het opgegeven pad: uploaden (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
+Als u een bestand wilt uploaden naar een blob, opent u het bestand met **os. Open**. U kunt het bestand vervolgens naar het opgegeven pad uploaden met een van de REST API's: Upload (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
 
 De SDK biedt [API's op hoog niveau](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) die zijn gebaseerd op de REST-API's op laag niveau. De functie ***UploadFileToBlockBlob*** maakt bijvoorbeeld gebruik van StageBlock-bewerkingen (PutBlock) om gelijktijdig een bestand in segmenten te uploaden om de doorvoer te optimaliseren. Als het bestand minder dan 256 MB is, wordt in plaats daarvan Upload (PutBlob) gebruikt om de overdracht in één transactie te voltooien.
 
-In het volgende voorbeeld wordt het bestand geüpload naar de container met de naam **quickstartblobs-[randomstring]** .
+In het volgende voorbeeld wordt het bestand geüpload naar de container met de naam **quickstartblobs-[randomstring]**.
 
 ```go
 // Create a file to test the upload and download.
@@ -207,7 +207,7 @@ for marker := (azblob.Marker{}); marker.NotDone(); {
 
 ### <a name="download-the-blob"></a>De blob downloaden
 
-Download blobs met de **Download**-functie op laag niveau in een BlobURL. Dit resulteert in een **DownloadResponse**-struct. Voer de functie **Body** uit in de struct om een **RetryReader**-stroom op te halen voor het lezen van gegevens. Als een verbinding tijdens het lezen mislukt, worden er aanvullende aanvragen gedaan om opnieuw verbinding te maken en door te gaan met lezen. Wanneer een RetryReaderOption met MaxRetryRequests die is ingesteld op 0 (standaard) wordt opgegeven, wordt de oorspronkelijke hoofdtekst van de reactie geretourneerd en worden geen nieuwe pogingen uitgevoerd. U kunt ook de API's op hoog niveau **DownloadBlobToBuffer** of **DownloadBlobToFile** gebruiken om uw code te vereenvoudigen.
+Download blobs met de **Download**-functie op laag niveau in een BlobURL. Dit resulteert in een **DownloadResponse**-struct. Voer de functie **Body** uit in de struct om een **RetryReader**-stroom op te halen voor het lezen van gegevens. Als een verbinding mislukt tijdens het lezen, zal het extra verzoeken om een verbinding opnieuw tot stand te brengen en verder te lezen. Wanneer een RetryReaderOption met MaxRetryRequests die is ingesteld op 0 (standaard) wordt opgegeven, wordt de oorspronkelijke hoofdtekst van de reactie geretourneerd en worden geen nieuwe pogingen uitgevoerd. U kunt ook de API's op hoog niveau **DownloadBlobToBuffer** of **DownloadBlobToFile** gebruiken om uw code te vereenvoudigen.
 
 Met de volgende code wordt de blob gedownload met behulp van de functie **Download**. De inhoud van de blob wordt naar een buffer geschreven en weergegeven in de console.
 

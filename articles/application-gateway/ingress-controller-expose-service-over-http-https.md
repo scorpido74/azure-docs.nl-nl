@@ -1,6 +1,6 @@
 ---
-title: Een AKS-service via HTTP of HTTPS beschikbaar maken met behulp van Application Gateway
-description: Dit artikel bevat informatie over hoe u een AKS-service via HTTP of HTTPS beschikbaar maakt met behulp van Application Gateway.
+title: Een AKS-service blootstellen via HTTP of HTTPS met behulp van Application Gateway
+description: In dit artikel vindt u informatie over het blootstellen van een AKS-service via HTTP of HTTPS met behulp van Application Gateway.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,41 +8,41 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: c664141a8c89ccbdf37bd3f9a19cfa659982a47d
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73795576"
 ---
-# <a name="expose-an-aks-service-over-http-or-https-using-application-gateway"></a>Een AKS-service via HTTP of HTTPS beschikbaar maken met behulp van Application Gateway 
+# <a name="expose-an-aks-service-over-http-or-https-using-application-gateway"></a>Een AKS-service blootstellen via HTTP of HTTPS met behulp van Application Gateway 
 
-Deze zelf studies helpen u bij het illustreren van het gebruik van Kubernetes inkomende [resources](https://kubernetes.io/docs/concepts/services-networking/ingress/) om een voor beeld Kubernetes-service beschikbaar te maken via de [gateway van Azure-toepassing](https://azure.microsoft.com/services/application-gateway/) via http of https.
+Deze zelfstudies illustreren het gebruik van [Kubernetes Ingress Resources](https://kubernetes.io/docs/concepts/services-networking/ingress/) om een voorbeeld kubernetes-service via de [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) via HTTP of HTTPS bloot te leggen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- `ingress-azure` helm-grafiek is geïnstalleerd.
-  - [**Ontwikkel-implementatie**](ingress-controller-install-new.md): als u helemaal vanaf het begin wilt gaan, raadpleegt u de volgende installatie-instructies, waarmee u de stappen voor het implementeren van een AKS-cluster met Application Gateway en de installatie van Application Gateway-ingangs controller op het AKS-cluster kunt installeren.
-  - [**Brownfield-implementatie**](ingress-controller-install-existing.md): als u een bestaand AKS-cluster en Application Gateway hebt, raadpleegt u deze instructies voor het installeren van de Application Gateway ingress-controller op het AKS-cluster.
-- Als u HTTPS wilt gebruiken voor deze toepassing, hebt u een x509-certificaat en de bijbehorende persoonlijke sleutel nodig.
+- Geïnstalleerde `ingress-azure` helmdiagram.
+  - [**Greenfield Deployment:**](ingress-controller-install-new.md)Als u helemaal opnieuw begint, raadpleegt u deze installatie-instructies, waarin stappen worden beschreven om een AKS-cluster met Application Gateway te implementeren en de ingress-controller voor toepassingsgateway op het AKS-cluster te installeren.
+  - [**Brownfield Deployment:**](ingress-controller-install-existing.md)Als u een bestaand AKS-cluster en Application Gateway hebt, raadpleegt u deze instructies om de toepassinggateway-ingress-controller op het AKS-cluster te installeren.
+- Als u HTTPS wilt gebruiken op deze toepassing, hebt u een x509-certificaat en de privésleutel nodig.
 
-## <a name="deploy-guestbook-application"></a>`guestbook`-toepassing implementeren
+## <a name="deploy-guestbook-application"></a>Toepassing `guestbook` implementeren
 
-De gastenboek toepassing is een canonieke Kubernetes-toepassing die bestaat uit een front-end voor webui, een back-end en een redis-data base. `guestbook` maakt standaard gebruik van de toepassing via een service met de naam `frontend` op poort `80`. Zonder een Kubernetes-inkomend netwerk is de service niet toegankelijk vanaf buiten het AKS-cluster. We gebruiken de toepassing en de inkomende bronnen voor toegang tot de toepassing via HTTP en HTTPS.
+De guestbook-toepassing is een canonieke Kubernetes-toepassing die een Web UI frontend, een backend en een Redis-database samenstelt. Standaard `guestbook` wordt de toepassing ervan weergegeven `frontend` via `80`een service met naam op poort. Zonder een Kubernetes Ingress Resource is de service niet toegankelijk van buiten het AKS-cluster. We gebruiken de toepassing en installatie Ingress Resources om toegang te krijgen tot de toepassing via HTTP en HTTPS.
 
-Volg de onderstaande instructies om de gastenboek toepassing te implementeren.
+Volg de onderstaande instructies om de gastenboektoepassing te implementeren.
 
-1. Down load [hier](https://raw.githubusercontent.com/kubernetes/examples/master/guestbook/all-in-one/guestbook-all-in-one.yaml) `guestbook-all-in-one.yaml`
-1. `guestbook-all-in-one.yaml` implementeren in uw AKS-cluster door uit te voeren
+1. Download `guestbook-all-in-one.yaml` [hier](https://raw.githubusercontent.com/kubernetes/examples/master/guestbook/all-in-one/guestbook-all-in-one.yaml)
+1. Implementeren `guestbook-all-in-one.yaml` in uw AKS-cluster door
 
   ```bash
   kubectl apply -f guestbook-all-in-one.yaml
   ```
 
-Nu is de `guestbook` toepassing geïmplementeerd.
+Nu is `guestbook` de toepassing geïmplementeerd.
 
-## <a name="expose-services-over-http"></a>Services beschikbaar maken via HTTP
+## <a name="expose-services-over-http"></a>Services blootstellen via HTTP
 
-Om de gastenboek toepassing beschikbaar te maken, gebruiken we de volgende ingangs resource:
+Om de toepassing van het gastenboek bloot te leggen, gebruiken we de volgende ingress-bron:
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -60,33 +60,33 @@ spec:
           servicePort: 80
 ```
 
-Met deze ingang wordt de `frontend` service van de `guestbook-all-in-one`-implementatie beschikbaar als een standaard back-end van de Application Gateway.
+Deze ingress zal `frontend` de `guestbook-all-in-one` service van de implementatie blootstellen als een standaard backend van de Application Gateway.
 
-Sla de bovenstaande ingangs bron op als `ing-guestbook.yaml`.
+Sla de bovenstaande ingress resource op als `ing-guestbook.yaml`.
 
-1. `ing-guestbook.yaml` implementeren door uit te voeren:
+1. Implementeren `ing-guestbook.yaml` door uit te voeren:
 
     ```bash
     kubectl apply -f ing-guestbook.yaml
     ```
 
-1. Controleer het logboek van de ingangs controller voor de implementatie status.
+1. Controleer het logboek van de invallende controller op de implementatiestatus.
 
-Nu moet de `guestbook` toepassing beschikbaar zijn. U kunt dit controleren door het open bare adres van de Application Gateway te bezoeken.
+Nu `guestbook` moet de applicatie beschikbaar zijn. U dit controleren door het openbare adres van de Application Gateway te bezoeken.
 
-## <a name="expose-services-over-https"></a>Services beschikbaar maken via HTTPS
+## <a name="expose-services-over-https"></a>Services blootstellen via HTTPS
 
 ### <a name="without-specified-hostname"></a>Zonder opgegeven hostnaam
 
-Zonder hostnaam op te geven, is de gastenboek service beschikbaar op alle hostnamen die naar de toepassings gateway verwijzen.
+Zonder hostnaam op te geven, is de gastenboekservice beschikbaar op alle hostnamen die naar de toepassingsgateway verwijzen.
 
-1. Voordat u inkomend verkeer implementeert, moet u een kubernetes-geheim maken om het certificaat en de persoonlijke sleutel te hosten. U kunt een kubernetes-geheim maken door uit te voeren
+1. Voordat u invallen implementeert, moet u een kubernetes-geheim maken om het certificaat en de privésleutel te hosten. U een kubernetes-geheim maken door
 
     ```bash
     kubectl create secret tls <guestbook-secret-name> --key <path-to-key> --cert <path-to-cert>
     ```
 
-1. Definieer de volgende ingangen. Geef in de ingangs de naam van het geheim op in het gedeelte `secretName`.
+1. Definieer de volgende intis. Geef in de instotu de `secretName` naam van het geheim op in de sectie.
 
     ```yaml
     apiVersion: extensions/v1beta1
@@ -107,25 +107,25 @@ Zonder hostnaam op te geven, is de gastenboek service beschikbaar op alle hostna
     ```
 
     > [!NOTE] 
-    > Vervang `<guestbook-secret-name>` in de bovenstaande ingangs resource door de naam van uw geheim. Sla de bovenstaande ingangs bron op in een bestands naam `ing-guestbook-tls.yaml`.
+    > Vervang `<guestbook-secret-name>` in de bovenstaande Ingress Resource door de naam van je geheim. Sla de bovenstaande Ingress-bron `ing-guestbook-tls.yaml`op in een bestandsnaam .
 
-1. ING-gastenboek-TLS. yaml implementeren door uit te voeren
+1. Implementeren-gastenboek-tls.yaml door
 
     ```bash
     kubectl apply -f ing-guestbook-tls.yaml
     ```
 
-1. Controleer het logboek van de ingangs controller voor de implementatie status.
+1. Controleer het logboek van de invallende controller op de implementatiestatus.
 
-Nu is de `guestbook`-toepassing beschikbaar op HTTP en HTTPS.
+Nu `guestbook` zal de applicatie beschikbaar zijn op zowel HTTP als HTTPS.
 
 ### <a name="with-specified-hostname"></a>Met opgegeven hostnaam
 
-U kunt ook de hostnaam op de ingang opgeven om TLS-configuraties en-services te multiplexen.
-Als u hostname opgeeft, is de gastenboek service alleen beschikbaar op de opgegeven host.
+U ook de hostnaam op de ingress opgeven om TLS-configuraties en -services te multiplexen.
+Door hostnaam op te geven, is de gastenboekservice alleen beschikbaar op de opgegeven host.
 
-1. Definieer de volgende ingangen.
-    Geef in de inkomend verkeer de naam van het geheim op in het gedeelte `secretName` en vervang de hostnaam in de sectie `hosts` dienovereenkomstig.
+1. Definieer de volgende intis.
+    Geef in de instotu de `secretName` naam van het geheim `hosts` in de sectie op en vervang de hostnaam in de sectie dienovereenkomstig.
 
     ```yaml
     apiVersion: extensions/v1beta1
@@ -148,19 +148,19 @@ Als u hostname opgeeft, is de gastenboek service alleen beschikbaar op de opgege
               servicePort: 80
     ```
 
-1. `ing-guestbook-tls-sni.yaml` implementeren door uit te voeren
+1. Implementeren `ing-guestbook-tls-sni.yaml` door uit te voeren
 
     ```bash
     kubectl apply -f ing-guestbook-tls-sni.yaml
     ```
 
-1. Controleer het logboek van de ingangs controller voor de implementatie status.
+1. Controleer het logboek van de invallende controller op de implementatiestatus.
 
-De `guestbook`-toepassing is nu alleen beschikbaar op HTTP en HTTPS op de opgegeven host (`<guestbook.contoso.com>` in dit voor beeld).
+Nu `guestbook` is de toepassing alleen beschikbaar op zowel HTTP`<guestbook.contoso.com>` als HTTPS op de opgegeven host (in dit voorbeeld).
 
 ## <a name="integrate-with-other-services"></a>Integreren met andere services
 
-Met de volgende ingang kunt u extra paden toevoegen aan deze ingangen en die paden omleiden naar andere services:
+Met de volgende ingress u extra paden toevoegen aan deze binnendringen en deze paden omleiden naar andere services:
 
     ```yaml
     apiVersion: extensions/v1beta1

@@ -1,8 +1,8 @@
 ---
-title: 'Azure AD Connect: Naadloze eenmalige aanmelding: de werking ervan | Microsoft Docs'
-description: In dit artikel wordt beschreven hoe de Azure Active Directory naadloze functie voor eenmalige aanmelding werkt.
+title: 'Azure AD Connect: naadloze aanmelding - Zo werkt het | Microsoft Documenten'
+description: In dit artikel wordt beschreven hoe de functie Seamless Single Sign-On van Azure Active Directory werkt.
 services: active-directory
-keywords: Wat is Azure AD Connect, installeer Active Directory, vereiste onderdelen voor Azure AD, SSO, eenmalige aanmelding
+keywords: wat is Azure AD Connect, Active Directory installeren, vereiste onderdelen voor Azure AD, SSO, Single Sign-on
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -17,85 +17,85 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd4743bc38c3b2b4b9495b33535b4b73f48d1372
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71176670"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory naadloze eenmalige aanmelding: Technisch diep gaande
+# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory Seamless Single Sign-On: technische diepe duik
 
-In dit artikel vindt u technische details over de manier waarop de Azure Active Directory naadloze SSO-functie (eenmalige aanmelding) werkt.
+In dit artikel vindt u technische details over hoe de functie Seamless Single Sign-On (Seamless SSO) van Azure Active Directory werkt.
 
-## <a name="how-does-seamless-sso-work"></a>Hoe werkt naadloze SSO?
+## <a name="how-does-seamless-sso-work"></a>Hoe werkt Seamless SSO?
 
-Deze sectie heeft drie delen:
+Deze sectie bestaat uit drie delen:
 
-1. De installatie van de functie naadloze SSO.
-2. Hoe een eenmalige gebruiker zich aanmeldt in een webbrowser, werkt met naadloze SSO.
-3. Hoe een eenmalige gebruiker zich aanmeldt op een systeem eigen client, werkt met naadloze SSO.
+1. De installatie van de Seamless SSO-functie.
+2. Hoe een aanmeldingstransactie van één gebruiker in een webbrowser werkt met Seamless SSO.
+3. Hoe een aanmeldingstransactie van één gebruiker op een native client werkt met Seamless SSO.
 
-### <a name="how-does-set-up-work"></a>Hoe werkt het instellen?
+### <a name="how-does-set-up-work"></a>Hoe werkt het opzetten?
 
-Naadloze SSO is ingeschakeld met Azure AD Connect, zoals [hier](how-to-connect-sso-quick-start.md)wordt weer gegeven. De volgende stappen worden uitgevoerd tijdens het inschakelen van de functie:
+Naadloze SSO is ingeschakeld met Azure AD Connect zoals [hier](how-to-connect-sso-quick-start.md)wordt weergegeven. Terwijl u de functie inschakelt, vinden de volgende stappen plaats:
 
-- Er wordt een computer`AZUREADSSOACC`account () gemaakt in uw on-premises Active Directory (AD) in elk AD-forest dat u synchroniseert met Azure AD (met behulp van Azure AD Connect).
-- Daarnaast wordt er een aantal Spn's (Service Principal Names) voor Kerberos gemaakt dat wordt gebruikt tijdens het aanmelden bij Azure AD.
-- De Kerberos-ontsleutelings sleutel van de computer account wordt beveiligd gedeeld met Azure AD. Als er meerdere AD-forests zijn, heeft elk computer account een eigen unieke Kerberos-ontsleutelings sleutel.
+- In elk`AZUREADSSOACC`AD-forest dat u synchroniseert met Azure AD () wordt een computeraccount ( ) gemaakt in uw on-premises Active Directory (AD) dat u synchroniseert met Azure AD (met Azure AD Connect).
+- Daarnaast worden een aantal Kerberos-serviceprincipalnamen (SPN's) gemaakt om te worden gebruikt tijdens het Azure AD-aanmeldingsproces.
+- De Kerberos-decryptiesleutel van het computeraccount wordt veilig gedeeld met Azure AD. Als er meerdere AD-forests zijn, heeft elk computeraccount zijn eigen unieke Kerberos-decryptiesleutel.
 
 >[!IMPORTANT]
-> Het `AZUREADSSOACC` computer account moet om veiligheids redenen sterk worden beveiligd. Alleen domein Administrators moeten het computer account kunnen beheren. Zorg ervoor dat Kerberos-delegering op het computer account is uitgeschakeld en dat geen ander account in Active Directory overdrachts `AZUREADSSOACC` machtigingen heeft voor het computer account. Sla het computer account op in een organisatie-eenheid (OE) waar het veilig is tegen onbedoeld verwijderen en waar alleen domein beheerders toegang hebben. De Kerberos-ontsleutelings sleutel op het computer account moet ook als gevoelig worden beschouwd. We raden u ten zeerste aan [de Kerberos-ontsleutelings sleutel](how-to-connect-sso-faq.md) van het `AZUREADSSOACC` computer account ten minste elke 30 dagen in te voeren.
+> Het `AZUREADSSOACC` computeraccount moet om veiligheidsredenen sterk worden beschermd. Alleen domeinbeheerders moeten het computeraccount kunnen beheren. Controleer of Kerberos-delegatie op het computeraccount is uitgeschakeld en dat geen enkel `AZUREADSSOACC` ander account in Active Directory delegatiemachtigingen heeft op het computeraccount.. Sla het computeraccount op in een organisatie-eenheid (OU) waar ze niet per ongeluk kunnen worden verwijderd en waar alleen domeinbeheerders toegang hebben. De Kerberos decryptie sleutel op de computer account moet ook worden behandeld als gevoelig. We raden u ten zeerste aan om `AZUREADSSOACC` de [Kerberos-decryptiesleutel](how-to-connect-sso-faq.md) van het computeraccount ten minste om de 30 dagen te omrollen.
 
-Zodra de installatie is voltooid, werkt naadloze SSO op dezelfde manier als andere aanmelding waarbij gebruik wordt gemaakt van geïntegreerde Windows-authenticatie (IWA).
+Zodra de set-up is voltooid, werkt Seamless SSO op dezelfde manier als elke andere aanmelding die gebruikmaakt van Integrated Windows Authentication (IWA).
 
-### <a name="how-does-sign-in-on-a-web-browser-with-seamless-sso-work"></a>Hoe werkt de aanmelding in een webbrowser met naadloze SSO?
+### <a name="how-does-sign-in-on-a-web-browser-with-seamless-sso-work"></a>Hoe werkt aanmelden in een webbrowser met Seamless SSO?
 
-De aanmeldings stroom van een webbrowser is als volgt:
+De aanmeldingsstroom in een webbrowser is als volgt:
 
-1. De gebruiker probeert toegang te krijgen tot een webtoepassing (bijvoorbeeld de Outlook Web app- https://outlook.office365.com/owa/) van een bedrijfs apparaat dat lid is van een domein in uw bedrijfs netwerk.
-2. Als de gebruiker nog niet is aangemeld, wordt de gebruiker omgeleid naar de aanmeldings pagina van Azure AD.
-3. De gebruiker typt de gebruikers naam in de aanmeldings pagina van Azure AD.
+1. De gebruiker probeert toegang te krijgen tot een webtoepassing (bijvoorbeeld de Outlook Web App - https://outlook.office365.com/owa/) vanaf een bedrijfsapparaat dat is verbonden met een domein binnen uw bedrijfsnetwerk.
+2. Als de gebruiker nog niet is aangemeld, wordt de gebruiker doorgestuurd naar de aanmeldingspagina van Azure AD.
+3. De gebruiker typt zijn gebruikersnaam in op de aanmeldingspagina van Azure AD.
 
    >[!NOTE]
-   >Voor [bepaalde toepassingen](./how-to-connect-sso-faq.md)worden stap 2 & 3 overgeslagen.
+   >Voor [bepaalde toepassingen](./how-to-connect-sso-faq.md)worden stappen 2 & 3 overgeslagen.
 
-4. Met behulp van Java script kunt u met Azure AD via een 401 niet-geautoriseerde reactie een Kerberos-ticket aanbieden aan de browser.
-5. De browser vraagt op zijn beurt een ticket aan bij Active Directory voor het `AZUREADSSOACC` computer account (dat staat voor Azure AD).
-6. Active Directory het computer account zoekt en een Kerberos-ticket retourneert naar de browser die is versleuteld met het geheim van het computer account.
-7. De browser stuurt het Kerberos-ticket dat is verkregen van Active Directory naar Azure AD.
-8. Azure AD ontsleutelt het Kerberos-ticket, dat de identiteit bevat van de gebruiker die is aangemeld bij het bedrijfs apparaat, met behulp van de eerder gedeelde sleutel.
-9. Na de evaluatie retourneert Azure AD een token terug naar de toepassing of vraagt de gebruiker om extra proeven uit te voeren, zoals Multi-Factor Authentication.
-10. Als de gebruiker zich aanmeldt, kan de gebruiker toegang krijgen tot de toepassing.
+4. Met JavaScript op de achtergrond daagt Azure AD de browser uit om via een ongeautoriseerde reactie van 401 een Kerberos-ticket te bieden.
+5. De browser vraagt op zijn beurt een `AZUREADSSOACC` ticket van Active Directory voor het computeraccount (dat Azure AD vertegenwoordigt).
+6. Active Directory zoekt het computeraccount en stuurt een Kerberos-ticket terug naar de browser die is versleuteld met het geheim van het computeraccount.
+7. De browser stuurt het Kerberos-ticket dat het heeft verkregen van Active Directory door naar Azure AD.
+8. Azure AD decodeert het Kerberos-ticket, dat de identiteit bevat van de gebruiker die is aangemeld bij het bedrijfsapparaat, met behulp van de eerder gedeelde sleutel.
+9. Na evaluatie retourneert Azure AD een token terug naar de toepassing of vraagt de gebruiker om aanvullende bewijzen uit te voeren, zoals Multi-Factor Authentication.
+10. Als de aanmelding van de gebruiker succesvol is, heeft de gebruiker toegang tot de toepassing.
 
-In het volgende diagram ziet u alle onderdelen en de betrokken stappen.
+Het volgende diagram illustreert alle componenten en de stappen die daarbij betrokken zijn.
 
-![Naadloze stroom voor eenmalige aanmelding op Web-apps](./media/how-to-connect-sso-how-it-works/sso2.png)
+![Naadloze single sign-on - Web-app flow](./media/how-to-connect-sso-how-it-works/sso2.png)
 
-Naadloze SSO is opportunistisch, wat betekent dat als dit mislukt, de aanmeldings ervaring weer normaal is. de gebruiker moet het wacht woord invoeren om zich aan te melden.
+Naadloze SSO is opportunistisch, wat betekent dat als het mislukt, de aanmeldingservaring terugvalt naar zijn normale gedrag - dat wil zeggen, de gebruiker moet zijn wachtwoord invoeren om in te loggen.
 
-### <a name="how-does-sign-in-on-a-native-client-with-seamless-sso-work"></a>Hoe werkt aanmelden op een systeem eigen client met naadloze SSO?
+### <a name="how-does-sign-in-on-a-native-client-with-seamless-sso-work"></a>Hoe werkt aanmelden bij een native client met Seamless SSO?
 
-De aanmeldings stroom op een systeem eigen client is als volgt:
+De aanmeldingsstroom op een native client is als volgt:
 
-1. De gebruiker probeert toegang te krijgen tot een systeem eigen toepassing (bijvoorbeeld de Outlook-client) vanuit een bedrijfs apparaat dat lid is van een domein in uw bedrijfs netwerk.
-2. Als de gebruiker nog niet is aangemeld, haalt de systeem eigen toepassing de gebruikers naam van de gebruiker op uit de Windows-sessie van het apparaat.
-3. De app verzendt de gebruikers naam naar Azure AD en haalt het WS-Trust-eind punt van uw Tenant op. Dit WS-Trust-eind punt wordt uitsluitend gebruikt door de functie naadloze SSO en is geen algemene implementatie van het WS-Trust-protocol op Azure AD.
-4. De app voert vervolgens een query uit op het WS-Trust MEX-eind punt om te zien of een geïntegreerd verificatie-eind punt beschikbaar is. Het geïntegreerde verificatie-eind punt wordt uitsluitend gebruikt door de functie naadloze SSO.
-5. Als stap 4 slaagt, wordt er een Kerberos-vraag gegeven.
-6. Als de app het Kerberos-ticket kan ophalen, wordt deze doorgestuurd naar het geïntegreerde verificatie-eind punt van Azure AD.
-7. Het Kerberos-ticket wordt door Azure AD ontsleuteld en gevalideerd.
-8. Azure AD ondertekent de gebruiker in en geeft een SAML-token door aan de app.
-9. De app verzendt vervolgens het SAML-token naar het OAuth2-token eindpunt van Azure AD.
-10. Azure AD valideert het SAML-token en verleent aan de app een toegangs token en een vernieuwings token voor de opgegeven resource en een id-token.
-11. De gebruiker krijgt toegang tot de resource van de app.
+1. De gebruiker probeert toegang te krijgen tot een native toepassing (bijvoorbeeld de Outlook-client) vanaf een bedrijfsapparaat dat is verbonden met een domein binnen uw bedrijfsnetwerk.
+2. Als de gebruiker nog niet is aangemeld, haalt de native toepassing de gebruikersnaam van de gebruiker op uit de Windows-sessie van het apparaat.
+3. De app stuurt de gebruikersnaam naar Azure AD en haalt het WS-Trust MEX-eindpunt van uw tenant op. Dit WS-Trust-eindpunt wordt uitsluitend gebruikt door de Seamless SSO-functie en is geen algemene implementatie van het WS-Trust-protocol op Azure AD.
+4. De app vraagt vervolgens het MEX-eindpunt van WS-Trust om te zien of er een geïntegreerd verificatieeindpunt beschikbaar is. Het geïntegreerde authenticatieeindpunt wordt uitsluitend gebruikt door de Seamless SSO-functie.
+5. Als stap 4 slaagt, wordt een Kerberos-uitdaging uitgegeven.
+6. Als de app het Kerberos-ticket kan ophalen, wordt het doorsturen naar het geïntegreerde verificatieeindpunt van Azure AD.
+7. Azure AD decodeert het Kerberos-ticket en valideert het.
+8. Azure AD meldt de gebruiker in en geeft een SAML-token uit aan de app.
+9. De app verzendt vervolgens het SAML-token naar het OAuth2-tokeneindpunt van Azure AD.
+10. Azure AD valideert het SAML-token en geeft de app een toegangstoken en een vernieuwingstoken voor de opgegeven bron en een id-token.
+11. De gebruiker krijgt toegang tot de bron van de app.
 
-In het volgende diagram ziet u alle onderdelen en de betrokken stappen.
+Het volgende diagram illustreert alle componenten en de stappen die daarbij betrokken zijn.
 
-![Naadloze stroom voor eenmalige aanmelding op de eigen app](./media/how-to-connect-sso-how-it-works/sso14.png)
+![Naadloze single sign-on - Native app flow](./media/how-to-connect-sso-how-it-works/sso14.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [**Quick Start**](how-to-connect-sso-quick-start.md) : krijg Azure AD naadloze SSO en voer deze uit.
-- [**Veelgestelde vragen**](how-to-connect-sso-faq.md) : antwoorden op veelgestelde vragen.
-- [**Problemen oplossen**](tshoot-connect-sso.md) : informatie over het oplossen van veelvoorkomende problemen met de functie.
-- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) -voor het indienen van nieuwe functie aanvragen.
+- [**Snel aan de slag**](how-to-connect-sso-quick-start.md) : ga aan de slag met Azure AD Seamless SSO.
+- [**Veelgestelde vragen**](how-to-connect-sso-faq.md) - Antwoorden op veelgestelde vragen.
+- [**Problemen oplossen**](tshoot-connect-sso.md) : meer informatie over het oplossen van veelvoorkomende problemen met de functie.
+- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - Voor het indienen van nieuwe functieaanvragen.

@@ -1,6 +1,6 @@
 ---
-title: Opnieuw instellen van het wachtwoord van een gebruiker - Azure Active Directory | Microsoft Docs
-description: Instructies over het wachtwoord opnieuw instellen van een gebruiker met Azure Active Directory.
+title: Het wachtwoord van een gebruiker opnieuw instellen - Azure Active Directory | Microsoft Documenten
+description: Instructies voor het opnieuw instellen van het wachtwoord van een gebruiker met Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -15,52 +15,52 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b4fdbbd4d71a9c97259678413cd9e59ee8aeae6b
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69032673"
 ---
-# <a name="reset-a-users-password-using-azure-active-directory"></a>Wachtwoord opnieuw instellen van een gebruiker met Azure Active Directory
+# <a name="reset-a-users-password-using-azure-active-directory"></a>Het wachtwoord van een gebruiker opnieuw instellen met Azure Active Directory
 
-U kunt als beheerder, het wachtwoord van een gebruiker opnieuw als het wachtwoord is vergeten, als de gebruiker toegang tot een apparaat wordt geblokkeerd, of als de gebruiker een wachtwoord nooit hebt ontvangen.
-
->[!Note]
->Als uw Azure AD-tenant de basismap van een gebruiker is, kunt u zich niet hun wachtwoord opnieuw instellen. Dit betekent dat als de gebruiker bij uw organisatie met een account van een andere organisatie, een Microsoft-account of een Google-account aanmeldt zich, kunt u zich niet op hun wachtwoord opnieuw instellen.<br><br>Als de gebruiker een bron van dienst als Windows Server Active Directory heeft, kunt u zult alleen het wachtwoord opnieuw instellen als u wachtwoord terugschrijven hebt ingeschakeld.<br><br>Als de gebruiker een bron van instantie als externe Azure AD heeft, kunt u zich niet aan het wachtwoord opnieuw instellen. Alleen de gebruiker of een beheerder in de externe Azure AD, kan het wachtwoord opnieuw instellen.
+Als beheerder u het wachtwoord van een gebruiker opnieuw instellen als het wachtwoord wordt vergeten, als de gebruiker wordt uitgesloten van een apparaat of als de gebruiker nooit een wachtwoord heeft ontvangen.
 
 >[!Note]
->Als u niet een beheerder bent en zoekt in plaats daarvan voor instructies over hoe u uw eigen werk- of schoolaccount wachtwoord opnieuw instellen, Zie [uw werk- of schoolaccount wachtwoord opnieuw instellen](../user-help/active-directory-passwords-update-your-own-password.md).
+>Tenzij uw Azure AD-tenant de thuismap voor een gebruiker is, u het wachtwoord niet opnieuw instellen. Dit betekent dat als uw gebruiker zich aanmeldt bij uw organisatie met behulp van een account van een andere organisatie, een Microsoft-account of een Google-account, u zijn wachtwoord niet opnieuw instellen.<br><br>Als uw gebruiker een bron van autoriteit heeft als Windows Server Active Directory, u het wachtwoord alleen opnieuw instellen als u het terugschrijven van wachtwoorden hebt ingeschakeld.<br><br>Als uw gebruiker een bron van autoriteit heeft als Extern Azure AD, u het wachtwoord niet opnieuw instellen. Alleen de gebruiker of een beheerder in Extern Azure AD kan het wachtwoord opnieuw instellen.
+
+>[!Note]
+>Zie [Uw werk- of schoolwachtwoord](../user-help/active-directory-passwords-update-your-own-password.md)opnieuw instellen als u geen beheerder bent en in plaats daarvan op zoek bent naar instructies over het opnieuw instellen van uw eigen werk- of schoolwachtwoord.
 
 ## <a name="to-reset-a-password"></a>Een wachtwoord opnieuw instellen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) als gebruikers beheerder of wachtwoord beheerder. Zie voor meer informatie over de beschikbare rollen [beheerdersrollen toewijzen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) als gebruikersbeheerder of wachtwoordbeheerder. Zie [Beheerdersrollen toewijzen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles) voor meer informatie over de beschikbare rollen
 
-2. Selecteer **Azure Active Directory**, selecteer **gebruikers**, zoekt en selecteert u de gebruiker die het opnieuw instellen moet en selecteer vervolgens **wachtwoord opnieuw instellen**.
+2. Selecteer **Azure Active Directory,** selecteer **Gebruikers,** zoek naar en selecteer de gebruiker die de reset nodig heeft en selecteer **Vervolgens Wachtwoord opnieuw instellen**.
 
-    De **Alain Charon - profiel** pagina wordt weergegeven met de **wachtwoord opnieuw instellen** optie.
+    De pagina **Alain Charon - Profiel** wordt weergegeven met de optie Wachtwoord opnieuw **instellen.**
 
-    ![De profielpagina van gebruiker met de optie voor wachtwoord opnieuw instellen is gemarkeerd](media/active-directory-users-reset-password-azure-portal/user-profile-reset-password-link.png)
+    ![Profielpagina van de gebruiker, met de optie Wachtwoord opnieuw instellen gemarkeerd](media/active-directory-users-reset-password-azure-portal/user-profile-reset-password-link.png)
 
-3. In de **wachtwoord opnieuw instellen** weergeeft, schakelt **wachtwoord opnieuw instellen**.
+3. Selecteer **op** de pagina Wachtwoord opnieuw instellen de optie **Wachtwoord opnieuw instellen**.
 
     > [!Note]
-    > Wanneer u Azure Active Directory gebruikt, wordt er automatisch een tijdelijk wacht woord voor de gebruiker gegenereerd. Wanneer u Active Directory on-premises gebruikt, maakt u het wacht woord voor de gebruiker.
+    > Bij het gebruik van Azure Active Directory wordt een tijdelijk wachtwoord automatisch gegenereerd voor de gebruiker. Wanneer u Active Directory on-premises gebruikt, maakt u het wachtwoord voor de gebruiker.
 
-4. Kopiëren van het wachtwoord en geeft u het aan de gebruiker. De gebruiker moet het wachtwoord wijzigen tijdens de volgende aanmelding.
+4. Kopieer het wachtwoord en geef het aan de gebruiker. De gebruiker moet het wachtwoord wijzigen tijdens het volgende aanmeldingsproces.
 
     >[!Note]
-    >Het tijdelijke wachtwoord verloopt nooit. De volgende keer dat de gebruiker zich aanmeldt, wordt het wachtwoord nog steeds werken, ongeacht hoeveel tijd is verstreken sinds het tijdelijke wachtwoord is gegenereerd.
+    >Het tijdelijke wachtwoord verloopt nooit. De volgende keer dat de gebruiker zich aanmeldt, werkt het wachtwoord nog steeds, ongeacht hoeveel tijd is verstreken sinds het tijdelijke wachtwoord is gegenereerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u het wachtwoord van de gebruiker opnieuw instelt hebt, kunt u de volgende basis-processen uitvoeren:
+Nadat u het wachtwoord van uw gebruiker opnieuw hebt ingesteld, u de volgende basisprocessen uitvoeren:
 
-- [Toevoegen of verwijderen van gebruikers](add-users-azure-active-directory.md)
+- [Gebruikers toevoegen of verwijderen](add-users-azure-active-directory.md)
 
 - [Rollen toewijzen aan gebruikers](active-directory-users-assign-role-azure-portal.md)
 
-- [Toevoegen of wijzigen van de profielgegevens](active-directory-users-profile-azure-portal.md)
+- [Profielgegevens toevoegen of wijzigen](active-directory-users-profile-azure-portal.md)
 
 - [Een basisgroep maken en leden toevoegen](active-directory-groups-create-azure-portal.md)
 
-Of u complexere gebruiker-scenario's, zoals het toewijzen van gemachtigden, met behulp van beleid en het delen van gebruikersaccounts kan uitvoeren. Zie voor meer informatie over andere beschikbare acties [Azure Active Directory management gebruikersdocumentatie](../users-groups-roles/index.yml).
+U ook complexere gebruikersscenario's uitvoeren, zoals het toewijzen van gemachtigden, het gebruik van beleid en het delen van gebruikersaccounts. Zie [Azure Active Directory-gebruikersbeheerdocumentatie](../users-groups-roles/index.yml)voor meer informatie over andere beschikbare acties.

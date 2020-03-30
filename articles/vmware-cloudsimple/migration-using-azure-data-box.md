@@ -1,6 +1,6 @@
 ---
-title: 'Azure VMware-oplossing: migratie met behulp van Azure Data Box'
-description: Azure Data Box gebruiken om gegevens bulksgewijs te migreren naar de Azure VMware-oplossing.
+title: Azure VMware-oplossing - migratie met Azure-gegevensvak
+description: Azure Data Box gebruiken om gegevens in bulk te migreren naar Azure VMware Solution.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 09/27/2019
@@ -8,59 +8,59 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f368ad7cf9b83195e35a2283de7a3644cc9fc317
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 65167169248d83ebfec2c49c308673ec9315934e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77019754"
 ---
-# <a name="migrating-data-to-azure-vmware-solution-by-using-azure-data-box"></a>Gegevens migreren naar Azure VMware-oplossing met behulp van Azure Data Box
+# <a name="migrating-data-to-azure-vmware-solution-by-using-azure-data-box"></a>Gegevens migreren naar Azure VMware-oplossing met Azure Data Box
 
-Met de Microsoft Azure Data Box Cloud oplossing kunt u op een snelle, goedkope en betrouw bare manier terabytes (TBs) van gegevens naar Azure verzenden. De veilige gegevensoverdracht wordt versneld door u een systeemeigen Data Box-opslagapparaat toe te sturen. Elk opslag apparaat heeft een maximale bruikbare opslag capaciteit van 80 TB en wordt naar uw Data Center getransporteerd door een regionale luchtvaart maatschappij. Het apparaat heeft een robuuste behuizing om uw gegevens tijdens de overdracht te beschermen en te beveiligen.
+Met de Microsoft Azure Data Box-cloudoplossing u terabytes (TBS's) aan gegevens op een snelle, goedkope en betrouwbare manier naar Azure verzenden. De veilige gegevensoverdracht wordt versneld door u een systeemeigen Data Box-opslagapparaat toe te sturen. Elk opslagapparaat heeft een maximale bruikbare opslagcapaciteit van 80 TB en wordt door een regionale luchtvaartmaatschappij naar uw datacenter getransporteerd. Het apparaat heeft een robuuste behuizing om uw gegevens tijdens het transport te beschermen en te beveiligen.
 
-Met Data Box kunt u uw VMware-gegevens bulksgewijs migreren naar de Privécloud van uw AVS. Gegevens uit uw on-premises VMware vSphere omgeving worden naar Data Box gekopieerd via het NFS-protocol (Network File System). Bij de migratie van bulk gegevens wordt een tijdgebonden kopie van virtuele machines, configuratie en gekoppelde gegevens opgeslagen in Data Box en vervolgens hand matig naar Azure verzonden.
+Door Data Box te gebruiken, u uw VMware-gegevens bulkmigreren naar uw private cloud. Gegevens uit uw on-premises VMware vSphere-omgeving worden via het NFS-protocol (Network File System) gekopieerd naar Data Box. Bulkgegevensmigratie omvat het opslaan van een point-in-time-kopie van virtuele machines, configuratie en gekoppelde gegevens naar Gegevensvak en vervolgens handmatig naar Azure verzenden.
 
-In dit artikel vindt u meer informatie over:
+In dit artikel leert u over:
 
-* Data Box instellen.
-* Gegevens kopiëren van de on-premises VMware-omgeving naar het Data Box door middel van NFS.
-* Voorbereiden op het retour neren van Data Box.
-* BLOB-gegevens voorbereiden om te kopiëren naar de Azure VMware-oplossing.
-* De gegevens van Azure naar de Privécloud van uw AVS kopiëren.
+* Gegevensvak instellen.
+* Gegevens uit de on-premises VMware-omgeving kopiëren naar de Gegevensbox via NFS.
+* Voorbereiden op de terugkeer van Data Box.
+* Blob-gegevens voorbereiden voor kopiëren naar Azure VMware-oplossing.
+* Het kopiëren van de gegevens van Azure naar uw privécloud.
 
 ## <a name="scenarios"></a>Scenario's
 
-Gebruik Data Box in de volgende scenario's voor bulk gegevens migratie:
+Gegevensvak gebruiken in de volgende scenario's voor bulkgegevensmigratie:
 
-* Om een grote hoeveelheid gegevens te migreren van on-premises naar Azure VMware-oplossing. Met deze methode maakt u een basis lijn en synchroniseert u verschillen via het netwerk.
-* Voor het migreren van een groot aantal virtuele machines dat is uitgeschakeld (koude virtuele machines).
-* Om de gegevens van de virtuele machine voor het instellen van ontwikkel-en test omgevingen te migreren.
-* Om een groot aantal virtuele-machine sjablonen, ISO-bestanden en virtuele-machine schijven te migreren.
+* Een grote hoeveelheid gegevens migreren van on-premises naar Azure VMware-oplossing. Met deze methode wordt een basislijn vastgesteld en worden verschillen over het netwerk gesynchroniseerd.
+* Een groot aantal virtuele machines migreren die zijn uitgeschakeld (koude virtuele machines).
+* Virtuele machinegegevens migreren voor het instellen van ontwikkel- en testomgevingen.
+* Als u een groot aantal virtuele machinesjablonen, ISO-bestanden en virtuele machineschijven wilt migreren.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-* Controleer de vereisten en [bestel data Box](../databox/data-box-deploy-ordered.md) via uw Azure Portal. Tijdens het order proces moet u een opslag account selecteren dat Blob Storage mogelijk maakt. Nadat u het Data Box apparaat hebt ontvangen, verbindt u het met uw on-premises netwerk en [stelt u het apparaat](../databox/data-box-deploy-set-up.md) in met een IP-adres dat bereikbaar is vanuit uw vSphere-beheer netwerk.
+* Schakel de vereisten in en [bestel gegevensvak](../databox/data-box-deploy-ordered.md) via uw Azure-portal. Tijdens het bestelproces moet u een opslagaccount selecteren waarmee Blob-opslag wordt opgeslagen. Nadat u het Data Box-apparaat hebt ontvangen, sluit u het aan op uw on-premises netwerk en [stelt u het apparaat in](../databox/data-box-deploy-set-up.md) met een IP-adres dat bereikbaar is vanuit uw vSphere-beheernetwerk.
 
-* Maak een virtueel netwerk en een opslag account in dezelfde regio waarin uw Azure VMware-oplossing is ingericht.
+* Maak een virtueel netwerk en een opslagaccount in dezelfde regio waar uw Azure VMware-oplossing is ingericht.
 
-* Maak een [verbinding met een virtueel Azure-netwerk](cloudsimple-azure-network-connection.md) van uw AVS-privécloud naar het virtuele netwerk waar het opslag account wordt gemaakt door de stappen in verbinding maken met het [virtuele netwerk van Azure met ExpressRoute te](virtual-network-connection.md)volgen.
+* Maak een [virtuele Azure-netwerkverbinding](cloudsimple-azure-network-connection.md) vanuit uw privécloud naar het virtuele netwerk waar het opslagaccount wordt gemaakt door de stappen in het virtuele Netwerk van Connect Azure naar CloudSimple te volgen [met ExpressRoute.](virtual-network-connection.md)
 
-## <a name="set-up-data-box-for-nfs"></a>Data Box instellen voor NFS
+## <a name="set-up-data-box-for-nfs"></a>Gegevensvak instellen voor NFS
 
-Maak verbinding met uw Data Box lokale web-UI door de stappen in de sectie ' verbinding maken met uw apparaat ' in de [zelf studie te volgen: kabel en verbinding maken met uw Azure data Box](../databox/data-box-deploy-set-up.md). Data Box configureren om toegang tot NFS-clients toe te staan:
+Maak verbinding met de lokale webgebruikersinterface van uw gegevensbox door de stappen te volgen in het gedeelte 'Verbinding maken met uw apparaat' van [Zelfstudie: Kabel en verbinding maken met uw Azure-gegevensvak.](../databox/data-box-deploy-set-up.md)  Gegevensvak configureren om toegang te verlenen tot NFS-clients:
 
-1. Ga in de lokale web-UI naar de pagina **verbinding maken en kopiëren** . Onder **NFS-instellingen**selecteert u **NFS-client toegang**. 
+1. Ga in de lokale webgebruikersinterface naar de pagina **Verbinden en kopiëren.** Selecteer **NFS-clienttoegang**onder **NFS-instellingen**. 
 
     ![NFS-clienttoegang configureren 1](media/nfs-client-access.png)
 
-2. Voer het IP-adres van de VMware ESXi hosts in en selecteer **toevoegen**. U kunt de toegang voor alle hosts in uw vSphere-cluster configureren door deze stap te herhalen. Selecteer **OK**.
+2. Voer het IP-adres van de VMware ESXi-hosts in en selecteer **Toevoegen**. U de toegang voor alle hosts in uw vSphere-cluster configureren door deze stap te herhalen. Selecteer **OK**.
 
     ![NFS-clienttoegang configureren 2](media/nfs-client-access2.png)
 > [!IMPORTANT]
-> **Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map**. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. U kunt bestanden niet rechtstreeks kopiëren naar de *hoofdmap* van het opslag account.
+> **Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map**. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. U bestanden niet rechtstreeks naar de *hoofdmap* in het opslagaccount kopiëren.
 
-Onder blok-blob- en pagina-blob-shares zijn entiteiten op het eerste niveau containers en entiteiten op het tweede niveau blobs. Onder shares voor Azure Files zijn de entiteiten van het eerste niveau shares en entiteiten van het tweede niveau bestanden.
+Onder blok-blob- en pagina-blob-shares zijn entiteiten op het eerste niveau containers en entiteiten op het tweede niveau blobs. Onder aandelen voor Azure Files zijn entiteiten op het eerste niveau aandelen en entiteiten op het tweede niveau bestanden.
 
 In de volgende tabel ziet u het UNC-pad naar de shares op uw Data Box en de URL van het Azure Storage-pad waarnaar de gegevens worden geüpload. De uiteindelijke URL van het Azure Storage-pad kan worden afgeleid van het UNC-pad naar de shares.
  
@@ -71,183 +71,183 @@ In de volgende tabel ziet u het UNC-pad naar de shares op uw Data Box en de URL 
 | Azure Files       |<li>UNC-pad naar shares: `//<DeviceIPAddres>/<StorageAccountName_AzFile>/<ShareName>/files/a.txt`</li><li>Azure Storage-URL: `https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |
 
 > [!NOTE]
-> Gebruik Azure Block blobs voor het kopiëren van VMware-gegevens.
+> Gebruik Azure Block-blobs voor het kopiëren van VMware-gegevens.
 
-## <a name="mount-the-nfs-share-as-a-datastore-on-your-on-premises-vcenter-cluster-and-copy-the-data"></a>Koppel de NFS-share als een gegevens opslag in uw on-premises vCenter-cluster en kopieer de gegevens
+## <a name="mount-the-nfs-share-as-a-datastore-on-your-on-premises-vcenter-cluster-and-copy-the-data"></a>Monteer het NFS-aandeel als een gegevensarchief op uw on-premises vCenter-cluster en kopieer de gegevens
 
-De NFS-share van uw Data Box moet worden gekoppeld als een gegevens opslag in uw on-premises vCenter-cluster of VMware ESXi-host om de gegevens naar de NFS-gegevens opslag te kopiëren:
+Het NFS-aandeel uit uw gegevensvak moet worden gemonteerd als een gegevensarchief op uw on-premises vCenter-cluster of VMware ESXi-host om de gegevens naar het NFS-gegevensarchief te kopiëren:
 
-1. Meld u aan bij uw on-premises vCenter-Server.
+1. Meld u aan bij uw on-premises vCenter-server.
 
-2. Klik met de rechter muisknop op **Data Center**, selecteer **opslag**, selecteer **nieuwe gegevens opslag**en selecteer vervolgens **volgende**.
+2. Klik met de rechtermuisknop op **Datacenter,** selecteer **Opslag,** selecteer **Nieuw gegevensarchief**en selecteer **Volgende**.
 
-   ![Nieuwe gegevens opslag toevoegen](media/databox-migration-add-datastore.png)
+   ![Nieuwe datastore toevoegen](media/databox-migration-add-datastore.png)
 
-3. Selecteer in stap 1 van de wizard Data Store toevoegen onder **type**de optie **NFS** .
+3. Selecteer **NFS** in stap 1 van de wizard Gegevensarchief toevoegen onder **Type**.
 
-   ![Nieuwe gegevens opslag toevoegen-type](media/databox-migration-add-datastore-type.png)
+   ![Nieuwe datastore toevoegen - type](media/databox-migration-add-datastore-type.png)
 
-4. Selecteer in stap 2 van de wizard de optie **NFS 3** als NFS-versie en selecteer vervolgens **volgende**.
+4. Selecteer **NFS 3** in stap 2 van de wizard als NFS-versie en selecteer **Volgende**.
 
-   ![Nieuwe Data Store-NFS-versie toevoegen](media/databox-migration-add-datastore-nfs-version.png)
+   ![Nieuwe datastore toevoegen - NFS-versie](media/databox-migration-add-datastore-nfs-version.png)
 
-5. Geef in stap 3 van de wizard de naam op voor de gegevens opslag, het pad en de server. U kunt het IP-adres van uw Data Box voor de-server gebruiken. Het mappad bevindt zich in de `/<StorageAccountName_BlockBlob>/<ContainerName>/`-indeling.
+5. Geef in stap 3 van de wizard de naam op voor het gegevensarchief, het pad en de server. U het IP-adres van uw gegevensbox voor de server gebruiken. Het mappad is `/<StorageAccountName_BlockBlob>/<ContainerName>/` in de indeling.
 
-   ![Nieuwe Data Store-NFS-configuratie toevoegen](media/databox-migration-add-datastore-nfs-configuration.png)
+   ![Nieuwe datastore toevoegen - NFS-configuratie](media/databox-migration-add-datastore-nfs-configuration.png)
 
-6. Selecteer in stap 4 van de wizard de ESXi-hosts waar u de gegevens opslag wilt koppelen en selecteer vervolgens **volgende**. Selecteer in een cluster alle hosts om te controleren of de virtuele machines zijn gemigreerd.
+6. Selecteer in stap 4 van de wizard de ESXi-hosts waar u het gegevensarchief wilt monteren en selecteer **Volgende**.  Selecteer in een cluster alle hosts om de migratie van de virtuele machines te garanderen.
 
-   ![Nieuwe gegevens opslag toevoegen-hosts selecteren](media/databox-migration-add-datastore-nfs-select-hosts.png)
+   ![Nieuwe datastore toevoegen - Hosts selecteren](media/databox-migration-add-datastore-nfs-select-hosts.png)
 
-7. Bekijk in stap 5 van de wizard de samen vatting en selecteer **volt ooien**.
+7. Bekijk in stap 5 van de wizard het overzicht en selecteer **Voltooien**.
 
-## <a name="copy-data-to-the-data-box-nfs-datastore"></a>Gegevens kopiëren naar de Data Box NFS-gegevens opslag
+## <a name="copy-data-to-the-data-box-nfs-datastore"></a>Gegevens kopiëren naar het GEGEVENSvak NFS-gegevensarchief
 
-Virtuele machines kunnen worden gemigreerd of gekloond naar de nieuwe gegevens opslag. Alle ongebruikte virtuele machines die u wilt migreren, kunnen worden gemigreerd naar het Data Box NFS-gegevens archief met behulp van de optie **opslag vMotion** . Actieve virtuele machines kunnen worden gekloond naar het Data Box NFS-gegevens archief.
+Virtuele machines kunnen worden gemigreerd of gekloond naar het nieuwe datastore.  Ongebruikte virtuele machines die u wilt migreren, kunnen worden gemigreerd naar het Data Box NFS-gegevensarchief met behulp van de optie **opslagvMotion.** Actieve virtuele machines kunnen worden gekloond naar het Data Box NFS-gegevensarchief.
 
-* De virtuele machines identificeren en weer geven die kunnen worden **verplaatst**.
-* Identificeer en vermeld de virtuele machines die moeten worden **gekloond**.
+* Identificeer en vermeld de virtuele machines die kunnen worden **verplaatst.**
+* Identificeer en vermeld de virtuele machines die moeten worden **gekloond.**
 
-### <a name="move-a-virtual-machine-to-a-data-box-datastore"></a>Een virtuele machine verplaatsen naar een Data Box gegevens opslag
+### <a name="move-a-virtual-machine-to-a-data-box-datastore"></a>Een virtuele machine verplaatsen naar een gegevensarchief van een gegevensarchief
 
-1. Klik met de rechter muisknop op de virtuele machine die u wilt verplaatsen naar de Data Box gegevens opslag en selecteer vervolgens **migreren**.
+1. Klik met de rechtermuisknop op de virtuele machine die u naar het gegevensarchief Van het gegevensvak wilt verplaatsen en selecteer **Vervolgens Migreren**.
 
     ![Virtuele machine migreren](media/databox-migration-vm-migrate.png)
 
-2. Selecteer **alleen opslag wijzigen** voor het migratie type en selecteer vervolgens **volgende**.
+2. Selecteer **Alleen opslag wijzigen** voor het migratietype en selecteer **Volgende**.
 
-    ![Virtuele machine migreren-alleen opslag](media/databox-migration-vm-migrate-change-storage.png)
+    ![Virtuele machine migreren - alleen opslag](media/databox-migration-vm-migrate-change-storage.png)
 
-3. Selecteer **Databox-Data Store** als doel en selecteer vervolgens **volgende**.
+3. Selecteer **Databox-Datastore** als bestemming en selecteer **Volgende**.
 
-    ![Virtuele machine migreren: Selecteer gegevens opslag](media/databox-migration-vm-migrate-change-storage-select-datastore.png)
+    ![Virtuele machine migreren - datastore selecteren](media/databox-migration-vm-migrate-change-storage-select-datastore.png)
 
-4. Controleer de informatie en selecteer **volt ooien**.
+4. Bekijk de informatie en selecteer **Voltooien**.
 
-5. Herhaal stap 1 tot en met 4 voor aanvullende virtuele machines.
+5. Herhaal stap 1 tot en met 4 voor extra virtuele machines.
 
 > [!TIP]
-> U kunt meerdere virtuele machines selecteren die zich in dezelfde energie status bevinden (ingeschakeld of uitgeschakeld) en deze bulksgewijs migreren.
+> U meerdere virtuele machines selecteren die zich in dezelfde energiestatus bevinden (ingeschakeld of uitgeschakeld) en deze in bulk migreren.
 
-De virtuele machine wordt gemigreerd naar de NFS-gegevens opslag van Data Box. Nadat alle virtuele machines zijn gemigreerd, kunt u de actieve virtuele machines in de voor bereiding voor de migratie van gegevens naar de Azure VMware-oplossing uitschakelen (afsluiten).
+De virtuele machine wordt gemigreerd naar het NFS-gegevensarchief vanuit Data Box. Nadat alle virtuele machines zijn gemigreerd, u de actieve virtuele machines uitschakelen (afsluiten) ter voorbereiding op de migratie van gegevens naar Azure VMware Solution.
 
-### <a name="clone-a-virtual-machine-or-a-virtual-machine-template-to-the-data-box-datastore"></a>Een virtuele machine of een virtuele-machine sjabloon klonen naar de Data Box gegevens opslag
+### <a name="clone-a-virtual-machine-or-a-virtual-machine-template-to-the-data-box-datastore"></a>Een virtuele machine of een sjabloon voor virtuele machines klonen naar het datastore van de gegevensarchief
 
-1. Klik met de rechter muisknop op een virtuele machine of een virtuele-machine sjabloon die u wilt klonen. Selecteer **klonen** > **klonen naar de virtuele machine**.
+1. Klik met de rechtermuisknop op een virtuele machine of een sjabloon voor virtuele machines die u wilt klonen. Selecteer **Kloonkloon** > **naar virtuele machine**.
 
-    ![Virtuele machine klonen](media/databox-migration-vm-clone.png)
+    ![Virtuele machine kloon](media/databox-migration-vm-clone.png)
 
-2. Selecteer een naam voor de gekloonde virtuele machine of de virtuele-machine sjabloon.
+2. Selecteer een naam voor de gekloonde virtuele machine of de sjabloon voor virtuele machines.
 
-3. Selecteer de map waarin u het gekloonde object wilt plaatsen en selecteer vervolgens **volgende**.
+3. Selecteer de map waar u het gekloonde object wilt plaatsen en selecteer **Volgende**.
 
-4. Selecteer het cluster of de resource groep waar u het gekloonde object wilt plaatsen en selecteer vervolgens **volgende**.
+4. Selecteer het cluster of de resourcegroep waar u het gekloonde object wilt plaatsen en selecteer **Volgende**.
 
-5. Selecteer **Databox-Data Store** als de opslag locatie en selecteer vervolgens **volgende**.
+5. Selecteer **Databox-Datastore** als opslaglocatie en selecteer **Volgende**.
 
-    ![Virtuele machine klonen: Selecteer gegevens opslag](media/databox-migration-vm-clone-select-datastore.png)
+    ![Virtuele machine kloon - selecteer datastore](media/databox-migration-vm-clone-select-datastore.png)
 
-6. Als u opties voor het gekloonde object wilt aanpassen, selecteert u de aanpassings opties en selecteert u **volgende**.
+6. Als u opties voor het gekloonde object wilt aanpassen, selecteert u de aanpassingsopties en selecteert u **Volgende**.
 
-7. Controleer de configuraties en selecteer **volt ooien**.
+7. Bekijk de configuraties en selecteer **Voltooien**.
 
-8. Herhaal stap 1 tot en met 7 voor aanvullende virtuele machines of virtuele-machine sjablonen.
+8. Herhaal stap 1 tot en met 7 voor extra virtuele machines of virtuele machinesjablonen.
 
-Virtuele machines worden gekloond en opgeslagen in de NFS-gegevens opslag van Data Box. Nadat de virtuele machines zijn gekloond, moet u ervoor zorgen dat ze worden afgesloten voor de voor bereiding op de migratie van gegevens naar de Azure VMware-oplossing.
+Virtuele machines worden gekloond en opgeslagen in het NFS-gegevensarchief van Data Box. Nadat de virtuele machines zijn gekloond, moet u ervoor zorgen dat ze zijn uitgeschakeld ter voorbereiding op de migratie van gegevens naar Azure VMware-oplossing.
 
-### <a name="copy-iso-files-to-the-data-box-datastore"></a>ISO-bestanden naar de Data Box gegevens opslag kopiëren
+### <a name="copy-iso-files-to-the-data-box-datastore"></a>ISO-bestanden kopiëren naar het gegevensarchief van de gegevensbox
 
-1. Ga in uw on-premises vCenter-webinterface naar **opslag**. Selecteer **Databox-Data Store** en selecteer vervolgens **bestanden**. Een nieuwe map maken voor het opslaan van ISO-bestanden.
+1. Ga vanuit uw on-premises vCenter-webgebruikersinterface naar **Storage.**  Selecteer **Databox-Datastore** en selecteer **Vervolgens Bestanden**. Maak een nieuwe map voor het opslaan van ISO-bestanden.
 
-    ![ISO kopiëren: nieuwe map maken](media/databox-migration-create-folder.png)
+    ![ISO kopiëren - nieuwe map maken](media/databox-migration-create-folder.png)
 
-2. Geef een naam op voor de map waarin de ISO-bestanden worden opgeslagen.
+2. Geef een naam op voor de map waar ISO-bestanden worden opgeslagen.
 
-3. Dubbel klik op de map die u zojuist hebt gemaakt om deze te openen.
+3. Dubbelklik op de nieuw gemaakte map om deze te openen.
 
-4. Selecteer **bestanden uploaden** en selecteer vervolgens de ISO-bestanden die u wilt uploaden.
+4. Selecteer **Bestanden uploaden** en selecteer vervolgens de ISO-bestanden die u wilt uploaden.
     
-    ![ISO-Upload bestanden kopiëren](media/databox-migration-upload-iso.png)
+    ![ISO kopiëren - bestanden uploaden](media/databox-migration-upload-iso.png)
 
 > [!TIP]
-> Als u al ISO-bestanden hebt in uw on-premises gegevens opslag, kunt u de bestanden selecteren en **kopiëren naar** om de bestanden te kopiëren naar de data Box NFS-gegevens opslag.
+> Als u al ISO-bestanden in uw on-premises gegevensarchief hebt, u de bestanden selecteren en **kopiëren om** de bestanden naar het DATA Box NFS-gegevensarchief te kopiëren.
 
 
-## <a name="prepare-data-box-for-return"></a>Data Box voorbereiden voor retour neren
+## <a name="prepare-data-box-for-return"></a>Gegevensvak voorbereiden voor retourneren
 
-Nadat alle gegevens van de virtuele machine, de gegevens van de virtuele-machine sjabloon en ISO-bestanden zijn gekopieerd naar de Data Box NFS-Data Store, kunt u de gegevens opslag loskoppelen van uw vCenter. Alle virtuele machines en virtuele-machine sjablonen moeten uit de inventarisatie worden verwijderd voordat u de gegevens opslag verbreekt.
+Nadat alle virtuele machinegegevens, sjabloongegevens voor virtuele machines en ISO-bestanden zijn gekopieerd naar het DATA Box NFS-gegevensarchief, u het gegevensarchief loskoppelen van uw vCenter. Alle virtuele machines en sjablonen voor virtuele machines moeten uit de voorraad worden verwijderd voordat u de gegevenswinkel loskoppelt.
 
-### <a name="remove-objects-from-inventory"></a>Objecten uit de inventaris verwijderen
+### <a name="remove-objects-from-inventory"></a>Objecten uit voorraad verwijderen
 
-1. Ga in uw on-premises vCenter-webinterface naar **opslag**. Selecteer **Databox-Data Store** en selecteer vervolgens **vm's**.
+1. Ga vanuit uw on-premises vCenter-webgebruikersinterface naar **Storage.** Selecteer **Databox-Datastore** en selecteer vervolgens **VM's**.
 
-    ![Virtuele machines uit de voor Raad verwijderen-uitgeschakeld](media/databox-migration-select-databox-vm.png)
+    ![Virtuele machines uit voorraad verwijderen - uitgeschakeld](media/databox-migration-select-databox-vm.png)
 
-2. Zorg ervoor dat alle virtuele machines zijn afgesloten.
+2. Zorg ervoor dat alle virtuele machines zijn uitgeschakeld.
 
-3. Selecteer alle virtuele machines, klik met de rechter muisknop en selecteer vervolgens **verwijderen uit inventarisatie**.
+3. Selecteer alle virtuele machines, klik met de rechtermuisknop en selecteer **Verwijderen uit voorraad**.
 
-    ![Virtuele machines uit de inventaris verwijderen](media/databox-migration-remove-vm-from-inventory.png)
+    ![Virtuele machines uit voorraad verwijderen](media/databox-migration-remove-vm-from-inventory.png)
 
 4. Selecteer **VM-sjablonen in mappen** en herhaal stap 3.
 
-### <a name="remove-the-data-box-nfs-datastore-from-vcenter"></a>De Data Box NFS-gegevens opslag uit de vCenter verwijderen
+### <a name="remove-the-data-box-nfs-datastore-from-vcenter"></a>Het GEGEVENSvak NFS-gegevensarchief verwijderen uit vCenter
 
-De verbinding tussen de Data Box NFS-gegevens opslag en VMware ESXi hosts moet worden verbroken voordat het resultaat wordt voor bereid.
+Het Data Box NFS-gegevensarchief moet worden losgekoppeld van VMware ESXi-hosts voordat u zich voorbereidt op terugkeer.
 
-1. Ga in uw on-premises vCenter-webinterface naar **opslag**.
+1. Ga vanuit uw on-premises vCenter-webgebruikersinterface naar **Storage.**
 
-2. Klik met de rechter muisknop op **Databox-Data Store** en selecteer **Data Store ontkoppelen**.
+2. Klik met de rechtermuisknop op **Databox-Datastore** en selecteer **Datastore ontkoppelen**.
 
-    ![Data Box gegevens opslag ontkoppelen](media/databox-migration-unmount-datastore.png)
+    ![Gegevensarchief gegevensarchief uit de ontkoppeling ontkoppelen](media/databox-migration-unmount-datastore.png)
 
-3. Selecteer alle ESXi-hosts waar het gegevens archief is gekoppeld en selecteer **OK**.
+3. Selecteer alle ESXi-hosts waar het gegevensarchief is gemonteerd en selecteer **OK**.
 
-    ![Data Box Data Store ontkoppelen-hosts selecteren](media/databox-migration-unmount-datastore-select-hosts.png)
+    ![Gegevensarchief gegevensarchief uitdemonteren - hosts selecteren](media/databox-migration-unmount-datastore-select-hosts.png)
 
-4. Controleer en accepteer eventuele waarschuwingen en selecteer **OK**.
+4. Eventuele waarschuwingen controleren en accepteren en selecteer **OK**.
 
-### <a name="prepare-data-box-for-return-and-then-return-it"></a>Data Box voorbereiden voor retour neren en retour neren
+### <a name="prepare-data-box-for-return-and-then-return-it"></a>Gegevensvak voorbereiden voor retour en het retourneren
 
-Volg de stappen die worden beschreven in het artikel [retour Azure data box en controleer het uploaden van gegevens naar Azure](../databox/data-box-deploy-picked-up.md) om de data box te retour neren. Controleer de status van de gegevens kopie naar uw Azure Storage-account. Nadat de status is weer gegeven als voltooid, kunt u de gegevens in uw Azure Storage-account verifiëren.
+Volg de stappen die zijn beschreven in het artikel [Retourazure-gegevensvak en controleer het uploaden van gegevens naar Azure om](../databox/data-box-deploy-picked-up.md) het gegevensvak terug te sturen. Controleer de status van de gegevenskopie naar uw Azure-opslagaccount. Nadat de status is weergegeven als voltooid, u de gegevens in uw Azure-opslagaccount verifiëren.
 
-## <a name="copy-data-from-azure-storage-to-azure-vmware-solution"></a>Gegevens kopiëren van Azure Storage naar de Azure VMware-oplossing
+## <a name="copy-data-from-azure-storage-to-azure-vmware-solution"></a>Gegevens uit Azure-opslag kopiëren naar Azure VMware-oplossing
 
-Gegevens die naar uw Data Box-apparaat zijn gekopieerd, zijn beschikbaar in uw Azure Storage-account nadat de order status van uw Data Box als voltooid wordt weer gegeven. De gegevens kunnen nu naar uw Azure VMware-oplossing worden gekopieerd. Gegevens in het opslag account moeten worden gekopieerd naar de vSAN-gegevens opslag van uw Privécloud in de Cloud met behulp van het NFS-protocol. 
+Gegevens die naar uw Data Box-apparaat worden gekopieerd, zijn beschikbaar op uw Azure-opslagaccount nadat de orderstatus van uw gegevensvak is weergegeven als voltooid. De gegevens kunnen nu worden gekopieerd naar uw Azure VMware-oplossing. Gegevens in het opslagaccount moeten worden gekopieerd naar het vSAN-gegevensarchief van uw privécloud met behulp van het NFS-protocol. 
 
-Kopieer eerst Blob Storage-gegevens naar een beheerde schijf op een virtuele Linux-machine in azure met behulp van **AzCopy**. De beheerde schijf beschikbaar maken via NFS, de NFS-share koppelen als een gegevens opslag in de Privécloud van uw AVS en de gegevens vervolgens kopiëren. Met deze methode kunt u sneller een kopie van de gegevens naar de Privécloud van uw AVS maken.
+Kopieer eerst Blob-opslaggegevens naar een beheerde schijf op een virtuele Linux-machine in Azure met **AzCopy.** Maak de beheerde schijf beschikbaar via NFS, monteer het NFS-aandeel als gegevensarchief in uw privécloud en kopieer de gegevens. Met deze methode u de gegevens sneller kopiëren naar uw private cloud.
 
-### <a name="copy-data-to-your-avs-private-cloud-using-a-linux-virtual-machine-and-managed-disks-and-then-export-as-nfs-share"></a>Gegevens kopiëren naar de Privécloud van de Cloud met behulp van een virtuele Linux-machine en beheerde schijven, en vervolgens exporteren als NFS-share
+### <a name="copy-data-to-your-private-cloud-using-a-linux-virtual-machine-and-managed-disks-and-then-export-as-nfs-share"></a>Kopieer gegevens naar uw privécloud met behulp van een Virtuele Linux-machine en beheerde schijven en exporteer vervolgens naar nfs-share
 
-1. Maak een [virtuele Linux-machine](../virtual-machines/linux/quick-create-portal.md) in Azure in dezelfde regio waarin uw opslag account is gemaakt en een Azure Virtual Network-verbinding heeft met uw AVS-privécloud.
+1. Maak een [Virtuele Linux-machine](../virtual-machines/linux/quick-create-portal.md) in Azure in dezelfde regio waar uw opslagaccount is gemaakt en een virtuele Azure-netwerkverbinding met uw privécloud heeft.
 
-2. Maak een beheerde schijf waarvan de opslag capaciteit groter is dan de hoeveelheid BLOB-gegevens en [koppel deze aan uw virtuele Linux-machine](../virtual-machines/linux/attach-disk-portal.md). Als de hoeveelheid BLOB-gegevens groter is dan de capaciteit van de grootste beschik bare schijf, moeten de gegevens in meerdere stappen worden gekopieerd of meerdere beheerde schijven gebruiken.
+2. Maak een beheerde schijf waarvan de opslagcapaciteit groter is dan de hoeveelheid blobgegevens en [bevestig deze aan uw virtuele Linux-machine.](../virtual-machines/linux/attach-disk-portal.md)  Als de hoeveelheid blobgegevens groter is dan de capaciteit van de grootste beheerde schijf die beschikbaar is, moeten de gegevens in meerdere stappen worden gekopieerd of met meerdere beheerde schijven.
 
-3. Maak verbinding met de virtuele Linux-machine en koppel de beheerde schijf.
+3. Maak verbinding met de virtuele Linux-machine en monteer de beheerde schijf.
 
-4. Installeer [AzCopy op uw virtuele Linux-machine](../storage/common/storage-use-azcopy-v10.md).
+4. Installeer [AzCopy op uw Linux virtuele machine.](../storage/common/storage-use-azcopy-v10.md)
 
-5. Down load de gegevens van uw Azure Blob-opslag naar de beheerde schijf met behulp van AzCopy. Opdracht syntaxis: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`. Vervang `<storage-account-name>` door de naam van uw Azure Storage-account en `<container-name>` met de container die de gegevens bevat die via Data Box zijn gekopieerd.
+5. Download de gegevens van uw Azure Blob-opslag op de beheerde schijf met AzCopy.  Opdrachtsyntaxis: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`.  Vervang `<storage-account-name>` door de naam `<container-name>` van uw Azure-opslagaccount en door de container die de gegevens bevat die via gegevensvak worden gekopieerd.
 
-6. Installeer de NFS-server op uw virtuele Linux-machine:
+6. Installeer de NFS-server op uw Virtuele Linux-machine:
 
-    - Op een Ubuntu/Debian-distributie: `sudo apt install nfs-kernel-server`.
-    - In een Enter prise Linux-distributie: `sudo yum install nfs-utils`.
+    - Op een Ubuntu/Debian `sudo apt install nfs-kernel-server`distributie: .
+    - Op een Enterprise `sudo yum install nfs-utils`Linux distributie: .
 
-7. Wijzig de machtiging van de map op uw beheerde schijf waar gegevens uit Azure Blob Storage zijn gekopieerd. Wijzig de machtigingen voor alle mappen die u wilt exporteren als een NFS-share.
+7. Wijzig de machtiging van de map op uw beheerde schijf waar gegevens uit Azure Blob-opslag zijn gekopieerd.  Wijzig de machtigingen voor alle mappen die u wilt exporteren als een NFS-share.
 
     ```bash
     chmod -R 755 /<folder>/<subfolder>
     chown nfsnobody:nfsnobody /<folder>/<subfolder>
     ```
 
-8. Wijs machtigingen voor IP-adressen van clients toe om toegang te krijgen tot de NFS-share door het `/etc/exports`-bestand te bewerken.
+8. Machtigingen toewijzen voor IP-adressen van client om toegang te `/etc/exports` krijgen tot het NFS-aandeel door het bestand te bewerken.
 
     ```bash
     sudo vi /etc/exports
     ```
     
-    Voer de volgende regels in het bestand in voor elke ESXi-host-IP van uw AVS-privécloud. Als u shares voor meerdere mappen maakt, moet u alle mappen toevoegen.
+    Voer de volgende regels in het bestand in voor elk IP-host-adres van uw privécloud.  Als u shares maakt voor meerdere mappen, voegt u alle mappen toe.
 
     ```bash
     /<folder>/<subfolder> <ESXiNode1IP>(rw,sync,no_root_squash,no_subtree_check)
@@ -256,78 +256,78 @@ Kopieer eerst Blob Storage-gegevens naar een beheerde schijf op een virtuele Lin
     .
     ```
 
-9. Exporteer de NFS-shares met behulp van de opdracht `sudo exportfs -a`.
+9. Exporteer de NFS-shares `sudo exportfs -a` met behulp van de opdracht.
 
-10. Start de NFS-kernel-server opnieuw met behulp van de `sudo systemctl restart nfs-kernel-server` opdracht.
+10. Start de NFS-kernelserver opnieuw op met de `sudo systemctl restart nfs-kernel-server` opdracht.
 
 
-### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-an-avs-private-cloud-vcenter-cluster-and-then-copy-data"></a>Koppel de virtuele Linux-machine met de NFS-share als een gegevens opslag op een AVS-cluster met een persoonlijke Cloud-vCenter en kopieer vervolgens gegevens
+### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-a-private-cloud-vcenter-cluster-and-then-copy-data"></a>Monteer het NFS-aandeel van de Virtuele Linux-machine als een gegevensarchief op een vCenter-cluster in de private cloud en kopieer vervolgens gegevens
 
-De NFS-share van uw virtuele Linux-machine moet worden gekoppeld als een gegevens opslag op uw AVS-cluster met de Privécloud-Cloud. Nadat deze is gekoppeld, kunnen gegevens uit de NFS-Data Store worden gekopieerd naar de vSAN gegevens opslag van de AVS.
+Het NFS-aandeel van uw Virtuele Linux-machine moet worden gemonteerd als een datastore op uw private cloud vCenter-cluster. Nadat deze is gemonteerd, kunnen gegevens worden gekopieerd van het NFS-gegevensarchief naar het cloudvSAN-gegevensarchief.
 
-1. Meld u aan bij uw AVS Privécloud-vCenter-Server.
+1. Meld u aan bij uw private cloud vCenter-server.
 
-2. Klik met de rechter muisknop op **Data Center**, selecteer **opslag**, selecteer **nieuwe gegevens opslag**en selecteer vervolgens **volgende**.
+2. Klik met de rechtermuisknop op **Datacenter,** selecteer **Opslag,** selecteer **Nieuw gegevensarchief**en selecteer **Volgende**.
 
-   ![Nieuwe gegevens opslag toevoegen](media/databox-migration-add-datastore.png)
+   ![Nieuwe datastore toevoegen](media/databox-migration-add-datastore.png)
 
-3. Selecteer in stap 1 van de wizard Data Store toevoegen het **NFS** -type.
+3. Selecteer in stap 1 van de wizard Datastore toevoegen het **NFS-type.**
 
-   ![Nieuwe gegevens opslag toevoegen-type](media/databox-migration-add-datastore-type.png)
+   ![Nieuwe datastore toevoegen - type](media/databox-migration-add-datastore-type.png)
 
-4. Selecteer in stap 2 van de wizard de optie **NFS 3** als NFS-versie en selecteer vervolgens **volgende**.
+4. Selecteer **NFS 3** in stap 2 van de wizard als NFS-versie en selecteer **Volgende**.
 
-   ![Nieuwe Data Store-NFS-versie toevoegen](media/databox-migration-add-datastore-nfs-version.png)
+   ![Nieuwe datastore toevoegen - NFS-versie](media/databox-migration-add-datastore-nfs-version.png)
 
-5. Geef in stap 3 van de wizard de naam op voor de gegevens opslag, het pad en de server. U kunt het IP-adres van uw virtuele Linux-machine gebruiken voor de-server. Het mappad bevindt zich in de `/<folder>/<subfolder>/`-indeling.
+5. Geef in stap 3 van de wizard de naam op voor het gegevensarchief, het pad en de server.  U het IP-adres van uw Linux virtuele machine voor de server gebruiken.  Het mappad is `/<folder>/<subfolder>/` in de indeling.
 
-   ![Nieuwe Data Store-NFS-configuratie toevoegen](media/databox-migration-add-datastore-nfs-configuration.png)
+   ![Nieuwe datastore toevoegen - NFS-configuratie](media/databox-migration-add-datastore-nfs-configuration.png)
 
-6. Selecteer in stap 4 van de wizard de ESXi-hosts waar u de gegevens opslag wilt koppelen en selecteer vervolgens **volgende**. Selecteer in een cluster alle hosts om te controleren of de virtuele machines zijn gemigreerd.
+6. Selecteer in stap 4 van de wizard de ESXi-hosts waar u het gegevensarchief wilt monteren en selecteer **Volgende**.  Selecteer in een cluster alle hosts om de migratie van de virtuele machines te garanderen.
 
-   ![Nieuwe gegevens opslag toevoegen-hosts selecteren](media/databox-migration-add-datastore-nfs-select-hosts.png)
+   ![Nieuwe datastore toevoegen - Hosts selecteren](media/databox-migration-add-datastore-nfs-select-hosts.png)
 
-7. Bekijk in stap 5 van de wizard de samen vatting en selecteer vervolgens **volt ooien**.
+7. Bekijk in stap 5 van de wizard het overzicht en selecteer **Voltooien**.
 
-### <a name="add-virtual-machines-and-virtual-machine-templates-from-an-nfs-datastore-to-the-inventory"></a>Virtuele machines en virtuele-machine sjablonen van een NFS-gegevens opslag toevoegen aan de inventaris
+### <a name="add-virtual-machines-and-virtual-machine-templates-from-an-nfs-datastore-to-the-inventory"></a>Virtuele machines en sjablonen voor virtuele machines toevoegen van een NFS-gegevensarchief aan de voorraad
 
-1. Ga vanuit uw AVS-webinterface voor persoonlijke Cloud vCenter naar **opslag**. Selecteer een virtuele Linux-machine met de NFS-gegevens opslag en selecteer vervolgens **bestanden**.
+1. Ga vanuit uw vCenter-webgebruikersvoor de private cloud naar **Storage**.  Selecteer een NFS-gegevensarchief van een Virtuele Linux-machine en selecteer **Vervolgens Bestanden**.
 
-    ![Bestanden selecteren in de NFS-gegevens opslag](media/databox-migration-datastore-select-files.png)
+    ![Bestanden selecteren in NFS-gegevensarchief](media/databox-migration-datastore-select-files.png)
 
-2. Selecteer een map die een virtuele machine of een virtuele-machine sjabloon bevat. Selecteer in het detail venster een. vmx-bestand voor een virtuele machine of een. vmtx-bestand voor een virtuele-machine sjabloon.
+2. Selecteer een map met een virtuele machine of een sjabloon voor virtuele machines.  Selecteer in het detailvenster een .vmx-bestand voor een virtuele machine of een .vmtx-bestand voor een sjabloon voor virtuele machines.
 
-3. Selecteer **VM registreren** om de virtuele machine te registreren op uw AVS Privécloud-vCenter.
+3. Selecteer **VM registreren** om de virtuele machine te registreren op uw private cloud vCenter.
 
     ![Virtuele machine registreren](media/databox-migration-datastore-register-vm.png)
 
-4. Selecteer het Data Center, de map en het cluster of de resource groep waar u de virtuele machine wilt registreren.
+4. Selecteer het datacenter, de map en de cluster/resourcegroep waar u de virtuele machine wilt registreren.
 
-4. Herhaal stap 3 en 4 voor alle virtuele machines en virtuele-machine sjablonen.
+4. Herhaal stap 3 en 4 voor alle virtuele machines en virtuele machinesjablonen.
 
-5. Ga naar de map met de ISO-bestanden. Selecteer de ISO-bestanden en selecteer **kopiëren naar** om de bestanden te kopiëren naar een map in uw vSAN-gegevens opslag.
+5. Ga naar de map met de ISO-bestanden.  Selecteer de ISO-bestanden en selecteer **Kopiëren om** de bestanden naar een map in uw vSAN-gegevensarchief te kopiëren.
 
-De virtuele machines en virtuele-machine sjablonen zijn nu beschikbaar op uw AVS-Privécloud. Deze virtuele machines moeten worden verplaatst van de NFS-gegevens opslag naar de vSAN-gegevens opslag voordat u ze inschakelt. U kunt de optie **opslag vMotion** gebruiken en de vSAN-gegevens opslag als doel voor de virtuele machines selecteren.
+De virtuele machines en virtuele machinesjablonen zijn nu beschikbaar op uw private cloud vCenter. Deze virtuele machines moeten worden verplaatst van het NFS-gegevensarchief naar het vSAN-gegevensarchief voordat u ze inschakelt. U de **optie opslagvMotion** gebruiken en het vSAN-gegevensarchief selecteren als doel voor de virtuele machines.
 
-De virtuele-machine sjablonen moeten worden gekloond van de NFS-gegevens opslag van uw virtuele Linux-machine naar uw vSAN-gegevens opslag.
+De virtuele machinesjablonen moeten worden gekloond van uw Linux virtuele machine NFS datastore naar uw vSAN datastore.
 
-### <a name="clean-up-your-linux-virtual-machine"></a>Uw virtuele Linux-machine opruimen
+### <a name="clean-up-your-linux-virtual-machine"></a>Ruim je Virtuele Linux-machine op
 
-Nadat alle gegevens naar de Privécloud van uw AVS zijn gekopieerd, kunt u de NFS-gegevens opslag uit de Privécloud van uw AVS verwijderen:
+Nadat alle gegevens naar uw privécloud zijn gekopieerd, u het NFS-gegevensarchief uit uw privécloud verwijderen:
 
-1. Zorg ervoor dat alle virtuele machines en sjablonen zijn verplaatst en gekloond naar uw vSAN-gegevens opslag.
+1. Zorg ervoor dat alle virtuele machines en sjablonen worden verplaatst en gekloond naar uw vSAN-gegevensarchief.
 
-2. Verwijder uit de inventarisatie alle virtuele-machine sjablonen uit de NFS-gegevens opslag.
+2. Verwijder alle sjablonen voor virtuele machines uit het NFS-gegevensarchief uit de voorraad.
 
-3. Ontkoppel de gegevens opslag van de virtuele Linux-machine uit uw AVS-Privécloud.
+3. Demonteer de Linux virtuele machine datastore uit uw private cloud vCenter.
 
-4. Verwijder de virtuele machine en de beheerde schijf uit Azure.
+4. Verwijder de virtuele machine en beheerde schijf uit Azure.
 
-5. Als u de gegevens die zijn overgedragen door Data Box in uw opslag account niet wilt behouden, verwijdert u het Azure-opslag account. 
+5. Als u de gegevens die door Data Box zijn overgedragen niet wilt bewaren in uw opslagaccount, verwijdert u het Azure-opslagaccount.  
     
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Data Box](../databox/data-box-overview.md).
-* Meer informatie over de verschillende opties voor [het migreren van werk belastingen naar de privécloud van uw AVS](migrate-workloads.md).
+* Meer informatie over [gegevensvak](../databox/data-box-overview.md).
+* Meer informatie over verschillende opties voor [het migreren van workloads naar uw privécloud.](migrate-workloads.md)

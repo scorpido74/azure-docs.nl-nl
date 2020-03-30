@@ -1,6 +1,6 @@
 ---
-title: Automatisch maken van een onderwerp in Apache Kafka-Azure HDInsight inschakelen
-description: Meer informatie over het configureren van Apache Kafka op HDInsight om automatisch onderwerpen te maken. U kunt Kafka configureren door auto. Create. topics in te stellen op True via Ambari of tijdens het maken van clusters via Power shell of Resource Manager-sjablonen.
+title: Automatische onderwerpcreatie inschakelen in Apache Kafka - Azure HDInsight
+description: Meer informatie over het configureren van Apache Kafka op HDInsight om automatisch onderwerpen te maken. U Kafka configureren door auto.create.topics.enable in te stellen om true te doen via Ambari of tijdens het maken van het cluster via PowerShell- of Resource Manager-sjablonen.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,56 +9,56 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: 7ec7d15806927306b12624962facbafddf2ce08b
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73242358"
 ---
-# <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Apache Kafka op HDInsight configureren om automatisch onderwerpen te maken
+# <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Apache Kafka configureren op HDInsight om automatisch onderwerpen te maken
 
-Standaard wordt het automatisch maken van een onderwerp niet ingeschakeld door [Apache Kafka](https://kafka.apache.org/) op HDInsight. U kunt het automatisch maken van een onderwerp voor bestaande clusters inschakelen met [Apache Ambari](https://ambari.apache.org/). U kunt ook automatisch onderwerpen maken inschakelen wanneer u een nieuw Kafka-cluster maakt met behulp van een Azure Resource Manager sjabloon.
+[Apache Kafka](https://kafka.apache.org/) op HDInsight maakt standaard geen automatische onderwerpcreatie mogelijk. U het maken van automatische onderwerpen voor bestaande clusters inschakelen met [Apache Ambari](https://ambari.apache.org/). U ook het maken van automatische onderwerpen inschakelen bij het maken van een nieuw Kafka-cluster met behulp van een Azure Resource Manager-sjabloon.
 
-## <a name="apache-ambari-web-ui"></a>Apache Ambari-webgebruikersinterface
+## <a name="apache-ambari-web-ui"></a>Apache Ambari Web UI
 
-Gebruik de volgende stappen om het automatisch maken van een onderwerp in een bestaand cluster via de Ambari-webgebruikersinterface in te scha kelen:
+Als u automatische onderwerpcreatie op een bestaand cluster wilt inschakelen via de Ambari Web UI, gebruikt u de volgende stappen:
 
-1. Selecteer uw Kafka-cluster uit het [Azure Portal](https://portal.azure.com).
+1. Selecteer in de [Azure-portal](https://portal.azure.com)uw Kafka-cluster.
 
-1. Selecteer **Ambari Home**van **cluster dashboards**.
+1. Selecteer **Ambari home**in **clusterdashboards**.
 
-    ![Afbeelding van de portal waarop het cluster dashboard is geselecteerd](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
+    ![Afbeelding van de portal met het gekozen clusterdashboard](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
 
-    Verifieer, wanneer u hierom wordt gevraagd, met behulp van de aanmeldings referenties (admin) voor het cluster. U kunt ook rechtstreeks verbinding maken met Amabri vanuit `https://CLUSTERNAME.azurehdinsight.net/` waarbij `CLUSTERNAME` de naam is van uw Kafka-cluster.
+    Wanneer u daarom wordt gevraagd, verifieert u de aanmeldingsgegevens (beheerders) voor het cluster. U ook rechtstreeks verbinding maken `https://CLUSTERNAME.azurehdinsight.net/` met `CLUSTERNAME` Amabri van waar de naam van uw Kafka-cluster is.
 
-1. Selecteer de Kafka-service in de lijst aan de linkerkant van de pagina.
+1. Selecteer de Kafka-service in de lijst links van de pagina.
 
-    ![Tabblad Apache Ambari service List](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
+    ![Tabblad Lijst met Apache Ambari-service](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
-1. Selecteer configuraties in het midden van de pagina.
+1. Selecteer Configs in het midden van de pagina.
 
-    ![Tabblad Apache Ambari service-configuratie](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
+    ![Tabblad Apache Ambari-serviceconfigs](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
-1. Voer in het veld Filter de waarde `auto.create`in.
+1. Voer in het veld Filter `auto.create`een waarde in van .
 
-    ![Veld Apache Ambari search filter](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
+    ![Zoekfilterveld Apache Ambari](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
-    Hiermee wordt de lijst met eigenschappen gefilterd en wordt de `auto.create.topics.enable` instelling weer gegeven.
+    Hiermee filtert u de `auto.create.topics.enable` lijst met eigenschappen en wordt de instelling weergegeven.
 
-1. Wijzig de waarde van `auto.create.topics.enable` in `true`en selecteer vervolgens **Opslaan**. Voeg een notitie toe en selecteer vervolgens **Opslaan** opnieuw.
+1. Wijzig de `auto.create.topics.enable` waarde `true`van in , en selecteer **Opslaan**. Voeg een notitie toe en selecteer opnieuw **opslaan.**
 
-    ![Afbeelding van het bestand auto. Create. topics. enable entry](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
+    ![Afbeelding van de auto.create.topics.enable entry](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
-1. Selecteer de Kafka-service, selecteer __opnieuw opstarten__en selecteer vervolgens __alle betrokkenen opnieuw opstarten__. Selecteer __Bevestig opnieuw opstarten__als dit wordt gevraagd.
+1. Selecteer de Kafka-service, selecteer __Opnieuw starten__en selecteer __Alle betrokkenen opnieuw starten__. Wanneer u daarom wordt gevraagd, selecteert __u Alles opnieuw starten bevestigen__.
 
-    ![Apache Ambari alle betrokken software opnieuw opstarten](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
+    ![Apache Ambari herstart alle getroffenen](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
 > [!NOTE]  
-> U kunt Ambari-waarden ook instellen via de Ambari-REST API. Dit is over het algemeen moeilijker, omdat u meerdere REST-aanroepen moet maken om de huidige configuratie op te halen, deze te wijzigen, enzovoort. Zie [HDInsight-clusters beheren met het Apache Ambari rest API](../hdinsight-hadoop-manage-ambari-rest-api.md) -document voor meer informatie.
+> U ook Ambari-waarden instellen via de Ambari REST API. Dit is over het algemeen moeilijker, omdat je meerdere REST-oproepen moet voeren om de huidige configuratie op te halen, te wijzigen, enz. Zie de clusters [MANAGE HDInsight met behulp van het Apache Ambari REST API-document](../hdinsight-hadoop-manage-ambari-rest-api.md) voor meer informatie.
 
 ## <a name="resource-manager-templates"></a>Resource Manager-sjablonen
 
-Wanneer u een Kafka-cluster maakt met behulp van een Azure Resource Manager-sjabloon, kunt u `auto.create.topics.enable` rechtstreeks instellen door dit aan een `kafka-broker`toe te voegen. In het volgende JSON-code fragment ziet u hoe u deze waarde instelt op `true`:
+Wanneer u een Kafka-cluster maakt met een `auto.create.topics.enable` Azure Resource Manager-sjabloon, u deze rechtstreeks instellen door het toe te voegen in een `kafka-broker`. In het volgende JSON-fragment wordt `true`uitgelegd hoe u deze waarde instelt op:
 
 ```json
 "clusterDefinition": {
@@ -77,7 +77,7 @@ Wanneer u een Kafka-cluster maakt met behulp van een Azure Resource Manager-sjab
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit document hebt u geleerd hoe u het automatisch maken van een onderwerp voor Apache Kafka op HDInsight inschakelt. Raadpleeg de volgende koppelingen voor meer informatie over het werken met Kafka:
+In dit document hebt u geleerd hoe u automatische onderwerpcreatie voor Apache Kafka op HDInsight inschakelen. Zie de volgende links voor meer informatie over het werken met Kafka:
 
 * [Apache Kafka-logboeken analyseren](apache-kafka-log-analytics-operations-management.md)
 * [Gegevens repliceren tussen Apache Kafka-clusters](apache-kafka-mirroring.md)

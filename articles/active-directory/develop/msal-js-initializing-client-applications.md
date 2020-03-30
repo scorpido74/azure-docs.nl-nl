@@ -1,7 +1,7 @@
 ---
-title: MSAL. js-client-apps initialiseren | Azure
+title: MSAL.JS-client-apps initialiseren | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het initialiseren van client toepassingen met behulp van de micro soft-verificatie bibliotheek voor Java script (MSAL. js).
+description: Meer informatie over het initialiseren van clienttoepassingen met behulp van de Microsoft-verificatiebibliotheek voor JavaScript (MSAL.js).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,28 +14,28 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: a0a2c5fc971c3f1f3283d95c5617bdf1e88a6a58
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77084038"
 ---
-# <a name="initialize-client-applications-using-msaljs"></a>Client toepassingen initialiseren met MSAL. js
-In dit artikel wordt beschreven hoe u de micro soft-verificatie bibliotheek voor Java script (MSAL. js) initialiseert met een exemplaar van een toepassing van een gebruikers agent. De toepassing van de gebruikers agent is een vorm van een open bare client toepassing waarin de client code wordt uitgevoerd in een gebruikers agent, zoals een webbrowser. Deze clients slaan geen geheimen op omdat de browser context geopend is. Lees het [overzicht](msal-client-applications.md)voor meer informatie over de client toepassings typen en configuratie opties voor toepassingen.
+# <a name="initialize-client-applications-using-msaljs"></a>Clienttoepassingen initialiseren met MSAL.js
+In dit artikel wordt beschreven dat microsoft-verificatiebibliotheek voor JavaScript (MSAL.js) wordt geïnitialiseren met een instantie van een gebruikersagenttoepassing. De user-agent applicatie is een vorm van openbare client applicatie waarin de client code wordt uitgevoerd in een user-agent, zoals een webbrowser. Deze clients slaan geen geheimen op, omdat de browsercontext openlijk toegankelijk is. Lees het [overzicht](msal-client-applications.md)voor meer informatie over de typen clienttoepassingen en toepassingsconfiguratie.
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u een toepassing initialiseert, moet u [deze eerst registreren bij de Azure Portal](scenario-spa-app-registration.md) zodat uw app kan worden geïntegreerd met het micro soft Identity-platform. Na de registratie hebt u mogelijk de volgende informatie nodig (die kan worden gevonden in de Azure Portal):
+Voordat u een toepassing initialiseert, moet u deze eerst [registreren bij de Azure-portal,](scenario-spa-app-registration.md) zodat uw app kan worden geïntegreerd met het Microsoft-identiteitsplatform. Na registratie hebt u mogelijk de volgende informatie nodig (die te vinden is in de Azure-portal):
 
-- De client-ID (een teken reeks die een GUID voor uw toepassing vertegenwoordigt)
-- De URL van de identiteits provider (de naam van het exemplaar) en de aanmeldings doel groep voor uw toepassing. Deze twee para meters worden gezamenlijk bekend als de-instantie.
-- De Tenant-ID als u alleen een line-of-Business-toepassing schrijft voor uw organisatie (ook wel een toepassing met één Tenant genoemd).
-- Voor web-apps moet u ook de redirectUri instellen waar de ID-provider naar uw toepassing wordt teruggestuurd met de beveiligings tokens.
+- De client-id (een tekenreeks die een GUID voor uw toepassing vertegenwoordigt)
+- De URL van de identiteitsprovider (de naam van de instantie) en de aanmeldingsdoelgroep voor uw toepassing. Deze twee parameters staan gezamenlijk bekend als de autoriteit.
+- De tenant-id als u een line-of-business-toepassing schrijft die uitsluitend voor uw organisatie is ingediend (ook wel single-tenant-toepassing genoemd).
+- Voor web-apps moet u ook de redirectUri instellen waar de identiteitsprovider terugkeert naar uw toepassing met de beveiligingstokens.
 
-## <a name="initializing-applications"></a>Toepassingen initialiseren
+## <a name="initializing-applications"></a>Aanvragen initialiseren
 
-U kunt MSAL. js als volgt gebruiken in een gewone Java script/type script-toepassing. Initialiseer de MSAL-verificatie context door `UserAgentApplication` te instantiëren met een configuratie object. De mini maal vereiste configuratie voor het initialiseren van MSAL. js is de clientID van uw toepassing, die u vanuit de portal voor toepassings registratie zou moeten ontvangen.
+U MSAL.js als volgt gebruiken in een eenvoudige JavaScript/Typescript-toepassing. De context van MSAL-verificatie initialiseren door te instantiën `UserAgentApplication` met een configuratieobject. De minimaal vereiste config om MSAL.js te initialiseren is de clientID van uw applicatie die u moet krijgen van de applicatie registratie portal.
 
-Voor verificatie methoden met een omleidings stroom (`loginRedirect` en `acquireTokenRedirect`), moet u expliciet een call back voor geslaagde of fout registratie via `handleRedirectCallback()`-methode registreren. Dit is nodig omdat omleidings stromen geen belofte retour neren als de methoden met een pop-upervaring.
+Voor verificatiemethoden met omleidingsstromen (en)`loginRedirect` `acquireTokenRedirect`moet u een callback expliciet `handleRedirectCallback()` registreren voor succes of fout via de methode. Dit is nodig omdat omleidingsstromen geen beloftes retourneren zoals de methoden met een pop-upervaring dat doen.
 
 ```javascript
 // Configuration object constructed
@@ -56,11 +56,11 @@ function authCallback(error, response) {
 myMSALObj.handleRedirectCallback(authCallback);
 ```
 
-MSAL. js is ontworpen voor een enkele instantie en configuratie van de `UserAgentApplication` om een enkele verificatie context aan te duiden. Meerdere exemplaren worden niet aanbevolen omdat deze conflicterende cache vermeldingen en gedrag veroorzaken in de browser.
+MSAL.js is ontworpen om één exemplaar `UserAgentApplication` en configuratie van de context te hebben om één verificatiecontext weer te geven. Meerdere exemplaren worden niet aanbevolen omdat ze conflicterende cachevermeldingen en -gedrag in de browser veroorzaken.
 
 ## <a name="configuration-options"></a>Configuratie-opties
 
-MSAL. js bevat een configuratie object dat hieronder wordt weer gegeven, met een groepering van Configureer bare opties die beschikbaar zijn voor het maken van een instantie van `UserAgentApplication`.
+MSAL.js heeft hieronder een configuratieobject dat een groepering van configureerbare `UserAgentApplication`opties biedt die beschikbaar zijn voor het maken van een instantie van .
 
 ```javascript
 type storage = "localStorage" | "sessionStorage";
@@ -105,40 +105,40 @@ export type Configuration = {
 };
 ```
 
-Hieronder ziet u de totale set Configureer bare opties die momenteel worden ondersteund in het configuratie object:
+Hieronder vindt u de totale set configureerbare opties die momenteel worden ondersteund in het config-object:
 
-- **clientID**: vereist. De clientID van uw toepassing, moet u dit doen via de portal voor toepassings registratie.
+- **clientID**: Vereist. De clientID van uw aanvraag, moet u dit krijgen van de applicatie registratie portal.
 
-- **instantie**: optioneel. Een URL die een Directory aanduidt waar MSAL tokens kan aanvragen. De standaard waarde is: `https://login.microsoftonline.com/common`.
-    * In azure AD heeft het de vorm https://&lt;instantie&gt;/&lt;publiek&gt;, waarbij &lt;instantie&gt; het domein van de identiteits provider is (bijvoorbeeld `https://login.microsoftonline.com`) en &lt;doel groep&gt; een id is die de doel groep voor het aanmelden vertegenwoordigt. Dit kunnen de volgende waarden zijn:
-        * `https://login.microsoftonline.com/<tenant>`-Tenant is een domein dat is gekoppeld aan de Tenant, zoals contoso.onmicrosoft.com, of de GUID die de eigenschap `TenantID` vertegenwoordigt van de map die alleen wordt gebruikt om gebruikers van een specifieke organisatie aan te melden.
-        * `https://login.microsoftonline.com/common`: wordt gebruikt voor het aanmelden van gebruikers met werk-en school accounts of een persoonlijk micro soft-account.
-        * `https://login.microsoftonline.com/organizations/`: wordt gebruikt voor het aanmelden van gebruikers met werk-en school accounts.
-        * `https://login.microsoftonline.com/consumers/`: wordt gebruikt voor het aanmelden van gebruikers met alleen persoonlijke Microsoft-account (Live).
-    * In Azure AD B2C heeft het de vorm `https://<instance>/tfp/<tenant>/<policyName>/`, waarbij instance het Azure AD B2C domein is, d.w.z. {uw-Tenant naam}. b2clogin. com. de Tenant is de naam van de Azure AD B2C Tenant, d.w.z. {uw-Tenant naam}. onmicrosoft. com, beleidsregel is de naam van het B2C-beleid dat moet worden toegepast.
+- **autoriteit**: Facultatief. Een URL die een map aangeeft waar MSAL tokens van kan aanvragen. Standaardwaarde is: `https://login.microsoftonline.com/common`.
+    * In Azure AD is dit&lt;van&gt;/&lt;&gt;het &lt;formulier&gt; https:// instantiedoelgroep , waarbij `https://login.microsoftonline.com`instantie &lt;&gt; het domein van de identiteitsprovider is (bijvoorbeeld ) en de doelgroep een id is die de aanmeldingsdoelgroep vertegenwoordigt. Dit kunnen de volgende waarden zijn:
+        * `https://login.microsoftonline.com/<tenant>`- tenant is een domein dat is gekoppeld aan de `TenantID` tenant, zoals contoso.onmicrosoft.com of de GUID die de eigenschap van de map vertegenwoordigt die alleen wordt gebruikt om gebruikers van een specifieke organisatie aan te melden.
+        * `https://login.microsoftonline.com/common`- Wordt gebruikt om gebruikers aan te melden met werk- en schoolaccounts of een persoonlijk Microsoft-account.
+        * `https://login.microsoftonline.com/organizations/`- Wordt gebruikt om gebruikers aan te melden met werk- en schoolaccounts.
+        * `https://login.microsoftonline.com/consumers/`- Wordt gebruikt om gebruikers aan te melden met alleen een persoonlijk Microsoft-account (live).
+    * In Azure AD B2C is `https://<instance>/tfp/<tenant>/<policyName>/`het de naam van de Azure AD B2C-tenant , waarbij instantie het Azure AD B2C-domein is, d.w.z. {your-tenant-name}.b2clogin.com, tenant is de naam van de Azure AD B2C-tenant, d.w.z. {your-tenant-name}.onmicrosoft.com, policyName is de naam van het B2C-beleid dat moet worden toegepast.
 
 
-- **validateAuthority**: optioneel.  Valideer de verlener van tokens. De standaardwaarde is `true`. Voor B2C-toepassingen, omdat de waarde van de autoriteit bekend is en per beleid kan verschillen, werkt de verificatie van de certificerings instantie niet en moet deze worden ingesteld op `false`.
+- **validateAuthority**: Optioneel.  Valideer de uitgever van tokens. De standaardwaarde is `true`. Voor B2C-toepassingen, aangezien de waarde van de autoriteit bekend is en per beleid `false`kan verschillen, werkt de validatie van de autoriteit niet en moet deze worden ingesteld op .
 
-- **redirectUri**: optioneel.  De omleidings-URI van uw app, waar verificatie reacties kunnen worden verzonden en ontvangen door uw app. Het moet exact overeenkomen met een van de omleidings-Uri's die u in de portal hebt geregistreerd. De standaard instelling is `window.location.href`.
+- **redirectUri**: Optioneel.  De omleiding uri van uw app, waar authenticatie reacties kunnen worden verzonden en ontvangen door uw app. Het moet precies overeenkomen met een van de omleiding URI's die u geregistreerd in de portal. Standaard instellingen `window.location.href`voor .
 
-- **postLogoutRedirectUri**: optioneel.  De gebruiker wordt omgeleid naar `postLogoutRedirectUri` na het afmelden. De standaard waarde is `redirectUri`.
+- **postLogoutRedirectUri:** Optioneel.  Hiermee wordt de `postLogoutRedirectUri` gebruiker omgeleid naar na afmelding. De standaardinstelling is `redirectUri`.
 
-- **navigateToLoginRequestUrl**: optioneel. De mogelijkheid om de standaard navigatie voor het starten van de pagina na de aanmelding uit te scha kelen. De standaard waarde is True. Dit wordt alleen gebruikt voor omleidings stromen.
+- **navigateToLoginRequestUrl**: Optioneel. Mogelijkheid om de standaardnavigatie uit te schakelen naar de startpagina na het inloggen. De standaardwaarde is true. Dit wordt alleen gebruikt voor omleidingsstromen.
 
-- **cacheLocation**: optioneel.  Hiermee stelt u de browser opslag in op `localStorage` of `sessionStorage`. De standaardwaarde is `sessionStorage`.
+- **cacheLocatie:** optioneel.  Hiermee stelt u `localStorage` `sessionStorage`browseropslag in op een van beide of . De standaardwaarde is `sessionStorage`.
 
-- **storeAuthStateInCookie**: optioneel.  Deze markering is geïntroduceerd in MSAL. js v 0.2.2 als een oplossing voor de [problemen](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#1-issues-due-to-security-zones) met de verificatie-lus in micro soft Internet Explorer en micro soft Edge. Schakel de vlag `storeAuthStateInCookie` in op waar om te profiteren van deze oplossing. Wanneer dit is ingeschakeld, slaat MSAL. js de status van de verificatie aanvraag op die vereist is voor de validatie van de verificatie stromen in de browser cookies. Deze markering is standaard ingesteld op `false`.
+- **storeAuthStateInCookie**: Optioneel.  Deze vlag is geïntroduceerd in MSAL.js v0.2.2 als oplossing voor de problemen met de [verificatielus](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#1-issues-due-to-security-zones) op Microsoft Internet Explorer en Microsoft Edge. Schakel de `storeAuthStateInCookie` vlag in om te profiteren van deze oplossing. Wanneer dit is ingeschakeld, slaat MSAL.js de auth-aanvraagstatus op die nodig is voor validatie van de auth-stromen in de browsercookies. Standaard is deze vlag `false`ingesteld op .
 
-- **logger**: optioneel.  Een logger-object met een call back-exemplaar dat kan worden geleverd door de ontwikkelaar om logboeken op een aangepaste manier te gebruiken en publiceren. Zie [logboek registratie met msal. js](msal-logging.md)voor meer informatie over het door geven van het traceer object.
+- **logger**: Optioneel.  Een Logger-object met een callback-instantie die door de ontwikkelaar kan worden geleverd om logboeken op een aangepaste manier te gebruiken en te publiceren. Zie [logboekregistratie met msal.js](msal-logging.md)voor meer informatie over het doorgeven van loggerobject.
 
-- **loadFrameTimeout**: optioneel.  Het aantal milliseconden van inactiviteit voordat een reactie van het vernieuwen van tokens van Azure AD moet worden beschouwd als een time-out. De standaard waarde is zes seconden.
+- **loadFrameTimeout:** optioneel.  Het aantal milliseconden van inactiviteit voordat een tokenvernieuwingsreactie van Azure AD wordt beschouwd, moet als een time-out worden beschouwd. Standaard is 6 seconden.
 
-- **tokenRenewalOffsetSeconds**: optioneel. Het aantal milliseconden waarmee het vernieuwings venster wordt ingesteld voor het vernieuwen van het token vóór de verval datum. De standaard waarde is 300 milliseconden.
+- **tokenRenewalOffsetSeconds:** optioneel. Het aantal milliseconden dat het venster van de verschuiving instelt dat nodig is om het token te vernieuwen vóór het verstrijken. Standaard is 300 milliseconden.
 
-- **navigateFrameWait**: optioneel. Het aantal milliseconden waarmee de wacht tijd wordt ingesteld voordat verborgen iframes naar het doel worden genavigeerd. De standaard waarde is 500 milliseconden.
+- **navigateFrameWait:** optioneel. Het aantal milliseconden dat de wachttijd instelt voordat verborgen iframes naar hun bestemming navigeren. Standaard is 500 milliseconden.
 
-Deze zijn alleen van toepassing op door gegeven in de MSAL-hoek wrapper-bibliotheek:
-- **unprotectedResources**: optioneel.  Matrix van Uri's die niet-beveiligde resources zijn. MSAL koppelt geen token aan uitgaande aanvragen die deze URI hebben. De standaard instelling is `null`.
+Deze zijn alleen van toepassing om te worden doorgegeven van de MSAL Angular wrapper bibliotheek:
+- **unprotectedResources**: Optioneel.  Array van URI's die onbeschermde bronnen zijn. MSAL zal geen token koppelen aan uitgaande aanvragen die deze URI hebben. Standaard instellingen `null`voor .
 
-- **protectedResourceMap**: optioneel.  Dit is een toewijzing van resources aan scopes die worden gebruikt door MSAL voor het automatisch koppelen van toegangs tokens in Web API-aanroepen. Er wordt één toegangs token opgehaald voor de resource. U kunt bijvoorbeeld als volgt een specifiek bronpad toewijzen: {"https://graph.microsoft.com/v1.0/me", ["gebruiker. Read"]}, of de app-URL van de resource als: {"https://graph.microsoft.com/", ["gebruiker. Read", "mail. Send"]}. Dit is vereist voor CORS-aanroepen. De standaard instelling is `null`.
+- **protectedResourceMap:** optioneel.  Dit is het toewijzen van resources aan scopes die door MSAL worden gebruikt voor het automatisch koppelen van toegangstokens in web-API-aanroepen. Voor de resource wordt één toegangstoken verkregen. U dus een specifiek bronpadhttps://graph.microsoft.com/v1.0/meals volgt toewijzen: {, [user.read]},https://graph.microsoft.com/of de app-URL van de bron als: {, [user.read, mail.send]}. Dit is vereist voor CORS-gesprekken. Standaard instellingen `null`voor .

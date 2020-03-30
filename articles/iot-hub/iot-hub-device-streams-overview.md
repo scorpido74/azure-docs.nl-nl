@@ -1,6 +1,6 @@
 ---
-title: Streams van Azure IoT Hub-apparaten | Microsoft Docs
-description: Overzicht van Azure IoT Hub-streams, waarmee u eenvoudigere TCP-tunnels kunt beveiligen tegen verschillende scenario's voor communicatie tussen Cloud en apparaat.
+title: Azure IoT Hub-apparaatstreams | Microsoft Documenten
+description: Overzicht van Azure IoT Hub-apparaatstreams, die veilige bidirectionele TCP-tunnels mogelijk maken voor verschillende communicatiescenario's van cloud tot apparaat.
 author: robinsh
 services: iot-hub
 ms.service: iot-hub
@@ -8,87 +8,87 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
 ms.openlocfilehash: ff738e56226f7cbb720a754573a9d8607e0e3247
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73890458"
 ---
-# <a name="iot-hub-device-streams-preview"></a>Streams van IoT Hub-apparaten (preview-versie)
+# <a name="iot-hub-device-streams-preview"></a>IoT Hub-apparaatstreams (voorbeeld)
 
-Azure IoT Hub *device streams* vergemakkelijken het maken van veilige bidirectionele TCP-tunnels voor verschillende scenario's met betrekking tot Cloud-naar-apparaat-communicatie. Een apparaatgegevens stroom wordt uitgevoerd door een IoT Hub *streaming-eind punt* dat fungeert als een proxy tussen uw apparaat en service-eind punten. Deze instelling, die in het onderstaande diagram wordt weer gegeven, is vooral nuttig wanneer apparaten zich achter een netwerk firewall bevinden of zich in een particulier netwerk bevinden. Als zodanig kunnen IoT Hub-apparaten van het apparaat klanten helpen om IoT-apparaten te bereiken op een firewall-vriendelijke manier en zonder dat ze algemeen de firewall poorten van het binnenkomende of uitgaande netwerk hoeven te openen.
+Azure IoT *Hub-apparaatstreams* vergemakkelijken het maken van veilige bidirectionele TCP-tunnels voor verschillende communicatiescenario's van cloud tot apparaat. Een apparaatstream wordt bemiddeld door een IoT Hub *streaming endpoint* dat fungeert als een proxy tussen uw apparaat en serviceeindpunten. Deze instelling, afgebeeld in het onderstaande diagram, is vooral handig wanneer apparaten zich achter een netwerkfirewall bevinden of zich in een privénetwerk bevinden. Als zodanig helpen IoT Hub-apparaatstromen de behoefte van klanten om IoT-apparaten op een firewallvriendelijke manier te bereiken en zonder dat u in het algemeen inkomende of uitgaande netwerkfirewallpoorten hoeft te openen.
 
-![Het overzicht van IoT Hub apparaten](./media/iot-hub-device-streams-overview/iot-hub-device-streams-overview.png )
+!["IoT Hub-apparaat streamt overzicht"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-overview.png )
 
-Apparaten blijven beveiligd met IoT Hub-streams en zijn alleen beschikbaar voor het openen van uitgaande TCP-verbindingen naar het streaming-eind punt van de IoT-hub via poort 443. Zodra een stroom tot stand is gebracht, hebben de toepassingen aan de service zijde en aan het apparaat elke programmatische toegang tot een WebSocket-client object voor het verzenden en ontvangen van onbewerkte bytes aan elkaar. De betrouw baarheid en volg orde van de door deze tunnel verstrekte garanties is op pari met TCP.
+Met behulp van IoT Hub-apparaatstreams blijven apparaten veilig en hoeven ze alleen uitgaande TCP-verbindingen te openen voor het streaming-eindpunt van iot-hub via poort 443. Zodra een stream is ingesteld, hebben de service-side en device-side applicaties elk programmatische toegang tot een WebSocket client object om onbewerkte bytes naar elkaar te verzenden en te ontvangen. De betrouwbaarheid en bestelgaranties van deze tunnel zijn gelijk aan TCP.
 
 ## <a name="benefits"></a>Voordelen
 
-IoT Hub apparaten streamen bieden de volgende voor delen:
+IoT Hub-apparaatstreams bieden de volgende voordelen:
 
-* **Firewall vriendelijke beveiligde connectiviteit:** IoT-apparaten kunnen worden bereikt vanuit service-eind punten zonder dat er een binnenkomende firewall poort op het apparaat of in netwerk verbindingen wordt geopend (er is alleen een uitgaande verbinding met IoT Hub nodig via poort 443).
+* **Firewall-vriendelijke beveiligde connectiviteit:** IoT-apparaten kunnen worden bereikt vanaf serviceeindpunten zonder de inkomende firewallpoort op het apparaat of de netwerkperimeters te openen (alleen uitgaande connectiviteit met IoT Hub is nodig via poort 443).
 
-* **Verificatie:** Zowel apparaat-als service zijden van de tunnel moeten worden geverifieerd met IoT Hub met behulp van de bijbehorende referenties.
+* **Verificatie:** Zowel de apparaat- als de servicezijden van de tunnel moeten verifiëren met IoT Hub met behulp van hun bijbehorende referenties.
 
-* **Versleuteling:** IoT Hub apparaat-streams gebruiken standaard TLS-verbindingen. Dit zorgt ervoor dat het verkeer altijd versleuteld is, ongeacht of de toepassing versleuteling gebruikt of niet.
+* **Versleuteling:** Standaard maken IoT Hub-apparaatstreams gebruik van TLS-verbindingen. Dit zorgt ervoor dat het verkeer altijd versleuteld is, ongeacht of de toepassing versleuteling gebruikt of niet.
 
-* **Eenvoud van connectiviteit:** In veel gevallen elimineert het gebruik van de streams geen complexe installatie van virtuele particuliere netwerken om connectiviteit met IoT-apparaten mogelijk te maken.
+* **Eenvoud van connectiviteit:** In veel gevallen elimineert het gebruik van apparaatstromen de noodzaak van complexe installatie van Virtual Private Networks om connectiviteit met IoT-apparaten mogelijk te maken.
 
-* **Compatibiliteit met TCP/IP-stack:** IoT Hub streams kunnen worden toegepast op het verkeer van de TCP/IP-toepassing. Dit betekent dat een breed scala aan bedrijfs eigen en op standaarden gebaseerde protocollen gebruik kan maken van deze functie.
+* **Compatibiliteit met TCP/IP-stack:** IoT Hub-apparaatstreams kunnen tcp/IP-toepassingsverkeer bieden. Dit betekent dat een breed scala aan gepatenteerde en op standaarden gebaseerde protocollen gebruik kunnen maken van deze functie.
 
-* **Gebruiks gemak in particuliere netwerk installaties:** Service kan communiceren met een apparaat door te verwijzen naar de apparaat-ID in plaats van het IP-adres van het apparaat. Dit is handig in situaties waarin een apparaat zich in een particulier netwerk bevindt en een privé-IP-adres heeft, of het IP-adres dynamisch wordt toegewezen en onbekend is bij de service zijde.
+* **Gebruiksgemak in privénetwerkinstellingen:** Service kan communiceren met een apparaat door te verwijzen naar de apparaat-ID, in plaats van het IP-adres van het apparaat. Dit is handig in situaties waarin een apparaat zich in een privénetwerk bevindt en een privé-IP-adres heeft, of het IP-adres dynamisch is toegewezen en onbekend is aan de servicezijde.
 
-## <a name="device-stream-workflows"></a>Werk stromen van Device stream
+## <a name="device-stream-workflows"></a>Werkstromen voor apparaatstromen
 
-Er wordt een apparaat stroom geïnitieerd wanneer de service aanvragen om verbinding te maken met een apparaat door de apparaat-ID op te geven. Deze werk stroom is met name van toepassing op een client/server-communicatie model, waaronder SSH en RDP, waarbij een gebruiker voornemens is om op afstand verbinding te maken met de SSH-of RDP-server die op het apparaat wordt uitgevoerd met behulp van een SSH-of RDP-client programma.
+Er wordt een apparaatstream gestart wanneer de service aanvraagt verbinding te maken met een apparaat door de apparaat-id aan te bieden. Deze workflow past met name in een client/server communicatiemodel, inclusief SSH en RDP, waarbij een gebruiker op afstand verbinding wil maken met de SSH- of RDP-server die op het apparaat wordt uitgevoerd met behulp van een SSH- of RDP-clientprogramma.
 
-Het proces voor het maken van de apparaatgegevens omvat een onderhandeling tussen het apparaat, de hoofd-en streaming-eind punten van de IoT hub. Met het hoofd eindpunt van IoT hub wordt het maken van een apparaat stroom door het streaming-eind punt verwerkt, waarbij het verkeer tussen de service en het apparaat wordt afgehandeld.
+Het proces voor het maken van apparaatstromen omvat een onderhandeling tussen het apparaat, de service, de hoofd- en streaming-eindpunten van de IoT-hub. Terwijl het hoofdeindpunt van de IoT-hub het maken van een apparaatstream orkestreert, verwerkt het streaming-eindpunt het verkeer dat tussen de service en het apparaat stroomt.
 
-### <a name="device-stream-creation-flow"></a>Stroom voor het maken van de apparaat stroom
+### <a name="device-stream-creation-flow"></a>Stroom voor het maken van apparaatstromen
 
-Het programmatisch maken van een apparaat stroom met behulp van de SDK omvat de volgende stappen, die ook in de afbeelding hieronder worden weer gegeven:
+Het programmatisch maken van een apparaatstream met behulp van de SDK omvat de volgende stappen, die ook in de onderstaande afbeelding worden weergegeven:
 
-!["Apparaat stream handshake-proces"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-handshake.png)
+!["Apparaatstream handshakeproces"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-handshake.png)
 
-1. De apparaat-app registreert vooraf een terugroeping om op de hoogte te worden gesteld wanneer een nieuwe apparaat stroom naar het apparaat wordt geïnitieerd. Deze stap vindt normaal gesp roken plaats wanneer het apparaat wordt opgestart en verbinding maakt met IoT Hub.
+1. De apparaattoepassing registreert vooraf een callback om te worden gemeld wanneer een nieuwe apparaatstream naar het apparaat wordt gestart. Deze stap vindt meestal plaats wanneer het apparaat wordt opgestart en verbinding maakt met IoT Hub.
 
-2. Het programma aan de service zijde initieert een apparaat stroom wanneer dit nodig is door de apparaat-ID (_niet_ het IP-adres) op te geven.
+2. Het service-side programma initieert een apparaatstream wanneer dat nodig is door de apparaat-ID _(niet_ het IP-adres) te verstrekken.
 
-3. Met IoT hub wordt het apparaat aan het programma geïnformeerd door het aanroepen van de call back die is geregistreerd in stap 1. Het apparaat accepteert of weigert de aanvraag voor het initiëren van de stroom. Deze logica kan specifiek zijn voor uw toepassings scenario. Als de stroom aanvraag door het apparaat wordt afgewezen, IoT Hub de service dienovereenkomstig informeren. anders volgt u de onderstaande stappen.
+3. IoT-hub waarschuwt het apparaat-side programma door een beroep te doen op de callback geregistreerd in stap 1. Het apparaat kan het initiatieverzoek voor de stream accepteren of weigeren. Deze logica kan specifiek zijn voor uw toepassingsscenario. Als het streamverzoek door het apparaat wordt afgewezen, informeert IoT Hub de service dienovereenkomstig; anders volgen de onderstaande stappen.
 
-4. Het apparaat maakt een beveiligde uitgaande TCP-verbinding met het streaming-eind punt via poort 443 en voert een upgrade uit voor de verbinding met een WebSocket. De URL van het streaming-eind punt en de referenties die moeten worden gebruikt voor verificatie, worden beide aan het apparaat door IoT Hub als onderdeel van de aanvraag die u in stap 3 hebt verzonden.
+4. Het apparaat maakt een veilige uitgaande TCP-verbinding met het streaming-eindpunt via poort 443 en verbetert de verbinding met een WebSocket. De URL van het streaming-eindpunt en de referenties die moeten worden gebruikt om te verifiëren, worden beide door IoT Hub aan het apparaat verstrekt als onderdeel van het verzoek dat in stap 3 wordt verzonden.
 
-5. De service wordt op de hoogte gesteld van het resultaat van het apparaat dat de stroom accepteert en gaat verder met het maken van een eigen WebSocket-client naar het streaming-eind punt. Op dezelfde manier ontvangt de URL van het streaming-eind punt en de verificatie gegevens van IoT Hub.
+5. De service wordt op de hoogte gesteld van het resultaat van het apparaat dat de stream accepteert en gaat over tot het maken van een eigen WebSocket-client naar het streaming-eindpunt. Op dezelfde manier ontvangt het de URL van het streaming eindpunt en verificatiegegevens van IoT Hub.
 
-In het onderstaande handshake-proces:
+In het handdrukproces hierboven:
 
-* Het handshake-proces moet binnen 60 seconden worden voltooid (stap 2 tot en met 5), anders mislukt de handshake met een time-out en wordt de service hiervan op de hoogte gesteld.
+* Het handshakeproces moet binnen 60 seconden zijn voltooid (stap 2 tot en met 5), anders mislukt de handdruk met een time-out en wordt de service dienovereenkomstig gemeld.
 
-* Nadat de stroom voor het maken van de stroom hierboven is voltooid, fungeert het streaming-eind punt als een proxy en wordt het verkeer tussen de service en het apparaat via de respectievelijke websockets overgedragen.
+* Nadat de stroom creatie van de stream hierboven is voltooid, fungeert het streaming-eindpunt als een proxy en wordt het verkeer tussen de service en het apparaat overhun respectieve WebSockets overgebracht.
 
-* Apparaat en service hebben beide uitgaande verbindingen nodig voor het hoofd eindpunt van IoT Hub en het streaming-eind punt via poort 443. De URL van deze eind punten is beschikbaar op het tabblad *overzicht* op de portal van de IOT hub.
+* Apparaat en service hebben beide uitgaande connectiviteit nodig met het hoofdeindpunt van IoT Hub en het streaming-eindpunt via poort 443. De URL van deze eindpunten is beschikbaar op het tabblad *Overzicht* op de portal van de IoT Hub.
 
-* De betrouw baarheid en best ellende garanties van een vastgelegde stroom zijn op pari met TCP.
+* De betrouwbaarheid en bestelgaranties van een gevestigde stroom zijn gelijk aan TCP.
 
-* Alle verbindingen met IoT Hub-en streaming-eind punt gebruiken TLS en worden versleuteld.
+* Alle verbindingen met IoT Hub en streaming endpoint gebruiken TLS en zijn versleuteld.
 
-### <a name="termination-flow"></a>Beëindigings stroom
+### <a name="termination-flow"></a>Beëindigingsstroom
 
-Een vastgelegde stroom wordt beëindigd wanneer een van de TCP-verbindingen met de gateway wordt verbroken (door de service of het apparaat). Dit kan vrijwillig worden gedaan door de WebSocket te sluiten op het apparaat of in de service of in het geval van een time-out of proces fout van een netwerk verbinding. Na beëindiging van de verbinding van een apparaat of service met het streaming-eind punt, wordt de andere TCP-verbinding ook beëindigd (geforceerd) en de service en het apparaat moeten de stream zo nodig opnieuw maken.
+Een gevestigde stroom wordt beëindigd wanneer een van de TCP-verbindingen met de gateway wordt losgekoppeld (door de service of het apparaat). Dit kan vrijwillig gebeuren door de WebSocket te sluiten op het apparaat of serviceprogramma's, of onwillekeurig in het geval van een time-out van netwerkconnectiviteit of procesuitval. Na beëindiging van de verbinding van een apparaat of service met het streaming-eindpunt, wordt de andere TCP-verbinding ook (met kracht) beëindigd en zijn de service en het apparaat verantwoordelijk om de stream opnieuw te maken, indien nodig.
 
-## <a name="connectivity-requirements"></a>Connectiviteits vereisten
+## <a name="connectivity-requirements"></a>Connectiviteitsvereisten
 
-Zowel het apparaat als de service zijde van een apparaatgegevens moeten in staat zijn om met TLS ingeschakelde verbindingen tot stand te brengen met IoT Hub en het streaming-eind punt. Hiervoor is een uitgaande verbinding vereist via poort 443 voor deze eind punten. De hostnaam die is gekoppeld aan deze eind punten vindt u op het tabblad *overzicht* van IOT hub, zoals wordt weer gegeven in de afbeelding hieronder:
+Zowel het apparaat als de servicezijden van een apparaatstream moeten in staat zijn om TLS-verbindingen tot stand te brengen met IoT Hub en het streaming-eindpunt. Dit vereist uitgaande connectiviteit over poort 443 naar deze eindpunten. De hostnaam die aan deze eindpunten is gekoppeld, is te vinden op het tabblad *Overzicht* van IoT Hub, zoals weergegeven in de onderstaande afbeelding:
 
-!["Stream-eind punten van apparaat"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
+!["Eindpunten voor apparaatstroom"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
-De gegevens van de eind punten kunnen ook worden opgehaald met behulp van Azure CLI onder de sectie eigenschappen van de hub, met name `property.hostname` en `property.deviceStreams` sleutels.
+Als alternatief kunnen de eindpuntgegevens worden opgehaald met Azure CLI onder de `property.hostname` `property.deviceStreams` sectie eigenschappen van de hub, met name en sleutels.
 
 ```azurecli-interactive
 az iot hub devicestream show --name <YourIoTHubName>
 ```
 
-De uitvoer is een JSON-object van alle eind punten die het apparaat en de service van uw hub nodig hebben om verbinding te kunnen maken met een apparaat stroom.
+De uitvoer is een JSON-object van alle eindpunten waarmee mogelijk verbinding moet worden gemaakt met het apparaat en de service van uw hub om een apparaatstream tot stand te brengen.
 
 ```json
 {
@@ -99,118 +99,118 @@ De uitvoer is een JSON-object van alle eind punten die het apparaat en de servic
 ```
 
 > [!NOTE]
-> Zorg ervoor dat u Azure CLI-versie 2.0.57 of hoger hebt geïnstalleerd. U kunt de meest recente versie downloaden van de pagina [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
+> Zorg ervoor dat u Azure CLI-versie 2.0.57 of nieuwer hebt geïnstalleerd. U de nieuwste versie downloaden van de pagina [Azure CLI installeren.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 >
 
-## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>Uitgaande connectiviteit met de streaming-eind punten van het apparaat toestaan
+## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>Uitgaande connectiviteit toestaan voor de streamingeindpunten van het apparaat
 
-Zoals vermeld aan het begin van dit artikel, maakt het apparaat een uitgaande verbinding naar IoT Hub streaming-eind punt tijdens het initiëren van het apparaat. De firewalls op het apparaat of het netwerk moeten uitgaande verbindingen met de streaming-gateway via poort 443 toestaan (Houd er rekening mee dat communicatie plaatsvindt via een WebSocket-verbinding die is versleuteld met behulp van TLS).
+Zoals aan het begin van dit artikel is vermeld, maakt uw apparaat een uitgaande verbinding met het streaming-eindpunt van IoT Hub tijdens het initiatieproces van apparaatstreams. Uw firewalls op het apparaat of het netwerk moeten uitgaande connectiviteit met de streaminggateway via poort 443 mogelijk maken (houd er rekening mee dat communicatie plaatsvindt via een WebSocket-verbinding die is versleuteld met TLS).
 
-De hostnaam van het eind punt voor het streamen van apparaten bevindt zich op het tabblad Overzicht van de Azure IoT Hub Portal. !["Stream-eind punten van apparaten"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
+De hostnaam van het eindpunt voor het streamen van apparaten is ![te vinden op de Azure IoT Hub-portal onder het tabblad Overzicht.](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
-U kunt deze informatie ook vinden met behulp van Azure CLI:
+U deze informatie ook vinden met Azure CLI:
 
 ```azurecli-interactive
 az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Zorg ervoor dat u Azure CLI-versie 2.0.57 of hoger hebt geïnstalleerd. U kunt de meest recente versie downloaden van de pagina [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
+> Zorg ervoor dat u Azure CLI-versie 2.0.57 of nieuwer hebt geïnstalleerd. U de nieuwste versie downloaden van de pagina [Azure CLI installeren.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 >
 
-## <a name="troubleshoot-via-device-streams-activity-logs"></a>Problemen oplossen via activiteiten logboeken van Device streams
+## <a name="troubleshoot-via-device-streams-activity-logs"></a>Problemen oplossen via activiteitslogboeken voor apparaatstromen
 
-U kunt Azure Monitor logboeken instellen om het activiteiten logboek van de streams van apparaten in uw IoT Hub te verzamelen. Dit kan zeer nuttig zijn in scenario's voor het oplossen van problemen.
+U Azure Monitor-logboeken instellen om het activiteitenlogboek van apparaatstromen in uw IoT-hub te verzamelen. Dit kan zeer nuttig zijn bij het oplossen van problemen scenario's.
 
-Volg de onderstaande stappen om Azure Monitor logboeken te configureren voor de activiteiten van de apparaten stroom van uw IoT Hub:
+Volg de onderstaande stappen om Azure Monitor-logboeken te configureren voor de apparaatstreamactiviteiten van uw IoT Hub:
 
-1. Ga naar het tabblad *Diagnostische instellingen* in uw IOT hub en klik op *Diagnostische gegevens inschakelen* .
+1. Navigeer naar het tabblad *Diagnostische instellingen* in uw IoT-hub en klik op De koppeling Diagnostische *gegevens inschakelen.*
 
-   ![' Diagnostische logboeken inschakelen '](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings-pane.png)
+   !["Diagnostische logboeken inschakelen"](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings-pane.png)
 
-2. Geef een naam op voor de diagnostische instellingen en kies *verzenden naar log Analytics* optie. U wordt begeleid bij het kiezen van een bestaande Log Analytics werkruimte resource of het maken van een nieuwe. Controleer ook de *DeviceStreams* in de lijst.
+2. Geef een naam op voor uw diagnostische instellingen en kies De optie *Verzenden naar Logboekanalyse.* U wordt begeleid om een bestaande Log Analytics-werkruimtebron te kiezen of een nieuwe resource te maken. Controleer bovendien de *DeviceStreams* in de lijst.
 
-    !["Device streams logboeken inschakelen"](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
+    !['Logboeken van apparaatstreams inschakelen'](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
 
-3. U hebt nu toegang tot uw stream-logboeken voor apparaten op het tabblad *Logboeken* in de portal van uw IOT hub. Activiteiten logboeken voor Device stream worden weer gegeven in de tabel `AzureDiagnostics` en hebben `Category=DeviceStreams`.
+3. U nu uw logboeken voor apparaatstreams openen onder het tabblad *Logboeken* in de portal van uw IoT Hub. Er worden activiteitslogboeken `AzureDiagnostics` voor `Category=DeviceStreams`apparaatstromen weergegeven in de tabel en hebben .
 
-   Zoals hieronder wordt weer gegeven, is de identiteit van het doel apparaat en het resultaat van de bewerking ook beschikbaar in de logboeken.
+   Zoals hieronder weergegeven, is de identiteit van het doelapparaat en het resultaat van de bewerking ook beschikbaar in de logboeken.
 
-   !["Stream-logboeken van apparaat openen"](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
+   !["Logboeken van apparaatstream openen"](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 
-Tijdens de open bare preview zijn IoT Hub-streams beschikbaar in de regio's VS-centraal, centraal-EUAP, Europa-noord en Zuidoost-Azië. Zorg ervoor dat u uw hub in een van deze regio's maakt.
+Tijdens de openbare preview zijn IoT Hub-apparaatstreams beschikbaar in de regio's Centraal-VS, Centraal-VS EUAP, Noord-Europa en Zuidoost-Azië. Zorg ervoor dat u uw hub maakt in een van deze regio's.
 
-## <a name="sdk-availability"></a>SDK-Beschik baarheid
+## <a name="sdk-availability"></a>Beschikbaarheid van SDK
 
-Twee zijden van elke stroom (op het apparaat en de service zijde) gebruik de IoT Hub SDK om de tunnel te maken. Tijdens de open bare Preview kunnen klanten kiezen uit de volgende SDK-talen:
+Twee zijden van elke stream (aan de apparaat- en servicezijde) gebruiken de IoT Hub SDK om de tunnel vast te stellen. Tijdens de openbare preview kunnen klanten kiezen uit de volgende SDK-talen:
 
-* De C- C# en SDK-apparaten ondersteunen de streams van het apparaat.
+* Het ondersteuningsapparaat van de C en C# SDK streamt aan de apparaatzijde.
 
-* De NodeJS en C# SDK ondersteunen apparaat stromen aan de kant van de service.
+* Het NodeJS- en C# SDK-ondersteuningsapparaat streamt aan de servicezijde.
 
-## <a name="iot-hub-device-stream-samples"></a>Voor beelden van IoT Hub Device stream
+## <a name="iot-hub-device-stream-samples"></a>Voorbeeld van IoT Hub-apparaatstream
 
-Er zijn twee [Quick](/azure/iot-hub) start-voor beelden beschikbaar op de pagina IOT hub. Hierin wordt het gebruik van apparaten door toepassingen gedemonstreerd.
+Er zijn twee [quickstart-voorbeelden](/azure/iot-hub) beschikbaar op de IoT Hub-pagina. Deze tonen het gebruik van apparaatstromen door toepassingen aan.
 
-* Het *echo* voorbeeld demonstreert het programmatisch gebruik van streams (door de SDK API direct aan te roepen).
+* Het *echo-voorbeeld* toont programmatisch gebruik van apparaatstromen aan (door de SDK API's rechtstreeks aan te roepen).
 
-* In het voor beeld van een *lokale proxy* wordt gedemonstreerd dat de tunneling van het netwerk verkeer van de client/server (zoals SSH, RDP of web) via een apparaat wordt gestreamd.
+* Het *lokale proxyvoorbeeld* toont de tunneling van kant-en-klare client/servertoepassingsverkeer (zoals SSH, RDP of web) via apparaatstromen.
 
-Deze voor beelden worden hieronder nader besproken.
+Deze monsters worden hieronder nader behandeld.
 
-### <a name="echo-sample"></a>ECHO voorbeeld
+### <a name="echo-sample"></a>Echo-voorbeeld
 
-Het voor beeld van de echo demonstreert het programmatisch gebruik van apparaten voor het verzenden en ontvangen van bytes tussen service-en apparaat-apps. Houd er rekening mee dat u service-en apparaat-Program ma's in verschillende talen kunt gebruiken. U kunt bijvoorbeeld het programma C-apparaat gebruiken met het C# service programma.
+Het echo-voorbeeld toont programmatisch gebruik van apparaatstromen om bytes tussen service- en apparaattoepassingen te verzenden en te ontvangen. Houd er rekening mee dat u service- en apparaatprogramma's in verschillende talen gebruiken. U bijvoorbeeld het C-apparaatprogramma gebruiken met het C#-serviceprogramma.
 
-Dit zijn de voor beelden van echo's:
+Hier zijn de echo monsters:
 
-* [C#service-en service programma](quickstart-device-streams-echo-csharp.md)
+* [C# service- en serviceprogramma](quickstart-device-streams-echo-csharp.md)
 
-* [Node. js-service programma](quickstart-device-streams-echo-nodejs.md)
+* [Node.js serviceprogramma](quickstart-device-streams-echo-nodejs.md)
 
-* [C Device-programma](quickstart-device-streams-echo-c.md)
+* [C-apparaatprogramma](quickstart-device-streams-echo-c.md)
 
-### <a name="local-proxy-sample-for-ssh-or-rdp"></a>Voor beeld van een lokale proxy (voor SSH of RDP)
+### <a name="local-proxy-sample-for-ssh-or-rdp"></a>Lokale proxysample (voor SSH of RDP)
 
-Het voor beeld van een lokale proxy demonstreert een manier om tunneling in te scha kelen van het verkeer van een bestaande toepassing waarbij communicatie tussen een client en een server programma is betrokken. Deze instelling werkt voor client/server-protocollen zoals SSH en RDP, waarbij de service zijde fungeert als een client (waarop SSH-of RDP-client Programma's worden uitgevoerd), en het apparaat fungeert als de server (waarop SSH-daemon of RDP-server Programma's worden uitgevoerd).
+Het lokale proxyvoorbeeld toont een manier om tunneling van het verkeer van een bestaande toepassing mogelijk te maken, waarbij communicatie tussen een client en een serverprogramma wordt betrokken. Deze set-up werkt voor client/server protocollen zoals SSH en RDP, waar de service-side fungeert als een client (met SSH of RDP client programma's), en het apparaat-kant fungeert als de server (met SSH daemon of RDP server programma's).
 
-In deze sectie wordt het gebruik van de streams beschreven om de gebruiker in staat te stellen SSH naar een apparaat via de streams van een apparaat te maken (de aanvraag voor RDP of andere client/server-toepassing is vergelijkbaar met de bijbehorende poort van het Protocol).
+In deze sectie wordt het gebruik van apparaatstromen beschreven om de gebruiker in staat te stellen SSH naar een apparaat via apparaatstreams te maken (de aanvraag voor RDP of andere client/server-toepassingen is vergelijkbaar met behulp van de bijbehorende poort van het protocol).
 
-De installatie maakt gebruik van twee *lokale proxy* Programma's die worden weer gegeven in de onderstaande afbeelding, namelijk *apparaat-lokale proxy* en *service-Local proxy*. De lokale proxy Programma's zijn verantwoordelijk voor het uitvoeren van de handshake voor het [initiëren van de apparaatgegevens](#device-stream-creation-flow) met IOT hub en met behulp van reguliere client/server-sockets met de SSH-client en SSH-daemon.
+De setup maakt gebruik van twee lokale proxy-programma's weergegeven in de figuur hieronder, namelijk *apparaat-lokale proxy* en *local proxy* *service-lokale proxy*. De lokale proxyprogramma's zijn verantwoordelijk voor het uitvoeren van de [apparaatstream initiatiehandshake](#device-stream-creation-flow) met IoT Hub en interactie met SSH-client en SSH-daemon met behulp van reguliere client/serversockets.
 
-!["Device stream-proxy-installatie voor SSH/RDP"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
+!["Device stream proxy setup for SSH/RDP"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
 
-1. De gebruiker voert service-Local proxy uit om een apparaat stroom naar het apparaat te initiëren.
+1. De gebruiker voert service-lokale proxy uit om een apparaatstream naar het apparaat te starten.
 
-2. De apparaat-Local proxy accepteert de aanvraag voor het initiëren van streams en de tunnel wordt ingesteld voor het streaming-eind punt van IoT Hub (zoals hierboven beschreven).
+2. De apparaat-lokale proxy accepteert het verzoek tot het starten van de stream en de tunnel is ingesteld op het streaming-eindpunt van IoT Hub (zoals hierboven besproken).
 
-3. De apparaat-lokale proxy maakt verbinding met het SSH-daemon-eind punt dat luistert op poort 22 op het apparaat.
+3. De apparaat-lokale proxy maakt verbinding met het SSH daemon endpoint luisteren op poort 22 op het apparaat.
 
-4. De service-Local proxy luistert op een aangewezen poort, in afwachting van nieuwe SSH-verbindingen van de gebruiker (poort 2222 gebruikt in het voor beeld, maar dit kan worden geconfigureerd voor elke andere beschik bare poort). De gebruiker wijst de SSH-client naar de service-lokale Proxy poort op localhost.
+4. De service-lokale proxy luistert op een aangewezen poort in afwachting van nieuwe SSH-verbindingen van de gebruiker (poort 2222 gebruikt in het voorbeeld, maar dit kan worden geconfigureerd naar elke andere beschikbare poort). De gebruiker wijst de SSH-client naar de service-local proxy-poort op localhost.
 
 ### <a name="notes"></a>Opmerkingen
 
-* De bovenstaande stappen volt ooien een end-to-end-tunnel tussen de SSH-client (rechts) naar de SSH-daemon (aan de linkerkant). Onderdeel van deze end-to-end-connectiviteit is het verzenden van verkeer via een apparaat stroom naar IoT Hub.
+* De bovenstaande stappen voltooien een end-to-end tunnel tussen de SSH client (rechts) naar de SSH daemon (links). Onderdeel van deze end-to-end connectiviteit bestaat uit het verzenden van verkeer via een apparaatstream naar IoT Hub.
 
-* De pijlen in de afbeelding geven de richting aan waarin verbindingen tot stand worden gebracht tussen eind punten. Houd er rekening mee dat er geen binnenkomende verbindingen naar het apparaat worden verzonden (dit wordt vaak geblokkeerd door een firewall).
+* De pijlen in de afbeelding geven de richting aan waarin verbindingen tussen eindpunten worden gemaakt. Houd er in het bijzonder rekening mee dat er geen inkomende verbindingen naar het apparaat gaan (dit wordt vaak geblokkeerd door een firewall).
 
-* De keuze van het gebruik van poort 2222 op de service-Local proxy is een wille keurige keuze. De proxy kan worden geconfigureerd voor het gebruik van elke andere beschik bare poort.
+* De keuze van het gebruik van poort 2222 op de service-lokale proxy is een willekeurige keuze. De proxy kan worden geconfigureerd om elke andere beschikbare poort te gebruiken.
 
-* De keuze van poort 22 is in dit geval protocol-afhankelijk en specifiek voor SSH. Voor het geval van RDP moet poort 3389 worden gebruikt. Dit kan in de opgegeven voorbeeld Programma's worden geconfigureerd.
+* De keuze van poort 22 is protocolafhankelijk en specifiek voor SSH in dit geval. Voor RDP moet de poort 3389 worden gebruikt. Dit kan worden geconfigureerd in de meegeleverde voorbeeldprogramma's.
 
-Gebruik de onderstaande koppelingen voor instructies over het uitvoeren van de lokale proxy Programma's in de taal van uw keuze. Net als bij het voor beeld van de [echo](#echo-sample), kunt u de Program ma's voor het apparaat en de lokale proxy in verschillende talen uitvoeren, aangezien ze volledig compatibel zijn.
+Gebruik de onderstaande links voor instructies over het uitvoeren van de lokale proxyprogramma's in uw taal naar keuze. Net als bij het [echomonster](#echo-sample)u apparaat- en service-lokale proxyprogramma's in verschillende talen uitvoeren omdat ze volledig interoperabel zijn.
 
-* [C#service-en service programma](quickstart-device-streams-proxy-csharp.md)
+* [C# service- en serviceprogramma](quickstart-device-streams-proxy-csharp.md)
 
-* [Node. js-service programma](quickstart-device-streams-proxy-nodejs.md)
+* [Node.js serviceprogramma](quickstart-device-streams-proxy-nodejs.md)
 
-* [C Device-programma](quickstart-device-streams-proxy-c.md)
+* [C-apparaatprogramma](quickstart-device-streams-proxy-c.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de onderstaande koppelingen voor meer informatie over het streamen van apparaten.
+Gebruik de onderstaande koppelingen voor meer informatie over apparaatstreams.
 
 > [!div class="nextstepaction"]
-> [Apparaatversleuteling op IoT show (Channel 9)](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fchannel9.msdn.com%2FShows%2FInternet-of-Things-Show%2FAzure-IoT-Hub-Device-Streams&data=02%7C01%7Crezas%40microsoft.com%7Cc3486254a89a43edea7c08d67a88bcea%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636831125031268909&sdata=S6u9qiehBN4tmgII637uJeVubUll0IZ4p2ddtG5pDBc%3D&reserved=0)
+> [Apparaatstreams op IoT-show (Kanaal 9)](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fchannel9.msdn.com%2FShows%2FInternet-of-Things-Show%2FAzure-IoT-Hub-Device-Streams&data=02%7C01%7Crezas%40microsoft.com%7Cc3486254a89a43edea7c08d67a88bcea%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636831125031268909&sdata=S6u9qiehBN4tmgII637uJeVubUll0IZ4p2ddtG5pDBc%3D&reserved=0)

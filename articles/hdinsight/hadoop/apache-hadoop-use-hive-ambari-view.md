@@ -1,6 +1,6 @@
 ---
-title: Apache Ambari-Hive-weer gave gebruiken met Apache Hadoop in azure HDInsight
-description: Meer informatie over het gebruik van de Hive-weer gave in uw webbrowser om Hive-query's in te dienen. De Hive-weer gave maakt deel uit van de Ambari-webinterface die is meegeleverd met het HDInsight-cluster op basis van Linux.
+title: Apache Ambari Hive View gebruiken met Apache Hadoop in Azure HDInsight
+description: Meer informatie over het gebruik van de Hive View vanuit uw webbrowser om Hive-query's in te dienen. De Hive View maakt deel uit van de Ambari Web UI die is voorzien van uw HDInsight-cluster op Linux.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,38 +9,38 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73097106"
 ---
-# <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Apache Ambari-Hive-weer gave gebruiken met Apache Hadoop in HDInsight
+# <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Apache Ambari Hive-weergave gebruiken met Apache Hadoop in HDInsight
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Meer informatie over het uitvoeren van Hive-query's met behulp van de Apache Ambari-Hive-weer gave. Met de Hive-weer gave kunt u Hive-query's ontwerpen, optimaliseren en uitvoeren vanuit uw webbrowser.
+Meer informatie over het uitvoeren van Hive-query's met apache Ambari Hive View. Met de Hive View u Hive-query's schrijven, optimaliseren en uitvoeren vanuit uw webbrowser.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Hadoop-cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
+* Een Hadoop cluster op HDInsight. Zie [Aan de slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
 * Een webbrowser
 
 ## <a name="run-a-hive-query"></a>Een Hive-query uitvoeren
 
-1. Selecteer uw cluster in de [Azure Portal](https://portal.azure.com/).  Zie een [lijst en clusters weer geven](../hdinsight-administer-use-portal-linux.md#showClusters) voor instructies. Het cluster wordt geopend in een nieuwe portal-Blade.
+1. Selecteer uw cluster in de [Azure-portal.](https://portal.azure.com/)  Zie [Clusters weergeven en weergeven](../hdinsight-administer-use-portal-linux.md#showClusters) voor instructies. Het cluster wordt geopend in een nieuw portaalblad.
 
-1. Selecteer **Ambari-weer gaven**in **cluster dashboards**. Wanneer u wordt gevraagd om te verifiëren, gebruikt u de account naam en het wacht woord voor de cluster aanmelding (standaard `admin`) die u hebt opgegeven tijdens het maken van het cluster. U kunt ook naar `https://CLUSTERNAME.azurehdinsight.net/#/main/views` in uw browser navigeren, waarbij `CLUSTERNAME` de naam van uw cluster is.
+1. Selecteer **ambari-weergaven**in **clusterdashboards**. Wanneer u wordt gevraagd om te `admin`verifiëren, gebruikt u de accountnaam en het wachtwoord van het cluster dat u hebt opgegeven toen u het cluster hebt gemaakt. U ook `https://CLUSTERNAME.azurehdinsight.net/#/main/views` naar in `CLUSTERNAME` uw browser navigeren waar de naam van uw cluster is.
 
-1. Selecteer in de lijst met weer gaven de __Hive-weer gave__.
+1. Selecteer __Hive View__in de lijst met weergaven .
 
-    ![Apache Ambari Select Apache Hive View](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
+    ![Apache Ambari selecteert Apache Hive-weergave](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
-    De pagina Hive-weer gave is vergelijkbaar met de volgende afbeelding:
+    De hive-weergavepagina is vergelijkbaar met de volgende afbeelding:
 
-    ![Afbeelding van het query werkblad voor de Hive-weer gave](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
+    ![Afbeelding van het querywerkblad voor de hive-weergave](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
 
-1. Plak op het tabblad __query__ de volgende HiveQL-instructies in het werk blad:
+1. Plak op het tabblad __Query__ de volgende HiveQL-instructies in het werkblad:
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -61,113 +61,113 @@ Meer informatie over het uitvoeren van Hive-query's met behulp van de Apache Amb
 
     Met deze instructies worden de volgende acties uitgevoerd:
 
-   * `DROP TABLE`: verwijdert de tabel en het gegevens bestand, voor het geval de tabel al bestaat.
+   * `DROP TABLE`: Hiermee verwijdert u de tabel en het gegevensbestand, voor het geval de tabel al bestaat.
 
-   * `CREATE EXTERNAL TABLE`: maakt een nieuwe tabel ' External ' in Hive.
-     Externe tabellen slaan alleen de tabel definitie in Hive op. De gegevens blijven op de oorspronkelijke locatie.
+   * `CREATE EXTERNAL TABLE`: Hiermee maakt u een nieuwe "externe" tabel in Hive.
+     Externe tabellen slaan alleen de tabeldefinitie op in Hive. De gegevens worden op de oorspronkelijke locatie achtergelaten.
 
-   * `ROW FORMAT`: laat zien hoe de gegevens worden opgemaakt. In dit geval worden de velden in elk logboek gescheiden door een spatie.
+   * `ROW FORMAT`: Geeft aan hoe de gegevens worden opgemaakt. In dit geval worden de velden in elk logboek gescheiden door een spatie.
 
-   * `STORED AS TEXTFILE LOCATION`: geeft aan waar de gegevens zijn opgeslagen en worden opgeslagen als tekst.
+   * `STORED AS TEXTFILE LOCATION`: Geeft aan waar de gegevens worden opgeslagen en dat ze als tekst worden opgeslagen.
 
-   * `SELECT`: selecteert een telling van alle rijen waarin de kolom T4 de waarde [ERROR] bevat.
+   * `SELECT`: Hiermee selecteert u een telling van alle rijen waar kolom t4 de waarde bevat [FOUT].
 
    > [!IMPORTANT]  
-   > De __database__ selectie __standaard__behouden. De voor beelden in dit document gebruiken de standaard database die is opgenomen in HDInsight.
+   > Laat de __databaseselectie__ __standaard staan__. De voorbeelden in dit document maken gebruik van de standaarddatabase die is opgenomen met HDInsight.
 
-1. Als u de query wilt starten, selecteert u onder het werk blad **uitvoeren** . De knop wordt oranje en de tekst verandert in **stoppen**.
+1. Als u de query wilt starten, selecteert u **Uitvoeren** onder het werkblad. De knop wordt oranje en de tekst verandert in **Stoppen**.
 
-1. Nadat de query is voltooid, worden de resultaten van de bewerking weer gegeven op het tabblad **resultaten** . De volgende tekst is het resultaat van de query:
+1. Nadat de query is voltooid, worden op het tabblad **Resultaten** de resultaten van de bewerking weergegeven. De volgende tekst is het resultaat van de query:
 
         loglevel       count
         [ERROR]        3
 
-    U kunt het tabblad **logboek** gebruiken om de logboek gegevens weer te geven die de taak heeft gemaakt.
+    U het tabblad **LOG** gebruiken om de logboekregistratiegegevens weer te geven die de taak heeft gemaakt.
 
    > [!TIP]  
-   > Down load of sla de resultaten op in het dialoog venster **acties** , onder het tabblad **resultaten** .
+   > Resultaten downloaden of opslaan uit het vervolgkeuzedialoogvenster **Acties** onder het tabblad **Resultaten.**
 
 ### <a name="visual-explain"></a>Visuele uitleg
 
-Als u een visualisatie van het query plan wilt weer geven, selecteert u het tabblad **visuele uitleg** onder het werk blad.
+Als u een visualisatie van het queryplan wilt weergeven, selecteert u het tabblad **Visuele uitleg** onder het werkblad.
 
-De **visuele uitleg** weergave van de query kan nuttig zijn bij het inzicht in de stroom van complexe query's.
+De **weergave Visuele uitleg** van de query kan nuttig zijn bij het begrijpen van de stroom van complexe query's.
 
-### <a name="tez-ui"></a>TEZ-gebruikers interface
+### <a name="tez-ui"></a>Tez-gebruikersinterface
 
-Als u de TEZ-gebruikers interface voor de query wilt weer geven, selecteert u het tabblad **TEZ gebruikers interface** onder het werk blad.
+Als u de Gebruikersinterface van Tez voor de query wilt weergeven, selecteert u het tabblad **UI tez** onder het werkblad.
 
 > [!IMPORTANT]  
-> TEZ wordt niet gebruikt om alle query's op te lossen. U kunt veel query's oplossen zonder TEZ te gebruiken.
+> Tez wordt niet gebruikt om alle query's op te lossen. U veel query's oplossen zonder Tez te gebruiken.
 
 ## <a name="view-job-history"></a>Taakgeschiedenis weergeven
 
-Op het tabblad __taken__ wordt een overzicht van Hive-query's weer gegeven.
+Op het tabblad __Vacatures__ wordt een geschiedenis van Hive-query's weergegeven.
 
-![Geschiedenis van tabblad taken Apache Hive weer geven](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+![Tabbladgeschiedenis van Apache Hive-weergave](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
 
-## <a name="database-tables"></a>Database tabellen
+## <a name="database-tables"></a>Databasetabellen
 
-U kunt het tabblad __tabellen__ gebruiken om te werken met tabellen in een Hive-data base.
+U het tabblad __Tabellen__ gebruiken om te werken met tabellen in een Hive-database.
 
-![Afbeelding van het tabblad Apache Hive tabellen](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+![Afbeelding van het tabblad Apache Hive-tabellen](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
 
 ## <a name="saved-queries"></a>Opgeslagen query's
 
-Op het tabblad **query** kunt u desgewenst query's opslaan. Nadat u een query hebt opgeslagen, kunt u deze opnieuw gebruiken op het tabblad __opgeslagen query's__ .
+Op het tabblad **Query** u optioneel query's opslaan. Nadat u een query hebt opgeslagen, u deze opnieuw gebruiken via het tabblad __Opgeslagen query's.__
 
-![Tabblad opgeslagen query's Apache Hive weer geven](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Tabblad Opgeslagen query's in Apache Hive-weergave](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
-> Opgeslagen query's worden opgeslagen in de standaard cluster opslag. U kunt de opgeslagen query's vinden in het pad `/user/<username>/hive/scripts`. Deze worden opgeslagen als onbewerkte tekst `.hql` bestanden.
+> Opgeslagen query's worden opgeslagen in de standaardclusteropslag. U de opgeslagen query's onder het pad `/user/<username>/hive/scripts`vinden. Deze worden opgeslagen als `.hql` plain-text bestanden.
 >
-> Als u het cluster verwijdert, maar de opslag gebruikt, kunt u een hulp programma zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) of Data Lake Storage Verkenner (vanuit de [Azure-Portal](https://portal.azure.com)) gebruiken om de query's op te halen.
+> Als u het cluster verwijdert, maar de opslag behoudt, u een hulpprogramma zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) of Data Lake Storage Explorer (uit de Azure [Portal)](https://portal.azure.com)gebruiken om de query's op te halen.
 
 ## <a name="user-defined-functions"></a>Door de gebruiker gedefinieerde functies
 
-U kunt het onderdeel uitbreiden via door de gebruiker gedefinieerde functies (UDF). Gebruik een UDF om functionaliteit of logica te implementeren die niet eenvoudig kan worden gemodelleerd in HiveQL.
+U Hive uitbreiden via door de gebruiker gedefinieerde functies (UDF). Gebruik een UDF om functionaliteit of logica te implementeren die niet gemakkelijk is gemodelleerd in HiveQL.
 
-Declareer en sla een set Udf's op met behulp van het tabblad **UDF** boven aan de Hive-weer gave. Deze Udf's kunnen worden gebruikt in combi natie met de **query-editor**.
+Declareer en sla een set UDF's op met het tabblad **UDF** boven aan de Hive-weergave. Deze UDF's kunnen worden gebruikt met de **queryeditor**.
 
-![Weer gave van het tabblad Udf's Apache Hive weer geven](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+![Tabblad UDF's van Apache Hive-weergave](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-Nadat u een UDF hebt toegevoegd aan de Hive-weer gave, wordt de knop **Udf's invoegen** weer gegeven onder aan de **query-editor**. Als u dit item selecteert, wordt een vervolg keuzelijst weer gegeven met de Udf's die in de Hive-weer gave zijn gedefinieerd. Als u een UDF selecteert, worden HiveQL-instructies aan uw query toegevoegd om de UDF in te scha kelen.
+Nadat u een UDF aan de Hive-weergave hebt toegevoegd, wordt onder aan de queryeditor een **udfs-knop invoegen** **weergegeven.** Als u dit item selecteert, wordt een vervolgkeuzelijst weergegeven met de UDF's die zijn gedefinieerd in de hive-weergave. Als u een UDF selecteert, worden HiveQL-instructies toegevoegd aan uw query om de UDF in te schakelen.
 
 Als u bijvoorbeeld een UDF hebt gedefinieerd met de volgende eigenschappen:
 
-* Resource naam: myudfs
+* Resourcenaam: myudfs
 
-* Bronpad:/myudfs.jar
+* Resourcepad: /myudfs.jar
 
-* UDF-naam: myawesomeudf
+* UDF naam: myawesomeudf
 
-* Naam UDF-klasse: com. myudfs. meester
+* UDF klasse naam: com.myudfs.Awesome
 
-Met behulp van de knop **Udfs invoegen** wordt een vermelding weer gegeven met de naam **myudfs**, met een andere vervolg keuzelijst voor elke UDF die voor die bron is gedefinieerd. In dit geval is het **myawesomeudf**. Als u deze vermelding selecteert, voegt u het volgende toe aan het begin van de query:
+Met de **knop Udfs invoegen** wordt een vermelding met de naam **myudfs**weergegeven, met een andere vervolgkeuzelijst voor elke UDF die voor die resource is gedefinieerd. In dit geval is het **myawesomeudf.** Als u dit item selecteert, wordt het volgende toegevoegd aan het begin van de query:
 
 ```hiveql
 add jar /myudfs.jar;
 create temporary function myawesomeudf as 'com.myudfs.Awesome';
 ```
 
-U kunt de UDF vervolgens gebruiken in uw query. Bijvoorbeeld `SELECT myawesomeudf(name) FROM people;`.
+U de UDF vervolgens gebruiken in uw query. Bijvoorbeeld `SELECT myawesomeudf(name) FROM people;`.
 
-Raadpleeg de volgende artikelen voor meer informatie over het gebruik van Udf's met hive in HDInsight:
+Zie de volgende artikelen voor meer informatie over het gebruik van UDF's met Hive op HDInsight:
 
-* [Python gebruiken met Apache Hive en Apache varken in HDInsight](python-udf-hdinsight.md)
-* [Een aangepast Apache Hive UDF toevoegen aan HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Python gebruiken met Apache Hive en Apache Pig in HDInsight](python-udf-hdinsight.md)
+* [Een aangepaste Apache Hive UDF toevoegen aan HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
 ## <a name="hive-settings"></a>Hive-instellingen
 
-U kunt verschillende Hive-instellingen wijzigen, zoals het wijzigen van de engine voor het uitvoeren van een component van TEZ (de standaard instelling) in MapReduce.
+U verschillende Hive-instellingen wijzigen, zoals het wijzigen van de uitvoeringsengine voor Hive van Tez (de standaardinstelling) in MapReduce.
 
-## <a id="nextsteps"></a>Volgende stappen
+## <a name="next-steps"></a><a id="nextsteps"></a>Volgende stappen
 
-Voor algemene informatie over de Hive op HDInsight:
+Voor algemene informatie over Hive over HDInsight:
 
-* [Apache Hive gebruiken met Apache Hadoop op HDInsight](hdinsight-use-hive.md)
+* [Gebruik Apache Hive met Apache Hadoop op HDInsight](hdinsight-use-hive.md)
 
-Voor informatie over andere manieren om met Hadoop in HDInsight te werken:
+Voor informatie over andere manieren waarop u met Hadoop werken aan HDInsight:
 
-* [Apache Pig gebruiken met Apache Hadoop op HDInsight](hdinsight-use-pig.md)
-* [MapReduce gebruiken met Apache Hadoop op HDInsight](hdinsight-use-mapreduce.md)
+* [Gebruik Apache Pig met Apache Hadoop op HDInsight](hdinsight-use-pig.md)
+* [MapGebruikenReduce met Apache Hadoop op HDInsight](hdinsight-use-mapreduce.md)

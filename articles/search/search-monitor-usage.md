@@ -1,7 +1,7 @@
 ---
-title: Bewerkingen en activiteiten bewaken
+title: Activiteiten en activiteiten controleren
 titleSuffix: Azure Cognitive Search
-description: Schakel logboek registratie in, Bekijk metrische gegevens over de query activiteit, het resource gebruik en andere systeem data van een Azure Cognitive Search-service.
+description: Schakel logboekregistratie in, ontvang gegevens over queryactiviteit, resourcegebruik en andere systeemgegevens van een Azure Cognitive Search-service.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,92 +9,92 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.openlocfilehash: 353e00f902a7314e5e5b7c8ee03e8b925a510b26
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77462323"
 ---
-# <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Bewerkingen en activiteiten van Azure Cognitive Search bewaken
+# <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Bewerkingen en activiteiten van Azure Cognitive Search controleren
 
-In dit artikel vindt u een overzicht van het niveau van de service (resource), op het niveau van de werk belasting (query's en indexering), en wordt een framework voorgesteld voor het bewaken van gebruikers toegang.
+Dit artikel introduceert monitoring op serviceniveau (resource) op werkbelastingsniveau (query's en indexering) en stelt een framework voor voor het bewaken van gebruikerstoegang.
 
-In het spectrum gebruikt u een combi natie van ingebouwde infra structuur en Foundational services zoals Azure Monitor, evenals service-Api's die statistieken, aantallen en status retour neren. Het bereik van mogelijkheden kan u helpen een feedback-lus te maken, zodat u problemen kunt oplossen wanneer deze zich voordoen.
+Over het hele spectrum gebruikt u een combinatie van ingebouwde infrastructuur en basisservices zoals Azure Monitor, evenals service-API's die statistieken, tellingen en status retourneren. Inzicht in het scala aan mogelijkheden kan u helpen bij het samenstellen van een feedbacklus, zodat u problemen oplossen wanneer deze zich voordoen.
 
 ## <a name="use-azure-monitor"></a>Azure Monitor gebruiken
 
-Veel services, met inbegrip van Azure Cognitive Search, maken gebruik van [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/) voor waarschuwingen, metrische gegevens en Diagnostische logboeken. Voor Azure Cognitive Search wordt de ingebouwde bewakings infrastructuur voornamelijk gebruikt voor bewaking op resource niveau (service status) en [query bewaking](search-monitor-queries.md).
+Veel services, waaronder Azure Cognitive Search, maken gebruik van [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) voor waarschuwingen, statistieken en diagnostische gegevens voor logboekregistratie. Voor Azure Cognitive Search wordt de ingebouwde bewakingsinfrastructuur voornamelijk gebruikt voor monitoring op resourceniveau (servicestatus) en [querybewaking.](search-monitor-queries.md)
 
-De volgende scherm afbeelding helpt u bij het vinden van Azure Monitor functies in de portal.
+Met de volgende schermafbeelding u azure-monitorfuncties in de portal vinden.
 
-+ Op het tabblad **controle** , dat zich op de overzichts pagina bevindt, worden belang rijke metrische gegevens in één oogopslag weer gegeven.
-+ **Activiteiten logboek**, net onder overzicht, rapporten over acties op resource niveau: meldingen over de service status en API-sleutel aanvragen.
-+ Door de lijst te **bewaken**kunt u waarschuwingen, metrische gegevens en Diagnostische logboeken configureren. Maak deze wanneer u ze nodig hebt. Zodra de gegevens zijn verzameld en opgeslagen, kunt u de informatie voor inzichten opvragen of visualiseren.
++ Het tabblad **Controle,** dat zich op de hoofdoverzichtspagina bevindt, toont in één oogopslag de belangrijkste statistieken.
++ **Activiteitenlogboek**, net onder Overzicht, rapporten over acties op resourceniveau: servicestatus en API-key request-meldingen.
++ **Monitoring**, verder in de lijst, biedt configureerbare waarschuwingen, statistieken en diagnostische logboeken. Maak deze wanneer je ze nodig hebt. Zodra gegevens zijn verzameld en opgeslagen, u de informatie opvragen of visualiseren voor inzichten.
 
-![Integratie in een zoek service Azure Monitor](./media/search-monitor-usage/azure-monitor-search.png
- "Integratie in een zoek service Azure Monitor")
+![Azure Monitor-integratie in een zoekservice](./media/search-monitor-usage/azure-monitor-search.png
+ "Azure Monitor-integratie in een zoekservice")
 
-### <a name="precision-of-reported-numbers"></a>Nauw keurigheid van gerapporteerde getallen
+### <a name="precision-of-reported-numbers"></a>Precisie van gerapporteerde getallen
 
-Portal pagina's worden elke paar minuten vernieuwd. De getallen die in de portal zijn opgenomen, zijn ongeveer zo ontworpen dat u een algemeen idee hebt van de manier waarop uw systeem bezig is met het verwerken van aanvragen. Werkelijke metrische gegevens, zoals query's per seconde (QPS), kunnen hoger of lager zijn dan het nummer dat op de pagina wordt weer gegeven.
+Portalpagina's worden om de paar minuten vernieuwd. Als zodanig, nummers gemeld in het portaal zijn bij benadering, bedoeld om u een algemeen gevoel van hoe goed uw systeem is onderhoud verzoeken. Werkelijke statistieken, zoals query's per seconde (QPS) kunnen hoger of lager zijn dan het aantal op de pagina.
 
-## <a name="activity-logs-and-service-health"></a>Activiteiten logboeken en service status
+## <a name="activity-logs-and-service-health"></a>Activiteitslogboeken en servicestatus
 
-In het [**activiteiten logboek**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) worden gegevens van Azure Resource Manager verzameld en rapporten over wijzigingen in de service status. U kunt het activiteiten logboek controleren op kritieke, fout-en waarschuwings voorwaarden met betrekking tot de service status.
+Het [**activiteitenlogboek**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) verzamelt informatie van Azure Resource Manager en rapporteert over wijzigingen in de servicestatus. U het activiteitenlogboek controleren op kritieke, fout- en waarschuwingsvoorwaarden met betrekking tot de servicestatus.
 
-Voor taken in de service, zoals query's, het indexeren of het maken van objecten, worden algemene informatieve meldingen weer geven, zoals *admin-sleutel ophalen* en *query sleutels ophalen* voor elke aanvraag, maar niet de specifieke actie zelf. Voor informatie over deze korrel moet u diagnostische logboek registratie configureren.
+Voor in-service taken - zoals query's, indexering of het maken van objecten - ziet u algemene informatieve meldingen zoals *Beheersleutel ophalen* en *Querysleutels ophalen* voor elk verzoek, maar niet de specifieke actie zelf. Voor informatie over deze korrel moet u diagnostische logboekregistratie configureren.
 
-U kunt het **activiteiten logboek** openen vanuit het navigatie deel venster, of vanuit meldingen in de bovenste venster opdracht balk, of via de pagina **problemen vaststellen en oplossen** .
+U het **activiteitenlogboek** openen vanuit het linkernavigatiedeelvenster of vanuit Meldingen op de opdrachtbalk van het bovenste venster of via de pagina **Problemen diagnosticeren en oplossen.**
 
-## <a name="monitor-storage"></a>Opslag bewaken
+## <a name="monitor-storage"></a>Opslag controleren
 
-Pagina's met tabbladen die in het overzichts venster zijn ingebouwd, worden weer gegeven in het resource gebruik. Deze informatie wordt beschikbaar zodra u de service gaat gebruiken, zonder dat de configuratie is vereist en de pagina om de paar minuten wordt vernieuwd. 
+Pagina's met tabbladen die zijn ingebouwd in de overzichtspagina rapporteren over het gebruik van resources. Deze informatie wordt beschikbaar zodra u de service gaat gebruiken, zonder dat de configuratie vereist is en de pagina om de paar minuten wordt vernieuwd. 
 
-Als u besluit [om te bepalen welke laag moet worden gebruikt voor werk belastingen voor de productie](search-sku-tier.md), of als u [het aantal actieve replica's en partities wilt aanpassen](search-capacity-planning.md), kunt u aan de hand van deze maat regelen zien hoe snel resources worden verbruikt en hoe goed de huidige configuratie de bestaande belasting afhandelt.
+Als u de laatste hand geeft aan de beslissingen over [welke laag u moet gebruiken voor productieworkloads](search-sku-tier.md)of als u het aantal actieve [replica's en partities wilt aanpassen,](search-capacity-planning.md)kunnen deze statistieken u helpen bij deze beslissingen door u te laten zien hoe snel resources worden verbruikt en hoe goed de huidige configuratie de bestaande belasting verwerkt.
 
-Waarschuwingen met betrekking tot opslag zijn momenteel niet beschikbaar. het opslag verbruik is niet geaggregeerd of aangemeld bij de **AzureMetrics** -tabel in azure monitor. U moet [een aangepaste oplossing bouwen](https://docs.microsoft.com/azure/azure-monitor/insights/solutions-creating) die meldingen over resources verzendt, waarbij uw code controleert op opslag grootte en het antwoord verwerkt. Zie [service statistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response)voor meer informatie over metrische gegevens over de opslag.
+Waarschuwingen met betrekking tot opslag zijn momenteel niet beschikbaar; opslagverbruik wordt niet samengevoegd of aangemeld bij de **AzureMetrics-tabel** in Azure Monitor. U moet [een aangepaste oplossing maken](https://docs.microsoft.com/azure/azure-monitor/insights/solutions-creating) die resourcegerelateerde meldingen uitzendt, waarbij uw code controleert op de grootte van de opslag en het antwoord verwerkt. Zie [Servicestatistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response)voor meer informatie over opslagstatistieken.
 
-Voor visuele bewaking in de portal toont het tabblad **gebruik** de beschik baarheid van resources ten opzichte van de huidige [limieten](search-limits-quotas-capacity.md) die door de servicelaag worden opgelegd. 
+Voor visuele controle in de portal ziet u op het tabblad **Gebruik** de beschikbaarheid van resources ten opzichte van de huidige [limieten](search-limits-quotas-capacity.md) die door de servicelaag worden opgelegd. 
 
-De volgende afbeelding is voor de gratis service, die wordt afgelimiteerd bij 3 objecten van elk type en 50 MB aan opslag. Een Basic-of Standard-Service heeft hogere limieten en als u het aantal partities verhoogt, wordt de maximale opslag proportioneel.
+De volgende illustratie is voor de gratis service, die is afgetopt op 3 objecten van elk type en 50 MB opslag. Een Basic- of Standard-service heeft hogere limieten en als u het aantal partities verhoogt, gaat de maximale opslag proportioneel omhoog.
 
-![Gebruiks status relatief ten opzichte van laag limieten](./media/search-monitor-usage/usage-tab.png
- "Gebruiks status relatief ten opzichte van laag limieten")
+![Gebruiksstatus ten opzichte van laaglimieten](./media/search-monitor-usage/usage-tab.png
+ "Gebruiksstatus ten opzichte van laaglimieten")
 
-## <a name="monitor-workloads"></a>Werk belastingen bewaken
+## <a name="monitor-workloads"></a>Workloads controleren
 
-Geregistreerde gebeurtenissen zijn onder andere degene die zijn gerelateerd aan indexering en query's. De **AzureDiagnostics** -tabel in log Analytics verzamelt operationele gegevens met betrekking tot query's en indexering.
+Geregistreerde gebeurtenissen omvatten gebeurtenissen die betrekking hebben op indexering en query's. De tabel **AzureDiagnostics** in Log Analytics verzamelt operationele gegevens met betrekking tot query's en indexering.
 
-De meeste geregistreerde gegevens zijn alleen-lezen-bewerkingen. Voor andere Create-update-delete-bewerkingen die niet in het logboek zijn vastgelegd, kunt u een query uitvoeren op de zoek service voor systeem info.
+De meeste geregistreerde gegevens zijn voor alleen-lezen bewerkingen. Voor andere bewerkingen voor het verwijderen van create-update-delete die niet in het logboek zijn vastgelegd, u de zoekservice opvragen naar systeemgegevens.
 
 | OperationName | Beschrijving |
 |---------------|-------------|
-| ServiceStats | Met deze bewerking wordt een routine aanroep uitgevoerd om [service statistieken](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)op te halen, direct of impliciet te worden aangeroepen om een portal overzichts pagina te vullen wanneer deze wordt geladen of vernieuwd. |
-| Query. Search |  Query's aanvragen voor een index Zie [controle query's](search-monitor-queries.md) voor informatie over vastgelegde query's.|
-| Indexeren. index  | Deze bewerking is een aanroep om [documenten toe te voegen, bij te werken of te verwijderen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). |
-| indexen. Drukvat | Dit is een index die is gemaakt met de wizard gegevens importeren. |
-| Indexeer functies. maken | Maak expliciet of impliciet een Indexeer functie met behulp van de wizard gegevens importeren. |
-| Indexeer functies. ophalen | Retourneert de naam van een Indexeer functie wanneer de Indexeer functie wordt uitgevoerd. |
-| Indexeer functies. status | Retourneert de status van een Indexeer functie wanneer de Indexeer functie wordt uitgevoerd. |
-| Gegevens bronnen. ophalen | Retourneert de naam van de gegevens bron wanneer een Indexeer functie wordt uitgevoerd.|
-| Indexes. Get | Retourneert de naam van een index wanneer een Indexeer functie wordt uitgevoerd. |
+| ServiceStatistieken | Deze bewerking is een routineoproep voor [Servicestatistieken](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics), direct of impliciet aangeroepen om een portaloverzichtspagina in te vullen wanneer deze wordt geladen of vernieuwd. |
+| Query.Zoeken |  Queryaanvragen op basis van een index Zie [Monitorquery's](search-monitor-queries.md) voor informatie over aangemelde query's.|
+| Indexeren.Index  | Deze bewerking is een aanroep om documenten toe te voegen, bij te [werken of te verwijderen.](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) |
+| Indexen. Prototype | Dit is een index die is gemaakt door de wizard Gegevens importeren. |
+| Indexers.Maak | Maak een indexeerder expliciet of impliciet via de wizard Gegevens importeren. |
+| Indexers.Get | Geeft als resultaat de naam van een indexeerder wanneer de indexer wordt uitgevoerd. |
+| Indexers.Status | Geeft als resultaat de status van een indexer wanneer de indexer wordt uitgevoerd. |
+| DataSources.Get | Geeft als resultaat de naam van de gegevensbron wanneer een indexer wordt uitgevoerd.|
+| Indexen.Get | Geeft als resultaat de naam van een index wanneer een indexer wordt uitgevoerd. |
 
-### <a name="kusto-queries-about-workloads"></a>Kusto query's over workloads
+### <a name="kusto-queries-about-workloads"></a>Kusto-query's over workloads
 
-Als u logboek registratie hebt ingeschakeld, kunt u een query uitvoeren op **AzureDiagnostics** voor een lijst met bewerkingen die zijn uitgevoerd op uw service en wanneer. U kunt activiteiten ook correleren om de prestatie wijzigingen te onderzoeken.
+Als u logboekregistratie hebt ingeschakeld, u **AzureDiagnostics** opvragen voor een lijst met bewerkingen die op uw service zijn uitgevoerd en wanneer. U ook activiteit correleren om veranderingen in prestaties te onderzoeken.
 
-#### <a name="example-list-operations"></a>Voor beeld: bewerkingen weer geven 
+#### <a name="example-list-operations"></a>Voorbeeld: Lijstbewerkingen 
 
-Retourneert een lijst met bewerkingen en een telling van elke bewerking.
+Retourneer een lijst met bewerkingen en een telling van elk van deze bewerkingen.
 
 ```
 AzureDiagnostics
 | summarize count() by OperationName
 ```
 
-#### <a name="example-correlate-operations"></a>Voor beeld: correlatie bewerkingen
+#### <a name="example-correlate-operations"></a>Voorbeeld: Bewerkingen correleren
 
-Correleer een query aanvraag met indexerings bewerkingen en Genereer de gegevens punten in een tijd diagram om de bewerkingen samen te zien.
+Correleer queryaanvraag met indexeringsbewerkingen en laat de gegevenspunten in een tijdgrafiek samenvallen.
 
 ```
 AzureDiagnostics
@@ -104,28 +104,28 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="use-search-apis"></a>Zoek-Api's gebruiken
+### <a name="use-search-apis"></a>Zoek-API's gebruiken
 
-Zowel de Azure Cognitive Search REST API als de .NET SDK bieden programmatische toegang tot metrische gegevens van services, index-en indexerings informatie en document tellingen.
+Zowel de Azure Cognitive Search REST API als de .NET SDK bieden programmatische toegang tot servicestatistieken, index- en indexergegevens en documenttellingen.
 
-+ [Service statistieken ophalen](/rest/api/searchservice/get-service-statistics)
-+ [Index statistieken ophalen](/rest/api/searchservice/get-index-statistics)
-+ [Aantal documenten ophalen](/rest/api/searchservice/count-documents)
-+ [De Indexeer functie-status ophalen](/rest/api/searchservice/get-indexer-status)
++ [GET-servicestatistieken](/rest/api/searchservice/get-service-statistics)
++ [GET-indexstatistieken](/rest/api/searchservice/get-index-statistics)
++ [GET-documenttellingen](/rest/api/searchservice/count-documents)
++ [Get Indexer-status](/rest/api/searchservice/get-indexer-status)
 
-## <a name="monitor-user-access"></a>Gebruikers toegang controleren
+## <a name="monitor-user-access"></a>Gebruikerstoegang controleren
 
-Omdat zoek indexen een onderdeel zijn van een grotere client toepassing, is er geen ingebouwde methodologie voor het beheren of bewaken van toegang per gebruiker tot een index. Er wordt van uitgegaan dat er aanvragen worden opgehaald uit een client toepassing, voor beheerders-of query aanvragen. Lees-en schrijf bewerkingen door de beheerder omvatten het maken, bijwerken en verwijderen van objecten in de gehele service. Alleen-lezen bewerkingen zijn query's voor de verzameling documenten, met een bereik van één index. 
+Omdat zoekindexen een onderdeel zijn van een grotere clienttoepassing, is er geen ingebouwde methodologie voor het controleren of bewaken van de toegang per gebruiker tot een index. Aanvragen worden verondersteld afkomstig te zijn van een clienttoepassing, voor beheerders- of queryaanvragen. Beheerbewerkingen omvatten het maken, bijwerken, verwijderen van objecten in de hele service. Alleen-lezen bewerkingen zijn query's tegen de verzameling van documenten, die zijn beperkt tot één index. 
 
-Wat u in de activiteiten logboeken ziet, zijn verwijzingen naar aanroepen met behulp van beheer sleutels of query sleutels. De juiste sleutel is opgenomen in aanvragen die afkomstig zijn van client code. De service is niet ingericht voor het afhandelen van identiteits tokens of imitatie.
+Als zodanig ziet u verwijzingen naar oproepen met behulp van beheerderssleutels of querysleutels. De juiste sleutel is opgenomen in aanvragen die afkomstig zijn van clientcode. De service is niet uitgerust om identiteitstokens of imitatie te verwerken.
 
-Wanneer er bedrijfs vereisten bestaan voor autorisatie per gebruiker, wordt de aanbeveling geïntegreerd met Azure Active Directory. U kunt $filter en gebruikers identiteiten gebruiken om de [Zoek resultaten](search-security-trimming-for-azure-search-with-aad.md) van documenten die een gebruiker niet mag zien te knippen. 
+Wanneer er bedrijfsvereisten bestaan voor autorisatie per gebruiker, is de aanbeveling integratie met Azure Active Directory. U $filter en gebruikersidentiteiten gebruiken om zoekresultaten bij te [snijden](search-security-trimming-for-azure-search-with-aad.md) van documenten die een gebruiker niet mag zien. 
 
-Het is niet mogelijk om deze informatie afzonderlijk te registreren vanuit de query reeks die de para meter $filter bevat. Zie [query's bewaken](search-monitor-queries.md) voor meer informatie over het rapporteren van query teken reeksen.
+Er is geen manier om deze informatie apart te registreren van de querytekenreeks die de parameter $filter bevat. Zie [Query's controleren](search-monitor-queries.md) voor meer informatie over rapportagequerytekenreeksen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Fluency met Azure Monitor is essentieel voor het toezicht op elke Azure-service, inclusief resources zoals Azure Cognitive Search. Als u niet bekend bent met Azure Monitor, neemt u de tijd voor het beoordelen van artikelen die betrekking hebben op resources. Naast zelf studies is het volgende artikel een goede plaats om te beginnen.
+Vloeiendheid met Azure Monitor is essentieel voor het toezicht op elke Azure-service, inclusief bronnen zoals Azure Cognitive Search. Als u niet bekend bent met Azure Monitor, neemt u de tijd om artikelen met betrekking tot resources te bekijken. Naast tutorials, het volgende artikel is een goede plek om te beginnen.
 
 > [!div class="nextstepaction"]
 > [Azure-resources bewaken met Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)

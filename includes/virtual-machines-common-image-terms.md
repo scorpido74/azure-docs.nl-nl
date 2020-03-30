@@ -9,21 +9,21 @@ ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 98d765e2f6909f00f8dfe76d06aef017aad67adf
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71174945"
 ---
 ## <a name="terminology"></a>Terminologie
 
-Een Marketplace-installatie kopie in azure heeft de volgende kenmerken:
+Een Marketplace-afbeelding in Azure heeft de volgende kenmerken:
 
-* **Uitgever**: De organisatie waarvoor de installatiekopie is gemaakt. Voorbeelden: Canonical, MicrosoftWindowsServer
-* **Aanbieding**: De naam van een groep gerelateerde installatie kopieën die door een uitgever zijn gemaakt. Voorbeelden: UbuntuServer, WindowsServer
-* **SKU**: Een exemplaar van een aanbieding, zoals een grote release van een distributie. Voorbeelden: 18,04-LTS, 2019-Data Center
-* **Version**: Het versie nummer van een afbeeldings-SKU. 
+* **Uitgever:** de organisatie die de afbeelding heeft gemaakt. Voorbeelden: Canonical, MicrosoftWindowsServer
+* **Aanbieding:** de naam van een groep gerelateerde afbeeldingen die door een uitgever zijn gemaakt. Voorbeelden: UbuntuServer, WindowsServer
+* **SKU**: Een voorbeeld van een aanbieding, zoals een belangrijke release van een distributie. Voorbeelden: 18.04-LTS, 2019-Datacenter
+* **Versie:** het versienummer van een afbeelding SKU. 
 
-Als u een Marketplace-installatie kopie wilt identificeren wanneer u een virtuele machine programmatisch implementeert, dient u deze waarden afzonderlijk op te geven als para meters. Sommige hulpprogram ma's accepteren een afbeelding *urn*, dat deze waarden combineert, gescheiden door de dubbele punt (:) ring *Uitgever*:*aanbieding*:*SKU*:*versie*. In een URN kunt u het versie nummer vervangen door ' laatste ', waarmee de meest recente versie van de installatie kopie wordt geselecteerd. 
+Als u een Marketplace-afbeelding wilt identificeren wanneer u een VM programmatisch implementeert, geeft u deze waarden afzonderlijk als parameters. Sommige gereedschappen accepteren een afbeelding *URN*, die deze waarden combineert, gescheiden door de dikke darm (:) karakter: *Uitgever*:*Aanbieding*:*Sku*:*Versie*. In een URN u het versienummer vervangen door laatste, waarmee de nieuwste versie van de afbeelding wordt geselecteerd. 
 
-Als de uitgever van de installatie kopie aanvullende licentie-en aankoop voorwaarden biedt, moet u deze voor waarden accepteren en programmatische implementatie inschakelen. U moet ook de para meters van het *aankoop plan* opgeven wanneer u een virtuele machine programmatisch implementeert. Zie [een installatie kopie implementeren met Marketplace-voor waarden](#deploy-an-image-with-marketplace-terms).
+Als de afbeeldingsuitgever aanvullende licentie- en aankoopvoorwaarden biedt, moet u deze voorwaarden accepteren en programmatische implementatie inschakelen. U moet ook *inkoopplanparameters* leveren wanneer u een VM programmatisch implementeert. Zie [Een afbeelding implementeren met Marketplace-termen](#deploy-an-image-with-marketplace-terms).

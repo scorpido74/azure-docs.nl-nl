@@ -1,20 +1,20 @@
 ---
-title: Onderliggende resources in sjablonen
-description: Hierin wordt beschreven hoe u de naam en het type instelt voor onderliggende resources in een Azure Resource Manager sjabloon.
+title: Onderliggende bronnen in sjablonen
+description: Beschrijft hoe u de naam en het type voor onderliggende resources in stelt in een Azure Resource Manager-sjabloon.
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: 6de2b476fe19a057a62e4a54963dd8fde0d11579
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77207890"
 ---
-# <a name="set-name-and-type-for-child-resources"></a>Naam en type voor onderliggende resources instellen
+# <a name="set-name-and-type-for-child-resources"></a>Naam en type instellen voor onderliggende bronnen
 
-Onderliggende resources zijn bronnen die alleen bestaan in de context van een andere resource. Een extensie van een [virtuele machine](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions) kan bijvoorbeeld niet bestaan zonder een [virtuele machine](/azure/templates/microsoft.compute/2019-03-01/virtualmachines). De extensie resource is een onderliggend element van de virtuele machine.
+Onderliggende bronnen zijn bronnen die alleen bestaan binnen de context van een andere resource. Een extensie [van](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions) een virtuele machine kan bijvoorbeeld niet bestaan zonder een [virtuele machine.](/azure/templates/microsoft.compute/2019-03-01/virtualmachines) De extensiebron is een onderliggend kind van de virtuele machine.
 
-In een resource manager-sjabloon kunt u de onderliggende resource opgeven binnen de bovenliggende resource of buiten de bovenliggende resource. In het volgende voor beeld ziet u de onderliggende resource die is opgenomen in de eigenschap resources van de bovenliggende resource.
+In een resourcemangersjabloon u de onderliggende bron opgeven binnen de bovenliggende resource of buiten de bovenliggende resource. In het volgende voorbeeld wordt de onderliggende resource weergegeven die is opgenomen in de eigenschap resources van de bovenliggende resource.
 
 ```json
 "resources": [
@@ -27,7 +27,7 @@ In een resource manager-sjabloon kunt u de onderliggende resource opgeven binnen
 ]
 ```
 
-In het volgende voor beeld wordt de onderliggende resource buiten de bovenliggende resource weer gegeven. U kunt deze aanpak gebruiken als de bovenliggende resource niet is geïmplementeerd in dezelfde sjabloon of als u een [kopie](copy-resources.md) wilt gebruiken om meer dan één onderliggende resource te maken.
+In het volgende voorbeeld wordt de onderliggende resource buiten de bovenliggende resource weergegeven. U deze benadering gebruiken als de bovenliggende resource niet in dezelfde sjabloon is geïmplementeerd of als u [kopiëren](copy-resources.md) wilt gebruiken om meer dan één onderliggende bron te maken.
 
 ```json
 "resources": [
@@ -40,18 +40,18 @@ In het volgende voor beeld wordt de onderliggende resource buiten de bovenliggen
 ]
 ```
 
-De waarden die u opgeeft voor de resource naam en het-type variëren afhankelijk van het feit of de onderliggende resource binnen of buiten de bovenliggende resource is gedefinieerd.
+De waarden die u voor de resourcenaam en het type opgeeft, variëren afhankelijk van de vraag of de onderliggende resource binnen of buiten de bovenliggende resource is gedefinieerd.
 
-## <a name="within-parent-resource"></a>In bovenliggende resource
+## <a name="within-parent-resource"></a>Binnen bovenliggende bron
 
-Wanneer u de waarde definieert in het bovenliggende resource type, formatteert u het type en de naam waarden als één enkel woord zonder slashes.
+Wanneer u wordt gedefinieerd binnen het bovenliggende brontype, maakt u de type- en naamwaarden op als één woord zonder slashes.
 
 ```json
 "type": "{child-resource-type}",
 "name": "{child-resource-name}",
 ```
 
-In het volgende voor beeld ziet u een virtueel netwerk en een subnet. U ziet dat het subnet is opgenomen in de bronnen matrix voor het virtuele netwerk. De naam is ingesteld op **Subnet1** en het type is ingesteld op **subnetten**. De onderliggende resource is gemarkeerd als afhankelijk van de bovenliggende resource, omdat de bovenliggende resource moet bestaan voordat de onderliggende resource kan worden geïmplementeerd.
+In het volgende voorbeeld ziet u een virtueel netwerk en een subnet. Merk op dat het subnet is opgenomen in de resources array voor het virtuele netwerk. De naam is ingesteld op **Subnet1** en het type is ingesteld op **subnetten**. De onderliggende resource is gemarkeerd als afhankelijk van de bovenliggende resource omdat de bovenliggende resource moet bestaan voordat de onderliggende resource kan worden geïmplementeerd.
 
 ```json
 "resources": [
@@ -85,20 +85,20 @@ In het volgende voor beeld ziet u een virtueel netwerk en een subnet. U ziet dat
 ]
 ```
 
-Het volledige bron type is nog steeds **micro soft. Network/virtualNetworks/subnets**. U beschikt niet over **micro soft. Network/virtualNetworks/** , omdat deze wordt aangenomen van het bovenliggende bron type.
+Het volledige brontype is nog steeds **Microsoft.Network/virtualNetworks/subnetten.** U verstrekt geen **Microsoft.Network/virtualNetworks/** omdat dit wordt aangenomen van het bovenliggende brontype.
 
-De naam van de onderliggende resource is ingesteld op **Subnet1** , maar de volledige naam bevat de naam van het bovenliggende item. U geeft **VNet1** niet op omdat deze wordt aangenomen van de bovenliggende resource.
+De naam van de onderliggende bron is ingesteld op **Subnet1,** maar de volledige naam bevat de bovenliggende naam. U verstrekt Geen **VNet1** omdat deze wordt aangenomen uit de bovenliggende bron.
 
-## <a name="outside-parent-resource"></a>Buiten bovenliggende resource
+## <a name="outside-parent-resource"></a>Externe bovenliggende bron
 
-Wanneer u buiten de bovenliggende resource hebt gedefinieerd, formatteert u het type en met slashes om het bovenliggende type en de naam op te laten bevatten.
+Wanneer u buiten de bovenliggende resource wordt gedefinieerd, maakt u het type en met slashes op om het bovenliggende type en de bovenliggende naam op te nemen.
 
 ```json
 "type": "{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}",
 "name": "{parent-resource-name}/{child-resource-name}",
 ```
 
-In het volgende voor beeld ziet u een virtueel netwerk en een subnet dat beide zijn gedefinieerd op het hoofd niveau. U ziet dat het subnet niet is opgenomen in de bronnen matrix voor het virtuele netwerk. De naam is ingesteld op **VNet1/Subnet1** en het type is ingesteld op **micro soft. Network/virtualNetworks/subnets**. De onderliggende resource is gemarkeerd als afhankelijk van de bovenliggende resource, omdat de bovenliggende resource moet bestaan voordat de onderliggende resource kan worden geïmplementeerd.
+In het volgende voorbeeld ziet u een virtueel netwerk en subnet dat beide op basisniveau zijn gedefinieerd. Merk op dat het subnet niet is opgenomen in de array resources voor het virtuele netwerk. De naam is ingesteld op **VNet1/Subnet1** en het type is ingesteld op **Microsoft.Network/virtualNetworks/subnetten.** De onderliggende resource is gemarkeerd als afhankelijk van de bovenliggende resource omdat de bovenliggende resource moet bestaan voordat de onderliggende resource kan worden geïmplementeerd.
 
 ```json
 "resources": [
@@ -132,6 +132,6 @@ In het volgende voor beeld ziet u een virtueel netwerk en een subnet dat beide z
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [ontwerp sjablonen](template-syntax.md)voor meer informatie over het maken van Azure Resource Manager sjablonen.
+* Zie [Sjablonen voor ontwerpen](template-syntax.md)voor meer informatie over het maken van Azure Resource Manager-sjablonen.
 
-* Zie de [functie Reference](template-functions-resource.md#reference)voor meer informatie over de indeling van de resource naam bij het verwijzen naar de resource.
+* Zie de [referentiefunctie](template-functions-resource.md#reference)voor meer informatie over de indeling van de resourcenaam wanneer u naar de bron verwijst.

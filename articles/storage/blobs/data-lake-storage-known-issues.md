@@ -1,124 +1,120 @@
 ---
-title: Bekende problemen met Azure Data Lake Storage Gen2 | Microsoft Docs
-description: Meer informatie over beperkingen en bekende problemen met Azure Data Lake Storage Gen2.
+title: Bekende problemen met Azure Data Lake Storage Gen2 | Microsoft Documenten
+description: Meer informatie over beperkingen en bekende problemen van Azure Data Lake Storage Gen2.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7fd76be8d17dc1c632e555a56d038d4f5c1e1486
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 4f8fae6580272ed53b8d440ba3e74c6a1ed1e61a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79268507"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061513"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
-In dit artikel worden beperkingen en bekende problemen met Azure Data Lake Storage Gen2 beschreven.
+In dit artikel worden beperkingen en bekende problemen van Azure Data Lake Storage Gen2 beschreven.
 
-## <a name="supported-blob-storage-features"></a>Ondersteunde functies van Blob-opslag
+## <a name="supported-blob-storage-features"></a>Ondersteunde Blob-opslagfuncties
 
-Een toenemend aantal functies voor Blob Storage werkt nu met accounts die een hiërarchische naam ruimte hebben. Zie [Blob Storage-functies die beschikbaar zijn in azure data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)voor een volledige lijst.
+Steeds meer Blob-opslagfuncties werken nu met accounts met een hiërarchische naamruimte. Zie [Blob Storage-functies die beschikbaar zijn in Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)voor een volledige lijst.
 
 ## <a name="supported-azure-service-integrations"></a>Ondersteunde Azure-service-integraties
 
-Data Lake Storage Gen2 ondersteunt verschillende Azure-Services die u kunt gebruiken om gegevens op te nemen, analyses uit te voeren en visuele weer gaven te maken. Zie [Azure-Services die ondersteuning bieden voor Azure data Lake Storage Gen2](data-lake-storage-supported-azure-services.md)voor een lijst met ondersteunde Azure-Services.
+Data Lake Storage gen2 ondersteunt verschillende Azure-services die u gebruiken om gegevens in te nemen, analyses uit te voeren en visuele weergaven te maken. Zie [Azure-services die Azure Data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-azure-services.md)voor een lijst met ondersteunde Azure-services.
 
-Zie [Azure-Services die Azure data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-azure-services.md).
+Bekijk [Azure-services die Azure Data Lake Storage Gen2 ondersteunen.](data-lake-storage-supported-azure-services.md)
 
-## <a name="supported-open-source-platforms"></a>Ondersteunde open source-platforms
+## <a name="supported-open-source-platforms"></a>Ondersteunde open source platforms
 
-Data Lake Storage Gen2 ondersteuning voor verschillende open source-platforms. Zie voor een volledige lijst [open-source platforms die Azure data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-open-source-platforms.md).
+Verschillende open source platforms ondersteunen Data Lake Storage Gen2. Zie [Open source-platforms die Azure Data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-open-source-platforms.md)voor een volledige lijst.
 
-Zie [open-source platforms die Azure data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-open-source-platforms.md).
+Zie [Open source-platforms die Azure Data Lake Storage Gen2 ondersteunen.](data-lake-storage-supported-open-source-platforms.md)
 
-## <a name="blob-storage-apis"></a>BLOB storage-API 's
+## <a name="blob-storage-apis"></a>Blob-opslag-API's
 
-BLOB-Api's en Data Lake Storage Gen2-Api's kunnen op dezelfde gegevens worden gebruikt.
+Blob API's en Data Lake Storage Gen2 API's kunnen op dezelfde gegevens werken.
 
-In deze sectie worden de problemen en beperkingen beschreven met het gebruik van BLOB-Api's en Data Lake Storage Gen2 Api's om op dezelfde gegevens te werken.
+In deze sectie worden problemen en beperkingen beschreven met het gebruik van blob-API's en API's voor Gegevensmeeropslag Gen2 om op dezelfde gegevens te werken.
 
-* U kunt niet zowel BLOB-Api's als Data Lake Storage Api's gebruiken om naar hetzelfde exemplaar van een bestand te schrijven. Als u naar een bestand schrijft met behulp van Data Lake Storage Gen2 Api's, zijn de blokken van dat bestand niet zichtbaar voor aanroepen naar de BLOB-API voor [blok keren ophalen](https://docs.microsoft.com/rest/api/storageservices/get-block-list) . U kunt een bestand overschrijven door gebruik te maken van Data Lake Storage Gen2 Api's of BLOB-Api's. Dit heeft geen invloed op de bestands eigenschappen.
+* U niet beide Blob API's en API's voor gegevensopslag gebruiken om naar dezelfde instantie van een bestand te schrijven. Als u naar een bestand schrijft met behulp van API's van Data Lake Storage Gen2, zijn de blokken van dat bestand niet zichtbaar voor oproepen naar de BLOB-API [voor bloklijst downloaden.](https://docs.microsoft.com/rest/api/storageservices/get-block-list) U een bestand overschrijven met api's van Data Lake Storage Gen2 of Blob API's. Dit heeft geen invloed op bestandseigenschappen.
 
-* Wanneer u de bewerking [lijst-blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) gebruikt zonder een scheidings teken op te geven, bevatten de resultaten zowel directory's als blobs. Als u een scheidings teken wilt gebruiken, moet u alleen een slash (`/`) gebruiken. Dit is het enige ondersteunde scheidings teken.
+* Wanneer u de [bewerking Lijstblobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) gebruikt zonder een scheidingsteken op te geven, bevatten de resultaten zowel mappen als blobs. Als u ervoor kiest om een scheidingsteken te`/`gebruiken, gebruikt u alleen een voorwaartse slash ( ). Dit is de enige ondersteunde scheidingsteken.
 
-* Als u de [Delete BLOB](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API gebruikt om een map te verwijderen, wordt die map alleen verwijderd als deze leeg is. Dit betekent dat u de BLOB-API niet recursief kunt gebruiken.
+* Als u de [Delete Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API gebruikt om een map te verwijderen, wordt die map alleen verwijderd als deze leeg is. Dit betekent dat u de blob-api-verwijdermappen niet recursief gebruiken.
 
-Deze BLOB REST Api's worden niet ondersteund:
+Deze Blob REST API's worden niet ondersteund:
 
-* [BLOB plaatsen (pagina)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Blob plaatsen (pagina)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
 * [Pagina plaatsen](https://docs.microsoft.com/rest/api/storageservices/put-page)
 * [Paginabereiken ophalen](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
-* [BLOB voor incrementele kopie](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
+* [Blob incrementele kopie](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
 * [Pagina van URL plaatsen](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Put-BLOB (toevoegen)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Blob plaatsen (toevoegen)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
 * [Blok toevoegen](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [Blok van URL toevoegen](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
+* [Blok toevoegen aan URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
-Niet-beheerde VM-schijven worden niet ondersteund in accounts met een hiërarchische naam ruimte. Als u een hiërarchische naam ruimte wilt inschakelen op een opslag account, plaatst u onbeheerde VM-schijven in een opslag account waarvoor de functie hiërarchische naam ruimte niet is ingeschakeld.
+Niet-beheerde VM-schijven worden niet ondersteund in accounts met een hiërarchische naamruimte. Als u een hiërarchische naamruimte in een opslagaccount wilt inschakelen, plaatst u onbeheerde VM-schijven in een opslagaccount dat de functie hiërarchische naamruimte niet heeft ingeschakeld.
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="file-system-support-in-sdks"></a>Ondersteuning voor bestands systemen in Sdk's
+## <a name="file-system-support-in-sdks"></a>Ondersteuning voor bestandssystemen in SDKs
 
-- [.Net](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md) , [python](data-lake-storage-directory-file-acl-python.md)en [Java script](data-lake-storage-directory-file-acl-javascript.md) en ondersteuning zijn beschikbaar als open bare preview. Andere Sdk's worden momenteel niet ondersteund.
-- Het ophalen en instellen van ACL-bewerkingen is momenteel niet recursief.
+ACL-bewerkingen oppakken en instellen zijn momenteel niet recursief.
 
-## <a name="file-system-support-in-powershell-and-azure-cli"></a>Ondersteuning voor bestands systemen in Power shell en Azure CLI
+## <a name="file-system-support-in-powershell-and-azure-cli"></a>Ondersteuning voor bestandssystemen in PowerShell en Azure CLI
 
-- [Power shell](data-lake-storage-directory-file-acl-powershell.md) en [Azure cli](data-lake-storage-directory-file-acl-cli.md) -ondersteuning zijn beschikbaar als open bare preview.
-- Het ophalen en instellen van ACL-bewerkingen is momenteel niet recursief.
+- [PowerShell-](data-lake-storage-directory-file-acl-powershell.md) en [Azure CLI-ondersteuning](data-lake-storage-directory-file-acl-cli.md) staan in een openbare preview.
+- ACL-bewerkingen oppakken en instellen zijn momenteel niet recursief.
 
-## <a name="lifecycle-management-policies"></a>Levenscyclus beheer beleid
+## <a name="lifecycle-management-policies"></a>Beleid voor levenscyclusbeheer
 
-* Het verwijderen van BLOB-moment opnamen wordt nog niet ondersteund.  
+* Het verwijderen van blobsnapshots wordt nog niet ondersteund.  
 
-* Er zijn momenteel een aantal fouten die het levenscyclus beheer beleid en de Access-laag voor archieven beïnvloeden. 
+## <a name="archive-tier"></a>Archieflaag
 
-## <a name="diagnostic-logs"></a>Diagnostische logboeken
+Er is momenteel een bug die van invloed is op de categorie archieftoegang.
 
-Azure Storage Explorer 1,10. x kan niet worden gebruikt voor het weer geven van Diagnostische logboeken. Als u logboeken wilt weer geven, gebruikt u AzCopy of Sdk's.
 
 ## <a name="blobfuse"></a>Blobfuse
 
 Blobfuse wordt niet ondersteund.
 
-
-
 <a id="known-issues-tools" />
 
 ## <a name="azcopy"></a>AzCopy
 
-Gebruik alleen de meest recente versie van AzCopy ([AzCopy V10 toevoegen](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Eerdere versies van AzCopy, zoals AzCopy v 8.1, worden niet ondersteund.
+Gebruik alleen de nieuwste versie van AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)).Eerdere versies van AzCopy, zoals AzCopy v8.1, worden niet ondersteund.
 
 <a id="storage-explorer" />
 
 ## <a name="azure-storage-explorer"></a>Azure Opslagverkenner
 
-Gebruik alleen versies `1.6.0` of hoger. Er is momenteel een opslag fout die van invloed is op de versie `1.11.0` die in bepaalde scenario's verificatie fouten kan veroorzaken. Er wordt een oplossing voor de opslag fout geïmplementeerd, maar als tijdelijke oplossing wordt u aangeraden versie `1.10.x` te gebruiken die beschikbaar is als [gratis down load](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). `1.10.x` wordt niet beïnvloed door de opslag fout.
+Gebruik alleen `1.6.0` versies of hoger.
 
 <a id="explorer-in-portal" />
 
-## <a name="storage-explorer-in-the-azure-portal"></a>Storage Explorer in de Azure Portal
+## <a name="storage-explorer-in-the-azure-portal"></a>Storage Explorer in de Azure-portal
 
-Acl's worden nog niet ondersteund.
+ACL's worden nog niet ondersteund.
 
 <a id="third-party-apps" />
 
 ## <a name="thirdpartyapplications"></a>Toepassingen van derden
 
-Toepassingen van derden die gebruikmaken van REST-Api's voor werken, blijven werken als u ze gebruikt met Data Lake Storage Gen2 toepassingen die BLOB-Api's aanroepen, waarschijnlijk zullen werken.
+Toepassingen van derden die REST API's gebruiken om te werken, blijven werken als u ze gebruikt met Data Lake Storage Gen2-toepassingen die Blob-API's aanroepen, zullen waarschijnlijk werken.
 
-## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Toegangs beheer lijsten (ACL) en anonieme lees toegang
+## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Toegangscontrolelijsten (ACL) en anonieme leestoegang
 
-Als [anonieme lees toegang](storage-manage-access-to-resources.md) is verleend aan een container, hebben acl's geen invloed op die container of de bestanden in die container.
+Als [anonieme leestoegang](storage-manage-access-to-resources.md) is verleend aan een container, hebben ACL's geen effect op die container of de bestanden in die container.
 
-## <a name="windows-azure-storage-blob-wasb-driver"></a>Stuur programma voor Windows Azure Storage Blob (WASB)
+## <a name="windows-azure-storage-blob-wasb-driver"></a>Wasb-stuurprogramma (Windows Azure Storage Blob)
 
-Er zijn op dit moment diverse problemen met het gebruik van het WASB-stuur programma samen met accounts die een hiërarchische naam ruimte hebben. U wordt aangeraden het [ABFS-stuur programma (Azure Blob File System)](data-lake-storage-abfs-driver.md) in uw workloads te gebruiken. 
+Momenteel zijn er verschillende problemen verbonden aan het gebruik van het WASB-stuurprogramma, samen met accounts met een hiërarchische naamruimte. We raden u aan het [ABFS-stuurprogramma (Azure Blob File System)](data-lake-storage-abfs-driver.md) te gebruiken in uw workloads. 
 
 
 

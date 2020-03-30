@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs Sdk's
-description: Een lijst met de beschik bare Sdk's voor Azure Notification Hubs
+title: Azure Notification Hubs SDKs
+description: Een lijst met de beschikbare Azure Notification Hubs SDKs
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -15,27 +15,27 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 8a4b05c0ee76aca07fd740a16a76a634727504e9
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71213026"
 ---
-# <a name="azure-notification-hubs-sdks"></a>Azure Notification Hubs Sdk's
+# <a name="azure-notification-hubs-sdks"></a>Azure Notification Hubs SDKs
 
-Micro soft en derden publiceren Sdk's voor Azure Notification Hubs. De micro soft-opslag plaatsen voor Android, iOS en .NET bevatten ook voor beelden van apps voor elk doel platform.
+Microsoft en derden publiceren SDK's voor Azure Notification Hubs. De Microsoft-repositories voor Android, iOS en .NET bevatten ook voorbeeld-apps voor elk doelplatform.
 
 | SDK            | Uitgever      |
 | -------------- | -------------- |
-| [.NET-Server](https://github.com/Azure/azure-notificationhubs-dotnet) | Microsoft |
+| [.NET-server](https://github.com/Azure/azure-notificationhubs-dotnet) | Microsoft |
 | [Android](https://github.com/Azure/azure-notificationhubs-android)  |Microsoft |
-| [Apache Cordova](https://github.com/derek82511/cordova-azure-notification-hubs) | Van derden |
+| [Apache Cordova](https://github.com/derek82511/cordova-azure-notification-hubs) | Derde partij |
 | [iOS](https://github.com/Azure/azure-notificationhubs-ios) |Microsoft |
-| [Java-Server](https://github.com/Azure/azure-notificationhubs-java-backend) |Microsoft |
+| [Java-server](https://github.com/Azure/azure-notificationhubs-java-backend) |Microsoft |
 | [Nodejs](https://github.com/Azure/azure-sdk-for-node) | Microsoft |
-| [Systeem eigen](https://github.com/CatalystCode/react-native-azurenotificationhub) | Van derden |
+| [Reageren Native](https://github.com/CatalystCode/react-native-azurenotificationhub) | Derde partij |
 
 > [!Note]
-> Micro soft is niet verantwoordelijk voor de kwaliteit, het nut of de ondersteuning van oplossingen van derden.
+> Microsoft is niet verantwoordelijk voor de kwaliteit, het nut of de ondersteuning van oplossingen van derden.
 
-Laat het ons weten als dat ontbreekt.
+Laat het ons weten als er een vermist.

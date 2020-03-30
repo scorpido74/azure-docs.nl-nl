@@ -1,6 +1,6 @@
 ---
-title: Toegang verhogen om alle Azure-abonnementen en-beheer groepen te beheren
-description: Hierin wordt beschreven hoe u de toegang tot een globale beheerder uitbreidt om alle abonnementen en beheer groepen te beheren in Azure Active Directory met behulp van de Azure Portal of REST API.
+title: Toegang verhogen om alle Azure-abonnementen en beheergroepen te beheren
+description: Beschrijft hoe u de toegang voor een globale beheerder verhogen om alle abonnementen en beheergroepen in Azure Active Directory te beheren met behulp van de Azure-portal of REST API.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,99 +16,99 @@ ms.date: 12/03/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 1731c630cb98ac542ebcdc7aedf07f7bb63eaec0
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77137465"
 ---
-# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Toegang verhogen om alle Azure-abonnementen en-beheer groepen te beheren
+# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Toegang verhogen om alle Azure-abonnementen en beheergroepen te beheren
 
-Als globale beheerder in Azure Active Directory (Azure AD) hebt u mogelijk geen toegang tot alle abonnementen en beheer groepen in uw Directory. In dit artikel worden de manieren beschreven waarop u de toegang tot alle abonnementen en beheer groepen kunt verhogen.
+Als globale beheerder in Azure Active Directory (Azure AD) hebt u mogelijk geen toegang tot alle abonnementen en beheergroepen in uw directory. In dit artikel worden de manieren beschreven waarop u uw toegang tot alle abonnementen en beheergroepen verhogen.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="why-would-you-need-to-elevate-your-access"></a>Waarom moet u uw toegang verhogen?
+## <a name="why-would-you-need-to-elevate-your-access"></a>Waarom zou je je toegang moeten verhogen?
 
-Als u een globale beheerder bent, is het mogelijk dat u het volgende wilt doen:
+Als u een globale beheerder bent, kunnen er momenten zijn waarop u het volgende wilt doen:
 
-- Opnieuw toegang krijgen tot een Azure-abonnement of-beheer groep wanneer een gebruiker de toegang kwijtraakt
-- Een andere gebruiker of uzelf toegang verlenen tot een Azure-abonnement of beheer groep
-- Alle Azure-abonnementen of-beheer groepen in een organisatie weer geven
-- Een Automation-app (zoals een facturerings-of controle-app) toestaan om toegang te krijgen tot alle Azure-abonnementen of-beheer groepen
+- Weer toegang krijgen tot een Azure-abonnement of beheergroep wanneer een gebruiker geen toegang meer heeft
+- Een andere gebruiker of uzelf toegang te verlenen tot een Azure-abonnement of -beheergroep
+- Alle Azure-abonnementen of beheergroepen in een organisatie weergeven
+- Een automatiserings-app (zoals een facturerings- of controle-app) toegang geven tot alle Azure-abonnementen of beheergroepen
 
-## <a name="how-does-elevated-access-work"></a>Hoe werkt de toegang met verhoogde bevoegdheden?
+## <a name="how-does-elevated-access-work"></a>Hoe werkt verhoogde toegang?
 
-Azure AD en Azure-resources worden onafhankelijk van elkaar beveiligd. Dat wil zeggen dat Azure AD-roltoewijzingen geen toegang verlenen tot Azure-resources en Azure-roltoewijzingen geen toegang verlenen tot Azure AD. Als u echter een [globale beheerder](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) in azure AD bent, kunt u uzelf toegang tot alle Azure-abonnementen en-beheer groepen in uw directory toewijzen. Gebruik deze mogelijkheid als u geen toegang hebt tot Azure-abonnements resources, zoals virtuele machines of opslag accounts, en u uw globale beheerders bevoegdheden wilt gebruiken om toegang te krijgen tot deze resources.
+Azure AD- en Azure-bronnen worden onafhankelijk van elkaar beveiligd. Dat wil zeggen dat Azure AD-roltoewijzingen geen toegang verlenen tot Azure-resources en Azure-roltoewijzingen geen toegang verlenen tot Azure AD. Als u echter een [globale beheerder](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) in Azure AD bent, u uzelf toegang toewijzen tot alle Azure-abonnementen en beheergroepen in uw directory. Gebruik deze mogelijkheid als u geen toegang hebt tot Azure-abonnementsbronnen, zoals virtuele machines of opslagaccounts, en u uw bevoegdheid voor globale beheerder wilt gebruiken om toegang te krijgen tot deze bronnen.
 
-Wanneer u de toegang uitbreidt, krijgt u de rol [beheerder voor gebruikers toegang](built-in-roles.md#user-access-administrator) in Azure in het hoofd bereik (`/`) toegewezen. Hiermee kunt u alle resources weer geven en toegang toewijzen in een abonnement of beheer groep in de Directory. U kunt de toewijzingen van beheerders rollen voor gebruikers toegang verwijderen met Azure PowerShell, Azure CLI of de REST API.
+Wanneer u uw toegang verheft, krijgt u de rol [Gebruikerstoegangsbeheerder](built-in-roles.md#user-access-administrator) in Azure toegewezen op basisgebied (`/`).Hiermee u alle bronnen bekijken en toegang toewijzen in een abonnement of beheergroep in de map. Functietoewijzingen voor gebruikerstoegangsbeheerders kunnen worden verwijderd met Azure PowerShell, Azure CLI of de REST-API.
 
-U moet deze verhoogde toegang verwijderen nadat u de wijzigingen hebt aangebracht die u moet aanbrengen in het hoofd bereik.
+U moet deze verhoogde toegang verwijderen zodra u de wijzigingen hebt aangebracht die u moet aanbrengen bij de hoofdscope.
 
 ![Toegang verhogen](./media/elevate-access-global-admin/elevate-access.png)
 
-## <a name="azure-portal"></a>Azure-portal
+## <a name="azure-portal"></a>Azure Portal
 
-### <a name="elevate-access-for-a-global-administrator"></a>Toegang verhogen voor een globale beheerder
+### <a name="elevate-access-for-a-global-administrator"></a>Toegang voor een globale beheerder verhogen
 
-Volg deze stappen om de toegang tot een globale beheerder te verhogen met behulp van de Azure Portal.
+Volg deze stappen om de toegang voor een globale beheerder te verhogen met behulp van de Azure-portal.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) of het [beheer centrum van Azure Active Directory](https://aad.portal.azure.com) als globale beheerder.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) of het [Azure Active Directory-beheercentrum](https://aad.portal.azure.com) als globale beheerder.
 
-1. Zoek en selecteer **Azure Active Directory**.
+1. Zoek naar **Azure Active Directory** en selecteer deze optie.
 
-   ![Azure Active Directory scherm afbeelding selecteren](./media/elevate-access-global-admin/search-for-azure-active-directory.png)
+   ![Azure Active Directory selecteren - schermafbeelding](./media/elevate-access-global-admin/search-for-azure-active-directory.png)
 
-1. Selecteer onder **beheren**de optie **Eigenschappen**.
+1. Selecteer **Eigenschappen** **onder Beheren**.
 
-   ![Eigenschappen voor Azure Active Directory eigenschappen selecteren-scherm afbeelding](./media/elevate-access-global-admin/azure-active-directory-properties.png)
+   ![Eigenschappen voor Azure Active Directory-eigenschappen selecteren - schermafbeelding](./media/elevate-access-global-admin/azure-active-directory-properties.png)
 
-1. Stel onder **toegangs beheer voor Azure-resources**de schakel optie in op **Ja**.
+1. Stel **onder Access-beheer voor Azure-resources**de schakel in op **Ja**.
 
-   ![Toegangs beheer voor Azure-resources-scherm afbeelding](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
+   ![Toegangsbeheer voor Azure-bronnen - schermafbeelding](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   Wanneer u de wissel knop instelt op **Ja**, wordt de rol gebruikers toegangs beheerder toegewezen in azure RBAC in het hoofd bereik (/). Hiermee verleent u toestemming om rollen toe te wijzen aan alle Azure-abonnementen en-beheer groepen die zijn gekoppeld aan deze Azure AD-Directory. Deze schakel optie is alleen beschikbaar voor gebruikers aan wie de rol van globale beheerder is toegewezen in azure AD.
+   Wanneer u de schakel instelt op **Ja,** krijgt u de rol Gebruikerstoegangsbeheerder toegewezen in Azure RBAC bij hoofdbereik (/). Hiermee u rollen toewijzen in alle Azure-abonnementen en beheergroepen die zijn gekoppeld aan deze Azure AD-map. Deze wisselknop is alleen beschikbaar voor gebruikers die de rol Globale beheerder in Azure AD hebben toegewezen.
 
-   Wanneer u de wissel knop op **Nee**instelt, wordt de rol beheerder voor gebruikers toegang in azure RBAC verwijderd uit uw gebruikers account. U kunt geen rollen meer toewijzen in alle Azure-abonnementen en-beheer groepen die zijn gekoppeld aan deze Azure AD-Directory. U kunt alleen de Azure-abonnementen en-beheer groepen weer geven en beheren waartoe u toegang hebt gekregen.
+   Wanneer u de schakel instelt op **Nee,** wordt de rol Gebruikerstoegangsbeheer in Azure RBAC uit uw gebruikersaccount verwijderd. U geen rollen meer toewijzen in alle Azure-abonnementen en beheergroepen die zijn gekoppeld aan deze Azure AD-map. U alleen de Azure-abonnementen en beheergroepen waartoe u toegang hebt gekregen, bekijken en beheren.
 
     > [!NOTE]
-    > Als u [Azure AD privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md)gebruikt, is het deactiveren van de roltoewijzing niet van invloed op de wissel knop op **Nee**. Als u de minimale privileged Access wilt behouden, raden we u aan deze wissel knop in te stellen op **Nee** voordat u de roltoewijzing deactiveert.
+    > Als u [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md)gebruikt, wordt deze schakelfunctie niet gewijzigd in **Nee**. Als u de minste bevoorrechte toegang wilt behouden, raden we u aan deze schakel in te stellen op **Nee** voordat u de roltoewijzing deactiveert.
     
-1. Klik op **Opslaan** om de instelling op te slaan.
+1. Klik **op Opslaan** om de instelling op te slaan.
 
-   Deze instelling is geen algemene eigenschap en is alleen van toepassing op de momenteel aangemelde gebruiker. U kunt de toegang niet verhogen voor alle leden van de rol globale beheerder.
+   Deze instelling is geen globale eigenschap en is alleen van toepassing op de momenteel aangemelde gebruiker. U de toegang niet voor alle leden van de rol Globale beheerder verhogen.
 
-1. Meld u af en meld u opnieuw aan om uw toegang te vernieuwen.
+1. Meld u af en meld u weer aan om uw toegang te vernieuwen.
 
-    U hebt nu toegang tot alle abonnementen en beheer groepen in uw Directory. Wanneer u het deel venster toegangs beheer (IAM) bekijkt, ziet u dat u de rol gebruikers toegang beheerder hebt toegewezen in het hoofd bereik.
+    U moet nu toegang hebben tot alle abonnementen en beheergroepen in uw directory. Wanneer u het deelvenster Toegangsbeheer (IAM) bekijkt, ziet u dat u de rol Gebruikerstoegangsbeheerder bij het hoofdbereik hebt gekregen.
 
-   ![Abonnements roltoewijzingen met het hoofd bereik-scherm afbeelding](./media/elevate-access-global-admin/iam-root.png)
+   ![Toewijzingen van abonnementsrollen met hoofdbereik - schermafbeelding](./media/elevate-access-global-admin/iam-root.png)
 
-1. Breng de gewenste wijzigingen aan in de verhoogde toegang.
+1. Breng de wijzigingen aan die u moet aanbrengen bij de verhoogde toegang.
 
-    Zie [toegang beheren met RBAC en de Azure Portal](role-assignments-portal.md)voor meer informatie over het toewijzen van rollen. Als u Azure AD Privileged Identity Management (PIM) gebruikt, raadpleegt u [Azure-resources detecteren om te beheren in PIM](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) of [Azure-resource rollen toewijzen in PIM](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
+    Zie Toegang beheren met [RBAC en de Azure-portal](role-assignments-portal.md)voor informatie over het toewijzen van rollen. Als u Azure AD Privileged Identity Management (PIM) gebruikt, raadpleegt u [Azure-resources ontdekken om te beheren in PIM](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) of [Azure-bronrollen toewijzen in PIM](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
 
 ### <a name="remove-elevated-access"></a>Verhoogde toegang verwijderen
 
-Ga als volgt te werk om de toewijzing van de rol beheerder voor gebruikers toegang te verwijderen in het hoofd bereik (`/`).
+Volg deze stappen om de functietoewijzing`/`voor gebruikerstoegangbeheerders bij het hoofdbereik te verwijderen.
 
-1. Meld u aan als dezelfde gebruiker die is gebruikt om de toegang tot verhoogde bevoegdheden uit te breiden.
+1. Meld u aan als dezelfde gebruiker die is gebruikt om de toegang te verhogen.
 
-1. Klik in de navigatie lijst op **Azure Active Directory** en klik vervolgens op **Eigenschappen**.
+1. Klik in de navigatielijst op **Azure Active Directory** en klik vervolgens op **Eigenschappen**.
 
-1. Stel het **toegangs beheer voor Azure-resources** in op **Nee**. Aangezien dit een instelling per gebruiker is, moet u zijn aangemeld als dezelfde gebruiker als waarmee de toegang wordt verhoogd.
+1. Stel het **Access-beheer voor Azure-resources** in om terug te schakelen naar **Nee**. Aangezien dit een instelling per gebruiker is, moet u zijn aangemeld als dezelfde gebruiker als is gebruikt om de toegang te verhogen.
 
-    Als u probeert de toewijzing van de rol beheerder voor gebruikers toegang te verwijderen in het deel venster toegangs beheer (IAM), wordt het volgende bericht weer gegeven. Als u de roltoewijzing wilt verwijderen, moet u instellen dat u de wissel knop weer instelt op **Nee** of Azure PowerShell, Azure CLI of de rest API gebruiken.
+    Als u de functietoewijzing voor gebruikerstoegangbeheerders probeert te verwijderen in het deelvenster Toegangsbeheer (IAM), ziet u het volgende bericht. Als u de roltoewijzing wilt verwijderen, moet u de schakeling instellen op **Nee** of Azure PowerShell, Azure CLI of de REST-API gebruiken.
 
-    ![Roltoewijzingen met het hoofd bereik verwijderen](./media/elevate-access-global-admin/iam-root-remove.png)
+    ![Roltoewijzingen met hoofdbereik verwijderen](./media/elevate-access-global-admin/iam-root-remove.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-### <a name="list-role-assignment-at-root-scope-"></a>Roltoewijzing in hoofd bereik weer geven (/)
+### <a name="list-role-assignment-at-root-scope-"></a>Roltoewijzing op maken bij het hoofdbereik (/)
 
-Gebruik de opdracht [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) om de roltoewijzing van de gebruikers toegang voor een gebruiker in het hoofd bereik (`/`) weer te geven.
+Als u de functietoewijzing voor gebruikerstoegangbeheerders`/`voor een gebruiker op basisgebied () wilt weergeven, gebruikt u de opdracht [Get-AzRoleAssignment.](/powershell/module/az.resources/get-azroleassignment)
 
 ```azurepowershell
 Get-AzRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrator" `
@@ -129,22 +129,22 @@ CanDelegate        : False
 
 ### <a name="remove-elevated-access"></a>Verhoogde toegang verwijderen
 
-Ga als volgt te werk om de toewijzing van de rol beheerder voor gebruikers toegang voor uzelf of een andere gebruiker in het hoofd bereik (`/`) te verwijderen.
+Volg deze stappen als u de functietoewijzing voor`/`gebruikerstoegangvoor uzelf of een andere gebruiker wilt verwijderen in het hoofdbereik ( )
 
-1. Meld u aan als een gebruiker die verhoogde toegang kan verwijderen. Dit kan dezelfde gebruiker zijn die is gebruikt voor het verhogen van de toegang of een andere globale beheerder met verhoogde toegang in het hoofd bereik.
+1. Meld u aan als gebruiker die verhoogde toegang kan verwijderen. Dit kan dezelfde gebruiker zijn die is gebruikt om de toegang te verhogen of een andere globale beheerder met verhoogde toegang bij het hoofdbereik.
 
-1. Gebruik de opdracht [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) voor het verwijderen van de toewijzing van de rol beheerder van gebruikers toegang.
+1. Gebruik de opdracht [Verwijderen-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) om de functietoewijzing voor gebruikerstoegangsbeheerder te verwijderen.
 
     ```azurepowershell
     Remove-AzRoleAssignment -SignInName <username@example.com> `
       -RoleDefinitionName "User Access Administrator" -Scope "/"
     ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-CLI
 
-### <a name="list-role-assignment-at-root-scope-"></a>Roltoewijzing in hoofd bereik weer geven (/)
+### <a name="list-role-assignment-at-root-scope-"></a>Roltoewijzing op maken bij het hoofdbereik (/)
 
-Gebruik de opdracht [AZ Role Assignment List](/cli/azure/role/assignment#az-role-assignment-list) om de roltoewijzing van de gebruikers toegang voor een gebruiker in het hoofd bereik (`/`) weer te geven.
+Als u de functietoewijzing voor gebruikerstoegangbeheerders`/`voor een gebruiker op basisgebied ( ) wilt weergeven, gebruikt u de [opdracht lijst met az-roltoewijzing.](/cli/azure/role/assignment#az-role-assignment-list)
 
 ```azurecli
 az role assignment list --role "User Access Administrator" --scope "/"
@@ -170,29 +170,29 @@ az role assignment list --role "User Access Administrator" --scope "/"
 
 ### <a name="remove-elevated-access"></a>Verhoogde toegang verwijderen
 
-Ga als volgt te werk om de toewijzing van de rol beheerder voor gebruikers toegang voor uzelf of een andere gebruiker in het hoofd bereik (`/`) te verwijderen.
+Volg deze stappen als u de functietoewijzing voor`/`gebruikerstoegangvoor uzelf of een andere gebruiker wilt verwijderen in het hoofdbereik ( )
 
-1. Meld u aan als een gebruiker die verhoogde toegang kan verwijderen. Dit kan dezelfde gebruiker zijn die is gebruikt voor het verhogen van de toegang of een andere globale beheerder met verhoogde toegang in het hoofd bereik.
+1. Meld u aan als gebruiker die verhoogde toegang kan verwijderen. Dit kan dezelfde gebruiker zijn die is gebruikt om de toegang te verhogen of een andere globale beheerder met verhoogde toegang bij het hoofdbereik.
 
-1. Gebruik de opdracht [AZ Role Assignment delete](/cli/azure/role/assignment#az-role-assignment-delete) om de roltoewijzing voor gebruikers toegang te verwijderen.
+1. Gebruik de opdracht [Verwijderen van de AZ-roltoewijzing](/cli/azure/role/assignment#az-role-assignment-delete) om de functietoewijzing voor gebruikerstoegangsbeheerders te verwijderen.
 
     ```azurecli
     az role assignment delete --assignee username@example.com --role "User Access Administrator" --scope "/"
     ```
 
-## <a name="rest-api"></a>REST-API
+## <a name="rest-api"></a>REST API
 
-### <a name="elevate-access-for-a-global-administrator"></a>Toegang verhogen voor een globale beheerder
+### <a name="elevate-access-for-a-global-administrator"></a>Toegang voor een globale beheerder verhogen
 
-Gebruik de volgende basis stappen om de toegang tot een globale beheerder te verhogen met behulp van de REST API.
+Gebruik de volgende basisstappen om de toegang voor een globale beheerder te verhogen met behulp van de REST-API.
 
-1. Met behulp van REST, Call `elevateAccess`, waarmee u de rol van beheerder voor gebruikers toegang in het hoofd bereik (`/`) verleent.
+1. Met BEHULP `elevateAccess`van REST, aanroepen , die u`/`de user access administrator rol op root scope ( ).
 
    ```http
    POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
    ```
 
-1. Maak een [roltoewijzing](/rest/api/authorization/roleassignments) om een wille keurige rol aan elk bereik toe te wijzen. In het volgende voor beeld worden de eigenschappen weer gegeven voor het toewijzen van de rol {Roledefinitionid hebben} in het hoofd bereik (`/`):
+1. Maak een [roltoewijzing](/rest/api/authorization/roleassignments) om een rol toe te wijzen aan elk bereik. In het volgende voorbeeld worden de eigenschappen weergegeven voor het`/`toewijzen van de rol {roleDefinitionID} aan het hoofdbereik :
 
    ```json
    { 
@@ -207,25 +207,25 @@ Gebruik de volgende basis stappen om de toegang tot een globale beheerder te ver
    }
    ```
 
-1. Hoewel de beheerder van een gebruiker toegang heeft, kunt u ook roltoewijzingen verwijderen uit het hoofd bereik (`/`).
+1. Terwijl u een gebruikerstoegangsbeheerder bent, u`/`ook roltoewijzingen op basisgebied verwijderen ( ).
 
-1. Verwijder de beheerders bevoegdheden voor gebruikers toegang tot ze weer nodig zijn.
+1. Verwijder de beheerdersrechten voor gebruikerstoegang totdat ze opnieuw nodig zijn.
 
-### <a name="list-role-assignments-at-root-scope-"></a>Roltoewijzingen in het hoofd bereik weer geven (/)
+### <a name="list-role-assignments-at-root-scope-"></a>Roltoewijzingen aanbieden bij hoofdbereik (/)
 
-U kunt alle roltoewijzingen voor een gebruiker in het hoofd bereik (`/`) weer geven.
+U alle roltoewijzingen voor een gebruiker`/`op basis van het hoofdbereik weergeven ().
 
-- Roep [Get roleAssignmentse aan](/rest/api/authorization/roleassignments/listforscope) waarbij `{objectIdOfUser}` de object-id is van de gebruiker van wie u de roltoewijzingen wilt ophalen.
+- Call [GET-rolToewijzingen](/rest/api/authorization/roleassignments/listforscope) waar `{objectIdOfUser}` is de object-id van de gebruiker wiens roltoewijzingen u wilt ophalen.
 
    ```http
    GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectIdOfUser}'
    ```
 
-### <a name="list-deny-assignments-at-root-scope-"></a>Lijst met het weigeren van toewijzingen in het hoofd bereik (/)
+### <a name="list-deny-assignments-at-root-scope-"></a>Toewijzingen weigeren op basisvan het hoofdbereik (/)
 
-U kunt alle weiger toewijzingen voor een gebruiker in het hoofd bereik (`/`) weer geven.
+U alle weigeringstoewijzingen voor een gebruiker`/`op basis van het hoofdbereik vermelden ( ).
 
-- Roep GET denyAssignmentse aan waarbij `{objectIdOfUser}` de object-ID is van de gebruiker van wie u de toewijzingen die u wilt ophalen weigeren.
+- Oproep GET Weigert `{objectIdOfUser}` waar is de object-ID van de gebruiker wiens weigeringstoewijzingen u wilt ophalen.
 
    ```http
    GET https://management.azure.com/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter=gdprExportPrincipalId+eq+'{objectIdOfUser}'
@@ -233,9 +233,9 @@ U kunt alle weiger toewijzingen voor een gebruiker in het hoofd bereik (`/`) wee
 
 ### <a name="remove-elevated-access"></a>Verhoogde toegang verwijderen
 
-Wanneer u `elevateAccess`aanroept, maakt u een roltoewijzing voor uzelf, zodat u de bevoegdheden die u nodig hebt om de rol van beheerder voor gebruikers toegang voor uzelf te verwijderen in het hoofd bereik (`/`) kunt intrekken.
+Wanneer u `elevateAccess`aanroept, maakt u een roltoewijzing voor uzelf, dus om de bevoegdheden in te`/`trekken die u nodig hebt om de roltoewijzing voor gebruikerstoegangsbeheerders voor uzelf te verwijderen bij het hoofdbereik ( )
 
-1. Roep [Get roleDefinitionse](/rest/api/authorization/roledefinitions/get) aan waarbij `roleName` gelijk is aan de beheerder van de gebruikers toegang om de naam-id van de beheerder van de gebruikers toegang te bepalen.
+1. Call [GET-rolDefinities](/rest/api/authorization/roledefinitions/get) zijn `roleName` gelijk aan gebruikerstoegangsbeheerder om de naam-id van de functie Gebruikerstoegangsbeheerder te bepalen.
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=roleName+eq+'User Access Administrator'
@@ -276,20 +276,20 @@ Wanneer u `elevateAccess`aanroept, maakt u een roltoewijzing voor uzelf, zodat u
     }
     ```
 
-    Sla de ID op uit de para meter `name`, in dit geval `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9`.
+    Sla de ID `name` op van `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9`de parameter, in dit geval .
 
-1. U moet ook de roltoewijzing voor de Directory-beheerder in het bereik van de Directory weer geven. Een lijst met alle toewijzingen in het bereik van de Directory voor de `principalId` van de Directory-beheerder die de toegangs aanroep ter verhoging heeft gemaakt. Hiermee worden alle toewijzingen in de map voor de objectid weer geven.
+1. U moet ook de roltoewijzing voor de directorybeheerder vermelden bij directoryscope. Vermeld alle toewijzingen in `principalId` directoryscope voor de directorybeheerder die het elevate access-gesprek heeft uitgevoerd. Hiermee worden alle toewijzingen in de map voor de objectid vermeld.
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'
     ```
         
     >[!NOTE] 
-    >Een Directory-beheerder mag niet veel toewijzingen hebben, als de vorige query te veel toewijzingen retourneert, kunt u ook een query uitvoeren voor alle toewijzingen, alleen op het niveau van een mapniveau en vervolgens de resultaten filteren: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
+    >Een directorybeheerder mag niet veel toewijzingen hebben, als de vorige query te veel toewijzingen retourneert, u ook query's voor alle toewijzingen alleen op directoryscopeniveau en vervolgens de resultaten filteren:`GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
             
-1. De vorige oproepen retour neren een lijst met roltoewijzingen. Zoek de roltoewijzing op waar de scope zich bevindt `"/"` en de `roleDefinitionId` eindigt met de rolnaam-ID die u in stap 1 hebt gevonden en `principalId` overeenkomt met de objectId van de Directory-beheerder. 
+1. De vorige oproepen retourneren een lijst met roltoewijzingen. Zoek de roltoewijzing waar `"/"` het `roleDefinitionId` bereik zich bevindt en de `principalId` uiteinden met de rolnaam-id die u in stap 1 hebt gevonden en die overeenkomt met de objectId van de directorybeheerder. 
     
-    Toewijzing van voorbeeld functie:
+    Voorbeeldroltoewijzing:
     
     ```json
     {
@@ -313,9 +313,9 @@ Wanneer u `elevateAccess`aanroept, maakt u een roltoewijzing voor uzelf, zodat u
     }
     ```
     
-    Sla de ID opnieuw op in de para meter `name`, in dit geval 11111111-1111-1111-1111-111111111111.
+    Sla de ID opnieuw `name` op van de parameter, in dit geval 1111111-1111-1111-1111-1111111111111.
 
-1. Gebruik ten slotte de roltoewijzings-ID voor het verwijderen van de toewijzing die is toegevoegd door `elevateAccess`:
+1. Tot slot gebruik u de taaktoewijzings-id om de toewijzing te verwijderen die is toegevoegd door: `elevateAccess`
 
     ```http
     DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111?api-version=2015-07-01
@@ -324,4 +324,4 @@ Wanneer u `elevateAccess`aanroept, maakt u een roltoewijzing voor uzelf, zodat u
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Inzicht in de verschillende rollen](rbac-and-directory-admin-roles.md)
-- [Toegang tot Azure-resources beheren met RBAC en de REST API](role-assignments-rest.md)
+- [Toegang tot Azure-bronnen beheren met RBAC en de REST API](role-assignments-rest.md)

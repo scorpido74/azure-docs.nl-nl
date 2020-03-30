@@ -1,6 +1,6 @@
 ---
-title: De SKU voor een Azure AD Domain Services wijzigen | Microsoft Docs
-description: Meer informatie over de SKU-laag voor een Azure AD Domain Services beheerd domein als uw bedrijfs vereisten veranderen
+title: De SKU wijzigen voor een Azure AD Domain Services | Microsoft Documenten
+description: Meer informatie over het wijzigen van de SKU-laag voor een beheerd Azure AD Domain Services-domein als uw bedrijfsvereisten veranderen
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,60 +11,60 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
 ms.openlocfilehash: b65310569e95173b88dd0aa0dfe1dbacd86cc8fc
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126698"
 ---
-# <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>De SKU voor een bestaand Azure AD Domain Services beheerd domein wijzigen
+# <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>De SKU wijzigen voor een bestaand beheerd Azure AD Domain Services-domein
 
-In Azure Active Directory Domain Services (Azure AD DS) zijn de beschik bare prestaties en functies gebaseerd op het type SKU. Deze functie verschillen omvatten de back-upfrequentie of het maximum aantal eenrichtings vertrouwensrelaties voor uitgaande forests (momenteel als preview-versie). U selecteert een SKU wanneer u het beheerde domein maakt en u kunt naar boven of beneden scha kelen tussen Sku's wanneer de bedrijfs behoeften veranderen nadat het beheerde domein is geïmplementeerd. Wijzigingen in zakelijke vereisten kunnen de nood zaak van vaker back-ups bevatten of extra forestvertrouwensrelaties maken. Meer informatie over de limieten en prijzen van de verschillende Sku's vindt u in [azure AD DS SKU-concepten][concepts-sku] en [Azure AD DS prijzen][pricing] pagina's.
+In Azure Active Directory Domain Services (Azure AD DS) zijn de beschikbare prestaties en functies gebaseerd op het SKU-type. Deze functieverschillen omvatten de back-upfrequentie of het maximumaantal one-way outbound forest-vertrouwensrelaties (momenteel in preview). U selecteert een SKU wanneer u het beheerde domein maakt en u SKU's omhoog of omlaag schakelen als uw bedrijfsbehoeften veranderen nadat het beheerde domein is geïmplementeerd. Wijzigingen in de bedrijfsvereisten kunnen de noodzaak omvatten van frequentere back-ups of het maken van extra forestvertrouwensrelaties. Zie [Azure AD DS SKU-concepten][concepts-sku] en [Azure AD DS-prijspagina's][pricing] voor meer informatie over de limieten en prijzen van de verschillende SKU's.
 
-In dit artikel wordt beschreven hoe u de SKU voor een bestaand Azure AD DS beheerde domein wijzigt met behulp van de Azure Portal.
+In dit artikel ziet u hoe u de SKU voor een bestaand door Azure AD DS beheerd domein wijzigt met behulp van de Azure-portal.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
+Als u dit artikel wilt voltooien, hebt u de volgende bronnen en bevoegdheden nodig:
 
 * Een actief Azure-abonnement.
-    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
-    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
-* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
-    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
+    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)aan .
+* Een Azure Active Directory-tenant die is gekoppeld aan uw abonnement, gesynchroniseerd met een on-premises directory of een map met alleen wolken.
+    * Maak indien nodig [een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account.][associate-azure-ad-tenant]
+* Een beheerd azure Directory Domain Services-domein is ingeschakeld en geconfigureerd in uw Azure AD-tenant.
+    * Vul indien nodig de zelfstudie in om [een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance]te maken en te configureren.
 
-## <a name="sku-change-limitations"></a>Beperkingen voor het wijzigen van de SKU
+## <a name="sku-change-limitations"></a>Beperkingen voor SKU-wijzigingen
 
-U kunt Sku's omhoog of omlaag wijzigen nadat het beheerde domein van Azure AD DS is geïmplementeerd. Als u echter een resource-forest gebruikt (momenteel in de preview-versie) en een eenrichtings uitgaande forest-vertrouwens relatie van Azure AD DS naar een on-premises AD DS omgeving hebt gemaakt, zijn er enkele beperkingen voor de bewerking voor het wijzigen van de SKU. De *Premium* -en *Enter prise* -sku's definiëren een limiet voor het aantal vertrouwens relaties dat u kunt maken. U kunt niet overschakelen naar een SKU met een lagere maximum limiet dan u momenteel hebt geconfigureerd.
+U SKU's omhoog of omlaag wijzigen nadat het door Azure AD DS beheerde domein is geïmplementeerd. Als u echter een resourceforest gebruikt (momenteel in preview) en een malige forestvertrouwensrelaties hebt gemaakt van Azure AD DS naar een on-premises AD DS-omgeving, zijn er enkele beperkingen voor de Wijzigingsbewerking Van SKU. De *Premium-* en *Enterprise* SKU's definiëren een limiet op het aantal vertrouwensrelaties dat u maken. U niet overstappen op een SKU met een lagere maximumlimiet dan u momenteel hebt geconfigureerd.
 
 Bijvoorbeeld:
 
-* Als u twee forest-vertrouwens relaties hebt gemaakt voor de *Premium* -SKU, kunt u niet verlagen naar de *standaard* -SKU. De *standaard* -SKU ondersteunt geen forest-vertrouwens relaties.
-* Of, als u zeven vertrouwens relaties hebt gemaakt voor de *Premium* -SKU, kunt u niet verlagen naar de *Enter prise* -SKU. De *Enter prise* -SKU ondersteunt Maxi maal vijf vertrouwens relaties.
+* Als u twee forestvertrouwensrelaties op de *Premium* SKU hebt gemaakt, u niet worden gewijzigd in de *Standaard* SKU. De *Standaard* SKU ondersteunt geen forestvertrouwensrelaties.
+* Of als u zeven vertrouwensrelaties op de *Premium* SKU hebt gemaakt, u niet overstappen naar de *Enterprise* SKU. De *Enterprise* SKU ondersteunt maximaal vijf vertrouwensrelaties.
 
-Zie [Azure AD DS SKU-functies en-limieten][concepts-sku]voor meer informatie over deze limieten.
+Zie Azure [AD DS SKU-functies en -limieten][concepts-sku]voor meer informatie over deze limieten.
 
 ## <a name="select-a-new-sku"></a>Een nieuwe SKU selecteren
 
-Voer de volgende stappen uit om de SKU voor een met Azure AD DS beheerd domein te wijzigen met behulp van de Azure Portal:
+Voer de volgende stappen uit om de SKU voor een door Azure AD DS beheerd domein te wijzigen met behulp van de Azure-portal:
 
-1. Zoek en selecteer **Azure AD Domain Services**aan de bovenkant van de Azure Portal. Kies uw beheerde domein in de lijst, zoals *aaddscontoso.com*.
-1. Selecteer in het menu aan de linkerkant van de pagina Azure-AD DS **instellingen > SKU**.
+1. Zoek en selecteer Azure AD Domain Services boven aan de **Azure-portal.** Kies uw beheerde domein in de lijst, zoals *aaddscontoso.com*.
+1. Selecteer **Instellingen > SKU**in het menu aan de linkerkant van de pagina Azure AD DS .
 
-    ![Selecteer de menu optie van de SKU voor uw Azure AD DS beheerde domein in het Azure Portal](media/change-sku/overview-change-sku.png)
+    ![Selecteer de menuoptie SKU voor uw door Azure AD DS beheerde domein in de Azure-portal](media/change-sku/overview-change-sku.png)
 
-1. Selecteer in de vervolg keuzelijst de SKU die u wilt voor uw Azure AD DS beheerde domein. Als u een resource-forest hebt, kunt u *standaard* -SKU niet selecteren als forest-vertrouwens relaties zijn alleen beschikbaar in de *Enter prise* -SKU of hoger.
+1. Selecteer in de vervolgkeuzelijst de SKU die u wilt voor uw door Azure AD DS beheerde domein. Als u een bronforest hebt, u *standaard* SKU niet selecteren omdat forestvertrouwensrelaties alleen beschikbaar zijn op de *Enterprise* SKU of hoger.
 
-    Kies de gewenste SKU in de vervolg keuzelijst en selecteer vervolgens **Opslaan**.
+    Kies de gewenste SKU in het vervolgkeuzemenu en selecteer **Opslaan**.
 
-    ![Kies de vereiste SKU in het vervolg keuzemenu van de Azure Portal](media/change-sku/change-sku-selection.png)
+    ![Kies de vereiste SKU in het vervolgkeuzemenu in de Azure-portal](media/change-sku/change-sku-selection.png)
 
-Het kan een paar minuten duren voordat het SKU-type is gewijzigd.
+Het kan een minuut of twee duren om het SKU-type te wijzigen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [een uitgaande forestvertrouwensrelatie maken met een on-premises domein in Azure AD DS (preview)][create-trust]als u een bron-forest hebt en aanvullende vertrouwens relaties wilt maken nadat de SKU is gewijzigd.
+Zie [Een uitgaande forestvertrouwensrelatie maken naar een on-premises domein in Azure AD DS (preview)][create-trust]als u een resourceforest hebt en extra vertrouwensrelaties wilt maken na de Wijziging van de SKU.
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
