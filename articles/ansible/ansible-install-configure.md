@@ -1,6 +1,6 @@
 ---
-title: 'Quick Start: Ansible installeren op virtuele Linux-machines in azure'
-description: In deze Quick Start leert u hoe u Ansible kunt installeren en configureren voor het beheer van Azure-resources op Ubuntu, CentOS en SLES
+title: Quickstart - Ansible installeren op virtuele Linux-machines in Azure
+description: In deze quickstart leert u hoe u Ansible installeren en configureren voor het beheren van Azure-bronnen op Ubuntu, CentOS en SLES
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
 ms.topic: quickstart
 ms.service: ansible
@@ -9,15 +9,15 @@ manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
 ms.openlocfilehash: 44007000475793005560914fd816cd0c16927f9a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77202408"
 ---
-# <a name="quickstart-install-ansible-on-linux-virtual-machines-in-azure"></a>Snelstartgids: Ansible installeren op virtuele Linux-machines in azure
+# <a name="quickstart-install-ansible-on-linux-virtual-machines-in-azure"></a>Snelstart: Installeer Ansible op Linux virtuele machines in Azure
 
-U kunt Ansible ook gebruiken om de implementatie en configuratie van resources in uw omgeving te automatiseren. In dit artikel wordt beschreven hoe u Ansible configureert voor een aantal van de meest voorkomende Linux-distributies. Als u Ansible wilt installeren op andere distributies, past u de geïnstalleerde pakketten voor uw specifieke platform aan. 
+U kunt Ansible ook gebruiken om de implementatie en configuratie van resources in uw omgeving te automatiseren. Dit artikel laat zien hoe ansible te configureren voor enkele van de meest voorkomende Linux distro's. Als u Ansible op andere distro's wilt installeren, past u de geïnstalleerde pakketten voor uw specifieke platform aan. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,11 +35,11 @@ Meld u aan bij uw Linux-machine en selecteer een van de volgende versies voor in
 
 ### <a name="centos-74"></a>CentOS 7.4
 
-In deze sectie configureert u CentOS voor het gebruik van Ansible.
+In deze sectie configureert u CentOS om Ansible te gebruiken.
 
 1. Open een terminalvenster.
 
-1. Voer de volgende opdracht in om de vereiste pakketten te installeren voor de Azure python SDK-modules:
+1. Voer de volgende opdracht in om de vereiste pakketten voor de Azure Python SDK-modules te installeren:
 
     ```bash
     sudo yum check-update; sudo yum install -y gcc libffi-devel python-devel openssl-devel epel-release
@@ -56,11 +56,11 @@ In deze sectie configureert u CentOS voor het gebruik van Ansible.
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
-In deze sectie configureert u Ubuntu voor het gebruik van Ansible.
+In deze sectie configureer t u Ubuntu om Ansible te gebruiken.
 
 1. Open een terminalvenster.
 
-1. Voer de volgende opdracht in om de vereiste pakketten te installeren voor de Azure python SDK-modules:
+1. Voer de volgende opdracht in om de vereiste pakketten voor de Azure Python SDK-modules te installeren:
 
     ```bash
     sudo apt-get update && sudo apt-get install -y libssl-dev libffi-dev python-dev python-pip
@@ -76,11 +76,11 @@ In deze sectie configureert u Ubuntu voor het gebruik van Ansible.
 
 ### <a name="sles-12-sp2"></a>SLES 12 SP2
 
-In deze sectie configureert u SLES voor het gebruik van Ansible.
+In deze sectie configureert u SLES om Ansible te gebruiken.
 
 1. Open een terminalvenster.
 
-1. Voer de volgende opdracht in om de vereiste pakketten te installeren voor de Azure python SDK-modules:
+1. Voer de volgende opdracht in om de vereiste pakketten voor de Azure Python SDK-modules te installeren:
 
     ```bash
     sudo zypper refresh && sudo zypper --non-interactive install gcc libffi-devel-gcc5 make \
@@ -93,7 +93,7 @@ In deze sectie configureert u SLES voor het gebruik van Ansible.
     sudo pip install ansible[azure]
     ```
 
-1. Voer de volgende opdracht in om een conflicterende python Cryptography-pakket te verwijderen:
+1. Voer de volgende opdracht in om conflicterend Python-cryptografiepakket te verwijderen:
 
     ```bash
     sudo pip uninstall -y cryptography
@@ -105,30 +105,30 @@ In deze sectie configureert u SLES voor het gebruik van Ansible.
 
 Als u de Ansible-referenties wilt configureren, hebt u de volgende informatie nodig:
 
-* Uw Azure-abonnements-ID 
-* De waarden van de Service-Principal
+* Uw Azure-abonnements-id 
+* De belangrijkste servicewaarden
 
-Als u Ansible Tower of Jenkins gebruikt, declareert u de Service-Principal-waarden als omgevings variabelen.
+Als u Ansible Tower of Jenkins gebruikt, verklaart u de hoofdwaarden van de service als omgevingsvariabelen.
 
-Configureer de Ansible-referenties met behulp van een van de volgende technieken:
+Configureer de Ansible-referenties met een van de volgende technieken:
 
 - [Een Ansible-referentiebestand maken](#file-credentials)
 - [Ansible-omgevingsvariabelen gebruiken](#env-credentials)
 
 ### <a name="span-idfile-credentials-create-ansible-credentials-file"></a><span id="file-credentials"/> Ansible-referentiebestand maken
 
-In deze sectie maakt u een lokaal referentie bestand om referenties op te geven voor Ansible. 
+In deze sectie maakt u een lokaal bestand met referenties om referenties aan Ansible te verstrekken. 
 
-Zie [referenties voor Azure-modules opgeven](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules)voor meer informatie over het definiëren van Ansible-referenties.
+Zie [Referenties verstrekken voor Azure-modules voor](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules)meer informatie over het definiëren van Ansible-referenties.
 
-1. Voor een ontwikkel omgeving maakt u een bestand met de naam `credentials` op de virtuele machine van de host:
+1. Maak voor een ontwikkelomgeving `credentials` een bestand met de naam op de virtuele hostmachine:
 
     ```bash
     mkdir ~/.azure
     vi ~/.azure/credentials
     ```
 
-1. Voeg de volgende regels in het bestand in. Vervang de tijdelijke aanduidingen door de waarden van de Service-Principal.
+1. Voeg de volgende regels in het bestand in. Vervang de tijdelijke aanduidingen door de hoofdwaarden van de service.
 
     ```bash
     [default]
@@ -142,11 +142,11 @@ Zie [referenties voor Azure-modules opgeven](https://docs.ansible.com/ansible/gu
 
 ### <a name="span-idenv-credentialsuse-ansible-environment-variables"></a><span id="env-credentials"/>Ansible-omgevingsvariabelen gebruiken
 
-In deze sectie exporteert u de Service-Principal-waarden voor het configureren van uw Ansible-referenties.
+In deze sectie exporteert u de hoofdwaarden van de service om uw Ansible-referenties te configureren.
 
 1. Open een terminalvenster.
 
-1. Exporteer de waarden van de Service-Principal:
+1. Exporteer de hoofdwaarden van de service:
 
     ```bash
     export AZURE_SUBSCRIPTION_ID=<your-subscription_id>
@@ -157,11 +157,11 @@ In deze sectie exporteert u de Service-Principal-waarden voor het configureren v
 
 ## <a name="verify-the-configuration"></a>De configuratie controleren
 
-Gebruik Ansible om een Azure-resource groep te maken om de geslaagde configuratie te controleren.
+Als u de geslaagde configuratie wilt verifiëren, gebruikt u Ansible om een Azure-brongroep te maken.
 
 [!INCLUDE [create-resource-group-with-ansible.md](../../includes/ansible-snippet-create-resource-group.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Snelstartgids: een virtuele Linux-machine configureren in azure met behulp van Ansible](./ansible-create-vm.md)
+> [Snelstart: een virtuele Linux-machine configureren in Azure met Ansible](./ansible-create-vm.md)

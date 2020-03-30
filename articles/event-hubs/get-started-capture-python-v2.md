@@ -1,6 +1,6 @@
 ---
-title: In azure Event Hubs opgenomen gegevens lezen van een python-app (meest recent)
-description: In dit artikel leest u hoe u Python-code kunt schrijven om gegevens vast te leggen die naar een Event Hub worden verzonden en de vastgelegde gebeurtenis gegevens van een Azure-opslag account te lezen.
+title: Azure Event Hubs lezen die gegevens uit een Python-app hebben vastgelegd (laatste)
+description: In dit artikel ziet u hoe u Python-code schrijft om gegevens vast te leggen die naar een gebeurtenishub worden verzonden en de vastgelegde gebeurtenisgegevens van een Azure-opslagaccount te lezen.
 services: event-hubs
 documentationcenter: ''
 author: spelluru
@@ -13,50 +13,50 @@ ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
 ms.openlocfilehash: 34583ef49b2f919391af3fe5700a558b2dc40700
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77187245"
 ---
-# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Event Hubs gegevens vastleggen in Azure Storage en deze lezen met behulp van python (Azure-eventhub versie 5)
+# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Gebeurtenishubsgegevens vastleggen in Azure Storage en deze lezen met Python (azure-eventhub versie 5)
 
-U kunt een Event Hub zodanig configureren dat de gegevens die naar een Event Hub worden verzonden, worden vastgelegd in een Azure-opslag account of Azure Data Lake Storage gen 1 of gen 2. In dit artikel wordt beschreven hoe u een python-code schrijft voor het verzenden van gebeurtenissen naar een Event Hub en het lezen van de vastgelegde gegevens uit **Azure Blob Storage**. Zie [Event hubs Capture-functie overzicht](event-hubs-capture-overview.md)voor meer informatie over deze functie.
+U een gebeurtenishub zo configureren dat de gegevens die naar een gebeurtenishub worden verzonden, worden vastgelegd in een Azure-opslagaccount of Azure Data Lake Storage Gen 1 of Gen 2. In dit artikel ziet u hoe u Python-code schrijft om gebeurtenissen naar een gebeurtenishub te verzenden en de vastgelegde gegevens uit **Azure Blob-opslag**te lezen. Zie Overzicht van de [functie Gebeurtenishubs vastleggen](event-hubs-capture-overview.md)voor meer informatie over deze functie.
 
-In deze Quick Start wordt de [Azure PYTHON SDK](https://azure.microsoft.com/develop/python/) gebruikt om de Capture-functie te demonstreren. De *Sender.py* -app stuurt gesimuleerde omgevings-telemetrie naar Event hubs in JSON-indeling. De event hub is geconfigureerd voor het gebruik van de Capture-functie voor het schrijven van deze gegevens naar Blob-opslag in batches. De *capturereader.py* -app leest deze blobs en maakt een toevoeg bestand voor elk apparaat. De app schrijft de gegevens vervolgens naar CSV-bestanden.
+Deze quickstart maakt gebruik van de [Azure Python SDK](https://azure.microsoft.com/develop/python/) om de capture-functie aan te tonen. De *sender.py-app* stuurt gesimuleerde omgevingstelemetrie naar gebeurtenishubs in JSON-indeling. De gebeurtenishub is geconfigureerd om de functie Vastleggen te gebruiken om deze gegevens in batches naar Blob-opslag te schrijven. De *capturereader.py-app* leest deze blobs en maakt een toevoegend bestand voor elk apparaat. De app schrijft de gegevens vervolgens in CSV-bestanden.
 
 > [!IMPORTANT]
-> In deze Quick Start wordt versie 5 van de Azure Event Hubs python-SDK gebruikt. Zie [dit artikel](event-hubs-capture-python.md)voor een Snelstartgids die gebruikmaakt van versie 1 van de PYTHON-SDK. 
+> Deze quickstart maakt gebruik van versie 5 van de Azure Event Hubs Python SDK. Zie [dit artikel](event-hubs-capture-python.md)voor een snelle start die versie 1 van de Python SDK gebruikt. 
 
 In deze snelstart, gaat u het volgende doen: 
 
 > [!div class="checklist"]
-> * Maak een Azure Blob-opslag account en een container in de Azure Portal.
-> * Een Event Hubs naam ruimte maken met behulp van de Azure Portal.
-> * Maak een Event Hub met de functie vastleggen ingeschakeld en koppel deze aan uw opslag account.
-> * Gegevens naar uw Event Hub verzenden met behulp van een python-script.
-> * Bestanden lezen en verwerken van Event Hubs vastleggen met behulp van een ander python-script.
+> * Maak een Azure Blob-opslagaccount en -container in de Azure-portal.
+> * Maak een naamruimte voor gebeurtenishubs met behulp van de Azure-portal.
+> * Maak een gebeurtenishub met de opnamefunctie ingeschakeld en koppel deze aan uw opslagaccount.
+> * Stuur gegevens naar de gebeurtenishub met behulp van een Python-script.
+> * Bestanden van Event Hubs Capture lezen en verwerken met een ander Python-script.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Python 2,7 en 3,5 of hoger, waarbij PIP is geïnstalleerd en bijgewerkt.  
-- Een Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.  
-- Een actieve Event Hubs naam ruimte en Event Hub.
-[Maak een event hubs naam ruimte en een event hub in de naam ruimte](event-hubs-create.md). Noteer de naam van de Event Hubs naam ruimte, de naam van de Event Hub en de primaire toegangs sleutel voor de naam ruimte. Als u de toegangs sleutel wilt ophalen, raadpleegt u [een event hubs-Connection String ophalen](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). De naam van de standaard sleutel is *RootManageSharedAccessKey*. Voor deze Quick Start hebt u alleen de primaire sleutel nodig. U hebt de connection string niet nodig.  
-- Een Azure-opslag account, een BLOB-container in het opslag account en een connection string naar het opslag account. Als u deze items niet hebt, gaat u als volgt te werk:  
-    1. [Een Azure-opslag account maken](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)  
-    1. [Een BLOB-container maken in het opslag account](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
-    1. [De connection string ophalen voor het opslag account](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string)
+- Python 2.7 en 3.5 of hoger, met PIP geïnstalleerd en bijgewerkt.  
+- Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.  
+- Een actieve naamruimte voor Gebeurtenishubs en gebeurtenishub.
+[Maak een naamruimte voor gebeurtenishubs en een gebeurtenishub in de naamruimte](event-hubs-create.md). Neem de naam van de naamruimte van gebeurtenishubs, de naam van de gebeurtenishub en de primaire toegangssleutel voor de naamruimte op. Zie [Een verbindingstekenreeks voor gebeurtenishubs ophalen](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)voor toegang. De standaardsleutelnaam is *RootManageSharedAccessKey*. Voor deze snelle start hebt u alleen de primaire sleutel nodig. Je hebt de verbindingsstring niet nodig.  
+- Een Azure-opslagaccount, een blobcontainer in het opslagaccount en een verbindingstekenreeks met het opslagaccount. Als u deze items niet hebt, gaat u als volgt te werk:  
+    1. [Een Azure-opslagaccount maken](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)  
+    1. [Een blobcontainer maken in het opslagaccount](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
+    1. [De verbindingstekenreeks naar het opslagaccount weerleggen](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string)
 
-    Zorg ervoor dat u de connection string en de container naam vastlegt voor later gebruik in deze Quick Start.  
-- Schakel de opname functie in voor de Event Hub. Volg hiervoor de instructies in [enable Event hubs Capture met behulp van de Azure Portal](event-hubs-capture-enable-through-portal.md). Selecteer het opslag account en de BLOB-container die u in de vorige stap hebt gemaakt. U kunt de functie ook inschakelen wanneer u een Event Hub maakt.  
+    Zorg ervoor dat u de verbindingstekenreeks en de containernaam opneemt voor later gebruik in deze quickstart.  
+- Schakel de opnamefunctie in voor de gebeurtenishub. Volg hiervoor de instructies in [Gebeurtenishubs vastleggen inschakelen met de Azure-portal.](event-hubs-capture-enable-through-portal.md) Selecteer het opslagaccount en de blobcontainer die u in de vorige stap hebt gemaakt. U de functie ook inschakelen wanneer u een gebeurtenishub maakt.  
 
-## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>Een Python-script voor het verzenden van gebeurtenissen naar uw event hub maken
-In deze sectie maakt u een python-script waarmee 200-gebeurtenissen (10 apparaten * 20 gebeurtenissen) naar een Event Hub worden verzonden. Deze gebeurtenissen zijn een voor beeld van het lezen van een omgeving dat wordt verzonden in JSON-indeling. 
+## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>Een Python-script maken om gebeurtenissen naar uw gebeurtenishub te verzenden
+In deze sectie maakt u een Python-script dat 200 gebeurtenissen (10 apparaten * 20 gebeurtenissen) naar een gebeurtenishub verzendt. Deze gebeurtenissen zijn een voorbeeld van milieumetingen die worden verzonden in JSON-formaat. 
 
-1. Open uw favoriete python-editor, zoals [Visual Studio code][Visual Studio Code].
-2. Maak een script met de naam *Sender.py*. 
-3. Plak de volgende code in *Sender.py*. 
+1. Open uw favoriete Python-editor, zoals [Visual Studio Code][Visual Studio Code].
+2. Een script maken dat *sender.py*wordt genoemd. 
+3. Plak de volgende code in *sender.py*. 
    
     ```python
     import time
@@ -89,17 +89,17 @@ In deze sectie maakt u een python-script waarmee 200-gebeurtenissen (10 apparate
     producer.close()
     ```
 4. Vervang de volgende waarden in de scripts:  
-    * Vervang `EVENT HUBS NAMESPACE CONNECTION STRING` door de connection string voor uw Event Hubs naam ruimte.  
-    * Vervang `EVENT HUB NAME` door de naam van uw Event Hub.  
-5. Voer het script uit om gebeurtenissen naar het Event Hub te verzenden.  
-6. In de Azure Portal kunt u controleren of de Event Hub de berichten heeft ontvangen. Schakel over naar de weer gave **berichten** in het gedeelte **metrische gegevens** . Vernieuw de pagina om de grafiek bij te werken. Het kan een paar seconden duren voordat de pagina wordt weer gegeven dat de berichten zijn ontvangen. 
+    * Vervang `EVENT HUBS NAMESPACE CONNECTION STRING` de verbindingstekenreeks voor de naamruimte van uw gebeurtenishubs.  
+    * Vervang `EVENT HUB NAME` de naam van uw gebeurtenishub.  
+5. Voer het script uit om gebeurtenissen naar de gebeurtenishub te verzenden.  
+6. In de Azure-portal u controleren of de gebeurtenishub de berichten heeft ontvangen. Overschakelen naar **berichtenweergave** in de sectie **Statistieken.** Vernieuw de pagina om de grafiek bij te werken. Het kan enkele seconden duren voordat de pagina wordt weergegeven dat de berichten zijn ontvangen. 
 
-    [![controleren of het Event Hub de berichten heeft ontvangen](./media/get-started-capture-python-v2/messages-portal.png)](./media/get-started-capture-python-v2/messages-portal.png#lightbox)
+    [![Controleren of de gebeurtenishub de berichten heeft ontvangen](./media/get-started-capture-python-v2/messages-portal.png)](./media/get-started-capture-python-v2/messages-portal.png#lightbox)
 
-## <a name="create-a-python-script-to-read-your-capture-files"></a>Een Python-script om te lezen van de Capture-bestanden maken
-In dit voor beeld worden de vastgelegde gegevens opgeslagen in Azure Blob-opslag. Met het script in deze sectie worden de vastgelegde gegevens bestanden uit uw Azure Storage-account gelezen en worden CSV-bestanden gegenereerd zodat u ze eenvoudig kunt openen en weer geven. Er worden 10 bestanden weer geven in de huidige werkmap van de toepassing. Deze bestanden bevatten de milieu-aflezingen voor de 10 apparaten. 
+## <a name="create-a-python-script-to-read-your-capture-files"></a>Een Python-script maken om uw Capture-bestanden te lezen
+In dit voorbeeld worden de vastgelegde gegevens opgeslagen in Azure Blob-opslag. Het script in deze sectie leest de vastgelegde gegevensbestanden van uw Azure-opslagaccount en genereert CSV-bestanden die u eenvoudig openen en weergeven. U ziet 10 bestanden in de huidige werkmap van de toepassing. Deze bestanden bevatten de milieumetingen voor de 10 apparaten. 
 
-1. Maak in uw python-editor een script met de naam *capturereader.py*. Met dit script worden de vastgelegde bestanden gelezen en wordt voor elk apparaat een bestand gemaakt om alleen de gegevens voor dat apparaat te schrijven.
+1. Maak in uw Python-editor een script met de naam *capturereader.py*. Dit script leest de vastgelegde bestanden en maakt een bestand voor elk apparaat om de gegevens alleen voor dat apparaat te schrijven.
 2. Plak de volgende code in *capturereader.py*. 
    
     ```python
@@ -157,33 +157,33 @@ In dit voor beeld worden de vastgelegde gegevens opgeslagen in Azure Blob-opslag
     
     startProcessing()    
     ```
-3. Vervang `AZURE STORAGE CONNECTION STRING` door de connection string voor uw Azure Storage-account. De naam van de container die u in deze Quick Start hebt gemaakt, wordt *vastgelegd*. Als u een andere naam voor de container hebt gebruikt, vervangt u *vastleggen* door de naam van de container in het opslag account. 
+3. Vervang `AZURE STORAGE CONNECTION STRING` de verbindingstekenreeks voor uw Azure-opslagaccount. De naam van de container die u in deze quickstart hebt gemaakt, is *vastleggen.* Als u een andere naam voor de container hebt gebruikt, vervangt *u het vastleggen* door de naam van de container in het opslagaccount. 
 
 ## <a name="run-the-scripts"></a>De scripts uitvoeren
-1. Open een opdrachtprompt met Python in het pad en voer vervolgens deze opdrachten om vereiste Python-pakketten te installeren:
+1. Open een opdrachtprompt met Python op zijn pad en voer deze opdrachten uit om Python-vereistepakketten te installeren:
    
    ```
    pip install azure-storage-blob
    pip install azure-eventhub
    pip install avro-python3
    ```
-2. Wijzig de map in de map waar u *Sender.py* en *capturereader.py*hebt opgeslagen en voer deze opdracht uit:
+2. Wijzig uw map in de map waarin u *sender.py* hebt opgeslagen en *capturereader.py*en voer deze opdracht uit:
    
    ```
    python sender.py
    ```
    
-   Met deze opdracht start een nieuwe Python-proces voor het uitvoeren van de afzender.
-3. Wacht enkele minuten totdat de opname is uitgevoerd en voer de volgende opdracht in het oorspronkelijke opdracht venster in:
+   Met deze opdracht wordt een nieuw Python-proces gestart om de afzender uit te voeren.
+3. Wacht een paar minuten tot de opname is uitgevoerd en voer de volgende opdracht in het oorspronkelijke opdrachtvenster in:
    
    ```
    python capturereader.py
    ```
 
-   Deze Capture-processor gebruikt de lokale map om alle blobs uit het opslag account en de container te downloaden. Deze verwerkt alle die niet leeg zijn en schrijft de resultaten als CSV-bestanden naar de lokale map.
+   Deze opnameprocessor gebruikt de lokale map om alle blobs van het opslagaccount en de container te downloaden. Het verwerkt alle die niet leeg zijn, en het schrijft de resultaten als CSV-bestanden in de lokale directory.
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk [python-voor beelden op github](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples). 
+Bekijk [Python-voorbeelden op GitHub.](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples) 
 
 
 [Azure portal]: https://portal.azure.com/

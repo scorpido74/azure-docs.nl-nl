@@ -1,6 +1,6 @@
 ---
-title: Overzicht van de architectuur - Azure Active Directory | Microsoft Docs
-description: Leer wat een Azure Active Directory-tenant is en het beheren van Azure met behulp van Azure Active Directory.
+title: Overzicht van architectuur - Azure Active Directory | Microsoft Documenten
+description: Meer informatie over wat een Azure Active Directory-tenant is en hoe u Azure beheert met Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 854fb4649f8c1113f20abe5807dd0ce473ba6ee3
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77368062"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Wat is de Azure Active Directory-architectuur?
@@ -28,7 +28,7 @@ Met Azure AD kunt u gebruikers en groepen maken en beheren, en machtigingen insc
 
 ## <a name="azure-ad-architecture"></a>Azure AD-architectuur
 
-Geografisch verspreide architectuur van Azure AD combineert uitgebreide controle, geautomatiseerde omleidingen, failover en herstel mogelijkheden, die het hele bedrijf beschikbaarheid en prestaties aan klanten leveren.
+De geografisch gedistribueerde architectuur van Azure AD combineert uitgebreide monitoring, geautomatiseerde omleidings-, failover- en herstelmogelijkheden, die bedrijfsbrede beschikbaarheid en prestaties leveren aan klanten.
 
 In dit artikel worden de volgende elementen van de architectuur besproken:
 
@@ -39,11 +39,11 @@ In dit artikel worden de volgende elementen van de architectuur besproken:
 
 ### <a name="service-architecture-design"></a>Servicearchitectuurontwerp
 
-De meest voorkomende manier om een toegankelijk en bruikbaar, gegevens systeem te maken, is via onafhankelijke bouw stenen of schaal eenheden. Schaal eenheden van de Azure AD-gegevenslaag worden *partities*genoemd.
+De meest voorkomende manier om een toegankelijk en bruikbaar, datarijk systeem te bouwen is door middel van onafhankelijke bouwstenen of schaaleenheden. Voor de Azure AD-gegevenslaag worden schaaleenheden *partities*genoemd.
 
-De gegevenslaag heeft meerdere front-end-services die mogelijkheden bieden voor lezen/schrijven. In het onderstaande diagram ziet u hoe de onderdelen van een partitie met één map worden geleverd in geografisch verspreide data centers.
+De gegevenslaag heeft meerdere front-end-services die mogelijkheden bieden voor lezen/schrijven. Het onderstaande diagram laat zien hoe de componenten van een partitie met één map worden geleverd in geografisch gedistribueerde datacenters.
 
-  ![Diagram met één mappartitie](./media/active-directory-architecture/active-directory-architecture.png)
+  ![Partitiediagram met één map](./media/active-directory-architecture/active-directory-architecture.png)
 
 De onderdelen van Azure AD-architectuur omvatten een primaire replica en secundaire replica's.
 
@@ -53,21 +53,21 @@ De *primaire replica* ontvangt alle *schrijfbewerkingen* voor de partitie waarbi
 
 #### <a name="secondary-replicas"></a>Secundaire replica's
 
-Alle Active Directory- *Lees bewerkingen* worden uitgevoerd vanuit *secundaire replica's*, die zich bevinden in data centers die zich fysiek in verschillende geografs. Er zijn veel secundaire replica's, omdat gegevens asynchroon worden gerepliceerd. Directory-Lees bewerkingen, zoals verificatie aanvragen, worden verwerkt vanuit data centers die zich dicht bij klanten bevinden. De secundaire replica's zijn verantwoordelijk voor de schaalbaarheid van leesbewerkingen.
+Alle directory *reads* worden onderhouden van *secundaire replica's,* die zich bevinden in datacenters die zich fysiek in verschillende regio's bevinden. Er zijn veel secundaire replica's, omdat gegevens asynchroon worden gerepliceerd. Directoryreads, zoals verificatieaanvragen, worden onderhouden vanuit datacenters die dicht bij klanten staan. De secundaire replica's zijn verantwoordelijk voor de schaalbaarheid van leesbewerkingen.
 
 ### <a name="scalability"></a>Schaalbaarheid
 
 Schaalbaarheid is de mogelijkheid van een service om uit te breiden en zo te voldoen aan groeiende prestatievereisten. Schaalbaarheid van schrijfbewerkingen wordt bereikt door de gegevens te partitioneren. Schaalbaarheid van leesbewerkingen wordt bereikt door gegevens uit één partitie te repliceren naar meerdere secundaire replica's over de hele wereld.
 
-Aanvragen van directory-toepassingen worden doorgestuurd naar het datacenter waar ze zich fysiek die het dichtst bij. Schrijfbewerkingen worden transparant omgeleid naar de primaire replica voor lees-/schrijfconsistentie. Secundaire replica's breiden de schaal van partities aanzienlijk uit, omdat in de mappen doorgaans leesbewerkingen worden afgehandeld.
+Aanvragen van directorytoepassingen worden doorgestuurd naar het datacenter waar ze fysiek het dichtst bij zijn. Schrijfbewerkingen worden transparant omgeleid naar de primaire replica voor lees-/schrijfconsistentie. Secundaire replica's breiden de schaal van partities aanzienlijk uit, omdat in de mappen doorgaans leesbewerkingen worden afgehandeld.
 
-Directory-toepassingen maken verbinding met de dichtstbijzijnde datacenters. Deze verbinding verbetert de prestaties en uitschalen is mogelijk. Omdat een mappartitie meerdere secundaire replica's kan hebben, kunnen deze secundaire replica's dichter bij Directory-clients worden geplaatst. Alleen interne Directory-serviceonderdelen die veel schrijfbewerkingen afhandelen, zijn rechtstreeks gericht op de actieve primaire replica.
+Directory-toepassingen maken verbinding met de dichtstbijzijnde datacenters. Deze verbinding verbetert de prestaties en dus is uitschalen mogelijk. Omdat een mappartitie meerdere secundaire replica's kan hebben, kunnen deze secundaire replica's dichter bij Directory-clients worden geplaatst. Alleen interne Directory-serviceonderdelen die veel schrijfbewerkingen afhandelen, zijn rechtstreeks gericht op de actieve primaire replica.
 
 ### <a name="continuous-availability"></a>Continue beschikbaarheid
 
-Beschikbaarheid (of bedrijfstijd) definieert de mogelijkheid van een systeem om ononderbroken actief te zijn. De sleutel tot de hoge Beschik baarheid van Azure AD is dat de services snel verkeer kunnen verplaatsen over meerdere geografisch gedistribueerde data centers. Elk Data Center is onafhankelijk, waarmee niet-gerelateerde fout modi worden ingeschakeld. Azure AD heeft via dit ontwerp voor hoge Beschik baarheid geen downtime voor onderhouds activiteiten.
+Beschikbaarheid (of bedrijfstijd) definieert de mogelijkheid van een systeem om ononderbroken actief te zijn. De sleutel tot de hoge beschikbaarheid van Azure AD is dat de services snel verkeer kunnen verplaatsen over meerdere geografisch gedistribueerde datacenters. Elk datacenter is onafhankelijk, waardoor gederecorreleerde foutmodi mogelijk zijn. Door dit ontwerp met hoge beschikbaarheid vereist Azure AD geen downtime voor onderhoudsactiviteiten.
 
-Ontwerp van Azure AD-partities is vereenvoudigd in vergelijking met de enterprise AD ontwerp met behulp van een single-master-ontwerp dat een primaire replica voor zorgvuldig Geregisseerd en deterministisch failoverproces omvat.
+Het partitieontwerp van Azure AD wordt vereenvoudigd in vergelijking met het bedrijfsAD-ontwerp, met behulp van een ontwerp met één master dat een zorgvuldig georkestreerd en deterministisch primaire replica-failoverproces bevat.
 
 #### <a name="fault-tolerance"></a>Fouttolerantie
 
@@ -77,49 +77,49 @@ Leesbewerkingen (die vele malen vaker voorkomen dan schrijfbewerkingen) worden a
 
 #### <a name="data-durability"></a>Duurzaamheid van gegevens
 
-Er wordt een schrijf bewerking naar ten minste twee data centers doorgevoerd voordat deze wordt bevestigd. Dit gebeurt door eerst de schrijf bewerking op de primaire uit te voeren en vervolgens onmiddellijk de schrijf bewerking naar ten minste één ander Data Center te repliceren. Met deze schrijf actie zorgt u ervoor dat het Data Center dat als host optreedt van de primaire computer geen gegevens verlies oplevert.
+Een schrijven is blijvend toegewijd aan ten minste twee datacenters voordat het wordt erkend. Dit gebeurt door eerst het schrijven op de primaire, en vervolgens onmiddellijk repliceren van de schrijven naar ten minste een ander datacenter. Deze schrijfactie zorgt ervoor dat een mogelijk catastrofaal verlies van het datacenter dat de primaire host niet leidt tot gegevensverlies.
 
-Azure AD bewaart een [beoogde herstel tijd (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) om geen gegevens over failovers te verliezen. Dit omvat:
+Azure AD behoudt een Zero [Recovery Time Objective (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) om geen gegevens te verliezen over failovers. Dit omvat:
 
-* Token-uitgifte en leesbewerkingen in een map
-* Zodat u slechts circa 5 minuten RTO voor directory-schrijfbewerkingen
+* Tokenuitgifte en directoryleest
+* Toestaan van slechts ongeveer 5 minuten RTO voor directory schrijft
 
 ### <a name="datacenters"></a>Datacenters
 
-Azure AD-replica's worden opgeslagen in datacenters over de hele wereld. Zie [Azure Global Infrastructure](https://azure.microsoft.com/global-infrastructure/)(Engelstalig) voor meer informatie.
+Azure AD-replica's worden opgeslagen in datacenters over de hele wereld. Zie [Azure Global Infrastructure voor](https://azure.microsoft.com/global-infrastructure/)meer informatie.
 
-Azure AD werkt in data centers met de volgende kenmerken:
+Azure AD werkt in verschillende datacenters met de volgende kenmerken:
 
-* Verificatie, Graph en andere AD-services bevinden zich achter de Gateway-service. De taakverdeling van deze services wordt via de gateway beheerd. Dit wordt automatische failover als een beschadigde servers worden gedetecteerd via transactionele tests. Op basis van deze status tests stuurt de gateway dynamisch verkeer naar gezonde data centers.
-* Voor *Lees bewerkingen*heeft de Directory secundaire replica's en bijbehorende front-end-services in een actief-actief configuratie in meerdere data centers. Als er een fout optreedt in een volledig Data Center, wordt verkeer automatisch doorgestuurd naar een ander Data Center.
- \* Voor *schrijf bewerkingen*zal de Directory failover uitvoeren via de primaire (hoofd) replica in data centers via gepland (nieuwe primaire server wordt gesynchroniseerd met oude primaire) of procedures voor nood failover. De duurzaamheid van gegevens wordt bereikt door een door voering te repliceren naar ten minste twee data centers.
+* Verificatie, Graph en andere AD-services bevinden zich achter de Gateway-service. De taakverdeling van deze services wordt via de gateway beheerd. Het zal automatisch mislukken als er ongezonde servers worden gedetecteerd met behulp van transactionele statussondes. Op basis van deze statussondes leidt de Gateway het verkeer dynamisch naar gezonde datacenters.
+* Voor *reads*heeft de map secundaire replica's en bijbehorende front-endservices in een actief-actieve configuratie die in meerdere datacenters werkt. In het geval van een storing van een heel datacenter, wordt het verkeer automatisch doorgestuurd naar een ander datacenter.
+ *Voor *schrijft,* zal de map mislukken over primaire (master) replica in datacenters via gepland (nieuwe primaire wordt gesynchroniseerd met oude primaire) of noodfailover procedures. De duurzaamheid van gegevens wordt bereikt door een commit te repliceren naar ten minste twee datacenters.
 
 #### <a name="data-consistency"></a>Gegevensconsistentie
 
-Het model van de directory is een van de uiteindelijke consistenties. Een typisch probleem met verspreide asynchrone replicatiesystemen is dat de gegevens die worden geretourneerd van een "name" replica niet bijgewerkt zijn kan. 
+Het directorymodel is een van de uiteindelijke consistenties. Een typisch probleem met gedistribueerde asynchrone replicerende systemen is dat de gegevens die zijn geretourneerd van een "bepaalde" replica mogelijk niet up-to-date zijn. 
 
 Met behulp van een secundaire replica biedt Azure AD lees-/schrijfconsistentie voor toepassingen door schrijfbewerkingen naar de primaire replica te leiden en ze tegelijkertijd terug te halen naar de secundaire replica.
 
-Het schrijven van toepassingen met behulp van de Microsoft Graph-API van Azure AD is afgeleid van het bijhouden van affiniteit in een Directory replica voor consistentie van het Lees-en schrijf programma. De Microsoft Graph API-service onderhoudt een logische sessie die affiniteit heeft met een secundaire replica die wordt gebruikt voor lees bewerkingen. affiniteit wordt vastgelegd in een ' replica token ' dat door de service in de cache wordt opgeslagen met behulp van een gedistribueerde cache in het Data Center van de secundaire replica. Dit token wordt vervolgens gebruikt voor verdere bewerkingen in dezelfde logische sessie. Om dezelfde logische sessie te blijven gebruiken, moeten volgende aanvragen worden doorgestuurd naar hetzelfde Azure AD-Data Center. Het is niet mogelijk om door te gaan met een logische sessie als de aanvragen van de Directory-client worden doorgestuurd naar meerdere Azure AD-data centers. Als dit gebeurt, heeft de client meerdere logische sessies met een onafhankelijke consistenties voor lezen/schrijven.
+Toepassingsschrijft met de Microsoft Graph API van Azure AD wordt geabstraheerd van het onderhouden van affiniteit tot een directoryreplica voor consistentie in lezen schrijven. De Api-service van Microsoft Graph onderhoudt een logische sessie, die affiniteit heeft met een secundaire replica die wordt gebruikt voor het lezen. affiniteit wordt vastgelegd in een 'replicatoken' dat de service caches met behulp van een gedistribueerde cache in de secundaire replica datacenter. Dit token wordt vervolgens gebruikt voor verdere bewerkingen in dezelfde logische sessie. Als u dezelfde logische sessie wilt blijven gebruiken, moeten volgende aanvragen worden doorgestuurd naar hetzelfde Azure AD-datacenter. Het is niet mogelijk om een logische sessie voort te zetten als de directoryclientaanvragen worden doorgestuurd naar meerdere Azure AD-datacenters; als dit gebeurt dan heeft de client meerdere logische sessies die onafhankelijke lees-schrijven consistenties hebben.
 
  >[!NOTE]
  >Schrijfbewerkingen worden onmiddellijk gerepliceerd naar de secundaire replica waarop de leesbewerkingen van de logische sessie zijn weggeschreven.
 
 #### <a name="backup-protection"></a>Back-upbeveiliging
 
-De map implementeert voorlopig verwijderen, in plaats van definitief, voor gebruikers en tenants, wat eenvoudig herstel mogelijk maakt wanneer items per ongeluk worden verwijderd door een klant. Als uw tenantbeheerder per ongeluk gebruikers verwijdert, kunnen ze gemakkelijk ongedaan maken en de verwijderde gebruikers terugzetten.
+De map implementeert voorlopig verwijderen, in plaats van definitief, voor gebruikers en tenants, wat eenvoudig herstel mogelijk maakt wanneer items per ongeluk worden verwijderd door een klant. Als uw tenantbeheerder per ongeluk gebruikers verwijdert, kunnen ze de verwijderde gebruikers eenvoudig ongedaan maken en herstellen.
 
-Met Azure AD worden dagelijkse back-ups van alle gegevens geïmplementeerd. Daarom kunnen gegevens bindend worden teruggezet in het geval van logische verwijderingen of beschadigingen. De gegevenslaag maakt gebruik van fouten corrigeren codes, zodat deze kan controleren op fouten en bepaalde typen schijffouten automatisch worden gecorrigeerd.
+Met Azure AD worden dagelijkse back-ups van alle gegevens geïmplementeerd. Daarom kunnen gegevens bindend worden teruggezet in het geval van logische verwijderingen of beschadigingen. De gegevenslaag maakt gebruik van foutcorrigerende codes, zodat deze kan controleren op fouten en automatisch bepaalde typen schijffouten kan corrigeren.
 
-#### <a name="metrics-and-monitors"></a>Metrische gegevens en monitors
+#### <a name="metrics-and-monitors"></a>Metrische gegevens en controles
 
-Voor het uitvoeren van een service met een hoge beschikbaarheid zijn uitstekende mogelijkheden voor metrische gegevens en controle vereist. Met Azure AD worden belangrijke metrische gegevens met betrekking tot de status van de service voortdurend geanalyseerd voor elk van de services. Er is ook doorlopende ontwikkeling en het afstemmen van metrische gegevens en het bewaking en waarschuwingen voor elk scenario, binnen elke Azure AD-service en tussen alle services.
+Voor het uitvoeren van een service met een hoge beschikbaarheid zijn uitstekende mogelijkheden voor metrische gegevens en controle vereist. Met Azure AD worden belangrijke metrische gegevens met betrekking tot de status van de service voortdurend geanalyseerd voor elk van de services. Er is ook continue ontwikkeling en afstemming van statistieken en monitoring en waarschuwingen voor elk scenario, binnen elke Azure AD-service en voor alle services.
 
-Als een Azure AD-service niet werkt zoals verwacht, wordt onmiddellijk actie ondernomen om de functionaliteit zo snel mogelijk te herstellen. De belangrijkste metrische gegevens van Azure AD-sporen is hoe snel live site problemen kunnen worden gedetecteerd en verholpen voor klanten. We investeren veel in controle en waarschuwingen om de detectietijd (TTD-doel: < 5 minuten) te minimaliseren en in operationele paraatheid om de hersteltijd (TTM-doel: < 30 minuten) zo kort mogelijk te houden.
+Als een Azure AD-service niet werkt zoals verwacht, wordt onmiddellijk actie ondernomen om de functionaliteit zo snel mogelijk te herstellen. De belangrijkste metrische Azure AD-tracks is hoe snel live siteproblemen kunnen worden gedetecteerd en beperkt voor klanten. We investeren veel in controle en waarschuwingen om de detectietijd (TTD-doel: < 5 minuten) te minimaliseren en in operationele paraatheid om de hersteltijd (TTM-doel: < 30 minuten) zo kort mogelijk te houden.
 
-#### <a name="secure-operations"></a>Beveiligde bewerkingen
+#### <a name="secure-operations"></a>Veilige bewerkingen
 
-Met behulp van operationele besturingselementen zoals multi-factor authentication (MFA) voor elke bewerking, evenals controle van alle bewerkingen. Bovendien met behulp van een just-in-time-elevationsysteem om benodigde tijdelijke toegang voor alle operationele taken op aanvraag regelmatig te verlenen. Zie [De vertrouwde cloud](https://azure.microsoft.com/support/trust-center) voor meer informatie.
+Het gebruik van operationele besturingselementen zoals multi-factor authenticatie (MFA) voor elke bewerking, evenals het controleren van alle bewerkingen. Bovendien, met behulp van een just-in-time hoogtesysteem om de nodige tijdelijke toegang te verlenen voor elke operationele taak-on-demand op een permanente basis. Zie [De vertrouwde cloud](https://azure.microsoft.com/support/trust-center) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

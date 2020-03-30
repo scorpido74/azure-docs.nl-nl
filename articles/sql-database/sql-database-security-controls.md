@@ -1,6 +1,6 @@
 ---
 title: Beveiligingsmaatregelen
-description: Een controle lijst met beveiligings controles voor het evalueren van Azure SQL Database
+description: Een checklist met beveiligingsbesturingselementen voor de evaluatie van Azure SQL Database
 services: sql-database
 author: msmbaldwin
 manager: rkalrin
@@ -9,68 +9,68 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: ce7f3eafa57cbd993be98f4a2da3d89cb312f9b7
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190698"
 ---
-# <a name="security-controls-for-azure-sql-database"></a>Beveiligings controles voor Azure SQL Database
+# <a name="security-controls-for-azure-sql-database"></a>Beveiligingsbesturingselementen voor Azure SQL Database
 
-In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zijn ingebouwd in Azure SQL Database.
+In dit artikel worden de beveiligingsbesturingselementen weergegeven die zijn ingebouwd in Azure SQL Database.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-SQL Database bevatten zowel [één data base](sql-database-single-index.yml) als een [beheerd exemplaar](sql-database-managed-instance.md). De volgende vermeldingen zijn van toepassing op beide aanbiedingen, tenzij anders vermeld.
+SQL Database bevat zowel [één database](sql-database-single-index.yml) als [beheerde instantie.](sql-database-managed-instance.md) De volgende vermeldingen zijn van toepassing op beide aanbiedingen, behalve wanneer anders vermeld.
 
 ## <a name="network"></a>Netwerk
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen |
+| Beveiligingscontrole | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Ondersteuning voor service-eind punten| Ja | Is alleen van toepassing op [één data base](sql-database-single-index.yml) . |
-| Ondersteuning voor Azure Virtual Network injectie| Ja | Is alleen van toepassing op een [beheerd exemplaar](sql-database-managed-instance.md) . |
-| Netwerk isolatie en firewall ondersteuning| Ja | Firewall op database niveau en op server niveau. Netwerk isolatie geldt alleen voor [beheerde exemplaren](sql-database-managed-instance.md) . |
-| Ondersteuning voor geforceerde tunneling| Ja | [Beheerde instantie](sql-database-managed-instance.md) via een [ExpressRoute](../expressroute/index.yml) -VPN. |
+| Ondersteuning voor serviceeindpunten| Ja | Geldt alleen voor [één database.](sql-database-single-index.yml) |
+| Ondersteuning voor Azure Virtual Network-injectie| Ja | Geldt alleen voor [beheerde instantie.](sql-database-managed-instance.md) |
+| Ondersteuning voor netwerkisolatie en firewall| Ja | Firewall op zowel databaseniveau als serverniveau. Netwerkisolatie wordt bijvoorbeeld alleen [beheerd.](sql-database-managed-instance.md) |
+| Ondersteuning voor gedwongen tunneling| Ja | [Beheerd exemplaar](sql-database-managed-instance.md) via een [ExpressRoute](../expressroute/index.yml) VPN. |
 
-## <a name="monitoring--logging"></a>& Logboek registratie controleren
+## <a name="monitoring--logging"></a>Controle & logboekregistratie
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen|
+| Beveiligingscontrole | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Ondersteuning voor Azure-bewaking, zoals Log Analytics of Application Insights| Ja | SecureSphere, de SIEM-oplossing van Imperva, wordt ook ondersteund via de integratie van [Azure Event hubs](../event-hubs/index.yml) via [SQL auditing](sql-database-auditing.md). |
-| Logboek registratie en controle op het vlak van controle en beheer| Ja | Ja voor sommige gebeurtenissen alleen |
-| Logboek registratie en controle op gegevens vlak | Ja | Via [SQL audit](sql-database-auditing.md) |
+| Ondersteuning voor Azure-bewaking, zoals Log Analytics of Application Insights| Ja | SecureSphere, de SIEM-oplossing van Imperva, wordt ook ondersteund via [Azure Event Hubs-integratie](../event-hubs/index.yml) via [SQL auditing.](sql-database-auditing.md) |
+| Logging en audit van controlevlak en beheer-vliegtuig| Ja | Ja voor sommige evenementen |
+| Logboekregistratie en -audit | Ja | Via [SQL-audit](sql-database-auditing.md) |
 
 ## <a name="identity"></a>Identiteit
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen|
+| Beveiligingscontrole | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Verificatie| Ja | Azure Active Directory (Azure AD) |
-| Autorisatie| Ja | None |
+| Authentication| Ja | Azure Active Directory (Azure AD) |
+| Autorisatie| Ja | Geen |
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen |
+| Beveiligingscontrole | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Wordt ' versleuteling-in-gebruik ' genoemd, zoals beschreven in het artikel [Always encrypted](sql-database-always-encrypted.md). Versleuteling aan de server zijde maakt gebruik van [transparante gegevens versleuteling](transparent-data-encryption-azure-sql.md).|
-| Versleuteling in transit:<ul><li>Azure ExpressRoute-versleuteling</li><li>Versleuteling in een virtueel netwerk</li><li>Versleuteling tussen virtuele netwerken</ul>| Ja | HTTPS gebruiken. |
-| Versleutelings verwerking, zoals CMK of BYOK| Ja | Door service beheerde en door de klant beheerde sleutel verwerking worden aangeboden. Deze laatste wordt aangeboden via [Azure Key Vault](../key-vault/index.yml). |
-| Versleuteling op kolom niveau van Azure Data Services| Ja | Via [Always encrypted](sql-database-always-encrypted.md). |
+| Server-side encryptie in rust: door Microsoft beheerde sleutels | Ja | Genaamd "encryptie-in-gebruik," zoals beschreven in het artikel [Always Encrypted](sql-database-always-encrypted.md). Server-side encryptie maakt gebruik van [transparante gegevensversleuteling.](transparent-data-encryption-azure-sql.md)|
+| Versleuteling onderweg:<ul><li>Azure ExpressRoute-versleuteling</li><li>Versleuteling in een virtueel netwerk</li><li>Versleuteling tussen virtuele netwerken</ul>| Ja | HTTPS gebruiken. |
+| Verwerking van versleutelingssleutels, zoals CMK of BYOK| Ja | Zowel service-managed als customer-managed key handling worden aangeboden. Dit laatste wordt aangeboden via [Azure Key Vault.](../key-vault/index.yml) |
+| Versleuteling op kolomniveau die wordt geleverd door Azure-gegevensservices| Ja | Via [Always Encrypted](sql-database-always-encrypted.md). |
 | Versleutelde API-aanroepen| Ja | HTTPS/TLS gebruiken. |
 
 ## <a name="configuration-management"></a>Configuratiebeheer
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen|
+| Beveiligingscontrole | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Ondersteuning voor configuratie beheer, zoals versie beheer van de configuratie| Nee  | None |
+| Ondersteuning voor configuratiebeheer, zoals versiebeheer van configuratie| Nee  | Geen |
 
-## <a name="additional-security-controls-for-sql-database"></a>Aanvullende beveiligings controles voor SQL Database
+## <a name="additional-security-controls-for-sql-database"></a>Extra besturingselementen voor SQL-database
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen|
+| Beveiligingscontrole | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Preventieve: evaluatie van beveiligings problemen | Ja | Zie [SQL-evaluatie service voor beveiligings problemen helpt u bij het identificeren van een database kwets](sql-vulnerability-assessment.md)baarheid. |
-| Preventief: gegevens detectie en-classificatie  | Ja | Zie [Azure SQL database en SQL Data Warehouse gegevens detectie & classificatie](sql-database-data-discovery-and-classification.md). |
-| Detectie: detectie van bedreigingen | Ja | Zie [Advanced Threat Protection voor Azure SQL database](sql-database-threat-detection-overview.md). |
+| Preventief: kwetsbaarheidsbeoordeling | Ja | Zie [SQL Vulnerability Assessment-service helpt u bij het identificeren van databasekwetsbaarheden.](sql-vulnerability-assessment.md) |
+| Preventief: gegevensdetectie en -classificatie  | Ja | Zie [Azure SQL Database en SQL Data Warehouse-gegevensdetectie & classificatie](sql-database-data-discovery-and-classification.md). |
+| Detectie: detectie van bedreigingen | Ja | Zie [Geavanceerde bedreigingsbeveiliging voor Azure SQL-database](sql-database-threat-detection-overview.md). |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [ingebouwde beveiligings controles in Azure-Services](../security/fundamentals/security-controls.md).
+- Meer informatie over de [ingebouwde beveiligingsbesturingselementen voor Azure-services](../security/fundamentals/security-controls.md).

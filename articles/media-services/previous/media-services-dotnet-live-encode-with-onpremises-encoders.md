@@ -1,6 +1,6 @@
 ---
-title: Live streamen met on-premises encoders met behulp van .NET | Microsoft Docs
-description: In dit onderwerp wordt beschreven hoe u .NET gebruikt voor het uitvoeren van Live code ring met on-premises encoders.
+title: Live streaming uitvoeren met on-premises encoders met .NET | Microsoft Documenten
+description: In dit onderwerp wordt uitgelegd hoe u .NET gebruiken om live codering uit te voeren met on-premises coderingen.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,24 +14,24 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 11c6da0b79f169b250dc0178f76dcd885ce91668
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162868"
 ---
-# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Live streamen met on-premises encoders met behulp van .NET
+# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Live streaming uitvoeren met on-premises encoders via .NET
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [Rest](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-In deze zelf studie wordt stapsgewijs uitgelegd hoe u de Azure Media Services .NET SDK gebruikt om een **kanaal** te maken dat is geconfigureerd voor een Pass-Through-levering. 
+In deze zelfstudie u de stappen doorlopen waarop de Azure Media Services .NET SDK wordt gebruikt om een **kanaal** te maken dat is geconfigureerd voor een pass-through-levering. 
 
 ## <a name="prerequisites"></a>Vereisten
 Hieronder wordt aangegeven wat de vereisten zijn om de zelfstudie te voltooien:
@@ -39,37 +39,37 @@ Hieronder wordt aangegeven wat de vereisten zijn om de zelfstudie te voltooien:
 * Een Azure-account.
 * Een Media Services-account. Zie [Een Media Services-account maken](media-services-portal-create-account.md) voor meer informatie over het maken van een Media Services-account.
 * Controleer of het streaming-eindpunt van waar u inhoud wilt streamen, de status **Wordt uitgevoerd** heeft. 
-* Stel uw ontwikkel omgeving in. Zie [uw omgeving instellen](media-services-set-up-computer.md)voor meer informatie.
+* Stel uw dev-omgeving in. Zie [Uw omgeving instellen](media-services-set-up-computer.md)voor meer informatie.
 * Een webcam. Bijvoorbeeld [Telestream Wirecast-coderingsprogramma](media-services-configure-wirecast-live-encoder.md).
 
-Aanbevolen om de volgende artikelen te controleren:
+Aanbevolen om de volgende artikelen te bekijken:
 
 * [Azure Media Services RTMP-ondersteuning en live coderingsprogramma's](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 * [Live streamen met on-premises coderingsprogramma's die multi-bitrate streams maken](media-services-live-streaming-with-onprem-encoders.md)
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-Stel uw ontwikkelomgeving in en vul in het bestand app.config de verbindingsinformatie in, zoals beschreven in [Media Services ontwikkelen met .NET](media-services-dotnet-how-to-use.md). 
+Stel uw ontwikkelomgeving in en vul het app.config-bestand in met verbindingsgegevens, zoals beschreven in [de ontwikkeling van Media Services met .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="example"></a>Voorbeeld
 
-In het volgende code voorbeeld ziet u hoe u de volgende taken kunt uitvoeren:
+In het volgende codevoorbeeld wordt uitgelegd hoe u de volgende taken uitvoeren:
 
 * Verbinding met Media Services maken
 * Een kanaal maken
 * Het kanaal bijwerken
-* Het invoer eindpunt van het kanaal ophalen. Het invoer eindpunt moet worden opgegeven voor het on-premises Live coderings programma. Met het Live coderings programma worden signalen van de camera geconverteerd naar stromen die worden verzonden naar het invoer eindpunt van het kanaal.
-* Het voor beeld-eind punt van het kanaal ophalen
+* Haal het invoereindpunt van het kanaal op. Het ingangseindpunt moet worden verstrekt aan de on-premises levende encoder. De live encoder zet signalen van de camera om in streams die worden verzonden naar het ingangseindpunt van het kanaal (inname).
+* Het voorbeeldeindpunt van het kanaal ophalen
 * Een programma maken en starten
-* Een Locator maken die nodig is om toegang te krijgen tot het programma
+* Een locator maken die nodig is om toegang te krijgen tot het programma
 * Een StreamingEndpoint maken en starten
-* Het streaming-eind punt bijwerken
+* Het streamingeindpunt bijwerken
 * Resources afsluiten
     
 >[!NOTE]
->Er geldt een limiet van 1.000.000 beleidsregels voor verschillende AMS-beleidsitems (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). U moet dezelfde beleids-id gebruiken als u altijd dezelfde dagen/toegangsmachtigingen gebruikt, bijvoorbeeld beleidsregels voor locators die zijn bedoeld om gedurende een lange periode gehandhaafd te blijven (niet-upload-beleidsregels). Raadpleeg [dit artikel](media-services-dotnet-manage-entities.md#limit-access-policies) voor meer informatie.
+>Er geldt een limiet van 1.000.000 beleidsregels voor verschillende AMS-beleidsitems (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). U moet dezelfde beleids-id gebruiken als u altijd dezelfde dagen/toegangsmachtigingen gebruikt, bijvoorbeeld beleidsregels voor locators die zijn bedoeld om gedurende een lange periode gehandhaafd te blijven (niet-upload-beleidsregels). Zie voor meer informatie [dit](media-services-dotnet-manage-entities.md#limit-access-policies) artikel.
 
-Zie [Azure Media Services RTMP-ondersteuning en live coderings](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)Programma's voor meer informatie over het configureren van een live coderings programma.
+Zie [Azure Media Services RTMP Support en Live Encoders](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)voor informatie over het configureren van een live-encoder.
 
 ```csharp
 using System;
@@ -400,7 +400,7 @@ namespace AMSLiveTest
 ```
 
 ## <a name="next-step"></a>Volgende stap
-Media Services Learning-paden controleren
+Leerpaden van Media Services bekijken
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
