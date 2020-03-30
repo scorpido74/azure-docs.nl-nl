@@ -1,7 +1,7 @@
 ---
 title: Toegangssleutels voor accounts beheren
 titleSuffix: Azure Storage
-description: Meer informatie over het weer geven, beheren en draaien van de toegangs sleutels van uw opslag account.
+description: Meer informatie over het weergeven, beheren en roteren van uw toegangssleutels voor opslagaccount.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,51 +9,51 @@ ms.topic: how-to
 ms.date: 12/18/2019
 ms.author: tamram
 ms.openlocfilehash: 13adf6de420b54299d04a226dab81e75cbb9fef2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75975787"
 ---
-# <a name="manage-storage-account-access-keys"></a>Toegangs sleutels voor opslag accounts beheren
+# <a name="manage-storage-account-access-keys"></a>Toegangssleutels voor opslagaccount beheren
 
-Wanneer u een opslag account maakt, genereert Azure 2 512-bits toegangs sleutels voor opslag accounts. Deze sleutels kunnen worden gebruikt om toegang te verlenen tot gegevens in uw opslag account via de verificatie van de gedeelde sleutel.
+Wanneer u een opslagaccount maakt, genereert Azure twee toegangssleutels voor 512-bits opslagaccount. Deze sleutels kunnen worden gebruikt om de toegang tot gegevens in uw opslagaccount te autoriseren via de machtiging Met gedeelde sleutel.
 
-Micro soft raadt u aan Azure Key Vault te gebruiken voor het beheren van uw toegangs sleutels en om uw sleutels regel matig te draaien en opnieuw te genereren. Met Azure Key Vault kunt u eenvoudig uw sleutels zonder onderbreking naar uw toepassingen draaien. U kunt uw sleutels ook hand matig draaien.
+Microsoft raadt u aan Azure Key Vault te gebruiken om uw toegangssleutels te beheren en uw sleutels regelmatig te roteren en te regenereren. Met Azure Key Vault u uw sleutels eenvoudig roteren zonder onderbreking van uw toepassingen. U uw toetsen ook handmatig draaien.
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-## <a name="view-access-keys-and-connection-string"></a>Toegangs sleutels en connection string weer geven
+## <a name="view-access-keys-and-connection-string"></a>Toegangstoetsen en verbindingstekenreeks weergeven
 
 [!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
 
-## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>Azure Key Vault gebruiken om uw toegangs sleutels te beheren
+## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>Azure Key Vault gebruiken om uw toegangssleutels te beheren
 
-Micro soft raadt u aan Azure Key Vault te gebruiken om uw toegangs sleutels te beheren en te draaien. Uw toepassing kan veilig toegang krijgen tot uw sleutels in Key Vault, zodat u ze niet kunt opslaan met de code van uw toepassing. Raadpleeg de volgende artikelen voor meer informatie over het gebruik van Key Vault voor sleutel beheer:
+Microsoft raadt aan azure key vault te gebruiken om uw toegangssleutels te beheren en te roteren. Uw toepassing heeft veilig toegang tot uw sleutels in Key Vault, zodat u voorkomen dat ze worden opgeslagen met uw toepassingscode. Zie de volgende artikelen voor meer informatie over het gebruik van Key Vault voor sleutelbeheer:
 
-- [Sleutels voor opslag accounts beheren met Azure Key Vault en Power shell](../../key-vault/key-vault-overview-storage-keys-powershell.md)
-- [Sleutels voor opslag accounts beheren met Azure Key Vault en de Azure CLI](../../key-vault/key-vault-ovw-storage-keys.md)
+- [Opslagaccountsleutels beheren met Azure Key Vault en PowerShell](../../key-vault/key-vault-overview-storage-keys-powershell.md)
+- [Opslagaccountsleutels beheren met Azure Key Vault en de Azure CLI](../../key-vault/key-vault-ovw-storage-keys.md)
 
-## <a name="manually-rotate-access-keys"></a>Toegangs sleutels hand matig draaien
+## <a name="manually-rotate-access-keys"></a>Toegangstoetsen handmatig roteren
 
-Micro soft raadt u aan uw toegangs sleutels regel matig te draaien om uw opslag account veilig te houden. Gebruik, indien mogelijk, Azure Key Vault om uw toegangs sleutels te beheren. Als u Key Vault niet gebruikt, moet u de sleutels hand matig draaien.
+Microsoft raadt u aan uw toegangssleutels periodiek te roteren om uw opslagaccount veilig te houden. Gebruik indien mogelijk Azure Key Vault om uw toegangssleutels te beheren. Als u Key Vault niet gebruikt, moet u uw sleutels handmatig roteren.
 
-Er zijn twee toegangs sleutels toegewezen zodat u uw sleutels kunt draaien. Als u twee sleutels hebt, zorgt u ervoor dat uw toepassing gedurende het proces toegang tot Azure Storage houdt.
+Er zijn twee toegangssleutels toegewezen, zodat u uw sleutels roteren. Het hebben van twee sleutels zorgt ervoor dat uw toepassing gedurende het hele proces toegang heeft tot Azure Storage.
 
 > [!WARNING]
-> Het opnieuw genereren van de toegangs sleutels kan invloed hebben op alle toepassingen of Azure-Services die afhankelijk zijn van de sleutel van het opslag account. Clients die gebruikmaken van de account sleutel voor toegang tot het opslag account moeten worden bijgewerkt om de nieuwe sleutel te gebruiken, inclusief Media Services, Cloud, desktop-en mobiele toepassingen en Graphical User Interface toepassingen voor Azure Storage, zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
+> Het regenereren van uw toegangssleutels kan van invloed zijn op alle toepassingen of Azure-services die afhankelijk zijn van de opslagaccountsleutel. Alle clients die de accountsleutel gebruiken om toegang te krijgen tot het opslagaccount, moeten worden bijgewerkt om de nieuwe sleutel te gebruiken, inclusief mediaservices, cloud-, desktop- en mobiele toepassingen en grafische gebruikersinterfacetoepassingen voor Azure Storage, zoals [Azure Storage Explorer.](https://azure.microsoft.com/features/storage-explorer/)
 
-Volg deze procedure om de sleutels van uw opslag account te roteren:
+Volg dit proces om uw opslagaccountsleutels te roteren:
 
-1. Werk de verbindings reeksen in de toepassings code bij om de secundaire sleutel te gebruiken.
-2. Genereer de primaire toegangssleutel voor uw opslagaccount opnieuw. Klik op de Blade **toegangs sleutels** in de Azure Portal op **key1 opnieuw genereren**en klik vervolgens op **Ja** om te bevestigen dat u een nieuwe sleutel wilt genereren.
+1. Werk de verbindingstekenreeksen in uw toepassingscode bij om de secundaire sleutel te gebruiken.
+2. Genereer de primaire toegangssleutel voor uw opslagaccount opnieuw. Klik op het blade **Access Keys** in de Azure-portal op **Toets regenereren 1**en klik vervolgens op **Ja** om te bevestigen dat u een nieuwe sleutel wilt genereren.
 3. Werk de verbindingsreeksen in uw code bij, zodat deze verwijzen naar de nieuwe primaire toegangssleutel.
 4. Genereer de secundaire toegangssleutel op dezelfde manier opnieuw.
 
 > [!NOTE]
-> Micro soft raadt u aan om op hetzelfde moment slechts één van de sleutels in al uw toepassingen te gebruiken. Als u Key 1 op sommige locaties en sleutel 2 in andere gebruikt, kunt u de sleutels niet draaien zonder dat de toepassing de toegang verliest.
+> Microsoft raadt aan om slechts één van de sleutels in al uw toepassingen tegelijkertijd te gebruiken. Als u toets 1 op sommige plaatsen en Toets 2 in andere gebruikt, u uw sleutels niet roteren zonder dat een toepassing de toegang verliest.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van Azure Storage-account](storage-account-overview.md)
+- [Overzicht van Azure-opslagaccount](storage-account-overview.md)
 - [Een opslagaccount maken](storage-account-create.md)

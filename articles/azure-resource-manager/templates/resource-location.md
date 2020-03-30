@@ -1,31 +1,31 @@
 ---
-title: Resource locatie van sjabloon
-description: Hierin wordt beschreven hoe u een resource locatie instelt in een Azure Resource Manager sjabloon.
+title: Locatie van sjabloonbron
+description: Beschrijft hoe u de resourcelocatie instelt in een Azure Resource Manager-sjabloon.
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 24d278df8f71fecfaec4f0fa3a84172bf1db942b
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: a8324dac1232eecd5624e5f1dc0e6656295c0a10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122403"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156426"
 ---
-# <a name="set-resource-location-in-resource-manager-template"></a>Resource locatie instellen in Resource Manager-sjabloon
+# <a name="set-resource-location-in-arm-template"></a>Resourcelocatie instellen in ARM-sjabloon
 
-Bij het implementeren van een sjabloon moet u een locatie voor elke resource opgeven. De locatie hoeft niet dezelfde locatie te zijn als de locatie van de resource groep.
+Wanneer u een ARM-sjabloon (Azure Resource Manager) implementeert, moet u voor elke resource een locatie opgeven. De locatie hoeft niet dezelfde locatie te hebben als de locatie van de resourcegroep.
 
-## <a name="get-available-locations"></a>Beschik bare locaties ophalen
+## <a name="get-available-locations"></a>Beschikbare locaties optestellen
 
-Verschillende resource typen worden ondersteund op verschillende locaties. Gebruik Azure PowerShell of Azure CLI om de ondersteunde locaties voor een resource type op te halen.
+Verschillende resourcetypen worden op verschillende locaties ondersteund. Als u de ondersteunde locaties voor een resourcetype wilt opvragen, gebruikt u Azure PowerShell of Azure CLI.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes `
   | Where-Object ResourceTypeName -eq batchAccounts).Locations
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az provider show \
@@ -36,11 +36,11 @@ az provider show \
 
 ---
 
-## <a name="use-location-parameter"></a>Locatie parameter gebruiken
+## <a name="use-location-parameter"></a>Locatieparameter gebruiken
 
-Gebruik een para meter om de locatie voor resources op te geven om flexibiliteit te bieden bij het implementeren van uw sjabloon. Stel de standaard waarde van de para meter in op `resourceGroup().location`.
+Als u flexibiliteit wilt toestaan bij het implementeren van uw sjabloon, gebruikt u een parameter om de locatie voor resources op te geven. Stel de standaardwaarde van `resourceGroup().location`de parameter in op .
 
-In het volgende voor beeld ziet u een opslag account dat is geïmplementeerd op een locatie die is opgegeven als een para meter:
+In het volgende voorbeeld wordt een opslagaccount weergegeven dat is geïmplementeerd op een locatie die als parameter is opgegeven:
 
 ```json
 {
@@ -95,5 +95,5 @@ In het volgende voor beeld ziet u een opslag account dat is geïmplementeerd op 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Azure Resource Manager-sjabloon functies](template-functions.md)voor een volledige lijst met sjabloon functies.
-* Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager-sjablonen](template-syntax.md)voor meer informatie over sjabloon bestanden.
+* Zie [Sjabloonfuncties](template-functions.md)azure resource manager voor de volledige lijst met sjabloonfuncties .
+* Zie De structuur en [syntaxis van ARM-sjablonen begrijpen](template-syntax.md)voor meer informatie over sjabloonbestanden.

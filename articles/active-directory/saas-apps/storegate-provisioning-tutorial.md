@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Storegate configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Storegate.
+title: 'Zelfstudie: Storegate configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
+description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen voor Storegate.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,171 +16,171 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: Zhchia
 ms.openlocfilehash: 72903a36f88f9092ce1d203b557003083407320b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77064254"
 ---
-# <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>Zelf studie: Storegate configureren voor automatische gebruikers inrichting
+# <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>Zelfstudie: Storegate configureren voor automatische gebruikersinrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in Storegate en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in Storegate.
+Het doel van deze zelfstudie is om de stappen aan te tonen die moeten worden uitgevoerd in Storegate en Azure Active Directory (Azure AD) om Azure AD te configureren om gebruikers en/of groepen automatisch in te richten en te de-provisionen naar Storegate.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector bevindt zich momenteel in Public Preview. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over de algemene gebruiksvoorwaarden van Microsoft Azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
 
-* Een Azure AD-Tenant
-* [Een Storegate-Tenant](https://www.storegate.com)
-* Een gebruikers account op een Storegate met beheerders machtigingen.
+* Een Azure AD-tenant
+* [Een Storegate-huurder](https://www.storegate.com)
+* Een gebruikersaccount op een Storegate met beheerdersmachtigingen.
 
 ## <a name="assign-users-to-storegate"></a>Gebruikers toewijzen aan Storegate
 
-Azure Active Directory gebruikt een concept met de naam toewijzingen om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept genaamd toewijzingen om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersinrichting worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot Storegate. Eenmaal besloten, kunt u deze gebruikers en/of groepen toewijzen aan Storegate door de volgende instructies te volgen:
+Voordat u automatische gebruikersinrichting configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang tot Storegate nodig hebben. Eenmaal besloten, u deze gebruikers en/of groepen toewijzen aan Storegate door de instructies hier te volgen:
 
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
+* [Een gebruiker of groep toewijzen aan een bedrijfsapp](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-storegate"></a>Belang rijke tips voor het toewijzen van gebruikers aan Storegate
+### <a name="important-tips-for-assigning-users-to-storegate"></a>Belangrijke tips voor het toewijzen van gebruikers aan Storegate
 
-* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Storegate om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+* Het wordt aanbevolen dat één Azure AD-gebruiker aan Storegate wordt toegewezen om de automatische configuratie van gebruikersinrichting te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Storegate, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker aan Storegate toewijst, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de **functie Standaardtoegang** zijn uitgesloten van inrichten.
 
-## <a name="set-up-storegate-for-provisioning"></a>Storegate instellen voor inrichting
+## <a name="set-up-storegate-for-provisioning"></a>Storegate instellen voor inrichten
 
-Voordat u Storegate configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u bepaalde inrichtings gegevens ophalen van Storegate.
+Voordat u Storegate configureert voor automatische gebruikersvoorziening met Azure AD, moet u bepaalde informatie ophalen bij Storegate.
 
-1. Meld u aan bij de [Storegate-beheer console](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367) en ga naar de instellingen door te klikken op het pictogram gebruiker in de rechter bovenhoek en selecteer **account instellingen**.
+1. Meld u aan bij uw [Storegate-beheerconsole](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367) en navigeer naar de instellingen door te klikken op het gebruikerspictogram in de rechterbovenhoek en **selecteer Accountinstellingen**.
 
-    ![SCIM Storegate toevoegen](media/storegate-provisioning-tutorial/admin.png)
+    ![Storegate Voeg SCIM toe](media/storegate-provisioning-tutorial/admin.png)
 
-2. In instellingen gaat u naar **Team > instellingen** en controleert u of de wissel knop is ingeschakeld in de sectie **eenmalige aanmelding** .
+2. Navigeer in de instellingen **naar Team > Instellingen** en controleer of de schakelaar is ingeschakeld in de sectie Eén **aanmelding.**
 
     ![Storegate-instellingen](media/storegate-provisioning-tutorial/team.png)
 
-    ![Storegate wissel knop](media/storegate-provisioning-tutorial/sso.png)
+    ![Knop Storegate-to-ggle](media/storegate-provisioning-tutorial/sso.png)
 
-3. Kopieer de **URL** van de Tenant en het **token**. Deze waarden worden respectievelijk in de velden **Tenant-URL** en **geheim** vermeld op het tabblad inrichten van uw Storegate-toepassing in de Azure Portal. 
+3. Kopieer de URL en **token** **van de tenant** . Deze waarden worden respectievelijk ingevoerd in de velden Url van **tenant** en **geheim token** op het tabblad Inrichten van uw Storegate-toepassing in de Azure-portal. 
 
-    ![Storegate-token maken](media/storegate-provisioning-tutorial/token.png)
+    ![Token storegate maken](media/storegate-provisioning-tutorial/token.png)
 
 ## <a name="add-storegate-from-the-gallery"></a>Storegate toevoegen vanuit de galerie
 
-Als u Storegate wilt configureren voor het automatisch inrichten van gebruikers met Azure AD, moet u Storegate van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Als u Storegate wilt configureren voor automatische gebruikersvoorziening met Azure AD, moet u Storegate vanuit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+1. Selecteer **Azure Active Directory**in de **[Azure-portal](https://portal.azure.com)** in het linkernavigatiedeelvenster .
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **Nieuwe toepassing** boven aan het deelvenster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Storegate**in het zoekvak en selecteer **Storegate** in het deel venster resultaten. 
+4. Voer **Storegate in**het zoekvak in, selecteer **Storegate** in het resultatenpaneel. 
 
-    ![Storegate in de lijst met resultaten](common/search-new-app.png)
+    ![Storegate in de resultatenlijst](common/search-new-app.png)
 
-5. Selecteer de knop **Aanmelden voor Storegate** , waarmee u wordt doorgestuurd naar de aanmeldings pagina van Storegate. 
+5. Selecteer de knop **Aanmelden voor Storegate** die u doorverwijst naar de aanmeldingspagina van Storegate. 
 
-    ![Storegate OIDC toevoegen](media/storegate-provisioning-tutorial/signup.png)
+    ![Toevoegen aan storegate OIDC](media/storegate-provisioning-tutorial/signup.png)
 
-6.  Meld u aan bij de [Storegate-beheer console](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367) en ga naar de instellingen door te klikken op het pictogram gebruiker in de rechter bovenhoek en selecteer **account instellingen**.
+6.  Meld u aan bij uw [Storegate-beheerconsole](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367) en navigeer naar de instellingen door te klikken op het gebruikerspictogram in de rechterbovenhoek en **selecteer Accountinstellingen**.
 
     ![Storegate-aanmelding](media/storegate-provisioning-tutorial/admin.png)
 
-7. In instellingen gaat u naar **Team > instellingen** en klikt u op wissel knop in de sectie eenmalige aanmelding, waarna de toestemming-flow wordt gestart. Klik op **activeren**.
+7. Ga in de instellingen naar **Team >-instellingen** en klik op de schakelaar in de sectie Eén aanmelding, hiermee wordt de toestemmingsstroom gestart. Klik op **Activeren**.
 
     ![Storegate-team](media/storegate-provisioning-tutorial/team.png)
 
-    ![Storegate SSO](media/storegate-provisioning-tutorial/sso.png)
+    ![Storegate sso](media/storegate-provisioning-tutorial/sso.png)
 
-    ![Storegate activeren](media/storegate-provisioning-tutorial/activate.png)
+    ![Storegate geactiveerd](media/storegate-provisioning-tutorial/activate.png)
 
-8. Als Storegate een OpenIDConnect-app is, kiest u aanmelden bij Storegate met uw micro soft-werk account.
+8. Aangezien Storegate een OpenIDConnect-app is, kiest u ervoor om in te loggen bij Storegate met uw Microsoft-werkaccount.
 
-    ![Storegate OIDC-aanmelding](media/storegate-provisioning-tutorial/login.png)
+    ![Storegate OIDC login](media/storegate-provisioning-tutorial/login.png)
 
-9. Accepteer na een geslaagde verificatie de toestemming prompt voor de pagina toestemming. De toepassing wordt vervolgens automatisch toegevoegd aan uw Tenant en u wordt doorgestuurd naar uw Storegate-account.
+9. Na een succesvolle verificatie accepteert u de toestemmingsprompt voor de toestemmingspagina. De applicatie wordt dan automatisch toegevoegd aan uw tenant en u wordt doorgestuurd naar uw Storegate-account.
 
-    ![Storegate OIDc toestemming](media/storegate-provisioning-tutorial/accept.png)
+    ![Storegate OIDc Toestemming](media/storegate-provisioning-tutorial/accept.png)
 
-## <a name="configure-automatic-user-provisioning-to-storegate"></a>Automatische gebruikers inrichting configureren voor Storegate 
+## <a name="configure-automatic-user-provisioning-to-storegate"></a>Automatische gebruikersvoorziening configureren voor Storegate 
 
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in Storegate te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
+In deze sectie u de Azure AD-inrichtingsservice configureren om gebruikers en/of groepen in Storegate te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
 
 > [!NOTE]
-> [Raadpleeg voor](https://en-support.storegate.com/article/step-by-step-instruction-how-to-enable-azure-provisioning-to-your-storegate-team-account/)meer informatie over het scim-eind punt van Storegate.
+> Voor meer informatie over het SCIM-eindpunt van Storegate [raadpleegt u dit](https://en-support.storegate.com/article/step-by-step-instruction-how-to-enable-azure-provisioning-to-your-storegate-team-account/).
 
-### <a name="to-configure-automatic-user-provisioning-for-storegate-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Storegate in azure AD
+### <a name="to-configure-automatic-user-provisioning-for-storegate-in-azure-ad"></a>Automatische gebruikersvoorziening voor Storegate in Azure AD configureren
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Storegate**.
+2. Selecteer **Storegate**in de lijst met toepassingen .
 
-    ![De koppeling Storegate in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling Storegate in de lijst Toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten.**
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Tabblad Inrichten](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **inrichtingsmodus** in op **Automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Tabblad Inrichten](common/provisioning-automatic.png)
 
-5. Selecteer in de sectie **beheerders referenties** de invoer `https://dialpad.com/scim` in de **Tenant-URL**. Voer de waarde in die u hebt opgehaald en eerder hebt opgeslagen uit Storegate in een **geheim token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Storegate. Als de verbinding mislukt, zorg er dan voor dat uw Storegate-account beheerders machtigingen heeft en probeer het opnieuw.
+5. Voer onder de sectie `https://dialpad.com/scim` **Beheerdersreferenties** invoer in **Tenant-URL**in . Voer de waarde in die u eerder hebt opgehaald en opgeslagen in Storegate in **Secret Token.** Klik **op Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Storegate. Als de verbinding mislukt, moet u ervoor zorgen dat uw Storegate-account beheerdersmachtigingen heeft en het opnieuw proberen.
 
-    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Tenant URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+6. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fouten moet ontvangen en schakel het selectievakje in - **Stuur een e-mailmelding wanneer er een fout optreedt**.
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mail met meldingen](common/provisioning-notification-email.png)
 
 7. Klik op **Opslaan**.
 
-8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Storegate**.
+8. Selecteer Azure **Active Directory-gebruikers synchroniseren met Storegate**onder de sectie **Toewijzingen** .
 
-    ![Storegate-gebruikers toewijzingen](media/storegate-provisioning-tutorial/usermappings.png)
+    ![Gebruikerstoewijzingen storegate](media/storegate-provisioning-tutorial/usermappings.png)
 
-9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Storegate in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Storegate voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+9. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Storegate in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in Storegate te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
-    ![Storegate-gebruikers kenmerken](media/storegate-provisioning-tutorial/userattributes.png)
+    ![Gebruikerskenmerken van storegate](media/storegate-provisioning-tutorial/userattributes.png)
 
-10. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+10. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
 
-11. Als u de Azure AD-inrichtings service voor **Storegate wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
+11. Als u de Azure AD-inrichtingsservice voor Storegate wilt inschakelen, wijzigt u de **instelstatus** in **Aan** in de sectie **Instellingen.**
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
 
-12. Definieer de gebruikers en/of groepen die u wilt inrichten voor Storegate door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
+12. Definieer de gebruikers en/of groepen die u wilt inrichten voor Storegate door de gewenste waarden in **Bereik** te kiezen in de sectie **Instellingen.**
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingskader](common/provisioning-scope.png)
 
-13. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+13. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Storegate.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste synchronisatie duurt langer om uit te voeren dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het installatieactiviteitenrapport te volgen, waarin alle acties worden beschreven die zijn uitgevoerd door de Azure AD-inrichtingsservice op Storegate.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische gebruikersaccountinrichting voor](../app-provisioning/check-status-user-account-provisioning.md)meer informatie over het lezen van de azure AD-inrichtingslogboeken.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../app-provisioning/check-status-user-account-provisioning.md)

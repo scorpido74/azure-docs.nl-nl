@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met behulp van Ruby-Azure Database for MySQL
+title: Verbinding maken met Ruby - Azure Database voor MySQL
 description: Deze snelstartgids bevat enkele voorbeelden van Ruby-code die u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit een Azure Database voor MySQL.
 author: ajlam
 ms.author: andrela
@@ -9,10 +9,10 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 12/02/2019
 ms.openlocfilehash: dc8c7352856b11cb6cc4c9c404eb567cb72b720d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74770642"
 ---
 # <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>Azure Database voor MySQL: Ruby gebruiken om verbinding te maken en gegevens op te vragen
@@ -20,8 +20,8 @@ In deze snelstartgids ziet u hoe u vanuit de platformen Windows, Ubuntu Linux en
 
 ## <a name="prerequisites"></a>Vereisten
 In deze snelstartgids worden de resources die in een van deze handleidingen zijn gemaakt, als uitgangspunt gebruikt:
-- [Een Azure-database voor een MySQL-server maken met behulp van Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
-- [Een Azure-database voor een MySQL-server maken met behulp van Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
+- [Een Azure-database voor MySQL-server maken met behulp van Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
+- [Een Azure-database voor MySQL-server maken met behulp van Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ## <a name="install-ruby"></a>Ruby installeren
 Installeer Ruby, Gem en de MySQL2-bibliotheek op de computer. 
@@ -35,13 +35,13 @@ Installeer Ruby, Gem en de MySQL2-bibliotheek op de computer.
 6. Bouw de MySQL2-module voor Ruby. Gebruik hiervoor Gem en voer de opdracht `gem install mysql2` uit.
 
 ### <a name="macos"></a>MacOS
-1. Installeer Ruby met Homebrew. Voer daarvoor de opdracht `brew install ruby` uit. Zie de Ruby-[documentatie voor installatie](https://www.ruby-lang.org/en/documentation/installation/#homebrew) voor meer installatieopties.
+1. Installeer Ruby met Homebrew. Voer daarvoor de opdracht `brew install ruby` uit. Zie de [ruby-installatiedocumentatie](https://www.ruby-lang.org/en/documentation/installation/#homebrew)voor meer installatieopties.
 2. Test de Ruby-installatie door met de opdracht `ruby -v` te controleren welke versie er is geïnstalleerd.
 3. Test de Gem-installatie door met de opdracht `gem -v` te controleren welke versie er is geïnstalleerd.
 4. Bouw de MySQL2-module voor Ruby. Gebruik hiervoor Gem en voer de opdracht `gem install mysql2` uit.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-1. Installeer Ruby door de opdracht `sudo apt-get install ruby-full` uit te voeren. Zie de Ruby-[documentatie voor installatie](https://www.ruby-lang.org/en/documentation/installation/) voor meer installatieopties.
+1. Installeer Ruby door de opdracht `sudo apt-get install ruby-full` uit te voeren. Zie de [ruby-installatiedocumentatie](https://www.ruby-lang.org/en/documentation/installation/)voor meer installatieopties.
 2. Test de Ruby-installatie door met de opdracht `ruby -v` te controleren welke versie er is geïnstalleerd.
 3. Installeer de nieuwste updates voor Gem door de opdracht `sudo gem update --system` uit te voeren.
 4. Test de Gem-installatie door met de opdracht `gem -v` te controleren welke versie er is geïnstalleerd.
@@ -52,7 +52,7 @@ Installeer Ruby, Gem en de MySQL2-bibliotheek op de computer.
 ## <a name="get-connection-information"></a>Verbindingsgegevens ophalen
 Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azure Database voor MySQL. U hebt de volledig gekwalificeerde servernaam en aanmeldingsreferenties nodig.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Log in bij de [Azure-portal](https://portal.azure.com/).
 2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**).
 3. Klik op de servernaam.
 4. Ga naar het venster **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.

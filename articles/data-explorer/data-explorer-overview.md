@@ -1,6 +1,6 @@
 ---
 title: Wat is Azure Data Explorer?
-description: Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen.
+description: Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
 ms.openlocfilehash: 02b239922f481240341225ea68d8d0ee7492c48b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "60445794"
 ---
 # <a name="what-is-azure-data-explorer"></a>Wat is Azure Data Explorer?
 
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. Hiermee verwerkt u de vele gegevensstromen die door moderne software worden uitgevoerd, zodat u de gegevens kunt verzamelen, opslaan en analyseren. Azure Data Explorer is ideaal om grote hoeveelheden diverse gegevens van elke gegevensbron te analyseren, zoals websites, toepassingen, IoT-apparaten en meer. Deze gegevens worden gebruikt voor diagnose, bewaking, rapportage, machine learning en aanvullende analysemogelijkheden. Azure Data Explorer is het eenvoudig om op te nemen van deze gegevens en kunt u complexe ad-hocquery's uitvoeren voor de gegevens in een paar seconden.
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Hiermee verwerkt u de vele gegevensstromen die door moderne software worden uitgevoerd, zodat u de gegevens kunt verzamelen, opslaan en analyseren. Azure Data Explorer is ideaal om grote hoeveelheden diverse gegevens van elke gegevensbron te analyseren, zoals websites, toepassingen, IoT-apparaten en meer. Deze gegevens worden gebruikt voor diagnose, bewaking, rapportage, machine learning en aanvullende analysemogelijkheden. Azure Data Explorer maakt het eenvoudig om deze gegevens in te nemen en stelt u in staat om complexe ad hoc query's op de gegevens in enkele seconden uit te voeren.
 
 ## <a name="what-makes-azure-data-explorer-unique"></a>Wat maakt Azure Data Explorer uniek?
 
@@ -46,13 +46,13 @@ Werk in Azure Data Explorer volgt het volgende algemene patroon:
 
 1. **Database maken:** maak een *cluster* en maak vervolgens een of meer *databases* in dat cluster. [Snelstart: een Azure Data Explorer-cluster en -database maken](create-cluster-database-portal.md)
 
-1. **Gegevens opnemen:** laad gegevens in databasetabellen zodat u er query's op kunt uitvoeren. [Snelstart: Gegevens uit Event Hub opnemen in Azure Data Explorer](ingest-data-event-hub.md)
+1. **Gegevens opnemen: ** laad gegevens in databasetabellen zodat u er query's op kunt uitvoeren. [Snelstart: gegevens uit Event Hub opnemen in Azure Data Explorer](ingest-data-event-hub.md)
 
-1. **Query's uitvoeren op database:** gebruik onze ​​webtoepassing om query's en resultaten uit te voeren, te beoordelen en te delen. Het is beschikbaar in Azure-portal en als op zichzelf staande toepassing. Bovendien kunt u query's ook programmatisch (met behulp van een SDK) of naar een REST API-eindpunt verzenden. [Snelstart: query's uitvoeren op gegevens in Azure Data Explorer](web-query-data.md)
+1. **Query’s uitvoeren op de database: ** gebruik onze ​​webtoepassing om query's en resultaten uit te voeren, te beoordelen en te delen. Het is beschikbaar in Azure-portal en als op zichzelf staande toepassing. Bovendien kunt u query's ook programmatisch (met behulp van een SDK) of naar een REST API-eindpunt verzenden. [Quickstart: Gegevens doorzoeken in Azure Data Explorer](web-query-data.md)
 
 ## <a name="query-experience"></a>Query-ervaring
 
-Een query in Azure Data Explorer is een alleen-lezen aanvraag om gegevens te verwerken en de resultaten van deze verwerking te retourneren, zonder de gegevens of metagegevens te wijzigen. U blijft uw query’s verfijnen totdat u uw analyse hebt voltooid. Azure Data Explorer is dit proces gemakkelijk vanwege haar ervaring zeer snel ad-hoc query.
+Een query in Azure Data Explorer is een alleen-lezen aanvraag om gegevens te verwerken en de resultaten van deze verwerking te retourneren, zonder de gegevens of metagegevens te wijzigen. U blijft uw query’s verfijnen totdat u uw analyse hebt voltooid. Azure Data Explorer maakt dit proces eenvoudig vanwege de zeer snelle ad hoc query-ervaring.
 
 Azure Data Explorer verwerkt grote hoeveelheden gestructureerde, semi-gestructureerde (JSON-achtige geneste typen) en ongestructureerde (vrije tekst) gegevens even goed. Hiermee kunt u zoeken naar specifieke teksttermen, bepaalde gebeurtenissen lokaliseren en metrische berekeningen uitvoeren op gestructureerde gegevens. Azure Data Explorer overbrugt de wereld van ongestructureerde tekstlogboeken en gestructureerde getallen en dimensies door in runtime waarden uit vrije-tekstvelden te extraheren. Gegevensverkenning wordt vereenvoudigd door snelle tekstindexering, kolomopslag en tijdreeksbewerkingen te combineren.
 
@@ -72,6 +72,6 @@ We willen graag uw feedback over Azure Data Explorer en de querytaal horen op:
 
 [Snelstart: een Azure Data Explorer-cluster en -database maken](create-cluster-database-portal.md)
 
-[Snelstart: Gegevens uit Event Hub opnemen in Azure Data Explorer](ingest-data-event-hub.md)
+[Snelstart: gegevens uit Event Hub opnemen in Azure Data Explorer](ingest-data-event-hub.md)
 
-[Snelstart: query's uitvoeren op gegevens in Azure Data Explorer](web-query-data.md)
+[Quickstart: Gegevens doorzoeken in Azure Data Explorer](web-query-data.md)

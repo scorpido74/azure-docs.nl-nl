@@ -1,7 +1,7 @@
 ---
-title: Linux verkennen
+title: Ontdek Linux
 titleSuffix: Azure Data Science Virtual Machine
-description: Meer informatie over het uitvoeren van verschillende algemene data Science-taken met behulp van de Linux-Data Science Virtual Machine.
+description: Leer hoe u verschillende veelvoorkomende gegevenswetenschappelijke taken uitvoeren met behulp van de Linux Data Science Virtual Machine.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,106 +9,106 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 9883256fc801d37acd4ea10226bd9e541f9135f7
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 9857de0470baa35dcc8005e1622e5e593da95751
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268656"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128351"
 ---
-# <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Data Wetenschappen met een Linux-Data Science Virtual Machine in azure
+# <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Data science met een Linux Data Science Virtual Machine in Azure
 
-In dit scenario ziet u hoe u verschillende algemene data Science-taken kunt uitvoeren met behulp van de Linux-Data Science Virtual Machine (DSVM). De Linux-DSVM is een installatie kopie van een virtuele machine die beschikbaar is in Azure en die vooraf is geïnstalleerd met een verzameling hulpprogram ma's die vaak worden gebruikt voor gegevens analyse en machine learning. De belangrijkste software onderdelen zijn gespecificeerd in [het inrichten van de Linux-Data Science virtual machine](linux-dsvm-intro.md). Met de DSVM-installatie kopie kunt u eenvoudig aan de slag met het uitvoeren van data Science in enkele minuten, zonder dat u elk van de hulpprogram ma's afzonderlijk hoeft te installeren en configureren. U kunt de DSVM eenvoudig omhoog schalen als dat nodig is, en u kunt deze stoppen wanneer deze niet in gebruik is. De DSVM-resource is zowel elastisch als kosten efficiënt.
+Deze walkthrough laat u zien hoe u verschillende veelvoorkomende data science-taken uitvoeren met behulp van de Linux Data Science Virtual Machine (DSVM). De Linux DSVM is een virtuele machineafbeelding die beschikbaar is in Azure en die vooraf is geïnstalleerd met een verzameling hulpprogramma's die vaak worden gebruikt voor gegevensanalyse en machine learning. De belangrijkste softwarecomponenten zijn gespecificeerd in [provision the Linux Data Science Virtual Machine](linux-dsvm-intro.md). De DSVM-afbeelding maakt het gemakkelijk om binnen enkele minuten aan de slag te gaan met data science, zonder dat u elk van de hulpprogramma's afzonderlijk hoeft te installeren en configureren. U de DSVM eenvoudig opschalen als dat nodig is, en u deze stoppen wanneer deze niet in gebruik is. De DSVM-bron is zowel elastisch als kostenefficiënt.
 
-De data Science-taken die in deze walkthrough worden getoond, volgen de stappen die worden beschreven in [Wat is het team data Science process?](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) Het proces van de team data Science is een systematische benadering van data Science, waarmee teams van gegevens effectief kunnen samen werken in de levens cyclus van het bouwen van intelligente toepassingen. Het data science process biedt ook een iteratieve raamwerk voor datatechnologie die kan worden gevolgd door een persoon.
+De data science taken die in deze walkthrough worden gedemonstreerd, volgen de stappen die zijn beschreven in [Wat is het Team Data Science Process?](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) Het Team Data Science Process is een systematische benadering van data science die teams van data scientists helpt effectief samen te werken gedurende de levenscyclus van het bouwen van intelligente applicaties. Het data science-proces biedt ook een iteratief kader voor data science dat door een individu kan worden gevolgd.
 
-In dit overzicht analyseren we de [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) -gegevensset. Spambase is een set e-mail berichten die zijn gemarkeerd als spam of per (geen spam). Spambase bevat ook enkele statistieken over de inhoud van de e-mail berichten. Verderop in dit overzicht wordt gecommuniceerd over de statistieken.
+In deze walkthrough analyseren we de [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) dataset. Spambase is een set e-mails die zijn gemarkeerd als spam of ham (geen spam). Spambase bevat ook enkele statistieken over de inhoud van de e-mails. We praten later in de walkthrough over de statistieken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u een Linux-DSVM kunt gebruiken, moet u beschikken over de volgende vereisten:
+Voordat u een Linux DSVM gebruiken, moet u de volgende vereisten hebben:
 
-* **Azure-abonnement**. Zie [vandaag nog uw gratis Azure-account maken](https://azure.microsoft.com/free/)om een Azure-abonnement te krijgen.
-* [**Linux-Data Science virtual machine**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Zie [de Linux-Data Science virtual machine inrichten](linux-dsvm-intro.md)voor meer informatie over het inrichten van de virtuele machine.
-* [**X2Go**](https://wiki.x2go.org/doku.php) is op uw computer geïnstalleerd met een open xfce-sessie. Zie [de X2Go-client installeren en configureren](linux-dsvm-intro.md#x2go)voor meer informatie.
-* Voor een soepeler schuivende ervaring kunt u in de Firefox-webbrowser van DSVM de vlag `gfx.xrender.enabled` in `about:config`in-of uitschakelen. [Meer informatie](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). U kunt ook overwegen `mousewheel.enable_pixel_scrolling` in te stellen op `False`. [Meer informatie](https://support.mozilla.org/questions/981140).
-* **Azure machine learning-account**. Als u er nog geen hebt, kunt u zich registreren voor een nieuw account op de [Start pagina van Azure machine learning](https://azure.microsoft.com/free/services/machine-learning//).
+* **Azure-abonnement**. Zie [Uw gratis Azure-account vandaag nog maken](https://azure.microsoft.com/free/)als u een Azure-abonnement wilt afsluiten.
+* [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Zie De Virtuele Machine van [Linux Data Science inrichten](linux-dsvm-intro.md)voor informatie over het inrichten van de virtuele machine.
+* [**X2Go**](https://wiki.x2go.org/doku.php) geïnstalleerd op uw computer met een open XFCE-sessie. Zie [De X2Go-client installeren en configureren](linux-dsvm-intro.md#x2go)voor meer informatie.
+* Voor een soepelere scrollervaring schakelt u in de Firefox-webbrowser `gfx.xrender.enabled` van `about:config`de DSVM de vlag in . [Meer informatie](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Overweeg ook `mousewheel.enable_pixel_scrolling` `False`om . [Meer informatie](https://support.mozilla.org/questions/981140).
+* **Azure Machine Learning-account**. Als u er nog geen hebt, meldt u zich aan voor een nieuw account op de [startpagina van Azure Machine Learning.](https://azure.microsoft.com/free/services/machine-learning//)
 
-## <a name="download-the-spambase-dataset"></a>De gegevensset spambase downloaden
+## <a name="download-the-spambase-dataset"></a>Download de spambase-gegevensset
 
-De [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) -gegevensset is een relatief kleine set gegevens met 4.601-voor beelden. De gegevensset is een handige grootte voor het demonstreren van enkele van de belangrijkste functies van de DSVM, omdat deze de resource vereisten voor een bescheiden houdt.
+De [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) dataset is een relatief kleine set gegevens die 4.601 voorbeelden bevat. De gegevensset is een handige grootte voor het aantonen van enkele van de belangrijkste functies van de DSVM, omdat het houdt de resource vereisten bescheiden.
 
 > [!NOTE]
-> Deze walkthrough is gemaakt met behulp van een D2 v2-grootte Linux DSVM (CentOS Edition). U kunt een DSVM deze grootte gebruiken om de procedures uit te voeren die in dit overzicht worden getoond.
+> Deze walkthrough is gemaakt met behulp van een D2 v2-formaat Linux DSVM (CentOS Edition). U een DSVM van dit formaat gebruiken om de procedures te voltooien die in deze walkthrough worden gedemonstreerd.
 
-Als u meer opslag ruimte nodig hebt, kunt u extra schijven maken en deze koppelen aan uw DSVM. De schijven gebruiken permanente Azure-opslag, zodat de gegevens behouden blijven, zelfs als de server opnieuw wordt ingericht vanwege het wijzigen van de grootte of wordt uitgeschakeld. Als u een schijf wilt toevoegen en deze aan uw DSVM wilt koppelen, voert u de stappen in [een schijf toevoegen aan een virtuele Linux-machine](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)uit. De stappen voor het toevoegen van een schijf gebruiken de Azure CLI, die al is geïnstalleerd op de DSVM. U kunt de stappen volledig van de DSVM uitvoeren. Een andere optie om de opslag ruimte te verg Roten, is om [Azure files](../../storage/files/storage-how-to-use-files-linux.md)te gebruiken.
+Als u meer opslagruimte nodig hebt, u extra schijven maken en deze aan uw DSVM koppelen. De schijven maken gebruik van permanente Azure-opslag, zodat hun gegevens behouden blijven, zelfs als de server opnieuw is ingericht vanwege het formaat of wordt afgesloten. Als u een schijf wilt toevoegen en aan uw DSVM wilt koppelen, voert u de stappen uit in [Een schijf toevoegen aan een Linux-vm.](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) De stappen voor het toevoegen van een schijf gebruiken de Azure CLI, die al is geïnstalleerd op de DSVM. U de stappen volledig uitvoeren vanuit de DSVM zelf. Een andere optie om de opslag te vergroten, is het gebruik van [Azure Files.](../../storage/files/storage-how-to-use-files-linux.md)
 
-Als u de gegevens wilt downloaden, opent u een Terminal venster en voert u de volgende opdracht uit:
+Als u de gegevens wilt downloaden, opent u een terminalvenster en voert u deze opdracht uit:
 
     wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
 
-Het gedownloade bestand heeft geen veldnamenrij. Laten we nog een bestand maken dat een koptekst heeft. Voer deze opdracht maakt u een bestand met de juiste headers:
+Het gedownloade bestand heeft geen koptekstrij. Laten we een ander bestand maken dat wel een koptekst heeft. Voer deze opdracht uit om een bestand met de juiste kopteksten te maken:
 
     echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
 
-Voeg de twee bestanden vervolgens samen:
+Voeg vervolgens de twee bestanden samen:
 
     cat spambase.data >> headers
     mv headers spambaseHeaders.data
 
-De gegevensset heeft verschillende typen statistieken voor elk e-mail bericht:
+De gegevensset heeft verschillende soorten statistieken voor elke e-mail:
 
-* Kolommen zoals **word\_freq\__Word_**  het percentage woorden in het e-mail bericht aangeven dat overeenkomt met *Word*. Als bijvoorbeeld **word\_freq\_** **1**is, is 1% van alle woorden in het e-mail bericht *gemaakt*.
-* Kolommen zoals **char\_freq\__teken_**  geven het percentage van alle tekens in het e-mail *bericht.*
-* de **lengte van\_run\_length\_langste** is de langste lengte van een reeks hoofd letters.
-* de **lengte van\_run\_\_gemiddelde** is de gemiddelde lengte van alle reeksen hoofd letters.
-* de totale lengte van de **\_lengte\_totaal** is het totaal van alle reeksen hoofd letters.\_
-* **spam** geeft aan of het e-mail bericht als spam is beschouwd of niet (1 = spam, 0 = geen spam).
+* Kolommen zoals **\_woord\_freq WORD** geven het percentage woorden in de e-mail aan dat overeenkomt met *WORD*. Bijvoorbeeld, als **\_woord\_freq maken** is **1,** dan 1% van alle woorden in de e-mail werden *te maken*.
+* Kolommen zoals **\_char\_freq CHAR** geven het percentage van alle tekens in de e-mail die *CHAR*.
+* **kapitaal\_\_run\_lengte langste** is de langste lengte van een reeks van hoofdletters.
+* **kapitaal\_\_run\_lengte gemiddelde** is de gemiddelde lengte van alle sequenties van hoofdletters.
+* **kapitaal\_\_run\_lengte totaal** is de totale lengte van alle sequenties van hoofdletters.
+* **spam** geeft aan of de e-mail werd beschouwd als spam of niet (1 = spam, 0 = geen spam).
 
-## <a name="explore-the-dataset-by-using-r-open"></a>De gegevensset verkennen met R open
+## <a name="explore-the-dataset-by-using-r-open"></a>De gegevensset verkennen met R Open
 
-We gaan de gegevens bekijken en enkele basis machine learning doen met behulp van R. De DSVM wordt geleverd met [micro soft R open](https://mran.revolutionanalytics.com/open/) vooraf geïnstalleerd. De multi-threaded wiskundige bibliotheken in de vooraf geïnstalleerde versie van R bieden betere prestaties dan versies met één thread. R open biedt reproduceer baarheid via een moment opname van de opslag plaats voor de KRANs.
+Laten we de gegevens onderzoeken en wat basismachine learning doen met Behulp van R. De DSVM wordt geleverd met [Microsoft R Open](https://mran.revolutionanalytics.com/open/) vooraf geïnstalleerd. De multithreaded wiskundebibliotheken in de vooraf geïnstalleerde versie van R bieden betere prestaties dan single-threaded versies. R Open biedt ook reproduceerbaarheid door middel van een momentopname van de CRAN-pakketrepository.
 
-Als u kopieën wilt ophalen van de code voorbeelden die in dit overzicht worden gebruikt, gebruikt u Git om de opslag plaats Azure-machine-learning-data-Science te klonen. Git is vooraf geïnstalleerd op de DSVM. Voer op de Git-opdracht regel het volgende uit:
+Als u kopieën wilt krijgen van de codevoorbeelden die in deze walkthrough worden gebruikt, gebruikt u git om de Azure-Machine-Learning-Data-Science-repository te klonen. Git is vooraf geïnstalleerd op de DSVM. Voer bij de git-opdrachtregel het als:
 
     git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
 
-Open een Terminal venster en start een nieuwe R-sessie in de R Interactive-console. U kunt ook RStudio gebruiken, dat vooraf is geïnstalleerd op de DSVM.
+Open een terminalvenster en start een nieuwe R-sessie in de interactieve R-console. U ook RStudio gebruiken, dat vooraf is geïnstalleerd op de DSVM.
 
-De gegevens importeren en de omgeving instellen:
+Ga als u de gegevens importeert en de omgeving instelt:
 
     data <- read.csv("spambaseHeaders.data")
     set.seed(123)
 
-Om te zien samenvattende statistieken over elke kolom:
+Ga als het gaat om overzichtsstatistieken over elke kolom:
 
     summary(data)
 
-Voor een andere weergave van de gegevens:
+Voor een andere kijk op de gegevens:
 
     str(data)
 
-In deze weer gave ziet u het type van elke variabele en de eerste waarden in de gegevensset.
+In deze weergave ziet u het type van elke variabele en de eerste waarden in de gegevensset.
 
-De kolom **spam** is gelezen als een geheel getal, maar het is wel echt een categorische-variabele (of factor). Instellen van het type:
+De **spam** kolom werd gelezen als een geheel getal, maar het is eigenlijk een categorische variabele (of factor). Ga als u het type in:
 
     data$spam <- as.factor(data$spam)
 
-Als u een verkennende analyse wilt uitvoeren, gebruikt u het [ggplot2](https://ggplot2.tidyverse.org/) -pakket, een populaire grafiek bibliotheek voor R die vooraf is geïnstalleerd op de DSVM. Op basis van de hierboven weer gegeven samenvattings gegevens hebben we een overzicht van de frequentie van het uitroep teken. We zetten deze frequenties hier door de volgende opdrachten uit te voeren:
+Om een verkennende analyse uit te voeren, gebruikt u het [ggplot2-pakket,](https://ggplot2.tidyverse.org/) een populaire grafische bibliotheek voor R die vooraf is geïnstalleerd op de DSVM. Op basis van de eerder weergegeven overzichtsgegevens hebben we overzichtsstatistieken over de frequentie van het teken van het uitroepteken. Laten we plot die frequenties hier door het uitvoeren van de volgende commando's:
 
     library(ggplot2)
     ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
 
-Omdat de nul balk het waarnemings punt scheef stelt, gaan we deze elimineren:
+Omdat de nulbalk de plot scheeftrekt, laten we deze elimineren:
 
     email_with_exclamation = data[data$char_freq_exclamation > 0, ]
     ggplot(email_with_exclamation) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
 
-Er is een niet-essentiële densiteit van meer dan 1 die interessant lijkt. Laten we alleen die gegevens bekijken:
+Er is een niet-triviale dichtheid boven 1 die er interessant uitziet. Laten we alleen die gegevens bekijken:
 
     ggplot(data[data$char_freq_exclamation > 1, ]) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
 
-Splits deze vervolgens op via spam versus per-app:
+Vervolgens, split het door spam versus ham:
 
     ggplot(data[data$char_freq_exclamation > 1, ], aes(x=char_freq_exclamation)) +
     geom_density(lty=3) +
@@ -117,47 +117,47 @@ Splits deze vervolgens op via spam versus per-app:
     ggtitle("Distribution of spam \nby frequency of !") +
     labs(fill="spam", y="Density")
 
-Deze voor beelden kunnen u helpen om Vergelijk bare grafieken te maken en gegevens in de andere kolommen te verkennen.
+Met deze voorbeelden u vergelijkbare plots maken en gegevens in de andere kolommen verkennen.
 
-## <a name="train-and-test-a-machine-learning-model"></a>Een machine learning model trainen en testen
+## <a name="train-and-test-a-machine-learning-model"></a>Een machine learning-model trainen en testen
 
-We gaan een aantal machine learning modellen trainen om de e-mail berichten in de gegevensset te classificeren met een of meer ongewenste e-mail. In deze sectie trainen we een beslissings structuur model en een wille keurig forest model. Vervolgens testen we de nauw keurigheid van de voor spellingen.
+Laten we een paar machine learning-modellen trainen om de e-mails in de gegevensset te classificeren als spam of ham. In deze sectie trainen we een decision tree model en een willekeurig bosmodel. Vervolgens testen we de nauwkeurigheid van de voorspellingen.
 
 > [!NOTE]
-> Het *rpart* -pakket (recursieve partitioneren en regressie structuren) dat in de volgende code wordt gebruikt, is al in de DSVM geïnstalleerd.
+> Het *rpart-pakket* (Recursieve partitionering- en regressiebomen) dat in de volgende code wordt gebruikt, is al geïnstalleerd op de DSVM.
 
-Eerst splitst u de gegevensset in opleidings sets en test sets:
+Laten we eerst de gegevensset opsplitsen in trainingssets en testsets:
 
     rnd <- runif(dim(data)[1])
     trainSet = subset(data, rnd <= 0.7)
     testSet = subset(data, rnd > 0.7)
 
-Maak vervolgens een beslissings structuur om de e-mail berichten te classificeren:
+Maak vervolgens een beslissingsstructuur om de e-mails te classificeren:
 
     require(rpart)
     model.rpart <- rpart(spam ~ ., method = "class", data = trainSet)
     plot(model.rpart)
     text(model.rpart)
 
-Dit is het resultaat:
+Hier is het resultaat:
 
-![Een diagram van de beslissings structuur die wordt gemaakt](./media/linux-dsvm-walkthrough/decision-tree.png)
+![Een diagram van de beslissingsboom die is gemaakt](./media/linux-dsvm-walkthrough/decision-tree.png)
 
-Om te bepalen hoe goed wordt uitgevoerd voor de training, gebruik de volgende code:
+Gebruik de volgende code om te bepalen hoe goed het presteert op de trainingsset:
 
     trainSetPred <- predict(model.rpart, newdata = trainSet, type = "class")
     t <- table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
     accuracy <- sum(diag(t))/sum(t)
     accuracy
 
-Om te bepalen hoe goed wordt uitgevoerd voor de test:
+Ga als volgt te werk om te bepalen hoe goed het presteert op de testset:
 
     testSetPred <- predict(model.rpart, newdata = testSet, type = "class")
     t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
     accuracy <- sum(diag(t))/sum(t)
     accuracy
 
-We gaan ook een willekeurige forest-model. Wille keurige forests trainen een groot aantal beslissings structuren en voeren een klasse uit die de modus van de classificaties van alle afzonderlijke beslissings structuren is. Ze bieden een krachtigere machine learning benadering omdat ze correct zijn voor de tendens van een beslissings structuur model om een overfit te maken.
+Laten we ook een willekeurig bosmodel proberen. Willekeurige bossen trainen een veelheid van beslissingsbomen en output een klasse die de wijze van de classificaties van alle individuele beslissingsbomen. Ze bieden een krachtigere machine learning-benadering omdat ze corrigeren voor de neiging van een beslissingsboommodel om een trainingsgegevensset te overfiten.
 
     require(randomForest)
     trainVars <- setdiff(colnames(data), 'spam')
@@ -172,20 +172,20 @@ We gaan ook een willekeurige forest-model. Wille keurige forests trainen een gro
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>Een model implementeren naar Azure Machine Learning Studio (klassiek)
+## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>Een model implementeren in Azure Machine Learning Studio (klassiek)
 
-[Azure machine learning Studio (klassiek)](https://studio.azureml.net/) is een Cloud service waarmee u eenvoudig Predictive Analytics modellen kunt bouwen en implementeren. Een goede functie van Azure Machine Learning Studio (klassiek) is de mogelijkheid om elke R-functie als webservice te publiceren. Het Azure Machine Learning Studio (klassiek) R-pakket maakt implementatie eenvoudig, direct vanuit uw R-sessie op de DSVM.
+[Azure Machine Learning Studio (klassiek)](https://studio.azureml.net/) is een cloudservice die het eenvoudig maakt om voorspellende analysemodellen te bouwen en te implementeren. Een leuke functie van Azure Machine Learning Studio (klassiek) is de mogelijkheid om elke R-functie als een webservice te publiceren. Het Azure Machine Learning Studio (classic) R-pakket maakt implementatie eenvoudig, direct vanaf uw R-sessie op de DSVM.
 
-Als u de code van de beslissings structuur wilt implementeren in de voor gaande sectie, meldt u zich aan bij Azure Machine Learning Studio (klassiek). U moet uw werkruimte-ID en een verificatietoken aan te melden. Voer de volgende stappen uit om deze waarden te vinden en de Azure Machine Learning variabelen te initialiseren:
+Als u de beslissingsstructuurcode uit de vorige sectie wilt implementeren, meldt u zich aan bij Azure Machine Learning Studio (klassiek). U hebt uw werkruimte-id en een autorisatietoken nodig om u aan te melden. Voer de volgende stappen uit om deze waarden te vinden en de Azure Machine Learning-variabelen hiermee te initialiseren:
 
-1. Selecteer in het menu links de optie **instellingen**. Noteer de waarde voor de **werk ruimte-id**.
+1. Selecteer **Instellingen**in het linkermenu . Let op de waarde voor **WERKRUIMTE-id**.
 
-   ![De werk ruimte-ID Azure Machine Learning Studio (klassiek)](./media/linux-dsvm-walkthrough/workspace-id.png)
+   ![De Azure Machine Learning Studio (klassieke) werkruimte-id](./media/linux-dsvm-walkthrough/workspace-id.png)
 
-1. Selecteer het tabblad **autorisatie tokens** . Noteer de waarde voor het **primaire autorisatie token**.
+1. Selecteer het tabblad **Autorisatietokens.** Let op de waarde voor **token primaire autorisatie**.
 
-   ![Het primaire autorisatie token Azure Machine Learning Studio (klassiek)](./media/linux-dsvm-walkthrough/workspace-token.png)
-1. Laad het **AzureML** -pakket en stel vervolgens waarden van de variabelen in met uw token en werk ruimte-id in uw R-sessie op de DSVM:
+   ![Het azure machine learning studio (klassieke) primaire autorisatietoken](./media/linux-dsvm-walkthrough/workspace-token.png)
+1. Laad het **AzureML-pakket** en stel vervolgens waarden in van de variabelen met uw token- en werkruimte-id in uw R-sessie op de DSVM:
 
         if(!require("devtools")) install.packages("devtools")
         devtools::install_github("RevolutionAnalytics/AzureML")
@@ -194,25 +194,25 @@ Als u de code van de beslissings structuur wilt implementeren in de voor gaande 
         wsAuth = "<authorization-token>"
         wsID = "<workspace-id>"
 
-1. Laten we het model om deze demonstratie gemakkelijker te implementeren vereenvoudigen. Kies de drie variabelen in de beslissings structuur die het dichtst bij de hoofdmap ligt en bouw een nieuwe structuur door alleen die drie variabelen te gebruiken:
+1. Laten we het model vereenvoudigen om deze demonstratie gemakkelijker te implementeren. Kies de drie variabelen in de beslissingsstructuur die het dichtst bij de wortel staat en bouw een nieuwe boom met alleen die drie variabelen:
 
         colNames <- c("char_freq_dollar", "word_freq_remove", "word_freq_hp", "spam")
         smallTrainSet <- trainSet[, colNames]
         smallTestSet <- testSet[, colNames]
         model.rpart <- rpart(spam ~ ., method = "class", data = smallTrainSet)
 
-1. We moeten een voorspellingsfunctie die de functies neemt als invoer en retourneert de voorspelde waarden:
+1. We hebben een voorspellingsfunctie nodig die de functies als invoer neemt en de voorspelde waarden retourneert:
 
         predictSpam <- function(newdata) {
         predictDF <- predict(model.rpart, newdata = newdata)
         return(colnames(predictDF)[apply(predictDF, 1, which.max)])
         }
 
-1. Maak een bestand settings. json voor deze werk ruimte:
+1. Maak een bestand settings.json voor deze werkruimte:
 
         vim ~/.azureml/settings.json
 
-1. Zorg ervoor dat de volgende inhoud in de instellingen wordt geplaatst. json:
+1. Zorg ervoor dat de volgende inhoud in settings.json wordt geplaatst:
 
          {"workspace":{
            "id": "<workspace-id>",
@@ -222,51 +222,51 @@ Als u de code van de beslissings structuur wilt implementeren in de voor gaande 
          }
 
 
-1. Publiceer de functie **predictSpam** naar AzureML met behulp van de functie **publishWebService** :
+1. Publiceer de **functie predictSpam** naar AzureML met de functie **publishWebService:**
 
         ws <- workspace()
         spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
 
-1. Deze functie neemt de functie **predictSpam** , maakt een webservice met de naam **spamWebService** die de invoer en uitvoer heeft gedefinieerd, en retourneert vervolgens informatie over het nieuwe eind punt.
+1. Deze functie neemt de **functie predictSpam** over, maakt een webservice met de naam **spamWebService** die invoer en uitvoer heeft gedefinieerd en retourneert vervolgens informatie over het nieuwe eindpunt.
 
-    Gebruik deze opdracht om de details van de meest recente gepubliceerde webservice weer te geven, waaronder het API-eind punt en de toegangs sleutels van de service:
+    Gebruik deze opdracht om details van de meest recente gepubliceerde webservice weer te geven, inclusief het API-eindpunt en de toegangssleutels:
 
         s<-tail(services(ws, name = "spamWebService"), 1)
         ep <- endpoints(ws,s)
         ep
 
-1. Om het te proberen op de eerste 10 rijen van de test instellen:
+1. Ga als een proef om het uit te proberen op de eerste 10 rijen van de testset:
 
         consume(ep, smallTestSet[1:10, ])
 
 <a name="deep-learning"></a>
 
-## <a name="deep-learning-tutorials-and-walkthroughs"></a>Zelf studies en-scenario's voor uitgebreid leren
+## <a name="deep-learning-tutorials-and-walkthroughs"></a>Deep learning tutorials en walkthroughs
 
-Naast de voor beelden op basis van het Framework, wordt ook een reeks uitgebreide instructies gegeven. Deze scenario's kunt u snel uw ontwikkeling van deep learning-toepassingen in domeinen, zoals afbeeldingen en tekst/language understanding.
+Naast de framework-based samples is er ook een reeks uitgebreide walkthroughs voorzien. Deze walkthroughs helpen u bij het opstarten van uw ontwikkeling van deep learning-toepassingen in domeinen zoals beeld- en tekst-/taalbegrip.
 
-- Het [uitvoeren van Neural-netwerken in verschillende Frameworks](https://github.com/ilkarman/DeepLearningFrameworks): een uitgebreid overzicht waarin wordt uitgelegd hoe u code van het ene naar het andere Framework migreert. Er wordt ook gedemonstreerd hoe u de prestaties van model en runtime in Frameworks kunt vergelijken. 
+- [Neurale netwerken uitvoeren in verschillende frameworks:](https://github.com/ilkarman/DeepLearningFrameworks)een uitgebreide walkthrough die u laat zien hoe u code van het ene framework naar het andere migreren. Het laat ook zien hoe model- en runtime-prestaties tussen frameworks kunnen worden vergeleken. 
 
-- [Een hand leiding voor het bouwen van een end-to-end oplossing voor het detecteren van producten binnen installatie kopieën](https://github.com/Azure/cortana-intelligence-product-detection-from-images): detectie van afbeeldingen is een techniek waarmee objecten in afbeeldingen kunnen worden gevonden en geclassificeerd. De technologie biedt de mogelijkheid om enorme voor delen te bieden in veel zakelijke domeinen in de praktijk. Bijvoorbeeld, kunnen detailhandelaren deze techniek gebruiken om te bepalen welk product een klant is opgehaald uit de plank. Deze informatie helpt op zijn beurt winkels productinventaris beheren. 
+- [Een handleiding voor het bouwen van een end-to-end oplossing om producten in afbeeldingen te detecteren:](https://github.com/Azure/cortana-intelligence-product-detection-from-images)Beelddetectie is een techniek die objecten in afbeeldingen kan lokaliseren en classificeren. De technologie heeft het potentieel om enorme beloningen te brengen in vele real-life zakelijke domeinen. Retailers kunnen deze techniek bijvoorbeeld gebruiken om te bepalen welk product een klant uit het schap heeft gehaald. Deze informatie helpt winkels op hun beurt bij het beheren van productvoorraad. 
 
-- [Diep gaande informatie over audio: in](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/)deze zelf studie leert u hoe u een diepe leer model kunt trainen voor de detectie van audio gebeurtenissen op de [gegevensset stads geluiden](https://urbansounddataset.weebly.com/). De zelf studie biedt een overzicht van hoe u met audio gegevens werkt.
+- [Deep learning voor audio:](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/)Deze tutorial laat zien hoe je een deep learning-model traint voor audio-eventdetectie op de [stedelijke geluidsgegevensset.](https://urbansounddataset.weebly.com/) De zelfstudie geeft een overzicht van hoe u met audiogegevens werken.
 
-- [Classificatie van tekst documenten](https://github.com/anargyri/lstm_han): in dit scenario ziet u hoe u twee verschillende Neural-netwerk architecturen bouwt en traint: hiërarchische aandacht van netwerk en langlopende geheugen (LSTM). Deze neurale netwerken voor het gebruik van de Keras-API voor deep learning voor het classificeren van documenten. Keras is een front-end aan drie van de meest populaire deep learning-frameworks: Microsoft Cognitive Toolkit, TensorFlow en Theano.
+- [Classificatie van tekstdocumenten](https://github.com/anargyri/lstm_han): Deze walkthrough laat zien hoe je twee verschillende neurale netwerkarchitecturen bouwen en trainen: Hierarchical Attention Network en Long Short Term Memory (LSTM). Deze neurale netwerken gebruiken de Keras API voor deep learning om tekstdocumenten te classificeren. Keras is een front-end van drie van de meest populaire deep learning frameworks: Microsoft Cognitive Toolkit, TensorFlow en Theano.
 
-## <a name="other-tools"></a>Andere hulpprogram ma's
+## <a name="other-tools"></a>Andere hulpprogramma's
 
-In de overige secties ziet u hoe u een aantal van de hulpprogram ma's kunt gebruiken die zijn geïnstalleerd op de Linux-DSVM. Deze hulpprogram ma's worden besproken:
+De overige secties laten zien hoe u een aantal van de tools die zijn geïnstalleerd op de Linux DSVM te gebruiken. We bespreken deze tools:
 
 * XGBoost
 * Python
-* JupyterHub
-* Rammelaar
+* JupyterHub JupyterHub
+* Rattle
 * PostgreSQL en SQuirreL SQL
-* SQL Server datawarehouse
+* SQL Server-gegevensmagazijn
 
 ### <a name="xgboost"></a>XGBoost
 
-[XGBoost](https://xgboost.readthedocs.org/en/latest/) biedt een snelle en nauw keurige implementatie van een boom structuur.
+[XGBoost](https://xgboost.readthedocs.org/en/latest/) biedt een snelle en nauwkeurige boost tree implementatie.
 
     require(xgboost)
     data <- read.csv("spambaseHeaders.data")
@@ -282,16 +282,16 @@ In de overige secties ziet u hoe u een aantal van de hulpprogram ma's kunt gebru
     accuracy <- 1.0 - mean(as.numeric(pred > 0.5) != testSet$spam)
     print(paste("test accuracy = ", accuracy))
 
-XGBoost kan ook worden aangeroepen vanuit Python of een opdracht regel.
+XGBoost kan ook bellen vanuit Python of een command line.
 
 ### <a name="python"></a>Python
 
-Voor de ontwikkeling van python worden de Anaconda python-distributies 3,5 en 2,7 geïnstalleerd op de DSVM.
+Voor python-ontwikkeling zijn de Anaconda Python-distributies 3.5 en 2.7 geïnstalleerd op de DSVM.
 
 > [!NOTE]
-> De Anaconda-distributie omvat [Conda](https://conda.pydata.org/docs/index.html). U kunt Conda gebruiken om aangepaste python-omgevingen te maken waarin verschillende versies of pakketten zijn geïnstalleerd.
+> De Anaconda distributie omvat [Conda](https://conda.pydata.org/docs/index.html). U Conda gebruiken om aangepaste Python-omgevingen te maken met verschillende versies of pakketten die erin zijn geïnstalleerd.
 
-Laten we in een aantal spambase-gegevensset lezen en de e-mails classificeren met ondersteuning voor vector machines in Scikit-Learn:
+Laten we eens lezen in een aantal van de spambase dataset en classificeren de e-mails met ondersteuning vector machines in Scikit-leren:
 
     import pandas
     from sklearn import svm
@@ -301,18 +301,18 @@ Laten we in een aantal spambase-gegevensset lezen en de e-mails classificeren me
     clf = svm.SVC()
     clf.fit(X, y)
 
-Om voorspellingen te doen:
+Ga als het gaat om voorspellingen te doen:
 
     clf.predict(X.ix[0:20, :])
 
-Om te laten zien hoe u een Azure Machine Learning-eind punt publiceert, gaan we een meer basis model maken. We gebruiken de drie variabelen die we hebben gebruikt bij het publiceren van het R-model eerder:
+Als u wilt laten zien hoe u een Azure Machine Learning-eindpunt publiceert, maken we een meer basismodel. We gebruiken de drie variabelen die we gebruikten toen we het R-model eerder publiceerden:
 
     X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
     y = data.ix[:, 57]
     clf = svm.SVC()
     clf.fit(X, y)
 
-Het model publiceren naar Azure Machine Learning:
+Ga als u het model publiceren naar Azure Machine Learning:
 
     # Publish the model.
     workspace_id = "<workspace-id>"
@@ -334,85 +334,85 @@ Het model publiceren naar Azure Machine Learning:
 
 
 > [!NOTE]
-> Deze optie is alleen beschikbaar voor python 2,7. Het wordt nog niet ondersteund in Python 3,5. Gebruik **/Anaconda/bin/python2.7**om uit te voeren.
+> Deze optie is alleen beschikbaar voor Python 2.7. Het wordt nog niet ondersteund op Python 3.5. Als u wilt uitvoeren, gebruikt u **/anaconda/bin/python2.7**.
 
-### <a name="jupyterhub"></a>JupyterHub
+### <a name="jupyterhub"></a>JupyterHub JupyterHub
 
-De Anaconda-distributie in het DSVM wordt geleverd met een Jupyter Notebook, een omgeving voor meerdere platforms voor het delen van python-, R-of Julia-code en-analyse. De Jupyter Notebook wordt geopend via JupyterHub. U meldt zich aan met behulp van uw lokale Linux-gebruikers naam en-wacht woord op https://\<DSVM DNS-naam of IP-adres\>: 8000/. Alle configuratie bestanden voor JupyterHub vindt u in/etc/jupyterhub.
+De Anaconda-distributie in de DSVM wordt geleverd met een Jupyter Notebook, een cross-platform omgeving voor het delen van Python, R of Julia code en analyse. De Jupyter Notebook is toegankelijk via JupyterHub. U meldt zich aan met uw lokale\<Linux gebruikersnaam en wachtwoord\>op https:// DSVM DNS naam of IP-adres :8000/. Alle configuratiebestanden voor JupyterHub zijn te vinden in /etc/jupyterhub.
 
 > [!NOTE]
-> Als u het python-pakket beheer (via de opdracht `pip`) van een Jupyter Notebook in de huidige kernel wilt gebruiken, gebruikt u deze opdracht in de cel code:
+> Als u python-pakketbeheer `pip` (via de opdracht) wilt gebruiken vanuit een Jupyter-notitieblok in de huidige kernel, gebruikt u deze opdracht in de codecel:
 >
 >   ```python
 >    import sys
 >    ! {sys.executable} -m pip install numpy -y
 >   ```
 > 
-> Als u het installatie programma Conda (via de opdracht `conda`) van een Jupyter Notebook in de huidige kernel wilt gebruiken, gebruikt u deze opdracht in een code-cel:
+> Als u het Conda-installatieprogramma (via de `conda` opdracht) wilt gebruiken vanuit een Jupyter-notitieblok in de huidige kernel, gebruikt u deze opdracht in een codecel:
 >
 >   ```python
 >    import sys
 >    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
 >   ```
 
-Er zijn al een aantal voor beelden van notitie blokken geïnstalleerd op de DSVM:
+Verschillende voorbeeldnotitieblokken zijn al geïnstalleerd op de DSVM:
 
-* Voor beelden van python-notebooks:
-  * [IntroToJupyterPython. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb)
+* Voorbeeld van Python-notitieblokken:
+  * [IntroToJupyterPython.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb)
   * [IrisClassifierPyMLWebService](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IrisClassifierPyMLWebService.ipynb)
-* Voor beeld R-notitie blok:
-  * [IntroTutorialinR](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroTutorialinR.ipynb) 
+* Voorbeeld R-notitieblok:
+  * [IntroTutorialinR (IntroTutorialinR)](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroTutorialinR.ipynb) 
 
 > [!NOTE]
-> De Julia-taal is ook beschikbaar vanaf de opdracht regel in de Linux-DSVM.
+> De Julia taal is ook beschikbaar vanaf de command line op de Linux DSVM.
 
-### <a name="rattle"></a>Rammelaar
+### <a name="rattle"></a>Rattle
 
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *A*analytische *t*Ool *t*o *L*verdienen *E*asily) is een grafisch hulp programma voor gegevens analyse. Rattle heeft een intuïtieve interface waarmee u eenvoudig gegevens kunt laden, verkennen en transformeren, en modellen kunt bouwen en evalueren. [Rattle: een gegevens analyse-GUI voor R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) biedt een overzicht van de functies van Rattle.
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *A*nalytical *T*ool *T*o *L*verdienen *E*asily) is een grafische R tool voor data mining. Rattle heeft een intuïtieve interface die het gemakkelijk maakt om gegevens te laden, te verkennen en te transformeren en modellen te bouwen en te evalueren. [Rattle: Een Data Mining GUI voor R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) biedt een walkthrough die rattle's functies demonstreert.
 
-Voer de volgende opdrachten uit om Rattle te installeren en te starten:
+Installeer en start Rattle door deze opdrachten uit te voeren:
 
     if(!require("rattle")) install.packages("rattle")
     require(rattle)
     rattle()
 
 > [!NOTE]
-> U hoeft Rattle niet te installeren op de DSVM. U wordt echter mogelijk gevraagd om extra pakketten te installeren wanneer Rattle wordt geopend.
+> U hoeft Rattle niet op de DSVM te installeren. U wordt echter mogelijk gevraagd om extra pakketten te installeren wanneer Rattle wordt geopend.
 
-Rammelaar maakt gebruik van een tabblad gebaseerde interface. De meeste tabbladen komen overeen met de stappen in het [team data Science proces](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), zoals het laden van gegevens of het verkennen van gegevens. Het data science process loopt van links naar rechts de tabbladen. Het laatste tabblad bevat een logboek van de R-opdrachten die zijn uitgevoerd door Rattle.
+Rattle maakt gebruik van een op tabbladen gebaseerde interface. De meeste tabbladen komen overeen met stappen in het [Team Data Science Process,](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)zoals het laden van gegevens of het verkennen van gegevens. Het data science-proces stroomt van links naar rechts door de tabbladen. Het laatste tabblad bevat een logboek van de R-opdrachten die door Rattle zijn uitgevoerd.
 
-Laden en de gegevensset configureren:
+Ga als u de gegevensset laadt en configureert:
 
-1. Als u het bestand wilt laden, selecteert u het tabblad **gegevens** .
-1. Kies de selector naast **Bestands naam**en selecteer vervolgens **spambaseHeaders. data**.
-1. Het bestand laden. Selecteer **uitvoeren**. U ziet een samen vatting van elke kolom, met inbegrip van het geïdentificeerde gegevens type. of het nu gaat om een invoer, een doel of een ander type variabele. en het aantal unieke waarden.
-1. Rattle heeft de kolom met **ongewenste e-mail** op de juiste wijze geïdentificeerd als het doel. Selecteer de kolom tegen **ongewenste e-mail** en stel het **doel gegevens type** in op **Categoric**.
+1. Als u het bestand wilt laden, selecteert u het tabblad **Gegevens.**
+1. Kies de kiezer naast **Bestandsnaam**en selecteer **vervolgens spambaseHeaders.data**.
+1. Om het bestand te laden. selecteer **Uitvoeren**. U ziet een samenvatting van elke kolom, inclusief het geïdentificeerde gegevenstype. of het nu gaat om een invoer, een doel of een ander type variabele; en het aantal unieke waarden.
+1. Rattle heeft de **spamkolom** correct geïdentificeerd als het doelwit. Selecteer de **spamkolom** en stel het **doelgegevenstype** in **op Categoric**.
 
-De gegevens verkennen:
+Ga als het gaat om de gegevens:
 
-1. Selecteer het tabblad **verkennen** .
-1. Als u informatie wilt weer geven over de typen variabelen en een aantal samenvattings statistieken, selecteert u **samen vatting** > **uitvoeren**.
-1. Als u andere typen statistieken over elke variabele wilt weer geven, selecteert u andere opties, zoals **Beschrijving** of **basis**.
+1. Selecteer het tabblad **Verkennen.**
+1. Als u informatie wilt zien over de variabele typen en enkele overzichtsstatistieken, selecteert u **Overzicht** > **uitvoeren**.
+1. Als u andere typen statistieken over elke variabele wilt weergeven, selecteert u andere opties, zoals **Beschrijven** of **Basisbeginselen**.
 
-U kunt ook het tabblad **verkennen** gebruiken om inkijkende grafieken te genereren. Om te tekenen een histogram van de gegevens:
+U ook het tabblad **Verkennen** gebruiken om inzichtelijke plots te genereren. Een histogram van de gegevens in kaart brengen:
 
-1. Selecteer **distributies**.
-1. Selecteer **histogram**voor **word_freq_remove** en **word_freq_you**.
-1. Selecteer **Uitvoeren**. Als het goed is, _ziet u in_ één grafiek venster beide dichtheids grafieken, waar het woord duidelijker wordt weer gegeven in e-mail berichten dan _verwijderen_.
+1. Selecteer **Distributies**.
+1. Selecteer **Histogram**voor **word_freq_remove** en **word_freq_you**.
+1. Selecteer **Uitvoeren**. U ziet beide dichtheidsplots in één grafiekvenster, waarbij het duidelijk is dat het woord _dat u_ veel vaker in e-mails voorkomt dan _verwijdert._
 
-De **correlatie** punten zijn ook interessant. Een tekening maken:
+De **Correlatie** percelen zijn ook interessant. Ga als lid van het werk om een plot te maken:
 
-1. Selecteer **correlatie**bij **type**.
+1. Selecteer Voor **Tekst** **de optie Correlatie**.
 1. Selecteer **Uitvoeren**.
-1. Rammelaar waarschuwt u dat het wordt aanbevolen maximaal 40 variabelen. Selecteer **Ja** om het waarnemings punt weer te geven.
+1. Rattle waarschuwt u dat het maximaal 40 variabelen aanbeveelt. Selecteer **Ja** om het plot weer te geven.
 
-Er zijn interessante correlaties die beschikbaar zijn: _technologie_ is in het algemeen gecorreleerd aan _HP_ en _Labs_, bijvoorbeeld. Het is ook sterk gecorreleerd aan _650_ , omdat het netnummer van de gegevensset donateurs is 650.
+Er zijn een aantal interessante correlaties die komen: _technologie_ is sterk gecorreleerd aan _HP_ en _labs_, bijvoorbeeld. Het is ook sterk gecorreleerd aan _650_ omdat het netnummer van de gegevenssetdonoren 650 is.
 
-De numerieke waarden voor de correlaties tussen woorden zijn beschikbaar in het venster **verkennen** . Het is bijvoorbeeld interessant om te weten dat de _technologie_ op een negatieve basis is afgestemd op _uw_ en _geld_.
+De numerieke waarden voor de correlaties tussen woorden zijn beschikbaar in het venster **Verkennen.** Het is interessant om op te merken, bijvoorbeeld, dat _de technologie_ is negatief gecorreleerd met _uw_ en _geld_.
 
-Rammelaar kunt gebruiken om de gegevensset voor het afhandelen van enkele veelvoorkomende problemen. Het kan bijvoorbeeld onderdelen opnieuw schalen, ontbrekende waarden toerekeningen, uitschieters afhandelen en variabelen of waarnemingen verwijderen waarvoor gegevens ontbreken. Rattle kan ook koppelings regels identificeren tussen waarnemingen en variabelen. Deze tabbladen vallen niet onder deze inleiding.
+Rattle kan de gegevensset transformeren om een aantal veelvoorkomende problemen af te handelen. Het kan bijvoorbeeld functies opnieuw schalen, ontbrekende waarden aanwijzen, uitschieters verwerken en variabelen of waarnemingen met ontbrekende gegevens verwijderen. Rammelaar kan ook associatieregels tussen waarnemingen en variabelen identificeren. Deze tabbladen zijn niet gedekt in deze inleidende walkthrough.
 
-Rattle kan ook cluster analyse uitvoeren. Laten we uitsluiten sommige functies om de uitvoer eenvoudiger te lezen. Op het tabblad **gegevens** selecteert u **negeren** naast elk van de variabelen, behalve deze 10 items:
+Rattle kan ook clusteranalyse uitvoeren. Laten we een aantal functies uitsluiten om de uitvoer beter leesbaar te maken. Selecteer op het tabblad **Gegevens** de optie **Negeren** naast elk van de variabelen, behalve deze 10 items:
 
 * word_freq_hp
 * word_freq_technology
@@ -425,36 +425,36 @@ Rattle kan ook cluster analyse uitvoeren. Laten we uitsluiten sommige functies o
 * word_freq_business
 * spam
 
-Ga terug naar het tabblad **cluster** . Selecteer **KMeans**en stel het **aantal clusters** in op **4**. Selecteer **Uitvoeren**. De resultaten worden weergegeven in het uitvoervenster weergegeven. Een cluster heeft een hoge frequentie van _George_ en _HP_, en is waarschijnlijk een rechtmatig zakelijk e-mail adres.
+Ga terug naar het tabblad **Cluster.** Selecteer **KMeans**en stel **aantal clusters** in op **4**. Selecteer **Uitvoeren**. De resultaten worden weergegeven in het uitvoervenster. Een cluster heeft een hoge frequentie van _George_ en _HP_, en is waarschijnlijk een legitieme zakelijke e-mail.
 
-Een basis machine learning model voor de beslissings structuur maken:
+Ga als lid van het leermodel voor een basisbeslissingsboom:
 
-1. Selecteer het tabblad **model** ,
-1. Selecteer **structuur**voor het **type**.
-1. Selecteer **uitvoeren** om de structuur weer te geven in de tekst vorm in het uitvoer venster.
-1. Selecteer de knop **tekenen** om een grafische versie weer te geven. De beslissings structuur ziet er ongeveer uit als de structuur die we eerder hebben verkregen met behulp van rpart.
+1. Selecteer het tabblad **Model,**
+1. Selecteer Voor **het type**De optie **Structuur**.
+1. Selecteer **Uitvoeren** om de structuur in tekstvorm weer te geven in het uitvoervenster.
+1. Selecteer de knop **Tekenen** om een grafische versie weer te geven. De beslisboom lijkt op de boom die we eerder hebben verkregen met behulp van rpart.
 
-Een handige functie van Rattle is de mogelijkheid om verschillende machine learning-methoden uit te voeren en deze snel te evalueren. Dit zijn de stappen:
+Een handig kenmerk van Rattle is de mogelijkheid om verschillende machine learning-methoden uit te voeren en ze snel te evalueren. Hier zijn de stappen:
 
-1. Selecteer **alle**bij **type**.
+1. Selecteer **Alles** **voor Tekst**.
 1. Selecteer **Uitvoeren**.
-1. Wanneer Rattle is voltooid, kunt u elk **type** waarde selecteren, zoals **SVM**, en de resultaten weer geven.
-1. U kunt ook de prestaties van de modellen op de validatieset vergelijken met behulp van het tabblad **evalueren** . De selectie van de **fout matrix** toont bijvoorbeeld de Verwar ring matrix, algemene fout en gemiddeld aantal klassen fouten voor elk model in de validatieset. U kunt ook ROC curven uitzetten, gevoeligheids analyses uitvoeren en andere typen model evaluaties doen.
+1. Wanneer Rattle klaar is met hardlopen, u een **typewaarde** selecteren, zoals **SVM,** en de resultaten bekijken.
+1. U ook de prestaties van de modellen op de validatieset vergelijken met het tabblad **Evalueren.** In de selectie **Foutmatrix** ziet u bijvoorbeeld de verwarringsmatrix, algemene fout en gemiddelde klassefout voor elk model op de validatieset. U ook ROC-curven in kaart brengen, gevoeligheidsanalyses uitvoeren en andere soorten modelevaluaties uitvoeren.
 
-Wanneer u klaar bent met het bouwen van modellen, selecteert u het tabblad **logboek** om de R-code weer te geven die tijdens uw sessie werd uitgevoerd door Rattle. U kunt de knop **exporteren** selecteren om deze op te slaan.
+Wanneer u klaar bent met het bouwen van modellen, selecteert u het tabblad **Logboek** om de R-code weer te geven die tijdens uw sessie door Rattle is uitgevoerd. U de knop **Exporteren** selecteren om deze op te slaan.
 
 > [!NOTE]
-> De huidige release van Rattle bevat een bug. Als u het script wilt wijzigen of als u het wilt gebruiken om de stappen later te herhalen, moet u een **#** teken invoegen vóór het *exporteren van dit logboek...* in de tekst van het logboek.
+> De huidige release van Rattle bevat een bug. Als u het script wilt wijzigen of wilt gebruiken **#** om uw stappen later te herhalen, moet u een teken invoegen voor *Dit logboek exporteren ...* in de tekst van het logboek.
 
 ### <a name="postgresql-and-squirrel-sql"></a>PostgreSQL en SQuirreL SQL
 
-De DSVM wordt geleverd met PostgreSQL is geïnstalleerd. PostgreSQL is een geavanceerde, open-source relationele database. In deze sectie wordt beschreven hoe u de spambase-gegevensset in PostgreSQL laadt en vervolgens een query uitvoert.
+De DSVM wordt geleverd met PostgreSQL geïnstalleerd. PostgreSQL is een geavanceerde, open-source relationele database. In deze sectie ziet u hoe u de spambase-gegevensset in PostgreSQL laadt en vervolgens opvraagt.
 
-Voordat u de gegevens kunt laden, moet u wachtwoord verificatie van de localhost toestaan. Voer in een opdrachtprompt het volgende uit:
+Voordat u de gegevens laden, moet u wachtwoordverificatie toestaan van de localhost. Voer in een opdrachtprompt het volgende uit:
 
     sudo gedit /var/lib/pgsql/data/pg_hba.conf
 
-Aan de onderkant van het configuratiebestand worden verschillende regels die informatie over de toegestane verbindingen:
+Aan de onderkant van het config-bestand staan verschillende regels die de toegestane verbindingen beschrijven:
 
     # "local" is only for Unix domain socket connections:
     local   all             all                                     trust
@@ -463,31 +463,31 @@ Aan de onderkant van het configuratiebestand worden verschillende regels die inf
     # IPv6 local connections:
     host    all             all             ::1/128                 ident
 
-Wijzig de lijn voor **lokale IPv4-verbindingen** voor het gebruik van **MD5** in plaats van **ident**, zodat we zich kunnen aanmelden met een gebruikers naam en wacht woord:
+Wijzig de **iPv4-lokale verbindingsregel** om **md5** te gebruiken in plaats van **ident**, zodat we kunnen inloggen met een gebruikersnaam en wachtwoord:
 
     # IPv4 local connections:
     host    all             all             127.0.0.1/32            md5
 
-Start de PostgreSQL-service vervolgens opnieuw:
+Start vervolgens de PostgreSQL-service opnieuw:
 
     sudo systemctl restart postgresql
 
-Als u *psql* (een interactieve terminal voor postgresql) als de ingebouwde post gres-gebruiker wilt starten, voert u deze opdracht uit:
+Voer de volgende opdracht uit om *psql* (een interactieve terminal voor PostgreSQL) als de ingebouwde postgres-gebruiker te starten:
 
     sudo -u postgres psql
 
-Maak een nieuw gebruikers account met behulp van de gebruikers naam van het Linux-account dat u hebt gebruikt om u aan te melden. Een wacht woord maken:
+Maak een nieuw gebruikersaccount aan met de gebruikersnaam van het Linux-account dat u hebt gebruikt om in te loggen. Een wachtwoord maken:
 
     CREATE USER <username> WITH CREATEDB;
     CREATE DATABASE <username>;
     ALTER USER <username> password '<password>';
     \quit
 
-Meld u aan bij psql:
+Log in bij psql:
 
     psql
 
-Importeer de gegevens naar een nieuwe Data Base:
+Importeer de gegevens naar een nieuwe database:
 
     CREATE DATABASE spam;
     \c spam
@@ -495,75 +495,75 @@ Importeer de gegevens naar een nieuwe Data Base:
     \copy data FROM /home/<username>/spambase.data DELIMITER ',' CSV;
     \quit
 
-Nu gaan we de gegevens verkennen en enkele query's uitvoeren met behulp van SQuirreL SQL, een grafisch hulp programma dat u kunt gebruiken om met data bases te werken via een JDBC-stuur programma.
+Laten we nu de gegevens verkennen en enkele query's uitvoeren met SQuirreL SQL, een grafische tool die u gebruiken om met databases te communiceren via een JDBC-stuurprogramma.
 
-Om aan de slag te gaan, opent u SQuirreL SQL in het menu **toepassingen** . Het stuurprogramma instellen:
+Open SQuirreL SQL om aan de slag te gaan in het menu **Toepassingen.** Ga als gevolg van het instellen van de bestuurder:
 
-1. Selecteer **Windows** > - **weergave Stuur Programma's**.
-1. Klik met de rechter muisknop op **postgresql** en selecteer **stuur programma wijzigen**.
-1. Selecteer **extra klassepad** > **toevoegen**.
-1. Voer voor **Bestands naam** **/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar**in.
+1. Selecteer **Windows** > **Weergavestuurprogramma's**.
+1. Klik met de rechtermuisknop op **PostgreSQL** en selecteer **Stuurprogramma wijzigen**.
+1. Selecteer **Extra klassepad** > **toevoegen**.
+1. Voer **voor bestandsnaam** **/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar**in .
 1. Selecteer **Openen**.
-1. Selecteer **Stuur Programma's weer geven**. Voor **klassenaam**selecteert u **org. postgresql. driver**en selecteert u **OK**.
+1. Selecteer **Lijststuurprogramma's**. Selecteer **voor Klassenaam** **org.postgresql.Driver**en selecteer **OK**.
 
-De verbinding met de lokale server instellen:
+Ga als u de verbinding met de lokale server in:
 
-1. Selecteer **Windows** - > **weergave aliassen.**
-1. Selecteer de knop **+** om een nieuwe alias te maken. Voer voor de nieuwe alias naam **spam data base**in. 
-1. Selecteer voor **stuur programma** **postgresql**.
-1. Stel de URL in op **JDBC: postgresql://localhost/spam**.
-1. Voer uw gebruikers naam en wacht woord in.
+1. Selecteer **Windows** > **Weergavealiassen.**
+1. Selecteer **+** de knop om een nieuwe alias te maken. Voer de **spamdatabase**in voor de nieuwe aliasnaam . 
+1. Selecteer **PostgreSQL**voor **Stuurprogramma**.
+1. Stel de URL in op **jdbc:postgresql://localhost/spam**.
+1. Voer uw gebruikersnaam en wachtwoord in.
 1. Selecteer **OK**.
-1. Als u het venster **verbinding** wilt openen, dubbelklikt u op de alias voor de **spam-data base** .
+1. Dubbelklik op de alias **spamdatabase** als u het **verbindingsvenster** wilt openen.
 1. Selecteer **Verbinden**.
 
-Sommige query's uitvoeren:
+Ga als u een aantal query's wilt uitvoeren:
 
-1. Selecteer het tabblad **SQL** .
-1. Voer in het vak query boven aan het tabblad **SQL** een Basic-query in, zoals `SELECT * from data;`.
-1. Druk op CTRL + ENTER om de query uit te voeren. SQuirreL SQL retourneert standaard de eerste 100 rijen van uw query.
+1. Selecteer het **SQL-tabblad.**
+1. Voer in het queryvak boven aan het **SQL-tabblad** een basisquery in, zoals `SELECT * from data;`.
+1. Druk op Ctrl+Enter om de query uit te voeren. SQuirreL SQL retourneert standaard de eerste 100 rijen van uw query.
 
-Er zijn veel meer query's die u kunt uitvoeren om deze gegevens te verkennen. Hoe kan de frequentie van *het woord bijvoorbeeld* verschillen tussen spam en de hoeveelheid?
+Er zijn nog veel meer query's die u uitvoeren om deze gegevens te verkennen. Bijvoorbeeld, hoe maakt de frequentie van het woord *te maken* verschillen tussen spam en ham?
 
     SELECT avg(word_freq_make), spam from data group by spam;
 
-Of wat zijn de kenmerken van e-mail die regel matig *3D*bevat?
+Of, wat zijn de kenmerken van e-mail die vaak *bevatten 3D?*
 
     SELECT * from data order by word_freq_3d desc;
 
-De meeste e-mail berichten met een groot aantal *3D-* incidenten zijn vaak spam. Deze informatie kan nuttig zijn voor het maken van een voorspellend model voor het classificeren van e-mail berichten.
+De meeste e-mails die een hoog optreden van *3D* blijkbaar zijn spam. Deze informatie kan handig zijn voor het bouwen van een voorspellend model om e-mails te classificeren.
 
-Als u machine learning wilt doen met behulp van gegevens die zijn opgeslagen in een PostgreSQL-data base, kunt u overwegen [MADlib](https://madlib.incubator.apache.org/)te gebruiken.
+Als u machine learning wilt doen met behulp van gegevens die zijn opgeslagen in een PostgreSQL-database, u [overwegen MADlib](https://madlib.incubator.apache.org/)te gebruiken.
 
 ### <a name="sql-data-warehouse"></a>SQL Data Warehouse
 
-Azure SQL Data Warehouse is een scale-out-data base op basis van de cloud die grote hoeveel heden gegevens kan verwerken, zowel relationele als niet-relationeel. Zie [Wat is Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) voor meer informatie.
+Azure SQL Data Warehouse is een cloudgebaseerde, scale-out database die enorme hoeveelheden gegevens kan verwerken, zowel relationeel als niet-relationeel. Zie Wat is Azure SQL Data Warehouse voor meer [informatie?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
-Verbinding maken met het datawarehouse en de tabel maken, voer de volgende opdracht uit vanaf een opdrachtprompt:
+Als u verbinding wilt maken met het gegevensmagazijn en de tabel wilt maken, voert u de volgende opdracht uit vanuit een opdrachtprompt:
 
     sqlcmd -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -I
 
-Voer de volgende opdracht uit op de Sqlcmd-prompt:
+Voer de opdracht uit bij de sqlcmd-prompt:
 
     CREATE TABLE spam (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer) WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
     GO
 
-Kopieer de gegevens met behulp van BCP:
+Kopieer de gegevens met behulp van bcp:
 
     bcp spam in spambaseHeaders.data -q -c -t  ',' -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -F 1 -r "\r\n"
 
 > [!NOTE]
-> Het gedownloade bestand bevat Windows-stijl regel einden. Het hulp programma BCP verwacht dat er UNIX-lijn einden worden afgesloten. Gebruik de markering-r om BCP te vertellen.
+> Het gedownloade bestand bevat line-eindes in Windows-stijl. De bcp-tool verwacht unix-stijl lijneinde. Gebruik de -r-vlag om bcp te vertellen.
 
-Vervolgens voert u een query uit met Sqlcmd:
+Query vervolgens met sqlcmd:
 
     select top 10 spam, char_freq_dollar from spam;
     GO
 
-U kunt ook een query uitvoeren met behulp van SQuirreL SQL. Volg de stappen die vergelijkbaar zijn met PostgreSQL met behulp van het SQL Server JDBC-stuur programma. Het JDBC-stuur programma bevindt zich in de map/usr/share/java/jdbcdrivers/sqljdbc42.jar.
+U ook query met behulp van SQuirreL SQL. Volg stappen die vergelijkbaar zijn met PostgreSQL met het SQL Server JDBC-stuurprogramma. De JDBC driver bevindt zich in de map /usr/share/java/jdbcdrivers/sqljdbc42.jar.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [team data Science process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview)voor een overzicht van artikelen die u door lopen over de taken die het data Science-proces in azure vormen.
+Zie [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview)voor een overzicht van artikelen die u door de taken leiden die het data science-proces in Azure omvatten.
 
-Zie [team data Science proces scenarios](../team-data-science-process/walkthroughs.md)(Engelstalig) voor een beschrijving van end-to-end-procedures die de stappen in het team data Science proces voor specifieke scenario's demonstreren. De scenario's laten ook zien hoe u cloud en on-premises hulpprogramma's en services combineren in een werkstroom of een pijplijn te maken van een intelligente toepassingen.
+Zie [walkthroughs van teamdatascienceprocessen](../team-data-science-process/walkthroughs.md)voor een beschrijving van end-to-end-walkthroughs die de stappen in het Team Data Science-proces voor specifieke scenario's demonstreren. De walkthroughs illustreren ook hoe cloud- en on-premises tools en services kunnen worden gecombineerd in een workflow of pijplijn om een intelligente toepassing te maken.

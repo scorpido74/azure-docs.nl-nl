@@ -1,6 +1,6 @@
 ---
-title: Problemen met Azure Migrate oplossen | Microsoft Docs
-description: Hierin wordt een overzicht gegeven van bekende problemen in de Azure Migrate-service en tips voor het oplossen van veelvoorkomende fouten.
+title: Problemen met Azure-migreren oplossen | Microsoft Documenten
+description: Biedt een overzicht van bekende problemen in de Azure Migrate-service en tips voor het oplossen van problemen voor veelvoorkomende fouten.
 author: musa-57
 ms.manager: abhemraj
 ms.service: azure-migrate
@@ -8,32 +8,32 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: hamusa
 ms.openlocfilehash: 433f3cc29e334a9034fa073d4ace735fc7e7e3ea
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75725869"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Problemen met Azure Migrate oplossen
 
-[Azure migrate](migrate-services-overview.md) biedt een hub van hulpprogram ma's voor evaluatie en migratie, evenals onafhankelijke software leveranciers (ISV)-aanbiedingen van derden. Dit artikel helpt u bij het oplossen van problemen met Azure Migrate, Azure Migrate server-evaluatie en Azure Migrate server migratie.
+[Azure Migrate](migrate-services-overview.md) biedt een hub met tools voor beoordeling en migratie, evenals isv-aanbiedingen (onafhankelijke softwareleveranciers) van derden. Met dit artikel u problemen met Azure Migrate, Azure Migrate Server Assessment en Azure Migrate Server Migration oplossen.
 
-## <a name="how-do-i-create-or-find-a-project"></a>Hoe kan ik een project maken of zoeken?
+## <a name="how-do-i-create-or-find-a-project"></a>Hoe maak of vind ik een project?
 
-Raadpleeg de [hand leiding voor het oplossen van problemen met het Azure migrate project](troubleshoot-project.md).
+Bekijk de [handleiding voor het oplossen van problemen met azure migreren voor project .](troubleshoot-project.md)
 
-## <a name="i-cant-get-the-appliance-working"></a>Ik kan het apparaat niet laten werken
+## <a name="i-cant-get-the-appliance-working"></a>Ik krijg het apparaat niet aan de praat
 
-Bekijk [antwoorden op veelvoorkomende problemen](troubleshoot-appliance-discovery.md) met de implementatie van het apparaat.
+Bekijk [de antwoorden op veelvoorkomende problemen](troubleshoot-appliance-discovery.md) met de implementatie van apparaten.
 
-## <a name="machines-arent-discovered"></a>Computers zijn niet gedetecteerd
+## <a name="machines-arent-discovered"></a>Machines worden niet ontdekt
 
-Bekijk algemene detectie problemen.
+Lees veelvoorkomende detectieproblemen.
 
-## <a name="app-discovery-isnt-working"></a>App-Discovery werkt niet
+## <a name="app-discovery-isnt-working"></a>App-detectie werkt niet
 
-De detectie van apps, rollen en functies die worden uitgevoerd op on-premises machines wordt momenteel alleen ondersteund voor VMware-Vm's. [Bekijk veelvoorkomende fouten](troubleshoot-appliance-discovery.md#common-app-discovery-errors) voor app-detectie.
+Het ontdekken van apps, rollen en functies die worden uitgevoerd op on-premises machines wordt momenteel alleen ondersteund voor Vm's van VMware. [Controleer veelvoorkomende fouten](troubleshoot-appliance-discovery.md#common-app-discovery-errors) voor app-detectie.
 
 ## <a name="assessment-isnt-working"></a>Beoordeling werkt niet
 
-[Bekijk](troubleshoot-assessment.md) algemene beoordelings problemen en fouten.
+[Gemeenschappelijke](troubleshoot-assessment.md) beoordelingsproblemen en -fouten bekijken.

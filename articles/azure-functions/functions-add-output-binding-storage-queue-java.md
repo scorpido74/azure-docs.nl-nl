@@ -1,53 +1,53 @@
 ---
 title: Uw Java-functie verbinden met Azure Storage
-description: Meer informatie over het verbinden van een door HTTP geactiveerde Java-functie naar Azure Storage met behulp van een uitvoer binding voor de wachtrij opslag.
+description: Meer informatie over het verbinden van een Java-functie die door HTTP is geactiveerd met Azure Storage met behulp van een binding voor de uitvoer van wachtrijopslag.
 author: KarlErickson
 ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
 ms.openlocfilehash: 8ae69bfa7ed00e310205332e05c071158c5fc9a3
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78272806"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Uw Java-functie verbinden met Azure Storage
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-In dit artikel wordt beschreven hoe u de functie die u hebt gemaakt in het [vorige Quick](functions-create-first-java-maven.md) start-artikel integreert met een Azure Storage wachtrij. De uitvoer binding die u aan deze functie toevoegt, schrijft gegevens van een HTTP-aanvraag naar een bericht in de wachtrij.
+In dit artikel ziet u hoe u de functie die u in het [vorige quickstart-artikel](functions-create-first-java-maven.md) hebt gemaakt, integreren met een Azure Storage-wachtrij. De uitvoerbinding die u aan deze functie toevoegt, schrijft gegevens van een HTTP-verzoek naar een bericht in de wachtrij.
 
-Voor de meeste bindingen is een opgeslagen connection string vereist die functies gebruiken om toegang te krijgen tot de gebonden service. Als u deze verbinding eenvoudiger wilt maken, gebruikt u het opslag account dat u hebt gemaakt met uw functie-app. De verbinding met dit account is al opgeslagen in een app-instelling met de naam `AzureWebJobsStorage`.  
+Voor de meeste bindingen is een opgeslagen verbindingstekenreeks vereist die functies gebruiken om toegang te krijgen tot de gebonden service. Om deze verbinding eenvoudiger te maken, gebruikt u het opslagaccount dat u met uw functie-app hebt gemaakt. De verbinding met dit account is al `AzureWebJobsStorage`opgeslagen in een app-instelling met de naam .  
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan dit artikel begint, moet u de stappen in [deel 1 van de Java-Snelstartgids](functions-create-first-java-maven.md)volt ooien.
+Voordat u dit artikel start, voert u de stappen in [deel 1 van de Java quickstart](functions-create-first-java-maven.md)uit.
 
 ## <a name="download-the-function-app-settings"></a>De instellingen van de functie-app downloaden
 
 [!INCLUDE [functions-app-settings-download-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
-## <a name="enable-extension-bundles"></a>Uitbreidings bundels inschakelen
+## <a name="enable-extension-bundles"></a>Uitbreidingsbundels inschakelen
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-U kunt nu de opslag-uitvoer binding toevoegen aan uw project.
+U nu de binding van de opslaguitvoer toevoegen aan uw project.
 
 ## <a name="add-an-output-binding"></a>Een uitvoerbinding toevoegen
 
-In een Java-project worden de bindingen gedefinieerd als bindings aantekeningen voor de functie methode. Het bestand *Function. json* wordt vervolgens automatisch gegenereerd op basis van deze aantekeningen.
+In een Java-project worden de bindingen gedefinieerd als bindende annotaties op de functiemethode. Het *bestand function.json* wordt vervolgens automatisch gegenereerd op basis van deze annotaties.
 
-Blader naar de locatie van de functie code onder _src/main/Java_, open het *functie. java* -project bestand en voeg de volgende para meter toe aan de `run` methode definitie:
+Blader naar de locatie van uw functiecode onder _src/main/java,_ open het *projectbestand Function.java* en voeg de volgende parameter toe aan de `run` methodedefinitie:
 
 ```java
 @QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") OutputBinding<String> msg
 ```
 
-De para meter `msg` is een [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) type dat een verzameling teken reeksen vertegenwoordigt die als berichten naar een uitvoer binding worden geschreven wanneer de functie is voltooid. In dit geval is de uitvoer een opslag wachtrij met de naam `outqueue`. De connection string voor het opslag account wordt ingesteld met de methode `connection`. In plaats van de connection string zelf, geeft u de toepassings instelling door die het opslag account bevat connection string.
+De `msg` parameter [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) is een type dat een verzameling tekenreeksen vertegenwoordigt die als berichten naar een uitvoerbinding worden geschreven wanneer de functie is voltooid. In dit geval is de uitvoer `outqueue`een opslagwachtrij met de naam . De verbindingstekenreeks voor het opslagaccount `connection` wordt ingesteld door de methode. In plaats van de verbindingstekenreeks zelf, passeert u de toepassingsinstelling die de tekenreeks Opslagaccountverbinding bevat.
 
-De definitie van de `run` methode moet er nu uitzien als in het volgende voor beeld:  
+De `run` methodedefinitie moet er nu uitzien als het volgende voorbeeld:  
 
 ```java
 @FunctionName("HttpTrigger-Java")
@@ -62,15 +62,15 @@ public HttpResponseMessage run(
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Code toevoegen die gebruikmaakt van de uitvoerbinding
 
-U kunt nu de nieuwe para meter `msg` gebruiken om naar de uitvoer binding van uw functie code te schrijven. Voeg de volgende regel code toe vóór het antwoord van het slagen om de waarde van `name` toe te voegen aan de `msg`-uitvoer binding.
+U de nieuwe `msg` parameter nu gebruiken om naar de uitvoerbinding van uw functiecode te schrijven. Voeg de volgende coderegel toe voordat de `name` succesrespons `msg` wordt uitgevoerd om de waarde van de uitvoerbinding toe te voegen.
 
 ```java
 msg.setValue(name);
 ```
 
-Wanneer u een uitvoer binding gebruikt, hoeft u niet de Azure Storage SDK-code te gebruiken voor authenticatie, het ophalen van een wachtrij verwijzing of het schrijven van gegevens. De functies runtime en wachtrij-uitvoer binding voeren deze taken voor u uit.
+Wanneer u een uitvoerbinding gebruikt, hoeft u de Azure Storage SDK-code niet te gebruiken voor verificatie, het verkrijgen van een wachtrijverwijzing of het schrijven van gegevens. De runtime en queue output binding van functies doen deze taken voor u.
 
-De `run` methode moet er nu uitzien als in het volgende voor beeld:
+Uw `run` methode moet er nu uitzien als het volgende voorbeeld:
 
 ```java
 @FunctionName("HttpTrigger-Java")
@@ -97,9 +97,9 @@ public HttpResponseMessage run(
 
 ## <a name="update-the-tests"></a>De tests bijwerken
 
-Omdat de archetype ook een reeks tests maakt, moet u deze tests bijwerken om de nieuwe `msg`-para meter in de `run` methode hand tekening te verwerken.  
+Omdat het archetype ook een reeks tests maakt, moet u `msg` deze `run` tests bijwerken om de nieuwe parameter in de methodehandtekening te verwerken.  
 
-Blader naar de locatie van de test code onder _src/test/java_, open het *functie. java* -project bestand en vervang de regel met code onder `//Invoke` met de volgende code.
+Blader naar de locatie van uw testcode onder _src/test/java,_ open het *projectbestand Function.java* en vervang de coderegel onder `//Invoke` door de volgende code.
 
 ```java
 @SuppressWarnings("unchecked")
@@ -109,11 +109,11 @@ final OutputBinding<String> msg = (OutputBinding<String>)mock(OutputBinding.clas
 final HttpResponseMessage ret = new Function().run(req, msg, context);
 ``` 
 
-U bent nu klaar om de nieuwe uitvoer binding lokaal uit te proberen.
+U bent nu klaar om de nieuwe uitvoerbinding lokaal uit te proberen.
 
 ## <a name="run-the-function-locally"></a>De functie lokaal uitvoeren
 
-Gebruik, net als voorheen, de volgende opdracht om het project te bouwen en de functions-runtime lokaal te starten:
+Net als voorheen gebruikt u de volgende opdracht om het project te bouwen en de runtime Functies lokaal te starten:
 
 ::: zone pivot="java-build-tools-maven"  
 ```bash
@@ -130,17 +130,17 @@ gradle azureFunctionsRun
 ::: zone-end
 
 > [!NOTE]  
-> Omdat u uitbreidings bundels in de host. json hebt ingeschakeld, is de [opslag bindings uitbreiding](functions-bindings-storage-blob.md#add-to-your-functions-app) tijdens het opstarten gedownload en geïnstalleerd, samen met de andere micro soft-bindings extensies.
+> Omdat u extensiebundels inschakelt in host.json, is de [extensie Opslagbinding](functions-bindings-storage-blob.md#add-to-your-functions-app) tijdens het opstarten voor u gedownload en geïnstalleerd, samen met de andere bindende extensies van Microsoft.
 
-Activeer, net als voorheen, de functie vanaf de opdracht regel met behulp van krul in een nieuw terminal venster:
+Net als voorheen activeert u de functie vanaf de opdrachtregel met behulp van cURL in een nieuw terminalvenster:
 
 ```CMD
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
-De uitvoer binding maakt ook een wachtrij met de naam `outqueue` in uw opslag account en voegt een bericht toe met dezelfde teken reeks.
+Deze keer maakt de uitvoerbinding `outqueue` ook een wachtrij met de naam in uw opslagaccount en voegt een bericht met dezelfde tekenreeks toe.
 
-Vervolgens gebruikt u de Azure CLI om de nieuwe wachtrij te bekijken en te controleren of er een bericht is toegevoegd. U kunt uw wachtrij ook weer geven met behulp van de [Microsoft Azure Storage Explorer][Azure Storage Explorer] of in de [Azure Portal](https://portal.azure.com).
+Vervolgens gebruikt u de Azure CLI om de nieuwe wachtrij weer te geven en te controleren of er een bericht is toegevoegd. U uw wachtrij ook bekijken met de [Microsoft Azure Storage Explorer][Azure Storage Explorer] of in de [Azure-portal.](https://portal.azure.com)
 
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
 
@@ -162,21 +162,21 @@ gradle azureFunctionsDeploy
 ```
 ::: zone-end
 
-U kunt ook krul gebruiken om de geïmplementeerde functie te testen. Geef, net als voorheen, de waarde `AzureFunctions` in de hoofd tekst van de POST-aanvraag naar de URL, zoals in dit voor beeld:
+Nogmaals, u cURL gebruiken om de geïmplementeerde functie te testen. Net als voorheen `AzureFunctions` geeft u de waarde in de hoofdtekst van het POST-verzoek door aan de URL, zoals in dit voorbeeld:
 
 ```bash
 curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
-U kunt [de opslag wachtrij opnieuw bekijken](#query-the-storage-queue) om te controleren of de uitvoer binding een nieuw bericht in de wachtrij genereert, zoals verwacht.
+U [het wachtrijbericht Opslag opnieuw onderzoeken](#query-the-storage-queue) om te controleren of de uitvoerbinding zoals verwacht een nieuw bericht in de wachtrij genereert.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt uw door HTTP geactiveerde functie bijgewerkt om gegevens naar een opslag wachtrij te schrijven. Zie voor meer informatie over het ontwikkelen van Azure Functions met Java de [Azure functions Java-ontwikkelaars handleiding](functions-reference-java.md) en [Azure functions triggers en bindingen](functions-triggers-bindings.md). Zie voor voor beelden van complete functie projecten in Java de [Java functions](/samples/browse/?products=azure-functions&languages=Java)-voor beelden. 
+U hebt de functie die http-geactiveerd wordt bijgewerkt om gegevens naar een opslagwachtrij te schrijven. Zie de triggers [en bindingen](functions-triggers-bindings.md)voor [Azure Functions Java voor](functions-reference-java.md) meer informatie over het ontwikkelen van Azure-functies met Java. Zie de voorbeelden van [voorbeelden](/samples/browse/?products=azure-functions&languages=Java)van volledige functieprojecten op Java. 
 
-Schakel vervolgens Application Insights bewaking in voor uw functie-app:
+Vervolgens moet u Application Insights-monitoring inschakelen voor uw functie-app:
 
 > [!div class="nextstepaction"]
 > [Application Insights-integratie inschakelen](functions-monitoring.md#manually-connect-an-app-insights-resource)

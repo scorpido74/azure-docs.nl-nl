@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 07/05/2019
 ms.author: glenga
 ms.openlocfilehash: 5e1a2622df0038141dd5cb05237f93d5e33e0bfb
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78190909"
 ---
-In een C# klassen bibliotheek project worden de bindingen gedefinieerd als bindings kenmerken voor de functie methode. Het bestand *Function. json* dat vereist is voor-functies, wordt vervolgens automatisch gegenereerd op basis van deze kenmerken.
+In een c#-klassebibliotheekproject worden de bindingen gedefinieerd als bindende kenmerken voor de functiemethode. Het *functie.json-bestand* dat door Functions vereist is, wordt vervolgens automatisch gegenereerd op basis van deze kenmerken.
 
-Open het project bestand *HttpExample.cs* en voeg de volgende para meter toe aan de `Run` methode definitie:
+Open het *HttpExample.cs* projectbestand en voeg `Run` de volgende parameter toe aan de methodedefinitie:
 
 :::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="17":::
 
-De para meter `msg` is een `ICollector<T>` type dat een verzameling berichten vertegenwoordigt die naar een uitvoer binding worden geschreven wanneer de functie is voltooid. In dit geval is de uitvoer een opslag wachtrij met de naam `outqueue`. De connection string voor het opslag account is ingesteld door de `StorageAccountAttribute`. Dit kenmerk geeft de instelling aan die het opslag account bevat connection string en kan worden toegepast op het niveau van de klasse, methode of para meter. In dit geval kunt u `StorageAccountAttribute` weglaten omdat u het standaard opslag account al gebruikt.
+De `msg` parameter `ICollector<T>` is een type dat een verzameling berichten vertegenwoordigt die naar een uitvoerbinding zijn geschreven wanneer de functie is voltooid. In dit geval is de uitvoer `outqueue`een opslagwachtrij met de naam . De verbindingstekenreeks voor het opslagaccount `StorageAccountAttribute`wordt ingesteld door het . Dit kenmerk geeft de instelling aan die de tekenreeks Opslagaccountverbinding bevat en kan worden toegepast op klasse-, methode- of parameterniveau. In dit geval `StorageAccountAttribute` u weglaten omdat u het standaardopslagaccount al gebruikt.
 
-De definitie van de run-methode moet er nu als volgt uitzien:  
+De definitie van de methode Uitvoeren moet er nu als volgt uitzien:  
 
 :::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="14-18":::

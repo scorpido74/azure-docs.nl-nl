@@ -1,6 +1,6 @@
 ---
-title: De resource provider van Azure Storage gebruiken om toegang te krijgen tot beheer resources
-description: De resource provider Azure Storage is een service die toegang biedt tot beheer resources voor Azure Storage. U kunt de resource provider van Azure Storage gebruiken om resources te maken, bij te werken, te beheren en te verwijderen, zoals opslag accounts, persoonlijke eind punten en toegangs sleutels voor accounts.
+title: De Azure Storage-bronprovider gebruiken om toegang te krijgen tot beheerbronnen
+description: De Azure Storage-bronprovider is een service die toegang biedt tot beheerbronnen voor Azure Storage. U de Azure Storage-bronprovider gebruiken om bronnen zoals opslagaccounts, privéeindpunten en accounttoegangssleutels te maken, bij te werken, te beheren en te verwijderen.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,58 +10,58 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: f5d42a6a0567d3949bc4b0fb1947450a9c957f18
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75972350"
 ---
-# <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>De resource provider van Azure Storage gebruiken om toegang te krijgen tot beheer resources
+# <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>De Azure Storage-bronprovider gebruiken om toegang te krijgen tot beheerbronnen
 
-Azure Resource Manager is de implementatie- en beheersservice voor Azure. De resource provider Azure Storage is een service die is gebaseerd op Azure Resource Manager en die toegang biedt tot beheer resources voor Azure Storage. U kunt de resource provider van Azure Storage gebruiken om resources te maken, bij te werken, te beheren en te verwijderen, zoals opslag accounts, persoonlijke eind punten en toegangs sleutels voor accounts. Zie [Azure Resource Manager Overview](/azure/azure-resource-manager/resource-group-overview)voor meer informatie over Azure Resource Manager.
+Azure Resource Manager is de implementatie- en beheersservice voor Azure. De Azure Storage-bronprovider is een service die is gebaseerd op Azure Resource Manager en die toegang biedt tot beheerbronnen voor Azure Storage. U de Azure Storage-bronprovider gebruiken om bronnen zoals opslagaccounts, privéeindpunten en accounttoegangssleutels te maken, bij te werken, te beheren en te verwijderen. Zie overzicht azure [resource manager](/azure/azure-resource-manager/resource-group-overview)voor meer informatie over Azure Resource Manager.
 
-U kunt de Azure Storage Resource provider gebruiken om acties uit te voeren, zoals het maken of verwijderen van een opslag account of het ophalen van een lijst met opslag accounts in een abonnement. Als u aanvragen voor de Azure Storage Resource provider wilt autoriseren, gebruikt u Azure Active Directory (Azure AD). In dit artikel wordt beschreven hoe u machtigingen toewijst aan beheer resources en verwijst naar voor beelden die laten zien hoe u aanvragen voor de resource provider van Azure Storage kunt doen.
+U de Azure Storage-bronprovider gebruiken om acties uit te voeren, zoals het maken of verwijderen van een opslagaccount of het verkrijgen van een lijst met opslagaccounts in een abonnement. Als u aanvragen wilt autoriseren tegen de Azure Storage-bronprovider, gebruikt u Azure Active Directory (Azure AD). In dit artikel wordt beschreven hoe u machtigingen toewijst aan beheerbronnen en wordt ingegeven aan voorbeelden die laten zien hoe u aanvragen indienen tegen de Azure Storage-bronprovider.
 
-## <a name="management-resources-versus-data-resources"></a>Beheer bronnen versus gegevens bronnen
+## <a name="management-resources-versus-data-resources"></a>Beheerresources versus gegevensbronnen
 
-Micro soft biedt twee REST-Api's voor het werken met Azure Storage-resources. Deze Api's vormen de basis van alle acties die u kunt uitvoeren op basis van Azure Storage. Met de Azure Storage REST API kunt u werken met gegevens in uw opslag account, waaronder blob-, wachtrij-, bestands-en tabel gegevens. Met de Azure Storage Resource provider REST API kunt u werken met het opslag account en gerelateerde resources.
+Microsoft biedt twee REST-API's voor het werken met Azure Storage-bronnen. Deze API's vormen de basis van alle acties die u uitvoeren tegen Azure Storage. Met de Azure Storage REST API u werken met gegevens in uw opslagaccount, waaronder blob-, wachtrij-, bestands- en tabelgegevens. Met de REST API voor Azure Storage-bronnen u werken met het opslagaccount en de bijbehorende resources.
 
-Een aanvraag die BLOB-gegevens leest of schrijft, vereist andere machtigingen dan een aanvraag die een beheer bewerking uitvoert. RBAC biedt nauw keurige controle over machtigingen voor beide typen resources. Wanneer u een RBAC-rol toewijst aan een beveiligingsprincipal, zorg er dan voor dat u weet welke machtigingen voor de principal worden verleend. Zie [ingebouwde rollen voor Azure-resources](../../role-based-access-control/built-in-roles.md)voor een gedetailleerde Naslag informatie over de acties die zijn gekoppeld aan elke ingebouwde RBAC-rol.
+Een aanvraag die blobgegevens leest of schrijft, vereist andere machtigingen dan een aanvraag die een beheerbewerking uitvoert. RBAC biedt fijnmazige controle over machtigingen voor beide typen resources. Wanneer u een RBAC-rol toewijst aan een beveiligingsprincipal, moet u ervoor zorgen dat u begrijpt welke machtigingen die principal zal krijgen. Zie [Ingebouwde rollen voor Azure-resources voor](../../role-based-access-control/built-in-roles.md)een gedetailleerde referentie waarin wordt beschreven welke acties zijn gekoppeld aan elke ingebouwde RBAC-rol.
 
-Azure Storage ondersteunt het gebruik van Azure AD om aanvragen voor Blob-en wachtrij opslag te autoriseren. Zie [toegang tot blobs en wacht rijen toestaan met Active Directory](storage-auth-aad.md)voor meer informatie over RBAC-rollen voor Blob-en wachtrij gegevens bewerkingen.
+Azure Storage ondersteunt het gebruik van Azure AD om aanvragen te autoriseren tegen Blob- en Queue-opslag. Zie [Toegang tot blobs en wachtrijen beheren met Active Directory](storage-auth-aad.md)voor informatie over RBAC-rollen voor blob- en wachtrijgegevensbewerkingen.
 
-## <a name="assign-management-permissions-with-role-based-access-control-rbac"></a>Beheer machtigingen toewijzen met op rollen gebaseerd toegangs beheer (RBAC)
+## <a name="assign-management-permissions-with-role-based-access-control-rbac"></a>Beheermachtigingen toewijzen met op rollen gebaseerd toegangscontrolebeheer (RBAC)
 
-Elk Azure-abonnement heeft een bijbehorende Azure Active Directory waarmee gebruikers, groepen en toepassingen worden beheerd. Een gebruiker, groep of toepassing wordt ook wel een beveiligingsprincipal genoemd in de context van het [micro soft Identity-platform](/azure/active-directory/develop/). U kunt toegang verlenen tot bronnen in een abonnement op een beveiligingsprincipal die is gedefinieerd in de Active Directory met behulp van op rollen gebaseerd toegangs beheer (RBAC).
+Elk Azure-abonnement heeft een bijbehorende Azure Active Directory die gebruikers, groepen en toepassingen beheert. Een gebruiker, groep of toepassing wordt ook wel een beveiligingsprincipal genoemd in de context van het [Microsoft-identiteitsplatform.](/azure/active-directory/develop/) U toegang verlenen tot bronnen in een abonnement op een beveiligingsprincipal die is gedefinieerd in de Active Directory met behulp van rbac (Role-based access control).
 
-Wanneer u een RBAC-rol toewijst aan een beveiligingsprincipal, geeft u ook het bereik op waarop de machtigingen die door de rol worden verleend, van kracht zijn. Voor beheer bewerkingen kunt u een rol toewijzen op het niveau van het abonnement, de resource groep of het opslag account. U kunt een RBAC-rol toewijzen aan een beveiligingsprincipal met behulp van de [Azure Portal](https://portal.azure.com/), de [Azure cli-hulpprogram ma's](../../cli-install-nodejs.md), [Power shell](/powershell/azureps-cmdlets-docs)of de [resource provider van Azure Storage rest API](/rest/api/storagerp).
+Wanneer u een RBAC-rol toewijst aan een beveiligingsprincipal, geeft u ook het bereik aan waarop de machtigingen die door de rol worden verleend, van kracht zijn. Voor beheerbewerkingen u een rol toewijzen op het niveau van het abonnement, de resourcegroep of het opslagaccount. U een RBAC-rol toewijzen aan een beveiligingsprincipal met behulp van de [Azure-portal,](https://portal.azure.com/)de [Azure CLI-hulpprogramma's,](../../cli-install-nodejs.md) [PowerShell](/powershell/azureps-cmdlets-docs)of de REST API van azure [storage-bronprovider](/rest/api/storagerp).
 
-Zie [Wat is op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources?](../../role-based-access-control/overview.md) en [klassieke abonnements beheerders rollen, Azure RBAC-rollen en Azure AD-beheerders rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md)voor meer informatie over RBAC.
+Zie [Wat is rbac (Role-based access control) voor Azure-resources en](../../role-based-access-control/overview.md) [Classic-abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-beheerdersrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md)voor meer informatie over RBAC.
 
-### <a name="built-in-roles-for-management-operations"></a>Ingebouwde rollen voor beheer bewerkingen
+### <a name="built-in-roles-for-management-operations"></a>Ingebouwde rollen voor beheerbewerkingen
 
-Azure biedt ingebouwde rollen die machtigingen verlenen voor het aanroepen van beheer bewerkingen. Azure Storage biedt ook ingebouwde rollen die specifiek zijn voor gebruik met de Azure Storage Resource provider.
+Azure biedt ingebouwde rollen waarmee machtigingen worden verleend voor oproepbeheerbewerkingen. Azure Storage biedt ook ingebouwde rollen die specifiek zijn voor gebruik met de Azure Storage-bronprovider.
 
-Ingebouwde rollen die machtigingen verlenen voor het aanroepen van opslag beheer bewerkingen zijn onder andere de rollen die in de volgende tabel worden beschreven:
+Ingebouwde rollen die machtigingen verlenen voor opslagbeheerbewerkingen, bevatten de rollen die in de volgende tabel worden beschreven:
 
-|    RBAC-rol    |    Beschrijving    |    Inclusief toegang tot account sleutels?    |
+|    RBAC-rol    |    Beschrijving    |    Inclusief toegang tot accountsleutels?    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
-| **Eigenaar** | Kan alle opslag resources en toegang tot resources beheren.  | Ja, biedt machtigingen voor het weer geven en opnieuw genereren van de sleutel van het opslag account. |
-| **Inzender**  | Kan alle opslag resources beheren, maar kan toewijzing aan resources niet beheren. | Ja, biedt machtigingen voor het weer geven en opnieuw genereren van de sleutel van het opslag account. |
-| **Lezer** | Kan informatie over het opslag account weer geven, maar kan de account sleutels niet weer geven. | Nee. |
-| **Inzender voor opslagaccounts** | Kan het opslag account beheren, informatie over de resource groepen en-resources van het abonnement ophalen en implementaties van abonnements resource groepen maken en beheren. | Ja, biedt machtigingen voor het weer geven en opnieuw genereren van de sleutel van het opslag account. |
-| **Beheerder van gebruikerstoegang** | Kan de toegang tot het opslag account beheren.   | Ja, geeft een beveiligingsprincipal toestemming om machtigingen toe te wijzen aan zichzelf en anderen. |
-| **Inzender voor virtuele machines** | Kan virtuele machines beheren, maar niet het opslag account waarmee ze zijn verbonden.   | Ja, biedt machtigingen voor het weer geven en opnieuw genereren van de sleutel van het opslag account. |
+| **Eigenaar** | Kan alle opslagbronnen en toegang tot bronnen beheren.  | Ja, biedt machtigingen voor het bekijken en regenereren van de opslagaccountsleutels. |
+| **Inzender**  | Kan alle opslagresources beheren, maar kan niet worden toegewezen aan resources. | Ja, biedt machtigingen voor het bekijken en regenereren van de opslagaccountsleutels. |
+| **Lezer** | Kan informatie over het opslagaccount weergeven, maar kan de accountsleutels niet weergeven. | Nee. |
+| **Inzender voor opslagaccounts** | Kan het opslagaccount beheren, informatie krijgen over de brongroepen en resources van het abonnement en implementaties van abonnementsbronnen maken en beheren. | Ja, biedt machtigingen voor het bekijken en regenereren van de opslagaccountsleutels. |
+| **Beheerder voor gebruikerstoegang** | Kan de toegang tot het opslagaccount beheren.   | Ja, hiermee kan een beveiligingsprincipal alle machtigingen aan zichzelf en anderen toewijzen. |
+| **Inzender voor virtuele machines** | Kan virtuele machines beheren, maar niet het opslagaccount waarmee ze zijn verbonden.   | Ja, biedt machtigingen voor het bekijken en regenereren van de opslagaccountsleutels. |
 
-De derde kolom in de tabel geeft aan of de ingebouwde rol ondersteuning biedt voor **micro soft. Storage/Storage accounts/listkeys ophalen/Action**. Met deze actie worden machtigingen verleend om de sleutels voor het opslag account te lezen en opnieuw te genereren. Machtigingen voor toegang tot Azure Storage beheer resources bevatten niet ook machtigingen voor toegang tot gegevens. Als een gebruiker echter toegang heeft tot de account sleutels, kunnen ze de account sleutels gebruiken om toegang te krijgen tot Azure Storage gegevens via een gedeelde sleutel autorisatie.
+De derde kolom in de tabel geeft aan of de ingebouwde rol de **Microsoft.Storage/storageAccounts/listkeys/action**ondersteunt. Met deze actie worden machtigingen verleend voor het lezen en regenereren van de opslagaccountsleutels. Machtigingen voor toegang tot Azure Storage Management resources bevatten ook geen machtigingen voor toegang tot gegevens. Als een gebruiker echter toegang heeft tot de accountsleutels, kan hij de accountsleutels gebruiken om toegang te krijgen tot Azure Storage-gegevens via de autorisatie van Gedeelde sleutel.
 
-### <a name="custom-roles-for-management-operations"></a>Aangepaste rollen voor beheer bewerkingen
+### <a name="custom-roles-for-management-operations"></a>Aangepaste rollen voor beheerbewerkingen
 
-Azure biedt ook ondersteuning voor het definiëren van aangepaste RBAC-rollen voor toegang tot beheer resources. Zie [aangepaste rollen voor Azure-resources](../../role-based-access-control/custom-roles.md)voor meer informatie over aangepaste rollen.
+Azure ondersteunt ook het definiëren van aangepaste RBAC-rollen voor toegang tot beheerbronnen. Zie Aangepaste rollen voor [Azure-resources voor](../../role-based-access-control/custom-roles.md)meer informatie over aangepaste rollen.
 
 ## <a name="code-samples"></a>Codevoorbeelden
 
-Zie de volgende voor beelden voor code voorbeelden die laten zien hoe u beheer bewerkingen kunt autoriseren en aanroepen vanuit de Azure Storage-beheer bibliotheken:
+Zie de volgende voorbeelden voor codevoorbeelden die laten zien hoe u beheerbewerkingen van de Azure Storage-beheerbibliotheken autoriseert en aanroept:
 
 - [.NET](https://github.com/Azure-Samples/storage-dotnet-resource-provider-getting-started)
 - [Java](https://github.com/Azure-Samples/storage-java-manage-storage-accounts)
@@ -70,12 +70,12 @@ Zie de volgende voor beelden voor code voorbeelden die laten zien hoe u beheer b
 
 ## <a name="azure-resource-manager-versus-classic-deployments"></a>Azure Resource Manager versus klassieke implementaties
 
-Het implementatiemodel van Resource Manager en het klassieke implementatiemodel zijn twee verschillende manieren voor het implementeren en beheren van uw Azure-oplossingen. U wordt aangeraden het Azure Resource Manager-implementatie model te gebruiken wanneer u een nieuw opslag account maakt. Als dat mogelijk is, raadt micro soft u ook aan om bestaande klassieke opslag accounts opnieuw te maken met het Resource Manager-model. Hoewel u een opslag account kunt maken met behulp van het klassieke implementatie model, is het klassieke model minder flexibel en zal het uiteindelijk worden afgeschaft.
+Het implementatiemodel van Resource Manager en het klassieke implementatiemodel zijn twee verschillende manieren voor het implementeren en beheren van uw Azure-oplossingen. Microsoft raadt aan het implementatiemodel azure resource manager te gebruiken wanneer u een nieuw opslagaccount maakt. Indien mogelijk raadt Microsoft u ook aan bestaande klassieke opslagaccounts opnieuw te maken met het Resource Manager-model. Hoewel u een opslagaccount maken met behulp van het klassieke implementatiemodel, is het klassieke model minder flexibel en zal het uiteindelijk worden afgeschaft.
 
-Zie [Resource Manager en klassieke implementatie](../../azure-resource-manager/management/deployment-models.md)voor meer informatie over Azure-implementatie modellen.
+Zie [Resourcebeheer en klassieke implementatie](../../azure-resource-manager/management/deployment-models.md)voor meer informatie over Azure-implementatiemodellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht van Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
 - [Wat is op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources?](../../role-based-access-control/overview.md)
-- [Schaalbaarheids doelen voor de resource provider van Azure Storage](scalability-targets-resource-provider.md)
+- [Schaalbaarheidsdoelen voor de Azure Storage-bronprovider](scalability-targets-resource-provider.md)

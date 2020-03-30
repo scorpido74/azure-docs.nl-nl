@@ -1,26 +1,26 @@
 ---
-title: Sjabloon maken-Visual Studio code
+title: Sjabloon maken - Visual Studio Code
 description: Gebruik Visual Studio Code en de Azure Resource Manager-extensie voor hulpprogramma's om te werken met Resource Manager-sjablonen.
 author: mumian
 ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 9a829b0c84c397f297539cdb04b3ad027a18c834
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c9447d356cff792d9a70e33cc2a5e35898d8982b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79240308"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80131896"
 ---
-# <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Snelstart: Azure Resource Manager-sjablonen maken met Visual Studio Code
+# <a name="quickstart-create-arm-templates-by-using-visual-studio-code"></a>Snelstart: ARM-sjablonen maken met Visual Studio Code
 
-Leer hoe u Visual Studio Code en de Azure Resource Manager Tools-extensie gebruikt om Azure Resource Manager-sjablonen te maken en te bewerken. U kunt Resource Manager-sjablonen maken in Visual Studio Code zonder de extensie, maar de extensie biedt opties voor automatisch aanvullen die het ontwikkelen van sjablonen eenvoudiger maken. Zie [overzicht van sjabloon implementatie](overview.md)voor meer informatie over de concepten van het implementeren en beheren van uw Azure-oplossingen.
+Meer informatie over het gebruik van Visual Studio-code en de Azure Resource Manager Tools-extensie om ARM-sjablonen (Azure Resource Manager) te maken en te bewerken. U ARM-sjablonen maken in Visual Studio Code zonder de extensie, maar de extensie biedt opties voor automatisch aanvullen die de ontwikkeling van sjablonen vereenvoudigen. Zie overzicht van de implementatie van sjablonen voor het implementeren en beheren van de concepten die zijn gekoppeld aan het implementeren en beheren van uw [Azure-oplossingen.](overview.md)
 
-In deze Quick Start implementeert u een opslag account:
+In deze quickstart implementeert u een opslagaccount:
 
-![Resource Manager-sjabloon Quick Start Visual Studio-code diagram](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
+![resourcemanagersjabloon start snel het visual studiocodediagram](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
 
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -36,11 +36,11 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="open-a-quickstart-template"></a>Een snelstartsjabloon openen
 
-In plaats van een sjabloon helemaal opnieuw te maken, opent u een sjabloon in [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/). Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen.
+In plaats van een sjabloon helemaal opnieuw te maken, opent u een sjabloon in [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/). Azure Quickstart-sjablonen is een opslagplaats voor ARM-sjablonen.
 
 De in deze snelstart gebruikte sjabloon wordt [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) (Standaardopslagaccount maken) genoemd. De sjabloon definieert een Azure Storage-accountresource.
 
-1. Selecteer in Visual Studio Code **Bestand**>**Bestand openen**.
+1. Selecteer **Bestand**>**openen bestand**in Visual Studio-code .
 2. Plak de volgende URL in **Bestandsnaam**:
 
     ```url
@@ -48,7 +48,7 @@ De in deze snelstart gebruikte sjabloon wordt [Create a standard storage account
     ```
 
 3. Selecteer **Openen** om het bestand te openen.
-4. Selecteer **Bestand**>**Opslaan als** om het bestand op uw lokale computer op te slaan als **azuredeploy.json**.
+4. Selecteer **Bestand**>**opslaan als** om het bestand op te slaan als **azuredeploy.json** op uw lokale computer.
 
 ## <a name="edit-the-template"></a>De sjabloon bewerken
 
@@ -78,29 +78,29 @@ Als u wilt ervaren hoe u een sjabloon met behulp van Visual Studio Code bewerkt,
     }
     ```
 
-    Als u de code in Visual Studio Code hebt geplakt, kunt u het element **value** opnieuw typen om een idee te krijgen van de intelliSense-mogelijkheden van de extensie voor Resource Manager-hulpprogramma's.
+    Als u de code hebt gekopieerd en geplakt in Visual Studio Code, probeert u het **waardeelement** opnieuw te typen om de IntelliSense-mogelijkheid van de extensie Hulpmiddelen voor Resourcebeheer te ervaren.
 
     ![Visual Studio Code-intelliSense van Resource Manager-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
 
-2. Selecteer **Bestand**>**Opslaan** om het bestand op te slaan.
+2. Selecteer **Bestand**>**opslaan** om het bestand op te slaan.
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Er bestaan meerdere methoden voor het implementeren van sjablonen. Azure Cloud shell wordt gebruikt in deze Quick Start. Cloud shell ondersteunt zowel Azure CLI als Azure PowerShell. Gebruik de tabblad kiezer om te kiezen tussen CLI en Power shell.
+Er bestaan meerdere methoden voor het implementeren van sjablonen. Azure Cloud shell wordt gebruikt in deze quickstart. De cloudshell ondersteunt zowel Azure CLI als Azure PowerShell. Gebruik de tabkiezer om te kiezen tussen CLI en PowerShell.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 1. Meld u aan bij [Azure Cloud Shell](https://shell.azure.com)
 
-2. Kies uw voorkeurs omgeving door **Power shell** of **bash**(CLI) te selecteren in de linkerbovenhoek.  U moet de shell opnieuw starten wanneer u overschakelt.
+2. Kies uw gewenste omgeving door **PowerShell** of **Bash**(CLI) in de linkerbovenhoek te selecteren.  U moet de shell opnieuw starten wanneer u overschakelt.
 
     # <a name="cli"></a>[CLI](#tab/CLI)
 
     ![Cloud Shell CLI in Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
 
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
 
-    ![Azure Portal Cloud shell Power shell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
+    ![Azure-portal Cloudshell PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
 
     ---
 
@@ -110,7 +110,7 @@ Er bestaan meerdere methoden voor het implementeren van sjablonen. Azure Cloud s
 
     ![Bestand uploaden in Cloud Shell in Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
 
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
 
     ![Bestand uploaden in Cloud Shell in Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
 
@@ -124,7 +124,7 @@ Er bestaan meerdere methoden voor het implementeren van sjablonen. Azure Cloud s
 
     ![Cloud Shell-lijstbestand in Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
 
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
 
     ![Cloud Shell-lijstbestand in Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
 
@@ -138,10 +138,10 @@ Er bestaan meerdere methoden voor het implementeren van sjablonen. Azure Cloud s
     echo "Enter the location (i.e. centralus):" &&
     read location &&
     az group create --name $resourceGroupName --location "$location" &&
-    az group deployment create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
+    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
     ```
 
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -161,7 +161,7 @@ Er bestaan meerdere methoden voor het implementeren van sjablonen. Azure Cloud s
 
     ![Sjabloon implementeren in Cloud Shell in Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
 
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
 
     ![Sjabloon implementeren in Cloud Shell in Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
 
@@ -180,7 +180,7 @@ Er bestaan meerdere methoden voor het implementeren van sjablonen. Azure Cloud s
     az storage account show --resource-group $resourceGroupName --name $storageAccountName
     ```
 
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -196,14 +196,14 @@ Zie voor meer informatie over het gebruik van Azure storage-accounts [Snelstart:
 
 Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen.
 
-1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
+1. Selecteer **resourcegroep** in de linkermenu in de Azure-portal.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.  U ziet in totaal zes resources in de resourcegroep.
-4. Selecteer **Resourcegroep verwijderen** in het bovenste menu.
+4. Selecteer **Brongroep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De focus van deze snelstartgids ligt op het gebruik van Visual Studio Code om een bestaande sjabloon van de Azure-snelstartsjablonen te bewerken. U hebt ook geleerd hoe u de sjabloon kunt implementeren met CLI of PowerShell vanuit Azure Cloud Shell. De sjablonen van de Azure-snelstartsjablonen voldoen mogelijk niet volledig aan uw behoeften. Zie voor meer informatie over het ontwikkelen van sjablonen onze nieuwe zelf studie reeks voor beginners:
+De focus van deze snelstartgids ligt op het gebruik van Visual Studio Code om een bestaande sjabloon van de Azure-snelstartsjablonen te bewerken. U hebt ook geleerd hoe u de sjabloon kunt implementeren met CLI of PowerShell vanuit Azure Cloud Shell. De sjablonen van de Azure-snelstartsjablonen voldoen mogelijk niet volledig aan uw behoeften. Zie onze nieuwe beginnerszelfstudiereeks voor meer informatie over sjabloonontwikkeling:
 
 > [!div class="nextstepaction"]
-> [Zelf studies voor beginners](./template-tutorial-create-first-template.md)
+> [Zelfstudies voor beginners](./template-tutorial-create-first-template.md)

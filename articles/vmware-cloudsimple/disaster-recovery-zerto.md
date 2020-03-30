@@ -1,6 +1,6 @@
 ---
-title: 'Azure VMware-oplossingen (AVS): AVS-Privécloud gebruiken als nood site voor on-premises workloads'
-description: Hierin wordt beschreven hoe u uw Privécloud als een nood herstel site instelt voor on-premises VMware-workloads
+title: Azure VMware-oplossing door CloudSimple - Gebruik Private Cloud als rampsite voor on-premises workloads
+description: Beschrijft hoe u uw CloudSimple Private Cloud instellen als een rampherstelsite voor on-premises VMware-workloads
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,91 +8,91 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e5ee43af97e79f1e835787d61bd79cfb256ef445
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083129"
 ---
-# <a name="set-up-avs-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Een persoonlijke cloud van AVS instellen als een nood herstel site voor on-premises VMware-workloads
+# <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>CloudSimple Private Cloud instellen als een rampherstelsite voor on-premises VMware-workloads
 
-Uw AVS-Privécloud kan worden ingesteld als een herstel site voor on-premises toepassingen om bedrijfs continuïteit te bieden in het geval van een ramp. De herstel oplossing is gebaseerd op Zerto virtuele replicatie als het replicatie-en Orchestration-platform. Kritieke infra structuur en toepassings-virtuele machines kunnen continu worden gerepliceerd van uw on-premises vCenter naar de Privécloud van uw AVS. U kunt de Privécloud voor failover testen en de beschik baarheid van uw toepassing tijdens een nood geval controleren. Een soort gelijke aanpak kan worden gevolgd om de automatische AVS-Cloud in te stellen als een primaire site die wordt beveiligd door een herstel site op een andere locatie.
+Uw CloudSimple Private Cloud kan worden ingesteld als een herstelsite voor on-premises toepassingen om bedrijfscontinuïteit te bieden in geval van een ramp. De hersteloplossing is gebaseerd op Zerto Virtual Replication als replicatie- en orchestration-platform. Virtuele kritieke infrastructuur- en toepassingsvirtuele machines kunnen continu worden gerepliceerd van uw on-premises vCenter naar uw Private Cloud. U uw Private Cloud gebruiken voor failovertests en om de beschikbaarheid van uw toepassing tijdens een ramp te garanderen. Een soortgelijke aanpak kan worden gevolgd om de Private Cloud in te stellen als een primaire site die wordt beschermd door een herstelsite op een andere locatie.
 
 > [!NOTE]
-> Raadpleeg de Zerto van de document [grootte voor Zerto Virtual Replication](https://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf) voor richt lijnen over het aanpassen van de grootte van uw omgeving voor herstel na nood gevallen.
+> Raadpleeg de zerto-document [grootteoverwegingen voor virtuele replicatie](https://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf) van Zerto voor richtlijnen voor het aanpassen van uw omgeving voor noodherstel.
 
-De AVS-oplossing:
+De CloudSimple-oplossing:
 
-* Elimineert de nood zaak om een Data Center in te stellen dat specifiek is voor herstel na nood gevallen (DR).
-* Met kunt u gebruikmaken van de Azure-locaties waar AVS wordt geïmplementeerd voor wereld wijde geografische tolerantie.
-* Biedt u een optie om implementatie kosten en total cost of ownership voor DR te reduceren.
+* Elimineert de noodzaak om een datacenter speciaal voor disaster recovery (DR) in te stellen.
+* Hiermee u gebruikmaken van de Azure-locaties waar CloudSimple wordt ingezet voor wereldwijde geografische veerkracht.
+* Biedt u de mogelijkheid om de implementatiekosten en de totale eigendomskosten voor DR te verlagen.
 
-Voor de oplossing moet u het volgende doen:
+De oplossing vereist dat u:
 
-* Zerto in de Privécloud van uw AVS installeren, configureren en beheren.
-* Geef uw eigen licenties voor Zerto op als de Privécloud de beveiligde site is. U kunt Zerto die op de AVS-site worden uitgevoerd, koppelen met uw on-premises site voor licentie verlening.
+* Installeer, configureer en beheer Zerto in uw Private Cloud.
+* Geef uw eigen licenties voor Zerto op wanneer de Private Cloud de beveiligde site is. U Zerto die op de CloudSimple-site wordt uitgevoerd, koppelen aan uw on-premises site voor licenties.
 
-In de volgende afbeelding ziet u de architectuur van de Zerto-oplossing.
+De volgende figuur toont de architectuur voor de Zerto-oplossing.
 
 ![Architectuur](media/cloudsimple-zerto-architecture.png)
 
 ## <a name="how-to-deploy-the-solution"></a>De oplossing implementeren
 
-In de volgende secties wordt beschreven hoe u een DR-oplossing implementeert met virtuele replicatie van Zerto in uw AVS-privécloud.
+In de volgende secties wordt beschreven hoe u een DR-oplossing implementeert met Zerto Virtual Replication in uw private cloud.
 
 1. [Vereisten](#prerequisites)
-2. [Optionele configuratie op uw AVS-Privécloud](#optional-configuration-on-your-avs-private-cloud)
-3. [ZVM en VRA op uw AVS-Privécloud instellen](#set-up-zvm-and-vra-on-your-avs-private-cloud)
-4. [Virtuele beveiligings groep Zerto instellen](#set-up-zerto-virtual-protection-group)
+2. [Optionele configuratie op CloudSimple Private Cloud](#optional-configuration-on-your-private-cloud)
+3. [ZVM en VRA instellen op CloudSimple Private Cloud](#set-up-zvm-and-vra-on-your-private-cloud)
+4. [Zerto-groep voor virtuele beveiliging instellen](#set-up-zerto-virtual-protection-group)
 
 ### <a name="prerequisites"></a>Vereisten
 
-Als u virtuele Zerto-replicatie van uw on-premises omgeving naar uw AVS-Privécloud wilt inschakelen, moet u de volgende vereisten volt ooien.
+Als u Zerto Virtual Replication wilt inschakelen vanuit uw on-premises omgeving naar uw private cloud, voert u de volgende vereisten in.
 
-1. [Stel een site-naar-site-VPN-verbinding in tussen uw on-premises netwerk en de privécloud van uw AVS](set-up-vpn.md).
-2. [Stel de DNS-zoek opdracht in zodat uw beheer onderdelen van de Privécloud Private Cloud worden doorgestuurd naar de GEavse DNS-servers van de privécloud](on-premises-dns-setup.md). Als u het door sturen van DNS-lookup wilt inschakelen, maakt u een doorstuur zone vermelding in uw on-premises DNS-server voor `*.cloudsimple.io` om DNS-servers te AVS.
-3. Stel de DNS-zoek opdracht zodanig in dat de on-premises vCenter-onderdelen worden doorgestuurd naar lokale DNS-servers. De DNS-servers moeten bereikbaar zijn vanuit uw automatische AVS-Cloud via site-naar-site-VPN. Voor hulp dient u een [ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)in te dienen, waarbij de volgende informatie wordt verstrekt. 
+1. [Stel een Site-to-Site VPN-verbinding in tussen uw on-premises netwerk en uw CloudSimple Private Cloud.](set-up-vpn.md)
+2. [Stel DNS-lookup in zodat uw Private Cloud-beheercomponenten worden doorgestuurd naar Private Cloud DNS-servers.](on-premises-dns-setup.md)  Als u het doorsturen van DNS-lookup wilt inschakelen, `*.cloudsimple.io` maakt u een doorstuurzonevermelding op uw on-premises DNS-server voor cloudsimple DNS-servers.
+3. Stel DNS-lookup zo in dat on-premises vCenter-componenten worden doorgestuurd naar on-premises DNS-servers.  De DNS-servers moeten bereikbaar zijn vanuit uw CloudSimple Private Cloud via Site-to-Site VPN. Voor bijstand dient u een [ondersteuningsverzoek](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)in, met de volgende informatie.  
 
-    * Naam van on-premises DNS-domein
-    * IP-adressen van on-premises DNS-server
+    * On-premises DNS-domeinnaam
+    * Ip-adressen van on-premises DNS-servers
 
-4. Installeer een Windows-Server in de Privécloud van uw AVS. De server wordt gebruikt om Zerto Virtual Manager te installeren.
-5. [Uw AVS-bevoegdheden escaleren](escalate-private-cloud-privileges.md).
-6. Maak een nieuwe gebruiker op uw AVS-Privécloud met de beheerdersrol die moet worden gebruikt als service account voor Zerto Virtual Manager.
+4. Installeer een Windows-server op uw Private Cloud. De server wordt gebruikt om Zerto Virtual Manager te installeren.
+5. [Escaleer uw CloudSimple-bevoegdheden.](escalate-private-cloud-privileges.md)
+6. Maak een nieuwe gebruiker op uw Private Cloud vCenter met de administratieve rol te gebruiken als service-account voor Zerto Virtual Manager.
 
-### <a name="optional-configuration-on-your-avs-private-cloud"></a>Optionele configuratie op uw AVS-Privécloud
+### <a name="optional-configuration-on-your-private-cloud"></a>Optionele configuratie op uw Private Cloud
 
-1. Maak een of meer resource groepen op uw AVS Privécloud-vCenter om te gebruiken als doel resource groepen voor Vm's uit uw on-premises omgeving.
-2. Maak een of meer mappen in uw AVS Privécloud-vCenter om te gebruiken als doel mappen voor virtuele machines uit uw on-premises omgeving.
-3. Maak VLAN'S voor het failover-netwerk en stel firewall regels in. Open een [ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) voor ondersteuning.
-4. Maak gedistribueerde poort groepen voor het failover-netwerk en het test netwerk om de failover van Vm's te testen.
-5. Installeer [DHCP-en DNS-servers](dns-dhcp-setup.md) of gebruik een Active Directory-domein controller in uw cloud omgeving van uw AVS.
+1. Maak een of meer resourcepools op uw Private Cloud vCenter om te gebruiken als doelbronpools voor VM's uit uw on-premises omgeving.
+2. Maak een of meer mappen in uw Private Cloud vCenter om te gebruiken als doelmappen voor VM's uit uw on-premises omgeving.
+3. Vlan's maken voor failovernetwerk en firewallregels instellen. Open een [ondersteuningsverzoek](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) voor hulp.
+4. Maak gedistribueerde poortgroepen voor failovernetwerk en testnetwerk voor het testen van failover van VM's.
+5. Installeer [DHCP- en DNS-servers](dns-dhcp-setup.md) of gebruik een Active Directory-domeincontroller in uw Private Cloud-omgeving.
 
-### <a name="set-up-zvm-and-vra-on-your-avs-private-cloud"></a>ZVM en VRA op uw AVS-Privécloud instellen
+### <a name="set-up-zvm-and-vra-on-your-private-cloud"></a>STEL ZVM en VRA in op uw Private Cloud
 
-1. Installeer Zerto Virtual Manager (ZVM) op de Windows-Server in de Privécloud van uw AVS.
-2. Meld u aan bij ZVM met het service account dat u in de vorige stappen hebt gemaakt.
-3. Stel de licentie verlening voor Zerto Virtual manager in.
-4. Installeer Zerto Virtual Replication Appliance (VRA) op de ESXi-hosts van uw AVS-privécloud.
-5. Uw ZVM-Cloud voor de Privécloud koppelen met uw on-premises ZVM.
+1. Installeer Zerto Virtual Manager (ZVM) op de Windows-server in uw Private Cloud.
+2. Meld u aan bij ZVM met het serviceaccount dat in eerdere stappen is gemaakt.
+3. Licenties instellen voor Zerto Virtual Manager.
+4. Installeer Zerto Virtual Replication Appliance (VRA) op de ESXi-hosts van uw Private Cloud.
+5. Koppel uw Private Cloud ZVM aan uw on-premises ZVM.
 
-### <a name="set-up-zerto-virtual-protection-group"></a>Virtuele beveiligings groep Zerto instellen
+### <a name="set-up-zerto-virtual-protection-group"></a>Zerto-groep voor virtuele beveiliging instellen
 
-1. Maak een nieuwe virtuele beveiligings groep (VPG) en geef de prioriteit voor de VPG op.
-2. Selecteer de virtuele machines die moeten worden beveiligd voor bedrijfs continuïteit en pas de opstart volgorde zo nodig aan.
-3. Selecteer de herstel site als uw Privécloud en de standaard herstel server als het gehoste privécloud-Cloud cluster of de resource groep die u hebt gemaakt. Selecteer **vsanDatastore** voor de herstel gegevens opslag in de privécloud van uw AVS.
+1. Maak een nieuwe Virtual Protection Group (VPG) en geef de prioriteit voor de VPG op.
+2. Selecteer de virtuele machines die bescherming nodig hebben voor de bedrijfscontinuïteit en pas indien nodig de opstartvolgorde aan.
+3. Selecteer de herstelsite als uw private cloud en de standaardherstelserver als het Private Cloud-cluster of de brongroep die u hebt gemaakt. Selecteer **vsanDatastore** voor het herstelgegevensarchief op uw Private Cloud.
 
     ![VPG](media/cloudsimple-zerto-vpg.png)
 
     > [!NOTE]
-    > U kunt de optie host voor afzonderlijke Vm's aanpassen onder de optie VM-instellingen.
+    > U de hostoptie voor afzonderlijke VM's aanpassen onder de optie VM-instellingen.
 
-4. Pas de opslag opties aan zoals vereist.
-5. Geef de herstel netwerken op die moeten worden gebruikt voor het failover-netwerk en het test netwerk voor failover als de gedistribueerde poort groepen die eerder zijn gemaakt en pas de herstel scripts indien nodig aan.
-6. Pas zo nodig de netwerk instellingen voor afzonderlijke Vm's aan en maak de VPG.
-7. Testfailover wanneer de replicatie is voltooid.
+4. Pas de opslagopties naar behoefte aan.
+5. Geef de herstelnetwerken op die moeten worden gebruikt voor failovernetwerk- en failovertestnetwerk als de eerder gemaakte gedistribueerde poortgroepen en pas de herstelscripts naar behoefte aan.
+6. Pas indien nodig de netwerkinstellingen voor afzonderlijke VM's aan en maak de VPG.
+7. Test failover zodra de replicatie is voltooid.
 
 ## <a name="reference"></a>Naslaginformatie
 
-[Documentatie voor Zerto](https://www.zerto.com/myzerto/technical-documentation/)
+[Zerto-documentatie](https://www.zerto.com/myzerto/technical-documentation/)

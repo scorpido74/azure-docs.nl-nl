@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren van IBM Informix-bronnen met behulp van Azure Data Factory
-description: Informatie over het kopiëren van gegevens van IBM Informix-bronnen naar ondersteunde Sink-gegevens archieven door gebruik te maken van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
+title: Gegevens uit IBM Informix-bronnen kopiëren met Azure Data Factory
+description: Meer informatie over het kopiëren van gegevens uit IBM Informix-bronnen naar ondersteunde sinkdatastores met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,51 +12,51 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
 ms.openlocfilehash: cb4b81f7c5e219c520078ecf34eba3f5e98da684
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892581"
 ---
-# <a name="copy-data-from-and-to-ibm-informix-data-stores-using-azure-data-factory"></a>Gegevens kopiëren van en naar IBM Informix-gegevens archieven met behulp van Azure Data Factory
+# <a name="copy-data-from-and-to-ibm-informix-data-stores-using-azure-data-factory"></a>Gegevens van en naar IBM Informix-gegevensarchieven kopiëren met Azure Data Factory
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een IBM Informix-gegevens archief te kopiëren. Dit is gebaseerd op de [overzicht kopieeractiviteit](copy-activity-overview.md) artikel met daarin een algemeen overzicht van de kopieeractiviteit.
+In dit artikel wordt beschreven hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens uit een IBM Informix-gegevensarchief te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
 Deze Informix-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
-- [Activiteit Lookup](control-flow-lookup-activity.md)
+- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
+- [Opzoekactiviteit](control-flow-lookup-activity.md)
 
-U kunt gegevens van een Informix-bron kopiëren naar elk ondersteund Sink-gegevens archief. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
+U gegevens van Informix-bron kopiëren naar een ondersteund sinkdataarchief. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen/sinks door de kopieeractiviteit.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze Informix-connector wilt gebruiken, moet u het volgende doen:
+Als u deze Informix-connector wilt gebruiken, moet u het:
 
-- Stel een zelf-hostende Integration Runtime in. Zie [zelfgehoste Cloudintegratieruntime](create-self-hosted-integration-runtime.md) artikel voor meer informatie.
-- Installeer het Informix-ODBC-stuur programma voor het gegevens archief op de Integration Runtime computer. U kunt bijvoorbeeld het stuur programma IBM INFORMIX Informix (64-bits) gebruiken.
+- Stel een Self-hosted Integration Runtime in. Zie [artikel Self-hosted Integration Runtime](create-self-hosted-integration-runtime.md) voor meer informatie.
+- Installeer het INformix ODBC-stuurprogramma voor het gegevensarchief op de Integratieruntime-machine. U bijvoorbeeld stuurprogramma 'IBM INFORMIX Informix DRIVER (64-bits) gebruiken.
 
 ## <a name="getting-started"></a>Aan de slag
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor een Informix-connector.
+In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in Gegevensfabriek te definiëren die specifiek zijn voor de Informix-connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
 
-De volgende eigenschappen worden ondersteund voor de aan Informix gekoppelde service:
+De volgende eigenschappen worden ondersteund voor informix gekoppelde service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **Informix** | Ja |
-| connectionString | De ODBC-connection string het referentie deel niet uitsluiten. U kunt de connection string opgeven of de systeem-DSN (gegevens bron naam) gebruiken die u op de Integration Runtime machine hebt ingesteld (u moet nog steeds het referentie deel opgeven in de gekoppelde service). <br> U kunt ook een wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de connection string halen. Raadpleeg [referenties opslaan in Azure Key Vault](store-credentials-in-key-vault.md) met meer informatie.| Ja |
-| authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met het Informix-gegevens archief.<br/>Toegestane waarden zijn: **Basic** en **Anonymous**. | Ja |
-| userName | Geef de gebruikers naam op als u basis verificatie gebruikt. | Nee |
-| wachtwoord | Geeft het wachtwoord op voor het gebruikersaccount dat u hebt opgegeven voor de userName. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Nee |
-| referenties | Het deel van de toegangs referentie van de connection string dat is opgegeven in de eigenschaps waarde-indeling van het stuur programma. Dit veld markeren als SecureString. | Nee |
-| connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Ja |
+| Connectionstring | De ODBC-verbindingstekenreeks met uitzondering van het referentiegedeelte. U de verbindingstekenreeks opgeven of de systeemnaam DSN (Gegevensbronnaam) gebruiken die u instelt op de integratieruntime-machine (u moet nog steeds het referentiegedeelte in de gekoppelde service opgeven). <br> U ook een wachtwoord in Azure `password` Key Vault plaatsen en de configuratie uit de verbindingstekenreeks halen. Raadpleeg [storereferenties in Azure Key Vault](store-credentials-in-key-vault.md) met meer details.| Ja |
+| authenticationType | Type verificatie wordt gebruikt om verbinding te maken met het Informix-gegevensarchief.<br/>Toegestane waarden zijn: **Basic** en **Anonymous**. | Ja |
+| userName | Geef de gebruikersnaam op als u Basisverificatie gebruikt. | Nee |
+| wachtwoord | Geef een wachtwoord op voor het gebruikersaccount dat u voor de userName hebt opgegeven. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Nee |
+| referenties | Het gedeelte toegangsreferenties van de verbindingstekenreeks die is opgegeven in de waardenotatie van stuurprogramma's. Markeer dit veld als een SecureString. | Nee |
+| connectVia | De [integratieruntijd](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevensarchief. Een Self-hosted Integration Runtime is vereist zoals vermeld in [Voorwaarden](#prerequisites). |Ja |
 
 **Voorbeeld:**
 
@@ -84,14 +84,14 @@ De volgende eigenschappen worden ondersteund voor de aan Informix gekoppelde ser
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Informix-gegevensset.
+Zie het artikel [gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Informix-gegevensset.
 
-Als u gegevens wilt kopiëren uit Informix, worden de volgende eigenschappen ondersteund:
+Als u gegevens van Informix wilt kopiëren, worden de volgende eigenschappen ondersteund:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **InformixTable** | Ja |
-| tableName | De naam van de tabel in de Informix. | Nee voor bron (als "query" in activiteits bron is opgegeven);<br/>Ja voor Sink |
+| tableName | Naam van de tabel in de Informix. | Nee voor bron (als 'query' in activiteitsbron is opgegeven);<br/>Ja voor gootsteen |
 
 **Voorbeeld**
 
@@ -113,16 +113,16 @@ Als u gegevens wilt kopiëren uit Informix, worden de volgende eigenschappen ond
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. In deze sectie vindt u een lijst met eigenschappen die door de Informix-bron worden ondersteund.
+Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Informix-bron.
 
 ### <a name="informix-as-source"></a>Informix als bron
 
-Als u gegevens wilt kopiëren uit Informix, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
+Als u gegevens van Informix wilt kopiëren, worden de volgende eigenschappen ondersteund in de **sectie** bron van kopieeractiviteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **InformixSource** | Ja |
-| query | Gebruik de aangepaste query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
+| type | De eigenschap type van de bron van de kopieeractiviteit moet zijn ingesteld op: **InformixSource** | Ja |
+| query | Gebruik de aangepaste query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als 'tabelNaam' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**
 
@@ -156,10 +156,10 @@ Als u gegevens wilt kopiëren uit Informix, worden de volgende eigenschappen ond
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
 
-Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
+Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).
+Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory.

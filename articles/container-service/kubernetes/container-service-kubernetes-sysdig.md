@@ -1,6 +1,6 @@
 ---
-title: KEUR Azure Kubernetes-cluster bewaken-Sysdig
-description: Kubernetes-cluster bewaken in Azure Container Service met behulp van Sysdig
+title: (AFGESCHAFT) Azure Kubernetes-cluster bewaken - Sysdig
+description: Kubernetes-cluster in Azure Container Service bewaken met Sysdig
 author: bburns
 ms.service: container-service
 ms.topic: conceptual
@@ -8,57 +8,57 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: 68136d5b9ec16c822cb62e4fee85b8ace9b1899a
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371096"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>KEUR Een Azure Container Service Kubernetes-cluster bewaken met behulp van Sysdig
+# <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>(AFGESCHAFT) Een Kubernetes-cluster van Azure Container Service bewaken met Sysdig
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-In dit scenario wordt ervan uitgegaan dat u [een Kubernetes-cluster hebt gemaakt met behulp van Azure container service](container-service-kubernetes-walkthrough.md).
+Deze walkthrough gaat ervan uit dat u [een Kubernetes-cluster](container-service-kubernetes-walkthrough.md)hebt gemaakt met Azure Container Service.
 
-Er wordt ook van uitgegaan dat u de Azure CLI-en kubectl-hulpprogram ma's hebt geïnstalleerd.
+Het gaat er ook van uit dat u de azure cli en kubectl tools geïnstalleerd.
 
-U kunt testen of u het `az`-hulp programma hebt geïnstalleerd door uit te voeren:
+U testen of `az` u het gereedschap hebt geïnstalleerd door het uitvoeren van:
 
 ```azurecli
 az --version
 ```
 
-Als u het hulp programma `az` niet hebt geïnstalleerd, zijn er [hier](https://github.com/azure/azure-cli#installation)instructies.
+Als u het `az` gereedschap niet hebt geïnstalleerd, zijn er [hier](https://github.com/azure/azure-cli#installation)instructies.
 
-U kunt testen of u het `kubectl`-hulp programma hebt geïnstalleerd door uit te voeren:
+U testen of `kubectl` u het gereedschap hebt geïnstalleerd door het uitvoeren van:
 
 ```console
 kubectl version
 ```
 
-Als `kubectl` niet is geïnstalleerd, kunt u het volgende uitvoeren:
+Als u niet `kubectl` hebt geïnstalleerd, u het:
 
 ```azurecli
 az acs kubernetes install-cli
 ```
 
 ## <a name="sysdig"></a>Sysdig
-Sysdig is een externe bewaking als een service bedrijf dat containers kan bewaken in uw Kubernetes-cluster dat wordt uitgevoerd in Azure. Voor het gebruik van Sysdig is een actief Sysdig-account vereist.
-U kunt zich aanmelden voor een account op hun [site](https://app.sysdigcloud.com).
+Sysdig is een externe monitoring als servicebedrijf dat containers in uw Kubernetes-cluster die in Azure wordt uitgevoerd, kan controleren. Voor het gebruik van Sysdig is een actief Sysdig-account vereist.
+U zich aanmelden voor een account op hun [site.](https://app.sysdigcloud.com)
 
 Nadat u bent aangemeld bij de Sysdig-cloudwebsite, klikt u op uw gebruikersnaam. Op de pagina ziet u uw ‘toegangssleutel’. 
 
 ![Sysdig API-sleutel](./media/container-service-kubernetes-sysdig/sysdig2.png)
 
-## <a name="installing-the-sysdig-agents-to-kubernetes"></a>De Sysdig-agents worden geïnstalleerd in Kubernetes
-Voor het bewaken van uw containers voert Sysdig een proces uit op elke machine met behulp van een Kubernetes-`DaemonSet`.
-DaemonSets zijn Kubernetes API-objecten die één exemplaar van een container per computer uitvoeren.
-Ze zijn perfect voor het installeren van hulpprogram ma's zoals de bewakings agent van Sysdig.
+## <a name="installing-the-sysdig-agents-to-kubernetes"></a>Het installeren van de Sysdig-agents naar Kubernetes
+Om uw containers te controleren, voert Sysdig `DaemonSet`een proces uit op elke machine met behulp van een Kubernetes.
+DaemonSets zijn Kubernetes API-objecten die één exemplaar van een container per machine uitvoeren.
+Ze zijn perfect voor het installeren van tools zoals de Sysdig's monitoring agent.
 
-Als u de Sysdig-daemonset wilt installeren, moet u [de sjabloon](https://github.com/draios/sysdig-cloud-scripts/tree/master/agent_deploy/kubernetes) eerst downloaden van Sysdig. Sla het bestand op als `sysdig-daemonset.yaml`.
+Als u de Sysdig daemonset wilt installeren, moet u [eerst de sjabloon](https://github.com/draios/sysdig-cloud-scripts/tree/master/agent_deploy/kubernetes) van sysdig downloaden. Sla dat `sysdig-daemonset.yaml`bestand op als .
 
-In Linux en OS X kunt u het volgende uitvoeren:
+Op Linux en OS X kun je draaien:
 
 ```console
 curl -O https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml
@@ -70,15 +70,15 @@ In PowerShell:
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml | Select-Object -ExpandProperty Content > sysdig-daemonset.yaml
 ```
 
-Bewerk vervolgens dat bestand om uw toegangs sleutel in te voegen, die u hebt verkregen via uw Sysdig-account.
+Bewerk vervolgens dat bestand om uw Toegangssleutel in te voegen, die u hebt verkregen van uw Sysdig-account.
 
-Maak ten slotte de Daemonset:
+Maak ten slotte de DaemonSet:
 
 ```console
 kubectl create -f sysdig-daemonset.yaml
 ```
 
-## <a name="view-your-monitoring"></a>Uw bewaking weer geven
-Zodra de agents zijn geïnstalleerd en worden uitgevoerd, moeten ze gegevens weer naar Sysdig.  Ga terug naar het [sysdig-dash board](https://app.sysdigcloud.com) en Bekijk de informatie over uw containers.
+## <a name="view-your-monitoring"></a>Bekijk uw controle
+Eenmaal geïnstalleerd en uitgevoerd, moeten de agenten de gegevens terugpompen naar Sysdig.  Ga terug naar het [sysdig dashboard](https://app.sysdigcloud.com) en je moet informatie over je containers zien.
 
-U kunt ook Kubernetes-specifieke Dash boards installeren via de [wizard Nieuw dash board](https://app.sysdigcloud.com/#/dashboards/new).
+U ook Kubernetes-specifieke dashboards installeren via de [nieuwe dashboardwizard.](https://app.sysdigcloud.com/#/dashboards/new)

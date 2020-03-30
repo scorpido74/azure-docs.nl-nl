@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: een Azure-opslag account integreren met Azure CDN'
+title: Snelstart - Een Azure-opslagaccount integreren met Azure CDN
 description: Leer hoe u Azure Content Delivery Network (CDN) kunt gebruiken en hoe u inhoud met een hoge bandbreedte via CDN kunt leveren door blobs van Azure Storage in de cache op te slaan.
 services: cdn
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: ffcbeb311a91791432bb285b59f5486393ffe4f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75386983"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Quickstart: Een Azure Storage-account integreren met Azure CDN
@@ -30,7 +30,7 @@ In deze snelstart gaat u ervoor zorgen dat [Azure Content Delivery Network (CDN)
 ## <a name="log-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 Meld u met uw Azure-account aan bij het [Azure Portal](https://portal.azure.com).
 
-## <a name="create-a-storage-account"></a>Maak een opslagaccount
+## <a name="create-a-storage-account"></a>Een opslagaccount maken
 Gebruik de volgende procedure om een nieuw opslagaccount voor een Azure-abonnement te maken. Een opslagaccount biedt toegang tot Azure Storage-services. Het opslagaccount vertegenwoordigt het hoogste niveau van de naamruimte voor het verkrijgen van toegang tot elk van de onderdelen van de Azure Storage-service: Azure Blob Storage, Queue Storage en Table Storage. Zie [Inleiding tot Microsoft Azure Storage](../storage/common/storage-introduction.md) voor meer informatie.
 
 Als u een opslagaccount wilt maken, moet u de servicebeheerder of een co-beheerder voor het gekoppelde abonnement zijn.
@@ -47,7 +47,7 @@ U kunt verschillende methoden, waaronder Azure Portal en PowerShell gebruiken om
     
     ![Opslagresource selecteren](./media/cdn-create-a-storage-account-with-cdn/cdn-select-new-storage-account.png)
 
-    Het deelvenster **Opslagaccount maken**  wordt weergegeven.   
+    Het deelvenster **Opslagaccount maken ** wordt weergegeven.   
 
     ![Het deelvenster Opslagaccount maken](./media/cdn-create-a-storage-account-with-cdn/cdn-create-new-storage-account.png)
 
@@ -55,9 +55,9 @@ U kunt verschillende methoden, waaronder Azure Portal en PowerShell gebruiken om
    
     Deze waarde wordt de hostnaam binnen de URI die wordt gebruikt om blob-, wachtrij- of tabelresources te adresseren. Gebruik een URI in de volgende indeling om een containerresource in Blob Storage te adresseren:
    
-    http:// *&lt;StorageAcountLabel&gt;* .blob.core.windows.net/ *&lt;mycontainer&gt;*
+    http://*&lt;StorageAcountLabel&gt;*.blob.core.windows.net/*&lt;mycontainer&gt; *
 
-    waar *&lt;StorageAccountLabel&gt;* naar de waarde verwijst die u hebt ingevoerd in het vak **Naam**.
+    waar * &lt;StorageAccountLabel&gt; * verwijst naar de waarde die u hebt ingevoerd in het vak **Naam.**
    
     > [!IMPORTANT]    
     > Het URL-label vormt het subdomein van de URI van het opslagaccount en moet uniek zijn in alle gehoste services in Azure.
@@ -69,8 +69,8 @@ U kunt verschillende methoden, waaronder Azure Portal en PowerShell gebruiken om
     | Instelling  | Waarde |
     | -------- | ----- |
     | **Implementatiemodel** | Gebruik de standaardwaarde. |
-    | **Type account** | Gebruik de standaardwaarde. |
-    | **Locatie**    | Selecteer **US - centraal** in de vervolgkeuzelijst. |
+    | **Accountsoort** | Gebruik de standaardwaarde. |
+    | **Locatie**    | Selecteer **VS - centraal** in de vervolgkeuzelijst. |
     | **Replicatie** | Gebruik de standaardwaarde. |
     | **Prestaties** | Gebruik de standaardwaarde. |
     | **Veilige overdracht vereist** | Gebruik de standaardwaarde. |
@@ -96,9 +96,9 @@ U kunt Azure CDN voor uw opslagaccount rechtstreeks vanuit uw opslagaccount insc
 
     | Instelling  | Waarde |
     | -------- | ----- |
-    | **CDN-profiel** | Selecteer **nieuwe maken** en voer uw profiel naam in, bijvoorbeeld *mijn-CDN-profiel-123*. Deze naam moet wereldwijd uniek zijn.  |
-    | **Prijscategorie** | Selecteer **Standard - Verizon** in de vervolgkeuzelijst. |
-    | **Naam van CDN-eindpunt** | Voer de hostnaam van het eind punt in, d.w.z. *mijn-eind punt-123*. Deze naam moet wereldwijd uniek zijn. Deze naam wordt gebruikt voor toegang tot uw resources in de cache van de domein- _&lt;eindpuntnaam&gt;_ .azureedge.net. |
+    | **CDN-profiel** | Selecteer **Nieuw maken** en voer uw profielnaam in, bijvoorbeeld *mijn-cdn-profiel-123*. Deze naam moet wereldwijd uniek zijn.  |
+    | **Prijslaag** | Selecteer **Standard - Verizon** in de vervolgkeuzelijst. |
+    | **Naam van CDN-eindpunt** | Voer de hostnaam van het eindpunt in, d.w.z. *mijn eindpunt-123*. Deze naam moet wereldwijd uniek zijn. Deze naam wordt gebruikt om toegang te krijgen tot uw bronnen in de cache op de _ &lt;domeineindpuntnaam&gt;_.azureedge.net. |
     | **Hostnaam van oorsprong** | Een nieuw CDN-eindpunt gebruikt standaard de hostnaam van uw opslagaccount als de bronserver. |
 
 3. Selecteer **Maken**. Zodra het eindpunt is gemaakt, wordt dit weergegeven in de lijst met eindpunten.
@@ -125,7 +125,7 @@ http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 ## <a name="remove-content-from-azure-cdn"></a>Inhoud verwijderen uit Azure CDN
 Als u niet langer een object in de cache in Azure CDN nodig hebt, kunt u een van de volgende stappen uitvoeren:
 
-* Maak de container persoonlijk in plaats van openbaar. Zie [Anonieme leestoegang tot containers en blobs beheren](../storage/blobs/storage-manage-access-to-resources.md) voor meer informatie.
+* Maak de container persoonlijk in plaats van openbaar. Zie [Anonieme leestoegang tot containers en blobs beheren](../storage/blobs/storage-manage-access-to-resources.md)voor meer informatie.
 * Schakel het CDN-eindpunt uit of verwijder het met behulp van Azure Portal.
 * Wijzig de gehoste service zodat deze niet meer reageert op aanvragen voor het object.
 

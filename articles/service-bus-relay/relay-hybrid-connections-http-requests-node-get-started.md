@@ -1,5 +1,5 @@
 ---
-title: Hybride verbindingen-HTTP-aanvragen in een knoop punt Azure Relay
+title: Hybride verbindingen voor Azure Relay - HTTP-aanvragen in knooppunt
 description: Hier leert u hoe u een consoletoepassing schrijft in Node.js voor HTTP-aanvragen voor hybride verbindingen van Azure Relay.
 services: service-bus-relay
 documentationcenter: node
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: clemensv
 ms.openlocfilehash: d71386b86bf7133bb73ddce2e65c3b88743009ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75462022"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-node"></a>Aan de slag met HTTP-aanvragen voor hybride verbindingen van Relay in Node
@@ -36,7 +36,7 @@ In deze snelstart voert u de volgende stappen uit:
 5. Toepassingen uitvoeren.
 
 ## <a name="prerequisites"></a>Vereisten
-- [Node.js](https://nodejs.org/en/).
+- [Knooppunt.js.](https://nodejs.org/en/)
 - Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="create-a-namespace-using-the-azure-portal"></a>Een naamruimte maken met de Azure-portal

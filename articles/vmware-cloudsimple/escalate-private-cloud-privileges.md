@@ -1,7 +1,7 @@
 ---
-title: Bevoegdheden van de persoonlijke cloud van AVS escaleren-Azure VMware-oplossing per AVS
-description: Hierin wordt beschreven hoe u bevoegdheden in uw privécloud kunt escaleren voor beheer functies in vCenter
-titleSuffix: Azure VMware Solutions (AVS)
+title: Privécloudrechten escaleren
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Beschrijft hoe u bevoegdheden op uw private cloud voor beheerfuncties in vCenter escaleren
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/05/2019
@@ -9,84 +9,84 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 211960af359e19f93afef58162c5b09ae1d9b23f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3d06f3e8be449e7050c65c75339a0cff6efe19e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025313"
 ---
-# <a name="escalate-avs-private-cloud-vcenter-privileges-from-the-avs-portal"></a>De vCenter-bevoegdheden van de persoonlijke cloud van AVS escaleren vanuit de AVS-Portal
+# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Escaleer de vCenter-rechten voor Private Cloud vanuit de CloudSimple-portal
 
-Voor beheerders toegang tot uw AVS Private Cloud vCenter kunt u uw AVS-bevoegdheden tijdelijk escaleren. Met verhoogde bevoegdheden kunt u VMware-oplossingen installeren, identiteits bronnen toevoegen en gebruikers beheren.
+Voor administratieve toegang tot uw Private Cloud vCenter u uw CloudSimple-bevoegdheden tijdelijk escaleren.  Met verhoogde bevoegdheden u VMware-oplossingen installeren, identiteitsbronnen toevoegen en gebruikers beheren.
 
-Nieuwe gebruikers kunnen worden gemaakt in het vCenter-SSO-domein en hebben toegang tot de vCenter. Wanneer u nieuwe gebruikers maakt, voegt u deze toe aan de AVS Builtin-groepen voor toegang tot vCenter. Zie voor meer informatie [AVS-machtigings model voor de privécloud van VMware vCenter](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/).
+Nieuwe gebruikers kunnen worden gemaakt op het vCenter SSO-domein en krijgen toegang tot vCenter.  Wanneer u nieuwe gebruikers maakt, voegt u deze toe aan de ingebouwde groepen CloudSimple voor toegang tot vCenter.  Zie [CloudSimple Private Cloud-machtigingsmodel van VMware vCenter](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/)voor meer informatie.
 
 > [!CAUTION]
-> Breng geen wijzigingen aan in de configuratie voor beheer onderdelen. Acties die worden uitgevoerd tijdens de status van de escalated privilege kunnen een nadelige invloed hebben op uw systeem of ervoor zorgen dat uw systeem niet meer beschikbaar is.
+> Breng geen configuratiewijzigingen aan voor beheeronderdelen. Acties die tijdens de geëscaleerde bevoorrechte status worden uitgevoerd, kunnen een negatieve invloed hebben op uw systeem of kunnen ertoe leiden dat uw systeem niet meer beschikbaar is.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
 
 ## <a name="escalate-privileges"></a>Bevoegdheden escaleren
 
-1. Toegang tot de [AVS-Portal](access-cloudsimple-portal.md).
+1. Toegang tot de [CloudSimple-portal](access-cloudsimple-portal.md).
 
-2. Open de pagina **resources** en selecteer de automatische AVS-Cloud waarvoor u bevoegdheden wilt escaleren.
+2. Open de pagina **Resources** en selecteer de private cloud waarvoor u bevoegdheden wilt escaleren.
 
-3. Klik onder aan de pagina samen vatting onder **vSphere bevoegdheden wijzigen**op **escaleren**.
+3. Klik onder aan de pagina Overzicht onder **VSphere-bevoegdheden wijzigen**op **Escaleren**.
 
     ![VSphere-bevoegdheid wijzigen](media/escalate-private-cloud-privilege.png)
 
-4. Selecteer het gebruikers type vSphere. Alleen `CloudOwner@cloudsimple.local` lokale gebruiker kan worden geëscaleerd.
+4. Selecteer het vSphere-gebruikerstype.  Alleen `CloudOwner@cloudsimple.local` de lokale gebruiker kan worden geëscaleerd.
 
-5. Selecteer de tijds interval voor escaleren in de vervolg keuzelijst. Kies de kortste periode waarmee u de taak kunt volt ooien.
+5. Selecteer het tijdsinterval escaleren in de vervolgkeuzelijst. Kies de kortste periode waarmee u de taak voltooien.
 
-6. Schakel het selectie vakje in om te bevestigen dat u de Risico's begrijpt.
+6. Schakel het selectievakje in om te bevestigen dat u de risico's begrijpt.
 
-    ![Het dialoog venster bevoegdheden escaleren](media/escalate-private-cloud-privilege-dialog.png)
+    ![Dialoogvenster Bevoegdheden escaleren](media/escalate-private-cloud-privilege-dialog.png)
 
 7. Klik op **OK**.
 
-8. Het escalatie proces kan een paar minuten duren. Na het voltooien klikt u op **OK**.
+8. Het escalatieproces kan een paar minuten duren. Na het voltooien klikt u op **OK**.
 
-De escalatie van bevoegdheden begint en eindigt tot het einde van het geselecteerde interval. U kunt zich aanmelden bij uw AVS-persoonlijke Cloud-vCenter om beheer taken uit te voeren.
+De escalatie van de bevoegdheid begint en duurt tot het einde van het geselecteerde interval.  U zich aanmelden bij uw private cloud vCenter om administratieve taken uit te voeren.
 
 > [!IMPORTANT]
-> Er kan slechts één gebruiker escalated privileges hebben. U moet de bevoegdheden van de gebruiker deactiveren voordat u de bevoegdheden van een andere gebruiker kunt escaleren.
+> Slechts één gebruiker kan bevoegdheden hebben geëscaleerd.  U moet de bevoegdheden van de gebruiker de-escaleren voordat u de bevoegdheden van een andere gebruiker escaleren.
 
 > [!CAUTION]
-> Nieuwe gebruikers moeten alleen worden toegevoegd aan de *Cloud-eigenaar-groep*, *Cloud-Global-cluster-admin groep*, *Cloud-Global-Storage-admin-Group*, Cloud-Global: *Network-Administrator-* Group of Cloud-Global:- *beheer groep*.  Gebruikers die zijn toegevoegd aan de groep *Administrators* , worden automatisch verwijderd.  Alleen service accounts moeten worden toegevoegd aan de groep *Administrators* en service accounts moeten worden gebruikt om u aan te melden bij de vSphere-webgebruikersinterface.
+> Nieuwe gebruikers mogen alleen worden toegevoegd aan *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group*, *Cloud-Global-Network-Admin-Group* of *Cloud-Global-VM-Admin-Group*.  Gebruikers die zijn toegevoegd aan de groep *Administrators,* worden automatisch verwijderd.  Alleen serviceaccounts mogen worden toegevoegd aan de groep *Administrators* en serviceaccounts mogen niet worden gebruikt om zich aan te melden bij de vSphere-webgebruikersinterface.
 
 ## <a name="extend-privilege-escalation"></a>Escalatie van bevoegdheden uitbreiden
 
-Als u meer tijd nodig hebt om uw taken te volt ooien, kunt u de escalatie periode van de bevoegdheid uitbreiden. Kies het extra tijds interval voor het escaleren waarmee u de beheer taken kunt volt ooien.
+Als u extra tijd nodig hebt om uw taken te voltooien, u de escalatieperiode voor bevoegdheden verlengen.  Kies het extra tijdsinterval escaleren waarmee u de administratieve taken voltooien.
 
-1. Selecteer op de **Resources** > **AVS persoonlijke Clouds** in de AVS-Portal de privécloud van de AVS waarvoor u de escalatie van bevoegdheden wilt uitbreiden.
+1. Selecteer op de **Resources** > **Private Clouds** in de CloudSimple-portal de Private Cloud waarvoor u de escalatie van bevoegdheden wilt uitbreiden.
 
-2. Klik onder aan het tabblad samen vatting op **uitbrei ding van bevoegdheden uitbreiden**.
+2. Klik onder aan het tabblad Overzicht op **Escalatie van bevoegdheden uitbreiden**.
 
     ![Escalatie van bevoegdheden uitbreiden](media/de-escalate-private-cloud-privilege.png)
 
-3. Selecteer een tijds interval voor escaleren in de vervolg keuzelijst. Bekijk de nieuwe eind tijd van de escalatie.
+3. Selecteer een tijdsinterval escaleren in de vervolgkeuzelijst. Bekijk de nieuwe escalatieeindtijd.
 
-4. Klik op **Opslaan** om het interval uit te breiden.
+4. Klik **op Opslaan** om het interval uit te breiden.
 
-## <a name="de-escalate-privileges"></a>De bevoegdheden voor het escaleren
+## <a name="de-escalate-privileges"></a>Bevoegdheden de-escaleren
 
-Als uw beheer taken zijn voltooid, moet u uw bevoegdheden deactiveren. 
+Zodra uw administratieve taken zijn voltooid, moet u uw bevoegdheden de-escaleren.  
 
-1. Selecteer op de **Resources** > **AVS persoonlijke Clouds** in de AVS-Portal de privécloud van de AVS waarvoor u de bevoegdheden wilt deescaleren.
+1. Selecteer op de **Resources** > **Private Clouds** in de CloudSimple-portal de Private Cloud waarvoor u bevoegdheden wilt de-escaleren.
 
-2. Klik op **deactiveren**.
+2. Klik **op De-escaleren**.
 
 3. Klik op **OK**.
 
 > [!IMPORTANT]
-> Als u fouten wilt voor komen, meldt u zich af bij vCenter en meldt u zich opnieuw aan na de deescalatie van bevoegdheden.
+> Als u fouten wilt voorkomen, meldt u zich af bij vCenter en meldt u zich opnieuw aan na het de-escaleren van bevoegdheden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [VCenter-identiteits bronnen instellen voor het gebruik van Active Directory](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
-* Back-upoplossing installeren voor [virtuele machines met een back-up van werk belasting](https://docs.azure.cloudsimple.com/backup-workloads-veeam/)
+* [VCenter-identiteitsbronnen instellen om Active Directory te gebruiken](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
+* Back-upoplossing installeren om [back-upworkloads virtuele machines](https://docs.azure.cloudsimple.com/backup-workloads-veeam/) te maken

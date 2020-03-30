@@ -1,6 +1,6 @@
 ---
-title: Prijs opwaardering voor Data Explorer van vooruitbetalen om geld te besparen
-description: Meer informatie over het kopen van Azure Data Explorer gereserveerde capaciteit om uw kosten voor Azure Data Explorer op te slaan.
+title: Vooraf betalen voor Azure Data Explorer-opslag om geld te besparen
+description: Meer informatie over het kopen van gereserveerde capaciteit van Azure Data Explorer om te besparen op uw Azure Data Explorer-kosten.
 author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
@@ -8,62 +8,62 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: bbb2108967353b851a0fa0ee610ec30380e3fc50
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75969274"
 ---
-# <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Progeschikte-eenheden voor Azure-Data Explorer met Azure Data Explorer gereserveerde capaciteit
+# <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Vooraf betalen voor azure Data Explorer-markeringseenheden met gereserveerde capaciteit van Azure Data Explorer
 
-Bespaar geld met Azure Data Explorer door vooraf te betalen voor de prijs opschrijvingen vergeleken met de prijzen voor betalen per gebruik. Met Azure Data Explorer gereserveerde capaciteit neemt u een toezeg ging voor Azure Data Explorer voor een periode van één of drie jaar om een aanzienlijke korting op de kosten voor de Azure-Data Explorer op te nemen. Als u de gereserveerde capaciteit van Azure Data Explorer wilt kopen, hoeft u alleen de term op te geven. deze wordt toegepast op alle implementaties van Azure Data Explorer in alle regio's.
+Bespaar geld met Azure Data Explorer door vooraf te betalen voor de opmaakeenheden in vergelijking met betalen per gebruik.Spaar geld met Azure Data Explorer door vooraf te betalen voor de opmaakeenheden in vergelijking met betalen per gebruik. Met de gereserveerde capaciteit van Azure Data Explorer maakt u een toezegging voor het gebruik van Azure Data Explorer voor een periode van één of drie jaar om een aanzienlijke korting te krijgen op de opmaakkosten van Azure Data Explorer. Als u de gereserveerde capaciteit van Azure Data Explorer wilt aanschaffen, hoeft u alleen de term op te geven, deze is van toepassing op alle implementaties van Azure Data Explorer in alle regio's.
 
-Als u een reserve ring aanschaft, betaalt u de prijs van de verhoging vooraf voor een periode van één of drie jaar. Zodra u een reserve ring koopt, worden de kosten voor Azure Data Explorer-opmaak die overeenkomen met de reserverings kenmerken niet meer in rekening gebracht tegen de betalen naar gebruik-tarieven. Azure Data Explorer-clusters die al worden uitgevoerd of die nieuw zijn geïmplementeerd, krijgen automatisch het voor deel. Deze reserve ring geldt niet voor compute-, netwerk-of opslag kosten die zijn gekoppeld aan de clusters. Gereserveerde capaciteit voor deze resources moet afzonderlijk worden aangeschaft. Aan het einde van de reserverings termijn wordt het facturerings voordeel verrekend en worden de Azure Data Explorer Markup-eenheden gefactureerd op basis van de betalen naar gebruik-prijs. Reserve ringen worden niet automatisch verlengd. Zie de pagina met prijzen voor [Azure Data Explorer](https://azure.microsoft.com/pricing/details/data-explorer/)voor prijs informatie.
+Door een reservering aan te kopen, betaalt u de opmaakkosten voor een periode van één of drie jaar. Zodra u een reservering koopt, worden de markupkosten van Azure Data Explorer die overeenkomen met de reserveringskenmerken, niet langer in rekening gebracht tegen de betalenper-you-tarieven. Azure Data Explorer-clusters die al worden uitgevoerd of clusters die onlangs zijn geïmplementeerd, krijgen automatisch het voordeel. Deze reservering heeft geen betrekking op reken-, netwerk- of opslagkosten die zijn gekoppeld aan de clusters. Gereserveerde capaciteit voor deze resources moet afzonderlijk worden aangeschaft. Aan het einde van de reserveringsperiode verloopt het factureringsvoordeel en worden de azure data explorer-opmaakeenheden gefactureerd tegen de betalen-as-you-go-prijs. Reserveringen worden niet automatisch verlengd. Zie de [prijspagina van Azure Data Explorer](https://azure.microsoft.com/pricing/details/data-explorer/)voor prijsinformatie .
 
-U kunt de gereserveerde capaciteit van Azure Data Explorer kopen in de [Azure Portal](https://portal.azure.com). Voor het kopen van Azure Data Explorer gereserveerde capaciteit:
+U gereserveerde capaciteit van Azure Data Explorer kopen in de [Azure-portal.](https://portal.azure.com) Ga als bedoeld als u de gereserveerde capaciteit van Azure Data Explorer wilt kopen:
 
-* U moet de eigenaar zijn van ten minste één Enter prise-of betalen per gebruik-abonnement.
-* Voor Enterprise Agreements moet de optie **Gereserveerde instanties toevoegen** zijn ingeschakeld in de [EA Portal](https://ea.azure.com). Als deze instelling is uitgeschakeld, moet u ook een EA-beheerder zijn voor het abonnement.
-* Voor het programma Cloud Solution Provider (CSP) kunnen alleen beheerders van de beheerder of de verkoop agents de gereserveerde capaciteit van Azure Data Explorer kopen.
+* U moet eigenaar zijn van ten minste één Enterprise- of Pay-As-You-Go-abonnement.
+* Voor Enterprise Agreements moet de optie **Gereserveerde instanties toevoegen** zijn ingeschakeld in de [EA Portal](https://ea.azure.com). Als die instelling is uitgeschakeld, moet u ook een EA-beheerder op het abonnement zijn.
+* Voor het CSP-programma (Cloud Solution Provider) kunnen alleen de beheerdersagenten of verkoopmedewerkers gereserveerde capaciteit van Azure Data Explorer aanschaffen.
 
-Zie voor meer informatie over hoe klanten van de onderneming en betalen per gebruik in rekening worden gebracht voor reserverings aankopen:
-* [Meer informatie over het gebruik van Azure-reserve ringen voor uw Enter prise-inschrijving](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) 
-* Meer [informatie over het gebruik van Azure-reserve ringen voor uw abonnement met betalen per gebruik](../cost-management-billing/reservations/understand-reserved-instance-usage.md).
+Zie voor meer informatie over hoe zakelijke klanten en Pay-As-You-Go-klanten in rekening worden gebracht voor reserveringsaankopen:
+* [Inzicht in Azure-reserveringsgebruik voor uw Enterprise-inschrijving](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) 
+* [Inzicht in Azure-reserveringsgebruik voor uw Abonnement per gebruik](../cost-management-billing/reservations/understand-reserved-instance-usage.md).
 
-## <a name="determine-the-right-markup-usage-before-purchase"></a>Het juiste opmaak gebruik bepalen vóór de aankoop
+## <a name="determine-the-right-markup-usage-before-purchase"></a>Het juiste merkgebruik bepalen voordat u de aankoop aanschaft
 
-De grootte van de reserve ring moet worden gebaseerd op het totale aantal Azure Data Explorer-indelings eenheden dat door de bestaande of binnenkort geïmplementeerde Azure Data Explorer-clusters wordt gebruikt. Het aantal markerings eenheden is gelijk aan het aantal cluster kernen van Azure Data Explorer engine in productie (exclusief de SKU voor dev/test). 
+De grootte van de reservering moet worden gebaseerd op het totale aantal Azure Data Explorer-markeringseenheden dat wordt gebruikt door de bestaande of binnenkort te implementeren Azure Data Explorer-clusters. Het aantal markeringseenheden is gelijk aan het aantal Azure Data Explorer-engineclusterkernen in productie (exclusief de dev/test SKU). 
 
-## <a name="buy-azure-data-explorer-reserved-capacity"></a>Gereserveerde capaciteit van Azure Data Explorer kopen
+## <a name="buy-azure-data-explorer-reserved-capacity"></a>Gereserveerde azure Data Explorer-capaciteit kopen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-1. Selecteer **alle services** > **reserve ringen** > **Nu kopen**. Selecteer **Toevoegen**
-1. Selecteer in het deel venster **product type selecteren** de optie **Azure Data Explorer** om een nieuwe reserve ring te kopen voor Azure Data Explorer-markerings eenheden. 
-1. Selecteer **kopen**
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Selecteer **Alle services** > **reserveringen** > **aankoop nu**. Selecteer **Toevoegen**
+1. Selecteer in het deelvenster **Producttype selecteren** de optie **Azure Data Explorer** om een nieuwe reservering voor azure Data Explorer-opmaakeenheden aan te schaffen. 
+1. Selecteer **Kopen**
 1. Vul de vereiste velden in. 
 
-    ![Pagina aankoop](media/pricing-reserved-capacity/purchase-page.png)
+    ![Aankooppagina](media/pricing-reserved-capacity/purchase-page.png)
 
-1. Controleer de kosten van de reserve ring van de gereserveerde capaciteit van Azure Data Explorer in het gedeelte **kosten** .
+1. Bekijk de kosten van de azure data explorer-markering gereserveerde capaciteitsreservering in de sectie **Kosten.**
 1. Selecteer **Aankoop**.
-1. Selecteer **deze reserve ring weer geven** om de status van uw aankoop te bekijken.
+1. Selecteer **Deze reservering weergeven** om de status van uw aankoop te bekijken.
 
 ## <a name="cancellations-and-exchanges"></a>Annuleren en omwisselen
 
-Als u de reserve ring van de gereserveerde capaciteit van Azure Data Explorer moet annuleren, zijn er mogelijk 12% vroege ontslag kosten. De restituties zijn gebaseerd op de laagste prijs van uw aankoop prijs of de huidige prijs van de reserve ring. Restituties zijn beperkt tot $ 50.000 per jaar. De restitutie die u ontvangt, is het resterende bedrag naar rato saldo minus de kosten voor vroegtijdige beëindiging van 12%. Als u een annulering wilt aanvragen, gaat u naar de reserve ring in het Azure Portal en selecteert u **terugbetaling** om een ondersteunings aanvraag te maken.
+Als u uw reservering van de gereserveerde capaciteitsreservering van Azure Data Explorer moet annuleren, kunnen er kosten voor vroegtijdige beëindiging van de periode van 12% worden betaald. Terugbetalingen zijn gebaseerd op de laagste prijs van uw aankoopprijs of de huidige prijs van de reservering. Restituties zijn beperkt tot $ 50.000 per jaar. De restitutie die u ontvangt, is het resterende bedrag naar rato saldo minus de kosten voor vroegtijdige beëindiging van 12%. Als u een annulering wilt aanvragen, gaat u naar de reservering in de Azure-portal en selecteert **u Restitutie** om een ondersteuningsaanvraag te maken.
 
-Als u de reserve ring van uw Azure Data Explorer gereserveerde capaciteit moet wijzigen naar een andere periode, kunt u deze uitwisselen voor een andere reserve ring met een waarde die gelijk of hoger is. De begindatum van de termijn voor de nieuwe reservering wordt niet meegenomen naar de uitgewisselde reservering. De periode van 1 of 3 jaar begint bij het maken van de nieuwe reserve ring. Als u een uitwisseling wilt aanvragen, gaat u naar de reserve ring in het Azure Portal en selecteert u **Exchange** om een ondersteunings aanvraag te maken.
+Als u de gereserveerde capaciteitsreservering van Azure Data Explorer moet wijzigen in een andere term, u deze inruilen voor een andere reservering die even groot of groter is. De begindatum van de periode voor de nieuwe reservering wordt niet meegenomen naar de uitgewisselde reservering. De termijn van 1 of 3 jaar begint vanaf het moment dat u de nieuwe reservering maakt. Als u een uitwisseling wilt aanvragen, gaat u naar de reservering in de Azure-portal en selecteert **u Exchange** om een ondersteuningsaanvraag te maken.
 
-Zie [reserverings uitwisselingen en](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)terugbetalingen voor meer informatie over het omruilen of terugbetalen van reserve ringen.
+Zie [Reserveringsuitwisselingen en terugbetalingen](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)voor meer informatie over het uitwisselen of terugbetalen van reserveringen.
 
-## <a name="manage-your-reserved-capacity-reservation"></a>Uw gereserveerde capaciteits reservering beheren
+## <a name="manage-your-reserved-capacity-reservation"></a>Uw reservering voor gereserveerde capaciteit beheren
 
-De korting voor de reserverings eenheden van Azure Data Explorer wordt automatisch toegepast op het aantal markerings eenheden dat overeenkomt met het gereserveerde bereik en de kenmerken voor de Azure-capaciteits reservering Data Explorer. 
+De reserveringskorting voor reserveringseenheden van Azure Data Explorer wordt automatisch toegepast op het aantal markeringseenheden dat overeenkomt met de gereserveerde capaciteitsreserveringsscope en -kenmerken van Azure Data Explorer. 
 
 
 > [!NOTE]
-> * U kunt het bereik van de reserve ring van Azure Data Explorer gereserveerde capaciteit bijwerken via de [Azure Portal](https://portal.azure.com), Power shell, CLI of via de API.
-> * Zie [azure Data Explorer gereserveerde capaciteit beheren](../cost-management-billing/reservations/understand-azure-data-explorer-reservation-charges.md)voor meer informatie over het beheren van de reserve ring van de gereserveerde capaciteit van Azure Data Explorer.
+> * U het bereik van de gereserveerde capaciteitsreservering van Azure Data Explorer bijwerken via de [Azure-portal,](https://portal.azure.com)PowerShell, CLI of via de API.
+> * Zie [Gereserveerde capaciteit beheren van Azure Data Explorer](../cost-management-billing/reservations/understand-azure-data-explorer-reservation-charges.md)voor meer informatie over het beheren van de gereserveerde capaciteitsreservering van Azure Data Explorer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -78,4 +78,4 @@ Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
 
-Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Als u vragen hebt of hulp nodig hebt, [maakt u een ondersteuningsverzoek.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)

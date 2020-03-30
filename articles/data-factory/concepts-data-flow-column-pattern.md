@@ -1,74 +1,86 @@
 ---
-title: Kolom patronen in de gegevens stroom van Azure Data Factory toewijzing
-description: Gegeneraliseerde gegevens transformatie patronen maken met behulp van kolom patronen in Azure Data Factory gegevens stromen toewijzen
+title: Kolompatronen in de toewijzingsgegevensstroom van Azure Data Factory
+description: Algemene gegevenstransformatiepatronen maken met kolompatronen in toewijzingsgegevensstromen van Azure Data Factory
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.openlocfilehash: 0c9a3c2ef05f4a11933ca7fc81c7c0f87a612293
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: bfb4eeef482c4944e75b7805642bc93c23195208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79243807"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065522"
 ---
-# <a name="using-column-patterns-in-mapping-data-flow"></a>Kolom patronen gebruiken bij het toewijzen van gegevens stroom
+# <a name="using-column-patterns-in-mapping-data-flow"></a>Kolompatronen gebruiken in de gegevensstroom van toewijzingen
 
-Met verschillende toewijzings gegevensstroom transformaties kunt u verwijzen naar sjabloon kolommen op basis van patronen in plaats van in code vastgelegde kolom namen. Deze overeenkomst wordt ook wel *kolom patronen*genoemd. U kunt patronen definiëren die overeenkomen met kolommen op basis van naam, gegevens type, stroom of positie, in plaats van exacte veld namen te vereisen. Er zijn twee scenario's waarin kolom patronen handig zijn:
+Met verschillende transformaties van de toewijzingsgegevensstroom u sjabloonkolommen verwijzen op basis van patronen in plaats van hardgecodeerde kolomnamen. Deze matching staat bekend als *kolompatronen.* U patronen definiëren die overeenkomen met kolommen op basis van naam, gegevenstype, stream of positie in plaats van exacte veldnamen te vereisen. Er zijn twee scenario's waarin kolompatronen nuttig zijn:
 
-* Als binnenkomende bron velden vaak veranderen, zoals het wijzigen van kolommen in tekst bestanden of NoSQL-data bases. Dit scenario wordt schema- [drift](concepts-data-flow-schema-drift.md)genoemd.
-* Als u een gemeen schappelijke bewerking wilt uitvoeren op een grote groep kolommen. Bijvoorbeeld wilt dat elke kolom met ' Total ' in een dubbele waarde wordt omgezet in de kolom naam.
+* Als binnenkomende bronvelden vaak veranderen, zoals het geval van het wijzigen van kolommen in tekstbestanden of NoSQL-databases. Dit scenario staat bekend als [schemadrift](concepts-data-flow-schema-drift.md).
+* Als u een veelgebruikte bewerking wilt uitvoeren op een grote groep kolommen. Bijvoorbeeld, willen elke kolom die 'totaal' in de kolom naam heeft cast in een dubbele.
 
-Kolom patronen zijn momenteel beschikbaar in de afgeleide kolom, aggregatie, selecteren en Sink-trans formaties.
+Kolompatronen zijn momenteel beschikbaar in de afgeleide kolom-, aggregaat-, selectie- en sinktransformaties.
 
-## <a name="column-patterns-in-derived-column-and-aggregate"></a>Kolom patronen in afgeleide kolom en aggregatie
+## <a name="column-patterns-in-derived-column-and-aggregate"></a>Kolompatronen in afgeleide kolom en aggregaat
 
-Als u een kolom patroon wilt toevoegen in een afgeleide kolom of het tabblad aggregaties van een statistische trans formatie, klikt u op het plus pictogram rechts van een bestaande kolom. Selecteer **kolom patroon toevoegen**. 
+Als u een kolompatroon wilt toevoegen in een afgeleide kolom of het tabblad Aggregaten van een samengevoegde transformatie, klikt u op het pluspictogram rechts van een bestaande kolom. Selecteer **Kolompatroon toevoegen**. 
 
-![kolom patronen](media/data-flow/columnpattern.png "Kolompatronen")
+![kolompatronen](media/data-flow/columnpattern.png "Kolompatronen")
 
-Gebruik de [expressie Builder](concepts-data-flow-expression-builder.md) om de match-voor waarde in te voeren. Maak een Boole-expressie die overeenkomt met kolommen op basis van de `name`, `type`, `stream`en `position` van de kolom. Het patroon is van invloed op een kolom, die is geplaatste of gedefinieerd, waarbij de voor waarde waar retourneert.
+Gebruik de [opbouwfunctie voor expressies](concepts-data-flow-expression-builder.md) om de wedstrijdvoorwaarde in te voeren. Maak een booleaanse expressie die `name` `type`overeenkomt `stream`met `position` kolommen op basis van de kolom , en van de kolom. Het patroon heeft invloed op elke kolom, gedreven of gedefinieerd, waarbij de voorwaarde true retourneert.
 
-De twee expressie vakken onder de voor waarde match geven de nieuwe namen en waarden van de betrokken kolommen op. Gebruik `$$` om te verwijzen naar de bestaande waarde van het overeenkomende veld. In het vak linker expressie definieert u de naam en de rechter expressie Box definieert de waarde.
+In de twee expressievakken onder de overeenkomstvoorwaarde worden de nieuwe namen en waarden van de betreffende kolommen opgegeven. Gebruiken `$$` om te verwijzen naar de bestaande waarde van het overeenkomende veld. In het vak met de linkerexpressie wordt de naam gedefinieerd en het rechterexpressievak definieert de waarde.
 
-![kolom patronen](media/data-flow/columnpattern2.png "Kolompatronen")
+![kolompatronen](media/data-flow/columnpattern2.png "Kolompatronen")
 
-Het bovenstaande kolom patroon komt overeen met elke kolom van het type Double en maakt één geaggregeerde kolom per overeenkomst. De naam van de nieuwe kolom is de naam van de overeenkomende kolom die wordt samengevoegd met _total. De waarde van de nieuwe kolom is de afgeronde, geaggregeerde som van de bestaande dubbele waarde.
+Het bovenstaande kolompatroon komt overeen met elke kolom van het type dubbel en maakt één aggregaatkolom per wedstrijd. De naam van de nieuwe kolom is de naam van de overeenkomende kolom die is gekoppeld aan '_total'. De waarde van de nieuwe kolom is de afgeronde, geaggregeerde som van de bestaande dubbele waarde.
 
-Als u wilt controleren of uw overeenkomende voor waarde juist is, kunt u het uitvoer schema van gedefinieerde kolommen valideren in het tabblad **controleren** of een moment opname van de gegevens op het tabblad **voor het voor beeld van gegevens** ophalen. 
+Als u wilt controleren of de gegevensstatus correct zijn, u het uitvoerschema van gedefinieerde kolommen valideren op het tabblad **Inspecteren** of een momentopname van de gegevens krijgen op het tabblad **Gegevensvoorbeeld.** 
 
-![kolom patronen](media/data-flow/columnpattern3.png "Kolompatronen")
+![kolompatronen](media/data-flow/columnpattern3.png "Kolompatronen")
 
-## <a name="rule-based-mapping-in-select-and-sink"></a>Toewijzing op basis van een regel in SELECT en Sink
+## <a name="rule-based-mapping-in-select-and-sink"></a>Toewijzing op basis van regels in selecteren en zinken
 
-Bij het toewijzen van kolommen in de bron en het selecteren van trans formaties, kunt u een vaste toewijzing of op regels gebaseerde toewijzingen toevoegen. Als u het schema van uw gegevens kent en wilt verwachten dat specifieke kolommen van de bron-gegevensset altijd overeenkomen met specifieke statische namen, gebruikt u vaste toewijzing. Als u werkt met flexibele schema's, gebruikt u toewijzing op basis van regels om een patroon overeenkomst te maken op basis van de `name`, `type`, `stream`en `position` kolommen. U kunt een combi natie van vaste en op regels gebaseerde toewijzingen hebben. 
+Wanneer u kolommen in bron toewijzingen en transformaties selecteert, u vaste toewijzingen of op regels gebaseerde toewijzingen toevoegen. Overeenkomen op `name`basis `type` `stream`van `position` de , , , en van kolommen. U elke combinatie van vaste en op regels gebaseerde toewijzingen hebben. Standaard worden alle projecties met meer dan 50 kolommen standaard gekoppeld aan een op regels gebaseerde toewijzing die overeenkomt met elke kolom en de ingevoerde naam wordt uitgevoerd. 
 
-Als u een op een regel gebaseerde toewijzing wilt toevoegen, klikt u op **toewijzing toevoegen** en selecteert u **toewijzing op basis van een regel**.
+Als u een toewijzing op basis van regels wilt toevoegen, klikt u op **Toewijzing toevoegen** en selecteert u Toewijzing op basis **van regels**.
 
-![toewijzing op basis van een regel](media/data-flow/rule2.png "Toewijzing op basis van een regel")
+![op regels gebaseerde toewijzing](media/data-flow/rule2.png "Toewijzing op basis van regels")
 
-Voer in het vak linker expressie de voor waarde Boole match in. Geef in het vak rechter expressie op aan welke overeenkomende kolom wordt toegewezen. Gebruik `$$` om te verwijzen naar de bestaande naam van het overeenkomende veld.
+Elke regelgebaseerde toewijzing vereist twee ingangen: de voorwaarde waarop deze moet overeenkomen en wat elke toegewezen kolom moet worden genoemd. Beide waarden worden ingevoerd via de [expressiebouwer](concepts-data-flow-expression-builder.md). Voer in het linkerexpressievak de voorwaarde van de booleaanse wedstrijd in. Geef in het juiste expressievak op aan welke overeenkomende kolom wordt toegewezen.
 
-Als u op het pictogram met de pijl omlaag klikt, kunt u een regex-toewijzings voorwaarde opgeven.
+![op regels gebaseerde toewijzing](media/data-flow/rule-based-mapping.png "Toewijzing op basis van regels")
 
-Klik op het bril pictogram naast een op een regel gebaseerde toewijzing om te zien welke gedefinieerde kolommen worden vergeleken en waaraan ze zijn toegewezen.
+Gebruik `$$` syntaxis om te verwijzen naar de invoernaam van een overeenkomende kolom. Stel dat een gebruiker de bovenstaande afbeelding als voorbeeld gebruikt, deze wil overeenkomen met alle tekenreekskolommen waarvan de namen korter zijn dan zes tekens. Als er een inkomende kolom is benoemd, `test`wordt de naam van de kolom door de expressie `$$ + '_short'` gewijzigd. `test_short` Als dat de enige toewijzing is die bestaat, worden alle kolommen die niet aan de voorwaarde voldoen, uit de geümeerde gegevens verwijderd.
 
-![toewijzing op basis van een regel](media/data-flow/rule1.png "Toewijzing op basis van een regel")
+Patronen komen overeen met zowel zwevende als gedefinieerde kolommen. Als u wilt zien welke gedefinieerde kolommen door een regel in kaart zijn gebracht, klikt u op het pictogram van de bril naast de regel. Controleer uw uitvoer met behulp van een voorbeeld van gegevens.
 
-In het bovenstaande voor beeld worden twee op regels gebaseerde toewijzingen gemaakt. In de eerste plaats worden alle kolommen met de naam ' Movie ' gebruikt en worden ze toegewezen aan hun bestaande waarden. De tweede regel gebruikt regex om alle kolommen die beginnen met ' Movie ' te vergelijken en ze toe te wijzen aan kolom ' movieId '.
+### <a name="regex-mapping"></a>Regex-toewijzing
 
-Als uw regel resulteert in meerdere identieke toewijzingen, schakelt u **dubbele invoer overs Laan** of **dubbele uitvoer overs Laan** om duplicaten te voor komen.
+Als u op het pictogram neerwaartse chevron klikt, u een regex-toewijzingsvoorwaarde opgeven. Een regex-toewijzingsvoorwaarde komt overeen met alle kolomnamen die overeenkomen met de opgegeven regexvoorwaarde. Dit kan worden gebruikt in combinatie met standaard regelgebaseerde toewijzingen.
 
-## <a name="pattern-matching-expression-values"></a>Patroon waarden die overeenkomen met de expressie.
+![op regels gebaseerde toewijzing](media/data-flow/regex-matching.png "Toewijzing op basis van regels")
 
-* `$$` wordt omgezet naar de naam of waarde van elk match tijdens runtime
-* `name` staat voor de naam van elke binnenkomende kolom
-* `type` vertegenwoordigt het gegevens type van elke binnenkomende kolom
-* `stream` staat voor de naam die is gekoppeld aan elke stroom of trans formatie in uw stroom
-* `position` is de ordinale positie van kolommen in uw gegevens stroom
+Het bovenstaande voorbeeld komt `(r)` overeen met het regex-patroon of een kolomnaam die een kleine letters r bevat. Net als bij standaard regelgebaseerde toewijzing worden alle overeenkomende kolommen `$$` gewijzigd door de voorwaarde aan de rechterkant met behulp van syntaxis.
+
+### <a name="rule-based-hierarchies"></a>Hiërarchieën op basis van regels
+
+Als uw gedefinieerde projectie een hiërarchie heeft, u regeltoewijzing gebruiken om de subkolommen van de hiërarchieën in kaart te brengen. Geef een overeenkomende voorwaarde op en de complexe kolom waarvan u de subkolommen wilt toewijzen. Elke overeenkomende subkolom wordt uitgevoerd met de regel 'Name as', die aan de rechterkant is opgegeven.
+
+![op regels gebaseerde toewijzing](media/data-flow/rule-based-hierarchy.png "Toewijzing op basis van regels")
+
+Het bovenstaande voorbeeld komt overeen `a`op alle subkolommen van complexe kolom . `a`bevat twee `b` subkolommen en `c`. Het uitvoerschema bevat `b` twee `c` kolommen en als de `$$`voorwaarde 'Naam als' is .
+
+## <a name="pattern-matching-expression-values"></a>Patroon overeenkomende expressiewaarden.
+
+* `$$`vertaalt naar de naam of waarde van elke wedstrijd tijdens de looptijd
+* `name`vertegenwoordigt de naam van elke binnenkomende kolom
+* `type`vertegenwoordigt het gegevenstype van elke binnenkomende kolom
+* `stream`vertegenwoordigt de naam die aan elke stream is gekoppeld of transformatie in uw stroom
+* `position`is de ordinale positie van kolommen in uw gegevensstroom
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over de data flow- [expressie](data-flow-expression-functions.md) van de toewijzings gegevens voor gegevens transformaties
-* Kolom patronen in de [sink-trans formatie](data-flow-sink.md) gebruiken en [trans formatie selecteren](data-flow-select.md) met toewijzing op basis van een regel
+* Meer informatie over de taal van de [gegevensstroomexpressie](data-flow-expression-functions.md) voor gegevenstransformaties
+* Kolompatronen gebruiken in de [sinktransformatie](data-flow-sink.md) en [transformatie selecteren](data-flow-select.md) met op regels gebaseerde toewijzing

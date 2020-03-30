@@ -1,22 +1,22 @@
 ---
 title: Voorwaardelijke implementatie met sjablonen
-description: Hierin wordt beschreven hoe u een resource voorwaardelijk kunt implementeren in een Azure Resource Manager sjabloon.
+description: Beschrijft hoe u een resource voorwaardelijk implementeert in een Azure Resource Manager-sjabloon.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 83aa22ba57e0111d060665778922437723481c69
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: f170710118c0e3de6f3643b6216ed55b83b5c7df
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207788"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153417"
 ---
-# <a name="conditional-deployment-in-resource-manager-templates"></a>Voorwaardelijke implementatie in Resource Manager-sjablonen
+# <a name="conditional-deployment-in-arm-templates"></a>Voorwaardelijke implementatie in ARM-sjablonen
 
-Soms moet u optioneel een resource in een sjabloon implementeren. Gebruik het `condition`-element om op te geven of de resource is geïmplementeerd. De waarde voor dit element wordt omgezet in True of false. Als de waarde True is, wordt de resource gemaakt. Als de waarde False is, wordt de resource niet gemaakt. De waarde kan alleen worden toegepast op de hele resource.
+Soms moet u optioneel een resource implementeren in een ARM-sjabloon (Azure Resource Manager). Gebruik `condition` het element om op te geven of de resource is geïmplementeerd. De waarde voor dit element wordt oplost waar of onwaar. Wanneer de waarde waar is, wordt de resource gemaakt. Wanneer de waarde onwaar is, wordt de resource niet gemaakt. De waarde kan alleen worden toegepast op de hele resource.
 
 ## <a name="new-or-existing-resource"></a>Nieuwe of bestaande resource
 
-U kunt voorwaardelijke implementatie gebruiken om een nieuwe resource te maken of een bestaande te gebruiken. In het volgende voor beeld ziet u hoe u een voor waarde gebruikt om een nieuw opslag account te implementeren of een bestaand opslag account te gebruiken.
+U voorwaardelijke implementatie gebruiken om een nieuwe bron te maken of een bestaande bron te gebruiken. In het volgende voorbeeld ziet u hoe u de voorwaarde gebruikt om een nieuw opslagaccount te implementeren of een bestaand opslagaccount te gebruiken.
 
 ```json
 {
@@ -33,13 +33,13 @@ U kunt voorwaardelijke implementatie gebruiken om een nieuwe resource te maken o
 }
 ```
 
-Wanneer de para meter **newOrExisting** is ingesteld op **Nieuw**, wordt de voor waarde geëvalueerd als waar. Het opslag account wordt geïmplementeerd. Als **newOrExisting** echter is ingesteld op **Exists**, wordt de voor waarde geëvalueerd als False en wordt het opslag account niet geïmplementeerd.
+Wanneer de parameter **newOrExisting** is ingesteld op **nieuw**, wordt de voorwaarde geëvalueerd op true. Het opslagaccount wordt geïmplementeerd. Wanneer **newOrExisting** echter is ingesteld op **bestaand,** wordt de voorwaarde geëvalueerd op false en wordt het opslagaccount niet geïmplementeerd.
 
-Voor een complete voorbeeld sjabloon die gebruikmaakt van het `condition`-element, raadpleegt u [VM met een nieuwe of bestaande Virtual Network, opslag en open bare IP](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
+Zie [VM met een nieuw of bestaand virtueel netwerk, opslag en openbaar IP](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions)voor een volledige voorbeeldsjabloon die het `condition` element gebruikt.
 
-## <a name="allow-condition"></a>Voor waarde toestaan
+## <a name="allow-condition"></a>Voorwaarde toestaan
 
-U kunt een parameter waarde door geven die aangeeft of een voor waarde is toegestaan. In het volgende voor beeld wordt een SQL-Server geïmplementeerd en worden optioneel Azure Ip's toegestaan.
+U een parameterwaarde doorgeven die aangeeft of een voorwaarde is toegestaan. In het volgende voorbeeld wordt een SQL-server geïmplementeerd en wordt optioneel Azure-IP's toegestaan.
 
 ```json
 {
@@ -71,21 +71,21 @@ U kunt een parameter waarde door geven die aangeeft of een voor waarde is toeges
 }
 ```
 
-Zie voor de volledige sjabloon de [logische Azure SQL-Server](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server).
+Zie Azure SQL [logische server](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server)voor de volledige sjabloon.
 
 ## <a name="runtime-functions"></a>Runtime-functies
 
-Als u een [verwijzing](template-functions-resource.md#reference) of [lijst](template-functions-resource.md#list) functie gebruikt met een resource die voorwaardelijk is geïmplementeerd, wordt de functie geëvalueerd, zelfs als de resource niet is geïmplementeerd. Er wordt een fout bericht weer geven als de functie verwijst naar een resource die niet bestaat.
+Als u een [referentie-](template-functions-resource.md#reference) of [lijstfunctie](template-functions-resource.md#list) gebruikt met een resource die voorwaardelijk is geïmplementeerd, wordt de functie geëvalueerd, zelfs als de resource niet is geïmplementeerd. Er wordt een foutmelding weergegeven als de functie verwijst naar een resource die niet bestaat.
 
-Gebruik de functie [als](template-functions-logical.md#if) om ervoor te zorgen dat de functie alleen wordt geëvalueerd voor omstandigheden wanneer de resource wordt geïmplementeerd. Zie de [functie als](template-functions-logical.md#if) voor een voorbeeld sjabloon die gebruikmaakt van if en verwijst naar een voorwaardelijk geïmplementeerde resource.
+Gebruik de functie [als](template-functions-logical.md#if) om ervoor te zorgen dat de functie alleen wordt geëvalueerd op voorwaarden wanneer de resource wordt geïmplementeerd. Zie de [functie als](template-functions-logical.md#if) voor een voorbeeldsjabloon die wordt gebruikt als en verwijzen naar een voorwaardelijk geïmplementeerde bron.
 
-U stelt een [resource in die afhankelijk](define-resource-dependency.md) is van een voorwaardelijke resource, op dezelfde manier als andere resources. Wanneer een voorwaardelijke resource niet is geïmplementeerd, wordt deze automatisch door Azure Resource Manager verwijderd uit de vereiste afhankelijkheden.
+U stelt een [resource in als afhankelijk van](define-resource-dependency.md) een voorwaardelijke resource, precies zoals u elke andere resource zou doen. Wanneer een voorwaardelijke bron niet is geïmplementeerd, verwijdert Azure Resource Manager deze automatisch uit de vereiste afhankelijkheden.
 
-## <a name="condition-with-complete-mode"></a>Voor waarde met volledige modus
+## <a name="condition-with-complete-mode"></a>Voorwaarde met volledige modus
 
-Als u een sjabloon implementeert met de [modus volledig](deployment-modes.md) en een resource wordt niet geïmplementeerd omdat de voor waarde wordt geëvalueerd als onwaar, is het resultaat afhankelijk van de rest API versie die u gebruikt om de sjabloon te implementeren. Als u een eerdere versie dan 2019-05-10 gebruikt, wordt de resource **niet verwijderd**. Met 2019-05-10 of hoger wordt de resource **verwijderd**. Met de nieuwste versies van Azure PowerShell en Azure CLI wordt de resource verwijderd wanneer de voor waarde ONWAAR is.
+Als u een sjabloon met [volledige modus](deployment-modes.md) implementeert en een resource niet wordt geïmplementeerd omdat de voorwaarde wordt geëvalueerd op false, is het resultaat afhankelijk van welke REST API-versie u gebruikt om de sjabloon te implementeren. Als u een versie gebruikt die eerder is dan 2019-05-10, wordt de bron **niet verwijderd.** Met 2019-05-10 of hoger wordt de bron **verwijderd.** De nieuwste versies van Azure PowerShell en Azure CLI verwijderen de bron wanneer de voorwaarde onwaar is.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor aanbevelingen voor het maken van sjablonen [Azure Resource Manager best practices](template-best-practices.md)voor sjablonen.
-* Zie [resource herhaling in azure Resource Manager sjablonen](copy-resources.md)als u meerdere exemplaren van een resource wilt maken.
+* Zie [AANBEVOLEN NARM-sjabloonaanbevolen voor aanbevelingen](template-best-practices.md)over het maken van sjablonen.
+* Zie [Resourceiteratie in ARM-sjablonen](copy-resources.md)als u meerdere exemplaren van een resource wilt maken.

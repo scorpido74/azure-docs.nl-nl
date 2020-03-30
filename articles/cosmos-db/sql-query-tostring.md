@@ -1,6 +1,6 @@
 ---
-title: ToString in Azure Cosmos DB query taal
-description: Meer informatie over SQL-systeem functie ToString in Azure Cosmos DB.
+title: ToString in Azure Cosmos DB-querytaal
+description: Meer informatie over SQL-systeemfunctie ToString in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 293449b1616e7124245d91c647177b958006009e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78304256"
 ---
 # <a name="tostring-azure-cosmos-db"></a>ToString (Azure Cosmos DB)
- Retourneert een tekenreeksrepresentatie van de scalaire expressie. 
+ Geeft als resultaat een tekenreeksweergave van scalaire expressie. 
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -25,16 +25,16 @@ ToString(<expr>)
   
 ## <a name="arguments"></a>Argumenten
   
-*expressie*  
-   Is een scalaire expressie.  
+*Expr*  
+   Is een scalaire uitdrukking.  
   
-## <a name="return-types"></a>Retour typen
+## <a name="return-types"></a>Retourtypen
   
   Retourneert een tekenreeksexpressie.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld ziet u hoe `ToString` zich gedraagt in verschillende typen.   
+  In het volgende `ToString` voorbeeld ziet u hoe zich zich gedraagt voor verschillende typen.   
   
 ```sql
 SELECT 
@@ -48,16 +48,16 @@ SELECT
     ToString(undefined) AS str8
 ```  
   
- Hier volgt de resultatenset.  
+ Hier is het resultaat ingesteld.  
   
 ```json
 [{"str1": "1", "str2": "Hello World", "str3": "NaN", "str4": "Infinity", "str5": "false", "str6": "0.1234", "str7": "false"}]  
 ```  
- De volgende invoer gegeven:
+ Met de volgende input:
 ```json
 {"Products":[{"ProductID":1,"Weight":4,"WeightUnits":"lb"},{"ProductID":2,"Weight":32,"WeightUnits":"kg"},{"ProductID":3,"Weight":400,"WeightUnits":"g"},{"ProductID":4,"Weight":8999,"WeightUnits":"mg"}]}
 ```    
- In het volgende voor beeld ziet u hoe `ToString` kan worden gebruikt met andere teken reeks functies, zoals `CONCAT`.   
+ In het volgende `ToString` voorbeeld ziet u hoe `CONCAT`u worden gebruikt met andere tekenreeksfuncties zoals.   
  
 ```sql
 SELECT 
@@ -65,7 +65,7 @@ CONCAT(ToString(p.Weight), p.WeightUnits)
 FROM p in c.Products 
 ```  
 
-Hier volgt de resultatenset.  
+Hier is het resultaat ingesteld.  
   
 ```json
 [{"$1":"4lb" },
@@ -74,11 +74,11 @@ Hier volgt de resultatenset.
 {"$1":"8999mg" }]
 
 ```  
-De volgende invoer wordt gegeven.
+Gezien de volgende input.
 ```json
 {"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
 ```
-In het volgende voor beeld ziet u hoe `ToString` kan worden gebruikt met andere teken reeks functies, zoals `REPLACE`.   
+In het volgende `ToString` voorbeeld ziet u hoe `REPLACE`u worden gebruikt met andere tekenreeksfuncties zoals.   
 ```sql
 SELECT 
     n.id AS nutrientID,
@@ -86,7 +86,7 @@ SELECT
 FROM food 
 JOIN n IN food.nutrients
 ```
-Hier volgt de resultatenset.  
+Hier is het resultaat ingesteld.  
  ```json
 [{"nutrientID":"305"},
 {"nutrientID":"306","nutritionVal":"30"},
@@ -97,10 +97,10 @@ Hier volgt de resultatenset.
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeem functie maakt geen gebruik van de index.
+Deze systeemfunctie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Teken reeks functies Azure Cosmos DB](sql-query-string-functions.md)
-- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
+- [Tekenreeksfuncties Azure Cosmos DB](sql-query-string-functions.md)
+- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

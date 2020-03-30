@@ -1,36 +1,36 @@
 ---
 title: Servers configureren met een gewenste status en afwijkingen beheren met Azure Automation
-description: Zelf studie-server configuraties beheren met Azure Automation status configuratie
+description: Zelfstudie - Serverconfiguraties beheren met Azure Automation State Configuration
 services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.openlocfilehash: 9e2f04f59a56be6c516eb90de45fdf7327673086
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75416595"
 ---
-# <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Servers configureren met een gewenste status en drift beheren
+# <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Servers configureren naar een gewenste status en drift beheren
 
-Met de configuratie van Azure Automation status kunt u configuraties voor uw servers opgeven en ervoor zorgen dat deze servers gedurende een bepaalde periode de opgegeven status hebben.
+Met Azure Automation State Configuration u configuraties voor uw servers opgeven en ervoor zorgen dat deze servers zich in de loop van de tijd in de opgegeven status bevinden.
 
 > [!div class="checklist"]
-> - Een virtuele machine onboarden om te worden beheerd door Azure Automation DSC
+> - Aan boord van een VM die wordt beheerd door Azure Automation DSC
 > - Een configuratie uploaden naar Azure Automation
-> - Een configuratie in een knooppunt configuratie compileren
-> - Een knooppunt configuratie toewijzen aan een beheerd knoop punt
-> - De nalevings status van een beheerd knoop punt controleren
+> - Een configuratie compileren in een knooppuntconfiguratie
+> - Een knooppuntconfiguratie toewijzen aan een beheerd knooppunt
+> - Controleer de nalevingsstatus van een beheerd knooppunt
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 - Een Azure Automation-account. Zie [Azure Uitvoeren-als-account](automation-sec-configure-azure-runas-account.md) voor instructies over het maken van een Azure Automation Uitvoeren-als-account.
-- Een Azure Resource Manager-VM (niet klassiek) met Windows Server 2008 R2 of hoger. Zie [Uw eerste virtuele Windows-machine maken met behulp van Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) voor instructies voor het maken van een VM
-- Azure PowerShell module versie 3,6 of hoger. Voer `Get-Module -ListAvailable AzureRM` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/azurerm/install-azurerm-ps).
-- Vertrouwdheid met de desired state Configuration (DSC). Zie [Windows Power shell desired state Configuration Overview](/powershell/scripting/dsc/overview/overview) (Engelstalig) voor meer informatie over DSC
+- Een Azure Resource Manager VM (niet Classic) met Windows Server 2008 R2 of hoger. Zie [Uw eerste virtuele Windows-machine maken met behulp van Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) voor instructies voor het maken van een VM
+- Azure PowerShell-module versie 3.6 of hoger. Voer `Get-Module -ListAvailable AzureRM` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/azurerm/install-azurerm-ps).
+- Vertrouwdheid met gewenste statusconfiguratie (DSC). Zie [Overzicht van de gewenste configuratie van Windows PowerShell voor](/powershell/scripting/dsc/overview/overview) meer informatie over DSC
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
@@ -42,7 +42,7 @@ Connect-AzureRmAccount
 
 ## <a name="create-and-upload-a-configuration-to-azure-automation"></a>Een configuratie maken en uploaden naar Azure Automation
 
-Voor deze zelf studie gebruiken we een eenvoudige DSC-configuratie die ervoor zorgt dat IIS op de virtuele machine is geïnstalleerd.
+Voor deze zelfstudie gebruiken we een eenvoudige DSC-configuratie die ervoor zorgt dat IIS op de VM is geïnstalleerd.
 
 Zie [DSC-configuraties](/powershell/scripting/dsc/configurations/configurations) voor meer informatie over DSC-configuraties.
 
@@ -61,62 +61,62 @@ configuration TestConfig {
 ```
 
 > [!NOTE]
-> In meer geavanceerde scenario's waarin u wilt dat meerdere modules worden geïmporteerd die DSC-resources bieden, moet u ervoor zorgen dat elke module een unieke `Import-DscResource`-regel bevat in uw configuratie.
+> In meer geavanceerde scenario's waarbij u meerdere modules moet importeren die DSC-bronnen bieden, moet u ervoor zorgen dat elke module een unieke `Import-DscResource` lijn in uw configuratie heeft.
 
-Roep de `Import-AzureRmAutomationDscConfiguration`-cmdlet aan om de configuratie te uploaden naar uw Automation-account:
+Bel `Import-AzureRmAutomationDscConfiguration` de cmdlet om de configuratie te uploaden naar uw Automatiseringsaccount:
 
 ```powershell
  Import-AzureRmAutomationDscConfiguration -SourcePath 'C:\DscConfigs\TestConfig.ps1' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -Published
 ```
 
-## <a name="compile-a-configuration-into-a-node-configuration"></a>Een configuratie in een knooppunt configuratie compileren
+## <a name="compile-a-configuration-into-a-node-configuration"></a>Een configuratie compileren in een knooppuntconfiguratie
 
-Een DSC-configuratie moet worden gecompileerd in een knooppunt configuratie voordat deze aan een knoop punt kan worden toegewezen.
+Een DSC-configuratie moet worden gecompileerd in een knooppuntconfiguratie voordat deze aan een knooppunt kan worden toegewezen.
 
-Zie [DSC-configuraties](/powershell/scripting/dsc/configurations/configurations)voor meer informatie over het compileren van configuraties.
+Zie [DSC-configuraties voor](/powershell/scripting/dsc/configurations/configurations)informatie over het samenstellen van configuraties.
 
-Roep de `Start-AzureRmAutomationDscCompilationJob`-cmdlet aan om de `TestConfig` configuratie in een knooppunt configuratie te compileren:
+Roep `Start-AzureRmAutomationDscCompilationJob` de cmdlet `TestConfig` aan om de configuratie samen te stellen in een knooppuntconfiguratie:
 
 ```powershell
 Start-AzureRmAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount'
 ```
 
-Hiermee maakt u een knooppunt configuratie met de naam `TestConfig.WebServer` in uw Automation-account.
+Hiermee wordt een knooppuntconfiguratie gemaakt met de naam `TestConfig.WebServer` in uw Automatiseringsaccount.
 
-## <a name="register-a-vm-to-be-managed-by-state-configuration"></a>Een virtuele machine registreren die door de status configuratie moet worden beheerd
+## <a name="register-a-vm-to-be-managed-by-state-configuration"></a>Een VM registreren om te worden beheerd door statusconfiguratie
 
-U kunt Azure Automation status configuratie gebruiken voor het beheren van virtuele Azure-machines (zowel klassieke als Resource Manager), on-premises Vm's, Linux-machines, AWS Vm's en on-premises fysieke machines. In dit onderwerp wordt beschreven hoe u alleen Azure Resource Manager Vm's kunt registreren. Zie voor meer informatie over het registreren van andere typen machines [onboarding-machines voor beheer door Azure Automation status configuratie](automation-dsc-onboarding.md).
+U Azure Automation State Configuration gebruiken om Azure VM's (zowel Classic als Resource Manager), on-premises VM's, Linux-machines, AWS VM's en on-premises fysieke machines te beheren. In dit onderwerp behandelen we hoe u alleen Azure Resource Manager VM's registreert. Zie [Onboarding-machines voor beheer door Azure Automation State Configuration](automation-dsc-onboarding.md)voor informatie over het registreren van andere typen machines.
 
-Roep de `Register-AzureRmAutomationDscNode`-cmdlet aan om uw VM te registreren bij Azure Automation status configuratie.
+Bel `Register-AzureRmAutomationDscNode` de cmdlet om uw VM te registreren met Azure Automation State Configuration.
 
 ```powershell
 Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm'
 ```
 
-Hiermee wordt de opgegeven virtuele machine geregistreerd als een beheerd knoop punt in de status configuratie.
+Hiermee wordt de opgegeven VM geregistreerd als een beheerd knooppunt in staatsconfiguratie.
 
-### <a name="specify-configuration-mode-settings"></a>Configuratie modus instellingen opgeven
+### <a name="specify-configuration-mode-settings"></a>Instellingen voor de configuratiemodus opgeven
 
-Wanneer u een virtuele machine als een beheerd knoop punt registreert, kunt u ook eigenschappen van de configuratie opgeven. U kunt bijvoorbeeld opgeven dat de status van de machine slechts één keer moet worden toegepast (DSC probeert de configuratie niet toe te passen na de eerste controle) door `ApplyOnly` op te geven als de waarde van de eigenschap **ConfigurationMode** :
+Wanneer u een VM registreert als een beheerd knooppunt, u ook eigenschappen van de configuratie opgeven. U bijvoorbeeld opgeven dat de status van de machine slechts één keer mag worden toegepast (DSC `ApplyOnly` probeert de configuratie niet toe te passen na de eerste controle) door op te geven als de waarde van de eigenschap **ConfigurationMode:**
 
 ```powershell
 Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm' -ConfigurationMode 'ApplyOnly'
 ```
 
-U kunt ook opgeven hoe vaak DSC de configuratie status controleert met behulp van de eigenschap **ConfigurationModeFrequencyMins** :
+U ook opgeven hoe vaak DSC de configuratiestatus controleert met de eigenschap **ConfigurationModeFrequencyMins:**
 
 ```powershell
 # Run a DSC check every 60 minutes
 Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm' -ConfigurationModeFrequencyMins 60
 ```
 
-Zie [REGI ster-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode)voor meer informatie over het instellen van configuratie-eigenschappen voor een beheerd knoop punt.
+Zie [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode)voor meer informatie over het instellen van configuratie-eigenschappen voor een beheerd knooppunt.
 
-Zie [Configuring the Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig)(Engelstalig) voor meer informatie over DSC-configuratie-instellingen.
+Zie [Lokaal configuratiebeheer configureren](/powershell/scripting/dsc/managing-nodes/metaConfig)voor meer informatie over DSC-configuratie-instellingen.
 
-## <a name="assign-a-node-configuration-to-a-managed-node"></a>Een knooppunt configuratie toewijzen aan een beheerd knoop punt
+## <a name="assign-a-node-configuration-to-a-managed-node"></a>Een knooppuntconfiguratie toewijzen aan een beheerd knooppunt
 
-Nu kunnen we de gecompileerde knooppunt configuratie toewijzen aan de VM die u wilt configureren.
+Nu kunnen we de gecompileerde knooppuntconfiguratie toewijzen aan de VM die we willen configureren.
 
 ```powershell
 # Get the ID of the DSC node
@@ -126,24 +126,24 @@ $node = Get-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -Autom
 Set-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -NodeConfigurationName 'TestConfig.WebServer' -NodeId $node.Id
 ```
 
-Hiermee wordt de knooppunt configuratie met de naam `TestConfig.WebServer` toegewezen aan het geregistreerde DSC-knoop punt met de naam `DscVm`.
-Het DSC-knoop punt wordt standaard om de 30 minuten gecontroleerd op naleving van de configuratie van het knoop punt.
-Zie [Configuring the Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig)(Engelstalig) voor meer informatie over het wijzigen van het nalevings controle-interval.
+Hiermee wordt de knooppuntconfiguratie `TestConfig.WebServer` toegeschreven die is `DscVm`vernoemd naar het geregistreerde DSC-knooppunt met de naam .
+Standaard wordt het DSC-knooppunt elke 30 minuten gecontroleerd op naleving van de knooppuntconfiguratie.
+Zie Het [interval Lokale configuratiebeheer configureren](/powershell/scripting/dsc/managing-nodes/metaConfig)voor informatie over het wijzigen van het interval voor nalevingscontrole.
 
 ## <a name="working-with-partial-configurations"></a>Werken met gedeeltelijke configuraties
 
-De configuratie van Azure Automation status ondersteunt het gebruik van [gedeeltelijke configuraties](/powershell/scripting/dsc/pull-server/partialconfigs).
-In dit scenario is DSC geconfigureerd om meerdere configuraties onafhankelijk te beheren en elke configuratie wordt opgehaald uit Azure Automation.
-Er kan echter slechts één configuratie worden toegewezen aan een knoop punt per Automation-account.
-Dit betekent dat als u twee configuraties voor een knoop punt gebruikt, twee Automation-accounts nodig zijn.
+Azure Automation State Configuration ondersteunt het gebruik van [gedeeltelijke configuraties.](/powershell/scripting/dsc/pull-server/partialconfigs)
+In dit scenario is DSC geconfigureerd om meerdere configuraties onafhankelijk te beheren en wordt elke configuratie opgehaald uit Azure Automation.
+Er kan echter slechts één configuratie worden toegewezen aan een knooppunt per automatiseringsaccount.
+Dit betekent dat als u twee configuraties voor een knooppunt gebruikt, u twee automatiseringsaccounts nodig hebt.
 
-Zie de documentatie voor [gedeeltelijke configuraties](https://docs.microsoft.com/powershell/scripting/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode)voor meer informatie over het registreren van een gedeeltelijke configuratie van een pull-service.
+Zie de documentatie voor [gedeeltelijke configuraties](https://docs.microsoft.com/powershell/scripting/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode)voor meer informatie over het registreren van een gedeeltelijke configuratie van pull-service.
 
-Zie [inzicht in de rol van DSC in een CI/cd-pijp lijn](/powershell/scripting/dsc/overview/authoringadvanced)voor meer informatie over hoe teams kunnen samen werken om servers gezamenlijk te beheren met configuratie als code.
+Voor meer informatie over hoe teams kunnen samenwerken om servers gezamenlijk te beheren met behulp van configuratie als code zie [Inzicht in de rol van DSC in een CI/CD-pijplijn.](/powershell/scripting/dsc/overview/authoringadvanced)
 
-## <a name="check-the-compliance-status-of-a-managed-node"></a>De nalevings status van een beheerd knoop punt controleren
+## <a name="check-the-compliance-status-of-a-managed-node"></a>Controleer de nalevingsstatus van een beheerd knooppunt
 
-U kunt rapporten ophalen over de nalevings status van een beheerd knoop punt door de `Get-AzureRmAutomationDscNodeReport`-cmdlet aan te roepen:
+U rapporten krijgen over de nalevingsstatus `Get-AzureRmAutomationDscNodeReport` van een beheerd knooppunt door de cmdlet aan te roepen:
 
 ```powershell
 # Get the ID of the DSC node
@@ -156,32 +156,32 @@ $reports = Get-AzureRmAutomationDscNodeReport -ResourceGroupName 'MyResourceGrou
 $reports[0]
 ```
 
-## <a name="removing-nodes-from-service"></a>Knoop punten uit de service verwijderen
+## <a name="removing-nodes-from-service"></a>Knooppunten verwijderen uit de service
 
-Wanneer u een knoop punt toevoegt aan Azure Automation status configuratie, worden de instellingen in lokale Configuration Manager ingesteld om u te registreren bij de service en pull-configuraties en de vereiste modules om de computer te configureren.
-Als u ervoor kiest om het knoop punt uit de service te verwijderen, kunt u dit doen met behulp van de Azure Portal of de AZ-cmdlets.
+Wanneer u een knooppunt toevoegt aan azure automation state configuration, worden de instellingen in Lokaal Configuratiebeheer ingesteld om te registreren bij de service en configuraties en vereiste modules op te halen om de machine te configureren.
+Als u ervoor kiest het knooppunt uit de service te verwijderen, u dit doen met behulp van de Azure-portal of de Az-cmdlets.
 
 > [!NOTE]
-> Bij het ongedaan maken van de registratie van een knoop punt van de service worden alleen de lokale Configuration Manager instellingen ingesteld zodat het knoop punt niet langer verbinding maakt met de service.
-> Dit heeft geen invloed op de configuratie die momenteel wordt toegepast op het knoop punt.
-> Als u de huidige configuratie wilt verwijderen, gebruikt u de [Power shell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) of verwijdert u het lokale configuratie bestand (dit is de enige optie voor Linux-knoop punten).
+> Als u een knooppunt uitdeint voor de service, worden alleen de instellingen voor lokaal configuratiebeheer ingesteld, zodat het knooppunt geen verbinding meer maakt met de service.
+> Dit heeft geen invloed op de configuratie die momenteel op het knooppunt wordt toegepast.
+> Als u de huidige configuratie wilt verwijderen, gebruikt u de [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) of verwijdert u het lokale configuratiebestand (dit is de enige optie voor Linux-knooppunten).
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Klik in Azure Automation op **State Configuration (DSC)** in de inhouds opgave.
-Klik vervolgens op **knoop punten** om de lijst met knoop punten weer te geven die zijn geregistreerd bij de service.
-Klik op de naam van het knoop punt dat u wilt verwijderen.
-Klik in de weer gave van het knoop punt dat wordt geopend op **registratie ongedaan maken**.
+Klik vanuit Azure Automation op **Statusconfiguratie (DSC)** in de inhoudsopgave.
+Klik vervolgens op **Knooppunten** om de lijst met knooppunten weer te geven die bij de service zijn geregistreerd.
+Klik op de naam van het knooppunt dat u wilt verwijderen.
+Klik in de knooppuntweergave die wordt geopend op **Aanmelden.**
 
 ### <a name="powershell"></a>PowerShell
 
-Als u de registratie van een knoop punt bij de configuratie service van Azure Automation State wilt opheffen met behulp van Power shell, volgt u de documentatie voor de cmdlet [unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
+Als u een knooppunt van Azure Automation State Configuration Service met PowerShell wilt uitschrijven, volgt u de documentatie voor de cmdlet [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie aan de slag [met de configuratie van de Azure Automation-status](automation-dsc-getting-started.md) om aan de slag te gaan.
-- Voor meer informatie over het voorbereiden van knoop punten, Zie [onboarding machines voor beheer door Azure Automation status configuratie](automation-dsc-onboarding.md)
-- Zie [configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md) voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
-- Zie [Azure Automation status configuratie-cmdlets](/powershell/module/azurerm.automation/#automation) voor informatie over de Power shell-cmdlet.
-- Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/) voor prijs informatie.
-- Voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie gaat u naar [continue implementatie met behulp van Azure Automation-status configuratie en chocolade](automation-dsc-cd-chocolatey.md)
+- Zie [Aan de slag met Azure Automation State Configuration](automation-dsc-getting-started.md) om aan de slag te gaan.
+- Zie [Onboarding-machines voor beheer door Azure Automation State Configuration](automation-dsc-onboarding.md) voor meer informatie over het inschepen van knooppunten.
+- Zie [Configuraties compileren in Azure Automation State Configuration](automation-dsc-compile.md) voor meer informatie over het samenstellen van DSC-configuraties, zodat u ze toewijzen aan doelknooppunten.
+- Zie [Cmdlets Azure Automation State Configuration cmdlets](/powershell/module/azurerm.automation/#automation) voor PowerShell-cmdlet
+- Zie Azure [Automation State Configuration Pricing](https://azure.microsoft.com/pricing/details/automation/) voor prijsinformatie
+- Zie [Continue implementatie met Azure Automation State Configuration en Chocolatey](automation-dsc-cd-chocolatey.md) voor een voorbeeld van het gebruik van Azure Automation State Configuration in a continuous deployment pipeline.

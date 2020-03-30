@@ -1,6 +1,6 @@
 ---
-title: Problemen met de upgrade van de Microsoft Azure Site Recovery provider oplossen
-description: Los veelvoorkomende problemen op die optreden bij het upgraden van de Microsoft Azure Site Recovery provider.
+title: Problemen met de upgrade van de Microsoft Azure Site Recovery Provider oplossen
+description: Veelvoorkomende problemen oplossen bij het upgraden van de Microsoft Azure Site Recovery-provider.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,61 +8,61 @@ ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
 ms.openlocfilehash: b59f933fedd5f1d3ed3f7972b1a1fe653df31be2
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75893900"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Problemen met het upgraden van de Microsoft Azure Site Recovery-provider oplossen
 
-Dit artikel helpt u bij het oplossen van problemen die fouten kunnen veroorzaken tijdens een Microsoft Azure Site Recovery provider upgrade.
+Met dit artikel u problemen oplossen die storingen kunnen veroorzaken tijdens een upgrade van de Microsoft Azure Site Recovery Provider.
 
-## <a name="the-upgrade-fails-reporting-that-the-latest-site-recovery-provider-is-already-installed"></a>De upgrade mislukt met de melding dat de nieuwste Site Recovery-provider al is geïnstalleerd.
+## <a name="the-upgrade-fails-reporting-that-the-latest-site-recovery-provider-is-already-installed"></a>De upgrade mislukt als u meldt dat de nieuwste siteherstelprovider al is geïnstalleerd
 
-Bij de upgrade van Microsoft Azure Site Recovery provider (DRA), mislukt de installatie van de Unified Setup en wordt het volgende fout bericht weer gegeven:
+Bij het upgraden van Microsoft Azure Site Recovery Provider (DRA) mislukt de upgrade Unified Setup en geeft het foutbericht het foutbericht af:
 
-De upgrade wordt niet ondersteund omdat er al een hogere versie van de software is geïnstalleerd.
+Upgrade wordt niet ondersteund omdat een hogere versie van de software al is geïnstalleerd.
 
-Voer de volgende stappen uit om een upgrade uit te voeren:
+Ga als volgt te werk om te upgraden:
 
-1. Down load de Microsoft Azure Site Recovery Unified Setup:
-   1. Selecteer in de sectie Koppelingen naar momenteel ondersteunde update pakketten van de service- [updates in azure site Recovery](service-updates-how-to.md#links-to-currently-supported-update-rollups) -artikel de provider waarmee u een upgrade uitvoert.
-   2. Ga op de pagina samen vouwen naar de sectie **informatie over updates** en down load het update pakket voor Microsoft Azure site Recovery Unified Setup.
+1. Download de Microsoft Azure Site Recovery Unified Setup:
+   1. Selecteer in het gedeelte 'Koppelingen naar momenteel ondersteunde update-rollups' van het artikel [Service-updates in Azure Site Recovery](service-updates-how-to.md#links-to-currently-supported-update-rollups) de provider waarnaar u een upgrade uitvoert.
+   2. Zoek op de rolluppagina de sectie **Informatie bijwerken** en download de rollup bijwerken voor Microsoft Azure Site Recovery Unified Setup.
 
-2. Open een opdracht prompt en navigeer naar de map waarnaar u het Unified Setup-bestand hebt gedownload. Pak de installatie bestanden uit met behulp van de volgende opdracht, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;mappad voor de uitgepakte bestanden&gt;.
+2. Open een opdrachtprompt en navigeer naar de map waarnaar u het bestand Unified Setup hebt gedownload. Haal de installatiebestanden uit de download met de volgende opdracht MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:&lt;mappad voor de geëxtraheerde bestanden&gt;.
     
-    Van de voorbeeldopdracht:
+    Voorbeeldopdracht:
 
-    MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
+    MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Geëxtraheerd
 
-3. Ga in de opdracht prompt naar de map waarin u de bestanden hebt uitgepakt en voer de volgende installatie opdrachten uit:
+3. Navigeer in de opdrachtprompt naar de map waarnaar u de bestanden hebt geëxtraheerd en voer de volgende installatieopdrachten uit:
    
-    CX_THIRDPARTY_SETUP. EXE/VERYSILENT/SUPPRESSMSGBOXES/NORESTART UCX_SERVER_SETUP. EXE/VERYSILENT/SUPPRESSMSGBOXES/NORESTART/UPGRADE
+    CX_THIRDPARTY_SETUP. EXE /VERYSILENT /SUPPRESSMSGBOXES /NORESTART UCX_SERVER_SETUP. EXE /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /UPGRADE
 
-1. Ga terug naar de map waarnaar u de geïntegreerde installatie hebt gedownload en voer MicrosoftAzureSiteRecoveryUnifiedSetup. exe uit om de upgrade te volt ooien. 
+1. Ga terug naar de map waarnaar u de Unified Setup hebt gedownload en voer MicrosoftAzureSiteRecoveryUnifiedSetup.exe uit om de upgrade te voltooien. 
 
-## <a name="upgrade-failure-due-to-the-3rd-party-folder-being-renamed"></a>De upgrade is mislukt omdat de naam van de externe map wordt gewijzigd
+## <a name="upgrade-failure-due-to-the-3rd-party-folder-being-renamed"></a>Upgradefout als gevolg van de naam van de map van derden
 
-De upgrade kan alleen worden uitgevoerd als de naam van de map van de derde partij niet is gewijzigd.
+Om de upgrade te laten slagen, mag de map van de derde partij niet worden hernoemd.
 
 Om het probleem op te lossen.
 
-1. Start de REGI ster-editor (Regedit. exe) en open de vertakking HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10.
-1. Inspecteer de `Build_Version` sleutel waarde. Als deze is ingesteld op de meest recente versie, vermindert u het versie nummer. Bijvoorbeeld, als de meest recente versie 9,22 is.\* en de `Build_Version` sleutel ingesteld op die waarde, en verminder deze in 9,21.\*.
-1. Down load de nieuwste Microsoft Azure Site Recovery Unified Setup:
-   1. Selecteer in de sectie Koppelingen naar momenteel ondersteunde update pakketten van de service- [updates in azure site Recovery](service-updates-how-to.md#links-to-currently-supported-update-rollups) -artikel de provider waarmee u een upgrade uitvoert.
-   2. Ga op de pagina samen vouwen naar de sectie **informatie over updates** en down load het update pakket voor Microsoft Azure site Recovery Unified Setup.
-1. Open een opdracht prompt en navigeer naar de map waarnaar u het Unified Setup-bestand hebt gedownload en de Setup-bestanden uit de down load te halen met behulp van de volgende opdracht, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;mappad voor de uitgepakte bestanden&gt;.
+1. Start de registereditor (regedit.exe) en open de HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 branch.
+1. Controleer `Build_Version` de sleutelwaarde. Als deze is ingesteld op de nieuwste versie, vermindert u het versienummer. Bijvoorbeeld, als de nieuwste versie is 9.22. \* en `Build_Version` de sleutel ingesteld op die waarde, dan te verlagen tot 9,21. \*.
+1. Download de nieuwste Microsoft Azure Site Recovery Unified Setup:
+   1. Selecteer in het gedeelte 'Koppelingen naar momenteel ondersteunde update-rollups' van het artikel [Service-updates in Azure Site Recovery](service-updates-how-to.md#links-to-currently-supported-update-rollups) de provider waarnaar u een upgrade uitvoert.
+   2. Zoek op de rolluppagina de sectie **Informatie bijwerken** en download de rollup bijwerken voor Microsoft Azure Site Recovery Unified Setup.
+1. Open een opdrachtprompt en navigeer naar de map waarnaar u het Unified Setup-bestand hebt gedownload en de installatiebestanden uit de&lt;download halen met&gt;de volgende opdracht, MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x: mappad voor de geëxtraheerde bestanden .
 
-    Van de voorbeeldopdracht:
+    Voorbeeldopdracht:
 
-    MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
+    MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Geëxtraheerd
 
-1. Ga in de opdracht prompt naar de map waarin u de bestanden hebt uitgepakt en voer de volgende installatie opdrachten uit:
+1. Navigeer in de opdrachtprompt naar de map waarnaar u de bestanden hebt geëxtraheerd en voer de volgende installatieopdrachten uit:
    
-    CX_THIRDPARTY_SETUP.EXE /VERYSILENT /SUPPRESSMSGBOXES /NORESTART
+    CX_THIRDPARTY_SETUP. EXE /VERYSILENT /SUPPRESSMSGBOXES /NORESTART
 
-1. Gebruik taak beheer om de voortgang van de installatie te controleren. Wanneer het proces voor CX_THIRDPARTY_SETUP. EXE is niet meer zichtbaar in taak beheer. Ga verder met de volgende stap.
+1. Gebruik taakbeheer om de voortgang van de installatie te controleren. Wanneer het proces voor CX_THIRDPARTY_SETUP. EXE is niet langer zichtbaar in taakbeheer, ga naar de volgende stap.
 1. Controleer of C:\thirdparty bestaat en of de map de RRD-bibliotheken bevat.
-1. Ga terug naar de map waarnaar u de geïntegreerde installatie hebt gedownload en voer MicrosoftAzureSiteRecoveryUnifiedSetup. exe uit om de upgrade te volt ooien. 
+1. Ga terug naar de map waarnaar u de Unified Setup hebt gedownload en voer MicrosoftAzureSiteRecoveryUnifiedSetup.exe uit om de upgrade te voltooien. 

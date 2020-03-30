@@ -1,46 +1,46 @@
 ---
-title: Sjabloon functies-vergelijking
-description: Hierin worden de functies beschreven die in een Azure Resource Manager sjabloon kunnen worden gebruikt om waarden te vergelijken.
+title: Sjabloonfuncties - vergelijking
+description: Beschrijft de functies die u moet gebruiken in een Azure Resource Manager-sjabloon om waarden te vergelijken.
 ms.topic: conceptual
 ms.date: 09/05/2017
-ms.openlocfilehash: 67cb1c1f92694ca217e99fb6528fb1d00f2cfcf6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 42009e8543e307f2d3e4643ddaa79f492f9bdfee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248708"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156358"
 ---
-# <a name="comparison-functions-for-azure-resource-manager-templates"></a>Vergelijkings functies voor Azure Resource Manager sjablonen
+# <a name="comparison-functions-for-arm-templates"></a>Vergelijkingsfuncties voor ARM-sjablonen
 
-Resource Manager biedt verschillende functies voor het maken van vergelijkingen in uw sjablonen.
+Resource Manager biedt verschillende functies voor het maken van vergelijkingen in uw Azure Resource Manager -sjablonen (ARM).
 
-* [gelijk is aan](#equals)
-* [groter](#greater)
+* [equals](#equals)
+* [greater](#greater)
 * [greaterOrEquals](#greaterorequals)
-* [jonge](#less)
+* [less](#less)
 * [lessOrEquals](#lessorequals)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="equals"></a>is gelijk aan
+## <a name="equals"></a>equals
 `equals(arg1, arg2)`
 
-Hiermee wordt gecontroleerd of twee waarden gelijk zijn aan elkaar.
+Hiermee wordt gecontroleerd of twee waarden met elkaar overeenkomen.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |int, string, array of object |De eerste waarde die moet worden gecontroleerd op gelijkheid. |
-| Arg2 |Ja |int, string, array of object |De tweede waarde om te controleren op gelijkheid. |
+| arg1 |Ja |int, tekenreeks, array of object |De eerste waarde om te controleren op gelijkheid. |
+| arg2 |Ja |int, tekenreeks, array of object |De tweede waarde om te controleren op gelijkheid. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Retourneert **waar** als de waarden gelijk zijn. anders **False**.
+**Geeft als** resultaat True als de waarden gelijk zijn; anders, **False**.
 
 ### <a name="remarks"></a>Opmerkingen
 
-De functie equals wordt vaak gebruikt met het `condition`-element om te testen of een resource wordt geïmplementeerd.
+De functie gelijkisten `condition` wordt vaak gebruikt met het element om te testen of een resource wordt geïmplementeerd.
 
 ```json
 {
@@ -59,7 +59,7 @@ De functie equals wordt vaak gebruikt met het `condition`-element om te testen o
 
 ### <a name="example"></a>Voorbeeld
 
-Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/equals.json) worden verschillende soorten waarden voor gelijkheid gecontroleerd. Alle standaard waarden geven waar als resultaat.
+In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/equals.json) worden verschillende typen waarden gecontroleerd op gelijkheid. Alle standaardwaarden geven True terug.
 
 ```json
 {
@@ -122,28 +122,28 @@ Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+De uitvoer van het voorgaande voorbeeld met de standaardwaarden is:
 
-| Naam | Type | Waarde |
+| Name | Type | Waarde |
 | ---- | ---- | ----- |
-| checkInts | Bool | True |
-| checkStrings | Bool | True |
-| checkArrays | Bool | True |
-| checkObjects | Bool | True |
+| checkInts | Booleaanse waarde | True |
+| checkStrings | Booleaanse waarde | True |
+| checkArrays | Booleaanse waarde | True |
+| controlerenObjecten | Booleaanse waarde | True |
 
-In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
+Als u deze voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json
 ```
 
-In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
+Gebruik het als volgt om deze voorbeeldsjabloon met PowerShell te implementeren:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json
 ```
 
-De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) gebruikt [niet](template-functions-logical.md#not) met **gelijk aan**.
+In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) wordt [niet](template-functions-logical.md#not) met **gelijken gebruikt.**
 
 ```json
 {
@@ -160,43 +160,43 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-De uitvoer van het vorige voor beeld is:
+De uitvoer uit het voorgaande voorbeeld is:
 
-| Naam | Type | Waarde |
+| Name | Type | Waarde |
 | ---- | ---- | ----- |
-| checkNotEquals | Bool | True |
+| checkNotEquals | Booleaanse waarde | True |
 
-In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
+Als u deze voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
 ```
 
-In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
+Gebruik het als volgt om deze voorbeeldsjabloon met PowerShell te implementeren:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
 ```
 
 ## <a name="greater"></a>greater
 `greater(arg1, arg2)`
 
-Controleert of de eerste waarde groter is dan de tweede waarde.
+Hiermee wordt gecontroleerd of de eerste waarde groter is dan de tweede waarde.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |int of String |De eerste waarde voor de grotere vergelijking. |
-| Arg2 |Ja |int of String |De tweede waarde voor de grotere vergelijking. |
+| arg1 |Ja |int of tekenreeks |De eerste waarde voor de grotere vergelijking. |
+| arg2 |Ja |int of tekenreeks |De tweede waarde voor de grotere vergelijking. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Retourneert **waar** als de eerste waarde groter is dan de tweede waarde; anders **False**.
+Geeft als resultaat **True** als de eerste waarde groter is dan de tweede waarde; anders, **False**.
 
 ### <a name="example"></a>Voorbeeld
 
-Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greater.json) wordt gecontroleerd of de ene waarde groter is dan de andere.
+In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greater.json) wordt gecontroleerd of de ene waarde groter is dan de andere.
 
 ```json
 {
@@ -235,23 +235,23 @@ Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+De uitvoer van het voorgaande voorbeeld met de standaardwaarden is:
 
-| Naam | Type | Waarde |
+| Name | Type | Waarde |
 | ---- | ---- | ----- |
-| checkInts | Bool | False |
-| checkStrings | Bool | True |
+| checkInts | Booleaanse waarde | False |
+| checkStrings | Booleaanse waarde | True |
 
-In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
+Als u deze voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json
 ```
 
-In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
+Gebruik het als volgt om deze voorbeeldsjabloon met PowerShell te implementeren:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json
 ```
 
 ## <a name="greaterorequals"></a>greaterOrEquals
@@ -263,16 +263,16 @@ Hiermee wordt gecontroleerd of de eerste waarde groter is dan of gelijk is aan d
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |int of String |De eerste waarde voor de grotere of gelijk zijnde vergelijking. |
-| Arg2 |Ja |int of String |De tweede waarde voor de groter of gelijke vergelijking. |
+| arg1 |Ja |int of tekenreeks |De eerste waarde voor de grotere of gelijke vergelijking. |
+| arg2 |Ja |int of tekenreeks |De tweede waarde voor de grotere of gelijke vergelijking. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Retourneert **waar** als de eerste waarde groter is dan of gelijk is aan de tweede waarde; anders **False**.
+**Geeft als** resultaat True als de eerste waarde groter is dan of gelijk is aan de tweede waarde; anders, **False**.
 
 ### <a name="example"></a>Voorbeeld
 
-Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greaterorequals.json) wordt gecontroleerd of de ene waarde groter is dan of gelijk is aan de andere.
+In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greaterorequals.json) wordt gecontroleerd of de ene waarde groter is dan of gelijk is aan de andere.
 
 ```json
 {
@@ -311,44 +311,44 @@ Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+De uitvoer van het voorgaande voorbeeld met de standaardwaarden is:
 
-| Naam | Type | Waarde |
+| Name | Type | Waarde |
 | ---- | ---- | ----- |
-| checkInts | Bool | False |
-| checkStrings | Bool | True |
+| checkInts | Booleaanse waarde | False |
+| checkStrings | Booleaanse waarde | True |
 
-In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
+Als u deze voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json
 ```
 
-In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
+Gebruik het als volgt om deze voorbeeldsjabloon met PowerShell te implementeren:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json
 ```
 
-## <a name="less"></a>jonge
+## <a name="less"></a>less
 `less(arg1, arg2)`
 
-Controleert of de eerste waarde lager is dan de tweede waarde.
+Hiermee wordt gecontroleerd of de eerste waarde kleiner is dan de tweede waarde.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |int of String |De eerste waarde voor de minder vergelijkingen. |
-| Arg2 |Ja |int of String |De tweede waarde voor de minder vergelijkingen. |
+| arg1 |Ja |int of tekenreeks |De eerste waarde voor de minder vergelijking. |
+| arg2 |Ja |int of tekenreeks |De tweede waarde voor de minder vergelijking. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Retourneert **waar** als de eerste waarde kleiner is dan de tweede waarde; anders **False**.
+**Geeft als** resultaat True als de eerste waarde kleiner is dan de tweede waarde; anders, **False**.
 
 ### <a name="example"></a>Voorbeeld
 
-Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/less.json) wordt gecontroleerd of de ene waarde kleiner is dan de andere.
+In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/less.json) wordt gecontroleerd of de ene waarde kleiner is dan de andere.
 
 ```json
 {
@@ -387,23 +387,23 @@ Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+De uitvoer van het voorgaande voorbeeld met de standaardwaarden is:
 
-| Naam | Type | Waarde |
+| Name | Type | Waarde |
 | ---- | ---- | ----- |
-| checkInts | Bool | True |
-| checkStrings | Bool | False |
+| checkInts | Booleaanse waarde | True |
+| checkStrings | Booleaanse waarde | False |
 
-In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
+Als u deze voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json
 ```
 
-In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
+Gebruik het als volgt om deze voorbeeldsjabloon met PowerShell te implementeren:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json
 ```
 
 ## <a name="lessorequals"></a>lessOrEquals
@@ -415,16 +415,16 @@ Hiermee wordt gecontroleerd of de eerste waarde kleiner is dan of gelijk is aan 
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |int of String |De eerste waarde voor de vergelijking met minder of gelijk aan. |
-| Arg2 |Ja |int of String |De tweede waarde voor de vergelijking met minder of gelijk aan. |
+| arg1 |Ja |int of tekenreeks |De eerste waarde voor de minder of is gelijk aan vergelijking. |
+| arg2 |Ja |int of tekenreeks |De tweede waarde voor de minder of is gelijk aan vergelijking. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Retourneert **waar** als de eerste waarde kleiner dan of gelijk aan de tweede waarde is; anders **False**.
+**Geeft als** resultaat True als de eerste waarde kleiner is dan of gelijk is aan de tweede waarde; anders, **False**.
 
 ### <a name="example"></a>Voorbeeld
 
-Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/lessorequals.json) wordt gecontroleerd of de ene waarde kleiner is dan of gelijk is aan de andere.
+In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/lessorequals.json) wordt gecontroleerd of de ene waarde kleiner is dan of gelijk is aan de andere.
 
 ```json
 {
@@ -463,28 +463,28 @@ Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+De uitvoer van het voorgaande voorbeeld met de standaardwaarden is:
 
-| Naam | Type | Waarde |
+| Name | Type | Waarde |
 | ---- | ---- | ----- |
-| checkInts | Bool | True |
-| checkStrings | Bool | False |
+| checkInts | Booleaanse waarde | True |
+| checkStrings | Booleaanse waarde | False |
 
-In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
+Als u deze voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json
 ```
 
-In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
+Gebruik het als volgt om deze voorbeeldsjabloon met PowerShell te implementeren:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie [Azure Resource Manager sjablonen ontwerpen](template-syntax.md)voor een beschrijving van de secties in een Azure Resource Manager sjabloon.
-* Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md)om meerdere sjablonen samen te voegen.
-* Als u een bepaald aantal keer wilt herhalen bij het maken van een type resource, raadpleegt u [meerdere exemplaren van resources maken in azure Resource Manager](copy-resources.md).
-* Zie [een toepassing implementeren met Azure Resource Manager sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt.
+* Zie [Sjablonen voor Azure Resource Manager ontwerpen](template-syntax.md)voor een beschrijving van de secties in een Azure Resource Manager-sjabloon.
+* Zie [Gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md)als u meerdere sjablonen wilt samenvoegen.
+* Zie Meerdere exemplaren van resources maken [in Azure Resource Manager](copy-resources.md)als u een bepaald aantal keren wilt herhalen bij het maken van een type resource.
+* Zie Een toepassing implementeren met Azure [Resource Manager-sjabloon](deploy-powershell.md)als u wilt zien hoe u de sjabloon implementeren die u hebt gemaakt.
 

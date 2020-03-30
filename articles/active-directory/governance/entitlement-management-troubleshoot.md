@@ -1,9 +1,9 @@
 ---
-title: Problemen met het beheer van rechten oplossen-Azure AD
-description: Meer informatie over sommige items die u moet controleren om u te helpen bij het oplossen van Azure Active Directory rechten beheer.
+title: Beheer van rechten oplossen - Azure AD
+description: Meer informatie over bepaalde items die u moet controleren om problemen op te lossen bij Azure Active Directory-rechtenbeheer.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,133 +12,137 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 10/26/2019
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e291a032c1aac45ebc783126e69b524e1d0af95b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 7c38e1a61827da547bb39a699a0e92043e63466c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79261682"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128477"
 ---
-# <a name="troubleshoot-azure-ad-entitlement-management"></a>Het beheer van rechten voor Azure AD oplossen
+# <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD-rechtenbeheer oplossen
 
-In dit artikel worden enkele items beschreven die u moet controleren om te helpen bij het oplossen van het beheer van rechten van Azure Active Directory (Azure AD).
+In dit artikel worden enkele items beschreven die u moet controleren om problemen op te lossen bij Azure Active Directory (Azure AD) rechtenbeheer.
 
 ## <a name="administration"></a>Beheer
 
-* Als u een bericht krijgt dat toegang is geweigerd bij het configureren van rechten beheer en u een globale beheerder bent, moet u ervoor zorgen dat uw Directory een [Azure AD Premium P2 (of EMS E5)-licentie](entitlement-management-overview.md#license-requirements)heeft.
+* Als u een bericht met geweigerde toegang krijgt bij het configureren van beheer van rechten en u een globale beheerder bent, moet u ervoor zorgen dat uw directory een [Azure AD Premium P2-licentie (of EMS E5) heeft.](entitlement-management-overview.md#license-requirements)
 
-* Als u een bericht krijgt dat toegang wordt geweigerd bij het maken of weer geven van toegangs pakketten en u lid bent van een maker van een catalogus, moet u [een catalogus maken](entitlement-management-catalog-create.md) voordat u uw eerste toegangs pakket maakt.
+* Als u een bericht met toegang wordt geweigerd bij het maken of weergeven van toegangspakketten en u bent lid van een makergroep catalogus, moet u [een catalogus maken](entitlement-management-catalog-create.md) voordat u uw eerste toegangspakket maakt.
 
-## <a name="resources"></a>Bronnen
+## <a name="resources"></a>Resources
 
-* Rollen voor toepassingen worden gedefinieerd door de toepassing zelf en worden beheerd in Azure AD. Als een toepassing geen resource rollen heeft, wijst het rechten beheer gebruikers toe aan een **standaard-Access** -rol.
+* Rollen voor toepassingen worden gedefinieerd door de toepassing zelf en worden beheerd in Azure AD. Als een toepassing geen resourcerollen heeft, wijst het rechtbeheer gebruikers toe aan een **standaardtoegangsrol.**
 
-    Houd er rekening mee dat de Azure Portal ook service-principals kunnen weer geven voor services die niet als toepassingen kunnen worden geselecteerd.  Met name **Exchange Online** en **share point online** zijn services, geen toepassingen die resource rollen hebben in de Directory, zodat ze niet kunnen worden opgenomen in een toegangs pakket.  Gebruik in plaats daarvan op groepen gebaseerde licenties om een geschikte licentie te maken voor een gebruiker die toegang nodig heeft tot deze services.
+    Houd er rekening mee dat de Azure-portal ook serviceprincipals kan weergeven voor services die niet als toepassingen kunnen worden geselecteerd.  **Exchange Online** en **SharePoint Online** zijn met name services, geen toepassingen met resourcerollen in de map, zodat ze niet in een toegangspakket kunnen worden opgenomen.  Gebruik in plaats daarvan op groepen gebaseerde licenties om een geschikte licentie te maken voor een gebruiker die toegang nodig heeft tot deze services.
 
 * Een groep kan alleen een resource in een toegangspakket zijn als deze kan worden gewijzigd in Azure AD.  Groepen die afkomstig zijn van een on-premises Active Directory, kunnen niet worden toegewezen als resources omdat hun eigenaar- of lidkenmerken niet kunnen worden gewijzigd in Azure AD.   Groepen die afkomstig zijn van Exchange Online als distributiegroep kunnen evenmin in Azure AD worden gewijzigd. 
 
-* SharePoint Online-documentbibliotheken en afzonderlijke documenten kunnen niet worden toegevoegd als resources.  Maak in plaats daarvan een [Azure AD-beveiligings groep](../fundamentals/active-directory-groups-create-azure-portal.md), neem deze groep en een siterol op in het toegangs pakket, en gebruik in share point online die groep om de toegang tot de document bibliotheek of het document te beheren.
+* SharePoint Online-documentbibliotheken en afzonderlijke documenten kunnen niet worden toegevoegd als resources.  Maak in plaats daarvan een [Azure AD-beveiligingsgroep,](../fundamentals/active-directory-groups-create-azure-portal.md)neem die groep en een siterol op in het toegangspakket en gebruik die groep in SharePoint Online om de toegang tot de documentbibliotheek of het document te beheren.
 
-* Als er gebruikers zijn die al zijn toegewezen aan een resource die u met een toegangspakket wilt beheren, moet u ervoor zorgen dat de gebruikers met een toepasselijk beleid worden toegewezen aan het toegangspakket. Het is bijvoorbeeld mogelijk dat u een groep wilt opnemen in een toegangspakket dat al gebruikers in de groep bevat. Als die gebruikers in de groep voortdurende toegang nodig hebben, moeten ze beschikken over het juiste beleid voor de toegangspakketten, zodat ze hun toegang tot de groep niet verliezen. U kunt het toegangspakket toewijzen door de gebruikers te vragen het toegangspakket met die resource aan te vragen, of door ze rechtstreeks toe te wijzen aan het toegangspakket. Zie [instellingen voor aanvraag en goed keuring wijzigen voor een toegangs pakket](entitlement-management-access-package-request-policy.md)voor meer informatie.
+* Als er gebruikers zijn die al zijn toegewezen aan een resource die u met een toegangspakket wilt beheren, moet u ervoor zorgen dat de gebruikers met een toepasselijk beleid worden toegewezen aan het toegangspakket. Het is bijvoorbeeld mogelijk dat u een groep wilt opnemen in een toegangspakket dat al gebruikers in de groep bevat. Als die gebruikers in de groep voortdurende toegang nodig hebben, moeten ze beschikken over het juiste beleid voor de toegangspakketten, zodat ze hun toegang tot de groep niet verliezen. U kunt het toegangspakket toewijzen door de gebruikers te vragen het toegangspakket met die resource aan te vragen, of door ze rechtstreeks toe te wijzen aan het toegangspakket. Zie [Aanvraag- en goedkeuringsinstellingen voor een toegangspakket wijzigen voor](entitlement-management-access-package-request-policy.md)meer informatie.
 
-* Wanneer u een lid van een team verwijdert, wordt deze persoon ook verwijderd uit de Office 365-groep. Het verwijderen uit de chatfunctionaliteit van het team kan worden uitgesteld. Zie [groepslid maatschap](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)voor meer informatie.
+* Wanneer u een lid van een team verwijdert, wordt deze persoon ook verwijderd uit de Office 365-groep. Het verwijderen uit de chatfunctionaliteit van het team kan worden uitgesteld. Zie [Groepslidmaatschap](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)voor meer informatie .
 
-* Zorg ervoor dat uw directory niet is geconfigureerd voor Multi-Geo. Rechtenbeheer biedt momenteel geen ondersteuning voor Multi-Geo-locaties voor SharePoint Online. SharePoint Online-sites moeten zich in de standaard geo-locatie bevinden om te worden beheerd met rechtenbeheer. Zie [multi-geo-mogelijkheden in OneDrive en share point online](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)voor meer informatie.
+* Zorg ervoor dat uw directory niet is geconfigureerd voor Multi-Geo. Rechtenbeheer biedt momenteel geen ondersteuning voor Multi-Geo-locaties voor SharePoint Online. SharePoint Online-sites moeten zich in de standaard geo-locatie bevinden om te worden beheerd met rechtenbeheer. Zie [Multi-Geo-mogelijkheden in OneDrive en SharePoint Online](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)voor meer informatie.
+
+## <a name="access-packages"></a>Toegangspakketten
+
+* Als u een toegangspakket of -beleid probeert te verwijderen en een foutbericht ziet waarin staat dat er actieve toewijzingen zijn, controleert u of onlangs verwijderde gebruikers nog opdrachten hebben als u geen gebruikers met toewijzingen ziet. Tijdens het 30-dagenvenster nadat een gebruiker is verwijderd, kan het gebruikersaccount worden hersteld.   
 
 ## <a name="external-users"></a>Externe gebruikers
 
-* Wanneer een externe gebruiker de toegang tot een toegangs pakket wil aanvragen, moet u ervoor zorgen dat ze de **Portal-koppeling van mijn toegang** gebruiken voor het toegangs pakket. Zie [koppeling delen om een toegangs pakket aan te vragen](entitlement-management-access-package-settings.md)voor meer informatie. Als een externe gebruiker alleen **myaccess.Microsoft.com** bezoekt en niet de volledige mijn Access-Portal koppeling gebruikt, zien ze de toegangs pakketten die voor hen beschikbaar zijn in hun eigen organisatie en niet in uw organisatie.
+* Wanneer een externe gebruiker toegang tot een toegangspakket wil aanvragen, controleert u of deze de **koppeling Mijn toegang-portal** voor het toegangspakket gebruikt. Zie [Koppeling delen om een toegangspakket aan te vragen](entitlement-management-access-package-settings.md)voor meer informatie. Als een externe gebruiker gewoon **myaccess.microsoft.com** bezoekt en niet de volledige My Access-portalkoppeling gebruikt, ziet hij de toegangspakketten die voor hen beschikbaar zijn in hun eigen organisatie en niet in uw organisatie.
 
-* Als een externe gebruiker geen toegang kan aanvragen tot een toegangs pakket of geen toegang kan krijgen tot bronnen, controleert u de [instellingen voor externe gebruikers](entitlement-management-external-users.md#settings-for-external-users).
+* Als een externe gebruiker geen toegang kan vragen tot een toegangspakket of geen toegang heeft tot bronnen, controleert u de [instellingen voor externe gebruikers.](entitlement-management-external-users.md#settings-for-external-users)
 
-* Als een nieuwe externe gebruiker die zich nog niet eerder bij uw directory heeft aangemeld een toegangspakket ontvangt met een SharePoint Online site, wordt het toegangspakket weergegeven als niet volledig geleverd totdat het account van de gebruiker in SharePoint Online is ingericht. Zie [uw externe share point Online-instellingen voor delen controleren](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings)voor meer informatie over het delen van instellingen.
+* Als een nieuwe externe gebruiker die zich nog niet eerder bij uw directory heeft aangemeld een toegangspakket ontvangt met een SharePoint Online site, wordt het toegangspakket weergegeven als niet volledig geleverd totdat het account van de gebruiker in SharePoint Online is ingericht. Zie Instellingen voor extern delen van [SharePoint Online](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings)controleren voor meer informatie over instellingen voor delen.
 
 ## <a name="requests"></a>Aanvragen
 
-* Wanneer een gebruiker de toegang tot een toegangs pakket wil aanvragen, moet u ervoor zorgen dat ze de **Portal-koppeling van mijn toegang** gebruiken voor het toegangs pakket. Zie [koppeling delen om een toegangs pakket aan te vragen](entitlement-management-access-package-settings.md)voor meer informatie.
+* Wanneer een gebruiker toegang tot een toegangspakket wil aanvragen, moet u ervoor zorgen dat hij de **koppeling Mijn toegang-portal** voor het toegangspakket gebruikt. Zie [Koppeling delen om een toegangspakket aan te vragen](entitlement-management-access-package-settings.md)voor meer informatie.
 
 * Als u de portal Mijn toegang opent met de browser in privé- of incognitomodus, kan dit conflicteren met het aanmeldingsgedrag. U wordt aangeraden geen in-privé-of incognito-modus voor uw browser te gebruiken wanneer u de portal Mijn toegang bezoekt.
 
-* Wanneer een gebruiker die zich nog niet in uw directory bevindt zich aanmeldt bij de portal Mijn toegang om een toegangspakket aan te vragen, moet deze zich authenticeren met zijn/haar organisatieaccount. Het organisatieaccount kan een account in de resourcedirectory zijn, of in een directory die is opgenomen in een van de beleidsregels van het toegangspakket. Als het account van de gebruiker geen organisatieaccount is, of de directory waar deze zich authenticeert niet is opgenomen in het beleid, kan de gebruiker het toegangspakket niet zien. Zie [toegang tot een toegangs pakket aanvragen](entitlement-management-request-access.md)voor meer informatie.
+* Wanneer een gebruiker die zich nog niet in uw directory bevindt zich aanmeldt bij de portal Mijn toegang om een toegangspakket aan te vragen, moet deze zich authenticeren met zijn/haar organisatieaccount. Het organisatieaccount kan een account in de resourcedirectory zijn, of in een directory die is opgenomen in een van de beleidsregels van het toegangspakket. Als het account van de gebruiker geen organisatieaccount is, of de directory waar deze zich authenticeert niet is opgenomen in het beleid, kan de gebruiker het toegangspakket niet zien. Zie [Toegang tot een toegangspakket aanvragen voor](entitlement-management-request-access.md)meer informatie .
 
-* Als een gebruiker zich niet kan aanmelden bij de resourcedirectory, kan deze geen toegang aanvragen in de portal Mijn toegang. Voordat de gebruiker toegang kan aanvragen, moet u de aanmeldingsblokkering verwijderen uit het profiel van de gebruiker. Als u het aanmeldings blok wilt verwijderen, klikt u in het Azure Portal op **Azure Active Directory**, klikt u op **gebruikers**, klikt u op de gebruiker en klikt u vervolgens op **profiel**. Bewerk de sectie **instellingen** en wijzig de **blok aanmelding in** op **Nee**. Zie [de profiel gegevens van een gebruiker toevoegen of bijwerken met behulp van Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md)voor meer informatie.  U kunt ook controleren of de gebruiker is geblokkeerd vanwege een [beleid voor identiteits beveiliging](../identity-protection/howto-unblock-user.md).
+* Als een gebruiker zich niet kan aanmelden bij de resourcedirectory, kan deze geen toegang aanvragen in de portal Mijn toegang. Voordat de gebruiker toegang kan aanvragen, moet u de aanmeldingsblokkering verwijderen uit het profiel van de gebruiker. Als u het aanmeldingsblok wilt verwijderen, klikt u in de **Azure-portal**op Azure Active Directory , klikt u op **Gebruikers,** klikt u op de gebruiker en klikt u vervolgens op **Profiel**. Bewerk de sectie **Instellingen** en wijzig **het aanmelding voor blokkeren in** **Nee**. Zie [De profielgegevens van een gebruiker toevoegen of bijwerken met Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md)voor meer informatie.  U ook controleren of de gebruiker is geblokkeerd vanwege een [beleid voor identiteitsbescherming.](../identity-protection/howto-unblock-user.md)
 
-* Als een gebruiker zowel een aanvrager als een fiatteur is, wordt in de portal mijn toegang de aanvraag voor een toegangs pakket niet weer geven op de pagina **goed keuringen** . Dit gedrag is opzettelijk: een gebruiker kan zijn/haar eigen aanvraag niet goedkeuren. Zorg ervoor dat er meerdere fiatteurs zijn geconfigureerd in het beleid voor het toegangspakket dat de gebruiker aanvraagt. Zie [instellingen voor aanvraag en goed keuring wijzigen voor een toegangs pakket](entitlement-management-access-package-request-policy.md)voor meer informatie.
+* Als een gebruiker in de My Access-portal zowel een aanvrager als een fiatteur is, ziet hij of zij zijn aanvraag voor een toegangspakket niet op de pagina **Goedkeuringen.** Dit gedrag is opzettelijk: een gebruiker kan zijn/haar eigen aanvraag niet goedkeuren. Zorg ervoor dat er meerdere fiatteurs zijn geconfigureerd in het beleid voor het toegangspakket dat de gebruiker aanvraagt. Zie [Aanvraag- en goedkeuringsinstellingen voor een toegangspakket wijzigen voor](entitlement-management-access-package-request-policy.md)meer informatie.
 
-### <a name="view-a-requests-delivery-errors"></a>De leverings fouten van een aanvraag weer geven
+### <a name="view-a-requests-delivery-errors"></a>De leveringsfouten van een aanvraag weergeven
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikersbeheerder, cataloguseigenaar of Access-pakketbeheer
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
 
-1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
+1. Klik in het linkermenu op **Access-pakketten** en open het toegangspakket.
 
-1. Klik op **aanvragen**.
+1. Klik **op Aanvragen**.
 
-1. Selecteer de aanvraag die u wilt weer geven.
+1. Selecteer het verzoek dat u wilt weergeven.
 
-    Als de aanvraag een leverings fout bevat, wordt de status van de aanvraag niet **bezorgd** of **gedeeltelijk bezorgd**.
+    Als er leveringsfouten in de aanvraag zijn, wordt de aanvraagstatus **niet geleverd** of **gedeeltelijk geleverd.**
 
-    Als er bezorgings fouten zijn, wordt in het detail venster van de aanvraag een telling van de bezorgings fouten weer gegeven.
+    Als er leveringsfouten zijn, wordt in het detailvenster van de aanvraag een aantal leveringsfouten weergegeven.
 
-1. Klik op het aantal om alle bezorgings fouten van de aanvraag weer te geven.
+1. Klik op het aantal om alle leveringsfouten van de aanvraag te bekijken.
 
 ### <a name="reprocess-a-request"></a>Een aanvraag opnieuw verwerken
 
-Als een aanvraag een fout tegen komt, kunt u de aanvraag opnieuw verwerken om deze opnieuw te proberen. U kunt alleen een aanvraag met de status **bezorgd** of **gedeeltelijk** opnieuw verwerken, en een voltooide datum van minder dan een week.
+Als er een fout optreedt bij een aanvraag, u het verzoek opnieuw verwerken om het opnieuw te proberen. U alleen een aanvraag met een status van **levering als mislukt** of gedeeltelijk **geleverd** en een voltooide datum van minder dan een week opnieuw verwerken.
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikersbeheerder, cataloguseigenaar of Access-pakketbeheer
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
 
-1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
+1. Klik in het linkermenu op **Access-pakketten** en open het toegangspakket.
 
-1. Klik op **aanvragen**.
+1. Klik **op Aanvragen**.
 
-1. Klik op de aanvraag die u opnieuw wilt verwerken.
+1. Klik op het verzoek dat u opnieuw wilt verwerken.
 
-1. Klik in het deel venster aanvraag Details op **aanvraag opnieuw verwerken**.
+1. Klik in het deelvenster Details van de aanvraag op **Aanvraag opnieuw verwerken**.
 
     ![Een mislukte aanvraag opnieuw verwerken](./media/entitlement-management-troubleshoot/reprocess-request.png)
 
 ### <a name="cancel-a-pending-request"></a>Een aanvraag in behandeling annuleren
 
-U kunt een aanvraag die in behandeling is, alleen annuleren als deze nog niet is bezorgd of waarvoor de bezorging is mislukt.
+U alleen een aanvraag in behandeling annuleren die nog niet is geleverd of waarvan de levering is mislukt.
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikersbeheerder, cataloguseigenaar of Access-pakketbeheer
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
 
-1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
+1. Klik in het linkermenu op **Access-pakketten** en open het toegangspakket.
 
-1. Klik op **aanvragen**.
+1. Klik **op Aanvragen**.
 
-1. Klik op de aanvraag die u wilt annuleren.
+1. Klik op het verzoek dat u wilt annuleren.
 
-1. Klik in het deel venster aanvraag Details op **Aanvraag annuleren**.
+1. Klik in het deelvenster Details van het verzoek op **Aanvraag annuleren**.
 
-## <a name="multiple-policies"></a>Meerdere beleids regels
+## <a name="multiple-policies"></a>Meerdere beleidsregels
 
-* Voor het beheer van rechten worden de best practices voor de minimale bevoegdheid gevolgd. Wanneer een gebruiker toegang vraagt tot een toegangs pakket dat meerdere beleids regels heeft, is het beheer van rechten de logica om ervoor te zorgen dat strengere of meer specifieke beleids regels worden toegepast via algemeen beleid. Als een beleid algemeen is, kan het beheer van rechten het beleid niet weer geven voor de aanvrager of kan er automatisch een strikter beleid worden geselecteerd.
+* Het beheer van rechten volgt de beste procedures voor de minste bevoegdheden. Wanneer een gebruiker toegang vraagt tot een toegangspakket met meerdere beleidsregels die van toepassing zijn, bevat het beheer van rechten logica om ervoor te zorgen dat strengere of meer specifieke beleidsregels voorrang krijgen boven algemeen beleid. Als een beleid generiek is, wordt het beleid mogelijk niet aan de aanvrager weergegeven of wordt er mogelijk automatisch een strenger beleid geselecteerd.
 
-* Denk bijvoorbeeld aan een toegangs pakket met twee beleids regels voor interne werk nemers waarin beide beleids regels van toepassing zijn op de aanvrager. Het eerste beleid is voor specifieke gebruikers die de aanvrager bevatten. Het tweede beleid geldt voor alle gebruikers in een map waarvan de aanvrager lid is. In dit scenario wordt het eerste beleid automatisch geselecteerd voor de aanvrager omdat het strikter is. De aanvrager krijgt niet de optie om het tweede beleid te selecteren.
+* Denk bijvoorbeeld aan een toegangspakket met twee beleidsregels voor interne werknemers waarin beide beleidsregels van toepassing zijn op de aanvrager. Het eerste beleid is voor specifieke gebruikers die de aanvrager bevatten. Het tweede beleid is voor alle gebruikers in een directory waarvan de aanvrager lid is. In dit scenario wordt het eerste beleid automatisch geselecteerd voor de aanvrager of omdat het strenger is. De aanvrager krijgt niet de mogelijkheid om het tweede beleid te selecteren.
 
-* Als er meerdere beleids regels van toepassing zijn, is het beleid dat automatisch wordt geselecteerd of het beleid dat wordt weer gegeven voor de aanvrager gebaseerd op de volgende prioriteits logica:
+* Wanneer meerdere beleidsregels van toepassing zijn, is het beleid dat automatisch wordt geselecteerd of het beleid dat wordt weergegeven aan de aanvrager gebaseerd op de volgende prioriteitslogica:
 
-    | Beleids prioriteit | Bereik |
+    | Beleidsprioriteit | Bereik |
     | --- | --- |
-    | P1 | Specifieke gebruikers en groepen in uw Directory of specifieke verbonden organisaties |
-    | P2 | Alle leden in uw directory (exclusief gasten) |
+    | P1 | Specifieke gebruikers en groepen in uw directory of specifieke verbonden organisaties |
+    | P2 | Alle leden in uw directory (met uitzondering van gasten) |
     | P3 | Alle gebruikers in uw directory (inclusief gasten) of specifieke verbonden organisaties |
-    | P4 | Alle verbonden organisaties of alle gebruikers (alle verbonden organisaties en alle nieuwe externe gebruikers) |
+    | P4 | Alle verbonden organisaties OF Alle gebruikers (alle verbonden organisaties + nieuwe externe gebruikers) |
     
-    Als een beleid zich in een categorie met hogere prioriteit bevindt, worden de categorieën met lagere prioriteit genegeerd. Zie [een beleid selecteren](entitlement-management-request-access.md#select-a-policy)voor een voor beeld van hoe er meerdere beleids regels met dezelfde prioriteit worden weer gegeven voor de aanvrager.
+    Als een beleid zich in een categorie met een hogere prioriteit bevindt, worden de categorieën met een lagere prioriteit genegeerd. Zie [Een beleid selecteren](entitlement-management-request-access.md#select-a-policy)voor een voorbeeld van hoe meerdere beleidsregels met dezelfde prioriteit worden weergegeven aan de aanvrager .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toegang tot externe gebruikers bepalen](entitlement-management-external-users.md)
-- [Rapporten weer geven over hoe gebruikers toegang krijgen in het recht beheer](entitlement-management-reports.md)
+- [Toegang voor externe gebruikers beheren](entitlement-management-external-users.md)
+- [Rapporten weergeven over hoe gebruikers toegang kregen in het beheer van rechten](entitlement-management-reports.md)

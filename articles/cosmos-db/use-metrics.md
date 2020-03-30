@@ -1,80 +1,80 @@
 ---
-title: Controleren en fouten opsporen met metrische gegevens in Azure Cosmos DB
-description: Gebruik metrische gegevens in Azure Cosmos DB om veelvoorkomende problemen op te sporen en de data base te bewaken.
-ms.service: cosmos-db
+title: Controleren en debuggen met statistieken in Azure Cosmos DB
+description: Gebruik metrische gegevens in Azure Cosmos DB om veelvoorkomende problemen te opsporen en de database te controleren.
 author: kanshiG
-ms.author: sngun
+ms.author: govindk
+ms.reviewer: sngun
+ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.reviewer: sngun
-ms.openlocfilehash: ef457fe8c21bc7e62f910a78913069df32bea1a3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: b65bc6097d4841c79a68d4313ac7a3f89f6d1dbb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79246459"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065938"
 ---
-# <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Controleren en fouten opsporen met metrische gegevens in Azure Cosmos DB
+# <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Controleren en debuggen met statistieken in Azure Cosmos DB
 
-Azure Cosmos DB biedt metrische gegevens voor doorvoer, opslag, consistentie, beschikbaarheid en latentie. De Azure-portal biedt een geaggregeerde weergave van deze metrische gegevens. U kunt ook metrische gegevens uit Azure Cosmos DB bekijken vanuit de Azure Monitor API. Zie het artikel [metrische gegevens ophalen uit Azure monitor](cosmos-db-azure-monitor-metrics.md) voor meer informatie over het weer geven van metrische gegevens in azure monitor. 
+Azure Cosmos DB biedt metrische gegevens voor doorvoer, opslag, consistentie, beschikbaarheid en latentie. De Azure-portal biedt een geaggregeerde weergave van deze metrische gegevens. U kunt ook metrische gegevens uit Azure Cosmos DB bekijken vanuit de Azure Monitor API. Zie het artikel [Statistieken ophalen uit Azure Monitor](cosmos-db-azure-monitor-metrics.md) voor meer informatie over het weergeven van statistieken uit Azure-monitor. 
 
-In dit artikel worden algemene use cases beschreven en wordt uitgelegd hoe Azure Cosmos DB meet waarden kunnen worden gebruikt om deze problemen te analyseren en op te lossen. Metrische gegevens worden elke vijf minuten verzameld en gedurende zeven dagen bewaard.
+In dit artikel worden veelvoorkomende use cases besproken en hoe Azure Cosmos DB-statistieken kunnen worden gebruikt om deze problemen te analyseren en te debuggen. Statistieken worden elke vijf minuten verzameld en worden zeven dagen bewaard.
 
-## <a name="view-metrics-from-azure-portal"></a>Metrische gegevens van Azure Portal weer geven
+## <a name="view-metrics-from-azure-portal"></a>Statistieken weergeven vanuit Azure-portal
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/)
 
-1. Open het deel venster **metrische gegevens** . Standaard toont het deel venster metrieken de metrische gegevens over de opslag, index en aanvraag eenheden voor alle data bases in uw Azure Cosmos-account. U kunt deze metrische gegevens per data base, container of regio filteren. U kunt de metrische gegevens ook filteren op een specifieke tijd granulariteit. Meer informatie over de metrische gegevens voor door Voer, opslag, Beschik baarheid, latentie en consistentie is beschikbaar op afzonderlijke tabbladen. 
+1. Open het deelvenster **Statistieken.** Standaard toont het deelvenster Metrische gegevens de statistieken, index, aanvraageenheden statistieken voor alle databases in uw Azure Cosmos-account. U deze statistieken filteren per database, container of een regio. U de statistieken ook filteren op een specifieke tijdgranulariteit. Meer informatie over de doorvoer-, opslag-, beschikbaarheids-, latentie- en consistentiestatistieken worden op afzonderlijke tabbladen weergegeven. 
 
-   ![Meet gegevens voor prestaties Cosmos DB in Azure Portal](./media/use-metrics/performance-metrics.png)
+   ![Prestatiestatistieken van Cosmos DB in Azure-portal](./media/use-metrics/performance-metrics.png)
 
-De volgende metrische gegevens zijn beschikbaar in het deel venster **metrische gegevens** : 
+De volgende statistieken zijn beschikbaar in het deelvenster **Statistieken:** 
 
-* **Metrische gegevens over door Voer** -deze metriek toont het aantal verbruikte of mislukte aanvragen (429 respons code), omdat de door Voer of opslag capaciteit die is ingericht voor de container, is overschreden.
+* **Doorvoerstatistieken** : deze statistiek geeft het aantal aanvragen weer dat is verbruikt of is mislukt (429-responscode) omdat de doorvoer- of opslagcapaciteit die voor de container is ingericht, is overschreden.
 
-* **Metrische opslag** gegevens: deze meet waarde toont de grootte van het data-en index gebruik.
+* **Opslagstatistieken** : deze statistiek geeft de grootte van gegevens en indexgebruik weer.
 
-* **Metrische beschikbaarheids gegevens** : met deze metriek wordt het percentage voltooide aanvragen voor het totaal aantal aanvragen per uur weer gegeven. Het voltooiings percentage wordt gedefinieerd door de Azure Cosmos DB Sla's.
+* **Beschikbaarheidsstatistieken** : deze statistiek geeft het percentage geslaagde aanvragen weer over het totale aantal aanvragen per uur. Het slagingspercentage wordt bepaald door de Azure Cosmos DB SLA's.
 
-* **Metrische gegevens over latentie** : in deze metrische gegevens wordt de lees-en schrijf latentie weer gegeven die wordt waargenomen door Azure Cosmos db in de regio waar uw account wordt uitgevoerd. U kunt latentie in verschillende regio's voor een geografisch gerepliceerd account visualiseren. Deze metrische waarde vertegenwoordigt niet de end-to-end-latentie van de aanvraag.
+* **Latentiestatistieken** - Deze statistiek toont de lees- en schrijflatentie die azure cosmos DB heeft waargenomen in de regio waar uw account actief is. U latentie in verschillende regio's visualiseren voor een geo-gerepliceerd account. Deze statistiek vertegenwoordigt niet de end-to-end aanvraaglatentie.
 
-* **Consistentie metrieken** : deze metrische gegevens geven aan hoe uiteindelijk de consistentie is voor het consistentie model dat u kiest. Voor accounts met meerdere regio's toont deze metrische gegevens ook de replicatie latentie tussen de regio's die u hebt geselecteerd.
+* **Consistentiestatistieken** : deze statistiek geeft aan hoe uiteindelijk de consistentie is voor het consistentiemodel dat u kiest. Voor accounts met meerdere regio's wordt in deze statistiek ook de replicatielatentie weergegeven tussen de regio's die u hebt geselecteerd.
 
-* **Systeem metrieken** : in deze metrische gegevens wordt weer gegeven hoeveel meta data-aanvragen worden verwerkt door de hoofd partitie. Het helpt ook de vertraagde aanvragen te identificeren.
+* **Systeemstatistieken** : deze statistiek geeft aan hoeveel metagegevensaanvragen worden weergegeven door de hoofdpartitie. Het helpt ook om de gethrottled verzoeken te identificeren.
 
-In de volgende secties worden veelvoorkomende scenario's beschreven waarin u Azure Cosmos DB metrische gegevens kunt gebruiken. 
+In de volgende secties worden veelvoorkomende scenario's uitgelegd waarin u Azure Cosmos DB-statistieken gebruiken. 
 
-## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>Begrijpen hoeveel aanvragen slagen of fouten veroorzaken
+## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>Begrijpen hoeveel aanvragen worden mislukt of fouten veroorzaken
 
-Als u aan de slag wilt gaan, gaat u naar de [Azure Portal](https://portal.azure.com) en navigeert u naar de Blade **metrische gegevens** . Zoek in de Blade naar de * * aantal aanvragen met een capaciteit van meer dan één minuut diagram. Dit diagram toont het totale aantal minuten per minuut dat is gesegmenteerd door de status code. Zie [HTTP-status codes voor Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)voor meer informatie over HTTP-status codes.
+Ga naar de [Azure-portal](https://portal.azure.com) om aan de slag te gaan en navigeer naar het **blade Metrics.** Zoek in het blad het **aantal aanvragen dat de capaciteit per grafiek van 1 minuut heeft overschreden. Deze grafiek toont een minuut voor minuut totaal aantal aanvragen gesegmenteerd door de statuscode. Zie [HTTP-statuscodes voor Azure Cosmos DB voor](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)meer informatie over HTTP-statuscodes.
 
-De meest voorkomende fout status code is 429 (beperking of beperking). Deze fout betekent dat aanvragen voor Azure Cosmos DB meer zijn dan de ingerichte door voer. De meest voorkomende oplossing voor dit probleem is het [opschalen van het RUs](./set-throughput.md) voor de gegeven verzameling.
+De meest voorkomende foutstatuscode is 429 (tariefbeperking/beperking). Deze fout betekent dat aanvragen voor Azure Cosmos DB meer zijn dan de ingerichte doorvoer. De meest voorkomende oplossing voor dit probleem is het [opschalen van de R's](./set-throughput.md) voor de gegeven collectie.
 
 ![Aantal aanvragen per minuut](media/use-metrics/metrics-12.png)
 
-## <a name="determine-the-throughput-distribution-across-partitions"></a>De doorvoer distributie voor alle partities bepalen
+## <a name="determine-the-throughput-distribution-across-partitions"></a>De doorvoerverdeling over partities bepalen
 
-Een goede kardinaliteit van uw partitie sleutels is essentieel voor elke schaal bare toepassing. Ga naar de **Blade metrische gegevens** in de [Azure Portal](https://portal.azure.com)om de doorvoer distributie te bepalen van een gepartitioneerde container die is onderverdeeld in partities. Op het tabblad **door Voer** wordt de opslag specificatie weer gegeven in de tabel **Max. aantal geconsumeerde ru/seconde per fysieke partitie** . In de volgende afbeelding ziet u een voor beeld van een slechte distributie van gegevens, zoals wordt weer gegeven door de gescheefe partitie helemaal links.
+Het hebben van een goede kardinaliteit van uw partitiesleutels is essentieel voor elke schaalbare toepassing. Als u de doorvoerverdeling wilt bepalen van een partitiecontainer die is opgesplitst in partities, navigeert u naar het **blade metrics** in de [Azure-portal.](https://portal.azure.com) Op het tabblad **Doorvoer** wordt de opslagverdeling weergegeven in de **maximaal verbruikte RU/seconde door elke fysieke partitiegrafiek.** De volgende afbeelding illustreert een voorbeeld van een slechte verdeling van gegevens, zoals blijkt uit de scheve partitie helemaal links.
 
-![Eén partitie Zie zware gebruik om 3:05 uur](media/use-metrics/metrics-17.png)
+![Enkele partitie die zwaar gebruik ziet om 15:05](media/use-metrics/metrics-17.png)
 
-Een ongelijke doorvoer distributie kan leiden tot *dynamische* partities, wat kan leiden tot getraagde aanvragen en mogelijk opnieuw partitioneert. Zie [partitioneren en schalen in azure Cosmos DB](./partition-data.md)voor meer informatie over partitioneren in azure Cosmos db.
+Een ongelijke doorvoerverdeling kan leiden tot *hete* partities, wat kan leiden tot gethrottled aanvragen en mogelijk opnieuw moeten worden verdeeld. Zie Partitie en schaal in Azure [Cosmos DB](./partition-data.md)voor meer informatie over partitionering in Azure Cosmos DB.
 
-## <a name="determine-the-storage-distribution-across-partitions"></a>De opslag distributie op meerdere partities bepalen
+## <a name="determine-the-storage-distribution-across-partitions"></a>De opslagdistributie over partities bepalen
 
-Een goede kardinaliteit van uw partitie is essentieel voor elke schaal bare toepassing. Als u de opslag distributie wilt bepalen van een gepartitioneerde container die is onderverdeeld in partities, kop naar de Blade metrische gegevens in de [Azure Portal](https://portal.azure.com). Op het tabblad opslag wordt de opslag specificatie weer gegeven in de grafiek gegevens en index opslag die worden gebruikt door de bovenste partitie sleutels. In de volgende afbeelding ziet u een slechte distributie van gegevens opslag, zoals wordt weer gegeven door de gescheefe partitie helemaal links.
+Het hebben van een goede kardinaliteit van uw partitie is essentieel voor elke schaalbare toepassing. Als u de opslagdistributie wilt bepalen van een partitiecontainer die is opgesplitst in partities, gaat u naar het blade Metrics in de [Azure-portal.](https://portal.azure.com) Op het tabblad Opslag wordt de opslagverdeling weergegeven in de opslag gegevens + index die wordt verbruikt door het bovenste overzicht van partitiesleutels. De volgende afbeelding illustreert een slechte verdeling van de gegevensopslag, zoals blijkt uit de scheve partitie helemaal links.
 
-![Voor beeld van slechte gegevens distributie](media/use-metrics/metrics-07.png)
+![Voorbeeld van slechte gegevensdistributie](media/use-metrics/metrics-07.png)
 
-U kunt de hoofd oorzaak van de partitie sleutel scheef trekken door te klikken op de partitie in de grafiek.
+U de hoofdoorzaak gebruiken welke partitiesleutel de verdeling scheeftrekt door op de partitie in de grafiek te klikken.
 
-![De partitie sleutel verscheeft de distributie](media/use-metrics/metrics-05.png)
+![Partitiesleutel trekt de verdeling scheef](media/use-metrics/metrics-05.png)
 
-Nadat u hebt vastgesteld welke partitie sleutel het hellen van de verdeling veroorzaakt, moet u de container wellicht opnieuw partitioneren met een meer gedistribueerde partitie sleutel. Zie [partitioneren en schalen in azure Cosmos DB](./partition-data.md)voor meer informatie over partitioneren in azure Cosmos db.
+Nadat u hebt geïdentificeerd welke partitiesleutel de spreiding in de distributie veroorzaakt, moet u uw container mogelijk opnieuw verdelen met een meer gedistribueerde partitiesleutel. Zie Partitie en schaal in Azure [Cosmos DB](./partition-data.md)voor meer informatie over partitionering in Azure Cosmos DB.
 
-## <a name="compare-data-size-against-index-size"></a>Gegevens grootte vergelijken met index grootte
+## <a name="compare-data-size-against-index-size"></a>Gegevensgrootte vergelijken met de indexgrootte
 
-In Azure Cosmos DB is de totale hoeveelheid verbruikte opslag de combi natie van de gegevens grootte en de index grootte. Normaal gesp roken is de index grootte een fractie van de gegevens grootte. Op het tabblad opslag in de Blade metrische gegevens in de [Azure Portal](https://portal.azure.com)wordt de uitsplitsing van het opslag verbruik op basis van gegevens en index gedemonstreerd.
+In Azure Cosmos DB is de totale verbruikte opslag de combinatie van zowel de grootte van de gegevens als de grootte van de index. De indexgrootte is doorgaans een fractie van de gegevensgrootte. In het blade Metrics in de [Azure-portal](https://portal.azure.com)toont het tabblad Opslag de uitsplitsing van het opslagverbruik op basis van gegevens en index.
 
 ```csharp
 // Measure the document size usage (which includes the index size)  
@@ -82,11 +82,11 @@ ResourceResponse<DocumentCollection> collectionInfo = await client.ReadDocumentC
  Console.WriteLine("Document size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 ```
 
-Als u index ruimte wilt behouden, kunt u het [indexerings beleid](index-policy.md)aanpassen.
+Als u indexruimte wilt behouden, u het [indexeringsbeleid](index-policy.md)aanpassen.
 
-## <a name="debug-why-queries-are-running-slow"></a>Debug waarom query's langzaam worden uitgevoerd
+## <a name="debug-why-queries-are-running-slow"></a>Foutopsporing waarom query's traag worden uitgevoerd
 
-In de SQL API-Sdk's Azure Cosmos DB levert statistieken voor query-uitvoering.
+In de SQL API SDKs biedt Azure Cosmos DB queryuitvoeringsstatistieken.
 
 ```csharp
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -105,12 +105,12 @@ FeedResponse<dynamic> result = await query.ExecuteNextAsync();
 IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 ```
 
-*QueryMetrics* biedt informatie over hoe lang elk onderdeel van de query duurde te worden uitgevoerd. De meest voorkomende hoofd oorzaak voor langlopende query's is scans, wat betekent dat de query geen gebruik kan maken van de indexen. Dit probleem kan worden opgelost met een betere filter voorwaarde.
+*QueryMetrics* geeft meer informatie over hoe lang het duurde voordat elke component van de query is uitgevoerd. De meest voorkomende oorzaak voor langlopende query's zijn scans, wat betekent dat de query geen gebruik kan maken van de indexen. Dit probleem kan worden opgelost met een betere filterconditie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu geleerd hoe u problemen kunt controleren en opsporen met behulp van de metrische gegevens in de Azure Portal. Lees de volgende artikelen voor meer informatie over het verbeteren van de prestaties van de Data Base:
+U hebt nu geleerd hoe u problemen controleren en opsporen met behulp van de statistieken in de Azure-portal. U wilt misschien meer weten over het verbeteren van de databaseprestaties door de volgende artikelen te lezen:
 
-* Zie het artikel [metrische gegevens ophalen uit Azure monitor](cosmos-db-azure-monitor-metrics.md) voor meer informatie over het weer geven van metrische gegevens in azure monitor. 
-* [Prestaties en schaal testen met Azure Cosmos DB](performance-testing.md)
+* Zie het artikel [Statistieken ophalen uit Azure Monitor](cosmos-db-azure-monitor-metrics.md) voor meer informatie over het weergeven van statistieken uit Azure-monitor. 
+* [Prestatie- en schaaltests met Azure Cosmos DB](performance-testing.md)
 * [Tips voor betere prestaties van Azure Cosmos DB](performance-tips.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: ADSync-service-account | Microsoft Docs'
-description: In dit onderwerp vindt het account van de service ADSync en aanbevolen procedures met betrekking tot het account.
+title: 'Azure AD Connect: ADSync-serviceaccount | Microsoft Documenten'
+description: In dit onderwerp wordt het ADSync-serviceaccount beschreven en worden aanbevolen procedures met betrekking tot het account.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,62 +16,62 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f228da5afc5998d8fa59ce2d720cec4c9f955b67
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67478717"
 ---
 # <a name="adsync-service-account"></a>ADSync-serviceaccount
-Azure AD Connect installeert een on-premises-service die wordt georganiseerd synchronisatie tussen Active Directory en Azure Active Directory.  De synchronisatieservice van Microsoft Azure AD Sync (ADSync) wordt uitgevoerd op een server in uw on-premises omgeving.  De referenties voor de service worden ingesteld in de Express-installaties standaard maar kunnen worden aangepast om te voldoen aan de beveiligingsvereisten van uw organisatie.  Deze referenties worden niet gebruikt om verbinding maken met uw on-premises-forests of Azure Active Directory.
+Azure AD Connect installeert een on-premises service die synchronisatie tussen Active Directory en Azure Active Directory orkestreert.  De ADSync-synchronisatieservice (Microsoft Azure AD Sync) wordt uitgevoerd op een server in uw on-premises omgeving.  De referenties voor de service worden standaard ingesteld in de Express-installaties, maar kunnen worden aangepast om te voldoen aan uw beveiligingsvereisten voor de organisatie.  Deze referenties worden niet gebruikt om verbinding te maken met uw on-premises forests of Azure Active Directory.
 
-De ADSync kiezen is-serviceaccount een belangrijke planning beslissing voordat u Azure AD Connect installeert.  Elke poging de referenties wijzigen nadat de installatie van de service niet kan worden gestart, zal leiden verlies van toegang tot de synchronisatiedatabase en niet kan worden geverifieerd met uw verbonden mappen (Azure- en AD DS).  Er is geen synchronisatie wordt uitgevoerd totdat de oorspronkelijke referenties zijn hersteld.
+Het kiezen van het ADSync-serviceaccount is een belangrijke planningsbeslissing voordat u Azure AD Connect installeert.  Elke poging om de referenties na de installatie te wijzigen, leidt ertoe dat de service niet wordt gestart, de toegang tot de synchronisatiedatabase verliest en niet wordt geverifieerd met uw verbonden mappen (Azure en AD DS).  Er vindt geen synchronisatie plaats totdat de oorspronkelijke referenties zijn hersteld.
 
-## <a name="the-default-adsync-service-account"></a>Het standaardaccount ADSync-service
+## <a name="the-default-adsync-service-account"></a>Het standaard ADSync-serviceaccount
 
-Wanneer uitvoert op een lidserver, is de service AdSync wordt uitgevoerd in de context van een Virtual Service Account (leverancierspecifiek Kenmerk).  Een aangepaste service-account is vanwege een productbeperking gemaakt wanneer op een domeincontroller is geïnstalleerd.  Als het serviceaccount van de Express-instellingen niet aan de beveiligingsvereisten van uw organisatie, kunt u Azure AD Connect implementeren door de optie aanpassen te kiezen.  Kies vervolgens de optie voor service-account die voldoet aan de vereisten van uw organisatie.
+Wanneer u op een lidserver wordt uitgevoerd, wordt de AdSync-service uitgevoerd in de context van een VSA (Virtual Service Account).  Vanwege een productbeperking wordt een aangepast serviceaccount gemaakt wanneer het is geïnstalleerd op een domeincontroller.  Als het serviceaccount Express-instellingen niet voldoet aan de beveiligingsvereisten voor uw organisatie, implementeert u Azure AD Connect door de optie Aanpassen te kiezen.  Kies vervolgens de serviceaccountoptie die voldoet aan de vereisten van uw organisatie.
 
 >[!NOTE]
->Het standaard serviceaccount wanneer geïnstalleerd op een domeincontroller is van het formulier Domain\AAD_InstallationIdentifier.  Het wachtwoord voor dit account wordt willekeurig gegenereerd en geeft de grote uitdagingen voor de rotatie van herstel en het wachtwoord.  Microsoft raadt u aan het aanpassen van de serviceaccount tijdens de initiële installatie op een domeincontroller als een zelfstandig gebruiken of een groep beheerd serviceaccount (sMSA / gMSA)
+>Het standaardserviceaccount dat is geïnstalleerd op een domeincontroller is van het formulier Domain\AAD_InstallationIdentifier.  Het wachtwoord voor dit account wordt willekeurig gegenereerd en biedt aanzienlijke uitdagingen voor herstel en wachtwoordrotatie.  Microsoft raadt aan het serviceaccount aan te maken tijdens de eerste installatie op een domeincontroller om een zelfstandig of groepsManaged Service-account (sMSA / gMSA) te gebruiken
 
-|Azure AD Connect-locatie|Service-account gemaakt|
+|Azure AD Connect-locatie|Serviceaccount gemaakt|
 |-----|-----|
 |Lidserver|NT-SERVICE\ADSync|
-|Domeincontroller|Domain\AAD_74dc30c01e80 (see note)|
+|Domeincontroller|Domein\AAD_74dc30c01e80 (zie notitie)|
 
-## <a name="custom-adsync-service-accounts"></a>Aangepaste ADSync-service-accounts
-Microsoft adviseert het uitvoeren van de ADSync-service in de context van een Virtual Service Account of een zelfstandige of beheerd serviceaccount.  De domeinbeheerder mogelijk ook voor kiezen om te maken van een service-account ingericht om te voldoen aan de beveiligingsvereisten voor uw specifieke organisatie.   Voor het aanpassen van het serviceaccount dat tijdens de installatie gebruikt, kiest u de optie aanpassen op de pagina van de Express-instellingen hieronder.   De volgende opties zijn beschikbaar:
+## <a name="custom-adsync-service-accounts"></a>Aangepaste ADSync-serviceaccounts
+Microsoft raadt aan om de ADSync-service uit te voeren in de context van een Virtual Service-account of een zelfstandig of groepsmanaged service-account.  Uw domeinbeheerder kan er ook voor kiezen om een serviceaccount te maken dat is ingericht om te voldoen aan uw specifieke beveiligingsvereisten voor de organisatie.   Als u het serviceaccount wilt aanpassen dat tijdens de installatie wordt gebruikt, kiest u de optie Aanpassen op de pagina Express-instellingen hieronder.   De volgende opties zijn beschikbaar:
 
-- Standaard-account: Azure AD Connect wordt ingericht op het serviceaccount, zoals hierboven beschreven
-- beheerd serviceaccount: gebruik van een zelfstandige of groepen beheerde Serviceaccounts die zijn ingericht door uw beheerder
-- domeinaccount: gebruik een domein-serviceaccount die door de beheerder is ingericht
+- standaardaccount : Azure AD Connect voorziet in het serviceaccount zoals hierboven beschreven
+- managed service account – gebruik een zelfstandige of groep MSA ingericht door uw beheerder
+- domeinaccount – gebruik een domeinserviceaccount dat is ingericht door uw beheerder
 
 ![](media/concept-adsync-service-account/adsync1.png)
 
 ![](media/concept-adsync-service-account/adsync2.png)
 
-## <a name="diagnosing-adsync-service-account-changes"></a>Accountwijzigingen ADSync-service vaststellen
-De referenties voor de service ADSync wijzigen na installatie tot de service niet starten leiden zal, verliezen toegang tot de synchronisatiedatabase en niet kan worden geverifieerd met uw verbonden mappen (Azure- en AD DS).  Verlenen toegang tot de database naar de nieuwe ADSync-service-account is onvoldoende om van dit probleem te herstellen. Er is geen synchronisatie wordt uitgevoerd totdat de oorspronkelijke referenties zijn hersteld.
+## <a name="diagnosing-adsync-service-account-changes"></a>AdSync-serviceaccountwijzigingen diagnosticeren
+Als u de referenties voor de ADSync-service na de installatie wijzigt, wordt de service niet gestart, wordt de toegang tot de synchronisatiedatabase verloren en wordt deze niet geverifieerd met uw verbonden mappen (Azure en AD DS).  Het verlenen van databasetoegang tot het nieuwe ADSync-serviceaccount is onvoldoende om dit probleem te herstellen. Er vindt geen synchronisatie plaats totdat de oorspronkelijke referenties zijn hersteld.
 
-De ADSync-service geeft een niveau foutbericht wordt weergegeven in het gebeurtenislogboek wanneer deze kan niet worden gestart.  De inhoud van het bericht varieert afhankelijk van of de ingebouwde database (localdb) of het volledige SQL in gebruik is.  Hier volgen enkele voorbeelden van de logboekgegevens van gebeurtenissen die mogelijk aanwezig zijn.
+De ADSync-service geeft een bericht op foutniveau uit aan het gebeurtenislogboek wanneer deze niet kan worden gestart.  De inhoud van het bericht is afhankelijk van of de ingebouwde database (localdb) of volledige SQL in gebruik is.  Hieronder volgen voorbeelden van de gebeurtenislogboekvermeldingen die mogelijk aanwezig zijn.
 
 ### <a name="example-1"></a>Voorbeeld 1
 
-De versleutelingssleutels AdSync-service kunnen niet worden gevonden en is opnieuw gemaakt.  Synchronisatie wordt niet uitgevoerd totdat dit probleem is opgelost.
+De AdSync-serviceversleutelingssleutels konden niet worden gevonden en zijn opnieuw gemaakt.  Synchronisatie vindt pas plaats als dit probleem is verholpen.
 
-Het oplossen van dit probleem het Microsoft Azure AD Sync versleutelingssleutels niet meer toegankelijk als de AdSync-service aanmelden referenties worden gewijzigd.  Als de referenties zijn gewijzigd, gebruikt u de Services-toepassing te wijzigen van het account aanmelden terug naar de oorspronkelijk geconfigureerde waarde (ex. NT-SERVICE\AdSync) en de service opnieuw.  Hiermee wordt onmiddellijk juiste werking van de service AdSync hersteld.
+Probleem oplossen De versleutelingssleutels voor Microsoft Azure AD Sync worden niet toegankelijk als de adsync-service aanmeldingsreferenties worden gewijzigd.  Als de referenties zijn gewijzigd, gebruikt u de toepassing Services om het account Aanmelding terug te wijzigen in de oorspronkelijk geconfigureerde waarde (bijvoorbeeld. NT SERVICE\AdSync) en start de service opnieuw.  Hierdoor wordt de correcte werking van de AdSync-service onmiddellijk hersteld.
 
-Raadpleeg de volgende [artikel](https://go.microsoft.com/fwlink/?linkid=2086764) voor meer informatie.
+Zie het volgende [artikel](https://go.microsoft.com/fwlink/?linkid=2086764) voor meer informatie.
 
 ### <a name="example-2"></a>Voorbeeld 2
 
-De service is niet starten omdat een verbinding met de lokale database (localdb) kan niet worden gemaakt.
+De service kon niet worden gestart omdat er geen verbinding met de lokale database (localdb) kon worden gemaakt.
 
-Het oplossen van dit probleem de Microsoft Azure AD Sync-service, verliest machtiging voor toegang tot de provider van de lokale database als service AdSync aanmelden referenties worden gewijzigd.  Als de referenties zijn gewijzigd de Services-toepassing gebruiken om te wijzigen van het account aanmelden terug naar de oorspronkelijk geconfigureerde waarde (ex. NT-SERVICE\AdSync) en de service opnieuw.  Hiermee wordt onmiddellijk juiste werking van de service AdSync hersteld.
+Problemen oplossen De Microsoft Azure AD Sync-service verliest de toegang tot de lokale databaseprovider als de adsync-service aanmeldingsreferenties worden gewijzigd.  Als de referenties zijn gewijzigd, gebruikt u de toepassing Services om het account Aanmelding terug te wijzigen in de oorspronkelijk geconfigureerde waarde (bijvoorbeeld. NT SERVICE\AdSync) en start de service opnieuw.  Hierdoor wordt de correcte werking van de AdSync-service onmiddellijk hersteld.
 
-Raadpleeg de volgende [artikel](https://go.microsoft.com/fwlink/?linkid=2086764) voor meer informatie.
+Zie het volgende [artikel](https://go.microsoft.com/fwlink/?linkid=2086764) voor meer informatie.
 
-Aanvullende Details van die de gegevens van de volgende fout is geretourneerd door de provider:
+Aanvullende details De volgende foutgegevens zijn door de provider geretourneerd:
  
 
 ``` 

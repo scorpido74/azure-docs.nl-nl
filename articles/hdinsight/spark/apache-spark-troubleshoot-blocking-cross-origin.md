@@ -1,6 +1,6 @@
 ---
-title: 'Jupyter 404-fout: de cross-Origin-API wordt geblokkeerd-Azure HDInsight'
-description: Jupyter-server 404 "niet gevonden" vanwege "het blok keren van de API voor cross-origin" in azure HDInsight
+title: Jupyter 404-fout - "Cross Origin API blokkeren" - Azure HDInsight
+description: Jupyter server 404 "Niet gevonden" fout als gevolg van "Cross Origin API blokkeren" in Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: e241657186582955d21981f7dfe18856724aa692
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894417"
 ---
-# <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>Scenario: Jupyter server 404 "niet gevonden" vanwege "het blok keren van de API voor cross-origin" in azure HDInsight
+# <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>Scenario: Jupyter server 404 "Niet gevonden" fout als gevolg van "Cross Origin API blokkeren" in Azure HDInsight
 
-In dit artikel worden probleemoplossings stappen en mogelijke oplossingen voor problemen beschreven bij het gebruik van Apache Spark-onderdelen in azure HDInsight-clusters.
+In dit artikel worden stappen voor het oplossen van problemen en mogelijke oplossingen voor problemen beschreven bij het gebruik van Apache Spark-componenten in Azure HDInsight-clusters.
 
 ## <a name="issue"></a>Probleem
 
-Wanneer u de Jupyter-service op HDInsight opent, ziet u een fout venster met de melding ' niet gevonden '. Als u de Jupyter-logboeken controleert, ziet u er ongeveer als volgt uit:
+Wanneer u de Jupyter-service op HDInsight opent, ziet u een foutvak met de tekst "Niet gevonden". Als u de Jupyter logs, ziet u iets als dit:
 
 ```log
 [W 2018-08-21 17:43:33.352 NotebookApp] 404 PUT /api/contents/PySpark/notebook.ipynb (10.16.0.144) 4504.03ms referer=https://pnhr01hdi-corpdir.msappproxy.net/jupyter/notebooks/PySpark/notebook.ipynb
@@ -28,39 +28,39 @@ Blocking Cross Origin API request.
 Origin: https://xxx.xxx.xxx, Host: pnhr01.j101qxjrl4zebmhb0vmhg044xe.ax.internal.cloudapp.net:8001
 ```
 
-Mogelijk ziet u ook een IP-adres in het veld oorsprong in het Jupyter-logboek.
+U ook een IP-adres zien in het veld 'Oorsprong' in het Jupyter-logboek.
 
 ## <a name="cause"></a>Oorzaak
 
 Deze fout kan worden veroorzaakt door een paar dingen:
 
-- Als u NSG-regels (netwerk beveiligings groep) hebt geconfigureerd, kunt u de toegang tot het cluster beperken. Als u de toegang met NSG-regels beperkt, kunt u nog steeds rechtstreeks toegang krijgen tot Apache Ambari en andere services met behulp van het IP-adres in plaats van de cluster naam. Wanneer u echter toegang zoekt tot Jupyter, ziet u de fout 404 ' niet gevonden '.
+- Als u NSG-regels (Network Security Group) hebt geconfigureerd om de toegang tot het cluster te beperken. Als u de toegang met NSG-regels beperkt, u nog steeds rechtstreeks toegang krijgen tot Apache Ambari en andere services met behulp van het IP-adres in plaats van de naam van het cluster. Echter, bij de toegang tot Jupyter, kon je een 404 "Niet gevonden" fout te zien.
 
-- Als u uw HDInsight-gateway een aangepaste DNS-naam hebt opgegeven dan de standaard `xxx.azurehdinsight.net`.
+- Als u uw HDInsight-gateway een aangepaste DNS-naam hebt gegeven, andere dan de standaard. `xxx.azurehdinsight.net`
 
-## <a name="resolution"></a>Resolutie
+## <a name="resolution"></a>Oplossing
 
-1. Wijzig de jupyter.py-bestanden op deze twee locaties:
+1. Wijzig de jupyter.py bestanden op deze twee plaatsen:
 
     ```bash
     /var/lib/ambari-server/resources/common-services/JUPYTER/1.0.0/package/scripts/jupyter.py
     /var/lib/ambari-agent/cache/common-services/JUPYTER/1.0.0/package/scripts/jupyter.py
     ```
 
-1. Zoek de regel met de volgende tekst: `NotebookApp.allow_origin='\"https://{2}.{3}\"'` en wijzig deze in: `NotebookApp.allow_origin='\"*\"'`.
+1. Zoek de regel `NotebookApp.allow_origin='\"https://{2}.{3}\"'` die zegt: `NotebookApp.allow_origin='\"*\"'`En verander het in: .
 
 1. Start de Jupyter-service van Ambari opnieuw.
 
-1. Wanneer u `ps aux | grep jupyter` op de opdracht prompt typt, moet u weer geven dat er een URL kan worden gemaakt om er verbinding mee te maken.
+1. Als `ps aux | grep jupyter` u typt bij de opdrachtprompt, moet worden aantoont dat elke URL hiermee verbinding kan maken.
 
-Dit is minder veilig dan de instelling die we al hebben geïmplementeerd. Maar er wordt van uitgegaan dat de toegang tot het cluster beperkt is en dat een van de buiten kant is toegestaan om verbinding te maken met het cluster als er NSG aanwezig zijn.
+Dit is een minder veilig dan de instelling die we al hadden. Maar er wordt aangenomen dat de toegang tot het cluster is beperkt en dat een van buitenaf is toegestaan om verbinding te maken met het cluster als we NSG op zijn plaats.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
+Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
 
-* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
+* Krijg antwoorden van Azure-experts via [Azure Community Support.](https://azure.microsoft.com/support/community/)
 
-* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met - het officiële Microsoft Azure-account voor het verbeteren van de klantervaring door de Azure-community te verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, u een ondersteuningsaanvraag indienen via de [Azure-portal.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Selecteer **Ondersteuning** op de menubalk of open de **Help + ondersteuningshub.** Voor meer gedetailleerde informatie raadpleegt u [Hoe u een Azure-ondersteuningsaanvraag maakt.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Toegang tot abonnementsbeheer en factureringsondersteuning is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geboden via een van de [Azure Support-abonnementen](https://azure.microsoft.com/support/plans/).

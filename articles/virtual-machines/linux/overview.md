@@ -1,6 +1,6 @@
 ---
-title: Overzicht van virtuele Linux-machines in azure
-description: Overzicht van virtuele Linux-machines in Azure.
+title: Overzicht van Linux VM's in Azure
+description: Overzicht van Linux virtuele machines in Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: cynthn
@@ -12,16 +12,16 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bfda5fe7592d4c3f3f9550f406cf7635c43168ed
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 69a9722436aea1cf794e6e3f3ce02ec79180cff3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896200"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80159469"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuele Linux-machines in Azure
 
-Azure Virtual Machines (VM) vormen een van de diverse typen [schaalbare on-demand computerresources](/azure/architecture/guide/technology-choices/compute-decision-tree) die Azure biedt. Normaal gesproken kiest u voor een VM wanneer u meer controle nodig hebt over de computeromgeving dan andere opties bieden. In dit artikel vindt u informatie over wat u moet overwegen voordat u een VM maakt, hoe u deze maakt en hoe u deze beheert.
+Azure Virtual Machines (VM) is een van de verschillende soorten [on-demand, schaalbare computerbronnen](/azure/architecture/guide/technology-choices/compute-decision-tree) die Azure biedt. Normaal gesproken kiest u voor een VM wanneer u meer controle nodig hebt over de computeromgeving dan andere opties bieden. In dit artikel vindt u informatie over wat u moet overwegen voordat u een VM maakt, hoe u deze maakt en hoe u deze beheert.
 
 Een VM in Azure biedt u de flexibiliteit van virtualisatie zonder dat u de fysieke hardware hoeft te kopen en te beheren waarop de VM wordt uitgevoerd. U moet de VM echter wel onderhouden door taken uit te voeren, zoals het configureren, patchen en onderhouden van de software die erop wordt uitgevoerd.
 
@@ -67,7 +67,7 @@ Azure rekent een [uurprijs](https://azure.microsoft.com/pricing/details/virtual-
 ## <a name="vm-limits"></a>VM-limieten
 Uw abonnement heeft een standaard [quotumlimiet](../../azure-resource-manager/management/azure-subscription-service-limits.md) ingebouwd die de implementatie van veel VM’s voor uw project kan beïnvloeden. De huidige limiet per abonnement is 20 VM's per regio. Limieten kunnen worden verhoogd door [een ondersteuningsticket in te dienen met een aanvraag voor een verhoging](../../azure-portal/supportability/resource-manager-core-quotas-request.md)
 
-## <a name="managed-disks"></a>Managed Disks
+## <a name="managed-disks"></a>Beheerde schijven
 
 Managed Disks beheert het maken/beheren van Azure Storage-accounts op de achtergrond en zorgt ervoor dat u zich geen zorgen hoeft te maken over de schaalbaarheidslimieten van het opslagaccount. U hoeft alleen de schijfgrootte en prestatielaag (Standard of Premium) op te geven en Azure maakt en beheert de schijf voor u. Ook als u schijven toevoegt of de virtuele machine omhoog of omlaag schaalt, hoeft u zich geen zorgen te maken over de gebruikte opslag. Als u nieuwe VM's gaat maken, [gebruik dan de Azure CLI 2.0](quick-create-cli.md) of Azure Portal om VM's te maken met een beheerd besturingssysteem en beheerde gegevensschijven. Als u VM's hebt met niet-beheerde schijven, kunt u [deze converteren om ze te ondersteunen met Managed Disks](convert-unmanaged-to-managed-disks.md).
 
@@ -93,34 +93,24 @@ Microsoft werkt nauw samen met partners om ervoor te zorgen dat de beschikbare i
 * Docker - [Azure Marketplace - Azure Container Service met Docker Swarm](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
 * Jenkins - [Azure Marketplace - CloudBees Jenkins Platform](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudbees.cloudbees-core-contact)
 
-## <a name="vm-sizes"></a>VM-grootten
-De [grootte](sizes.md) van de VM die u gebruikt, wordt bepaald door de workload die u wilt uitvoeren. De grootte die u vervolgens kiest, bepaalt factoren als processorsnelheid, geheugen en opslagcapaciteit. Azure biedt een groot aantal verschillende grootten voor verschillende manieren van gebruik.
-
-Azure rekent een [uurprijs](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) op basis van de grootte en het besturingssysteem van de VM. Voor niet-hele uren worden alleen de minuten van gebruik in rekening gebracht. De opslag wordt afzonderlijk berekend en in rekening gebracht.
 
 ## <a name="cloud-init"></a>Cloud-init 
 
-Voor een juiste DevOps-cultuur moet alle infrastructuur uit code bestaan.  Wanneer alle infra structuur in code wordt geduurd, kan deze eenvoudig opnieuw worden gemaakt.  Azure werkt met de belangrijkste automatiseringstools zoals Ansible, Chef, SaltStack en Puppet.  Azure heeft ook eigen tools voor automatisering:
+Voor een juiste DevOps-cultuur moet alle infrastructuur uit code bestaan.  Wanneer alle infrastructuur in code leeft, kan deze gemakkelijk opnieuw worden gemaakt.  Azure werkt met de belangrijkste automatiseringstools zoals Ansible, Chef, SaltStack en Puppet.  Azure heeft ook eigen tools voor automatisering:
 
 * [Azure-sjablonen](create-ssh-secured-vm-from-template.md)
 * [Azure VMAccess](using-vmaccess-extension.md)
 
-Azure biedt ondersteuning voor [Cloud-init](https://cloud-init.io/) voor de meeste Linux-distributies die dit ondersteunen.  We zijn actief werkt met onze onderschreven Linux-distributie partners om cloud-init ingeschakeld installatiekopieën die beschikbaar zijn in de Azure marketplace. Met deze installatie kopieën kunnen uw Cloud-init-implementaties en-configuraties naadloos werken met Vm's en virtuele-machine schaal sets.
+Azure ondersteunt voor [cloud-init voor](https://cloud-init.io/) de meeste Linux Distro's die het ondersteunen.  We werken actief samen met onze goedgekeurde Linux distro-partners om cloud-init-afbeeldingen beschikbaar te hebben in de Azure-marktplaats. Deze afbeeldingen zorgen ervoor dat uw cloud-init-implementaties en configuraties naadloos werken met VM's en virtuele machineschaalsets.
 
 * [Cloud-init gebruiken op virtuele Linux-machines in Azure](using-cloud-init.md)
-
-## <a name="quotas"></a>Quota
-Elk Azure-abonnement heeft een standaard-quotumlimiet die van invloed kan zijn op de implementatie van een groot aantal VM’s voor uw project. De huidige limiet per abonnement is 20 VM's per regio.  De quotalimiet kan snel en gemakkelijk worden verhoogd door het indienen van een ondersteuningsticket met het verzoek om de limiet te verhogen.  Meer informatie over quotalimieten vindt u hier:
-
-* [Azure-abonnement en servicelimieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md)
-
 
 ## <a name="storage"></a>Storage
 * [Inleiding tot Microsoft Azure Storage](../../storage/common/storage-introduction.md)
 * [Een schijf toevoegen aan een virtuele Linux-machine](add-disk.md)
 * [Een gegevensschijf koppelen aan een Linux-VM in Azure Portal](attach-disk-portal.md)
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Netwerken
 * [Overzicht van Virtual Network](../../virtual-network/virtual-networks-overview.md)
 * [IP-adressen in Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Poorten openen voor een Linux-VM in Azure](nsg-quickstart.md)
@@ -129,9 +119,9 @@ Elk Azure-abonnement heeft een standaard-quotumlimiet die van invloed kan zijn o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Maak uw eerste VM.
+Maak je eerste VM!
 
 - [Portal](quick-create-portal.md)
 - [Azure-CLI](quick-create-cli.md)
-- [PowerShell](quick-create-powershell.md)
+- [Powershell](quick-create-powershell.md)
 

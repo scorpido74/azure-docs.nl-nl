@@ -1,22 +1,22 @@
 ---
-title: 'Quick Start: een BLOB maken met Power shell'
+title: Snelstart - Een blob maken met PowerShell
 titleSuffix: Azure Storage
 description: In deze snelstart gebruikt u Azure PowerShell in object(blob)-opslag. Vervolgens gebruikt u PowerShell om een blob in Azure Storage te uploaden, een blob te downloaden en de blobs in een container te vermelden.
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: 4cc58838827d1ee9337216d9ccb56696735ead7e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 479145f4d42c0708c109ab582e76e3691971c6ad
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664249"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061408"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Quick Start: blobs uploaden, downloaden en vermelden met Power shell
+# <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Snelstart: blobs uploaden, downloaden en aanbieden met PowerShell
 
 Gebruik de Azure PowerShell-module om Azure-resources te maken en beheren. Azure-resources kunnen vanaf de PowerShell-opdrachtregel of met scripts worden gemaakt of beheerd. In deze handleiding wordt beschreven hoe PowerShell kan worden gebruikt om bestanden over te dragen tussen de lokale schijf en Azure Blob Storage.
 
@@ -65,7 +65,7 @@ Set-AzStorageBlobContent -File "D:\_TestImages\Image002.png" `
   -Context $ctx
 ```
 
-Upload zoveel bestanden als u nodig hebt voordat u doorgaat.
+Upload zoveel bestanden als u nodig hebt, voordat u doorgaat.
 
 ## <a name="list-the-blobs-in-a-container"></a>De blobs in een container in een lijst weergeven
 
@@ -97,9 +97,9 @@ Get-AzStorageBlobContent -Blob "Image002.png" `
 
 ## <a name="data-transfer-with-azcopy"></a>Gegevensoverdracht met AzCopy
 
-Het opdracht regel hulpprogramma AzCopy biedt hoogwaardige, script bare gegevens overdracht voor Azure Storage. U kunt AzCopy gebruiken om gegevens over te dragen van en naar Blob Storage en Azure Files. Zie [aan de slag met AzCopy](../common/storage-use-azcopy-v10.md)voor meer informatie over AzCopy V10 toevoegen, de nieuwste versie van AzCopy. Zie [gegevens overdragen met AzCopy en Blob Storage](../common/storage-use-azcopy-blobs.md)voor meer informatie over het gebruik van AzCopy V10 toevoegen met Blob Storage.
+Het azcopy-hulpprogramma biedt krachtige, scriptbare gegevensoverdracht voor Azure Storage. U AzCopy gebruiken om gegevens over te zetten van en naar Blob-opslag en Azure-bestanden. Zie [Aan de slag met AzCopy](../common/storage-use-azcopy-v10.md)voor meer informatie over AzCopy v10, de nieuwste versie van AzCopy. Zie [Gegevens overbrengen met AzCopy- en Blob-opslag](../common/storage-use-azcopy-blobs.md)voor meer informatie over het gebruik van AzCopy v10 met Blob-opslag.
 
-In het volgende voor beeld wordt AzCopy gebruikt om een lokaal bestand te uploaden naar een blob. Vergeet niet om de voorbeeld waarden te vervangen door uw eigen waarden:
+In het volgende voorbeeld wordt AzCopy gebruikt om een lokaal bestand naar een blob te uploaden. Vergeet niet om de voorbeeldwaarden te vervangen door uw eigen waarden:
 
 ```powershell
 azcopy login

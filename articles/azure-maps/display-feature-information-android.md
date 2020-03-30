@@ -1,6 +1,6 @@
 ---
-title: Functie-informatie weer geven in de Azure Maps Android-SDK | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u de functie gegevens op een kaart kunt weer geven met behulp van de Microsoft Azure Maps Android SDK.
+title: Functiegegevens weergeven in de Azure Maps Android SDK | Microsoft Azure Maps
+description: In dit artikel leert u hoe u functiegegevens op een kaart weergeeft met de Microsoft Azure Maps Android SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 26f41a7fd88a3c2018592e89ae95e3b962c1a9e9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75911695"
 ---
 # <a name="display-feature-information"></a>Functie-informatie weergeven
 
-Ruimtelijke gegevens worden vaak weer gegeven met behulp van punten, lijnen en veelhoeken. Aan deze gegevens zijn vaak meta gegevens gekoppeld. Een punt kan bijvoorbeeld de locatie van een Store vertegenwoordigen en meta gegevens over dat restaurant kunnen de naam, het adres en het type levens middelen zijn. Deze meta gegevens kunnen worden toegevoegd als eigenschappen van deze functies met behulp van een `JsonObject`. Met de volgende code wordt een eenvoudige punt functie gemaakt met een `title` eigenschap met de waarde ' Hallo wereld! '.
+Ruimtelijke gegevens worden vaak weergegeven met behulp van punten, lijnen en veelhoeken. Deze gegevens bevatten vaak metadata-informatie die eraan is gekoppeld. Een punt kan bijvoorbeeld de locatie van een winkel weergeven en metagegevens over dat restaurant kunnen de naam, het adres en het type voedsel zijn dat het serveert. Deze metagegevens kunnen worden toegevoegd `JsonObject`als eigenschappen van deze functies met behulp van een . De volgende code maakt een `title` eenvoudige puntfunctie met een eigenschap die een waarde heeft van "Hello World!"
 
 ```java
 //Create a data source and add it to the map.
@@ -32,7 +32,7 @@ properties.addProperty("title", "Hello World!");
 dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64), properties));
 ```
 
-Wanneer een gebruiker met een functie op de kaart communiceert, kunnen gebeurtenissen worden gebruikt om te reageren op deze acties. Een veelvoorkomend scenario is het weer geven van een bericht dat is gemaakt van de meta gegevens eigenschappen van een functie waarmee de gebruiker heeft gecommuniceerd. De `OnFeatureClick` gebeurtenis is de belangrijkste gebeurtenis die wordt gebruikt om te detecteren wanneer de gebruiker een functie op de kaart heeft getikt. Er is ook een `OnLongFeatureClick` gebeurtenis. Wanneer u de `OnFeatureClick` gebeurtenis aan de kaart toevoegt, kan deze worden beperkt tot één laag door de ID van een laag door te geven om deze te beperken tot. Als er geen laag-ID wordt door gegeven, tikt u op een functie op de kaart, ongeacht in welke laag deze zich bevindt, wordt deze gebeurtenis geactiveerd. Met de volgende code wordt een symbool laag gemaakt waarmee punt gegevens op de kaart worden weer gegeven. vervolgens wordt er een `OnFeatureClick` gebeurtenis toegevoegd en wordt deze beperkt tot deze symbool laag.
+Wanneer een gebruiker interactie heeft met een functie op de kaart, kunnen gebeurtenissen worden gebruikt om op die acties te reageren. Een veelvoorkomend scenario is het weergeven van een bericht gemaakt van de metagegevens eigenschappen van een functie waarmee de gebruiker interactie mee. De `OnFeatureClick` gebeurtenis is de belangrijkste gebeurtenis die wordt gebruikt om te detecteren wanneer de gebruiker een functie op de kaart heeft getikt. Er is ook `OnLongFeatureClick` een evenement. Wanneer u `OnFeatureClick` de gebeurtenis aan de kaart toevoegt, kan deze worden beperkt tot één laag door de ID van een laag door te geven om deze te beperken. Als er geen laag-ID wordt doorgegeven, zou het tikken op een functie op de kaart, ongeacht in welke laag deze zich bevindt, deze gebeurtenis afvuren. Met de volgende code wordt een symboollaag gemaakt om `OnFeatureClick` puntgegevens op de kaart weer te geven, voegt u vervolgens een gebeurtenis toe en beperkt deze tot deze symboollaag.
 
 ```java
 //Create a symbol and add it to the map.
@@ -48,9 +48,9 @@ map.events.add((OnFeatureClick) (features) -> {
 }, symbolLayer.getId());    //Limit this event to the symbol layer.
 ```
 
-## <a name="display-a-toast-message"></a>Een pop-upbericht weer geven
+## <a name="display-a-toast-message"></a>Een pop-upbericht weergeven
 
-Een pop-upbericht is een van de eenvoudigste manieren om informatie weer te geven voor de gebruiker en is beschikbaar in alle versies van Android. Het biedt geen ondersteuning voor elk type gebruikers invoer en wordt alleen gedurende korte tijd weer gegeven. Als u de gebruiker snel op de hoogte wilt stellen van wat ze hebben getikt, is het mogelijk dat een pop-upbericht een goede optie is. De volgende code laat zien hoe een pop-upbericht kan worden gebruikt met de `OnFeatureClick` gebeurtenis.
+Een pop-upbericht is een van de gemakkelijkste manieren om informatie aan de gebruiker weer te geven en is beschikbaar in alle versies van Android. Het ondersteunt geen enkele vorm van gebruikersinvoer en wordt slechts voor een korte periode weergegeven. Als u de gebruiker snel iets wilt laten weten over wat ze hebben aangetikt, is een pop-upbericht mogelijk een goede optie. De volgende code laat zien hoe een `OnFeatureClick` pop-upbericht kan worden gebruikt met de gebeurtenis.
 
 ```java
 //Add a feature click event to the map.
@@ -65,21 +65,21 @@ map.events.add((OnFeatureClick) (features) -> {
 
 <center>
 
-![animatie van een functie die wordt getikt en een pop-upbericht wordt weer gegeven](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)</center>
+![Animatie van een functie die wordt aangetikt en een pop-upbericht wordt weergegeven](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)</center>
 
-Naast pop-upberichten zijn er nog vele andere manieren om de meta gegevens eigenschappen van een functie weer te geven, zoals:
+Naast pop-upberichten zijn er nog veel meer manieren om de metagegevenseigenschappen van een functie weer te geven, zoals:
 
-- [Snakbar](https://developer.android.com/training/snackbar/showing.html) -snackbars bieden licht gewicht feedback over een bewerking. Er wordt een kort bericht aan de onderkant van het scherm weer gegeven, op mobiele apparaten en linksonder op grotere apparatuur. Snackbars worden boven alle andere elementen op het scherm weer gegeven, maar er kan slechts één tegelijk worden weer gegeven.
-- [Dialoog vensters](https://developer.android.com/guide/topics/ui/dialogs) : een dialoog venster is een klein venster waarin de gebruiker wordt gevraagd een beslissing te nemen of aanvullende informatie in te voeren. Een dialoog venster vult het scherm niet en wordt normaal gesp roken gebruikt voor modale gebeurtenissen waarvoor gebruikers een actie moeten ondernemen voordat ze kunnen door gaan.
-- Een [fragment](https://developer.android.com/guide/components/fragments) toevoegen aan de huidige activiteit.
-- Navigeer naar een andere activiteit of weer gave.
+- [Snakbar widget](https://developer.android.com/training/snackbar/showing.html) - Snackbars bieden lichtgewicht feedback over een operatie. Ze tonen een kort bericht aan de onderkant van het scherm op mobiele en linksonder op grotere apparaten. Snackbars verschijnen boven alle andere elementen op het scherm en slechts een kan worden weergegeven op een moment.
+- [Dialoogvensters](https://developer.android.com/guide/topics/ui/dialogs) - Een dialoogvenster is een klein venster dat de gebruiker vraagt om een beslissing te nemen of aanvullende informatie in te voeren. Een dialoogvenster vult het scherm niet en wordt normaal gesproken gebruikt voor modale gebeurtenissen waarvoor gebruikers een actie moeten uitvoeren voordat ze verder kunnen gaan.
+- Voeg een [fragment](https://developer.android.com/guide/components/fragments) toe aan de huidige activiteit.
+- Navigeer naar een andere activiteit of weergave.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer gegevens toevoegen aan uw kaart:
+Ga als u meer gegevens aan uw kaart toevoegen:
 
 > [!div class="nextstepaction"]
-> [Een symbool laag toevoegen](how-to-add-symbol-to-android-map.md)
+> [Een symboollaag toevoegen](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Vormen toevoegen aan een Android-kaart](how-to-add-shapes-to-android-map.md)
+> [Shapes toevoegen aan een Android-kaart](how-to-add-shapes-to-android-map.md)

@@ -1,81 +1,81 @@
 ---
-title: De Azure IoT Central-gebruikers interface aanpassen | Microsoft Docs
-description: Het thema en de Help-koppelingen voor uw Azure IoT Central-toepassing aanpassen
+title: De Azure IoT Central UI aanpassen | Microsoft Documenten
+description: Het thema aanpassen en koppelingen voor uw centrale Azure IoT-toepassing helpen
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/06/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3afa86aae3b51ea20610dcbff5211e59fb341650
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8f76f143b6c6a26b88b78e20d8d5d8ae1ae48553
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018428"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157981"
 ---
-# <a name="customize-the-azure-iot-central-ui"></a>De Azure IoT Central-gebruikers interface aanpassen
+# <a name="customize-the-azure-iot-central-ui"></a>De Azure IoT Central-gebruikersinterface aanpassen
 
-In dit artikel wordt beschreven hoe u als beheerder de gebruikers interface van uw toepassing kunt aanpassen door aangepaste Thema's toe te passen en de Help-koppelingen te wijzigen zodat deze naar uw eigen aangepaste Help-bronnen verwijzen. 
+In dit artikel wordt beschreven hoe u als beheerder de gebruikersinterface van uw toepassing aanpassen door aangepaste thema's toe te passen en de helpkoppelingen aan te passen die verwijzen naar uw eigen aangepaste helpbronnen. 
 
 
 
-Op de volgende scherm afbeelding ziet u een pagina met het standaard thema:
+In de volgende schermafbeelding wordt een pagina weergegeven met het standaardthema:
 
-![Standaard IoT Central-thema](./media/howto-customize-ui/standard-ui.png)
+![Standaard IoT Centraal-thema](./media/howto-customize-ui/standard-ui.png)
 
-In de volgende scherm afbeelding ziet u een pagina met behulp van een aangepaste scherm opname waarin de aangepaste UI-elementen zijn gemarkeerd:
+In de volgende schermafbeelding wordt een pagina weergegeven met behulp van een aangepaste schermafbeelding met de aangepaste ui-elementen gemarkeerd:
 
-![Aangepast IoT Central thema](./media/howto-customize-ui/themed-ui.png)
+![Aangepast IoT-centraal thema](./media/howto-customize-ui/themed-ui.png)
 
 ## <a name="create-theme"></a>Thema maken
 
-Als u een aangepast thema wilt maken, gaat u naar de pagina **uw toepassing aanpassen** in de sectie **beheer** :
+Als u een aangepast thema wilt maken, navigeert u naar de pagina **Uw toepassing aanpassen** in de sectie **Beheer:**
 
-![IoT Central-Thema's](./media/howto-customize-ui/themes.png)
+![IoT Centrale thema's](./media/howto-customize-ui/themes.png)
 
-Op deze pagina kunt u de volgende aspecten van uw toepassing aanpassen:
+Op deze pagina u de volgende aspecten van uw toepassing aanpassen:
 
-### <a name="application-logo"></a>Toepassings logo
+### <a name="application-logo"></a>Toepassingslogo
 
-Een PNG-afbeelding, niet groter dan 1 MB, met een transparante achtergrond. Dit logo wordt links op de titel balk van de IoT Central toepassing weer gegeven.
+Een PNG-afbeelding, niet groter dan 1 MB, met een transparante achtergrond. Dit logo wordt links weergegeven op de titelbalk van de IoT Central-toepassing.
 
-Als uw logo afbeelding de naam van uw toepassing bevat, kunt u de tekst van de toepassings naam verbergen. Zie [uw toepassing beheren](howto-administer.md#change-application-name-and-url)voor meer informatie.
+Als uw logoafbeelding de naam van uw toepassing bevat, u de tekst van de toepassingsnaam verbergen. Zie [Uw toepassing beheren](howto-administer.md#change-application-name-and-url)voor meer informatie.
 
-### <a name="browser-icon-favicon"></a>Browser pictogram (favicon)
+### <a name="browser-icon-favicon"></a>Pictogram Browser (favicon)
 
-Een PNG-afbeelding, niet groter dan 32 x 32 pixels, met een transparante achtergrond. Een webbrowser kan deze installatie kopie gebruiken in de adres balk, de geschiedenis, de blad wijzers en het browser tabblad.
+Een PNG-afbeelding, niet groter dan 32 x 32 pixels, met een transparante achtergrond. Een webbrowser kan deze afbeelding gebruiken in de adresbalk, geschiedenis, bladwijzers en het tabblad browser.
 
-### <a name="browser-colors"></a>Browser kleuren
+### <a name="browser-colors"></a>Browserkleuren
 
-U kunt de kleur van de paginakop tekst en de kleur die wordt gebruikt voor accent knoppen en andere hooglichten wijzigen. Gebruik een hexadecimale kleur waarde van zes tekens in de notatie `##ff6347`. Zie [HTML-kleuren](https://www.w3schools.com/html/html_colors.asp)voor meer informatie over de kleur notatie **hex-waarde** .
+U de kleur van de paginakoptekst en de kleur die wordt gebruikt voor accentknoppen en andere hooglichten wijzigen. Gebruik een kleurwaarde van zes `##ff6347`tekens in het formaat . Zie [HTML-kleuren](https://www.w3schools.com/html/html_colors.asp)voor meer informatie over **kleurnotatie van HEX-waarde** .
 
 > [!NOTE]
-> Op de pagina **uw toepassing aanpassen** kunt u altijd terugkeren naar de standaard opties.
+> U altijd terugkeren naar de standaardopties op de **pagina Uw toepassing aanpassen.**
 
-### <a name="changes-for-operators"></a>Wijzigingen voor Opera tors
+### <a name="changes-for-operators"></a>Wijzigingen voor exploitanten
 
-Als een beheerder een aangepast thema maakt, kunnen Opera tors en andere gebruikers van uw toepassing niet meer een thema in **instellingen**kiezen.
+Als een beheerder een aangepast thema maakt, kunnen operators en andere gebruikers van uw toepassing niet langer een thema kiezen in **Instellingen**.
 
 ## <a name="replace-help-links"></a>Help-koppelingen vervangen
 
-Als u aangepaste Help-informatie voor uw Opera tors en andere gebruikers wilt opgeven, kunt u de koppelingen in het **Help** -menu van de toepassing wijzigen.
+Als u uw operators en andere gebruikers aangepaste help-informatie wilt verstrekken, u de koppelingen in het **Help-menu** van toepassingen wijzigen.
 
-Als u de Help-koppelingen wilt wijzigen, gaat u naar de pagina **Help aanpassen** in de sectie **beheer** :
+Als u de helpkoppelingen wilt wijzigen, navigeert u naar de **helppagina aanpassen** in de sectie **Beheer:**
 
-![Help-koppelingen voor IoT Central aanpassen](./media/howto-customize-ui/help-links.png)
+![IoT Central help-koppelingen aanpassen](./media/howto-customize-ui/help-links.png)
 
-U kunt ook nieuwe vermeldingen toevoegen aan het menu Help en standaard vermeldingen verwijderen:
+U ook nieuwe items toevoegen aan het Helpmenu en standaardvermeldingen verwijderen:
 
-![Help voor aangepaste IoT Central](./media/howto-customize-ui/custom-help.png)
+![Aangepaste IoT Central-hulp](./media/howto-customize-ui/custom-help.png)
 
 > [!NOTE]
-> U kunt altijd terugkeren naar de standaard Help-koppelingen op de Help-pagina **aanpassen** .
+> U altijd terugkeren naar de standaardhelpkoppelingen op de **helppagina aanpassen.**
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u de gebruikers interface in uw IoT Central-toepassing kunt aanpassen, volgt u een aantal voorgestelde volgende stappen:
+Nu u hebt geleerd hoe u de gebruikersinterface in uw IoT Central-toepassing aanpassen, volgen hier enkele voorgestelde volgende stappen:
 
 - [Uw toepassing beheren](./howto-administer.md)
-- [Tegels toevoegen aan uw dash board](howto-add-tiles-to-your-dashboard.md)
+- [Tegels toevoegen aan uw dashboard](howto-add-tiles-to-your-dashboard.md)

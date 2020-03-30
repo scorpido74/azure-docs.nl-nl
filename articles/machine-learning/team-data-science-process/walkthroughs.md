@@ -1,6 +1,6 @@
 ---
-title: Scenario's voor het uitvoeren van het Team Data Science Process op Azure
-description: Klik hier voor meer informatie over het combineren van cloud en on-premises hulpprogramma's en services in een werkstroom of een pijplijn te maken van een intelligente toepassingen.
+title: Walkthroughs uitvoeren van het Team Data Science-proces op Azure
+description: Cloud- en on-premises tools en services combineren in een workflow of pijplijn om een intelligente toepassing te maken.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,35 +12,35 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8fa21cc690742a71100c53b4e5b6ce122d1a6147
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75864074"
 ---
-# <a name="walkthroughs-executing-the-team-data-science-process"></a>Scenario's voor het uitvoeren van het Team Data Science Process
+# <a name="walkthroughs-executing-the-team-data-science-process"></a>Walkthroughs uitvoeren van het Team Data Science Proces
 
-In deze **uitgebreide instructies** worden de stappen in het team data Science-proces voor specifieke scenario's gedemonstreerd. Ze illustreren het combi neren van Cloud, on-premises hulpprogram ma's en services in een werk stroom voor een **intelligente toepassing**. De scenario's zijn gegroepeerd op **platform** die ze gebruiken.
-
-
-## <a name="walkthrough-descriptions"></a>Scenario beschrijvingen
-
-Hier vindt u korte beschrijvingen van deze voorbeelden overzicht van hun respectieve platforms bieden:
+Deze **uitgebreide walkthroughs** tonen de stappen in het Team Data Science Process voor specifieke scenario's. Ze illustreren hoe cloud- en on-premises tools en services kunnen worden gecombineerd in een workflow voor een **intelligente toepassing.** De walkthroughs zijn gegroepeerd per **platform** dat ze gebruiken.
 
 
-- [HDInsight Spark-scenario's met PySpark en Scala](walkthroughs-spark.md) deze scenario's gebruiken PySpark en Scala op een Azure Spark-cluster om te doen predictive analytics.
-- [HDInsight Hadoop-scenario's met behulp van Hive](walkthroughs-hdinsight-hadoop.md) deze scenario's Hive gebruiken met een HDInsight Hadoop-cluster te doen, voorspellende analyses.
-- [Azure Data Lake-scenario's met U-SQL](walkthroughs-azure-data-lake.md) deze scenario's kunt u U-SQL met Azure Data Lake gebruiken om te doen van voorspellende analyses.
-- [SQL Server](walkthroughs-sql-server.md) deze scenario's SQL Server, SQL Server R Services en SQL Server Python Services gebruiken om te doen van voorspellende analyses.
-- [SQL Data Warehouse](walkthroughs-sql-data-warehouse.md) deze scenario's SQL Data Warehouse gebruiken om te doen van voorspellende analyses. 
+## <a name="walkthrough-descriptions"></a>Walkthrough beschrijvingen
+
+Hier zijn korte beschrijvingen van wat deze walkthrough voorbeelden bieden op hun respectieve platforms:
+
+
+- [HDInsight Spark walkthroughs met PySpark en Scala](walkthroughs-spark.md) Deze walkthroughs gebruiken PySpark en Scala op een Azure Spark-cluster om voorspellende analyses uit te doen.
+- [HDInsight Hadoop walkthroughs met Hive](walkthroughs-hdinsight-hadoop.md) Deze walkthroughs gebruiken Hive met een HDInsight Hadoop-cluster om voorspellende analyses uit te doen.
+- [Azure Data Lake-walkthroughs met U-SQL](walkthroughs-azure-data-lake.md) Deze walkthroughs gebruiken U-SQL met Azure Data Lake om voorspellende analyses uit te doen.
+- [SQL Server](walkthroughs-sql-server.md) Deze walkthroughs maken gebruik van SQL Server, SQL Server R Services en SQL Server Python Services om voorspellende analyses uit te kunnen doen.
+- [SQL-gegevensmagazijn](walkthroughs-sql-data-warehouse.md) Deze walkthroughs gebruiken SQL Data Warehouse om predictive analytics uit te doen. 
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor een bespreking van de belangrijkste onderdelen die deel uitmaken van het Team Data Science Process [Team Data Science Process overzicht](overview.md).
+Zie [Team Data Science Process overzicht](overview.md)voor een bespreking van de belangrijkste onderdelen van het Team Data Science Process.
 
-Zie voor een bespreking van de team data Science proces levenscyclus de [team data Science process Lifecycle](lifecycle.md). Deze levens cyclus bevat een overzicht van de stappen, van begin tot eind, die projecten meestal volgen wanneer ze worden uitgevoerd. 
+Zie De levenscyclus van het Team [Data Science Process](lifecycle.md)voor een discussie over de levenscyclus van het Team Data Science Process. Deze levenscyclus geeft een overzicht van de stappen, van begin tot eind, die projecten meestal volgen wanneer ze worden uitgevoerd. 
 
-Zie [Data Science process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)(Engelstalig) voor een overzicht. 
+Zie [Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)voor een overzicht. 
 

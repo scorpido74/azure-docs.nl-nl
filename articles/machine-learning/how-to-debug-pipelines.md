@@ -1,100 +1,100 @@
 ---
-title: Fouten opsporen en problemen oplossen machine learning pijp lijnen
+title: Fouten in Machine Learning-pijplijnen opsporen en oplossen
 titleSuffix: Azure Machine Learning
-description: Fouten opsporen en problemen oplossen machine learning pijp lijnen in de Azure Machine Learning SDK voor python. Leer veelvoorkomende Valk uilen voor het ontwikkelen van pijp lijnen en tips voor het oplossen van fouten in scripts voor en tijdens externe uitvoering. Meer informatie over hoe u Visual Studio code kunt gebruiken om uw machine learning-pijp lijnen interactief op te sporen.
+description: Foutopsporing en problemen oplossen van machine learning-pijplijnen in de Azure Machine Learning SDK voor Python. Leer veelvoorkomende valkuilen voor het ontwikkelen van pijplijnen en tips om u te helpen uw scripts te debuggen voor en tijdens uitvoering op afstand. Meer informatie over het gebruik van Visual Studio Code om uw machine learning-pijplijnen interactief te debuggen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 author: likebupt
 ms.author: keli19
-ms.date: 12/12/2019
-ms.openlocfilehash: c81d4db5798c15327e06471f1cb0da4841bd61b2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/18/2020
+ms.openlocfilehash: 578e935ee742ad476aeafb53670f0a92035249e5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283444"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064085"
 ---
-# <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Fouten opsporen en problemen oplossen machine learning pijp lijnen
+# <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Fouten in Machine Learning-pijplijnen opsporen en oplossen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u fouten opspoort en oplost [machine learning pijp lijnen](concept-ml-pipelines.md) in de [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) en [Azure machine learning Designer (preview)](https://docs.microsoft.com/azure/machine-learning/concept-designer). Informatie over het volgende:
+In dit artikel leert u hoe u [machine learning-pijplijnen](concept-ml-pipelines.md) opsporen en oplossen in de [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) en Azure Machine [Learning-ontwerper (preview).](https://docs.microsoft.com/azure/machine-learning/concept-designer) Er wordt informatie verstrekt over hoe:
 
-* Fouten opsporen met behulp van de Azure Machine Learning SDK
-* Fout opsporing met behulp van de Azure Machine Learning Designer
-* Fouten opsporen met Application Insights
-* Interactief fouten opsporen met Visual Studio code (VS code) en de Python Tools for Visual Studio (PTVSD)
+* Foutopsporing met de Azure Machine Learning SDK
+* Foutopsporing met de Azure Machine Learning Designer
+* Foutopsporing met toepassingsinzichten
+* Foutopsporing interactief met behulp van Visual Studio Code (VS Code) en de Python Tools for Visual Studio (PTVSD)
 
-## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Fouten opsporen en oplossen in de Azure Machine Learning SDK
-In de volgende secties vindt u een overzicht van algemene Valk uilen bij het bouwen van pijp lijnen en verschillende strategieën voor het opsporen van fouten in uw code die wordt uitgevoerd in een pijp lijn. Gebruik de volgende tips wanneer u problemen ondervindt bij het verkrijgen van een pijp lijn die naar verwachting kan worden uitgevoerd.
+## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Foutopsporing en problemen oplossen in de Azure Machine Learning SDK
+De volgende secties geven een overzicht van de veelvoorkomende valkuilen bij het bouwen van pijplijnen en verschillende strategieën voor het debuggen van uw code die in een pijplijn wordt uitgevoerd. Gebruik de volgende tips wanneer u problemen ondervindt om een pijplijn te laten uitvoeren zoals verwacht.
 
 ### <a name="testing-scripts-locally"></a>Scripts lokaal testen
 
-Een van de meest voorkomende fouten in een pijp lijn is dat een bijgevoegd script (script voor het opschonen van gegevens, het Score script, enzovoort) niet wordt uitgevoerd zoals bedoeld, of dat er runtime-fouten in de externe Compute-context staan die moeilijk te vinden zijn in uw werk ruimte in de Azure-machine Learning Studio. 
+Een van de meest voorkomende fouten in een pijplijn is dat een bijgevoegd script (script voor gegevensreiniging, scorescript, enz.) niet wordt uitgevoerd zoals bedoeld, of runtimefouten bevat in de externe rekencontext die moeilijk te detecteren zijn in uw werkruimte in de Azure Machine Leerstudio. 
 
-Pijp lijnen zelf kunnen niet lokaal worden uitgevoerd, maar als u de scripts in isolatie uitvoert op uw lokale computer, kunt u sneller fouten opsporen omdat u niet hoeft te wachten op het proces voor het bouwen van de berekening en de omgeving. Er is een aantal ontwikkel werkzaamheden vereist om dit te doen:
+Pijplijnen zelf kunnen niet lokaal worden uitgevoerd, maar door de scripts afzonderlijk op uw lokale machine uit te voeren, u sneller debuggen omdat u niet hoeft te wachten op het proces voor het opbouwen van de gegevens en de omgeving. Hiervoor is enige ontwikkelingswerk nodig:
 
-* Als uw gegevens zich in een Cloud-Data Store bevinden, moet u gegevens downloaden en deze beschikbaar maken voor uw script. Het gebruik van een klein voor beeld van uw gegevens is een goede manier om in runtime te verminderen en snel feedback te krijgen over het gedrag van scripts
-* Als u probeert een tussenliggende pijplijn stap te simuleren, moet u mogelijk hand matig de object typen bouwen waarvan het specifieke script in de vorige stap verwacht.
-* U moet ook uw eigen omgeving definiëren en de afhankelijkheden repliceren die zijn gedefinieerd in uw externe Compute-omgeving
+* Als uw gegevens zich in een clouddatastore bevinden, moet u gegevens downloaden en beschikbaar maken voor uw script. Het gebruik van een kleine steekproef van uw gegevens is een goede manier om runtime te verminderen en snel feedback te krijgen over het scriptgedrag
+* Als u een tussenliggende pijplijnstap probeert te simuleren, moet u mogelijk handmatig de objecttypen bouwen die het specifieke script van de vorige stap verwacht
+* U moet ook uw eigen omgeving definiëren en de afhankelijkheden repliceren die zijn gedefinieerd in uw externe compute-omgeving
 
-Zodra u een script hebt ingesteld om uit te voeren op uw lokale omgeving, is het veel eenvoudiger om fouten op te sporen in taken zoals:
+Zodra u een script-instelling hebt om op uw lokale omgeving uit te voeren, is het veel gemakkelijker om foutopsporingstaken uit te voeren, zoals:
 
-* Een aangepaste configuratie voor fout opsporing koppelen
-* Uitvoering onderbreken en object status controleren
-* Het opvangen van type of logische fouten die pas worden weer gegeven na runtime
+* Een aangepaste foutopsporingsconfiguratie toevoegen
+* Uitvoering onderbreken en objectstatus inspecteren
+* Het vangen van type of logische fouten die niet worden blootgesteld tot runtime
 
 > [!TIP] 
-> Zodra u kunt controleren of uw script wordt uitgevoerd zoals verwacht, voert u een goede volgende stap uit om het script uit te voeren in een pijp lijn met één stap voordat u deze in een pijp lijn met meerdere stappen probeert uit te voeren.
+> Zodra u controleren of uw script wordt uitgevoerd zoals verwacht, wordt het script in een pijplijn met één stap uitgevoerd voordat u probeert het in een pijplijn met meerdere stappen uit te voeren.
 
-### <a name="debugging-scripts-from-remote-context"></a>Fouten opsporen in scripts in externe context
+### <a name="debugging-scripts-from-remote-context"></a>Scripts debuggen vanuit externe context
 
-Het lokaal testen van scripts is een uitstekende manier om fouten op te sporen in primaire code fragmenten en complexe logica voordat u begint met het bouwen van een pijp lijn, maar op een bepaald moment moet u waarschijnlijk fouten opsporen in scripts tijdens de daad werkelijke uitvoering van de pijp lijn, met name bij het vaststellen van het gedrag dat optreedt tijdens de interactie tussen pijplijn stappen. We raden u aan om `print()`-instructies in uw stap scripts kwijt te gebruiken, zodat u de object status en verwachte waarden kunt zien tijdens externe uitvoering, vergelijkbaar met hoe u fouten opspoort in Java script-code.
+Het testen van scripts lokaal is een geweldige manier om grote codefragmenten en complexe logica te debuggen voordat u begint met het bouwen van een pijplijn, maar op een gegeven moment zult u waarschijnlijk scripts moeten debuggen tijdens de eigenlijke pijplijnrun zelf, vooral bij het diagnosticeren van gedrag dat optreedt tijdens de interactie tussen pijplijnstappen. We raden u `print()` aan om uitlatingen in uw stapscripts te royeren, zodat u de objectstatus en verwachte waarden tijdens uitvoering op afstand zien, vergelijkbaar met hoe u JavaScript-code zou debuggen.
 
-Het logboek bestand `70_driver_log.txt` bevat: 
+Het logboekbestand `70_driver_log.txt` bevat: 
 
 * Alle afgedrukte instructies tijdens de uitvoering van uw script
-* De stack-trace voor het script 
+* De stacktracering voor het script 
 
-Als u deze en andere logboek bestanden wilt vinden in de portal, klikt u eerst op de pijplijn uitvoering in uw werk ruimte.
+Als u deze en andere logboekbestanden in de portal wilt vinden, klikt u eerst op de pijplijn die in uw werkruimte wordt uitgevoerd.
 
-![Lijst pagina pijplijn uitvoering](./media/how-to-debug-pipelines/pipelinerun-01.png)
+![Lijstpagina pijplijnrun](./media/how-to-debug-pipelines/pipelinerun-01.png)
 
-Ga naar de detail pagina van de pijplijn uitvoering.
+Navigeer naar de detailpagina pijplijnrun.
 
-![Detail pagina pijp lijn uitvoeren](./media/how-to-debug-pipelines/pipelinerun-02.png)
+![Detailpagina pijplijnrun](./media/how-to-debug-pipelines/pipelinerun-02.png)
 
-Klik op de module voor de specifieke stap. Ga naar het tabblad **Logboeken** . Andere logboeken bevatten informatie over het proces van het bouwen van de omgevings installatie kopie en stap voorbereidings scripts.
+Klik op de module voor de specifieke stap. Navigeer naar het tabblad **Logboeken.** Andere logboeken bevatten informatie over het proces voor het maken van uw omgevingafbeelding en het voorbereiden van stappenscripts.
 
-![Tabblad detail pagina voor uitvoering van pijp lijn](./media/how-to-debug-pipelines/pipelinerun-03.png)
+![Tabblad Detailpaginalogboek van pijplijnuitvoeren](./media/how-to-debug-pipelines/pipelinerun-03.png)
 
 > [!TIP]
-> Wordt uitgevoerd voor *gepubliceerde pijp lijnen* vindt u op het tabblad **eind punten** in uw werk ruimte. Wordt uitgevoerd voor *niet-gepubliceerde pijp lijnen* vindt u in **experimenten** of **pijp lijnen**.
+> Runs voor *gepubliceerde pijplijnen* zijn te vinden op het tabblad **Eindpunten** in uw werkruimte. Runs voor *niet-gepubliceerde pijplijnen* zijn te vinden in **experimenten** of **pijplijnen.**
 
 ### <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
 
-De volgende tabel bevat veelvoorkomende problemen bij het ontwikkelen van pijp lijnen met mogelijke oplossingen.
+De volgende tabel bevat veelvoorkomende problemen tijdens de ontwikkeling van pijpleidingen, met mogelijke oplossingen.
 
 | Probleem | Mogelijke oplossing |
 |--|--|
-| Kan geen gegevens door geven aan `PipelineData` Directory | Zorg ervoor dat u een map hebt gemaakt in het script dat overeenkomt met de locatie van de gegevens van de stap uitvoer. In de meeste gevallen definieert een invoer argument de uitvoermap en maakt u de map expliciet. Gebruik `os.makedirs(args.output_dir, exist_ok=True)` om de uitvoermap te maken. Raadpleeg de [zelf studie](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) voor een score voorbeeld script waarin dit ontwerp patroon wordt weer gegeven. |
-| Afhankelijkheids fouten | Als u scripts lokaal hebt ontwikkeld en getest, maar u afhankelijkheids problemen ondervindt bij het uitvoeren van een externe Compute in de pijp lijn, moet u ervoor zorgen dat afhankelijkheden en versies van de reken omgeving overeenkomen met uw test omgeving. |
-| Dubbel zinnige fouten met Compute-doelen | Het verwijderen en opnieuw maken van Compute-doelen kan bepaalde problemen met reken doelen oplossen. |
-| Pijp lijn waarbij de stappen niet opnieuw worden gebruikt | Het opnieuw gebruiken van de stap is standaard ingeschakeld, maar zorg ervoor dat u deze niet hebt uitgeschakeld in een pijplijn stap. Als opnieuw gebruiken is uitgeschakeld, wordt de para meter `allow_reuse` in de stap ingesteld op `False`. |
-| De pijp lijn wordt onnodig opnieuw uitgevoerd | Om ervoor te zorgen dat de stappen alleen opnieuw worden uitgevoerd wanneer de onderliggende gegevens of scripts worden gewijzigd, moet u de mappen voor elke stap loskoppelen. Als u dezelfde bron directory voor meerdere stappen gebruikt, kan het nodig zijn om niet-uitgevoerde opnieuw uit te voeren. Gebruik de para meter `source_directory` voor een pijplijn stap object om naar uw geïsoleerde map voor die stap te verwijzen en zorg ervoor dat u niet hetzelfde `source_directory` pad gebruikt voor meerdere stappen. |
+| Kan gegevens niet `PipelineData` doorgeven aan directory | Zorg ervoor dat u een map in het script hebt gemaakt die overeenkomt met de plaats waar de pijplijn de uitvoergegevens van de stap verwacht. In de meeste gevallen definieert een invoerargument de uitvoermap en maakt u de map expliciet. Gebruiken `os.makedirs(args.output_dir, exist_ok=True)` om de uitvoermap te maken. Zie de [zelfstudie](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) voor een voorbeeld van een scorescript dat dit ontwerppatroon weergeeft. |
+| Afhankelijkheidsbugs | Als u scripts lokaal hebt ontwikkeld en getest, maar afhankelijkheidsproblemen vindt wanneer u op een externe compute in de pijplijn wordt uitgevoerd, moet u ervoor zorgen dat uw afhankelijkheden en versies van uw computeromgeving overeenkomen met uw testomgeving. (Zie [Milieugebouw, caching en hergebruik](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)|
+| Dubbelzinnige fouten met rekendoelen | Het verwijderen en opnieuw maken van compute targets kan bepaalde problemen oplossen met compute targets. |
+| Pijplijn die geen stappen hergebruikt | Hergebruik van stappen is standaard ingeschakeld, maar zorg ervoor dat u het niet hebt uitgeschakeld in een pijplijnstap. Als hergebruik is uitgeschakeld, wordt de `allow_reuse` parameter `False`in de stap ingesteld op . |
+| Pijplijn wordt onnodig uitgevoerd | Als u ervoor wilt zorgen dat stappen alleen worden uitgevoerd wanneer de onderliggende gegevens of scripts worden gewijzigd, ontkoppelt u uw mappen voor elke stap. Als u dezelfde bronmap voor meerdere stappen gebruikt, u onnodige herhalingen ervaren. Gebruik `source_directory` de parameter op een pijplijnstapobject om naar uw geïsoleerde map te wijzen `source_directory` voor die stap en ervoor te zorgen dat u niet hetzelfde pad gebruikt voor meerdere stappen. |
 
-### <a name="logging-options-and-behavior"></a>Opties voor logboek registratie en gedrag
+### <a name="logging-options-and-behavior"></a>Opties en gedrag voor logboekregistratie
 
-De onderstaande tabel bevat informatie over verschillende opties voor fout opsporing voor pijp lijnen. Het is geen limitatieve lijst, omdat er andere opties zijn dan alleen de Azure Machine Learning, python en opentellingen die hier worden weer gegeven.
+In de onderstaande tabel vindt u informatie over verschillende foutopsporingsopties voor pijplijnen. Het is geen uitputtende lijst, omdat er naast alleen de hier weergegeven Azure Machine Learning-, Python- en OpenCensus-opties bestaan.
 
-| Bibliotheek                    | Type   | Voorbeeld                                                          | Doel                                  | Bronnen                                                                                                                                                                                                                                                                                                                    |
+| Bibliotheek                    | Type   | Voorbeeld                                                          | Doel                                  | Resources                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure Machine Learning SDK | Gegevens | `run.log(name, val)`                                             | Gebruikers interface van Azure Machine Learning Portal             | [Experimenten bijhouden](how-to-track-experiments.md#available-metrics-to-track)<br>[de klasse azureml. core. run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
-| Python afdrukken/logboek registratie    | Logboek    | `print(val)`<br>`logging.info(message)`                          | Logboeken van Stuur Programma's, Azure Machine Learning Designer | [Experimenten bijhouden](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python-logboek registratie](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
-| Opentellingen python          | Logboek    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights-traceringen                | [Debug-pijp lijnen in Application Insights](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python-logboek registratie Cookbook](https://docs.python.org/3/howto/logging-cookbook.html) |
+| Azure Machine Learning-SDK | Gegevens | `run.log(name, val)`                                             | Gebruikersinterface van Azure Machine Learning Portal             | [Experimenten volgen](how-to-track-experiments.md#available-metrics-to-track)<br>[azureml.core.Run, klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
+| Python afdrukken/logboekregistratie    | Logboek    | `print(val)`<br>`logging.info(message)`                          | Stuurprogrammalogboeken, Azure Machine Learning Designer | [Experimenten volgen](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python-logboekregistratie](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| OpenCensus Python          | Logboek    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights - traces                | [Fouten met pijplijnen opsporen in Application Insights](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python logging kookboek](https://docs.python.org/3/howto/logging-cookbook.html) |
 
-#### <a name="logging-options-example"></a>Voor beeld van logboek registratie opties
+#### <a name="logging-options-example"></a>Voorbeeld van logboekopties
 
 ```python
 import logging
@@ -126,70 +126,70 @@ logger.warning("I am an OpenCensus warning statement, find me in Application Ins
 logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
 ``` 
 
-## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Fouten opsporen en oplossen in Azure Machine Learning Designer (preview-versie)
+## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Foutopsporing en problemen oplossen in Azure Machine Learning-ontwerper (voorbeeld)
 
-In deze sectie vindt u een overzicht van het oplossen van problemen met pijp lijnen in de ontwerp functie.
-Voor pijp lijnen die in de ontwerp functie zijn gemaakt, kunt u de **logboek bestanden** vinden op de pagina ontwerpen of op de detail pagina van de pijplijn uitvoering.
+In deze sectie vindt u een overzicht van het oplossen van pijplijnen in de ontwerper.
+Voor pijplijnen die in de ontwerper zijn gemaakt, u de **logboekbestanden** vinden op de ontwerppagina of in de detailpagina pijplijnuitvoering.
 
-### <a name="access-logs-from-the-authoring-page"></a>Logboeken openen via de pagina ontwerpen
+### <a name="access-logs-from-the-authoring-page"></a>Logboeken openen vanaf de ontwerppagina
 
-Wanneer u een pijplijn uitvoering verzendt en op de pagina voor ontwerpen blijft, vindt u de logboek bestanden die voor elke module worden gegenereerd.
+Wanneer u een pijplijnrun verzendt en op de ontwerppagina blijft, u de logboekbestanden vinden die voor elke module zijn gegenereerd.
 
-1. Selecteer een module in het ontwerp doek.
-1. Ga in het deel venster Eigenschappen naar het tabblad **Logboeken** .
-1. Selecteer het logboek bestand `70_driver_log.txt`
+1. Selecteer een module in het ontwerpcanvas.
+1. Ga in het rechterdeelvenster van de module naar het tabblad **Uitvoer+ogs.**
+1. Het logboekbestand selecteren`70_driver_log.txt`
 
-    ![Logboeken voor pagina module ontwerpen](./media/how-to-debug-pipelines/pipelinerun-05.png)
+    ![Logboeken van de paginamodule](./media/how-to-debug-pipelines/pipelinerun-05.png)
 
-### <a name="access-logs-from-pipeline-runs"></a>Toegang tot logboeken vanuit pijplijn uitvoeringen
+### <a name="access-logs-from-pipeline-runs"></a>Logboeken van pijplijnuitvoeringen openen
 
-U kunt ook de logboek bestanden van specifieke uitvoeringen vinden in de detail pagina pijp lijn uitvoeren in de secties **pijp lijnen** of **experimenten** .
+U de logboekbestanden van specifieke uitvoeringen ook vinden in de detailpagina pijplijnuitvoering in de secties **Pijplijnen** of **Experimenten.**
 
-1. Selecteer een pijplijn uitvoering die in de ontwerp functie is gemaakt.
-    pagina ![pijplijn uitvoering](./media/how-to-debug-pipelines/pipelinerun-04.png)
-1. Selecteer een wille keurige module in het voorbeeld venster.
-1. Ga in het deel venster Eigenschappen naar het tabblad **Logboeken** .
-1. Selecteer het logboek bestand `70_driver_log.txt`
+1. Selecteer een pijplijnrun die is gemaakt in de ontwerper.
+    ![Pagina Pijplijnrun](./media/how-to-debug-pipelines/pipelinerun-04.png)
+1. Selecteer een module in het voorbeeldvenster.
+1. Ga in het rechterdeelvenster van de module naar het tabblad **Uitvoer+ogs.**
+1. Het logboekbestand selecteren`70_driver_log.txt`
 
-## <a name="debug-and-troubleshoot-in-application-insights"></a>Fouten opsporen en oplossen in Application Insights
-Voor meer informatie over het gebruik van de bibliotheek opentellingen python op deze manier raadpleegt u deze hand leiding: [fouten opsporen en problemen oplossen met machine learning pijp lijnen in Application Insights](how-to-debug-pipelines-application-insights.md)
+## <a name="debug-and-troubleshoot-in-application-insights"></a>Foutopsporing en problemen oplossen in toepassingsinzichten
+Zie deze handleiding: [Foutopsporingsen en oplossen van machine learning-pijplijnen in Application Insights](how-to-debug-pipelines-application-insights.md) voor meer informatie over het gebruik van de OpenCensus Python-bibliotheek op deze manier.
 
-## <a name="debug-and-troubleshoot-in-visual-studio-code"></a>Fout opsporing en probleem oplossing in Visual Studio code
+## <a name="debug-and-troubleshoot-in-visual-studio-code"></a>Foutopsporing en problemen oplossen in Visual Studio Code
 
-In sommige gevallen moet u mogelijk interactief fouten opsporen in de python-code die wordt gebruikt in uw ML-pijp lijn. Met behulp van Visual Studio code (VS code) en de Python Tools for Visual Studio (PTVSD) kunt u aan de code koppelen zoals deze wordt uitgevoerd in de trainings omgeving.
+In sommige gevallen moet u mogelijk de Python-code die in uw ML-pijplijn wordt gebruikt, interactief debuggen. Door Visual Studio Code (VS Code) en de Python Tools for Visual Studio (PTVSD) te gebruiken, u de code aan de code koppelen terwijl deze wordt uitgevoerd in de trainingsomgeving.
 
 ### <a name="prerequisites"></a>Vereisten
 
-* Een __Azure machine learning-werk ruimte__ die is geconfigureerd voor het gebruik van een __Azure Virtual Network__.
-* Een __Azure machine learning pijp lijn__ die gebruikmaakt van python-scripts als onderdeel van de pijplijn stappen. Bijvoorbeeld een PythonScriptStep.
-* Een Azure Machine Learning Compute-Cluster, dat zich __in het virtuele netwerk__ bevindt en wordt __gebruikt door de pijp lijn voor training__.
-* Een __ontwikkel omgeving__ die zich __in het virtuele netwerk__bevindt. De ontwikkel omgeving kan een van de volgende zijn:
+* Een __Azure Machine Learning-werkruimte__ die is geconfigureerd om een __Azure Virtual Network__te gebruiken.
+* Een __Azure Machine Learning-pijplijn__ die Python-scripts gebruikt als onderdeel van de pijplijnstappen. Bijvoorbeeld een PythonScriptStep.
+* Een Azure Machine Learning Compute-cluster, dat __zich in het virtuele netwerk__ bevindt en wordt gebruikt door de pijplijn voor __training.__
+* Een __ontwikkelomgeving__ die __zich in het virtuele netwerk bevindt.__ De ontwikkelomgeving kan een van de volgende:
 
-    * Een virtuele machine van Azure in het virtuele netwerk
-    * Een reken instantie van een notebook-VM in het virtuele netwerk
-    * Een client computer die is verbonden met het virtuele netwerk via een virtueel particulier netwerk (VPN).
+    * Een Azure Virtual Machine in het virtuele netwerk
+    * Een Compute-exemplaar van Notebook VM in het virtuele netwerk
+    * Een clientmachine die met het virtuele netwerk is verbonden door een vpn (virtual private network).
 
-Zie voor meer informatie over het gebruik van een Azure Virtual Network met Azure Machine Learning [Secure Azure ml experimenten en de functies voor het](how-to-enable-virtual-network.md)afmaken van een azure-Virtual Network.
+Zie [Secure Azure ML-experimenten en inference-taken binnen een Azure Virtual Network](how-to-enable-virtual-network.md)voor meer informatie over het gebruik van een Azure Virtual Network met Azure Machine Learning.
 
-### <a name="how-it-works"></a>How it works (Engelstalig artikel)
+### <a name="how-it-works"></a>Hoe werkt het?
 
-Met uw ML pijplijn stappen voert u python-scripts uit. Deze scripts zijn gewijzigd om de volgende acties uit te voeren:
+In uw ML-pijplijnstappen worden Python-scripts uitgevoerd. Deze scripts worden aangepast om de volgende acties uit te voeren:
     
-1. Registreer het IP-adres van de host waarop ze worden uitgevoerd. U gebruikt het IP-adres om de fout opsporing aan het script te koppelen.
+1. Log het IP-adres van de host aan waarop ze worden uitgevoerd. U gebruikt het IP-adres om de foutopsporing met het script te verbinden.
 
-2. Start het onderdeel PTVSD debug en wacht tot er een fout opsporingsprogramma is om verbinding te maken.
+2. Start de component PTVSD-foutopsporing en wacht tot een foutopsporing verbinding maakt.
 
-3. Vanuit uw ontwikkel omgeving bewaakt u de logboeken die zijn gemaakt door het trainings proces om het IP-adres te vinden waarop het script wordt uitgevoerd.
+3. Vanuit uw ontwikkelomgeving controleert u de logboeken die door het trainingsproces zijn gemaakt om het IP-adres te vinden waar het script wordt uitgevoerd.
 
-4. U vertelt het IP-adres om het fout opsporingsprogramma te verbinden met behulp van een `launch.json` bestand.
+4. U vertelt VS Code het IP-adres om `launch.json` de foutopsporing te verbinden met behulp van een bestand.
 
-5. U koppelt het fout opsporingsprogramma en interactieve stap door het script.
+5. U bevestigt de foutopsporing en stapt interactief door het script.
 
 ### <a name="configure-python-scripts"></a>Python-scripts configureren
 
-Als u fout opsporing wilt inschakelen, moet u de volgende wijzigingen aanbrengen in de python-script (s) die worden gebruikt door de stappen in uw ML-pijp lijn:
+Als u foutopsporing wilt inschakelen, voert u de volgende wijzigingen aan in het Python-script(en) dat wordt gebruikt door stappen in uw ML-pijplijn:
 
-1. Voeg de volgende import instructies toe:
+1. Voeg de volgende importinstructies toe:
 
     ```python
     import ptvsd
@@ -197,7 +197,7 @@ Als u fout opsporing wilt inschakelen, moet u de volgende wijzigingen aanbrengen
     from azureml.core import Run
     ```
 
-1. Voeg de volgende argumenten toe. Met deze argumenten kunt u de debugger zo nodig inschakelen en de time-out voor het koppelen van het fout opsporingsprogramma instellen:
+1. Voeg de volgende argumenten toe. Met deze argumenten u de foutopsporing zo nodig inschakelen en de time-out instellen voor het koppelen van de foutopsporing:
 
     ```python
     parser.add_argument('--remote_debug', action='store_true')
@@ -207,14 +207,14 @@ Als u fout opsporing wilt inschakelen, moet u de volgende wijzigingen aanbrengen
                     f'will await a connection from a debugger client (VSCODE).')
     ```
 
-1. Voeg de volgende-instructies toe. Met deze instructies wordt de huidige uitvoerings context geladen, zodat u het IP-adres van het knoop punt waarop de code wordt uitgevoerd, kunt vastleggen:
+1. Voeg de volgende instructies toe. Deze instructies laden de huidige runcontext, zodat u het IP-adres van het knooppunt waarop de code wordt uitgevoerd, registreren:
 
     ```python
     global run
     run = Run.get_context()
     ```
 
-1. Een `if`-instructie toevoegen die PTVSD start en wacht tot een fout opsporingsprogramma is gekoppeld. Als er voor de time-out geen fout opsporingsprogramma is gekoppeld, wordt het script gewoon voortgezet.
+1. Voeg `if` een instructie toe die PTVSD start en wacht tot een foutopsporing is gekoppeld. Als er geen foutopsporing wordt gekoppeld vóór de time-out, gaat het script gewoon door.
 
     ```python
     if args.remote_debug:
@@ -229,7 +229,7 @@ Als u fout opsporing wilt inschakelen, moet u de volgende wijzigingen aanbrengen
         print(f'Debugger attached = {ptvsd.is_attached()}')
     ```
 
-In het volgende python-voor beeld ziet u een basis `train.py` bestand waarmee fout opsporing wordt ingeschakeld:
+In het volgende Python-voorbeeld wordt een basisbestand `train.py` weergegeven waarmee foutopsporing mogelijk is:
 
 ```python
 # Copyright (c) Microsoft. All rights reserved.
@@ -281,9 +281,9 @@ if not (args.output_train is None):
     print("%s created" % args.output_train)
 ```
 
-### <a name="configure-ml-pipeline"></a>ML-pijp lijn configureren
+### <a name="configure-ml-pipeline"></a>ML-pijplijn configureren
 
-Maak een omgeving en stel `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']`in om de Python-pakketten te leveren die nodig zijn om PTVSD te starten en de uitvoerings context op te halen. Wijzig de SDK-versie zodat deze overeenkomt met die die u gebruikt. Het volgende code fragment laat zien hoe u een omgeving maakt:
+Als u de Python-pakketten wilt bieden die nodig zijn om `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']`PTVSD te starten en de runcontext te krijgen, maakt u een omgeving en stelt u deze in. Wijzig de SDK-versie die overeenkomt met de versie die u gebruikt. In het volgende codefragment wordt uitgelegd hoe u een omgeving maakt:
 
 ```python
 # Use a RunConfiguration to specify some additional requirements for this step.
@@ -308,7 +308,7 @@ run_config.environment.python.conda_dependencies = CondaDependencies.create(cond
                                                                            pip_packages=['ptvsd', 'azureml-sdk==1.0.83'])
 ```
 
-In de sectie [python-scripts configureren](#configure-python-scripts) zijn twee nieuwe argumenten toegevoegd aan de scripts die worden gebruikt door uw ml-pijplijn stappen. Het volgende code fragment laat zien hoe u deze argumenten kunt gebruiken om fout opsporing in te scha kelen voor het onderdeel en om een time-out in te stellen. Er wordt ook gedemonstreerd hoe u de omgeving die u eerder hebt gemaakt, kunt gebruiken door `runconfig=run_config`in te stellen:
+In de sectie [Python-scripts configureren](#configure-python-scripts) zijn twee nieuwe argumenten toegevoegd aan de scripts die worden gebruikt door de ml-pijplijnstappen. In het volgende codefragment wordt uitgelegd hoe u deze argumenten gebruiken om foutopsporing voor de component in te schakelen en een time-out in te stellen. Het toont ook aan hoe de omgeving `runconfig=run_config`die eerder is gemaakt te gebruiken door :
 
 ```python
 # Use RunConfig from a pipeline step
@@ -321,33 +321,33 @@ step1 = PythonScriptStep(name="train_step",
                          allow_reuse=False)
 ```
 
-Wanneer de pijp lijn wordt uitgevoerd, maakt elke stap een onderliggende uitvoering. Als fout opsporing is ingeschakeld, wordt in het gewijzigde script informatie die lijkt op de volgende tekst in de `70_driver_log.txt` voor de onderliggende uitvoering:
+Wanneer de pijplijn wordt uitgevoerd, maakt elke stap een onderliggende run. Als foutopsporing is ingeschakeld, worden in het gewijzigde script `70_driver_log.txt` gegevens weergegeven die vergelijkbaar zijn met de volgende tekst in de run voor het kind:
 
 ```text
 Timeout for debug connection: 300
 ip_address: 10.3.0.5
 ```
 
-Sla de `ip_address` waarde op. Deze wordt gebruikt in de volgende sectie.
+Sla `ip_address` de waarde op. Het wordt gebruikt in de volgende sectie.
 
 > [!TIP]
-> U kunt ook het IP-adres van de uitvoerings logboeken voor de onderliggende uitvoering van deze pijplijn stap vinden. Zie voor meer informatie over het weer geven van deze informatie [Azure ml experimenten en metrische gegevens bewaken](how-to-track-experiments.md).
+> U het IP-adres ook vinden in de run logs voor het onderliggende bedrijf voor deze pijplijnstap. Zie [Programma's en metrische gegevens van Azure ML-experiment controleren](how-to-track-experiments.md)voor meer informatie over het weergeven van deze informatie.
 
 ### <a name="configure-development-environment"></a>De ontwikkelomgeving configureren
 
-1. Gebruik de volgende opdracht om de Python Tools for Visual Studio (PTVSD) te installeren op uw VS code Development Environment:
+1. Als u de Python Tools for Visual Studio (PTVSD) wilt installeren op uw VS-code-ontwikkelomgeving, gebruikt u de volgende opdracht:
 
     ```
     python -m pip install --upgrade ptvsd
     ```
 
-    Zie [fout opsporing op afstand](https://code.visualstudio.com/docs/python/debugging#_remote-debugging)voor meer informatie over het gebruik van PTVSD met VS-code.
+    Zie [Afstandsbediening opsporen](https://code.visualstudio.com/docs/python/debugging#_remote-debugging)voor meer informatie over het gebruik van PTVSD met VS-code.
 
-1. Als u VS code wilt configureren om te communiceren met de Azure Machine Learning Compute waarop de fout opsporing wordt uitgevoerd, maakt u een nieuwe configuratie voor fout opsporing:
+1. Als u VS-code wilt configureren om te communiceren met de Azure Machine Learning-compute waarop de foutopsporing wordt uitgevoerd, maakt u een nieuwe foutopsporingsconfiguratie:
 
-    1. Selecteer in VS code het menu __fout opsporing__ en selecteer vervolgens __Open configuraties__. Er wordt een bestand met de naam __Launch. json__ geopend.
+    1. Selecteer in VS-code het menu __Foutopsporing__ en selecteer __Vervolgens Configuraties openen__. Er wordt een bestand met de naam __launch.json__ geopend.
 
-    1. Zoek in het bestand __Launch. json__ de regel met `"configurations": [`en voeg de volgende tekst toe. Wijzig de `"host": "10.3.0.5"` vermelding in het IP-adres uit de vorige sectie die in uw logboeken wordt weer gegeven. Wijzig de `"localRoot": "${workspaceFolder}/code/step"` vermelding in een lokale map die een kopie bevat van het script waarin fouten worden opgespoord:
+    1. Zoek in het bestand __launch.json__ `"configurations": [`de regel die de volgende tekst bevat en voeg de volgende tekst erachter in. Wijzig `"host": "10.3.0.5"` de vermelding van het IP-adres dat is geretourneerd in uw logboeken uit de vorige sectie. Wijzig `"localRoot": "${workspaceFolder}/code/step"` de vermelding in een lokale map met een kopie van het script dat wordt verwijderd:
 
         ```json
         {
@@ -367,28 +367,28 @@ Sla de `ip_address` waarde op. Deze wordt gebruikt in de volgende sectie.
         ```
 
         > [!IMPORTANT]
-        > Als er al andere vermeldingen in de sectie configuraties staan, voegt u een komma (,) toe na de code die u hebt ingevoegd.
+        > Als er al andere vermeldingen in de sectie configuraties zijn, voegt u een komma (,) toe na de code die u hebt ingevoegd.
 
         > [!TIP]
-        > De best practice bestaat uit het behoud van de resources voor scripts in afzonderlijke directory's. Dit is de reden waarom de `localRoot` voorbeeld waarde verwijst naar `/code/step1`.
+        > De beste praktijk is om de bronnen voor scripts in `localRoot` afzonderlijke mappen `/code/step1`te houden, daarom verwijst de voorbeeldwaarde .
         >
-        > Als u fouten opspoort in meerdere scripts, maakt u in verschillende directory's een afzonderlijke configuratie sectie voor elk script.
+        > Als u meerdere scripts debugt, in verschillende mappen, maakt u een afzonderlijke configuratiesectie voor elk script.
 
-    1. Sla het bestand __Launch. json__ op.
+    1. Sla het __bestand launch.json__ op.
 
-### <a name="connect-the-debugger"></a>De debugger verbinden
+### <a name="connect-the-debugger"></a>De foutopsporing verbinden
 
-1. Open VS code en open een lokale kopie van het script.
-2. Stel onderbrekings punten in waar het script moet worden gestopt zodra u het hebt gekoppeld.
-3. Terwijl het onderliggende proces het script uitvoert en de `Timeout for debug connection` wordt weer gegeven in de logboeken, gebruikt u de F5-toets of selecteert u __fout opsporing__. Wanneer u hierom wordt gevraagd, selecteert u de __Azure machine learning berekenen: configuratie van externe fout opsporing__ . U kunt ook het pictogram voor fout opsporing selecteren in de zijbalk, het __Azure machine learning: externe fout opsporing__ in het vervolg keuzemenu voor fout opsporing en vervolgens de groene pijl gebruiken om het fout opsporingsprogramma te koppelen.
+1. Open VS Code en open een lokale kopie van het script.
+2. Stel breekpunten in waar u wilt dat het script stopt zodra u hebt gekoppeld.
+3. Terwijl het onderliggende proces het `Timeout for debug connection` script uitvoert en het wordt weergegeven in de logboeken, gebruikt u de F5-toets of selecteert __u Foutopsporing__. Selecteer de azure __machine learning compute: configuratie van foutopsporingsop afstand__ wanneer u daarom wordt gevraagd. U ook het foutopsporingspictogram selecteren op de zijbalk, de __Azure Machine Learning: externe foutopsporingsvermelding__ in het vervolgkeuzelijst Foutopsporing en vervolgens de groene pijl gebruiken om de foutopsporing toe te voegen.
 
-    Op dit punt verbindt de VS code met PTVSD op het reken knooppunt en stopt dit met het onderbrekings punt dat u eerder hebt ingesteld. U kunt nu de code door lopen terwijl deze wordt uitgevoerd, variabelen weer geven, enzovoort.
+    Op dit punt maakt VS Code verbinding met PTVSD op het compute-knooppunt en stopt bij het breekpunt dat u eerder hebt ingesteld. U nu stap door de code als het draait, variabelen bekijken, enz.
 
     > [!NOTE]
-    > Als in het logboek een vermelding wordt weer gegeven waarin `Debugger attached = False`wordt vermeld, is de time-out verlopen en wordt het script voortgezet zonder het fout opsporingsprogramma. Dien de pijp lijn opnieuw in en sluit de debugger na het `Timeout for debug connection` bericht en voordat de time-out is verstreken.
+    > Als het logboek een `Debugger attached = False`vermelding weergeeft, is de time-out verlopen en is het script verder gegaan zonder de foutopsporing. Verzend de pijplijn opnieuw en maak `Timeout for debug connection` de foutopsporing na het bericht en voordat de time-out verloopt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Raadpleeg de SDK-Naslag informatie voor hulp met het kern pakket voor [azureml-pipelines-core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) en het pakket met [azureml-pijp lijnen-stappen](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) .
+* Zie de SDK-referentie voor hulp bij het [azureml-pipelines-core-pakket](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) en het pakket [azureml-pipelines-stappen.](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)
 
-* Bekijk de lijst met [uitzonde ringen en fout codes voor Designer](algorithm-module-reference/designer-error-codes.md).
+* Zie de lijst met [uitzonderingen en foutcodes](algorithm-module-reference/designer-error-codes.md)van ontwerpers .

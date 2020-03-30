@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een Azure Data Factory maken met behulp van python'
+title: 'Snelstart: een Azure-gegevensfabriek maken met Python'
 description: Maak een Azure data factory om gegevens te kopiëren van de ene locatie in Azure Blob Storage naar de andere.
 services: data-factory
 documentationcenter: ''
@@ -14,35 +14,35 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019
 ms.openlocfilehash: 3b8edd249b19a61f8c80eb5b8c9df25754d4f070
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78399518"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Snelstartgids: een data factory en pijp lijn maken met behulp van python
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Snelstart: een gegevensfabriek en pijplijn maken met Python
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Huidige versie](quickstart-create-data-factory-python.md)
 
-In deze Quick Start maakt u een data factory met behulp van python. Met de pijp lijn in dit data factory worden gegevens gekopieerd van de ene map naar een andere map in Azure Blob-opslag.
+In deze quickstart maakt u een gegevensfabriek met Python. De pijplijn in deze gegevensfabriek kopieert gegevens van de ene map naar de andere map in Azure Blob-opslag.
 
-Azure Data Factory is een op de cloud gebaseerde gegevens integratie service waarmee u gegevensgestuurde werk stromen kunt maken voor het organiseren en automatiseren van gegevens verplaatsing en gegevens transformatie. Met Azure Data Factory kunt u gegevensgestuurde werk stromen (pijp lijnen) maken en plannen.
+Azure Data Factory is een cloudgebaseerde data-integratieservice waarmee u datagestuurde workflows maken voor het orkestreren en automatiseren van gegevensverplaatsing en gegevenstransformatie. Met Azure Data Factory u gegevensgestuurde werkstromen maken en plannen, pijplijnen genoemd.
 
-Pijp lijnen kunnen gegevens uit verschillende gegevens archieven opnemen. Met behulp van reken Services, zoals Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics en Azure Machine Learning, kunnen pijp lijnen gegevens verwerken of transformeren. Pijp lijnen publiceren uitvoer gegevens naar gegevens archieven, zoals Azure SQL Data Warehouse voor business intelligence-toepassingen (BI).
+Pijplijnen kunnen gegevens opnemen van verschillende gegevensarchieven. Pijplijnen verwerken of transformeren gegevens met behulp van compute services zoals Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics en Azure Machine Learning. Pijplijnen publiceren uitvoergegevens naar gegevensopslag, zoals Azure SQL Data Warehouse for business intelligence (BI)-toepassingen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Een Azure-account met een actief abonnement. [Maak er gratis een.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-* [Python 3.4 +](https://www.python.org/downloads/).
+* [Python 3.4+](https://www.python.org/downloads/).
 
 * [Een Azure Storage-account](../storage/common/storage-account-create.md).
 
 * [Azure Storage Explorer](https://storageexplorer.com/) (optioneel).
 
-* [Een toepassing in azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Noteer de volgende waarden voor gebruik in latere stappen: **toepassings-id**, **verificatie sleutel**en **Tenant-id**. Wijs de toepassing toe aan de rol **Inzender** door de instructies in hetzelfde artikel te volgen.
+* [Een toepassing in Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Noteer de volgende waarden die u in latere stappen wilt gebruiken: **toepassings-id,** **verificatiesleutel**en **tenant-id**. Toepassings toewijzen aan de rol **Inzender** door instructies in hetzelfde artikel te volgen.
 
 ## <a name="create-and-upload-an-input-file"></a>Een invoerbestand maken en uploaden
 
@@ -137,7 +137,7 @@ Pijp lijnen kunnen gegevens uit verschillende gegevens archieven opnemen. Met be
         df_params = {'location':'eastus'}
     ```
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 Voeg de volgende code toe aan de methode **Main** om een **data factory** te maken. Als uw resourcegroep al bestaat, maakt u van de eerste `create_or_update`-instructie een commentaar.
 
@@ -459,4 +459,4 @@ adf_client.factories.delete(rg_name, df_name)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene locatie naar een andere locatie in een Azure Blob-opslag. Doorloop de [zelfstudies](tutorial-copy-data-dot-net.md) voor meer informatie over het gebruiken van Data Factory in andere scenario's.
+Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene naar de andere locatie in Azure Blob Storage. Doorloop de [zelfstudies](tutorial-copy-data-dot-net.md) voor meer informatie over het gebruiken van Data Factory in andere scenario's.
