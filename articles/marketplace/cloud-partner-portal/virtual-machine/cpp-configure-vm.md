@@ -1,99 +1,98 @@
 ---
 title: De door Microsoft Azure gehoste VM configureren voor de Azure Marketplace
-description: Hierin wordt uitgelegd hoe u een virtuele machine die wordt gehost op Azure kunt aanpassen, bijwerken en generaliseren.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+description: Hiermee wordt uitgelegd hoe u een VM die op Azure wordt gehost, vergroten, bijwerken en generaliseren.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.author: pabutler
-ms.openlocfilehash: ce7fe49b07dc250a9f56ff73229e347b997f0cc0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b0ed430098203c5c1a0d00eb7bf17da1be0000cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824498"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278089"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>De door Azure gehoste VM configureren
 
-In dit artikel wordt uitgelegd hoe u de grootte, update en generaliseren van een virtuele machine (VM) die wordt gehost op Azure.  Deze stappen zijn nodig om uw VM voor te bereiden voor implementatie vanuit Azure Marketplace.
+In dit artikel wordt uitgelegd hoe u een virtuele machine (VM) vergroten, bijwerken en generaliseren die op Azure wordt gehost.  Deze stappen zijn nodig om uw VM voor te bereiden om te worden geïmplementeerd vanuit de Azure Marketplace.
 
 
-## <a name="sizing-the-vhds"></a>Grootte van de Vhd's aanpassen
+## <a name="sizing-the-vhds"></a>Grootte van de VHD's
 
 <!--TD: Check if the following assertion is true. I didn't understand the original content. -->
-Als u een van de virtuele machines hebt geselecteerd die vooraf zijn geconfigureerd met een besturings systeem (en eventueel extra services), hebt u al een standaard Azure VM-grootte gekozen, zoals beschreven op het [tabblad virtual machine sku's](./cpp-skus-tab.md).  Het is de aanbevolen methode om uw oplossing te starten met een vooraf geconfigureerd besturings systeem.  Als u echter een besturings systeem hand matig installeert, moet u de grootte van de primaire VHD in uw VM-installatie kopie aanpassen:
+Als u een van de VM's hebt geselecteerd die vooraf zijn geconfigureerd met een besturingssysteem (en eventueel aanvullende services), hebt u al een standaard Azure VM-grootte gekozen, zoals beschreven op [het tabblad SKU's voor virtuele machines.](./cpp-skus-tab.md)  Het starten van uw oplossing met een vooraf geconfigureerd besturingssysteem is de aanbevolen aanpak.  Als u echter een besturingssysteem handmatig installeert, moet u uw primaire VHD in uw VM-afbeelding vergroten:
 
-- Voor Windows moet de VHD met het besturings systeem worden gemaakt als VHD met een vaste indeling van 127-128 GB. 
-- Voor Linux moet deze VHD worden gemaakt als een VHD met een vaste grootte van 30-50 GB.
+- Voor Windows moet het besturingssysteem VHD worden gemaakt als een VHD met een vast formaat van 127-128 GB. 
+- Voor Linux moet deze VHD worden gemaakt als een 30-50 GB fixed-formaat VHD.
 
-Als de fysieke grootte kleiner is dan 127-128 GB, moet de VHD sparse zijn. De geleverde basis Windows-en SQL Server-installatie kopieën voldoen al aan deze vereisten, dus Wijzig de indeling of de grootte van de opgehaalde VHD niet. 
+Als de fysieke grootte minder dan 127-128 GB is, moet de VHD schaars zijn. De basis-Windows- en SQL Server-afbeeldingen die al aan deze vereisten voldoen, wijzigen dus niet het formaat of de grootte van de verkregen VHD. 
 
-Gegevens schijven kunnen Maxi maal 1 TB groot zijn. Houd er bij het bepalen van de grootte rekening mee dat klanten de grootte van Vhd's binnen een installatie kopie niet kunnen wijzigen op het moment van de implementatie. Vhd's met een gegevens schijf moeten worden gemaakt als Vhd's met vaste grootte. Ze moeten ook verspreid zijn. Gegevens schijven kunnen in eerste instantie leeg zijn of gegevens bevatten.
+Gegevensschijven kunnen zo groot zijn als 1 TB. Houd er bij de beslissing over hoe groot ze zijn, bedenk dan dat klanten het formaat van VHD's in een afbeelding op het moment van implementatie niet kunnen wijzigen. Datadisk VHD's moeten worden gemaakt als VHD's met een vaste indeling. Ze moeten ook schaars zijn. Gegevensschijven kunnen in eerste instantie leeg zijn of gegevens bevatten.
 
 
 ## <a name="install-the-most-current-updates"></a>De meest recente updates installeren
 
-De basis installatie kopieën van virtuele machines van het besturings systeem bevatten de meest recente updates tot hun publicatie datum. Voordat u de VHD van het besturings systeem publiceert die u hebt gemaakt, moet u ervoor zorgen dat u het OS en alle geïnstalleerde services bijwerkt met alle nieuwste beveiligings-en onderhouds patches.
+De basisafbeeldingen van besturingssysteem VM's bevatten de laatste updates tot hun gepubliceerde datum. Voordat u het door u gemaakte besturingssysteem VHD publiceert, moet u ervoor zorgen dat u het besturingssysteem en alle geïnstalleerde services bijwerkt met de nieuwste beveiligings- en onderhoudspatches.
 
-Voor Windows Server 2016 voert u de opdracht **controleren op updates** uit.  Zie voor oudere versies van Windows voor meer [informatie over het ophalen van een update via Windows Update](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update).  De nieuwste essentiële en belang rijke beveiligings updates worden automatisch geïnstalleerd met Windows Update.
+Voer voor Windows Server 2016 de opdracht **Controleren op updates** uit.  Zie Voor oudere versies van Windows, zie [Hoe u een update ontvangen via Windows Update.](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update)  Windows update installeert automatisch de nieuwste kritieke en belangrijke beveiligingsupdates.
 
-Voor Linux-distributies worden updates meestal gedownload en geïnstalleerd via een opdracht regel programma of een grafisch hulp programma.  Ubuntu Linux biedt bijvoorbeeld de opdracht [apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) en het hulp programma [Update beheer](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) voor het bijwerken van het besturings systeem.
-
-
-## <a name="perform-additional-security-checks"></a>Aanvullende beveiligings controles uitvoeren
-
-U moet een hoog beveiligings niveau voor uw oplossings installatie kopieën in de Azure Marketplace onderhouden.  Het volgende artikel bevat een controle lijst met beveiligings configuraties en-procedures om u te helpen in dit doel: [beveiligings aanbevelingen voor installatie kopieën van Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Sommige van deze aanbevelingen zijn specifiek voor installatie kopieën op basis van Linux, maar zijn het meest van toepassing op elke VM-installatie kopie. 
+Voor Linux-distributies worden updates vaak gedownload en geïnstalleerd via een command-line tool of een grafisch hulpprogramma.  Ubuntu Linux biedt bijvoorbeeld de [apt-get-opdracht](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) en de [Update Manager-tool](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) voor het bijwerken van het besturingssysteem.
 
 
-## <a name="perform-custom-configuration-and-scheduled-tasks"></a>Aangepaste configuratie en geplande taken uitvoeren
+## <a name="perform-additional-security-checks"></a>Extra beveiligingscontroles uitvoeren
 
-Als er aanvullende configuratie nodig is, is de aanbevolen benadering om een geplande taak uit te voeren die tijdens het opstarten wordt uitgevoerd om eventuele wijzigingen aan te brengen in de virtuele machine nadat deze is geïmplementeerd.  Houd ook rekening met de volgende aanbevelingen:
-- Als het een Run-Once-taak is, is het raadzaam de taak zelf te verwijderen nadat deze is voltooid.
-- Configuraties mogen niet afhankelijk zijn van C of D, omdat alleen deze twee stations altijd gegarandeerd bestaan. Station C is de schijf met het besturings systeem en station D is de tijdelijke lokale schijf.
-
-Zie [extensies en functies van virtuele machines voor Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux)voor meer informatie over Linux-aanpassingen.
+U moet een hoog beveiligingsniveau voor uw oplossingsafbeeldingen in de Azure Marketplace behouden.  In het volgende artikel vindt u een checklist met beveiligingsconfiguraties en -procedures om u te helpen bij deze doelstelling: [beveiligingsaanbevelingen voor Azure Marketplace-afbeeldingen](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Sommige van deze aanbevelingen zijn specifiek voor op Linux gebaseerde afbeeldingen, maar de meeste zijn van toepassing op elke VM-afbeelding. 
 
 
-## <a name="generalize-the-image"></a>Generaliseren van de installatiekopie
+## <a name="perform-custom-configuration-and-scheduled-tasks"></a>Aangepaste configuratie- en geplande taken uitvoeren
 
-Alle installatie kopieën in azure Marketplace moeten op een algemene manier opnieuw worden gebruikt. Om deze herbruikbaarheid te verhelpen, moet de VHD van het besturings systeem worden *gegeneraliseerd*, een bewerking waarbij alle instantie-specifieke id's en software stuur Programma's van een virtuele machine worden verwijderd.
+Als er extra configuratie nodig is, is de aanbevolen aanpak het gebruik van een geplande taak die wordt uitgevoerd bij het opstarten om eventuele definitieve wijzigingen in de VM aan te brengen nadat deze is geïmplementeerd.  Houd ook rekening met de volgende aanbevelingen:
+- Als het een run-once-taak is, wordt aanbevolen dat de taak zichzelf verwijdert nadat deze is voltooid.
+- Configuraties mogen niet afhankelijk zijn van andere stations dan C of D, omdat alleen deze twee schijven die altijd gegarandeerd bestaan. Station C is de schijf van het besturingssysteem en station D is de tijdelijke lokale schijf.
+
+Zie [Virtuele machine-extensies en -functies voor Linux voor](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux)meer informatie over Linux-aanpassingen.
+
+
+## <a name="generalize-the-image"></a>De afbeelding generaliseren
+
+Alle afbeeldingen in de Azure Marketplace moeten op een algemene manier opnieuw kunnen worden gebruikt. Om deze herbruikbaarheid te bereiken, moet het besturingssysteem VHD worden *gegeneraliseerd*, een bewerking die alle instantiespecifieke id's en softwarestuurprogramma's van een VM verwijdert.
 
 ### <a name="windows"></a>Windows
 
-Windows-besturingssysteem schijven worden gegeneraliseerd met het [hulp programma Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview). Als u het besturings systeem vervolgens bijwerkt of opnieuw configureert, moet u Sysprep opnieuw uitvoeren. 
+Windows OS-schijven worden gegeneraliseerd met het [sysprep-hulpprogramma](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview). Als u het besturingssysteem vervolgens bijwerkt of opnieuw configureert, moet u sysprep opnieuw uitvoeren. 
 
 > [!WARNING]
->  Omdat updates mogelijk automatisch worden uitgevoerd, moet u na het uitvoeren van Sysprep de virtuele machine uitschakelen totdat deze is geïmplementeerd.  Als u dit afsluit, voor komt u dat latere updates exemplaren van specifieke wijzigingen aanbrengen in het VHD-besturings systeem of de geïnstalleerde services.
+>  Omdat updates automatisch kunnen worden uitgevoerd, moet u de vm uitschakelen zodra u sysprep uitvoert totdat deze is geïmplementeerd.  Deze afsluiting voorkomt latere updates van het aanbrengen van instantiespecifieke wijzigingen in het VHD-besturingssysteem of de geïnstalleerde services.
 
-Zie [stappen voor het generaliseren van een VHD](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep) voor meer informatie over het uitvoeren van Sysprep
+Zie [Stappen om een VHD te generaliseren voor](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep) meer informatie over het uitvoeren van sysprep
 
 ### <a name="linux"></a>Linux
 
-Het volgende proces in twee stappen generaliseert een Linux-VM en implementeert deze opnieuw als een afzonderlijke virtuele machine. Deze twee stappen zijn alleen de basis principes van het proces. Zie [een installatie kopie van een virtuele machine of VHD maken](../../../virtual-machines/linux/capture-image.md)voor meer informatie over deze twee stappen en waarom ze moeten worden uitgevoerd. Voor het maken van de VHD voor uw Azure Marketplace-aanbieding kunt u stoppen wanneer u het gedeelte ' een VM maken van de vastgelegde installatie kopie ' bereikt.
+Het volgende proces in twee stappen generaliseert een Linux-VM en herschikt deze als een afzonderlijke VM. Deze twee stappen zijn slechts de essentie van het proces. Voor meer informatie over deze twee stappen en waarom ze moeten worden gedaan, zie [Hoe maak je een afbeelding van een virtuele machine of VHD](../../../virtual-machines/linux/capture-image.md). Met het oog op het maken van de VHD voor uw Azure Marketplace-aanbieding u stoppen wanneer u de sectie 'Een VM maken van de vastgelegde afbeelding' bereikt.
 
 #### <a name="remove-the-azure-linux-agent"></a>De Azure Linux-agent verwijderen
-1.  Maak verbinding met uw virtuele Linux-machine met behulp van een SSH-client.
-2.  Typ de volgende opdracht in het SSH-venster: <br/>
+1.  Maak verbinding met uw Linux-VM via een SSH-client.
+2.  Typ in het SSH-venster de volgende opdracht: <br/>
     `sudo waagent -deprovision+user`
-3.  Typ `y` om door te gaan. (U kunt de para meter `-force` toevoegen aan de vorige opdracht om deze bevestigings stap te voor komen.)
-4.  Nadat de opdracht is voltooid, typt u `exit` om de SSH-client te sluiten.
+3.  Typ `y` om door te gaan. (U `-force` de parameter toevoegen aan de vorige opdracht om deze bevestigingsstap te voorkomen.)
+4.  Nadat de opdracht is `exit` voltooid, typt u de SSH-client om te sluiten.
 
 <!-- TD: I need to add meat and/or references to the following steps -->
-#### <a name="capture-the-image"></a>De installatie kopie vastleggen
-1.  Ga naar de Azure Portal, selecteer uw resource groep (RG) en de virtuele machine opnieuw toe te wijzen.
-2.  Uw VHD wordt nu gegeneraliseerd en u kunt een nieuwe virtuele machine maken met behulp van deze VHD.
+#### <a name="capture-the-image"></a>De afbeelding vastleggen
+1.  Ga naar de Azure-portal, selecteer uw resourcegroep (RG) en detoewijzing van de VM.
+2.  Uw VHD is nu gegeneraliseerd en u een nieuwe VM maken met behulp van deze VHD.
 
 
 ## <a name="create-one-or-more-copies"></a>Een of meer kopieën maken
 
-Het maken van kopieën van VM is vaak handig voor back-ups, testen, aangepaste failover of taak verdeling, om verschillende configuraties van een oplossing te bieden, enzovoort. Zie voor informatie over het dupliceren en downloaden van een primaire VHD, voor het maken van een onbeheerde kloon:
+Het maken van kopieën van VM is vaak handig voor back-up, testen, aangepaste fail-over of load balancing, om verschillende configuraties van een oplossing aan te bieden, enzovoort. Zie voor informatie over het dupliceren en downloaden van een primaire VHD om een onbeheerde kloon te maken:
 
-- Linux-VM: [down load een Linux-VHD van Azure](../../../virtual-machines/linux/download-vhd.md)
-- Windows-VM: [een Windows-VHD downloaden vanuit Azure](../../../virtual-machines/windows/download-vhd.md)
+- Linux VM: [Download een Linux VHD van Azure](../../../virtual-machines/linux/download-vhd.md)
+- Windows VM: [een Windows VHD downloaden van Azure](../../../virtual-machines/windows/download-vhd.md)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat uw virtuele machine is gegeneraliseerd, is de toewijzing ongedaan gemaakt en hebt u een installatie kopie van de VM. u bent klaar om een VM te [implementeren vanaf een virtuele harde schijf](./cpp-deploy-vm-vhd.md).
+Nadat uw VM is gegeneraliseerd, is deallocated en u een afbeelding van de VM hebt gemaakt, bent u klaar om een virtuele machine vanaf een virtuele harde schijf te [implementeren.](./cpp-deploy-vm-vhd.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: Apache HBase & Apache Phoenix-Azure HDInsight'
-description: In deze Quick Start leert u hoe u Apache Phoenix kunt gebruiken in HDInsight. U leert ook hoe u sqlline gebruiken op uw computer installeert en instelt om verbinding te maken met een HBase-cluster in HDInsight.
+title: 'Snelstart: Apache HBase & Apache Phoenix - Azure HDInsight'
+description: In deze quickstart leer je hoe je Apache Phoenix gebruiken in HDInsight. Lees ook hoe u SQLLine op uw computer installeert en instelt om verbinding te maken met een HBase-cluster in HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,33 +9,33 @@ ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
 ms.openlocfilehash: 1c400e41c4c10023d2595bde8c0d62e26184cf05
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79370318"
 ---
-# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Quick Start: query Apache HBase in azure HDInsight met Apache Phoenix
+# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Snelstart: Query Apache HBase in Azure HDInsight met Apache Phoenix
 
-In deze Quick Start leert u hoe u de Apache Phoenix kunt gebruiken om HBase-query's uit te voeren in azure HDInsight. Apache Phoenix is een SQL-query-engine voor Apache HBase. Deze is toegankelijk als een JDBC-stuurprogramma en maakt het uitvoeren van query's en beheren van HBase-tabellen SQL mogelijk. [Sqlline gebruiken](http://sqlline.sourceforge.net/) is een opdracht regel programma om SQL uit te voeren.
+In deze quickstart leert u hoe u de Apache Phoenix gebruiken om HBase-query's uit te voeren in Azure HDInsight. Apache Phoenix is een SQL-queryengine voor Apache HBase. Deze is toegankelijk als een JDBC-stuurprogramma en maakt het uitvoeren van query's en beheren van HBase-tabellen SQL mogelijk. [SQLLine](http://sqlline.sourceforge.net/) is een command-line hulpprogramma om SQL uit te voeren.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Apache HBase-cluster. Zie [cluster maken](../hadoop/apache-hadoop-linux-tutorial-get-started.md) om een HDInsight-cluster te maken.  Zorg ervoor dat u het cluster type **HBase** kiest.
+* Een Apache HBase cluster. Zie [Cluster maken](../hadoop/apache-hadoop-linux-tutorial-get-started.md) om een HDInsight-cluster te maken.  Zorg ervoor dat u het **clustertype HBase** kiest.
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="identify-a-zookeeper-node"></a>Een ZooKeeper-knoop punt identificeren
+## <a name="identify-a-zookeeper-node"></a>Een ZooKeeper-knooppunt identificeren
 
-Wanneer u verbinding maakt met een HBase-cluster, moet u verbinding maken met een van de knoop punten van Apache ZooKeeper. Elk HDInsight-cluster heeft drie ZooKeeper-knoop punten. Krul kan worden gebruikt om snel een ZooKeeper-knoop punt te identificeren. Bewerk de onderstaande krul opdracht door `PASSWORD` te vervangen en `CLUSTERNAME` met de relevante waarden en voer de opdracht in een opdracht prompt in:
+Wanneer u verbinding maakt met een HBase-cluster, moet u verbinding maken met een van de Apache ZooKeeper-knooppunten. Elk HDInsight-cluster heeft drie ZooKeeper-knooppunten. Krul kan worden gebruikt om snel te identificeren een ZooKeeper knooppunt. Bewerk de opdracht Krul `PASSWORD` hieronder `CLUSTERNAME` door de relevante waarden te vervangen en met deze waarden, en voer de opdracht in een opdrachtprompt in:
 
 ```cmd
 curl -u admin:PASSWORD -sS -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER
 ```
 
-Een gedeelte van de uitvoer ziet er ongeveer als volgt uit:
+Een deel van de uitvoer lijkt op:
 
 ```output
     {
@@ -47,25 +47,25 @@ Een gedeelte van de uitvoer ziet er ongeveer als volgt uit:
       }
 ```
 
-Noteer de waarde voor `host_name` voor later gebruik.
+Let op de `host_name` waarde voor later gebruik.
 
-## <a name="create-a-table-and-manipulate-data"></a>Een tabel maken en gegevens bewerken
+## <a name="create-a-table-and-manipulate-data"></a>Een tabel maken en gegevens manipuleren
 
-U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens Apache Phoenix gebruiken om HBase-tabellen, gegevens in te voegen en gegevens op te vragen.
+U SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens Apache Phoenix gebruiken om HBase-tabellen te maken, gegevens in te voegen en querygegevens in te voegen.
 
-1. Gebruik `ssh` opdracht om verbinding te maken met uw HBase-cluster. Bewerk de onderstaande opdracht door `CLUSTERNAME` te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
+1. Gebruik `ssh` de opdracht om verbinding te maken met uw HBase-cluster. Bewerk de onderstaande `CLUSTERNAME` opdracht door de naam van uw cluster te vervangen en voer de opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Wijzig de map naar de Phoenix-client. Voer de volgende opdracht in:
+2. Directory wijzigen in de Phoenix-client. Voer de volgende opdracht in:
 
     ```bash
     cd /usr/hdp/current/phoenix-client/bin
     ```
 
-3. Start [sqlline gebruiken](http://sqlline.sourceforge.net/). Bewerk de onderstaande opdracht door `ZOOKEEPER` te vervangen door het knoop punt ZooKeeper dat eerder is geïdentificeerd, en voer vervolgens de volgende opdracht in:
+3. [SQLLine starten](http://sqlline.sourceforge.net/). Bewerk de opdracht hieronder `ZOOKEEPER` door te vervangen door het eerder geïdentificeerde ZooKeeper-knooppunt en voer vervolgens de opdracht in:
 
     ```bash
     ./sqlline.py ZOOKEEPER:2181:/hbase-unsecure
@@ -77,20 +77,20 @@ U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens Apa
     CREATE TABLE Company (company_id INTEGER PRIMARY KEY, name VARCHAR(225));
     ```
 
-5. Gebruik de sqlline gebruiken-opdracht `!tables` om alle tabellen in HBase weer te geven. Voer de volgende opdracht in:
+5. Gebruik de `!tables` opdracht SQLLine om alle tabellen in HBase weer te geven. Voer de volgende opdracht in:
 
     ```sqlline
     !tables
     ```
 
-6. Waarden in de tabel invoegen. Voer de volgende opdracht in:
+6. Waarden invoegen in de tabel. Voer de volgende opdracht in:
 
     ```sql
     UPSERT INTO Company VALUES(1, 'Microsoft');
     UPSERT INTO Company VALUES(2, 'Apache');
     ```
 
-7. Query uitvoeren op de tabel. Voer de volgende opdracht in:
+7. De tabel opvragen. Voer de volgende opdracht in:
 
     ```sql
     SELECT * FROM Company;
@@ -102,13 +102,13 @@ U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens Apa
     DELETE FROM Company WHERE COMPANY_ID=1;
     ```
 
-9. De tabel verwijderen. Voer de volgende opdracht in:
+9. Laat de tafel vallen. Voer de volgende opdracht in:
 
     ```hbase
     DROP TABLE Company;
     ```
 
-10. Gebruik de opdracht sqlline gebruiken `!quit` om sqlline gebruiken af te sluiten. Voer de volgende opdracht in:
+10. Gebruik de `!quit` opdracht SQLLine om SQLLine af te sluiten. Voer de volgende opdracht in:
 
     ```sqlline
     !quit
@@ -116,13 +116,13 @@ U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens Apa
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Nadat u de Snelstartgids hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
+Nadat u de quickstart hebt voltooid, u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
 
-Als u een cluster wilt verwijderen, raadpleegt u [een HDInsight-cluster verwijderen met behulp van uw browser, Power shell of de Azure cli](../hdinsight-delete-cluster.md).
+Zie [Een HDInsight-cluster verwijderen met uw browser, PowerShell of Azure CLI](../hdinsight-delete-cluster.md)als u een cluster wilt verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u de Apache Phoenix kunt gebruiken om HBase-query's uit te voeren in azure HDInsight. Als u meer wilt weten over Apache Phoenix, is het volgende artikel een dieper onderzoek.
+In deze quickstart hebt u geleerd hoe u de Apache Phoenix gebruiken om HBase-query's uit te voeren in Azure HDInsight. Om meer te weten te komen over Apache Phoenix, zal het volgende artikel een dieper onderzoek bieden.
 
 > [!div class="nextstepaction"]
 > [Apache Phoenix in HDInsight](../hdinsight-phoenix-in-hdinsight.md)

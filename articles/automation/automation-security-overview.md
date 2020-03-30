@@ -1,5 +1,5 @@
 ---
-title: Inleiding tot verificatie in Azure Automation
+title: Intro voor verificatie in Azure Automation
 description: Dit artikel geeft een overzicht van Automation-beveiliging en de diverse verificatiemethoden die beschikbaar zijn voor Automation-accounts in Azure Automation.
 keywords: automation-beveiliging, veilige automation; automation-verificatie
 services: automation
@@ -8,10 +8,10 @@ ms.date: 03/19/2018
 ms.topic: conceptual
 ROBOTS: NOINDEX
 ms.openlocfilehash: b2003469fa35de837c3a9214e40cfb333156b40c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278569"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Inleiding tot verificatie in Azure Automation  
@@ -41,8 +41,8 @@ De volgende tabel bevat een overzicht van de verschillende verificatiemethoden v
 | Methode | Omgeving | Artikel |
 | --- | --- | --- |
 | Azure AD-gebruikersaccount |Azure Resource Manager en de klassieke Azure-portal |[Runbooks verifiëren met een Azure AD-gebruikersaccount](automation-create-aduser-account.md) |
-| Azure Uitvoeren als-account |Azure Resource Manager |[Runbooks verifiëren met een Azure Uitvoeren als-account](automation-sec-configure-azure-runas-account.md) |
-| Klassieke Azure Uitvoeren als-account |Klassieke Azure-portal |[Runbooks verifiëren met een Azure Uitvoeren als-account](automation-sec-configure-azure-runas-account.md) |
+| Azure Uitvoeren als-account |Azure Resource Manager |[Runbooks verifiëren met Azure Uitvoeren als-account](automation-sec-configure-azure-runas-account.md) |
+| Klassieke Azure Uitvoeren als-account |Klassieke Azure-portal |[Runbooks verifiëren met Azure Uitvoeren als-account](automation-sec-configure-azure-runas-account.md) |
 | Windows-verificatie |On-premises datacenter |[Runbooks verifiëren voor Hybrid Runbook Workers](automation-hybrid-runbook-worker.md) |
 | AWS-referenties |Amazon Web Services |[Runbooks verifiëren met Amazon Web Services (AWS)](automation-config-aws-account.md) |
 

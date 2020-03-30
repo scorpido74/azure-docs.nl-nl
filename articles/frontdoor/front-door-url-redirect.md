@@ -1,6 +1,6 @@
 ---
-title: Azure Front deur Service - URL-omleiding | Microsoft Docs
-description: In dit artikel helpt u begrijpen hoe Azure voordeur Service biedt ondersteuning voor URL-omleiding voor hun routes als geconfigureerd.
+title: Azure-voordeur - URL-omleiding | Microsoft Documenten
+description: In dit artikel u begrijpen hoe Azure Front Door URL-omleiding voor hun routes ondersteunt, indien geconfigureerd.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,45 +11,45 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 3d77a16d24a1a843b39d97904a675518c43a525a
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 5e3e44c4aee84fe9e2e21174a1d65fdf26b765a2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332522"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295482"
 ---
 # <a name="url-redirect"></a>URL-omleiding
-U kunt Azure voordeur Service omleiden van verkeer. U kunt omleiden van verkeer op meerdere niveaus (protocol, de hostnaam, pad, query-tekenreeks) en alle functionaliteit voor afzonderlijke microservices kunnen worden geconfigureerd als de omleiding vindt plaats op basis van een pad. Dit vereenvoudigt de configuratie van toepassing, optimaliseert het gebruik van bronnen en biedt ondersteuning voor nieuwe omleiding-scenario's, met inbegrip van omleiding van globale en op basis van een pad.
+U Azure Front Door gebruiken om verkeer om te leiden. U verkeer op meerdere niveaus omleiden (protocol, hostnaam, pad, queryreeks) en alle functionaliteit kan worden geconfigureerd voor afzonderlijke microservices, omdat de omleiding op paden is gebaseerd. Dit vereenvoudigt de configuratie van toepassingen, optimaliseert het resourcegebruik en ondersteunt nieuwe omleidingsscenario's, waaronder globale en op paden gebaseerde omleiding.
 </br>
 
-![Azure voordeur URL-omleiding][1]
+![Azure-URL voor de voordeur omleiden][1]
 
-## <a name="redirection-types"></a>Type omleiding
-Een omleidings-type stelt de antwoordstatuscode voor de clients leert wat het doel van de omleiding. De volgende typen omleiding worden ondersteund:
+## <a name="redirection-types"></a>Omleidingstypen
+Met een omleidingstype wordt de statuscode voor de respons ingesteld voor de clients om het doel van de omleiding te begrijpen. De volgende soorten omleidingworden ondersteund:
 
-- **301 (definitief verplaatst)** : Geeft aan dat de doelresource een nieuwe, permanente URI is toegewezen en toekomstige verwijzingen naar deze bron zou moeten een van de ingesloten URI's te gebruiken. 301 statuscode gebruiken voor HTTP naar HTTPS-omleiding. 
-- **302 (Found)** : Geeft aan dat de doelresource tijdelijk bevindt zich onder een andere URI. Omdat de omleiding kan soms worden gewijzigd, moet de client om door te gaan met de effectieve aanvraag-URI voor toekomstige aanvragen.
-- **307 (tijdelijke omleidings)** : Geeft aan dat de doelresource tijdelijk bevindt zich onder een andere URI en de gebruikersagent mag niet de aanvraagmethode wijzigen als het een automatische omleiding naar deze URI wordt uitgevoerd. Omdat de omleiding na verloop van tijd veranderen kan, moet de client om door te gaan met behulp van de oorspronkelijke effectieve aanvraag-URI voor toekomstige aanvragen.
-- **308 (permanente omleiding)** : Geeft aan dat de doelresource een nieuwe, permanente URI is toegewezen en toekomstige verwijzingen naar deze bron zou moeten een van de ingesloten URI's te gebruiken. Clients met koppeling bewerkingsmogelijkheden, zou als automatisch opnieuw koppelen verwijzingen naar de effectieve aanvraag-URI aan een of meer van de nieuwe referenties verzonden door de server, waar mogelijk.
+- **301 (Permanent verplaatst)**: Geeft aan dat aan de doelbron een nieuwe permanente URI is toegewezen en dat eventuele toekomstige verwijzingen naar deze bron een van de meegeleverde URI's moeten gebruiken. Gebruik 301-statuscode voor HTTP naar HTTPS-omleiding. 
+- **302 (Gevonden)**: geeft aan dat de doelbron tijdelijk onder een andere URI bevindt. Aangezien de omleiding bij gelegenheid kan worden gewijzigd, moet de klant de effectieve aanvraag URI blijven gebruiken voor toekomstige verzoeken.
+- **307 (Tijdelijke omleiding):** geeft aan dat de doelbron tijdelijk onder een andere URI bevindt en dat de gebruikersagent de aanvraagmethode NIET mag wijzigen als deze automatisch naar die URI wordt omgeleid. Aangezien de omleiding in de loop van de tijd kan veranderen, moet de client doorgaan met het gebruik van de oorspronkelijke effectieve aanvraag URI voor toekomstige verzoeken.
+- **308 (Permanente omleiding):** geeft aan dat aan de doelbron een nieuwe permanente URI is toegewezen en dat eventuele toekomstige verwijzingen naar deze bron een van de meegeleverde URI's moeten gebruiken. Clients met mogelijkheden voor het bewerken van koppelingen moeten, waar mogelijk, automatisch verwijzingen naar de effectieve aanvraag URI opnieuw koppelen aan een of meer van de nieuwe referenties die door de server worden verzonden.
 
-## <a name="redirection-protocol"></a>Omleiding protocol
-U kunt het protocol dat wordt gebruikt voor omleiding instellen. Hiermee wordt voor een van de meest voorkomende gebruiksvoorbeelden van omleidings-functie, die is het instellen van HTTP naar HTTPS-omleiding.
+## <a name="redirection-protocol"></a>Omleidingsprotocol
+U het protocol instellen dat wordt gebruikt voor omleiding. Dit maakt een van de meest voorkomende use cases van redirect functie, dat is om HTTP in te stellen op HTTPS omleiding.
 
-- **Alleen HTTPS**: Stel het protocol naar HTTPS alleen als u wilt omleiden van het verkeer van HTTP naar HTTPS. Azure voordeur-Service wordt aanbevolen dat u moet altijd ingesteld het omleiden naar HTTPS alleen.
-- **Alleen HTTP**: Dit leidt de inkomende aanvraag naar HTTP. Deze waarde alleen als u wilt behouden van uw verkeer van HTTP, niet-versleutelde gebruiken.
-- **Overeenkomst aanvraag**: Deze optie wordt het protocol dat wordt gebruikt door de inkomende aanvraag bewaard. Dus een HTTP-aanvraag HTTP blijft en een HTTPS-aanvraag blijft post-omleiding HTTPS.
+- **HTTPS alleen:** Stel het protocol alleen in op HTTPS als u het verkeer van HTTP naar HTTPS wilt omleiden. Azure Front Door raadt u aan om de omleiding altijd alleen in te stellen op HTTPS.
+- **HTTP alleen:** Hiermee wordt de binnenkomende aanvraag omgeleid naar HTTP. Gebruik deze waarde alleen als u uw verkeer HTTP wilt behouden dat niet versleuteld is.
+- **Wedstrijdaanvraag:** met deze optie blijft het protocol behouden dat wordt gebruikt door de binnenkomende aanvraag. Er blijft dus een HTTP-verzoek over en een HTTPS-verzoek blijft HTTPS-berichtomleiding.
 
-## <a name="destination-host"></a>Doelhost
-Als onderdeel van het configureren van een omleidings-routering, kunt u ook de hostnaam of het domein voor de aanvraag voor omleiding wijzigen. U kunt dit veld wijzigen van de hostnaam in de URL voor de omleiding of anders behouden de hostnaam van de inkomende aanvraag instellen. Ja, met behulp van dit veld kunt u omleiden alle aanvragen die worden verzonden op https://www.contoso.com/ * naar https://www.fabrikam.com/ *.
+## <a name="destination-host"></a>Bestemmingshost
+Als onderdeel van het configureren van een omleidingsrouter, u ook de hostnaam of het domein voor de omleidingsaanvraag wijzigen. U dit veld zo instellen dat de hostnaam in de URL voor de omleiding wordt gewijzigd of de hostnaam op een andere manier wordt behouden voor de binnenkomende aanvraag. Dus, met behulp van dit veld `https://www.contoso.com/*` `https://www.fabrikam.com/*`kunt u alle aanvragen verzonden naar .
 
 ## <a name="destination-path"></a>Doelpad
-Voor het geval waar u het padsegment van een URL vervangen als onderdeel van omleiding, kunt u dit veld met het nieuwe padwaarde instellen. U kunt anders de padwaarde behouden als onderdeel van omleiding. Dus met behulp van dit veld, u kunt alle aanvragen omleiden naar verzonden https://www.contoso.com/ * naar https://www.contoso.com/redirected-site.
+Voor gevallen waarin u het padsegment van een URL wilt vervangen als onderdeel van omleiding, u dit veld instellen op de nieuwe padwaarde. Anders u ervoor kiezen om de padwaarde te behouden als onderdeel van omleiding. Met dit veld u dus alle `https://www.contoso.com/\*` `https://www.contoso.com/redirected-site`aanvragen die naar.
 
-## <a name="query-string-parameters"></a>Queryreeksparameters
-U kunt ook de queryreeksparameters in de omgeleide URL vervangen. Als u wilt vervangen door een bestaande query-tekenreeks van de binnenkomende aanvraag-URL, stelt u dit veld aan 'Replace' en stel de juiste waarde. Anders kunt u de oorspronkelijke reeks queryreeksen behouden door in te stellen van het veld 'Preserve'. Een voorbeeld: met behulp van dit veld, u kunt omleiden al het verkeer verzonden naar https://www.contoso.com/foo/bar naar https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F. 
+## <a name="query-string-parameters"></a>Querytekenreeksparameters
+U ook de querytekenreeksparameters vervangen in de omgeleide URL. Als u een bestaande querytekenreeks wilt vervangen uit de URL van de binnenkomende aanvraag, stelt u dit veld in op 'Vervangen' en stelt u de juiste waarde in. Anders u de oorspronkelijke set querytekenreeksen behouden door het veld in te stellen op 'Behouden'. Als voorbeeld, met behulp van dit veld, `https://www.contoso.com/foo/bar` `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F`kunt u alle verkeer verzonden naar . 
 
-## <a name="destination-fragment"></a>Fragment van doel
-Het fragment bestemming is het gedeelte van de URL na '#', gebruikt normaal gesproken door browsers op een specifieke sectie op een pagina. U kunt dit veld een fragment toevoegen aan de omleidings-URL instellen.
+## <a name="destination-fragment"></a>Doelfragment
+Het doelfragment is het gedeelte van de URL na '#', dat normaal gesproken door browsers wordt gebruikt om op een specifieke sectie op een pagina te landen. U dit veld zo instellen dat een fragment wordt toegevoegd aan de omleidings-URL.
 
 ## <a name="next-steps"></a>Volgende stappen
 

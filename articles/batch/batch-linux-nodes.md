@@ -1,6 +1,6 @@
 ---
-title: Linux uitvoeren op reken knooppunten van de virtuele machine-Azure Batch | Microsoft Docs
-description: Meer informatie over het verwerken van uw parallelle Compute-werk belastingen op Pools met virtuele Linux-machines in Azure Batch.
+title: Linux uitvoeren op compute nodes voor virtuele machines - Azure Batch | Microsoft Documenten
+description: Meer informatie over het verwerken van uw parallelle rekenworkloads op groepen virtuele Linux-machines in Azure Batch.
 services: batch
 documentationcenter: python
 author: LauraBrenner
@@ -15,62 +15,62 @@ ms.date: 06/01/2018
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 977504f41e93e37ae2c5ce9bdb1182a1cfe0a3fd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252283"
 ---
-# <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linux-reken knooppunten inrichten in batch-Pools
+# <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linux-compute-knooppunten in batchgroepen inrichten
 
-U kunt Azure Batch gebruiken om werk belastingen voor parallelle berekeningen uit te voeren op virtuele machines met Linux en Windows. In dit artikel wordt beschreven hoe u Pools van Linux-reken knooppunten in de batch-service kunt maken met behulp van zowel [batch python][py_batch_package] als [batch .net][api_net] -client bibliotheken.
+U Azure Batch gebruiken om parallelle compute-workloads uit te voeren op zowel Linux- als Windows-virtuele machines. In dit artikel wordt beschreven hoe u groepen Linux-computenodes maakt in de Batch-service met behulp van zowel de [batch-python-][py_batch_package] als [batch.NET-clientbibliotheken.][api_net]
 
 > [!NOTE]
 > Toepassingspakketten worden ondersteund in alle Batch-pools die na 5 juli 2017 zijn gemaakt. De pakketten worden ondersteund in Batch-pools die zijn gemaakt tussen 10 maart 2016 en 5 juli 2017, maar alleen als de pool is gemaakt met behulp van een cloudservice-configuratie. Batch-pools die zijn gemaakt vóór 10 maart 2016 bieden geen ondersteuning voor toepassingspakketten. Zie [Deploy applications to compute nodes with Batch application packages](batch-application-packages.md) (Toepassingen implementeren naar rekenknooppunten met Batch-toepassingspakketten) voor meer informatie over het gebruiken van toepassingspakketten om toepassingen te implementeren naar Batch-knooppunten.
 >
 >
 
-## <a name="virtual-machine-configuration"></a>Configuratie van virtuele machine
-Wanneer u een pool van reken knooppunten in batch maakt, hebt u twee opties waaruit u de grootte van het knoop punt en het besturings systeem kunt selecteren: Cloud Services configuratie en configuratie van de virtuele machine.
+## <a name="virtual-machine-configuration"></a>Configuratie van virtuele machines
+Wanneer u een groep compute nodes maakt in Batch, hebt u twee opties om de grootte van het knooppunt en het besturingssysteem te selecteren: Cloud Services Configuration en Virtual Machine Configuration.
 
-**Cloud Services-configuratie** biedt *alleen* Windows rekenknooppunten. Beschik bare groottes van reken knooppunten worden weer gegeven in [grootten voor Cloud Services](../cloud-services/cloud-services-sizes-specs.md)en beschik bare besturings systemen worden vermeld in de [Azure Guest OS releases en SDK Compatibility Matrix](../cloud-services/cloud-services-guestos-update-matrix.md). Wanneer u een pool maakt die Azure-Cloud Services knooppunten bevat, geeft u de knooppunt grootte en de besturingssysteem familie op, die in de eerder genoemde artikelen worden beschreven. Voor Pools van Windows-reken knooppunten wordt Cloud Services het meest gebruikt.
+**Cloud Services-configuratie** biedt *alleen* Windows rekenknooppunten. Beschikbare compute node-formaten worden vermeld in [Formaten voor Cloud Services](../cloud-services/cloud-services-sizes-specs.md)en beschikbare besturingssystemen worden weergegeven in de Azure Guest [OS-releases en DE SDK-compatibiliteitsmatrix](../cloud-services/cloud-services-guestos-update-matrix.md). Wanneer u een groep maakt die Azure Cloud Services-knooppunten bevat, geeft u de grootte van het knooppunt en de OS-familie op, die worden beschreven in de eerder genoemde artikelen. Voor groepen Windows-compute nodes wordt Cloud Services het meest gebruikt.
 
-**Virtuele-machine configuratie** voorziet in zowel Linux-als Windows-installatie kopieën voor reken knooppunten. Beschik bare grootten van reken knooppunten worden weer gegeven in [grootten voor virtuele machines in azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) en [grootten voor virtuele machines in azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows). Wanneer u een pool maakt die virtuele-machine configuratie knooppunten bevat, moet u de grootte van de knoop punten, de verwijzing naar de installatie kopie van de virtuele machine en de SKU van de batch-knooppunt agent opgeven die op de knoop punten moet worden geïnstalleerd.
+**Virtual Machine Configuration** biedt zowel Linux- als Windows-afbeeldingen voor compute nodes. Beschikbare compute node-formaten worden vermeld in [Groottes voor virtuele machines in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) en [Groottes voor virtuele machines in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows). Wanneer u een groep maakt die knooppunten voor virtuele machineconfiguratie bevat, moet u de grootte van de knooppunten, de referentie van de virtuele machineafbeelding en de SKU voor batchknooppunten opgeven die op de knooppunten moet worden geïnstalleerd.
 
-### <a name="virtual-machine-image-reference"></a>Naslag informatie voor installatie kopieën van virtuele machines
+### <a name="virtual-machine-image-reference"></a>Referentie voor virtuele afbeeldingen
 
-De batch-service maakt gebruik van [schaal sets voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor het leveren van reken knooppunten in de configuratie van de virtuele machine. U kunt een installatie kopie van de [Azure Marketplace][vm_marketplace]opgeven of een aangepaste installatie kopie die u hebt voor bereid. Zie [een groep maken met de galerie gedeelde afbeeldingen](batch-sig-images.md)voor meer informatie over aangepaste installatie kopieën.
+De batchservice maakt gebruik van [virtuele machineschaalsets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) om rekenknooppunten in de virtuele machineconfiguratie te bieden. U een afbeelding van de [Azure Marketplace][vm_marketplace]opgeven of een aangepaste afbeelding opgeven die u hebt voorbereid. Zie Een pool maken [met de galerie Voor gedeelde afbeeldingen](batch-sig-images.md)voor meer informatie over aangepaste afbeeldingen.
 
-Wanneer u een verwijzing naar een installatie kopie van een virtuele machine configureert, geeft u de eigenschappen van de installatie kopie van de virtuele machine op. De volgende eigenschappen zijn vereist wanneer u een verwijzing naar een installatie kopie van een virtuele machine maakt:
+Wanneer u een verwijzing naar de virtuele machineafbeelding configureert, geeft u de eigenschappen van de virtuele machineafbeelding op. De volgende eigenschappen zijn vereist wanneer u een afbeeldingsverwijzing voor virtuele machines maakt:
 
-| **Eigenschappen van afbeeldings verwijzing** | **Voorbeeld** |
+| **Eigenschappen voor afbeeldingsverwijzing** | **Voorbeeld** |
 | --- | --- |
 | Uitgever |Canonical |
 | Aanbieding |UbuntuServer |
-| SKU |18,04-LTS |
-| Version |meest recente |
+| SKU |18.04-LTS |
+| Versie |meest recente |
 
 > [!TIP]
-> Meer informatie over deze eigenschappen en hoe u Marketplace-installatie kopieën kunt weer geven in [navigeren en installatie kopieën van virtuele Linux-machines in azure selecteren met CLI of Power shell](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Houd er rekening mee dat niet alle installatie kopieën van Marketplace momenteel compatibel zijn met batch. Zie [SKU van node agent](#node-agent-sku)voor meer informatie.
+> U meer informatie vinden over deze eigenschappen en hoe u Marketplace-afbeeldingen aanbieden in [Navigeren en Linux-afbeeldingen voor virtuele machines selecteren in Azure met CLI of PowerShell.](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Houd er rekening mee dat momenteel niet alle Marketplace-afbeeldingen compatibel zijn met Batch. Zie [Node agent SKU](#node-agent-sku)voor meer informatie.
 >
 >
 
-### <a name="node-agent-sku"></a>SKU van knoop punt agent
-De batch-knooppunt agent is een programma dat wordt uitgevoerd op elk knoop punt in de pool en biedt de opdracht-en besturings interface tussen het knoop punt en de batch-service. Er zijn verschillende implementaties van de knooppunt agent, ook wel Sku's genoemd, voor verschillende besturings systemen. Wanneer u een virtuele-machine configuratie maakt, geeft u eerst de verwijzing naar de installatie kopie van de virtuele machine op en geeft u vervolgens de knooppunt agent op die moet worden geïnstalleerd op de installatie kopie. Normaal gesp roken is elke node agent-SKU compatibel met meerdere installatie kopieën van virtuele machines. Hier volgen enkele voor beelden van node-agent-Sku's:
+### <a name="node-agent-sku"></a>Knooppuntagent SKU
+De batchknooppuntagent is een programma dat op elk knooppunt in de groep wordt uitgevoerd en de interface voor command-and-control biedt tussen het knooppunt en de batchservice. Er zijn verschillende implementaties van de node agent, bekend als SKU's, voor verschillende besturingssystemen. Wanneer u een virtuele machineconfiguratie maakt, geeft u eerst de referentie voor virtuele machineafbeeldingen op en geeft u vervolgens de knooppuntagent op die op de afbeelding moet worden geïnstalleerd. Normaal gesproken is elke node agent SKU compatibel met meerdere virtuele machineafbeeldingen. Hier zijn een paar voorbeelden van node agent SKU's:
 
-* batch. node. Ubuntu 18,04
-* batch. node. CentOS 7
-* batch. node. Windows amd64
+* batch.node.ubuntu 18.04
+* batch.node.centos 7
+* batch.node.windows amd64
 
 > [!IMPORTANT]
-> Niet alle installatie kopieën van virtuele machines die beschikbaar zijn op de Marketplace, zijn compatibel met de momenteel beschik bare batch-knooppunt agenten. Gebruik de batch-Sdk's om een lijst weer te geven van de beschik bare Sku's voor knoop punt agent en de installatie kopieën van virtuele machines waarmee ze compatibel zijn. Zie de [lijst met installatie kopieën van virtuele machines](#list-of-virtual-machine-images) verderop in dit artikel voor meer informatie en voor beelden van het ophalen van een lijst met geldige installatie kopieën tijdens runtime.
+> Niet alle afbeeldingen van virtuele machines die beschikbaar zijn op de Marketplace zijn compatibel met de momenteel beschikbare batchknooppuntagents. Gebruik de Batch SDKs om de beschikbare node agent SKU's en de virtuele machine afbeeldingen waarmee ze compatibel zijn. Zie de [lijst met afbeeldingen van virtuele machines](#list-of-virtual-machine-images) later in dit artikel voor meer informatie en voorbeelden van het ophalen van een lijst met geldige afbeeldingen tijdens runtime.
 >
 >
 
-## <a name="create-a-linux-pool-batch-python"></a>Een Linux-groep maken: batch python
-Het volgende code fragment toont een voor beeld van het gebruik van de [Microsoft Azure batch-client bibliotheek voor python][py_batch_package] om een pool met Ubuntu-Server Compute-knoop punten te maken. Referentie documentatie voor de batch python-module vindt u in [Azure. batch-pakket][py_batch_docs] op Lees de documenten.
+## <a name="create-a-linux-pool-batch-python"></a>Een Linux-pool maken: Batch Python
+In het volgende codefragment ziet u een voorbeeld van het gebruik van de [Microsoft Azure Batch Client Library voor Python][py_batch_package] om een groep ubuntu server compute nodes te maken. Referentiedocumentatie voor de Batch Python-module is te vinden op [azure.batch-pakket][py_batch_docs] op Lees de documenten.
 
-Met dit code fragment wordt een [ImageReference][py_imagereference] expliciet gemaakt en worden alle eigenschappen (uitgever, aanbieding, SKU, versie) opgegeven. In productie code wordt u echter aangeraden de methode [list_supported_images][py_list_supported_images] te gebruiken om de beschik bare combi Naties van installatie kopieën en node-agents in runtime te bepalen en te selecteren.
+Met dit fragment wordt expliciet een [ImageReference][py_imagereference] gemaakt en worden elk van de eigenschappen ervan opgegeven (uitgever, aanbieding, SKU, versie). In productiecode raden we u echter aan de [methode list_supported_images][py_list_supported_images] te gebruiken om te bepalen en te selecteren uit de beschikbare afbeeldings- en knooppuntagent SKU-combinaties tijdens runtime.
 
 ```python
 # Import the required modules from the
@@ -126,7 +126,7 @@ new_pool.virtual_machine_configuration = vmc
 client.pool.add(new_pool)
 ```
 
-Zoals eerder vermeld, raden we u aan om de [ImageReference][py_imagereference] expliciet te maken met behulp van de methode [list_supported_images][py_list_supported_images] om dynamisch te selecteren uit de momenteel ondersteunde combi Naties van knooppunt agent/Marketplace-installatie kopieën. Het volgende python-code fragment laat zien hoe u deze methode gebruikt.
+Zoals eerder vermeld, raden we u aan om in plaats van de [ImageReference][py_imagereference] expliciet te maken, de [list_supported_images][py_list_supported_images] methode gebruikt om dynamisch te selecteren uit de momenteel ondersteunde node agent/Marketplace-afbeeldingscombinaties. In het volgende Python-fragment ziet u hoe u deze methode gebruiken.
 
 ```python
 # Get the list of supported images from the Batch service
@@ -151,10 +151,10 @@ vmc = batchmodels.VirtualMachineConfiguration(
     node_agent_sku_id=image.node_agent_sku_id)
 ```
 
-## <a name="create-a-linux-pool-batch-net"></a>Een Linux-groep maken: batch .NET
-Het volgende code fragment toont een voor beeld van het gebruik van de [batch .net][nuget_batch_net] -client bibliotheek voor het maken van een pool met Ubuntu-Server Compute-knoop punten. U kunt de [naslag documentatie voor batch .net][api_net] vinden op docs.Microsoft.com.
+## <a name="create-a-linux-pool-batch-net"></a>Een Linux-pool maken: Batch .NET
+In het volgende codefragment ziet u een voorbeeld van hoe u de [batch.NET-clientbibliotheek][nuget_batch_net] gebruiken om een groep ubuntu-servercomputeknooppunten te maken. U vindt de [batch .net-referentiedocumentatie][api_net] op docs.microsoft.com.
 
-Het volgende code fragment maakt gebruik van de [pool Operations][net_pool_ops]. Methode [ListSupportedImages][net_list_supported_images] om een selectie te selecteren in de lijst met momenteel ondersteunde Marketplace-combi Naties van installatie kopie en node-agent. Deze techniek is wenselijk omdat de lijst met ondersteunde combi Naties van tijd tot tijd kan veranderen. De meeste ondersteunde combi Naties worden toegevoegd.
+In het volgende codefragment wordt de [PoolOperations gebruikt.][net_pool_ops] De methode [ListSupportedImages][net_list_supported_images] om te selecteren in de lijst met momenteel ondersteunde Marketplace-afbeeldings- en nodeagent SKU-combinaties. Deze techniek is wenselijk omdat de lijst met ondersteunde combinaties van tijd tot tijd kan veranderen. Meestal worden ondersteunde combinaties toegevoegd.
 
 ```csharp
 // Pool settings
@@ -198,7 +198,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 await pool.CommitAsync();
 ```
 
-Hoewel het vorige fragment het [pool Operations][net_pool_ops]gebruikt. Methode [ListSupportedImages][net_list_supported_images] voor het dynamisch weer geven en selecteren van ondersteunde afbeeldings-en knooppunt agent-SKU-combi Naties (aanbevolen). u kunt ook een [ImageReference][net_imagereference] expliciet configureren:
+Hoewel het vorige fragment de [PoolOperations][net_pool_ops]gebruikt . De methode [ListSupportedImages][net_list_supported_images] om dynamisch aan te geven en te kiezen uit ondersteunde sku-combinaties van afbeeldingen en knooppuntagents (aanbevolen), u ook een [ImageReference][net_imagereference] expliciet configureren:
 
 ```csharp
 ImageReference imageReference = new ImageReference(
@@ -208,13 +208,13 @@ ImageReference imageReference = new ImageReference(
     version: "latest");
 ```
 
-## <a name="list-of-virtual-machine-images"></a>Lijst met installatie kopieën van virtuele machines
-Als u de lijst met alle ondersteunde installatie kopieën voor virtuele machines van de Marketplace voor de batch-service en de bijbehorende knooppunt agenten wilt ophalen, moet u gebruikmaken van de [list_supported_images][py_list_supported_images] (python), [ListSupportedImages][net_list_supported_images] (batch .net) of de bijbehorende API in de respectieve taal-SDK van uw keuze.
+## <a name="list-of-virtual-machine-images"></a>Lijst met afbeeldingen van virtuele machines
+Als u de lijst met alle ondersteunde Marketplace-afbeeldingen voor virtuele machines voor de Batch-service en de bijbehorende knooppuntagents wilt verkrijgen, u gebruikmaken van de [list_supported_images][py_list_supported_images] (Python), [ListSupportedImages][net_list_supported_images] (Batch .NET) of de bijbehorende API in de respectievelijke taal SDK van uw keuze.
 
-## <a name="connect-to-linux-nodes-using-ssh"></a>Verbinding maken met Linux-knoop punten met SSH
-Tijdens het ontwikkelen of tijdens het oplossen van problemen kan het nodig zijn om u aan te melden bij de knoop punten in uw pool. In tegens telling tot Windows-reken knooppunten kunt u Remote Desktop Protocol (RDP) niet gebruiken om verbinding te maken met Linux-knoop punten. In plaats daarvan schakelt de batch-service op elk knoop punt SSH-toegang in voor externe verbinding.
+## <a name="connect-to-linux-nodes-using-ssh"></a>Verbinding maken met Linux-knooppunten met SSH
+Tijdens de ontwikkeling of tijdens het oplossen van problemen u zich aanmelden bij de knooppunten in uw groep. In tegenstelling tot Windows-compute nodes u geen Extern bureaublad-protocol (RDP) gebruiken om verbinding te maken met Linux-knooppunten. In plaats daarvan biedt de Batch-service SSH-toegang op elk knooppunt voor externe verbinding.
 
-Met het volgende python-code fragment wordt een gebruiker gemaakt op elk knoop punt in een pool, wat vereist is voor externe verbinding. Vervolgens worden de gegevens voor de Secure Shell (SSH)-verbinding voor elk knoop punt afgedrukt.
+Met het volgende Python-codefragment wordt een gebruiker gemaakt op elk knooppunt in een groep, wat vereist is voor een externe verbinding. Vervolgens worden de verbindingsgegevens van de beveiligde shell (SSH) voor elk knooppunt afgedrukt.
 
 ```python
 import datetime
@@ -273,7 +273,7 @@ for node in nodes:
                                          login.remote_login_port))
 ```
 
-Hier volgt een voor beeld van uitvoer van de vorige code voor een groep die vier Linux-knoop punten bevat:
+Hier vindt u voorbeelduitvoer voor de vorige code voor een groep die vier Linux-knooppunten bevat:
 
 ```
 Password:
@@ -283,16 +283,16 @@ tvm-1219235766_3-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50002
 tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 ```
 
-In plaats van een wacht woord kunt u een open bare SSH-sleutel opgeven wanneer u een gebruiker op een knoop punt maakt. Gebruik in de python-SDK de para meter **ssh_public_key** op [ComputeNodeUser][py_computenodeuser]. In .NET gebruikt u de [ComputeNodeUser][net_computenodeuser]. Eigenschap [SshPublicKey][net_ssh_key] .
+In plaats van een wachtwoord u een Openbare SSH-sleutel opgeven wanneer u een gebruiker maakt op een knooppunt. Gebruik in de Python SDK de **parameter ssh_public_key** op [ComputeNodeUser][py_computenodeuser]. Gebruik in .NET de [ComputeNodeUser][net_computenodeuser]. [SshPublicKey][net_ssh_key] eigendom.
 
 ## <a name="pricing"></a>Prijzen
-Azure Batch is gebaseerd op Azure Cloud Services en Azure Virtual Machines technologie. De batch-service zelf wordt gratis aangeboden. Dit betekent dat u alleen kosten in rekening brengt voor de reken resources (en kosten die van kracht zijn) die uw batch-oplossingen verbruiken. Wanneer u **Cloud Services configuratie**kiest, worden kosten in rekening gebracht op basis van de [Cloud Services prijs][cloud_services_pricing] structuur. Wanneer u de **configuratie van de virtuele machine**kiest, worden kosten in rekening gebracht op basis van de [virtual machines prijs][vm_pricing] structuur.
+Azure Batch is gebouwd op Azure Cloud Services en Azure Virtual Machines-technologie. De Batch-service zelf wordt gratis aangeboden, wat betekent dat u alleen in rekening wordt gebracht voor de rekenresources (en bijbehorende kosten die met zich meebrengen) die uw Batch-oplossingen verbruiken. Wanneer u **cloudservicesconfiguratie kiest,** worden er kosten in rekening gebracht op basis van de [prijsstructuur van Cloud Services.][cloud_services_pricing] Wanneer u **Virtual Machine Configuration**kiest, worden er kosten in rekening gebracht op basis van de [prijsstructuur voor virtuele machines.][vm_pricing]
 
-Als u toepassingen implementeert voor uw batch-knoop punten met behulp van [toepassings pakketten](batch-application-packages.md), worden er ook kosten in rekening gebracht voor de Azure storage resources die door uw toepassing worden gebruikt.
+Als u toepassingen implementeert naar uw Batch-knooppunten met [toepassingspakketten,](batch-application-packages.md)worden er ook kosten in rekening gebracht voor de Azure Storage-bronnen die uw toepassingspakketten verbruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De [python-code voorbeelden][github_samples_py] in de opslag plaats [Azure-batch-samples][github_samples] op github bevatten scripts die laten zien hoe u veelvoorkomende batch bewerkingen kunt uitvoeren, zoals pool, taak en het maken van taken. Het [Leesmij-bestand][github_py_readme] bij de python-voor beelden bevat informatie over het installeren van de vereiste pakketten.
+De [Python-codevoorbeelden][github_samples_py] in de [azure-batch-samples repository][github_samples] op GitHub bevatten scripts die u laten zien hoe u algemene batchbewerkingen uitvoeren, zoals pool, taak en taakcreatie. De [README][github_py_readme] die de Python-monsters vergezelt, bevat details over het installeren van de vereiste pakketten.
 
 [api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx

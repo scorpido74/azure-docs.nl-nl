@@ -1,48 +1,48 @@
 ---
-title: Azure Cosmos DB indexerings beleid
-description: Meer informatie over het configureren en wijzigen van het standaard indexerings beleid voor automatische indexering en betere prestaties in Azure Cosmos DB.
-author: ThomasWeiss
+title: Azure Cosmos DB-indexeringsbeleid
+description: Meer informatie over het configureren en wijzigen van het standaardindexeringsbeleid voor automatische indexering en betere prestaties in Azure Cosmos DB.
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/10/2019
-ms.author: thweiss
-ms.openlocfilehash: 86dbcee7150adacd0e961dbe07cf66ad117d2041
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/26/2020
+ms.author: tisande
+ms.openlocfilehash: 930f156ebec76be860e7af02d41540ce67982f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251997"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292069"
 ---
-# <a name="indexing-policies-in-azure-cosmos-db"></a>Indexerings beleid in Azure Cosmos DB
+# <a name="indexing-policies-in-azure-cosmos-db"></a>Indexeringsbeleid in Azure Cosmos DB
 
-In Azure Cosmos DB heeft elke container een indexerings beleid dat bepaalt hoe de items van de container moeten worden geïndexeerd. Het standaard indexerings beleid voor nieuw gemaakte containers indexeert elke eigenschap van elk item, waarbij bereik indexen worden afgedwongen voor wille keurige teken reeksen of getallen en ruimtelijke indexen voor een geojson-object van het type punt. Zo kunt u hoge query prestaties krijgen zonder dat u op de hoogte hoeft te zijn van indexering en index beheer vooraf.
+In Azure Cosmos DB heeft elke container een indexeringsbeleid dat bepaalt hoe de items van de container moeten worden geïndexeerd. Met het standaardindexeringsbeleid voor nieuw gemaakte containers worden elke eigenschap van elk item geïndexeerd, worden bereikindexen voor elke tekenreeks of elk getal afgedwongen en ruimtelijke indexen voor elk GeoJSON-object van het type Point. Hierdoor u hoge queryprestaties krijgen zonder vooraf na te denken over indexering en indexbeheer.
 
-In sommige gevallen wilt u mogelijk dit automatische gedrag overschrijven, zodat het beter aansluit bij uw vereisten. U kunt het indexerings beleid van een container aanpassen door de *indexerings modus*in te stellen en *eigenschaps paden*op te nemen of uit te sluiten.
-
-> [!NOTE]
-> De methode voor het bijwerken van het indexerings beleid dat in dit artikel wordt beschreven, is alleen van toepassing op de SQL-API (core) van Azure Cosmos DB.
-
-## <a name="indexing-mode"></a>Indexerings modus
-
-Azure Cosmos DB ondersteunt twee indexerings modi:
-
-- **Consistent**: de index wordt synchroon bijgewerkt wanneer u items maakt, bijwerkt of verwijdert. Dit betekent dat de consistentie van uw Lees query's de [consistentie is die voor het account is geconfigureerd](consistency-levels.md).
-- **Geen**: indexeren is uitgeschakeld op de container. Dit wordt meestal gebruikt wanneer een container wordt gebruikt als een pure sleutel waarde Store zonder dat hiervoor secundaire indexen nodig zijn. Het kan ook worden gebruikt om de prestaties van bulk bewerkingen te verbeteren. Nadat de bulk bewerkingen zijn voltooid, kan de index modus worden ingesteld op consistent en vervolgens worden bewaakt met behulp van de [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) totdat de bewerking is voltooid.
+In sommige gevallen wilt u mogelijk dit automatische gedrag overschrijven, zodat het beter aansluit bij uw vereisten. U het indexeringsbeleid van een container aanpassen door de *indexeringsmodus*in te stellen en *eigenschappaden*op te nemen of uit te sluiten.
 
 > [!NOTE]
-> Cosmos DB ondersteunt ook een vertraagde indexerings modus. Lazy-indexering voert updates op een veel lagere prioriteits niveau uit als de engine geen andere werkzaamheden uitvoert. Dit kan leiden tot **inconsistente of onvolledige** query resultaten. Daarnaast biedt het gebruik van luie indexering in plaats van ' none ' voor bulk bewerkingen geen voor deel wanneer een wijziging in de index modus ertoe leidt dat de index wordt verwijderd en opnieuw wordt gemaakt. Daarom raden we u aan klanten te gebruiken. Stel de index modus in op geen, ga terug naar de consistente modus en controleer de `IndexTransformationProgress` eigenschap op de container totdat deze is voltooid om de prestaties voor bulk bewerkingen te verbeteren.
+> De methode voor het bijwerken van indexeringsbeleid dat in dit artikel wordt beschreven, is alleen van toepassing op de SQL (Core)-API van Azure Cosmos DB.
 
-Indexerings beleid is standaard ingesteld op `automatic`. Het wordt bereikt door de `automatic` eigenschap in het indexerings beleid in te stellen op `true`. Als u deze eigenschap instelt op `true`, kan Azure CosmosDB documenten automatisch indexeren wanneer ze zijn geschreven.
+## <a name="indexing-mode"></a>Indexeringsmodus
 
-## <a id="include-exclude-paths"></a>Eigenschaps paden opnemen en uitsluiten
+Azure Cosmos DB ondersteunt twee indexeringsmodi:
 
-Een aangepast indexerings beleid kan eigenschaps paden opgeven die expliciet worden opgenomen of uitgesloten van indexeren. Door het aantal geïndexeerde paden te optimaliseren, kunt u de hoeveelheid opslag die wordt gebruikt door uw container verlagen en de latentie van schrijf bewerkingen verbeteren. Deze paden worden gedefinieerd volgens [de methode die wordt beschreven in de sectie Overzicht indexering](index-overview.md#from-trees-to-property-paths) met de volgende toevoegingen:
+- **Consistent:** de index wordt synchroon bijgewerkt terwijl u items maakt, bijwerkt of verwijdert. Dit betekent dat de consistentie van uw leesquery's de consistentie is [die is geconfigureerd voor het account.](consistency-levels.md)
+- **Geen**: Indexering is uitgeschakeld op de container. Dit wordt vaak gebruikt wanneer een container wordt gebruikt als een pure key-value winkel zonder de noodzaak van secundaire indexen. Het kan ook worden gebruikt om de prestaties van bulkbewerkingen te verbeteren. Nadat de bulkbewerkingen zijn voltooid, kan de indexmodus worden ingesteld op Consistent en vervolgens worden gecontroleerd met behulp van [de IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) totdat deze is voltooid.
 
-- een pad dat leidt naar een scalaire waarde (teken reeks of getal) eindigt op `/?`
-- elementen uit een matrix worden samen met de `/[]` notatie (in plaats van `/0`, `/1` enzovoort) beschreven.
-- het Joker teken `/*` kan worden gebruikt om alle elementen onder het knoop punt te vergelijken
+> [!NOTE]
+> Azure Cosmos DB ondersteunt ook een Lazy-indexeringsmodus. Lazy indexing voert updates uit voor de index op een veel lager prioriteitsniveau wanneer de engine geen ander werk doet. Dit kan resulteren in **inconsistente of onvolledige** queryresultaten. Als u van plan bent een Cosmos-container op te vragen, moet u geen luie indexering selecteren.
 
-Hetzelfde voor beeld opnieuw uitvoeren:
+Standaard is het indexeringsbeleid `automatic`ingesteld op . Het wordt bereikt door `automatic` het instellen van `true`de eigenschap in het indexeringsbeleid op . Als u `true` deze eigenschap instelt, kan Azure CosmosDB documenten automatisch indexeren terwijl ze zijn geschreven.
+
+## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Vastgoedpaden opnemen en uitsluiten
+
+Een aangepast indexeringsbeleid kan eigenschapspaden opgeven die expliciet zijn opgenomen of uitgesloten van indexering. Door het aantal paden dat wordt geïndexeerd te optimaliseren, u de hoeveelheid opslagruimte die door uw container wordt gebruikt, verlagen en de latentie van schrijfbewerkingen verbeteren. Deze paden worden gedefinieerd volgens [de methode die wordt beschreven in de sectie indexeringsoverzicht](index-overview.md#from-trees-to-property-paths) met de volgende toevoegingen:
+
+- een pad dat leidt tot een scalaire waarde (tekenreeks of getal) eindigt met`/?`
+- elementen uit een array worden `/[]` samen aangepakt via `/0` `/1` de notatie (in plaats van , enz.)
+- de `/*` wildcard kan worden gebruikt om alle elementen onder het knooppunt te matchen
+
+Neem hetzelfde voorbeeld opnieuw:
 
 ```
     {
@@ -58,83 +58,85 @@ Hetzelfde voor beeld opnieuw uitvoeren:
     }
 ```
 
-- het `employees` pad van de `headquarters`is `/headquarters/employees/?`
+- het `headquarters`pad `employees` van de`/headquarters/employees/?`
 
-- het pad van de `locations``country` is `/locations/[]/country/?`
+- het `locations` `country` ' pad is`/locations/[]/country/?`
 
-- het pad naar iets onder `headquarters` is `/headquarters/*`
+- het pad naar `headquarters` alles onder is`/headquarters/*`
 
-We kunnen bijvoorbeeld het `/headquarters/employees/?` pad toevoegen. Dit pad zorgt ervoor dat de eigenschap Employees wordt geïndexeerd, maar dat er geen extra geneste JSON binnen deze eigenschap zou worden geïndexeerd.
+We kunnen bijvoorbeeld het `/headquarters/employees/?` pad opnemen. Dit pad zou ervoor zorgen dat we de eigenschap van de werknemers indexeren, maar geen extra geneste JSON in deze eigenschap indexeren.
 
-## <a name="includeexclude-strategy"></a>Strategie voor opnemen/uitsluiten
+## <a name="includeexclude-strategy"></a>Strategie opnemen/uitsluiten
 
-Elk indexerings beleid moet het basispad bevatten `/*` als een opgenomen of uitgesloten pad.
+Elk indexeringsbeleid moet het `/*` hoofdpad opnemen als een opgenomen of een uitgesloten pad.
 
-- Neem het hoofdpad op om selectieve paden uit te sluiten die niet hoeven te worden geïndexeerd. Dit is de aanbevolen benadering, omdat hiermee Azure Cosmos DB proactief een nieuwe eigenschap kan indexeren die aan uw model kan worden toegevoegd.
-- Sluit het hoofdpad uit om selectieve paden op te nemen die moeten worden geïndexeerd.
+- Voeg het hoofdpad toe om paden selectief uit te sluiten die niet hoeven te worden geïndexeerd. Dit is de aanbevolen aanpak, omdat Azure Cosmos DB proactief elke nieuwe eigenschap kan indexeren die aan uw model kan worden toegevoegd.
+- Sluit het hoofdpad uit om paden selectief op te nemen die moeten worden geïndexeerd.
 
-- Voor paden met gewone tekens die bevatten: alfanumerieke tekens en _ (onderstrepings teken), hoeft u de padtekenreeks niet te escapepen rond dubbele aanhalings tekens (bijvoorbeeld '/Path/? '). Voor paden met andere speciale tekens moet u de padtekenreeks Escape rond dubbele aanhalings tekens (bijvoorbeeld "/\"pad-ABC-\"/?"). Als u speciale tekens in uw pad verwacht, kunt u elk pad voor de beveiliging op te zeggen. Dit is functioneel geen verschil als u elk pad en alleen de bestanden met speciale tekens weglaat.
+- Voor paden met gewone tekens die: alfanumerieke tekens en _ (underscore) bevatten, hoeft u niet te ontsnappen aan de padtekenreeks rond dubbele aanhalingstekens (bijvoorbeeld "/pad/?"). Voor paden met andere speciale tekens moet u ontsnappen aan de padtekenreeks\"rond\"dubbele aanhalingstekens (bijvoorbeeld "/ pad-abc /?"). Als je speciale personages op je pad verwacht, kun je voor de veiligheid aan elk pad ontsnappen. Functioneel maakt het geen verschil als je aan elk pad ontsnapt vs alleen degenen die speciale personages hebben.
 
-- De systeem eigenschap ' _etag ' wordt standaard uitgesloten van indexeren, tenzij de ETAG wordt toegevoegd aan het opgenomen pad voor indexering.
+- De eigenschap `_etag` systeem is standaard uitgesloten van indexering, tenzij de etag wordt toegevoegd aan het opgenomen pad voor indexering.
 
-Bij het opnemen en uitsluiten van paden kunnen de volgende kenmerken optreden:
+- Als de indexeringsmodus is ingesteld op `id` `_ts` **consistent,** worden de systeemeigenschappen automatisch geïndexeerd.
 
-- de `kind` kan `range` of `hash`zijn. De functionaliteit van bereik index biedt alle functionaliteit van een hash-index. Daarom raden we u aan een bereik index te gebruiken.
+Wanneer u paden opneem en uitsluit, u de volgende kenmerken tegenkomen:
 
-- `precision` is een getal dat is gedefinieerd op index niveau voor opgenomen paden. Een waarde van `-1` duidt op de maximale nauw keurigheid. U kunt deze waarde het beste altijd instellen op `-1`.
+- `kind`kan een `range` `hash`van beide zijn of . De functionaliteit van de bereikindex biedt alle functionaliteit van een hash-index, dus we raden u aan een bereikindex te gebruiken.
 
-- de `dataType` kan `String` of `Number`zijn. Hiermee worden de typen JSON-eigenschappen aangegeven die worden geïndexeerd.
+- `precision`is een getal dat is gedefinieerd op indexniveau voor opgenomen paden. Een waarde `-1` van geeft maximale precisie aan. We raden u aan `-1`deze waarde altijd in te stellen op .
 
-Als deze eigenschap niet is opgegeven, hebben deze eigenschappen de volgende standaard waarden:
+- `dataType`kan een `String` `Number`van beide zijn of . Dit geeft de typen JSON-eigenschappen aan die worden geïndexeerd.
 
-| **Eigenschaps naam**     | **Standaard waarde** |
+Wanneer deze eigenschappen niet zijn opgegeven, hebben deze eigenschappen de volgende standaardwaarden:
+
+| **Naam van eigenschap**     | **Standaardwaarde** |
 | ----------------------- | -------------------------------- |
 | `kind`   | `range` |
 | `precision`   | `-1`  |
 | `dataType`    | `String` en `Number` |
 
-Zie [deze sectie](how-to-manage-indexing-policy.md#indexing-policy-examples) voor voor beelden van indexerings beleid voor het opnemen en uitsluiten van paden.
+Zie [dit gedeelte](how-to-manage-indexing-policy.md#indexing-policy-examples) voor het indexeren van beleidsvoorbeelden voor het opnemen en uitsluiten van paden.
 
 ## <a name="spatial-indexes"></a>Ruimtelijke indexen
 
-Wanneer u een ruimtelijk pad definieert in het indexerings beleid, moet u definiëren welke index ```type``` moet worden toegepast op dat pad. Mogelijke typen voor ruimtelijke indexen zijn onder andere:
+Wanneer u een ruimtelijk pad in het indexeringsbeleid ```type``` definieert, moet u bepalen welke index op dat pad moet worden toegepast. Mogelijke typen ruimtelijke indexen zijn:
 
-* Spreek
+* Punt
 
-* Polygoon
+* Veelhoek
 
-* MultiPolygon
+* Multipolygoon
 
-* Lines Tring
+* Lijntekenreeks
 
-Met Azure Cosmos DB worden standaard geen ruimtelijke indexen gemaakt. Als u ruimtelijke SQL-functies wilt gebruiken, moet u een ruimtelijke index maken op basis van de vereiste eigenschappen. Zie [deze sectie](geospatial.md) voor voor beelden van indexerings beleid voor het toevoegen van ruimtelijke indexen.
+Azure Cosmos DB maakt standaard geen ruimtelijke indexen. Als u ruimtelijke SQL-ingebouwde functies wilt gebruiken, moet u een ruimtelijke index maken over de vereiste eigenschappen. Zie [deze sectie](geospatial.md) voor het indexeren van beleidsvoorbeelden voor het toevoegen van ruimtelijke indexen.
 
 ## <a name="composite-indexes"></a>Samengestelde indexen
 
-Voor query's met een `ORDER BY`-component met twee of meer eigenschappen is een samengestelde index vereist. U kunt ook een samengestelde index definiëren om de prestaties van veel gelijkheid en bereik query's te verbeteren. Standaard zijn er geen samengestelde indexen gedefinieerd, dus u moet zo nodig [samengestelde indexen toevoegen](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) .
+Query's met `ORDER BY` een component met twee of meer eigenschappen vereisen een samengestelde index. U ook een samengestelde index definiëren om de prestaties van veel gelijkheids- en bereikquery's te verbeteren. Standaard worden er geen samengestelde indexen gedefinieerd, dus u moet [samengestelde indexen toevoegen](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) als dat nodig is.
 
 Wanneer u een samengestelde index definieert, geeft u het volgende op:
 
-- Twee of meer eigenschaps paden. De volg orde waarin eigenschaps paden worden gedefinieerd.
+- Twee of meer eigendomspaden. De volgorde waarin eigenschapspaden worden gedefinieerd, is belangrijk.
 
-- De volg orde (oplopend of aflopend).
+- De volgorde (oplopend of aflopend).
 
 > [!NOTE]
-> Wanneer u een samengestelde index toevoegt, gebruikt de query bestaande bereik indexen totdat de nieuwe samengestelde index toevoeging is voltooid. Daarom is het mogelijk dat u de prestatie verbeteringen niet onmiddellijk kunt waarnemen wanneer u een samengestelde index toevoegt. Het is mogelijk om de voortgang van de index transformatie [te volgen met behulp van een van de sdk's](how-to-manage-indexing-policy.md).
+> Wanneer u een samengestelde index toevoegt, gebruikt de query bestaande bereikindexen totdat de nieuwe samengestelde indextoevoeging is voltooid. Wanneer u een samengestelde index toevoegt, u daarom niet onmiddellijk prestatieverbeteringen waarnemen. Het is mogelijk om de voortgang van de indextransformatie te volgen [met behulp van een van de SDK's.](how-to-manage-indexing-policy.md)
 
-### <a name="order-by-queries-on-multiple-properties"></a>Volg orde van query's op meerdere eigenschappen:
+### <a name="order-by-queries-on-multiple-properties"></a>ORD OP query's op meerdere eigenschappen:
 
-De volgende overwegingen worden gebruikt bij het gebruik van samengestelde indexen voor query's met een `ORDER BY`-component met twee of meer eigenschappen:
+De volgende overwegingen worden gebruikt bij het `ORDER BY` gebruik van samengestelde indexen voor query's met een clausule met twee of meer eigenschappen:
 
-- Als de samengestelde index paden niet overeenkomen met de volg orde van de eigenschappen in de component `ORDER BY`, kan de samengestelde index de query niet ondersteunen.
+- Als de samengestelde indexpaden niet overeenkomen met `ORDER BY` de volgorde van de eigenschappen in de component, kan de samengestelde index de query niet ondersteunen.
 
-- De volg orde van samengestelde index paden (oplopend of aflopend) moet ook overeenkomen met de `order` in de `ORDER BY`-component.
+- De volgorde van samengestelde indexpaden (oplopend `order` of `ORDER BY` aflopend) moet ook overeenkomen met de in de clausule.
 
-- De samengestelde index ondersteunt ook een `ORDER BY`-component met de tegenovergestelde volg orde op alle paden.
+- De samengestelde index `ORDER BY` ondersteunt ook een clausule met de tegenovergestelde volgorde op alle paden.
 
-Bekijk het volgende voor beeld waarbij een samengestelde index is gedefinieerd voor de eigenschappen naam, leeftijd en _ts:
+Houd rekening met het volgende voorbeeld waarbij een samengestelde index is gedefinieerd op eigenschappen naam, leeftijd en _ts:
 
-| **Samengestelde index**     | **Voor beeld-`ORDER BY` query**      | **Ondersteund door samengestelde index?** |
+| **Samengestelde index**     | **Voorbeeldquery `ORDER BY`**      | **Ondersteund door Composite Index?** |
 | ----------------------- | -------------------------------- | -------------- |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.name ASC, c.age asc``` | ```Yes```            |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.age ASC, c.name asc```   | ```No```             |
@@ -143,41 +145,41 @@ Bekijk het volgende voor beeld waarbij een samengestelde index is gedefinieerd v
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c ORDER BY c.name ASC, c.age ASC, timestamp ASC``` | ```Yes```            |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c ORDER BY c.name ASC, c.age ASC``` | ```No```            |
 
-U moet het indexerings beleid aanpassen zodat u alle benodigde `ORDER BY` query's kunt uitvoeren.
+U moet uw indexeringsbeleid aanpassen, `ORDER BY` zodat u alle benodigde query's weergeven.
 
 ### <a name="queries-with-filters-on-multiple-properties"></a>Query's met filters op meerdere eigenschappen
 
-Als een query filters heeft voor twee of meer eigenschappen, kan het handig zijn om een samengestelde index voor deze eigenschappen te maken.
+Als een query filters heeft op twee of meer eigenschappen, kan het handig zijn om een samengestelde index voor deze eigenschappen te maken.
 
-Denk bijvoorbeeld aan de volgende query met een gelijkheids filter voor twee eigenschappen:
+Houd bijvoorbeeld rekening met de volgende query met een gelijkheidsfilter op twee eigenschappen:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John" AND c.age = 18
 ```
 
-Deze query is efficiënter, neemt minder tijd in beslag en verbruikt meer dan één RU, als het een samengestelde index op (naam ASC, Age ASC) kan gebruiken.
+Deze query zal efficiënter zijn, kost minder tijd en verbruikt minder RU's, als het in staat is om een samengestelde index op (naam ASC, leeftijd ASC) hefboomwerking.
 
-Query's met bereik filters kunnen ook worden geoptimaliseerd met een samengestelde index. De query kan echter slechts één bereik filter hebben. Bereik filters omvatten `>`, `<`, `<=`, `>=`en `!=`. Het bereik filter moet als laatste worden gedefinieerd in de samengestelde index.
+Query's met bereikfilters kunnen ook worden geoptimaliseerd met een samengestelde index. De query kan echter slechts één bereikfilter hebben. Bereikfilters `>`omvatten `<` `<=`, `>=`, `!=`, en . Het bereikfilter moet als laatste in de samengestelde index worden gedefinieerd.
 
-Houd rekening met de volgende query met filters voor gelijkheid en bereik:
+Houd rekening met de volgende query met zowel gelijkheids- als bereikfilters:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John" AND c.age > 18
 ```
 
-Deze query is efficiënter met een samengestelde index op (naam ASC, Age ASC). De query maakt echter geen gebruik van een samengestelde index op (leeftijd ASC, naam ASC), omdat de gelijkheids filters eerst moeten worden gedefinieerd in de samengestelde index.
+Deze query wordt efficiënter met een samengestelde index op (naam ASC, leeftijd ASC). De query zou echter geen samengestelde index gebruiken op (leeftijd ASC, naam ASC), omdat de gelijkheidsfilters eerst in de samengestelde index moeten worden gedefinieerd.
 
-De volgende overwegingen worden gebruikt bij het maken van samengestelde indexen voor query's met filters voor meerdere eigenschappen
+De volgende overwegingen worden gebruikt bij het maken van samengestelde indexen voor query's met filters op meerdere eigenschappen
 
-- De eigenschappen in het filter van de query moeten overeenkomen met die in de samengestelde index. Als een eigenschap zich in de samengestelde index bevindt maar niet is opgenomen in de query als een filter, wordt de samengestelde index niet gebruikt voor de query.
-- Als een query extra eigenschappen in het filter heeft die niet in een samengestelde index zijn gedefinieerd, wordt een combi natie van samengestelde en bereik indexen gebruikt om de query te evalueren. Hiervoor is minder RU vereist dan exclusief het gebruik van bereik indexen.
-- Als een eigenschap een bereik filter heeft (`>`, `<`, `<=`, `>=`of `!=`), moet deze eigenschap als laatste worden gedefinieerd in de samengestelde index. Als een query meer dan één bereik filter heeft, wordt de samengestelde index niet gebruikt.
-- Bij het maken van een samengestelde index voor het optimaliseren van query's met meerdere filters, heeft de `ORDER` van de samengestelde index geen invloed op de resultaten. Deze eigenschap is optioneel.
-- Als u geen samengestelde index voor een query met filters voor meerdere eigenschappen definieert, zal de query toch slagen. De RU-kosten van de query kunnen echter worden verminderd met een samengestelde index.
+- De eigenschappen in het filter van de query moeten overeenkomen met de eigenschappen in de samengestelde index. Als een eigenschap zich in de samengestelde index bevindt, maar niet als filter in de query is opgenomen, maakt de query geen gebruik van de samengestelde index.
+- Als een query extra eigenschappen in het filter heeft die niet zijn gedefinieerd in een samengestelde index, wordt een combinatie van samengestelde en bereikindexen gebruikt om de query te evalueren. Dit vereist minder RU's dan uitsluitend het gebruik van bereikindexen.
+- Als een eigenschap een`>`bereikfilter `>=`heeft `!=`( , `<`, `<=`, of ), moet deze eigenschap als laatste in de samengestelde index worden gedefinieerd. Als een query meer dan één bereikfilter heeft, wordt de samengestelde index niet gebruikt.
+- Bij het maken van een samengestelde index `ORDER` om query's met meerdere filters te optimaliseren, heeft de samengestelde index geen invloed op de resultaten. Deze eigenschap is optioneel.
+- Als u geen samengestelde index definieert voor een query met filters op meerdere eigenschappen, wordt de query nog steeds geslaagd. De RU-kosten van de query kunnen echter worden verlaagd met een samengestelde index.
 
-Bekijk de volgende voor beelden waarin een samengestelde index is gedefinieerd voor de eigenschappen naam, leeftijd en tijds tempel:
+Houd rekening met de volgende voorbeelden waarbij een samengestelde index is gedefinieerd op eigenschappen naam, leeftijd en tijdstempel:
 
-| **Samengestelde index**     | **Voorbeeld query**      | **Ondersteund door samengestelde index?** |
+| **Samengestelde index**     | **Voorbeeldquery**      | **Ondersteund door Composite Index?** |
 | ----------------------- | -------------------------------- | -------------- |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18``` | ```Yes```            |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age > 18```   | ```Yes```             |
@@ -188,44 +190,44 @@ Bekijk de volgende voor beelden waarin een samengestelde index is gedefinieerd v
 
 ### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>Query's met een filter en een ORDER BY-component
 
-Als een query filtert op een of meer eigenschappen en de component ORDER BY andere eigenschappen heeft, kan het handig zijn om de eigenschappen in het filter toe te voegen aan de component `ORDER BY`.
+Als een query filtert op een of meer eigenschappen en verschillende eigenschappen heeft in de component `ORDER BY` ORDER BY, kan het handig zijn om de eigenschappen in het filter aan de component toe te voegen.
 
-Bijvoorbeeld, door de eigenschappen in het filter toe te voegen aan de ORDER BY-component, kan de volgende query worden herschreven om gebruik te maken van een samengestelde index:
+Door bijvoorbeeld de eigenschappen in het filter toe te voegen aan de clausule ORDER BY, kan de volgende query worden herschreven om een samengestelde index te gebruiken:
 
-Query's uitvoeren met de bereik index:
+Query met bereikindex:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp
 ```
 
-Query's uitvoeren met samengestelde index:
+Query met samengestelde index:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John" ORDER BY c.name, c.timestamp
 ```
 
-Dezelfde patroon-en query optimalisaties kunnen worden gegeneraliseerd voor query's met meerdere gelijkheids filters:
+Hetzelfde patroon en queryoptimalisaties kunnen worden gegeneraliseerd voor query's met filters voor meerdere gelijkheiden:
 
-Query's uitvoeren met de bereik index:
+Query met bereikindex:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.timestamp
 ```
 
-Query's uitvoeren met samengestelde index:
+Query met samengestelde index:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.timestamp
 ```
 
-De volgende overwegingen worden gebruikt bij het maken van samengestelde indexen voor het optimaliseren van een query met een filter en `ORDER BY` component:
+De volgende overwegingen worden gebruikt bij het maken van `ORDER BY` samengestelde indexen om een query te optimaliseren met een filter en een clausule:
 
-* Als de query filtert op Eigenschappen, moeten deze eerst worden opgenomen in de component `ORDER BY`.
-* Als u geen samengestelde index definieert voor een query met een filter voor één eigenschap en een afzonderlijke `ORDER BY`-component met behulp van een andere eigenschap, zal de query toch slagen. De RU-kosten van de query kunnen echter worden verminderd met een samengestelde index, met name als de eigenschap in de `ORDER BY`-component een hoge kardinaliteit heeft.
-* Alle overwegingen voor het maken van samengestelde indexen voor `ORDER BY` query's met meerdere eigenschappen en query's met filters voor meerdere eigenschappen zijn nog steeds van toepassing.
+* Als de query filters op eigenschappen, moeten `ORDER BY` deze eerst worden opgenomen in de clausule.
+* Als u geen samengestelde index definieert op een query met `ORDER BY` een filter op één eigenschap en een afzonderlijke component met een andere eigenschap, wordt de query nog steeds geslaagd. De RU-kosten van de query kunnen echter worden verlaagd met `ORDER BY` een samengestelde index, vooral als de eigenschap in de clausule een hoge kardinaliteit heeft.
+* Alle overwegingen voor het `ORDER BY` maken van samengestelde indexen voor query's met meerdere eigenschappen en query's met filters op meerdere eigenschappen zijn nog steeds van toepassing.
 
 
-| **Samengestelde index**                      | **Voor beeld-`ORDER BY` query**                                  | **Ondersteund door samengestelde index?** |
+| **Samengestelde index**                      | **Voorbeeldquery `ORDER BY`**                                  | **Ondersteund door Composite Index?** |
 | ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.name ASC, c.timestamp ASC``` | `Yes` |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC, c.name ASC``` | `No`  |
@@ -233,31 +235,31 @@ De volgende overwegingen worden gebruikt bij het maken van samengestelde indexen
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.timestamp ASC``` | `No` |
 
-## <a name="modifying-the-indexing-policy"></a>Het indexerings beleid wijzigen
+## <a name="modifying-the-indexing-policy"></a>Het indexeringsbeleid wijzigen
 
-Het indexerings beleid van een container kan op elk gewenst moment worden bijgewerkt [met behulp van de Azure portal of een van de ondersteunde sdk's](how-to-manage-indexing-policy.md). Een update voor het indexerings beleid activeert een trans formatie van de oude index naar de nieuwe, die online en op locatie wordt uitgevoerd (zodat er geen extra opslag ruimte wordt verbruikt tijdens de bewerking). De oude beleids index is efficiënt getransformeerd naar het nieuwe beleid zonder dat dit van invloed is op de schrijf Beschik baarheid of de door Voer ingericht op de container. Index transformatie is een asynchrone bewerking en de tijd die nodig is om te volt ooien, is afhankelijk van de ingerichte door Voer, het aantal items en de grootte ervan.
+Het indexeringsbeleid van een container kan op elk gewenst moment worden bijgewerkt [met behulp van de Azure-portal of een van de ondersteunde SDK's.](how-to-manage-indexing-policy.md) Een update van het indexeringsbeleid activeert een transformatie van de oude index naar de nieuwe, die online en op zijn plaats wordt uitgevoerd (er wordt dus geen extra opslagruimte verbruikt tijdens de bewerking). De index van het oude beleid wordt efficiënt omgezet in het nieuwe beleid zonder dat dit gevolgen heeft voor de schrijfbeschikbaarheid of de doorvoer die op de container is ingericht. Indextransformatie is een asynchrone bewerking en de tijd die nodig is om te voltooien, is afhankelijk van de ingerichte doorvoer, het aantal items en de grootte ervan.
 
 > [!NOTE]
-> Bij het toevoegen van een bereik-of ruimtelijke index, retour neren query's mogelijk niet alle overeenkomende resultaten en worden deze zonder fouten geretourneerd. Dit betekent dat query resultaten mogelijk niet consistent zijn totdat de index transformatie is voltooid. Het is mogelijk om de voortgang van de index transformatie [te volgen met behulp van een van de sdk's](how-to-manage-indexing-policy.md).
+> Tijdens het toevoegen van een bereik of ruimtelijke index, query's kunnen niet alle overeenkomende resultaten terug, en zal dit doen zonder fouten terug te sturen. Dit betekent dat queryresultaten mogelijk niet consistent zijn totdat de indextransformatie is voltooid. Het is mogelijk om de voortgang van de indextransformatie te volgen [met behulp van een van de SDK's.](how-to-manage-indexing-policy.md)
 
-Als de modus nieuw indexerings beleid is ingesteld op consistent, kan er geen andere wijziging van het indexerings beleid worden toegepast terwijl de index transformatie wordt uitgevoerd. Een actieve index transformatie kan worden geannuleerd door de modus van het indexerings beleid in te stellen op geen (waardoor de index onmiddellijk wordt verwijderd).
+Als de modus van het nieuwe indexeringsbeleid is ingesteld op Consistent, kan geen andere wijziging van het indexeringsbeleid worden toegepast terwijl de indextransformatie aan de gang is. Een actieve indextransformatie kan worden geannuleerd door de modus van het indexeringsbeleid in te stellen op Geen (waardoor de index onmiddellijk wordt gedaald).
 
-## <a name="indexing-policies-and-ttl"></a>Indexerings beleid en TTL
+## <a name="indexing-policies-and-ttl"></a>Indexeringsbeleid en TTL
 
-Voor de [functie time-to-Live (TTL)](time-to-live.md) moet indexering actief zijn op de container waarop deze is ingeschakeld. Dit betekent dat:
+De [Functie Time-to-Live (TTL)](time-to-live.md) vereist indexering om actief te zijn op de container die is ingeschakeld. Dit betekent dat:
 
-- het is niet mogelijk om TTL te activeren voor een container waarbij de indexerings modus is ingesteld op geen,
-- het is niet mogelijk om de indexerings modus in te stellen op geen in een container waarin TTL wordt geactiveerd.
+- het is niet mogelijk om TTL te activeren op een container waar de indexeringsmodus is ingesteld op Geen,
+- het is niet mogelijk om de indexeringsmodus in te stellen op Geen op een container waar TTL wordt geactiveerd.
 
-Voor scenario's waarin geen eigenschapspad moet worden geïndexeerd, maar TTL vereist is, kunt u een indexerings beleid gebruiken met:
+Voor scenario's waarbij geen eigenschappenpad moet worden geïndexeerd, maar TTL vereist is, u een indexeringsbeleid gebruiken met:
 
-- een indexerings modus is ingesteld op consistent en
-- geen opgenomen pad en
-- `/*` als het enige uitgesloten pad.
+- een indexeringsmodus ingesteld op Consistent en
+- geen opgenomen pad, en
+- `/*`als het enige uitgesloten pad.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Lees meer over indexeren in de volgende artikelen:
 
-- [Overzicht van indexeren](index-overview.md)
-- [Indexerings beleid beheren](how-to-manage-indexing-policy.md)
+- [Indexoverzicht](index-overview.md)
+- [Indexeringsbeleid beheren](how-to-manage-indexing-policy.md)

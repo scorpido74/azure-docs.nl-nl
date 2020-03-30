@@ -1,6 +1,6 @@
 ---
-title: IP-Firewall configureren voor Azure Event Grid onderwerpen of domeinen (preview-versie)
-description: In dit artikel wordt beschreven hoe u Firewall instellingen configureert voor Event Grid onderwerpen of domeinen.
+title: IP-firewall configureren voor azure-gebeurtenisrasteronderwerpen of -domeinen (voorbeeld)
+description: In dit artikel wordt beschreven hoe u firewall-instellingen configureert voor gebeurtenisrasteronderwerpen of -domeinen.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,53 +8,53 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: spelluru
 ms.openlocfilehash: b195872ca1002970fa96ae133d5eb47a9267796d
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79299866"
 ---
-# <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>IP-Firewall configureren voor Azure Event Grid onderwerpen of domeinen (preview-versie)
-Het onderwerp en het domein zijn standaard toegankelijk vanaf internet, zolang de aanvraag geldig is voor verificatie en autorisatie. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Uitgevers die afkomstig zijn van een ander IP-adres, worden geweigerd en ontvangen een 403 (verboden)-antwoord. Zie [netwerk beveiliging voor Event grid](network-security.md)voor meer informatie over de beveiligings functies van het netwerk die door Event grid worden ondersteund.
+# <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>IP-firewall configureren voor azure-gebeurtenisrasteronderwerpen of -domeinen (voorbeeld)
+Standaard zijn onderwerp en domein toegankelijk vanaf internet, zolang de aanvraag wordt geleverd met geldige verificatie en autorisatie. Met IP-firewall u deze verder beperken tot alleen een set IPv4-adressen of IPv4-adresbereiken in [CIDR-notatie (Classless Inter-Domain Routing).](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) Uitgevers die afkomstig zijn van een ander IP-adres worden afgewezen en ontvangen een reactie van 403 (Verboden). Zie [Netwerkbeveiliging voor gebeurtenisraster voor](network-security.md)meer informatie over netwerkbeveiligingsfuncties die worden ondersteund door gebeurtenisraster.
 
-In dit artikel wordt beschreven hoe u IP-Firewall instellingen configureert voor Azure Event Grid onderwerpen of domeinen.
+In dit artikel wordt beschreven hoe u IP-firewall-instellingen configureert voor onderwerpen of domeinen in Azure Event Grid.
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken
-In deze sectie wordt beschreven hoe u de Azure Portal gebruikt voor het maken van binnenkomende IP-firewall regels. De stappen die in deze sectie worden weer gegeven, zijn voor onderwerpen. U kunt soort gelijke stappen gebruiken om inkomende IP-regels voor **domeinen**te maken. 
+In deze sectie ziet u hoe u de Azure-portal gebruiken om inkomende IP-firewallregels te maken. De stappen in deze sectie zijn voor onderwerpen. U vergelijkbare stappen gebruiken om binnenkomende IP-regels voor **domeinen**te maken. 
 
-1. Ga in het [Azure Portal](https://portal.azure.com)naar het onderwerp of het domein van het gebeurtenis raster en schakel over naar het tabblad **netwerken** .
-2. Selecteer **open bare netwerken** om alle netwerken, inclusief Internet, toegang te geven tot de resource. 
+1. Navigeer in de [Azure-portal](https://portal.azure.com)naar het onderwerp of domein van het gebeurtenisraster en ga naar het tabblad **Netwerken.**
+2. Selecteer **Openbare netwerken** om alle netwerken, inclusief het internet, toegang te geven tot de bron. 
 
-    U kunt het verkeer beperken met behulp van firewall regels op basis van IP. Geef één IPv4-adres of een bereik van IP-adressen in een CIDR-notatie (Classless Inter-Domain Routing) op. 
+    U het verkeer beperken met behulp van IP-gebaseerde firewallregels. Geef één IPv4-adres of een reeks IP-adressen op in CIDR-notatie (Classless inter-domain routing). 
 
-    ![Pagina open bare netwerken](./media/configure-firewall/public-networks-page.png)
-3. Selecteer **privé-eind punten alleen** om alleen privé-eindpunt verbindingen toe te staan om toegang te krijgen tot deze bron. Gebruik het tabblad **verbindingen met privé-eind punten** op deze pagina om verbindingen te beheren. 
+    ![Pagina openbare netwerken](./media/configure-firewall/public-networks-page.png)
+3. Selecteer **Alleen privéeindpunten** om alleen privéeindpuntverbindingen toe te staan die toegang krijgen tot deze bron. Gebruik het tabblad **Privéeindpuntverbindingen** op deze pagina om verbindingen te beheren. 
 
-    ![Pagina open bare netwerken](./media/configure-firewall/private-endpoints-page.png)
+    ![Pagina openbare netwerken](./media/configure-firewall/private-endpoints-page.png)
 4. Selecteer **Opslaan** op de werkbalk. 
 
 
 
 ## <a name="use-azure-cli"></a>Azure CLI gebruiken
-In deze sectie wordt beschreven hoe u Azure CLI-opdrachten gebruikt om onderwerpen te maken met inkomende IP-regels. De stappen die in deze sectie worden weer gegeven, zijn voor onderwerpen. U kunt soort gelijke stappen gebruiken om inkomende IP-regels voor **domeinen**te maken. 
+In deze sectie ziet u hoe u Azure CLI-opdrachten gebruikt om onderwerpen met binnenkomende IP-regels te maken. De stappen in deze sectie zijn voor onderwerpen. U vergelijkbare stappen gebruiken om binnenkomende IP-regels voor **domeinen**te maken. 
 
 
-### <a name="enable-public-network-access-for-an-existing-topic"></a>Open bare toegang tot het netwerk inschakelen voor een bestaand onderwerp
-De toegang tot het open bare netwerk is standaard ingeschakeld voor onderwerpen en domeinen. U kunt het verkeer beperken door binnenkomende IP-firewall regels te configureren. 
+### <a name="enable-public-network-access-for-an-existing-topic"></a>Toegang tot openbare netwerken inschakelen voor een bestaand onderwerp
+Standaard is de toegang tot het openbare netwerk ingeschakeld voor onderwerpen en domeinen. U verkeer beperken door binnenkomende IP-firewallregels te configureren. 
 
 ```azurecli-interactive
 az rest --method patch --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" --body "{\""properties\"": {\""publicNetworkAccess\"": \""Enabled\""}}"
 ```
 
-### <a name="disable-public-network-access-for-an-existing-topic"></a>Open bare netwerk toegang voor een bestaand onderwerp uitschakelen
-Wanneer open bare netwerk toegang is uitgeschakeld voor een onderwerp of domein, is verkeer via open bare Internet niet toegestaan. Alleen verbindingen met een privé-eind punt hebben toegang tot deze resources. 
+### <a name="disable-public-network-access-for-an-existing-topic"></a>Toegang tot openbare netwerken uitschakelen voor een bestaand onderwerp
+Wanneer toegang tot openbare netwerken is uitgeschakeld voor een onderwerp of domein, is verkeer via openbaar internet niet toegestaan. Alleen privéeindpuntverbindingen hebben toegang tot deze bronnen. 
 
 ```azurecli-interactive
 az rest --method patch --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" --body "{\""properties\"": {\""publicNetworkAccess\"": \""Disabled\""}}"
 ```
 
-### <a name="create-topic-with-inbound-ip-rules"></a>Onderwerp met inkomende IP-regels maken
-Met de volgende voorbeeld CLI-opdracht maakt u een event grid-onderwerp met inkomende IP-regels in één stap. 
+### <a name="create-topic-with-inbound-ip-rules"></a>Onderwerp maken met binnenkomende ip-regels
+Met de volgende voorbeeld-opdracht CLI maakt u in één stap een gebeurtenisrasteronderwerp met binnenkomende IP-regels. 
 
 ```azurecli-interactive
 az rest --method put \
@@ -62,8 +62,8 @@ az rest --method put \
     --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"",\""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
 ```
 
-### <a name="create-topic-first-and-then-add-inbound-ip-rules"></a>Maak eerst een onderwerp en voeg vervolgens inkomende IP-regels toe
-In dit voor beeld wordt eerst een event grid-onderwerp gemaakt en worden vervolgens binnenkomende IP-regels voor het onderwerp in een afzonderlijke opdracht toegevoegd. Ook worden de binnenkomende IP-regels bijgewerkt die in de tweede opdracht zijn ingesteld. 
+### <a name="create-topic-first-and-then-add-inbound-ip-rules"></a>Eerst onderwerp maken en vervolgens binnenkomende ip-regels toevoegen
+In dit voorbeeld wordt eerst een gebeurtenisrasteronderwerp gemaakt en worden vervolgens binnenkomende IP-regels voor het onderwerp in een afzonderlijke opdracht toegevoegd. Het werkt ook de binnenkomende IP-regels die zijn ingesteld in de tweede opdracht. 
 
 ```azurecli-interactive
 
@@ -85,17 +85,17 @@ az rest --method put \
 
 
 ## <a name="use-powershell"></a>PowerShell gebruiken
-In deze sectie wordt beschreven hoe u Azure PowerShell-opdrachten gebruikt om Azure Event Grid onderwerpen te maken met binnenkomende IP-firewall regels. De stappen die in deze sectie worden weer gegeven, zijn voor onderwerpen. U kunt soort gelijke stappen gebruiken om inkomende IP-regels voor **domeinen**te maken. 
+In deze sectie ziet u hoe u Azure PowerShell-opdrachten gebruiken om Azure Event Grid-onderwerpen te maken met inkomende IP-firewallregels. De stappen in deze sectie zijn voor onderwerpen. U vergelijkbare stappen gebruiken om binnenkomende IP-regels voor **domeinen**te maken. 
 
 ### <a name="prerequisite"></a>Vereiste
-Volg de instructies [voor het maken van een Azure AD-toepassing en Service-Principal](../active-directory/develop/howto-create-service-principal-portal.md) met behulp van de portal om een Azure Active Directory-toepassing te maken en noteer de volgende waarden:
+Volg instructies van [How to: Gebruik de portal om een Azure AD-toepassing en serviceprincipal te maken die toegang hebben tot bronnen](../active-directory/develop/howto-create-service-principal-portal.md) om een Azure Active Directory-toepassing te maken en de volgende waarden op te merken:
 
-- Directory-ID (Tenant)
-- Toepassings-ID (client)
-- Geheim van toepassing (client)
+- (Tenant-)id van de map
+- Toepassings-id (Client)
+- Toepassing (client) geheim
 
-### <a name="prepare-token-and-headers-for-rest-api-calls"></a>Token en headers voorbereiden voor REST API-aanroepen 
-Voer de volgende vereiste opdrachten uit om een verificatie token op te halen dat moet worden gebruikt met REST API-aanroepen en autorisatie-en andere header-informatie. 
+### <a name="prepare-token-and-headers-for-rest-api-calls"></a>Token- en kopteksten voorbereiden voor REST API-aanroepen 
+Voer de volgende vereiste opdrachten uit om een verificatietoken te gebruiken met REST API-aanroepen en autorisatie- en andere headergegevens. 
 
 ```azurepowershell-interactive
 # replace <CLIENT ID> and <CLIENT SECRET>
@@ -113,8 +113,8 @@ $Headers.Add("Authorization","$($Token.token_type) "+ " " + "$($Token.access_tok
 $Headers.Add("Content-Type","application/json")
 ```
 
-### <a name="enable-public-network-access-for-an-existing-topic"></a>Open bare toegang tot het netwerk inschakelen voor een bestaand onderwerp
-De toegang tot het open bare netwerk is standaard ingeschakeld voor onderwerpen en domeinen. U kunt het verkeer beperken door binnenkomende IP-firewall regels te configureren. 
+### <a name="enable-public-network-access-for-an-existing-topic"></a>Toegang tot openbare netwerken inschakelen voor een bestaand onderwerp
+Standaard is de toegang tot het openbare netwerk ingeschakeld voor onderwerpen en domeinen. U verkeer beperken door binnenkomende IP-firewallregels te configureren. 
 
 ```azurepowershell-interactive
 $body = @{"properties"=@{"publicNetworkAccess"="enabled"}} | ConvertTo-Json -Depth 5
@@ -126,8 +126,8 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="disable-public-network-access-for-an-existing-topic"></a>Open bare netwerk toegang voor een bestaand onderwerp uitschakelen
-Wanneer open bare netwerk toegang is uitgeschakeld voor een onderwerp of domein, is verkeer via open bare Internet niet toegestaan. Alleen verbindingen met een privé-eind punt hebben toegang tot deze resources. 
+### <a name="disable-public-network-access-for-an-existing-topic"></a>Toegang tot openbare netwerken uitschakelen voor een bestaand onderwerp
+Wanneer toegang tot openbare netwerken is uitgeschakeld voor een onderwerp of domein, is verkeer via openbaar internet niet toegestaan. Alleen privéeindpuntverbindingen hebben toegang tot deze bronnen. 
 
 ```azurepowershell-interactive
 $body = @{"properties"=@{"publicNetworkAccess"="disabled"}} | ConvertTo-Json -Depth 5
@@ -139,7 +139,7 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="create-an-event-grid-topic-with-inbound-rules-in-one-step"></a>Een event grid-onderwerp maken met binnenkomende regels in één stap
+### <a name="create-an-event-grid-topic-with-inbound-rules-in-one-step"></a>Een gebeurtenisrasteronderwerp maken met binnenkomende regels in één stap
 
 ```azurepowershell-interactive
 
@@ -160,7 +160,7 @@ Invoke-RestMethod -Method 'Get' `
 ```
 
 
-### <a name="create-event-grid-topic-first-and-then-add-inbound-ip-rules"></a>Eerst Event grid-onderwerp maken en vervolgens binnenkomende IP-regels toevoegen
+### <a name="create-event-grid-topic-first-and-then-add-inbound-ip-rules"></a>Eerst een gebeurtenisrasteronderwerp maken en vervolgens binnenkomende ip-regels toevoegen
 
 ```azurepowershell-interactive
 
@@ -198,6 +198,6 @@ Invoke-RestMethod -Method 'Get'
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Event grid bericht bezorging bewaken](monitor-event-delivery.md)voor meer informatie over het bewaken van gebeurtenis leveringen.
-* Zie [Event grid beveiliging en verificatie](security-authentication.md)voor meer informatie over de verificatie sleutel.
-* Zie [Event grid Subscription schema](subscription-creation-schema.md)voor meer informatie over het maken van een Azure Event grid-abonnement.
+* Zie [Gebeurtenisnetbezorging controleren](monitor-event-delivery.md)voor informatie over het bewaken van gebeurtenisleveringen.
+* Zie [Beveiliging en verificatie van gebeurtenisraster](security-authentication.md)voor meer informatie over de verificatiesleutel.
+* Zie [Abonnement op gebeurtenisrastervoor](subscription-creation-schema.md)meer informatie over het maken van een Azure Event Grid-abonnement .

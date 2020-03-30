@@ -1,55 +1,54 @@
 ---
-title: Api's voor Marketplace-meet Service-Veelgestelde vragen | Azure Marketplace
-description: Verzend het gebruik van een SaaS-aanbieding in azure Marketplace.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Api's voor marketplace-meetservice - veelgestelde vragen | Azure Marketplace
+description: Het gebruik van een SaaS-aanbieding in de Azure Marketplace uitzenden.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 044d92e79d8a885f553a7d081ce40c8b6de880a1
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 6e5b691a41ef283449f9eeeb90e9d01a91616146
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931223"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275778"
 ---
 # <a name="marketplace-metering-service-apis---faq"></a>Service-API's voor Marketplace-meting - Veelgestelde vragen
 
-Zodra een Azure-gebruiker zich abonneert op een SaaS-service die gebruikmaakt van factuur met data limiet, houdt u het verbruik bij voor elke facturerings dimensie die wordt gebruikt door de klant. Als het verbruik de inbegrepen hoeveel heden overschrijdt die zijn ingesteld voor de periode die is geselecteerd door de klant, stuurt uw service gebruiks gebeurtenissen naar micro soft.
+Zodra een Azure-gebruiker zich abonneert op een SaaS-service met facturering met datawaarde, houdt u het verbruik bij voor elke factureringsdimensie die door de klant wordt gebruikt. Als het verbruik hoger is dan de opgenomen hoeveelheden die zijn ingesteld voor de door de klant geselecteerde term, zendt uw service gebruiksgebeurtenissen uit naar Microsoft.
 
-## <a name="emit-usage-events"></a>Gebruiks gebeurtenissen verzenden
+## <a name="emit-usage-events"></a>Gebruiksgebeurtenissen uitzenden
 
 >[!Note]
->Deze sectie is alleen van toepassing op SaaS-aanbiedingen, waarbij ten minste een van de abonnementen meet service dimensies heeft die zijn gedefinieerd op het moment van publicatie van de aanbieding.
+>Deze sectie is alleen van toepassing op SaaS-aanbiedingen, waarbij ten minste één van de plannen meetserviceafmetingen heeft die zijn gedefinieerd op het moment van publicatie van de aanbieding.
 
-![Gebruiks gebeurtenissen verzenden](media/isv-emits-usage-event.png)
+![Gebruiksgebeurtenissen uitzenden](media/isv-emits-usage-event.png)
 
-Raadpleeg de [API voor SaaS batch Usage](./marketplace-metering-service-apis.md#batch-usage-event) voor informatie over het API-contract voor het verzenden van gebruiks gebeurtenissen.
+Zie de [API voor batchgebruik saas](./marketplace-metering-service-apis.md#batch-usage-event) voor informatie over het API-contract voor het uitzenden van gebruiksgebeurtenissen.
 
-### <a name="how-often-is-it-expected-to-emit-usage"></a>Hoe vaak verwacht het gebruik?
+### <a name="how-often-is-it-expected-to-emit-usage"></a>Hoe vaak wordt verwacht dat het gebruik uitstraalt?
 
-In het ideale geval moet u het gebruik elk uur voor het afgelopen uur verwachten, alleen als er in het vorige uur gebruik wordt gebruikt.
+Idealiter wordt van u verwacht dat u het afgelopen uur elk uur gebruik uitstraalt, alleen als er gebruik is in het vorige uur.
 
-### <a name="what-is-the-maximum-delay-between-the-time-an-event-occurs-and-the-time-a-usage-event-is-emitted-to-microsoft"></a>Wat is de maximale vertraging tussen het tijdstip waarop een gebeurtenis plaatsvindt en hoe lang een gebruiks gebeurtenis wordt verzonden naar micro soft?
+### <a name="what-is-the-maximum-delay-between-the-time-an-event-occurs-and-the-time-a-usage-event-is-emitted-to-microsoft"></a>Wat is de maximale vertraging tussen het tijdstip van een gebeurtenis en de tijd dat een gebruiksgebeurtenis wordt uitgezonden naar Microsoft?
 
-In het ideale geval wordt de gebruiks gebeurtenis elke uur verzonden voor gebeurtenissen die in het afgelopen uur zijn opgetreden. Er worden echter vertragingen verwacht. De toegestane maximum vertraging is 24 uur, waarna er geen gebruiks gebeurtenissen worden geaccepteerd.
+Idealiter wordt de gebruiksgebeurtenis elk uur uitgezonden voor gebeurtenissen die zich in het afgelopen uur hebben voorgedaan. Er worden echter vertragingen verwacht. De maximaal toegestane vertraging is 24 uur, waarna gebruiksgebeurtenissen niet worden geaccepteerd.
 
-Als bijvoorbeeld een gebruiks gebeurtenis plaatsvindt om 1 uur op een dag, hebt u tot 1 uur op de volgende dag een gebruiks gebeurtenis die aan deze gebeurtenis is gekoppeld. Dit betekent dat in het geval van het door het systeem verzonden gebruik een bewerkings tijd is, de gebeurtenis kan worden hersteld en verzonden voor het uur interval waarin het gebruik heeft plaatsgevonden, zonder verlies van betrouw baarheid.
+Als een gebruiksgebeurtenis bijvoorbeeld op een dag om 13.00 uur plaatsvindt, hebt u de volgende dag tot 13.00 uur de tijd om een gebruiksgebeurtenis uit te zenden die aan deze gebeurtenis is gekoppeld. Dit betekent dat in het geval van het systeem emitterende gebruik een down time heeft, het kan herstellen en vervolgens de gebruiksgebeurtenis verzenden voor het uurinterval waarin het gebruik is gebeurd, zonder verlies van trouw.
 
-### <a name="what-happens-when-you-send-more-than-one-usage-event-on-the-same-hour"></a>Wat gebeurt er wanneer u meer dan één gebruiks gebeurtenis in hetzelfde uur verzendt?
+### <a name="what-happens-when-you-send-more-than-one-usage-event-on-the-same-hour"></a>Wat gebeurt er als u meer dan één gebruiksgebeurtenis op hetzelfde uur verzendt?
 
-Er wordt slechts één gebruiks gebeurtenis geaccepteerd voor het uur interval. Het uur interval begint bij minuut 0 en eindigt op minuut 59.  Als er meer dan één gebruiks gebeurtenis voor hetzelfde uur interval wordt verzonden, worden latere gebruiks gebeurtenissen verwijderd als dubbele waarden.
+Er wordt slechts één gebruiksgebeurtenis geaccepteerd voor het uurinterval. Het uurinterval begint bij minuut 0 en eindigt op minuut 59.  Als er meer dan één gebruiksgebeurtenis wordt uitgezonden voor hetzelfde uurinterval, worden eventuele volgende gebruiksgebeurtenissen als duplicaten verwijderd.
 
-### <a name="what-happens-when-you-emit-usage-for-a-saas-subscription-that-has-been-unsubscribed-already"></a>Wat gebeurt er wanneer u het gebruik van een SaaS-abonnement dat al is afgemeld, uitschrijft?
+### <a name="what-happens-when-you-emit-usage-for-a-saas-subscription-that-has-been-unsubscribed-already"></a>Wat gebeurt er als u gebruik uitzendt voor een SaaS-abonnement dat al is afgemeld?
 
-Een gebruiks gebeurtenis die wordt verzonden naar het Marketplace-platform wordt niet geaccepteerd nadat een SaaS-abonnement is verwijderd.
+Elke gebruiksgebeurtenis die wordt uitgezonden naar het Marketplace-platform, wordt niet geaccepteerd nadat een SaaS-abonnement is verwijderd.
 
-### <a name="can-you-get-a-list-of-all-saas-subscriptions-including-active-and-unsubscribed-subscriptions"></a>Kunt u een lijst met alle SaaS-abonnementen, waaronder actieve en niet-geabonneerde abonnementen, ophalen?
+### <a name="can-you-get-a-list-of-all-saas-subscriptions-including-active-and-unsubscribed-subscriptions"></a>u een lijst krijgen van alle SaaS-abonnementen, inclusief actieve en afgemelde abonnementen?
 
-Ja, wanneer u de API van `GET /saas/subscriptions` aanroept, bevat een lijst met alle SaaS-abonnementen. In het veld Status in het antwoord voor elk SaaS-abonnement wordt vastgelegd of het abonnement actief of afgemeld is. De aanroep naar List-abonnementen retourneert Maxi maal 100 abonnementen op het moment.
+Ja, wanneer u `GET /saas/subscriptions` de API aanroept, bevat deze een lijst met alle SaaS-abonnementen. Het statusveld in het antwoord voor elk SaaS-abonnement geeft aan of het abonnement actief of uitgeschreven is. De call-to-list Abonnementen retourneert op dat moment maximaal 100 abonnementen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [api's voor Marketplace metering service](./marketplace-metering-service-apis.md) voor meer informatie.
+- Zie [API's voor marketplace-meetservice voor](./marketplace-metering-service-apis.md) meer informatie.

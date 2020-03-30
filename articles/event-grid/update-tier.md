@@ -1,6 +1,6 @@
 ---
-title: Prijs categorie bijwerken van een Azure Event Grid onderwerp of-domein
-description: In dit artikel wordt beschreven hoe u de prijs categorie van een Azure Event Grid onderwerp of domein (Basic naar Premium, Premium to Basic) bijwerkt met behulp van Azure Portal, Azure CLI en Azure PowerShell.
+title: Prijscategorie bijwerken van een onderwerp of domein van een Azure Event Grid
+description: In dit artikel wordt beschreven hoe u de prijslaag van een Azure Event Grid-onderwerp of -domein (basic to premium, premium tot basic) bijwerkt met Azure-portal, Azure CLI en Azure PowerShell.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,56 +8,56 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 1e92a9f0b9ba007b289c634995b04f4f1575310a
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79300139"
 ---
-# <a name="update-pricing-tier"></a>Prijs categorie bijwerken 
-In dit artikel wordt beschreven hoe u de prijs categorie van een Azure Event Grid onderwerp of domein bijwerkt met behulp van Azure Portal, Azure CLI en Azure PowerShell. 
+# <a name="update-pricing-tier"></a>Prijslaag bijwerken 
+In dit artikel ziet u hoe u de prijscategorie van een Azure Event Grid-onderwerp of -domein bijwerkt met Azure-portal, Azure CLI en Azure PowerShell. 
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken
-In deze sectie ziet u hoe u de prijs categorie van een onderwerp of een domein in de Azure Portal kunt wijzigen. 
+In deze sectie ziet u hoe u de prijscategorie van een onderwerp of een domein in de Azure-portal wijzigt. 
 
-### <a name="overview-page"></a>Overzichts pagina
-U kunt de prijs categorie van een onderwerp of een domein wijzigen op de pagina **overzicht** . In het volgende voor beeld ziet u hoe u een onderwerp van de Basic-laag bijwerkt naar de Premium-laag. De stappen voor het downgradeen van de Premium-laag naar de laag basis zijn vergelijkbaar.
+### <a name="overview-page"></a>Overzichtspagina
+U de prijscategorie van een onderwerp of een domein wijzigen op de pagina **Overzicht.** In het volgende voorbeeld ziet u hoe u een onderwerp upgraden van de basislaag naar de hoogste laag. De stappen om te downgraden van de premiumlaag naar de basislaag zijn vergelijkbaar.
 
-1. Navigeer in het [Azure Portal](https://portal.azure.com)naar het onderwerp of de domein pagina. 
-2. Selecteer op de pagina **overzicht** de huidige prijs categorie (in het volgende voor beeld is dit de **basis**).
+1. Navigeer in de [Azure-portal](https://portal.azure.com)naar het onderwerp of de domeinpagina. 
+2. Selecteer **op** de pagina Overzicht de huidige prijscategorie (in het volgende voorbeeld is deze **basis**.)
     
-    ![De huidige prijs categorie selecteren](./media/update-tier/select-tier.png)
-3. Op de pagina **prijs categorie** wijzigt u de laag en selecteert u **OK**. 
+    ![De huidige prijscategorie selecteren](./media/update-tier/select-tier.png)
+3. Wijzig op de pagina **Prijscategorie** de laag en selecteer **OK**. 
 
-    ![De prijs categorie bijwerken](./media/update-tier/change-tier.png)
-4. Controleer de status van de bewerking op de pagina **meldingen** .
+    ![De prijslaag bijwerken](./media/update-tier/change-tier.png)
+4. Controleer de status van de bewerking op de pagina **Meldingen.**
 
-    ![Update status](./media/update-tier/status.png)    
-5. Controleer of de bijgewerkte laag wordt weer gegeven op de pagina **overzicht** . 
+    ![Status bijwerken](./media/update-tier/status.png)    
+5. Controleer of u de bijgewerkte laag op de **overzichtspagina** ziet. 
 
-    ![Update status](./media/update-tier/changed-tier.png)
+    ![Status bijwerken](./media/update-tier/changed-tier.png)
 
-### <a name="networking-page"></a>Netwerk pagina
-U kunt een **upgrade uitvoeren** van de Basic-laag naar de Premium-laag op de pagina **netwerk** . U kunt geen downgrade van de Premium-laag naar de Basic-laag op deze pagina. 
+### <a name="networking-page"></a>Netwerkpagina
+U **upgraden** van de basislaag naar de premiumlaag op de **netwerkpagina.** U echter niet downgraden van de premiumlaag naar de basislaag op deze pagina. 
 
-1. Navigeer in het [Azure Portal](https://portal.azure.com)naar het onderwerp of de domein pagina. 
-2. Schakel op de pagina **netwerk** over naar het tabblad **Private endpoint Connections (preview)** . 
-3. Als de huidige prijs categorie **Basic**is, wordt het volgende bericht weer gegeven. Selecteer deze. 
+1. Navigeer in de [Azure-portal](https://portal.azure.com)naar het onderwerp of de domeinpagina. 
+2. Ga op de pagina **Netwerken** over naar het tabblad **Privé-eindpuntverbindingen (voorbeeld).** 
+3. Als de huidige prijscategorie **eenvoudig**is, ziet u het volgende bericht. Selecteer het. 
 
-    ![Pagina laag bijwerken op privé-eindpunt verbindingen](./media/update-tier/private-endpoint-connections-page.png)
-4. Selecteer op de pagina **Update to premium-prijs categorie** de optie **Ja**. 
+    ![Laag bijwerken op pagina privéeindpuntverbindingen](./media/update-tier/private-endpoint-connections-page.png)
+4. Selecteer Op de pagina **Update naar premium prijscategorie** de optie **Ja**. 
     
     ![Upgrade bevestigen](./media/update-tier/message-private-endpoint-connection.png)
-5. Controleer de status van de bewerking op de pagina **meldingen** .
+5. Controleer de status van de bewerking op de pagina **Meldingen.**
 
-    ![Update status](./media/update-tier/status.png)
+    ![Status bijwerken](./media/update-tier/status.png)
 
 
 
 ## <a name="use-azure-cli"></a>Azure CLI gebruiken
-In deze sectie wordt beschreven hoe u Azure CLI-opdrachten gebruikt om de prijs categorie van een onderwerp of domein te wijzigen. 
+In deze sectie ziet u hoe u Azure CLI-opdrachten gebruikt om de prijscategorie van een onderwerp of domein te wijzigen. 
 
-### <a name="upgrade-a-topic-from-basic-to-premium"></a>Een onderwerp upgraden van Basic naar Premium
+### <a name="upgrade-a-topic-from-basic-to-premium"></a>Een onderwerp upgraden van basic naar premium
 
 ```azurecli-interactive
 az rest --method patch \
@@ -65,7 +65,7 @@ az rest --method patch \
         --body "{\""sku\"": {\""name\"": \""premium\""}}"
 ```
 
-### <a name="downgrade-a-topic-from-premium-to-basic"></a>Downgrade een onderwerp van Premium naar Basic
+### <a name="downgrade-a-topic-from-premium-to-basic"></a>Een onderwerp downgraden van premium naar basic
 
 ```azurecli-interactive
 az rest --method patch \
@@ -73,7 +73,7 @@ az rest --method patch \
         --body "{\""sku\"": {\""name\"": \""basic\""}}"
 ```
 
-### <a name="upgrade-a-domain-from-basic-to-premium"></a>Een domein upgraden van Basic naar Premium
+### <a name="upgrade-a-domain-from-basic-to-premium"></a>Een domein upgraden van basic naar premium
 
 ```azurecli-interactive
 az rest --method patch \
@@ -81,7 +81,7 @@ az rest --method patch \
         --body "{\""sku\"": {\""name\"": \""premium\""}}"
 ```
 
-### <a name="downgrade-a-domain-from-premium-to-basic"></a>Downgrade een domein van Premium naar Basic
+### <a name="downgrade-a-domain-from-premium-to-basic"></a>Een domein downgraden van premium naar basic
 
 ```azurecli-interactive
 az rest --method patch \
@@ -92,10 +92,10 @@ az rest --method patch \
 
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell gebruiken
-In deze sectie wordt beschreven hoe u Power shell-opdrachten kunt gebruiken om de prijs categorie van een onderwerp of domein te wijzigen. 
+In deze sectie ziet u hoe u PowerShell-opdrachten gebruiken om de prijscategorie van een onderwerp of domein te wijzigen. 
 
-### <a name="prepare-token-and-headers-for-rest-api-calls"></a>Token en headers voorbereiden voor REST API-aanroepen 
-Voer de volgende vereiste opdrachten uit om een verificatie token op te halen dat moet worden gebruikt met REST API-aanroepen en autorisatie-en andere header-informatie. 
+### <a name="prepare-token-and-headers-for-rest-api-calls"></a>Token- en kopteksten voorbereiden voor REST API-aanroepen 
+Voer de volgende vereiste opdrachten uit om een verificatietoken te gebruiken met REST API-aanroepen en autorisatie- en andere headergegevens. 
 
 ```azurepowershell-interactive
 # replace <CLIENT ID> and <CLIENT SECRET>
@@ -113,7 +113,7 @@ $Headers.Add("Authorization","$($Token.token_type) "+ " " + "$($Token.access_tok
 $Headers.Add("Content-Type","application/json")
 ```
 
-### <a name="upgrade-a-topic-from-basic-to-premium"></a>Een onderwerp upgraden van Basic naar Premium
+### <a name="upgrade-a-topic-from-basic-to-premium"></a>Een onderwerp upgraden van basic naar premium
 
 ```azurepowershell-interactive
 $body = @{"sku"=@{"name"="premium"}} | ConvertTo-Json -Depth 5
@@ -125,7 +125,7 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="downgrade-a-topic-from-premium-to-basic"></a>Downgrade een onderwerp van Premium naar Basic
+### <a name="downgrade-a-topic-from-premium-to-basic"></a>Een onderwerp downgraden van premium naar basic
 
 ```azurepowershell-interactive
 $body = @{"sku"=@{"name"="basic"}} | ConvertTo-Json -Depth 5
@@ -137,7 +137,7 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="upgrade-a-domain-from-basic-to-premium"></a>Een domein upgraden van Basic naar Premium
+### <a name="upgrade-a-domain-from-basic-to-premium"></a>Een domein upgraden van basic naar premium
 
 ```azurepowershell-interactive
 $body = @{"sku"=@{"name"="premium"}} | ConvertTo-Json -Depth 5
@@ -149,7 +149,7 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="downgrade-a-domain-from-premium-to-basic"></a>Downgrade een domein van Premium naar Basic
+### <a name="downgrade-a-domain-from-premium-to-basic"></a>Een domein downgraden van premium naar basic
 
 ```azurepowershell-interactive
 $body = @{"sku"=@{"name"="basic"}} | ConvertTo-Json -Depth 5
@@ -162,4 +162,4 @@ Invoke-RestMethod -Method 'Patch' `
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor onderwerpen en domeinen van de Premium-laag kunt u privé-eind punten zo configureren dat de toegang alleen vanaf geselecteerde virtuele netwerken wordt beperkt. Zie voor stapsgewijze instructies [persoonlijke eind punten configureren](configure-private-endpoints.md).
+Voor onderwerpen en domeinen van premiumlagen u privéeindpunten configureren om de toegang alleen vanuit geselecteerde virtuele netwerken te beperken. Zie [Privéeindpunten configureren](configure-private-endpoints.md)voor stapsgewijze instructies.

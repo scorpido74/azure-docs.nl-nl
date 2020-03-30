@@ -1,133 +1,127 @@
 ---
-title: Prestaties van grafieken met Azure Monitor voor VM's (preview-versie) Microsoft Docs
-description: Prestaties is een functie van de Azure Monitor voor VM's die toepassings onderdelen automatisch detecteert op Windows-en Linux-systemen en de communicatie tussen services toewijst. In dit artikel vindt u informatie over het gebruik ervan in verschillende scenario's.
+title: Prestaties in kaart brengen met Azure Monitor voor VM's
+description: Prestaties is een functie van de Azure Monitor voor VM's die automatisch toepassingscomponenten op Windows- en Linux-systemen detecteert en de communicatie tussen services in kaart brengt. In dit artikel vindt u informatie over het gebruik ervan in verschillende scenario's.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 245d5c0fb0a54a6d129a193deaa9445bc8fefbfb
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a50ba39777e6a9d3d609e584c0c7d872f2a65f35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670692"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283715"
 ---
-# <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Grafieken van prestaties met Azure Monitor voor VM's (preview-versie)
+# <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>Prestaties in kaart brengen met Azure Monitor voor VM's
 
-Azure Monitor voor VM's bevat een reeks prestatie diagrammen die gericht zijn op verschillende Key Performance Indica tors (Kpi's) waarmee u kunt bepalen hoe goed een virtuele machine wordt uitgevoerd. In de grafieken wordt het resource gebruik gedurende een bepaalde periode weer gegeven, zodat u knel punten, afwijkingen kunt identificeren of overschakelen naar een perspectief waarin elke machine wordt weer gegeven op basis van de geselecteerde metriek. Hoewel er talrijke elementen zijn waarmee u rekening moet houden bij de prestaties, wordt Azure Monitor voor VM's bewaakt de prestatie-indica tors van het sleutel besturings systeem die betrekking hebben op de processor, het geheugen, de netwerk adapter en het schijf gebruik. Prestaties vormen een aanvulling op de status controle functie en helpen problemen op te lossen die duiden op een mogelijke systeem onderdeel fout, ondersteuning voor afstemming en Optima Lise ring om efficiëntie te beleven of capaciteits planning te ondersteunen.  
+Azure Monitor voor VM's bevat een set prestatiegrafieken die verschillende key performance indicators (KPI's) targeten om u te helpen bepalen hoe goed een virtuele machine presteert. De grafieken tonen het gebruik van resources over een bepaalde periode, zodat u knelpunten, afwijkingen of overschakelen naar een perspectief waarin elke machine wordt vermeld om het resourcegebruik weer te geven op basis van de geselecteerde statistiek. Hoewel er tal van elementen zijn waarmee rekening moet worden gehouden bij prestaties, controleert Azure Monitor voor VM's de prestatie-indicatoren van belangrijke besturingssystemen met betrekking tot processor, geheugen, netwerkadapter en schijfgebruik. Prestaties vormen een aanvulling op de functie voor statusbewaking en helpen problemen bloot te leggen die duiden op een mogelijke fout van de systeemcomponent, ondersteuning van tuning en optimalisatie om efficiëntie te bereiken of capaciteitsplanning te ondersteunen.  
 
-## <a name="multi-vm-perspective-from-azure-monitor"></a>Multi-VM-perspectief van Azure Monitor
+## <a name="multi-vm-perspective-from-azure-monitor"></a>Multi-VM-perspectief vanuit Azure Monitor
 
-De functie prestaties van Azure Monitor biedt een overzicht van alle bewaakte Vm's die zijn geïmplementeerd in werk groepen in uw abonnementen of in uw omgeving. Voer de volgende stappen uit om toegang te krijgen vanaf Azure Monitor. 
+Vanuit Azure Monitor biedt de functie Prestaties een weergave van alle bewaakte VM's die zijn geïmplementeerd in werkgroepen in uw abonnementen of in uw omgeving. Voer de volgende stappen uit om toegang te krijgen vanuit Azure Monitor. 
 
-1. Selecteer in de Azure Portal **monitor**. 
-2. Kies **virtual machines (preview)** in het gedeelte **oplossingen** .
-3. Selecteer het tabblad **prestaties** .
+1. Selecteer In de Azure-portal de optie **Monitor**. 
+2. Kies **Virtuele machines** in de sectie **Oplossingen.**
+3. Selecteer het tabblad **Prestaties.**
 
-![Top N lijst weergave van VM Insights-prestaties](./media/vminsights-performance/vminsights-performance-aggview-01.png)
+![Vm-inzichten Prestatietop N-lijstweergave](media/vminsights-performance/vminsights-performance-aggview-01.png)
 
-Als u meer dan één Log Analytics-werk ruimte hebt, kiest u in het tabblad **eerste N grafieken** de werk ruimte die is ingeschakeld met de oplossing van de **werkruimte** kiezer boven aan de pagina. De **groeps** kiezer retourneert abonnementen, resource groepen, [computer groepen](../platform/computer-groups.md)en virtuele-machine schaal sets van computers die zijn gerelateerd aan de geselecteerde werk ruimte, die u kunt gebruiken om de resultaten verder te filteren die in de grafieken op deze pagina en op de andere pagina's worden weer gegeven. Uw selectie is alleen van toepassing op de prestatie functie en de status of kaart wordt niet overgedragen.  
+Kies op het tabblad **Topn-grafieken** als u meer dan één werkruimte voor Logboekanalyse hebt, de werkruimte die is ingeschakeld met de oplossing in de **werkruimtekiezer** boven aan de pagina. De **groepkiezer** retourneert abonnementen, resourcegroepen, [computergroepen](../platform/computer-groups.md)en virtuele machineschaalsets met betrekking tot de geselecteerde werkruimte die u gebruiken om de resultaten die in de grafieken op deze pagina en op de andere pagina's worden weergegeven, verder te filteren. Uw selectie is alleen van toepassing op de functie Prestaties en wordt niet overgedragen naar Gezondheid of Kaart.  
 
-Standaard worden in de grafieken de afgelopen 24 uur weer gegeven. Met de **time Range** selector kunt u een query uitvoeren voor historische Peri Oden van Maxi maal 30 dagen om te laten zien hoe de prestaties in het verleden zijn bekeken.
+Standaard worden de grafieken de afgelopen 24 uur weergegeven. Met de **TimeRange-kiezer** u historische tijdsbereiken van maximaal 30 dagen opvragen om te laten zien hoe de prestaties er in het verleden uitzagen.
 
-De grafieken met vijf capaciteits gebruik die op de pagina worden weer gegeven, zijn:
+De vijf capaciteitsbenuttingsgrafieken op de pagina zijn:
 
-* CPU-gebruik%: toont de vijf beste computers met het hoogste gemiddelde processor gebruik 
-* Beschikbaar geheugen: hier worden de vijf meest gebruikte computers weer gegeven met de laagste gemiddelde hoeveelheid beschikbaar geheugen 
-* Gebruikte logische schijf ruimte%: Hiermee worden de vijf meest gebruikte computers weer gegeven met de hoogste gemiddelde schijf ruimte die wordt gebruikt% op alle schijf volumes 
-* Aantal verzonden bytes: toont de vijf meest voorkomende computers met het hoogste gemiddelde aan verzonden bytes 
-* Aantal ontvangen bytes: toont de vijf meest voorkomende computers met het hoogste gemiddelde van ontvangen bytes 
+* CPU-gebruik % - toont de top vijf machines met het hoogste gemiddelde processorgebruik 
+* Beschikbaar geheugen - toont de top vijf machines met de laagste gemiddelde hoeveelheid beschikbaar geheugen 
+* Gebruikte logische schijfruimte % - toont de top vijf machines met de hoogste gemiddelde schijfruimte die wordt gebruikt % voor alle schijfvolumes 
+* Verzonden bytes - toont de vijf beste machines met het hoogste gemiddelde van verzonden bytes 
+* Aantal bytes ontvangen - toont de top vijf machines met het hoogste gemiddelde van ontvangen bytes 
 
-Als u op het speld pictogram in de rechter bovenhoek van een van de vijf grafieken klikt, wordt de geselecteerde grafiek vastgemaakt aan het laatste Azure-dash board dat u het laatst hebt bekeken.  Vanuit het dash board kunt u het formaat en de positie van de grafiek wijzigen. Als u de grafiek in het dash board selecteert, wordt u omgeleid naar Azure Monitor voor VM's en het juiste bereik en de weer gave te laden.  
+Als u klikt op het pictogram van de pin in de rechterbovenhoek van een van de vijf grafieken, wordt de geselecteerde grafiek vastgemaakt aan het laatste Azure-dashboard dat u voor het laatst hebt bekeken.  Vanuit het dashboard u het formaat en de positie van de grafiek wijzigen. Als u de grafiek in het dashboard selecteert, wordt u omgeleid naar Azure Monitor voor VM's en wordt het juiste bereik en de juiste weergave geladen.  
 
-Als u op het pictogram aan de linkerkant van het speld pictogram op een van de vijf grafieken klikt, wordt de **bovenste N lijst** weergave geopend.  Hier ziet u het resource gebruik voor de metrische prestatie gegevens per afzonderlijke VM in een lijst weergave en welke machine het hoogst mogelijk maakt.  
+Als u op het pictogram links van het pinpictogram op een van de vijf grafieken klikt, wordt de **toplijstweergave** geopend.  Hier ziet u het resourcegebruik voor die prestatiestatistiek per afzonderlijke VM in een lijstweergave en welke machine het hoogst trending is.  
 
-![Top N lijst weergave voor een geselecteerde prestatie-metriek](./media/vminsights-performance/vminsights-performance-topnlist-01.png)
+![Topn-lijstweergave voor een geselecteerde prestatiestatistiek](media/vminsights-performance/vminsights-performance-topnlist-01.png)
 
-Wanneer u op de virtuele machine klikt, wordt het deel venster **Eigenschappen** aan de rechter kant uitgebreid om de eigenschappen van het geselecteerde item weer te geven, zoals systeem gegevens die zijn gerapporteerd door het besturings systeem, eigenschappen van de Azure VM, enzovoort. Wanneer u op een van de opties onder het gedeelte **snelle koppelingen** klikt, wordt u rechtstreeks vanuit de geselecteerde VM naar die functie geleid.  
+Wanneer u op de virtuele machine klikt, wordt het deelvenster **Eigenschappen** aan de rechterkant uitgebreid om de eigenschappen van het geselecteerde item weer te geven, zoals systeemgegevens die worden gerapporteerd door het besturingssysteem, eigenschappen van de Azure VM, enz. Als u op een van de opties onder de sectie **Snelle koppelingen** klikt, wordt u rechtstreeks vanuit de geselecteerde virtuele machine naar die functie doorgestuurd.  
 
-![Eigenschappen deel venster voor virtuele machine](./media/vminsights-performance/vminsights-properties-pane-01.png)
+![Deelvenster Eigenschappen van virtuele machine](./media/vminsights-performance/vminsights-properties-pane-01.png)
 
-Schakel over naar het tabblad **geaggregeerde grafieken** om de prestatie gegevens te bekijken die worden gefilterd op gemiddelde of percentiel waarden.  
+Ga naar het tabblad **Geaggregeerde grafieken** om de prestatiestatistieken weer te geven die zijn gefilterd op gemiddelde of percentialenmetingen.  
 
-![Statistische weer gave voor de prestaties van VM Insights](./media/vminsights-performance/vminsights-performance-aggview-02.png)
+![Vm-inzichten Prestatietotaalweergave](./media/vminsights-performance/vminsights-performance-aggview-02.png)
 
-De volgende grafieken voor capaciteits gebruik zijn opgenomen:
+De volgende capaciteitsbenuttekaarten zijn beschikbaar:
 
-* CPU-gebruik%: standaard wordt het gemiddelde en het bovenste 95e percentiel weer gegeven 
-* Beschikbaar geheugen-standaard waarden met het gemiddelde, het bovenste vijfde en het tiende percentiel 
-* Gebruikte logische schijf ruimte%: standaard waarden voor het gemiddelde en het 95e percentiel 
-* Aantal verzonden bytes: standaard waarden die het gemiddelde aantal verzonden bytes weer geven 
-* Aantal ontvangen bytes-standaard waarden voor ontvangen bytes
+* CPU-gebruik % - standaardwaarden met het gemiddelde en de top 95e percentiel 
+* Beschikbaar geheugen - standaardinstellingen met het gemiddelde, top 5e en 10e percentiel 
+* Gebruikte logische schijfruimte % - standaardwaarden met het gemiddelde en het 95e percentiel 
+* Verzonden bytes - standaardwaarden met gemiddelde verzonden bytes 
+* Ontvangen van bytes - standaardwaarden met gemiddelde ontvangen bytes
 
-U kunt ook de granulariteit van de grafieken binnen het tijds bereik wijzigen door **AVG**, **min**, **Max**, **50e**, **negen**en **95e** te selecteren in de percentiel kiezer.
+U ook de granulariteit van de grafieken binnen het tijdsbereik wijzigen door **Avg,** **Min**, **Max**, **50e,** **90e**en **95e** in de percentielkiezer te selecteren.
 
-Als u het resource gebruik per afzonderlijke virtuele machine in een lijst weergave wilt weer geven en wilt zien welke machine met het hoogste gebruik wordt getrendd, selecteert u het tabblad **Top N-lijst** .  Op de pagina **eerste N lijst** ziet u de top 20 van de computers, gesorteerd op basis van het 95e percentiel voor het metrieke *CPU-gebruik%* .  U kunt meer machines weer geven door **extra belasting**te selecteren en de resultaten worden uitgevouwen om de meeste 500 machines weer te geven. 
+Als u het resourcegebruik van afzonderlijke VM's in een lijstweergave wilt weergeven en wilt zien welke machine trending is met het hoogste gebruik, selecteert u het tabblad **Topn-lijst.**  De **top n lijst** pagina toont de top 20 machines gesorteerd op de meest gebruikte door 95e percentiel voor de metrische *CPU-gebruik %*.  U meer machines zien door **Meer laden**te selecteren en de resultaten worden uitgebreid om de top 500 machines weer te geven. 
 
 >[!NOTE]
->De lijst kan niet meer dan 500 machines tegelijk weer geven.  
+>De lijst mag niet meer dan 500 machines tegelijk weergeven.  
 >
 
-![Voor beeld van de eerste N lijst pagina](./media/vminsights-performance/vminsights-performance-topnlist-01.png)
+![Voorbeeld van de pagina Top N-lijst](./media/vminsights-performance/vminsights-performance-topnlist-01.png)
 
-Als u de resultaten wilt filteren op een specifieke virtuele machine in de lijst, voert u de computer naam in het tekstvak **zoeken op naam** in.  
+Als u de resultaten op een specifieke virtuele machine in de lijst wilt filteren, voert u de computernaam in het tekstvak **Zoeken op naam** in.  
 
-Als u liever het gebruik van een andere prestatie metriek wilt weer geven, selecteert u in de vervolg keuzelijst **metriek** het **beschik bare geheugen**, de **logische schijf ruimte die wordt gebruikt%** , het **netwerk ontvangen bytes/s**of het **netwerk heeft bytes per seconde verzonden** , en de lijst bevat updates om het bereik van de metrische gegevens weer te geven.  
+Als u het gebruik liever bekijkt vanuit een andere prestatiestatistiek, selecteert u in de vervolgkeuzelijst **Metrische** vervolgkeuzelijst **Beschikbaar geheugen**, gebruikte gebruikte gebruikte **logische schijfruimte %**, **Netwerkontvangen Byte/s**of **Netwerkverzonden Byte/s** en de lijstupdates om het gebruik van die statistiek weer te geven.  
 
-Als u een virtuele machine in de lijst selecteert, wordt het deel venster **Eigenschappen** aan de rechter kant van de pagina geopend. hier kunt u **prestatie Details**selecteren.  De detail pagina van de **virtuele machine** wordt geopend en er wordt een scope voor die VM weer gegeven, vergelijkbaar met de ervaring bij het openen van de prestaties van de Azure-generatie vanuit de VM.  
+Als u een virtuele machine selecteert in de lijst, wordt het deelvenster **Eigenschappen** aan de rechterkant van de pagina geopend en vanaf hier u **Prestatiedetails**selecteren.  De pagina **Virtual Machine Detail** wordt geopend en is vergelijkbaar met die VM, vergelijkbaar met de ervaring bij het rechtstreeks openen van VM Insights Performance vanuit de Azure VM.  
 
-## <a name="view-performance-directly-from-an-azure-vm"></a>Prestaties direct vanuit een Azure-VM weer geven
+## <a name="view-performance-directly-from-an-azure-vm"></a>Prestaties rechtstreeks weergeven vanuit een Azure VM
 
 Voer de volgende stappen uit om rechtstreeks vanaf een virtuele machine toegang te krijgen.
 
-1. Selecteer **virtual machines**In het Azure Portal. 
-2. Kies een virtuele machine in de lijst en kies **inzichten (preview)** in de sectie **bewaking** .  
-3. Selecteer het tabblad **prestaties** . 
+1. Selecteer **virtuele machines**in de Azure-portal . 
+2. Kies in de lijst een VM en kies in de sectie **Monitoring** **Inzicht**.  
+3. Selecteer het tabblad **Prestaties.** 
 
-Deze pagina bevat niet alleen diagrammen voor prestatie gebruik, maar ook een tabel met voor elke gedetecteerde logische schijf, de capaciteit, het gebruik en het totale gemiddelde van elke meting.  
+Deze pagina bevat niet alleen prestatieschema's, maar ook een tabel met voor elke logische schijf die wordt ontdekt, de capaciteit, het gebruik en het totale gemiddelde per maat.  
 
-De volgende grafieken voor capaciteits gebruik zijn opgenomen:
+De volgende capaciteitsbenuttekaarten zijn beschikbaar:
 
-* CPU-gebruik%: standaard wordt het gemiddelde en het bovenste 95e percentiel weer gegeven 
-* Beschikbaar geheugen-standaard waarden met het gemiddelde, het bovenste vijfde en het tiende percentiel 
-* Gebruikte logische schijf ruimte%: standaard waarden voor het gemiddelde en het 95e percentiel 
-* IOPS voor logische schijven: standaard geeft het gemiddelde en het 95e percentiel weer
-* Logische schijf, MB/s, standaard wordt het gemiddelde en het 95e percentiel weer gegeven
-* Maximum aantal gebruikte logische schijven%: standaard waarden voor het gemiddelde en het 95e percentiel
-* Aantal verzonden bytes: standaard waarden die het gemiddelde aantal verzonden bytes weer geven 
-* Aantal ontvangen bytes-standaard waarden voor ontvangen bytes
+* CPU-gebruik % - standaardwaarden met het gemiddelde en de top 95e percentiel 
+* Beschikbaar geheugen - standaardinstellingen met het gemiddelde, top 5e en 10e percentiel 
+* Gebruikte logische schijfruimte % - standaardwaarden met het gemiddelde en het 95e percentiel 
+* Logische schijf IOPS - standaardinstellingen met het gemiddelde en 95e percentiel
+* Logische schijf MB/s - standaardwaarden met het gemiddelde en 95e percentiel
+* Max Logische schijf gebruikt % - standaardinstellingen met het gemiddelde en 95e percentiel
+* Verzonden bytes - standaardwaarden met gemiddelde verzonden bytes 
+* Ontvangen van bytes - standaardwaarden met gemiddelde ontvangen bytes
 
-Als u op het speld pictogram in de rechter bovenhoek van een van de grafieken klikt, wordt het geselecteerde diagram gespeld naar het laatste Azure-dash board dat u hebt bekeken. Vanuit het dash board kunt u het formaat en de positie van de grafiek wijzigen. Als u de grafiek in het dash board selecteert, wordt u omgeleid naar Azure Monitor voor VM's en wordt de detail weergave van de prestaties voor de virtuele machine geladen.  
+Als u klikt op het pictogram van de pin in de rechterbovenhoek van een van de grafieken, wordt de geselecteerde grafiek vastgemaakt aan het laatste Azure-dashboard dat u hebt bekeken. Vanuit het dashboard u het formaat en de positie van de grafiek wijzigen. Als u de grafiek in het dashboard selecteert, wordt u omgeleid naar Azure Monitor voor VM's en wordt de prestatiedetailweergave voor de vm geladen.  
 
-![Prestaties van de VM-inzichten rechtstreeks vanuit de VM-weer gave](./media/vminsights-performance/vminsights-performance-directvm-01.png)
+![VM-inzichten Prestaties rechtstreeks vanuit vm-weergave](./media/vminsights-performance/vminsights-performance-directvm-01.png)
 
-## <a name="view-performance-directly-from-an-azure-virtual-machine-scale-set"></a>Prestaties direct vanuit een Azure virtual machine-schaalset weer geven
+## <a name="view-performance-directly-from-an-azure-virtual-machine-scale-set"></a>Prestaties rechtstreeks weergeven vanuit een Azure-schaalset voor virtuele machines
 
-Voer de volgende stappen uit om rechtstreeks toegang te krijgen tot de schaalset van een virtuele machine in Azure.
+Voer de volgende stappen uit om rechtstreeks toegang te krijgen vanaf een Azure-schaalset voor virtuele machines.
 
-1. Selecteer in de Azure Portal **virtuele-machine schaal sets**.
-2. Kies in de lijst een virtuele machine en klik in de sectie **bewaking** op **inzichten (preview)** om het tabblad **prestaties** weer te geven.
+1. Selecteer **virtuele machineschaalsets**in de Azure-portal .
+2. Kies in de lijst een virtuele machine en kies in de sectie **Controle** **Inzicht** om het tabblad **Prestaties** weer te geven.
 
-Op deze pagina wordt de weer gave Azure Monitor prestaties geladen, waarbij het bereik is ingesteld op de geselecteerde schaalset. Zo kunt u de eerste N instanties in de schaalset bekijken over de set bewaakte metrische gegevens, de statistische prestaties van de schaalset bekijken en de trends voor geselecteerde metrische gegevens in de afzonderlijke exemplaren van de schaalset bekijken. Als u een instantie in de lijst weergave selecteert, kunt u de kaart laden of naar een gedetailleerde weer gave van de prestaties voor die instantie navigeren.
+Op deze pagina wordt de prestatieweergave azure monitor geladen, die wordt ingesteld op de geselecteerde schaalset. Hiermee u de topn-exemplaren zien in de schaalset in de set bewaakte statistieken, de geaggregeerde prestaties in de schaalset bekijken en de trends zien voor geselecteerde statistieken in de afzonderlijke exemplaren, n de schaalset. Als u een instantie selecteert in de lijstweergave, u de kaart laden of naar een gedetailleerde prestatieweergave voor dat exemplaar navigeren.
 
-Als u op het speld pictogram in de rechter bovenhoek van een van de grafieken klikt, wordt het geselecteerde diagram gespeld naar het laatste Azure-dash board dat u hebt bekeken. Vanuit het dash board kunt u het formaat en de positie van de grafiek wijzigen. Als u de grafiek in het dash board selecteert, wordt u omgeleid naar Azure Monitor voor VM's en wordt de detail weergave van de prestaties voor de virtuele machine geladen.  
+Als u klikt op het pictogram van de pin in de rechterbovenhoek van een van de grafieken, wordt de geselecteerde grafiek vastgemaakt aan het laatste Azure-dashboard dat u hebt bekeken. Vanuit het dashboard u het formaat en de positie van de grafiek wijzigen. Als u de grafiek in het dashboard selecteert, wordt u omgeleid naar Azure Monitor voor VM's en wordt de prestatiedetailweergave voor de vm geladen.  
 
-![Prestaties van de VM-inzichten rechtstreeks vanuit de weer gave virtuele-machine schaal sets](./media/vminsights-performance/vminsights-performance-directvmss-01.png)
+![VM-inzichten Prestaties rechtstreeks vanuit de weergave van de virtuele machineschaalset](./media/vminsights-performance/vminsights-performance-directvmss-01.png)
 
 >[!NOTE]
->U kunt ook een gedetailleerde weer gave van de prestaties voor een specifieke instantie openen vanuit de weer gave instanties voor uw schaalset. Navigeer naar **instanties** onder de sectie **instellingen** en kies **inzichten (preview)** .
+>U hebt ook toegang tot een gedetailleerde prestatieweergave voor een specifieke instantie vanuit de weergave Instanties voor uw schaalset. Navigeer naar **Instanties** onder de sectie **Instellingen** en kies **Insights**.
 
-## <a name="alerts"></a>Waarschuwingen  
 
-Prestatie gegevens die zijn ingeschakeld als onderdeel van Azure Monitor voor VM's bevatten geen vooraf geconfigureerde waarschuwings regels. Er zijn [status waarschuwingen](vminsights-health.md#alerts) die overeenkomen met prestatie problemen die op uw virtuele Azure-machine zijn gedetecteerd, zoals hoog CPU-gebruik, weinig geheugen beschikbaar, weinig schijf ruimte, enzovoort.  Deze status waarschuwingen zijn echter alleen van toepassing op alle Vm's die zijn ingeschakeld voor Azure Monitor voor VM's. 
-
-We kunnen echter alleen een subset van de prestatie gegevens die u nodig hebt in de werk ruimte Log Analytics verzamelen en opslaan. Als voor uw bewakings strategie analyses of waarschuwingen met andere prestatie gegevens zijn vereist om effectief de capaciteit of de status van de virtuele machine te evalueren, of als u de flexibiliteit nodig hebt om uw eigen waarschuwings criteria of logica op te geven, kunt u een [verzameling van deze prestatie meter items](../platform/data-sources-performance-counters.md) configureren in log Analytics en [logboek waarschuwingen](../platform/alerts-log.md)definiëren. Terwijl Log Analytics u in staat stelt om complexe analyses uit te voeren met andere gegevens typen en een langere retentie ter ondersteuning van Trend analyse te bieden, zijn de metrieken echter lichter en kunnen ze bijna realtime scenario's ondersteunen. Ze worden verzameld door de [Azure diagnostische agent](../../virtual-machines/windows/monitor.md) en opgeslagen in de Azure monitor metrische gegevens opslag, zodat u waarschuwingen kunt maken met een lagere latentie en tegen lagere kosten.
-
-Bekijk het overzicht van [metrische gegevens en logboeken met Azure monitor](../platform/data-platform.md) om inzicht te krijgen in de belangrijkste verschillen en andere overwegingen voordat u verzameling van deze aanvullende metrische gegevens en waarschuwings regels configureert.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het gebruik van [werkmappen](vminsights-workbooks.md) die zijn opgenomen in azure monitor voor VM's om prestaties en netwerk gegevens verder te analyseren.  
+- Meer informatie over het gebruik [van werkmappen](vminsights-workbooks.md) die zijn opgenomen in Azure Monitor voor VM's om de prestaties en netwerkstatistieken verder te analyseren.  
 
-- Zie [Azure monitor voor VM's kaart weer geven](vminsights-maps.md)voor meer informatie over gedetecteerde toepassings afhankelijkheden.
+- Zie [Azure Monitor for VM-toewijzing weergeven voor](vminsights-maps.md)meer informatie over gedetecteerde toepassingsafhankelijkheden.

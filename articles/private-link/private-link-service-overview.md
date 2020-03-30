@@ -1,6 +1,6 @@
 ---
-title: Wat is Azure Private Link service?
-description: Meer informatie over Azure Private Link service.
+title: Wat is Azure Private Link-service?
+description: Meer informatie over Azure Private Link-service.
 services: private-link
 author: sumeetmittal
 ms.service: private-link
@@ -8,119 +8,119 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
 ms.openlocfilehash: 2cc6c577abdb3698ef6aca1f1f04d239f09d119c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280428"
 ---
-# <a name="what-is-azure-private-link-service"></a>Wat is Azure Private Link service?
+# <a name="what-is-azure-private-link-service"></a>Wat is Azure Private Link-service?
 
-Persoonlijke koppelings service van Azure is de verwijzing naar uw eigen service die wordt aangestuurd door een persoonlijke Azure-koppeling. De service die wordt uitgevoerd achter [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) kan worden ingeschakeld voor toegang tot persoonlijke koppelingen, zodat gebruikers die toegang hebben tot uw service, privé kunnen zijn vanuit hun eigen VNets. Uw klanten kunnen een persoonlijk eind punt in hun VNet maken en aan deze service toewijzen. In dit artikel worden de concepten beschreven die betrekking hebben op de kant van de service provider. 
+Azure Private Link-service is de verwijzing naar uw eigen service die wordt aangedreven door Azure Private Link. Uw service die achter [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) wordt uitgevoerd, kan worden ingeschakeld voor private link-toegang, zodat consumenten tot uw service deze privé kunnen openen via hun eigen VNets. Uw klanten kunnen een privéeindpunt maken in hun VNet en het toewijzen aan deze service. In dit artikel worden concepten uitgelegd die verband houden met de kant van de serviceprovider. 
 
 ## <a name="workflow"></a>Werkstroom
 
-![Werk stroom van persoonlijke koppelings service](media/private-link-service-overview/private-link-service-workflow.png)
+![Private Link-servicewerkstroom](media/private-link-service-overview/private-link-service-workflow.png)
 
-### <a name="create-your-private-link-service"></a>Uw persoonlijke koppelings service maken
+### <a name="create-your-private-link-service"></a>Uw private linkservice maken
 
-- Configureer uw toepassing voor uitvoering achter een standaard load balancer in uw virtuele netwerk. Als u uw toepassing al hebt geconfigureerd achter een standaard load balancer, kunt u deze stap overs Laan.   
-- Maak een persoonlijke koppelings service die verwijst naar de bovenstaande load balancer. Kies in het load balancer selectie proces de frontend-IP-configuratie waar u het verkeer wilt ontvangen. Kies een subnet voor NAT IP-adressen voor de privé koppelings service. Het is raadzaam ten minste acht NAT IP-adressen beschikbaar te hebben in het subnet. Alle consumenten verkeer lijkt afkomstig te zijn van deze groep persoonlijke IP-adressen naar de service provider. Kies de juiste eigenschappen/instellingen voor de persoonlijke koppelings service.    
+- Configureer uw toepassing om achter een standaard load balancer in uw virtuele netwerk te lopen. Als u uw toepassing al hebt geconfigureerd achter een standaard load balancer, u deze stap overslaan.   
+- Maak een Private Link Service die verwijst naar de load balancer hierboven. Kies in het selectieproces van de load balancer de IP-configuratie aan de frontend waar u het verkeer wilt ontvangen. Kies een subnet voor NAT IP-adressen voor de Private Link Service. Het wordt aanbevolen om ten minste acht NAT IP-adressen beschikbaar te hebben in het subnet. Al het consumentenverkeer lijkt afkomstig te zijn van deze pool van particuliere IP-adressen aan de dienstverlener. Kies de juiste eigenschappen/instellingen voor de Private Link Service.    
 
     > [!NOTE]
-    > De service Azure private link wordt alleen ondersteund op Standard Load Balancer. 
+    > Azure Private Link Service wordt alleen ondersteund op Standard Load Balancer. 
     
 ### <a name="share-your-service"></a>Uw service delen
 
-Nadat u een persoonlijke koppelings service hebt gemaakt, wordt door Azure een wereld wijd unieke naam van een alias met de naam '-' met het adres dat u voor uw service opgeeft, gegenereerd. U kunt de alias of de resource-URI van uw service met uw klanten offline delen. Consumenten kunnen een koppeling met een particuliere verbinding starten met behulp van de alias of de resource-URI.
+Nadat u een Private Link-service hebt gemaakt, genereert Azure een wereldwijd unieke naam die 'alias' wordt genoemd op basis van de naam die u voor uw service verstrekt. U de alias of bron-URI van uw service offline delen met uw klanten. Consumenten kunnen een Private Link-verbinding starten met de alias of de bron URI.
  
-### <a name="manage-your-connection-requests"></a>Uw verbindings aanvragen beheren
+### <a name="manage-your-connection-requests"></a>Uw verbindingsaanvragen beheren
 
-Nadat een gebruiker een verbinding initieert, kan de service provider de verbindings aanvraag accepteren of afwijzen. Alle verbindings aanvragen worden vermeld onder de eigenschap **privateendpointconnections** van de service private link.
+Nadat een consument een verbinding heeft gestart, kan de serviceprovider het verbindingsverzoek accepteren of weigeren. Alle verbindingsaanvragen worden vermeld onder de eigenschap **privateendpointconnections** op de Private Link-service.
  
 ### <a name="delete-your-service"></a>Uw service verwijderen
 
-Als de persoonlijke koppelings service niet meer in gebruik is, kunt u deze verwijderen. Voordat u de service verwijdert, moet u er echter voor zorgen dat er geen privé-eindpunt verbindingen aan zijn gekoppeld. U kunt alle verbindingen afwijzen en de service verwijderen.
+Als de Private Link-service niet meer in gebruik is, u deze verwijderen. Zorg er echter voor dat er geen privéeindpuntverbindingen aan verbonden zijn voordat u de service verwijdert. U alle verbindingen weigeren en de service verwijderen.
 
 ## <a name="properties"></a>Eigenschappen
 
-Een persoonlijke koppelings service specificeert de volgende eigenschappen: 
+Een Private Link-service geeft de volgende eigenschappen op: 
 
 |Eigenschap |Uitleg  |
 |---------|---------|
-|Inrichtings status (provisioningState)  |Een alleen-lezen eigenschap met een lijst met de huidige inrichtings status voor de persoonlijke koppelings service. Toepas bare inrichtings statussen zijn: "verwijderen; Is mislukt Is voltooid Bijwerken. Wanneer de inrichtings status geslaagd is, hebt u de service voor persoonlijke koppelingen ingericht.        |
-|Alias (alias)     | Alias is een wereld wijd unieke alleen-lezen teken reeks voor uw service. Het helpt u bij het maskeren van de klant gegevens voor uw service en tegelijkertijd een gemakkelijk te delen naam voor uw service te maken. Wanneer u een persoonlijke koppelings service maakt, genereert Azure de alias voor uw service die u met uw klanten kunt delen. Uw klanten kunnen deze alias gebruiken om een verbinding met uw service aan te vragen.          |
-|Zicht baarheid (zicht baarheid)     | Zicht baarheid is de eigenschap waarmee de belichtings instellingen voor uw privé koppelings service worden beheerd. Service providers kunnen ervoor kiezen om de bloot stelling aan hun service te beperken tot abonnementen met machtigingen voor op rollen gebaseerde toegangs beheer (RBAC), een beperkt aantal abonnementen of alle Azure-abonnementen.          |
-|Automatische goed keuring (automatisch goed keuren)    |   Automatische goed keuring beheert de geautomatiseerde toegang tot de persoonlijke koppelings service. De abonnementen die zijn opgegeven in de lijst met automatische goed keuringen, worden automatisch goedgekeurd wanneer een verbinding wordt aangevraagd vanuit privé-eind punten in die abonnementen.          |
-|Load Balancer frontend-IP-configuratie (loadBalancerFrontendIpConfigurations)    |    De service voor persoonlijke koppelingen is gekoppeld aan het frontend-IP-adres van een Standard Load Balancer. Al het verkeer dat is bestemd voor de service, zal de frontend van de SLB bereiken. U kunt SLB-regels zo configureren dat dit verkeer wordt doorgestuurd naar de juiste back-endservers waar uw toepassingen worden uitgevoerd. IP-configuraties van Load Balancer-frontend zijn anders dan NAT IP-configuraties.      |
-|NAT IP-configuratie (ipConfigurations)    |    Deze eigenschap verwijst naar de NAT-IP-configuratie (Network Address Translation) voor de persoonlijke koppelings service. Het NAT IP-adres kan worden gekozen vanuit elk subnet in het virtuele netwerk van een service provider. De service voor persoonlijke koppelingen voert NAT-bestemming uit op het verkeer van de persoonlijke verbinding. Dit zorgt ervoor dat er geen IP-conflict is tussen de bron-en doel ruimte (service provider). Aan de doel zijde (service provider zijde) wordt het NAT IP-adres weer gegeven als bron-IP voor alle pakketten die door uw service worden ontvangen en de doel-IP voor alle pakketten die door uw service worden verzonden.       |
-|Verbindingen met privé-eind punten (privateEndpointConnections)     |  Met deze eigenschap worden de privé-eind punten weer gegeven die verbinding maken met de service private link. Meerdere persoonlijke eind punten kunnen verbinding maken met dezelfde persoonlijke koppelings service en de service provider kan de status voor afzonderlijke privé-eind punten beheren.        |
-|TCP-proxy v2 (EnableProxyProtocol)     |  Met deze eigenschap kan de service provider TCP proxy v2 gebruiken om verbindings informatie over de service gebruiker op te halen. Service provider is verantwoordelijk voor het instellen van de configuratie van de ontvanger, zodat de header Protocol versie v2 kan worden geparseerd.        |
+|Voorzieningsstaat (provisioningState)  |Een alleen-lezen eigenschap die de huidige inrichtingsstatus voor Private Link-service weergeeft. De toepasselijke provisioning states zijn: "Verwijderen; Mislukt; Geslaagd; Updaten". Wanneer de inrichtingsstatus is 'Geslaagd', hebt u uw Private Link-service met succes ingericht.        |
+|Alias (alias)     | Alias is een wereldwijd unieke alleen-lezen tekenreeks voor uw service. Het helpt u de klantgegevens voor uw service te maskeren en creëert tegelijkertijd een eenvoudig te delen naam voor uw service. Wanneer u een Private Link-service maakt, genereert Azure de alias voor uw service die u met uw klanten delen. Uw klanten kunnen deze alias gebruiken om een verbinding met uw service aan te vragen.          |
+|Zichtbaarheid (zichtbaarheid)     | Zichtbaarheid is de eigenschap die de belichtingsinstellingen voor uw Private Link-service regelt. Serviceproviders kunnen ervoor kiezen om de blootstelling aan hun service aan abonnementen te beperken met RBAC-machtigingen (Role-based Access Control), een beperkte set abonnementen of alle Azure-abonnementen.          |
+|Automatische goedkeuring (autogoedkeuring)    |   Automatische goedkeuring regelt de geautomatiseerde toegang tot de Private Link-service. De abonnementen die in de lijst met automatische goedkeuring zijn opgegeven, worden automatisch goedgekeurd wanneer een verbinding wordt aangevraagd bij privéeindpunten in die abonnementen.          |
+|Load Balancer Frontend IP-configuratie (loadBalancerFrontendIpConfigurations)    |    Private Link-service is gekoppeld aan het IP-adres van een standaardloadbalans. Al het verkeer dat bestemd is voor de dienst bereikt de voorkant van de SLB. U SLB-regels configureren om dit verkeer te leiden naar de juiste backendpools waar uw toepassingen worden uitgevoerd. Load balancer frontend IP-configuraties zijn anders dan NAT IP-configuraties.      |
+|NAT IP-configuratie (ipConfigurations)    |    Deze eigenschap verwijst naar de IP-configuratie van NAT (Network Address Translation) voor de Private Link-service. Het NAT IP kan worden gekozen uit elk subnet in het virtuele netwerk van een serviceprovider. Private Link-service voert de bestemmingskant NAT-ing uit op het Private Link-verkeer. Dit zorgt ervoor dat er geen IP-conflict is tussen bron (consumentenkant) en bestemmingsruimte (serviceprovider). Aan de bestemmingszijde (kant van de serviceprovider) wordt het NAT IP-adres weergegeven als Bron-IP voor alle pakketten die door uw service en bestemmings-IP worden ontvangen voor alle pakketten die door uw service worden verzonden.       |
+|Privéeindpuntverbindingen (privateEndpointConnections)     |  Deze eigenschap bevat de privéeindpunten die verbinding maken met de Private Link-service. Meerdere privéeindpunten kunnen verbinding maken met dezelfde Private Link-service en de serviceprovider kan de status voor afzonderlijke privéeindpunten beheren.        |
+|TCP-proxy V2 (EnableProxyProtocol)     |  Met deze eigenschap kan de serviceprovider tcp proxy v2 gebruiken om verbindingsgegevens over de serviceconsument op te halen. Service Provider is verantwoordelijk voor het opzetten van ontvanger configs te kunnen ontsmet de proxy protocol v2 header.        |
 |||
 
 
 ### <a name="details"></a>Details
 
-- De service voor persoonlijke koppelingen kan worden geopend vanuit goedgekeurde persoonlijke eind punten in dezelfde regio. Het persoonlijke eind punt kan worden bereikt vanuit hetzelfde virtuele netwerk, in de regio VNets, wereld wijd gekoppelde VNets en on-premises met behulp van particuliere VPN-of ExpressRoute-verbindingen. 
+- Private Link-service is toegankelijk vanaf goedgekeurde privéeindpunten in dezelfde regio. Het privéeindpunt kan worden bereikt vanaf hetzelfde virtuele netwerk, regionaal getouwde VNets, wereldwijd peered VNets en on-premises via private VPN- of ExpressRoute-verbindingen. 
  
-- Wanneer u een persoonlijke koppelings service maakt, wordt er een netwerk interface gemaakt voor de levens cyclus van de resource. Deze interface kan niet worden beheerd door de klant.
+- Bij het maken van een Private Link Service wordt een netwerkinterface gemaakt voor de levenscyclus van de bron. Deze interface is niet beheersbaar door de klant.
  
-- De service private link moet worden geïmplementeerd in dezelfde regio als het virtuele netwerk en de Standard Load Balancer.  
+- De Private Link Service moet worden geïmplementeerd in dezelfde regio als het virtuele netwerk en de Standard Load Balancer.  
  
-- Eén persoonlijke koppelings service kan worden geopend vanuit meerdere persoonlijke eind punten die deel uitmaken van verschillende VNets, abonnementen en/of Active Directory tenants. De verbinding wordt tot stand gebracht via een werk stroom voor verbindingen. 
+- Eén Private Link-service is toegankelijk vanaf meerdere privéeindpunten van verschillende VNets, abonnementen en/of Active Directory-tenants. De verbinding wordt tot stand gebracht via een verbindingsworkflow. 
  
-- Er kunnen meerdere services voor persoonlijke koppelingen worden gemaakt op hetzelfde Standard Load Balancer met verschillende front-end IP-configuraties. Er zijn limieten voor het aantal persoonlijke koppelings Services dat u kunt maken per Standard Load Balancer en per abonnement. Zie [Azure-limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)voor meer informatie.
+- Meerdere Private Link-services kunnen op dezelfde Standaard Load Balancer worden gemaakt met behulp van verschillende front-end IP-configuraties. Er zijn grenzen aan het aantal Private Link-services dat u per Standaard Load Balancer en per abonnement maken. Zie [Azure-limieten voor](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)meer informatie.
  
-- Aan de persoonlijke koppelings service kunnen meer dan één NAT IP-configuratie zijn gekoppeld. Bij het kiezen van meer dan één NAT IP-configuratie kunnen service providers worden geschaald. Op dit moment kunnen service providers Maxi maal acht NAT IP-adressen per privé koppelings service toewijzen. Met elk IP-adres van NAT kunt u meer poorten toewijzen voor uw TCP-verbindingen en daarom uitschalen. Nadat u meerdere NAT IP-adressen aan een persoonlijke koppelings service hebt toegevoegd, kunt u de NAT IP-adressen niet verwijderen. Dit wordt gedaan om ervoor te zorgen dat actieve verbindingen niet worden beïnvloed tijdens het verwijderen van de NAT IP-adressen.
+- Private Link-service kan meerdere NAT IP-configuraties hebben die eraan zijn gekoppeld. Als u meer dan één NAT IP-configuratie kiest, kunnen serviceproviders worden geschaald. Tegenwoordig kunnen serviceproviders maximaal acht NAT IP-adressen per Private Link-service toewijzen. Met elk NAT IP-adres u meer poorten toewijzen voor uw TCP-verbindingen en zo uitschalen. Nadat u meerdere NAT IP-adressen aan een Private Link-service hebt toegevoegd, u de NAT IP-adressen niet verwijderen. Dit wordt gedaan om ervoor te zorgen dat actieve verbindingen niet worden beïnvloed tijdens het verwijderen van de NAT IP-adressen.
 
 
 ## <a name="alias"></a>Alias
 
-**Alias** is een wereld wijd unieke naam voor uw service. Het helpt u bij het maskeren van de klant gegevens voor uw service en tegelijkertijd een gemakkelijk te delen naam voor uw service te maken. Wanneer u een persoonlijke koppelings service maakt, genereert Azure een alias voor uw service die u met uw klanten kunt delen. Uw klanten kunnen deze alias gebruiken om een verbinding met uw service aan te vragen.
+**Alias** is een wereldwijd unieke naam voor uw service. Het helpt u de klantgegevens voor uw service te maskeren en creëert tegelijkertijd een eenvoudig te delen naam voor uw service. Wanneer u een Private Link-service maakt, genereert Azure een alias voor uw service die u met uw klanten delen. Uw klanten kunnen deze alias gebruiken om een verbinding met uw service aan te vragen.
 
-De alias bestaat uit drie delen: *voor voegsel*. *GUID*. *Achtervoegsel*
+De alias bestaat uit drie delen: *Voorvoegsel*. *GUID*. *Achtervoegsel*
 
-- Het voor voegsel is de service naam. U kunt een eigen voor voegsel kiezen. Nadat "alias" is gemaakt, kunt u deze niet meer wijzigen, dus Selecteer uw voor voegsel op de juiste manier.  
-- De GUID wordt door het platform verschaft. Zo kunt u de naam globaal uniek maken. 
-- Achtervoegsel wordt toegevoegd door Azure: *Region*. Azure. privatelinkservice 
+- Voorvoegsel is de servicenaam. U kiezen voor uw eigen voorvoegsel. Nadat 'Alias' is gemaakt, u deze niet wijzigen, dus selecteer uw voorvoegsel op de juiste manier.  
+- GUID zal worden geleverd door platform. Dit helpt om de naam wereldwijd uniek te maken. 
+- Achtervoegsel wordt toegevoegd door Azure: *region*.azure.privatelinkservice 
 
-Volledige alias: *voor voegsel*. {GUID}. *regio*. Azure. privatelinkservice  
+Volledige alias: *Voorvoegsel*. {GUID}. *regio*.azure.privatelinkservice  
 
-## <a name="control-service-exposure"></a>Service blootstelling controleren
+## <a name="control-service-exposure"></a>Serviceblootstelling regelen
 
-Met de service voor persoonlijke koppelingen kunt u de bloot stelling van uw service met de instelling zicht baarheid beheren. U kunt de service privé maken voor het gebruik van verschillende VNets die u bezit (alleen RBAC-machtigingen), de bloot stelling beperken tot een beperkt aantal abonnementen die u vertrouwt, of het publiek openbaar maken zodat alle Azure-abonnementen verbindingen kunnen aanvragen op de privé-koppeling service. De instellingen voor zicht baarheid bepalen of een consument verbinding kan maken met uw service of niet. 
+Private Link-service biedt u opties om de belichting van uw service te beheren via de instelling 'Zichtbaarheid'. U de service privé maken voor consumptie van verschillende VNets die u bezit (alleen RBAC-machtigingen), de blootstelling beperken tot een beperkte set abonnementen die u vertrouwt of openbaar maken, zodat alle Azure-abonnementen verbindingen kunnen aanvragen op de Private Link Service. Uw zichtbaarheidsinstellingen bepalen of een consument verbinding kan maken met uw service of niet. 
 
 ## <a name="control-service-access"></a>Toegang tot de service beheren
 
-Consumenten die een bloot stelling hebben (beheerd door de zichtbaarheids instelling), kunnen een persoonlijk eind punt in hun VNets maken en een verbinding met uw persoonlijke koppelings service aanvragen. De verbinding van het particuliere eind punt wordt gemaakt met de status in behandeling op het object van de persoonlijke koppelings service. De service provider is verantwoordelijk voor het optreden van de verbindings aanvraag. U kunt de verbinding goed keuren, de verbinding afwijzen of de verbinding verwijderen. Alleen verbindingen die zijn goedgekeurd, kunnen verkeer verzenden naar de persoonlijke koppelings service.
+Consumenten die door de zichtbaarheidsinstelling worden blootgesteld (gecontroleerd door zichtbaarheidsinstelling) kunnen een privéeindpunt in hun VNets maken en een verbinding met uw Private Link-service aanvragen. De privé-eindpuntverbinding wordt gemaakt in de status 'In behandeling' op het object Private Link-service. De dienstverlener is verantwoordelijk voor het handelen op het verbindingsverzoek. U de verbinding goedkeuren, de verbinding weigeren of de verbinding verwijderen. Alleen verbindingen die zijn goedgekeurd, kunnen verkeer naar de Privé-linkservice verzenden.
 
-De actie voor het goed keuren van de verbindingen kan worden geautomatiseerd met behulp van de eigenschap voor automatisch goed keuren van de privé koppelings service. Automatische goed keuring is een mogelijkheid voor service providers om een set abonnementen vooraf goed te keuren voor automatische toegang tot hun service. Klanten moeten hun abonnementen offline delen voor service providers om toe te voegen aan de lijst met automatische goed keuringen. Automatische goed keuring is een subset van de zichtbaarheids matrix. Visibility bepaalt de belichtings instellingen, terwijl automatische goed keuring de goedkeurings instellingen voor uw service controleert. Als een klant een verbinding aanvraagt vanuit een abonnement in de lijst met automatische goed keuring, wordt de verbinding automatisch goedgekeurd en wordt de verbinding tot stand gebracht. Service Providers hoeven de aanvraag niet meer hand matig goed te keuren. Als een klant daarentegen een verbinding aanvraagt vanaf een abonnement in de zichtbaarheids matrix en niet in de matrix voor automatische goed keuring, wordt de service provider door de aanvraag gehaald, maar moet de service provider de verbindingen hand matig goed keuren.
+De actie van het goedkeuren van de verbindingen kan worden geautomatiseerd met behulp van de eigenschap automatische goedkeuring op de Private Link-service. Automatische goedkeuring is een mogelijkheid voor serviceproviders om een reeks abonnementen vooraf goed te keuren voor geautomatiseerde toegang tot hun service. Klanten moeten hun abonnementen offline delen om serviceproviders toe te voegen aan de autogoedkeuringslijst. Automatische goedkeuring is een subset van de zichtbaarheidsarray. Zichtbaarheid regelt de belichtingsinstellingen, terwijl automatische goedkeuring de goedkeuringsinstellingen voor uw service regelt. Als een klant een verbinding aanvraagt van een abonnement in de autogoedkeuringslijst, wordt de verbinding automatisch goedgekeurd en wordt de verbinding tot stand gebracht. Serviceproviders hoeven de aanvraag niet meer handmatig goed te keuren. Als een klant daarentegen een verbinding aanvraagt van een abonnement in de zichtbaarheidsarray en niet in de array voor automatische goedkeuring, bereikt de aanvraag de serviceprovider, maar moet de serviceprovider de verbindingen handmatig goedkeuren.
 
-## <a name="getting-connection-information-using-tcp-proxy-v2"></a>Verbindings gegevens ophalen met TCP-proxy v2
+## <a name="getting-connection-information-using-tcp-proxy-v2"></a>Verbindingsgegevens verkrijgen met TCP Proxy v2
 
-Bij het gebruik van een persoonlijke koppelings service is het IP-bron adres van de pakketten die afkomstig zijn van een particulier eind punt, Network Address Translation (NAT) op de service provider kant met behulp van de NAT-IP die is toegewezen van het virtuele netwerk van de provider. De toepassingen ontvangen daarom het toegewezen NAT IP-adres in plaats van het werkelijke IP-adres van de service-consumers. Als uw toepassing een eigen IP-adres voor de bron van de consument nodig heeft, kunt u proxy protocol inschakelen voor uw service en de informatie ophalen uit de header van het proxy protocol. Naast het bron-IP-adres bevat de header van het proxy protocol ook de LinkID van het persoonlijke eind punt. Combi natie van bron-IP-adres en LinkID kunnen service providers helpen hun consumenten op unieke wijze te identificeren. Meer informatie over proxy protocol vindt u [hier](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt). 
+Bij het gebruik van private link-service is het bron-IP-adres van de pakketten afkomstig van privéeindpunt netwerkadres vertaald (NAT) aan de kant van de serviceprovider met behulp van het NAT IP-adres dat is toegewezen aan het virtuele netwerk van de provider. Vandaar dat de aanvragen het toegewezen NAT IP-adres ontvangen in plaats van het werkelijke bron-IP-adres van de gebruikers van de dienst. Als uw toepassing daadwerkelijk bron-IP-adres van consumentenzijde nodig heeft, u het proxyprotocol op uw service inschakelen en de informatie ophalen uit de header proxyprotocol. Naast het IP-adres van de bron, draagt proxy protocol header ook de LinkID van het privé eindpunt. De combinatie van source IP-adres en LinkID kan serviceproviders helpen hun consumenten op unieke wijze te identificeren. Voor meer informatie over Proxy Protocol, bezoek [hier](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt). 
 
-Deze informatie wordt als volgt gecodeerd met een aangepaste TLV-vector (type-length-waarde):
+Deze informatie wordt als volgt gecodeerd met behulp van een aangepaste TLV-vector (Type-Length-Value):
 
-Aangepaste TLV-gegevens:
+Aangepaste TLV-details:
 
-|Veld |Lengte (octetten)  |Beschrijving  |
+|Veld |Lengte (Octetten)  |Beschrijving  |
 |---------|---------|----------|
 |Type  |1        |PP2_TYPE_AZURE (0xEE)|
-|Lengte  |2      |Lengte van waarde|
+|Lengte  |2      |Waardesduur|
 |Waarde  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
-|  |4        |UINT32 (4 bytes) die de LINKID van het persoonlijke eind punt vertegenwoordigen. Gecodeerd in little endian-indeling.|
+|  |4        |UINT32 (4 bytes) die de LINKID van het privéeindpunt vertegenwoordigt. Gecodeerd in kleine endian formaat.|
 
  > [!NOTE]
- > Service provider is verantwoordelijk om ervoor te zorgen dat de service achter de standaard load balancer zo is geconfigureerd dat de header van het proxy protocol wordt geparseerd volgens de [specificatie](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) wanneer proxy protocol is ingeschakeld op de privé koppelings service. De aanvraag mislukt als het proxy protocol is ingeschakeld op de privé koppelings service, maar de service van de service provider niet is geconfigureerd voor het parseren van de header. Op dezelfde manier mislukt de aanvraag als de service provider een header van het proxy protocol verwacht, terwijl de instelling niet is ingeschakeld op de persoonlijke koppelings service. Zodra het proxy protocol is ingeschakeld, wordt de header van het proxy protocol ook opgenomen in HTTP/TCP-status tests van de host naar de virtuele machine van de back-end, zelfs als er geen client informatie in de header voor komt. 
+ > De serviceprovider is verantwoordelijk om ervoor te zorgen dat de service achter de standaard load balancer is geconfigureerd om de proxyprotocolkop te parseren volgens de [specificatie](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) wanneer het proxyprotocol is ingeschakeld op de privékoppelingsservice. De aanvraag mislukt als de instelling van het proxyprotocol is ingeschakeld op de privékoppelingsservice, maar de service van de serviceprovider is niet geconfigureerd om de header te ontstemmen. Op dezelfde manier mislukt de aanvraag als de service van de serviceprovider een proxyprotocol-header verwacht terwijl de instelling niet is ingeschakeld op de privékoppelingsservice. Zodra de instelling van het proxyprotocol is ingeschakeld, wordt de header van het proxyprotocol ook opgenomen in HTTP/TCP-statussondes van host naar de backend virtuele machines, ook al zijn er geen clientinformatie in de header. 
 
 ## <a name="limitations"></a>Beperkingen
 
-Hier volgen de bekende beperkingen bij het gebruik van de service private link:
+Hieronder volgen de bekende beperkingen bij het gebruik van de Private Link-service:
 - Alleen ondersteund op Standard Load Balancer 
 - Ondersteunt alleen IPv4-verkeer
-- Biedt alleen ondersteuning voor TCP-verkeer
+- Ondersteunt alleen TCP-verkeer
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Een persoonlijke koppelings service maken met behulp van Azure PowerShell](create-private-link-service-powershell.md)
-- [Een persoonlijke koppelings service maken met behulp van Azure CLI](create-private-link-service-cli.md)
+- [Een privékoppelingsservice maken met Azure PowerShell](create-private-link-service-powershell.md)
+- [Een privékoppelingsservice maken met Azure CLI](create-private-link-service-cli.md)

@@ -1,6 +1,6 @@
 ---
-title: Een NFS-volume maken voor Azure NetApp Files | Microsoft Docs
-description: Hierin wordt beschreven hoe u een NFS-volume maakt voor Azure NetApp Files.
+title: Een NFS-volume maken voor Azure NetApp-bestanden | Microsoft Documenten
+description: Beschrijft hoe u een NFS-volume maakt voor Azure NetApp-bestanden.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 12/01/2019
 ms.author: b-juche
 ms.openlocfilehash: 9e8817f802ca1d73ca0f6bfa2b32b1b14b37d7da
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274084"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Een NFS-volume maken voor Azure NetApp Files
 
-Azure NetApp Files ondersteunt NFS-(NFSv3-en NFSv 4.1)-en SMBv3-volumes. Capaciteitsgebruik van een volume wordt in mindering gebracht op de ingerichte capaciteit van de pool. In dit artikel wordt beschreven hoe u een NFS-volume maakt. Als u een SMB-volume wilt maken, raadpleegt u [een SMB-volume maken voor Azure NetApp files](azure-netapp-files-create-volumes-smb.md). 
+Azure NetApp Files ondersteunt NFS -volumes (NFSv3 en NFSv4.1) en SMBv3. Capaciteitsgebruik van een volume wordt in mindering gebracht op de ingerichte capaciteit van de pool. In dit artikel ziet u hoe u een NFS-volume maakt. Zie [Een SMB-volume maken voor Azure NetApp-bestanden](azure-netapp-files-create-volumes-smb.md)als u een SMB-volume wilt maken. 
 
 ## <a name="before-you-begin"></a>Voordat u begint 
 U dient al een capaciteitspool te hebben ingesteld.   
@@ -33,42 +33,42 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
 ## <a name="considerations"></a>Overwegingen 
 
-* Bepalen welke NFS-versie moet worden gebruikt  
-  NFSv3 kan een groot aantal use-cases verwerken en wordt meestal geïmplementeerd in de meeste bedrijfs toepassingen. U dient te controleren welke versie (NFSv3 of NFSv 4.1) uw toepassing vereist en maakt u het volume met behulp van de juiste versie. Als u bijvoorbeeld [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)gebruikt, wordt het vergren delen van bestanden met nfsv 4.1 aanbevolen voor NFSv3. 
+* Beslissen welke NFS-versie moet worden gebruikt  
+  NFSv3 kan een breed scala aan use cases verwerken en wordt vaak geïmplementeerd in de meeste bedrijfstoepassingen. U moet valideren welke versie (NFSv3 of NFSv4.1) uw toepassing vereist en uw volume maken met de juiste versie. Als u bijvoorbeeld [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)gebruikt, wordt bestandsvergrendeling met NFSv4.1 aanbevolen via NFSv3. 
 
 * Beveiliging  
-  Ondersteuning voor UNIX-modus bits (lezen, schrijven en uitvoeren) is beschikbaar voor NFSv3 en NFSv 4.1. Toegang op hoofd niveau is vereist op de NFS-client om NFS-volumes te koppelen.
+  Ondersteuning voor UNIX-modusbits (lezen, schrijven en uitvoeren) is beschikbaar voor NFSv3 en NFSv4.1. Root-level toegang is vereist op de NFS-client om NFS-volumes te monteren.
 
-* Lokale gebruiker/groep en LDAP-ondersteuning voor NFSv 4.1  
-  Op dit moment ondersteunt NFSv 4.1 alleen toegang tot de hoofdmap voor volumes. Zie [nfsv 4.1 standaard domein configureren voor Azure NetApp files](azure-netapp-files-configure-nfsv41-domain.md). 
+* Lokale gebruikers-/groep- en LDAP-ondersteuning voor NFSv4.1  
+  Momenteel ondersteunt NFSv4.1 alleen roottoegang tot volumes. Zie [NFSv4.1-standaarddomein configureren voor Azure NetApp-bestanden](azure-netapp-files-configure-nfsv41-domain.md). 
 
 ## <a name="best-practice"></a>Best practice
 
-* Zorg ervoor dat u de juiste koppelings instructies voor het volume gebruikt.  Zie [een volume koppelen of ontkoppelen voor virtuele Windows-of Linux-machines](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md).
+* U moet ervoor zorgen dat u de juiste montage-instructies voor het volume gebruikt.  Zie [Een volume voor virtuele Windows- of Linux-machines monteren of demonteren.](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 
-* De NFS-client moet zich in hetzelfde VNet of een gelijkwaardige VNet bezien als het Azure NetApp Files volume. Het maken van een verbinding van buiten het VNet wordt ondersteund; Er wordt echter extra latentie geïntroduceerd en de algehele prestaties worden gereduceerd.
+* De NFS-client moet zich in dezelfde VNet- of VNet-peered bevinden als het Azure NetApp-bestandenvolume. Verbinding maken van buiten het VNet wordt ondersteund; het zal echter extra latentie introduceren en de algehele prestaties verlagen.
 
-* Zorg ervoor dat de NFS-client up-to-date is en dat de meest recente updates voor het besturings systeem worden uitgevoerd.
+* U moet ervoor zorgen dat de NFS-client up-to-date is en de nieuwste updates voor het besturingssysteem uitvoert.
 
 ## <a name="create-an-nfs-volume"></a>Een NFS-volume maken
 
-1.  Klik op de Blade **volumes** op de Blade capaciteits groepen. 
+1.  Klik op het blad **Volumes** van het blad Capaciteitspools. 
 
     ![Navigeren naar volumes](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
 
 2.  Klik op **+ Volume toevoegen** om een volume te maken.  
-    Het venster een volume maken wordt weer gegeven.
+    Het venster Een volume maken wordt weergegeven.
 
-3.  Klik in het venster een volume maken op **maken** en geef informatie op voor de volgende velden:   
-    * **Volume naam**      
+3.  Klik in het venster Een volume maken op **Maken** en geef informatie op voor de volgende velden:   
+    * **Volumenaam**      
         Geef de naam op voor het volume dat u wilt maken.   
 
-        Een volume naam moet uniek zijn binnen elke capaciteits groep. De naam moet minstens drie tekens bevatten. U kunt alle alfanumerieke tekens gebruiken.   
+        Een volumenaam moet uniek zijn binnen elke capaciteitsgroep. De naam moet minstens drie tekens bevatten. U alfanumerieke tekens gebruiken.   
 
-        U kunt `default` niet als de naam van het volume gebruiken.
+        U kunt `default` de volumenaam niet gebruiken.
 
-    * **Capaciteits pool**  
-        Geef de capaciteits pool op waar u het volume wilt maken.
+    * **Capaciteitspool**  
+        Geef de capaciteitsgroep op waar het volume moet worden gemaakt.
 
     * **Quotum**  
         Geef de hoeveelheid logische opslag op die u wilt toewijzen aan het volume.  
@@ -78,42 +78,42 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
     * **Virtueel netwerk**  
         Geef het virtuele Azure-netwerk (Vnet) op dat u wilt gebruiken om het volume te benaderen.  
 
-        Het opgegeven VNet moet een subnet bevatten dat is gedelegeerd aan Azure NetApp Files. De Azure NetApp Files-service is alleen toegankelijk vanuit hetzelfde VNet, of vanuit een VNet in dezelfde regio als het volume via VNet-peering. U kunt het volume ook openen vanuit uw on-premises netwerk via een snelle route.   
+        Het opgegeven VNet moet een subnet bevatten dat is gedelegeerd aan Azure NetApp Files. De Azure NetApp Files-service is alleen toegankelijk vanuit hetzelfde VNet, of vanuit een VNet in dezelfde regio als het volume via VNet-peering. U hebt ook toegang tot het volume vanuit uw on-premises netwerk via Express Route.   
 
     * **Subnet**  
         Geef het subnet op dat u wilt gebruiken voor het volume.  
         Het opgegeven subnet moet zijn gedelegeerd aan Azure NetApp Files. 
         
-        Als u geen subnet hebt gedelegeerd, kunt u klikken op **Nieuwe maken** op de pagina Een volume maken. Geef vervolgens op de pagina Subnet maken de subnetgegevens op, en selecteer **Microsoft.NetApp/volumes** om het subnet te delegeren aan Azure NetApp Files. In elk Vnet kan slechts één subnet worden gedelegeerd aan Azure NetApp Files.   
+        Als u geen subnet hebt gedelegeerd, kunt u klikken op **Nieuwe maken** op de pagina Een volume maken. Geef vervolgens op de pagina Subnet maken de subnetgegevens op, en selecteer **Microsoft.NetApp/volumes** om het subnet te delegeren aan Azure NetApp Files. In elk Vnet kan slechts één subnet worden gedelegeerd aan Azure NetApp-bestanden.   
  
-        ![Een volume maken](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
+        ![ Een volume maken](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Subnet maken](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-4. Klik op **protocol**en voer de volgende acties uit:  
-    * Selecteer **NFS** als protocol type voor het volume.   
-    * Geef het **bestandspad op dat wordt** gebruikt voor het maken van het exportpad voor het nieuwe volume. Het exportpad wordt gebruikt om het volume te koppelen en benaderen.
+4. Klik op **Protocol**en voer de volgende acties uit:  
+    * Selecteer **NFS** als protocoltype voor het volume.   
+    * Geef het **bestandspad** op dat wordt gebruikt om het exportpad voor het nieuwe volume te maken. Het exportpad wordt gebruikt om het volume te koppelen en benaderen.
 
         Het bestandspad mag alleen letters, cijfers en afbreekstreepjes ('-') bevatten. Het bestandspad moet tussen de 16 en 40 tekens lang zijn. 
 
         Het bestandspad moet uniek zijn binnen elk abonnement en elke regio. 
 
-    * Selecteer de NFS-versie (**NFSv3** of **nfsv 4.1**) voor het volume.  
-    * Optioneel kunt [u het export beleid configureren voor het NFS-volume](azure-netapp-files-configure-export-policy.md).
+    * Selecteer de NFS-versie **(NFSv3** of **NFSv4.1)** voor het volume.  
+    * Configureer [destijds het exportbeleid voor het NFS-volume](azure-netapp-files-configure-export-policy.md).
 
     ![NFS-protocol opgeven](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
 
-5. Klik op **beoordeling + maken** om de details van het volume te controleren.  Klik vervolgens op **maken** om het NFS-volume te maken.
+5. Klik **op Controleren + Maken** om de volumedetails te bekijken.  Klik vervolgens op **Maken** om het NFS-volume te maken.
 
-    Het volume dat u hebt gemaakt, wordt weer gegeven op de pagina volumes. 
+    Het volume dat u hebt gemaakt, wordt weergegeven op de pagina Volumes. 
  
     Een volume neemt het abonnement, de resourcegroep en de locatiekenmerken over van de bijbehorende capaciteitspool. U kunt de implementatiestatus van het volume controleren vanuit het tabblad Meldingen.
 
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-* [Het standaard domein NFSv 4.1 configureren voor Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
-* [Een volume koppelen of ontkoppelen voor virtuele Windows-of Linux-machines](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+* [NFSv4.1-standaarddomein configureren voor Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
+* [Een volume voor Windows- of Linux-VM's koppelen of ontkoppelen](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Exportbeleid voor een NFS-volume configureren](azure-netapp-files-configure-export-policy.md)
 * [Resourcelimieten voor Azure NetApp Files](azure-netapp-files-resource-limits.md)
 * Meer informatie over [Integratie van virtuele netwerken voor Azure-services](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)

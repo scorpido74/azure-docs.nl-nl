@@ -1,40 +1,39 @@
 ---
-title: Een Azure IoT Edge-module aanbieding maken | Azure Marketplace
-description: Een nieuwe IoT Edge-module publiceren voor Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Een Azure IoT Edge-moduleaanbieding maken | Azure Marketplace
+description: Een nieuwe IoT Edge-module voor marketplace publiceren.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.author: pabutler
-ms.openlocfilehash: c1e2f5ac6078309b7bd8753a3fc57a592a67dcec
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 164b26560020054f4da8bd1aa0ba2a3ecff1875a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826095"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286622"
 ---
-# <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Maak een nieuwe IoT Edge module-aanbieding met de Cloud Partner-portal
+# <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Maak een nieuwe IoT Edge-modulemet de Cloud Partner Portal
 
-In dit artikel wordt beschreven hoe u een IoT Edge module-aanbieding maakt en publiceert voor Azure Marketplace. Elk aanbod wordt als eigen entiteit weer gegeven in azure Marketplace en is gekoppeld aan een of meer Sku's.  Een IoT Edge-module aanbieding bestaat uit de volgende groeperingen van assets en ondersteunende services:
+In dit artikel wordt beschreven hoe u een IoT Edge-module maken en publiceren, vermelding voor de Azure Marketplace. Elke aanbieding wordt weergegeven als een eigen entiteit in Azure Marketplace en is gekoppeld aan een of meer SKU's.  Een IoT Edge-moduleaanbod bestaat uit de volgende groeperingen van activa en ondersteunende services:
 
-|  **Activa groep**   |  **Beschrijving**  |
+|  **Activagroep**   |  **Beschrijving**  |
 |  ---------------   |  ---------------  |
-|    Voorraad            |  De kleinste inzet bare eenheid van een aanbieding. Voor een enkele aanbieding (product klasse) kunnen meerdere Sku's aan de aanbieding zijn gekoppeld. U kunt Sku's gebruiken om onderscheid te maken tussen ondersteunde functies en facturerings modellen. |
-|  Marketplace       | Bevat marketing-, juridische-en Lead beheer activa en-specificaties.  <ul><li> Marketing assets bevatten naam, beschrijving en logo's van de aanbieding</li> <li> Juridische activa omvatten een privacybeleid, gebruiks voorwaarden en andere juridische documentatie</li>  <li> Met het beleid voor het beheer van leads kunt u opgeven hoe leads van de eind gebruikers portal van Azure Marketplace moeten worden afgehandeld.</li> </ul> |
-| Ondersteuning            | Bevat ondersteunings contactpersoon en beleids gegevens |
+|    SKU's            |  De kleinste inzetbare eenheid van een aanbieding. Bij één aanbieding (productklasse) zijn meerdere SKU's gekoppeld aan de aanbieding. U SKU's gebruiken om onderscheid te maken tussen ondersteunde functies en factureringsmodellen. |
+|  Marketplace       | Bevat marketing-, juridische en leadmanagementactiva en -specificaties.  <ul><li> Marketingmiddelen omvatten aanbiedingsnaam, beschrijving en logo's</li> <li> Juridische middelen omvatten een privacybeleid, gebruiksvoorwaarden en andere juridische documentatie</li>  <li> Met het beheerbeleid voor leads u opgeven hoe u leads verwerken vanuit de Azure Marketplace-portal voor eindgebruikers.</li> </ul> |
+| Ondersteuning            | Bevat ondersteuningscontact- en beleidsinformatie |
 
 
-## <a name="new-offer-form"></a>Formulier voor nieuwe aanbieding 
+## <a name="new-offer-form"></a>Nieuw aanbiedingsformulier 
 
-Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/)en selecteer **+ nieuwe aanbieding** op de menu balk aan de linkerkant. Selecteer in het menu nieuwe aanbieding **IOT Edge modules** om het **nieuwe aanbod** formulier weer te geven en start het proces van het definiëren van assets voor een nieuwe IOT Edge-module aanbieding. 
+Meld u aan bij de [Cloud Partner Portal](https://cloudpartner.azure.com/)en selecteer + Nieuwe **aanbieding** op de linker menubalk. Selecteer in het menu Nieuwe aanbieding **IoT Edge-modules** om het formulier **Nieuwe aanbieding** weer te geven en het proces van het definiëren van assets voor een nieuwe ioT Edge Module-aanbieding te starten. 
 
-![Selectie van de gebruikers interface van de nieuwe IoT Edge-module](./media/new-iot-edge-module-offer.png)
+![Nieuwe IoT Edge-module biedt selectie van gebruikersinterface](./media/new-iot-edge-module-offer.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De pagina **nieuwe aanbieding** voor het IOT Edge-module aanbod type bevat een reeks tabbladen en formulier velden die u gebruikt om een nieuwe aanbieding te maken. In elk van de volgende artikelen wordt uitgelegd hoe u het tabblad gebruikt voor het definiëren van de activa groepen en ondersteunende services voor uw nieuwe IoT Edge-module aanbod.
+De pagina **Nieuwe aanbieding** voor het aanbodtype IoT Edge biedt een reeks tabbladen en formuliervelden die u gebruikt om een nieuwe aanbieding te maken. In elk van de volgende artikelen wordt uitgelegd hoe u het tabblad gebruiken om de activagroepen en ondersteunende services voor uw nieuwe IoT Edge-module-aanbieding te definiëren.
 
 - [Tabblad voor aanbiedingsinstellingen](./cpp-offer-settings-tab.md)
 - [Tabblad voor SKU's](./cpp-skus-tab.md)

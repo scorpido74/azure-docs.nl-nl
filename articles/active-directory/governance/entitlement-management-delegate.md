@@ -1,6 +1,6 @@
 ---
-title: Delegering en rollen in rechten beheer-Azure AD
-description: Meer informatie over het overdragen van toegangs beheer van IT-beheerders aan afdelings managers en project managers zodat ze de toegang zelf kunnen beheren.
+title: Delegatie en rollen in beheer van rechten - Azure AD
+description: Meer informatie over het delegeren van toegangsbeheer van IT-beheerders aan afdelingsmanagers en projectmanagers, zodat ze zelf toegang kunnen beheren.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,124 +17,124 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261838"
 ---
-# <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Overdracht en rollen in het beheer van rechten van Azure AD
+# <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegatie en rollen in Azure AD-rechtenbeheer
 
-Standaard kunnen globale beheerders en gebruikers beheerders alle aspecten van het beheer van rechten van Azure AD maken en beheren. Het is echter mogelijk dat de gebruikers in deze rollen niet alle situaties kennen waarin toegangs pakketten zijn vereist. Normaal gesp roken is het gebruikers binnen de respectieve afdelingen, teams of projecten die weten wie ze samen werken, met welke resources en hoe lang. In plaats van onbeperkte machtigingen te verlenen aan niet-beheerders, kunt u gebruikers de minste machtigingen verlenen die ze nodig hebben om hun taak uit te voeren en te voor komen dat er conflicterende of onjuiste toegangs rechten zijn.
+Globale beheerders en gebruikersbeheerders kunnen standaard alle aspecten van Azure AD-rechtenbeheer maken en beheren. Het is echter mogelijk dat de gebruikers in deze rollen niet alle situaties kennen waarin toegangspakketten vereist zijn. Meestal zijn het gebruikers binnen de respectievelijke afdelingen, teams of projecten die weten met wie ze samenwerken, met welke resources en voor hoe lang. In plaats van onbeperkte machtigingen toe te kennen aan niet-beheerders, u gebruikers de minste machtigingen verlenen die ze nodig hebben om hun taak uit te voeren en te voorkomen dat er conflicterende of ongepaste toegangsrechten worden gevonden.
 
-In deze video vindt u een overzicht van de manier waarop u Access governance van de IT-beheerder kunt delegeren aan gebruikers die geen beheerder zijn.
+In deze video vindt u een overzicht van hoe u toegangsbeheer van IT-beheerder delegeren aan gebruikers die geen beheerders zijn.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE3Lq00]
 
-## <a name="delegate-example"></a>Voor beeld van gemachtigde
+## <a name="delegate-example"></a>Voorbeeld van gemachtigde
 
-Als u wilt weten hoe u Access governance kunt delegeren in het recht op beheer, kunt u een voor beeld overwegen. Stel dat uw organisatie de volgende beheerder en managers heeft.
+Als u wilt begrijpen hoe u toegangsbeheer delegeren in het beheer van rechten, helpt het om een voorbeeld te overwegen. Stel dat uw organisatie de volgende beheerder en managers heeft.
 
 ![Delegeren van IT-beheerder naar managers](./media/entitlement-management-delegate/delegate-admin-dept-managers.png)
 
-Als IT-beheerder heeft Hana contact personen in elke afdeling: Mamta in marketing, financiële gegevens markeren en Jan in juridisch die verantwoordelijk zijn voor de resources en bedrijfs kritieke inhoud van hun afdeling.
+Als IT-beheerder heeft Hana contacten in elke afdeling - Mamta in Marketing, Mark in Finance en Joe in Legal die verantwoordelijk zijn voor de resources en bedrijfskritische inhoud van hun afdeling.
 
-Met het recht op rechten kunt u toegangs beheer aan deze niet-beheerders delegeren, omdat ze weten welke gebruikers toegang nodig hebben, voor hoe lang en op welke resources. Dit zorgt ervoor dat de juiste mensen de toegang voor hun afdelingen beheren.
+Met beheer van rechten u toegangsbeheer delegeren aan deze niet-beheerders, omdat zij degenen zijn die weten welke gebruikers toegang nodig hebben, voor hoe lang en tot welke resources. Dit zorgt ervoor dat de juiste mensen de toegang voor hun afdelingen beheren.
 
-Dit is een manier waarop Hana Access governance kan delegeren aan de afdelingen marketing, financiën en juridisch.
+Hier is een manier waarop Hana toegang beheer kan delegeren aan de marketing, financiën en juridische afdelingen.
 
-1. Hana maakt een nieuwe Azure AD-beveiligings groep en voegt Mamta, Mark en Joe toe als leden van de groep.
+1. Hana maakt een nieuwe Azure AD-beveiligingsgroep en voegt Mamta, Mark en Joe toe als leden van de groep.
 
-1. Hana voegt die groep toe aan de rol catalogus makers.
+1. Hana voegt die groep toe aan de rol van de makers van de catalogus.
 
-    Mamta, Mark en Joe kunnen nu catalogi maken voor hun afdelingen, resources toevoegen die hun afdelingen nodig hebben en verdere delegering uitvoeren in de catalogus.
+    Mamta, Mark en Joe kunnen nu catalogi maken voor hun afdelingen, resources toevoegen die hun afdelingen nodig hebben en verdere delegatie doen binnen de catalogus.
 
-    Houd er rekening mee dat Mamta, Mark en Joe de catalogussen van elkaar niet kunnen zien.
+    Merk op dat Mamta, Mark en Joe elkaars catalogi niet kunnen zien.
 
-1. Mamta maakt een **marketing** catalogus. Dit is een container met resources.
+1. Mamta maakt een **marketingcatalogus,** een container met resources.
 
-1. Mamta voegt de resources die haar marketing afdeling eigendom is van deze catalogus toe.
+1. Mamta voegt de middelen die haar marketing afdeling bezit aan deze catalogus.
 
-1. Mamta kan extra personen van haar afdeling toevoegen als catalogus eigenaars voor deze catalogus. Zo kunt u de verantwoordelijkheden voor het beheer van catalogi delen.
+1. Mamta kan extra mensen van haar afdeling toevoegen als cataloguseigenaren voor deze catalogus. Dit helpt bij het delen van de verantwoordelijkheden voor het beheer van de catalogus.
 
-1. Mamta kan het maken en beheren van toegangs pakketten in de marketing catalogus verder overdragen aan project managers in de marketing afdeling. Ze kan dit doen door ze toe te wijzen aan de rol Access Package Manager. Een Access package manager kan toegangs pakketten maken en beheren. 
+1. Mamta kan het maken en beheren van toegangspakketten in de marketingcatalogus verder delegeren aan projectmanagers van de marketingafdeling. Ze kan dit doen door ze toe te stellen aan de rol van access package manager. Een access package manager kan toegangspakketten maken en beheren. 
 
-In het volgende diagram ziet u catalogi met resources voor de afdelingen marketing, financiën en juridisch. Met behulp van deze catalogi kunnen project managers toegangs pakketten voor hun teams of projecten maken.
+In het volgende diagram ziet u catalogi met bronnen voor de marketing-, financiële en juridische afdelingen. Met behulp van deze catalogi kunnen projectmanagers toegangspakketten maken voor hun teams of projecten.
 
-![Voor beeld van een recht op gedelegeerd beheer](./media/entitlement-management-delegate/elm-delegate.png)
+![Voorbeeld van het gemachtigde van het recht](./media/entitlement-management-delegate/elm-delegate.png)
 
-Na de overdracht heeft de marketing afdeling mogelijk rollen die vergelijkbaar zijn met die in de volgende tabel.
+Na delegatie kan de marketingafdeling rollen hebben die vergelijkbaar zijn met de volgende tabel.
 
-| Gebruiker | Functie | Azure AD-rol | Rol van rechten beheer |
+| Gebruiker | Functie | Azure AD-rol | Rol van rechtbeheer |
 | --- | --- | --- | --- |
-| Hana | IT-beheerder | Globale beheerder of gebruikers beheerder |  |
-| Mamta | Marketing Manager | Gebruiker | Catalogus maker en catalogus eigenaar |
-| Bob | Marketing Lead | Gebruiker | Catalogus eigenaar |
-| Jessica | Marketing project manager | Gebruiker | Toegangs pakket beheer |
+| Hana | IT-beheerder | Globale beheerder of gebruikersbeheerder |  |
+| Mamta (Mamta) | Marketing manager | Gebruiker | Catalogusmaker en cataloguseigenaar |
+| Bob | Marketinglead | Gebruiker | Cataloguseigenaar |
+| Jessica | Marketing projectmanager | Gebruiker | Access-pakketbeheer |
 
-## <a name="entitlement-management-roles"></a>Rechten beheer rollen
+## <a name="entitlement-management-roles"></a>Beheerrollen voor rechten
 
 Het beheer van rechten heeft de volgende rollen die specifiek zijn voor het beheer van rechten.
 
-| Rol van rechten beheer | Beschrijving |
+| Rol van rechtbeheer | Beschrijving |
 | --- | --- |
-| Maker van catalogus | Maak en beheer catalogi. Doorgaans een IT-beheerder die geen globale beheerder of een resource-eigenaar is voor een verzameling resources. De persoon die een catalogus maakt, wordt automatisch de eerste catalogus eigenaar van de catalogus en kan extra catalogus eigenaren toevoegen. Een maker van de catalogus kan geen catalogi beheren of weer geven die niet eigenaar zijn en resources niet kunnen toevoegen die niet zijn opgenomen in een catalogus. Als de maker van de catalogus een andere catalogus moet beheren of resources toevoegt waarvan ze geen eigenaar zijn, kunnen ze een mede-eigenaar van die catalogus of resource aanvragen. |
-| Catalogus eigenaar | Bestaande catalogi bewerken en beheren. Doorgaans een IT-beheerder of eigenaar van een resource, of een gebruiker die de eigenaar van de catalogus heeft opgegeven. |
-| Toegangs pakket beheer | Bewerk en beheer alle bestaande toegangs pakketten in een catalogus. |
+| Maker van catalogus | Catalogi maken en beheren. Typisch een IT-beheerder die geen globale beheerder is, of een broneigenaar voor een verzameling resources. De persoon die een catalogus maakt, wordt automatisch de eerste cataloguseigenaar van de catalogus en kan extra cataloguseigenaren toevoegen. Een catalogusmaker kan geen catalogi beheren of zien waarvan hij geen eigenaar is en die geen resources kan toevoegen die ze niet bezitten aan een catalogus. Als de maker van de catalogus een andere catalogus moet beheren of resources moet toevoegen waarvan ze geen eigenaar zijn, kan deze een mede-eigenaar van die catalogus of bron aanvragen. |
+| Cataloguseigenaar | Bestaande catalogi bewerken en beheren. Typisch een IT-beheerder of resource-eigenaren, of een gebruiker die de eigenaar van de catalogus heeft aangewezen. |
+| Access-pakketbeheer | Bewerk en beheer alle bestaande toegangspakketten in een catalogus. |
 
-Daarnaast hebben een aangewezen goed keurder en een aanvrager van een toegangs pakket ook rechten, hoewel ze geen rollen zijn.
+Bovendien hebben een aangewezen goedkeurder en een aanvrager van een toegangspakket ook rechten, hoewel ze geen rollen zijn.
 
 | Rechts | Beschrijving |
 | --- | --- |
-| Fiatteur | Geautoriseerd door een beleid voor het goed keuren of weigeren van aanvragen voor toegang tot pakketten, hoewel ze de toegangs pakket definities niet kunnen wijzigen. |
-| Aanvrager | Geautoriseerd door een beleid van een toegangs pakket om het toegangs pakket aan te vragen. |
+| Fiatteur | Geautoriseerd door een beleid om verzoeken om toegang te krijgen tot pakketten goed te keuren of te weigeren, hoewel ze de definities van toegangspakketten niet kunnen wijzigen. |
+| Requestor | Geautoriseerd door een beleid van een toegangspakket om dat toegangspakket aan te vragen. |
 
-De volgende tabel geeft een lijst van de taken die de rechten voor het beheer kunnen uitvoeren.
+In de volgende tabel worden de taken weergegeven die de beheerrollen van het recht kunnen uitvoeren.
 
-| Taak | Beheerder | Maker van catalogus | Catalogus eigenaar | Toegangs pakket beheer |
+| Taak | Beheerder | Maker van catalogus | Cataloguseigenaar | Access-pakketbeheer |
 | --- | :---: | :---: | :---: | :---: |
-| [Delegeren aan een maker van de catalogus](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
+| [Delegeren aan een catalogusmaker](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
 | [Een verbonden organisatie toevoegen](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |
 | [Een nieuwe catalogus maken](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |
 | [Een resource toevoegen aan een catalogus](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
-| [Een catalogus eigenaar toevoegen](entitlement-management-catalog-create.md#add-additional-catalog-owners) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [Een cataloguseigenaar toevoegen](entitlement-management-catalog-create.md#add-additional-catalog-owners) | :heavy_check_mark: |  | :heavy_check_mark: |  |
 | [Een catalogus bewerken](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
 | [Een catalogus verwijderen](entitlement-management-catalog-create.md#delete-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
-| [Delegeren aan een Access package manager](entitlement-management-delegate-managers.md) | :heavy_check_mark: |  | :heavy_check_mark: |  |
-| [Een Access Package Manager verwijderen](entitlement-management-delegate-managers.md#remove-an-access-package-manager) | :heavy_check_mark: |  | :heavy_check_mark: |  |
-| [Een nieuw toegangs pakket maken in een catalogus](entitlement-management-access-package-create.md) | :heavy_check_mark: |  | :heavy_check_mark:  | :heavy_check_mark:  |
-| [Resource rollen wijzigen in een toegangs pakket](entitlement-management-access-package-resources.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Delegeren aan een toegangspakketbeheerder](entitlement-management-delegate-managers.md) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [Een toegangspakketbeheerder verwijderen](entitlement-management-delegate-managers.md#remove-an-access-package-manager) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [Een nieuw toegangspakket maken in een catalogus](entitlement-management-access-package-create.md) | :heavy_check_mark: |  | :heavy_check_mark:  | :heavy_check_mark:  |
+| [Resourcerollen wijzigen in een toegangspakket](entitlement-management-access-package-resources.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Beleid maken en bewerken](entitlement-management-access-package-request-policy.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Een gebruiker rechtstreeks toewijzen aan een toegangs pakket](entitlement-management-access-package-assignments.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Weer geven wie een toewijzing voor een toegangs pakket heeft](entitlement-management-access-package-assignments.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Aanvragen van een toegangs pakket weer geven](entitlement-management-access-package-requests.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [De leverings fouten van een aanvraag weer geven](entitlement-management-troubleshoot.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Een gebruiker rechtstreeks toewijzen aan een toegangspakket](entitlement-management-access-package-assignments.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Zien wie een toewijzing heeft voor een toegangspakket](entitlement-management-access-package-assignments.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [De aanvragen van een toegangspakket weergeven](entitlement-management-access-package-requests.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [De leveringsfouten van een aanvraag weergeven](entitlement-management-troubleshoot.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Een aanvraag opnieuw verwerken](entitlement-management-troubleshoot.md#reprocess-a-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Een aanvraag in behandeling annuleren](entitlement-management-troubleshoot.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Een toegangs pakket verbergen](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Een toegangs pakket verwijderen](entitlement-management-access-package-edit.md#delete-an-access-package) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Een toegangspakket verbergen](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Een toegangspakket verwijderen](entitlement-management-access-package-edit.md#delete-an-access-package) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>Vereiste rollen om resources toe te voegen aan een catalogus
 
-Een globale beheerder kan elke groep (in de Cloud gemaakte beveiligings groepen of in de Cloud gemaakte Office 365-groepen), toepassing of share point online-site toevoegen aan of verwijderen uit een catalogus. Een gebruikers beheerder kan een wille keurige groep of toepassing toevoegen aan of verwijderen uit een catalogus.
+Een globale beheerder kan elke groep (door de cloud gemaakte beveiligingsgroepen of door de cloud gemaakte Office 365-groepen), toepassing of SharePoint Online-site in een catalogus toevoegen of verwijderen. Een gebruikersbeheerder kan een groep of toepassing in een catalogus toevoegen of verwijderen.
 
-Voor een gebruiker die geen globale beheerder of gebruikers beheerder is, om groepen, toepassingen of share point online-sites toe te voegen aan een catalogus, moet die gebruiker *zowel* de vereiste beheer functie voor Azure AD-adreslijst functies als de bevoegdheid van de catalogus eigenaar hebben. De volgende tabel geeft een lijst van de functie combinaties die nodig zijn om resources toe te voegen aan een catalogus. Als u resources uit een catalogus wilt verwijderen, moet u dezelfde rollen hebben.
+Voor een gebruiker die geen globale beheerder of gebruikersbeheerder is, om groepen, toepassingen of SharePoint Online-sites aan een catalogus toe te voegen, moet die gebruiker *zowel* de vereiste Azure AD-maprol rol en catalogus eigenaar rechten beheerrol. In de volgende tabel worden de rolcombinaties weergegeven die nodig zijn om resources aan een catalogus toe te voegen. Als u resources uit een catalogus wilt verwijderen, moet u dezelfde rollen hebben.
 
-| Azure AD-adreslijst functie | Rol van rechten beheer | Kan beveiligings groep toevoegen | Kan Office 365-groep toevoegen | Kan app toevoegen | Kan de share point online-site toevoegen |
+| Azure AD-maprol | Rol van rechtbeheer | Kan beveiligingsgroep toevoegen | Kan Office 365-groep toevoegen | Kan app toevoegen | Kan SharePoint Online-site toevoegen |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [Globale beheerder](../users-groups-roles/directory-assign-admin-roles.md) | N.v.t. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Gebruikers beheerder](../users-groups-roles/directory-assign-admin-roles.md) | N.v.t. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [InTune-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar | :heavy_check_mark: | :heavy_check_mark: |  |  |
-| [Exchange-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  | :heavy_check_mark: |  |  |
-| [Teams service-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  | :heavy_check_mark: |  |  |
-| [Share point-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  | :heavy_check_mark: |  | :heavy_check_mark: |
-| [Toepassings beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  |  | :heavy_check_mark: |  |
-| [Beheerder van de Cloud toepassing](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  |  | :heavy_check_mark: |  |
-| Gebruiker | Catalogus eigenaar | Alleen als de groeps eigenaar | Alleen als de groeps eigenaar | Alleen als de eigenaar van de app |  |
+| [Gebruikersbeheerder](../users-groups-roles/directory-assign-admin-roles.md) | N.v.t. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Intune-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Cataloguseigenaar | :heavy_check_mark: | :heavy_check_mark: |  |  |
+| [Exchange-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Cataloguseigenaar |  | :heavy_check_mark: |  |  |
+| [Teams-servicebeheerder](../users-groups-roles/directory-assign-admin-roles.md) | Cataloguseigenaar |  | :heavy_check_mark: |  |  |
+| [SharePoint-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Cataloguseigenaar |  | :heavy_check_mark: |  | :heavy_check_mark: |
+| [Toepassingsbeheerder](../users-groups-roles/directory-assign-admin-roles.md) | Cataloguseigenaar |  |  | :heavy_check_mark: |  |
+| [Beheerder van cloudtoepassingen](../users-groups-roles/directory-assign-admin-roles.md) | Cataloguseigenaar |  |  | :heavy_check_mark: |  |
+| Gebruiker | Cataloguseigenaar | Alleen als de eigenaar van de groep | Alleen als de eigenaar van de groep | Alleen als de eigenaar van de app |  |
 
-Als u de minst bevoorrechte rol voor een taak wilt bepalen, kunt u ook verwijzen naar [beheerders rollen per beheer taak in azure Active Directory](../users-groups-roles/roles-delegate-by-task.md#entitlement-management).
+Als u de minst bevoorrechte rol voor een taak wilt bepalen, u ook verwijzen naar [beheerdersrollen per beheertaak in Azure Active Directory](../users-groups-roles/roles-delegate-by-task.md#entitlement-management).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toegangs beheer van de catalogus overdragen aan makers van catalogi](entitlement-management-delegate-catalog.md)
-- [Een catalogus met resources maken en beheren](entitlement-management-catalog-create.md)
+- [Toegangsbeheer delegeren aan catalogusmakers](entitlement-management-delegate-catalog.md)
+- [Een catalogus met bronnen maken en beheren](entitlement-management-catalog-create.md)

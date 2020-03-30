@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 01/22/2020
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 92c2e79910e40721a0ef62d44825bd1f3e19fc79
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 0df38533afe97f010d1050c3ee2a4a69a54d4cc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548197"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334653"
 ---
-| Bron | Standaardlimiet |
+| Resource | Limiet |
 | --- | --- |
-| Gegevens doorvoer |30 Gbps<sup>1</sup> |
-|Regels|10.000. Alle regel typen worden gecombineerd.|
+| Gegevensdoorvoer |30 Gbps<sup>1</sup> |
+|Regels|10,000. Alle regeltypen gecombineerd.|
 |Maximale DNAT-regels|299|
 |Minimale AzureFirewallSubnet-grootte |/26|
-|Poortbereik in netwerk- en toepassingsregels|0-64000. Het werk wordt uitgevoerd om deze beperking te versoepelen.|
-|Openbare IP-adressen|Maxi maal 100 (momenteel worden SNAT-poorten alleen toegevoegd voor de eerste vijf open bare IP-adressen.)|
-|Routetabel|AzureFirewallSubnet heeft standaard een ' 0.0.0.0/0-route waarbij de waarde NextHopType is ingesteld op **Internet**.<br><br>Azure Firewall moet een rechtstreekse Internet verbinding hebben. Als uw AzureFirewallSubnet een standaard route naar uw on-premises netwerk via BGP leert, moet u die vervangen door een 0.0.0.0/0-UDR met de **NextHopType** -waarde ingesteld als **Internet** om direct Internet connectiviteit te onderhouden. Standaard biedt Azure Firewall geen ondersteuning voor geforceerde tunneling naar een on-premises netwerk.<br><br>Als uw configuratie echter geforceerde tunneling voor een on-premises netwerk vereist, zal micro soft deze in het geval per geval ondersteunen. Neem contact op met de ondersteuning zodat we uw aanvraag kunnen controleren. Als u dit hebt geaccepteerd, wordt uw abonnement toegestaan en wordt de vereiste Firewall Internet connectiviteit onderhouden.|
+|Poortbereik in netwerk- en toepassingsregels|0-64,000. Er wordt gewerkt aan een versoepeling van deze beperking.|
+|Openbare IP-adressen|Maximaal 100 (Momenteel worden SNAT-poorten alleen toegevoegd voor de eerste vijf openbare IP-adressen.)|
+|Routetabel|AzureFirewallSubnet heeft standaard een route van 0.0.0.0/0 met de NextHopType-waarde ingesteld op **internet.**<br><br>Azure Firewall moet een directe internetverbinding hebben. Als uw AzureFirewallSubnet via BGP een standaardroute naar uw on-premises netwerk leert, moet u dat overschrijven met een 0.0.0.0/0 UDR met de **NextHopType-waarde** die is ingesteld als **internet** om directe internetverbinding te behouden. Azure Firewall biedt standaard geen ondersteuning voor gedwongen tunneling naar een on-premises netwerk.<br><br>Als uw configuratie echter gedwongen tunneling naar een on-premises netwerk vereist, zal Microsoft dit per geval ondersteunen. Neem contact op met de ondersteuning zodat we uw aanvraag kunnen bekijken. Als dit wordt geaccepteerd, staan we uw abonnement toe en zorgen we ervoor dat de vereiste firewall-internetverbinding wordt gehandhaafd.|
 
-<sup>1</sup> Als u deze limieten wilt verhogen, neemt u contact op met de ondersteuning van Azure.
+<sup>1.</sup> Als u deze limieten wilt verhogen, neemt u contact op met Azure Support.

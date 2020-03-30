@@ -1,6 +1,6 @@
 ---
-title: Beveiligings waarschuwingen voor Azure AD-rollen in PIM-Azure AD | Microsoft Docs
-description: Beveiligings waarschuwingen configureren voor Azure AD-rollen Privileged Identity Management in Azure Active Directory.
+title: Beveiligingswaarschuwingen voor Azure AD-rollen in PIM - Azure AD | Microsoft Documenten
+description: Beveiligingswaarschuwingen configureren voor Azure AD-rollen Privileged Identity Management in Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,60 +15,60 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86dbcdc24c90ba8b161b041af96cbdd0665ad827
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79253310"
 ---
-# <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Beveiligings waarschuwingen configureren voor Azure AD-rollen in Privileged Identity Management
+# <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Beveiligingswaarschuwingen configureren voor Azure AD-rollen in Privileged Identity Management
 
-Privileged Identity Management (PIM) genereert waarschuwingen wanneer er verdachte of onveilige activiteit is in uw Azure Active Directory-organisatie (Azure AD). Wanneer een waarschuwing wordt geactiveerd, wordt deze weer gegeven op het Privileged Identity Management dash board. Selecteer de waarschuwing om een rapport weer te geven met een lijst met de gebruikers of rollen die de waarschuwing hebben geactiveerd.
+Pim (Privileged Identity Management) genereert waarschuwingen wanneer er verdachte of onveilige activiteiten zijn in uw Azure AD-organisatie (Azure Directory). Wanneer een waarschuwing wordt geactiveerd, wordt deze weergegeven op het dashboard Privileged Identity Management. Selecteer de waarschuwing om een rapport te zien met de gebruikers of rollen die de waarschuwing hebben geactiveerd.
 
-## <a name="determine-your-version-of-pim"></a>Uw versie van PIM bepalen
+## <a name="determine-your-version-of-pim"></a>Bepaal uw versie van PIM
 
-Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged Identity Management bijgewerkt naar een nieuwe versie die overeenkomt met de ervaringen van Azure-resource rollen. Hiermee maakt u aanvullende functies en [wijzigingen in de bestaande API](azure-ad-roles-features.md#api-changes). Terwijl de nieuwe versie wordt geïmplementeerd, zijn de procedures die u in dit artikel volgt, afhankelijk van de versie van Privileged Identity Management die u momenteel hebt. Volg de stappen in deze sectie om te bepalen welke versie van Privileged Identity Management u hebt. Nadat u uw versie van Privileged Identity Management weet, kunt u de procedures in dit artikel selecteren die overeenkomen met die versie.
+Vanaf november 2019 wordt het gedeelte Azure AD-rollen van Privileged Identity Management bijgewerkt naar een nieuwe versie die overeenkomt met de ervaringen voor Azure-bronrollen. Dit zorgt voor extra functies en [wijzigingen in de bestaande API.](azure-ad-roles-features.md#api-changes) Terwijl de nieuwe versie wordt uitgerold, zijn welke procedures u in dit artikel volgt, afhankelijk van de versie van Privileged Identity Management die u momenteel hebt. Volg de stappen in deze sectie om te bepalen welke versie van Privileged Identity Management u hebt. Nadat u uw versie van Privileged Identity Management hebt weten, u de procedures in dit artikel selecteren die overeenkomen met die versie.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bevindt.
-1. Open **Azure AD privileged Identity Management**. Als u een banner aan de bovenkant van de overzichts pagina hebt, volgt u de instructies op het tabblad **nieuwe versie** van dit artikel. Als dat niet het geval is, volgt u de instructies op het tabblad **vorige versie** .
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met een gebruiker die zich in de rol [Van Privileged role administrator](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bevindt.
+1. Azure **AD Privileged Identity Management openen**. Als u boven aan de overzichtspagina een banner hebt staan, volgt u de instructies op het tabblad **Nieuwe versie** van dit artikel. Volg anders de instructies op het tabblad **Vorige versie.**
 
   [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-Volg de stappen in dit artikel om beveiligings waarschuwingen voor Azure AD-rollen te onderzoeken.
+Volg de stappen in dit artikel om beveiligingswaarschuwingen voor Azure AD-rollen te onderzoeken.
 
 # <a name="new-version"></a>[Nieuwe versie](#tab/new)
 
-![Azure AD-rollen: waarschuwingen in het deel venster waarschuwingen en de ernst](./media/pim-how-to-configure-security-alerts/view-alerts.png)
+![Azure AD-rollen - Waarschuwingen voor waarschuwingen en de ernst](./media/pim-how-to-configure-security-alerts/view-alerts.png)
 
 ## <a name="security-alerts"></a>Beveiligingswaarschuwingen
 
-In deze sectie vindt u alle beveiligings waarschuwingen voor Azure AD-rollen, samen met informatie over hoe u kunt voor komen. Ernst heeft de volgende betekenis:
+In deze sectie worden alle beveiligingswaarschuwingen voor Azure AD-rollen weergegeven, samen met hoe u oplossen en hoe u deze voorkomen. Ernst heeft de volgende betekenis:
 
-- **Hoog**: vereist direct actie vanwege een beleids schending.
-- **Medium**: vereist geen onmiddellijke actie, maar signaleert een mogelijke beleids schending.
-- **Low**: vereist geen onmiddellijke actie, maar stelt een voor keur voor een wijziging van het beleid voor.
+- **Hoog**: Vereist onmiddellijke actie vanwege een beleidsschending.
+- **Medium:** Vereist geen onmiddellijke actie, maar signaleert een mogelijke schending van het beleid.
+- **Laag**: Vereist geen onmiddellijke actie, maar suggereert een voorkeursbeleidswijziging.
 
-### <a name="administrators-arent-using-their-privileged-roles"></a>Beheerders gebruiken hun geprivilegieerde rollen niet
-
-| | |
-| --- | --- |
-| **Ernst** | Laag |
-| **Waarom krijg ik deze waarschuwing?** | Gebruikers aan wie een Privileged is toegewezen, zijn niet meer nodig om de kans op een aanval te verhogen. Het is ook gemakkelijker voor kwaadwillende personen om niet te worden opgemerkt in accounts die niet actief worden gebruikt. |
-| **Hoe kunt u het probleem oplossen?** | Controleer de gebruikers in de lijst en verwijder ze uit geprivilegieerde rollen die ze niet nodig hebben. |
-| **Preventie** | Ken alleen geprivilegieerde rollen toe aan gebruikers die een zakelijke reden hebben. </br>Plan regel matige [toegangs beoordelingen](pim-how-to-start-security-review.md) om te controleren of gebruikers nog steeds hun toegang nodig hebben. |
-| **Actie voor het verkleinen van de portal** | Hiermee verwijdert u het account uit hun geprivilegieerde rol. |
-| **Trigger** | Wordt geactiveerd als een gebruiker het opgegeven aantal dagen overschrijdt zonder een rol te activeren. |
-| **Aantal dagen** | Met deze instelling bepaalt u het maximum aantal dagen van 0 tot 100 dat een gebruiker kan door gaan zonder een rol te activeren.|
-
-### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>Voor rollen is multi-factor Authentication niet vereist voor activering
+### <a name="administrators-arent-using-their-privileged-roles"></a>Beheerders gebruiken hun bevoorrechte rollen niet
 
 | | |
 | --- | --- |
 | **Ernst** | Laag |
-| **Waarom krijg ik deze waarschuwing?** | Zonder multi-factor Authentication kunnen gemanipuleerde gebruikers bevoegde rollen activeren. |
-| **Hoe kunt u het probleem oplossen?** | Bekijk de lijst met rollen en [vereis multi-factor Authentication](pim-how-to-change-default-settings.md) voor elke rol. |
-| **Preventie** | [Vereis MFA vereisen](pim-how-to-change-default-settings.md) voor elke rol.  |
-| **Actie voor het verkleinen van de portal** | Hiermee wordt multi-factor Authentication vereist voor de activering van de bevoorrechte rol. |
+| **Waarom krijg ik deze waarschuwing?** | Gebruikers die bevoorrechte rollen hebben toegewezen die ze niet nodig hebben, vergroot de kans op een aanval. Het is ook gemakkelijker voor aanvallers om onopgemerkt te blijven in accounts die niet actief worden gebruikt. |
+| **Hoe op te lossen?** | Bekijk de gebruikers in de lijst en verwijder ze uit bevoorrechte rollen die ze niet nodig hebben. |
+| **Preventie** | Wijs bevoorrechte rollen alleen toe aan gebruikers die een zakelijke rechtvaardiging hebben. </br>Plan regelmatig [toegangsbeoordelingen](pim-how-to-start-security-review.md) om te controleren of gebruikers nog steeds toegang nodig hebben. |
+| **In-portal mitigatieactie** | Hiermee verwijdert u het account uit hun bevoorrechte rol. |
+| **Trigger** | Geactiveerd als een gebruiker een bepaald aantal dagen doorloopt zonder een rol te activeren. |
+| **Aantal dagen** | Met deze instelling geeft u het maximum aantal dagen aan, van 0 tot 100, dat een gebruiker kan gaan zonder een rol te activeren.|
+
+### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>Rollen vereisen geen meervoudige verificatie voor activering
+
+| | |
+| --- | --- |
+| **Ernst** | Laag |
+| **Waarom krijg ik deze waarschuwing?** | Zonder meervoudige verificatie kunnen gecompromitteerde gebruikers bevoorrechte rollen activeren. |
+| **Hoe op te lossen?** | Bekijk de lijst met rollen en [vereist multi-factor authenticatie](pim-how-to-change-default-settings.md) voor elke rol. |
+| **Preventie** | [Vereisen MFA](pim-how-to-change-default-settings.md) voor elke rol.  |
+| **In-portal mitigatieactie** | Maakt multi-factor authenticatie vereist voor activering van de bevoorrechte rol. |
 
 ### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>De organisatie heeft geen Azure AD Premium P2
 
@@ -76,98 +76,98 @@ In deze sectie vindt u alle beveiligings waarschuwingen voor Azure AD-rollen, sa
 | --- | --- |
 | **Ernst** | Laag |
 | **Waarom krijg ik deze waarschuwing?** | De huidige Azure AD-organisatie heeft geen Azure AD Premium P2. |
-| **Hoe kunt u het probleem oplossen?** | Lees de informatie over [Azure AD-edities](../fundamentals/active-directory-whatis.md). Voer een upgrade uit naar Azure AD Premium P2. |
+| **Hoe op te lossen?** | Bekijk informatie over [Azure AD-edities](../fundamentals/active-directory-whatis.md). Upgrade naar Azure AD Premium P2. |
 
-### <a name="potential-stale-accounts-in-a-privileged-role"></a>Mogelijke verlopen accounts in een geprivilegieerde rol
+### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potentiële verouderde accounts in een bevoorrechte rol
 
 | | |
 | --- | --- |
 | **Ernst** | Middelgroot |
-| **Waarom krijg ik deze waarschuwing?** | Accounts in een geprivilegieerde rol hebben in de afgelopen 90 dagen geen wacht woord gewijzigd. Deze accounts zijn mogelijk service of gedeelde accounts die niet worden onderhouden en kwetsbaar zijn voor aanvallen. |
-| **Hoe kunt u het probleem oplossen?** | Controleer de accounts in de lijst. Als ze geen toegang meer nodig hebben, moet u ze verwijderen uit hun geprivilegieerde rollen. |
-| **Preventie** | Zorg ervoor dat accounts die worden gedeeld sterke wacht woorden draaien wanneer er een wijziging is in de gebruikers die het wacht woord kennen. </br>Controleer regel matig accounts met geprivilegieerde rollen met [toegangs beoordelingen](pim-how-to-start-security-review.md) en verwijder roltoewijzingen die niet meer nodig zijn. |
-| **Actie voor het verkleinen van de portal** | Hiermee verwijdert u het account uit hun geprivilegieerde rol. |
-| **Aanbevolen procedures** | Gedeelde, service-en toegangs accounts voor toegang die worden geverifieerd met een wacht woord en die zijn toegewezen aan streng beschermde administratieve rollen, zoals globale beheerder of beveiligings beheerder, moeten hun wacht woorden draaien voor de volgende gevallen:<ul><li>Na een beveiligings incident met betrekking tot misbruik of inbreuk op beheerders toegangs rechten</li><li>Nadat de bevoegdheden van een gebruiker zijn gewijzigd, zodat ze geen beheerder meer zijn (bijvoorbeeld nadat een werk nemer die een beheerder is, de organisatie verlaat of verlaat)</li><li>Met regel matige intervallen (bijvoorbeeld elk kwar taal of per jaar), zelfs als er geen sprake is van een onbekende schending of wijziging van IT-personeel</li></ul>Omdat meerdere personen toegang hebben tot de referenties van deze accounts, moeten de referenties worden geroteerd om ervoor te zorgen dat mensen die hun rollen hebben verlaten, geen toegang meer hebben tot de accounts. [Meer informatie over het beveiligen van accounts](../users-groups-roles/directory-admin-roles-secure.md) |
+| **Waarom krijg ik deze waarschuwing?** | Accounts in een bevoorrechte rol hebben hun wachtwoord in de afgelopen 90 dagen niet gewijzigd. Deze accounts kunnen service- of gedeelde accounts zijn die niet worden onderhouden en kwetsbaar zijn voor aanvallers. |
+| **Hoe op te lossen?** | Bekijk de accounts in de lijst. Als ze geen toegang meer nodig hebben, verwijder ze dan uit hun bevoorrechte rollen. |
+| **Preventie** | Zorg ervoor dat accounts die worden gedeeld sterke wachtwoorden roteren wanneer er een wijziging is in de gebruikers die het wachtwoord kennen. </br>Controleer regelmatig accounts met bevoorrechte rollen met [toegangsbeoordelingen](pim-how-to-start-security-review.md) en verwijder roltoewijzingen die niet langer nodig zijn. |
+| **In-portal mitigatieactie** | Hiermee verwijdert u het account uit hun bevoorrechte rol. |
+| **Aanbevolen procedures** | Accounts voor gedeelde, service- en noodtoegangsaccounts die zich verifiëren met een wachtwoord en zijn toegewezen aan zeer bevoorrechte beheerdersrollen, zoals globale beheerder of beveiligingsbeheerder, moeten hun wachtwoorden laten roteren voor de volgende gevallen:<ul><li>Na een beveiligingsincident met misbruik of compromis van administratieve toegangsrechten</li><li>Nadat de bevoegdheden van een gebruiker zijn gewijzigd, zodat deze geen beheerder meer is (bijvoorbeeld nadat een werknemer die een beheerder was, IT verlaat of de organisatie verlaat)</li><li>Op regelmatige tijdstippen (bijvoorbeeld drie- of jaarlijks), zelfs als er geen bekende inbreuk of wijziging in IT-personeel</li></ul>Aangezien meerdere personen toegang hebben tot de referenties van deze accounts, moeten de referenties worden geroteerd om ervoor te zorgen dat mensen die hun rol hebben verlaten, geen toegang meer hebben tot de accounts. [Meer informatie over het beveiligen van accounts](../users-groups-roles/directory-admin-roles-secure.md) |
 
-### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>Rollen worden buiten Privileged Identity Management toegewezen
+### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>Rollen worden toegewezen buiten Privileged Identity Management
 
 | | |
 | --- | --- |
 | **Ernst** | Hoog |
-| **Waarom krijg ik deze waarschuwing?** | Geprivilegieerde roltoewijzingen buiten Privileged Identity Management worden niet op de juiste wijze gecontroleerd en kunnen duiden op een actieve aanval. |
-| **Hoe kunt u het probleem oplossen?** | Controleer de gebruikers in de lijst en verwijder deze uit de geprivilegieerde rollen die buiten Privileged Identity Management zijn toegewezen. |
-| **Preventie** | Onderzoek waar gebruikers geprivilegieerde rollen worden toegewezen buiten Privileged Identity Management en de volgende toewijzingen van daaruit niet kunnen verbieden. |
-| **Actie voor het verkleinen van de portal** | Hiermee verwijdert u de gebruiker uit hun geprivilegieerde rol. |
+| **Waarom krijg ik deze waarschuwing?** | Bevoorrechte roltoewijzingen die buiten Privileged Identity Management worden uitgevoerd, worden niet goed gecontroleerd en kunnen duiden op een actieve aanval. |
+| **Hoe op te lossen?** | Controleer de gebruikers in de lijst en verwijder deze uit bevoorrechte rollen die buiten Privileged Identity Management zijn toegewezen. |
+| **Preventie** | Onderzoek waar gebruikers bevoorrechte rollen toegewezen krijgen buiten Privileged Identity Management en verbied toekomstige toewijzingen vanaf daar. |
+| **In-portal mitigatieactie** | Hiermee verwijdert u de gebruiker uit zijn of haar bevoorrechte rol. |
 
 ### <a name="there-are-too-many-global-administrators"></a>Er zijn te veel globale beheerders
 
 | | |
 | --- | --- |
 | **Ernst** | Laag |
-| **Waarom krijg ik deze waarschuwing?** | De globale beheerder is de rol met de hoogste bevoegdheden. Als een globale beheerder is aangetast, krijgt de aanvaller toegang tot alle machtigingen, waardoor het hele systeem risico loopt. |
-| **Hoe kunt u het probleem oplossen?** | Controleer de gebruikers in de lijst en verwijder alle die de rol globale beheerder niet absoluut nodig hebben. </br>Wijs in plaats daarvan beperkte rollen toe aan deze gebruikers. |
-| **Preventie** | Wijs gebruikers de minst bevoegde rol toe die ze nodig hebben. |
-| **Actie voor het verkleinen van de portal** | Hiermee verwijdert u het account uit hun geprivilegieerde rol. |
-| **Trigger** | Wordt geactiveerd als aan twee verschillende criteria wordt voldaan en u deze beide kunt configureren. Eerst moet u een bepaalde drempel waarde van globale beheerders bereiken. Ten tweede moet een bepaald percentage van uw totale roltoewijzingen globale beheerders zijn. Als u slechts een van deze metingen voldoet, wordt de waarschuwing niet weer gegeven. |
-| **Minimum aantal globale beheerders** | Met deze instelling bepaalt u het aantal globale beheerders, van 2 tot en met 100, die u overweegt te weinig voor uw Azure AD-organisatie. |
-| **Percentage van globale beheerders** | Met deze instelling bepaalt u het minimum percentage van beheerders die globale beheerders zijn, van 0% tot 100%, waaronder u niet wilt dat uw Azure AD-organisatie dip. |
+| **Waarom krijg ik deze waarschuwing?** | Globale beheerder is de hoogste bevoorrechte rol. Als een globale beheerder wordt gecompromitteerd, krijgt de aanvaller toegang tot al zijn machtigingen, waardoor uw hele systeem in gevaar komt. |
+| **Hoe op te lossen?** | Bekijk de gebruikers in de lijst en verwijder gebruikers die de rol globale beheerder niet absoluut nodig hebben. </br>Wijs in plaats daarvan lagere bevoorrechte rollen toe aan deze gebruikers. |
+| **Preventie** | Wijs gebruikers de minst bevoorrechte rol toe die ze nodig hebben. |
+| **In-portal mitigatieactie** | Hiermee verwijdert u het account uit hun bevoorrechte rol. |
+| **Trigger** | Geactiveerd als aan twee verschillende criteria wordt voldaan en u ze allebei configureren. Eerst moet u een bepaalde drempel van globale beheerders bereiken. Ten tweede moet een bepaald percentage van uw totale roltoewijzingen globale beheerders zijn. Als u slechts aan één van deze metingen voldoet, wordt de waarschuwing niet weergegeven. |
+| **Minimumaantal globale beheerders** | Met deze instelling geeft u het aantal globale beheerders op, van 2 tot 100, dat u als te weinig beschouwt voor uw Azure AD-organisatie. |
+| **Percentage globale beheerders** | Met deze instelling geeft u het minimumpercentage beheerders op dat globale beheerders zijn, van 0% tot 100%, waaronder u niet wilt dat uw Azure AD-organisatie ondergaat. |
 
 ### <a name="roles-are-being-activated-too-frequently"></a>Rollen worden te vaak geactiveerd
 
 | | |
 | --- | --- |
 | **Ernst** | Laag |
-| **Waarom krijg ik deze waarschuwing?** | Meerdere activeringen naar dezelfde bevoorrechte rol door dezelfde gebruiker is een aantekening van een aanval. |
-| **Hoe kunt u het probleem oplossen?** | Controleer de gebruikers in de lijst en zorg ervoor dat de [activerings duur](pim-how-to-change-default-settings.md) voor de bijbehorende rol lang genoeg is ingesteld om hun taken uit te voeren. |
-| **Preventie** | Zorg ervoor dat de [activerings duur](pim-how-to-change-default-settings.md) voor geprivilegieerde rollen lang genoeg is ingesteld voor gebruikers om hun taken uit te voeren.</br>[Multi-factor Authentication vereisen](pim-how-to-change-default-settings.md) voor geprivilegieerde rollen met accounts die worden gedeeld door meerdere beheerders. |
-| **Actie voor het verkleinen van de portal** | N.v.t. |
-| **Trigger** | Wordt geactiveerd als een gebruiker dezelfde geprivilegieerde rol meerdere keren binnen een opgegeven periode activeert. U kunt zowel de tijds periode als het aantal activeringen configureren. |
-| **Periode activering verlenging** | Met deze instelling geeft u in dagen, uren, minuten en seconden de periode op die u wilt gebruiken voor het bijhouden van verdachte vernieuwingen. |
-| **Aantal activerings verlengingen** | Met deze instelling bepaalt u het aantal activeringen, van 2 tot 100, op basis waarvan u een melding wilt ontvangen binnen het tijds bestek dat u hebt gekozen. U kunt deze instelling wijzigen door de schuif regelaar te verplaatsen of door een getal in het tekstvak te typen. |
+| **Waarom krijg ik deze waarschuwing?** | Meerdere activeringen naar dezelfde bevoorrechte rol door dezelfde gebruiker is een teken van een aanval. |
+| **Hoe op te lossen?** | Controleer de gebruikers in de lijst en zorg ervoor dat de [activeringsduur](pim-how-to-change-default-settings.md) voor hun bevoorrechte rol lang genoeg is ingesteld om hun taken uit te voeren. |
+| **Preventie** | Controleer of de [activeringsduur](pim-how-to-change-default-settings.md) voor bevoorrechte rollen lang genoeg is ingesteld zodat gebruikers hun taken kunnen uitvoeren.</br>[Vereist meervoudige verificatie](pim-how-to-change-default-settings.md) voor bevoorrechte rollen waarvoor accounts zijn gedeeld door meerdere beheerders. |
+| **In-portal mitigatieactie** | N.v.t. |
+| **Trigger** | Geactiveerd als een gebruiker dezelfde bevoorrechte rol meerdere keren activeert binnen een bepaalde periode. U zowel de periode als het aantal activeringen configureren. |
+| **Tijdsperiode activeringsvernieuwing** | Deze instelling geeft in dagen, uren, minuten en ten tweede de tijdsperiode op die u wilt gebruiken om verdachte verlengingen bij te houden. |
+| **Aantal activeringsverlengingen** | Met deze instelling geeft u het aantal activeringen op, van 2 tot 100, waarop u binnen het door u gekozen tijdsbestek een melding wilt ontvangen. U deze instelling wijzigen door de schuifregelaar te verplaatsen of een getal in het tekstvak te typen. |
 
-## <a name="configure-security-alert-settings"></a>Instellingen voor beveiligings waarschuwingen configureren
+## <a name="configure-security-alert-settings"></a>Instellingen voor beveiligingswaarschuwingen configureren
 
-Ga op de pagina waarschuwingen naar **instellingen**.
+Ga op de pagina Waarschuwingen naar **Instellingen**.
 
-![Pagina waarschuwingen met gemarkeerde instellingen](media/pim-how-to-configure-security-alerts/alert-settings.png)
+![Pagina Waarschuwingen met gemarkeerde instellingen](media/pim-how-to-configure-security-alerts/alert-settings.png)
 
-Pas de instellingen voor de verschillende waarschuwingen aan om te werken met uw omgeving en beveiligings doelen.
+Pas instellingen aan voor de verschillende waarschuwingen om te werken met uw omgeving en beveiligingsdoelen.
 
-![Pagina instellen voor een waarschuwing om instellingen in te scha kelen en te configureren](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
+![Pagina instellen voor een waarschuwing om instellingen in te schakelen en te configureren](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
 # <a name="previous-version"></a>[Vorige versie](#tab/previous)
 
-![Azure AD-rollen: waarschuwingen in het deel venster waarschuwingen en de ernst](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
+![Azure AD-rollen - Waarschuwingen voor waarschuwingen en de ernst](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>Beveiligingswaarschuwingen
 
-In deze sectie vindt u alle beveiligings waarschuwingen voor Azure AD-rollen, samen met informatie over hoe u kunt voor komen. Ernst heeft de volgende betekenis:
+In deze sectie worden alle beveiligingswaarschuwingen voor Azure AD-rollen weergegeven, samen met hoe u oplossen en hoe u deze voorkomen. Ernst heeft de volgende betekenis:
 
-- **Hoog**: vereist direct actie vanwege een beleids schending.
-- **Medium**: vereist geen onmiddellijke actie, maar signaleert een mogelijke beleids schending.
-- **Low**: vereist geen onmiddellijke actie, maar stelt een voor keur voor een wijziging van het beleid voor.
+- **Hoog**: Vereist onmiddellijke actie vanwege een beleidsschending.
+- **Medium:** Vereist geen onmiddellijke actie, maar signaleert een mogelijke schending van het beleid.
+- **Laag**: Vereist geen onmiddellijke actie, maar suggereert een voorkeursbeleidswijziging.
 
-### <a name="administrators-arent-using-their-privileged-roles"></a>Beheerders gebruiken hun geprivilegieerde rollen niet
-
-| | |
-| --- | --- |
-| **Ernst** | Laag |
-| **Waarom krijg ik deze waarschuwing?** | Gebruikers aan wie een Privileged is toegewezen, zijn niet meer nodig om de kans op een aanval te verhogen. Het is ook gemakkelijker voor kwaadwillende personen om niet te worden opgemerkt in accounts die niet actief worden gebruikt. |
-| **Hoe kunt u het probleem oplossen?** | Controleer de gebruikers in de lijst en verwijder ze uit geprivilegieerde rollen die ze niet nodig hebben. |
-| **Preventie** | Ken alleen geprivilegieerde rollen toe aan gebruikers die een zakelijke reden hebben. </br>Plan regel matige [toegangs beoordelingen](pim-how-to-start-security-review.md) om te controleren of gebruikers nog steeds hun toegang nodig hebben. |
-| **Actie voor het verkleinen van de portal** | Hiermee verwijdert u het account uit hun geprivilegieerde rol. |
-| **Trigger** | Wordt geactiveerd als een gebruiker het opgegeven aantal dagen overschrijdt zonder een rol te activeren. |
-| **Aantal dagen** | Met deze instelling bepaalt u het maximum aantal dagen van 0 tot 100 dat een gebruiker kan door gaan zonder een rol te activeren.|
-
-### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>Voor rollen is multi-factor Authentication niet vereist voor activering
+### <a name="administrators-arent-using-their-privileged-roles"></a>Beheerders gebruiken hun bevoorrechte rollen niet
 
 | | |
 | --- | --- |
 | **Ernst** | Laag |
-| **Waarom krijg ik deze waarschuwing?** | Zonder multi-factor Authentication kunnen gemanipuleerde gebruikers bevoegde rollen activeren. |
-| **Hoe kunt u het probleem oplossen?** | Bekijk de lijst met rollen en [vereis multi-factor Authentication](pim-how-to-change-default-settings.md) voor elke rol. |
-| **Preventie** | [Vereis MFA vereisen](pim-how-to-change-default-settings.md) voor elke rol.  |
-| **Actie voor het verkleinen van de portal** | Hiermee wordt multi-factor Authentication vereist voor de activering van de bevoorrechte rol. |
+| **Waarom krijg ik deze waarschuwing?** | Gebruikers die bevoorrechte rollen hebben toegewezen die ze niet nodig hebben, vergroot de kans op een aanval. Het is ook gemakkelijker voor aanvallers om onopgemerkt te blijven in accounts die niet actief worden gebruikt. |
+| **Hoe op te lossen?** | Bekijk de gebruikers in de lijst en verwijder ze uit bevoorrechte rollen die ze niet nodig hebben. |
+| **Preventie** | Wijs bevoorrechte rollen alleen toe aan gebruikers die een zakelijke rechtvaardiging hebben. </br>Plan regelmatig [toegangsbeoordelingen](pim-how-to-start-security-review.md) om te controleren of gebruikers nog steeds toegang nodig hebben. |
+| **In-portal mitigatieactie** | Hiermee verwijdert u het account uit hun bevoorrechte rol. |
+| **Trigger** | Geactiveerd als een gebruiker een bepaald aantal dagen doorloopt zonder een rol te activeren. |
+| **Aantal dagen** | Met deze instelling geeft u het maximum aantal dagen aan, van 0 tot 100, dat een gebruiker kan gaan zonder een rol te activeren.|
+
+### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>Rollen vereisen geen meervoudige verificatie voor activering
+
+| | |
+| --- | --- |
+| **Ernst** | Laag |
+| **Waarom krijg ik deze waarschuwing?** | Zonder meervoudige verificatie kunnen gecompromitteerde gebruikers bevoorrechte rollen activeren. |
+| **Hoe op te lossen?** | Bekijk de lijst met rollen en [vereist multi-factor authenticatie](pim-how-to-change-default-settings.md) voor elke rol. |
+| **Preventie** | [Vereisen MFA](pim-how-to-change-default-settings.md) voor elke rol.  |
+| **In-portal mitigatieactie** | Maakt multi-factor authenticatie vereist voor activering van de bevoorrechte rol. |
 
 ### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>De organisatie heeft geen Azure AD Premium P2
 
@@ -175,73 +175,73 @@ In deze sectie vindt u alle beveiligings waarschuwingen voor Azure AD-rollen, sa
 | --- | --- |
 | **Ernst** | Laag |
 | **Waarom krijg ik deze waarschuwing?** | De huidige Azure AD-organisatie heeft geen Azure AD Premium P2. |
-| **Hoe kunt u het probleem oplossen?** | Lees de informatie over [Azure AD-edities](../fundamentals/active-directory-whatis.md). Voer een upgrade uit naar Azure AD Premium P2. |
+| **Hoe op te lossen?** | Bekijk informatie over [Azure AD-edities](../fundamentals/active-directory-whatis.md). Upgrade naar Azure AD Premium P2. |
 
-### <a name="potential-stale-accounts-in-a-privileged-role"></a>Mogelijke verlopen accounts in een geprivilegieerde rol
+### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potentiële verouderde accounts in een bevoorrechte rol
 
 | | |
 | --- | --- |
 | **Ernst** | Middelgroot |
-| **Waarom krijg ik deze waarschuwing?** | Accounts in een geprivilegieerde rol hebben in de afgelopen 90 dagen geen wacht woord gewijzigd. Deze accounts zijn mogelijk service of gedeelde accounts die niet worden onderhouden en kwetsbaar zijn voor aanvallen. |
-| **Hoe kunt u het probleem oplossen?** | Controleer de accounts in de lijst. Als ze geen toegang meer nodig hebben, moet u ze verwijderen uit hun geprivilegieerde rollen. |
-| **Preventie** | Zorg ervoor dat accounts die worden gedeeld sterke wacht woorden draaien wanneer er een wijziging is in de gebruikers die het wacht woord kennen. </br>Controleer regel matig accounts met geprivilegieerde rollen met [toegangs beoordelingen](pim-how-to-start-security-review.md) en verwijder roltoewijzingen die niet meer nodig zijn. |
-| **Actie voor het verkleinen van de portal** | Hiermee verwijdert u het account uit hun geprivilegieerde rol. |
-| **Aanbevolen procedures** | Gedeelde, service-en toegangs accounts voor toegang die worden geverifieerd met een wacht woord en die zijn toegewezen aan streng beschermde administratieve rollen, zoals globale beheerder of beveiligings beheerder, moeten hun wacht woorden draaien voor de volgende gevallen:<ul><li>Na een beveiligings incident met betrekking tot misbruik of inbreuk op beheerders toegangs rechten</li><li>Nadat de bevoegdheden van een gebruiker zijn gewijzigd, zodat ze geen beheerder meer zijn (bijvoorbeeld nadat een werk nemer die een beheerder is, de organisatie verlaat of verlaat)</li><li>Met regel matige intervallen (bijvoorbeeld elk kwar taal of per jaar), zelfs als er geen sprake is van een onbekende schending of wijziging van IT-personeel</li></ul>Omdat meerdere personen toegang hebben tot de referenties van deze accounts, moeten de referenties worden geroteerd om ervoor te zorgen dat mensen die hun rollen hebben verlaten, geen toegang meer hebben tot de accounts. [Meer informatie](https://aka.ms/breakglass) |
+| **Waarom krijg ik deze waarschuwing?** | Accounts in een bevoorrechte rol hebben hun wachtwoord in de afgelopen 90 dagen niet gewijzigd. Deze accounts kunnen service- of gedeelde accounts zijn die niet worden onderhouden en kwetsbaar zijn voor aanvallers. |
+| **Hoe op te lossen?** | Bekijk de accounts in de lijst. Als ze geen toegang meer nodig hebben, verwijder ze dan uit hun bevoorrechte rollen. |
+| **Preventie** | Zorg ervoor dat accounts die worden gedeeld sterke wachtwoorden roteren wanneer er een wijziging is in de gebruikers die het wachtwoord kennen. </br>Controleer regelmatig accounts met bevoorrechte rollen met [toegangsbeoordelingen](pim-how-to-start-security-review.md) en verwijder roltoewijzingen die niet langer nodig zijn. |
+| **In-portal mitigatieactie** | Hiermee verwijdert u het account uit hun bevoorrechte rol. |
+| **Aanbevolen procedures** | Accounts voor gedeelde, service- en noodtoegangsaccounts die zich verifiëren met een wachtwoord en zijn toegewezen aan zeer bevoorrechte beheerdersrollen, zoals globale beheerder of beveiligingsbeheerder, moeten hun wachtwoorden laten roteren voor de volgende gevallen:<ul><li>Na een beveiligingsincident met misbruik of compromis van administratieve toegangsrechten</li><li>Nadat de bevoegdheden van een gebruiker zijn gewijzigd, zodat deze geen beheerder meer is (bijvoorbeeld nadat een werknemer die een beheerder was, IT verlaat of de organisatie verlaat)</li><li>Op regelmatige tijdstippen (bijvoorbeeld drie- of jaarlijks), zelfs als er geen bekende inbreuk of wijziging in IT-personeel</li></ul>Aangezien meerdere personen toegang hebben tot de referenties van deze accounts, moeten de referenties worden geroteerd om ervoor te zorgen dat mensen die hun rol hebben verlaten, geen toegang meer hebben tot de accounts. [Meer informatie](https://aka.ms/breakglass) |
 
-### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>Rollen worden buiten Privileged Identity Management toegewezen
+### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>Rollen worden toegewezen buiten Privileged Identity Management
 
 | | |
 | --- | --- |
 | **Ernst** | Hoog |
-| **Waarom krijg ik deze waarschuwing?** | Geprivilegieerde roltoewijzingen buiten Privileged Identity Management worden niet op de juiste wijze gecontroleerd en kunnen duiden op een actieve aanval. |
-| **Hoe kunt u het probleem oplossen?** | Controleer de gebruikers in de lijst en verwijder deze uit de geprivilegieerde rollen die buiten Privileged Identity Management zijn toegewezen. |
-| **Preventie** | Onderzoek waar gebruikers geprivilegieerde rollen worden toegewezen buiten Privileged Identity Management en de volgende toewijzingen van daaruit niet kunnen verbieden. |
-| **Actie voor het verkleinen van de portal** | Hiermee verwijdert u de gebruiker uit hun geprivilegieerde rol. |
+| **Waarom krijg ik deze waarschuwing?** | Bevoorrechte roltoewijzingen die buiten Privileged Identity Management worden uitgevoerd, worden niet goed gecontroleerd en kunnen duiden op een actieve aanval. |
+| **Hoe op te lossen?** | Controleer de gebruikers in de lijst en verwijder deze uit bevoorrechte rollen die buiten Privileged Identity Management zijn toegewezen. |
+| **Preventie** | Onderzoek waar gebruikers bevoorrechte rollen toegewezen krijgen buiten Privileged Identity Management en verbied toekomstige toewijzingen vanaf daar. |
+| **In-portal mitigatieactie** | Hiermee verwijdert u de gebruiker uit zijn of haar bevoorrechte rol. |
 
 ### <a name="there-are-too-many-global-administrators"></a>Er zijn te veel globale beheerders
 
 | | |
 | --- | --- |
 | **Ernst** | Laag |
-| **Waarom krijg ik deze waarschuwing?** | De globale beheerder is de rol met de hoogste bevoegdheden. Als een globale beheerder is aangetast, krijgt de aanvaller toegang tot alle machtigingen, waardoor het hele systeem risico loopt. |
-| **Hoe kunt u het probleem oplossen?** | Controleer de gebruikers in de lijst en verwijder alle die de rol globale beheerder niet absoluut nodig hebben. </br>Wijs in plaats daarvan beperkte rollen toe aan deze gebruikers. |
-| **Preventie** | Wijs gebruikers de minst bevoegde rol toe die ze nodig hebben. |
-| **Actie voor het verkleinen van de portal** | Hiermee verwijdert u het account uit hun geprivilegieerde rol. |
-| **Trigger** | Wordt geactiveerd als aan twee verschillende criteria wordt voldaan en u deze beide kunt configureren. Eerst moet u een bepaalde drempel waarde van globale beheerders bereiken. Ten tweede moet een bepaald percentage van uw totale roltoewijzingen globale beheerders zijn. Als u slechts een van deze metingen voldoet, wordt de waarschuwing niet weer gegeven. |
-| **Minimum aantal globale beheerders** | Met deze instelling bepaalt u het aantal globale beheerders, van 2 tot en met 100, die u overweegt te weinig voor uw Azure AD-organisatie. |
-| **Percentage van globale beheerders** | Met deze instelling bepaalt u het minimum percentage van beheerders die globale beheerders zijn, van 0% tot 100%, waaronder u niet wilt dat uw Azure AD-organisatie dip. |
+| **Waarom krijg ik deze waarschuwing?** | Globale beheerder is de hoogste bevoorrechte rol. Als een globale beheerder wordt gecompromitteerd, krijgt de aanvaller toegang tot al zijn machtigingen, waardoor uw hele systeem in gevaar komt. |
+| **Hoe op te lossen?** | Bekijk de gebruikers in de lijst en verwijder gebruikers die de rol globale beheerder niet absoluut nodig hebben. </br>Wijs in plaats daarvan lagere bevoorrechte rollen toe aan deze gebruikers. |
+| **Preventie** | Wijs gebruikers de minst bevoorrechte rol toe die ze nodig hebben. |
+| **In-portal mitigatieactie** | Hiermee verwijdert u het account uit hun bevoorrechte rol. |
+| **Trigger** | Geactiveerd als aan twee verschillende criteria wordt voldaan en u ze allebei configureren. Eerst moet u een bepaalde drempel van globale beheerders bereiken. Ten tweede moet een bepaald percentage van uw totale roltoewijzingen globale beheerders zijn. Als u slechts aan één van deze metingen voldoet, wordt de waarschuwing niet weergegeven. |
+| **Minimumaantal globale beheerders** | Met deze instelling geeft u het aantal globale beheerders op, van 2 tot 100, dat u als te weinig beschouwt voor uw Azure AD-organisatie. |
+| **Percentage globale beheerders** | Met deze instelling geeft u het minimumpercentage beheerders op dat globale beheerders zijn, van 0% tot 100%, waaronder u niet wilt dat uw Azure AD-organisatie ondergaat. |
 
 ### <a name="roles-are-being-activated-too-frequently"></a>Rollen worden te vaak geactiveerd
 
 | | |
 | --- | --- |
 | **Ernst** | Laag |
-| **Waarom krijg ik deze waarschuwing?** | Meerdere activeringen naar dezelfde bevoorrechte rol door dezelfde gebruiker is een aantekening van een aanval. |
-| **Hoe kunt u het probleem oplossen?** | Controleer de gebruikers in de lijst en zorg ervoor dat de [activerings duur](pim-how-to-change-default-settings.md) voor de bijbehorende rol lang genoeg is ingesteld om hun taken uit te voeren. |
-| **Preventie** | Zorg ervoor dat de [activerings duur](pim-how-to-change-default-settings.md) voor geprivilegieerde rollen lang genoeg is ingesteld voor gebruikers om hun taken uit te voeren.</br>[Multi-factor Authentication vereisen](pim-how-to-change-default-settings.md) voor geprivilegieerde rollen met accounts die worden gedeeld door meerdere beheerders. |
-| **Actie voor het verkleinen van de portal** | N.v.t. |
-| **Trigger** | Wordt geactiveerd als een gebruiker dezelfde geprivilegieerde rol meerdere keren binnen een opgegeven periode activeert. U kunt zowel de tijds periode als het aantal activeringen configureren. |
-| **Periode activering verlenging** | Met deze instelling geeft u in dagen, uren, minuten en seconden de periode op die u wilt gebruiken voor het bijhouden van verdachte vernieuwingen. |
-| **Aantal activerings verlengingen** | Met deze instelling bepaalt u het aantal activeringen, van 2 tot 100, op basis waarvan u een melding wilt ontvangen binnen het tijds bestek dat u hebt gekozen. U kunt deze instelling wijzigen door de schuif regelaar te verplaatsen of door een getal in het tekstvak te typen. |
+| **Waarom krijg ik deze waarschuwing?** | Meerdere activeringen naar dezelfde bevoorrechte rol door dezelfde gebruiker is een teken van een aanval. |
+| **Hoe op te lossen?** | Controleer de gebruikers in de lijst en zorg ervoor dat de [activeringsduur](pim-how-to-change-default-settings.md) voor hun bevoorrechte rol lang genoeg is ingesteld om hun taken uit te voeren. |
+| **Preventie** | Controleer of de [activeringsduur](pim-how-to-change-default-settings.md) voor bevoorrechte rollen lang genoeg is ingesteld zodat gebruikers hun taken kunnen uitvoeren.</br>[Vereist meervoudige verificatie](pim-how-to-change-default-settings.md) voor bevoorrechte rollen waarvoor accounts zijn gedeeld door meerdere beheerders. |
+| **In-portal mitigatieactie** | N.v.t. |
+| **Trigger** | Geactiveerd als een gebruiker dezelfde bevoorrechte rol meerdere keren activeert binnen een bepaalde periode. U zowel de periode als het aantal activeringen configureren. |
+| **Tijdsperiode activeringsvernieuwing** | Deze instelling geeft in dagen, uren, minuten en ten tweede de tijdsperiode op die u wilt gebruiken om verdachte verlengingen bij te houden. |
+| **Aantal activeringsverlengingen** | Met deze instelling geeft u het aantal activeringen op, van 2 tot 100, waarop u binnen het door u gekozen tijdsbestek een melding wilt ontvangen. U deze instelling wijzigen door de schuifregelaar te verplaatsen of een getal in het tekstvak te typen. |
 
-## <a name="configure-security-alert-settings"></a>Instellingen voor beveiligings waarschuwingen configureren
+## <a name="configure-security-alert-settings"></a>Instellingen voor beveiligingswaarschuwingen configureren
 
-U kunt enkele van de beveiligings waarschuwingen in Privileged Identity Management aanpassen om te werken met de behoeften van uw organisatie en de beveiligings doelen. Volg deze stappen om de instellingen voor beveiligings waarschuwingen te openen:
+U een aantal beveiligingswaarschuwingen in Privileged Identity Management aanpassen om te werken met de behoeften en beveiligingsdoelen van uw organisatie. Voer de volgende stappen uit om de instellingen voor beveiligingswaarschuwingen te openen:
 
-1. Open **privileged Identity Management** in azure AD.
+1. Open **Privileged Identity Management** in Azure AD.
 
 1. Selecteer **Azure AD-rollen**.
 
-1. Selecteer **instellingen** en vervolgens op **waarschuwingen**.
+1. Selecteer **Instellingen** en vervolgens **Waarschuwingen**.
 
-    ![Azure AD-rollen: instellingen waarvoor waarschuwingen zijn geselecteerd](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
+    ![Azure AD-rollen - Instellingen met waarschuwingen geselecteerd](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
 
-1. Selecteer een naam voor de waarschuwing om de instelling voor die waarschuwing te configureren.
+1. Selecteer een waarschuwingsnaam om de instelling voor die waarschuwing te configureren.
 
-    ![Voor de geselecteerde waarschuwing, het deel venster instellingen voor beveiligings waarschuwingen](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
+    ![Voor de geselecteerde waarschuwing, deelvenster beveiligingswaarschuwingen](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
 
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Instellingen voor Azure AD-functies configureren in Privileged Identity Management](pim-how-to-change-default-settings.md)
+- [Azure AD-rolinstellingen configureren in Privileged Identity Management](pim-how-to-change-default-settings.md)

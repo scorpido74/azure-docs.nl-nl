@@ -1,6 +1,6 @@
 ---
-title: Gegevens verplaatsen van Teradata met Azure Data Factory
-description: Meer informatie over Teradata-connector voor de Data Factory-service waarmee u gegevens kunt verplaatsen vanuit een Teradata-data base
+title: Gegevens van Teradata verplaatsen met Azure Data Factory
+description: Meer informatie over Teradata Connector voor de Data Factory-service waarmee u gegevens verplaatsen van Teradata Database
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,95 +13,95 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281195"
 ---
-# <a name="move-data-from-teradata-using-azure-data-factory"></a>Gegevens verplaatsen van Teradata met Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+# <a name="move-data-from-teradata-using-azure-data-factory"></a>Gegevens van Teradata verplaatsen met Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](data-factory-onprem-teradata-connector.md)
 > * [Versie 2 (huidige versie)](../connector-teradata.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [Teradata-connector in v2](../connector-teradata.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Zie [Teradata-connector in V2](../connector-teradata.md)als u de huidige versie van de datafabriekservice gebruikt.
 
-In dit artikel wordt uitgelegd hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens van een on-premises Teradata-data base te verplaatsen. Het is gebaseerd op het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) , dat een algemeen overzicht geeft van de verplaatsing van gegevens met de Kopieer activiteit.
+In dit artikel wordt uitgelegd hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens uit een on-premises Teradata-database te verplaatsen. Het bouwt voort op het artikel [Data Movement Activities,](data-factory-data-movement-activities.md) dat een algemeen overzicht geeft van gegevensverplaatsing met de kopieeractiviteit.
 
-U kunt gegevens van een on-premises Teradata-gegevens opslag kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als sinks op basis van de Kopieer activiteit. Data Factory ondersteunt momenteel alleen het verplaatsen van gegevens van een Teradata-gegevens archief naar andere gegevens archieven, maar niet voor het verplaatsen van gegevens van andere gegevens archieven naar een Teradata-gegevens archief.
+U gegevens uit een on-premises Teradata-gegevensarchief kopiëren naar elk ondersteund sinkdataarchief. Zie de tabel [Ondersteunde gegevensopslag](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die als sinks worden ondersteund door de kopieeractiviteit. Datafactory ondersteunt momenteel alleen het verplaatsen van gegevens van een Teradata-gegevensarchief naar andere gegevensopslag, maar niet voor het verplaatsen van gegevens van andere gegevensopslag naar een Teradata-gegevensarchief.
 
 ## <a name="prerequisites"></a>Vereisten
-Data Factory ondersteunt het maken van verbinding met on-premises Teradata-bronnen via de Data Management Gateway. Zie [gegevens verplaatsen tussen on-premises locaties en een Cloud](data-factory-move-data-between-onprem-and-cloud.md) artikel voor meer informatie over Data Management Gateway en stapsgewijze instructies voor het instellen van de gateway.
+Data factory ondersteunt het verbinden met on-premises Teradata bronnen via de Data Management Gateway. Bekijk [het verplaatsen van gegevens tussen on-premises locaties en een cloudartikel](data-factory-move-data-between-onprem-and-cloud.md) voor meer informatie over Data Management Gateway en stapsgewijze instructies voor het instellen van de gateway.
 
-De gateway is vereist, zelfs als de Teradata wordt gehost in een Azure IaaS-VM. U kunt de gateway op dezelfde IaaS-VM installeren als het gegevens archief of op een andere virtuele machine zolang de gateway verbinding kan maken met de data base.
+Gateway is vereist, zelfs als de Teradata wordt gehost in een Azure IaaS VM. U de gateway installeren op dezelfde IaaS VM als het gegevensarchief of op een andere VM, zolang de gateway verbinding kan maken met de database.
 
 > [!NOTE]
-> Zie problemen [met gateway problemen oplossen](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) voor tips over het oplossen van problemen met verbinding/gateway.
+> Zie [Problemen met de gateway oplossen](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) voor tips over het oplossen van verbindings-/gatewaygerelateerde problemen.
 
 ## <a name="supported-versions-and-installation"></a>Ondersteunde versies en installatie
-Als Data Management Gateway verbinding met de Teradata-Data Base wilt maken, moet u de [.net-gegevens provider voor Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) versie 14 of hoger installeren op hetzelfde systeem als de Data Management Gateway. Teradata-versie 12 en hoger wordt ondersteund.
+Als u een verbinding wilt maken met de Teradata-database, moet u de [.NET Data Provider voor Teradata-versie](https://go.microsoft.com/fwlink/?LinkId=278886) 14 of hoger installeren op hetzelfde systeem als de Data Management Gateway. Teradata versie 12 en hoger wordt ondersteund.
 
 ## <a name="getting-started"></a>Aan de slag
-U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een on-premises Cassandra-gegevens opslag met behulp van verschillende hulpprogram ma's/Api's.
+U een pijplijn maken met een kopieeractiviteit die gegevens verplaatst van een on-premises Cassandra-gegevensarchief met behulp van verschillende hulpprogramma's/API's.
 
-- De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
-- U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
+- De eenvoudigste manier om een pijplijn te maken, is door de **wizard Kopiëren**te gebruiken. Zie [Zelfstudie: Maak een pijplijn met wizard Kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough voor het maken van een pijplijn met de wizard Gegevens kopiëren.
+- U ook de volgende hulpprogramma's gebruiken om een pijplijn te maken: **Visual Studio,** **Azure PowerShell,** **Azure Resource Manager-sjabloon,** **.NET API**en REST **API**. Zie [Zelfstudie voor activiteit kopiëren](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies om een pijplijn met een kopieeractiviteit te maken.
 
-Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
+Of u nu de hulpprogramma's of API's gebruikt, u voert de volgende stappen uit om een pijplijn te maken die gegevens van een brongegevensarchief naar een sink-gegevensarchief verplaatst:
 
-1. Maak **gekoppelde services** om invoer-en uitvoer gegevens archieven te koppelen aan uw Data Factory.
-2. Gegevens **sets** maken om invoer-en uitvoer gegevens voor de Kopieer bewerking weer te geven.
-3. Maak een **pijp lijn** met een Kopieer activiteit die een gegevensset als invoer en een gegevensset als uitvoer gebruikt.
+1. Maak **gekoppelde services** om invoer- en uitvoergegevensopslag te koppelen aan uw gegevensfabriek.
+2. Maak **gegevenssets** om invoer- en uitvoergegevens voor de kopieerbewerking weer te geven.
+3. Maak een **pijplijn** met een kopieeractiviteit die een gegevensset als invoer en een uitvoerset als uitvoer neemt.
 
-Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data Factory entiteiten (gekoppelde services, gegevens sets en de pijp lijn) gemaakt. Wanneer u hulpprogram ma's/Api's (met uitzonde ring van .NET API) gebruikt, definieert u deze Data Factory entiteiten met behulp van de JSON-indeling.  Zie voor een voor beeld met JSON-definities voor Data Factory entiteiten die worden gebruikt voor het kopiëren van gegevens uit een on-premises Teradata-gegevens archief, [JSON-voor beeld: gegevens kopiëren van Teradata naar Azure Blob](#json-example-copy-data-from-teradata-to-azure-blob) in het gedeelte van dit artikel.
+Wanneer u de wizard gebruikt, worden JSON-definities voor deze gegevensfabrieksentiteiten (gekoppelde services, gegevenssets en de pijplijn) automatisch voor u gemaakt. Wanneer u tools/API's (behalve .NET API) gebruikt, definieert u deze entiteiten in de Data Factory met behulp van de JSON-indeling.  Zie [JSON-voorbeeld: Gegevens van Teradata kopiëren naar Azure Blob](#json-example-copy-data-from-teradata-to-azure-blob) voor een voorbeeld van JSON met JSON-definities voor entiteiten in gegevensfabriek die worden gebruikt om gegevens uit een on-premises Teradata-gegevensarchief te kopiëren.
 
-De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor een Teradata-gegevens archief:
+In de volgende secties vindt u informatie over JSON-eigenschappen die worden gebruikt om entiteiten in Gegevensfabriek te definiëren die specifiek zijn voor een Gegevensarchief teradata:
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
-De volgende tabel bevat een beschrijving van de JSON-elementen die specifiek zijn voor een gekoppelde Teradata-service.
+## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+In de volgende tabel vindt u een beschrijving voor JSON-elementen die specifiek zijn voor de gekoppelde service van Teradata.
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **OnPremisesTeradata** |Ja |
-| server |Naam van de server van de Teradata. |Ja |
-| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de Teradata-data base. Mogelijke waarden zijn: anoniem, basis en Windows. |Ja |
-| gebruikersnaam |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |Nee |
-| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
-| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises Teradata-data base. |Ja |
+| server |Naam van de Teradata-server. |Ja |
+| authenticationType |Type verificatie wordt gebruikt om verbinding te maken met de Teradata-database. Mogelijke waarden zijn: Anoniem, Basic en Windows. |Ja |
+| gebruikersnaam |Geef de gebruikersnaam op als u basis- of Windows-verificatie gebruikt. |Nee |
+| wachtwoord |Geef een wachtwoord op voor het gebruikersaccount dat u hebt opgegeven voor de gebruikersnaam. |Nee |
+| gatewayNaam |Naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises Teradata-database. |Ja |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
-Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
+Zie het artikel [Gegevenssets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. Secties zoals structuur, beschikbaarheid en beleid van een gegevensset JSON zijn vergelijkbaar voor alle gegevenssettypen (Azure SQL, Azure blob, Azure table, etc.).
 
-De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. Er zijn momenteel geen type-eigenschappen die voor de Teradata-gegevensset worden ondersteund.
+De sectie **typeEigenschappen** is verschillend voor elk type gegevensset en geeft informatie over de locatie van de gegevens in het gegevensarchief. Momenteel worden er geen typeeigenschappen ondersteund voor de gegevensset Teradata.
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
-Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleids regels zijn beschikbaar voor alle typen activiteiten.
+Zie het artikel [Pijplijnmaken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer- en uitvoertabellen en beleidsregels zijn beschikbaar voor alle soorten activiteiten.
 
-Terwijl de eigenschappen die beschikbaar zijn in de sectie typeProperties van de activiteit, verschillen per activiteitstype. Voor kopieer activiteiten zijn ze afhankelijk van de typen bronnen en Sinks.
+Overwegende dat de eigenschappen die beschikbaar zijn in de sectie typeEigenschappen van de activiteit per activiteitstype verschillen. Voor Kopieeractiviteit variëren ze afhankelijk van de soorten bronnen en putten.
 
-Als de bron van het type **RelationalSource** (dat Teradata bevat) is, zijn de volgende eigenschappen beschikbaar in de sectie **typeProperties** :
+Wanneer de bron van type **RelationalSource** is (inclusief Teradata), zijn de volgende eigenschappen beschikbaar in de sectie **typeProperties:**
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: Select * from MyTable. |Ja |
+| query |Gebruik de aangepaste query om gegevens te lezen. |SQL-querytekenreeks. Selecteer bijvoorbeeld * in MyTable. |Ja |
 
-### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON-voor beeld: gegevens kopiëren van Teradata naar Azure Blob
-In het volgende voor beeld worden voor beeld-JSON-definities weer gegeven die u kunt gebruiken om een pijp lijn te maken met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ze laten zien hoe u gegevens kunt kopiëren van Teradata naar Azure Blob Storage. Gegevens kunnen echter worden gekopieerd naar de [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) opgegeven sinks met behulp van de Kopieer activiteit in azure Data Factory.
+### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON-voorbeeld: gegevens van Teradata kopiëren naar Azure Blob
+In het volgende voorbeeld vindt u voorbeeld-JSON-definities die u gebruiken om een pijplijn te maken met Behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell.](data-factory-copy-activity-tutorial-using-powershell.md) Ze laten zien hoe u gegevens van Teradata kopiëren naar Azure Blob Storage. Gegevens kunnen echter worden gekopieerd naar een van de putten die [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) zijn vermeld met behulp van de kopieeractiviteit in Azure Data Factory.
 
-Het voor beeld heeft de volgende data factory entiteiten:
+Het voorbeeld heeft de volgende gegevensfabriekentiteiten:
 
 1. Een gekoppelde service van het type [OnPremisesTeradata](#linked-service-properties).
-2. Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [RelationalTable](#dataset-properties).
-4. Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. De [pijp lijn](data-factory-create-pipelines.md) met Kopieer activiteit die gebruikmaakt van [RelationalSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+2. Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+3. Een [invoergegevensset](data-factory-create-datasets.md) van type [RelationalTable](#dataset-properties).
+4. Een [uitvoergegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+5. De [pijplijn](data-factory-create-pipelines.md) met kopieeractiviteit die [RelationalSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)gebruikt.
 
-In het voor beeld worden gegevens gekopieerd van een query resultaat in de Teradata-Data Base naar een BLOB elk uur. De JSON-eigenschappen die in deze steek proeven worden gebruikt, worden beschreven in secties die volgen op de voor beelden.
+Het voorbeeld kopieert gegevens uit een queryresultaat in de Teradata-database elk uur naar een blob. De JSON-eigenschappen die in deze monsters worden gebruikt, worden beschreven in secties die de monsters volgen.
 
-De eerste stap is het instellen van de Data Management Gateway. De instructies bevinden zich in het [verplaatsen van gegevens tussen on-premises locaties en Cloud](data-factory-move-data-between-onprem-and-cloud.md) artikelen.
+Als eerste stap, het instellen van de data management gateway. De instructies bevinden zich in de [verhuisgegevens tussen on-premises locaties en cloudartikelen.](data-factory-move-data-between-onprem-and-cloud.md)
 
-**Gekoppelde Teradata-service:**
+**Teradata gekoppelde dienst:**
 
 ```json
 {
@@ -119,7 +119,7 @@ De eerste stap is het instellen van de Data Management Gateway. De instructies b
 }
 ```
 
-**Gekoppelde Azure Blob Storage-service:**
+**Gekoppelde Azure Blob-opslagservice:**
 
 ```json
 {
@@ -133,11 +133,11 @@ De eerste stap is het instellen van de Data Management Gateway. De instructies b
 }
 ```
 
-**Teradata-invoer gegevensset:**
+**Gegevensinvoergegevensset:**
 
-In het voor beeld wordt ervan uitgegaan dat u in Teradata een tabel ' MyTable ' hebt gemaakt en deze een kolom bevat met de naam Time Stamp voor tijdreeks gegevens.
+In het voorbeeld wordt ervan uitgegaan dat u een tabel "MyTable" in Teradata hebt gemaakt en een kolom bevat die "tijdstempel" wordt genoemd voor tijdreeksgegevens.
 
-Als u ' Extern ': True informeert de Data Factory-service dat de tabel zich buiten de data factory bevindt en die niet wordt geproduceerd door een activiteit in de data factory.
+Instelling "extern": true informeert de Data Factory-service dat de tabel zich buiten de gegevensfabriek bevindt en niet wordt geproduceerd door een activiteit in de gegevensfabriek.
 
 ```json
 {
@@ -164,9 +164,9 @@ Als u ' Extern ': True informeert de Data Factory-service dat de tabel zich buit
 }
 ```
 
-**Azure Blob-uitvoer gegevensset:**
+**Azure Blob-uitvoergegevensset:**
 
-Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interval: 1). Het mappad voor de BLOB wordt dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt delen van het jaar, de maand, de dag en het uur van de begin tijd.
+Gegevens worden elk uur naar een nieuwe blob geschreven (frequentie: uur, interval: 1). Het mappad voor de blob wordt dynamisch geëvalueerd op basis van de begintijd van het segment dat wordt verwerkt. Het mappad gebruikt delen van de begintijd van jaar, maand, dag en uur.
 
 ```json
 {
@@ -224,9 +224,9 @@ Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interv
     }
 }
 ```
-**Pijp lijn met Kopieer activiteit:**
+**Pijplijn met kopieeractiviteit:**
 
-De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **RelationalSource** en het **sink** -type is ingesteld op **BlobSink**. Met de SQL-query die is opgegeven voor de **query** -eigenschap worden de gegevens in het afgelopen uur geselecteerd om te kopiëren.
+De pijplijn bevat een kopieeractiviteit die is geconfigureerd om de invoer- en uitvoergegevenssets te gebruiken en die elk uur wordt uitgevoerd. In de JSON-definitie van pijplijn wordt het **brontype** ingesteld op **RelationalSource** en wordt **het gootsteentype** ingesteld op **BlobSink**. De SQL-query die is opgegeven voor de **eigenschap query** selecteert de gegevens in het afgelopen uur die u wilt kopiëren.
 
 ```json
 {
@@ -274,61 +274,61 @@ De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik
     }
 }
 ```
-## <a name="type-mapping-for-teradata"></a>Type toewijzing voor Teradata
-Zoals vermeld in het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) voert de Kopieer activiteit automatisch type conversies uit van bron typen naar Sink-typen met de volgende twee stappen:
+## <a name="type-mapping-for-teradata"></a>Typetoewijzing voor Teradata
+Zoals vermeld in het artikel [gegevensverplaatsingsactiviteiten](data-factory-data-movement-activities.md) voert de activiteit Kopiëren automatische typeconversies uit van brontypen naar sinktypen met de volgende benadering in twee stappen:
 
-1. Converteren van systeem eigen bron typen naar .NET-type
-2. Converteren van .NET-type naar systeem eigen Sink-type
+1. Converteren van native brontypen naar .NET-type
+2. Converteren van .NET-type naar native sinktype
 
-Bij het verplaatsen van gegevens naar Teradata, worden de volgende toewijzingen gebruikt vanuit het type Teradata tot .NET-type.
+Bij het verplaatsen van gegevens naar Teradata worden de volgende toewijzingen gebruikt van Het type Teradata naar het type .NET.
 
-| Teradata-database type | .NET Framework type |
+| Teradata-databasetype | .NET Framework type |
 | --- | --- |
-| char |Tekenreeks |
-| Clob |Tekenreeks |
-| Graphic |Tekenreeks |
-| VarChar |Tekenreeks |
-| VarGraphic |Tekenreeks |
-| Blob |Byte[] |
-| Byte |Byte[] |
-| VarByte |Byte[] |
-| BigInt |Int64 |
-| ByteInt |Int16 |
-| decimaal |decimaal |
-| Double-waarde |Double-waarde |
+| Char |Tekenreeks |
+| Clob Clob |Tekenreeks |
+| Grafische |Tekenreeks |
+| Varchar |Tekenreeks |
+| VarGrafisch |Tekenreeks |
+| Blob |Byte |
+| Byte |Byte |
+| VarByte (VarByte) |Byte |
+| Bigint |Int64 |
+| ByteInt ByteInt |Int16 |
+| Decimal |Decimal |
+| Double |Double |
 | Geheel getal |Int32 |
-| Aantal |Double-waarde |
-| SmallInt |Int16 |
+| Aantal |Double |
+| Smallint |Int16 |
 | Date |DateTime |
 | Time |TimeSpan |
-| Time With Time Zone |Tekenreeks |
+| Tijd met tijdzone |Tekenreeks |
 | Tijdstempel |DateTime |
-| Timestamp With Time Zone |DateTimeOffset |
-| Interval dag |TimeSpan |
-| Interval Day To Hour |TimeSpan |
-| Interval Day To Minute |TimeSpan |
-| Interval Day To Second |TimeSpan |
-| Interval Hour |TimeSpan |
-| Interval Hour To Minute |TimeSpan |
-| Interval Hour To Second |TimeSpan |
-| Interval Minute |TimeSpan |
-| Interval Minute To Second |TimeSpan |
-| Interval Second |TimeSpan |
-| Interval Year |Tekenreeks |
-| Interval Year To Month |Tekenreeks |
-| Interval Month |Tekenreeks |
-| Period(Date) |Tekenreeks |
-| Periode (tijd) |Tekenreeks |
-| Period(Time With Time Zone) |Tekenreeks |
-| Period(Timestamp) |Tekenreeks |
-| Period(Timestamp With Time Zone) |Tekenreeks |
+| Tijdstempel met tijdzone |Datumtijdverschuiving |
+| Intervaldag |TimeSpan |
+| Interval van dag tot uur |TimeSpan |
+| Interval van dag tot minuut |TimeSpan |
+| Intervaldag naar tweede |TimeSpan |
+| Intervaluur |TimeSpan |
+| Interval uur tot minuut |TimeSpan |
+| Intervaluur naar seconde |TimeSpan |
+| Intervalminuten |TimeSpan |
+| Interval minuut tot seconde |TimeSpan |
+| Interval Tweede |TimeSpan |
+| Intervaljaar |Tekenreeks |
+| Interval jaar tot maand |Tekenreeks |
+| Intervalmaand |Tekenreeks |
+| Periode(Datum) |Tekenreeks |
+| Periode (Tijd) |Tekenreeks |
+| Periode (tijd met tijdzone) |Tekenreeks |
+| Periode(Tijdstempel) |Tekenreeks |
+| Periode (tijdstempel met tijdzone) |Tekenreeks |
 | Xml |Tekenreeks |
 
-## <a name="map-source-to-sink-columns"></a>Bron toewijzen aan Sink-kolommen
-Zie [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md)voor meer informatie over het toewijzen van kolommen in de bron-gegevensset aan kolommen in Sink-gegevensset.
+## <a name="map-source-to-sink-columns"></a>Kaartbron om kolommen te laten zinken
+Zie Kolommen van [gegevenssetsin Azure Data Factory](data-factory-map-columns.md)voor meer informatie over het toewijzen van kolommen in brongegevensset naar kolommen in sink dataset.
 
-## <a name="repeatable-read-from-relational-sources"></a>Herhaal bare Lees bewerking van relationele bronnen
-Houd bij het kopiëren van gegevens uit relationele gegevens archieven de Herhaal baarheid in de hand om onbedoelde resultaten te voor komen. In Azure Data Factory kunt u een segment hand matig opnieuw uitvoeren. U kunt ook beleid voor opnieuw proberen voor een gegevensset configureren zodat een segment opnieuw wordt uitgevoerd wanneer er een fout optreedt. Wanneer een segment op een van beide manieren opnieuw wordt uitgevoerd, moet u ervoor zorgen dat dezelfde gegevens worden gelezen, ongeacht het aantal keren dat een segment wordt gestart. Zie [Herhaal bare Lees bewerking van relationele bronnen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Herhaalbaar lezen uit relationele bronnen
+Houd bij het kopiëren van gegevens uit relationele gegevensopslag rekening met herhaalbaarheid om onbedoelde resultaten te voorkomen. In Azure Data Factory u een segment handmatig opnieuw uitvoeren. U ook het beleid voor een wijziging opnieuw configureren, zodat een segment opnieuw wordt uitgevoerd wanneer er een fout optreedt. Wanneer een segment in beide richtingen wordt opnieuw uitgevoerd, moet u ervoor zorgen dat dezelfde gegevens worden gelezen, ongeacht hoe vaak een segment wordt uitgevoerd. Zie [Herhaalbaar lezen uit relationele bronnen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="performance-and-tuning"></a>Prestaties en afstemming
-Zie [Kopieer activiteit prestaties & afstemmings handleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed hebben op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in azure Data Factory en verschillende manieren om deze te optimaliseren.
+## <a name="performance-and-tuning"></a>Prestaties en tuning
+Zie [Handleiding activiteitsprestaties kopiëren & tuningom](data-factory-copy-activity-performance.md) meer te weten te komen over de belangrijkste factoren die van invloed zijn op de prestaties van gegevensverplaatsing (Kopieeractiviteit) in Azure Data Factory en op verschillende manieren om deze te optimaliseren.

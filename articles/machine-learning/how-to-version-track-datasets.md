@@ -1,40 +1,40 @@
 ---
-title: Versie beheer van gegevensset
+title: Versiebeheer van gegevenssets
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het beste versie nummer van uw gegevens sets en hoe versie beheer werkt met machine learning pijp lijnen.
+description: Meer informatie over hoe u uw gegevenssets het beste maken en hoe versiebeheer werkt met machine learning-pijplijnen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: sihhu
-author: sihhu
+author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.custom: ''
-ms.openlocfilehash: 7b124c0f35b5cfda4380555385971e4968d4c45c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: acbd2e3ba756255cbc69ae8a7b7ad62d7a1c1c5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78939250"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528469"
 ---
-# <a name="version-and-track-datasets-in-experiments"></a>Versie gegevens sets in experimenten bijhouden
+# <a name="version-and-track-datasets-in-experiments"></a>Gegevenssets voor versies en bijhouden in experimenten
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u Azure Machine Learning gegevens sets voor reproduceer baarheid kunt versie en bijhouden. Het versie beheer van de gegevensset is een manier om de status van uw gegevens te blad maken, zodat u een specifieke versie van de gegevensset kunt Toep assen voor toekomstige experimenten.
+In dit artikel leert u hoe u Azure Machine Learning-gegevenssets gebruiken en bijhouden voor reproduceerbaarheid. Datasetversiewerk is een manier om de status van uw gegevens een bladwijzer te geven, zodat u een specifieke versie van de gegevensset toepassen voor toekomstige experimenten.
 
-Typische scenario's voor versies:
+Typische versiescenario's:
 
-* Wanneer nieuwe gegevens beschikbaar zijn voor retraining
-* Wanneer u verschillende benaderingen voor gegevens voorbereiding of functie techniek toepast
+* Wanneer er nieuwe gegevens beschikbaar zijn voor omscholing
+* Wanneer u verschillende benaderingen voor gegevensvoorbereiding of functieengineering toepast
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor deze zelfstudie hebt u het volgende nodig:
 
-- [Azure machine learning SDK voor python geïnstalleerd](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). Deze SDK bevat het pakket met de [azureml-gegevens sets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py) .
+- [Azure Machine Learning SDK voor Python geïnstalleerd](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). Deze SDK bevat het [azureml-datasetspakket.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py)
     
-- Een [Azure machine learning-werk ruimte](concept-workspace.md). U kunt een bestaand item ophalen door de volgende code uit te voeren of [een nieuwe werk ruimte te maken](how-to-manage-workspace.md).
+- Een [Azure Machine Learning-werkruimte](concept-workspace.md). Een bestaande ophalen door de volgende code uit te voeren of [een nieuwe werkruimte te maken.](how-to-manage-workspace.md)
 
     ```Python
     import azureml.core
@@ -42,17 +42,17 @@ Voor deze zelfstudie hebt u het volgende nodig:
     
     ws = Workspace.from_config()
     ```
-- Een [Azure machine learning-gegevensset](how-to-create-register-datasets.md).
+- Een [Azure Machine Learning-gegevensset](how-to-create-register-datasets.md).
 
 <a name="register"></a>
 
-## <a name="register-and-retrieve-dataset-versions"></a>Versie van gegevensset registreren en ophalen
+## <a name="register-and-retrieve-dataset-versions"></a>Gegevenssetversies registreren en ophalen
 
-Door een gegevensset te registreren, kunt u deze versie, hergebruiken en delen in experimenten en met collega's. U kunt meerdere gegevens sets onder dezelfde naam registreren en een specifieke versie ophalen op naam en versie nummer.
+Door een gegevensset te registreren, u deze versie, hergebruik en delen in experimenten en met collega's. U meerdere gegevenssets onder dezelfde naam registreren en een specifieke versie ophalen op naam en versienummer.
 
-### <a name="register-a-dataset-version"></a>Een gegevensset-versie registreren
+### <a name="register-a-dataset-version"></a>Een gegevenssetversie registreren
 
-Met de volgende code wordt een nieuwe versie van de `titanic_ds` gegevensset geregistreerd door de para meter `create_new_version` in te stellen op `True`. Als er geen bestaande `titanic_ds` gegevensset is geregistreerd bij de werk ruimte, maakt de code een nieuwe gegevensset met de naam `titanic_ds` en wordt de versie ingesteld op 1.
+De volgende code registreert een `titanic_ds` nieuwe versie `create_new_version` van `True`de gegevensset door de parameter in te stellen op . Als er geen `titanic_ds` bestaande gegevensset is geregistreerd bij de werkruimte, `titanic_ds` maakt de code een nieuwe gegevensset met de naam en stelt de versie de versie in op 1.
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -60,13 +60,13 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'titanic training data',
                                  create_new_version = True)
 ```
-U kunt ook een nieuwe versie van een gegevensset registreren op 
+U ook een nieuwe versie van een gegevensset registreren op 
 
-### <a name="retrieve-a-dataset-by-name"></a>Een gegevensset op naam ophalen
+### <a name="retrieve-a-dataset-by-name"></a>Een gegevensset ophalen op naam
 
-De methode [get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) voor de klasse `Dataset` retourneert standaard de laatste versie van de gegevensset die is geregistreerd bij de werk ruimte. 
+Standaard retourneert de methode `Dataset` [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) in de klasse de nieuwste versie van de gegevensset die bij de werkruimte is geregistreerd. 
 
-Met de volgende code wordt versie 1 van de `titanic_ds` gegevensset opgehaald.
+De volgende code krijgt `titanic_ds` versie 1 van de gegevensset.
 
 ```Python
 from azureml.core import Dataset
@@ -78,16 +78,16 @@ titanic_ds = Dataset.get_by_name(workspace = workspace,
 
 <a name="best-practice"></a>
 
-## <a name="versioning-best-practice"></a>Versie beheer best practice
+## <a name="versioning-best-practice"></a>Aanbevolen procedures voor versiebeheer
 
-Wanneer u een gegevensset-versie maakt, maakt u *geen* extra kopie van gegevens met de werk ruimte. Omdat gegevens sets verwijzingen naar de gegevens in uw opslag service zijn, hebt u één bron van waarheid, die wordt beheerd door uw opslag service.
+Wanneer u een gegevenssetversie maakt, maakt u *geen* extra kopie van gegevens met de werkruimte. Omdat gegevenssets verwijzingen zijn naar de gegevens in uw opslagservice, hebt u één enkele bron van waarheid, beheerd door uw opslagservice.
 
 >[!IMPORTANT]
-> Als de gegevens waarnaar wordt verwezen door uw gegevensset worden overschreven of verwijderd, wordt de wijziging *niet* ongedaan gemaakt door het aanroepen van een specifieke versie van de gegevensset.
+> Als de gegevens waarop de gegevens van uw gegevensset verwijzen, worden overschreven of verwijderd, wordt de wijziging *niet* teruggedraaid door een specifieke versie van de gegevensset aan te roepen.
 
-Wanneer u gegevens laadt vanuit een gegevensset, wordt de huidige gegevens inhoud waarnaar wordt verwezen door de gegevensset, altijd geladen. Als u er zeker van wilt zijn dat elke gegevensset-versie reproduceerbaar is, raden wij aan dat u geen gegevens inhoud wijzigt waarnaar wordt verwezen door de gegevensset-versie. Als er nieuwe gegevens binnenkomen in, slaat u nieuwe gegevens bestanden op in een afzonderlijke gegevensmap en maakt u vervolgens een nieuwe gegevensset-versie om gegevens uit de nieuwe map op te halen.
+Wanneer u gegevens uit een gegevensset laadt, wordt de huidige gegevensinhoud waarnaar naar de gegevensset verwijst, altijd geladen. Als u ervoor wilt zorgen dat elke gegevenssetversie reproduceerbaar is, raden we u aan de gegevensinhoud waarnaar wordt verwezen door de gegevenssetversie niet te wijzigen. Wanneer er nieuwe gegevens binnenkomen, slaat u nieuwe gegevensbestanden op in een afzonderlijke gegevensmap en maakt u vervolgens een nieuwe gegevenssetversie om gegevens uit die nieuwe map op te nemen.
 
-De volgende afbeeldings-en voorbeeld code tonen de aanbevolen manier om uw gegevens mappen te structureren en gegevensset-versies te maken die verwijzen naar deze mappen:
+In de volgende afbeeldings- en voorbeeldcode wordt de aanbevolen manier weergegeven om uw gegevensmappen te structureren en gegevenssetsversies te maken die verwijzen naar die mappen:
 
 ![Mapstructuur](./media/how-to-version-track-datasets/folder-image.png)
 
@@ -117,11 +117,11 @@ dataset2.register(workspace = workspace,
 
 <a name="pipeline"></a>
 
-## <a name="version-a-pipeline-output-dataset"></a>Een gegevensset voor een pijplijn uitvoer
+## <a name="version-a-pipeline-output-dataset"></a>Een gegevensset voor pijplijnuitvoer versie
 
-U kunt een gegevensset gebruiken als de invoer en uitvoer van elke Machine Learning pijplijn stap. Wanneer u pijp lijnen opnieuw uitvoert, wordt de uitvoer van elke pijplijn stap geregistreerd als een nieuwe gegevensset-versie.
+U een gegevensset gebruiken als invoer en uitvoer van elke machine learning-pijplijnstap. Wanneer u pijplijnen opnieuw uitvoert, wordt de uitvoer van elke pijplijnstap geregistreerd als een nieuwe gegevenssetversie.
 
-Omdat Machine Learning pijp lijnen de uitvoer van elke Step Into een nieuwe map elke keer dat de pijp lijn opnieuw wordt uitgevoerd, kunnen de versie-uitvoer gegevens sets worden gereproduceerd. Meer informatie over [gegevens sets in pijp lijnen](how-to-create-your-first-pipeline.md#steps).
+Omdat Machine Learning-pijplijnen de uitvoer van elke stap in een nieuwe map vullen telkens wanneer de pijplijn wordt uitgevoerd, zijn de versiegegevenssets reproduceerbaar. Meer informatie over [gegevenssets in pijplijnen](how-to-create-your-first-pipeline.md#steps).
 
 ```Python
 from azureml.core import Dataset
@@ -155,11 +155,11 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 <a name="track"></a>
 
-## <a name="track-datasets-in-experiments"></a>Gegevens sets bijhouden in experimenten
+## <a name="track-datasets-in-experiments"></a>Gegevenssets in experimenten bijhouden
 
-Voor elk Machine Learning experiment kunt u eenvoudig de gegevens sets traceren die worden gebruikt als invoer via het experiment `Run` object.
+Voor elk Machine Learning-experiment u de gegevenssets die `Run` als invoer worden gebruikt, eenvoudig traceren via het experimentobject.
 
-De volgende code gebruikt de [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) methode om bij te houden welke invoer gegevens sets zijn gebruikt bij de uitvoering van het experiment:
+De volgende code [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) gebruikt de methode om bij te houden welke invoergegevenssets zijn gebruikt bij de experimentrun:
 
 ```Python
 # get input datasets
@@ -170,13 +170,13 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-U kunt ook de `input_datasets` van experimenten vinden met behulp van https://ml.azure.com/. 
+U ook `input_datasets` de van https://ml.azure.com/experimenten met behulp van. 
 
-De volgende afbeelding laat zien waar u de invoer gegevensset van een experiment op Azure Machine Learning Studio kunt vinden. Voor dit voor beeld gaat u naar het deel venster **experimenten** en opent u het tabblad **Eigenschappen** voor een specifieke uitvoering van uw experiment, `keras-mnist`.
+In de volgende afbeelding ziet u waar u de invoergegevensset van een experiment in Azure Machine Learning-studio vinden. Ga in dit voorbeeld naar het deelvenster **Experimenten** en open het `keras-mnist`tabblad **Eigenschappen** voor een specifieke run van het experiment.
 
-![Invoer gegevens sets](./media/how-to-version-track-datasets/input-datasets.png)
+![Invoergegevenssets](./media/how-to-version-track-datasets/input-datasets.png)
 
-Gebruik de volgende code om modellen te registreren met gegevens sets:
+Gebruik de volgende code om modellen te registreren met gegevenssets:
 
 ```Python
 model = run.register_model(model_name='keras-mlp-mnist',
@@ -184,13 +184,13 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Na de registratie ziet u de lijst met modellen die zijn geregistreerd bij de gegevensset met behulp van python of gaat u naar https://ml.azure.com/.
+Na registratie u de lijst met modellen zien die https://ml.azure.com/bij de gegevensset zijn geregistreerd met behulp van Python of naar.
 
-De volgende weer gave is afkomstig uit het deel venster **gegevens sets** onder **assets**. Selecteer de gegevensset en selecteer vervolgens het tabblad **modellen** voor een lijst van de modellen die zijn geregistreerd bij de gegevensset. 
+De volgende weergave is in het deelvenster **Gegevenssets** onder **Activa**. Selecteer de gegevensset en selecteer vervolgens het tabblad **Modellen** voor een lijst met modellen die bij de gegevensset zijn geregistreerd. 
 
-![Modellen van invoer gegevens sets](./media/how-to-version-track-datasets/dataset-models.png)
+![Modellen voor invoergegevenssets](./media/how-to-version-track-datasets/dataset-models.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Trainen met gegevens sets](how-to-train-with-datasets.md)
-* [Meer voor beelden van gegevensset-notitie blokken](https://aka.ms/dataset-tutorial)
+* [Trainen met gegevenssets](how-to-train-with-datasets.md)
+* [Meer voorbeeldgegevenssetnotitieblokken](https://aka.ms/dataset-tutorial)

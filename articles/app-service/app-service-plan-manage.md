@@ -1,102 +1,102 @@
 ---
-title: App Service-abonnement beheren
-description: Meer informatie over het uitvoeren van verschillende taken voor het beheren van een App Service-abonnement, zoals maken, verplaatsen, schalen en verwijderen.
-keywords: app service, Azure app service, Scale, app service-plan, wijzigen, maken, beheren, beheer
+title: App-serviceplan beheren
+description: Meer informatie over het uitvoeren van verschillende taken om een App Service-abonnement te beheren, zoals maken, verplaatsen, schalen en verwijderen.
+keywords: app-service, azure-app-service, schaal, app-serviceplan, wijzigen, maken, beheren, beheren
 ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280753"
 ---
-# <a name="manage-an-app-service-plan-in-azure"></a>Een App Service-abonnement beheren in azure
+# <a name="manage-an-app-service-plan-in-azure"></a>Een App-serviceplan beheren in Azure
 
-Een [Azure app service plan](overview-hosting-plans.md) bevat de resources die een app service app moet uitvoeren. In deze hand leiding wordt uitgelegd hoe u een App Service plan beheert.
+Een [Azure App Service-abonnement](overview-hosting-plans.md) biedt de resources die een App Service-app moet uitvoeren. In deze handleiding ziet u hoe u een App Service-abonnement beheert.
 
 ## <a name="create-an-app-service-plan"></a>Een App Service-plan maken
 
 > [!TIP]
-> Als u een App Service Environment hebt, raadpleegt u [een app service plan maken in een app service Environment](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan).
+> Zie [Een App-serviceplan maken in een App-serviceomgeving](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan)als u een App-serviceomgeving hebt.
 
-U kunt een leeg App Service plan maken of u kunt een plan maken als onderdeel van het maken van een app.
+U een leeg App Service-abonnement maken of u een abonnement maken als onderdeel van het maken van apps.
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com) **een resource maken**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com)de optie **Een resource maken**.
 
-   ![Maak een resource in de Azure Portal.][createResource] 
+   ![Maak een resource in de Azure-portal.][createResource] 
 
-1. Selecteer **nieuw** > **Web-app** of een ander soort app service-app.
+1. Selecteer **Nieuwe** > **web-app** of een ander soort App-service-app.
 
-   ![Maak een app in de Azure Portal.][createWebApp] 
+   ![Maak een app in de Azure-portal.][createWebApp] 
 
-2. Configureer de sectie met **instantie Details** voordat u het app service-abonnement configureert. Instellingen zoals **publiceren** en **besturings systemen** kunnen de beschik bare prijs categorieën voor uw app service plan wijzigen. De **regio** bepaalt waar uw app service plan wordt gemaakt. 
+2. Configureer de sectie **Instantiedetails** voordat u het App-serviceplan configureert. Instellingen zoals **Publiceren** en **Besturingssystemen** kunnen de beschikbare prijsniveaus voor uw App Service-abonnement wijzigen. **Regio** bepaalt waar uw App Service-abonnement wordt gemaakt. 
    
-3. Selecteer in de sectie **app service plan** een bestaand abonnement of maak een plan door **Nieuw maken**te selecteren.
+3. Selecteer in de sectie **App-serviceplan** een bestaand abonnement of maak een plan door **Nieuw maken te**selecteren.
 
-   ![Een App Service-abonnement maken.][createASP] 
+   ![Maak een App Service-abonnement.][createASP] 
 
-4. Wanneer u een plan maakt, kunt u de prijs categorie van het nieuwe plan selecteren. In **SKU en grootte**selecteert u **grootte wijzigen** om de prijs categorie te wijzigen. 
+4. Wanneer u een abonnement maakt, u de prijscategorie van het nieuwe abonnement selecteren. Selecteer in **Sku en grootte** **De optie Grootte wijzigen** om de prijslaag te wijzigen. 
 
 <a name="move"></a>
 
-## <a name="move-an-app-to-another-app-service-plan"></a>Een app verplaatsen naar een andere App Service plan
+## <a name="move-an-app-to-another-app-service-plan"></a>Een app verplaatsen naar een ander App-serviceabonnement
 
-U kunt een app naar een andere App Service plan verplaatsen, zolang het bron plan en het doel abonnement zich in _dezelfde resource groep en geografische regio_bevinden.
+U een app verplaatsen naar een ander App Service-abonnement, zolang het bronplan en het doelplan zich in _dezelfde resourcegroep en geografische regio bevinden._
 
 > [!NOTE]
-> Azure implementeert elk nieuw App Service plan in een implementatie-eenheid, intern een webruimte genoemd. Elke regio kan veel webruimten hebben, maar uw app kan alleen worden verplaatst tussen plannen die zijn gemaakt in dezelfde webruimte. Een App Service Environment is een geïsoleerde webruimte, zodat apps kunnen worden verplaatst tussen plannen in dezelfde App Service Environment, maar niet tussen plannen in verschillende App Service omgevingen.
+> Azure implementeert elk nieuw App Service-abonnement in een implementatie-eenheid, intern een webspace genoemd. Elke regio kan veel webruimten hebben, maar uw app kan alleen worden verplaatst tussen plannen die in dezelfde webruimte zijn gemaakt. Een App Service-omgeving is een geïsoleerde webspace, zodat apps kunnen worden verplaatst tussen plannen in dezelfde App-serviceomgeving, maar niet tussen plannen in verschillende App-serviceomgevingen.
 >
-> U kunt de gewenste webruimte niet opgeven wanneer u een plan maakt, maar het is mogelijk om ervoor te zorgen dat een plan wordt gemaakt in dezelfde webruimte als een bestaand abonnement. In het kort worden alle abonnementen die zijn gemaakt met dezelfde resource groep en regio combinatie, geïmplementeerd in dezelfde webruimte. Als u bijvoorbeeld een plan hebt gemaakt in resource groep A en regio B, wordt een plan dat u vervolgens in resource groep A en regio B maakt, geïmplementeerd in dezelfde webruimte. Houd er rekening mee dat het niet mogelijk is om webruimten te verplaatsen nadat ze zijn gemaakt. u kunt een plan niet verplaatsen naar dezelfde webruimte als een ander abonnement door het te verplaatsen naar een andere resource groep.
+> U niet de webruimte opgeven die u wilt bij het maken van een plan, maar het is mogelijk om ervoor te zorgen dat een plan wordt gemaakt in dezelfde webruimte als een bestaand plan. Kortom, alle plannen die zijn gemaakt met dezelfde resourcegroep en regiocombinatie worden geïmplementeerd in dezelfde webruimte. Als u bijvoorbeeld een plan hebt gemaakt in resourcegroep A en regio B, wordt elk plan dat u vervolgens maakt in resourcegroep A en regio B geïmplementeerd in dezelfde webruimte. Houd er rekening mee dat plannen webruimten niet kunnen verplaatsen nadat ze zijn gemaakt, zodat u een abonnement niet naar 'dezelfde webruimte' verplaatsen als een ander plan door het naar een andere resourcegroep te verplaatsen.
 > 
 
-1. Zoek in het [Azure Portal](https://portal.azure.com)naar en selecteer **app Services** en selecteer de app die u wilt verplaatsen.
+1. Zoek en selecteer in de [Azure-portal](https://portal.azure.com) **app-services** en selecteer de app die u wilt verplaatsen.
 
-2. Selecteer in het menu links de optie **app service abonnement wijzigen**.
+2. Selecteer App **Service-abonnement wijzigen**in het linkermenu .
 
-3. Selecteer in de vervolg keuzelijst **app service plan** een bestaand plan om de app naar te verplaatsen. In de vervolg keuzelijst worden alleen abonnementen weer gegeven die deel uitmaken van dezelfde resource groep en geografische regio als het huidige App Service plan. Als dat plan niet bestaat, kunt u standaard een plan maken. U kunt ook hand matig een nieuw plan maken door **Nieuw maken**te selecteren.
+3. Selecteer in de vervolgkeuzelijst **App-service-abonnement** een bestaand abonnement om de app naar te verplaatsen. In de vervolgkeuzelijst worden alleen plannen weergegeven die zich in dezelfde resourcegroep en het geografische gebied bevinden als het huidige App Service-abonnement. Als een dergelijk abonnement niet bestaat, u standaard een abonnement maken. U ook handmatig een nieuw plan maken door **Nieuw maken**te selecteren.
 
-4. Als u een plan maakt, kunt u de prijs categorie van het nieuwe plan selecteren. Selecteer in **prijs categorie**de bestaande laag om deze te wijzigen. 
+4. Als u een abonnement maakt, u de prijscategorie van het nieuwe abonnement selecteren. Selecteer **in prijscategorie**de bestaande laag om deze te wijzigen. 
    
    > [!IMPORTANT]
-   > Als u een app van een abonnement op een hoger niveau verplaatst naar een onderlaagd abonnement, bijvoorbeeld van **D1** naar **F1**, kan de app bepaalde mogelijkheden in het doel plan verliezen. Als uw app bijvoorbeeld SSL-certificaten gebruikt, ziet u mogelijk het volgende fout bericht:
+   > Als u een app verplaatst van een abonnement met een hogere laag naar een abonnement met een lagere laag, zoals van **D1** naar **F1,** kan de app bepaalde mogelijkheden in het doelplan verliezen. Als uw app bijvoorbeeld SSL-certificaten gebruikt, ziet u mogelijk dit foutbericht:
    >
    > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
 
-5. Wanneer u klaar bent, selecteert u **OK**.
+5. Selecteer **OK** als u klaar bent.
    
-   ![App Service plan kiezer.][change] 
+   ![App Service-abonnementkiezer.][change] 
 
 ## <a name="move-an-app-to-a-different-region"></a>Een app verplaatsen naar een andere regio
 
-De regio waarin uw app wordt uitgevoerd, is de regio van het App Service plan waarin deze zich bevindt. U kunt de regio van een App Service abonnement echter niet wijzigen. Als u uw app in een andere regio wilt uitvoeren, is een alternatief voor het klonen van apps. Bij het klonen wordt een kopie van uw app in een nieuw of bestaand App Service plan in elke regio gemaakt.
+De regio waarin uw app wordt uitgevoerd, is de regio van het App Service-abonnement waarin deze zich bevindt. U de regio van een App-serviceplan echter niet wijzigen. Als u uw app in een andere regio wilt uitvoeren, is een alternatief app klonen. Klonen maakt een kopie van uw app in een nieuw of bestaand App Service-abonnement in elke regio.
 
-U vindt de **kloon-app** in de sectie **hulp middelen voor ontwikkel aars** van het menu.
+Je **Clone App** vinden in het gedeelte **Ontwikkeltools** van het menu.
 
 > [!IMPORTANT]
-> Voor klonen gelden enkele beperkingen. U kunt deze informatie lezen in [Azure app service het klonen van apps](app-service-web-app-cloning.md).
+> Klonen heeft een aantal beperkingen. U erover lezen in [het klonen van Azure App Service App.](app-service-web-app-cloning.md)
 
-## <a name="scale-an-app-service-plan"></a>Een App Service plan schalen
+## <a name="scale-an-app-service-plan"></a>Een App-serviceplan schalen
 
-Zie [een app omhoog schalen in azure](manage-scale-up.md)om de prijs categorie van een app service plan omhoog te schalen.
+Zie [Een app opschalen in Azure](manage-scale-up.md)als u de prijscategorie van een App Service-abonnement wilt opschalen.
 
-Als u het aantal exemplaren van een app wilt uitschalen, raadpleegt u [aantal exemplaren hand matig of automatisch schalen](../monitoring-and-diagnostics/insights-how-to-scale.md).
+Zie Het [aantal instance's van](../monitoring-and-diagnostics/insights-how-to-scale.md)een app handmatig of automatisch schalen als u het aantal instance's van een app wilt schalen.
 
 <a name="delete"></a>
 
-## <a name="delete-an-app-service-plan"></a>Een App Service-abonnement verwijderen
+## <a name="delete-an-app-service-plan"></a>Een App-serviceabonnement verwijderen
 
-Om onverwachte kosten te voor komen, wordt het plan ook standaard verwijderd wanneer u de laatste app in een App Service App Service plan verwijdert. Als u ervoor kiest om het plan te houden, moet u het abonnement wijzigen in de laag **gratis** , zodat u niet in rekening wordt gebracht.
+Om onverwachte kosten te voorkomen, verwijdert App Service het abonnement standaard wanneer u de laatste app in een App Service-abonnement verwijdert. Als u ervoor kiest om het abonnement te behouden, moet u het abonnement wijzigen in **de rij Gratis,** zodat er geen kosten in rekening worden gebracht.
 
 > [!IMPORTANT]
-> App Service plannen waaraan geen apps zijn gekoppeld, worden nog steeds kosten in rekening gebracht omdat ze de geconfigureerde VM-instanties blijven reserveren.
+> App Service-abonnementen waaraan geen apps zijn gekoppeld, worden nog steeds in rekening gebracht omdat ze de geconfigureerde VM-exemplaren blijven reserveren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een app omhoog schalen in azure](manage-scale-up.md)
+> [Een app omhoog schalen in Azure](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png

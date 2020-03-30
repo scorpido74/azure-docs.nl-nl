@@ -1,134 +1,133 @@
 ---
-title: Dash board bestellingen van partner centrum in de commerciële Marketplace-analyse
-description: Meer informatie over het openen van analytische rapporten over uw Marketplace-aanbod orders in een grafische en download bare indeling.
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+title: Partner Center Orders dashboard in Commercial Marketplace analytics
+description: Meer informatie over het openen van analytische rapporten over uw marktplaatsaanbiedingsorders in een grafische en downloadbare indeling.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: bf4b48fafa5b877053abe653b569cf27eb50d57b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d0db6553a774a69bb8a55538cbd2b4a333be9316
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75481059"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281405"
 ---
-# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dash board orders in commerciële Marketplace-analyse
+# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Het dashboard voor bestellingen in Commercial Marketplace-analyses
 
-Dit artikel bevat informatie over het **dash board orders** in partner centrum. In dit dash board wordt informatie over uw orders weer gegeven in een grafische en download bare indeling.
+In dit artikel vindt u informatie over het **dashboard Orders** in partnercentrum. Dit dashboard geeft informatie over uw bestellingen weer in een grafische en downloadbare indeling.
 
-Als u toegang wilt krijgen tot het **dash board orders** in de hulpprogram ma's van de Partner Center-analyse, opent u het **[dash board analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** onder commerciële Marketplace.
+Als u toegang wilt krijgen tot het **dashboard Orders** in de analysetools van het Partnercenter, opent u het **[dashboard Analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** onder Commerciële Marktplaats.
 
 >[!NOTE]
-> Zie [Veelgestelde vragen en terminologie voor de analyse van commerciële Marketplace](./faq-terminology.md)voor gedetailleerde definities van analyse terminologie.
+> Zie [Veelgestelde vragen en terminologie voor commerciële marketplace-analyses voor](./faq-terminology.md)gedetailleerde definities van analytics-terminologie.
 
 ## <a name="orders-dashboard"></a>Dashboard voor orders
 
-In het **dash board orders** van het menu **analyseren** worden de huidige orders voor al uw SaaS-aanbiedingen weer gegeven. U kunt grafische weer gaven van de volgende items bekijken:
+In **het dashboard Orders** van het menu **Analyseren** worden de huidige orders voor al uw SaaS-aanbiedingen weergegeven. U grafische weergaven van de volgende items bekijken:
 
-- [Order overzicht](#order-summary)
-- [Orders op geografie](#orders-by-geography)
-- [Bestellingen per aanbiedingen](#orders-by-offers)
-- [Trend van orders per site versus per seat](#orders-trend-per-site-versus-per-seat)
-- [Orders per Sku's](#orders-by-skus)
-- [Trend van orders en stoelen](#orders-and-seats-trend)
-- [Tabel Order Details](#order-details-table)
+- [Overzicht van bestellingen](#order-summary)
+- [Orden per geografie](#orders-by-geography)
+- [Bestellingen per aanbod](#orders-by-offers)
+- [Orders trend per site versus per stoel](#orders-trend-per-site-versus-per-seat)
+- [Bestellingen door SKU's](#orders-by-skus)
+- [Orders en stoelen trend](#orders-and-seats-trend)
+- [Tabel Met ordergegevens](#order-details-table)
 
 > [!NOTE]
-> Er zijn verschillen tussen hoe analyse rapporten worden weer gegeven in het Cloud Partner-portal (CPP) en het nieuwe commerciële Marketplace-programma in Partner Center. Een specifieke manier is dat de **verkoop inzichten** in cpp het tabblad **Orders & gebruik** bevat, die gegevens weer geven voor aanbiedingen op basis van gebruik en aanbiedingen die niet op het gebruik zijn. In het partner centrum heeft de pagina **Orders** een afzonderlijk tabblad voor SaaS-aanbiedingen.
+> Er zijn verschillen tussen de weergave van analyserapporten in het Cloud Partner Portal (CPP) en het nieuwe Commercial Marketplace-programma in partnercentrum. Een specifieke manier is dat de **Seller Insights** in CPP een tabblad Orders **& gebruik** heeft, dat gegevens weergeeft voor op gebruik gebaseerde aanbiedingen en aanbiedingen op basis van niet-gebruik. In Partnercentrum heeft de pagina **Orders** een apart tabblad voor SaaS-aanbiedingen.
 
-## <a name="order-dashboard-details"></a>Details van bestel dashboard
+## <a name="order-dashboard-details"></a>Details van het besteldashboard
 
-In deze sectie worden de analyse rapporten uitvoeriger beschreven.
+In dit gedeelte worden de analyserapporten nader beschreven.
 
-### <a name="order-summary"></a>Order overzicht
+### <a name="order-summary"></a>Besteloverzicht
 
-In de sectie Overzicht van de order wordt een telling weer gegeven van alle aangeschafte orders (met uitzonde ring van geannuleerde orders), geannuleerde orders en seats.
+In de sectie Besteloverzicht wordt een aantal gekochte bestellingen weergegeven (exclusief geannuleerde bestellingen), geannuleerde bestellingen en stoelen.
 
-De percentage waarde naast totaal aantal orders vertegenwoordigt de hoeveelheid groei van het geselecteerde datum bereik.
+De procentuele waarde naast Totale orders vertegenwoordigt de hoeveelheid groei van het geselecteerde datumbereik.
 
-![Samen vatting van de bestelling analyseren in Partner Center](./media/order-summary.png)
+![Overzicht van het partnercentrum analyseren van de volgorde](./media/order-summary.png)
 
-- Een groene en opwaartse drie hoek duidt op een positieve groei trend.
-- Een rode drie hoek die omlaag wijst wijst op een negatieve groei trend ten opzichte van de vorige maand.
-- Groei trends worden weer gegeven in micro bar-grafieken. U kunt de waarde voor elke maand weer geven door de muis aanwijzer boven de kolommen in de grafiek te plaatsen.
-- Geannuleerde orders zijn het aantal orders dat eerder is aangeschaft en die vervolgens zijn geannuleerd tijdens het geselecteerde datum bereik.
-- Stoelen zijn een aantal seats die zijn gemaakt tijdens het geselecteerde datum bereik.
+- Een groene driehoek die naar boven wijst duidt op een positieve groeitrend.
+- Een rode driehoek die naar beneden wijst duidt op een negatieve groeitrend ten opzichte van de voorgaande maand.
+- Groeitrends worden vertegenwoordigd door microbargrafieken. U de waarde voor elke maand weergeven door boven de kolommen in de grafiek te zweven.
+- Geannuleerde bestellingen zijn een aantal bestellingen die eerder zijn gekocht en vervolgens zijn geannuleerd tijdens het geselecteerde datumbereik.
+- Zitplaatsen zijn een aantal plaatsen die tijdens het geselecteerde datumbereik zijn gemaakt.
 
-### <a name="orders-by-geography"></a>Orders op geografie
+### <a name="orders-by-geography"></a>Orden per geografie
 
-In het heatmap **Orders per geografie** wordt een telling weer gegeven van uw orders op een wereld kaart en worden de stoelen weer gegeven die zijn toegewezen op basis van het klant land. Deze heatmap werkt op dezelfde locatie als de **[klant op geografie heatmap](./customer-dashboard.md#customer-by-geography)** .
+De **heatmap Orders by geography** toont een telling van uw bestellingen op een wereldkaart en toont stoelen die zijn toegewezen op basis van klantland. Deze heatmap functioneert hetzelfde als de **[klant per aardrijkskunde heatmap](./customer-dashboard.md#customer-by-geography)**.
 
-![Partner centrum orders per geografie analyseren](./media/orders-by-geography.png)
+![Partnercentrum Orders analyseren op basis van geografie](./media/orders-by-geography.png)
 
-### <a name="orders-by-offers"></a>Bestellingen per aanbiedingen
+### <a name="orders-by-offers"></a>Bestellingen per aanbod
 
-Met de **opdrachten orders per biedt** ring grafiek worden de orders (inclusief geannuleerde orders) geordend op basis van de namen van de aanbiedingen.
+De **grafiek Orders by offers** organiseert bestellingen (inclusief geannuleerde bestellingen) op basis van hun aanbiedingsnamen.
 
-- De beste aanbiedingen worden weer gegeven in de grafiek en de rest van de aanbiedingen worden als ' rest all ' gegroepeerd.
-- U kunt specifieke aanbiedingen in de legenda selecteren om alleen die aanbiedingen in de grafiek weer te geven.
-- Als u de muis aanwijzer boven een segment in de grafiek houdt, wordt het aantal orders en percentage van die aanbieding weer gegeven vergeleken met het totale aantal orders in alle aanbiedingen.
-- De **trend orders per aanbiedingen** worden weer gegeven per maand trends in groei. De kolom maand vertegenwoordigt het aantal orders per aanbiedings naam. In het lijn diagram wordt de trend van het groei percentage weer gegeven die op een z-as is getekend.
-- U kunt de schuif regelaar aan de bovenkant van de grafiek gebruiken om naar rechts en naar links op de x-as te schuiven en te focussen op specifieke gegevens punten.
-- U kunt het trendanalyse diagram weer geven door een specifiek item in de legenda te selecteren.
-- U kunt er ook voor kiezen om trends en gegevens weer te geven voor **geannuleerde orders**. De grafiek werkt op dezelfde manier als de grafiek **Orders per aanbieding** .
+- De topaanbiedingen worden weergegeven in de grafiek en de rest van de aanbiedingen zijn gegroepeerd als 'Rest All'.
+- U specifieke aanbiedingen in de legenda selecteren om alleen die aanbiedingen in de grafiek weer te geven.
+- Als u over een segment in de grafiek zweeft, wordt het aantal orders en het percentage van die aanbieding weergegeven in vergelijking met uw totale aantal orders voor alle aanbiedingen.
+- De **orders per aanbod trend** toont maand-per-maand groeitrends. De kolom maand vertegenwoordigt het aantal orders op aanbiedingsnaam. Het lijndiagram geeft het groeipercentagetrend weer dat op een z-as is uitgezet.
+- U de schuifregelaar boven aan de grafiek gebruiken om naar rechts en links langs de x-as te scrollen en zich te concentreren op specifieke gegevenspunten.
+- U het trenddiagram weergeven door een specifiek item in de legenda te selecteren.
+- U er ook voor kiezen om trends en gegevens voor **geannuleerde bestellingen**weer te geven. De grafiek werkt op dezelfde manier als de **orders per grafiek.**
 
-### <a name="orders-trend-per-site-versus-per-seat"></a>Trend van orders per site versus per seat
+### <a name="orders-trend-per-site-versus-per-seat"></a>Bestellingen Trend per site versus per stoel
 
-De grafiek **per site versus per seat** ring vertegenwoordigt de uitsplitsing van per site SaaS en per seat SaaS-orders die door klanten zijn aangeschaft (dit diagram bevat geannuleerde orders). Het kolom diagram vertegenwoordigt de trend van per site SaaS en per seat SaaS-orders die door klanten zijn aangeschaft (deze grafiek bevat geannuleerde orders).
+De **donutgrafiek per site versus per stoel** vertegenwoordigt de uitsplitsing van SaaS per site en saas-bestellingen per stoel die door klanten zijn gekocht (deze grafiek bevat geannuleerde bestellingen). Het kolomdiagram vertegenwoordigt de trend van SaaS per site en SaaS-orders per stoel die door klanten zijn gekocht (deze grafiek bevat geannuleerde bestellingen).
 
-### <a name="orders-by-skus"></a>Orders per Sku's
+### <a name="orders-by-skus"></a>Bestellingen door SKU's
 
-De grafiek **Orders per sku's** vertegenwoordigt de trend van orders op het niveau van de SKU (Stock Keeping Unit) voor al uw aanbiedingen (dit omvat geannuleerde orders). De ring grafiek vertegenwoordigt de uitsplitsing van de bovenste vijf SKU-orders en het kolom diagram vertegenwoordigt de trend van de orders voor de vijf Sku's.
+De **grafiek Orders by SKU's** vertegenwoordigt de trend van orders op SKU-niveau (Stock Keeping Unit) voor al uw aanbiedingen (dit is inclusief geannuleerde bestellingen). De donutgrafiek vertegenwoordigt de uitsplitsing van de top vijf SKU-orders en het kolomdiagram vertegenwoordigt de trend van orders voor de top vijf SKU's.
 
-### <a name="orders-and-seats-trend"></a>Trend van orders en stoelen
+### <a name="orders-and-seats-trend"></a>Orders en seats Trend
 
-In het **trend diagram orders en stoelen** worden de belangrijkste 50 aanbiedingen met het hoogste aantal orders weer gegeven. Deze worden weer gegeven op een Leader Board en worden gesorteerd op het hoogste aantal orders en het order percentage.
+De **orders en seats trendchart** presenteert de top 50 aanbiedingen met het hoogste aantal orders. Deze worden weergegeven op een klassement en worden gesorteerd op hoogste orderaantal en bestelpercentage.
 
-- **Orders per sku's**: Selecteer een aanbieding om de uitsplitsing van het aantal orders voor de bovenste vijf sku's in de grafiek weer te geven.
-- **Seats by sku's**: de maandelijkse trend van seats voor de bovenste vijf sku's. Als het aanbod dat u selecteert geen aanbieding per seat is, worden er geen gegevens weer gegeven in dit vlak diagram.
+- **Orders op SKU's**: Selecteer een aanbieding om het uitsplitsing van het aantal orders voor de top vijf SKU's in de grafiek weer te geven.
+- **Zetels door SKU's**: De maandelijkse trend van zetels voor de top vijf SKU's. Als de aanbieding die u selecteert geen aanbieding per stoel is, ziet u geen gegevens in dit gebiedsdiagram.
 
-### <a name="canceled-orders-by-offers"></a>Geannuleerde orders per aanbiedingen
+### <a name="canceled-orders-by-offers"></a>Geannuleerde bestellingen door aanbiedingen
 
-In het cirkel diagram **geannuleerde orders per bieden** worden al uw geannuleerde orders geordend op basis van de namen van de aanbiedingen. De beste aanbiedingen worden weer gegeven in de grafiek en de rest van de aanbiedingen worden gegroepeerd als ' rest all '. U kunt specifieke aanbiedingen in de legenda selecteren om weer te geven in de grafiek.
+Het **tabel Geannuleerde bestellingen per tabel met aanbiedingen** organiseert al uw geannuleerde bestellingen op basis van hun aanbiedingsnamen. De topaanbiedingen worden weergegeven in de grafiek en de rest van de aanbiedingen zijn gegroepeerd als 'Rest All'. U specifieke aanbiedingen selecteren in de legenda die u in de grafiek wilt weergeven.
 
-- Als u de muis aanwijzer boven een segment in de grafiek houdt, wordt het aantal orders en percentage van de geselecteerde aanbieding weer gegeven vergeleken met het totale aantal orders in alle aanbiedingen.
-- In het kolom diagram worden maand-per-maand trends weer gegeven. De kolommen vertegenwoordigen het aantal geannuleerde orders per aanbiedings naam. U kunt de schuif regelaar boven op het diagram gebruiken om naar rechts en naar links op de x-as te schuiven en te focussen op specifieke gegevens punten. U kunt het trendanalyse diagram weer geven door een specifiek item in de legenda te selecteren.
+- Als u de boven een segment in de grafiek plaatst, wordt het aantal orders en het percentage van de geselecteerde aanbieding weergegeven in vergelijking met het totale aantal orders voor alle aanbiedingen.
+- In het kolomdiagram worden trends per maand weergegeven. De kolommen vertegenwoordigen het aantal geannuleerde bestellingen op aanbiedingsnaam. U de schuifregelaar boven aan de grafiek gebruiken om naar rechts en links langs de x-as te scrollen en zich te concentreren op specifieke gegevenspunten. U het trenddiagram weergeven door een specifiek item in de legenda te selecteren.
 
-### <a name="order-details-table"></a>Tabel Order Details
+### <a name="order-details-table"></a>Tabel Met ordergegevens
 
-In de tabel Order Details wordt een genummerde lijst met de 1000 belangrijkste orders gesorteerd op datum van aanschaf.
+In de tabel Details van de volgorde wordt een genummerde lijst weergegeven van de 1000 toporders gesorteerd op overnamedatum.
 
 - Elke kolom in het raster is sorteerbaar.
-- De gegevens kunnen worden geëxtraheerd naar een TSV-bestand als het aantal records kleiner is dan 1000.
-- Als records een getal van meer dan 1000, worden geëxporteerde gegevens asynchroon in een download pagina voor de volgende 30 dagen geplaatst.
-- Filters kunnen worden toegepast op de **tabel Order Details** om alleen de gegevens weer te geven waarin u bent geïnteresseerd. Gegevens kunnen worden gefilterd op land, het type Azure-licentie, het Marketplace-licentie type, het type aanbieding, de status van de bestelling, een gratis spoor, abonnements-ID, klant-ID en bedrijfs naam.
+- De gegevens kunnen worden geëxtraheerd naar een TSV-bestand als het aantal records minder dan 1000 is.
+- Als recordnummer meer dan 1000, worden geëxporteerde gegevens de komende 30 dagen asynchroon op een downloadspagina geplaatst.
+- Filters kunnen worden toegepast op de **tabel Details van de volgorde** om alleen de gegevens weer te geven waarin u geïnteresseerd bent. Gegevens kunnen worden gefilterd op land, Azure-licentietype, Marketplace-licentietype, Aanbiedingstype, Bestelstatus, Gratis paden, Marketplace-abonnements-ID, Klant-id en bedrijfsnaam.
 
-#### <a name="orders-page-filters"></a>Pagina filters voor orders
+#### <a name="orders-page-filters"></a>Paginafilters voor bestellingen
 
-Deze filters worden toegepast op pagina niveau.
+Deze filters worden toegepast op paginaniveau.
 
-U kunt meerdere filters selecteren om de grafiek te genereren voor de criteria die u wilt weer geven en de gegevens die u wilt weer gegeven in het raster van **gedetailleerde order gegevens** /exporteren. Filters worden toegepast op de gegevens die zijn geëxtraheerd voor het gegevens bereik dat u hebt geselecteerd in de rechter bovenhoek van de pagina Orders.
+U meerdere filters selecteren om de grafiek weer te geven voor de criteria die u wilt weergeven en de gegevens die u wilt weergeven in het raster **Gedetailleerde ordergegevens/exporteren.** Filters worden toegepast op de gegevens die zijn geëxtraheerd voor het gegevensbereik dat u hebt geselecteerd in de rechterbovenhoek van de opdrachtpagina.
 
-- Aanbiedings typen en aanbiedings namen worden alleen weer gegeven voor aanbiedingen waarvoor u orders hebt tijdens het geselecteerde datum bereik. Namen van aanbiedingen in de lijst worden weer gegeven voor aanbiedingen die u hebt geselecteerd in de lijst.
-- Toegepaste filters tonen de totale metrieken binnen elke selectie (s) voor elk geselecteerd filter. Toegepaste filters worden niet weer gegeven wanneer de standaard selectie wordt gekozen.
-- Als **Alles** is geselecteerd voor een van de vervolg keuzelijsten, worden alle metrische gegevens in de geselecteerde pagina geaggregeerd. Bijvoorbeeld: ' all ' in de optie voor het filter type aanbieding betekent dat alle aanbiedings typen zijn geselecteerd. Dit is de standaard selectie voor de vervolg keuzelijst. In toegepaste filters wordt niets weer gegeven wanneer **Alles** is geselecteerd.
-- **Selectie van meerdere waarden**: alle metrische gegevens op de pagina worden geaggregeerd voor alle selecties die zijn gemaakt in de vervolg keuzelijst. Als er meerdere selecties worden gemaakt, wordt in het toegepaste filter het aantal gemaakte selecties weer gegeven. Zie de onderstaande afbeelding voor naslag informatie.
+- Aanbiedingstypen en aanbiedingsnamen worden alleen vermeld voor aanbiedingen waarvoor u bestellingen hebt tijdens het geselecteerde datumbereik. Aanbiedingsnamen in de lijst worden weergegeven voor aanbiedingendie u in de lijst hebt geselecteerd.
+- Toegepaste filters geven de totale statistieken binnen elke selectie(s) weer voor elk geselecteerd filter. Toegepaste filters worden niet weergegeven wanneer de standaardselectie wordt gekozen.
+- Als **Alles** is geselecteerd voor een van de vervolgkeuzelijsten, worden alle statistieken op de geselecteerde pagina samengevoegd. Bijvoorbeeld: 'Alles' in de filteroptie aanbiedingstypen betekent dat alle aanbiedingstypen zijn geselecteerd. Dit is de standaardselectie voor de vervolgkeuzelijsten. Toegepaste filters worden niet weergegeven wanneer **Alles** is geselecteerd.
+- **Selectie met meerdere waarden:** alle statistieken op de pagina worden samengevoegd voor alle selecties die onder de vervolgkeuzelijst worden gemaakt. Als er meerdere selecties worden gemaakt, wordt in het toegepaste filter het aantal van alle gemaakte selecties weergegeven. Zie de afbeelding hieronder ter referentie.
 
-    ![Partner centrum Analyseer de volg orde waarin meerdere waarden zijn toegepast op het filter](./media/filters-applied.png)
+    ![Partnercentrum Order analyseren met meerdere waarden die zijn toegepast om te filteren](./media/filters-applied.png)
 
-- **Selectie van één waarde**: als u een waarde hebt geselecteerd, wordt in het toegepaste filter het aantal weer gegeven van het filter dat u hebt geselecteerd. Zie de onderstaande afbeelding voor naslag informatie.
+- **Selectie met één waarde:** Als één waarde is geselecteerd, wordt in het toegepaste filter het aantal van het ene filter weergegeven dat is geselecteerd. Zie onderstaande afbeelding ter referentie.
 
-     ![Partner centrum-order analyseren met één waarde toegepast op filter](./media/filters-applied-single.png)
+     ![Partnercentrum Order analyseren met één waarde die is toegepast om te filteren](./media/filters-applied-single.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Voor een overzicht van analyse rapporten die beschikbaar zijn in de commerciële Marketplace van partner Center raadpleegt u [Analytics voor de commerciële Marketplace in Partner Center](./analytics.md).
-- Zie [Summary dash board in Commercial Marketplace Analytics](./summary-dashboard.md)voor grafieken, trends en waarden van statistische gegevens die de Marketplace-activiteiten voor uw aanbieding samenvatten.
-- Voor virtuele machine (VM) zijn metrische gegevens over gebruik en gefactureerde facturering, Zie [gebruiks dashboard in commerciële Marketplace-analyses](./usage-dashboard.md).
-- Zie [klanten dashboard in Commercial Marketplace Analytics](./customer-dashboard.md)voor gedetailleerde informatie over uw klanten, waaronder groei trends.
-- Zie [dash board downloaden in Commercial Marketplace Analytics](./downloads-dashboard.md)voor een lijst met Download aanvragen voor de afgelopen 30 dagen.
-- Voor een geconsolideerde weer gave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource raadpleegt u het [dash board beoordelingen en beoordelingen in Commercial Marketplace Analytics](./ratings-reviews.md).
-- Zie [Veelgestelde vragen en terminologie voor de analyse van commerciële Marketplace](./faq-terminology.md)voor veelgestelde vragen over commerciële Marketplace-analyses en voor een uitgebreid woorden boek met gegevens termen.
+- Zie [Analytics voor de commerciële marktplaats voor](./analytics.md)een overzicht van analyserapporten die beschikbaar zijn in het Partnercenter Commercial Marketplace.
+- Zie [Overzichtsdashboard in Commercial Marketplace-analyses](./summary-dashboard.md)voor grafieken, trends en waarden van geaggregeerde gegevens die de activiteit op de markt voor uw aanbieding samenvatten.
+- Zie [Gebruiksdashboard in Commercial Marketplace-analyses](./usage-dashboard.md)voor virtuele machine (VM) voor gebruiks- en factureringsstatistieken met een datameter.
+- Zie Customer dashboard in Commercial Marketplace [analytics](./customer-dashboard.md)voor gedetailleerde informatie over uw klanten, inclusief groeitrends.
+- Zie [Dashboard Downloads in Commercial Marketplace analytics](./downloads-dashboard.md)voor een lijst met uw downloadaanvragen van de afgelopen 30 dagen.
+- Zie [Dashboard Beoordelingen en beoordelingen in Commercial Marketplace-analyses](./ratings-reviews.md)voor ziet u in een geconsolideerde weergave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource.
+- Voor veelgestelde vragen over Commercial Marketplace analytics en voor een uitgebreid woordenboek van gegevenstermen, zie [veelgestelde vragen en terminologie voor Commercial Marketplace analytics.](./faq-terminology.md)

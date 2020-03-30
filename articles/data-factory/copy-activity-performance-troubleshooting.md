@@ -1,6 +1,6 @@
 ---
-title: Prestaties van de Kopieer activiteit oplossen
-description: Meer informatie over het oplossen van problemen met de prestaties van Kopieer activiteiten in Azure Data Factory.
+title: Problemen met de prestaties van kopieeractiviteiten oplossen
+description: Meer informatie over het oplossen van problemen met de prestaties van kopieeractiviteiten in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -12,181 +12,181 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: dd0343fc2e25a50f9aa9a9fdc3ef5ebb9615bc56
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 963b86852a7df557ad7179e444e7c3a2692f57d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79125769"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531449"
 ---
-# <a name="troubleshoot-copy-activity-performance"></a>Prestaties van de Kopieer activiteit oplossen
+# <a name="troubleshoot-copy-activity-performance"></a>Problemen met de prestaties van kopieeractiviteiten oplossen
 
-In dit artikel wordt beschreven hoe u problemen met de Kopieer activiteit prestaties oplost in Azure Data Factory. 
+In dit artikel wordt beschreven hoe u problemen met de prestaties van kopieeractiviteiten oplossen in Azure Data Factory. 
 
-Nadat u een Kopieer activiteit hebt uitgevoerd, kunt u de statistieken voor resultaten en prestaties van de uitvoer in de weer gave [controle activiteiten kopiëren](copy-activity-monitoring.md) verzamelen. Hier volgt een voorbeeld.
+Nadat u een kopieeractiviteit hebt uitgevoerd, u het runsresultaat en de prestatiestatistieken verzamelen in [de weergave voor het controleren van kopieeractiviteiten.](copy-activity-monitoring.md) Hier volgt een voorbeeld.
 
-![Details van de uitvoering van de Kopieer activiteit controleren](./media/copy-activity-overview/monitor-copy-activity-run-details.png)
+![Details van het uitvoeren van kopieeractiviteiten controleren](./media/copy-activity-overview/monitor-copy-activity-run-details.png)
 
 ## <a name="performance-tuning-tips"></a>Tips voor het afstemmen van prestaties
 
-In sommige gevallen ziet u, wanneer u een Kopieer activiteit uitvoert in Data Factory, aan de bovenkant **' tips voor het afstemmen van prestaties '** , zoals weer gegeven in het bovenstaande voor beeld. De tips geven u de knel punt die wordt geïdentificeerd door ADF voor deze specifieke Kopieer uitvoering, samen met suggesties voor het verhogen van de door Voer van de Kopieer activiteit. Probeer de wijziging opnieuw aan te brengen en voer de kopie opnieuw uit.
+In sommige scenario's **ziet** u bovenaan, zoals in het bovenstaande voorbeeld, een kopieeractiviteit uitvoert in Gegevensfabriek. De tips vertellen u de bottleneck geïdentificeerd door ADF voor deze specifieke kopie draaien, samen met suggestie over hoe de kopieerdoorvoer te stimuleren. Probeer de aanbevolen wijziging aan te brengen en voer de kopie opnieuw uit.
 
-Als referentie bieden de tips voor het afstemmen van prestaties momenteel suggesties voor de volgende gevallen:
+Ter referentie geven de prestatieafstemmingstips momenteel suggesties voor de volgende gevallen:
 
-| Category              | Tips voor het afstemmen van prestaties                                      |
+| Categorie              | Tips voor het afstemmen van prestaties                                      |
 | --------------------- | ------------------------------------------------------------ |
-| Specifiek gegevens archief   | Gegevens laden in **Azure Synpase Analytics (voorheen SQL DW)** : suggesties voor het gebruik van de instructie poly base of Copy als deze niet wordt gebruikt. |
-| &nbsp;                | Gegevens kopiëren van/naar **Azure SQL database**: wanneer DTU onder een hoog gebruik komt, wordt er Voorst Ellen om een upgrade naar een hogere laag te maken. |
-| &nbsp;                | Kopiëren van gegevens van/naar **Azure Cosmos DB**: Wanneer ru onder een hoog gebruik komt, wordt een upgrade naar grotere ru Voorst Ellen. |
-| &nbsp;                | Gegevens opnemen van **Amazon Redshift**: suggesties voor het gebruik van Unload als dit niet wordt gebruikt. |
-| Beperking van gegevens opslag | Als er tijdens het kopiëren een aantal lees-en schrijf bewerkingen worden beperkt door het gegevens archief, wordt er Voorst Ellen om de toegestane aanvraag snelheid voor het gegevens archief te controleren en te verhogen, of om de gelijktijdige werk belasting te verminderen. |
-| Integration runtime  | Als u een **zelf-hostend Integration runtime (IR)** gebruikt en de Kopieer activiteit lang in de wachtrij wacht totdat de IR beschik bare bron heeft om te worden uitgevoerd, kunt u de infra rood uitschalen. |
-| &nbsp;                | Als u een **Azure Integration runtime** gebruikt dat zich in een niet-optimale regio bevindt die resulteert in langzame Lees-en schrijf bewerkingen, wordt het configureren voor het gebruik van een IR in een andere regio Voorst Ellen. |
-| Fouttolerantie       | Als u fout tolerantie configureert en incompatibele rijen overs laat, worden de prestaties van de bron-en Sink-gegevens voor komen. |
-| Gefaseerd kopiëren           | Als de gefaseerde kopie is geconfigureerd, maar niet nuttig is voor uw combi natie van source-sink, kunt u deze verwijderen. |
-| Hervatten                | Wanneer Kopieer activiteit wordt hervat vanaf het laatste fout punt, wordt de nieuwe instelling voor de DIU niet van kracht nadat u de instelling DIU na de oorspronkelijke uitvoering hebt gewijzigd. |
+| Specifiek gegevensarchief   | Gegevens laden in **Azure Synpase Analytics (voorheen SQL DW):** stel voor dat u PolyBase of COPY-instructie gebruikt als deze niet wordt gebruikt. |
+| &nbsp;                | Gegevens kopiëren van/naar **Azure SQL Database:** wanneer DTU onder hoog gebruik staat, stel u voor om te upgraden naar een hogere laag. |
+| &nbsp;                | Gegevens kopiëren van/naar **Azure Cosmos DB:** wanneer RU onder hoog gebruik staat, stel u voor om te upgraden naar grotere RU. |
+| &nbsp;                | Inname van gegevens van **Amazon Redshift:** stel voor dat u UNLOAD gebruikt als deze niet wordt gebruikt. |
+| Beperking van het gegevensarchief | Als een aantal lees-/schrijfbewerkingen tijdens het kopiëren worden beperkt door het gegevensarchief, stelt u voor de toegestane aanvraagsnelheid voor het gegevensarchief te controleren en te verhogen of de gelijktijdige werkbelasting te verminderen. |
+| Runtime van integratie  | Als u een **Self-hosted Integration Runtime (IR)** gebruikt en de activiteit kopiëren lang in de wachtrij wacht totdat de IR beschikbaar is om uit te voeren, stelt u voor uw IR uit te schalen/op te schalen. |
+| &nbsp;                | Als u een **Azure Integration Runtime** gebruikt die zich in een niet optimale regio bevindt, wat resulteert in langzaam lezen/schrijven, stelt u voor configureren om een IR in een andere regio te gebruiken. |
+| Fouttolerantie       | Als u fouttolerantie configureert en incompatibele rijen overslaat, leidt dit tot trage prestaties, zodat bron- en sinkgegevens compatibel zijn. |
+| Gefaseerde kopie           | Als gefaseerde kopie is geconfigureerd, maar niet handig is voor uw bron-sink-paar, stelt u voor deze te verwijderen. |
+| Hervatten                | Wanneer kopieeractiviteit wordt hervat vanaf het laatste foutpunt, maar u de DIU-instelling na de oorspronkelijke run wijzigt, wordt de nieuwe DIU-instelling niet van kracht. |
 
-## <a name="understand-copy-activity-execution-details"></a>Details van de uitvoering van de Kopieer activiteit begrijpen
+## <a name="understand-copy-activity-execution-details"></a>Details van de uitvoering van kopieeractiviteiten begrijpen
 
-In de details van de uitvoering en de duur onder aan de weer gave controle activiteit kopiëren worden de belangrijkste fasen van uw Kopieer activiteit beschreven (Zie het voor beeld aan het begin van dit artikel). Dit is vooral handig bij het oplossen van problemen met de Kopieer prestaties. Het knel punt van de Kopieer uitvoering is de versie met de langste duur. Raadpleeg de volgende tabel in de definitie van elke fase en leer hoe u de [Kopieer activiteit in azure IR oplost](#troubleshoot-copy-activity-on-azure-ir) en hoe u de [Kopieer activiteit op zelf-hostende IR oplost](#troubleshoot-copy-activity-on-self-hosted-ir) met deze informatie.
+De uitvoeringsgegevens en duur onderaan de weergave voor het bewaken van kopieeractiviteiten beschrijven de belangrijkste fasen die uw kopieeractiviteit doormaakt (zie voorbeeld aan het begin van dit artikel), wat vooral handig is voor het oplossen van problemen met de kopieerprestaties. Het knelpunt van uw copy run is degene met de langste duur. Raadpleeg de volgende tabel in de definitie van elke fase en leer hoe [u kopieeractiviteiten op Azure IR oplossen](#troubleshoot-copy-activity-on-azure-ir) en [kopieeractiviteiten op zelfgehoste IR](#troubleshoot-copy-activity-on-self-hosted-ir) oplossen met dergelijke informatie.
 
 | Fase           | Beschrijving                                                  |
 | --------------- | ------------------------------------------------------------ |
-| Wachtrij           | De verstreken tijd totdat de Kopieer activiteit daad werkelijk wordt gestart op de Integration runtime. |
-| Script vooraf kopiëren | De verstreken tijd tussen de Kopieer activiteit, te beginnen bij de IR-en kopieer activiteit, waarbij het vooraf kopiëren van het script in de Sink-gegevens opslag wordt voltooid. Toep assen wanneer u het script voor het vooraf kopiëren van de data base-sinks configureert, bijvoorbeeld wanneer u gegevens schrijft in Azure SQL Database opschonen voordat nieuwe gegevens worden gekopieerd. |
-| Overbrengen        | De verstreken tijd tussen het einde van de vorige stap en de IR waarbij alle gegevens van de bron naar de Sink worden overgebracht. Substaps onder "overdracht" worden parallel uitgevoerd.<br><br>- **tijd tot eerste byte:** de verstreken tijd tussen het einde van de vorige stap en het tijdstip waarop de IR de eerste byte van de gegevens opslag van de bron ontvangt. Is van toepassing op bronnen die niet op bestanden zijn gebaseerd.<br>- **bron van vermelding:** de hoeveelheid tijd die is besteed aan het inventariseren van bron bestanden of gegevens partities. Deze laatste is van toepassing wanneer u partitie opties voor database bronnen configureert, bijvoorbeeld wanneer u gegevens kopieert uit data bases zoals Oracle/SAP HANA/Teradata/Netezza/etc.<br/>-**lezen van Bron:** de hoeveelheid tijd die is besteed aan het ophalen van gegevens uit het gegevens archief van de bron.<br/>- **schrijven naar Sink:** de hoeveelheid tijd die is besteed aan het schrijven van gegevens naar Sink-gegevens opslag. |
+| Wachtrij           | De verstreken tijd totdat de kopieeractiviteit daadwerkelijk begint op de inlooptijd van de integratie. |
+| Script vooraf kopiëren | De verstreken tijd tussen kopieeractiviteit die begint op IR en kopieeractiviteit die het voorkopieschrift in het sink-gegevensarchief uitvoert. Toepassen wanneer u het pre-copy script configureert voor databasesinks, bijvoorbeeld bij het schrijven van gegevens in Azure SQL Database, moet u het doen voordat u nieuwe gegevens kopieert. |
+| Overdracht        | De verstreken tijd tussen het einde van de vorige stap en de IR die alle gegevens van bron naar gootsteen overbrengt. Substeps onder "Overdracht" lopen parallel.<br><br>- **Tijd om eerst byte:** De tijd die is verstreken tussen het einde van de vorige stap en het tijdstip waarop de IR de eerste byte ontvangt van het brongegevensarchief. Is van toepassing op niet-bestandsgebaseerde bronnen.<br>- **Aanbiedingsbron:** De hoeveelheid tijd die wordt besteed aan het opsommen van bronbestanden of gegevenspartities. Dit laatste geldt wanneer u partitieopties voor databasebronnen configureert, bijvoorbeeld bij het kopiëren van gegevens uit databases zoals Oracle/SAP HANA/Teradata/Netezza/etc.<br/>-**Lezen uit de bron:** De hoeveelheid tijd die wordt besteed aan het ophalen van gegevens uit het brongegevensarchief.<br/>- **Schrijven om te zinken:** De hoeveelheid tijd besteed aan het schrijven van gegevens om data store zinken. |
 
-## <a name="troubleshoot-copy-activity-on-azure-ir"></a>Problemen met Kopieer activiteit op Azure IR oplossen
+## <a name="troubleshoot-copy-activity-on-azure-ir"></a>Kopieeractiviteit op Azure IR oplossen
 
-Volg de [stappen voor het afstemmen](copy-activity-performance.md#performance-tuning-steps) van de prestaties om de prestatie test voor uw scenario te plannen en uit te voeren. 
+Volg de [prestatieafstemmingsstappen](copy-activity-performance.md#performance-tuning-steps) om prestatietests voor uw scenario te plannen en uit te voeren. 
 
-Als de prestaties van de Kopieer activiteit niet voldoen aan uw verwachting, kunt u bij het oplossen van problemen met één Kopieer activiteit op Azure Integration Runtime de tips voor het [afstemmen van prestaties](#performance-tuning-tips) in de weer gave controle van kopiëren weer geven door de suggestie toe te passen en het opnieuw te proberen. Als dat niet het geval is, begrijpt u de [Details van de Kopieer activiteit](#understand-copy-activity-execution-details), controleert u welke fase de **langste** tijd heeft en past u de onderstaande instructies toe om de Kopieer prestaties te verhogen:
+Wanneer de prestaties van de kopieeractiviteit niet aan uw verwachting voldoen, u een enkele kopieeractiviteit oplossen die wordt uitgevoerd op Azure Integration Runtime, als u [prestatietuningtips](#performance-tuning-tips) ziet die worden weergegeven in de weergave voor kopieerbewaking, past u de suggestie toe en probeert u het opnieuw. Anders [begrijpt u de uitvoeringsgegevens van kopieeractiviteiten,](#understand-copy-activity-execution-details)controleert u welke fase de **langste** duur heeft en past u de onderstaande richtlijnen toe om de kopieerprestaties te verbeteren:
 
-- **' Pre-Copy-script ' heeft lange duur:** dit betekent dat het vooraf gekopieerde script dat wordt uitgevoerd op de Sink-data base, lang duurt. De opgegeven vooraf gekopieerde script logica afstemmen om de prestaties te verbeteren. Als u meer hulp nodig hebt bij het verbeteren van het script, neemt u contact op met uw database team.
+- **"Pre-copy script" ervaren lange duur:** het betekent dat de pre-copy script draait op gootsteen database duurt lang te voltooien. Stem de opgegeven scriptlogica vooraf af om de prestaties te verbeteren. Als u meer hulp nodig hebt bij het verbeteren van het script, neem dan contact op met uw databaseteam.
 
-- **"Overdrachts tijd tot eerste byte" heeft langdurige duur**van het werk: Dit betekent dat uw bron query lang duurt om gegevens te retour neren. De query of server controleren en optimaliseren. Als u meer hulp nodig hebt, neemt u contact op met uw Data Store-team.
+- **"Transfer - Time to first byte" ervaren lange werkduur:** dit betekent dat uw bronquery lang duurt om gegevens terug te sturen. Controleer en optimaliseer de query of server. Als u meer hulp nodig hebt, neemt u contact op met uw datawinkelteam.
 
-- **"Overdrachts bron" heeft langdurige lange werk duur**: Dit betekent dat het inventariseren van bron bestanden of gegevens partities van de bron database traag is.
+- **"Transfer - Listing source" ervaren lange werkduur:** het betekent dat het opsommen van bronbestanden of bron database data partities traag is.
 
-  - Als u gegevens uit een op een bestand gebaseerde bron kopieert en u **joker tekens filter** gebruikt voor mappad of bestands naam (`wildcardFolderPath` of `wildcardFileName`) of **bestand gebruiken tijd filter voor het laatst gewijzigd** (`modifiedDatetimeStart` of`modifiedDatetimeEnd`), ziet u dat filter zou leiden tot een Kopieer activiteit met alle bestanden onder de opgegeven map naar client zijde en vervolgens het filter Toep assen. Dergelijke bestands inventarisatie kan het knel punt worden, vooral wanneer slechts een kleine set bestanden voldoet aan de filter regel.
+  - Wanneer u gegevens kopieert uit een bestandsbron, als u **het wildcardfilter** gebruikt op mappad`modifiedDatetimeStart` `modifiedDatetimeEnd`of bestandsnaam (of`wildcardFolderPath` `wildcardFileName`) of **het laatst gewijzigde tijdfilter** (of) gebruikt, zou een dergelijk filter resulteren in een kopieactiviteit waarin alle bestanden onder de opgegeven map worden vermeld aan clientzijde, en past u het filter toe. Een dergelijke bestandsopsomming kan het knelpunt worden, vooral wanneer slechts kleine set bestanden voldeed aan de filterregel.
 
-    - Controleer of u [bestanden kunt kopiëren op basis van een bestandspad of naam in datum-gepartitioneerd](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md). Op die manier wordt geen last gegeven van de vermelding van de bron zijde.
+    - Controleer of u bestanden [kopiëren op basis van datumtijdpartitiebestandspad of -naam.](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) Op deze manier brengt geen last op de bronkant van de lijst.
 
-    - Controleer of u in plaats daarvan het native filter van het gegevens archief kunt gebruiken, met name voor**voegsel**voor Amazon S3 en Azure Blob. Voorvoegsel filter is een filter aan de server zijde van het gegevens archief en heeft veel betere prestaties.
+    - Controleer of u het native filter van het gegevensarchief gebruiken, specifiek**voorvoegsel**voor Amazon S3 en Azure Blob. Voorvoegselfilter is een filter aan de serverzijde van een gegevensarchief en zou veel betere prestaties hebben.
 
-    - Overweeg om één grote gegevensset te splitsen in meerdere kleinere gegevens sets, en laat die Kopieer taken gelijktijdig uitvoeren elk deel van de gegevens. U kunt dit doen met lookup/GetMetadata + ForEach + copy. Raadpleeg voor het [kopiëren van bestanden uit meerdere containers](solution-template-copy-files-multiple-containers.md) of [het migreren van gegevens van Amazon S3 naar ADLS Gen2](solution-template-migration-s3-azure.md) oplossings sjablonen als algemeen voor beeld.
+    - Overweeg om enkele grote gegevenssets op te splitsen in verschillende kleinere gegevenssets en laat deze kopieertaken gelijktijdig worden uitgevoerd, elk deelt een deel van de gegevens aan. U dit doen met Lookup /GetMetadata + ForEach + Copy. Raadpleeg [Bestanden uit meerdere containers kopiëren](solution-template-copy-files-multiple-containers.md) of Migreer gegevens van Amazon [S3 naar ADLS Gen2-oplossingssjablonen](solution-template-migration-s3-azure.md) als algemeen voorbeeld.
 
-  - Controleer of ADF een beperkings fout op de bron heeft gerapporteerd of als uw gegevens archief de status hoog gebruik heeft. Als dat het geval is, verkleint u uw workloads in het gegevens archief of neemt u contact op met de beheerder van uw gegevens opslag om de beperkings limiet of beschik bare resource te verg Roten.
+  - Controleer of ADF een beperkingsfout op de bron meldt of dat uw gegevensarchief een hoge gebruiksstatus heeft. Als dat het zo is, verlaag tu-de werkbelasting in het gegevensarchief of probeer dan contact op te nemen met de beheerder van het gegevensarchief om de beperkingslimiet of beschikbare bron te verhogen.
 
-  - Gebruik Azure IR in dezelfde of dicht bij de opslag regio van uw bron gegevens.
+  - Gebruik Azure IR in hetzelfde of dicht bij het gebied van het brongegevensarchief.
 
-- **"Overdracht-lezen van bron" heeft langdurige duur van het werk**: 
+- **"Transfer - reading from source" ervaren lange werkduur:** 
 
-  - De gegevens voor het laden van een connector-specifieke best practice aannemen, indien van toepassing. Bij het kopiëren van gegevens uit [Amazon Redshift](connector-amazon-redshift.md), configureert u bijvoorbeeld dat Redshift uit het geheugen moet worden verwijderd.
+  - Adopteer de best practices voor het laden van gegevens met connectorspecifieke gegevens. Bijvoorbeeld, bij het kopiëren van gegevens van [Amazon Redshift](connector-amazon-redshift.md), configureren om Redshift UNLOAD te gebruiken.
 
-  - Controleer of ADF een beperkings fout op de bron heeft gerapporteerd of dat uw gegevens archief intensief wordt gebruikt. Als dat het geval is, verkleint u uw workloads in het gegevens archief of neemt u contact op met de beheerder van uw gegevens opslag om de beperkings limiet of beschik bare resource te verg Roten.
+  - Controleer of ADF een beperkingsfout op de bron meldt of dat uw gegevensarchief onder hoog gebruik is. Als dat het zo is, verlaag tu-de werkbelasting in het gegevensarchief of probeer dan contact op te nemen met de beheerder van het gegevensarchief om de beperkingslimiet of beschikbare bron te verhogen.
 
-  - Controleer uw Kopieer bron en Sink-patroon: 
+  - Controleer uw kopieerbron en gootsteenpatroon: 
 
-    - Als uw Kopieer patroon meer dan 4 gegevens integratie-eenheden (DIUs) ondersteunt-Raadpleeg [deze sectie over de](copy-activity-performance.md#data-integration-units) Details. u kunt het beste de DIUs verhogen om betere prestaties te krijgen. 
+    - Als uw kopieerpatroon groter is dan 4 Gegevensintegratie-eenheden (DIU's) - raadpleeg [deze sectie](copy-activity-performance.md#data-integration-units) over details, over het algemeen u proberen diu's te verhogen om betere prestaties te krijgen. 
 
-    - Als dat niet het geval is, kunt u één grote gegevensset splitsen in verschillende kleinere gegevens sets, en deze Kopieer taken gelijktijdig uitvoeren elk deel van de gegevens. U kunt dit doen met lookup/GetMetadata + ForEach + copy. Raadpleeg het [kopiëren van bestanden uit meerdere containers](solution-template-copy-files-multiple-containers.md), [het migreren van gegevens van Amazon S3 naar ADLS Gen2](solution-template-migration-s3-azure.md)of [bulksgewijs kopiëren met een controle tabel](solution-template-bulk-copy-with-control-table.md) oplossings sjablonen als algemeen voor beeld.
+    - Anders u overwegen om één grote gegevensset op te splitsen in verschillende kleinere gegevenssets en deze kopieertaken gelijktijdig te laten uitvoeren, elk deelt een deel van de gegevens aan. U dit doen met Lookup /GetMetadata + ForEach + Copy. Raadpleeg [Bestanden uit meerdere containers](solution-template-copy-files-multiple-containers.md)kopiëren, [Gegevens migreren van Amazon S3 naar ADLS Gen2](solution-template-migration-s3-azure.md)of [Bulkkopiëren met een configuratietabeloplossingssjablonen](solution-template-bulk-copy-with-control-table.md) als algemeen voorbeeld.
 
-  - Gebruik Azure IR in dezelfde of dicht bij de opslag regio van uw bron gegevens.
+  - Gebruik Azure IR in hetzelfde of dicht bij het gebied van het brongegevensarchief.
 
-- **' Overdracht-schrijven naar Sink ' heeft langdurige werk duur**:
+- **"Transfer - schrijven te zinken" ervaren lange werkduur:**
 
-  - De gegevens voor het laden van een connector-specifieke best practice aannemen, indien van toepassing. Als u bijvoorbeeld gegevens kopieert naar [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) (voorheen SQL DW), gebruikt u de instructie poly base of Copy. 
+  - Adopteer de best practices voor het laden van gegevens met connectorspecifieke gegevens. Gebruik bijvoorbeeld PolyBase of COPY-instructie bij het kopiëren van gegevens naar [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) (voorheen SQL DW). 
 
-  - Controleer of ADF een beperkings fout op Sink rapporteert of als uw gegevens archief intensief wordt gebruikt. Als dat het geval is, verkleint u uw workloads in het gegevens archief of neemt u contact op met de beheerder van uw gegevens opslag om de beperkings limiet of beschik bare resource te verg Roten.
+  - Controleer of ADF een beperkingsfout meldt op de gootsteen of of uw gegevensarchief onder hoog gebruik staat. Als dat het zo is, verlaag tu-de werkbelasting in het gegevensarchief of probeer dan contact op te nemen met de beheerder van het gegevensarchief om de beperkingslimiet of beschikbare bron te verhogen.
 
-  - Controleer uw Kopieer bron en Sink-patroon: 
+  - Controleer uw kopieerbron en gootsteenpatroon: 
 
-    - Als uw Kopieer patroon meer dan 4 gegevens integratie-eenheden (DIUs) ondersteunt-Raadpleeg [deze sectie over de](copy-activity-performance.md#data-integration-units) Details. u kunt het beste de DIUs verhogen om betere prestaties te krijgen. 
+    - Als uw kopieerpatroon groter is dan 4 Gegevensintegratie-eenheden (DIU's) - raadpleeg [deze sectie](copy-activity-performance.md#data-integration-units) over details, over het algemeen u proberen diu's te verhogen om betere prestaties te krijgen. 
 
-    - Als u de [parallelle kopieën](copy-activity-performance-features.md)geleidelijk wilt afstemmen, moet u er rekening mee houden dat te veel parallelle kopieën zelfs de prestaties kunnen nadelig beïnvloeden.
+    - Anders, geleidelijk afstemmen van de [parallelle kopieën,](copy-activity-performance-features.md)merk op dat te veel parallelle kopieën zelfs pijn kunnen doen aan de prestaties.
 
-  - Gebruik Azure IR in dezelfde of dicht bij de opslag regio voor het sink-gegevens archief.
+  - Gebruik Azure IR in hetzelfde of dicht bij het opslaggebied voor sinkgegevens.
 
-## <a name="troubleshoot-copy-activity-on-self-hosted-ir"></a>Problemen met de Kopieer activiteit op zelf-hostende IR oplossen
+## <a name="troubleshoot-copy-activity-on-self-hosted-ir"></a>Kopieeractiviteit oplossen op zelfgehoste IR
 
-Volg de [stappen voor het afstemmen](copy-activity-performance.md#performance-tuning-steps) van de prestaties om de prestatie test voor uw scenario te plannen en uit te voeren. 
+Volg de [prestatieafstemmingsstappen](copy-activity-performance.md#performance-tuning-steps) om prestatietests voor uw scenario te plannen en uit te voeren. 
 
-Als de Kopieer prestaties niet voldoen aan uw verwachting, kunt u bij het oplossen van problemen met één Kopieer activiteit op Azure Integration Runtime, als u de tips voor het [afstemmen van prestaties](#performance-tuning-tips) ziet in de weer gave controle kopiëren, pas de suggestie toe en probeer het opnieuw. Als dat niet het geval is, begrijpt u de [Details van de Kopieer activiteit](#understand-copy-activity-execution-details), controleert u welke fase de **langste** tijd heeft en past u de onderstaande instructies toe om de Kopieer prestaties te verhogen:
+Wanneer de kopieerprestaties niet aan uw verwachtingen voldoen, u een enkele kopieeractiviteit oplossen die wordt uitgevoerd op Azure Integration Runtime, als u [prestatietuningtips](#performance-tuning-tips) ziet die worden weergegeven in de weergave voor kopieerbewaking, past u de suggestie toe en probeert u het opnieuw. Anders [begrijpt u de uitvoeringsgegevens van kopieeractiviteiten,](#understand-copy-activity-execution-details)controleert u welke fase de **langste** duur heeft en past u de onderstaande richtlijnen toe om de kopieerprestaties te verbeteren:
 
-- **' Wachtrij ' heeft een lange duur:** het betekent dat de Kopieer activiteit lang wacht in de wachtrij totdat uw zelf-hostende IR de resource heeft om uit te voeren. Controleer de IR-capaciteit en het gebruik en [schaal omhoog of](create-self-hosted-integration-runtime.md#high-availability-and-scalability) omlaag op basis van uw werk belasting.
+- **"Wachtrij" ervaren lange duur:** dit betekent dat de kopieeractiviteit lang in de wachtrij wacht totdat uw zelf gehoste IR bron heeft om uit te voeren. Controleer de IR-capaciteit en het gebruik en [schaal op naar](create-self-hosted-integration-runtime.md#high-availability-and-scalability) uw werkbelasting.
 
-- **"Overdrachts tijd tot eerste byte" heeft langdurige duur**van het werk: Dit betekent dat uw bron query lang duurt om gegevens te retour neren. De query of server controleren en optimaliseren. Als u meer hulp nodig hebt, neemt u contact op met uw Data Store-team.
+- **"Transfer - Time to first byte" ervaren lange werkduur:** dit betekent dat uw bronquery lang duurt om gegevens terug te sturen. Controleer en optimaliseer de query of server. Als u meer hulp nodig hebt, neemt u contact op met uw datawinkelteam.
 
-- **"Overdrachts bron" heeft langdurige lange werk duur**: Dit betekent dat het inventariseren van bron bestanden of gegevens partities van de bron database traag is.
+- **"Transfer - Listing source" ervaren lange werkduur:** het betekent dat het opsommen van bronbestanden of bron database data partities traag is.
 
-  - Controleer of de zelf-hostende IR-computer een lage latentie heeft om verbinding te maken met de brongegevens opslag. Als uw bron zich in azure bevindt, kunt u [Dit hulp programma](http://www.azurespeed.com/Azure/Latency) gebruiken om de latentie van de zelf-hostende IR-computer te controleren naar de Azure-regio, hoe minder het is.
+  - Controleer of de zelfgehoste IR-machine een lage latentie heeft die verbinding maakt met het brongegevensarchief. Als uw bron zich in Azure bevindt, u [deze tool](http://www.azurespeed.com/Azure/Latency) gebruiken om de latentie van de zelfgehoste IR-machine naar de Azure-regio te controleren, hoe minder hoe beter.
 
-  - Als u gegevens uit een op een bestand gebaseerde bron kopieert en u **joker tekens filter** gebruikt voor mappad of bestands naam (`wildcardFolderPath` of `wildcardFileName`) of **bestand gebruiken tijd filter voor het laatst gewijzigd** (`modifiedDatetimeStart` of`modifiedDatetimeEnd`), ziet u dat filter zou leiden tot een Kopieer activiteit met alle bestanden onder de opgegeven map naar client zijde en vervolgens het filter Toep assen. Dergelijke bestands inventarisatie kan het knel punt worden, vooral wanneer slechts een kleine set bestanden voldoet aan de filter regel.
+  - Wanneer u gegevens kopieert uit een bestandsbron, als u **het wildcardfilter** gebruikt op mappad`modifiedDatetimeStart` `modifiedDatetimeEnd`of bestandsnaam (of`wildcardFolderPath` `wildcardFileName`) of **het laatst gewijzigde tijdfilter** (of) gebruikt, zou een dergelijk filter resulteren in een kopieactiviteit waarin alle bestanden onder de opgegeven map worden vermeld aan clientzijde, en past u het filter toe. Een dergelijke bestandsopsomming kan het knelpunt worden, vooral wanneer slechts kleine set bestanden voldeed aan de filterregel.
 
-    - Controleer of u [bestanden kunt kopiëren op basis van een bestandspad of naam in datum-gepartitioneerd](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md). Op die manier wordt geen last gegeven van de vermelding van de bron zijde.
+    - Controleer of u bestanden [kopiëren op basis van datumtijdpartitiebestandspad of -naam.](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) Op deze manier brengt geen last op de bronkant van de lijst.
 
-    - Controleer of u in plaats daarvan het native filter van het gegevens archief kunt gebruiken, met name voor**voegsel**voor Amazon S3 en Azure Blob. Voorvoegsel filter is een filter aan de server zijde van het gegevens archief en heeft veel betere prestaties.
+    - Controleer of u het native filter van het gegevensarchief gebruiken, specifiek**voorvoegsel**voor Amazon S3 en Azure Blob. Voorvoegselfilter is een filter aan de serverzijde van een gegevensarchief en zou veel betere prestaties hebben.
 
-    - Overweeg om één grote gegevensset te splitsen in meerdere kleinere gegevens sets, en laat die Kopieer taken gelijktijdig uitvoeren elk deel van de gegevens. U kunt dit doen met lookup/GetMetadata + ForEach + copy. Raadpleeg voor het [kopiëren van bestanden uit meerdere containers](solution-template-copy-files-multiple-containers.md) of [het migreren van gegevens van Amazon S3 naar ADLS Gen2](solution-template-migration-s3-azure.md) oplossings sjablonen als algemeen voor beeld.
+    - Overweeg om enkele grote gegevenssets op te splitsen in verschillende kleinere gegevenssets en laat deze kopieertaken gelijktijdig worden uitgevoerd, elk deelt een deel van de gegevens aan. U dit doen met Lookup /GetMetadata + ForEach + Copy. Raadpleeg [Bestanden uit meerdere containers kopiëren](solution-template-copy-files-multiple-containers.md) of Migreer gegevens van Amazon [S3 naar ADLS Gen2-oplossingssjablonen](solution-template-migration-s3-azure.md) als algemeen voorbeeld.
 
-  - Controleer of ADF een beperkings fout op de bron heeft gerapporteerd of als uw gegevens archief de status hoog gebruik heeft. Als dat het geval is, verkleint u uw workloads in het gegevens archief of neemt u contact op met de beheerder van uw gegevens opslag om de beperkings limiet of beschik bare resource te verg Roten.
+  - Controleer of ADF een beperkingsfout op de bron meldt of dat uw gegevensarchief een hoge gebruiksstatus heeft. Als dat het zo is, verlaag tu-de werkbelasting in het gegevensarchief of probeer dan contact op te nemen met de beheerder van het gegevensarchief om de beperkingslimiet of beschikbare bron te verhogen.
 
-- **"Overdracht-lezen van bron" heeft langdurige duur van het werk**: 
+- **"Transfer - reading from source" ervaren lange werkduur:** 
 
-  - Controleer of de zelf-hostende IR-computer een lage latentie heeft om verbinding te maken met de brongegevens opslag. Als uw bron zich in azure bevindt, kunt u [Dit hulp programma](http://www.azurespeed.com/Azure/Latency) gebruiken om de latentie van de zelf-hostende IR-computer te controleren naar de Azure-regio's, hoe minder het is.
+  - Controleer of de zelfgehoste IR-machine een lage latentie heeft die verbinding maakt met het brongegevensarchief. Als uw bron zich in Azure bevindt, u [deze tool](http://www.azurespeed.com/Azure/Latency) gebruiken om de latentie van de zelfgehoste IR-machine naar de Azure-regio's te controleren, hoe minder hoe beter.
 
-  - Controleer of de zelf-hostende IR-computer voldoende inkomende band breedte heeft om de gegevens efficiënt te lezen en te verzenden. Als uw brongegevens archief zich in azure bevindt, kunt u [Dit hulp programma](https://www.azurespeed.com/Azure/Download) gebruiken om de download snelheid te controleren.
+  - Controleer of de zelfgehoste IR-machine voldoende inkomende bandbreedte heeft om de gegevens efficiënt te lezen en over te dragen. Als uw brongegevensarchief zich in Azure bevindt, u [deze tool](https://www.azurespeed.com/Azure/Download) gebruiken om de downloadsnelheid te controleren.
 
-  - Controleer de door de zelf-hostende IR-trend en het geheugen gebruik in Azure Portal-> de overzichts pagina data factory->. Overweeg om [IR omhoog/uit te schalen](create-self-hosted-integration-runtime.md#high-availability-and-scalability) als het CPU-gebruik hoog is of het beschik bare geheugen laag is.
+  - Controleer de cpu- en geheugengebruikstrend van de zelfgehoste IR in Azure-portal- > uw gegevensfabriek > overzichtspagina. Overweeg om IR op te [schalen/uit](create-self-hosted-integration-runtime.md#high-availability-and-scalability) te schalen als het CPU-gebruik hoog is of het beschikbare geheugen laag is.
 
-  - De gegevens voor het laden van een connector-specifieke best practice aannemen, indien van toepassing. Bijvoorbeeld:
+  - Adopteer de best practices voor het laden van gegevens met connectorspecifieke gegevens. Bijvoorbeeld:
 
-    - Bij het kopiëren van gegevens uit [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP Hana](connector-sap-hana.md#sap-hana-as-source), [SAP-tabel](connector-sap-table.md#sap-table-as-source)en [SAP open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)), kunt u opties voor gegevens partities inschakelen om gegevens parallel te kopiëren.
+    - Bij het kopiëren van gegevens van [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP HANA,](connector-sap-hana.md#sap-hana-as-source) [SAP Table](connector-sap-table.md#sap-table-as-source)en SAP [Open Hub,](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)kunnen gegevenspartitieopties parallel gegevens kopiëren.
 
-    - Bij het kopiëren van de gegevens van [HDFS](connector-hdfs.md), configureert u voor het gebruik van DistCp.
+    - Bij het kopiëren van gegevens van [HDFS,](connector-hdfs.md)configureren om DistCp te gebruiken.
 
-    - Bij het kopiëren van gegevens uit [Amazon Redshift](connector-amazon-redshift.md)configureert u voor het gebruik van RedShift uit het geheugen.
+    - Bij het kopiëren van gegevens van [Amazon Redshift,](connector-amazon-redshift.md)configureren om Redshift UNLOAD te gebruiken.
 
-  - Controleer of ADF een beperkings fout op de bron heeft gerapporteerd of als uw gegevens archief intensief wordt gebruikt. Als dat het geval is, verkleint u uw workloads in het gegevens archief of neemt u contact op met de beheerder van uw gegevens opslag om de beperkings limiet of beschik bare resource te verg Roten.
+  - Controleer of ADF een beperkingsfout op de bron meldt of dat uw gegevensarchief onder hoog gebruik is. Als dat het zo is, verlaag tu-de werkbelasting in het gegevensarchief of probeer dan contact op te nemen met de beheerder van het gegevensarchief om de beperkingslimiet of beschikbare bron te verhogen.
 
-  - Controleer uw Kopieer bron en Sink-patroon: 
+  - Controleer uw kopieerbron en gootsteenpatroon: 
 
-    - Als u gegevens uit gegevens archieven met partitie opties kopieert, kunt u overwegen om de [parallelle kopieën](copy-activity-performance-features.md)geleidelijk af te stemmen. Houd er rekening mee dat te veel parallelle kopieën zelfs de prestaties kunnen nadelig beïnvloeden.
+    - Als u gegevens kopieert uit gegevensarchieven met partitieoptie, u overwegen om de [parallelle kopieën](copy-activity-performance-features.md)geleidelijk af te stemmen, merk op dat te veel parallelle kopieën de prestaties zelfs kunnen schaden.
 
-    - Als dat niet het geval is, kunt u één grote gegevensset splitsen in verschillende kleinere gegevens sets, en deze Kopieer taken gelijktijdig uitvoeren elk deel van de gegevens. U kunt dit doen met lookup/GetMetadata + ForEach + copy. Raadpleeg het [kopiëren van bestanden uit meerdere containers](solution-template-copy-files-multiple-containers.md), [het migreren van gegevens van Amazon S3 naar ADLS Gen2](solution-template-migration-s3-azure.md)of [bulksgewijs kopiëren met een controle tabel](solution-template-bulk-copy-with-control-table.md) oplossings sjablonen als algemeen voor beeld.
+    - Anders u overwegen om één grote gegevensset op te splitsen in verschillende kleinere gegevenssets en deze kopieertaken gelijktijdig te laten uitvoeren, elk deelt een deel van de gegevens aan. U dit doen met Lookup /GetMetadata + ForEach + Copy. Raadpleeg [Bestanden uit meerdere containers](solution-template-copy-files-multiple-containers.md)kopiëren, [Gegevens migreren van Amazon S3 naar ADLS Gen2](solution-template-migration-s3-azure.md)of [Bulkkopiëren met een configuratietabeloplossingssjablonen](solution-template-bulk-copy-with-control-table.md) als algemeen voorbeeld.
 
-- **' Overdracht-schrijven naar Sink ' heeft langdurige werk duur**:
+- **"Transfer - schrijven te zinken" ervaren lange werkduur:**
 
-  - De gegevens voor het laden van een connector-specifieke best practice aannemen, indien van toepassing. Als u bijvoorbeeld gegevens kopieert naar [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) (voorheen SQL DW), gebruikt u de instructie poly base of Copy. 
+  - Adopteer de best practices voor het laden van gegevens met connectorspecifieke gegevens. Gebruik bijvoorbeeld PolyBase of COPY-instructie bij het kopiëren van gegevens naar [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) (voorheen SQL DW). 
 
-  - Controleer of de zelf-hostende IR-computer een lage latentie heeft om verbinding te maken met het sink-gegevens archief. Als uw Sink zich in azure bevindt, kunt u [Dit hulp programma](http://www.azurespeed.com/Azure/Latency) gebruiken om de latentie van de zelf-hostende IR-computer te controleren naar de Azure-regio, hoe minder het is.
+  - Controleer of de zelfgehoste IR-machine een lage latentie heeft die verbinding maakt met het sink-gegevensarchief. Als uw gootsteen zich in Azure bevindt, u [deze tool](http://www.azurespeed.com/Azure/Latency) gebruiken om de latentie van de zelfgehoste IR-machine naar de Azure-regio te controleren, hoe minder hoe beter.
 
-  - Controleer of de zelf-hostende IR-machine voldoende uitgaande band breedte heeft om de gegevens efficiënt over te dragen en te schrijven. Als uw Sink-gegevens archief zich in azure bevindt, kunt u [Dit hulp programma](https://www.azurespeed.com/Azure/UploadLargeFile) gebruiken om de upload snelheid te controleren.
+  - Controleer of de zelfgehoste IR-machine voldoende uitgaande bandbreedte heeft om de gegevens efficiënt over te dragen en te schrijven. Als uw sink data store zich in Azure bevindt, u [deze tool](https://www.azurespeed.com/Azure/UploadLargeFile) gebruiken om de uploadsnelheid te controleren.
 
-  - Controleer of de door de zelf-hostende IR-trend van CPU en geheugen gebruik in Azure Portal > de overzichts pagina data factory->. Overweeg om [IR omhoog/uit te schalen](create-self-hosted-integration-runtime.md#high-availability-and-scalability) als het CPU-gebruik hoog is of het beschik bare geheugen laag is.
+  - Controleer of de cpu- en geheugengebruikstrend van de zelfgehoste IR in Azure-portal -> uw gegevensfabriek-> overzichtspagina. Overweeg om IR op te [schalen/uit](create-self-hosted-integration-runtime.md#high-availability-and-scalability) te schalen als het CPU-gebruik hoog is of het beschikbare geheugen laag is.
 
-  - Controleer of ADF een beperkings fout op Sink rapporteert of als uw gegevens archief intensief wordt gebruikt. Als dat het geval is, verkleint u uw workloads in het gegevens archief of neemt u contact op met de beheerder van uw gegevens opslag om de beperkings limiet of beschik bare resource te verg Roten.
+  - Controleer of ADF een beperkingsfout meldt op de gootsteen of of uw gegevensarchief onder hoog gebruik staat. Als dat het zo is, verlaag tu-de werkbelasting in het gegevensarchief of probeer dan contact op te nemen met de beheerder van het gegevensarchief om de beperkingslimiet of beschikbare bron te verhogen.
 
-  - Als u de [parallelle kopieën](copy-activity-performance-features.md)geleidelijk wilt afstemmen, moet u er rekening mee houden dat te veel parallelle kopieën mogelijk zelfs de prestaties nadelig beïnvloeden.
+  - Overweeg om geleidelijk af te stemmen van de [parallelle kopieën,](copy-activity-performance-features.md)merk op dat te veel parallelle kopieën zelfs pijn kunnen doen aan de prestaties.
 
-## <a name="other-references"></a>Verwijzingen naar andere
+## <a name="other-references"></a>Andere verwijzingen
 
-Hier zijn prestaties controleren en afstemmen van verwijzingen voor enkele van de ondersteunde gegevensarchieven:
+Hier vindt u referenties voor prestatiebewaking en afstemming voor enkele van de ondersteunde gegevensarchieven:
 
-* Azure Blob-opslag: [schaal baarheid en prestatie doelen voor Blob Storage](../storage/blobs/scalability-targets.md) en de [controle lijst voor prestaties en schaal baarheid voor Blob Storage](../storage/blobs/storage-performance-checklist.md).
-* Azure-tabel opslag: [schaal baarheid en prestatie doelen voor](../storage/tables/scalability-targets.md) de [controle lijst voor tabel opslag en prestaties en schaal baarheid voor tabel opslag](../storage/tables/storage-performance-checklist.md).
-* Azure SQL Database: u kunt [de prestaties bewaken](../sql-database/sql-database-single-database-monitor.md) en het DTU-percentage (data base Trans Action Unit) controleren.
-* Azure SQL Data Warehouse: de mogelijkheid ervan wordt gemeten in data warehouse units (Dwu's). Zie [reken kracht beheren in Azure SQL Data Warehouse (overzicht)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
-* Azure Cosmos DB: [prestatie niveaus in azure Cosmos DB](../cosmos-db/performance-levels.md).
-* On-premises SQL Server: [prestaties bewaken en afstemmen](https://msdn.microsoft.com/library/ms189081.aspx).
-* On-premises Bestands server: [prestaties afstemmen voor bestands servers](https://msdn.microsoft.com/library/dn567661.aspx).
+* Azure Blob-opslag: [schaalbaarheids- en prestatiedoelen voor de](../storage/blobs/scalability-targets.md) checklist voor blobopslag en [-prestaties en schaalbaarheid voor Blob-opslag.](../storage/blobs/storage-performance-checklist.md)
+* Azure Table-opslag: [schaalbaarheids- en prestatiedoelstellingen voor de](../storage/tables/scalability-targets.md) checklist voor tabelopslag en [-prestaties en schaalbaarheid voor tabelopslag](../storage/tables/storage-performance-checklist.md).
+* Azure SQL Database: U [de prestaties controleren](../sql-database/sql-database-single-database-monitor.md) en het DTU-percentage (Database Transaction Unit) controleren.
+* Azure SQL Data Warehouse: de mogelijkheden worden gemeten in Data Warehouse Units (DWU's). Zie [Rekenkracht beheren in Azure SQL Data Warehouse (Overzicht).](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
+* Azure Cosmos DB: [prestatieniveaus in Azure Cosmos DB](../cosmos-db/performance-levels.md).
+* On-premises SQL Server: [monitor en stem af op prestaties.](https://msdn.microsoft.com/library/ms189081.aspx)
+* On-premises bestandsserver: [prestatieafstemming voor bestandsservers](https://msdn.microsoft.com/library/dn567661.aspx).
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de andere artikelen over Kopieer activiteiten:
+Zie de andere artikelen van de exemplaaractiviteit:
 
-- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
-- [Gids voor de prestaties en schaal baarheid van de Kopieer activiteit](copy-activity-performance.md)
-- [Functies voor het optimaliseren van de activiteit prestaties](copy-activity-performance-features.md)
-- [Azure Data Factory gebruiken om gegevens van uw data Lake of Data Warehouse te migreren naar Azure](data-migration-guidance-overview.md)
+- [Overzicht van activiteit kopiëren](copy-activity-overview.md)
+- [Handleiding voor activiteitsprestaties en schaalbaarheid kopiëren](copy-activity-performance.md)
+- [Functies voor optimalisatie van activiteitsprestaties kopiëren](copy-activity-performance-features.md)
+- [Azure Data Factory gebruiken om gegevens uit uw gegevensmeer of gegevensmagazijn naar Azure te migreren](data-migration-guidance-overview.md)
 - [Gegevens migreren van Amazon S3 naar Azure Storage](data-migration-guidance-s3-azure-storage.md)

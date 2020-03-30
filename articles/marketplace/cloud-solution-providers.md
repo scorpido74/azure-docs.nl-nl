@@ -1,199 +1,198 @@
 ---
-title: Cloud solution providers | Azure Marketplace
-description: Uitgevers kunnen nu hun aanbiedingen verkopen via het partner kanaal van de Microsoft Cloud Solution Provider (CSP).
-services: Azure, Marketplace, Compute, Storage, Networking, Partner Center
-author: ChJenk
+title: CloudSolution Providers | Azure Marketplace
+description: Uitgevers kunnen hun aanbiedingen nu verkopen via het CSP-partnerkanaal (Microsoft Cloud Solution Provider).
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/12/2019
-ms.author: v-chjen
-ms.openlocfilehash: 546702af671cfe9506a4fc0448f40b7b8353960c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: dsindona
+ms.openlocfilehash: 9d7cbdd5ad551ba48f08f62237d5384aa7998fb8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038689"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281660"
 ---
 # <a name="cloud-solution-providers"></a>Providers van cloudoplossingen
 
-Software aanbiedingen kunnen miljoenen gekwalificeerde micro soft-klanten bereiken die worden geleverd door partners in het CSP-programma (Cloud Solution Provider), naast de open bare Beschik baarheid van aanbiedingen via [webwinkels van micro soft](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
+Softwareaanbiedingen kunnen miljoenen gekwalificeerde Microsoft-klanten bereiken die worden bediend door partners in het Cloud Solution Provider -programma (CSP), naast de openbare beschikbaarheid van aanbiedingen via [Microsoft-webwinkels.](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)
 
-Uitgevers configureren aanbiedingen voor Beschik baarheid in het CSP-programma, op basis van een opt-in, voor een nieuwe aanbieding of voor een bestaande, waardoor partners uw producten kunnen verkopen en gebundelde oplossingen voor klanten kan maken.
+Uitgevers configureren aanbiedingen voor beschikbaarheid in het CSP-programma op opt-in basis, voor een nieuw aanbod of een bestaand aanbod, waardoor partners uw producten kunnen verkopen en gebundelde oplossingen voor klanten kunnen maken.
 
-Uitgevers zijn verantwoordelijk voor het verstrekken van ondersteuning voor eind gebruikers en voor het bieden van een mechanisme voor partners in het CSP-programma en/of klanten om contact met u op te nemen voor ondersteuning. Het is een best practice om partners in het CSP-programma te voorzien van de gebruikers documentatie, training en service status/uitval meldingen (indien van toepassing), zodat partners in het CSP-programma de ondersteunings aanvragen voor Tier 1 van klanten kunnen afhandelen.  
+Uitgevers zijn verantwoordelijk voor het bieden van break-fix ondersteuning aan eindklanten en voor het bieden van een mechanisme voor partners in het CSP-programma en/of klanten om contact met u op te nemen voor ondersteuning. Het is een aanbevolen gewoonte om partners in het CSP-programma te voorzien van gebruikersdocumentatie, training en servicestatus/uitvalmeldingen (indien van toepassing), zodat partners in het CSP-programma zijn uitgerust om ondersteuningsverzoeken van klanten te verwerken.  
 
-De volgende aanbiedingen komen in aanmerking voor de keuze om te worden verkocht door partners in het CSP-programma:
+De volgende aanbiedingen komen in aanmerking om te worden aangemeld om te worden verkocht door partners in het CSP-programma:
 
-- SaaS-aanbiedingen (Software-as-a-Service)
-- Virtual Machines (VM's)
+- Software-as-a-Service (SaaS) transacties
+- Virtuele machines (VM's)
 - Oplossingssjablonen
 - Beheerde toepassingen
 
 > [!NOTE]
-> Containers en maken uw eigen licentie (BYOL) VM-Sku's worden standaard in de CSP-programma verkocht door partners.
+> Containers en Bring Your Own License (BYOL) VM SKU's worden standaard verkocht door partners in het CSP-programma.
 
 ## <a name="how-to-configure-an-offering"></a>Een aanbieding configureren
 
-De instelling voor het CSP-programma opt-in is geconfigureerd in het partner centrum of de ervaring Cloud Partner-portal aanbieding maken. Meer [informatie over het wijzigen van Publisher-ervaring](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293).
+De opt-in-instelling voor CSP-programma's is geconfigureerd in het Partnercenter of Cloud Partner Portal en biedt creatie-ervaring. [Meer informatie over de veranderende uitgeverservaring](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293).
 
-### <a name="partner-center-opt-in"></a>Partner centrum-opt-in
+### <a name="partner-center-opt-in"></a>Partnercentrum opt-in
 
-In het partner centrum vindt u de opt-in-ervaring onder de doelgroep CSP reseller.
+In Partner Center vindt u de opt-in-ervaring onder de CSP Reseller-doelgroepmodule.
 
-![CSP reseller-groep](media/marketplace-publishers-guide/csp-reseller-audience.png)
+![CSP Reseller-doelgroep](media/marketplace-publishers-guide/csp-reseller-audience.png)
 
-In de module CSP reseller-doel groep hebt u drie opties waaruit u kunt kiezen:
+In de doelgroepmodule CSP Reseller u kiezen uit drie opties:
 
-- Optie One: elke partner in het CSP-programma
-- Optie twee: specifieke partners in het CSP-programma dat ik Selecteer
-- Optie drie: geen partners in het CSP-programma
+- Optie één: Elke partner in het CSP-programma
+- Optie twee: Specifieke partners in het CSP-programma dat ik selecteer
+- Optie drie: Geen partners in het CSP-programma
 
-#### <a name="option-one-any-partner-in-the-csp-program"></a>Optie One: elke partner in het CSP-programma
+#### <a name="option-one-any-partner-in-the-csp-program"></a>Optie één: Elke partner in het CSP-programma
 
-![Alle partners in het CSP-programma](media/marketplace-publishers-guide/csp-reseller-option-one.png)
+![Elke partner in het CSP-programma](media/marketplace-publishers-guide/csp-reseller-option-one.png)
 
- Als u deze optie kiest, komen alle partners in het CSP-programma in aanmerking om uw aanbieding door te verkopen aan hun klanten.
+ Door voor deze optie te kiezen, komen alle partners in het CSP-programma in aanmerking om uw aanbod door te verkopen aan hun klanten.
 
-#### <a name="option-two-specific-partners-in-the-csp-program-i-select"></a>Optie twee: specifieke partners in het CSP-programma dat ik Selecteer
+#### <a name="option-two-specific-partners-in-the-csp-program-i-select"></a>Optie twee: Specifieke partners in het CSP-programma dat ik selecteer
 
-![Specifieke partners in het CSP-programma dat ik Selecteer](media/marketplace-publishers-guide/csp-reseller-option-two.png)
+![Specifieke partners in het CSP-programma dat ik selecteer](media/marketplace-publishers-guide/csp-reseller-option-two.png)
 
-Als u deze optie kiest, machtigt u welke partners in het CSP-programma in aanmerking komen voor het verkopen van uw aanbieding.
+Door deze optie te kiezen, geeft u toestemming welke partners in het CSP-programma in aanmerking komen om uw aanbieding door te verkopen.
 
-Als u partners wilt autoriseren, klikt u op **CSP-partners selecteren** en een menu wordt weer gegeven waarin u kunt zoeken op partner naam of CSP-Azure Active Directory (Aad) Tenant-id.
+Als u partners wilt autoriseren, klikt u op **CSP-partners selecteren** en verschijnt er een menu waarmee u zoeken op partnernaam of Aad-tenant-id (CSP Azure Active Directory).
 
-![CSP-menu selecteren](media/marketplace-publishers-guide/csp-pop-up-module.png)
+![Menu CSP selecteren](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
-U kunt Zoek filters toep assen, zoals **land**, **competentie**of **vaardigheid**.
+U zoekfilters toepassen, zoals **Land,** **Competentie**of **Vaardigheid.**
 
-![Land-, competentie-en vaardigheids filters voor het zoeken naar partners](media/marketplace-publishers-guide/csp-add-resellers.png)
+![Land-, competentie- en vaardigheidsfilters voor partnerzoekopdrachten](media/marketplace-publishers-guide/csp-add-resellers.png)
 
-Wanneer u de lijst met partners hebt gekozen, selecteert u **toevoegen**.
+Zodra u de lijst met partners hebt gekozen, selecteert u **Toevoegen**.
 
-![Voor beeld van een lijst met geautoriseerde partners in het CSP-programma](media/marketplace-publishers-guide/csp-add-resellers-details.png)
+![Voorbeeldlijst van geautoriseerde partners in het CSP-programma](media/marketplace-publishers-guide/csp-add-resellers-details.png)
 
-Er wordt een tabel weer gegeven met de lijst met partners die u hebt geselecteerd op de pagina CSP reseller.
+Een tabel met de lijst met geselecteerde partners wordt weergegeven op de doelgroeppagina van CSP Reseller.
 
-![Tabel met een lijst met partners op de CSP-dealer pagina](media/marketplace-publishers-guide/csp-option-two-add-reseller.png)
+![Tabel met lijst met partners op de doelgroeppagina van CSP Reseller](media/marketplace-publishers-guide/csp-option-two-add-reseller.png)
 
-Selecteer **concept opslaan** om uw wijzigingen te registreren.
+Selecteer **Concept opslaan** om uw wijzigingen te registreren.
 
-Als deze aanbieding niet is gepubliceerd, moet u uw aanbieding publiceren om deze beschikbaar te maken voor uw geselecteerde partners.
+Als deze aanbieding niet is gepubliceerd, moet u uw voorstel publiceren om deze beschikbaar te maken voor uw geselecteerde partners.
 
 >[!NOTE]
->Als u een partner machtigt in het CSP-programma in een bepaalde regio, kunnen ze de aanbieding verkopen aan elke klant die tot die specifieke regio behoort. Zie de [regionale markten en valuta van het programma Cloud Solution Provider Program](https://docs.microsoft.com/partner-center/regional-authorization-overview) voor meer informatie over hoe CSP-aanbiedingen worden geclassificeerd onder regio's.
+>Als u een partner in het CSP-programma in een bepaalde regio autoriseert, kan deze het aanbod verkopen aan elke klant die tot die specifieke regio behoort. Zie [regionale markten en valuta programma's voor het Cloud Solution Provider-programma](https://docs.microsoft.com/partner-center/regional-authorization-overview) voor meer informatie over hoe CSP-aanbiedingen onder regio's worden ingedeeld.
 
-Als u de lijst met CSP'S van een al gepubliceerde aanbieding bijwerkt, voegt u de aanvullende partners toe en selecteert u **CSP-doel groep synchroniseren**.
+Als u de CSP-lijst van een reeds gepubliceerde aanbieding bijwerkt, voegt u de extra partners toe en selecteert u **De CSP-doelgroep synchroniseren.**
 
-Als u een aanbieding hebt die al een lijst met geautoriseerde partners heeft en u dezelfde lijst voor een andere aanbieding wilt gebruiken, gebruikt u **importeren/exporteren**. Navigeer naar het aanbod met de lijst met csp's en selecteer **Csp's exporteren**. De functie ontwikkelt een CSV-bestand dat in een andere aanbieding kan worden geïmporteerd.
+Als u een aanbieding hebt die al een lijst met geautoriseerde partners heeft en u dezelfde lijst wilt gebruiken voor een andere aanbieding, gebruikt u **Importeren/exporteren**. Navigeer naar de aanbieding met de CSP-lijst en selecteer **CSP exporteren.** De functie ontwikkelt een CSV-bestand dat kan worden geïmporteerd in een andere aanbieding.
 
-#### <a name="option-three-no-partners-in-the-csp-program"></a>Optie drie: geen partners in het CSP-programma
+#### <a name="option-three-no-partners-in-the-csp-program"></a>Optie drie: Geen partners in het CSP-programma
 
 ![Geen partners in het CSP-programma](media/marketplace-publishers-guide/csp-reseller-option-three.png)
 
-Als u deze optie kiest, kunt u uw aanbieding uit het CSP-programma aansturen. U kunt deze selectie op elk gewenst moment wijzigen.
+Door voor deze optie te kiezen, kiest u uw aanbieding uit het CSP-programma. U deze selectie op elk gewenst moment wijzigen.
 
-### <a name="cloud-partner-portal-opt-in"></a>Opt-in Cloud Partner-portal
+### <a name="cloud-partner-portal-opt-in"></a>Opt-in cloudpartnerportal
 
-In Cloud Partner-portal wordt de opt-in ingesteld op het tabblad Marketplace of winkel. De mogelijkheid om specifieke partners in het CSP-programma te kiezen, is alleen beschikbaar in partner centrum.
+In Cloud Partner Portal wordt de opt-in ingesteld op het tabblad Marketplace of Storefront. De mogelijkheid om specifieke partners in het CSP-programma te kiezen is alleen beschikbaar in Partner Center.
 
-![CSP-opt-in-ervaring in CPP](media/marketplace-publishers-guide/csp-opt-in.png)
+![CSP opt-in ervaring in CPP](media/marketplace-publishers-guide/csp-opt-in.png)
 
-## <a name="deauthorize-partners-in-the-csp-program"></a>De autorisatie van partners in het CSP-programma intrekken
+## <a name="deauthorize-partners-in-the-csp-program"></a>Partners in het CSP-programma deauthorizeen
 
-Als u een partner hebt geautoriseerd in het CSP-programma en die partner het product al naar hun klanten heeft verkocht, mag u de autorisatie van die partner niet ongedaan maken.
+Als u een partner in het CSP-programma hebt geautoriseerd en die partner het product al heeft doorverkocht aan hun klanten, mag u die partner niet deautoriseren.
 
-Als een partner in het CSP-programma uw product niet aan hun klanten heeft verkocht en u de CSP wilt verwijderen nadat uw aanbieding is gepubliceerd, gebruikt u de volgende instructies:
+Als een partner in het CSP-programma uw product niet aan zijn klanten heeft verkocht en u het CSP wilt verwijderen nadat uw aanbieding is gepubliceerd, gebruikt u de volgende instructies:
 
-1. Ga naar de [pagina ondersteuningsaanvraag](https://aka.ms/marketplacepublishersupport). De eerste paar vervolg keuzemenu's worden automatisch ingevuld.
-
-   > [!NOTE]
-   > Wijzig de vooraf gevulde vervolg menu selecties niet.
-
-2. Selecteer **Live offer Management**voor **de product versie selecteren**.
-3. Voor **een categorie selecteren die het probleem het beste beschrijft**, kiest u de categorie die naar uw aanbieding verwijst.
-4. Voor **een probleem selecteren dat het probleem het beste beschrijft**, selecteert u **bestaande aanbieding bijwerken**.
-5. Selecteer **volgende** om naar de pagina met **Details** van het probleem te verwijzen om meer informatie over uw probleem op te geven.
-6. Gebruik **CSP intrekken** als de titel van het probleem en vul de rest van de vereiste secties in.
-
-
-
-
-## <a name="navigate-between-options"></a>Scha kelen tussen opties
-
-Gebruik deze sectie om te navigeren tussen de drie CSP-reseller opties.
-
-### <a name="navigate-from-option-one-any-partner-in-the-csp-program"></a>Navigeren vanuit optie één: elke partner in het CSP-programma
-
-Als uw aanbieding momenteel is ingesteld **op ' 1 ': alle partners in het CSP-programma** en u wilt navigeren naar een van de twee andere opties, gebruik de volgende instructies om een aanvraag te maken:
-
-1. Ga naar de [pagina ondersteuningsaanvraag](https://aka.ms/marketplacepublishersupport). De eerste paar vervolg keuzemenu's worden automatisch ingevuld.
+1. Ga naar de [pagina Ondersteuningsverzoek](https://aka.ms/marketplacepublishersupport). De eerste paar vervolgkeuzemenu's worden automatisch voor u ingevuld.
 
    > [!NOTE]
-   > Wijzig de vooraf gevulde vervolg menu selecties niet.
+   > Wijzig de vooraf ingevulde vervolgkeuzemenuselecties niet.
 
-2. Selecteer **Live offer Management**voor **de product versie selecteren**.
-3. Voor **een categorie selecteren die het probleem het beste beschrijft**, kiest u de categorie die naar uw aanbieding verwijst.
-4. Voor **een probleem selecteren dat het probleem het beste beschrijft**, selecteert u **bestaande aanbieding bijwerken**.
-5. Selecteer **volgende** om naar de pagina met **Details** van het probleem te verwijzen om meer informatie over uw probleem op te geven.
-6. Gebruik **CSP intrekken** als de titel van het probleem en vul de rest van de vereiste secties in.
+2. Selecteer **Live-aanbiedingsbeheer**voor **Selecteer de productversie**.
+3. Kies **voor Selecteer een categorie die het probleem het best beschrijft,** de categorie die naar uw aanbieding verwijst.
+4. Selecteer Bestaande **aanbieding bijwerken**voor Een probleem selecteren dat het probleem het **beste beschrijft**.
+5. Selecteer **Volgende** om naar de **pagina Details van het probleem** te worden geleid om meer details over uw probleem in te voeren.
+6. Gebruik **CSP deauthorizeals** uitgiftetitel en vul de rest van de vereiste secties in.
+
+
+
+
+## <a name="navigate-between-options"></a>Navigeren tussen opties
+
+Gebruik deze sectie om te navigeren tussen de drie CSP-reselleropties.
+
+### <a name="navigate-from-option-one-any-partner-in-the-csp-program"></a>Navigeren vanaf optie één: elke partner in het CSP-programma
+
+Als uw aanbieding momenteel **optie 1 is: elke partner in het CSP-programma** en u wilt naar een van de andere twee opties navigeren, gebruikt u de volgende instructies om een aanvraag te maken:
+
+1. Ga naar de [pagina Ondersteuningsverzoek](https://aka.ms/marketplacepublishersupport). De eerste paar vervolgkeuzemenu's worden automatisch voor u ingevuld.
+
+   > [!NOTE]
+   > Wijzig de vooraf ingevulde vervolgkeuzemenuselecties niet.
+
+2. Selecteer **Live-aanbiedingsbeheer**voor **Selecteer de productversie**.
+3. Kies **voor Selecteer een categorie die het probleem het best beschrijft,** de categorie die naar uw aanbieding verwijst.
+4. Selecteer Bestaande **aanbieding bijwerken**voor Een probleem selecteren dat het probleem het **beste beschrijft**.
+5. Selecteer **Volgende** om naar de **pagina Details van het probleem** te worden geleid om meer details over uw probleem in te voeren.
+6. Gebruik **CSP deauthorizeals** uitgiftetitel en vul de rest van de vereiste secties in.
 
 > [!NOTE]
-> Als u probeert te navigeren naar optie twee en een partner in het CSP-programma de aanbieding al aan hun klanten heeft doorverkocht, is die partner standaard al aanwezig in de lijst met geautoriseerde partners.  
+> Als u naar optie twee probeert te navigeren en een partner in het CSP-programma de aanbieding al heeft doorverkocht aan hun klanten, staat die partner standaard al in uw lijst met geautoriseerde partners.  
 
-### <a name="navigate-from-option-two-specific-partners-in-the-csp-program-i-select"></a>Navigeren vanuit de tweede optie: specifieke partners in het CSP-programma dat ik Selecteer
+### <a name="navigate-from-option-two-specific-partners-in-the-csp-program-i-select"></a>Navigeren vanuit optie twee: specifieke partners in het CSP-programma dat ik selecteer
 
-Als uw aanbieding momenteel is ingesteld **op 2: specifieke partners in het CSP-programma dat ik selecteer** en u wilt naar **optie 1 navigeren: een partner in het CSP-programma**, gebruik de volgende instructies om een aanvraag te maken:
+Als uw aanbieding momenteel **optie 2 is: specifieke partners in het CSP-programma dat ik selecteer** en u wilt naar optie één **navigeren: elke partner in het CSP-programma,** gebruikt de volgende instructies om een aanvraag te maken:
 
-1. Ga naar de [pagina ondersteuningsaanvraag](https://aka.ms/marketplacepublishersupport). De eerste paar vervolg keuzemenu's worden automatisch ingevuld.
-
-   > [!NOTE]
-   > Wijzig de vooraf gevulde vervolg menu selecties niet.
-
-2. Selecteer **Live offer Management**voor **de product versie selecteren**.
-3. Voor **een categorie selecteren die het probleem het beste beschrijft**, kiest u de categorie die naar uw aanbieding verwijst.
-4. Voor **een probleem selecteren dat het probleem het beste beschrijft**, selecteert u **bestaande aanbieding bijwerken**.
-5. Selecteer **volgende** om naar de pagina met **Details** van het probleem te verwijzen om meer informatie over uw probleem op te geven.
-6. Gebruik **CSP intrekken** als de titel van het probleem en vul de rest van de vereiste secties in.
-
- Als uw aanbieding momenteel is ingesteld **op 2: specifieke partners in het CSP-programma dat ik selecteer** en u wilt navigeren naar **optie 3: geen partners in het CSP-programma**, u kunt alleen naar deze optie navigeren als de partners in het CSP-programma dat u eerder hebt geautoriseerd, uw aanbieding niet aan eind klanten hebben verkocht. Gebruik de volgende instructies om een aanvraag te maken:
-
-1. Ga naar de [pagina ondersteuningsaanvraag](https://aka.ms/marketplacepublishersupport). De eerste paar vervolg keuzemenu's worden automatisch ingevuld.
+1. Ga naar de [pagina Ondersteuningsverzoek](https://aka.ms/marketplacepublishersupport). De eerste paar vervolgkeuzemenu's worden automatisch voor u ingevuld.
 
    > [!NOTE]
-   > Wijzig de vooraf gevulde vervolg menu selecties niet.
+   > Wijzig de vooraf ingevulde vervolgkeuzemenuselecties niet.
 
-2. Selecteer **Live offer Management**voor **de product versie selecteren**.
-3. Voor **een categorie selecteren die het probleem het beste beschrijft**, kiest u de categorie die naar uw aanbieding verwijst.
-4. Voor **een probleem selecteren dat het probleem het beste beschrijft**, selecteert u **bestaande aanbieding bijwerken**.
-5. Selecteer **volgende** om naar de pagina met **Details** van het probleem te verwijzen om meer informatie over uw probleem op te geven.
-6. Gebruik **CSP intrekken** als de titel van het probleem en vul de rest van de vereiste secties in.
+2. Selecteer **Live-aanbiedingsbeheer**voor **Selecteer de productversie**.
+3. Kies **voor Selecteer een categorie die het probleem het best beschrijft,** de categorie die naar uw aanbieding verwijst.
+4. Selecteer Bestaande **aanbieding bijwerken**voor Een probleem selecteren dat het probleem het **beste beschrijft**.
+5. Selecteer **Volgende** om naar de **pagina Details van het probleem** te worden geleid om meer details over uw probleem in te voeren.
+6. Gebruik **CSP deauthorizeals** uitgiftetitel en vul de rest van de vereiste secties in.
 
-### <a name="navigate-from-option-3-no-partners-in-the-csp-program"></a>Navigeren vanuit optie 3: geen partners in het CSP-programma
+ Als uw aanbieding momenteel **optie 2 is: specifieke partners in het CSP-programma dat ik selecteer** en u wilt naar optie **3: Geen partners in het CSP-programma,** u alleen naar die optie navigeren als de partners in het CSP-programma die u eerder had geautoriseerd uw aanbieding niet hebben doorverkocht aan eindklanten. Gebruik de volgende instructies om een aanvraag te maken:
 
-Als uw aanbieding momenteel is ingesteld op **3: geen partners in het CSP-programma**, kunt u op elk gewenst moment naar een van de andere twee opties navigeren.
+1. Ga naar de [pagina Ondersteuningsverzoek](https://aka.ms/marketplacepublishersupport). De eerste paar vervolgkeuzemenu's worden automatisch voor u ingevuld.
 
-## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>Verkoop-en ondersteunings materialen delen met partners in het CSP-programma
+   > [!NOTE]
+   > Wijzig de vooraf ingevulde vervolgkeuzemenuselecties niet.
 
-Om ervoor te zorgen dat partners in het Cloud Solution Provider-programma het meest effectief vertegenwoordigen en samen werken met uw organisatie, moet u verkoop-en ondersteunings materialen verzenden die beschikbaar zijn voor de wederverkopers. Deze resources worden niet blootgesteld aan klanten in de Marketplace-winkel.
+2. Selecteer **Live-aanbiedingsbeheer**voor **Selecteer de productversie**.
+3. Kies **voor Selecteer een categorie die het probleem het best beschrijft,** de categorie die naar uw aanbieding verwijst.
+4. Selecteer Bestaande **aanbieding bijwerken**voor Een probleem selecteren dat het probleem het **beste beschrijft**.
+5. Selecteer **Volgende** om naar de **pagina Details van het probleem** te worden geleid om meer details over uw probleem in te voeren.
+6. Gebruik **CSP deauthorizeals** uitgiftetitel en vul de rest van de vereiste secties in.
 
-### <a name="partner-center-csp-channel"></a>Partner centrum CSP-kanaal
+### <a name="navigate-from-option-3-no-partners-in-the-csp-program"></a>Navigeren vanuit optie 3: Geen partners in het CSP-programma
 
-Als u in het partner centrum hebt gekozen voor het CSP-kanaal, moeten uitgevers een URL invoeren die als host fungeert voor relevante marketing materialen en kanaal contact gegevens naar het CSP-kanaal onder de module aanbieding:
+Als uw aanbieding momenteel **optie 3: geen partners in het CSP-programma**is, u op elk gewenst moment naar een van de andere twee opties navigeren.
 
-![Partner centrum CSP-informatie over onderpand](media/marketplace-publishers-guide/pc-csp-channel.png)
+## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>Verkoop- en ondersteuningsmateriaal delen met partners in het CSP-programma
 
-### <a name="cloud-partner-portal-csp-channel"></a>CSP-kanaal Cloud Partner-portal
+Om partners in het Cloud Solution Provider-programma te helpen uw aanbod het meest effectief te vertegenwoordigen en contact te leggen met uw organisatie, moet u verkoop- en ondersteuningsmateriaal indienen dat beschikbaar is voor de resellers. Deze bronnen zullen niet worden blootgesteld aan klanten in de marktplaats etalages.
 
-Als u hebt gekozen voor het CSP-kanaal in Cloud Partner-portal, moeten uitgevers een URL invoeren die als host fungeert voor relevante marketing materialen en kanaal contactpersoongegevens naar het CSP-kanaal:
+### <a name="partner-center-csp-channel"></a>CSP-kanaal van Partnercenter
 
-![Informatie over het onderpand van CSP Cloud Partner-portal](media/marketplace-publishers-guide/cpp-csp-information.png)
+Als je je hebt aangemeld voor het CSP-kanaal in partnercentrum, moeten uitgevers een URL invoeren waarmee relevante marketingmaterialen worden weergegeven en contactgegevens naar het CSP-kanaal worden geleid onder de module Aanbiedingsvermelding:
+
+![Partner Center CSP-onderpand](media/marketplace-publishers-guide/pc-csp-channel.png)
+
+### <a name="cloud-partner-portal-csp-channel"></a>Cloud Partner Portal CSP-kanaal
+
+Als u zich hebt aangemeld voor het CSP-kanaal in Cloud Partner Portal, moeten uitgevers een URL invoeren met relevante marketingmaterialen en contactgegevens van kanalen naar het CSP-kanaal:
+
+![Cloud Partner Portal CSP-onderpand](media/marketplace-publishers-guide/cpp-csp-information.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de [Publisher-hand leiding voor Azure Marketplace en AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
+Ga naar de [Azure Marketplace- en AppSource Publisher Guide](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
 
-Zie [Go-to-Market Services](https://partner.microsoft.com/reach-customers/gtm)(Engelstalig) voor meer informatie over Marketplace gtm Services.
+Zie [Go-to-market services](https://partner.microsoft.com/reach-customers/gtm)voor meer informatie over gtm-services op marktplaats.
 
-Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) of [Cloud Partner-Portal](https://cloudpartner.azure.com/) om uw aanbieding te maken en te configureren.
+Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) of Cloud [Partner Portal](https://cloudpartner.azure.com/) om uw aanbieding te maken en te configureren.
