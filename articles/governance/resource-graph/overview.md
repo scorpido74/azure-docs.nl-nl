@@ -1,54 +1,54 @@
 ---
 title: Overzicht van Azure Resource Graph
-description: Meer informatie over hoe u met de Azure resource Graph-service complexe query's kunt uitvoeren op resources op schaal in abonnementen en tenants.
+description: Ontdek hoe de Azure Resource Graph-service complexe query's van resources op schaal mogelijk maakt voor abonnementen en tenants.
 ms.date: 03/02/2020
 ms.topic: overview
 ms.openlocfilehash: 38ead7be09e038b19c390acd9f10e1c0ccf9d858
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240056"
 ---
 # <a name="what-is-azure-resource-graph"></a>Wat is Azure Resource Graph?
 
-Azure resource Graph is een service in azure die is ontworpen om Azure Resource Management uit te breiden door efficiënte en beste bronnen te verkennen met de mogelijkheid om op schaal te zoeken in een bepaalde set abonnementen, zodat u effectief kunt bepalen wat uw variabelen. Deze query's bieden de volgende mogelijkheden:
+Azure Resource Graph is een service in Azure die is ontworpen om Azure Resource Management uit te breiden door efficiënte en performante bronverkenning te bieden met de mogelijkheid om op schaal te zoeken in een bepaalde set abonnementen, zodat u uw Milieu. Deze query's bieden de volgende mogelijkheden:
 
 - De mogelijkheid om resources op te vragen met geavanceerde opties voor filteren, groeperen en sorteren op resource-eigenschappen.
-- De mogelijkheid om resources iteratief te verkennen op basis van beheer vereisten.
+- Vermogen om iteratief resources te verkennen op basis van governancevereisten.
 - De mogelijkheid om de impact van het toepassen van een beleid in een grote cloudomgeving te beoordelen.
-- De mogelijkheid om [wijzigingen in de resource-eigenschappen](./how-to/get-resource-changes.md) (preview-versie) te beschrijven.
+- Mogelijkheid om [wijzigingen in resourceeigenschappen (voorbeeld) in detail te beschrijven.](./how-to/get-resource-changes.md)
 
 In deze documentatie komt elke mogelijkheid gedetailleerd aan bod.
 
 > [!NOTE]
-> Met de Azure Portal zoek balk van Azure-resource grafiek, de nieuwe Blader functie voor alle resources en de [wijzigings geschiedenis](../policy/how-to/determine-non-compliance.md#change-history-preview) van de Azure Policy
-> _Visual diff_. Het is ontworpen om klanten te helpen grootschalige omgevingen te beheren.
+> Azure Resource Graph voorziet in de zoekbalk van azure portal, de nieuwe browse 'Alle resources' ervaring en Azure Policy's [Change history](../policy/how-to/determine-non-compliance.md#change-history-preview)
+> _visual diff_. Het is ontworpen om klanten te helpen bij het beheren van grootschalige omgevingen.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Hoe Resource Graph Azure Resource Manager aanvult
 
-Azure Resource Manager ondersteunt momenteel query's over basis resource velden, met name resource naam, ID, type, resource groep, abonnement en locatie. Resource Manager biedt ook voorzieningen voor het aanroepen van afzonderlijke resource providers voor gedetailleerde eigenschappen per resource per keer.
+Azure Resource Manager ondersteunt momenteel query's boven basisresourcevelden, met name - Resourcenaam, ID, Type, Resourcegroep, Abonnement en Locatie. Resource Manager biedt ook faciliteiten voor het aanroepen van individuele resourceproviders voor gedetailleerde eigenschappen één resource tegelijk.
 
-Met Azure Resource Graph hebt u toegang tot de eigenschappen die de resourceproviders retourneren zonder dat u elke resourceprovider afzonderlijk moet aanroepen. Voor een lijst met ondersteunde resource typen raadpleegt u de [verwijzing naar de tabel en het bron type](./reference/supported-tables-resources.md). Een alternatieve manier om ondersteunde resource typen te bekijken, is via de [schema browser van de Azure resource Graph Explorer](./first-query-portal.md#schema-browser).
+Met Azure Resource Graph hebt u toegang tot de eigenschappen die de resourceproviders retourneren zonder dat u elke resourceprovider afzonderlijk moet aanroepen. Voor een lijst met ondersteunde resourcetypen raadpleegt u de [verwijzing tabel en resourcetype](./reference/supported-tables-resources.md). Een alternatieve manier om ondersteunde resourcetypen te bekijken, is via de [Azure Resource Graph Explorer-schemabrowser.](./first-query-portal.md#schema-browser)
 
-Met Azure resource Graph kunt u het volgende doen:
+Met Azure Resource Graph u het als nog niet doen:
 
-- Toegang krijgen tot de eigenschappen die door resource providers worden geretourneerd zonder dat ze afzonderlijke aanroepen naar elke resource provider hoeven te maken.
-- Bekijk de laatste 14 dagen van de wijzigings geschiedenis voor de resource om te zien welke eigenschappen zijn gewijzigd en wanneer. (preview)
+- Krijg toegang tot de eigenschappen die worden geretourneerd door resourceproviders zonder dat u afzonderlijke gesprekken hoeft te voeren naar elke resourceprovider.
+- Bekijk de afgelopen 14 dagen van de wijzigingsgeschiedenis die in de resource is gemaakt om te zien welke eigenschappen zijn gewijzigd en wanneer. (preview)
 
-## <a name="how-resource-graph-is-kept-current"></a>Hoe de resource grafiek actueel blijft
+## <a name="how-resource-graph-is-kept-current"></a>Hoe Resource Graph actueel wordt gehouden
 
-Wanneer een Azure-resource wordt bijgewerkt, wordt de resource grafiek gewaarschuwd door de Resource Manager van de wijziging.
-De resource grafiek werkt vervolgens de data base bij. Resource grafiek is ook een regel matige _volledige scan_. Deze scan zorgt ervoor dat de gegevens van de resource grafiek actueel zijn als er gemiste meldingen of wanneer een bron buiten Resource Manager wordt bijgewerkt.
+Wanneer een Azure-bron wordt bijgewerkt, wordt Resource Graph door Resource Manager op de hoogte gesteld van de wijziging.
+Resource Graph werkt vervolgens de database bij. Resource Graph doet ook een regelmatige _volledige scan_. Deze scan zorgt ervoor dat resourcegrafiekgegevens actueel zijn als er meldingen worden gemist of wanneer een bron buiten Resource Beheer wordt bijgewerkt.
 
 > [!NOTE]
-> Resource grafiek maakt gebruik van een `GET` naar de laatste niet-preview-API van elke resource provider voor het verzamelen van eigenschappen en waarden. Als gevolg hiervan is de verwachte eigenschap mogelijk niet beschikbaar. In sommige gevallen is de gebruikte API-versie onderdrukt om meer actuele of veelgebruikte eigenschappen te bieden in de resultaten. Zie de [API-versie weer geven voor elk](./samples/advanced.md#apiversion) voor beeld van een resource type voor een volledige lijst in uw omgeving.
+> Resource Graph `GET` gebruikt een naar de nieuwste niet-preview API van elke resourceprovider om eigenschappen en waarden te verzamelen. Als gevolg hiervan is de verwachte woning mogelijk niet beschikbaar. In sommige gevallen is de gebruikte API-versie overschreven om meer huidige of veel gebruikte eigenschappen in de resultaten te bieden. Zie de [API-versie weergeven voor elk voorbeeld van het brontype](./samples/advanced.md#apiversion) voor een volledige lijst in uw omgeving.
 
 ## <a name="the-query-language"></a>De querytaal
 
-Nu u een beter inzicht hebt in wat Azure resource Graph is, gaan we verder met het samen stellen van query's.
+Nu u een beter begrip hebt van wat Azure Resource Graph is, gaan we eens kijken naar hoe u query's construeren.
 
 Het is belangrijk te weten dat de querytaal van Azure Resource Graph is gebaseerd op de [querytaal van Kusto](../../data-explorer/data-explorer-overview.md) die wordt gebruikt door Azure Data Explorer.
 
@@ -60,35 +60,35 @@ Zie [Resources verkennen](./concepts/explore-resources.md) als u de resources wi
 Om Resource Graph te kunnen gebruiken, moet u over de juiste machtigingen beschikken in [Op rollen gebaseerd toegangsbeheer](../../role-based-access-control/overview.md) (RBAC), met minimaal leestoegang tot de resources die u wilt zoeken. Zonder ten minste `read`-machtigingen voor het Azure-object of de objectgroep worden er geen resultaten geretourneerd.
 
 > [!NOTE]
-> Resource grafiek maakt gebruik van de abonnementen die beschikbaar zijn voor een principal tijdens het aanmelden. Als u resources wilt zien van een nieuw abonnement dat tijdens een actieve sessie wordt toegevoegd, moet de principal de context vernieuwen. Deze actie wordt automatisch uitgevoerd wanneer u zich afmeldt en weer inschakelt.
+> Resource Graph gebruikt de abonnementen die beschikbaar zijn voor een opdrachtgever tijdens het inloggen. Als u resources wilt zien van een nieuw abonnement dat tijdens een actieve sessie is toegevoegd, moet de hoofdsom de context vernieuwen. Deze actie gebeurt automatisch wanneer u zich afmeldt en weer inlogt.
 
-Azure CLI en Azure PowerShell gebruiken abonnementen waartoe de gebruiker toegang heeft. Wanneer u REST API rechtstreeks gebruikt, wordt de lijst met abonnementen aangeboden door de gebruiker. Als de gebruiker toegang heeft tot een van de abonnementen in de lijst, worden de query resultaten geretourneerd voor de abonnementen waartoe de gebruiker toegang heeft. Dit gedrag is hetzelfde als bij het aanroepen van [resource groepen-lijst](/rest/api/resources/resourcegroups/list) \- u resource groepen krijgt waartoe u toegang hebt, zonder enige indicatie dat het resultaat gedeeltelijk kan zijn.
-Als er geen abonnementen zijn in de lijst abonnementen waarvoor de gebruiker de juiste rechten heeft, is het antwoord een _403_ (verboden).
+Azure CLI en Azure PowerShell gebruiken abonnementen waartoe de gebruiker toegang heeft. Wanneer de REST API rechtstreeks wordt gebruikt, wordt de abonnementslijst door de gebruiker verstrekt. Als de gebruiker toegang heeft tot een van de abonnementen in de lijst, worden de queryresultaten geretourneerd voor de abonnementen waartoe de gebruiker toegang heeft. Dit gedrag is hetzelfde als bij het aanroepen [van resourcegroepen - Lijst](/rest/api/resources/resourcegroups/list) \- waartoe u toegang hebt tot resourcegroepen zonder enige aanwijzing dat het resultaat gedeeltelijk kan zijn.
+Als er geen abonnementen in de abonnementslijst staan waarop de gebruiker de juiste rechten heeft, is het antwoord een _403_ (Verboden).
 
 ## <a name="throttling"></a>Beperking
 
-Als gratis service worden query's naar resource grafiek beperkt om de beste ervaring en reactie tijd te bieden voor alle klanten. Als uw organisatie de resource Graph API wil gebruiken voor grootschalige en frequente query's, gebruikt u de feedback van de portal op de pagina van de [resource Graph-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph).
-Geef uw zakelijke case op en schakel het selectie vakje ' micro soft kan uw feedback per e-mail verzenden ' in om contact met u op te nemen.
+Als gratis service worden query's naar Resource Graph beperkt om de beste ervaring en reactietijd voor alle klanten te bieden. Als uw organisatie de Resource Graph API wil gebruiken voor grootschalige en frequente query's, gebruikt u portal 'Feedback' op de [portalpagina resourcegrafiek.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph)
+Geef uw business case op en schakel het selectievakje 'Microsoft kan u e-mailen over uw feedback' in om het team contact met u op te laten nemen.
 
-Resource grafiek beperkt query's op het niveau van de gebruiker. Het service-antwoord bevat de volgende HTTP-headers:
+Resource Graph geeft query's op gebruikersniveau. Het serviceantwoord bevat de volgende HTTP-koppen:
 
-- `x-ms-user-quota-remaining` (int): het resterende resource quotum voor de gebruiker. Deze waarde wordt toegewezen aan het aantal query's.
-- `x-ms-user-quota-resets-after` (UU: mm: SS): de tijds duur tot het quotum verbruik van een gebruiker opnieuw wordt ingesteld
+- `x-ms-user-quota-remaining`(int): het resterende resourcequotum voor de gebruiker. Deze waarde wordt toegewezen aan het aantal query's.
+- `x-ms-user-quota-resets-after`(hh:mm:ss): de tijdsduur totdat het quotumverbruik van een gebruiker wordt gereset
 
-Zie de [richt lijnen voor beperkte aanvragen](./concepts/guidance-for-throttled-requests.md)voor meer informatie.
+Zie [Richtlijnen voor aangezocht voor aangezocht.](./concepts/guidance-for-throttled-requests.md)
 
 ## <a name="running-your-first-query"></a>Uw eerste query uitvoeren
 
-Met Azure resource Graph Explorer, onderdeel van Azure Portal, kunt u resource Graph-query's rechtstreeks in Azure Portal uitvoeren. Maak de resultaten vast als dynamische grafieken om realtime dynamische informatie te bieden aan uw portal-werk stroom. Zie [First query with Azure resource Graph Explorer](first-query-portal.md)(Engelstalig) voor meer informatie.
+Azure Resource Graph Explorer, onderdeel van azure portal, maakt het mogelijk om Resource Graph-query's rechtstreeks in Azure-portal uit te voeren. Maak de resultaten vast als dynamische grafieken om realtime dynamische informatie te verstrekken aan uw portalworkflow. Zie [Eerste query met Azure Resource Graph Explorer voor](first-query-portal.md)meer informatie.
 
-Resource grafiek ondersteunt Azure CLI, Azure PowerShell, Azure SDK voor .NET en meer. De query is voor elke taal hetzelfde gestructureerd. Meer informatie over het inschakelen van resource grafiek met:
+Resource Graph ondersteunt Azure CLI, Azure PowerShell, Azure SDK voor .NET en meer. De query is voor elke taal hetzelfde gestructureerd. Meer informatie over het inschakelen van Resource Graph met:
 
-- [Azure Portal en resource grafiek Verkenner](first-query-portal.md) 
-- [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
+- [Azure-portal en Resource Graph Explorer](first-query-portal.md) 
+- [Azure-CLI](first-query-azurecli.md#add-the-resource-graph-extension)
 - [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Voer uw eerste query uit met behulp van de [Azure Portal](first-query-portal.md).
-- Voer uw eerste query uit met [Azure cli](first-query-azurecli.md).
+- Voer uw eerste query uit met de [Azure-portal.](first-query-portal.md)
+- Voer uw eerste query uit met [Azure CLI](first-query-azurecli.md).
 - Voer uw eerste query uit met [Azure PowerShell](first-query-powershell.md).

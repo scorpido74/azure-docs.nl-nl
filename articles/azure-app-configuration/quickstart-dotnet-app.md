@@ -8,46 +8,48 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 8190265753bddb3038c5403411c4be193dd8075c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c56088a2c51c50c7f9cf1ff1e790d580fdb08d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433625"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245392"
 ---
-# <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Snelstartgids: een .NET Framework-app maken met Azure-app configuratie
+# <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Snelstart: een .NET Framework-app maken met Azure-app-configuratie
 
-In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework gebaseerde console-app om de opslag en het beheer van toepassings instellingen gescheiden van uw code te centraliseren.
+In deze quickstart neemt u Azure App Configuration op in een .NET Framework-gebaseerde console-app om opslag en beheer van toepassingsinstellingen te centraliseren, gescheiden van uw code.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+- Azure-abonnement - [maak er gratis een](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>Een app-configuratie archief maken
+## <a name="create-an-app-configuration-store"></a>Een app-configuratiearchief maken
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **configuratie verkenner** > **maken** om de volgende sleutel-waardeparen toe te voegen:
+6. Selecteer **Configuratieverkenner** > **Sleutelwaarde maken** > **Key-value** om de volgende sleutelwaardeparen toe te voegen:
 
     | Sleutel | Waarde |
     |---|---|
     | TestApp:Settings:Message | Gegevens van Azure App Configuration |
 
-    Laat het **Label** en het **inhouds type** nu leeg.
+    Laat **label en** **inhoudstype** voorlopig leeg.
+
+7. Selecteer **Toepassen**.
 
 ## <a name="create-a-net-console-app"></a>Een .NET Core-consoletoepassing maken
 
-1. Start Visual Studio en selecteer **bestand** > **Nieuw** > **project**.
+1. Start Visual Studio en selecteer Nieuw**New** > **project** **bestand** > .
 
-1. In **een nieuw project maken**filtert u op het type **console** project en klikt u op **console-app (.NET Framework)** . Selecteer **Next**.
+1. Filter **in Een nieuw project maken**op het **projecttype Console** en klik op **Console-app (.NET Framework).** Selecteer **Volgende**.
 
-1. Voer in **uw nieuwe project configureren**een project naam in. Onder **Framework**selecteert u **.NET Framework 4.7.1** of hoger. Selecteer **Maken**.
+1. Voer in **Uw nieuwe project configureren**een projectnaam in. Selecteer **onder Framework** **.NET Framework 4.7.1** of hoger. Selecteer **Maken**.
 
-## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
+## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratiearchief
 
-1. Klik met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren**. Zoek op het tabblad **Bladeren** de volgende NuGet-pakketten aan uw project en voeg deze toe. Als u deze niet kunt vinden, schakelt u het selectie vakje **include Prerelease** in.
+1. Klik met de rechtermuisknop op uw project en selecteer **NuGet-pakketten beheren.** Zoek **op het** tabblad Bladeren en voeg de volgende NuGet-pakketten toe aan uw project. Als u ze niet vinden, schakelt u het selectievakje **Prerelease opnemen** in.
 
     ```
     Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
@@ -55,7 +57,7 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework
     System.Configuration.ConfigurationManager version 4.6.0 or later
     ```
 
-1. Werk het bestand *app. config* van uw project als volgt bij:
+1. Werk het *bestand App.config* van uw project als volgt bij:
 
     ```xml
     <configSections>
@@ -75,9 +77,9 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework
     </appSettings>
     ```
 
-   De connection string van uw app-configuratie archief wordt gelezen uit de omgevings variabele `ConnectionString`. Voeg de `Environment` Configuration Builder toe vóór de `MyConfigStore` in de eigenschap `configBuilders` van de sectie `appSettings`.
+   De verbindingstekenreeks van uw app-configuratiearchief `ConnectionString`wordt gelezen vanuit de omgevingsvariabele. Voeg `Environment` de configuratiebouwer `MyConfigStore` toe `configBuilders` vóór de eigenschap in de `appSettings` sectie.
 
-1. Open *Program.cs*en werk de `Main`-methode bij om app-configuratie te gebruiken door `ConfigurationManager`aan te roepen.
+1. Open *Program.cs*en `Main` werk de methode bij `ConfigurationManager`om App-configuratie te gebruiken door aan te roepen .
 
     ```csharp
     static void Main(string[] args)
@@ -90,18 +92,18 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework
 
 ## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
 
-1. Stel een omgevings variabele met de naam **Connections Tring** in op de Connection String van de app-configuratie opslag. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit:
+1. Stel een omgevingsvariabele met de naam **ConnectionString** in op de verbindingstekenreeks van uw App Configuration Store. Als u de opdrachtprompt van Windows gebruikt, voert u de volgende opdracht uit:
 
-    ```CLI
+    ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 
-    Als u Windows Power shell gebruikt, voert u de volgende opdracht uit:
+    Als u Windows PowerShell gebruikt, voert u de volgende opdracht uit:
 
     ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
     ```
-1. Start Visual Studio opnieuw zodat de wijziging kan worden doorgevoerd. Druk op CTRL + F5 om de console-app te bouwen en uit te voeren.
+1. Start Visual Studio opnieuw op om de wijziging van kracht te laten worden. Druk op Ctrl + F5 om de console-app te bouwen en uit te voeren.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -109,7 +111,7 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Snelstartgids hebt u een nieuwe app-configuratie opgeslagen gemaakt en gebruikt met een .NET Framework-console-app. De waarde `AppSettings` van `ConfigurationManager` wordt niet gewijzigd nadat de toepassing is gestart. De bibliotheek van de app-configuratie provider .NET Standard kan echter ook worden gebruikt in een .NET Framework-app. Ga door naar de volgende zelf studie voor meer informatie over het inschakelen van uw .NET Framework-app om configuratie-instellingen dynamisch te vernieuwen.
+In deze quickstart hebt u een nieuwe app-configuratiewinkel gemaakt en deze gebruikt met een .NET Framework-console-app. De `AppSettings` waarde `ConfigurationManager` van de waarde wordt niet gewijzigd nadat de toepassing is gestart. De app Configuration .NET Standard-configuratieproviderbibliotheek kan echter ook worden gebruikt in een .NET Framework-app. Ga door naar de volgende zelfstudie voor meer informatie over het inschakelen van de .NET Framework-app om configuratie-instellingen dynamisch te vernieuwen.
 
 > [!div class="nextstepaction"]
 > [Dynamische configuratie inschakelen](./enable-dynamic-configuration-dotnet.md)

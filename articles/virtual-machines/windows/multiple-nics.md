@@ -1,6 +1,6 @@
 ---
-title: Virtuele Windows-machines maken en beheren in azure die gebruikmaken van meerdere Nic's
-description: Meer informatie over het maken en beheren van een Windows-VM waaraan meerdere Nic's zijn gekoppeld met behulp van Azure PowerShell-of Resource Manager-sjablonen.
+title: Windows VM's maken en beheren in Azure die meerdere NIC's gebruiken
+description: Meer informatie over het maken en beheren van een Windows VM waaraan meerdere NIC's zijn gekoppeld met Azure PowerShell- of Resource Manager-sjablonen.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -14,32 +14,32 @@ ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
 ms.openlocfilehash: 20a595e1386a8d33c919ad4ff151d65e30b31eda
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249982"
 ---
-# <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Een virtuele Windows-machine met meerdere Nic's maken en beheren
-Aan virtuele machines (Vm's) in azure kunnen meerdere Nic's (virtuele netwerk interface kaarten) zijn gekoppeld. Een veelvoorkomend scenario is om verschillende subnetten te hebben voor de connectiviteit van front-end-en back-end. U kunt meerdere Nic's aan een virtuele machine koppelen aan meerdere subnetten, maar deze subnetten moeten zich allemaal in hetzelfde virtuele netwerk (vNet) bevinden. In dit artikel vindt u informatie over het maken van een VM waaraan meerdere Nic's zijn gekoppeld. U leert ook hoe u Nic's kunt toevoegen aan of verwijderen uit een bestaande virtuele machine. Verschillende [VM-grootten](sizes.md) ondersteunen een variërend aantal nic's, dus grootte van uw virtuele machine dienovereenkomstig.
+# <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Een virtuele Windows-machine maken en beheren met meerdere NIC's
+Virtuele machines (VM's) in Azure kunnen meerdere virtuele netwerkinterfacekaarten (NIC's) aan hen koppelen. Een veelvoorkomend scenario is om verschillende subnetten voor front-end en back-end connectiviteit te hebben. U meerdere NIC's op een VM koppelen aan meerdere subnetten, maar die subnetten moeten allemaal in hetzelfde virtuele netwerk (vNet) zijn. In dit artikel wordt beschreven hoe u een VM maakt waaraan meerdere NIC's zijn gekoppeld. U leert ook hoe u NIC's toevoegen of verwijderen uit een bestaande virtuele machine. Verschillende [VM-formaten](sizes.md) ondersteunen een wisselend aantal NIC's, zodat de grootte van uw VM dienovereenkomstig.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waarden. Voor beelden van parameter namen zijn *myResourceGroup*, *myVnet*en *myVM*.
+Vervang in de volgende voorbeelden voorbeeldparameternamen door uw eigen waarden. Voorbeelden van parameternamen zijn *myResourceGroup,* *myVnet*en *myVM*.
 
  
 
-## <a name="create-a-vm-with-multiple-nics"></a>Een VM met meerdere NIC's maken
-Maak eerst een resource groep. In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+## <a name="create-a-vm-with-multiple-nics"></a>Een virtuele machine met meerdere NIC's maken
+Maak eerst een resourcegroep. In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* op de locatie *EastUs gezoend:*
 
 ```powershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 ```
 
 ### <a name="create-virtual-network-and-subnets"></a>Virtueel netwerk en subnetten maken
-Een veelvoorkomend scenario is dat een virtueel netwerk twee of meer subnetten heeft. Eén subnet is mogelijk voor front-end verkeer, de andere voor back-end-verkeer. Als u verbinding wilt maken met beide subnetten, gebruikt u vervolgens meerdere Nic's op uw VM.
+Een veelvoorkomend scenario is dat een virtueel netwerk twee of meer subnetten heeft. Een subnet kan worden voor front-end verkeer, de andere voor back-end verkeer. Als u verbinding wilt maken met beide subnetten, gebruikt u vervolgens meerdere NIC's op uw VM.
 
-1. Definieer twee subnetten van het virtuele netwerk met [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig). In het volgende voor beeld worden de subnetten gedefinieerd voor *mySubnetFrontEnd* en *mySubnetBackEnd*:
+1. Definieer twee virtuele netwerksubnetten met [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig). In het volgende voorbeeld worden de subnetten voor *mySubnetFrontEnd* en *mySubnetBackEnd gedefinieerd:*
 
     ```powershell
     $mySubnetFrontEnd = New-AzVirtualNetworkSubnetConfig -Name "mySubnetFrontEnd" `
@@ -48,7 +48,7 @@ Een veelvoorkomend scenario is dat een virtueel netwerk twee of meer subnetten h
         -AddressPrefix "192.168.2.0/24"
     ```
 
-2. Maak uw virtuele netwerk en subnetten met [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork). In het volgende voor beeld wordt een virtueel netwerk gemaakt met de naam *myVnet*:
+2. Maak uw virtuele netwerk en subnetten met [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork). In het volgende voorbeeld wordt een virtueel netwerk met de naam *myVnet geopperd:*
 
     ```powershell
     $myVnet = New-AzVirtualNetwork -ResourceGroupName "myResourceGroup" `
@@ -59,8 +59,8 @@ Een veelvoorkomend scenario is dat een virtueel netwerk twee of meer subnetten h
     ```
 
 
-### <a name="create-multiple-nics"></a>Meerdere Nic's maken
-Maak twee Nic's met [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface). Sluit één NIC aan op het front-end-subnet en één NIC aan het back-end-subnet. In het volgende voor beeld worden Nic's gemaakt met de naam *myNic1* en *myNic2*:
+### <a name="create-multiple-nics"></a>Meerdere NIC's maken
+Maak twee NIC's met [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface). Bevestig een NIC aan het front-end subnet en een NIC aan het back-end subnet. In het volgende voorbeeld worden NIC's met de naam *myNic1* en *myNic2 aanmaken:*
 
 ```powershell
 $frontEnd = $myVnet.Subnets|?{$_.Name -eq 'mySubnetFrontEnd'}
@@ -76,24 +76,24 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     -SubnetId $backEnd.Id
 ```
 
-Doorgaans maakt u ook een [netwerk beveiligings groep](../../virtual-network/security-overview.md) om het netwerk verkeer naar de virtuele machine te filteren en een [Load Balancer](../../load-balancer/load-balancer-overview.md) om verkeer over meerdere vm's te distribueren.
+Meestal maakt u ook een [netwerkbeveiligingsgroep](../../virtual-network/security-overview.md) om netwerkverkeer te filteren op de VM en een [load balancer](../../load-balancer/load-balancer-overview.md) om verkeer over meerdere VM's te distribueren.
 
 ### <a name="create-the-virtual-machine"></a>De virtuele machine maken
-Begin nu met het maken van de VM-configuratie. Voor elke VM-grootte geldt een limiet voor het totale aantal Nic's dat u aan een virtuele machine kunt toevoegen. Zie [Windows VM-grootten](sizes.md)voor meer informatie.
+Begin nu met het bouwen van uw VM-configuratie. Elke VM-grootte heeft een limiet voor het totale aantal NIC's dat u aan een vm toevoegen. Zie [Windows VM-formaten](sizes.md)voor meer informatie .
 
-1. Stel als volgt uw VM-referenties in op de `$cred` variabele:
+1. Stel uw VM-referenties `$cred` als volgt in op de variabele:
 
     ```powershell
     $cred = Get-Credential
     ```
 
-2. Definieer uw virtuele machine met [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig). In het volgende voor beeld wordt een virtuele machine met de naam *myVM* gedefinieerd en wordt een VM-grootte gebruikt die meer dan twee nic's ondersteunt (*Standard_DS3_v2*):
+2. Definieer uw VM met [Nieuw-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig). In het volgende voorbeeld wordt een VM met de naam *myVM* gedefinieerd en wordt een VM-grootte gebruikt die meer dan twee NIC's *(Standard_DS3_v2)* ondersteunt:
 
     ```powershell
     $vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_DS3_v2"
     ```
 
-3. Maak de rest van uw VM-configuratie met [set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) en [set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage). In het volgende voor beeld wordt een virtuele machine met Windows Server 2016 gemaakt:
+3. Maak de rest van uw [VM-configuratie met Set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) en [Set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage). In het volgende voorbeeld wordt een Windows Server 2016-vm gemaakt:
 
     ```powershell
     $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig `
@@ -109,37 +109,37 @@ Begin nu met het maken van de VM-configuratie. Voor elke VM-grootte geldt een li
         -Version "latest"
    ```
 
-4. Koppel de twee Nic's die u eerder hebt gemaakt met [add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface):
+4. Voeg de twee NIC's die u eerder hebt gemaakt met [Add-AzVMNetworkInterface:](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface)
 
     ```powershell
     $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $myNic1.Id -Primary
     $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $myNic2.Id
     ```
 
-5. Maak uw virtuele machine met [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm):
+5. Maak uw VM met [New-AzVM:](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)
 
     ```powershell
     New-AzVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "EastUs"
     ```
 
-6. Voeg routes voor secundaire Nic's toe aan het besturings systeem door de stappen in [het besturings systeem configureren voor meerdere nic's](#configure-guest-os-for-multiple-nics)te volt ooien.
+6. Voeg routes voor secundaire NIC's toe aan het besturingssysteem door de stappen in [Het besturingssysteem configureren voor meerdere NIC's](#configure-guest-os-for-multiple-nics)te voltooien.
 
 ## <a name="add-a-nic-to-an-existing-vm"></a>Een NIC toevoegen aan een bestaande virtuele machine
-U kunt een virtuele NIC toevoegen aan een bestaande virtuele machine door de toewijzing van de VM ongedaan te maken, de virtuele NIC toe te voegen en vervolgens de VM te starten. Verschillende [VM-grootten](sizes.md) ondersteunen een variërend aantal nic's, dus grootte van uw virtuele machine dienovereenkomstig. Indien nodig kunt u [de grootte van een virtuele machine wijzigen](resize-vm.md).
+To add a virtual NIC to an existing VM, you deallocate the VM, add the virtual NIC, then start the VM. Verschillende [VM-formaten](sizes.md) ondersteunen een wisselend aantal NIC's, zodat de grootte van uw VM dienovereenkomstig. Indien nodig u [het formaat van een vm wijzigen.](resize-vm.md)
 
-1. Hef de toewijzing van de virtuele machine op met [AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm). In het volgende voor beeld wordt de toewijzing van de virtuele machine met de naam *myVM* in *myResourceGroup*ongedaan gemaakt:
+1. Detoewijzing van de VM met [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm). In het volgende voorbeeld wordt de VM met de naam *myVM* in *myResourceGroup toegewezen:*
 
     ```powershell
     Stop-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-2. De bestaande configuratie van de virtuele machine ophalen met [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). In het volgende voor beeld wordt informatie opgehaald voor de virtuele machine met de naam *myVM* in *myResourceGroup*:
+2. Download de bestaande configuratie van de VM met [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). In het volgende voorbeeld vindt u informatie voor de VM met de naam *myVM* in *myResourceGroup:*
 
     ```powershell
     $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. In het volgende voor beeld wordt een virtuele NIC gemaakt met [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) met de naam *myNic3* die is gekoppeld aan *mySubnetBackEnd*. De virtuele NIC wordt vervolgens gekoppeld aan de VM met de naam *myVM* in *myResourceGroup* met [add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface):
+3. In het volgende voorbeeld wordt een virtuele NIC gemaakt met [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) met de naam *myNic3* die is gekoppeld aan *mySubnetBackEnd.* De virtuele NIC wordt vervolgens gekoppeld aan de VM genaamd *myVM* in *myResourceGroup* met [Add-AzVMNetworkInterface:](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface)
 
     ```powershell
     # Get info for the back end subnet
@@ -157,8 +157,8 @@ U kunt een virtuele NIC toevoegen aan een bestaande virtuele machine door de toe
     Add-AzVMNetworkInterface -VM $vm -Id $nicId | Update-AzVm -ResourceGroupName "myResourceGroup"
     ```
 
-    ### <a name="primary-virtual-nics"></a>Primaire virtuele Nic's
-    Een van de Nic's op een multi-NIC-VM moet primair zijn. Als een van de bestaande virtuele Nic's op de VM al als primair is ingesteld, kunt u deze stap overs Laan. In het volgende voor beeld wordt ervan uitgegaan dat er nu twee virtuele Nic's aanwezig zijn op een VM en u de eerste NIC (`[0]`) als primair wilt toevoegen:
+    ### <a name="primary-virtual-nics"></a>Primaire virtuele NIC's
+    Een van de NIC's op een multi-NIC VM moet primair zijn. Als een van de bestaande virtuele NIC's op de VM al als primair is ingesteld, u deze stap overslaan. In het volgende voorbeeld wordt ervan uitgegaan dat er nu twee virtuele NIC's aanwezig zijn op een VM en dat u de eerste NIC (`[0]`) als primaire wilt toevoegen:
         
     ```powershell
     # List existing NICs on the VM and find which one is primary
@@ -172,30 +172,30 @@ U kunt een virtuele NIC toevoegen aan een bestaande virtuele machine door de toe
     Update-AzVM -VM $vm -ResourceGroupName "myResourceGroup"
     ```
 
-4. Start de VM met [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm):
+4. Start de VM met [Start-AzVm:](https://docs.microsoft.com/powershell/module/az.compute/start-azvm)
 
     ```powershell
     Start-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
-5. Voeg routes voor secundaire Nic's toe aan het besturings systeem door de stappen in [het besturings systeem configureren voor meerdere nic's](#configure-guest-os-for-multiple-nics)te volt ooien.
+5. Voeg routes voor secundaire NIC's toe aan het besturingssysteem door de stappen in [Het besturingssysteem configureren voor meerdere NIC's](#configure-guest-os-for-multiple-nics)te voltooien.
 
-## <a name="remove-a-nic-from-an-existing-vm"></a>Een NIC verwijderen van een bestaande virtuele machine
-Als u een virtuele NIC van een bestaande VM wilt verwijderen, moet u de toewijzing van de VM ongedaan maken, de virtuele NIC verwijderen en vervolgens de VM starten.
+## <a name="remove-a-nic-from-an-existing-vm"></a>Een NIC verwijderen uit een bestaande virtuele machine
+To remove a virtual NIC from an existing VM, you deallocate the VM, remove the virtual NIC, then start the VM.
 
-1. Hef de toewijzing van de virtuele machine op met [AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm). In het volgende voor beeld wordt de toewijzing van de virtuele machine met de naam *myVM* in *myResourceGroup*ongedaan gemaakt:
+1. Detoewijzing van de VM met [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm). In het volgende voorbeeld wordt de VM met de naam *myVM* in *myResourceGroup toegewezen:*
 
     ```powershell
     Stop-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-2. De bestaande configuratie van de virtuele machine ophalen met [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). In het volgende voor beeld wordt informatie opgehaald voor de virtuele machine met de naam *myVM* in *myResourceGroup*:
+2. Download de bestaande configuratie van de VM met [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). In het volgende voorbeeld vindt u informatie voor de VM met de naam *myVM* in *myResourceGroup:*
 
     ```powershell
     $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. Informatie over de NIC verwijderen met [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterface). In het volgende voor beeld wordt informatie over *myNic3*opgehaald:
+3. Informatie over de NIC verwijderen met [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterface). In het volgende voorbeeld vindt u informatie over *myNic3:*
 
     ```powershell
     # List existing NICs on the VM if you need to determine NIC name
@@ -204,21 +204,21 @@ Als u een virtuele NIC van een bestaande VM wilt verwijderen, moet u de toewijzi
     $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. Verwijder de NIC met [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) en werk de virtuele machine bij met [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). In het volgende voor beeld worden de *myNic3* die zijn verkregen door `$nicId`, verwijderd uit de vorige stap:
+4. Verwijder de NIC met [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) en werk de VM bij met [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). In het volgende voorbeeld wordt `$nicId` *myNic3* verwijderd zoals verkregen in de vorige stap:
 
     ```powershell
     Remove-AzVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
         Update-AzVm -ResourceGroupName "myResourceGroup"
     ```   
 
-5. Start de VM met [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm):
+5. Start de VM met [Start-AzVm:](https://docs.microsoft.com/powershell/module/az.compute/start-azvm)
 
     ```powershell
     Start-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```   
 
-## <a name="create-multiple-nics-with-templates"></a>Meerdere Nic's maken met sjablonen
-Azure Resource Manager sjablonen bieden een manier om meerdere exemplaren van een resource te maken tijdens de implementatie, zoals het maken van meerdere Nic's. Resource Manager-sjablonen gebruiken declaratieve JSON-bestanden om uw omgeving te definiëren. Zie [overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md)voor meer informatie. U kunt *kopiëren* gebruiken om het aantal te maken exemplaren op te geven:
+## <a name="create-multiple-nics-with-templates"></a>Meerdere NIC's maken met sjablonen
+Azure Resource Manager-sjablonen bieden een manier om meerdere exemplaren van een resource te maken tijdens de implementatie, zoals het maken van meerdere NIC's. Resource Manager-sjablonen gebruiken declaratieve JSON-bestanden om uw omgeving te definiëren. Zie [overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md)voor meer informatie. U *kopiëren* gebruiken om het aantal exemplaren op te geven dat u wilt maken:
 
 ```json
 "copy": {
@@ -227,23 +227,23 @@ Azure Resource Manager sjablonen bieden een manier om meerdere exemplaren van ee
 }
 ```
 
-Zie [meerdere exemplaren maken met behulp van *kopiëren*](../../resource-group-create-multiple.md)voor meer informatie. 
+Zie [Meerdere exemplaren maken met *kopiëren*](../../resource-group-create-multiple.md)voor meer informatie. 
 
-U kunt ook `copyIndex()` gebruiken om een nummer toe te voegen aan een resource naam. Vervolgens kunt u *myNic1*, *MyNic2* , enzovoort maken. De volgende code toont een voor beeld van het toevoegen van de index waarde:
+U `copyIndex()` ook een nummer toevoegen aan een resourcenaam. U dan *myNic1,* *MyNic2* en ga zo maar door. In de volgende code ziet u een voorbeeld van het toevoegen van de indexwaarde:
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 
 ```
 
-U kunt een volledig voor beeld van [het maken van meerdere nic's lezen met behulp van Resource Manager-sjablonen](../../virtual-network/template-samples.md).
+U een volledig voorbeeld van het maken van [meerdere NIC's lezen met behulp van Resource Manager-sjablonen.](../../virtual-network/template-samples.md)
 
-Voeg routes voor secundaire Nic's toe aan het besturings systeem door de stappen in [het besturings systeem configureren voor meerdere nic's](#configure-guest-os-for-multiple-nics)te volt ooien.
+Voeg routes voor secundaire NIC's toe aan het besturingssysteem door de stappen in [Het besturingssysteem configureren voor meerdere NIC's](#configure-guest-os-for-multiple-nics)te voltooien.
 
-## <a name="configure-guest-os-for-multiple-nics"></a>Gast besturingssysteem voor meerdere Nic's configureren
+## <a name="configure-guest-os-for-multiple-nics"></a>Gastbesturingssysteem configureren voor meerdere NIC's
 
-Azure wijst een standaard gateway toe aan de eerste (primaire) netwerk interface die is gekoppeld aan de virtuele machine. Azure wijst geen standaardgateway toe aan extra (secundaire) netwerkinterfaces die zijn gekoppeld aan een virtuele machine. Daarom kunt u standaard niet communiceren met resources buiten het subnet waarin een secundaire netwerkinterface zich bevindt. Secundaire netwerk interfaces kunnen echter communiceren met resources buiten hun subnet, hoewel de stappen om communicatie in te scha kelen, verschillend zijn voor verschillende besturings systemen.
+Azure wijst een standaardgateway toe aan de eerste (primaire) netwerkinterface die is gekoppeld aan de virtuele machine. Azure wijst geen standaardgateway toe aan extra (secundaire) netwerkinterfaces die zijn gekoppeld aan een virtuele machine. Daarom kunt u standaard niet communiceren met resources buiten het subnet waarin een secundaire netwerkinterface zich bevindt. Secundaire netwerkinterfaces kunnen echter communiceren met bronnen buiten hun subnet, hoewel de stappen om communicatie mogelijk te maken verschillend zijn voor verschillende besturingssystemen.
 
-1. Voer vanaf een Windows-opdracht prompt de `route print` opdracht uit. Dit resulteert in een uitvoer die vergelijkbaar is met de volgende uitvoer voor een virtuele machine met twee gekoppelde netwerk interfaces:
+1. Voer vanuit een Windows-opdrachtprompt de opdracht uit, die de `route print` uitvoer retourneert die vergelijkbaar is met de volgende uitvoer voor een virtuele machine met twee gekoppelde netwerkinterfaces:
 
     ```
     ===========================================================================
@@ -253,35 +253,35 @@ Azure wijst een standaard gateway toe aan de eerste (primaire) netwerk interface
     ===========================================================================
     ```
  
-    In dit voor beeld is **Microsoft Hyper-V netwerk Adapter #4** (interface 7) de secundaire netwerk interface waaraan geen standaard gateway is toegewezen.
+    In dit voorbeeld is **Microsoft Hyper-V Network Adapter #4** (interface 7) de secundaire netwerkinterface waaraan geen standaardgateway is toegewezen.
 
-2. Voer vanaf een opdracht prompt de `ipconfig` opdracht uit om te zien welk IP-adres is toegewezen aan de secundaire netwerk interface. In dit voor beeld is 192.168.2.4 toegewezen aan interface 7. Er wordt geen standaard gateway adres geretourneerd voor de secundaire netwerk interface.
+2. Voer in een opdrachtprompt de `ipconfig` opdracht uit om te zien welk IP-adres is toegewezen aan de secundaire netwerkinterface. In dit voorbeeld wordt 192.168.2.4 toegewezen aan interface 7. Er wordt geen standaardgatewayadres geretourneerd voor de secundaire netwerkinterface.
 
-3. Als u al het verkeer wilt routeren dat bestemd is voor adressen buiten het subnet van de secundaire netwerk interface naar de gateway voor het subnet, voert u de volgende opdracht uit:
+3. Als u al het verkeer dat is bestemd voor adressen buiten het subnet van de secundaire netwerkinterface naar de gateway voor het subnet wilt leiden, voert u de volgende opdracht uit:
 
     ```
     route add -p 0.0.0.0 MASK 0.0.0.0 192.168.2.1 METRIC 5015 IF 7
     ```
 
-    Het gateway adres voor het subnet is het eerste IP-adres (dat eindigt op 1) in het adres bereik dat is gedefinieerd voor het subnet. Als u niet alle verkeer buiten het subnet wilt routeren, kunt u in plaats daarvan afzonderlijke routes toevoegen aan specifieke bestemmingen. Als u bijvoorbeeld alleen verkeer van de secundaire netwerk interface naar het 192.168.3.0-netwerk wilt routeren, voert u de volgende opdracht in:
+    Het gatewayadres voor het subnet is het eerste IP-adres (eindigend op .1) in het adresbereik dat voor het subnet is gedefinieerd. Als u niet al het verkeer buiten het subnet wilt routeren, u in plaats daarvan afzonderlijke routes toevoegen naar specifieke bestemmingen. Als u bijvoorbeeld alleen verkeer van de secundaire netwerkinterface naar het 192.168.3.0-netwerk wilt leiden, voert u de opdracht in:
 
       ```
       route add -p 192.168.3.0 MASK 255.255.255.0 192.168.2.1 METRIC 5015 IF 7
       ```
   
-4. Als u geslaagde communicatie met een resource in het 192.168.3.0-netwerk wilt bevestigen, voert u bijvoorbeeld de volgende opdracht in om 192.168.3.4 te pingen met interface 7 (192.168.2.4):
+4. Als u bijvoorbeeld een succesvolle communicatie met een resource op het netwerk 192.168.3.0 wilt bevestigen, voert u de volgende opdracht in om 192.168.3.4 te pingen met interface 7 (192.168.2.4):
 
     ```
     ping 192.168.3.4 -S 192.168.2.4
     ```
 
-    Mogelijk moet u ICMP openen via de Windows Firewall van het apparaat dat u wilt pingen met de volgende opdracht:
+    Mogelijk moet u ICMP openen via de Windows-firewall van het apparaat dat u pingt met de volgende opdracht:
   
       ```
       netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
       ```
   
-5. Als u wilt bevestigen dat de toegevoegde route zich in de route tabel bevindt, voert u de `route print` opdracht in, die de uitvoer retourneert zoals in de volgende tekst:
+5. Als u wilt bevestigen dat de toegevoegde `route print` route zich in de routetabel bevindt, voert u de opdracht in, die de uitvoer retourneert die vergelijkbaar is met de volgende tekst:
 
     ```
     ===========================================================================
@@ -291,9 +291,9 @@ Azure wijst een standaard gateway toe aan de eerste (primaire) netwerk interface
               0.0.0.0          0.0.0.0      192.168.2.1      192.168.2.4   5015
     ```
 
-    De route die wordt vermeld bij *192.168.1.1* onder **Gateway**, is de route die standaard is voor de primaire netwerk interface. De route met *192.168.2.1* onder **Gateway**is de route die u hebt toegevoegd.
+    De route die wordt vermeld met *192.168.1.1* onder **Gateway**, is de route die er standaard is voor de primaire netwerkinterface. De route met *192.168.2.1* onder **Gateway,** is de route die u hebt toegevoegd.
 
 ## <a name="next-steps"></a>Volgende stappen
-Controleer de [grootte van Windows-vm's](sizes.md) wanneer u een VM met meerdere nic's wilt maken. Let op het maximum aantal Nic's dat elke VM-grootte ondersteunt. 
+Bekijk [de vm-formaten van Windows](sizes.md) wanneer u een vm probeert te maken met meerdere NIC's. Besteed aandacht aan het maximum aantal NIC's dat elke VM-grootte ondersteunt. 
 
 

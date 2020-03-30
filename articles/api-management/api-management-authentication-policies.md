@@ -1,6 +1,6 @@
 ---
-title: Azure API Management-verificatie beleid | Microsoft Docs
-description: Meer informatie over de verificatie beleidsregels die beschikbaar zijn voor gebruik in azure API Management.
+title: Verificatiebeleid voor Azure API-beheer | Microsoft Documenten
+description: Meer informatie over het verificatiebeleid dat beschikbaar is voor gebruik in Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,28 +13,28 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 5ca153f0d52b65aa1ee56d5757381f1f31c7eeb5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 828f738ff8923dc8194e2449f5fb0be74ef45ad7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79280324"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473554"
 ---
-# <a name="api-management-authentication-policies"></a>Verificatie beleid voor API Management
-In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
+# <a name="api-management-authentication-policies"></a>API Management-verificatiebeleid
+In dit onderwerp wordt een verwijzing naar het volgende API-beheerbeleid bevat. Zie [Beleid in API-beheer](https://go.microsoft.com/fwlink/?LinkID=398186)voor informatie over het toevoegen en configureren van beleidsregels.
 
-##  <a name="AuthenticationPolicies"></a>Verificatie beleid
+##  <a name="authentication-policies"></a><a name="AuthenticationPolicies"></a>Verificatiebeleid
 
--   [Authenticatie met Basic](api-management-authentication-policies.md#Basic) : verifiëren met een back-end-service met basis verificatie.
+-   [Authenticeer met Basic](api-management-authentication-policies.md#Basic) - Verifieer met een backendservice met basisverificatie.
 
--   [Verificatie met client certificaat](api-management-authentication-policies.md#ClientCertificate) : Verifieer met een back-end-service met behulp van client certificaten.
+-   [Authenticeer met clientcertificaat](api-management-authentication-policies.md#ClientCertificate) - Verifieer met een backendservice met clientcertificaten.
 
--   [Verificatie met beheerde identiteit](api-management-authentication-policies.md#ManagedIdentity) verificatie met de [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) voor de API Management service.
+-   [Authenticeer met beheerde identiteit](api-management-authentication-policies.md#ManagedIdentity) - Verifieer met de [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) voor de API Management-service.
 
-##  <a name="Basic"></a>Verifiëren met Basic
- Gebruik het `authentication-basic`-beleid om met een back-end-service te verifiëren met behulp van basis verificatie. Met dit beleid wordt de HTTP-autorisatie-header in feite ingesteld op de waarde die overeenkomt met de referenties die zijn opgenomen in het beleid.
+##  <a name="authenticate-with-basic"></a><a name="Basic"></a>Verifiëren met Basic
+ Gebruik `authentication-basic` het beleid om te verifiëren met een backendservice met basisverificatie. Met dit beleid wordt de kopvan de HTTP-autorisatie effectief ingesteld op de waarde die overeenkomt met de referenties die in het beleid worden opgegeven.
 
-### <a name="policy-statement"></a>Beleids verklaring
+### <a name="policy-statement"></a>Beleidsverklaring
 
 ```xml
 <authentication-basic username="username" password="password" />
@@ -48,28 +48,28 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 
 ### <a name="elements"></a>Elementen
 
-|Naam|Beschrijving|Vereist|
+|Name|Beschrijving|Vereist|
 |----------|-----------------|--------------|
-|verificatie-basis|Hoofd element.|Ja|
+|verificatie-basic|Hoofdelement.|Ja|
 
 ### <a name="attributes"></a>Kenmerken
 
-|Naam|Beschrijving|Vereist|Standaard|
+|Name|Beschrijving|Vereist|Standaard|
 |----------|-----------------|--------------|-------------|
-|gebruikersnaam|Hiermee geeft u de gebruikers naam van de basis referentie.|Ja|N.v.t.|
-|wachtwoord|Hiermee geeft u het wacht woord van de basis referentie op.|Ja|N.v.t.|
+|gebruikersnaam|Hiermee geeft u de gebruikersnaam van de basisreferentie op.|Ja|N.v.t.|
+|wachtwoord|Hiermee geeft u het wachtwoord op van de basisreferentie.|Ja|N.v.t.|
 
 ### <a name="usage"></a>Gebruik
- Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleids secties:** binnenkomend
+-   **Beleidsonderdelen:** binnenkomend
 
--   **Beleids bereik:** alle bereiken
+-   **Beleidsscopes:** alle scopes
 
-##  <a name="ClientCertificate"></a>Verifiëren met client certificaat
- Gebruik het `authentication-certificate`-beleid om te verifiëren met een back-end-service met behulp van het client certificaat. Het certificaat moet eerst worden [geïnstalleerd in API Management](https://go.microsoft.com/fwlink/?LinkID=511599) en wordt geïdentificeerd door de vinger afdruk.
+##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a>Verifiëren met clientcertificaat
+ Gebruik `authentication-certificate` het beleid om te verifiëren met een back-endservice met behulp van clientcertificaat. Het certificaat moet eerst [worden geïnstalleerd in API Management](https://go.microsoft.com/fwlink/?LinkID=511599) en wordt geïdentificeerd door de duimafdruk.
 
-### <a name="policy-statement"></a>Beleids verklaring
+### <a name="policy-statement"></a>Beleidsverklaring
 
 ```xml
 <authentication-certificate thumbprint="thumbprint" certificate-id="resource name"/>
@@ -77,48 +77,48 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 
 ### <a name="examples"></a>Voorbeelden
 
-In dit voor beeld wordt het client certificaat aangeduid met de vinger afdruk.
+In dit voorbeeld wordt het clientcertificaat geïdentificeerd aan de duimafdruk.
 ```xml
 <authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
 ```
-In dit voor beeld wordt het client certificaat geïdentificeerd op basis van de resource naam.
+In dit voorbeeld wordt clientcertificaat aangeduid met de naam van de resource.
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
 ```  
 
 ### <a name="elements"></a>Elementen  
   
-|Naam|Beschrijving|Vereist|  
+|Name|Beschrijving|Vereist|  
 |----------|-----------------|--------------|  
-|verificatie-certificaat|Hoofd element.|Ja|  
+|verificatie-certificaat|Hoofdelement.|Ja|  
   
 ### <a name="attributes"></a>Kenmerken  
   
-|Naam|Beschrijving|Vereist|Standaard|  
+|Name|Beschrijving|Vereist|Standaard|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|De vinger afdruk voor het client certificaat.|Er moet een `thumbprint` of `certificate-id` aanwezig zijn.|N.v.t.|  
-|certificaat-id|De naam van de certificaat resource.|Er moet een `thumbprint` of `certificate-id` aanwezig zijn.|N.v.t.|  
+|Vingerafdruk|De duimafdruk voor het clientcertificaat.|Of `thumbprint` `certificate-id` moet aanwezig zijn.|N.v.t.|  
+|certificaat-id|De naam van de certificaatbron.|Of `thumbprint` `certificate-id` moet aanwezig zijn.|N.v.t.|  
   
 ### <a name="usage"></a>Gebruik  
- Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
--   **Beleids secties:** binnenkomend  
+-   **Beleidsonderdelen:** binnenkomend  
   
--   **Beleids bereik:** alle bereiken  
+-   **Beleidsscopes:** alle scopes  
 
-##  <a name="ManagedIdentity"></a>Verifiëren met beheerde identiteit  
- Gebruik het `authentication-managed-identity`-beleid om te verifiëren met een back-end-service met behulp van de beheerde identiteit van de API Management-service. Dit beleid gebruikt in feite de beheerde identiteit voor het verkrijgen van een toegangs token van Azure Active Directory voor toegang tot de opgegeven resource. Nadat het token is verkregen, wordt met het beleid de waarde van het token in de `Authorization` header ingesteld met behulp van het `Bearer` schema.
+##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a>Verifiëren met beheerde identiteit  
+ Gebruik `authentication-managed-identity` het beleid om te verifiëren met een backendservice met de beheerde identiteit van de API-beheerservice. Dit beleid gebruikt in wezen de beheerde identiteit om een toegangstoken van Azure Active Directory te verkrijgen voor toegang tot de opgegeven bron. Nadat het token met succes is verkregen, stelt `Authorization` het beleid `Bearer` de waarde van het token in de koptekst in met behulp van het schema.
   
-### <a name="policy-statement"></a>Beleids verklaring  
+### <a name="policy-statement"></a>Beleidsverklaring  
   
 ```xml  
 <authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>  
 ```  
   
 ### <a name="example"></a>Voorbeeld  
-#### <a name="use-managed-identity-to-authenticate-with-a-backend-service"></a>Beheerde identiteit gebruiken om te verifiëren met een back-end-service
+#### <a name="use-managed-identity-to-authenticate-with-a-backend-service"></a>Beheerde identiteit gebruiken om te verifiëren met een backendservice
 ```xml  
-<authentication-managed-identity resource="https://graph.windows.net"/> 
+<authentication-managed-identity resource="https://graph.microsoft.com"/> 
 ```
 ```xml  
 <authentication-managed-identity resource="https://management.azure.com/"/> <!--Azure Resource Manager-->
@@ -136,7 +136,7 @@ In dit voor beeld wordt het client certificaat geïdentificeerd op basis van de 
 <authentication-managed-identity resource="https://database.windows.net/"/> <!--Azure SQL-->
 ```
   
-#### <a name="use-managed-identity-in-send-request-policy"></a>Beheerde identiteit gebruiken in beleid voor verzenden en aanvragen
+#### <a name="use-managed-identity-in-send-request-policy"></a>Beheerde identiteit gebruiken in verzendaanvraagbeleid
 ```xml  
 <send-request mode="new" timeout="20" ignore-error="false">
     <set-url>https://example.com/</set-url>
@@ -147,29 +147,29 @@ In dit voor beeld wordt het client certificaat geïdentificeerd op basis van de 
 
 ### <a name="elements"></a>Elementen  
   
-|Naam|Beschrijving|Vereist|  
+|Name|Beschrijving|Vereist|  
 |----------|-----------------|--------------|  
-|verificatie-beheerd identiteit |Hoofd element.|Ja|  
+|verificatie-beheerde identiteit |Hoofdelement.|Ja|  
   
 ### <a name="attributes"></a>Kenmerken  
   
-|Naam|Beschrijving|Vereist|Standaard|  
+|Name|Beschrijving|Vereist|Standaard|  
 |----------|-----------------|--------------|-------------|  
-|resource|Tekenreeks. De App-ID van de doel-Web-API (beveiligde bron) in Azure Active Directory.|Ja|N.v.t.|  
-|uitvoer-token-variabele-naam|Tekenreeks. De naam van de context variabele waarmee de token waarde wordt ontvangen als object type `string`. |Nee|N.v.t.|  
-|negeren-fout|True. Als deze is ingesteld op `true`, blijft de beleids pijplijn worden uitgevoerd, zelfs als er geen toegangs token is verkregen.|Nee|onwaar|  
+|resource|Tekenreeks. De App-id van de doelweb-API (beveiligde bron) in Azure Active Directory.|Ja|N.v.t.|  
+|naam uitvoer-token-variabele|Tekenreeks. Naam van de contextvariabele die tokenwaarde `string`ontvangt als objecttype . |Nee|N.v.t.|  
+|negeren-fout|Booleaanse. Als ingesteld `true`op , wordt de beleidspijplijn voortgezet, zelfs als een toegangstoken niet wordt verkregen.|Nee|false|  
   
 ### <a name="usage"></a>Gebruik  
- Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
--   **Beleids secties:** binnenkomend  
+-   **Beleidsonderdelen:** binnenkomend  
   
--   **Beleids bereik:** alle bereiken
+-   **Beleidsscopes:** alle scopes
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over het gebruik van beleid:
+Zie voor meer informatie over beleid:
 
-+ [Beleid in API Management](api-management-howto-policies.md)
-+ [Api's transformeren](transform-api.md)
-+ [Beleids verwijzing](api-management-policy-reference.md) voor een volledige lijst met beleids instructies en hun instellingen
-+ [Voor beelden van beleid](policy-samples.md)
++ [Beleid in API-beheer](api-management-howto-policies.md)
++ [API's transformeren](transform-api.md)
++ [Beleidsreferentie](api-management-policy-reference.md) voor een volledige lijst met beleidsoverzichten en hun instellingen
++ [Beleidsvoorbeelden](policy-samples.md)

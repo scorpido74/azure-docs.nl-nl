@@ -1,29 +1,29 @@
 ---
-title: 'Snelstartgids: een server maken-Azure CLI-Azure Database for MariaDB'
+title: 'Snelstart: een server maken - Azure CLI - Azure Database voor MariaDB'
 description: In deze snelstartgids wordt beschreven hoe u met Azure CLI een Azure Database for MariaDB-server maakt in een Azure-resourcegroep.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 12/02/2019
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 5cfdcf2664871849d4488be4320f6aa03e296ce7
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f83af794a179634b9b6b7adedd329ea6f4a7b8d0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770030"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79536459"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Een Azure Database for MariaDB-server maken met behulp van de Azure CLI
 
-U kunt de Azure CLI gebruiken voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts. In deze snelstartgids wordt beschreven hoe u Azure CLI gebruikt om binnen ongeveer vijf minuten een Azure Database for MariaDB-server te maken in een Azure-resourcegroep. 
+U kunt de Azure CLI gebruiken voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts. In deze snelstartgids wordt beschreven hoe u Azure CLI gebruikt om binnen ongeveer vijf minuten een Azure Database for MariaDB-server te maken in een Azure-resourcegroep.
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Voor deze snelstart moet u versie 2.0 of hoger van Azure CLI uitvoeren om de CLI lokaal te installeren en te gebruiken. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
+Voor deze snelstart moet u versie 2.0 of hoger van Azure CLI uitvoeren om de CLI lokaal te installeren en te gebruiken. Voer `az --version` uit om de versie te bekijken. Als u de CLI wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
 
 Als u meerdere abonnementen hebt, kiest u het abonnement dat de resource bevat of het abonnement waarvoor u wordt gefactureerd. Selecteer als volgt een specifieke abonnements-id in uw account met de opdracht [az account set](/cli/azure/account#az-account-set):
 
@@ -48,16 +48,16 @@ U maakt een Azure Database for MariaDB-server met de opdracht [az mariadb server
 Instelling | Voorbeeldwaarde | Beschrijving
 ---|---|---
 name | **mydemoserver** | Voer een unieke naam in ter identificatie van de Azure Database for MariaDB-server. De servernaam mag alleen kleine letters, cijfers en het koppelteken (-) bevatten. Dit wachtwoord moet tussen 3 en 63 tekens bevatten.
-resource-group | **myresourcegroup** | Voer de naam van de Azure-resourcegroep in.
-sku-name | **GP_Gen5_2** | De naam van de SKU. Volgt de verkorte notatie voor conventie *{prijscategorie}* \_ *{compute-bewerking}* \_ *{vCores}* . Zie de sectie onder deze tabel voor meer informatie over de parameter **sku-name**.
+resource-group | **myresourcegroep** | Voer de naam van de Azure-resourcegroep in.
+sku-name | **GP_Gen5_2** | De naam van de SKU. Volgt de conventie *prijscategorie*\_*compute generation*\_*vCores* in steno. Zie de sectie onder deze tabel voor meer informatie over de parameter **sku-name**.
 backup-retention | **7** | Hoe lang een back-up moet worden bewaard. De eenheid is dagen. Bereik: 7 tot 35. 
-geo-redundant-backup | **Uitgeschakeld** | Of geografisch redundante back-ups moeten worden ingeschakeld voor deze server. Toegestane waarden: **Ingeschakeld**, **Uitgeschakeld**.
+geo-redundant-backup | **Handicap** | Of geografisch redundante back-ups moeten worden ingeschakeld voor deze server. Toegestane waarden: **Ingeschakeld,** **Uitgeschakeld**.
 location | **westus** | De Azure-locatie voor de server.
-ssl-enforcement | **Ingeschakeld** | Of SSL moet worden ingeschakeld voor deze server. Toegestane waarden: **Ingeschakeld**, **Uitgeschakeld**.
-storage-size | **51200** | De opslagcapaciteit van de server (de eenheid is MB). Geldige opslagruimten zijn 5.120 MB (minimaal) met verhogingen in stappen van 1024 MB. Zie [Prijscategorieën](./concepts-pricing-tiers.md) voor meer informatie over de opslaglimieten. 
+ssl-enforcement | **Ingeschakeld** | Of SSL moet worden ingeschakeld voor deze server. Toegestane waarden: **Ingeschakeld,** **Uitgeschakeld**.
+storage-size | **51.200** | De opslagcapaciteit van de server (de eenheid is MB). Geldige opslagruimten zijn 5.120 MB (minimaal) met verhogingen in stappen van 1024 MB. Zie [Prijscategorieën](./concepts-pricing-tiers.md) voor meer informatie over de opslaglimieten. 
 versie | **10.2** | De versie van de hoofd-engine van MariaDB.
 admin-user | **myadmin** | De gebruikersnaam voor aanmelding als beheerder. De parameter voor **admin-user** kan niet **azure_superuser**, **admin**, **administrator**, **root**, **guest** of **public** zijn.
-admin-password | *uw wachtwoord* | Het wachtwoord van het beheerdersaccount. Uw wachtwoord moet tussen 8 en 128 tekens bevatten. Het moet tekens bevatten uit drie van de volgende categorieën: hoofdletters, kleine letters, cijfers en niet-alfanumerieke tekens.
+admin-password | *Uw wachtwoord* | Het wachtwoord van het beheerdersaccount. Uw wachtwoord moet tussen 8 en 128 tekens bevatten. Het moet tekens bevatten uit drie van de volgende categorieën: hoofdletters, kleine letters, cijfers en niet-alfanumerieke tekens.
 
 De parameterwaarde voor de sku-naam volgt de conventie {prijscategorie} \_{compute-generatie}\_{vCores}, zoals in de onderstaande voorbeelden:
 + `--sku-name B_Gen5_1` komt overeen met Basic, Gen 5 en 1 vCore. Deze optie is de kleinst beschikbare SKU.
@@ -66,7 +66,7 @@ De parameterwaarde voor de sku-naam volgt de conventie {prijscategorie} \_{compu
 
 Zie [Prijscategorieën](./concepts-pricing-tiers.md) voor meer informatie over geldige waarden per regio en voor de categorieën.
 
-In het volgende voorbeeld wordt een server met de naam **mydemoserver** gemaakt in de regio US - west. De server bevindt zich in de resourcegroep **myresourcegroup** en heeft **myadmin** als aanmeldgegevens van de serverbeheerder. De server is een Gen 5-server in de prijscategorie Algemeen gebruik en heeft 2 vCores. Een servernaam wordt toegewezen aan een DNS-naam en moet wereldwijd uniek zijn in Azure. Vervang `<server_admin_password>` door uw eigen serverbeheerderswachtwoord.
+In het volgende voorbeeld wordt een server met de naam **mydemoserver** gemaakt in de regio VS - west. De server bevindt zich in de resourcegroep **myresourcegroup** en heeft **myadmin** als aanmeldgegevens van de serverbeheerder. De server is een Gen 5-server in de prijscategorie Algemeen gebruik en heeft 2 vCores. Een servernaam wordt toegewezen aan een DNS-naam en moet wereldwijd uniek zijn in Azure. Vervang `<server_admin_password>` door uw eigen serverbeheerderswachtwoord.
 
 ```azurecli-interactive
 az mariadb server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 10.2
@@ -74,13 +74,12 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 
 > [!NOTE]
 > Overweeg het gebruik van de prijscategorie Basic als lichte reken- en I/O-capaciteit voldoende is voor uw workload. Servers die zijn gemaakt in de prijscategorie Basic kunnen later niet meer worden geschaald voor Algemeen gebruik of Geoptimaliseerd voor geheugen. Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/mariadb/) voor meer informatie.
-> 
 
 ## <a name="configure-a-firewall-rule"></a>Een firewallregel configureren
 
-U kunt met de opdracht [az mariadb server firewall rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) een firewallregel op serverniveau maken voor een Azure Database for MariaDB-server. Een firewallregel op serverniveau stelt een externe toepassing, zoals het opdrachtregelprogramma mysql of MySQL Workbench, in staat om verbinding te maken met uw server via de Azure Database for MariaDB-servicefirewall. 
+U kunt met de opdracht [az mariadb server firewall rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) een firewallregel op serverniveau maken voor een Azure Database for MariaDB-server. Een firewallregel op serverniveau stelt een externe toepassing, zoals het opdrachtregelprogramma mysql of MySQL Workbench, in staat om verbinding te maken met uw server via de Azure Database for MariaDB-servicefirewall.
 
-In het volgende voorbeeld wordt een firewallregel met de naam `AllowMyIP` gemaakt, die verbindingen van een specifiek IP-adres, 192.168.0.1, toestaat. Vervang dit door een IP-adres of een bereik van IP-adressen dat overeenkomt met de locatie waaruit u verbinding maakt. 
+In het volgende voorbeeld wordt een firewallregel met de naam `AllowMyIP` gemaakt, die verbindingen van een specifiek IP-adres, 192.168.0.1, toestaat. Vervang dit door een IP-adres of een bereik van IP-adressen dat overeenkomt met de locatie waaruit u verbinding maakt.
 
 ```azurecli-interactive
 az mariadb server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
@@ -88,14 +87,13 @@ az mariadb server firewall-rule create --resource-group myresourcegroup --server
 
 > [!NOTE]
 > Verbindingen met Azure Database for MariaDB communiceren via poort 3306. Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, wordt uitgaand verkeer via poort 3306 mogelijk niet toegestaan. In dat geval kunt u alleen verbinding maken met uw server als uw IT-afdeling poort 3306 openstelt.
-> 
 
 ## <a name="configure-ssl-settings"></a>SSL-instellingen configureren
 
 Standaard worden SSL-verbindingen tussen uw server en clienttoepassingen afgedwongen. Deze standaardinstelling zorgt voor beveiliging van gegevens 'in beweging' door de gegevensstroom via internet te versleutelen. Voor deze snelstart schakelen we SSL-verbindingen uit voor uw server. Dit wordt afgeraden voor productieservers. Zie [Configure SSL connectivity in your application to securely connect to Azure Database for MariaDB](./howto-configure-ssl.md) (SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure Database for MariaDB) voor meer informatie.
 
 In het volgende voorbeeld wordt het afdwingen van SSL op uw Azure Database for MariaDB-server uitgeschakeld:
- 
+
 ```azurecli-interactive
 az mariadb server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Disabled
 ```
@@ -156,9 +154,10 @@ Maak als volgt verbinding met de server met het opdrachtregelprogramma mysql:
    ```sql
    status
    ```
+
    De uitvoer moet er ongeveer uitzien als de volgende tekst:
 
-   ```bash
+   ```cmd
    C:\Users\>mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
    Enter password: ***********
    Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -214,11 +213,11 @@ Maak als volgt verbinding met de server met het opdrachtregelprogramma mysql:
    | Instelling | Voorgestelde waarde | Beschrijving |
    |---|---|---|
    | Verbindingsnaam | **Demoverbinding** | Geef een label op voor deze verbinding (de verbindingsnaam kan van alles zijn) |
-   | Verbindingsmethode | **Standaard (TCP/IP)** | Gebruik het TCP/IP-protocol om verbinding te maken met Azure Database for MariaDB |
+   | Verbindingsmethode | **Standard (TCP/IP)** | Gebruik het TCP/IP-protocol om verbinding te maken met Azure Database for MariaDB |
    | Hostnaam | **mydemoserver.mariadb.database.azure.com** | De servernaam die u eerder hebt genoteerd. |
-   | Port | **3306** | De standaardpoort voor Azure Database for MariaDB. |
+   | Poort | **3306** | De standaardpoort voor Azure Database for MariaDB. |
    | Gebruikersnaam | **myadmin\@mydemoserver** | De serverbeheerdersnaam die u eerder hebt genoteerd. |
-   | Wachtwoord | *uw wachtwoord* | Gebruik het beheerdersaccountwachtwoord voor het beheerdersaccount dat u eerder hebt ingesteld. |
+   | Wachtwoord | *Uw wachtwoord* | Gebruik het beheerdersaccountwachtwoord voor het beheerdersaccount dat u eerder hebt ingesteld. |
 
 3. Selecteer **Verbinding testen** om te controleren of alle parameters juist zijn geconfigureerd.
 

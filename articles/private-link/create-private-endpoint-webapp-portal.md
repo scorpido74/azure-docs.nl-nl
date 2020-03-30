@@ -1,6 +1,6 @@
 ---
-title: Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt
-description: Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt
+title: Privé verbinding maken met een web-app met Azure Private Endpoint
+description: Privé verbinding maken met een web-app met Azure Private Endpoint
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: article
@@ -8,17 +8,22 @@ ms.date: 03/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: bb78536326885e043279de1ff77e6e8efcd95193
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 2f10c7378ae7681b14df6e96b6a6f1adac832d1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037152"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80287812"
 ---
-# <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt (preview-versie)
+# <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Privé verbinding maken met een web-app met Azure Private Endpoint (Voorbeeld)
 
-Persoonlijk Azure-eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hiermee kunt u privé verbinding maken met uw web-app.
-In deze Quick Start leert u hoe u een web-app implementeert met een persoonlijk eind punt en vanaf een virtuele machine verbinding maakt met deze web-app.
+Azure Private Endpoint is de fundamentele bouwsteen voor Private Link in Azure. Hiermee u privé verbinding maken met uw web-app.
+In deze Quickstart leert u hoe u een web-app met privéeindpunt implementeert en verbinding maakt met deze web-app vanaf een virtuele machine.
+
+Zie [Privéeindpunten gebruiken voor Azure Web App voor][privatenedpointwebapp]meer informatie.
+
+> [!Note]
+>De preview is beschikbaar in de regio's Oost-VS en West-VS 2 voor alle PremiumV2 Windows- en Linux Web Apps. 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -26,165 +31,184 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="virtual-network-and-virtual-machine"></a>Virtueel netwerk en virtuele machine
 
-In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de virtuele machine die wordt gebruikt voor toegang tot uw web-app via het persoonlijke eind punt.
+In deze sectie maakt u het virtuele netwerk en het subnet om de VM te hosten die wordt gebruikt om toegang te krijgen tot uw web-app via het privéeindpunt.
 
 ### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
 
-In deze sectie maakt u een virtueel netwerk en een subnet.
+In deze sectie maakt u een virtueel netwerk en subnet.
 
-1. Selecteer in de linkerbovenhoek van het scherm **een resource maken** > **netwerk** > **virtueel netwerk** of zoek naar **virtueel netwerk** in het zoekvak.
+1. Selecteer linksboven in het scherm **de** > **Networking** > optie Een**virtueel netwerk netwerknetwerk** voor bronnen maken of zoek naar **virtueel netwerk** in het zoekvak.
 
-1. In **virtueel netwerk maken**typt of selecteert u deze informatie op het tabblad basis beginselen:
+1. Voer in **Virtueel netwerk maken**deze informatie in of selecteer deze op het tabblad Basisbeginselen:
 
- ![Virtual Network maken][1]
+   > [!div class="mx-imgBorder"]
+   > ![Virtueel netwerk maken][1]
 
-1. Klik op **volgende: IP-adressen >** en typ of Selecteer deze gegevens:
+1. Klik **op 'Volgende: IP-adressen >'** en voer deze informatie in of selecteer deze gegevens:
 
-![IP-adressen configureren][2]
+   > [!div class="mx-imgBorder"]
+   >![IP-adressen configureren][2]
 
-1. Klik in het gedeelte subnet op **+ subnet toevoegen** en voer de volgende informatie in en klik op **toevoegen** .
+1. Klik in de subnetsectie op **'+ Subnet toevoegen'** en voer de volgende gegevens in en klik op **'Toevoegen'.**
 
-![Subnet toevoegen][3]
+   > [!div class="mx-imgBorder"]
+   >![Subnet toevoegen][3]
 
-1. Klik op **' bekijken + maken '**
+1. Klik **op 'Controleren + maken'**
 
-1. Nadat de validatie is voltooid, klikt u op **maken** .
+1. Nadat de validatie is geslaagd, klikt u op **'Maken'.**
 
 ### <a name="create-virtual-machine"></a>Virtuele machine maken
 
-1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource maken** > **Compute** > **virtuele machine**
+1. Selecteer linksboven in het scherm in de Azure-portal de optie **Een resource** > **Compute** > **Virtual-machine maken**
 
-1. Voer in de basis beginselen voor het maken van een virtuele machine de volgende gegevens in of Selecteer deze:
+1. Typ of selecteer in Een virtuele machine maken - Basisprincipes de volgende gegevens:
 
-![Basis van virtuele machines ][4]
+   > [!div class="mx-imgBorder"]
+   >![Basic virtuele machine][4]
 
-1. Selecteer **volgende: schijven**
+1. Selecteer **'Volgende: schijven'**
 
-Behoud de standaard instellingen.
+   Standaardinstellingen behouden.
 
-1. Selecteer **volgende: netwerken**en selecteer deze gegevens:
+1. Selecteer **'Volgende: netwerken'** en selecteer deze informatie:
 
-![Netwerken ][5]
+   > [!div class="mx-imgBorder"]
+   >![Networking][5]
 
-1. Klik op **' bekijken + maken '**
+1. Klik **op 'Controleren + Maken'.**
 
-1. Wanneer het bericht met de validatie is door gegeven, klikt u op **maken**
+1. Klik op **'Maken'** wanneer de validatie is verstreken.
 
-## <a name="create-your-web-app-and-private-endpoint"></a>Een web-app en een persoonlijk eind punt maken
+## <a name="create-your-web-app-and-private-endpoint"></a>Uw web-app en privéeindpunt maken
 
-In deze sectie maakt u een persoonlijke web-app met behulp van een persoonlijk eind punt.
+In deze sectie maakt u een privéweb-app met behulp van een privéeindpunt.
 
 > [!Note]
->De functie privé-eind punt is alleen beschikbaar voor Premium v2 en geïsoleerd met een externe ASE-SKU
+>De functie Privéeindpunt is alleen beschikbaar voor de Premium V2 SKU.
 
 ### <a name="web-app"></a>Web-app
 
-1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource maken** > **Web** - > **Web-app**
+1. Selecteer linksboven in het scherm in de Azure-portal > de optie Een**bronwebweb-app** **Create a resource** > **maken**
 
-1. Voer in web-app maken de volgende gegevens in of Selecteer deze:
+1. Voer in Web App maken - Basisbeginselen deze informatie in of selecteer deze:
 
-![Web-app-basis ][6]
+   > [!div class="mx-imgBorder"]
+   >![Basisvoor Web App][6]
 
-1. Selecteer **' controleren + maken '**
+1. Selecteer **'Controleren + maken'**
 
-1. Wanneer het bericht met de validatie is door gegeven, klikt u op **maken**
+1. Klik op **'Maken'** wanneer de validatie is verstreken.
 
-### <a name="create-the-private-endpoint"></a>Het persoonlijke eind punt maken
+### <a name="create-the-private-endpoint"></a>Het privéeindpunt maken
 
-1. Selecteer in de eigenschappen van de web-app **instellingen** > **netwerken** en klik op **uw particuliere endpoint-verbindingen configureren** .
+1. Selecteer in de eigenschappen van Web App de optie > **Netwerkinstellingen** en klik op **Settings** **'Uw privéeindpuntverbindingen configureren'.**
 
-![Web-app-netwerken][7]
+   > [!div class="mx-imgBorder"]
+   >![Web App-netwerken][7]
 
-1. Klik in de wizard op **+ toevoegen**
+1. Klik in de wizard op **'+ toevoegen'.**
 
-![Persoonlijk eind punt voor web-app][8]
+   > [!div class="mx-imgBorder"]
+   >![Privéeindpunt voor Web App][8]
 
-1. Vul de gegevens voor het abonnement, Vnet en subnet in en klik op **OK**
+1. Vul de informatie over het abonnement, VNet en Subnet en klik op **'OK'**
 
-![Web-app-netwerken][9]
+   > [!div class="mx-imgBorder"]
+   >![Web App-netwerken][9]
 
-1. Het maken van het persoonlijke eind punt controleren
+1. Bekijk de creatie van het privéeindpunt
 
-![][10]
-![laatste weer gave van het persoonlijke eind punt controleren][11]
+   > [!div class="mx-imgBorder"]
+   >![Overzicht][10]
+   >![Eindweergave van het privéeindpunt][11]
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Verbinding maken met een virtuele machine via internet
 
-1. Voer in de zoek balk van de portal **myVm** in
-1. Selecteer de **knop verbinding maken**. Nadat u de knop verbinding maken hebt geselecteerd, maakt u verbinding met de virtuele machine openen, selecteert u **RDP**
+1. Voer **myVm** in de zoekbalk van de portal in
+1. Selecteer de **knop Verbinding maken**. Nadat u de knop Verbinding maken hebt geselecteerd, opent Verbinding maken met virtuele machine, selecteert u **RDP**
 
-![RDP-knop][12]
+   > [!div class="mx-imgBorder"]
+   >![Knop RDP][12]
 
-1. Er wordt door Azure een Remote Desktop Protocol-bestand (. RDP) gemaakt en gedownload naar uw computer nadat u op **RDP-bestand downloaden** hebt geklikt.
+1. Azure maakt een Extern bureaublad-protocol (.rdp)-bestand en downloadt het naar uw computer nadat u op **RDP-bestand downloaden** hebt geklikt
 
-![RDP-bestand downloaden][13]
+   > [!div class="mx-imgBorder"]
+   >![RDP-bestand downloaden][13]
 
-1. Open het gedownloade RDP-bestand.
+1. Open het bestand downloaded.rdp.
 
-- Selecteer verbinding maken als u hierom wordt gevraagd.
-- Voer de gebruikers naam en het wacht woord in die u hebt opgegeven bij het maken van de virtuele machine.
+- Selecteer Verbinding maken wanneer hierom wordt gevraagd.
+- Voer de gebruikersnaam en het wachtwoord in dat u hebt opgegeven bij het maken van de vm.
 
 > [!Note]
-> Mogelijk moet u meer opties selecteren > een ander account gebruiken om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
+> Mogelijk moet u Meer opties selecteren > Een ander account gebruiken om de referenties op te geven die u hebt ingevoerd toen u de vm maakte.
 
 - Selecteer OK.
 
-1. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als u een certificaat waarschuwing ontvangt, selecteert u Ja of door gaan.
+1. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als er een certificaatwaarschuwing wordt weergegeven, selecteert u Ja of Doorgaan.
 
 1. Wanneer het VM-bureaublad wordt weergegeven, minimaliseert u het om terug te gaan naar het lokale bureaublad.
 
-## <a name="access-web-app-privately-from-the-vm"></a>Toegang tot de web-app vanuit de VM
+## <a name="access-web-app-privately-from-the-vm"></a>Web-app privé openen vanaf de VM
 
-In deze sectie maakt u een persoonlijke verbinding met de web-app met behulp van het persoonlijke eind punt.
+In deze sectie maakt u privé verbinding met de web-app via het privéeindpunt.
 
-1. Haal het privé-IP-adres van uw persoonlijke eind punt op in de **persoonlijke koppeling**van het type zoek balk en selecteer privé-koppeling.
+1. Download het privé-IP-adres van uw privéeindpunt in de zoekbalktype **Privékoppeling**en selecteer Privékoppeling
 
-![Private Link][14]
+   > [!div class="mx-imgBorder"]
+   >![Private Link][14]
 
-1. Selecteer **privé-eind punten** in het persoonlijke koppelings centrum om alle privé-eind punten weer te geven
+1. Selecteer **privéeindpunten** in het Privé-verbindingscentrum om al uw privéeindpunten weer te geven
 
-![Persoonlijk koppelings centrum][15]
+   > [!div class="mx-imgBorder"]
+   >![Privé-linkcentrum][15]
 
-1. Selecteer de koppeling met het persoonlijke eind punt naar uw web-app en uw subnet
+1. Selecteer de privé-eindpuntkoppeling naar uw web-app en uw subnet
 
-![Eigenschappen van persoonlijk eind punt][16]
+   > [!div class="mx-imgBorder"]
+   >![Eigenschappen voor privéeindpunt][16]
 
-1. Kopieer het privé-IP-adres van uw persoonlijke eind punt en de FQDN-namen van uw web-app, in ons geval webappdemope.azurewebsites.net 10.10.2.4
+1. Kopieer het privé-IP-adres van uw privéeindpunt en de FQDN van uw web-app, in ons geval webappdemope.azurewebsites.net 10.10.2.4
 
-1. Controleer in de myVM of de web-app niet toegankelijk is via het open bare IP-adres. Open een browser en kopieer de naam van de web-app, u moet een 403 verboden-fout pagina hebben
+1. Controleer in de myVM of de web-app niet toegankelijk is via het openbare IP-adres. Een browser openen en de naam van de web-app plakken, moet u een 403 verboden foutpagina hebben
 
-![Verboden][17]
+   > [!div class="mx-imgBorder"]
+   >![Verboden][17]
 
-> [!Note]
-> Omdat deze functie in preview is, moet u de DNS-vermelding hand matig beheren.
+> [!Important]
+> Aangezien deze functie in preview is, moet u de DNS-vermelding handmatig beheren.
 
-1. Maak de host-vermelding, open Verkenner en zoek het bestand hosts
+1. De hostinvoer maken, verkenner openen en het hosts-bestand zoeken
 
-![Bestand hosts][18]
+   > [!div class="mx-imgBorder"]
+   >![Hosts-bestand][18]
 
-1. Een item met het privé-IP-adres en de open bare naam van uw web-app toevoegen door het hosts-bestand te bewerken met Klad blok
+1. Een vermelding toevoegen met het privé-IP-adres en de openbare naam van uw web-app door het hosts-bestand met notitieblok te bewerken
 
-![Host inhoud][19]
+   > [!div class="mx-imgBorder"]
+   >![Host inhoud][19]
 
 1. Sla het bestand op.
 
-1. Open een browser en typ de URL van uw web-app
+1. Een browser openen en de url van uw web-app typen
 
-![Website met PE][20]
+   > [!div class="mx-imgBorder"]
+   >![Website met PE][20]
 
-1. U hebt toegang tot uw web-app via het persoonlijke eind punt
+1. U hebt toegang tot uw webapp via het privéeindpunt
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met het persoonlijke eind punt, de web-app en de virtuele machine, verwijdert u de resource groep en alle resources die deze bevat:
+Wanneer u klaar bent met het privéeindpunt, Web App en de VM, verwijdert u de brongroep en alle bronnen die deze bevat:
 
-1. Typ Ready-rg in het zoekvak boven aan de portal en selecteer gereed-rg in de zoek resultaten.
-1. Selecteer resource groep verwijderen.
-1. Voer gereed-rg in als u de naam van de RESOURCE groep wilt typen en selecteer verwijderen.
+1. Voer kant-en-klaar in het vak Zoeken boven aan de portal en selecteer kant-en-klare in de zoekresultaten.
+1. Selecteer Resourcegroep verwijderen.
+1. Voer kant-en-klare gegevens in voor TYPE DE NAAM VAN DE RESOURCEGROEP en selecteer Verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een VM gemaakt in een virtueel netwerk, een web-app en een persoonlijk eind punt. U hebt verbinding gemaakt met een virtuele machine van Internet en u kunt deze veilig door gegeven aan de web-app met behulp van een persoonlijke koppeling. Zie [Wat is Azure private endpoint][privateendpoint]? voor meer informatie over privé-eind punten.
+In deze Quickstart hebt u een VM gemaakt op een virtueel netwerk, een web-app en een privéeindpunt. U hebt vanaf internet verbinding gemaakt met een virtuele machine en veilig gecommuniceerd met de web-app via Private Link. Zie [Wat is Azure Private Endpoint][privateendpoint]voor meer informatie over privéeindpunt .
 
 <!--Image references-->
 [1]: ./media/create-private-endpoint-webapp-portal/createnetwork.png
@@ -209,4 +233,5 @@ In deze Quick Start hebt u een VM gemaakt in een virtueel netwerk, een web-app e
 [20]: ./media/create-private-endpoint-webapp-portal/webappwithpe.png
 
 <!--Links-->
+[privatenedpointwebapp]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
 [privateendpoint]: https://docs.microsoft.com/azure/private-link/private-endpoint-overview

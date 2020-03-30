@@ -1,61 +1,61 @@
 ---
-title: De referenties voor een AKS-cluster (Azure Kubernetes service) opnieuw instellen
-description: Meer informatie over het bijwerken of opnieuw instellen van de referenties van de service-principal of AAD-toepassing voor een Azure Kubernetes service-cluster (AKS)
+title: De referenties voor een AKS-cluster (Azure Kubernetes Service) opnieuw instellen
+description: Informatie over hoe de serviceprincipal- of AAD-toepassingsreferenties voor een AKS-cluster (Azure Kubernetes Service) bijwerken of opnieuw instellen
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 5dab9a778653d2ec6e32ddb3833ddcf6a95cae13
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: b7d652be3733cb130a3973909de59489047efe0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096098"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475541"
 ---
-# <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>De referenties voor de Azure Kubernetes-service bijwerken of draaien (AKS)
+# <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>De referenties voor Azure Kubernetes Service (AKS) bijwerken of roteren
 
-Standaard worden AKS-clusters gemaakt met een service-principal die een verval tijd van één jaar heeft. Bij de voor de verloop datum kunt u de referenties opnieuw instellen om de service-principal voor een extra periode uit te breiden. Het is ook mogelijk dat u de referenties wilt bijwerken of draaien, als onderdeel van een gedefinieerd beveiligings beleid. In dit artikel wordt beschreven hoe u deze referenties voor een AKS-cluster bijwerkt.
+Standaard worden AKS-clusters gemaakt met een serviceprincipal met een vervaldatum van één jaar. Als u in de buurt van de vervaldatum bent, u de referenties opnieuw instellen om de serviceprincipal voor een extra periode te verlengen. U de referenties ook bijwerken of roteren als onderdeel van een gedefinieerd beveiligingsbeleid. In dit artikel wordt beschreven hoe u deze referenties voor een AKS-cluster bijwerken.
 
-Mogelijk hebt u ook [uw AKS-cluster geïntegreerd met Azure Active Directory][aad-integration]en gebruikt u dit als een verificatie provider voor uw cluster. In dat geval hebt u nog twee identiteiten gemaakt voor uw cluster, de AAD-server-app en de AAD-client-app. u kunt deze referenties ook opnieuw instellen. 
+Mogelijk hebt u [uw AKS-cluster][aad-integration]ook geïntegreerd met Azure Active Directory en gebruikt u het als verificatieprovider voor uw cluster. In dat geval hebt u nog 2 identiteiten gemaakt voor uw cluster, de AAD Server App en de AAD Client App, u deze referenties ook opnieuw instellen. 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-U moet de Azure CLI-versie 2.0.65 of hoger hebben geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
+U moet de Azure CLI-versie 2.0.65 of hoger installeren en configureren. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
 
-## <a name="update-or-create-a-new-service-principal-for-your-aks-cluster"></a>Een nieuwe service-principal voor uw AKS-cluster bijwerken of maken
+## <a name="update-or-create-a-new-service-principal-for-your-aks-cluster"></a>Een nieuwe serviceprincipal voor uw AKS-cluster bijwerken of maken
 
-Wanneer u de referenties voor een AKS-cluster wilt bijwerken, kunt u het volgende kiezen:
+Wanneer u de referenties voor een AKS-cluster wilt bijwerken, u ervoor kiezen om:
 
-* werk de referenties bij voor de bestaande service-principal die wordt gebruikt door het cluster of
-* Maak een Service-Principal en werk het cluster bij om deze nieuwe referenties te gebruiken.
+* de referenties voor de bestaande serviceprincipal bijwerken die door het cluster wordt gebruikt, of
+* maak een serviceprincipal en werk het cluster bij om deze nieuwe referenties te gebruiken.
 
-### <a name="reset-existing-service-principal-credential"></a>Bestaande Service-Principal-referenties opnieuw instellen
+### <a name="reset-existing-service-principal-credential"></a>Bestaande serviceprincipalreferentie opnieuw instellen
 
-Als u de referenties voor de bestaande Service-Principal wilt bijwerken, haalt u de Service-Principal-ID van uw cluster op met de opdracht [AZ AKS show][az-aks-show] . In het volgende voor beeld wordt de ID van het cluster met de naam *myAKSCluster* in de resource groep *myResourceGroup* opgehaald. De Service-Principal-ID wordt ingesteld als een variabele met de naam *SP_ID* voor gebruik in een extra opdracht.
+Als u de referenties voor de bestaande serviceprincipal wilt bijwerken, ontvangt u de servicehoofd-id van uw cluster met de opdracht [az aks show.][az-aks-show] In het volgende voorbeeld wordt de id voor het cluster met de naam *myAKSCluster* in de *brongroep myResourceGroup* opdekweg. De serviceprincipal-id is ingesteld als een variabele met de naam *SP_ID* voor gebruik in extra opdracht.
 
 ```azurecli-interactive
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
     --query servicePrincipalProfile.clientId -o tsv)
 ```
 
-Stel, met een variabelenset die de Service-Principal-ID bevat, de referenties nu opnieuw in met [AZ AD SP-referentie opnieuw instellen][az-ad-sp-credential-reset]. In het volgende voor beeld kan het Azure-platform een nieuw beveiligd geheim genereren voor de Service-Principal. Dit nieuwe beveiligde geheim wordt ook opgeslagen als een variabele.
+Met een variabele set die de service principal ID bevat, u nu de referenties opnieuw instellen met behulp van [az ad sp credential reset][az-ad-sp-credential-reset]. In het volgende voorbeeld kan het Azure-platform een nieuw veilig geheim genereren voor de serviceprincipal. Dit nieuwe veilige geheim wordt ook opgeslagen als een variabele.
 
 ```azurecli-interactive
 SP_SECRET=$(az ad sp credential reset --name $SP_ID --query password -o tsv)
 ```
 
-Ga nu verder met het [bijwerken van AKS-cluster met nieuwe Service-Principal-referenties](#update-aks-cluster-with-new-service-principal-credentials). Deze stap is nodig om de service-principal te wijzigen in overeenstemming met het AKS-cluster.
+Ga nu verder met het [bijwerken van het AKS-cluster met nieuwe servicehoofdreferenties.](#update-aks-cluster-with-new-service-principal-credentials) Deze stap is noodzakelijk om de wijzigingen van de Service Principal over het AKS-cluster te laten nadenken.
 
-### <a name="create-a-new-service-principal"></a>Een nieuwe service-principal maken
+### <a name="create-a-new-service-principal"></a>Een nieuwe serviceprincipal maken
 
-Als u ervoor hebt gekozen om de bestaande Service-Principal-referenties in de vorige sectie bij te werken, slaat u deze stap over. Ga door met het [bijwerken van AKS-cluster met nieuwe Service-Principal-referenties](#update-aks-cluster-with-new-service-principal-credentials).
+Als u ervoor kiest om de bestaande servicehoofdreferenties in de vorige sectie bij te werken, slaat u deze stap over. Doorgaan met [het bijwerken van het AKS-cluster met nieuwe servicehoofdreferenties](#update-aks-cluster-with-new-service-principal-credentials).
 
-Als u een Service-Principal wilt maken en vervolgens het AKS-cluster voor het gebruik van deze nieuwe referenties wilt bijwerken, gebruikt u de opdracht [AZ AD SP create-for-RBAC][az-ad-sp-create] . In het volgende voorbeeld wordt met de parameter `--skip-assignment` voorkomen dat eventuele extra standaardtoewijzingen worden toegewezen:
+Als u een serviceprincipal wilt maken en vervolgens het AKS-cluster wilt bijwerken om deze nieuwe referenties te gebruiken, gebruikt u de opdracht [AZ Ad SP create-for-rbac.][az-ad-sp-create] In het volgende voorbeeld wordt met de parameter `--skip-assignment` voorkomen dat eventuele extra standaardtoewijzingen worden toegewezen:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
 ```
 
-De uitvoer lijkt op die in het volgende voorbeeld. Noteer uw eigen `appId` en `password`. Deze waarden worden in de volgende stap gebruikt.
+De uitvoer lijkt op die in het volgende voorbeeld. Noteer uw eigen `appId` en `password`. Deze waarden worden gebruikt in de volgende stap.
 
 ```json
 {
@@ -66,18 +66,18 @@ De uitvoer lijkt op die in het volgende voorbeeld. Noteer uw eigen `appId` en `p
 }
 ```
 
-Definieer nu variabelen voor de Service-Principal-ID en het client geheim met behulp van de uitvoer van uw eigen [AZ AD SP create-for-RBAC-][az-ad-sp-create] opdracht, zoals wordt weer gegeven in het volgende voor beeld. De *SP_ID* is uw *appId*en de *SP_SECRET* is uw *wacht woord*:
+Definieer nu variabelen voor de serviceprincipal-id en het clientgeheim met behulp van de uitvoer van uw eigen [az-ad sp create-for-rbac-opdracht,][az-ad-sp-create] zoals in het volgende voorbeeld wordt weergegeven. De *SP_ID* is uw *appId,* en de *SP_SECRET* is uw *wachtwoord:*
 
-```azurecli-interactive
+```console
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
 SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 ```
 
-Ga nu verder met het [bijwerken van AKS-cluster met nieuwe Service-Principal-referenties](#update-aks-cluster-with-new-service-principal-credentials). Deze stap is nodig om de service-principal te wijzigen in overeenstemming met het AKS-cluster.
+Ga nu verder met het [bijwerken van het AKS-cluster met nieuwe servicehoofdreferenties.](#update-aks-cluster-with-new-service-principal-credentials) Deze stap is noodzakelijk om de wijzigingen van de Service Principal over het AKS-cluster te laten nadenken.
 
-## <a name="update-aks-cluster-with-new-service-principal-credentials"></a>AKS-cluster bijwerken met nieuwe Service-Principal-referenties
+## <a name="update-aks-cluster-with-new-service-principal-credentials"></a>AKS-cluster bijwerken met nieuwe serviceprincipal-referenties
 
-Ongeacht of u ervoor hebt gekozen om de referenties voor de bestaande service-principal bij te werken of een service-principal te maken, werkt u nu het AKS-cluster bij met uw nieuwe referenties met behulp van de opdracht [AZ AKS update-credentials][az-aks-update-credentials] . De variabelen voor de *Service-Principal* en *--client-Secret* worden gebruikt:
+Ongeacht of u ervoor hebt gekozen om de referenties voor de bestaande serviceprincipal bij te werken of een serviceprincipal te maken, u werkt het AKS-cluster nu bij met uw nieuwe referenties met behulp van de opdracht [az aks-updatereferenties.][az-aks-update-credentials] De variabelen voor het *--service-principal* en *--client-secret* worden gebruikt:
 
 ```azurecli-interactive
 az aks update-credentials \
@@ -88,11 +88,11 @@ az aks update-credentials \
     --client-secret $SP_SECRET
 ```
 
-Het duurt enkele minuten voordat de referenties van de service-principal worden bijgewerkt in het AKS.
+Het duurt even voordat de servicehoofdreferenties in de AKS worden bijgewerkt.
 
-## <a name="update-aks-cluster-with-new-aad-application-credentials"></a>AKS-cluster bijwerken met nieuwe AAD-toepassings referenties
+## <a name="update-aks-cluster-with-new-aad-application-credentials"></a>AKS-cluster bijwerken met nieuwe AAD-toepassingsreferenties
 
-U kunt nieuwe AAD-server-en client toepassingen maken door de [Aad-integratie stappen][create-aad-app]te volgen. Of stel uw bestaande AAD-toepassingen opnieuw [in volgens dezelfde methode als voor Service Principal reset](#reset-existing-service-principal-credential). Nadat u de referenties voor de AAD-toepassing voor het cluster hoeft bij te werken met dezelfde opdracht [AZ AKS update-credentials][az-aks-update-credentials] , maar met behulp van de *---Reset-Aad-* variabelen.
+U nieuwe AAD Server- en clienttoepassingen maken door de [AAD-integratiestappen][create-aad-app]te volgen. Of stel uw bestaande AAD-toepassingen opnieuw in [volgens dezelfde methode als voor serviceprincipal reset.](#reset-existing-service-principal-credential) Daarna hoeft u alleen nog maar uw cluster AAD Application referenties bij te werken met behulp van dezelfde [az aks update-referenties][az-aks-update-credentials] commando, maar met behulp van de *--reset-aad* variabelen.
 
 ```azurecli-interactive
 az aks update-credentials \
@@ -107,7 +107,7 @@ az aks update-credentials \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel is de service-principal voor het AKS-cluster zelf en de AAD-integratie toepassingen bijgewerkt. Zie [Aanbevolen procedures voor verificatie en autorisatie in AKS][best-practices-identity]voor meer informatie over het beheren van identiteit voor werk belastingen binnen een cluster.
+In dit artikel zijn de serviceprincipal voor het AKS-cluster zelf en de AAD Integration Applications bijgewerkt. Zie Aanbevolen procedures voor verificatie en autorisatie in [AKS voor][best-practices-identity]meer informatie over het beheren van identiteit voor workloads binnen een cluster.
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

@@ -1,69 +1,68 @@
 ---
-title: Betalen in commerciële Marketplace | Azure Marketplace
-description: Meer informatie over het ontvangen van betalingen voor uw inkomsten in de commerciële Marketplace.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Betaald worden op commerciële marktplaats | Azure Marketplace
+description: Meer informatie over het ontvangen van betalingen voor uw inkomsten op de commerciële marktplaats.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 7f539d4165df04ddca198385f9eef4f90ed15189
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 3c75d5ccdd2d632fbc31d1be3faf6cbc6d3fb223
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933605"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275829"
 ---
 # <a name="getting-paid"></a>Betaald krijgen
-Hieronder vindt u belang rijke informatie over het ontvangen van betalingen voor uw aanbiedingen, invoeg toepassingen en reclame-inkomsten.
+Hier vindt u belangrijke informatie over het ontvangen van betalingen voor uw aanbiedingen, add-ons en advertentie-inkomsten.
 
 > [!IMPORTANT]
-> Voordat u geld kunt ontvangen van de verkoop van aanbiedingen in de commerciële Marketplace, moet u [uw account voor betaling instellen en de benodigde belasting formulieren invullen](set-up-your-payout-account-tax-forms.md).
+> Voordat u geld ontvangen van aanbiedingsverkopen op de commerciële marktplaats, moet u [uw uitbetalingsaccount instellen en de benodigde belastingformulieren invullen.](set-up-your-payout-account-tax-forms.md)
 
-## <a name="store-fee"></a>Winkel kosten
+## <a name="store-fee"></a>Winkelkosten
 
-Wanneer u [zich aanmeldt voor een ontwikkelaars account](https://go.microsoft.com/fwlink/p/?LinkID=615100), gaat u akkoord met de [Microsoft Azure Marketplace Publisher-overeenkomst](https://go.microsoft.com/fwlink/p/?LinkID=699560). In deze overeenkomst wordt de relatie tussen u en micro soft toegelicht, omdat deze betrekking heeft op het aanbieden van aanbiedingen in de commerciële Marketplace, inclusief de winkel kosten die micro soft in rekening brengt voor elke verkochte verkoop.
+Wanneer u [zich aanmeldt voor een ontwikkelaarsaccount,](https://go.microsoft.com/fwlink/p/?LinkID=615100)accepteert u de Microsoft Azure Marketplace Publisher [Agreement](https://go.microsoft.com/fwlink/p/?LinkID=699560). Deze overeenkomst verklaart de relatie tussen u en Microsoft als het gaat om het verkopen van aanbiedingen in de commerciële markt, met inbegrip van de Store kosten die Microsoft in rekening brengt voor elke verkoop gemaakt.
 
-De kosten zijn officieel gedefinieerd in de [Microsoft Azure Marketplace Publisher-overeenkomst](https://go.microsoft.com/fwlink/p/?LinkID=699560). Controleer het document altijd als u vragen hebt.
+Kosten worden officieel gedefinieerd in de [Microsoft Azure Marketplace Publisher Agreement](https://go.microsoft.com/fwlink/p/?LinkID=699560). Controleer dat document altijd als u vragen hebt.
 
-De winkel kosten worden toegepast op alle aanbiedingen die zijn verzameld door de commerciële Marketplace, inclusief invoeg toepassingen.
+De winkelkosten worden toegepast op alle verkoopaanbiedingen die door de commerciële marktplaats worden verzameld, inclusief add-ons.
 
-## <a name="price-tiers"></a>Prijs Categorieën
+## <a name="price-tiers"></a>Prijsniveaus
 
-De prijs categorie (s) die u selecteert, stelt de verkoop prijs in in alle landen waar u uw aanbieding wilt distribueren. U kunt ook aanvullende prijs functies gebruiken, zoals het kiezen van verschillende prijzen voor verschillende markten.
+De prijslaag(en) die u selecteert, bepaalt de verkoopprijs in alle landen waar u ervoor kiest uw aanbieding te distribueren. U ook aanvullende prijsfuncties gebruiken, zoals het kiezen van verschillende prijzen voor verschillende markten.
 
-U kunt uw app gratis aanbieden of u kunt kiezen voor een prijs die klanten moeten betalen om uw aanbieding te verkrijgen. Prijs categorieën beginnen bij. 99 USD, met extra stappen (1,09 USD, 1,19 USD, enzovoort). De toename tussen prijs categorieën neemt toe naarmate de prijs hoger wordt.
+U uw app gratis aanbieden, of u een prijs kiezen die klanten moeten betalen om uw aanbieding te verkrijgen. Prijsniveaus beginnen bij 0,99 USD, met extra stappen (1,09 USD, 1,19 USD, enzovoort). De verhogingen tussen de prijsniveaus stijgen naarmate de prijs hoger wordt.
 
 > [!NOTE] 
-> Deze prijs categorieën zijn ook van toepassing op alle invoeg toepassingen die u binnen uw aanbieding aanbiedt.
+> Deze prijsniveaus zijn ook van toepassing op eventuele add-ons die u aanbiedt vanuit uw aanbieding.
 
-Elke prijs categorie heeft een overeenkomende waarde in elk van de valuta's die worden aangeboden in de Store. We gebruiken deze waarden om u te helpen bij het verkopen van uw aanbieding tegen een vergelijkbaar prijs punt wereld wijd. Als gevolg van wijzigingen in de wisselkoers tarieven, kan het exacte verkoop bedrag echter enigszins variëren van de ene valuta naar de andere.
+Elke prijscategorie heeft een overeenkomstige waarde in elk van de valuta's die door de Store worden aangeboden. We gebruiken deze waarden om u te helpen uw aanbod te verkopen tegen een vergelijkbare prijs wereldwijd. Als gevolg van veranderingen in wisselkoersen kan het exacte verkoopbedrag echter enigszins variëren van valuta tot valuta.
 
-U hebt ook de mogelijkheid om een prijs voor vrije vorm in te voeren voor uw keuze in de lokale valuta van een specifieke markt. Wanneer u dit doet, wordt de prijs niet aangepast (zelfs als de conversie tarieven veranderen), tenzij u een update met een nieuwe prijs verzendt. 
+Je hebt ook de mogelijkheid om een vrije prijs naar keuze in te voeren in de lokale valuta van een specifieke markt. Wanneer u dit doet, wordt de prijs niet aangepast (zelfs als de conversiepercentages veranderen) tenzij u een update met een nieuwe prijs indient. 
 
-Houd er rekening mee dat de prijs die u selecteert, mogelijk verkoop of belasting toegevoegde waarde bevat die uw klanten moeten betalen. Bekijk de [belasting gegevens voor de betaalde aanbieding](tax-details-paid-transactions.md) voor meer informatie.
-
-
-## <a name="payout-reporting"></a>Rapportage voor betaling
-
-U kunt meer informatie krijgen over uw betalings gegevens en rapporten downloaden in het **overzicht** van uitbetalingen van [Partner Center](https://partner.microsoft.com/dashboard). Zie [overzicht van uitbetaling](payout-summary.md)voor meer informatie over de informatie die hier wordt weer gegeven en hoe we het geld dat u verdient te categoriseren.
+Houd er rekening mee dat de prijs die u selecteert, verkoop- of btw-belasting kan omvatten die uw klanten moeten betalen. Zie [Belastinggegevens voor betaalde aanbieding](tax-details-paid-transactions.md) voor meer informatie.
 
 
-## <a name="payout-timeframe"></a>Periode uitbetaling
+## <a name="payout-reporting"></a>Uitbetalingsrapportage
 
-Betalingen worden maandelijks uitgevoerd (op voor waarde dat de toepasselijke betalings drempel is bereikt en u hebt uw betaling niet in de wacht stand gezet, zoals hieronder wordt beschreven). We sturen doorgaans een betaling die in een bepaalde maand vervalt op de vijftiende dag van die maand. Houd er rekening mee dat betalingen over het algemeen tussen 3 en 10 extra dagen duren om uw uitbetalings account te bereiken. Zie [betalings drempels, methoden en tijds perioden](payment-thresholds-methods-timeframes.md)voor meer informatie.
+U informatie over uw betalingsgegevens openen en rapporten downloaden in het **uitbetalingsoverzicht** van [partnercentrum.](https://partner.microsoft.com/dashboard) Zie [Uitbetalingsoverzicht](payout-summary.md)voor meer informatie over de hier weergegeven informatie en hoe we het geld categoriseren dat u verdient.
 
 
-##  <a name="payout-hold-status"></a>Status uitbetalings blokkering
+## <a name="payout-timeframe"></a>Uitbetalingstermijn
 
-Standaard worden betalingen maandelijks verzonden, zoals hierboven wordt beschreven. U hebt echter de mogelijkheid om uw uitbetalingen voor een programma in de wacht te zetten, waardoor we geen betalingen naar uw account kunnen verzenden. Als u ervoor kiest om uw uitbetalingen in de wacht te zetten, blijven we de omzet die u behaalt vastleggen en de details in de **samen vatting**van de betaling opgeven. Er worden echter geen betalingen naar uw account verzonden totdat u de blok kering verwijdert.
+Betalingen worden maandelijks gedaan (mits de toepasselijke betalingsdrempel is gehaald en u uw uitbetaling niet in de wacht hebt gezet zoals hieronder beschreven). We sturen meestal elke betaling die in een bepaalde maand moet worden betaald op de 15e dag van die maand. Houd er rekening mee dat betalingen over het algemeen 3 tot 10 extra werkdagen in de tijd hebben om uw uitbetalingsaccount te bereiken. Zie [Betalingsdrempels, methoden en termijnen voor](payment-thresholds-methods-timeframes.md)meer informatie.
 
-Als u uw betalingen in de wacht wilt plaatsen, gaat u naar **instellingen voor ontwikkel aars**. Ga onder **toekenning en belasting**naar het gedeelte toekennings- **en BTW-profiel toewijzing en** Zoek het programma waarvoor u de betalingen wilt houden. Klik op het selectie vakje **bewaren mijn betaling** om betalingen voor dit programma te bewaren. U kunt de status van uw uitbetalings blokkering op elk gewenst moment wijzigen, maar houd er rekening mee dat uw beslissing van invloed is op de volgende maandelijkse uitbetaling. Als u bijvoorbeeld de uitbetaling van april wilt bewaren, moet u ervoor zorgen dat u vóór het einde van maart de status van uw uitbetalings blokkering hebt ingesteld **op aan.**
 
-Zodra u de status van de uitbetalings blokkering hebt ingesteld op **aan**, worden alle uitbetalingen voor dit programma in de wacht stand **gezet**totdat u de schuif regelaar weer inschakelt. Wanneer u dit doet, wordt u opgenomen in de volgende maandelijkse uitbetalings cyclus (op voor waarde dat er aan de toepasselijke betalings drempels is voldaan). Als u bijvoorbeeld uw uitbetalingen in wacht hebt, maar graag een toekenning wilt genereren die in juni is gegenereerd, moet u ervoor zorgen dat de status van de uitbetalings blokkering wordt **uitgeschakeld** voor het einde van mei.
+##  <a name="payout-hold-status"></a>Uitbetalingsstatus
+
+Standaard sturen we betalingen op maandelijkse basis zoals hierboven beschreven. U hebt echter de mogelijkheid om uw uitbetalingen voor een programma in de wacht te zetten, waardoor we geen betalingen naar uw account kunnen verzenden. Als je ervoor kiest om je uitbetalingen in de wacht te zetten, blijven we alle inkomsten die je verdient registreren en de details opgeven in je **uitbetalingsoverzicht.** We sturen echter geen betalingen naar je account totdat je de blokkering hebt verwijderd.
+
+Als u uw betalingen in de wacht wilt plaatsen, gaat u naar **Ontwikkelaarsinstellingen**. Zoek **onder Uitbetaling en belasting**in de sectie **Uitbetalings- en belastingprofieltoewijzing** het programma waarvoor u betalingen wilt houden. Klik **op** het selectievakje Mijn betaling vasthouden om betalingen voor dit programma vast te houden. U uw uitbetalingsstatus op elk gewenst moment wijzigen, maar houd er rekening mee dat uw beslissing van invloed zal zijn op de volgende maandelijkse uitbetaling. Als u bijvoorbeeld de uitbetaling van April wilt houden, moet u ervoor zorgen dat uw uitbetalingsstatus voor eind maart wordt ingesteld op **Aan.**
+
+Zodra u uw uitbetaling stoorstatus op **Aan**hebt ingesteld, staan alle uitbetalingen voor dit programma in de wacht totdat u de schuifregelaar terug naar **Uit schakelt.** Wanneer u dit doet, wordt u opgenomen tijdens de volgende maandelijkse uitbetalingscyclus (mits aan de toepasselijke betalingsdrempels is voldaan). Als u bijvoorbeeld uw uitbetalingen in de wacht hebt staan, maar een uitbetaling wilt laten genereren in juni, moet u de status van de uitbetalingsstatus voor **het** einde van mei inschakelen.
 
 > [!NOTE]
-> De **status van uw uitbetalings blokkering** geldt voor elk afzonderlijk programma (Microsoft Store, reclame, Azure Marketplace, enzovoort). Als u betalingen wilt bewaren voor al uw Program ma's, moet u de betalingen voor elk programma afzonderlijk bewaren.
+> Uw **uitbetalingsstatus** is van toepassing op elk programma afzonderlijk (Microsoft Store, advertenties, Azure Marketplace, enz.). Als u betalingen op al uw programma's wilt houden, moet u betalingen op elk programma afzonderlijk houden.
 
 
  

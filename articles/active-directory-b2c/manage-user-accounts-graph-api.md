@@ -1,75 +1,97 @@
 ---
-title: Gebruikers beheren met de Microsoft Graph-API
+title: Gebruikers beheren met de Microsoft Graph API
 titleSuffix: Azure AD B2C
-description: Gebruikers in een Azure AD B2C-Tenant beheren door de Microsoft Graph-API aan te roepen en een toepassings-id te gebruiken om het proces te automatiseren.
+description: Gebruikers beheren in een Azure AD B2C-tenant door de Microsoft Graph API aan te roepen en een toepassingsidentiteit te gebruiken om het proces te automatiseren.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8d65217a109a851275d3ba9205024f32bd182d4f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3bd166572cea23fbb710cd053c28f51e76ba534a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187313"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476668"
 ---
-# <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Azure AD B2C gebruikers accounts beheren met Microsoft Graph
+# <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Azure AD B2C-gebruikersaccounts beheren met Microsoft Graph
 
-Met Microsoft Graph kunt u gebruikers accounts in uw Azure AD B2C Directory beheren door methoden voor maken, lezen, bijwerken en verwijderen op te geven in de Microsoft Graph-API. U kunt een bestaande gebruikers opslag migreren naar een Azure AD B2C Tenant en andere beheer bewerkingen voor gebruikers accounts uitvoeren door de Microsoft Graph-API aan te roepen.
+Met Microsoft Graph u gebruikersaccounts beheren in uw Azure AD B2C-map door methoden voor maken, lezen, bijwerken en verwijderen in de Microsoft Graph-API te bieden. U een bestaande gebruikerswinkel migreren naar een Azure AD B2C-tenant en andere beheerbewerkingen voor gebruikersaccounts uitvoeren door de Microsoft Graph API aan te roepen.
 
-In de volgende secties worden de belangrijkste aspecten van Azure AD B2C gebruikers beheer met de Microsoft Graph-API weer gegeven. De Microsoft Graph-API-bewerkingen, typen en eigenschappen die hier worden weer gegeven, zijn een subset van die in de naslag documentatie over de Microsoft Graph-API wordt vermeld.
+In de volgende secties worden de belangrijkste aspecten van Azure AD B2C-gebruikersbeheer met de Microsoft Graph-API gepresenteerd. De hier gepresenteerde Microsoft Graph API-bewerkingen, -typen en -eigenschappen zijn een subset van die welke wordt weergegeven in de referentiedocumentatie voor Microsoft Graph API.
 
-## <a name="register-a-management-application"></a>Een beheer toepassing registreren
+## <a name="register-a-management-application"></a>Een beheeraanvraag registreren
 
-Voordat u een toepassing voor gebruikers beheer of een door u geschreven script kunt gebruiken om te werken met de resources in uw Azure AD B2C Tenant, hebt u een toepassings registratie nodig die de machtigingen verleent.
+Voordat een toepassing voor gebruikersbeheer of een script dat u schrijft, kan communiceren met de bronnen in uw Azure AD B2C-tenant, hebt u een toepassingsregistratie nodig die de machtigingen hiervoor verleent.
 
-Volg de stappen in dit artikel om een toepassings registratie te maken die uw beheer toepassing kan gebruiken:
+Volg de stappen in dit artikel om een toepassingsregistratie te maken die uw beheertoepassing kan gebruiken:
 
 [Azure AD B2C beheren met Microsoft Graph](microsoft-graph-get-started.md)
 
-## <a name="user-management-microsoft-graph-operations"></a>Microsoft Graph bewerkingen voor gebruikers beheer
+## <a name="user-management-microsoft-graph-operations"></a>Microsoft Graph-bewerkingen voor gebruikersbeheer
 
-De volgende gebruikers beheer bewerkingen zijn beschikbaar in de [Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/user):
+De volgende gebruikersbeheerbewerkingen zijn beschikbaar in de [Microsoft Graph-API:](https://docs.microsoft.com/graph/api/resources/user)
 
-- [Een lijst met gebruikers ophalen](https://docs.microsoft.com/graph/api/user-list)
+- [Een lijst met gebruikers](https://docs.microsoft.com/graph/api/user-list)
 - [Een gebruiker maken](https://docs.microsoft.com/graph/api/user-post-users)
-- [Een gebruiker ophalen](https://docs.microsoft.com/graph/api/user-get)
+- [Een gebruiker krijgen](https://docs.microsoft.com/graph/api/user-get)
 - [Een gebruiker bijwerken](https://docs.microsoft.com/graph/api/user-update)
 - [Een gebruiker verwijderen](https://docs.microsoft.com/graph/api/user-delete)
 
 ## <a name="user-properties"></a>Gebruikerseigenschappen
 
-### <a name="display-name-property"></a>Eigenschap weergave naam
+### <a name="display-name-property"></a>Weergavenaam, eigenschap
 
-De `displayName` is de naam die wordt weer gegeven in Azure Portal gebruikers beheer voor de gebruiker, en in het toegangs token dat Azure AD B2C terugkeert naar de toepassing. Deze eigenschap is vereist.
+Het `displayName` is de naam die moet worden weergegeven in azure portal gebruikersbeheer voor de gebruiker en in het toegangstoken Azure AD B2C terugkeert naar de toepassing. Deze accommodatie is vereist.
 
-### <a name="identities-property"></a>Eigenschap Identities
+### <a name="identities-property"></a>Eigenschappen van identiteiten
 
-Een klant account, een consument, een partner of een burger, kan worden gekoppeld aan deze identiteits typen:
+Een klantenaccount, dat een consument, partner of burger kan zijn, kan aan deze identiteitstypen worden gekoppeld:
 
-- **Lokale** identiteit: de gebruikers naam en het wacht woord worden lokaal opgeslagen in de Azure AD B2C Directory. We verwijzen vaak naar deze identiteiten als ' lokale accounts '.
-- **Federatieve** identiteit: ook wel een *sociale* of *ondernemings* account genoemd, wordt de identiteit van de gebruiker beheerd door een federatieve id-provider zoals Facebook, micro soft, ADFS of Sales Force.
+- **Lokale** identiteit : de gebruikersnaam en het wachtwoord worden lokaal opgeslagen in de Azure AD B2C-map. We noemen deze identiteiten vaak 'lokale accounts'.
+- **Federatieve** identiteit - Ook wel bekend als een *sociale* of *zakelijke* accounts, wordt de identiteit van de gebruiker beheerd door een federatieve identiteitsprovider zoals Facebook, Microsoft, ADFS of Salesforce.
 
-Een gebruiker met een klant account kan zich aanmelden met meerdere identiteiten. Bijvoorbeeld gebruikers naam, e-mail adres, werk nemer-ID, sofi-ID en anderen. Eén account kan meerdere identiteiten, zowel lokaal als sociaal, hebben met hetzelfde wacht woord.
+Een gebruiker met een klantaccount kan zich met meerdere identiteiten aanmelden. Bijvoorbeeld gebruikersnaam, e-mail, werknemers-ID, overheids-ID, en anderen. Eén account kan meerdere identiteiten hebben, zowel lokaal als sociaal, met hetzelfde wachtwoord.
 
-In de Microsoft Graph-API worden lokale en federatieve identiteiten opgeslagen in het kenmerk gebruikers `identities`, dat van het type [objectIdentity][graph-objectIdentity]is. De verzameling `identities` vertegenwoordigt een set met identiteiten die worden gebruikt om u aan te melden bij een gebruikers account. Met deze verzameling kan de gebruiker zich aanmelden bij het gebruikers account met een van de bijbehorende identiteiten.
+In de Microsoft Graph API worden zowel lokale als federatieve identiteiten opgeslagen in het gebruikerskenmerk, `identities` dat van het type [objectIdentity][graph-objectIdentity]is. De `identities` verzameling vertegenwoordigt een reeks identiteiten die worden gebruikt om u aan te melden bij een gebruikersaccount. Met deze verzameling kan de gebruiker zich aanmelden bij het gebruikersaccount met een van de bijbehorende identiteiten.
 
 | Eigenschap   | Type |Beschrijving|
 |:---------------|:--------|:----------|
-|signInType|tekenreeks| Hiermee geeft u de aanmeldings typen voor gebruikers in uw Directory. Voor een lokaal account: `emailAddress`, `emailAddress1`, `emailAddress2`, `emailAddress3`, `userName`of een ander type dat u wilt. Sociaal account moet worden ingesteld op `federated`.|
-|verlener|tekenreeks|Hiermee geeft u de uitgever van de identiteit. Voor lokale accounts (waarbij **signInType** niet `federated`is), is deze eigenschap de lokale standaard domein naam van de B2C-Tenant, bijvoorbeeld `contoso.onmicrosoft.com`. Voor sociale identiteit (waarbij **signInType** is `federated`), is de waarde de naam van de verlener, bijvoorbeeld `facebook.com`|
-|issuerAssignedId|tekenreeks|Hiermee geeft u de unieke id op die door de uitgever aan de gebruiker is toegewezen. De combi natie van **verlener** en **issuerAssignedId** moet uniek zijn binnen uw Tenant. Als **signInType** is ingesteld op `emailAddress` of `userName`, vertegenwoordigt het lokale account de aanmeldings naam voor de gebruiker.<br>Wanneer **signInType** is ingesteld op: <ul><li>`emailAddress` (of begint met `emailAddress` zoals `emailAddress1`) **issuerAssignedId** moet een geldig e-mail adres zijn</li><li>`userName` (of een andere waarde), **issuerAssignedId** moet een geldig [lokaal deel zijn van een e-mail adres](https://tools.ietf.org/html/rfc3696#section-3)</li><li>`federated`, **issuerAssignedId** vertegenwoordigt de unieke id van het federatieve account</li></ul>|
+|signInType|tekenreeks| Hiermee geeft u de aanmeldingstypen van de gebruiker op in uw map. Voor lokale `emailAddress`account: `emailAddress2` `emailAddress3`, `userName`, `emailAddress1`, , of een ander type dat u wilt. Sociale rekening moet `federated`worden ingesteld op .|
+|uitgever|tekenreeks|Hiermee geeft u de uitgever van de identiteit op. Voor lokale accounts (waarbij **signInType** dat niet `federated`is), is deze eigenschap `contoso.onmicrosoft.com`bijvoorbeeld de standaarddomeinnaam van de lokale B2C-tenant. Voor sociale identiteit (waar `federated` **signInType** is) is de waarde de naam van de emittent, bijvoorbeeld`facebook.com`|
+|issuerAssignedId|tekenreeks|Hiermee geeft u de unieke id op die door de uitgever aan de gebruiker is toegewezen. De combinatie van **emittent** en **emittentAssignedId** moet uniek zijn binnen uw tenant. Voor een lokaal account, wanneer **signInType** is ingesteld op `emailAddress` of `userName`, vertegenwoordigt het de aanmeldingsnaam voor de gebruiker.<br>Wanneer **signInType** is ingesteld op: <ul><li>`emailAddress`(of begint `emailAddress` `emailAddress1`met like) **uitgeverAssignedId** moet een geldig e-mailadres zijn</li><li>`userName`(of een andere waarde), **moet issuerAssignedId** een geldig [lokaal onderdeel van een e-mailadres](https://tools.ietf.org/html/rfc3696#section-3) zijn</li><li>`federated`, **vertegenwoordigt issuerAssignedId** de federatieve account unieke id</li></ul>|
 
-Voor federatieve identiteiten, afhankelijk van de ID-provider, is het **issuerAssignedId** een unieke waarde voor een bepaalde gebruiker per toepassing of ontwikkelings account. Configureer het Azure AD B2C-beleid met dezelfde toepassings-ID die eerder is toegewezen door de sociale provider of een andere toepassing binnen hetzelfde ontwikkelings account.
+De volgende **eigenschap Identiteiten,** met een lokale accountidentiteit met een aanmeldingsnaam, een e-mailadres als aanmelding en met een sociale identiteit. 
 
-### <a name="password-profile-property"></a>Eigenschap voor wachtwoord profiel
+ ```JSON
+ "identities": [
+     {
+       "signInType": "userName",
+       "issuer": "contoso.onmicrosoft.com",
+       "issuerAssignedId": "johnsmith"
+     },
+     {
+       "signInType": "emailAddress",
+       "issuer": "contoso.onmicrosoft.com",
+       "issuerAssignedId": "jsmith@yahoo.com"
+     },
+     {
+       "signInType": "federated",
+       "issuer": "facebook.com",
+       "issuerAssignedId": "5eecb0cd"
+     }
+   ]
+ ```
 
-Voor een lokale identiteit is de eigenschap **passwordProfile** vereist en bevat het wacht woord van de gebruiker. De eigenschap `forceChangePasswordNextSignIn` moet worden ingesteld op `false`.
+Voor federatieve identiteiten, afhankelijk van de identiteitsprovider, is de **issuerAssignedId** een unieke waarde voor een bepaalde gebruiker per toepassings- of ontwikkelingsaccount. Configureer het Azure AD B2C-beleid met dezelfde toepassings-id die eerder door de sociale provider of een andere toepassing binnen hetzelfde ontwikkelingsaccount is toegewezen.
+
+### <a name="password-profile-property"></a>Eigenschap Wachtwoordprofiel
+
+Voor een lokale identiteit is de eigenschap **passwordProfile** vereist en bevat het wachtwoord van de gebruiker. De `forceChangePasswordNextSignIn` accommodatie moet `false`instellen op .
 
 Voor een federatieve (sociale) identiteit is de eigenschap **passwordProfile** niet vereist.
 
@@ -80,21 +102,21 @@ Voor een federatieve (sociale) identiteit is de eigenschap **passwordProfile** n
   }
 ```
 
-### <a name="password-policy-property"></a>Eigenschap voor wachtwoord beleid
+### <a name="password-policy-property"></a>De eigenschap Wachtwoordbeleid
 
-Het Azure AD B2C wachtwoord beleid (voor lokale accounts) is gebaseerd op het Azure Active Directory beleid voor [sterke wachtwoord sterkte](../active-directory/authentication/concept-sspr-policy.md) . Voor het beleid voor Azure AD B2C registreren of aanmelden en voor het opnieuw instellen van het wacht woord is de sterke wachtwoord sterkte vereist en wacht woorden niet verlopen.
+Het Azure AD B2C-wachtwoordbeleid (voor lokale accounts) is gebaseerd op het azure Active [Directory-beleid voor sterke wachtwoordsterkte.](../active-directory/authentication/concept-sspr-policy.md) Het azure AD B2C-aanmeldings- of aanmeldings- en wachtwoordresetbeleid vereist deze sterke wachtwoordsterkte en verloopt niet voor wachtwoorden.
 
-Als de accounts die u wilt migreren, een zwakkere wachtwoord sterkte hebben dan de [sterke wachtwoord sterkte](../active-directory/authentication/concept-sspr-policy.md) die wordt afgedwongen door Azure AD B2C, kunt u de vereiste voor sterke wacht woorden uitschakelen in scenario's voor gebruikers migratie. Als u het standaard wachtwoord beleid wilt wijzigen, stelt u de eigenschap `passwordPolicies` in op `DisableStrongPassword`. U kunt de aanvraag voor het maken van een gebruiker bijvoorbeeld als volgt wijzigen:
+Als de accounts die u wilt migreren in scenario's voor gebruikersmigratie een zwakkere wachtwoordsterkte hebben dan de [sterke wachtwoordsterkte](../active-directory/authentication/concept-sspr-policy.md) die wordt afgedwongen door Azure AD B2C, u de sterke wachtwoordvereiste uitschakelen. Als u het standaardwachtwoordbeleid `passwordPolicies` wilt `DisableStrongPassword`wijzigen, stelt u de eigenschap in op . U bijvoorbeeld het gebruikersverzoek maken als volgt wijzigen:
 
 ```JSON
 "passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
 ```
 
-### <a name="extension-properties"></a>Extensie-eigenschappen
+### <a name="extension-properties"></a>Uitbreidingseigenschappen
 
-Elke klant gerichte toepassing heeft unieke vereisten voor het verzamelen van de gegevens. Uw Azure AD B2C-Tenant wordt geleverd met een ingebouwde set met gegevens die zijn opgeslagen in eigenschappen, zoals de naam, de voor-en de post code. Met Azure AD B2C kunt u de set eigenschappen die is opgeslagen in elk klant account uitbreiden. Zie [aangepaste kenmerken (gebruikers stromen)](user-flow-custom-attributes.md) en [aangepaste kenmerken (aangepast beleid)](custom-policy-custom-attributes.md)voor meer informatie over het definiëren van aangepaste kenmerken.
+Elke klantgerichte toepassing heeft unieke vereisten voor de te verzamelen informatie. Uw Azure AD B2C-tenant wordt geleverd met een ingebouwde set informatie die is opgeslagen in eigenschappen, zoals Voornaam, Achternaam, Plaats en Postcode. Met Azure AD B2C u de set eigenschappen die in elk klantaccount zijn opgeslagen, uitbreiden. Zie [aangepaste kenmerken (gebruikersstromen)](user-flow-custom-attributes.md) en [aangepaste kenmerken (aangepaste beleidsregels)](custom-policy-custom-attributes.md)voor meer informatie over het definiëren van aangepaste kenmerken.
 
-Microsoft Graph-API ondersteunt het maken en bijwerken van een gebruiker met extensie kenmerken. Extensie kenmerken in de Graph API worden genoemd met behulp van de Conventie `extension_ApplicationObjectID_attributename`. Bijvoorbeeld:
+Microsoft Graph API ondersteunt het maken en bijwerken van een gebruiker met extensiekenmerken. Extensiekenmerken in de Graph API worden `extension_ApplicationObjectID_attributename`benoemd met behulp van de conventie . Bijvoorbeeld:
 
 ```JSON
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
@@ -102,42 +124,42 @@ Microsoft Graph-API ondersteunt het maken en bijwerken van een gebruiker met ext
 
 ## <a name="code-sample"></a>Codevoorbeeld
 
-Dit code voorbeeld is een .NET core-console toepassing die gebruikmaakt van de [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview) om te communiceren met Microsoft Graph-API. De code laat zien hoe u de API aanroept om gebruikers programmatisch te beheren in een Azure AD B2C-Tenant.
-U kunt [het voorbeeld archief](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*. zip) downloaden, [door de opslag plaats](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) in github bladeren of de opslag plaats klonen:
+Dit codevoorbeeld is een .NET Core-consoletoepassing die de [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview) gebruikt om te communiceren met de Microsoft Graph API. De code laat zien hoe u de API aanroept om gebruikers in een Azure AD B2C-tenant programmatisch te beheren.
+U [het voorbeeldarchief](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*.zip), [door de opslagplaats](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) op GitHub bladeren of de repository klonen:
 
 ```cmd
 git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management.git
 ```
 
-Nadat u het code voorbeeld hebt verkregen, configureert u dit voor uw omgeving en bouwt u vervolgens het project:
+Nadat u het codevoorbeeld hebt verkregen, configureert u het voor uw omgeving en bouwt u het project:
 
-1. Open het project in [Visual Studio](https://visualstudio.microsoft.com) of [Visual Studio code](https://code.visualstudio.com).
+1. Open het project in [Visual Studio](https://visualstudio.microsoft.com) of Visual [Studio Code](https://code.visualstudio.com).
 1. Open `src/appsettings.json`.
-1. Vervang in het gedeelte `appSettings` `your-b2c-tenant` door de naam van uw Tenant en `Application (client) ID` en `Client secret` door de waarden voor de registratie van uw beheer toepassing (Zie de sectie [een beheer toepassing registreren](#register-a-management-application) in dit artikel).
-1. Open een console venster in uw lokale kloon van de opslag plaats, schakel over naar de map `src` en bouw het project:
+1. Vervang `appSettings` in de `your-b2c-tenant` sectie de naam van `Application (client) ID` `Client secret` uw huurder en de waarden voor uw registratie van beheeraanvragen (zie het gedeelte [Een beheeraanvraag](#register-a-management-application) van dit artikel registreren).
+1. Open een consolevenster in de lokale kloon van `src` de repo, schakel over naar de map en bouw het project:
     ```console
     cd src
     dotnet build
     ```
-1. Voer de toepassing uit met de opdracht `dotnet`:
+1. Voer de toepassing `dotnet` uit met de opdracht:
 
-```console
-dotnet bin/Debug/netcoreapp3.0/b2c-ms-graph.dll
-```
+    ```console
+    dotnet bin/Debug/netcoreapp3.0/b2c-ms-graph.dll
+    ```
 
-In de toepassing wordt een lijst weer gegeven met opdrachten die u kunt uitvoeren. U kunt bijvoorbeeld alle gebruikers ophalen, één gebruiker ophalen, een gebruiker verwijderen, het wacht woord van een gebruiker bijwerken en bulksgewijs importeren.
+De toepassing geeft een lijst weer met opdrachten die u uitvoeren. Download bijvoorbeeld alle gebruikers, ontvang één gebruiker, verwijder een gebruiker, werk het wachtwoord van een gebruiker bij en importeer in bulk.
 
-### <a name="code-discussion"></a>Code discussie
+### <a name="code-discussion"></a>Codediscussie
 
-De voorbeeld code maakt gebruik van de [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview), die is ontworpen om het bouwen van hoogwaardige, efficiënte en flexibele toepassingen te vereenvoudigen die toegang hebben tot Microsoft Graph. U hoeft dus geen directe Microsoft Graph-API te maken.
+De voorbeeldcode maakt gebruik van de [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview), die is ontworpen om het bouwen van hoogwaardige, efficiënte en veerkrachtige toepassingen die toegang hebben tot Microsoft Graph te vereenvoudigen. U hoeft dus niet alle Microsoft Graph API direct te maken.
 
-Voor elke aanvraag voor de Microsoft Graph-API is een toegangs token voor verificatie vereist. De oplossing maakt gebruik van het NuGet-pakket [micro soft. Graph. auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) dat een op een verificatie gebaseerd op een op een manier gebaseerde wrapper van de micro soft Authentication Library (MSAL) biedt voor gebruik met de SDK van Microsoft Graph.
+Voor elk verzoek tot de Microsoft Graph API is een toegangstoken voor verificatie vereist. De oplossing maakt gebruik van het [Microsoft.Graph.Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet-pakket dat een op verificatiescenario gebaseerde wrapper van de Microsoft Authentication Library (MSAL) biedt voor gebruik met de Microsoft Graph SDK.
 
-De methode `RunAsync` in het _Program.cs_ -bestand:
+De `RunAsync` methode in het _Program.cs_ bestand:
 
-1. Hiermee worden de toepassings instellingen van het bestand _appSettings. json_ gelezen
-1. Initialiseert de authenticatie provider met [OAuth 2,0-client referenties toekenning](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) stroom. Met de client referenties toekenning stroom kan de app een toegangs token verkrijgen om de Microsoft Graph-API aan te roepen.
-1. Hiermee stelt u de Microsoft Graph-serviceclient in met de verificatie provider:
+1. Hiermee leest u toepassingsinstellingen uit het _bestand appsettings.json_
+1. Initialiseert de auth-provider met behulp van [OAuth 2.0-clientreferenties.](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) Met de subsidiestroom voor clientreferenties kan de app een toegangstoken krijgen om de Microsoft Graph-API aan te roepen.
+1. Hiermee stelt u de Microsoft Graph-serviceclient in bij de auth-provider:
 
     ```csharp
     // Read application settings from appsettings.json (tenant ID, app ID, client secret, etc.)
@@ -155,7 +177,7 @@ De methode `RunAsync` in het _Program.cs_ -bestand:
     GraphServiceClient graphClient = new GraphServiceClient(authProvider);
     ```
 
-De geïnitialiseerde *GraphServiceClient* wordt vervolgens in _UserService.cs_ gebruikt om de gebruikers beheer bewerkingen uit te voeren. U kunt bijvoorbeeld een lijst ophalen van de gebruikers accounts in de Tenant:
+De geïnitialiseerde *GraphServiceClient* wordt vervolgens gebruikt in _UserService.cs_ om de gebruikersbeheerbewerkingen uit te voeren. Bijvoorbeeld het verkrijgen van een lijst met de gebruikersaccounts in de tenant:
 
 ```csharp
 public static async Task ListUsers(GraphServiceClient graphClient)
@@ -180,11 +202,11 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[API-aanroepen maken met behulp van de Microsoft Graph sdk's](https://docs.microsoft.com/graph/sdks/create-requests) bevat informatie over het lezen en schrijven van gegevens van Microsoft Graph, het gebruiken van `$select` om de opgehaalde eigenschappen te bepalen, aangepaste query parameters op te geven en de query parameters `$filter` en `$orderBy` te gebruiken.
+[Api-aanroepen uitvoeren met behulp van de Microsoft Graph-SDKs](https://docs.microsoft.com/graph/sdks/create-requests) bevat `$select` informatie over het lezen en schrijven van `$filter` `$orderBy` informatie uit Microsoft Graph, gebruiken om de geretourneerde eigenschappen te beheren, aangepaste queryparameters op te geven en de queryparameters te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Microsoft Graph beschik bare bewerkingen voor Azure AD B2C](microsoft-graph-operations.md)voor een volledige index van de API-bewerkingen voor Microsoft Graph die worden ondersteund voor Azure AD B2C resources.
+Zie [Microsoft Graph-bewerkingen die beschikbaar zijn voor Azure AD B2C-bewerkingen die beschikbaar zijn voor Azure AD B2C voor](microsoft-graph-operations.md)een volledige index van de API-bewerkingen van Microsoft Graph die worden ondersteund voor Azure AD B2C- bronnen.
 
 <!-- LINK -->
 

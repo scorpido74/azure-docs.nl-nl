@@ -1,7 +1,7 @@
 ---
-title: 'MLOps: ML model beheer'
+title: 'MLOps: ML-modelbeheer'
 titleSuffix: Azure Machine Learning
-description: 'Meer informatie over model beheer met Azure Machine Learning (MLOps). Implementeer, beheer en bewaak uw modellen om ze continu te verbeteren. '
+description: 'Meer informatie over modelbeheer met Azure Machine Learning (MLOps). Implementeer, beheer en monitor uw modellen om ze continu te verbeteren. '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,187 +9,196 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 02/21/2020
+ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6671b9c83ab71b4a92fe36d647e5a4e4d781154e
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 40e335ee0377c560b15a588269cbdb39cdebca82
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096183"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477354"
 ---
-# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model beheer, implementatie en bewaking met Azure Machine Learning
+# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: modelbeheer, implementatie en bewaking met Azure Machine Learning
 
-In dit artikel vindt u informatie over het gebruik van Azure Machine Learning voor het beheren van de levens cyclus van uw modellen. Azure Machine Learning maakt gebruik van een MLOps-benadering (Machine Learning Operations). MLOps verbetert de kwaliteit en consistentie van uw machine learning oplossingen. 
+In dit artikel vindt u meer informatie over het gebruik van Azure Machine Learning om de levenscyclus van uw modellen te beheren. Azure Machine Learning maakt gebruik van een Machine Learning Operations (MLOps) benadering. MLOps verbetert de kwaliteit en consistentie van uw machine learning-oplossingen. 
 
 ## <a name="what-is-mlops"></a>Wat is MLOps?
 
-Machine Learning Operations (MLOps) is gebaseerd op [DevOps](https://azure.microsoft.com/overview/what-is-devops/) -principes en-procedures die de efficiëntie van werk stromen verg Roten. Bijvoorbeeld continue integratie, levering en implementatie. MLOps past deze principals toe op het machine learning proces, met als doel:
+Machine Learning Operations (MLOps) is gebaseerd op [DevOps](https://azure.microsoft.com/overview/what-is-devops/) principes en praktijken die de efficiëntie van workflows verhogen. Bijvoorbeeld continue integratie, levering en implementatie. MLOps past deze principes toe op het machine learning-proces, met als doel:
 
 * Sneller experimenteren en ontwikkelen van modellen
 * Snellere implementatie van modellen in productie
-* Kwaliteits garantie
+* Kwaliteitscontrole
 
-Azure Machine Learning biedt de volgende MLOps mogelijkheden:
+Azure Machine Learning biedt de volgende MLOps-mogelijkheden:
 
-- **Maak reproduceer bare ml-pijp lijnen**. Met Machine Learning pijp lijnen kunt u Herhaal bare en herbruikbare stappen definiëren voor uw gegevens voorbereiding, training en Score processen.
-- **Herbruikbare software omgevingen maken** voor trainings-en implementatie modellen.
-- **Registreer, verpak en implementeer modellen vanaf elke locatie**. U kunt ook gekoppelde meta gegevens volgen die vereist zijn voor het gebruik van het model.
-- **Leg de governance-gegevens vast voor de end-to-end ml-levens cyclus**. De vastgelegde informatie kan bestaan uit wie modellen publiceert, waarom wijzigingen zijn aangebracht en wanneer modellen zijn geïmplementeerd of gebruikt voor productie.
-- Meld u **aan en waarschuw op gebeurtenissen in de levens cyclus van ml**. Voor beeld: voltooiing van het experiment, model registratie, model implementatie en detectie van gegevens drift.
-- **Bewaak ml-toepassingen voor operationele en ml-gerelateerde problemen**. Vergelijk model invoer tussen training en demijnen, verken specifieke metrische gegevens en geef bewaking en waarschuwingen op uw ML-infra structuur.
-- **Automatiseer de end-to-end ml-levens cyclus met Azure machine learning en Azure-pijp lijnen**. Met behulp van pijp lijnen kunt u vaak modellen bijwerken, nieuwe modellen testen en voortdurend nieuwe ML-modellen implementeren naast uw andere toepassingen en services.
+- **Maak reproduceerbare ML-pijplijnen.** Met Machine Learning-pijplijnen u herhaalbare en herbruikbare stappen definiëren voor uw gegevensvoorbereidings-, trainings- en scoringsprocessen.
+- **Maak herbruikbare softwareomgevingen** voor het trainen en implementeren van modellen.
+- **Registreer, verpak en implementeer modellen vanaf elke locatie.** U ook de bijbehorende metagegevens bijhouden die nodig zijn om het model te gebruiken.
+- **Leg de governancegegevens vast voor de end-to-end ML-levenscyclus.** De geregistreerde informatie kan bestaan uit wie modellen publiceert, waarom wijzigingen zijn aangebracht en wanneer modellen zijn geïmplementeerd of gebruikt in de productie.
+- **Melding en waarschuwing over gebeurtenissen in de ML-levenscyclus**. Bijvoorbeeld het voltooien van experimenten, modelregistratie, modelimplementatie en detectie van gegevensdrift.
+- **Monitor ML-toepassingen op operationele en ML-gerelateerde problemen.** Vergelijk modelingangen tussen training en gevolgtrekking, verken modelspecifieke statistieken en geef monitoring en waarschuwingen op uw ML-infrastructuur.
+- **Automatiseer de end-to-end ML-levenscyclus met Azure Machine Learning en Azure Pipelines.** Met behulp van pijplijnen u modellen vaak bijwerken, nieuwe modellen testen en voortdurend nieuwe ML-modellen uitrollen naast uw andere toepassingen en services.
 
-## <a name="create-reproducible-ml-pipelines"></a>Reproduceer bare ML-pijp lijnen maken
+## <a name="create-reproducible-ml-pipelines"></a>Reproduceerbare ML-pijplijnen maken
 
-Gebruik ML-pijp lijnen van Azure Machine Learning om alle stappen in uw model trainings proces samen te voegen.
+Gebruik ML-pijplijnen van Azure Machine Learning om alle stappen die betrokken zijn bij uw modeltrainingsproces samen te voegen.
 
-Een ML-pijp lijn kan stappen bevatten van gegevens voorbereiding voor het uitpakken van de functie voor het afstemmen van de model evaluatie. Zie [ml-pijp lijnen](concept-ml-pipelines.md)voor meer informatie.
+Een ML-pijplijn kan stappen bevatten van gegevensvoorbereiding tot functieextractie tot hyperparametertuning tot modelevaluatie. Zie [ML-pijplijnen](concept-ml-pipelines.md)voor meer informatie.
 
-Als u de [Designer](concept-designer.md) gebruikt om uw ml-pijp lijnen te maken, kunt u op elk gewenst moment klikken op **'... '** in de rechter bovenhoek van de ontwerp pagina en vervolgens **klonen**selecteren. Door uw pijp lijn te klonen, kunt u het ontwerp van de pijp lijn herhalen zonder dat uw oude versies verloren gaan.  
+Als u de [Designer](concept-designer.md) gebruikt om uw ML-pijplijnen te maken, u op elk gewenst moment klikken op de **...** rechtsboven op de designerpagina en vervolgens **Kloon**selecteren. Als u uw pijplijn kloont, u uw pijplijnontwerp herhalen zonder uw oude versies te verliezen.  
 
-## <a name="create-reusable-software-environments"></a>Herbruikbare software omgevingen maken
+## <a name="create-reusable-software-environments"></a>Maak herbruikbare softwareomgevingen
 
-Met Azure Machine Learning omgevingen kunt u de software afhankelijkheden van uw projecten bijhouden en reproduceren tijdens het ontwikkelen. Met omgevingen kunt u ervoor zorgen dat builds worden verreproduceerd zonder hand matige software configuraties.
+Met Azure Machine Learning-omgevingen u de softwareafhankelijkheden van uw projecten volgen en reproduceren terwijl deze evolueren. Met omgevingen u ervoor zorgen dat builds reproduceerbaar zijn zonder handmatige softwareconfiguraties.
 
-Omgevingen beschrijven de PIP-en Conda-afhankelijkheden voor uw projecten en kunnen worden gebruikt voor zowel trainingen als implementatie van modellen. Zie [Wat zijn Azure machine learning omgevingen](concept-environments.md)voor meer informatie.
+Omgevingen beschrijven de pip- en Conda-afhankelijkheden voor uw projecten en kunnen worden gebruikt voor zowel training als implementatie van modellen. Zie [Wat zijn Azure Machine Learning-omgevingen](concept-environments.md)voor meer informatie.
 
-## <a name="register-package-and-deploy-models-from-anywhere"></a>Modellen vanaf elke locatie registreren, inpakken en implementeren
+## <a name="register-package-and-deploy-models-from-anywhere"></a>Modellen overal registreren, verpakken en implementeren
 
-### <a name="register-and-track-ml-models"></a>Modellen voor MILLILITERs registreren en volgen
+### <a name="register-and-track-ml-models"></a>ML-modellen registreren en bijhouden
 
-Met model registratie kunt u uw modellen in de Azure-Cloud opslaan en versie, in uw werk ruimte. Het model register maakt het eenvoudig om uw getrainde modellen te organiseren en bij te houden.
-
-> [!TIP]
-> Een geregistreerd model is een logische container voor een of meer bestanden die het model vormen. Als u bijvoorbeeld een model hebt dat is opgeslagen in meerdere bestanden, kunt u ze registreren als één model in uw Azure Machine Learning-werk ruimte. Na de registratie kunt u het geregistreerde model downloaden of implementeren en alle geregistreerde bestanden ontvangen.
-
-Geregistreerde modellen worden geïdentificeerd met naam en versie. Telkens wanneer u een model registreert met dezelfde naam als een bestaand model, wordt de versie in het register verhoogd. Er kunnen extra meta gegevenslabels worden gegeven tijdens de registratie. Deze tags worden vervolgens gebruikt bij het zoeken naar een model. Azure Machine Learning ondersteunt elk model dat kan worden geladen met python 3.5.2 of hoger.
+Met modelregistratie u uw modellen opslaan en versien in de Azure-cloud, in uw werkruimte. Het modelregister maakt het eenvoudig om uw getrainde modellen te organiseren en bij te houden.
 
 > [!TIP]
-> U kunt ook modellen die zijn getraind buiten Azure Machine Learning registreren.
+> Een geregistreerd model is een logische container voor een of meer bestanden die deel uitmaken van uw model. Als u bijvoorbeeld een model hebt dat in meerdere bestanden is opgeslagen, u deze als één model registreren in uw Azure Machine Learning-werkruimte. Na registratie u het geregistreerde model downloaden of implementeren en alle geregistreerde bestanden ontvangen.
 
-U kunt een geregistreerd model dat wordt gebruikt in een actieve implementatie, niet verwijderen.
-Zie de sectie model registreren van [modellen implementeren](how-to-deploy-and-where.md#registermodel)voor meer informatie.
+Geregistreerde modellen worden geïdentificeerd met naam en versie. Telkens wanneer u een model registreert met dezelfde naam als een bestaand model, wordt de versie in het register verhoogd. Extra metadata tags kunnen worden verstrekt tijdens de registratie. Deze tags worden vervolgens gebruikt bij het zoeken naar een model. Azure Machine Learning ondersteunt elk model dat kan worden geladen met Python 3.5.2 of hoger.
 
-### <a name="package-and-debug-models"></a>Pakket-en fout opsporings modellen
+> [!TIP]
+> U ook modellen registreren die buiten Azure Machine Learning zijn getraind.
 
-Voordat u een model in productie implementeert, wordt het verpakt in een docker-installatie kopie. In de meeste gevallen gebeurt het maken van afbeeldingen automatisch op de achtergrond tijdens de implementatie. U kunt de installatie kopie hand matig opgeven.
+U een geregistreerd model dat wordt gebruikt in een actieve implementatie niet verwijderen.
+Zie voor meer informatie het gedeelte registermodel van [Deploy-modellen](how-to-deploy-and-where.md#registermodel).
 
-Als u problemen met de implementatie ondervindt, kunt u in uw lokale ontwikkel omgeving implementeren voor probleem oplossing en fout opsporing.
+### <a name="profile-models"></a>Profielmodellen
 
-Zie [modellen implementeren](how-to-deploy-and-where.md#registermodel) en [implementaties oplossen](how-to-troubleshoot-deployment.md)voor meer informatie.
+Azure Machine Learning kan u helpen inzicht te krijgen in de CPU- en geheugenvereisten van de service die wordt gemaakt wanneer u uw model implementeert. Profilering test de service die uw model uitvoert en retourneert informatie zoals het CPU-gebruik, geheugengebruik en reactielatentie. Het biedt ook een CPU en geheugen aanbeveling op basis van het gebruik van de bron.
+Zie het profielgedeelte van [Deploy-modellen voor](how-to-deploy-and-where.md#profilemodel)meer informatie .
+
+### <a name="package-and-debug-models"></a>Pakket- en foutopsporingsmodellen
+
+Voordat u een model in productie neemt, wordt het verpakt in een Docker-afbeelding. In de meeste gevallen vindt het maken van afbeeldingen automatisch plaats op de achtergrond tijdens de implementatie. U de afbeelding handmatig opgeven.
+
+Als u problemen ondervindt met de implementatie, u deze implementeren op uw lokale ontwikkelomgeving voor het oplossen en opsporen van fouten.
+
+Zie [Implementaties implementeren en](how-to-deploy-and-where.md#registermodel) [probleemoplossing voor](how-to-troubleshoot-deployment.md)meer informatie.
 
 ### <a name="convert-and-optimize-models"></a>Modellen converteren en optimaliseren
 
-Als u uw model converteert naar [Open Neural Network Exchange](https://onnx.ai) (ONNX), kunnen de prestaties worden verbeterd. Gemiddeld kan het converteren naar ONNX resulteren in een 2x-prestatie verhoging.
+Het converteren van uw model naar [Open Neural Network Exchange](https://onnx.ai) (ONNX) kan de prestaties verbeteren. Gemiddeld kan het omzetten naar ONNX een 2x prestatieverhoging opleveren.
 
-Voor meer informatie over ONNX met Azure Machine Learning raadpleegt u het artikel ' [ml-modellen maken en versnellen](concept-onnx.md) '.
+Zie het artikel [ML-modellen maken en versnellen](concept-onnx.md) voor meer informatie over ONNX met Azure Machine Learning.
 
 ### <a name="use-models"></a>Modellen gebruiken
 
-Getrainde machine learning modellen worden geïmplementeerd als webservices in de Cloud of lokaal. U kunt modellen ook implementeren op Azure IoT Edge apparaten. Implementaties gebruiken CPU, GPU of veld-Programmeer bare poort matrices (FPGA) voor het afvoeren. U kunt ook modellen van Power BI gebruiken.
+Getrainde machine learning-modellen worden geïmplementeerd als webservices in de cloud of lokaal. U ook modellen implementeren op Azure IoT Edge-apparaten. Implementaties gebruiken CPU, GPU of field-programmeerbare gate arrays (FPGA) voor inferencing. U ook modellen van Power BI gebruiken.
 
-Wanneer u een model als een webservice of IoT Edge apparaat gebruikt, geeft u de volgende items op:
+Wanneer u een model gebruikt als webservice of IoT Edge-apparaat, levert u de volgende items:
 
-* De modellen die worden gebruikt voor het bepalen van de gegevens die naar de service/het apparaat worden verzonden.
-* Een invoer script. Dit script accepteert aanvragen, maakt gebruik van de model (en) om de gegevens te beoordelen en retourneert een antwoord.
-* Een Azure Machine Learning omgeving waarin de PIP-en Conda-afhankelijkheden worden beschreven die vereist zijn voor de model (len) en het vermeldings script.
-* Alle extra assets, zoals tekst, gegevens, enzovoort, die vereist zijn voor de model (len) en het vermeldings script.
+* Het model(en) dat wordt gebruikt om gegevens te scoren die naar de service/apparaat zijn verzonden.
+* Een invoerscript. Dit script accepteert aanvragen, gebruikt het model(en) om de gegevens te scoren en retourneert een antwoord.
+* Een Azure Machine Learning-omgeving die de pip- en Conda-afhankelijkheden beschrijft die vereist zijn door het model(en) en het invoerscript.
+* Eventuele extra elementen zoals tekst, gegevens, enz.
 
-U kunt ook de configuratie van het platform voor doel implementatie opgeven. Bijvoorbeeld, het type van de VM-familie, het beschik bare geheugen en het aantal kernen bij het implementeren naar Azure Kubernetes service.
+U zorgt ook voor de configuratie van het doelimplementatieplatform. Bijvoorbeeld het type VM-familie, het beschikbare geheugen en het aantal cores bij het implementeren naar Azure Kubernetes Service.
 
-Wanneer de installatie kopie is gemaakt, worden de onderdelen die zijn vereist door Azure Machine Learning ook toegevoegd. Bijvoorbeeld activa die nodig zijn om de webservice uit te voeren en te communiceren met IoT Edge.
+Wanneer de afbeelding wordt gemaakt, worden ook onderdelen toegevoegd die vereist zijn door Azure Machine Learning. Er zijn bijvoorbeeld assets nodig om de webservice uit te voeren en te communiceren met IoT Edge.
 
 #### <a name="batch-scoring"></a>Batchscore
-Batch scores worden ondersteund via ML-pijp lijnen. Zie [batch voorspellingen op Big Data](how-to-use-parallel-run-step.md)voor meer informatie.
+Batchscores worden ondersteund via ML-pijplijnen. Zie [Batchvoorspellingen over big data voor](how-to-use-parallel-run-step.md)meer informatie.
 
-#### <a name="real-time-web-services"></a>Real-time webservices
+#### <a name="real-time-web-services"></a>Realtime webservices
 
-U kunt uw modellen in **Web Services** gebruiken met de volgende Compute-doelen:
+U uw modellen gebruiken in **webservices** met de volgende rekendoelen:
 
 * Azure Container Instance
 * Azure Kubernetes Service
-* Lokale ontwikkel omgeving
+* Lokale ontwikkelingsomgeving
 
-Als u het model als een webservice wilt implementeren, moet u de volgende items opgeven:
+Als u het model als webservice wilt implementeren, moet u de volgende items opgeven:
 
-* Het model of de ensemble van modellen.
-* Afhankelijkheden die zijn vereist voor het gebruik van het model. Bijvoorbeeld een script dat aanvragen accepteert en het model, Conda afhankelijkheden, enzovoort aanroept.
-* Implementatie configuratie die beschrijft hoe en waar het model moet worden geïmplementeerd.
+* Het model of ensemble van modellen.
+* Afhankelijkheden die nodig zijn om het model te gebruiken. Bijvoorbeeld een script dat aanvragen accepteert en het model, conda-afhankelijkheden, enz.
+* Implementatieconfiguratie die beschrijft hoe en waar het model moet worden geïmplementeerd.
 
-Zie [modellen implementeren](how-to-deploy-and-where.md)voor meer informatie.
+Zie [Modellen implementeren voor](how-to-deploy-and-where.md)meer informatie.
 
-#### <a name="iot-edge-devices"></a>Apparaten IoT Edge
+#### <a name="iot-edge-devices"></a>IoT Edge-apparaten
 
-U kunt modellen met IoT-apparaten gebruiken via **Azure IOT Edge-modules**. IoT Edge-modules worden op het apparaat geïmplementeerd op een hardwareapparaat, waarmee de functie voor inschakeling of het model kan worden Gescored.
+U modellen met IoT-apparaten gebruiken via **Azure IoT Edge-modules.** IoT Edge-modules worden geïmplementeerd op een hardwareapparaat, waardoor gevolgtrekking of modelscore op het apparaat mogelijk is.
 
-Zie [modellen implementeren](how-to-deploy-and-where.md)voor meer informatie.
+Zie [Modellen implementeren voor](how-to-deploy-and-where.md)meer informatie.
 
-### <a name="analytics"></a>Analytische gegevens
+### <a name="analytics"></a>Analyse
 
-Micro soft Power BI ondersteunt het gebruik van machine learning modellen voor gegevens analyse. Zie [Azure machine learning integration in Power bi (preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration)voor meer informatie.
+Microsoft Power BI ondersteunt het gebruik van machine learning-modellen voor gegevensanalyse. Zie [Azure Machine Learning-integratie in Power BI (voorbeeld) voor](https://docs.microsoft.com/power-bi/service-machine-learning-integration)meer informatie.
 
-## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Vastleggen van de governance-gegevens die nodig zijn voor het vastleggen van de end-to-end ML levenscyclus
+## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Leg de governancegegevens vast die nodig zijn voor het vastleggen van de end-to-end ML-levenscyclus
 
-Azure ML biedt u de mogelijkheid om de end-to-end-audittrail van al uw ML-assets bij te houden. Met name:
+Azure ML biedt u de mogelijkheid om het end-to-end controlespoor van al uw ML-assets bij te houden. Met name:
 
-- Azure ML [integreert met git](how-to-set-up-training-targets.md#gitintegration) om informatie bij te houden over de opslag plaats/vertakking/het door voeren van uw code.
-- Met de [Azure ml](how-to-create-register-datasets.md) -gegevens sets kunt u gegevens bijhouden, profiel en versie. 
-- In de geschiedenis van Azure ML run wordt een moment opname van de code, gegevens en berekeningen opgeslagen waarmee een model wordt getraind.
-- In het REGI ster van Azure ML-model worden alle meta gegevens vastgelegd die aan uw model zijn gekoppeld (waarbij experiment wordt getraind, waar het wordt geïmplementeerd als de implementaties in orde zijn).
+- Azure ML [integreert met Git](how-to-set-up-training-targets.md#gitintegration) om informatie bij te houden over welke repository / branch / commit uw code vandaan komt.
+- [Azure ML-gegevenssets](how-to-create-register-datasets.md) helpen u bij het bijhouden, profileren en versiegegevens. 
+- Azure ML Run-geschiedenis slaat een momentopname op van de code, gegevens en gegevens die worden gebruikt om een model te trainen.
+- Het Azure ML-modelregister legt alle metagegevens vast die aan uw model zijn gekoppeld (welk experiment het heeft getraind, waar het wordt geïmplementeerd, als de implementaties in orde zijn).
 
-## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Meldingen, automatiseren en waarschuwen voor gebeurtenissen in de levens cyclus van ML
-Azure ML publiceert belang rijke gebeurtenissen in azure EventGrid, die kunnen worden gebruikt voor het melden en automatiseren van gebeurtenissen in de levens cyclus van ML. Raadpleeg [dit document](how-to-use-event-grid.md)voor meer informatie.
+## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Meldingen, automatiseren en waarschuwen voor gebeurtenissen in de ML-levenscyclus
+Azure ML publiceert belangrijke gebeurtenissen op Azure EventGrid, die kunnen worden gebruikt om gebeurtenissen in de ML-levenscyclus te melden en te automatiseren. Zie [dit document](how-to-use-event-grid.md)voor meer informatie.
 
 
-## <a name="monitor-for-operational--ml-issues"></a>Controleren op problemen met operationele & ML
+## <a name="monitor-for-operational--ml-issues"></a>Monitor voor operationele & ML-problemen
 
-Met bewaking kunt u begrijpen welke gegevens worden verzonden naar uw model en welke voor spellingen worden geretourneerd.
+Met monitoring u begrijpen welke gegevens naar uw model worden verzonden en welke voorspellingen deze retourneren.
 
-Deze informatie helpt u inzicht te krijgen in het gebruik van uw model. De verzamelde invoer gegevens kunnen ook nuttig zijn bij het trainen van toekomstige versies van het model.
+Deze informatie helpt u te begrijpen hoe uw model wordt gebruikt. De verzamelde invoergegevens kunnen ook nuttig zijn bij het trainen van toekomstige versies van het model.
 
-Zie [How to Enable model Data Collection](how-to-enable-data-collection.md)(Engelstalig) voor meer informatie.
+Zie [Modelgegevensverzameling inschakelen](how-to-enable-data-collection.md)voor meer informatie.
 
-## <a name="retrain-your-model-on-new-data"></a>Uw model opnieuw trainen op nieuwe gegevens
+## <a name="retrain-your-model-on-new-data"></a>Uw model omscholen op nieuwe gegevens
 
-Het is vaak verstandig om uw model bij te werken of het helemaal opnieuw te trainen, terwijl u nieuwe informatie ontvangt. Soms is het ontvangen van nieuwe gegevens een verwacht deel van het domein. Andere keren, zoals beschreven in [gegevens drift detecteren (preview) in gegevens sets](how-to-monitor-datasets.md), kunnen model prestaties afnemen in het vlak van dergelijke zaken als wijzigingen in een bepaalde sensor, natuurlijke gegevens wijzigingen zoals seizoen effecten of functies die in hun relatie met andere functies verschuivingen. 
+Vaak wilt u uw model bijwerken of zelfs helemaal opnieuw trainen, terwijl u nieuwe informatie ontvangt. Soms is het ontvangen van nieuwe gegevens een verwacht onderdeel van het domein. Andere keren, zoals besproken in [Detect data drift (preview) op datasets,](how-to-monitor-datasets.md)kunnen modelprestaties verslechteren in het licht van zaken als wijzigingen in een bepaalde sensor, wijzigingen in natuurlijke gegevens, zoals seizoenseffecten of functies die verschuiven in hun relatie tot andere functies. 
 
-Er is geen universeel antwoord op ' Hoe kan ik weet of ik opnieuw moet trainen? ' Azure ML-hulpprogram ma's voor gebeurtenis en controle die eerder zijn besproken, zijn goede start punten voor automatisering. Wanneer u hebt besloten om opnieuw te trainen, moet u het volgende doen: 
+Er is geen universeel antwoord op "Hoe weet ik of ik me moet omscholen?" maar Azure ML-gebeurtenis- en bewakingstools die eerder zijn besproken, zijn goede uitgangspunten voor automatisering. Zodra u hebt besloten om te scholen, moet u: 
 
-- Uw gegevens voorverwerken met een herhaalbaar, geautomatiseerd proces
-- Uw nieuwe model trainen
-- Vergelijk de uitvoer van uw nieuwe model met die van uw oude model
-- Vooraf gedefinieerde criteria gebruiken om te kiezen of u het oude model wilt vervangen 
+- Uw gegevens vooraf verwerken met een herhaalbaar, geautomatiseerd proces
+- Train je nieuwe model
+- Vergelijk de output van uw nieuwe model met die van uw oude model
+- Vooraf gedefinieerde criteria gebruiken om te kiezen of u uw oude model wilt vervangen 
 
-Een thema van de bovenstaande stappen is dat uw retraining automatisch moet worden geautomatiseerd, niet voor ad-hoc. [Azure machine learning pijp lijnen](concept-ml-pipelines.md) zijn een goed antwoord voor het maken van werk stromen met betrekking tot de voor bereiding van gegevens, training, validatie en implementatie. Lees [Retrain-modellen met Azure machine learning Designer (preview)](how-to-retrain-designer.md) om te zien hoe pijp lijnen en de Azure machine learning designer in een trainings scenario passen. 
+Een thema van de bovenstaande stappen is dat uw omscholing moet worden geautomatiseerd, niet ad hoc. [Azure Machine Learning-pijplijnen](concept-ml-pipelines.md) zijn een goed antwoord voor het maken van werkstromen met betrekking tot gegevensvoorbereiding, training, validatie en implementatie. Lees [Modellen omscholen met Azure Machine Learning designer (preview)](how-to-retrain-designer.md) om te zien hoe pijplijnen en de Azure Machine Learning-ontwerper passen in een omscholingsscenario. 
 
-## <a name="automate-the-ml-lifecycle"></a>De levens cyclus van ML automatiseren 
+## <a name="automate-the-ml-lifecycle"></a>Automatiseer de ML-levenscyclus 
 
-U kunt GitHub en Azure-pijp lijnen gebruiken om een doorlopend integratie proces te maken dat een model traint. Wanneer een gegevens wetenschapper een wijziging in de Git-opslag plaats voor een project controleert, wordt in een typisch scenario een trainings uitvoering gestart. De resultaten van de uitvoering kunnen vervolgens worden gecontroleerd om de prestatie kenmerken van het getrainde model te bekijken. U kunt ook een pijp lijn maken die het model als een webservice implementeert.
+U GitHub en Azure Pipelines gebruiken om een continu integratieproces te maken dat een model traint. In een typisch scenario start de Azure Pipeline een trainingsrun wanneer een gegevenswetenschapper een wijziging in de Git-repo voor een project controleert. De resultaten van de run kunnen vervolgens worden geïnspecteerd om de prestatiekenmerken van het getrainde model te zien. U ook een pijplijn maken die het model als webservice implementeert.
 
-De [uitbrei ding Azure machine learning](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml) maakt het gemakkelijker om te werken met Azure-pijp lijnen. Het biedt de volgende uitbrei dingen voor Azure-pijp lijnen:
+Met de [Azure Machine Learning-extensie](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml) u eenvoudiger werken met Azure Pipelines. Het biedt de volgende verbeteringen aan Azure Pipelines:
 
-* Hiermee schakelt u de werkruimte selectie in bij het definiëren van een service verbinding.
-* Maakt het mogelijk om release pijplijnen te activeren door getrainde modellen die zijn gemaakt in een trainings pijplijn.
+* Hiermee u werkruimteselectie selecteren bij het definiëren van een serviceverbinding.
+* Hiermee kunnen releasepijplijnen worden geactiveerd door getrainde modellen die zijn gemaakt in een trainingspijplijn.
 
-Voor meer informatie over het gebruik van Azure-pijp lijnen met Azure Machine Learning raadpleegt u de [continue integratie en implementatie van ml-modellen met Azure pipelines](/azure/devops/pipelines/targets/azure-machine-learning) -artikel en de [Azure machine learning MLOps](https://aka.ms/mlops) -opslag plaats.
+Zie de volgende koppelingen voor meer informatie over het gebruik van Azure Pipelines met Azure Machine Learning:
 
-U kunt Azure Data Factory ook gebruiken om een pijp lijn voor gegevens opname te maken waarmee gegevens worden voor bereid voor gebruik met training. Zie [pijp lijn voor gegevens opname](how-to-cicd-data-ingestion.md)voor meer informatie.
+* [Continue integratie en implementatie van ML-modellen met Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning) 
+* [Azure Machine Learning MLOps](https://aka.ms/mlops) repository.
+* [Azure Machine Learning MLOpsPython-repository.](https://github.com/Microsoft/MLOpspython)
+
+U Azure Data Factory ook gebruiken om een pijplijn voor het innemen van gegevens te maken die gegevens voorbereidt op gebruik met training. Zie [Pijplijn gegevens inname voor](how-to-cicd-data-ingestion.md)meer informatie .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het lezen en verkennen van de volgende resources:
+Meer informatie door de volgende bronnen te lezen en te verkennen:
 
-+ [Hoe & implementeren van modellen](how-to-deploy-and-where.md) met Azure machine learning
++ [Hoe & waar modellen moeten worden geïmplementeerd](how-to-deploy-and-where.md) met Azure Machine Learning
 
-+ [Zelf studie: een classificatie model voor een installatie kopie implementeren in ACI](tutorial-deploy-models-with-aml.md).
++ [Zelfstudie: Een afbeeldingsclassificatiemodel implementeren in ACI](tutorial-deploy-models-with-aml.md).
 
-+ [End-to-end MLOps-voor beelden opslag plaats](https://github.com/microsoft/MLOps)
++ [End-to-end MLOps voorbeelden repo](https://github.com/microsoft/MLOps)
 
-+ [CI/CD van ML modellen met Azure-pijp lijnen](/azure/devops/pipelines/targets/azure-machine-learning)
++ [CI/CD van ML-modellen met Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning)
 
-+ Clients maken die [een geïmplementeerd model gebruiken](how-to-consume-web-service.md)
++ Clients maken die [een geïmplementeerd model verbruiken](how-to-consume-web-service.md)
 
 + [Machine learning at scale](/azure/architecture/data-guide/big-data/machine-learning-at-scale) (Machine learning op schaal)
 
-+ [Azure AI-referentie architecturen & best practices rep](https://github.com/microsoft/AI)
++ [Azure AI-referentiearchitecturen & best practices rep](https://github.com/microsoft/AI)

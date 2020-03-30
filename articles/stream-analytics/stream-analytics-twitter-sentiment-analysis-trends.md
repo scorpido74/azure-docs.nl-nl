@@ -1,6 +1,6 @@
 ---
-title: Realtime Twitter-sentiment analyse met Azure Stream Analytics
-description: In dit artikel wordt beschreven hoe u Stream Analytics gebruikt voor realtime Twitter-sentiment analyse. Stapsgewijze richt lijnen voor het genereren van gebeurtenissen naar gegevens op een live dash board.
+title: Realtime Twitter-sentimentanalyse met Azure Stream Analytics
+description: In dit artikel wordt beschreven hoe u Stream Analytics gebruiken voor realtime Twitter-sentimentsanalyse. Stapsgewijze begeleiding van het genereren van gebeurtenissen tot gegevens op een live dashboard.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -8,190 +8,184 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 7023651b09abc8c3124c7bf71608018d5cb72e25
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 4b265bb574895e4728ad93ee25c9dad0da226ea4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161993"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240306"
 ---
-# <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Realtime Twitter-sentiment analyse in Azure Stream Analytics
+# <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Analyse van realtime Twitter-gevoel in Azure Stream Analytics
 
-In dit artikel leert u hoe u een sentiment-analyse oplossing voor sociale media bouwt door real-time Twitter-gebeurtenissen in te brengen in azure Event Hubs. U schrijft een Azure Stream Analytics query om de gegevens te analyseren en de resultaten op te slaan voor later gebruik of om een [Power bi](https://powerbi.com/) -dash board te maken om inzicht in realtime te bieden.
+In dit artikel leert u hoe u een oplossing voor de analyse van het sentiment op sociale media bouwen door realtime Twitter-gebeurtenissen in Azure Event Hubs te brengen. U schrijft een Azure Stream Analytics-query om de gegevens te analyseren en de resultaten op te slaan voor later gebruik of een [Power BI-dashboard](https://powerbi.com/) te maken om in realtime inzichten te bieden.
 
-Hulpprogram ma's voor sociale media analyse helpen organisaties bij het begrijpen van trending-onderwerpen. Trending onderwerpen zijn onderwerpen en gedragingen die een groot aantal posts op sociale media hebben. Sentiment analyse, ook wel *opinie*analyse genoemd, maakt gebruik van hulpprogram ma's voor de analyse van sociale media om houding te bepalen voor een product of een idee. 
+Social media analytics tools helpen organisaties inzicht te krijgen in trending topics. Trending topics zijn onderwerpen en attitudes die een groot aantal berichten op sociale media hebben. Sentiment analyse, die ook wel *opinion mining*, maakt gebruik van sociale media analytics tools om de houding ten opzichte van een product of idee te bepalen. 
 
-Realtime-trend analyse van Twitter is een goed voor beeld van een analyse programma omdat u met het hashtag-abonnements model kunt Luis teren naar specifieke sleutel woorden (Hashtags) en sentiment analyse van de feed ontwikkelt.
+Real-time Twitter trend analyse is een goed voorbeeld van een analytics tool, omdat de hashtag abonnement model u luisteren naar specifieke zoekwoorden (hashtags) en sentiment analyse van de feed te ontwikkelen.
 
-## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>Scenario: analyse van sociale media-sentiment in realtime
+## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>Scenario: Social media sentiment analyse in real time
 
-Een bedrijf met een website voor nieuws media is geïnteresseerd in het verkrijgen van een voor deel van zijn concurrenten met behulp van site-inhoud die direct relevant is voor de lezers. Het bedrijf maakt gebruik van sociale media-analyses op onderwerpen die relevant zijn voor lezers door real-time sentiment analyse van Twitter-gegevens uit te voeren.
+Een bedrijf dat een nieuws media website heeft is geïnteresseerd in het verkrijgen van een voordeel ten opzichte van haar concurrenten door met site-inhoud die onmiddellijk relevant is voor haar lezers. Het bedrijf maakt gebruik van sociale media-analyse over onderwerpen die relevant zijn voor lezers door het doen van real-time sentiment analyse van Twitter-gegevens.
 
-Voor het identificeren van trending onderwerpen in realtime op Twitter, heeft het bedrijf een real-time analyse nodig over het tweet-volume en de sentiment voor belangrijkste onderwerpen.
+Om trending topics in real time op Twitter te identificeren, heeft het bedrijf real-time analyses nodig over het tweetvolume en het sentiment voor belangrijke onderwerpen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In deze hand leiding kunt u een client toepassing gebruiken die verbinding maakt met Twitter en zoekt naar tweets met bepaalde Hashtags (die u kunt instellen). Als u de toepassing wilt uitvoeren en de tweets wilt analyseren met behulp van Azure streaming Analytics, hebt u het volgende nodig:
+In deze handleiding gebruik je een clientapplicatie die verbinding maakt met Twitter en zoekt naar tweets met bepaalde hashtags (die je instellen). Als u de toepassing wilt uitvoeren en de tweets wilt analyseren met Azure Streaming Analytics, moet u het volgende hebben:
 
-* Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) aan.
+* Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/)aan.
 
-* Een [Twitter](https://twitter.com) -account.
+* Een [Twitter](https://twitter.com) Twitter-account.
 
-* De TwitterClientCore-toepassing, die de Twitter-feed leest. Down load [TwitterClientCore](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClientCore)om deze toepassing op te halen.
+* De TwitterClientCore applicatie, die de Twitter-feed leest. Download [TwitterClientCore](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClientCore)om deze toepassing te downloaden.
 
-* Installeer de [.net core SLI](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x).
+* Installeer de [.NET Core CLI-versie](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x) 2.1.0.
 
-## <a name="create-an-event-hub-for-streaming-input"></a>Een Event Hub maken voor streaming-invoer
+## <a name="create-an-event-hub-for-streaming-input"></a>Een gebeurtenishub maken voor streaming-invoer
 
-De voorbeeld toepassing genereert gebeurtenissen en duwt deze naar een Azure-Event Hub. Azure Event Hubs zijn de voorkeurs methode voor het opnemen van gebeurtenissen voor Stream Analytics. Zie de [documentatie van Azure Event hubs](../event-hubs/event-hubs-what-is-event-hubs.md)voor meer informatie.
+De voorbeeldtoepassing genereert gebeurtenissen en duwt deze naar een Azure-gebeurtenishub. Azure Event Hubs zijn de voorkeursmethode voor het inslikken van gebeurtenissen voor Stream Analytics. Zie de documentatie [van Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)voor meer informatie .
 
-### <a name="create-an-event-hub-namespace-and-event-hub"></a>Een Event Hub naam ruimte en Event Hub maken
-In deze sectie maakt u een Event Hub naam ruimte en voegt u een Event Hub toe aan die naam ruimte. Event hub-naam ruimten worden gebruikt om gerelateerde exemplaren van de gebeurtenis-bus logisch te groeperen. 
+### <a name="create-an-event-hub-namespace-and-event-hub"></a>Een naamruimte voor gebeurtenishub en gebeurtenishub maken
+In deze sectie maakt u een naamruimte voor gebeurtenishubs en voegt u een gebeurtenishub toe aan die naamruimte. Naamruimten voor gebeurtenishubs worden gebruikt om logisch gerelateerde gebeurtenisbus-exemplaren te groeperen. 
 
-1. Meld u aan bij de Azure Portal en selecteer **een resource maken**. Kies. Zoek naar **Event hubs** en selecteer **maken**.
+1. Meld u aan bij de Azure-portal en selecteer **Een resource maken**. Dan. zoeken naar **gebeurtenishubs** en selecteer **Maken**.
 
-2. Voer op de pagina **naam ruimte maken** een naam in voor de naam ruimte. U kunt een wille keurige naam voor de naam ruimte gebruiken, maar de naam moet geldig zijn voor een URL en moet uniek zijn binnen Azure. 
+2. Voer op de pagina **Naamruimte maken** een naamruimtenaam in. U elke naam voor de naamruimte gebruiken, maar de naam moet geldig zijn voor een URL en deze moet uniek zijn in Azure. 
     
-3. Selecteer een prijs categorie en een abonnement en maak of kies een resource groep. Kies vervolgens een locatie en selecteer **maken**. 
+3. Selecteer een prijscategorie en abonnement en maak of kies een resourcegroep. Kies vervolgens een locatie en selecteer **Maken**. 
  
-4. Wanneer de implementatie van de naam ruimte is voltooid, gaat u naar de resource groep en zoekt u de Event Hub naam ruimte in de lijst met Azure-resources. 
+4. Wanneer de naamruimte is voltooid, navigeert u naar uw resourcegroep en vindt u de naamruimte van de gebeurtenishub in uw lijst met Azure-bronnen. 
 
-5. Selecteer **+&nbsp;Event hub**in de nieuwe naam ruimte. 
+5. Selecteer ** + &nbsp;gebeurtenishub**in de nieuwe naamruimte . 
 
-6. Geef de nieuwe Event Hub *socialtwitter-eh*. U kunt ook een andere naam gebruiken. Als u dat wel doet, noteert u deze, omdat u de naam later nodig hebt. U hoeft geen andere opties voor de Event Hub in te stellen.
+6. Noem de nieuwe event hub *socialtwitter-eh*. U kunt ook een andere naam gebruiken. Als je dat doet, maak er dan een notitie van, want je hebt de naam later nodig. U hoeft geen andere opties in te stellen voor de gebeurtenishub.
  
 7. Selecteer **Maken**.
 
-### <a name="grant-access-to-the-event-hub"></a>Toegang verlenen tot de Event Hub
+### <a name="grant-access-to-the-event-hub"></a>Toegang verlenen tot de gebeurtenishub
 
-Voordat een proces gegevens naar een Event Hub kan verzenden, heeft de Event Hub een beleid nodig waarmee toegang is toegestaan. Het toegangsbeleid genereert een verbindingsreeks die autorisatiegegevens bevat.
+Voordat een proces gegevens naar een gebeurtenishub kan verzenden, heeft de gebeurtenishub een beleid nodig dat toegang biedt. Het toegangsbeleid genereert een verbindingsreeks die autorisatiegegevens bevat.
 
-1.  Selecteer in de navigatie balk aan de linkerkant van uw event hubs-naam ruimte de optie **Event hubs**. Deze bevindt zich in de sectie **entities** . Selecteer vervolgens de Event Hub die u zojuist hebt gemaakt.
+1.  Selecteer in de navigatiebalk aan de linkerkant van de naamruimte van uw gebeurtenishubs de optie **Gebeurtenishubs**die zich in de sectie **Entiteiten** bevinden. Selecteer vervolgens de gebeurtenishub die u zojuist hebt gemaakt.
 
-2.  Selecteer in de navigatie balk aan de linkerkant de optie **beleid voor gedeelde toegang** onder **instellingen**.
+2.  Selecteer op de navigatiebalk aan de linkerkant beleid **voor gedeelde toegang** onder **Instellingen**.
 
     >[!NOTE]
-    >Er is een optie voor gedeeld toegangs beleid onder voor de naam ruimte Event Hub en voor de Event Hub. Zorg ervoor dat u werkt in de context van uw Event Hub en niet de algemene Event Hub naam ruimte.
+    >Er is een optie voor gedeelde toegangsbeleidsregels voor de naamruimte van de gebeurtenishub en voor de gebeurtenishub. Zorg ervoor dat u werkt in de context van uw gebeurtenishub, niet in de naamruimte van de algehele gebeurtenishub.
 
-3.  Selecteer op de pagina toegangs beleid **+ toevoegen**. Voer vervolgens *socialtwitter-Access* in voor de naam van het **beleid** en schakel het selectie vakje **beheren** in.
+3.  Selecteer **+ Toevoegen**op de pagina toegangsbeleid . Voer vervolgens *socialtwitter-toegang in* voor de **naam Beleid** en schakel het selectievakje **Beheren in.**
  
 4.  Selecteer **Maken**.
 
 5.  Nadat het beleid is geïmplementeerd, selecteert u het beleid in de lijst met beleid voor gedeelde toegang.
 
-6.  Zoek het vak **primaire sleutel van de verbindings reeks** op en selecteer de knop kopiëren naast het Connection String.
+6.  Zoek de primaire toets met de **tekstVerbindingstekenreeks** en selecteer de kopieerknop naast de verbindingstekenreeks.
  
-7.  Plak de verbindingsreeks in een teksteditor. U hebt deze connection string nodig voor de volgende sectie nadat u enkele kleine wijzigingen hebt aangebracht.
+7.  Plak de verbindingsreeks in een teksteditor. U hebt deze verbindingstekenreeks nodig voor de volgende sectie nadat u enkele kleine bewerkingen hebt uitgevoerd.
 
-   De connection string ziet er als volgt uit:
+   De verbindingstekenreeks ziet er als volgt uit:
    
    ```
    Endpoint=sb://EVENTHUBS-NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=socialtwitter-access;SharedAccessKey=Gw2NFZw6r...FxKbXaC2op6a0ZsPkI=;EntityPath=socialtwitter-eh
    ```
 
-   U ziet dat de connection string meerdere sleutel-waardeparen bevat, gescheiden door punt komma's: `Endpoint`, `SharedAccessKeyName`, `SharedAccessKey`en `EntityPath`.  
+   De verbindingstekenreeks bevat meerdere sleutelwaardeparen, gescheiden met `Endpoint`puntkomma's: `SharedAccessKeyName`, , `SharedAccessKey`en `EntityPath`.  
 
    > [!NOTE]
-   > Voor de beveiliging zijn delen van de connection string in het voor beeld verwijderd.
+   > Voor beveiliging zijn delen van de verbindingstekenreeks in het voorbeeld verwijderd.
 
-8.  Verwijder in de tekst editor het `EntityPath` paar uit de connection string (Vergeet niet om de punt komma die eraan voorafgaat te verwijderen). Wanneer u klaar bent, ziet de connection string er als volgt uit:
-   
-   ```
-   Endpoint=sb://EVENTHUBS-NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=socialtwitter-access;SharedAccessKey=Gw2NFZw6r...FxKbXaC2op6a0ZsPkI=
-   ```
+## <a name="configure-and-start-the-twitter-client-application"></a>De Twitter-clienttoepassing configureren en starten
 
-## <a name="configure-and-start-the-twitter-client-application"></a>De Twitter-client toepassing configureren en starten
+De clientapplicatie krijgt tweetgebeurtenissen rechtstreeks van Twitter. Om dit te doen, heeft het toestemming nodig om de Twitter Streaming API's te bellen. Als u die machtiging wilt configureren, maakt u een toepassing in Twitter, die unieke referenties genereert (zoals een OAuth-token). U vervolgens de clienttoepassing configureren om deze referenties te gebruiken wanneer deze API-aanroepen maakt. 
 
-De client toepassing ontvangt Tweet-gebeurtenissen rechtstreeks van Twitter. Om dit te doen, heeft het toestemming nodig om de Twitter streaming Api's aan te roepen. Als u deze machtiging wilt configureren, maakt u een toepassing in Twitter, waarmee unieke referenties worden gegenereerd (zoals een OAuth-token). U kunt vervolgens de client toepassing configureren voor het gebruik van deze referenties bij het maken van API-aanroepen. 
-
-### <a name="create-a-twitter-application"></a>Maak een Twitter-toepassing
-Als u nog geen Twitter-toepassing hebt die u voor deze hand leiding kunt gebruiken, kunt u er een maken. U moet al een Twitter-account hebben.
+### <a name="create-a-twitter-application"></a>Een Twitter-toepassing maken
+Als u nog geen Twitter-toepassing hebt die u gebruiken voor deze handleiding, u er een maken. Je moet al een Twitter-account hebben.
 
 > [!NOTE]
-> Het exacte proces in Twitter voor het maken van een toepassing en het ophalen van de sleutels, geheimen en token kan veranderen. Als deze instructies niet overeenkomen met wat u ziet op de Twitter-site, raadpleegt u de Twitter-ontwikkelaars documentatie.
+> Het exacte proces in Twitter voor het maken van een toepassing en het verkrijgen van de sleutels, geheimen en token kan veranderen. Als deze instructies niet overeenkomen met wat je ziet op de Twitter-site, raadpleegdan de documentatie van de Twitter-ontwikkelaars.
 
-1. Ga in een webbrowser naar [Twitter voor ontwikkel aars](https://developer.twitter.com/en/apps)en selecteer **een app maken**. Mogelijk wordt er een bericht weer gegeven met de mede deling dat u moet aanvragen voor een Twitter-ontwikkelaars account. U kunt dit doen en nadat uw toepassing is goedgekeurd, ziet u een bevestigings-e-mail. Het kan enkele dagen duren voordat een ontwikkelaars account wordt goedgekeurd.
+1. Ga vanuit een webbrowser naar [Twitter Voor ontwikkelaars,](https://developer.twitter.com/en/apps)maak een ontwikkelaarsaccount en selecteer **Een app maken.** Mogelijk ziet u een bericht waarin staat dat u een Twitter-ontwikkelaarsaccount moet aanvragen. Voel je vrij om dit te doen, en nadat uw aanvraag is goedgekeurd, ziet u een bevestigingse-mail. Het kan enkele dagen duren voordat een ontwikkelaarsaccount is goedgekeurd.
 
-   ![Details van Twitter-toepassing](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details.png "Details van Twitter-toepassing")
+   ![Details van twitter-toepassingen](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details.png "Details van twitter-toepassingen")
 
 2. Voer op de pagina **Create an application** de gegevens voor de nieuwe app in en selecteer **Create your Twitter application**.
 
-   ![Details van Twitter-toepassing](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details-create.png "Details van Twitter-toepassing")
+   ![Details van twitter-toepassingen](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details-create.png "Details van twitter-toepassingen")
 
-3. Selecteer op de pagina toepassing het tabblad **sleutels en tokens** en kopieer de waarden voor de **CONSUMer-API-sleutel** en de **geheime sleutel**van de consument-API. Selecteer ook **maken** onder **toegangs token en geheim toegangs token** om de toegangs tokens te genereren. Kopieer de waarden voor **Access Token** en **Access Token Secret**.
+3. Selecteer op de toepassingspagina het tabblad **Sleutels en tokens** en kopieer de waarden voor Consumer API **Key** en Consumer API **Secret Key**. Selecteer ook **Maken** onder **Access Token en Access Token Secret** om de toegangstokens te genereren. Kopieer de waarden voor **Access Token** en **Access Token Secret**.
 
-   Sla de waarden op die u hebt opgehaald voor de Twitter-toepassing. U hebt de waarden later nodig.
+   Sla de waarden op die u hebt opgehaald voor de Twitter-toepassing. Je hebt de waarden later nodig.
 
 > [!NOTE]
-> De sleutels en geheimen voor de Twitter-toepassing bieden toegang tot uw Twitter-account. Deze informatie wordt als vertrouwelijk beschouwd, op dezelfde manier als uw Twitter-wacht woord. U kunt deze informatie bijvoorbeeld niet insluiten in een toepassing die u aan anderen verstrekt. 
+> De sleutels en geheimen voor de Twitter-applicatie bieden toegang tot uw Twitter-account. Behandel deze informatie als gevoelig, hetzelfde als je je Twitter-wachtwoord. Sluit deze informatie bijvoorbeeld niet in in een toepassing die u aan anderen geeft. 
 
-### <a name="configure-the-client-application"></a>De client toepassing configureren
+### <a name="configure-the-client-application"></a>De clienttoepassing configureren
 
-We hebben een client toepassing gemaakt die verbinding maakt met Twitter-gegevens met behulp [van de streaming-api's van Twitter](https://dev.twitter.com/streaming/overview) voor het verzamelen van Tweet-gebeurtenissen over een specifieke set met onderwerpen.
+We hebben een clienttoepassing gemaakt die verbinding maakt met Twitter-gegevens met behulp van [Twitter-API's](https://dev.twitter.com/streaming/overview) voor het verzamelen van tweetgebeurtenissen over een specifieke reeks onderwerpen.
 
-Voordat de toepassing wordt uitgevoerd, hebt u bepaalde gegevens van u nodig, zoals de Twitter-sleutels en de Event Hub connection string.
+Voordat de toepassing wordt uitgevoerd, vereist deze bepaalde informatie van u, zoals de Twitter-toetsen en de tekenreeks van de gebeurtenishubverbinding.
 
-1. Zorg ervoor dat u de [TwitterClientCore](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClientCore) -toepassing hebt gedownload, zoals vermeld in de vereisten.
+1. Zorg ervoor dat u de [TwitterClientCore-toepassing](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClientCore) hebt gedownload, zoals vermeld in de vereisten.
 
-2. Gebruik een tekst editor om het bestand *app. config* te openen. Breng de volgende wijzigingen aan in het `<appSettings>`-element:
+2. Gebruik een teksteditor om het *bestand App.config* te openen. Breng de volgende `<appSettings>` wijzigingen aan in het element:
 
-   * `oauth_consumer_key` instellen op de Twitter-consument sleutel (API-sleutel). 
-   * Stel `oauth_consumer_secret` in op de Twitter-consument geheim (geheime sleutel van de API).
-   * Stel `oauth_token` in op het Twitter-toegangs token.
-   * Stel `oauth_token_secret` in voor het geheim voor het Twitter-toegangs token.
-   * Stel `EventHubNameConnectionString` in op de connection string. Zorg ervoor dat u de connection string gebruikt waarvan u het `EntityPath` sleutel-waardepaar hebt verwijderd.
-   * Stel `EventHubName` in op de naam van het Event Hub (dat is de waarde van het pad van de entiteit).
+   * Stel `oauth_consumer_key` in op de Twitter Consumer Key (API-toets). 
+   * Ingesteld `oauth_consumer_secret` op de Twitter Consumer Secret (API secret key).
+   * Stel `oauth_token` in op het Twitter Access-token.
+   * Stel `oauth_token_secret` in op het Twitter Access-tokengeheim.
+   * Instellen `EventHubNameConnectionString` op de verbindingstekenreeks.
+   * Ingesteld `EventHubName` op de naam van de gebeurtenishub (dat is de waarde van het entiteitspad).
 
-3. Open de opdracht regel en navigeer naar de map waarin uw TwitterClientCore-app zich bevindt. Gebruik de opdracht `dotnet build` om het project te bouwen. Gebruik vervolgens de opdracht `dotnet run` om de app uit te voeren. De app verzendt tweets naar uw event hub.
+3. Open de opdrachtregel en navigeer naar de map waar uw TwitterClientCore-app zich bevindt. Gebruik de `dotnet build` opdracht om het project te bouwen. Gebruik vervolgens `dotnet run` de opdracht om de app uit te voeren. De app stuurt Tweets naar je Event Hub.
 
 ## <a name="create-a-stream-analytics-job"></a>Een Stream Analytics-taak maken
 
-Nu Tweet-gebeurtenissen in realtime worden gestreamd vanuit Twitter, kunt u een Stream Analytics taak instellen om deze gebeurtenissen in realtime te analyseren.
+Nu tweetgebeurtenissen in realtime worden gestreamd vanaf Twitter, u een Stream Analytics-taak instellen om deze gebeurtenissen in realtime te analyseren.
 
-1. Navigeer in het Azure Portal naar de resource groep en selecteer **+ toevoegen**. Zoek vervolgens naar **Stream Analytics-taak** en selecteer **maken**.
+1. Navigeer in de Azure-portal naar uw brongroep en selecteer **+ Toevoegen**. Zoek vervolgens naar **de taak Stream Analytics** en selecteer **Maken**.
 
-2. Noem de taak `socialtwitter-sa-job` en geef een abonnement, resource groep en locatie op.
+2. Geef de `socialtwitter-sa-job` taak een naam en geef een abonnement, resourcegroep en locatie op.
 
-    Het is een goed idee om de taak en de Event Hub in dezelfde regio te plaatsen voor de beste prestaties en om ervoor te zorgen dat u niet betaalt voor het overdragen van gegevens tussen regio's.
+    Het is een goed idee om de taak en de gebeurtenishub in dezelfde regio te plaatsen voor de beste prestaties en zodat u niet betaalt om gegevens tussen regio's over te dragen.
 
-3. Selecteer **Maken**. Ga vervolgens naar uw taak wanneer de implementatie is voltooid.
+3. Selecteer **Maken**. Navigeer vervolgens naar uw taak wanneer de implementatie is voltooid.
 
-## <a name="specify-the-job-input"></a>De taak invoer opgeven
+## <a name="specify-the-job-input"></a>De taakinvoer opgeven
 
-1. Selecteer in uw Stream Analytics-taak de optie **invoer** in het menu links onder **taak topologie**.
+1. Selecteer in de taak Stream Analytics de optie **Invoer** in het linkermenu onder **Job Topology**.
 
-2. Selecteer **+&nbsp;** voor het toevoegen van stream-invoer > **Event hub**. Vul het **nieuwe invoer** formulier in met de volgende informatie:
+2.  > Selecteer ** + &nbsp;Gebeurtenishub voor streaminvoer****toevoegen**. Vul het **nieuwe invoerformulier** in met de volgende informatie:
 
    |**Instelling**  |**Voorgestelde waarde**  |**Beschrijving**  |
    |---------|---------|---------|
-   |Invoeralias| *TwitterStream* | Voer een alias in voor de invoer. |
+   |Invoeralias| *TwitterStream TwitterStream* | Voer een alias in voor de invoer. |
    |Abonnement  | \<Uw abonnement\> |  Selecteer het Azure-abonnement dat u wilt gebruiken. |
-   |Event hub-naamruimte | *ASA-Twitter-eventhub* |
-   |Event Hub-naam | *socialtwitter-eh* | Kies *bestaande gebruiken*. Selecteer vervolgens de Event hub die u hebt gemaakt.|
-   |Type gebeurtenis compressie| GZip | Het type gegevens compressie.|
+   |Event hub-naamruimte | *asa-twitter-eventhub* |
+   |Event Hub-naam | *socialtwitter-eh* | Kies *Bestaand gebruiken*. Selecteer vervolgens de gebeurtenishub die u hebt gemaakt.|
+   |Gebeurteniscompressietype| Gzip | Het type gegevenscompressie.|
 
-   Wijzig de resterende standaard waarden en selecteer **Opslaan**.
+   Laat de resterende standaardwaarden achter en selecteer **Opslaan**.
 
-## <a name="specify-the-job-query"></a>De taak query opgeven
+## <a name="specify-the-job-query"></a>De taakquery opgeven
 
-Stream Analytics ondersteunt een eenvoudig, declaratief query model dat trans formaties beschrijft. Meer informatie over de taal vindt u in de [Azure stream Analytics query language-referentie](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). Deze hand leiding helpt u bij het ontwerpen en testen van verschillende query's via Twitter-gegevens.
+Stream Analytics ondersteunt een eenvoudig, declaratief querymodel dat transformaties beschrijft. Zie de [naslaggids voor querytaal van Azure Stream Analytics.](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) Deze handleiding helpt u bij het schrijven en testen van verschillende query's via Twitter-gegevens.
 
-Als u het aantal vermeldingen tussen de onderwerpen wilt vergelijken, kunt u een [tumblingvenstertriggers-venster](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) gebruiken om elke vijf seconden het aantal vermeldingen per onderwerp op te halen.
+Om het aantal vermeldingen tussen onderwerpen te vergelijken, u een [Tumbling-venster](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) gebruiken om elke vijf seconden de telling van vermeldingen per onderwerp te krijgen.
 
-1. In uw taak **overzicht**selecteert u **query bewerken** in de rechter bovenhoek van het query-vak. Azure vermeldt de invoer en uitvoer die voor de taak zijn geconfigureerd. Hiermee kunt u een query maken om de invoer stroom te transformeren wanneer deze naar de uitvoer wordt verzonden.
+1. Selecteer Query **bewerken** in uw **taakoverzicht**in de rechterbovenhoek van het vak Query. Azure bevat de ingangen en uitvoer die zijn geconfigureerd voor de taak en laat u een query maken om de invoerstroom te transformeren terwijl deze naar de uitvoer wordt verzonden.
 
-2. Wijzig de query in de query-editor in het volgende:
+2. Wijzig de query in de queryeditor als volgt:
 
    ```sql
    SELECT *
    FROM TwitterStream
    ```
 
-3. Gebeurtenis gegevens uit de berichten moeten worden weer gegeven in het venster **invoer voorbeeld** onder uw query. Zorg ervoor dat de **weer gave** is ingesteld op **JSON**. Als u geen gegevens ziet, zorg er dan voor dat uw gegevens Generator gebeurtenissen naar uw Event Hub verzendt en dat u **gzip** hebt geselecteerd als het compressie type voor de invoer.
+3. Gebeurtenisgegevens uit de berichten moeten worden weergegeven in het **venster Invoervoorbeeld** onder uw query. Controleer of de **weergave** is ingesteld op **JSON**. Als u geen gegevens ziet, moet u ervoor zorgen dat uw gegevensgenerator gebeurtenissen naar uw gebeurtenishub verzendt en dat u **GZip** hebt geselecteerd als compressietype voor de invoer.
 
-4. Selecteer **test query** en Bekijk de resultaten in het venster **test resultaten** onder uw query.
+4. Selecteer **Testquery** en let op de resultaten in het venster **Testresultaten** onder uw query.
 
-5. Wijzig de query in de code-editor naar de volgende en selecteer **test query**:
+5. Wijzig de query in de codeeditor in de volgende en selecteer **Testquery:**
 
    ```sql
    SELECT System.Timestamp as Time, text
@@ -199,39 +193,39 @@ Als u het aantal vermeldingen tussen de onderwerpen wilt vergelijken, kunt u een
    WHERE text LIKE '%Azure%'
    ```
 
-6. Deze query retourneert alle tweets die het sleutel woord *Azure*bevatten.
+6. Met deze query worden alle tweets geretourneerd die het zoekwoord *Azure*bevatten.
 
-## <a name="create-an-output-sink"></a>Een uitvoer Sink maken
+## <a name="create-an-output-sink"></a>Een uitvoergootsteen maken
 
-U hebt nu een gebeurtenis stroom gedefinieerd, een Event Hub invoer voor opname gebeurtenissen en een query voor het uitvoeren van een trans formatie over de stroom. De laatste stap is het definiëren van een uitvoer filter voor de taak.  
+U hebt nu een gebeurtenisstream, een gebeurtenishub-invoer voor het opnemen van gebeurtenissen en een query gedefinieerd om een transformatie via de stream uit te voeren. De laatste stap is het definiëren van een uitvoergootsteen voor de taak.  
 
-In deze hand leiding schrijft u de geaggregeerde Tweet-gebeurtenissen van de taak query naar Azure Blob-opslag.  Afhankelijk van de behoeften van uw toepassing kunt u uw resultaten ook naar Azure SQL Database, Azure-tabel opslag, Event Hubs of Power BI pushen.
+In deze handleiding schrijft u de geaggregeerde tweetgebeurtenissen van de taakquery naar Azure Blob-opslag.  U uw resultaten ook naar Azure SQL Database, Azure Table storage, Event Hubs of Power BI pushen, afhankelijk van de toepassingsbehoeften.
 
-## <a name="specify-the-job-output"></a>De taak uitvoer opgeven
+## <a name="specify-the-job-output"></a>De taakuitvoer opgeven
 
-1. Selecteer in het gedeelte **taak topologie** in het navigatie menu links de optie **uitvoer**. 
+1. Selecteer **Job Topology** Uitvoer **.** 
 
-2. Klik op de pagina **uitvoer** op **+&nbsp;toevoegen** en **Blob Storage/Data Lake Storage Gen2**:
+2. Klik **op** de pagina ** + &nbsp;** Uitvoer op Toevoegen en **Blob-opslag/Gegevensmeeropslag Gen2:**
 
-   * **Uitvoer alias**: gebruik de naam `TwitterStream-Output`. 
-   * **Opties voor importeren**: Selecteer **opslag selecteren bij uw abonnementen**.
-   * **Opslag account**. Selecteer uw opslagaccount.
-   * **Container**. Selecteer **nieuwe maken** en voer `socialtwitter`in.
+   * **Uitvoeralias**: Gebruik `TwitterStream-Output`de naam . 
+   * **Importopties:** Selecteer **Opslag selecteren in uw abonnementen**.
+   * **Opslagaccount**. Selecteer uw opslagaccount.
+   * **Container**. Selecteer **Nieuw** maken `socialtwitter`en voer .
    
 4. Selecteer **Opslaan**.   
 
 ## <a name="start-the-job"></a>Taak starten
 
-Er zijn een invoer-, query-en uitvoer taak opgegeven. U bent klaar om de Stream Analytics-taak te starten.
+Er worden een taakinvoer, query en uitvoer opgegeven. U bent klaar om de streamanalytics-taak te starten.
 
-1. Zorg ervoor dat de TwitterClientCore-toepassing wordt uitgevoerd. 
+1. Controleer of de TwitterClientCore-toepassing wordt uitgevoerd. 
 
-2. Selecteer **Start**in het taak overzicht.
+2. Selecteer **Start**in het taakoverzicht .
 
-3. Selecteer op de pagina **taak starten** voor de **Start tijd van de taak uitvoer**de optie **nu** en selecteer vervolgens **starten**.
+3. Selecteer Nu op de taakpagina **Start** voor **De uitvoer van taak**en selecteer **Nu** en selecteer **Vervolgens Start**.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
-Probeer het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
+Probeer ons Azure [Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)

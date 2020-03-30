@@ -1,73 +1,73 @@
 ---
-title: Wat zijn status meldingen van Azure service?
-description: Met service status meldingen kunt u service status berichten weer geven die zijn gepubliceerd door Microsoft Azure.
+title: Wat zijn Azure-servicestatusmeldingen?
+description: Met servicestatusmeldingen u servicestatusberichten bekijken die zijn gepubliceerd door Microsoft Azure.
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.openlocfilehash: e40538ac98bbc7b79311d4fb0da7568d56a84e18
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77653965"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Servicestatusmeldingen bekijken met de Azure-portal
 
-Service status meldingen worden gepubliceerd door Azure en bevatten informatie over de resources in uw abonnement. Deze meldingen zijn een subklasse van activiteiten logboek gebeurtenissen en kunnen ook worden gevonden in het activiteiten logboek. Service status meldingen kunnen informatie of actief zijn, afhankelijk van de klasse.
+Servicestatusmeldingen worden gepubliceerd door Azure en bevatten informatie over de bronnen onder uw abonnement. Deze meldingen zijn een subklasse van activiteitslogboekgebeurtenissen en zijn ook te vinden in het activiteitenlogboek. Servicestatusmeldingen kunnen informatief of bruikbaar zijn, afhankelijk van de klasse.
 
-Er zijn verschillende klassen van service status meldingen:  
+Er zijn verschillende klassen van service health meldingen:  
 
-- **Actie vereist:** Mogelijk ziet u dat er een ongebruikelijk probleem is opgetreden in uw account en hoe u dit kunt verhelpen. Azure stuurt u een melding, met een gedetailleerde beschrijving van de acties die u moet ondernemen of hoe u contact opneemt met Azure engineering of ondersteuning.  
-- **Incident:** Een gebeurtenis die van invloed is op de service, is momenteel van invloed op een of meer resources in uw abonnement.  
-- **Onderhoud:** Een geplande onderhouds activiteit die van invloed kan zijn op een of meer van de resources in uw abonnement.  
-- **Informatie:** Mogelijke optimalisaties die u kunnen helpen bij het verbeteren van het gebruik van resources. 
-- **Beveiliging:** Urgente beveiligings informatie met betrekking tot uw oplossingen die worden uitgevoerd op Azure.
+- **Vereiste actie:** Azure merkt mogelijk iets ongewoons op uw account en werkt met u samen om dit te verhelpen. Azure stuurt u een melding, waarin de acties worden beschreven die u moet uitvoeren of hoe u contact opnemen met Azure-engineering of -ondersteuning.  
+- **Incident:** Een gebeurtenis die gevolgen heeft voor de service, heeft momenteel invloed op een of meer van de bronnen in uw abonnement.  
+- **Onderhoud:** Een geplande onderhoudsactiviteit die van invloed kan zijn op een of meer van de resources onder uw abonnement.  
+- **Informatie:** Mogelijke optimalisaties die kunnen helpen bij het verbeteren van uw resourcegebruik. 
+- **Beveiliging:** Dringende beveiligingsgerelateerde informatie over uw oplossingen die op Azure worden uitgevoerd.
 
-Elke service status melding bevat details over het bereik en de invloed op uw resources. Details zijn onder andere:
+Elke servicestatusmelding bevat details over het bereik en de impact op uw resources. Details zijn onder meer:
 
 Naam van eigenschap | Beschrijving
 -------- | -----------
-detailhandelkanalen | Een van de volgende waarden: **beheerder** of **bewerking**.
-correlationId | Meestal een GUID in de teken reeks indeling. Gebeurtenissen die tot dezelfde actie behoren, delen meestal dezelfde correlatie.
+Kanalen | Een van de volgende waarden: **Beheerder** of **Bewerking**.
+correlationId | Meestal een GUID in de tekenreeksindeling. Gebeurtenissen die tot dezelfde actie behoren, hebben meestal dezelfde correlationId.
 eventDataId | De unieke id van een gebeurtenis.
-eventName | De titel van een gebeurtenis.
-niveau | Het niveau van een gebeurtenis
-resourceProviderName | De naam van de resource provider voor de betrokken resource.
-resourceType| Het type resource van de betrokken resource.
-subStatus | Doorgaans de HTTP-status code van de bijbehorende REST-aanroep, maar kan ook andere teken reeksen bevatten die een substatus beschrijven. Bijvoorbeeld: OK (HTTP-status code: 200), gemaakt (HTTP-status code: 201), geaccepteerd (HTTP-status code: 202), geen inhoud (HTTP-status code: 204), ongeldige aanvraag (HTTP-status code: 400), niet gevonden (HTTP-status code: 404), conflict (HTTP-status code: 409), interne server Fout (HTTP-status code: 500), service niet beschikbaar (HTTP-status code: 503) en time-out voor gateway (HTTP-status code: 504).
-eventTimestamp | Tijds tempel wanneer de gebeurtenis is gegenereerd door de Azure-service voor het verwerken van de aanvraag die overeenkomt met de gebeurtenis.
-submissionTimestamp | Tijds tempel wanneer de gebeurtenis beschikbaar werd voor het uitvoeren van query's.
-subscriptionId | Het Azure-abonnement waarin deze gebeurtenis is vastgelegd.
-status | De teken reeks die de status van de bewerking beschrijft. Enkele veelvoorkomende waarden zijn: **gestart**, **in uitvoering**, **geslaagd**, **mislukt**, **actief**en **opgelost**.
+gebeurtenisNaam | De titel van een evenement.
+niveau | Het niveau van een evenement
+resourceProviderName | De naam van de resourceprovider voor de getroffen resource.
+resourceType| Het type resource van de getroffen resource.
+subStatus | Meestal is de HTTP-statuscode van de bijbehorende REST-aanroep, maar kan ook andere tekenreeksen bevatten die een substatus beschrijven. Bijvoorbeeld: OK (HTTP-statuscode: 200), Gemaakt (HTTP-statuscode: 201), Geaccepteerd (HTTP-statuscode: 202), Geen inhoud (HTTP-statuscode: 204), Bad Request (HTTP-statuscode: 400), Niet gevonden (HTTP-statuscode: 404), Conflict (HTTP-statuscode: 409), Interne server Fout (HTTP-statuscode: 500), Service niet beschikbaar (HTTP-statuscode: 503) en gateway-time-out (HTTP-statuscode: 504).
+eventTimestamp | Tijdstempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis.
+indieningTijdstempel | Tijdstempel toen de gebeurtenis beschikbaar kwam voor query's.
+subscriptionId | Het Azure-abonnement waarin deze gebeurtenis is geregistreerd.
+status | Tekenreeks die de status van de bewerking beschrijft. Enkele algemene waarden zijn: **Gestart**, **In uitvoering**, **Geslaagd**, **Mislukt**, **Actief**en **Opgelost**.
 operationName | De naam van de bewerking.
-category | Deze eigenschap is altijd **ServiceHealth**.
-resourceId | De resource-ID van de betrokken resource.
-Eigenschappen. title | De gelokaliseerde titel voor deze communicatie. Engels is de standaard instelling.
-Eigenschappen. communicatie | De gelokaliseerde Details van de communicatie met HTML-opmaak. Engels is de standaard instelling.
-Properties.incidentType | Een van de volgende waarden: **handeling vereist**, **informatief**, **incident**, **onderhoud**of **beveiliging**.
-Properties.trackingId | Het incident waaraan deze gebeurtenis is gekoppeld. Gebruik deze om de gebeurtenissen met betrekking tot een incident te correleren.
-Properties.impactedServices | Een JSON-blob met escape-teken waarmee de services en regio's worden beschreven die worden beïnvloed door het incident. De eigenschap bevat een lijst met Services, elk met een **ServiceName**en een lijst met beïnvloede regio's, die elk een **regio**naam hebben.
+category | Deze accommodatie is altijd **ServiceHealth.**
+resourceId | De resource-id van de getroffen resource.
+Eigenschappen.titel | De gelokaliseerde titel voor deze mededeling. Engels is de standaard.
+Eigenschappen.communicatie | De gelokaliseerde details van de communicatie met HTML-markering. Engels is de standaard.
+Properties.incidentType | Een van de volgende waarden: **ActionRequired**, **Informational**, **Incident**, **Maintenance**, or **Security**.
+Properties.trackingId | Het incident waarmee deze gebeurtenis is gekoppeld. Gebruik dit om de gebeurtenissen met betrekking tot een incident te correleren.
+Properties.impactedServices | Een ontsnapte JSON-blob die de services en regio's beschrijft die door het incident zijn beïnvloed. De eigenschap bevat een lijst met services, die elk een **ServiceName**hebben, en een lijst met beïnvloede regio's, die elk een **RegioNaam**hebben.
 Properties.defaultLanguageTitle | De communicatie in het Engels.
-Properties.defaultLanguageContent | De communicatie in het Engels als HTML-opmaak of tekst zonder opmaak.
-Properties.stage | De mogelijke waarden voor **incidenten**en de **beveiliging** zijn **actief,** **opgelost** of **RCA**. Voor **handeling vereist** of **informatieve** is de enige waarde **actief.** Voor **onderhoud** zijn dit: **actief**, **gepland**, **InProgress**, **geannuleerd**, **opnieuw gepland**, **opgelost**of **voltooid**.
-Properties.communicationId | De communicatie waaraan deze gebeurtenis is gekoppeld.
+Properties.defaultLanguageContent | De communicatie in het Engels als HTML-markering of platte tekst.
+Eigenschappen.fase | De mogelijke waarden voor **Incident**en **Beveiliging** zijn **Actief,** **Opgelost** of **RCA**. Voor **ActionRequired** of **Informational** is de enige waarde **Actief.** Voor **onderhoud** zijn ze: **Actief**, **Gepland**, **InProgress**, **Geannuleerd**, **Opnieuw gepland,** **Opgelost**of **Voltooid**.
+Properties.communicationId | De communicatie waarmee deze gebeurtenis is gekoppeld.
 
-### <a name="details-on-service-health-level-information"></a>Details van informatie over het service status niveau
+### <a name="details-on-service-health-level-information"></a>Details over informatie over servicestatusniveau
 
-**Actie vereist** (eigenschappen. incidentType = = handeling vereist)
-- Informatief: beheerders actie is vereist om te voor komen dat de bestaande services worden beïnvloed.
+**Actie vereist** (properties.incidentType == ActieVereist)
+- Informatieve - Beheerdersactie is vereist om impact op bestaande services te voorkomen.
     
-**Onderhoud** (Properties. incidentType = = Maintenance)
-- Waarschuwing: nood onderhoud
-- Informatie-standaard gepland onderhoud
+**Onderhoud** (properties.incidentType == Onderhoud)
+- Waarschuwing - Noodonderhoud
+- Informatief - Standaard gepland onderhoud
 
-**Informatie** (Properties. incidentType = = Information)
-- Informatief: de beheerder kan worden verplicht om te voor komen dat de bestaande services worden beïnvloed.
+**Informatie** (properties.incidentType == Informatie)
+- Informatief - Beheerder kan worden verplicht om gevolgen voor bestaande services te voorkomen.
 
-**Beveiliging** (eigenschappen. incidentType = = beveiliging)
-- Waarschuwing: beveiligings advies die van invloed is op bestaande services en waarvoor beheerders actie kan worden uitgevoerd.
-- Informatief-beveiligings advies die van invloed is op bestaande services.
+**Beveiliging** (properties.incidentType == Beveiliging)
+- Waarschuwing - Beveiligingsadvies dat van invloed is op bestaande services en mogelijk beheerdersactie vereist.
+- Informatief - Beveiligingsadvies dat van invloed is op bestaande services.
 
-**Service problemen** (eigenschappen. incidentType = = incident)
-- Fout: algemene problemen bij het openen van meerdere services in meerdere regio's zijn van invloed op een grote set klanten.
-- Waarschuwing: problemen bij het openen van specifieke services en/of specifieke regio's zijn van invloed op een subset van klanten.
-- Informatie: problemen die invloed hebben op beheer bewerkingen en/of latentie, geen invloed op de beschik baarheid van de service.
+**Serviceproblemen** (properties.incidentType == Incident)
+- Fout - Wijdverbreide problemen die toegang hebben tot meerdere services in meerdere regio's hebben gevolgen voor een breed scala aan klanten.
+- Waarschuwing : problemen met de toegang tot specifieke services en/of specifieke regio's hebben gevolgen voor een subset van klanten.
+- Informatief - Problemen die van invloed zijn op beheeractiviteiten en/of latentie, die geen invloed hebben op de beschikbaarheid van de service.

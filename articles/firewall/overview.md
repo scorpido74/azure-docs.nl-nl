@@ -6,21 +6,21 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 02/26/2020
+ms.date: 03/17/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 5f1672b53fa9bd8c8126fefd092e1be78a844ab9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ed27097d29f3a10e708044ad7e2e30736e2c60e6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79241246"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79471843"
 ---
 # <a name="what-is-azure-firewall"></a>Wat is Azure Firewall?
 
 ![ICSA-certificering](media/overview/icsa-cert-firewall-small.png)
 
-Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-resources beschermt. Het is een volledig stateful firewall als een service met ingebouwde hoge Beschik baarheid en een onbeperkte schaal baarheid van de Cloud.
+Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-resources beschermt. Het is een volledig stateful firewall als een service met ingebouwde hoge beschikbaarheid en onbeperkte cloudschaalbaarheid.
 
 ![Firewalloverzicht](media/overview/firewall-threat.png)
 
@@ -30,22 +30,22 @@ Azure Firewall biedt de volgende functies:
 
 ## <a name="built-in-high-availability"></a>Ingebouwde hoge beschikbaarheid
 
-Hoge Beschik baarheid is ingebouwd, zodat er geen extra load balancers zijn vereist en er niets hoeft te worden geconfigureerd.
+Hoge beschikbaarheid is ingebouwd, dus er zijn geen extra load balancers nodig en er is niets dat u hoeft te configureren.
 
 ## <a name="availability-zones"></a>Beschikbaarheidszones
 
-Azure Firewall kunnen tijdens de implementatie worden geconfigureerd om meerdere Beschikbaarheidszones voor een hogere Beschik baarheid te beslaan. Met Beschikbaarheidszones wordt uw Beschik baarheid verhoogd tot 99,99% uptime. Zie de Azure Firewall- [Service Level Agreement (Sla)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/)voor meer informatie. De SLA voor de uptime van 99,99% wordt aangeboden wanneer er twee of meer Beschikbaarheidszones zijn geselecteerd.
+Azure Firewall kan tijdens de implementatie worden geconfigureerd om meerdere beschikbaarheidszones te omvatten voor een grotere beschikbaarheid. Met beschikbaarheidszones neemt uw beschikbaarheid toe tot 99,99% uptime. Zie de SLA (Azure Firewall [Service Level Agreement) voor](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/)meer informatie. De SLA van 99,99% wordt aangeboden wanneer twee of meer beschikbaarheidszones worden geselecteerd.
 
-U kunt Azure Firewall ook koppelen aan een specifieke zone, net om redenen voor nabijheid, met behulp van Service Standard 99,95% SLA.
+U Azure Firewall ook koppelen aan een specifieke zone alleen om nabijheidsredenen, met behulp van de servicestandaard 99,95% SLA.
 
-Er zijn geen extra kosten verbonden aan een firewall die is geïmplementeerd in een beschikbaarheids zone. Er zijn echter extra kosten voor inkomende en uitgaande gegevens overdrachten die zijn gekoppeld aan Beschikbaarheidszones. Zie [prijs informatie voor band breedte](https://azure.microsoft.com/pricing/details/bandwidth/)voor meer informatie.
+Er zijn geen extra kosten verbonden aan een firewall die is geïmplementeerd in een beschikbaarheidszone. Er zijn echter extra kosten verbonden aan inkomende en uitgaande gegevensoverdrachten die zijn gekoppeld aan beschikbaarheidszones. Zie [Details van de bandbreedteprijzen](https://azure.microsoft.com/pricing/details/bandwidth/)voor meer informatie.
 
-Azure Firewall Beschikbaarheidszones zijn beschikbaar in regio's die ondersteuning bieden voor Beschikbaarheidszones. Zie [Wat zijn Beschikbaarheidszones in azure?](../availability-zones/az-overview.md#services-support-by-region) voor meer informatie.
+Azure Firewall Availability Zones zijn beschikbaar in regio's die beschikbaarheidszones ondersteunen. Zie [Wat zijn beschikbaarheidszones in Azure voor](../availability-zones/az-overview.md#services-support-by-region) meer informatie?
 
 > [!NOTE]
-> Beschikbaarheidszones kan alleen worden geconfigureerd tijdens de implementatie. U kunt een bestaande firewall niet configureren om Beschikbaarheidszones op te kunnen bevatten.
+> Beschikbaarheidszones kunnen alleen worden geconfigureerd tijdens de implementatie. U een bestaande firewall niet zo configureren als beschikbaarheidszones.
 
-Zie [Wat zijn Beschikbaarheidszones in azure?](../availability-zones/az-overview.md) voor meer informatie over Beschikbaarheidszones.
+Zie [Wat zijn beschikbaarheidszones in Azure voor](../availability-zones/az-overview.md) meer informatie over beschikbaarheidszones?
 
 ## <a name="unrestricted-cloud-scalability"></a>Onbeperkte cloudschaalbaarheid
 
@@ -53,7 +53,7 @@ U kunt Azure Firewall omhoog schalen zoveel als nodig is om te voldoen aan veran
 
 ## <a name="application-fqdn-filtering-rules"></a>Regels voor het filteren van de FQDN van toepassingen
 
-U kunt uitgaande HTTP/S-verkeer of Azure SQL-verkeer (preview) beperken tot een opgegeven lijst met FQDN-namen (FULLy Qualified Domain names), inclusief joker tekens. Voor deze functie is geen SSL-beëindiging vereist.
+U uitgaand HTTP/S-verkeer of Azure SQL-verkeer (voorbeeld) beperken tot een opgegeven lijst met volledig gekwalificeerde domeinnamen (FQDN) inclusief wildcards. Deze functie vereist geen SSL-beëindiging.
 
 ## <a name="network-traffic-filtering-rules"></a>Regels voor het filteren van netwerkverkeer
 
@@ -65,30 +65,30 @@ Met FQDN-tags kunt u eenvoudig bekend netwerkverkeer voor Azure-services toestaa
 
 ## <a name="service-tags"></a>Servicetags
 
-Een servicetag vertegenwoordigt een groep IP-adresvoorvoegsels die het maken van beveiligingsregel vereenvoudigt. U kunt geen eigen servicetag maken en opgeven welke IP-adressen zijn opgenomen in een tag. Microsoft beheert de adresvoorvoegsels die de servicetag omvat en werkt de servicetag automatisch bij wanneer adressen veranderen.
+Een servicetag vertegenwoordigt een groep IP-adresvoorvoegsels die het maken van beveiligingsregel vereenvoudigt. U geen eigen servicetag maken en u ook niet opgeven welke IP-adressen in een tag zijn opgenomen. Microsoft beheert de adresvoorvoegsels die de servicetag omvat en werkt de servicetag automatisch bij wanneer adressen veranderen.
 
 ## <a name="threat-intelligence"></a>Informatie over bedreigingen
 
-Op bedreigingen gebaseerd filteren kan worden ingeschakeld voor uw firewall om verkeer van/naar bekende schadelijke IP-adressen en domeinen te Signa lering en te weigeren. De IP-adressen en domeinen zijn afkomstig van de micro soft Threat Intelligence-feed.
+Filtering op basis van bedreigingsinformatie kan worden ingeschakeld voor uw firewall om verkeer van/naar bekende kwaadaardige IP-adressen en domeinen te waarschuwen en te weigeren. De IP-adressen en domeinen zijn afkomstig uit de Microsoft Threat Intelligence-feed.
 
 ## <a name="outbound-snat-support"></a>Ondersteuning voor uitgaande SNAT
 
-Alle uitgaande IP-adressen van virtueel netwerkverkeer worden geconverteerd naar de openbare IP van Azure Firewall (Source Network Address Translation). U kunt verkeer dat afkomstig is uit uw virtuele netwerk naar externe internetbestemmingen identificeren en toestaan. Azure Firewall geen SNAT wanneer de doel-IP een privé-IP-bereik is per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). 
+Alle uitgaande IP-adressen van virtueel netwerkverkeer worden geconverteerd naar de openbare IP van Azure Firewall (Source Network Address Translation). U kunt verkeer dat afkomstig is uit uw virtuele netwerk naar externe internetbestemmingen identificeren en toestaan. Azure Firewall is niet SNAT wanneer het doel-IP een privé-IP-bereik is per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). 
 
-Als uw organisatie gebruikmaakt van een openbaar IP-adres bereik voor particuliere netwerken, verkrijgt Azure Firewall het verkeer naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet. U kunt Azure Firewall zodanig configureren dat uw open bare IP-adres bereik **niet** kan worden gesnat. Zie [Azure firewall SNAT-particuliere IP-adresbereiken](snat-private-range.md)voor meer informatie.
+Als uw organisatie een openbaar IP-adresbereik gebruikt voor privénetwerken, wordt Het verkeer naar een van de privé-IP-adressen van firewalls in AzureFirewallSubnet weergegeven. U Azure Firewall configureren om **niet** uw openbare IP-adresbereik van SNAT te maken. Zie [Azure Firewall SNAT private IP-adresbereiken voor](snat-private-range.md)meer informatie.
 
 ## <a name="inbound-dnat-support"></a>Ondersteuning voor inkomende DNAT
 
-Binnenkomend Internet netwerk verkeer naar uw firewall openbaar IP-adres is vertaald (netwerkadresomzetting) en gefilterd op de privé-IP-adressen in uw virtuele netwerken.
+Binnenkomend internetnetwerkverkeer naar uw firewall openbaar IP-adres wordt vertaald (Destination Network Address Translation) en gefilterd naar de privé IP-adressen op uw virtuele netwerken.
 
-## <a name="multiple-public-ip-addresses"></a>Meerdere open bare IP-adressen
+## <a name="multiple-public-ip-addresses"></a>Meerdere openbare IP-adressen
 
-U kunt meerdere open bare IP-adressen (Maxi maal 100) koppelen aan uw firewall.
+U meerdere openbare IP-adressen (tot 100) koppelen aan uw firewall.
 
-Hiermee worden de volgende scenario's ingeschakeld:
+Dit maakt de volgende scenario's mogelijk:
 
-- **DNAT** : u kunt meerdere exemplaren van de standaard poort naar uw back-endservers omzetten. Als u bijvoorbeeld twee open bare IP-adressen hebt, kunt u TCP-poort 3389 (RDP) voor beide IP-adressen omzetten.
-- **SNAT** : er zijn extra poorten beschikbaar voor uitgaande SNAT-verbindingen, waardoor de kans op een SNAT-poort ontstaat. Op dit moment Azure Firewall het open bare IP-adres van de bron wille keurig selecteren dat moet worden gebruikt voor een verbinding. Als u een stroomafwaarts filter op uw netwerk hebt, moet u alle open bare IP-adressen die zijn gekoppeld aan uw firewall toestaan.
+- **DNAT** - U meerdere standaardpoortexemplaren vertalen naar uw backendservers. Als u bijvoorbeeld twee openbare IP-adressen hebt, u TCP-poort 3389 (RDP) voor beide IP-adressen vertalen.
+- **SNAT** - Er zijn extra poorten beschikbaar voor uitgaande SNAT-verbindingen, waardoor de kans op snat-poortuitputting wordt verminderd. Op dit moment selecteert Azure Firewall willekeurig het openbare IP-adres van de bron dat moet worden gebruikt voor een verbinding. Als u downstreamfiltering op uw netwerk hebt, moet u alle openbare IP-adressen toestaan die aan uw firewall zijn gekoppeld.
 
 ## <a name="azure-monitor-logging"></a>Logboekregistratie van Azure Monitor
 
@@ -96,7 +96,7 @@ Alle gebeurtenissen zijn geïntegreerd met Azure Monitor, zodat u logboeken kunt
 
 ## <a name="certifications"></a>Certificeringen
 
-Azure Firewall is Payment Card Industry (PCI), service organisatie Controls (SOC), International Organization for Standardization (ISO) en ICSA Labs-compatibel. Zie [Azure firewall nalevings certificeringen](compliance-certifications.md)voor meer informatie.
+Azure Firewall is Pci (Payment Card Industry), Service Organization Controls (SOC), International Organization for Standardization (ISO) en ICSA Labs compliant. Zie [Azure Firewall-nalevingscertificeringen](compliance-certifications.md)voor meer informatie.
 
 
 ## <a name="known-issues"></a>Bekende problemen
@@ -105,19 +105,20 @@ Azure Firewall heeft de volgende bekende problemen:
 
 |Probleem  |Beschrijving  |Oplossing  |
 |---------|---------|---------|
-Netwerkfilterregels voor niet-TCP/UDP-protocollen (bijvoorbeeld ICMP) werken niet voor internetverkeer|Netwerkfilterregels voor niet-TCP/UDP-protocollen werken niet met SNAT naar uw openbare IP-adres. Niet-TCP/UDP-protocollen worden ondersteund tussen spoke-subnetten en VNets.|Azure Firewall maakt gebruik van de standaardversie van Standard Load Balancer, [die momenteel geen ondersteuning biedt voor SNAT voor IP-protocollen](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview). We verkennen opties om dit scenario in een toekomstige versie te ondersteunen.|
-|Ontbrekende PowerShell- en CLI-ondersteuning voor ICMP|Azure PowerShell en CLI bieden geen ondersteuning voor ICMP als een geldig protocol in netwerkregels.|Het is nog steeds mogelijk om ICMP als protocol te gebruiken via de portal en de REST API. We werken binnenkort met het toevoegen van ICMP in Power shell en CLI.|
-|FQDN-tags vereisen instelling van een protocol: poort|Voor toepassings regels met FQDN-Tags is poort: protocol definitie vereist.|U kunt **https** gebruiken als de waarde voor poort:protocol. We werken samen om dit veld optioneel te maken wanneer FQDN-labels worden gebruikt.|
-|Het verplaatsen van een firewall naar een andere resource groep of een ander abonnement wordt niet ondersteund|Het is niet mogelijk om een firewall te verplaatsen naar een andere resource groep of een ander abonnement.|Ondersteuning van deze functionaliteit staat op de planning. Om een firewall naar een andere resourcegroep of ander abonnement verplaatsen, moet u het huidige exemplaar verwijderen en deze vervolgens opnieuw maken in de nieuwe resourcegroep of het nieuwe abonnement.|
-|Waarschuwingen over Threat Intelligence kunnen gemaskerd worden|Netwerk regels met het doel 80/443 voor uitgaande filtering maskes Threat Intelligence-waarschuwingen wanneer deze zijn geconfigureerd voor de modus alleen-waarschuwingen.|Maak uitgaande filtering voor 80/443 met behulp van toepassings regels. Of wijzig de Threat Intelligence-modus in **waarschuwing en weigeren**.|
-|Azure Firewall gebruikt alleen Azure DNS voor naam omzetting|Azure Firewall herstelt FQDN alleen met behulp van Azure DNS. Een aangepaste DNS-server wordt niet ondersteund. Er is geen invloed op de DNS-omzetting op andere subnetten.|We werken eraan om deze beperking te versoepelen.|
-|Azure Firewall SNAT/DNAT werkt niet voor particuliere IP-doelen|Azure Firewall-ondersteuning voor SNAT/DNAT is beperkt tot uitstaand Internet/inkomend verkeer. SNAT/DNAT werkt momenteel niet voor particuliere IP-doelen. Bijvoorbeeld: spoke to spoke.|Dit is een huidige beperking.|
-|Kan de eerste open bare IP-configuratie niet verwijderen|Elk Azure Firewall openbaar IP-adres wordt toegewezen aan een *IP-configuratie*.  De eerste IP-configuratie wordt toegewezen tijdens de implementatie van de firewall en bevat doorgaans een verwijzing naar het subnet van de firewall (tenzij expliciet anders is geconfigureerd via een sjabloon implementatie). U kunt deze IP-configuratie niet verwijderen omdat hiermee de firewall opnieuw wordt toegewezen. U kunt het open bare IP-adres dat is gekoppeld aan deze IP-configuratie, nog steeds wijzigen of verwijderen als de firewall ten minste één ander openbaar IP-adres beschikbaar is voor gebruik.|Dit is standaard.|
-|Beschikbaarheids zones kunnen alleen worden geconfigureerd tijdens de implementatie.|Beschikbaarheids zones kunnen alleen worden geconfigureerd tijdens de implementatie. U kunt Beschikbaarheidszones niet configureren nadat er een firewall is geïmplementeerd.|Dit is standaard.|
-|SNAT op binnenkomende verbindingen|Naast DNAT worden verbindingen via het open bare IP-adres van de firewall (inkomend) omgezet op een van de privé Ip's van de firewall. Deze vereiste is vandaag (ook voor actieve/actieve Nva's) om symmetrische route ring te garanderen.|Als u de oorspronkelijke bron voor HTTP/S wilt behouden, kunt u [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) -headers gebruiken. Gebruik bijvoorbeeld een service zoals [Azure front deur](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) of [Azure-toepassing gateway](../application-gateway/rewrite-http-headers.md) vóór de firewall. U kunt ook WAF toevoegen als onderdeel van Azure front deur en keten aan de firewall.
-|SQL FQDN-filtering alleen ondersteuning in proxy modus (poort 1433)|Voor Azure SQL Database, Azure SQL Data Warehouse en Azure SQL Managed instance:<br><br>Tijdens de preview wordt SQL FQDN-filtering alleen ondersteund in de proxy modus (poort 1433).<br><br>Voor Azure SQL IaaS:<br><br>Als u werkt met niet-standaard poorten, kunt u die poorten opgeven in de toepassings regels.|Voor SQL in de omleidings modus, wat de standaard instelling is als u vanuit Azure verbinding maakt, kunt u in plaats daarvan de toegang filteren met behulp van de SQL-service-tag als onderdeel van Azure Firewall netwerk regels.
-|Uitgaand verkeer op TCP-poort 25 is niet toegestaan| Uitgaande SMTP-verbindingen die gebruikmaken van TCP-poort 25 worden geblokkeerd. Poort 25 wordt hoofd zakelijk gebruikt voor niet-geverifieerde e-mail bezorging. Dit is het standaard platform gedrag voor virtuele machines. Zie meer problemen [met uitgaande SMTP-connectiviteit oplossen in azure](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)voor meer informatie. Maar in tegens telling tot virtuele machines is het momenteel niet mogelijk om deze functionaliteit in te scha kelen op Azure Firewall.|Volg de aanbevolen methode voor het verzenden van e-mail zoals beschreven in het artikel problemen oplossen met SMTP. U kunt ook de virtuele machine uitsluiten waarvoor uitgaande SMTP-toegang is vereist van uw standaard route naar de firewall, en in plaats daarvan de uitgaande toegang rechtstreeks op Internet configureren.
-|Actieve FTP wordt niet ondersteund|Active FTP is uitgeschakeld op Azure Firewall om te beschermen tegen aanvallen met FTP-beveiliging met de opdracht FTP-poort.|U kunt in plaats daarvan passieve FTP gebruiken. U moet nog steeds expliciet TCP-poorten 20 en 21 openen op de firewall.
+Netwerkfilterregels voor niet-TCP/UDP-protocollen (bijvoorbeeld ICMP) werken niet voor internetverkeer|Netwerkfilterregels voor niet-TCP/UDP-protocollen werken niet met SNAT naar uw openbare IP-adres. Niet-TCP/UDP-protocollen worden ondersteund tussen spoke-subnetten en VNets.|Azure Firewall maakt gebruik van de standaardversie van Standard Load Balancer, [die momenteel geen ondersteuning biedt voor SNAT voor IP-protocollen](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview). We verkennen opties om dit scenario te ondersteunen in een toekomstige release.|
+|Ontbrekende PowerShell- en CLI-ondersteuning voor ICMP|Azure PowerShell en CLI ondersteunen ICMP niet als een geldig protocol in netwerkregels.|Het is nog steeds mogelijk om ICMP als protocol te gebruiken via de portal en de REST API. We werken eraan om binnenkort ICMP toe te voegen aan PowerShell en CLI.|
+|FQDN-tags vereisen instelling van een protocol: poort|Toepassingsregels met FQDN-tags vereisen poort: protocoldefinitie.|U kunt **https** gebruiken als de waarde voor poort:protocol. We werken eraan om dit veld optioneel te maken wanneer FQDN-tags worden gebruikt.|
+|Een firewall verplaatsen naar een andere brongroep of abonnement wordt niet ondersteund|Een firewall verplaatsen naar een andere brongroep of -abonnement wordt niet ondersteund.|Ondersteuning van deze functionaliteit staat op de planning. Om een firewall naar een andere resourcegroep of ander abonnement verplaatsen, moet u het huidige exemplaar verwijderen en deze vervolgens opnieuw maken in de nieuwe resourcegroep of het nieuwe abonnement.|
+|Waarschuwingen voor bedreigingsinformatie kunnen worden gemaskeerd|Netwerkregels met bestemming 80/443 voor uitgaande filtering maskers threat intelligence alerts wanneer geconfigureerd om alleen te waarschuwen modus.|Maak uitgaande filtering voor 80/443 met behulp van toepassingsregels. Of wijzig de modus bedreigingsinformatie in **Waarschuwen en Weigeren.**|
+|Azure Firewall gebruikt Azure DNS alleen voor naamomzetting|Azure Firewall lost alleen FQDN's op met Azure DNS. Een aangepaste DNS-server wordt niet ondersteund. Er is geen invloed op DNS-resolutie op andere subnetten.|We werken eraan om deze beperking te versoepelen.|
+|Azure Firewall SNAT/DNAT werkt niet voor privé-IP-bestemmingen|Azure Firewall SNAT/DNAT-ondersteuning is beperkt tot internetuitgangen/binnendringen. SNAT/DNAT werkt momenteel niet voor privé IP-bestemmingen. Bijvoorbeeld, sprak met het woord.|Dit is een huidige beperking.|
+|Kan eerste openbare IP-configuratie niet verwijderen|Elk openbaar IP-adres van Azure Firewall is toegewezen aan een *IP-configuratie.*  De eerste IP-configuratie wordt toegewezen tijdens de firewall-implementatie en bevat meestal ook een verwijzing naar het firewallsubnet (tenzij expliciet anders geconfigureerd via een sjabloonimplementatie). U deze IP-configuratie niet verwijderen omdat deze de firewall zou de-toewijzen. U nog steeds het openbare IP-adres wijzigen of verwijderen dat aan deze IP-configuratie is gekoppeld als de firewall ten minste één ander openbaar IP-adres beschikbaar heeft om te gebruiken.|Dit is standaard.|
+|Beschikbaarheidszones kunnen alleen worden geconfigureerd tijdens de implementatie.|Beschikbaarheidszones kunnen alleen worden geconfigureerd tijdens de implementatie. U beschikbaarheidszones niet configureren nadat een firewall is geïmplementeerd.|Dit is standaard.|
+|SNAT op binnenkomende verbindingen|Naast DNAT zijn verbindingen via het openbare IP-adres van de firewall (binnenkomend) gekoppeld aan een van de firewall private IP's. Deze eis vandaag (ook voor Actieve/Actieve NVA's) om symmetrische routing te garanderen.|Als u de oorspronkelijke bron voor HTTP/S wilt behouden, u [XFF-headers](https://en.wikipedia.org/wiki/X-Forwarded-For) gebruiken. Gebruik bijvoorbeeld een service zoals [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend) of Azure Application [Gateway](../application-gateway/rewrite-http-headers.md) voor de firewall. U WAF ook toevoegen als onderdeel van Azure Front Door en chain aan de firewall.
+|ONDERSTEUNING voor SQL FQDN-filtering alleen in de proxymodus (poort 1433)|Voor Azure SQL Database, Azure SQL Data Warehouse en Azure SQL Managed Instance:<br><br>Tijdens de preview wordt SQL FQDN-filtering alleen in proxy-modus ondersteund (poort 1433).<br><br>Voor Azure SQL IaaS:<br><br>Als u niet-standaardpoorten gebruikt, u deze poorten opgeven in de toepassingsregels.|Voor SQL in omleidingsmodus, de standaardverbinding als u verbinding maakt vanuit Azure, u in plaats daarvan toegang filteren met behulp van de SQL-servicetag als onderdeel van Azure Firewall-netwerkregels.
+|Uitgaand verkeer op TCP-poort 25 is niet toegestaan| Uitgaande SMTP-verbindingen die TCP-poort 25 gebruiken, worden geblokkeerd. Poort 25 wordt voornamelijk gebruikt voor niet-geverifieerde e-mailbezorging. Dit is het standaardplatformgedrag voor virtuele machines. Zie meer problemen [met uitgaande SMTP-connectiviteit in Azure](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)voor meer informatie. In tegenstelling tot virtuele machines is het momenteel echter niet mogelijk om deze functionaliteit in te schakelen op Azure Firewall.|Volg de aanbevolen methode om e-mail te verzenden zoals gedocumenteerd in het artikel over probleemoplossing voor SMTP. Of sluit de virtuele machine uit die uitgaande SMTP-toegang nodig heeft van uw standaardroute naar de firewall en configureer in plaats daarvan uitgaande toegang rechtstreeks naar het internet.
+|Actieve FTP wordt niet ondersteund|Active FTP is uitgeschakeld op Azure Firewall om te beschermen tegen FTP-bounceaanvallen met de opdracht FTP-poort.|U in plaats daarvan Passieve FTP gebruiken. U moet nog steeds expliciet TCP-poorten 20 en 21 op de firewall openen.
+|SNAT-poortgebruiksstatistiek toont 0%|De azure firewall SNAT-poortgebruiksstatistiek kan het gebruik van 0% weergeven, zelfs wanneer SNAT-poorten worden gebruikt. In dit geval geeft het gebruik van de statistiek als onderdeel van de statistiek firewallstatus een onjuist resultaat.|Dit probleem is opgelost en de uitrol naar de productie is gericht voor mei 2020. In sommige gevallen lost firewall-herschikking het probleem op, maar het is niet consistent. Als tussenoplossing gebruikt u alleen de status van de firewall om te zoeken naar *status=gedegradeerd*, niet voor *status=ongezond*. Port uitputting zal worden weergegeven als *gedegradeerd*. *Niet gezond* is gereserveerd voor toekomstig gebruik wanneer de meer statistieken zijn die van invloed zijn op de firewallstatus. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

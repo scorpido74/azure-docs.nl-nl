@@ -1,43 +1,42 @@
 ---
-title: Contact gegevens voor een Power BI-app-aanbieding | Azure Marketplace
-description: Velden voor contact personen configureren voor een Power BI app-aanbieding voor de Microsoft AppSource Marketplace.
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+title: Contactgegevens voor een Power BI-app-aanbieding | Azure Marketplace
+description: Velden contactpersonen configureren voor een Power BI-app-aanbieding voor de Microsoft AppSource Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: ec1ed23b253f705e1830c1c014492fe52b2133f0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 79cdd12359a0d781b51db2632bc9d534e0d88c6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826527"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285228"
 ---
-# <a name="power-bi-app-contacts-tab"></a>Tabblad Power BI app-contact personen
+# <a name="power-bi-app-contacts-tab"></a>Tabblad Contactpersonen van Power BI-app
 
-Gebruik het tabblad **contact personen** van de pagina **nieuw aanbod** om technische en gebruikers ondersteunings bronnen voor uw aanbieding te bieden. Het is onderverdeeld in twee secties: **technische** en **klant ondersteuning**.
+Gebruik het tabblad **Contactpersonen** van de pagina **Nieuwe aanbieding** om technische en gebruikersondersteuningsbronnen voor uw aanbieding te bieden. Het is verdeeld in twee secties: **Engineering** en **Customer Support**.
 
 ![Tabblad Contactpersonen](media/contacts-tab.png)
 
 
-## <a name="contacts-fields"></a>Velden voor contact personen 
+## <a name="contacts-fields"></a>Velden contactpersonen 
 
-In de volgende tabel wordt het doel van elk veld beschreven.  Vereiste velden worden gedicteerd door een asterisk (*). 
+In de volgende tabel wordt het doel van elk veld beschreven.  Vereiste velden worden aangeklaagd door een sterretje (*). 
 
 |   Veld               |   Beschrijving                                                            |
 |-----------------------|--------------------------------------------------------------------------|
-| *Technische contact persoon* | Fungeert als technische contact persoon tussen AppSource en uw organisatie.    |
-| **Naam\***              | De naam van de persoon of groep die als technische of technisch ondersteuning fungeert. |
-| **E-mail\***             | Het e-mail adres van deze technische contact persoon.                                  |
-| **Telefoon\***             | Het telefoon nummer van de technische ondersteuning.                                       |
-| *Contact opnemen met ondersteuning*     | Ontvangt ondersteunings tickets die zijn geopend door klanten in AppSource.            |
-| **Naam\***              | De naam van de persoon of groep die fungeert als klant ondersteuning.              |
-| **E-mail\***             | Het e-mail adres van de klant ondersteuning.                                        |
+| *Contactpersoon voor engineering* | Dient als technisch contact tussen AppSource en uw organisatie.    |
+| **Naam\***              | De naam van de persoon of groep die fungeert als technische of technische ondersteuning. |
+| **Email\***             | Het e-mailadres van dit technische contact.                                  |
+| **Telefoon\***             | Het telefoonnummer van de technische ondersteuning.                                       |
+| *Contactpersoon voor ondersteuning*     | Ontvangt ondersteuningstickets die door klanten binnen AppSource zijn geopend.            |
+| **Naam\***              | De naam van de persoon of groep die fungeert als klantenservice.              |
+| **Email\***             | Het e-mailadres van de klantenservice.                                        |
 |   |   |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u uw Power BI app-aanbieding hebt voltooid, bevestigt u dat u alle bijbehorende [technische activa](./cpp-create-technical-assets.md) voor de aanbieding hebt gemaakt.
+Nadat u uw Power BI-app-aanbieding hebt voltooid, bevestigt u dat u alle bijbehorende [technische elementen](./cpp-create-technical-assets.md) voor de aanbieding hebt gemaakt.

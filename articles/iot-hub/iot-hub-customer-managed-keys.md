@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub gegevens versleuteling op rest via door de klant beheerde sleutels | Microsoft Docs
+title: Azure IoT Hub-gegevensversleuteling in rust via door de klant beheerde sleutels| Microsoft Documenten
 description: Versleuteling van gegevens in rust met door de klant beheerde sleutels voor IoT Hub
 author: ash2017
 manager: briz
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: asrastog
 ms.openlocfilehash: 609f68c79159c4ce17468fc1df13c0c9eae7f211
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79370573"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-iot-hub"></a>Versleuteling van gegevens in rust met door de klant beheerde sleutels voor IoT Hub
 
-IoT Hub ondersteunt versleuteling van gegevens in rust met door de klant beheerde sleutels (CMK), ook wel bekend als uw eigen sleutel (BYOK), ondersteuning voor Azure IoT Hub. Azure IoT Hub voorziet in het versleutelen van gegevens in rust en onderweg. IoT Hub maakt standaard gebruik van door micro soft beheerde sleutels om de gegevens te versleutelen. Met CMK-ondersteuning hebben klanten nu de keuze om de gegevens in rust te versleutelen met een sleutel coderings sleutel, die wordt beheerd door de klanten, met behulp van de [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+IoT Hub ondersteunt versleuteling van gegevens in rust met door de klant beheerde sleutels (CMK), ook wel bekend als Bring your own key (BYOK), ondersteuning voor Azure IoT Hub. Azure IoT Hub biedt versleuteling van gegevens in rust en onderweg. Standaard gebruikt IoT Hub door Microsoft beheerde sleutels om de gegevens te versleutelen. Met CMK-ondersteuning hebben klanten nu de keuze om de gegevens in rust te versleutelen met een sleutelversleutelingssleutel, beheerd door de klanten, met behulp van de [Azure Key Vault.](https://azure.microsoft.com/services/key-vault/)
 
-Voor deze functie is het maken van een nieuwe IoT Hub (Basic-of Standard-laag) vereist in een van de volgende regio's: VS-Oost, VS-West 2, Zuid-Centraal VS of US Gov. Neem contact met ons op via [micro soft ondersteuning](https://azure.microsoft.com/support/create-ticket/)als u deze mogelijkheid wilt proberen. Deel uw bedrijfs naam en abonnements-ID wanneer u contact opneemt met micro soft ondersteuning.
+Deze mogelijkheid vereist de creatie van een nieuwe IoT Hub (basis- of standaardlaag), in een van de volgende regio's: Oost-VS, West US 2, South Central US of US Gov. Neem contact met ons op via [Microsoft-ondersteuning](https://azure.microsoft.com/support/create-ticket/)om deze mogelijkheid uit te proberen. Deel uw bedrijfsnaam en abonnements-ID wanneer u contact opneemt met Microsoft-ondersteuning.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
-title: 'SAP on Azure: welke SAP-software wordt ondersteund op Azure'
-description: Legt uit wat SAP-software wordt ondersteund voor implementatie in azure
+title: 'SAP op Azure: welke SAP-software wordt ondersteund op Azure'
+description: Legt uit welke SAP-software wordt ondersteund om te worden geïmplementeerd op Azure
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -13,128 +13,131 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
+ms.date: 03/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08852a9421d714b601d724c5309153a028c960bb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f0aaa13ff4d3331378cc17cd0cde29be43822397
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599078"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460786"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Welke SAP-software wordt ondersteund voor Azure-implementaties
-In dit artikel wordt beschreven hoe u kunt zien welke SAP-software wordt ondersteund voor Azure-implementaties en wat de nood zakelijke releases van het besturings systeem of DBMS-releases zijn.
+In dit artikel wordt beschreven hoe u achterhalen welke SAP-software wordt ondersteund voor Azure-implementaties en wat de benodigde releases van het besturingssysteem of DBMS-releases zijn.
 
-Evalueren of uw huidige SAP-software wordt ondersteund en welk besturings systeem en DBMS-releases worden ondersteund met uw SAP-software in azure, hebt u toegang nodig tot:
+Evalueren, of uw huidige SAP-software wordt ondersteund en welke OS- en DBMS-releases worden ondersteund met uw SAP-software in Azure, u hebt toegang nodig tot:
 
-- SAP-ondersteunings opmerkingen
-- SAP-product beschikbaarheids matrix
-
-
-
-## <a name="general-restrictions-for-sap-workload"></a>Algemene beperkingen voor SAP-workload
-Azure IaaS-services die voor SAP-workloads kunnen worden gebruikt, zijn beperkt tot x86-64-of x64-hardware. Er zijn geen sparc-of Power CPU-aanbiedingen die van toepassing zijn op SAP-workloads. Klanten die werken met hun toepassingen op besturings systemen die eigendom zijn van hardware architecturen zoals IBM mainframe of AS400, of waar de besturings systemen HP-UX, Solaris of AIX worden gebruikt, moeten hun SAP-toepassingen, waaronder DBMS, wijzigen in een van de volgende besturings systemen:
-
-- Windows Server 64-bits voor het x86-64-platform
-- SUSE Linux 64-bits voor het x86-64-platform
-- Red Hat Linux 64-bits voor het x86-64-platform
-- Oracle Linux 64-bits voor het x86-64-platform
-
-In combi natie met SAP-software worden geen andere versies van het besturings systeem of Linux-distributies ondersteund. De exacte details van specifieke versies en cases worden verderop in het document beschreven.
+- OPMERKINGEN voor SAP-ondersteuning
+- SAP-productbeschikbaarheid Matrix
 
 
-## <a name="you-start-here"></a>U begint hier
-Het uitgangs punt voor u is [SAP-ondersteunings notitie #1928533](https://launchpad.support.sap.com/#/notes/1928533). Wanneer u deze SAP-notitie van boven naar beneden door lopen, worden er verschillende gebieden van ondersteunde software en virtuele machines weer gegeven
 
-De eerste sectie bevat de minimale vereisten voor de besturingssysteem versies die worden ondersteund door SAP-software in azure Vm's in het algemeen. Als u niet voldoet aan deze minimale vereisten en oudere versies van deze besturings systemen uitvoert, moet u de versie van het besturings systeem upgraden naar een dergelijke minimale release of nog een aantal recente releases. Het is juist dat Azure in het algemeen oudere releases van sommige van deze besturings systemen ondersteunt. Maar de vermelde beperkingen of minimum releases zijn gebaseerd op testen en kwalificaties die worden uitgevoerd en die niet meer zullen worden uitgebreid. 
+## <a name="general-restrictions-for-sap-workload"></a>Algemene beperkingen voor SAP-werkbelasting
+Azure IaaS-services die kunnen worden gebruikt voor SAP-workload zijn beperkt tot x86-64- of x64-hardware. Er zijn geen Sparc- of Power CPU-aanbiedingen die van toepassing zijn op SAP-workload. Klanten die hun applicaties draaien op besturingssystemen die eigendom zijn van hardwarearchitecturen zoals IBM mainframe of AS400, of waar de besturingssystemen HP-UX, Solaris of AIX in gebruik zijn, moeten hun SAP-toepassingen, waaronder DBMS, wijzigen in een van de volgende besturingssystemen:
+
+- Windows server 64bit voor het x86-64-platform
+- SUSE linux 64bit voor het x86-64 platform
+- Red hat Linux 64Bit voor het x86-64 platform
+- Oracle Linux 64bit voor het x86-64 platform
+
+In combinatie met SAP-software worden geen andere OS-releases of Linux-distributies ondersteund. Exacte details over specifieke versies en aanvragen worden later in het document gedocumenteerd.
+
+
+## <a name="you-start-here"></a>Je begint hier
+Het uitgangspunt voor u is [SAP support note #1928533.](https://launchpad.support.sap.com/#/notes/1928533) Als u deze SAP-notitie van boven naar beneden doorloopt, worden verschillende gebieden van ondersteunde software en VM's weergegeven
+
+In het eerste gedeelte worden de minimumvereisten weergegeven voor het uitvoeren van releases die worden ondersteund met SAP-software in Azure VM's in het algemeen. Als u deze minimumvereisten niet bereikt en oudere versies van deze besturingssystemen uitvoert, moet u uw os-release upgraden naar een dergelijke minimale release of zelfs recentere releases. Het is juist dat Azure in het algemeen oudere versies van sommige van die besturingssystemen zou ondersteunen. Maar de beperkingen of minimale releases zoals vermeld zijn gebaseerd op tests en kwalificaties uitgevoerd en zijn niet van plan om verder terug worden uitgebreid. 
 
 
 > [!NOTE]
->Er zijn enkele specifieke VM-typen, HANA grote instanties of SAP-workloads die meer recente versies van het besturings systeem zullen vereisen. Gevallen zoals die worden vermeld in het hele document. Dergelijke gevallen worden duidelijk beschreven in SAP Notes of andere SAP-publicaties.
+>Er zijn een aantal specifieke VM-typen, HANA Large Instances of SAP-workloads waarvoor recentere OS-releases nodig zijn. Dergelijke gevallen worden in het hele document vermeld. Dergelijke gevallen zijn duidelijk gedocumenteerd in SAP notes of andere SAP publicaties.
 
-In de volgende sectie worden algemene SAP-platforms vermeld die worden ondersteund met de releases die worden ondersteund en belang rijker zijn dan de SAP-kernels die worden ondersteund. Hier worden netweave/ABAP of Java-stacks weer gegeven die worden ondersteund en die minimale kernel-releases nodig hebben. Er worden meer recente ABAP-stacks ondersteund op Azure, maar er zijn geen minimale kernel-releases vereist omdat wijzigingen voor Azure zijn geïmplementeerd vanaf het begin van de ontwikkeling van de meest recente stacks
+In de volgende sectie worden algemene SAP-platforms weergegeven die worden ondersteund met de releases die worden ondersteund en belangrijker de SAP-kernels die worden ondersteund. Het bevat NetWeaver/ABAP of Java-stacks die worden ondersteund EN, die minimale kernelreleases nodig hebben. Recentere ABAP-stacks worden ondersteund op Azure, maar hebben geen minimale kernelreleases nodig omdat wijzigingen voor Azure zijn geïmplementeerd vanaf het begin van de ontwikkeling van de meer recente stapels
 
-U moet het volgende controleren:
+Je moet controleren:
 
-- Of de SAP-toepassingen die u uitvoert, worden gedekt door de vermelde minimum releases. Als dat niet het geval is, moet u een nieuwe doel versie definiëren, de SAP-product beschikbaarheids matrix controleren, welke builds van besturings systemen en DBMS-combi Naties worden ondersteund met de nieuwe doel release. Dat betekent dat u de juiste versie van het besturings systeem en de versie van de DBMS kunt kiezen
-- Of u uw SAP-kernels wilt bijwerken in een overstap naar Azure
-- Of u SAP-ondersteunings pakketten moet bijwerken. Met name ondersteuning voor pakketten die vereist zijn voor gevallen waarin u moet overstappen op een recentere versie van de DBMS
+- Of de SAP-toepassingen die u uitvoert, worden gedekt door de minimale releases vermeld. Als dit niet het zo is, moet u een nieuwe doelrelease definiëren, controleer dan in de SAP-productbeschikbaarheidsmatrix, welke builds van het besturingssysteem en DBMS-combinaties worden ondersteund met de nieuwe doelrelease. Dus, dat u kiezen voor de juiste versie van het besturingssysteem en DBMS release
+- Of u uw SAP-kernels moet bijwerken in een overstap naar Azure
+- Of u SAP Support Pakketten moet bijwerken. Met name Basis ondersteuningspakketten die nodig kunnen zijn voor gevallen waarin u moet overstappen naar een recentere DBMS-release
 
 
-In de volgende sectie vindt u meer informatie over andere SAP-producten en DBMS-releases die worden ondersteund door SAP on Azure voor Windows en Linux. 
-
-> [!NOTE]
-> De minimale releases van de verschillende DBMS worden zorgvuldig gekozen en worden mogelijk niet altijd weer gegeven in het hele spectrum van DBMS, waarbij de verschillende DBMS-leveranciers in het algemeen worden ondersteund in Azure. Er zijn veel SAP-werk belastingen in rekening gebracht om deze minimale releases te definiëren. Er zijn geen inspanningen voor het testen en kwalificeren van oudere DBMS-releases. 
+De volgende sectie gaat in meer details over andere SAP-producten en DBMS releases die worden ondersteund door SAP op Azure voor Windows en Linux. 
 
 > [!NOTE]
-> De minimale releases die worden vermeld, zijn oudere versies van besturings systemen en database releases. We raden u ten zeerste aan de meest recente versies van het besturings systeem en de database releases te gebruiken. In veel gevallen hebben meer recente versies van besturings systemen en data bases het gebruik in de open bare Cloud uitgevoerd in overweging genomen en aangepaste code om te optimaliseren voor het uitvoeren in een open bare Cloud of specifiekere Azure
+> De minimale releases van de verschillende DBMS is zorgvuldig gekozen en mogelijk niet altijd weerspiegelen het hele spectrum van DBMS releases de verschillende DBMS leveranciers ondersteuning op Azure in het algemeen. Veel SAP-workloadgerelateerde overwegingen werden in aanmerking genomen om deze minimale releases te definiëren. Er is geen inspanning om oudere DBMS-releases te testen en in aanmerking te komen. 
+
+> [!NOTE]
+> De minimale releases die worden vermeld, vertegenwoordigen oudere versies van besturingssystemen en databasereleases. We raden ten zeerste aan om de meest recente releases van het besturingssysteem en databasereleases te gebruiken. In veel gevallen werd rekening gehouden met recentere besturingssysteem- en databasereleases in de public cloud en pasten ze code aan om te optimaliseren voor het uitvoeren in de openbare cloud of meer specifiek Azure
 
 ## <a name="oracle-dbms-support"></a>Ondersteuning voor Oracle DBMS
-Het besturings systeem, Oracle DBMS-releases en Oracle-functionaliteit die wordt ondersteund in azure, worden specifiek vermeld in de [SAP-ondersteunings opmerking #2039619](https://launchpad.support.sap.com/#/notes/2039619). Deze notitie kan worden samenvatten als:
+Besturingssysteem, Oracle DBMS-releases en Oracle-functionaliteit die op Azure worden ondersteund, worden specifiek vermeld in [SAP-ondersteuningsnotitie #2039619](https://launchpad.support.sap.com/#/notes/2039619). Essence uit die notitie kan worden samengevat als:
 
-- De minimale Oracle-versie die wordt ondersteund op Azure-Vm's die zijn gecertificeerd voor netweave, is Oracle 11g release 2 Patchset 3 (11.2.0.4)
-- Als gast besturingssystemen worden alleen Windows en Oracle Linux in aanmerking komen. De exacte versies van het besturings systeem en de bijbehorende minimale DBMS-releases worden vermeld in de opmerking
-- De ondersteuning van Oracle Linux wordt ook uitgebreid naar de Oracle DBMS-client. Dit betekent dat alle SAP-onderdelen, zoals dialoogvenster instanties van de ABAP of Java stack, ook moeten worden uitgevoerd op Oracle Linux. Alleen SAP-onderdelen in een SAP-systeem die geen verbinding met de Oracle-DBMS zouden maken, mogen een ander Linux-besturings systeem uitvoeren
+- Minimale Oracle-release die wordt ondersteund op Azure VM's die zijn gecertificeerd voor NetWeaver is Oracle 11g Release 2 Patchset 3 (11.2.0.4)
+- Als gastbesturingssystemen komen alleen Windows en Oracle Linux in aanmerking. Exacte releases van het OS en de bijbehorende minimale DBMS releases worden vermeld in de notitie
+- De ondersteuning van Oracle Linux strekt zich ook uit tot de Oracle DBMS-client. Dit betekent dat alle SAP-componenten, zoals dialogen van de ABAP of Java Stack, ook op Oracle Linux moeten worden uitgevoerd. Alleen SAP-componenten binnen zo'n SAP-systeem die geen verbinding zouden maken met het Oracle DBMS, zouden een ander Linux-besturingssysteem mogen draaien
 - Oracle RAC wordt niet ondersteund 
-- Oracle ASM wordt voor enkele van de gevallen ondersteund. Details worden weer gegeven in de notitie
-- Niet-Unicode SAP-systemen worden alleen ondersteund met toepassings servers die worden uitgevoerd met het Windows-gast besturingssysteem. Het gast besturingssysteem van het DBMS kan worden Oracle Linux of Windows. De reden voor deze beperking is duidelijk wanneer de SAP-product beschikbaarheids matrix (PAM) wordt gecontroleerd. SAP heeft voor Oracle Linux nooit niet-Unicode SAP-kernels vrijgegeven
+- Oracle ASM wordt voor sommige gevallen ondersteund. Details staan vermeld in de notitie
+- Niet-Unicode SAP-systemen worden alleen ondersteund met toepassingsservers die worden uitgevoerd met Windows Guest OS. Het gastbesturingssysteem van de DBMS kan Oracle Linux of Windows zijn. Reden voor deze beperking is duidelijk bij het controleren van de SAP Product Availability Matrix (PAM). Voor Oracle Linux heeft SAP nooit niet-Unicode SAP-kernels uitgebracht
 
-Als u de DBMS-releases wilt weten die worden ondersteund met de beoogde Azure-infra structuur, moet u de SAP-product beschikbaarheids matrix controleren op basis van het feit of de vereiste besturingssysteem versies en DBMS worden ondersteund met uw SAP-product releases die u wilt uitvoeren. 
+Als u de DBMS-releases kennen die worden ondersteund met de gerichte Azure-infrastructuur, moet u de SAP-productbeschikbaarheidsmatrix controleren of de vereiste OS-releases en DBMS worden ondersteund met uw SAP-productreleases die u wilt uitvoeren. 
 
 
-## <a name="sap-hana-support"></a>Ondersteuning voor SAP HANA
-In azure zijn er twee services die kunnen worden gebruikt om de HANA-data base uit te voeren:
+## <a name="sap-hana-support"></a>ONDERSTEUNING VOOR SAP HANA
+In Azure zijn er twee services die kunnen worden gebruikt om hana-database uit te voeren:
 
 - Azure Virtual Machines
-- [HANA grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [HANA Grote Exemplaren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 
-Voor het uitvoeren van SAP HANA moet SAP meer en sterkere voor waarden hebben om te voldoen aan de infra structuur om netweave of andere SAP-toepassingen en DBMS uit te voeren. Als gevolg hiervan is een kleiner aantal Azure-Vm's in aanmerking voor het uitvoeren van de SAP HANA DBMS. De lijst met ondersteunde Azure-infra structuur die wordt ondersteund voor SAP HANA, vindt u in de [map SAP Hana hardware](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). 
-
-> [!NOTE]
-> De eenheden die beginnen met de letter ' zijn [Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) eenheden. 
-
-Voor het gebruik van SAP HANA kunnen verschillende minimale OS-releases van toepassing zijn dan voor de algemene NetWeaver-cases. U moet de ondersteunde besturings systemen voor elke afzonderlijke eenheid afzonderlijk bekijken, aangezien deze kunnen variëren. U doet dit door op elke eenheid te klikken. Meer details worden weer gegeven. Een van de vermelde Details is de verschillende besturings systemen die voor deze specifieke eenheid worden ondersteund.
+Voor het uitvoeren van SAP HANA heeft SAP meer en sterkere voorwaarden waaraan de infrastructuur moet voldoen dan voor het uitvoeren van NetWeaver of andere SAP-toepassingen en DBMS. Als gevolg hiervan komt een kleiner aantal Azure VM's in aanmerking voor het uitvoeren van de SAP HANA DBMS. De lijst met ondersteunde Azure-infrastructuur die wordt ondersteund voor SAP HANA is te vinden in de zogenaamde [SAP HANA-hardwaremap.](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) 
 
 > [!NOTE]
-> Azure HANA grote instantie-eenheden zijn beperkter met ondersteunde besturings systemen vergeleken met Azure-Vm's. Op de andere kant kunnen Azure-Vm's meer recente versies afdwingen als minimale releases. Dit geldt met name voor sommige van de grotere VM-eenheden waarvoor wijzigingen aan Linux-kernels zijn vereist
+> De eenheden die beginnen met de letter 'S' zijn [HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) units. 
 
-Als u het ondersteunde besturings systeem voor de Azure-infra structuur hebt, moet u de [SAP-ondersteunings Opmerking controleren #2235581](https://launchpad.support.sap.com/#/notes/2235581) voor de exacte SAP Hana releases en patch niveaus die worden ondersteund door de Azure-eenheden waarvoor u bent bestemd. 
+> [!NOTE]
+> SAP heeft geen specifieke certificering afhankelijk van de SAP HANA grote releases. In tegenstelling tot de gemeenschappelijke mening, de kolom **Certificering scenario** in de [HANA gecertificeerde IaaS platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure), de kolom maakt geen verklaring over de **HANA grote of kleine release gecertificeerd**. U moet ervan uitgaan dat alle genoemde eenheden die kunnen worden gebruikt voor HANA 1.0 en HANA 2.0, zolang de gecertificeerde besturingssysteem releases voor de specifieke eenheden worden ondersteund door HANA 1.0 releases ook. 
+
+Voor het gebruik van SAP HANA kunnen verschillende minimale OS-releases van toepassing zijn dan voor de algemene NetWeaver-aanvragen. U moet de ondersteunde besturingssystemen voor elke eenheid afzonderlijk bekijken, omdat deze kunnen variëren. U doet dit door op elke eenheid te klikken. Meer details zullen verschijnen. Een van de genoemde details zijn de verschillende besturingssystemen die voor deze specifieke eenheid worden ondersteund.
+
+> [!NOTE]
+> Azure HANA Large Instance-eenheden zijn restrictiever met ondersteunde besturingssystemen in vergelijking met Azure VM's. Aan de andere kant kunnen Azure VM's meer recente bedrijfsreleases afdwingen als minimale releases. Dit geldt vooral voor sommige van de grotere VM-eenheden die wijzigingen in Linux-kernels vereist
+
+Als u het ondersteunde besturingssysteem voor de Azure-infrastructuur kennen, moet u [de SAP-ondersteuningsnotitie](https://launchpad.support.sap.com/#/notes/2235581) controleren #2235581 voor de exacte SAP HANA-releases en patchniveaus die worden ondersteund met de Azure-eenheden die u target. 
 
 > [!IMPORTANT]
-> De stap voor het controleren van de exacte SAP HANA releases en patch niveaus die worden ondersteund, is zeer belang rijk. In veel gevallen is ondersteuning van een bepaalde besturingssysteem versie afhankelijk van een specifiek patch niveau van de uitvoer bare bestanden van SAP HANA.
+> De stap van het controleren van de exacte SAP HANA releases en patch levels ondersteund is zeer belangrijk. In veel gevallen is de ondersteuning van een bepaalde OS-release afhankelijk van een specifiek patchniveau van de SAP HANA-uitvoerables.
 
-Aangezien u weet welke specifieke HANA-releases u kunt uitvoeren op de beoogde Azure-infra structuur, moet u de SAP-product beschikbaarheids matrix controleren om na te gaan of er beperkingen zijn met de SAP-product releases die ondersteuning bieden voor de HANA-releases die u hebt gefilterd
-
-
-## <a name="certified-azure-vms-and-hana-large-instance-units-and-business-transaction-throughput"></a>Gecertificeerde Azure-Vm's en HANA grote instantie-eenheden en door Voer van zakelijke trans acties
-Naast het evalueren van ondersteunde besturingssysteem releases, DBMS-releases en afhankelijke support SAP-software releases voor Azure-infrastructuur eenheden, moet u deze eenheden kwalificeren met de door Voer van de zakelijke trans actie, die wordt weer gegeven in de eenheid ' SAP ' door SAP. Alle SAP-formaat cirkels rond SAP'S. Door bestaande SAP-systemen te evalueren, kunt u meestal met behulp van uw infrastructuur provider de SAP'S van de eenheden berekenen. Voor de DBMS-laag en voor de toepassingslaag. In andere gevallen waarin nieuwe functionaliteit wordt gemaakt, kan een schaal oefening met SAP de vereiste SAP'S-nummers voor de toepassingslaag en de DBMS-laag onthullen. Aangezien de infrastructuur provider micro soft verplicht is de SAP-doorvoer kenmerken van de verschillende eenheden te verstrekken die netweave en/of HANA-gecertificeerd zijn.
-
-Voor Azure-Vm's worden deze SAP'S-doorvoer nummers gedocumenteerd in de [SAP-ondersteunings opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533). Voor Azure HANA grote instantie-eenheden worden de SAP'S-doorvoer nummers gedocumenteerd in de [SAP-ondersteunings opmerking #2316233](https://launchpad.support.sap.com/#/notes/2316233)
-
-In de [SAP-ondersteunings opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533), worden de volgende opmerkingen toegepast:
-
-- **Voor virtuele machines uit de M-serie en Azure-vm's uit de Mv2-serie gelden verschillende minimale OS-Releases dan voor andere Azure VM-typen**. De vereiste voor recentere versies van het besturings systeem is gebaseerd op wijzigingen in de versies van het besturings systeem van de verschillende leveranciers om hun besturings systemen in te scha kelen die worden uitgevoerd op de specifieke Azure VM-typen of om de prestaties te optimaliseren en door Voer van SAP-werk belasting voor deze VM-typen
-- Er zijn twee tabellen die verschillende VM-typen opgeven. De tweede tabel specificeert de SAP'S-door Voer voor Azure VM-typen die alleen ondersteuning bieden voor Azure Standard-opslag. De DBMS-implementatie voor de eenheden die in de tweede tabel van de opmerking zijn opgegeven, wordt niet ondersteund
+Zoals u weet dat de specifieke HANA-releases die u uitvoeren op de gerichte Azure-infrastructuur, moet u in de SAP-productbeschikbaarheidsmatrix controleren of er beperkingen zijn met de SAP-productreleases die de HANA-releases ondersteunen die u hebt gefilterd
 
 
-## <a name="other-sap-products-supported-on-azure"></a>Andere SAP-producten die worden ondersteund op Azure
-In het algemeen is de veronderstelling dat met de status van grootschalige-Clouds, zoals Azure, de meeste SAP-software zonder functionele problemen in azure wordt uitgevoerd. In het tegenovergestelde van de visualisatie van de privécloud, biedt SAP nog steeds ondersteuning voor de verschillende SAP-producten voor de verschillende hyerpscale-cloud providers. Als gevolg hiervan zijn er verschillende SAP-ondersteunings opmerkingen die ondersteuning bieden voor Azure voor verschillende SAP-producten. 
+## <a name="certified-azure-vms-and-hana-large-instance-units-and-business-transaction-throughput"></a>Gecertificeerde Azure VM's en HANA Large Instance-eenheden en zakelijke transactiedoorvoer
+Naast het evalueren van ondersteunde releases van besturingssystemen, DBMS-releases en afhankelijke ondersteuning van SAP-softwarereleases voor Azure-infrastructuureenheden, hebt u de noodzaak om deze eenheden te kwalificeren voor de doorvoer van zakelijke transacties, die wordt uitgedrukt in de eenheid 'SAP' door Sap. Alle SAP-dimensionering is afhankelijk van SAPS-berekeningen. Bij het evalueren van bestaande SAP-systemen u meestal, met de hulp van uw infrastructuurprovider, de SAPS van de eenheden berekenen. Zowel voor de DBMS-laag als voor de toepassingslaag. In andere gevallen waarin nieuwe functionaliteit wordt gecreëerd, kan een maatoefening met SAP de vereiste SAPS-nummers voor de toepassingslaag en de DBMS-laag onthullen. Als infrastructuurprovider is Microsoft verplicht om de SAP-doorvoerkarakterisering van de verschillende eenheden die netweaver en/of HANA-gecertificeerd zijn, te leveren.
 
-Voor het Business Objects BI-platform biedt [SAP-ondersteunings opmerking #2145537](https://launchpad.support.sap.com/#/notes/2145537) een lijst met SAP Business Objects-producten die worden ondersteund op Azure. Als er vragen zijn over onderdelen of combi Naties van software releases en versies van het besturings systeem die niet worden vermeld of ondersteund en die recenter zijn dan de minimale releases vermeld, moet u een SAP-ondersteunings aanvraag openen voor het onderdeel dat u wilt informeren ondersteuning voor.
+Voor Azure VM's worden deze SAPS-doorvoernummers gedocumenteerd in [SAP-ondersteuningsnotitie #1928533](https://launchpad.support.sap.com/#/notes/1928533). Voor Azure HANA Large Instance-eenheden worden de SAPS-doorvoernummers gedocumenteerd in [SAP-ondersteuningsnotitie #2316233](https://launchpad.support.sap.com/#/notes/2316233)
 
-Voor professionele objecten Data Services [biedt SAP-ondersteunings opmerking #22288344](https://launchpad.support.sap.com/#/notes/2288344) de minimale ondersteuning van SAP-data services in azure wordt uitgelegd. 
+Als we kijken naar [SAP-ondersteuningsnota #1928533,](https://launchpad.support.sap.com/#/notes/1928533)zijn de volgende opmerkingen van toepassing:
+
+- **Voor Azure VM's uit de M-serie en Azure VM's uit de M-serie zijn verschillende minimum-OS-versies van toepassing dan voor andere Azure VM-typen.** De vereiste voor recentere OS-releases is gebaseerd op wijzigingen die de verschillende leveranciers van het besturingssysteem moesten bieden in hun versies van het besturingssysteem om hun besturingssystemen die op de specifieke Azure VM-typen draaien mogelijk te maken of de prestaties te optimaliseren en doorvoer van SAP-workload op die VM-typen
+- Er zijn twee tabellen die verschillende VM-typen opgeven. In de tweede tabel wordt de SAPS-doorvoer voor Azure VM-typen opgegeven die alleen azure-standaardopslag ondersteunen. DBMS-implementatie op de eenheden die in de tweede tabel van de notitie zijn opgegeven, wordt niet ondersteund
+
+
+## <a name="other-sap-products-supported-on-azure"></a>Andere SAP-producten die op Azure worden ondersteund
+In het algemeen is de veronderstelling dat met de status van hyperscale clouds zoals Azure, het grootste deel van de SAP-software moet worden uitgevoerd zonder functionele problemen in Azure. Niettemin en in tegenstelling tot private cloud visualisatie, SAP nog steeds ondersteuning voor de verschillende SAP-producten expliciet voor de verschillende hyerpscale cloud providers. Als gevolg hiervan zijn er verschillende SAP-ondersteuningsnotities die ondersteuning voor Azure voor verschillende SAP-producten aangeven. 
+
+Voor het BI-platform Voor Bedrijfsobjecten geeft [SAP-ondersteuningsnotitie #2145537](https://launchpad.support.sap.com/#/notes/2145537) een lijst met SAP Business Objects-producten die op Azure worden ondersteund. Als er vragen zijn over componenten of combinaties van softwarereleases en OS-releases die niet lijken te worden vermeld of ondersteund en die recenter zijn dan de minimale releases die worden vermeld, moet u een SAP-ondersteuningsverzoek openen tegen het onderdeel dat u instelt ondersteuning voor.
+
+Voor Business Objects Data Services, [SAP support note #22288344](https://launchpad.support.sap.com/#/notes/2288344) legt minimale ondersteuning van SAP Data Services op Azure uit. 
 
 > [!NOTE]
-> Zoals aangegeven in de SAP-ondersteunings opmerking, moet u de SAP PAM controleren om het juiste ondersteunings pakket niveau te identificeren dat moet worden ondersteund in azure
+> Zoals aangegeven in de SAP-ondersteuningsnotitie, moet u het SAP PAM inchecken om het juiste ondersteuningspakketniveau te identificeren dat op Azure moet worden ondersteund
 
-SAP Datahub/Vora ondersteuning Azure Kubernetes Services (AKS) wordt beschreven in de [SAP-ondersteunings opmerking #2464722](https://launchpad.support.sap.com/#/notes/2464722)
+SAP Datahub/Vora-ondersteuning in Azure Kubernetes Services (AKS) wordt beschreven in [SAP-ondersteuningsnotitie #2464722](https://launchpad.support.sap.com/#/notes/2464722)
 
-Ondersteuning voor SAP BPC 10,1 SP08 wordt beschreven in [SAP-ondersteunings opmerking #2451795](https://launchpad.support.sap.com/#/notes/2451795)
+Ondersteuning voor SAP BPC 10.1 SP08 wordt beschreven in [SAP support note #2451795](https://launchpad.support.sap.com/#/notes/2451795)
 
-Ondersteuning voor SAP Hybris commerce platform 5. x en 6. x op Azure wordt gedetailleerd beschreven in de [Hybris-wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud)
+Ondersteuning voor SAP Hybris Commerce Platform 5.x en 6.x op Azure wordt beschreven in de [Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud)
 
 
 ## <a name="next-steps"></a>Volgende stappen
-De volgende stappen in de [Azure virtual machines planning en implementatie van de SAP net-Weaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) lezen
+Lees de volgende stappen in de [planning en implementatie van Azure Virtual Machines voor SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
 

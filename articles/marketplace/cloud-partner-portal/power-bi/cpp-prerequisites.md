@@ -1,45 +1,44 @@
 ---
-title: Power BI app-vereisten aanbieden | Azure Marketplace
+title: Power BI App biedt vereisten | Azure Marketplace
 description: Biedt de vereisten voor het publiceren van een Power BI-app naar AppSource.
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 486a1b9ca213828b5a26571de7bc34d06f56d434
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 5c95c50f5597eee51c66cc68273478b1b9f0e2df
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826025"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286333"
 ---
-# <a name="power-bi-app-offer-prerequisites"></a>Vereisten voor het Power BI-app-aanbod
+# <a name="power-bi-app-offer-prerequisites"></a>Vereisten voor de Power BI-app-aanbieding
 
-In dit artikel worden de technische en zakelijke vereisten beschreven waaraan u moet voldoen voordat u een Power BI app-aanbieding kunt publiceren naar de AppSource Marketplace.  Als u dit nog niet hebt gedaan, bekijkt u de [publicatie handleiding voor Office 365, Dynamics 365, PowerApps en Power bi aanbieding](../../appsource-offer-publishing-guide.md).
+In dit artikel vindt u de technische en zakelijke vereisten waaraan u moet voldoen voordat u een Power BI-app-aanbieding publiceren naar de AppSource-marktplaats.  Als u dit nog niet hebt gedaan, bekijkt u de [Office 365-, Dynamics 365-, PowerApps- en Power BI-publicatiegids voor aanbiedingen](../../appsource-offer-publishing-guide.md).
 
 
 ## <a name="technical-requirements"></a>Technische vereisten
 
-Het belangrijkste technische activum dat u nodig hebt voor dit aanbiedings type is een [Power bi-app](https://go.microsoft.com/fwlink/?linkid=2028636). Zie [Power bi Technical activa maken](./cpp-create-technical-assets.md)voor meer informatie.
+De belangrijkste technische asset die u nodig hebt voor dit aanbiedingstype is een [Power BI-app.](https://go.microsoft.com/fwlink/?linkid=2028636) Zie [Technische elementen van Power BI maken](./cpp-create-technical-assets.md)voor meer informatie .
 
-Nadat uw service toepassing is gemaakt en getest in Power BI, moet u de installatie-URL van de toepassing die Power BI genereert, opslaan. U hebt deze nodig om [een Power bi app-aanbieding te maken](./cpp-create-offer.md).
+Nadat uw servicetoepassing is gemaakt en getest in Power BI, moet u de URL voor de installatie van toepassingen opslaan die Power BI genereert. Je hebt het nodig om [een Power BI App-aanbieding](./cpp-create-offer.md)te maken.
 
 ## <a name="business-requirements"></a>Zakelijke vereisten
 
-De zakelijke vereisten zijn onder andere procedurele, contractuele en juridische verplichtingen.  U moet het volgende doen:
+De zakelijke vereisten omvatten procedurele, contractuele en wettelijke verplichtingen.  U moet:
 
-- Een geregistreerde Cloud Marketplace-uitgever zijn. Als u niet bent geregistreerd, volgt u de stappen in [een Cloud Marketplace-uitgever worden](https://docs.microsoft.com/azure/marketplace/become-publisher).
+- Wees een geregistreerde uitgever van cloudmarktplaatsen. Als je niet bent geregistreerd, volg je de stappen in [Word een Cloud Marketplace Publisher](https://docs.microsoft.com/azure/marketplace/become-publisher).
 
     > [!NOTE] 
-    > Gebruik hetzelfde registratie account voor micro soft Developer Center om u aan te melden bij de [Cloud Partner-Portal](https://cloudpartner.azure.com). U moet slechts één Microsoft-account voor uw AppSource-aanbiedingen hebben. Accounts mogen niet specifiek zijn voor afzonderlijke services of aanbiedingen.
+    > Gebruik hetzelfde Microsoft Developer Center-registratieaccount om u aan te melden bij de [Cloud Partner Portal.](https://cloudpartner.azure.com) U mag maar één Microsoft-account hebben voor uw AppSource-aanbiedingen. Accounts mogen niet specifiek zijn voor afzonderlijke services of aanbiedingen.
  
 - Klanten moeten op een commercieel redelijke wijze toegang hebben tot technische ondersteuning.
-- Geef inhoud op die voldoet aan de criteria voor uw aanbieding die worden vermeld op AppSource. Zie [een app om weer te geven op AppSource voor meer informatie. Hier volgt een beschrijving van](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
-- Voldoen aan de [privacyverklaring van micro soft](https://privacy.microsoft.com/privacystatement).
+- Geef inhoud die voldoet aan de criteria voor uw aanbod dat moet worden vermeld op AppSource. Zie Een app aanbieden op AppSource voor meer [informatie? Dit is hoe.](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how)
+- Voldoen aan de [Privacyverklaring van Microsoft.](https://privacy.microsoft.com/privacystatement)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u aan alle vereisten hebt voldaan, kunt u [een Power bi app-aanbieding maken](./cpp-create-offer.md) in de Cloud Partner-Portal.
+Nadat u aan alle vereisten hebt voldaan, bent u klaar om [een Power BI-app-aanbieding](./cpp-create-offer.md) te maken in de Cloud Partner Portal.

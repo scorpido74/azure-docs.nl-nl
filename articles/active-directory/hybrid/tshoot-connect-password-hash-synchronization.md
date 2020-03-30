@@ -1,6 +1,6 @@
 ---
-title: Problemen met wachtwoord-hash-synchronisatie met Azure AD Connect synchronisatie oplossen | Microsoft Docs
-description: Dit artikel bevat informatie over het oplossen van problemen met wachtwoord-hash-synchronisatie.
+title: Problemen met wachtwoordhashsynchronisatie oplossen met Azure AD Connect-synchronisatie | Microsoft Documenten
+description: In dit artikel vindt u informatie over het oplossen van problemen met wachtwoordhashsynchronisatie.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,194 +17,194 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79253544"
 ---
-# <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Problemen met wachtwoord-hash-synchronisatie met Azure AD Connect synchronisatie oplossen
+# <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Problemen met wachtwoord-hashsynchronisatie oplossen met Azure AD Connect-synchronisatie
 
-Dit onderwerp bevat stappen voor het oplossen van problemen met wachtwoord-hash-synchronisatie. Als wacht woorden niet op de verwachte manier worden gesynchroniseerd, kan dit een subset van gebruikers of voor alle gebruikers zijn.
+In dit onderwerp vindt u stappen voor het oplossen van problemen met wachtwoordhashsynchronisatie. Als wachtwoorden niet worden gesynchroniseerd zoals verwacht, kan dit zowel voor een subset van gebruikers als voor alle gebruikers zijn.
 
-Voor Azure Active Directory (Azure AD) Connect-implementatie met versie 1.1.614.0 of later gebruikt u de taak voor probleem oplossing in de wizard om problemen met de wachtwoord-hash-synchronisatie op te lossen:
+Gebruik de taak voor probleemoplossing in de wizard om problemen met het synchroniseren van wachtwoordhashproblemen op te lossen voor Azure Active Directory (Azure AD) Verbinding maken met versie 1.1.614.0 of daarna:
 
-* Als u een probleem hebt waarbij er geen wacht woorden worden gesynchroniseerd, raadpleegt u de sectie [geen wacht woorden worden gesynchroniseerd: problemen oplossen met behulp van het gedeelte taak voor probleem oplossing](#no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task) .
+* Als u een probleem hebt waarbij geen wachtwoorden worden gesynchroniseerd, raadpleegt u de [no-wachtwoorden worden gesynchroniseerd: problemen oplossen met behulp van de](#no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task) taaksectie probleemoplossing.
 
-* Als u een probleem met afzonderlijke objecten hebt, raadpleegt u het [ene object heeft geen wacht woorden synchroniseren: problemen oplossen met behulp van de taak sectie probleem oplossing](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task) .
+* Als u een probleem hebt met afzonderlijke objecten, verwijst u naar het [één object is het niet synchroniseren van wachtwoorden: problemen oplossen met behulp van de taaksectie voor het oplossen van problemen.](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task)
 
-Voor de implementatie met versie 1.1.524.0 of hoger is er een diagnostische cmdlet die u kunt gebruiken om problemen met de wachtwoord-hash-synchronisatie op te lossen:
+Voor implementatie met versie 1.1.524.0 of hoger is er een diagnostische cmdlet die u gebruiken om problemen met wachtwoordhashsynchronisatie op te lossen:
 
-* Als u een probleem hebt waarbij er geen wacht woorden worden gesynchroniseerd, raadpleegt u de sectie [geen wacht woorden synchroniseren: problemen oplossen met behulp van het gedeelte diagnostische cmdlet](#no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet) .
+* Als u een probleem hebt waarbij geen wachtwoorden worden gesynchroniseerd, raadpleegt u de [no-wachtwoorden worden gesynchroniseerd: problemen oplossen met behulp van de diagnostische cmdletsectie.](#no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet)
 
-* Als u een probleem met afzonderlijke objecten hebt, raadpleegt u het [ene object heeft geen wacht woorden synchroniseren: problemen oplossen met behulp van de sectie diagnostische cmdlet](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet) .
+* Als u een probleem hebt met afzonderlijke objecten, raadpleegt u het [one-object niet om wachtwoorden te synchroniseren: problemen oplossen met behulp van de diagnostische cmdlet-sectie.](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet)
 
 Voor oudere versies van Azure AD Connect-implementatie:
 
-* Als u een probleem hebt waarbij er geen wacht woorden worden gesynchroniseerd, raadpleegt u de sectie [geen woorden synchroniseren: hand matige stappen voor probleem oplossing](#no-passwords-are-synchronized-manual-troubleshooting-steps) .
+* Als u een probleem hebt waarbij geen wachtwoorden worden gesynchroniseerd, raadpleegt u de [sectie Geen wachtwoorden worden gesynchroniseerd: sectie handmatige probleemoplossingsstappen.](#no-passwords-are-synchronized-manual-troubleshooting-steps)
 
-* Als u een probleem met afzonderlijke objecten hebt, raadpleegt u het [ene object heeft geen wacht woorden synchroniseren: het gedeelte hand matige stappen voor probleem oplossing](#one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps) .
+* Als u een probleem hebt met afzonderlijke objecten, raadpleegt u het one-object niet om wachtwoorden te synchroniseren: sectie [handmatige probleemoplossingsstappen.](#one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps)
 
 
 
-## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task"></a>Er zijn geen wacht woorden gesynchroniseerd: problemen oplossen met behulp van de taak voor probleem oplossing
+## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task"></a>Er worden geen wachtwoorden gesynchroniseerd: problemen oplossen met de taak voor het oplossen van problemen
 
-U kunt de taak voor het oplossen van problemen gebruiken om erachter te komen waarom er geen wacht woorden worden gesynchroniseerd.
+U de taak voor het oplossen van problemen gebruiken om erachter te komen waarom er geen wachtwoorden worden gesynchroniseerd.
 
 > [!NOTE]
-> De taak voor probleem oplossing is alleen beschikbaar voor Azure AD Connect versie 1.1.614.0 of hoger.
+> De probleemoplossingstaak is alleen beschikbaar voor Azure AD Connect-versie 1.1.614.0 of hoger.
 
-### <a name="run-the-troubleshooting-task"></a>De taak voor probleem oplossing uitvoeren
+### <a name="run-the-troubleshooting-task"></a>De taak voor het oplossen van problemen uitvoeren
 
-Problemen oplossen waarbij er geen wacht woorden worden gesynchroniseerd:
+Ga als instellen voor het oplossen van problemen waarbij geen wachtwoorden worden gesynchroniseerd:
 
-1. Open een nieuwe Windows Power shell-sessie op uw Azure AD Connect-server met de optie **als administrator uitvoeren** .
+1. Open een nieuwe Windows PowerShell-sessie op uw Azure AD Connect-server met de optie **Uitvoeren als administrator.**
 
-2. Voer `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted`uit.
+2. Uitvoeren `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`of .
 
 3. Start de wizard Azure AD Connect.
 
-4. Ga naar de pagina **extra taken** , selecteer **problemen oplossen**en klik op **volgende**.
+4. Navigeer naar de pagina **Extra taken,** selecteer **Problemen oplossen**en klik op **Volgende**.
 
-5. Klik op de pagina probleem oplossing op **starten** om het menu probleem oplossing in Power shell te starten.
+5. Klik op de pagina Probleemoplossing op **Starten** om het menu probleemoplossing in PowerShell te starten.
 
-6. Selecteer in het hoofd menu de optie **problemen met wachtwoord-hash-synchronisatie oplossen**.
+6. Selecteer in het hoofdmenu **Problemen met wachtwoordhashsynchronisatie**.
 
-7. Selecteer in het submenu de optie **wacht woord-hash synchronisatie werkt helemaal niet**.
+7. Selecteer In het submenu de optie **Wachtwoordhashsynchronisatie werkt helemaal niet.**
 
-### <a name="understand-the-results-of-the-troubleshooting-task"></a>Inzicht in de resultaten van de taak voor het oplossen van problemen
+### <a name="understand-the-results-of-the-troubleshooting-task"></a>De resultaten van de probleemoplossingstaak begrijpen
 
 De taak voor het oplossen van problemen voert de volgende controles uit:
 
-* Hiermee wordt gecontroleerd of de functie voor wachtwoord hash-synchronisatie is ingeschakeld voor uw Azure AD-Tenant.
+* Valideert dat de functie voor wachtwoordhashsynchronisatie is ingeschakeld voor uw Azure AD-tenant.
 
-* Hiermee wordt gevalideerd of de Azure AD Connect-server zich niet in de faserings modus bevindt.
+* Valideert dat de Azure AD Connect-server zich niet in de faseringsmodus bevindt.
 
-* Voor elke bestaande on-premises Active Directory connector (die overeenkomt met een bestaand Active Directory forest):
+* Voor elke bestaande on-premises Active Directory-connector (die overeenkomt met een bestaand Active Directory-forest):
 
-   * Hiermee wordt gecontroleerd of de functie voor wachtwoord hash-synchronisatie is ingeschakeld.
+   * Hiermee wordt gevalideerd dat de functie wachtwoordhashsynchronisatie is ingeschakeld.
    
-   * Zoekt naar gebeurtenissen voor wachtwoord-hash-heartbeat in de gebeurtenis logboeken van de Windows-toepassing.
+   * Hiermee wordt gezocht naar heartbeatgebeurtenissen voor wachtwoordhashin de logboeken van Windows Application Event.
 
-   * Voor elk Active Directory domein onder de on-premises Active Directory-connector:
+   * Voor elk Active Directory-domein onder de on-premises Active Directory-connector:
 
-      * Valideert of het domein bereikbaar is vanaf de Azure AD Connect-server.
+      * Valideert dat het domein bereikbaar is vanaf de Azure AD Connect-server.
 
-      * Valideert dat de Active Directory Domain Services (AD DS) accounts die worden gebruikt door de on-premises Active Directory connector, de juiste gebruikers naam, het wacht woord en de vereiste machtigingen voor de synchronisatie van hashes voor wacht woorden hebben.
+      * Hiermee wordt gevalideerd dat de AD DS-accounts (Active Directory Domain Services) die worden gebruikt door de on-premises Active Directory-connector de juiste gebruikersnaam, wachtwoord en machtigingen hebben die nodig zijn voor synchronisatie van wachtwoordhash.
 
-In het volgende diagram ziet u de resultaten van de cmdlet voor een on-premises Active Directory topologie met één domein:
+In het volgende diagram worden de resultaten van de cmdlet voor één domein, on-premises Active Directory-topologie geïllustreerd:
 
-![Diagnostische uitvoer voor wachtwoord-hash-synchronisatie](./media/tshoot-connect-password-hash-synchronization/phsglobalgeneral.png)
+![Diagnostische uitvoer voor wachtwoordhashsynchronisatie](./media/tshoot-connect-password-hash-synchronization/phsglobalgeneral.png)
 
-In de rest van deze sectie worden specifieke resultaten beschreven die worden geretourneerd door de taak en de bijbehorende problemen.
+De rest van deze sectie beschrijft specifieke resultaten die worden geretourneerd door de taak en bijbehorende problemen.
 
-#### <a name="password-hash-synchronization-feature-isnt-enabled"></a>de functie voor synchronisatie van wacht woord-hash is niet ingeschakeld
+#### <a name="password-hash-synchronization-feature-isnt-enabled"></a>wachtwoordhashsynchronisatiefunctie is niet ingeschakeld
 
-Als u de synchronisatie van wacht woord-hashes niet hebt ingeschakeld met behulp van de wizard Azure AD Connect, wordt het volgende fout bericht weer gegeven:
+Als u synchronisatie van wachtwoordhash niet hebt ingeschakeld met de wizard Azure AD Connect, wordt de volgende fout geretourneerd:
 
-![synchronisatie van wacht woord-hash is niet ingeschakeld](./media/tshoot-connect-password-hash-synchronization/phsglobaldisabled.png)
+![synchronisatie van wachtwoordhash is niet ingeschakeld](./media/tshoot-connect-password-hash-synchronization/phsglobaldisabled.png)
 
-#### <a name="azure-ad-connect-server-is-in-staging-mode"></a>Azure AD Connect server zich in de faserings modus bevindt
+#### <a name="azure-ad-connect-server-is-in-staging-mode"></a>Azure AD Connect-server bevindt zich in de faseringsmodus
 
-Als de Azure AD Connect-server zich in de faserings modus bevindt, wordt de synchronisatie van wacht woord-hash tijdelijk uitgeschakeld en wordt de volgende fout weer gegeven:
+Als de Azure AD Connect-server zich in de faseringsmodus bevindt, wordt wachtwoordhashsynchronisatie tijdelijk uitgeschakeld en wordt de volgende fout geretourneerd:
 
-![Azure AD Connect server zich in de faserings modus bevindt](./media/tshoot-connect-password-hash-synchronization/phsglobalstaging.png)
+![Azure AD Connect-server bevindt zich in de faseringsmodus](./media/tshoot-connect-password-hash-synchronization/phsglobalstaging.png)
 
-#### <a name="no-password-hash-synchronization-heartbeat-events"></a>Geen heartbeat-gebeurtenissen voor wachtwoord-hash-synchronisatie
+#### <a name="no-password-hash-synchronization-heartbeat-events"></a>Geen heartbeatgebeurtenissen voor wachtwoordhash
 
-Elke on-premises Active Directory connector heeft een eigen wachtwoord hash-synchronisatie kanaal. Wanneer het synchronisatie kanaal voor wacht woord-hashes tot stand is gebracht en er geen wachtwoord wijzigingen worden gesynchroniseerd, wordt een heartbeat-gebeurtenis (gebeurtenis-ca 654) elke 30 minuten gegenereerd in het gebeurtenis logboek van Windows-toepassing. Voor elke on-premises Active Directory-Connector zoekt de cmdlet de overeenkomstige heartbeat-gebeurtenissen in de afgelopen drie uur. Als er geen heartbeat-gebeurtenis wordt gevonden, wordt de volgende fout geretourneerd:
+Elke on-premises Active Directory-connector heeft zijn eigen wachtwoordhashsynchronisatiekanaal. Wanneer het wachtwoordhashsynchronisatiekanaal is ingesteld en er geen wachtwoordwijzigingen moeten worden gesynchroniseerd, wordt een heartbeatgebeurtenis (EventId 654) eenmaal per 30 minuten gegenereerd onder het Gebeurtenislogboek van Windows-toepassingen. Voor elke on-premises Active Directory-connector zoekt de cmdlet naar bijbehorende heartbeatgebeurtenissen in de afgelopen drie uur. Als er geen heartbeatgebeurtenis wordt gevonden, wordt de volgende fout geretourneerd:
 
-![Er is geen wacht woord-hash synchronisatie hart slag gebeurtenis](./media/tshoot-connect-password-hash-synchronization/phsglobalnoheartbeat.png)
+![Geen wachtwoord hash synchronisatie hartslag gebeurtenis](./media/tshoot-connect-password-hash-synchronization/phsglobalnoheartbeat.png)
 
-#### <a name="ad-ds-account-does-not-have-correct-permissions"></a>AD DS account heeft niet de juiste machtigingen
+#### <a name="ad-ds-account-does-not-have-correct-permissions"></a>AD DS-account heeft geen juiste machtigingen
 
-Als het AD DS-account dat wordt gebruikt door de on-premises Active Directory-connector om wacht woord-hashes te synchroniseren, niet over de juiste machtigingen beschikt, wordt de volgende fout geretourneerd:
+Als het AD DS-account dat wordt gebruikt door de on-premises Active Directory-connector om wachtwoordhashes te synchroniseren niet over de juiste machtigingen beschikt, wordt de volgende fout geretourneerd:
 
-![Onjuiste referentie](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
+![Onjuiste referenties](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
 
-#### <a name="incorrect-ad-ds-account-username-or-password"></a>De gebruikers naam of het wacht woord van het AD DS account is onjuist
+#### <a name="incorrect-ad-ds-account-username-or-password"></a>Gebruikersnaam of wachtwoord voor een onjuist AD DS-account
 
-Als het AD DS-account dat wordt gebruikt door de on-premises Active Directory Connector voor het synchroniseren van wacht woord-hashes een onjuiste gebruikers naam of wacht woord heeft, wordt de volgende fout geretourneerd:
+Als het AD DS-account dat wordt gebruikt door de on-premises Active Directory-connector om wachtwoordhashes te synchroniseren een onjuiste gebruikersnaam of wachtwoord heeft, wordt de volgende fout geretourneerd:
 
-![Onjuiste referentie](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectcredential.png)
+![Onjuiste referenties](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectcredential.png)
 
 
 
-## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task"></a>Het ene object synchroniseert geen wacht woorden: problemen oplossen met behulp van de taak voor probleem oplossing
+## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task"></a>Eén object synchroniseert geen wachtwoorden: problemen oplossen met de taak voor probleemoplossing
 
-U kunt de taak voor het oplossen van problemen gebruiken om te bepalen waarom een object geen wacht woorden synchroniseert.
+U de taak voor het oplossen van problemen gebruiken om te bepalen waarom één object geen wachtwoorden synchroniseert.
 
 > [!NOTE]
-> De taak voor probleem oplossing is alleen beschikbaar voor Azure AD Connect versie 1.1.614.0 of hoger.
+> De probleemoplossingstaak is alleen beschikbaar voor Azure AD Connect-versie 1.1.614.0 of hoger.
 
-### <a name="run-the-diagnostics-cmdlet"></a>De diagnostische cmdlet uitvoeren
+### <a name="run-the-diagnostics-cmdlet"></a>De diagnosecmdlet uitvoeren
 
-Problemen voor een specifiek gebruikers object oplossen:
+Ga als lid van het probleem van een specifiek gebruikersobject als een oplossing voor problemen voor een specifiek gebruikersobject:
 
-1. Open een nieuwe Windows Power shell-sessie op uw Azure AD Connect-server met de optie **als administrator uitvoeren** .
+1. Open een nieuwe Windows PowerShell-sessie op uw Azure AD Connect-server met de optie **Uitvoeren als administrator.**
 
-2. Voer `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted`uit.
+2. Uitvoeren `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`of .
 
 3. Start de wizard Azure AD Connect.
 
-4. Ga naar de pagina **extra taken** , selecteer **problemen oplossen**en klik op **volgende**.
+4. Navigeer naar de pagina **Extra taken,** selecteer **Problemen oplossen**en klik op **Volgende**.
 
-5. Klik op de pagina probleem oplossing op **starten** om het menu probleem oplossing in Power shell te starten.
+5. Klik op de pagina Probleemoplossing op **Starten** om het menu probleemoplossing in PowerShell te starten.
 
-6. Selecteer in het hoofd menu de optie **problemen met wachtwoord-hash-synchronisatie oplossen**.
+6. Selecteer in het hoofdmenu **Problemen met wachtwoordhashsynchronisatie**.
 
-7. Selecteer in het submenu de optie **wacht woord is niet gesynchroniseerd voor een specifiek gebruikers account**.
+7. Selecteer Wachtwoord wordt in het submenu **niet gesynchroniseerd voor een specifiek gebruikersaccount.**
 
-### <a name="understand-the-results-of-the-troubleshooting-task"></a>Inzicht in de resultaten van de taak voor het oplossen van problemen
+### <a name="understand-the-results-of-the-troubleshooting-task"></a>De resultaten van de probleemoplossingstaak begrijpen
 
 De taak voor het oplossen van problemen voert de volgende controles uit:
 
-* Onderzoekt de status van het Active Directory-object in de ruimte van de Active Directory-connector, de tijdelijke tekst en de Azure AD-connector ruimte.
+* Onderzoekt de status van het Active Directory-object in de Active Directory-connectorruimte, Metaverse en Azure AD-connectorruimte.
 
-* Valideert dat er synchronisatie regels zijn met wachtwoord hash synchronisatie ingeschakeld en toegepast op het Active Directory-object.
+* Hiermee wordt gevalideerd dat er synchronisatieregels zijn waarbij wachtwoordhashsynchronisatie is ingeschakeld en toegepast op het Active Directory-object.
 
-* Probeert de resultaten van de laatste poging om het wacht woord voor het object te synchroniseren op te halen en weer te geven.
+* Pogingen om de resultaten van de laatste poging om het wachtwoord voor het object te synchroniseren op te halen en weer te geven.
 
-In het volgende diagram ziet u de resultaten van de cmdlet bij het oplossen van problemen met wachtwoord hash voor één object:
+In het volgende diagram worden de resultaten van de cmdlet weergegeven bij het oplossen van wachtwoordhashsynchronisatie voor één object:
 
-![Diagnostische uitvoer voor wachtwoord hash-synchronisatie-enkel object](./media/tshoot-connect-password-hash-synchronization/phssingleobjectgeneral.png)
+![Diagnostische uitvoer voor wachtwoordhashsynchronisatie - één object](./media/tshoot-connect-password-hash-synchronization/phssingleobjectgeneral.png)
 
-In de rest van deze sectie worden de specifieke resultaten beschreven die worden geretourneerd door de cmdlet en de bijbehorende problemen.
+De rest van deze sectie beschrijft specifieke resultaten geretourneerd door de cmdlet en de bijbehorende problemen.
 
-#### <a name="the-active-directory-object-isnt-exported-to-azure-ad"></a>Het Active Directory-object is niet geëxporteerd naar Azure AD
+#### <a name="the-active-directory-object-isnt-exported-to-azure-ad"></a>Het Active Directory-object wordt niet geëxporteerd naar Azure AD
 
-synchronisatie van wacht woord-hash voor dit on-premises Active Directory account mislukt omdat er geen overeenkomend object in de Azure AD-Tenant is. De volgende fout wordt geretourneerd:
+synchronisatie van wachtwoordhash voor dit on-premises Active Directory-account mislukt omdat er geen bijbehorend object in de Azure AD-tenant is. De volgende fout wordt geretourneerd:
 
-![Het Azure AD-object ontbreekt](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnotexported.png)
+![Azure AD-object ontbreekt](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnotexported.png)
 
-#### <a name="user-has-a-temporary-password"></a>Gebruiker heeft een tijdelijk wacht woord
+#### <a name="user-has-a-temporary-password"></a>Gebruiker heeft een tijdelijk wachtwoord
 
-Op dit moment biedt Azure AD Connect geen ondersteuning voor het synchroniseren van tijdelijke wacht woorden met Azure AD. Een wacht woord wordt als tijdelijk beschouwd als de optie **wacht woord bij wijzigen bij volgende aanmelding** is ingesteld op de on-premises Active Directory gebruiker. De volgende fout wordt geretourneerd:
+Momenteel biedt Azure AD Connect geen ondersteuning voor het synchroniseren van tijdelijke wachtwoorden met Azure AD. Een wachtwoord wordt als tijdelijk beschouwd als de **optie Wachtwoord wijzigen bij de volgende aanmelding** is ingesteld op de on-premises Active Directory-gebruiker. De volgende fout wordt geretourneerd:
 
-![Er wordt geen tijdelijk wacht woord geëxporteerd](./media/tshoot-connect-password-hash-synchronization/phssingleobjecttemporarypassword.png)
+![Tijdelijk wachtwoord wordt niet geëxporteerd](./media/tshoot-connect-password-hash-synchronization/phssingleobjecttemporarypassword.png)
 
-#### <a name="results-of-last-attempt-to-synchronize-password-arent-available"></a>De resultaten van de laatste poging om het wacht woord te synchroniseren, zijn niet beschikbaar
+#### <a name="results-of-last-attempt-to-synchronize-password-arent-available"></a>Resultaten van laatste poging om wachtwoord te synchroniseren zijn niet beschikbaar
 
-Azure AD Connect slaat de resultaten van synchronisatie van wacht woord-hashes standaard gedurende zeven dagen op. Als er geen resultaten beschikbaar zijn voor het geselecteerde Active Directory-object, wordt de volgende waarschuwing weer gegeven:
+Azure AD Connect slaat standaard zeven dagen lang de resultaten van wachtwoordhashsynchronisatiepogingen op. Als er geen resultaten beschikbaar zijn voor het geselecteerde Active Directory-object, wordt de volgende waarschuwing geretourneerd:
 
-![Diagnostische uitvoer voor één object-geen synchronisatie geschiedenis van het wacht woord](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnohistory.png)
+![Diagnostische uitvoer voor één object - geen wachtwoordsynchronisatiegeschiedenis](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnohistory.png)
 
 
 
-## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Er zijn geen wacht woorden gesynchroniseerd: problemen oplossen met behulp van de diagnostische cmdlet
+## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Er worden geen wachtwoorden gesynchroniseerd: problemen oplossen met behulp van de diagnostische cmdlet
 
-U kunt de cmdlet `Invoke-ADSyncDiagnostics` gebruiken om erachter te komen waarom er geen wacht woorden worden gesynchroniseerd.
+U `Invoke-ADSyncDiagnostics` de cmdlet gebruiken om erachter te komen waarom er geen wachtwoorden worden gesynchroniseerd.
 
 > [!NOTE]
-> De cmdlet `Invoke-ADSyncDiagnostics` is alleen beschikbaar voor Azure AD Connect versie 1.1.524.0 of hoger.
+> De `Invoke-ADSyncDiagnostics` cmdlet is alleen beschikbaar voor Azure AD Connect-versie 1.1.524.0 of hoger.
 
-### <a name="run-the-diagnostics-cmdlet"></a>De diagnostische cmdlet uitvoeren
+### <a name="run-the-diagnostics-cmdlet"></a>De diagnosecmdlet uitvoeren
 
-Problemen oplossen waarbij er geen wacht woorden worden gesynchroniseerd:
+Ga als instellen voor het oplossen van problemen waarbij geen wachtwoorden worden gesynchroniseerd:
 
-1. Open een nieuwe Windows Power shell-sessie op uw Azure AD Connect-server met de optie **als administrator uitvoeren** .
+1. Open een nieuwe Windows PowerShell-sessie op uw Azure AD Connect-server met de optie **Uitvoeren als administrator.**
 
-2. Voer `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted`uit.
+2. Uitvoeren `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`of .
 
 3. Voer `Import-Module ADSyncDiagnostics` uit.
 
@@ -212,20 +212,20 @@ Problemen oplossen waarbij er geen wacht woorden worden gesynchroniseerd:
 
 
 
-## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Het ene object synchroniseert geen wacht woorden: problemen oplossen met behulp van de diagnostische cmdlet
+## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Eén object synchroniseert geen wachtwoorden: problemen oplossen met behulp van de diagnostische cmdlet
 
-U kunt de cmdlet `Invoke-ADSyncDiagnostics` gebruiken om te bepalen waarom een object geen wacht woorden synchroniseert.
+U `Invoke-ADSyncDiagnostics` de cmdlet gebruiken om te bepalen waarom één object geen wachtwoorden synchroniseert.
 
 > [!NOTE]
-> De cmdlet `Invoke-ADSyncDiagnostics` is alleen beschikbaar voor Azure AD Connect versie 1.1.524.0 of hoger.
+> De `Invoke-ADSyncDiagnostics` cmdlet is alleen beschikbaar voor Azure AD Connect-versie 1.1.524.0 of hoger.
 
-### <a name="run-the-diagnostics-cmdlet"></a>De diagnostische cmdlet uitvoeren
+### <a name="run-the-diagnostics-cmdlet"></a>De diagnosecmdlet uitvoeren
 
-Problemen oplossen waarbij geen wacht woorden voor een gebruiker worden gesynchroniseerd:
+Ga als lid van het werk om problemen op te lossen waarbij geen wachtwoorden voor een gebruiker worden gesynchroniseerd:
 
-1. Open een nieuwe Windows Power shell-sessie op uw Azure AD Connect-server met de optie **als administrator uitvoeren** .
+1. Open een nieuwe Windows PowerShell-sessie op uw Azure AD Connect-server met de optie **Uitvoeren als administrator.**
 
-2. Voer `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted`uit.
+2. Uitvoeren `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`of .
 
 3. Voer `Import-Module ADSyncDiagnostics` uit.
 
@@ -243,130 +243,130 @@ Problemen oplossen waarbij geen wacht woorden voor een gebruiker worden gesynchr
 
 
 
-## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>Er zijn geen wacht woorden gesynchroniseerd: hand matige stappen voor probleem oplossing
+## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>Er worden geen wachtwoorden gesynchroniseerd: handmatige stappen voor het oplossen van problemen
 
-Volg deze stappen om te bepalen waarom er geen wacht woorden worden gesynchroniseerd:
+Volg deze stappen om te bepalen waarom er geen wachtwoorden worden gesynchroniseerd:
 
-1. Is de Connect-server in de [faserings modus](how-to-connect-sync-staging-server.md)? Een server in de faserings modus synchroniseert geen wacht woorden.
+1. Is de [Connect-server in de faseringsmodus?](how-to-connect-sync-staging-server.md) Een server in de faseringsmodus synchroniseert geen wachtwoorden.
 
-2. Voer het script uit in de sectie [de status van de instellingen voor wachtwoord synchronisatie ophalen](#get-the-status-of-password-sync-settings) . Hiermee krijgt u een overzicht van de configuratie voor wachtwoord synchronisatie.  
+2. Voer het script uit in de sectie [De status van wachtwoordsynchronisatieinstellingen opdoen.](#get-the-status-of-password-sync-settings) Het geeft u een overzicht van de wachtwoordsynchronisatieconfiguratie.  
 
-    ![Power shell-script uitvoer van instellingen voor wachtwoord synchronisatie](./media/tshoot-connect-password-hash-synchronization/psverifyconfig.png)  
+    ![PowerShell-scriptuitvoer vanuit instellingen voor wachtwoordsynchronisatie](./media/tshoot-connect-password-hash-synchronization/psverifyconfig.png)  
 
-3. Als de functie niet is ingeschakeld in azure AD of als de synchronisatie kanaal status niet is ingeschakeld, voert u de wizard verbinding installeren uit. Selecteer **synchronisatie opties aanpassen**en selecteer wachtwoord synchronisatie opheffen. Met deze wijziging wordt de functie tijdelijk uitgeschakeld. Voer vervolgens de wizard opnieuw uit en schakel wachtwoord synchronisatie opnieuw in. Voer het script opnieuw uit om te controleren of de configuratie juist is.
+3. Als de functie niet is ingeschakeld in Azure AD of als de status van het synchronisatiekanaal niet is ingeschakeld, voert u de wizard Installatie verbinden uit. Selecteer **Synchronisatieopties aanpassen**en schakel wachtwoordsynchronisatie uit. Met deze wijziging wordt de functie tijdelijk uitgeschakeld. Voer vervolgens de wizard opnieuw uit en schakel wachtwoordsynchronisatie opnieuw in. Voer het script opnieuw uit om te controleren of de configuratie correct is.
 
-4. Zoek naar fouten in het gebeurtenis logboek. Zoek naar de volgende gebeurtenissen, die duiden op een probleem:
-    * Bron: "adreslijst synchronisatie" ID: 0, 611, 652, 655 als u deze gebeurtenissen ziet, hebt u een verbindings probleem. Het gebeurtenis logboek bericht bevat informatie over de forest waar u een probleem ondervindt. Zie [connectiviteits probleem](#connectivity problem)voor meer informatie.
+4. Kijk in het gebeurtenislogboek naar fouten. Zoek naar de volgende gebeurtenissen, die op een probleem zouden wijzen:
+    * Bron: "Directory synchronization" ID: 0, 611, 652, 655 Als u deze gebeurtenissen ziet, hebt u een verbindingsprobleem. Het gebeurtenislogboekbericht bevat forestinformatie waar u een probleem hebt. Zie [Verbindingsprobleem](#connectivity problem)voor meer informatie .
 
-5. Als u geen heartbeat ziet of als niets anders is gewerkt, voert u [een volledige synchronisatie van alle wacht woorden](#trigger-a-full-sync-of-all-passwords)uit. Voer het script slechts één keer uit.
+5. Als u geen hartslag ziet of als er niets anders heeft gewerkt, voert u [Trigger een volledige synchronisatie van alle wachtwoorden](#trigger-a-full-sync-of-all-passwords)uit. Voer het script slechts één keer uit.
 
-6. Zie het gedeelte problemen oplossen met één object dat geen woorden synchroniseert.
+6. Zie de sectie Problemen met één object dat geen wachtwoorden synchroniseert.
 
-### <a name="connectivity-problems"></a>Connectiviteits problemen
+### <a name="connectivity-problems"></a>Verbindingsproblemen
 
-Hebt u verbinding met Azure AD?
+Heeft u connectiviteit met Azure AD?
 
-Heeft het account de vereiste machtigingen voor het lezen van de wacht woord-hashes in alle domeinen? Als u verbinding maken met behulp van snelle instellingen hebt geïnstalleerd, zijn de machtigingen al correct. 
+Heeft het account machtigingen nodig om de wachtwoordhashes in alle domeinen te lezen? Als u Connect hebt geïnstalleerd met behulp van Express-instellingen, moeten de machtigingen al correct zijn. 
 
-Als u aangepaste installatie hebt gebruikt, stelt u de machtigingen hand matig in door het volgende te doen:
+Als u aangepaste installatie hebt gebruikt, stelt u de machtigingen handmatig in door het volgende te doen:
     
-1. Als u wilt zoeken naar het account dat wordt gebruikt door de Active Directory connector, start u **Synchronization Service Manager**. 
+1. Als u het account wilt zoeken dat wordt gebruikt door de Active Directory-connector, start u **Synchronisatieservicebeheer**. 
  
-2. Ga naar **connectors**en zoek vervolgens naar het on-premises Active Directory forest dat u wilt oplossen. 
+2. Ga naar **Connectors**en zoek vervolgens naar het on-premises Active Directory-forest dat u probleemoplossing hebt. 
  
-3. Selecteer de connector en klik vervolgens op **Eigenschappen**. 
+3. Selecteer de connector en klik op **Eigenschappen**. 
  
-4. Ga naar **verbinding maken met Active Directory forest**.  
+4. Ga naar **Verbinding maken met Active Directory Forest**.  
     
-    ![Account dat wordt gebruikt door Active Directory connector](./media/tshoot-connect-password-hash-synchronization/connectoraccount.png)  
-    Noteer de gebruikers naam en het domein waarin het account zich bevindt.
+    ![Account dat wordt gebruikt door Active Directory-connector](./media/tshoot-connect-password-hash-synchronization/connectoraccount.png)  
+    Let op de gebruikersnaam en het domein waar het account zich bevindt.
     
-5. Start **Active Directory gebruikers en computers**en controleer of het account dat u eerder hebt gevonden, de volgende machtigingen heeft die zijn ingesteld in de hoofdmap van alle domeinen in uw forest:
-    * Directory wijzigingen repliceren
-    * Wijzigingen in Directory repliceren
+5. Start **Active Directory: gebruikers en computers**en controleer vervolgens of het account dat u eerder hebt gevonden, de follow-machtigingen heeft ingesteld bij de hoofdmap van alle domeinen in uw forest:
+    * Mapwijzigingen repliceren
+    * Mapwijzigingen repliceren Alles
 
-6. Zijn de domein controllers bereikbaar voor Azure AD Connect? Als de Connect-server geen verbinding kan maken met alle domein controllers, configureert u **alleen voorkeurs domein controller gebruiken**.  
+6. Zijn de domeincontrollers bereikbaar via Azure AD Connect? Als de Connect-server geen verbinding kan maken met alle domeincontrollers, configureert u **Alleen de voorkeursdomeincontroller**.  
     
-    ![Domein controller die wordt gebruikt door Active Directory connector](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
+    ![Domeincontroller die wordt gebruikt door Active Directory-connector](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
     
-7. Ga terug naar **Synchronization Service Manager** en **Configureer de Directory partitie**. 
+7. Ga terug naar **Synchronisatieservicebeheer** en **Mappartitie configureren**. 
  
-8. Selecteer uw domein in **Directory partities selecteren**, schakel het selectie vakje **alleen voorkeurs domein controllers gebruiken** in en klik vervolgens op **configureren**. 
+8. Schakel uw domein in **Mappartities selecteren**in, schakel het selectievakje **Alleen het gewenste domeincontrollers gebruiken** in en klik op **Configureren**. 
 
-9. Geef in de lijst de domein controllers op waarmee verbinding moet worden gebruikt voor wachtwoord synchronisatie. Dezelfde lijst wordt ook gebruikt voor importeren en exporteren. Voer deze stappen uit voor al uw domeinen.
+9. Voer in de lijst de domeincontrollers in die Connect moet gebruiken voor wachtwoordsynchronisatie. Dezelfde lijst wordt ook gebruikt voor import en export. Doe deze stappen voor al uw domeinen.
 
-10. Als het script laat zien dat er geen heartbeat is, voert u het script uit om [een volledige synchronisatie van alle wacht woorden te activeren](#trigger-a-full-sync-of-all-passwords).
+10. Als uit het script blijkt dat er geen hartslag is, voert u het script uit in [Trigger een volledige synchronisatie van alle wachtwoorden.](#trigger-a-full-sync-of-all-passwords)
 
-## <a name="one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps"></a>Het ene object synchroniseert geen wacht woorden: hand matige stappen voor probleem oplossing
+## <a name="one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps"></a>Eén object synchroniseert geen wachtwoorden: handmatige stappen voor het oplossen van problemen
 
-U kunt eenvoudig problemen met wachtwoord-hash-synchronisatie oplossen door de status van een object te bekijken.
+U problemen met wachtwoordhashsynchronisatie eenvoudig oplossen door de status van een object te controleren.
 
-1. Zoek in **Active Directory gebruikers en computers**naar de gebruiker en controleer vervolgens of het selectie vakje **gebruiker moet wacht woord bij volgende aanmelding wijzigen** is uitgeschakeld.  
+1. Zoek in **Active Directory Gebruikers en computers**naar de gebruiker en controleer vervolgens of het selectievakje Gebruiker bij de volgende **aanmelding wachtwoord moet wijzigen.**  
 
-    ![Active Directory productief wacht woorden](./media/tshoot-connect-password-hash-synchronization/adprodpassword.png)  
+    ![Active Directory productieve wachtwoorden](./media/tshoot-connect-password-hash-synchronization/adprodpassword.png)  
 
-    Als het selectie vakje is ingeschakeld, vraagt u de gebruiker om zich aan te melden en het wacht woord te wijzigen. Tijdelijke wacht woorden worden niet gesynchroniseerd met Azure AD.
+    Als het selectievakje is ingeschakeld, vraagt u de gebruiker zich aan te melden en het wachtwoord te wijzigen. Tijdelijke wachtwoorden worden niet gesynchroniseerd met Azure AD.
 
-2. Als het wacht woord goed is in Active Directory, volgt u de gebruiker in de synchronisatie-engine. Door de gebruiker van on-premises Active Directory naar Azure AD te volgen, kunt u zien of er een beschrijvende fout voor het object is.
+2. Als het wachtwoord er correct uitziet in Active Directory, volgt u de gebruiker in de synchronisatieengine. Door de gebruiker te volgen van on-premises Active Directory naar Azure AD, u zien of er een beschrijvende fout op het object is.
 
-    a. Start de [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md).
+    a. Start de [Synchronisatieservicebeheer](how-to-connect-sync-service-manager-ui.md).
 
-    b. Klik op **connectors**.
+    b. Klik **op Connectors**.
 
-    c. Selecteer de **Active Directory-Connector** waar de gebruiker zich bevindt.
+    c. Selecteer de **Active Directory Connector** waar de gebruiker zich bevindt.
 
-    d. Selecteer **ruimte Zoek connector**.
+    d. Selecteer **zoekconnectorruimte**.
 
-    e. Selecteer in het vak **bereik** de optie **DN of anker**en voer vervolgens de volledige DN in van de gebruiker die u wilt oplossen.
+    e. Selecteer **DN** **of Anchor**in het vak Scope en voer de volledige DN in van de gebruiker die u probleemoplossing oplost.
 
-    ![Zoeken naar gebruiker in connector ruimte met DN](./media/tshoot-connect-password-hash-synchronization/searchcs.png)  
+    ![Zoeken naar gebruiker in connectorruimte met DN](./media/tshoot-connect-password-hash-synchronization/searchcs.png)  
 
-    f. Zoek naar de gebruiker die u zoekt en klik vervolgens op **Eigenschappen** om alle kenmerken weer te geven. Als de gebruiker zich niet in het Zoek resultaat bevindt, controleert u uw [filter regels](how-to-connect-sync-configure-filtering.md) en zorgt u ervoor dat u [Toep assen en wijzigingen controleren](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes) zodat de gebruiker wordt weer gegeven in verbinding maken.
+    f. Zoek de gewenste gebruiker en klik op **Eigenschappen** om alle kenmerken weer te geven. Als de gebruiker zich niet in het zoekresultaat bevindt, controleert u uw [filterregels](how-to-connect-sync-configure-filtering.md) en controleert u of u [Wijzigingen uitvoert en wijzigt](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes) voordat de gebruiker in Verbinding wordt weergegeven.
 
-    g. Klik op **logbestand**om de details van het wachtwoord synchronisatie van het object voor de afgelopen week weer te geven.  
+    g. Als u de wachtwoordsynchronisatiegegevens van het object van de afgelopen week wilt bekijken, klikt u op **Aanmelden**.  
 
-    ![Details van object logboek](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
+    ![Details van objectlogboeken](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
-    Als het object logboek leeg is, kan Azure AD Connect de wacht woord-hash niet lezen van Active Directory. Ga door met het oplossen van problemen met verbindings fouten. Als u een andere waarde dan **geslaagd**ziet, raadpleegt u de tabel in het [logboek voor wachtwoord synchronisatie](#password-sync-log).
+    Als het objectlogboek leeg is, kan Azure AD Connect de wachtwoordhash van Active Directory niet lezen. Doorgaan met het oplossen van problemen met verbindingsfouten. Als u een andere waarde dan **succes**ziet, raadpleegt u de tabel in [het logboek Wachtwoordsynchronisatie](#password-sync-log).
 
-    h. Selecteer het tabblad **afkomst** en controleer of ten minste één synchronisatie regel in de kolom **PasswordSync** is ingesteld op **True**. In de standaard configuratie bevindt de naam van de synchronisatie regel zich **in AD-User AccountEnabled**.  
+    h. Selecteer het **tabblad regelen** en controleer of ten minste één synchronisatieregel in de kolom **PasswordSync** **Waar**is. In de standaardconfiguratie is de naam van de synchronisatieregel **In van AD - Gebruikersaccountingeschakeld**.  
 
-    ![Afkomst informatie over een gebruiker](./media/tshoot-connect-password-hash-synchronization/cspasswordsync.png)  
+    ![Regelinformatie over een gebruiker](./media/tshoot-connect-password-hash-synchronization/cspasswordsync.png)  
 
-    i. Klik op **Eigenschappen van omgekeerd object** om een lijst met gebruikers kenmerken weer te geven.  
+    i. Klik **op Metaverse objecteigenschappen** om een lijst met gebruikerskenmerken weer te geven.  
 
-    ![Omgekeerde gegevens](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
+    ![Metaverse informatie](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
 
-    Controleer of er geen **cloudFiltered** -kenmerk aanwezig is. Zorg ervoor dat de domein kenmerken (domainFQDN en domainNetBios) de verwachte waarden hebben.
+    Controleer of er geen **cloudFiltered-kenmerk** aanwezig is. Zorg ervoor dat de domeinkenmerken (domainFQDN en domainNetBios) de verwachte waarden hebben.
 
-    j. Klik op het tabblad **connectors** . Zorg ervoor dat u connectors ziet op zowel on-premises Active Directory als Azure AD.
+    j. Klik op het tabblad **Connectors.** Controleer of er connectors voor zowel on-premises Active Directory als Azure AD worden weergegeven.
 
-    ![Omgekeerde gegevens](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
+    ![Metaverse informatie](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
 
-    k. Selecteer de rij die Azure AD vertegenwoordigt, klik op **Eigenschappen**en klik vervolgens op het tabblad **afkomst** . Het object voor de connector ruimte moet een uitgaande regel in de kolom **PasswordSync** hebben ingesteld op **True**. In de standaard configuratie is de naam van de synchronisatie regel **voor Aad-gebruiker toevoegen**.  
+    k. Selecteer de rij die Azure AD vertegenwoordigt, klik op **Eigenschappen**en klik op het tabblad **Regel.** Het object connectorruimte moet een regel uitgaan in de kolom **PasswordSync** die is ingesteld op **True**. In de standaardconfiguratie is de naam van de synchronisatieregel **Uit bij AAD - Gebruiker Join**.  
 
-    ![Het dialoog venster Eigenschappen van connector ruimte-object](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
+    ![Dialoogvenster Eigenschappen van objectverbindingsruimte](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
 
-### <a name="password-sync-log"></a>Wachtwoord synchronisatie logboek
+### <a name="password-sync-log"></a>Logboek voor wachtwoordsynchronisatie
 
-De kolom Status kan de volgende waarden hebben:
+De statuskolom kan de volgende waarden hebben:
 
 | Status | Beschrijving |
 | --- | --- |
-| Geslaagd |Het wacht woord is gesynchroniseerd. |
-| FilteredByTarget |Wacht woord is ingesteld op **gebruiker moet wacht woord bij volgende aanmelding wijzigen**. Het wacht woord is niet gesynchroniseerd. |
-| NoTargetConnection |Geen object in de tekst of de ruimte van de Azure AD-connector. |
-| SourceConnectorNotPresent |Er is geen object gevonden in de on-premises Active Directory-Connector ruimte. |
-| TargetNotExportedToDirectory |Het object in de ruimte van de Azure AD-connector is nog niet geëxporteerd. |
-| MigratedCheckDetailsForMoreInfo |De logboek vermelding is gemaakt voor het maken van 1.0.9125.0 en wordt weer gegeven in de verouderde status. |
-| Fout |De service heeft een onbekende fout geretourneerd. |
-| Onbekend |Er is een fout opgetreden tijdens het verwerken van een batch wacht woord-hashes.  |
-| MissingAttribute |Specifieke kenmerken (bijvoorbeeld Kerberos-hash) die vereist zijn voor Azure AD Domain Services zijn niet beschikbaar. |
-| RetryRequestedByTarget |Specifieke kenmerken (bijvoorbeeld Kerberos-hash) die vereist zijn voor Azure AD Domain Services, zijn niet eerder beschikbaar. Er wordt een poging gedaan om de wacht woord-hash van de gebruiker te synchroniseren. |
+| Geslaagd |Wachtwoord is gesynchroniseerd. |
+| FilteredByTarget |Wachtwoord is ingesteld op **Gebruiker moet wachtwoord wijzigen bij volgende aanmelding**. Wachtwoord is niet gesynchroniseerd. |
+| NoTargetConnection |Geen object in de metaverse of in de Azure AD-connectorruimte. |
+| SourceConnectorniet aanwezig |Er is geen object gevonden in de on-premises Active Directory-connectorruimte. |
+| TargetNotExportedToDirectory TargetNotExportedToDirectory TargetNotExportedToDirectory TargetNot |Het object in de Azure AD-connectorruimte is nog niet geëxporteerd. |
+| MigratedCheckDetailsForMoreInfo |Logboekinvoer is gemaakt vóór build 1.0.9125.0 en wordt weergegeven in de oude status. |
+| Fout |Service heeft een onbekende fout geretourneerd. |
+| Onbekend |Er is een fout opgetreden tijdens het verwerken van een batch wachtwoordhashes.  |
+| Ontbrekend attribuut |Specifieke kenmerken (bijvoorbeeld Kerberos-hash) die zijn vereist door Azure AD Domain Services, zijn niet beschikbaar. |
+| RetryRequestedByTarget |Specifieke kenmerken (bijvoorbeeld Kerberos-hash) die zijn vereist door Azure AD Domain Services, waren niet eerder beschikbaar. Er wordt geprobeerd om de wachtwoordhash van de gebruiker opnieuw te synchroniseren. |
 
-## <a name="scripts-to-help-troubleshooting"></a>Scripts om problemen op te lossen
+## <a name="scripts-to-help-troubleshooting"></a>Scripts om probleemoplossing te helpen
 
-### <a name="get-the-status-of-password-sync-settings"></a>De status van instellingen voor wachtwoord synchronisatie ophalen
+### <a name="get-the-status-of-password-sync-settings"></a>De status van instellingen voor wachtwoordsynchronisatie opdoen
 
 ```powershell
 Import-Module ADSync
@@ -421,12 +421,12 @@ if ($adConnectors -eq $null)
 Write-Host
 ```
 
-#### <a name="trigger-a-full-sync-of-all-passwords"></a>Een volledige synchronisatie van alle wacht woorden activeren
+#### <a name="trigger-a-full-sync-of-all-passwords"></a>Een volledige synchronisatie van alle wachtwoorden activeren
 
 > [!NOTE]
-> Voer dit script slechts één keer uit. Als u dit meer dan eens moet doen, is het probleem iets anders. Neem contact op met micro soft ondersteuning om het probleem op te lossen.
+> Voer dit script slechts één keer uit. Als je nodig hebt om het meer dan eens uit te voeren, iets anders is het probleem. Neem contact op met Microsoft-ondersteuning om het probleem op te lossen.
 
-U kunt een volledige synchronisatie van alle wacht woorden activeren met behulp van het volgende script:
+U een volledige synchronisatie van alle wachtwoorden activeren met behulp van het volgende script:
 
 ```powershell
 $adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"
@@ -444,6 +444,6 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wachtwoord hash synchronisatie implementeren met Azure AD Connect Sync](how-to-connect-password-hash-synchronization.md)
-* [Azure AD Connect synchronisatie: synchronisatie opties aanpassen](how-to-connect-sync-whatis.md)
+* [Synchronisatie van wachtwoordhash implementeren met Azure AD Connect-synchronisatie](how-to-connect-password-hash-synchronization.md)
+* [Synchronisatie van Azure AD Connect: synchronisatieopties aanpassen](how-to-connect-sync-whatis.md)
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)

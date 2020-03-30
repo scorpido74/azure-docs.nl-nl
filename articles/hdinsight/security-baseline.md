@@ -1,6 +1,6 @@
 ---
-title: Azure-beveiligings basislijn voor HDInsight
-description: Azure-beveiligings basislijn voor HDInsight
+title: Azure-beveiligingsbasislijn voor HDInsight
+description: Azure-beveiligingsbasislijn voor HDInsight
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
@@ -8,44 +8,44 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c3452fc68f7add40979513d3e3956f1c93e327f0
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: eddfcacd01a67fffa8e3e992e021ed1771d25944
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943953"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471333"
 ---
-# <a name="azure-security-baseline-for-hdinsight"></a>Azure-beveiligings basislijn voor HDInsight
+# <a name="azure-security-baseline-for-hdinsight"></a>Azure-beveiligingsbasislijn voor HDInsight
 
-De Azure-beveiligings basislijn voor HDInsight bevat aanbevelingen waarmee u de beveiligings postuur van uw implementatie kunt verbeteren.
+De Azure Security Baseline voor HDInsight bevat aanbevelingen waarmee u de beveiligingshouding van uw implementatie verbeteren.
 
-De basis lijn voor deze services wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
+De basislijn voor deze services is afkomstig van de [Azure Security Benchmark versie 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview), die aanbevelingen geeft over hoe u uw cloudoplossingen op Azure beveiligen met onze richtlijnen voor best practices.
 
-Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)voor meer informatie.
+Zie [overzicht azure security baselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)voor meer informatie.
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-*Zie [beveiligings beheer: netwerk beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)voor meer informatie.*
+*Zie [Beveiligingsbeheer: netwerkbeveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)voor meer informatie.*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Beveilig bronnen met behulp van netwerk beveiligings groepen of Azure Firewall op de Virtual Network
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Resources beveiligen met netwerkbeveiligingsgroepen of Azure Firewall in uw virtuele netwerk
 
-**Richt lijnen**: de beveiliging van een perimeter netwerk in azure HDInsight wordt bereikt via virtuele netwerken. Een Enter prise-beheerder kan een cluster maken in een virtueel netwerk en een netwerk beveiligings groep (NSG) gebruiken om de toegang tot het virtuele netwerk te beperken. Alleen de toegestane IP-adressen in de regels voor binnenkomende netwerk beveiligings groepen kunnen communiceren met het Azure HDInsight-cluster. Deze configuratie biedt een perimeter beveiliging. Alle clusters die in een virtueel netwerk zijn geïmplementeerd, hebben ook een persoonlijk eind punt dat wordt omgezet in een privé-IP-adres in de Virtual Network voor persoonlijke HTTP-toegang tot de cluster gateways.
+**Richtlijnen**: Perimeterbeveiliging in Azure HDInsight wordt bereikt via virtuele netwerken. Een bedrijfsbeheerder kan een cluster binnen een virtueel netwerk maken en een netwerkbeveiligingsgroep (NSG) gebruiken om de toegang tot het virtuele netwerk te beperken. Alleen de toegestane IP-adressen in de regels van de binnenkomende netwerkbeveiligingsgroep kunnen communiceren met het Azure HDInsight-cluster. Deze configuratie biedt perimeterbeveiliging. Alle clusters die in een virtueel netwerk worden geïmplementeerd, hebben ook een privéeindpunt dat wordt opgelost naar een privé-IP-adres in het virtuele netwerk voor privé-HTTP-toegang tot de clustergateways.
 
 
-Azure HDInsight implementeren in een Virtual Network en beveiligen met een netwerk beveiligings groep:
+Azure HDInsight implementeren in een virtueel netwerk en beveiligen met een netwerkbeveiligingsgroep:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: de configuratie en het verkeer van Vnets, subnetten en Nic's bewaken en vastleggen
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: De configuratie en het verkeer van Vnets, Subnetten en NIC's controleren en registreren
 
-**Hulp**: gebruik Azure Security Center en herstel aanbevelingen voor netwerk beveiliging voor het virtuele netwerk, het subnet en de netwerk beveiligings groep die wordt gebruikt voor het beveiligen van uw Azure HDInsight-cluster. Schakel de stroom logboeken voor netwerk beveiligings groepen (NSG) in en verzend logboeken naar een Azure Storage account naar Traffic audit. U kunt ook NSG-stroom logboeken naar een Azure Log Analytics-werk ruimte verzenden en Azure Traffic Analytics gebruiken om inzicht te krijgen in de verkeers stroom in uw Azure-Cloud. Enkele voor delen van Azure Traffic Analytics zijn de mogelijkheid om netwerk activiteiten te visualiseren en HOTS pots te identificeren, beveiligings dreigingen te identificeren, verkeers patronen te begrijpen en netwerkloze configuraties te lokaliseren.
+**Richtlijnen:** Gebruik Azure Security Center en herstel de aanbevelingen voor netwerkbeveiliging voor de virtuele netwerk-, subnet- en netwerkbeveiligingsgroep die wordt gebruikt om uw Azure HDInsight-cluster te beveiligen. Schakel nsg-stroomlogboeken (Network Security Group) in en stuur logboeken naar een Azure Storage Account naar verkeerscontrole. U ook NSG-stroomlogboeken naar een Azure Log Analytics Workspace verzenden en Azure Traffic Analytics gebruiken om inzicht te bieden in de verkeersstroom in uw Azure-cloud. Enkele voordelen van Azure Traffic Analytics zijn de mogelijkheid om netwerkactiviteiten te visualiseren en hotspots te identificeren, beveiligingsbedreigingen te identificeren, verkeersstroompatronen te begrijpen en foutieve netwerkconfiguraties te lokaliseren.
 
 
-NSG-stroom logboeken inschakelen:
+NSG-stroomlogboeken inschakelen:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
@@ -55,25 +55,25 @@ Azure Traffic Analytics inschakelen en gebruiken:
 https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
-Informatie over netwerk beveiliging van Azure Security Center:
+Inzicht in netwerkbeveiliging van Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="13-protect-critical-web-applications"></a>1,3: essentiële webtoepassingen beveiligen
+### <a name="13-protect-critical-web-applications"></a>1.3: Kritieke webapplicaties beschermen
 
-**Richt lijnen**: niet van toepassing; Bench Mark is bedoeld voor Azure app service-of COMPUTE-resources die webtoepassingen hosten.
+**Richtsnoeren**: Niet van toepassing; benchmark is bedoeld voor Azure Apps Service of compute resources die webtoepassingen hosten.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: communicatie met bekende schadelijke IP-adressen weigeren
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Communicatie met bekende kwaadaardige IP-adressen weigeren
 
-**Richt lijnen**: voor beveiliging van DDoS-aanvallen schakelt u Azure DDoS Standard-beveiliging in op het virtuele netwerk waar uw Azure HDInsight is geïmplementeerd. Gebruik Azure Security Center geïntegreerde bedreigings informatie om communicatie met bekende of ongebruikte Internet-IP-adressen te weigeren.
+**Richtlijnen:** Voor beveiligingen tegen DDoS-aanvallen schakelt u Azure DDoS-standaardbeveiliging in op het virtuele netwerk waar uw Azure HDInsight is geïmplementeerd. Gebruik geïntegreerde bedreigingsinformatie van Azure Security Center om communicatie met bekende kwaadaardige of ongebruikte internetIP-adressen te weigeren.
 
 
 DDoS-beveiliging configureren:
@@ -81,83 +81,83 @@ DDoS-beveiliging configureren:
 https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
 
-Meer informatie over Azure Security Center geïntegreerde bedreigings informatie:
+Begrijp azure security center integrated threat intelligence:
 
 https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1,5: netwerk pakketten en stroom logboeken vastleggen
+### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Netwerkpakketten en stroomlogboeken opnemen
 
-**Hulp**: Schakel de stroom logboeken voor netwerk beveiligings groepen (NSG) in voor de NSG die zijn gekoppeld aan het subnet dat wordt gebruikt om uw Azure HDInsight-cluster te beveiligen. Registreer de NSG-stroom Logboeken in een Azure Storage-account om stroom records te genereren. Als dit nodig is voor het onderzoeken van afwijkende activiteiten, schakelt u Azure Network Watcher pakket vastleggen in.
+**Richtlijnen:** NSG-stroomlogboeken (Network Security Group) inschakelen voor het NSG-subnet dat wordt gebruikt om uw Azure HDInsight-cluster te beschermen. Neem de NSG-stroomlogboeken op in een Azure Storage-account om stroomrecords te genereren. Schakel Azure Network Watcher-pakketopname in indien nodig voor het onderzoeken van afwijkende activiteiten.
 
 
-NSG-stroom logboeken inschakelen:
+NSG-stroomlogboeken inschakelen:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
 
-Network Watcher inschakelen:
+Zo schakel je Network Watcher in:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: op netwerk gebaseerde inbreuk detectie/indringings systemen (ID'S/IP-adressen) implementeren
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Netwerkgebaseerde inbraakdetectie-/inbraakpreventiesystemen (IDS/IPS) implementeren
 
-**Richt lijnen**: er kan worden voldaan aan de Azure security control id 1,1; Implementeer Azure HDInsight-cluster in een virtueel netwerk en Beveilig het met een netwerk beveiligings groep (NSG).
+**Richtlijnen**: Vereiste kan worden voldaan aan Azure-beveiligingscontrole-id 1.1; Implementeer Azure HDInsight-cluster in een virtueel netwerk en beveilig met een NETWERKbeveiligingsgroep (NSG).
 
-Er zijn verschillende afhankelijkheden voor Azure HDInsight waarvoor binnenkomend verkeer is vereist. Het inkomende beheer verkeer kan niet via een firewall apparaat worden verzonden. De bron adressen voor het vereiste beheer verkeer worden bekend en gepubliceerd. Maak met deze informatie regels voor netwerk beveiligings groepen om alleen verkeer vanaf vertrouwde locaties toe te staan, zodat inkomend verkeer naar de clusters kan worden beveiligd.
+Er zijn verschillende afhankelijkheden voor Azure HDInsight waarvoor binnenkomend verkeer nodig is. Het binnenkomende beheerverkeer kan niet via een firewall-apparaat worden verzonden. De bronadressen voor vereist beheerverkeer zijn bekend en gepubliceerd. Maak regels voor netwerkbeveiliging met deze informatie om verkeer van alleen vertrouwde locaties toe te staan en binnenkomend verkeer naar de clusters te beveiligen.
 
-HDInsight implementeren in een Virtual Network en beveiligen met een netwerk beveiligings groep: https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
+HDInsight implementeren binnen een virtueel netwerk en beveiligd met een netwerkbeveiligingsgroep:https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
-Informatie over HDInsight-afhankelijkheden en firewall gebruik: https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
+HdInsight-afhankelijkheden en firewallgebruik begrijpen:https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
 
-IP-adressen van HDInsight-beheer: https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses
+IP-adressen van HDInsight-beheer:https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="17-manage-traffic-to-web-applications"></a>1,7: verkeer naar webtoepassingen beheren
+### <a name="17-manage-traffic-to-web-applications"></a>1.7: Verkeer naar webtoepassingen beheren
 
-**Richt lijnen**: niet van toepassing; Bench Mark is bedoeld voor Azure app service-of COMPUTE-resources die webtoepassingen hosten.
+**Richtsnoeren**: Niet van toepassing; benchmark is bedoeld voor Azure Apps Service of compute resources die webtoepassingen hosten.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: de complexiteit en administratieve overhead van netwerk beveiligings regels minimaliseren
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Minimaliseer de complexiteit en administratieve overhead van netwerkbeveiligingsregels
 
-**Richt lijnen**: gebruik Tags voor virtuele netwerken om netwerk toegangs beheer te definiëren voor netwerk beveiligings groepen (NSG) die zijn gekoppeld aan het subnet waarin uw Azure HDInsight-cluster is geïmplementeerd. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de service label (bijvoorbeeld ApiManagement) op te geven in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
+**Richtlijnen:** Gebruik virtuele netwerkservicetags om netwerktoegangsbesturingselementen te definiëren voor netwerkbeveiligingsgroepen (NSG) die zijn gekoppeld aan het subnet waarin uw Azure HDInsight-cluster is geïmplementeerd. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de servicetag (bijvoorbeeld ApiManagement) op te geven in het juiste bron- of bestemmingsveld van een regel, u het verkeer voor de desbetreffende service toestaan of weigeren. Microsoft beheert de adresvoorvoegsels van de servicetag en werkt de servicetag automatisch bij wanneer adressen worden gewijzigd.
 
 
-Service tags voor Azure HDInsight begrijpen en gebruiken:
+Servicetags voor Azure HDInsight begrijpen en gebruiken:
 
 https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: standaard beveiligings configuraties voor netwerk apparaten onderhouden
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Standaardbeveiligingsconfiguraties voor netwerkapparaten onderhouden
 
-**Richt lijnen**: standaard beveiligings configuraties definiëren en implementeren voor netwerk bronnen die betrekking hebben op uw Azure HDInsight-cluster. Gebruik Azure Policy aliassen in de naam ruimten ' micro soft. HDInsight ' en ' micro soft. Network ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure HDInsight-cluster te controleren of af te dwingen.
-
-
-U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, RBAC-besturings elementen en-beleid, in één blauw definitie te voorzien. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
+**Richtlijnen:** standaardbeveiligingsconfiguraties definiëren en implementeren voor netwerkbronnen die gerelateerd zijn aan uw Azure HDInsight-cluster. Gebruik Azure Policy-aliassen in de naamruimten 'Microsoft.HDInsight' en 'Microsoft.Network' om aangepaste beleidsregels te maken om de netwerkconfiguratie van uw Azure HDInsight-cluster te controleren of af te dwingen.
 
 
-Beschik bare Azure Policy aliassen weer geven:
+U Azure Blueprints ook gebruiken om azure-implementaties op grote schaal te vereenvoudigen door belangrijke omgevingsartefacten te verpakken, zoals Azure Resource Manager-sjablonen, RBAC-besturingselementen en beleidsregels, in één blauwdrukdefinitie. Pas de blauwdruk eenvoudig toe op nieuwe abonnementen en omgevingen en stem de besturing en het beheer af via versiebeheer.
+
+
+Beschikbare Azure-beleidsaliassen weergeven:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-Azure Policy configureren en beheren:
+Azure-beleid configureren en beheren:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -166,19 +166,19 @@ Een Azure Blueprint maken:
 
 https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="110-document-traffic-configuration-rules"></a>1,10: configuratie regels voor het document verkeer
+### <a name="110-document-traffic-configuration-rules"></a>1.10: Regels voor documentconfiguratie
 
-**Hulp**: Labels gebruiken voor netwerk beveiligings groepen (nsg's) en andere bronnen die betrekking hebben op netwerk beveiliging en verkeers stroom die zijn gekoppeld aan uw Azure HDInsight-cluster. Voor afzonderlijke NSG-regels gebruikt u het veld Beschrijving voor het opgeven van de bedrijfs behoefte en/of-duur (etc.) voor alle regels die verkeer van of naar een netwerk toestaan.
-
-
-Gebruik een van de ingebouwde Azure-beleids definities die betrekking hebben op labelen, zoals ' vereist label en de waarde ', om ervoor te zorgen dat alle resources met tags worden gemaakt en u op de hoogte moet zijn van bestaande niet-gelabelde resources.
+**Richtlijnen:** Gebruik tags voor de netwerkbeveiligingsgroep (NSG's) en andere bronnen met betrekking tot netwerkbeveiliging en verkeersstroom die zijn gekoppeld aan uw Azure HDInsight-cluster. Voor afzonderlijke NSG-regels gebruikt u het veld 'Beschrijving' om de bedrijfsbehoefte en/of -duur (enz.) op te geven voor regels die verkeer van/naar een netwerk toestaan.
 
 
-U kunt Azure PowerShell of de Azure-opdracht regel interface (CLI) gebruiken om op basis van hun labels acties te zoeken of uit te voeren op resources.
+Gebruik een van de ingebouwde Azure-beleidsdefinities met betrekking tot tags, zoals 'Tag en de waarde ervan vereisen' om ervoor te zorgen dat alle resources met tags worden gemaakt en om u op de hoogte te stellen van bestaande niet-gelabelde bronnen.
+
+
+U Azure PowerShell of Azure command-line interface (CLI) gebruiken om acties op te zoeken of uit te voeren op basis van resources op basis van hun tags.
 
 
 Tags maken en gebruiken:
@@ -191,53 +191,53 @@ Een virtueel netwerk maken:
 https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
 
-Een NSG maken met een beveiligings configuratie:
+Een NSG maken met een Beveiligingsconfig:
 
 https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: gebruik automatische hulpprogram ma's om netwerk bron configuraties te bewaken en wijzigingen te detecteren
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Gebruik geautomatiseerde hulpprogramma's om netwerkbronconfiguraties te bewaken en wijzigingen te detecteren
 
-**Hulp**: Azure-activiteiten logboek gebruiken om netwerk resource configuraties te bewaken en wijzigingen te detecteren voor netwerk bronnen die betrekking hebben op uw Azure HDInsight-implementaties. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke netwerk bronnen plaatsvinden.
+**Richtlijnen:** Gebruik Azure Activity Log om netwerkbronconfiguraties te bewaken en wijzigingen te detecteren voor netwerkbronnen die verband houden met uw Azure HDInsight-implementaties. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen plaatsvinden in kritieke netwerkbronnen.
 
 
-Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen:
+Azure Activity Log-gebeurtenissen weergeven en ophalen:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
 
-Waarschuwingen maken in Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Waarschuwingen maken in Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
 
-*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Zie [Beveiligingscontrole: Logboekregistratie en -controle](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)voor meer informatie.*
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2,1: goedgekeurde tijd synchronisatie bronnen gebruiken
+### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Gebruik goedgekeurde tijdsynchronisatiebronnen
 
-**Richt lijnen**: micro soft onderhoudt tijd bronnen voor Azure HDInsight-cluster onderdelen, u kunt de tijd synchronisatie voor uw reken implementaties bijwerken.
+**Richtlijnen**: Microsoft onderhoudt tijdsbronnen voor Azure HDInsight-clustercomponenten, u tijdsynchronisatie bijwerken voor uw compute-implementaties.
 
 
-Tijd synchronisatie voor Azure Compute-resources configureren:
+Tijdsynchronisatie configureren voor Azure-rekenbronnen:
 
 https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: micro soft
+**Verantwoordelijkheid**: Microsoft
 
-### <a name="22-configure-central-security-log-management"></a>2,2: Centraal beveiligings logboek beheer configureren
+### <a name="22-configure-central-security-log-management"></a>2.2: Centraal beheer van beveiligingslogboeken configureren
 
-**Richt lijnen**: u kunt uw Azure HDInsight-cluster onboarden om Azure monitor te genereren voor het verzamelen van beveiligings gegevens die door het cluster zijn gegenereerd. Gebruik aangepaste query's om bedreigingen in de omgeving te detecteren en erop te reageren. 
+**Richtlijnen:** U uw Azure HDInsight-cluster aan boord nemen van Azure Monitor om beveiligingsgegevens die door het cluster worden gegenereerd, te verzamelen. Maak gebruik van aangepaste query's om bedreigingen in de omgeving te detecteren en erop te reageren. 
 
 
-Een Azure HDInsight-cluster onboarden naar Azure Monitor:
+Een Azure HDInsight-cluster aan boord maken van Azure HDInsight naar Azure Monitor:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial
 
@@ -246,80 +246,80 @@ Aangepaste query's maken voor een Azure HDInsight-cluster:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-use-queries
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: controle logboek registratie inschakelen voor Azure-resources
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Controlelogboekregistratie inschakelen voor Azure-resources
 
-**Hulp**: Schakel Azure monitor in voor het HDInsight-cluster, stuur het naar een log Analytics-werk ruimte. Hiermee worden relevante cluster informatie en metrische gegevens van het besturings systeem geregistreerd voor alle Azure HDInsight-cluster knooppunten.
+**Richtlijnen**: Azure Monitor inschakelen voor het HDInsight-cluster, doorsturen naar een Log Analytics-werkruimte. Hiermee worden relevante clusterinformatie en OS-statistieken voor alle Azure HDInsight-clusterknooppunten bijgedeeld.
 
 
-Logboek registratie inschakelen voor HDInsight-cluster:
+Logboekregistratie inschakelen voor HDInsight Cluster:
 
  https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial
 
 
-Informatie over het uitvoeren van een query op HDInsight-logboeken:
+HdInsight-logboeken opvragen:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-use-queries
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: beveiligings logboeken verzamelen van besturings systemen
+### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: Beveiligingslogboeken verzamelen van besturingssystemen
 
-**Richt lijnen**: onboarding van Azure HDInsight-cluster naar Azure monitor. Zorg ervoor dat in de Log Analytics-werk ruimte de Bewaar periode voor logboek registratie is ingesteld op basis van de nalevings voorschriften van uw organisatie.
+**Richtlijnen**: Azure HDInsight-cluster ingebruikmaken voor Azure Monitor. Controleer of de gebruikte log analytics-werkruimte de bewaartermijn voor logboeken heeft ingesteld volgens de nalevingsvoorschriften van uw organisatie.
 
 
-Een Azure HDInsight-cluster onboarden naar Azure Monitor:
+Een Azure HDInsight-cluster aan boord maken van Azure-monitor:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial
 
 
-Log Analytics retentie periode voor de werk ruimte configureren:
+De bewaarperiode van logboekanalysewerkruimte configureren:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="25-configure-security-log-storage-retention"></a>2,5: Bewaar beveiliging van het beveiligings logboek configureren
+### <a name="25-configure-security-log-storage-retention"></a>2.5: Opslagbehoud beveiligingslogboeken configureren
 
-**Richt lijnen**: onboarding van Azure HDInsight-cluster naar Azure monitor. Zorg ervoor dat de gebruikte Azure Log Analytics-werk ruimte de Bewaar periode van het logboek heeft ingesteld volgens de nalevings voorschriften van uw organisatie.
+**Richtlijnen**: Azure HDInsight-cluster ingebruikmaken voor Azure Monitor. Controleer of de gebruikte Azure Log Analytics-werkruimte de bewaartermijn voor logboeken heeft ingesteld volgens de nalevingsvoorschriften van uw organisatie.
 
 
-Een Azure HDInsight-cluster onboarden naar Azure Monitor:
+Een Azure HDInsight-cluster aan boord maken van Azure-monitor:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial
 
 
-Log Analytics retentie periode voor de werk ruimte configureren:
+De bewaarperiode van logboekanalysewerkruimte configureren:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="26-monitor-and-review-logs"></a>2,6: Logboeken bewaken en controleren
+### <a name="26-monitor-and-review-logs"></a>2.6: Logboeken controleren en controleren
 
-**Hulp**: Azure log Analytics werkruimte query's gebruiken om een query uit te zoeken in azure HDInsight-logboeken:
+**Richtlijnen:** Gebruik Azure Log Analytics-werkruimtequery's om Azure HDInsight-logboeken op te vragen:
 
 
-Aangepaste Query's maken voor Azure HDInsight-clusters:
+Aangepaste query's maken voor Azure HDInsight-clusters:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-use-queries
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: waarschuwingen inschakelen voor afwijkende activiteit
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Waarschuwingen inschakelen voor afwijkende activiteit
 
-**Hulp**: Azure log Analytics-werk ruimte gebruiken voor bewaking en waarschuwingen over afwijkende activiteiten in beveiligings logboeken en gebeurtenissen die betrekking hebben op uw Azure HDInsight-cluster.
+**Richtlijnen:** Gebruik azure log analytics-werkruimte voor het bewaken en waarschuwen van afwijkende activiteiten in beveiligingslogboeken en gebeurtenissen die verband houden met uw Azure HDInsight-cluster.
 
 
 Waarschuwingen beheren in Azure Security Center:
@@ -327,61 +327,61 @@ Waarschuwingen beheren in Azure Security Center:
 https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts
 
 
-Een waarschuwing over logboek gegevens van log Analytics:
+Hoe u logboekgegevens waarschuwen voor logboekanalyse:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="28-centralize-anti-malware-logging"></a>2,8: registratie van anti-malware centraliseren
+### <a name="28-centralize-anti-malware-logging"></a>2.8: Centraliseer anti-malware logging
 
-**Hulp**: Azure HDInsight wordt geleverd met clamscan vooraf geïnstalleerd en ingeschakeld voor de cluster knooppunt installatie kopieën, maar u moet de software echter wel beheren en hand matig aggregatie of bewakings logboeken clamscan genereren.
+**Richtlijnen**: Azure HDInsight wordt geleverd met Clamscan vooraf geïnstalleerd en ingeschakeld voor de clusterknooppuntafbeeldingen, maar u moet de software beheren en alle logboeken die Clamscan produceert handmatig samenvoegen/controleren.
 
 
-Meer informatie over clamscan:
+Begrijp Clamscan:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificates
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="29-enable-dns-query-logging"></a>2,9: DNS-query logboek registratie inschakelen
+### <a name="29-enable-dns-query-logging"></a>2.9: DNS-querylogboekregistratie inschakelen
 
-**Richt lijnen**: oplossingen van derden voor DNS-logboek registratie implementeren.
+**Richtlijnen**: Implementeer een oplossing van derden voor dns-logging.
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="210-enable-command-line-audit-logging"></a>2,10: controle logboek registratie op opdracht regel inschakelen
+### <a name="210-enable-command-line-audit-logging"></a>2.10: Logboekregistratie van opdrachtregelcontrole inschakelen
 
-**Hulp**: hand matig console logboek registratie configureren per knoop punt.
+**Richtlijnen**: Handmatig consolelogboekregistratie configureren op basis van een knooppunt.
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="identity-and-access-control"></a>Identiteits- en toegangsbeheer
 
-*Zie [beveiligings beheer: identiteit en Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
+*Zie [Beveiligingsbeheer: Identiteits- en toegangscontrole](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Inventaris bijhouden van de administratieve rekeningen
 
-**Hulp**: behoud de record van het lokale beheerders account dat is gemaakt tijdens het inrichten van het cluster van Azure HDInsight-cluster en andere accounts die u maakt. Als Azure AD-integratie wordt gebruikt, heeft Azure AD bovendien ingebouwde rollen die expliciet moeten worden toegewezen en daarom kunnen query's worden uitgevoerd. Gebruik de Azure AD Power shell-module om ad hoc query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen.
-
-
-Daarnaast kunt u de aanbevelingen van Azure Security Center identiteits-en toegangs beheer gebruiken.
+**Richtlijnen:** houd het lokale beheerdersaccount bij dat is gemaakt tijdens de clusterinrichting van het Azure HDInsight-cluster en alle andere accounts die u maakt. Als Azure AD-integratie wordt gebruikt, heeft Azure AD bovendien ingebouwde rollen die expliciet moeten worden toegewezen en daarom queryable zijn. Gebruik de Azure AD PowerShell-module om adhocquery's uit te voeren om accounts te ontdekken die lid zijn van beheergroepen.
 
 
-Een directory-rol verkrijgen in azure AD met Power shell:
+Daarnaast u aanbevelingen voor Azure Security Center Identity and Access Management gebruiken.
+
+
+Een maprol in Azure AD met PowerShell:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
 
-Leden van een directory-rol in azure AD ophalen met Power shell:
+Leden van een directoryrol in Azure AD krijgen met PowerShell:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
@@ -390,29 +390,29 @@ Identiteit en toegang controleren met Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="32-change-default-passwords-where-applicable"></a>3,2: standaard wachtwoorden wijzigen indien van toepassing
+### <a name="32-change-default-passwords-where-applicable"></a>3.2: Standaardwachtwoorden wijzigen indien van toepassing
 
-**Richt lijnen**: bij het inrichten van een cluster moet u voor Azure nieuwe wacht woorden maken voor de webportal en SSH-toegang (Secure Shell). Er zijn geen standaard wachtwoorden om te wijzigen, maar u kunt ook verschillende wacht woorden voor SSH-en web portal-toegang opgeven.
+**Richtlijnen:** Azure vereist dat u bij het inrichten van een cluster nieuwe wachtwoorden maakt voor de webportal en De Toegang tot Secure Shell (SSH). Er zijn geen standaardwachtwoorden om te wijzigen, maar u verschillende wachtwoorden opgeven voor SSH- en webportaltoegang.
 
 
-Wacht woorden instellen bij het inrichten van een Azure HDInsight-cluster:
+Wachtwoorden instellen bij het inrichten van een Azure HDInsight-cluster:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="33-use-dedicated-administrative-accounts"></a>3,3: speciale beheerders accounts gebruiken
+### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Gebruik maken van speciale administratieve rekeningen
 
-**Hulp**: Integreer verificatie voor Azure HDInsight-cluster met Azure Active Directory. Beleids regels en procedures voor het gebruik van specifieke beheerders accounts maken.
+**Richtlijnen**: Integreer verificatie voor Azure HDInsight-cluster met Azure Active Directory. Maak beleid en procedures rond het gebruik van specifieke administratieve accounts.
 
 
-Daarnaast kunt u de aanbevelingen van Azure Security Center identiteits-en toegangs beheer gebruiken.
+Daarnaast u aanbevelingen voor Azure Security Center Identity and Access Management gebruiken.
 
 
 Azure HDInsight-verificatie integreren met Azure Active Directory:
@@ -424,95 +424,95 @@ Identiteit en toegang controleren met Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: eenmalige aanmelding (SSO) met Azure Active Directory gebruiken
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Gebruik eenmalige aanmelding (SSO) met Azure Active Directory
 
-**Richt lijnen**: gebruik Azure HDInsight id Broker om u aan te melden bij Enterprise Security Package (ESP)-clusters met behulp van multi-factor Authentication, zonder dat u wacht woorden hoeft op te geven. Als u zich al hebt aangemeld bij andere Azure-Services, zoals de Azure Portal, kunt u zich aanmelden bij uw Azure HDInsight-cluster met een SSO-ervaring (eenmalige aanmelding).
+**Richtlijnen:** Gebruik Azure HDInsight ID Broker om u aan te melden bij ESP-clusters (Enterprise Security Package) met behulp van Multi-Factor Authentication, zonder wachtwoorden te verstrekken. Als u zich al hebt aangemeld bij andere Azure-services, zoals de Azure-portal, u zich aanmelden bij uw Azure HDInsight-cluster met één SSO-ervaring (sign-on).
 
 
 Azure HDInsight ID Broker inschakelen:
 
 https://docs.microsoft.com/azure/hdinsight/domain-joined/identity-broker#enable-hdinsight-id-broker
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: multi-factor Authentication gebruiken voor alle op Azure Active Directory gebaseerde toegang
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Multi-factor authenticatie gebruiken voor alle Azure Active Directory-gebaseerde toegang
 
-**Richt lijnen**: Schakel Azure AD MFA in en volg Azure Security Center aanbevelingen voor identiteits-en toegangs beheer. Azure HDInsight-clusters met de geconfigureerde Enterprise Security Package kunnen worden verbonden met een domein, zodat domein gebruikers hun domein referenties kunnen gebruiken om zich te verifiëren bij de clusters en big data-taken uit te voeren. Wanneer verificatie met multi-factor Authentication (MFA) is ingeschakeld, worden gebruikers gevraagd een tweede verificatie factor op te geven.
+**Richtlijnen**: Schakel Azure AD MFA in en volg aanbevelingen voor Azure Security Center Identity and Access Management. Azure HDInsight-clusters met het enterprise securitypakket geconfigureerd, kunnen worden verbonden met een domein, zodat domeingebruikers hun domeinreferenties kunnen gebruiken om te verifiëren met de clusters en big data-taken uit te voeren. Wanneer u authenticeren met multi-factor authentication (MFA) ingeschakeld, worden gebruikers uitgedaagd om een tweede verificatiefactor te bieden.
 
 
-MFA inschakelen in Azure:
+Mfa inschakelen in Azure:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
-Identiteit en toegang bewaken in Azure Security Center:
+Identiteit en toegang bewaken binnen Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: gebruik speciale machines (privileged Access workstations) voor alle beheer taken
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Dedicated machines (Privileged Access Workstations) gebruiken voor alle administratieve taken
 
-**Richt lijnen**: gebruik paw's (privileged Access workstations) met multi-factor Authentication (MFA) geconfigureerd om u aan te melden en uw Azure HDInsight-clusters en gerelateerde resources te configureren.
+**Richtlijnen:** Gebruik PAWs (privileged access workstations) met multi-factor authenticatie (MFA) geconfigureerd om in te loggen en configureren van uw Azure HDInsight clusters en gerelateerde resources.
 
 
-Meer informatie over privileged Access workstations:
+Meer informatie over geprivilegieerde werkstations voor toegang:
 
 https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
 
-MFA inschakelen in Azure:
+Mfa inschakelen in Azure:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: logboek en waarschuwing voor verdachte activiteiten van beheerders accounts
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: Inloggen en waarschuwen voor verdachte activiteiten vanuit administratieve accounts
 
-**Hulp**: Azure HDInsight-clusters met de geconfigureerde Enterprise Security Package kunnen worden verbonden met een domein, zodat domein gebruikers hun domein referenties kunnen gebruiken om zich te verifiëren. U kunt de beveiligings rapporten van Azure Active Directory (AAD) gebruiken voor het genereren van Logboeken en waarschuwingen wanneer verdachte of onveilige activiteiten in de AAD-omgeving plaatsvinden. Gebruik Azure Security Center om identiteits-en toegangs activiteiten te bewaken.
+**Richtlijnen**: Azure HDInsight-clusters met het enterprise securitypakket geconfigureerd, kunnen worden verbonden met een domein, zodat domeingebruikers hun domeinreferenties kunnen gebruiken om te verifiëren. U Azure Active Directory (AAD)-beveiligingsrapporten gebruiken voor het genereren van logboeken en waarschuwingen wanneer verdachte of onveilige activiteiten plaatsvinden in de AAD-omgeving. Gebruik Azure Security Center om identiteits- en toegangsactiviteiten te controleren.
 
 
-AAD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten:
+Aad-gebruikers identificeren die zijn gemarkeerd voor riskante activiteiten:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
 
 
-Identiteits-en toegangs activiteiten van gebruikers controleren in Azure Security Center:
+Hoe u de identiteit van gebruikers controleren en activiteiten openen in Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Azure-resources alleen beheren vanaf goedgekeurde locaties
+### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Azure-resources beheren vanaf alleen goedgekeurde locaties
 
-**Hulp**: Azure HDInsight-clusters met de geconfigureerde Enterprise Security Package kunnen worden verbonden met een domein, zodat domein gebruikers hun domein referenties kunnen gebruiken om zich te verifiëren. Gebruik benoemde locaties voor voorwaardelijke toegang om alleen toegang toe te staan vanaf specifieke logische groepen met IP-adresbereiken of landen/regio's.
+**Richtlijnen**: Azure HDInsight-clusters met het enterprise securitypakket geconfigureerd, kunnen worden verbonden met een domein, zodat domeingebruikers hun domeinreferenties kunnen gebruiken om te verifiëren. Gebruik locaties met voorwaardelijke toegang om alleen specifieke logische groeperingen van IP-adresbereiken of landen/regio's toe te staan.
 
 
 Benoemde locaties configureren in Azure:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory gebruiken
+### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory gebruiken
 
-**Hulp**: gebruik Azure Active Directory (Aad) als centrale verificatie-en autorisatie systeem. AAD beveiligt gegevens door gebruik te maken van sterke versleuteling voor gegevens in rust en tijdens de overdracht. AAD bevat ook zouten, hashes en veilige gebruikers referenties.
+**Richtlijnen:** Gebruik Azure Active Directory (AAD) als het centrale verificatie- en autorisatiesysteem. AAD beschermt gegevens door sterke versleuteling te gebruiken voor gegevens in rust en onderweg. AAD zouten, hashes en slaat ook veilig gebruikersreferenties op.
 
-Azure HDInsight-clusters met Enterprise Security Package (ESP) die zijn geconfigureerd, kunnen worden verbonden met een domein zodat domein gebruikers hun domein referenties kunnen gebruiken om zich te verifiëren bij de clusters.
+Azure HDInsight-clusters met Enterprise Security Package (ESP) geconfigureerd kunnen worden aangesloten op een domein, zodat domeingebruikers hun domeinreferenties kunnen gebruiken om te verifiëren met de clusters.
 
 
 Een AAD-exemplaar maken en configureren:
@@ -520,95 +520,95 @@ Een AAD-exemplaar maken en configureren:
 https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
 
-Enterprise Security Package configureren met Azure Active Directory Domain Services in azure HDInsight:
+Enterprise Security Package configureren met Azure Active Directory Domain Services in Azure HDInsight:
 
 https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: regel matig gebruikers toegang controleren en afstemmen
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Regelmatig gebruikerstoegang controleren en afstemmen
 
-**Hulp**: gebruik Azure Active Directory (Aad)-verificatie met uw Azure HDInsight-cluster. AAD biedt logboeken waarmee u verlopen accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. De toegang van de gebruiker kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben. 
+**Richtlijnen:** Gebruik Azure Active Directory (AAD)-verificatie met uw Azure HDInsight-cluster. AAD biedt logboeken om verouderde accounts te ontdekken. Gebruik daarnaast Azure Identity Access Reviews om groepslidmaatschappen, toegang tot bedrijfstoepassingen en roltoewijzingen efficiënt te beheren. De toegang van de gebruiker kan regelmatig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben. 
 
 
-Azure Identity Access revisies gebruiken:
+Azure Identity Access-recensies gebruiken:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: controle pogingen om toegang te krijgen tot gedeactiveerde accounts
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Pogingen om toegang te krijgen tot gedeactiveerde accounts controleren
 
-**Hulp**: gebruik Azure Active Directory (Aad)-aanmelding en audit Logboeken om te controleren op pogingen om toegang te krijgen tot gedeactiveerde accounts. deze logboeken kunnen worden geïntegreerd in een SIEM/bewakings programma van derden.
-
-
-U kunt dit proces stroom lijnen door Diagnostische instellingen voor AAD-gebruikers accounts te maken, de audit logboeken en aanmeldings logboeken te verzenden naar een Azure Log Analytics-werk ruimte. Gewenste waarschuwingen configureren in azure Log Analytics-werk ruimte.
+**Richtlijnen:** Gebruik azure Active Directory (AAD) Aanmeldings- en controlelogboeken om te controleren op pogingen om toegang te krijgen tot gedeactiveerde accounts; deze logboeken kunnen worden geïntegreerd in elke SIEM/monitoringtool van derden.
 
 
-Azure-activiteiten logboeken integreren in Azure Monitor:
+U dit proces stroomlijnen door diagnostische instellingen voor AAD-gebruikersaccounts te maken, de controlelogboeken en aanmeldingslogboeken naar een Azure Log Analytics-werkruimte te verzenden. De gewenste waarschuwingen configureren binnen de Azure Log Analytics-werkruimte.
+
+
+Azure-activiteitslogboeken integreren in Azure Monitor:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: waarschuwing voor de afwijking van het aanmeldings gedrag van accounts
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Waarschuwing over afwijking van het inloggedrag van het account
 
-**Hulp**: Azure HDInsight-clusters met Enterprise Security Package (ESP) die zijn geconfigureerd, kunnen worden verbonden met een domein zodat domein gebruikers hun domein referenties kunnen gebruiken om zich te verifiëren bij de clusters.  Gebruik Azure Active Directory (AAD) risico detecties en de functie identiteits beveiliging om automatische antwoorden te configureren op gedetecteerde verdachte acties die betrekking hebben op gebruikers identiteiten. Daarnaast kunt u gegevens opnemen in azure Sentinel voor verder onderzoek.
+**Richtlijnen**: Azure HDInsight-clusters met Enterprise Security Package (ESP) geconfigureerd kunnen worden aangesloten op een domein, zodat domeingebruikers hun domeinreferenties kunnen gebruiken om te verifiëren met de clusters.  Gebruik de functie Azure Active Directory (AAD) Risicodetecties en Identiteitsbeveiliging om geautomatiseerde antwoorden te configureren op gedetecteerde verdachte acties met betrekking tot gebruikersidentiteiten. Bovendien u gegevens opnemen in Azure Sentinel voor verder onderzoek.
 
 
-Het weer geven van de Risk ante aanmeldingen voor AAD:
+Aad-riskante aanmeldingen bekijken:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
 
-Risico beleid voor identiteits beveiliging configureren en inschakelen:
+Hoe u risicobeleid voor identiteitsbescherming configureert en inschakelt:
 
 https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: micro soft biedt toegang tot relevante klant gegevens tijdens ondersteunings scenario's
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: Microsoft toegang geven tot relevante klantgegevens tijdens ondersteuningsscenario's
 
-**Richt lijnen**: niet beschikbaar; Klanten-lockbox nog niet ondersteund voor Azure HDInsight.
+**Richtlijnen**: Niet beschikbaar; Customer Lockbox wordt nog niet ondersteund voor Azure HDInsight.
 
-Lijst met Klanten-lockbox ondersteunde services: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Lijst met door klanten ondersteunde services:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-*Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
+*Zie [Beveiligingsbeheer: Gegevensbescherming](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Een inventaris van gevoelige informatie bijhouden
 
-**Richt lijnen**: Gebruik labels op resources die betrekking hebben op uw Azure HDInsight-implementaties om te helpen bij het bijhouden van Azure-resources die gevoelige informatie opslaan of verwerken.
+**Richtlijnen:** Gebruik tags op resources die betrekking hebben op uw Azure HDInsight-implementaties om te helpen bij het bijhouden van Azure-bronnen die gevoelige informatie opslaan of verwerken.
 
 
 Tags maken en gebruiken:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Systemen isoleren die gevoelige informatie opslaan of verwerken
 
-**Richt lijnen**: afzonderlijke abonnementen en/of beheer groepen implementeren voor ontwikkeling, testen en productie. Azure HDInsight-clusters en alle gekoppelde opslag accounts moeten worden gescheiden door het virtuele netwerk/subnet, op de juiste wijze worden gelabeld en beveiligd in een netwerk beveiligings groep (NSG) of Azure Firewall. Cluster gegevens moeten zich bevinden in een beveiligd Azure Storage account of Azure Data Lake Storage (gen1 of Gen2).
+**Richtlijnen**: Implementeer afzonderlijke abonnementen en/of beheergroepen voor ontwikkeling, testen en productie. Azure HDInsight-clusters en bijbehorende opslagaccounts moeten worden gescheiden door een virtueel netwerk/subnet, op de juiste manier worden getagd en beveiligd binnen een NETWERKbeveiligingsgroep (NSG) of Azure Firewall. Clustergegevens moeten worden opgenomen in een beveiligd Azure Storage-account of Azure Data Lake Storage (Gen1 of Gen2).
 
 
-Kies opslag opties voor uw Azure HDInsight-cluster:
+Kies opslagopties voor uw Azure HDInsight-cluster:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-compare-storage-options
 
@@ -618,20 +618,20 @@ Azure Data Lake Storage beveiligen:
 https://docs.microsoft.com/azure/data-lake-store/data-lake-store-security-overview
 
 
-Azure Storage accounts beveiligen:
+Azure-opslagaccounts beveiligen:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: niet-geautoriseerde overdracht van gevoelige gegevens controleren en blok keren
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Toezicht houden op en blokkeren van ongeoorloofde overdracht van gevoelige informatie
 
-**Richt lijnen**: voor Azure HDInsight-clusters waarin gevoelige gegevens worden opgeslagen of verwerkt, markeert u het cluster en gerelateerde resources als gevoelig voor het gebruik van tags. Om het risico van gegevens verlies via exfiltration te verminderen, beperkt u het uitgaande netwerk verkeer voor Azure HDInsight-clusters met behulp van Azure Firewall.
+**Richtlijnen:** Voor Azure HDInsight-clusters die gevoelige informatie opslaan of verwerken, markeert u het cluster en de bijbehorende bronnen als gevoelig met behulp van tags. Als u het risico op gegevensverlies via exfiltratie wilt verminderen, beperkt u uitgaand netwerkverkeer voor Azure HDInsight-clusters met Azure Firewall.
 
 
-Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
+Voor het onderliggende platform dat wordt beheerd door Microsoft, Microsoft behandelt alle klantinhoud als gevoelig en gaat tot het uiterste om te waken tegen verlies van klantgegevens en blootstelling. Om ervoor te zorgen dat klantgegevens binnen Azure veilig blijven, heeft Microsoft een reeks robuuste besturingselementen en mogelijkheden voor gegevensbescherming geïmplementeerd en onderhouden.
 
 
 Uitgaand verkeer voor Azure HDInsight-clusters beperken met Azure Firewall:
@@ -639,266 +639,266 @@ Uitgaand verkeer voor Azure HDInsight-clusters beperken met Azure Firewall:
 https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
 
 
-Informatie over de beveiliging van klant gegevens in Azure:
+Inzicht in de bescherming van klantgegevens in Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: gedeeld
+**Verantwoordelijkheid**: Gedeeld
 
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: alle gevoelige gegevens in de overdracht versleutelen
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Alle gevoelige informatie tijdens het transport versleutelen
 
-**Hulp**: alle gevoelige gegevens in de overdracht versleutelen. Zorg ervoor dat alle clients die verbinding maken met uw Azure HDInsight-cluster of gegevens archieven van het cluster (Azure Storage accounts of Azure Data Lake Storage Gen1/Gen2), kunnen onderhandelen over TLS 1,2 of hoger. Microsoft Azure resources onderhandelen standaard TLS 1,2. 
+**Richtlijnen**: Versleutel alle gevoelige informatie tijdens het transport. Zorg ervoor dat clients die verbinding maken met uw Azure HDInsight-cluster- of clustergegevensopslag (Azure Storage Accounts of Azure Data Lake Storage Gen1/Gen2) kunnen onderhandelen over TLS 1.2 of hoger. Microsoft Azure-bronnen onderhandelen standaard over TLS 1.2. 
 
 
-Meer informatie over Azure Data Lake Storage versleuteling in transit:
+Informatie over Azure Data Lake Storage-versleuteling onderweg:
 
 https://docs.microsoft.com/azure/data-lake-store/data-lake-store-security-overview
 
 
-Meer informatie over Azure Storage account versleuteling in transit:
+Informatie over Azure Storage Account-versleuteling onderweg:
 
 https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: gedeeld
+**Verantwoordelijkheid**: Gedeeld
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: een actief detectie hulpprogramma gebruiken om gevoelige gegevens te identificeren
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Gebruik een actief detectiehulpmiddel om gevoelige gegevens te identificeren
 
-**Hulp**: de functies gegevens identificatie, classificatie en verlies preventie zijn nog niet beschikbaar voor Azure Storage of reken resources. Implementeer oplossingen van derden, indien nodig voor nalevings doeleinden.
-
-
-
-Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
+**Richtlijnen**: Functies voor gegevensidentificatie, classificatie en verliespreventie zijn nog niet beschikbaar voor Azure Storage- of compute resources. Implementeer oplossingen van derden indien nodig voor nalevingsdoeleinden.
 
 
 
-Informatie over de beveiliging van klant gegevens in Azure:
-
-https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
-
-**Azure Security Center bewaking**: momenteel niet beschikbaar
-
-**Verantwoordelijkheid**: gedeeld
-
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
-
-**Hulp**: met de Enterprise Security Package van Azure HDINSIGHT (ESP) kunt u Apache zwerver gebruiken voor het maken en beheren van beleids regels voor nauw keurig toegangs beheer en gegevens opslag voor uw gegevens die zijn opgeslagen in bestanden, mappen, data bases, tabellen en rijen/kolommen. De Hadoop-beheerder kan op rollen gebaseerd toegangs beheer (RBAC) configureren om Apache Hive, HBase, Kafka en Spark te beveiligen met behulp van deze invoeg toepassingen in Apache zwerver.
-
-Het configureren van het RBAC-beleid met Apache zwerver biedt u de mogelijkheid om machtigingen te koppelen aan een rol in de organisatie. Deze laag van abstractie maakt het gemakkelijker om ervoor te zorgen dat personen alleen de machtigingen hebben die nodig zijn om hun werk verantwoordelijkheden uit te voeren.
-
-Enterprise Security Package configuraties met Azure Active Directory Domain Services in HDInsight: https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds
-
-Overzicht van ENTER prise Security in azure HDInsight: https://docs.microsoft.com/azure/hdinsight/domain-joined/hdinsight-security-overview
+Voor het onderliggende platform dat wordt beheerd door Microsoft, Microsoft behandelt alle klantinhoud als gevoelig en gaat tot het uiterste om te waken tegen verlies van klantgegevens en blootstelling. Om ervoor te zorgen dat klantgegevens binnen Azure veilig blijven, heeft Microsoft een reeks robuuste besturingselementen en mogelijkheden voor gegevensbescherming geïmplementeerd en onderhouden.
 
 
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
-
-**Verantwoordelijkheid**: klant
-
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: voor komen dat gegevens verlies op basis van host wordt gebruikt voor het afdwingen van toegangs beheer
-
-**Richt lijnen**: voor Azure HDInsight-clusters waarin gevoelige gegevens worden opgeslagen of verwerkt, markeert u het cluster en gerelateerde resources als gevoelig voor het gebruik van tags. De functies voor gegevens identificatie, classificatie en verlies preventie zijn nog niet beschikbaar voor Azure Storage of reken resources. Implementeer oplossingen van derden, indien nodig voor nalevings doeleinden.
-
-
-Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
-
-
-Informatie over de beveiliging van klant gegevens in Azure:
+Inzicht in de bescherming van klantgegevens in Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: gedeeld
+**Verantwoordelijkheid**: Gedeeld
 
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: gevoelige informatie op rest versleutelen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Azure RBAC gebruiken om de toegang tot bronnen te beheren
 
-**Richt lijnen**: als u Azure SQL database gebruikt om Apache Hive-en Apache Oozie-meta gegevens op te slaan, zorgt u ervoor dat SQL-gegevens altijd versleuteld blijven. Voor Azure Storage accounts en Data Lake Storage (gen1 of Gen2) wordt aanbevolen micro soft toe te staan uw versleutelings sleutels te beheren, maar u hebt de mogelijkheid om uw eigen sleutels te beheren.
+**Richtlijnen:** Met Azure HDInsight Enterprise Security Package (ESP) u Apache Ranger gebruiken om fijnkorrelig toegangsbeheer en gegevensverduisteringsbeleid te maken en te beheren voor uw gegevens die zijn opgeslagen in bestanden, mappen, databases, tabellen en rijen/kolommen. De hadoop-beheerder kan op rollen gebaseerde toegangscontrole (RBAC) configureren om Apache Hive, HBase, Kafka en Spark te beveiligen met behulp van deze plug-ins in Apache Ranger.
+
+Als u RBAC-beleidsregels configureert met Apache Ranger, u machtigingen koppelen aan een rol in de organisatie. Deze abstractielaag maakt het gemakkelijker om ervoor te zorgen dat mensen alleen de machtigingen hebben die nodig zijn om hun werkverantwoordelijkheden uit te voeren.
+
+Enterprise Security Package-configuraties met Azure Active Directory Domain Services in HDInsight:https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds
+
+Overzicht van bedrijfsbeveiliging in Azure HDInsight:https://docs.microsoft.com/azure/hdinsight/domain-joined/hdinsight-security-overview
 
 
 
-Versleutelings sleutels voor Azure Storage accounts beheren:
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
+
+**Verantwoordelijkheid**: Klant
+
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: Gebruik hostgebaseerde preventie van gegevensverlies om toegangscontrole af te dwingen
+
+**Richtlijnen:** Voor Azure HDInsight-clusters die gevoelige informatie opslaan of verwerken, markeert u het cluster en de bijbehorende bronnen als gevoelig met behulp van tags. Gegevensidentificatie, classificatie en verliespreventiezijn nog niet beschikbaar voor Azure Storage- of compute resources. Implementeer oplossingen van derden indien nodig voor nalevingsdoeleinden.
+
+
+Voor het onderliggende platform dat wordt beheerd door Microsoft, Microsoft behandelt alle klantinhoud als gevoelig en gaat tot het uiterste om te waken tegen verlies van klantgegevens en blootstelling. Om ervoor te zorgen dat klantgegevens binnen Azure veilig blijven, heeft Microsoft een reeks robuuste besturingselementen en mogelijkheden voor gegevensbescherming geïmplementeerd en onderhouden.
+
+
+Inzicht in de bescherming van klantgegevens in Azure:
+
+https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
+
+**Verantwoordelijkheid**: Gedeeld
+
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Versleutel gevoelige informatie in rust
+
+**Richtlijnen:** Als u Azure SQL Database gebruikt om apache hive- en Apache Oozie-metagegevens op te slaan, moet u ervoor zorgen dat SQL-gegevens te allen tijde versleuteld blijven. Voor Azure Storage Accounts and Data Lake Storage (Gen1 of Gen2) wordt aanbevolen om Microsoft toe te staan uw versleutelingssleutels te beheren, maar u hebt de mogelijkheid om uw eigen sleutels te beheren.
+
+
+
+Versleutelingssleutels voor Azure Storage-accounts beheren:
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
 
 
-Azure Data Lake Storage maken met door de klant beheerde versleutelings sleutels:
+Azure Data Lake Storage maken met door klanten beheerde versleutelingssleutels:
 
 https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
 
 
 
-Informatie over versleuteling voor Azure SQL Database:
+Versleuteling voor Azure SQL Database begrijpen:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview#data-encryption
 
 
 
-Transparent Data Encryption voor SQL Database configureren met behulp van door de klant beheerde sleutels:
+Transparent Data Encryption for SQL Database configureren met door de klant beheerde sleutels:
 
 https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?tabs=azure-portal
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: gedeeld
+**Verantwoordelijkheid**: Gedeeld
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: wijzigingen in essentiële Azure-resources vastleggen en waarschuwen
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Logboeken en waarschuwing en waarschuwing over wijzigingen in kritieke Azure-resources
 
-**Richt lijnen**: Diagnostische instellingen configureren voor Azure Storage accounts die zijn gekoppeld aan Azure HDInsight-clusters om alle ruwe bewerkingen te controleren en te registreren voor cluster gegevens. Schakel controle in voor opslag accounts of Data Lake archieven die zijn gekoppeld aan het Azure HDInsight-cluster.
+**Richtlijnen**: Diagnostische instellingen configureren voor Azure Storage Accounts die zijn gekoppeld aan Azure HDInsight-clusters om alle CRUD-bewerkingen te controleren en te registreren tegen clustergegevens. Controle inschakelen voor opslagaccounts of Gegevenslake-opslag die zijn gekoppeld aan het Azure HDInsight-cluster.
 
 
-Aanvullende logboek registratie/controle inschakelen voor een Azure Storage account:
+Extra logboekregistratie/controle inschakelen voor een Azure Storage-account:
 
 https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 
-Aanvullende logboek registratie/controle voor Azure Data Lake Storage inschakelen:
+Extra logboekregistratie/controle inschakelen voor Azure Data Lake Storage:
 
 https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="vulnerability-management"></a>Beheer van beveiligingsproblemen
 
-*Zie [beveiligings beheer: beveiligingslek beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)voor meer informatie.*
+*Zie [Security Control: Vulnerability Management voor](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)meer informatie.*
 
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatische hulpprogram ma's voor het scannen van beveiligings problemen uitvoeren
+### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Geautomatiseerde hulpprogramma's voor het scannen van kwetsbaarheden uitvoeren
 
-**Hulp**: Implementeer een oplossing voor het beheer van beveiligings problemen van derden.
-
-
-Als u een abonnement op Rapid7, Qualys of een ander platform voor beveiligings problemen hebt, kunt u ook script acties gebruiken om agents voor beveiligings evaluaties te installeren op uw Azure HDInsight-cluster knooppunten en de knoop punten te beheren via de respectieve Portal.
+**Richtlijnen**: Implementeer een oplossing voor kwetsbaarheidsbeheer van derden.
 
 
-Rapid7 agent hand matig installeren:
+Als u een Rapid7-, Qualys- of een ander abonnement op het kwetsbaarheidsbeheerplatform hebt, u mogelijk scriptacties gebruiken om beveiligingsbeoordelingsagents op uw Azure HDInsight-clusterknooppunten te installeren en de knooppunten te beheren via de desbetreffende portal.
+
+
+Rapid7-agent handmatig installeren:
 
 https://insightvm.help.rapid7.com/docs/azure-security-center
 
 
-Qualys agent hand matig installeren:
+Hoe qualys agent handmatig te installeren:
 
 https://www.qualys.com/docs/qualys-cloud-agent-linux-install-guide.pdf
 
 
-Script acties gebruiken:
+Scriptacties gebruiken:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: geautomatiseerde oplossing voor patch beheer voor besturings systemen implementeren
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Implementatie van een oplossing voor het patchbeheer van geautomatiseerd besturingssysteem
 
-**Hulp**: automatische systeem updates zijn ingeschakeld voor installatie kopieën van cluster knooppunten, maar u moet de cluster knooppunten echter periodiek opnieuw opstarten om ervoor te zorgen dat er updates worden toegepast.
-
-
-Micro soft voor het onderhouden en bijwerken van basis-Azure HDInsight-knooppunt installatie kopieën.
+**Richtlijnen:** Automatische systeemupdates zijn ingeschakeld voor clusterknooppuntafbeeldingen, maar u moet clusterknooppunten periodiek opnieuw opstarten om ervoor te zorgen dat updates worden toegepast.
 
 
-Het patch schema voor het besturings systeem voor HDInsight-clusters configureren:
-
-https://docs.microsoft.com/azure/hdinsight/hdinsight-os-patching
-
-**Azure Security Center bewaking**: momenteel niet beschikbaar
-
-**Verantwoordelijkheid**: gedeeld
-
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: Implementeer een geautomatiseerde oplossing voor software patch beheer van derden
-
-**Hulp**: script acties of andere mechanismen gebruiken om uw Azure HDInsight-clusters te patchen. Nieuwe clusters hebben altijd de meest recente beschik bare updates, inclusief de meest recente beveiligings patches.
+Microsoft voor het onderhouden en bijwerken van azure HDInsight-knooppuntafbeeldingen.
 
 
-Het patch schema voor het besturings systeem configureren voor Azure HDInsight-clusters op basis van Linux:
+Het patchschema voor besturingssysteem configureren voor HDInsight-clusters:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-os-patching
 
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-Script acties gebruiken:
+**Verantwoordelijkheid**: Gedeeld
+
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Geautomatiseerde softwarepatchbeheeroplossing van derden implementeren
+
+**Richtlijnen:** Gebruik scriptacties of andere mechanismen om uw Azure HDInsight-clusters te patchen. Nieuw gemaakte clusters hebben altijd de nieuwste beschikbare updates, inclusief de meest recente beveiligingspatches.
+
+
+Het patchschema voor het besturingssysteem configureren voor Azure HDInsight-clusters op basis van Linux:
+
+https://docs.microsoft.com/azure/hdinsight/hdinsight-os-patching
+
+
+Scriptacties gebruiken:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: vergelijken van back-to-back-problemen
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: Vergelijk back-to-back kwetsbaarheid scans
 
-**Richt lijnen**: Implementeer een oplossing voor het beheer van beveiligings problemen van derden die de mogelijkheid biedt om beveiligings controles in de loop van de tijd te vergelijken. Als u een Rapid7-of Qualys-abonnement hebt, kunt u de portal van die leverancier gebruiken voor het weer geven en vergelijken van back-to-back-scans.
+**Richtlijnen**: Implementeer een oplossing voor kwetsbaarheidsbeheer van derden die de mogelijkheid heeft om kwetsbaarheidsscans in de loop van de tijd te vergelijken. Als u een Rapid7- of Qualys-abonnement hebt, u de portal van die leverancier gebruiken om back-to-back-kwetsbaarheidsscans te bekijken en te vergelijken.
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: een risico classificatie proces gebruiken om prioriteit te geven aan het herstel van ontdekte beveiligings problemen
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Gebruik een risicobeoordelingsproces om prioriteit te geven aan het herstel van ontdekte kwetsbaarheden
 
-**Richt lijnen**: gebruik een gemeen schappelijke risico Score programma (bijvoorbeeld een gemeen schappelijk score systeem voor beveiligings problemen) of de standaard risico classificaties van het hulp programma van derden.
+**Richtlijnen:** Gebruik een gemeenschappelijk risicoscoreprogramma (bijvoorbeeld Common Vulnerability Scoring System) of de standaardrisicobeoordelingen van uw scantool van derden.
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="inventory-and-asset-management"></a>Inventarisatie en Asset Management
 
-*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Zie [Beveiligingsbeheer: Voorraadbeheer en Vermogensbeheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)voor meer informatie.*
 
-### <a name="61-use-azure-asset-discovery"></a>6,1: Azure Asset Discovery gebruiken
+### <a name="61-use-azure-asset-discovery"></a>6.1: Azure Asset Discovery gebruiken
 
-**Hulp**: Azure resource Graph gebruiken voor het opvragen/detecteren van alle resources (zoals compute, opslag, netwerk, poorten en protocollen enz.), inclusief Azure HDInsight-clusters, binnen uw abonnement (en).  Zorg ervoor dat u de juiste machtigingen (lezen) hebt in uw Tenant en dat u alle Azure-abonnementen kunt inventariseren, evenals de resources in uw abonnementen.
-
-
-Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek, is het raadzaam om Azure Resource Manager resources te maken en te gebruiken.
+**Richtlijnen:** Gebruik Azure Resource Graph om alle bronnen (zoals compute, storage, netwerk, poorten en protocollen, enz.), inclusief Azure HDInsight-clusters, binnen uw abonnement(en) op te vragen/te ontdekken.  Zorg ervoor dat u over de juiste (lees)machtigingen in uw tenant beschikt en dat u alle Azure-abonnementen en resources binnen uw abonnementen opsommen.
 
 
-Query's maken met Azure Graph:
+Hoewel klassieke Azure-bronnen kunnen worden ontdekt via Azure Resource Graph, is het ten zeerste aan te raden om azure resource beheerbronnen in de toekomst te maken en te gebruiken.
+
+
+Query's maken met Azure Resource Graph:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
-Uw Azure-abonnementen weer geven:
+Uw Azure-abonnementen weergeven:
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
 
-Meer informatie over Azure RBAC:
+Azure RBAC begrijpen:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="62-maintain-asset-metadata"></a>6,2: meta gegevens van activa onderhouden
+### <a name="62-maintain-asset-metadata"></a>6.2: Metagegevens van activa onderhouden
 
-**Richt lijnen**: Tags Toep assen op Azure-resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
+**Richtlijnen:** Tags toepassen op Azure-bronnen met metagegevens om ze logisch te ordenen in een taxonomie.
 
 
 Tags maken en gebruiken:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6,3: niet-geautoriseerde Azure-resources verwijderen
+### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Ongeautoriseerde Azure-bronnen verwijderen
 
-**Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, waar nodig, om assets te organiseren en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
+**Richtlijnen**: Gebruik tagging, beheergroepen en afzonderlijke abonnementen, waar nodig, om assets te organiseren en bij te houden. Verzoen de voorraad regelmatig en zorg ervoor dat ongeautoriseerde bronnen tijdig uit het abonnement worden verwijderd.
 
 
-Aanvullende Azure-abonnementen maken:
+Extra Azure-abonnementen maken:
 
 https://docs.microsoft.com/azure/billing/billing-create-subscription
 
 
-Beheergroepen maken:
+Managementgroepen maken:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
@@ -907,472 +907,472 @@ Tags maken en gebruiken:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: een inventaris van goedgekeurde Azure-resources en software titels onderhouden
+### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Een inventaris bijhouden van goedgekeurde Azure-resources en softwaretitels
 
-**Hulp**: een lijst met goedgekeurde Azure-resources en goedgekeurde software voor uw reken resources definiëren
+**Richtlijnen**: Lijst met goedgekeurde Azure-resources en goedgekeurde software voor uw rekenbronnen definiëren
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitor voor niet-goedgekeurde Azure-resources
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Monitor voor niet-goedgekeurde Azure-bronnen
 
-**Hulp: Azure**Policy gebruiken om beperkingen te geven aan het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
+**Richtlijnen:** Gebruik Azure-beleid om beperkingen op te leggen aan het type resources dat kan worden gemaakt in klantabonnementen(en) met behulp van de volgende ingebouwde beleidsdefinities:
 
 - Niet toegestane brontypen
 - Toegestane brontypen
 
-Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen uw abonnement (en). Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
+Gebruik Azure Resource Graph om bronnen binnen uw abonnement(en) te zoeken/ontdekken. Controleer of alle Azure-resources die in de omgeving aanwezig zijn, zijn goedgekeurd.
 
-Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure-beleid configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Query's maken met Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
-
-
-**Azure Security Center bewaking**: momenteel niet beschikbaar
-
-**Verantwoordelijkheid**: klant
-
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitor voor niet-goedgekeurde software toepassingen binnen reken resources
-
-**Hulp**: Implementeer een oplossing van derden om cluster knooppunten te bewaken voor niet-goedgekeurde software toepassingen.
-
-**Azure Security Center bewaking**: momenteel niet beschikbaar
-
-**Verantwoordelijkheid**: klant
-
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: niet-goedgekeurde Azure-resources en software toepassingen verwijderen
-
-**Hulp**: Azure resource Graph gebruiken voor het opvragen/detecteren van alle resources (zoals compute, opslag, netwerk, poorten en protocollen enz.), inclusief Azure HDInsight-clusters, binnen uw abonnement (en).  Verwijder alle niet-goedgekeurde Azure-resources die u ontdekt. Voor Azure HDInsight-cluster knooppunten implementeert u een oplossing van derden om niet-goedgekeurde software te verwijderen of te waarschuwen.
+Query's maken met Azure Resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
-Query's maken met Azure Graph:
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
+
+**Verantwoordelijkheid**: Klant
+
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Monitor voor niet-goedgekeurde softwaretoepassingen binnen compute resources
+
+**Richtlijnen:** Implementeer een oplossing van derden om clusterknooppunten voor niet-goedgekeurde softwaretoepassingen te controleren.
+
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
+
+**Verantwoordelijkheid**: Klant
+
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Niet-goedgekeurde Azure-bronnen en -softwaretoepassingen verwijderen
+
+**Richtlijnen:** Gebruik Azure Resource Graph om alle bronnen (zoals compute, storage, netwerk, poorten en protocollen, enz.), inclusief Azure HDInsight-clusters, binnen uw abonnement(en) op te vragen/te ontdekken.  Verwijder niet-goedgekeurde Azure-bronnen die u ontdekt. Implementeer voor Azure HDInsight-clusterknooppunten een oplossing van derden om niet-goedgekeurde software te verwijderen of te waarschuwen.
+
+
+Query's maken met Azure Resource Graph:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="68-use-only-approved-applications"></a>6,8: alleen goedgekeurde toepassingen gebruiken
+### <a name="68-use-only-approved-applications"></a>6.8: Gebruik alleen goedgekeurde aanvragen
 
-**Richt lijnen**: voor Azure HDInsight-cluster knooppunten implementeert u een oplossing van derden om te voor komen dat onbevoegde software wordt uitgevoerd.
+**Richtlijnen:** Implementeer voor Azure HDInsight-clusterknooppunten een oplossing van derden om te voorkomen dat ongeautoriseerde software wordt uitgevoerd.
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="69-use-only-approved-azure-services"></a>6,9: alleen goedgekeurde Azure-Services gebruiken
+### <a name="69-use-only-approved-azure-services"></a>6.9: Alleen goedgekeurde Azure-services gebruiken
 
-**Hulp: Azure**Policy gebruiken om beperkingen te geven aan het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
+**Richtlijnen:** Gebruik Azure-beleid om beperkingen op te leggen aan het type resources dat kan worden gemaakt in klantabonnementen(en) met behulp van de volgende ingebouwde beleidsdefinities:
 
 - Niet toegestane brontypen
 - Toegestane brontypen
 
 
-Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure-beleid configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-Een specifiek resource type weigeren met Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Een specifiek brontype weigeren met Azure-beleid:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="610-implement-approved-application-list"></a>6,10: lijst met goedgekeurde toepassingen implementeren
+### <a name="610-implement-approved-application-list"></a>6.10: Goedgekeurde aanvraaglijst implementeren
 
-**Richt lijnen**: voor Azure HDInsight-cluster knooppunten implementeert u een oplossing van derden om te voor komen dat niet-geautoriseerde bestands typen worden uitgevoerd.
+**Richtlijnen:** Implementeer voor Azure HDInsight-clusterknooppunten een oplossing van derden om te voorkomen dat ongeautoriseerde bestandstypen worden uitgevoerd.
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6,11: de mogelijkheid van gebruikers om te communiceren met Azure Resource Manager via scripts beperken
+### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6.11: De mogelijkheid van gebruikers beperken om via scripts met Azure Resources Manager te communiceren
 
-**Richt lijnen**: gebruik de voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om te communiceren met Azure Resource Manager door ' blok toegang ' te configureren voor de app Microsoft Azure management.
+**Richtlijnen:** Gebruik voorwaardelijke toegang voor Azure om de interactie van gebruikers met Azure Resource Manager te beperken door 'Bloktoegang' voor de Microsoft Azure Management-app te configureren.
 
 
-Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Voorwaardelijke toegang configureren om toegang tot Azure Resource Manager te blokkeren:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: de mogelijkheid van gebruikers om scripts uit te voeren binnen reken bronnen beperken
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Beperk de mogelijkheid van gebruikers om scripts uit te voeren binnen compute resources
 
-**Richt lijnen**: niet van toepassing; Dit is niet van toepassing op Azure HDInsight als gebruikers (niet-beheerders) van het cluster geen toegang nodig hebben tot de afzonderlijke knoop punten om taken uit te voeren. De Cluster beheerder heeft toegang tot het hoofd niveau voor alle cluster knooppunten.
+**Richtsnoeren**: Niet van toepassing; Dit is niet van toepassing op Azure HDInsight omdat gebruikers (niet-beheerders) van het cluster geen toegang tot de afzonderlijke knooppunten nodig hebben om taken uit te voeren. De clusterbeheerder heeft roottoegang tot alle clusterknooppunten.
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: toepassingen met een hoog risico fysiek of logisch scheiden
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Toepassingen met een hoog risico fysiek of logisch scheiden
 
-**Richt lijnen**: niet van toepassing; Bench Mark is bedoeld voor Azure app service-of COMPUTE-resources die webtoepassingen hosten.
+**Richtsnoeren**: Niet van toepassing; benchmark is bedoeld voor Azure Apps Service of compute resources die webtoepassingen hosten.
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
 ## <a name="secure-configuration"></a>Veilige configuratie
 
-*Zie [beveiligings beheer: beveiligde configuratie](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)voor meer informatie.*
+*Zie [Beveiligingsbeheer: beveiligde configuratie](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)voor meer informatie.*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Veilige configuraties instellen voor alle Azure-resources
 
-**Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. HDInsight ' om aangepaste beleids regels te maken om de netwerk configuratie van uw HDInsight-cluster te controleren of af te dwingen.
+**Richtlijnen:** Gebruik Azure Policy-aliassen in de naamruimte 'Microsoft.HDInsight' om aangepaste beleidsregels te maken om de netwerkconfiguratie van uw HDInsight-cluster te controleren of af te dwingen.
 
 
-Beschik bare Azure Policy aliassen weer geven:
+Beschikbare Azure-beleidsaliassen weergeven:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-Azure Policy configureren en beheren:
+Azure-beleid configureren en beheren:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="72-establish-secure-operating-system-configurations"></a>7,2: veilige configuraties van besturings systemen instellen
+### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Veilige configuratie van het besturingssysteem instellen
 
-**Richt lijnen**: installatie kopieën van het Azure HDInsight-besturings systeem die worden beheerd en beheerd door micro soft. De klant die verantwoordelijk is voor het implementeren van beveiligde configuraties voor het besturings systeem van uw cluster knooppunten. 
+**Richtlijnen**: Azure HDInsight Operating System Images beheerd en onderhouden door Microsoft. Klant verantwoordelijk voor het implementeren van beveiligde configuraties voor het besturingssysteem van uw clusterknooppunten. 
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: Beveilig Azure-resource configuraties onderhouden
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Veilige Azure-bronconfiguraties behouden
 
-**Richt lijnen**: gebruik Azure Policy [deny] en [implementeren indien niet aanwezig] voor het afdwingen van beveiligde instellingen voor uw Azure HDInsight-clusters en gerelateerde resources.
+**Richtlijnen**: Gebruik Azure-beleid [weigeren] en [implementeren als deze niet bestaan] om veilige instellingen af te dwingen voor uw Azure HDInsight-clusters en gerelateerde bronnen.
 
 
-Azure Policy configureren en beheren:
+Azure-beleid configureren en beheren:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-Azure Policy effecten begrijpen:
+Inzicht in Azure-beleidseffecten:
 
 https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: veilige configuraties van besturings systemen onderhouden
+### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Veilige configuratie van het besturingssysteem behouden
 
-**Richt lijnen**: installatie kopieën van het Azure HDInsight-besturings systeem die worden beheerd en beheerd door micro soft. De klant die verantwoordelijk is voor het implementeren van de status configuratie op besturingssysteem niveau.
+**Richtlijnen**: Azure HDInsight Operating System Images beheerd en onderhouden door Microsoft. Klant verantwoordelijk voor het implementeren van de statusconfiguratie op OS-niveau.
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: gedeeld
+**Verantwoordelijkheid**: Gedeeld
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: de configuratie van Azure-resources veilig opslaan
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Configuratie van Azure-bronnen veilig opslaan
 
-**Richt lijnen**: als u aangepaste definities van Azure-beleid gebruikt, kunt u Azure DevOps of Azure opslag plaatsen gebruiken om uw code veilig op te slaan en te beheren.
+**Richtlijnen:** Als u aangepaste Azure-beleidsdefinities gebruikt, gebruikt u Azure DevOps of Azure Repos om uw code veilig op te slaan en te beheren.
 
 
 
-Code opslaan in azure DevOps:
+Code opslaan in Azure DevOps:
 
 https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
 
 
-Documentatie voor Azure opslag plaatsen:
+Azure Repos-documentatie:
 
 https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7,6: aangepaste installatie kopieën van een besturings systeem veilig opslaan
+### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Afbeeldingen van aangepaste besturingssysteemen veilig opslaan
 
-**Richt lijnen**: niet van toepassing; aangepaste installatie kopieën zijn niet van toepassing op Azure HDInsight.
+**Richtsnoeren**: Niet van toepassing; aangepaste afbeeldingen die niet van toepassing zijn op Azure HDInsight.
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7,7: hulpprogram ma's voor het beheer van systeem configuratie implementeren
+### <a name="77-deploy-system-configuration-management-tools"></a>7.7: Hulpprogramma's voor systeemconfiguratiebeheer implementeren
 
-**Richt lijnen**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. HDInsight ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Ontwikkel bovendien een proces en pijp lijn voor het beheren van beleids uitzonderingen.
+**Richtlijnen:** Gebruik Azure Policy-aliassen in de naamruimte 'Microsoft.HDInsight' om aangepaste beleidsregels te maken om systeemconfiguraties te waarschuwen, te controleren en af te dwingen. Bovendien ontwikkelt u een proces en pijplijn voor het beheren van beleidsuitzonderingen.
 
 
 
-Azure Policy configureren en beheren:
+Azure-beleid configureren en beheren:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: hulpprogram ma's voor het beheer van systeem configuratie implementeren voor besturings systemen
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Systeemconfiguratiebeheertools implementeren voor besturingssystemen
 
-**Hulp**: Implementeer een oplossing van derden om de gewenste status voor de besturings systemen van het cluster knooppunt te onderhouden.
+**Richtlijnen:** Implementeer een oplossing van derden om de gewenste status voor uw clusterknooppuntbesturingssystemen te behouden.
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: geautomatiseerde configuratie bewaking voor Azure-Services implementeren
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Geautomatiseerde configuratiebewaking implementeren voor Azure-services
 
-**Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. HDInsight ' om aangepaste beleids regels te maken om de configuratie van uw HDInsight-cluster te controleren of af te dwingen.
+**Richtlijnen:** Gebruik Azure Policy-aliassen in de naamruimte 'Microsoft.HDInsight' om aangepaste beleidsregels te maken om de configuratie van uw HDInsight-cluster te controleren of af te dwingen.
 
 
-Beschik bare Azure Policy aliassen weer geven:
+Beschikbare Azure-beleidsaliassen weergeven:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-Azure Policy configureren en beheren:
+Azure-beleid configureren en beheren:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: geautomatiseerde configuratie bewaking voor besturings systemen implementeren
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Geautomatiseerde configuratiebewaking voor besturingssystemen implementeren
 
-**Hulp**: Implementeer een oplossing van derden om de status van de cluster knooppunt besturingssystemen te bewaken.
+**Richtlijnen:** Implementeer een oplossing van derden om de status van uw clusterknooppuntbesturingssystemen te controleren.
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="711-manage-azure-secrets-securely"></a>7,11: Azure-geheimen veilig beheren
+### <a name="711-manage-azure-secrets-securely"></a>7.11: Azure-geheimen veilig beheren
 
-**Hulp**: Azure HDInsight bevat Bring your own Key-ondersteuning (BYOK) voor Apache Kafka. Met deze mogelijkheid kunt u de sleutels die worden gebruikt voor het versleutelen van gegevens in rust krijgen en beheren.
-
-
-Alle beheerde schijven in azure HDInsight worden beveiligd met Azure Storage-service versleuteling (SSE). Standaard worden de gegevens op deze schijven versleuteld met door micro soft beheerde sleutels. Als u BYOK inschakelt, geeft u de versleutelings sleutel voor Azure HDInsight op om deze te gebruiken en te beheren met Azure Key Vault.
+**Richtlijnen**: Azure HDInsight bevat BYOK-ondersteuning (Bring Your Own Key) voor Apache Kafka. Met deze mogelijkheid u de sleutels bezitten en beheren die worden gebruikt om gegevens in rust te versleutelen.
 
 
-Key Vault kunnen ook worden gebruikt met Azure HDInsight-implementaties voor het beheren van sleutels voor cluster opslag (Azure Storage accounts en Azure Data Lake Storage)
+Alle beheerde schijven in Azure HDInsight zijn beveiligd met Azure Storage Service Encryption (SSE). Standaard worden de gegevens op die schijven versleuteld met door Microsoft beheerde sleutels. Als u BYOK inschakelt, geeft u de versleutelingssleutel op voor Azure HDInsight om deze te gebruiken en te beheren met Azure Key Vault.
 
 
-Uw eigen sleutel voor Apache Kafka in azure HDInsight zetten:
+Key Vault kan ook worden gebruikt met Azure HDInsight-implementaties om sleutels voor clusteropslag (Azure Storage Accounts en Azure Data Lake Storage) te beheren.
+
+
+Hoe breng je je eigen sleutel voor Apache Kafka mee op Azure HDInsight:
 
 https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok
 
 
-Versleutelings sleutels voor Azure Storage accounts beheren:
+Versleutelingssleutels voor Azure Storage-accounts beheren:
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7,12: identiteiten veilig en automatisch beheren
+### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Identiteiten veilig en automatisch beheren
 
-**Hulp**: beheerde identiteiten kunnen worden gebruikt in azure HDInsight om uw clusters toegang te geven Azure Active Directory Domain Services, toegang te krijgen tot Azure Key Vault of toegang te krijgen tot bestanden in azure data Lake Storage Gen2.
+**Richtlijnen**: Beheerde identiteiten kunnen worden gebruikt in Azure HDInsight om uw clusters toegang te geven tot Azure Active Directory-domeinservices, toegang tot Azure Key Vault of toegang tot bestanden in Azure Data Lake Storage Gen2.
 
 
 Beheerde identiteiten begrijpen met Azure HDInsight:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-managed-identities
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: onbedoelde referentie blootstelling elimineren
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: Onbedoelde blootstelling aan referenties elimineren
 
-**Richt lijnen**: als u code gebruikt die betrekking heeft op uw Azure HDInsight-implementatie, kunt u referentie scanner implementeren om referenties in code te identificeren. Referentie scanner stimuleert ook het verplaatsen van gedetecteerde referenties naar veiliger locaties, zoals Azure Key Vault. 
+**Richtlijnen:** Als u code gebruikt die betrekking heeft op uw Azure HDInsight-implementatie, u referentiescanner implementeren om referenties binnen code te identificeren. Credential Scanner stimuleert ook het verplaatsen van ontdekte referenties naar veiligere locaties zoals Azure Key Vault. 
 
 
-Referentie scanner instellen:
+Credential Scanner instellen:
 
 https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="malware-defense"></a>Beveiliging tegen malware
 
-*Zie [beveiligings beheer: verdediging tegen malware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
+*Zie [Security Control: Malware Defense](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: centraal beheerde anti-malware-software gebruiken
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Gebruik centraal beheerde anti-malwaresoftware
 
-**Hulp**: Azure HDInsight wordt geleverd met clamscan vooraf geïnstalleerd en ingeschakeld voor de cluster knooppunt installatie kopieën, maar u moet de software echter wel beheren en hand matig aggregatie of bewakings logboeken clamscan genereren.
+**Richtlijnen**: Azure HDInsight wordt geleverd met Clamscan vooraf geïnstalleerd en ingeschakeld voor de clusterknooppuntafbeeldingen, maar u moet de software beheren en alle logboeken die Clamscan produceert handmatig samenvoegen/controleren.
 
 
-Meer informatie over clamscan voor Azure HDInsight:
+Informatie over Clamscan voor Azure HDInsight:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificates
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: scan bestanden die moeten worden geüpload naar niet-reken resources van Azure
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: Vooraf scannen van bestanden die moeten worden geüpload naar niet-compute Azure-resources
 
-**Hulp**: micro soft antimalware is ingeschakeld op de onderliggende host die ondersteuning biedt voor Azure-Services, maar wordt niet uitgevoerd op de inhoud van de klant.
-
-
-Scan vooraf bestanden die worden geüpload naar Azure-resources die zijn gerelateerd aan uw Azure HDInsight-cluster implementatie, zoals Data Lake Storage, Blob Storage, enzovoort. Micro soft heeft geen toegang tot klant gegevens in deze instanties.
+**Richtlijnen:** Microsoft Antimalware is ingeschakeld op de onderliggende host die Azure-services ondersteunt, maar wordt niet uitgevoerd op inhoud van klanten.
 
 
-Meer informatie over micro soft antimalware voor Azure Cloud Services en Virtual Machines:
+Scan vooraf bestanden die worden geüpload naar Azure-bronnen die verband houden met uw Azure HDInsight-clusterimplementatie, zoals Data Lake Storage, Blob Storage, enz. Microsoft heeft in deze gevallen geen toegang tot klantgegevens.
+
+
+Microsoft Antimalware voor Azure Cloud Services en virtuele machines begrijpen:
 
  https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: gedeeld
+**Verantwoordelijkheid**: Gedeeld
 
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: controleren of anti-malware-software en hand tekeningen zijn bijgewerkt
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: Ervoor zorgen dat antivirussoftware en -handtekeningen worden bijgewerkt
 
-**Hulp**: Azure HDInsight wordt geleverd met clamscan vooraf geïnstalleerd en ingeschakeld voor de cluster knooppunt installatie kopieën. Clamscan voert automatisch engine-en definitie-updates uit, maar aggregatie en beheer van Logboeken moet hand matig worden uitgevoerd.
+**Richtlijnen**: Azure HDInsight wordt geleverd met Clamscan vooraf geïnstalleerd en ingeschakeld voor de clusterknooppuntafbeeldingen. Clamscan voert automatisch motor- en definitie-updates uit, maar aggregatie en beheer van logboeken moeten handmatig worden uitgevoerd.
 
 
-Inzicht in clamscan voor Azure Azure HDInsight:
+Informatie over Clamscan voor Azure Azure HDInsight:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificates
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="data-recovery"></a>Gegevensherstel
 
-*Zie [beveiligings beheer: gegevens herstel](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
+*Zie [Beveiligingsbeheer: Gegevensherstel](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9,1: controleren op regel matige automatische back-ups
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Zorg voor regelmatige geautomatiseerde back-ups
 
-**Richt lijnen**: als u een Azure Storage-account gebruikt voor het gegevens archief van het HDInsight-cluster, kiest u de juiste optie voor redundantie (LRS, ZRS, GRS, RA-GRS).  Wanneer u een Azure SQL Database gebruikt voor het Azure HDInsight-cluster gegevens archief, configureert u actieve geo-replicatie.
+**Richtlijnen:** Wanneer u een Azure Storage-account gebruikt voor het HDInsight-clustergegevensarchief, kiest u de juiste redundantieoptie (LRS, ZRS, GRS, RA-GRS).  Wanneer u een Azure SQL Database gebruikt voor het Azure HDInsight-clustergegevensarchief, configureert u Active Geo-replicatie.
 
 
-Opslag redundantie configureren voor Azure Storage accounts:
+Opslagredundantie configureren voor Azure Storage Accounts:
 
 https://docs.microsoft.com/azure/storage/common/storage-redundancy
 
 
-Redundantie voor Azure SQL-data bases configureren:
+Redundantie configureren voor Azure SQL-databases:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: volledige back-ups van het systeem uitvoeren en een back-up maken van een door de klant beheerde sleutels
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Complete systeemback-ups uitvoeren en een back-up maken van beheerde sleutels van een klant
 
-**Richt lijnen**: als u een Azure Storage-account gebruikt voor de gegevens opslag van het Azure HDInsight-cluster, kiest u de juiste optie voor redundantie (LRS, ZRS, GRS, RA-GRS). Als u Azure Key Vault gebruikt voor elk onderdeel van uw Azure HDInsight-implementatie, moet u ervoor zorgen dat er een back-up van uw sleutels wordt gemaakt.
+**Richtlijnen:** Wanneer u een Azure Storage-account gebruikt voor het Azure HDInsight-clustergegevensarchief, kiest u de juiste redundantieoptie (LRS, ZRS, GRS, RA-GRS). Als u Azure Key Vault gebruikt voor een deel van uw Azure HDInsight-implementatie, moet u ervoor zorgen dat er een back-up van uw sleutels wordt gemaakt.
 
 
-Kies opslag opties voor uw Azure HDInsight-cluster:
+Kies opslagopties voor uw Azure HDInsight-cluster:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-compare-storage-options
 
 
-Opslag redundantie configureren voor Azure Storage accounts:
+Opslagredundantie configureren voor Azure Storage Accounts:
 
 https://docs.microsoft.com/azure/storage/common/storage-redundancy
 
 
-Een back-up maken van Key Vault sleutels in Azure:
+Een back-up maken van Key Vault-sleutels in Azure:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: alle back-ups valideren, inclusief door de klant beheerde sleutels
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Alle back-ups valideren, inclusief door de klant beheerde sleutels
 
-**Richt lijnen**: als Azure Key Vault wordt gebruikt in combi natie met uw Azure HDInsight-implementatie, test u het herstellen van back-ups van door de klant beheerde sleutels.
+**Richtlijnen:** Als Azure Key Vault wordt gebruikt met uw Azure HDInsight-implementatie, test u het herstel van back-ups van door klanten beheerde sleutels.
 
 
-Uw eigen sleutel voor Apache Kafka in azure HDInsight zetten:
+Hoe breng je je eigen sleutel voor Apache Kafka mee op Azure HDInsight:
 
 https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok
 
 
-Sleutel kluis sleutels herstellen in Azure:
+Sleutelkluissleutels herstellen in Azure:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: zorg voor de bescherming van back-ups en door de klant beheerde sleutels
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Zorg voor bescherming van back-ups en door klanten beheerde sleutels
 
-**Richt lijnen**: als Azure Key Vault wordt gebruikt in combi natie met uw Azure HDInsight-implementatie, schakelt u zacht verwijderen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
+**Richtlijnen:** Als Azure Key Vault wordt gebruikt met uw Azure HDInsight-implementatie, schakelt u Soft-Delete in Key Vault in om sleutels te beschermen tegen onbedoelde of kwaadwillige verwijdering.
 
 
-Het inschakelen van zacht verwijderen in Azure Key Vault:
+Soft-Delete inschakelen in Azure Key Vault:
 
 https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="incident-response"></a>Reageren op incidenten
 
-*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Zie [Beveiligingscontrole: Incident Response](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)voor meer informatie.*
 
-### <a name="101-create-an-incident-response-guide"></a>10,1: een hand leiding voor reactie op incidenten maken
+### <a name="101-create-an-incident-response-guide"></a>10.1: Een gids voor incidentrespons maken
 
-**Richt lijnen**: Zorg ervoor dat er schriftelijke incidenten abonnementen zijn die rollen van personeel en fasen van incident handling/Management definiëren.
+**Richtlijnen**: Zorg ervoor dat er schriftelijke incidentresponseplannen zijn die de rollen van het personeel en de fasen van incidentafhandeling/-beheer definieert.
 
 
 
-Werk stroom automatisering configureren in Azure Security Center:
+Werkstroomautomatiseringen configureren binnen Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: een beoordelings procedure voor incidenten en prioriteits procedures maken
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Een incidentscore- en prioriteringsprocedure maken
 
-**Hulp**: Security Center wijst een Ernst toe aan waarschuwingen, zodat u de volg orde van de instructies voor elke waarschuwing kunt bepalen, zodat u meteen aan de voor waarde krijgt wanneer een bron is aangetast. De ernst is gebaseerd op de manier waarop vertrouwen Security Center is in de zoek actie of het analyse programma dat wordt gebruikt om de waarschuwing te geven, evenals het betrouwbaarheids niveau dat er schadelijke bedoelingen zijn achter de activiteit die tot de waarschuwing heeft geleid.
+**Richtlijnen**: Security Center kent een ernst toe aan waarschuwingen, zodat u prioriteit geven aan de volgorde waarin u elke waarschuwing bijwoont, zodat wanneer een resource wordt gecompromitteerd, u er meteen bij komen. De ernst is gebaseerd op hoe zeker Security Center is in de bevinding of de analytische gebruikt om de waarschuwing en het betrouwbaarheidsniveau dat er kwaadaardige bedoelingen achter de activiteit die leidde tot de waarschuwing.
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="103-test-security-response-procedures"></a>10,3: procedures voor beveiligings antwoorden testen
+### <a name="103-test-security-response-procedures"></a>10.3: Procedures voor beveiligingsrespons testen
 
-**Richt lijnen**: oefent oefeningen uit om de respons mogelijkheden van uw systeem op een gewone uitgebracht te testen. Identificeer zwakke punten en tussen ruimten en wijzig zo nodig het schema. Raadpleeg de publicatie van het NIST: hand leiding voor het testen, trainen en uitoefenen van Program Ma's voor IT-plannen en-mogelijkheden: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+**Richtlijnen**: Voer oefeningen uit om de incidentresponsmogelijkheden van uw systemen op een regelmatige cadans te testen. Identificeer zwakke punten en hiaten en herzie het plan indien nodig. Raadpleeg de publicatie van NIST: Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: contact gegevens van het beveiligings incident opgeven en waarschuwings meldingen configureren voor beveiligings incidenten
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Contactgegevens beveiligingsincidenten verstrekken en waarschuwingsmeldingen configureren voor beveiligingsincidenten
 
-**Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat uw gegevens zijn geopend door een onrecht matige of niet-gemachtigde partij.
+**Richtlijnen:** Contactgegevens voor beveiligingsincidenten worden door Microsoft gebruikt om contact met u op te nemen als het Microsoft Security Response Center (MSRC) ontdekt dat uw gegevens zijn geopend door een onwettige of onbevoegde partij.
 
 
 
-De Azure Security Center Security-contact persoon instellen:
+De beveiligingscontactpersoon azure security center instellen:
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: beveiligings waarschuwingen opnemen in uw reactie systeem van uw incident
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Beveiligingswaarschuwingen opnemen in uw incidentresponsesysteem
 
-**Richt lijnen**: uw Azure Security Center waarschuwingen en aanbevelingen exporteren met de functie continue export. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende manier exporteren. U kunt de Azure Security Center Data Connector gebruiken om de Sentinel van waarschuwingen te streamen.
+**Richtlijnen:** exporteer uw Azure Security Center-waarschuwingen en -aanbevelingen met de functie Continue exporteren. Met Continue export u waarschuwingen en aanbevelingen handmatig of doorlopend exporteren. U de Azure Security Center-gegevensconnector gebruiken om de waarschuwingen sentinel te streamen.
 
 
 
@@ -1386,43 +1386,43 @@ Waarschuwingen streamen naar Azure Sentinel:
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10,6: de reactie op beveiligings waarschuwingen automatiseren
+### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Automatiseer de reactie op beveiligingswaarschuwingen
 
-**Hulp**: gebruik de functie werk stroom automatisering in azure Security Center om automatisch reacties te activeren via ' Logic apps ' in beveiligings waarschuwingen en aanbevelingen.
+**Richtlijnen:** Gebruik de functie Workflowautomatisering in Azure Security Center om automatisch reacties te activeren via 'Logic Apps' over beveiligingswaarschuwingen en aanbevelingen.
 
 
 
-Werk stroom automatisering en Logic Apps configureren:
+Workflowautomatisering en logische apps configureren:
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
-*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Zie [Security Control: Penetration Tests en Red Team Exercises](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)voor meer informatie.*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herstel van alle essentiële beveiligings resultaten binnen 60 dagen
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1: Voer regelmatig penetratietests uit van uw Azure-resources en zorg voor herstel van alle kritieke beveiligingsbevindingen binnen 60 dagen
 
-**Richt lijnen**: Volg de micro soft-regels om ervoor te zorgen dat de indringings tests niet worden geschonden door het micro soft-beleid:
+**Richtlijnen:** Volg de Microsoft Rules of Engagement om ervoor te zorgen dat uw penetratietests niet in strijd zijn met het Microsoft-beleid:
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
 
 
-U vindt hier meer informatie over de strategie van micro soft en de uitvoering van Red Teaming en live site indringings tests ten opzichte van micro soft Managed Cloud Infrastructure, services en toepassingen, hier: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+Meer informatie over de strategie en uitvoering van Red Teaming en live site penetratietesten van microsoft op basis van door Microsoft beheerde cloudinfrastructuur, -services en -toepassingen vindt u hier:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: gedeeld
+**Verantwoordelijkheid**: Gedeeld
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Security-Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Meer informatie over [Azure-beveiligings basislijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Bekijk de [Azure Security Benchmark](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Meer informatie over [Azure Security Baselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

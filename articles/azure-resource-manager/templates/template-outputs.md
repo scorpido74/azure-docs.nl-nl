@@ -1,22 +1,22 @@
 ---
 title: Uitvoer in sjablonen
-description: Hierin wordt beschreven hoe u uitvoer waarden definieert in een Azure Resource Manager sjabloon.
+description: Beschrijft hoe u uitvoerwaarden definieert in een Azure Resource Manager-sjabloon.
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: ec96b45cdc5ccf488d46c2d8da03caf16d002dfa
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622843"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460021"
 ---
-# <a name="outputs-in-azure-resource-manager-template"></a>Uitvoer in Azure Resource Manager sjabloon
+# <a name="outputs-in-azure-resource-manager-template"></a>Uitvoer in azure resource manager-sjabloon
 
-In dit artikel wordt beschreven hoe u uitvoer waarden definieert in uw Azure Resource Manager sjabloon. U gebruikt uitvoer wanneer u waarden van de geïmplementeerde resources moet retour neren.
+In dit artikel wordt beschreven hoe u uitvoerwaarden definieert in uw Azure Resource Manager-sjabloon. U gebruikt uitvoer wanneer u waarden uit de geïmplementeerde resources moet retourneren.
 
-## <a name="define-output-values"></a>Uitvoer waarden definiëren
+## <a name="define-output-values"></a>Uitvoerwaarden definiëren
 
-Het volgende voorbeeld laat zien hoe geretourneerd van de resource-ID voor een openbaar IP-adres:
+In het volgende voorbeeld ziet u hoe u de bron-id retourneert voor een openbaar IP-adres:
 
 ```json
 "outputs": {
@@ -27,9 +27,9 @@ Het volgende voorbeeld laat zien hoe geretourneerd van de resource-ID voor een o
 }
 ```
 
-## <a name="conditional-output"></a>Voorwaardelijke uitvoer
+## <a name="conditional-output"></a>Voorwaardelijke output
 
-In de sectie outputs kunt u voorwaardelijk een waarde Retour neren. Normaal gesp roken gebruikt u de voor waarde in de uitvoer wanneer u een resource [voorwaardelijk hebt geïmplementeerd](conditional-resource-deployment.md) . In het volgende voor beeld ziet u hoe u de resource-ID voor een openbaar IP-adres voorwaardelijk kunt retour neren op basis van het feit of er een nieuw pakket is geïmplementeerd:
+In de sectie uitvoer u een waarde voorwaardelijk retourneren. Normaal gesproken gebruikt u de voorwaarde in de uitvoer wanneer u een resource voorwaardelijk hebt [geïmplementeerd.](conditional-resource-deployment.md) In het volgende voorbeeld ziet u hoe u de resource-id voorwaardelijk retourneren voor een openbaar IP-adres op basis van de vraag of een nieuw IP-adres is geïmplementeerd:
 
 ```json
 "outputs": {
@@ -41,11 +41,11 @@ In de sectie outputs kunt u voorwaardelijk een waarde Retour neren. Normaal gesp
 }
 ```
 
-Zie [voorwaardelijke uitvoer sjabloon](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json)voor een eenvoudig voor beeld van voorwaardelijke uitvoer.
+Zie [voorwaardelijke uitvoersjabloon](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json)voor een eenvoudig voorbeeld van voorwaardelijke uitvoer.
 
-## <a name="dynamic-number-of-outputs"></a>Dynamisch aantal uitvoer bewerkingen
+## <a name="dynamic-number-of-outputs"></a>Dynamisch aantal uitgangen
 
-In sommige scenario's weet u niet het aantal exemplaren van een waarde die u moet retour neren bij het maken van de sjabloon. U kunt een variabele aantal waarden retour neren met behulp van het element **copy** .
+In sommige scenario's weet u niet het aantal exemplaren van een waarde dat u moet retourneren bij het maken van de sjabloon. U een variabel aantal waarden retourneren met behulp van het **kopieerelement.**
 
 ```json
 "outputs": {
@@ -59,19 +59,19 @@ In sommige scenario's weet u niet het aantal exemplaren van een waarde die u moe
 }
 ```
 
-Zie [herhalingen in azure Resource Manager-sjablonen](copy-outputs.md)voor meer informatie.
+Zie [Iteratie uitvoer uitvoer in Azure Resource Manager-sjablonen](copy-outputs.md)voor meer informatie.
 
 ## <a name="linked-templates"></a>Gekoppelde sjablonen
 
-Gebruik de functie [Reference](template-functions-resource.md#reference) in de bovenliggende sjabloon om de uitvoer waarde van een gekoppelde sjabloon op te halen. De syntaxis van de bovenliggende sjabloon is:
+Als u de uitvoerwaarde wilt ophalen uit een gekoppelde sjabloon, gebruikt u de [referentiefunctie](template-functions-resource.md#reference) in de bovenliggende sjabloon. De syntaxis in de bovenliggende sjabloon is:
 
 ```json
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
 ```
 
-Bij het ophalen van een eigenschap van een uitvoer van een gekoppelde sjabloon, kan niet de eigenschapsnaam van de een streepje bestaan.
+Wanneer u een uitvoereigenschap van een gekoppelde sjabloon krijgt, kan de eigenschapsnaam geen streepje bevatten.
 
-In het volgende voor beeld ziet u hoe u het IP-adres instelt op een load balancer door een waarde op te halen uit een gekoppelde sjabloon.
+In het volgende voorbeeld ziet u hoe u het IP-adres instelt op een load balancer door een waarde uit een gekoppelde sjabloon op te halen.
 
 ```json
 "publicIPAddress": {
@@ -79,15 +79,15 @@ In het volgende voor beeld ziet u hoe u het IP-adres instelt op een load balance
 }
 ```
 
-U kunt de functie `reference` niet gebruiken in het gedeelte outputs van een [geneste sjabloon](linked-templates.md#nested-template). Als u wilt de waarden voor een geïmplementeerde resource in een geneste sjabloon, uw geneste sjabloon te converteren naar een gekoppelde sjabloon.
+U de `reference` functie niet gebruiken in het gedeelte uitvoer van een [geneste sjabloon.](linked-templates.md#nested-template) Als u de waarden voor een geïmplementeerde resource wilt retourneren in een geneste sjabloon, converteert u uw geneste sjabloon naar een gekoppelde sjabloon.
 
-## <a name="get-output-values"></a>Uitvoer waarden ophalen
+## <a name="get-output-values"></a>Uitvoerwaarden ophalen
 
-Wanneer de implementatie is geslaagd, worden de uitvoer waarden automatisch geretourneerd in de resultaten van de implementatie.
+Wanneer de implementatie slaagt, worden de uitvoerwaarden automatisch geretourneerd in de resultaten van de implementatie.
 
-Als u uitvoer waarden wilt ophalen uit de implementatie geschiedenis, kunt u script gebruiken.
+Als u uitvoerwaarden uit de implementatiegeschiedenis wilt halen, u script gebruiken.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment `
@@ -95,10 +95,10 @@ Als u uitvoer waarden wilt ophalen uit de implementatie geschiedenis, kunt u scr
   -Name <deployment-name>).Outputs.resourceID.value
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-az group deployment show \
+az deployment group show \
   -g <resource-group-name> \
   -n <deployment-name> \
   --query properties.outputs.resourceID.value
@@ -108,14 +108,14 @@ az group deployment show \
 
 ## <a name="example-templates"></a>Voorbeeldsjablonen
 
-In de volgende voor beelden ziet u scenario's voor het gebruik van uitvoer.
+In de volgende voorbeelden worden scenario's gedemonstreerd voor het gebruik van uitvoer.
 
 |Template  |Beschrijving  |
 |---------|---------|
-|[Variabelen kopiëren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Complexe variabelen maakt en deze waarden weergeeft. Niet alle resources niet implementeren. |
-|[Openbaar IP-adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Hiermee maakt u een openbaar IP-adres en de uitvoer van de resource-ID. |
-|[Load balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Koppelingen naar de voorgaande sjabloon. Maakt gebruik van de resource-ID in de uitvoer bij het maken van de load balancer. |
+|[Variabelen kopiëren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Hiermee maakt u complexe variabelen en worden deze waarden uitgevoerd. Zet geen resources in. |
+|[Openbaar IP-adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Hiermee maakt u een openbaar IP-adres en wordt de resource-id uitgevoerd. |
+|[Load balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Koppelingen naar de voorgaande sjabloon. Gebruikt de resource-id in de uitvoer bij het maken van de load balancer. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager-sjablonen](template-syntax.md)voor meer informatie over de beschik bare eigenschappen voor uitvoer.
+* Zie [De structuur en de syntaxis van Azure Resource Manager-sjablonen begrijpen](template-syntax.md)voor meer informatie over de beschikbare eigenschappen voor uitvoer.

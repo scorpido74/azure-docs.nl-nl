@@ -1,7 +1,7 @@
 ---
-title: Een Video Indexer account beheren
+title: Een Video Indexer-account beheren
 titleSuffix: Azure Media Services
-description: In dit artikel wordt beschreven hoe u een Video Indexer account beheert dat is verbonden met Azure.
+description: Meer informatie over het beheren van een Video Indexer-account dat is verbonden met Azure.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,83 +10,83 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/16/2019
 ms.author: juliako
-ms.openlocfilehash: f3825f6c9186c5e04807dd3890a14fcc6d370989
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5b9ec1c04dd90af9d9380a1f4d30386c8f9cc3ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454664"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499667"
 ---
-# <a name="manage-a-video-indexer-account-connected-to-azure"></a>Een Video Indexer account beheren dat is verbonden met Azure
+# <a name="manage-a-video-indexer-account-connected-to-azure"></a>Een Video Indexer-account beheren dat is verbonden met Azure
 
-In dit artikel wordt beschreven hoe u een Video Indexer-account kunt beheren dat is verbonden met uw Azure-abonnement en een Azure Media Services-account.
+In dit artikel wordt uitgelegd hoe u een Video Indexer-account beheert dat is verbonden met uw Azure-abonnement en een Azure Media Services-account.
 
 > [!NOTE]
-> U moet de eigenaar van het Video Indexer account zijn voor het uitvoeren van aanpassingen van de account configuratie die in dit onderwerp worden beschreven.
+> U moet de eigenaar van het Video-indexer-account zijn om accountconfiguratieaanpassingen uit te voeren die in dit onderwerp worden besproken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Verbind uw Video Indexer-account met Azure, zoals beschreven in [verbonden met Azure](connect-to-azure.md). 
+Verbind uw Video Indexer-account met Azure, zoals beschreven in [Verbonden met Azure.](connect-to-azure.md)
 
-Zorg ervoor dat u voldoet aan de [vereisten](connect-to-azure.md#prerequisites) en Lees [overwegingen](connect-to-azure.md#considerations) in het artikel.
+Volg [voorwaarden](connect-to-azure.md#prerequisites) en bekijk [overwegingen](connect-to-azure.md#considerations) in het artikel.
 
-## <a name="examine-account-settings"></a>Account instellingen controleren
+## <a name="examine-account-settings"></a>Accountinstellingen onderzoeken
 
-In deze sectie worden de instellingen van uw Video Indexer-account onderzocht.
+In deze sectie worden de instellingen van uw Video-indexeraccount onderzocht.
 
-Instellingen weer geven:
+Instellingen weergeven:
 
-1. Klik in de rechter bovenhoek op het pictogram van de gebruiker en selecteer **instellingen**.
+1. Klik op het gebruikerspictogram in de rechterbovenhoek en selecteer **Instellingen**.
 
-    ![Instellingen](./media/manage-account-connected-to-azure/select-settings.png)
+    ![Instellingen in video-indexer](./media/manage-account-connected-to-azure/select-settings.png)
 
-2. Selecteer op de pagina **instellingen** het tabblad **account** .
+2. Selecteer **op** de pagina Instellingen het tabblad **Account.**
 
-Als uw video indexer-account is verbonden met Azure, ziet u het volgende:
+Als uw Video-indexeraccount is verbonden met Azure, ziet u de volgende dingen:
 
 * De naam van het onderliggende Azure Media Services-account.
-* Het aantal uitgevoerde indexerings taken en de wachtrij.
+* Het aantal indexeringstaken dat wordt uitgevoerd en in de wachtrij staat.
 * Het aantal en het type toegewezen gereserveerde eenheden.
 
-Als uw account aanpassingen vereist, worden relevante fouten en waarschuwingen over uw account configuratie weer gegeven op de pagina **instellingen** . De berichten bevatten koppelingen naar exacte locaties in Azure Portal waar u wijzigingen moet aanbrengen. Zie de sectie met [fouten en waarschuwingen](#errors-and-warnings) voor meer informatie.
+Als uw account een aantal aanpassingen nodig heeft, ziet u relevante fouten en waarschuwingen over uw accountconfiguratie op de pagina **Instellingen.** De berichten bevatten koppelingen naar exacte plaatsen in de Azure-portal waar u wijzigingen moet aanbrengen. Zie voor meer informatie de sectie [fouten en waarschuwingen](#errors-and-warnings) die volgt.
 
 ## <a name="repair-the-connection-to-azure"></a>De verbinding met Azure herstellen
 
-In het dialoog venster **verbinding bijwerken met Azure Media Services** van uw [video indexer](https://www.videoindexer.ai/) pagina, wordt u gevraagd waarden op te geven voor de volgende instellingen: 
+In het dialoogvenster **Verbinding bijwerken met Azure Media Services** van uw [video-indexerpagina](https://www.videoindexer.ai/) wordt u gevraagd waarden op te geven voor de volgende instellingen:
 
 |Instelling|Beschrijving|
 |---|---|
-|Azure-abonnements-ID|De abonnements-ID kan worden opgehaald uit de Azure Portal. Klik op **alle services** in het linkerdeel venster en zoek naar ' Abonnementen '. Selecteer **abonnementen** en kies de gewenste id in de lijst met uw abonnementen.|
-|Naam van de resource groep Azure Media Services|De naam voor de resource groep waarin u het Media Services-account hebt gemaakt.|
-|Toepassings-id|De Azure AD-toepassings-ID (met machtigingen voor het opgegeven Media Services-account) dat u voor dit Video Indexer account hebt gemaakt. <br/><br/>Als u de App-ID wilt ophalen, gaat u naar Azure Portal. Kies onder het Media Services account uw account en ga naar **API-toegang**. Klik op **verbinding maken met Media Services-API met service-principal** -> **Azure AD-App**. Kopieer de relevante para meters.|
-|Toepassingssleutel|De Azure AD-toepassings sleutel die is gekoppeld aan uw Media Services account dat u hierboven hebt opgegeven. <br/><br/>Als u de app-sleutel wilt ophalen, gaat u naar Azure Portal. Kies onder het Media Services account uw account en ga naar **API-toegang**. Klik op **verbinding maken met Media Services-API met service-principal** -> toepassings -> **certificaten & geheimen**te **beheren** . Kopieer de relevante para meters.|
+|Azure-abonnements-ID|De abonnements-ID kan worden opgehaald uit de Azure-portal. Klik op **Alle services** in het linkerdeelvenster en zoek naar "abonnementen". Selecteer **Abonnementen** en kies de gewenste id in de lijst met abonnementen.|
+|Naam van azure Media Services-brongroep|De naam voor de resourcegroep waarin u het Media Services-account hebt gemaakt.|
+|Toepassings-id|De Azure AD-toepassings-id (met machtigingen voor het opgegeven Media Services-account) die u hebt gemaakt voor dit Video Indexer-account. <br/><br/>Als u de app-id wilt krijgen, navigeert u naar azure-portal. Kies onder het Media Services-account uw account en ga naar **API Access.** Selecteer **Verbinding maken met de Api van Media Services met serviceprincipal** -> **Azure AD App**. Kopieer de relevante parameters.|
+|Toepassingssleutel|De Azure AD-toepassingssleutel die is gekoppeld aan uw Media Services-account die u hierboven hebt opgegeven. <br/><br/>Als u de app-sleutel wilt downloaden, navigeert u naar azure-portal. Kies onder het Media Services-account uw account en ga naar **API Access.** Selecteer **Verbinding maken met De API van Media Services met serviceprincipal** -> **Beheertoepassingscertificaten** -> **& geheimen**. Kopieer de relevante parameters.|
 
-## <a name="auto-scale-reserved-units"></a>Gereserveerde eenheden automatisch schalen
+## <a name="autoscale-reserved-units"></a>Gereserveerde eenheden automatisch schalen
 
-Op de pagina **instellingen** kunt u automatisch schalen instellen voor gereserveerde media-eenheden (ru). Als de optie is **ingeschakeld**, kunt u het maximum aantal aan Rus toewijzen en ervoor zorgen dat de video indexer automatisch Rus wordt gestopt/gestart. Met deze optie betaalt u geen extra geld voor niet-actieve tijd, maar u hoeft niet te wachten op het volt ooien van index taken wanneer de indexerings belasting hoog is.
+Op de pagina **Instellingen** u het automatisch schalen van gereserveerde mediaeenheden (RU) instellen. Als de optie **is ingeschakeld,** u het maximum aantal RU's toewijzen en er zeker van zijn dat Video Indexer stops/start-se's automatisch stopt/start. Met deze optie betaalt u geen extra geld voor idle-tijd, maar wacht u ook niet tot het indexeren van taken een lange tijd voltooit wanneer de indexeringsbelasting hoog is.
 
-Automatische schaal aanpassing niet lager dan 1 RU of hoger dan de standaard limiet van het Media Services-account. Als u de limiet wilt verhogen, maakt u een service aanvraag. Zie [quota's en beperkingen](../../media-services/previous/media-services-quotas-and-limitations.md)voor meer informatie over quota en beperkingen en het openen van een ondersteunings ticket.
+Autoscale schaalt niet onder 1 RU of boven de standaardlimiet van het Media Services-account. Als u de limiet wilt verhogen, maakt u een serviceaanvraag. Zie [Quota en beperkingen](../../media-services/previous/media-services-quotas-and-limitations.md)voor informatie over quota en beperkingen en het openen van een ondersteuningsticket.
 
-![Aanmelden](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
+![Video-indexeren voor gereserveerde eenheden automatisch schalen](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
 
 ## <a name="errors-and-warnings"></a>Fouten en waarschuwingen
 
-Als uw account aanpassingen vereist, ziet u relevante fouten en waarschuwingen over uw account configuratie op de pagina **instellingen** . De berichten bevatten koppelingen naar exacte locaties in Azure Portal waar u wijzigingen moet aanbrengen. In deze sectie vindt u meer informatie over de fout-en waarschuwings berichten.
+Als uw account een aantal aanpassingen nodig heeft, ziet u relevante fouten en waarschuwingen over uw accountconfiguratie op de pagina **Instellingen.** De berichten bevatten koppelingen naar exacte plaatsen in de Azure-portal waar u wijzigingen moet aanbrengen. In deze sectie vindt u meer informatie over de fout- en waarschuwingsberichten.
 
-* Event Grid
+* EventGrid (EventGrid)
 
-    U moet de EventGrid-resource provider registreren met behulp van de Azure Portal. Ga in het [Azure Portal](https://portal.azure.com/)naar **abonnementen** > [subscription] > **ResourceProviders** > **micro soft. EventGrid**. Als de status niet is **geregistreerd** , klikt u op **registreren**. Het duurt enkele minuten om u te registreren. 
+    U moet de EventGrid-resourceprovider registreren via de Azure-portal. Ga in de [Azure-portal](https://portal.azure.com/)naar **Abonnementen** > [abonnement] > **ResourceProviders** > **Microsoft.EventGrid**. Als deze niet in de **geregistreerde** staat staat is, selecteert u **Register**. Het duurt een paar minuten om te registreren.
 
-* Streaming-eind punt
+* Streaming-eindpunt
 
-    Zorg ervoor dat de onderliggende Media Services account het standaard **streaming-eind punt** met de status gestart heeft. Als dat niet het geval is, kunt u geen Video's bekijken uit dit Media Services-account of Video Indexer.
+    Controleer of het onderliggende Media Services-account het standaard **eindpunt voor streaming** in een gestarte status heeft. Anders u geen video's bekijken van dit Media Services-account of in Video Indexer.
 
-* Gereserveerde media-eenheden 
+* Media gereserveerde eenheden
 
-    U moet gereserveerde media-eenheden toewijzen aan uw media service bron om Video's te kunnen indexeren. Voor optimale index prestaties is het raadzaam om ten minste 10 S3-gereserveerde eenheden toe te wijzen. Zie de sectie Veelgestelde vragen op de pagina met [prijzen voor Media Services](https://azure.microsoft.com/pricing/details/media-services/) voor prijs informatie.   
+    U moet mediagereserveerde eenheden toewijzen aan uw Media Service-bron om video's te indexeren. Voor optimale indexeringsprestaties is het raadzaam om ten minste 10 Gereserveerde S3-eenheden toe te wijzen. Zie de veelgestelde vragen van de [prijspagina Media Services](https://azure.microsoft.com/pricing/details/media-services/) voor prijsinformatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt programmatisch communiceren met uw proef account en/of met uw Video Indexer-accounts die zijn verbonden met Azure door de instructies te volgen in: [Api's gebruiken](video-indexer-use-apis.md).
+U programmatisch communiceren met uw proefaccount of Video Indexer-accounts die zijn verbonden met Azure door de instructies te volgen in: [API's gebruiken.](video-indexer-use-apis.md)
 
-U moet dezelfde Azure AD-gebruiker gebruiken die u hebt gebruikt om verbinding te maken met Azure.
+Gebruik dezelfde Azure AD-gebruiker die u hebt gebruikt bij een verbinding met Azure.

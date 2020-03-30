@@ -1,150 +1,149 @@
 ---
-title: Controleer de publicatie status van uw aanbieding voor commerciële Marketplace
-description: Controleer de status van de vereiste validatie, certificering en preview-stappen voor het publiceren van een aanbieding via de commerciële Marketplace in het micro soft Partner Center.
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+title: Controleer de publicatiestatus van uw commerciële marktplaatsaanbieding
+description: Controleer de status van de validatie-, certificerings- en voorbeeldstappen die nodig zijn om een aanbieding te publiceren via de commerciële marktplaats in het Microsoft PartnerCenter.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 14290e000d5c6251216a6b0a0fc68c8a0897210a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 012a574887d9980e0c71c3af84ff70ca8d31312c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824042"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275676"
 ---
-# <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Controleer de publicatie status van uw aanbieding voor commerciële Marketplace
+# <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Controleer de publicatiestatus van uw commerciële marktplaatsaanbieding
 
-U kunt de huidige **publicatie status** weer geven op het tabblad Overzicht van het **aanbod** van de [Portal commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) in het partner centrum.
+U uw huidige **publicatiestatus** bekijken op het tabblad **Aanbiedingsoverzicht** van de [Portal Commerciële Marktplaats](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) in partnercentrum.
 
-Voor elke aanbieding moet een van de volgende status indicatoren worden weer gegeven.
+Voor elke aanbieding moet een van de volgende statusindicatoren worden weergegeven.
 
 | **Status**    | **Beschrijving**  |
 | :---------- | :-------------------|
-| **Runbookconcept** | Het aanbod is gemaakt maar wordt niet gepubliceerd. |
-| **Publicatie wordt uitgevoerd** | De aanbieding/het plan werkt in de stappen van het publicatie proces. |
-| **Aandacht vereist** | Er is een kritiek probleem ontdekt tijdens de certificering door micro soft of een van de publicatie stappen. |
-| **Preview** | De aanbieding is gecertificeerd door micro soft en wacht nu op een definitieve verificatie door de uitgever. Selecteer Live gaan om de aanbieding Live te maken. |
-| **Galerie** | De aanbieding is live op Marketplace en kan worden gezien en verworven door klanten. |
-| **Verkopen in behandeling voor stoppen** | De uitgever heeft ' stoppen met verkopen ' in de aanbieding of het abonnement geselecteerd, maar de actie is nog niet voltooid. |
-| **Niet beschikbaar in Marketplace** | Een eerder gepubliceerde aanbieding/plan in Marketplace is verwijderd. |
+| **Concept** | Aanbieding is gemaakt, maar wordt niet gepubliceerd. |
+| **Publiceren in uitvoering** | Aanbieding/Plan werkt zich een weg door de stappen van het publicatieproces. |
+| **Aandacht nodig** | Er is een kritiek probleem ontdekt tijdens de certificering door Microsoft of een van de publicatiestappen. |
+| **Voorbeeld** | Aanbieding is gecertificeerd door Microsoft en wacht nu op een definitieve verificatie door de uitgever. Selecteer live gaan om het aanbod live te doen. |
+| **Live** | Aanbod is live in de markt en kan worden gezien en verworven door klanten. |
+| **In afwachting van stop verkopen** | Uitgever geselecteerd "stop verkopen" aangeboden of plan, maar de actie is nog niet voltooid. |
+| **Niet beschikbaar op de markt** | Een eerder gepubliceerde aanbieding/abonnement in de marktplaats is verwijderd. |
 
-## <a name="automated-validation"></a>Automatische validatie
+## <a name="automated-validation"></a>Geautomatiseerde validatie
 
-De eerste stap in het publicatie proces is een set automatische validaties. Elke validatie stap komt overeen met een functie die u hebt gekozen om in te scha kelen voor het maken van uw aanbieding. Als deze functie niet is ingeschakeld, wordt de validatie overs laan voor de volgende stap van de publicatie. Elke validatie controle moet worden voltooid voordat de status van de publicatie is goedgekeurd.
+De eerste stap in het publicatieproces is een reeks geautomatiseerde validaties. Elke validatiestap komt overeen met een functie die u hebt gekozen bij het maken van uw aanbieding. Als die functie niet is ingeschakeld, gaat de validatie vooruit naar de volgende publicatiestap. Elke validatiecontrole moet worden voltooid voordat de publicatiestatus is goedgekeurd.
 
-- **Setup van inkoop stroom van aanbieding (< 10 min.)**
+- **Instelling aankoopstroom aanbieden (<10 min)**
 
-In deze stap zorgt u ervoor dat aan uw aanbieding kan worden voldaan wanneer klanten via de Azure Portal worden gekocht. Deze stap is alleen van toepassing op aanbiedingen die via micro soft worden verkocht.
+In deze stap zorgen we ervoor dat uw aanbod kan worden uitgevoerd wanneer deze door klanten via de Azure-portal wordt gekocht. Deze stap is alleen van toepassing op aanbiedingen die via Microsoft worden verkocht.
 
-- **Gegevens validatie test station (~ 5 min)**
+- **Teststation gegevensvalidatie (~5 min)**
 
-In deze stap valideren we de gegevens die u hebt ingevoerd in het gedeelte test drive Technical Configuration van de aanbieding. De functionaliteit van het test station wordt getest en goedgekeurd. Deze stap is alleen van toepassing op aanbiedingen waarvoor een test drive is ingeschakeld.
+In deze stap valideren we de gegevens die u hebt opgegeven in de sectie Technische configuratie van de aanbieding. De functionaliteit van de testrit is getest en goedgekeurd. Deze stap is alleen van toepassing op aanbiedingen waarvoor een testrit is ingeschakeld.
 
-- **Het inrichten van het station testen (~ 30 minuten)**
+- **Proefrit provisioning (~ 30 min)**
 
-In deze stap moeten we na het valideren van de gegevens en functionaliteit van uw test drive in de vorige stap exemplaren van uw test drive implementeren en repliceren, zodat deze gereed zijn voor gebruik door de klant.  Deze stap is alleen van toepassing op aanbiedingen waarvoor een test drive is ingeschakeld.
+In deze stap implementeren en repliceren we exemplaren van uw testrit nadat we de gegevens en functionaliteit van uw testrit in de vorige stap hebben gevaliderd, zodat ze klaar zijn voor gebruik door de klant.  Deze stap is alleen van toepassing op aanbiedingen waarvoor een testrit is ingeschakeld.
 
-- **Validatie en registratie van lead beheer (< 15 min)**
+- **Validatie en registratie van leadmanagement (<15 min)**
 
-In deze stap bevestigen we dat uw systeem voor het beheer van potentiële klanten leads kan ontvangen op basis van de details van de aanbiedings instelling. Deze stap is alleen van toepassing op aanbiedingen waarvoor Lead beheer is ingeschakeld.
+In deze stap bevestigen we dat uw leadmanagementsysteem klantleads kan ontvangen op basis van de details die zijn opgegeven in de installatie van aanbieding. Deze stap is alleen van toepassing op aanbiedingen waarvoor Lead management is ingeschakeld.
 
 ## <a name="certification"></a>Certificering
 
-Voor het publiceren van aanbiedingen die worden verzonden naar de commerciële Marketplace in Partner Center moet worden gecertificeerd. Verzonden aanbiedingen worden uitvoerig getest, sommige geautomatiseerd en anderen hand matig, inclusief een controle op het [Azure Marketplace-certificerings beleid](https://docs.microsoft.com/legal/marketplace/general-policies). Inzendingen voor aanbiedingen moeten worden gemarkeerd als in aanmerking komend voor certificering voordat ze naar de volgende stap in de publicatie stroom kunnen gaan.
+Voordat ze worden gepubliceerd, moeten aanbiedingen die worden ingediend bij de commerciële marktplaats in partnercentrum, worden gecertificeerd. Ingediende aanbiedingen worden grondig getest, sommige geautomatiseerde en andere handmatige, met inbegrip van een controle tegen de [Azure Marketplace-certificering beleid](https://docs.microsoft.com/legal/marketplace/general-policies). Aanbiedingsinzendingen moeten worden gemarkeerd als in aanmerking komen voor certificering voordat ze doorgaan naar de volgende stap in de publicatiestroom.
 
-### <a name="types-of-validation-that-take-place-during-certification"></a>Typen validatie die worden uitgevoerd tijdens het certificerings proces
+### <a name="types-of-validation-that-take-place-during-certification"></a>Typen validatie die plaatsvinden tijdens de certificering
 
-Er zijn drie validatie niveaus opgenomen in het certificerings proces voor elke verzonden aanbieding.
+Er zijn drie validatieniveaus opgenomen in het certificeringsproces voor elke ingediende aanbieding.
 
-- Zakelijke geschiktheid voor Publisher
-- Validatie van inhoud
+- Geschiktheid voor uitgeversbedrijven
+- Inhoudsvalidatie
 - Technische validatie
 
-#### <a name="publisher-business-eligibility"></a>Zakelijke geschiktheid voor Publisher
+#### <a name="publisher-business-eligibility"></a>Geschiktheid voor uitgeversbedrijven
 
-Elk aanbiedings type controleert een reeks basis geschiktheids criteria waaraan de uitgever moet voldoen. Geschiktheids criteria kunnen bestaan uit de MPN-status van de uitgever, de beschik baarheid en competentie niveaus, enzovoort.
+Elk aanbiedingstype controleert een reeks basisgeschiktheidscriteria waaraan de uitgever moet voldoen. Criteria voor geschiktheid kunnen de MPN-status van de uitgever, de competenties, de competentieniveaus, enz.
 
-#### <a name="content-validation"></a>Validatie van inhoud
+#### <a name="content-validation"></a>Inhoudsvalidatie
 
-Tijdens de validatie van de inhoud wordt de informatie die u hebt ingevoerd bij het maken van uw aanbieding gecontroleerd op kwaliteit en relevantie. Met deze controles worden uw vermeldingen voor de details van Marketplace-vermelding, prijzen, Beschik baarheid, bijbehorende abonnementen, enzovoort gecontroleerd. Om te voldoen aan de criteria voor de Azure Marketplace-en/of AppSource-aanbieding, zullen we controleren of uw aanbieding het volgende bevat:
+Tijdens de validatie van de inhoud worden de gegevens die zijn ingevoerd bij het maken van uw aanbieding gecontroleerd op kwaliteit en relevantie. Deze controles zullen uw inzendingen bekijken voor de details van de marktplaatsvermelding, prijzen, beschikbaarheid, bijbehorende abonnementen, enz. Om te voldoen aan de azure Marketplace- en/of AppSource-vermeldingscriteria, valideren we dat uw aanbieding het volledige zeggen over:
 
-- een titel die de aanbieding nauw keurig beschrijft;
-- goed geschreven beschrijvingen die een grondig overzicht en toegevoegde waarde bieden;
-- scherm afbeeldingen van kwaliteit en begeleidende Video's; maar
-- een uitleg van de manier waarop de aanbieding gebruikmaakt van micro soft-platforms en-hulpprogram ma's.
+- een titel die het aanbod nauwkeurig beschrijft;
+- goed geschreven beschrijvingen die een grondig overzicht en waardepropositie bieden;
+- kwaliteitsscreenshots en bijbehorende video's; En
+- een uitleg over hoe het aanbod gebruik maakt van Microsoft-platforms en -tools.
 
-Meer informatie over de criteria voor de validatie van de inhoud vindt u in de [algemene aanbiedings beleidsregels](https://docs.microsoft.com/legal/marketplace/certification-policies#100-general).
+Meer informatie over de criteria voor contentvalidatie door het [algemene aanbiedingsbeleid te](https://docs.microsoft.com/legal/marketplace/certification-policies#100-general)lezen .
 
 #### <a name="technical-validation"></a>Technische validatie
 
-Tijdens de technische validatie onderneemt de aanbieding (pakket of binair) de volgende controles.
+Tijdens de technische validatie ondergaat de aanbieding (pakket of binair) de volgende controles.
 - Gescand op malware
-- Bewaakte netwerk aanroepen
+- Netwerkoproepen gecontroleerd
 - Pakket geanalyseerd
-- Grondige scan van de daad werkelijke functionaliteit van de aanbieding
+- Grondige scanning van de werkelijke functionaliteit van het aanbod
 
-De aanbieding wordt getest op verschillende platforms en versies om ervoor te zorgen dat deze krachtig is.
+Het aanbod wordt getest op verschillende platformen en versies om ervoor te zorgen dat het robuust is.
 
-Bekijk de specifieke configuratie details die zijn vereist voor uw aanbieding in het gedeelte technische configuratie van dit document.
+Bekijk de specifieke configuratiegegevens die nodig zijn voor uw aanbieding in het gedeelte Technische configuratie van dit document.
 
-### <a name="certification-failure-report"></a>Rapport van certificerings fout
+### <a name="certification-failure-report"></a>Rapport voor certificeringsfouten
 
-Als de beoordeling is voltooid, wordt de volgende stap in het publicatie proces uitgevoerd als uw aanbieding is door gegeven aan de certificering. Als uw aanbieding een van de aanbiedingen, technische of beleids controles heeft mislukt of als u niet in aanmerking komt voor een aanbieding van dat type, wordt een rapport met een certificerings fout gegenereerd en naar u verzonden.
+Na voltooiing van de beoordeling, als uw aanbod is geslaagd certificering dan gaat het verder naar de volgende stap in het publicatieproces. Als uw aanbieding geen van de aanbiedings-, technische of beleidscontroles heeft uitgevoerd of als u niet in aanmerking komt voor een dergelijk voorstel, wordt een rapport over certificeringsfouten gegenereerd en naar u gemaild.
 
-Dit rapport bevat beschrijvingen van alle beleids regels die zijn mislukt, samen met controle notities. Bekijk dit e-mail rapport, Los eventuele problemen op, breng zo nodig updates voor uw aanbieding aan en verzend de aanbieding opnieuw via de [Portal voor commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) in het partner centrum. (U kunt de aanbieding zo vaak als nodig opnieuw verzenden totdat de certificering wordt door gegeven).
+Dit rapport bevat beschrijvingen van beleid dat is mislukt, samen met beoordelingsnotities. Bekijk dit e-mailrapport, verwerk eventuele problemen, maak waar nodig updates van uw aanbieding en dien de aanbieding opnieuw in met de [Commerciële Marketplace-portal](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) in het Partnercentrum. (U de aanbieding zo vaak als nodig opnieuw indienen totdat u de certificering hebt gehaald).
 
-## <a name="preview-creation"></a>Voor beeld maken
+## <a name="preview-creation"></a>Voorbeeld van maken bekijken
 
-Tijdens de stap **voor het maken** van de preview-fase maken we een versie van uw aanbieding die alleen toegankelijk is voor de doel groep die u hebt opgegeven in het gedeelte preview van uw aanbieding.
+Tijdens de stap **Voor het maken** van voorbeelden maken we een versie van je aanbieding die alleen toegankelijk is voor de doelgroep die je hebt opgegeven in het gedeelte Voorbeeld van je aanbieding.
 
 >[!Note]
-> Gebruik deze stap niet om personen buiten uw organisatie inzicht te geven in een aanbieding. Gebruik in plaats daarvan de optie voor de **privé-aanbieding** . Uw aanbieding is op dit moment niet volledig getest en gevalideerd en is niet gereed voor externe distributie.
+> Gebruik deze stap niet om mensen buiten uw organisatie inzicht te geven in een aanbieding. Gebruik in plaats daarvan de optie **Privé-aanbieding.** Op dit moment is uw aanbod nog niet volledig getest en gevalideerd en is het niet klaar voor externe distributie.
 
-## <a name="publisher-approval"></a>Goed keuring Uitgever
+## <a name="publisher-approval"></a>Goedkeuring van uitgevers
 
-In deze stap ontvangt u een e-mail met een aanvraag voor u om uw Preview-voor beeld te controleren en goed te keuren voordat u de laatste stap publiceert.
+In deze stap wordt u per e-mail ontvangen met een verzoek om uw aanbiedingsvoorbeeld te bekijken en goed te keuren voordat u de laatste publicatiestap moet goedkeuren.
 
-Als u hebt geselecteerd om uw aanbieding via micro soft te verkopen, kunt u de aanschaf en implementatie van uw aanbieding testen om ervoor te zorgen dat deze aan uw vereisten voldoet tijdens de goedkeurings fase van dit voor beeld. Uw aanbieding is nog niet beschikbaar in de open bare Marketplace. Zodra u deze preview hebt getest en goedgekeurd, moet u **Go-Live** selecteren in het dash board overzicht van de [**aanbieding**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) .
+Als u ervoor hebt gekozen om uw aanbieding via Microsoft te verkopen, u de acquisitie en implementatie van uw aanbieding testen om ervoor te zorgen dat deze aan uw vereisten voldoet tijdens deze goedkeuringsfase voor het bekijken. Uw aanbieding is nog niet beschikbaar op de openbare marktplaats. Zodra u deze preview test en goedkeurt, moet u **Go-Live** selecteren op het dashboard [**met aanbiedingsoverzicht.**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)
 
-Als u tijdens deze preview-fase wijzigingen in de aanbieding wilt aanbrengen, kunt u een nieuwe preview-versie bewerken en opnieuw indienen. Zie het artikel [bestaande Marketplace-aanbiedingen bijwerken](#update-existing-marketplace-offers) voor meer informatie over meer wijzigingen.
+Als u tijdens deze voorbeeldfase wijzigingen in de aanbieding wilt aanbrengen, u deze bewerken en opnieuw indienen om een nieuw voorbeeld te publiceren. Zie het artikel [Bestaande marketplace-aanbiedingen](#update-existing-marketplace-offers) bijwerken voor meer wijzigingen.
 
-Als uw aanbieding al Live is en beschikbaar is voor het publiek in de Marketplace, worden de updates die u aanbrengt pas live als u **Go-Live** selecteert in het dash board overzicht van de [**aanbieding**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) .
+Als uw aanbieding al live is en beschikbaar is voor het publiek op de markt, worden updates die u maakt pas live als u **Go-live** selecteert op het dashboard [**met aanbiedingsoverzicht.**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)
 
-### <a name="publish-offer-to-the-public"></a>Aanbieding publiceren naar het publiek
+### <a name="publish-offer-to-the-public"></a>Aanbieding publiceren aan het publiek
 
-Meld u aan bij Partner Center en open de aanbieding. U wordt omgeleid naar de **overzichts** pagina van de aanbieding. Boven aan deze pagina ziet u een optie voor **Live go**. Selecteer **Live** en nadat u hebt bevestigd, wordt de aanbieding naar het openbaar gepubliceerd. U ontvangt een e-mail melding wanneer de aanbieding Live is.
+Meld u aan bij Partner Center en krijg toegang tot de aanbieding. U wordt doorgestuurd naar de **overzichtspagina van de aanbieding.** Bovenaan deze pagina ziet u een optie voor **Live gaan.** Selecteer **Live gaan** en na bevestiging wordt de aanbieding gepubliceerd voor het publiek. U ontvangt een e-mailmelding wanneer de aanbieding live is.
 
 ## <a name="publish"></a>Publiceren
 
-Nu u ervoor hebt gekozen om **Live te gaan** met uw aanbieding, zodat deze beschikbaar is op Marketplace, is er een reeks definitieve validatie controles die worden door gegeven, zodat u zeker weet dat de Live-aanbieding is geconfigureerd net als de preview-versie van de aanbieding.
+Nu u hebt geselecteerd om live te **gaan** met uw aanbieding, waardoor het beschikbaar is in de markt, zijn er een reeks van definitieve validatie controles die zullen worden opgevoerd door om ervoor te zorgen dat de live-aanbieding is geconfigureerd, net als de preview-versie van de aanbieding.
 
-- **Setup van inkoop stroom van aanbieding (> 10 min.)**
+- **Instelling aankoopstroom aanbieden (>10 min)**
 
-In deze stap zorgt u ervoor dat aan uw aanbieding kan worden voldaan wanneer klanten via de Azure Portal worden gekocht. Deze stap is alleen van toepassing op aanbiedingen die via micro soft worden verkocht.
+In deze stap zorgen we ervoor dat uw aanbod kan worden uitgevoerd wanneer deze door klanten via de Azure-portal wordt gekocht. Deze stap is alleen van toepassing op aanbiedingen die via Microsoft worden verkocht.
 
-- **Gegevens validatie test station (~ 5 min)**
+- **Teststation gegevensvalidatie (~5 min)**
 
-In deze stap valideren we de gegevens die u hebt ingevoerd in het gedeelte test drive Technical Configuration van de aanbieding. De functionaliteit van het test station wordt getest en goedgekeurd. Deze stap is alleen van toepassing op aanbiedingen waarvoor een test drive is ingeschakeld.
+In deze stap valideren we de gegevens die u hebt opgegeven in de sectie Technische configuratie van de aanbieding. De functionaliteit van de testrit is getest en goedgekeurd. Deze stap is alleen van toepassing op aanbiedingen waarvoor een testrit is ingeschakeld.
 
-- **Het inrichten van het station testen (~ 30 minuten)**
+- **Proefrit provisioning (~ 30 min)**
 
-In deze stap implementeren en repliceren we exemplaren van uw test drive zodat ze gereed zijn voor gebruik door de klant.  Deze stap is alleen van toepassing op aanbiedingen waarvoor een test drive is ingeschakeld.
+In deze stap implementeren en repliceren we exemplaren van uw testrit, zodat ze klaar zijn voor gebruik door de klant.  Deze stap is alleen van toepassing op aanbiedingen waarvoor een testrit is ingeschakeld.
 
-- **Validatie en registratie van lead beheer (> 15 min)**
+- **Validatie en registratie van leadmanagement (>15 min)**
 
-In deze stap bevestigen we dat uw systeem voor het beheer van potentiële klanten leads kan ontvangen op basis van de details van de aanbiedings instelling. Deze stap is alleen van toepassing op aanbiedingen waarvoor Lead beheer is ingeschakeld.
+In deze stap bevestigen we dat uw leadmanagementsysteem klantleads kan ontvangen op basis van de details die zijn opgegeven in de installatie van aanbieding. Deze stap is alleen van toepassing op aanbiedingen waarvoor Lead management is ingeschakeld.
 
-- **Definitieve publicatie (> 30 minuten)**
+- **Eindpublicatie (>30 minuten)**
 
-In deze stap zorgt u ervoor dat uw aanbieding openbaar beschikbaar wordt op de Marketplace.
+In deze stap zorgen we ervoor dat uw aanbod openbaar beschikbaar wordt op de markt.
 
-## <a name="update-existing-marketplace-offers"></a>Bestaande Marketplace-aanbiedingen bijwerken
+## <a name="update-existing-marketplace-offers"></a>Bestaande marktplaatsaanbiedingen bijwerken
 
-Als u wijzigingen wilt aanbrengen in een aanbieding die u al hebt gepubliceerd, moet u eerst de bestaande aanbieding bijwerken en deze vervolgens opnieuw publiceren.
+Als u wijzigingen wilt aanbrengen in een aanbieding die u al hebt gepubliceerd, moet u eerst de bestaande aanbieding bijwerken en vervolgens opnieuw publiceren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een bestaande aanbieding bijwerken in de commerciële Marketplace](./update-existing-offer.md)
+- [Een bestaande aanbieding bijwerken in Commerciële Marketplace](./update-existing-offer.md)

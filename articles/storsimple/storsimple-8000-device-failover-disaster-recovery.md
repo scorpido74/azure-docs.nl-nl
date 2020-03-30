@@ -1,6 +1,6 @@
 ---
-title: Failover en herstel na nood gevallen voor apparaten uit de StorSimple-serie van 8000
-description: Meer informatie over het uitvoeren van een failover van uw StorSimple-apparaat naar zichzelf, een ander fysiek apparaat of een Cloud apparaat.
+title: Failover en herstel na noodgevallen voor apparaten uit de StorSimple 8000-serie
+description: Meer informatie over hoe u falen op uw StorSimple-apparaat voor zichzelf, een ander fysiek apparaat of een cloudtoestel.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,129 +15,129 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: c1acc084d5abe3385fe311873dfd64c9009e83f2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254961"
 ---
-# <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>Failover en nood herstel voor uw StorSimple 8000 Series-apparaat
+# <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>Failover en herstel na noodgevallen voor apparaat uit de StorSimple 8000-serie
 
 ## <a name="overview"></a>Overzicht
 
-In dit artikel wordt de functie Failover van het apparaat voor de StorSimple 8000-serie apparaten beschreven en hoe deze functie kan worden gebruikt om StorSimple-apparaten te herstellen als er sprake is van een nood geval. StorSimple gebruikt failover van het apparaat om de gegevens van een bron apparaat in het Data Center te migreren naar een ander doel apparaat. De richt lijnen in dit artikel zijn van toepassing op fysieke apparaten van de StorSimple 8000-serie en Cloud apparaten met software versies update 3 en hoger.
+In dit artikel wordt de functie failover van het apparaat beschreven voor de Apparaten uit de StorSimple 8000-serie en hoe deze functie kan worden gebruikt om StorSimple-apparaten te herstellen als zich een ramp voordoet. StorSimple gebruikt apparaatfailover om de gegevens van een bronapparaat in het datacenter te migreren naar een ander doelapparaat. De richtlijnen in dit artikel zijn van toepassing op fysieke apparaten uit de StorSimple 8000-serie en cloudapparaten met softwareversies Update 3 en hoger.
 
-StorSimple maakt gebruik van de Blade **apparaten** om de functie Failover van het apparaat te starten in het geval van een ramp. Deze Blade bevat een lijst met alle StorSimple-apparaten die zijn verbonden met uw StorSimple-Apparaatbeheer service.
+StorSimple gebruikt het **apparaatblad** om de failoverfunctie van het apparaat te starten in het geval van een ramp. Dit blad bevat alle StorSimple-apparaten die zijn aangesloten op uw StorSimple Device Manager-service.
 
-![Blade apparaten](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
+![Het blad van apparaten](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
 
 
-## <a name="disaster-recovery-dr-and-device-failover"></a>Herstel na nood geval (DR) en failover van apparaat
+## <a name="disaster-recovery-dr-and-device-failover"></a>Disaster recovery (DR) en device failover
 
-In een scenario voor nood herstel (DR) functioneert het primaire apparaat niet meer. StorSimple maakt gebruik van het primaire apparaat als _bron_ en verplaatst de gekoppelde cloud gegevens naar een ander _doel_ apparaat. Dit proces wordt de *failover*genoemd. In de volgende afbeelding ziet u het proces van failover.
+In een DR-scenario (disaster recovery) werkt het primaire apparaat niet meer. StorSimple gebruikt het primaire apparaat als _bron_ en verplaatst de bijbehorende cloudgegevens naar een ander _doelapparaat._ Dit proces wordt aangeduid als de *failover*. De volgende afbeelding illustreert het proces van failover.
 
-![Wat gebeurt er bij failover van het apparaat?](./media/storsimple-8000-device-failover-disaster-recovery/failover-dr-flow.png)
+![Wat gebeurt er in de failover van het apparaat?](./media/storsimple-8000-device-failover-disaster-recovery/failover-dr-flow.png)
 
-Het doel apparaat voor een failover kan een fysiek of zelfs een Cloud apparaat zijn. Het doel apparaat bevindt zich mogelijk op dezelfde of een andere geografische locatie dan het bron apparaat.
+Het doelapparaat voor een failover kan een fysiek apparaat of zelfs een cloudtoestel zijn. Het doelapparaat kan zich op dezelfde of een andere geografische locatie bevinden dan het bronapparaat.
 
-Tijdens de failover kunt u volume containers selecteren voor migratie. StorSimple wijzigt vervolgens het eigendom van deze volume containers van het bron apparaat naar het doel apparaat. Zodra de volume containers het eigendom wijzigen, verwijdert StorSimple deze containers van het bron apparaat. Nadat de verwijdering is voltooid, kunt u een failback uitvoeren naar het doel apparaat. _Failback_ stuurt het eigendom terug naar het oorspronkelijke bron apparaat.
+Tijdens de failover u volumecontainers selecteren voor migratie. StorSimple wijzigt vervolgens het eigendom van deze volumecontainers van het bronapparaat naar het doelapparaat. Zodra de volumecontainers van eigenaar veranderen, verwijdert StorSimple deze containers van het bronapparaat. Nadat de verwijdering is voltooid, u het doelapparaat weer terugsturen. _Failback_ brengt het eigendom terug naar het oorspronkelijke bronapparaat.
 
-### <a name="cloud-snapshot-used-during-device-failover"></a>Cloud momentopname gebruikt tijdens failover van apparaat
+### <a name="cloud-snapshot-used-during-device-failover"></a>Cloudmomentopname die wordt gebruikt tijdens de failover van het apparaat
 
-Na een DR. de meest recente Cloud back-up wordt gebruikt om de gegevens naar het doel apparaat te herstellen. Zie [de StorSimple-Apparaatbeheer-service gebruiken om een hand matige back-up te maken](storsimple-8000-manage-backup-policies-u2.md#take-a-manual-backup)voor meer informatie over Cloud momentopnamen.
+Na een DR wordt de meest recente cloudback-up gebruikt om de gegevens naar het doelapparaat te herstellen. Zie [De StorSimple Device Manager-service gebruiken om een handmatige back-up te maken voor](storsimple-8000-manage-backup-policies-u2.md#take-a-manual-backup)meer informatie over cloudsnapshots.
 
-In een StorSimple 8000-serie zijn back-upbeleid gekoppeld aan back-ups. Als er meerdere back-upbeleid voor hetzelfde volume is, selecteert StorSimple het back-upbeleid met het grootste aantal volumes. StorSimple gebruikt vervolgens de meest recente back-up van het geselecteerde back-upbeleid om de gegevens op het doel apparaat te herstellen.
+In een StorSimple 8000-serie wordt back-upbeleid gekoppeld aan back-ups. Als er meerdere back-upbeleidsregels zijn voor hetzelfde volume, selecteert StorSimple het back-upbeleid met het grootste aantal volumes. StorSimple gebruikt vervolgens de meest recente back-up van het geselecteerde back-upbeleid om de gegevens op het doelapparaat te herstellen.
 
-Stel dat er twee back-upbeleid, *defaultPol* en *customPol*:
+Stel dat er twee back-upbeleidsregels zijn, *defaultPol* en *customPol:*
 
-* *defaultPol*: één volume, *VOL1*, wordt dagelijks uitgevoerd vanaf 10:30 uur.
-* *customPol*: vier volumes, *VOL1*, *VOL2*, *VOL3*, *VOL4*, worden dagelijks uitgevoerd vanaf 10:00 uur.
+* *defaultPol*: Een volume, *vol1,* draait dagelijks vanaf 22:30 uur.
+* *customPol*: Vier volumes, *vol1*, *vol2*, *vol3*, *vol4*, draait dagelijks vanaf 22:00 uur.
 
-In dit geval StorSimple prioriteiten voor crash-consistentie en maakt gebruik van *customPol* wanneer het meer volumes heeft. De meest recente back-up van dit beleid wordt gebruikt om gegevens te herstellen. Ga voor meer informatie over het maken en beheren van back-upbeleid naar [gebruik van de StorSimple Apparaatbeheer-service om back-upbeleiden te beheren](storsimple-8000-manage-backup-policies-u2.md).
+In dit geval geeft StorSimple prioriteit aan crashconsistentie en gebruikt *het customPol* omdat het meer volumes heeft. De meest recente back-up van dit beleid wordt gebruikt om gegevens te herstellen. Ga voor meer informatie over het maken en beheren van back-upbeleid naar [De StorSimple Device Manager-service gebruiken om back-upbeleid te beheren.](storsimple-8000-manage-backup-policies-u2.md)
 
-## <a name="common-considerations-for-device-failover"></a>Algemene overwegingen voor failover van het apparaat
+## <a name="common-considerations-for-device-failover"></a>Algemene overwegingen voor apparaatfailover
 
-Lees de volgende informatie voordat u een failover van een apparaat doorstuurt:
+Controleer de volgende informatie voordat u niet over een apparaat slaagt:
 
-* Voordat een failover van een apparaat wordt gestart, moeten alle volumes in de volume containers offline zijn. Bij een niet-geplande failover worden StotSimple-volumes automatisch offline gezet. Maar als u een geplande failover uitvoert (om DR te testen), moet u alle volumes offline halen.
-* Alleen de volume containers met een bijbehorende Cloud momentopname worden weer gegeven voor DR. Er moet ten minste één volume container zijn met een bijbehorende Cloud momentopname om gegevens te herstellen.
-* Als er Cloud momentopnamen zijn die over meerdere volume containers beschikken, StorSimple failover van deze volume containers als een set. Als er sprake is van lokale moment opnamen die betrekking hebben op meerdere volume containers, maar gekoppelde cloud momentopnamen, wordt in een zeldzame exemplaar een failover uitgevoerd voor de lokale moment opnamen en worden de lokale gegevens na DR verwijderd.
-* De beschik bare doel apparaten voor DR zijn apparaten met voldoende ruimte voor de geselecteerde volume containers. Apparaten die niet voldoende ruimte hebben, worden niet vermeld als doel apparaten.
-* Na een DR (voor een beperkte duur) kan de prestaties van de gegevens toegang aanzienlijk worden beïnvloed, omdat het apparaat toegang moet hebben tot de gegevens uit de Cloud en lokaal kan worden opgeslagen.
+* Voordat een apparaatfailover wordt gestart, moeten alle volumes binnen de volumecontainers offline zijn. In een ongeplande failover gaan StotSimple-volumes automatisch offline. Maar als u een geplande failover uitvoert (om DR te testen), moet u alle volumes offline halen.
+* Alleen de volumecontainers met een bijbehorende cloudmomentopname worden weergegeven voor DR. Er moet ten minste één volumecontainer met een bijbehorende cloudmomentopname zijn om gegevens te herstellen.
+* Als er cloudmomentopnamen zijn die zich uitstrekken over meerdere volumecontainers, mislukt StorSimple over deze volumecontainers als set. In een zeldzame instantie, als er lokale momentopnamen zijn die zich uitstrekken over meerdere volumecontainers, maar bijbehorende cloudmomentopnamen dit niet doen, mislukt StorSimple niet over de lokale momentopnamen en gaan de lokale gegevens verloren na DR.
+* De beschikbare doelapparaten voor DR zijn apparaten die voldoende ruimte hebben om de geselecteerde volumecontainers te kunnen verwerken. Apparaten die niet voldoende ruimte hebben, worden niet vermeld als doelapparaten.
+* Na een DR (voor een beperkte duur) kunnen de prestaties van de gegevenstoegang aanzienlijk worden beïnvloed, omdat het apparaat toegang moet krijgen tot de gegevens vanuit de cloud en deze lokaal moet opslaan.
 
-#### <a name="device-failover-across-software-versions"></a>Failover van het apparaat tussen software versies
+#### <a name="device-failover-across-software-versions"></a>Apparaatfailover in softwareversies
 
-Een StorSimple-Apparaatbeheer service in een implementatie heeft mogelijk meerdere apparaten, zowel fysiek als Cloud, alle actieve verschillende software versies.
+Een StorSimple Device Manager-service in een implementatie kan meerdere apparaten hebben, zowel fysiek als in de cloud, allemaal met verschillende softwareversies.
 
-Gebruik de volgende tabel om te bepalen of u een failover of failback kunt uitvoeren naar een ander apparaat met een andere software versie en hoe de volume typen zich gedragen tijdens DR.
+Gebruik de volgende tabel om te bepalen of u mislukken of niet terug naar een ander apparaat waarop een andere softwareversie wordt uitgevoerd en hoe de volumetypen zich gedragen tijdens DR.
 
-#### <a name="failover-and-failback-across-software-versions"></a>Failover en failback tussen software versies
+#### <a name="failover-and-failback-across-software-versions"></a>Failover en failback in verschillende softwareversies
 
-| Failover/failback van | Fysiek apparaat | Cloudapparaat |
+| Fail over/ Fail back from | Fysiek apparaat | Cloudapparaat |
 | --- | --- | --- |
-| Update 3 voor update 4 |Failover van gelaagde volumes als een laag. <br></br>Failover van lokaal vastgemaakte volumes is lokaal vastgemaakt. <br></br> Na het uitvoeren van een failover wanneer u een moment opname maakt op het apparaat met update 4, wordt [heatmap op basis van bijhouden](storsimple-update4-release-notes.md#whats-new-in-update-4) . |Failover van lokaal vastgemaakte volumes als een laag. |
-| Update 4 voor update 3 |Failover van gelaagde volumes als een laag. <br></br>Failover van lokaal vastgemaakte volumes is lokaal vastgemaakt. <br></br> Back-ups die worden gebruikt voor het herstellen van behoud van Heatmap-meta gegevens. <br></br>Tracering op basis van Heatmap is niet beschikbaar in update 3 na een failback. |Failover van lokaal vastgemaakte volumes als een laag. |
+| Update 3 naar Update 4 |Gelaagde volumes mislukken als trapsgewijs. <br></br>Lokaal vastgemaakte volumes mislukken als lokaal vastgemaakt. <br></br> Na een failover wanneer u een momentopname maakt op het update 4-apparaat, wordt [op heatmap gebaseerde tracking](storsimple-update4-release-notes.md#whats-new-in-update-4) ingeschakeld. |Lokaal vastgemaakte volumes mislukken als trapsgewijs. |
+| Update 4 naar Update 3 |Gelaagde volumes mislukken als trapsgewijs. <br></br>Lokaal vastgemaakte volumes mislukken als lokaal vastgemaakt. <br></br> Back-ups die worden gebruikt om heatmap-metagegevens te herstellen, behouden. <br></br>Heatmap-tracking is niet beschikbaar in update 3 na een failback. |Lokaal vastgemaakte volumes mislukken als trapsgewijs. |
 
 
-## <a name="device-failover-scenarios"></a>Failover-scenario's voor apparaten
+## <a name="device-failover-scenarios"></a>Scenario's voor apparaatfailover
 
-Als er een nood geval is, kunt u ervoor kiezen om een failover uit te laten zien van uw StorSimple-apparaat:
+Als er een ramp is, u ervoor kiezen om te falen op uw StorSimple-apparaat:
 
 * [Naar een fysiek apparaat](storsimple-8000-device-failover-physical-device.md).
-* [Naar zichzelf](storsimple-8000-device-failover-same-device.md).
-* [Naar een Cloud apparaat](storsimple-8000-device-failover-cloud-appliance.md).
+* [Aan zichzelf.](storsimple-8000-device-failover-same-device.md)
+* [Naar een cloudtoestel.](storsimple-8000-device-failover-cloud-appliance.md)
 
-De voor gaande artikelen bevatten gedetailleerde stappen voor elk van de bovenstaande failover-cases.
+De voorgaande artikelen bieden gedetailleerde stappen voor elk van de bovenstaande failover-aanvragen.
 
 
 ## <a name="failback"></a>Failback
 
-Voor update 3 en latere versies ondersteunt StorSimple ook failback. Failback is slechts een omgekeerde failover, het doel wordt de bron en het oorspronkelijke bron apparaat wordt nu in de failover het doel apparaat. 
+Voor update 3- en latere versies ondersteunt StorSimple ook failback. Failback is slechts het omgekeerde van failover, het doel wordt de bron en de oorspronkelijke bron apparaat tijdens de failover wordt nu het doelapparaat. 
 
-Tijdens het failback worden de gegevens opnieuw gesynchroniseerd naar de primaire locatie, wordt de I/O-en toepassings activiteit gestopt en wordt er teruggezet naar de oorspronkelijke locatie.
+Tijdens failback synchroniseert StorSimple de gegevens opnieuw naar de primaire locatie, stopt de I/O- en toepassingsactiviteit en gaat het terug naar de oorspronkelijke locatie.
 
 Nadat een failover is voltooid, voert StorSimple de volgende acties uit:
 
-* StorSimple reinigt de volume containers waarvoor failover van het bron apparaat is uitgevoerd.
-* StorSimple initieert een achtergrond taak per volume container (failover) op het bron apparaat. Als u probeert een failback uit te voeren terwijl de taak wordt uitgevoerd, ontvangt u een melding voor dat effect. Wacht tot de taak is voltooid om de failback te starten.
-* De tijd die nodig is om het verwijderen van volume containers te volt ooien, is afhankelijk van verschillende factoren, zoals de hoeveelheid gegevens, de leeftijd van de gegevens, het aantal back-ups en de beschik bare netwerk bandbreedte voor de bewerking.
+* StorSimple reinigt de volumecontainers die zijn mislukt vanaf het bronapparaat.
+* StorSimple initieert een achtergrondtaak per volumecontainer (mislukt) op het bronapparaat. Als u probeert terug te mislukken terwijl de taak aan de gang is, ontvangt u een melding met die strekking. Wacht tot de taak is voltooid om de failback te starten.
+* De tijd die nodig is om het verwijderen van volumecontainers te voltooien, is afhankelijk van verschillende factoren, zoals de hoeveelheid gegevens, de leeftijd van de gegevens, het aantal back-ups en de netwerkbandbreedte die beschikbaar is voor de bewerking.
 
-Als u testfailover wilt plannen of failbacks wilt testen, raden we u aan om volume containers met minder gegevens te testen (GB). Normaal gesp roken kunt u de failback 24 uur starten nadat de failover is voltooid.
+Als u testfailovers plant of failbacks test, raden we u aan volumecontainers met minder gegevens (Gbs) te testen. Meestal u de failback 24 uur nadat de failover is voltooid starten.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-V. **Wat gebeurt er als DR mislukt of gedeeltelijk is geslaagd?**
+V. **Wat gebeurt er als de DR faalt of gedeeltelijk succes heeft?**
 
-A. Als de DR mislukt, raden we u aan het opnieuw te proberen. De tweede failover-taak van het apparaat is op de hoogte van de voortgang van de eerste taak en begint vanaf dat moment.
+A. Als de DR mislukt, raden we u aan het opnieuw te proberen. De failovertaak van het tweede apparaat is zich bewust van de voortgang van de eerste taak en begint vanaf dat punt.
 
-V. **Kan ik een apparaat verwijderen terwijl de failover van het apparaat wordt uitgevoerd?**
+V. **Kan ik een apparaat verwijderen terwijl de failover van het apparaat aan de gang is?**
 
-A. U kunt een apparaat niet verwijderen terwijl er een DR-bewerking wordt uitgevoerd. U kunt uw apparaat alleen verwijderen nadat de DR is voltooid. U kunt de voortgang van de failover-taak van een apparaat controleren op de Blade **taken** .
+A. U een apparaat niet verwijderen terwijl een DR aan de gang is. U uw apparaat alleen verwijderen nadat de DR is voltooid. U de voortgang van de failovertaak van het apparaat controleren in het blade **Jobs.**
 
-V. **Wanneer start de garbagecollection op het bron apparaat zodat de lokale gegevens op het bron apparaat worden verwijderd?**
+V. **Wanneer start de garbage collection op het bronapparaat, zodat de lokale gegevens op het bronapparaat worden verwijderd?**
 
-A. Garbage Collection is alleen ingeschakeld op het bron apparaat nadat het apparaat volledig is opgeruimd. Het opschonen omvat het opschonen van objecten waarvoor een failover van het bron apparaat is uitgevoerd, zoals volumes, back-upobjecten (niet gegevens), volume containers en beleids regels.
+A. Garbage collection is ingeschakeld op het bronapparaat pas nadat het apparaat volledig is schoongemaakt. De opschoning omvat het opruimen van objecten die zijn mislukt vanaf het bronapparaat, zoals volumes, back-upobjecten (geen gegevens), volumecontainers en beleidsregels.
 
-V. **Wat gebeurt er als de Verwijder taak die is gekoppeld aan de volume containers in het bron apparaat mislukt?**
+V. **Wat gebeurt er als de verwijdertaak die is gekoppeld aan de volumecontainers in het bronapparaat mislukt?**
 
-A.  Als de Verwijder taak mislukt, kunt u de volume containers hand matig verwijderen. Selecteer uw bron apparaat op de Blade **apparaten** en klik op **volume containers**. Selecteer de volume containers waarvoor u een failover hebt uitgevoerd en klik onder aan de Blade op **verwijderen**. Nadat u alle failover-volume containers op het bron apparaat hebt verwijderd, kunt u de failback starten. Ga voor meer informatie naar [een volume container verwijderen](storsimple-8000-manage-volume-containers.md#delete-a-volume-container).
+A.  Als de verwijderingstaak mislukt, u de volumecontainers handmatig verwijderen. Selecteer **in** het blade Apparaten uw bronapparaat en klik op **Volumecontainers**. Selecteer de volumecontainers die u niet hebt over en onder aan het blad klikt op **Verwijderen**. Nadat u alle defecte inhoudscontainers op het bronapparaat hebt verwijderd, u de failback starten. Ga voor meer informatie naar [Een volumecontainer verwijderen](storsimple-8000-manage-volume-containers.md#delete-a-volume-container).
 
-## <a name="business-continuity-disaster-recovery-bcdr"></a>Bedrijfs continuïteit nood herstel (BCDR)
+## <a name="business-continuity-disaster-recovery-bcdr"></a>Business continuity disaster recovery (BCDR)
 
-Een scenario voor een herstel na nood geval in bedrijfs continuïteit (BCDR) treedt op wanneer het hele Azure-Data Center niet meer werkt. Dit scenario kan van invloed zijn op uw StorSimple Apparaatbeheer-service en de bijbehorende StorSimple-apparaten.
+Een BCDR-scenario (Business Continuity disaster recovery) treedt op wanneer het hele Azure-datacenter niet meer functioneert. Dit scenario kan van invloed zijn op uw StorSimple Device Manager-service en de bijbehorende StorSimple-apparaten.
 
-Als een StorSimple-apparaat is geregistreerd vlak voordat een nood geval is opgetreden, moet het apparaat mogelijk opnieuw worden ingesteld op de fabrieks instellingen. Na de nood geval wordt het StorSimple-apparaat in de Azure Portal als offline weer gegeven. Dit apparaat moet worden verwijderd uit de portal. Het apparaat terugzetten naar de fabrieks instellingen en het opnieuw registreren bij de service.
+Als een StorSimple-apparaat is geregistreerd vlak voordat een ramp zich voordeed, moet dit apparaat mogelijk een fabrieksreset ondergaan. Na de ramp wordt het StorSimple-apparaat als offline weergegeven in de Azure-portal. Dit apparaat moet van de portal worden verwijderd. Stel het apparaat terug naar fabrieksstandaardinstellingen en registreer het opnieuw bij de service.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een failover voor een apparaat wilt uitvoeren, kiest u een van de volgende scenario's voor gedetailleerde instructies:
+Als u klaar bent om een apparaatfailover uit te voeren, kiest u een van de volgende scenario's voor gedetailleerde instructies:
 
-- [Failover naar een ander fysiek apparaat](storsimple-8000-device-failover-physical-device.md)
-- [Failover naar hetzelfde apparaat](storsimple-8000-device-failover-same-device.md)
-- [Failover naar StorSimple Cloud Appliance](storsimple-8000-device-failover-cloud-appliance.md)
+- [Overgaan naar een ander fysiek apparaat](storsimple-8000-device-failover-physical-device.md)
+- [Overgaan naar hetzelfde apparaat](storsimple-8000-device-failover-same-device.md)
+- [Overgaan naar StorSimple Cloud Appliance](storsimple-8000-device-failover-cloud-appliance.md)
 
-Als u een failover hebt uitgevoerd voor uw apparaat, kiest u een van de volgende opties:
+Als het niet lukt ten opzichte van uw apparaat, kiest u uit een van de volgende opties:
 
-* [Uw StorSimple-apparaat deactiveren of verwijderen](storsimple-8000-deactivate-and-delete-device.md).
-* [Gebruik de StorSimple Apparaatbeheer-service om uw StorSimple-apparaat te beheren](storsimple-8000-manager-service-administration.md).
+* [Deactiveer of verwijder uw StorSimple-apparaat.](storsimple-8000-deactivate-and-delete-device.md)
+* [Gebruik de StorSimple Device Manager-service om uw StorSimple-apparaat te beheren.](storsimple-8000-manager-service-administration.md)
 

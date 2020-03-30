@@ -1,6 +1,6 @@
 ---
-title: Meerdere invoer bestanden en onderdeel eigenschappen met Premium encoder-Azure | Microsoft Docs
-description: In dit onderwerp wordt uitgelegd hoe u setRuntimeProperties gebruikt om meerdere invoer bestanden te gebruiken en aangepaste gegevens door te geven aan de Media Encoder Premium Workflow-media processor.
+title: Meerdere invoerbestanden en componenteigenschappen met Premium Encoder - Azure | Microsoft Documenten
+description: In dit onderwerp wordt uitgelegd hoe u setRuntimeProperties gebruikt om meerdere invoerbestanden te gebruiken en aangepaste gegevens door te geven aan de mediaprocessor Media Encoder Premium Workflow.
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -16,25 +16,25 @@ ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
 ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250996"
 ---
-# <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Meerdere invoer bestanden en onderdeel eigenschappen gebruiken met Premium encoder
+# <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Meerdere invoerbestanden en componenteigenschappen gebruiken met Premium Encoder
 ## <a name="overview"></a>Overzicht
-Er zijn scenario's waarin u mogelijk onderdeel eigenschappen kunt aanpassen, de XML-inhoud van een clip lijst kunt opgeven of meerdere invoer bestanden wilt verzenden wanneer u een taak verzendt met de **Media Encoder Premium workflow** -media processor. Een aantal voorbeelden:
+Er zijn scenario's waarin u mogelijk componenteigenschappen moet aanpassen, XML-inhoud voor cliplijst moet opgeven of meerdere invoerbestanden moet verzenden wanneer u een taak verzendt met de mediaprocessor **Media Encoder Premium Workflow.** Een aantal voorbeelden:
 
-* Tekst op video bedekken en de tekst waarde (bijvoorbeeld de huidige datum) in runtime instellen voor elke invoer video.
-* De lijst-XML van de clip aanpassen (om een of meer bron bestanden op te geven, met of zonder te verkleinen, enzovoort).
-* Een logo afbeelding bedekken op de invoer video terwijl de video is gecodeerd.
-* Meerdere audio taal code ring.
+* Tekst op video te overlopen en de tekstwaarde (bijvoorbeeld de huidige datum) in te stellen bij runtime voor elke invoervideo.
+* Het aanpassen van de XML voor cliplijst (om een of meer bronbestanden op te geven, met of zonder bijsnijden, enz.).
+* Een logoafbeelding op de invoervideo overheig maken terwijl de video is gecodeerd.
+* Meerdere audiotaalcodering.
 
-Als u wilt dat de **Media Encoder Premium workflow** weet dat u sommige eigenschappen in de werk stroom wijzigt wanneer u de taak maakt of meerdere invoer bestanden verzendt, moet u een configuratie teken reeks gebruiken die **setRuntimeProperties** en/of **transcodeSource**bevat. In dit onderwerp wordt uitgelegd hoe u deze gebruikt.
+Als u de **Media Encoder Premium-werkstroom** wilt laten weten dat u bepaalde eigenschappen in de werkstroom wijzigt wanneer u de taak maakt of meerdere invoerbestanden verzendt, moet u een configuratietekenreeks gebruiken die **setRuntimeProperties** en/of **transcodeSource**bevat. In dit onderwerp wordt uitgelegd hoe u ze gebruiken.
 
-## <a name="configuration-string-syntax"></a>Syntaxis van de configuratie teken reeks
-De configuratie teken reeks die in de coderings taak moet worden ingesteld, maakt gebruik van een XML-document dat er als volgt uitziet:
+## <a name="configuration-string-syntax"></a>Syntaxis van de configuratietekenreeks
+De configuratietekenreeks die u in de coderingstaak wilt instellen, gebruikt een XML-document dat er als volgt uitziet:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -47,7 +47,7 @@ De configuratie teken reeks die in de coderings taak moet worden ingesteld, maak
 </transcodeRequest>
 ```
 
-Hieronder ziet u de C# code die de XML-configuratie leest uit een bestand, werkt u deze bij met de juiste video bestands naam en geeft u deze door aan de taak in een taak:
+Het volgende is de C#-code die de XML-configuratie uit een bestand leest, deze bijwerkt met de juiste videobestandsnaam en deze doorgeeft aan de taak in een taak:
 
 ```csharp
 string premiumConfiguration = ReadAllText(@"D:\home\site\wwwroot\Presets\SetRuntime.xml").Replace("VideoFileName", myVideoFileName);
@@ -75,13 +75,13 @@ task.InputAssets.Add(video); // video asset with multiple files
 task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 ```
 
-## <a name="customizing-component-properties"></a>Onderdeel eigenschappen aanpassen
-### <a name="property-with-a-simple-value"></a>Eigenschap met een eenvoudige waarde
-In sommige gevallen is het handig om een onderdeel eigenschap aan te passen met het werk stroom bestand dat wordt uitgevoerd door Media Encoder Premium Workflow.
+## <a name="customizing-component-properties"></a>Eigenschappen van onderdelen aanpassen
+### <a name="property-with-a-simple-value"></a>Woning met een eenvoudige waarde
+In sommige gevallen is het handig om een componenteigenschap aan te passen samen met het werkstroombestand dat wordt uitgevoerd door Media Encoder Premium Workflow.
 
-Stel dat u een werk stroom hebt ontworpen voor het bedekken van tekst op uw Video's en dat de tekst (bijvoorbeeld de huidige datum) tijdens runtime moet worden ingesteld. U kunt dit doen door het verzenden van de tekst die moet worden ingesteld als de nieuwe waarde voor de eigenschap text van het overlay-onderdeel van de coderings taak. U kunt dit mechanisme gebruiken om andere eigenschappen van een onderdeel in de werk stroom te wijzigen (zoals de positie of kleur van de overlay, de bitsnelheid van de AVC-encoder, enzovoort).
+Stel dat u een werkstroom hebt ontworpen die tekst op uw video's bedekt en de tekst (bijvoorbeeld de huidige datum) moet worden ingesteld bij uitvoering. U dit doen door de tekst te verzenden die moet worden ingesteld als de nieuwe waarde voor de eigenschap tekst van de overlaycomponent van de coderingstaak. U dit mechanisme gebruiken om andere eigenschappen van een component in de werkstroom te wijzigen (zoals de positie of kleur van de overlay, de bitrate van de AVC-encoder, enz.).
 
-**setRuntimeProperties** wordt gebruikt voor het overschrijven van een eigenschap in de onderdelen van de werk stroom.
+**setRuntimeProperties** wordt gebruikt om een eigenschap in de onderdelen van de werkstroom te overschrijven.
 
 Voorbeeld:
 
@@ -97,7 +97,7 @@ Voorbeeld:
 ```
 
 ### <a name="property-with-an-xml-value"></a>Eigenschap met een XML-waarde
-Als u een eigenschap wilt instellen die een XML-waarde verwacht, inkapselen met behulp van `<![CDATA[ and ]]>`.
+Als u een eigenschap wilt instellen die `<![CDATA[ and ]]>`een XML-waarde verwacht, moet u inkapselen met behulp van .
 
 Voorbeeld:
 
@@ -131,47 +131,47 @@ Voorbeeld:
 ```
 
 > [!NOTE]
-> Zorg ervoor dat u geen regel terugloop hoeft op te geven na `<![CDATA[`.
+> Zorg ervoor dat een koets `<![CDATA[`niet terug te zetten net na .
 
 ### <a name="propertypath-value"></a>waarde propertyPath
-In de vorige voor beelden was het propertyPath "/media file input/filename" of "/inactiveTimeout" of "clipListXml".
-Dit is in het algemeen de naam van het onderdeel, gevolgd door de naam van de eigenschap. Het pad kan meer of minder niveaus hebben, zoals '/primarySourceFile ' (omdat de eigenschap zich in de hoofdmap van de werk stroom bevindt) of '/video processing/dekking/opaciteit ' (omdat de overlay zich in een groep bevindt).    
+In de vorige voorbeelden was de eigenschapPath "/Media File Input/filename" of "/inactiveTimeout" of "clipListXml".
+Dit is, in het algemeen, de naam van de component, dan is de naam van de eigenschap. Het pad kan meer of minder niveaus hebben, zoals '/primarySourceFile' (omdat de eigenschap aan de basis van de werkstroom ligt) of '/Videoverwerking/Grafische overlay/Dekking' (omdat de Overlay zich in een groep bevindt).    
 
-Als u het pad en de naam van de eigenschap wilt controleren, gebruikt u de actie knop die zich direct naast elke eigenschap bevindt. U kunt op deze actie knop klikken en vervolgens **bewerken**selecteren. Hiermee wordt de werkelijke naam van de eigenschap en de naam ruimte weer gegeven.
+Als u het pad en de naam van de eigenschap wilt controleren, gebruikt u de actieknop die direct naast elke eigenschap staat. U op deze actieknop klikken en **bewerken selecteren.** Dit toont u de werkelijke naam van de eigenschap, en direct erboven, de naamruimte.
 
-![Actie/bewerken](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture6_actionedit.png)
+![Actie/Bewerken](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture6_actionedit.png)
 
 ![Eigenschap](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture7_viewproperty.png)
 
-## <a name="multiple-input-files"></a>Meerdere invoer bestanden
-Voor elke taak die u naar de **Media Encoder Premium workflow** verzendt, zijn twee assets vereist:
+## <a name="multiple-input-files"></a>Meerdere invoerbestanden
+Elke taak die u indient bij de **Media Encoder Premium-werkstroom** vereist twee elementen:
 
-* De eerste is een *werk stroom activum* dat een werk stroom bestand bevat. U kunt werk stroom bestanden ontwerpen met behulp van de [Workflow Designer](media-services-workflow-designer.md).
-* De tweede is een *medium Asset* dat de media bestanden bevat die u wilt coderen.
+* De eerste is een *werkstroomitem* dat een werkstroombestand bevat. U werkstroombestanden ontwerpen met behulp van de [Werkstroomontwerper](media-services-workflow-designer.md).
+* De tweede is een *media-element* dat het mediabestand(en) bevat dat u wilt coderen.
 
-Wanneer u meerdere media bestanden naar het coderings programma van **Media Encoder Premium workflow** stuurt, gelden de volgende beperkingen:
+Wanneer u meerdere mediabestanden naar de encoder van media **encoder Premium-werkstroom** verzendt, gelden de volgende beperkingen:
 
-* Alle media bestanden moeten zich in hetzelfde media- *activum*bedienen. Het gebruik van meerdere media-assets wordt niet ondersteund.
-* U moet het primaire bestand in deze media-asset instellen (in het ideale geval is dit het belangrijkste video bestand dat het coderings programma moet worden verwerkt).
-* Het is nood zakelijk om configuratie gegevens met het **setRuntimeProperties** -en/of **transcodeSource** -element aan de processor door te geven.
-  * **setRuntimeProperties** wordt gebruikt voor het overschrijven van de eigenschap filename of een andere eigenschap in de onderdelen van de werk stroom.
-  * **transcodeSource** wordt gebruikt om de inhoud van de clip lijst-XML op te geven.
+* Alle mediabestanden moeten zich in dezelfde *Media Asset begeven.* Het gebruik van meerdere media-elementen wordt niet ondersteund.
+* U moet het primaire bestand instellen in deze mediaasset (idealiter is dit het belangrijkste videobestand dat de encoder moet verwerken).
+* Het is noodzakelijk om configuratiegegevens die het **element setRuntimeProperties** en/of **transcodeSource** bevatten, door te geven aan de processor.
+  * **setRuntimeProperties** wordt gebruikt om de eigenschap bestandsnaam of een andere eigenschap in de onderdelen van de werkstroom te overschrijven.
+  * **transcodeSource** wordt gebruikt om de XML-inhoud van de cliplijst op te geven.
 
-Verbindingen in de werk stroom:
+Verbindingen in de werkstroom:
 
-* Als u een of meer media bestands invoer onderdelen gebruikt en **setRuntimeProperties** wilt gebruiken om de bestands naam op te geven, sluit u de primaire bestands onderdeel pincode niet aan. Zorg ervoor dat er geen verbinding is tussen het primaire bestands object en de invoer (n) van het Media bestand.
-* Als u liever de clip list XML en één media bron onderdeel gebruikt, kunt u beide tegelijk verbinden.
+* Als u een of meer mediabestandsinvoercomponenten gebruikt en van plan bent **setRuntimeProperties** te gebruiken om de bestandsnaam op te geven, verbindt u er vervolgens de primaire bestandscomponentpin niet mee. Zorg ervoor dat er geen verbinding is tussen het primaire bestandsobject en de invoer(en) van het mediabestand.
+* Als u xml met cliplijst en één component Mediabron liever gebruikt, u beide met elkaar verbinden.
 
-![Geen verbinding van het primaire bron bestand naar de invoer van het Media bestand](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture0_nopin.png)
+![Geen verbinding van primair bronbestand met mediabestandsinvoer](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture0_nopin.png)
 
-*Er is geen verbinding van het primaire bestand naar het Media bestand invoer onderdeel (s) als u setRuntimeProperties gebruikt om de eigenschap filename in te stellen.*
+*Er is geen verbinding van het primaire bestand met de component Mediabestandsinvoer(s) als u setRuntimeProperties gebruikt om de eigenschap bestandsnaam in te stellen.*
 
-![Verbinding vanuit de clip lijst-XML naar de bron van de clip lijst](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture1_pincliplist.png)
+![Verbinding van XML met cliplijst naar bron van cliplijst](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture1_pincliplist.png)
 
-*U kunt de XML van de clip lijst koppelen aan de media bron en transcodeSource gebruiken.*
+*U XML voor cliplijst verbinden met mediabron en transcodeSource gebruiken.*
 
-### <a name="clip-list-xml-customization"></a>Aanpassing van de clip lijst-XML
-U kunt de clip lijst-XML in de werk stroom in runtime opgeven met behulp van **transcodeSource** in de configuratie teken reeks-XML. Hiervoor moet de pincode van de clip lijst-XML zijn gekoppeld aan het media bron onderdeel in de werk stroom.
+### <a name="clip-list-xml-customization"></a>XML-aanpassing van cliplijst
+U de XML voor cliplijst in de werkstroom op runtime opgeven met **transcodeSource** in de configuratietekenreeks XML. Hiervoor moet de XML-koppeling van de cliplijst worden aangesloten op de component Mediabron in de werkstroom.
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>
@@ -199,7 +199,7 @@ U kunt de clip lijst-XML in de werk stroom in runtime opgeven met behulp van **t
   </transcodeRequest>
 ```
 
-Als u/primarySourceFile wilt opgeven om deze eigenschap te gebruiken om de uitvoer bestanden een naam te geven met behulp van ' expressies ', wordt u aangeraden de clip lijst-XML als een eigenschap *na* de eigenschap/primarySourceFile door te geven om te voor komen dat de clip lijst wordt overschreven door de instelling/primarySourceFile.
+Als u /primarySourceFile wilt opgeven om deze eigenschap te gebruiken om de uitvoerbestanden een naam te geven met 'Expressies', raden we u aan de XML voor cliplijst als eigenschap door te geven *na* de eigenschap /primarySourceFile, om te voorkomen dat de cliplijst wordt overschreven door de instelling /primarySourceFile.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -230,7 +230,7 @@ Als u/primarySourceFile wilt opgeven om deze eigenschap te gebruiken om de uitvo
   </transcodeRequest>
 ```
 
-Met aanvullende frame-nauw keurige bijsnijden:
+Met extra frame-nauwkeurige trimmen:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -269,14 +269,14 @@ Met aanvullende frame-nauw keurige bijsnijden:
   </transcodeRequest>
 ```
 
-## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Voor beeld 1: een afbeelding bovenop de video bedekken
+## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Voorbeeld 1 : Een afbeelding boven op de video bedekken
 
-### <a name="presentation"></a>Presentatie
-Bekijk een voor beeld waarin u een logo afbeelding wilt bedekken op de invoer video terwijl de video is gecodeerd. In dit voor beeld heet de invoer video ' Microsoft_HoloLens_Possibilities_816p24. MP4 ' en heet het logo ' logo. png '. Voer de volgende stappen uit:
+### <a name="presentation"></a>Stijl
+Overweeg een voorbeeld waarin u een logoafbeelding op de invoervideo wilt bedekken terwijl de video is gecodeerd. In dit voorbeeld wordt de invoervideo "Microsoft_HoloLens_Possibilities_816p24.mp4" genoemd en wordt het logo "logo.png" genoemd. U moet de volgende stappen uitvoeren:
 
-* Maak een werk stroom-activum met het werk stroom bestand (Zie het volgende voor beeld).
-* Maak een Media-Asset dat twee bestanden bevat: MyInputVideo. MP4 als het primaire bestand en MyLogo. png.
-* Verzend een taak naar de Media Encoder Premium Workflow-media processor met de bovenstaande invoer assets en geef de volgende configuratie teken reeks op.
+* Maak een werkstroomasset met het werkstroombestand (zie het volgende voorbeeld).
+* Maak een media-asset, die twee bestanden bevat: MyInputVideo.mp4 als het primaire bestand en MyLogo.png.
+* Stuur een taak naar de mediaprocessor Media Encoder Premium Workflow met de bovenstaande invoerelementen en geef de volgende configuratietekenreeks op.
 
 Configuratie:
 
@@ -291,114 +291,114 @@ Configuratie:
   </transcodeRequest>
 ```
 
-In het bovenstaande voor beeld wordt de naam van het video bestand verzonden naar het onderdeel invoer van Media bestand en de eigenschap primarySourceFile. De naam van het logo bestand wordt verzonden naar een andere invoer van het Media bestand die is verbonden met het grafische bedekkings onderdeel.
+In het bovenstaande voorbeeld wordt de naam van het videobestand verzonden naar de component Mediabestandsinvoer en de eigenschap primarySourceFile. De naam van het logobestand wordt verzonden naar een andere mediabestandsinvoer die is verbonden met de component grafische overlay.
 
 > [!NOTE]
-> De naam van het video bestand wordt verzonden naar de eigenschap primarySourceFile. De reden hiervoor is het gebruik van deze eigenschap in de werk stroom voor het bouwen van de juiste naam voor het uitvoer bestand met behulp van expressies, bijvoorbeeld.
+> De naam van het videobestand wordt verzonden naar de eigenschap primarySourceFile. De reden hiervoor is om deze eigenschap te gebruiken in de werkstroom voor het bouwen van de juiste uitvoerbestandsnaam met behulp van expressies, bijvoorbeeld.
 
-### <a name="step-by-step-workflow-creation"></a>Stapsgewijze werk stroom maken
-Hier volgen de stappen voor het maken van een werk stroom die twee bestanden als invoer accepteert: een video en een afbeelding. De afbeelding wordt boven op de video bedekt.
+### <a name="step-by-step-workflow-creation"></a>Stapsgewijze werkstroomcreatie
+Dit zijn de stappen om een werkstroom te maken die twee bestanden als invoer nodig heeft: een video en een afbeelding. Het zal overlay het beeld op de top van de video.
 
-Open **Workflow Designer** en selecteer **bestand** > **nieuwe werk ruimte** ** > ** afcode van de trans code.
+Open **Workflow Designer** en selecteer Blueprint voor **nieuwe** > **werkruimtebestand** > **.**
 
-In de nieuwe werk stroom worden drie elementen weer gegeven:
+De nieuwe werkstroom toont drie elementen:
 
-* Primair bron bestand
-* Lijst met XML-fragmenten
-* Uitvoer bestand/-activum  
+* Primaire bronbestand
+* XML voor cliplijst
+* Uitvoerbestand/-actief  
 
-![Nieuwe encoding-werk stroom](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture9_empty.png)
+![Nieuwe coderingswerkstroom](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture9_empty.png)
 
-*Nieuwe encoding-werk stroom*
+*Nieuwe coderingswerkstroom*
 
-Begin met het toevoegen van een invoer onderdeel voor media bestanden om het invoer Media-bestand te accepteren. Als u een component wilt toevoegen aan de werk stroom, zoekt u deze in het zoekvak van de opslag plaats en sleept u de gewenste vermelding naar het deel venster ontwerp.
+Als u het invoermediabestand wilt accepteren, begint u met het toevoegen van een component Mediabestandsinvoer. Als u een component aan de werkstroom wilt toevoegen, zoekt u deze in het zoekvak Repository en sleept u het gewenste item naar het ontwerpdeelvenster.
 
-Voeg vervolgens het video bestand toe dat moet worden gebruikt voor het ontwerpen van uw werk stroom. Als u dit wilt doen, klikt u op het achtergrond deel venster in Workflow Designer en zoekt u naar de eigenschap primair bron bestand in het rechterdeel venster van de rechter kant. Klik op het mappictogram en selecteer het juiste video bestand.
+Voeg vervolgens het videobestand toe dat moet worden gebruikt voor het ontwerpen van uw werkstroom. Klik hiervoor op het achtergrondvenster in Workflow Designer en zoek naar de eigenschap Primair bronbestand in het deelvenster eigenschap rechts. Klik op het mappictogram en selecteer het juiste videobestand.
 
-![Primaire bestands bron](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture10_primaryfile.png)
+![Primaire bestandsbron](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture10_primaryfile.png)
 
-*Primaire bestands bron*
+*Primaire bestandsbron*
 
-Geef vervolgens het video bestand op in het onderdeel voor het invoeren van media bestanden.   
+Geef vervolgens het videobestand op in de component Mediabestandsinvoer.   
 
-![Invoer bron van Media bestand](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture11_mediafileinput.png)
+![Bron voor mediabestandinvoer](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture11_mediafileinput.png)
 
-*Invoer bron van Media bestand*
+*Bron voor mediabestandinvoer*
 
-Zodra dit is gebeurd, wordt het bestand door het onderdeel invoer van media bestanden gecontroleerd en worden de uitvoer pincodes gevuld met het bestand dat het heeft geinspectet.
+Zodra dit is gebeurd, inspecteert de component Mediabestandsinvoer het bestand en vult de uitvoerpins de uitvoerpinnen in om het bestand weer te geven dat het heeft geïnspecteerd.
 
-De volgende stap is het toevoegen van een ' video-gegevens type bijwerken ' om de kleur ruimte op te geven voor rec. 709. Voeg een ' video-indelings conversieprogramma ' toe die is ingesteld op gegevens indeling/indelings type = Configureer bare vlakke richting. Hiermee wordt de video stroom geconverteerd naar een indeling die kan worden gemaakt als bron van het bedekkings onderdeel.
+De volgende stap is het toevoegen van een "Video Data Type Updater" om de kleurruimte op te geven aan Rec.709. Voeg een 'Video Format Converter' toe die is ingesteld op gegevensindeling/indelingstype = Configureerbare planar. Hiermee wordt de videostream omgezet naar een indeling die kan worden opgevat als een bron van de overlaycomponent.
 
-![Updater en indelings programma voor video gegevens typen](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter.png)
+![Updater van het type video en converter voor opmaak](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter.png)
 
-*Updater en indelings programma voor video gegevens typen*
+*Updater van videogegevenstype en converter voor opmaak*
 
-![Indelings type = Configureer bare vlakke richting](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter2.png)
+![Indelingstype = Configureerbare planar](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter2.png)
 
-*Het indelings type is Configureer bare vlakke richting*
+*Indelingstype is Configureerbare planar*
 
-Voeg vervolgens een video-overlay-onderdeel toe en koppel de video pincode (niet-gecomprimeerd) aan de video pincode (niet-gecomprimeerd) van de invoer van het Media bestand.
+Voeg vervolgens een component Video Overlay toe en sluit de (niet-gecomprimeerde) videopin aan op de (niet-gecomprimeerde) videopin van de invoer van het mediabestand.
 
-Voeg nog een invoer van het Media bestand toe (om het logo bestand te laden), klik op dit onderdeel en wijzig de naam in logo voor invoer van Media bestand. Selecteer een installatie kopie (bijvoorbeeld een PNG-bestand) in de bestands eigenschap. Verbind de pincode van de niet-gecomprimeerde afbeelding aan de pincode van de niet-gecomprimeerde afbeelding van de overlay.
+Voeg nog een mediabestandsinvoer toe (om het logobestand te laden), klik op deze component en wijzig deze in 'MediaFile Input Logo' en selecteer een afbeelding (bijvoorbeeld een PNG-bestand) in de bestandseigenschap. Sluit de niet-gecomprimeerde afbeeldingspin aan op de niet-gecomprimeerde afbeeldingspin van de overlay.
 
-![Bron van overlay-onderdeel en afbeeldings bestand](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture13_overlay.png)
+![Overlay-component- en afbeeldingsbestandsbron](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture13_overlay.png)
 
-*Bron van overlay-onderdeel en afbeeldings bestand*
+*Overlay-component- en afbeeldingsbestandsbron*
 
-Schakel het selectie vakje hand matige invoer uit als u de positie van het logo in de video wilt wijzigen (bijvoorbeeld als u het wilt positioneren op 10 procent van de linkerbovenhoek van de video). U kunt dit doen omdat u een invoer van media bestanden gebruikt om het logo bestand te voorzien van het bedekkings onderdeel.
+Als u de positie van het logo op de video wilt wijzigen (u deze bijvoorbeeld op 10 procent van de linkerbovenhoek van de video plaatsen), schakelt u het selectievakje Handmatige invoer uit. U dit doen omdat u een mediabestandsinvoer gebruikt om het logobestand aan de overlaycomponent te verstrekken.
 
-![Positie van overlay](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture14_overlay_position.png)
+![Overlaypositie](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture14_overlay_position.png)
 
-*Positie van overlay*
+*Overlaypositie*
 
-Als u de video stroom wilt coderen naar H. 264, voegt u de componenten van de AVC-Video Encoder en de AAC-Encoder toe aan het ontwerp oppervlak. Verbind de pincodes.
-Stel het AAC-coderings programma in en selecteer conversie/voor instelling audio-indeling: 2,0 (L, R).
+Als u de videostream naar H.264 wilt coderen, voegt u de avc-video-encoder-encodercomponenten toe aan het ontwerpoppervlak. Sluit de pinnen aan.
+Stel de OC-encoder in en selecteer Conversie/voorinstelling audioformaat: 2.0 (L, R).
 
-![Audio-en video encoders](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture15_encoders.png)
+![Audio- en video-encoders](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture15_encoders.png)
 
-*Audio-en video encoders*
+*Audio- en video-encoders*
 
-Voeg nu de **ISO MPEG-4 multiplexer** en **Bestands uitvoer** onderdelen toe en verbind de pincodes zoals weer gegeven.
+Voeg nu de **ISO Mpeg-4 Multiplexer-** en **Bestandsuitvoercomponenten** toe en sluit de pinnen zoals afgebeeld.
 
-![MP4 multiplexer en bestands uitvoer](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture16_mp4output.png)
+![MP4-multiplexer en bestandsuitvoer](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture16_mp4output.png)
 
-*MP4 multiplexer en bestands uitvoer*
+*MP4-multiplexer en bestandsuitvoer*
 
-U moet de naam van het uitvoer bestand instellen. Klik op het onderdeel **Bestands uitvoer** en bewerk de expressie voor het bestand:
+U moet de naam voor het uitvoerbestand instellen. Klik op de component **Bestandsuitvoer** en bewerk de expressie voor het bestand:
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_withoverlay.mp4
 
-![Bestands uitvoer naam](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture17_filenameoutput.png)
+![Naam bestandsuitvoer](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture17_filenameoutput.png)
 
-*Bestands uitvoer naam*
+*Naam bestandsuitvoer*
 
-U kunt de werk stroom lokaal uitvoeren om te controleren of deze correct wordt uitgevoerd.
+U de werkstroom lokaal uitvoeren om te controleren of deze correct wordt uitgevoerd.
 
-Nadat deze is voltooid, kunt u deze uitvoeren in Azure Media Services.
+Nadat deze is voltooid, u het uitvoeren in Azure Media Services.
 
-Maak eerst een asset in Azure Media Services met twee bestanden: het video bestand en het logo. U kunt dit doen met behulp van .NET of REST API. U kunt dit ook doen met behulp van de Azure Portal of [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE).
+Bereid eerst een asset voor in Azure Media Services met twee bestanden erin: het videobestand en het logo. U dit doen met behulp van de .NET of REST API. U dit ook doen met de Azure-portal of [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE).
 
-Deze zelf studie laat zien hoe u assets beheert met AMSE. Er zijn twee manieren om bestanden toe te voegen aan een Asset:
+In deze zelfstudie ziet u hoe u assets beheren met AMSE. Er zijn twee manieren om bestanden toe te voegen aan een asset:
 
-* Maak een lokale map, kopieer de twee bestanden erin en sleep de map naar het tabblad **assets** .
-* Upload het video bestand als een Asset, geef de Asset-informatie weer, ga naar het tabblad bestanden en upload een extra bestand (logo).
+* Maak een lokale map, kopieer de twee bestanden erin en sleep en zet de map naar het tabblad **Asset.**
+* Upload het videobestand als een asset, geef de asset-informatie weer, ga naar het tabblad bestanden en upload een extra bestand (logo).
 
 > [!NOTE]
-> Zorg ervoor dat u een primair bestand instelt in de asset (het belangrijkste video bestand).
+> Zorg ervoor dat u een primair bestand instelt in het element (het hoofdvideobestand).
 
-![Asset-bestanden in AMSE](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture18_assetinamse.png)
+![Assetbestanden in AMSE](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture18_assetinamse.png)
 
-*Asset-bestanden in AMSE*
+*Assetbestanden in AMSE*
 
-Selecteer de Asset en kies deze code ring met Premium encoder. Upload de werk stroom en selecteer deze.
+Selecteer het item en kies ervoor om het te coderen met Premium Encoder. Upload de werkstroom en selecteer deze.
 
 Klik op de knop om gegevens door te geven aan de processor en voeg de volgende XML toe om de runtime-eigenschappen in te stellen:
 
-![Premium encoder in AMSE](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture19_amsepremium.png)
+![Premium Encoder in AMSE](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture19_amsepremium.png)
 
-*Premium encoder in AMSE*
+*Premium Encoder in AMSE*
 
-Plak vervolgens de volgende XML-gegevens. U moet de naam van het video bestand opgeven voor de invoer van het Media bestand en de primarySourceFile. Geef ook de naam van de bestands naam voor het logo op.
+Plak vervolgens de volgende XML-gegevens. U moet de naam van het videobestand opgeven voor zowel de mediabestandsinvoer als primarySourceFile. Geef ook de naam van de bestandsnaam voor het logo op.
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>
@@ -411,41 +411,41 @@ Plak vervolgens de volgende XML-gegevens. U moet de naam van het video bestand o
   </transcodeRequest>
 ```
 
-![setRuntimeProperties](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture20_amsexmldata.png)
+![SetRuntimeProperties](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture20_amsexmldata.png)
 
-*setRuntimeProperties*
+*SetRuntimeProperties*
 
-Als u de .NET SDK gebruikt om de taak te maken en uit te voeren, moeten deze XML-gegevens worden door gegeven als de configuratie teken reeks.
+Als u de .NET SDK gebruikt om de taak te maken en uit te voeren, moeten deze XML-gegevens worden doorgegeven als de configuratietekenreeks.
 
 ```csharp
 public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string configuration, TaskOptions options);
 ```
 
-Nadat de taak is voltooid, wordt in het bestand MP4 in het uitvoer element de overlay weer gegeven.
+Nadat de taak is voltooid, geeft het MP4-bestand in de uitvoerasset de overlay weer!
 
 ![Overlay op de video](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture21_resultoverlay.png)
 
 *Overlay op de video*
 
-U kunt de voorbeeld werk stroom downloaden vanuit [github](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/).
+U de voorbeeldworkflow downloaden van [GitHub.](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/)
 
-## <a name="example-2--multiple-audio-language-encoding"></a>Voor beeld 2: meerdere audio taal codering
+## <a name="example-2--multiple-audio-language-encoding"></a>Voorbeeld 2 : Meervoudige codering van audiotalen
 
-Er is een voor beeld van een workflow voor het coderen van meerdere audio talen beschikbaar in [github](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding).
+Een voorbeeld van meerdere werkstroom voor het coderen van audiotalen is beschikbaar in [GitHub.](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding)
 
-Deze map bevat een voor beeld van een werk stroom die kan worden gebruikt om een MXF-bestand te coderen in een multi MP4 bestanden-Asset met meerdere audio sporen.
+Deze map bevat een voorbeeldwerkstroom die kan worden gebruikt om een MXF-bestand te coderen voor een multi MP4-bestandselement met meerdere audiotracks.
 
-Deze werk stroom gaat ervan uit dat het MXF-bestand één audio track bevat. de extra audio tracks moeten worden door gegeven als afzonderlijke audio bestanden (WAV of MP4...).
+Deze werkstroom gaat ervan uit dat het MXF-bestand één audiotrack bevat; de extra audiotracks moeten worden doorgegeven als afzonderlijke audiobestanden (WAV of MP4...).
 
-Voer de volgende stappen uit om te coderen:
+Volg de volgende stappen om te coderen:
 
-* Maak een Media Services-Asset met het MXF-bestand en de audio bestanden (0 tot 18 audio bestanden).
-* Controleer of het MXF-bestand is ingesteld als een primair bestand.
-* Maak een taak en een taak met behulp van de Premium workflow encoder-processor. Gebruik de meegeleverde werk stroom (MultiMP4-1080p-19audio-v1. workflow).
-* De setruntime. XML-gegevens door geven aan de taak (als u Azure Media Services Explorer gebruikt, gebruikt u de knop XML-gegevens door geven aan de werk stroom).
-  * Werk de XML-gegevens bij om de juiste bestands namen en talen Tags op te geven.
-  * De werk stroom bevat audio-onderdelen met de naam audio 1 op audio 18.
-  * RFC5646 wordt ondersteund voor de taal code.
+* Maak een Media Services-asset met het MXF-bestand en de audiobestanden (0 tot 18 audiobestanden).
+* Zorg ervoor dat het MXF-bestand is ingesteld als een primair bestand.
+* Maak een taak en een taak met behulp van de Premium Workflow Encoder-processor. Gebruik de geleverde werkstroom (MultiMP4-1080p-19audio-v1.workflow).
+* Geef de gegevens van setruntime.xml door aan de taak (als u Azure Media Services Explorer gebruikt, gebruikt u de knop Xml-gegevens doorgeven aan de werkstroom).
+  * Werk de XML-gegevens bij om de juiste bestandsnamen en talentags op te geven.
+  * De workflow heeft audiocomponenten met de naam Audio 1 tot Audio 18.
+  * RFC5646 wordt ondersteund voor de taaltag.
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>
@@ -464,14 +464,14 @@ Voer de volgende stappen uit om te coderen:
 </transcodeRequest>
 ```
 
-* De gecodeerde Asset bevat audio tracks met meerdere talen en deze sporen moeten worden geselecteerd in Azure Media Player.
+* Het gecodeerde item bevat audiotracks in meerdere talen en deze tracks moeten kunnen worden geselecteerd in Azure Media Player.
 
 ## <a name="see-also"></a>Zie ook
-* [Introductie van Premium-code ring in Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
-* [Premium-code ring gebruiken in Azure Media Services](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
-* [Inhoud op aanvraag coderen met Azure Media Services](media-services-encode-asset.md#media-encoder-premium-workflow)
+* [Premium-codering introduceren in Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
+* [Premium-codering gebruiken in Azure Media Services](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
+* [On-demand content coderen met Azure Media Services](media-services-encode-asset.md#media-encoder-premium-workflow)
 * [Indelingen en codecs voor Media Encoder Premium Workflow](media-services-premium-workflow-encoder-formats.md)
-* [Voor beeld van werk stroom bestanden](https://github.com/Azure/azure-media-services-samples)
+* [Voorbeeldwerkstroombestanden](https://github.com/Azure/azure-media-services-samples)
 * [Azure Media Services Explorer-hulpprogramma](https://aka.ms/amse)
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten

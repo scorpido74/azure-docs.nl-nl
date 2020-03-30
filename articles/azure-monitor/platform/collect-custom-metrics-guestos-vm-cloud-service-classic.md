@@ -1,6 +1,6 @@
 ---
-title: Gegevens van klassieke Cloud Services naar Azure Monitor Data Base voor metrische gegevens verzenden
-description: Hierin wordt het proces beschreven voor het verzenden van de prestatie gegevens voor het gast besturingssysteem voor Azure Classic Cloud Services naar de Azure Monitor metrische opslag.
+title: Klassieke Cloud Services-statistieken verzenden naar Azure Monitor-statistiekendatabase
+description: Beschrijft het proces voor het verzenden van gastosprestatiestatistieken voor klassieke Azure Cloud Services naar de Azure Monitor-metrische opslag.
 author: anirudhcavale
 services: azure-monitor
 ms.topic: conceptual
@@ -8,58 +8,58 @@ ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 3b390ffa20cf3cf79b8fb6311ad05b2978bd5d24
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655787"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Metrische gegevens van het gast besturingssysteem verzenden naar de klassieke Azure Monitor voor metrische gegevens Cloud Services 
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Gaststatistieken van besturingssysteem verzenden naar de klassieke Cloud Services van Azure Monitor 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Met de Azure Monitor [Diagnostics-extensie](diagnostics-extension-overview.md)kunt u metrische gegevens en logboeken verzamelen van het gast besturingssysteem (gast besturingssysteem) dat wordt uitgevoerd als onderdeel van een virtuele machine, Cloud service of service Fabric cluster. De uitbrei ding kan telemetrie verzenden naar een [groot aantal verschillende locaties.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
+Met de Azure Monitor [Diagnostics-extensie](diagnostics-extension-overview.md)u statistieken en logboeken verzamelen van het gastbesturingssysteem (Guest OS) dat wordt uitgevoerd als onderdeel van een virtuele machine, cloudservice of Service Fabric-cluster. De extensie kan telemetrie naar [veel verschillende locaties verzenden.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
-In dit artikel wordt het proces beschreven voor het verzenden van gegevens over prestaties van gast besturingssystemen voor klassieke Azure-Cloud Services naar de Azure Monitor metrische opslag. Te beginnen met diagnostische gegevens van versie 1,11, kunt u metrische gegevens rechtstreeks naar de opslag voor metrische gegevens van Azure Monitor schrijven, waar de metrische gegevens van het standaard platform al zijn verzameld. 
+In dit artikel wordt het proces beschreven voor het verzenden van gastosprestatiestatistieken voor klassieke Azure Cloud Services naar de Azure Monitor-metrische opslag. Vanaf Diagnostics versie 1.11 u statistieken rechtstreeks schrijven naar de Azure Monitor-statistiekenwinkel, waar standaardplatformstatistieken al zijn verzameld. 
 
-Door ze op deze locatie op te slaan, hebt u toegang tot dezelfde acties die u kunt uitvoeren voor de metrische gegevens van het platform. Acties omvatten bijna realtime waarschuwingen, grafieken, route ring, toegang vanaf een REST API en meer.  In het verleden schreef de diagnostische uitbrei ding naar Azure Storage, maar niet naar de Azure Monitor gegevens opslag.  
+Als u ze op deze locatie opslaat, hebt u toegang tot dezelfde acties die u uitvoeren voor platformstatistieken. Acties omvatten near-real-time waarschuwingen, grafieken, routering, toegang vanuit een REST API en meer.  In het verleden is de extensie Diagnostische gegevens geschreven naar Azure Storage, maar niet naar het Azure Monitor-gegevensarchief.  
 
-Het proces dat wordt beschreven in dit artikel, werkt alleen voor prestatie meter items in azure Cloud Services. Deze functie werkt niet voor andere aangepaste metrische gegevens. 
+Het proces dat in dit artikel wordt beschreven, werkt alleen voor prestatiemeteritems in Azure Cloud Services. Het werkt niet voor andere aangepaste statistieken. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- U moet een [service beheerder of mede beheerder](../../cost-management-billing/manage/add-change-subscription-administrator.md) zijn voor uw Azure-abonnement. 
+- U moet een [servicebeheerder of co-beheerder](../../cost-management-billing/manage/add-change-subscription-administrator.md) zijn van uw Azure-abonnement. 
 
-- Uw abonnement moet zijn geregistreerd bij [micro soft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
+- Uw abonnement moet zijn geregistreerd bij [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
-- U moet [Azure PowerShell](/powershell/azure) of [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) hebben geïnstalleerd.
+- U moet [Azure PowerShell](/powershell/azure) of [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) hebben geïnstalleerd.
 
-- Uw Cloud service moet zich in een [regio bevinden die aangepaste metrische gegevens ondersteunt](metrics-custom-overview.md#supported-regions).
+- Uw CloudService moet zich in een [regio bevinden die aangepaste statistieken ondersteunt.](metrics-custom-overview.md#supported-regions)
 
-## <a name="provision-a-cloud-service-and-storage-account"></a>Een Cloud service-en opslag account inrichten 
+## <a name="provision-a-cloud-service-and-storage-account"></a>Een cloudservice- en opslagaccount inrichten 
 
-1. Maak en implementeer een klassieke Cloud service. Een voor beeld van een klassieke Cloud Services toepassing en implementatie vindt u in aan de [slag met Azure Cloud Services en ASP.net](../../cloud-services/cloud-services-dotnet-get-started.md). 
+1. Maak en implementeer een klassieke cloudservice. Een voorbeeld van klassieke Cloud Services-toepassingen en -implementatie vindt u bij [Aan de slag met Azure Cloud Services en ASP.NET.](../../cloud-services/cloud-services-dotnet-get-started.md) 
 
-2. U kunt een bestaand opslag account gebruiken of een nieuw opslag account implementeren. Het is het beste als het opslag account zich in dezelfde regio bevindt als de klassieke Cloud service die u hebt gemaakt. Ga in het Azure Portal naar de Blade resource voor **opslag accounts** en selecteer vervolgens **sleutels**. Noteer de naam van het opslag account en de sleutel van het opslag account. U hebt deze informatie nodig in latere stappen.
+2. U een bestaand opslagaccount gebruiken of een nieuw opslagaccount implementeren. Het is het beste als het opslagaccount zich in dezelfde regio bevindt als de klassieke cloudservice die u hebt gemaakt. Ga in de Azure-portal naar het bronblad **voor opslagaccounts** en selecteer **Sleutels**. Let op de naam van het opslagaccount en de opslagaccountsleutel. U hebt deze informatie in latere stappen nodig.
 
    ![Opslagaccountsleutels](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/storage-keys.png)
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken 
 
-Maak een Service-Principal in uw Azure Active Directory-Tenant met behulp van de instructies in de [Portal gebruiken om een Azure Active Directory-toepassing en-SPN te maken die toegang heeft tot resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Let op het volgende tijdens dit proces: 
+Maak een serviceprincipe in uw Azure Active Directory-tenant met behulp van de instructies bij [Gebruiksportal om een Azure Active Directory-toepassing en serviceprincipal te maken die toegang heeft tot bronnen.](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) Let op het volgende terwijl u dit proces doorloopt: 
 
-- U kunt een wille keurige URL voor de aanmeldings-URL plaatsen.  
-- Maak een nieuw client geheim voor deze app.  
-- Sla de sleutel en de client-ID op voor gebruik in latere stappen.  
+- U elke URL voor de aanmeldings-URL inplaatsen.  
+- Maak nieuwe client geheim voor deze app.  
+- Bewaar de sleutel en de client-id voor gebruik in latere stappen.  
 
-Geef de app die u hebt gemaakt in de vorige stap *bewaking van metrische* machtigingen voor de uitgever aan de resource waarvoor u metrische gegevens wilt verzenden. Als u van plan bent om de app te gebruiken voor het verzenden van aangepaste metrische gegevens voor een groot aantal resources, kunt u deze machtigingen verlenen aan de resource groep of het abonnements niveau.  
+Geef de app die is gemaakt in de vorige stap *Machtigingen voor Monitoring Metrics Publisher* aan de resource waartegen u statistieken wilt uitzenden. Als u van plan bent de app te gebruiken om aangepaste statistieken uit te zenden tegen veel bronnen, u deze machtigingen toestaan op resourcegroep- of abonnementsniveau.  
 
 > [!NOTE]
-> De diagnostische uitbrei ding maakt gebruik van de service-principal voor het verifiëren van Azure Monitor en het verzenden van metrische gegevens voor uw Cloud service.
+> De extensie Diagnostische gegevens gebruikt de serviceprincipal om te verifiëren tegen Azure Monitor en statistieken uit te zenden voor uw cloudservice.
 
-## <a name="author-diagnostics-extension-configuration"></a>Configuratie van de extensie voor diagnostische gegevens van auteur 
+## <a name="author-diagnostics-extension-configuration"></a>Configuratie van de extensie Auteur Diagnostics 
 
-Bereid het configuratie bestand voor de diagnostische extensie voor. Dit bestand bepaalt welke logboeken en prestatie meter items de diagnostische uitbrei ding moet worden verzameld voor uw Cloud service. Hier volgt een voor beeld van een configuratie bestand voor diagnostische gegevens:  
+Bereid het configuratiebestand voor diagnostische extensie voor. Dit bestand bepaalt welke logboeken en prestatietellers de Diagnostische extensie moet verzamelen voor uw cloudservice. Hieronder volgt een voorbeeld van het configuratiebestand Diagnostische diagnose:  
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?> 
@@ -101,7 +101,7 @@ Bereid het configuratie bestand voor de diagnostische extensie voor. Dit bestand
 </DiagnosticsConfiguration> 
 ```
 
-Geef in de sectie ' SinksConfig ' van het diagnostische bestand een nieuwe Azure Monitor-Sink op: 
+Definieer in het gedeelte 'SinksConfig' van uw diagnosebestand een nieuwe Azure Monitor-sink: 
 
 ```XML
   <SinksConfig> 
@@ -114,7 +114,7 @@ Geef in de sectie ' SinksConfig ' van het diagnostische bestand een nieuwe Azure
   </SinksConfig> 
 ```
 
-Azure Monitor Voeg in de sectie van uw configuratie bestand een lijst toe met de prestatie meter items die u wilt verzamelen. Dit item zorgt ervoor dat alle prestatie meter items die u hebt opgegeven, worden doorgestuurd naar Azure Monitor als meet waarden. U kunt prestatie meter items toevoegen of verwijderen op basis van uw behoeften. 
+Voeg in het gedeelte van uw configuratiebestand waar u de prestatiemeteritems opgeeft die u wilt verzamelen, de azure-monitorgootlijst toe. Dit bericht zorgt ervoor dat alle prestatiemeteritems die u hebt opgegeven, worden doorgestuurd naar Azure Monitor als metrische gegevens. U prestatiemeteritems toevoegen of verwijderen op basis van uw behoeften. 
 
 ```xml
     <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzMonSink">
@@ -123,7 +123,7 @@ Azure Monitor Voeg in de sectie van uw configuratie bestand een lijst toe met de
     </PerformanceCounters>
 ```
 
-Voeg ten slotte in de persoonlijke configuratie een sectie voor het *Azure monitor-account* toe. Voer de client-ID en het geheim van de Service-Principal in die u eerder hebt gemaakt. 
+Voeg ten slotte in de privéconfiguratie een *azure-monitoraccountsectie* toe. Voer de client-id en het geheim van de serviceclient in die u eerder hebt gemaakt. 
 
 ```XML
 <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"> 
@@ -137,59 +137,59 @@ Voeg ten slotte in de persoonlijke configuratie een sectie voor het *Azure monit
 </PrivateConfig> 
 ```
 
-Sla dit diagnostische bestand lokaal op.  
+Sla dit diagnosebestand lokaal op.  
 
-## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>De diagnostische uitbrei ding implementeren voor uw Cloud service 
+## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>De diagnostics-extensie implementeren voor uw cloudservice 
 
-Start Power shell en meld u aan bij Azure. 
+Start PowerShell en meld u aan bij Azure. 
 
 ```powershell
 Login-AzAccount 
 ```
 
-Gebruik de volgende opdrachten om de gegevens op te slaan van het opslag account dat u eerder hebt gemaakt. 
+Gebruik de volgende opdrachten om de gegevens van het opslagaccount op te slaan dat u eerder hebt gemaakt. 
 
 ```powershell
 $storage_account = <name of your storage account from step 3> 
 $storage_keys = <storage account key from step 3> 
 ```
 
-U kunt ook het pad naar de diagnostische bestanden instellen op een variabele met behulp van de volgende opdracht:
+Stel ook het route voor het diagnostisch bestand in op een variabele met de volgende opdracht:
 
 ```powershell
 $diagconfig = “<path of the Diagnostics configuration file with the Azure Monitor sink configured>” 
 ```
 
-Implementeer de diagnostische extensie voor uw Cloud service met het diagnostische bestand met de Azure Monitor sink die is geconfigureerd met de volgende opdracht:  
+Implementeer de diagnostische extensie voor uw cloudservice met het diagnosebestand met de Azure Monitor-sink die is geconfigureerd met de volgende opdracht:  
 
 ```powershell
 Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -StorageAccountName $storage_account -StorageAccountKey $storage_keys -DiagnosticsConfigurationPath $diagconfig 
 ```
 
 > [!NOTE] 
-> Het is nog steeds verplicht een opslag account op te geven als onderdeel van de installatie van de diagnostische uitbrei ding. Alle logboeken of prestatie meter items die zijn opgegeven in het configuratie bestand voor diagnostische gegevens worden naar het opgegeven opslag account geschreven.  
+> Het is nog steeds verplicht om een opslagaccount aan te bieden als onderdeel van de installatie van de Diagnostics-extensie. Logboeken of prestatiemeteritems die zijn opgegeven in het diagnose-config-bestand, worden naar het opgegeven opslagaccount geschreven.  
 
-## <a name="plot-metrics-in-the-azure-portal"></a>Metrische gegevens in het Azure Portal tekenen 
+## <a name="plot-metrics-in-the-azure-portal"></a>Plotstatistieken in de Azure-portal 
 
 1. Ga naar Azure Portal. 
 
-   ![Metrische gegevens Azure Portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
+   ![Azure-portal met statistieken](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
 
-2. Selecteer in het menu links de optie **monitor.**
+2. Selecteer Monitor in het **linkermenu.**
 
-3. Op de Blade **monitor** selecteert u het tabblad **voor beeld van metrische gegevens** .
+3. Selecteer **op** het blad Monitor het tabblad **Voorvertoning met statistieken.**
 
-4. Selecteer in de vervolg keuzelijst resources uw klassieke Cloud service.
+4. Selecteer in de vervolgkeuzelijst resources uw klassieke cloudservice.
 
-5. Selecteer in de vervolg keuzelijst naam ruimten de optie **Azure. VM. Windows. gast**. 
+5. Selecteer **azure.vm.windows.guest**in het vervolgkeuzemenu namespaces . 
 
-6. Selecteer in de vervolg keuzelijst metrische gegevens **tussen geheugen\toegewezen bytes die in gebruik**zijn. 
+6. Selecteer in de vervolgkeuzelijst Statistieken de optie **Geheugen\Vastgelegde bytes in gebruik**. 
 
-U gebruikt de functies voor het filteren en splitsen van dimensies om het totale geheugen te bekijken dat wordt gebruikt door een specifieke rol of rolinstantie. 
+U gebruikt de mogelijkheden voor het filteren en splitsen van de dimensie om het totale geheugen weer te geven dat wordt gebruikt door een specifieke rol of rolinstantie. 
 
- ![Metrische gegevens Azure Portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
+ ![Azure-portal met statistieken](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [aangepaste metrische gegevens](metrics-custom-overview.md).
+- Meer informatie over [aangepaste statistieken](metrics-custom-overview.md).
 

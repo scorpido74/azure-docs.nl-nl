@@ -1,20 +1,20 @@
 ---
-title: Problemen met de query prestaties oplossen-Azure Database for MariaDB
-description: Meer informatie over het gebruik van uitleg om de prestaties van query's in Azure Database for MariaDB op te lossen.
+title: Problemen met queryprestaties oplossen - Azure Database voor MariaDB
+description: Meer informatie over het gebruik van EXPLAIN om problemen met queryprestaties in Azure Database voor MariaDB op te lossen.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: troubleshooting
-ms.date: 12/02/2019
-ms.openlocfilehash: 36571cc1ac4fbdcd5c0c6a4007a6c43858c97193
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: b06fe37b63494eb4ee0ca680733a801c26415d67
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770982"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530050"
 ---
-# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>UITLEGGEN hoe u de prestaties van query's in Azure Database for MariaDB kunt bepalen
-**Uitleg** is een handig hulp programma voor het optimaliseren van query's. De instructie uitleg kan worden gebruikt om informatie op te halen over hoe SQL-instructies worden uitgevoerd. In de volgende uitvoer ziet u een voor beeld van de uitvoering van een uitleg-instructie.
+# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>Explain gebruiken om queryprestaties te profileren in Azure Database voor MariaDB
+**EXPLAIN** is een handig hulpmiddel om query's te optimaliseren. Explain-instructie kan worden gebruikt om informatie te krijgen over hoe SQL-instructies worden uitgevoerd. De volgende uitvoer toont een voorbeeld van de uitvoering van een EXPLAIN-instructie.
 
 ```sql
 mysql> EXPLAIN SELECT * FROM tb1 WHERE id=100\G
@@ -33,7 +33,7 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-Zoals in dit voor beeld kan worden gezien, is de waarde van *Key* null. Deze uitvoer betekent dat MariaDB geen indexen kan vinden die zijn geoptimaliseerd voor de query en een volledige tabel scan uitvoert. We gaan deze query optimaliseren door een index toe te voegen aan de **id-** kolom.
+Zoals uit dit voorbeeld blijkt, is de waarde van *de sleutel* NULL. Deze uitvoer betekent dat MariaDB geen indexen kan vinden die zijn geoptimaliseerd voor de query en een volledige tabelscan uitvoert. Laten we deze query optimaliseren door een index toe te voegen aan de **kolom ID.**
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
@@ -53,10 +53,10 @@ possible_keys: id
         Extra: NULL
 ```
 
-In de nieuwe uitleg ziet u dat MariaDB nu gebruikmaakt van een index om het aantal rijen te beperken tot 1, die op zijn beurt de zoek tijd aanzienlijk verkort.
+De nieuwe EXPLAIN laat zien dat MariaDB nu een index gebruikt om het aantal rijen te beperken tot 1, wat op zijn beurt de zoektijd drastisch verkortte.
  
-## <a name="covering-index"></a>Bedekte index
-Een bedekte index bestaat uit alle kolommen van een query in de index om het ophalen van waarden uit gegevens tabellen te verminderen. Hier volgt een voor beeld in de volgende **Group by** -instructie.
+## <a name="covering-index"></a>Dekkingsindex
+Een dekkingsindex bestaat uit alle kolommen van een query in de index om het ophalen van waarde uit gegevenstabellen te verminderen. Hier is een illustratie in de volgende **VERKLARING VAN GROEP DOOR.**
  
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
@@ -75,9 +75,9 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Zoals u kunt zien in de uitvoer, worden er door MariaDB geen indexen gebruikt, omdat er geen geschikte indexen beschikbaar zijn. Er wordt ook *gebruikgemaakt van tijdelijke; Het gebruik van bestanden sorteren*, wat betekent dat MariaDB een tijdelijke tabel maakt om te voldoen aan de component **Group by** .
+Zoals uit de output blijkt, gebruikt MariaDB geen indexen omdat er geen goede indexen beschikbaar zijn. Het toont ook *het gebruik van tijdelijke; Met behulp van bestandssortering*maakt MariaDB een tijdelijke tabel om te voldoen aan de **GROUP BY-clausule.**
  
-Het maken van een index op kolom **C2** heeft alleen geen verschil en MariaDB moet nog steeds een tijdelijke tabel maken:
+Het maken van een index op kolom **c2** alleen maakt geen verschil, en MariaDB moet nog steeds een tijdelijke tabel maken:
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY (c2);
@@ -97,7 +97,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-In dit geval kan een **gedekte index** op zowel **C1** als **C2** worden gemaakt, waarbij de waarde **C2**direct in de index wordt toegevoegd om verdere gegevens zoekactie te elimineren.
+In dit geval kan een **gedekte index** op zowel **c1** als **c2** worden gemaakt, waarbij de waarde van **c2**" direct in de index wordt toegevoegd om verdere gegevensopzoeken te elimineren.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
@@ -117,10 +117,10 @@ possible_keys: covered
         Extra: Using where; Using index
 ```
 
-Zoals hierboven wordt weer gegeven, gebruikt MariaDB nu de gedekte index en vermijdt u het maken van een tijdelijke tabel. 
+Zoals uit de bovenstaande EXPLAIN blijkt, gebruikt MariaDB nu de gedekte index en vermijdt het maken van een tijdelijke tabel. 
 
 ## <a name="combined-index"></a>Gecombineerde index
-Een gecombineerde index bevat waarden uit meerdere kolommen en kan worden beschouwd als een matrix van rijen die zijn gesorteerd door het samen voegen van de waarden van de geïndexeerde kolommen. Deze methode kan nuttig zijn in een **Group by** -instructie.
+Een gecombineerde index bestaat uit waarden uit meerdere kolommen en kan worden beschouwd als een reeks rijen die worden gesorteerd op basis van de waarden van de geïndexeerde kolommen.Deze methode kan nuttig zijn in een **instructie GROUP BY.**
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -139,7 +139,7 @@ possible_keys: NULL
         Extra: Using where; Using filesort
 ```
 
-MariaDB voert een *Bestands Sorteer* bewerking uit die tamelijk langzaam is, vooral wanneer het een groot aantal rijen moet sorteren. Als u deze query wilt optimaliseren, kunt u een gecombineerde index maken op beide kolommen die worden gesorteerd.
+MariaDB voert een *bestandssorteerbewerking* uit die vrij traag is, vooral wanneer het veel rijen moet sorteren. Om deze query te optimaliseren, kan een gecombineerde index worden gemaakt op beide kolommen die worden gesorteerd.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
@@ -159,11 +159,11 @@ possible_keys: NULL
         Extra: Using where; Using index
 ```
 
-In de uitleg ziet u nu dat MariaDB een gecombineerde index kan gebruiken om extra Sorteer bewerkingen te voor komen omdat de index al is gesorteerd.
+De EXPLAIN laat nu zien dat MariaDB in staat is om gecombineerde index te gebruiken om extra sortering te voorkomen, omdat de index al is gesorteerd.
  
 ## <a name="conclusion"></a>Conclusie
  
-Door gebruik te maken van uitleg en verschillende typen indexen kunnen de prestaties aanzienlijk toenemen. Het gebruik van een index voor de tabel betekent niet noodzakelijkerwijs dat MariaDB dit voor uw query's zou kunnen gebruiken. Valideer uw hypo theses altijd met uitleg en Optimaliseer uw query's met behulp van indexen.
+Het gebruik van EXPLAIN en verschillende soorten indexen kan de prestaties aanzienlijk verhogen. Het hebben van een index op de tafel betekent niet noodzakelijkerwijs MariaDB zou kunnen gebruiken voor uw vragen. Valideer uw aannames altijd met EXPLAIN en optimaliseer uw query's met behulp van indexen.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Ga naar [MSDN-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb)om peer antwoorden te vinden op uw vragen of een nieuwe vraag/antwoord te plaatsen.
+- Ga naar [het MSDN-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb) of [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb)om antwoorden op je meest bezorgde vragen te vinden of een nieuwe vraag/antwoord te plaatsen.

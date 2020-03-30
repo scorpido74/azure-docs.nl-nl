@@ -1,6 +1,6 @@
 ---
-title: Release opmerkingen bij StorSimple 8000 Series update 4 | Microsoft Docs
-description: Hierin worden de nieuwe functies, problemen en tijdelijke oplossingen voor de StorSimple 8000 Series update 4 beschreven.
+title: StorSimple 8000 Series Update 4 release notes | Microsoft Documenten
+description: Beschrijft de nieuwe functies, problemen en oplossingen voor StorSimple 8000 Series Update 4.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,80 +15,80 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254584"
 ---
-# <a name="storsimple-8000-series-update-4-release-notes"></a>Release opmerkingen bij StorSimple 8000 Series update 4
+# <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 Series Update 4 release notes
 
 ## <a name="overview"></a>Overzicht
 
-In de volgende release opmerkingen worden de nieuwe functies beschreven en worden de essentiële openstaande problemen voor de StorSimple 8000 Series update 4 geïdentificeerd. Ze bevatten ook een lijst met de StorSimple software-updates die zijn opgenomen in deze release. 
+De volgende release notes beschrijven de nieuwe functies en identificeren de kritieke open problemen voor StorSimple 8000 Series Update 4. Ze bevatten ook een lijst van de StorSimple software-updates opgenomen in deze release. 
 
-Update 4 kan worden toegepast op elk StorSimple-apparaat waarop release (GA) of update 0,1 via update 3,1. De versie van het apparaat die is gekoppeld aan update 4 is 6.3.9600.17820.
+Update 4 kan worden toegepast op elk StorSimple-apparaat met Release (GA) of Update 0.1 tot en met update 3.1. De apparaatversie die is gekoppeld aan Update 4 is 6.3.9600.17820.
 
-Raadpleeg de informatie in de release opmerkingen voordat u de update in uw StorSimple-oplossing implementeert.
+Bekijk de informatie in de releasenotes voordat u de update implementeert in uw StorSimple-oplossing.
 
 > [!IMPORTANT]
-> * Update 4 heeft apparaatsoftware, eigenschappen van-firmware, LSI-stuur programma en firmware, schijf firmware, Storport en Spaceport, beveiliging en andere updates van het besturings systeem. Het duurt ongeveer 4 uur om deze update te installeren. Update van de schijf firmware is een storende update en resulteert in een downtime voor uw apparaat. U wordt aangeraden update 4 toe te passen om uw apparaat up-to-date te houden. 
-> * Voor nieuwe releases worden updates mogelijk niet onmiddellijk weer geven omdat er een gefaseerde implementatie van de updates wordt uitgevoerd. Wacht enkele dagen en zoek opnieuw naar updates, aangezien deze binnenkort beschikbaar worden.
+> * Update 4 heeft apparaatsoftware, USM-firmware, LSI-stuurprogramma en firmware, schijffirmware, Storport en Spaceport, beveiliging en andere OS-updates. Het installeren van deze update duurt ongeveer 4 uur. Disk firmware update is een storende update en resulteert in een downtime voor uw apparaat. We raden u aan update 4 toe te passen om uw apparaat up-to-date te houden. 
+> * Voor nieuwe releases ziet u mogelijk niet meteen updates omdat we een gefaseerde implementatie van de updates uitvoeren. Wacht een paar dagen, en dan scannen voor updates weer als deze binnenkort beschikbaar zal komen.
 
-## <a name="whats-new-in-update-4"></a>Wat is er nieuw in update 4
+## <a name="whats-new-in-update-4"></a>Nieuwe informatie in Update 4
 
-In update 4 zijn de volgende belang rijke verbeteringen en oplossingen voor oplossingen aangebracht.
+De volgende belangrijke verbeteringen en bug fixes zijn gemaakt in Update 4.
 
-* **Algoritmen voor het automatisch inwinnen van de slimmere ruimte** : in update 4 zijn de algoritmen voor automatische ruimte vrijmaken verbeterd om de ruimte op te stellen op basis van de verwachte vrijgemaakte ruimte die beschikbaar is in de Cloud. 
+* **Slimmere geautomatiseerde ruimteterugwinningsalgoritmen** - In update 4 worden de geautomatiseerde reclamatiealgoritmen voor ruimteterugwinning verbeterd om de ruimteterugwinningscycli aan te passen op basis van de verwachte teruggewonnen ruimte die beschikbaar is in de cloud. 
 
-* **Prestatie verbeteringen voor lokaal vastgemaakte volumes** : update 4 heeft de prestaties van lokaal vastgemaakte volumes verbeterd in scenario's met hoge gegevens opname (gegevens die vergelijkbaar zijn met de volume grootte).
+* **Prestatieverbeteringen voor lokaal vastgemaakte volumes** – Update 4 heeft de prestaties van lokaal vastgemaakte volumes verbeterd in scenario's met een hoge gegevensopname (gegevens die vergelijkbaar zijn met de grootte van het volume).
 
-* **Herstel op basis van Heatmap** : in de eerdere releases na een nood herstel (Dr) zijn de gegevens hersteld vanuit de Cloud op basis van de toegangs patronen die het resultaat zijn van een trage prestatie. 
+* **Heatmap-gebaseerde herstel** - In de eerdere releases, na een disaster recovery (DR), werden de gegevens hersteld uit de cloud op basis van de toegangspatronen die resulteren in een trage prestaties. 
 
-    Er wordt een nieuwe functie geïmplementeerd in update 4 die regel matig gebruikte gegevens bijhoudt om een heatmap te maken wanneer het apparaat wordt gebruikt vóór DR. (de meeste gebruikte gegevens segmenten hebben een hoge hitte terwijl minder hitte segmenten weinig worden gebruikt). Na DR gebruikt StorSimple de heatmap om de gegevens van de Cloud automatisch te herstellen en opnieuw te gebruiken. 
+    Een nieuwe functie wordt geïmplementeerd in Update 4 die vaak geopende gegevens bijhoudt om een heatmap te maken wanneer het apparaat in gebruik is voorafgaand aan DR (De meeste gebruikte gegevensbrokken hebben een hoog vuur, terwijl minder gebruikte brokken weinig warmte hebben). Na DR gebruikt StorSimple de heatmap om de gegevens uit de cloud automatisch te herstellen en te rehydrateren. 
 
-    Alle herstel bewerkingen zijn nu gebaseerd op heatmap. Ga naar [Windows PowerShell voor StorSimple-cmdlet-verwijzing](https://technet.microsoft.com/library/dn688168.aspx)voor meer informatie over het opvragen en annuleren van Heatmap herstel-en rehydratatie-taken.
+    Alle herstelt zijn nu heatmap gebaseerd herstelt. Ga voor meer informatie over het opvragen en annuleren van heatmap-gebaseerde herstel- en rehydratietaken naar [Windows PowerShell voor StorSimple-cmdlet-verwijzing.](https://technet.microsoft.com/library/dn688168.aspx)
 
-* **Hulp programma StorSimple Diagnostics** : in update 4 wordt een StorSimple Diagnostics-hulp programma vrijgegeven waarmee u eenvoudig diagnoses en problemen kunt oplossen met betrekking tot de status van het systeem, het netwerk, de prestaties en de hardware van het onderdeel. Dit hulp programma wordt uitgevoerd via de Windows PowerShell voor StorSimple. Ga voor meer informatie naar [problemen oplossen met het hulp programma StorSimple Diagnostics](storsimple-8000-diagnostics.md).
+* **StorSimple Diagnostics tool** - In Update 4, een StorSimple Diagnostics tool wordt vrijgegeven om eenvoudige diagnose en het oplossen van problemen met betrekking tot het systeem, netwerk, prestaties, en hardware component gezondheid. Deze tool wordt uitgevoerd via de Windows PowerShell voor StorSimple. Ga voor meer informatie naar [probleemproblemen met het hulpprogramma StorSimple Diagnostics.](storsimple-8000-diagnostics.md)
 
-* **Hulp programma voor StorSimple-migratie** van de gebruikers interface: vóór deze release hebben de migratie van gegevens van de 5000-7000-serie vereist dat de gebruikers een deel van de migratie werk stroom uitvoeren met behulp van de Azure PowerShell-interface. In deze release wordt een gebruiks vriendelijk, op gebruikers interface gebaseerd hulp programma voor StorSimple-migratie beschikbaar gesteld om de migratie werk stroom te vergemakkelijken. Met dit hulp programma kunt u ook herstel buckets samen voegen. 
+* **UI-gebaseerde StorSimple-migratietool** - Voordat deze release werd uitgevoerd, moesten de gebruikers een deel van de migratieworkflow uitvoeren met behulp van de Azure PowerShell-interface. In deze release wordt een gebruiksvriendelijke UI-gebaseerde StorSimple Migration-tool beschikbaar gesteld voor ondersteuning om dezelfde migratieworkflow te vergemakkelijken. Deze tool zou ook zorgen voor de consolidatie van herstel emmers. 
 
-* **FIPS-gerelateerde wijzigingen** -deze release gaat standaard ingeschakeld op alle apparaten met de StorSimple 8000-serie voor zowel de Microsoft Azure Government als Azure open bare-Cloud accounts.
+* **FIPS-gerelateerde wijzigingen** - Deze release is vanaf nu standaard ingeschakeld op alle Apparaten uit de StorSimple 8000-serie voor zowel de openbare cloudaccounts van Microsoft Azure Government als Azure.
 
-* **Wijzigingen** in deze release bijwerken: fouten die betrekking hebben op Update fouten, zijn opgelost.
+* **Wijzigingen bijwerken** - In deze release zijn bugs met betrekking tot updatefouten opgelost.
 
-* **Waarschuwing voor schijf fouten** : er wordt een nieuwe waarschuwing gegeven die de gebruiker waarschuwt dat er problemen met de harde schijf zijn toegevoegd in deze versie. Als u deze waarschuwing ontvangt, neemt u contact op met Microsoft Ondersteuning om een vervangende schijf te verzenden. Ga voor meer informatie naar [hardwareproblemen op uw StorSimple-apparaat](storsimple-8000-manage-alerts.md#hardware-alerts).
+* **Waarschuwing voor schijffouten** - In deze versie wordt een nieuwe waarschuwing toegevoegd die de gebruiker waarschuwt voor dreigende schijfstoringen. Als u deze waarschuwing tegenkomt, neemt u contact op met Microsoft Support om een vervangende schijf te verzenden. Ga voor meer informatie naar [hardwaremeldingen op uw StorSimple-apparaat.](storsimple-8000-manage-alerts.md#hardware-alerts)
 
-* **Vervanging** van de controller: een cmdlet waarmee de gebruiker de status van het vervangings proces van de controller kan opvragen, wordt toegevoegd in deze release. Voor meer informatie gaat u naar de [cmdlet voor het opvragen van de vervangings status](https://technet.microsoft.com/library/dn688168.aspx)van de controller.
+* **Wijzigingen voor de vervanging** van de controller - In deze versie wordt een cmdlet toegevoegd waarmee de gebruiker de status van het vervangingsproces van de controller kan opvragen. Ga voor meer informatie naar de [cmdlet om de vervangingsstatus van de controller op te vragen.](https://technet.microsoft.com/library/dn688168.aspx)
 
 
-## <a name="issues-fixed-in-update-4"></a>Problemen die zijn opgelost in update 4
+## <a name="issues-fixed-in-update-4"></a>Problemen opgelost in Update 4
 
-De volgende tabel bevat een overzicht van problemen die zijn opgelost in update 4.    
+In de volgende tabel vindt u een overzicht van problemen die zijn opgelost in update 4.    
 
-| Nee | Functie | Probleem | Is van toepassing op het fysieke apparaat | Is van toepassing op virtueel apparaat |
+| Nee | Functie | Probleem | Van toepassing op fysiek apparaat | Van toepassing op virtueel apparaat |
 | --- | --- | --- | --- | --- |
-| 1 |Failover |In de eerdere versie was er na de failover een probleem met het opschonen van de klant. Dit probleem is opgelost in deze release. |Ja |Ja |
-| 2 |Lokaal vastgemaakte volumes |In de vorige versie is er een probleem opgetreden bij het maken van een gerelateerd volume voor lokaal vastgemaakte volumes, waardoor er fouten ontstaan bij het maken van volumes. Dit probleem is in deze release veroorzaakt en opgelost. |Ja |Nee |
-| 3 |Ondersteunings pakket |In de vorige versie zijn er problemen met het ondersteunings pakket die resulteren in een System. OutOfMemory-uitzonde ring of andere fouten die resulteren in een probleem bij het maken van een ondersteunings pakket. Deze fouten zijn opgelost in deze release. |Ja |Ja |
-| 4 |Bewaking |In de vorige versie heeft zich een probleem voorgedaan bij het bewaken van grafieken voor lokaal vastgemaakte volumes waarbij verbruik in EB werd weer gegeven. Deze fout is opgelost in deze release. |Ja |Ja |
-| 5 |Migratie |In de vorige versie waren er diverse problemen met de betrouw baarheid van de migratie van de 5000-7000-serie naar 8000 Series-apparaten. Deze problemen zijn opgelost in deze release. |Ja |Ja |
-| 6 |Bijwerken |Als er bij eerdere releases een update fout is opgetreden, gaan de controllers in de herstel modus. de gebruiker kan daarom niet door gaan met de update en moet contact opnemen met Microsoft Ondersteuning. <br> Dit gedrag is gewijzigd in deze release. Als de gebruiker een update fout heeft nadat beide controllers dezelfde versie hebben (update 4), gaan de controllers niet naar de herstel modus. Als de gebruiker deze fout tegen komt, raden we u aan te wachten op een beetje en de update opnieuw uit te voeren. De nieuwe poging slaagt. Als de nieuwe poging mislukt, moet u contact opnemen met Microsoft Ondersteuning. |Ja |Ja |
+| 1 |Failover |In de eerdere release, na de failover, was er een probleem met betrekking tot het opruimen waargenomen op de site van de klant. Dit probleem is opgelost in deze release. |Ja |Ja |
+| 2 |Lokaal vastgemaakte volumes |In de vorige release was er een probleem met de bijbehorende volumecreatie voor lokaal vastgemaakte volumes die zouden resulteren in fouten bij het maken van volumes. Dit probleem is veroorzaakt door de wortel en is opgelost in deze release. |Ja |Nee |
+| 3 |Ondersteuningspakket |In eerdere versie waren er problemen met betrekking tot het ondersteuningspakket die zouden resulteren in een System.OutOfMemory-uitzondering of andere fouten die resulteren in een fout bij het maken van een ondersteuningspakket. Deze bugs zijn opgelost in deze release. |Ja |Ja |
+| 4 |Bewaking |In de vorige versie was er een probleem met betrekking tot het bewaken van grafieken voor lokaal vastgemaakte volumes waarbij het verbruik werd weergegeven in EB. Deze bug is opgelost in deze release. |Ja |Ja |
+| 5 |Migratie |In de vorige versie waren er verschillende problemen met betrekking tot de betrouwbaarheid van migratie van 5000-7000-serie naar 8000-serie apparaten. Deze problemen zijn in deze release verholpen. |Ja |Ja |
+| 6 |Update |In eerdere versies, als er een update fout, de controllers zou gaan in herstelmodus en dus de gebruiker niet kon doorgaan met de update en zou moeten contact opnemen met Microsoft Support. <br> Dit gedrag is veranderd in deze release. Als de gebruiker een updatefout heeft nadat beide controllers dezelfde versie uitvoeren (Update 4), gaan de controllers niet in de herstelmodus. Als de gebruiker deze fout tegenkomt, raden we aan om een beetje te wachten en de update opnieuw te proberen. De nieuwe poging zou kunnen slagen. Als de nieuwe poging mislukt, moeten ze contact opnemen met Microsoft Support. |Ja |Ja |
 
 
-## <a name="known-issues-in-update-4-from-previous-releases"></a>Bekende problemen in update 4 van eerdere versies
+## <a name="known-issues-in-update-4-from-previous-releases"></a>Bekende problemen in update 4 van eerdere releases
 
-Er zijn geen nieuwe bekende problemen in update 4. Voor een lijst met problemen die zijn overgedragen aan update 4 van eerdere versies, gaat u naar [Update 3 release opmerkingen](storsimple-update3-release-notes.md#known-issues-in-update-3).
+Er zijn geen nieuwe bekende problemen in update 4. Ga naar [Update 3 release notes](storsimple-update3-release-notes.md#known-issues-in-update-3)voor een lijst met problemen die zijn overgedragen naar update 4 van eerdere releases.
 
-## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-4"></a>SAS-controller (Serial-Attached SCSI) en firmware-updates in update 4
+## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-4"></a>SCSI-controller en firmware-updates (Serial Attached SCSI) en firmware in update 4
 
-Deze release heeft SAS controller-en LSI-Stuur Programma's en firmware-updates. Zie [Update 4 installeren](storsimple-install-update-4.md) op uw StorSimple-apparaat voor meer informatie over het installeren van deze updates.
+Deze release heeft SAS controller en LSI driver en firmware-updates. Zie [Update 4 installeren](storsimple-install-update-4.md) op uw StorSimple-apparaat voor meer informatie over het installeren van deze updates.
 
-## <a name="virtual-device-updates-in-update-4"></a>Updates van het virtuele apparaat in update 4
+## <a name="virtual-device-updates-in-update-4"></a>Updates van virtuele apparaten in update 4
 
-Deze update kan niet worden toegepast op de StorSimple Cloud Appliance (ook wel bekend als het virtuele apparaat). Er moeten nieuwe virtuele apparaten worden gemaakt. 
+Deze update kan niet worden toegepast op het StorSimple Cloud Appliance (ook wel het virtuele apparaat genoemd). Er moeten nieuwe virtuele apparaten worden gemaakt. 
 
 ## <a name="next-step"></a>Volgende stap
 
-Meer informatie over het [installeren van update 4](storsimple-install-update-4.md) op uw StorSimple-apparaat.
+Meer informatie over het [installeren van Update 4](storsimple-install-update-4.md) op uw StorSimple-apparaat.
 

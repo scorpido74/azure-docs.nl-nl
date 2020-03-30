@@ -1,6 +1,6 @@
 ---
-title: On-premises Azure AD-wachtwoord beveiliging inschakelen
-description: Meer informatie over het inschakelen van Azure AD-wachtwoord beveiliging voor een on-premises Active Directory Domain Services omgeving
+title: On-premises Azure AD-wachtwoordbeveiliging inschakelen
+description: Meer informatie over het inschakelen van Azure AD Password Protection voor een on-premises Active Directory Domain Services-omgeving
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,63 +12,63 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d00a8b84477226b68913f95c5121bbbdfc2eb09d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263814"
 ---
-# <a name="enable-on-premises-azure-active-directory-password-protection"></a>On-premises Azure Active Directory wachtwoord beveiliging inschakelen
+# <a name="enable-on-premises-azure-active-directory-password-protection"></a>On-premises Azure Active Directory Password Protection inschakelen
 
-Gebruikers maken vaak wacht woorden die gebruikmaken van veelgebruikte lokale woorden, zoals een school, een sport team of een beroemde persoon. Deze wacht woorden zijn gemakkelijk te raden en zwak tegen Woordenboek aanvallen. Voor het afdwingen van sterke wacht woorden in uw organisatie, biedt Azure Active Directory-wachtwoord beveiliging van Azure Active Directory een globale en aangepaste lijst met verboden wacht woorden. Een aanvraag voor het wijzigen van het wacht woord is mislukt als er een overeenkomst is gevonden in de lijst met verboden wacht woorden.
+Gebruikers maken vaak wachtwoorden die veelvoorkomende lokale woorden gebruiken, zoals een school, sportteam of beroemde persoon. Deze wachtwoorden zijn gemakkelijk te raden, en zwak tegen woordenboek-gebaseerde aanvallen. Als u sterke wachtwoorden in uw organisatie wilt afdwingen, biedt Azure Active Directory (Azure AD) Wachtwoordbeveiliging een algemene en aangepaste lijst met geblokkeerde wachtwoorden. Een verzoek om wachtwoordwijziging mislukt als er een overeenkomst is in deze lijst met verboden wachtwoorden.
 
-Om uw on-premises Active Directory Domain Services-omgeving (AD DS) te beveiligen, kunt u Azure AD-wachtwoord beveiliging installeren en configureren om met uw on-premises DC te werken. In dit artikel wordt beschreven hoe u Azure AD-wachtwoord beveiliging inschakelt voor uw on-premises omgeving.
+Als u uw on-premises ACTIVE Directory Domain Services-omgeving (AD DS) wilt beveiligen, u Azure AD-wachtwoordbeveiliging installeren en configureren om te werken met uw on-prem DC. In dit artikel ziet u hoe u Azure AD Password Protection inschakelt voor uw on-premises omgeving.
 
-Zie [Azure AD-wachtwoord beveiliging afdwingen voor Windows Server Active Directory](concept-password-ban-bad-on-premises.md)voor meer informatie over de werking van Azure AD-wachtwoord beveiliging in een on-premises omgeving.
+Zie [Azure AD Password Protection for Se](concept-password-ban-bad-on-premises.md)in n.P. voor meer informatie over de werking van Azure AD Password Protection in een on-premises omgeving.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit artikel wordt beschreven hoe u Azure AD-wachtwoord beveiliging inschakelt voor uw on-premises omgeving. Voordat u dit artikel voltooit, [installeert en registreert u de Azure AD-service voor wachtwoord beveiliging proxy en DC-agents](howto-password-ban-bad-on-premises-deploy.md) in uw on-premises AD DS omgeving.
+In dit artikel ziet u hoe u Azure AD Password Protection inschakelt voor uw on-premises omgeving. Installeer en registreer [de proxyservice Azure AD Password Protection en DC-agents](howto-password-ban-bad-on-premises-deploy.md) voordat u dit artikel voltooit in uw on-premises AD DS-omgeving.
 
-## <a name="enable-on-premises-password-protection"></a>On-premises wachtwoord beveiliging inschakelen
+## <a name="enable-on-premises-password-protection"></a>On-premises wachtwoordbeveiliging inschakelen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en blader **naar Azure Active Directory** > **beveiligings** > **verificatie methoden** > **wachtwoord beveiliging**.
-1. Stel de optie voor het **inschakelen van wachtwoord beveiliging op Windows Server Active Directory** in op *Ja*.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en blader naar **Azure Active Directory** > **Security** > **Authentication-methoden** > **Wachtwoordbeveiliging**.
+1. Stel de optie in voor **Wachtwoordbeveiliging inschakelen in Windows Server Active Directory** op *Ja*.
 
-    Als deze instelling is ingesteld op *Nee*, gaan alle geïmplementeerde Azure AD-agenten voor wachtwoord beveiliging domein controller in een quiescent-modus waarbij alle wacht woorden worden geaccepteerd als-is. Er worden geen validatie activiteiten uitgevoerd en er worden geen controle gebeurtenissen gegenereerd.
+    Wanneer deze instelling is ingesteld op *Nee,* gaan alle geïmplementeerde Azure AD Password Protection DC-agents in een rustige modus waarin alle wachtwoorden worden geaccepteerd als-is. Er worden geen validatieactiviteiten uitgevoerd en er worden geen controlegebeurtenissen gegenereerd.
 
-1. Het is raadzaam om de **modus** in te stellen op *controleren*. Nadat u vertrouwd bent met de functie en de gevolgen voor gebruikers in uw organisatie, kunt u de **modus** instellen op *afgedwongen*. Zie de volgende sectie in de [bewerkings modus](#modes-of-operation)voor meer informatie.
-1. Wanneer u klaar bent, selecteert u **Opslaan**.
+1. Het wordt aanbevolen om in eerste instantie de **modus in** te stellen op *Audit*. Nadat u vertrouwd bent met de functie en de impact op gebruikers in uw organisatie, u de **modus** overschakelen naar *Afgedwongen*. Zie voor meer informatie het volgende gedeelte over [de werkingsmodi](#modes-of-operation).
+1. Wanneer u klaar bent, selecteert **u Opslaan**.
 
     [![](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png "Enable on-premises password protection under Authentication Methods in the Azure portal")](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
 
-## <a name="modes-of-operation"></a>Bewerkings modi
+## <a name="modes-of-operation"></a>Bedrijfsmodi
 
-Wanneer u on-premises Azure AD-wachtwoord beveiliging inschakelt, kunt u de *controle* modus of de *afdwingings* modus gebruiken. We raden u aan de eerste implementatie en het testen altijd uit te voeren in de controle modus. Vermeldingen in het gebeurtenis logboek moeten vervolgens worden bewaakt om te anticiperen of bestaande operationele processen worden verstoord zodra de modus *afdwingen* is ingeschakeld.
+Wanneer u on-premises Azure AD Password Protection inschakelt, u *de controlemodus* of *de uitvoermodus* gebruiken. We raden aan dat de eerste implementatie en testen altijd beginnen in de auditmodus. Vermeldingen in het gebeurtenislogboek moeten vervolgens worden gecontroleerd om te anticiperen op de vraag of bestaande operationele processen zouden worden verstoord zodra *de uitvoermodus* is ingeschakeld.
 
-### <a name="audit-mode"></a>Controle modus
+### <a name="audit-mode"></a>Controlemodus
 
-De *controle* modus is bedoeld als een manier om de software uit te voeren in een ' What '-modus. Elke Azure AD-Agent service voor wachtwoord beveiliging evalueert een inkomend wacht woord volgens het huidige actieve beleid.
+*Audit* modus is bedoeld als een manier om de software uit te voeren in een "wat als" modus. Elke Azure AD Password Protection DC-agentservice evalueert een binnenkomend wachtwoord volgens het momenteel actieve beleid.
 
-Als het huidige beleid zodanig is geconfigureerd dat het zich in de controle modus bevindt, worden de wacht woorden ' onjuist ' geretourneerd in gebeurtenis logboek berichten, maar worden ze verwerkt en bijgewerkt. Dit gedrag is het enige verschil tussen de controle-en afdwingings modus. Alle andere bewerkingen worden hetzelfde uitgevoerd.
+Als het huidige beleid is geconfigureerd om in de controlemodus te zijn, resulteren 'slechte' wachtwoorden in gebeurtenislogboekberichten, maar worden ze verwerkt en bijgewerkt. Dit gedrag is het enige verschil tussen audit en de afdwingmodus. Alle andere bewerkingen draaien hetzelfde.
 
 ### <a name="enforced-mode"></a>Afgedwongen modus
 
-De *afgedwongen* modus is bedoeld als de definitieve configuratie. Net als in de controle modus evalueert elke Azure AD-Agent service voor wachtwoord beveiliging binnenkomende wacht woorden volgens het huidige actieve beleid. Als afgedwongen modus is ingeschakeld, wordt een wacht woord dat als onveilig wordt beschouwd volgens het beleid, geweigerd.
+*Afgedwongen* modus is bedoeld als de uiteindelijke configuratie. Net als in de controlemodus evalueert elke Azure AD Password Protection DC-agentservice binnenkomende wachtwoorden volgens het momenteel actieve beleid. Wanneer de afgedwongen modus is ingeschakeld, wordt een wachtwoord dat volgens het beleid als onveilig wordt beschouwd, geweigerd.
 
-Wanneer een wacht woord in afgedwongen modus wordt afgewezen door de Azure AD-agent voor wachtwoord beveiliging, ziet een eind gebruiker een vergelijk bare fout zoals ze zouden zien als hun wacht woord is geweigerd door traditionele on-premises wachtwoord complexiteit afdwingen. Een gebruiker kan bijvoorbeeld het volgende traditionele fout bericht zien op het Windows-aanmeld scherm of het wacht woord wijzigen:
+Wanneer een wachtwoord wordt geweigerd in de afgedwongen modus door de Azure AD Password Protection DC-agent, ziet een eindgebruiker een vergelijkbare fout zoals hij of zij zou zien of zijn wachtwoord is geweigerd door traditionele on-premises wachtwoordcomplexiteitshandhaving. Een gebruiker kan bijvoorbeeld het volgende traditionele foutbericht zien in het windows-aanmeldingsscherm of het wachtwoordscherm wijzigen:
 
-*Het wacht woord kan niet worden bijgewerkt. De waarde die is opgegeven voor het nieuwe wacht woord voldoet niet aan de vereisten voor de lengte, complexiteit of geschiedenis van het domein.*
+*"Kan het wachtwoord niet bijwerken. De waarde voor het nieuwe wachtwoord voldoet niet aan de lengte, complexiteit of geschiedenisvereisten van het domein."*
 
-Dit bericht bevat slechts één voor beeld van een aantal mogelijke resultaten. Het specifieke fout bericht kan variëren, afhankelijk van de werkelijke software of het scenario dat probeert een onveilig wacht woord in te stellen.
+Dit bericht is slechts een voorbeeld van verschillende mogelijke uitkomsten. De specifieke foutmelding kan variëren afhankelijk van de werkelijke software of het scenario dat een onveilig wachtwoord probeert in te stellen.
 
-Betrokken eind gebruikers moeten mogelijk samen werken met hun IT-mede werkers om inzicht te krijgen in de nieuwe vereisten en om veilige wacht woorden te kiezen.
+Getroffen eindgebruikers moeten mogelijk samenwerken met hun IT-personeel om de nieuwe vereisten te begrijpen en veilige wachtwoorden te kiezen.
 
 > [!NOTE]
-> Azure AD-wachtwoord beveiliging heeft geen controle over het specifieke fout bericht dat wordt weer gegeven door de client computer wanneer een zwak wacht woord wordt afgewezen.
+> Azure AD Password Protection heeft geen controle over het specifieke foutbericht dat door de clientmachine wordt weergegeven wanneer een zwak wachtwoord wordt geweigerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u de lijst met geblokkeerde wacht woorden voor uw organisatie wilt aanpassen, raadpleegt u [de lijst met aangepaste verboden wacht woorden voor Azure AD-wachtwoord beveiliging configureren](tutorial-configure-custom-password-protection.md).
+Zie De lijst met aangepaste verboden [wachtwoordvoor](tutorial-configure-custom-password-protection.md)azure AD Password Protection configureren als u de lijst met verboden wachtwoorden voor uw organisatie wilt aanpassen.
 
-Zie [on-premises Azure AD-wachtwoord beveiliging controleren](howto-password-ban-bad-on-premises-monitor.md)voor meer informatie over het controleren van on-premises gebeurtenissen.
+Zie [On-prem Azure AD Password Protection controleren op de prem.](howto-password-ban-bad-on-premises-monitor.md)

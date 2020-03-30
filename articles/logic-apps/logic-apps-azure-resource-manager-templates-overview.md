@@ -1,51 +1,51 @@
 ---
-title: 'Overzicht: implementatie voor Azure Logic Apps automatiseren'
-description: Meer informatie over Azure Resource Manager sjablonen voor het automatiseren van de implementatie voor Azure Logic Apps
+title: Overzicht - Implementatie voor Azure Logic Apps automatiseren
+description: Meer informatie over Azure Resource Manager-sjablonen om de implementatie voor Azure Logic Apps te automatiseren
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 486f90d82af729a3dbfd836239d2d19ebdf44819
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 920d8bfbcef33464d528306113abe6223d752889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79284042"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477745"
 ---
-# <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Overzicht: de implementatie voor Azure Logic Apps automatiseren met behulp van Azure Resource Manager sjablonen
+# <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Overzicht: Implementatie voor Azure Logic Apps automatiseren met Azure Resource Manager-sjablonen
 
-Wanneer u klaar bent om het maken en implementeren van uw logische app te automatiseren, kunt u de onderliggende werk stroom definitie van uw logische app uitbreiden naar een [Azure Resource Manager sjabloon](../azure-resource-manager/management/overview.md). Met deze sjabloon worden de infra structuur, bronnen, para meters en andere gegevens gedefinieerd voor het inrichten en implementeren van uw logische app. Door para meters te definiëren voor waarden die variëren tijdens de implementatie, ook wel bekend als *parameterizing*, kunt u regel matig Logic Apps implementeren op basis van verschillende implementatie behoeften.
+Wanneer u klaar bent om het maken en implementeren van uw logische app te automatiseren, u de onderliggende werkstroomdefinitie van uw logische app uitbreiden naar een [Azure Resource Manager-sjabloon.](../azure-resource-manager/management/overview.md) Met deze sjabloon worden de infrastructuur, resources, parameters en andere informatie voor het inrichten en implementeren van uw logische app gedefinieerd. Door parameters te definiëren voor waarden die variëren bij implementatie, ook wel *parameterisering*genoemd, u logische apps herhaaldelijk en consistent implementeren op basis van verschillende implementatiebehoeften.
 
-Als u bijvoorbeeld in omgevingen implementeert voor ontwikkeling, testen en productie, gebruikt u waarschijnlijk verschillende verbindings reeksen voor elke omgeving. U kunt sjabloon parameters declareren die verschillende verbindings reeksen accepteren en deze teken reeksen vervolgens opslaan in een afzonderlijk [parameter bestand](../azure-resource-manager/templates/parameter-files.md). Op die manier kunt u deze waarden wijzigen zonder dat u de sjabloon hoeft bij te werken en opnieuw te implementeren. Voor scenario's waarbij u parameter waarden hebt die gevoelig zijn of moeten worden beveiligd, zoals wacht woorden en geheimen, kunt u deze waarden opslaan in [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) en uw para meters bestand laten ophalen die waarden bevatten. In deze scenario's zou u echter opnieuw implementeren om de huidige waarden op te halen.
+Als u bijvoorbeeld implementeert naar omgevingen voor ontwikkeling, testen en productie, gebruikt u waarschijnlijk verschillende verbindingstekenreeksen voor elke omgeving. U sjabloonparameters declareren die verschillende verbindingstekenreeksen accepteren en deze tekenreeksen vervolgens opslaan in een afzonderlijk [parametersbestand](../azure-resource-manager/templates/parameter-files.md). Op die manier u deze waarden wijzigen zonder dat u de sjabloon hoeft bij te werken en opnieuw te implementeren. Voor scenario's waarin u parameterwaarden hebt die gevoelig zijn of moeten worden beveiligd, zoals wachtwoorden en geheimen, u deze waarden opslaan in [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) en uw parametersbestand deze waarden laten ophalen. In deze scenario's wordt u echter opnieuw geïmplementeerd om de huidige waarden op te halen.
 
-In dit overzicht worden de kenmerken van een resource manager-sjabloon beschreven die een werk stroom definitie van een logische app bevat. Zowel de sjabloon als uw werk stroom definitie gebruiken JSON-syntaxis, maar er zijn enkele verschillen, omdat de definitie van de werk stroom ook het [taal schema voor de werk stroom definitie](../logic-apps/logic-apps-workflow-definition-language.md)volgt. Sjabloon expressies en werk stroom definitie-expressies verschillen bijvoorbeeld in de manier waarop ze [verwijzen naar para meters](#parameter-references) en de waarden die ze kunnen accepteren.
+In dit overzicht worden de kenmerken beschreven in een resourcemanagersjabloon die een definitie van een logische app-werkstroom bevat. Zowel de sjabloon als de werkstroomdefinitie gebruiken JSON-syntaxis, maar er bestaan enkele verschillen omdat de werkstroomdefinitie ook het [schema voor werkstroomdefinitiestaal volgt.](../logic-apps/logic-apps-workflow-definition-language.md) Sjabloonexpressies en werkstroomdefinitieexpressies verschillen bijvoorbeeld in de manier waarop ze [verwijzen naar parameters](#parameter-references) en de waarden die ze kunnen accepteren.
 
 > [!TIP]
-> Voor de eenvoudigste manier om een geldige sjabloon voor logische apps met para meters te maken die het meest geschikt is voor implementatie, gebruikt u Visual Studio (gratis Community-editie of hoger) en de Azure Logic Apps-Hulpprogram Ma's voor Visual Studio. U kunt vervolgens [uw logische app maken in Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) of [een bestaande logische app van Azure naar Visual Studio downloaden](../logic-apps/manage-logic-apps-with-visual-studio.md).
+> Gebruik Visual Studio (gratis community-editie of meer) en de Azure Logic Apps Tools voor Visual Studio voor de eenvoudigste manier om een sjabloon met geldige logische apps te krijgen die grotendeels klaar is voor implementatie. U vervolgens [uw logische app maken in Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) of een bestaande logische app van Azure zoeken en downloaden naar Visual [Studio.](../logic-apps/manage-logic-apps-with-visual-studio.md)
 >
-> U kunt ook sjablonen voor logische apps maken met behulp van [Azure PowerShell met de module LogicAppTemplate](../logic-apps/logic-apps-create-azure-resource-manager-templates.md#azure-powershell).
+> U ook logische app-sjablonen maken met [Azure PowerShell met de LogicAppTemplate-module.](../logic-apps/logic-apps-create-azure-resource-manager-templates.md#azure-powershell)
 
-In de logische app voor voor beelden in dit onderwerp wordt gebruikgemaakt van een [Office 365 Outlook-trigger](/connectors/office365/) die wordt geactiveerd wanneer er een nieuwe e-mail binnenkomt en een [Azure Blob Storage actie](/connectors/azureblob/) die een BLOB maakt voor de hoofd tekst van het e-mail bericht en die BLOB uploadt naar een Azure storage-container. In de voor beelden ziet u ook hoe u waarden para meters die variëren tijdens de implementatie.
+De voorbeeldlogische app in dit onderwerp maakt gebruik van een [Office 365 Outlook-trigger](/connectors/office365/) die wordt geactiveerd wanneer een nieuwe e-mail binnenkomt en een [Azure Blob Storage-actie](/connectors/azureblob/) die een blob voor de e-mailhoofd maakt en die blob uploadt naar een Azure-opslagcontainer. De voorbeelden laten ook zien hoe waarden kunnen worden parameteriseren die variëren bij implementatie.
 
-Zie de volgende onderwerpen voor meer informatie over Resource Manager-sjablonen:
+Zie de volgende onderwerpen voor meer informatie over resourcemanagersjablonen:
 
-* [Structuur en syntaxis van Azure Resource Manager sjabloon](../azure-resource-manager/templates/template-syntax.md)
+* [Sjabloonstructuur en syntaxis van Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
 * [Best practices voor Azure Resource Manager-sjablonen](../azure-resource-manager/templates/template-best-practices.md)
 * [Azure Resource Manager-sjablonen voor consistentie van de cloud ontwikkelen](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
-Voor voor beelden van Logic app-sjablonen raadpleegt u deze voor beelden:
+Zie de volgende voorbeelden voor voorbeeldlogische app-sjablonen:
 
-* [Volledige sjabloon](#full-example-template) die wordt gebruikt voor de voor beelden van dit onderwerp
-* [Voorbeeld sjabloon voor Quick](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create) start-app in github
+* [Volledige sjabloon](#full-example-template) die wordt gebruikt voor de voorbeelden van dit onderwerp
+* [Voorbeeld van snelstartlogische app-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create) in GitHub
 
-Zie [resource typen van micro soft. Logic](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)voor sjabloon resource gegevens die specifiek zijn voor Logic apps, integratie accounts en integratie-account artefacten.
+Zie [Microsoft.Logic-brontypen](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)voor informatie over sjabloonbronnen die specifiek zijn voor logische apps, integratieaccounts en integratieaccountartefacten.
 
 <a name="template-structure"></a>
 
 ## <a name="template-structure"></a>Sjabloonstructuur
 
-Op het hoogste niveau volgt een resource manager-sjabloon deze structuur, die volledig wordt beschreven in het onderwerp [Azure Resource Manager sjabloon structuur en syntaxis](../azure-resource-manager/templates/template-syntax.md) :
+Op het hoogste niveau volgt een resourcemanagersjabloon deze structuur, die volledig wordt beschreven in de [sjabloonstructuur en syntaxisvan Azure Resource Manager:](../azure-resource-manager/templates/template-syntax.md)
 
 ```json
 {
@@ -59,34 +59,34 @@ Op het hoogste niveau volgt een resource manager-sjabloon deze structuur, die vo
 }
 ```
 
-Voor een sjabloon voor een logische app werkt u voornamelijk met deze sjabloon objecten:
+Voor een sjabloon voor logische apps werkt u voornamelijk met deze sjabloonobjecten:
 
 | Kenmerk | Beschrijving |
 |-----------|-------------|
-| `parameters` | Declareert de [sjabloon parameters](../azure-resource-manager/templates/template-syntax.md#parameters) voor het accepteren van de waarden die moeten worden gebruikt bij het maken en aanpassen van resources voor implementatie in Azure. Deze para meters accepteren bijvoorbeeld de waarden voor de naam en locatie, verbindingen en andere resources die nodig zijn voor de implementatie van uw logische app. U kunt deze parameter waarden opslaan in een [parameter bestand](#template-parameter-files), dat later in dit onderwerp wordt beschreven. Zie [para meters-Resource Manager-sjabloon structuur en syntaxis](../azure-resource-manager/templates/template-syntax.md#parameters)voor algemene informatie. |
-| `resources` | Definieert de [resources](../azure-resource-manager/templates/template-syntax.md#resources) voor het maken of bijwerken en implementeren van een Azure-resource groep, zoals uw logische app, verbindingen, Azure Storage-accounts, enzovoort. Zie voor algemene informatie [bronnen-Resource Manager-sjabloon structuur en-syntaxis](../azure-resource-manager/templates/template-syntax.md#resources). |
+| `parameters` | Hiermee declareert u de [sjabloonparameters](../azure-resource-manager/templates/template-syntax.md#parameters) voor het accepteren van de waarden die moeten worden gebruikt bij het maken en aanpassen van resources voor implementatie in Azure. Deze parameters accepteren bijvoorbeeld de waarden voor de naam en locatie van uw logische app, verbindingen en andere resources die nodig zijn voor implementatie. U deze parameterwaarden opslaan in een [parametersbestand,](#template-parameter-files)dat later in dit onderwerp wordt beschreven. Zie [Parameters - Sjabloonstructuur en syntaxis van Resourcebeheer](../azure-resource-manager/templates/template-syntax.md#parameters)voor algemene details. |
+| `resources` | Hiermee definieert u de [resources](../azure-resource-manager/templates/template-syntax.md#resources) die moeten worden gemaakt of bijgewerkt en geïmplementeerd in een Azure-brongroep, zoals uw logische app, verbindingen, Azure-opslagaccounts, enzovoort. Zie [Resources - Sjabloonstructuur en syntaxis resourcemanager](../azure-resource-manager/templates/template-syntax.md#resources)voor algemene details. |
 ||||
 
-De logische app-sjabloon maakt gebruik van de volgende bestands indeling:
+Uw sjabloon voor logische apps gebruikt deze bestandsnaamindeling:
 
-**<*Logic-app-naam*>. json**
+**<*logic-app-name*>.json**
 
 > [!IMPORTANT]
-> De sjabloon syntaxis is hoofdletter gevoelig, dus zorg ervoor dat u een consistente behuizing gebruikt. 
+> De syntaxis van de sjabloon is hoofdlettergevoelig, dus zorg ervoor dat u een consistente behuizing gebruikt. 
 
 <a name="template-parameters"></a>
 
 ## <a name="template-parameters"></a>Sjabloonparameters
 
-Een sjabloon voor een logische app heeft meerdere `parameters` objecten die op verschillende niveaus bestaan en verschillende functies uitvoeren. U kunt bijvoorbeeld op het hoogste niveau [sjabloon parameters](../azure-resource-manager/templates/template-syntax.md#parameters) declareren voor de waarden die u tijdens de implementatie wilt accepteren en gebruiken bij het maken en implementeren van resources in azure, bijvoorbeeld:
+Een sjabloon voor `parameters` logische apps heeft meerdere objecten die op verschillende niveaus bestaan en verschillende functies uitvoeren. Op het hoogste niveau u bijvoorbeeld [sjabloonparameters](../azure-resource-manager/templates/template-syntax.md#parameters) declareren voor de waarden die u moet accepteren en gebruiken bij implementatie bij het maken en implementeren van resources in Azure, bijvoorbeeld:
 
-* Uw logische app
-* Verbindingen die uw logische toepassingen gebruiken om toegang te krijgen tot andere services en systemen via [beheerde connectors](../connectors/apis-list.md)
-* Andere resources die door uw logische app moeten worden geïmplementeerd
+* Uw logica-app
+* Verbindingen die uw logica gebruikt om toegang te krijgen tot andere services en systemen via [beheerde connectors](../connectors/apis-list.md)
+* Andere bronnen die uw logische app nodig heeft voor implementatie
 
-  Als uw logische app bijvoorbeeld gebruikmaakt van een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) voor Business-to-Business (B2B)-scenario's, declareert het op het hoogste niveau `parameters` object van de sjabloon de para meter die de resource-id voor dat integratie account accepteert.
+  Als uw logica-app bijvoorbeeld een [integratieaccount](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) gebruikt voor B2B-scenario's (business-to-business), wordt in het object op het hoogste niveau `parameters` van de sjabloon de parameter opgegeven die de bron-id voor dat integratieaccount accepteert.
 
-Hier volgt de algemene structuur en syntaxis voor een parameter definitie, die volledig wordt beschreven door [para meters-Resource Manager-sjabloon structuur en syntaxis](../azure-resource-manager/templates/template-syntax.md#parameters):
+Hier is de algemene structuur en syntaxis voor een parameterdefinitie, die volledig wordt beschreven door [Parameters - Resource Manager-sjabloonstructuur en -syntaxis:](../azure-resource-manager/templates/template-syntax.md#parameters)
 
 ```json
 "<parameter-name>": {
@@ -99,10 +99,10 @@ Hier volgt de algemene structuur en syntaxis voor een parameter definitie, die v
 },
 ```
 
-In dit voor beeld worden alleen de sjabloon parameters weer gegeven voor de waarden die worden gebruikt voor het maken en implementeren van deze resources in Azure:
+In dit voorbeeld worden alleen de sjabloonparameters weergegeven voor de waarden die worden gebruikt om deze resources in Azure te maken en te implementeren:
 
 * Naam en locatie voor uw logische app
-* ID die moet worden gebruikt voor een integratie account dat is gekoppeld aan de logische app
+* ID te gebruiken voor een integratieaccount dat is gekoppeld aan de logische app
 
 ```json
 {
@@ -121,7 +121,7 @@ In dit voor beeld worden alleen de sjabloon parameters weer gegeven voor de waar
       },
       "LogicAppLocation": {
          "type": "string",
-         "min length": 1,
+         "minLength": 1,
          "defaultValue": "[resourceGroup().location]",
          "metadata": {
             "description": "The resource location for the logic app"
@@ -143,52 +143,52 @@ In dit voor beeld worden alleen de sjabloon parameters weer gegeven voor de waar
 }
 ```
 
-Met uitzonde ring van para meters die gevoelige waarden verwerken of moeten worden beveiligd, zoals gebruikers namen, wacht woorden en geheimen, bevatten alle deze para meters `defaultValue` kenmerken, hoewel in sommige gevallen de standaard waarden leeg zijn. De implementatie waarden die moeten worden gebruikt voor deze sjabloon parameters worden opgegeven door het voorbeeld [parameter bestand](#template-parameter-files) dat verderop in dit onderwerp wordt beschreven.
+Behalve voor parameters die waarden verwerken die gevoelig zijn of moeten worden beveiligd, zoals `defaultValue` gebruikersnamen, wachtwoorden en geheimen, bevatten al deze parameters kenmerken, hoewel in sommige gevallen de standaardwaarden lege waarden zijn. De implementatiewaarden die voor deze sjabloonparameters moeten worden gebruikt, worden geleverd door het [bestand met voorbeeldparameters](#template-parameter-files) dat later in dit onderwerp wordt beschreven.
 
-Zie de volgende onderwerpen voor meer informatie over het beveiligen van sjabloon parameters:
+Zie de volgende onderwerpen voor meer informatie over het beveiligen van sjabloonparameters:
 
-* [Beveiligings aanbevelingen voor sjabloon parameters](../azure-resource-manager/templates/template-best-practices.md#parameters)
-* [Beveiliging verbeteren voor sjabloon parameters](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
-* [Beveiligde parameter waarden door geven Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
+* [Beveiligingsaanbevelingen voor sjabloonparameters](../azure-resource-manager/templates/template-best-practices.md#parameters)
+* [Beveiliging voor sjabloonparameters verbeteren](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+* [Beveiligde parameterwaarden doorgeven met Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
-Andere sjabloon objecten verwijzen vaak naar sjabloon parameters, zodat ze de waarden kunnen gebruiken die de sjabloon parameters door geven, bijvoorbeeld:
+Andere sjabloonobjecten verwijzen vaak naar sjabloonparameters, zodat ze de waarden kunnen gebruiken die door sjabloonparameters gaan, bijvoorbeeld:
 
-* Het [resources-object van uw sjabloon](#template-resources), dat verderop in dit onderwerp wordt beschreven, definieert elke resource in azure die u wilt maken en implementeren, zoals de [resource definitie van de logische app](#logic-app-resource-definition). Deze resources gebruiken vaak parameter waarden van de sjabloon, zoals de naam en locatie en verbindings gegevens van uw logische app.
+* [Het resources-object van](#template-resources)uw sjabloon , dat later in dit onderwerp wordt beschreven, definieert elke bron in Azure die u wilt maken en implementeren, zoals de [resourcedefinitie van](#logic-app-resource-definition)uw logische app . Deze bronnen gebruiken vaak sjabloonparameterwaarden, zoals de naam en locatie- en verbindingsgegevens van uw logische app.
 
-* Op een dieper niveau in de resource definitie van de logische app declareert het [object para meters van de werk stroom definitie](#workflow-definition-parameters) para meters voor de waarden die moeten worden gebruikt bij de runtime van de logische app. U kunt bijvoorbeeld para meters voor de werk stroom definitie declareren voor de gebruikers naam en het wacht woord die een HTTP-trigger gebruikt voor verificatie. Als u de waarden voor de para meters voor de werk stroom definitie wilt opgeven, gebruikt u het `parameters` object dat *zich buiten* uw werk stroom definitie bevindt, maar nog steeds *binnen* de resource definitie van de logische app In dit buiten-`parameters` object kunt u verwijzen naar eerder gedeclareerde sjabloon parameters, waarmee waarden kunnen worden geaccepteerd tijdens de implementatie vanuit een parameter bestand.
+* Op een dieper niveau in de resourcedefinitie van uw logica-app declareert het parametersobject van uw [werkstroomdefinitie](#workflow-definition-parameters) parameters voor de waarden die moeten worden gebruikt tijdens de runtime van uw logische app. U bijvoorbeeld werkstroomdefinitieparameters declareren voor de gebruikersnaam en het wachtwoord die een HTTP-trigger gebruikt voor verificatie. Als u de waarden voor werkstroomdefinitieparameters wilt opgeven, gebruikt u het object dat `parameters` *buiten* de werkstroomdefinitie valt, maar nog steeds *binnen* de resourcedefinitie van uw logische app. In dit `parameters` buitenste object u verwijzen naar eerder gedeclareerde sjabloonparameters, die waarden kunnen accepteren bij implementatie vanuit een parametersbestand.
 
-Bij het verwijzen naar para meters, gebruiken sjabloon expressies en-functies een andere syntaxis en gedragen zich anders dan expressies en functies van de werk stroom definitie. Zie [verwijzingen naar para meters](#parameter-references) verderop in dit onderwerp voor meer informatie over deze verschillen.
+Bij het verwijzen naar parameters gebruiken sjabloonexpressies en -functies verschillende syntaxis en gedragen ze zich anders dan werkstroomdefinitieexpressies en -functies. Zie [Verwijzingen naar parameters](#parameter-references) later in dit onderwerp voor meer informatie over deze verschillen.
 
 <a name="best-practices-template-parameters"></a>
 
-## <a name="best-practices---template-parameters"></a>Aanbevolen procedures-sjabloon parameters
+## <a name="best-practices---template-parameters"></a>Aanbevolen procedures - sjabloonparameters
 
-Hier volgen enkele aanbevolen procedures voor het definiëren van para meters:
+Hier volgen enkele aanbevolen procedures voor het definiëren van parameters:
 
-* Declareer alleen para meters voor waarden die variëren, afhankelijk van uw implementatie behoeften. Declareer geen para meters voor waarden die hetzelfde blijven in verschillende implementatie vereisten.
+* Declareer parameters alleen voor waarden die variëren op basis van uw implementatiebehoeften. Declareer geen parameters voor waarden die hetzelfde blijven voor verschillende implementatievereisten.
 
-* Neem het `defaultValue` kenmerk op, waarmee lege waarden kunnen worden opgegeven voor alle para meters, met uitzonde ring van waarden die gevoelig zijn of moeten worden beveiligd. Gebruik altijd beveiligde para meters voor gebruikers namen, wacht woorden en geheimen. Volg de richt lijnen in de volgende onderwerpen om gevoelige parameter waarden te verbergen of te beveiligen:
+* Neem `defaultValue` het kenmerk op, dat lege waarden kan opgeven, voor alle parameters, behalve voor waarden die gevoelig zijn of moeten worden beveiligd. Gebruik altijd beveiligde parameters voor gebruikersnamen, wachtwoorden en geheimen. Als u gevoelige parameterwaarden wilt verbergen of beveiligen, volgt u de richtlijnen in deze onderwerpen:
 
-  * [Beveiligings aanbevelingen voor sjabloon parameters](../azure-resource-manager/templates/template-best-practices.md#parameters)
+  * [Beveiligingsaanbevelingen voor sjabloonparameters](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
-  * [Beveiliging verbeteren voor sjabloon parameters](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+  * [Beveiliging voor sjabloonparameters verbeteren](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
-  * [Beveiligde parameter waarden door geven Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
+  * [Beveiligde parameterwaarden doorgeven met Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
-* Als u de namen van sjabloon parameters wilt onderscheiden van para meters van werk stroom definities, kunt u beschrijvende sjabloon parameter namen gebruiken, bijvoorbeeld: `TemplateFabrikamPassword`
+* Als u sjabloonparameternamen wilt onderscheiden van parameternamen voor werkstroomdefinitie, u bijvoorbeeld beschrijvende sjabloonparameternamen gebruiken:`TemplateFabrikamPassword`
 
-Zie [Aanbevolen procedures voor sjabloon parameters](../azure-resource-manager/templates/template-best-practices.md#parameters)voor meer aanbevolen procedures voor sjablonen.
+Zie Aanbevolen procedures voor [sjabloonparameters voor](../azure-resource-manager/templates/template-best-practices.md#parameters)meer aanbevolen procedures.
 
 <a name="template-parameter-files"></a>
 
-## <a name="template-parameters-file"></a>Sjabloon parameter bestand
+## <a name="template-parameters-file"></a>Bestand sjabloonparameters
 
-Als u de waarden voor sjabloon parameters wilt opgeven, slaat u deze waarden op in een [parameter bestand](../azure-resource-manager/templates/parameter-files.md). Op die manier kunt u verschillende parameter bestanden gebruiken op basis van uw implementatie behoeften. Dit is de indeling van de bestands naam die moet worden gebruikt:
+Als u de waarden voor sjabloonparameters wilt opgeven, slaat u deze waarden op in een [parametersbestand](../azure-resource-manager/templates/parameter-files.md). Op die manier u verschillende parametersbestanden gebruiken op basis van uw implementatiebehoeften. Hier is de bestandsnaamindeling die u wilt gebruiken:
 
-* Bestands naam van sjabloon van logische app: **<*Logic-app-name*>. json**
-* Bestands naam van de para meters: **<*Logic-app-name*>. para meters. json**
+* Bestandsnaam logische ** < *app-sjabloon: logische-app-naam*>.json**
+* Parameters bestandsnaam: ** < *logic-app-name*>.parameters.json**
 
-Hier volgt de structuur in het parameter bestand, met daarin een sleutel kluis referentie voor [het door geven van een beveiligde parameter waarde met Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md):
+Hier is de structuur in het parametersbestand, die een verwijzing naar de sleutelkluis bevat voor [het doorgeven van een beveiligde parameterwaarde met Azure Key Vault:](../azure-resource-manager/templates/key-vault-parameter.md)
 
 ```json
 {
@@ -215,7 +215,7 @@ Hier volgt de structuur in het parameter bestand, met daarin een sleutel kluis r
 }
 ```
 
-In dit voorbeeld parameter bestand worden de waarden opgegeven voor de sjabloon parameters die eerder in dit onderwerp zijn gedeclareerd:
+In dit voorbeeldparametersbestand worden de waarden opgegeven voor de eerder in dit onderwerp gedeclareerde sjabloonparameters:
 
 ```json
 {
@@ -237,7 +237,7 @@ In dit voorbeeld parameter bestand worden de waarden opgegeven voor de sjabloon 
 
 ## <a name="template-resources"></a>Sjabloonresources
 
-Uw sjabloon heeft een `resources`-object. Dit is een matrix die definities bevat voor elke resource die u wilt maken en implementeren in azure, zoals de [resource definitie van de logische app](#logic-app-resource-definition), eventuele [verbindings bron definities](#connection-resource-definitions)en andere resources die uw logische app nodig heeft voor de implementatie.
+Uw sjabloon `resources` heeft een object, een array die definities bevat voor elke resource die moet worden gemaakt en geïmplementeerd in Azure, zoals de [resourcedefinitie van](#logic-app-resource-definition)uw logische app, eventuele [verbindingsbrondefinities](#connection-resource-definitions)en alle andere bronnen die uw logische app nodig heeft voor implementatie.
 
 ```json
 {
@@ -263,24 +263,24 @@ Uw sjabloon heeft een `resources`-object. Dit is een matrix die definities bevat
 ```
 
 > [!NOTE]
-> Sjablonen kunnen resource definities bevatten voor meerdere Logic apps. Zorg er dus voor dat alle logische app-resources dezelfde Azure-resource groep opgeven. Wanneer u de sjabloon implementeert in een Azure-resource groep met behulp van Visual Studio, wordt u gevraagd welke logische app u wilt openen. Het is ook mogelijk dat uw Azure-resource groep-project meer dan één sjabloon bevat. Zorg er dus voor dat u het juiste parameter bestand selecteert wanneer u hierom wordt gevraagd.
+> Sjablonen kunnen brondefinities bevatten voor meerdere logische apps, dus zorg ervoor dat al uw logische app-bronnen dezelfde Azure-brongroep opgeven. Wanneer u de sjabloon implementeert in een Azure-brongroep met Behulp van Visual Studio, wordt u gevraagd voor welke logische app u wilt openen. Uw Azure-brongroepproject kan ook meer dan één sjabloon bevatten, dus zorg ervoor dat u het juiste parametersbestand selecteert wanneer daarom wordt gevraagd.
 
-Zie de volgende onderwerpen voor algemene informatie over sjabloon bronnen en hun kenmerken:
+Zie de volgende onderwerpen voor algemene informatie over sjabloonbronnen en hun kenmerken:
 
-* [Resources-structuur en syntaxis van Resource Manager-sjabloon](../azure-resource-manager/templates/template-syntax.md#resources)
-* [Aanbevolen procedures voor sjabloon resources](../azure-resource-manager/templates/template-best-practices.md#resources)
+* [Resources - Sjabloonstructuur en syntaxis van ResourceManager](../azure-resource-manager/templates/template-syntax.md#resources)
+* [Aanbevolen procedures voor sjabloonbronnen](../azure-resource-manager/templates/template-best-practices.md#resources)
 
 <a name="logic-app-resource-definition"></a>
 
-### <a name="logic-app-resource-definition"></a>Resource definitie van Logic app
+### <a name="logic-app-resource-definition"></a>Definitie van logische app-bron
 
-De resource definitie van de logische app begint met het `properties`-object, dat deze informatie bevat:
+De resourcedefinitie van uw logische `properties` app begint bij het object, dat deze informatie bevat:
 
-* De status van uw logische app tijdens de implementatie
-* De ID voor een integratie account dat wordt gebruikt door uw logische app
-* De werk stroom definitie van uw logische app
-* Een `parameters`-object waarmee de waarden worden ingesteld die tijdens runtime worden gebruikt
-* Andere resource gegevens over uw logische app, zoals naam, type, locatie, enzovoort
+* De status van uw logische app bij implementatie
+* De ID voor elk integratieaccount dat door uw logische app wordt gebruikt
+* De werkstroomdefinitie van uw logische app
+* Een `parameters` object dat de waarden instelt die moeten worden gebruikt tijdens runtime
+* Andere broninformatie over uw logische app, zoals naam, type, locatie, enzovoort
 
 ```json
 {
@@ -317,32 +317,32 @@ De resource definitie van de logische app begint met het `properties`-object, da
 }
 ```
 
-Dit zijn de kenmerken die specifiek zijn voor de resource definitie van de logische app:
+Dit zijn de kenmerken die specifiek zijn voor de definitie van uw logische app-bron:
 
 | Kenmerk | Vereist | Type | Beschrijving |
 |-----------|----------|------|-------------|
-| `state` | Ja | Tekenreeks | De status van uw logische app bij implementatie waarbij `Enabled` betekent dat uw logische app Live is en `Disabled` betekent dat uw logische app niet actief is. Als u bijvoorbeeld niet klaar bent voor uw logische app om live te gaan, maar een concept versie wilt implementeren, kunt u de optie `Disabled` gebruiken. |
-| `integrationAccount` | Nee | Object | Als uw logische app gebruikmaakt van een integratie account dat artefacten voor Business-to-Business-scenario's (B2B) opslaat, bevat dit object het `id` kenmerk, waarmee de ID van het integratie account wordt opgegeven. |
-| `definition` | Ja | Object | De onderliggende werk stroom definitie van uw logische app, die hetzelfde is als het object dat wordt weer gegeven in de code weergave, en dat volledig wordt beschreven in het onderwerp [schema verwijzing voor werk stroom definitie taal](../logic-apps/logic-apps-workflow-definition-language.md) . In deze werk stroom definitie declareert het `parameters`-object para meters voor de waarden die moeten worden gebruikt in de runtime van de logische app. Zie [werk stroom definitie en-para meters](#workflow-definition-parameters)voor meer informatie. <p><p>Als u de kenmerken in de werk stroom definitie van de logische app wilt weer geven, schakelt u over naar de code weergave in de Azure Portal of Visual Studio of gebruikt u een hulp programma zoals [Azure resource Explorer](https://resources.azure.com). |
-| `parameters` | Nee | Object | De [waarden van de werk stroom definitie parameter](#workflow-definition-parameters) die moeten worden gebruikt tijdens de runtime van de logische app. De parameter definities voor deze waarden worden weer gegeven in het [Parameter object van uw werk stroom definitie](#workflow-definition-parameters). Als uw logische app [beheerde connectors](../connectors/apis-list.md) gebruikt voor toegang tot andere services en systemen, bevat dit object ook een `$connections`-object waarmee de verbindings waarden worden ingesteld die tijdens runtime worden gebruikt. |
-| `accessControl` | Nee | Object | Voor het opgeven van beveiligings kenmerken voor uw logische app, zoals het beperken van IP-toegang tot het aanvragen van triggers of het uitvoeren van de invoer en uitvoer van de geschiedenis. Zie [veilige toegang tot Logic apps](../logic-apps/logic-apps-securing-a-logic-app.md)voor meer informatie. |
+| `state` | Ja | Tekenreeks | De status van uw logische `Enabled` app bij implementatie, `Disabled` waar betekent dat uw logische app live is en betekent dat uw logische app inactief is. Als u bijvoorbeeld niet klaar bent om uw logische app live te laten gaan, `Disabled` maar een conceptversie wilt implementeren, u de optie gebruiken. |
+| `integrationAccount` | Nee | Object | Als uw logische app een integratieaccount gebruikt, dat artefacten opslaat voor B2B-scenario's (business-to-business), bevat dit object het `id` kenmerk, dat de id voor het integratieaccount opgeeft. |
+| `definition` | Ja | Object | De onderliggende werkstroomdefinitie van uw logische app, hetzelfde object dat wordt weergegeven in de codeweergave en volledig wordt beschreven in de schemaverwijzing voor het onderwerp [Taalvan de werkstroomdefinitie.](../logic-apps/logic-apps-workflow-definition-language.md) In deze werkstroomdefinitie declareert het `parameters` object parameters voor de waarden die moeten worden gebruikt bij de runtime van de logische app. Zie [Werkstroomdefinitie en parameters](#workflow-definition-parameters)voor meer informatie. <p><p>Als u de kenmerken in de werkstroomdefinitie van uw logische app wilt weergeven, schakelt u over van 'ontwerpweergave' naar 'codeweergave' in de Azure-portal of Visual Studio of gebruikt u een hulpprogramma zoals [Azure Resource Explorer.](https://resources.azure.com) |
+| `parameters` | Nee | Object | De [parameterwaarden voor werkstroomdefinitie](#workflow-definition-parameters) die moeten worden gebruikt bij de runtime van de logische app. De parameterdefinities voor deze waarden worden weergegeven in het parametersobject van de [werkstroomdefinitie.](#workflow-definition-parameters) Als uw logische app [beheerde connectors](../connectors/apis-list.md) gebruikt voor toegang tot `$connections` andere services en systemen, bevat dit object ook een object dat de verbindingswaarden instelt die tijdens runtime moeten worden gebruikt. |
+| `accessControl` | Nee | Object | Voor het opgeven van beveiligingskenmerken voor uw logische app, zoals het beperken van IP-toegang tot het aanvragen van triggers of het uitvoeren van geschiedenisingangen en -uitvoer. Zie [Beveiligde toegang tot logische apps voor](../logic-apps/logic-apps-securing-a-logic-app.md)meer informatie. |
 ||||
 
-Zie [resource typen van micro soft. Logic](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)voor sjabloon resource gegevens die specifiek zijn voor Logic apps, integratie accounts en integratie-account artefacten.
+Zie [Microsoft.Logic-brontypen](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)voor informatie over sjabloonbronnen die specifiek zijn voor logische apps, integratieaccounts en integratieaccountartefacten.
 
 <a name="workflow-definition-parameters"></a>
 
-## <a name="workflow-definition-and-parameters"></a>Werk stroom definitie en-para meters
+## <a name="workflow-definition-and-parameters"></a>Definitie en parameters van werkstroom
 
-De werk stroom definitie van uw logische app wordt weer gegeven in het `definition`-object, dat wordt weer gegeven in het `properties`-object in de resource definitie van de logische app. Dit `definition`-object is hetzelfde object dat wordt weer gegeven in de code weergave en dat volledig wordt beschreven in het onderwerp [schema verwijzing voor werk stroom definitie taal](../logic-apps/logic-apps-workflow-definition-language.md) . Uw werk stroom definitie bevat een binnenste `parameters` declaratie-object waar u nieuwe para meters voor de waarden kunt definiëren die worden gebruikt door uw werk stroom definitie tijdens runtime. U kunt vervolgens naar deze para meters in de trigger of acties in uw werk stroom verwijzen. Dit `parameters`-object is standaard leeg, tenzij uw logische app verbindingen met andere services en systemen via [beheerde connectors](../connectors/apis-list.md)maakt.
+De werkstroomdefinitie van uw `definition` logische app wordt `properties` weergegeven in het object, dat wordt weergegeven in het object in de resourcedefinitie van uw logische app. Dit `definition` object is hetzelfde object dat wordt weergegeven in de codeweergave en volledig wordt beschreven in de schemaverwijzing voor het onderwerp [Taalvan de werkstroomdefinitie.](../logic-apps/logic-apps-workflow-definition-language.md) Uw werkstroomdefinitie `parameters` bevat een innerlijk declaratieobject waarin u nieuwe parameters definiëren of bestaande parameters bewerken voor de waarden die worden gebruikt door uw werkstroomdefinitie tijdens uitvoering. U vervolgens verwijzen naar deze parameters in de trigger of acties in uw werkstroom. Standaard is `parameters` dit object leeg, tenzij uw logische app verbindingen maakt met andere services en systemen via [beheerde connectors.](../connectors/apis-list.md)
 
-Als u de waarden voor de para meters voor de werk stroom definitie wilt instellen, gebruikt u het `parameters`-object dat *zich buiten* uw werk stroom definitie bevindt, maar nog *in* de resource definitie van de logische app In dit buiten-`parameters` object kunt u vervolgens naar uw eerder gedeclareerde sjabloon parameters verwijzen, waarmee waarden kunnen worden geaccepteerd tijdens de implementatie vanuit een parameter bestand.
+Als u de waarden voor werkstroomdefinitieparameters wilt instellen, gebruikt u het `parameters` object dat *buiten* de werkstroomdefinitie valt, maar nog steeds *binnen* de resourcedefinitie van uw logische app. In dit `parameters` buitenste object u vervolgens verwijzen naar de eerder gedeclareerde sjabloonparameters, die waarden kunnen accepteren bij implementatie vanuit een parametersbestand.
 
 > [!TIP]
 >
-> Als best practice, kunt u niet rechtstreeks verwijzen naar sjabloon parameters, die tijdens de implementatie worden geëvalueerd, vanuit de werk stroom definitie. Declareer in plaats daarvan een para meter voor de werk stroom definitie, die u vervolgens kunt instellen in het `parameters`-object dat zich *buiten* uw werk stroom definitie bevindt, maar nog steeds *binnen* de resource definitie van de logische app. Zie [verwijzingen naar para meters](#parameter-references)voor meer informatie.
+> Als aanbevolen praktijk u niet rechtstreeks verwijzen naar sjabloonparameters, die bij implementatie worden geëvalueerd, vanuit de werkstroomdefinitie. Declareer in plaats daarvan een parameter voor `parameters` werkstroomdefinitie, die u vervolgens instellen in het object dat *buiten* de werkstroomdefinitie valt, maar nog steeds *binnen* de resourcedefinitie van uw logische app. Zie [Verwijzingen naar parameters voor](#parameter-references)meer informatie .
 
-Deze syntaxis laat zien waar u para meters kunt declareren op zowel de sjabloon-als de werk stroom definitie niveaus, waarbij u deze parameter waarden kunt instellen door te verwijzen naar de sjabloon en de para meters van de werk stroom definitie:
+Deze syntaxis geeft aan waar u parameters declareren op zowel de sjabloon- als de werkstroomdefinitieniveaus, samen met waar u deze parameterwaarden instellen door te verwijzen naar de parameters voor sjabloon- en werkstroomdefinitie:
 
 ```json
 {
@@ -405,17 +405,17 @@ Deze syntaxis laat zien waar u para meters kunt declareren op zowel de sjabloon-
 
 <a name="secure-workflow-definition-parmameters"></a>
 
-### <a name="secure-workflow-definition-parameters"></a>Para meters voor veilige werk stroom definitie
+### <a name="secure-workflow-definition-parameters"></a>Parameters voor veilige werkstroomdefinitie
 
-Voor een werk stroom definitie parameter die gevoelige informatie, wacht woorden, toegangs sleutels of geheimen verwerkt tijdens runtime, declareert of bewerkt u de para meter om het `securestring`-of `secureobject` parameter type te gebruiken. U kunt in de definitie van uw werk stroom verwijzen naar deze para meter. Op het hoogste niveau van de sjabloon declareert u een para meter met hetzelfde type voor het afhandelen van deze gegevens tijdens de implementatie.
+Voor een parameter voor werkstroomdefinitie waarmee gevoelige informatie, wachtwoorden, toegangssleutels of geheimen tijdens `securestring` `secureobject` uitvoering worden verwerkt, moet u de parameter declareren of bewerken om het type of parameter te gebruiken. U deze parameter in en binnen uw werkstroomdefinitie bekijken. Declareer op het hoogste niveau van de sjabloon een parameter met hetzelfde type om deze informatie bij implementatie te verwerken.
 
-Als u de waarde voor de para meter voor de werk stroom definitie wilt instellen, gebruikt u het `parameters`-object dat *zich buiten* uw werk stroom definitie bevindt, maar nog *in* de resource definitie van de logische app om te verwijzen naar de sjabloon parameter. Ten slotte, als u de waarde wilt door geven aan de sjabloon parameter tijdens de implementatie, slaat u die waarde op in [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) en verwijst u naar die sleutel kluis in het [parameter bestand](#template-parameter-files) dat wordt gebruikt door uw sjabloon tijdens de implementatie.
+Als u de waarde wilt instellen `parameters` voor de parameter werkstroomdefinitie, gebruikt u het object dat *buiten* de werkstroomdefinitie valt, maar nog steeds *binnen* de definitie van uw logische app-bron om naar de sjabloonparameter te verwijzen. Als u ten slotte de waarde wilt doorgeven aan uw sjabloonparameter bij implementatie, slaat u die waarde op in [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) en verwijst u naar de sleutelkluis in het [parametersbestand](#template-parameter-files) dat door uw sjabloon wordt gebruikt bij implementatie.
 
-In deze voorbeeld sjabloon ziet u hoe u deze taken kunt volt ooien door zo nodig beveiligde para meters te definiëren, zodat u hun waarden in Azure Key Vault kunt opslaan:
+In deze voorbeeldsjabloon ziet u hoe u deze taken voltooien door beveiligde parameters te definiëren wanneer dat nodig is, zodat u hun waarden opslaan in Azure Key Vault:
 
-* De beveiligde para meters declareren voor de waarden die worden gebruikt voor het verifiëren van de toegang.
-* Gebruik deze waarden zowel in de sjabloon als op de definitie niveaus van de werk stroom.
-* Geef deze waarden op met behulp van een parameter bestand.
+* Gewaarmerkte parameters declareren voor de waarden die worden gebruikt om toegang te verifiëren.
+* Gebruik deze waarden op zowel de sjabloon- als de werkstroomdefinitieniveaus.
+* Geef deze waarden op met behulp van een parametersbestand.
 
 **Sjabloon**
 
@@ -512,7 +512,7 @@ In deze voorbeeld sjabloon ziet u hoe u deze taken kunt volt ooien door zo nodig
 }
 ```
 
-**Parameter bestand**
+**Bestand Parameters**
 
 ```json
 {
@@ -546,27 +546,27 @@ In deze voorbeeld sjabloon ziet u hoe u deze taken kunt volt ooien door zo nodig
 
 <a name="best-practices-workflow-definition-parameters"></a>
 
-## <a name="best-practices---workflow-definition-parameters"></a>Aanbevolen procedures-werk stroom definitie parameters
+## <a name="best-practices---workflow-definition-parameters"></a>Aanbevolen procedures - parameters voor workflowdefinitie
 
-Volg de volgende aanbevolen procedures om ervoor te zorgen dat de Logic app Designer de para meters voor de werk stroom definitie correct kan weer geven:
+Volg de volgende aanbevolen procedures om ervoor te zorgen dat de Logic App Designer de parameters voor werkstroomdefinitie correct kan weergeven:
 
-* Neem het `defaultValue` kenmerk op, waarmee lege waarden kunnen worden opgegeven voor alle para meters, met uitzonde ring van waarden die gevoelig zijn of moeten worden beveiligd.
+* Neem `defaultValue` het kenmerk op, dat lege waarden kan opgeven, voor alle parameters, behalve voor waarden die gevoelig zijn of moeten worden beveiligd.
 
-* Gebruik altijd beveiligde para meters voor gebruikers namen, wacht woorden en geheimen. Volg de richt lijnen in de volgende onderwerpen om gevoelige parameter waarden te verbergen of te beveiligen:
+* Gebruik altijd beveiligde parameters voor gebruikersnamen, wachtwoorden en geheimen. Als u gevoelige parameterwaarden wilt verbergen of beveiligen, volgt u de richtlijnen in deze onderwerpen:
 
-  * [Beveiligings aanbevelingen voor actie parameters](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)
+  * [Beveiligingsaanbevelingen voor actieparameters](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
-  * [Beveiligings aanbevelingen voor para meters in werk stroom definities](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-workflow)
+  * [Beveiligingsaanbevelingen voor parameters in werkstroomdefinities](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-workflow)
 
-  * [Beveilig parameter waarden door geven Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
+  * [Veilige parameterwaarden doorgeven met Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
-Zie [para meters-werk stroom definitie taal](../logic-apps/logic-apps-workflow-definition-language.md#parameters)voor meer informatie over para meters voor de werk stroom definitie.
+Zie [Parameters - Werkstroomdefinitiestaal](../logic-apps/logic-apps-workflow-definition-language.md#parameters)voor meer informatie over parameters voor workflowdefinitie.
 
 <a name="connection-resource-definitions"></a>
 
-## <a name="connection-resource-definitions"></a>Verbindings bron definities
+## <a name="connection-resource-definitions"></a>Definities van verbindingsbronnen
 
-Wanneer uw logische app verbindingen met andere services en het systeem maakt en gebruikt met [beheerde connectors](../connectors/apis-list.md), bevat het `resources`-object van uw sjabloon de resource definities voor deze verbindingen.
+Wanneer uw logische app verbindingen met andere services en systemen maakt `resources` en gebruikt met [beheerde connectors,](../connectors/apis-list.md)bevat het object van uw sjabloon de brondefinities voor die verbindingen.
 
 ```json
 {
@@ -591,9 +591,9 @@ Wanneer uw logische app verbindingen met andere services en het systeem maakt en
 }
 ```
 
-Bron definities voor verbindingen verwijzen naar de para meters op het hoogste niveau van de sjabloon voor hun waarden. Dit betekent dat u deze waarden tijdens de implementatie kunt opgeven met behulp van een parameter bestand. Zorg ervoor dat verbindingen dezelfde Azure-resource groep en-locatie gebruiken als uw logische app.
+Verbindingsbrondefinities verwijzen naar de parameters op het hoogste niveau van de sjabloon voor hun waarden, wat betekent dat u deze waarden opgeven bij implementatie met behulp van een parametersbestand. Zorg ervoor dat verbindingen dezelfde Azure-brongroep en -locatie gebruiken als uw logische app.
 
-Hier volgt een voor beeld van een resource definitie voor een Office 365 Outlook-verbinding en de bijbehorende sjabloon parameters:
+Hier vindt u een voorbeeldbrondefinitie voor een Office 365 Outlook-verbinding en de bijbehorende sjabloonparameters:
 
 ```json
 {
@@ -646,15 +646,15 @@ Hier volgt een voor beeld van een resource definitie voor een Office 365 Outlook
 }
 ```
 
-De resource definitie van uw logische app werkt ook op de volgende manieren met verbindings bron definities:
+De resourcedefinitie van uw logische app werkt op de volgende manieren ook met definities van verbindingsbronnen:
 
-* In de definitie van de werk stroom declareert het `parameters`-object een `$connections`-para meter voor de verbindings waarden die moeten worden gebruikt in de runtime van de logische app. De trigger of actie die een verbinding maakt, gebruikt ook de bijbehorende waarden die deze `$connections` para meter door geven.
+* Binnen uw werkstroomdefinitie geeft het `parameters` object een `$connections` parameter aan voor de verbindingswaarden die moeten worden gebruikt bij de runtime van de logische app. De trigger of actie die een verbinding maakt, gebruikt `$connections` ook de bijbehorende waarden die door deze parameter gaan.
 
-* *Buiten* uw werk stroom definitie, maar nog steeds *binnen* de resource definitie van de logische app, stelt een andere `parameters`-object de waarden in die tijdens runtime worden gebruikt voor de para meter `$connections` door te verwijzen naar de bijbehorende sjabloon parameters. Deze waarden maken gebruik van sjabloon expressies om te verwijzen naar resources die de meta gegevens veilig opslaan voor de verbindingen in uw logische app.
+* *Buiten* uw werkstroomdefinitie, maar nog steeds *binnen de* resourcedefinitie van uw logische app, stelt een ander `parameters` object de waarden in die tijdens runtime voor de `$connections` parameter moeten worden gebruikt door te verwijzen naar de bijbehorende sjabloonparameters. Deze waarden gebruiken sjabloonexpressies om naar bronnen te verwijzen die de metagegevens voor de verbindingen in uw logische app veilig opslaan.
 
-  Meta gegevens kunnen bijvoorbeeld verbindings reeksen en toegangs tokens bevatten, die u in [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)kunt opslaan. Als u deze waarden wilt door geven aan de sjabloon parameters, verwijst u naar de sleutel kluis in het [parameter bestand](#template-parameter-files) dat wordt gebruikt door uw sjabloon tijdens de implementatie. Zie [verwijzingen naar para meters](#parameter-references) verderop in dit onderwerp voor meer informatie over verschillen bij het verwijzen naar para meters.
+  Metagegevens kunnen bijvoorbeeld verbindingstekenreeksen en toegangstokens bevatten, die u opslaan in [Azure Key Vault.](../azure-resource-manager/templates/key-vault-parameter.md) Als u deze waarden wilt doorgeven aan uw sjabloonparameters, verwijst u naar de sleutelkluis in het [parametersbestand](#template-parameter-files) dat door uw sjabloon wordt gebruikt bij de implementatie. Zie Verwijzingen naar parameters later in dit onderwerp voor meer informatie over verschillen in [verwijzingsparameters.](#parameter-references)
 
-  Wanneer u de werk stroom definitie van de logische app opent in de code weergave via de Azure Portal of Visual Studio, wordt het `$connections`-object buiten de werk stroom definitie weer gegeven, maar op hetzelfde niveau. Deze volg orde in de code weergave maakt het gemakkelijker om deze para meters te raadplegen wanneer u de werk stroom definitie hand matig bijwerkt:
+  Wanneer u de werkstroomdefinitie van uw logische app opent in `$connections` de codeweergave via de Azure-portal of Visual Studio, wordt het object buiten uw werkstroomdefinitie weergegeven, maar op hetzelfde niveau. Deze volgorde in de codeweergave maakt deze parameters gemakkelijker te verwijzen wanneer u de werkstroomdefinitie handmatig bijwerkt:
 
   ```json
   {
@@ -663,11 +663,11 @@ De resource definitie van uw logische app werkt ook op de volgende manieren met 
   }
   ```
 
-* De resource definitie van de logische app bevat een `dependsOn`-object dat de afhankelijkheden specificeert op de verbindingen die worden gebruikt door uw logische app.
+* De resourcedefinitie van uw `dependsOn` logische app heeft een object dat de afhankelijkheden opgeeft van de verbindingen die door uw logische app worden gebruikt.
 
-Elke verbinding die u maakt, heeft een unieke naam in Azure. Wanneer u meerdere verbindingen met dezelfde service of hetzelfde systeem maakt, wordt elke naam van de verbinding toegevoegd met een nummer dat wordt verhoogd met elke nieuwe verbinding die wordt gemaakt, bijvoorbeeld `office365`, `office365-1`, enzovoort.
+Elke verbinding die u maakt, heeft een unieke naam in Azure. Wanneer u meerdere verbindingen maakt met dezelfde service of hetzelfde systeem, wordt elke verbindingsnaam toegevoegd aan `office365` `office365-1`een getal, dat wordt verhoogd met elke nieuwe verbinding die bijvoorbeeld wordt gemaakt, enzovoort.
 
-In dit voor beeld ziet u de interacties tussen de resource definitie van uw logische app en een verbindings bron definitie voor Office 365 Outlook:
+In dit voorbeeld worden de interacties weergegeven tussen de resourcedefinitie van uw logische app en een definitie van verbindingsbronnen voor Office 365 Outlook:
 
 ```json
 {
@@ -742,13 +742,13 @@ In dit voor beeld ziet u de interacties tussen de resource definitie van uw logi
 
 <a name="secure-connection-parameters"></a>
 
-### <a name="secure-connection-parameters"></a>Para meters voor veilige verbinding
+### <a name="secure-connection-parameters"></a>Parameters voor beveiligde verbindingen
 
-Voor een verbindings parameter die gevoelige informatie, wacht woorden, toegangs sleutels of geheimen verwerkt, bevat de resource definitie van de verbinding een `parameterValues`-object waarin deze waarden worden opgegeven in de notatie naam/waarde-paar. Als u deze informatie wilt verbergen, kunt u de sjabloon parameters voor deze waarden declareren of bewerken met behulp van de para meters `securestring` of `secureobject`. U kunt deze informatie vervolgens opslaan in [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md). Als u deze waarden wilt door geven aan de sjabloon parameters, verwijst u naar de sleutel kluis in het [parameter bestand](#template-parameter-files) dat wordt gebruikt door uw sjabloon tijdens de implementatie.
+Voor een verbindingsparameter die gevoelige informatie, wachtwoorden, toegangssleutels of geheimen verwerkt, bevat de resourcedefinitie van de verbinding een `parameterValues` object dat deze waarden opgeeft in de vorm van een naam-waardepaar. Als u deze informatie wilt verbergen, u de sjabloonparameters voor deze waarden declareren of bewerken met behulp van de `securestring` of `secureobject` parametertypen. U die informatie vervolgens opslaan in [Azure Key Vault.](../azure-resource-manager/templates/key-vault-parameter.md) Als u deze waarden wilt doorgeven aan uw sjabloonparameters, verwijst u naar de sleutelkluis in het [parametersbestand](#template-parameter-files) dat door uw sjabloon wordt gebruikt bij de implementatie.
 
-Hier volgt een voor beeld waarin de account naam en toegangs sleutel voor een Azure Blob Storage-verbinding worden geboden:
+Hier is een voorbeeld dat de accountnaam en toegangssleutel voor een Azure Blob Storage-verbinding biedt:
 
-**Parameter bestand**
+**Bestand Parameters**
 
 ```json
 {
@@ -908,11 +908,11 @@ Hier volgt een voor beeld waarin de account naam en toegangs sleutel voor een Az
 
 ### <a name="authenticate-connections"></a>Verbindingen verifiëren
 
-Na de implementatie werkt uw logische app end-to-end met geldige para meters. U moet echter nog steeds OAuth-verbindingen autoriseren om geldige toegangs tokens te genereren voor [het verifiëren van uw referenties](../active-directory/develop/authentication-scenarios.md). Zie [OAuth-verbindingen autoriseren](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)voor meer informatie.
+Na de implementatie werkt uw logische app end-to-end met geldige parameters. U moet echter nog steeds oauth-verbindingen autoriseren om geldige toegangstokens te genereren voor [het verifiëren van uw referenties.](../active-directory/develop/authentication-scenarios.md) Zie [OAuth-verbindingen autoriseren](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)voor meer informatie .
 
-Sommige verbindingen bieden ondersteuning voor het gebruik van een [service-principal](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory (Azure AD) voor het autoriseren van verbindingen voor een logische app die is [geregistreerd in azure AD](../active-directory/develop/quickstart-register-app.md). In deze Azure Data Lake bron definitie voor verbinding ziet u bijvoorbeeld hoe u kunt verwijzen naar de sjabloon parameters die de gegevens van de Service-Principal verwerken en hoe de sjabloon deze para meters declareert:
+Sommige verbindingen ondersteunen het gebruik van een Azure Active Directory [-serviceprincipal](../active-directory/develop/app-objects-and-service-principals.md) (Azure AD) om verbindingen te autoriseren voor een logische app die is [geregistreerd in Azure AD.](../active-directory/develop/quickstart-register-app.md) Deze azure Data Lake-verbindingsbrondefinitie geeft bijvoorbeeld aan hoe u moet verwijzen naar de sjabloonparameters die de gegevens van de serviceprincipal verwerken en hoe de sjabloon de volgende parameters declareert:
 
-**Bron definitie voor verbinding**
+**Definitie van verbindingsbron**
 
 ```json
 {
@@ -938,15 +938,15 @@ Sommige verbindingen bieden ondersteuning voor het gebruik van een [service-prin
 
 | Kenmerk | Beschrijving |
 |-----------|-------------|
-| `token:clientId` | De toepassing of client-ID die is gekoppeld aan uw Service-Principal |
-| `token:clientSecret` | De sleutel waarde die aan de Service-Principal is gekoppeld |
-| `token:TenantId` | De Directory-ID voor uw Azure AD-Tenant |
-| `token:grantType` | Het aangevraagde toekennings type, dat moet worden `client_credentials`. Zie voor meer informatie [micro soft Identity platform en de OAuth 2,0 client credentials flow](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)(Engelstalig). |
+| `token:clientId` | De toepassing of client-id die is gekoppeld aan uw serviceprincipal |
+| `token:clientSecret` | De sleutelwaarde in verband met uw serviceprincipal |
+| `token:TenantId` | De adresmap-id voor uw Azure AD-tenant |
+| `token:grantType` | Het gevraagde subsidietype, dat `client_credentials`moet zijn . Zie [Microsoft-identiteitsplatform en de oauth 2.0-clientreferentiesstroom](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)voor meer informatie. |
 |||
 
-**Definitie van sjabloon parameters**
+**Sjabloonparameterdefinities**
 
-Het `parameters` object op het hoogste niveau van de sjabloon declareert deze para meters voor de voorbeeld verbinding:
+Het object op het `parameters` hoogste niveau van de sjabloon verklaart de volgende parameters voor de voorbeeldverbinding:
 
 ```json
 {
@@ -1001,41 +1001,41 @@ Het `parameters` object op het hoogste niveau van de sjabloon declareert deze pa
 }
 ```
 
-Zie de volgende onderwerpen voor meer informatie over het werken met Service-principals:
+Zie de volgende onderwerpen voor meer informatie over het werken met serviceprincipals:
 
-* [Een service-principal maken met behulp van de Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)
-* [Een Azure-service-principal maken met behulp van Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
-* [Een service-principal met een certificaat maken met behulp van Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+* [Een serviceprincipal maken met behulp van de Azure-portal](../active-directory/develop/howto-create-service-principal-portal.md)
+* [Een Azure-serviceprincipal maken met Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+* [Een serviceprincipal maken met een certificaat met Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 <a name="parameter-references"></a>
 
-## <a name="references-to-parameters"></a>Verwijzingen naar para meters
+## <a name="references-to-parameters"></a>Verwijzingen naar parameters
 
-Als u wilt verwijzen naar sjabloon parameters, kunt u sjabloon expressies gebruiken met [sjabloon functies](../azure-resource-manager/templates/template-functions.md), die tijdens de implementatie worden geëvalueerd. Sjabloon expressies gebruiken vier Kante haken ( **[]** ):
+Als u sjabloonparameters wilt verwijzen, u sjabloonexpressies gebruiken met [sjabloonfuncties,](../azure-resource-manager/templates/template-functions.md)die worden geëvalueerd bij implementatie. Sjabloonexpressies gebruiken vierkante haakjes (**[]**:
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 
-Als u wilt verwijzen naar para meters voor de werk stroom definitie, gebruikt u de [definities en functies van de werk stroom definitie taal](../logic-apps/workflow-definition-language-functions-reference.md), die tijdens runtime worden geëvalueerd. U zult merken dat sommige sjabloon functies en werk stroom definitie functies dezelfde naam hebben. Definitie-expressies van werk stromen beginnen met het symbool ' at ' ( **@** ):
+Als u wilt verwijzen naar de definitieparameters van werkstroom, gebruikt u expressies en functies van [werkstroomdefinitietaal](../logic-apps/workflow-definition-language-functions-reference.md)die tijdens runtime worden geëvalueerd. U zult merken dat sommige sjabloonfuncties en werkstroomdefinitiefuncties dezelfde naam hebben. Werkstroomdefinitieexpressies beginnen met het**@**'at'-symbool :
 
 `"<attribute-name>": "@parameters('<workflow-definition-parameter-name>')"`
 
-U kunt sjabloon parameter waarden door geven aan uw werk stroom definitie voor de logische app die tijdens runtime moet worden gebruikt. Vermijd echter het gebruik van sjabloon parameters, expressies en syntaxis in uw werk stroom definitie omdat de Logic app Designer geen sjabloon elementen ondersteunt. Daarnaast kan de sjabloon syntaxis en expressies uw code bemoeilijken vanwege verschillen in wanneer expressies worden geëvalueerd.
+U sjabloonparameterwaarden doorgeven aan uw werkstroomdefinitie die uw logische app tijdens runtime gebruiken. Vermijd echter het gebruik van sjabloonparameters, expressies en syntaxis in de werkstroomdefinitie, omdat de Logic App Designer geen sjabloonelementen ondersteunt. Ook kunnen syntaxis en expressies van sjablonen uw code bemoeilijken vanwege verschillen in wanneer expressies worden geëvalueerd.
 
-Volg in plaats daarvan deze algemene stappen om de para meters voor de werk stroom definitie te declareren en te raadplegen die tijdens runtime moeten worden gebruikt, Declareer en referentie de sjabloon parameters die tijdens de implementatie moeten worden gebruikt en geef de waarden op die tijdens de implementatie moeten worden door gegeven met een parameter bestand. Zie de sectie [werk stroom definitie en para meters](#workflow-definition-parameters) eerder in dit onderwerp voor meer informatie.
+Volg in plaats daarvan deze algemene stappen om de parameters voor werkstroomdefinitie te declareren en te verwijzen die tijdens de uitvoering moeten worden gebruikt, de sjabloonparameters te declareren en te verwijzen die bij de implementatie moeten worden gebruikt en de waarden op te geven die bij implementatie moeten worden doorgegeven met behulp van een parametersbestand. Zie de sectie [Werkdewerkdefinitie en parameters](#workflow-definition-parameters) eerder in dit onderwerp voor meer informatie.
 
-1. Maak uw sjabloon en Declareer de sjabloon parameters voor de waarden die u tijdens de implementatie wilt accepteren en gebruiken.
+1. Maak uw sjabloon en declareer de sjabloonparameters voor de waarden die moeten worden geaccepteerd en gebruikt bij implementatie.
 
-1. In de definitie van uw werk stroom declareert u de para meters voor de waarden die moeten worden geaccepteerd en gebruikt tijdens runtime. U kunt vervolgens in de werk stroom definitie naar deze waarden verwijzen.
+1. Declareer in uw werkstroomdefinitie de parameters voor de waarden die moeten worden geaccepteerd en gebruikt tijdens uitvoering. U deze waarden vervolgens in en binnen uw werkstroomdefinitie doorverwijzen.
 
-1. In het `parameters`-object dat zich *buiten* uw werk stroom definitie bevindt maar nog steeds *binnen* de resource definitie van de logische app, stelt u de waarden voor de para meters voor de werk stroom definitie in door te verwijzen naar de bijbehorende sjabloon parameters. Op die manier kunt u parameter waarden van een sjabloon door geven aan de para meters van de werk stroom definitie.
+1. Stel `parameters` in het object dat *buiten* de werkstroomdefinitie valt, maar nog steeds *binnen* de resourcedefinitie van uw logische app, de waarden voor uw werkstroomdefinitieparameters in door te verwijzen naar de bijbehorende sjabloonparameters. Op die manier u sjabloonparameterwaarden doorgeven aan de parameters voor werkstroomdefinitie.
 
-1. Geef in het parameter bestand de waarden op voor uw sjabloon die tijdens de implementatie moet worden gebruikt.
+1. Geef in het parametersbestand de waarden op die uw sjabloon bij implementatie moet gebruiken.
 
 <a name="full-example-template"></a>
 
-## <a name="full-example-template"></a>Volledige voorbeeld sjabloon
+## <a name="full-example-template"></a>Sjabloon voor volledig voorbeeld
 
-Hier volgt de parameter voorbeeld sjabloon die wordt gebruikt door de voor beelden van dit onderwerp:
+Hier vindt u de geparameteriseerde voorbeeldsjabloon die wordt gebruikt door de voorbeelden van dit onderwerp:
 
 ```json
 {
@@ -1053,7 +1053,7 @@ Hier volgt de parameter voorbeeld sjabloon die wordt gebruikt door de voor beeld
       },
       "LogicAppLocation": {
          "type": "string",
-         "min length": 1,
+         "minLength": 1,
          "defaultValue": "[resourceGroup().location]",
          "metadata": {
             "description": "The resource location to use for the logic app"
@@ -1246,4 +1246,4 @@ Hier volgt de parameter voorbeeld sjabloon die wordt gebruikt door de voor beeld
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Sjablonen voor logische apps maken](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
+> [Sjablonen voor logische app maken](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)

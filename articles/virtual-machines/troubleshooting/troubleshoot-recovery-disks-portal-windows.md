@@ -1,6 +1,6 @@
 ---
-title: Gebruik een Windows-probleemoplossings-VM in de Azure Portal | Microsoft Docs
-description: Informatie over het oplossen van problemen met virtuele Windows-machines in azure door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure Portal
+title: Een VM voor het oplossen van problemen met Windows gebruiken in de Azure-portal | Microsoft Documenten
+description: Meer informatie over het oplossen van problemen met de virtuele machine van Windows in Azure door de OS-schijf te verbinden met een herstel-vm via de Azure-portal
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,45 +13,45 @@ ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
 ms.openlocfilehash: e76fc2da8da2325a8bb0cda47c4405c9eb03c8f4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249995"
 ---
-# <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Problemen met een Windows-VM oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure Portal
-Als op uw virtuele Windows-machine (VM) in azure een opstart-of schijf fout optreedt, moet u mogelijk de stappen voor probleem oplossing uitvoeren op de virtuele harde schijf zelf. Een veelvoorkomend voor beeld hiervan is een mislukte toepassings update waarmee wordt voor komen dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u met behulp van de Azure Portal de virtuele harde schijf verbindt met een andere Windows-VM om eventuele fouten op te lossen en vervolgens de oorspronkelijke VM opnieuw te maken. 
+# <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Problemen met een Windows-vm oplossen door de OS-schijf aan een herstel-vm te koppelen met behulp van de Azure-portal
+Als uw virtuele Windows-machine (VM) in Azure een opstart- of schijffout tegenkomt, moet u mogelijk stappen voor het oplossen van problemen uitvoeren op de virtuele harde schijf zelf. Een veelvoorkomend voorbeeld is een mislukte toepassingsupdate die voorkomt dat de VM kan opstarten. In dit artikel wordt beschreven hoe u de Azure-portal gebruiken om uw virtuele harde schijf aan te sluiten op een andere Windows-vm om eventuele fouten op te lossen en vervolgens uw oorspronkelijke vm opnieuw te maken. 
 
 ## <a name="recovery-process-overview"></a>Overzicht van het herstelproces
 Het probleemoplossingsproces is als volgt:
 
-1. Stop de betrokken VM.
-1. Maak een moment opname voor de besturingssysteem schijf van de virtuele machine.
-1. Maak een virtuele harde schijf van de moment opname.
-1. Koppel en koppel de virtuele harde schijf aan een andere Windows-VM voor het oplossen van problemen.
-1. Maak verbinding met de VM voor probleemoplossing. Bewerk bestanden of voer hulpprogram ma's uit om problemen op de oorspronkelijke virtuele harde schijf op te lossen.
+1. Stop de betreffende VM.
+1. Maak een momentopname voor de OS-schijf van de VM.
+1. Maak een virtuele harde schijf van de momentopname.
+1. Voeg de virtuele harde schijf vast aan een andere Windows-vm voor probleemoplossingsdoeleinden.
+1. Maak verbinding met de VM voor probleemoplossing. Bewerk bestanden of voer hulpprogramma's uit om problemen op de oorspronkelijke virtuele harde schijf op te lossen.
 1. Koppel de virtuele harde schijf van de VM voor probleemoplossing los.
-1. Wissel de besturingssysteem schijf voor de virtuele machine uit.
+1. Wissel de OS-schijf in voor de VM.
 
 > [!NOTE]
-> Dit artikel is niet van toepassing op de virtuele machine met een niet-beheerde schijf.
+> Dit artikel is niet van toepassing op de VM met onbeheerde schijf.
 
-## <a name="take-a-snapshot-of-the-os-disk"></a>Een moment opname maken van de besturingssysteem schijf
-Een moment opname is een volledige, alleen-lezen kopie van een virtuele harde schijf (VHD). U wordt aangeraden de virtuele machine op een schone manier af te sluiten voordat u een moment opname maakt, zodat alle processen die worden uitgevoerd, worden gewist. Voer de volgende stappen uit om een moment opname te maken van een besturingssysteem schijf:
+## <a name="take-a-snapshot-of-the-os-disk"></a>Maak een momentopname van de OS Disk
+Een momentopname is een volledige, alleen-lezen kopie van een virtuele harde schijf (VHD). We raden u aan de VM netjes af te sluiten voordat u een momentopname maakt, zodat alle processen die worden uitgevoerd, worden gewist. Voer de volgende stappen uit om een momentopname van een os-schijf te maken:
 
-1. Ga naar [Azure Portal](https://portal.azure.com). Selecteer **virtuele machines** in de zijbalk en selecteer vervolgens de VM met een probleem.
-1. Selecteer **schijven**in het linkerdeel venster en selecteer vervolgens de naam van de besturingssysteem schijf.
-    ![installatie kopie over de naam van de besturingssysteem schijf](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
-1. Op de pagina **overzicht** van de besturingssysteem schijf en selecteert u **moment opname maken**.
-1. Maak een moment opname op dezelfde locatie als de besturingssysteem schijf.
+1. Ga naar [Azure-portal](https://portal.azure.com). Selecteer **Virtuele machines** op de zijbalk en selecteer de vm die een probleem heeft.
+1. Selecteer **schijven**in het linkerdeelvenster en selecteer vervolgens de naam van de osschijf.
+    ![Afbeelding over de naam van de OS-schijf](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
+1. Selecteer **op** de pagina Overzicht van de osschijf en selecteer **Momentopname maken**.
+1. Maak een momentopname op dezelfde locatie als de OS-schijf.
 
-## <a name="create-a-disk-from-the-snapshot"></a>Een schijf maken op basis van de moment opname
-Voer de volgende stappen uit om een schijf te maken op basis van de moment opname:
+## <a name="create-a-disk-from-the-snapshot"></a>Een schijf maken op basis van de momentopname
+Voer de volgende stappen uit om een schijf te maken op basis van de momentopname:
 
-1. Selecteer **Cloud shell** in het Azure Portal.
+1. Selecteer **Cloud Shell** in de Azure-portal.
 
-    ![Afbeelding over open Cloud Shell](./media/troubleshoot-recovery-disks-portal-windows/cloud-shell.png)
-1. Voer de volgende Power shell-opdrachten uit om een beheerde schijf te maken op basis van de moment opname. Vervang deze voorbeeld namen door de juiste namen.
+    ![Afbeelding over Open Cloud Shell](./media/troubleshoot-recovery-disks-portal-windows/cloud-shell.png)
+1. Voer de volgende PowerShell-opdrachten uit om een beheerde schijf van de momentopname te maken. U moet deze voorbeeldnamen vervangen door de juiste namen.
 
     ```powershell
     #Provide the name of your resource group
@@ -81,64 +81,64 @@ Voer de volgende stappen uit om een schijf te maken op basis van de moment opnam
      
     New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
     ```
-3. Als de opdrachten correct worden uitgevoerd, ziet u de nieuwe schijf in de resource groep die u hebt ingevoerd.
+3. Als de opdrachten zijn uitgevoerd, ziet u de nieuwe schijf in de door u opgegeven brongroep.
 
-## <a name="attach-the-disk-to-another-vm"></a>De schijf koppelen aan een andere virtuele machine
-Voor de volgende stappen gebruikt u een andere virtuele machine voor het oplossen van problemen. Nadat u de schijf aan de virtuele machine voor probleem oplossing hebt gekoppeld, kunt u de inhoud van de schijf bekijken en bewerken. Met dit proces kunt u eventuele configuratie fouten corrigeren of aanvullende toepassings-of systeem logboek bestanden bekijken. Voer de volgende stappen uit om de schijf aan een andere virtuele machine te koppelen:
+## <a name="attach-the-disk-to-another-vm"></a>De schijf aan een andere virtuele machine koppelen
+Voor de volgende stappen gebruikt u een andere vm voor probleemoplossingsdoeleinden. Nadat u de schijf aan de VM voor het oplossen van problemen hebt gekoppeld, u de inhoud van de schijf bekijken en bewerken. Met dit proces u eventuele configuratiefouten corrigeren of aanvullende toepassings- of systeemlogboekbestanden controleren. Voer de volgende stappen uit om de schijf aan een andere virtuele machine te koppelen:
 
-1. Selecteer uw resource groep in de portal en selecteer vervolgens de virtuele machine voor probleem oplossing. Selecteer **schijven**, selecteer **bewerken**en klik vervolgens op **gegevens schijf toevoegen**:
+1. Selecteer uw brongroep in de portal en selecteer vervolgens de VM voor het oplossen van problemen. Selecteer **Schijven,** selecteer **Bewerken**en klik op **Gegevensschijf toevoegen:**
 
-    ![Een bestaande schijf koppelen in de portal](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
+    ![Bestaande schijf in de portal koppelen](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
 
-2. Selecteer in de lijst **gegevens schijven** de besturingssysteem schijf van de virtuele machine die u hebt geïdentificeerd. Als u de besturingssysteem schijf niet ziet, zorg er dan voor dat u problemen met de virtuele machine oplost en de besturingssysteem schijf zich in dezelfde regio (locatie) bevindt. 
+2. Selecteer in de lijst **Gegevensschijven** de osschijf van de vm die u hebt geïdentificeerd. Als u de osschijf niet ziet, controleert u of vm en de OS-schijf probleemoplossing zich in dezelfde regio (locatie) bevinden. 
 3. Selecteer **Opslaan** om de wijzigingen toe te passen.
 
-## <a name="mount-the-attached-data-disk-to-the-vm"></a>De gekoppelde gegevens schijf aan de virtuele machine koppelen
+## <a name="mount-the-attached-data-disk-to-the-vm"></a>De gekoppelde gegevensschijf aan de VM bevestigen
 
-1. Open een Extern bureaublad verbinding met de virtuele machine voor probleem oplossing. 
-2. Open **Serverbeheer**op de virtuele machine voor problemen oplossen en selecteer vervolgens **Bestands-en opslag Services**. 
+1. Open een verbinding met Extern bureaublad met de VM voor probleemoplossing. 
+2. Selecteer **vervolgens Bestands- en opslagservices**in de probleemoplossing voor VM, Open **Serverbeheer**. 
 
-    ![Bestands-en opslag Services in Serverbeheer selecteren](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
+    ![Bestanden- en opslagservices selecteren in Serverbeheer](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
 
-3. De gegevens schijf wordt automatisch gedetecteerd en gekoppeld. Selecteer **schijven**als u een lijst met de verbonden schijven wilt weer geven. U kunt uw gegevens schijf selecteren om volume gegevens weer te geven, inclusief de stationsletter. In het volgende voor beeld ziet u de gegevens schijf die is gekoppeld aan en met **F:** :
+3. De gegevensschijf wordt automatisch gedetecteerd en gekoppeld. Als u een lijst met verbonden schijven wilt weergeven, selecteert u **Schijven**. U uw gegevensschijf selecteren om volumegegevens weer te geven, inclusief de stationsletter. In het volgende voorbeeld wordt de gekoppelde gegevensschijf en het gebruik van **F weergegeven:**
 
-    ![De schijf is gekoppeld en de volume gegevens in Serverbeheer](./media/troubleshoot-recovery-disks-portal-windows/server-manager-disk-attached.png)
+    ![Schijf- en volumegegevens in Serverbeheer](./media/troubleshoot-recovery-disks-portal-windows/server-manager-disk-attached.png)
 
-## <a name="fix-issues-on-original-virtual-hard-disk"></a>Problemen op de oorspronkelijke virtuele harde schijf oplossen
-Als de bestaande virtuele harde schijf is gekoppeld, kunt u nu eventuele onderhouds-en probleemoplossings stappen uitvoeren. Zodra u de problemen hebt opgelost, kunt u doorgaan met de volgende stappen.
+## <a name="fix-issues-on-original-virtual-hard-disk"></a>Problemen op de originele virtuele harde schijf oplossen
+Met de bestaande virtuele harde schijf gemonteerd, u nu alle onderhouds- en probleemoplossingsstappen uitvoeren als dat nodig is. Zodra u de problemen hebt opgelost, kunt u doorgaan met de volgende stappen.
 
-## <a name="unmount-and-detach-original-virtual-hard-disk"></a>De oorspronkelijke virtuele harde schijf ontkoppelen en loskoppelen
-Wanneer de fouten zijn opgelost, koppelt u de bestaande virtuele harde schijf los van uw probleemoplossings-VM. U kunt de virtuele harde schijf niet met andere virtuele machines gebruiken totdat de lease die de virtuele harde schijf koppelt aan de VM voor probleem oplossing is vrijgegeven.
+## <a name="unmount-and-detach-original-virtual-hard-disk"></a>Originele virtuele harde schijf loskoppelen en loskoppelen
+Zodra uw fouten zijn opgelost, u de bestaande virtuele harde schijf loskoppelen van uw vm voor het oplossen van problemen. U uw virtuele harde schijf niet gebruiken met een andere VM totdat de lease die de virtuele harde schijf aan de VM voor het oplossen van problemen koppelt, is vrijgegeven.
 
-1. Open **Serverbeheer**van de RDP-sessie naar uw VM en selecteer vervolgens **Bestands-en opslag Services**:
+1. Van de RDP-sessie naar uw VM, open **Serverbeheer**en selecteer **Vervolgens Bestands- en opslagservices:**
 
-    ![Selecteer Bestands-en opslag Services in Serverbeheer](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
+    ![Bestanden- en opslagservices selecteren in Serverbeheer](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
 
-2. Selecteer **schijven** en selecteer vervolgens uw gegevens schijf. Klik met de rechter muisknop op uw gegevens schijf en selecteer **offline halen**:
+2. Selecteer **Schijven** en selecteer vervolgens uw gegevensschijf. Klik met de rechtermuisknop op uw gegevensschijf en selecteer **Offline halen:**
 
-    ![De gegevens schijf als offline instellen in Serverbeheer](./media/troubleshoot-recovery-disks-portal-windows/server-manager-set-disk-offline.png)
+    ![De gegevensschijf als offline instellen in Serverbeheer](./media/troubleshoot-recovery-disks-portal-windows/server-manager-set-disk-offline.png)
 
-3. Ontkoppel nu de virtuele harde schijf van de VM. Selecteer uw virtuele machine in de Azure Portal en klik op **schijven**. 
-4. Selecteer **bewerken**, selecteer de besturingssysteem schijf die u hebt toegevoegd en klik vervolgens op **ontkoppelen**:
+3. Maak nu de virtuele harde schijf los van de VM. Selecteer uw VM in de Azure-portal en klik op **Schijven**. 
+4. Selecteer **Bewerken,** selecteer de besturingssysteemschijf die u hebt gekoppeld en klik op **Losmaken:**
 
-    ![Bestaande virtuele harde schijf ontkoppelen](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
+    ![Bestaande virtuele harde schijf loskoppelen](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 
-    Wacht tot de virtuele machine de gegevens schijf heeft losgekoppeld voordat u doorgaat.
+    Wacht totdat de VM de gegevensschijf heeft losgemaakt voordat u verdergaat.
 
-## <a name="swap-the-os-disk-for-the-vm"></a>De besturingssysteem schijf voor de virtuele machine wisselen
+## <a name="swap-the-os-disk-for-the-vm"></a>De OS-schijf ruilen voor de VM
 
-Azure Portal ondersteunt nu het wijzigen van de besturingssysteem schijf van de virtuele machine. Voer de volgende stappen uit om dit te doen:
+Azure-portal ondersteunt nu het wijzigen van de OS-schijf van de VM. Voer de volgende stappen uit om dit te doen:
 
-1. Ga naar [Azure Portal](https://portal.azure.com). Selecteer **virtuele machines** in de zijbalk en selecteer vervolgens de VM met een probleem.
-1. Selecteer **schijven**in het linkerdeel venster en selecteer vervolgens **besturingssysteem schijf wisselen**.
-        ![de installatie kopie over het wisselen van de besturingssysteem schijf in Azure Portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
+1. Ga naar [Azure-portal](https://portal.azure.com). Selecteer **Virtuele machines** op de zijbalk en selecteer de vm die een probleem heeft.
+1. Selecteer **schijven**in het linkerdeelvenster en selecteer **vervolgens De schijf van Het besturingssysteem wisselen**.
+        ![De afbeelding over Swap OS-schijf in Azure-portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
 
-1. Kies de nieuwe schijf die u hebt gerepareerd en typ de naam van de virtuele machine om de wijziging te bevestigen. Als de schijf niet in de lijst wordt weer geven, wacht u 10 ~ 15 minuten nadat u de schijf hebt losgekoppeld van de virtuele machine voor probleem oplossing. Zorg er ook voor dat de schijf zich op dezelfde locatie bevindt als de virtuele machine.
+1. Kies de nieuwe schijf die u hebt gerepareerd en typ de naam van de virtuele machine om de wijziging te bevestigen. Als u de schijf niet in de lijst ziet, wacht u 10 ~ 15 minuten nadat u de schijf loskoppelt van de VM voor het oplossen van problemen. Zorg er ook voor dat de schijf zich op dezelfde locatie bevindt als de VM.
 1. Selecteer OK.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [problemen met RDP-verbindingen met een Azure VM oplossen](troubleshoot-rdp-connection.md)als u problemen ondervindt bij het maken van verbinding met uw virtuele machine. Zie problemen met [toepassings connectiviteit oplossen op een Windows-VM](troubleshoot-app-connection.md)voor problemen met het openen van toepassingen die op uw virtuele machine worden uitgevoerd.
+Zie Problemen [met RDP-verbindingen met een Azure VM](troubleshoot-rdp-connection.md)als u problemen ondervindt bij het maken van verbinding met uw VM. Zie Problemen met de connectiviteit van [toepassingen op een Windows-vm oplossen voor](troubleshoot-app-connection.md)problemen met de toegang tot toepassingen op uw vm.
 
-Zie [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md)voor meer informatie over het gebruik van Resource Manager.
+Zie overzicht van Azure Resource Manager voor meer informatie over het gebruik van Resource [Manager.](../../azure-resource-manager/management/overview.md)
 
 

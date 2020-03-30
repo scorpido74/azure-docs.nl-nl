@@ -1,220 +1,219 @@
 ---
-title: Een micro soft-ontwikkelaars account maken | Azure Marketplace
-description: Vereisten en stappen voor het maken van een micro soft Developer-account.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Een Microsoft Developer-account maken | Azure Marketplace
+description: Vereisten en stappen voor het maken van een Microsoft Developer-account.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 522caa53123ad5ccb8076839d2dfa7dc1236b022
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 161abde1ef0dfd86842fb56afe699fa632e0d9ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818427"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280368"
 ---
-<a name="create-a-microsoft-developer-account"></a>Een micro soft-ontwikkelaars account maken
+<a name="create-a-microsoft-developer-account"></a>Een Microsoft Developer-account maken
 ====================================
 
-In dit artikel wordt beschreven hoe u een goedgekeurde micro soft-ontwikkelaar voor Azure Marketplace Publishing kunt worden.
+In dit artikel wordt beschreven hoe u een goedgekeurde Microsoft Developer voor Azure Marketplace-publicatie worden.
 
 ## <a name="create-a-microsoft-account"></a>Een Microsoft-account maken
 
-Om het publicatie proces te starten, moet u de registratie van het **micro soft Developer Center** volt ooien. U gebruikt hetzelfde geregistreerde account op het **[Cloud Partner-Portal](https://cloudpartner.azure.com/)** om het publicatie proces te starten.
+Als u het publicatieproces wilt starten, moet u de registratie van het **Microsoft Developer Center** voltooien. U gebruikt hetzelfde geregistreerde account op de **[Cloud Partner Portal](https://cloudpartner.azure.com/)** om het publicatieproces te starten.
 
-### <a name="general-account-guidelines"></a>Algemene account richtlijnen
+### <a name="general-account-guidelines"></a>Algemene accountrichtlijnen
 
-Het is raadzaam dat u slechts één Microsoft-account hebt voor uw Azure Marketplace-aanbiedingen. Dit account mag niet specifiek zijn voor services of aanbiedingen.
+We raden u aan slechts één Microsoft-account te hebben voor uw Azure Marketplace-aanbiedingen. Dit account mag niet specifiek zijn voor services of aanbiedingen.
 
-Het adres dat de gebruikers naam vormt, moet zich in uw domein bezien en worden beheerd door uw IT-team. Alle aan de publicatie gerelateerde activiteiten moeten via dit account worden uitgevoerd.
+Het adres dat de gebruikersnaam vormt, moet zich op uw domein bevinden en wordt beheerd door uw IT-team. Alle publicerengerelateerde activiteiten moeten via dit account worden uitgevoerd.
 
 >[!WARNING]
->Woorden als ' Azure ' en ' micro soft ' worden niet ondersteund voor Microsoft-account registratie. Vermijd het gebruik van deze woorden om het maken en registreren van het account te volt ooien.
+>Woorden als 'Azure' en 'Microsoft' worden niet ondersteund voor microsoft-accountregistratie. Vermijd het gebruik van deze woorden om het aanmaken en registreren van een account te voltooien.
 
-### <a name="company-account-guidelines"></a>Bedrijfs account richtlijnen
+### <a name="company-account-guidelines"></a>Richtlijnen voor bedrijfsaccount
 
-Volg deze richt lijnen als meer dan één persoon toegang moet hebben tot het account door zich aan te melden met de Microsoft-account die het account heeft geopend.
-
->[!IMPORTANT]
->Als u wilt toestaan dat meerdere gebruikers toegang hebben tot uw ontwikkelaars centrum-account, kunt u het beste Azure Active Directory gebruiken om rollen toe te wijzen aan afzonderlijke gebruikers. Ze hebben toegang tot het account door zich aan te melden met hun individuele Azure AD-referenties. Zie [account gebruikers beheren](https://docs.microsoft.com/windows/uwp/publish/manage-account-users)voor meer informatie.
-
--   Maak uw Microsoft-account met behulp van een e-mail adres dat deel uitmaakt van uw bedrijf\'s-domein, maar niet op één persoon. Bijvoorbeeld windowsapps\@fabrikam.com.
--   Beperk de toegang tot deze Microsoft-account tot het kleinst mogelijke aantal ontwikkel aars.
--   Stel een distributie lijst voor zakelijke e-mail in met iedereen die toegang moet hebben tot het ontwikkelaars account en voeg dit e-mail adres toe aan uw beveiligings gegevens. Hierdoor kunnen alle werk nemers in de lijst beveiligings codes ontvangen wanneer dit nodig is en de beveiligings gegevens van uw Microsoft-account beheren. Als het instellen van een distributie lijst niet haalbaar is, moet de eigenaar van het afzonderlijke e-mail account beschikbaar zijn voor toegang tot en delen van de beveiligings code wanneer daarom wordt gevraagd (bijvoorbeeld wanneer er nieuwe beveiligings gegevens worden toegevoegd aan het account of wanneer deze toegankelijk moet zijn vanaf een nieuw apparaat.)
--   Voeg een bedrijfs telefoonnummer toe waarvoor geen extensie is vereist en dat toegankelijk is voor belang rijke team leden.
--   Over het algemeen moeten ontwikkel aars vertrouwde apparaten gebruiken om zich aan te melden bij het ontwikkelaars account van uw bedrijf. Alle belang rijke team leden moeten toegang hebben tot deze vertrouwde apparaten. Dit verkleint de nood zaak van het verzenden van beveiligings codes bij het openen van het account.
--   Als u toegang tot het account wilt toestaan vanaf een niet-vertrouwde PC, beperkt u de toegang tot Maxi maal vijf ontwikkel aars. In het ideale geval hebben deze ontwikkel aars toegang tot het account van computers die dezelfde geografische en netwerk locatie delen.
--   Controleer regel matig de [beveiligings gegevens van uw bedrijf](https://account.live.com/proofs/Manage) om er zeker van te zijn dat deze actueel zijn.
+Volg deze richtlijnen als meer dan één persoon toegang nodig heeft tot het account door in te loggen met het Microsoft-account dat het account heeft geopend.
 
 >[!IMPORTANT]
->Het ontwikkelaars account moet voornamelijk van vertrouwde Pc's worden geopend. Dit is essentieel omdat er een limiet is voor het aantal gegenereerde codes per account, per week. Het biedt ook de meest naadloze aanmeld procedure.
+>Als u meerdere gebruikers toegang wilt geven tot uw Dev Center-account, raden we u aan Azure Active Directory te gebruiken om rollen toe te wijzen aan individuele gebruikers. Ze hebben toegang tot het account door zich aan te melden met hun individuele Azure AD-referenties. Zie [Accountgebruikers beheren](https://docs.microsoft.com/windows/uwp/publish/manage-account-users)voor meer informatie .
+
+-   Maak uw Microsoft-account aan met een\'e-mailadres dat bij uw bedrijfsdomein hoort, maar niet aan één persoon. Windowsapps\@fabrikam.com bijvoorbeeld.
+-   Beperk de toegang tot dit Microsoft-account tot een zo klein mogelijk aantal ontwikkelaars.
+-   Stel een lijst met zakelijke e-maildistributie in met iedereen die toegang nodig heeft tot het ontwikkelaarsaccount en voeg dit e-mailadres toe aan uw beveiligingsgegevens. Hierdoor kunnen alle werknemers op de lijst beveiligingscodes ontvangen wanneer dat nodig is en de beveiligingsgegevens van uw Microsoft-account beheren. Als het instellen van een distributielijst niet haalbaar is, moet de eigenaar van het afzonderlijke e-mailaccount beschikbaar zijn om de beveiligingscode te openen en te delen wanneer daarom wordt gevraagd (bijvoorbeeld wanneer nieuwe beveiligingsgegevens aan het account worden toegevoegd of wanneer deze moet worden geopend vanaf een nieuw apparaat.)
+-   Voeg een bedrijfstelefoonnummer toe waarvoor geen extensie nodig is en toegankelijk is voor belangrijke teamleden.
+-   Over het algemeen laat ontwikkelaars vertrouwde apparaten gebruiken om in te loggen op het ontwikkelaarsaccount van uw bedrijf. Alle belangrijke teamleden moeten toegang hebben tot deze vertrouwde apparaten. Dit vermindert de noodzaak voor beveiligingscodes worden verzonden bij de toegang tot het account.
+-   Als u toegang tot het account vanaf een niet-vertrouwde pc wilt toestaan, beperkt u die toegang tot maximaal vijf ontwikkelaars. Idealiter moeten deze ontwikkelaars toegang krijgen tot het account vanaf machines die dezelfde geografische en netwerklocatie delen.
+-   Controleer regelmatig de [beveiligingsgegevens van](https://account.live.com/proofs/Manage) uw bedrijf om er zeker van te zijn dat deze actueel zijn.
+
+>[!IMPORTANT]
+>Uw ontwikkelaarsaccount moet voornamelijk worden geopend vanaf vertrouwde pc's. Dit is van cruciaal belang omdat er een limiet is aan het aantal codes dat per account wordt gegenereerd, per week. Het maakt ook de meest naadloze aanmeldingservaring mogelijk.
 >
->Zie [aanvullende richt lijnen voor het ontwikkelaars account en beveiliging](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts)voor meer informatie.
+>Zie [aanvullende richtlijnen voor ontwikkelaarsaccount en beveiliging](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts)voor meer informatie.
 
 ### <a name="to-create-a-microsoft-account"></a>Een Microsoft-account maken
 
-1.  Open een nieuwe, gechrome incognito of InPrivate-Browsing-sessie van Internet Explorer om ervoor te zorgen dat u niet bent aangemeld bij een bestaand account.
-2.  Registreer de e-mail (met de vorige richt lijnen) als Microsoft-account met behulp van deze [koppeling](https://signup.live.com/signup.aspx). Voltooi de volgende aanmeldings instructies:
+1.  Open een nieuwe Chrome Incognito- of Internet Explorer InPrivate-browsersessie om ervoor te zorgen dat u niet bent aangemeld bij een bestaand account.
+2.  Registreer de e-mail (volgens de vorige richtlijnen) als een Microsoft-account met behulp van deze [link](https://signup.live.com/signup.aspx). Voer de volgende aanmeldingsinstructies in:
 
-    - Wanneer u uw account registreert als Microsoft-account, moet u een geldig telefoon nummer opgeven voor het systeem om u een account verificatie code te sturen als een tekst bericht of een automatische oproep.
-    - Wanneer u uw account registreert als Microsoft-account, moet u een geldige e-mail-id opgeven om een automatische e-mail te ontvangen voor account verificatie.
-    - Controleer het e-mail adres dat is verzonden naar de DL.
+    - Wanneer u uw account registreert als Een Microsoft-account, moet u een geldig telefoonnummer voor het systeem verstrekken om u een accountverificatiecode als een sms of een geautomatiseerd gesprek te sturen.
+    - Wanneer u uw account registreert als Een Microsoft-account, moet u een geldige e-mail-id opgeven voor het ontvangen van een geautomatiseerde e-mail voor accountverificatie.
+    - Controleer het e-mailadres dat naar de DL is verzonden.
 
-    U bent nu klaar om de nieuwe Microsoft-account te gebruiken in het micro soft Developer Center.
+    U bent nu klaar om het nieuwe Microsoft-account te gebruiken in het Microsoft Developer Center.
 
-## <a name="register-your-account-in-microsoft-developer-center"></a>Uw account registreren in het micro soft Developer Center
+## <a name="register-your-account-in-microsoft-developer-center"></a>Uw account registreren in Microsoft Developer Center
 
-Het micro soft Developer Center wordt gebruikt om de Bedrijfs gegevens eenmaal te registreren. De Registrator moet een geldige vertegenwoordiger van het bedrijf zijn en moet hun persoonlijke gegevens verstrekken als een manier om hun identiteit te valideren. De persoon die zich registreert, moet een Microsoft-account gebruiken dat wordt gedeeld voor het bedrijf **en hetzelfde account moet worden gebruikt in de Cloud Partner-Portal.** U moet controleren of uw bedrijf nog geen micro soft Developer Center-account heeft voordat u er een probeert te maken. Tijdens het proces verzamelen we bedrijfs adres gegevens, bankrekening gegevens en BTW-gegevens. Deze informatie is doorgaans op te vragen bij de afdeling Financiën of Bedrijfsrelaties.
+Het Microsoft Developer Center wordt gebruikt om de bedrijfsgegevens eenmalig te registreren. De registrant moet een geldige vertegenwoordiger van het bedrijf zijn en moet zijn persoonlijke gegevens verstrekken als een manier om zijn identiteit te valideren. De persoon die zich registreert, moet een Microsoft-account gebruiken dat voor het bedrijf wordt gedeeld **en hetzelfde account moet worden gebruikt in de Cloud Partner Portal.** U moet controleren of uw bedrijf nog geen Microsoft Developer Center-account heeft voordat u een microsoft developer center-account probeert te maken. Tijdens het proces verzamelen we bedrijfsadresgegevens, bankrekeninggegevens en belastinggegevens. Deze zijn meestal verkrijgbaar bij financiële of zakelijke contacten.
 
 >[!IMPORTANT]
->U moet de volgende ontwikkelaars profiel onderdelen volt ooien om te kunnen voldoen aan de verschillende fasen van het maken en implementeren van de aanbieding.
+>U moet de volgende ontwikkelaarsprofielonderdelen voltooien om de verschillende fasen van het maken en implementeren van aanbiedingen te doorlopen.
 
-| Profiel voor ontwikkel aars     | Om het concept te starten    | Faseren       | Gratis en oplossings sjabloon publiceren   | Commerciële publicatie   |
+| Ontwikkelaarsprofiel     | Concept starten    | Faseren       | Gratis sjabloon en oplossing publiceren   | Commercieel publiceren   |
 |---------------------- |----------------   |-----------    |-------------------------------------  |---------------------  |
-| Registratie van het bedrijf  | Moet         | Moet     | Moet                             | Moet             |
-| ID van het BTW-profiel        | Optioneel          | Optioneel      | Optioneel                              | Moet             |
-| Bank rekening          | Optioneel          | Optioneel      | Optioneel                              | Moet             |
+| Bedrijfsregistratie  | Moet hebben         | Moet hebben     | Moet hebben                             | Moet hebben             |
+| Btw-profiel-ID        | Optioneel          | Optioneel      | Optioneel                              | Moet hebben             |
+| Bankrekening          | Optioneel          | Optioneel      | Optioneel                              | Moet hebben             |
 
 >[!NOTE]
->Uw eigen licentie (BYOL) meenemen wordt alleen ondersteund voor virtuele machines en wordt beschouwd als gratis aanbieding.
+>Bring Your Own License (BYOL) wordt alleen ondersteund voor virtuele machines en wordt beschouwd als een gratis aanbod.
 
-### <a name="register-your-company-account"></a>Uw bedrijfs account registreren
+### <a name="register-your-company-account"></a>Uw bedrijfsaccount registreren
 
-1. Open een nieuwe Internet Explorer InPrivate-of Chrome Incognito-browser sessie om ervoor te zorgen dat u niet bent aangemeld bij een persoonlijk account.
+1. Open een nieuwe InPrivate- of Chrome Incognito-browsersessie in Internet Explorer om ervoor te zorgen dat u niet bent aangemeld bij een persoonlijk account.
 
-2. Ga naar het [Windows-ontwikkelaars centrum](https://dev.windows.com/registration?accountprogram=azure) om u als verkoper te registreren. Lees de volgende belang rijke Opmerking Voordat u verdergaat.
+2. Ga naar het [Windows Dev Center](https://dev.windows.com/registration?accountprogram=azure) om jezelf te registreren als verkoper. Lees de volgende belangrijke opmerking voordat u verder gaat.
 
-   ![Microsoft-account verificatie](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-verify.jpg)
+   ![Verificatie van Microsoft-account](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-verify.jpg)
 
     >[!IMPORTANT]
-    >Zorg ervoor dat de e-mail-id of distributie lijst (een distributie lijst wordt aanbevolen voor het verwijderen van de afhankelijkheid van individuen) die u wilt gebruiken voor registratie in het ontwikkelaars centrum, voor het eerst is geregistreerd als een Microsoft-account. Als dat niet het geval is, registreert u deze koppeling. Daarnaast kan elke e-mail-id onder het micro soft-bedrijfs domein niet worden gebruikt voor de registratie van het dev Center.
+    >Controleer of de e-id of distributielijst (een distributielijst wordt aanbevolen om de afhankelijkheid van personen te verwijderen) die u gebruikt voor registratie in het Dev Center, in eerste instantie is geregistreerd als Een Microsoft-account. Zo niet, dan u zich aanmelden via deze link. Ook kan een e-id onder het Microsoft-bedrijfsdomein niet worden gebruikt voor de registratie van Dev Center.'
 
-   ![Aanmelden bij het ontwikkelaars centrum](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-login.jpg)
+   ![Dev center log in](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-login.jpg)
 
-3. Voer de wizard ' Help ons uw account beschermen ' uit om uw identiteit te verifiëren met behulp van een telefoon nummer of e-mail adres.
+3. Voer de wizard 'Help ons uw account te beschermen' uit om uw identiteit te verifiëren met behulp van een telefoonnummer of e-mailadres.
 
-4. Selecteer in registratie account info uw **account land/regio** in de vervolg keuzelijst en selecteer **volgende**.
+4. Selecteer in Registratie-accountgegevens uw **accountland/regio** in de vervolgkeuzelijst en selecteer **Volgende**.
 
    ![Land/regio selecteren](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
 
     >[!WARNING]
-    >"Landen/regio's verkopen: als u uw services wilt verkopen op de Azure Marketplace, moet uw geregistreerde entiteit afkomstig zijn uit een van de goedgekeurde" selling "-landen/regio's die in de vervolg keuzelijst worden weer gegeven. Deze beperking geldt voor uitbetalingen en fiscale redenen. Zie voor meer informatie het deelname beleid voor Marketplace.
+    >'Verkopen uit' landen/regio's: Om uw services op de Azure Marketplace te verkopen, moet uw geregistreerde entiteit afkomstig zijn uit een van de goedgekeurde 'sell-from'-landen/-regio's die in de vervolgkeuzelijst worden weergegeven. Deze beperking is voor uitbetaling en fiscale redenen. Zie voor meer informatie het participatiebeleid van Marktplaats.
 
-5. Selecteer **bedrijf** als uw ' account type ' en selecteer vervolgens **volgende**.
+5. Selecteer **Bedrijf** als uw 'Accounttype' en selecteer **Volgende**.
 
     >[!IMPORTANT]
-    >Bekijk pagina-account typen, locaties en kosten die worden weer gegeven in de volgende scherm opname om beter inzicht te krijgen in de account typen en om te bepalen welk type het meest geschikt is voor u.
+    >Als u accounttypen beter wilt begrijpen en wilt beslissen welk type het beste voor u is, u paginaaccounttypen, locaties en kosten weergeven die worden weergegeven in de volgende schermopname.
 
-    ![Account typen voor verkopers](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_05.png)
+    ![Accounttypen voor verkopers](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_05.png)
 
-6. Voer de **weergave naam**van de uitgever in. Dit is doorgaans de naam van uw bedrijf.
+6. Voer de **weergavenaam Publisher**in . Dit is meestal de naam van uw bedrijf.
 
     >[!NOTE]
-    >De weergave naam van de uitgever die in het ontwikkelaars centrum is opgegeven, wordt niet weer gegeven in de Azure Marketplace nadat uw aanbieding wordt weer gegeven. Maar deze informatie is nodig om het registratie proces te volt ooien.
+    >De weergavenaam van de uitgever die in het Dev Center is ingevoerd, wordt niet weergegeven in de Azure Marketplace nadat uw aanbieding is weergegeven. Maar deze informatie is nodig om het registratieproces te voltooien.
 
-7. Voer de **contact gegevens** voor de account verificatie in.
+7. Voer de **contactgegevens** in voor de accountverificatie.
 
     >[!IMPORTANT]
-    >U moet nauw keurige contact gegevens opgeven, omdat deze worden gebruikt in het verificatie proces dat uw bedrijf moet worden goedgekeurd in het ontwikkelaars centrum.
+    >U moet nauwkeurige contactgegevens verstrekken, omdat deze worden gebruikt in ons verificatieproces om uw bedrijf te laten goedkeuren in het Developer Center.'
 
-8. Voer de contact gegevens in voor de **bedrijfs fiatteur**. De maker van het bedrijf is degene die kan controleren of u gemachtigd bent om een account te maken in het ontwikkelaars centrum namens uw organisatie. Nadat u deze informatie hebt verstrekt, selecteert u **volgende** om naar de **sectie betaling**te gaan.
+8. Voer de contactgegevens in voor de **bedrijfskeurer**. De bedrijfskeurer is de persoon die kan controleren of u gemachtigd bent om namens uw organisatie een account aan te maken in het Dev Center. Nadat u deze informatie hebt verstrekt, selecteert u **Volgende** om naar de **sectie Betaling**te gaan .
 
-    ![Bedrijfs fiatteur identificeren](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_08.png)
+    ![Bedrijfsgoedkeurder identificeren](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_08.png)
 
-9. Voer de betalings gegevens voor uw account in. Als u een promotie code hebt die de kosten van de registratie dekt, kunt u dat hier opgeven. Geef anders uw creditcard gegevens op (of PayPal op ondersteunde markten). Selecteer **volgende** om door te gaan naar de laatste **beoordeling**.
+9. Voer betalingsgegevens in voor uw account. Als u een promocode hebt die de kosten van registratie dekt, u dat hier invoeren. Geef anders uw creditcardgegevens (of PayPal op in ondersteunde markten). Selecteer **Volgende** om verder te gaan naar de laatste **beoordeling**.
 
-   ![Registratie van betaling](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_09.png)
+   ![Betalingsregistratie](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_09.png)
 
-10. Controleer uw account gegevens en controleer of alles juist is. Lees en accepteer de voor waarden van de [Microsoft Azure Marketplace Publisher-overeenkomst](https://go.microsoft.com/fwlink/?LinkID=699560). Schakel het selectie vakje in om aan te geven dat u deze voor waarden hebt gelezen en geaccepteerd.
+10. Bekijk uw accountgegevens en bevestig dat alles correct is. Lees en accepteer de algemene voorwaarden van de [Microsoft Azure Marketplace Publisher Agreement](https://go.microsoft.com/fwlink/?LinkID=699560). Schakel het selectievakje in om aan te geven dat u deze voorwaarden hebt gelezen en geaccepteerd.
 
-11. Selecteer **volt ooien** om uw registratie te bevestigen. Er wordt een bevestigings bericht verzonden naar uw e-mail adres.
+11. Selecteer **Voltooien** om uw inschrijving te bevestigen. Er wordt een bevestigingsbericht naar uw e-mailadres gestuurd.
 
-12. Als u van plan bent om alleen gratis aanbiedingen te publiceren, selecteert u [naar de Cloud Partner-Portal](https://cloudpartner.azure.com/) en gaat u naar ' uw account registreren in de Cloud Partner Portal ' in dit artikel.
+12. Als u alleen gratis aanbiedingen wilt publiceren, selecteert u [Ga naar de Cloud Partner Portal](https://cloudpartner.azure.com/) en gaat u in dit artikel naar 'Uw account registreren in de cloudpartnerportal'.
 
 ### <a name="commercial-offers"></a>Commerciële aanbiedingen
 
-Als u van plan bent om commerciële aanbiedingen te publiceren, zoals een aanbieding van een virtuele machine met behulp van een facturerings model per uur, moet u belasting-en Bank gegevens opgeven. Hiertoe meldt u zich aan bij uw ontwikkelaars centrum-account en selecteert u **uw account gegevens bijwerken**. Volg de instructies in de volgende sectie, "Bank-en belasting gegevens toevoegen".
+Als u van plan bent commerciële aanbiedingen te publiceren, zoals een virtuele machine-aanbieding met behulp van een factureringsmodel per uur, moet u belasting- en bankgegevens verstrekken. Meld u hiervoor aan bij uw Developer Center-account en selecteer **Uw accountgegevens bijwerken**. Volg de instructies in de volgende sectie, "Voeg bank- en belastinginformatie toe".
 
 >[!IMPORTANT]
->U kunt geen commerciële aanbieding naar productie pushen zonder bank rekening en belasting gegevens op te geven.
+>U een commercieel aanbod niet naar de productie pushen zonder bankrekening- en belastinginformatie te verstrekken.
 
-Als u uw bank-en belasting gegevens later wilt bijwerken, kunt u in dit artikel overs Laan om uw account te registreren in de Cloud Partner Portal.
+Als u uw bank- en belastinggegevens later liever bijwerkt, u in dit artikel doorgaan met 'Uw account registreren in de cloudpartnerportal'.
 
 >[!NOTE]
->We raden u aan Bank rekening en belasting gegevens zo snel mogelijk te verstrekken, omdat het tijd kost om de belasting gegevens te valideren.
+>We raden u aan zo snel mogelijk bankrekening- en belastinginformatie te verstrekken, omdat het tijd kost om belastinginformatie te valideren.
 
-### <a name="add-banking-and-tax-information"></a>Bank-en belasting gegevens toevoegen
+### <a name="add-banking-and-tax-information"></a>Bank- en belastinginformatie toevoegen
 
-Als u commerciële aanbiedingen voor aankoop wilt publiceren, moet u uitbetalings-en belasting gegevens toevoegen en deze indienen voor validatie in het ontwikkelaars centrum.
+Als u commerciële aanbiedingen wilt publiceren voor aankoop, moet u uitbetalings- en belastinggegevens toevoegen en deze ter validatie indienen in het Ontwikkelaarscentrum.
 
-**Bank gegevens opgeven**
+**Om bankgegevens te verstrekken**
 
-1.  Meld u met uw Microsoft-account aan bij het [micro soft Developer Center](https://dev.windows.com/registration?accountprogram=azure) .
-2.  Selecteer **uitbetalings account** in het linkermenu, onder **Kies een betalings wijze**, selecteer **Bank account** of **PayPal**.
+1.  Meld u aan bij het [Microsoft Developer Center](https://dev.windows.com/registration?accountprogram=azure) met uw Microsoft-account.
+2.  Selecteer **Uitbetalingsrekening** in het linkermenu onder **Betalingsmethode kiezen**, selecteer **Bankrekening** of **PayPal**.
 
     >[!NOTE]
-    >Als u commerciële aanbiedingen hebt die klanten kopen op Marketplace, is dit het account waar u voor deze aankopen een uitbetaling ontvangt.
-3.  Voer de betalings gegevens in en selecteer vervolgens **Opslaan**.
+    >Als u commerciële aanbiedingen hebt die klanten op de Marketplace kopen, is dit het account waar u uitbetaling ontvangt voor deze aankopen.
+3.  Voer de betalingsgegevens in en selecteer **Opslaan**.
 
     >[!IMPORTANT]
-    >Als u uw account voor betaling moet bijwerken of wijzigen, volgt u de voor gaande stappen om de huidige informatie te vervangen door de nieuwe informatie.
+    >Als u uw uitbetalingsaccount moet bijwerken of wijzigen, volgt u de voorafgaande stappen om de huidige informatie te vervangen door de nieuwe informatie.
     >
-    >Het wijzigen van uw uitbetalings account kan uw betalingen vertragen met Maxi maal één betalings cyclus. Deze vertraging treedt op omdat we de account wijziging moeten verifiëren, net zoals we hebben gedaan toen u het account voor betaling voor het eerst instelde. U ontvangt nog steeds voor het volledige bedrag nadat uw account is geverifieerd. alle betalingen die moeten worden uitgevoerd voor de huidige betalings cyclus, worden toegevoegd aan de volgende betaling.
+    >Als u uw uitbetalingsaccount wijzigt, u uw betalingen met maximaal één betalingscyclus vertragen. Deze vertraging treedt op omdat we de accountwijziging moeten verifiëren, net zoals we deden toen u de uitbetalingsrekening voor het eerst instelde. Je krijgt nog steeds het volledige bedrag betaald nadat je account is geverifieerd; alle betalingen die voor de huidige betalingscyclus moeten worden betaald, worden toegevoegd aan de volgende.
 
 4.  Selecteer **Volgende**.
 
-**Belasting gegevens opgeven**
+**Belastinginformatie verstrekken**
 
-1.  Meld u aan bij het [micro soft Developer Center](https://dev.windows.com/registration?accountprogram=azure) met uw Microsoft-account (indien nodig).
-2.  Selecteer in het menu links **BTW-profiel**.
-3.  Op de pagina **uw BTW-formulier instellen** :
-    - Selecteer het land of de regio waar u permanente locatie hebt.
-    - Selecteer het land of de regio waar u het primaire burgerschap houdt.
+1.  Meld u aan bij het [Microsoft Developer Center](https://dev.windows.com/registration?accountprogram=azure) met uw Microsoft-account (indien nodig).
+2.  Selecteer in het linkermenu **het belastingprofiel**.
+3.  Ga als een op de pagina **Uw belastingformulier instellen:**
+    - Selecteer het land of de regio waar u een permanente verblijfsvergunning hebt.
+    - Selecteer het land of de regio waar u primair burgerschap bezit.
     - Selecteer **Volgende**.
-4.  Voer uw belasting gegevens in en selecteer **volgende**.
+4.  Voer uw belastinggegevens in en selecteer **Volgende**.
 
 >[!WARNING]
->U kunt niet naar uw commerciële aanbiedingen pushen naar productie zonder bank rekening en belasting gegevens op te geven in uw micro soft Developer Center-account.
+>U uw commerciële aanbiedingen niet naar productie pushen zonder bankrekening- en belastinggegevens op te geven in uw Microsoft Developer Center-account.
 
-### <a name="developer-center-registration-issues"></a>Registratie problemen voor het ontwikkelaars centrum
+### <a name="developer-center-registration-issues"></a>Registratieproblemen voor ontwikkelaarscentrum
 
-Als u problemen ondervindt met de registratie van het ontwikkelaars centrum, gebruikt u de volgende stappen om een ondersteunings ticket te openen.
+Als u problemen hebt met de registratie van het Developer Center, gebruikt u de volgende stappen om een ondersteuningsticket te openen.
 
-1.  Ga naar de [koppeling ondersteuning](https://developer.microsoft.com/windows/support).
-2.  Selecteer **een incident verzenden**onder **contact opnemen met ons**.
-    ![een ticket openen](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_02.png)
-3.  Selecteer bij **probleem type**Help bij ontwikkelaars centrum en selecteer voor **categorie**de optie Apps publiceren en beheren. Selecteer **E-mail starten**.
+1.  Ga naar de [ondersteuningslink](https://developer.microsoft.com/windows/support).
+2.  Selecteer **Onder Contact met ons**de optie Een incident **verzenden**.
+    ![Open een ticket](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_02.png)
+3.  Selecteer **voor probleemtype**'Help met Dev Center' en voor **Categorie**de optie 'Apps publiceren en beheren'. Selecteer **E-mail starten**.
 
     ![type probleem identificeren](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_03.png)
 
-4.  U krijgt een aanmeldings pagina. Gebruik een Microsoft-account om u aan te melden. Als u nog geen Microsoft-account hebt, [maakt u er](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1)een. \
+4.  Je krijgt een aanmeldingspagina. Gebruik een Microsoft-account om je aan te melden. Als u geen Microsoft-account [hebt, maakt u er vervolgens een](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1).\
 
-5.  Geef gedetailleerde informatie over het probleem op en selecteer **verzenden** om het ticket te verzenden.
+5.  Geef gedetailleerde informatie over het probleem en selecteer **Verzenden** om het ticket te verzenden.
 
-    ![een ticket verzenden](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_05.png)
+    ![stuur een ticket in](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_05.png)
 
-## <a name="register-your-account-in-the-cloud-partner-portal"></a>Uw account registreren in de Cloud Partner Portal
+## <a name="register-your-account-in-the-cloud-partner-portal"></a>Uw account registreren in de cloudpartnerportal
 
-U gebruikt de [Cloud Partner-Portal](https://cloudpartner.azure.com/) om uw aanbieding (en) te publiceren en te beheren.
+U gebruikt de [Cloud Partner Portal](https://cloudpartner.azure.com/) om uw aanbieding(en) te publiceren en te beheren.
 
-1.  Open een nieuwe, gechrome incognito of InPrivate-Browsing-sessie van Internet Explorer om ervoor te zorgen dat u niet bent aangemeld bij een persoonlijk account.
-2.  Ga naar [Cloud Partner-Portal](https://cloudpartner.azure.com/).
-3.  Als u een nieuwe gebruiker bent en u zich voor de eerste keer aanmeldt bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/) , moet u zich aanmelden met de e-mail-id die is geregistreerd bij uw ontwikkelaars centrum-account. Dit zorgt ervoor dat uw ontwikkelaars centrum-account en het Cloud Partner Portal-account aan elkaar zijn gekoppeld.
+1.  Open een nieuwe InPrivate-browsersessie in Chrome Incognito of Internet Explorer om ervoor te zorgen dat u niet bent aangemeld bij een persoonlijk account.
+2.  Ga naar [Cloud Partner Portal.](https://cloudpartner.azure.com/)
+3.  Als u een nieuwe gebruiker bent en zich voor het eerst aanmeldt bij de [Cloud Partner Portal,](https://cloudpartner.azure.com/) moet u zich aanmelden met dezelfde e-id die is geregistreerd bij uw Dev Center-account. Dit zorgt ervoor dat uw Dev Center-account en het cloudpartnerportalaccount aan elkaar zijn gekoppeld.
 
-Later kunt u de andere leden van het bedrijf toevoegen die aan de toepassing werken. U kunt ze als mede werkers of eigen aren in de Cloud Partner Portal volgen door de stappen in de volgende sectie uit te voeren.
+Later u de andere leden van het bedrijf die werken aan de toepassing toe te voegen. U ze als bijdragers of eigenaren in de cloudpartnerportal volgen door de stappen in het volgende gedeelte te volgen.
 
-Als u als Inzender/eigenaar wordt toegevoegd in de Cloud Partner Portal-Portal, kunt u zich aanmelden met uw eigen account.
+Als u als bijdrager/eigenaar wordt toegevoegd aan de portal voor cloudpartners, u zich aanmelden met uw eigen account.
 
 >[!TIP]
->Het deelname beleid wordt beschreven op de Azure-website.
+>Het deelnamebeleid wordt beschreven op de Azure-website.
 
-## <a name="manage-users-as-owners-or-contributors-in-the-cloud-partner-portal"></a>Gebruikers als eigen aren of mede werkers beheren in de Cloud Partner Portal
+## <a name="manage-users-as-owners-or-contributors-in-the-cloud-partner-portal"></a>Gebruikers beheren als eigenaren of bijdragers in de cloudpartnerportal
 
-[Stappen voor het beheren van gebruikers in de Cloud Partner Portal](./cloud-partner-portal-manage-users.md)
+[Stappen om gebruikers te beheren op de cloudpartnerportal](./cloud-partner-portal-manage-users.md)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu uw account is gemaakt en geregistreerd, kunt u het Azure Marketplace-publicatie proces starten.
+Nu uw account is gemaakt en geregistreerd, u het publicatieproces voor Azure-marktplaatsen starten.

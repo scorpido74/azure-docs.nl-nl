@@ -1,7 +1,7 @@
 ---
-title: Apps bouwen die zich aanmelden bij Azure AD-gebruikers
+title: Apps maken die zich aanmelden bij Azure AD-gebruikers
 titleSuffix: Microsoft identity platform
-description: Laat zien hoe u een multi tenant-toepassing bouwt waarmee een gebruiker kan worden aangemeld bij een wille keurige Azure Active Directory Tenant.
+description: Hier ziet u hoe u een multi-tenanttoepassing maakt die een gebruiker kan aanmelden vanuit een Azure Active Directory-tenant.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -10,178 +10,178 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/19/2020
+ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 33116039d5e47b95322ffafb4e8f4eef31bd84cf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e15fb60ec339eae45f9f14a3333e8afe51fc05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79262943"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480858"
 ---
-# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Procedure: aanmelden bij een Azure Active Directory gebruiker met het toepassings patroon met meerdere tenants
+# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>How to: Een Azure Active Directory-gebruiker aanmelden met het patroon van de toepassing met meerdere tenantn
 
-Als u een SaaS-toepassing (Software as a Service) aan een groot aantal organisaties levert, kunt u uw toepassing zo configureren dat deze aanmeldingen accepteert van elke Azure Active Directory-Tenant (Azure AD). Deze configuratie heet *het maken van uw toepassing met meerdere tenants*. Gebruikers in een Azure AD-Tenant kunnen zich aanmelden bij uw toepassing nadat deze hebben ingestemd om hun account bij uw toepassing te gebruiken.
+Als u een SaaS-toepassing (Software as a Service) aanbiedt aan veel organisaties, u uw toepassing configureren om aanmeldingen te accepteren vanuit een Azure Active Directory-tenant (Azure AD). Deze configuratie wordt het *maken van uw toepassing multi-tenant*genoemd. Gebruikers in een Azure AD-tenant kunnen zich aanmelden bij uw toepassing nadat ze toestemming hebben gegeven om hun account met uw toepassing te gebruiken.
 
-Als u een bestaande toepassing hebt met een eigen account systeem of andere soorten aanmeldingen van andere cloud providers ondersteunt, is het toevoegen van Azure AD-aanmelding vanuit een wille keurige Tenant eenvoudig. U hoeft alleen maar uw app te registreren, aanmeldings code toe te voegen via OAuth2, OpenID Connect Connect of SAML en de [knop ' Aanmelden met Microsoft '][AAD-App-Branding] te plaatsen in uw toepassing.
-
-> [!NOTE]
-> In dit artikel wordt ervan uitgegaan dat u al bekend bent met het bouwen van één Tenant toepassing voor Azure AD. Als dat niet het geval is, kunt u beginnen met een van de Quick starts op de [Start pagina voor de ontwikkelaars handleiding][AAD-Dev-Guide].
-
-Er zijn vier eenvoudige stappen om uw toepassing te converteren naar een Azure AD-App voor meerdere tenants:
-
-1. [De registratie van uw toepassing bijwerken naar multi tenant](#update-registration-to-be-multi-tenant)
-2. [Uw code bijwerken om aanvragen naar het/veelvoorkomende-eind punt te verzenden](#update-your-code-to-send-requests-to-common)
-3. [Uw code bijwerken om meerdere uitgevers waarden te verwerken](#update-your-code-to-handle-multiple-issuer-values)
-4. [Meer informatie over de toestemming van gebruikers en beheerders en het maken van passende code wijzigingen](#understand-user-and-admin-consent)
-
-Laten we eens kijken naar elke stap. U kunt ook direct naar het voor beeld gaan met [een multi tenant SaaS-webtoepassing die Microsoft Graph aanroept met behulp van Azure AD en OpenID Connect Connect](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md).
-
-## <a name="update-registration-to-be-multi-tenant"></a>Registratie bijwerken naar multi tenant
-
-Web app/API-registraties in azure AD zijn standaard één Tenant. U kunt uw registratie meerdere tenants maken door de optie **ondersteunde account typen** te vinden in het deel venster **verificatie** van de registratie van uw toepassing in de [Azure Portal][AZURE-portal] en in te stellen op **accounts in elke organisatie Directory**.
-
-Voordat een toepassing kan worden gemaakt met meerdere tenants, moet Azure AD de App-ID-URI van de toepassing globaal uniek zijn. De URI van de app-id is een van de manieren waarop een toepassing wordt geïdentificeerd in protocolberichten. Voor een toepassing met één tenant is het voldoende dat de URI van de app-id uniek is binnen die tenant. Voor een multitenant toepassing moet deze wereldwijd uniek zijn, zodat Azure Active Directory de toepassing in alle tenants kan vinden. Wereldwijde uniekheid wordt afgedwongen door te vereisen dat de URI van de app-id een hostnaam heeft die overeenkomt met een geverifieerd domein van de Azure Active Directory-tenant.
-
-Apps die zijn gemaakt via de Azure Portal, hebben standaard een wereld wijd unieke App-ID-URI die is ingesteld voor het maken van apps, maar u kunt deze waarde wijzigen. Als de naam van uw Tenant bijvoorbeeld contoso.onmicrosoft.com is, zou een geldige App-ID-URI worden `https://contoso.onmicrosoft.com/myapp`. Als uw Tenant een domein van `contoso.com`heeft geverifieerd, wordt ook een geldige App-ID-URI `https://contoso.com/myapp`. Als de URI van de app-id dit patroon niet volgt, mislukt het instellen van een multitenant toepassing.
+Als u een bestaande toepassing hebt die een eigen accountsysteem heeft of andere soorten aanmeldingen van andere cloudproviders ondersteunt, is het eenvoudig om Azure AD-aanmelding van elke tenant toe te voegen. Registreer uw app, voeg aanmeldingscode toe via OAuth2, OpenID Connect of SAML en plaats een [knop 'Aanmelden bij Microsoft'][AAD-App-Branding] in uw toepassing.
 
 > [!NOTE]
-> Systeem eigen client registraties en [micro soft Identity platform-toepassingen](./active-directory-appmodel-v2-overview.md) zijn standaard multi tenants. U hoeft geen actie te ondernemen om deze toepassing te registreren met meerdere tenants.
+> In dit artikel wordt ervan uitgegaan dat u al bekend bent met het bouwen van één tenanttoepassing voor Azure AD. Als u dat niet bent, begint u met een van de quickstarts op de startpagina van de [ontwikkelaarshandleiding.][AAD-Dev-Guide]
 
-## <a name="update-your-code-to-send-requests-to-common"></a>Uw code bijwerken om aanvragen te verzenden naar/veelvoorkomende
+Er zijn vier eenvoudige stappen om uw toepassing om te zetten in een Azure AD-app met meerdere tenant's:
 
-Bij één Tenant-toepassing worden aanmeldings aanvragen verzonden naar het aanmeldings eindpunt van de Tenant. Voor contoso.onmicrosoft.com is het eind punt bijvoorbeeld: `https://login.microsoftonline.com/contoso.onmicrosoft.com`. Aanvragen die worden verzonden naar het eind punt van een Tenant kunnen gebruikers (of gasten) in die Tenant aanmelden bij toepassingen in die Tenant.
+1. [Uw toepassingsregistratie bijwerken om multi-tenant te zijn](#update-registration-to-be-multi-tenant)
+2. [Uw code bijwerken om aanvragen naar het /common endpoint te verzenden](#update-your-code-to-send-requests-to-common)
+3. [Uw code bijwerken om meerdere emittentwaarden te verwerken](#update-your-code-to-handle-multiple-issuer-values)
+4. [Inzicht in de toestemming van gebruikers en beheerders en de juiste codewijzigingen aanbrengen](#understand-user-and-admin-consent)
 
-Met een multi tenant-toepassing kent de toepassing niet de voor zijde van de Tenant van de gebruiker. Daarom kunt u geen aanvragen verzenden naar het eind punt van een Tenant. In plaats daarvan worden aanvragen verzonden naar een eind punt dat multiplext voor alle Azure AD-tenants: `https://login.microsoftonline.com/common`
+Laten we eens kijken naar elke stap in detail. U ook rechtstreeks naar het voorbeeld [springen Een SaaS-webtoepassing met meerdere tenant's maken die Microsoft Graph aanroept met Azure AD en OpenID Connect.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)
 
-Wanneer micro soft Identity platform een aanvraag ontvangt op het/veelvoorkomende-eind punt, wordt de gebruiker in en als gevolg hiervan gedetecteerd welke Tenant de gebruiker is. Het/veelvoorkomende-eind punt werkt met alle verificatie protocollen die worden ondersteund door Azure AD: OpenID Connect Connect, OAuth 2,0, SAML 2,0 en WS-Federation.
+## <a name="update-registration-to-be-multi-tenant"></a>Registratie bijwerken om multi-tenant te zijn
 
-Het aanmeldings antwoord voor de toepassing bevat vervolgens een token dat de gebruiker vertegenwoordigt. De waarde van de verlener in het token geeft aan op welke toepassing de gebruiker zich bevindt. Wanneer een antwoord wordt geretourneerd vanuit het/veelvoorkomende-eind punt, komt de waarde van de verlener in het token overeen met de Tenant van de gebruiker.
+Web-app/API-registraties in Azure AD zijn standaard één tenant. U uw registratie meerdere tenant maken door de **ingeschakelde accounttypen** te zoeken in het **verificatiedeelvenster** van uw toepassingsregistratie in de [Azure-portal][AZURE-portal] en deze in te stellen op **Accounts in een organisatiemap.**
+
+Voordat een toepassing met meerdere tenant kan worden gemaakt, vereist Azure AD dat de App ID URI van de toepassing wereldwijd uniek is. De URI van de app-id is een van de manieren waarop een toepassing wordt geïdentificeerd in protocolberichten. Voor een toepassing met één tenant is het voldoende dat de URI van de app-id uniek is binnen die tenant. Voor een multitenant toepassing moet deze wereldwijd uniek zijn, zodat Azure Active Directory de toepassing in alle tenants kan vinden. Wereldwijde uniekheid wordt afgedwongen door te vereisen dat de URI van de app-id een hostnaam heeft die overeenkomt met een geverifieerd domein van de Azure Active Directory-tenant.
+
+Apps die via de Azure-portal zijn gemaakt, hebben standaard een wereldwijd unieke URI-app-id ingesteld bij het maken van apps, maar u deze waarde wijzigen. Als de naam van uw tenant bijvoorbeeld contoso.onmicrosoft.com was, `https://contoso.onmicrosoft.com/myapp`is een geldige App ID URI . Als uw tenant een geverifieerd `contoso.com`domein van , dan een `https://contoso.com/myapp`geldige App ID URI zou ook . Als de URI van de app-id dit patroon niet volgt, mislukt het instellen van een multitenant toepassing.
+
+> [!NOTE]
+> Native clientregistraties en [Microsoft-identiteitsplatformtoepassingen](./active-directory-appmodel-v2-overview.md) zijn standaard multi-tenant. U hoeft geen actie te ondernemen om deze toepassingsregistraties multi-tenant te maken.
+
+## <a name="update-your-code-to-send-requests-to-common"></a>Uw code bijwerken om aanvragen naar /common te verzenden
+
+In één tenanttoepassing worden aanmeldingsaanvragen verzonden naar het aanmeldingspunt van de tenant. Bijvoorbeeld, voor contoso.onmicrosoft.com het eindpunt `https://login.microsoftonline.com/contoso.onmicrosoft.com`zou zijn: . Aanvragen die naar het eindpunt van een tenant worden verzonden, kunnen gebruikers (of gasten) in die tenant aanmelden bij toepassingen in die tenant.
+
+Met een toepassing met meerdere tenants weet de toepassing niet van voorin van welke tenant de gebruiker afkomstig is, zodat u geen aanvragen naar het eindpunt van een tenant verzenden. In plaats daarvan worden aanvragen verzonden naar een eindpunt dat multiplexen voor alle Azure AD-tenants:`https://login.microsoftonline.com/common`
+
+Wanneer het Microsoft-identiteitsplatform een aanvraag ontvangt op het gemeenschappelijk eindpunt, wordt de gebruiker in- en als gevolg daarvan ontdekt van welke tenant de gebruiker afkomstig is. Het /common endpoint werkt met alle verificatieprotocollen die worden ondersteund door de Azure AD: OpenID Connect, OAuth 2.0, SAML 2.0 en WS-Federation.
+
+Het aanmeldingsantwoord op de toepassing bevat vervolgens een token dat de gebruiker vertegenwoordigt. De waarde van de uitgever in het token vertelt een toepassing van welke tenant de gebruiker afkomstig is. Wanneer een antwoord terugkeert van het /common endpoint, komt de waarde van de uitgever in het token overeen met de tenant van de gebruiker.
 
 > [!IMPORTANT]
-> Het/veelvoorkomende-eind punt is geen Tenant en is geen verlener, het is alleen een multiplexer. Wanneer u/veelvoorkomende gebruikt, moet de logica in uw toepassing om tokens te valideren worden bijgewerkt om rekening te houden.
+> Het /common endpoint is geen tenant en is geen emittent, het is gewoon een multiplexer. Bij het gebruik van /common moet de logica in uw toepassing om tokens te valideren worden bijgewerkt om hiermee rekening te houden.
 
-## <a name="update-your-code-to-handle-multiple-issuer-values"></a>Uw code bijwerken om meerdere uitgevers waarden te verwerken
+## <a name="update-your-code-to-handle-multiple-issuer-values"></a>Uw code bijwerken om meerdere emittentwaarden te verwerken
 
-Webtoepassingen en Web-Api's ontvangen en valideren tokens van micro soft Identity platform.
+Webtoepassingen en web-API's ontvangen en valideren tokens van het Microsoft-identiteitsplatform.
 
 > [!NOTE]
-> Hoewel systeem eigen client toepassingen tokens van het micro soft Identity-platform aanvragen en ontvangen, kunnen ze ze verzenden naar Api's, waar ze worden gevalideerd. Systeem eigen toepassingen valideren geen tokens en moeten ze als dekkend behandelen.
+> Terwijl native clienttoepassingen tokens aanvragen en ontvangen van het Microsoft-identiteitsplatform, doen ze dit om ze naar API's te sturen, waar ze worden gevalideerd. Native applicaties valideren tokens niet en moeten ze als ondoorzichtig behandelen.
 
-Laten we eens kijken hoe tokens die de toepassing ontvangt, worden gevalideerd van het micro soft Identity-platform. Een enkele Tenant toepassing heeft normaal gesp roken een eindpunt waarde als:
+Laten we eens kijken hoe een toepassing tokens valideert die het ontvangt van het Microsoft-identiteitsplatform. Een enkele tenanttoepassing heeft normaal gesproken een eindpuntwaarde zoals:
 
     https://login.microsoftonline.com/contoso.onmicrosoft.com
 
-en gebruikt deze om een meta gegevens-URL te maken (in dit geval OpenID Connect Connect), zoals:
+en gebruikt deze om een URL met metagegevens te construeren (in dit geval OpenID Connect) zoals:
 
     https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
 
-voor het downloaden van twee belang rijke stukjes informatie die worden gebruikt voor het valideren van tokens: de handtekening sleutels en de waarde van de verlener van de Tenant. Elke Azure AD-Tenant heeft een unieke Issuer-waarde van de vorm:
+om twee kritieke informatie te downloaden die wordt gebruikt om tokens te valideren: de ondertekeningssleutels van de tenant en de waarde van de uitgever. Elke Azure AD-tenant heeft een unieke uitgeverwaarde van het formulier:
 
     https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
 
-de GUID-waarde is de naam van de Tenant-ID van de Tenant. Als u de vorige meta gegevens koppeling voor `contoso.onmicrosoft.com`selecteert, ziet u de waarde van deze verlener in het document.
+waarbij de GUID-waarde de hernoemde veilige versie van de tenant-id van de tenant is. Als u de vorige koppeling `contoso.onmicrosoft.com`met metagegevens selecteert voor, u deze waarde van de uitgever in het document zien.
 
-Wanneer één Tenant toepassing een token valideert, wordt de hand tekening van het token gecontroleerd op basis van de handtekening sleutels van het meta gegevens document. Met deze test kunt u ervoor zorgen dat de naam van de verlener in het token overeenkomt met de waarde die is gevonden in het meta gegevens document.
+Wanneer een enkele tenanttoepassing een token valideert, controleert het de handtekening van het token op de ondertekeningssleutels uit het metagegevensdocument. Deze test maakt het mogelijk om ervoor te zorgen dat de waarde van de uitgever in het token overeenkomt met de waarde die in het metagegevensdocument is gevonden.
 
-Omdat het/veelvoorkomende-eind punt niet overeenkomt met een Tenant en geen verlener is, controleert u de waarde van de verlener in de meta gegevens voor/veelvoorkomende deze een URL met sjabloon heeft in plaats van een werkelijke waarde:
+Omdat het /common endpoint niet overeenkomt met een tenant en geen uitgever is, heeft het, wanneer u de waarde van de uitgever in de metagegevens voor /common onderzoekt, een getemplatede URL in plaats van een werkelijke waarde:
 
     https://sts.windows.net/{tenantid}/
 
-Daarom kan een toepassing met meerdere tenants geen tokens valideren door te voldoen aan de waarde van de verlener in de meta gegevens met de `issuer` waarde in het token. Een toepassing met meerdere tenants heeft logica nodig om te bepalen welke Issuer-waarden geldig zijn en die niet zijn gebaseerd op het Tenant-ID-gedeelte van de waarde van de verlener. 
+Daarom kan een multi-tenanttoepassing tokens niet alleen valideren door de `issuer` waarde van de uitgever in de metagegevens te matchen met de waarde in het token. Een multi-tenanttoepassing heeft logica nodig om te bepalen welke emittentwaarden geldig zijn en welke niet zijn gebaseerd op het tenant-id-gedeelte van de waarde van de uitgever. 
 
-Als een toepassing met meerdere tenants bijvoorbeeld alleen aanmelding toestaat vanuit specifieke tenants die zich hebben geregistreerd voor hun service, dan moet deze de waarde van de verlener of de `tid` claim waarde in het token controleren om ervoor te zorgen dat de Tenant zich in de lijst met abonnees bevindt. Als een toepassing met meerdere tenants alleen met individuen werkt en geen toegangs beslissingen maakt op basis van tenants, dan kan de waarde van de verlener worden genegeerd.
+Als een toepassing met meerdere tenants bijvoorbeeld alleen aanmelding toestaat van specifieke tenants die zich hebben aangemeld `tid` voor hun service, moet deze de waarde van de uitgever of de claimwaarde in het token controleren om ervoor te zorgen dat de tenant in hun lijst met abonnees staat. Als een multi-tenanttoepassing alleen betrekking heeft op individuen en geen toegangsbeslissingen neemt op basis van tenants, kan deze de waarde van de uitgever volledig negeren.
 
-In de voor [beelden met meerdere tenants][AAD-Samples-MT]wordt de verlener uitgeschakeld om een Azure AD-Tenant in te scha kelen om zich aan te melden.
+In de voorbeelden met meerdere tenants is de validatie van de uitgever uitgeschakeld om elke Azure [AD-tenant][AAD-Samples-MT]in staat te stellen zich aan te melden.
 
-## <a name="understand-user-and-admin-consent"></a>Toestemming van gebruiker en beheerder
+## <a name="understand-user-and-admin-consent"></a>Inzicht in toestemming van gebruiker en beheerder
 
-Een gebruiker kan zich alleen aanmelden bij een toepassing in azure AD als de toepassing wordt weer gegeven in de Tenant van de gebruiker. Zo kan de organisatie acties uitvoeren zoals het Toep assen van een uniek beleid wanneer gebruikers van hun Tenant zich aanmelden bij de toepassing. Voor één Tenant toepassing is deze registratie eenvoudig. Dit is de versie die wordt uitgevoerd wanneer u de toepassing registreert in de [Azure Portal][AZURE-portal].
+Als een gebruiker zich wil aanmelden bij een toepassing in Azure AD, moet de toepassing worden weergegeven in de tenant van de gebruiker. Hierdoor kan de organisatie dingen doen zoals het toepassen van uniek beleid wanneer gebruikers van hun tenant zich aanmelden bij de toepassing. Voor één tenanttoepassing is deze registratie eenvoudig; het is degene die gebeurt wanneer u de toepassing registreert in de [Azure-portal.][AZURE-portal]
 
-Voor een toepassing met meerdere tenants is de initiële registratie voor de toepassing in de Azure AD-Tenant die wordt gebruikt door de ontwikkelaar. Wanneer een gebruiker van een andere Tenant zich voor de eerste keer aanmeldt bij de toepassing, vraagt Azure AD ze om toestemming te geven aan de machtigingen die de toepassing heeft aangevraagd. Als ze toestemming geven, wordt een weer gave van de toepassing die een *Service-Principal* wordt genoemd, gemaakt in de Tenant van de gebruiker en kan de aanmelding worden voortgezet. Er wordt ook een delegering in de Directory gemaakt die de toestemming van de gebruiker registreert voor de toepassing. Zie [toepassings objecten en Service-Principal-objecten][AAD-App-SP-Objects]voor meer informatie over de toepassings-en ServicePrincipal-objecten van de toepassing en hoe ze met elkaar zijn verbonden.
+Voor een toepassing met meerdere tenants wordt de eerste registratie voor de toepassing weergegeven in de Azure AD-tenant die door de ontwikkelaar wordt gebruikt. Wanneer een gebruiker van een andere tenant zich voor de eerste keer aanmeldt bij de toepassing, vraagt Azure AD hen toestemming te geven voor de door de toepassing gevraagde machtigingen. Als ze hiermee instemmen, wordt een weergave van de toepassing genaamd een *serviceprincipal* gemaakt in de tenant van de gebruiker en kan de aanmelding worden voortgezet. Er wordt ook een delegatie gemaakt in de map die de toestemming van de gebruiker voor de toepassing registreert. Zie [Toepassingsobjecten en servicehoofdobjecten][AAD-App-SP-Objects]voor meer informatie over de toepassings- en serviceprincipal-objecten en hoe deze zich tot elkaar verhouden.
 
-![Illustreert de toestemming voor app met één laag][Consent-Single-Tier]
+![Illustreert toestemming voor app met één laag][Consent-Single-Tier]
 
-Deze bestemmings ervaring wordt beïnvloed door de machtigingen die de toepassing heeft aangevraagd. Het micro soft Identity-platform ondersteunt twee soorten machtigingen: alleen app en gedelegeerd.
+Deze toestemmingservaring wordt beïnvloed door de door de toepassing gevraagde machtigingen. Microsoft-identiteitsplatform ondersteunt twee soorten machtigingen, alleen voor apps en gedelegeerd.
 
-* Een gedelegeerde machtiging verleent een toepassing de mogelijkheid om te fungeren als een aangemelde gebruiker voor een subset van de dingen die de gebruiker kan doen. U kunt bijvoorbeeld een toepassing de gedelegeerde machtiging verlenen voor het lezen van de agenda van de aangemelde gebruiker.
-* Een machtiging alleen voor apps wordt rechtstreeks verleend aan de identiteit van de toepassing. U kunt bijvoorbeeld een toepassing de machtiging alleen voor de app verlenen om de lijst met gebruikers in een Tenant te lezen, ongeacht wie zich heeft aangemeld bij de toepassing.
+* Een gedelegeerde machtiging verleent een toepassing de mogelijkheid om als aangemelde gebruiker op te treden voor een subset van de dingen die de gebruiker kan doen. U een toepassing bijvoorbeeld de gedelegeerde toestemming geven om de ondertekende in de gebruikersagenda te lezen.
+* Een app-only toestemming wordt rechtstreeks verleend aan de identiteit van de toepassing. U bijvoorbeeld een toepassing de app-only toestemming geven om de lijst met gebruikers in een tenant te lezen, ongeacht wie is aangemeld bij de toepassing.
 
-Sommige machtigingen kunnen worden doorgestuurd naar een gewone gebruiker, terwijl anderen toestemming van de Tenant beheerder vereisen. 
+Sommige machtigingen kunnen worden goedgekeurd door een gewone gebruiker, terwijl anderen toestemming van een tenantbeheerder vereisen. 
 
 ### <a name="admin-consent"></a>toestemming van de beheerder
 
-Bij app-specifieke machtigingen is er altijd toestemming van een tenantbeheerder nodig. Als uw toepassing een machtiging voor een app aanvraagt en een gebruiker zich probeert aan te melden bij de toepassing, wordt een fout bericht weer gegeven met de melding dat de gebruiker geen toestemming kan geven.
+Bij app-specifieke machtigingen is er altijd toestemming van een tenantbeheerder nodig. Als uw toepassing een app-only toestemming aanvraagt en een gebruiker zich bij de toepassing probeert aan te melden, wordt een foutbericht weergegeven waarin staat dat de gebruiker geen toestemming kan geven.
 
-Bepaalde gedelegeerde machtigingen vereisen ook de toestemming van een Tenant beheerder. Het is bijvoorbeeld mogelijk om terug te schrijven naar Azure AD, omdat de aangemelde gebruiker toestemming van de Tenant beheerder nodig heeft. Net als alleen app-machtigingen geldt dat als een gewone gebruiker zich probeert aan te melden bij een toepassing die een gedelegeerde machtiging aanvraagt die toestemming van de beheerder vereist, uw toepassing een fout bericht ontvangt. Of een machtiging beheerders toestemming vereist, wordt bepaald door de ontwikkelaar die de resource heeft gepubliceerd en kan worden gevonden in de documentatie voor de resource. De machtigingen documentatie voor de [Microsoft Graph-API][MSFT-Graph-permission-scopes] geven aan welke machtigingen beheerders toestemming nodig heeft.
+Voor bepaalde gedelegeerde machtigingen is ook toestemming van een tenantbeheerder vereist. De mogelijkheid om bijvoorbeeld terug te schrijven naar Azure AD als de aangemelde gebruiker vereist de toestemming van een tenantbeheerder. Net als app-only machtigingen, als een gewone gebruiker probeert aan te melden bij een toepassing die een gedelegeerde toestemming vraagt waarvoor beheerderstoestemming vereist is, ontvangt uw toepassing een foutmelding. Of een toestemming van de beheerder vereist, wordt bepaald door de ontwikkelaar die de bron heeft gepubliceerd en kan worden gevonden in de documentatie voor de bron. De documentatie over machtigingen voor de [Microsoft Graph-API][MSFT-Graph-permission-scopes] geeft aan welke machtigingen beheerderstoestemming vereisen.
 
-Als uw toepassing gebruikmaakt van machtigingen waarvoor beheerders toestemming is vereist, moet u een penbeweging hebben, zoals een knop of koppeling, waar de beheerder de actie kan initiëren. De aanvraag die uw toepassing verzendt voor deze actie is het gebruikelijke OAuth2/OpenID Connect Connect-autorisatie verzoek dat ook de `prompt=admin_consent` query teken reeks parameter bevat. Zodra de beheerder heeft ingestemd en de Service-Principal is gemaakt in de Tenant van de klant, hebben volgende aanmeldings aanvragen niet de para meter `prompt=admin_consent` nodig. Omdat de beheerder heeft vastgesteld dat de aangevraagde machtigingen acceptabel zijn, worden er geen andere gebruikers in de Tenant om vanaf dat moment toestemming gevraagd.
+Als uw toepassing machtigingen gebruikt waarvoor toestemming van de beheerder vereist is, moet u een gebaar hebben, zoals een knop of een koppeling waar de beheerder de actie kan starten. De aanvraag die uw toepassing voor deze actie verzendt, is het gebruikelijke `prompt=admin_consent` Autorisatieverzoek OAuth2/OpenID Connect dat ook de parameter querytekenreeks bevat. Zodra de beheerder heeft ingestemd en de serviceprincipal is gemaakt in de tenant van `prompt=admin_consent` de klant, hebben volgende aanmeldingsaanvragen de parameter niet nodig. Aangezien de beheerder heeft besloten dat de gevraagde machtigingen aanvaardbaar zijn, worden geen andere gebruikers in de tenant vanaf dat moment om toestemming gevraagd.
 
-Tenantbeheerders kunnen uitschakelen dat normale gebruikers toestemming kunnen geven voor toepassingen. Als dit wordt uitgeschakeld, is er altijd beheerderstoestemming nodig om een toepassing in een tenant te kunnen gebruiken. Als u uw toepassing wilt testen wanneer de toestemming van de eind gebruiker is uitgeschakeld, kunt u de configuratie-switch vinden in de [Azure Portal][AZURE-portal] in de sectie **[gebruikers instellingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** onder **bedrijfs toepassingen**.
+Tenantbeheerders kunnen uitschakelen dat normale gebruikers toestemming kunnen geven voor toepassingen. Als dit wordt uitgeschakeld, is er altijd beheerderstoestemming nodig om een toepassing in een tenant te kunnen gebruiken. Als u uw toepassing wilt testen met toestemming van de eindgebruiker uitgeschakeld, u de configuratieschakelaar vinden in de [Azure-portal][AZURE-portal] in de sectie **[Gebruikersinstellingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** onder **Enterprise-toepassingen**.
 
-De para meter `prompt=admin_consent` kan ook worden gebruikt door toepassingen die machtigingen aanvragen waarvoor geen beheerder toestemming nodig is. Een voor beeld van wanneer de toepassing wordt gebruikt, is een ervaring waarbij de Tenant beheerder één keer meldt en er geen andere gebruikers om toestemming wordt gevraagd van dat punt op.
+De `prompt=admin_consent` parameter kan ook worden gebruikt door toepassingen die machtigingen aanvragen waarvoor geen beheerderstoestemming vereist is. Een voorbeeld van wanneer dit zou worden gebruikt is als de toepassing een ervaring vereist waarbij de tenantbeheerder zich één keer "aanmeldt" en er vanaf dat moment geen andere gebruikers om toestemming worden gevraagd.
 
-Als een toepassing toestemming van de beheerder vereist en een beheerder zich aanmeldt zonder de `prompt=admin_consent` para meter die wordt verzonden, wordt de beheerder **alleen van toepassing voor hun gebruikers account**. Gewone gebruikers kunnen zich nog steeds niet aanmelden of toestemming geven voor de toepassing. Deze functie is handig als u de Tenant beheerder de mogelijkheid wilt geven om uw toepassing te verkennen voordat u andere gebruikers toegang verleent.
+Als een toepassing toestemming van de beheerder `prompt=admin_consent` vereist en een beheerder zich aanmeldt zonder dat de parameter wordt verzonden, wanneer de beheerder met succes instemt met de toepassing, geldt deze **alleen voor hun gebruikersaccount.** Regelmatige gebruikers kunnen zich nog steeds niet aanmelden of toestemming geven voor de toepassing. Deze functie is handig als u de tenantbeheerder de mogelijkheid wilt geven om uw toepassing te verkennen voordat u andere gebruikers toegang geeft.
 
 > [!NOTE]
-> Sommige toepassingen willen een ervaring waarbij gewone gebruikers in eerste instantie toestemming kunnen geven, en later kunnen de toepassing de beheerder vragen en machtigingen aanvragen waarvoor beheerders toestemming nodig is. Er is op dit moment geen manier om dit te doen met een v 1.0-toepassings registratie in azure AD. met het micro soft Identity platform (v 2.0)-eind punt kunnen toepassingen echter bij runtime machtigingen aanvragen in plaats van op registratie tijd, waardoor dit scenario wordt ingeschakeld. Zie het [micro soft Identity platform-eind punt][AAD-V2-Dev-Guide]voor meer informatie.
+> Sommige toepassingen willen een ervaring waarbij regelmatige gebruikers in eerste instantie toestemming kunnen geven, en later kan de toepassing de beheerder betrekken en machtigingen aanvragen waarvoor beheerderstoestemming vereist is. Dit kun je niet doen met een v1.0-toepassingsregistratie in Azure AD. Met behulp van het Microsoft-identiteitsplatform (v2.0) kunnen toepassingen echter machtigingen aanvragen bij runtime in plaats van op registratietijd, waardoor dit scenario mogelijk is. Zie [Eindpunt van het Microsoft-identiteitsplatform voor][AAD-V2-Dev-Guide]meer informatie.
 
-### <a name="consent-and-multi-tier-applications"></a>Toestemming en toepassingen met meerdere lagen
+### <a name="consent-and-multi-tier-applications"></a>Toestemming en toepassingen met meerdere niveaus
 
-Uw toepassing heeft mogelijk meerdere lagen, die elk worden vertegenwoordigd door een eigen registratie in azure AD. Bijvoorbeeld een systeem eigen toepassing die een web-API aanroept, of een webtoepassing die een web-API aanroept. In beide gevallen vraagt de client (systeem eigen app of web-app) machtigingen voor het aanroepen van de bron (Web-API). De client kan alleen worden doorgestuurd naar de Tenant van een klant als alle resources waaraan het verzoek is toegewezen, al bestaan in de Tenant van de klant. Als niet aan deze voor waarde wordt voldaan, retourneert Azure AD een fout melding dat de resource eerst moet worden toegevoegd.
+Uw toepassing kan meerdere lagen hebben, elk vertegenwoordigd door een eigen registratie in Azure AD. Bijvoorbeeld een native toepassing die een web-API aanroept, of een webtoepassing die een web-API aanroept. In beide gevallen vraagt de client (native app of web app) machtigingen aan om de resource (web API) aan te roepen. Om de client met succes in te stemmen bij de tenant van een klant, moeten alle resources waaraan hij machtigingen vraagt, al bestaan in de tenant van de klant. Als niet aan deze voorwaarde is voldaan, retourneert Azure AD een fout dat de bron eerst moet worden toegevoegd.
 
-#### <a name="multiple-tiers-in-a-single-tenant"></a>Meerdere lagen in één Tenant
+#### <a name="multiple-tiers-in-a-single-tenant"></a>Meerdere lagen in één tenant
 
-Dit kan een probleem zijn als uw logische toepassing bestaat uit twee of meer toepassings registraties, bijvoorbeeld een afzonderlijke client en resource. Hoe wordt de resource eerst in de Tenant van de klant weer geven? Azure AD bestrijkt deze situatie door de client en resource in te scha kelen in één stap. De gebruiker ziet het totaal van de machtigingen die zijn aangevraagd door de client en de resource op de pagina toestemming. Als u dit gedrag wilt inschakelen, moet de toepassings registratie van de resource de App-ID van de client bevatten als een `knownClientApplications` in het [toepassings manifest][AAD-App-Manifest]. Bijvoorbeeld:
+Dit kan een probleem zijn als uw logische toepassing bestaat uit twee of meer toepassingsregistraties, bijvoorbeeld een afzonderlijke client en resource. Hoe krijg je de bron eerst in de klanttenant? Azure AD dekt deze aanvraag door client en resource in één stap toe te laten. De gebruiker ziet de som van de door de client en de resource gevraagde machtigingen op de toestemmingspagina. Om dit gedrag mogelijk te maken, moet de registratie van `knownClientApplications` de toepassing van de bron de app-id van de client als een in het [toepassingsmanifest bevatten.][AAD-App-Manifest] Bijvoorbeeld:
 
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 
-Dit wordt geïllustreerd in een native client voor het aanroepen van een web-API met meerdere lagen in de sectie [gerelateerde inhoud](#related-content) aan het einde van dit artikel. In het volgende diagram vindt u een overzicht van de toestemming voor een app met meerdere lagen die is geregistreerd in één Tenant.
+Dit wordt aangetoond in een multi-tier native client calling web API-voorbeeld in de sectie [Gerelateerde inhoud](#related-content) aan het einde van dit artikel. Het volgende diagram geeft een overzicht van de toestemming voor een multi-tier app geregistreerd in een enkele tenant.
 
-![Illustreert de instemming met de bekende client-app met meerdere lagen][Consent-Multi-Tier-Known-Client]
+![Illustreert toestemming voor bekende client-app met meerdere lagen][Consent-Multi-Tier-Known-Client]
 
 #### <a name="multiple-tiers-in-multiple-tenants"></a>Meerdere lagen in meerdere tenants
 
-Een vergelijkbaar geval treedt op als de verschillende lagen van een toepassing in verschillende tenants worden geregistreerd. Denk bijvoorbeeld aan het bouwen van een systeem eigen client toepassing die de Office 365 Exchange Online API aanroept. Voor het ontwikkelen van de systeem eigen toepassing en later voor het uitvoeren van de systeem eigen toepassing in de Tenant van een klant, moet de service-principal van Exchange Online zijn. In dit geval moet de ontwikkelaar en klant Exchange Online kopen voor de service-principal die in hun tenants moet worden gemaakt.
+Een soortgelijk geval gebeurt als de verschillende lagen van een toepassing zijn geregistreerd in verschillende tenants. Denk bijvoorbeeld aan het geval van het bouwen van een native clienttoepassing die de Office 365 Exchange Online API aanroept. Om de native applicatie te ontwikkelen en later voor de native toepassing in de tenant van een klant te laten draaien, moet de Exchange Online-serviceprincipal aanwezig zijn. In dit geval moeten de ontwikkelaar en de klant Exchange Online kopen voor de serviceprincipal die in zijn huurders moet worden gemaakt.
 
-Als het een API is die door een andere organisatie dan micro soft is gebouwd, moet de ontwikkelaar van de API een manier bieden om hun klanten de toepassing te laten toestemming geven aan de tenants van hun klanten. Het aanbevolen ontwerp is voor de ontwikkelaar van derden om de API te bouwen, zodat deze ook kan worden gebruikt als een webclient voor het implementeren van de registratie. Om dit te doen:
+Als het een API is die is gebouwd door een andere organisatie dan Microsoft, moet de ontwikkelaar van de API een manier bieden voor hun klanten om de toepassing toe te geven aan de tenants van hun klanten. Het aanbevolen ontwerp is voor de externe ontwikkelaar om de API zodanig te bouwen dat het ook kan functioneren als een webclient om aanmelding te implementeren. Om dit te doen:
 
-1. Volg de eerdere secties om te controleren of de API de vereisten voor multi tenant-toepassingen registreren/code implementeert.
-2. Naast het weer geven van de scopes/rollen van de API, moet u ervoor zorgen dat de registratie de machtiging ' aanmelden en gebruikers profiel lezen ' bevat (standaard).
-3. Implementeer een pagina voor aanmelden/aanmelden in de webclient en volg de instructies voor de [beheerder](#admin-consent) .
-4. Zodra de gebruiker aan de toepassing heeft gerefereerd, worden de koppelingen Service-Principal en overdracht van toestemming in hun Tenant gemaakt. de systeem eigen toepassing kan tokens voor de API ophalen.
+1. Volg de eerdere secties om ervoor te zorgen dat de API de vereisten voor registratie/code voor multi-tenanttoepassingen implementeert.
+2. Zorg er niet in dat de api de scopes/rollen van de API blootlegt, maar zorg ervoor dat de registratie de machtiging 'Aanmelden en gebruikersprofiel' bevat (standaard opgegeven).
+3. Implementeer een aanmeldings-/aanmeldingspagina in de webclient en volg de richtlijnen [voor beheerderstoestemming.](#admin-consent)
+4. Zodra de gebruiker toestemming geeft voor de toepassing, worden de koppelingen voor serviceprincipal en toestemmingsdelegatie in hun tenant gemaakt en kan de native toepassing tokens voor de API krijgen.
 
-In het volgende diagram vindt u een overzicht van de toestemming voor een app met meerdere lagen die is geregistreerd in verschillende tenants.
+Het volgende diagram geeft een overzicht van de toestemming voor een multi-tier app geregistreerd in verschillende tenants.
 
-![Illustreert de toestemming voor multi-party-apps met meerdere lagen][Consent-Multi-Tier-Multi-Party]
+![Illustreert toestemming voor multi-tier multi-party app][Consent-Multi-Tier-Multi-Party]
 
 ### <a name="revoking-consent"></a>Toestemming intrekken
 
-Gebruikers en beheerders kunnen de toestemming voor uw toepassing op elk gewenst moment intrekken:
+Gebruikers en beheerders kunnen op elk gewenst moment de toestemming voor uw aanvraag intrekken:
 
-* Gebruikers trekken de toegang tot afzonderlijke toepassingen in door ze te verwijderen uit de lijst met toepassingen van het [toegangs venster][AAD-Access-Panel] .
-* Beheerders trekken de toegang tot toepassingen in door ze te verwijderen in het gedeelte [bedrijfs toepassingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) van de [Azure Portal][AZURE-portal].
+* Gebruikers trekken de toegang tot afzonderlijke toepassingen in door ze uit hun lijst [met toegangspaneeltoepassingen te][AAD-Access-Panel] verwijderen.
+* Beheerders trekken de toegang tot toepassingen in door ze te verwijderen met behulp van de sectie [Enterprise-toepassingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) van de [Azure-portal.][AZURE-portal]
 
-Als een beheerder een toepassing voor alle gebruikers in een Tenant toestuurt, kunnen gebruikers de toegang niet afzonderlijk intrekken. Alleen de beheerder kan de toegang intrekken en alleen voor de hele toepassing.
+Als een beheerder instemt met een toepassing voor alle gebruikers in een tenant, kunnen gebruikers de toegang niet afzonderlijk intrekken. Alleen de beheerder kan de toegang intrekken, en alleen voor de hele toepassing.
 
-## <a name="multi-tenant-applications-and-caching-access-tokens"></a>Toepassingen voor meerdere tenants en toegangs tokens in de cache
+## <a name="multi-tenant-applications-and-caching-access-tokens"></a>Multi-tenant toepassingen en caching access tokens
 
-Toepassingen met meerdere tenants kunnen ook toegangs tokens krijgen om Api's aan te roepen die door Azure AD worden beveiligd. Een veelvoorkomende fout bij het gebruik van de Active Directory Authentication Library (ADAL) met een toepassing met meerdere tenants is om eerst een token aan te vragen voor een gebruiker met behulp van/veelvoorkomende, een antwoord te ontvangen en vervolgens een volgend token aan te vragen voor diezelfde gebruiker met behulp van/common. Omdat het antwoord van Azure AD afkomstig is van een Tenant, niet/veelvoorkomende, ADAL het token in de cache van de Tenant opgeslagen. De volgende aanroep van/veelvoorkomende voor het ophalen van een toegangs token voor de gebruiker heeft de cache vermelding missen en de gebruiker wordt gevraagd zich opnieuw aan te melden. Om te voor komen dat de cache ontbreekt, moet u ervoor zorgen dat de volgende aanroepen voor een al aangemelde gebruiker worden gemaakt aan het eind punt van de Tenant.
+Multitenant-toepassingen kunnen ook toegangstokens krijgen om API's aan te roepen die zijn beschermd door Azure AD. Een veelvoorkomende fout bij het gebruik van de Active Directory Authentication Library (ADAL) met een multi-tenant toepassing is om in eerste instantie een token aan te vragen voor een gebruiker die /common gebruikt, een antwoord te ontvangen en vervolgens een volgend token aan te vragen voor diezelfde gebruiker die ook /common gebruikt. Omdat het antwoord van Azure AD afkomstig is van een tenant, niet /gewoon, slaat ADAL het token in de cache als afkomstig van de tenant. De daaropvolgende oproep aan /common om een toegangstoken voor de gebruiker te krijgen, mist de cache-vermelding en de gebruiker wordt gevraagd zich opnieuw aan te melden. Om te voorkomen dat de cache ontbreekt, moet u ervoor zorgen dat volgende oproepen voor een reeds aangemelde gebruiker worden uitgevoerd naar het eindpunt van de tenant.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een toepassing bouwt die kan worden aangemeld bij een gebruiker vanuit een Azure AD-Tenant. Nadat u eenmalige aanmelding (SSO) tussen uw app en Azure AD hebt ingeschakeld, kunt u uw toepassing ook bijwerken om toegang te krijgen tot Api's die door micro soft-resources zoals Office 365 worden weer gegeven. Zo kunt u een persoonlijke ervaring bieden in uw toepassing, zoals het weer geven van contextuele informatie aan de gebruikers, zoals de profiel afbeelding of de volgende agenda-afspraak. Ga voor meer informatie over het maken van API-aanroepen naar Azure AD en Office 365-services zoals Exchange, share point, OneDrive, OneNote en meer naar [Microsoft Graph-API][MSFT-Graph-overview].
+In dit artikel hebt u geleerd hoe u een toepassing maken die zich kan aanmelden bij een gebruiker vanuit een Azure AD-tenant. Nadat u Single Sign-On (SSO) hebt ingeschakeld tussen uw app en Azure AD, u uw toepassing ook bijwerken om toegang te krijgen tot API's die worden blootgesteld door Microsoft-bronnen, zoals Office 365. Hiermee u een persoonlijke ervaring in uw toepassing bieden, zoals het tonen van contextuele informatie aan de gebruikers, zoals hun profielfoto of hun volgende agenda-afspraak. Ga voor meer informatie over het voeren van API-aanroepen naar Azure AD- en Office 365-services zoals Exchange, SharePoint, OneDrive, OneNote en meer naar [Microsoft Graph API][MSFT-Graph-overview].
 
 ## <a name="related-content"></a>Gerelateerde inhoud
 
-* [Voor beeld van multi tenant-toepassing](https://github.com/mspnp/multitenant-saas-guidance)
-* [Huisstijl richtlijnen voor toepassingen][AAD-App-Branding]
-* [Toepassings objecten en Service-Principal-objecten][AAD-App-SP-Objects]
+* [Voorbeeld van toepassingen met meerdere tenant's](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)
+* [Huisstijlrichtlijnen voor apps][AAD-App-Branding]
+* [Toepassingsobjecten en servicehoofdobjecten][AAD-App-SP-Objects]
 * [Toepassingen integreren met Azure Active Directory][AAD-Integrating-Apps]
-* [Overzicht van het instemming raamwerk][AAD-Consent-Overview]
-* [Microsoft Graph API-machtigings bereik][MSFT-Graph-permission-scopes]
+* [Overzicht van het Consent Framework][AAD-Consent-Overview]
+* [Machtigingen voor Microsoft Graph API-machtigingen][MSFT-Graph-permission-scopes]
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com

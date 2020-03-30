@@ -1,5 +1,5 @@
 ---
-title: De app die is geregistreerd bij het micro soft-identiteits platform verwijderen | Azure
+title: App verwijderen die is geregistreerd bij het Microsoft-identiteitsplatform | Azure
 description: Leer hoe u een toepassing verwijdert die bij het Microsoft Identity Platform is geregistreerd.
 services: active-directory
 author: rwike77
@@ -13,13 +13,13 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 3cc9e4458f14a63bad7f484bc16683248895ede9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240847"
 ---
-# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Snelstartgids: een toepassing verwijderen die is geregistreerd bij het micro soft Identity-platform
+# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Snelstart: een toepassing verwijderen die is geregistreerd bij het Microsoft-identiteitsplatform
 
 Bedrijfsontwikkelaars en SaaS-providers (software als een dienst) die toepassingen hebben geregistreerd bij het Microsoft Identity Platform moeten mogelijk de registratie van een toepassing verwijderen.
 
@@ -30,7 +30,7 @@ In deze snelstart leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet beschikken over een Tenant waarvoor toepassingen zijn geregistreerd. Zie [Een toepassing registreren met het Microsoft Identity Platform](quickstart-register-app.md) voor informatie over het toevoegen en registeren van apps.
+U moet een tenant hebben die er aanvragen op heeft geregistreerd. Zie [Een toepassing registreren met het Microsoft Identity Platform](quickstart-register-app.md) voor informatie over het toevoegen en registeren van apps.
 
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>Een toepassing verwijderen die is geschreven door u of uw organisatie
 
@@ -39,8 +39,8 @@ Toepassingen die u of uw organisatie hebben geregistreerd, worden vertegenwoordi
 ### <a name="to-remove-an-application"></a>Toepassing verwijderen
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-2. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
-3. Selecteer in het navigatie deel venster aan de linkerkant de **Azure Active Directory** -service en selecteer vervolgens **app-registraties**. Zoek en selecteer de toepassing die u wilt configureren. Wanneer u de app hebt geselecteerd, ziet u de pagina **Overzicht**.
+2. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
+3. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service** en selecteer **vervolgens App-registraties**. Zoek en selecteer de toepassing die u wilt configureren. Wanneer u de app hebt geselecteerd, ziet u de pagina **Overzicht**.
 4. Selecteer **Verwijderen** op de pagina **Overzicht**.
 5. Selecteer **Ja** om te bevestigen dat u de app wilt verwijderen.
 
@@ -57,7 +57,7 @@ Als u de toegang van een toepassing tot uw directory wilt verwijderen (nadat u t
 
 Lees meer over andere gerelateerde snelstarts voor app-beheer:
 
-* [Een toepassing registreren bij het Microsoft Identity Platform](quickstart-register-app.md)
+* [Een toepassing registreren met het Microsoft Identity Platform](quickstart-register-app.md)
 * [Een clienttoepassing configureren voor toegang tot web-API's](quickstart-configure-app-access-web-apis.md)
 * [Een toepassing configureren voor het beschikbaar maken van web-API's](quickstart-configure-app-expose-web-apis.md)
-* [De accounts wijzigen die worden ondersteund in een toepassing](quickstart-modify-supported-accounts.md)
+* [De accounts wijzigen die worden ondersteund door een toepassing](quickstart-modify-supported-accounts.md)

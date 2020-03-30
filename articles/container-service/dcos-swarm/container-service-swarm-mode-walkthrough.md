@@ -1,5 +1,5 @@
 ---
-title: 'KEUR Quick Start: Azure docker CE-cluster voor Linux'
+title: (AFGESCHAFT) Quickstart - Azure Docker CE-cluster voor Linux
 description: Leer snel hoe u een Docker CE-cluster voor Linux-containers in Azure Container Service maakt met de Azure CLI.
 author: iainfoulds
 ms.service: container-service
@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: 5f492dd2bd270d3f067c05c1dc2235d54e481847
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: d4bbd5560681aa73709019e87c6c22470a64ad78
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274877"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481735"
 ---
-# <a name="deprecated-deploy-docker-ce-cluster"></a>KEUR Docker CE-cluster implementeren
+# <a name="deprecated-deploy-docker-ce-cluster"></a>(AFGESCHAFT) Docker CE-cluster implementeren
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-In deze snelstartgids wordt een Docker CE-cluster geïmplementeerd met behulp van de Azure CLI. Vervolgens wordt er een toepassing met meerdere containers die bestaat uit een web-front-end en een Redis-exemplaar geïmplementeerd en uitgevoerd op het cluster. Zodra de toepassing is voltooid, is deze toegankelijk via internet.
+In deze quickstart wordt een Docker CE-cluster geïmplementeerd met azure cli. Vervolgens wordt er een toepassing met meerdere containers die bestaat uit een web-front-end en een Redis-exemplaar geïmplementeerd en uitgevoerd op het cluster. Zodra de toepassing is voltooid, is deze toegankelijk via internet.
 
 Docker CE in Azure Container Service is in de preview-fase. **Gebruik dit daarom niet voor productieworkloads**.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze Quickstart gebruikmaken van Azure CLI versie 2.0.4 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren]( /cli/azure/install-azure-cli).
 
@@ -30,7 +30,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 Een resourcegroep maken met de opdracht [az group create](/cli/azure/group#az-group-create). Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd.
 
-In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *westus2* .
+In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* op de locatie *Westus2* ge.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus2
@@ -53,7 +53,7 @@ Uitvoer:
 
 ## <a name="create-docker-swarm-cluster"></a>Docker Swarm-cluster maken
 
-Maak een Dock CE-cluster in Azure Container Service met de opdracht [az acs create](/cli/azure/acs#az-acs-create). Zie [ACS-regio's voor docker CE](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md) voor informatie over de regio Availaiblity van DOCKer CE
+Maak een Dock CE-cluster in Azure Container Service met de opdracht [az acs create](/cli/azure/acs#az-acs-create). Zie [ACS-regio's voor Docker CE voor](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md) informatie over de beschikbaarheid van Docker CE in de regio
 
 In het volgende voorbeeld wordt een cluster gemaakt met de naam *mySwarmCluster* met een Linux-hoofdknooppunt en drie knooppunten van de Linux-agent.
 
@@ -67,16 +67,15 @@ Na enkele minuten is de opdracht voltooid en retourneert deze informatie over he
 
 ## <a name="connect-to-the-cluster"></a>Verbinding maken met het cluster
 
-In deze snelstartgids hebt u de FQDN nodig van zowel de Docker Swarm-master als de Docker-agentpool. Voer de volgende opdracht uit om FQDN van de master en van de agent te retourneren.
+Tijdens deze quickstart heb je de FQDN van zowel de Docker Swarm master als de Docker agent pool nodig. Voer de volgende opdracht uit om FQDN van de master en van de agent te retourneren.
 
-
-```bash
+```azurecli
 az acs list --resource-group myResourceGroup --query '[*].{Master:masterProfile.fqdn,Agent:agentPoolProfiles[0].fqdn}' -o table
 ```
 
 Uitvoer:
 
-```bash
+```output
 Master                                                               Agent
 -------------------------------------------------------------------  --------------------------------------------------------------------
 myswarmcluster-myresourcegroup-d5b9d4mgmt.ukwest.cloudapp.azure.com  myswarmcluster-myresourcegroup-d5b9d4agent.ukwest.cloudapp.azure.com
@@ -125,7 +124,7 @@ docker stack deploy azure-vote --compose-file azure-vote.yaml
 
 Uitvoer:
 
-```bash
+```output
 Creating network azure-vote_default
 Creating service azure-vote_azure-vote-back
 Creating service azure-vote_azure-vote-front
@@ -139,7 +138,7 @@ docker stack ps azure-vote
 
 De toepassing is gereed, zodra de `CURRENT STATE` van elke service is: `Running`.
 
-```bash
+```output
 ID                  NAME                            IMAGE                                 NODE                               DESIRED STATE       CURRENT STATE                ERROR               PORTS
 tnklkv3ogu3i        azure-vote_azure-vote-front.1   microsoft/azure-vote-front:v1   swarmm-agentpool0-66066781000004   Running             Running 5 seconds ago                            
 lg99i4hy68r9        azure-vote_azure-vote-back.1    redis:latest                          swarmm-agentpool0-66066781000002   Running             Running about a minute ago
@@ -160,15 +159,15 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="get-the-code"></a>Code ophalen
 
-In deze snelstartgids zijn vooraf gemaakte containerinstallatiekopieën gebruikt om een Docker-service te maken. De gerelateerde toepassingscode, Dockerfile en het Opstellen-bestand zijn beschikbaar op GitHub.
+In deze quickstart zijn vooraf gemaakte containerafbeeldingen gebruikt om een Docker-service te maken. De gerelateerde toepassingscode, Dockerfile en het Opstellen-bestand zijn beschikbaar op GitHub.
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u een Docker Swarm-cluster geïmplementeerd. Vervolgens hebt u een toepassing met meerdere containers op dit cluster geïmplementeerd.
+In deze quickstart hebt u een Docker Swarm-cluster geïmplementeerd en een multicontainertoepassing geïmplementeerd.
 
-Voor meer informatie over het integreren van docker Swarm met Azure DevOps, gaat u door naar de CI/CD met docker Swarm en Azure DevOps.
+Ga verder naar de CI/CD met Docker Swarm en Azure DevOps om meer te weten te komen over het integreren van Docker zwerm met Azure DevOps.
 
 > [!div class="nextstepaction"]
-> [CI/CD met docker Swarm en Azure DevOps](./container-service-docker-swarm-setup-ci-cd.md)
+> [CI/CD met Docker Swarm en Azure DevOps](./container-service-docker-swarm-setup-ci-cd.md)

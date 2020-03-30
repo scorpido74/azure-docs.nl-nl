@@ -1,6 +1,6 @@
 ---
-title: Toegang beperken met behulp van hand tekeningen voor gedeelde toegang-Azure HDInsight
-description: Meer informatie over het gebruik van hand tekeningen voor gedeelde toegang voor het beperken van HDInsight-toegang tot gegevens die zijn opgeslagen in azure Storage-blobs.
+title: Toegang beperken met behulp van gedeelde toegangshandtekeningen - Azure HDInsight
+description: Meer informatie over het gebruik van Gedeelde toegangshandtekeningen om hdinsight-toegang te beperken tot gegevens die zijn opgeslagen in Azure-opslagblobs.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,22 +8,22 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 725bdfd4efe3be600c993e568f1a5c7edccc6952
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 1a4ae0701174278203023c156a86aad8feb1ca4c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74148236"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240627"
 ---
-# <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage-hand tekeningen voor gedeelde toegang gebruiken om de toegang tot gegevens in HDInsight te beperken
+# <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage Shared Access Signatures gebruiken om de toegang tot gegevens in HDInsight te beperken
 
-HDInsight heeft volledige toegang tot de gegevens in de Azure Storage accounts die aan het cluster zijn gekoppeld. U kunt hand tekeningen voor gedeelde toegang gebruiken voor de BLOB-container om de toegang tot de gegevens te beperken. Shared Access signatures (SAS) zijn een functie van Azure Storage-accounts waarmee u de toegang tot gegevens kunt beperken. U kunt bijvoorbeeld alleen-lezen toegang bieden tot gegevens.
+HDInsight heeft volledige toegang tot gegevens in de Azure Storage-accounts die aan het cluster zijn gekoppeld. U Gedeelde toegangshandtekeningen in de blobcontainer gebruiken om de toegang tot de gegevens te beperken. SAS (Shared Access Signatures) is een functie van Azure-opslagaccounts waarmee u de toegang tot gegevens beperken. Bijvoorbeeld het bieden van alleen-lezen toegang tot gegevens.
 
 > [!IMPORTANT]  
-> Voor een oplossing met Apache zwerver kunt u overwegen om gebruik te maken van HDInsight die lid is van een domein. Zie het [HDInsight-document domein-gekoppeld configureren](./domain-joined/apache-domain-joined-configure.md) voor meer informatie.
+> Voor een oplossing met Apache Ranger u overwegen hdinsight met een domein te gebruiken. Zie het [HDInsight-document configureren](./domain-joined/apache-domain-joined-configure.md) voor meer informatie.
 
 > [!WARNING]  
-> HDInsight moet volledige toegang hebben tot de standaard opslag voor het cluster.
+> HDInsight moet volledige toegang hebben tot de standaardopslag voor het cluster.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,58 +31,58 @@ HDInsight heeft volledige toegang tot de gegevens in de Azure Storage accounts d
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Een bestaande [opslag container](../storage/blobs/storage-quickstart-blobs-portal.md).  
+* Een bestaande [opslagcontainer](../storage/blobs/storage-quickstart-blobs-portal.md).  
 
-* Als u Power shell gebruikt, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/overview)nodig.
+* Als u PowerShell gebruikt, hebt u de [Az-module](https://docs.microsoft.com/powershell/azure/overview)nodig.
 
-* Als u Azure CLI wilt gebruiken en u deze nog niet hebt geïnstalleerd, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli)als u Azure CLI wilt gebruiken en u deze nog niet hebt geïnstalleerd.
 
-* Als u [python](https://www.python.org/downloads/), versie 2,7 of hoger gebruikt.
+* Bij gebruik van [Python,](https://www.python.org/downloads/)versie 2.7 of hoger.
 
 * Als u C#gebruikt, moet Visual Studio versie 2013 of hoger zijn.
 
-* Het [URI-schema](./hdinsight-hadoop-linux-information.md#URI-and-scheme) voor uw opslag account. Dit is `wasb://` voor Azure Storage, `abfs://` voor Azure Data Lake Storage Gen2 of `adl://` voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, wordt de URI `wasbs://`. Zie ook [beveiligde overdracht](../storage/common/storage-require-secure-transfer.md).
+* Het [URI-schema](./hdinsight-hadoop-linux-information.md#URI-and-scheme) voor uw opslagaccount. Dit geldt `wasb://` voor Azure `abfs://` Storage, Azure Data `adl://` Lake Storage Gen2 of voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Azure `wasbs://`Storage, is de URI . Zie ook, [veilige overdracht](../storage/common/storage-require-secure-transfer.md).
 
-* Een bestaand HDInsight-cluster waaraan een Shared Access Signature moet worden toegevoegd. Als dat niet het geval is, kunt u Azure PowerShell gebruiken om een cluster te maken en een Shared Access Signature toe te voegen tijdens het maken van het cluster.
+* Een bestaand HDInsight-cluster om een gedeelde toegangshandtekening aan toe te voegen. Als dit niet het zo is, u Azure PowerShell gebruiken om een cluster te maken en een gedeelde toegangshandtekening toe te voegen tijdens het maken van een cluster.
 
-* De voorbeeld bestanden van [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). Deze opslag plaats bevat de volgende items:
+* De voorbeeldbestanden [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature)van . Deze opslagplaats bevat de volgende items:
 
-  * Een Visual Studio-project dat een opslag container, opgeslagen beleid en SAS kan maken voor gebruik met HDInsight
-  * Een python-script dat een opslag container, opgeslagen beleid en SAS kan maken voor gebruik met HDInsight
-  * Een Power shell-script waarmee een HDInsight-cluster kan worden gemaakt en geconfigureerd voor het gebruik van de SAS. Hieronder wordt een bijgewerkte versie gebruikt.
-  * Een voorbeeld bestand: `hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
+  * Een Visual Studio-project dat een opslagcontainer, opgeslagen beleid en SAS kan maken voor gebruik met HDInsight
+  * Een Python-script dat een opslagcontainer, opgeslagen beleid en SAS kan maken voor gebruik met HDInsight
+  * Een PowerShell-script dat een HDInsight-cluster kan maken en configureren om de SAS te gebruiken. Een bijgewerkte versie wordt hieronder verder gebruikt.
+  * Een voorbeeldbestand:`hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
 
 ## <a name="shared-access-signatures"></a>Shared Access Signatures
 
-Er zijn twee soorten hand tekeningen voor gedeelde toegang:
+Er zijn twee vormen van gedeelde toegangshandtekeningen:
 
-* Ad hoc: de start tijd, verloop tijd en machtigingen voor de SA'S zijn allemaal opgegeven op de SAS-URI.
+* Ad hoc: de begintijd, vervaldatum en machtigingen voor de SAS zijn allemaal opgegeven op de SAS URI.
 
-* Opgeslagen toegangs beleid: er is een opgeslagen toegangs beleid gedefinieerd in een resource container, zoals een BLOB-container. Een beleid kan worden gebruikt om beperkingen voor een of meer Shared Access-hand tekeningen te beheren. Wanneer u een SAS koppelt aan een opgeslagen toegangs beleid, neemt de SAS de beperkingen over, de start tijd, de verloop tijd en de machtigingen die zijn gedefinieerd voor het opgeslagen toegangs beleid.
+* Beleid voor opgeslagen toegang: een beleid voor opgeslagen toegang wordt gedefinieerd op een resourcecontainer, zoals een blobcontainer. Een beleid kan worden gebruikt om beperkingen voor een of meer gedeelde toegangshandtekeningen te beheren. Wanneer u een SAS koppelt aan een opgeslagen toegangsbeleid, neemt de SAS de beperkingen over - de begintijd, vervaldatum en machtigingen - die zijn gedefinieerd voor het beleid voor opgeslagen toegang.
 
-Het verschil tussen de twee formulieren is van belang voor een belang rijk scenario: intrekken. Een SAS is een URL, dus iedereen die de sa's verkrijgt, kan deze gebruiken, ongeacht wie de SAS heeft aangevraagd om te beginnen. Als een SAS openbaar wordt gepubliceerd, kan deze worden gebruikt door iedereen ter wereld. Een gedistribueerde SAS is geldig tot er een van de volgende vier dingen gebeurt:
+Het verschil tussen de twee formulieren is belangrijk voor één belangrijk scenario: intrekking. Een SAS is een URL, dus iedereen die de SAS verkrijgt, kan deze gebruiken, ongeacht wie er om heeft gevraagd. Als een SAS openbaar wordt gepubliceerd, kan deze door iedereen in de wereld worden gebruikt. Een SAS die wordt gedistribueerd is geldig totdat een van de vier dingen gebeurt:
 
-1. De verloop tijd die is opgegeven voor de SA'S, is bereikt.
+1. De vervaldatum die op de SAS is opgegeven, is bereikt.
 
-2. De verloop tijd die is opgegeven voor het opgeslagen toegangs beleid waarnaar de SA'S verwijzen, is bereikt. De volgende scenario's zorgen ervoor dat de verloop tijd wordt bereikt:
+2. De vervaldatum die is opgegeven voor het beleid voor opgeslagen toegang waarnaar de SAS verwijst, is bereikt. De volgende scenario's zorgen ervoor dat de vervaldatum wordt bereikt:
 
-    * Het tijds interval is verstreken.
-    * Het beleid voor opgeslagen toegang is gewijzigd om verloop tijd in het verleden te hebben. Het wijzigen van de verloop tijd is een manier om de SAS in te trekken.
+    * Het tijdsinterval is verstreken.
+    * Het beleid voor opgeslagen toegang is gewijzigd om een vervaldatum in het verleden te hebben. Het wijzigen van de vervaldatum is een manier om de SAS in te trekken.
 
-3. Het opgeslagen toegangs beleid waarnaar wordt verwezen door de SA'S, wordt verwijderd. Dit is een andere manier om de SAS in te trekken. Als u het opgeslagen toegangs beleid met dezelfde naam opnieuw maakt, zijn alle SAS-tokens voor het vorige beleid geldig (als de verloop tijd op de SA'S niet is verstreken). Als u van plan bent om de SAS in te trekken, moet u een andere naam gebruiken als u het toegangs beleid opnieuw maakt met een verloop tijd in de toekomst.
+3. Het door de SAS genoemde beleid voor opgeslagen toegang wordt verwijderd, wat een andere manier is om de SAS in te trekken. Als u het opgeslagen toegangsbeleid opnieuw maakt met dezelfde naam, zijn alle SAS-tokens voor het vorige beleid geldig (als de vervaldatum op de SAS nog niet is verstreken). Als u van plan bent de SAS in te trekken, moet u een andere naam gebruiken als u het toegangsbeleid opnieuw maakt met een vervaldatum in de toekomst.
 
-4. De account sleutel die is gebruikt voor het maken van de SA'S, wordt opnieuw gegenereerd. Het opnieuw genereren van de sleutel zorgt ervoor dat alle toepassingen die de vorige sleutel gebruiken, niet kunnen worden geverifieerd. Werk alle onderdelen bij naar de nieuwe sleutel.
+4. De accountsleutel die is gebruikt om de SAS te maken, wordt geregenereerd. Als u de sleutel regenereert, worden alle toepassingen die de vorige sleutel gebruiken, mislukt. Werk alle onderdelen bij naar de nieuwe sleutel.
 
 > [!IMPORTANT]  
-> De URI van een Shared Access-hand tekening is gekoppeld aan de account sleutel die wordt gebruikt om de hand tekening te maken en het bijbehorende opgeslagen toegangs beleid (indien van toepassing). Als er geen opgeslagen toegangs beleid is opgegeven, is de enige manier om een hand tekening voor gedeelde toegang in te trekken door de account sleutel te wijzigen.
+> Uri met gedeelde toegangshandtekening is gekoppeld aan de accountsleutel die wordt gebruikt om de handtekening te maken en het bijbehorende beleid voor opgeslagen toegang (indien van toepassing). Als er geen opgeslagen toegangsbeleid is opgegeven, u alleen een handtekening voor gedeelde toegang intrekken door de accountsleutel te wijzigen.
 
-U wordt aangeraden altijd opgeslagen toegangs beleid te gebruiken. Wanneer u een opgeslagen beleid gebruikt, kunt u de hand tekeningen intrekken of de verloop datum naar behoefte verlengen. In de stappen in dit document wordt opgeslagen toegangs beleid gebruikt voor het genereren van SAS.
+We raden u aan altijd een opgeslagen toegangsbeleid te gebruiken. Wanneer u opgeslagen beleidsregels gebruikt, u handtekeningen intrekken of de vervaldatum indien nodig verlengen. De stappen in dit document gebruiken opgeslagen toegangsbeleid om SAS te genereren.
 
-Zie [informatie over het SAS-model](../storage/common/storage-dotnet-shared-access-signature-part-1.md)voor meer informatie over de hand tekeningen voor gedeelde toegang.
+Zie Het [SAS-model begrijpen](../storage/common/storage-dotnet-shared-access-signature-part-1.md)voor meer informatie over handtekeningen voor gedeelde toegang.
 
 ## <a name="create-a-stored-policy-and-sas"></a>Een opgeslagen beleid en SAS maken
 
-Sla het SAS-token op dat aan het einde van elke methode is geproduceerd. Het token ziet er ongeveer als volgt uit:
+Sla het SAS-token op dat aan het einde van elke methode wordt geproduceerd. Het token ziet er het volgende uit:
 
 ```output
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
@@ -90,9 +90,9 @@ Sla het SAS-token op dat aan het einde van elke methode is geproduceerd. Het tok
 
 ### <a name="using-powershell"></a>PowerShell gebruiken
 
-Vervang `RESOURCEGROUP`, `STORAGEACCOUNT`en `STORAGECONTAINER` door de juiste waarden voor uw bestaande opslag container. Wijzig de map in `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` of wijzig de para meter `-File` zodanig dat deze het absolute pad voor `Set-AzStorageblobcontent`bevat. Voer de volgende Power shell-opdracht in:
+Vervang `RESOURCEGROUP` `STORAGEACCOUNT`, `STORAGECONTAINER` en met de juiste waarden voor uw bestaande opslagcontainer. De parameter `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` wijzigen `-File` in of herzien om `Set-AzStorageblobcontent`het absolute pad voor . Voer de volgende PowerShell-opdracht in:
 
-```PowerShell
+```powershell
 $resourceGroupName = "RESOURCEGROUP"
 $storageAccountName = "STORAGEACCOUNT"
 $containerName = "STORAGECONTAINER"
@@ -154,9 +154,9 @@ Set-AzStorageblobcontent `
 
 ### <a name="using-azure-cli"></a>Azure CLI gebruiken
 
-Het gebruik van variabelen in deze sectie is gebaseerd op een Windows-omgeving. Er zijn kleine variaties nodig voor bash of andere omgevingen.
+Het gebruik van variabelen in deze sectie is gebaseerd op een Windows-omgeving. Lichte variaties zullen nodig zijn voor bash of andere omgevingen.
 
-1. Vervang `STORAGEACCOUNT`en `STORAGECONTAINER` met de juiste waarden voor uw bestaande opslag container.
+1. Vervang `STORAGEACCOUNT`en `STORAGECONTAINER` door de juiste waarden voor uw bestaande opslagcontainer.
 
     ```azurecli
     # set variables
@@ -173,14 +173,14 @@ Het gebruik van variabelen in deze sectie is gebaseerd op een Windows-omgeving. 
     az storage account keys list --account-name %AZURE_STORAGE_ACCOUNT% --query "[0].{PrimaryKey:value}" --output table
     ```
 
-2. Stel de opgehaalde primaire sleutel in op een variabele voor later gebruik. Vervang `PRIMARYKEY` door de opgehaalde waarde in de vorige stap en voer de volgende opdracht in:
+2. Stel de opgehaalde primaire sleutel in op een variabele voor later gebruik. Vervang `PRIMARYKEY` de opgehaalde waarde in de vorige stap en voer de onderstaande opdracht in:
 
-    ```azurecli
+    ```console
     #set variable for primary key
     set AZURE_STORAGE_KEY=PRIMARYKEY
     ```
 
-3. Wijzig de map in `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` of wijzig de para meter `--file` zodanig dat deze het absolute pad voor `az storage blob upload`bevat. Voer de overige opdrachten uit:
+3. De parameter `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` wijzigen `--file` in of herzien om `az storage blob upload`het absolute pad voor . Voer de overige opdrachten uit:
 
     ```azurecli
     # Create stored access policy on the containing object
@@ -201,37 +201,37 @@ Het gebruik van variabelen in deze sectie is gebaseerd op een Windows-omgeving. 
 
 ### <a name="using-python"></a>Python gebruiken
 
-Open het `SASToken.py` bestand en vervang `storage_account_name`, `storage_account_key`en `storage_container_name` door de juiste waarden voor uw bestaande opslag container en voer het script uit.
+Open `SASToken.py` het bestand `storage_account_name` `storage_account_key`en `storage_container_name` vervang , en met de juiste waarden voor uw bestaande opslagcontainer en voer het script uit.
 
-Mogelijk moet u `pip install --upgrade azure-storage` uitvoeren als het fout bericht `ImportError: No module named azure.storage`wordt weer gegeven.
+Mogelijk moet u `pip install --upgrade azure-storage` dit uitvoeren als `ImportError: No module named azure.storage`u het foutbericht ontvangt.
 
 ### <a name="using-c"></a>C# gebruiken
 
 1. Open de oplossing in Visual Studio.
 
-2. Klik in Solution Explorer met de rechter muisknop op het project **SASExample** en selecteer **Eigenschappen**.
+2. Klik in Solution Explorer met de rechtermuisknop op het **SASExample-project** en selecteer **Eigenschappen**.
 
-3. Selecteer **instellingen** en voeg waarden toe voor de volgende vermeldingen:
+3. Selecteer **Instellingen** en voeg waarden toe voor de volgende vermeldingen:
 
-   * StorageConnectionString: de connection string voor het opslag account waarvoor u een opgeslagen beleid en SA'S wilt maken. De notatie moet worden `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` waarbij `myaccount` de naam van uw opslag account is en `mykey` de sleutel voor het opslag account is.
+   * StorageConnectionString: de verbindingstekenreeks voor het opslagaccount waarvoor u een opgeslagen beleid en SAS wilt maken. Het formaat `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` moet `myaccount` zijn waar is de `mykey` naam van uw opslagaccount en is de sleutel voor de opslag account.
 
-   * Containernaam: de container in het opslag account waartoe u de toegang wilt beperken.
+   * ContainerName: de container in het opslagaccount waartoe u de toegang wilt beperken.
 
-   * SASPolicyName: de naam die moet worden gebruikt om het opgeslagen beleid te maken.
+   * SASPolicyName: de naam die moet worden gebruikt voor het opgeslagen beleid om te maken.
 
    * FileToUpload: het pad naar een bestand dat naar de container wordt geüpload.
 
-4. Voer het project uit. Sla het SAS-beleids token, de naam van het opslag account en de container naam op. Deze waarden worden gebruikt bij het koppelen van het opslag account aan uw HDInsight-cluster.
+4. Voer het project uit. Sla het SAS-beleidstoken, de naam van het opslagaccount en de naam van de container op. Deze waarden worden gebruikt bij het koppelen van het opslagaccount aan uw HDInsight-cluster.
 
-## <a name="use-the-sas-with-hdinsight"></a>De SAS met HDInsight gebruiken
+## <a name="use-the-sas-with-hdinsight"></a>Gebruik de SAS met HDInsight
 
-Wanneer u een HDInsight-cluster maakt, moet u een primair opslag account opgeven en kunt u optioneel extra opslag accounts opgeven. Beide methoden voor het toevoegen van opslag hebben volledige toegang tot de opslag accounts en containers die worden gebruikt.
+Wanneer u een HDInsight-cluster maakt, moet u een primaire opslagaccount opgeven en u optioneel extra opslagaccounts opgeven. Beide methoden voor het toevoegen van opslag vereisen volledige toegang tot de opslagaccounts en containers die worden gebruikt.
 
-Als u een Shared Access Signature wilt gebruiken om de toegang tot een container te beperken, moet u een aangepaste vermelding toevoegen aan de configuratie van de **kern site** voor het cluster. U kunt de vermelding toevoegen tijdens het maken van het cluster met behulp van Power shell of nadat het cluster is gemaakt met Ambari.
+Als u een gedeelde toegangshandtekening wilt gebruiken om de toegang tot een container te beperken, voegt u een aangepaste vermelding toe aan de **kernsiteconfiguratie** voor het cluster. U de vermelding toevoegen tijdens het maken van het cluster met PowerShell of na het maken van een cluster met Ambari.
 
-### <a name="create-a-cluster-that-uses-the-sas"></a>Een cluster maken dat gebruikmaakt van de SAS
+### <a name="create-a-cluster-that-uses-the-sas"></a>Een cluster maken dat de SAS gebruikt
 
-Vervang `CLUSTERNAME`, `RESOURCEGROUP`, `DEFAULTSTORAGEACCOUNT`, `STORAGECONTAINER`, `STORAGEACCOUNT`en `TOKEN` met de juiste waarden. Voer de Power shell-opdrachten in:
+Vervangen `CLUSTERNAME` `RESOURCEGROUP`, `DEFAULTSTORAGEACCOUNT` `STORAGECONTAINER`, `STORAGEACCOUNT`, `TOKEN` , en met de juiste waarden. Voer de PowerShell-opdrachten in:
 
 ```powershell
 $clusterName = 'CLUSTERNAME'
@@ -341,102 +341,102 @@ Remove-AzResourceGroup `
 ```
 
 > [!IMPORTANT]  
-> Wanneer u wordt gevraagd naar de gebruikers naam en het wacht woord voor HTTP/s of SSH, moet u een wacht woord opgeven dat voldoet aan de volgende criteria:
+> Wanneer u wordt gevraagd om de http/s- of SSH-gebruikersnaam en -wachtwoord, moet u een wachtwoord opgeven dat aan de volgende criteria voldoet:
 >
-> * Moet ten minste 10 tekens lang zijn.
+> * Moet ten minste 10 tekens in lengte.
 > * Moet ten minste één cijfer bevatten.
 > * Moet ten minste één niet-alfanumeriek teken bevatten.
-> * Moet ten minste één hoofd letter of kleine letters bevatten.
+> * Moet ten minste één hoofdletter of kleine letter bevatten.
 
-Het duurt even voordat dit script is voltooid, meestal ongeveer 15 minuten. Wanneer het script is voltooid zonder fouten, is het cluster gemaakt.
+Het duurt een tijdje voor dit script te voltooien, meestal ongeveer 15 minuten. Wanneer het script zonder fouten is voltooid, is het cluster gemaakt.
 
 ### <a name="use-the-sas-with-an-existing-cluster"></a>De SAS gebruiken met een bestaand cluster
 
-Als u een bestaand cluster hebt, kunt u de SAS toevoegen aan de **kern site** configuratie met behulp van de volgende stappen:
+Als u een bestaand cluster hebt, u de SAS toevoegen aan de configuratie van de **kernsite** met behulp van de volgende stappen:
 
-1. Open de Ambari-webgebruikersinterface voor uw cluster. Het adres voor deze pagina is `https://YOURCLUSTERNAME.azurehdinsight.net`. Wanneer u hierom wordt gevraagd, moet u zich bij het cluster aanmelden met de beheerders naam (admin) en het wacht woord dat u hebt gebruikt bij het maken van het cluster.
+1. Open de gebruikersinterface van het Ambari-web voor uw cluster. Het adres voor `https://YOURCLUSTERNAME.azurehdinsight.net`deze pagina is . Wanneer u daarom wordt gevraagd, verifieert u het cluster met de beheerdersnaam (beheerder) en het wachtwoord dat u hebt gebruikt bij het maken van het cluster.
 
-1. Navigeer naar **HDFS** > **configs** > **Geavanceerde** > **aangepaste kern-site**.
+1. Navigeer naar **HDFS** > **Configs** > **Advanced** > **Custom-kernsite**.
 
-1. Vouw de sectie **aangepaste kern site** uit, blader naar het einde en selecteer vervolgens **eigenschap toevoegen...** . Gebruik de volgende waarden voor **sleutel** en **waarde**:
+1. Vouw de sectie **Aangepaste kernsite** uit, schuif naar het einde en selecteer **vervolgens Eigenschap toevoegen...**. Gebruik de volgende waarden voor **Sleutel** en **waarde:**
 
-    * **Sleutel**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-    * **Waarde**: de sa's die door een van de eerder uitgevoerde methoden zijn geretourneerd.
+    * **Sleutel**:`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Waarde**: De SAS wordt geretourneerd door een van de eerder uitgevoerde methoden.
 
-    Vervang `CONTAINERNAME` door de naam van de container die u C# hebt gebruikt in combi natie met de of SAS-toepassing. Vervang `STORAGEACCOUNTNAME` door de naam van het opslag account dat u hebt gebruikt.
+    Vervang `CONTAINERNAME` de containernaam die u hebt gebruikt met de C#- of SAS-toepassing. Vervang `STORAGEACCOUNTNAME` de naam van het opslagaccount die u hebt gebruikt.
 
-    Selecteer **toevoegen** om deze sleutel en waarde op te slaan
+    Selecteer **Toevoegen** om deze sleutel en waarde op te slaan
 
-1. Selecteer de knop **Opslaan** om de configuratie wijzigingen op te slaan. Als hierom wordt gevraagd, voegt u een beschrijving van de wijziging toe (bijvoorbeeld het toevoegen van SAS-opslag toegang) en selecteert u vervolgens **Opslaan**.
+1. Selecteer de knop **Opslaan** om de configuratiewijzigingen op te slaan. Voeg desgevraagd een beschrijving van de wijziging toe ('SAS-opslagtoegang toevoegen' bijvoorbeeld) en selecteer **Opslaan**.
 
     Selecteer **OK** wanneer de wijzigingen zijn voltooid.
 
    > [!IMPORTANT]  
-   > U moet verschillende services opnieuw starten voordat de wijzigingen van kracht worden.
+   > U moet verschillende services opnieuw starten voordat de wijziging van kracht wordt.
 
-1. Er wordt een vervolg keuzelijst **opnieuw opstarten** weer gegeven. Selecteer in de vervolg keuzelijst **alle betrokken opnieuw opstarten** en __Bevestig opnieuw opstarten__.
+1. Er wordt een vervolgkeuzelijst **opnieuw starten** weergegeven. Selecteer **Alle getroffen opnieuw starten** in de vervolgkeuzelijst en bevestig Alles opnieuw __starten__.
 
-    Herhaal dit proces voor **MapReduce2** en **garens**.
+    Herhaal dit proces voor **MapReduce2** en **YARN**.
 
-1. Zodra de services opnieuw zijn opgestart, selecteert u deze en schakelt u de onderhouds modus uit in de vervolg keuzelijst **service acties** .
+1. Zodra de services opnieuw zijn gestart, selecteert u elk services en schakelt u de onderhoudsmodus uit in de vervolgkeuzelijst **Serviceacties.**
 
 ## <a name="test-restricted-access"></a>Beperkte toegang testen
 
-Gebruik de volgende stappen om te controleren of u alleen items kunt lezen en weer geven in het SAS-opslag account.
+Gebruik de volgende stappen om te controleren of u alleen items in het SAS-opslagaccount lezen en aanbieden.
 
-1. Maak verbinding met het cluster. Vervang `CLUSTERNAME` door de naam van uw cluster en voer de volgende opdracht in:
+1. Maak verbinding met het cluster. Vervang `CLUSTERNAME` de naam van uw cluster en voer de volgende opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Als u de inhoud van de container wilt weer geven, gebruikt u de volgende opdracht bij de prompt:
+2. Als u de inhoud van de container wilt weergeven, gebruikt u de volgende opdracht van de prompt:
 
     ```bash
     hdfs dfs -ls wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
     ```
 
-    Vervang `SASCONTAINER` door de naam van de container die is gemaakt voor het SAS-opslag account. Vervang `SASACCOUNTNAME` door de naam van het opslag account dat wordt gebruikt voor de SAS.
+    Vervang `SASCONTAINER` de naam van de container die is gemaakt voor het SAS-opslagaccount. Vervang `SASACCOUNTNAME` de naam van het opslagaccount dat voor de SAS wordt gebruikt.
 
-    De lijst bevat het bestand dat is geüpload toen de container en SA'S werden gemaakt.
+    De lijst bevat het bestand dat is geüpload wanneer de container en SAS zijn gemaakt.
 
-3. Gebruik de volgende opdracht om te controleren of u de inhoud van het bestand kunt lezen. Vervang de `SASCONTAINER` en `SASACCOUNTNAME` zoals in de vorige stap. Vervang `sample.log` door de naam van het bestand dat wordt weer gegeven in de vorige opdracht:
+3. Gebruik de volgende opdracht om te controleren of u de inhoud van het bestand lezen. Vervang `SASCONTAINER` de `SASACCOUNTNAME` en zoals in de vorige stap. Vervang `sample.log` de naam van het bestand dat in de vorige opdracht wordt weergegeven:
 
     ```bash
     hdfs dfs -text wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
     ```
 
-    Met deze opdracht wordt de inhoud van het bestand weer gegeven.
+    Deze opdracht geeft de inhoud van het bestand weer.
 
-4. Gebruik de volgende opdracht om het bestand te downloaden naar het lokale bestands systeem:
+4. Gebruik de volgende opdracht om het bestand te downloaden naar het lokale bestandssysteem:
 
     ```bash
     hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log testfile.txt
     ```
 
-    Met deze opdracht wordt het bestand gedownload naar een lokaal bestand met de naam **test. txt**.
+    Met deze opdracht wordt het bestand gedownload naar een lokaal bestand met de naam **testfile.txt**.
 
-5. Gebruik de volgende opdracht om het lokale bestand te uploaden naar een nieuw bestand met de naam **testupload. txt** op de SAS-opslag:
+5. Gebruik de volgende opdracht om het lokale bestand te uploaden naar een nieuw bestand met de naam **testupload.txt** op de SAS-opslag:
 
     ```bash
     hdfs dfs -put testfile.txt wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
     ```
 
-    U krijgt een bericht te zien dat vergelijkbaar is met de volgende tekst:
+    U ontvangt een bericht dat lijkt op de volgende tekst:
 
         put: java.io.IOException
 
-    Deze fout treedt op omdat de opslag locatie alleen-lezen is en alleen lijst. Gebruik de volgende opdracht om de gegevens op de standaard opslag voor het cluster te plaatsen, wat schrijfbaar is:
+    Deze fout treedt op omdat de opslaglocatie alleen lees+lijst is. Gebruik de volgende opdracht om de gegevens op de standaardopslag voor het cluster te plaatsen, die beschrijfbaar is:
 
     ```bash
     hdfs dfs -put testfile.txt wasbs:///testupload.txt
     ```
 
-    Deze keer wordt de bewerking voltooid.
+    Deze keer moet de bewerking met succes worden voltooid.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u opslag met beperkte toegang kunt toevoegen aan uw HDInsight-cluster, kunt u meer informatie krijgen over andere manieren om te werken met gegevens op uw cluster:
+Nu u hebt geleerd hoe u opslag met beperkte toegang toevoegt aan uw HDInsight-cluster, leert u andere manieren om met gegevens op uw cluster te werken:
 
 * [Apache Hive gebruiken met HDInsight](hadoop/hdinsight-use-hive.md)
 * [MapReduce gebruiken met HDInsight](hadoop/hdinsight-use-mapreduce.md)

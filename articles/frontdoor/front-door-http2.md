@@ -1,6 +1,6 @@
 ---
-title: Azure front-deur service-HTTP2-ondersteuning | Microsoft Docs
-description: Dit artikel helpt u meer te weten te komen over HTTP/2-ondersteuning in de Azure front-deur service
+title: Azure Front Door - HTTP2-ondersteuning | Microsoft Documenten
+description: In dit artikel u meer te weten komen over HTTP/2-ondersteuning in Azure Front Door
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,39 +11,39 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: c3c1721454c0b3c96071c685a764f34d4fa540b9
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 415a89cbccd6b43d64ba1a553d44ac003df5806a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775256"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471622"
 ---
-# <a name="http2-support-in-azure-front-door-service"></a>HTTP/2-ondersteuning in de Azure front-deur service
+# <a name="http2-support-in-azure-front-door"></a>HTTP/2-ondersteuning in Azure Front Door
 
-Momenteel is HTTP/2-ondersteuning actief voor alle front-deur configuraties. Er is geen verdere actie vereist van klanten.
+Momenteel is HTTP/2-ondersteuning actief voor alle frontdoorconfiguraties. Er is geen verdere actie vereist van klanten.
 
-HTTP/2 is een belang rijke revisie van HTTP/1.1. Het biedt snellere webprestaties, gereduceerde reactie tijd en verbeterde gebruikers ervaring, terwijl de vertrouwde HTTP-methoden, status codes en semantiek behouden blijven. Hoewel HTTP/2 is ontworpen om te werken met HTTP en HTTPS, ondersteunen veel webbrowsers van de client alleen HTTP/2 via Transport Layer Security (TLS).
+HTTP/2 is een belangrijke herziening van HTTP/1.1. Het biedt snellere webprestaties, minder responstijd en verbeterde gebruikerservaring, terwijl de bekende HTTP-methoden, statuscodes en semantiek behouden blijven. Hoewel HTTP/2 is ontworpen om te werken met HTTP en HTTPS, ondersteunen veel clientwebbrowsers alleen HTTP/2 via Transport Layer Security (TLS).
 
-### <a name="http2-benefits"></a>HTTP/2-voor delen
+### <a name="http2-benefits"></a>HTTP/2 voordelen
 
-De voor delen van HTTP/2 zijn onder andere:
+De voordelen van HTTP/2 zijn:
 
 *   **Multiplexing en gelijktijdigheid**
 
-    Als u HTTP 1,1 gebruikt, zijn er meerdere TCP-verbindingen vereist voor het maken van meerdere bron aanvragen. Met HTTP/2 kunnen meerdere resources worden aangevraagd op één TCP-verbinding.
+    Als u HTTP 1.1 gebruikt, zijn meerdere TCP-verbindingen vereist en is aan elke verbinding de algemene prestaties gekoppeld. Met HTTP/2 kunnen meerdere resources worden aangevraagd op één TCP-verbinding.
 
-*   **Header compressie**
+*   **Headercompressie**
 
-    Door de HTTP-headers voor de geleverde resources te comprimeren, wordt de tijd op de kabel aanzienlijk verminderd.
+    Door de HTTP-headers voor geserveerde resources te comprimeren, wordt de tijd op de draad aanzienlijk verkort.
 
-*   **Stroom afhankelijkheden**
+*   **Afhankelijkheden streamen**
 
-    Met stroom afhankelijkheden kan de client aangeven dat de server een prioriteit heeft.
+    Met streamafhankelijkheden kan de client aan de server aangeven welke resources prioriteit hebben.
 
 
-## <a name="http2-browser-support"></a>Ondersteuning voor HTTP/2-browsers
+## <a name="http2-browser-support"></a>HTTP/2-browserondersteuning
 
-Alle belang rijke browsers hebben ondersteuning voor HTTP/2 geïmplementeerd in hun huidige versies. Niet-ondersteunde browsers worden automatisch teruggevallen op HTTP/1.1.
+Alle grote browsers hebben HTTP/2-ondersteuning geïmplementeerd in hun huidige versies. Niet-ondersteunde browsers vallen automatisch terug naar HTTP/1.1.
 
 |Browser|Minimale versie|
 |-------------|------------|
@@ -55,9 +55,9 @@ Alle belang rijke browsers hebben ondersteuning voor HTTP/2 geïmplementeerd in 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende bronnen voor meer informatie over HTTP/2:
+Ga voor meer informatie over HTTP/2 naar de volgende bronnen:
 
-- [Start pagina voor HTTP/2-specificaties](https://http2.github.io/)
-- [Officiële Veelgestelde vragen over HTTP/2](https://http2.github.io/faq/)
+- [HTTP/2-specificatiehomepage](https://http2.github.io/)
+- [Officiële HTTP/2 FAQ](https://http2.github.io/faq/)
 - Lees hoe u [een Front Door maakt](quickstart-create-front-door.md).
 - Lees [hoe Front Door werkt](front-door-routing-architecture.md).

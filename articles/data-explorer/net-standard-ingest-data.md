@@ -1,6 +1,6 @@
 ---
-title: Gegevens opnemen met Azure Data Explorer .NET Standard SDK (preview)
-description: In dit artikel leert u hoe u gegevens kunt opnemen in azure Data Explorer met behulp van .NET Standard SDK.
+title: Gegevens opnemen met Azure Data Explorer .NET Standard SDK (Preview)
+description: In dit artikel leert u hoe u gegevens in neemt (laden) in Azure Data Explorer met behulp van .NET Standard SDK.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,19 +8,19 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 9b6eda60f0b0cb1b697560cccc2cffe719d58536
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251776"
 ---
-# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Gegevens opnemen met behulp van de Azure Data Explorer .NET Standard SDK (preview)
+# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Gegevens opnemen met de Azure Data Explorer .NET Standard SDK (Preview)
 
-Azure Data Explorer (ADX) is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. ADX biedt twee clientbibliotheken voor .NET Standard: een [opnamebibliotheek](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) en een [gegevensbibliotheek](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Met deze bibliotheken kunt u gegevens opnemen (laden) in een cluster en gegevens bevragen vanuit uw code. In dit artikel maakt u eerst een tabel en gegevens toewijzing in een test cluster. Vervolgens plaatst u een gegevensopname in het cluster in de wachtrij en valideert u de resultaten.
+Azure Data Explorer (ADX) is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. ADX biedt twee clientbibliotheken voor .NET Standard: een [opnamebibliotheek](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) en een [gegevensbibliotheek](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Met deze bibliotheken kunt u gegevens opnemen (laden) in een cluster en gegevens bevragen vanuit uw code. In dit artikel maakt u eerst een tabel en gegevenstoewijzing in een testcluster. Vervolgens plaatst u een gegevensopname in het cluster in de wachtrij en valideert u de resultaten.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
+* Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
 
 * [Een cluster en database voor testdoeleinden](create-cluster-database-portal.md)
 
@@ -30,9 +30,9 @@ Azure Data Explorer (ADX) is een snelle en zeer schaalbare service om gegevens i
 Install-Package Microsoft.Azure.Kusto.Ingest.NETStandard
 ```
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 
-Azure Data Explorer maakt gebruik van de id van uw AAD-tenant om een toepassing te verifiëren. Om uw tenant-id te vinden, gebruikt u de volgende URL, waarbij u *YourDomain* vervangt door uw domeinnaam.
+Azure Data Explorer maakt gebruik van uw AAD-tenant-id om een toepassing te verifiëren. Om uw tenant-id te vinden, gebruikt u de volgende URL, waarbij u *YourDomain* vervangt door uw domeinnaam.
 
 ```
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
@@ -44,7 +44,7 @@ Dus als uw domein *contoso.com* is, wordt de URL bijvoorbeeld: [https://login.wi
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
-De tenant-id is `6babcaad-604b-40ac-a9d7-9fd97c0b779f` in dit voorbeeld.
+De tenant-id is in dit geval `6babcaad-604b-40ac-a9d7-9fd97c0b779f`.
 
 In dit voorbeeld worden een gebruikersnaam en wachtwoord van ADD gebruikt voor toegang tot het cluster. U kunt ook een AAD-toepassingscertificaat en een AAD-toepassingssleutel gebruiken. Stel de waarden in voor `tenantId`, `user` en `password` voordat u deze code uitvoert.
 
@@ -55,7 +55,7 @@ var password = "<Password>";
 ```
 
 ## <a name="construct-the-connection-string"></a>De verbindingsreeks samenstellen
-Stel nu de verbindingsreeks samen. U maakt de doeltabel en toewijzing in een latere stap.
+Nu maakt u de verbindingsreeks. U maakt de doeltabel en toewijzing in een latere stap.
 
 ```csharp
 var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
@@ -74,7 +74,7 @@ var kustoConnectionStringBuilder =
 
 ## <a name="set-source-file-information"></a>Gegevens van bronbestand instellen
 
-Stel het pad in voor het bronbestand. In dit voorbeeld wordt een voorbeeldbestand gebruikt dat wordt gehost in Azure Blob Storage. De set met voorbeeldgegevens **StormEvents** bevat gegevens van het weer afkomstig van de [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
+Stel het pad in voor het bronbestand. In dit voorbeeld wordt een voorbeeldbestand gebruikt dat wordt gehost in Azure Blob Storage. De **StormEvents-gegevensset** bevat weergerelateerde gegevens van de [National Centers for Environmental Information.](https://www.ncdc.noaa.gov/stormevents/)
 
 ```csharp
 var blobPath = "https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
@@ -209,7 +209,7 @@ using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoCon
 
 ## <a name="run-troubleshooting-queries"></a>Query's voor probleemoplossing uitvoeren
 
-Meld u aan bij [https://dataexplorer.azure.com](https://dataexplorer.azure.com) en maak verbinding met uw cluster. Voer de volgende opdracht uit in uw database om te zien of er in de afgelopen vier uur fouten zijn opgetreden tijdens het opnemen van gegevens. Vervang de naam van de database voordat u de opdracht uitvoert.
+Meld u [https://dataexplorer.azure.com](https://dataexplorer.azure.com) aan en maak verbinding met uw cluster. Voer de volgende opdracht uit in uw database om te zien of er in de afgelopen vier uur fouten zijn opgetreden tijdens het opnemen van gegevens. Vervang de naam van de database voordat u de opdracht uitvoert.
 
 ```Kusto
 .show ingestion failures
@@ -226,7 +226,7 @@ Voer de volgende opdracht uit om de status op te vragen van alle bewerkingen voo
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent om onze andere artikelen te volgen, moet u de resources die u hebt gemaakt, blijven gebruiken. Voer anders de volgende opdracht uit in uw database om de tabel `StormEvents` op te schonen.
+Als u van plan bent onze andere artikelen te volgen, behoudt u de resources die u hebt gemaakt. Voer anders de volgende opdracht uit in uw database om de tabel `StormEvents` op te schonen.
 
 ```Kusto
 .drop table StormEvents

@@ -5,96 +5,96 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 46c2bad6aa4e5c2e72a7e46ed944e2ca8d25bddc
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 318b3e3f774a4381434fd56154f4c0d95c28c7a2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050419"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79479512"
 ---
 # <a name="references"></a>Verwijzingen
 
-In dit artikel worden de Azure FarmBeats-Api's beschreven.
+In dit artikel worden de Azure FarmBeats-API's beschreven.
 
-## <a name="rest-api"></a>REST-API
+## <a name="rest-api"></a>REST API
 
-De Azure FarmBeats-Api's bieden agrarische ondernemingen een gestandaardiseerde, doorgestuurde interface met antwoorden op basis van JSON om u te helpen profiteren van de mogelijkheden van Azure FarmBeats, zoals:
+De Azure FarmBeats API's bieden agrarische bedrijven een gestandaardiseerde RESTful-interface met JSON-gebaseerde antwoorden om u te helpen profiteren van Azure FarmBeats-mogelijkheden, zoals:
 
-- Api's voor het verkrijgen van sensor-, camera-, Drone-, weers-, satelliet-en geaard-gegevens.
-- Normalisatie en contextualization van gegevens over common data providers.
-- Geschematiseerde-toegang en query mogelijkheden op alle opgenomen gegevens.
-- Automatische generatie van meta gegevens die kunnen worden opgevraagd, op basis van agronomic-functies.
-- Automatisch gegenereerde tijdreeks aggregaties voor het snel bouwen van modellen.
-- Geïntegreerde Azure Data Factory-Engine om eenvoudig aangepaste gegevens verwerkings pijplijnen te bouwen.
+- API's om sensor, camera, drone, weer, satelliet en samengestelde grondgegevens te krijgen.
+- Normalisatie en contextualisatie van gegevens tussen veelvoorkomende gegevensproviders.
+- Schematized toegang en query mogelijkheden op alle ingenomen gegevens.
+- Automatische generatie van metadata die kan worden opgevraagd, op basis van agronomische functies.
+- Automatisch gegenereerde tijdvolgordeaggregaten voor snelle modelbouw.
+- Geïntegreerde Azure Data Factory-engine om eenvoudig aangepaste gegevensverwerkingspijplijnen te bouwen.
 
 ## <a name="application-development"></a>Toepassingen ontwikkelen
 
-De FarmBeats-Api's bevatten technische documentatie voor Swagger. Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor meer informatie over alle api's en hun bijbehorende aanvragen of antwoorden.
+De FarmBeats API's bevatten technische documentatie van Swagger. Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor informatie over alle API's en de bijbehorende verzoeken of antwoorden.
 
-De volgende tabel bevat een overzicht van alle objecten en resources in FarmBeats Datahub.
+In de volgende tabel worden alle objecten en bronnen in FarmBeats Datahub samengevat:
 
-| Objecten en bronnen | Beschrijving
+| Objecten en resources | Beschrijving
 --- | ---|
-Farm | De farm komt overeen met een fysieke locatie van belang in het FarmBeats-systeem. Elke farm heeft een farm naam en een unieke Farm-ID. |
-Apparaat  | Het apparaat komt overeen met een fysiek apparaat dat aanwezig is op de farm. Elk apparaat heeft een unieke apparaat-ID. Een apparaat wordt doorgaans ingericht in een farm met een farm-ID.
-DeviceModel  | DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant en het type apparaat, ofwel de gateway ofwel het knoop punt.
-Sensoren  | Sensor komt overeen met een fysieke sensor waarmee waarden worden vastgelegd. Een sensor is doorgaans verbonden met een apparaat met een apparaat-ID.
-SensorModel  | SensorModel komt overeen met de meta gegevens van de sensor, zoals de fabrikant, het type sensor dat analoog of digitaal is en de sensor meting, zoals omgevings temperatuur en druk.
-Telemetrie  | Telemetrie biedt de mogelijkheid om telemetrie-berichten te lezen voor een bepaalde sensor en tijds bereik.
-Job  | De taak komt overeen met elke werk stroom van activiteiten die in het FarmBeats-systeem worden uitgevoerd om een gewenste uitvoer te krijgen. Elke taak is gekoppeld aan een taak-ID en taak type.
-Taak type  | Taak type komt overeen met verschillende taak typen die door het systeem worden ondersteund. Er zijn door het systeem gedefinieerde en door de gebruiker gedefinieerde taak typen opgenomen.
-Extended type  | Extended type komt overeen met de lijst met systeem-en door de gebruiker gedefinieerde typen in het systeem. Extended type helpt bij het instellen van een nieuw sensor-, scène-of scène bestands type in het FarmBeats-systeem.
-Partner  | De partner komt overeen met de sensor-en image-integratie partner voor FarmBeats.
-Scène  | Scène komt overeen met een gegenereerde uitvoer in de context van een farm. Aan elke scène zijn een scène-ID, scène bron, scène type en Farm-ID gekoppeld. Aan elke scène-ID kunnen meerdere scène bestanden zijn gekoppeld.
-SceneFile |SceneFile komt overeen met alle bestanden die voor één scène worden gegenereerd. Er kunnen meerdere SceneFile-Id's aan één scène-ID zijn gekoppeld.
-Regel  |De regel komt overeen met een voor waarde voor Farm gegevens om een waarschuwing te activeren. Elke regel bevindt zich in de context van de gegevens van een farm.
-Waarschuwing  | De waarschuwing komt overeen met een melding die wordt gegenereerd wanneer aan de voor waarde van een regel wordt voldaan. Elke waarschuwing bevindt zich in de context van een regel.
-RoleDefinition  | RoleDefinition definieert toegestane en niet-toegestane acties voor een rol.
-RoleAssignment  |RoleAssignment komt overeen met de toewijzing van een rol aan een gebruiker of een service-principal.
+Boerderij | Farm komt overeen met een fysieke locatie van belang binnen het FarmBeats systeem. Elke boerderij heeft een boerderijnaam en een unieke boerderij-ID. |
+Apparaat  | Het apparaat komt overeen met een fysiek apparaat dat op de boerderij aanwezig is. Elk apparaat heeft een unieke apparaat-ID. Een apparaat is meestal ingericht op een boerderij met een bedrijfs-ID.
+DeviceModel  | DeviceModel komt overeen met de metagegevens van het apparaat, zoals de fabrikant en het type apparaat, dat gateway of knooppunt is.
+Sensor  | Sensor komt overeen met een fysieke sensor die waarden registreert. Een sensor is meestal verbonden met een apparaat met een apparaat-id.
+SensorModel  | SensorModel komt overeen met de metadata van de sensor, zoals de fabrikant, het type sensor, dat analoog of digitaal is, en de sensormeting, zoals omgevingstemperatuur en druk.
+Telemetrie  | Telemetrie biedt de mogelijkheid om telemetrieberichten te lezen voor een bepaalde sensor en tijdsbereik.
+Taak  | Taak komt overeen met elke werkstroom van activiteiten die worden uitgevoerd in het FarmBeats-systeem om een gewenste uitvoer te krijgen. Elke taak is gekoppeld aan een taak-ID en taaktype.
+JobType  | JobType komt overeen met verschillende taaktypen die door het systeem worden ondersteund. Systeemgedefinieerde en door de gebruiker gedefinieerde taaktypen zijn opgenomen.
+ExtendedType  | ExtendedType komt overeen met de lijst met systeem- en door de gebruiker gedefinieerde typen in het systeem. ExtendedType helpt bij het instellen van een nieuwe sensor, scène of scènebestandstype in het FarmBeats-systeem.
+Partner  | Partner komt overeen met de sensor- en beeldintegratiepartner voor FarmBeats.
+Scène  | Scène komt overeen met elke gegenereerde uitvoer in de context van een farm. Elke scène heeft een scène-id, scènebron, scènetype en farm-id die eraan is gekoppeld. Aan elke scène-ID kunnen meerdere scènebestanden zijn gekoppeld.
+Scènebestand |SceneFile komt overeen met alle bestanden die worden gegenereerd voor één scène. Aan één scène-id kunnen meerdere SceneFile-id's zijn gekoppeld.
+Regel  |Regel komt overeen met een voorwaarde voor farm-gerelateerde gegevens om een waarschuwing te activeren. Elke regel is in de context van de gegevens van een bedrijf.
+Waarschuwing  | Waarschuwing komt overeen met een melding, die wordt gegenereerd wanneer aan een regelvoorwaarde is voldaan. Elke waarschuwing is in de context van een regel.
+Roldefinitie  | RoleDefinition definieert toegestane en niet-toegestane acties voor een rol.
+RoleAssignment  |RoleAssignment komt overeen met de toewijzing van een rol aan een gebruiker of een serviceprincipal.
 
 ### <a name="data-format"></a>Gegevensindeling
 
-JSON is een gemeen schappelijke taal onafhankelijke gegevens indeling die een eenvoudige tekst weergave bevat van wille keurige gegevens structuren. Zie de [JSON-website](https://www.json.org/)voor meer informatie.
+JSON is een veelgebruikte taalonafhankelijke gegevensindeling die een eenvoudige tekstweergave van willekeurige gegevensstructuren biedt. Zie voor meer informatie de [JSON website.](https://www.json.org/)
 
 ## <a name="authentication-and-authorization"></a>Verificatie en autorisatie
 
-HTTP-aanvragen voor de REST API worden beveiligd met Azure Active Directory (Azure AD).
-Voor het maken van een geverifieerde aanvraag voor de REST-Api's, vereist de client code verificatie met geldige referenties voordat u de API kunt aanroepen. Verificatie wordt gecoördineerd tussen de verschillende actoren door Azure AD. Het biedt uw client een toegangs token als bewijs van de verificatie. Het token wordt vervolgens verzonden in de HTTP-autorisatie-header van REST API-aanvragen. Zie [Azure Active Directory](https://portal.azure.com) voor ontwikkel aars voor meer informatie over Azure AD-verificatie.
+HTTP-aanvragen voor de REST-API worden beveiligd met Azure Active Directory (Azure AD).
+Als u een geverifieerd verzoek wilt indienen bij de REST-API's, vereist clientcode verificatie met geldige referenties voordat u de API aanroepen. Verificatie wordt gecoördineerd tussen de verschillende actoren door Azure AD. Het biedt uw client een toegangstoken als bewijs van de verificatie. Het token wordt vervolgens verzonden in de HTTP Authorization-header van REST API-aanvragen. Zie [Azure Active Directory](https://portal.azure.com) voor ontwikkelaars voor meer informatie over Azure AD-verificatie.
 
-Het toegangs token moet in volgende API-aanvragen worden verzonden in de koptekst sectie, zoals:
+Het toegangstoken moet worden verzonden in volgende API-aanvragen, in de sectie koptekst, als:
 
 ```
 headers = {"Authorization": "Bearer " + **access_token**}
 ```
 
-### <a name="http-request-headers"></a>HTTP-aanvraag headers
+### <a name="http-request-headers"></a>HTTP-aanvraagkoppen
 
-Hier volgen de meest voorkomende aanvraag headers die u moet opgeven wanneer u een API-aanroep maakt naar Azure FarmBeats Datahub.
+Dit zijn de meest voorkomende aanvraagkoppen die u moet opgeven wanneer u een API-aanroep naar Azure FarmBeats Datahub maakt.
 
 
-**Header** | **Beschrijving en voor beeld**
+**Header** | **Beschrijving en voorbeeld**
 --- | ---
-Content-Type  | De aanvraag indeling (content-type: Application/<format>). Voor Azure FarmBeats Datahub-Api's is de indeling JSON. Content-type: Application/JSON
-Autorisatie  | Hiermee geeft u het toegangs token op dat vereist is om een API-aanroep te maken. Autorisatie: Bearer < Access-token >
-Accepteren | De antwoord indeling. Voor Azure FarmBeats Datahub-Api's is de indeling JSON. Accepteren: toepassing/JSON
+Content-Type  | De aanvraagindeling (Inhoudstype:<format>toepassing/ ). Voor Azure FarmBeats Datahub API's is de indeling JSON. Inhoudstype: toepassing/json
+Autorisatie  | Hiermee geeft u het toegangstoken op dat nodig is om een API-aanroep te maken. Autorisatie:> van Access-Token aan touw <
+Accepteren | De antwoordnotatie. Voor Azure FarmBeats Datahub API's is de indeling JSON. Accepteren: toepassing/json
 
 ### <a name="api-requests"></a>API-aanvragen
 
-Als u een REST API aanvraag wilt indienen, combineert u de HTTP-methode (GET, POST, PUT of DELETE), de URL van de API-service, de URI naar een resource om een query uit te voeren, gegevens in te dienen bij, bij te werken of te verwijderen, en vervolgens een of meer HTTP-aanvraag headers toe te voegen.
+Als u een REST API-aanvraag wilt indienen, combineert u de methode HTTP (GET, POST, PUT of DELETE), de URL naar de API-service, de URI naar een bron om op te vragen, gegevens in te dienen, bij te werken of te verwijderen en voegt u vervolgens een of meer HTTP-aanvraagkoppen toe.
 
-De URL van de API-service is uw Datahub-URL, bijvoorbeeld https://\<yourdatahub-website-name >. azurewebsites. net.
+De URL naar de API-service is bijvoorbeeld\<uw Datahub-URL https:// uw datahub-websitenaam>.azurewebsites.net.
 
-U kunt desgewenst query parameters toevoegen aan GET-aanroepen om te filteren, de grootte van de gegevens in de antwoorden te beperken en te sorteren.
+Optioneel u queryparameters opnemen in GET-oproepen om te filteren, de grootte van de gegevens te beperken en de gegevens in de antwoorden te sorteren.
 
-De volgende voorbeeld aanvraag wordt gebruikt om de lijst met apparaten op te halen:
+De volgende voorbeeldaanvraag wordt gebruikt om de lijst met apparaten op te halen:
 
 ```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 
-Voor de meeste GET-, POST-en PUT-aanroepen is een JSON-aanvraag tekst vereist.
+De meeste GET, POST, en PUT oproepen vereisen een JSON aanvraag lichaam.
 
-Met de volgende voorbeeld aanvraag wordt een apparaat gemaakt. Deze aanvraag bevat een invoer-JSON met de aanvraag tekst.
+Met de volgende voorbeeldaanvraag wordt een apparaat gemaakt. Deze aanvraag heeft input JSON met de aanvraaginstantie.
 
 ```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
@@ -102,26 +102,26 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept:
 
 ### <a name="query-parameters"></a>Queryparameters
 
-Voor REST GET-aanroepen kunt u de grootte van de gegevens in een API-antwoord filteren, beperken en sorteren door een of meer query parameters op de aanvraag-URI op te nemen. Voor de query parameters, zie de API-documentatie en de afzonderlijke GET-aanroepen.
-Als u bijvoorbeeld een query uitvoert op de lijst met apparaten (aanroep ophalen op/Device), kunnen de volgende query parameters worden opgegeven:
+Voor REST GET-aanroepen u de grootte van de gegevens in een API-antwoord filteren, beperken en sorteren door een of meer queryparameters op de aanvraag-URI op te nemen. Zie voor de queryparameters de API-documentatie en de afzonderlijke GET-aanroepen.
+Wanneer u bijvoorbeeld de lijst met apparaten opvraagt (GET-aanroep op /Apparaat), kunnen de volgende queryparameters worden opgegeven:
 
-![Lijst met apparaten](./media/references-for-azure-farmbeats/query-parameters-device-1.png)
+![Lijst van apparaten](./media/references-for-azure-farmbeats/query-parameters-device-1.png)
 
 ### <a name="error-handling"></a>Foutafhandeling
 
-Azure FarmBeats Datahub Api's retour neren de standaard HTTP-fouten. De meest voorkomende fout codes zijn als volgt:
+Azure FarmBeats Datahub API's retourneren de standaard HTTP-fouten. De meest voorkomende foutcodes zijn als volgt:
 
  |Foutcode             | Beschrijving |
  |---                    | --- |
  |200                    | Geslaagd |
- |201                    | Maken (post) geslaagd |
- |400                    | Ongeldige aanvraag. Er is een fout opgetreden in de aanvraag. |
- |401                    | Gasten. De aanroeper van de API is niet gemachtigd om toegang te krijgen tot de resource. |
- |404                    | Kan de resource niet vinden |
- |5XX                    | Interne server fout. De fout codes die beginnen met 5XX betekenen dat er een fout is opgetreden op de server. Raadpleeg server logboeken en de volgende sectie voor meer informatie. |
+ |201                    | Maak (Post) Succes |
+ |400                    | Slecht verzoek. Er is een fout in de aanvraag. |
+ |401                    | Onbevoegde. De beller van de API is niet gemachtigd om toegang te krijgen tot de bron. |
+ |404                    | Resource niet gevonden |
+ |5XX                    | Fout interne server. De foutcodes die beginnen met 5XX betekent dat er een fout op de server. Raadpleeg serverlogboeken en de volgende sectie voor meer informatie. |
 
 
-Naast de standaard HTTP-fouten retour neren de Azure FarmBeats Datahub-Api's ook interne fouten in de volgende indeling:
+Naast de standaard HTTP-fouten retourneert Azure FarmBeats Datahub API's ook interne fouten in de volgende indeling:
 
 ```json
     {
@@ -132,7 +132,7 @@ Naast de standaard HTTP-fouten retour neren de Azure FarmBeats Datahub-Api's ook
     }
 ```
 
-In dit voor beeld, wanneer een farm is gemaakt, is het verplichte veld ' naam ' niet opgegeven in de invoer lading. Het volgende fout bericht wordt weer gegeven:
+In dit voorbeeld is het verplichte veld 'Naam' niet opgegeven in de invoerpayload wanneer een farm is gemaakt. De resulterende foutmelding zou zijn:
 
  ```json    
     {
@@ -143,35 +143,35 @@ In dit voor beeld, wanneer een farm is gemaakt, is het verplichte veld ' naam ' 
     }
   ```
 
-## <a name="add-users-or-app-registrations-to-azure-active-directory"></a>Gebruikers of app-registraties toevoegen aan Azure Active Directory
+## <a name="add-users-or-app-registrations-to-azure-active-directory"></a>Gebruikers- of app-registraties toevoegen aan Azure Active Directory
 
-Azure FarmBeats-Api's kunnen worden gebruikt door een gebruiker of een app-registratie in Azure Active Directory. Voer de volgende stappen uit om een app-registratie te maken in Azure Active Directory.
+Azure FarmBeats API's kunnen worden geopend door een gebruiker of een app-registratie in Azure Active Directory. Voer de volgende stappen uit om een app-registratie in Azure Active Directory te maken:
 
-1. Ga naar de [Azure Portal](https://portal.azure.com)en selecteer **Azure Active Directory** > **app-registraties** > **nieuwe registratie**. U kunt ook een bestaand account gebruiken.
+1. Ga naar de [Azure-portal](https://portal.azure.com)en selecteer **Azure Active Directory** > **App-registraties** > **Nieuwe registratie**. U ook een bestaand account gebruiken.
 2. Ga als volgt te werk voor een nieuw account:
 
     - Voer een naam in.
-    - Selecteer **accounts in deze organisatie-Directory alleen (één Tenant)** .
-    - Gebruik de standaard waarden in de rest van de velden.
+    - Selecteer **alleen accounts in deze organisatiemap (één tenant).**
+    - Gebruik de standaardwaarden in de rest van de velden.
     - Selecteer **Registreren**.
 
-3. Ga als volgt te werk in het deel venster Nieuw en bestaand app-registratie **overzicht** :
+3. Ga als volgt te werk in het deelvenster **Overzicht van** nieuwe en bestaande apps:
 
-    - Leg de **client-id** en **Tenant-id**vast.
-    - Ga naar **certificaten en geheimen** om een nieuw client geheim te genereren en het **client geheim**vast te leggen.
-    - Ga terug naar **overzicht**en selecteer de koppeling naast **toepassing beheren in de lokale map**.
+    - Leg de **client-id** en **de tenant-id vast**.
+    - Ga naar **Certificaten en Geheimen** om een nieuw klantgeheim te genereren en het **clientgeheim**vast te leggen.
+    - Ga terug naar **Overzicht**en selecteer de koppeling naast **Toepassing beheren in de lokale map**.
     - Ga naar **Eigenschappen** om de **object-id**vast te leggen.
 
-4. Ga naar uw [Datahub Swagger](https://<yourdatahub>.azurewebsites.net/swagger/index.html) en Ga als volgt te werk:
-    - Ga naar de **RoleAssignment-API**.
-    - Voer een bericht uit om een **RoleAssignment** -object te maken voor de **object-id** die u zojuist hebt gemaakt.
+4. Ga naar je [Datahub Swagger](https://<yourdatahub>.azurewebsites.net/swagger/index.html) en ga als volgt te werk:
+    - Ga naar de **API RoleAssignment**.
+    - Voer een bericht uit om een **object RoleAssignment** te maken voor de **object-id** die u zojuist hebt gemaakt.
 
   > [!NOTE]
-  > Zie [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)voor meer informatie over het toevoegen van gebruikers en het registreren van Active Directory.
+  > Zie [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)voor meer informatie over het toevoegen van gebruikers en Active Directory-registratie.
 
-Nadat u de vorige stappen hebt voltooid, kunt u met de app-registratie (client) de Azure FarmBeats-Api's aanroepen met behulp van een toegangs token via Bearer-verificatie.
+Nadat u de vorige stappen hebt voltooid, kan uw app-registratie (client) de Azure FarmBeats-API's aanroepen met behulp van een toegangstoken via verificatie aan toonder.
 
-Gebruik het toegangs token om dit in volgende API-aanvragen in de koptekst sectie te verzenden als:
+Gebruik het toegangstoken om het in volgende API-aanvragen in de kopsectie te verzenden als:
 
 ```
 headers = {"Authorization": "Bearer " + **access_token**, "Content-Type" : "application/json" }

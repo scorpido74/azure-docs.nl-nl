@@ -1,48 +1,48 @@
 ---
-title: Azure Firewall toepassings regels met SQL-FQDN configureren
-description: In dit artikel leert u hoe u SQL-FQDN-in Azure Firewall toepassings regels kunt configureren.
+title: Azure Firewall-toepassingsregels configureren met SQL FQDN's
+description: In dit artikel vindt u informatie over het configureren van SQL FQDN's in Azure Firewall-toepassingsregels.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: victorh
-ms.openlocfilehash: a42d6bcdcec2a5de7432f11216a4d8dd0c1deef9
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 858cfc9a8c15f1e33e688bb5086a58f194e7173f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942563"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501494"
 ---
-# <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Azure Firewall toepassings regels met SQL-FQDN configureren
+# <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Azure Firewall-toepassingsregels configureren met SQL FQDN's
 
 > [!IMPORTANT]
-> Azure Firewall toepassings regels met SQL FQDN-zijn momenteel beschikbaar als open bare preview.
+> Azure Firewall-toepassingsregels met SQL FQDN's staan momenteel in openbare preview.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
 
-U kunt nu Azure Firewall toepassings regels configureren met SQL-FQDN-waarden. Hierdoor kunt u de toegang tot de virtuele netwerken beperken tot alleen de opgegeven SQL Server-exemplaren.
+U azure firewall-toepassingsregels nu configureren met SQL FQDN's. Hiermee u de toegang van uw virtuele netwerken beperken tot alleen de opgegeven SQL-server-exemplaren.
 
-Met SQL-FQDN-naam kunt u verkeer filteren:
+Met SQL FQDN's u verkeer filteren:
 
-- Van uw VNets naar een Azure SQL Database of een Azure SQL Data Warehouse. Bijvoorbeeld: alleen toegang tot *SQL-server1.database.Windows.net*toestaan.
-- Van on-premises naar Azure SQL Managed instances of SQL IaaS die worden uitgevoerd in uw VNets.
-- Van spoke-naar-spoke tot Azure SQL Managed instances of SQL IaaS die worden uitgevoerd in uw VNets.
+- Van uw VNets tot een Azure SQL Database of een Azure SQL Data Warehouse. Bijvoorbeeld: Geef alleen toegang tot *sql-server1.database.windows.net*.
+- Van on-premises tot Azure SQL Managed Instances of SQL IaaS die in uw VNets worden uitgevoerd.
+- Van spoke-to-spoke tot Azure SQL Managed Instances of SQL IaaS die in uw VNets wordt uitgevoerd.
 
-Tijdens de open bare Preview wordt SQL FQDN-filtering alleen ondersteund in de [proxy modus](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) (poort 1433). Als u SQL in de standaard omleidings modus gebruikt, kunt u de toegang filteren met behulp van de SQL-service-tag als onderdeel van de [netwerk regels](overview.md#network-traffic-filtering-rules).
-Als u niet-standaard poorten gebruikt voor SQL IaaS-verkeer, kunt u die poorten configureren in de toepassings regels van de firewall.
+Tijdens de openbare preview wordt SQL FQDN-filtering alleen ondersteund in [proxy-modus](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) (poort 1433). Als u SQL gebruikt in de standaardomleidingsmodus, u toegang filteren met behulp van de SQL-servicetag als onderdeel van [netwerkregels.](overview.md#network-traffic-filtering-rules)
+Als u niet-standaardpoorten gebruikt voor SQL IaaS-verkeer, u deze poorten configureren in de regels voor firewalltoepassingen.
 
-Toepassings regels met SQL FQDN-waarden zijn momenteel in alle regio's beschikbaar via de Azure Portal, Azure CLI, REST en sjablonen.
+Toepassingsregels met SQL FQDN's zijn momenteel beschikbaar in alle regio's via de Azure-portal, Azure CLI, REST en sjablonen.
 
-## <a name="configure-using-azure-cli"></a>Configureren met behulp van Azure CLI
+## <a name="configure-using-azure-cli"></a>Configureren met Azure CLI
 
-1. Implementeer een [Azure Firewall met behulp van Azure cli](deploy-cli.md).
-2. Als u verkeer filtert op Azure SQL Database, SQL Data Warehouse of SQL Managed instance, zorg er dan voor dat de SQL-connectiviteits modus is ingesteld op **proxy**. Zie [Azure SQL-connectiviteits instellingen](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settingse#change-azure-sql-database-connection-policy)voor meer informatie over het overschakelen naar een andere SQL-connectiviteits modus.
+1. Een [Azure Firewall implementeren met Azure CLI](deploy-cli.md).
+2. Als u verkeer filtert naar Azure SQL Database, SQL Data Warehouse of SQL Managed Instance, moet u ervoor zorgen dat de SQL-verbindingsmodus is ingesteld op **Proxy.** Zie [Azure SQL Connectivity Settings](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli)voor meer informatie over het schakelen in de SQL-connectiviteitsmodus.
 
    > [!NOTE]
-   > De SQL- *proxy* modus kan leiden tot meer latentie vergeleken met *omleiden*. Als u de omleidings modus wilt blijven gebruiken. Dit is de standaard instelling voor clients die verbinding maken met Azure. u kunt de toegang filteren met behulp van de SQL- [service-tag](service-tags.md) in Firewall- [netwerk regels](tutorial-firewall-deploy-portal.md#configure-a-network-rule).
+   > *SQL-proxymodus* kan resulteren in meer latentie in vergelijking met *omleiding.* Als u de omleidingsmodus wilt blijven gebruiken, de standaardinstelling voor clients die verbinding maken binnen Azure, u de toegang filteren met behulp van de [SQL-servicetag](service-tags.md) in [firewallnetwerkregels.](tutorial-firewall-deploy-portal.md#configure-a-network-rule)
 
-3. Een toepassings regel met SQL FQDN configureren om toegang tot een SQL-Server toe te staan:
+3. Configureer een toepassingsregel met SQL FQDN om toegang tot een SQL-server toe te staan:
 
    ```azurecli
    az extension add -n azure-firewall
@@ -57,17 +57,17 @@ Toepassings regels met SQL FQDN-waarden zijn momenteel in alle regio's beschikba
    --target-fqdns sql-serv1.database.windows.net
    ```
 
-## <a name="configure-using-the-azure-portal"></a>Configureren met behulp van de Azure Portal
-1. Implementeer een [Azure Firewall met behulp van Azure cli](deploy-cli.md).
-2. Als u verkeer filtert op Azure SQL Database, SQL Data Warehouse of SQL Managed instance, zorg er dan voor dat de SQL-connectiviteits modus is ingesteld op **proxy**. Zie [Azure SQL-connectiviteits instellingen](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settingse#change-azure-sql-database-connection-policy)voor meer informatie over het overschakelen naar een andere SQL-connectiviteits modus.  
+## <a name="configure-using-the-azure-portal"></a>Configureren met behulp van Azure Portal
+1. Een [Azure Firewall implementeren met Azure CLI](deploy-cli.md).
+2. Als u verkeer filtert naar Azure SQL Database, SQL Data Warehouse of SQL Managed Instance, moet u ervoor zorgen dat de SQL-verbindingsmodus is ingesteld op **Proxy.** Zie [Azure SQL Connectivity Settings](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli)voor meer informatie over het schakelen in de SQL-connectiviteitsmodus.  
 
    > [!NOTE]
-   > De SQL- *proxy* modus kan leiden tot meer latentie vergeleken met *omleiden*. Als u de omleidings modus wilt blijven gebruiken. Dit is de standaard instelling voor clients die verbinding maken met Azure. u kunt de toegang filteren met behulp van de SQL- [service-tag](service-tags.md) in Firewall- [netwerk regels](tutorial-firewall-deploy-portal.md#configure-a-network-rule).
-3. Voeg de toepassings regel met het juiste protocol, de poort en de SQL FQDN toe en selecteer vervolgens **Opslaan**.
-   ![toepassings regel met SQL FQDN](media/sql-fqdn-filtering/application-rule-sql.png)
-4. Toegang tot SQL vanaf een virtuele machine in een VNet waarmee het verkeer via de firewall wordt gefilterd. 
-5. Controleer of [Azure firewall logboeken](log-analytics-samples.md) het verkeer mag weer geven.
+   > *SQL-proxymodus* kan resulteren in meer latentie in vergelijking met *omleiding.* Als u de omleidingsmodus wilt blijven gebruiken, de standaardinstelling voor clients die verbinding maken binnen Azure, u de toegang filteren met behulp van de [SQL-servicetag](service-tags.md) in [firewallnetwerkregels.](tutorial-firewall-deploy-portal.md#configure-a-network-rule)
+3. Voeg de toepassingsregel toe met het juiste protocol, de poort en SQL FQDN en selecteer **Opslaan**.
+   ![toepassingsregel met SQL FQDN](media/sql-fqdn-filtering/application-rule-sql.png)
+4. Toegang tot SQL vanaf een virtuele machine in een VNet die het verkeer door de firewall filtert. 
+5. Controleer of [Azure Firewall-logboeken](log-analytics-samples.md) laten zien dat het verkeer is toegestaan.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure SQL database-connectiviteits architectuur](../sql-database/sql-database-connectivity-architecture.md)voor meer informatie over de SQL-proxy en omleidings modi.
+Zie [Azure SQL-databaseconnectiviteitsarchitectuur](../sql-database/sql-database-connectivity-architecture.md)voor meer informatie over SQL-proxy- en omleidingsmodi.

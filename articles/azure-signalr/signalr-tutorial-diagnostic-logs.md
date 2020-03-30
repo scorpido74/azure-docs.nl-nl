@@ -1,97 +1,97 @@
 ---
-title: Diagnostische logboeken voor de Azure signalerings service
-description: Meer informatie over het instellen van Diagnostische logboeken voor de Azure signalerings service en hoe u deze kunt gebruiken om zichzelf op te lossen.
-author: wanl
+title: Diagnostische logboeken voor Azure SignalR-service
+description: Meer informatie over het instellen van diagnostische logboeken voor Azure SignalR Service en hoe u deze gebruiken om zelf problemen op te lossen.
+author: wanlwanl
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 33d9a338e12fa4b3d2449f0c5b0576895364c3cf
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 72f57ba4bbbbde07f6d26edc88c158f301ebe2f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750261"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536731"
 ---
-# <a name="diagnostic-logs-for-azure-signalr-service"></a>Diagnostische logboeken voor de Azure signalerings service
+# <a name="diagnostic-logs-for-azure-signalr-service"></a>Diagnostische logboeken voor Azure SignalR-service
 
-In deze zelf studie wordt beschreven wat zijn Diagnostische logboeken voor de Azure signalerings service en het instellen van Diagnostische logboeken en het oplossen van problemen met Diagnostische logboeken.
+Deze zelfstudie behandelt wat diagnostische logboeken zijn voor Azure SignalR Service en hoe diagnostische logboeken moeten worden ingesteld en hoe u problemen oplossen met diagnostische logboeken.
 
 ## <a name="prerequisites"></a>Vereisten
-Als u Diagnostische logboeken wilt inschakelen, moet u uw logboek gegevens ergens opslaan. In deze zelf studie wordt gebruikgemaakt van Azure Storage en Log Analytics.
+Als u diagnostische logboeken wilt inschakelen, moet u uw logboekgegevens ergens opslaan. Deze zelfstudie maakt gebruik van Azure Storage en Log Analytics.
 
-* [Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md) : behoudt Diagnostische logboeken voor beleids controle, statische analyse of back-up.
-* [Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) : een flexibel hulp programma voor logboek zoeken en analyse waarmee onbewerkte logboeken kunnen worden geanalyseerd die door een Azure-resource zijn gegenereerd.
+* [Azure-opslag](../azure-monitor/platform/resource-logs-collect-storage.md) - Behoudt diagnostische logboeken voor beleidscontrole, statische analyse of back-up.
+* [Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) - Een flexibele tool voor zoeken en analyseren van logboeken die het mogelijk maakt om ruwe logboeken te analyseren die worden gegenereerd door een Azure-bron.
 
-## <a name="set-up-diagnostic-logs-for-an-azure-signalr-service"></a>Diagnostische logboeken instellen voor een Azure signalerings service
+## <a name="set-up-diagnostic-logs-for-an-azure-signalr-service"></a>Diagnostische logboeken instellen voor een Azure SignalR-service
 
-U kunt Diagnostische logboeken weer geven voor de Azure signalerings service. Deze logboeken bieden een uitgebreidere weer gave van de connectiviteit met uw exemplaar van de Azure signalerings service. De diagnostische logboeken bevatten gedetailleerde informatie over elke verbinding. Bijvoorbeeld basis informatie (gebruikers-ID, verbindings-ID en transport type enzovoort) en gebeurtenis gegevens (verbinding maken, verbinding verbreken en afbreken) van de verbinding. Diagnostische logboeken kunnen worden gebruikt voor het identificeren van problemen, het bijhouden van verbindingen en de analyse.
+U diagnostische logboeken voor Azure SignalR Service weergeven. Deze logboeken bieden een rijkere weergave van de connectiviteit met uw Azure SignalR Service-instantie. De diagnostische logboeken geven gedetailleerde informatie over elke verbinding. Bijvoorbeeld basisinformatie (gebruikersnaam, verbindings-ID en transporttype enzovoort) en gebeurtenisgegevens (verbinding, loskoppeling en afbreken gebeurtenis enzovoort) van de verbinding. Diagnostische logboeken kunnen worden gebruikt voor probleemidentificatie, verbindingstracking en analyse.
 
 ### <a name="enable-diagnostic-logs"></a>Diagnostische logboeken inschakelen
 
-Diagnostische logboeken zijn standaard uitgeschakeld. Volg deze stappen zodat logboeken met diagnostische gegevens:
+Diagnostische logboeken zijn standaard uitgeschakeld. Voer de volgende stappen uit om diagnostische logboeken in te schakelen:
 
-1.  Klik in de [Azure Portal](https://portal.azure.com)onder **bewaking**op **Diagnostische instellingen**.
+1. Klik in de [Azure-portal](https://portal.azure.com)onder **Controle**op **Diagnostische instellingen**.
 
-    ![Deel venster navigatie naar Diagnostische instellingen](./media/signalr-tutorial-diagnostic-logs/diagnostic-settings-menu-item.png)
+    ![Navigatie van deelvenster naar diagnostische instellingen](./media/signalr-tutorial-diagnostic-logs/diagnostic-settings-menu-item.png)
 
-1.  Klik vervolgens op **Diagnostische instelling toevoegen**.
+1. Klik vervolgens op **Diagnostische instelling toevoegen**.
 
     ![Diagnostische logboeken toevoegen](./media/signalr-tutorial-diagnostic-logs/add-diagnostic-setting.png)
 
-1.  Stel het gewenste archief doel in. Momenteel ondersteunen we **archiveren in een opslag account** en **verzenden naar log Analytics**.
+1. Stel het gewenste archiefdoel in. Momenteel ondersteunen we **Archive naar een opslagaccount** en **Send to Log Analytics**.
 
 1. Selecteer de logboeken die u wilt archiveren.
 
     ![Het deelvenster Diagnostische instellingen](./media/signalr-tutorial-diagnostic-logs/diagnostics-settings-pane.png)
 
 
-1.  De nieuwe instellingen voor diagnostische gegevens opslaan.
+1. Sla de nieuwe diagnostische instellingen op.
 
-Nieuwe instellingen van kracht in ongeveer 10 minuten. Hierna logboeken worden weergegeven in de geconfigureerde archivering doel, in de **diagnoselogboeken** deelvenster.
+Nieuwe instellingen worden van kracht in ongeveer 10 minuten. Daarna worden logboeken weergegeven in het geconfigureerde archiefdoel in het **deelvenster Logboeken diagnostische gegevens.**
 
-Zie voor meer informatie over het configureren van diagnostische gegevens over de [overzicht van diagnostische logboeken in Azure](../azure-monitor/platform/platform-logs-overview.md).
+Zie het overzicht van Diagnostische [logboeken van Azure](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie over het configureren van diagnostische gegevens.
 
-### <a name="diagnostic-logs-categories"></a>Categorieën van diagnostische logboeken
+### <a name="diagnostic-logs-categories"></a>Categorieën diagnostische logboeken
 
-Met de Azure signalerings service worden Diagnostische logboeken in één categorie vastgelegd:
+Azure SignalR-service legt diagnostische logboeken vast in één categorie:
 
-* **Alle logboeken**: verbindingen volgen die verbinding maken met de Azure signalerings service. De logboeken bevatten informatie over de verbinding maken/verbreken, authenticatie en beperken. Zie de volgende sectie voor meer informatie.
+* **Alle logboeken:** houd verbindingen bij die verbinding maken met Azure SignalR Service. De logboeken geven informatie over de verbinding/ontkoppeling, authenticatie en beperking. Zie de volgende sectie voor meer informatie.
 
 ### <a name="archive-to-a-storage-account"></a>Archiveren naar een opslagaccount
 
-Logboeken worden opgeslagen in het opslag account dat is geconfigureerd in het deel venster **Diagnostische logboeken** . Er wordt automatisch een container met de naam `insights-logs-alllogs` gemaakt om Diagnostische logboeken op te slaan. In de container worden Logboeken opgeslagen in het bestand `resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/XXXX/PROVIDERS/MICROSOFT.SIGNALRSERVICE/SIGNALR/XXX/y=YYYY/m=MM/d=DD/h=HH/m=00/PT1H.json`. In principe wordt het pad gecombineerd door `resource ID` en `Date Time`. De logboek bestanden zijn gesplitst door `hour`. Daarom worden de minuten altijd `m=00`.
+Logboeken worden opgeslagen in het opslagaccount dat is geconfigureerd in **het logboekenvenster Diagnostische gegevens.** Er wordt `insights-logs-alllogs` automatisch een container met de naam gemaakt om diagnostische logboeken op te slaan. In de container worden logboeken `resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/XXXX/PROVIDERS/MICROSOFT.SIGNALRSERVICE/SIGNALR/XXX/y=YYYY/m=MM/d=DD/h=HH/m=00/PT1H.json`opgeslagen in het bestand. Kortom, het pad `resource ID` wordt `Date Time`gecombineerd door en . De logbestanden worden `hour`gesplitst door . Daarom zijn `m=00`de minuten altijd .
 
-Alle logboeken worden opgeslagen in JavaScript Object Notation (JSON)-indeling. Elk item heeft tekenreeksvelden die gebruikmaken van de indeling die wordt beschreven in de volgende secties.
+Alle logboeken worden opgeslagen in de JSON-indeling (JavaScript Object Notation). Elk item heeft tekenreeksvelden die de notatie gebruiken die in de volgende secties is beschreven.
 
-De JSON-teken reeksen van het archief logboek bevatten elementen die in de volgende tabellen worden weer gegeven:
+Json-tekenreeksen voor archieflogboeken bevatten elementen die in de volgende tabellen worden vermeld:
 
-**Formatteer**
+**Formaat**
 
 Name | Beschrijving
 ------- | -------
-tijd | Tijd van logboek gebeurtenis
-level | Niveau van logboek gebeurtenis
-resourceId | Resource-ID van uw Azure signalerings service
-location | Locatie van uw Azure signalerings service
-category | De categorie van de logboek gebeurtenis
-operationName | De naam van de bewerking van de gebeurtenis
+tijd | Gebeurtenistijd van logboeklogboek
+niveau | Gebeurtenisniveau logboek
+resourceId | Resource-id van uw Azure SignalR-service
+location | Locatie van uw Azure SignalR-service
+category | Categorie van de logboekgebeurtenis
+operationName | Bedrijfsnaam van de gebeurtenis
 callerIpAddress | IP-adres van uw server/client
-properties | Gedetailleerde eigenschappen die betrekking hebben op deze logboek gebeurtenis. Zie de onderstaande tabel eigenschappen voor meer informatie.
+properties | Gedetailleerde eigenschappen met betrekking tot deze logboekgebeurtenis. Zie de onderstaande eigenschappentabel voor meer informatie
 
-**Eigenschappen tabel**
+**Eigenschappentabel**
 
 Name | Beschrijving
 ------- | -------
-type | Het type logboek gebeurtenis. Op dit moment bieden we informatie over de verbinding met de Azure signalerings service. Alleen `ConnectivityLogs` type is beschikbaar
-verzameling | Verzameling van de logboek gebeurtenis. Toegestane waarden zijn: `Connection`, `Authorization` en `Throttling`
-connectionId | Identiteit van de verbinding
-Transport type | Het transport type van de verbinding. Toegestane waarden zijn: `Websockets` \| `ServerSentEvents` \| `LongPolling`
-Connection type | Het type verbinding. Toegestane waarden zijn: `Server` \| `Client`. `Server`: verbinding vanaf server zijde; `Client`: verbinding van client zijde
+type | Type van de logboekgebeurtenis. Momenteel bieden we informatie over connectiviteit met de Azure SignalR-service. Alleen `ConnectivityLogs` type is beschikbaar
+verzameling | Verzameling van de loggebeurtenis. Toegestane waarden `Connection`zijn: `Authorization` , en`Throttling`
+verbindingId | Identiteit van de verbinding
+transportType | Transporttype van de verbinding. Toegestane waarden zijn: `Websockets` \| `ServerSentEvents` \|`LongPolling`
+connectionType | Type van de verbinding. Toegestane waarden zijn: `Server` \| `Client`. `Server`: verbinding vanaf serverzijde; `Client`: verbinding vanaf clientzijde
 userId | Identiteit van de gebruiker
-message | Gedetailleerd bericht van logboek gebeurtenis
+message | Gedetailleerd bericht van logboekgebeurtenis
 
-De volgende code is een voorbeeld van een logboek archiveren JSON-tekenreeks:
+De volgende code is een voorbeeld van een JSON-tekenreeks voor archieflogboeken:
 
 ```json
 {
@@ -114,85 +114,86 @@ De volgende code is een voorbeeld van een logboek archiveren JSON-tekenreeks:
 }
 ```
 
-### <a name="archive-logs-schema-for-log-analytics"></a>Schema voor archief logboeken voor Log Analytics
+### <a name="archive-logs-schema-for-log-analytics"></a>Schema voor logboeken archiveren voor Logboekanalyse
 
-Als u Diagnostische logboeken wilt weer geven, voert u de volgende stappen uit:
+Voer de volgende stappen uit om diagnostische logboeken weer te geven:
 
-1. Klik op `Logs` in de doel Log Analytics.
+1. Klik `Logs` in uw doel Log Analytics.
 
     ![Menu-item Log Analytics](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. Voer `SignalRServiceDiagnosticLogs` en selecteer tijds bereik voor het opvragen van Diagnostische logboeken. Zie [aan de slag met log Analytics in azure monitor](../azure-monitor/log-query/get-started-portal.md) voor geavanceerde query's.
+2. Voer `SignalRServiceDiagnosticLogs` het tijdsbereik in en selecteer deze voor diagnostische logboeken. Zie [Aan de slag met Logboekanalyse in Azure-monitor](../azure-monitor/log-query/get-started-portal.md) voor geavanceerde query's
 
-    ![Log Analytics van de query aanmelden](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
+    ![Querylog in Log Analytics](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 
-De kolommen van het archief logboek bevatten elementen die in de volgende tabel worden weer gegeven:
+Archieflogboekkolommen bevatten elementen in de volgende tabel:
 
 Name | Beschrijving
 ------- | ------- 
-TimeGenerated | Tijd van logboek gebeurtenis
-Verzameling | Verzameling van de logboek gebeurtenis. Toegestane waarden zijn: `Connection`, `Authorization` en `Throttling`
-OperationName | De naam van de bewerking van de gebeurtenis
-Locatie | Locatie van uw Azure signalerings service
-Niveau | Niveau van logboek gebeurtenis
+TimeGenerated | Gebeurtenistijd van logboeklogboek
+Verzameling | Verzameling van de loggebeurtenis. Toegestane waarden `Connection`zijn: `Authorization` , en`Throttling`
+OperationName | Bedrijfsnaam van de gebeurtenis
+Locatie | Locatie van uw Azure SignalR-service
+Niveau | Gebeurtenisniveau logboek
 CallerIpAddress | IP-adres van uw server/client
-Bericht | Gedetailleerd bericht van logboek gebeurtenis
-UserID | Identiteit van de gebruiker
+Bericht | Gedetailleerd bericht van logboekgebeurtenis
+UserId | Identiteit van de gebruiker
 ConnectionId | Identiteit van de verbinding
-Connection type | Het type verbinding. Toegestane waarden zijn: `Server` \| `Client`. `Server`: verbinding vanaf server zijde; `Client`: verbinding van client zijde
-Transport type | Het transport type van de verbinding. Toegestane waarden zijn: `Websockets` \| `ServerSentEvents` \| `LongPolling`
+ConnectionType | Type van de verbinding. Toegestane waarden zijn: `Server` \| `Client`. `Server`: verbinding vanaf serverzijde; `Client`: verbinding vanaf clientzijde
+TransportType | Transporttype van de verbinding. Toegestane waarden zijn: `Websockets` \| `ServerSentEvents` \|`LongPolling`
 
-### <a name="troubleshooting-with-diagnostic-logs"></a>Problemen oplossen met Diagnostische logboeken
+### <a name="troubleshooting-with-diagnostic-logs"></a>Probleemoplossing met diagnostische logboeken
 
-Voor het oplossen van problemen met de Azure signalerings service kunt u Logboeken voor de server/client inschakelen om fouten vast te leggen. Op dit moment worden in de Azure signalerings service Diagnostische logboeken weer gegeven. u kunt ook logboeken voor de service zijde inschakelen.
+Als u problemen wilt oplossen voor Azure SignalR Service, u logboeken aan de server-/clientzijde inschakelen om fouten vast te leggen. Op dit moment stelt Azure SignalR Service diagnostische logboeken bloot, u ook logboeken inschakelen voor servicezijde.
 
-Als er verbinding is met een onverwachte groei-of verwijderings situatie, kunt u gebruikmaken van diagnostische Logboeken om problemen op te lossen.
+Wanneer u een onverwachte groei- of droppingsituatie voor verbinding tegenkomt, u gebruik maken van diagnostische logboeken om problemen op te lossen.
 
-Veelvoorkomende problemen zijn vaak de verwachte hoeveelheid wijzigingen in verbindingen, verbindingen bereiken verbindings limieten en autorisatie fout. Zie de volgende secties voor informatie over het oplossen van problemen.
+Typische problemen gaan vaak over onverwachte hoeveelheidswijzigingen van verbindingen, verbindingen bereiken verbindingslimieten en autorisatiefouten. Bekijk de volgende secties over het oplossen van problemen.
 
-#### <a name="unexpected-connection-number-changes"></a>Onverwachte wijzigingen in het verbindings nummer
+#### <a name="unexpected-connection-number-changes"></a>Onverwachte wijzigingen in het verbindingsnummer
 
-##### <a name="unexpected-connection-dropping"></a>Onverwachte verbinding bij verwijderen
+##### <a name="unexpected-connection-dropping"></a>Onverwachte verbinding laten vallen
 
-Als er onverwachte verbindingen worden gevonden, moet u eerst Logboeken in de service, de server-en client zijde inschakelen.
+Als u onverwachte verbindingen tegenkomt, schakelt u eerst logboeken in service-, server- en clientzijden in.
 
-Als een verbinding wordt verbroken, worden in de diagnostische Logboeken de gebeurtenis voor het verbreken van de verbinding vastgelegd. u ziet `ConnectionAborted` of `ConnectionEnded` in `operationName`.
+Als de verbinding wordt verbroken, worden deze loskoppelende `ConnectionAborted` `ConnectionEnded` gebeurtenis `operationName`in de diagnostische logboeken geregistreerd, u ziet of in .
 
-Het verschil tussen `ConnectionAborted` en `ConnectionEnded` is dat `ConnectionEnded` een verwachte verbreken van de verbinding is die wordt geactiveerd door client-of server zijde. Hoewel de `ConnectionAborted` meestal een onverwachte gebeurtenis voor het weghalen van de verbinding is en de oorzaak van het afbreken wordt weer gegeven in `message`.
+Het verschil `ConnectionAborted` `ConnectionEnded` tussen `ConnectionEnded` en is dat is een verwachte loskoppeling die wordt geactiveerd door client of server kant. Terwijl `ConnectionAborted` de is meestal een onverwachte verbinding laten vallen `message`gebeurtenis, en afbreken reden zal worden verstrekt in .
 
-De redenen voor afbreken worden weer gegeven in de volgende tabel:
+De afbreekredenen worden vermeld in de volgende tabel:
 
 Reden | Beschrijving
 ------- | ------- 
-Limiet voor aantal verbindingen bereikt | Het aantal verbindingen heeft de limiet van uw huidige prijs categorie bereikt. Overweeg service-eenheid omhoog te schalen
-Toepassings server heeft de verbinding gesloten | App server activeert de Abortion. Het kan worden beschouwd als een verwacht Abortion
-Time-out voor verbinding ping | Dit wordt meestal veroorzaakt door een netwerk probleem. Overweeg de beschik baarheid van uw app-server op internet te controleren
-Service opnieuw laden, opnieuw verbinding maken | De Azure signalerings service wordt opnieuw geladen. Azure-Signa lering ondersteunt automatisch opnieuw verbinden, u kunt wachten tot opnieuw verbinding is gemaakt of hand matig opnieuw verbinding maken met de Azure signalerings service
-Tijdelijke fout met interne server | Er is een tijdelijke fout opgetreden in de Azure signalerings service. deze moet automatisch worden hersteld
-Server verbinding verbroken | De server verbinding is verbroken met een onbekende fout. Overweeg het probleem zelf op te lossen met Service/Server/client-logboek eerst. Probeer basis problemen op te lossen (bijvoorbeeld netwerk probleem, probleem met de app-server zijde, enzovoort). Als het probleem niet is opgelost, neemt u contact met ons op voor meer hulp. Zie voor meer informatie de sectie [hulp opvragen](#get-help) . 
+Aantal verbindingen bereikt limiet | Het aantal verbindingen bereikt de limiet van uw huidige prijslaag. Overweeg de service-eenheid opschalen
+Toepassingsserver heeft de verbinding gesloten | App server activeert de abortus. Het kan worden beschouwd als een verwachte abortus
+Time-out van pingverbinding | Meestal wordt het veroorzaakt door netwerkprobleem. Overweeg de beschikbaarheid van uw app-server vanaf internet te controleren
+Service herladen, opnieuw verbinden | Azure SignalR-service wordt opnieuw geladen. Azure SignalR ondersteunt automatisch opnieuw verbinden, u wachten tot u opnieuw verbinding maakt of handmatig opnieuw verbinding maken met Azure SignalR Service
+Tijdelijke fout van interne server | Tijdelijke fout treedt op in Azure SignalR Service, moet automatisch worden hersteld
+Serververbinding verbroken | Serververbinding daalt met onbekende fout, overweeg zelfoplossend probleemmet service / server / client side log eerste. Probeer basisproblemen uit te sluiten (bijvoorbeeld netwerkprobleem, probleem met de kant van de app-server, enzovoort). Als het probleem niet is opgelost, neem dan contact met ons op voor verdere hulp. Zie [Help-sectie opvragen](#get-help) voor meer informatie. 
 
 ##### <a name="unexpected-connection-growing"></a>Onverwachte verbinding groeit
 
-Voor het oplossen van problemen met een onverwachte verbinding, moet u eerst de extra verbindingen filteren. U kunt een unieke test gebruiker-ID toevoegen aan de client verbinding testen. Vervolgens kunt u deze in met Diagnostische logboeken controleren als u meer dan één client verbinding met dezelfde test gebruikers-ID of hetzelfde IP-adres hebt, is het waarschijnlijk dat aan de client zijde meer verbindingen worden gemaakt dan verwacht. Controleer de client zijde.
+Om problemen op te lossen over onverwachte verbinding groeien, het eerste wat je hoeft te doen is om te filteren uit de extra verbindingen. U unieke testgebruikers-id toevoegen aan uw testclientverbinding. Controleer het vervolgens in met diagnostische logboeken, als u ziet dat meer dan één clientverbindingen dezelfde testgebruikersnaam of IP hebben, is het waarschijnlijk dat de clientzijde meer verbindingen maakt en tot stand komt dan verwacht. Controleer je klantenkant.
 
 #### <a name="authorization-failure"></a>Autorisatiefout
 
-Als u 401 niet-geautoriseerde retour neren voor client aanvragen, controleert u de diagnostische Logboeken. Als u `Failed to validate audience. Expected Audiences: <valid audience>. Actual Audiences: <actual audience>`tegen komt, betekent dit dat alle doel groepen in uw toegangs token ongeldig zijn. Probeer de geldige doel groepen te gebruiken die in het logboek zijn voorgesteld.
+Als u 401 ongeautoriseerde geretourneerde clientaanvragen krijgt, controleert u uw diagnostische logboeken. Als je `Failed to validate audience. Expected Audiences: <valid audience>. Actual Audiences: <actual audience>`dit tegenkomt, betekent dit dat alle doelgroepen in je toegangstoken ongeldig zijn. Probeer de geldige doelgroepen te gebruiken die in het logboek worden voorgesteld.
 
 
 #### <a name="throttling"></a>Beperking
 
-Als u merkt dat u geen signalerings client verbindingen met de Azure signalerings service kunt instellen, controleert u de diagnostische Logboeken. Als u in diagnostische logboek `Connection count reaches limit` tegen komt, moet u te veel verbindingen met de signaal service tot stand brengen, waardoor de limiet voor het aantal verbindingen is bereikt. U kunt uw signalerings service verg Roten of verkleinen. Als u in diagnostische logboek `Message count reaches limit` tegen komt, betekent dit dat u de gratis laag gebruikt en de quota van berichten gebruikt. Als u meer berichten wilt verzenden, kunt u eventueel uw signalerings service wijzigen in de laag standaard om extra berichten te verzenden. Zie [prijzen van Azure signalerings Services](https://azure.microsoft.com/pricing/details/signalr-service/)voor meer informatie.
+Als u merkt dat u geen SignalR-clientverbindingen met Azure SignalR-service tot stand brengen, controleert u uw diagnostische logboeken. Als u `Connection count reaches limit` in het diagnostisch logboek een ontmoeting tegenkomt, worden er te veel verbindingen met SignalR Service ingesteld, die de limiet voor het aantal verbindingen bereiken. Overweeg uw SignalR-service op te schalen. Als u `Message count reaches limit` in het diagnostisch logboek tegenkomt, betekent dit dat u de gratis laag gebruikt en dat u het quotum van berichten gebruikt. Als u meer berichten wilt verzenden, u overwegen uw SignalR-service te wijzigen in standaardlaag om extra berichten te verzenden. Zie [Azure SignalR Service Pricing](https://azure.microsoft.com/pricing/details/signalr-service/)voor meer informatie.
 
-### <a name="get-help"></a>Hulp krijgen
+### <a name="get-help"></a>Help opvragen
 
-U wordt aangeraden eerst door uzelf problemen op te lossen. De meeste problemen worden veroorzaakt door app-server-of netwerk problemen. Volg de richt lijnen voor het [oplossen van problemen met Diagnostische logboeken](#troubleshooting-with-diagnostic-logs) en de [richt lijnen](https://github.com/Azure/azure-signalr/blob/dev/docs/tsg.md) voor probleem oplossing om de hoofd oorzaak te achterhalen.
-Als het probleem nog steeds niet kan worden opgelost, kunt u een probleem openen in GitHub of ticket maken in azure Portal.
-Geleverd
-1. Tijds bereik ongeveer 30 minuten wanneer het probleem optreedt
-2. Resource-ID van de Azure signalerings service
-3. Details van probleem, indien mogelijk: appserver verzendt bijvoorbeeld geen berichten, de client verbinding is verbroken.
-4. Logboeken die zijn verzameld van Server/client, en ander materiaal dat nuttig kan zijn
-5. Beschrijving Reproduceren-code
+We raden je aan om eerst zelf problemen op te lossen. De meeste problemen worden veroorzaakt door problemen met de app-server of het netwerk. Volg [de handleiding voor probleemoplossing met diagnostische logboek](#troubleshooting-with-diagnostic-logs) en [basisproblemen schieten gids](https://github.com/Azure/azure-signalr/blob/dev/docs/tsg.md) om de oorzaak te vinden.
+Als het probleem nog steeds niet kan worden opgelost, u overwegen een probleem in GitHub te openen of een ticket te maken in Azure Portal.
+Geef op:
+1. Tijdsbereik ongeveer 30 minuten wanneer het probleem optreedt
+2. Resource-id van Azure SignalR-service
+3. Probleemgegevens, zo specifiek mogelijk: appserver verzendt bijvoorbeeld geen berichten, de clientverbinding daalt en ga zo maar door
+4. Logboeken verzameld van server/clientzijde en ander materiaal dat nuttig kan zijn
+5. [Optioneel] Repro-code
 
-> Opmerking: als u probleem in GitHub opent, moet u uw gevoelige informatie (bijvoorbeeld bron-ID, Server/client-Logboeken) privé houden, alleen verzenden naar leden in micro soft-organisaties.  
+> [!NOTE]
+> Als u probleem in GitHub opent, houdt u uw gevoelige gegevens (bijvoorbeeld bron-id, server-/clientlogboeken) privé en verzendt u alleen privé naar leden in de Microsoft-organisatie.

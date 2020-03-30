@@ -1,108 +1,107 @@
 ---
-title: Gids voor onboarding van micro soft Business Applications Independent Software Vendor (ISV) Connect-programma
-description: U kunt als volgt onboarding uitvoeren op het Business Applications ISV Connect-programma.
-services: Azure Marketplace, Cloud Partner Portal
+title: Onboarding-handleiding voor microsoft Business Applications Independent Software Vendor (ISV) Connect-programma
+description: U als u het ISV Connect-programma voor zakelijke toepassingen aan boord nemen.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.author: evansma
-ms.openlocfilehash: 4a47886176b704cc3bc36cc9fa85d1d3faee4c58
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: f7fd3f43c7faddb5481411dc9c4c94864b6dc0b1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819156"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288968"
 ---
-# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Gids voor onboarding van micro soft Business Applications Independent Software Vendor (ISV) Connect-programma
+# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Onboarding-handleiding voor microsoft Business Applications Independent Software Vendor (ISV) Connect-programma
 
-Het [Business Applications ISV Connect-programma](https://partner.microsoft.com/solutions/business-applications/isv-overview) is van toepassing op het versnellen van de groei en het algehele succes van Independent Software Vendors (isv's) die moderne, op de cloud gebaseerde LOB-oplossingen (line-of-Business) bouwen met *Dynamics 365-klant betrokkenheid en PowerApps* ("Dynamics CE-aanbiedingen") of *Dynamics 365 Finance and Operations* ("Dynamics OPS-aanbiedingen"). Hier ziet u hoe u er een kunt maken.
-
-> [!IMPORTANT]
-> Bestaande ISV-partners met *dynamics 365 Customer engagement*, *Dynamics 365 voor Financiën en bewerkingen*, en *PowerApps* -toepassingen moeten alle onderstaande stappen vóór **15 oktober 2019** volt ooien om te voor komen dat hun bestaande aanbiedingen zijn verwijderd uit [Microsoft AppSource](https://appsource.microsoft.com).
-
-Om u te registreren en te profiteren van alle [technische, marketing-en verkoop activerings voordelen](https://partner.microsoft.com/solutions/business-applications/isv-overview) van het Business Applications ISV Connect-programma, vragen we u om bestaande ISV-partners (met *Dynamics CE* -en *OPS* -aanbiedingen) te volt ooien. volgende stappen:
-
-- [Stel uw micro soft Partner Center-account](#set-up-your-microsoft-partner-center-account)in.
-- [Accepteer het Business Applications addendum](#accept-the-business-applications-isv-program-addendum).
-- [Stel uw facturerings gegevens](#set-up-your-billing-information)in.
-- [Certificeer uw toepassing](#recertify-your-application)opnieuw.
+Het [Business Applications ISV Connect-programma](https://partner.microsoft.com/solutions/business-applications/isv-overview) heeft tot doel de groei en het algehele succes van Onafhankelijke Software Leveranciers (ISV's) te versnellen die moderne, cloudgebaseerde, line-of-business (LOB)-oplossingen bouwen met *Dynamics 365 Customer Engagement en PowerApps* ("Dynamics CE-aanbiedingen") of *Dynamics 365 Finance and Operations* ("Dynamics Ops biedt"). Dit is hoe je er deel van uit maken.
 
 > [!IMPORTANT]
-> U moet alle bovenstaande stappen volt ooien voordat u wijzigingen in een bestaande aanbieding publiceert.
+> Bestaande ISV-partners met *Dynamics 365 Customer Engagement*, Dynamics *365 for Finance and Operations*en *PowerApps-toepassingen* moeten alle onderstaande onboarding-stappen vóór **15 oktober 2019** voltooien om te voorkomen dat hun bestaande aanbiedingen uit [Microsoft AppSource worden](https://appsource.microsoft.com)verwijderd .
 
-## <a name="set-up-your-microsoft-partner-center-account"></a>Uw micro soft Partner Center-account instellen
+Om u in te schrijven en te profiteren van alle [technische, marketing- en verkoopvoordelen](https://partner.microsoft.com/solutions/business-applications/isv-overview) van het ISV Connect-programma voor bedrijfstoepassingen, vragen we bestaande ISV-partners (met *Dynamics CE-* en *Ops-aanbiedingen)* om de volgende stappen te voltooien:
 
-[Partner centrum](https://partner.microsoft.com) is de plaats voor het beheren van uw account instellingen voor het ISV Connect-programma.
+- [Uw Microsoft Partner Center-account instellen](#set-up-your-microsoft-partner-center-account).
+- [Accepteer het addendum voor zakelijke toepassingen](#accept-the-business-applications-isv-program-addendum).
+- [Stel uw factureringsgegevens in.](#set-up-your-billing-information)
+- [Uw aanvraag opnieuw certificeren.](#recertify-your-application)
 
-> [!NOTE]
-> Voor deze stap is een rol van *eigenaar* vereist in Cloud Partner-Portal voor uw opgegeven account en een *eigenaar* of *Manager* -rol in het partner centrum.
+> [!IMPORTANT]
+> U moet alle bovenstaande stappen uitvoeren voordat wijzigingen in een bestaande aanbieding worden gepubliceerd.
 
-Als u al Dynamics CE-of Dynamics OPS-aanbiedingen hebt gepubliceerd, is hoogstwaarschijnlijk uw Cloud Partner-portal-account (CPP) al gemigreerd en geactiveerd in het partner centrum. Als dat niet het geval is, kunt u uw partner centrum-account hand matig activeren vanuit uw CPP Publisher-profiel.
+## <a name="set-up-your-microsoft-partner-center-account"></a>Uw Microsoft Partner Center-account instellen
 
-1. Meld u aan bij de profiel pagina van uw **Publisher** in [Cloud Partner-Portal](https://cloudpartner.azure.com/).
-2. Als er een banner wordt weer gegeven dat aangeeft dat uw account instellingen naar partner Center zijn gemigreerd, gaat u verder met de volgende sectie. Als dat niet het geval is, selecteert u het banner waarin u wordt gevraagd uw partner centrum-account te activeren.
-
-Zie [account migratie van Cloud Partner-Portal naar partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)voor meer informatie.
-
-## <a name="accept-the-business-applications-isv-program-addendum"></a>Ga akkoord met de Business Applications ISV-programma addendum
-
-Voor deelname aan dit programma moet u de *Business Applications addendum*controleren en accepteren.
+[Partnercenter](https://partner.microsoft.com) is de plek om uw accountinstellingen voor het ISV Connect-programma te beheren.
 
 > [!NOTE]
-> Voor deze stap is een *eigenaar* of *Manager* -rol vereist in het partner centrum voor uw account om juridische overeenkomsten te ondertekenen. Als u de migratie van uw Cloud Partner-portal-account hebt voltooid door [uw partner centrum-account](#set-up-your-microsoft-partner-center-account) in de vorige stap te activeren, zijn uw machtigingen ook gemigreerd naar het partner centrum.
+> Deze stap vereist een *rol van eigenaar* in Cloud Partner Portal voor uw opgegeven account en een rol van *eigenaar* of *manager* in partnercentrum.
 
-1. Ga naar [het dash board van de partner centrum](https://partner.microsoft.com/dashboard/account/agreements) en meld u desgevraagd aan bij Partner Center.
+Als u dynamics CE- of Dynamics Ops-aanbiedingen al hebt gepubliceerd, is uw CPP-account (Cloud Partner Portal) waarschijnlijk al gemigreerd en geactiveerd in het Partnercenter. Als dit niet het zo is, kun je je Partner Center-account handmatig activeren vanuit je CPP Publisher Profile.
 
-2. Zoek in de rubriek **Commercial Marketplace**naar **micro soft Business Applications ISV-addendum**.
+1. Meld u aan bij uw **publisher-profielpagina** in [Cloud Partner Portal](https://cloudpartner.azure.com/).
+2. Als u een banner ziet die aangeeft dat uw accountinstellingen zijn gemigreerd naar Partnercentrum, gaat u door naar de volgende sectie. Selecteer anders de banner waarin u wordt gevraagd uw PartnerCenter-account te activeren.
 
-3. Selecteer de versie koppeling en Bekijk de overeenkomst.
+Zie [Accountmigratie van Cloud Partner Portal naar Partner Center voor](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)meer informatie.
 
-4. Selecteer **overeenkomst accepteren** om akkoord te gaan met de overeenkomst en te accepteren.
+## <a name="accept-the-business-applications-isv-program-addendum"></a>Het addendum voor het ISV-programma voor zakelijke toepassingen accepteren
 
-## <a name="set-up-your-billing-information"></a>Uw facturerings gegevens instellen
-
-Stel vervolgens uw facturerings gegevens in voor het Business Applications ISV Connect-programma.
+Deelname aan dit programma vereist dat u het *addendum voor zakelijke toepassingen*bekijkt en accepteert.
 
 > [!NOTE]
-> Voor deze stap is een *eigenaar* of *Manager* -rol vereist in het partner centrum voor uw account om de facturerings gegevens bij te werken.
+> Deze stap vereist een *rol van eigenaar* of *manager* in partnercentrum om uw account juridische overeenkomsten te laten ondertekenen. Als u de migratie van uw Cloud Partner Portal-account hebt voltooid door [uw Partner Center-account](#set-up-your-microsoft-partner-center-account) in de vorige stap te activeren, zijn uw machtigingen ook gemigreerd naar Partnercenter.
+
+1. Ga naar [het dashboard van het partnercentrum](https://partner.microsoft.com/dashboard/account/agreements) en meld u aan bij Partnercentrum zoals daarom wordt gevraagd.
+
+2. Zoek onder het kopje **Commerciële Marktplaats**Microsoft Business **Applications ISV Addendum**.
+
+3. Selecteer de versiekoppeling en bekijk de overeenkomst.
+
+4. Selecteer **Overeenkomst accepteren** om akkoord te gaan met en de overeenkomst te accepteren.
+
+## <a name="set-up-your-billing-information"></a>Uw factureringsgegevens instellen
+
+Stel vervolgens uw factureringsgegevens in voor het ISV Connect-programma voor bedrijfstoepassingen.
+
+> [!NOTE]
+> Voor deze stap is een *rol van eigenaar* of *manager* in het Partnercentrum vereist dat uw account factureringsgegevens bijwerkt.
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard).
 
-2. Selecteer het pictogram *instellingen* (vistuig) en selecteer **instellingen voor ontwikkel aars**.
+2. Selecteer het pictogram *Instellingen* (versnelling) en selecteer **Instellingen voor ontwikkelaars**.
 
-3. Selecteer onder *accounts* **facturerings profiel**.
+3. Selecteer *onder Accounts*het **factureringsprofiel**.
 
-4. Controleer de primaire contact-en facturerings gegevens die zijn ingevuld in uw rechts persoon en breng alle benodigde updates.
+4. Bekijk de primaire contact- en factureringsgegevens die vanuit uw rechtspersoon worden ingevuld en breng de nodige updates uit.
 
-5. Leverings-ID-instellingen voor BTW-ID, indien van toepassing.
+5. Instellingen voor een btw-nummer/btw-nummer, indien van toepassing.
 
 6. Selecteer **Opslaan** om uw wijzigingen op te slaan.
 
-U kunt uw facturerings profiel op elk gewenst moment bijwerken, maar *Bedrijfs naam* en facturerings adres kunnen later niet *meer worden gewijzigd* .
+U uw factureringsprofiel op elk gewenst moment bijwerken, maar *bedrijfsnaam* en factuuradres *land* kunnen later niet worden gewijzigd.
 
-## <a name="recertify-your-application"></a>Uw toepassing opnieuw certificeren
+## <a name="recertify-your-application"></a>Uw aanvraag opnieuw certificeren
 
-Nadat u de bovenstaande stappen hebt uitgevoerd, zijn uw bestaande Dynamics CE-en Dynamics OPS-aanbiedingen beschikbaar voor bewerking in het partner centrum. U kunt ook nieuwe aanbiedingen maken via partner centrum.
+Nadat u de bovenstaande stappen hebt voltooid, zijn uw bestaande Dynamics CE- en Dynamics Ops-aanbiedingen beschikbaar voor bewerking in het Partnercenter. U ook nieuwe aanbiedingen maken via Partner Center.
 
-De laatste stap voor inschrijving in het Business Applications ISV Connect-programma wordt uw bestaande toepassingen opnieuw certificeren.
+De laatste stap voor inschrijving in het ISV Connect-programma voor bedrijfstoepassingen is het opnieuw certificeren van uw bestaande toepassingen.
 
-1. [Volg deze stappen](https://partner.microsoft.com/solutions/business-applications/isv-publish) om uw toepassing opnieuw te certificeren op AppSource.
-2. [Een nieuwe aanbieding maken en publiceren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer). Deze aanbieding is een geheel nieuwe aanbieding en vervangt geen bestaande.
+1. [Volg deze stappen](https://partner.microsoft.com/solutions/business-applications/isv-publish) om uw toepassing opnieuw te certificeren voor AppSource.
+2. [Een nieuw voorstel maken en publiceren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer). Deze aanbieding zal een geheel nieuw aanbod zijn en vervangt geen bestaande aanbieding.
 
-## <a name="further-info"></a>Meer informatie
+## <a name="further-info"></a>Meer info
 
-Vraag uw account manager of neem contact op met de [ondersteuning van micro soft-partners](https://partner.microsoft.com/support) voor hulp met uw account. Voor algemene informatie over het Business Applications ISV Connect-programma en het micro soft Partner Center raadpleegt u:
+Vraag uw Accountmanager of neem contact op met [Microsoft Partner Support](https://partner.microsoft.com/support) voor hulp bij uw account. Zie voor algemene informatie over het ISV Connect-programma voor bedrijfstoepassingen en het Microsoft Partner Center:
 
-#### <a name="business-applications-for-isvs-online-article"></a>Business Applications voor Isv's (online artikel)
+#### <a name="business-applications-for-isvs-online-article"></a>Zakelijke toepassingen voor ISV's (online artikel)
 https://partner.microsoft.com/solutions/business-applications/isv-overview
 
-#### <a name="overview-of-the-new-program-for-business-applications-isvs-pdf"></a>Overzicht van het nieuwe programma voor Business Applications Isv's (PDF)
+#### <a name="overview-of-the-new-program-for-business-applications-isvs-pdf"></a>Overzicht van het nieuwe programma voor zakelijke toepassingen ISV's (PDF)
 https://aka.ms/BizAppsISVProgram
 
-#### <a name="business-applications-isv-connect-program-faq-pdf"></a>Veelgestelde vragen over het Business Applications ISV Connect-programma (PDF)
+#### <a name="business-applications-isv-connect-program-faq-pdf"></a>Veelgestelde vragen over het ISV Connect-programma voor bedrijfstoepassingen (PDF)
 https://assetsprod.microsoft.com/business-applications-partner-faq.pdf
 
-#### <a name="upcoming-program-for-business-applications-isvs-blog-post"></a>Binnenkort programma voor Business Applications Isv's (blog bericht)
+#### <a name="upcoming-program-for-business-applications-isvs-blog-post"></a>Aankomend programma voor Business Applications ISVs (blogpost)
 https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/

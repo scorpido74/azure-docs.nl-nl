@@ -1,90 +1,90 @@
 ---
 title: Back-up inschakelen wanneer u een Azure-VM maakt
-description: Hierin wordt beschreven hoe u back-ups inschakelt wanneer u een Azure VM maakt met Azure Backup.
+description: Beschrijft hoe u back-up inschakelen wanneer u een Azure VM maakt met Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247850"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Back-up inschakelen wanneer u een Azure-VM maakt
 
-Gebruik de Azure Backup-service om een back-up te maken van Azure virtual machines (Vm's). Er wordt een back-up gemaakt van Vm's op basis van een schema dat is opgegeven in een back-upbeleid en herstel punten van back-ups. Herstel punten worden opgeslagen in Recovery Services kluizen.
+Gebruik de Azure Backup-service om een back-up te maken van virtuele Azure-machines (VM's). Vm's worden geback-upt volgens een schema dat is opgegeven in een back-upbeleid en herstelpunten worden gemaakt op basis van back-ups. Herstelpunten worden opgeslagen in vaults van Recovery Services.
 
-In dit artikel vindt u informatie over het inschakelen van back-ups bij het maken van een virtuele machine (VM) in de Azure Portal.  
+In dit artikel wordt beschreven hoe u back-up inschakelen wanneer u een virtuele machine (VM) maakt in de Azure-portal.  
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-- [Controleer](backup-support-matrix-iaas.md#supported-backup-actions) welke besturings systemen worden ondersteund als u back-ups inschakelt bij het maken van een virtuele machine.
+- [Controleer](backup-support-matrix-iaas.md#supported-backup-actions) welke besturingssystemen worden ondersteund als u back-ups inschakelt wanneer u een vm maakt.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Als u nog niet bent aangemeld bij uw account, meldt u zich aan bij de [Azure Portal](https://portal.azure.com).
+Als u nog niet bent aangemeld bij uw account, meldt u zich aan bij de [Azure-portal.](https://portal.azure.com)
 
-## <a name="create-a-vm-with-backup-configured"></a>Een virtuele machine maken waarvoor een back-up is geconfigureerd
+## <a name="create-a-vm-with-backup-configured"></a>Een vm maken met back-up geconfigureerd
 
-1. Klik in Azure Portal op **een resource maken**.
+1. Klik in Azure-portal op **Een resource maken**.
 
-2. Klik in de Azure Marketplace op **Compute**en selecteer vervolgens een VM-installatie kopie.
+2. Klik in de Azure Marketplace op **Compute**en selecteer vervolgens een VM-afbeelding.
 
-3. Stel de virtuele machine in volgens de instructies voor [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) of [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) .
+3. Stel de VM in in overeenstemming met de [Windows-](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) of [Linux-instructies.](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)
 
-4. Klik op het tabblad **beheer** in **back-up inschakelen**op **aan**.
-5. Azure Backup back-ups naar een Recovery Services kluis. Klik op **nieuwe maken** als u geen bestaande kluis hebt.
-6. Accepteer de naam van de voorgestelde kluis of geef uw eigen op.
-7. Geef op of maak een resource groep waarin de kluis zich bevindt. De kluis van de resource groep kan afwijken van de resource groep van de virtuele machine.
+4. Klik op het tabblad **Beheer** in **Back-up inschakelen**op **Op**.
+5. Azure Backup back-ups naar een Vault Recovery Services. Klik **op Nieuw maken** als u geen bestaande kluis hebt.
+6. Accepteer de voorgestelde kluisnaam of geef die van uw eigen kluis op.
+7. Geef of maak een resourcegroep waarin de kluis zich bevindt. De brongroepkluis kan afwijken van de VM-brongroep.
 
     ![Back-up voor een virtuele machine inschakelen](./media/backup-during-vm-creation/enable-backup.png)
 
-8. Accepteer het standaard back-upbeleid of wijzig de instellingen.
-    - In een back-upbeleid wordt aangegeven hoe vaak back-upmomentopnamen van de virtuele machine moeten worden gemaakt en hoe lang deze back-ups moeten worden bewaard.
-    - Het standaard beleid maakt eenmaal per dag een back-up van de VM.
-    - U kunt uw eigen back-upbeleid voor een Azure-VM aanpassen om dagelijks of wekelijks back-ups te maken.
-    - Meer [informatie](backup-azure-vms-introduction.md#backup-and-restore-considerations) over back-upaandachtspunten voor Azure-vm's.
-    - Meer [informatie](backup-instant-restore-capability.md) over de functionaliteit voor direct terugzetten.
+8. Accepteer het standaardback-upbeleid of wijzig de instellingen.
+    - Een back-upbeleid geeft aan hoe vaak back-upmomentopnamen van de vm moeten worden gemaakt en hoe lang deze back-upkopieën moeten worden behouden.
+    - Met het standaardbeleid wordt één keer per dag een back-up van de vm gemaakt.
+    - U uw eigen back-upbeleid voor een Azure VM aanpassen om dagelijks of wekelijks back-ups te maken.
+    - [Meer informatie](backup-azure-vms-introduction.md#backup-and-restore-considerations) over back-upoverwegingen voor Azure VM's.
+    - [Meer informatie](backup-instant-restore-capability.md) over de functionaliteit voor direct herstellen.
 
-      ![Standaard back-upbeleid](./media/backup-during-vm-creation/daily-policy.png)
+      ![Standaardback-upbeleid](./media/backup-during-vm-creation/daily-policy.png)
 
-## <a name="azure-backup-resource-group-for-virtual-machines"></a>Azure Backup resource groep voor Virtual Machines
+## <a name="azure-backup-resource-group-for-virtual-machines"></a>Azure Backup-brongroep voor virtuele machines
 
-Met de back-upservice wordt een afzonderlijke resource groep (RG) gemaakt, die afwijkt van de resource groep van de virtuele machine om de herstel punt verzameling (RPC) op te slaan. De RPC-huizen de onmiddellijke herstel punten van beheerde Vm's. De standaard naamgevings indeling van de resource groep die is gemaakt door de back-upservice is: `AzureBackupRG_<Geo>_<number>`. Bijvoorbeeld: *AzureBackupRG_northeurope_1*. U kunt nu de naam van de resource groep aanpassen die is gemaakt door Azure Backup.
+Met de back-upservice wordt een afzonderlijke brongroep (RG) gemaakt, anders dan de resourcegroep van de VM om de RPC (Restore Point Collection) op te slaan. De RPC herbergt de directe herstelpunten van beheerde VM's. De standaardnaamgevingsindeling van de resourcegroep die `AzureBackupRG_<Geo>_<number>`is gemaakt door de back-upservice is: . Bijvoorbeeld: *AzureBackupRG_northeurope_1*. U nu de naam van de resourcegroep aanpassen die is gemaakt door Azure Backup.
 
-Die u moet weten:
+Aandachtspunten:
 
-1. U kunt de standaard naam van de RG gebruiken of deze bewerken volgens de vereisten van uw bedrijf.
-2. U geeft het naam patroon RG op als invoer tijdens het maken van het back-upbeleid van de VM. De naam van de RG moet de volgende indeling hebben: `<alpha-numeric string>* n <alpha-numeric string>`. ' n ' wordt vervangen door een geheel getal (vanaf 1) en wordt gebruikt om uit te schalen als de eerste RG vol is. Eén RG kan vandaag nog een maximum van 600 Rpc's hebben.
-              ![Kies een naam bij het maken van beleid](./media/backup-during-vm-creation/create-policy.png)
-3. Het patroon moet de onderstaande regels voor de naamgeving van RG volgen en de totale lengte mag niet groter zijn dan de Maxi maal toegestane grootte van RG.
-    1. Namen van resource groepen mogen alleen bestaan uit alfanumerieke tekens, punten, onderstrepingen, afbreek streepjes en haakjes. Ze kunnen niet eindigen op een punt.
-    2. Namen van resource groepen mogen Maxi maal 74 tekens bevatten, waaronder de naam van de RG en het achtervoegsel.
-4. De eerste `<alpha-numeric-string>` is verplicht wanneer de tweede na ' n ' optioneel is. Dit geldt alleen als u een aangepaste naam wilt opgeven. Als u niets opgeeft in een van de tekst vakken, wordt de standaard naam gebruikt.
-5. U kunt de naam van de RG bewerken door het beleid te wijzigen als en wanneer dat nodig is. Als het naam patroon wordt gewijzigd, wordt er nieuwe RPs in de nieuwe RG gemaakt. De oude RPs blijft echter wel aanwezig in de oude RG en niet worden verplaatst, omdat de RP-verzameling geen ondersteuning biedt voor het verplaatsen van resources. Uiteindelijk krijgt de RPs de garbage verzameld wanneer de punten verlopen.
-naam ![wijzigen bij het wijzigen van beleid](./media/backup-during-vm-creation/modify-policy.png)
-6. Het is raadzaam de resource groep die is gemaakt voor gebruik door de back-upservice, niet te vergren delen.
+1. U de standaardnaam van de RG gebruiken of bewerken volgens uw bedrijfsvereisten.
+2. U geeft het RG-naampatroon op als invoer tijdens het maken van vm-back-upbeleid. De RG-naam moet van `<alpha-numeric string>* n <alpha-numeric string>`het volgende formaat zijn: . 'n' wordt vervangen door een geheel getal (vanaf 1) en wordt gebruikt voor het uitschalen als de eerste RG vol is. Een RG kan vandaag de dag een maximum van 600 RDC's hebben.
+              ![Naam kiezen bij het maken van beleid](./media/backup-during-vm-creation/create-policy.png)
+3. Het patroon moet de onderstaande RG-naamgevingsregels volgen en de totale lengte mag niet hoger zijn dan de maximaal toegestane RG-naamlengte.
+    1. Namen van resourcegroepen staan alleen alfanumerieke tekens, perioden, underscores, koppeltekens en haakjes toe. Ze kunnen niet eindigen in een periode.
+    2. Namen van resourcegroepen kunnen maximaal 74 tekens bevatten, waaronder de naam van de RG en het achtervoegsel.
+4. De `<alpha-numeric-string>` eerste is verplicht, terwijl de tweede na 'n' optioneel is. Dit geldt alleen als u een aangepaste naam geeft. Als u niets in voert in een van de tekstvakken, wordt de standaardnaam gebruikt.
+5. U de naam van de RG bewerken door het beleid te wijzigen indien en wanneer dat nodig is. Als het naampatroon wordt gewijzigd, worden er nieuwe R's gemaakt in de nieuwe RG. De oude R's blijven echter in de oude RG wonen en worden niet verplaatst, omdat RP Collection geen ondersteuning biedt voor resourcemove. Uiteindelijk krijgen de RPs afval verzameld als de punten verlopen.
+![Naam wijzigen bij wijzigen van beleid](./media/backup-during-vm-creation/modify-policy.png)
+6. Het wordt aangeraden de resourcegroep die is gemaakt voor gebruik door de back-upservice, niet te vergrendelen.
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Een back-up starten na het maken van de VM
 
-De back-up van de virtuele machine wordt uitgevoerd in overeenstemming met uw back-upbeleid. We raden u echter aan een eerste back-up uit te voeren.
+Uw VM-back-up wordt uitgevoerd in overeenstemming met uw back-upbeleid. We raden u echter aan een eerste back-up uit te voeren.
 
-Nadat de VM is gemaakt, gaat u als volgt te werk:
+Ga als volgt te werk nadat de vm is gemaakt:
 
-1. Klik in de VM-eigenschappen op **back-up**. Voor de VM-status is de eerste back-up in behandeling totdat de eerste back-up wordt uitgevoerd
-2. Klik op **Nu back** -up maken om een back-up op aanvraag uit te voeren.
+1. Klik in de VM-eigenschappen op **Back-up**. De VM-status is Initial Backup Pending totdat de eerste back-up is uitgevoerd
+2. Klik **nu op Een back-up** maken om een back-up op aanvraag uit te voeren.
 
-    ![Een back-up op aanvraag uitvoeren](./media/backup-during-vm-creation/run-backup.png)
+    ![Een on-demand back-up uitvoeren](./media/backup-during-vm-creation/run-backup.png)
 
-## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>Een resource manager-sjabloon gebruiken om een beveiligde virtuele machine te implementeren
+## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>Een resourcebeheersjabloon gebruiken om een beveiligde virtuele machine te implementeren
 
-In de vorige stappen wordt uitgelegd hoe u de Azure Portal kunt gebruiken om een virtuele machine te maken en te beveiligen in een Recovery Services kluis. Als u een of meer Vm's snel wilt implementeren en wilt beveiligen in een Recovery Services kluis, raadpleegt u de sjabloon [een Windows VM implementeren en back-up inschakelen](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/).
+In de vorige stappen wordt uitgelegd hoe u de Azure-portal gebruiken om een virtuele machine te maken en te beveiligen in een kluis van Recovery Services. Als u snel een of meer VM's wilt implementeren en deze wilt beveiligen in een kluis van Recovery Services, raadpleegt u de sjabloon [Een Windows-vm implementeren en back-up inschakelen.](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u uw VM hebt beveiligd, leert u hoe u deze kunt beheren en herstellen.
+Nu u uw vm hebt beschermd, leert u hoe u deze beheren en herstellen.
 
-- [Vm's beheren en controleren](backup-azure-manage-vms.md)
+- [Virtuele machines beheren en controleren](backup-azure-manage-vms.md)
 - [VM herstellen](backup-azure-arm-restore-vms.md)
 
-Als u problemen ondervindt, [raadpleegt](backup-azure-vms-troubleshoot.md) u de hand leiding voor het oplossen van problemen.
+Als u problemen ondervindt, [bekijkt u](backup-azure-vms-troubleshoot.md) de handleiding voor probleemoplossing.

@@ -1,6 +1,6 @@
 ---
 title: Webhook-activiteit in Azure Data Factory
-description: De activiteit van de webhook blijft de uitvoering van de pijp lijn voortzetten totdat de gekoppelde gegevensset wordt gevalideerd met bepaalde criteria die de gebruiker opgeeft.
+description: De webhook-activiteit gaat niet door met de uitvoering van de pijplijn totdat de gekoppelde gegevensset wordt gevalideerd met bepaalde criteria die de gebruiker opgeeft.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: ced2279878ee2eb361ec7338647418658e411513
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79213007"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-activiteit in Azure Data Factory
 
-Met een webhook-activiteit kan de uitvoering van pijp lijnen via uw aangepaste code worden beheerd. Met de webhook-activiteit kan de code van klanten een eind punt aanroepen en een URL voor terugbellen door geven. De pijplijn uitvoering wacht op het aanroepen van de retour aanroep voordat de volgende activiteit wordt uitgevoerd.
+Een webhook-activiteit kan de uitvoering van pijplijnen regelen via uw aangepaste code. Met de webhook-activiteit kan de code van klanten een eindpunt aanroepen en een terugbel-URL doorgeven. De pijplijnrun wacht op de aanroep van de callback voordat deze overgaat tot de volgende activiteit.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -49,31 +49,31 @@ Met een webhook-activiteit kan de uitvoering van pijp lijnen via uw aangepaste c
 
 ```
 
-## <a name="type-properties"></a>Type-eigenschappen
+## <a name="type-properties"></a>Eigenschappen typen
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-**naam** | De naam van de webhook-activiteit. | Tekenreeks | Ja |
-**type** | Moet worden ingesteld op webhook. | Tekenreeks | Ja |
-**methode** | De REST API methode voor het doel eindpunt. | Tekenreeks. Het ondersteunde type is ' POST '. | Ja |
-**URL** | Het doel eindpunt en-pad. | Een teken reeks of expressie met de waarde van het **resultType** van een teken reeks. | Ja |
-**koppen** | Kopteksten die naar de aanvraag worden verzonden. Hier volgt een voor beeld waarin de taal en het type van een aanvraag worden ingesteld: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Een teken reeks of expressie met de waarde van het **resultType** van een teken reeks. | Ja. Een `Content-Type`-header zoals `"headers":{ "Content-Type":"application/json"}` is vereist. |
-**organen** | Vertegenwoordigt de nettolading die naar het eind punt wordt verzonden. | Een geldige JSON of een expressie met de waarde van het **resultType** van JSON. Zie [Payload-schema aanvragen](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) voor het schema van de aanvraag lading. | Ja |
-**verificatie** | De verificatie methode die wordt gebruikt om het eind punt aan te roepen. De ondersteunde typen zijn "Basic" en "ClientCertificate". Zie [Verificatie](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication) voor meer informatie. Als verificatie niet is vereist, sluit u deze eigenschap. | Een teken reeks of expressie met de waarde van het **resultType** van een teken reeks. | Nee |
-**out** | Hoe lang de activiteit wacht op de call back die is opgegeven door **callBackUri** , om te worden aangeroepen. De standaard waarde is 10 minuten ("00:10:00"). De waarden hebben de time span-indeling *d*. *uu*:*mm*:*SS*. | Tekenreeks | Nee |
-**Rapport status bij terugbellen** | Hiermee kan een gebruiker de mislukte status van een webhook-activiteit rapporteren. | Booleaans | Nee |
+**Naam** | De naam van de webhook activiteit. | Tekenreeks | Ja |
+**Type** | Moet worden ingesteld op "WebHook". | Tekenreeks | Ja |
+**Methode** | De REST API-methode voor het doeleindpunt. | Tekenreeks. Het ondersteunde type is "POST". | Ja |
+**Url** | Het doeleindpunt en -pad. | Een tekenreeks of een expressie met de **resultaattekstTypewaarde** van een tekenreeks. | Ja |
+**Headers** | Kopteksten die naar de aanvraag worden verzonden. Hier is een voorbeeld dat de taal en `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`het type op een verzoek instelt: . | Een tekenreeks of een expressie met de **resultaattekstTypewaarde** van een tekenreeks. | Ja. Een `Content-Type` header `"headers":{ "Content-Type":"application/json"}` zoals is vereist. |
+**Lichaam** | Vertegenwoordigt de payload die naar het eindpunt wordt verzonden. | Geldige JSON of een expressie met de **resultaatTypewaarde** van JSON. Zie [Payload-schema aanvragen](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) voor het schema van de payload van de aanvraag. | Ja |
+**verificatie** | De verificatiemethode die wordt gebruikt om het eindpunt aan te roepen. Ondersteunde typen zijn "Basic" en "ClientCertificate". Zie [Verificatie](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication) voor meer informatie. Als verificatie niet vereist is, sluit u deze eigenschap uit. | Een tekenreeks of een expressie met de **resultaattekstTypewaarde** van een tekenreeks. | Nee |
+**timeout** | Hoe lang de activiteit wacht tot de callback is opgegeven door **callBackUri.** De standaardwaarde is 10 minuten ("00:10:00"). Waarden hebben de TimeSpan-indeling *d*. *hh*:*mm*:*ss*. | Tekenreeks | Nee |
+**Status rapporteren bij terugbellen** | Hiermee kan een gebruiker de mislukte status van een webhook-activiteit melden. | Booleaans | Nee |
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 
-Een webhook-activiteit ondersteunt de volgende verificatie typen.
+Een webhookactiviteit ondersteunt de volgende verificatietypen.
 
-### <a name="none"></a>None
+### <a name="none"></a>Geen
 
-Als verificatie niet is vereist, neemt u de eigenschap **Authentication** niet op.
+Als verificatie niet vereist is, moet u de **eigenschap verificatie** niet opnemen.
 
 ### <a name="basic"></a>Basic
 
-Geef de gebruikers naam en het wacht woord op die moeten worden gebruikt met basis verificatie.
+Geef de gebruikersnaam en het wachtwoord op die u wilt gebruiken met basisverificatie.
 
 ```json
 "authentication":{
@@ -83,9 +83,9 @@ Geef de gebruikers naam en het wacht woord op die moeten worden gebruikt met bas
 }
 ```
 
-### <a name="client-certificate"></a>Client certificaat
+### <a name="client-certificate"></a>Clientcertificaat
 
-Geef de met base64 gecodeerde inhoud van een PFX-bestand en een wacht woord op.
+Geef de door Base64 gecodeerde inhoud van een PFX-bestand en een wachtwoord op.
 
 ```json
 "authentication":{
@@ -97,7 +97,7 @@ Geef de met base64 gecodeerde inhoud van een PFX-bestand en een wacht woord op.
 
 ### <a name="managed-identity"></a>Beheerde identiteit
 
-Gebruik de beheerde identiteit van de data factory om de bron-URI op te geven waarvoor het toegangs token is aangevraagd. Gebruik `https://management.azure.com/`om de Azure Resource Management-API aan te roepen. Zie voor meer informatie over de werking van beheerde identiteiten het [overzicht beheerde identiteiten voor Azure-resources](/azure/active-directory/managed-identities-azure-resources/overview).
+Gebruik de beheerde identiteit van de gegevensfabriek om de resource URI op te geven waarvoor het toegangstoken wordt aangevraagd. Als u de API voor `https://management.azure.com/`Azure Resource Management wilt aanroepen, gebruikt u . Zie het [overzicht beheerde identiteiten voor Azure-bronnen voor](/azure/active-directory/managed-identities-azure-resources/overview)meer informatie over hoe beheerde identiteiten werken.
 
 ```json
 "authentication": {
@@ -107,21 +107,21 @@ Gebruik de beheerde identiteit van de data factory om de bron-URI op te geven wa
 ```
 
 > [!NOTE]
-> Als uw data factory is geconfigureerd met een Git-opslag plaats, moet u uw referenties in Azure Key Vault opslaan om basis-of verificatie van client certificaten te gebruiken. Azure Data Factory slaat geen wacht woorden op in Git.
+> Als uw gegevensfabriek is geconfigureerd met een Git-opslagplaats, moet u uw referenties opslaan in Azure Key Vault om basisverificatie of clientcertificaatverificatie te gebruiken. Azure Data Factory slaat geen wachtwoorden op in Git.
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-Data Factory geeft de extra eigenschap **callBackUri** in de hoofd tekst die naar het URL-eind punt is verzonden. Data Factory verwacht dat deze URI wordt aangeroepen vóór de opgegeven time-outwaarde. Als de URI niet wordt aangeroepen, mislukt de activiteit met de status ' out '.
+Data Factory geeft de extra eigenschap **callBackUri** door in de body die naar het URL-eindpunt wordt verzonden. Data Factory verwacht dat deze URI wordt ingeroepen vóór de opgegeven time-outwaarde. Als de URI niet wordt aangeroepen, mislukt de activiteit met de status 'TimedOut'.
 
-De webhook-activiteit mislukt wanneer de aanroep van het aangepaste eind punt mislukt. Elk fout bericht kan worden toegevoegd aan de hoofd tekst van de call back en wordt gebruikt in een latere activiteit.
+De webhook-activiteit mislukt wanneer de aanroep naar het aangepaste eindpunt mislukt. Elk foutbericht kan worden toegevoegd aan de terugbelinstantie en wordt in een latere activiteit gebruikt.
 
-Voor elke REST API-aanroep wordt een time-out van de client uitgevoerd als het eind punt niet binnen één minuut reageert. Dit gedrag is standaard HTTP best practice. Om dit probleem op te lossen, implementeert u een 202-patroon. In het huidige geval retourneert het eind punt 202 (geaccepteerd) en de client polls.
+Voor elke REST API-aanroep geeft de client een keer een uitkijk als het eindpunt niet binnen een minuut reageert. Dit gedrag is standaard HTTP best practice. Voer een 202-patroon in om dit probleem op te lossen. In het huidige geval retourneert het eindpunt 202 (Geaccepteerd) en de clientpolls.
 
-De time-out van één minuut op de aanvraag heeft niets te maken met de time-out van de activiteit. De laatste wordt gebruikt om te wachten op de call back die is opgegeven door **callbackUri**.
+De time-out van één minuut op het verzoek heeft niets te maken met de time-out van de activiteit. De laatste wordt gebruikt om te wachten op de callback opgegeven door **callbackUri**.
 
-De hoofd tekst die is door gegeven aan de call back-URI moet een geldige JSON zijn. Stel de `Content-Type`-header in op `application/json`.
+Het lichaam dat wordt doorgegeven aan de callback URI moet geldig zijn JSON. Stel `Content-Type` de `application/json`koptekst in op .
 
-Wanneer u de eigenschap **rapport status bij terugbellen** gebruikt, moet u de volgende code aan de hoofd tekst toevoegen wanneer u de call back maakt:
+Wanneer u de **eigenschap Rapportstatus op de eigenschap Callback** gebruikt, moet u de volgende code aan de instantie toevoegen wanneer u de terugroepmaakt:
 
 ```json
 {
@@ -140,7 +140,7 @@ Wanneer u de eigenschap **rapport status bij terugbellen** gebruikt, moet u de v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende controle stroom activiteiten die worden ondersteund door Data Factory:
+Bekijk de volgende control flow-activiteiten die worden ondersteund door Data Factory:
 
 - [If Condition Activity](control-flow-if-condition-activity.md)
 - [Execute Pipeline Activity](control-flow-execute-pipeline-activity.md)

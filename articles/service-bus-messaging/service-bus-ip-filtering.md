@@ -1,6 +1,6 @@
 ---
-title: Firewall regels voor Azure Service Bus | Microsoft Docs
-description: Hoe u firewall regels kunt gebruiken om verbindingen van bepaalde IP-adressen toe te staan Azure Service Bus.
+title: IP-firewallregels configureren voor Azure Service Bus
+description: Firewallregels gebruiken om verbindingen toe te staan van specifieke IP-adressen naar Azure Service Bus.
 services: service-bus
 documentationcenter: ''
 author: axisc
@@ -11,66 +11,53 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 9887d5448eabd272ab2528e4fc758265f2ada977
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a20882de34cb306b767959e21327180ff284e658
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980342"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475940"
 ---
-# <a name="azure-service-bus---use-firewall-rules"></a>Azure Service Bus-firewall regels gebruiken
+# <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>IP-firewallregels configureren voor Azure Service Bus
+Standaard zijn naamruimten van servicebus toegankelijk vanaf internet, zolang de aanvraag wordt geleverd met geldige verificatie en autorisatie. Met IP-firewall u deze verder beperken tot alleen een set IPv4-adressen of IPv4-adresbereiken in [CIDR-notatie (Classless Inter-Domain Routing).](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 
-Voor scenario's waarin Azure Service Bus alleen toegankelijk is vanaf bepaalde bekende sites, kunt u met firewall regels regels configureren voor het accepteren van verkeer dat afkomstig is van specifieke IPv4-adressen. Bijvoorbeeld, kunnen deze adressen die van een zakelijke NAT-gateway zijn.
+Deze functie is handig in scenario's waarin Azure Service Bus alleen toegankelijk mag zijn vanaf bepaalde bekende sites. Met firewallregels u regels configureren om verkeer te accepteren dat afkomstig is van specifieke IPv4-adressen. Als u bijvoorbeeld Service Bus met [Azure Express Route][express-route]gebruikt, u een **firewallregel** maken om verkeer toe te staan vanaf alleen uw on-premises infrastructuur IP-adressen of adressen van een bedrijfsNAT-gateway. 
 
-## <a name="when-to-use"></a>Wanneer gebruikt u dit?
+## <a name="ip-firewall-rules"></a>IP-firewallregels
+De IP-firewallregels worden toegepast op het naamruimteniveau servicebus. Daarom zijn de regels van toepassing op alle verbindingen van clients die een ondersteund protocol gebruiken. Elke verbindingspoging vanaf een IP-adres dat niet overeenkomt met een toegestane IP-regel op de naamruimte servicebus, wordt afgewezen als ongeautoriseerd. In het antwoord wordt geen IP-regel vermeld. IP-filterregels worden op volgorde toegepast en de eerste regel die overeenkomt met het IP-adres bepaalt de actie Accepteren of weigeren.
 
-Als u wilt instellen Service Bus zodanig dat er alleen verkeer wordt ontvangen van een opgegeven bereik van IP-adressen en alle andere gegevens afwijzen, kunt u een *firewall* gebruiken om service bus-eind punten van andere IP-adressen te blok keren. U gebruikt bijvoorbeeld Service Bus met [Azure Express route][express-route] om particuliere verbindingen te maken met uw on-premises infra structuur. 
+## <a name="use-azure-portal"></a>Azure Portal gebruiken
+In deze sectie ziet u hoe u de Azure-portal gebruiken om IP-firewallregels voor een naamruimte van servicebus te maken. 
 
-## <a name="how-filter-rules-are-applied"></a>Hoe regels worden toegepast
+1. Navigeer naar de **naamruimte van** uw servicebus in de [Azure-portal.](https://portal.azure.com)
+2. Selecteer **netwerkoptie** in het linkermenu. Standaard is de optie **Alle netwerken** geselecteerd. Uw servicebusnaamruimte accepteert verbindingen vanaf elk IP-adres. Deze standaardinstelling is gelijk aan een regel die het IP-adresbereik 0.0.0/0/0 accepteert. 
 
-De IP-filter regels worden toegepast op het niveau van de Service Bus naam ruimte. Daarom de regels van toepassing op alle verbindingen van clients met behulp van een ondersteund protocol.
+    ![Firewall - Alle netwerken optie geselecteerd](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+1. Selecteer de optie **Geselecteerde netwerken** boven aan de pagina. Voer in de sectie **Firewall** de volgende stappen uit:
+    1. Selecteer De optie **IP-adres van uw client toevoegen** om uw huidige client-IP toegang te geven tot de naamruimte. 
+    2. Voer **voor adresbereik**een specifiek IPv4-adres of een bereik van IPv4-adres in CIDR-notatie in. 
+    3. Geef op of u **vertrouwde Microsoft-services wilt toestaan om deze firewall te omzeilen.** 
 
-Een verbindings poging van een IP-adres dat niet overeenkomt met een toegestane IP-regel op de Service Bus naam ruimte, wordt geweigerd als niet-geautoriseerd. Het antwoord wordt niet vermeld voor de IP-regel.
+        ![Firewall - Alle netwerken optie geselecteerd](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
+3. Selecteer **Opslaan** op de werkbalk om de instellingen op te slaan. Wacht een paar minuten tot de bevestiging wordt weergegeven op de portalmeldingen.
 
-## <a name="default-setting"></a>Standaardinstelling
-
-Het **IP-filter** raster in de portal voor service bus is standaard leeg. Deze standaard instelling betekent dat de naam ruimte verbinding kan maken met elk IP-adres. Deze instelling is gelijk aan een regel waarmee het 0.0.0.0/0 IP-adresbereik accepteert.
-
-## <a name="ip-filter-rule-evaluation"></a>Evaluatie van IP-filter
-
-IP-filter regels worden in volg orde toegepast en de eerste regel die overeenkomt met het IP-adres, bepaalt de accepteren of afwijzen.
-
->[!WARNING]
-> Het implementeren van firewall regels kan verhinderen dat andere Azure-Services communiceren met Service Bus.
->
-> Vertrouwde micro soft-services worden niet ondersteund wanneer IP-filtering (firewall regels) worden geïmplementeerd en binnenkort beschikbaar wordt gesteld.
->
-> Algemene scenario's voor Azure die niet werken met IP-filtering (Let op: de lijst is **niet** volledig)-
-> - Azure Stream Analytics
-> - Integratie met Azure Event Grid
-> - Azure-IoT Hub routes
-> - Azure IoT-Device Explorer
->
-> De onderstaande micro soft-services moeten zich in een virtueel netwerk bevinden
-> - Azure App Service
-> - Azure Functions
-
-### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Een virtueel netwerk en een firewall regel met Azure Resource Manager sjablonen maken
+## <a name="use-resource-manager-template"></a>Resource Manager-sjabloon gebruiken
+Deze sectie heeft een voorbeeld van Azure Resource Manager-sjabloon waarmee een virtueel netwerk en een firewallregel worden gemaakt.
 
 > [!IMPORTANT]
-> Firewalls en virtuele netwerken worden alleen ondersteund in de **Premium** -laag van service bus.
+> Firewalls en virtuele netwerken worden alleen ondersteund in de **premium-laag** servicebus.
 
-Met de volgende Resource Manager-sjabloon kan een regel voor een virtueel netwerk worden toegevoegd aan een bestaande Service Bus naam ruimte.
+Met de volgende sjabloon Resourcebeheer u een virtuele netwerkregel toevoegen aan een bestaande naamruimte van servicebus.
 
 Sjabloonparameters:
 
-- **ipMask** is één IPv4-adres of een blok IP-adressen in CIDR-notatie. Bijvoorbeeld, in CIDR vertegenwoordigt notatie 70.37.104.0/24 de 256 IPv4-adressen van 70.37.104.0 tot 70.37.104.255, met 24 uur per dag die wijzen op het aantal bits aanzienlijke voorvoegsel voor het bereik.
+- **ipMask** is één IPv4-adres of een blok IP-adressen in CIDR-notatie. In CIDR-notatie 70.37.104.0/24 vertegenwoordigt bijvoorbeeld de 256 IPv4-adressen van 70.37.104.0 tot 70.37.104.255, waarbij 24 het aantal significante voorvoegselbits voor het bereik aangeven.
 
 > [!NOTE]
-> Hoewel er geen regels kunnen worden geweigerd, is voor de Azure Resource Manager sjabloon de standaard actie ingesteld op **' toestaan '** , waardoor verbindingen niet worden beperkt.
-> Wanneer u Virtual Network of firewall regels maakt, moeten we de ***' defaultAction '*** wijzigen
+> Hoewel er geen weigeringsregels mogelijk zijn, is de sjabloon Azure Resource Manager ingesteld op **'Toestaan'** waardoor verbindingen niet worden beperkt.
+> Bij het maken van virtual network- of firewalls-regels moeten we de ***'defaultAction'*** wijzigen
 > 
-> uit
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -133,6 +120,7 @@ Sjabloonparameters:
                 "action":"Allow"
             }
           ],
+          "trustedServiceAccessEnabled": false,          
           "defaultAction": "Deny"
         }
       }
@@ -145,9 +133,9 @@ Als u de sjabloon wilt implementeren, volgt u de instructies voor [Azure Resourc
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende koppeling voor meer informatie over het beperken van toegang tot Service Bus voor virtuele netwerken van Azure:
+Zie de volgende koppeling voor het beperken van de toegang tot Service Bus tot virtuele Azure-netwerken:
 
-- [Service-eind punten Virtual Network voor Service Bus][lnk-vnet]
+- [Eindpunten van virtual network service voor servicebus][lnk-vnet]
 
 <!-- Links -->
 

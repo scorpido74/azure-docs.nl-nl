@@ -1,6 +1,6 @@
 ---
-title: Identiteits gegevens opslag voor Australische klanten-Azure AD
-description: Meer informatie over waar Azure Active Directory identiteits gegevens voor de Australische klanten opslaat.
+title: Opslag van identiteitsgegevens voor Australische klanten - Azure AD
+description: Meer informatie over waar Azure Active Directory identiteitsgerelateerde gegevens opslaat voor zijn Australische klanten.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -12,30 +12,28 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbe4befa824990c2f8b2627e7709913f564c0486
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 0dc659f3d580646c1e86e5e97940268311e5546f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371525"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460531"
 ---
-# <a name="identity-data-storage-for-australian-customers-in-azure-active-directory"></a>Identiteits gegevens opslag voor Australische klanten in Azure Active Directory
+# <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Opslag van identiteitsgegevens voor Klanten in Australië en Nieuw-Zeeland in Azure Active Directory
 
-Identiteits gegevens worden opgeslagen door Azure AD op een geografische locatie op basis van het adres van uw organisatie bij het abonneren op een micro soft online service, zoals Office 365 en Azure. Voor informatie over waar uw identiteits klant gegevens zijn opgeslagen, kunt u de sectie [waar bevinden zich uw gegevens?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) in het micro soft vertrouwens centrum.
+Identiteitsgegevens worden door Azure AD opgeslagen op een geografische locatie op basis van het adres dat uw organisatie biedt wanneer u zich abonneert op een Microsoft Online-service zoals Office 365 en Azure. Voor informatie over waar uw identiteitsklantgegevens worden opgeslagen, u het gedeelte [Waar bevinden?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
 
 > [!NOTE]
-> Services en toepassingen die met Azure AD worden geïntegreerd, hebben toegang tot klant gegevens van de identiteit. Evalueer elke service en toepassing die u gebruikt om te bepalen hoe klant gegevens van de identiteit worden verwerkt door die specifieke service en toepassing, en of ze voldoen aan de vereisten voor gegevens opslag van uw bedrijf. Zie voor meer informatie over de gegevens locatie van micro soft-Services, waar bevindt uw gegevens zich? van het vertrouwens centrum van micro soft.
+> Services en toepassingen die integreren met Azure AD hebben toegang tot identiteitsklantgegevens. Evalueer elke service en toepassing die u gebruikt om te bepalen hoe identiteitsklantgegevens worden verwerkt door die specifieke service en toepassing en of deze voldoen aan de vereisten voor gegevensopslag van uw bedrijf. Zie de sectie Waar bevinden uw gegevens zich? van het Microsoft Trust Center voor meer informatie over de gegevenslocatie van Microsoft-services.
 
-Voor klanten die een adres hebben ontvangen in Australië, houdt Azure AD identiteits gegevens voor deze services in Australische data centers: 
-- Azure AD-adreslijst beheer 
-- Authentication
+Voor klanten die een adres hebben opgegeven in Australië en Nieuw-Zeeland en gebruik maken van Azure AD free edition, houdt Azure AD PII-gegevens in rust in Australische datacenters. 
 
-Alle andere Azure AD-Services slaan klant gegevens op in wereld wijde data centers. Als u het Data Center voor een service wilt zoeken, raadpleegt u [Azure Active Directory – waar bevinden zich uw gegevens?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
+Alle andere Azure AD premium services slaan klantgegevens op in wereldwijde datacenters. Zie [Azure Active Directory, waar bevinden zich uw gegevens om](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) het datacenter voor een service te zoeken?
 
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Multi-factor Authentication (MFA) Microsoft Azure
+## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure multi-factor authenticatie (MFA)
 
-Met MFA worden identiteits gegevens van klanten opgeslagen in wereld wijde data centers. Zie [azure multi-factor Authentication verzameling van gebruikers gegevens](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-data-residency)voor meer informatie over de gebruikers gegevens die worden verzameld en opgeslagen door Azure MFA en Azure MFA-server op basis van de Cloud.
+MFA-service in Azure AD slaat identiteitsklantgegevens in rust op in wereldwijde datacenters. Zie [Azure Multi-Factor Authentication user](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-data-residency)data collection voor meer informatie over de gebruikersgegevens die zijn verzameld en opgeslagen door Azure MFA en Azure MFA Server in de cloud. Als klanten MFA gebruiken, worden hun gegevens in rust opgeslagen buiten de datacenters van Australië. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen voor meer informatie over de functies en functionaliteit die hierboven worden beschreven:
+Zie de volgende artikelen voor meer informatie over een van de hierboven beschreven functies en functionaliteit:
 - [Wat is Multi-Factor Authentication?](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)

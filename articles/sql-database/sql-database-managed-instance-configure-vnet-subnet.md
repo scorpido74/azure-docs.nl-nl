@@ -1,6 +1,6 @@
 ---
-title: Een bestaand virtueel netwerk voor een beheerd exemplaar configureren
-description: In dit artikel wordt beschreven hoe u een bestaand virtueel netwerk en subnet configureert waarin u Azure SQL Database beheerde instantie kunt implementeren.
+title: Een bestaand virtueel netwerk configureren voor beheerde instantie
+description: In dit artikel wordt beschreven hoe u een bestaand virtueel netwerk en subnet configureert waar u Azure SQL Database Managed Instance implementeren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,35 +10,35 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-ms.date: 01/15/2019
-ms.openlocfilehash: 6dfc0a59ab4150173196fae82d90eca4880d5364
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/17/2020
+ms.openlocfilehash: 50b832baa9253f47b5f10980ae1764c9425ed4d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818884"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476946"
 ---
-# <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Een bestaand virtueel netwerk voor Azure SQL Database beheerde instantie configureren
+# <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Een bestaand virtueel netwerk configureren voor Azure SQL Database Managed Instance
 
-Azure SQL Database beheerde instantie moet worden geïmplementeerd in een virtueel Azure- [netwerk](../virtual-network/virtual-networks-overview.md) en het toegewezen subnet alleen voor beheerde exemplaren. U kunt het bestaande virtuele netwerk en subnet gebruiken als het is geconfigureerd volgens de vereisten voor het [virtuele netwerk van het beheerde exemplaar](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
+Azure SQL Database Managed Instance moet worden geïmplementeerd binnen een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md) en het subnet dat alleen is toegewezen aan Beheerde exemplaren. U het bestaande virtuele netwerk en subnet gebruiken als het is geconfigureerd volgens de [virtuele netwerkvereisten voor beheerde instantie.](sql-database-managed-instance-connectivity-architecture.md#network-requirements)
 
-Als een van de volgende gevallen van toepassing is, kunt u uw netwerk valideren en wijzigen met behulp van het script dat in dit artikel wordt uitgelegd:
+Als een van de volgende gevallen op u van toepassing is, u uw netwerk valideren en wijzigen met behulp van het script dat in dit artikel wordt uitgelegd:
 
-- U hebt een nieuw subnet dat nog niet is geconfigureerd.
-- U weet niet zeker dat het subnet is afgestemd op de [vereisten](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
-- U wilt controleren of het subnet nog steeds voldoet aan de [netwerk vereisten](sql-database-managed-instance-connectivity-architecture.md#network-requirements) nadat u wijzigingen hebt aangebracht.
+- Je hebt een nieuw subnet dat nog steeds niet is geconfigureerd.
+- U weet niet zeker of het subnet is afgestemd op de [vereisten.](sql-database-managed-instance-connectivity-architecture.md#network-requirements)
+- U wilt controleren of het subnet nog steeds voldoet aan de [netwerkvereisten](sql-database-managed-instance-connectivity-architecture.md#network-requirements) nadat u wijzigingen hebt aangebracht.
 
 > [!Note]
-> U kunt alleen een beheerd exemplaar maken in virtuele netwerken die zijn gemaakt via het Azure Resource Manager-implementatie model. Virtuele Azure-netwerken die zijn gemaakt via het klassieke implementatie model, worden niet ondersteund. Bereken de grootte van het subnet door de richt lijnen te volgen in het artikel [grootte van subnet voor beheerde instanties bepalen](sql-database-managed-instance-determine-size-vnet-subnet.md) . U kunt het formaat van het subnet niet wijzigen nadat u de resources in hebt geïmplementeerd.
+> U een beheerde instantie alleen maken in virtuele netwerken die zijn gemaakt via het Azure Resource Manager-implementatiemodel. Azure virtuele netwerken die zijn gemaakt via het klassieke implementatiemodel worden niet ondersteund. Bereken subnetgrootte door de richtlijnen te volgen in het artikel [De grootte van subnet voor Beheerde instanties bepalen.](sql-database-managed-instance-determine-size-vnet-subnet.md) U het formaat van het subnet niet wijzigen nadat u de resources binnenin hebt geïmplementeerd.
 >
-> Nadat een beheerd exemplaar is gemaakt, wordt het beheerde exemplaar of VNet naar een andere resource groep of een ander abonnement niet ondersteund.
+> Nadat een beheerde instantie is gemaakt, wordt het verplaatsen van de beheerde instantie of VNet naar een andere resourcegroep of abonnement niet ondersteund.
 
 ## <a name="validate-and-modify-an-existing-virtual-network"></a>Een bestaand virtueel netwerk valideren en wijzigen
 
-Als u een beheerd exemplaar binnen een bestaand subnet wilt maken, raden we het volgende Power shell-script aan om het subnet voor te bereiden:
+Als u een beheerde instantie wilt maken in een bestaand subnet, raden we het volgende PowerShell-script aan om het subnet voor te bereiden:
 
 ```powershell
-$scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/prepare-subnet'
+$scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/delegate-subnet'
 
 $parameters = @{
     subscriptionId = '<subscriptionId>'
@@ -47,17 +47,17 @@ $parameters = @{
     subnetName = '<subnetName>'
     }
 
-Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepareSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
+Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/delegateSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
 ```
 
-Het script bereidt het subnet voor in drie stappen:
+Het script bereidt het subnet in drie stappen voor:
 
-1. Validate: Hiermee worden het geselecteerde virtuele netwerk en subnet voor beheerde instantie netwerk vereisten gevalideerd.
-2. Bevestigen: de gebruiker ziet een set wijzigingen die moeten worden aangebracht om het subnet voor te bereiden voor de implementatie van beheerde exemplaren. Er wordt ook om toestemming gevraagd.
-3. Voorbereiden: het virtuele netwerk en het subnet worden correct geconfigureerd.
+1. Valideren: het valideert het geselecteerde virtuele netwerk en subnet voor netwerkvereisten voor beheerde instance's.
+2. Bevestigen: het toont de gebruiker een reeks wijzigingen die moeten worden aangebracht om het subnet voor te bereiden op de implementatie van beheerde instantie. Zij vraagt ook om toestemming.
+3. Voorbereiden: Het virtuele netwerk en subnet worden correct geconfigureerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Wat is een beheerd exemplaar?](sql-database-managed-instance.md)voor een overzicht.
-- Voor een zelf studie waarin wordt getoond hoe u een virtueel netwerk maakt, een beheerd exemplaar maakt en een Data Base herstelt vanuit een back-up van de data base, raadpleegt u [een Azure SQL database beheerd exemplaar maken](sql-database-managed-instance-get-started.md).
-- Zie [Configuring a Custom DNS](sql-database-managed-instance-custom-dns.md)(Engelstalig) voor DNS-problemen.
+- Zie [Wat is een beheerde instantie voor](sql-database-managed-instance.md)een overzicht.
+- Zie Een Azure SQL Database Managed Instance maken voor een zelfstudie die laat zien hoe u een virtueel netwerk maakt, een beheerde instantie maakt en een database herstelt van een databaseback.For a tutorial that shows how to create a virtual network, create a Managed Instance, create a Managed Instance and restore a database from a database backup, see [Create an Azure SQL Database Managed Instance](sql-database-managed-instance-get-started.md).
+- Zie [Een aangepaste DNS configureren](sql-database-managed-instance-custom-dns.md)voor DNS-problemen.

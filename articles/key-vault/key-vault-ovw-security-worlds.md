@@ -1,5 +1,6 @@
 ---
-title: Azure Key Vault beveiligings werelden | Microsoft Docs
+title: Azure Key Vault-beveiligingswerelden | Microsoft Documenten
+description: Azure Key Vault is een multi-tenant service. Het maakt gebruik van een pool van HSM's in elke Azure-locatie. Alle locaties in een geografische regio delen een cryptografische grens.
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
@@ -7,41 +8,41 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 07/03/2017
-ms.openlocfilehash: 35d2683495a12b864378f8fb6f5edb6663d92c27
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3584f83c5e1a5e83d069373395227b70c084eae9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194917"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457386"
 ---
-# <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault beveiligings werelden en geografische grenzen
+# <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Beveiligingswerelden en geografische grenzen van Azure Key Vault
 
-Azure Key Vault is een service met meerdere tenants en maakt gebruik van een groep Hardware Security modules (Hsm's) op elke Azure-locatie. 
+Azure Key Vault is een multi-tenantservice en maakt gebruik van een pool van Hardware Security Modules (HSM's) op elke Azure-locatie. 
 
-Alle Hsm's op Azure-locaties in dezelfde geografische regio delen dezelfde cryptografische grens (Thales Security World). Bijvoorbeeld: VS-Oost en VS-West delen dezelfde beveiligings wereld omdat ze deel uitmaken van de geografische locatie van de Verenigde Staten. Op dezelfde manier delen alle Azure-locaties in Japan dezelfde beveiligings wereld en alle Azure-locaties in Australië, India, enzovoort. 
+Alle HSM's op Azure-locaties in dezelfde geografische regio hebben dezelfde cryptografische grens (Thales Security World). Oost-VS en West-VS delen bijvoorbeeld dezelfde beveiligingswereld omdat ze behoren tot de geolocatie van de VS. Op dezelfde manier delen alle Azure-locaties in Japan dezelfde beveiligingswereld en alle Azure-locaties in Australië, India, enzovoort. 
 
-## <a name="backup-and-restore-behavior"></a>Gedrag voor back-up en herstel
+## <a name="backup-and-restore-behavior"></a>Back-up- en herstelgedrag
 
-Een back-up die is gemaakt van een sleutel kluis in één Azure-locatie kan worden hersteld naar een sleutel kluis in een andere Azure-locatie, zolang beide voor waarden waar zijn:
+Een back-up die is genomen van een sleutelkluis op een Azure-locatie, kan worden hersteld naar een sleutelkluis op een andere Azure-locatie, zolang beide voorwaarden waar zijn:
 
 - Beide Azure-locaties behoren tot dezelfde geografische locatie
-- Beide sleutel kluizen behoren tot hetzelfde Azure-abonnement
+- Beide sleutelkluizen behoren tot hetzelfde Azure-abonnement
 
-Zo kan een back-up die is gemaakt door een bepaald abonnement op een sleutel in een sleutel kluis in West-India, alleen worden hersteld naar een andere sleutel kluis in hetzelfde abonnement en geografische locatie. India-West, Centraal-India of India-zuid.
+Een back-up die bijvoorbeeld wordt genomen door een bepaald abonnement van een sleutel in een sleutelkluis in West-India, kan alleen worden hersteld naar een andere sleutelkluis in hetzelfde abonnement en geolocatie; West-India, Centraal-India of Zuid-India.
 
 ## <a name="regions-and-products"></a>Regio's en producten
 
 - [Azure-regio's](https://azure.microsoft.com/regions/)
-- [Micro soft-producten per regio](https://azure.microsoft.com/regions/services/)
+- [Microsoft-producten per regio](https://azure.microsoft.com/regions/services/)
 
-Regio's worden toegewezen aan beveiligings werelden, weer gegeven als primaire koppen in de tabellen:
+Regio's worden toegewezen aan beveiligingswerelden, weergegeven als belangrijke koppen in de tabellen:
 
-In het artikel producten per regio, **bijvoorbeeld het tabblad** VS-Oost, centraal VS, VS-West alle toewijzing aan de regio in het land van Amerika. 
+In de producten per regio artikel, bijvoorbeeld, het **tabblad Amerika** bevat OOST-VS, CENTRAL US, WEST US alle mapping naar de Regio Amerika. 
 
 >[!NOTE]
->Een uitzonde ring hierop is dat US DOD-Oost en US DOD CENTRAL hun eigen beveiligings werelden hebben. 
+>Een uitzondering is dat US DOD EAST en US DOD CENTRAL hun eigen veiligheidswerelden hebben. 
 
-Op het tabblad **Europa** , Noord-Europa en West-Europa, wordt ook toegewezen aan de regio Europa. Hetzelfde geldt ook op het tabblad **Azië en Stille Oceaan** .
+Op **dezelfde** manier gaan NOORD-EUROPA en WEST-EUROPA beide in kaart met de regio Europa. Hetzelfde geldt ook op het tabblad **Azië-Pacific.**
 
 
 

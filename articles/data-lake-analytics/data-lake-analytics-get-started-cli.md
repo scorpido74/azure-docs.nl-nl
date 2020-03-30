@@ -1,38 +1,37 @@
 ---
-title: '& Query maken Azure Data Lake Analytics-Azure CLI'
-description: Meer informatie over het gebruik van de Azure-opdracht regel interface voor het maken van een Azure Data Lake Analytics-account en het verzenden van een U-SQL-taak.
+title: "& Azure Data Lake Analytics voor query's maken - Azure CLI"
+description: Meer informatie over het gebruik van de Azure Command-line Interface om een Azure Data Lake Analytics-account te maken en een U-SQL-taak in te dienen.
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: c9781165affb1755e73919931d8d158ae9b535ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d9fc9bee98391f7272a417324b9c3a540b6adbe6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438766"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79474506"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Aan de slag met Azure Data Lake Analytics met Azure CLI
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-In dit artikel wordt beschreven hoe u de Azure CLI-opdracht regel interface gebruikt voor het maken van Azure Data Lake Analytics accounts, het verzenden van USQL-taken en-catalogi. De taak leest een TSV-bestand (door tabs gescheiden waarden) en converteert dat naar een CSV-bestand (door komma's gescheiden waarden). 
+In dit artikel wordt beschreven hoe u de Azure CLI-opdrachtregelinterface gebruiken om Azure Data Lake Analytics-accounts te maken, USQL-taken en -catalogi in te dienen. De taak leest een TSV-bestand (door tabs gescheiden waarden) en converteert dat naar een CSV-bestand (door komma's gescheiden waarden). 
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u begint, hebt u de volgende items nodig:
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-* Voor dit artikel moet u de Azure CLI-versie 2,0 of hoger uitvoeren. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
+* In dit artikel moet u de Azure CLI-versie 2.0 of hoger uitvoeren. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
 
 
 
-## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
+## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Aanmelden bij uw Azure-abonnement:
+U aanmeldt bij uw Azure-abonnement:
 
-```
-azurecli
+```azurecli
 az login
 ```
 
@@ -42,34 +41,34 @@ Wanneer u bent aangemeld, worden uw abonnementen weergegeven.
 
 Een specifiek abonnement gebruiken:
 
-```
+```azurecli
 az account set --subscription <subscription id>
 ```
 
 ## <a name="create-data-lake-analytics-account"></a>Een Data Lake Analytics-account maken
 U hebt een Data Lake Analytics-account nodig voordat u taken kunt uitvoeren. Geef de volgende items op om een Data Lake Analytics-account te maken:
 
-* **Azure-resourcegroep**. Er moet een Data Lake Analytics-account zijn gemaakt binnen een Azure-resourcegroep. Met [Azure Resource Manager](../azure-resource-manager/management/overview.md) kunt u met de resources in uw toepassing als groep gebruiken. U kunt alle resources voor uw toepassing implementeren, bijwerken of verwijderen in een enkele, gecoördineerde bewerking.  
+* **Azure Resource Group**. Er moet een Data Lake Analytics-account zijn gemaakt binnen een Azure-resourcegroep. Met [Azure Resource Manager](../azure-resource-manager/management/overview.md) kunt u met de resources in uw toepassing als groep gebruiken. U kunt alle resources voor uw toepassing implementeren, bijwerken of verwijderen in een enkele, gecoördineerde bewerking.  
 
 De bestaande resourcegroepen onder uw abonnement weergeven:
 
-```
+```azurecli
 az group list
 ```
 
 Een nieuwe resourcegroep maken:
 
-```
+```azurecli
 az group create --name "<Resource Group Name>" --location "<Azure Location>"
 ```
 
-* **Naam van Data Lake Analytics-account**. Elk Data Lake Analytics-account heeft een naam.
+* **Gegevens Lake Analytics-accountnaam**. Elk Data Lake Analytics-account heeft een naam.
 * **Locatie**. Gebruik een van de Azure-datacenters die ondersteuning bieden voor Data Lake Analytics.
-* **Data Lake Store-standaardaccount**: elk Data Lake Store Analytics-account heeft een Data Lake Store-standaardaccount.
+* **Standaard Data Lake Store-account**: elk Data Lake Analytics-account heeft een standaard Data Lake Store-account.
 
 De bestaande Data Lake Store-accounts weergeven:
 
-```
+```azurecli
 az dls account list
 ```
 
@@ -81,13 +80,13 @@ az dls account create --account "<Data Lake Store Account Name>" --resource-grou
 
 Gebruik de volgende syntaxis om een Data Lake Analytics-account te maken:
 
-```
+```azurecli
 az dla account create --account "<Data Lake Analytics Account Name>" --resource-group "<Resource Group Name>" --location "<Azure location>" --default-data-lake-store "<Default Data Lake Store Account Name>"
 ```
 
 Nadat u een account hebt gemaakt, kunt u de volgende opdrachten gebruiken om de accounts met de accountdetails weer te geven:
 
-```
+```azurecli
 az dla account list
 az dla account show --account "<Data Lake Analytics Account Name>"            
 ```
@@ -97,9 +96,9 @@ In deze zelfstudie verwerkt u een aantal zoeklogboeken.  Het zoeklogboek kan wor
 
 Azure Portal biedt een gebruikersinterface waarmee u een aantal voorbeeldbestanden kunt kopiëren naar het Data Lake Store-account, waaronder een zoeklogboekbestand. Zie [Brongegevens voorbereiden](data-lake-analytics-get-started-portal.md) om de gegevens te uploaden naar het Data Lake Store-standaardaccount.
 
-Gebruik de volgende opdrachten om bestanden te uploaden met behulp van Azure CLI:
+Als u bestanden wilt uploaden met Azure CLI, gebruikt u de volgende opdrachten:
 
-```
+```azurecli
 az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Source File Path>" --destination-path "<Destination File Path>"
 az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 ```
@@ -126,7 +125,7 @@ OUTPUT @a
     USING Outputters.Csv();
 ```
 
-Dit U-SQL-script leest het brongegevensbestand met **Extractors.Tsv()** en maakt vervolgens een CSV-bestand met **Outputters.Csv()** .
+Dit U-SQL-script leest het brongegevensbestand met **Extractors.Tsv()** en maakt vervolgens een CSV-bestand met **Outputters.Csv()**.
 
 Wijzig de twee paden niet, tenzij u het bronbestand naar een andere locatie kopieert.  Data Lake Analytics maakt de uitvoermap als deze nog niet bestaat.
 
@@ -151,27 +150,26 @@ wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Da
 
 Gebruik de volgende syntaxis om een taak te verzenden.
 
-```
+```azurecli
 az dla job submit --account "<Data Lake Analytics Account Name>" --job-name "<Job Name>" --script "<Script Path and Name>"
 ```
 
 Bijvoorbeeld:
 
-```
+```azurecli
 az dla job submit --account "myadlaaccount" --job-name "myadlajob" --script @"C:\DLA\myscript.txt"
 ```
 
 **Taken en taakdetails weergeven**
 
-```
-azurecli
+```azurecli
 az dla job list --account "<Data Lake Analytics Account Name>"
 az dla job show --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
 **Taken annuleren**
 
-```
+```azurecli
 az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
@@ -179,7 +177,7 @@ az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity 
 
 Wanneer een taak is voltooid, kunt u de volgende opdrachten gebruiken om de uitvoerbestanden weer te geven en te downloaden:
 
-```
+```azurecli
 az dls fs list --account "<Data Lake Store Account Name>" --source-path "/Output" --destination-path "<Destination>"
 az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv"
 az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv" --length 128 --offset 0
@@ -188,12 +186,12 @@ az dls fs download --account "<Data Lake Store Account Name>" --source-path "/Ou
 
 Bijvoorbeeld:
 
-```
+```azurecli
 az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "C:\DLA\myfile.csv"
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Data Lake Analytics](/cli/azure/dla)voor een overzicht van de data Lake Analytics Azure cli-referentie document.
-* Zie [Data Lake Store](/cli/azure/dls)voor een overzicht van de data Lake Store Azure cli-referentie document.
+* Zie [Data Lake Analytics](/cli/azure/dla)voor het referentiedocument Van Data Lake Analytics Analytics .
+* Zie [Data Lake Store](/cli/azure/dls)voor het referentiedocument Voor Azure CLI van Data Lake Store .
 * Zie [Websitelogboeken analyseren met Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md) voor een complexere query.

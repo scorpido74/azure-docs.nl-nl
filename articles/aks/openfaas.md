@@ -1,53 +1,55 @@
 ---
-title: OpenFaaS gebruiken met Azure Kubernetes service (AKS)
-description: OpenFaaS implementeren en gebruiken met Azure Kubernetes service (AKS)
+title: OpenFaaS gebruiken met Azure Kubernetes Service (AKS)
+description: OpenFaaS implementeren en gebruiken met Azure Kubernetes Service (AKS)
 author: justindavies
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: e684aee1469f855ec651567b805262c71aaf32e5
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 2605489f73063cb16a588d4714955704482327ab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594920"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473639"
 ---
 # <a name="using-openfaas-on-aks"></a>OpenFaaS gebruiken op AKS
 
-[OpenFaaS][open-faas] is een framework voor het bouwen van serverloze functies met behulp van containers. Als een open-source project heeft het een grootschalige acceptatie binnen de Community verworven. Dit document bevat informatie over het installeren en gebruiken van OpenFaas op een cluster met Azure Kubernetes service (AKS).
+[OpenFaaS][open-faas] is een framework voor het bouwen van serverloze functies door het gebruik van containers. Als een open source project, heeft het opgedaan grootschalige adoptie binnen de gemeenschap. In dit document wordt informatie gegeven over het installeren en gebruiken van OpenFaas op een AKS-cluster (Azure Kubernetes Service).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de stappen in dit artikel wilt uitvoeren, hebt u het volgende nodig.
+Om de stappen in dit artikel te voltooien, heb je het volgende nodig.
 
-* Basis informatie over Kubernetes.
-* Een Azure Kubernetes service (AKS)-cluster en AKS-referenties die zijn geconfigureerd voor uw ontwikkel systeem.
-* Azure CLI is geïnstalleerd op uw ontwikkel systeem.
-* Git-opdracht regel Programma's die op uw systeem zijn geïnstalleerd.
+* Basiskennis van Kubernetes.
+* Een AZURE Kubernetes Service (AKS) cluster en AKS-referenties die zijn geconfigureerd op uw ontwikkelsysteem.
+* Azure CLI geïnstalleerd op uw ontwikkelingssysteem.
+* Git command-line tools geïnstalleerd op uw systeem.
 
-## <a name="add-the-openfaas-helm-chart-repo"></a>Voeg de OpenFaaS helm-grafiek toe opslag plaats
+## <a name="add-the-openfaas-helm-chart-repo"></a>De repo van de OpenFaaS-helmdiagram toevoegen
 
-OpenFaaS houdt zijn eigen helm-grafieken bij om up-to-date te blijven met de meest recente wijzigingen.
+Ga [https://shell.azure.com](https://shell.azure.com) naar Azure Cloud Shell openen in uw browser.
 
-```azurecli-interactive
+OpenFaaS onderhoudt zijn eigen helmdiagrammen om op de hoogte te blijven van de laatste veranderingen.
+
+```console
 helm repo add openfaas https://openfaas.github.io/faas-netes/
 helm repo update
 ```
 
 ## <a name="deploy-openfaas"></a>OpenFaaS implementeren
 
-De functies OpenFaaS en OpenFaaS moeten zo goed mogelijk worden opgeslagen in hun eigen Kubernetes-naam ruimte.
+Als een goede praktijk, OpenFaaS en OpenFaaS functies moeten worden opgeslagen in hun eigen Kubernetes namespace.
 
-Maak een naam ruimte voor het OpenFaaS-systeem en de functies:
+Maak een naamruimte voor het OpenFaaS-systeem en de functies:
 
-```azurecli-interactive
+```console
 kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
 ```
 
-Genereer een wacht woord voor de OpenFaaS UI-Portal en REST API:
+Een wachtwoord genereren voor de OpenFaaS UI Portal en REST API:
 
-```azurecli-interactive
+```console
 # generate a random password
 PASSWORD=$(head -c 12 /dev/urandom | shasum| cut -d' ' -f1)
 
@@ -56,13 +58,13 @@ kubectl -n openfaas create secret generic basic-auth \
 --from-literal=basic-auth-password="$PASSWORD"
 ```
 
-U kunt de waarde van het geheim ophalen met `echo $PASSWORD`.
+Je de waarde van `echo $PASSWORD`het geheim krijgen met.
 
-Het wacht woord dat u hier maakt, wordt gebruikt door de helm-grafiek om basis verificatie in te scha kelen op de OpenFaaS-gateway, die wordt blootgesteld aan Internet via een Cloud-LoadBalancer.
+Het wachtwoord dat we hier maken, wordt gebruikt door de helmgrafiek om basisverificatie in te schakelen op de OpenFaaS Gateway, die wordt blootgesteld aan het internet via een cloud LoadBalancer.
 
-Een helm-grafiek voor OpenFaaS is opgenomen in de gekloonde opslag plaats. Gebruik dit diagram om OpenFaaS in uw AKS-cluster te implementeren.
+Een Helm-diagram voor OpenFaaS is opgenomen in de gekloonde repository. Gebruik deze grafiek om OpenFaaS in uw AKS-cluster te implementeren.
 
-```azurecli-interactive
+```console
 helm upgrade openfaas --install openfaas/openfaas \
     --namespace openfaas  \
     --set basic_auth=true \
@@ -72,7 +74,7 @@ helm upgrade openfaas --install openfaas/openfaas \
 
 Uitvoer:
 
-```
+```output
 NAME:   openfaas
 LAST DEPLOYED: Wed Feb 28 08:26:11 2018
 NAMESPACE: openfaas
@@ -92,56 +94,56 @@ To verify that openfaas has started, run:
   kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
 ```
 
-Er wordt een openbaar IP-adres gemaakt voor toegang tot de OpenFaaS-gateway. Gebruik de opdracht [kubectl Get service][kubectl-get] om dit IP-adres op te halen. Het kan een minuut duren voordat het IP-adres is toegewezen aan de service.
+Er wordt een openbaar IP-adres gemaakt voor toegang tot de OpenFaaS-gateway. Als u dit IP-adres wilt ophalen, gebruikt u de opdracht [kubectl get service.][kubectl-get] Het kan even duren voordat het IP-adres aan de service is toegewezen.
 
 ```console
 kubectl get service -l component=gateway --namespace openfaas
 ```
 
-Uitvoer.
+Output.
 
-```console
+```output
 NAME               TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)          AGE
 gateway            ClusterIP      10.0.156.194   <none>         8080/TCP         7m
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-Als u het OpenFaaS-systeem wilt testen, bladert u naar het externe IP-adres op poort 8080 `http://52.186.64.52:8080` in dit voor beeld. U wordt gevraagd om u aan te melden. Voer `echo $PASSWORD`in om uw wacht woord op te halen.
+Als u het OpenFaaS-systeem wilt testen, bladert u `http://52.186.64.52:8080` in dit voorbeeld naar het externe IP-adres op poort 8080. U wordt gevraagd in te loggen. Voer . `echo $PASSWORD`
 
-![OpenFaaS-gebruikers interface](media/container-service-serverless/openfaas.png)
+![OpenFaaS-gebruikersinterface](media/container-service-serverless/openfaas.png)
 
-Installeer tot slot de OpenFaaS CLI. In dit voor beeld wordt Brew gebruikt, raadpleegt u de [OPENFAAS cli-documentatie][open-faas-cli] voor meer opties.
+Installeer ten slotte de OpenFaaS CLI. In dit voorbeeld wordt de [OpenFaaS CLI-documentatie][open-faas-cli] voor meer opties gebruikt.
 
 ```console
 brew install faas-cli
 ```
 
-Stel `$OPENFAAS_URL` in op het open bare IP-adres dat hierboven is gevonden.
+Ingesteld `$OPENFAAS_URL` op het openbare IP hierboven gevonden.
 
-Meld u aan met Azure CLI:
+Meld u aan bij azure cli:
 
-```azurecli-interactive
+```console
 export OPENFAAS_URL=http://52.186.64.52:8080
 echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 ```
 
 ## <a name="create-first-function"></a>Eerste functie maken
 
-Nu OpenFaaS operationeel is, maakt u een functie met behulp van de OpenFaas-Portal.
+Nu OpenFaaS operationeel is, maakt u een functie met behulp van de OpenFaas-portal.
 
-Klik op **nieuwe functie implementeren** en zoek naar **figlet**. Selecteer de functie figlet en klik op **implementeren**.
+Klik op **Nieuwe functie implementeren** en zoek naar **Figlet**. Selecteer de functie Figlet en klik op **Implementeren**.
 
 ![Figlet](media/container-service-serverless/figlet.png)
 
-Gebruik krul om de functie aan te roepen. Vervang het IP-adres in het volgende voor beeld met dat van uw OpenFaas-gateway.
+Gebruik krul om de functie aan te roepen. Vervang het IP-adres in het volgende voorbeeld door dat van uw OpenFaas-gateway.
 
-```azurecli-interactive
+```console
 curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
 ```
 
 Uitvoer:
 
-```console
+```output
  _   _      _ _            _
 | | | | ___| | | ___      / \    _____   _ _ __ ___
 | |_| |/ _ \ | |/ _ \    / _ \  |_  / | | | '__/ _ \
@@ -152,23 +154,23 @@ Uitvoer:
 
 ## <a name="create-second-function"></a>Tweede functie maken
 
-Maak nu een tweede functie. Dit voor beeld wordt geïmplementeerd met behulp van de OpenFaaS CLI en bevat een aangepaste container installatie kopie en haalt gegevens op uit een Cosmos DB. Er moeten verschillende items worden geconfigureerd voordat u de functie maakt.
+Maak nu een tweede functie. Dit voorbeeld wordt geïmplementeerd met de OpenFaaS CLI en bevat een aangepaste containerafbeelding en het ophalen van gegevens uit een Cosmos DB. Er moeten verschillende items worden geconfigureerd voordat u de functie maakt.
 
-Maak eerst een nieuwe resource groep voor de Cosmos DB.
+Maak eerst een nieuwe brongroep voor de Cosmos DB.
 
 ```azurecli-interactive
 az group create --name serverless-backing --location eastus
 ```
 
-Implementeer een CosmosDB-exemplaar van de soort `MongoDB`. Het exemplaar heeft een unieke naam nodig en moet `openfaas-cosmos` bijwerken naar iets dat uniek is voor uw omgeving.
+Een Voorbeeld van CosmosDB implementeren. `MongoDB` De instantie heeft een `openfaas-cosmos` unieke naam nodig, update naar iets unieks voor uw omgeving.
 
 ```azurecli-interactive
 az cosmosdb create --resource-group serverless-backing --name openfaas-cosmos --kind MongoDB
 ```
 
-Haal de Cosmos-data base connection string op en sla deze op in een variabele.
+Haal de cosmos-databaseverbindingstekenreeks op en sla deze op in een variabele.
 
-Werk de waarde voor het argument `--resource-group` bij naar de naam van uw resource groep en het argument `--name` naar de naam van uw Cosmos DB.
+Werk de waarde `--resource-group` voor het argument bij aan `--name` de naam van uw resourcegroep en het argument naar de naam van uw Cosmos DB.
 
 ```azurecli-interactive
 COSMOS=$(az cosmosdb list-connection-strings \
@@ -178,7 +180,7 @@ COSMOS=$(az cosmosdb list-connection-strings \
   --output tsv)
 ```
 
-Vul nu de Cosmos DB in met test gegevens. Maak een bestand met de naam `plans.json` en kopieer de volgende JSON.
+Bevolk nu de Cosmos DB met testgegevens. Maak een `plans.json` bestand met de naam en kopie in de volgende json.
 
 ```json
 {
@@ -192,41 +194,41 @@ Vul nu de Cosmos DB in met test gegevens. Maak een bestand met de naam `plans.js
 }
 ```
 
-Gebruik het hulp programma *mongoimport* om het CosmosDB-exemplaar met gegevens te laden.
+Gebruik het *mongoimport-gereedschap* om de instantie CosmosDB met gegevens te laden.
 
-Installeer, indien nodig, de MongoDB-hulpprogram ma's. In het volgende voor beeld worden deze hulpprogram ma's geïnstalleerd met behulp van Brew. Zie de [MongoDb-documentatie][install-mongo] voor andere opties.
+Installeer indien nodig de MongoDB-tools. In het volgende voorbeeld worden deze tools geïnstalleerd met behulp van brouwsel, zie de [MongoDB-documentatie][install-mongo] voor andere opties.
 
-```azurecli-interactive
+```console
 brew install mongodb
 ```
 
-Laad de gegevens in de data base.
+Laad de gegevens in de database.
 
-```azurecli-interactive
+```console
 mongoimport --uri=$COSMOS -c plans < plans.json
 ```
 
 Uitvoer:
 
-```console
+```output
 2018-02-19T14:42:14.313+0000    connected to: localhost
 2018-02-19T14:42:14.918+0000    imported 1 document
 ```
 
-Voer de volgende opdracht uit om de functie te maken. Werk de waarde van het argument `-g` bij met uw OpenFaaS gateway-adres.
+Voer de volgende opdracht uit om de functie te maken. Werk de waarde `-g` van het argument bij met uw OpenFaaS-gatewayadres.
 
-```azurecli-interctive
+```console
 faas-cli deploy -g http://52.186.64.52:8080 --image=shanepeckham/openfaascosmos --name=cosmos-query --env=NODE_ENV=$COSMOS
 ```
 
-Na de implementatie ziet u het zojuist gemaakte OpenFaaS-eind punt voor de functie.
+Nadat u is geïmplementeerd, ziet u het nieuw gemaakte OpenFaaS-eindpunt voor de functie.
 
-```console
+```output
 Deployed. 202 Accepted.
 URL: http://52.186.64.52:8080/function/cosmos-query
 ```
 
-Test de functie met behulp van krul. Werk het IP-adres bij met het OpenFaaS gateway-adres.
+Test de functie met behulp van krul. Werk het IP-adres bij met het OpenFaaS-gatewayadres.
 
 ```console
 curl -s http://52.186.64.52:8080/function/cosmos-query
@@ -238,13 +240,13 @@ Uitvoer:
 [{"ID":"","Name":"two_person","FriendlyName":"","PortionSize":"","MealsPerWeek":"","Price":72,"Description":"Our basic plan, delivering 3 meals per week, which will feed 1-2 people."}]
 ```
 
-U kunt ook de functie in de OpenFaaS-gebruikers interface testen.
+U de functie ook testen binnen de OpenFaaS UI.
 
 ![alternatieve tekst](media/container-service-serverless/OpenFaaSUI.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt door gaan met de OpenFaaS workshop met behulp van een reeks praktijk gerichte Labs die onderwerpen bevatten over het maken van uw eigen GitHub-bot, het gebruiken van geheimen, het weer geven van metrische gegevens en het automatisch schalen.
+U blijven leren met de OpenFaaS-workshop via een reeks hands-on labs die onderwerpen behandelen zoals het maken van uw eigen GitHub-bot, het consumeren van geheimen, het bekijken van statistieken en automatisch schalen.
 
 <!-- LINKS - external -->
 [install-mongo]: https://docs.mongodb.com/manual/installation/

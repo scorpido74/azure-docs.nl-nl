@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Azure cache gebruiken voor redis met .NET-Apps'
+title: 'Snelstart: Azure-cache gebruiken voor Redis met .NET-apps'
 description: In deze snelstartgids leert u hoe u vanuit uw .NET-apps toegang hebt tot Azure Cache voor Redis
 author: yegu-ms
 ms.author: yegu
@@ -9,21 +9,21 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/11/2020
 ms.openlocfilehash: 6384416c2feef3c9a9517bce08374a7667eb5d6b
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79369043"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Snelstartgids: Azure cache gebruiken voor redis met een .NET Framework-toepassing
+# <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Snelstart: Azure-cache gebruiken voor Redis met een .NET Framework-toepassing
 
-In deze Snelstartgids neemt u Azure-cache op voor redis in een .NET Framework-app om toegang te hebben tot een beveiligde, toegewezen cache die toegankelijk is vanuit elke toepassing in Azure. U gebruikt de [stack Exchange. redis](https://github.com/StackExchange/StackExchange.Redis) -client specifiek C# met code in een .net-console-app.
+In deze quickstart neemt u Azure Cache voor Redis op in een .NET Framework-app om toegang te hebben tot een beveiligde, speciale cache die toegankelijk is vanuit elke toepassing binnen Azure. U gebruikt specifiek de [StackExchange.Redis-client](https://github.com/StackExchange/StackExchange.Redis) met C#-code in een .NET-console-app.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+- Azure-abonnement - [maak er gratis een](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)
-- [.NET Framework 4 of hoger](https://www.microsoft.com/net/download/dotnet-framework-runtime), wat vereist is voor de client stack Exchange. redis.
+- [.NET Framework 4 of hoger](https://www.microsoft.com/net/download/dotnet-framework-runtime), wat vereist is door de StackExchange.Redis client.
 
 ## <a name="create-a-cache"></a>Een cache maken
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -47,9 +47,9 @@ Vervang `<access-key>` door de primaire sleutel voor uw cache.
 
 ## <a name="create-a-console-app"></a>Een console-app maken
 
-Klik in Visual Studio op **File** > **New** > **Project**.
+Klik in Visual**New** > Studio op Nieuw**project** **bestand** > .
 
-Selecteer **console-app (.NET Framework)** en **naast** uw app configureren. Typ een **project naam** en klik op **maken** om een nieuwe console toepassing te maken.
+Selecteer **Console-app (.NET Framework)** en **Selecteer Vervolgens** om uw app te configureren. Typ een **projectnaam** en klik op **Maken** om een nieuwe consoletoepassing te maken.
 
 <a name="configure-the-cache-clients"></a>
 
@@ -57,18 +57,18 @@ Selecteer **console-app (.NET Framework)** en **naast** uw app configureren. Typ
 
 In deze sectie configureert u de consoletoepassing voor het gebruik van de client [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) voor .NET.
 
-Klik in Visual Studio op **Tools** > **NuGet Package Manager** > **Package Manager Console** en voer de volgende opdracht uit vanuit het venster Package Manager Console.
+Klik in Visual Studio op **NuGet** > **Package Manager** > **Package Manager Console**en voer de volgende opdracht uit in het venster Package Manager Console.
 
 ```powershell
 Install-Package StackExchange.Redis
 ```
 
-Zodra de installatie is voltooid, kan de *StackExchange.Redis*-cacheclient met uw project worden gebruikt.
+Zodra de installatie is voltooid, kan de cacheclient *StackExchange.Redis* met uw project worden gebruikt.
 
 
 ## <a name="connect-to-the-cache"></a>Verbinding maken met de cache
 
-Open uw *app. config* -bestand in Visual Studio en werk het bij om een `appSettings` `file` kenmerk op te genomen dat verwijst naar het bestand *CacheSecrets. config* .
+Open in Visual Studio het bestand *App.config* en voeg een kenmerk `appSettings` `file` toe dat verwijst naar het bestand *CacheSecrets.config*.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -178,7 +178,7 @@ Azure Cache voor Redis kan zowel .NET-objecten als oudere gegevenstypen opslaan 
 
 Een eenvoudige manier om objecten te serialiseren is met de serialisatiemethoden `JsonConvert` in [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/). Hiermee serialiseert u van en naar JSON. In deze sectie voegt u een .NET-object toe aan de cache.
 
-Klik in Visual Studio op **Tools** > **NuGet Package Manager** > **Package Manager Console** en voer de volgende opdracht uit vanuit het venster Package Manager Console.
+Klik in Visual Studio op **NuGet** > **Package Manager** > **Package Manager Console**en voer de volgende opdracht uit in het venster Package Manager Console.
 
 ```powershell
 Install-Package Newtonsoft.Json
@@ -233,19 +233,19 @@ Druk op **Ctrl + F5** om de console-app te bouwen en uit te voeren en zo de seri
 
 Als u verder wilt gaan met de volgende zelfstudie, kunt u de resources die in deze snelstart zijn gemaakt behouden en opnieuw gebruiken.
 
-Als u niet verder wilt met de voorbeeldtoepassing uit de snelstart, kunt u de Azure-resources verwijderen die in deze snelstart zijn gemaakt om kosten te voorkomen. 
+Als u niet verder wilt met de snelstart, kunt u de Azure-resources verwijderen die in deze snelstart zijn gemaakt om kosten te voorkomen. 
 
 > [!IMPORTANT]
-> Houd er rekening mee dat het verwijderen van een resourcegroep niet ongedaan kan worden gemaakt, en dat de resourcegroep en alle bijbehorende resources permanent worden verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
+> Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle bijbehorende resources worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
 >
 
-Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
+Meld u aan bij de [Azure-portal](https://portal.azure.com) en klik op **Resourcegroepen**.
 
-Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...** . In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
+Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...**. In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
 
 ![Verwijderen](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 
-U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resourcegroep en klik op **Verwijderen**.
+U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resourcegroep om te bevestigen en klik op **Verwijderen**.
 
 Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.
 

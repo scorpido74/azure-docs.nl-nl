@@ -1,6 +1,6 @@
 ---
-title: Azure-beveiligings basislijn voor Azure SQL Database
-description: Azure-beveiligings basislijn voor Azure SQL Database
+title: Azure-beveiligingsbasislijn voor Azure SQL-database
+description: Azure-beveiligingsbasislijn voor Azure SQL-database
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
@@ -8,57 +8,57 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d9cf78f3cc5399a9e974cd9b4f0b3f24c80dacce
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 35d4d44f0b9f1b210f38a034575b589c7211d55c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79214126"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246667"
 ---
-# <a name="azure-security-baseline-for-azure-sql-database"></a>Azure-beveiligings basislijn voor Azure SQL Database
+# <a name="azure-security-baseline-for-azure-sql-database"></a>Azure-beveiligingsbasislijn voor Azure SQL-database
 
-De Azure-beveiligings basislijn voor Azure SQL Database bevat aanbevelingen waarmee u de beveiligings postuur van uw implementatie kunt verbeteren.
+De Azure Security Baseline voor Azure SQL Database bevat aanbevelingen waarmee u de beveiligingshouding van uw implementatie verbeteren.
 
-De basis lijn voor deze services wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
+De basislijn voor deze services is afkomstig van de [Azure Security Benchmark versie 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview), die aanbevelingen geeft over hoe u uw cloudoplossingen op Azure beveiligen met onze richtlijnen voor best practices.
 
-Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)voor meer informatie.
+Zie [overzicht azure security baselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)voor meer informatie.
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-*Zie [beveiligings beheer: netwerk beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)voor meer informatie.*
+*Zie [Beveiligingsbeheer: netwerkbeveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)voor meer informatie.*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Beveilig bronnen met behulp van netwerk beveiligings groepen of Azure Firewall op de Virtual Network
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Resources beveiligen met netwerkbeveiligingsgroepen of Azure Firewall in uw virtuele netwerk
 
-**Hulp**: u kunt persoonlijke Azure-koppeling inschakelen om toegang te krijgen tot Azure PaaS-Services (bijvoorbeeld SQL database) en Azure hostende klanten/partner services via een persoonlijk eind punt in uw virtuele netwerk. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. Als u wilt toestaan dat verkeer wordt bereikt Azure SQL Database, gebruikt u de SQL service-tags om uitgaand verkeer via netwerk beveiligings groepen toe te staan.
-
-
-Met regels voor virtuele netwerken kunnen Azure SQL Database alleen communicatie accepteren die worden verzonden vanuit geselecteerde subnetten binnen een virtueel netwerk.
+**Richtlijnen:** U Azure Private Link inschakelen om toegang te verlenen tot Azure PaaS Services (bijvoorbeeld SQL Database) en Azure-gehoste klant-/partnerservices via een privéeindpunt in uw virtuele netwerk. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. Als u verkeer azure SQL Database wilt laten bereiken, gebruikt u de SQL-servicetags om uitgaand verkeer via netwerkbeveiligingsgroepen toe te staan.
 
 
-Persoonlijke koppeling instellen voor Azure SQL Database:
+Met virtuele netwerkregels kan Azure SQL Database alleen communicatie accepteren die wordt verzonden vanuit geselecteerde subnetten binnen een virtueel netwerk.
+
+
+Private Link instellen voor Azure SQL Database:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview#how-to-set-up-private-link-for-azure-sql-database
 
 
-Service-eind punten en-regels voor virtuele netwerken gebruiken voor database servers:
+Eindpunten en regels voor databaseservers gebruiken voor virtuele netwerkservice:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: de configuratie en het verkeer van Vnets, subnetten en Nic's bewaken en vastleggen
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: De configuratie en het verkeer van Vnets, Subnetten en NIC's controleren en registreren
 
-**Hulp**: gebruik Azure Security Center en herstel aanbevelingen voor netwerk beveiliging voor het subnet waarop uw Azure SQL database-server is geïmplementeerd. Schakel voor Azure Virtual Machines (VM) die verbinding maken met uw Azure SQL Database Server-exemplaar, de stroom logboeken voor netwerk beveiligings groepen (NSG) in voor de Nsg's die de virtuele machines beveiligen en logboeken naar een Azure Storage account verzenden voor het controleren van het verkeer. U kunt ook NSG-stroom logboeken naar een Log Analytics-werk ruimte verzenden en Traffic Analytics gebruiken om inzicht te krijgen in de verkeers stroom in uw Azure-Cloud. Enkele voor delen van Traffic Analytics zijn de mogelijkheid om netwerk activiteiten te visualiseren en HOTS pots te identificeren, beveiligings dreigingen te identificeren, verkeers patronen te begrijpen en netwerk configuraties te lokaliseren.
+**Richtlijnen:** Gebruik Azure Security Center en herstel de aanbevelingen voor netwerkbeveiliging voor het subnet waaraan uw Azure SQL Database Server is geïmplementeerd. Schakel voor Azure Virtual Machines (VM) die verbinding maken met uw Azure SQL Database Server-exemplaar, NSG-stroomlogboeken (Network Security Group) in voor de NSG's die deze VM's beschermen en logboeken naar een Azure Storage Account verzenden voor verkeerscontrole. U ook NSG-stroomlogboeken naar een log-analysewerkruimte verzenden en Traffic Analytics gebruiken om inzicht te geven in de verkeersstroom in uw Azure-cloud. Enkele voordelen van Traffic Analytics zijn de mogelijkheid om netwerkactiviteiten te visualiseren en hotspots te identificeren, beveiligingsbedreigingen te identificeren, verkeersstroompatronen te begrijpen en netwerkverkeerde configuraties te lokaliseren.
 
 
-NSG-stroom logboeken inschakelen:
+NSG-stroomlogboeken inschakelen:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
 
-Informatie over netwerk beveiliging van Azure Security Center:
+Inzicht in netwerkbeveiliging van Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
@@ -68,25 +68,25 @@ Traffic Analytics inschakelen en gebruiken:
 https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
-Informatie over netwerk beveiliging van Azure Security Center:
+Inzicht in netwerkbeveiliging van Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="13-protect-critical-web-applications"></a>1,3: essentiële webtoepassingen beveiligen
+### <a name="13-protect-critical-web-applications"></a>1.3: Kritieke webapplicaties beschermen
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor Azure apps service-of COMPUTE-resources die webtoepassingen hosten.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor Azure Apps Service of compute resources die webtoepassingen hosten.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: communicatie met bekende schadelijke IP-adressen weigeren
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Communicatie met bekende kwaadaardige IP-adressen weigeren
 
-**Hulp**: Schakel DDoS Protection standaard in voor de virtuele netwerken die zijn gekoppeld aan uw SQL Server-instanties voor beveiliging van gedistribueerde Denial-of-service-aanvallen. Gebruik Azure Security Center geïntegreerde bedreigings informatie om communicatie met bekende of ongebruikte Internet-IP-adressen te weigeren.
+**Richtlijnen:** Schakel DDoS Protection Standard in op de virtuele netwerken die zijn gekoppeld aan uw SQL Server-exemplaren voor beveiligingen tegen gedistribueerde denial-of-service-aanvallen. Gebruik Azure Security Center Integrated Threat Intelligence om communicatie met bekende kwaadaardige of ongebruikte internetIP-adressen te weigeren.
 
 
 DDoS-beveiliging configureren:
@@ -94,113 +94,113 @@ DDoS-beveiliging configureren:
 https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
 
-Meer informatie over Azure Security Center geïntegreerde bedreigings informatie:
+Begrijp azure security center integrated threat intelligence:
 
 https://docs.microsoft.com/azure/security-center/security-center-alerts-data-services
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1,5: netwerk pakketten en stroom logboeken vastleggen
+### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Netwerkpakketten en stroomlogboeken opnemen
 
-**Richt lijnen**: voor Azure virtual machines (vm's) die verbinding maken met uw Azure SQL database-exemplaar, schakelt u de stroom logboeken voor netwerk beveiligings groepen (NSG) in voor de nsg's die de vm's beveiligt en logboeken naar een Azure Storage account verzenden voor verkeers controle. Als dit nodig is voor het onderzoeken van afwijkende activiteiten, schakelt u Network Watcher pakket vastleggen in.
+**Richtlijnen:** Schakel voor Azure Virtual Machines (VM's) die verbinding maken met uw Azure SQL Database-exemplaar netwerkbeveiligingsgroep (NSG)-stroomlogboeken in voor de NSGs die deze VM's beschermen en logboeken naar een Azure Storage Account verzenden voor verkeerscontrole. Schakel Network Watcher-pakketopname in indien nodig voor het onderzoeken van afwijkende activiteiten.
 
 
-NSG-stroom logboeken inschakelen:
+NSG-stroomlogboeken inschakelen:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
 
-Network Watcher inschakelen:
+Zo schakel je Network Watcher in:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: op netwerk gebaseerde inbreuk detectie/indringings systemen (ID'S/IP-adressen) implementeren
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Netwerkgebaseerde inbraakdetectie-/inbraakpreventiesystemen (IDS/IPS) implementeren
 
-**Hulp**: Schakel Advanced Threat Protection (ATP) in voor Azure SQL database.  Gebruikers ontvangen een waarschuwing bij verdachte database activiteiten, potentiële kwetsbaar heden en SQL-injectie aanvallen, evenals afwijkende database toegang en query patronen. Geavanceerde bedreigingen beveiliging integreert ook waarschuwingen met Azure Security Center.
+**Richtlijnen:** Schakel Advanced Threat Protection (ATP) in voor Azure SQL Database.  Gebruikers ontvangen een waarschuwing over verdachte databaseactiviteiten, potentiële kwetsbaarheden en SQL-injectieaanvallen, evenals afwijkende databasetoegang en querypatronen. Advanced Threat Protection integreert ook waarschuwingen met Azure Security Center.
 
-Advanced Threat Protection voor Azure SQL Database begrijpen en gebruiken: https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
+Geavanceerde bedreigingsbeveiliging voor Azure SQL-database begrijpen en gebruiken:https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="17-manage-traffic-to-web-applications"></a>1,7: verkeer naar webtoepassingen beheren
+### <a name="17-manage-traffic-to-web-applications"></a>1.7: Verkeer naar webtoepassingen beheren
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor Azure apps service-of COMPUTE-resources die webtoepassingen hosten.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor Azure Apps Service of compute resources die webtoepassingen hosten.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: de complexiteit en administratieve overhead van netwerk beveiligings regels minimaliseren
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Minimaliseer de complexiteit en administratieve overhead van netwerkbeveiligingsregels
 
-**Richt lijnen**: gebruik Tags voor het virtuele netwerk om netwerk toegangs beheer te definiëren voor netwerk beveiligings groepen of Azure firewall. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de service label (bijvoorbeeld ApiManagement) op te geven in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
-
-
-Wanneer u service-eind punten voor Azure SQL Database gebruikt, is uitgaand naar Azure SQL Database open bare IP-adressen vereist: netwerk beveiligings groepen (Nsg's) moeten zijn geopend om te Azure SQL Database Ip's om verbinding te kunnen maken. U kunt dit doen met behulp van NSG-service tags voor Azure SQL Database.
+**Richtlijnen:** gebruik virtuele netwerkservicetags om netwerktoegangsbesturingselementen te definiëren voor netwerkbeveiligingsgroepen of Azure Firewall. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de servicetag (bijvoorbeeld ApiManagement) op te geven in het juiste bron- of bestemmingsveld van een regel, u het verkeer voor de desbetreffende service toestaan of weigeren. Microsoft beheert de adresvoorvoegsels van de servicetag en werkt de servicetag automatisch bij wanneer adressen worden gewijzigd.
 
 
-Informatie over service tags met Service-eind punten voor Azure SQL Database:
+Wanneer serviceeindpunten voor Azure SQL Database worden gebruikt, zijn uitgaande naar Azure SQL Database Public IP-adressen vereist: Network Security Groups (NSG's) moeten worden geopend voor Azure SQL Database IP's om connectiviteit mogelijk te maken. U dit doen door NSG-servicetags voor Azure SQL Database te gebruiken.
+
+
+Servicetags begrijpen met Service-eindpunten voor Azure SQL Database:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#limitations
 
 
-Service Tags begrijpen en gebruiken:
+Servicetags begrijpen en gebruiken:
 
 https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: standaard beveiligings configuraties voor netwerk apparaten onderhouden
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Standaardbeveiligingsconfiguraties voor netwerkapparaten onderhouden
 
-**Hulp**: netwerk beveiligings configuraties voor uw Azure SQL database server-instanties definiëren en implementeren met Azure Policy. U kunt de naam ruimte ' micro soft. SQL ' gebruiken om aangepaste beleids definities te definiëren of een van de ingebouwde beleids definities gebruiken die zijn ontworpen voor Azure SQL Database Server netwerk beveiliging. Een voor beeld van een toepasselijk ingebouwd netwerk beveiligings beleid voor Azure SQL Database Server is: ' SQL Server moet een service-eind punt van een virtueel netwerk gebruiken '.
+**Richtlijnen:** Netwerkbeveiligingsconfiguraties definiëren en implementeren voor uw Azure SQL Database-server-exemplaren met Azure Policy. U de naamruimte 'Microsoft.Sql' gebruiken om aangepaste beleidsdefinities te definiëren of een van de ingebouwde beleidsdefinities gebruiken die zijn ontworpen voor Azure SQL Database-servernetwerkbeveiliging. Een voorbeeld van een van toepassing ingebouwd netwerkbeveiligingsbeleid voor Azure SQL Database-server zou zijn: "SQL Server moet een eindpunt voor virtuele netwerkservice gebruiken".
  
 
-Gebruik Azure-blauw drukken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure resource management-sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels, in één definitie van de blauw druk. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
+Gebruik Azure Blueprints om grootschalige Azure-implementaties te vereenvoudigen door belangrijke omgevingsartefacten te verpakken, zoals Azure Resource Management-sjablonen, RBAC (Role-based access control) en beleidsregels, in één blauwdrukdefinitie. Pas de blauwdruk eenvoudig toe op nieuwe abonnementen en omgevingen en stem de besturing en het beheer af via versiebeheer.
 
 
-Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure-beleid configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-Een Azure Blueprint maken: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+Een Azure Blueprint maken:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="110-document-traffic-configuration-rules"></a>1,10: configuratie regels voor het document verkeer
+### <a name="110-document-traffic-configuration-rules"></a>1.10: Regels voor documentconfiguratie
 
-**Hulp**: Labels gebruiken voor netwerk beveiligings groepen (NSG) en andere bronnen die betrekking hebben op netwerk beveiliging en verkeers stroom. Voor afzonderlijke NSG-regels gebruikt u het veld Beschrijving voor het opgeven van de bedrijfs behoefte en/of-duur (etc.) voor alle regels die verkeer van of naar een netwerk toestaan.
-
-
-Gebruik een van de ingebouwde Azure-beleids definities die betrekking hebben op labelen, zoals ' vereist label en de waarde ', om ervoor te zorgen dat alle resources met tags worden gemaakt en u op de hoogte moet zijn van bestaande niet-gelabelde resources.
+**Richtlijnen**: Gebruik tags voor netwerkbeveiligingsgroepen (NSG) en andere bronnen met betrekking tot netwerkbeveiliging en verkeersstroom. Voor afzonderlijke NSG-regels gebruikt u het veld 'Beschrijving' om de bedrijfsbehoefte en/of -duur (enz.) op te geven voor regels die verkeer van/naar een netwerk toestaan.
 
 
-U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties op resources te zoeken of uit te voeren.
+Gebruik een van de ingebouwde Azure-beleidsdefinities met betrekking tot tags, zoals 'Tag en de waarde ervan vereisen' om ervoor te zorgen dat alle resources met tags worden gemaakt en om u op de hoogte te stellen van bestaande niet-gelabelde bronnen.
+
+
+U Azure PowerShell of Azure CLI gebruiken om acties op te zoeken of uit te voeren op basis van hun tags.
 
 
 Tags maken en gebruiken:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: gebruik automatische hulpprogram ma's om netwerk bron configuraties te bewaken en wijzigingen te detecteren
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Gebruik geautomatiseerde hulpprogramma's om netwerkbronconfiguraties te bewaken en wijzigingen te detecteren
 
-**Hulp**: Azure-activiteiten logboek gebruiken om netwerk resource configuraties te bewaken en wijzigingen te detecteren voor netwerk bronnen die betrekking hebben op uw Azure SQL database server-exemplaren. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke netwerk bronnen plaatsvinden.
+**Richtlijnen:** Gebruik Azure Activity Log om netwerkbronconfiguraties te bewaken en wijzigingen te detecteren voor netwerkbronnen die verband houden met uw Azure SQL Database-server-exemplaren. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen plaatsvinden in kritieke netwerkbronnen.
 
 
-Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen:
+Azure Activity Log-gebeurtenissen weergeven en ophalen:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
@@ -209,119 +209,119 @@ Waarschuwingen maken in Azure Monitor:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
 
-*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Zie [Beveiligingscontrole: Logboekregistratie en -controle](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)voor meer informatie.*
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2,1: goedgekeurde tijd synchronisatie bronnen gebruiken
+### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Gebruik goedgekeurde tijdsynchronisatiebronnen
 
-**Richt lijnen**: micro soft onderhoudt tijd bronnen voor Azure-resources. U kunt de tijd synchronisatie voor uw reken implementaties bijwerken.
+**Richtlijnen:** Microsoft onderhoudt tijdsbronnen voor Azure-bronnen. U de synchronisatie van de tijd bijwerken voor uw compute-implementaties.
 
 
 
-Tijd synchronisatie voor Azure Compute-resources configureren:
+Tijdsynchronisatie configureren voor Azure-rekenbronnen:
 
 https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: micro soft
+**Verantwoordelijkheid**: Microsoft
 
-### <a name="22-configure-central-security-log-management"></a>2,2: Centraal beveiligings logboek beheer configureren
+### <a name="22-configure-central-security-log-management"></a>2.2: Centraal beheer van beveiligingslogboeken configureren
 
-**Hulp**: Schakel controle in voor Azure SQL database om database gebeurtenissen bij te houden en te schrijven naar een audit logboek in uw Azure Storage-Account, log Analytics werk ruimte of event hubs.
+**Richtlijnen:** Schakel controle voor Azure SQL Database in om databasegebeurtenissen bij te houden en deze te schrijven naar een controlelogboek in uw Azure Storage Account, Log Analytics-werkruimte of Gebeurtenishubs.
 
 
-Daarnaast kunt u de telemetrie van Azure SQL Diagnostics streamen naar Azure SQL-analyse, een Cloud oplossing die de prestaties van Azure SQL-data bases, elastische Pools en beheerde exemplaren op schaal en op meerdere abonnementen bewaakt. Het helpt u bij het verzamelen en visualiseren van Azure SQL Database prestatie gegevens en heeft ingebouwde intelligentie voor het oplossen van prestaties.
+Daarnaast u Azure SQL Diagnostics-telemetrie streamen naar Azure SQL Analytics, een cloudoplossing die de prestaties van Azure SQL-databases, elastische pools en beheerde exemplaren op schaal en in meerdere abonnementen bewaakt. Het kan u helpen bij het verzamelen en visualiseren van Azure SQL Database prestatiestatistieken en het heeft ingebouwde informatie voor het oplossen van prestaties.
 
 Controle instellen voor uw Azure SQL Database:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-auditing
 
 
-Metrische gegevens en resource logboeken verzamelen met Azure Monitor:
+Statistieken en bronlogboeken verzamelen met Azure Monitor:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging
 
 
-Diagnostische gegevens streamen naar Azure SQL-analyse:
+Diagnostische gegevens streamen naar Azure SQL Analytics:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging#stream-diagnostic-telemetry-into-sql-analytics
+https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging#configure-the-streaming-export-of-diagnostic-telemetry
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: controle logboek registratie inschakelen voor Azure-resources
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Controlelogboekregistratie inschakelen voor Azure-resources
 
-**Hulp**: Schakel controle in op uw Azure SQL database server-exemplaar en kies een opslag locatie voor de audit Logboeken (Azure Storage, log Analytics of event hub).
+**Richtlijnen:** Schakel controle in op uw Azure SQL Database-serverinstantie en kies een opslaglocatie voor de controlelogboeken (Azure Storage, Log Analytics of Event Hub).
 
 
 Controle inschakelen voor Azure SQL Server:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-auditing
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: beveiligings logboeken verzamelen van besturings systemen
+### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: Beveiligingslogboeken verzamelen van besturingssystemen
 
-**Richt lijnen**: niet van toepassing; deze bench Mark is bedoeld voor reken resources.
+**Richtsnoeren**: Niet van toepassing; deze benchmark is bedoeld voor compute resources.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="25-configure-security-log-storage-retention"></a>2,5: Bewaar beveiliging van het beveiligings logboek configureren
+### <a name="25-configure-security-log-storage-retention"></a>2.5: Opslagbehoud beveiligingslogboeken configureren
 
-**Richt lijnen**: wanneer u uw Azure SQL database-logboeken opslaat in een log Analytics-werk ruimte, stelt u de Bewaar periode voor het logboek in op basis van de nalevings regels van uw organisatie.
+**Richtlijnen:** Wanneer u uw Azure SQL Database-logboeken opslaat in een Log Analytics Workspace, stelt u de bewaarperiode voor logboeken in volgens de nalevingsvoorschriften van uw organisatie.
 
 
 
-Para meters voor het bewaren van Logboeken instellen:
+Parameters voor logboekbehoud instellen:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="26-monitor-and-review-logs"></a>2,6: Logboeken bewaken en controleren
+### <a name="26-monitor-and-review-logs"></a>2.6: Logboeken controleren en controleren
 
-**Richt lijnen**: Logboeken analyseren en bewaken voor afwijkend gedrag en regel matig resultaten bekijken. Gebruik de geavanceerde bedreigings beveiliging van Azure Security Center om te waarschuwen voor ongebruikelijke activiteiten die betrekking hebben op uw Azure SQL Database-exemplaar. U kunt ook waarschuwingen configureren op basis van metrische waarden of Azure-activiteiten logboek vermeldingen die betrekking hebben op uw Azure SQL Database exemplaren.
+**Richtlijnen**: Analyseer en monitor logboeken op afwijkend gedrag en bekijk regelmatig resultaten. Gebruik de geavanceerde bedreigingsbeveiliging van Azure Security Center om te waarschuwen voor ongebruikelijke activiteiten die verband houden met uw Azure SQL Database-exemplaar. U ook waarschuwingen configureren op basis van metrische waarden of Azure Activity Log-vermeldingen die betrekking hebben op uw Azure SQL Database-exemplaren.
 
 
-Meer informatie over geavanceerde beveiliging tegen bedreigingen en waarschuwingen voor Azure SQL Server:
+Inzicht in geavanceerde bedreigingsbeveiliging en waarschuwingen voor Azure SQL Server:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
 
-Aangepaste waarschuwingen configureren voor Azure SQL Database:
+Aangepaste waarschuwingen voor Azure SQL Database configureren:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-portal?view=azps-1.4.0
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: waarschuwingen inschakelen voor afwijkende activiteit
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Waarschuwingen inschakelen voor afwijkende activiteit
 
-**Hulp**: gebruik Azure Security Center Advanced Threat Protection voor Azure SQL-data bases voor bewaking en waarschuwingen over afwijkende activiteiten. Geavanceerde gegevens beveiliging inschakelen voor uw SQL-data bases. Geavanceerde gegevens beveiliging bevat functionaliteit voor het detecteren en classificeren van gevoelige gegevens, het halen en het beperken van potentiële database problemen en de detectie van afwijkende activiteiten die kunnen wijzen op een bedreiging voor uw data base.
+**Richtlijnen:** Gebruik Azure Security Center Advanced Threat Protection voor Azure SQL-databases voor het bewaken en waarschuwen van afwijkende activiteiten. Geavanceerde gegevensbeveiliging inschakelen voor uw SQL-databases. Advanced Data Security omvat functionaliteit voor het ontdekken en classificeren van gevoelige gegevens, het opsporen en beperken van potentiële databasekwetsbaarheden en het detecteren van afwijkende activiteiten die kunnen wijzen op een bedreiging voor uw database.
 
 
 
-Meer informatie over geavanceerde beveiliging tegen bedreigingen en waarschuwingen voor Azure SQL Database:
+Inzicht in geavanceerde bedreigingsbeveiliging en waarschuwingen voor Azure SQL Database:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
 
 
-Geavanceerde gegevens beveiliging inschakelen voor Azure SQL Database:
+Geavanceerde gegevensbeveiliging inschakelen voor Azure SQL Database:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
 
@@ -331,172 +331,172 @@ Waarschuwingen beheren in Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="28-centralize-anti-malware-logging"></a>2,8: registratie van anti-malware centraliseren
+### <a name="28-centralize-anti-malware-logging"></a>2.8: Centraliseer anti-malware logging
 
-**Richt lijnen**: niet van toepassing; voor Azure SQL Server wordt de anti-malware-oplossing beheerd door micro soft op het onderliggende platform.
+**Richtsnoeren**: Niet van toepassing; voor Azure SQL Server wordt de anti-malwareoplossing beheerd door Microsoft op het onderliggende platform.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="29-enable-dns-query-logging"></a>2,9: DNS-query logboek registratie inschakelen
+### <a name="29-enable-dns-query-logging"></a>2.9: DNS-querylogboekregistratie inschakelen
 
-**Richt lijnen**: niet van toepassing; DNS-logboek registratie is niet van toepassing op Azure SQL Server.
+**Richtsnoeren**: Niet van toepassing; DNS-logboekregistratie is niet van toepassing op Azure SQL Server.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="210-enable-command-line-audit-logging"></a>2,10: controle logboek registratie op opdracht regel inschakelen
+### <a name="210-enable-command-line-audit-logging"></a>2.10: Logboekregistratie van opdrachtregelcontrole inschakelen
 
-**Richt lijnen**: niet van toepassing; het controleren van de opdracht regel is niet van toepassing op Azure SQL Server.
+**Richtsnoeren**: Niet van toepassing; controle van de opdrachtregel is niet van toepassing op Azure SQL Server.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
 ## <a name="identity-and-access-control"></a>Identiteits- en toegangsbeheer
 
-*Zie [beveiligings beheer: identiteit en Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
+*Zie [Beveiligingsbeheer: Identiteits- en toegangscontrole](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Inventaris bijhouden van de administratieve rekeningen
 
-**Hulp**: Azure Active Directory (Aad) heeft ingebouwde rollen die expliciet moeten worden toegewezen en waarop query's kunnen worden doorzocht. Gebruik de AAD Power shell-module om ad-hoc-query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen.
+**Richtlijnen**: Azure Active Directory (AAD) heeft ingebouwde rollen die expliciet moeten worden toegewezen en opvraagbaar zijn. Gebruik de AAD PowerShell-module om ad-hocquery's uit te voeren om accounts te ontdekken die lid zijn van administratieve groepen.
 
 
-Een directory-rol verkrijgen in azure AD met Power shell:
+Een maprol in Azure AD met PowerShell:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
 
-Leden van een directory-rol in azure AD ophalen met Power shell:
+Leden van een directoryrol in Azure AD krijgen met PowerShell:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="32-change-default-passwords-where-applicable"></a>3,2: standaard wachtwoorden wijzigen indien van toepassing
+### <a name="32-change-default-passwords-where-applicable"></a>3.2: Standaardwachtwoorden wijzigen indien van toepassing
 
-**Hulp**: Azure Active Directory heeft niet het concept van standaard wachtwoorden. Bij het inrichten van een Azure SQL Database-exemplaar, kunt u het beste verificatie met Azure Active Directory integreren.
+**Richtlijnen:** Azure Active Directory heeft niet het concept van standaardwachtwoorden. Bij het inrichten van een Azure SQL Database-exemplaar wordt aanbevolen dat u ervoor kiest om verificatie te integreren met Azure Active Directory.
 
 
 Azure Active Directory-verificatie configureren en beheren met Azure SQL:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="33-use-dedicated-administrative-accounts"></a>3,3: speciale beheerders accounts gebruiken
+### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Gebruik maken van speciale administratieve rekeningen
 
-**Richt lijnen**: beleids regels en procedures voor het gebruik van specifieke beheerders accounts maken. Gebruik Azure Security Center identiteits-en toegangs beheer om het aantal beheerders accounts te bewaken.
+**Richtlijnen**: Maak beleid en procedures rond het gebruik van specifieke administratieve accounts. Gebruik Azure Security Center Identity and Access Management om het aantal beheerdersaccounts te controleren.
 
 
 
-Meer informatie over Azure Security Center identiteit en toegang:
+Informatie over identiteit en toegang van azure security center:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: eenmalige aanmelding (SSO) met Azure Active Directory gebruiken
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Gebruik eenmalige aanmelding (SSO) met Azure Active Directory
 
-**Richt lijnen**: niet van toepassing; Hoewel u Azure Active Directory-verificatie kunt configureren voor integratie met Azure SQL Server, wordt eenmalige aanmelding niet ondersteund.
+**Richtsnoeren**: Niet van toepassing; u Azure Active Directory Authentication configureren om te integreren met Azure SQL Server, maar eenmalige aanmelding wordt niet ondersteund.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: multi-factor Authentication gebruiken voor alle op Azure Active Directory gebaseerde toegang
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Multi-factor authenticatie gebruiken voor alle Azure Active Directory-gebaseerde toegang
 
-**Hulp**: Schakel Azure Active Directory (AAD) multi-factor Authentication (MFA) in en volg Azure Security Center aanbevelingen voor identiteits-en toegangs beheer.
+**Richtlijnen:** Schakel Azure Active Directory (AAD) Multi-Factor Authentication (MFA) in en volg aanbevelingen voor Azure Security Center Identity and Access Management.
 
 
-MFA inschakelen in Azure:
+Mfa inschakelen in Azure:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
-Identiteit en toegang bewaken in Azure Security Center:
+Identiteit en toegang bewaken binnen Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: gebruik speciale machines (privileged Access workstations) voor alle beheer taken
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Dedicated machines (Privileged Access Workstations) gebruiken voor alle administratieve taken
 
-**Hulp**: gebruik een privileged Access-werk station (Paw) met multi-factor Authentication MFA dat is geconfigureerd om Azure-resources aan te melden en te configureren.
+**Richtlijnen:** Gebruik een Paw (Privileged Access Workstation) met Multi-Factor Authentication MFA geconfigureerd om in te loggen en Azure-bronnen te configureren.
 
 
-Meer informatie over privileged Access workstations:
+Meer informatie over geprivilegieerde werkstations voor toegang:
 
 https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
 
-MFA inschakelen in Azure:
+Mfa inschakelen in Azure:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: logboek en waarschuwing voor verdachte activiteiten van beheerders accounts
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: Inloggen en waarschuwen voor verdachte activiteiten vanuit administratieve accounts
 
-**Hulp**: gebruik Azure Active Directory beveiligings rapporten voor het genereren van Logboeken en waarschuwingen wanneer verdachte of onveilige activiteiten in de omgeving worden uitgevoerd.
-
-
-
-Gebruik Advanced Threat Protection voor Azure SQL Database om afwijkende activiteiten te detecteren die ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot of misbruik te maken van data bases.
+**Richtlijnen:** Gebruik Azure Active Directory-beveiligingsrapporten voor het genereren van logboeken en waarschuwingen wanneer verdachte of onveilige activiteiten in de omgeving plaatsvinden.
 
 
 
-Azure AD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten:
+Gebruik Advanced Threat Protection voor Azure SQL Database om afwijkende activiteiten te detecteren die ongebruikelijke en mogelijk schadelijke pogingen wijzen om databases te openen of te exploiteren.
+
+
+
+Azure AD-gebruikers identificeren die zijn gemarkeerd voor riskante activiteiten:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
 
 
 
-Identiteits-en toegangs activiteiten van gebruikers controleren in Azure Security Center:
+Hoe u de identiteit van gebruikers controleren en activiteiten openen in Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 
 
-Geavanceerde beveiliging tegen bedreigingen en mogelijke waarschuwingen bekijken:
+Bekijk geavanceerde dreigingsbescherming en potentiële waarschuwingen:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts
 
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Azure-resources alleen beheren vanaf goedgekeurde locaties
+### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Azure-resources beheren vanaf alleen goedgekeurde locaties
 
-**Richt lijnen**: Gebruik voorwaardelijke toegang met de naam locaties om toegang tot portal-en Azure-resource beheer toe te staan vanaf alleen specifieke logische groepen met IP-adresbereiken of landen/regio's.
+**Richtlijnen:** Gebruik locaties met voorwaardelijke toegang om portal- en Azure Resource Management-toegang toe te staan vanuit alleen specifieke logische groeperingen van IP-adresbereiken of landen/regio's.
 
 
-Benoemde locaties configureren in Azure: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Benoemde locaties configureren in Azure:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory gebruiken
+### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory gebruiken
 
-**Hulp**: maak een Azure Active Directory-beheerder (Aad) voor uw Azure SQL database server-instanties.
+**Richtlijnen:** maak een AZURE Active Directory(AAD)-beheerder voor uw Azure SQL Database-server-exemplaren.
 
 
 Azure Active Directory-verificatie configureren en beheren met Azure SQL:
@@ -508,26 +508,26 @@ Een AAD-exemplaar maken en configureren:
 
 https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: regel matig gebruikers toegang controleren en afstemmen
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Regelmatig gebruikerstoegang controleren en afstemmen
 
-**Hulp**: Azure Active Directory (Aad) biedt logboeken waarmee u verlopen accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. De toegang van gebruikers kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
+**Richtlijnen:** Azure Active Directory (AAD) biedt logboeken om verouderde accounts te ontdekken. Gebruik daarnaast Azure Identity Access-toegangsbeoordelingen om groepslidmaatschappen, toegang tot bedrijfstoepassingen en roltoewijzingen efficiënt te beheren. De toegang van gebruikers kan regelmatig worden beoordeeld om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
 
 
-Azure Identity Access revisies gebruiken:
+Azure Identity Access-recensies gebruiken:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: controle pogingen om toegang te krijgen tot gedeactiveerde accounts
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Pogingen om toegang te krijgen tot gedeactiveerde accounts controleren
 
-**Hulp**bij het configureren van Azure Active Directory (Aad)-verificatie met Azure SQL en het maken van diagnostische instellingen voor Azure Active Directory gebruikers accounts, het verzenden van de audit logboeken en aanmeldings logboeken naar een log Analytics-werk ruimte. Gewenste waarschuwingen configureren in Log Analytics werk ruimte.
+**Richtlijnen**: Configureer Azure Active Directory (AAD)-verificatie met Azure SQL en maak diagnostische instellingen voor Azure Active Directory-gebruikersaccounts, het verzenden van de controlelogboeken en aanmeldingslogboeken naar een log Analytics-werkruimte. De gewenste waarschuwingen configureren binnen de werkruimte Log Analytics.
 
 
 Azure Active Directory-verificatie configureren en beheren met Azure SQL:
@@ -535,75 +535,75 @@ Azure Active Directory-verificatie configureren en beheren met Azure SQL:
 https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure
 
 
-Azure-activiteiten logboeken integreren in Azure Monitor:
+Azure-activiteitslogboeken integreren in Azure Monitor:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: waarschuwing voor de afwijking van het aanmeldings gedrag van accounts
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Waarschuwing over afwijking van het inloggedrag van het account
 
-**Hulp**: gebruik Azure Active Directory (Aad) identiteits beveiliging en risico detecties om automatische antwoorden te configureren op gedetecteerde verdachte acties met betrekking tot gebruikers identiteiten. Daarnaast kunt u gegevens opnemen in azure Sentinel voor verder onderzoek.
+**Richtlijnen:** Gebruik Azure Active Directory (AAD) Identiteitsbeveiliging en risicodetecties om geautomatiseerde antwoorden te configureren op gedetecteerde verdachte acties met betrekking tot gebruikersidentiteiten. Bovendien u gegevens opnemen in Azure Sentinel voor verder onderzoek.
 
 
-Azure AD-risico aanmeldingen weer geven:
+Aanmeldingen voor AD-risico's weergeven:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
 
-Risico beleid voor identiteits beveiliging configureren en inschakelen:
+Hoe u risicobeleid voor identiteitsbescherming configureert en inschakelt:
 
 https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: micro soft biedt toegang tot relevante klant gegevens tijdens ondersteunings scenario's
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: Microsoft toegang geven tot relevante klantgegevens tijdens ondersteuningsscenario's
 
-**Richt lijnen**: in ondersteunings Scenario's waarin micro soft toegang heeft tot klant gegevens, biedt Azure klanten-lockbox een interface waarmee klanten aanvragen voor gegevens toegang van klanten kunnen controleren en goed keuren of afwijzen.
+**Richtlijnen:** In ondersteuningsscenario's waarin Microsoft toegang nodig heeft tot klantgegevens, biedt Azure Customer Lockbox een interface voor klanten om verzoeken voor toegang tot klantgegevens te controleren en goed te keuren of af te wijzen.
 
 
-Klanten-lockbox begrijpen:
+Inzicht in Klant Lockbox:
 
 https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-*Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
+*Zie [Beveiligingsbeheer: Gegevensbescherming](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Een inventaris van gevoelige informatie bijhouden
 
-**Hulp**: Tags gebruiken om Azure-resources te helpen bij het bijhouden of verwerken van gevoelige informatie.
+**Richtlijnen:** Gebruik tags om te helpen bij het bijhouden van Azure-bronnen die gevoelige informatie opslaan of verwerken.
 
 
 Tags maken en gebruiken:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Systemen isoleren die gevoelige informatie opslaan of verwerken
 
-**Richt lijnen**: afzonderlijke abonnementen en/of beheer groepen implementeren voor ontwikkeling, testen en productie. Resources moeten worden gescheiden door Vnet/subnet, op de juiste wijze worden gelabeld en beveiligd in een NSG of Azure Firewall. Resources die gevoelige gegevens opslaan of verwerken, moeten worden geïsoleerd. Persoonlijke koppeling gebruiken; Implementeer Azure-SQL Server in uw Vnet en maak privé verbinding met behulp van privé-eind punten.
+**Richtlijnen**: Implementeer afzonderlijke abonnementen en/of beheergroepen voor ontwikkeling, testen en productie. Resources moeten worden gescheiden door Vnet/Subnet, op de juiste manier worden getagd en beveiligd binnen een NSG- of Azure Firewall. Bronnen die gevoelige gegevens opslaan of verwerken, moeten worden geïsoleerd. Privékoppeling gebruiken; Azure SQL Server implementeren in uw Vnet en privé verbinding maken met privéeindpunten.
 
 
 
-Aanvullende Azure-abonnementen maken:
+Extra Azure-abonnementen maken:
 
 https://docs.microsoft.com/azure/billing/billing-create-subscription
 
 
 
-Beheergroepen maken:
+Managementgroepen maken:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
@@ -615,69 +615,69 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 
 
-Persoonlijke koppeling instellen voor Azure SQL Database:
+Private Link instellen voor Azure SQL Database:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview#how-to-set-up-private-link-for-azure-sql-database
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: niet-geautoriseerde overdracht van gevoelige gegevens controleren en blok keren
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Toezicht houden op en blokkeren van ongeoorloofde overdracht van gevoelige informatie
 
-**Richt lijnen**: voor Azure SQL-data bases die gevoelige informatie opslaan of verwerken, markeert u de data base en gerelateerde resources als gevoelig voor het gebruik van tags. Configureer een persoonlijke koppeling in combi natie met de service tags voor de netwerk beveiligings groep op uw Azure SQL Database instanties om te voor komen dat gevoelige informatie wordt exfiltration.
-
-
-
-Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
+**Richtlijnen:** Voor Azure SQL-databases die gevoelige informatie opslaan of verwerken, markeert u de database en gerelateerde bronnen als gevoelig met tags. Configureer Private Link in combinatie met Network Security Group Service Tags op uw Azure SQL Database-exemplaren om exfiltratie van gevoelige informatie te voorkomen.
 
 
 
-Persoonlijke koppelingen en Nsg's configureren om te voor komen dat gegevens exfiltration op uw Azure SQL Database instanties:
+Voor het onderliggende platform dat wordt beheerd door Microsoft, Microsoft behandelt alle klantinhoud als gevoelig en gaat tot het uiterste om te waken tegen verlies van klantgegevens en blootstelling. Om ervoor te zorgen dat klantgegevens binnen Azure veilig blijven, heeft Microsoft een reeks robuuste besturingselementen en mogelijkheden voor gegevensbescherming geïmplementeerd en onderhouden.
+
+
+
+Private Link en NSG configureren om gegevensexfiltratie op uw Azure SQL Database-exemplaren te voorkomen:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview
 
 
 
-Informatie over de beveiliging van klant gegevens in Azure:
+Inzicht in de bescherming van klantgegevens in Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: alle gevoelige gegevens in de overdracht versleutelen
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Alle gevoelige informatie tijdens het transport versleutelen
 
-**Hulp**: Azure SQL database uw gegevens beveiligen door gegevens in beweging te versleutelen met Transport Layer Security. SQL Server dwingt te allen tijde versleuteling (SSL/TLS) af voor alle verbindingen. Dit zorgt ervoor dat alle gegevens in transit tussen de client en server worden versleuteld, ongeacht de instelling van versleutelen of TrustServerCertificate in de connection string.
+**Richtlijnen:** Azure SQL Database beveiligt uw gegevens door gegevens in beweging te versleutelen met Transport Layer Security. SQL Server dwingt te allen tijde encryptie (SSL/TLS) af voor alle verbindingen. Dit zorgt ervoor dat alle gegevens worden versleuteld "onderweg" tussen de client en de server, ongeacht de instelling van Encrypt of TrustServerCertificate in de verbindingstekenreeks.
 
 
 
-Meer informatie over Azure SQL-versleuteling in transit:
+Inzicht in Azure SQL-versleuteling tijdens transit:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-security-overview#information-protection-and-encryption
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: micro soft
+**Verantwoordelijkheid**: Microsoft
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: een actief detectie hulpprogramma gebruiken om gevoelige gegevens te identificeren
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Gebruik een actief detectiehulpmiddel om gevoelige gegevens te identificeren
 
-**Hulp**: gebruik de functie voor Azure SQL database gegevens detectie en-classificatie. Gegevens detectie en-classificatie bieden geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL Database voor het detecteren, classificeren, labelen &amp; beveiligen van gevoelige gegevens in uw data bases.
+**Richtlijnen:** Gebruik de functie voor het ontdekken en classificeren van Azure SQL Database-gegevens. Gegevensdetectie en -classificatie bieden geavanceerde mogelijkheden die zijn ingebouwd in &amp; Azure SQL Database voor het ontdekken, classificeren en labelen van de bescherming van de gevoelige gegevens in uw databases.
 
 
 
-Gegevens detectie en-classificatie gebruiken voor Azure SQL Server:
+Gegevensdetectie en -classificatie gebruiken voor Azure SQL Server:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Azure RBAC gebruiken om de toegang tot bronnen te beheren
 
-**Hulp**: gebruik Azure Active Directory (Aad) voor het verifiëren en beheren van toegang tot Azure SQL database-exemplaren.
+**Richtlijnen:** Gebruik Azure Active Directory (AAD) voor het verifiëren en beheren van toegang tot Azure SQL Database-exemplaren.
 
 
 Azure SQL Server integreren met Azure Active Directory voor verificatie:
@@ -689,146 +689,146 @@ Toegang beheren in Azure SQL Server:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-control-access
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: voor komen dat gegevens verlies op basis van host wordt gebruikt voor het afdwingen van toegangs beheer
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: Gebruik hostgebaseerde preventie van gegevensverlies om toegangscontrole af te dwingen
 
-**Hulp**: micro soft beheert de onderliggende infra structuur voor Azure SQL database en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
+**Richtlijnen:** Microsoft beheert de onderliggende infrastructuur voor Azure SQL Database en heeft strenge controles geïmplementeerd om het verlies of de blootstelling van klantgegevens te voorkomen.
 
-Informatie over de beveiliging van klant gegevens in Azure:
+Inzicht in de bescherming van klantgegevens in Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: gevoelige informatie op rest versleutelen
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Versleutel gevoelige informatie in rust
 
-**Richt lijnen**: transparent Data Encryption (TDE) helpt bij het beschermen van Azure SQL database, Azure SQL Managed instance en Azure Data Warehouse tegen de dreiging van schadelijke offline activiteiten door het versleutelen van gegevens in rust. Er wordt in realtime versleuteling en ontsleuteling van de data base, gekoppelde back-ups en transactie logboek bestanden in rust uitgevoerd zonder dat de toepassing hoeft te worden gewijzigd. TDE is standaard ingeschakeld voor alle nieuw geïmplementeerde Azure SQL-data bases. De versleutelings sleutel TDE kan worden beheerd door micro soft of de klant.
+**Richtlijnen**: Transparent data encryption (TDE) helpt Azure SQL Database, Azure SQL managed instance en Azure Data Warehouse te beschermen tegen de dreiging van kwaadaardige offline activiteit door gegevens in rust te versleutelen. Het voert in realtime versleuteling en ontsleuteling van de database, bijbehorende back-ups en transactielogboekbestanden 'at-rest' uit, zonder dat er wijzigingen in de toepassing moeten worden aangebracht. Standaard wordt TDE ingeschakeld voor alle nieuw geïmplementeerde Azure SQL-databases. De TDE-versleutelingssleutel kan worden beheerd door Microsoft of de klant.
 
 
-Transparante gegevens versleuteling beheren en uw eigen versleutelings sleutels gebruiken:
+Hoe u transparante gegevensversleuteling beheert en uw eigen versleutelingssleutels gebruikt:
 
 https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?tabs=azure-portal#manage-transparent-data-encryption
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: wijzigingen in essentiële Azure-resources vastleggen en waarschuwen
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Logboeken en waarschuwing en waarschuwing over wijzigingen in kritieke Azure-resources
 
-**Hulp**: gebruik Azure monitor met het Azure-activiteiten logboek om waarschuwingen te maken wanneer wijzigingen worden aangebracht in productie-exemplaren van Azure SQL-data bases en andere kritieke of gerelateerde resources.
+**Richtlijnen:** Gebruik Azure Monitor met het Azure Activity Log om waarschuwingen te maken voor wanneer er wijzigingen plaatsvinden in productie-exemplaren van Azure SQL-databases en andere kritieke of gerelateerde bronnen.
 
 
-Waarschuwingen voor Azure-activiteiten logboek gebeurtenissen maken:
+Waarschuwingen maken voor gebeurtenissen in Azure Activity Log:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="vulnerability-management"></a>Beheer van beveiligingsproblemen
 
-*Zie [beveiligings beheer: beveiligingslek beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)voor meer informatie.*
+*Zie [Security Control: Vulnerability Management voor](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)meer informatie.*
 
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatische hulpprogram ma's voor het scannen van beveiligings problemen uitvoeren
+### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Geautomatiseerde hulpprogramma's voor het scannen van kwetsbaarheden uitvoeren
 
-**Hulp**: geavanceerde gegevens beveiliging inschakelen voor Azure SQL database en aanbevelingen volgen van Azure Security Center over het uitvoeren van beveiligings evaluaties op uw Azure SQL-servers.
+**Richtlijnen:** Schakel Geavanceerde gegevensbeveiliging voor Azure SQL Database in en volg aanbevelingen van Azure Security Center voor het uitvoeren van kwetsbaarheidsbeoordelingen op uw Azure SQL Servers.
 
 
 
-Beveiligings evaluaties uitvoeren voor uw Azure SQL-data bases:
+Kwetsbaarheidsbeoordelingen uitvoeren op uw Azure SQL-databases:
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment
 
 
 
-Geavanceerde gegevens beveiliging inschakelen:
+Geavanceerde gegevensbeveiliging inschakelen:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
 
 
 
-Aanbevelingen voor de evaluatie van Azure Security Center-beveiligings problemen implementeren:
+Aanbevelingen voor het beoordelen van azure security center-kwetsbaarheden implementeren:
 
 https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: geautomatiseerde oplossing voor patch beheer voor besturings systemen implementeren
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Implementatie van een oplossing voor het patchbeheer van geautomatiseerd besturingssysteem
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: Implementeer een geautomatiseerde oplossing voor software patch beheer van derden
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Geautomatiseerde softwarepatchbeheeroplossing van derden implementeren
 
-**Richt lijnen**: niet van toepassing; deze bench Mark is bedoeld voor reken resources.
+**Richtsnoeren**: Niet van toepassing; deze benchmark is bedoeld voor compute resources.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: vergelijken van back-to-back-problemen
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: Vergelijk back-to-back kwetsbaarheid scans
 
-**Hulp**: periodieke terugkerende scans voor uw Azure SQL database-instanties inschakelen; Hiermee configureert u een evaluatie van beveiligings problemen om een keer per week automatisch een scan uit te voeren op uw data base. Er wordt een overzicht van de scan resultaten verzonden naar de e-mail adressen die u opgeeft. Vergelijk de resultaten om te controleren of de beveiligings problemen zijn opgelost.
+**Richtlijnen**: Schakel periodieke terugkerende scans in voor uw Azure SQL Database-exemplaren; hiermee wordt een kwetsbaarheidsbeoordeling geconfigureerd om één keer per week automatisch een scan in uw database uit te voeren. Er wordt een overzicht van het scanresultaat verzonden naar het door u optezijn e-mailadres(en). Vergelijk de resultaten om te controleren of kwetsbaarheden zijn verholpen.
 
 
 
-Een evaluatie rapport voor beveiligings problemen exporteren in Azure Security Center:
+Een rapport voor het beoordelen van kwetsbaarheden exporteren in Azure Security Center:
 
-https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#implementing-vulnerability-assessment
+https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#implement-vulnerability-assessment
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: een risico classificatie proces gebruiken om prioriteit te geven aan het herstel van ontdekte beveiligings problemen
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Gebruik een risicobeoordelingsproces om prioriteit te geven aan het herstel van ontdekte kwetsbaarheden
 
-**Richt lijnen**: gebruik de standaard risico classificaties (beveiligde Score) van Azure Security Center.
+**Richtlijnen:** gebruik de standaardrisicoclassificaties (Secure Score) van Azure Security Center.
 
-Meer informatie over Azure Security Center beveiligde Score: https://docs.microsoft.com/azure/security-center/security-center-secure-score
+Informatie over azure security center secure score:https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="inventory-and-asset-management"></a>Inventarisatie en Asset Management
 
-*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Zie [Beveiligingsbeheer: Voorraadbeheer en Vermogensbeheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)voor meer informatie.*
 
-### <a name="61-use-azure-asset-discovery"></a>6,1: Azure Asset Discovery gebruiken
+### <a name="61-use-azure-asset-discovery"></a>6.1: Azure Asset Discovery gebruiken
 
-**Hulp**: Azure resource Graph gebruiken om alle resources (inclusief Azure SQL Server instances) in uw abonnement (en) te doorzoeken en te detecteren.  Zorg ervoor dat u de juiste machtigingen (lezen) hebt in uw Tenant en dat u alle Azure-abonnementen kunt inventariseren, evenals de resources in uw abonnementen.
-
-
-Hoewel klassieke Azure-resources kunnen worden gedetecteerd via Azure resource Graph, is het raadzaam om Azure Resource Manager resources te maken en te gebruiken.
+**Richtlijnen:** Gebruik Azure Resource Graph om alle bronnen (inclusief Azure SQL Server-exemplaren) in uw abonnement(en) op te vragen en te ontdekken.  Zorg ervoor dat u over de juiste (lees)machtigingen in uw tenant beschikt en dat u alle Azure-abonnementen en resources binnen uw abonnementen opsommen.
 
 
-Query's maken met Azure resource Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Hoewel klassieke Azure-bronnen kunnen worden ontdekt via Azure Resource Graph, is het ten zeerste aan te raden om azure resource beheerbronnen in de toekomst te maken en te gebruiken.
 
 
-Uw Azure-abonnementen weer geven: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Query's maken met Azure Resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
-Meer informatie over Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/overview
+Uw Azure-abonnementen weergeven:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-**Azure Security Center bewaking**: niet van toepassing
 
-**Verantwoordelijkheid**: klant
+Azure RBAC begrijpen:https://docs.microsoft.com/azure/role-based-access-control/overview
 
-### <a name="62-maintain-asset-metadata"></a>6,2: meta gegevens van activa onderhouden
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Richt lijnen**: Tags Toep assen op Azure-resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
+**Verantwoordelijkheid**: Klant
+
+### <a name="62-maintain-asset-metadata"></a>6.2: Metagegevens van activa onderhouden
+
+**Richtlijnen:** Tags toepassen op Azure-bronnen met metagegevens om ze logisch te ordenen in een taxonomie.
 
 
 
@@ -836,23 +836,23 @@ Tags maken en gebruiken:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6,3: niet-geautoriseerde Azure-resources verwijderen
+### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Ongeautoriseerde Azure-bronnen verwijderen
 
-**Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, waar nodig, om assets te organiseren en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
+**Richtlijnen**: Gebruik tagging, beheergroepen en afzonderlijke abonnementen, waar nodig, om assets te organiseren en bij te houden. Verzoen de voorraad regelmatig en zorg ervoor dat ongeautoriseerde bronnen tijdig uit het abonnement worden verwijderd.
 
 
 
-Aanvullende Azure-abonnementen maken:
+Extra Azure-abonnementen maken:
 
 https://docs.microsoft.com/azure/billing/billing-create-subscription
 
 
 
-Beheergroepen maken:
+Managementgroepen maken:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
@@ -862,218 +862,218 @@ Tags maken en gebruiken:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: een inventaris van goedgekeurde Azure-resources en software titels onderhouden
+### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Een inventaris bijhouden van goedgekeurde Azure-resources en softwaretitels
 
-**Hulp**: een lijst met goedgekeurde Azure-resources en goedgekeurde software voor uw reken resources definiëren
+**Richtlijnen**: Lijst met goedgekeurde Azure-resources en goedgekeurde software voor uw rekenbronnen definiëren
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitor voor niet-goedgekeurde Azure-resources
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Monitor voor niet-goedgekeurde Azure-bronnen
 
-**Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
-
-- Niet toegestane brontypen
-- Toegestane brontypen
-
-Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen uw abonnement (en). Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
-
-Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
-Query's maken met Azure resource Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: klant
-
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitor voor niet-goedgekeurde software toepassingen binnen reken resources
-
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: niet van toepassing
-
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: niet-goedgekeurde Azure-resources en software toepassingen verwijderen
-
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: niet van toepassing
-
-### <a name="68-use-only-approved-applications"></a>6,8: alleen goedgekeurde toepassingen gebruiken
-
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: niet van toepassing
-
-### <a name="69-use-only-approved-azure-services"></a>6,9: alleen goedgekeurde Azure-Services gebruiken
-
-**Hulp: gebruik**Azure Policy om beperkingen te plaatsen voor het type resources dat kan worden gemaakt in klant abonnementen met de volgende ingebouwde beleids definities:
+**Richtlijnen:** Gebruik Azure Policy om beperkingen op te leggen aan het type resources dat kan worden gemaakt in klantabonnementen(en) met behulp van de volgende ingebouwde beleidsdefinities:
 
 - Niet toegestane brontypen
 - Toegestane brontypen
 
-Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen uw abonnement (en). Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
+Gebruik Azure Resource Graph om bronnen binnen uw abonnement(en) te zoeken/ontdekken. Controleer of alle Azure-resources die in de omgeving aanwezig zijn, zijn goedgekeurd.
 
-Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure-beleid configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Een specifiek resource type weigeren met Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Query's maken met Azure Resource Graph:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Klant
+
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Monitor voor niet-goedgekeurde softwaretoepassingen binnen compute resources
+
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Niet van toepassing
+
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Niet-goedgekeurde Azure-bronnen en -softwaretoepassingen verwijderen
+
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Niet van toepassing
+
+### <a name="68-use-only-approved-applications"></a>6.8: Gebruik alleen goedgekeurde aanvragen
+
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Niet van toepassing
+
+### <a name="69-use-only-approved-azure-services"></a>6.9: Alleen goedgekeurde Azure-services gebruiken
+
+**Richtlijnen:** Gebruik Azure Policy om beperkingen op te leggen aan het type resources dat kan worden gemaakt in klantabonnementen(en) met behulp van de volgende ingebouwde beleidsdefinities:
+
+- Niet toegestane brontypen
+- Toegestane brontypen
+
+Gebruik Azure Resource Graph om bronnen binnen uw abonnement(en) te zoeken/ontdekken. Controleer of alle Azure-resources die in de omgeving aanwezig zijn, zijn goedgekeurd.
+
+Azure-beleid configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
+Een specifiek brontype weigeren met Azure-beleid:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="610-implement-approved-application-list"></a>6,10: lijst met goedgekeurde toepassingen implementeren
+### <a name="610-implement-approved-application-list"></a>6.10: Goedgekeurde aanvraaglijst implementeren
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor toepassingen die worden uitgevoerd op reken resources.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor toepassingen die op compute resources worden uitgevoerd.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6,11: de mogelijkheid van gebruikers om te communiceren met Azure Resource Manager via scripts beperken
+### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6.11: De mogelijkheid van gebruikers beperken om via scripts met Azure Resources Manager te communiceren
 
-**Richt lijnen**: gebruik de voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om te communiceren met Azure Resource Manager door ' blok toegang ' te configureren voor de app Microsoft Azure management.
+**Richtlijnen:** Gebruik voorwaardelijke toegang voor Azure om de interactie van gebruikers met Azure Resource Manager te beperken door 'Bloktoegang' voor de Microsoft Azure Management-app te configureren.
 
 
-Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Voorwaardelijke toegang configureren om toegang tot Azure Resource Manager te blokkeren:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: de mogelijkheid van gebruikers om scripts uit te voeren binnen reken bronnen beperken
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Beperk de mogelijkheid van gebruikers om scripts uit te voeren binnen compute resources
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: toepassingen met een hoog risico fysiek of logisch scheiden
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Toepassingen met een hoog risico fysiek of logisch scheiden
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor App Service-of COMPUTE-resources die fungeren als host voor desktop-of webtoepassingen.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor App Service of compute resources die desktop- of webtoepassingen hosten.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
 ## <a name="secure-configuration"></a>Veilige configuratie
 
-*Zie [beveiligings beheer: beveiligde configuratie](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)voor meer informatie.*
+*Zie [Beveiligingsbeheer: beveiligde configuratie](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)voor meer informatie.*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Veilige configuraties instellen voor alle Azure-resources
 
-**Hulp**: gebruik Azure Policy of Azure Security Center aanbevelingen voor Azure SQL-servers/-data bases voor het onderhouden van beveiligings configuraties voor alle Azure-resources.
-
-
-Azure Policy configureren en beheren:
-
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
-**Azure Security Center bewaking**: Ja
-
-**Verantwoordelijkheid**: klant
-
-### <a name="72-establish-secure-operating-system-configurations"></a>7,2: veilige configuraties van besturings systemen instellen
-
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: niet van toepassing
-
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: Beveilig Azure-resource configuraties onderhouden
-
-**Richt lijnen**: gebruik Azure Policy [deny] en [implementeren indien niet aanwezig] voor het afdwingen van beveiligde instellingen voor uw Azure-resources.
+**Richtlijnen**: Gebruik azure policy of Azure Security Center-aanbevelingen voor Azure SQL Servers/Databases om beveiligingsconfiguraties voor alle Azure-bronnen te behouden.
 
 
-
-Azure Policy configureren en beheren:
+Azure-beleid configureren en beheren:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
+**Azure Security Center-bewaking:** Ja
+
+**Verantwoordelijkheid**: Klant
+
+### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Veilige configuratie van het besturingssysteem instellen
+
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Niet van toepassing
+
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Veilige Azure-bronconfiguraties behouden
+
+**Richtlijnen**: Gebruik Azure-beleid [weigeren] en [implementeren als deze niet bestaan] om beveiligde instellingen voor uw Azure-bronnen af te dwingen.
 
 
-Azure Policy effecten begrijpen:
+
+Azure-beleid configureren en beheren:
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
+
+
+Inzicht in Azure-beleidseffecten:
 
 https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: veilige configuraties van besturings systemen onderhouden
+### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Veilige configuratie van het besturingssysteem behouden
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: de configuratie van Azure-resources veilig opslaan
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Configuratie van Azure-bronnen veilig opslaan
 
-**Richt lijnen**: als u aangepaste definities van Azure-beleid gebruikt, kunt u Azure DevOps of Azure opslag plaatsen gebruiken om uw code veilig op te slaan en te beheren.
+**Richtlijnen:** Als u aangepaste Azure-beleidsdefinities gebruikt, gebruikt u Azure DevOps of Azure Repos om uw code veilig op te slaan en te beheren.
 
 
 
-Code opslaan in azure DevOps:
+Code opslaan in Azure DevOps:
 
 https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
 
 
-Documentatie voor Azure opslag plaatsen:
+Azure Repos-documentatie:
 
 https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7,6: aangepaste installatie kopieën van een besturings systeem veilig opslaan
+### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Afbeeldingen van aangepaste besturingssysteemen veilig opslaan
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7,7: hulpprogram ma's voor het beheer van systeem configuratie implementeren
+### <a name="77-deploy-system-configuration-management-tools"></a>7.7: Hulpprogramma's voor systeemconfiguratiebeheer implementeren
 
-**Richt lijnen**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. SQL ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Ontwikkel bovendien een proces en pijp lijn voor het beheren van beleids uitzonderingen.
+**Richtlijnen:** Gebruik Azure Policy-aliassen in de naamruimte 'Microsoft.SQL' om aangepaste beleidsregels te maken om systeemconfiguraties te waarschuwen, te controleren en af te dwingen. Bovendien ontwikkelt u een proces en pijplijn voor het beheren van beleidsuitzonderingen.
 
 
 
-Azure Policy configureren en beheren:
+Azure-beleid configureren en beheren:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: hulpprogram ma's voor het beheer van systeem configuratie implementeren voor besturings systemen
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Systeemconfiguratiebeheertools implementeren voor besturingssystemen
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: geautomatiseerde configuratie bewaking voor Azure-Services implementeren
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Geautomatiseerde configuratiebewaking implementeren voor Azure-services
 
-**Hulp**: Maak gebruik van Azure Security Center om basislijn scans uit te voeren voor uw Azure SQL-servers en-data bases.
+**Richtlijnen:** Maak gebruik van Azure Security Center om basislijnscans uit te voeren voor uw Azure SQL Servers en Databases.
 
 
 
@@ -1081,38 +1081,38 @@ Aanbevelingen herstellen in Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: geautomatiseerde configuratie bewaking voor besturings systemen implementeren
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Geautomatiseerde configuratiebewaking voor besturingssystemen implementeren
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="711-manage-azure-secrets-securely"></a>7,11: Azure-geheimen veilig beheren
+### <a name="711-manage-azure-secrets-securely"></a>7.11: Azure-geheimen veilig beheren
 
-**Hulp**: gebruik Azure Key Vault om versleutelings sleutels voor Azure SQL database transparent Data Encryption op te slaan (TDE).
+**Richtlijnen**: Gebruik Azure Key Vault om versleutelingssleutels op te slaan voor Azure SQL Database Transparent Data Encryption (TDE).
 
 
 
-Het beveiligen van gevoelige gegevens die worden opgeslagen in Azure SQL Server en het opslaan van de versleutelings sleutels in Azure Key Vault:
+Gevoelige gegevens die in Azure SQL Server worden opgeslagen, beveiligen en de coderingssleutels opslaan in Azure Key Vault:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7,12: identiteiten veilig en automatisch beheren
+### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Identiteiten veilig en automatisch beheren
 
-**Richt lijnen**: gebruik beheerde identiteiten om Azure-Services te voorzien van een automatisch beheerde identiteit in azure Active Directory (Aad). Met beheerde identiteiten kunt u zich verifiëren bij elke service die AAD-verificatie ondersteunt, met inbegrip van Azure Key Vault, zonder enige referenties in uw code.
+**Richtlijnen**: Gebruik Beheerde identiteiten om Azure-services een automatisch beheerde identiteit te bieden in Azure Active Directory (AAD). Met Managed Identities u zich verifiëren voor elke service die AAD-verificatie ondersteunt, inclusief Azure Key Vault, zonder referenties in uw code.
 
 
-Zelf studie: een door Windows-VM-systeem toegewezen beheerde identiteit gebruiken om toegang te krijgen tot Azure SQL:
+Zelfstudie: Gebruik een beheerde identiteit met Windows VM-systeem om toegang te krijgen tot Azure SQL:
 
 https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql
 
@@ -1121,185 +1121,185 @@ Beheerde identiteiten configureren:
 
 https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: onbedoelde referentie blootstelling elimineren
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: Onbedoelde blootstelling aan referenties elimineren
 
-**Richt lijnen**: referentie scanner implementeren om referenties in uw code te identificeren. Referentie scanner stimuleert ook het verplaatsen van gedetecteerde referenties naar veiliger locaties, zoals Azure Key Vault. 
+**Richtlijnen:** Implementeer credential scanner om referenties binnen uw code te identificeren. Credential Scanner stimuleert ook het verplaatsen van ontdekte referenties naar veiligere locaties zoals Azure Key Vault. 
 
-Referentie scanner instellen: https://secdevtools.azurewebsites.net/helpcredscan.html
+Credential Scanner instellen:https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="malware-defense"></a>Beveiliging tegen malware
 
-*Zie [beveiligings beheer: verdediging tegen malware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
+*Zie [Security Control: Malware Defense](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: centraal beheerde anti-malware-software gebruiken
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Gebruik centraal beheerde anti-malwaresoftware
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources. Micro soft verzorgt anti-malware voor het onderliggende platform.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources. Microsoft verwerkt anti-malware voor onderliggend platform.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: scan bestanden die moeten worden geüpload naar niet-reken resources van Azure
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: Vooraf scannen van bestanden die moeten worden geüpload naar niet-compute Azure-resources
 
-**Hulp**: micro soft anti-malware is ingeschakeld op de onderliggende host die ondersteuning biedt voor Azure-Services (bijvoorbeeld Azure app service), maar wordt niet uitgevoerd op de inhoud van de klant.
-
-
-Scan vooraf op inhoud die wordt geüpload naar niet-reken resources van Azure, zoals App Service, Data Lake Storage, Blob Storage, Azure SQL Server, enzovoort. Micro soft heeft geen toegang tot uw gegevens in deze instanties.
+**Richtlijnen**: Microsoft-antimalware is ingeschakeld op de onderliggende host die Azure-services ondersteunt (bijvoorbeeld Azure App Service), maar wordt niet uitgevoerd op inhoud van klanten.
 
 
-Meer informatie over micro soft antimalware voor Azure Cloud Services en Virtual Machines: https://docs.microsoft.com/azure/security/fundamentals/antimalware
+Scan vooraf alle inhoud die wordt geüpload naar niet-compute Azure-bronnen, zoals App Service, Data Lake Storage, Blob Storage, Azure SQL Server, enz. Microsoft heeft in deze gevallen geen toegang tot uw gegevens.
 
-**Azure Security Center bewaking**: niet van toepassing
 
-**Verantwoordelijkheid**: klant
+Microsoft Antimalware voor Azure Cloud Services en virtuele machines begrijpen:https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: controleren of anti-malware-software en hand tekeningen zijn bijgewerkt
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources. Micro soft verzorgt anti-malware voor het onderliggende platform.
+**Verantwoordelijkheid**: Klant
 
-**Azure Security Center bewaking**: niet van toepassing
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: Ervoor zorgen dat antivirussoftware en -handtekeningen worden bijgewerkt
 
-**Verantwoordelijkheid**: niet van toepassing
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources. Microsoft verwerkt anti-malware voor onderliggend platform.
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Niet van toepassing
 
 ## <a name="data-recovery"></a>Gegevensherstel
 
-*Zie [beveiligings beheer: gegevens herstel](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
+*Zie [Beveiligingsbeheer: Gegevensherstel](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9,1: controleren op regel matige automatische back-ups
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Zorg voor regelmatige geautomatiseerde back-ups
 
-**Richt lijnen**: om uw bedrijf te beschermen tegen gegevens verlies, maakt Azure SQL database automatisch volledige back-ups van de data base, differentiële database back-ups elke 12 uur en back-ups van transactie Logboeken om de 5-10 minuten. De back-ups worden opgeslagen in RA-GRS-opslag gedurende ten minste 7 dagen voor alle service lagen. Alle service lagen, met uitzonde ring van Basic Support Configureer bare Bewaar periode voor back-ups voor herstel naar een bepaald tijdstip, Maxi maal 35 dagen.
-
-
-Als u wilt voldoen aan verschillende nalevings vereisten, kunt u verschillende Bewaar perioden selecteren voor wekelijkse, maandelijkse en/of jaarlijkse back-ups. Het opslag verbruik is afhankelijk van de geselecteerde frequentie van back-ups en de retentie periode (n).
+**Richtlijnen:** Om uw bedrijf te beschermen tegen gegevensverlies, maakt Azure SQL Database automatisch wekelijks volledige databaseback-ups, elke 12 uur verschillende databaseback-ups en elke 5 - 10 minuten back-ups van transactielogboeken. De back-ups worden gedurende ten minste 7 dagen opgeslagen in RA-GRS-opslag voor alle servicelagen. Alle servicelagen, behalve de configureerbare bewaarperiode voor basisondersteuning voor point-in-time herstel, tot 35 dagen.
 
 
-Meer informatie over back-ups en bedrijfs continuïteit met Azure SQL Server:
+Om aan verschillende nalevingsvereisten te voldoen, u verschillende bewaartermijnen selecteren voor wekelijkse, maandelijkse en/of jaarlijkse back-ups. Het opslagverbruik is afhankelijk van de geselecteerde frequentie van back-ups en de bewaarperiode(en).
+
+
+Inzicht in back-ups en bedrijfscontinuïteit met Azure SQL Server:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-business-continuity
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: gedeeld
+**Verantwoordelijkheid**: Gedeeld
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: volledige back-ups van het systeem uitvoeren en een back-up maken van een door de klant beheerde sleutels
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Complete systeemback-ups uitvoeren en een back-up maken van beheerde sleutels van een klant
 
-**Hulp**: Azure SQL database maakt automatisch de database back-ups die tussen 7 en 35 dagen worden bewaard en maakt gebruik van Azure-geo-redundante opslag met lees toegang (RA-GRS) om ervoor te zorgen dat ze worden bewaard, zelfs als het Data Center niet beschikbaar is. Deze back-ups worden automatisch gemaakt. Schakel zo nodig geo-redundante back-ups op lange termijn in voor uw Azure SQL-data bases.
-
-
-Als door de klant beheerde sleutels worden gebruikt voor Transparent Data Encryption, moet u ervoor zorgen dat er een back-up van uw sleutels wordt gemaakt.
+**Richtlijnen:** Azure SQL Database maakt automatisch de databaseback-ups die tussen 7 en 35 dagen worden bewaard en maakt gebruik van Azure read-access geo-redundantstorage (RA-GRS) om ervoor te zorgen dat deze worden bewaard, zelfs als het datacenter niet beschikbaar is. Deze back-ups worden automatisch gemaakt. Schakel indien nodig georedundante back-ups op lange termijn in voor uw Azure SQL-databases.
 
 
-Meer informatie over back-ups in Azure SQL Server:
+Als u door de klant beheerde sleutels gebruikt voor transparante gegevensversleuteling, moet u ervoor zorgen dat er een back-up van uw sleutels wordt gemaakt.
+
+
+Back-ups in Azure SQL Server begrijpen:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-automated-backups?tabs=single-database
 
 
-Hoe kan ik een back-up maken van sleutel kluis sleutels in Azure:
+Een back-up maken van sleutelkluissleutels in Azure:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: alle back-ups valideren, inclusief door de klant beheerde sleutels
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Alle back-ups valideren, inclusief door de klant beheerde sleutels
 
-**Richt lijnen**: Zorg ervoor dat het gegevens herstel van inhoud regel matig wordt uitgevoerd in azure backup. Test zo nodig inhoud terug naar een geïsoleerd VLAN. Het herstellen van een back-up van door de klant beheerde sleutels testen.
+**Richtlijnen:** Zorg ervoor dat u periodiek gegevensherstel van inhoud binnen Azure Backup uitvoeren. Test indien nodig de herstelinhoud in een geïsoleerde VLAN. Test de restauratie van back-ups van door de klant beheerde sleutels.
 
 
-Sleutel kluis sleutels herstellen in Azure:
+Sleutelkluissleutels herstellen in Azure:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
 
-Azure SQL Database back-ups herstellen met behulp van herstel naar een bepaald tijdstip:
+Azure SQL Database-back-ups herstellen met point-in-time restore:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#point-in-time-restore
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: zorg voor de bescherming van back-ups en door de klant beheerde sleutels
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Zorg voor bescherming van back-ups en door klanten beheerde sleutels
 
-**Hulp**: Schakel zacht verwijderen in azure Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
+**Richtlijnen:** Schakel soft delete in Azure Key Vault in om sleutels te beschermen tegen onbedoelde of kwaadwillige verwijdering.
 
 
-Het inschakelen van zacht verwijderen in Key Vault:
+Soft delete inschakelen in Key Vault:
 
 https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="incident-response"></a>Reageren op incidenten
 
-*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Zie [Beveiligingscontrole: Incident Response](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)voor meer informatie.*
 
-### <a name="101-create-an-incident-response-guide"></a>10,1: een hand leiding voor reactie op incidenten maken
+### <a name="101-create-an-incident-response-guide"></a>10.1: Een gids voor incidentrespons maken
 
-**Richt lijnen**: Zorg ervoor dat er schriftelijke incidenten abonnementen zijn die rollen van personeel en fasen van incident handling/Management definiëren.
+**Richtlijnen**: Zorg ervoor dat er schriftelijke incidentresponseplannen zijn die de rollen van het personeel en de fasen van incidentafhandeling/-beheer definieert.
 
 
 
-Werk stroom automatisering configureren in Azure Security Center:
+Werkstroomautomatiseringen configureren binnen Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: een beoordelings procedure voor incidenten en prioriteits procedures maken
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Een incidentscore- en prioriteringsprocedure maken
 
-**Hulp**: Security Center wijst een Ernst toe aan waarschuwingen, zodat u de volg orde van de instructies voor elke waarschuwing kunt bepalen, zodat u meteen aan de voor waarde krijgt wanneer een bron is aangetast. De ernst is gebaseerd op de manier waarop vertrouwen Security Center is in de zoek actie of het analyse programma dat wordt gebruikt om de waarschuwing te geven, evenals het betrouwbaarheids niveau dat er schadelijke bedoelingen zijn achter de activiteit die tot de waarschuwing heeft geleid.
-Beveiligings waarschuwingen in Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
-
-
-**Azure Security Center bewaking**: Ja
-
-**Verantwoordelijkheid**: klant
-
-### <a name="103-test-security-response-procedures"></a>10,3: procedures voor beveiligings antwoorden testen
-
-**Richt lijnen**: oefent oefeningen uit om de respons mogelijkheden van uw systeem op een gewone uitgebracht te testen. Identificeer zwakke punten en tussen ruimten en wijzig zo nodig het schema.
+**Richtlijnen**: Security Center kent een ernst toe aan waarschuwingen, zodat u prioriteit geven aan de volgorde waarin u elke waarschuwing bijwoont, zodat wanneer een resource wordt gecompromitteerd, u er meteen bij komen. De ernst is gebaseerd op hoe zeker Security Center is in de bevinding of de analytische gebruikt om de waarschuwing en het betrouwbaarheidsniveau dat er kwaadaardige bedoelingen achter de activiteit die leidde tot de waarschuwing.
+Beveiligingswaarschuwingen in Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
 
 
+**Azure Security Center-bewaking:** Ja
 
-U kunt naar de publicatie van het NIST verwijzen: hand leiding voor het testen, trainen en uitoefenen van Program Ma's voor IT-plannen en-mogelijkheden:
+**Verantwoordelijkheid**: Klant
+
+### <a name="103-test-security-response-procedures"></a>10.3: Procedures voor beveiligingsrespons testen
+
+**Richtlijnen**: Voer oefeningen uit om de incidentresponsmogelijkheden van uw systemen op een regelmatige cadans te testen. Identificeer zwakke punten en hiaten en herzie het plan indien nodig.
+
+
+
+U verwijzen naar de publicatie van NIST: Gids voor test-, trainings- en trainingsprogramma's voor IT-plannen en -mogelijkheden:
 
 https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: contact gegevens van het beveiligings incident opgeven en waarschuwings meldingen configureren voor beveiligings incidenten
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Contactgegevens beveiligingsincidenten verstrekken en waarschuwingsmeldingen configureren voor beveiligingsincidenten
 
-**Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat uw gegevens zijn geopend door een onrecht matige of niet-gemachtigde partij.
+**Richtlijnen:** Contactgegevens voor beveiligingsincidenten worden door Microsoft gebruikt om contact met u op te nemen als het Microsoft Security Response Center (MSRC) ontdekt dat uw gegevens zijn geopend door een onwettige of onbevoegde partij.
 
 
 
-De Azure Security Center Security-contact persoon instellen:
+De beveiligingscontactpersoon azure security center instellen:
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: beveiligings waarschuwingen opnemen in uw reactie systeem van uw incident
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Beveiligingswaarschuwingen opnemen in uw incidentresponsesysteem
 
-**Richt lijnen**: uw Azure Security Center waarschuwingen en aanbevelingen exporteren met de functie continue export. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende manier exporteren. U kunt de Azure Security Center Data Connector gebruiken om de waarschuwingen naar Sentinel te verzenden.
+**Richtlijnen:** exporteer uw Azure Security Center-waarschuwingen en -aanbevelingen met de functie Continue exporteren. Met Continue export u waarschuwingen en aanbevelingen handmatig of doorlopend exporteren. U de Azure Security Center-gegevensconnector gebruiken om de waarschuwingen naar Sentinel te streamen.
 
 
 Continue export configureren:
@@ -1311,43 +1311,43 @@ Waarschuwingen streamen naar Azure Sentinel:
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10,6: de reactie op beveiligings waarschuwingen automatiseren
+### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Automatiseer de reactie op beveiligingswaarschuwingen
 
-**Hulp**: gebruik de functie werk stroom automatisering in azure Security Center om automatisch reacties te activeren via ' Logic apps ' in beveiligings waarschuwingen en aanbevelingen.
+**Richtlijnen:** Gebruik de functie Workflowautomatisering in Azure Security Center om automatisch reacties te activeren via 'Logic Apps' over beveiligingswaarschuwingen en aanbevelingen.
 
 
 
-Werk stroom automatisering en Logic Apps configureren:
+Workflowautomatisering en logische apps configureren:
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
-*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Zie [Security Control: Penetration Tests en Red Team Exercises](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)voor meer informatie.*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herstel van alle essentiële beveiligings resultaten binnen 60 dagen
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1: Voer regelmatig penetratietests uit van uw Azure-resources en zorg voor herstel van alle kritieke beveiligingsbevindingen binnen 60 dagen
 
-**Richt lijnen**: Volg de micro soft-regels om ervoor te zorgen dat de indringings tests niet worden geschonden door het micro soft-beleid:
+**Richtlijnen:** Volg de Microsoft Rules of Engagement om ervoor te zorgen dat uw penetratietests niet in strijd zijn met het Microsoft-beleid:
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
 
 
-U vindt hier meer informatie over de strategie van micro soft en de uitvoering van Red Teaming en live site indringings tests ten opzichte van micro soft Managed Cloud Infrastructure, services en toepassingen, hier: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+Meer informatie over de strategie en uitvoering van Red Teaming en live site penetratietesten van microsoft op basis van door Microsoft beheerde cloudinfrastructuur, -services en -toepassingen vindt u hier:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: gedeeld
+**Verantwoordelijkheid**: Gedeeld
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Security-Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Meer informatie over [Azure-beveiligings basislijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Bekijk de [Azure Security Benchmark](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Meer informatie over [Azure Security Baselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

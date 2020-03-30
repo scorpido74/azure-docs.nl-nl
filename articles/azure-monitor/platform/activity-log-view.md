@@ -1,6 +1,6 @@
 ---
-title: Gebeurtenissen van Azure-activiteiten logboek in Azure Monitor weer geven
-description: Bekijk het Azure-activiteiten logboek in Azure Monitor en haal dit op met Power shell, CLI en REST API.
+title: Statusgebeurtenissen voor Azure Activity-logboeken weergeven in Azure Monitor
+description: Bekijk het Azure Activity-logboek in Azure Monitor en haal deze op met PowerShell-, CLI- en REST-API.
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
@@ -8,59 +8,59 @@ ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275046"
 ---
-# <a name="view-and-retrieve-azure-activity-log-events"></a>Activiteiten logboek gebeurtenissen van Azure bekijken en ophalen
+# <a name="view-and-retrieve-azure-activity-log-events"></a>Azure Activity-logboekgebeurtenissen weergeven en ophalen
 
-Het [Azure-activiteiten logboek](platform-logs-overview.md) biedt inzicht in gebeurtenissen op abonnements niveau die in azure hebben plaatsgevonden. In dit artikel vindt u informatie over verschillende methoden voor het weer geven en ophalen van activiteiten logboek gebeurtenissen.
+Het [Azure-activiteitenlogboek](platform-logs-overview.md) biedt inzicht in gebeurtenissen op abonnementsniveau die zich in Azure hebben voorgedaan. In dit artikel vindt u informatie over verschillende methoden voor het bekijken en ophalen van gebeurtenissen in het activiteitenlogboek.
 
-## <a name="azure-portal"></a>Azure-portal
-Bekijk het activiteiten logboek voor alle resources in het menu **monitor** in de Azure Portal. Bekijk het activiteiten logboek voor een bepaalde resource vanuit de optie **activiteiten logboek** in het menu van de resource.
+## <a name="azure-portal"></a>Azure Portal
+Bekijk het activiteitenlogboek voor alle bronnen in het menu **Monitor** in de Azure-portal. Het activiteitenlogboek voor een bepaalde resource weergeven in het menu van het **activiteitenlogboek.**
 
-![Activiteiten logboek weer geven](./media/activity-logs-overview/view-activity-log.png)
+![Activiteitenlogboek weergeven](./media/activity-logs-overview/view-activity-log.png)
 
-U kunt activiteiten logboek gebeurtenissen filteren op de volgende velden:
+U gebeurtenissen in het activiteitenlogboek filteren op de volgende velden:
 
-* **Time span**: de begin-en eind tijd voor gebeurtenissen.
-* **Categorie**: de gebeurtenis categorie zoals beschreven in [Categorieën in het activiteiten logboek](activity-log-view.md#categories-in-the-activity-log).
-* **Abonnement**: een of meer namen van Azure-abonnementen.
-* **Resource groep**: een of meer resource groepen binnen de geselecteerde abonnementen.
-* **Resource (naam)** :-de naam van een specifieke resource.
-* **Resource type**: het type resource, bijvoorbeeld _micro soft. Compute/informatie_.
-* **Bewerkings naam** : de naam van een Azure Resource Manager bewerking, bijvoorbeeld _micro soft. SQL/servers/schrijven_.
-* **Ernst**: de ernst van de gebeurtenis. Beschik bare waarden zijn _informatief_, _waarschuwing_, _fout_, _kritiek_.
-* **Gebeurtenis gestart door**: de gebruiker die de bewerking heeft uitgevoerd.
-* **Open zoeken**: zoekvak voor tekst openen waarin wordt gezocht naar de teken reeks in alle velden van alle gebeurtenissen.
+* **Tijdspanne**: De begin- en eindtijd voor evenementen.
+* **Categorie**: De gebeurteniscategorie zoals beschreven in [Rubrieken in het activiteitenlogboek](activity-log-view.md#categories-in-the-activity-log).
+* **Abonnement**: een of meer Namen van Azure-abonnementen.
+* **Resourcegroep**: een of meer resourcegroepen binnen de geselecteerde abonnementen.
+* **Resource (naam)**: - De naam van een specifieke resource.
+* **Resourcetype:** het type resource, bijvoorbeeld _Microsoft.Compute/virtualmachines_.
+* **Bedrijfsnaam** - De naam van een Azure Resource Manager-bewerking, bijvoorbeeld _Microsoft.SQL/servers/Write_.
+* **Ernst**: Het ernstniveau van de gebeurtenis. Beschikbare waarden zijn _Informatief_, _Waarschuwing_, _Fout_, _Kritiek_.
+* **Gebeurtenis geïnitieerd door**: De gebruiker die de bewerking heeft uitgevoerd.
+* **Zoek openen:** open het tekstzoekvak waarin wordt gezocht naar die tekenreeks in alle velden in alle gebeurtenissen.
 
-## <a name="categories-in-the-activity-log"></a>Categorieën in het activiteiten logboek
-Elke gebeurtenis in het activiteiten logboek heeft een bepaalde categorie die wordt beschreven in de volgende tabel. Zie [Azure Activity Log-gebeurtenis schema](activity-log-schema.md)voor volledige informatie over de schema's van deze categorieën. 
+## <a name="categories-in-the-activity-log"></a>Categorieën in het activiteitenlogboek
+Elke gebeurtenis in het activiteitenlogboek heeft een bepaalde categorie die in de volgende tabel wordt beschreven. Zie [het gebeurtenisschema](activity-log-schema.md)van Azure Activity Log voor meer informatie over de schema's van deze categorieën . 
 
-| Category | Beschrijving |
+| Categorie | Beschrijving |
 |:---|:---|
-| Administratief | Bevat de record van alle bewerkingen voor maken, bijwerken, verwijderen en acties die zijn uitgevoerd via Resource Manager. Voor beelden van beheer gebeurtenissen zijn het maken van een _virtuele machine_ en het verwijderen van de _netwerk beveiligings groep_.<br><br>Elke actie die door een gebruiker of toepassing wordt uitgevoerd met behulp van Resource Manager, is gemodelleerd als een bewerking voor een bepaald bron type. Als het bewerkings type _schrijven_, _verwijderen_of _actie_is, worden de records van zowel het begin als het slagen of mislukken van die bewerking vastgelegd in de beheer categorie. Beheer gebeurtenissen omvatten ook eventuele wijzigingen in op rollen gebaseerd toegangs beheer in een abonnement. |
-| Service Health | Bevat de record van alle service status incidenten die zich in azure hebben voorgedaan. Een voor beeld van een Service Health gebeurtenis _SQL Azure in VS-Oost_ondervindt downtime. <br><br>Service Health gebeurtenissen zijn beschikbaar in zes rassen: _actie vereist_, _assistentie herstel_, _incident_, _onderhoud_, _informatie_of _beveiliging_. Deze gebeurtenissen worden alleen gemaakt als u een resource in het abonnement hebt die van invloed is op de gebeurtenis.
-| Status van resources | Bevat de record van de resource status gebeurtenissen die zijn opgetreden in uw Azure-resources. Een voor beeld van een Resource Health gebeurtenis is de status van de _virtuele machine is gewijzigd in niet beschikbaar_.<br><br>Resource Health gebeurtenissen kunnen een van de vier statussen vertegenwoordigen: _beschikbaar, niet_ _beschikbaar_, _gedegradeerd_en _onbekend_. Daarnaast kunnen Resource Health gebeurtenissen worden gecategoriseerd als _platform gestart_ of door de _gebruiker gestart_. |
-| Waarschuwing | Bevat de registratie van activeringen voor Azure-waarschuwingen. Een voor beeld van een waarschuwings gebeurtenis is _CPU% op myVM heeft de afgelopen vijf minuten meer dan 80_.|
-| Automatisch schalen | Bevat de record van gebeurtenissen die betrekking hebben op de werking van de engine voor automatisch schalen op basis van de instellingen voor automatisch schalen die u hebt gedefinieerd in uw abonnement. Een voor beeld van een automatisch schalen-gebeurtenis is het _Omhoog schalen van de actie voor schalen is mislukt_. |
-| Aanbeveling | Bevat aanbevelings gebeurtenissen van Azure Advisor. |
-| Beveiliging | Bevat de record van waarschuwingen die zijn gegenereerd door Azure Security Center. Een voor beeld van een beveiligings gebeurtenis is een _verdacht dubbel extensie bestand_dat wordt uitgevoerd. |
-| Beleid | Bevat records van alle bewerkingen voor effect acties die zijn uitgevoerd door Azure Policy. Voor beelden van beleids gebeurtenissen zijn onder andere _controle_ en _weigeren_. Elke actie die wordt uitgevoerd door beleid, wordt gemodelleerd als een bewerking voor een resource. |
+| Administratief | Bevat de record van alle bewerkingen voor maken, bijwerken, verwijderen en actie die via Resource Manager worden uitgevoerd. Voorbeelden van administratieve gebeurtenissen zijn het maken van _virtuele machine_ en het verwijderen van de _netwerkbeveiligingsgroep._<br><br>Elke actie die wordt uitgevoerd door een gebruiker of toepassing met Resource Manager, wordt gemodelleerd als een bewerking op een bepaald resourcetype. Als het bewerkingstype _Schrijven,_ _Verwijderen_of _Actie_is, worden de records van zowel het begin als het succes of het mislukken van die bewerking geregistreerd in de categorie Beheer. Administratieve gebeurtenissen bevatten ook wijzigingen in het op rollen gebaseerde toegangscontrolein een abonnement. |
+| Service Health | Bevat de registratie van eventuele statusincidenten in Azure. Een voorbeeld van een Service _Health-gebeurtenis SQL Azure in Oost-VS ervaart downtime._ <br><br>Service Health-evenementen zijn er in zes varianten: _Actie vereist,_ _assisted recovery,_ _incident,_ _onderhoud_, _informatie_of _beveiliging_. Deze gebeurtenissen worden alleen gemaakt als u een resource in het abonnement hebt die door de gebeurtenis wordt beïnvloed.
+| Status van resources | Bevat de record van alle gebeurtenissen in de resourcestatus die zijn opgetreden in uw Azure-bronnen. Een voorbeeld van een gebeurtenis Resourcestatus is _de status Virtuele machine die is gewijzigd in niet-beschikbaar_.<br><br>Gebeurtenissen in resourcestatus kunnen een van de vier statussen vertegenwoordigen: _Beschikbaar_, _Niet beschikbaar_, _gedegradeerd_en _onbekend_. Bovendien kunnen resourcestatusgebeurtenissen worden gecategoriseerd als _platform geïnitieerd_ of door de _gebruiker geïnitieerd_. |
+| Waarschuwing | Bevat de record van activeringen voor Azure-waarschuwingen. Een voorbeeld van een waarschuwing gebeurtenis is _CPU% op myVM is meer dan 80 voor de afgelopen 5 minuten_.|
+| Automatisch schalen | Bevat de registratie van alle gebeurtenissen die verband houden met de werking van de autoscale-engine op basis van de instellingen voor automatische schaal die u in uw abonnement hebt gedefinieerd. Een voorbeeld van een gebeurtenis Autoscale is _De opschaingsactie Autoscale is mislukt_. |
+| Aanbeveling | Bevat aanbevelingsgebeurtenissen van Azure Advisor. |
+| Beveiliging | Bevat de registratie van alle waarschuwingen die worden gegenereerd door Azure Security Center. Een voorbeeld van een beveiligingsgebeurtenis is _Verdacht dubbelextensiebestand uitgevoerd_. |
+| Beleid | Bevat records van alle effectactiebewerkingen die worden uitgevoerd door Azure Policy. Voorbeelden van beleidsgebeurtenissen zijn _Audit_ en _Deny_. Elke actie die door Beleid wordt ondernomen, is gemodelleerd als een bewerking op een resource. |
 
-## <a name="view-change-history"></a>Wijzigings overzicht weer geven
+## <a name="view-change-history"></a>Wijzigingsgeschiedenis weergeven
 
-Bij het controleren van het activiteiten logboek kan het u helpen om te zien welke wijzigingen er zijn aangebracht tijdens die gebeurtenis tijd. U kunt deze informatie bekijken met de **wijzigings geschiedenis**. Selecteer een gebeurtenis in het activiteiten logboek waarin u wilt zoeken. Selecteer het tabblad **wijzigings overzicht (preview)** om de bijbehorende wijzigingen met die gebeurtenis weer te geven.
+Wanneer u het activiteitenlogboek bekijkt, u zien welke wijzigingen er tijdens die gebeurtenistijd zijn gebeurd. U deze informatie bekijken met **De geschiedenis van wijzigen**. Selecteer een gebeurtenis in het activiteitenlogboek waar u dieper in wilt kijken. Selecteer het tabblad **Geschiedenis wijzigen (Voorbeeld)** om eventuele bijbehorende wijzigingen aan die gebeurtenis weer te geven.
 
-![Lijst met wijzigings geschiedenis voor een gebeurtenis](media/activity-logs-overview/change-history-event.png)
+![Geschiedenislijst voor een gebeurtenis wijzigen](media/activity-logs-overview/change-history-event.png)
 
-Als er wijzigingen zijn aangebracht aan de gebeurtenis, ziet u een lijst met wijzigingen die u kunt selecteren. Hiermee opent u de pagina **wijzigings overzicht (preview)** . Op deze pagina ziet u de wijzigingen van de resource. Zoals u kunt zien in het volgende voor beeld, kunnen we niet alleen zien dat de VM de grootte heeft gewijzigd, maar wat de vorige VM-grootte was vóór de wijziging en waar deze is gewijzigd in.
+Als er wijzigingen zijn verbonden aan de gebeurtenis, ziet u een lijst met wijzigingen die u selecteren. Hiermee wordt de pagina **Voorvertoning wijzigen** geopend. Op deze pagina ziet u de wijzigingen in de bron. Zoals u zien in het volgende voorbeeld, kunnen we niet alleen zien dat de VM van grootte is veranderd, maar ook wat de vorige VM-grootte was vóór de wijziging en wat er in is gewijzigd.
 
-![Wijzigings geschiedenis pagina met verschillen](media/activity-logs-overview/change-history-event-details.png)
+![Geschiedenispagina wijzigen met verschillen](media/activity-logs-overview/change-history-event-details.png)
 
-Zie [resource wijzigingen ophalen](../../governance/resource-graph/how-to/get-resource-changes.md)voor meer informatie over wijzigings geschiedenis.
+Zie [Resourcewijzigingen opbrengen](../../governance/resource-graph/how-to/get-resource-changes.md)voor meer informatie over de geschiedenis van wijzigen .
 
 
 
@@ -68,43 +68,43 @@ Zie [resource wijzigingen ophalen](../../governance/resource-graph/how-to/get-re
 
 
 ## <a name="powershell"></a>PowerShell
-Gebruik de cmdlet [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) om het activiteiten logboek van Power shell op te halen. Hier volgen enkele algemene voor beelden.
+Gebruik de [cmdlet Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) om het activiteitenlogboek op te halen bij PowerShell. Hieronder volgen enkele veelvoorkomende voorbeelden.
 
 > [!NOTE]
-> `Get-AzLog` biedt alleen 15 dagen aan geschiedenis. Gebruik de para meter **-MaxEvents** om de laatste N gebeurtenissen na 15 dagen op te vragen. Als u toegang wilt hebben tot gebeurtenissen die ouder zijn dan 15 dagen, gebruikt u de REST API of SDK. Als u **StartTime**niet opneemt, wordt de standaard waarde **EndTime** min één uur. Als u geen **EndTime**opgeeft, is de standaard waarde huidige tijd. Alle tijden zijn in UTC.
+> `Get-AzLog`biedt slechts 15 dagen geschiedenis. Gebruik de parameter **-MaxEvents** om de laatste N-gebeurtenissen na 15 dagen op te vragen. Als u toegang wilt krijgen tot gebeurtenissen ouder dan 15 dagen, gebruikt u de REST API of SDK. Als u **StartTime**niet opneemt, is de standaardwaarde **EndTime** min één uur. Als u **EndTime**niet opneemt, is de standaardwaarde de huidige tijd. Alle tijden zijn in UTC.
 
 
-Logboek vermeldingen ophalen die zijn gemaakt na een bepaalde datum en tijd:
+Logboekvermeldingen die na een bepaalde datumtijd zijn gemaakt:
 
 ```powershell
 Get-AzLog -StartTime 2016-03-01T10:30
 ```
 
-Logboek vermeldingen ophalen tussen een datum en tijd bereik:
+Logboekvermeldingen tussen een datumtijdbereik opvragen:
 
 ```powershell
 Get-AzLog -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
-Logboek vermeldingen ophalen van een specifieke resource groep:
+Logboekvermeldingen ophalen uit een specifieke resourcegroep:
 
 ```powershell
 Get-AzLog -ResourceGroup 'myrg1'
 ```
 
-Logboek vermeldingen van een specifieke resource provider ophalen tussen een datum en tijd bereik:
+Logboekvermeldingen van een specifieke resourceprovider ophalen tussen een datumtijdsbereik:
 
 ```powershell
 Get-AzLog -ResourceProvider 'Microsoft.Web' -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
-Logboek vermeldingen ophalen met een specifieke aanroeper:
+Logberichten met een specifieke beller opdoen:
 
 ```powershell
 Get-AzLog -Caller 'myname@company.com'
 ```
 
-De laatste 1000 gebeurtenissen ophalen:
+Ontvang de laatste 1000 evenementen:
 
 ```powershell
 Get-AzLog -MaxEvents 1000
@@ -112,28 +112,28 @@ Get-AzLog -MaxEvents 1000
 
 
 ## <a name="cli"></a>CLI
-Gebruik [AZ monitor Activity-Log](cli-samples.md#view-activity-log-for-a-subscription) om het activiteiten logboek op te halen uit de cli. Hier volgen enkele algemene voor beelden.
+Gebruik [het activiteitenlogboek van AZ-monitor](cli-samples.md#view-activity-log-for-a-subscription) om het activiteitenlogboek uit CLI op te halen. Hieronder volgen enkele veelvoorkomende voorbeelden.
 
 
-Alle beschik bare opties weer geven.
+Bekijk alle beschikbare opties.
 
 ```azurecli
 az monitor activity-log list -h
 ```
 
-Logboek vermeldingen ophalen van een specifieke resource groep:
+Logboekvermeldingen ophalen uit een specifieke resourcegroep:
 
 ```azurecli
 az monitor activity-log list --resource-group <group name>
 ```
 
-Logboek vermeldingen ophalen met een specifieke aanroeper:
+Logberichten met een specifieke beller opdoen:
 
 ```azurecli
 az monitor activity-log list --caller myname@company.com
 ```
 
-Logboeken ophalen op basis van een aanroeper voor een resource type binnen een datum bereik:
+Logboeken opvragen op een resourcetype binnen een datumbereik:
 
 ```azurecli
 az monitor activity-log list --resource-provider Microsoft.Web \
@@ -142,64 +142,64 @@ az monitor activity-log list --resource-provider Microsoft.Web \
     --end-time 2016-03-16T00:00:00Z
 ```
 
-## <a name="rest-api"></a>REST-API
-Gebruik de [Azure Monitor rest API](https://docs.microsoft.com/rest/api/monitor/) om het activiteiten logboek van een rest-client op te halen. Hier volgen enkele algemene voor beelden.
+## <a name="rest-api"></a>REST API
+Gebruik de [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) om het activiteitenlogboek op te halen uit een REST-client. Hieronder volgen enkele veelvoorkomende voorbeelden.
 
-Activiteiten logboeken ophalen met het filter:
+Activiteitslogboeken met filter opdoen:
 
 ``` HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2018-01-21T20:00:00Z' and eventTimestamp le '2018-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'
 ```
 
-Activiteiten logboeken ophalen met het filter en Select:
+Activiteitslogboeken met filter opdoen en selecteer:
 
 ```HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2015-01-21T20:00:00Z' and eventTimestamp le '2015-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
 ```
 
-Activiteiten logboeken ophalen met Select:
+Activiteitslogboeken opdoen met selecteren:
 
 ```HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
 ```
 
-Activiteiten logboeken ophalen zonder filter of selectie:
+Activiteitslogboeken zonder filter of selecteer:
 
 ```HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
 
 
-## <a name="activity-logs-analytics-monitoring-solution"></a>Bewakings oplossing voor activiteiten logboeken
-De Azure Log Analytics-bewakings oplossing bevat meerdere logboek query's en-weer gaven voor het analyseren van de records in het activiteiten logboek in uw Log Analytics-werk ruimte.
+## <a name="activity-logs-analytics-monitoring-solution"></a>Monitoringoplossing activity logs Analytics
+De bewakingsoplossing azure log Analytics bevat meerdere logboekquery's en -weergaven voor het analyseren van de activiteitenlogboekrecords in uw logboekanalysewerkruimte.
 
 ### <a name="prerequisites"></a>Vereisten
-U moet een diagnostische instelling maken om het activiteiten logboek voor uw abonnement te verzenden naar een Log Analytics-werk ruimte. Zie [Azure platform-logboeken verzamelen in log Analytics werk ruimte in azure monitor](resource-logs-collect-workspace.md).
+U moet een diagnostische instelling maken om het activiteitenlogboek voor uw abonnement naar een werkruimte log Analytics te verzenden. Zie [Azure-platformlogboeken verzamelen in de werkruimte Log Analytics in Azure Monitor](resource-logs-collect-workspace.md).
 
 ### <a name="install-the-solution"></a>De oplossing installeren
-Gebruik de procedure in [een bewakings oplossing installeren](../insights/solutions.md#install-a-monitoring-solution) om de **analyse van activiteitenlogboek** -oplossing te installeren. Er is geen aanvullende configuratie vereist.
+Gebruik de procedure in [Een bewakingsoplossing installeren](../insights/solutions.md#install-a-monitoring-solution) om de **Activity Log Analytics-oplossing** te installeren. Er is geen extra configuratie vereist.
 
-### <a name="use-the-solution"></a>De oplossing gebruiken
-Klik boven aan de pagina **activiteiten logboek** op **Logboeken** om de [analyse van activiteitenlogboek bewakings oplossing](activity-log-collect.md) voor het abonnement te openen. U hebt ook toegang tot alle bewakings oplossingen in **het menu van** het abonnements controleprogramma in het Azure Portal. Selecteer **meer** in het gedeelte **inzichten** om de **overzichts** pagina te openen met de oplossings tegels. De tegel **activiteiten logboeken van Azure** bevat een telling van het aantal **AzureActivity** -records in uw werk ruimte.
+### <a name="use-the-solution"></a>Gebruik de oplossing
+Klik **Logs** boven aan de pagina **Activiteitenlogboek** om de [monitoringoplossing activiteitslogboekanalyse](activity-log-collect.md) voor het abonnement te openen. Of krijg toegang tot alle bewakingsoplossingen in het menu **Monitor van** uw abonnement in de Azure-portal. Selecteer **Meer** in de sectie **Inzichten** om de **pagina Overzicht** met de oplossingstegels te openen. Op de tegel **Azure Activity Logs** wordt een aantal **AzureActivity-records** in uw werkruimte weergegeven.
 
-![Azure-activiteitenlogboeken tegel](media/collect-activity-logs/azure-activity-logs-tile.png)
+![Tegel Azure Activity Logs](media/collect-activity-logs/azure-activity-logs-tile.png)
 
 
-Klik op de tegel **Azure-activiteiten logboeken** om de weer gave **Azure-activiteiten logboeken** te openen. De weer gave bevat de visualisatie onderdelen in de volgende tabel. Elk onderdeel bevat Maxi maal 10 items die overeenkomen met de criteria van die onderdelen voor het opgegeven tijds bereik. U kunt een logboek query uitvoeren waarmee alle overeenkomende records worden geretourneerd door te klikken op **Alles bekijken** onder aan het onderdeel.
+Klik op de tegel **Azure Activity Logs** om de weergave Azure Activity **Logs** te openen. De weergave bevat de visualisatie-onderdelen in de volgende tabel. Elk onderdeel bevat maximaal 10 items die overeenkomen met de criteria van die onderdelen voor het opgegeven tijdsbereik. U een logboekquery uitvoeren die alle overeenkomende records retourneert door onder aan het onderdeel op **Alles weergeven** te klikken.
 
-![Azure-activiteitenlogboeken-dashboard](media/collect-activity-logs/activity-log-dash.png)
+![Azure-activiteitslogboekendashboard](media/collect-activity-logs/activity-log-dash.png)
 
-| Visualisatie onderdeel | Beschrijving |
+| Visualisatieonderdeel | Beschrijving |
 | --- | --- |
-| Vermeldingen in het Azure-activiteit | Toont een staaf diagram van de bovenste Azure-activiteiten logboek vermeldingen records voor het datum bereik dat u hebt geselecteerd, en toont een lijst met de Top 10 van aanroepen van de activiteit. Klik op het staaf diagram om een logboek zoekopdracht voor `AzureActivity`uit te voeren. Klik op een beller-item om een zoek opdracht in Logboeken uit te voeren waarin alle activiteiten logboek vermeldingen voor dat item worden geretourneerd. |
-| Activiteitenlogboeken op Status | Toont een ring diagram voor de Azure-activiteiten logboek status voor het geselecteerde datum bereik en een lijst met de top tien status records. Klik op de grafiek om een logboek query voor `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`uit te voeren. Klik op een status item om een logboek zoekopdracht uit te voeren waarin alle activiteiten logboek vermeldingen voor die status record worden geretourneerd. |
-| Activiteitenlogboeken per Resource | Toont het totale aantal resources met activiteiten logboeken en een lijst met de bovenste tien resources met record aantallen voor elke resource. Klik op het gedeelte totaal om een zoek opdracht van het logboek uit te voeren voor `AzureActivity | summarize AggregatedValue = count() by Resource`, waarin alle Azure-resources worden weer gegeven die beschikbaar zijn voor de oplossing. Klik op een resource om een logboek query uit te voeren voor het retour neren van alle activiteiten records voor die bron. |
-| Activiteitenlogboeken door de Resourceprovider | Toont het totale aantal resource providers dat activiteiten logboeken produceert en een lijst met de top tien. Klik op het gedeelte totaal om een logboek query uit te voeren voor `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`, waarin alle Azure-resource providers worden weer gegeven. Klik op een resource provider om een logboek query uit te voeren voor het retour neren van alle activiteiten records voor de provider. |
+| Azure-activiteitslogboekvermeldingen | Toont een staafdiagram van de hoogste totalen van de azure activity log-vermelding voor het datumbereik dat u hebt geselecteerd en toont een lijst met de top 10-activiteitsbellers. Klik op het staafdiagram om `AzureActivity`een logboekzoekopdracht uit te voeren naar . Klik op een belleritem om een logboekzoekopdracht uit te voeren en alle activiteitslogboekvermeldingen voor dat item terug te sturen. |
+| Activiteitslogboeken op status | Toont een ringdiagram voor de status azure-activiteitslogboek voor het geselecteerde datumbereik en een lijst met de tien belangrijkste statusrecords. Klik op de grafiek om `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`een logboekquery uit te voeren voor . Klik op een statusitem om een logboekzoekopdracht uit te voeren en alle activiteitslogboekvermeldingen voor die statusrecord terug te sturen. |
+| Activiteitslogboeken per resource | Toont het totale aantal resources met activiteitslogboeken en geeft een overzicht van de tien belangrijkste resources met recordtellingen voor elke resource. Klik op het totale gebied `AzureActivity | summarize AggregatedValue = count() by Resource`om een logboekzoekopdracht uit te voeren, waarin alle Azure-bronnen worden weergegeven die beschikbaar zijn voor de oplossing. Klik op een resource om een logboekquery uit te voeren die alle activiteitsrecords voor die resource retoureert. |
+| Activiteitslogboeken per resourceprovider | Toont het totale aantal resourceproviders dat activiteitslogboeken produceert en de top tien weergeeft. Klik op het totale gebied `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`waarvoor u een logboekquery wilt uitvoeren, waarin alle Azure-bronproviders worden weergegeven. Klik op een resourceprovider om een logboekquery uit te voeren die alle activiteitsrecords voor de provider retoureert. |
 
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een overzicht van de platform logboeken lezen](platform-logs-overview.md)
-* [Diagnostische instelling maken om activiteiten logboeken te verzenden naar andere bestemmingen](diagnostic-settings.md)
+* [Lees een overzicht van platformlogs](platform-logs-overview.md)
+* [Diagnostische instelling maken om activiteitslogboeken naar andere bestemmingen te verzenden](diagnostic-settings.md)

@@ -1,48 +1,48 @@
 ---
-title: Resource bestanden maken en gebruiken-Azure Batch
-description: Meer informatie over het maken van batch-resource bestanden uit verschillende invoer bronnen. In dit artikel worden enkele algemene methoden beschreven voor het maken en plaatsen van deze op een virtuele machine.
+title: Resourcebestanden maken en gebruiken - Azure Batch
+description: Meer informatie over het maken van Batch-bronbestanden uit verschillende invoerbronnen. Dit artikel behandelt een paar veelvoorkomende methoden voor het maken en plaatsen van deze methoden op een vm.
 services: batch
 author: LauraBrenner
 manager: evansma
 ms.service: batch
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 03/18/2020
 ms.author: labrenne
-ms.openlocfilehash: dd8046891362cf4d4d7eed805fbc13d0f784a99c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0fe859ac30e7b8050d1f4688d7cf106a465e7566
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019261"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531138"
 ---
-# <a name="creating-and-using-resource-files"></a>Bron bestanden maken en gebruiken
+# <a name="creating-and-using-resource-files"></a>Resourcebestanden maken en gebruiken
 
-Een Azure Batch taak vereist vaak een deel van de gegevens die moeten worden verwerkt. Bron bestanden zijn de middelen om deze gegevens via een taak aan uw batch virtuele machine (VM) te leveren. Alle soorten taken ondersteunen bron bestanden: taken, start taken, taak voorbereidings taken, taak release taken, enzovoort. In dit artikel worden enkele algemene methoden beschreven voor het maken van bron bestanden en het plaatsen ervan op een virtuele machine.  
+Voor een Azure Batch-taak is vaak een bepaalde vorm van gegevens vereist om te verwerken. Bronbestanden zijn de manier om deze gegevens via een taak aan uw virtuele batchmachine (VM) te verstrekken. Alle soorten taken ondersteunen bronbestanden: taken, starttaken, taakvoorbereidingstaken, taakreleasetaken, enz. Dit artikel behandelt een paar veelvoorkomende methoden voor het maken van bronbestanden en deze op een vm.  
 
-Bron bestanden zijn een mechanisme voor het plaatsen van gegevens op een virtuele machine in batch, maar het type gegevens en de manier waarop het wordt gebruikt, is flexibel. Er zijn echter enkele veelvoorkomende use cases:
+Bronbestanden zetten gegevens op een VM in Batch, maar het type gegevens en de manier waarop deze worden gebruikt, is flexibel. Er zijn echter enkele veelvoorkomende use cases:
 
-1. Algemene bestanden op elke VM inrichten met bron bestanden op basis van een begin taak
-1. Invoer gegevens inrichten voor verwerking door taken
+1. Algemene bestanden op elke virtuele machine inrichten met behulp van bronbestanden in een starttaak
+1. Inputgegevens inrichten die door taken moeten worden verwerkt
 
-Algemene bestanden kunnen bijvoorbeeld bestanden op een begin taak zijn die worden gebruikt voor het installeren van toepassingen die door uw taken worden uitgevoerd. Invoer gegevens kunnen onbewerkte afbeeldings-of video gegevens zijn, of gegevens die door batch moeten worden verwerkt.
+Veelgebruikte bestanden kunnen bijvoorbeeld bestanden zijn op een starttaak die wordt gebruikt om toepassingen te installeren die uw taken uitvoeren. Invoergegevens kunnen ruwe afbeeldings- of videogegevens zijn, of gegevens die door Batch moeten worden verwerkt.
 
-## <a name="types-of-resource-files"></a>Typen bron bestanden
+## <a name="types-of-resource-files"></a>Typen bronbestanden
 
-Er zijn een aantal verschillende opties beschikbaar voor het genereren van bron bestanden. Het proces voor het maken van bron bestanden is afhankelijk van waar de oorspronkelijke gegevens zijn opgeslagen.
+Er zijn een paar verschillende opties beschikbaar om bronbestanden te genereren. Het aanmaakproces voor bronbestanden is afhankelijk van waar de oorspronkelijke gegevens worden opgeslagen.
 
-Opties voor het maken van een bron bestand:
+Opties voor het maken van een bronbestand:
 
-- [Opslag container-URL](#storage-container-url): Hiermee wordt een bron bestand uit een opslag container in azure gegenereerd
-- [Naam van opslag container](#storage-container-name): genereert een bron bestand van de naam van een container in een Azure Storage-account dat is gekoppeld aan batch
-- [Web-eind punt](#web-endpoint): genereert een bron bestand van een geldige http-URL
+- [URL van opslagcontainer:](#storage-container-url)genereert een bronbestand uit een opslagcontainer in Azure
+- [Naam van opslagcontainer:](#storage-container-name)genereert een bronbestand op basis van de naam van een container in een Azure-opslagaccount dat is gekoppeld aan Batch
+- [Webeindpunt:](#web-endpoint)genereert een bronbestand van een geldige HTTP-URL
 
-### <a name="storage-container-url"></a>URL van de opslag container
+### <a name="storage-container-url"></a>URL van opslagcontainer
 
-Als u een opslag container-URL gebruikt, hebt u toegang tot bestanden in een opslag container in azure met de juiste machtigingen.
+Met behulp van een URL voor opslagcontainers u met de juiste machtigingen toegang krijgen tot bestanden in elke opslagcontainer in Azure. 
 
-In dit C# voor beeld zijn de bestanden al geüpload naar een Azure storage-container als Blob-opslag. Om toegang te krijgen tot de gegevens die nodig zijn om een bron bestand te maken, moeten we eerst toegang krijgen tot de opslag container.
+In dit c#-voorbeeld zijn de bestanden al geüpload naar een Azure-opslagcontainer als blobopslag. Om toegang te krijgen tot de gegevens die nodig zijn om een bronbestand te maken, moeten we eerst toegang krijgen tot de opslagcontainer.
 
-Maak een SAS-URI (Shared Access Signature) met de juiste machtigingen voor toegang tot de opslag container. Stel de verloop tijd en machtigingen voor de SAS in. In dit geval wordt geen start tijd opgegeven, zodat de SA'S onmiddellijk geldig zijn en na het genereren twee uur verlopen.
+Maak een SAS-uri (Shared Access Signature) met de juiste machtigingen voor toegang tot de opslagcontainer. Stel de vervaldatum en machtigingen voor de SAS in. In dit geval wordt geen begintijd opgegeven, dus de SAS wordt onmiddellijk geldig en vervalt twee uur nadat deze is gegenereerd.
 
 ```csharp
 SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
@@ -53,9 +53,9 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 ```
 
 > [!NOTE]
-> Voor toegang tot de container moet u zowel `Read` als `List` machtigingen hebben, terwijl u met Blob-toegang alleen `Read` machtigingen nodig hebt.
+> Voor containertoegang moet u `Read` `List` beide en machtigingen hebben, terwijl `Read` u met blobtoegang alleen toestemming nodig hebt.
 
-Nadat de machtigingen zijn geconfigureerd, maakt u het SAS-token en formatteert u de SAS-URL voor toegang tot de opslag container. Genereer met behulp van de geformatteerde SAS-URL voor de opslag container een bron bestand met [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet).
+Zodra de machtigingen zijn geconfigureerd, maakt u het SAS-token en maakt u de SAS-URL op voor toegang tot de opslagcontainer. Met de opgemaakte SAS-URL voor de opslagcontainer genereert u een bronbestand met [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet).
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -66,25 +66,25 @@ string containerSasUrl = String.Format("{0}{1}", container.Uri, sasToken);
 ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl);
 ```
 
-Een alternatief voor het genereren van een SAS-URL is het inschakelen van anonieme, open bare Lees toegang tot een container en de bijbehorende blobs in Azure Blob-opslag. Door dit te doen, kunt u alleen-lezen toegang verlenen aan deze resources zonder uw account sleutel te delen en zonder een SAS te hoeven gebruiken. Open bare Lees toegang wordt doorgaans gebruikt voor scenario's waarin u wilt dat bepaalde blobs altijd beschikbaar zijn voor anonieme lees toegang. Als dit scenario tegemoetkomt aan uw oplossing, raadpleegt u het artikel [anonieme toegang tot blobs](../storage/blobs/storage-manage-access-to-resources.md) voor meer informatie over het beheren van toegang tot uw BLOB-gegevens.
+Een alternatief voor het genereren van een SAS-URL is het inschakelen van anonieme, openbare leestoegang tot een container en de blobs in Azure Blob-opslag. Op deze basis u alleen-lezen toegang verlenen tot deze bronnen zonder uw accountsleutel te delen en zonder dat u een SAS nodig hebt. Openbare leestoegang wordt meestal gebruikt voor scenario's waarin u wilt dat bepaalde blobs altijd beschikbaar zijn voor anonieme leestoegang. Als dit scenario bij uw oplossing past, raadpleegt u het artikel [Anonieme toegang tot blobs](../storage/blobs/storage-manage-access-to-resources.md) voor meer informatie over het beheren van toegang tot uw blobgegevens.
 
-### <a name="storage-container-name"></a>Naam van opslag container
+### <a name="storage-container-name"></a>Naam opslagcontainer
 
-In plaats van een SAS-URL te configureren en te maken, kunt u de naam van uw Azure-opslag container gebruiken om toegang te krijgen tot uw BLOB-gegevens. De opslag container die wordt gebruikt, moet in het Azure-opslag account dat is gekoppeld aan uw batch-account, ook wel het account voor het uitvoeren van de opslag. Door gebruik te maken van de naam van de opslag container van een autostorage-account, kunt u het configureren en aanmaken van een SAS-URL voor toegang tot een opslag container overs Laan.
+In plaats van een SAS-URL te configureren en te maken, u de naam van uw Azure-opslagcontainer gebruiken om toegang te krijgen tot uw blobgegevens. De opslagcontainer die u gebruikt, moet zich bevinden in het Azure-opslagaccount dat is gekoppeld aan uw Batch-account. Dat opslagaccount staat bekend als het autostorage-account. Met de autoopslagcontainer u het configureren en maken van een SAS-URL omzeilen om toegang te krijgen tot een opslagcontainer.
 
-In dit voor beeld wordt ervan uitgegaan dat de gegevens die moeten worden gebruikt voor het maken van resources, al bestaan in een Azure Storage account dat aan uw batch-account is gekoppeld. Als u geen autoopslag-account hebt, raadpleegt u de stappen in [een batch-account maken](batch-account-create-portal.md) voor meer informatie over het maken en koppelen van een account.
+In dit voorbeeld gaan we ervan uit dat de gegevens die moeten worden gebruikt voor het maken van bronbestanden al in een Azure Storage-account zijn gekoppeld aan uw Batch-account. Als u geen autoopslagaccount hebt, raadpleegt u de stappen in [Een Batch-account maken](batch-account-create-portal.md) voor meer informatie over het maken en koppelen van een account.
 
-Als u een gekoppeld opslag account gebruikt, hoeft u geen SAS-URL te maken en configureren voor een opslag container. Geef in plaats daarvan de naam op van de opslag container in het gekoppelde opslag account.
+Door een gekoppeld opslagaccount te gebruiken, hoeft u geen SAS-URL te maken en te configureren voor een opslagcontainer. Geef in plaats daarvan de naam op van de opslagcontainer in uw gekoppelde opslagaccount.
 
 ```csharp
 ResourceFile inputFile = ResourceFile.FromAutoStorageContainer(containerName);
 ```
 
-### <a name="web-endpoint"></a>Web-eind punt
+### <a name="web-endpoint"></a>Webeindpunt
 
-Gegevens die niet naar Azure Storage worden geüpload, kunnen nog steeds worden gebruikt voor het maken van bron bestanden. U kunt een geldige HTTP-URL opgeven die uw invoer gegevens bevat. De URL wordt aan de batch-API door gegeven, waarna de gegevens worden gebruikt om een bron bestand te maken.
+Gegevens die niet naar Azure Storage worden geüpload, kunnen nog steeds worden gebruikt om bronbestanden te maken. U een geldige HTTP-URL opgeven die uw invoergegevens bevat. De URL wordt verstrekt aan de Batch-API en vervolgens worden de gegevens gebruikt om een bronbestand te maken.
 
-In het volgende C# voor beeld wordt de invoer gegevens gehost op het fictieve github-eind punt. De API haalt het bestand op uit het geldige web-eind punt en genereert een bron bestand dat door uw taak moet worden verbruikt. Er zijn geen referenties nodig voor dit scenario.
+In het volgende C#-voorbeeld worden de invoergegevens gehost op een fictief GitHub-eindpunt. De API haalt het bestand op uit het geldige webeindpunt en genereert een bronbestand dat door uw taak moet worden verbruikt. Voor dit scenario zijn geen referenties nodig.
 
 ```csharp
 ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt", filePath);
@@ -92,23 +92,23 @@ ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt",
 
 ## <a name="tips-and-suggestions"></a>Tips en suggesties
 
-Elke Azure Batch-taak gebruikt bestanden anders. Dit is de reden waarom batch opties beschikbaar heeft voor het beheren van bestanden op taken. De volgende scenario's zijn niet uitgebreid, maar in plaats daarvan worden enkele veelvoorkomende situaties behandeld en worden aanbevelingen geboden.
+Elke Azure Batch-taak gebruikt bestanden anders, daarom heeft Batch opties beschikbaar voor het beheren van bestanden over taken. De volgende scenario's zijn niet bedoeld om uitgebreid te zijn, maar in plaats daarvan betrekking hebben op een paar veelvoorkomende situaties en aanbevelingen te geven.
 
-### <a name="many-resource-files"></a>Veel bron bestanden
+### <a name="many-resource-files"></a>Veel bronbestanden
 
-Uw batch-taak bevat mogelijk meerdere taken die allemaal dezelfde, algemene bestanden gebruiken. Als algemene taak bestanden worden gedeeld door veel taken, is het gebruik van een toepassings pakket voor het opnemen van de bestanden in plaats van het gebruik van bron bestanden een betere optie. Toepassings pakketten bieden optimalisatie voor de download snelheid. De gegevens in toepassings pakketten worden ook opgeslagen in de cache tussen taken, dus als uw taak bestanden niet vaak worden gewijzigd, zijn de toepassings pakketten mogelijk geschikt voor uw oplossing. Met toepassings pakketten hoeft u niet hand matig verschillende bron bestanden te beheren of SAS-Url's te genereren om toegang te krijgen tot de bestanden in Azure Storage. Batch werkt op de achtergrond met Azure Storage om toepassings pakketten op te slaan en te implementeren op reken knooppunten.
+Uw batchtaak kan verschillende taken bevatten die allemaal dezelfde algemene bestanden gebruiken. Als algemene taakbestanden worden gedeeld tussen veel taken, kan het gebruik van een toepassingspakket om de bestanden te bevatten in plaats van resourcebestanden te gebruiken, een betere optie zijn. Toepassingspakketten bieden optimalisatie voor downloadsnelheid. Ook gegevens in toepassingspakketten worden opgeslagen tussen taken, dus als uw taakbestanden niet vaak veranderen, kunnen toepassingspakketten geschikt zijn voor uw oplossing. Met toepassingspakketten hoeft u verschillende bronbestanden niet handmatig te beheren of SAS-URL's te genereren om toegang te krijgen tot de bestanden in Azure Storage. Batch werkt op de achtergrond met Azure Storage om toepassingspakketten op te slaan en te implementeren voor compute nodes.
 
-Als elke taak veel bestanden bevat die uniek zijn voor deze taak, zijn bron bestanden doorgaans waarschijnlijk de beste optie. Taken die gebruikmaken van unieke bestanden, moeten vaak worden bijgewerkt of vervangen. Dit is niet zo eenvoudig te doen met de inhoud van toepassings pakketten. Bron bestanden bieden extra flexibiliteit voor het bijwerken, toevoegen of bewerken van afzonderlijke bestanden.
+Als elke taak veel bestanden heeft die uniek zijn voor die taak, zijn bronbestanden de beste optie omdat taken die unieke bestanden gebruiken vaak moeten worden bijgewerkt of vervangen, wat niet zo eenvoudig is om te doen met inhoud met toepassingspakketten. Bronbestanden bieden extra flexibiliteit voor het bijwerken, toevoegen of bewerken van afzonderlijke bestanden.
 
-### <a name="number-of-resource-files-per-task"></a>Aantal resource bestanden per taak
+### <a name="number-of-resource-files-per-task"></a>Aantal bronbestanden per taak
 
-Als er meerdere honderd bron bestanden op een taak zijn opgegeven, kan de taak door batch worden geweigerd om deze te groot te maken. Het is raadzaam om uw taken klein te blijven door het aantal resource bestanden voor de taak zelf te minimaliseren.
+Als er enkele honderden bronbestanden zijn opgegeven voor een taak, kan Batch de taak afwijzen als te groot. Het is het beste om uw taken klein te houden door het aantal bronbestanden op de taak zelf te minimaliseren.
 
-Als er geen manier is om het aantal bestanden dat uw taak nodig heeft te minimaliseren, kunt u de taak optimaliseren door één bron bestand te maken dat verwijst naar een opslag container van bron bestanden. Als u dit wilt doen, plaatst u de bron bestanden in een Azure Storage-container en gebruikt u de andere container-modi van bron bestanden. Gebruik de opties voor het voor voegsel van de blob om verzamelingen bestanden op te geven die moeten worden gedownload voor uw taken.
+Als er geen manier is om het aantal bestanden dat uw taak nodig heeft te minimaliseren, u de taak optimaliseren door één bronbestand te maken dat verwijst naar een opslagcontainer met bronbestanden. Plaats hiervoor uw bronbestanden in een Azure Storage-container en gebruikt de verschillende ['container'-methoden](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods) voor bronbestanden. Gebruik de blob-voorvoegselopties om verzamelingen op te geven die voor uw taken moeten worden gedownload.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [toepassings pakketten](batch-application-packages.md) als alternatief voor bron bestanden.
-- Zie [container workloads](batch-docker-container-workloads.md)voor meer informatie over het gebruik van containers voor bron bestanden.
-- Zie voor meer informatie over het verzamelen en opslaan van de uitvoer gegevens uit uw taken [persistente taak en taak uitvoer](batch-task-output.md).
+- Meer informatie over [toepassingspakketten](batch-application-packages.md) als alternatief voor bronbestanden.
+- Zie [Containerworkloads](batch-docker-container-workloads.md)voor meer informatie over het gebruik van containers voor resourcebestanden.
+- Zie [Taak- en taakuitvoer](batch-task-output.md)blijven uitvoeren voor meer informatie over het verzamelen en opslaan van de uitvoergegevens van uw taken.
 - Meer informatie over de [Batch-API's en -hulpprogramma's](batch-apis-tools.md) die beschikbaar zijn voor het bouwen van Batch-oplossingen.

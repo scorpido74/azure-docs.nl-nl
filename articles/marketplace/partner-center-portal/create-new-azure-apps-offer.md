@@ -1,523 +1,522 @@
 ---
-title: Een nieuwe Azure apps-aanbieding maken in de commerciële Marketplace
-description: Het maken van een nieuwe Azure apps-aanbieding voor het aanbieden of verkopen in azure Marketplace, AppSource of via het programma Cloud Solution Provider (CSP) met behulp van de commerciële Marketplace-Portal in micro soft Partner Center.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Een nieuwe Azure Apps-aanbieding maken in de commerciële marketplace
+description: Een nieuwe Azure Apps-aanbieding maken voor vermelding of verkoop in het Azure Marketplace-, AppSource- of Via het CSP-programma (Cloud Solution Provider) met behulp van de Commercial Marketplace-portal in Microsoft Partner Center.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 0ff1bbd976273a7d0cbfb22effebdf45c84d2f41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283366"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277236"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
-De stappen voor het publiceren van een Azure-toepassings aanbieding in commerciële Marketplace worden hier beschreven.
+De stappen voor het publiceren van een Azure-toepassingsaanbieding in commerciële marktplaatsen worden hier beschreven.
 
-## <a name="azure-application-offer-type"></a>Type Azure-toepassings aanbieding
+## <a name="azure-application-offer-type"></a>Aanbiedingstype Azure-toepassingen
 
-In dit onderwerp vindt u een overzicht van de grond beginselen van Azure-toepassingen.  U moet bekend zijn met deze concepten voordat u het proces voor het publiceren van een nieuwe Azure-toepassings aanbieding in Marketplace kunt starten.
+In dit onderwerp worden basisprincipes beschreven over Azure-toepassingsaanbiedingen.  U moet bekend zijn met deze concepten voordat u begint met het proces van het publiceren van een nieuwe Azure-toepassingsaanbieding in de Marketplace.
 
-### <a name="publishing-overview"></a>Overzicht van publiceren
+### <a name="publishing-overview"></a>Publicatieoverzicht
 
-De video [buil ding Solution-sjablonen en beheerde toepassingen voor Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603) is een inleiding tot het type Azure-toepassings aanbieding:
+De [video-oplossingen voor het bouwen van oplossingen en beheerde toepassingen voor de Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603) is een inleiding tot het type Azure-toepassingsaanbieding:
 
-* Welke typen aanbieding beschikbaar zijn,
-* Welke technische middelen zijn vereist;
-* Een Azure Resource Manager sjabloon ontwerpen;
-* De gebruikers interface van de App ontwikkelen en testen;
-* Het publiceren van de app-aanbieding;
-* Het controle proces van de toepassing.
+* Welke aanbiedingstypen zijn beschikbaar;
+* Welke technische activa zijn vereist;
+* Een Azure Resource Manager-sjabloon maken;
+* De gebruikersinterface van de app ontwikkelen en testen;
+* Hoe de app-aanbieding te publiceren;
+* De aanvraagcontroleprocedure.
 
-### <a name="types-of-azure-application-plans"></a>Typen Azure-toepassings abonnementen
+### <a name="types-of-azure-application-plans"></a>Typen Azure-toepassingsplannen
 
-Er zijn twee soorten Azure-toepassings abonnementen, beheerde toepassingen en oplossings sjablonen.
+Er zijn twee soorten Azure-toepassingsplannen, beheerde toepassingen en oplossingssjablonen.
 
-* **Oplossings sjabloon** is een van de belangrijkste manieren om een oplossing op Marketplace te publiceren. Dit type abonnement wordt gebruikt wanneer voor uw oplossing extra implementatie-en configuratie automatisering is vereist dan één virtuele machine (VM).  Met een oplossings sjabloon kunt u het leveren van meer dan één resource automatiseren, met inbegrip van Vm's, netwerken en opslag resources om complexe IaaS-oplossingen te bieden.  Zie de [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) -documentatie voor meer informatie over het bouwen van oplossings sjablonen.
+* **Oplossingssjabloon** is een van de belangrijkste manieren om een oplossing in de Marketplace te publiceren. Dit plantype wordt gebruikt wanneer uw oplossing extra implementatie- en configuratieautomatisering vereist buiten één virtuele machine (VM).  Met een oplossingssjabloon u het leveren van meer dan één resource automatiseren, waaronder VM's, netwerken en opslagbronnen om complexe IaaS-oplossingen te bieden.  Zie de azure [resource manager-documentatie](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) voor meer informatie over het maken van oplossingssjablonen.
 
-* **Beheerde toepassing** is vergelijkbaar met oplossings sjablonen, met één belang rijk verschil. In een beheerde toepassing worden de resources geïmplementeerd vanuit een resourcegroep die wordt beheerd door de uitgever van de app. De resourcegroep is opgenomen in het abonnement van de consument, maar een identiteit in de tenant van de uitgever heeft toegang tot de resourcegroep. De uitgever bepaalt de kosten voor de voortdurende ondersteuning van de oplossing. Gebruik beheerde toepassingen om eenvoudig volledig beheerde, kant-en-klare toepassingen te bouwen en te leveren aan uw klanten.  Zie het overzicht van door [Azure beheerde toepassingen](https://docs.microsoft.com/azure/managed-applications/overview)voor meer informatie over de voor-en andere typen beheerde toepassingen.
+* **Beheerde toepassing** is vergelijkbaar met oplossingssjablonen, met één belangrijk verschil. In een beheerde toepassing worden de resources geïmplementeerd vanuit een resourcegroep die wordt beheerd door de uitgever van de app. De resourcegroep is opgenomen in het abonnement van de consument, maar een identiteit in de tenant van de uitgever heeft toegang tot de resourcegroep. De uitgever bepaalt de kosten voor de voortdurende ondersteuning van de oplossing. Gebruik beheerde toepassingen om eenvoudig volledig beheerde, turnkey-applicaties aan uw klanten te bouwen en te leveren.  Zie het overzicht van [beheerde toepassingen](https://docs.microsoft.com/azure/managed-applications/overview)voor Azure voor meer informatie over de voordelen en typen beheerde toepassingen.
 
-Alle Azure-toepassingen bevatten ten minste twee bestanden in de hoofdmap van een `.zip` archief:
+Alle Azure-toepassingen bevatten ten minste twee `.zip` bestanden in de hoofdmap van een archief:
 
-* Een resource manager-sjabloon bestand met de naam [mainTemplate. json](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).  Dit is de sjabloon waarmee de resources worden gedefinieerd die moeten worden geïmplementeerd in het Azure-abonnement van de klant.  Voor voor beelden van Resource Manager-sjablonen raadpleegt u de [Azure Quick Start-sjablonen galerie](https://azure.microsoft.com/resources/templates/) of de bijbehorende [github: Azure Resource Manager Quick](https://github.com/azure/azure-quickstart-templates) start-sjablonen opslag plaats.
+* Een resourcebeheersjabloonbestand met de naam [mainTemplate.json](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).  Dit is de sjabloon die de resources definieert die moeten worden geïmplementeerd in het Azure-abonnement van de klant.  Zie voor voorbeelden van Resource Manager-sjablonen de [azure quickstartsjablonengalerij](https://azure.microsoft.com/resources/templates/) of de bijbehorende [GitHub: Azure Resource Manager Quickstart Templates](https://github.com/azure/azure-quickstart-templates) repo.
 
-* Een gebruikersinterface definitie voor de Azure-app voor het maken van toepassingen met de naam [createUiDefinition. json](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview).  In de gebruikersinterface geeft u elementen op waarmee consumenten parameterwaarden kunnen opgeven.
+* Een definitie van de gebruikersinterface voor de ervaring voor het maken van Azure-toepassingen met de naam [createUiDefinition.json](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview).  In de gebruikersinterface geeft u elementen op waarmee consumenten parameterwaarden kunnen opgeven.
 
-Alle nieuwe aanbiedingen van Azure Application moeten een [GUID voor gebruiks toewijzing](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)van een Azure-partner bevatten.
+Alle nieuwe Azure-toepassingsaanbiedingen moeten een [AZURE-partnerklantgebruiksvermeldingGUID](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)bevatten.
 
 ### <a name="before-you-begin"></a>Voordat u begint
 
-Raadpleeg de volgende documentatie voor Azure-toepassingen, die Quick starts, zelf studies en voor beelden biedt.
+Bekijk de volgende Azure-toepassingsdocumentatie, die Quickstarts, Tutorials en Voorbeelden bevat.
 
-* [Azure Resource Manager sjablonen begrijpen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
+* [Azure Resource Manager-sjablonen begrijpen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
 * Quickstarts:
 
-    * [Sjablonen voor Azure Quick Start](https://azure.microsoft.com/documentation/templates/)
-    * [GitHub Azure Quick Start-sjablonen](https://github.com/azure/azure-quickstart-templates)
-    * [Toepassings definitie publiceren](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
-    * [Service catalogus-app implementeren](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
+    * [Azure Quickstart-sjablonen](https://azure.microsoft.com/documentation/templates/)
+    * [GitHub Azure Quickstart-sjablonen](https://github.com/azure/azure-quickstart-templates)
+    * [Toepassingsdefinitie publiceren](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
+    * [Servicecatalogus-app implementeren](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
 * Zelfstudies:
 
-    * [Definitie bestanden maken](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
+    * [Definitiebestanden maken](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [Een Marketplace-toepassing publiceren](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
 
-* Voor beelden
+* Voorbeelden:
 
-    * [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
+    * [Azure-CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
     * [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
-    * [Oplossingen voor beheerde toepassingen](https://docs.microsoft.com/azure/managed-applications/sample-projects)
+    * [Beheerde toepassingsoplossingen](https://docs.microsoft.com/azure/managed-applications/sample-projects)
 
-### <a name="fundamentals-in-technical-knowledge"></a>Grond beginselen van technische kennis
+### <a name="fundamentals-in-technical-knowledge"></a>Fundamenten in technische kennis
 
-Het ontwerpen, bouwen en testen van deze assets vergt tijd en vereist technische kennis van het Azure-platform en de technologieën die worden gebruikt om de aanbieding te bouwen.
+Het ontwerpen, bouwen en testen van deze assets kost tijd en vereist technische kennis van zowel het Azure-platform als de technologieën die worden gebruikt om het aanbod te bouwen.
 
-Uw technische team moet kennis hebben van de volgende micro soft-technologieën:
+Uw engineeringteam moet kennis hebben over de volgende Microsoft-technologieën:
 
-* Basis informatie over [Azure-Services](https://azure.microsoft.com/services/).
-* Het [ontwerpen en ontwikkelen van Azure-toepassingen](https://azure.microsoft.com/solutions/architecture/).
-* Werk kennis van [azure virtual machines](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage)en [Azure-netwerken](https://azure.microsoft.com/services/?filter=networking#networking).
-* Werk ervaring van [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/).
-* Werk kennis van [JSON](https://www.json.org/).
+* Basiskennis van [Azure Services](https://azure.microsoft.com/services/).
+* [Azure-toepassingen ontwerpen en ontwerpen.](https://azure.microsoft.com/solutions/architecture/)
+* Werkkennis van [Azure Virtual Machines,](https://azure.microsoft.com/services/virtual-machines/) [Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage)en Azure [Networking](https://azure.microsoft.com/services/?filter=networking#networking).
+* Werkkennis van [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/).
+* Werkkennis van [JSON](https://www.json.org/).
 
-### <a name="suggested-tools"></a>Aanbevolen hulpprogram ma's
+### <a name="suggested-tools"></a>Voorgestelde hulpprogramma's
 
-Kies een of beide van de volgende script omgevingen om uw Azure-toepassing te beheren:
+Kies een of beide van de volgende scriptomgevingen om uw Azure-toepassing te beheren:
 
 * [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
-* [Azure CLI](https://docs.microsoft.com/cli/azure)
+* [Azure-CLI](https://docs.microsoft.com/cli/azure)
 
-Het is raadzaam om de volgende hulpprogram ma's toe te voegen aan uw ontwikkel omgeving:
+We raden u aan de volgende tools toe te voegen aan uw ontwikkelomgeving:
 
-* [Azure-opslagverkenner](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
-* [Visual Studio code](https://code.visualstudio.com/) met de volgende extensies:
-    * Extensie: [Azure Resource Manager-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    * Extensie: [beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    * Extensie: [PRETTIFY JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+* [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Visual Studio Code](https://code.visualstudio.com/) met de volgende extensies:
+    * Extensie: [Azure Resource Manager-hulpprogramma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    * Uitbreiding: [Verfraaien](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    * Uitbreiding: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
-U kunt de beschik bare hulpprogram ma's bekijken op de pagina [Azure Ontwikkelhulpprogramma's](https://azure.microsoft.com/tools/) .  Ook als u Visual Studio, de [Visual Studio Marketplace](https://marketplace.visualstudio.com/), gebruikt.
+U de beschikbare hulpprogramma's bekijken op de pagina [Azure Developer Tools.](https://azure.microsoft.com/tools/)  Ook als u Visual Studio gebruikt, de [Visual Studio Marketplace.](https://marketplace.visualstudio.com/)
 
 ## <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
-Voordat u een Azure-toepassings aanbieding kunt maken, moet u eerst [een partner centrum-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) en het [dash board commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)openen, met het tabblad **overzicht** geselecteerd.
+Voordat u een Azure-toepassingsaanbieding maken, moet u eerst [een Partnercenter-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) en het [dashboard Commercial Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)openen, waarbij het tabblad **Overzicht** is geselecteerd.
 
 >[!Note]
->Zodra een aanbieding is gepubliceerd, worden wijzigingen die zijn aangebracht in het partner centrum, alleen bijgewerkt in het systeem en in de winkel als u het opnieuw publiceert.  Zorg ervoor dat u de aanbieding voor publicatie verzendt nadat u wijzigingen hebt aangebracht.
+>Zodra een aanbieding is gepubliceerd, worden bewerkingen van de aanbieding in het Partnercenter alleen bijgewerkt in het systeem en de etalages na het opnieuw publiceren.  Zorg ervoor dat u de aanbieding voor publicatie indient nadat u wijzigingen hebt aangebracht.
 
 ### <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
-Selecteer de knop **+ nieuwe aanbieding** en selecteer vervolgens het menu-item **Azure-toepassing** . Het dialoog venster **nieuwe aanbieding** wordt weer gegeven.
+Selecteer de knop **+ Nieuwe aanbieding** en selecteer vervolgens het **menu-item Azure Application.** Het dialoogvenster **Nieuwe aanbieding** wordt weergegeven.
 
 ### <a name="offer-id-and-alias"></a>Aanbiedings-ID en alias
 
-* **Aanbiedings-id**: een unieke id voor elke aanbieding in uw account. Deze ID is zichtbaar voor klanten in het URL-adres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen (indien van toepassing). <br> <br> De aanbiedings-ID moet kleine letters en alfanumerieke tekens bevatten (inclusief afbreek streepjes en onderstrepingen, maar geen witruimte). De waarde is beperkt tot 50 tekens en kan niet worden gewijzigd nadat u maken hebt geselecteerd. <br> <br> Als u hier bijvoorbeeld `test-offer-1` invoert, wordt de URL van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`. 
+* **Aanbiedings-id:** een unieke id voor elke aanbieding in uw account. Deze id is zichtbaar voor klanten in het URL-adres voor de marketplace-aanbieding en Azure Resource Manager-sjablonen (indien van toepassing). <br> <br> Uw aanbiedings-id moet alfanumerieke tekens voor kleine letters zijn (inclusief koppeltekens en underscores, maar geen witruimte). Het is beperkt tot 50 tekens en kan niet worden gewijzigd nadat u Maken hebt geselecteerd. <br> <br> Als u hier `test-offer-1` bijvoorbeeld invoert, is `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`de URL van de aanbieding . 
 
-* **Aanbiedings alias**: de naam die wordt gebruikt om te verwijzen naar de aanbieding in het partner centrum. Deze naam wordt niet gebruikt op de Marketplace en wijkt af van de naam van de aanbieding en andere waarden die worden weer gegeven voor klanten. Deze waarde kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+* **Aanbiedingsalias**: De naam die wordt gebruikt om te verwijzen naar de aanbieding binnen het Partnercentrum. Deze naam wordt niet gebruikt in de markt en verschilt van de aanbiedingsnaam en andere waarden die aan klanten worden getoond. Deze waarde kan niet worden gewijzigd nadat u Maken hebt **geselecteerd.**
 
-Wanneer u de **aanbiedings-id** en **aanbiedings alias**hebt ingevoerd, selecteert u **maken**. U kunt vervolgens aan alle andere delen van uw aanbieding werken.
+Zodra u de **aanbiedings-id** en **de alias Aanbieding**hebt ingevoerd, selecteert u **Maken**. U dan aan alle andere onderdelen van uw aanbod werken.
 
-## <a name="offer-setup"></a>Installatie van aanbieding
+## <a name="offer-setup"></a>Instelling voor aanbieding
 
-Op de pagina **aanbieding instellen** wordt u gevraagd om de volgende informatie op te vragen. Zorg ervoor dat u **Opslaan** selecteert na het volt ooien van deze velden.
+Op de pagina **Installatie aanbieding** wordt om de volgende informatie gevraagd. Zorg ervoor dat u **Opslaan** selecteert nadat u deze velden hebt voltooid.
 
-### <a name="test-drive"></a>Station testen
+### <a name="test-drive"></a>Proefrit
 
-Een test drive is een fantastische manier om uw aanbieding aan potentiële klanten te laten presen teren door hen de mogelijkheid te geven voor ' voor u ' te kopen, wat resulteert in een verhoogde conversie en de generatie van uiterst gekwalificeerde leads. [Meer informatie over test stations.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+Een testrit is een geweldige manier om uw aanbod aan potentiële klanten te presenteren door hen de mogelijkheid te geven om 'proberen voordat u koopt', wat resulteert in een verhoogde conversie en het genereren van hooggekwalificeerde leads. [Meer informatie over testritten.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
-Als u een test drive wilt inschakelen, schakelt u het selectie vakje **een test drive inschakelen** in. Vervolgens moet u een demonstratie omgeving configureren in de [technische configuratie van het test station](#types-of-azure-application-plans) configureren zodat klanten uw aanbieding voor een bepaalde periode kunnen uitproberen. 
+Als u een testrit wilt inschakelen, schakelt u het selectievakje **Een teststation inschakelen in.** U moet dan een demonstratieomgeving configureren in de technische configuratie van de [testdrive,](#types-of-azure-application-plans) om klanten uw aanbieding gedurende een bepaalde periode te laten proberen. 
 
 >[!Note]
->Omdat alle Azure-toepassingen worden geïmplementeerd met een Azure Resource Manager-sjabloon, is het enige type test drive dat kan worden geconfigureerd voor een Azure-toepassing een [Azure Resource Manager test drive](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive).
+>Omdat alle Azure-toepassingen zijn geïmplementeerd met behulp van een Azure Resource Manager-sjabloon, is het enige type teststation dat kan worden geconfigureerd voor een Azure-toepassing een [op Azure Resource Manager gebaseerdteststation](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive).
 
-#### <a name="additional-test-drive-resources"></a>Aanvullende test drive resources
+#### <a name="additional-test-drive-resources"></a>Aanvullende teststationbronnen
 
-- [Best practices voor test stations](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Best practices voor het testen van de marketing](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [Overzicht van testen van één pager](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
+- [Technische best practices voor testdrive](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Best practices voor testdrive marketing](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Overzicht van teststation Één pager](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
 
-## <a name="connect-lead-management"></a>Lead beheer verbinden
+## <a name="connect-lead-management"></a>Leadbeheer verbinden
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-Zie [Lead Management Overview](./commercial-marketplace-get-customer-leads.md)voor meer informatie.
+Zie [Overzicht van leadbeheer](./commercial-marketplace-get-customer-leads.md)voor meer informatie.
 
-Vergeet niet om te **slaan** voordat u verdergaat met de volgende sectie.
+Vergeet niet om op te **slaan** voordat je doorgaat naar de volgende sectie!
 
 ## <a name="properties"></a>Eigenschappen
 
-Op de pagina **Eigenschappen** kunt u de categorieën en industrieën definiëren die worden gebruikt voor het groeperen van uw aanbieding op Marketplace, uw app-versie en de juridische contracten die uw aanbieding ondersteunen. Selecteer **Opslaan** nadat u deze pagina hebt voltooid.
+Op de pagina **Eigenschappen** u de categorieën en bedrijfstakken definiëren die worden gebruikt om uw aanbieding op de marktplaats, uw app-versie en de juridische contracten ter ondersteuning van uw aanbieding te groeperen. Selecteer **Opslaan** nadat u deze pagina hebt voltooid.
 
-### <a name="category"></a>Category
+### <a name="category"></a>Categorie
 
-Selecteer mini maal één en Maxi maal drie categorieën. deze worden gebruikt om uw aanbieding in de juiste Zoek gebieden voor Marketplace te plaatsen. Neem contact op met de manier waarop uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. 
+Selecteer minimaal één en maximaal drie categorieën, die worden gebruikt om uw aanbieding in de juiste zoekgebieden op marktplaats te plaatsen. Zorg ervoor dat u in de aanbiedingsbeschrijving roept hoe uw aanbieding deze categorieën ondersteunt. 
 
-### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standard-contract voor micro soft Commercial Marketplace
+### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standaardcontract voor de commerciële marktplaats van Microsoft
 
 [!INCLUDE [Commercial marketplace Standard Contract](./includes/marketplace-contract-text.md)]
 
-## <a name="offer-listing"></a>Aanbieding weer geven
+## <a name="offer-listing"></a>Aanbieding aanbieden
 
-De aanbiedings pagina bevat de talen waarin uw aanbieding wordt weer gegeven. **Engels (Verenigde Staten)** is momenteel de enige beschik bare optie.
+Op de pagina Aanbiedingsaanbieding worden de talen weergegeven waarin uw aanbieding wordt weergegeven. Momenteel is **Engels (Verenigde Staten)** de enige beschikbare optie.
 
-U moet de details van de Marketplace (naam, beschrijving, installatie kopieën, enzovoort) voor elke taal/markt opgeven. Selecteer de naam van de taal/markt om deze gegevens op te geven.
+U moet marktplaatsdetails (aanbiedingsnaam, beschrijving, afbeeldingen, enz.) voor elke taal/markt definiëren. Selecteer de taal/marktnaam om deze informatie te verstrekken.
 
 > [!NOTE]
-> Aanbiedings inhoud (zoals de beschrijving, documenten, scherm afbeeldingen, gebruiks voorwaarden, enzovoort) is niet vereist in het Engels, zolang de beschrijving van het aanbod begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook acceptabel om een *nuttige koppelings-URL* te bieden om inhoud te bieden in een andere taal dan de versie die wordt gebruikt in de inhoud van de aanbieding.
+> Aanbieding sominhoud (zoals de beschrijving, documenten, screenshots, gebruiksvoorwaarden, enz.) is niet verplicht om in het Engels te zijn, zolang de aanbiedingsbeschrijving begint met de zinsnede: "Deze toepassing is alleen beschikbaar in [niet-Engelse taal]." Het is ook aanvaardbaar om een *URL voor nuttige koppelingen* op te geven om inhoud aan te bieden in een andere taal dan die welke wordt gebruikt in de inhoud van de aanbiedingsvermelding.
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 
-De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld wordt vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
+De naam die u hier invoert, wordt aan klanten weergegeven als de titel van uw aanbiedingsvermelding. Dit veld wordt vooraf ingevuld met de tekst die u hebt ingevoerd voor **Alias Aanbieding** toen u de aanbieding maakte, maar u deze waarde wijzigen. Deze naam kan een handelsmerk hebben (en u handelsmerk- of auteursrechtsymbolen bevatten). De naam mag niet meer dan 50 tekens bevatten en kan geen emoji's bevatten.
 
 ### <a name="summary"></a>Samenvatting
 
-Geef een korte beschrijving van uw aanbieding (Maxi maal 100 tekens), die kan worden gebruikt in Zoek resultaten voor Marketplace.
+Geef een korte beschrijving van uw aanbieding (maximaal 100 tekens), die kan worden gebruikt in de zoekresultaten van marketplaces.
 
-### <a name="long-summary"></a>Lange samen vatting
+### <a name="long-summary"></a>Lange samenvatting
 
-Geef een langere beschrijving van uw aanbieding (Maxi maal 256 tekens). De beschrijving kan worden gebruikt in Zoek resultaten voor Marketplace.
+Geef een langere beschrijving van uw aanbieding (tot 256 tekens). De beschrijving kan worden gebruikt in de zoekresultaten van marktplaatsen.
 
 ### <a name="description"></a>Beschrijving
 
-Geef een langere beschrijving van uw aanbieding (Maxi maal 3.000 tekens). Deze beschrijving wordt weer gegeven aan klanten in het overzicht van Marketplace-vermeldingen. Neem de toegevoegde waarde van de prijs van uw aanbod, belang rijke voor delen, categorie-en/of branche koppelingen, in-app aankoop kansen en eventuele vereiste informatie op. 
+Geef een langere beschrijving van uw aanbieding (tot 3.000 tekens). Deze beschrijving wordt weergegeven aan klanten in het overzicht van de marktplaatsvermelding. Neem de waardepropositie van uw aanbieding, belangrijke voordelen, categorie- en/of brancheorganisaties, in-app aankoopmogelijkheden en eventuele vereiste informatie op. 
 
-Tips voor het schrijven van uw beschrijving:  
+Enkele tips voor het schrijven van uw beschrijving:  
 
-- Beschrijf duidelijk de toegevoegde waarde van uw aanbieding in de eerste paar zinnen van uw beschrijving. Neem de volgende items op in de toegevoegde waarde:
+- Beschrijf duidelijk de waardepropositie van uw aanbieding in de eerste paar zinnen van uw beschrijving. Neem de volgende items op in uw waardepropositie:
   - Beschrijving van het product
-  - Het type gebruiker dat voor deel is van het product
-  - Klant behoeften of pijn dat de product adressen
-- Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in de resultaten van de zoek machine.  
+  - Het type gebruiker dat profiteert van het product
+  - Behoeften van de klant of pijn die het product aanpakt
+- Houd er rekening mee dat de eerste paar zinnen kunnen worden weergegeven in de resultaten van zoekmachines.  
 - Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die u levert.  
-- Gebruik zo veel mogelijk branchespecifieke woorden lijst of op basis van voor delen. 
-- U kunt HTML-tags gebruiken om uw beschrijving te Format teren en het aantrekkelijker te maken.
+- Gebruik zoveel mogelijk gebruik van branchespecifieke woordenschat of op voordelen gebaseerde formuleringen. 
+- Overweeg HTML-tags te gebruiken om uw beschrijving op te maken en deze aantrekkelijker te maken.
 
-### <a name="search-keywords"></a>Tref woorden zoeken
+### <a name="search-keywords"></a>Zoektrefwoorden
 
-U kunt eventueel Maxi maal drie Zoek trefwoorden invoeren om klanten te helpen uw aanbieding op Marketplace te vinden. Probeer deze tref woorden ook in uw beschrijving te gebruiken voor de beste resultaten.
+U optioneel maximaal drie zoekzoekwoorden invoeren om klanten te helpen uw aanbieding op de marktplaats te vinden. Voor de beste resultaten, probeer deze zoekwoorden te gebruiken in uw beschrijving ook.
 
-### <a name="support-urls"></a>Url's voor ondersteuning
+### <a name="support-urls"></a>URL's ondersteunen
 
-In deze sectie vindt u koppelingen waarmee klanten meer inzicht kunnen krijgen in uw aanbieding.
+In deze sectie u koppelingen aanbieden om klanten meer inzicht te geven in uw aanbieding.
 
-#### <a name="privacy-policy-url"></a>URL van privacybeleid
+#### <a name="privacy-policy-url"></a>URL van het privacybeleid
 
-Voer de URL in voor het privacybeleid van uw organisatie. U bent verantwoordelijk om ervoor te zorgen dat uw app voldoet aan de wetten en voor schriften van de privacy en om een geldig privacybeleid te bieden.
+Voer de URL in voor het privacybeleid van uw organisatie. U bent verantwoordelijk voor het waarborgen dat uw app voldoet aan de privacywet- en regelgeving en voor het verstrekken van een geldig privacybeleid.
 
 #### <a name="useful-links"></a>Handige koppelingen
 
-Bied optionele aanvullende online documenten over uw oplossing.  Voeg extra nuttige koppelingen toe door te klikken op **+ een koppeling toevoegen**.
+Geef optionele aanvullende online documenten over uw oplossing.  Voeg extra handige koppelingen toe door op **+ Een koppeling toevoegen te**klikken .
 
 ### <a name="contacts"></a>Contactpersonen
 
-In deze sectie moet u de naam, het e-mail adres en het telefoon nummer opgeven voor een **ondersteunings contact** en een **technische contact persoon**. Deze informatie wordt niet weer gegeven aan klanten, maar is beschikbaar voor micro soft en kan worden verschaft aan CSP-partners.
+In deze sectie moet u de naam, e-mail en het telefoonnummer opgeven voor een **contactpersoon voor ondersteuning** en een contactpersoon voor **engineering.** Deze informatie wordt niet aan klanten weergegeven, maar is beschikbaar voor Microsoft en kan worden verstrekt aan CSP-partners.
 
-In het gedeelte **ondersteuning voor contact opnemen** moet u ook de **ondersteunings-URL** opgeven waar CSP-partners ondersteuning voor uw aanbieding kunnen vinden.
+In de sectie **Contactpersoon voor ondersteuning** moet u ook de URL voor **ondersteuning** opgeven waar CSP-partners ondersteuning voor uw aanbieding kunnen vinden.
 
-### <a name="marketplace-images"></a>Marketplace-installatie kopieën
+### <a name="marketplace-images"></a>Marketplace-afbeeldingen
 
-In deze sectie kunt u logo's en installatie kopieën opgeven die worden gebruikt wanneer uw aanbieding wordt weer gegeven aan de klant. Alle installatie kopieën moeten de PNG-indeling hebben.
+In deze sectie u logo's en afbeeldingen verstrekken die worden gebruikt bij het weergeven van uw aanbieding aan de klant. Alle afbeeldingen moeten in .png-indeling zijn.
 
-#### <a name="store-logos"></a>Winkel logo's
+#### <a name="store-logos"></a>Winkellogo's
 
-Geef het logo van uw aanbod op in drie grootten: **klein (48 x 48)** , **Normaal (90 x 90)** en **groot (216 x 216)** .
+Geef het logo van uw aanbieding in drie maten: **klein (48 x 48)**, **medium (90 x 90)** en **Groot (216 x 216)**.
 
-#### <a name="hero"></a>Hero
+#### <a name="hero"></a>Held
 
-De afbeelding van de held is optioneel. Als u een waarde opgeeft, moet deze 815 x 290 pixels meten.
+De hero afbeelding is optioneel. Als u er een opgeeft, moet deze 815 x 290 pixels meten.
 
 #### <a name="screenshots"></a>Schermopnamen
 
-Scherm afbeeldingen toevoegen die laten zien hoe uw aanbieding werkt. U kunt Maxi maal vijf scherm opnamen toevoegen. Alle scherm afbeeldingen moeten 1280 x 720 pixels zijn.
+Voeg schermafbeeldingen toe die laten zien hoe uw aanbieding werkt. U maximaal vijf screenshots toevoegen. Alle screenshots moeten 1280 x 720 pixels zijn.
 
 #### <a name="videos"></a>Video's
 
-U kunt optioneel Maxi maal vijf Video's toevoegen die uw aanbieding aantonen. Deze Video's moeten worden gehost op YouTube en/of Vimeo. Voer voor elke video de naam, de URL en een miniatuur afbeelding van de video in (1280 x 720 pixels).
+Je optioneel maximaal vijf video's toevoegen die je aanbod demonstreren. Deze video's moeten worden gehost op YouTube en/of Vimeo. Voer voor elke video de naam, de URL en een miniatuurafbeelding van de video (1280 x 720 pixels) in.
 
-#### <a name="additional-marketplace-listing-resources"></a>Aanvullende bronnen voor Marketplace-lijst
+#### <a name="additional-marketplace-listing-resources"></a>Aanvullende bronnen voor marktplaatsvermeldingen
 
-- [Best practices voor Marketplace-aanbiedingen](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Aanbevolen procedures voor aanbiedingen voor marktplaatsaanbiedingen](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
 ## <a name="preview"></a>Preview
 
-Op het tabblad **voor beeld** kunt u een beperkte **Preview-doel groep** definiëren voor het valideren van uw aanbieding voordat u uw aanbieding Live publiceert naar het bredere publiek van de Marketplace.
+Op het tabblad **Voorbeeld** u een beperkte **preview-doelgroep** definiëren voor het valideren van uw aanbieding voordat u uw aanbieding live publiceert aan de bredere doelgroep.
 
 > [!IMPORTANT]
-> U moet **Live go** selecteren voordat uw aanbieding naar de open bare doel groep van Marketplace wordt gepubliceerd nadat u uw aanbieding in Preview hebt gecontroleerd.
+> Je moet **Live gaan** selecteren voordat je aanbieding live wordt gepubliceerd voor het publiek op de marktplaats nadat je je aanbieding hebt gecontroleerd in Preview.
 
-Uw preview-doel groep wordt geïdentificeerd door de ID-GUID'S van het Azure-abonnement, gekoppeld aan een optionele beschrijving voor elke.  Geen van deze velden is zichtbaar voor klanten.
+Uw preview-doelgroep wordt geïdentificeerd door AZURE-guid's voor azure-abonnementen, gekoppeld aan een optionele beschrijving voor elk.  Geen van deze velden zijn zichtbaar voor klanten.
 
-Voeg hand matig Maxi maal 10 Azure-abonnements-Id's toe, of 100 bij het uploaden van een CSV-bestand.  Door deze abonnementen toe te voegen, definieert u een doel groep waarvoor preview-toegang tot uw aanbieding is toegestaan voordat deze volledig is gepubliceerd.  Als uw aanbieding al Live is, kunt u nog steeds een preview-doel definiëren voor het testen van eventuele wijzigingen of updates voor uw aanbieding.
+Voeg maximaal 10 Azure-abonnements-id's handmatig toe of maximaal 100 als u een CSV-bestand uploadt.  Door deze abonnementen toe te voegen, definieert u een doelgroep die toegang krijgt tot uw aanbieding voordat deze volledig wordt gepubliceerd.  Als je aanbieding al live is, kun je nog steeds een preview-doelgroep definiëren voor het testen van wijzigingen of updates van je aanbieding.
 
 >[!Note]
->De preview-doel groep wijkt af van een persoonlijke doel groep. Een preview-doel groep is toegang tot uw aanbieding toegestaan *voordat* Live in de Marketplace wordt gepubliceerd. U kunt er ook voor kiezen om een plan te maken en dit alleen beschikbaar te maken voor een privé doel groep (met behulp van het tabblad plan beschikbaarheid).  Uw preview-doel groep kan alle plannen bekijken en valideren, met inbegrip van abonnementen die alleen beschikbaar zijn voor een privé-doel groep zodra uw aanbieding volledig is gepubliceerd naar de Marketplace.
+>De preview-doelgroep verschilt van een privépubliek. Een preview-doelgroep krijgt toegang tot uw aanbieding *voordat* deze live in de marketplaces wordt gepubliceerd. U er ook voor kiezen om een abonnement te maken en het alleen beschikbaar te maken voor een privépubliek (via het tabblad Beschikbaarheid van het abonnement).  Je preview-doelgroep kan alle abonnementen bekijken en valideren, inclusief abonnementen die alleen beschikbaar zijn voor een privépubliek zodra je aanbieding volledig is gepubliceerd op de marktplaats.
 
-## <a name="plan-overview"></a>Overzicht van plan
+## <a name="plan-overview"></a>Overzicht van plannen
 
-Op het tabblad Overzicht van het **plan** kunt u binnen dezelfde aanbieding verschillende plan opties opgeven. Deze plannen (zoals Sku's in de Cloud Partner-portal) kunnen verschillen qua plan type (oplossings sjabloon versus beheerde toepassing), verdiensten maximaliseren of doel groep.  Configureer ten minste één abonnement om uw aanbieding in Marketplace te vermelden.
+Met het tabblad **Overzicht plannen** u binnen dezelfde aanbieding verschillende abonnementsopties bieden. Deze plannen (aangeduid als SKU's in de Cloud Partner Portal) kunnen verschillen in termen van plantype (oplossingssjabloon versus beheerde toepassing), inkomsten genereren of doelgroep.  Configureer ten minste één abonnement om uw aanbieding op de marktplaats weer te geven.
 
-Nadat u hebt gemaakt, ziet u de namen van uw plannen, Id's, plan type, Beschik baarheid (openbaar of privé), huidige publicatie status en eventuele beschik bare acties op dit tabblad.
+Zodra u is gemaakt, ziet u uw plannamen, id's, plantype, beschikbaarheid (Openbaar of Privé), de huidige publicatiestatus en alle beschikbare acties op dit tabblad.
 
-**Acties** die beschikbaar zijn in het **plan overzicht** variëren afhankelijk van de huidige status van uw abonnement en kunnen het volgende omvatten:
+**Acties** die beschikbaar zijn in het **planoverzicht** variëren afhankelijk van de huidige status van uw abonnement en kunnen het volgende omvatten:
 
-* Als de plan status **concept** -concept verwijderen is.
-* Als de status van het abonnement **Live** is: het verkoop plan stoppen of privé publiek synchroniseren.
+* Als de planstatus **Concept** is – Concept verwijderen.
+* Als de planstatus **Live** is : Stop met verkopen of Privépubliek synchroniseren.
 
 ### <a name="create-new-plan"></a>Nieuw plan maken
 
-***Plan-id*** : Maak een unieke plan-id voor elk abonnement in deze aanbieding. Deze ID is zichtbaar voor klanten in de product-URL.  Gebruik alleen kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. Voor deze abonnement-ID zijn Maxi maal 50 tekens toegestaan. Deze ID kan niet worden gewijzigd nadat de maken is geselecteerd.
+***Plan ID*** - Maak een unieke plan-ID voor elk plan in deze aanbieding. Deze ID is zichtbaar voor klanten in de product-URL.  Gebruik alleen kleine letters, alfanumerieke tekens, streepjes of underscores. Voor deze plan-ID zijn maximaal 50 tekens toegestaan. Deze id kan niet worden gewijzigd na het selecteren van maken.
 
-***Plan naam*** : klanten zien deze naam wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak in deze aanbieding een unieke aanbiedings naam voor elk abonnement. De naam van het abonnement wordt gebruikt om software-abonnementen te onderscheiden die deel kunnen uitmaken van dezelfde aanbieding (bijvoorbeeld Naam van aanbieding: Windows Server; plannen: Windows Server 2016, Windows Server 2019).
+***Naam van het abonnement*** - Klanten zien deze naam wanneer ze beslissen welk plan ze binnen uw aanbieding willen selecteren. Maak een unieke aanbiedingsnaam voor elk abonnement in deze aanbieding. De naam van het plan wordt gebruikt om softwareplannen te differentiëren die deel kunnen uitmaken van hetzelfde aanbod (bijv. Aanbiedingsnaam: Windows Server; abonnementen: Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-setup"></a>Installatie plannen
 
-Op het tabblad **installatie plannen** kunt u de high-level configuratie voor het type abonnement instellen, of deze pakketten van een ander abonnement opnieuw gebruikt en op welke Clouds het plan beschikbaar moet zijn.  Uw antwoorden op dit tabblad beïnvloeden welke velden worden weer gegeven op andere tabbladen voor hetzelfde abonnement.
+Met het tabblad **Plan-instelling** u de configuratie op hoog niveau instellen voor het type abonnement, of het pakketten uit een ander abonnement opnieuw gebruikt en in welke clouds het plan beschikbaar moet zijn.  Uw antwoorden op dit tabblad zijn van invloed op welke velden worden weergegeven op andere tabbladen voor hetzelfde plan.
 
-#### <a name="plan-type"></a>Type abonnement
+#### <a name="plan-type"></a>Type plannen
 
-Zoals beschreven in de [typen Azure-toepassings abonnementen](#types-of-azure-application-plans), geeft u aan of uw plan een oplossings sjabloon of een beheerde toepassing zal bevatten.
+Zoals beschreven in de [typen Azure-toepassingsplannen,](#types-of-azure-application-plans)selecteert u of uw abonnement een oplossingssjabloon of een beheerde toepassing bevat.
 
-#### <a name="this-plan-reuses-packages"></a>In dit plan worden pakketten opnieuw gebruikt
+#### <a name="this-plan-reuses-packages"></a>Dit plan hergebruikt pakketten
 
-Als u meer dan één abonnement van hetzelfde type hebt en de pakketten identiek zijn, kunt u het abonnement selecteren om **pakketten van een ander abonnement**opnieuw te gebruiken.  Wanneer u deze optie selecteert, kunt u een van de andere plannen van hetzelfde type voor deze aanbieding selecteren om pakketten opnieuw te gebruiken. 
-
->[!Note]
->Wanneer u pakketten uit een ander abonnement opnieuw gebruikt, verdwijnt het hele tabblad technische configuratie van dit abonnement.  De technische configuratie details van het andere abonnement, inclusief eventuele updates die u in de toekomst maakt, worden ook voor dit abonnement gebruikt. <br> <br> Deze instelling kan ook niet worden gewijzigd nadat dit abonnement is gepubliceerd.
-
-#### <a name="cloud-availability"></a>Beschik baarheid in de Cloud
-
-Dit abonnement moet beschikbaar worden gesteld in ten minste één Cloud. 
-
-Selecteer de **open bare Azure** -optie om ervoor te zorgen dat uw oplossing kan worden geïmplementeerd voor klanten in alle open bare Azure-regio's die Marketplace-integratie hebben.  Meer informatie over [geografische Beschik baarheid](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
-
-Selecteer de optie **Azure Government Cloud** om uw oplossing te implementeren in de [Azure Government Cloud](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome), een Cloud community met gecontroleerde toegang voor klanten van de Amerikaanse federale, staats-, lokale of tribale en partners die in aanmerking komen voor deze entiteiten.  Als uitgever bent u verantwoordelijk voor nalevings controles, beveiligings maatregelen en aanbevolen procedures voor het leveren van deze Cloud-community.  Azure Government maakt gebruik van fysiek geïsoleerde data centers en netwerken (alleen in de Verenigde Staten).  Voordat u naar de [Azure Government](https://aka.ms/azuregovpublish)publiceert, raadt micro soft u aan uw oplossing in de omgeving te testen en te valideren, omdat bepaalde eind punten kunnen verschillen. Als u uw oplossing wilt klaarzetten en testen, vraagt u een proef account aan bij deze [koppeling](https://azure.microsoft.com/global-infrastructure/government/request/).
+Als u meer dan één abonnement van hetzelfde type hebt en de pakketten identiek zijn tussen deze plannen, u **dit abonnement opnieuw pakketten uit een ander abonnement**gebruiken.  Wanneer u deze optie selecteert, u een van de andere plannen van hetzelfde type selecteren voor deze aanbieding om pakketten van te hergebruiken. 
 
 >[!Note]
->Zodra een plan wordt gepubliceerd als beschikbaar in een specifieke Cloud, kan deze Cloud niet worden verwijderd.
+>Wanneer u pakketten van een ander abonnement hergebruikt, verdwijnt het volledige tabblad Technische configuratie uit dit abonnement.  De technische configuratiedetails van het andere abonnement, inclusief eventuele updates die u in de toekomst maakt, worden ook voor dit plan gebruikt. <br> <br> Deze instelling kan ook niet worden gewijzigd zodra dit plan is gepubliceerd.
 
-**Cloud certificeringen Azure Government**
+#### <a name="cloud-availability"></a>Beschikbaarheid in de cloud
 
-Deze optie is alleen zichtbaar als **Azure Government Cloud** is geselecteerd onder **Beschik baarheid**in de Cloud.
+Dit plan moet beschikbaar worden gesteld in ten minste één cloud. 
 
-Azure Government Services verwerkt gegevens die onderworpen zijn aan bepaalde wettelijke voor schriften en vereisten, zoals FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD N4 en CJIS.  Als u uw certificeringen voor deze Program ma's wilt behalen, kunt u Maxi maal 100 koppelingen opgeven die uw certificeringen beschrijven.  Deze koppelingen kunnen rechtstreeks links naar uw vermelding in het programma zijn, of een koppeling naar beschrijvingen van uw naleving met hen op uw eigen websites.  Deze koppelingen zijn alleen zichtbaar voor klanten in de cloud van Azure Government.
+Selecteer de optie **Openbaar Azure** om uw oplossing beschikbaar te maken voor klanten in alle openbare Azure-regio's met Marketplace-integratie.  Meer informatie over [geografische beschikbaarheid](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
+
+Selecteer de azure **government cloud-optie** om uw oplossing beschikbaar te maken in de [Azure Government Cloud](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome), een cloud voor overheidscommunity's met gecontroleerde toegang voor klanten uit de Amerikaanse federale, staats-, lokale of tribale en partners die in aanmerking komen om deze entiteiten te bedienen.  U, als uitgever, bent verantwoordelijk voor nalevingscontroles, beveiligingsmaatregelen en aanbevolen procedures om deze cloudcommunity te bedienen.  Azure Government maakt gebruik van fysiek geïsoleerde datacenters en netwerken (alleen in de VS).  Voordat u publiceert naar de [Azure Government,](https://aka.ms/azuregovpublish)raadt Microsoft u aan uw oplossing in de omgeving te testen en te valideren, omdat bepaalde eindpunten kunnen verschillen. Als u uw oplossing wilt fasen en testen, vraagt u een proefaccount aan via deze [link.](https://azure.microsoft.com/global-infrastructure/government/request/)
+
+>[!Note]
+>Zodra een abonnement is gepubliceerd als beschikbaar in een specifieke cloud, kan die cloud niet worden verwijderd.
+
+**Azure Government Cloud-certificeringen**
+
+Deze optie is alleen zichtbaar als **Azure Government Cloud** is geselecteerd onder **Cloudbeschikbaarheid**.
+
+Azure Government-services verwerken gegevens die onderworpen zijn aan bepaalde overheidsvoorschriften en -vereisten, zoals FedRAMP, NIST 800.171 (DIB), ITAR, IRS 1075, DoD L4 en CJIS.  Om uw certificeringen voor deze programma's onder de aandacht te brengen, u maximaal 100 koppelingen aanbieden waarin uw certificeringen worden beschreven.  Deze links kunnen direct links naar uw vermelding in het programma zijn, of een link naar beschrijvingen van uw naleving ervan op uw eigen websites.  Deze koppelingen zijn alleen zichtbaar voor Azure Government Cloud-klanten.
 
 ## <a name="plan-listing"></a>Aanbieding plannen
 
-Op het tabblad **plan vermelding** worden de plannings gegevens weer gegeven die kunnen verschillen tussen verschillende abonnementen voor dezelfde aanbieding.
+Op het tabblad **lijstmetjes** met abonnementen worden de planspecifieke aanbiedingsgegevens weergegeven die kunnen verschillen tussen verschillende abonnementen voor dezelfde aanbieding.
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 
-Ingevuld op basis van uw naam die u bij het maken van het abonnement hebt ingesteld.  Deze naam wordt weer gegeven als de titel van dit ' software-abonnement ' dat wordt weer gegeven in de Marketplace.  Mag Maxi maal 100 tekens bevatten.
+Vooraf ingevuld op basis van uw naam die u uw plan hebt toegewezen toen u het hebt gemaakt.  Deze naam wordt weergegeven als de titel van dit "Software-plan" dat in de markt wordt weergegeven.  Kan maximaal 100 tekens bevatten.
 
 ### <a name="summary"></a>Samenvatting
 
-Geef een korte samen vatting van het software abonnement.  Mag Maxi maal 100 tekens bevatten.
+Geef een korte samenvatting van uw softwareplan.  Kan maximaal 100 tekens bevatten.
 
 ### <a name="description"></a>Beschrijving
 
-Deze beschrijving is een kans om uit te leggen wat dit software plan uniek is en eventuele verschillen tussen andere software plannen binnen uw aanbieding. Mag Maxi maal 2.000 tekens bevatten.
+Deze beschrijving is een kans om uit te leggen wat dit softwareplan uniek maakt en eventuele verschillen met andere softwareplannen binnen uw aanbod. Kan maximaal 2.000 tekens bevatten.
 
-Selecteer **Opslaan** na het volt ooien van deze velden.
+Selecteer **Opslaan** nadat u deze velden hebt voltooid.
 
 ## <a name="availability"></a>Beschikbaarheid
 
-Het tabblad **Beschik baarheid** is alleen zichtbaar voor oplossings sjabloon plannen.  U kunt het plan zichtbaar maken voor iedereen, alleen voor specifieke klanten (een persoonlijke doel groep) en of het plan verborgen moet worden voor gebruik door andere oplossings sjablonen of alleen beheerde toepassingen.
+Het tabblad **Beschikbaarheid** is alleen zichtbaar voor sjabloonplannen voor oplossingen.  U het plan zichtbaar maken voor iedereen, alleen voor specifieke klanten (een privépubliek) en of u het plan verborgen wilt maken voor gebruik door andere oplossingssjabloon of beheerde toepassingen.
 
-### <a name="plan-audience"></a>Doel groep plannen
+### <a name="plan-audience"></a>Doelgroep plannen
 
-U kunt elk plan zodanig configureren dat het zichtbaar is voor iedereen of alleen voor een specifieke doel groep van uw keuze. U kunt lidmaatschap van deze beperkte doel groep toewijzen met behulp van Azure-abonnement-Id's.
+Je hebt de optie om elk abonnement te configureren om zichtbaar te zijn voor iedereen of voor alleen een specifieke doelgroep van je keuze. U lidmaatschap in deze beperkte doelgroep toewijzen met behulp van Azure-abonnements-id's.
 
-**Privacy/dit is een privé-abonnement** (optioneel selectie vakje): Schakel dit selectie vakje in om uw abonnement privé en alleen zichtbaar te maken voor de beperkte doel groep van uw keuze. Zodra het is gepubliceerd als een persoonlijk abonnement, kunt u de doel groep bijwerken of ervoor kiezen om het plan voor iedereen beschikbaar te stellen. Zodra een plan wordt gepubliceerd als zichtbaar voor iedereen, moet het zijn zichtbaar voor iedereen. (Het plan kan niet opnieuw worden geconfigureerd als een privé-abonnement).
+**Privacy / Dit is een privé-abonnement** (optioneel selectievakje) - Schakel dit selectievakje in om uw abonnement privé en alleen zichtbaar te maken voor het beperkte publiek van uw keuze. Zodra je als privéplan is gepubliceerd, kun je het publiek bijwerken of ervoor kiezen om het abonnement voor iedereen beschikbaar te maken. Zodra een plan voor iedereen zichtbaar is, moet het voor iedereen zichtbaar blijven. (Het plan kan niet opnieuw als privé-abonnement worden geconfigureerd).
 
-**Beperkte doel groep (Azure-abonnement-id's)** : wijs de doel groep toe die toegang heeft tot dit privé-abonnement. Toegang wordt toegewezen met Azure-abonnement-Id's met de optie om een beschrijving op te nemen van elk Azure-abonnements-ID toegewezen. U kunt Maxi maal 10 abonnements-Id's toevoegen, of de abonnements-Id's van 20.000-klanten als u een CSV-werk blad bestand importeert.  Azure-abonnements-Id's worden weer gegeven als GUID'S en de letters moeten een kleine letter bevatten.
+**Beperkt publiek (Azure-abonnements-id's)** - Wijs de doelgroep toe die toegang heeft tot dit privé-abonnement. Toegang wordt toegewezen met behulp van Azure-abonnements-id's met de optie om een beschrijving van elke toegewezen Azure-abonnements-id op te nemen. Er kunnen maximaal 10 abonnements-id's worden toegevoegd of 20.000 klanten abonnement-id's als u een CSV-spreadsheetbestand importeert.  Azure-abonnements-id's worden weergegeven als GUID's en letters moeten in een lager geval worden weergegeven.
 
 >[!Note]
->De persoonlijke doel groep (of een beperkt publiek) wijkt af van de preview-doel groep die u hebt gedefinieerd op het tabblad [**Preview**](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#preview) .  Een preview-doel groep is toegang tot uw aanbieding toegestaan *voordat* de aanbieding Live op Marketplace wordt gepubliceerd. Hoewel de aanduiding van een privé-doel groep alleen van toepassing is op een specifiek abonnement, kan de preview-doel groep alle plannen (privé of niet) voor validatie doeleinden bekijken.
+>De privédoelgroep (of beperkte doelgroep) verschilt van de preview-doelgroep die u hebt gedefinieerd op het tabblad [**Voorbeeld.**](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#preview)  Een preview-publiek krijgt toegang tot uw aanbieding *voordat* de aanbieding live op de markt wordt gepubliceerd. Hoewel de aanduiding voor privé-doelgroepen alleen van toepassing is op een specifiek plan, kan de preview-doelgroep alle plannen (privé of niet) bekijken voor validatiedoeleinden.
 
 ### <a name="hide-plan"></a>Plan verbergen
 
-Als uw oplossings sjabloon alleen indirect moet worden geïmplementeerd als er een andere oplossings sjabloon of beheerde toepassing wordt verwezen, schakelt u dit selectie vakje in om de oplossings sjabloon te publiceren, maar deze te verbergen bij klanten die ze rechtstreeks zoeken en bezoeken.
+Als het de bedoeling is dat uw oplossingssjabloon alleen indirect wordt geïmplementeerd wanneer er naar wordt verwezen via een andere oplossingssjabloon of beheerde toepassing, schakelt u dit selectievakje in om uw oplossingssjabloon te publiceren, maar deze te verbergen voor klanten die er rechtstreeks naar zoeken en browsen.
 
 ## <a name="pricing-and-availability"></a>Prijzen en beschikbaarheid
 
-Het tabblad **prijzen en beschik baarheid** is alleen zichtbaar voor beheerde toepassings abonnementen.  U kunt de markten configureren waarop dit plan beschikbaar is, de prijs per maand van het beheer van de oplossing en of het plan zichtbaar moet worden voor iedereen of alleen voor specifieke klanten (een privé-publiek).
+Het tabblad **Prijzen en beschikbaarheid** is alleen zichtbaar voor beheerde toepassingsplannen.  U de markten configureren waarin dit plan beschikbaar zal zijn, de prijs per maand van het beheer van de oplossing en of u het plan zichtbaar wilt maken voor iedereen of alleen voor specifieke klanten (een privépubliek).
 
-### <a name="markets"></a>Landen
+### <a name="markets"></a>Markten
 
-Elk plan moet beschikbaar zijn op ten minste één markt. Schakel het selectie vakje in voor elke markt locatie waar u dit plan beschikbaar wilt maken. Een zoekvak en een knop voor het selecteren van de landen ' BTW geremitteerd ', waarin micro soft namens u de omzet en het gebruik van BTW verdeelt, zijn opgenomen om u te helpen.
+Elk plan moet beschikbaar zijn in ten minste één markt. Schakel het selectievakje in voor elke marktlocatie waar u dit abonnement beschikbaar wilt maken. Een zoekvak en knop voor het selecteren van 'Tax Remitted'-landen, waarin Microsoft namens u btw overdraagt, zijn opgenomen om u te helpen.
 
-Als u al prijzen voor uw abonnement hebt ingesteld in Verenigde Staten dollars (USD) en een andere markt locatie toevoegt, wordt de prijs voor de nieuwe markt berekend op basis van de huidige wissel koersen. De prijs voor elke markt altijd controleren voordat deze wordt gepubliceerd. U kunt de prijzen controleren met behulp van de koppeling export prijzen (XLSX) nadat u uw wijzigingen hebt opgeslagen.
+Als u al prijzen voor uw abonnement in Amerikaanse dollars (USD) hebt ingesteld en een andere marktlocatie toevoegt, wordt de prijs voor de nieuwe markt berekend op basis van de huidige wisselkoersen. Controleer altijd de prijs voor elke markt voordat u publiceert. Prijzen kunnen worden beoordeeld met behulp van de link 'Exportprijzen (xlsx)' na het opslaan van uw wijzigingen.
 
 ### <a name="pricing"></a>Prijzen
 
-Geef de prijs per maand voor dit abonnement op.  Deze prijs is een aanvulling op de kosten van een Azure-infra structuur of een betalen per gebruik-software die wordt gemaakt door de resources die door deze oplossing worden geïmplementeerd.
+Geef de prijs per maand op voor dit abonnement.  Deze prijs is een aanvulling op de kosten van een Azure-infrastructuur of pay-as-you-go-software die wordt gemaakt door de resources die door deze oplossing worden geïmplementeerd.
 
-Prijzen die in de lokale valuta zijn ingesteld (USD = Verenigde Staten dollar), worden omgezet in de lokale valuta van alle geselecteerde markten met de huidige wissel koersen die beschikbaar zijn tijdens de installatie. Valideer deze prijzen vóór de publicatie door het prijs werk blad te exporteren en de prijs op elke markt te bekijken. Als u aangepaste prijzen wilt instellen op een afzonderlijke markt, wijzigt en importeert u de prijs informatie in het werk blad. 
-
->[!Note]
->U moet uw prijs wijzigingen eerst opslaan om het exporteren van prijs gegevens in te scha kelen.
-
-Controleer uw prijzen zorgvuldig voordat u deze publiceert. er zijn enkele beperkingen voor wat er kan worden gewijzigd nadat een plan is gepubliceerd.  
+Prijzen in lokale valuta (USD = Amerikaanse dollar) worden omgerekend in de lokale valuta van alle geselecteerde markten met behulp van de huidige wisselkoersen die beschikbaar zijn tijdens de installatie. Valideer deze prijzen voordat u publiceert door de prijsspreadsheet te exporteren en de prijs in elke markt te bekijken. Als u aangepaste prijzen in een afzonderlijke markt wilt instellen, wijzigt en importeert u de prijsspreadsheet. 
 
 >[!Note]
->Zodra een prijs voor een markt in uw abonnement wordt gepubliceerd, kunt u deze later niet meer wijzigen.
+>U moet eerst uw prijswijzigingen opslaan om het exporteren van prijsgegevens mogelijk te maken.
 
-### <a name="plan-audience"></a>Doel groep plannen
-
-U kunt elk plan zodanig configureren dat het zichtbaar is voor iedereen of alleen voor een specifieke doel groep van uw keuze. U kunt lidmaatschap van deze beperkte doel groep toewijzen met behulp van Azure-abonnement-Id's.
-
-**Privacy/dit is een privé-abonnement** (optioneel selectie vakje): Schakel dit selectie vakje in om uw abonnement privé en alleen zichtbaar te maken voor de beperkte doel groep van uw keuze. Zodra het is gepubliceerd als een persoonlijk abonnement, kunt u de doel groep bijwerken of ervoor kiezen om het plan voor iedereen beschikbaar te stellen. Zodra een plan wordt gepubliceerd als zichtbaar voor iedereen, moet het zijn zichtbaar voor iedereen. (Het plan kan niet opnieuw worden geconfigureerd als een privé-abonnement).
-
-**Beperkte doel groep (Azure-abonnement-id's)** : wijs de doel groep toe die toegang heeft tot dit privé-abonnement. Toegang wordt toegewezen met Azure-abonnement-Id's met de optie om een beschrijving op te nemen van elk Azure-abonnements-ID toegewezen. U kunt Maxi maal 10 abonnements-Id's toevoegen, of de abonnements-Id's van 20.000-klanten als u een CSV-werk blad bestand importeert.  Azure-abonnements-Id's worden weer gegeven als GUID'S en de letters moeten een kleine letter bevatten.
+Controleer uw prijzen zorgvuldig voordat u publiceert, omdat er enkele beperkingen zijn op wat kan veranderen nadat een plan is gepubliceerd.  
 
 >[!Note]
->De persoonlijke doel groep (of een beperkt publiek) wijkt af van de preview-doel groep die u hebt gedefinieerd op het tabblad [**Preview**](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#preview) .  Een preview-doel groep is toegang tot uw aanbieding toegestaan *voordat* de aanbieding Live op Marketplace wordt gepubliceerd. Hoewel de aanduiding van een privé-doel groep alleen van toepassing is op een specifiek abonnement, kan de preview-doel groep alle plannen (privé of niet) voor validatie doeleinden bekijken.
+>Zodra een prijs voor een markt in uw plan wordt gepubliceerd, kan deze later niet meer worden gewijzigd.
+
+### <a name="plan-audience"></a>Doelgroep plannen
+
+Je hebt de optie om elk abonnement te configureren om zichtbaar te zijn voor iedereen of voor alleen een specifieke doelgroep van je keuze. U lidmaatschap in deze beperkte doelgroep toewijzen met behulp van Azure-abonnements-id's.
+
+**Privacy / Dit is een privé-abonnement** (optioneel selectievakje) - Schakel dit selectievakje in om uw abonnement privé en alleen zichtbaar te maken voor het beperkte publiek van uw keuze. Zodra je als privéplan is gepubliceerd, kun je het publiek bijwerken of ervoor kiezen om het abonnement voor iedereen beschikbaar te maken. Zodra een plan voor iedereen zichtbaar is, moet het voor iedereen zichtbaar blijven. (Het plan kan niet opnieuw als privé-abonnement worden geconfigureerd).
+
+**Beperkt publiek (Azure-abonnements-id's)** - Wijs de doelgroep toe die toegang heeft tot dit privé-abonnement. Toegang wordt toegewezen met behulp van Azure-abonnements-id's met de optie om een beschrijving van elke toegewezen Azure-abonnements-id op te nemen. Er kunnen maximaal 10 abonnements-id's worden toegevoegd of 20.000 klanten abonnement-id's als u een CSV-spreadsheetbestand importeert.  Azure-abonnements-id's worden weergegeven als GUID's en letters moeten in een lager geval worden weergegeven.
+
+>[!Note]
+>De privédoelgroep (of beperkte doelgroep) verschilt van de preview-doelgroep die u hebt gedefinieerd op het tabblad [**Voorbeeld.**](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#preview)  Een preview-publiek krijgt toegang tot uw aanbieding *voordat* de aanbieding live op de markt wordt gepubliceerd. Hoewel de aanduiding voor privé-doelgroepen alleen van toepassing is op een specifiek plan, kan de preview-doelgroep alle plannen (privé of niet) bekijken voor validatiedoeleinden.
 
 ## <a name="technical-configuration"></a>Technische configuratie 
 
-Op het tabblad **technische configuratie** kunt u het implementatie pakket uploaden dat klanten in staat stelt om uw abonnement te implementeren.
+Met het tabblad **technische configuratie** u het implementatiepakket uploaden waarmee klanten uw abonnement kunnen implementeren.
 
 >[!Note]
->Dit tabblad wordt niet weer gegeven als u dit plan hebt geconfigureerd om pakketten opnieuw te gebruiken van een ander abonnement op het tabblad **installatie plannen** .
+>Dit tabblad is niet zichtbaar als u dit plan hebt geconfigureerd om pakketten van een ander plan te hergebruiken op het tabblad **Plan-installatie.**
 
-### <a name="package-details"></a>Pakket Details
+### <a name="package-details"></a>Pakketgegevens
 
-Met de **pakket gegevens** subtabblad kunt u de concept versie van uw technische configuratie bewerken.
+Met het subtabblad **Pakketdetails** u de conceptversie van uw technische configuratie bewerken.
 
-***Versie*** : wijs de huidige versie van de technische configuratie toe.  Verhoog deze versie telkens wanneer u een wijziging op deze pagina publiceert. De versie moet de indeling `{integer}.{integer}.{integer}`hebben.
+***Versie*** - Wijs de huidige versie van de technische configuratie toe.  Wijzig deze versie telkens wanneer u een wijziging op deze pagina publiceert. Versie moet in `{integer}.{integer}.{integer}`het formaat .
 
-***Pakket bestand*** (`.zip`): dit pakket bevat alle sjabloon bestanden die nodig zijn voor dit plan en eventuele extra resources, verpakt als een `.zip` bestand.
+***Pakketbestand*** `.zip`( ) - Dit pakket bevat alle sjabloonbestanden die nodig zijn voor `.zip` dit plan, evenals eventuele extra bronnen, verpakt als een bestand.
 
-Alle Azure Application plan-pakketten moeten deze twee bestanden in de hoofdmap van een `.zip` archief bevatten:
+Alle azure-toepassingsplanpakketten moeten deze twee bestanden `.zip` in de hoofdmap van een archief bevatten:
 
-* Een resource manager-sjabloon bestand met de naam [mainTemplate. json](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).  Met deze sjabloon wordt de implementatie van resources in het Azure-abonnement van klanten geautomatiseerd.  Voor voor beelden van Resource Manager-sjablonen raadpleegt u de [Azure Quick Start-sjablonen galerie](https://azure.microsoft.com/documentation/templates/) of de bijbehorende [github: Azure Resource Manager Quick](https://github.com/azure/azure-quickstart-templates) start-sjablonen opslag plaats.
+* Een resourcebeheersjabloonbestand met de naam [mainTemplate.json](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).  Deze sjabloon automatiseert de implementatie van resources in het Azure-abonnement van klanten.  Zie voor voorbeelden van Resource Manager-sjablonen de [azure quickstartsjablonengalerij](https://azure.microsoft.com/documentation/templates/) of de bijbehorende [GitHub: Azure Resource Manager Quickstart Templates](https://github.com/azure/azure-quickstart-templates) repo.
 
-* Een gebruikersinterface definitie voor de Azure-app voor het maken van toepassingen met de naam [createUiDefinition. json](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
+* Een definitie van de gebruikersinterface voor de ervaring voor het maken van Azure-toepassingen met de naam [createUiDefinition.json](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
 
-Alle nieuwe aanbiedingen van Azure Application moeten ook een GUID voor [klant gebruik van Azure-partners](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution) bevatten.
+Alle nieuwe Azure-toepassingsaanbiedingen moeten ook een [AZURE-partner-guid voor het gebruik van klanten](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution) bevatten.
 
 ### <a name="previously-published-packages"></a>Eerder gepubliceerde pakketten 
 
-Met de **eerder gepubliceerde pakketten** subtabblad kunt u alle gepubliceerde versies van uw technische configuratie weer geven.
+Met het subtabblad **Eerder gepubliceerde pakketten** u alle gepubliceerde versies van uw technische configuratie bekijken.
 
-## <a name="technical-configuration-managed-application-plans-only"></a>Technische configuratie (alleen beheerde toepassings abonnementen)
+## <a name="technical-configuration-managed-application-plans-only"></a>Technische configuratie (alleen beheerde toepassingsplannen)
 
-Beheerde toepassings abonnementen hebben meer complexiteit op het tabblad **technische configuratie** , naast de velden voor de **versie** en **pakket bestanden** die hierboven worden beschreven. 
+Beheerde toepassingsplannen hebben extra complexiteit op het tabblad **Technische configuratie** buiten de hierboven beschreven bestandsvelden **Versie** en **Pakket.** 
 
-### <a name="enable-just-in-time-jit-access"></a>Just-in-time-toegang inschakelen
+### <a name="enable-just-in-time-jit-access"></a>Just-in-time (JIT)-toegang inschakelen
 
-Selecteer deze optie om just-in-time-toegang (JIT) in te scha kelen voor dit abonnement.  Met JIT-toegang kunt u verhoogde toegang tot de resources van een beheerde toepassing aanvragen voor het oplossen van problemen of onderhoud. U hebt altijd alleen-lezen toegang tot de resources, maar gedurende een bepaalde periode kunt u meer toegang hebben.  Zie [just-in-time-toegang inschakelen en aanvragen voor Azure Managed Applications](https://docs.microsoft.com/azure/managed-applications/request-just-in-time-access)voor meer informatie.  Als u wilt dat gebruikers van uw beheerde toepassing uw account permanente toegang geven, laat u deze optie uitgeschakeld.
-
->[!Note]
->Zorg ervoor dat u uw `createUiDefinition.json`-bestand bijwerkt om deze functie te kunnen ondersteunen.  
-
-### <a name="deployment-mode"></a>Implementatie modus
-
-Selecteer of u de **volledige** of **incrementele implementatie modus** wilt configureren wanneer u dit plan implementeert: 
-
-* In de **volledige modus**leidt een herimplementatie van de toepassing door de klant tot het verwijderen van resources in de beheerde resource groep als de resources niet zijn gedefinieerd in de `mainTemplate.json`. 
-* In de **incrementele modus**blijven bestaande resources ongewijzigd wanneer de toepassing opnieuw wordt geïmplementeerd.
-
-Zie [Azure Resource Manager-implementatie modi](https://docs.microsoft.com/azure/azure-resource-manager/deployment-modes)voor meer informatie over de implementatie modi.
-
-### <a name="notification-endpoint-url"></a>URL van meldings eindpunt
-
-Geef een HTTPS-webhook-eind punt op om meldingen over alle ruwe bewerkingen op beheerde toepassings exemplaren van deze plan versie te ontvangen.
-
-### <a name="customize-allowed-customer-actions"></a>Toegestane klant acties aanpassen
-
-Selecteer deze optie om op te geven welke acties klanten kunnen uitvoeren op de beheerde resources naast de acties voor '`*/read`' die standaard beschikbaar zijn. 
-
-Geef een lijst van de aanvullende acties die u uw klant wilt laten uitvoeren, gescheiden door punt komma's.  Zie voor meer informatie [over het weigeren van toewijzingen voor Azure-resources](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments).  Zie Azure Resource Manager-bewerkingen voor de [resource provider](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations)voor beschik bare acties. Als u bijvoorbeeld wilt toestaan dat gebruikers virtuele machines opnieuw opstarten, moet u `Microsoft.Compute/virtualMachines/restart/action` toevoegen aan de toegestane acties.
-
-### <a name="global-azure--azure-government-cloud"></a>Wereld wijd Azure/Azure Government-Cloud
-
-Geef aan wie beheer toegang moet hebben tot deze beheerde toepassing in elke ondersteunde Cloud.  Gebruikers, groepen of toepassingen waaraan u machtigingen wilt verlenen voor de beheerde resource groep, worden geïdentificeerd aan de hand van Azure Active Directory (AAD)-identiteiten.
-
-***Azure Active Directory Tenant*** -id: de Aad-Tenant-id (ook wel Directory-id genoemd) die de identiteiten bevat van de gebruikers, groepen of toepassingen waaraan u machtigingen wilt verlenen.  U vindt uw AAD-Tenant-ID op het Azure Portal in [Eigenschappen voor Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
-
-***Autorisaties*** : voeg de Azure Active Directory object-id toe van de gebruiker, groep of toepassing waaraan u machtigingen wilt verlenen voor de beheerde resource groep. Identificeer de gebruiker op basis van de principal-ID, die u kunt vinden op de [blade Azure Active Directory gebruikers op de Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers).
-
-Selecteer voor elke principal een van de ingebouwde Azure AD-rollen uit de lijst (eigenaar of bijdrager). De rol die u selecteert, beschrijft de machtigingen die de principal heeft op de resources in het abonnement van de klant. Zie [Ingebouwde rollen voor Azure-resources](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) voor meer informatie.  Zie [aan de slag met RBAC in de Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/overview)voor meer informatie over op rollen gebaseerd toegangs beheer (RBAC).
+Selecteer deze optie om Just-in-time (JIT) toegang voor dit abonnement in te schakelen.  Met JIT-toegang u verhoogde toegang tot de bronnen van een beheerde toepassing aanvragen voor probleemoplossing of onderhoud. U hebt altijd alleen-lezen toegang tot de bronnen, maar voor een bepaalde periode u meer toegang hebben.  Zie [Just-in-time toegang inschakelen en aanvragen voor Azure Managed Applications voor](https://docs.microsoft.com/azure/managed-applications/request-just-in-time-access)meer informatie.  Als u wilt eisen dat consumenten van uw beheerde toepassing uw account permanente toegang verlenen, laat u deze optie onaangevinkt.
 
 >[!Note]
->Hoewel u Maxi maal 100 autorisaties per Cloud kunt toevoegen, is het over het algemeen eenvoudiger om een Active Directory gebruikers groep te maken en de ID op te geven in de principal-ID.  Hiermee kunt u meer gebruikers toevoegen aan de beheer groep nadat het plan is geïmplementeerd en de nood zaak voor het bijwerken van het plan beperken om meer autorisaties toe te voegen.
+>Zorg ervoor dat `createUiDefinition.json` u uw bestand bijwerkt om deze functie te ondersteunen.  
+
+### <a name="deployment-mode"></a>Implementatiemodus
+
+Selecteer of u **de modus Voltooien** of **Incrementele implementatie** wilt configureren bij het implementeren van dit abonnement: 
+
+* In **de volledige modus**zal een herschikking van de toepassing door de klant resulteren in verwijdering van `mainTemplate.json`resources in de beheerde resourcegroep als de resources niet zijn gedefinieerd in de . 
+* In **de incrementele modus**laat een herschikking van de toepassing bestaande resources ongewijzigd.
+
+Zie [Azure Resource Manager-implementatiemodi](https://docs.microsoft.com/azure/azure-resource-manager/deployment-modes)voor meer informatie over implementatiemodi.
+
+### <a name="notification-endpoint-url"></a>URL van eindpunt van meldingen
+
+Geef een HTTPS Webhook-eindpunt op om meldingen te ontvangen over alle CRUD-bewerkingen op beheerde toepassingsinstanties van deze abonnementsversie.
+
+### <a name="customize-allowed-customer-actions"></a>Toegestane acties van klanten aanpassen
+
+Selecteer deze optie om op te geven welke acties klanten`*/read`kunnen uitvoeren op de beheerde resources naast de ' acties die standaard beschikbaar zijn. 
+
+Vermeld de extra acties die u uw klant in staat wilt stellen hier uit te voeren, gescheiden door puntkomma's.  Zie [Weigeringstoewijzingen voor Azure-resources begrijpen voor](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments)meer informatie.  Zie [Azure Resource Manager resource provider operations](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations)voor beschikbare acties. Bijvoorbeeld, om consumenten toe te staan `Microsoft.Compute/virtualMachines/restart/action` om virtuele machines opnieuw op te starten, toe te voegen aan de toegestane acties.
+
+### <a name="global-azure--azure-government-cloud"></a>Globale Azure / Azure Government Cloud
+
+Geef aan wie beheertoegang moet hebben tot deze beheerde toepassing in elke ondersteunde cloud.  Gebruikers, groepen of toepassingen waaraan u toestemming wilt krijgen voor de beheerde brongroep, worden geïdentificeerd met azure active directory -identiteiten (AAD).
+
+***Azure Active Directory Tenant ID*** - De AAD Tenant ID (ook wel directory ID genoemd) met de identiteiten van de gebruikers, groepen of toepassingen waaraan u machtigingen wilt verlenen.  U uw AAD-tenant-id vinden op de Azure-portal in [Eigenschappen voor Azure Active Directory.](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)
+
+***Autorisaties*** : voeg de Azure Active Directory-object-id toe van de gebruiker, groep of toepassing waaraan u toestemming wilt krijgen voor de beheerde brongroep. Identificeer de gebruiker met zijn hoofd-id, die kan worden gevonden op het [Azure Active Directory-gebruikersblad op de Azure-portal.](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)
+
+Selecteer voor elke principal een van de ingebouwde azure AD-rollen in de lijst (Eigenaar of Inzender). De rol die u selecteert, beschrijft de machtigingen die de opdrachtgever heeft voor de resources in het klantabonnement. Zie [Ingebouwde rollen voor Azure-resources](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) voor meer informatie.  Zie [Aan de slag met RBAC in de Azure-portal](https://docs.microsoft.com/azure/role-based-access-control/overview)voor meer informatie over op rollen gebaseerde toegangscontrole (RBAC).
+
+>[!Note]
+>Hoewel u maximaal 100 autorisaties per cloud toevoegen, is het over het algemeen eenvoudiger om een Active Directory-gebruikersgroep te maken en de id op te geven in de hoofd-id.  Hierdoor u meer gebruikers toevoegen aan de beheergroep nadat het plan is geïmplementeerd en de noodzaak verminderen om het plan bij te werken om meer autorisaties toe te voegen.
 
 ### <a name="policy-settings"></a>Beleidsinstellingen
 
-Pas [Azure-beleid](https://docs.microsoft.com/azure/governance/policy/overview) toe op uw beheerde toepassing om nalevings vereisten voor de geïmplementeerde oplossing op te geven.  Zie [Voorbeelden van Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/index) voor beleidsdefinities en de indeling van de parameterwaarden.  U kunt Maxi maal vijf beleids regels configureren, en slechts één exemplaar van elke beleids optie.  Voor sommige beleids regels zijn aanvullende para meters vereist.  De standaard-SKU is vereist voor controle beleid.  De naam van het beleid is beperkt tot 50 tekens.
+Pas [Azure-beleid](https://docs.microsoft.com/azure/governance/policy/overview) toe op uw beheerde toepassing om nalevingsvereisten voor de geïmplementeerde oplossing op te geven.  Zie [Voorbeelden van Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/index) voor beleidsdefinities en de indeling van de parameterwaarden.  U maximaal vijf beleidsregels configureren en slechts één exemplaar van elke beleidsoptie.  Voor sommige beleidsregels zijn aanvullende parameters vereist.  De standaard SKU is vereist voor controlebeleid.  Beleidsnaam is beperkt tot 50 tekens.
 
-## <a name="co-sell"></a>Gezamenlijk verkopen
+## <a name="co-sell"></a>Co-Sell
 
-Het is volledig optioneel om informatie op het tabblad verkopen op te geven voor het publiceren van uw aanbieding. Het is vereist voor het vergemakkelijkt van de verkoop van Ready en de status van de voor bereidingen op de IP-mede verkoop. De gegevens die u verstrekt, worden door micro soft Sales teams gebruikt om meer te weten te komen over uw oplossing bij de evaluatie van de geschiktheid voor klanten behoeften. Het is niet rechtstreeks beschikbaar voor klanten.
+Het verstrekken van informatie op het tabblad Cosell is volledig optioneel voor het publiceren van uw aanbieding. Het is vereist om co-sell ready en IP Co-sell Ready status te bereiken. De informatie die u verstrekt, wordt door Microsoft-verkoopteams gebruikt om meer te weten te komen over uw oplossing bij het beoordelen van de behoeften van de klant. Het is niet rechtstreeks beschikbaar voor klanten.
 
-Zie voor meer informatie over het invullen van dit tabblad de [optie co-sell in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell).
+Zie [Optie Co-verkoop in Partnercentrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)voor meer informatie over het invullen van dit tabblad.
 
-## <a name="test-drive"></a>Station testen
+## <a name="test-drive"></a>Proefrit
 
-Op het tabblad **test station** kunt u een demonstratie (of "test drive") instellen waarmee klanten uw aanbieding kunnen proberen voordat deze zich aanmeldt. Meer informatie in het artikel [Wat is een test drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)  Als u geen test drive voor uw aanbieding wilt opgeven, keert u terug naar de pagina voor het instellen van de **aanbieding** en schakelt u **Test Drive inschakelen**in.
+Met het tabblad **Teststation** u een demonstratie (of testrit) instellen waarmee klanten uw aanbieding kunnen proberen voordat ze deze willen kopen. Meer informatie in het artikel [Wat is Test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)  Als u geen testrit meer wilt geven voor uw aanbieding, gaat u terug naar de pagina **Installatie aanbieden** en schakelt u **de testrit inschakelen uit.**
 
 ### <a name="technical-configuration"></a>Technische configuratie
 
-Azure-toepassingen gebruiken inherent het type Azure Resource Manager test drive.  Zie [technische configuratie voor Azure Resource Manager test drive](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer#technical-configuration-for-azure-resource-manager-test-drive) voor meer informatie.
+Azure Applications maken inherent gebruik van het type Azure Resource Manager-teststation.  Zie [Technische configuratie voor Azure Resource Manager-teststation](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer#technical-configuration-for-azure-resource-manager-test-drive) voor meer informatie.
 
-### <a name="deployment-subscription-details"></a>Details van implementatie abonnement
+### <a name="deployment-subscription-details"></a>Details van het implementatieabonnement
 
-Als u het test station namens u wilt implementeren, moet u een afzonderlijk, uniek Azure-abonnement maken en opgeven. (Niet vereist voor Power BI test stations).
+Als u de testdrive namens u wilt implementeren, maakt en verstrekt u een afzonderlijk, uniek Azure-abonnement. (Niet vereist voor Power BI-testritten).
 
-- **Azure-abonnements-id** (vereist voor Azure Resource Manager en Logic apps): Voer de abonnements-id in om toegang te verlenen tot uw Azure-account services voor rapportage en facturering van resource gebruik. Het is raadzaam om [een afzonderlijk Azure-abonnement te maken](https://docs.microsoft.com/azure/billing/billing-create-subscription) dat u voor test stations kunt gebruiken als u er nog geen hebt. U kunt uw Azure-abonnements-ID vinden door u aan te melden bij de [Azure Portal](https://portal.azure.com/) en te navigeren naar het tabblad **abonnementen** van het menu aan de linkerkant. Als u het tabblad selecteert, wordt uw abonnements-ID weer gegeven (bijvoorbeeld "a83645ac-1234-5ab6-6789-1h234g764ghty").
+- **Azure-abonnements-ID** (vereist voor Azure Resource Manager- en Logic-apps): Voer de abonnements-id in om toegang te verlenen tot uw Azure-accountservices voor rapportage en facturering van resourcegebruik. We raden u aan om [een apart Azure-abonnement](https://docs.microsoft.com/azure/billing/billing-create-subscription) te maken dat u gebruiken voor testritten als u er nog geen hebt. U uw Azure-abonnements-id vinden door u aan te melden bij de [Azure-portal](https://portal.azure.com/) en te navigeren naar het tabblad **Abonnementen** van het linkermenu. Als u het tabblad selecteert, wordt uw abonnements-ID weergegeven (bijvoorbeeld "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **Azure AD-Tenant-id** (vereist): voer uw Azure Active Directory (AD) [Tenant-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu aan de linkerkant, selecteert u * * eigenschappen en zoekt u naar de weer gegeven **Directory-id** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van uw organisatie opzoeken met uw domein naam-URL op: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
+- **Azure AD-tenant-id** (vereist): voer uw Azure Active Directory (AD) [tenant ID in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Als u deze id wilt vinden, meldt u zich aan bij de [Azure-portal,](https://portal.azure.com/)selecteert u het tabblad Active Directory in het linkermenu, selecteert u **Eigenschappen en zoekt u vervolgens naar het vermelde **Directory-id-nummer** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). U ook de tenant-id van uw organisatie [https://www.whatismytenantid.com](https://www.whatismytenantid.com)opzoeken met uw URL van uw domeinnaam op:.
 
-- **Naam van Azure AD-Tenant** (vereist voor dynamische 365): Voer de naam van uw Azure Active Directory (AD) in. Als u deze naam wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). in de rechter bovenhoek wordt de naam van de Tenant vermeld onder uw account naam.
+- **Azure AD-tenantnaam** (vereist voor Dynamic 365): voer de naam van uw Azure Active Directory (AD) in. Als u deze naam wilt vinden, meldt u zich aan bij de [Azure-portal,](https://portal.azure.com/)in de rechterbovenhoek wordt uw tenantnaam vermeld onder uw accountnaam.
 
-- **Azure AD-App-ID** (vereist): voer uw Azure Active Directory (AD) [-toepassings-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu aan de linkerkant, selecteert u **app-registraties**en zoekt u naar het weer gegeven **toepassings-id** -nummer (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
+- **Azure AD-app-id** (vereist): voer uw Azure Active Directory (AD) [toepassings-id in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Als u deze id wilt vinden, meldt u zich aan bij de [Azure-portal,](https://portal.azure.com/)selecteert u het tabblad Active Directory in het linkermenu, selecteert u **App-registraties**en zoekt u vervolgens naar het vermelde **toepassings-id-nummer** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Azure AD-App-client geheim** (vereist): Voer uw Azure AD-toepassings [client geheim](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)in. Als u deze waarde wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). Selecteer in het linkermenu het tabblad **Azure Active Directory** , selecteer **app-registraties**en selecteer vervolgens uw test drive-app. Selecteer vervolgens **certificaten en geheimen**, selecteer **Nieuw client geheim**, voer een beschrijving in, selecteer **nooit** onder **verlooptd**en kies vervolgens **toevoegen**. Zorg ervoor dat u de waarde kopieert. (Verlaat de pagina niet voordat u de waarde hebt gekopieerd, anders hebt u geen toegang tot de waarde.)
+- **Azure AD-app client geheim** (vereist): Voer het geheim van uw Azure AD-clientclient [in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets). Als u deze waarde wilt vinden, meldt u zich aan bij de [Azure-portal.](https://portal.azure.com/) Selecteer het tabblad **Azure Active Directory** in het linkermenu, selecteer **App-registraties**en selecteer vervolgens de app voor een teststation. Selecteer vervolgens **Certificaten en geheimen,** selecteer **Nieuw clientgeheim,** voer een beschrijving in, selecteer **Nooit** onder **Verloopt**en kies **Vervolgens Toevoegen**. Zorg ervoor dat u de waarde naar beneden kopieert. (Navigeer niet weg van de pagina voordat u de waarde hebt gekopieerd, anders hebt u geen toegang tot de waarde.)
 
-Vergeet niet om te **slaan** voordat u verdergaat met de volgende sectie.
+Vergeet niet om op te **slaan** voordat je doorgaat naar de volgende sectie!
 
-### <a name="test-drive-listings-optional"></a>Vermeldingen voor het test station (optioneel)
+### <a name="test-drive-listings-optional"></a>Aanbiedingen voor teststations (optioneel)
 
-De optie voor het **testen van stations** die is gevonden op het tabblad **test station** bevat de talen (en markten) waar uw test drive beschikbaar is. op Verenigde Staten dit moment is de enige locatie beschikbaar. Daarnaast wordt op deze pagina de status weer gegeven van de taalspecifieke vermelding en de datum/tijd waarop deze is toegevoegd. U moet de test drive Details (beschrijving, gebruikers handleiding, Video's, enzovoort) definiëren voor elke taal/markt.
+De optie **Testdrive-vermeldingen** onder het tabblad **Teststation** geeft de talen (en markten) weer waar uw testrit beschikbaar is, momenteel is Engels (Verenigde Staten) de enige beschikbare locatie. Bovendien geeft deze pagina de status weer van de taalspecifieke vermelding en de datum/tijd die is toegevoegd. U moet de testdrive details (beschrijving, handleiding, video's, enz.) voor elke taal / markt te definiëren.
 
-- **Beschrijving** (vereist): Geef een beschrijving van uw test drive, wat wordt aangetoond, wat de gebruiker kan doen om te experimenteren met, functies om te verkennen en alle relevante informatie om de gebruiker te helpen bepalen of u uw aanbieding moet verkrijgen. In dit veld kunnen Maxi maal 3.000 tekens tekst worden ingevoerd. 
+- **Beschrijving** (vereist): Beschrijf uw testrit, wat wordt aangetoond, doelstellingen voor de gebruiker om mee te experimenteren, functies om te verkennen en alle relevante informatie om de gebruiker te helpen bepalen of hij uw aanbieding wil verwerven. In dit veld kunnen maximaal 3.000 tekens tekst worden ingevoerd. 
 
-- **Toegangs gegevens** (vereist voor Azure Resource Manager en logische test stations): Leg uit wat een klant moet weten om deze test drive te kunnen openen en gebruiken. Door loop een scenario voor het gebruik van uw aanbieding en precies wat de klant moet weten voor toegang tot de functies in de test drive. In dit veld kunnen Maxi maal 10.000 tekens tekst worden ingevoerd.
+- **Toegangsgegevens** (vereist voor Azure Resource Manager- en Logic-teststations): leg uit wat een klant moet weten om toegang te krijgen tot deze testrit en deze te gebruiken. Loop door een scenario voor het gebruik van uw aanbieding en precies wat de klant moet weten om toegang te krijgen tot functies tijdens de testrit. In dit veld kunnen maximaal 10.000 tekens tekst worden ingevoerd.
 
-- **Gebruikers handleiding** (vereist): een diep gaande overzicht van uw test drive ervaring. De gebruikers handleiding moet betrekking hebben op precies wat u wilt dat de klant het test drive verkrijgt en zich als referentie voor eventuele vragen bevindt. Het bestand moet een PDF-indeling hebben en een naam hebben (255 tekens Max) na het uploaden.
+- **Handleiding** (vereist): een diepgaande doorloop van uw testritervaring. De gebruikershandleiding moet precies betrekking hebben op wat u wilt dat de klant te winnen bij het ervaren van de proefrit en dienen als een referentie voor eventuele vragen die ze kunnen hebben. Het bestand moet in PDF-formaat zijn en worden benoemd (maximaal 255 tekens) na het uploaden.
 
-- **Video's: Video's toevoegen** (optioneel): Video's kunnen worden geüpload naar YouTube of Vimeo en hiernaar wordt verwezen met een koppeling en een miniatuur afbeelding (533 x 324 pixels), zodat een klant een overzicht van de informatie kan bekijken om hen meer inzicht te geven in de test drive, met inbegrip van de manier waarop u de functies van uw aanbieding kunt gebruiken en inzicht kunt krijgen in de voor delen.
+- **Video's: Video's toevoegen** (optioneel): video's kunnen worden geüpload naar YouTube of Vimeo en hier worden verwezen met een link en miniatuurafbeelding (533 x 324 pixels), zodat een klant een overzicht van informatie kan bekijken om de testrit beter te begrijpen, inclusief hoe ze de functies van uw aanbieding met succes kunnen gebruiken en scenario's kunnen begrijpen die hun voordelen benadrukken.
   - **Naam** (vereist)
   - **URL (alleen YouTube of Vimeo)** (vereist)
-  - **Miniatuur (533 x 324 px)** : het afbeeldings bestand moet de PNG-indeling hebben.
+  - **Miniatuur (533 x 324 px)**: Afbeeldingsbestand moet in PNG-indeling zijn.
 
-Selecteer **Opslaan** na het volt ooien van deze velden.
+Selecteer **Opslaan** nadat u deze velden hebt voltooid.
 
 ## <a name="publish"></a>Publiceren
 
-### <a name="submit-offer-to-preview"></a>Aanbieding verzenden naar Preview
+### <a name="submit-offer-to-preview"></a>Voorstel indienen om een voorbeeld te bekijken
 
-Zodra u alle vereiste delen van de aanbieding hebt voltooid, selecteert u **publiceren** in de rechter bovenhoek van de portal. U wordt omgeleid naar de pagina **controleren en publiceren** . 
+Zodra u alle vereiste gedeelten van de aanbieding hebt voltooid, selecteert u **publiceren** in de rechterbovenhoek van de portal. U wordt doorgestuurd naar de **pagina Beoordeling en publicatie.** 
 
-Als dit de eerste keer is dat u deze aanbieding publiceert, kunt u het volgende doen:
+Als het de eerste keer is dat u deze aanbieding publiceert, u het als volgt doen:
 
-- Bekijk de voltooiings status voor elke sectie van de aanbieding.
-    - *Niet gestart* : de sectie is niet gerakend en moet worden voltooid.
-    - *Onvolledig* : de sectie bevat fouten die moeten worden hersteld of waarvoor meer informatie moet worden verstrekt. Ga terug naar de sectie (s) en werk deze bij.
-    - *Voltooid* : de sectie is voltooid, alle vereiste gegevens zijn opgegeven en er zijn geen fouten. Alle secties van de aanbieding moeten een volledige status hebben voordat u de aanbieding kunt indienen.
-- Geef test instructies op het certificerings team om ervoor te zorgen dat uw app correct wordt getest, naast eventuele aanvullende notities die nuttig zijn voor de uitleg van uw app.
-- Verzend de aanbieding voor publicatie door **verzenden**te selecteren. We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Ga terug naar het partner centrum en selecteer **Go-Live** voor de aanbieding om uw aanbieding te publiceren naar het open bare (of als u een privé-aanbieding naar de persoonlijke doel groep hebt).
+- Zie de voltooiingsstatus voor elk gedeelte van de aanbieding.
+    - *Niet gestart* - betekent dat de sectie niet is aangeraakt en moet worden voltooid.
+    - *Onvolledig* - betekent dat de sectie fouten bevat die moeten worden opgelost of dat er meer informatie moet worden verstrekt. Ga terug naar de sectie(s) en werk deze bij.
+    - *Voltooid* - betekent dat de sectie volledig is, alle vereiste gegevens zijn verstrekt en er geen fouten zijn. Alle onderdelen van de aanbieding moeten volledig zijn voordat u de aanbieding indienen.
+- Geef het certificeringsteam testinstructies om ervoor te zorgen dat uw app correct is getest, naast eventuele aanvullende notities die nuttig zijn om uw app te begrijpen.
+- Dien de publicatieaanbieding in door **Verzenden te selecteren.** We sturen je een e-mail om je te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te bekijken en goed te keuren. Keer terug naar partnercentrum en selecteer **Go-live** voor de aanbieding om uw aanbieding aan het publiek te publiceren (of als een privé-aanbieding, aan het particuliere publiek).
 
 ### <a name="errors-and-review-feedback"></a>Fouten en feedback bekijken
 
-De **hand matige validatie** stap in het publicatie proces vertegenwoordigt een uitgebreide beoordeling van uw aanbieding en de bijbehorende technische activa (met name de Azure Resource Manager-sjabloon), problemen worden doorgaans gepresenteerd als pull-aanvraag (PR)-koppelingen. Zie [afhandeling van feedback](./azure-apps-review-feedback.md)bekijken voor meer informatie over het weer geven en reageren op deze pull.
+De **handmatige validatiestap** in het publicatieproces vertegenwoordigt een uitgebreide beoordeling van uw aanbieding en de bijbehorende technische elementen (met name de Azure Resource Manager-sjabloon), problemen worden meestal gepresenteerd als koppelingen naar pull request (PR). Een uitleg over het bekijken en reageren op deze PR's, zie [Feedback over beoordeling afhandelen](./azure-apps-review-feedback.md).
 
-Als er fouten zijn opgetreden in een of meer van de publicatie stappen, moet u deze corrigeren en uw aanbieding opnieuw publiceren.
+Als u fouten hebt ondervonden in een of meer van de publicatiestappen, moet u deze corrigeren en uw aanbieding opnieuw publiceren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
