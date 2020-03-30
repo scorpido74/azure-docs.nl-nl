@@ -1,7 +1,7 @@
 ---
-title: Toegang tot gegevens in Azure Storage services
+title: Verbinding maken met Azure-opslagservices
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van data stores om veilig verbinding te maken met Azure Storage-services tijdens de training met Azure Machine Learning
+description: Meer informatie over het gebruik van datastores om veilig verbinding te maken met Azure-opslagservices tijdens training met Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,33 +9,34 @@ ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 02/27/2020
+ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 36d622bf2873b7e629a0f6abeecded33e32898f5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c5972b602d92b2e08fd70850dd1af5c1236e2b1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283730"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234461"
 ---
-# <a name="access-data-in-azure-storage-services"></a>Toegang tot gegevens in azure Storage-services
+# <a name="connect-to-azure-storage-services"></a>Verbinding maken met Azure-opslagservices
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u eenvoudig toegang hebt tot uw gegevens in Azure Storage services via Azure Machine Learning gegevens opslag. Data stores worden gebruikt om verbindings gegevens op te slaan, zoals uw abonnements-ID en Token autorisatie. Wanneer u data stores gebruikt, hebt u toegang tot uw opslag zonder dat u de verbindings gegevens van uw scripts hoeft vast te geven. 
+In dit artikel leest u hoe u verbinding maken met Azure-opslagservices via Azure Machine Learning-gegevensarchieven. Datastores slaan verbindingsgegevens op, zoals uw abonnements-ID en tokenautorisatie in uw [Key Vault](https://azure.microsoft.com/services/key-vault/) die aan de werkruimte is gekoppeld, zodat u veilig toegang hebt tot uw opslag zonder dat u ze in uw scripts hoeft te coderen.
 
-U kunt gegevens opslag maken op basis van [deze Azure Storage-oplossingen](#matrix). Voor niet-ondersteunde opslag oplossingen en voor het opslaan van de kosten voor de verlies van gegevens tijdens machine learning experimenten, raden we u aan om [uw gegevens](#move) naar ondersteunde Azure Storage oplossingen te verplaatsen. 
+U gegevenswinkels maken met [deze Azure-opslagoplossingen.](#matrix) Voor niet-ondersteunde opslagoplossingen en om kosten te besparen voor het overschrijden van gegevens tijdens machine learning-experimenten, raden we u aan [uw gegevens te verplaatsen](#move) naar ondersteunde Azure-opslagoplossingen. 
 
 ## <a name="prerequisites"></a>Vereisten
+
 U hebt het volgende nodig:
-- Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
+- Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
-- Een Azure-opslag account met een [Azure Blob-container](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) of een [Azure-bestands share](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
+- Een Azure-opslagaccount met een [Azure blob-container](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) of [Azure-bestandsshare](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
 
-- De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)of toegang tot [Azure machine learning Studio](https://ml.azure.com/).
+- De [Azure Machine Learning SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)of toegang tot Azure Machine [Learning-studio](https://ml.azure.com/).
 
 - Een Azure Machine Learning-werkruimte.
   
-  [Maak een Azure machine learning-werk ruimte](how-to-manage-workspace.md) of gebruik een bestaand item via de PYTHON-SDK. Importeer de `Workspace`-en `Datastore` klasse en laad uw abonnements gegevens uit het bestand `config.json` met behulp van de functie `from_config()`. Hiermee zoekt u standaard naar het JSON-bestand in de huidige map, maar u kunt ook een para meter Path opgeven om naar het bestand te verwijzen met `from_config(path="your/file/path")`.
+  Maak [een Azure Machine Learning-werkruimte](how-to-manage-workspace.md) of gebruik een bestaande werkruimte via de Python SDK. Importeer `Workspace` de `Datastore` klasse en de klasse en `config.json` laad `from_config()`uw abonnementsgegevens uit het bestand met de functie . Hiermee wordt standaard gezocht naar het JSON-bestand in de huidige map, maar `from_config(path="your/file/path")`u ook een padparameter opgeven die naar het bestand moet wijzen met behulp van.
 
    ```Python
    import azureml.core
@@ -45,62 +46,68 @@ U hebt het volgende nodig:
    ```
 <a name="matrix"></a>
 
-## <a name="supported-data-storage-service-types"></a>Ondersteunde service typen voor gegevens opslag
+## <a name="supported-data-storage-service-types"></a>Ondersteunde servicetypen voor gegevensopslag
 
-Data stores ondersteunen momenteel het opslaan van verbindings gegevens naar de opslag services die in de volgende matrix worden weer gegeven. Op dit moment wordt Azure Data Warehouse niet ondersteund. 
+Datastores ondersteunen momenteel het opslaan van verbindingsgegevens op de opslagservices die in de volgende matrix worden vermeld. Op dit moment wordt het Azure Data-magazijn niet ondersteund. 
 
-| Type opslag&nbsp; | Type verificatie&nbsp; | [Azure&nbsp;machine&nbsp;Learning Studio](https://ml.azure.com/) | [Azure&nbsp;machine&nbsp;Learning&nbsp; python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure&nbsp;machine&nbsp;Learning CLI](reference-azure-machine-learning-cli.md) | [Azure&nbsp;machine&nbsp;Learning&nbsp; rest API](https://docs.microsoft.com/rest/api/azureml/)
+| Opslagtype&nbsp; | Verificatietype&nbsp; | [Azure&nbsp;&nbsp;Machine Learning-studio](https://ml.azure.com/) | [Azure&nbsp;Machine&nbsp;Learning&nbsp; Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure&nbsp;Machine&nbsp;Learning CLI](reference-azure-machine-learning-cli.md) | [Azure&nbsp;Machine&nbsp;Learning&nbsp; Rest API](https://docs.microsoft.com/rest/api/azureml/)
 ---|---|---|---|---|---
-[Azure&nbsp;BLOB&nbsp;opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| Accountcode <br> SAS-token | ✓ | ✓ | ✓ |✓
-[Bestands&nbsp;share van Azure&nbsp;](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| Accountcode <br> SAS-token | ✓ | ✓ | ✓ |✓
-[Azure&nbsp;Data Lake&nbsp;Storage gen&nbsp;1](https://docs.microsoft.com/azure/data-lake-store/)| Service-Principal| ✓ | ✓ | ✓ |✓
-[Azure&nbsp;Data Lake&nbsp;Storage gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Service-Principal| ✓ | ✓ | ✓ |✓
-Azure&nbsp;SQL&nbsp;-data base| SQL-verificatie <br>Service-Principal| ✓ | ✓ | ✓ |✓
-Azure&nbsp;PostgreSQL | SQL-verificatie| ✓ | ✓ | ✓ |✓
-Azure&nbsp;data base-&nbsp;voor&nbsp;MySQL | SQL-verificatie|  | ✓* | ✓* |✓*
-Databricks&nbsp;bestand&nbsp;systeem| Geen verificatie | | ✓** | ✓ ** |✓** 
+[Azure&nbsp;&nbsp;Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| Accountsleutel <br> SAS-token | ✓ | ✓ | ✓ |✓
+[Azure-bestandsshare&nbsp;&nbsp;](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| Accountsleutel <br> SAS-token | ✓ | ✓ | ✓ |✓
+[Azure&nbsp;Data&nbsp;Lake&nbsp;Storage Gen 1](https://docs.microsoft.com/azure/data-lake-store/)| Service-principal| ✓ | ✓ | ✓ |✓
+[Azure&nbsp;Data&nbsp;Lake&nbsp;Storage Gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Service-principal| ✓ | ✓ | ✓ |✓
+[Azure&nbsp;&nbsp;SQL-database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)| SQL-verificatie <br>Service-principal| ✓ | ✓ | ✓ |✓
+[Azure&nbsp;PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview) | SQL-verificatie| ✓ | ✓ | ✓ |✓
+[Azure-database&nbsp;&nbsp;voor&nbsp;MySQL](https://docs.microsoft.com/azure/mysql/overview) | SQL-verificatie|  | ✓* | ✓* |✓*
+[Gegevensbricks-bestandssysteem&nbsp;&nbsp;](https://docs.microsoft.com/azure/databricks/data/databricks-file-system)| Geen verificatie | | ✓** | ✓ ** |✓** 
 
-*MySQL wordt alleen ondersteund voor pijplijn [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). <br> \** Databricks wordt alleen ondersteund voor pijplijn [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py)
+*MySQL wordt alleen ondersteund voor pipeline [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). <br>
+**Databricks wordt alleen ondersteund voor pipeline [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py)
 
 ### <a name="storage-guidance"></a>Richtlijnen voor Azure Storage
 
-We raden u aan een gegevens opslag voor een Azure Blob-container te maken.  
-Zowel Standard-als Premium-opslag zijn beschikbaar voor blobs. Hoewel Premium-opslag duurder is, kunnen de snellere doorvoer snelheden de snelheid van uw trainings uitvoeringen verbeteren, met name als u traint voor een grote gegevensset. Voor informatie over de kosten van opslag accounts raadpleegt u de [Azure-prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service).
+We raden u aan een gegevensarchief te maken voor een [Azure Blob-container.](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) Zowel standaard als premium opslag zijn beschikbaar voor blobs. Hoewel premium opslag duurder is, kunnen de hogere doorvoersnelheden de snelheid van uw trainingsruns verbeteren, vooral als u traint tegen een grote gegevensset. Zie de [azure-prijscalculator](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service)voor informatie over de kosten van opslagaccounts.
 
-Wanneer u een werk ruimte maakt, worden er automatisch een Azure Blob-container en een Azure-bestands share geregistreerd in de werk ruimte. Ze hebben respectievelijk de naam `workspaceblobstore` en `workspacefilestore`. Ze slaan de verbindings gegevens voor de BLOB-container en de bestands share op die zijn ingericht in het opslag account dat aan de werk ruimte is gekoppeld. De `workspaceblobstore`-container wordt ingesteld als de standaard gegevens opslag.
+[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction?toc=/azure/storage/blobs/toc.json) is gebouwd bovenop Azure Blob-opslag en is ontworpen voor big data-analyses voor bedrijven. Een fundamenteel onderdeel van Data Lake Storage Gen2 is de toevoeging van een [hiërarchische naamruimte](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) aan Blob-opslag. De hiërarchische naamruimte organiseert objecten/bestanden in een hiërarchie van mappen voor efficiënte gegevenstoegang.
+
+Wanneer u een werkruimte maakt, worden een Azure blob-container en een Azure-bestandsshare automatisch geregistreerd in de werkruimte. Ze zijn `workspaceblobstore` genoemd `workspacefilestore`en , respectievelijk. `workspaceblobstore`wordt gebruikt om artefacten voor werkruimtes en uw machine learning-experimentlogboeken op te slaan. `workspacefilestore`wordt gebruikt om notitieblokken en R-scripts op te slaan die zijn geautoriseerd via [compute instance.](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files) De `workspaceblobstore` container is ingesteld als het standaardgegevensarchief.
+
+> [!IMPORTANT]
+> Azure Machine Learning designer (preview) maakt automatisch een datastore met de naam **azureml_globaldatasets** wanneer u een voorbeeld opent op de startpagina van de ontwerper. Deze datastore bevat alleen voorbeeldgegevenssets. Gebruik deze datastore **niet** voor vertrouwelijke toegang tot gegevens!
+> ![Automatisch gemaakt gegevensarchief voor gegevenssets voor designervoorbeelden](media/how-to-access-data/datastore-designer-sample.png)
 
 <a name="access"></a>
 
-## <a name="create-and-register-datastores"></a>Gegevens opslag maken en registreren
+## <a name="create-and-register-datastores"></a>Datastores maken en registreren
 
-Wanneer u een Azure Storage-oplossing registreert als een gegevens opslag, maakt en registreert u die gegevens opslag automatisch aan een specifieke werk ruimte. U kunt gegevens opslag voor een werk ruimte maken en registreren met behulp van de python-SDK of Azure Machine Learning Studio.
+Wanneer u een Azure-opslagoplossing registreert als een gegevensarchief, maakt en registreert u die gegevenswinkel automatisch bij een specifieke werkruimte. U gegevenswinkels maken en registreren voor een werkruimte met behulp van de Python SDK of Azure Machine Learning-studio.
 
 >[!IMPORTANT]
-> Als onderdeel van het proces voor het maken en registreren van de huidige gegevens opslag heeft Azure Machine Learning gecontroleerd of de door de gebruiker aangelegde principal (gebruikers naam, Service-Principal of SAS-token) toegang heeft tot de onderliggende opslag service. 
+> Als onderdeel van het oorspronkelijke proces voor het maken en registreren van gegevensarchief valideert Azure Machine Learning dat de onderliggende opslagservice bestaat en dat de door de gebruiker verstrekte hoofd (gebruikersnaam, serviceprincipal of SAS-token) toegang heeft tot die opslag. Voor Azure Data Lake Storage Gen 1 en 2-gegevensarchieven vindt deze [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py) validatie [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) echter later plaats wanneer methoden voor gegevenstoegang zoals of worden aangeroepen. 
 <br><br>
-Voor Azure Data Lake Storage data stores van 1 en 2 wordt deze validatie echter later uitgevoerd wanneer methoden voor gegevens toegang, zoals [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py) of [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) , worden aangeroepen. 
+Na het maken van gegevensarchief wordt deze validatie alleen uitgevoerd voor methoden die toegang tot de onderliggende opslagcontainer vereisen, **niet** telkens wanneer gegevensarchiefobjecten worden opgehaald. Validatie vindt bijvoorbeeld plaats als u bestanden wilt downloaden van uw datastore; maar als u gewoon uw standaard gegevensarchief wilt wijzigen, gebeurt de validatie niet.
 
-### <a name="python-sdk"></a>Python-SDK
+### <a name="python-sdk"></a>Python SDK
 
-Alle registratie methoden bevinden zich op de klasse [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) en hebben het formulier `register_azure_*`.
+Alle register methoden zijn [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) op de klasse `register_azure_*`en hebben het formulier .
 
-U vindt de informatie die u nodig hebt om de `register()`-methode in te vullen op de [Azure Portal](https://portal.azure.com).
-Selecteer **opslag accounts** in het linkerdeel venster en kies het opslag account dat u wilt registreren. De **overzichts** pagina bevat informatie zoals de account naam, container en naam van de bestands share. 
+U de informatie vinden die `register()` u nodig hebt om de methode in te vullen op de [Azure-portal.](https://portal.azure.com)
+Selecteer **Opslagaccounts** in het linkerdeelvenster en kies het opslagaccount dat u wilt registreren. De pagina **Overzicht** bevat informatie zoals de accountnaam, de container en de naam van bestandsdelen. 
 
-* Ga voor verificatie-items, zoals account sleutel of SAS-token, naar **account sleutels** in het deel venster **instellingen** . 
+* Ga voor verificatieitems, zoals accountsleutel of SAS-token, naar **Accountsleutels** in het deelvenster **Instellingen.** 
 
-* Voor Service-Principal-items, zoals Tenant-ID en client-ID, gaat u naar uw **app-registraties** en selecteert u welke app u wilt gebruiken. De bijbehorende **overzichts** pagina bevat deze items.
+* Ga voor servicehoofditems zoals tenant-id en client-id naar uw **app-registraties** en selecteer welke app u wilt gebruiken. De bijbehorende **overzichtspagina** bevat deze items.
 
 > [!IMPORTANT]
-> Als uw opslag account zich in een virtueel netwerk bevindt, wordt alleen het maken van een blob, bestands share, ADLS gen 1-en ADLS gen-gegevens opslag **via de SDK** ondersteund. Als u uw werk ruimte toegang wilt verlenen tot uw opslag account, stelt u de para meter `grant_workspace_access` in op `True`.
+> Als uw opslagaccount zich in een virtueel netwerk bevindt, wordt alleen het maken van Blob, File share, ADLS Gen 1 en ADLS Gen 2-datastores **via de SDK** ondersteund. Als u uw werkruimte toegang wilt verlenen `grant_workspace_access` `True`tot uw opslagaccount, stelt u de parameter in op .
 
-In de volgende voor beelden ziet u hoe u een Azure Blob-container, een Azure-bestands share en Azure Data Lake Storage generatie 2 kunt registreren als gegevens opslag. Raadpleeg voor andere opslag Services de [referentie documentatie voor de `register_azure_*`-methoden](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#methods).
+In de volgende voorbeelden ziet u hoe u een Azure blob-container, een Azure-bestandsshare en Azure Data Lake Storage Generation 2 als gegevensarchief registreert. Voor andere opslagservices raadpleegt u de [referentiedocumentatie voor de `register_azure_*` toepasselijke methoden.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#methods)
 
 #### <a name="blob-container"></a>Blobcontainer
 
-Gebruik [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)om een Azure Blob-container als gegevens opslag te registreren.
+Als u een Azure blob-container [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)als gegevensarchief wilt registreren, gebruikt u .
 
-Met de volgende code wordt de `blob_datastore_name` gegevens opslag voor de `ws`-werk ruimte gemaakt en geregistreerd. Deze Data Store heeft toegang tot de `my-container-name` BLOB-container op het `my-account-name` Storage-account met behulp van de meegeleverde account sleutel.
+Met de volgende code `blob_datastore_name` wordt het `ws` gegevensarchief aan de werkruimte aangetrokken en geregistreerd. Deze datastore heeft `my-container-name` toegang tot `my-account-name` de blobcontainer op het opslagaccount met behulp van de opgegeven accountsleutel.
 
 ```Python
 blob_datastore_name='azblobsdk' # Name of the datastore to workspace
@@ -117,9 +124,9 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 #### <a name="file-share"></a>Bestandsshare
 
-Gebruik [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)om een Azure-bestands share als een gegevens opslag te registreren. 
+Als u een Azure-bestandsshare als [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)gegevensarchief wilt registreren, gebruikt u . 
 
-Met de volgende code wordt de `file_datastore_name` gegevens opslag voor de `ws`-werk ruimte gemaakt en geregistreerd. Deze Data Store heeft toegang tot de `my-fileshare-name`-bestands share op het `my-account-name` Storage-account met behulp van de meegeleverde account sleutel.
+Met de volgende code `file_datastore_name` wordt het `ws` gegevensarchief aan de werkruimte aangetrokken en geregistreerd. Deze datastore heeft `my-fileshare-name` toegang tot `my-account-name` de bestandsshare op het opslagaccount met behulp van de opgegeven accountsleutel.
 
 ```Python
 file_datastore_name='azfilesharesdk' # Name of the datastore to workspace
@@ -134,11 +141,11 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
                                                      account_key=account_key)
 ```
 
-#### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage generatie 2
+#### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage Generation 2
 
-Gebruik [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) voor het registreren van een Azure data Lake Storage Generation 2 (ADLS gen 2) om het opslaan van referenties die zijn verbonden met een Azure DataLake gen 2-opslag met [Service-Principal-machtigingen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Als u de Service-Principal wilt gebruiken, moet u [uw toepassing registreren](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) en roltoewijzingen instellen voor de lezer en gegevens toegang. Meer informatie over [toegangs beheer dat is ingesteld voor ADLS gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
+Voor een Azure Data Lake Storage Generation 2 (ADLS Gen 2) datastore u [register_azure_data_lake_gen2()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) gebruiken om een gegevensarchief met referenties te registreren die is verbonden met een Azure DataLake Gen 2-opslag met [serviceprincipal-machtigingen.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) Om gebruik te kunnen maken van uw serviceprincipal moet u [uw aanvraag registreren](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) en de serviceprincipal de juiste gegevenstoegang verlenen. Meer informatie over [toegangscontrole die is ingesteld voor ADLS Gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
 
-Met de volgende code wordt de `adlsgen2_datastore_name` gegevens opslag voor de `ws`-werk ruimte gemaakt en geregistreerd. Met deze data store krijgt u toegang tot het bestands systeem `test` op het `account_name` Storage-account met behulp van de gegeven referenties voor de Service-Principal.
+Met de volgende code `adlsgen2_datastore_name` wordt het `ws` gegevensarchief aan de werkruimte aangetrokken en geregistreerd. Deze datastore heeft toegang `test` tot `account_name` het bestandssysteem op het opslagaccount, met behulp van de meegeleverde servicehoofdreferenties.
 
 ```python 
 adlsgen2_datastore_name = 'adlsgen2datastore'
@@ -162,42 +169,38 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 ### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio 
 
-Maak een nieuwe gegevens opslag in een paar stappen in Azure Machine Learning studio:
+Maak een nieuwe datastore in een paar stappen in Azure Machine Learning-studio:
 
 > [!IMPORTANT]
-> Als uw opslag account zich in een virtueel netwerk bevindt, wordt alleen het maken van gegevens opslag [via de SDK](#python-sdk) ondersteund. 
+> Als uw opslagaccount zich in een virtueel netwerk bevindt, wordt alleen het maken van datastores [via de SDK](#python-sdk) ondersteund. 
 
-1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com/).
-1. Selecteer **gegevens opslag** in het linkerdeel venster onder **beheren**.
-1. Selecteer **+ nieuwe gegevens opslag**.
-1. Vul het formulier in voor een nieuwe gegevens opslag. Het formulier wordt intelligent bijgewerkt op basis van uw selecties voor Azure Storage type en verificatie type.
+1. Meld u aan bij [Azure Machine Learning studio](https://ml.azure.com/).
+1. Selecteer **Gegevensopslag** in het linkerdeelvenster onder **Beheren**.
+1. Selecteer **+ Nieuw gegevensarchief**.
+1. Vul het formulier in voor een nieuwe datastore. Het formulier wordt op intelligente wijze bijgewerkt op basis van uw selecties voor Azure-opslagtype en verificatietype.
   
-U kunt de informatie vinden die u nodig hebt om het formulier op de [Azure Portal](https://portal.azure.com)in te vullen. Selecteer **opslag accounts** in het linkerdeel venster en kies het opslag account dat u wilt registreren. De **overzichts** pagina bevat informatie zoals de account naam, container en naam van de bestands share. 
+U de informatie vinden die u nodig hebt om het formulier in te vullen op de [Azure-portal.](https://portal.azure.com) Selecteer **Opslagaccounts** in het linkerdeelvenster en kies het opslagaccount dat u wilt registreren. De pagina **Overzicht** bevat informatie zoals de accountnaam, de container en de naam van bestandsdelen. 
 
-* Ga voor verificatie-items, zoals account sleutel of SAS-token, naar **account sleutels** in het deel venster **instellingen** . 
+* Ga voor verificatieitems, zoals accountsleutel of SAS-token, naar **Accountsleutels** in het deelvenster **Instellingen.** 
 
-* Voor Service-Principal-items, zoals Tenant-ID en client-ID, gaat u naar uw **app-registraties** en selecteert u welke app u wilt gebruiken. De bijbehorende **overzichts** pagina bevat deze items. 
+* Ga voor servicehoofditems zoals tenant-id en client-id naar uw **app-registraties** en selecteer welke app u wilt gebruiken. De bijbehorende **overzichtspagina** bevat deze items. 
 
-In het volgende voor beeld ziet u hoe het formulier eruitziet wanneer u een Azure Blob-gegevens opslag maakt: 
+In het volgende voorbeeld wordt getoond hoe het formulier eruit ziet wanneer u een Azure blob-gegevensarchief maakt: 
     
-![Formulier voor een nieuwe gegevens opslag](media/how-to-access-data/new-datastore-form.png)
+![Formulier voor een nieuwe datastore](media/how-to-access-data/new-datastore-form.png)
 
 
 <a name="get"></a>
 
-## <a name="get-datastores-from-your-workspace"></a>Gegevens opslag ophalen uit uw werk ruimte
+## <a name="get-datastores-from-your-workspace"></a>Gegevenswinkels ophalen vanuit uw werkruimte
 
-> [!IMPORTANT]
-> Met Azure Machine Learning Designer (preview) wordt automatisch een gegevens archief met de naam **azureml_globaldatasets** gemaakt wanneer u een voor beeld opent in de start pagina van de ontwerp functie. Dit gegevens archief bevat alleen voorbeeld gegevens sets. Gebruik deze gegevens opslag **niet** voor vertrouwelijke gegevens toegang.
-> ![automatisch gemaakte gegevens opslag voor voorbeeld gegevens sets voor Designer](media/how-to-access-data/datastore-designer-sample.png)
-
-Als u een specifieke gegevens opslag die in de huidige werk ruimte is geregistreerd wilt ophalen, gebruikt u de statische methode [`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) op de `Datastore`-klasse:
+Als u een specifiek gegevensarchief wilt laten [`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) registreren in `Datastore` de huidige werkruimte, gebruikt u de statische methode in de klasse:
 
 ```Python
 # Get a named datastore from the current workspace
 datastore = Datastore.get(ws, datastore_name='your datastore name')
 ```
-Als u de lijst met gegevens opslag die is geregistreerd met een bepaalde werk ruimte wilt ophalen, kunt u de eigenschap [`datastores`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py#datastores) gebruiken voor een werkruimte object:
+Als u de lijst met gegevenswinkels wilt openen [`datastores`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py#datastores) met een bepaalde werkruimte, u de eigenschap op een werkruimteobject gebruiken:
 
 ```Python
 # List all datastores registered in the current workspace
@@ -206,27 +209,20 @@ for name, datastore in datastores.items():
     print(name, datastore.datastore_type)
 ```
 
-Als u de standaard gegevens opslag van de werk ruimte wilt ophalen, gebruikt u deze regel:
+Als u het standaardgegevensarchief van de werkruimte wilt opvragen, gebruikt u deze regel:
 
 ```Python
 datastore = ws.get_default_datastore()
 ```
 
-Als u een andere standaard gegevens opslag voor de huidige werk ruimte wilt definiëren, gebruikt u de methode [`set_default_datastore()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#set-default-datastore-name-) voor het object werk ruimte:
-
-```Python
-# Define the default datastore for the current workspace
-ws.set_default_datastore('your datastore name')
-```
-
 <a name="up-and-down"></a>
-## <a name="upload-and-download-data"></a>Uploaden en downloaden van gegevens
+## <a name="upload-and-download-data"></a>Gegevens uploaden en downloaden
 
-De methoden [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#upload-src-dir--target-path-none--overwrite-false--show-progress-true-) en [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) die in de volgende voor beelden worden beschreven, zijn specifiek voor de klassen [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) en [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) .
+De [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#upload-src-dir--target-path-none--overwrite-false--show-progress-true-) [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) methoden en methoden die in de volgende voorbeelden worden beschreven, zijn specifiek voor en werken identiek voor de klassen [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) en [AzureFileDatastore.](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)
 
 ### <a name="upload"></a>Uploaden
 
-Een map of afzonderlijke bestanden naar het gegevens archief uploaden met behulp van de python-SDK:
+Upload een map of afzonderlijke bestanden naar de datastore met de Python SDK:
 
 ```Python
 datastore.upload(src_dir='your source directory',
@@ -235,13 +231,13 @@ datastore.upload(src_dir='your source directory',
                  show_progress=True)
 ```
 
-Met de para meter `target_path` geeft u de locatie in de bestands share (of BLOB-container) op die moet worden geüpload. De standaard instelling is `None`, zodat de gegevens naar de hoofdmap worden geüpload. Als `overwrite=True`, worden alle bestaande gegevens op `target_path` overschreven.
+De `target_path` parameter geeft de locatie op in de bestandsshare (of blobcontainer) die moet worden geüpload. Het standaard `None`om, zodat de gegevens worden geüpload naar root. Als `overwrite=True`, bestaande `target_path` gegevens op is overschreven.
 
-U kunt ook een lijst met afzonderlijke bestanden uploaden naar het gegevens archief via de `upload_files()` methode.
+U ook een lijst met afzonderlijke bestanden `upload_files()` uploaden naar de datastore via de methode.
 
-### <a name="download"></a>Downloaden
+### <a name="download"></a>Download
 
-Gegevens uit een gegevens opslag naar uw lokale bestands systeem downloaden:
+Download gegevens van een datastore naar uw lokale bestandssysteem:
 
 ```Python
 datastore.download(target_path='your target path',
@@ -249,47 +245,47 @@ datastore.download(target_path='your target path',
                    show_progress=True)
 ```
 
-De para meter `target_path` is de locatie van de lokale map waarnaar de gegevens moeten worden gedownload. Geef het pad naar `prefix`op om een pad op te geven naar de map in de bestands share (of BLOB-container) die u wilt downloaden. Als `prefix` `None`is, wordt de inhoud van de bestands share (of BLOB-container) gedownload.
+De `target_path` parameter is de locatie van de lokale map om de gegevens te downloaden. Als u een pad wilt opgeven naar de map in de bestandsshare (of blobcontainer) die u wilt downloaden, geeft u dat pad op naar `prefix`. Als `prefix` `None`dat zo is, wordt alle inhoud van uw bestandsshare (of blobcontainer) gedownload.
 
 <a name="train"></a>
 
 ## <a name="access-your-data-during-training"></a>Toegang tot uw gegevens tijdens de training
 
-Als u wilt werken met gegevens in uw gegevens opslag of als u uw gegevens wilt inpakken in een verbruikt object voor machine learning taken, zoals training, [maakt u een Azure machine learning-gegevensset](how-to-create-register-datasets.md). Gegevens sets bieden functies die tabellaire gegevens laden in een Panda of Spark-data frame. Gegevens sets bieden ook de mogelijkheid om bestanden te downloaden of te koppelen van een wille keurige indeling vanuit Azure Blob-opslag, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database en Azure Database for PostgreSQL. Meer [informatie over het trainen van gegevens sets](how-to-train-with-datasets.md).
+Als u wilt communiceren met gegevens in uw gegevensarchieven of uw gegevens wilt verpakken in een verbruiksobject voor machine learning-taken, zoals training, [maakt u een Azure Machine Learning-gegevensset.](how-to-create-register-datasets.md) Gegevenssets bieden functies die tabelgegevens laden in een panda's of Spark DataFrame. Gegevenssets bieden ook de mogelijkheid om bestanden van elke indeling te downloaden of te monteren van Azure Blob-opslag, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database en Azure Database voor PostgreSQL. [Meer informatie over trainen met gegevenssets](how-to-train-with-datasets.md).
 
-### <a name="accessing-source-code-during-training"></a>Toegang tot de bron code tijdens de training
+### <a name="accessing-source-code-during-training"></a>Toegang tot broncode tijdens de training
 
-Azure Blob-opslag heeft hogere doorvoer snelheden dan een Azure-bestands share en schaalt naar een groot aantal taken die parallel worden gestart. Daarom is het raadzaam om uw uitvoeringen te configureren voor het gebruik van Blob-opslag voor het overdragen van broncode bestanden.
+Azure Blob-opslag heeft hogere doorvoersnelheden dan een Azure-bestandsshare en wordt geschaald naar grote aantallen taken die parallel zijn gestart. Daarom raden we u aan uw uitvoeringen te configureren om Blob-opslag te gebruiken voor het overbrengen van broncodebestanden.
 
-In het volgende code voorbeeld wordt de uitvoerings configuratie opgegeven die BLOB-gegevens opslag moet gebruiken voor bron code overdrachten:
+In het volgende codevoorbeeld wordt in de runconfiguratie aangegeven welke blob-gegevensarchief moet worden gebruikt voor broncodeoverdrachten.
 
 ```python 
 # workspaceblobstore is the default blob storage
 run_config.source_directory_data_store = "workspaceblobstore" 
 ```
 
-## <a name="access-data-during-scoring"></a>Toegang tot gegevens tijdens de Score
+## <a name="access-data-during-scoring"></a>Toegang tot gegevens tijdens het scoren
 
-Azure Machine Learning biedt verschillende manieren om uw modellen te gebruiken voor het scoren van punten. Sommige van deze methoden bieden geen toegang tot gegevens opslag. Gebruik de volgende tabel om inzicht te krijgen in de methoden waarmee u toegang hebt tot gegevens opslag in de Score:
+Azure Machine Learning biedt verschillende manieren om uw modellen te gebruiken om te scoren. Sommige van deze methoden bieden geen toegang tot datastores. Gebruik de volgende tabel om te begrijpen welke methoden u toestaan om toegang te krijgen tot datastores tijdens het scoren:
 
-| Methode | Toegang tot Data Store | Beschrijving |
+| Methode | Toegang tot Datastore | Beschrijving |
 | ----- | :-----: | ----- |
-| [Batch-voor spelling](how-to-use-parallel-run-step.md) | ✔ | Maak voor spellingen voor grote hoeveel heden gegevens asynchroon. |
-| [-Webservice](how-to-deploy-and-where.md) | &nbsp; | Implementeer modellen als een webservice. |
-| [Module Azure IoT Edge](how-to-deploy-and-where.md) | &nbsp; | Implementeer modellen om apparaten te IoT Edge. |
+| [Batchvoorspelling](how-to-use-parallel-run-step.md) | ✔ | Doe asynchroon voorspellingen op grote hoeveelheden gegevens. |
+| [Webservice](how-to-deploy-and-where.md) | &nbsp; | Modellen implementeren als een webservice. |
+| [Azure IoT Edge-module](how-to-deploy-and-where.md) | &nbsp; | Implementeer modellen op IoT Edge-apparaten. |
 
-In situaties waarin de SDK geen toegang biedt tot gegevens opslag, kunt u mogelijk aangepaste code maken met behulp van de relevante Azure SDK om toegang te krijgen tot de data. De [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python) is bijvoorbeeld een client bibliotheek die u kunt gebruiken om toegang te krijgen tot gegevens die zijn opgeslagen in blobs of bestanden.
+Voor situaties waarin de SDK geen toegang biedt tot datastores, u mogelijk aangepaste code maken met behulp van de relevante Azure SDK om toegang te krijgen tot de gegevens. De Azure [Storage SDK voor Python](https://github.com/Azure/azure-storage-python) is bijvoorbeeld een clientbibliotheek die u gebruiken om toegang te krijgen tot gegevens die zijn opgeslagen in blobs of bestanden.
 
 <a name="move"></a>
 
-## <a name="move-data-to-supported-azure-storage-solutions"></a>Gegevens verplaatsen naar ondersteunde Azure Storage oplossingen
+## <a name="move-data-to-supported-azure-storage-solutions"></a>Gegevens verplaatsen naar ondersteunde Azure-opslagoplossingen
 
-Azure Machine Learning ondersteunt het openen van gegevens vanuit Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database en Azure Database for PostgreSQL. Als u niet-ondersteunde opslag gebruikt, wordt u aangeraden uw gegevens naar ondersteunde Azure Storage oplossingen te verplaatsen met behulp van [Azure Data Factory en deze stappen](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool). Het verplaatsen van gegevens naar ondersteunde opslag kan u helpen bij het opslaan van de kosten voor de uitvoer van gegevens tijdens machine learning experimenten. 
+Azure Machine Learning ondersteunt de toegang tot gegevens uit Azure Blob-opslag, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database en Azure Database voor PostgreSQL. Als u niet-ondersteunde opslag gebruikt, raden we u aan uw gegevens te verplaatsen naar ondersteunde Azure-opslagoplossingen met [Azure Data Factory en deze stappen.](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool) Door gegevens naar ondersteunde opslag te verplaatsen, u kosten besparen bij het uitvoeren van gegevens tijdens machine learning-experimenten. 
 
-Azure Data Factory biedt een efficiënte en robuuste gegevens overdracht met meer dan 80 vooraf ontwikkelde connectors zonder extra kosten. Deze connectors zijn onder andere Azure Data Services, on-premises gegevens bronnen, Amazon S3 en Redshift en Google BigQuery.
+Azure Data Factory biedt efficiënte en veerkrachtige gegevensoverdracht met meer dan 80 vooraf gebouwde connectors zonder extra kosten. Deze connectors omvatten Azure-gegevensservices, on-premises gegevensbronnen, Amazon S3 en Redshift en Google BigQuery.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een Azure machine learning-gegevensset maken](how-to-create-register-datasets.md)
-* [Een model trainen](how-to-train-ml-models.md)
+* [Train een model](how-to-train-ml-models.md)
 * [Een model implementeren](how-to-deploy-and-where.md)

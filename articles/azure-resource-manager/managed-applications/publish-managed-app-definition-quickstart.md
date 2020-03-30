@@ -1,18 +1,18 @@
 ---
-title: Definitie van beheerde app maken
+title: Beheerde app-definitie maken
 description: In dit artikel leest u hoe u een beheerde Azure-toepassing maakt die is bedoeld voor leden van uw organisatie.
 author: tfitzmac
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 11d4eb396d332327addcd85ed7badd36ef8f1d10
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5168dab7501cdb2907b3eede5877dce39e9e5c97
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650343"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79473044"
 ---
-# <a name="publish-an-azure-managed-application-definition"></a>De definitie van een door Azure beheerde toepassing publiceren
+# <a name="quickstart-publish-an-azure-managed-application-definition"></a>Snelstart: Een definitie van een door Azure beheerde toepassing publiceren
 
 In deze snelstart vindt u een inleiding tot het werken met beheerde toepassingen. U voegt de definitie van een beheerde toepassing toe aan een interne catalogus voor gebruikers in uw organisatie. Om de inleiding te vereenvoudigen, hebben we de bestanden voor uw beheerde toepassing al gemaakt. Deze bestanden zijn beschikbaar via GitHub. U krijgt informatie over het bouwen van die bestanden in de zelfstudie [Servicecatalogustoepassing maken](publish-service-catalog-app.md).
 

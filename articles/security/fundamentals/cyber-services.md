@@ -1,6 +1,6 @@
 ---
-title: Micro soft-Services in Cyber beveiliging | Microsoft Docs
-description: Het artikel bevat een inleiding over micro soft-Services met betrekking tot Cyber beveiliging en over het verkrijgen van meer informatie over deze services.
+title: Microsoft Services in cyberbeveiliging | Microsoft Documenten
+description: Het artikel biedt een inleiding over Microsoft-services met betrekking tot cyberbeveiliging en hoe u meer informatie over deze services verkrijgen.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -16,28 +16,28 @@ ms.workload: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.openlocfilehash: 7821fdc0dfda5db8d660a38a59efc774e30b9f4a
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727453"
 ---
-# <a name="microsoft-services-in-cybersecurity"></a>Micro soft-Services in Cyber beveiliging
+# <a name="microsoft-services-in-cybersecurity"></a>Microsoft Services in Cybersecurity
 
-Micro soft-services bieden een uitgebreide benadering van beveiliging, identiteit en Cyber beveiliging. Ze omvatten een reeks beveiligings-en identiteits Services in strategie, planning, implementatie en continue ondersteuning. Deze services kunnen zakelijke klanten helpen bij het implementeren van beveiligings oplossingen die zijn afgestemd op hun strategische doel stellingen.
+Microsoft Services biedt een uitgebreide benadering van beveiliging, identiteit en cyberbeveiliging. Ze omvatten een scala aan beveiligings- en identiteitsservices voor strategie, planning, implementatie en doorlopende ondersteuning. Deze services kunnen Enterprise-klanten helpen bij het implementeren van beveiligingsoplossingen die aansluiten bij hun strategische doelstellingen.
 
-Micro soft-Services kunnen oplossingen maken die de nieuwste beveiligings-en identiteits mogelijkheden van onze producten integreren en verbeteren om uw bedrijf te helpen beschermen en innovatie te stimuleren.
+Microsoft-services kunnen oplossingen creëren die de nieuwste beveiligings- en identiteitsmogelijkheden van onze producten integreren en verbeteren om uw bedrijf te beschermen en innovatie te stimuleren.
 
-Ons team van technische professionals bestaat uit zeer getrainde experts die een schat aan beveiliging en identiteits ervaring bieden.
+Ons team van technische professionals bestaat uit hoogopgeleide experts die een schat aan veiligheid en identiteitservaring bieden.
 
-Meer informatie over services van micro soft-Services:
+Meer informatie over services van Microsoft Services:
 
-* [Beoordeling van beveiligings risico](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-security-risk-assessment-solution-brief.pdf)
-* [Evaluatie van Dynamic Identity Framework](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/dynamic-identity-framework-identity-assessment-datasheet.pdf)
-* [Offline beoordeling voor Active Directory Services](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/offline-assessment-for-active-directory-security-datasheet.pdf)
-* [Verbeterde beveiligings beheer omgeving](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/enhanced-security-administrative-environment-solution-brief.pdf)
-* [Implementatie services van Azure AD](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
-* [Beveiligen tegen een zijdelingse account verplaatsing](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/pop-securing-lateral-account-movement.pdf)
-* [Respons en herstel van incidenten](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
+* [Beoordeling van beveiligingsrisico's](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-security-risk-assessment-solution-brief.pdf)
+* [Dynamic Identity Framework Assessment](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/dynamic-identity-framework-identity-assessment-datasheet.pdf)
+* [Offlinebeoordeling voor Active Directory Services](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/offline-assessment-for-active-directory-security-datasheet.pdf)
+* [Verbeterde beveiligingsbeheeromgeving](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/enhanced-security-administrative-environment-solution-brief.pdf)
+* [Azure AD-implementatieservices](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
+* [Beveiligen tegen laterale accountbeweging](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/pop-securing-lateral-account-movement.pdf)
+* [Incidentrespons en herstel](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
 
-Meer [informatie](https://aka.ms/cyberserv) over micro soft Services Security Consulting Services.
+[Meer informatie](https://aka.ms/cyberserv) over Microsoft Services Security-consultingservices.

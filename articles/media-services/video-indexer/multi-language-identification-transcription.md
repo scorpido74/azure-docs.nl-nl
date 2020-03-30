@@ -1,7 +1,7 @@
 ---
-title: Meerdere talen inhoud automatisch identificeren en transcriberen met Video Indexer
+title: Meertalige inhoud automatisch identificeren en transcriberen met Video Indexer
 titleSuffix: Azure Media Services
-description: In dit onderwerp wordt gedemonstreerd hoe u inhoud met meerdere talen automatisch kunt identificeren en transcriberen met Video Indexer.
+description: In dit onderwerp wordt uitgelegd hoe u meertalige inhoud automatisch identificeren en transcriberen met Video Indexer.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,39 +11,39 @@ ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
 ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72968744"
 ---
-# <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Meerdere talen inhoud automatisch identificeren en transcriberen (preview-versie)
+# <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Meertalige inhoud automatisch identificeren en transcriberen (voorbeeld)
 
-Video Indexer ondersteunt automatische taal identificatie en transcriptie in inhoud met meerdere talen. Dit proces omvat het automatisch identificeren van de gesp roken taal in verschillende segmenten van audio, waarbij elk segment van het Media bestand dat moet worden getranscribeerd, wordt verzonden en de transcriptie opnieuw kan worden gecombineerd tot één Unified transcriptie. 
+Video Indexer ondersteunt automatische taalidentificatie en transcriptie in meertalige inhoud. Dit proces omvat het automatisch identificeren van de gesproken taal in verschillende segmenten van audio, het verzenden van elk segment van het mediabestand te transcriberen en combineren van de transcriptie terug naar een uniforme transcriptie. 
 
-## <a name="choosing-multilingual-identification-on-indexing-with-portal"></a>Meertalige identificatie voor indexering met portal kiezen
+## <a name="choosing-multilingual-identification-on-indexing-with-portal"></a>Kiezen voor meertalige identificatie op indexering met portal
 
-U kunt de **meertalige detectie** kiezen bij het uploaden en indexeren van uw video. U kunt ook een detectie op **meerdere talen** kiezen wanneer u de video opnieuw wilt indexeren. In de volgende stappen wordt beschreven hoe u opnieuw indexeert:
+U **taaldetectie** kiezen bij het uploaden en indexeren van uw video. U ook **kiezen** voor detectie in meerdere talen wanneer u uw video opnieuw indexeert. In de volgende stappen wordt beschreven hoe u opnieuw indexeren:
 
 1. Ga naar de [Video Indexer](https://vi.microsoft.com/)-website en meld u aan.
-1. Ga naar de **bibliotheek** pagina en beweeg de muis aanwijzer over de naam van de video die u opnieuw wilt indexeren. 
-1. Klik in de rechter bovenhoek op de knop **video opnieuw indexeren** . 
-1. Kies in het dialoog venster **video opnieuw indexeren** de optie **detectie op meerdere talen** in de vervolg keuzelijst **video bron taal** .
+1. Ga naar de **pagina Bibliotheek** en plaats de gewenste video die u opnieuw wilt indexeren. 
+1. Klik in de rechterbenedenhoek op de **videoknop opnieuw indexeren.** 
+1. Kies in het dialoogvenster **Video opnieuw indexeren** de optie **voor meertalige detectie** in het vervolgkeuzevak **Videobrontaal.**
 
-    * Wanneer een video wordt geïndexeerd als meerdere talen, bevat de Insight-pagina deze optie en wordt er een extra inzicht type weer gegeven, zodat de gebruiker kan zien welk segment is getranscribeerd in welke taal ' gesp roken taal '.
-    * De vertaling naar alle talen is volledig beschikbaar vanuit de transcripten in meerdere talen.
-    * Alle andere inzichten worden weer gegeven in de gedetecteerde Master taal. Dit is de taal die het meest voor komt in de audio.
-    * Ondertiteling in de speler is ook beschikbaar in meerdere talen.
+    * Wanneer een video als meertalig wordt geïndexeerd, bevat de inzichtspagina die optie en verschijnt er een extra inzichtstype, zodat de gebruiker kan zien welk segment is getranscribeerd in welke taal "Gesproken taal".
+    * Vertaling naar alle talen is volledig beschikbaar via het meertalige transcript.
+    * Alle andere inzichten worden weergegeven in de gedetecteerde hoofdtaal - dat is de taal die het meest in de audio verscheen.
+    * Ondertiteling op de speler is ook beschikbaar in meertalig.
 
 ![Portalervaring](./media/multi-language-identification-transcription/portal-experience.png)
 
-## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>Meertalige identificatie voor indexering met API kiezen
+## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>Kiezen voor meertalige identificatie bij indexering met API
 
-Wanneer u een video indexeert of opnieuw [indexeert](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) met behulp van de API, kiest u de optie `multi-language detection` in de para meter `sourceLanguage`.
+Wanneer u een video indexeert of [opnieuw indexeert](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) met de API, kiest u de `multi-language detection` optie in de `sourceLanguage` parameter.
 
-### <a name="model-output"></a>Model uitvoer
+### <a name="model-output"></a>Uitvoer van model
 
-In het model worden alle talen opgehaald die in de video in één lijst zijn gedetecteerd
+Het model haalt alle talen op die in de video in één lijst worden gedetecteerd
 
 ```json
 "sourceLanguage": null,
@@ -53,7 +53,7 @@ In het model worden alle talen opgehaald die in de video in één lijst zijn ged
 ],
 ```
 
-Daarnaast bevat elke instantie in de sectie transcriptie de taal waarin deze is getranscribeerd
+Bovendien bevat elk exemplaar in de transcriptiesectie de taal waarin het is getranscribeerd
 
 ```json
 {
@@ -75,19 +75,19 @@ Daarnaast bevat elke instantie in de sectie transcriptie de taal waarin deze is 
 
 ## <a name="guidelines-and-limitations"></a>Richtlijnen en beperkingen
 
-* Set ondersteunde talen: Engels, Frans, Duits, Spaans.
-* Ondersteuning voor inhoud met meerdere talen met Maxi maal drie ondersteunde talen.
-* Als de audio andere talen dan de hierboven vermelde lijst bevat, is het resultaat onverwacht.
-* Minimale segment lengte die moet worden gedetecteerd voor elke taal – 15 seconden.
-* De taal detectie offset is 3 seconden gemiddeld.
-* Spraak wordt naar verwachting doorlopend. Veelvuldige verschillen tussen talen kunnen de prestaties van modellen beïnvloeden.
-* Spraak van niet-systeem eigen sprekers kan van invloed zijn op de prestaties van het model (bijvoorbeeld wanneer luid sprekers hun eigen tong gebruiken en ze overschakelen naar een andere taal).
-* Het model is ontworpen om een spontane spreek spraak te herkennen met redelijke geluids akoestische (geen spraak opdrachten, zingen, enzovoort).
-* Het maken en bewerken van het project is momenteel niet beschikbaar voor Video's met meerdere talen.
-* Aangepaste taal modellen zijn niet beschikbaar wanneer u meerdere talen detectie gebruikt.
-* Het toevoegen van tref woorden wordt niet ondersteund.
-* Wanneer u ondertitelings bestanden exporteert, wordt de taal aanduiding niet weer gegeven.
-* De update transcript-API biedt geen ondersteuning voor meerdere taal bestanden.
+* Reeks ondersteunde talen: Engels, Frans, Duits, Spaans.
+* Ondersteuning voor meertalige inhoud met maximaal drie ondersteunde talen.
+* Als de audio andere talen bevat dan de bovenstaande ondersteunde lijst, is het resultaat onverwacht.
+* Minimale segmentlengte om voor elke taal te detecteren – 15 seconden.
+* Taaldetectie offset is 3 seconden gemiddeld.
+* Spraak zal naar verwachting continu zijn. Frequente wisselingen tussen talen kunnen van invloed zijn op de prestaties van de modellen.
+* Spraak van anderstaligen kan van invloed zijn op de prestaties van het model (bijvoorbeeld wanneer sprekers hun moedertaal gebruiken en ze overschakelen naar een andere taal).
+* Het model is ontworpen om een spontane gesprekstoespraak te herkennen met een redelijke audioakoestiek (geen spraakopdrachten, zang, enz.).
+* Het maken en bewerken van projecten is momenteel niet beschikbaar voor video's in meerdere talen.
+* Aangepaste taalmodellen zijn niet beschikbaar bij het gebruik van detectie in meerdere talen.
+* Het toevoegen van zoekwoorden wordt niet ondersteund.
+* Bij het exporteren van bestanden met ondertiteling wordt de taalaanduiding niet weergegeven.
+* De updatetranscript-API biedt geen ondersteuning voor bestanden in meerdere talen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
