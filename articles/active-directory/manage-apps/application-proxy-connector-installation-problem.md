@@ -1,6 +1,6 @@
 ---
-title: Probleem bij het installeren van de agent connector voor de toepassings proxy | Microsoft Docs
-description: Problemen oplossen die u mogelijk ondervindt bij het installeren van de agent connector van de toepassings proxy
+title: Probleem met het installeren van de application proxy agent connector | Microsoft Documenten
+description: Problemen oplossen waarmee u te maken krijgen bij het installeren van de Application Proxy Agent Connector
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,64 +16,64 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a35558b81d064680981bcf403a3584e3a3d00e4f
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 466e1ce0efbdec3f5475634f3857d02554d93d98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311740"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049134"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Probleem bij het installeren van de connector voor de toepassingsproxyagent
 
-Micro soft AAD Application proxy connector is een intern domein onderdeel dat uitgaande verbindingen gebruikt om verbinding te maken tussen het eind punt in de cloud dat beschikbaar is voor het interne domein.
+Microsoft AAD Application Proxy Connector is een interne domeincomponent die uitgaande verbindingen gebruikt om de verbinding van het beschikbare eindpunt van de cloud tot het interne domein vast te stellen.
 
-## <a name="general-problem-areas-with-connector-installation"></a>Algemene probleem gebieden met installatie van connector
+## <a name="general-problem-areas-with-connector-installation"></a>Algemene probleemgebieden met connectorinstallatie
 
-Wanneer de installatie van een connector mislukt, is de hoofd oorzaak meestal een van de volgende gebieden:
+Wanneer de installatie van een connector mislukt, is de hoofdoorzaak meestal een van de volgende gebieden:
 
-1.  **Connectiviteit** : om een geslaagde installatie te volt ooien, moet de nieuwe connector de eigenschappen van de vertrouwens relatie in de toekomst registreren en instellen. Dit wordt gedaan door verbinding te maken met de service voor de AAD-toepassings proxy.
+1.  **Connectiviteit** – om een succesvolle installatie te voltooien, moet de nieuwe connector toekomstige vertrouwenseigenschappen registreren en vaststellen. Dit wordt gedaan door verbinding te maken met de AAD Application Proxy cloudservice.
 
-2.  Het maken van een **vertrouwens relatie** : de nieuwe connector maakt een zelfondertekend certificaat en registreert zich bij de Cloud service.
+2.  **Trust Establishment** – de nieuwe connector maakt een zelfondertekend cert en registreert zich bij de cloudservice.
 
-3.  **Verificatie van de beheerder** : tijdens de installatie moet de gebruiker beheerders referenties opgeven om de installatie van de connector te volt ooien.
+3.  **Verificatie van de beheerder** : tijdens de installatie moet de gebruiker beheerdersreferenties opgeven om de connector-installatie te voltooien.
 
 > [!NOTE]
-> De installatie logboeken van de connector vindt u in de map% TEMP% en biedt aanvullende informatie over wat een installatie fout veroorzaakt.
+> De connectorinstallatielogboeken zijn te vinden in de map %TEMP%en kunnen u helpen aanvullende informatie te verstrekken over wat een installatiefout veroorzaakt.
 
-## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>Controleer de verbinding met de Cloud toepassings proxy-service en de micro soft-aanmeldings pagina
+## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>De verbinding met de proxyservice voor cloudtoepassingen en de pagina Microsoft Login verifiëren
 
-**Doel stelling:** Controleer of de connector computer verbinding kan maken met het registratie-eind punt van de AAD-toepassings proxy en de aanmeldings pagina van micro soft.
+**Doelstelling:** Controleer of de connectormachine verbinding kan maken met het eindpunt voor de registratie van AAD Application Proxy en de aanmeldingspagina van Microsoft.
 
-1.  Voer op de connector server een poort test uit met behulp van [Telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) of een ander hulp programma voor poort testen om te controleren of de poorten 443 en 80 zijn geopend.
+1.  Voer op de connectorserver een poorttest uit met [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) of een ander poorttestprogramma om te controleren of poorten 443 en 80 zijn geopend.
 
-2.  Als een van deze poorten niet is geslaagd, controleert u of de firewall of de back-end-proxy toegang heeft tot de vereiste domeinen en poorten Zie, [uw on-premises omgeving voorbereiden](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
+2.  Als een van deze poorten niet succesvol is, controleert u of de firewall of backendproxy toegang heeft tot de vereiste domeinen en poorten, [uw on-premises omgeving voorbereiden.](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)
 
-3.  Open een browser (tabblad afzonderlijk) en ga naar de volgende webpagina: <https://login.microsoftonline.com>, zorg ervoor dat u zich kunt aanmelden bij die pagina.
+3.  Open een browser (apart tabblad) en ga `https://login.microsoftonline.com`naar de volgende webpagina:, zorg ervoor dat u inloggen op die pagina.
 
-## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>De ondersteuning voor de machine en back-end-onderdelen controleren voor het certificaat van de toepassings proxy Trust
+## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>Ondersteuning voor machine- en backendcomponenten controleren voor het vertrouwenscertificaat van application proxy
 
-**Doel stelling:** Controleer of de connector computer, back-end proxy en firewall het certificaat kunnen ondersteunen dat door de connector is gemaakt voor toekomstige vertrouwens relaties.
+**Doelstelling:** Controleer of de connectormachine, backendproxy en firewall het certificaat kunnen ondersteunen dat door de connector is gemaakt voor toekomstige vertrouwensrelatie.
 
 >[!NOTE]
->De connector probeert een SHA512 gebruikt-certificaat te maken dat wordt ondersteund door TLS 1.2. Als de computer of de back-end firewall en proxy geen ondersteuning bieden voor TLS 1.2, mislukt de installatie.
+>De connector probeert een SHA512-cert te maken dat wordt ondersteund door TLS1.2. Als de machine of de backend firewall en proxy TLS1.2 niet ondersteunen, mislukt de installatie.
 >
 >
 
-**Om het probleem op te lossen:**
+**Ga als ander op zoek naar het probleem:**
 
-1.  Controleren of de computer TLS 1.2 ondersteunt: alle Windows-versies na 2012 R2 moeten TLS 1,2 ondersteunen. Als uw connector computer van een versie van 2012 R2 of eerder is, controleert u of de volgende Kb's zijn geïnstalleerd op de computer: <https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
+1.  Controleer of de machine TLS1.2 ondersteunt – Alle Windows-versies na 2012 R2 moeten TLS 1.2 ondersteunen. Als uw connectormachine afkomstig is van een versie van 2012 R2 of eerder, controleert u of de volgende KB's op de machine zijn geïnstalleerd:<https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
 
-2.  Neem contact op met uw netwerk beheerder en vraag om te controleren of de back-end-proxy en firewall SHA512 gebruikt niet blok keren voor uitgaand verkeer.
+2.  Neem contact op met uw netwerkbeheerder en vraag om te controleren of de backendproxy en firewall SHA512 niet blokkeren voor uitgaand verkeer.
 
-## <a name="verify-admin-is-used-to-install-the-connector"></a>Controleren of beheerder wordt gebruikt voor het installeren van de connector
+## <a name="verify-admin-is-used-to-install-the-connector"></a>Controleren of de beheerder wordt gebruikt om de connector te installeren
 
-**Doel stelling:** Controleer of de gebruiker die de connector probeert te installeren, een beheerder met de juiste referenties is. Op dit moment moet de gebruiker ten minste een toepassings beheerder zijn om de installatie te kunnen volt ooien.
+**Doelstelling:** Controleer of de gebruiker die de connector probeert te installeren een beheerder is met de juiste referenties. Momenteel moet de gebruiker ten minste een toepassingsbeheerder zijn om de installatie te laten slagen.
 
-**Controleren of de referenties juist zijn:**
+**Ga als volgt te werk om te controleren of de referenties correct zijn:**
 
-Verbinding maken met <https://login.microsoftonline.com> en dezelfde referenties gebruiken. Zorg ervoor dat de aanmelding is geslaagd. U kunt de gebruikersrol controleren door naar **Azure Active Directory** -&gt; **gebruikers en groepen** te gaan -&gt; **alle gebruikers**. 
+Maak `https://login.microsoftonline.com` verbinding met en gebruik dezelfde referenties. Zorg ervoor dat de login succesvol is. U de gebruikersrol controleren door naar - &gt; Azure - &gt; Active **Directory-gebruikers en groepen** alle **gebruikers**te gaan. **Azure Active Directory** 
 
-Selecteer uw gebruikers account en vervolgens ' Directory-rol ' in het resulterende menu. Controleer of de geselecteerde rol ' toepassings beheerder ' is. Als u in deze stappen geen toegang hebt tot een van de pagina's, hebt u niet de vereiste rol.
+Selecteer uw gebruikersaccount en vervolgens 'Maprol' in het resulterende menu. Controleer of de geselecteerde rol 'Toepassingsbeheerder' is. Als u geen toegang hebt tot een van de pagina's langs deze stappen, hebt u niet de vereiste rol.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over Azure AD Application Proxy connectors](application-proxy-connectors.md)
+[Informatie over Azure AD-toepassingsproxyconnectors](application-proxy-connectors.md)

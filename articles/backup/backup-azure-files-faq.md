@@ -1,18 +1,18 @@
 ---
 title: Veelgestelde vragen over het maken van een back-up van Azure-bestanden
-description: In dit artikel vindt u antwoorden op veelgestelde vragen over het beveiligen van uw Azure-bestands shares met de Azure Backup-service.
+description: Ontdek in dit artikel antwoorden op veelgestelde vragen over het beveiligen van uw Azure-bestandsshares met de Azure Backup-service.
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.openlocfilehash: c69d4642aefbd599d3783dcdfa059a0cd9d129d9
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302539"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Vragen over het maken back-ups van Azure-bestanden
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over het maken back-ups van Azure-bestanden. Sommige antwoorden bevatten koppelingen naar artikelen met uitgebreide informatie over het onderwerp. U kunt ook in het [discussieforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup) vragen over de Azure Backup-service plaatsen.
+In dit artikel vindt u antwoorden op veelgestelde vragen over het maken back-ups van Azure-bestanden. Sommige antwoorden bevatten koppelingen naar artikelen met uitgebreide informatie over het onderwerp. U kunt in het [discussieforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup) ook vragen over de Azure Backup-service plaatsen.
 
 Als u kort de secties in dit artikel wilt bekijken, gebruikt u de koppelingen aan de rechterkant, onder **In dit artikel**.
 
@@ -34,11 +34,11 @@ Ja. De beveiliging van Azure-bestandsshares die zijn verbonden met synchronisati
 
 Als u een back-up gaat maken en het opslagaccount selecteert waarin u bestandsshares wit detecteren, wordt het opslagaccount geregistreerd bij de kluis waarin dit wordt gedaan. Als u de bestandsshares wilt beveiligen met een andere kluis, moet u de [registratie ongedaan maken](troubleshoot-azure-files.md#configuring-backup) van het betreffende opslagaccount voor deze kluis.
 
-### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Kan ik de kluis wijzigen waarnaar ik een back-up van mijn bestands shares Maak?
+### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Kan ik de Vault wijzigen waarnaar ik een back-up van mijn bestandsaandelen maak?
 
-Ja. U moet de [beveiliging van een bestands share](manage-afs-backup.md#stop-protection-on-a-file-share) van de verbonden kluis echter stoppen, de [registratie](troubleshoot-azure-files.md#configuring-backup) van dit opslag account opheffen en vervolgens beveiligen tegen een andere kluis.
+Ja. U moet echter de [beveiliging stoppen bij een bestandsshare](manage-afs-backup.md#stop-protection-on-a-file-share) vanuit de verbonden Vault, dit opslagaccount [uitschrijven](troubleshoot-azure-files.md#configuring-backup) en deze vervolgens beschermen tegen een andere Vault.
 
-### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>In welke geografische gebieden kan ik back-ups maken van Azure-bestands shares?
+### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>In welke geo's kan ik back-ups maken van Azure File-shares?
 
 Het maken van back-ups van Azure-bestandsshares is momenteel in de preview-fase en is alleen beschikbaar in de volgende geografische gebieden:
 
@@ -70,20 +70,20 @@ Het maken van back-ups van Azure-bestandsshares is momenteel in de preview-fase 
 - US Gov - Arizona (UGA)
 - US Gov - Texas (UGT)
 - US Gov - Virginia (UGV)
-- Australië-centraal (ACL)
-- India West (INW)
-- Zuid-Afrika-noord (SAN)
-- UAE-noord (UAN)
-- Frankrijk-centraal (FRC)
-- Duitsland-noord (GN)                       
-- Duitsland-west-centraal (GWC)
-- Zuid-Afrika-west (zaag)
-- UAE-centraal (UAC)
-- NAANBEVOLEN (Noor wegen Oost)     
-- NWW (Noor wegen West)
-- SZN (Zwitserland-noord)
+- Australië Centraal (ACL)
+- India West(INW)
+- Zuid-Afrika Noord(SAN)
+- VAE Noord(UAN)
+- Frankrijk Centraal (FRC)
+- Duitsland Noord (GN)                       
+- Duitsland West Centraal (GWC)
+- Zuid-Afrika West (SAW)
+- VAE Centraal (UAC)
+- NWE (Noorwegen-Oost)     
+- NWW (Noorwegen West)
+- SzN (Zwitserland Noord)
 
-Schrijf naar [AskAzureBackupTeam@microsoft.com](mailto:askazurebackupteam@microsoft.com) als u deze functie wilt gebruiken in een specifiek geografisch gebied dat hierboven niet wordt vermeld.
+Schrijf [AskAzureBackupTeam@microsoft.com](mailto:askazurebackupteam@microsoft.com) naar als je nodig hebt om het te gebruiken in een specifieke geo die niet hierboven vermeld.
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>Hoeveel Azure-bestandsshares kan ik beveiligen in een kluis?
 
@@ -93,11 +93,11 @@ Met de preview-versie kunt u Azure-bestandsshares van maximaal 50 opslagaccounts
 
 Nee. Alle bestandsshares in een opslagaccount kunnen alleen in dezelfde kluis worden beveiligd.
 
-## <a name="backup"></a>Back-up maken
+## <a name="backup"></a>Back-up
 
-### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Hoeveel geplande back-ups kan ik per bestands share configureren?
+### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Hoeveel geplande back-ups kan ik per bestandsshare configureren?
 
-Azure Backup ondersteunt momenteel het configureren van geplande eenmalige back-ups van Azure-bestands shares.
+Azure Backup ondersteunt momenteel het configureren van geplande eenmaal dagelijkse back-ups van Azure File Shares.
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share"></a>Hoeveel back-ups op aanvraag kan ik maken per bestandsshare?
 
@@ -113,9 +113,9 @@ Wanneer een Azure-bestandsshare wordt verwijderd, krijgt u de lijst met back-ups
 
 Ja. Als u **Back-upgegevens behouden** hebt gekozen toen u met de beveiliging stopte, kunt u vanaf alle bestaande herstelpunten iets terugzetten.
 
-### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Wat gebeurt er als ik een actieve herstel taak Annuleer?
+### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Wat gebeurt er als ik een doorlopende hersteltaak annuleer?
 
-Als een actieve herstel taak wordt geannuleerd, wordt het herstel proces gestopt en alle bestanden die vóór de annulering zijn teruggezet, blijven de geconfigureerde bestemming (oorspronkelijke of alternatieve locatie) zonder terugdraai bewerkingen.
+Als een doorlopende hersteltaak wordt geannuleerd, wordt het herstelproces gestopt en worden alle bestanden hersteld vóór de annulering, blijft u op geconfigureerde bestemming (oorspronkelijke of alternatieve locatie) zonder terugdraaien.
 
 ## <a name="manage-backup"></a>Back-up beheren
 
@@ -127,7 +127,7 @@ Ja. Raadpleeg de gedetailleerde documentatie [hier](backup-azure-afs-automation.
 
 Alle momentopnamen die zijn gemaakt met Azure Backup, zijn toegankelijk via Momentopnamen weergeven in de portal, in PowerShell of in CLI. Meer informatie over momentopnamen van Azure-bestandsshares vindt u in [Overzicht van share-momentopnamen voor Azure Files (preview)](../storage/files/storage-snapshots-files.md).
 
-### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Wat is de maximale Bewaar periode die ik voor back-ups kan configureren?
+### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Wat is de maximale retentie die ik kan configureren voor back-ups?
 
 Voor de back-ups voor Azure-bestandsshares kunt u beleidsregels configureren. Back-ups kunnen tot 180 dagen worden bewaard. Met de optie [On-demand backup (Back-ups on-demand) in PowerShell](backup-azure-afs-automation.md#trigger-an-on-demand-backup) kunt u herstelpunten echter tot zelfs tien jaar bewaren.
 
@@ -137,7 +137,7 @@ Wanneer er op een of meer bestandsshares een nieuw beleid wordt toegepast, worde
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie enkele van deze veelgestelde vragen over back-ups voor meer informatie over andere gebieden van Azure Backup:
+Zie enkele van deze andere veelgestelde vragen over back-ups voor meer informatie over andere gebieden van Azure Backup:
 
 - [Veelgestelde vragen over Recovery Services-kluis](backup-azure-backup-faq.md)
 - [Veelgestelde vragen over Azure VM-back-ups](backup-azure-vm-backup-faq.md)

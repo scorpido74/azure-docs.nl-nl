@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 04/28/2010
 ms.author: raynew
 ms.openlocfilehash: 83e9e584967f780532ce9b3c51bf3f41a963eabf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176565"
 ---
-1. Meld u met de processerver aan als beheerder.
-2. Download de nieuwste versie van de [Unified Installer voor Setup](https://aka.ms/unifiedinstaller).
+1. Meld u aan bij de processerver als beheerder.
+2. Download de nieuwste versie van de [Unified Setup Installer.](https://aka.ms/unifiedinstaller)
 3. Dubbelklik op het installatieprogramma om het updateproces te starten.
-4. Het installatieprogramma detecteert de Site Recovery-onderdelen die zijn geïnstalleerd en deze wordt bijgewerkt naar de meest recente versie.
+4. Het installatieprogramma detecteert de siteherstelcomponenten die zijn geïnstalleerd en wordt deze bijgewerkt naar de nieuwste versie.

@@ -1,27 +1,27 @@
 ---
-title: Certificaten genereren en exporteren voor Azure Virtual WAN-gebruikers VPN-verbindingen | Microsoft Docs
-description: Maak een zelfondertekend basis certificaat, Exporteer de open bare sleutel en Genereer client certificaten met behulp van Power shell op Windows 10 of Windows Server 2016.
+title: Certificaten genereren en exporteren voor VPN-verbindingen van gebruikers | Azure Virtual WAN
+description: Maak een zelfondertekend rootcertificaat, exporteer de openbare sleutel en genereer clientcertificaten met PowerShell op Windows 10 of Windows Server 2016.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 03/18/2020
 ms.author: cherylmc
-ms.openlocfilehash: 57d730a92c687a297a35b8cd6cccd955025694af
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0303bac88f34c895a4a680cd5bff0e9d1513d2e5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514912"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059918"
 ---
-# <a name="generate-and-export-certificates-for-virtual-wan-user-vpn-connections"></a>Certificaten voor virtuele WAN-gebruikers VPN-verbindingen genereren en exporteren
+# <a name="generate-and-export-certificates-for-user-vpn-connections"></a>Certificaten genereren en exporteren voor VPN-verbindingen van gebruikers
 
-VPN-verbindingen van gebruiker gebruiken certificaten om te verifiëren. In dit artikel wordt beschreven hoe u een zelfondertekend basis certificaat maakt en client certificaten genereert met behulp van Power shell op Windows 10 of Windows Server 2016.
+GebruikersVPN-verbindingen (point-to-site) gebruiken certificaten om te verifiëren. In dit artikel ziet u hoe u een zelfondertekend rootcertificaat maakt en clientcertificaten genereert met PowerShell op Windows 10 of Windows Server 2016.
 
-U moet de stappen in dit artikel uitvoeren op een computer met Windows 10 of Windows Server 2016. De Power shell-cmdlets die u gebruikt om certificaten te genereren, maken deel uit van het besturings systeem en werken niet op andere versies van Windows. De computer met Windows 10 of Windows Server 2016 is alleen nodig voor het genereren van de certificaten. Zodra de certificaten zijn gegenereerd, kunt u deze uploaden of installeren op elk ondersteund client besturingssysteem.
+U moet de stappen in dit artikel uitvoeren op een computer met Windows 10 of Windows Server 2016. De PowerShell-cmdlets die u gebruikt om certificaten te genereren, maken deel uit van het besturingssysteem en werken niet op andere versies van Windows. De Windows 10- of Windows Server 2016-computer is alleen nodig om de certificaten te genereren. Zodra de certificaten zijn gegenereerd, u ze uploaden of installeren op een ondersteund besturingssysteem voor klanten.
 
 [!INCLUDE [Export public key](../../includes/vpn-gateway-generate-export-certificates-include.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Door gaan met de [virtuele WAN-stappen voor de gebruiker VPN-verbinding](virtual-wan-about.md)
+Doorgaan met de [virtuele WAN-stappen voor de VPN-verbinding van de gebruiker](virtual-wan-about.md)

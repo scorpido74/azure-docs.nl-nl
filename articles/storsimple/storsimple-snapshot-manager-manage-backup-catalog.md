@@ -1,6 +1,6 @@
 ---
-title: StorSimple Snapshot Manager back-upcatalogus | Microsoft Docs
-description: Hierin wordt beschreven hoe u de StorSimple Snapshot Manager MMC-module gebruikt voor het weer geven en beheren van de back-catalogus.
+title: StorSimple Snapshot Manager back-upcatalogus | Microsoft Documenten
+description: Beschrijft hoe u de Module StorSimple Snapshot Manager MMC gebruiken om de back-upcatalogus weer te geven en te beheren.
 services: storsimple
 documentationcenter: NA
 author: twooley
@@ -15,153 +15,153 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: 38ef7774263e4b28b7c316fd0870ca8f7b89d6b8
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75931711"
 ---
-# <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>StorSimple Snapshot Manager gebruiken voor het beheren van de back-catalogus
+# <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>StorSimple Snapshot Manager gebruiken om de back-upcatalogus te beheren
 
 ## <a name="overview"></a>Overzicht
-Met de primaire functie van StorSimple Snapshot Manager kunt u toepassings consistente back-upkopieën van StorSimple-volumes maken in de vorm van moment opnamen. Moment opnamen worden vervolgens weer gegeven in een XML-bestand met de naam *Backup Catalog*. In de back-upcatalogus worden moment opnamen geordend op volume groep en vervolgens op lokale moment opname of Cloud momentopname.
+De primaire functie van StorSimple Snapshot Manager is om u in staat te stellen toepassingsconsistente back-upkopieën van StorSimple-volumes te maken in de vorm van momentopnamen. Momentopnamen worden vervolgens weergegeven in een XML-bestand dat een *back-upcatalogus*wordt genoemd. De back-upcatalogus organiseert momentopnamen per volumegroep en vervolgens op lokale momentopname of cloudmomentopname.
 
-In deze zelf studie wordt beschreven hoe u het **back-upcatalogus** knooppunt kunt gebruiken om de volgende taken uit te voeren:
+In deze zelfstudie wordt beschreven hoe u het knooppunt **Back-upcatalogus** gebruiken om de volgende taken uit te voeren:
 
 * Een volume herstellen
-* Een volume of volume groep klonen
+* Een volume- of volumegroep klonen
 * Een back-up verwijderen
 * Een bestand herstellen
-* De Storsimple Snapshot Manager-Data Base herstellen
+* De Database van Storsimple Snapshot Manager herstellen
 
-U kunt de back-catalogus bekijken door het knoop punt **back-upcatalogus** uit te vouwen in het deel venster **bereik** en vervolgens de volume groep uit te breiden.
+U de back-upcatalogus bekijken door het knooppunt **Back-upcatalogus** uit te vouwen in het deelvenster **Bereik** en vervolgens de volumegroep uit te breiden.
 
-* Als u op de naam van de volume groep klikt, wordt in het deel venster met **resultaten** het aantal lokale moment opnamen en de Cloud momentopnamen weer gegeven die beschikbaar zijn voor de volume groep. 
-* Als u op **lokale moment opname** of **Cloud momentopname**klikt, wordt in het deel venster met **resultaten** de volgende informatie weer gegeven over elke moment opname van de back-up (afhankelijk van uw **weer gave** -instellingen):
+* Als u op de naam van de volumegroep klikt, wordt in het deelvenster **Resultaten** het aantal lokale momentopnamen en cloudmomentopnamen weergegeven dat beschikbaar is voor de volumegroep. 
+* Als u op **Lokale momentopname of** **Cloudmomentopname**klikt, worden in het deelvenster **Resultaten** de volgende informatie over elke momentopname weergegeven (afhankelijk van uw **weergave-instellingen):**
   
-  * **Naam** : het tijdstip waarop de moment opname is gemaakt.
-  * **Type** : of dit een lokale moment opname of een Cloud momentopname is.
-  * **Eigenaar** : de eigenaar van de inhoud. 
-  * **Beschikbaar** : of de moment opname momenteel beschikbaar is. **Waar** geeft aan dat de moment opname beschikbaar is en kan worden hersteld. **Onwaar** geeft aan dat de moment opname niet langer beschikbaar is. 
-  * **Geïmporteerd** : of de back-up is geïmporteerd. **Waar** geeft aan dat de back-up is geïmporteerd uit de StorSimple-Apparaatbeheer service op het moment dat het apparaat werd geconfigureerd in StorSimple Snapshot Manager; **Onwaar** geeft aan dat deze niet is geïmporteerd, maar is gemaakt door StorSimple Snapshot Manager. (U kunt een geïmporteerde volume groep eenvoudig identificeren omdat er een achtervoegsel wordt toegevoegd dat het apparaat identificeert van waaruit de volume groep is geïmporteerd.)
+  * **Naam** – de tijd dat de momentopname is gemaakt.
+  * **Typ** : of dit nu een lokale momentopname of een cloudmomentopname is.
+  * **Eigenaar** – de eigenaar van de inhoud. 
+  * **Beschikbaar** – of de momentopname momenteel beschikbaar is. **True** geeft aan dat de momentopname beschikbaar is en kan worden hersteld; **False** geeft aan dat de momentopname niet meer beschikbaar is. 
+  * **Geïmporteerd** : of de back-up is geïmporteerd. **True** geeft aan dat de back-up is geïmporteerd uit de StorSimple Device Manager-service op het moment dat het apparaat is geconfigureerd in StorSimple Snapshot Manager; **False** geeft aan dat het niet is geïmporteerd, maar is gemaakt door StorSimple Snapshot Manager. (U eenvoudig een geïmporteerde volumegroep identificeren omdat er een achtervoegsel wordt toegevoegd dat het apparaat identificeert waaruit de volumegroep is geïmporteerd.)
     
     ![Back-upcatalogus](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Backup_catalog.png)
-* Als u **lokale moment opname** of **Cloud momentopname**uitvouwt en vervolgens op een naam van een afzonderlijke moment opname klikt, wordt in het deel venster met **resultaten** de volgende informatie weer gegeven over de moment opname die u hebt geselecteerd:
+* Als u **Lokale momentopname of** cloudmomentopname uitvouwt en vervolgens op een afzonderlijke momentopnamenaam klikt, wordt in het deelvenster **Resultaten** de volgende informatie weergegeven over de momentopname die u hebt geselecteerd: **Cloud Snapshot**
   
-  * **Naam** : het volume dat wordt aangeduid met een stationsletter. 
-  * **Lokale naam** : de lokale naam van het station (indien beschikbaar). 
-  * **Apparaat** : de naam van het apparaat waarop het volume zich bevindt. 
-  * **Beschikbaar** : of de moment opname momenteel beschikbaar is. **Waar** geeft aan dat de moment opname beschikbaar is en kan worden hersteld. **Onwaar** geeft aan dat de moment opname niet langer beschikbaar is. 
+  * **Naam** – het volume dat per stationsletter wordt aangegeven. 
+  * **Lokale naam** – de lokale naam van het station (indien beschikbaar). 
+  * **Apparaat** – de naam van het apparaat waarop het volume zich bevindt. 
+  * **Beschikbaar** – of de momentopname momenteel beschikbaar is. **True** geeft aan dat de momentopname beschikbaar is en kan worden hersteld; **False** geeft aan dat de momentopname niet meer beschikbaar is. 
 
 ## <a name="restore-a-volume"></a>Een volume herstellen
-Gebruik de volgende procedure om een volume terug te zetten vanuit een back-up.
+Gebruik de volgende procedure om een volume van back-up te herstellen.
 
 #### <a name="prerequisites"></a>Vereisten
-Als u dit nog niet hebt gedaan, maakt u een volume en volume groep en verwijdert u het volume. StorSimple Snapshot Manager maakt standaard een back-up van een volume voordat deze wordt verwijderd. Deze voorzorgsmaatregel kan gegevens verlies voor komen als het volume per ongeluk wordt verwijderd of als de gegevens om een of andere reden moeten worden hersteld. 
+Als u dit nog niet hebt gedaan, maakt u een volume- en volumegroep en verwijdert u het volume. StorSimple Snapshot Manager maakt standaard een back-up van een volume voordat het kan worden verwijderd. Deze voorzorgsmaatregel kan gegevensverlies voorkomen als het volume onbedoeld wordt verwijderd of als de gegevens om welke reden dan ook moeten worden hersteld. 
 
-In StorSimple Snapshot Manager wordt het volgende bericht weer gegeven tijdens het maken van de voorzorgsmaatregel back-up.
+StorSimple Snapshot Manager geeft het volgende bericht weer terwijl het de voorzorgsmaatregel maakt.
 
-![Automatische momentopname bericht](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Automatic_snap.png) 
+![Automatisch momentopnamebericht](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Automatic_snap.png) 
 
 > [!IMPORTANT]
-> U kunt een volume dat deel uitmaakt van een volume groep niet verwijderen. De optie verwijderen is niet beschikbaar. <br>
+> U een volume dat deel uitmaakt van een volumegroep niet verwijderen. De optie verwijderen is niet beschikbaar. <br>
 > 
 > 
 
 #### <a name="to-restore-a-volume"></a>Een volume herstellen
-1. Klik op het pictogram bureau blad om StorSimple Snapshot Manager te starten. 
-2. Vouw in het deel venster **bereik** het knoop punt **back-catalogus** uit, vouw een volume groep uit en klik vervolgens op **lokale moment opnamen** of **Cloud momentopnamen**. Er wordt een lijst met back-upmomentopnamen weer gegeven in het **resultaten** venster.
-3. Zoek de back-up die u wilt herstellen, klik met de rechter muisknop en klik vervolgens op **herstellen**.
+1. Klik op het bureaubladpictogram om StorSimple Snapshot Manager te starten. 
+2. Vouw **in** het deelvenster Bereik het knooppunt **Back-upcatalogus** uit, vouw een volumegroep uit en klik vervolgens op **Lokale momentopnamen** of **Cloudmomentopnamen**. Er wordt een lijst met back-upmomentopnamen weergegeven in het deelvenster **Resultaten.**
+3. Zoek de back-up die u wilt herstellen, klik met de rechtermuisknop en klik op **Herstellen**.
    
     ![Back-upcatalogus herstellen](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_BU_catalog.png) 
-4. Bekijk op de pagina Bevestiging de details, typ **bevestigen**en klik vervolgens op **OK**. StorSimple Snapshot Manager maakt gebruik van de back-up om het volume te herstellen.
+4. Controleer op de bevestigingspagina de details, typ **Bevestigen**en klik op **OK**. StorSimple Snapshot Manager gebruikt de back-up om het volume te herstellen.
    
-    ![Bevestigings bericht herstellen](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_volume_msg.png) 
-5. U kunt de herstel actie controleren terwijl deze wordt uitgevoerd. Vouw in het deel venster **bereik** het knoop punt **taken** uit en klik vervolgens op **uitvoeren**. De taak Details worden weer gegeven in het deel venster met **resultaten** . Wanneer de herstel taak is voltooid, worden de taak Details overgebracht naar de lijst van de **afgelopen 24 uur** .
+    ![Bevestigingsbericht herstellen](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_volume_msg.png) 
+5. U de herstelactie controleren terwijl deze wordt uitgevoerd. Vouw in het deelvenster **Bereik** het knooppunt **Taken** uit en klik vervolgens op **Uitvoeren**. De taakgegevens worden weergegeven in het deelvenster **Resultaten.** Wanneer de hersteltaak is voltooid, worden de taakgegevens overgebracht naar de lijst **Laatste 24 uur.**
 
-## <a name="clone-a-volume-or-volume-group"></a>Een volume of volume groep klonen
-Gebruik de volgende procedure om een duplicaat (kloon) van een volume of volume groep te maken.
+## <a name="clone-a-volume-or-volume-group"></a>Een volume- of volumegroep klonen
+Gebruik de volgende procedure om een duplicaat (kloon) van een volume- of volumegroep te maken.
 
-#### <a name="to-clone-a-volume-or-volume-group"></a>Een volume of volume groep klonen
-1. Klik op het pictogram bureau blad om StorSimple Snapshot Manager te starten.
-2. Vouw in het deel venster **bereik** het knoop punt **back-catalogus** uit, vouw een volume groep uit en klik vervolgens op **Cloud momentopnamen**. Er wordt een lijst met back-ups weer gegeven in het **resultaten** venster.
-3. Zoek het volume of de volume groep die u wilt klonen, klik met de rechter muisknop op de naam van het volume of de volume groep en klik op **klonen**. Het dialoog venster **kloon van Cloud momentopname** wordt weer gegeven.
+#### <a name="to-clone-a-volume-or-volume-group"></a>Een volume- of volumegroep klonen
+1. Klik op het bureaubladpictogram om StorSimple Snapshot Manager te starten.
+2. Vouw **in** het deelvenster Bereik het knooppunt **Back-upcatalogus** uit, vouw een volumegroep uit en klik vervolgens op **Cloudsnapshots**. Er wordt een lijst met back-ups weergegeven in het deelvenster **Resultaten.**
+3. Zoek de volume- of volumegroep die u wilt klonen, klik met de rechtermuisknop op de naam van de volume- of volumegroep en klik op **Kloon**. Het dialoogvenster **Momentopname kloonwolk** wordt weergegeven.
    
-    ![Een Cloud momentopname klonen](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Clone.png) 
-4. Voer de volgende stappen uit om het dialoog venster **Cloud momentopname klonen** te volt ooien: 
+    ![Een cloudmomentopname klonen](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Clone.png) 
+4. Vul het dialoogvenster **Clone Cloud Snapshot** als volgt in: 
    
-   1. Typ in het tekstvak **naam** een naam voor het gekloonde volume. Deze naam wordt weer gegeven in het knoop punt **volumes** . 
-   2. (Optioneel) Selecteer **station**en selecteer vervolgens een stationsletter in de vervolg keuzelijst.
-   3. (Optioneel) Selecteer **map (NTFS)** en typ een mappad of klik op Bladeren en selecteer een locatie voor de map. 
-   4. Klik op **Maken**.
-5. Wanneer het kloon proces is voltooid, moet u het gekloonde volume initialiseren. Start Serverbeheer en start vervolgens schijf beheer. Zie [volumes koppelen](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)voor gedetailleerde instructies. Nadat het volume is geïnitialiseerd, wordt het weer gegeven onder het knoop punt **volumes** in het deel venster **bereik** . Als u het vermelde volume niet ziet, vernieuwt u de lijst met volumes (Klik met de rechter muisknop op het knoop punt **volumes** en klik vervolgens op **vernieuwen**).
+   1. Typ in het tekstvak **Naam** een naam voor het gekloonde volume. Deze naam wordt weergegeven in het knooppunt **Volumes.** 
+   2. (Optioneel) selecteer **Station**en selecteer vervolgens een stationsletter in de vervolgkeuzelijst.
+   3. (Optioneel) selecteer **Map (NTFS)** en typ een mappad of klik op Bladeren en selecteer een locatie voor de map. 
+   4. Klik **op Maken**.
+5. Wanneer het kloonproces is voltooid, moet u het gekloonde volume initialiseren. Start Serverbeheer en start schijfbeheer. Zie [Volumes monteren voor](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)gedetailleerde instructies. Nadat het is geïnitialiseerd, wordt het volume weergegeven onder het knooppunt **Volumes** in het deelvenster **Scope.** Als u het vermelde volume niet ziet, vernieuwt u de lijst met volumes (klik met de rechtermuisknop op het knooppunt **Volumes** en klikt u vervolgens op **Vernieuwen).**
 
 ## <a name="delete-a-backup"></a>Een back-up verwijderen
-Gebruik de volgende procedure om een moment opname te verwijderen uit de back-catalogus. 
+Gebruik de volgende procedure om een momentopname uit de back-upcatalogus te verwijderen. 
 
 > [!NOTE]
-> Als u een moment opname verwijdert, worden de back-upgegevens verwijderd die zijn gekoppeld aan de moment opname. Het proces voor het opschonen van gegevens uit de cloud kan echter enige tijd duren.<br>
+> Als u een momentopname verwijdert, worden de back-upgegevens verwijderd die aan de momentopname zijn gekoppeld. Het verwerken van gegevens uit de cloud kan echter enige tijd in beslag nemen.<br>
 
 
 #### <a name="to-delete-a-backup"></a>Een back-up verwijderen
-1. Klik op het pictogram bureau blad om StorSimple Snapshot Manager te starten.
-2. Vouw in het deel venster **bereik** het knoop punt **back-catalogus** uit, vouw een volume groep uit en klik vervolgens op **lokale moment opnamen** of **Cloud momentopnamen**. Er wordt een lijst met moment opnamen weer gegeven in het **resultaten** venster.
-3. Klik met de rechter muisknop op de moment opname die u wilt verwijderen en klik vervolgens op **verwijderen**.
-4. Wanneer het bevestigings bericht wordt weer gegeven, klikt u op **OK**.
+1. Klik op het bureaubladpictogram om StorSimple Snapshot Manager te starten.
+2. Vouw **in** het deelvenster Bereik het knooppunt **Back-upcatalogus** uit, vouw een volumegroep uit en klik vervolgens op **Lokale momentopnamen** of **Cloudmomentopnamen**. Er wordt een lijst met momentopnamen weergegeven in het deelvenster **Resultaten.**
+3. Klik met de rechtermuisknop op de momentopname die u wilt verwijderen en klik vervolgens op **Verwijderen**.
+4. Klik op **OK**wanneer het bevestigingsbericht wordt weergegeven.
 
 ## <a name="recover-a-file"></a>Een bestand herstellen
-Als een bestand per ongeluk van een volume wordt verwijderd, kunt u het bestand herstellen door een moment opname op te halen die de verwijdering vooraf bijwerkt, met behulp van de moment opname om een kloon van het volume te maken en vervolgens het bestand van het gekloonde volume naar het oorspronkelijke volume te kopiëren.
+Als een bestand per ongeluk uit een volume wordt verwijderd, u het bestand herstellen door een momentopname op te halen die voorafgaat aan de verwijdering, de momentopname gebruikt om een kloon van het volume te maken en vervolgens het bestand van het gekloonde volume naar het oorspronkelijke volume te kopiëren.
 
 #### <a name="prerequisites"></a>Vereisten
-Voordat u begint, moet u ervoor zorgen dat u een huidige back-up van de volume groep hebt. Verwijder vervolgens een bestand dat is opgeslagen op een van de volumes in die volume groep. Gebruik tot slot de volgende stappen om het verwijderde bestand te herstellen vanuit de back-up. 
+Voordat u begint, moet u ervoor zorgen dat u een huidige back-up van de volumegroep hebt. Verwijder vervolgens een bestand dat is opgeslagen op een van de volumes in die volumegroep. Gebruik ten slotte de volgende stappen om het verwijderde bestand uit uw back-up te herstellen. 
 
 #### <a name="to-recover-a-deleted-file"></a>Een verwijderd bestand herstellen
-1. Klik op het Snapshot Manager pictogram StorSimple op het bureau blad. Het venster StorSimple Snapshot Manager console wordt weer gegeven. 
-2. Vouw in het deel venster **bereik** het knoop punt **back-catalogus** uit en blader naar een moment opname die het verwijderde bestand bevat. Normaal gesp roken moet u een moment opname selecteren die net vóór het verwijderen is gemaakt.
-3. Zoek het volume dat u wilt klonen, klik met de rechter muisknop en klik op **klonen**. Het dialoog venster **kloon van Cloud momentopname** wordt weer gegeven.
+1. Klik op het pictogram StorSimple Snapshot Manager op uw bureaublad. Het consolevenster Van StorSimple Snapshot Manager wordt weergegeven. 
+2. Vouw **in** het deelvenster Bereik het knooppunt **Back-upcatalogus** uit en blader naar een momentopname die het verwijderde bestand bevat. Meestal moet u een momentopname selecteren die vlak voor de verwijdering is gemaakt.
+3. Zoek het volume dat u wilt klonen, klik met de rechtermuisknop en klik op **Klonen**. Het dialoogvenster **Momentopname kloonwolk** wordt weergegeven.
    
-    ![Een Cloud momentopname klonen](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Clone.png) 
-4. Voer de volgende stappen uit om het dialoog venster **Cloud momentopname klonen** te volt ooien: 
+    ![Een cloudmomentopname klonen](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Clone.png) 
+4. Vul het dialoogvenster **Clone Cloud Snapshot** als volgt in: 
    
-   1. Typ in het tekstvak **naam** een naam voor het gekloonde volume. Deze naam wordt weer gegeven in het knoop punt **volumes** . 
-   2. Beschrijving Selecteer **station**en selecteer vervolgens een stationsletter in de vervolg keuzelijst. 
-   3. Beschrijving Selecteer **map (NTFS)** en typ een mappad of klik op **Bladeren** en selecteer een locatie voor de map. 
-   4. Klik op **Maken**. 
-5. Wanneer het kloon proces is voltooid, moet u het gekloonde volume initialiseren. Start Serverbeheer en start vervolgens schijf beheer. Zie [volumes koppelen](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)voor gedetailleerde instructies. Nadat het volume is geïnitialiseerd, wordt het weer gegeven onder het knoop punt **volumes** in het deel venster **bereik** . 
+   1. Typ in het tekstvak **Naam** een naam voor het gekloonde volume. Deze naam wordt weergegeven in het knooppunt **Volumes.** 
+   2. (Optioneel) Selecteer **Station**en selecteer vervolgens een stationsletter in de vervolgkeuzelijst. 
+   3. (Optioneel) Selecteer **Map (NTFS)** en typ een mappad of klik op **Bladeren** en selecteer een locatie voor de map. 
+   4. Klik **op Maken**. 
+5. Wanneer het kloonproces is voltooid, moet u het gekloonde volume initialiseren. Start Serverbeheer en start schijfbeheer. Zie [Volumes monteren voor](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)gedetailleerde instructies. Nadat het is geïnitialiseerd, wordt het volume weergegeven onder het knooppunt **Volumes** in het deelvenster **Scope.** 
    
-    Als u het vermelde volume niet ziet, vernieuwt u de lijst met volumes (Klik met de rechter muisknop op het knoop punt **volumes** en klik vervolgens op **vernieuwen**).
-6. Open de NTFS-map met het gekloonde volume, vouw het knoop punt **volumes** uit en open vervolgens het gekloonde volume. Zoek het bestand dat u wilt herstellen en kopieer het naar het primaire volume.
-7. Nadat u het bestand hebt hersteld, kunt u de NTFS-map met het gekloonde volume verwijderen.
+    Als u het vermelde volume niet ziet, vernieuwt u de lijst met volumes (klik met de rechtermuisknop op het knooppunt **Volumes** en klikt u vervolgens op **Vernieuwen).**
+6. Open de NTFS-map die het gekloonde volume bevat, vouw het knooppunt **Volumes** uit en open het gekloonde volume. Zoek het bestand dat u wilt herstellen en kopieer het naar het primaire volume.
+7. Nadat u het bestand hebt hersteld, u de NTFS-map verwijderen die het gekloonde volume bevat.
 
-## <a name="restore-the-storsimple-snapshot-manager-database"></a>De StorSimple Snapshot Manager-Data Base herstellen
-U moet regel matig een back-up maken van de StorSimple Snapshot Manager-Data Base op de hostcomputer. Als er een nood situatie optreedt of als de hostcomputer om welke reden dan ook mislukt, kunt u deze herstellen vanuit de back-up. Het maken van de back-up van de data base is een hand matig proces.
+## <a name="restore-the-storsimple-snapshot-manager-database"></a>De Database van StorSimple Snapshot Manager herstellen
+U moet regelmatig een back-up maken van de StorSimple Snapshot Manager-database op de hostcomputer. Als er zich een ramp voordoet of als de hostcomputer om welke reden dan ook uitvalt, u deze herstellen vanuit de back-up. Het maken van de database back-up is een handmatig proces.
 
-#### <a name="to-back-up-and-restore-the-database"></a>Back-up maken van de data base en deze herstellen
-1. Stop de micro soft StorSimple Management-service:
+#### <a name="to-back-up-and-restore-the-database"></a>Een back-up maken en de database herstellen
+1. Stop de Microsoft StorSimple-beheerservice:
    
    1. Start Serverbeheer.
-   2. Selecteer op het Serverbeheer-dash board de optie **Services**in het menu **extra** .
-   3. Selecteer de **micro soft StorSimple Management-service**in het venster **Services** .
-   4. Klik in het rechterdeel venster onder **micro soft StorSimple Management service**op **de service stoppen**.
+   2. Selecteer Services in het dashboard Serverbeheer in **het** menu **Extra**.
+   3. Selecteer in het venster **Services** de **Microsoft StorSimple Management Service**.
+   4. Klik in het rechterdeelvenster onder **Microsoft StorSimple Management Service**op De service **stoppen**.
 2. Blader op de hostcomputer naar C:\ProgramData\Microsoft\StorSimple\BACatalog. 
    
    > [!NOTE]
    > ProgramData is een verborgen map.
    > 
    > 
-3. Zoek het XML-bestand van de catalogus, kopieer het bestand en sla de kopie op in een veilige locatie of in de Cloud. Als de host mislukt, kunt u dit back-upbestand gebruiken om het back-upbeleid te herstellen dat u hebt gemaakt in StorSimple Snapshot Manager.
+3. Zoek het XML-bestand van de catalogus, kopieer het bestand en sla de kopie op een veilige locatie of in de cloud op. Als de host uitvalt, u dit back-upbestand gebruiken om het back-upbeleid te herstellen dat u hebt gemaakt in StorSimple Snapshot Manager.
    
-    ![Back-upcatalogusbestand van Azure StorSimple](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_bacatalog.png)
-4. Start de micro soft StorSimple Management-service opnieuw: 
+    ![Azure StorSimple-back-upcatalogusbestand](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_bacatalog.png)
+4. Start de Microsoft StorSimple-beheerservice opnieuw: 
    
-   1. Selecteer op het Serverbeheer-dash board de optie **Services**in het menu **extra** .
-   2. Selecteer de **micro soft StorSimple Management-service**in het venster **Services** .
-   3. Klik in het rechterdeel venster onder **micro soft StorSimple Management service**op **Start de service opnieuw**.
+   1. Selecteer Services in het dashboard Serverbeheer in **het** menu **Extra**.
+   2. Selecteer in het venster **Services** de **Microsoft StorSimple Management Service**.
+   3. Klik in het rechterdeelvenster onder **Microsoft StorSimple Management Service**op De service opnieuw **starten**.
 5. Blader op de hostcomputer naar C:\ProgramData\Microsoft\StorSimple\BACatalog. 
-6. Verwijder het XML-bestand van de catalogus en vervang dit door de back-upversie die u hebt gemaakt. 
-7. Klik op het pictogram bureau blad StorSimple Snapshot Manager om StorSimple Snapshot Manager te starten. 
+6. Verwijder het XML-bestand van de catalogus en vervang het door de back-upversie die u hebt gemaakt. 
+7. Klik op het pictogram StorSimple Snapshot Manager op het bureaublad om StorSimple Snapshot Manager te starten. 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [het gebruik van StorSimple Snapshot Manager voor het beheren van uw StorSimple-oplossing](storsimple-snapshot-manager-admin.md).
-* Meer informatie over [StorSimple-Snapshot Manager taken en-werk stromen](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows).
+* Meer informatie over [het gebruik van StorSimple Snapshot Manager om uw StorSimple-oplossing te beheren.](storsimple-snapshot-manager-admin.md)
+* Meer informatie over [taken en werkstromen van StorSimple Snapshot Manager](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows).
 

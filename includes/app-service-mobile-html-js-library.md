@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: ff7ba04271c150018f2c55b62e40542a686608cf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176545"
 ---
-## <a name="create-client"></a>Een clientverbinding maken
+## <a name="create-a-client-connection"></a><a name="create-client"></a>Een clientverbinding maken
 Maak een clientverbinding door een `WindowsAzure.MobileServiceClient`-object te maken.  Vervang `appUrl` door de URL van uw mobiele app.
 
 ```javascript
 var client = WindowsAzure.MobileServiceClient(appUrl);
 ```
 
-## <a name="table-reference"></a>Werken met tabellen
+## <a name="work-with-tables"></a><a name="table-reference"></a>Werken met tabellen
 Maak een verwijzing naar de back-endtabel als u gegevens wilt bekijken of bijwerken. Vervang `tableName` door de naam van uw tabel
 
 ```javascript
@@ -35,7 +35,7 @@ Wanneer u een tabelverwijzing hebt, kunt u verder werken aan uw tabel:
 * [Gegevens wijzigen](#modifying)
 * [Gegevens verwijderen](#deleting)
 
-### <a name="querying"></a>Procedures: Query uitvoeren op een tabelverwijzing
+### <a name="how-to-query-a-table-reference"></a><a name="querying"></a>Procedure: Een query uitvoeren op een tabelverwijzing
 Als u een tabelverwijzing hebt, kunt u deze gebruiken om een query uit te voeren op gegevens op de server.  Query's worden gemaakt in een LINQ-achtige taal.
 Gebruik de volgende code om alle gegevens uit de tabel op te halen:
 
@@ -69,7 +69,7 @@ De functie voor geslaagde pogingen wordt aangeroepen met de resultaten.  Gebruik
 
 Zie de [Documentatie over queryobjecten] voor meer informatie over de querysyntaxis.
 
-#### <a name="table-filter"></a>Gegevens filteren op de server
+#### <a name="filtering-data-on-the-server"></a><a name="table-filter"></a>Gegevens filteren op de server
 U kunt in de tabelverwijzing een `where`-clausule gebruiken:
 
 ```javascript
@@ -92,7 +92,7 @@ table
     .then(success, failure);
 ```
 
-#### <a name="table-paging"></a>Door gegevens bladeren
+#### <a name="paging-through-data"></a><a name="table-paging"></a>Doorgegevens heen gaan
 Gebruik de methode `take()` en `skip()`.  Bijvoorbeeld als u de tabel wilt splitsen in records met 100 rijen:
 
 ```javascript
@@ -120,7 +120,7 @@ De methode `.includeTotalCount()` wordt gebruikt om een totalCount-veld toe te v
 
 U kunt vervolgens de paginavariabelen en sommige UI-knoppen gebruiken om een paginalijst op te geven; gebruik `loadPage()` om de nieuwe records voor elke pagina te laden.  Implementeer caching voor snellere toegang tot de records die al zijn geladen.
 
-#### <a name="sorting-data"></a>Procedures: Gesorteerde gegevens retourneren
+#### <a name="how-to-return-sorted-data"></a><a name="sorting-data"></a>Procedure: Gesorteerde gegevens retourneren
 Gebruik de querymethode `.orderBy()` of `.orderByDescending()`:
 
 ```javascript
@@ -132,7 +132,7 @@ table
 
 Zie de [Documentatie over queryobjecten] voor meer informatie over het queryobject.
 
-### <a name="inserting"></a>Procedures: Gegevens invoegen
+### <a name="how-to-insert-data"></a><a name="inserting"></a>Procedure: Gegevens invoegen
 Maak een JavaScript-object met de juiste datum en roep `table.insert()` asynchroon aan:
 
 ```javascript
@@ -152,7 +152,7 @@ Wanneer het invoegen is geslaagd, wordt het ingevoegde item geretourneerd met de
 
 De Azure Mobile Apps Node.js Server SDK biedt ondersteuning voor dynamische schema's voor ontwikkelingsdoeleinden.  Met een dynamisch schema kunt u kolommen toevoegen aan de tabel door deze op te geven in een Insert- of Update-bewerking.  We raden u aan het dynamische schema uit te schakelen voordat u uw toepassing in productie neemt.
 
-### <a name="modifying"></a>Procedures: Gegevens wijzigen
+### <a name="how-to-modify-data"></a><a name="modifying"></a>Procedure: Gegevens wijzigen
 Net als bij de methode `.insert()` moet u een Update-object maken en vervolgens `.update()` aanroepen.  Het Update-object moet de id van het bij te werken record bevatten: de id wordt verkregen tijdens het lezen van het record of het aanroepen van `.insert()`.
 
 ```javascript
@@ -168,7 +168,7 @@ table
     }, failure);
 ```
 
-### <a name="deleting"></a>Procedures: Gegevens verwijderen
+### <a name="how-to-delete-data"></a><a name="deleting"></a>Procedure: Gegevens verwijderen
 Roep de methode `.del()` aan als u een record wilt verwijderen.  Geef de id door in een objectverwijzing:
 
 ```javascript

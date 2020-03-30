@@ -9,28 +9,28 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 86d768db7a31c634bdaca6c93f633c7bbaf10a65
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774287"
 ---
-Power shell **-cmdlet Get-AzPeeringLocation** retourneert een lijst met peering locaties met de verplichte para meter `Kind`, die u in latere stappen gaat gebruiken:
+PowerShell-cmdlet **Get-AzPeeringLocation** retourneert een lijst met `Kind`peeringlocaties met de verplichte parameter , die u in latere stappen zult gebruiken:
 
 ```powershell
 Get-AzPeeringLocation -Kind Direct
 ```
 
-Directe peering-locaties bevatten de volgende velden:
-* PeeringLocation 
-* Land/regio
+Directe peeringlocaties bevatten de volgende velden:
+* PeeringLocatie 
+* Land
 * PeeringDBFacilityId
 * PeeringDBFacilityLink
-* BandwidthOffers
+* Bandbreedtebiedt
 
-Controleer of u aanwezig bent bij de gewenste peering-faciliteit door te verwijzen naar [PeeringDB](https://w www.peeringdb.com).
+Bevestig dat u aanwezig bent op de gewenste peering faciliteit door te verwijzen naar [PeeringDB](https://wwww.peeringdb.com).
 
-Hieronder ziet u een voor beeld waarin wordt uitgelegd hoe u Seattle kunt gebruiken als de peering-locatie voor het maken van een directe peering:
+Hieronder vindt u een voorbeeld dat laat zien hoe u Seattle gebruiken als peeringlocatie om een direct peering te maken:
 
 ```powershell
 $peeringLocations = Get-AzPeeringLocation -Kind Direct

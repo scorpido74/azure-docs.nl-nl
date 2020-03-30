@@ -1,6 +1,6 @@
 ---
-title: 'Virtueel WAN: route tabel voor virtuele hub maken naar NVA: Azure PowerShell'
-description: Route tabel virtuele WAN-hub om verkeer naar een virtueel netwerk apparaat te sturen.
+title: 'Virtueel WAN: Virtuele hubroutetabel maken naar NVA: Azure PowerShell'
+description: Virtuele WAN virtuele hub route tabel om verkeer te sturen naar een netwerk virtueel toestel.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,15 +9,15 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
 ms.openlocfilehash: a55e1453fe7fe4d135286b22dabf58d434762581
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645103"
 ---
-# <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Een route tabel voor de virtuele hub maken om verkeer naar een virtueel netwerk apparaat te sturen
+# <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Een virtuele hub-routetabel maken om verkeer naar een virtueel netwerktoestel te sturen
 
-Dit artikel laat u zien hoe u verkeer van een virtuele hub naar een virtueel netwerk apparaat kunt sturen. 
+In dit artikel ziet u hoe u verkeer van een virtuele hub naar een virtueel netwerktoestel sturen. 
 
 ![Virtual WAN-diagram](./media/virtual-wan-route-table/vwanroute.png)
 
@@ -25,10 +25,10 @@ In dit artikel leert u het volgende:
 
 * Een WAN maken
 * Een hub maken
-* Virtuele hub-netwerk verbindingen maken
-* Een hub-route maken
+* Hub-virtuele netwerkverbindingen maken
+* Een hubroute maken
 * Een routetabel maken
-* De route tabel Toep assen
+* De routetabel toepassen
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -36,18 +36,18 @@ In dit artikel leert u het volgende:
 
 Controleer of u aan de volgende criteria hebt voldaan:
 
-1. U hebt een virtueel netwerk apparaat (NVA). Dit is een software van derden van uw keuze die doorgaans wordt ingericht vanuit Azure Marketplace in een virtueel netwerk.
-2. Er is een privé-IP-adres toegewezen aan de NVA-netwerk interface. 
-3. De NVA kan niet worden geïmplementeerd in de virtuele hub. Het moet worden geïmplementeerd in een afzonderlijk VNet. Voor dit artikel wordt het NVA VNet aangeduid als ' DMZ VNet '.
-4. Aan het DMZ VNet kunnen een of meer virtuele netwerken zijn verbonden. In dit artikel wordt dit VNet aangeduid als ' indirect spoke VNet '. Deze VNets kunnen worden verbonden met het DMZ VNet met behulp van VNet-peering.
-5. Controleer of u 2 VNets al hebt gemaakt. Deze worden gebruikt als spoke VNets. Voor dit artikel zijn de VNet-spoke-adres ruimten 10.0.2.0/24 en 10.0.3.0/24. Zie [een virtueel netwerk maken met Power shell](../virtual-network/quick-create-powershell.md)als u meer informatie nodig hebt over het maken van een VNet.
-6. Zorg ervoor dat er geen virtuele netwerk gateways aanwezig zijn in een VNets.
+1. Je hebt een Network Virtual Appliance (NVA). Dit is een software van derden naar keuze die doorgaans vanuit Azure Marketplace in een virtueel netwerk is ingericht.
+2. U hebt een privé-IP toegewezen aan de NVA-netwerkinterface. 
+3. De NVA kan niet worden geïmplementeerd in de virtuele hub. Het moet worden geïmplementeerd in een aparte VNet. Voor dit artikel wordt de NVA VNet aangeduid als de 'DMZ VNet'.
+4. De 'DMZ VNet' kan een of meer virtuele netwerken aangesloten. In dit artikel wordt dit VNet aangeduid als 'Indirect gesproken VNet'. Deze VNets kunnen met VNet worden aangesloten op de DMZ VNet.
+5. Controleer of er al 2 VNets zijn gemaakt. Deze zullen worden gebruikt als spaak VNets. Voor dit artikel zijn de VNet-spaaksadresruimten 10.0.2.0/24 en 10.0.3.0/24. Zie [Een virtueel netwerk maken met PowerShell](../virtual-network/quick-create-powershell.md)als u informatie nodig hebt over het maken van een VNet.
+6. Zorg ervoor dat er geen virtuele netwerkgateways in vnets zijn.
 
-## <a name="signin"></a>1. aanmelden
+## <a name="1-sign-in"></a><a name="signin"></a>1. Log hier in
 
-Zorg ervoor dat u de meest recente versie van de Power shell-cmdlets voor Resource Manager installeert. Zie [How to install and configure Azure PowerShell](/powershell/azure/install-az-ps) (Azure PowerShell installeren en configureren) voor meer informatie over het installeren van de PowerShell-cmdlets. Dit is belangrijk omdat eerdere versies van de cmdlets niet de huidige waarden bevatten die u nodig hebt voor deze oefening.
+Zorg ervoor dat u de nieuwste versie van de PowerShell-cmdlets van Resource Manager installeert. Zie [How to install and configure Azure PowerShell](/powershell/azure/install-az-ps) (Azure PowerShell installeren en configureren) voor meer informatie over het installeren van de PowerShell-cmdlets. Dit is belangrijk omdat eerdere versies van de cmdlets niet de huidige waarden bevatten die u nodig hebt voor deze oefening.
 
-1. Open de Power shell-console met verhoogde bevoegdheden en meld u aan bij uw Azure-account. Met deze cmdlet wordt u gevraagd om de aanmeldings referenties op te vragen. Nadat u zich hebt aangemeld, worden de instellingen van uw account gedownload zodat ze beschikbaar zijn voor Azure PowerShell.
+1. Open uw PowerShell-console met verhoogde bevoegdheden en meld u aan bij uw Azure-account. Deze cmdlet vraagt u om de aanmeldingsreferenties. Nadat u zich hebt aanmeldt, worden uw accountinstellingen gedownload, zodat deze beschikbaar zijn voor Azure PowerShell.
 
    ```powershell
    Connect-AzAccount
@@ -63,14 +63,14 @@ Zorg ervoor dat u de meest recente versie van de Power shell-cmdlets voor Resour
    Select-AzSubscription -SubscriptionName "Name of subscription"
    ```
 
-## <a name="rg"></a>2. resources maken
+## <a name="2-create-resources"></a><a name="rg"></a>2. Resources maken
 
 1. Maak een resourcegroep.
 
    ```powershell
    New-AzResourceGroup -Location "West US" -Name "testRG"
    ```
-2. Maak een virtueel WAN.
+2. Maak een virtuele WAN.
 
    ```powershell
    $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
@@ -81,9 +81,9 @@ Zorg ervoor dat u de meest recente versie van de Power shell-cmdlets voor Resour
    New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -Location "West US"
    ```
 
-## <a name="connections"></a>3. verbindingen maken
+## <a name="3-create-connections"></a><a name="connections"></a>3. Verbindingen maken
 
-Maak hub virtuele netwerk verbindingen van het indirecte spoke VNet en het DMZ VNet naar de virtuele hub.
+Maak virtuele hub-netwerkverbindingen van Indirect Spoke VNet en de DMZ VNet naar de virtuele hub.
 
   ```powershell
   $remoteVirtualNetwork1= Get-AzVirtualNetwork -Name "indirectspoke1" -ResourceGroupName "testRG"
@@ -95,25 +95,25 @@ Maak hub virtuele netwerk verbindingen van het indirecte spoke VNet en het DMZ V
   New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "westushub" -Name  "testvnetconnection3" -RemoteVirtualNetwork $remoteVirtualNetwork3
   ```
 
-## <a name="route"></a>4. Maak een virtuele hub-route
+## <a name="4-create-a-virtual-hub-route"></a><a name="route"></a>4. Een virtuele hubroute maken
 
-Voor dit artikel zijn de indirecte spoke VNet-adres ruimten 10.0.2.0/24 en 10.0.3.0/24, en het privé IP-adres van DMZ NVA Network Interface is 10.0.4.5.
+Voor dit artikel zijn de indirect gesproken VNet-adresruimten 10.0.2.0/24 en 10.0.3.0/24 en het privé-IP-adres van de DMZ NVA-netwerkinterface 10.0.4.5.
 
 ```powershell
 $route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.2.0/24", "10.0.3.0/24") -NextHopIpAddress "10.0.4.5"
 ```
 
-## <a name="applyroute"></a>5. een route tabel voor de virtuele hub maken
+## <a name="5-create-a-virtual-hub-route-table"></a><a name="applyroute"></a>5. Een virtuele hubroutetabel maken
 
-Maak een route tabel voor de virtuele hub en pas de gemaakte route daar toe.
+Maak een virtuele hubroutetabel en pas de gemaakte route erop toe.
  
 ```powershell
 $routeTable = New-AzVirtualHubRouteTable -Route @($route1)
 ```
 
-## <a name="commit"></a>6. de wijzigingen door voeren
+## <a name="6-commit-the-changes"></a><a name="commit"></a>6.
 
-Voer de wijzigingen door in de virtuele hub.
+Zet de wijzigingen in de virtuele hub.
 
 ```powershell
 Update-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub" -RouteTable $routeTable

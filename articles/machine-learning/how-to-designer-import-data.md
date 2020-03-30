@@ -1,7 +1,7 @@
 ---
 title: Gegevens importeren
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het importeren van gegevens in Azure Machine Learning Designer vanuit verschillende gegevens bronnen.
+description: Meer informatie over het importeren van uw gegevens in Azure Machine Learning-ontwerper uit verschillende gegevensbronnen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,87 +9,86 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: 8cd49f9714746578ec701e22f9e6b0ccce772c6b
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: bd1c2ca182ae8be8425246f691dca805bf38637b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942287"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064020"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Uw gegevens importeren in Azure Machine Learning Designer (preview)
+# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Uw gegevens importeren in Azure Machine Learning-ontwerper (voorbeeld)
 
-In dit artikel leert u hoe u uw eigen gegevens in de ontwerp functie kunt importeren om aangepaste oplossingen te maken. Er zijn twee manieren waarop u gegevens kunt importeren in de ontwerp functie: 
+In dit artikel leert u hoe u uw eigen gegevens in de ontwerper importeert om aangepaste oplossingen te maken. Er zijn twee manieren waarop u gegevens in de ontwerper importeren: 
 
-* **Azure machine learning gegevens sets** : [gegevens sets](concept-data.md#datasets) registreren in azure machine learning om geavanceerde functies in te scha kelen die u helpen bij het beheren van uw gegevens.
-* **Gegevens module importeren** : gebruik de module [gegevens importeren](algorithm-module-reference/import-data.md) om rechtstreeks toegang te krijgen tot gegevens uit online gegevens bronnen.
+* **Azure Machine Learning-gegevenssets** - [Gegevenssets](concept-data.md#datasets) registreren in Azure Machine Learning om geavanceerde functies in te schakelen waarmee u uw gegevens beheren.
+* **Module Gegevens importeren** - Gebruik de module [Gegevens importeren](algorithm-module-reference/import-data.md) om rechtstreeks toegang te krijgen tot gegevens uit online gegevensbronnen.
 
-## <a name="use-azure-machine-learning-datasets"></a>Azure Machine Learning gegevens sets gebruiken
+## <a name="use-azure-machine-learning-datasets"></a>Azure Machine Learning-gegevenssets gebruiken
 
-U wordt aangeraden gegevens [sets](concept-data.md#datasets) te gebruiken voor het importeren in de ontwerp functie. Wanneer u een gegevensset registreert, kunt u profiteren van geavanceerde gegevens functies, zoals [versie beheer en bijhouden](how-to-version-track-datasets.md) van [gegevens](how-to-monitor-datasets.md).
+We raden u aan [gegevenssets](concept-data.md#datasets) te gebruiken om gegevens in de ontwerper te importeren. Wanneer u een gegevensset registreert, u optimaal profiteren van geavanceerde gegevensfuncties zoals [versiebeheer, tracking](how-to-version-track-datasets.md) en [gegevensbewaking.](how-to-monitor-datasets.md)
 
 ### <a name="register-a-dataset"></a>Een gegevensset registreren
 
-U kunt bestaande gegevens sets [programmatisch registreren met de SDK](how-to-create-register-datasets.md#use-the-sdk) of [visueel in azure machine learning Studio](how-to-create-register-datasets.md#use-the-ui).
+U bestaande gegevenssets [programmatisch](how-to-create-register-datasets.md#use-the-sdk) registreren bij de SDK of [visueel in Azure Machine Learning-studio.](how-to-create-register-datasets.md#use-the-ui)
 
-U kunt de uitvoer voor elke ontwerp module ook registreren als een gegevensset.
+U de uitvoer ook registreren voor elke designermodule als gegevensset.
 
-1. Selecteer de module die de gegevens levert die u wilt registreren.
+1. Selecteer de module waarmee de gegevens worden uitgevoerd die u wilt registreren.
 
-1. Selecteer in het deel venster Eigenschappen de optie **uitvoer** > **gegevensset registreren**.
+1. Selecteer in het deelvenster Eigenschappen de**gegevensset** **Uitvoerregister** > .
 
-    ![Scherm afbeelding die laat zien hoe u kunt navigeren naar de optie gegevensset registreren](media/how-to-designer-import-data/register-dataset-designer.png)
+    ![Schermafbeelding van hoe u naar de optie Gegevensset registreren navigeren](media/how-to-designer-import-data/register-dataset-designer.png)
 
 ### <a name="use-a-dataset"></a>Een gegevensset gebruiken
 
-U kunt de geregistreerde gegevens sets vinden in het palet module, onder **gegevens sets** > **mijn gegevens sets**. Als u een gegevensset wilt gebruiken, sleept u deze naar het pijp lijn-canvas. Verbind vervolgens de uitvoer poort van de gegevensset met andere modules in het palet.
+Uw geregistreerde gegevenssets zijn te vinden in het modulepalet onder **Gegevenssets** > **Mijn gegevenssets**. Als u een gegevensset wilt gebruiken, sleept u deze en zet u deze op het pijplijncanvas. Sluit vervolgens de uitvoerpoort van de gegevensset aan op andere modules in het palet.
 
-![Scherm opname van de locatie van opgeslagen gegevens sets in het palet voor ontwerpen](media/how-to-designer-import-data/use-datasets-designer.png)
-
+![Schermafbeelding van de locatie van opgeslagen gegevenssets in het ontwerppalet](media/how-to-designer-import-data/use-datasets-designer.png)
 
 
 > [!NOTE]
-> De ontwerp functie biedt momenteel alleen ondersteuning voor het verwerken van [tabellaire gegevens sets](how-to-create-register-datasets.md#dataset-types). Als u [bestands gegevens sets](how-to-create-register-datasets.md#dataset-types)wilt gebruiken, gebruikt u de Azure machine learning SDK die beschikbaar is voor python en R.
+> De ontwerper ondersteunt momenteel alleen verwerking [tabelgegevenssets](how-to-create-register-datasets.md#dataset-types). Als u [bestandsgegevenssets](how-to-create-register-datasets.md#dataset-types)wilt gebruiken, gebruikt u de Azure Machine Learning SDK die beschikbaar is voor Python en R.
 
-## <a name="import-data-using-the-import-data-module"></a>Gegevens importeren met behulp van de module gegevens importeren
+## <a name="import-data-using-the-import-data-module"></a>Gegevens importeren met de module Gegevens importeren
 
-We raden u aan om gegevens sets te gebruiken voor het importeren van informatie, maar u kunt ook de module [gegevens importeren](algorithm-module-reference/import-data.md) gebruiken. De module gegevens importeren slaat de registratie van uw gegevensset in Azure Machine Learning over en importeert gegevens rechtstreeks vanuit een [Data Store](concept-data.md#datastores) -of http-URL.
+Hoewel we u aanraden gegevenssets te gebruiken om gegevens te importeren, u ook de module [Gegevens importeren](algorithm-module-reference/import-data.md) gebruiken. De module Gegevens importeren slaat het registreren van uw gegevensset in Azure Machine Learning over en importeert gegevens rechtstreeks vanuit een [gegevensarchief](concept-data.md#datastores) of HTTP-URL.
 
-Zie de [referentie pagina gegevens importeren](algorithm-module-reference/import-data.md)voor gedetailleerde informatie over het gebruik van de module gegevens importeren.
+Zie de [referentiepagina Gegevens importeren](algorithm-module-reference/import-data.md)voor meer informatie over het gebruik van de module Gegevens importeren.
 
-[!NOTE]
-> Als de gegevens veel kolommen bevatten, kunt u de module validatie is mislukt vanwege grootte beperking in gegevens importeren. De reden hiervoor is dat de kolommen de lengte van de maxmium-module zonder code ring uitsluiten. In dit geval is het raadzaam om [de gegevensset te registreren in de gebruikers interface van gegevens sets](how-to-create-register-datasets.md#use-the-ui), waardoor de fout kan worden voor komen.  
+> [!NOTE]
+> Als uw gegevensset te veel kolommen bevat, u de volgende fout tegenkomen: Validatie is mislukt vanwege groottebeperking. Om dit te voorkomen, [registreert u de gegevensset in de interface Gegevenssets](how-to-create-register-datasets.md#use-the-ui).
 
 ## <a name="supported-sources"></a>Ondersteunde bronnen
 
-In deze sectie vindt u de gegevens bronnen die worden ondersteund door de ontwerper. Gegevens worden in de ontwerp functie geleverd vanuit een gegevens opslag of een [gegevensset in tabel vorm](how-to-create-register-datasets.md#dataset-types).
+In deze sectie worden de gegevensbronnen weergegeven die door de ontwerper worden ondersteund. Gegevens komen in de ontwerper van een datastore of uit [tabeltabel dataset](how-to-create-register-datasets.md#dataset-types).
 
-### <a name="datastore-sources"></a>Data Store-bronnen
-Zie [toegang tot gegevens in azure Storage-services](how-to-access-data.md#supported-data-storage-service-types)voor een lijst met ondersteunde gegevens opslag bronnen.
+### <a name="datastore-sources"></a>Datastore-bronnen
+Zie [Access-gegevens in Azure-opslagservices](how-to-access-data.md#supported-data-storage-service-types)voor een lijst met ondersteunde gegevensarchiefbronnen.
 
-### <a name="tabular-dataset-sources"></a>Bron tabel van gegevensset
+### <a name="tabular-dataset-sources"></a>Tabelgegevenssetbronnen
 
-De ontwerp functie ondersteunt tabellaire gegevens sets die zijn gemaakt op basis van de volgende bronnen:
- * Bestanden met scheidings tekens
+De ontwerper ondersteunt tabelgegevenssets die zijn gemaakt op basis van de volgende bronnen:
+ * Afgebakende bestanden
  * JSON-bestanden
  * Parquet-bestanden
  * SQL-query's
 
 ## <a name="data-types"></a>Gegevenstypen
 
-De Designer herkent intern de volgende gegevens typen:
+De ontwerper herkent intern de volgende gegevenstypen:
 
 * Tekenreeks
 * Geheel getal
-* decimaal
+* Decimal
 * Booleaans
 * Date
 
-De ontwerp functie maakt gebruik van een intern gegevens type om gegevens tussen modules door te geven. U kunt uw gegevens in de indeling van de gegevens tabel expliciet converteren met behulp van de module [converteren naar dataset](algorithm-module-reference/convert-to-dataset.md) . Alle modules die andere indelingen dan de interne indeling accepteren, worden de gegevens op de achtergrond geconverteerd voordat deze aan de volgende module worden door gegeven.
+De ontwerper gebruikt een intern gegevenstype om gegevens tussen modules door te geven. U uw gegevens expliciet omzetten in gegevenstabelindeling met de module [Converteren naar gegevensset.](algorithm-module-reference/convert-to-dataset.md) Elke module die andere indelingen dan de interne indeling accepteert, converteert de gegevens in stilte voordat deze wordt doorgestoofd naar de volgende module.
 
-## <a name="data-constraints"></a>Gegevens beperkingen
+## <a name="data-constraints"></a>Gegevensbeperkingen
 
-Modules in de ontwerp functie worden beperkt door de grootte van het berekenings doel. Voor grotere gegevens sets moet u een grotere Azure Machine Learning Reken Resource gebruiken. Zie [Wat zijn Compute-doelen in azure machine learning?](concept-compute-target.md#azure-machine-learning-compute-managed) voor meer informatie over Azure machine learning compute.
+Modules in de ontwerper worden beperkt door de grootte van het rekendoel. Voor grotere gegevenssets moet u een grotere Azure Machine Learning-compute resource gebruiken. Zie [Wat zijn rekendoelen in Azure Machine Learning voor](concept-compute-target.md#azure-machine-learning-compute-managed) meer informatie over Azure Machine Learning compute?
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Leer de basis beginselen van de ontwerp functie met [de zelf studie: prijs van auto Mobile voor speld met de ontwerp functie](tutorial-designer-automobile-price-train-score.md).
+Leer de basisprincipes van de ontwerper met [tutorial: voorspel autoprijs met de ontwerper.](tutorial-designer-automobile-price-train-score.md)

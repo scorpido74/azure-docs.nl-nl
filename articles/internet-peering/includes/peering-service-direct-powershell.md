@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: badba278e88e5065d8a4ff57ca9506fe1f9ad203
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774196"
 ---
-1. Verbindingen weer geven voor de geselecteerde directe peering.
+1. Verbindingen weergeven op het geselecteerde direct peering.
     ```powershell
     $directPeering.Connections
 
@@ -31,7 +31,7 @@ ms.locfileid: "75774196"
     SessionStateV6              : None
     ConnectionState             : Active
     ```
-1. Selecteer de verbinding die u wilt inschakelen voor de peering-service. Voor dit voor beeld gebruiken we de enige verbinding die beschikbaar is.
+1. Selecteer de verbinding die u wilt inschakelen voor Peering Service. Voor dit voorbeeld gebruiken we de enige beschikbare verbinding.
     ```powershell
     $directPeering.Connections[1] = $directPeering.Connections[1] | Set-AzPeeringDirectConnectionObject -UseForPeeringService $true
 
@@ -47,12 +47,12 @@ ms.locfileid: "75774196"
     SessionStateV6              : None
     ConnectionState             : Active
     ```
-1. Sla nu de wijzigingen op die zijn aangebracht in de directe peering met behulp van de onderstaande opdracht.
+1. Sla nu de wijzigingen op die zijn aangebracht in de opdracht Direct-peering met de opdracht hieronder.
     ```powershell
     $directPeering | Update-AzPeering
     ```
     
-    Hieronder ziet u een voor beeld van uitvoer:
+    Hieronder vindt u een voorbeelduitvoer:
     
     ```powershell
         Name                 : SeattleDirectPeering

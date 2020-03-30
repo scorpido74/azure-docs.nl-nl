@@ -1,6 +1,6 @@
 ---
-title: Functie definities in RBAC voor Azure-resources begrijpen | Microsoft Docs
-description: Meer informatie over roldefinities in op rollen gebaseerd toegangs beheer (RBAC) voor het verfijnen van toegang tot Azure-resources.
+title: Roldefinities in RBAC voor Azure-resources begrijpen | Microsoft Documenten
+description: Meer informatie over roldefinities in rbac (role-based access control) voor fijnkorrelig toegangsbeheer van Azure-resources.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,22 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 3ff4b2cb6a59a35dc6da4748a7c7fbb4758a4fcf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e4e4ac1b0a867130dd7b9e276db52e1ca1e72976
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283223"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062135"
 ---
-# <a name="understand-role-definitions-for-azure-resources"></a>Functie definities voor Azure-resources begrijpen
+# <a name="understand-role-definitions-for-azure-resources"></a>Functiedefinities voor Azure-resources begrijpen
 
-Als u wilt weten hoe een rol werkt of als u uw eigen [aangepaste rol voor Azure-resources](custom-roles.md)maakt, is het handig om te begrijpen hoe rollen worden gedefinieerd. In dit artikel worden de details van roldefinities beschreven en vindt u enkele voor beelden.
+Als u probeert te begrijpen hoe een rol werkt of als u uw eigen [aangepaste rol voor Azure-resources maakt,](custom-roles.md)is het handig om te begrijpen hoe rollen worden gedefinieerd. In dit artikel worden de details van roldefinities beschreven en worden enkele voorbeelden gegeven.
 
-## <a name="role-definition-structure"></a>Roldefinitie structuur
+## <a name="role-definition-structure"></a>Roldefinitiestructuur
 
 Een *roldefinitie* is een verzameling machtigingen. Dit wordt soms gewoon een *rol* genoemd. Een roldefinitie beschijft de bewerkingen die kunnen worden uitgevoerd, zoals lezen, schrijven en verwijderen. Het kan ook een overzicht geven van de bewerkingen die niet kunnen worden uitgevoerd of bewerkingen met betrekking tot onderliggende gegevens. Een roldefinitie heeft de volgende structuur:
 
@@ -42,21 +42,21 @@ NotDataActions []
 AssignableScopes []
 ```
 
-Bewerkingen worden opgegeven met teken reeksen die de volgende indeling hebben:
+Bewerkingen worden opgegeven met tekenreeksen met de volgende indeling:
 
 - `{Company}.{ProviderName}/{resourceType}/{action}`
 
-Het `{action}` gedeelte van een bewerkings reeks geeft u het type bewerkingen op dat u kunt uitvoeren op een resource type. U ziet bijvoorbeeld de volgende subtekenreeksen in `{action}`:
+Het `{action}` gedeelte van een tekenreeks geeft het type bewerkingen aan dat u op een resourcetype uitvoeren. U ziet bijvoorbeeld de volgende subtekenreeksen in `{action}`:
 
-| Subtekenreeks van actie    | Beschrijving         |
+| Subtekenreeks actie    | Beschrijving         |
 | ------------------- | ------------------- |
-| `*` | Het Joker teken verleent toegang tot alle bewerkingen die overeenkomen met de teken reeks. |
-| `read` | Hiermee schakelt u lees bewerkingen in (GET). |
-| `write` | Hiermee wordt schrijf bewerkingen (PUT of PATCH) ingeschakeld. |
-| `action` | Hiermee schakelt u aangepaste bewerkingen in, zoals het opnieuw opstarten van virtuele machines (POST). |
-| `delete` | Hiermee worden Verwijder bewerkingen (verwijderen) ingeschakeld. |
+| `*` | Het jokerteken geeft toegang tot alle bewerkingen die overeenkomen met de tekenreeks. |
+| `read` | Hiermee u leesbewerkingen (GET) in- en uitlezen. |
+| `write` | Hiermee u schrijfbewerkingen (PUT of PATCH) inmaken. |
+| `action` | Hiermee u aangepaste bewerkingen uitvoeren, zoals virtuele machines opnieuw opstarten (POST). |
+| `delete` | Hiermee u verwijderingsbewerkingen (Delete) inmaken. |
 
-Hier volgt de rol van [Inzender](built-in-roles.md#contributor) in JSON-indeling. De Joker bewerking (`*`) onder `Actions` geeft aan dat de principal die aan deze rol is toegewezen, alle acties kan uitvoeren, of met andere woorden, het kan alles beheren. Dit omvat acties die in de toekomst zijn gedefinieerd, aangezien Azure nieuwe resource typen toevoegt. De bewerkingen onder `NotActions` worden afgetrokken van `Actions`. In het geval van de rol [Inzender](built-in-roles.md#contributor) verwijdert `NotActions` de mogelijkheid van deze functie om de toegang tot resources te beheren en ook toegang tot resources toe te wijzen.
+Hier is de [roldefinitie van medewerker](built-in-roles.md#contributor) in JSON-indeling. De jokerbewerking (`*`) onder `Actions` geeft aan dat de principal die aan deze rol is toegewezen alle acties kan uitvoeren, of met andere woorden, alles kan beheren. Dit omvat acties die in de toekomst zijn gedefinieerd, wanneer Azure nieuwe resourcetypen toevoegt. De bewerkingen onder `NotActions` worden afgetrokken van `Actions`. In het geval van de rol van [Lezer](built-in-roles.md#contributor) verwijdert `NotActions` de mogelijkheid van deze rol om de toegang tot resources te beheren en ook toegang tot resources toe te wijzen.
 
 ```json
 {
@@ -80,25 +80,25 @@ Hier volgt de rol van [Inzender](built-in-roles.md#contributor) in JSON-indeling
 }
 ```
 
-## <a name="management-and-data-operations"></a>Beheer-en gegevens bewerkingen
+## <a name="management-and-data-operations"></a>Beheer en gegevensactiviteiten
 
-Toegangs beheer op basis van rollen voor beheer bewerkingen is opgegeven in de eigenschappen `Actions` en `NotActions` van een roldefinitie. Hier volgen enkele voor beelden van beheer bewerkingen in Azure:
+Op rollen gebaseerde toegangscontrole voor beheerbewerkingen wordt opgegeven in de `Actions` eigenschappen en `NotActions` eigenschappen van een roldefinitie. Hier volgen enkele voorbeelden van beheerbewerkingen in Azure:
 
-- Toegang tot een opslag account beheren
-- Een BLOB-container maken, bijwerken of verwijderen
-- Een resource groep en alle bijbehorende resources verwijderen
+- Toegang tot een opslagaccount beheren
+- Een blobcontainer maken, bijwerken of verwijderen
+- Een resourcegroep en al zijn bronnen verwijderen
 
-De toegang tot het beheer wordt niet overgenomen van uw gegevens omdat de container verificatie methode is ingesteld op ' Azure AD-gebruikers account ' en niet op ' toegangs sleutel '. Deze schei ding voor komt dat rollen met Joker tekens (`*`) onbeperkte toegang tot uw gegevens hebben. Als een gebruiker bijvoorbeeld een rol van [lezer](built-in-roles.md#reader) heeft voor een abonnement, kan deze het opslag account weer geven, maar standaard kunnen ze de onderliggende gegevens niet weer geven.
+Beheertoegang wordt niet overgenomen naar uw gegevens, mits de containerverificatiemethode is ingesteld op 'Azure AD-gebruikersaccount' en niet op 'Toegangssleutel'. Deze scheiding voorkomt dat`*`rollen met jokertekens ( ) onbeperkte toegang hebben tot uw gegevens. Als een gebruiker bijvoorbeeld een [Reader-rol](built-in-roles.md#reader) bij een abonnement heeft, kan hij het opslagaccount bekijken, maar standaard kunnen ze de onderliggende gegevens niet bekijken.
 
-Voorheen werd op rollen gebaseerd toegangs beheer niet gebruikt voor gegevens bewerkingen. Autorisatie voor gegevens bewerkingen varieerden van alle resource providers. Hetzelfde op rollen gebaseerde toegangs beheer autorisatie model dat wordt gebruikt voor beheer bewerkingen, is uitgebreid naar gegevens bewerkingen.
+Voorheen werd op rollen gebaseerd toegangscontroleniet gebruikt voor gegevensbewerkingen. De autorisatie voor gegevensbewerkingen varieerde per resourceprovider. Hetzelfde op rollen gebaseerde toegangscontroleautorisatiemodel dat wordt gebruikt voor beheerbewerkingen, is uitgebreid tot gegevensbewerkingen.
 
-Voor het ondersteunen van gegevens bewerkingen zijn er nieuwe gegevens eigenschappen aan de roldefinitie structuur toegevoegd. Gegevens bewerkingen worden opgegeven in de eigenschappen `DataActions` en `NotDataActions`. Door deze gegevens eigenschappen toe te voegen, wordt de schei ding tussen beheer en gegevens gehandhaafd. Dit voor komt dat huidige roltoewijzingen met Joker tekens (`*`) plotseling toegang hebben tot gegevens. Hier volgen enkele gegevens bewerkingen die kunnen worden opgegeven in `DataActions` en `NotDataActions`:
+Om gegevensbewerkingen te ondersteunen, zijn nieuwe gegevenseigenschappen toegevoegd aan de roldefinitiestructuur. Gegevensbewerkingen worden opgegeven in de eigenschappen `DataActions` en `NotDataActions`. Door deze gegevenseigenschappen toe te voegen, wordt de scheiding tussen beheer en gegevens gehandhaafd. Hiermee voorkomt u dat huidige roltoewijzingen met jokertekens (`*`) plotseling toegang hebben tot gegevens. Hier volgen enkele gegevensbewerkingen die kunnen worden opgegeven in `DataActions` en `NotDataActions`:
 
 - Een lijst met blobs in een container lezen
-- Een opslag-Blob in een container schrijven
+- Een opslag-blob in een container schrijven
 - Een bericht in een wachtrij verwijderen
 
-Hier volgt de definitie van de rol van [BLOB-gegevens lezer voor opslag](built-in-roles.md#storage-blob-data-reader) , die bewerkingen bevat in de eigenschappen `Actions` en `DataActions`. Met deze rol kunt u de BLOB-container en ook de onderliggende BLOB-gegevens lezen.
+Hier vindt u de roldefinitie van Storage Blob `Actions` Data `DataActions` [Reader,](built-in-roles.md#storage-blob-data-reader) die bewerkingen in zowel de eigenschappen als de eigenschappen bevat. Met deze rol u de blobcontainer en ook de onderliggende blobgegevens lezen.
 
 ```json
 {
@@ -120,116 +120,119 @@ Hier volgt de definitie van de rol van [BLOB-gegevens lezer voor opslag](built-i
 }
 ```
 
-Alleen gegevens bewerkingen kunnen worden toegevoegd aan de eigenschappen `DataActions` en `NotDataActions`. Resource providers bepalen welke bewerkingen gegevens bewerkingen zijn, door de eigenschap `isDataAction` in te stellen op `true`. Zie voor een overzicht van de bewerkingen waarbij `isDataAction` is `true`de bewerkingen van de [resource provider](resource-provider-operations.md). Rollen die geen gegevens bewerkingen hebben, hoeven geen `DataActions`-en `NotDataActions`-eigenschappen te hebben binnen de roldefinitie.
+Alleen gegevensbewerkingen kunnen worden toegevoegd aan de eigenschappen `DataActions` en `NotDataActions`. Resourceproviders bepalen welke bewerkingen gegevensbewerkingen zijn door de `isDataAction` eigenschap in te stellen op `true`. Zie Resourceprovideroperations als `isDataAction` u `true`een lijst wilt zien met de bewerkingen waar deze zich [bevindt.](resource-provider-operations.md) Rollen die geen gegevensbewerkinghebben, hoeven `DataActions` `NotDataActions` niet te beschikken en eigenschappen binnen de roldefinitie.
 
-Autorisatie voor alle beheer bewerkingen-API-aanroepen wordt afgehandeld door Azure Resource Manager. Autorisatie voor data Operation-API-aanroepen wordt verwerkt door een resource provider of Azure Resource Manager.
+Autorisatie voor alle API-aanroepen voor beheerbewerking wordt beheerd door Azure Resource Manager. Autorisatie voor API-aanroepen voor gegevensbewerking wordt verwerkt door een resourceprovider of Azure Resource Manager.
 
-### <a name="data-operations-example"></a>Voor beeld van gegevens bewerkingen
+### <a name="data-operations-example"></a>Voorbeeld van gegevensbewerkingen
 
-Voor een beter inzicht in hoe beheer en gegevens bewerkingen werken, kunt u een specifiek voor beeld overwegen. Lisa is toegewezen aan de rol van [eigenaar](built-in-roles.md#owner) op het abonnements bereik. Bob is toegewezen aan de rol van de [blobgegevens van de gegevens opslag](built-in-roles.md#storage-blob-data-contributor) in een bereik van een opslag account. In het volgende diagram ziet u dit voor beeld.
+Om beter te begrijpen hoe beheer- en gegevensbewerkingen werken, moeten we een specifiek voorbeeld overwegen. Alice heeft de rol [Eigenaar](built-in-roles.md#owner) toegewezen gekregen op het abonnementsbereik. Bob heeft de rol [Opslagblob-gegevensbijdrager](built-in-roles.md#storage-blob-data-contributor) toegewezen gekregen bij een opslagaccountbereik. In het volgende diagram ziet u dit voorbeeld.
 
-![Toegangs beheer op basis van rollen is uitgebreid om zowel beheer-als gegevens bewerkingen te ondersteunen](./media/role-definitions/rbac-management-data.png)
+![Rolgebaseerde toegangscontrole is uitgebreid om zowel beheer als gegevensactiviteiten te ondersteunen](./media/role-definitions/rbac-management-data.png)
 
-De rol van [eigenaar](built-in-roles.md#owner) voor Alice en de rol [BLOB data contributor-gegevens](built-in-roles.md#storage-blob-data-contributor) voor Bob hebben de volgende acties:
+De rol [Eigenaar](built-in-roles.md#owner) voor Alice en de rol [van opslagblobgegevensbijdrager](built-in-roles.md#storage-blob-data-contributor) voor Bob hebben de volgende acties:
 
 Eigenaar
 
-&nbsp;&nbsp;&nbsp;&nbsp;acties<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Acties<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
 
-Inzender voor Storage BLOB-gegevens
+Opslagblob-gegevensbijdrager
 
-&nbsp;&nbsp;&nbsp;&nbsp;acties<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Acties<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/write`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;DataActions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Gegevensacties<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-Aangezien Anne een actie met Joker tekens (`*`) heeft op een abonnements bereik, worden de machtigingen ervan overgenomen zodat ze alle beheer acties kunnen uitvoeren. Anja kan containers lezen, schrijven en verwijderen. Anja kan echter geen gegevens bewerkingen uitvoeren zonder extra stappen te nemen. Zo kan Anja de blobs in een container bijvoorbeeld standaard niet lezen. Om de blobs te lezen, zou Anne de toegangs sleutels voor opslag moeten ophalen en gebruiken om toegang te krijgen tot de blobs.
+Aangezien Alice een`*`wildcard ( ) actie op een abonnement bereik heeft, hun machtigingen erven naar beneden om hen in staat stellen om alle beheeracties uit te voeren. Alice kan containers lezen, schrijven en verwijderen. Alice kan echter geen gegevensbewerkingen uitvoeren zonder extra stappen te ondernemen. Alice kan bijvoorbeeld standaard de blobs in een container niet lezen. Om de blobs te lezen, moet Alice de opslagtoegangssleutels ophalen en gebruiken om toegang te krijgen tot de blobs.
 
-De machtigingen van Dirk zijn beperkt tot alleen de `Actions` en `DataActions` die zijn opgegeven in de rol [BLOB data contributor](built-in-roles.md#storage-blob-data-contributor) van de opslag. Op basis van de rol kan Bob zowel beheer-als gegevens bewerkingen uitvoeren. Bob kan bijvoorbeeld containers in het opgegeven opslag account lezen, schrijven en verwijderen en kunnen ook de blobs lezen, schrijven en verwijderen.
+De machtigingen van Bob zijn `Actions` beperkt `DataActions` tot alleen de machtigingen en opgegeven in de rol [Opslagblobgegevensbijdrager.](built-in-roles.md#storage-blob-data-contributor) Op basis van de rol kan Bob zowel beheer- als databewerkingen uitvoeren. Bob kan bijvoorbeeld containers in het opgegeven opslagaccount lezen, schrijven en verwijderen en kan de blobs ook lezen, schrijven en verwijderen.
 
-Zie de [Azure Storage-beveiligings handleiding](../storage/blobs/security-recommendations.md)voor meer informatie over de beveiliging van beheer en gegevenslaag voor opslag.
+Zie de [beveiligingshandleiding azure storage](../storage/blobs/security-recommendations.md)voor meer informatie over beheer en beveiliging van gegevensvliegtuigen voor opslag.
 
-### <a name="what-tools-support-using-rbac-for-data-operations"></a>Welke hulpprogram ma's ondersteunen het gebruik van RBAC voor gegevens bewerkingen?
+### <a name="what-tools-support-using-rbac-for-data-operations"></a>Welke tools ondersteunen het gebruik van RBAC voor gegevensbewerkingen?
 
-Als u gegevens bewerkingen wilt bekijken en gebruiken, moet u beschikken over de juiste versies van de hulpprogram ma's of Sdk's:
+Als u gegevensbewerkingen wilt weergeven en ermee wilt werken, moet u over de juiste versies van de hulpprogramma's of SDK's beschikken:
 
-| Hulpprogramma  | Version  |
+| Hulpprogramma  | Versie  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 of hoger |
-| [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 of hoger |
-| [Azure voor .NET](/dotnet/azure/) | 2.8.0-Preview of hoger |
+| [Azure-CLI](/cli/azure/install-azure-cli) | 2.0.30 of hoger |
+| [Azure voor .NET](/dotnet/azure/) | 2.8.0-preview of hoger |
 | [Azure SDK voor Go](/azure/go/azure-sdk-go-install) | 15.0.0 of hoger |
 | [Azure voor Java](/java/azure/) | 1.9.0 of hoger |
-| [Azure voor python](/azure/python/) | 0.40.0 of hoger |
+| [Azure voor Python](/azure/python/) | 0.40.0 of hoger |
 | [Azure-SDK voor Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 of hoger |
 
-Als u de gegevens bewerkingen in het REST API wilt bekijken en gebruiken, moet u de para meter van de **API-versie** instellen op de volgende versie of hoger:
+Als u de gegevensbewerkingen in de REST-API wilt weergeven en gebruiken, moet u de parameter **api-versie** instellen op de volgende versie of hoger:
 
 - 2018-07-01
 
 ## <a name="actions"></a>Acties
 
-Met de machtiging `Actions` geeft u de beheer bewerkingen op die door de functie kunnen worden uitgevoerd. Het is een verzameling bewerkings reeksen waarmee Beveilig bare bewerkingen van Azure-resource providers worden geïdentificeerd. Hier volgen enkele voor beelden van beheer bewerkingen die kunnen worden gebruikt in `Actions`.
+De `Actions` machtiging geeft de beheerbewerkingen op die de rol toestaat om te worden uitgevoerd. Het is een verzameling van bewerkingen die securable bewerkingen van Azure-resourceproviders identificeren. Hier volgen enkele voorbeelden van beheerbewerkingen `Actions`die kunnen worden gebruikt in .
 
-| Bewerkings reeks    | Beschrijving         |
-| ------------------- | ------------------- |
-| `*/read` | Verleent toegang tot Lees bewerkingen voor alle resource typen van alle Azure-resource providers.|
-| `Microsoft.Compute/*` | Verleent toegang tot alle bewerkingen voor alle resource typen in de micro soft. Compute-resource provider.|
-| `Microsoft.Network/*/read` | Hiermee wordt toegang verleend tot Lees bewerkingen voor alle resource typen in de resource provider micro soft. Network.|
-| `Microsoft.Compute/virtualMachines/*` | Verleent toegang tot alle bewerkingen van virtuele machines en de bijbehorende onderliggende resource typen.|
-| `microsoft.web/sites/restart/Action` | Hiermee wordt toegang verleend om een web-app opnieuw op te starten.|
+> [!div class="mx-tableFixed"]
+> | Tekenreeks bewerking    | Beschrijving         |
+> | ------------------- | ------------------- |
+> | `*/read` | Verleent toegang tot leesbewerkingen voor alle resourcetypen van alle Azure-bronproviders.|
+> | `Microsoft.Compute/*` | Verleent toegang tot alle bewerkingen voor alle resourcetypen in de Microsoft.Compute-resourceprovider.|
+> | `Microsoft.Network/*/read` | Verleent toegang tot leesbewerkingen voor alle resourcetypen in de Microsoft.Network-bronprovider.|
+> | `Microsoft.Compute/virtualMachines/*` | Verleent toegang tot alle bewerkingen van virtuele machines en de typen onderliggende bronnen.|
+> | `microsoft.web/sites/restart/Action` | Verleent toegang tot het opnieuw opstarten van een web-app.|
 
-## <a name="notactions"></a>Intact
+## <a name="notactions"></a>NotActions
 
-Met de machtiging `NotActions` geeft u de beheer bewerkingen op die zijn uitgesloten van de toegestane `Actions`. Gebruik de `NotActions` machtiging als de set bewerkingen die u wilt toestaan eenvoudiger is gedefinieerd door beperkte bewerkingen uit te sluiten. De toegang die wordt verleend door een rol (efficiënte machtigingen) wordt berekend door de `NotActions` bewerkingen uit te trekken van de `Actions` bewerkingen.
+De `NotActions` machtiging geeft de beheerbewerkingen op `Actions`die zijn uitgesloten van de toegestane . Gebruik `NotActions` de machtiging als de set bewerkingen die u wilt toestaan, gemakkelijker kan worden gedefinieerd door beperkte bewerkingen uit te sluiten. De toegang die wordt verleend door een rol (effectieve `NotActions` machtigingen) `Actions` wordt berekend door de bewerkingen af te trekken van de bewerkingen.
 
 > [!NOTE]
-> Als aan een gebruiker een rol is toegewezen waarmee een bewerking in `NotActions`wordt uitgesloten en aan een tweede rol wordt toegewezen die toegang verleent aan dezelfde bewerking, mag de gebruiker die bewerking uitvoeren. `NotActions` is geen regel voor weigeren: het is een handige manier om een reeks toegestane bewerkingen te maken wanneer specifieke bewerkingen moeten worden uitgesloten.
+> Als een gebruiker een rol krijgt toegewezen `NotActions`die een bewerking uitsluit in , en een tweede rol krijgt toegewezen die toegang geeft tot dezelfde bewerking, mag de gebruiker die bewerking uitvoeren. `NotActions`is geen weigeringsregel – het is gewoon een handige manier om een set toegestane bewerkingen te maken wanneer specifieke bewerkingen moeten worden uitgesloten.
 >
 
-## <a name="dataactions"></a>DataActions
+## <a name="dataactions"></a>Gegevensacties
 
-Met de machtiging `DataActions` geeft u de gegevens bewerkingen op die door de functie kunnen worden uitgevoerd op uw gegevens in dat object. Als een gebruiker bijvoorbeeld BLOB-gegevens toegang tot een opslag account heeft gelezen, kunnen ze de blobs binnen dat opslag account lezen. Hier volgen enkele voor beelden van gegevens bewerkingen die kunnen worden gebruikt in `DataActions`.
+De `DataActions` machtiging geeft de gegevensbewerkingen op die de rol toestaat om te worden uitgevoerd naar uw gegevens binnen dat object. Als een gebruiker bijvoorbeeld blobgegevenstoegang tot een opslagaccount heeft gelezen, kan deze de blobs in dat opslagaccount lezen. Hier volgen enkele voorbeelden van gegevensbewerkingen `DataActions`die kunnen worden gebruikt in .
 
-| Bewerkings reeks    | Beschrijving         |
-| ------------------- | ------------------- |
-| `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/read` | Retourneert een BLOB of een lijst met blobs. |
-| `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/write` | Retourneert het resultaat van het schrijven van een blob. |
-| `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/read` | Retourneert een bericht. |
-| `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/*` | Retourneert een bericht of het resultaat van het schrijven of verwijderen van een bericht. |
+> [!div class="mx-tableFixed"]
+> | Tekenreeks bewerking    | Beschrijving         |
+> | ------------------- | ------------------- |
+> | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | Retourneert een blob of een lijst met blobs. |
+> | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | Geeft als resultaat het resultaat van het schrijven van een blob. |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read` | Retourneert een bericht. |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | Retourneert een bericht of het resultaat van het schrijven of verwijderen van een bericht. |
 
-## <a name="notdataactions"></a>NotDataActions
+## <a name="notdataactions"></a>NietGegevensacties
 
-Met de machtiging `NotDataActions` geeft u de gegevens bewerkingen op die zijn uitgesloten van de toegestane `DataActions`. De toegang die wordt verleend door een rol (efficiënte machtigingen) wordt berekend door de `NotDataActions` bewerkingen uit te trekken van de `DataActions` bewerkingen. Elke resource provider biedt de respectieve set Api's om te voldoen aan gegevens bewerkingen.
+De `NotDataActions` machtiging geeft de gegevensbewerkingen op `DataActions`die zijn uitgesloten van de toegestane . De toegang die wordt verleend door een rol (effectieve `NotDataActions` machtigingen) `DataActions` wordt berekend door de bewerkingen af te trekken van de bewerkingen. Elke resourceprovider biedt zijn respectievelijke set API's om gegevensbewerkingen uit te voeren.
 
 > [!NOTE]
-> Als aan een gebruiker een rol is toegewezen waarmee een gegevens bewerking in `NotDataActions`wordt uitgesloten en aan een tweede rol wordt toegewezen die toegang verleent tot dezelfde gegevens bewerking, mag de gebruiker die gegevens bewerking uitvoeren. `NotDataActions` is geen regel voor weigeren: het is een handige manier om een set toegestane gegevens bewerkingen te maken wanneer specifieke gegevens bewerkingen moeten worden uitgesloten.
+> Als een gebruiker een rol krijgt toegewezen `NotDataActions`die een gegevensbewerking uitsluit in , en een tweede rol krijgt toegewezen die toegang geeft tot dezelfde gegevensbewerking, mag de gebruiker die gegevensbewerking uitvoeren. `NotDataActions`is geen weigeringsregel – het is gewoon een handige manier om een set toegestane gegevensbewerkingen te maken wanneer specifieke gegevensbewerkingen moeten worden uitgesloten.
 >
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-Met de eigenschap `AssignableScopes` geeft u de bereiken (beheer groepen, abonnementen, resource groepen of resources) op waarvoor deze functie definitie beschikbaar is. U kunt de rol beschikbaar maken voor toewijzing in alleen de beheer groepen, abonnementen of resource groepen die deze nodig hebben. U moet ten minste één beheer groep, abonnement, resource groep of Resource-ID gebruiken.
+De `AssignableScopes` eigenschap geeft de scopes (beheergroepen, abonnementen of resourcegroepen) op die deze roldefinitie beschikbaar hebben. U de rol alleen beschikbaar maken voor toewijzing in de beheergroepen, abonnementen of resourcegroepen die deze vereisen. U moet ten minste één beheergroep, abonnement of resourcegroep gebruiken.
 
-Voor ingebouwde rollen is `AssignableScopes` ingesteld op het hoofd bereik (`"/"`). Het hoofd bereik geeft aan dat de rol beschikbaar is voor toewijzing in alle bereiken. Voor beelden van geldige toewijs bare bereiken zijn:
+Ingebouwde rollen `AssignableScopes` zijn ingesteld op`"/"`het hoofdbereik ( ). De hoofdmap geeft aan dat de rol beschikbaar is voor toewijzing in alle scopes. Voorbeelden van geldige toewijsbare scopes zijn:
 
-| De rol is beschikbaar voor toewijzing | Voorbeeld |
-|----------|---------|
-| Eén abonnement | `"/subscriptions/{subscriptionId1}"` |
-| Twee abonnementen | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
-| Netwerk resource groep | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
-| Eén beheer groep | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
-| Beheer groep en een abonnement | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
-| Alle bereiken (alleen van toepassing op ingebouwde rollen) | `"/"` |
+> [!div class="mx-tableFixed"]
+> | Rol is beschikbaar voor toewijzing | Voorbeeld |
+> |----------|---------|
+> | Eén abonnement | `"/subscriptions/{subscriptionId1}"` |
+> | Twee abonnementen | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
+> | Netwerkbrongroep | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
+> | Eén managementgroep | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
+> | Managementgroep en een abonnement | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
+> | Alle scopes (geldt alleen voor ingebouwde rollen) | `"/"` |
 
-Zie [aangepaste rollen voor Azure-resources](custom-roles.md)voor meer informatie over `AssignableScopes` voor aangepaste rollen.
+Zie Aangepaste `AssignableScopes` rollen voor [Azure-resources voor](custom-roles.md)informatie over aangepaste rollen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Ingebouwde rollen voor Azure-resources](built-in-roles.md)
 * [Aangepaste rollen voor Azure-resources](custom-roles.md)
-* [Bewerkingen voor de resource provider Azure Resource Manager](resource-provider-operations.md)
+* [Azure Resource Manager-resourceproviderbewerkingen](resource-provider-operations.md)

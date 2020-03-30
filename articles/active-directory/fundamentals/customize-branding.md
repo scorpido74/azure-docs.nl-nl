@@ -1,6 +1,6 @@
 ---
-title: Een huis stijl toevoegen aan de aanmeldings pagina van uw organisatie-Azure AD
-description: Instructies over het toevoegen van de huisstijl van uw organisatie op de aanmeldingspagina van Azure Active Directory.
+title: Branding toevoegen aan de aanmeldingspagina van uw organisatie - Azure AD
+description: Instructies voor het toevoegen van de branding van uw organisatie aan de aanmeldingspagina van Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -11,128 +11,128 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: ajburnle
 ms.reviewer: kexia
-ms.custom: fasttrack-edit
+ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea0bc131f7eb3fc66f3b024b4c9902f8c73f9a7d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 441fdd14cc2c734b6ce532f3ad1d30663b2f56c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422822"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049796"
 ---
-# <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Huisstijl van uw organisatie Azure Active Directory-aanmelden pagina toevoegen
-Het logo en de aangepaste kleurenschema's van uw organisatie gebruiken om een consistent uiterlijk-en-werking op uw Azure Active Directory (Azure AD) aanmeldingspagina's. Uw aanmeldingspagina's worden weergegeven wanneer gebruikers zich aanmelden bij uw organisatie op basis van een web-apps, zoals Office 365, dat gebruikmaakt van Azure AD als id-provider.
+# <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Branding toevoegen aan de aanmeldingspagina van Azure Active Directory van uw organisatie
+Gebruik het logo en de aangepaste kleurenschema's van uw organisatie om een consistente uitstraling te bieden op uw aanmeldingspagina's van Azure Active Directory (Azure AD). Uw aanmeldingspagina's worden weergegeven wanneer gebruikers zich aanmelden bij de webgebaseerde apps van uw organisatie, zoals Office 365, waarmee Azure AD wordt gebruikt als identiteitsprovider.
 
 >[!Note]
->Aangepaste huisstijl toe te voegen, moet u Azure Active Directory Premium 1, 2 Premium of Basic-versies gebruiken, of een Office 365-licentie hebben. Zie voor meer informatie over licentieverlening en versies [zich registreren voor Azure AD Premium](active-directory-get-started-premium.md).<br><br>De Azure AD-edities Premium en Basic zijn beschikbaar voor klanten in China via het wereldwijde exemplaar van Azure Active Directory. De Azure AD Premium en Basic-edities worden momenteel niet ondersteund in de Azure-service die wordt beheerd door 21Vianet in China. Neem contact met ons op via het [Azure Active Directory Forum](https://feedback.azure.com/forums/169401-azure-active-directory/) voor meer informatie.
+>Voor het toevoegen van aangepaste branding moet u Azure Active Directory Premium 1, Premium 2 of Basic-edities gebruiken of een Office 365-licentie hebben. Zie [Aanmelden voor Azure AD Premium voor](active-directory-get-started-premium.md)meer informatie over licenties en edities.<br><br>De Azure AD-edities Premium en Basic zijn beschikbaar voor klanten in China via het wereldwijde exemplaar van Azure Active Directory. De Azure AD Premium en Basic-edities worden momenteel niet ondersteund in de Azure-service die wordt beheerd door 21Vianet in China. Neem contact met ons op via het [Azure Active Directory Forum](https://feedback.azure.com/forums/169401-azure-active-directory/) voor meer informatie.
 
-## <a name="customize-your-azure-ad-sign-in-page"></a>Uw Azure AD-aanmeldingspagina aanpassen
-U kunt uw Azure AD-aanmelden pagina's aanpassen, die worden weergegeven wanneer gebruikers zich aanmelden bij apps van de tenant-specifieke van uw organisatie, zoals [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), of als een domeinvariabele, zoals wordtdoorgegeven[ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com).
+## <a name="customize-your-azure-ad-sign-in-page"></a>Uw aanmeldingspagina voor Azure AD aanpassen
+U uw Azure AD-aanmeldingspagina's aanpassen, die worden weergegeven wanneer gebruikers `https://outlook.com/contoso.com`zich aanmelden bij de tenantspecifieke apps van uw organisatie, zoals of bij het doorgeven van een domeinvariabele, zoals `https://passwordreset.microsoftonline.com/?whr=contoso.com`.
 
-Uw aangepaste huis stijl wordt niet onmiddellijk weer gegeven wanneer uw gebruikers naar sites zoals www\.office.com. In plaats daarvan wordt de gebruiker heeft om aan te melden voordat uw aangepaste huisstijl weergegeven. Nadat de gebruiker zich heeft aangemeld, kan het 15 minuten of langer duren voordat de huis stijl wordt weer gegeven. 
+Uw aangepaste branding wordt niet onmiddellijk weergegeven wanneer uw\.gebruikers naar sites gaan zoals www office.com. In plaats daarvan moet de gebruiker zich aanmelden voordat uw aangepaste branding wordt weergegeven. Nadat de gebruiker zich heeft aangemeld, kan het 15 minuten of langer duren voordat de branding wordt weergegeven. 
 
 > [!NOTE]
-> Alle huisstijl elementen zijn optioneel. Als u een logo in banner met geen afbeelding opgeeft, wordt de aanmeldingspagina uw logo met een standaardinstallatiekopie van achtergrond van de doelsite (bijvoorbeeld Office 365) weergegeven.<br><br>Bovendien branding-aanmeldingspagina niet meegenomen naar persoonlijke Microsoft-accounts. Als uw gebruikers- of zakelijke gasten zich hebt aangemeld met een persoonlijk Microsoft-account, wordt niet de aanmeldingspagina doorgevoerd in de huisstijl van uw organisatie.
+> Alle merkelementen zijn optioneel. Als u bijvoorbeeld een bannerlogo opgeeft zonder achtergrondafbeelding, wordt op de aanmeldingspagina uw logo weergegeven met een standaardachtergrondafbeelding van de bestemmingssite (bijvoorbeeld Office 365).<br><br>Bovendien wordt aanmeldingspaginabranding niet overgedragen naar persoonlijke Microsoft-accounts. Als uw gebruikers of zakelijke gasten zich aanmelden met een persoonlijk Microsoft-account, geeft de aanmeldingspagina niet de branding van uw organisatie weer.
 
-### <a name="to-customize-your-branding"></a>Uw huisstijl aanpassen
+### <a name="to-customize-your-branding"></a>Uw branding aanpassen
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met het account van een globale administrator voor de map.
 
-2. Selecteer **Azure Active Directory**, en selecteer vervolgens **huisstijl van bedrijf**, en selecteer vervolgens **configureren**.
+2. Selecteer **Azure Active Directory**en selecteer vervolgens **Bedrijfsbranding**en selecteer **Vervolgens Configureren**.
 
-    ![Contoso - huisstijl pagina bedrijf, configureren-optie is gemarkeerd](media/customize-branding/company-branding-configure-button.png)
+    ![Contoso - Pagina Bedrijfsbranding, optie configureren gemarkeerd](media/customize-branding/company-branding-configure-button.png)
 
-3. Op de **huisstijl configureren** pagina, geeft u een of meer van de volgende informatie.
+3. Geef op de pagina **Bedrijfsbranding configureren** de volgende informatie op of u deze opgeeft.
 
     >[!Important]
-    >Alle aangepaste installatiekopieën die u op deze pagina toevoegt afbeeldingsgrootte (in pixels) hebben, en mogelijk de bestandsgrootte (KB), beperkingen. Vanwege deze beperkingen, heeft moet de meeste waarschijnlijk u een foto-editor gebruiken om de installatiekopieën op maat te maken.
+    >Alle aangepaste afbeeldingen die u op deze pagina toevoegt, hebben afbeeldingsgrootte (pixels) en mogelijk bestandsgrootte (KB) beperkingen. Vanwege deze beperkingen moet u waarschijnlijk een foto-editor gebruiken om de juiste afbeeldingen te maken.
 
     - **Algemene instellingen**
 
-        ![Een bedrijfshuisstijl pagina met algemene instellingen die zijn voltooid](media/customize-branding/configure-company-branding-general-settings.png)
+        ![Pagina met bedrijfsbranding configureren, met algemene instellingen voltooid](media/customize-branding/configure-company-branding-general-settings.png)
 
-        - **Taal.** De taal is automatisch ingesteld als standaard en kan niet worden gewijzigd.
+        - **Language.** De taal wordt automatisch ingesteld als standaard taal en kan niet worden gewijzigd.
         
-        - **Achtergrondafbeelding van aanmeldingspagina.** Selecteer een PNG- of JPG-afbeeldingsbestand wordt weergegeven als achtergrond voor de aanmeldingspagina's. 
+        - **Achtergrondafbeelding van de aanmeldingspagina.** Selecteer een afbeeldingsbestand .png of .jpg dat wordt weergegeven als achtergrond voor uw aanmeldingspagina's. 
         
-            De installatiekopie mag niet groter zijn dan 1920 x 1080 pixels groot en een bestandsgrootte van minder dan 300 KB moet hebben.
+            De afbeelding mag niet groter zijn dan 1920x1080 pixels en moet een bestandsgrootte van minder dan 300 KB hebben.
 
-        - **Standaardvaandel logo.** Selecteer een PNG- of jpg-versie van het logo op de aanmeldingspagina wordt weergegeven nadat de gebruiker een gebruikersnaam typt en op de **mijn Apps** portal-pagina.
+        - **Bannerlogo.** Selecteer een .png- of .jpg-versie van uw logo die op de aanmeldingspagina wordt weergegeven nadat de gebruiker een gebruikersnaam heeft ingevoerd en op de portalpagina **Mijn apps.**
             
-            De afbeelding mag niet groter zijn dan 60 pixels of breder zijn dan 280 pixels. U wordt aangeraden een transparante afbeelding gebruikt, omdat de achtergrond mogelijk niet overeen met de achtergrond van het logo. Het beste ook niet toe te voegen opvulling rond de afbeelding of het ervoor kan zorgen dat uw logo kleine zoeken.
+            De afbeelding mag niet groter zijn dan 60 pixels of breder dan 280 pixels. We raden u aan een transparante afbeelding te gebruiken, omdat de achtergrond mogelijk niet overeenkomt met de achtergrond van uw logo. We raden ook aan om geen opvulling rond de afbeelding toe te voegen of het kan uw logo klein laten lijken.
 
-        - **Hint voor gebruikersnaam.** Typ de tekst van de hint die voor gebruikers wordt weergegeven als ze hun gebruikersnaam bent vergeten. Deze tekst moet Unicode, zonder koppelingen of code, en mag maximaal 64 tekens bevatten. Als gasten zich aanmelden bij uw app, het is raadzaam deze hint niet toevoegen.
+        - **Gebruikersnaam hint.** Typ de hinttekst die aan gebruikers wordt weergegeven als ze hun gebruikersnaam vergeten. Deze tekst moet Unicode zijn, zonder koppelingen of code, en mag niet meer dan 64 tekens bevatten. Als gasten zich aanmelden bij uw app, raden we u aan deze hint niet toe te voegen.
 
-        - **Tekst van aanmeldingspagina.** Typ de tekst die wordt weergegeven aan de onderkant van de aanmeldingspagina. U kunt deze tekst gebruiken om te communiceren als u meer informatie, zoals het telefoonnummer aan uw helpdesk of een juridische verklaring. Deze tekst moet Unicode en niet langer zijn dan 256 tekens. We raden ook niet met inbegrip van koppelingen of HTML-codes.
+        - **Inlogpaginatekst.** Typ de tekst die onder aan de aanmeldingspagina wordt weergegeven. U deze tekst gebruiken om aanvullende informatie, zoals het telefoonnummer, door te geven aan uw helpdesk of een juridische verklaring. Deze tekst mag unicode zijn en mag niet meer dan 256 tekens bevatten. We raden ook aan om geen koppelingen of HTML-tags op te leggen.
 
     - **Geavanceerde instellingen**
             
-        ![Een bedrijfshuisstijl pagina met geavanceerde instellingen voltooid](media/customize-branding/configure-company-branding-advanced-settings.png)   
+        ![De pagina met bedrijfsbranding configureren, met geavanceerde instellingen voltooid](media/customize-branding/configure-company-branding-advanced-settings.png)   
 
-        - **De achtergrondkleur van de aanmeldingspagina.** De hexadecimale kleur opgeven (bijvoorbeeld wit is #FFFFFF) die wordt weergegeven in plaats van uw achtergrondafbeelding in situaties met een lage bandbreedte verbinding. We raden u aan met behulp van de primaire kleur van uw logo in banner of de kleur van uw organisatie.
+        - **Achtergrondkleur van de aanmeldingspagina.** Geef de hexadecimale kleur op (bijvoorbeeld wit is #FFFFFF) die wordt weergegeven in plaats van uw achtergrondafbeelding in verbindingssituaties met een lage bandbreedte. We raden u aan de primaire kleur van uw bannerlogo of uw organisatiekleur te gebruiken.
 
-        - **Afbeelding met vierkant logo.** Selecteer een PNG (bij voorkeur) of JPG-afbeelding van het logo van uw organisatie worden weergegeven aan gebruikers tijdens de installatieprocedure voor de nieuwe Windows 10 Enterprise-apparaten. Deze installatiekopie wordt alleen gebruikt voor Windows-verificatie en wordt alleen weergegeven op tenants die gebruikmaken van [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) voor implementatie of voor wachtwoordinvoer pagina's in andere Windows-10-ervaringen. In sommige gevallen kan het ook worden weer gegeven in het dialoog venster voor toestemming.
+        - **Afbeelding van het vierkant logo.** Selecteer een .png-afbeelding (voorkeur) of .jpg-afbeelding van het logo van uw organisatie die aan gebruikers wordt weergegeven tijdens het installatieproces voor nieuwe Windows 10 Enterprise-apparaten. Deze afbeelding wordt alleen gebruikt voor Windows-verificatie en wordt alleen weergegeven op tenants die [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) gebruiken voor implementatie of voor pagina's met wachtwoordinvoer in andere Windows 10-ervaringen. In sommige gevallen kan het ook worden weergegeven in het toestemmingsdialoogvenster.
         
-            De installatiekopie mag niet groter zijn dan 240 x 240 pixels groot en een bestandsgrootte van minder dan 10 KB als ze beschikken. U wordt aangeraden een transparante afbeelding gebruikt, omdat de achtergrond mogelijk niet overeen met de achtergrond van het logo. Het beste ook niet toe te voegen opvulling rond de afbeelding of het ervoor kan zorgen dat uw logo kleine zoeken.
+            De afbeelding mag niet groter zijn dan 240x240 pixels en moet een bestandsgrootte van minder dan 10 KB hebben. We raden u aan een transparante afbeelding te gebruiken, omdat de achtergrond mogelijk niet overeenkomt met de achtergrond van uw logo. We raden ook aan om geen opvulling rond de afbeelding toe te voegen of het kan uw logo klein laten lijken.
     
-        - **Afbeelding met vierkant logo, donkere thema.** Hetzelfde als de bovenstaande afbeelding met vierkant logo. Deze logoafbeelding gebruikt in plaats van de afbeelding met vierkant logo bij gebruik met een donkere achtergrond, zoals met Windows 10 Azure AD verbonden schermen tijdens de out-of-box experience (OOBE).  Als uw logo mooi op wit, donker blauw en zwarte achtergronden, moet u niet om toe te voegen deze installatiekopie. 
+        - **Vierkant logo afbeelding, donker thema.** Hetzelfde als de vierkante logo afbeelding hierboven. Deze logoafbeelding neemt de plaats in van de afbeelding met vierkante logo's wanneer deze wordt gebruikt met een donkere achtergrond, zoals bij Windows 10 Azure AD-schermen tijdens de out-of-box-ervaring (OOBE).  Als uw logo er goed uitziet op witte, donkerblauwe en zwarte achtergronden, hoeft u deze afbeelding niet toe te voegen. 
         
-        - **Optie om aangemeld te blijven weergeven.** U kunt ervoor kiezen uw gebruikers aangemeld te blijven bij Azure AD voordat ze zich expliciet afmelden. Als u **Nee**kiest, wordt deze optie verborgen en moeten gebruikers zich aanmelden telkens wanneer de browser wordt gesloten en opnieuw wordt geopend.
+        - **Toon optie om ingelogd te blijven.** U ervoor kiezen uw gebruikers te laten zijn aangemeld bij Azure AD totdat u zich expliciet afmeldt. Als u **Nee**kiest, is deze optie verborgen en moeten gebruikers zich elke keer aanmelden wanneer de browser wordt gesloten en heropend.
         
             >[!Note]
             >Of sommige functies van SharePoint Online en Office 2010 beschikbaar zijn, hangt ervan af of gebruikers ervoor kunnen kiezen aangemeld te blijven. Als u deze instelling op **Nee** instelt, krijgen uw gebruikers mogelijk extra en onverwachte prompts te zien om zich aan te melden.
    
 
-3. Nadat u klaar bent met uw huisstijl toe te voegen, selecteert u **opslaan**.
+3. Nadat u klaar bent met het toevoegen van uw merknaam, selecteert u **Opslaan**.
 
-    Als dit proces uw eerste aangepaste huisstijl configuratie maakt, wordt de standaardwaarde voor uw tenant. Als u aanvullende configuraties hebt, kunt u zult kunnen de standaardconfiguratie te kiezen.
+    Als met dit proces uw eerste aangepaste merkconfiguratie wordt gemaakt, wordt dit de standaardinstelling voor uw tenant. Als u extra configuraties hebt, u uw standaardconfiguratie kiezen.
     
     >[!Important]
-    >Toevoegen van meer zakelijke branding-configuraties die u kunt uw tenant, moet u **nieuwe taal** op de **Contoso - huisstijl** pagina. Hiermee opent u de **huisstijl configureren** pagina, waar u dezelfde als hierboven stappen kunt.
+    >Als u meer configuraties voor huisstijl aan uw tenant wilt toevoegen, moet u **Nieuwe taal** kiezen op de pagina **Contoso - Bedrijfsbranding.** Hiermee wordt de pagina **Bedrijfsbranding configureren geopend,** waar u dezelfde stappen volgen als hierboven.
 
-## <a name="update-your-custom-branding"></a>Uw aangepaste huisstijl bijwerken
-Nadat u hebt gemaakt om uw aangepaste huisstijl, kunt u teruggaan en alles wat die u wilt wijzigen.
+## <a name="update-your-custom-branding"></a>Uw aangepaste branding bijwerken
+Nadat u uw aangepaste branding hebt gemaakt, u teruggaan en alles wijzigen wat u wilt.
 
-### <a name="to-edit-your-custom-branding"></a>Uw aangepaste huisstijl bewerken
+### <a name="to-edit-your-custom-branding"></a>Uw aangepaste branding bewerken
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met het account van een globale administrator voor de map.
 
-2. Selecteer **Azure Active Directory**, en selecteer vervolgens **huisstijl van bedrijf**, en selecteer vervolgens **configureren**.
+2. Selecteer **Azure Active Directory**en selecteer vervolgens **Bedrijfsbranding**en selecteer **Vervolgens Configureren**.
 
-    ![Contoso - huisstijl pagina, met standaardconfiguratie wordt weergegeven](media/customize-branding/company-branding-default-config.png)
+    ![Contoso - Bedrijfsmerkpagina, met standaardconfiguratie weergegeven](media/customize-branding/company-branding-default-config.png)
 
-3. Op de **huisstijl configureren** pagina, toevoegen, verwijderen of wijzigen van de gegevens, op basis van de beschrijvingen in de [aanpassen van uw Azure AD-aanmeldingspagina](#customize-your-azure-ad-sign-in-page) sectie van dit artikel.
+3. Voeg op de pagina **Bedrijfsbranding configureren** de informatie toe, verwijder of wijzig deze op basis van de beschrijvingen in het gedeelte [Uw Azure AD-aanmeldingspagina](#customize-your-azure-ad-sign-in-page) van dit artikel aanpassen.
 
 4. Selecteer **Opslaan**.
 
    Het kan een uur duren voordat de wijzigingen die u aan de huisstijl van de aanmeldingspagina hebt aangebracht, worden weergegeven.
 
 ## <a name="add-language-specific-company-branding-to-your-directory"></a>Taalspecifieke huisstijl toevoegen aan uw directory
-U kunt de oorspronkelijke configuratie taal niet wijzigen van de standaardtaal. Als u een configuratie in een andere taal nodig hebt, kunt u echter een nieuwe configuratie maken.
+U de taal van uw oorspronkelijke configuratie niet wijzigen vanuit uw standaardtaal. Als u echter een configuratie in een andere taal nodig hebt, u een nieuwe configuratie maken.
 
-### <a name="to-add-a-language-specific-branding-configuration"></a>Een taalspecifieke huisstijl configuratie toevoegen
+### <a name="to-add-a-language-specific-branding-configuration"></a>Een taalspecifieke merkconfiguratie toevoegen
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met het account van een globale administrator voor de map.
 
-2. Selecteer **Azure Active Directory**, en selecteer vervolgens **huisstijl van bedrijf**, en selecteer vervolgens **nieuwe taal**.
+2. Selecteer **Azure Active Directory**en selecteer vervolgens **Bedrijfsbranding**en selecteer **Vervolgens Nieuwe taal**.
 
-    ![Contoso - huisstijl pagina, met de nieuwe taaloptie gemarkeerd](media/customize-branding/company-branding-new-language.png)
+    ![Contoso - Pagina Bedrijfsbranding, met nieuwe taaloptie gemarkeerd](media/customize-branding/company-branding-new-language.png)
 
-3. Op de **huisstijl configureren** pagina, selecteer uw taal (bijvoorbeeld Frans) en voegt u de vertaalde gegevens, op basis van de beschrijvingen in de [aanpassen van uw Azure AD-aanmeldingspagina](#customize-your-azure-ad-sign-in-page) sectie van dit artikel.
+3. Selecteer op de pagina **Bedrijfsbranding configureren** uw taal (bijvoorbeeld Frans) en voeg vervolgens uw vertaalde gegevens toe op basis van de beschrijvingen in het gedeelte [Aanmeldingspagina](#customize-your-azure-ad-sign-in-page) van Azure AD van dit artikel aanpassen.
 
 4. Selecteer **Opslaan**.
 
-    De **Contoso-huisstijl** pagina updates om uw nieuwe Franse configuratie weer te geven.
+    De **Contoso – Bedrijfsmerkpagina** updates om uw nieuwe Franse configuratie weer te geven.
 
-    ![Contoso - huisstijl pagina, met standaardconfiguratie wordt weergegeven](media/customize-branding/company-branding-french-config.png)
+    ![Contoso - Bedrijfsmerkpagina, met standaardconfiguratie weergegeven](media/customize-branding/company-branding-french-config.png)
 
-## <a name="add-your-custom-branding-to-pages"></a>Uw aangepaste huisstijl naar pagina's toevoegen
-Toevoegen van uw aangepaste huisstijl naar pagina's door het wijzigen van het einde van de URL met de tekst, `?whr=yourdomainname`. Deze wijziging werkt op verschillende pagina's, met inbegrip van de pagina van de installatie van multi-factor Authentication (MFA), de installatiepagina selfservice wachtwoord opnieuw instellen (SSPR) en het teken op de pagina.
+## <a name="add-your-custom-branding-to-pages"></a>Uw aangepaste branding toevoegen aan pagina's
+Voeg uw aangepaste branding toe aan pagina's door `?whr=yourdomainname`het einde van de URL met de tekst te wijzigen. Deze wijziging werkt op verschillende pagina's, waaronder de multi-factor authenticatie (MFA) setup pagina, de Self-service Password Reset (SSPR) setup pagina, en de aanmelding pagina.
 
 **Voorbeelden:**
 
-**Oorspronkelijke URL:** https://aka.ms/MFASetup<br>
-**Aangepaste URL:** https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com
+**Oorspronkelijke URL:**https://aka.ms/MFASetup<br>
+**Aangepaste URL:**`https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com`
 
-**Oorspronkelijke URL:** https://aka.ms/SSPR<br>
-**Aangepaste URL:** https://passwordreset.microsoftonline.com/?whr=contoso.com
+**Oorspronkelijke URL:**https://aka.ms/SSPR<br>
+**Aangepaste URL:**`https://passwordreset.microsoftonline.com/?whr=contoso.com`
 
  

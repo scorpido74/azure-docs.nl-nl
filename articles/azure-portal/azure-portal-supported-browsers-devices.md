@@ -1,6 +1,6 @@
 ---
-title: Ondersteunde browsers en apparaten voor Azure Portal | Microsoft Docs
-description: U kunt de Azure Portal gebruiken op alle moderne apparaten en met de nieuwste browser versies. Raadpleeg dit artikel om te controleren of uw browser wordt ondersteund.
+title: Ondersteunde browsers en apparaten voor Azure-portal | Microsoft Documenten
+description: U de Azure-portal gebruiken op alle moderne apparaten en met de nieuwste browserversies. Raadpleeg dit artikel om er zeker van te zijn dat uw browser wordt ondersteund.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -16,15 +16,15 @@ ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
 ms.openlocfilehash: 792864022cb7c1b2b4b43a4980d86e32b213525c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75640101"
 ---
 # <a name="supported-devices"></a>Ondersteunde apparaten
 
-De [Azure Portal](https://portal.azure.com) is een webconsole en wordt uitgevoerd in de browser van alle moderne Bureau bladen en Tablet-apparaten. Als u Azure-resources wilt beheren vanaf een mobiel apparaat, probeert u het [Azure Mobile App](https://azure.microsoft.com/features/azure-portal/mobile-app/). Het is beschikbaar voor iOS en Android.
+De [Azure-portal](https://portal.azure.com) is een webconsole en wordt uitgevoerd in de browser van alle moderne desktops en tabletapparaten. Als u Azure-resources vanaf een mobiel apparaat moet beheren, probeert u de [mobiele Azure-app](https://azure.microsoft.com/features/azure-portal/mobile-app/). Het is beschikbaar voor iOS en Android.
 
 ## <a name="recommended-browsers"></a>Aanbevolen browsers
 

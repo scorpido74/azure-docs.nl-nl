@@ -1,6 +1,6 @@
 ---
-title: Uw cluster beveiligen in azure Data Explorer
-description: In dit artikel wordt beschreven hoe u uw cluster in azure Data Explorer kunt beveiligen binnen de Azure Portal.
+title: Uw cluster beveiligen in Azure Data Explorer
+description: In dit artikel wordt beschreven hoe u uw cluster in Azure Data Explorer in de Azure-portal beveiligen.
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
@@ -8,31 +8,31 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 0f935999b68a7283c032d43c42d688b273d5c450
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75720341"
 ---
-# <a name="secure-your-cluster-in-azure-data-explorer---azure-portal"></a>Uw cluster beveiligen in azure Data Explorer-Azure Portal
+# <a name="secure-your-cluster-in-azure-data-explorer---azure-portal"></a>Uw cluster beveiligen in Azure Data Explorer - Azure-portal
 
-[Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview) helpt uw gegevens te beschermen en beschermen om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Het biedt volume versleuteling voor het besturings systeem en de gegevens schijven van de virtuele cluster machines. Het kan ook worden geïntegreerd met [Azure Key Vault](/azure/key-vault/), waarmee we de schijf versleutelings sleutels en geheimen kunnen beheren en beheren en ervoor zorgen dat alle gegevens op de VM-schijven worden versleuteld. 
+[Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview) helpt uw gegevens te beschermen en te beschermen om te voldoen aan uw organisatorische beveiligings- en nalevingsverplichtingen. Het biedt volumeversleuteling voor het besturingssysteem en gegevensschijven van uw virtuele clustermachines. Het integreert ook met [Azure Key Vault](/azure/key-vault/), waarmee we de schijfversleutelingssleutels en -geheimen kunnen beheren en ervoor kunnen zorgen dat alle gegevens op de VM-schijven worden versleuteld. 
   
-## <a name="enable-encryption-at-rest-in-the-azure-portal"></a>Versleuteling inschakelen in de rest van de Azure Portal
+## <a name="enable-encryption-at-rest-in-the-azure-portal"></a>Versleuteling in de rust inschakelen in de Azure-portal
   
-Met de beveiligings instellingen van uw cluster kunt u schijf versleuteling inschakelen voor uw cluster. Het inschakelen van [versleuteling in rust](/azure/security/fundamentals/encryption-atrest) op uw cluster biedt gegevens beveiliging voor opgeslagen gegevens (op rest). 
+Met de clusterbeveiligingsinstellingen u schijfversleuteling op uw cluster inschakelen. Versleuteling [in de rust](/azure/security/fundamentals/encryption-atrest) op uw cluster inschakelen biedt gegevensbescherming voor opgeslagen gegevens (in rust). 
 
-1. Ga in het Azure Portal naar de cluster bron van Azure Data Explorer. Selecteer in de kop **instellingen** de optie **beveiliging**. 
+1. Ga in de Azure-portal naar uw Azure Data Explorer-clusterbron. Selecteer **Beveiliging** onder **Security**de kop Instellingen . 
 
-    ![Versleuteling inschakelen bij rest](media/manage-cluster-security/security-encryption-at-rest.png)
+    ![Versleuteling in rust inschakelen](media/manage-cluster-security/security-encryption-at-rest.png)
 
-1. Selecteer in het venster **beveiliging** de optie **aan** voor de beveiligings instelling **schijf versleuteling** . 
+1. Selecteer **in** het venster Beveiliging de optie **Aan** voor de beveiligingsinstelling **Schijfversleuteling.** 
 
 1. Selecteer **Opslaan**.
  
 > [!NOTE]
-> Selecteer **uit** om de versleuteling uit te scha kelen nadat deze is ingeschakeld.
+> Selecteer **Uit** om de versleuteling uit te schakelen nadat deze is ingeschakeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[De cluster status controleren](/azure/data-explorer/check-cluster-health)
+[Clusterstatus controleren](/azure/data-explorer/check-cluster-health)

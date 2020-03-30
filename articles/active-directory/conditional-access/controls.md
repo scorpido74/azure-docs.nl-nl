@@ -1,76 +1,64 @@
 ---
-title: Aangepaste besturings elementen in voorwaardelijke toegang voor Azure AD
-description: Meer informatie over het werken met aangepaste besturings elementen in Azure Active Directory voorwaardelijke toegang.
+title: Aangepaste besturingselementen in voorwaardelijke toegang tot Azure AD
+description: Lees hoe aangepaste besturingselementen in Azure Active Directory Voorwaardelijke toegang werken.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 02/25/2020
+ms.date: 03/18/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb
+ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fff08690eb2807fbbd50f297761c57d3fef88fe
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: f8c149279a755eb186a3fdc7891e9b511d18c7f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78671849"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050538"
 ---
-# <a name="custom-controls-preview"></a>Aangepaste besturings elementen (preview-versie)
+# <a name="custom-controls-preview"></a>Aangepaste besturingselementen (voorbeeld)
 
-Aangepaste besturings elementen zijn een functie van de Azure Active Directory Premium P1-editie. Wanneer u aangepaste besturings elementen gebruikt, worden uw gebruikers omgeleid naar een compatibele service om te voldoen aan aanvullende vereisten buiten Azure Active Directory. Om aan dit besturings element te voldoen, wordt de browser van een gebruiker omgeleid naar de externe service, worden eventuele vereiste verificatie-of validatie activiteiten uitgevoerd en wordt vervolgens teruggeleid naar Azure Active Directory. Azure Active Directory controleert het antwoord en, als de gebruiker is geverifieerd of gevalideerd, wordt de gebruiker in de stroom voor voorwaardelijke toegang voortgezet.
+Aangepaste besturingselementen is een voorbeeldmogelijkheid van de Azure Active Directory. Wanneer u aangepaste besturingselementen gebruikt, worden uw gebruikers doorgestuurd naar een compatibele service om te voldoen aan verificatievereisten buiten Azure Active Directory. Om aan dit controlepunt te voldoen, wordt de browser van een gebruiker doorgestuurd naar de externe service, voert u de vereiste verificatie uit en wordt deze vervolgens teruggestuurd naar Azure Active Directory. Azure Active Directory verifieert het antwoord en als de gebruiker is geverifieerd of gevalideerd, gaat de gebruiker verder in de stroom voor voorwaardelijke toegang.
 
-Met deze besturings elementen wordt het gebruik van bepaalde externe of aangepaste services als besturings elementen voor voorwaardelijke toegang toegestaan en worden de mogelijkheden van voorwaardelijke toegang in het algemeen uitgebreid.
+> [!NOTE]
+> Voor meer informatie over wijzigingen zijn we van plan om de custom control-mogelijkheid te gebruiken, zie de [nieuwe update van](../fundamentals/whats-new.md#upcoming-changes-to-custom-controls)februari 2020.
 
-Providers die momenteel een compatibele service aanbieden, zijn onder andere:
+## <a name="creating-custom-controls"></a>Aangepaste besturingselementen maken
 
-- [Duo-beveiliging](https://duo.com/docs/azure-ca)
-- [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
-- [GSMA](https://mobileconnect.io/azure/)
-- [Ping-identiteit](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
-- [RSA](https://community.rsa.com/docs/DOC-81278)
-- [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
-- [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
-- [Symantec VIP](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
-- [Thales (Gemalto)](https://resources.eu.safenetid.com/help/AzureMFA/Azure_Help/Index.htm)
-- [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
+Custom Controls werkt met een beperkte set goedgekeurde verificatieproviders. Als u een aangepast besturingselement wilt maken, moet u eerst contact opnemen met de provider die u wilt gebruiken. Elke niet-Microsoft-provider heeft zijn eigen proces en vereisten om zich aan te melden, u te abonneren of anderszins deel uit te maken van de service en aan te geven dat u wilt integreren met Voorwaardelijke toegang. Op dat moment zal de provider u voorzien van een blok van gegevens in JSON-formaat. Met deze gegevens kunnen de provider en voorwaardelijke toegang samenwerken voor uw tenant, wordt het nieuwe besturingselement gemaakt en wordt gedefinieerd hoe voorwaardelijke toegang kan zien of uw gebruikers verificatie met de provider hebben uitgevoerd.
 
-Neem rechtstreeks contact op met de provider voor meer informatie over deze services.
+Kopieer de JSON-gegevens en plak deze vervolgens in het bijbehorende tekstvak. Breng geen wijzigingen aan in de JSON, tenzij u de wijziging die u aanbrengt expliciet begrijpt. Als u een wijziging doormaakt, kan de verbinding tussen de provider en Microsoft worden verbroken en u en uw gebruikers mogelijk uw accounts afsluiten.
 
-## <a name="creating-custom-controls"></a>Aangepaste besturings elementen maken
-
-Als u een aangepast besturings element wilt maken, moet u eerst contact opnemen met de provider die u wilt gebruiken. Elke niet-micro soft-provider heeft een eigen proces en vereisten om zich aan te melden, te abonneren of anderszins deel te nemen aan de service, en om aan te geven dat u wilt integreren met voorwaardelijke toegang. Op dat moment geeft de provider u een blok gegevens in JSON-indeling. Met deze gegevens kan de provider en de voorwaardelijke toegang samen werken voor uw Tenant, wordt het nieuwe besturings element gemaakt en wordt gedefinieerd hoe voorwaardelijke toegang kan zien of uw gebruikers verificatie hebben uitgevoerd met de provider.
-
-Aangepaste besturings elementen kunnen niet worden gebruikt met automatisering van identiteits beveiliging waarvoor multi-factor Authentication is vereist of voor het verhogen van rollen in privileged Identity Manager (PIM).
-
-Kopieer de JSON-gegevens en plak deze in het bijbehorende tekstvak. Breng geen wijzigingen aan in de JSON, tenzij u de wijziging die u aanbrengt expliciet begrijpt. Als u een wijziging aanbrengt, kan de verbinding tussen de provider en micro soft worden verbroken en kunnen u en uw gebruikers uw accounts vergren delen.
-
-De optie voor het maken van een aangepast besturings element bevindt zich in de sectie **beheren** van de pagina **voorwaardelijke toegang** .
+De optie om een aangepast besturingselement te maken bevindt zich in de sectie **Beheren** van de pagina **Voorwaardelijke toegang.**
 
 ![Beheer](./media/controls/82.png)
 
-Als u op **nieuw aangepast besturings element**klikt, wordt een Blade geopend met een tekstvak voor de JSON-gegevens van uw besturings element.  
+Als u op **Nieuw aangepast besturingselement**klikt, opent u een blad met een tekstvak voor de JSON-gegevens van uw besturingselement.  
 
 ![Beheer](./media/controls/81.png)
 
-## <a name="deleting-custom-controls"></a>Aangepaste besturings elementen verwijderen
+## <a name="deleting-custom-controls"></a>Aangepaste besturingselementen verwijderen
 
-Als u een aangepast besturings element wilt verwijderen, moet u er eerst voor zorgen dat het niet wordt gebruikt in een beleid voor voorwaardelijke toegang. Eenmaal voltooid:
+Als u een aangepast besturingselement wilt verwijderen, moet u er eerst voor zorgen dat het niet wordt gebruikt in een beleid voor voorwaardelijke toegang. Eenmaal voltooid:
 
-1. Ga naar de lijst met aangepaste besturings elementen
-1. Klik op...  
+1. Ga naar de lijst Aangepaste besturingselementen
+1. Klik...  
 1. Selecteer **Verwijderen**.
 
-## <a name="editing-custom-controls"></a>Aangepaste besturings elementen bewerken
+## <a name="editing-custom-controls"></a>Aangepaste besturingselementen bewerken
 
-Als u een aangepast besturings element wilt bewerken, moet u het huidige besturings element verwijderen en een nieuw besturings element maken met de bijgewerkte gegevens.
+Als u een aangepast besturingselement wilt bewerken, moet u het huidige besturingselement verwijderen en een nieuw besturingselement maken met de bijgewerkte informatie.
+
+## <a name="known-limitations"></a>Bekende beperkingen
+
+Aangepaste besturingselementen kunnen niet worden gebruikt met de automatisering van Identity Protection die Azure Multi-Factor Authentication, Azure AD self-service password reset (SSPR) vereist, voldoen aan vereisten voor multi-factor authenticatie claim of om rollen in Privileged te verhogen Identity Manager (PIM).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
+- [Gemeenschappelijk beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
 
-- [Modus alleen rapport](concept-conditional-access-report-only.md)
+- [Modus Alleen rapporteren](concept-conditional-access-report-only.md)
 
-- [Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)
+- [Aanmeldingsgedrag simuleren met het gereedschap Welke als voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)

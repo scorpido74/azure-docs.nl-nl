@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
 ms.openlocfilehash: 74031a8dbc9b64d6a09533789eed1296ff334d47
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176696"
 ---
 Een DNS-zone wordt gebruikt om de DNS-records voor een bepaald domein te hosten. Als u uw domein wilt hosten in Azure DNS, moet u een DNS-zone maken voor die domeinnaam. Alle DNS-records voor uw domein worden vervolgens gemaakt binnen deze DNS-zone.
 
-Het domein contoso.com kan bijvoorbeeld een aantal DNS-records bevatten, zoals mail.contoso.com (voor een e-mailserver) en 'www.contoso.com' (voor een website).
+Het domein contoso.com kan bijvoorbeeld een aantal DNS-records bevatten, zoals mail.contoso.com (voor een e-mailserver) en www.contoso.com (voor een website).
 
 Bij het maken van een DNS-zone in Azure DNS:
 
@@ -24,4 +24,4 @@ Bij het maken van een DNS-zone in Azure DNS:
 > [!NOTE]
 > U hoeft niet de eigenaar van een domeinnaam te zijn om een DNS-zone met die domeinnaam in Azure DNS te maken. U moet echter wel de eigenaar van het domein zijn om de Azure DNS-naamservers bij de domeinnaamregistrar te configureren als de juiste naamservers voor de domeinnaam.
 > 
-> Zie [Delegate a domain to Azure DNS](../articles/dns/dns-domain-delegation.md) (Een domein aan Azure DNS overdragen) voor meer informatie.
+> Zie [Een domein delegeren aan Azure DNS](../articles/dns/dns-domain-delegation.md)voor meer informatie.

@@ -1,5 +1,5 @@
 ---
-title: Problemen oplossen Azure File Sync | Microsoft Docs
+title: Problemen met Azure File Sync oplossen | Microsoft Documenten
 description: Veelvoorkomende problemen met Azure File Sync oplossen.
 author: jeffpatt24
 ms.service: storage
@@ -7,54 +7,54 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9d8aeba65a566cc93d3344a532a4636d709c1084
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: ebe5ddf72e13b1a66ded7a90976e0b6209a26dfd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303661"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060968"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
-Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
+Gebruik Azure File Sync om de bestandsshares van uw organisatie in Azure-bestanden te centraliseren, terwijl de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver behouden blijven. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U elk protocol dat beschikbaar is op Windows Server gebruiken om lokaal toegang te krijgen tot uw gegevens, waaronder SMB, NFS en FTPS. Je zoveel caches hebben als je nodig hebt over de hele wereld.
 
-Dit artikel is bedoeld om u te helpen bij het oplossen van problemen die kunnen optreden met uw Azure File Sync-implementatie. We beschrijven ook hoe belang rijke logboeken van het systeem moeten worden verzameld als een grondig onderzoek van het probleem is vereist. Als u het antwoord op uw vraag niet ziet, kunt u contact met ons opnemen via de volgende kanalen (in de volg orde waarin ze worden doorzocht):
+Dit artikel is ontworpen om u te helpen problemen op te lossen en op te lossen die u mogelijk tegenkomt met uw Azure File Sync-implementatie. We beschrijven ook hoe belangrijke logboeken van het systeem kunnen worden verzameld als een dieper onderzoek naar het probleem vereist is. Als u het antwoord op uw vraag niet ziet, u contact met ons opnemen via de volgende kanalen (in escalerende volgorde):
 
-1. [Azure Storage forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
-2. [Azure files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).
-3. Microsoft Ondersteuning. Als u een nieuwe ondersteunings aanvraag wilt maken, selecteert u in het Azure Portal op het tabblad **Help** de knop **Help en ondersteuning** en selecteert u vervolgens **nieuwe ondersteunings aanvraag**.
+1. [Azure Storage Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
+2. [UserVoice van Azure Files](https://feedback.azure.com/forums/217298-storage/category/180670-files).
+3. Microsoft-ondersteuning. Als u een nieuw ondersteuningsverzoek wilt maken, selecteert u in de Azure-portal op het tabblad **Help** de knop **Help + ondersteuning** en selecteert u Vervolgens Nieuw **ondersteuningsverzoek**.
 
-## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Ik heb een probleem met Azure File Sync op mijn server (synchronisatie, Cloud lagen, enz.). Moet ik mijn server-eind punt verwijderen en opnieuw maken?
+## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Ik heb een probleem met Azure File Sync op mijn server (synchronisatie, cloudtiering, enz.). Moet ik mijn servereindpunt verwijderen en opnieuw maken?
 [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
 
-## <a name="agent-installation-and-server-registration"></a>Agent-installatie en Server registratie
-<a id="agent-installation-failures"></a>**Problemen met installatie fouten van agent oplossen**  
-Als de installatie van de Azure File Sync agent mislukt, voert u bij een opdracht prompt met verhoogde bevoegdheid de volgende opdracht uit om logboek registratie in te scha kelen tijdens de installatie van de agent:
+## <a name="agent-installation-and-server-registration"></a>Installatie van agent en serverregistratie
+<a id="agent-installation-failures"></a>**Problemen met de installatievan agentproblemen oplossen**  
+Als de installatie van de Azure File Sync-agent mislukt, voert u bij een opdrachtprompt met verhoogde bevoegdheid de volgende opdracht uit om logboekregistratie tijdens de installatie van de agent in te schakelen:
 
 ```
 StorageSyncAgent.msi /l*v AFSInstaller.log
 ```
 
-Controleer de installatie van Installer. log om de oorzaak van de installatie fout te bepalen.
+Controleer installer.log om de oorzaak van de installatiefout te bepalen.
 
-<a id="agent-installation-on-DC"></a>**Agent installatie mislukt op Active Directory-domein controller**  
-Als u probeert de synchronisatie agent te installeren op een Active Directory domein controller waar de eigenaar van de PDC-functie zich bevindt op een Windows Server 2008 R2 of onder de versie van het besturings systeem, kunt u het probleem bereiken waarbij de synchronisatie agent niet kan worden geïnstalleerd.
+<a id="agent-installation-on-DC"></a>**Agent-installatie mislukt op Active Directory Domain Controller**  
+Als u de synchronisatieagent probeert te installeren op een Active Directory-domeincontroller waarbij de eigenaar van de PDC-rol zich bevindt op een Windows Server 2008 R2- of lager-versie van het besturingssysteem, u het probleem raken waarbij de synchronisatieagent niet wordt geïnstalleerd.
 
-U kunt dit oplossen door de PDC-functie over te dragen naar een andere domein controller met Windows Server 2012 R2 of meer recent en vervolgens de synchronisatie te installeren.
+Als u de PDC-rol wilt overbrengen naar een andere domeincontroller met Windows Server 2012 R2 of recenter, installeert u vervolgens synchronisatie.
 
-<a id="parameter-is-incorrect"></a>**Het is niet mogelijk om toegang te krijgen tot een volume op Windows Server 2012 R2 met de volgende fout: de para meter is onjuist**  
-Na het maken van een server eindpunt op Windows Server 2012 R2, treedt de volgende fout op bij het openen van het volume:
+<a id="parameter-is-incorrect"></a>**Toegang tot een volume op Windows Server 2012 R2 mislukt met fout: de parameter is onjuist**  
+Na het maken van een servereindpunt op Windows Server 2012 R2 treedt de volgende fout op bij het openen van het volume:
 
-stationsletter: \ is niet toegankelijk.  
+driveletter:\ is niet toegankelijk.  
 De parameter is onjuist.
 
-Installeer de meest recente updates voor Windows Server 2012 R2 en start de server opnieuw op om het probleem op te lossen.
+Als u het wilt oplossen, installeert u de nieuwste updates voor Windows Server 2012 R2 en start u de server opnieuw.
 
-<a id="server-registration-missing-subscriptions"></a>**Bij de server registratie worden niet alle Azure-abonnementen weer geven**  
-Wanneer u een server registreert met behulp van ServerRegistration. exe, ontbreken er abonnementen wanneer u op de vervolg keuzelijst voor het Azure-abonnement klikt.
+<a id="server-registration-missing-subscriptions"></a>**Serverregistratie vermeldt niet alle Azure-abonnementen**  
+Bij het registreren van een server met ServerRegistration.exe ontbreken abonnementen wanneer u op de vervolgkeuzelijst Azure-abonnement klikt.
 
-Dit probleem treedt op omdat ServerRegistration. exe momenteel geen ondersteuning biedt voor omgevingen met meerdere tenants. Dit probleem wordt opgelost in een toekomstige Azure File Sync agent update.
+Dit probleem treedt op omdat ServerRegistration.exe momenteel geen multitenant-omgevingen ondersteunt. Dit probleem wordt opgelost in een toekomstige Azure File Sync-agent-update.
 
-U kunt dit probleem oplossen met behulp van de volgende Power shell-opdrachten om de server te registreren:
+Als u dit probleem wilt oplossen, gebruikt u de volgende PowerShell-opdrachten om de server te registreren:
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
@@ -62,27 +62,27 @@ Login-AzureRmStorageSync -SubscriptionID "<guid>" -TenantID "<guid>"
 Register-AzureRmStorageSyncServer -SubscriptionId "<guid>" -ResourceGroupName "<string>" -StorageSyncServiceName "<string>"
 ```
 
-<a id="server-registration-prerequisites"></a>**Bij de registratie van de server wordt het volgende bericht weer gegeven: "er ontbreken vereisten"**  
-Dit bericht wordt weer gegeven als AZ of AzureRM Power shell-module niet is geïnstalleerd in Power shell 5,1. 
+<a id="server-registration-prerequisites"></a>**Serverregistratie geeft het volgende bericht weer: "Vereisten ontbreken"**  
+Dit bericht wordt weergegeven als de Az- of AzureRM PowerShell-module niet is geïnstalleerd op PowerShell 5.1. 
 
 > [!Note]  
-> ServerRegistration. exe biedt geen ondersteuning voor Power shell 6. x. U kunt de cmdlet REGI ster-AzStorageSyncServer in Power shell 6. x gebruiken om de server te registreren.
+> ServerRegistration.exe ondersteunt PowerShell 6.x niet. U de cmdlet Register-AzStorageServer op PowerShell 6.x gebruiken om de server te registreren.
 
-Voer de volgende stappen uit om de module AZ of AzureRM te installeren op Power shell 5,1:
+Voer de volgende stappen uit om de Az- of AzureRM-module op PowerShell 5.1 te installeren:
 
-1. Typ **Power shell** vanaf een opdracht prompt met verhoogde bevoegdheid en druk op ENTER.
-2. Installeer de nieuwste AZ-of AzureRM-module door de documentatie te volgen:
-    - [AZ-module (hiervoor is .NET 4.7.2 vereist)](https://go.microsoft.com/fwlink/?linkid=2062890)
+1. Typ **powershell** van een verhoogde opdrachtprompt en druk op enter.
+2. Installeer de nieuwste Az- of AzureRM-module door de documentatie te volgen:
+    - [Az-module (vereist .NET 4.7.2)](https://go.microsoft.com/fwlink/?linkid=2062890)
     - [AzureRM-module]( https://go.microsoft.com/fwlink/?linkid=856959)
-3. Voer ServerRegistration. exe uit en voltooi de wizard om de server te registreren bij een opslag synchronisatie service.
+3. Voer ServerRegistration.exe uit en voltooi de wizard om de server te registreren met een opslagsynchronisatieservice.
 
-<a id="server-already-registered"></a>**Bij de server registratie wordt het volgende bericht weer gegeven: "deze server is al geregistreerd"** 
+<a id="server-already-registered"></a>**Serverregistratie geeft het volgende bericht weer: "Deze server is al geregistreerd"** 
 
-![Een scherm afbeelding van het dialoog venster Server registratie met het fout bericht ' server is al geregistreerd '](media/storage-sync-files-troubleshoot/server-registration-1.png)
+![Een schermafbeelding van het dialoogvenster Serverregistratie met het foutbericht 'server is al geregistreerd'](media/storage-sync-files-troubleshoot/server-registration-1.png)
 
-Dit bericht wordt weer gegeven als de server eerder is geregistreerd bij een opslag synchronisatie service. Als u de registratie van de server bij de huidige opslag synchronisatie service ongedaan wilt maken en vervolgens wilt registreren bij een nieuwe opslag synchronisatie service, voert u de stappen uit die worden beschreven in de [registratie van een server bij Azure file sync ongedaan](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)maken.
+Dit bericht wordt weergegeven als de server eerder is geregistreerd bij een Storage Sync Service. Als u de server wilt uitschrijven van de huidige Opslagsynchronisatieservice en vervolgens wilt registreren bij een nieuwe Opslagsynchronisatieservice, voert u de stappen uit die worden beschreven in [Het registreren van een server met Azure File Sync](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service).
 
-Als de server niet wordt vermeld onder **geregistreerde servers** in de opslag synchronisatie service, voert u de volgende Power shell-opdrachten uit op de server die u wilt verwijderen:
+Als de server niet wordt vermeld onder **Geregistreerde servers** in de Opslagsynchronisatieservice, voert u op de server die u wilt uitschrijven uit de volgende PowerShell-opdrachten uit:
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
@@ -90,84 +90,84 @@ Reset-StorageSyncServer
 ```
 
 > [!Note]  
-> Als de server deel uitmaakt van een cluster, kunt u de optionele para meter *Reset-StorageSyncServer-CleanClusterRegistration* gebruiken om ook de cluster registratie te verwijderen.
+> Als de server deel uitmaakt van een cluster, u de optionele parameter *Reset-StorageSyncServer -CleanClusterRegistration* gebruiken om ook de clusterregistratie te verwijderen.
 
-<a id="web-site-not-trusted"></a>**Wanneer ik een server registreer, zie ik talloze ' website-niet-vertrouwde ' antwoorden. Waarom?**  
-Dit probleem treedt op wanneer het **Verbeterde beveiligings beleid van Internet Explorer** is ingeschakeld tijdens de registratie van de server. Voor meer informatie over het correct uitschakelen van het **Verbeterde beveiligings beleid voor Internet Explorer** , Zie [Windows Server voorbereiden voor gebruik met Azure file sync](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync) en [hoe u Azure file sync implementeert](storage-sync-files-deployment-guide.md).
+<a id="web-site-not-trusted"></a>**Wanneer ik een server registreer, zie ik tal van "website niet vertrouwde" reacties. Waarom?**  
+Dit probleem treedt op wanneer het **beveiligingsbeleid voor verbeterde internetexplorer** is ingeschakeld tijdens de serverregistratie. Zie [Windows Server voorbereiden met Azure File Sync](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync) en Azure File [Sync](storage-sync-files-deployment-guide.md)voor meer informatie over het correct uitschakelen van het **beveiligingsbeleid voor Verbeterde Internet Explorer.**
 
-<a id="server-registration-missing"></a>**De server wordt niet vermeld onder geregistreerde servers in de Azure Portal**  
-Als een server niet wordt vermeld onder **geregistreerde servers** voor een opslag synchronisatie service:
+<a id="server-registration-missing"></a>**Server wordt niet vermeld onder geregistreerde servers in de Azure-portal**  
+Als een server niet wordt vermeld onder **Geregistreerde servers** voor een opslagsynchronisatieservice:
 1. Meld u aan bij de server die u wilt registreren.
-2. Open bestanden Verkenner en ga naar de installatiemap van de opslag synchronisatie agent (de standaard locatie is C:\Program Files\Azure\StorageSyncAgent). 
-3. Voer ServerRegistration. exe uit en voltooi de wizard om de server te registreren bij een opslag synchronisatie service.
+2. Open Verkenner en ga naar de installatiemap voor Storage Sync Agent (de standaardlocatie is C:\Program Files\Azure\StorageSyncAgent). 
+3. Voer ServerRegistration.exe uit en voltooi de wizard om de server te registreren met een opslagsynchronisatieservice.
 
-## <a name="sync-group-management"></a>Groeps beheer synchroniseren
-<a id="cloud-endpoint-using-share"></a>**Het maken van een Cloud-eind punt is mislukt, met de volgende fout: ' de opgegeven Azure-bestands share wordt al gebruikt door een andere CloudEndpoint '**  
+## <a name="sync-group-management"></a>Groepsbeheer synchroniseren
+<a id="cloud-endpoint-using-share"></a>**Cloudendpoint-creatie mislukt met deze fout: "De opgegeven Azure FileShare wordt al gebruikt door een ander CloudEndpoint"**  
 Deze fout treedt op wanneer de Azure-bestandsshare al wordt gebruikt door een ander cloudeindpunt. 
 
-Als u dit bericht ziet en de Azure-bestands share momenteel niet wordt gebruikt door een Cloud eindpunt, voert u de volgende stappen uit om de Azure File Sync meta gegevens op de Azure-bestands share te wissen:
+Als u dit bericht ziet en de Azure-bestandsshare momenteel niet wordt gebruikt door een eindpunt in de cloud, voert u de volgende stappen uit om de metagegevens van Azure File Sync in het Azure-bestandsshare te wissen:
 
 > [!Warning]  
-> Het verwijderen van de meta gegevens van een Azure-bestands share die momenteel wordt gebruikt door een Cloud-eind punt zorgt ervoor dat Azure File Sync bewerkingen mislukken. 
+> Als u de metagegevens van een Azure-bestandsshare verwijderen die momenteel wordt gebruikt door een eindpunt in de cloud, worden azure-bestandssynchronisatiebewerkingen mislukt. 
 
-1. Ga in het Azure Portal naar uw Azure-bestands share.  
-2. Klik met de rechter muisknop op de Azure-bestands share en selecteer vervolgens **meta gegevens bewerken**.
-3. Klik met de rechter muisknop op **SyncService**en selecteer **verwijderen**.
+1. Ga in de Azure-portal naar uw Azure-bestandsshare.  
+2. Klik met de rechtermuisknop op de Azure-bestandsshare en selecteer **metagegevens bewerken**.
+3. Klik met de rechtermuisknop op **Synchronisatieservice**en selecteer **Verwijderen**.
 
-<a id="cloud-endpoint-authfailed"></a>**Het maken van een Cloud-eind punt is mislukt, met de volgende fout: ' AuthorizationFailed '**  
-Deze fout treedt op als uw gebruikers account niet voldoende rechten heeft voor het maken van een Cloud eindpunt. 
+<a id="cloud-endpoint-authfailed"></a>**Cloud endpoint creation mislukt, met deze fout: "Autorisatiemislukt"**  
+Deze fout treedt op als uw gebruikersaccount niet voldoende rechten heeft om een eindpunt in de cloud te maken. 
 
-Als u een Cloud eindpunt wilt maken, moet uw gebruikers account over de volgende micro soft-autorisatie machtigingen beschikken:  
-* Lezen: roldefinitie ophalen
+Als u een eindpunt in de cloud wilt maken, moet uw gebruikersaccount de volgende machtigingen voor Microsoft Autorisatie hebben:  
+* Lezen: Roldefinitie krijgen
 * Schrijven: aangepaste roldefinitie maken of bijwerken
-* Lezen: roltoewijzing ophalen
-* Schrijven: roltoewijzing maken
+* Lezen: Roltoewijzing krijgen
+* Schrijven: Roltoewijzing maken
 
-De volgende ingebouwde rollen hebben de vereiste micro soft-autorisatie machtigingen:  
+De volgende ingebouwde rollen hebben de vereiste machtigingen voor Microsoft Autorisatie:  
 * Eigenaar
 * Beheerder van gebruikerstoegang
 
-Om te bepalen of de rol van uw gebruikers account over de vereiste machtigingen beschikt:  
-1. Selecteer **resource groepen**In het Azure Portal.
-2. Selecteer de resource groep waar het opslag account zich bevindt en selecteer vervolgens **toegangs beheer (IAM)** .
-3. Selecteer het tabblad **roltoewijzingen** .
-4. Selecteer de **rol** (bijvoorbeeld eigenaar of Inzender) voor uw gebruikers account.
-5. Selecteer in de lijst **resource provider** de optie **micro soft-autorisatie**. 
-    * De **roltoewijzing** moet **Lees** -en **Schrijf** machtigingen hebben.
-    * De **roldefinitie** moet **Lees** -en **Schrijf** machtigingen hebben.
+Ga als volgt te werk om te bepalen of uw gebruikersaccountrol over de vereiste machtigingen beschikt:  
+1. Selecteer **resourcegroepen**in de Azure-portal .
+2. Selecteer de brongroep waarin het opslagaccount zich bevindt en selecteer **vervolgens Toegangsbeheer (IAM).**
+3. Selecteer het tabblad **Roltoewijzingen.**
+4. Selecteer de **rol** (bijvoorbeeld Eigenaar of Bijdrager) voor uw gebruikersaccount.
+5. Selecteer **Microsoft Authorization**in de lijst **Resourceprovider** . 
+    * **Roltoewijzing** moet **lees-** en **schrijfmachtigingen** hebben.
+    * **Roldefinitie** moet **lees-** en **schrijfmachtigingen** hebben.
 
-<a id="-2134375898"></a>**Het maken van een server eindpunt mislukt, met de volgende fout: "MgmtServerJobFailed" (fout code:-2134375898 of 0x80c80226)**  
+<a id="-2134375898"></a>**Serverendpoint creation mislukt, met deze fout: "MgmtServerJobFailed" (Foutcode: -2134375898 of 0x80c80226)**  
 Deze fout treedt op als het pad naar het servereindpunt zich op het systeemvolume bevindt en opslag in cloudlagen is ingeschakeld. Cloud-opslaglagen worden niet ondersteund op het systeemvolume. Als u een servereindpunt op het systeemvolume wilt maken, schakelt u opslag in cloudlagen uit bij het maken van het servereindpunt.
 
-<a id="-2147024894"></a>**Het maken van het server eindpunt is mislukt met de volgende fout: "MgmtServerJobFailed" (fout code:-2147024894 of 0x80070002)**  
-Deze fout treedt op als het opgegeven pad naar het servereindpunt niet geldig is. Controleer of het opgegeven pad naar het servereindpunt een lokaal gekoppeld NTFS-volume is. Opmerking: Azure File Sync biedt geen ondersteuning voor toegewezen stations als een pad naar een server eindpunt.
+<a id="-2147024894"></a>**Serverendpoint creatie mislukt, met deze fout: "MgmtServerJobFailed" (Foutcode: -2147024894 of 0x80070002)**  
+Deze fout treedt op als het opgegeven pad naar het servereindpunt niet geldig is. Controleer of het opgegeven pad naar het servereindpunt een lokaal gekoppeld NTFS-volume is. Houd er rekening mee dat Azure File Sync geen toegewezen stations ondersteunt als een eindpuntpad voor servers.
 
-<a id="-2134375640"></a>**Het maken van een server eindpunt mislukt, met de volgende fout: "MgmtServerJobFailed" (fout code:-2134375640 of 0x80c80328)**  
-Deze fout treedt op als het opgegeven pad naar het server eindpunt geen NTFS-volume is. Controleer of het opgegeven pad naar het servereindpunt een lokaal gekoppeld NTFS-volume is. Opmerking: Azure File Sync biedt geen ondersteuning voor toegewezen stations als een pad naar een server eindpunt.
+<a id="-2134375640"></a>**Serverendpoint creatie mislukt, met deze fout: "MgmtServerJobFailed" (Foutcode: -2134375640 of 0x80c80328)**  
+Deze fout treedt op als het opgegeven servereindpuntpad geen NTFS-volume is. Controleer of het opgegeven pad naar het servereindpunt een lokaal gekoppeld NTFS-volume is. Houd er rekening mee dat Azure File Sync geen toegewezen stations ondersteunt als een eindpuntpad voor servers.
 
-<a id="-2134347507"></a>**Het maken van een server eindpunt mislukt, met de volgende fout: "MgmtServerJobFailed" (fout code:-2134347507 of 0x80c8710d)**  
+<a id="-2134347507"></a>**Serverendpoint creatie mislukt, met deze fout: "MgmtServerJobFailed" (Foutcode: -2134347507 of 0x80c8710d)**  
 Deze fout treedt op omdat Azure File Sync geen servereindpunten ondersteunt op volumes die een gecomprimeerde map met informatie over systeemvolumes hebben. Om dit probleem op te lossen, decomprimeert u de map met informatie over het systeemvolume. Als de map met informatie over het systeemvolume de enige map is die op het volume is gecomprimeerd, voert u de volgende stappen uit:
 
-1. Down load het [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) -hulp programma.
-2. Voer de volgende opdracht uit vanaf een opdracht prompt met verhoogde bevoegdheid om een opdracht prompt te starten die wordt uitgevoerd onder het systeem account: **PsExec. exe-i-s-d cmd**
+1. Download [de Tool PsExec.](https://docs.microsoft.com/sysinternals/downloads/psexec)
+2. Voer de volgende opdracht uit vanuit een opdrachtprompt met verhoogde bevoegdheid om een opdrachtprompt te starten die wordt uitgevoerd onder het systeemaccount: **PsExec.exe -i -s -d cmd**
 3. Typ in de opdrachtprompt die onder het systeemaccount wordt uitgevoerd, de volgende commando's in en druk op enter:   
-    **cd/d "stationsletter: \ System Volume Information"**  
-    **Compact/u/s**
+    **cd /d "drive letter:\System Volume Information"**  
+    **compact /u /s**
 
-<a id="-2134376345"></a>**Het maken van een server eindpunt mislukt, met de volgende fout: "MgmtServerJobFailed" (fout code:-2134376345 of 0x80C80067)**  
-Deze fout treedt op als de limiet voor het aantal servereindpunten per server is bereikt. Azure File Sync ondersteunt momenteel maximaal 30 servereindpunten per server. Zie [Azure file sync Scale-doelen](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-file-sync-scale-targets)voor meer informatie.
+<a id="-2134376345"></a>**Serverendpoint creation mislukt, met deze fout: "MgmtServerJobFailed" (Foutcode: -2134376345 of 0x80C80067)**  
+Deze fout treedt op als de limiet voor het aantal servereindpunten per server is bereikt. Azure File Sync ondersteunt momenteel maximaal 30 servereindpunten per server. Zie [Azure File Sync-schaaldoelen voor](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-file-sync-scale-targets)meer informatie .
 
-<a id="-2134376427"></a>**Het maken van een server eindpunt mislukt, met de volgende fout: "MgmtServerJobFailed" (fout code:-2134376427 of 0x80c80015)**  
+<a id="-2134376427"></a>**Serverendpoint creatie mislukt, met deze fout: "MgmtServerJobFailed" (Foutcode: -2134376427 of 0x80c80015)**  
 Deze fout treedt op als er al een ander servereindpunt wordt gesynchroniseerd met het opgegeven pad naar het servereindpunt. Azure File Sync biedt geen ondersteuning voor meerdere servereindpunten die dezelfde map of hetzelfde volume synchroniseren.
 
-<a id="-2160590967"></a>**Het maken van een server eindpunt mislukt, met de volgende fout: "MgmtServerJobFailed" (fout code:-2160590967 of 0x80c80077)**  
-Deze fout treedt op als het pad naar het server eindpunt zwevende gelaagde bestanden bevat. Als een server-eind punt onlangs is verwijderd, wacht u totdat het opruimen van de zwevende gelaagde bestanden is voltooid. Gebeurtenis-ID 6662 wordt vastgelegd in het telemetrie-gebeurtenis logboek wanneer het opruimen van de zwevende gelaagde bestanden is gestart. Gebeurtenis-ID 6661 wordt vastgelegd zodra het opruimen van de zwevende gelaagde bestanden is voltooid en een server eindpunt opnieuw kan worden gemaakt met behulp van het pad. Als het server-eind punt niet kan worden gemaakt nadat een gebeurtenis-ID 6661 is vastgelegd, verwijdert u de zwevende gelaagde bestanden door de stappen uit te voeren die worden beschreven in de [gelaagde bestanden niet toegankelijk zijn op de server na het verwijderen van een server eindpunt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) sectie.
+<a id="-2160590967"></a>**Serverendpoint creation mislukt, met deze fout: "MgmtServerJobFailed" (Foutcode: -2160590967 of 0x80c80077)**  
+Deze fout treedt op als het servereindpuntpad zwevende gelaagde bestanden bevat. Als onlangs een servereindpunt is verwijderd, wacht u tot het opschonen van zwevende bestanden met zwevende bestanden is voltooid. Een gebeurtenis-id 6662 wordt geregistreerd bij het gebeurtenislogboek Telemetrie zodra de opschoning van zwevende bestanden is gestart. Een gebeurtenis-id 6661 wordt geregistreerd zodra de opgeschoonte zwevende bestanden met zwevende bestanden is voltooid en een servereindpunt kan opnieuw worden gemaakt met behulp van het pad. Als het maken van servereindpunten mislukt nadat een gebeurtenis-id 6661 is geregistreerd, verwijdert u de zwevende gelaagde bestanden door de stappen uit te voeren die zijn gedocumenteerd in de [gelaagde bestanden, zijn niet toegankelijk op de server nadat een servereindpuntsectie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) is verwijderd.
 
-<a id="-2134347757"></a>**Het verwijderen van het server eindpunt is mislukt, met de volgende fout: "MgmtServerJobExpired" (fout code:-2134347757 of 0x80c87013)**  
-Deze fout treedt op als de server offline is of geen netwerkverbinding heeft. Als de server niet meer beschikbaar is, moet u de registratie van de server in het portaal opheffen, waardoor de servereindpunten worden verwijderd. Als u de server eindpunten wilt verwijderen, volgt u de stappen die worden beschreven in de [registratie van een server bij Azure file sync ongedaan maken](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service).
+<a id="-2134347757"></a>**Serverendpoint verwijderen mislukt, met deze fout: "MgmtServerJobExpired" (Foutcode: -2134347757 of 0x80c87013)**  
+Deze fout treedt op als de server offline is of geen netwerkverbinding heeft. Als de server niet meer beschikbaar is, moet u de registratie van de server in het portaal opheffen, waardoor de servereindpunten worden verwijderd. Als u de servereindpunten wilt verwijderen, voert u de stappen uit die worden beschreven in [Het registreren van een server met Azure File Sync](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service).
 
-<a id="server-endpoint-provisioningfailed"></a>**Kan de eigenschappen pagina van het server eindpunt niet openen of het beleid voor Cloud lagen niet bijwerken**  
-Dit probleem kan optreden als een beheer bewerking op het server eindpunt mislukt. Als de pagina eindpunt eigenschappen van de server niet wordt geopend in de Azure Portal, kan het server eindpunt bijwerken met behulp van Power shell-opdrachten van de server dit probleem mogelijk oplossen. 
+<a id="server-endpoint-provisioningfailed"></a>**Kan de pagina eigenschappen van servereindpunt en het beleid voor cloudlagen niet openen**  
+Dit probleem kan optreden als een beheerbewerking op het servereindpunt mislukt. Als de pagina met de eigenschappen van het servereindpunt niet wordt geopend in de Azure-portal, kan het bijwerken van servereindpunt met PowerShell-opdrachten van de server dit probleem oplossen. 
 
 ```powershell
 # Get the server endpoint id based on the server endpoint DisplayName property
@@ -183,53 +183,53 @@ Set-AzStorageSyncServerEndpoint `
     -CloudTiering `
     -VolumeFreeSpacePercent 60
 ```
-<a id="server-endpoint-noactivity"></a>**Server-eind punt heeft de status ' geen activiteit ' of ' in behandeling ' en de status van de server op de Blade geregistreerde servers is ' offline weer gegeven '**  
+<a id="server-endpoint-noactivity"></a>**Servereindpunt heeft de status 'Geen activiteit' of 'In behandeling' en de serverstatus op het beheer van de geregistreerde servers is 'Verschijnt offline'.**  
 
-Dit probleem kan optreden als het opslag synchronisatie monitor proces (AzureStorageSyncMonitor. exe) niet wordt uitgevoerd of als de server geen toegang heeft tot de Azure File Sync-Service.
+Dit probleem kan optreden als het proces voor synchronisatievan opslag (AzureStorageSyncMonitor.exe) niet wordt uitgevoerd of als de server geen toegang heeft tot de Azure File Sync-service.
 
-Op de server die wordt weer gegeven als ' offline weer geven ' in de portal, kijkt u naar gebeurtenis-ID 9301 in het telemetrie-gebeurtenis logboek (onder toepassingen en Services\Microsoft\FileSync\Agent in Logboeken) om te bepalen waarom de server geen toegang heeft tot de Azure File Sync service. 
+Op de server die wordt weergegeven als 'Wordt weergegeven offline' in de portal, kijkt u naar gebeurtenis-id 9301 in het gebeurtenislogboek telemetrie (bevindt zich onder Toepassingen en Services\Microsoft\FileSync\Agent in logboeken) om te bepalen waarom de server geen toegang heeft tot de Azure File Sync Service. 
 
-- Als **GetNextJob is voltooid met de status: 0** is geregistreerd, kan de server met de Azure File Sync-Service communiceren. 
+- Als **GetNextJob is voltooid met status: 0** is geregistreerd, kan de server communiceren met de Azure File Sync-service. 
     - Open Taakbeheer op de server en controleer of het Storage Sync Monitor-proces (AzureStorageSyncMonitor.exe) actief is. Als het proces niet wordt uitgevoerd, start u om te beginnen de server opnieuw op. Als het probleem niet wordt verholpen bij het opnieuw opstarten van de server, voert u een upgrade naar de laatste versie van de Azure File Sync-[agent](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes) uit. 
 
-- Als **GetNextJob is voltooid met de status:-2134347756** is geregistreerd, kan de server niet communiceren met de Azure file sync-service vanwege een firewall of proxy. 
-    - Als de server zich achter een firewall bevindt, controleert u of uitgaand verkeer via poort 443 is toegestaan. Als de firewall het verkeer naar specifieke domeinen beperkt, moet u controleren of de domeinen die worden vermeld in de firewall [documentatie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) toegankelijk zijn.
-    - Als de-server zich achter een proxy bevindt, configureert u de computer-of app-specifieke proxy-instellingen door de stappen in de proxy- [documentatie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy)te volgen.
-    - Gebruik de cmdlet test-StorageSyncNetworkConnectivity om de netwerk verbinding met de service-eind punten te controleren. Zie [netwerk connectiviteit testen op service-eind punten](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#test-network-connectivity-to-service-endpoints)voor meer informatie.
+- Als **GetNextJob de status heeft: -2134347756** is geregistreerd, kan de server niet communiceren met de Azure File Sync-service vanwege een firewall of proxy. 
+    - Als de server zich achter een firewall bevindt, controleert u of uitgaand verkeer via poort 443 is toegestaan. Als de firewall verkeer beperkt tot specifieke domeinen, controleert u of de domeinen die in de [firewalldocumentatie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) worden vermeld, toegankelijk zijn.
+    - Als de server zich achter een proxy bevindt, configureert u de machinebrede of app-specifieke proxy-instellingen door de stappen in de [proxydocumentatie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy)te volgen.
+    - Gebruik de cmdlet Test-StorageSyncNetworkConnectivity om de netwerkverbinding met de serviceeindpunten te controleren. Zie [Netwerkconnectiviteit testen met serviceeindpunten](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#test-network-connectivity-to-service-endpoints)voor meer informatie.
 
-- Als **GetNextJob is voltooid met de status:-2134347764** wordt geregistreerd, kan de server niet communiceren met de Azure file sync-service vanwege een verlopen of verwijderd certificaat.  
-    - Voer de volgende Power shell-opdracht op de server uit om het certificaat dat voor verificatie wordt gebruikt, opnieuw in te stellen:
+- Als **GetNextJob de status heeft: -2134347764** is geregistreerd, kan de server niet communiceren met de Azure File Sync-service vanwege een verlopen of verwijderd certificaat.  
+    - Voer de volgende PowerShell-opdracht uit op de server om het certificaat dat wordt gebruikt voor verificatie opnieuw in te stellen:
     ```powershell
     Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
-<a id="endpoint-noactivity-sync"></a>**Server-eind punt heeft de status ' geen activiteit ' en de status van de server op de Blade geregistreerde servers is ' online '**  
+<a id="endpoint-noactivity-sync"></a>**Servereindpunt heeft de status 'Geen activiteit' en de serverstatus op het beheer van de geregistreerde servers is 'Online'**  
 
-De status van het server eindpunt van ' geen activiteit ' betekent dat het server-eind punt in de afgelopen twee uur geen synchronisatie activiteiten heeft geregistreerd.
+Een status van servereindpunt van 'Geen activiteit' betekent dat het eindpunt van de server de synchronisatieactiviteit in de afgelopen twee uur niet heeft geregistreerd.
 
-Zie [Hoe kan ik de voortgang van een huidige synchronisatie sessie controleren](#how-do-i-monitor-the-progress-of-a-current-sync-session)als u de huidige synchronisatie activiteit op een server wilt controleren.
+Zie Hoe kan ik de [voortgang van een huidige synchronisatiesessie controleren als](#how-do-i-monitor-the-progress-of-a-current-sync-session)u de huidige synchronisatieactiviteit op een server wilt controleren? .
 
-Een server eindpunt kan de synchronisatie activiteit niet registreren gedurende enkele uren vanwege een fout of onvoldoende systeem resources. Controleer of de meest recente versie van Azure File Sync [agent](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes) is geïnstalleerd. Als het probleem zich blijft voordoen, opent u een ondersteunings aanvraag.
+Een servereindpunt kan enkele uren geen synchronisatieactiviteit registreren vanwege een bug of onvoldoende systeembronnen. Controleer of de nieuwste Azure File [Sync-agentversie](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes) is geïnstalleerd. Als het probleem blijft bestaan, opent u een ondersteuningsverzoek.
 
 > [!Note]  
-> Als de status van de server op de Blade geregistreerde servers ' offline weer gegeven ' is, voert u de stappen uit die worden beschreven in het [Server-eind punt de status ' geen activiteit ' of ' in behandeling ' en de status van de server op de Blade geregistreerde servers is ' offline weer gegeven '](#server-endpoint-noactivity) .
+> Als de serverstatus op het beheer van de geregistreerde servers 'Wordt offline weergegeven' is, voert u de stappen uit die zijn gedocumenteerd in het [servereindpunt en heeft de status 'Geen activiteit' of 'In behandeling' en is de serverstatus op het beheer van de geregistreerde servers 'Wordt weergegeven'](#server-endpoint-noactivity) de sectie 'Wordt weergegeven'.
 
 ## <a name="sync"></a>Sync
-<a id="afs-change-detection"></a>**Hoe lang duurt het om het bestand te synchroniseren met servers in de synchronisatie groep als ik een bestand rechtstreeks in mijn Azure-bestands share heb gemaakt via SMB of via de portal?**  
+<a id="afs-change-detection"></a>**Hoe lang duurt het voordat het bestand wordt gesynchroniseerd met servers in de synchronisatiegroep als ik een bestand rechtstreeks in mijn Azure-bestandsshare via SMB of via de portal heb gemaakt?**  
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
-<a id="serverendpoint-pending"></a>**De status van het server eindpunt is gedurende enkele uren nog in behandeling**  
-Dit probleem wordt verwacht als u een Cloud-eind punt maakt en een Azure-bestands share gebruikt die gegevens bevat. De wijzigings inventarisatie taak waarmee wordt gescand op wijzigingen in de Azure-bestands share moet zijn voltooid voordat bestanden kunnen worden gesynchroniseerd tussen de Cloud en server eindpunten. De tijd voor het volt ooien van de taak is afhankelijk van de grootte van de naam ruimte in de Azure-bestands share. De status van het server eindpunt moet worden bijgewerkt zodra de inventarisatie taak is gewijzigd.
+<a id="serverendpoint-pending"></a>**Servereindpuntstatus is enkele uren in behandeling**  
+Dit probleem wordt verwacht als u een eindpunt in de cloud maakt en een Azure-bestandsshare gebruikt dat gegevens bevat. De wijzigingstaak die scant op wijzigingen in de Azure-bestandsshare moet worden voltooid voordat bestanden kunnen worden gesynchroniseerd tussen de eindpunten van de cloud en de server. De tijd om de taak te voltooien is afhankelijk van de grootte van de naamruimte in het Azure-bestandsaandeel. De status van het servereindpunt moet worden bijgewerkt zodra de taak voor wijzigingsopsomming is voltooid.
 
-### <a id="broken-sync"></a>Synchronisatie status Hoe kan ik controleren?
+### <a name="how-do-i-monitor-sync-health"></a><a id="broken-sync"></a>Hoe controleer ik de synchronisatiestatus?
 # <a name="portal"></a>[Portal](#tab/portal1)
-Binnen elke synchronisatie groep kunt u inzoomen op de afzonderlijke server eindpunten om de status van de laatst voltooide synchronisatie sessies weer te geven. Een groene status kolom en een bestand met een niet-gesynchroniseerde waarde van 0 geven aan dat de synchronisatie werkt zoals verwacht. Als dit niet het geval is, raadpleegt u hieronder voor een lijst met algemene synchronisatie fouten en het afhandelen van bestanden die niet worden gesynchroniseerd. 
+Binnen elke synchronisatiegroep u inzoomen op de afzonderlijke servereindpunten om de status van de laatst voltooide synchronisatiesessies te zien. Een groene kolom Status en een waarde voor het niet synchroniseren van bestanden van 0 geven aan dat de synchronisatie werkt zoals verwacht. Als dit niet het geval is, zie hieronder voor een lijst met veelvoorkomende synchronisatiefouten en hoe u bestanden verwerkt die niet worden gesynchroniseerd. 
 
-![Een scherm opname van de Azure Portal](media/storage-sync-files-troubleshoot/portal-sync-health.png)
+![Een schermafbeelding van de Azure-portal](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
 # <a name="server"></a>[Server](#tab/server)
-Ga naar de telemetrie-logboeken van de server, die u kunt vinden in de Logboeken op `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`. Gebeurtenis 9102 komt overeen met een voltooide synchronisatie sessie. Zoek naar de meest recente gebeurtenis met ID 9102 voor de laatste synchronisatie status. SyncDirection vertelt u of deze sessie een upload-of download bewerking is. Als HResult 0 is, is de synchronisatie sessie geslaagd. Een niet-nul HResult houdt in dat er een fout is opgetreden tijdens de synchronisatie. Hieronder vindt u een lijst met veelvoorkomende fouten. Als de PerItemErrorCount groter is dan 0, betekent dit dat sommige bestanden of mappen niet juist zijn gesynchroniseerd. Het is mogelijk een HResult van 0 te hebben, maar een PerItemErrorCount die groter is dan 0.
+Ga naar de telemetrielogboeken van de server, `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`die te vinden zijn in de Logboeken op . Gebeurtenis 9102 komt overeen met een voltooide synchronisatiesessie; Voor de laatste status van synchronisatie, kijk voor de meest recente gebeurtenis met ID 9102. SyncDirection vertelt u of deze sessie een upload of download was. Als de HResult 0 is, is de synchronisatiesessie geslaagd. Een niet-nul HResult betekent dat er een fout is opgetreden tijdens het synchroniseren; zie hieronder voor een lijst met veelvoorkomende fouten. Als het Aantal PerItemError's groter is dan 0, betekent dit dat sommige bestanden of mappen niet goed zijn gesynchroniseerd. Het is mogelijk om een HResult van 0 maar een PerItemErrorCount te hebben dat groter is dan 0.
 
-Hieronder ziet u een voor beeld van een geslaagde upload. Voor het omwille van de boogën worden slechts enkele van de waarden in elke 9102-gebeurtenis hieronder weer gegeven. 
+Hieronder vindt u een voorbeeld van een succesvolle upload. Omwille van de beknoptheid, slechts enkele van de waarden in elke 9102 gebeurtenis zijn hieronder vermeld. 
 
 ```
 Replica Sync session completed.
@@ -241,7 +241,7 @@ PerItemErrorCount: 0,
 TransferredFiles: 2, TransferredBytes: 0, FailedToTransferFiles: 0, FailedToTransferBytes: 0.
 ```
 
-Een mislukte upload kan er echter als volgt uitzien:
+Omgekeerd kan een mislukte upload er als volgt uitzien:
 
 ```
 Replica Sync session completed.
@@ -253,16 +253,16 @@ PerItemErrorCount: 0,
 TransferredFiles: 0, TransferredBytes: 0, FailedToTransferFiles: 0, FailedToTransferBytes: 0.
 ```
 
-Soms mislukken synchronisatie sessies volledig of hebben ze een PerItemErrorCount die niet gelijk zijn aan nul, maar worden er nog steeds een andere bewerking uitgevoerd, waarbij sommige bestanden met succes worden gesynchroniseerd. Dit kan worden weer gegeven in de velden toegepast * (AppliedFileCount, AppliedDirCount, AppliedTombstoneCount en AppliedSizeBytes), waarin u kunt zien hoeveel van de sessie slaagt. Als er meerdere synchronisatie sessies in een rij worden weer geven die niet werken, maar wel een oplopend toegepast aantal hebben, moet u de synchronisatie tijd opgeven om het opnieuw te proberen voordat een ondersteunings ticket wordt geopend.
+Soms mislukken synchronisatiesessies over het algemeen of hebben een niet-nul PerItemErrorCount, maar maken ze nog steeds vooruitgang, waarbij sommige bestanden met succes worden gesynchroniseerd. Dit is te zien in de velden Applied* (AppliedFileCount, AppliedDirCount, AppliedTombstoneCount en AppliedSizeBytes), die u vertellen hoeveel van de sessie wordt mislukt. Als u meerdere synchronisatiesessies op een rij ziet die mislukken, maar een steeds groter aantal toegepaste* hebben, moet u synchronisatietijd geven om het opnieuw te proberen voordat u een ondersteuningsticket opent.
 
 ---
 
-### <a name="how-do-i-monitor-the-progress-of-a-current-sync-session"></a>De voortgang van een huidige synchronisatie sessie Hoe kan ik controleren?
+### <a name="how-do-i-monitor-the-progress-of-a-current-sync-session"></a>Hoe controleer ik de voortgang van een synchronisatiesessie?
 # <a name="portal"></a>[Portal](#tab/portal1)
-Ga in de synchronisatie groep naar het server eindpunt in kwestie en Bekijk de sectie synchronisatie activiteit om het aantal bestanden te zien dat in de huidige synchronisatie sessie is geüpload of gedownload. Houd er rekening mee dat deze status ongeveer 5 minuten wordt uitgesteld. als uw synchronisatie sessie binnen deze periode klein genoeg is om te worden voltooid, wordt deze mogelijk niet gerapporteerd in de portal. 
+Ga binnen uw synchronisatiegroep naar het servereindpunt in kwestie en bekijk de sectie Activiteit synchroniseren om het aantal bestanden te zien dat is geüpload of gedownload in de huidige synchronisatiesessie. Houd er rekening mee dat deze status ongeveer 5 minuten wordt vertraagd en als uw synchronisatiesessie klein genoeg is om binnen deze periode te worden voltooid, wordt deze mogelijk niet gemeld in de portal. 
 
 # <a name="server"></a>[Server](#tab/server)
-Bekijk de meest recente 9302-gebeurtenis in het logboek van de telemetrie op de server (Ga in het Logboeken naar toepassingen en services Logs\Microsoft\FileSync\Agent\Telemetry). Deze gebeurtenis geeft de status van de huidige synchronisatie sessie aan. TotalItemCount geeft aan hoeveel bestanden moeten worden gesynchroniseerd, AppliedItemCount het aantal bestanden dat tot nu toe is gesynchroniseerd en PerItemErrorCount het aantal bestanden dat niet kan worden gesynchroniseerd (zie hieronder voor meer informatie over hoe u dit kunt doen).
+Bekijk de meest recente gebeurtenis 9302 in het telemetrielogboek op de server (ga in de Logboeken van Logboeken naar Logboeken voor toepassingen en services\Microsoft\FileSync\Agent\Telemetry). Deze gebeurtenis geeft de status van de huidige synchronisatiesessie aan. TotalItemCount geeft aan hoeveel bestanden moeten worden gesynchroniseerd, AppliedCount het aantal bestanden dat tot nu toe is gesynchroniseerd en PerItemErrorCount het aantal bestanden dat niet wordt gesynchroniseerd (zie hieronder voor hoe hiermee om te gaan).
 
 ```
 Replica Sync Progress. 
@@ -275,328 +275,328 @@ PerItemErrorCount: 1006.
 ```
 ---
 
-### <a name="how-do-i-know-if-my-servers-are-in-sync-with-each-other"></a>Hoe kan ik weet of mijn servers synchroon zijn met elkaar?
+### <a name="how-do-i-know-if-my-servers-are-in-sync-with-each-other"></a>Hoe weet ik of mijn servers met elkaar zijn gesynchroniseerd?
 # <a name="portal"></a>[Portal](#tab/portal1)
-Voor elke server in een bepaalde synchronisatie groep moet u het volgende doen:
-- De tijds tempels voor de laatste synchronisatie poging voor zowel uploaden als downloaden zijn recent.
-- De status is groen voor uploaden en downloaden.
-- In het veld synchronisatie activiteit worden weinig of geen bestanden weer gegeven om te synchroniseren.
-- Het veld bestanden niet synchroniseren is 0 voor uploaden en downloaden.
+Controleer voor elke server in een bepaalde synchronisatiegroep:
+- De tijdstempels voor de laatste poging tot synchronisatie voor zowel uploaden als downloaden zijn recent.
+- De status is groen voor zowel uploaden als downloaden.
+- In het veld Activiteit synchroniseren worden weinig of geen bestanden weergegeven die nog worden gesynchroniseerd.
+- Het veld Bestanden niet synchroniseren is 0 voor zowel uploaden als downloaden.
 
 # <a name="server"></a>[Server](#tab/server)
-Bekijk de voltooide synchronisatie sessies, die zijn gemarkeerd door 9102 gebeurtenissen in het logboek voor telemetrie voor elke server (in de Logboeken gaat u naar `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`). 
+Bekijk de voltooide synchronisatiesessies, die worden gekenmerkt door 9102-gebeurtenissen in het telemetriegebeurtenislogboek voor elke server (ga in de logboeken naar `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`). 
 
-1. Op elke wille keurige server moet u ervoor zorgen dat de nieuwste upload-en download sessies zijn voltooid. Om dit te doen, controleert u of HResult en PerItemErrorCount 0 zijn voor uploaden en downloaden (het veld SyncDirection geeft aan of een bepaalde sessie een upload-of download sessie is). Houd er rekening mee dat als u geen recent voltooide synchronisatie sessie ziet, er waarschijnlijk een synchronisatie sessie wordt uitgevoerd. dit wordt verwacht als u een grote hoeveelheid gegevens hebt toegevoegd of gewijzigd.
-2. Wanneer een server volledig up-to-date is met de Cloud en er geen wijzigingen in een van beide richtingen worden gesynchroniseerd, worden er lege synchronisatie sessies weer geven. Deze worden aangegeven door upload-en download gebeurtenissen waarin alle Sync *-velden (SyncFileCount, SyncDirCount, SyncTombstoneCount en SyncSizeBytes) nul zijn, wat betekent dat er niets kan worden gesynchroniseerd. Houd er rekening mee dat deze lege synchronisatie sessies mogelijk niet worden uitgevoerd op servers met een hoge verloop tijd omdat er altijd iets nieuws is om te synchroniseren. Als er geen synchronisatie activiteit is, moeten deze elke 30 minuten worden uitgevoerd. 
-3. Als alle servers up-to-date zijn met de Cloud, wat betekent dat de recente upload-en download sessies lege synchronisatie sessies zijn, kunt u met redelijke zekerheid zeggen dat het systeem als geheel is gesynchroniseerd. 
+1. Op een bepaalde server wilt u ervoor zorgen dat de laatste upload- en downloadsessies met succes zijn voltooid. Controleer hiervoor of de HResult en PerItemErrorCount 0 zijn voor zowel uploaden als downloaden (het veld SyncDirection geeft aan of een bepaalde sessie een upload- of downloadsessie is). Houd er rekening mee dat als u een onlangs voltooide synchronisatiesessie niet ziet, er waarschijnlijk momenteel een synchronisatiesessie aan de gang is, wat te verwachten is als u zojuist een grote hoeveelheid gegevens hebt toegevoegd of gewijzigd.
+2. Wanneer een server volledig up-to-date is met de cloud en geen wijzigingen heeft om in beide richtingen te synchroniseren, ziet u lege synchronisatiesessies. Deze worden aangegeven door upload- en downloadgebeurtenissen waarin alle Sync*-velden (SyncFileCount, SyncDirCount, SyncTombstoneCount en SyncSizeBytes) nul zijn, wat betekent dat er niets was om te synchroniseren. Houd er rekening mee dat deze lege synchronisatiesessies mogelijk niet plaatsvinden op servers met hoge churn omdat er altijd iets nieuws is om te synchroniseren. Als er geen synchronisatieactiviteit is, moeten ze elke 30 minuten plaatsvinden. 
+3. Als alle servers up-to-date zijn met de cloud, wat betekent dat hun recente upload- en downloadsessies lege synchronisatiesessies zijn, u met redelijke zekerheid zeggen dat het systeem als geheel synchroon loopt. 
     
-Houd er rekening mee dat als u wijzigingen rechtstreeks in uw Azure-bestands share hebt aangebracht, deze wijziging pas door Azure File Sync wordt gedetecteerd nadat de inventarisatie wordt uitgevoerd, die elke 24 uur plaatsvindt. Het is mogelijk dat een server het is bijgewerkt met de Cloud wanneer de recente wijzigingen die rechtstreeks in de Azure-bestands share zijn aangebracht, ontbreken. 
+Houd er rekening mee dat als u wijzigingen rechtstreeks in uw Azure-bestandsshare hebt aangebracht, Azure File Sync deze wijziging niet detecteert totdat de opsomming van wijzigingen wordt uitgevoerd, wat eenmaal per 24 uur gebeurt. Het is mogelijk dat een server zal zeggen dat het up-to-date is met de cloud wanneer deze in feite recente wijzigingen mist die rechtstreeks in het Azure-bestandsaandeel zijn aangebracht. 
 
 ---
 
-### <a name="how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing"></a>Hoe kan ik zien of er specifieke bestanden of mappen zijn die niet worden gesynchroniseerd?
-Als uw PerItemErrorCount op de server of bestanden die niet zijn gesynchroniseerd in de portal groter zijn dan 0 voor een bepaalde synchronisatie sessie, betekent dit dat sommige items niet kunnen worden gesynchroniseerd. Bestanden en mappen kunnen kenmerken hebben die voor komen dat ze worden gesynchroniseerd. Deze kenmerken kunnen permanent zijn en vereisen expliciete acties om de synchronisatie te hervatten, bijvoorbeeld het verwijderen van niet-ondersteunde tekens uit de naam van het bestand of de map. Ze kunnen ook tijdelijk zijn, wat betekent dat het bestand of de map automatisch wordt hervat. bestanden met open ingangen worden bijvoorbeeld automatisch hervat wanneer het bestand wordt gesloten. Wanneer de Azure File Sync-Engine een dergelijk probleem detecteert, wordt er een fouten logboek gegenereerd dat kan worden geparseerd om de items weer te geven die momenteel niet worden gesynchroniseerd.
+### <a name="how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing"></a>Hoe zie ik of er specifieke bestanden of mappen zijn die niet worden gesynchroniseerd?
+Als het aantal PerItemErrorCount op de server of het aantal bestanden niet synchroniseren in de portal groter is dan 0 voor een bepaalde synchronisatiesessie, betekent dit dat sommige items niet worden gesynchroniseerd. Bestanden en mappen kunnen kenmerken hebben die voorkomen dat ze worden gesynchroniseerd. Deze kenmerken kunnen blijvend zijn en vereisen expliciete actie om de synchronisatie te hervatten, bijvoorbeeld het verwijderen van niet-ondersteunde tekens uit de bestands- of mapnaam. Ze kunnen ook van voorbijgaande aard zijn, wat betekent dat het bestand of de map de synchronisatie automatisch hervat; Bestanden met geopende handgrepen worden bijvoorbeeld automatisch gesynchroniseerd wanneer het bestand wordt gesloten. Wanneer de Azure File Sync-engine een dergelijk probleem detecteert, wordt een foutlogboek gemaakt dat kan worden ontleed om de items weer te geven die momenteel niet goed worden gesynchroniseerd.
 
-Als u deze fouten wilt zien, voert u het Power shell-script **FileSyncErrorsReport. ps1** (in de installatiemap van de agent van de Azure file sync agent) uit om te bepalen welke bestanden niet kunnen worden gesynchroniseerd vanwege open ingangen, niet-ondersteunde tekens of andere problemen. Het veld het itempad vertelt u de locatie van het bestand ten opzichte van de hoofdmap voor synchronisatie. Zie de lijst met veelvoorkomende synchronisatie fouten voor herstels tappen.
+Als u deze fouten wilt zien, voert u het **PowerShell-script van FileSyncErrorsReport.ps1** uit (in de agentinstallatiemap van de Azure File Sync-agent) om bestanden te identificeren die niet zijn gesynchroniseerd vanwege geopende handgrepen, niet-ondersteunde tekens of andere problemen. In het veld ItemPath ziet u de locatie van het bestand ten opzichte van de map met hoofdsynchronisatie. Zie de lijst met veelvoorkomende synchronisatiefouten hieronder voor herstelstappen.
 
 > [!Note]  
-> Als het script FileSyncErrorsReport. ps1 het volgende retourneert: "er zijn geen bestands fouten gevonden" of er worden geen fouten per item voor de synchronisatie groep vermeld, is de oorzaak
+> Als het Script FileSyncErrorsReport.ps1 wordt geretourneerd als 'Er zijn geen bestandsfouten gevonden' of geen fouten per item voor de synchronisatiegroep vermeldt, is de oorzaak:
 >
->- Oorzaak 1: de laatste voltooide synchronisatie sessie heeft geen fouten per item. De portal moet binnenkort worden bijgewerkt om 0 bestanden weer te geven die niet worden gesynchroniseerd. 
->   - Controleer de [gebeurtenis-ID 9102](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) in het logboek voor telemetrie om te bevestigen dat de PerItemErrorCount 0 is. 
+>- Oorzaak 1: De laatst voltooide synchronisatiesessie heeft geen fouten per item. De portal moet binnenkort worden bijgewerkt om 0 Bestanden niet synchroniseren weer te geven. 
+>   - Controleer de [gebeurtenis-id 9102](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) in het gebeurtenislogboek Telemetrie om te bevestigen dat het aantal PerItemErrorCount 0 is. 
 >
->- Oorzaak 2: het ItemResults-gebeurtenis logboek op de server die is verpakt als gevolg van te veel fouten per item en het gebeurtenis logboek bevat geen fouten meer voor deze synchronisatie groep.
->   - Verhoog de grootte van het ItemResults-gebeurtenis logboek om dit probleem te voor komen. Het ItemResults-gebeurtenis logboek vindt u onder ' toepassingen en services Logs\Microsoft\FileSync\Agent ' in Logboeken. 
+>- Oorzaak 2: Het gebeurtenislogboek ItemResults op de server die is ingepakt vanwege te veel fouten per item en het gebeurtenislogboek bevat geen fouten meer voor deze synchronisatiegroep.
+>   - Als u dit probleem wilt voorkomen, vergroot u de grootte van het gebeurtenislogboek ItemResults. Het gebeurtenislogboek ItemResults is te vinden onder 'Logboeken en services\Microsoft\FileSync\Agent' in Logboeken. 
 
-#### <a name="troubleshooting-per-filedirectory-sync-errors"></a>Problemen oplossen per bestand/directory-synchronisatie fouten
-**ItemResults-logboek: synchronisatie fouten per item**  
+#### <a name="troubleshooting-per-filedirectory-sync-errors"></a>Problemen oplossen per bestand/map synchronisatiefouten
+**ItemResults-logboek - synchronisatiefouten per item**  
 
-| HRESULT | HRESULT (decimaal) | Fouttekenreeks | Probleem | Herstel |
+| Hresult | HRESULT (decimaal) | Fouttekenreeks | Probleem | Herstel |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | Het gelaagde bestand op de server is niet toegankelijk. Dit probleem treedt op als het gelaagde bestand niet is ingetrokken voordat een servereindpunt is verwijderd. | Zie [gelaagde bestanden niet toegankelijk op de server nadat u een server eindpunt hebt verwijderd](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)om dit probleem op te lossen. |
-| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | De wijziging van het bestand of de map kan nog niet worden gesynchroniseerd omdat een afhankelijke map nog niet is gesynchroniseerd. Dit item wordt gesynchroniseerd nadat de afhankelijke wijzigingen zijn gesynchroniseerd. | U hoeft geen actie te ondernemen. Als de fout zich enkele dagen voordoet, gebruikt u het Power shell-script FileSyncErrorsReport. ps1 om te bepalen waarom de afhankelijke map nog niet is gesynchroniseerd. |
-| 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | De wijziging van het bestand of de map kan nog niet worden gesynchroniseerd omdat een afhankelijke map nog niet is gesynchroniseerd en de synchronisatie sessie is mislukt. Dit item wordt gesynchroniseerd nadat de afhankelijke wijzigingen zijn gesynchroniseerd. | U hoeft geen actie te ondernemen. Als de fout zich blijft voordoen, onderzoekt u de synchronisatie sessie fout. |
-| 0x8007007b | -2147024773 | ERROR_INVALID_NAME | De naam van het bestand of de map is ongeldig. | Wijzig de naam van het bestand of de map in kwestie. Zie het [verwerken van niet-ondersteunde tekens](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) voor meer informatie. |
-| 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | De naam van het bestand of de map is ongeldig. | Wijzig de naam van het bestand of de map in kwestie. Zie het [verwerken van niet-ondersteunde tekens](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) voor meer informatie. |
-| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Het bestand kan niet worden gesynchroniseerd omdat het in gebruik is. Het bestand wordt gesynchroniseerd wanneer het niet meer in gebruik is. | U hoeft geen actie te ondernemen. Azure File Sync maakt een tijdelijke VSS-moment opname eenmaal per dag op de server om bestanden met geopende ingangen te synchroniseren. |
-| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Het bestand is gewijzigd, maar de wijziging is nog niet gedetecteerd door de synchronisatie. De synchronisatie wordt hersteld nadat deze wijziging is gedetecteerd. | U hoeft geen actie te ondernemen. |
-| 0x80070002 | -2147024894 | ERROR_FILE_NOT_FOUND | Het bestand is verwijderd en de synchronisatie is niet op de hoogte van de wijziging. | U hoeft geen actie te ondernemen. Deze fout wordt niet meer in de logboek registratie vastgelegd zodra de detectie van wijzigingen detecteert dat het bestand is verwijderd. |
-| 0x80070003 | -2147942403 | ERROR_PATH_NOT_FOUND | Het verwijderen van een bestand of map kan niet worden gesynchroniseerd omdat het item al is verwijderd in het doel en de wijziging niet op de hoogte is. | U hoeft geen actie te ondernemen. Deze fout wordt niet meer in de logboek registratie vastgelegd zodra de detectie van wijzigingen op de bestemming wordt uitgevoerd en de synchronisatie detecteert dat het item is verwijderd. |
-| 0x80c80205 | -2134375931 | ECS_E_SYNC_ITEM_SKIP | Het bestand of de map is overgeslagen, maar wordt gesynchroniseerd tijdens de volgende synchronisatie sessie. Als deze fout wordt gerapporteerd bij het downloaden van het item, is de naam van het bestand of de map groter dan waarschijnlijk ongeldig. | Er is geen actie vereist als deze fout wordt gerapporteerd bij het uploaden van het bestand. Als de fout wordt gerapporteerd bij het downloaden van het bestand, wijzigt u de naam van het bestand of de map in kwestie. Zie het [verwerken van niet-ondersteunde tekens](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) voor meer informatie. |
-| 0x800700B7 | -2147024713 | ERROR_ALREADY_EXISTS | Het maken van een bestand of map kan niet worden gesynchroniseerd omdat het item al bestaat in het doel en de synchronisatie niet op de hoogte is van de wijziging. | U hoeft geen actie te ondernemen. Synchronisatie stopt deze fout wanneer de detectie van wijzigingen op de bestemming wordt uitgevoerd en de synchronisatie van dit nieuwe item op de hoogte is. |
-| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Het bestand kan niet worden gesynchroniseerd omdat de limiet voor Azure-bestandsshares is bereikt. | Zie [de sectie opslag limiet van Azure file share](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) in de hand leiding voor probleem oplossing om dit probleem op te lossen. |
-| 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | Het bestand is versleuteld met een niet-ondersteunde oplossing (zoals NTFS EFS). | Het bestand ontsleutelen en een ondersteunde versleutelings oplossing gebruiken. Zie [Oplossingen voor versleuteling](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption) in de planningshandleiding voor een lijst met ondersteunde oplossingen. |
-| 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | Het bestand bevindt zich in een gerepliceerde DFS-R-map met het kenmerk alleen-lezen. | Het bestand bevindt zich in een gerepliceerde DFS-R-map met het kenmerk alleen-lezen. Azure Files Sync biedt geen ondersteuning voor servereindpunten in DFS-R-replicatiemappen met het kenmerk Alleen-lezen. Zie de [plannings handleiding](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) voor meer informatie. |
-| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Het bestand heeft de status verwijderen in behandeling. | U hoeft geen actie te ondernemen. Het bestand wordt verwijderd zodra alle geopende bestands ingangen zijn gesloten. |
-| 0x80c86044 | -2134351804 | ECS_E_AZURE_AUTHORIZATION_FAILED | Het bestand kan niet worden gesynchroniseerd omdat de instellingen voor de firewall en het virtuele netwerk van het opslag account zijn ingeschakeld en de server geen toegang heeft tot het opslag account. | Voeg het IP-adres of het virtuele netwerk van de server toe aan de hand van de stappen die worden beschreven in de sectie [instellingen voor firewalls en virtuele netwerken configureren](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) in de implementatie handleiding. |
-| 0x80c80243 | -2134375869 | ECS_E_SECURITY_DESCRIPTOR_SIZE_TOO_LARGE | Het bestand kan niet worden gesynchroniseerd omdat de grootte van de security descriptor groter is dan de limiet van 64 KiB. | U kunt dit probleem oplossen door ACE’s (Access Control Entries) voor het bestand te verwijderen om de grootte van de security descriptor te verkleinen. |
-| 0x8000ffff | -2147418113 | E_UNEXPECTED | Het bestand kan niet worden gesynchroniseerd vanwege een onverwachte fout. | Als de fout gedurende enkele dagen blijft bestaan, kunt u een ondersteunings aanvraag openen. |
+| 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | Het gelaagde bestand op de server is niet toegankelijk. Dit probleem treedt op als het gelaagde bestand niet is ingetrokken voordat een servereindpunt is verwijderd. | Zie [Trapsgewijze bestanden zijn niet toegankelijk op de server na het verwijderen van een servereindpunt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)om dit probleem op te lossen. |
+| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | De bestands- of mapwijziging kan nog niet worden gesynchroniseerd omdat een afhankelijke map nog niet is gesynchroniseerd. Dit item wordt gesynchroniseerd nadat de afhankelijke wijzigingen zijn gesynchroniseerd. | U hoeft geen actie te ondernemen. Als de fout meerdere dagen blijft bestaan, gebruikt u het PowerShell-script fileSyncErrorsReport.ps1 om te bepalen waarom de afhankelijke map nog niet is gesynchroniseerd. |
+| 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | De bestands- of mapwijziging kan nog niet worden gesynchroniseerd omdat een afhankelijke map nog niet is gesynchroniseerd en de synchronisatiesessie is mislukt. Dit item wordt gesynchroniseerd nadat de afhankelijke wijzigingen zijn gesynchroniseerd. | U hoeft geen actie te ondernemen. Als de fout blijft bestaan, onderzoekt u de synchronisatiesessiefout. |
+| 0x8007007b | -2147024773 | ERROR_INVALID_NAME | De bestands- of mapnaam is ongeldig. | Wijzig de naam van het betreffende bestand of de map. Zie [Niet-ondersteunde tekens verwerken](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) voor meer informatie. |
+| 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | De bestands- of mapnaam is ongeldig. | Wijzig de naam van het betreffende bestand of de map. Zie [Niet-ondersteunde tekens verwerken](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) voor meer informatie. |
+| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Het bestand kan niet worden gesynchroniseerd omdat het in gebruik is. Het bestand wordt gesynchroniseerd wanneer het niet meer in gebruik is. | U hoeft geen actie te ondernemen. Azure File Sync maakt één keer per dag een tijdelijke VSS-momentopname op de server om bestanden met geopende handgrepen te synchroniseren. |
+| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Het bestand is gewijzigd, maar de wijziging is nog niet gedetecteerd door synchronisatie. Synchronisatie herstelt nadat deze wijziging is gedetecteerd. | U hoeft geen actie te ondernemen. |
+| 0x80070002 | -2147024894 | ERROR_FILE_NOT_FOUND | Het bestand is verwijderd en synchronisatie is niet op de hoogte van de wijziging. | U hoeft geen actie te ondernemen. Synchronisatie stopt met het registreren van deze fout zodra de detectie van wijzigingen detecteert dat het bestand is verwijderd. |
+| 0x80070003 | -2147942403 | ERROR_PATH_NOT_FOUND | Het verwijderen van een bestand of map kan niet worden gesynchroniseerd omdat het item al in de bestemming is verwijderd en de synchronisatie niet op de hoogte is van de wijziging. | U hoeft geen actie te ondernemen. Synchronisatie stopt met het registreren van deze fout zodra de wijzigingsdetectie wordt uitgevoerd op de bestemming en synchronisatie detecteert dat het item is verwijderd. |
+| 0x80c80205 | -2134375931 | ECS_E_SYNC_ITEM_SKIP | Het bestand of de map is overgeslagen, maar wordt tijdens de volgende synchronisatiesessie gesynchroniseerd. Als deze fout wordt gerapporteerd bij het downloaden van het item, is de bestands- of mapnaam waarschijnlijk ongeldig. | Er is geen actie vereist als deze fout wordt gerapporteerd bij het uploaden van het bestand. Als de fout wordt gerapporteerd bij het downloaden van het bestand, wijzigt u de naam van het betreffende bestand of de map. Zie [Niet-ondersteunde tekens verwerken](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) voor meer informatie. |
+| 0x800700B7 | -2147024713 | ERROR_ALREADY_EXISTS | Het maken van een bestand of map kan niet worden gesynchroniseerd omdat het item al in de bestemming bestaat en de synchronisatie niet op de hoogte is van de wijziging. | U hoeft geen actie te ondernemen. Synchronisatie stopt met het registreren van deze fout zodra de wijzigingsdetectie wordt uitgevoerd op de bestemming en de synchronisatie op de hoogte is van dit nieuwe item. |
+| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Het bestand kan niet worden gesynchroniseerd omdat de limiet voor Azure-bestandsshares is bereikt. | Zie U hebt de sectie [opslaglimiet voor Azure-bestandendelen bereikt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) in de handleiding voor het oplossen van problemen om dit probleem op te lossen. |
+| 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | Het bestand wordt versleuteld door een niet-ondersteunde oplossing (zoals NTFS EFS). | Decoderen van het bestand en gebruik een ondersteunde versleutelingsoplossing. Zie [Oplossingen voor versleuteling](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption) in de planningshandleiding voor een lijst met ondersteunde oplossingen. |
+| 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | Het bestand bevindt zich in een alleen-lezen replicatiemap met DFS-R. | Het bestand bevindt zich in een alleen-lezen replicatiemap met DFS-R. Azure Files Sync biedt geen ondersteuning voor servereindpunten in DFS-R-replicatiemappen met het kenmerk Alleen-lezen. Zie [planningsgids](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) voor meer informatie. |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Het bestand heeft een status verwijderen in behandeling. | U hoeft geen actie te ondernemen. Het bestand wordt verwijderd zodra alle geopende bestandsgrepen zijn gesloten. |
+| 0x80c86044 | -2134351804 | ECS_E_AZURE_AUTHORIZATION_FAILED | Het bestand kan niet worden gesynchroniseerd omdat de firewall- en virtuele netwerkinstellingen op het opslagaccount zijn ingeschakeld en de server geen toegang heeft tot het opslagaccount. | Voeg het IP-adres van server of virtueel netwerk toe door de stappen te volgen die zijn gedocumenteerd in de sectie [Firewall configureren en virtuele netwerkinstellingen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) in de implementatiehandleiding. |
+| 0x80c80243 | -2134375869 | ECS_E_SECURITY_DESCRIPTOR_SIZE_TOO_LARGE | Het bestand kan niet worden gesynchroniseerd omdat de grootte van de beveiligingsbeschrijving de 64 KiB-limiet overschrijdt. | U kunt dit probleem oplossen door ACE’s (Access Control Entries) voor het bestand te verwijderen om de grootte van de security descriptor te verkleinen. |
+| 0x8000ffff | -2147418113 | E_UNEXPECTED | Het bestand kan niet worden gesynchroniseerd als gevolg van een onverwachte fout. | Als de fout meerdere dagen blijft bestaan, opent u een ondersteuningsaanvraag. |
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Het bestand kan niet worden gesynchroniseerd omdat het in gebruik is. Het bestand wordt gesynchroniseerd wanneer het niet meer in gebruik is. | U hoeft geen actie te ondernemen. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Het bestand is tijdens de synchronisatie gewijzigd, dus het moet opnieuw worden gesynchroniseerd. | U hoeft geen actie te ondernemen. |
-| 0x80070017 | -2147024873 | ERROR_CRC | Het bestand kan niet worden gesynchroniseerd vanwege een CRC-fout. Deze fout kan optreden als een gelaagd bestand niet is ingetrokken vóór het verwijderen van een server eindpunt of als het bestand is beschadigd. | Om dit probleem op te lossen, raadpleegt u [gelaagde bestanden niet toegankelijk op de server nadat u een server eindpunt hebt verwijderd](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) om gelaagde bestanden te verwijderen die zwevend zijn. Als de fout blijft optreden nadat u oprhaned gelaagde bestanden hebt verwijderd, voert u [chkdsk](https://docs.microsoft.com/windows-server/administration/windows-commands/chkdsk) uit op het volume. |
-| 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Het bestand kan niet worden gesynchroniseerd omdat het maximum aantal conflict bestanden is bereikt. Azure File Sync ondersteunt 100-conflict bestanden per bestand. Zie Azure File Sync [Veelgestelde vragen](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution)voor meer informatie over bestands conflicten. | Verminder het aantal conflict bestanden om dit probleem op te lossen. Het bestand wordt gesynchroniseerd zodra het aantal conflict bestanden kleiner is dan 100. |
+| 0x80070017 | -2147024873 | ERROR_CRC | Het bestand kan niet worden gesynchroniseerd vanwege crc-fouten. Deze fout kan optreden als een gelaagd bestand niet is teruggeroepen voordat een servereindpunt wordt verwijderd of als het bestand beschadigd is. | Zie [Gelaagde bestanden die zijn verwijderd om een servereindpunt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) te verwijderen om gelaagde bestanden te verwijderen die wees zijn, om dit probleem op te lossen. Als de fout blijft optreden na het verwijderen van oprhaned gelaagde bestanden, voert u [chkdsk](https://docs.microsoft.com/windows-server/administration/windows-commands/chkdsk) uit op het volume. |
+| 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Het bestand kan niet worden gesynchroniseerd omdat het maximum aantal conflictbestanden is bereikt. Azure File Sync ondersteunt 100 conflictbestanden per bestand. Zie [Veelgestelde vragen](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution)over Azure File Sync voor meer informatie over bestandsconflicten. | Als u dit probleem wilt oplossen, vermindert u het aantal conflictbestanden. Het bestand wordt gesynchroniseerd zodra het aantal conflictbestanden minder dan 100 is. |
 
 #### <a name="handling-unsupported-characters"></a>Niet-ondersteunde tekens verwerken
-Als het Power shell-script **FileSyncErrorsReport. ps1** fouten weergeeft als gevolg van niet-ondersteunde tekens (fout code 0x8007007b of 0x80c80255), moet u de tekens bij fout verwijderen of de naam ervan wijzigen. In Power shell worden deze tekens waarschijnlijk afgedrukt als vraag tekens of lege rechthoeken omdat de meeste van deze tekens geen standaard-visuele code ring hebben. Het [evaluatie hulpprogramma](storage-sync-files-planning.md#evaluation-cmdlet) kan worden gebruikt om tekens te identificeren die niet worden ondersteund.
+Als het **PowerShell-script van FileSyncErrorsReport.PS1** fouten vertoont als gevolg van niet-ondersteunde tekens (foutcode 0x8007007b of 0x80c80255), moet u de tekens die fout hebben gemaakt verwijderen of hernoemen uit de respectievelijke bestandsnamen. PowerShell zal waarschijnlijk deze tekens afdrukken als vraagtekens of lege rechthoeken, omdat de meeste van deze tekens geen standaard visuele codering hebben. De [evaluatietool](storage-sync-files-planning.md#evaluation-cmdlet) kan worden gebruikt om tekens te identificeren die niet worden ondersteund.
 
-De onderstaande tabel bevat alle Unicode-tekens Azure File Sync nog niet wordt ondersteund.
+De onderstaande tabel bevat alle unicode-tekens die Azure File Sync nog niet ondersteunt.
 
 | Tekenset | Aantal tekens |
 |---------------|-----------------|
-| <ul><li>0x0000009D (opdracht osc-besturings systeem)</li><li>0x00000090 (DCS-besturings element voor Apparaatbeheer)</li><li>0x0000008F (ss3 één ploeg drie)</li><li>0x00000081 (definitie hoge octetten)</li><li>0x0000007F (del verwijderen)</li><li>0x0000008D (RI-omgekeerde regel invoer)</li></ul> | 6 |
-| 0x0000FDD0-0x0000FDEF (Arabische presentatie vormen-a) | 32 |
-| 0x0000FFF0-0x0000FFFF (specials) | 16 |
-| <ul><li>0x0001FFFE-0x0001FFFF = 2 (niet-teken)</li><li>0x0002FFFE-0x0002FFFF = 2 (niet-teken)</li><li>0x0003FFFE-0x0003FFFF = 2 (niet-teken)</li><li>0x0004FFFE-0x0004FFFF = 2 (niet-teken)</li><li>0x0005FFFE-0x0005FFFF = 2 (niet-teken)</li><li>0x0006FFFE-0x0006FFFF = 2 (niet-teken)</li><li>0x0007FFFE-0x0007FFFF = 2 (niet-teken)</li><li>0x0008FFFE-0x0008FFFF = 2 (niet-teken)</li><li>0x0009FFFE-0x0009FFFF = 2 (niet-teken)</li><li>0x000AFFFE-0x000AFFFF = 2 (niet-teken)</li><li>0x000BFFFE-0x000BFFFF = 2 (niet-teken)</li><li>0x000CFFFE-0x000CFFFF = 2 (niet-teken)</li><li>0x000DFFFE-0x000DFFFF = 2 (niet-teken)</li><li>0x000EFFFE-0x000EFFFF = 2 (niet gedefinieerd)</li><li>0x000FFFFE-0x000FFFFF = 2 (aanvullend privé gebruik-gebied)</li></ul> | 30 |
+| <ul><li>0x0000009D (opdracht OSC-besturingssysteem)</li><li>0x00000090 (dcs-apparaatbesturingstekenreeks)</li><li>0x000008F (ss3 single shift drie)</li><li>0x00000081 (hoge octet preset)</li><li>0x0000007F (del delete)</li><li>0x0000008D (ri reverse line feed)</li></ul> | 6 |
+| 0x0000FDD0 - 0x0000FDEF (Arabische presentatieformulieren-a) | 32 |
+| 0x0000FFF0 - 0x0000FFFF (specials) | 16 |
+| <ul><li>0x0001FFFE - 0x0001FFFF = 2 (niet-teken)</li><li>0x0002FFFE - 0x0002FFFF = 2 (niet-teken)</li><li>0x0003FFFE - 0x0003FFFF = 2 (niet-teken)</li><li>0x0004FFFE - 0x0004FFFF = 2 (niet-teken)</li><li>0x0005FFFE - 0x0005FFFF = 2 (niet-teken)</li><li>0x0006FFFE - 0x0006FFFF = 2 (niet-teken)</li><li>0x0007FFFE - 0x0007FFFF = 2 (niet-teken)</li><li>0x0008FFFE - 0x0008FFFF = 2 (niet-teken)</li><li>0x0009FFFE - 0x0009FFFF = 2 (niet-teken)</li><li>0x000AFFFE - 0x000AFFFF = 2 (niet-teken)</li><li>0x000BFFFE - 0x000BFFFF = 2 (niet-teken)</li><li>0x000CFFFE - 0x000CFFFF = 2 (niet-teken)</li><li>0x000DFFFE - 0x000DFFFF = 2 (niet-teken)</li><li>0x000EFFFE - 0x000EFFFF = 2 (ongedefinieerd)</li><li>0x000FFFFE - 0x000FFFFF = 2 (aanvullende privé-gebruiksruimte)</li></ul> | 30 |
 | 0x0010FFFE, 0x0010FFFF | 2 |
 
-### <a name="common-sync-errors"></a>Algemene synchronisatie fouten
-<a id="-2147023673"></a>**De synchronisatie sessie is geannuleerd.**  
+### <a name="common-sync-errors"></a>Veelvoorkomende synchronisatiefouten
+<a id="-2147023673"></a>**De synchronisatiesessie is geannuleerd.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x800704c7 |
+| **Hresult** | 0x800704c7 |
 | **HRESULT (decimaal)** | -2147023673 | 
-| **Fout reeks** | ERROR_CANCELLED |
+| **Fouttekenreeks** | ERROR_CANCELLED |
 | **Herstel vereist** | Nee |
 
-Synchronisatie sessies kunnen om verschillende redenen mislukken, zoals de server die opnieuw wordt opgestart of bijgewerkt, VSS-moment opnamen, enzovoort. Hoewel deze fout lijkt op opvolgen, is het veilig om deze fout te negeren, tenzij deze gedurende een periode van enkele uren persistent is.
+Synchronisatiesessies kunnen mislukken om verschillende redenen, waaronder de server die opnieuw wordt opgestart of bijgewerkt, VSS-momentopnamen, enz. Hoewel deze fout eruit ziet alsof deze follow-up vereist, is het veilig om deze fout te negeren, tenzij deze gedurende een periode van enkele uren blijft bestaan.
 
-<a id="-2147012889"></a>**Er kan geen verbinding worden gemaakt met de service.**    
+<a id="-2147012889"></a>**Er kon geen verbinding met de service worden gelegd.**    
 
 | | |
 |-|-|
-| **HRESULT** | 0x80072EE7 |
+| **Hresult** | 0x80072ee7 |
 | **HRESULT (decimaal)** | -2147012889 | 
-| **Fout reeks** | WININET_E_NAME_NOT_RESOLVED |
+| **Fouttekenreeks** | WININET_E_NAME_NOT_RESOLVED |
 | **Herstel vereist** | Ja |
 
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
-<a id="-2134376372"></a>**De gebruikers aanvraag is beperkt door de service.**  
+<a id="-2134376372"></a>**Het verzoek van de gebruiker werd beperkt door de service.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8004c |
+| **Hresult** | 0x80c8004c |
 | **HRESULT (decimaal)** | -2134376372 |
-| **Fout reeks** | ECS_E_USER_REQUEST_THROTTLED |
+| **Fouttekenreeks** | ECS_E_USER_REQUEST_THROTTLED |
 | **Herstel vereist** | Nee |
 
 Er is geen actie vereist; de server zal het opnieuw proberen. Als deze fout na enkele uren nog steeds optreedt, maakt u een ondersteuningsaanvraag.
 
-<a id="-2134364043"></a>**Synchronisatie wordt geblokkeerd totdat de wijzigings detectie is voltooid na het herstellen**  
+<a id="-2134364043"></a>**Synchronisatie wordt geblokkeerd totdat wijzigingsdetectie het herstel van berichten voltooit**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c83075 |
+| **Hresult** | 0x80c83075 |
 | **HRESULT (decimaal)** | -2134364043 |
-| **Fout reeks** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
+| **Fouttekenreeks** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
 | **Herstel vereist** | Nee |
 
-Geen actie vereist. Wanneer een bestand of bestands share (Cloud-eind punt) wordt hersteld met behulp van Azure Backup, wordt de synchronisatie geblokkeerd totdat de wijzigings detectie is voltooid op de Azure-bestands share. Wijzigingsdetectie wordt onmiddellijk uitgevoerd zodra het herstellen is voltooid. Hoe lang dit duurt is afhankelijk van het aantal bestanden in de bestandsshare.
+Geen actie vereist. Wanneer een bestands- of bestandsshare (cloudeindpunt) wordt hersteld met Azure Backup, wordt de synchronisatie geblokkeerd totdat de wijzigingsdetectie is voltooid in het Azure-bestandsshare. Wijzigingsdetectie wordt onmiddellijk uitgevoerd zodra het herstellen is voltooid. Hoe lang dit duurt is afhankelijk van het aantal bestanden in de bestandsshare.
 
-<a id="-2147216747"></a>**De synchronisatie is mislukt, omdat de synchronisatie database is verwijderd.**  
+<a id="-2147216747"></a>**Synchronisatie is mislukt omdat de synchronisatiedatabase is gelost.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80041295 |
+| **Hresult** | 0x80041295 |
 | **HRESULT (decimaal)** | -2147216747 |
-| **Fout reeks** | SYNC_E_METADATA_INVALID_OPERATION |
+| **Fouttekenreeks** | SYNC_E_METADATA_INVALID_OPERATION |
 | **Herstel vereist** | Nee |
 
 Deze fout treedt doorgaans op wanneer met een back-uptoepassing een VSS-momentopname wordt gemaakt en de Sync-database is verwijderd. Als deze fout na enkele uren nog steeds optreedt, maakt u een ondersteuningsaanvraag.
 
-<a id="-2134364065"></a>**Sync heeft geen toegang tot de Azure-bestands share die is opgegeven in het Cloud eindpunt.**  
+<a id="-2134364065"></a>**Synchronisatie heeft geen toegang tot het Azure-bestandsaandeel dat is opgegeven in het eindpunt van de cloud.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8305f |
+| **Hresult** | 0x80c8305f |
 | **HRESULT (decimaal)** | -2134364065 |
-| **Fout reeks** | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED |
+| **Fouttekenreeks** | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED |
 | **Herstel vereist** | Ja |
 
 Deze fout treedt op omdat de Azure File Sync-agent geen toegang kan krijgen tot de Azure-bestandsshare. Dit kan komen doordat de Azure-bestandsshare of het opslagaccount waar deze wordt gehost, niet meer bestaat. U kunt deze fout oplossen door de volgende stappen te doorlopen:
 
-1. [Controleer of het opslag account bestaat.](#troubleshoot-storage-account)
-2. [Zorg ervoor dat de Azure-bestands share bestaat.](#troubleshoot-azure-file-share)
-3. [Zorg ervoor dat Azure File Sync toegang heeft tot het opslag account.](#troubleshoot-rbac)
+1. [Controleer of het opslagaccount bestaat.](#troubleshoot-storage-account)
+2. [Controleer of de Azure-bestandsshare bestaat.](#troubleshoot-azure-file-share)
+3. [Controleer of Azure File Sync toegang heeft tot het opslagaccount.](#troubleshoot-rbac)
 4. [Controleren of de instellingen voor de firewall en het virtuele netwerk op het opslagaccount correct zijn geconfigureerd (indien ingeschakeld)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
-<a id="-2134351804"></a>**De synchronisatie is mislukt, omdat de aanvraag niet is gemachtigd om deze bewerking uit te voeren.**  
+<a id="-2134351804"></a>**Synchronisatie is mislukt omdat de aanvraag niet is gemachtigd om deze bewerking uit te voeren.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c86044 |
+| **Hresult** | 0x80c86044 |
 | **HRESULT (decimaal)** | -2134351804 |
-| **Fout reeks** | ECS_E_AZURE_AUTHORIZATION_FAILED |
+| **Fouttekenreeks** | ECS_E_AZURE_AUTHORIZATION_FAILED |
 | **Herstel vereist** | Ja |
 
-Deze fout treedt op omdat de Azure File Sync-agent geen toegang heeft tot de Azure-bestands share. U kunt deze fout oplossen door de volgende stappen te doorlopen:
+Deze fout treedt op omdat de Azure File Sync-agent geen toegang heeft tot het Azure-bestandsaandeel. U kunt deze fout oplossen door de volgende stappen te doorlopen:
 
-1. [Controleer of het opslag account bestaat.](#troubleshoot-storage-account)
-2. [Zorg ervoor dat de Azure-bestands share bestaat.](#troubleshoot-azure-file-share)
+1. [Controleer of het opslagaccount bestaat.](#troubleshoot-storage-account)
+2. [Controleer of de Azure-bestandsshare bestaat.](#troubleshoot-azure-file-share)
 3. [Controleren of de instellingen voor de firewall en het virtuele netwerk op het opslagaccount correct zijn geconfigureerd (indien ingeschakeld)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
-4. [Zorg ervoor dat Azure File Sync toegang heeft tot het opslag account.](#troubleshoot-rbac)
+4. [Controleer of Azure File Sync toegang heeft tot het opslagaccount.](#troubleshoot-rbac)
 
-<a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**De gebruikte naam van het opslag account kan niet worden omgezet.**  
+<a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**De gebruikte naam van het opslagaccount kan niet worden opgelost.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80C83060 |
+| **Hresult** | 0x80C83060 |
 | **HRESULT (decimaal)** | -2134364064 |
-| **Fout reeks** | ECS_E_STORAGE_ACCOUNT_NAME_UNRESOLVED |
+| **Fouttekenreeks** | ECS_E_STORAGE_ACCOUNT_NAME_UNRESOLVED |
 | **Herstel vereist** | Ja |
 
-1. Controleer of u de DNS-naam van de opslag van de server kunt omzetten.
+1. Controleer of u de DNS-naam van de opslag van de server oplossen.
 
     ```powershell
     Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 443
     ```
-2. [Controleer of het opslag account bestaat.](#troubleshoot-storage-account)
+2. [Controleer of het opslagaccount bestaat.](#troubleshoot-storage-account)
 3. [Controleren of de instellingen voor de firewall en het virtuele netwerk op het opslagaccount correct zijn geconfigureerd (indien ingeschakeld)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
-<a id="-2134364022"></a><a id="storage-unknown-error"></a>**Er is een onbekende fout opgetreden bij het openen van het opslag account.**  
+<a id="-2134364022"></a><a id="storage-unknown-error"></a>**Er is een onbekende fout opgetreden tijdens het openen van het opslagaccount.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8308a |
+| **Hresult** | 0x80c8308a |
 | **HRESULT (decimaal)** | -2134364022 |
-| **Fout reeks** | ECS_E_STORAGE_ACCOUNT_UNKNOWN_ERROR |
+| **Fouttekenreeks** | ECS_E_STORAGE_ACCOUNT_UNKNOWN_ERROR |
 | **Herstel vereist** | Ja |
 
-1. [Controleer of het opslag account bestaat.](#troubleshoot-storage-account)
+1. [Controleer of het opslagaccount bestaat.](#troubleshoot-storage-account)
 2. [Controleren of de instellingen voor de firewall en het virtuele netwerk op het opslagaccount correct zijn geconfigureerd (indien ingeschakeld)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
-<a id="-2134364014"></a>**De synchronisatie is mislukt omdat het opslag account is vergrendeld.**  
+<a id="-2134364014"></a>**Synchronisatie is mislukt omdat het opslagaccount is vergrendeld.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c83092 |
+| **Hresult** | 0x80c83092 |
 | **HRESULT (decimaal)** | -2134364014 |
-| **Fout reeks** | ECS_E_STORAGE_ACCOUNT_LOCKED |
+| **Fouttekenreeks** | ECS_E_STORAGE_ACCOUNT_LOCKED |
 | **Herstel vereist** | Ja |
 
-Deze fout treedt op omdat het opslag account een alleen-lezen [bron vergrendeling](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)heeft. U kunt dit probleem oplossen door de alleen-lezen resourcevergrendeling voor het opslagaccount te verwijderen. 
+Deze fout treedt op omdat het opslagaccount een alleen-lezen [bronvergrendeling](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)heeft. Als u dit probleem wilt oplossen, verwijdert u het alleen-lezen bronvergrendeling op het opslagaccount. 
 
-<a id="-1906441138"></a>**De synchronisatie is mislukt vanwege een probleem met de synchronisatie database.**  
+<a id="-1906441138"></a>**Synchronisatie is mislukt vanwege een probleem met de synchronisatiedatabase.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x8e5e044e |
+| **Hresult** | 0x8e5e044e |
 | **HRESULT (decimaal)** | -1906441138 |
-| **Fout reeks** | JET_errWriteConflict |
+| **Fouttekenreeks** | JET_errWriteConflict |
 | **Herstel vereist** | Ja |
 
-Deze fout treedt op wanneer er een probleem is met de interne data base die wordt gebruikt door Azure File Sync. Als dit probleem zich voordoet, maakt u een ondersteunings aanvraag en neemt u contact met u op om dit probleem op te lossen.
+Deze fout treedt op wanneer er een probleem is met de interne database die wordt gebruikt door Azure File Sync. Wanneer dit probleem zich voordoet, maakt u een ondersteuningsverzoek en nemen we contact met u op om u te helpen dit probleem op te lossen.
 
-<a id="-2134364053"></a>**De versie van de Azure File Sync-agent die op de server is geïnstalleerd, wordt niet ondersteund.**  
+<a id="-2134364053"></a>**De azure file sync-agentversie die op de server is geïnstalleerd, wordt niet ondersteund.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80C8306B |
+| **Hresult** | 0x80C8306B |
 | **HRESULT (decimaal)** | -2134364053 |
-| **Fout reeks** | ECS_E_AGENT_VERSION_BLOCKED |
+| **Fouttekenreeks** | ECS_E_AGENT_VERSION_BLOCKED |
 | **Herstel vereist** | Ja |
 
-Deze fout treedt op als de versie van de Azure File Sync-agent op de server wordt niet ondersteund. U kunt dit probleem oplossen door een [upgrade uit]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths) te voeren naar een [ondersteunde agent versie]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions).
+Deze fout treedt op als de versie van de Azure File Sync-agent op de server wordt niet ondersteund. Als u dit probleem wilt oplossen, [kunt u upgraden]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths) naar een ondersteunde [agentversie.]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions)
 
-<a id="-2134351810"></a>**U hebt de opslag limiet voor Azure file share bereikt.**  
+<a id="-2134351810"></a>**U hebt de opslaglimiet voor Azure-bestanden bereikt.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8603e |
+| **Hresult** | 0x80c8603e |
 | **HRESULT (decimaal)** | -2134351810 |
-| **Fout reeks** | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED |
+| **Fouttekenreeks** | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED |
 | **Herstel vereist** | Ja |
 
-Deze fout treedt op wanneer de opslaglimiet van de Azure-bestandsshare is bereikt. Dit kan gebeuren als er een quotum voor een Azure-bestandsshare is ingesteld of als een gebruikslimiet voor een Azure-bestandsshare is overschreden. Zie de [huidige limieten voor een Azure-bestands share](storage-files-scale-targets.md)voor meer informatie.
+Deze fout treedt op wanneer de opslaglimiet van de Azure-bestandsshare is bereikt. Dit kan gebeuren als er een quotum voor een Azure-bestandsshare is ingesteld of als een gebruikslimiet voor een Azure-bestandsshare is overschreden. Zie de huidige [limieten voor een Azure-bestandsshare voor](storage-files-scale-targets.md)meer informatie.
 
-1. Ga naar de synchronisatie groep binnen de opslag synchronisatie service.
-2. Selecteer het eind punt van de cloud in de synchronisatie groep.
-3. Noteer de naam van de Azure-bestands share in het geopende deel venster.
-4. Selecteer het gekoppelde opslagaccount. Als deze koppeling mislukt, is het opslag account waarnaar wordt verwezen, verwijderd.
+1. Navigeer naar de synchronisatiegroep binnen de Opslagsynchronisatieservice.
+2. Selecteer het eindpunt van de cloud in de synchronisatiegroep.
+3. Let op de naam azure-bestandsshare in het geopende deelvenster.
+4. Selecteer het gekoppelde opslagaccount. Als deze koppeling mislukt, is het opslagaccount waarnaar wordt verwezen verwijderd.
 
-    ![Een scherm afbeelding met het detail venster van het Cloud eindpunt met een koppeling naar het opslag account.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
+    ![Een schermafbeelding van het detailvenster voor eindpunt in de cloud met een koppeling naar het opslagaccount.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-5. Selecteer **bestanden** om de lijst met bestands shares weer te geven.
-6. Klik op de drie punten aan het einde van de rij voor de Azure-bestands share waarnaar wordt verwezen door het Cloud eindpunt.
-7. Controleer of het **gebruik** lager is dan het **quotum**. Opmerking tenzij er een alternatieve quotum is opgegeven, komt het quotum overeen met de [maximale grootte van de Azure-bestands share](storage-files-scale-targets.md).
+5. Selecteer **Bestanden** om de lijst met bestandsshares weer te geven.
+6. Klik op de drie puntjes aan het einde van de rij voor het Azure-bestandsshare waarnaar het eindpunt van de cloud wordt verwezen.
+7. Controleer of het **gebruik** lager is dan het **quotum**. Opmerking, tenzij een alternatief quotum is opgegeven, komt het quotum overeen met de [maximale grootte van de Azure-bestandsshare](storage-files-scale-targets.md).
 
-    ![Een scherm afbeelding van de eigenschappen van de Azure-bestands share.](media/storage-sync-files-troubleshoot/file-share-limit-reached-1.png)
+    ![Een schermafbeelding van de eigenschappen van Azure-bestandsshare.](media/storage-sync-files-troubleshoot/file-share-limit-reached-1.png)
 
 Als de share vol is en er geen quotum is ingesteld, kunt u dit probleem oplossen door elke submap van het huidige servereindpunt te maken in een eigen servereindpunt en een eigen synchronisatiegroep. Zo wordt de verschillende submappen gesynchroniseerd met verschillende Azure-bestandsshares.
 
-<a id="-2134351824"></a>**De Azure-bestands share is niet gevonden.**  
+<a id="-2134351824"></a>**Het Azure-bestandsaandeel kan niet worden gevonden.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c86030 |
+| **Hresult** | 0x80c86030 |
 | **HRESULT (decimaal)** | -2134351824 |
-| **Fout reeks** | ECS_E_AZURE_FILE_SHARE_NOT_FOUND |
+| **Fouttekenreeks** | ECS_E_AZURE_FILE_SHARE_NOT_FOUND |
 | **Herstel vereist** | Ja |
 
 Deze fout treedt op wanneer de Azure-bestandsshare niet toegankelijk is. Ga als volgt te werk om het probleem op te lossen:
 
-1. [Controleer of het opslag account bestaat.](#troubleshoot-storage-account)
-2. [Zorg ervoor dat de Azure-bestands share bestaat.](#troubleshoot-azure-file-share)
+1. [Controleer of het opslagaccount bestaat.](#troubleshoot-storage-account)
+2. [Controleer of de Azure-bestandsshare bestaat.](#troubleshoot-azure-file-share)
 
-Als de Azure-bestands share is verwijderd, moet u een nieuwe bestands share maken en de synchronisatie groep vervolgens opnieuw maken. 
+Als de Azure-bestandsshare is verwijderd, moet u een nieuwe bestandsshare maken en vervolgens de synchronisatiegroep opnieuw maken. 
 
-<a id="-2134364042"></a>**De synchronisatie is onderbroken terwijl dit Azure-abonnement is onderbroken.**  
+<a id="-2134364042"></a>**Synchronisatie wordt onderbroken terwijl dit Azure-abonnement wordt opgeschort.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80C83076 |
+| **Hresult** | 0x80C83076 |
 | **HRESULT (decimaal)** | -2134364042 |
-| **Fout reeks** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
+| **Fouttekenreeks** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
 | **Herstel vereist** | Ja |
 
-Deze fout treedt op wanneer het Azure-abonnement is onderbroken. Synchronisatie wordt opnieuw ingeschakeld wanneer het Azure-abonnement wordt hersteld. Zie [Waarom is mijn Azure-abonnement uitgeschakeld en hoe kan ik het opnieuw activeren?](../../cost-management-billing/manage/subscription-disabled.md) voor meer informatie.
+Deze fout treedt op wanneer het Azure-abonnement is onderbroken. Synchronisatie wordt opnieuw ingeschakeld wanneer het Azure-abonnement wordt hersteld. Zie [Waarom is mijn Azure-abonnement uitgeschakeld en hoe kan ik het opnieuw activeren?](../../cost-management-billing/manage/subscription-disabled.md)
 
-<a id="-2134364052"></a>**Er is een firewall of virtuele netwerken geconfigureerd voor het opslag account.**  
+<a id="-2134364052"></a>**Het opslagaccount heeft een firewall of virtuele netwerken geconfigureerd.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8306c |
+| **Hresult** | 0x80c8306c |
 | **HRESULT (decimaal)** | -2134364052 |
-| **Fout reeks** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
+| **Fouttekenreeks** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
 | **Herstel vereist** | Ja |
 
-Deze fout treedt op wanneer de Azure-bestandsshare niet toegankelijk is vanwege een firewall bij een opslagaccount, of omdat het opslagaccount deel uitmaakt van een virtueel netwerk. Controleer of de instellingen voor de firewall en het virtuele netwerk van het opslag account correct zijn geconfigureerd. Zie [instellingen voor Firewall en virtueel netwerk configureren](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)voor meer informatie. 
+Deze fout treedt op wanneer de Azure-bestandsshare niet toegankelijk is vanwege een firewall bij een opslagaccount, of omdat het opslagaccount deel uitmaakt van een virtueel netwerk. Controleer of de firewall- en virtuele netwerkinstellingen op het opslagaccount correct zijn geconfigureerd. Zie [Firewall- en virtuele netwerkinstellingen configureren](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)voor meer informatie. 
 
-<a id="-2134375911"></a>**De synchronisatie is mislukt vanwege een probleem met de synchronisatie database.**  
+<a id="-2134375911"></a>**Synchronisatie is mislukt vanwege een probleem met de synchronisatiedatabase.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c80219 |
+| **Hresult** | 0x80c80219 |
 | **HRESULT (decimaal)** | -2134375911 |
-| **Fout reeks** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
+| **Fouttekenreeks** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
 | **Herstel vereist** | Nee |
 
 Deze fout wordt meestal vanzelf opgelost, en kan optreden wanneer:
 
-* Een groot aantal bestands wijzigingen op de servers in de synchronisatie groep.
-* Een groot aantal fouten op afzonderlijke bestanden en mappen.
+* Een groot aantal bestandswijzigingen tussen de servers in de synchronisatiegroep.
+* Een groot aantal fouten op individuele bestanden en mappen.
 
-Als deze fout langer dan een paar uur blijft bestaan, maakt u een ondersteunings aanvraag en neemt u contact met u op om dit probleem op te lossen.
+Als deze fout langer dan een paar uur duurt, maakt u een ondersteuningsverzoek en nemen we contact met u op om u te helpen dit probleem op te lossen.
 
-<a id="-2146762487"></a>**De server kan geen beveiligde verbinding tot stand brengen. De Cloud service heeft een onverwacht certificaat ontvangen.**  
+<a id="-2146762487"></a>**De server kan geen beveiligde verbinding tot stand brengen. De cloudservice heeft een onverwacht certificaat ontvangen.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x800b0109 |
+| **Hresult** | 0x800b0109 |
 | **HRESULT (decimaal)** | -2146762487 |
-| **Fout reeks** | CERT_E_UNTRUSTEDROOT |
+| **Fouttekenreeks** | CERT_E_UNTRUSTEDROOT |
 | **Herstel vereist** | Ja |
 
 Deze fout kan zich voordoen als uw organisatie een SSL-beëindigingsproxy gebruikt of als een kwaadaardige entiteit het verkeer tussen uw server en de Azure File Sync-service onderschept. Als u er zeker van bent dat dit verwacht wordt (omdat uw organisatie een SSL-beëindigingsproxy gebruikt), slaat u de verificatie van het certificaat over met een registeroverschrijving.
 
-1. Maak de register waarde SkipVerifyingPinnedRootCertificate.
+1. Maak de registerwaarde Voor het verifiëren van vastgedraaide basiscertificaat.
 
     ```powershell
     New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Azure\StorageSync -Name SkipVerifyingPinnedRootCertificate -PropertyType DWORD -Value 1
     ```
 
-2. Start de synchronisatie service op de geregistreerde server opnieuw op.
+2. Start de synchronisatieservice opnieuw op de geregistreerde server.
 
     ```powershell
     Restart-Service -Name FileSyncSvc -Force
@@ -604,152 +604,152 @@ Deze fout kan zich voordoen als uw organisatie een SSL-beëindigingsproxy gebrui
 
 Als u deze registerwaarde instelt, accepteert de Azure File Sync-agent elk lokaal vertrouwd SSL-certificaat tijdens de gegevensoverdracht tussen de server en de cloudservice.
 
-<a id="-2147012894"></a>**Er kan geen verbinding worden gemaakt met de service.**  
+<a id="-2147012894"></a>**Er kon geen verbinding met de service worden gelegd.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80072ee2 |
+| **Hresult** | 0x80072ee2 |
 | **HRESULT (decimaal)** | -2147012894 |
-| **Fout reeks** | WININET_E_TIMEOUT |
+| **Fouttekenreeks** | WININET_E_TIMEOUT |
 | **Herstel vereist** | Ja |
 
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
-<a id="-2134375680"></a>**De synchronisatie is mislukt vanwege een probleem met de verificatie.**  
+<a id="-2134375680"></a>**Synchronisatie is mislukt vanwege een probleem met de verificatie.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c80300 |
+| **Hresult** | 0x80c80300 |
 | **HRESULT (decimaal)** | -2134375680 |
-| **Fout reeks** | ECS_E_SERVER_CREDENTIAL_NEEDED |
+| **Fouttekenreeks** | ECS_E_SERVER_CREDENTIAL_NEEDED |
 | **Herstel vereist** | Ja |
 
-Deze fout wordt meestal veroorzaakt door een onjuiste servertijd. Als de server wordt uitgevoerd op een virtuele machine, controleert u of de tijd op de host juist is.
+Deze fout wordt meestal veroorzaakt door een onjuiste servertijd. Als de server in een virtuele machine wordt uitgevoerd, controleert u of de tijd op de host correct is.
 
-<a id="-2134364040"></a>**De synchronisatie is mislukt vanwege een verlopen certificaat.**  
+<a id="-2134364040"></a>**Synchronisatie is mislukt vanwege het verlopen van het certificaat.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c83078 |
+| **Hresult** | 0x80c83078 |
 | **HRESULT (decimaal)** | -2134364040 |
-| **Fout reeks** | ECS_E_AUTH_SRV_CERT_EXPIRED |
+| **Fouttekenreeks** | ECS_E_AUTH_SRV_CERT_EXPIRED |
 | **Herstel vereist** | Ja |
 
 Deze fout treedt op omdat het certificaat dat wordt gebruikt voor verificatie, is verlopen.
 
 Voer de volgende stappen uit om te controleren of het certificaat is verlopen:  
-1. Open de MMC-module Certificaten, selecteer computer account en navigeer naar certificaten (lokale computer) \Personal\Certificates.
-2. Controleer of het certificaat voor client verificatie is verlopen.
+1. Open de MMC-module Certificaten, selecteer Computeraccount en navigeer naar Certificaten (Lokale computer)\Personal\Certificates.
+2. Controleer of het clientverificatiecertificaat is verlopen.
 
 Als het certificaat voor clientverificatie is verlopen, voert u de volgende stappen uit om het probleem op te lossen:
 
-1. Controleer of de Azure File Sync agent versie 4.0.1.0 of hoger is geïnstalleerd.
-2. Voer de volgende Power shell-opdracht uit op de-server:
+1. Controleer of Azure File Sync agent versie 4.0.1.0 of hoger is geïnstalleerd.
+2. Voer de volgende PowerShell-opdracht uit op de server: 
 
     ```powershell
     Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
 
-<a id="-2134375896"></a>**De synchronisatie is mislukt vanwege een verificatie certificaat dat niet is gevonden.**  
+<a id="-2134375896"></a>**Synchronisatie is mislukt omdat het verificatiecertificaat niet is gevonden.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c80228 |
+| **Hresult** | 0x80c80228 |
 | **HRESULT (decimaal)** | -2134375896 |
-| **Fout reeks** | ECS_E_AUTH_SRV_CERT_NOT_FOUND |
+| **Fouttekenreeks** | ECS_E_AUTH_SRV_CERT_NOT_FOUND |
 | **Herstel vereist** | Ja |
 
 Deze fout treedt op omdat het certificaat dat wordt gebruikt voor verificatie, niet is gevonden.
 
 Gebruik een of meer van de volgende stappen om dit probleem op te lossen:
 
-1. Controleer of de Azure File Sync agent versie 4.0.1.0 of hoger is geïnstalleerd.
-2. Voer de volgende Power shell-opdracht uit op de-server:
+1. Controleer of Azure File Sync agent versie 4.0.1.0 of hoger is geïnstalleerd.
+2. Voer de volgende PowerShell-opdracht uit op de server: 
 
     ```powershell
     Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
 
-<a id="-2134364039"></a>**De synchronisatie is mislukt omdat de verificatie-identiteit niet is gevonden.**  
+<a id="-2134364039"></a>**Synchronisatie is mislukt omdat de verificatie-identiteit niet is gevonden.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c83079 |
+| **Hresult** | 0x80c83079 |
 | **HRESULT (decimaal)** | -2134364039 |
-| **Fout reeks** | ECS_E_AUTH_IDENTITY_NOT_FOUND |
+| **Fouttekenreeks** | ECS_E_AUTH_IDENTITY_NOT_FOUND |
 | **Herstel vereist** | Ja |
 
 Deze fout treedt op omdat het verwijderen van het servereindpunt is mislukt en het eindpunt nu een gedeeltelijk verwijderde status heeft. Probeer het servereindpunt opnieuw te verwijderen om dit probleem op te lossen.
 
-<a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**Het volume waar het server eindpunt zich bevindt, heeft weinig schijf ruimte.**  
+<a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**Het volume waarin het servereindpunt zich bevindt, heeft weinig schijfruimte.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x8e5e0211 |
+| **Hresult** | 0x8e5e0211 |
 | **HRESULT (decimaal)** | -1906441711 |
-| **Fout reeks** | JET_errLogDiskFull |
+| **Fouttekenreeks** | JET_errLogDiskFull |
 | **Herstel vereist** | Ja |
 | | |
-| **HRESULT** | 0x80c8031a |
+| **Hresult** | 0x80c8031a |
 | **HRESULT (decimaal)** | -2134375654 |
-| **Fout reeks** | ECS_E_NOT_ENOUGH_LOCAL_STORAGE |
+| **Fouttekenreeks** | ECS_E_NOT_ENOUGH_LOCAL_STORAGE |
 | **Herstel vereist** | Ja |
 
-Deze fout treedt op omdat het volume vol raakt. Deze fout treedt doorgaans op omdat bestanden buiten het servereindpunt ruimte gebruiken op het volume. Maak ruimte vrij op het volume door extra server eindpunten toe te voegen, bestanden te verplaatsen naar een ander volume of de grootte van het volume te verg Roten waarop het server eindpunt zich bevindt.
+Deze fout treedt op omdat het volume vol raakt. Deze fout treedt doorgaans op omdat bestanden buiten het servereindpunt ruimte gebruiken op het volume. Maak ruimte vrij op het volume door extra servereindpunten toe te voegen, bestanden naar een ander volume te verplaatsen of de grootte van het volume waarop het servereindpunt is ingeschakeld te vergroten.
 
-<a id="-2134364145"></a><a id="replica-not-ready"></a>**De service is nog niet gereed om te synchroniseren met dit server eindpunt.**  
+<a id="-2134364145"></a><a id="replica-not-ready"></a>**De service is nog niet klaar om te synchroniseren met dit servereindpunt.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8300f |
+| **Hresult** | 0x80c8300f |
 | **HRESULT (decimaal)** | -2134364145 |
-| **Fout reeks** | ECS_E_REPLICA_NOT_READY |
+| **Fouttekenreeks** | ECS_E_REPLICA_NOT_READY |
 | **Herstel vereist** | Nee |
 
-Deze fout treedt op omdat het Cloud eindpunt is gemaakt met inhoud die al aanwezig is op de Azure-bestands share. Azure File Sync moet de Azure-bestands share voor alle inhoud scannen voordat de initiële synchronisatie van het server eindpunt kan worden voortgezet.
+Deze fout treedt op omdat het eindpunt van de cloud is gemaakt met inhoud die al bestaat in het Azure-bestandsshare. Azure File Sync moet de Azure-bestandsshare scannen voor alle inhoud voordat het servereindpunt doorkan gaan met de eerste synchronisatie.
 
-<a id="-2134375877"></a><a id="-2134375908"></a><a id="-2134375853"></a>**De synchronisatie is mislukt vanwege problemen met een groot aantal afzonderlijke bestanden.**  
+<a id="-2134375877"></a><a id="-2134375908"></a><a id="-2134375853"></a>**Synchronisatie is mislukt vanwege problemen met veel afzonderlijke bestanden.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8023b |
+| **Hresult** | 0x80c8023b |
 | **HRESULT (decimaal)** | -2134375877 |
-| **Fout reeks** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
+| **Fouttekenreeks** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
 | **Herstel vereist** | Ja |
 | | |
-| **HRESULT** | 0x80c8021c |
+| **Hresult** | 0x80c8021c |
 | **HRESULT (decimaal)** | -2134375908 |
-| **Fout reeks** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
+| **Fouttekenreeks** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
 | **Herstel vereist** | Ja |
 | | |
-| **HRESULT** | 0x80c80253 |
+| **Hresult** | 0x80c80253 |
 | **HRESULT (decimaal)** | -2134375853 |
-| **Fout reeks** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
+| **Fouttekenreeks** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **Herstel vereist** | Ja |
 
-Als er veel per bestands synchronisatie fouten zijn, kunnen synchronisatie sessies mislukken. <!-- To troubleshoot this state, see [Troubleshooting per file/directory sync errors]().-->
+In gevallen waarin er veel synchronisatiefouten per bestand zijn, kunnen synchronisatiesessies beginnen te mislukken. <!-- To troubleshoot this state, see [Troubleshooting per file/directory sync errors]().-->
 
 > [!NOTE]
-> Azure File Sync maakt een tijdelijke VSS-moment opname eenmaal per dag op de server om bestanden met geopende ingangen te synchroniseren.
+> Azure File Sync maakt één keer per dag een tijdelijke VSS-momentopname op de server om bestanden met geopende handgrepen te synchroniseren.
 
-<a id="-2134376423"></a>**De synchronisatie is mislukt vanwege een probleem met het pad naar het server eindpunt.**  
+<a id="-2134376423"></a>**Synchronisatie is mislukt vanwege een probleem met het eindpuntpad van de server.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c80019 |
+| **Hresult** | 0x80c80019 |
 | **HRESULT (decimaal)** | -2134376423 |
-| **Fout reeks** | ECS_E_SYNC_INVALID_PATH |
+| **Fouttekenreeks** | ECS_E_SYNC_INVALID_PATH |
 | **Herstel vereist** | Ja |
 
-Zorg ervoor dat het pad bestaat, zich op een lokaal NTFS-volume bevindt en geen reparsepunt of bestaand server eindpunt is.
+Controleer of het pad bestaat, zich op een lokaal NTFS-volume bevindt en geen reparseorepunt of bestaand servereindpunt is.
 
-<a id="-2134375817"></a>**De synchronisatie is mislukt, omdat de versie van het filter stuur programma niet compatibel is met de agent versie**  
+<a id="-2134375817"></a>**Synchronisatie is mislukt omdat de versie van het filterstuurprogramma niet compatibel is met de agentversie**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80C80277 |
+| **Hresult** | 0x80C80277 |
 | **HRESULT (decimaal)** | -2134375817 |
-| **Fout reeks** | ECS_E_INCOMPATIBLE_FILTER_VERSION |
+| **Fouttekenreeks** | ECS_E_INCOMPATIBLE_FILTER_VERSION |
 | **Herstel vereist** | Ja |
 
 Deze fout komt doordat de geladen versie van het filterstuurprogramma voor opslag in cloudlagen (StorageSync.sys) niet compatibel is met de Storage Sync Agent-service (FileSyncSvc). Als de Azure File Sync-agent is bijgewerkt, start u de server opnieuw op om de installatie te voltooien. Als de fout blijft optreden, verwijdert u de agent, start u de server opnieuw op en installeert u de Azure File Sync-agent opnieuw.
@@ -758,143 +758,143 @@ Deze fout komt doordat de geladen versie van het filterstuurprogramma voor opsla
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8004b |
+| **Hresult** | 0x80c8004b |
 | **HRESULT (decimaal)** | -2134376373 |
-| **Fout reeks** | ECS_E_SERVICE_UNAVAILABLE |
+| **Fouttekenreeks** | ECS_E_SERVICE_UNAVAILABLE |
 | **Herstel vereist** | Nee |
 
 Deze fout treedt op omdat de Azure File Sync-service niet beschikbaar is. Deze fout wordt automatisch opgelost wanneer de Azure File Sync-service weer beschikbaar is.
 
-<a id="-2146233088"></a>**De synchronisatie is mislukt vanwege een uitzonde ring.**  
+<a id="-2146233088"></a>**Synchronisatie is mislukt vanwege een uitzondering.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80131500 |
+| **Hresult** | 0x80131500 |
 | **HRESULT (decimaal)** | -2146233088 |
-| **Fout reeks** | COR_E_EXCEPTION |
+| **Fouttekenreeks** | COR_E_EXCEPTION |
 | **Herstel vereist** | Nee |
 
-Deze fout treedt op omdat zich in Sync een uitzondering voordoet. Als de fout gedurende enkele uren blijft bestaan, moet u een ondersteunings aanvraag maken.
+Deze fout treedt op omdat zich in Sync een uitzondering voordoet. Als de fout enkele uren blijft bestaan, maakt u een ondersteuningsverzoek.
 
-<a id="-2134364045"></a>**De synchronisatie is mislukt, omdat er een failover voor het opslag account is uitgevoerd naar een andere regio.**  
+<a id="-2134364045"></a>**Synchronisatie is mislukt omdat het opslagaccount niet is overgegaan naar een andere regio.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c83073 |
+| **Hresult** | 0x80c83073 |
 | **HRESULT (decimaal)** | -2134364045 |
-| **Fout reeks** | ECS_E_STORAGE_ACCOUNT_FAILED_OVER |
+| **Fouttekenreeks** | ECS_E_STORAGE_ACCOUNT_FAILED_OVER |
 | **Herstel vereist** | Ja |
 
 Deze fout treedt op omdat het opslagaccount is overgeschakeld naar een andere regio. Failover-overschakeling van het opslagaccount wordt niet ondersteund in Azure File Sync. Er mag geen failover-overschakeling worden uitgevoerd voor opslagaccounts met Azure-bestandsshares die worden gebruikt als cloudeindpunten in Azure File Sync. Als u dat wel doet, werkt de synchronisatie niet meer en kan dit leiden tot onverwacht gegevensverlies van bestanden in cloudlagen. U kunt dit probleem oplossen door het opslagaccount te verplaatsen naar de primaire regio.
 
-<a id="-2134375922"></a>**De synchronisatie is mislukt vanwege een tijdelijk probleem met de synchronisatie database.**  
+<a id="-2134375922"></a>**Synchronisatie is mislukt vanwege een tijdelijk probleem met de synchronisatiedatabase.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8020e |
+| **Hresult** | 0x80c8020e |
 | **HRESULT (decimaal)** | -2134375922 |
-| **Fout reeks** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
+| **Fouttekenreeks** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
 | **Herstel vereist** | Nee |
 
-Deze fout treedt op vanwege een intern probleem met de synchronisatiedatabase. Deze fout wordt automatisch opgelost bij nieuwe synchronisatiepogingen. Als deze fout gedurende een verlengde periode blijft bestaan, kunt u een ondersteunings aanvraag maken. we nemen contact met u op om dit probleem op te lossen.
+Deze fout treedt op vanwege een intern probleem met de synchronisatiedatabase. Deze fout wordt automatisch opgelost bij nieuwe synchronisatiepogingen. Als deze fout gedurende een langere periode blijft bestaan, maakt u een ondersteuningsverzoek en nemen we contact met u op om u te helpen dit probleem op te lossen.
 
-<a id="-2134364024"></a>**De synchronisatie is mislukt vanwege een wijziging in de Azure Active Directory Tenant**  
+<a id="-2134364024"></a>**Synchronisatie is mislukt als gevolg van wijzigingen in Azure Active Directory-tenant**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c83088 |
+| **Hresult** | 0x80c83088 |
 | **HRESULT (decimaal)** | -2134364024 | 
-| **Fout reeks** | ECS_E_INVALID_AAD_TENANT |
+| **Fouttekenreeks** | ECS_E_INVALID_AAD_TENANT |
 | **Herstel vereist** | Ja |
 
 Deze fout treedt op omdat Azure File Sync op dit moment geen ondersteuning biedt voor het verplaatsen van het abonnement naar een andere Azure Active Directory-tenant.
  
 Kies een of meer van de volgende opties om dit probleem op te lossen:
 
-- **Optie 1 (aanbevolen)** : Verplaats het abonnement terug naar de oorspronkelijke Azure Active Directory Tenant
-- **Optie 2**: de huidige synchronisatie groep verwijderen en opnieuw maken. Als opslag in cloudlagen zijn ingeschakeld op het servereindpunt, verwijdert u de synchronisatiegroep en voert u vervolgens de stappen uit die worden beschreven in de sectie [Opslag in cloudlagen]( https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) om de zwevende bestanden uit de cloudlagen te verwijderen voordat u de synchronisatiegroepen opnieuw maakt. 
+- **Optie 1 (aanbevolen)**: Het abonnement terugverplaatsen naar de oorspronkelijke Azure Active Directory-tenant
+- **Optie 2**: De huidige synchronisatiegroep verwijderen en opnieuw maken. Als opslag in cloudlagen zijn ingeschakeld op het servereindpunt, verwijdert u de synchronisatiegroep en voert u vervolgens de stappen uit die worden beschreven in de sectie [Opslag in cloudlagen]( https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) om de zwevende bestanden uit de cloudlagen te verwijderen voordat u de synchronisatiegroepen opnieuw maakt. 
 
-<a id="-2134364010"></a>**De synchronisatie is mislukt omdat de firewall en de uitzonde ring voor het virtuele netwerk niet zijn geconfigureerd**  
+<a id="-2134364010"></a>**Synchronisatie is mislukt omdat firewall- en virtuele netwerkuitzondering niet is geconfigureerd**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c83096 |
+| **Hresult** | 0x80c83096 |
 | **HRESULT (decimaal)** | -2134364010 | 
-| **Fout reeks** | ECS_E_MGMT_STORAGEACLSBYPASSNOTSET |
+| **Fouttekenreeks** | ECS_E_MGMT_STORAGEACLSBYPASSNOTSET |
 | **Herstel vereist** | Ja |
 
-Deze fout treedt op als de instellingen voor de firewall en het virtuele netwerk zijn ingeschakeld voor het opslag account en de uitzonde ring ' vertrouwde micro soft-Services voor toegang tot dit opslag account toestaan ' niet is ingeschakeld. U kunt dit probleem oplossen door de stappen te volgen die worden beschreven in de sectie [Instellingen voor de firewall en het virtuele netwerk configureren](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) in de implementatiehandleiding.
+Deze fout treedt op als de firewall- en virtuele netwerkinstellingen zijn ingeschakeld op het opslagaccount en de uitzondering 'Vertrouwde Microsoft-services toestaan toegang te krijgen tot dit opslagaccount' niet is ingeschakeld. U kunt dit probleem oplossen door de stappen te volgen die worden beschreven in de sectie [Instellingen voor de firewall en het virtuele netwerk configureren](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) in de implementatiehandleiding.
 
-<a id="-2147024891"></a>**De synchronisatie is mislukt, omdat de machtigingen voor de map System Volume Information onjuist zijn.**  
+<a id="-2147024891"></a>**Synchronisatie is mislukt omdat machtigingen voor de map Systeemvolumegegevens onjuist zijn.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80070005 |
+| **Hresult** | 0x80070005 |
 | **HRESULT (decimaal)** | -2147024891 |
-| **Fout reeks** | ERROR_ACCESS_DENIED |
+| **Fouttekenreeks** | ERROR_ACCESS_DENIED |
 | **Herstel vereist** | Ja |
 
-Deze fout kan optreden als het NT AUTHORITY\SYSTEM-account geen machtigingen heeft voor de map System Volume Information op het volume waar het servereindpunt zich bevindt. Als afzonderlijke bestanden niet kunnen worden gesynchroniseerd met ERROR_ACCESS_DENIED, voert u de stappen uit die worden beschreven in de sectie [problemen oplossen per bestand/directory-synchronisatie fouten](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshooting-per-filedirectory-sync-errors) .
+Deze fout kan optreden als het NT AUTHORITY\SYSTEM-account geen machtigingen heeft voor de map System Volume Information op het volume waar het servereindpunt zich bevindt. Houd er rekening mee dat als afzonderlijke bestanden niet worden gesynchroniseerd met ERROR_ACCESS_DENIED, de stappen uitvoert die zijn gedocumenteerd in de sectie [Probleemoplossing per bestand/mapsynchronisatiefouten.](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshooting-per-filedirectory-sync-errors)
 
 Gebruik een of meer van de volgende stappen om dit probleem op te lossen:
 
 1. Download het hulpprogramma [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec).
-2. Voer de volgende opdracht uit vanaf een opdracht prompt met verhoogde bevoegdheid om een opdracht prompt te starten met het systeem account: **PsExec. exe-i-s-d cmd** 
+2. Voer de volgende opdracht uit een opdrachtprompt met verhoogde bevoegdheid om een opdrachtprompt te starten met het systeemaccount: **PsExec.exe -i -s -d cmd** 
 3. Voer de volgende opdracht uit vanaf de opdrachtprompt die wordt uitgevoerd met het systeemaccount om te controleren of het NT AUTHORITY\SYSTEM-account geen toegang heeft tot de map System Volume Information: **cacls "stationsletter:\system volume information" /T /C**
 4. Als het NT AUTHORITY\SYSTEM-account geen toegang heeft tot de map System Volume Information, voert u de volgende opdracht uit: **cacls "stationsletter:\system volume information" /T /E /G "NT AUTHORITY\SYSTEM: F"**
     - Als stap 4 mislukt omdat de toegang wordt geweigerd, voert u de volgende opdracht uit om eigenaar van de map System Volume Information te worden en herhaalt u vervolgens stap 4: **takeown /A /R /F "stationsletter:\System Volume Information"**
 
-<a id="-2134375810"></a>**De synchronisatie is mislukt, omdat de Azure-bestands share is verwijderd en opnieuw is gemaakt.**  
+<a id="-2134375810"></a>**Synchronisatie is mislukt omdat de Azure-bestandsshare is verwijderd en opnieuw is gemaakt.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8027e |
+| **Hresult** | 0x80c8027e |
 | **HRESULT (decimaal)** | -2134375810 |
-| **Fout reeks** | ECS_E_SYNC_REPLICA_ROOT_CHANGED |
+| **Fouttekenreeks** | ECS_E_SYNC_REPLICA_ROOT_CHANGED |
 | **Herstel vereist** | Ja |
 
 Deze fout treedt op omdat Azure File Sync geen ondersteuning biedt voor het verwijderen en opnieuw maken van een Azure-bestandsshare in dezelfde synchronisatiegroep. 
 
 U kunt dit probleem oplossen door de synchronisatiegroep te verwijderen en opnieuw te maken door de volgende stappen uit te voeren:
 
-1. Verwijder alle server eindpunten in de synchronisatie groep.
-2. Verwijder het Cloud eindpunt. 
-3. De synchronisatie groep verwijderen.
-4. Als Cloud lagen zijn ingeschakeld op een server eindpunt, verwijdert u de zwevende gelaagde bestanden op de server door de stappen uit te voeren die worden beschreven in de [gelaagde bestanden niet toegankelijk zijn op de server na het verwijderen van een server eindpunt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) sectie.
-5. Maak de synchronisatie groep opnieuw.
+1. Verwijder alle servereindpunten in de synchronisatiegroep.
+2. Verwijder het eindpunt van de cloud. 
+3. Verwijder de synchronisatiegroep.
+4. Als cloudtiering is ingeschakeld op een servereindpunt, verwijdert u de zwevende gelaagde bestanden op de server door de stappen uit te voeren die zijn gedocumenteerd in de [gelaagde bestanden, niet toegankelijk op de server nadat een servereindpuntsectie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) is verwijderd.
+5. Maak de synchronisatiegroep opnieuw.
 
-<a id="-2145844941"></a>**De synchronisatie is mislukt, omdat de HTTP-aanvraag is omgeleid**  
+<a id="-2145844941"></a>**Synchronisatie is mislukt omdat de HTTP-aanvraag is omgeleid**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80190133 |
+| **Hresult** | 0x80190133 |
 | **HRESULT (decimaal)** | -2145844941 |
-| **Fout reeks** | HTTP_E_STATUS_REDIRECT_KEEP_VERB |
+| **Fouttekenreeks** | HTTP_E_STATUS_REDIRECT_KEEP_VERB |
 | **Herstel vereist** | Ja |
 
-Deze fout treedt op omdat Azure File Sync geen ondersteuning biedt voor HTTP-omleiding (statuscode 3xx). Schakel HTTP-omleiding uit op de proxyserver of het netwerkapparaat om dit probleem op te lossen.
+Deze fout treedt op omdat Azure File Sync geen http-omleiding (3xx-statuscode) ondersteunt. Als u dit probleem wilt oplossen, schakelt u HTTP-omleiding uit op uw proxyserver of netwerkapparaat.
 
-<a id="-2134364027"></a>**Er is een time-out opgetreden tijdens de offline gegevens overdracht, maar deze wordt nog uitgevoerd.**  
+<a id="-2134364027"></a>**Er is een time-out opgetreden tijdens offline gegevensoverdracht, maar deze is nog in volle gang.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c83085 |
+| **Hresult** | 0x80c83085 |
 | **HRESULT (decimaal)** | -2134364027 |
-| **Fout reeks** | ECS_E_DATA_INGESTION_WAIT_TIMEOUT |
+| **Fouttekenreeks** | ECS_E_DATA_INGESTION_WAIT_TIMEOUT |
 | **Herstel vereist** | Nee |
 
-Deze fout treedt op wanneer een gegevensopnamebewerking de time-out overschrijdt. Deze fout kan worden genegeerd als voortgang van de synchronisatie plaatsvindt (AppliedItemCount is groter dan 0). Zie [Hoe kan ik de voortgang van een huidige synchronisatie sessie controleren?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
+Deze fout treedt op wanneer een gegevensopnamebewerking de time-out overschrijdt. Deze fout kan worden genegeerd als de synchronisatie vooruitgang boekt (AppliedItemCount is groter dan 0). Zie [Hoe kan ik de voortgang van een huidige synchronisatiesessie controleren?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
-### <a name="common-troubleshooting-steps"></a>Veelvoorkomende stappen voor probleem oplossing
-<a id="troubleshoot-storage-account"></a>**Controleer of het opslag account bestaat.**  
+### <a name="common-troubleshooting-steps"></a>Algemene stappen voor het oplossen van problemen
+<a id="troubleshoot-storage-account"></a>**Controleer of het opslagaccount bestaat.**  
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. Ga naar de synchronisatie groep binnen de opslag synchronisatie service.
-2. Selecteer het eind punt van de cloud in de synchronisatie groep.
-3. Noteer de naam van de Azure-bestands share in het geopende deel venster.
-4. Selecteer het gekoppelde opslagaccount. Als deze koppeling mislukt, is het opslag account waarnaar wordt verwezen, verwijderd.
-    ![een scherm opname met het detail venster van het Cloud eindpunt met een koppeling naar het opslag account.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
+1. Navigeer naar de synchronisatiegroep binnen de Opslagsynchronisatieservice.
+2. Selecteer het eindpunt van de cloud in de synchronisatiegroep.
+3. Let op de naam azure-bestandsshare in het geopende deelvenster.
+4. Selecteer het gekoppelde opslagaccount. Als deze koppeling mislukt, is het opslagaccount waarnaar wordt verwezen verwijderd.
+    ![Een schermafbeelding van het detailvenster voor eindpunt in de cloud met een koppeling naar het opslagaccount.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 ```powershell
 # Variables for you to populate based on your configuration
 $region = "<Az_Region>"
@@ -969,13 +969,13 @@ if ($storageAccount -eq $null) {
 ```
 ---
 
-<a id="troubleshoot-azure-file-share"></a>**Zorg ervoor dat de Azure-bestands share bestaat.**  
+<a id="troubleshoot-azure-file-share"></a>**Controleer of de Azure-bestandsshare bestaat.**  
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. Klik op **overzicht** in de linkerkolom met inhoud om terug te keren naar de pagina voor het hoofd-opslag account.
-2. Selecteer **bestanden** om de lijst met bestands shares weer te geven.
-3. Controleer of de bestands share waarnaar wordt verwezen door het Cloud-eind punt wordt weer gegeven in de lijst met bestands shares (u hebt dit in stap 1 hierboven vermeld).
+1. Klik op **Overzicht** op de inhoudsopgave aan de linkerkant om terug te keren naar de pagina met hoofdopslagaccount.
+2. Selecteer **Bestanden** om de lijst met bestandsshares weer te geven.
+3. Controleer of het bestandsaandeel waarnaar wordt verwezen door het cloudeindpunt wordt weergegeven in de lijst met bestandsshares (u had dit in stap 1 hierboven moeten noteren).
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 ```powershell
 $fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.AzureFileShareName -and
@@ -988,23 +988,23 @@ if ($fileShare -eq $null) {
 ```
 ---
 
-<a id="troubleshoot-rbac"></a>**Zorg ervoor dat Azure File Sync toegang heeft tot het opslag account.**  
+<a id="troubleshoot-rbac"></a>**Controleer of Azure File Sync toegang heeft tot het opslagaccount.**  
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. Klik op **toegangs beheer (IAM)** in de linker inhouds opgave.
-1. Klik op **het tabblad roltoewijzingen** aan de lijst met gebruikers en toepassingen (*service-principals*) die toegang hebben tot uw opslag account.
-1. Controleer of **Hybrid File Sync Service** wordt weer gegeven in de lijst met de rol **lezer en gegevens toegang** . 
+1. Klik op **Toegangsbeheer (IAM)** op de inhoudsopgave aan de linkerkant.
+1. Klik op het tabblad **Toewijzingen van rollen** om de lijst de gebruikers en toepassingen *(serviceprincipals)* die toegang hebben tot uw opslagaccount.
+1. Controleer **microsoft.storageSync** of **Hybrid File Sync Service** (oude toepassingsnaam) wordt weergegeven in de lijst met de rol Reader en Data **Access.** 
 
-    ![Een scherm afbeelding van de Service-Principal Hybrid File Sync Service op het tabblad toegangs beheer van het opslag account](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
+    ![Een schermafbeelding van de principal van de Hybrid File Sync Service-service op het tabblad toegangsbeheer van het opslagaccount](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 
-    Als **Hybride File Sync-service** niet wordt weergegeven in de lijst, voert u de volgende stappen uit:
+    Als **Microsoft.StorageSync** of **Hybrid File Sync Service** niet in de lijst wordt weergegeven, voert u de volgende stappen uit:
 
-    - Klik op **Toevoegen**.
-    - Selecteer in het veld **rol** de optie **lezer en gegevens toegang**.
-    - In het veld **selecteren** typt u **Hybrid File Sync Service**, selecteert u de rol en klikt u op **Opslaan**.
+    - Klik op**toevoegen**.
+    - Selecteer **in** het veld Rol de optie **Reader en Data Access**.
+    - Typ **microsoft.storagesync**in het veld **Selecteren,** selecteer de rol en klik op **Opslaan**.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 ```powershell    
-$role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Hybrid File Sync Service" }
+$role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Microsoft.StorageSync" }
 
 if ($role -eq $null) {
     throw [System.Exception]::new("The storage account does not have the Azure File Sync " + `
@@ -1014,139 +1014,139 @@ if ($role -eq $null) {
 ```
 ---
 
-### <a name="how-do-i-prevent-users-from-creating-files-containing-unsupported-characters-on-the-server"></a>Hoe kan ik voor komen dat gebruikers bestanden met niet-ondersteunde tekens op de server maken?
-U kunt bestands [Server bron beheer (FSRM)-bestands controles](https://docs.microsoft.com/windows-server/storage/fsrm/file-screening-management) gebruiken om bestanden te blok keren waarbij niet-ondersteunde tekens in hun namen worden gemaakt op de server. Mogelijk moet u dit doen met behulp van Power shell als het meren deel van de niet-ondersteunde tekens niet kan worden afgedrukt en dus moet u de hexadecimale weer gaven als tekens eerst converteren.
+### <a name="how-do-i-prevent-users-from-creating-files-containing-unsupported-characters-on-the-server"></a>Hoe voorkom ik dat gebruikers bestanden maken die niet-ondersteunde tekens op de server bevatten?
+U [FSRM-bestandsschermen (File Server Resource Manager)](https://docs.microsoft.com/windows-server/storage/fsrm/file-screening-management) gebruiken om te voorkomen dat bestanden met niet-ondersteunde tekens in hun naam op de server worden gemaakt. Het kan zijn dat u dit moet doen met PowerShell, omdat de meeste niet-ondersteunde tekens niet afdrukbaar zijn en u hun hexadecimale weergaven eerst als tekens moet casten.
 
-Maak eerst een bestands groep FSRM met de [cmdlet New-FsrmFileGroup](https://docs.microsoft.com/powershell/module/fileserverresourcemanager/new-fsrmfilegroup). In dit voor beeld wordt de groep zodanig gedefinieerd dat deze slechts twee van de niet-ondersteunde tekens bevat, maar u kunt zo veel van de tekens opnemen die nodig zijn in uw bestands groep.
+Maak eerst een FSRM-bestandsgroep met de [cmdlet Nieuw-FsrmFileGroup](https://docs.microsoft.com/powershell/module/fileserverresourcemanager/new-fsrmfilegroup). In dit voorbeeld wordt de groep gedefinieerd als slechts twee van de niet-ondersteunde tekens, maar u zoveel tekens opnemen als nodig is in uw bestandsgroep.
 
 ```powershell
 New-FsrmFileGroup -Name "Unsupported characters" -IncludePattern @(("*"+[char]0x00000090+"*"),("*"+[char]0x0000008F+"*"))
 ```
 
-Wanneer u een FSRM-bestands groep hebt gedefinieerd, kunt u een FSRM-bestands scherm maken met de cmdlet New-FsrmFileScreen.
+Zodra u een FSRM-bestandsgroep hebt gedefinieerd, u een FSRM-bestandsscherm maken met de cmdlet Nieuw-FsrmFileScreen.
 
 ```powershell
 New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported characters" -IncludeGroup "Unsupported characters"
 ```
 
 > [!Important]  
-> Houd er rekening mee dat bestands controles alleen kunnen worden gebruikt om het maken van tekens te blok keren die niet door Azure File Sync worden ondersteund. Als bestands controles in andere scenario's worden gebruikt, probeert synchronisatie voortdurend de bestanden te downloaden van de Azure-bestands share naar de server en wordt deze geblokkeerd als gevolg van de bestands controle, wat resulteert in hoge gegevens uitvoer. 
+> Houd er rekening mee dat bestandsschermen alleen mogen worden gebruikt om het maken van tekens te blokkeren die niet worden ondersteund door Azure File Sync. Als bestandsschermen in andere scenario's worden gebruikt, wordt er voortdurend geprobeerd om de bestanden van het Azure-bestandsaandeel naar de server te downloaden en wordt deze geblokkeerd vanwege het bestandsscherm, wat resulteert in een hoge gegevensuitgang. 
 
 ## <a name="cloud-tiering"></a>Cloudopslaglagen 
-Er zijn twee paden voor fouten in Cloud lagen:
+Er zijn twee paden voor fouten in cloudlagen:
 
-- Bestanden kunnen niet op de juiste manier worden gelaagd. Dit betekent dat Azure File Sync geen geslaagde poging om een bestand te tierren naar Azure Files.
-- Bestanden kunnen niet worden ingetrokken. Dit betekent dat de Azure File Sync bestandssysteem filter (StorageSync. sys) geen gegevens kan downloaden wanneer een gebruiker toegang probeert te krijgen tot een bestand dat is gelaagd.
+- Bestanden kunnen niet laag, wat betekent dat Azure File Sync tevergeefs pogingen om een bestand tier naar Azure Files.
+- Bestanden kunnen zich niet terugroepen, wat betekent dat het azure file sync-bestandssysteemfilter (StorageSync.sys) geen gegevens downloadt wanneer een gebruiker toegang probeert te krijgen tot een bestand dat is gelaagd.
 
-Er zijn twee hoofd klassen van fouten die kunnen optreden via een fout-pad:
+Er zijn twee hoofdklassen van storingen die kunnen gebeuren via een van beide mislukkingpad:
 
-- Fouten in de Cloud opslag
-    - *Problemen met de beschik baarheid van tijdelijke opslag Services*. Zie voor meer informatie de [Service Level Agreement (Sla) voor Azure Storage](https://azure.microsoft.com/support/legal/sla/storage/v1_2/).
-    - De *Azure-bestands share*is niet toegankelijk. Deze fout treedt doorgaans op wanneer u de Azure-bestands share verwijdert wanneer deze nog steeds een Cloud-eind punt in een synchronisatie groep is.
-    - Het *opslag account*is niet toegankelijk. Deze fout treedt doorgaans op wanneer u het opslag account verwijdert terwijl het nog een Azure-bestands share is die een Cloud-eind punt in een synchronisatie groep is. 
-- Server fouten 
-  - *Azure file sync bestandssysteem filter (StorageSync. sys) is niet geladen*. Als u wilt reageren op aanvragen voor lagen/terughalen, moet het Azure File Sync bestandssysteem filter worden geladen. Het filter dat niet wordt geladen, kan om verschillende redenen plaatsvinden, maar de meest voorkomende reden is dat een beheerder deze hand matig heeft verwijderd. Het Azure File Sync-bestandssysteem filter moet altijd worden geladen om Azure File Sync goed te kunnen functioneren.
-  - *Ontbrekend, beschadigd of anderszins gebroken reparsepunt*. Een reparsepunt is een speciale gegevens structuur voor een bestand dat bestaat uit twee delen:
-    1. Een reparse-code, die het besturings systeem aangeeft dat het Azure File Sync bestandssysteem filter (StorageSync. sys) een bepaalde actie moet uitvoeren op IO naar het bestand. 
-    2. Reparsegegevens, waarmee wordt aangegeven dat het bestandssysteem de URI van het bestand op het gekoppelde cloud eindpunt (de Azure-bestands share) wordt gefilterd. 
+- Fouten in cloudopslag
+    - *Problemen met de beschikbaarheid van tijdelijke opslagservice*. Zie de SLA [(Service Level Agreement) voor Azure Storage voor](https://azure.microsoft.com/support/legal/sla/storage/v1_2/)meer informatie.
+    - *Ontoegankelijke Azure-bestandsshare*. Deze fout treedt meestal op wanneer u de Azure-bestandsshare verwijdert wanneer het nog steeds een eindpunt in de cloud in een synchronisatiegroep is.
+    - *Ontoegankelijk opslagaccount*. Deze fout treedt meestal op wanneer u het opslagaccount verwijdert terwijl het nog steeds een Azure-bestandsshare heeft, een eindpunt in de cloud in een synchronisatiegroep. 
+- Serverfouten 
+  - *Azure File Sync-bestandssysteemfilter (StorageSync.sys) wordt niet geladen.* Om te reageren op tiering/recall-aanvragen, moet het filter azure file sync-bestandssysteem worden geladen. Het filter dat niet wordt geladen, kan om verschillende redenen gebeuren, maar de meest voorkomende reden is dat een beheerder het handmatig heeft gelost. Het filter azure file sync-bestandssysteem moet te allen tijde worden geladen om Azure File Sync naar behoren te laten functioneren.
+  - *Ontbrekende, corrupte, of anderszins gebroken reparse punt*. Een reparsepunt is een speciale gegevensstructuur op een bestand dat uit twee delen bestaat:
+    1. Een reparsetag, die aan het besturingssysteem aangeeft dat het Azure File Sync-bestandssysteemfilter (StorageSync.sys) mogelijk enige actie op IO aan het bestand moet uitvoeren. 
+    2. Reparse gegevens, die aan het bestandssysteem de URI van het bestand op het bijbehorende cloudeindpunt (het Azure-bestandsaandeel) filteren. 
         
-       De meest voorkomende manier waarop een reparsepunt beschadigd kan raken, is als een beheerder de tag of de gegevens ervan probeert te wijzigen. 
-  - *Problemen met de netwerk verbinding*. Als u een bestand wilt ordenen of intrekken, moet de server verbinding hebben met internet.
+       De meest voorkomende manier waarop een reparse punt beschadigd kan raken, is als een beheerder probeert de tag of de gegevens ervan te wijzigen. 
+  - *Problemen met de netwerkconnectiviteit*. Om een bestand te kunnen tieren of terug te roepen, moet de server een internetverbinding hebben.
 
-De volgende secties geven informatie over het oplossen van problemen met Cloud lagen en bepalen of een probleem een probleem met de Cloud opslag of een server probleem is.
+In de volgende secties wordt aangegeven hoe u problemen met cloudlagen oplossen en u bepalen of een probleem een probleem is met de cloudopslag of een serverprobleem.
 
-### <a name="how-to-monitor-tiering-activity-on-a-server"></a>De activiteit voor het bijhouden van lagen op een server bewaken  
-Gebruik gebeurtenis-ID 9003, 9016 en 9029 in het telemetrie-gebeurtenis logboek (bevindt zich onder toepassingen en Services\Microsoft\FileSync\Agent in Logboeken) om de activiteit voor het bijhouden van lagen op een server te bewaken.
+### <a name="how-to-monitor-tiering-activity-on-a-server"></a>Activiteit van opslaglagen op een server bewaken  
+Als u de gelaagdheidsactiviteit op een server wilt controleren, gebruikt u gebeurtenis-id 9003, 9016 en 9029 in het gebeurtenislogboek Telemetrie (bevindt zich onder Toepassingen en Services\Microsoft\FileSync\Agent in logboeken).
 
-- Gebeurtenis-ID 9003 biedt fout distributie voor een server eindpunt. Bijvoorbeeld totaal aantal fouten, error code, enzovoort. Opmerking: er wordt één gebeurtenis geregistreerd per fout code.
-- Gebeurtenis-ID 9016 bevat spook resultaten voor een volume. Bijvoorbeeld: percentage vrije ruimte is het aantal bestanden dat is gedupliceerd in de sessie, het aantal bestanden dat niet kan worden Ghost, enzovoort.
-- Gebeurtenis-ID 9029 bevat informatie over ghost-sessies voor een server eindpunt. Bijvoorbeeld het aantal bestanden dat is geprobeerd in de sessie, het aantal bestanden dat is gelaagd in de sessie, het aantal bestanden dat al is gelaagd, enzovoort.
+- Gebeurtenis-id 9003 biedt foutdistributie voor een servereindpunt. Bijvoorbeeld total error count, errorCode, etc. Let op, één gebeurtenis wordt per foutcode geregistreerd.
+- Gebeurtenis-ID 9016 biedt ghosting resultaten voor een volume. Bijvoorbeeld, Vrije ruimte procent is, Aantal bestanden ghosted in sessie, Aantal bestanden niet ghost, enz.
+- Gebeurtenis-ID 9029 biedt informatie over ghosting-sessies voor een servereindpunt. Bijvoorbeeld, Aantal bestanden geprobeerd in de sessie, Aantal bestanden gelaagd in de sessie, Aantal bestanden al gelaagd, enz.
 
-### <a name="how-to-monitor-recall-activity-on-a-server"></a>Inhaal activiteiten bewaken op een server
-Gebruik gebeurtenis-ID 9005, 9006, 9009 en 9059 in het telemetrie-gebeurtenis logboek (onder toepassingen en Services\Microsoft\FileSync\Agent in Logboeken) voor het bewaken van inhaal activiteiten op een server.
+### <a name="how-to-monitor-recall-activity-on-a-server"></a>Terughaalactiviteit op een server bewaken
+Als u de terugroepactiviteit op een server wilt controleren, gebruikt u gebeurtenis-id 9005, 9006, 9009 en 9059 in het gebeurtenislogboek Telemetrie (bevindt zich onder Toepassingen en Services\Microsoft\FileSync\Agent in Logboeken).
 
-- Gebeurtenis-ID 9005 biedt betrouw baarheid van een server eindpunt. Bijvoorbeeld: totale aantal geopende bestanden, unieke bestanden met mislukte toegang, enzovoort.
-- Gebeurtenis-ID 9006 biedt fout bij het intrekken van fouten voor een server eindpunt. Bijvoorbeeld totaal aantal mislukte aanvragen, error code, enzovoort. Opmerking: er wordt één gebeurtenis geregistreerd per fout code.
-- Gebeurtenis-ID 9009 biedt informatie over het intrekken van sessies voor een server eindpunt. Bijvoorbeeld, DurationSeconds, CountFilesRecallSucceeded, CountFilesRecallFailed, etc.
-- Met gebeurtenis-ID 9059 kan de toepassing worden gedistribueerd voor een server eindpunt. Bijvoorbeeld ShareId, toepassings naam en TotalEgressNetworkBytes.
+- Gebeurtenis-ID 9005 biedt de betrouwbaarheid van een server voor een servereindpunt. Bijvoorbeeld, Total unieke bestanden geopend, Totaal unieke bestanden met mislukte toegang, enz.
+- Gebeurtenis-id 9006 biedt de distributie van terugroepfouten voor een servereindpunt. Bijvoorbeeld total failed requests, errorCode, etc. Let op, één gebeurtenis wordt per foutcode geregistreerd.
+- Gebeurtenis-ID 9009 biedt informatie over terugroepsessies voor een servereindpunt. Bijvoorbeeld, DurationSeconds, CountFilesRecallSucceeded, CountFilesRecallFailed, enz.
+- Gebeurtenis-id 9059 biedt de distributie van toepassingsterugroepinformatie voor een servereindpunt. Bijvoorbeeld ShareId, Toepassingsnaam en TotalEgressNetworkBytes.
 
-### <a name="how-to-troubleshoot-files-that-fail-to-tier"></a>Problemen oplossen met bestanden die niet kunnen worden getierd
-Als bestanden niet naar Azure Files kunnen worden gelaagd:
+### <a name="how-to-troubleshoot-files-that-fail-to-tier"></a>Bestanden oplossen die niet op de laag komen
+Als bestanden niet worden geklasseerd naar Azure-bestanden:
 
-1. Bekijk in Logboeken de telemetrie-, operationele en diagnostische gebeurtenis logboeken, die zich bevinden onder toepassingen en Services\Microsoft\FileSync\Agent. 
-   1. Controleer of de bestanden aanwezig zijn in de Azure-bestands share.
+1. Controleer in Logboeken de telemetrie-, operationele en diagnostische gebeurtenislogboeken die zich onder Toepassingen en Services\Microsoft\FileSync\Agent bevinden. 
+   1. Controleer of de bestanden in de Azure-bestandsshare bestaan.
 
       > [!NOTE]
-      > Een bestand moet worden gesynchroniseerd met een Azure-bestands share voordat het kan worden getierd.
+      > Een bestand moet worden gesynchroniseerd met een Azure-bestandsshare voordat het kan worden gelaagd.
 
-   2. Controleer of de server verbinding met internet heeft. 
-   3. Controleer of de Azure File Sync-filter Stuur programma's (StorageSync. sys en StorageSyncGuard. sys) worden uitgevoerd:
-       - Voer `fltmc`uit vanaf een opdracht prompt met verhoogde bevoegdheid. Controleer of de bestandssysteem filter Stuur Programma's StorageSync. sys en StorageSyncGuard. sys worden weer gegeven.
-
-> [!NOTE]
-> Gebeurtenis-ID 9003 wordt eenmaal per uur vastgelegd in het logboek voor telemetrie als een bestand niet kan worden gelaagd (één gebeurtenis wordt per fout code geregistreerd). Controleer de sectie [fouten in lagen en herstel](#tiering-errors-and-remediation) om te zien of er herstels tappen voor de fout code worden weer gegeven.
-
-### <a name="tiering-errors-and-remediation"></a>Fouten in lagen en herstel
-
-| HRESULT | HRESULT (decimaal) | Fouttekenreeks | Probleem | Herstel |
-|---------|-------------------|--------------|-------|-------------|
-| 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | Het bestand kan niet worden getierd omdat het in gebruik is. | U hoeft geen actie te ondernemen. Het bestand wordt getierd wanneer het niet meer wordt gebruikt. |
-| 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | Het bestand kan niet worden getierd omdat het is uitgesloten door de synchronisatie. | U hoeft geen actie te ondernemen. Bestanden in de uitsluitingslijst van Sync kunnen niet worden getierd. |
-| 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | Het bestand kan niet worden getierd omdat het niet is gevonden op de server. | U hoeft geen actie te ondernemen. Als de fout zich blijft voordoen, controleert u of het bestand bestaat op de server. |
-| 0x80c83053 | -2134364077 | ECS_E_CREATE_SV_FILE_DELETED | Het bestand kan niet worden getierd omdat het is verwijderd in de Azure-bestands share. | U hoeft geen actie te ondernemen. Het bestand moet worden verwijderd op de server wanneer de volgende synchronisatiesessie voor downloaden wordt uitgevoerd. |
-| 0x80c8600e | -2134351858 | ECS_E_AZURE_SERVER_BUSY | Het bestand kan niet worden gelaagd vanwege een probleem met het netwerk. | U hoeft geen actie te ondernemen. Als de fout blijft optreden, controleer dan de netwerkverbinding met de Azure-bestandsshare. |
-| 0x80072EE7 | -2147012889 | WININET_E_NAME_NOT_RESOLVED | Het bestand kan niet worden gelaagd vanwege een probleem met het netwerk. | U hoeft geen actie te ondernemen. Als de fout blijft optreden, controleer dan de netwerkverbinding met de Azure-bestandsshare. |
-| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Het bestand kan niet worden gelaagd vanwege een fout bij het weigeren van de toegang. Deze fout kan optreden als het bestand zich bevindt in een gerepliceerde map met het kenmerk alleen-lezen van DFS-R. | Azure Files Sync biedt geen ondersteuning voor servereindpunten in DFS-R-replicatiemappen met het kenmerk Alleen-lezen. Zie de [plannings handleiding](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) voor meer informatie. |
-| 0x80072efe | -2147012866 | WININET_E_CONNECTION_ABORTED | Het bestand kan niet worden gelaagd vanwege een probleem met het netwerk. | U hoeft geen actie te ondernemen. Als de fout blijft optreden, controleer dan de netwerkverbinding met de Azure-bestandsshare. |
-| 0x80c80261 | -2134375839 | ECS_E_GHOSTING_MIN_FILE_SIZE | Het bestand kan niet worden getierd omdat de bestands grootte kleiner is dan de ondersteunde grootte. | Als de versie van de agent lager is dan 9.0, is de minimale ondersteunde bestandsgrootte 64 kB. Als de versie van de agent 9.0 of hoger is, is de minimale ondersteunde bestandsgrootte gebaseerd op de clustergrootte van het bestandssysteem (twee keer de clustergrootte van het bestandssysteem). Als de cluster grootte van het bestands systeem bijvoorbeeld 4kb is, is de minimale bestands grootte 8 KB. |
-| 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | Het bestand kan niet worden gelaagd vanwege een probleem met Azure Storage. | Als de fout zich blijft voordoen, opent u een ondersteunings aanvraag. |
-| 0x800703e3 | -2147023901 | ERROR_OPERATION_ABORTED | Het bestand kan niet worden getierd omdat het tegelijkertijd is ingetrokken. | U hoeft geen actie te ondernemen. Het bestand wordt getierd wanneer het intrekken is voltooid en het bestand wordt niet meer gebruikt. |
-| 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | Het bestand kan niet worden getierd omdat het niet is gesynchroniseerd met de Azure-bestands share. | U hoeft geen actie te ondernemen. Het bestand wordt getierd zodra het is gesynchroniseerd met de Azure-bestandsshare. |
-| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | Het bestand kan niet worden getierd omdat het filter stuur programma voor de Cloud lagen (storagesync. sys) niet wordt uitgevoerd. | Om dit probleem op te lossen, opent u een opdracht prompt met verhoogde bevoegdheid en voert u de volgende opdracht uit: `fltmc load storagesync`<br>Als het storagesync-filter stuur programma niet kan worden geladen tijdens het uitvoeren van de Fltmc-opdracht, verwijdert u de agent van Azure File Sync, start u de server opnieuw op en installeert u de Azure File Sync agent opnieuw. |
-| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Het bestand kan niet worden gelaagd vanwege onvoldoende schijf ruimte op het volume waar het server eindpunt zich bevindt. | U kunt dit probleem oplossen door ten minste 100 MB aan schijf ruimte vrij te maken op het volume waar het server eindpunt zich bevindt. |
-| 0x80070490 | -2147023728 | ERROR_NOT_FOUND | Het bestand kan niet worden getierd omdat het niet is gesynchroniseerd met de Azure-bestands share. | U hoeft geen actie te ondernemen. Het bestand wordt getierd zodra het is gesynchroniseerd met de Azure-bestandsshare. |
-| 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | Het bestand kan niet worden getierd omdat het een niet-ondersteund reparsepunt is. | Als het bestand een reparsepunt voor Gegevensontdubbeling is, volgt u de stappen in de [planningshandleiding](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication) om ondersteuning voor Gegevensontdubbeling in te schakelen. Bestanden met andere reparsepunten dan Gegevensontdubbeling worden niet ondersteund en worden niet getierd.  |
-| 0x80c83052 | -2134364078 | ECS_E_CREATE_SV_STREAM_ID_MISMATCH | Het bestand kan niet worden getierd omdat het is gewijzigd. | U hoeft geen actie te ondernemen. Het bestand wordt getierd zodra het aangepaste bestand is gesynchroniseerd met de Azure-bestandsshare. |
-| 0x80c80269 | -2134375831 | ECS_E_GHOSTING_REPLICA_NOT_FOUND | Het bestand kan niet worden getierd omdat het niet is gesynchroniseerd met de Azure-bestands share. | U hoeft geen actie te ondernemen. Het bestand wordt getierd zodra het is gesynchroniseerd met de Azure-bestandsshare. |
-| 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | Het bestand kan niet worden gelaagd vanwege een probleem met het netwerk. | U hoeft geen actie te ondernemen. Als de fout blijft optreden, controleer dan de netwerkverbinding met de Azure-bestandsshare. |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Het bestand kan niet worden getierd omdat het is gewijzigd. | U hoeft geen actie te ondernemen. Het bestand wordt getierd zodra het aangepaste bestand is gesynchroniseerd met de Azure-bestandsshare. |
-| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Het bestand kan niet worden gelaagd vanwege onvoldoende systeem resources. | Als de fout zich blijft voordoen, onderzoekt u welke toepassing of kernelmodusstuurprogramma te veel systeemresources gebruikt. |
-
-
-
-### <a name="how-to-troubleshoot-files-that-fail-to-be-recalled"></a>Problemen oplossen met bestanden die niet worden ingetrokken  
-Als bestanden niet kunnen worden ingetrokken:
-1. Bekijk in Logboeken de telemetrie-, operationele en diagnostische gebeurtenis logboeken, die zich bevinden onder toepassingen en Services\Microsoft\FileSync\Agent.
-    1. Controleer of de bestanden aanwezig zijn in de Azure-bestands share.
-    2. Controleer of de server verbinding met internet heeft. 
-    3. Open de MMC-module Services en controleer of de opslag synchronisatie Agent-service (FileSyncSvc) wordt uitgevoerd.
-    4. Controleer of de Azure File Sync-filter Stuur programma's (StorageSync. sys en StorageSyncGuard. sys) worden uitgevoerd:
-        - Voer `fltmc`uit vanaf een opdracht prompt met verhoogde bevoegdheid. Controleer of de bestandssysteem filter Stuur Programma's StorageSync. sys en StorageSyncGuard. sys worden weer gegeven.
+   2. Controleer of de server een internetverbinding heeft. 
+   3. Controleer of de filterstuurprogramma's voor Azure File Sync (StorageSync.sys en StorageSyncGuard.sys) actief zijn:
+       - Voer bij een opdrachtprompt `fltmc`met verhoogde bevoegdheid uit. Controleer of de filterstuurprogramma's StorageSync.sys en StorageSyncGuard.sys-bestandssysteem worden vermeld.
 
 > [!NOTE]
-> Gebeurtenis-ID 9006 wordt eenmaal per uur vastgelegd in het logboek voor telemetrie als een bestand niet kan worden ingetrokken (één gebeurtenis wordt per fout code geregistreerd). Raadpleeg de sectie [fouten intrekken en herstellen](#recall-errors-and-remediation) om te zien of er herstels tappen voor de fout code worden weer gegeven.
+> Een gebeurtenis-id 9003 wordt eenmaal per uur geregistreerd in het gebeurtenislogboek Telemetrie als een bestand niet wordt gelaagd (één gebeurtenis wordt per foutcode geregistreerd). Controleer de [sectie Laagfouten en herstel om](#tiering-errors-and-remediation) te zien of herstelstappen worden weergegeven voor de foutcode.
 
-### <a name="recall-errors-and-remediation"></a>Fouten en herstel intrekken
+### <a name="tiering-errors-and-remediation"></a>Tiering-fouten en herstel
 
-| HRESULT | HRESULT (decimaal) | Fouttekenreeks | Probleem | Herstel |
+| Hresult | HRESULT (decimaal) | Fouttekenreeks | Probleem | Herstel |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80070079 | -2147942521 | ERROR_SEM_TIMEOUT | Kan het bestand niet intrekken vanwege een I/O-time-out. Dit probleem kan verschillende oorzaken hebben: Server Resource beperkingen, slechte netwerk verbinding of een probleem met Azure-opslag (bijvoorbeeld beperking). | U hoeft geen actie te ondernemen. Als de fout gedurende enkele uren blijft bestaan, opent u een ondersteuningscase. |
-| 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | Het bestand is niet ingetrokken vanwege een netwerk probleem.  | Als de fout blijft optreden, controleer dan de netwerkverbinding met de Azure-bestandsshare. |
-| 0x80c80037 | -2134376393 | ECS_E_SYNC_SHARE_NOT_FOUND | Het bestand kan niet worden ingetrokken omdat het server eindpunt is verwijderd. | Zie [gelaagde bestanden niet toegankelijk op de server nadat u een server eindpunt hebt verwijderd](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)om dit probleem op te lossen. |
-| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Het bestand kan niet worden ingetrokken vanwege een fout bij het weigeren van de toegang. Dit probleem treedt op omdat de instellingen voor de firewall en het virtuele netwerk van het opslagaccount zijn ingeschakeld en de server geen toegang heeft tot het opslagaccount. | U kunt dit probleem oplossen door het IP-adres of het virtuele netwerk van de server toe te voegen aan de hand van de stappen die worden beschreven in de sectie [instellingen voor firewalls en virtuele netwerken configureren](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) in de implementatie handleiding. |
-| 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | Het bestand kan niet worden ingetrokken omdat het niet toegankelijk is in de Azure-bestands share. | Als u dit probleem wilt oplossen, controleert u of het bestand bestaat in de Azure-bestandsshare. Als het bestand zich in de Azure-bestands share bevindt, moet u een upgrade uitvoeren naar de nieuwste versie van Azure File Sync [agent](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions). |
-| 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | Het bestand kan niet worden ingetrokken vanwege een autorisatie fout naar het opslag account. | Als u dit probleem wilt oplossen, controleert [u Azure file sync toegang heeft tot het opslag account](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac). |
-| 0x80c86030 | -2134351824 | ECS_E_AZURE_FILE_SHARE_NOT_FOUND | Het bestand kan niet worden ingetrokken omdat de Azure-bestands share niet toegankelijk is. | Controleer of de bestands share bestaat en toegankelijk is. Als de bestands share is verwijderd en opnieuw is gemaakt, voert u de stappen uit die worden beschreven in de [synchronisatie is mislukt, omdat de Azure-bestands share is verwijderd en opnieuw is gemaakt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134375810) om de synchronisatie groep te verwijderen en opnieuw te maken. |
-| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Het bestand is niet ingetrokken vanwege onvoldoende systeem resources. | Als de fout zich blijft voordoen, onderzoekt u welke toepassing of kernelmodusstuurprogramma te veel systeemresources gebruikt. |
-| 0x8007000e | -2147024882 | ERROR_OUTOFMEMORY | Kan het bestand niet intrekken vanwege insuffcient geheugen. | Als de fout zich blijft voordoen, onderzoekt u welke toepassing of welk kernelmodusstuurprogramma het geheugengebrek veroorzaakt. |
-| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Het bestand is niet ingetrokken vanwege onvoldoende schijf ruimte. | Maak ruimte vrij op het volume door bestanden te verplaatsen naar een ander volume, door het volume te vergroten of door het tieren van bestanden af te dwingen met behulp van de cmdlet Invoke-StorageSyncCloudTiering. |
+| 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | Het bestand kan niet worden geklasseerd omdat het in gebruik is. | U hoeft geen actie te ondernemen. Het bestand wordt gelaagd wanneer het niet meer in gebruik is. |
+| 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | Het bestand kan niet worden geklasseerd omdat het is uitgesloten door synchronisatie. | U hoeft geen actie te ondernemen. Bestanden in de lijst met synchronisatieuitsluiting kunnen niet worden gegelaagdeerd. |
+| 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | Het bestand kan niet worden geklasseerd omdat het niet op de server is gevonden. | U hoeft geen actie te ondernemen. Als de fout blijft bestaan, controleert u of het bestand op de server bestaat. |
+| 0x80c83053 | -2134364077 | ECS_E_CREATE_SV_FILE_DELETED | Het bestand kan niet worden geklasseerd omdat het is verwijderd in de Azure-bestandsshare. | U hoeft geen actie te ondernemen. Het bestand moet worden verwijderd op de server wanneer de volgende downloadsynchronisatiesessie wordt uitgevoerd. |
+| 0x80c8600e | -2134351858 | ECS_E_AZURE_SERVER_BUSY | Het bestand kan niet worden geklasseerd vanwege een netwerkprobleem. | U hoeft geen actie te ondernemen. Als de fout blijft bestaan, controleert u de netwerkverbinding met het Azure-bestandsshare. |
+| 0x80072ee7 | -2147012889 | WININET_E_NAME_NOT_RESOLVED | Het bestand kan niet worden geklasseerd vanwege een netwerkprobleem. | U hoeft geen actie te ondernemen. Als de fout blijft bestaan, controleert u de netwerkverbinding met het Azure-bestandsshare. |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Het bestand kan niet worden geklasseerd vanwege de fout met de toegang geweigerd. Deze fout kan optreden als het bestand zich op een alleen-lezen MAP van DFS-R bevindt. | Azure Files Sync biedt geen ondersteuning voor servereindpunten in DFS-R-replicatiemappen met het kenmerk Alleen-lezen. Zie [planningsgids](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) voor meer informatie. |
+| 0x80072efe | -2147012866 | WININET_E_CONNECTION_ABORTED | Het bestand kan niet worden geklasseerd vanwege een netwerkprobleem. | U hoeft geen actie te ondernemen. Als de fout blijft bestaan, controleert u de netwerkverbinding met het Azure-bestandsshare. |
+| 0x80c80261 | -2134375839 | ECS_E_GHOSTING_MIN_FILE_SIZE | Het bestand kan niet worden geklasseerd omdat de bestandsgrootte kleiner is dan de ondersteunde grootte. | Als de agentversie minder dan 9.0 is, is de minimale ondersteunde bestandsgrootte 64 kb. Als agentversie 9.0 en nieuwer is, is de minimaal ondersteunde bestandsgrootte gebaseerd op de clustergrootte van het bestandssysteem (dubbele clustergrootte van bestandssystemen). Als de clustergrootte van het bestandssysteem bijvoorbeeld 4 kb is, is de minimale bestandsgrootte 8kb. |
+| 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | Het bestand kan niet worden geklasseerd vanwege een Azure-opslagprobleem. | Als de fout blijft bestaan, opent u een ondersteuningsverzoek. |
+| 0x800703e3 | -2147023901 | ERROR_OPERATION_ABORTED | Het bestand kan niet worden geklasseerd omdat het tegelijkertijd werd teruggeroepen. | U hoeft geen actie te ondernemen. Het bestand wordt trapsgewijs weergegeven wanneer de terugroepactie is voltooid en het bestand niet meer wordt gebruikt. |
+| 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | Het bestand kan niet worden geklasseerd omdat het niet is gesynchroniseerd met de Azure-bestandsshare. | U hoeft geen actie te ondernemen. Het bestand wordt laag zodra het is gesynchroniseerd met de Azure-bestandsshare. |
+| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | Het bestand kan niet worden geklasseerd omdat het filterstuurprogramma voor cloudlagen (storagesync.sys) niet wordt uitgevoerd. | Als u dit probleem wilt oplossen, opent u een opdrachtprompt met verhoogde bevoegdheid en voert u de volgende opdracht uit:`fltmc load storagesync`<br>Als het filterstuurprogramma voor storagesync niet wordt geladen wanneer de fltmc-opdracht wordt uitgevoerd, verwijdert u de Azure File Sync-agent, start u de server opnieuw en installeert u de Azure File Sync-agent opnieuw. |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Het bestand kan niet worden geklasseerd vanwege onvoldoende schijfruimte op het volume waarin het servereindpunt zich bevindt. | Als u dit probleem wilt oplossen, u ten minste 100 MB schijfruimte vrijmaken op het volume waarin het eindpunt van de server zich bevindt. |
+| 0x80070490 | -2147023728 | ERROR_NOT_FOUND | Het bestand kan niet worden geklasseerd omdat het niet is gesynchroniseerd met de Azure-bestandsshare. | U hoeft geen actie te ondernemen. Het bestand wordt laag zodra het is gesynchroniseerd met de Azure-bestandsshare. |
+| 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | Het bestand kan niet worden geklasseerd omdat het een niet-ondersteund reparse punt is. | Als het bestand een weerdubbel punt voor gegevensdeduplicatie is, volgt u de stappen in de [planningshandleiding](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication) om ondersteuning voor gegevensdeduplicatie in te schakelen. Bestanden met andere rearse punten dan Data Deduplicatie worden niet ondersteund en worden niet trapsgewijs uitgevoerd.  |
+| 0x80c83052 | -2134364078 | ECS_E_CREATE_SV_STREAM_ID_MISMATCH | Het bestand kan niet worden geklasseerd omdat het is gewijzigd. | U hoeft geen actie te ondernemen. Het bestand wordt laag zodra het gewijzigde bestand is gesynchroniseerd met de Azure-bestandsshare. |
+| 0x80c80269 | -2134375831 | ECS_E_GHOSTING_REPLICA_NOT_FOUND | Het bestand kan niet worden geklasseerd omdat het niet is gesynchroniseerd met de Azure-bestandsshare. | U hoeft geen actie te ondernemen. Het bestand wordt laag zodra het is gesynchroniseerd met de Azure-bestandsshare. |
+| 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | Het bestand kan niet worden geklasseerd vanwege een netwerkprobleem. | U hoeft geen actie te ondernemen. Als de fout blijft bestaan, controleert u de netwerkverbinding met het Azure-bestandsshare. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Het bestand kan niet worden geklasseerd omdat het is gewijzigd. | U hoeft geen actie te ondernemen. Het bestand wordt laag zodra het gewijzigde bestand is gesynchroniseerd met de Azure-bestandsshare. |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Het bestand kan niet worden geklasseerd vanwege onvoldoende systeembronnen. | Als de fout blijft bestaan, onderzoekt u welke toepassing of stuurprogramma in de kernelmodus systeembronnen uitputten. |
 
-### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>Gelaagde bestanden zijn niet toegankelijk op de server na het verwijderen van een server eindpunt
-Gelaagde bestanden op een server worden ontoegankelijk als de bestanden niet worden ingetrokken voordat een server eindpunt wordt verwijderd.
 
-Fouten die zijn vastgelegd als gelaagde bestanden niet toegankelijk zijn
-- Bij het synchroniseren van een bestand wordt fout code-2147942467 (0x80070043-ERROR_BAD_NET_NAME) vastgelegd in het gebeurtenis logboek van ItemResults
-- Wanneer u een bestand terugroept, wordt de fout code-2134376393 (0x80c80037-ECS_E_SYNC_SHARE_NOT_FOUND) vastgelegd in het gebeurtenis logboek van RecallResults
+
+### <a name="how-to-troubleshoot-files-that-fail-to-be-recalled"></a>Bestanden oplossen die niet worden teruggeroepen  
+Als bestanden niet worden teruggeroepen:
+1. Controleer in Logboeken de telemetrie-, operationele en diagnostische gebeurtenislogboeken die zich onder Toepassingen en Services\Microsoft\FileSync\Agent bevinden.
+    1. Controleer of de bestanden in de Azure-bestandsshare bestaan.
+    2. Controleer of de server een internetverbinding heeft. 
+    3. Open de MMC-module services en controleer of de Storage Sync Agent-service (FileSyncSvc) wordt uitgevoerd.
+    4. Controleer of de filterstuurprogramma's voor Azure File Sync (StorageSync.sys en StorageSyncGuard.sys) actief zijn:
+        - Voer bij een opdrachtprompt `fltmc`met verhoogde bevoegdheid uit. Controleer of de filterstuurprogramma's StorageSync.sys en StorageSyncGuard.sys-bestandssysteem worden vermeld.
+
+> [!NOTE]
+> Een gebeurtenis-id 9006 wordt eenmaal per uur geregistreerd in het gebeurtenislogboek Telemetrie als een bestand zich niet terugroept (één gebeurtenis wordt per foutcode geregistreerd). Controleer de sectie [Terugroepen van fouten en herstel](#recall-errors-and-remediation) om te zien of herstelstappen worden weergegeven voor de foutcode.
+
+### <a name="recall-errors-and-remediation"></a>Fouten terugroepen en herstellen
+
+| Hresult | HRESULT (decimaal) | Fouttekenreeks | Probleem | Herstel |
+|---------|-------------------|--------------|-------|-------------|
+| 0x80070079 | -2147942521 | ERROR_SEM_TIMEOUT | Het bestand kan zich niet herinneren vanwege een I/O-time-out. Dit probleem kan om verschillende redenen optreden: beperkingen van serverbronnen, slechte netwerkconnectiviteit of een Azure-opslagprobleem (bijvoorbeeld beperking). | U hoeft geen actie te ondernemen. Als de fout gedurende enkele uren blijft bestaan, opent u een ondersteuningscase. |
+| 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | Het bestand kan zich niet terugroepen vanwege een netwerkprobleem.  | Als de fout blijft bestaan, controleert u de netwerkverbinding met het Azure-bestandsshare. |
+| 0x80c80037 | -2134376393 | ECS_E_SYNC_SHARE_NOT_FOUND | Het bestand kan zich niet herinneren omdat het eindpunt van de server is verwijderd. | Zie [Trapsgewijze bestanden zijn niet toegankelijk op de server na het verwijderen van een servereindpunt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)om dit probleem op te lossen. |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Het bestand kan zich niet terugroepen vanwege een fout met geweigerde toegang. Dit probleem kan optreden als de firewall- en virtuele netwerkinstellingen op het opslagaccount zijn ingeschakeld en de server geen toegang heeft tot het opslagaccount. | Als u dit probleem wilt oplossen, voegt u het IP-adres van de server of het virtuele netwerk toe door de stappen te volgen die zijn gedocumenteerd in de sectie [Firewall configureren en virtuele netwerkinstellingen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) in de implementatiehandleiding. |
+| 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | Het bestand kan zich niet herinneren omdat het niet toegankelijk is in het Azure-bestandsshare. | Als u dit probleem wilt oplossen, controleert u of het bestand bestaat in de Azure-bestandsshare. Als het bestand bestaat in de Azure-bestandsshare, u upgraden naar de nieuwste versie van de Azure File [Sync-agent](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions). |
+| 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | Het bestand kan niet worden teruggeroepen omdat de opslagaccount niet is autorisatie. | Als u dit probleem wilt oplossen, controleert u of [Azure File Sync toegang heeft tot het opslagaccount](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac). |
+| 0x80c86030 | -2134351824 | ECS_E_AZURE_FILE_SHARE_NOT_FOUND | Het bestand kan zich niet terugroepen omdat de Azure-bestandsshare niet toegankelijk is. | Controleer of de bestandsshare bestaat en toegankelijk is. Als de bestandsshare is verwijderd en opnieuw is gemaakt, voert u de stappen uit die zijn gedocumenteerd in de [synchronisatie, omdat de azure-bestandsshare is verwijderd en opnieuw is gemaakt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134375810) om de synchronisatiegroep te verwijderen en opnieuw te maken. |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Het bestand kan niet worden teruggeroepen vanwege onvoldoende systeembronnen. | Als de fout blijft bestaan, onderzoekt u welke toepassing of stuurprogramma in de kernelmodus systeembronnen uitputten. |
+| 0x8007000e | -2147024882 | ERROR_OUTOFMEMORY | Het bestand kan niet worden teruggeroepen vanwege het insuffcient geheugen. | Als de fout blijft bestaan, onderzoekt u welke toepassing of kernel-modus stuurprogramma de lage geheugentoestand veroorzaakt. |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Het bestand kan zich niet terugroepen vanwege onvoldoende schijfruimte. | Als u dit probleem wilt oplossen, maakt u ruimte vrij op het volume door bestanden naar een ander volume te verplaatsen, de grootte van het volume te vergroten of bestanden tot laag te dwingen met de cmdlet Invoke-StorageSyncCloudTiering. |
+
+### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>Gelaagde bestanden zijn niet toegankelijk op de server na het verwijderen van een servereindpunt
+Gelaagde bestanden op een server worden ontoegankelijk als de bestanden niet worden teruggeroepen voordat een servereindpunt wordt verwijderd.
+
+Fouten die zijn geregistreerd als gelaagde bestanden niet toegankelijk zijn
+- Bij het synchroniseren van een bestand wordt foutcode -2147942467 (0x80070043 - ERROR_BAD_NET_NAME) geregistreerd in het gebeurtenislogboek ItemResults
+- Bij het terugroepen van een bestand wordt foutcode -2134376393 (0x80c80037 - ECS_E_SYNC_SHARE_NOT_FOUND) geregistreerd in het gebeurtenislogboek RecallResults
 
 Toegang herstellen tot uw gelaagde bestanden is mogelijk als aan de volgende voorwaarden is voldaan:
 - Het servereindpunt is verwijderd in de afgelopen 30 dagen
@@ -1156,45 +1156,45 @@ Toegang herstellen tot uw gelaagde bestanden is mogelijk als aan de volgende voo
 
 Als aan de bovenstaande voorwaarden is voldaan, kunt u de toegang tot de bestanden op de server herstellen door binnen 30 dagen het servereindpunt opnieuw te maken op hetzelfde serverpad binnen dezelfde synchronisatiegroep. 
 
-Als niet aan de bovenstaande voorwaarden is voldaan, is het niet mogelijk om de toegang te herstellen, aangezien deze gelaagde bestanden op de server nu zwevend zijn. Volg de onderstaande instructies om de zwevende gelaagde bestanden te verwijderen.
+Als niet aan de bovenstaande voorwaarden is voldaan, is het niet mogelijk om de toegang te herstellen, aangezien deze gelaagde bestanden op de server nu zwevend zijn. Volg de onderstaande instructies om de zwevende bestanden te verwijderen.
 
 **Opmerkingen**
-- Wanneer gelaagde bestanden niet toegankelijk zijn op de server, moet het volledige bestand nog steeds toegankelijk zijn als u rechtstreeks toegang hebt tot de Azure-bestands share.
-- Als u zwevende gelaagde bestanden in de toekomst wilt voor komen, volgt u de stappen in [een server eindpunt verwijderen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint) bij het verwijderen van een server eindpunt.
+- Wanneer gelaagde bestanden niet toegankelijk zijn op de server, moet het volledige bestand nog steeds toegankelijk zijn als u rechtstreeks toegang hebt tot de Azure-bestandsshare.
+- Als u in de toekomst zwevende gelaagde bestanden wilt voorkomen, voert u de stappen uit die zijn gedocumenteerd in [Een servereindpunt verwijderen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint) bij het verwijderen van een servereindpunt.
 
-<a id="get-orphaned"></a>**De lijst met zwevende gelaagde bestanden ophalen** 
+<a id="get-orphaned"></a>**Hoe de lijst met zwevende bestanden met weesniveau te krijgen** 
 
-1. Controleer of Azure File Sync agent versie v 5.1 of hoger is geïnstalleerd.
-2. Voer de volgende Power shell-opdrachten uit om zwevende gelaagde bestanden weer te geven:
+1. Controleer of Azure File Sync agent versie v5.1 of hoger is geïnstalleerd.
+2. Voer de volgende PowerShell-opdrachten uit om zwevende bestanden met zwevende gegevens weer te geven:
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 $orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
 $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 ```
-3. Sla het uitvoer bestand OrphanTieredFiles. txt op in case bestanden moeten worden hersteld na het verwijderen van de back-up.
+3. Sla het uitvoerbestand OrphanTieredFiles.txt op voor het geval bestanden moeten worden hersteld van back-up nadat ze zijn verwijderd.
 
-<a id="remove-orphaned"></a>**Zwevende gelaagde bestanden verwijderen** 
+<a id="remove-orphaned"></a>**Zwevende bestanden verwijderen** 
 
-*Optie 1: de zwevende gelaagde bestanden verwijderen*
+*Optie 1: De zwevende bestanden met zwevende ten hoogste niveau verwijderen*
 
-Met deze optie worden de zwevende gelaagde bestanden op de Windows-Server verwijderd, maar moet het server eindpunt worden verwijderd als dit bestaat als gevolg van recreatie na 30 dagen of is verbonden met een andere synchronisatie groep. Er treden bestands conflicten op als bestanden worden bijgewerkt op de Windows-Server of de Azure-bestands share voordat het server-eind punt opnieuw wordt gemaakt.
+Met deze optie worden de zwevende bestanden op de Windows Server verwijderd, maar moet het servereindpunt worden verwijderd als deze bestaat vanwege recreatie na 30 dagen of is verbonden met een andere synchronisatiegroep. Bestandsconflicten ontstaan als bestanden worden bijgewerkt op de Windows Server of Azure-bestandsshare voordat het servereindpunt opnieuw wordt gemaakt.
 
-1. Controleer of Azure File Sync agent versie v 5.1 of hoger is geïnstalleerd.
-2. Back-up maken van de Azure-bestands share en de locatie van het server eindpunt.
-3. Verwijder het server eindpunt in de synchronisatie groep (indien aanwezig) door de stappen te volgen die worden beschreven in [een server eindpunt verwijderen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint).
+1. Controleer of Azure File Sync agent versie v5.1 of hoger is geïnstalleerd.
+2. Maak een back-up van de azure-bestandsshare en de locatie van het eindpunt van de server.
+3. Verwijder het servereindpunt in de synchronisatiegroep (indien aanwezig) door de stappen te volgen die zijn gedocumenteerd in [Een servereindpunt verwijderen.](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint)
 
 > [!Warning]  
-> Als het server-eind punt niet is verwijderd voordat u de cmdlet Remove-StorageSyncOrphanedTieredFiles gebruikt, wordt het volledige bestand in de Azure-bestands share verwijderd als u het zwevende gelaagte bestand op de server verwijdert. 
+> Als het servereindpunt niet wordt verwijderd voordat het cmdlet Remove-StorageSyncOrphanedTieredFiles wordt gebruikt, wordt het verwijderen van het zwevende gelaagde bestand op de server het volledige bestand in de Azure-bestandsshare verwijderd. 
 
-4. Voer de volgende Power shell-opdrachten uit om zwevende gelaagde bestanden weer te geven:
+4. Voer de volgende PowerShell-opdrachten uit om zwevende bestanden met zwevende gegevens weer te geven:
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 $orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
 $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 ```
-5. Sla het uitvoer bestand OrphanTieredFiles. txt op in case bestanden moeten worden hersteld na het verwijderen van de back-up.
-6. Voer de volgende Power shell-opdrachten uit om zwevende gelaagde bestanden te verwijderen:
+5. Sla het uitvoerbestand OrphanTieredFiles.txt op voor het geval bestanden moeten worden hersteld van back-up nadat ze zijn verwijderd.
+6. Voer de volgende PowerShell-opdrachten uit om zwevende bestanden met weesniveau te verwijderen:
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
@@ -1202,51 +1202,51 @@ $orphanFilesRemoved = Remove-StorageSyncOrphanedTieredFiles -Path <folder path c
 $orphanFilesRemoved.OrphanedTieredFiles > DeletedOrphanFiles.txt
 ```
 **Opmerkingen** 
-- Gelaagde bestanden die op de server zijn gewijzigd en niet zijn gesynchroniseerd met de Azure-bestands share, worden verwijderd.
-- Gelaagde bestanden die toegankelijk zijn (niet zwevend), worden niet verwijderd.
-- Niet-gelaagde bestanden blijven op de server.
+- Gelaagde bestanden die op de server zijn gewijzigd en die niet zijn gesynchroniseerd met de Azure-bestandsshare, worden verwijderd.
+- Gelaagde bestanden die toegankelijk zijn (niet wees) worden niet verwijderd.
+- Niet-gelaagde bestanden blijven op de server staan.
 
-7. Optioneel: Maak het server eindpunt opnieuw als dit is verwijderd in stap 3.
+7. Optioneel: maak het servereindpunt opnieuw als het in stap 3 wordt verwijderd.
 
-*Optie 2: koppel de Azure-bestands share en kopieer de bestanden die zich lokaal op de server bevinden*
+*Optie 2: De Azure-bestandsshare monteren en de bestanden lokaal kopiëren die op de server zijn verweesd*
 
-Voor deze optie moet het server eindpunt niet worden verwijderd, maar er is voldoende schijf ruimte nodig om de volledige bestanden lokaal te kopiëren.
+Deze optie vereist niet dat het eindpunt van de server wordt verwijderd, maar dat er voldoende schijfruimte nodig is om de volledige bestanden lokaal te kopiëren.
 
-1. [Koppel](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) de Azure-bestands share op de Windows-Server met zwevende gelaagde bestanden.
-2. Voer de volgende Power shell-opdrachten uit om zwevende gelaagde bestanden weer te geven:
+1. [Monteer](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) het Azure-bestandsaandeel op de Windows Server met zwevende bestanden met wees.
+2. Voer de volgende PowerShell-opdrachten uit om zwevende bestanden met zwevende gegevens weer te geven:
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 $orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
 $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 ```
-3. Gebruik het uitvoer bestand OrphanTieredFiles. txt om zwevende gelaagde bestanden op de server te identificeren.
-4. De zwevende gelaagde bestanden overschrijven door het volledige bestand van de Azure-bestands share te kopiëren naar de Windows-Server.
+3. Gebruik het uitvoerbestand OrphanTieredFiles.txt om zwevende bestanden op de server te identificeren.
+4. Overschrijf de zwevende gelaagde bestanden door het volledige bestand van het Azure-bestandsshare naar de Windows Server te kopiëren.
 
-### <a name="how-to-troubleshoot-files-unexpectedly-recalled-on-a-server"></a>Problemen oplossen met bestanden die onverwacht worden ingetrokken op een server  
-Anti virus-, back-up-en andere toepassingen die grote aantallen bestanden lezen, veroorzaken onbedoelde aanroepen, tenzij ze het kenmerk offline overs Laan respecteren en het lezen van de inhoud van die bestanden overs Laan. Als u offlinebestanden overslaat voor producten die ondersteuning bieden voor deze optie, voorkomt u dat er onbedoeld wordt teruggehaald tijdens bijvoorbeeld antivirusscans en back-uptaken.
+### <a name="how-to-troubleshoot-files-unexpectedly-recalled-on-a-server"></a>Problemen oplossen van bestanden die onverwacht worden teruggeroepen op een server  
+Antivirus, back-up en andere toepassingen die grote aantallen bestanden lezen, veroorzaken onbedoelde recalls, tenzij ze het kenmerk offline overslaan respecteren en het lezen van de inhoud van die bestanden overslaan. Als u offlinebestanden overslaat voor producten die ondersteuning bieden voor deze optie, voorkomt u dat er onbedoeld wordt teruggehaald tijdens bijvoorbeeld antivirusscans en back-uptaken.
 
 Vraag uw softwareleverancier hoe de oplossing kan worden geconfigureerd zodat offlinebestanden niet meer worden gelezen.
 
-Onbedoelde oproepen kunnen ook in andere scenario's optreden, zoals wanneer u bestanden bekijkt in Verkenner. Als u in Verkenner op de server een map opent met bestanden in cloudlagen, kan dat resulteren in onbedoeld terughalen. Dit is nog waarschijnlijker als er een antivirusoplossing is ingeschakeld op de server.
+Onbedoelde terugroepingen kunnen ook voorkomen in andere scenario's, zoals wanneer u door bestanden bladert in Verkenner. Als u in Verkenner op de server een map opent met bestanden in cloudlagen, kan dat resulteren in onbedoeld terughalen. Dit is nog waarschijnlijker als er een antivirusoplossing is ingeschakeld op de server.
 
 > [!NOTE]
->Gebruik gebeurtenis-ID 9059 in het logboek voor telemetrie om te bepalen welke toepassing wordt gebruikt voor het terughalen. Deze gebeurtenis voorziet in het terughalen van toepassingen voor een server eindpunt en wordt eenmaal per uur geregistreerd.
+>Gebruik gebeurtenis-id 9059 in het gebeurtenislogboek Telemetrie om te bepalen welke toepassing(en) terugroepacties veroorzaakt. Deze gebeurtenis biedt de distributie van het terugroepen van toepassingen voor een servereindpunt en wordt eenmaal per uur geregistreerd.
 
-## <a name="general-troubleshooting"></a>Algemene probleem oplossing
-Als u problemen ondervindt met Azure File Sync op een server, moet u eerst de volgende stappen uitvoeren:
-1. In Logboeken raadpleegt u de logboeken met betrekking tot telemetrie, operationele en diagnose.
-    - Problemen met synchronisatie, lagen en intrekken worden vastgelegd in de telemetrie-, diagnostische en operationele gebeurtenis Logboeken onder toepassingen en Services\Microsoft\FileSync\Agent.
-    - Problemen met betrekking tot het beheren van een server (bijvoorbeeld configuratie-instellingen) worden vastgelegd in de operationele en diagnostische gebeurtenis Logboeken onder toepassingen en Services\Microsoft\FileSync\Management.
-2. Controleer of de Azure File Sync-Service wordt uitgevoerd op de server:
-    - Open de MMC-module Services en controleer of de opslag synchronisatie Agent-service (FileSyncSvc) wordt uitgevoerd.
-3. Controleer of de Azure File Sync-filter Stuur programma's (StorageSync. sys en StorageSyncGuard. sys) worden uitgevoerd:
-    - Voer `fltmc`uit vanaf een opdracht prompt met verhoogde bevoegdheid. Controleer of de bestandssysteem filter Stuur Programma's StorageSync. sys en StorageSyncGuard. sys worden weer gegeven.
+## <a name="general-troubleshooting"></a>Algemene probleemoplossing
+Als u problemen ondervindt met Azure File Sync op een server, moet u de volgende stappen uitvoeren:
+1. Bekijk in Logboeken de telemetrie-, operationele en diagnostische gebeurtenislogboeken.
+    - Synchronisatie-, tiering- en terugroepproblemen worden geregistreerd in de telemetrie-, diagnostische en operationele gebeurtenislogboeken onder Toepassingen en Services\Microsoft\FileSync\Agent.
+    - Problemen met betrekking tot het beheren van een server (bijvoorbeeld configuratie-instellingen) worden geregistreerd in de operationele en diagnostische gebeurtenislogboeken onder Toepassingen en Services\Microsoft\FileSync\Management.
+2. Controleer of de Azure File Sync-service op de server wordt uitgevoerd:
+    - Open de MMC-module services en controleer of de Storage Sync Agent-service (FileSyncSvc) wordt uitgevoerd.
+3. Controleer of de filterstuurprogramma's voor Azure File Sync (StorageSync.sys en StorageSyncGuard.sys) actief zijn:
+    - Voer bij een opdrachtprompt `fltmc`met verhoogde bevoegdheid uit. Controleer of de filterstuurprogramma's StorageSync.sys en StorageSyncGuard.sys-bestandssysteem worden vermeld.
 
-Als het probleem niet is opgelost, voert u het hulp programma AFSDiag uit:
-1. Maak een map waar de uitvoer van de AFSDiag wordt opgeslagen (bijvoorbeeld C:\Output).
+Als het probleem niet is opgelost, voert u het gereedschap AFSDiag uit:
+1. Maak een map waarin de AFSDiag-uitvoer wordt opgeslagen (bijvoorbeeld C:\Output).
     > [!NOTE]
-    >AFSDiag verwijdert alle inhoud in de uitvoermap voordat logboeken worden verzameld. Geef een uitvoer locatie op die geen gegevens bevat.
-2. Open een Power shell-venster met verhoogde bevoegdheden en voer de volgende opdrachten uit (druk na elke opdracht op ENTER):
+    >AFSDiag verwijdert alle inhoud in de uitvoermap voordat logboeken worden verzameld. Geef een uitvoerlocatie op die geen gegevens bevat.
+2. Open een verhoogd PowerShell-venster en voer de volgende opdrachten uit (druk op Enter na elke opdracht):
 
     ```powershell
     cd "c:\Program Files\Azure\StorageSyncAgent"
@@ -1254,13 +1254,13 @@ Als het probleem niet is opgelost, voert u het hulp programma AFSDiag uit:
     Debug-Afs c:\output # Note: Use the path created in step 1.
     ```
 
-3. Voer voor het traceer niveau van de Azure File Sync-kernelmodus **1** in (tenzij anders opgegeven, om meer uitgebreide traceringen te maken) en druk vervolgens op ENTER.
-4. Voor de Azure File Sync traceer niveau van de gebruikers modus voert u **1** in (tenzij anders opgegeven, om meer uitgebreide traceringen te maken) en druk vervolgens op ENTER.
-5. Reproduceer het probleem. Wanneer u klaar bent, voert u **D**in.
-6. Een zip-bestand dat Logboeken en tracerings bestanden bevat, wordt opgeslagen in de uitvoermap die u hebt opgegeven.
+3. Voer voor het traceringsniveau van de Azure File Sync-kernelmodus **1** in (tenzij anders aangegeven, om meer verbosesporen te maken) en druk op Enter.
+4. Voer voor het traceringsniveau van de gebruikersmodus Azure File Sync **1** in (tenzij anders aangegeven, om meer verbosesporen te maken) en druk op Enter.
+5. Reproduceer het probleem. Als u klaar bent, voert u **D**in.
+6. Een .zip-bestand met logboeken en traceerbestanden wordt opgeslagen in de uitvoermap die u hebt opgegeven.
 
 ## <a name="see-also"></a>Zie ook
 - [Azure File Sync bewaken](storage-sync-files-monitoring.md)
-- [Veelgestelde vragen over Azure Files](storage-files-faq.md)
+- [Veelgestelde vragen in Azure Files](storage-files-faq.md)
 - [Problemen met Azure Files in Windows oplossen](storage-troubleshoot-windows-file-connection-problems.md)
 - [Problemen met Azure Files in Linux oplossen](storage-troubleshoot-linux-file-connection-problems.md)

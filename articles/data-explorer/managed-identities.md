@@ -1,41 +1,76 @@
 ---
-title: Beheerde identiteiten configureren voor Azure Data Explorer cluster
-description: Meer informatie over het configureren van beheerde identiteiten voor Azure Data Explorer cluster.
+title: Beheerde identiteiten configureren voor Azure Data Explorer-cluster
+description: Meer informatie over het configureren van beheerde identiteiten voor azure data explorer-cluster.
 author: saguiitay
 ms.author: itsagui
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: e76ae2e072bb780ac9788902e9157db871e4f09d
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.date: 03/12/2020
+ms.openlocfilehash: f9592f5d2666684e0cf5eef687b1e69cfb55066c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373368"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065575"
 ---
-# <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Beheerde identiteiten voor uw Azure Data Explorer-cluster configureren
+# <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Beheerde identiteiten configureren voor uw Azure Data Explorer-cluster
 
-Met een [beheerde identiteit van Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) kan uw cluster eenvoudig toegang krijgen tot andere met Aad beveiligde resources zoals Azure Key Vault. De identiteit wordt beheerd door het Azure-platform en u hoeft geen geheimen in te richten of te draaien. In dit artikel wordt beschreven hoe u een beheerde identiteit voor Azure Data Explorer-clusters maakt. Configuratie van beheerde identiteit wordt momenteel alleen ondersteund voor [het inschakelen van door de klant beheerde sleutels voor uw cluster](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault).
+Met een [beheerde identiteit van Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) heeft uw cluster eenvoudig toegang tot andere door AAD beveiligde bronnen, zoals Azure Key Vault. De identiteit wordt beheerd door het Azure-platform en vereist niet dat u geheimen indient of roteert. In dit artikel ziet u hoe u een beheerde identiteit maakt voor Azure Data Explorer-clusters. Beheerde identiteitsconfiguratie wordt momenteel alleen ondersteund om [door de klant beheerde sleutels voor uw cluster in](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault)te schakelen.
 
 > [!Note]
-> Beheerde identiteiten voor Azure Data Explorer werken niet zoals verwacht als uw app wordt gemigreerd tussen abonnementen of tenants. De app moet een nieuwe identiteit verkrijgen, die kan worden gedaan door het uitschakelen en opnieuw inschakelen van de functie met [een identiteit verwijderen](#remove-an-identity). Het toegangs beleid van downstream-resources moet ook worden bijgewerkt om de nieuwe identiteit te kunnen gebruiken.
+> Beheerde identiteiten voor Azure Data Explorer gedragen zich niet zoals verwacht als uw app is gemigreerd tussen abonnementen of tenants. De app moet een nieuwe identiteit verkrijgen, wat kan worden gedaan door de functie [uit te schakelen](#remove-a-system-assigned-identity) en opnieuw in te [schakelen.](#add-a-system-assigned-identity) Toegangsbeleid van downstreambronnen moet ook worden bijgewerkt om de nieuwe identiteit te gebruiken.
 
 ## <a name="add-a-system-assigned-identity"></a>Een door het systeem toegewezen identiteit toevoegen
+                                                                                                    
+Wijs een door het systeem toegewezen identiteit toe die is gekoppeld aan uw cluster en wordt verwijderd als uw cluster wordt verwijderd. Een cluster kan slechts één door het systeem toegewezen identiteit hebben. Voor het maken van een cluster met een door het systeem toegewezen identiteit moet een extra eigenschap op het cluster worden ingesteld. De door het systeem toegewezen identiteit wordt toegevoegd met Behulp van C#,ARM-sjablonen of de Azure-portal zoals hieronder beschreven.
 
-Aan uw cluster kan een door het **systeem toegewezen identiteit** worden toegewezen die is gekoppeld aan uw cluster en wordt verwijderd als uw cluster wordt verwijderd. Een cluster kan slechts één door het systeem toegewezen identiteit hebben. Voor het maken van een cluster met een door het systeem toegewezen identiteit moet er een extra eigenschap worden ingesteld op het cluster.
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
-### <a name="add-a-system-assigned-identity-using-c"></a>Een door het systeem toegewezen identiteit toevoegen metC#
+### <a name="add-a-system-assigned-identity-using-the-azure-portal"></a>Een door het systeem toegewezen identiteit toevoegen met behulp van de Azure-portal
 
-Ga als volgt te werk om een beheerde identiteit in C# te stellen met behulp van de Azure Data Explorer-client:
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-* Installeer het [Azure Data Explorer (Kusto) NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Installeer het [NuGet-pakket micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) voor verificatie.
-* Als u het volgende voor beeld wilt uitvoeren, [maakt u een Azure AD-toepassing](/azure/active-directory/develop/howto-create-service-principal-portal) en service-principal die toegang hebben tot resources. U kunt roltoewijzing toevoegen aan het abonnements bereik en de vereiste `Directory (tenant) ID`, `Application ID`en `Client Secret`ophalen.
+#### <a name="new-azure-data-explorer-cluster"></a>Nieuw Azure Data Explorer-cluster
+
+1. [Een Azure Data Explorer-cluster maken](/azure/data-explorer/create-cluster-database-portal#create-a-cluster) 
+1. Selecteer op het tabblad **Beveiliging** > **door het systeem toegewezen identiteit**, de optie **Aan**. Als u de toegewezen identiteit van het systeem wilt verwijderen, selecteert u **Uit .**
+2. Selecteer **Volgende:Tags>** of **Review + maken** om het cluster te maken.
+
+    ![Systeemtoegewezen identiteit toevoegen aan nieuw cluster](media/managed-identities/system-assigned-identity-new-cluster.png)
+
+#### <a name="existing-azure-data-explorer-cluster"></a>Bestaand Azure Data Explorer-cluster
+
+1. Open een bestaand Azure Data Explorer-cluster.
+1. Selecteer > **Instellingen-identiteit** in het linkerdeelvenster van de portal. **Settings**
+1. Ga in het tabblad **Identiteit>** **Systeem toegewezen:**
+   1. De schuifregelaar **Status** verplaatsen naar **Aan**.
+   1. Selecteer **Opslaan**
+   1. Selecteer **Ja** in het pop-upvenster
+
+    ![Systeemtoegewezen identiteit toevoegen](media/managed-identities/turn-system-assigned-identity-on.png)
+
+1. Na een paar minuten, het scherm toont: 
+  * **Object-id** - gebruikt voor door klanten beheerde sleutels 
+  * **Roltoewijzingen** - klik op koppeling om relevante rollen toe te wijzen
+
+    ![Systeem toegewezen identiteit op](media/managed-identities/system-assigned-identity-on.png)
+
+# <a name="c"></a>[C #](#tab/c-sharp)
+
+### <a name="add-a-system-assigned-identity-using-c"></a>Een door het systeem toegewezen identiteit toevoegen met C #
+
+#### <a name="prerequisites"></a>Vereisten
+
+Ga als lid van het werk om een beheerde identiteit in te stellen met de Azure Data Explorer C#-client:
+
+* Installeer het [NuGet-pakket (Azure Data Explorer) (Kusto).](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)
+* Installeer het [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet-pakket](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) voor verificatie.
+* [Maak een Azure AD-toepassing](/azure/active-directory/develop/howto-create-service-principal-portal) en serviceprincipal die toegang heeft tot bronnen. U voegt roltoewijzing toe aan het `Directory (tenant) ID` `Application ID`abonnementsbereik `Client Secret`en krijgt de vereiste , en .
 
 #### <a name="create-or-update-your-cluster"></a>Uw cluster maken of bijwerken
 
-1. Uw cluster maken of bijwerken met behulp van de eigenschap `Identity`:
+1. Uw cluster maken of `Identity` bijwerken met de eigenschap:
 
     ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -52,7 +87,7 @@ Ga als volgt te werk om een beheerde identiteit in C# te stellen met behulp van 
     {
         SubscriptionId = subscriptionId
     };
-    
+                                                                                                    
     var resourceGroupName = "testrg";
     var clusterName = "mykustocluster";
     var location = "Central US";
@@ -65,26 +100,28 @@ Ga als volgt te werk om een beheerde identiteit in C# te stellen met behulp van 
     await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
     ```
     
-2. Voer de volgende opdracht uit om te controleren of het cluster is gemaakt of bijgewerkt met een identiteit:
+2. Voer de volgende opdracht uit om te controleren of uw cluster is gemaakt of bijgewerkt met een identiteit:
 
     ```csharp
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-    Als het resultaat `ProvisioningState` met de `Succeeded`-waarde bevat, is het cluster gemaakt of bijgewerkt en moet het de volgende eigenschappen hebben:
-   
+    Als het `ProvisioningState` resultaat `Succeeded` de waarde bevat, is het cluster gemaakt of bijgewerkt en moet het de volgende eigenschappen hebben:
+
     ```csharp
     var principalId = cluster.Identity.PrincipalId;
     var tenantId = cluster.Identity.TenantId;
     ```
 
-    `PrincipalId` en `TenantId` worden vervangen door GUID'S. De eigenschap `TenantId` identificeert de AAD-Tenant waartoe de identiteit behoort. De `PrincipalId` is een unieke id voor de nieuwe identiteit van het cluster. Binnen AAD heeft de service-principal dezelfde naam die u hebt gegeven aan uw App Service-of Azure Functions-exemplaar.
+`PrincipalId`en `TenantId` worden vervangen door GUIDs. De `TenantId` eigenschap identificeert de AAD-huurder waartoe de identiteit behoort. Het `PrincipalId` is een unieke id voor de nieuwe identiteit van het cluster. Binnen AAD heeft de serviceprincipal dezelfde naam die u aan uw appservice of Azure-functieinstantie hebt gegeven.
 
-### <a name="add-a-system-assigned-identity-using-an-azure-resource-manager-template"></a>Een door het systeem toegewezen identiteit toevoegen met behulp van een Azure Resource Manager sjabloon
+# <a name="arm-template"></a>[ARM-sjabloon](#tab/arm)
 
-Een Azure Resource Manager sjabloon kan worden gebruikt voor het automatiseren van de implementatie van uw Azure-resources. Zie een [Azure Data Explorer-cluster en-data base maken met behulp van een Azure Resource Manager-sjabloon](create-cluster-database-resource-manager.md)voor meer informatie over het implementeren van Azure Data Explorer.
+### <a name="add-a-system-assigned-identity-using-an-azure-resource-manager-template"></a>Een door het systeem toegewezen identiteit toevoegen met behulp van een Azure Resource Manager-sjabloon
 
-Door het door het systeem toegewezen type toe te voegen, vertelt Azure om de identiteit voor uw cluster te maken en te beheren. Een resource van het type `Microsoft.Kusto/clusters` kan worden gemaakt met een identiteit door de volgende eigenschap op te nemen in de resource definitie: 
+Een Azure Resource Manager-sjabloon kan worden gebruikt om de implementatie van uw Azure-resources te automatiseren. Zie [Een Azure Data Explorer-cluster en -database maken met behulp van een Azure Resource Manager-sjabloon](create-cluster-database-resource-manager.md)voor meer informatie over het implementeren naar Azure Data Explorer.
+
+Als u het systeemtoegewezen type toevoegt, moet Azure de identiteit voor uw cluster maken en beheren. Elke resource `Microsoft.Kusto/clusters` van het type kan worden gemaakt met een identiteit door de volgende eigenschap op te geven in de resourcedefinitie: 
 
 ```json
 "identity": {
@@ -113,7 +150,7 @@ Bijvoorbeeld:
 }
 ```
 
-Wanneer het cluster is gemaakt, heeft het de volgende aanvullende eigenschappen:
+Wanneer het cluster wordt gemaakt, heeft het de volgende extra eigenschappen:
 
 ```json
 "identity": {
@@ -123,11 +160,44 @@ Wanneer het cluster is gemaakt, heeft het de volgende aanvullende eigenschappen:
 }
 ```
 
-`<TENANTID>` en `<PRINCIPALID>` worden vervangen door GUID'S. De eigenschap `TenantId` identificeert de AAD-Tenant waartoe de identiteit behoort. De `PrincipalId` is een unieke id voor de nieuwe identiteit van het cluster. Binnen AAD heeft de service-principal dezelfde naam die u hebt gegeven aan uw App Service-of Azure Functions-exemplaar.
+`<TENANTID>`en `<PRINCIPALID>` worden vervangen door GUIDs. De `TenantId` eigenschap identificeert de AAD-huurder waartoe de identiteit behoort. Het `PrincipalId` is een unieke id voor de nieuwe identiteit van het cluster. Binnen AAD heeft de serviceprincipal dezelfde naam die u aan uw appservice of Azure-functieinstantie hebt gegeven.
 
-## <a name="remove-an-identity"></a>Een identiteit verwijderen
+---
 
-Als u een door het systeem toegewezen identiteit verwijdert, wordt deze ook uit AAD verwijderd. Door het systeem toegewezen identiteiten worden ook automatisch verwijderd uit AAD wanneer de cluster bron wordt verwijderd. Een door het systeem toegewezen identiteit kan worden verwijderd door de functie uit te scha kelen:
+## <a name="remove-a-system-assigned-identity"></a>Een door het systeem toegewezen identiteit verwijderen
+
+Als u een door het systeem toegewezen identiteit verwijdert, wordt deze ook uit AAD verwijderd. Door het systeem toegewezen identiteiten worden ook automatisch uit AAD verwijderd wanneer de clusterbron wordt verwijderd. Een door het systeem toegewezen identiteit kan worden verwijderd door de functie uit te schakelen.  De door het systeem toegewezen identiteit wordt verwijderd met Behulp van C#,ARM-sjablonen of de Azure-portal zoals hieronder beschreven.
+
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+
+### <a name="remove-a-system-assigned-identity-using-the-azure-portal"></a>Een door het systeem toegewezen identiteit verwijderen met behulp van de Azure-portal
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Selecteer > **Instellingen-identiteit** in het linkerdeelvenster van de portal. **Settings**
+1. Ga in het tabblad **Identiteit>** **Systeem toegewezen:**
+    1. De schuifregelaar **Status** naar **Uit verplaatsen**.
+    1. Selecteer **Opslaan**
+    1. Selecteer in het pop-upvenster **Ja** om de door het systeem toegewezen identiteit uit te schakelen. Het **identiteitsvenster** wordt teruggezet naar dezelfde voorwaarde als vóór de toevoeging van de door het systeem toegewezen identiteit.
+
+    ![Systeem toegewezen identiteit uit](media/managed-identities/system-assigned-identity.png)
+
+# <a name="c"></a>[C #](#tab/c-sharp)
+
+### <a name="remove-a-system-assigned-identity-using-c"></a>Een door het systeem toegewezen identiteit verwijderen met C #
+
+Voer het volgende uit om de door het systeem toegewezen identiteit te verwijderen:
+
+```csharp
+var identity = new Identity(IdentityType.None);
+var cluster = new Cluster(location, sku, identity: identity);
+await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
+```
+
+# <a name="arm-template"></a>[ARM-sjabloon](#tab/arm)
+
+### <a name="remove-a-system-assigned-identity-using-an-azure-resource-manager-template"></a>Een door het systeem toegewezen identiteit verwijderen met behulp van een Azure Resource Manager-sjabloon
+
+Voer het volgende uit om de door het systeem toegewezen identiteit te verwijderen:
 
 ```json
 "identity": {
@@ -135,9 +205,11 @@ Als u een door het systeem toegewezen identiteit verwijdert, wordt deze ook uit 
 }
 ```
 
+---
+
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Data Explorer-clusters beveiligen in azure](security.md)
-* [Beveilig uw cluster in Azure Data Explorer-Azure Portal](manage-cluster-security.md) door versleuteling op rest in te scha kelen.
- * [Door de klant beheerde sleutels configureren metC#](customer-managed-keys-csharp.md)
- * [Door de klant beheerde sleutels configureren met behulp van de Azure Resource Manager sjabloon](customer-managed-keys-resource-manager.md)
+* [Azure Data Explorer-clusters beveiligen in Azure](security.md)
+* [Beveilig uw cluster in Azure Data Explorer - Azure-portal](manage-cluster-security.md) door versleuteling in rust in te schakelen.
+ * [Door de klant beheerde sleutels configureren met C #](customer-managed-keys-csharp.md)
+ * [Door de klant beheerde sleutels configureren met de sjabloon Azure Resource Manager](customer-managed-keys-resource-manager.md)

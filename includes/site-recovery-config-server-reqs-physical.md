@@ -10,43 +10,43 @@ ms.date: 09/03/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: afeae4af9b41bf434b26833a3bd927118a4697ae
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176261"
 ---
-**Configuratieproces/server-vereisten voor fysieke servers repliceren**
+**Configuratie-/processerververeisten voor fysieke serverreplicatie**
 
-**Onderdeel** | **Vereiste** 
+**Component** | **Vereiste** 
 --- | ---
 **HARDWARE-INSTELLINGEN** | 
 CPU-kernen | 8 
 RAM | 16 GB
-Aantal schijven | 3, met inbegrip van de OS-schijf, cacheschijf proces en bewaarstation voor failback 
-Vrije schijfruimte (cache van de processerver) | 600 GB
+Aantal schijven | 3, inclusief de osschijf, de servercacheschijf en het bewaarstation voor failback 
+Vrije schijfruimte (processervercache) | 600 GB
 Vrije schijfruimte (bewaarschijf) | 600 GB
  | 
-**INSTELLINGEN VOOR SOFTWARE** | 
+**SOFTWARE-INSTELLINGEN** | 
 Besturingssysteem | Windows Server 2012 R2 <br> Windows Server 2016
 Landinstelling van het besturingssysteem | Engels (en-us)
-Windows Server-functies | Deze rollen niet worden ingeschakeld: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V 
-Groepsbeleid | Geen groepsbeleid voor deze inschakelen: <br> -Toegang tot de opdrachtprompt voorkomen. <br> -Toegang tot registerbewerkingsprogramma's voorkomen. <br> -Logica vertrouwen voor bestandsbijlagen. <br> -Uitvoering van Script inschakelen. <br> [Meer informatie](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | -Er zijn geen bestaande standaardwebsite <br> -Er zijn geen bestaande website/toepassing luistert op poort 443 <br>-Inschakelen [anonieme verificatie](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Inschakelen [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) instelling.
+Windows Server-functies | Schakel deze rollen niet in: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V 
+Groepsbeleid | Schakel dit groepsbeleid niet in: <br> - Voorkom toegang tot de opdrachtprompt. <br> - Voorkom toegang tot registerbewerkingstools. <br> - Logica vertrouwen voor bestandsbijlagen. <br> - Scriptuitvoering inschakelen. <br> [Meer informatie](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+IIS | - Geen reeds bestaande standaardwebsite <br> - Geen reeds bestaande website/applicatie luisteren op poort 443 <br>- [Anonieme verificatie](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) inschakelen <br> - Schakel [de instelling van FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) in.
 Type IP-adres | Statisch 
 | 
 **TOEGANGSINSTELLINGEN** | 
-MYSQL | MySQL moet worden geïnstalleerd op de configuratieserver. U kunt ook handmatig installeren of Site Recovery kan worden geïnstalleerd tijdens de implementatie. Voor Site Recovery te installeren, controleert u dat de machine kan bereiken http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi.
-URL 's | De configuratieserver moet toegang hebben tot deze URL's (rechtstreeks of via proxy):<br/><br/> Azure AD: `login.microsoftonline.com`; `login.microsoftonline.us`; `*.accesscontrol.windows.net`<br/><br/> Overdracht van replicatiegegevens: `*.backup.windowsazure.com`; `*.backup.windowsazure.us`<br/><br/> Replicatie: `*.hypervrecoverymanager.windowsazure.com`; `*.hypervrecoverymanager.windowsazure.us`; `https://management.azure.com`; `*.services.visualstudio.com`<br/><br/> Toegang tot opslag: `*.blob.core.windows.net`; `*.blob.core.usgovcloudapi.net`<br/><br/> Tijdsynchronisatie: `time.nist.gov`; `time.windows.com`<br/><br/> Telemetrie (optioneel): `dc.services.visualstudio.com`
-Firewall | IP-adressen gebaseerde firewallregels moeten communicatie met Azure-URL's toestaan. Om te vereenvoudigen en het IP-adresbereiken beperken, wordt u aangeraden URL-filtering.<br/><br/>**Voor commerciële IP-adressen:**<br/><br/>-Sta de [Azure Datacenter IP-adresbereiken](https://www.microsoft.com/download/confirmation.aspx?id=41653), en de poort HTTPS (443).<br/><br/> -IP-adresbereiken voor de VS-West (gebruikt voor toegangsbeheer en identiteitsbeheer) toestaan.<br/><br/> -Sta de IP-adresbereiken voor de Azure-regio van uw abonnement, ter ondersteuning van de URL's die nodig zijn voor Azure Active Directory, back-up, replicatie en opslag.<br/><br/> **Voor de overheid IP-adressen:**<br/><br/> -Kunnen de regering IP-adresbereiken voor Azure Datacenter en de poort HTTPS (443).<br/><br/> -Sta de IP-adresbereiken voor alle VS (overheid)-regio's (Virginia, Texas, Arizona en Iowa), ter ondersteuning van de URL's die nodig zijn voor Azure Active Directory, back-up, replicatie en opslag.
-Poorten | 443 (orchestration-besturingselement) toestaan<br/><br/> 9443 (gegevenstransport) toestaan 
+Mysql | MySQL moet worden geïnstalleerd op de configuratieserver. U handmatig installeren of Site Recovery kan het installeren tijdens de implementatie. Controleer op het installeren van siteherstel http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msiof de machine kan worden geïnstalleerd .
+ URL's | De configuratieserver heeft toegang nodig tot deze URL's (rechtstreeks of via proxy):<br/><br/> Azure AD: `login.microsoftonline.com`; `login.microsoftonline.us`;`*.accesscontrol.windows.net`<br/><br/> Overdracht van `*.backup.windowsazure.com`replicatiegegevens: ;`*.backup.windowsazure.us`<br/><br/> Replicatiebeheer: `*.hypervrecoverymanager.windowsazure.com`; `*.hypervrecoverymanager.windowsazure.us`; `https://management.azure.com`;`*.services.visualstudio.com`<br/><br/> Toegang tot `*.blob.core.windows.net`de opslag: ;`*.blob.core.usgovcloudapi.net`<br/><br/> Tijdsynchronisatie: `time.nist.gov`;`time.windows.com`<br/><br/> Telemetrie (optioneel):`dc.services.visualstudio.com`
+Firewall | Firewallregels op basis van IP-adres moeten communicatie met Azure-URL's mogelijk maken. Om de IP-bereiken te vereenvoudigen en te beperken, raden we u aan URL-filtering te gebruiken.<br/><br/>**Voor commerciële IP's:**<br/><br/>- De [IP-bereiken van Azure Datacenter](https://www.microsoft.com/download/confirmation.aspx?id=41653)en de HTTPS-poort (443) toestaan.<br/><br/> - Sta IP-adresbereiken toe voor de West-VS (gebruikt voor toegangscontrole en identiteitsbeheer).<br/><br/> - Sta IP-adresbereiken toe voor het Azure-gebied van uw abonnement om de URL's te ondersteunen die nodig zijn voor Azure Active Directory, back-up, replicatie en opslag.<br/><br/> **Voor overheids-IP's:**<br/><br/> - Sta de IP-bereiken van Azure Government Datacenter en de HTTPS-poort (443) toe.<br/><br/> - Sta IP-adresbereiken toe voor alle Gov-regio's in de VS (Virginia, Texas, Arizona en Iowa) ter ondersteuning van de URL's die nodig zijn voor Azure Active Directory, back-up, replicatie en opslag.
+Poorten | 443 toestaan (Orkestratie van het kanaal van het controlekanaal)<br/><br/> 9443 toestaan (gegevenstransport) 
 
 
-**Configuratie-/ processerver formaat vereisten**
+**Vereisten voor het aanpassen van configuratie-/processervers**
 
-**CPU** | **Geheugen** | **Cacheschijf** | **Veranderingssnelheid van gegevens** | **Gerepliceerde machines**
+**Cpu** | **Geheugen** | **Cacheschijf** | **Gegevenswijzigingssnelheid** | **Gerepliceerde machines**
 --- | --- | --- | --- | ---
-8 vcpu 's<br/><br/> 2-sockets * 4 kernen \@ 2,5 GHz | 16GB | 300 GB | 500 GB of minder | < 100 machines
-12 vcpu 's<br/><br/> 2 socks * 6 kernen \@ 2,5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100-150-machines
-16 vcpu 's<br/><br/> socks 2 * 8 kernen \@ 2,5 GHz | 32 GB | 1 TB | 1-2 TB | 150 -200-machines
+8 vCPU's<br/><br/> 2 sockets * \@ 4 cores 2,5 GHz | 16 GB | 300 GB | 500 GB of minder | < 100 machines
+12 vCPU's<br/><br/> 2 sokken * \@ 6 cores 2,5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100 tot 150 machines
+16 vCPU's<br/><br/> 2 sokken * \@ 8 cores 2,5 GHz | 32 GB | 1 TB | 1-2 TB | 150 -200 machines
 

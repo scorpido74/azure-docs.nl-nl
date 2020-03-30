@@ -1,6 +1,6 @@
 ---
-title: Er is onvoldoende schijf ruimte voor het cluster knooppunt in azure HDInsight
-description: Problemen met de schijf ruimte van Apache Hadoop cluster knooppunten in azure HDInsight oplossen.
+title: Clusterknooppunt heeft geen schijfruimte meer in Azure HDInsight
+description: Problemen met de problemen met de schijfruimte van Apache Hadoop-clusterclients in Azure HDInsight oplossen.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,42 +8,42 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
 ms.openlocfilehash: fbfd82473b68f5032d19834ac809191d498a5a67
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894134"
 ---
-# <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>Scenario: er is onvoldoende schijf ruimte beschikbaar voor het cluster knooppunt in azure HDInsight
+# <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>Scenario: Clusterknooppunt heeft geen schijfruimte meer in Azure HDInsight
 
-In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
+In dit artikel worden stappen voor het oplossen van problemen en mogelijke oplossingen voor problemen beschreven bij interactie met Azure HDInsight-clusters.
 
 ## <a name="issue"></a>Probleem
 
-Een taak kan mislukken met een fout bericht van de volgende strekking: `/usr/hdp/2.6.3.2-14/hadoop/libexec/hadoop-config.sh: fork: No space left on device.`
+Een taak kan mislukken met een foutmelding die vergelijkbaar is met:`/usr/hdp/2.6.3.2-14/hadoop/libexec/hadoop-config.sh: fork: No space left on device.`
 
-Of u ontvangt een Apache Ambari-waarschuwing die vergelijkbaar is met: `local-dirs usable space is below configured utilization percentage`.
+Of u ontvangt Apache Ambari `local-dirs usable space is below configured utilization percentage`alert vergelijkbaar met: .
 
 ## <a name="cause"></a>Oorzaak
 
-Apache garen-toepassings cache heeft mogelijk alle beschik bare schijf ruimte verbruikt. Uw Spark-toepassing wordt waarschijnlijk niet efficiënt uitgevoerd.
+De cache van apache garentoepassingen heeft mogelijk alle beschikbare schijfruimte verbruikt. Uw Spark-toepassing wordt waarschijnlijk inefficiënt uitgevoerd.
 
-## <a name="resolution"></a>Resolutie
+## <a name="resolution"></a>Oplossing
 
-1. Gebruik de Ambari-gebruikers interface om te bepalen welk knoop punt bijna geen schijf ruimte meer heeft.
+1. Gebruik de Ambari-gebruikersinterface om te bepalen welk knooppunt geen schijfruimte meer heeft.
 
-1. Bepaal welke map in het knoop punt zorgwekkend de meeste schijf ruimte draagt. SSH eerst naar het knoop punt en voer `df` uit om het schijf gebruik voor alle koppelingen weer te geven. Meestal is het `/mnt` een tijdelijke schijf die wordt gebruikt door OSS. U kunt een map invoeren en vervolgens `sudo du -hs` typen om de samenvatte bestands grootten in een map weer te geven. Als er een map wordt weer gegeven die vergelijkbaar is met `/mnt/resource/hadoop/yarn/local/usercache/livy/appcache/application_1537280705629_0007`, betekent dit dat de toepassing nog steeds wordt uitgevoerd. Dit kan het gevolg zijn van RDD-persistentie of tussenliggende bestanden met een wille keurige volg orde.
+1. Bepaal welke map in het verontrustende knooppunt bijdraagt aan het grootste deel van de schijfruimte. SSH naar het knooppunt eerst, dan uitvoeren `df` om schijfgebruik lijst voor alle mounts. Meestal is `/mnt` het dat is een temp schijf gebruikt door OSS. U een map invoeren `sudo du -hs` en vervolgens typen om samengevatte bestandsformaten onder een map weer te geven. Als u een map `/mnt/resource/hadoop/yarn/local/usercache/livy/appcache/application_1537280705629_0007`ziet die vergelijkbaar is met , betekent dit dat de toepassing nog steeds wordt uitgevoerd. Dit kan te wijten zijn aan RDD-persistentie- of tussentijdse shuffle-bestanden.
 
-1. Als u het probleem wilt verhelpen, moet u de toepassing afbreken, waardoor de schijf ruimte die door de toepassing wordt gebruikt, wordt vrijgegeven.
+1. Als u het probleem wilt beperken, doodt u de toepassing, waardoor schijfruimte die door die toepassing wordt gebruikt, wordt vrijgegeven.
 
-1. Optimaliseer uw toepassing om het probleem uiteindelijk op te lossen.
+1. Om het probleem uiteindelijk op te lossen, optimaliseert u uw toepassing.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
+Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
 
-* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
+* Krijg antwoorden van Azure-experts via [Azure Community Support.](https://azure.microsoft.com/support/community/)
 
-* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met - het officiële Microsoft Azure-account voor het verbeteren van de klantervaring door de Azure-community te verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, u een ondersteuningsaanvraag indienen via de [Azure-portal.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Selecteer **Ondersteuning** op de menubalk of open de **Help + ondersteuningshub.** Voor meer gedetailleerde informatie raadpleegt u [Hoe u een Azure-ondersteuningsaanvraag maakt.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Toegang tot abonnementsbeheer en factureringsondersteuning is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geboden via een van de [Azure Support-abonnementen](https://azure.microsoft.com/support/plans/).

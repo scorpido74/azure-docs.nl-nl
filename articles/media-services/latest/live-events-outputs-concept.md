@@ -1,7 +1,7 @@
 ---
-title: Live Events en live outputs concepten in Azure Media Services v3
+title: Concepten voor live gebeurtenissen en live-uitvoer in Azure Media Services v3
 titleSuffix: Azure Media Services
-description: Dit onderwerp bevat een overzicht van Live Events en live outputs in Azure Media Services v3.
+description: In dit onderwerp vindt u een overzicht van live-gebeurtenissen en live-uitgangen in Azure Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,126 +12,126 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: 96b3e602011f4d3f237f29ce9b2fcad8bd0b8300
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e6f2ad2c5c30e3c75e8d3588e386ea14e8e3350b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251386"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065947"
 ---
-# <a name="live-events-and-live-outputs-in-media-services"></a>Live-evenementen en live-uitvoer in Media Services
+# <a name="live-events-and-live-outputs-in-media-services"></a>Live-evenementen en live-uitgangen in mediaservices
 
-Met Azure Media Services kunt u live gebeurtenissen aan uw klanten leveren via de Azure-Cloud. Als u uw live streaming-gebeurtenissen in Media Services v3 wilt instellen, moet u de concepten begrijpen die in dit artikel worden besproken.
+Met Azure Media Services u live-evenementen leveren aan uw klanten in de Azure-cloud. Als u uw live streaming-evenementen wilt instellen in Media Services v3, moet u inzicht krijgen in de concepten die in dit artikel worden besproken.
 
 > [!TIP]
-> Voor klanten die migreren van Media Services v2 Api's, vervangt de **live gebeurtenis** entiteit het **kanaal** in v2 en de **Live uitvoer** vervangt het **programma**.
+> Voor klanten die migreren vanuit Media Services v2 API's, vervangt de entiteit **Live Event** **Kanaal** in v2 en vervangt **Live Output** het **programma**.
 
 ## <a name="live-events"></a>Livegebeurtenissen
 
-[Livegebeurtenissen](https://docs.microsoft.com/rest/api/media/liveevents) zijn verantwoordelijk voor het opnemen en verwerken van de live videofeeds. Wanneer u een live gebeurtenis maakt, wordt er een primair en secundair invoer eindpunt gemaakt dat u kunt gebruiken om een live signaal van een extern coderings programma te verzenden. Met het externe Live coderings programma wordt de bijdrage feed naar het invoer eindpunt verzonden met behulp van het [RTMP](https://www.adobe.com/devnet/rtmp.html) -of [Smooth streaming](https://msdn.microsoft.com/library/ff469518.aspx) (gefragmenteerde-MP4) invoer protocol. Voor het RTMP-opname protocol kan de inhoud worden verzonden in de Clear (`rtmp://`) of veilig versleuteld op de kabel (`rtmps://`). Voor het Smooth Streaming opname protocol zijn de ondersteunde URL-schema's `http://` of `https://`.  
+[Livegebeurtenissen](https://docs.microsoft.com/rest/api/media/liveevents) zijn verantwoordelijk voor het opnemen en verwerken van de live videofeeds. Wanneer u een Live Event maakt, wordt een primair en secundair invoereindpunt gemaakt dat u gebruiken om een live signaal te verzenden vanaf een externe encoder. De externe live-encoder stuurt de bijdragefeed naar dat invoereindpunt met behulp van het [RTMP-](https://www.adobe.com/devnet/rtmp.html) of [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) -invoerprotocol (gefragmenteerd-MP4). Voor het RTMP-ingest-protocol kan de inhoud`rtmp://`in de duidelijke ( )`rtmps://`of veilig versleuteld op de draad worden verzonden( ). Voor het smooth streaming-ingest-protocol zijn `http://` de `https://`ondersteunde URL-schema's of .  
 
-## <a name="live-event-types"></a>Live gebeurtenis typen
+## <a name="live-event-types"></a>Typen live gebeurtenissen
 
-Een [live-gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents) kan worden ingesteld op een *Pass-Through* -(een on-premises Live coderings programma verzendt een multi-bitrate stroom) of *Live encoding* (een on-premises Live Encoder verzendt een stream met één bitsnelheid). De typen worden tijdens het maken ingesteld met behulp van [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype):
+Een [Live Event](https://docs.microsoft.com/rest/api/media/liveevents) kan worden ingesteld op een *pass-through* (een on-premises live encoder stuurt een meervoudige bitrate stream) of *live codering* (een on-premises live encoder stuurt een enkele bitrate stream). De typen worden ingesteld tijdens het maken met [LiveEventEncodingType:](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype)
 
-* **LiveEventEncodingType. none**: een on-premises Live coderings programma verzendt een stream met meerdere bitrates. De opgenomen stroom slaagt via de live-gebeurtenis zonder verdere verwerking. Ook wel de Pass-Through-modus genoemd.
-* **LiveEventEncodingType. Standard**: een on-premises Live coderings programma verzendt een stream met één bitsnelheid naar de live-gebeurtenis en Media Services maakt meerdere bitrate-streams. Als de bijdrage-feed van 720p of hoger is, wordt met de voor instelling **Default720p** een set van 6 omzetting/bitrate-paren gecodeerd.
-* **LiveEventEncodingType. Premium1080p**: een on-premises Live coderings programma verzendt een stream met één bitsnelheid naar de live-gebeurtenis en Media Services maakt meerdere bitrate-streams. De Default1080p-voor instelling bepaalt de uitvoerset van de paren Resolution/bitrates.
+* **LiveEventEncodingType.None**: Een on-premises live encoder stuurt een meervoudige bitrate stream. De ingenomen stream gaat door het Live Event zonder verdere verwerking. Ook wel de pass-through mode.
+* **LiveEventEncodingType.Standard**: Een on-premises live encoder stuurt één bitrate stream naar de Live Event en Media Services maakt meerdere bitrate streams. Als de bijdragefeed een resolutie van 720p of hoger heeft, codeert de **standaard720p-voorinstelling** een set van paren met 6 resolutie/bitrates.
+* **LiveEventEncodingType.Premium1080p**: Een on-premises live encoder stuurt één bitratestream naar het Live Event en Media Services maakt meerdere bitrate streams. De standaardinstelling 1080p geeft de uitvoerset van sets van sets van pixels/bitratesparen op.
 
 ### <a name="pass-through"></a>Pass-through
 
-![Pass-through live-gebeurtenis met Media Services voorbeeld diagram](./media/live-streaming/pass-through.svg)
+![Live-gebeurtenis doorgeven met het voorbeelddiagram mediaservices](./media/live-streaming/pass-through.svg)
 
-Bij gebruik van de pass-through **livegebeurtenis** bent u afhankelijk van de on-premises live-encoder voor het genereren van een multiple-bitrate videostream en het verzenden ervan als de bijdragefeed voor de livegebeurtenis (met behulp van RTMP of een gefragmenteerd MP4-protocol). De livegebeurtenis voert de binnenkomende videostream vervolgens zonder verdere verwerking uit. Een dergelijke door gang werkende gebeurtenis is geoptimaliseerd voor langlopende Live-gebeurtenissen of 24x365e lineaire live-streaming. Bij het maken van dit type livegebeurtenis, geeft u None op (LiveEventEncodingType.None).
+Bij gebruik van de pass-through **livegebeurtenis** bent u afhankelijk van de on-premises live-encoder voor het genereren van een multiple-bitrate videostream en het verzenden ervan als de bijdragefeed voor de livegebeurtenis (met behulp van RTMP of een gefragmenteerd MP4-protocol). De livegebeurtenis voert de binnenkomende videostream vervolgens zonder verdere verwerking uit. Zo'n pass-through Live Event is geoptimaliseerd voor langlopende live events of 24x365 lineaire live streaming. Bij het maken van dit type livegebeurtenis, geeft u None op (LiveEventEncodingType.None).
 
-U kunt de bijdragefeed verzenden bij een resolutie tot maximaal 4K en een framesnelheid van 60 frames per seconde, met ofwel H.264/AVC- of H.265/HEVC-videocodecs, en AAC (AAC-LC, HE-AACv1 of HE-AACv2)-audiocodec. Zie vergelijking van live- [gebeurtenis typen](live-event-types-comparison.md)voor meer informatie.
+U kunt de bijdragefeed verzenden bij een resolutie tot maximaal 4K en een framesnelheid van 60 frames per seconde, met ofwel H.264/AVC- of H.265/HEVC-videocodecs, en AAC (AAC-LC, HE-AACv1 of HE-AACv2)-audiocodec. Zie [Vergelijking van typen live-evenementen](live-event-types-comparison.md)voor meer informatie .
 
 > [!NOTE]
-> Het gebruik van een Pass-Through-methode is de meest rendabele manier om live streamen uit te voeren wanneer u meerdere gebeurtenissen gedurende een lange periode uitvoert, en u hebt al geïnvesteerd in on-premises encoders. Zie de details over de [prijzen](https://azure.microsoft.com/pricing/details/media-services/).
+> Het gebruik van een pass-through-methode is de meest economische manier om live streaming te doen wanneer u meerdere gebeurtenissen over een lange periode doet, en u hebt al geïnvesteerd in on-premises encoders. Zie de details over de [prijzen](https://azure.microsoft.com/pricing/details/media-services/).
 >
 
-Zie een .NET-code voorbeeld in [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
+Zie een voorbeeld van .NET-code in [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
 ### <a name="live-encoding"></a>Live Encoding  
 
-![voorbeeld diagram van Live encoding met Media Services](./media/live-streaming/live-encoding.svg)
+![live codering met mediaservices-voorbeelddiagram](./media/live-streaming/live-encoding.svg)
 
-Wanneer u live encoding met Media Services gebruikt, configureert u uw on-premises Live coderings programma voor het verzenden van een video met één bitsnelheid als de bijdrage aan de live gebeurtenis (met RTMP-of gefragmenteerd-MP4-Protocol). Vervolgens stelt u een live gebeurtenis in, zodat deze de inkomende single-bitrate stroom naar een [video stroom met meerdere bitsnelheden](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)codeert en de uitvoer beschikbaar maakt voor het afspelen van apparaten via protocollen zoals MPEG-Dash, HLS en Smooth streaming.
+Wanneer u live-codering met Media Services gebruikt, configureert u uw on-premises live-encoder om één bitrate-video te verzenden als bijdragefeed voor de Live-gebeurtenis (met RTMP- of Fragmented-Mp4-protocol). Vervolgens stelt u een Live Event in, zodat deze die binnenkomende stream van één bitrate codeert naar een [videostream met meerdere bitrates](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)en de uitvoer beschikbaar maakt voor levering om apparaten af te spelen via protocollen zoals MPEG-DASH, HLS en Smooth Streaming.
 
-Wanneer u gebruikmaakt van Live encoding, kunt u de invoer van de bijdrage alleen verzenden naar oplossingen tot 1080p-resolutie met een frame snelheid van 30 frames per seconde, met H. 264/AVC Video codec en AAC (AAC-LC, HE-AACv1 of AACv2) audiocodec. Houd er rekening mee dat door gegeven Live-gebeurtenissen oplossingen kunnen ondersteunen van Maxi maal 4.000 tot 60 frames per seconde. Zie vergelijking van live- [gebeurtenis typen](live-event-types-comparison.md)voor meer informatie.
+Wanneer u live codering gebruikt, u de bijdragefeed alleen verzenden op resoluties tot 1080p-resolutie met een framesnelheid van 30 frames per seconde, met H.264/AVC-videocodec en AAC (AAC-LC, HE-AACv1 of HE-AACv2) audiocodec. Houd er rekening mee dat pass-through Live Events resoluties tot 4K met 60 frames per seconde kunnen ondersteunen. Zie [Vergelijking van typen live-evenementen](live-event-types-comparison.md)voor meer informatie .
 
-De resoluties en bitrates die zijn opgenomen in de uitvoer van het Live coderings programma, worden bepaald door de voor instelling. Als u gebruikmaakt van een **standaard** Live coderings programma (LiveEventEncodingType. Standard), geeft de *Default720p* -voor instelling een set van zes omzettings/bitsnelheid-paren aan, van 720p tot 3,5 Mbps omlaag tot 192p bij 200 kbps. Als u een **Premium1080p** Live coderings programma (LiveEventEncodingType. Premium1080p) gebruikt, wordt met de voor instelling voor *Default1080p* een set van zes omzettings-en frequentie paren opgegeven, van 1080p tot 3,5 Mbps omlaag tot 180p met 200 kbps. Zie [Systeemwaarden](live-event-types-comparison.md#system-presets) voor meer informatie.
+De resoluties en bitrates in de uitvoer van de levende encoder worden bepaald door de voorinstelling. Als u een **standaard** live-encoder gebruikt (LiveEventEncodingType.Standard), geeft de *standaard720p-voorinstelling* een set van zes resolutie/bitrateparen op, gaande van 720p bij 3,5 Mbps tot 192p bij 200 kbps. Als u anders een **Premium1080p-levenscoder** gebruikt (LiveEventEncodingType.Premium1080p), geeft de standaardvoorinstelling *1080p* een set van zes resolutie/bitsnelheidparen op, gaande van 1080p bij 3,5 Mbps tot 180p bij 200 kbps. Zie [Systeemwaarden](live-event-types-comparison.md#system-presets) voor meer informatie.
 
 > [!NOTE]
-> Als u de voor instelling voor Live encoding wilt aanpassen, opent u een ondersteunings ticket via Azure Portal. Geef de gewenste tabel met omzetting en bitsnelheden op. Controleer of er slechts één laag is op 720p (als u een voor instelling voor een Standard-coderings programma aanvraagt) of op 1080p (als u een voor instelling voor een Premium1080p Live Encoder wilt aanvragen) en 6 lagen.
+> Als u de voorinstelling voor live codering wilt aanpassen, opent u een ondersteuningsticket via azure-portal. Geef de gewenste tabel met resolutie en bitrates op. Controleer of er slechts één laag op 720p is (als je een voorinstelling aanvraagt voor een standaard live encoder) of op 1080p (als je een voorinstelling aanvraagt voor een Premium1080p live encoder) en maximaal 6 lagen.
 
-## <a name="creating-live-events"></a>Live-gebeurtenissen maken
+## <a name="creating-live-events"></a>Live-evenementen maken
 
 ### <a name="options"></a>Opties
 
-Wanneer u een live gebeurtenis maakt, kunt u de volgende opties opgeven:
+Wanneer u een live-evenement maakt, u de volgende opties opgeven:
 
-* Het streaming-protocol voor de livegebeurtenis (momenteel worden de protocollen RTMP en Smooth Streaming ondersteund).<br/>U kunt de protocol optie niet wijzigen terwijl de live-gebeurtenis of de eraan gekoppelde actieve uitvoer bewerkingen worden uitgevoerd. Als u verschillende protocollen nodig hebt, maakt u een afzonderlijke live-gebeurtenis voor elk streaming-protocol.  
-* Wanneer u de gebeurtenis maakt, kunt u opgeven dat deze automatisch moet worden gestart. <br/>Wanneer autostart is ingesteld op True, wordt de Live gebeurtenis gestart na het maken ervan. De facturering begint zodra de live-gebeurtenis wordt gestart. U moet expliciet Stop aanroepen in de resource van de livegebeurtenis om verdere facturering stop te zetten. U kunt ook de gebeurtenis starten wanneer u klaar bent om te streamen.
+* Het streaming-protocol voor de livegebeurtenis (momenteel worden de protocollen RTMP en Smooth Streaming ondersteund).<br/>U de protocoloptie niet wijzigen terwijl de live-gebeurtenis of de bijbehorende live-uitvoer worden uitgevoerd. Als u verschillende protocollen nodig hebt, maakt u een afzonderlijk Live-evenement voor elk streamingprotocol.  
+* Wanneer u de gebeurtenis maakt, u opgeven om deze automatisch te starten. <br/>Wanneer autostart is ingesteld op True, wordt de Live gebeurtenis gestart na het maken ervan. De facturering begint zodra het live-evenement wordt gestart. U moet expliciet Stop aanroepen in de resource van de livegebeurtenis om verdere facturering stop te zetten. Je het evenement ook starten wanneer je klaar bent om te beginnen met streamen.
 
     Zie [Live Event states and billing](live-event-states-billing.md) (Statussen en facturering voor livegebeurtenissen) voor meer informatie.
 
-* IP-beperkingen voor de opname en voorbeeldweergave. U kunt de IP-adressen definiëren die zijn toegestaan om een video van deze livegebeurtenis op te nemen. Toegestane IP-adressen kunnen worden opgegeven als één IP-adres (bijvoorbeeld 10.0.0.1), een IP-adresbereik met een IP-adres en een CIDR-subnetmasker (bijvoorbeeld 10.0.0.1/22) of een IP-adresbereik met een IP-adres en een decimaal subnetmasker met punten (bijvoorbeeld , ' 10.0.0.1(255.255.252.0)').<br/>Als er geen IP-adressen zijn opgegeven en er geen regel definitie is, is er geen IP-adres toegestaan. Als u IP-adres(sen) wilt toestaan, maakt u een regel en stelt u 0.0.0.0/0 in.<br/>De IP-adressen moeten een van de volgende indelingen hebben: IpV4-adres met vier getallen of CIDR-adres bereik.
+* IP-beperkingen voor de opname en voorbeeldweergave. U kunt de IP-adressen definiëren die zijn toegestaan om een video van deze livegebeurtenis op te nemen. Toegestane IP-adressen kunnen worden opgegeven als één IP-adres (bijvoorbeeld 10.0.0.1), een IP-adresbereik met een IP-adres en een CIDR-subnetmasker (bijvoorbeeld 10.0.0.1/22) of een IP-adresbereik met een IP-adres en een decimaal subnetmasker met punten (bijvoorbeeld , ' 10.0.0.1(255.255.252.0)').<br/>Als er geen IP-adressen zijn opgegeven en er geen regeldefinitie is, is er geen IP-adres toegestaan. Als u IP-adres(sen) wilt toestaan, maakt u een regel en stelt u 0.0.0.0/0 in.<br/>De IP-adressen moeten zich in een van de volgende formaten bevinden: IpV4-adres met vier nummers of CIDR-adresbereik.
 
-    Als u bepaalde Ip's wilt inschakelen op uw eigen firewalls of als u invoer wilt beperken voor uw Live-gebeurtenissen in azure IP-adressen, downloadt u een JSON-bestand van de IP-adresbereiken van het [Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653). Selecteer de sectie **Details** op de pagina voor meer informatie over dit bestand.
+    Als u bepaalde IP's op uw eigen firewalls wilt inschakelen of invoer wilt beperken tot uw live-gebeurtenissen naar Azure IP-adressen, downloadt u een JSON-bestand uit [IP-adresbereiken](https://www.microsoft.com/download/details.aspx?id=41653)van Azure Datacenter. Selecteer de sectie **Details** op de pagina voor meer informatie over dit bestand.
     
-* Wanneer u de gebeurtenis maakt, kunt u ervoor kiezen om live-transcripties in te scha kelen. <br/> Live transcriptie is standaard uitgeschakeld. U kunt deze eigenschap niet wijzigen als de live-gebeurtenis of de gekoppelde actieve uitvoer bewerkingen worden uitgevoerd. 
+* Wanneer u het evenement maakt, u ervoor kiezen om Live Transcripties in te schakelen. <br/> Live transcriptie is standaard uitgeschakeld. U deze eigenschap niet wijzigen terwijl het live-evenement of de bijbehorende live-uitvoer wordt uitgevoerd. 
 
 ### <a name="naming-rules"></a>Naamgevingsregels
 
-* De maximale naam van een live-gebeurtenis is 32 tekens.
-* De naam moet volgen op dit [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) -patroon: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+* Max live evenement naam is 32 tekens.
+* De naam moet dit [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) patroon volgen: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
 
-Zie ook [naam conventies voor streaming-eind punten](streaming-endpoint-concept.md#naming-convention).
+Zie ook [Streaming Endpoints naamgevingsconventies](streaming-endpoint-concept.md#naming-convention).
 
 > [!TIP]
-> Als u de unieke naam van uw live-evenement wilt waarborgen, kunt u een GUID genereren en vervolgens alle afbreek streepjes en accolades verwijderen (indien van toepassing). De teken reeks is uniek voor alle Live-gebeurtenissen en de lengte ervan is gegarandeerd 32.
+> Om de uniciteit van uw live-evenementnaam te garanderen, u een GUID genereren en vervolgens alle koppeltekens en krullende haakjes verwijderen (indien aanwezig). De string zal uniek zijn in alle live-evenementen en de lengte is gegarandeerd 32.
 
-## <a name="live-event-ingest-urls"></a>Url's voor Live Event opname
+## <a name="live-event-ingest-urls"></a>Url's voor live gebeurtenissen
 
-Zodra de live gebeurtenis is gemaakt, kunt u opname-Url's ophalen die u aanbiedt aan de Live on-premises encoder. De live-encoder gebruikt deze URL's voor het invoeren van een live-stream. Zie [Aanbevolen on-premises Live coderings](recommended-on-premises-live-encoders.md)Programma's voor meer informatie.
+Zodra het Live Event is gemaakt, u url's krijgen die u aan de live on-premises encoder verstrekt. De live-encoder gebruikt deze URL's voor het invoeren van een live-stream. Zie [Aanbevolen on-premises live encoders voor](recommended-on-premises-live-encoders.md)meer informatie.
 
 U kunt niet-vanity-URL's en vanity-URL's gebruiken.
 
 > [!NOTE] 
-> Stel de ' Vanity-modus in om een opname-URL voorspellend te maken.
+> Als u een inname-URL voorspellend wilt maken, stelt u de modus 'ijdelheid' in.
 
-* Niet-Vanity-URL
+* URL van niet-ijdelheid
 
-    Niet-Vanity-URL is de standaard modus in Media Services v3. U krijgt de livegebeurtenis mogelijk snel, maar de opname-URL is alleen bekend als de livegebeurtenis wordt gestart. De URL wordt gewijzigd als u de livegebeurtenis stopt of start. <br/>Niet-Vanity is handig in scenario's wanneer een eind gebruiker wil streamen met behulp van een app waarin de app een live gebeurtenis spoed wil ontvangen en een dynamische opname-URL geen problemen vormt.
+    Url van niet-ijdelheid is de standaardmodus in Media Services v3. U krijgt de livegebeurtenis mogelijk snel, maar de opname-URL is alleen bekend als de livegebeurtenis wordt gestart. De URL wordt gewijzigd als u de livegebeurtenis stopt of start. <br/>Non-Vanity is handig in scenario's waarin een eindgebruiker wil streamen met behulp van een app waar de app zo snel mogelijk een live-evenement wil ontvangen en het hebben van een dynamische inname-URL geen probleem is.
 
-    Als een client-app geen opname-URL hoeft te genereren voordat de live-gebeurtenis wordt gemaakt, laat Media Services automatisch het toegangs token genereren voor de live-gebeurtenis.
+    Als een client-app geen url hoeft te genereren voordat de Live-gebeurtenis wordt gemaakt, laat Media Services het Access-token voor de live-gebeurtenis automatisch genereren.
 
-* Vanity-URL
+* Url van ijdelheid
 
-    De Vanity-modus wordt aanbevolen door grote media-broadcasters die gebruikmaken van hardware broadcast encoders en ze hun encoders niet opnieuw moeten configureren wanneer ze de live-gebeurtenis starten. Ze willen een voorspellende opname-URL, die niet in de loop van de tijd verandert.
+    De vanity-modus heeft de voorkeur van grote media-omroepen die gebruik maken van hardware-broadcast-encoders en hun encoders niet opnieuw willen configureren wanneer ze het Live Event starten. Ze willen een voorspellende URL, die in de loop van de tijd niet verandert.
 
-    Als u deze modus wilt opgeven, stelt u `vanityUrl` in op `true` tijdens de aanmaak tijd (de standaard instelling is `false`). U moet ook uw eigen toegangs token (`LiveEventInput.accessToken`) door geven tijdens de aanmaak tijd. U geeft de token waarde op om een wille keurig token in de URL te vermijden. Het toegangs token moet een geldige GUID-teken reeks zijn (met of zonder de afbreek streepjes). Zodra de modus is ingesteld, kan deze niet worden bijgewerkt.
+    Als u deze modus `vanityUrl` `true` wilt opgeven, stelt `false`u in op de tijd van het maken (standaard is ). Je moet ook je eigen`LiveEventInput.accessToken`toegangstoken () doorgeven bij het maken van de tijd. U geeft de tokenwaarde op om een willekeurig token in de URL te vermijden. Het toegangstoken moet een geldige GUID-tekenreeks zijn (met of zonder de koppeltekens). Zodra de modus is ingesteld, kan deze niet meer worden bijgewerkt.
 
-    Het toegangs token moet uniek zijn in uw Data Center. Als uw app een Vanity-URL moet gebruiken, is het raadzaam om altijd een nieuw GUID-exemplaar voor uw toegangs token te maken (in plaats van een bestaande GUID opnieuw te gebruiken).
+    Het toegangstoken moet uniek zijn in uw datacenter. Als uw app een ijdelheids-URL moet gebruiken, wordt het aanbevolen om altijd een nieuwe GUID-instantie voor uw toegangstoken te maken (in plaats van bestaande GUID opnieuw te gebruiken).
 
-    Gebruik de volgende Api's om de Vanity-URL in te scha kelen en het toegangs token in te stellen op een geldige GUID (bijvoorbeeld `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`).  
+    Gebruik de volgende API's om de URL van Ijdelheid in te schakelen `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`en het toegangstoken in te stellen op een geldige GUID (bijvoorbeeld).  
 
-    |Taal|Vanity-URL inschakelen|Toegangstoken instellen|
+    |Taal|Ijdelheids-URL inschakelen|Toegangstoken instellen|
     |---|---|---|
-    |REST|[Eigenschappen. vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
-    |CLI|[--Vanity-URL](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--Access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
-    |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
+    |CLI|[--ijdelheid-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
     
-### <a name="live-ingest-url-naming-rules"></a>Naamgevings regels voor Live opname-URL'S
+### <a name="live-ingest-url-naming-rules"></a>Naamgevingsregels voor live-opname-URL's
 
 * De *willekeurige* tekenreeks hieronder is een 128-bits hexadecimaal getal (bestaande uit 32 tekens, van 0-9 en a-f).
-* *uw toegangs token*: de geldige GUID-teken reeks die u instelt wanneer u de Vanity-modus gebruikt. Bijvoorbeeld `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
-* *Stream name*: geeft de naam van de stream voor een specifieke verbinding aan. De waarde van de stroom naam wordt meestal toegevoegd door de live encoder die u gebruikt. U kunt het Live coderings programma zodanig configureren dat elke naam wordt gebruikt om de verbinding te beschrijven, bijvoorbeeld: "video1_audio1", "video2_audio1", "Stream".
+* *uw toegangstoken:* de geldige GUID-tekenreeks die u instelt bij het gebruik van de ijdelheidsmodus. Bijvoorbeeld `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
+* *stroomnaam:* geeft de stroomnaam voor een specifieke verbinding aan. De waarde van de streamnaam wordt meestal toegevoegd door de live encoder die u gebruikt. U de levende encoder configureren om elke naam te gebruiken om de verbinding te beschrijven, bijvoorbeeld: video1_audio1, video2_audio1, stream.
 
-#### <a name="non-vanity-url"></a>Niet-Vanity-URL
+#### <a name="non-vanity-url"></a>URL van niet-ijdelheid
 
 ##### <a name="rtmp"></a>RTMP
 
@@ -145,7 +145,7 @@ U kunt niet-vanity-URL's en vanity-URL's gebruiken.
 `http://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 `https://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 
-#### <a name="vanity-url"></a>Vanity-URL
+#### <a name="vanity-url"></a>Url van ijdelheid
 
 ##### <a name="rtmp"></a>RTMP
 
@@ -159,27 +159,31 @@ U kunt niet-vanity-URL's en vanity-URL's gebruiken.
 `http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<your access token>/ingest.isml/streams(<stream name>)`<br/>
 `https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<your access token>/ingest.isml/streams(<stream name>)`<br/>
 
-## <a name="live-event-preview-url"></a>Preview-URL voor Live Event
+## <a name="live-event-preview-url"></a>URL van voorbeeld voorbeeld live gebeurtenis
 
-Zodra de live-gebeurtenis begint met het ontvangen van de contributie, kunt u het preview-eind punt gebruiken om te bekijken en te controleren of u de Live Stream ontvangt voordat u verder gaat publiceren. Nadat u hebt gecontroleerd of de voorbeeld stroom goed is, kunt u de live-gebeurtenis gebruiken om de live-stream beschikbaar te maken voor levering via een of meer (vooraf gemaakte) streaming-eind punten. U kunt dit doen door een nieuwe [Live-uitvoer](https://docs.microsoft.com/rest/api/media/liveoutputs) te maken voor de live-gebeurtenis.
+Zodra het live-evenement de bijdragefeed begint te ontvangen, u het voorbeeldeindpunt gebruiken om te bekijken en te valideren dat u de live stream ontvangt voordat u verder wordt gepubliceerd. Nadat je hebt gecontroleerd of de previewstream goed is, kun je het Live Event gebruiken om de live stream beschikbaar te maken voor levering via een of meer (vooraf gemaakte) Streaming Endpoints. Maak hiervoor een nieuwe [Live Output](https://docs.microsoft.com/rest/api/media/liveoutputs) op het Live Event.
 
 > [!IMPORTANT]
-> Zorg ervoor dat de video stroomt naar de Preview-URL voordat u doorgaat.
+> Zorg ervoor dat de video naar de url van de preview stroomt voordat u verdergaat!
 
-## <a name="live-event-long-running-operations"></a>Langlopende bewerkingen voor Live Event
+## <a name="live-event-long-running-operations"></a>Langlopende bewerkingen van live-evenementen
 
-Zie [langlopende bewerkingen](media-services-apis-overview.md#long-running-operations)voor meer informatie.
+Zie [langlopende bewerkingen](media-services-apis-overview.md#long-running-operations)voor meer informatie .
 
 ## <a name="live-outputs"></a>Live-uitvoer
 
-Zodra u de stroom naar de live gebeurtenis hebt gestroomd, kunt u de streaming-gebeurtenis starten door een [Asset](https://docs.microsoft.com/rest/api/media/assets), [Live output](https://docs.microsoft.com/rest/api/media/liveoutputs)en [streaming-Locator](https://docs.microsoft.com/rest/api/media/streaminglocators)te maken. Live uitvoer archiveert de stream en maakt deze beschikbaar voor gebruikers via het [streaming-eind punt](https://docs.microsoft.com/rest/api/media/streamingendpoints).  
+Zodra je de stream naar het Live-evenement hebt gestreamd, kun je de streaming-gebeurtenis beginnen door een [Asset,](https://docs.microsoft.com/rest/api/media/assets) [Live Output](https://docs.microsoft.com/rest/api/media/liveoutputs)en [Streaming Locator](https://docs.microsoft.com/rest/api/media/streaminglocators)te maken. Live Output archiveert de stream en maakt deze beschikbaar voor kijkers via het [Streaming Endpoint.](https://docs.microsoft.com/rest/api/media/streamingendpoints)  
 
-Zie [een Cloud-DVR gebruiken](live-event-cloud-dvr.md)voor meer informatie over live-uitvoer.
+Zie [Een cloud-DVR gebruiken](live-event-cloud-dvr.md)voor gedetailleerde informatie over Live-uitvoer.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
+## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+Zie het [artikel over veelgestelde vragen.](frequently-asked-questions.md#live-streaming)
+
+## <a name="ask-questions-and-get-updates"></a>Stel vragen en ontvang updates
+
+Bekijk het communityartikel [van Azure Media Services](media-services-community.md) om verschillende manieren te zien waarop u vragen stellen, feedback geven en updates ontvangen over Media Services.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Zelf studie over live streamen](stream-live-tutorial-with-api.md)
+[Zelfstudie voor live streaming](stream-live-tutorial-with-api.md)

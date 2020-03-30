@@ -1,65 +1,131 @@
 ---
-title: Gegevens stroom koppelen selecteren trans formatie
-description: Trans formatie Azure Data Factory toewijzing van gegevens stroom selecteren
+title: Gegevensstroom toewijzen Selecteer transformatie
+description: Azure Data Factory mapping data flow Select Transformation
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/08/2020
-ms.openlocfilehash: 2d04de420f743e4fef4cff4bd2912559dae0886a
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.date: 03/18/2020
+ms.openlocfilehash: cfa15f5424dcd5d52b03fb65afe051444127f5ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934174"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065260"
 ---
-# <a name="mapping-data-flow-select-transformation"></a>Gegevens stroom koppelen selecteren trans formatie
+# <a name="select-transformation-in-mapping-data-flow"></a>Transformatie selecteren in het toewijzen van gegevensstroom
 
+Gebruik de optietransformatie om kolommen opnieuw te benoemen, neer te zetten of opnieuw te ordenen. Deze transformatie wijzigt geen rijgegevens, maar kiest welke kolommen stroomafwaarts worden gepropageerd. 
 
-Gebruik deze trans formatie voor kolom selectiviteit (kleiner aantal kolommen), alias kolommen en stroom namen en volg orde van kolommen.
+In een geselecteerde transformatie kunnen gebruikers vaste toewijzingen opgeven, patronen gebruiken om op regels gebaseerde toewijzing uit te voeren of automatische toewijzing inschakelen. Vaste en op regels gebaseerde toewijzingen kunnen beide worden gebruikt binnen dezelfde select-transformatie. Als een kolom niet overeenkomt met een van de gedefinieerde toewijzingen, wordt deze verwijderd.
 
-## <a name="how-to-use-select-transformation"></a>Trans formatie selecteren gebruiken
-Met de Select Transform kunt u een volledige stroom of kolommen in die stroom aliassen, verschillende namen toewijzen (aliassen) en vervolgens naar deze nieuwe namen verwijzen verderop in uw gegevens stroom. Deze trans formatie is handig voor Self-koppelings scenario's. De manier waarop u een self-samen voeging in de ADF-gegevens stroom implementeert, is door een stroom te maken, deze te vertakking met ' nieuwe vertakking ' en vervolgens onmiddellijk daarna een ' Select '-trans formatie toe te voegen. Deze stroom heeft nu een nieuwe naam die u kunt gebruiken om terug te gaan naar de oorspronkelijke stream, waarbij u een self-deelname maakt:
+## <a name="fixed-mapping"></a>Vaste toewijzing
 
-![Self-deelname](media/data-flow/selfjoin.png "Self-deelname")
+Als er minder dan 50 kolommen in uw projectie zijn gedefinieerd, hebben alle gedefinieerde kolommen standaard een vaste toewijzing. Een vaste toewijzing neemt een gedefinieerde, binnenkomende kolom en brengt deze een exacte naam toe.
 
-In het bovenstaande diagram bevindt de geselecteerde trans formatie zich bovenaan. Dit is een alias voor de oorspronkelijke stroom naar ' OrigSourceBatting '. In de onderstaande gemarkeerde join-trans formatie ziet u dat we deze Select alias Stream gebruiken als de rechter join, zodat we naar dezelfde sleutel in de linker & rechter kant van de inner join kunnen verwijzen.
-
-Select kan ook worden gebruikt als een manier om de kolommen uit uw gegevens stroom te deselecteren. Als u bijvoorbeeld 6 kolommen hebt gedefinieerd in uw Sink, maar u alleen een specifieke 3 wilt transformeren en vervolgens naar de Sink wilt gaan, kunt u alleen die drie selecteren met behulp van de trans formatie selecteren.
-
-![Trans formatie selecteren](media/data-flow/newselect1.png "Alias selecteren")
-
-## <a name="options"></a>Opties
-* De standaard instelling voor ' Select ' is om alle binnenkomende kolommen op te slaan en de oorspronkelijke namen te blijven gebruiken. U kunt de stroom alias door de naam van de Select trans formatie in te stellen.
-* Als u afzonderlijke kolommen als alias wilt gebruiken, schakelt u ' Alles selecteren ' uit en gebruikt u onderaan de kolom toewijzing.
-* Kies dubbele items overs Laan om dubbele kolommen van invoer-of uitvoer meta gegevens te verwijderen.
-
-![Dubbele items overs Laan](media/data-flow/select-skip-dup.png "Dubbele items overs Laan")
-
-* Wanneer u ervoor kiest dubbele items over te slaan, worden de resultaten weer gegeven op het tabblad controleren. de eerste keer dat de kolom wordt ingecheckt, blijft de volgende keer dat dezelfde kolom van de stroom wordt verwijderd.
+![Vaste toewijzing](media/data-flow/fixedmapping.png "Vaste toewijzing")
 
 > [!NOTE]
-> Als u de toewijzings regels wilt wissen, klikt u op de knop **Reset** .
+> U een zwevende kolom niet toewijzen of de naam wijzigen met een vaste toewijzing
 
-## <a name="mapping"></a>Toewijzing
-Standaard worden alle kolommen automatisch toegewezen door trans formatie selecteren, die alle binnenkomende kolommen doorgeeft aan dezelfde naam in de uitvoer. De naam van de uitvoer stroom die is ingesteld in instellingen selecteren, definieert een nieuwe alias naam voor de stroom. Als u de optie instellen voor automatisch toewijzen inschakelt, kunt u de hele stroom een alias met alle kolommen.
+### <a name="mapping-hierarchical-columns"></a>Hiërarchische kolommen toewijzen
 
-![Transformatie regels selecteren](media/data-flow/rule2.png "Toewijzing op basis van een regel")
+Vaste toewijzingen kunnen worden gebruikt om een subkolom van een hiërarchische kolom in kaart te brengen naar een kolom op het hoogste niveau. Als u een gedefinieerde hiërarchie hebt, gebruikt u de kolomvervolgom een subkolom te selecteren. Met de selecte transformatie wordt een nieuwe kolom gemaakt met de waarde en het gegevenstype van de subkolom.
 
-Als u kolommen wilt aliassen, verwijderen, de naam ervan wilt wijzigen of opnieuw wilt rangschikken, moet u eerst de optie automatisch toewijzen uitschakelen. Standaard ziet u een standaard regel die is ingevoerd voor alle invoer kolommen. U kunt deze regel behouden als u van plan bent om altijd alle binnenkomende kolommen toe te wijzen aan dezelfde naam op de uitvoer.
+![hiërarchische toewijzing](media/data-flow/select-hierarchy.png "hiërarchische toewijzing")
 
-Als u echter aangepaste regels wilt toevoegen, klikt u op toewijzing toevoegen. Veld toewijzing bevat een lijst met binnenkomende en uitgaande kolom namen voor toewijzing en alias. Kies regel toewijzing om regels voor het vergelijken van het patroon te maken.
+## <a name="rule-based-mapping"></a>Toewijzing op basis van regels
 
-## <a name="rule-based-mapping"></a>Toewijzing op basis van een regel
-Wanneer u op regels gebaseerde toewijzing kiest, geeft u de ADF de opdracht om de overeenkomende expressie te evalueren zodat deze overeenkomt met de regels voor binnenkomende patronen en de uitgaande veld namen te definiëren. U kunt een combi natie van zowel veld-als op regels gebaseerde toewijzingen toevoegen. Veld namen worden vervolgens gegenereerd tijdens runtime via ADF op basis van binnenkomende meta gegevens van de bron. U kunt de namen van de gegenereerde velden weer geven tijdens fout opsporing en het deel venster gegevens voorbeeld gebruiken.
+Als u veel kolommen tegelijk in kaart wilt brengen of zwevende kolommen stroomafwaarts wilt doorgeven, gebruikt u regelgebaseerde toewijzing om uw toewijzingen te definiëren met behulp van kolompatronen. Overeenkomen op `name`basis `type` `stream`van `position` de , , , en van kolommen. U elke combinatie van vaste en op regels gebaseerde toewijzingen hebben. Standaard worden alle projecties met meer dan 50 kolommen standaard gekoppeld aan een op regels gebaseerde toewijzing die overeenkomt met elke kolom en de ingevoerde naam wordt uitgevoerd. 
 
-Meer informatie over het vergelijken van patronen vindt u in de documentatie van het [kolom patroon](concepts-data-flow-column-pattern.md).
+Als u een toewijzing op basis van regels wilt toevoegen, klikt u op **Toewijzing toevoegen** en selecteert u Toewijzing op basis **van regels**.
 
-### <a name="use-rule-based-mapping-to-parameterize-the-select-transformation"></a>Op regels gebaseerde toewijzing gebruiken om de para meters-trans formatie te selecteren
-U kunt de veld toewijzing para meters in de optie trans formatie selecteren met behulp van op regels gebaseerde toewijzing. Gebruik het tref woord ```name``` om de binnenkomende kolom namen te controleren aan de hand van een para meter. Als u bijvoorbeeld een gegevensstroom parameter met de naam ```mycolumn```, kunt u één transformatie regel voor een enkele selectie maken die altijd de kolom naam die u instelt ```mycolumn``` op een veld naam op deze manier toewijst:
+![op regels gebaseerde toewijzing](media/data-flow/rule2.png "Toewijzing op basis van regels")
 
-```name == $mycolumn```
+Elke regelgebaseerde toewijzing vereist twee ingangen: de voorwaarde waarop deze moet overeenkomen en wat elke toegewezen kolom moet worden genoemd. Beide waarden worden ingevoerd via de [expressiebouwer](concepts-data-flow-expression-builder.md). Voer in het linkerexpressievak de voorwaarde van de booleaanse wedstrijd in. Geef in het juiste expressievak op aan welke overeenkomende kolom wordt toegewezen.
+
+![op regels gebaseerde toewijzing](media/data-flow/rule-based-mapping.png "Toewijzing op basis van regels")
+
+Gebruik `$$` syntaxis om te verwijzen naar de invoernaam van een overeenkomende kolom. Stel dat een gebruiker de bovenstaande afbeelding als voorbeeld gebruikt, deze wil overeenkomen met alle tekenreekskolommen waarvan de namen korter zijn dan zes tekens. Als er een inkomende kolom is benoemd, `test`wordt de naam van de kolom door de expressie `$$ + '_short'` gewijzigd. `test_short` Als dat de enige toewijzing is die bestaat, worden alle kolommen die niet aan de voorwaarde voldoen, uit de geümeerde gegevens verwijderd.
+
+Patronen komen overeen met zowel zwevende als gedefinieerde kolommen. Als u wilt zien welke gedefinieerde kolommen door een regel in kaart zijn gebracht, klikt u op het pictogram van de bril naast de regel. Controleer uw uitvoer met behulp van een voorbeeld van gegevens.
+
+### <a name="regex-mapping"></a>Regex-toewijzing
+
+Als u op het pictogram neerwaartse chevron klikt, u een regex-toewijzingsvoorwaarde opgeven. Een regex-toewijzingsvoorwaarde komt overeen met alle kolomnamen die overeenkomen met de opgegeven regexvoorwaarde. Dit kan worden gebruikt in combinatie met standaard regelgebaseerde toewijzingen.
+
+![op regels gebaseerde toewijzing](media/data-flow/regex-matching.png "Toewijzing op basis van regels")
+
+Het bovenstaande voorbeeld komt `(r)` overeen met het regex-patroon of een kolomnaam die een kleine letters r bevat. Net als bij standaard regelgebaseerde toewijzing worden alle overeenkomende kolommen `$$` gewijzigd door de voorwaarde aan de rechterkant met behulp van syntaxis.
+
+Als u meerdere regex-overeenkomsten in uw kolomnaam hebt, u verwijzen naar specifieke overeenkomsten met de plaats `$n` waar 'n' naar welke overeenkomst verwijst. '$2' verwijst bijvoorbeeld naar de tweede overeenkomst binnen een kolomnaam.
+
+### <a name="rule-based-hierarchies"></a>Hiërarchieën op basis van regels
+
+Als uw gedefinieerde projectie een hiërarchie heeft, u regeltoewijzing gebruiken om de subkolommen van de hiërarchieën in kaart te brengen. Geef een overeenkomende voorwaarde op en de complexe kolom waarvan u de subkolommen wilt toewijzen. Elke overeenkomende subkolom wordt uitgevoerd met de regel 'Name as', die aan de rechterkant is opgegeven.
+
+![op regels gebaseerde toewijzing](media/data-flow/rule-based-hierarchy.png "Toewijzing op basis van regels")
+
+Het bovenstaande voorbeeld komt overeen `a`op alle subkolommen van complexe kolom . `a`bevat twee `b` subkolommen en `c`. Het uitvoerschema bevat `b` twee `c` kolommen en als de `$$`voorwaarde 'Naam als' is .
+
+### <a name="parameterization"></a>Parameterisatie
+
+U kolomnamen parameteriseren met behulp van regelgebaseerde toewijzing. Gebruik het ```name``` trefwoord om inkomende kolomnamen af te koppelen aan een parameter. Als u bijvoorbeeld een parameter ```mycolumn```voor gegevensstromen hebt, u een regel ```mycolumn```maken die overeenkomt met een kolomnaam die gelijk is aan. U de naam van de overeenkomende kolom wijzigen in een hard-coded tekenreeks zoals 'business key' en deze expliciet verwijzen. In dit voorbeeld is ```name == $mycolumn``` de bijpassende voorwaarde en is de naamvoorwaarde 'business key'. 
+
+## <a name="auto-mapping"></a>Automatisch toewijzen
+
+Wanneer u een geselecteerde transformatie toevoegt, kan **Automatisch toewijzen** worden ingeschakeld door de schuifregelaar Automatisch toewijzen te schakelen. Met automatische toewijzing worden in de geselecteerde transformatie alle binnenkomende kolommen toegewezen, met uitzondering van duplicaten, met dezelfde naam als hun invoer. Dit omvat zwevende kolommen, wat betekent dat de uitvoergegevens kolommen kunnen bevatten die niet in uw schema zijn gedefinieerd. Zie [schemadrift voor](concepts-data-flow-schema-drift.md)meer informatie over afgedreven kolommen.
+
+![Automatisch toewijzen](media/data-flow/automap.png "Automatisch toewijzen")
+
+Met automatische toewijzing aan, zal de selecte transformatie de dubbele instellingen overslaan en een nieuwe alias voor de bestaande kolommen bieden. Aliasing is handig bij het doen van meerdere joins of lookups op dezelfde stream en in zelf-join scenario's. 
+
+## <a name="duplicate-columns"></a>Kolommen dupliceren
+
+Standaard worden bij de geselecteerde transformatie dubbele kolommen in zowel de invoer- als uitvoerprojectie neergedaald. Dubbele invoerkolommen komen vaak van join- en opzoektransformaties waarbij kolomnamen aan elke kant van de join worden gedupliceerd. Dubbele uitvoerkolommen kunnen optreden als u twee verschillende invoerkolommen aan dezelfde naam toegeeft. Kies of u dubbele kolommen wilt neerzetten of doorgeven door het selectievakje te schakelen.
+
+![Duplicaten overslaan](media/data-flow/select-skip-dup.png "Duplicaten overslaan")
+
+## <a name="ordering-of-columns"></a>Bestellen van kolommen
+
+De volgorde van toewijzingen bepaalt de volgorde van de uitvoerkolommen. Als een invoerkolom meerdere keren in kaart wordt gebracht, wordt alleen de eerste toewijzing gehonoreerd. Voor het vallen van dubbele kolommen wordt de eerste wedstrijd bewaard.
+
+## <a name="data-flow-script"></a>Script voor gegevensstroom
+
+### <a name="syntax"></a>Syntaxis
+
+```
+<incomingStream>
+    select(mapColumn(
+        each(<hierarchicalColumn>, match(<matchCondition>), <nameCondition> = $$), ## hierarchical rule-based matching
+        <fixedColumn>, ## fixed mapping, no rename
+        <renamedFixedColumn> = <fixedColumn>, ## fixed mapping, rename
+        each(match(<matchCondition>), <nameCondition> = $$), ## rule-based mapping
+        each(patternMatch(<regexMatching>), <nameCondition> = $$) ## regex mapping
+    ),
+    skipDuplicateMapInputs: { true | false },
+    skipDuplicateMapOutputs: { true | false }) ~> <selectTransformationName>
+```
+
+### <a name="example"></a>Voorbeeld
+
+Hieronder vindt u een voorbeeld van een select mapping en het gegevensstroomscript:
+
+![Scriptvoorbeeld selecteren](media/data-flow/select-script-example.png "Scriptvoorbeeld selecteren")
+
+```
+DerivedColumn1 select(mapColumn(
+        each(a, match(true())),
+        movie,
+        title1 = title,
+        each(match(name == 'Rating')),
+        each(patternMatch(`(y)`),
+            $1 + 'regex' = $$)
+    ),
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> Select1
+```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Gebruik de [sink-trans formatie](data-flow-sink.md) om uw gegevens in een gegevens archief in te voeren nadat u selecteren voor naam wijzigen, volg orde en alias kolommen hebt gebruikt.
+* Nadat u Select hebt gebruikt om de naam, de volgorde en aliaskolommen te wijzigen, gebruikt u de [transformatie Sink](data-flow-sink.md) om uw gegevens in een gegevensarchief te plaatsen.

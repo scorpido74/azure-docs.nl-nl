@@ -1,37 +1,37 @@
 ---
-title: Resource Manager-sjablonen voor de Azure Cosmos DB-API voor MongoDB
-description: Gebruik Azure Resource Manager sjablonen om Azure Cosmos DB-API voor MongoDB te maken en te configureren.
+title: Resource Manager-sjablonen voor Azure Cosmos DB API voor MongoDB
+description: Gebruik Azure Resource Manager-sjablonen om Azure Cosmos DB API voor MongoDB te maken en te configureren.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: eb3b0537b01c60e79959494c65306c4a56c331a3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 531f122679c463b11c84eba2fca9f30b09e0935f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251854"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063644"
 ---
-# <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB MongoDB-API-resources beheren met Azure Resource Manager sjablonen
+# <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB MongoDB API-resources beheren met Azure Resource Manager-sjablonen
 
-In dit artikel wordt beschreven hoe u verschillende bewerkingen uitvoert om het beheer van uw Azure Cosmos DB-accounts, data bases en containers te automatiseren met behulp van Azure Resource Manager sjablonen. In dit artikel vindt u voor beelden van de Azure Cosmos DB-API voor MongoDB, om voor beelden te vinden voor andere typen API-accounts: gebruik Azure Resource Manager sjablonen met de API van Azure Cosmos DB voor [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [SQL](manage-sql-with-resource-manager.md), [tabel](manage-table-with-resource-manager.md) artikelen.
+In dit artikel wordt beschreven hoe u verschillende bewerkingen uitvoert om het beheer van uw Azure Cosmos DB-accounts, databases en containers te automatiseren met Azure Resource Manager-sjablonen. In dit artikel vindt u alleen voorbeelden voor de API van Azure Cosmos DB voor MongoDB om voorbeelden te vinden voor andere API-typeaccounts: gebruik Azure Resource Manager-sjablonen met azure cosmos DB's API voor [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [SQL](manage-sql-with-resource-manager.md), [Tabelartikelen.](manage-table-with-resource-manager.md)
 
-## Azure Cosmos DB-API maken voor het MongoDB-account, de data base en de verzameling<a id="create-resource"></a>
+## <a name="create-azure-cosmos-db-api-for-mongodb-account-database-and-collection"></a>Azure Cosmos DB API maken voor MongoDB-account, database en verzameling<a id="create-resource"></a>
 
-Azure Cosmos DB resources maken met behulp van een Azure Resource Manager sjabloon. Met deze sjabloon wordt een Azure Cosmos-account gemaakt voor MongoDB-API met twee verzamelingen die een door Voer van 400 RU/s op database niveau delen. Kopieer de sjabloon en implementeer deze zoals hieronder wordt weer gegeven of ga naar de [Galerie van Azure Quick](https://azure.microsoft.com/resources/templates/101-cosmosdb-mongodb/) start en implementeer deze vanuit de Azure Portal. U kunt de sjabloon ook downloaden naar uw lokale computer of een nieuwe sjabloon maken en het lokale pad opgeven met de para meter `--template-file`.
+Azure Cosmos DB-resources maken met behulp van een Azure Resource Manager-sjabloon. Met deze sjabloon wordt een Azure Cosmos-account gemaakt voor de MongoDB API met twee verzamelingen die de doorvoer van 400 RU/s delen op databaseniveau. Kopieer de sjabloon en implementeer zoals hieronder weergegeven of ga naar [Azure Quickstart Gallery](https://azure.microsoft.com/resources/templates/101-cosmosdb-mongodb/) en implementeer vanuit de Azure-portal. U de sjabloon ook downloaden naar uw lokale computer of `--template-file` een nieuwe sjabloon maken en het lokale pad met de parameter opgeven.
 
 > [!NOTE]
-> Account namen moeten kleine letters en 44 of minder tekens bevatten.
-> Als u RU/s wilt bijwerken, moet u de sjabloon opnieuw verzenden met bijgewerkte waarden voor doorvoer eigenschappen.
+> Accountnamen moeten kleine letters en 44 of minder tekens zijn.
+> Als u RU/s wilt bijwerken, dient u de sjabloon opnieuw in met bijgewerkte eigenschapswaarden voor doorvoer.
 >
-> Op dit moment kunt u alleen 3,2-versie maken (dat wil zeggen, accounts die gebruikmaken van het eind punt in de indeling `*.documents.azure.com`) van de Azure Cosmos DB-API voor MongoDB-accounts met behulp van Power shell, CLI en Resource Manager-sjablonen. Als u 3,6-versie van accounts wilt maken, gebruikt u Azure Portal in plaats daarvan.
+> Momenteel u alleen 3.2-versie maken (dat wil `*.documents.azure.com`zeggen accounts met behulp van het eindpunt in de indeling) van de API van Azure Cosmos DB voor MongoDB-accounts met PowerShell en CLI. Als u 3.6-versie van accounts wilt maken, gebruikt u in plaats daarvan Resource Manager-sjablonen (onder) of Azure-portal.
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-mongodb/azuredeploy.json":::
 
 ### <a name="deploy-via-the-azure-cli"></a>Implementeren via de Azure CLI
 
-Als u de Azure Resource Manager sjabloon wilt implementeren met behulp van de Azure CLI, **kopieert** u het script en selecteert u **proberen het** te openen Azure Cloud shell. Als u het script wilt plakken, klikt u met de rechter muisknop op de shell en selecteert u vervolgens **Plakken**:
+Als u de azure resource manager-sjabloon wilt implementeren met de Azure CLI, **kopieert u** het script en selecteert **u Try it** om Azure Cloud Shell te openen. Als u het script wilt plakken, klikt u met de rechtermuisknop op de shell en selecteert u **Plakken:**
 
 ```azurecli-interactive
 
@@ -53,13 +53,13 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-De `az cosmosdb show` opdracht toont het zojuist gemaakte Azure Cosmos-account nadat het is ingericht. Als u ervoor kiest een lokaal geïnstalleerde versie van de Azure CLI te gebruiken in plaats van Cloud Shell, raadpleegt u het artikel over [Azure cli](/cli/azure/) .
+De `az cosmosdb show` opdracht toont het nieuw gemaakte Azure Cosmos-account nadat het is ingericht. Zie het Azure [CLI-artikel](/cli/azure/) als u een lokaal geïnstalleerde versie van de Azure CLI wilt gebruiken in plaats van Cloud Shell te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Hier volgen enkele aanvullende bronnen:
 
-- [Documentatie over Azure Resource Manager](/azure/azure-resource-manager/)
-- [Resource provider-schema Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
-- [Quick Start-sjablonen Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Veelvoorkomende fouten bij Azure Resource Manager implementatie oplossen](../azure-resource-manager/templates/common-deployment-errors.md)
+- [Azure Resource Manager-documentatie](/azure/azure-resource-manager/)
+- [Azure Cosmos DB-resourceproviderschema](/azure/templates/microsoft.documentdb/allversions)
+- [Azure Cosmos DB Quickstart-sjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+- [Veelvoorkomende azure resourcemanager-implementatiefouten oplossen](../azure-resource-manager/templates/common-deployment-errors.md)

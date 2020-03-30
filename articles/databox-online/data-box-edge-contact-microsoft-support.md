@@ -1,103 +1,103 @@
 ---
-title: Ondersteunings ticket vastleggen voor Azure Data Box Edge, Azure Data Box Gateway | Microsoft Docs
-description: Meer informatie over het registreren van een ondersteunings aanvraag voor problemen met uw Data Box Edge of Data Box Gateway orders.
+title: Logondersteuningsticket voor Azure Data Box Edge, Azure Data Box Gateway | Microsoft Documenten
+description: Meer informatie over het registreren van ondersteuningsaanvragen voor problemen met betrekking tot uw Data Box Edge- of Data Box Gateway-orders.
 services: databox
 author: alkohli
 ms.service: databox
-ms.subservice: ''
+ms.subservice: edge
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 9db119733bb80d9ae1462b70c3ffe555b2493405
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: c93a2e2f3162891e72cf6d57f3df6c3ceaf0c7fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361737"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064972"
 ---
-# <a name="open-a-support-ticket-for-azure-data-box-edge-and-azure-data-box-gateway"></a>Open een ondersteunings ticket voor Azure Data Box Edge en Azure Data Box Gateway
+# <a name="open-a-support-ticket-for-azure-data-box-edge-and-azure-data-box-gateway"></a>Een ondersteuningsticket openen voor Azure Data Box Edge en Azure Data Box Gateway
 
-Dit artikel is van toepassing op Azure Data Box Edge en Azure Data Box Gateway beide worden beheerd door de service Azure Data Box Edge/Azure Data Box Gateway. Als u problemen ondervindt met uw service, kunt u een service aanvraag voor technische ondersteuning maken. Dit artikel begeleidt u door:
+Dit artikel is van toepassing op Azure Data Box Edge en Azure Data Box Gateway, die beide worden beheerd door de Azure Data Box Edge/Azure Data Box Gateway-service. Als u problemen ondervindt met uw service, u een serviceaanvraag voor technische ondersteuning maken. Dit artikel leidt je door:
 
-* Een ondersteunings aanvraag maken.
-* Een ondersteunings aanvraag levenscyclus beheren vanuit de portal.
+* Een ondersteuningsaanvraag maken.
+* Hoe u de levenscyclus van een ondersteuningsaanvraag vanuit de portal beheren.
 
-## <a name="create-a-support-request"></a>Maak een ondersteuningsaanvraag
+## <a name="create-a-support-request"></a>Een ondersteuningsaanvraag maken
 
-Voer de volgende stappen uit om een ondersteunings aanvraag te maken:
+Voer de volgende stappen uit om een ondersteuningsaanvraag te maken:
 
-1. Ga naar uw Data Box Edge of Data Box Gateway bestelling. Navigeer naar ondersteuning en de sectie **probleem oplossing** en selecteer vervolgens **nieuwe ondersteunings aanvraag**.
+1. Ga naar de databoxrand of de gegevensboxgatewayvolgorde. Navigeer naar de sectie **Ondersteuning + probleemoplossing** en selecteer **Vervolgens Nieuw ondersteuningsverzoek**.
    
-2. Voer in de **nieuwe ondersteunings aanvraag**op het tabblad **basis beginselen** de volgende stappen uit:
+2. Ga in **Nieuw ondersteuningsverzoek**op het tabblad **Basisbeginselen** de volgende stappen uit:
     
-    1. Selecteer in de vervolg keuzelijst **probleem type** de optie **technisch**.
+    1. Selecteer **Technische**optie in de vervolgkeuzelijst **Probleemtype.**
     2. Kies uw **abonnement**.
-    3. Onder **service**, Controleer **Mijn services**. Selecteer in de vervolg keuzelijst **Data Box Edge en data Box gateway**.
-    4. Selecteer uw **resource**. Dit komt overeen met de naam van uw order.
-    5. Geef een korte **samen vatting** van het probleem dat u ondervindt. 
-    6. Selecteer het **type probleem**.
-    7. Kies op basis van het probleem type dat u hebt geselecteerd een subtype van een bijbehorend **probleem**.
-    8. Selecteer **Volgende: Oplossingen > >** .
+    3. Controleer **onder Service**Mijn **services**. Selecteer **gegevensvakrand en Data Box Gateway**in de vervolgkeuzelijst .
+    4. Selecteer uw **resource**. Dit komt overeen met de naam van uw bestelling.
+    5. Geef een korte **samenvatting** van het probleem dat u ondervindt. 
+    6. Selecteer het **type Probleem**.
+    7. Kies een corresponderend **subtype Probleem**op basis van het probleemtype dat u hebt geselecteerd.
+    8. Selecteer **Volgende: oplossingen >>**.
 
-        ![Basics](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
+        ![Basisbeginselen](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
 
-3. Voer op het tabblad **Details** de volgende stappen uit:
+3. Ga op het tabblad **Details** de volgende stappen uit:
     
-    1. Geef de begin datum en-tijd op voor het probleem.
-    2. Geef een **Beschrijving** op voor het probleem.
-    3. Selecteer in het **bestand uploaden**het mappictogram om te bladeren naar de andere bestanden die u wilt uploaden.
-    4. Controleer de **Diagnostische gegevens voor delen**.
-    5. Op basis van uw abonnement wordt er automatisch een ondersteunings **plan** ingevuld.
-    6. Selecteer in de vervolg keuzelijst de **Ernst**.
-    7. Geef een **Voorkeurs methode voor contact persoon op**.
-    8. De **respons uren** worden automatisch geselecteerd op basis van uw abonnement.
-    9. Geef de gewenste taal voor de ondersteuning op.
-    10. Geef in de **contact gegevens**uw naam, e-mail adres, telefoon nummer, optionele contact persoon, land/regio. Microsoft Ondersteuning gebruikt deze informatie om u te bereiken voor meer informatie, diagnose en oplossing. 
-    11. Selecteer **Volgende: Bekijk + Create > >** .
+    1. Geef de begindatum en tijd voor het probleem op.
+    2. Lever een **beschrijving voor** uw probleem.
+    3. Selecteer **in het uploaden van bestanden**het mappictogram om door andere bestanden te bladeren die u wilt uploaden.
+    4. Controleer **diagnostische gegevens delen**.
+    5. Op basis van uw abonnement wordt een **ondersteuningsabonnement** automatisch ingevuld.
+    6. Selecteer in de vervolgkeuzelijst de **ernst**.
+    7. Geef een **methode voor voorkeurscontact op**.
+    8. De **antwoorduren** worden automatisch geselecteerd op basis van uw abonnement.
+    9. Geef de taal die uw voorkeur voor ondersteuning.
+    10. Geef in de **contactgegevens**uw naam, e-mail, telefoon, optionele contactpersoon, land/regio op. Microsoft Support gebruikt deze informatie om contact met u op te nemen voor meer informatie, diagnose en oplossing. 
+    11. Selecteer **Volgende: Review + >>maken. **
 
         ![Probleem](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-2.png)
 
-4. Bekijk op het tabblad **controleren en maken** de informatie met betrekking tot het ondersteunings ticket. Selecteer **Maken**. 
+4. Bekijk op het tabblad **Controleren + Maken** de informatie met betrekking tot ondersteuningsticket. Selecteer **Maken**. 
 
     ![Probleem](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
 
-    Nadat u het ondersteunings ticket hebt gemaakt, neemt een ondersteunings technicus zo snel mogelijk contact met u op om te kunnen door gaan met uw aanvraag.
+    Nadat je het Support-ticket hebt gemaakt, neemt een support engineer zo snel mogelijk contact met je op om verder te gaan met je verzoek.
 
-## <a name="get-hardware-support"></a>Hardwareondersteuning ophalen
+## <a name="get-hardware-support"></a>Hardware-ondersteuning krijgen
 
-Deze informatie is alleen van toepassing op Data Box Edge apparaat. Het proces voor het rapporteren van hardwareproblemen verloopt als volgt:
+Deze informatie is alleen van toepassing op het Data Box Edge-apparaat. Het proces om hardwareproblemen te melden is als volgt:
 
-1. Open een ondersteunings ticket van de Azure Portal voor een hardwareprobleem. Selecteer **Data Box edge hardware**onder **probleem type**. Kies het subtype van het **probleem** als **hardware-fout**. 
+1. Open een ondersteuningsticket vanaf de Azure-portal voor een hardwareprobleem. Schakel **onder Probleemtype**de optie **Gegevensvakrandhardware**in . Kies het **subtype Probleem** als **Hardwarefout**. 
 
     ![Hardwareprobleem](./media/data-box-edge-contact-microsoft-support/data-box-edge-hardware-issue-1.png)
 
-    Nadat u het ondersteunings ticket hebt gemaakt, neemt een ondersteunings technicus zo snel mogelijk contact met u op om te kunnen door gaan met uw aanvraag. 
+    Nadat je het Support-ticket hebt gemaakt, neemt een support engineer zo snel mogelijk contact met je op om verder te gaan met je verzoek. 
 
-2. Als Microsoft Ondersteuning bepaalt dat dit een hardwareprobleem is, wordt een van de volgende acties uitgevoerd: 
+2. Als Microsoft Support vaststelt dat dit een hardwareprobleem is, vindt een van de volgende acties plaats: 
 
-    - Er wordt een veld vervangings eenheid (FRU) voor het defecte hardwareonderdeel verzonden. Momenteel is de energie-eenheid alleen de enige ondersteunde FRU. 
-    - Micro soft voert een volledige systeem vervanging (FSR) of een apparaat wisseling uit voor een ander onderdeel fout.
+    - Er wordt een Field Replacement Unit (FRU) verzonden voor het defecte hardwareonderdeel. Momenteel is de voeding de enige ondersteunde FRU. 
+    - Voor een ander onderdeel storing, Microsoft doet een volledige systeem vervanging (FSR) of een apparaat swap.
 
-3. Als er een ondersteunings ticket wordt gegenereerd voor een lokale tijd van maandag tot en met vrijdag van 4:30 uur, wordt de volgende werkdag verzonden naar uw locatie om een FRU of een volledig vervanging van het apparaat uit te voeren.
+3. Als een supportticket vóór 16.30 uur lokale tijd (maandag tot vrijdag) wordt opgehaald, wordt de volgende werkdag een technicus ter plaatse naar uw locatie gestuurd om een FRU of een volledige apparaatvervanging uit te voeren.
 
-## <a name="manage-a-support-request"></a>Een ondersteunings aanvraag beheren
+## <a name="manage-a-support-request"></a>Een ondersteuningsverzoek beheren
 
 Nadat u een ondersteuningsticket hebt gemaakt, kunt u de voortgang van het ticket vanuit de portal beheren.
 
-#### <a name="to-manage-your-support-requests"></a>Uw ondersteunings aanvragen beheren
+#### <a name="to-manage-your-support-requests"></a>Uw ondersteuningsverzoeken beheren
 
-1. Als u naar de pagina Help en ondersteuning wilt gaan, bladert u naar **> Help en ondersteuning**.
+1. Als u naar de help- en ondersteuningspagina wilt gaan, navigeert u **naar Bladeren > Help + ondersteuning.**
 
     ![Ondersteuningsaanvragen beheren](./media/data-box-edge-contact-microsoft-support/data-box-edge-manage-support-request-1.png)   
 
-2. In **Help en ondersteuning**wordt een lijst in tabel vorm met **recente ondersteunings aanvragen** weer gegeven.
+2. Een tabeltabellijst met **recente ondersteuningsaanvragen** wordt weergegeven in **Help + ondersteuning**.
 
     <!--[Manage support requests](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-1.png)--> 
 
-3. Selecteer en klik op een ondersteunings aanvraag. U kunt de status en de Details voor deze aanvraag bekijken. Klik op **+ Nieuw bericht** als u deze aanvraag wilt opvolgen.
+3. Selecteer en klik op een ondersteuningsverzoek. U de status en de details van dit verzoek bekijken. Klik **+ Nieuw bericht** als u dit verzoek wilt opvolgen.
 
    
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [oplossen van problemen met data Box Edge](data-box-edge-troubleshoot.md).
-Meer informatie over het [oplossen van problemen met data Box gateway](data-box-gateway-troubleshoot.md).
+Meer informatie over het [oplossen van problemen in verband met Data Box Edge](data-box-edge-troubleshoot.md).
+Meer informatie over het [oplossen van problemen met betrekking tot Data Box Gateway](data-box-gateway-troubleshoot.md).

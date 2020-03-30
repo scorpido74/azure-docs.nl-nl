@@ -1,23 +1,23 @@
 ---
-title: Gebeurtenissen in op actors gebaseerde Azure Service Fabric Actors
-description: Meer informatie over gebeurtenissen voor Service Fabric Reliable Actors, een efficiënte manier om te communiceren tussen actor en client.
+title: Gebeurtenissen in op actor's gebaseerde Azure Service Fabric-actoren
+description: Meer informatie over gebeurtenissen voor Service Fabric Reliable Actors, een effectieve manier om te communiceren tussen acteur en klant.
 author: vturecek
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: 73c149a0d0992fecd1acf633891057570285df64
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639663"
 ---
-# <a name="actor-events"></a>Actor gebeurtenissen
-Actor gebeurtenissen bieden een manier om meldingen over de beste inspanningen van de actor naar de clients te verzenden. Actor gebeurtenissen zijn ontworpen voor communicatie tussen clients en mogen niet worden gebruikt voor communicatie tussen actors.
+# <a name="actor-events"></a>Actorgebeurtenissen
+Actor-gebeurtenissen bieden een manier om meldingen van de acteur met de beste inspanning naar de clients te sturen. Actor-gebeurtenissen zijn ontworpen voor communicatie tussen actor en client en mogen niet worden gebruikt voor communicatie tussen actor en acteur.
 
-De volgende code fragmenten laten zien hoe actor-gebeurtenissen in uw toepassing kunnen worden gebruikt.
+In de volgende codefragmenten ziet u hoe u actorgebeurtenissen in uw toepassing gebruiken.
 
-Definieer een interface die de gebeurtenissen beschrijft die worden gepubliceerd door de actor. Deze interface moet zijn afgeleid van de `IActorEvents`-interface. De argumenten van de methoden moeten van het [gegevens contract serialiseerbaar](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)zijn. De methoden moeten void retour neren, omdat gebeurtenis meldingen op één manier en best effort worden uitgevoerd.
+Definieer een interface die de gebeurtenissen beschrijft die door de actor zijn gepubliceerd. Deze interface moet worden `IActorEvents` afgeleid uit de interface. De argumenten van de methoden moeten [gegevens contract serializable](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). De methoden moeten nietig worden, omdat gebeurtenismeldingen één manier en beste inspanning zijn.
 
 ```csharp
 public interface IGameEvents : IActorEvents
@@ -31,7 +31,7 @@ public interface GameEvents implements ActorEvents
     void gameScoreUpdated(UUID gameId, String currentScore);
 }
 ```
-Declareer de gebeurtenissen die zijn gepubliceerd door de actor in de actor-interface.
+Verklaar de gebeurtenissen gepubliceerd door de acteur in de actor-interface.
 
 ```csharp
 public interface IGameActor : IActor, IActorEventPublisher<IGameEvents>
@@ -49,7 +49,7 @@ public interface GameActor extends Actor, ActorEventPublisherE<GameEvents>
     CompletableFuture<String> getGameScore();
 }
 ```
-Implementeer aan de client zijde de gebeurtenis-handler.
+Implementeer aan de clientzijde de gebeurtenishandler.
 
 ```csharp
 class GameEventsHandler : IGameEvents
@@ -70,7 +70,7 @@ class GameEventsHandler implements GameEvents {
 }
 ```
 
-Maak op de client een proxy voor de actor die de gebeurtenis publiceert en Abonneer u op de gebeurtenissen.
+Maak op de client een proxy voor de actor die de gebeurtenis publiceert en abonneer je op de gebeurtenissen.
 
 ```csharp
 var proxy = ActorProxy.Create<IGameActor>(
@@ -85,9 +85,9 @@ GameActor actorProxy = ActorProxyBase.create<GameActor>(GameActor.class, new Act
 return ActorProxyEventUtility.subscribeAsync(actorProxy, new GameEventsHandler());
 ```
 
-In het geval van failovers kan de actor een failover uitvoeren naar een ander proces of knoop punt. De actor-proxy beheert de actieve abonnementen en abonneert deze automatisch opnieuw. U kunt het interval voor opnieuw abonnementen beheren via de API van `ActorProxyEventExtensions.SubscribeAsync<TEvent>`. Als u zich wilt afmelden, gebruikt u de `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>`-API.
+In het geval van failovers, kan de actor niet over naar een ander proces of knooppunt. De actorproxy beheert de actieve abonnementen en neemt deze automatisch opnieuw in. U het interval voor `ActorProxyEventExtensions.SubscribeAsync<TEvent>` opnieuw abonnementen beheren via de API. Als u zich `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` wilt afmelden, gebruikt u de API.
 
-Op de actor publiceert u de gebeurtenissen wanneer ze plaatsvinden. Als zich abonnees op de gebeurtenis bevinden, verzendt de actors-runtime de melding.
+Op de acteur, publiceren van de gebeurtenissen als ze gebeuren. Als er abonnees zijn van het evenement, stuurt de runtime acteurs hen de melding.
 
 ```csharp
 var ev = GetEvent<IGameEvents>();
@@ -100,9 +100,9 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Actor herbetreedbaarheid](service-fabric-reliable-actors-reentrancy.md)
-* [De functie voor het controleren van actor en prestaties](service-fabric-reliable-actors-diagnostics.md)
-* [Referentie documentatie voor actor-API](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C#Voorbeeld code](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [C#.NET core-voorbeeld code](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
-* [Java-voorbeeld code](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Acteur reentrancy](service-fabric-reliable-actors-reentrancy.md)
+* [Actor diagnostiek en prestatiebewaking](service-fabric-reliable-actors-diagnostics.md)
+* [Actor API-referentiedocumentatie](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [C# Voorbeeldcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [C# .NET Core-voorbeeldcode](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
+* [Java-voorbeeldcode](https://github.com/Azure-Samples/service-fabric-java-getting-started)

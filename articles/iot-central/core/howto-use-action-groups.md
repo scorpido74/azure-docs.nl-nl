@@ -1,73 +1,73 @@
 ---
-title: Meerdere acties uitvoeren vanuit een Azure IoT Central-regel | Microsoft Docs
-description: Meerdere acties uitvoeren vanuit één IoT Central regel en herbruikbare groepen met acties maken die u vanuit meerdere regels kunt uitvoeren.
+title: Meerdere acties uitvoeren vanuit een Azure IoT Central-regel | Microsoft Documenten
+description: Voer meerdere acties uit vanuit één IoT Central-regel en maak herbruikbare groepen acties die u uitvoeren vanuit meerdere regels.
 services: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/06/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: 7c60728ab501d03e9c40928e730225575e76efbc
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b447f44d0c95693e560fd5bbfbff8c8daeec964e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023817"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157684"
 ---
-# <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Meerdere acties groeperen om uit te voeren vanuit een of meer regels
+# <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Meerdere acties groeperen om uit te voeren vanaf een of meer regels
 
 *Dit artikel is van toepassing op bouwers en beheerders.*
 
-In azure IoT Central maakt u regels om acties uit te voeren wanneer aan een voor waarde wordt voldaan. Regels zijn gebaseerd op telemetrie van apparaten of gebeurtenissen. U kunt bijvoorbeeld een operator waarschuwen wanneer de Tempe ratuur van een apparaat een drempel waarde overschrijdt. In dit artikel wordt beschreven hoe u [Azure monitor](../../azure-monitor/overview.md) *actie groepen* kunt gebruiken om meerdere acties aan een IOT Central regel te koppelen. U kunt een actie groep koppelen aan meerdere regels. Een [actie groep](../../azure-monitor/platform/action-groups.md) is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement.
+In Azure IoT Central maakt u regels om acties uit te voeren wanneer aan een voorwaarde is voldaan. Regels zijn gebaseerd op telemetrie of gebeurtenissen van het apparaat. U bijvoorbeeld een operator op de hoogte stellen wanneer de temperatuur van een apparaat een drempelwaarde overschrijdt. In dit artikel wordt beschreven hoe u [Azure Monitor-actiegroepen](../../azure-monitor/overview.md) *action groups* gebruikt om meerdere acties aan een IoT Central-regel toe te voegen. U een actiegroep aan meerdere regels koppelen. Een [actiegroep](../../azure-monitor/platform/action-groups.md) is een verzameling meldingsvoorkeuren die zijn gedefinieerd door de eigenaar van een Azure-abonnement.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een toepassing die is gemaakt met een Standard-prijs plan
-- Een Azure-account en-abonnement om Azure Monitor actie groepen te maken en te beheren
+- Een toepassing die is gemaakt met een standaardprijsplan
+- Een Azure-account en -abonnement voor het maken en beheren van Azure Monitor-actiegroepen
 
 ## <a name="create-action-groups"></a>Actiegroepen maken
 
-U kunt [actie groepen maken en beheren in de Azure Portal](../../azure-monitor/platform/action-groups.md) of met een [Azure Resource Manager sjabloon](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+U [actiegroepen maken en beheren in de Azure-portal](../../azure-monitor/platform/action-groups.md) of met een [Azure Resource Manager-sjabloon.](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)
 
-Een actie groep kan:
+Een actiegroep kan:
 
-- Verzend meldingen zoals een e-mail, een SMS of een telefoon gesprek.
-- Een actie uitvoeren zoals het aanroepen van een webhook.
+- Stuur meldingen zoals een e-mail, een sms of bel.
+- Voer een actie uit, zoals het aanroepen van een webhook.
 
-De volgende scherm afbeelding toont een actie groep die e-mail-en SMS-meldingen verzendt en een webhook aanroept:
+De volgende schermafbeelding toont een actiegroep die e-mail- en sms-meldingen verzendt en een webhook aanroept:
 
-![Actie groep](media/howto-use-action-groups/actiongroup.png)
+![Actiegroep](media/howto-use-action-groups/actiongroup.png)
 
-Als u een actie groep wilt gebruiken in een IoT Central regel, moet de actie groep zich in hetzelfde Azure-abonnement bevallen als de IoT Central-toepassing.
+Als u een actiegroep wilt gebruiken in een IoT Central-regel, moet de actiegroep zich in hetzelfde Azure-abonnement bevinden als de IoT Central-toepassing.
 
-## <a name="use-an-action-group"></a>Een actie groep gebruiken
+## <a name="use-an-action-group"></a>Een actiegroep gebruiken
 
-Als u een actie groep wilt gebruiken in uw IoT Central-toepassing, maakt u eerst een regel. Wanneer u een actie aan de regel toevoegt, selecteert u **Azure monitor actie groepen**:
+Als u een actiegroep wilt gebruiken in uw IoT Central-toepassing, maakt u eerst een regel. Wanneer u een actie aan de regel toevoegt, selecteert u **Azure Monitor-actiegroepen:**
 
 ![Actie kiezen](media/howto-use-action-groups/chooseaction.png)
 
-Kies een actie groep uit uw Azure-abonnement:
+Kies een actiegroep uit uw Azure-abonnement:
 
-![Actie groep kiezen](media/howto-use-action-groups/chooseactiongroup.png)
+![Actiegroep kiezen](media/howto-use-action-groups/chooseactiongroup.png)
 
-Selecteer **Opslaan**. De actie groep wordt nu weer gegeven in de lijst met acties die moeten worden uitgevoerd wanneer de regel wordt geactiveerd:
+Selecteer **Opslaan**. De actiegroep wordt nu weergegeven in de lijst met acties die moeten worden uitgevoerd wanneer de regel wordt geactiveerd:
 
-![Opgeslagen actie groep](media/howto-use-action-groups/savedactiongroup.png)
+![Opgeslagen actiegroep](media/howto-use-action-groups/savedactiongroup.png)
 
-De volgende tabel bevat een overzicht van de informatie die wordt verzonden naar de ondersteunde actie typen:
+In de volgende tabel worden de informatie die naar de ondersteunde actietypen wordt verzonden, samengevat:
 
-| Actietype | Uitvoer indeling |
+| Actietype | Uitvoerindeling |
 | ----------- | -------------- |
-| E-mail       | E-mail sjabloon standaard IoT Central |
-| Sms         | Azure IoT Central-waarschuwing: $ {ApplicationName}-"$ {ruleNaam} ' geactiveerd op ' $ {DeviceName} ' op $ {triggerDate} $ {triggerTime} |
-| Spraak       | Azure I. O. T Central alert: regel "$ {DeviceName}" geactiveerd op apparaat "$ {apparaatnaam}" op $ {triggerDate} $ {triggerTime}, in toepassing $ {ApplicationName} |
-| Webhook     | {"schemaId": "AzureIoTCentralRuleWebhook", "gegevens": {[normale webhook Payload](howto-create-webhooks.md#payload)}} |
+| Email       | Standaard IoT Central-e-mailsjabloon |
+| Sms         | Azure IoT Central-waarschuwing: ${applicationName} - "${ruleName}" geactiveerd op "${deviceName}" op ${triggerDate} ${triggerTime} |
+| Spraak       | Azure I.O.T Central alert: regel "${ruleName}" geactiveerd op apparaat "${deviceName}" bij ${triggerDate} ${triggerTime}, in toepassing ${applicationName} |
+| Webhook     | { "schemaId" : "AzureIoTCentralRuleWebhook", "data": {[regular webhook payload](howto-create-webhooks.md#payload)}} |
 
-De volgende tekst is een voor beeld van een SMS-bericht van een actie groep:
+De volgende tekst is een voorbeeld van sms-bericht van een actiegroep:
 
 `iotcentral: Azure IoT Central alert: Contoso - "Low pressure alert" triggered on "Motion sensor 2" at March 20, 2019 10:12 UTC`
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u actie groepen met regels kunt gebruiken, is de voorgestelde volgende stap om te leren hoe u [uw apparaten beheert](howto-manage-devices.md).
+Nu u hebt geleerd hoe u actiegroepen met regels gebruiken, is de voorgestelde volgende stap om te leren hoe [u uw apparaten beheren.](howto-manage-devices.md)

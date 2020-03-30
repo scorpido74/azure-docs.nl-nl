@@ -9,35 +9,35 @@ ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
 ms.openlocfilehash: 57469bef7014010164234638f3d059ac96b125cf
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78383909"
 ---
-## <a name="what-is-the-time-required-for-migration"></a>Wat is de tijd die nodig is voor de migratie?
+## <a name="what-is-the-time-required-for-migration"></a>Wat is de tijd die nodig is voor migratie?
 
-Het plannen en uitvoeren van de migratie is aanzienlijk afhankelijk van de complexiteit van de architectuur en kan enkele maanden duren.  
+De planning en uitvoering van migratie hangt sterk af van de complexiteit van de architectuur en kan enkele maanden duren.  
 
-## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>Wat is de definitie van een nieuwe klant op IaaS Vm's (klassiek)?
+## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>Wat is de definitie van een nieuwe klant op IaaS VM's (klassiek)?
 
-Klanten die niet over IaaS-Vm's (klassiek) beschikken in hun abonnementen in de maand Febrauary 2020 (een maand voordat de afschaffing werd gestart), worden beschouwd als nieuwe klanten. 
+Klanten die in de maand februari 2020 (een maand voor de afschaffing) geen IaaS VM's (klassiek) in hun abonnement hadden, worden als nieuwe klanten beschouwd. 
 
-## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>Wat is de definitie van een bestaande klant op IaaS-Virtual Machines (klassiek)?
+## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>Wat is de definitie van een bestaande klant op IaaS Virtual Machines (klassiek)?
 
-Klanten die actief of gestopt zijn, maar toegewezen IaaS Vm's (klassiek) in hun abonnementen in de maand februari 2020, worden beschouwd als een bestaande klant. Alleen deze klanten krijgen tot 1 maart 2023 om hun Vm's vanuit Azure Service Manager te migreren naar Azure Resource Manager. 
+Klanten die in de maand februari 2020 IaaS VM's (Classic) actief of gestopt hadden, maar deze in de maand februari 2020 in hun abonnementen hadden toegewezen, worden als bestaande klant beschouwd. Alleen deze klanten krijgen tot 1 maart 2023 de tijd om hun VM's te migreren van Azure Service Manager naar Azure Resource Manager. 
 
-## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Waarom krijg ik een fout melding met de mede deling "NewClassicVMCreationNotAllowedForSubscription"?
+## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Waarom krijg ik een foutmelding met de vermelding "NewClassicVMCreationNotAllowedForSubscription"?
 
-Als onderdeel van het pensioen proces zijn IaaS VM (klassiek) niet langer beschikbaar voor nieuwe klanten. We hebben u geïdentificeerd als nieuwe klanten en daarom is uw bewerking niet geautoriseerd. Het is raadzaam om [Azure virtual machines te gebruiken met behulp van arm](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell). Als u geen gebruik kunt maken van Azure Vm's met ARM, neemt u contact op met de ondersteuning voor White List van het abonnement.
+Als onderdeel van het pensioenproces is IaaS VM (klassiek) niet langer beschikbaar voor nieuwe klanten. Wij hebben u geïdentificeerd als nieuwe klanten en daarom was uw operatie niet geautoriseerd. We raden ten zeerste aan azure virtual machines te gebruiken [met ARM.](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell) Als u Azure VM's niet gebruiken met ARM, neemt u contact op met ondersteuning voor whitelisting van abonnementen.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Is dit migratieplan van invloed op mijn bestaande services en toepassingen die worden uitgevoerd op virtuele Azure-machines? 
 
-Tot 1 maart 2023 voor IaaS Vm's (klassiek). De IaaS-Vm's (klassiek) zijn volledig ondersteunde services in algemene Beschik baarheid. U kunt deze resources blijven gebruiken om uw footprint in Microsoft Azure te vergroten. Op 1 maart 2023 worden deze Vm's volledig buiten gebruik gesteld en worden actieve of toegewezen Vm's gestopt & de toewijzing ongedaan wordt gemaakt. Er is geen invloed op andere klassieke resources, zoals Cloud Services (klassiek), opslag accounts (klassiek), enzovoort.   
+Pas op 1 maart 2023 voor IaaS VM's (klassiek). De IaaS VM's (klassiek) zijn volledig ondersteunde diensten in algemene beschikbaarheid. U kunt deze resources blijven gebruiken om uw footprint in Microsoft Azure te vergroten. Op 1 maart 2023 worden deze VM's volledig buiten gebruik gesteld en worden alle actieve of toegewezen VM's stopgezet & dealtoegewezen. Andere klassieke bronnen zoals Cloud Services (Classic), Storage Accounts (Classic), etc. hebben geen invloed op andere klassieke bronnen.   
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>Wat gebeurt er met mijn virtuele machines als ik niet van plan ben om in de nabije toekomst te migreren? 
 
-Op 1 maart 2023 worden de IaaS Vm's (klassiek) volledig buiten gebruik gesteld en worden actieve of toegewezen Vm's gestopt & de toewijzing ongedaan wordt gemaakt. Om bedrijfs impact te voor komen, kunnen we het beste een opmerking sturen om vandaag nog te beginnen met het plannen van uw migratie en deze volt ooien vóór 1 maart 2023. De bestaande klassieke Api's, het Cloud Services en het resource model worden niet terugvallen. Het is de bedoeling om migreren eenvoudig te maken omdat er veel geavanceerde functies beschikbaar zijn in het Resource Manager-implementatiemodel. We raden u aan om te beginnen met de migratie van deze resources naar Azure Resource Manager. 
+Op 1 maart 2023 worden de IaaS VM's (Classic) volledig buiten gebruik gesteld en worden alle actieve of toegewezen VM's & deal-toegewezen. Om bedrijfsimpact te voorkomen, geven we het goed aan om vandaag te beginnen met het plannen van uw migratie en deze voor 1 maart 2023 te voltooien. We zijn niet deprecating de bestaande klassieke API's, Cloud Services en resource model. Het is de bedoeling om migreren eenvoudig te maken omdat er veel geavanceerde functies beschikbaar zijn in het Resource Manager-implementatiemodel. We raden u aan deze resources te migreren naar Azure Resource Manager. 
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>Wat betekent dit migratieplan voor mijn bestaande tooling? 
 
@@ -53,7 +53,7 @@ U kunt de migratie afbreken wanneer de resources zich nog in de staat Voorbereid
 
 ## <a name="can-i-roll-back-my-migration-if-the-commit-operation-fails"></a>Kan ik de migratie ongedaan maken wanneer de doorvoerbewerking is mislukt? 
 
-U kunt de migratie niet afbreken als wanneer de doorvoerbewerking is mislukt. Alle migratiebewerkingen, met inbegrip van de doorvoerbewerking, zijn idempotent. Daarom is het raadzaam om de bewerking na een korte tijd opnieuw uit te voeren. Als u nog steeds een fout hebt, maakt u een ondersteunings ticket.
+U kunt de migratie niet afbreken als wanneer de doorvoerbewerking is mislukt. Alle migratiebewerkingen, met inbegrip van de doorvoerbewerking, zijn idempotent. Daarom is het raadzaam om de bewerking na een korte tijd opnieuw uit te voeren. Als u nog steeds met een foutmelding te maken hebt, maakt u een ondersteuningsticket.
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>Moet ik nog een ExpressRoute-circuit kopen als ik IaaS via Resource Manager wil gebruiken? 
 
@@ -61,26 +61,26 @@ Nee. Recent is het [verplaatsen van ExpressRoute-circuits van het klassieke naar
 
 ## <a name="what-if-i-had-configured-role-based-access-control-policies-for-my-classic-iaas-resources"></a>Wat gebeurt er als ik op rollen gebaseerd toegangsbeheerbeleid heb geconfigureerd voor mijn klassieke IaaS-resources? 
 
-Tijdens de migratie worden de klassieke resources Resource Manager-resources. Daarom wordt u aangeraden de RBAC-beleids updates te plannen die moeten worden uitgevoerd na de migratie.
+Tijdens de migratie worden de klassieke resources Resource Manager-resources. Daarom raden we u aan de RBAC-beleidsupdates te plannen die na de migratie moeten plaatsvinden.
 
-## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Ik heb een back-up gemaakt van mijn klassieke virtuele machines in een kluis. Kan ik mijn virtuele machines migreren van de klassieke modus naar de Resource Manager-modus en ze beschermen in een Recovery Services-kluis?
+## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Ik heb mijn klassieke VM's in een kluis. Kan ik mijn virtuele machines migreren van de klassieke modus naar de Resource Manager-modus en ze beschermen in een Recovery Services-kluis?
 
-Wanneer u een virtuele machine van de klassieke naar de Resource Manager-modus verplaatst, worden back-ups die zijn gemaakt vóór de migratie, niet gemigreerd naar de zojuist gemigreerde Resource Manager-VM. Als u echter uw back-ups van klassieke Vm's wilt houden, volgt u deze stappen vóór de migratie. 
+Wanneer u een VM verplaatst van de klassieke modus naar resourcebeheer, worden back-ups die vóór de migratie zijn gemaakt, niet gemigreerd naar de nieuw gemigreerde VM resourcebeheer. Als u echter uw back-ups van klassieke VM's wilt behouden, volgt u deze stappen vóór de migratie. 
 
-1. Ga in de Recovery Services kluis naar het tabblad **beveiligde items** en selecteer de virtuele machine. 
+1. Ga in de kluis Herstelservices naar het tabblad **Beveiligde items** en selecteer de VM. 
 2. Klik op Beveiliging stoppen. Laat de optie *Gekoppelde back-upgegevens verwijderen***uitgeschakeld**.
 
 > [!NOTE]
-> De kosten voor back-upexemplaar worden in rekening gebracht tot u de gegevens behoudt. Back-upkopieën worden verwijderd volgens een Bewaar termijn. De laatste back-up wordt echter altijd bewaard totdat u de back-upgegevens expliciet verwijdert. U wordt aangeraden uw Bewaar termijn van de virtuele machine te controleren en ' back-upgegevens verwijderen ' te activeren voor het beveiligde item in de kluis wanneer de Bewaar termijn is overschreden. 
+> Er worden kosten in rekening gebracht voor back-ups totdat u gegevens bewaart. Back-upkopieën worden gesnoeid per bewaarbereik. De laatste back-upkopie wordt echter altijd bewaard totdat u back-upgegevens expliciet verwijdert. Het wordt aangeraden om uw bewaarbereik van de virtuele machine te controleren en "Back-upgegevens verwijderen" op het beveiligde item in de kluis te activeren zodra het bewaarbereik voorbij is. 
 >
 >
 
-Als u de virtuele machine wilt migreren naar de Resource Manager-modus, 
+Als u de virtuele machine wilt migreren naar de modus Resourcebeheer, 
 
 1. Verwijder de back-up-/momentopname-extensie uit de VM.
 2. Migreer de virtuele machines van de klassieke modus naar de Resource Manager-modus. Zorg ervoor dat de opslagruimte en de netwerkgegevens die corresponderen met de virtuele machine, ook naar de Resource Manager-modus worden gemigreerd.
 
-Als u ook een back-up wilt maken van de gemigreerde virtuele machine, gaat u naar de Blade beheer van virtuele machines om [back-ups in te scha kelen](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
+Als u een back-up wilt maken van de gemigreerde VM, gaat u bovendien naar het beheerblad van Virtual Machine om [back-ups in](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm)te schakelen.
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>Kan ik mijn abonnement of resources valideren om te ontdekken of ze geschikt zijn voor migratie? 
 
@@ -102,6 +102,6 @@ Alle resources waarvoor u expliciet namen opgeeft in het klassieke implementatie
 
 ExpressRoute-circuits met abonnementsoverstijgende autorisatielinks kunnen niet automatisch worden gemigreerd zonder downtime. Er is informatie beschikbaar over het uitvoeren van handmatige migratie. Zie [ExpressRoute-circuits en de bijbehorende virtuele netwerken van het klassieke naar het Resource Manager-implementatiemodel migreren](../articles/expressroute/expressroute-migration-classic-resource-manager.md) voor stappen en meer informatie.
 
-## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>Ik heb het bericht *' de VM meldt de algehele agent status als niet gereed. Daarom kan de virtuele machine niet worden gemigreerd. Zorg ervoor dat de VM-agent de algehele agent status gereed rapporteert, of dat de VM een* *extensie bevat waarvan de status niet wordt gerapporteerd van de virtuele machine. Daarom kan deze virtuele machine niet worden gemigreerd. "*
+## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>Ik kreeg het bericht *"VM is de rapportage van de algemene agent status als Not Ready. Daarom kan de VM niet worden gemigreerd. Controleer of de VM-agent de algemene agentstatus als Gereed rapporteert"* of *'VM bevat extensie waarvan de status niet wordt gerapporteerd vanuit de VM. Vandaar dat deze VM niet kan worden gemigreerd."*
 
 Dit bericht wordt weergegeven wanneer de VM geen uitgaande verbinding heeft met internet. De VM-agent maakt gebruik van een uitgaande verbinding om het Azure-opslagaccount te bereiken. Zo kan de agentstatus elke vijf minuten worden bijgewerkt.

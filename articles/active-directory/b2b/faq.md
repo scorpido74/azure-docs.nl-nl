@@ -1,129 +1,133 @@
 ---
-title: Veelgestelde vragen over B2B-samen werking-Azure Active Directory | Microsoft Docs
-description: Krijg antwoorden op veelgestelde vragen over Azure Active Directory B2B-samen werking.
+title: Veelgestelde vragen over B2B-samenwerking - Azure Active Directory | Microsoft Documenten
+description: Krijg antwoorden op veelgestelde vragen over Azure Active Directory B2B-samenwerking.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 11/07/2019
+ms.date: 03/19/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d51359896b7a0d03626ead6843d3666f3ad3ef57
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 92c3e0d77a26db406e24d6d2fa07e96349613634
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368097"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050821"
 ---
-# <a name="azure-active-directory-b2b-collaboration-faqs"></a>Veelgestelde vragen over Azure Active Directory B2B-samen werking
+# <a name="azure-active-directory-b2b-collaboration-faqs"></a>Veelgestelde vragen over Azure Active Directory B2B-samenwerking
 
-Deze veelgestelde vragen (FAQ) over de samen werking tussen Azure Active Directory (Azure AD) met Business-to-Business (B2B) worden regel matig bijgewerkt, zodat er nieuwe onderwerpen worden toegevoegd.
+Deze veelgestelde vragen (veelgestelde vragen) over Azure Active Directory (Azure AD) business-to-business (B2B) worden periodiek bijgewerkt om nieuwe onderwerpen op te nemen.
 
-### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>Kunnen we onze aanmeldings pagina aanpassen zodat deze meer intuïtief is voor onze B2B-samenwerkings gast gebruikers?
-Rechthebbend! Bekijk onze [blog post over deze functie](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Voor meer informatie over het aanpassen van de aanmeldings pagina van uw organisatie, Zie [bedrijfs huisstijl toevoegen om u aan te melden en de pagina's van het toegangs venster](../fundamentals/customize-branding.md).
+   > [!IMPORTANT]
+   > **Vanaf 31 maart 2021**ondersteunt Microsoft niet langer het inwisselen van uitnodigingen door onbeheerde Azure AD-accounts en tenants te maken voor B2B-samenwerkingsscenario's. Ter voorbereiding moedigen we klanten aan om te kiezen voor [eenmalige wachtwoordverificatie voor e-mail.](one-time-passcode.md) We zijn blij met uw feedback over deze openbare preview-functie en zijn verheugd om nog meer manieren te creëren om samen te werken.
 
-### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>Kunnen B2B-samenwerkings gebruikers toegang krijgen tot share point online en OneDrive?
-Ja. Het is echter wel mogelijk om te zoeken naar bestaande gast gebruikers in share point online met behulp **van de** kiezer personen. Als u de optie wilt inschakelen om te zoeken naar bestaande gast gebruikers, stelt u **ShowPeoplePickerSuggestionsForGuestUsers** in **op**aan. U kunt deze instelling inschakelen op het niveau van de Tenant of op het niveau van de site verzameling. U kunt deze instelling wijzigen met behulp van de cmdlets set-SPOTenant en set-SPOSite. Met deze cmdlets kunnen leden alle bestaande gast gebruikers in de Directory doorzoeken. Wijzigingen in het Tenant bereik hebben geen invloed op share point online-sites die al zijn ingericht.
+### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>Kunnen we onze aanmeldingspagina aanpassen zodat deze intuïtiever is voor onze gastgebruikers van b2b-samenwerking?
+Absoluut! Zie onze [blogpost over deze functie](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Zie [Bedrijfsbranding toevoegen om u aan te melden en pagina's van het deelvenster Openen voor](../fundamentals/customize-branding.md)meer informatie over het aanpassen van de aanmeldingspagina's van uw organisatie.
 
-### <a name="is-the-csv-upload-feature-still-supported"></a>Wordt de functie voor het uploaden van CSV nog steeds ondersteund?
-Ja. Zie [Dit Power shell](code-samples.md)-voor beeld voor meer informatie over het gebruik van de functie voor het uploaden van CSV-bestanden.
+### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>Hebben B2B-samenwerkingsgebruikers toegang tot SharePoint Online en OneDrive?
+Ja. De mogelijkheid om te zoeken naar bestaande gastgebruikers in SharePoint Online met behulp van de kiezer voor personen is echter standaard **uitgeschakeld.** Als u de optie wilt inschakelen om te zoeken naar bestaande gastgebruikers, stelt u **ShowPeoplePickerSuggestionsForGuestUsers** in **op Aan**. U deze instelling inschakelen op tenantniveau of op siteverzamelingsniveau. U deze instelling wijzigen met de cmdlets Set-SPOTenant en Set-SPOSite. Met deze cmdlets kunnen leden alle bestaande gastgebruikers in de directory doorzoeken. Wijzigingen in het tenantbereik hebben geen invloed op SharePoint Online-sites die al zijn ingericht.
 
-### <a name="how-can-i-customize-my-invitation-emails"></a>Hoe kan ik mijn e-mail berichten aanpassen?
-U kunt bijna alles over het uitnodigings proces aanpassen met behulp van de [API voor B2B-uitnodiging](customize-invitation-api.md).
+### <a name="is-the-csv-upload-feature-still-supported"></a>Wordt de CSV-uploadfunctie nog steeds ondersteund?
+Ja. Zie [dit PowerShell-voorbeeld](code-samples.md)voor meer informatie over het gebruik van de functie CSV-bestandsupload.
 
-### <a name="can-guest-users-reset-their-multi-factor-authentication-method"></a>Kunnen gast gebruikers hun multi-factor Authentication-methode opnieuw instellen?
-Ja. Gast gebruikers kunnen hun multi-factor Authentication-methode op dezelfde manier opnieuw instellen als normale gebruikers.
+### <a name="how-can-i-customize-my-invitation-emails"></a>Hoe kan ik mijn uitnodigingse-mails aanpassen?
+U bijna alles over het inviter-proces aanpassen met behulp van de [B2B-uitnodigings-API's.](customize-invitation-api.md)
 
-### <a name="which-organization-is-responsible-for-multi-factor-authentication-licenses"></a>Welke organisatie is verantwoordelijk voor multi-factor Authentication-licenties?
-De uitnodigende organisatie voert multi-factor Authentication uit. De uitnodigings organisatie moet ervoor zorgen dat de organisatie voldoende licenties heeft voor hun B2B-gebruikers die gebruikmaken van multi-factor Authentication.
+### <a name="can-guest-users-reset-their-multi-factor-authentication-method"></a>Kunnen gastgebruikers hun multi-factor authenticatiemethode resetten?
+Ja. Gastgebruikers kunnen hun multi-factor authenticatiemethode op dezelfde manier resetten als gewone gebruikers.
 
-### <a name="what-if-a-partner-organization-already-has-multi-factor-authentication-set-up-can-we-trust-their-multi-factor-authentication-and-not-use-our-own-multi-factor-authentication"></a>Wat gebeurt er als voor een partner organisatie al multi-factor Authentication is ingesteld? Kunnen we hun multi-factor Authentication vertrouwen en gebruiken we niet onze eigen multi-factor Authentication?
-Deze functie wordt momenteel niet ondersteund. Als voor toegang tot de resources van uw organisatie multi-factor Authentication is vereist, moet de partner organisatie zich registreren voor multi-factor Authentication in uw organisatie (de uitnodigingen).
+### <a name="which-organization-is-responsible-for-multi-factor-authentication-licenses"></a>Welke organisatie is verantwoordelijk voor multi-factor authenticatielicenties?
+De uitnodigende organisatie voert multi-factor authenticatie uit. De uitnodigende organisatie moet ervoor zorgen dat de organisatie voldoende licenties heeft voor hun B2B-gebruikers die multi-factor authenticatie gebruiken.
 
-### <a name="how-can-i-use-delayed-invitations"></a>Hoe kan ik uitgestelde uitnodigingen gebruiken?
-Een organisatie kan B2B-samenwerkings gebruikers toevoegen, ze indien nodig inrichten voor toepassingen en vervolgens uitnodigingen verzenden. U kunt de API voor B2B-samen werking gebruiken om de onboarding-werk stroom aan te passen.
+### <a name="what-if-a-partner-organization-already-has-multi-factor-authentication-set-up-can-we-trust-their-multi-factor-authentication-and-not-use-our-own-multi-factor-authentication"></a>Wat gebeurt er als een partnerorganisatie al multi-factor authenticatie heeft ingesteld? Kunnen we vertrouwen op hun multi-factor authenticatie, en niet gebruik maken van onze eigen multi-factor authenticatie?
+Deze functie wordt momenteel niet ondersteund. Als toegang tot de resources van uw organisatie multifactorauthenticatie vereist, moet de partnerorganisatie zich registreren voor meervoudige verificatie in uw (uitnodigende) organisatie.
 
-### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kan ik gast gebruikers zichtbaar maken in de algemene adres lijst van Exchange?
-Ja. Gast objecten zijn standaard niet zichtbaar in de algemene adres lijst van uw organisatie, maar u kunt Azure Active Directory Power shell gebruiken om ze zichtbaar te maken. Zie [kan ik gast objecten zichtbaar maken in de algemene adres lijst?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
+### <a name="how-can-i-use-delayed-invitations"></a>Hoe kan ik vertraagde uitnodigingen gebruiken?
+Een organisatie wil mogelijk Gebruikers van B2B-samenwerkingstoevoegen, deze zo nodig aan toepassingen inrichten en vervolgens uitnodigingen verzenden. U de B2B-uitnodigingsuitnodigings-API gebruiken om de onboarding-workflow aan te passen.
 
-### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Kan ik een beperkte beheerder van een gast gebruiker maken?
-Absoluut. Zie voor meer informatie [gast gebruikers toevoegen aan een rol](add-guest-to-role.md).
+### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kan ik gastgebruikers zichtbaar maken in de Exchange Global Address List?
+Ja. Gastobjecten zijn standaard niet zichtbaar in de algemene adreslijst (GAL) van uw organisatie, maar u Azure Active Directory PowerShell gebruiken om ze zichtbaar te maken. Zie [Kan ik gastobjecten zichtbaar maken in de algemene adreslijst?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
 
-### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Biedt Azure AD B2B-samen werking B2B-gebruikers toegang tot de Azure Portal?
-Tenzij aan een gebruiker de rol van beperkte beheerder is toegewezen, is voor B2B-samenwerkings gebruikers geen toegang tot de Azure Portal vereist. B2B-samenwerkings gebruikers aan wie de rol van beperkte beheerder is toegewezen, hebben echter toegang tot de portal. Als een gast gebruiker aan wie niet een van deze beheerders rollen is toegewezen, toegang heeft tot de portal, kan de gebruiker mogelijk toegang krijgen tot bepaalde onderdelen van de ervaring. De gast gebruikersrol heeft enkele machtigingen in de Directory.
+### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Kan ik van een gastgebruiker een beperkte beheerder maken?
+Absoluut. Zie [Gastgebruikers toevoegen aan een rol voor](add-guest-to-role.md)meer informatie.
 
-### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Kan ik de toegang tot de Azure Portal voor gast gebruikers blok keren?
+### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Kunnen B2B-gebruikers met Azure AD B2B toegang krijgen tot de Azure-portal?
+Tenzij een gebruiker de rol van beperkte beheerder krijgt toegewezen, hebben gebruikers van B2B-samenwerking geen toegang nodig tot de Azure-portal. B2B-samenwerkingsgebruikers die de rol van beperkte beheerder toegewezen krijgen, hebben echter toegang tot de portal. Als een gastgebruiker die geen van deze beheerdersrollen toegewezen krijgt, toegang heeft tot de portal, heeft de gebruiker mogelijk toegang tot bepaalde delen van de ervaring. De gastgebruikersrol heeft een aantal machtigingen in de map.
 
-Ja. U kunt een beleid voor voorwaardelijke toegang maken waarmee wordt voor komen dat alle gasten en externe gebruikers toegang krijgen tot de Azure Portal. Wanneer u dit beleid configureert, moet u voorzichtig zijn om te voor komen dat de toegang tot leden en beheerders per ongeluk wordt geblokkeerd.
+### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Kan ik de toegang tot de Azure-portal voor gastgebruikers blokkeren?
 
-1. Meld u aan bij uw [Azure Portal](https://portal.azure.com/) als een beveiligings beheerder of een beheerder voor voorwaardelijke toegang.
+Ja. U een beleid voor voorwaardelijke toegang maken dat alle gast- en externe gebruikers blokkeert om toegang te krijgen tot de Azure-portal. Wanneer u dit beleid configureert, moet u voorkomen dat u per ongeluk de toegang tot leden en beheerders blokkeert.
+
+1. Meld u aan bij uw [Azure-portal](https://portal.azure.com/) als beveiligingsbeheerder of beheerder van voorwaardelijke toegang.
 2. Selecteer in de Azure-portal **Azure Active Directory**. 
-3. Selecteer onder **beheren**de optie **beveiliging**.
-4. Onder **beveiligen**selecteert u **voorwaardelijke toegang**. Selecteer **Nieuw beleid**.
-5. Voer op de pagina **Nieuw** in het tekstvak **naam** een naam in voor het beleid (bijvoorbeeld ' gasten blok keren voor toegang tot de portal ').
-6. Onder **toewijzingen**selecteert u **gebruikers en groepen**.
-7. Klik op het tabblad **include** op **gebruikers en groepen selecteren**en selecteer vervolgens **alle gast en externe gebruikers (preview-versie)** .
+3. Selecteer **Onder Beheren**de optie **Beveiliging**.
+4. Selecteer voorwaardelijke **toegang** **onder Beveiligen**. Selecteer **Nieuw beleid**.
+5. Voer op de pagina **Nieuw** in het tekstvak **Naam** een naam in voor het beleid (bijvoorbeeld Gasten blokkeren om toegang te krijgen tot de portal).
+6. Onder **Toewijzingen** selecteert u **Gebruikers en groepen**.
+7. Kies op het tabblad **Opnemen** de optie **Gebruikers en groepen selecteren**en selecteer Alle **gast- en externe gebruikers (Voorbeeld)**.
 9. Selecteer **Done**.
-10. Selecteer op de pagina **Nieuw** in de sectie **toewijzingen** de optie **Cloud-apps of-acties**.
-11. Kies op de pagina **Cloud-apps of acties** de optie **apps selecteren**en kies vervolgens **selecteren**.
+10. Selecteer op de pagina **Nieuw** in de sectie **Toewijzingen** de optie **Cloud-apps of -acties**.
+11. Kies op de pagina **Cloud-apps of -acties** de optie **Apps selecteren**en kies Selecteer **Vervolgens Selecteren**.
 12. Kies op de pagina **Selecteren** de optie **Microsoft Azure Management** en kies vervolgens **Selecteren**.
-13. Op de pagina **Cloud-apps of acties** , selecteer **gereed**.
+13. Selecteer **Cloud apps or actions** **Gereed**.
 
-### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Ondersteunt Azure AD B2B-samen werking multi-factor Authentication-en consumenten-e-mail accounts?
-Ja. Multi-factor Authentication-en consumenten-e-mail accounts worden beide ondersteund voor Azure AD B2B-samen werking.
+### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Ondersteunt Azure AD B2B-samenwerking multi-factor authenticatie en e-mailaccounts voor consumenten?
+Ja. Multi-factor authenticatie en consumentene-mailaccounts worden beide ondersteund voor Azure AD B2B-samenwerking.
 
-### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Ondersteunt u het opnieuw instellen van wacht woorden voor Azure AD B2B-samenwerkings gebruikers?
-Als uw Azure AD-Tenant de basis directory voor een gebruiker is, kunt u [het wacht woord van de gebruiker opnieuw instellen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal) via de Azure Portal. Maar u kunt een wacht woord niet rechtstreeks opnieuw instellen voor een gast gebruiker die zich aanmeldt met een account dat wordt beheerd door een andere Azure AD-adres lijst of een externe ID-provider. Alleen de gast gebruiker of een beheerder in de basismap van de gebruiker kan het wacht woord opnieuw instellen. Hier volgen enkele voor beelden van hoe het opnieuw instellen van wacht woorden werkt voor gast gebruikers:
+### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Ondersteunt u wachtwoordreset voor gebruikers van Azure AD B2B-samenwerkingsgebruikers?
+Als uw Azure AD-tenant de thuismap voor een gebruiker is, u het wachtwoord van de gebruiker opnieuw instellen vanuit de [Azure-portal.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal) U een wachtwoord echter niet rechtstreeks opnieuw instellen voor een gastgebruiker die zich aanmeldt met een account dat wordt beheerd door een andere Azure AD-map of externe identiteitsprovider. Alleen de gastgebruiker of een beheerder in de thuismap van de gebruiker kan het wachtwoord opnieuw instellen. Hier volgen enkele voorbeelden van hoe wachtwoordreset werkt voor gastgebruikers:
  
-* Gast gebruikers die zich aanmelden met een Microsoft-account (bijvoorbeeld guestuser@live.com) kunnen hun eigen wacht woorden opnieuw instellen met behulp van Microsoft-account self-service voor wachtwoord herstel (SSPR). Lees [hoe u uw Microsoft-account wacht woord opnieuw instelt](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
-* Gast gebruikers die zich aanmelden met een Google-account of een andere externe ID-provider kunnen hun eigen wacht woord opnieuw instellen met behulp van de SSPR-methode van de identiteits provider. Een gast gebruiker met het Google-account guestuser@gmail.com kan bijvoorbeeld het wacht woord opnieuw instellen door de instructies in [uw wacht woord wijzigen of opnieuw instellen](https://support.google.com/accounts/answer/41078)te volgen.
-* Als de identiteits Tenant een just-in-time-Tenant (JIT) of ' virale ' is (wat betekent dat het een afzonderlijke, niet-beheerde Azure-Tenant is), kan alleen de gast gebruiker het wacht woord opnieuw instellen. Soms neemt een organisatie het [beheer van virale tenants over](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) die worden gemaakt wanneer werk nemers hun werk-e-mail adressen gebruiken om zich aan te melden voor services. Nadat de organisatie een virale Tenant heeft overgenomen, kan alleen een beheerder in die organisatie het wacht woord van de gebruiker opnieuw instellen of SSPR inschakelen. Als dat nodig is, kunt u, als de uitnodigende organisatie, het gast gebruikers account uit uw Directory verwijderen en een uitnodiging opnieuw verzenden.
-* Als de basismap van de gast gebruiker uw Azure AD-Tenant is, kunt u het wacht woord van de gebruiker opnieuw instellen. U hebt bijvoorbeeld een gebruiker gemaakt of een gebruiker gesynchroniseerd vanaf uw on-premises Active Directory en de User type ingesteld op gast. Omdat deze gebruiker zich in uw directory bevindt, kunt u het wacht woord opnieuw instellen via de Azure Portal.
+* Gastgebruikers die zich aanmelden met een guestuser@live.comMicrosoft-account (bijvoorbeeld) kunnen hun eigen wachtwoorden opnieuw instellen met behulp van microsoft-account selfservice wachtwoordreset (SSPR). Zie [Het wachtwoord van uw Microsoft-account opnieuw instellen.](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)
+* Gastgebruikers die zich aanmelden met een Google-account of een andere externe identiteitsprovider, kunnen hun eigen wachtwoorden opnieuw instellen met behulp van de SSPR-methode van hun identiteitsprovider. Een gastgebruiker met het Google-account guestuser@gmail.com kan bijvoorbeeld zijn wachtwoord opnieuw instellen door de instructies in Wijzigen of uw wachtwoord opnieuw [instellen.](https://support.google.com/accounts/answer/41078)
+* Als de identiteitstenant een just-in-time (JIT) of "virale" tenant is (wat betekent dat het een aparte, onbeheerde Azure-tenant is), kan alleen de gastgebruiker zijn wachtwoord opnieuw instellen. Soms neemt een organisatie [het beheer over van virale tenants](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) die worden gemaakt wanneer werknemers hun e-mailadressen op het werk gebruiken om zich aan te melden voor services. Nadat de organisatie een virale tenant heeft overneemt, kan alleen een beheerder in die organisatie het wachtwoord van de gebruiker opnieuw instellen of SSPR inschakelen. Indien nodig u als uitnodigende organisatie het gastgebruikersaccount uit uw directory verwijderen en een uitnodiging opnieuw verzenden.
 
-### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Biedt micro soft Dynamics 365 online ondersteuning voor Azure AD B2B-samen werking?
-Ja, Dynamics 365 (online) biedt ondersteuning voor Azure AD B2B-samen werking. Zie voor meer informatie het artikel Dynamics 365 [gebruikers uitnodigen met Azure AD B2B-samen werking](https://docs.microsoft.com/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
+* Als de thuismap van de gastgebruiker uw Azure AD-tenant is, u het wachtwoord van de gebruiker opnieuw instellen. U hebt bijvoorbeeld een gebruiker gemaakt of een gebruiker gesynchroniseerd vanuit uw on-premises Active Directory en deze gebruiker ingesteld op Gast. Omdat deze gebruiker thuisis in uw directory, u het wachtwoord opnieuw instellen via de Azure-portal.
 
-### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>Wat is de levens duur van een eerste wacht woord voor een nieuw gemaakte B2B-samenwerkings gebruiker?
-Azure AD heeft een vaste set tekens, wachtwoord sterkte en account vergrendelings vereisten die gelijk zijn voor alle Azure AD-Cloud gebruikers accounts. Cloud gebruikers accounts zijn accounts die niet zijn federatief met een andere ID-provider, zoals 
+### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Biedt Microsoft Dynamics 365 online ondersteuning voor Azure AD B2B-samenwerking?
+Ja, Dynamics 365 (online) ondersteunt Azure AD B2B-samenwerking. Zie het dynamics 365-artikel [Gebruikers uitnodigen met Azure AD B2B-samenwerking](https://docs.microsoft.com/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration)voor meer informatie.
+
+### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>Wat is de levensduur van een eerste wachtwoord voor een nieuw gemaakte B2B-samenwerkingsgebruiker?
+Azure AD heeft een vaste set vereisten voor teken-, wachtwoordsterkte en accountuitsluiting die ook van toepassing zijn op alle Azure AD-cloudgebruikersaccounts. Cloudgebruikersaccounts zijn accounts die niet worden gefedeerd met een andere identiteitsprovider, zoals 
 * Microsoft-account
 * Facebook
 * Active Directory Federation Services
-* Een andere Cloud Tenant (voor B2B-samen werking)
+* Nog een cloudtenant (voor B2B-samenwerking)
 
-Voor federatieve accounts is wachtwoord beleid afhankelijk van het beleid dat wordt toegepast op de on-premises pacht en de Microsoft-account-instellingen van de gebruiker.
+Voor federatieve accounts is het wachtwoordbeleid afhankelijk van het beleid dat wordt toegepast in de on-premises huurovereenkomst en de Microsoft-accountinstellingen van de gebruiker.
 
-### <a name="an-organization-might-want-to-have-different-experiences-in-their-applications-for-tenant-users-and-guest-users-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-correct-model-to-use"></a>Een organisatie wil mogelijk verschillende ervaringen hebben in hun toepassingen voor Tenant gebruikers en gast gebruikers. Zijn er standaard richtlijnen voor dit? Is de aanwezigheid van de ID-provider claim het juiste model om te gebruiken?
-Een gast gebruiker kan een id-provider gebruiken voor verificatie. Zie [Eigenschappen van een B2B-samenwerkings gebruiker](user-properties.md)voor meer informatie. Gebruik de eigenschap **User type** om de gebruikers ervaring te bepalen. De claim **User type** is momenteel niet opgenomen in het token. Toepassingen moeten de Microsoft Graph-API gebruiken om de map op te vragen voor de gebruiker en om de User type op te halen.
+### <a name="an-organization-might-want-to-have-different-experiences-in-their-applications-for-tenant-users-and-guest-users-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-correct-model-to-use"></a>Een organisatie wil mogelijk verschillende ervaringen hebben in hun toepassingen voor tenantgebruikers en gastgebruikers. Is er standaard begeleiding voor dit? Is de aanwezigheid van de identiteitsprovider claim het juiste model te gebruiken?
+Een gastgebruiker kan elke identiteitsprovider gebruiken om te verifiëren. Zie [Eigenschappen van een B2B-samenwerkingsgebruiker](user-properties.md)voor meer informatie. Gebruik de eigenschap **UserType** om de gebruikerservaring te bepalen. De **UserType-claim** is momenteel niet opgenomen in het token. Toepassingen moeten de Microsoft Graph API gebruiken om de map voor de gebruiker op te vragen en om het UserType te krijgen.
 
-### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>Waar kan ik een community voor B2B-samen werking vinden om oplossingen te delen en ideeën te verzenden?
-U luistert voortdurend naar uw feedback om B2B-samen werking te verbeteren. Deel uw gebruikers scenario's, aanbevolen procedures en wat u graag hebt over Azure AD B2B-samen werking. Word lid van de discussie in de [micro soft tech-Community](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b).
+### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>Waar vind ik een B2B samenwerkingscommunity om oplossingen te delen en ideeën in te dienen?
+We luisteren voortdurend naar uw feedback om de B2B-samenwerking te verbeteren. Deel uw gebruikersscenario's, aanbevolen procedures en wat u leuk vindt aan Azure AD B2B-samenwerking. Neem deel aan de discussie in de [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b).
  
-We nodigen u ook uit om uw ideeën in te dienen en te stemmen voor toekomstige functies bij [B2B-samenwerkings ideeën](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas).
+We nodigen u ook uit om uw ideeën in te dienen en te stemmen voor toekomstige functies op [B2B Collaboration Ideas](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas).
 
-### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>Kunnen we een uitnodiging verzenden die automatisch wordt ingewisseld, zodat de gebruiker alleen ' klaar voor de go ' is? Of hoeft de gebruiker altijd door te klikken met de aflosss-URL?
-U kunt andere gebruikers in de partner organisatie uitnodigen door gebruik te maken van de gebruikers interface, Power shell-scripts of Api's. U kunt de gast gebruiker vervolgens een directe koppeling naar een gedeelde app sturen. In de meeste gevallen is het niet meer nodig om de uitnodiging voor e-mail te openen en op een opname-URL te klikken. Zie [Azure Active Directory uitnodiging voor B2B-samen werking](redemption-experience.md).
+### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>Kunnen we een uitnodiging sturen die automatisch wordt ingewisseld, zodat de gebruiker gewoon "klaar is om te gaan"? Of moet de gebruiker altijd doorklikken naar de inwissel-URL?
+U andere gebruikers in de partnerorganisatie uitnodigen met behulp van de UI-, PowerShell-scripts of API's. U de gastgebruiker vervolgens een directe link naar een gedeelde app sturen. In de meeste gevallen is het niet langer nodig om de e-mailuitnodiging te openen en op een inwissel-URL te klikken. Zie [inwisseling van Azure Active Directory B2B-uitnodigingsuitnodigingen](redemption-experience.md)voor samenwerkingsinstellingen .
 
-### <a name="how-does-b2b-collaboration-work-when-the-invited-partner-is-using-federation-to-add-their-own-on-premises-authentication"></a>Hoe werkt B2B-samen werking wanneer de genodigde partner Federatie gebruikt om hun eigen on-premises verificatie toe te voegen?
-Als de partner een Azure AD-Tenant heeft die federatief is voor de on-premises verificatie-infra structuur, wordt on-premises eenmalige aanmelding (SSO) automatisch behaald. Als de partner geen Azure AD-Tenant heeft, wordt er een Azure AD-account gemaakt voor nieuwe gebruikers. 
+### <a name="how-does-b2b-collaboration-work-when-the-invited-partner-is-using-federation-to-add-their-own-on-premises-authentication"></a>Hoe werkt B2B-samenwerking wanneer de uitgenodigde partner federatie gebruikt om hun eigen on-premises authenticatie toe te voegen?
+Als de partner een Azure AD-tenant heeft die wordt gefedeerd naar de on-premises verificatie-infrastructuur, wordt on-premises single sign-on (SSO) automatisch bereikt. Als de partner geen Azure AD-tenant heeft, wordt een Azure AD-account gemaakt voor nieuwe gebruikers. 
 
-### <a name="i-thought-azure-ad-b2b-didnt-accept-gmailcom-and-outlookcom-email-addresses-and-that-b2c-was-used-for-those-kinds-of-accounts"></a>Ik dacht dat Azure AD B2B geen gmail.com-en outlook.com-e-mail adressen heeft geaccepteerd en dat B2C voor dit soort accounts werd gebruikt?
-We verwijderen de verschillen tussen B2B-en Business-to-consumer (B2C)-samen werking in termen van welke identiteiten worden ondersteund. De identiteit die wordt gebruikt, is niet een goede reden om te kiezen tussen het gebruik van B2B of het gebruik van B2C. Zie [B2B-samen werking en B2C vergelijken in azure Active Directory](compare-with-b2c.md)voor meer informatie over het kiezen van uw samenwerkings optie.
+### <a name="i-thought-azure-ad-b2b-didnt-accept-gmailcom-and-outlookcom-email-addresses-and-that-b2c-was-used-for-those-kinds-of-accounts"></a>Ik dacht dat Azure AD B2B niet gmail.com en outlook.com e-mailadressen accepteerde, en dat B2C werd gebruikt voor dit soort accounts?
+We verwijderen de verschillen tussen B2B en business-to-consumer (B2C) samenwerking in termen van welke identiteiten worden ondersteund. De gebruikte identiteit is geen goede reden om te kiezen tussen het gebruik van B2B of het gebruik van B2C. Zie [B2B-samenwerking en B2C vergelijken in Azure Active Directory](compare-with-b2c.md)voor informatie over het kiezen van uw samenwerkingsoptie.
 
-### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Welke toepassingen en services ondersteunen Azure B2B-gast gebruikers?
-Alle met Azure AD geïntegreerde toepassingen kunnen ondersteuning bieden voor Azure B2B-gast gebruikers, maar ze moeten een endpoint instellen als Tenant om gast gebruikers te verifiëren. Mogelijk moet u ook [de claims aanpassen](claims-mapping.md) in het SAML-token dat wordt uitgegeven wanneer een gast gebruiker zich verifieert bij de app. 
+### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Welke toepassingen en services ondersteunen Azure B2B-gastgebruikers?
+Alle azure AD-toepassingen kunnen Azure B2B-gastgebruikers ondersteunen, maar ze moeten een eindpunt gebruiken dat is ingesteld als tenant om gastgebruikers te verifiëren. Mogelijk moet u ook [de claims aanpassen](claims-mapping.md) in het SAML-token dat wordt uitgegeven wanneer een gastgebruiker zich verifieert naar de app. 
 
-### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>Kunnen we multi-factor Authentication afdwingen voor B2B-gast gebruikers als onze partners geen multi-factor Authentication hebben?
-Ja. Zie [voorwaardelijke toegang voor B2B-samenwerkings gebruikers](conditional-access.md)voor meer informatie.
+### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>Kunnen we multi-factor authenticatie forceren voor B2B-gastgebruikers als onze partners geen multi-factor authenticatie hebben?
+Ja. Zie [Voorwaardelijke toegang voor Gebruikers van B2B-samenwerkingsverbanden voor](conditional-access.md)meer informatie.
 
-### <a name="in-sharepoint-you-can-define-an-allow-or-deny-list-for-external-users-can-we-do-this-in-azure"></a>In share point kunt u een lijst "toestaan" of "weigeren" definiëren voor externe gebruikers. Kunnen we dit doen in azure?
-Ja. Azure AD B2B-samen werking ondersteunt het toestaan van lijsten en het weigeren van lijsten. 
+### <a name="in-sharepoint-you-can-define-an-allow-or-deny-list-for-external-users-can-we-do-this-in-azure"></a>In SharePoint u een lijst 'Toestaan' of 'weigeren' definiëren voor externe gebruikers. Kunnen we dit doen in Azure?
+Ja. Azure AD B2B-samenwerking ondersteunt lijsten en weigeringslijsten. 
 
-### <a name="what-licenses-do-we-need-to-use-azure-ad-b2b"></a>Welke licenties moeten er worden gebruikt voor Azure AD B2B?
-Zie [Azure Active Directory B2B Collaboration guidance](licensing-guidance.md)(Engelstalig) voor meer informatie over de licenties die uw organisatie nodig heeft om Azure AD B2B te gebruiken.
+### <a name="what-licenses-do-we-need-to-use-azure-ad-b2b"></a>Welke licenties hebben we nodig om Azure AD B2B te gebruiken?
+Zie Azure [Active Directory B2B-samenwerkingslicentierichtlijnen](licensing-guidance.md)voor informatie over welke licenties uw organisatie nodig heeft om Azure AD B2B te gebruiken.
 
 ### <a name="next-steps"></a>Volgende stappen
 

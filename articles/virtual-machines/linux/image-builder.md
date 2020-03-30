@@ -1,34 +1,34 @@
 ---
-title: Een virtuele Linux-machine met Azure Image Builder maken (preview)
-description: Een virtuele Linux-machine maken met de Azure Image Builder.
+title: Een Linux-vm maken met Azure Image Builder (voorbeeld)
+description: Maak een Linux-vm met de Azure Image Builder.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.openlocfilehash: 15a3b39b1466ffec87971b8f054ca916567d89d7
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 0d36d7db4d85ece8de77040925c535305951562b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944957"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066671"
 ---
-# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Voor beeld: een virtuele Linux-machine maken met Azure Image Builder
+# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Preview: Een Linux-vm maken met Azure Image Builder
 
-Dit artikel laat u zien hoe u een aangepaste Linux-installatie kopie kunt maken met behulp van de Azure Image Builder en de Azure CLI. In het voor beeld in dit artikel worden drie verschillende [aanpassingen](image-builder-json.md#properties-customize) gebruikt voor het aanpassen van de installatie kopie:
+In dit artikel ziet u hoe u een aangepaste Linux-afbeelding maken met behulp van de Azure Image Builder en de Azure CLI. In het voorbeeld in dit artikel worden drie verschillende [aanstelrs](image-builder-json.md#properties-customize) gebruikt voor het aanpassen van de afbeelding:
 
-- Shell (ScriptUri): Hiermee wordt een [shell script](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh)gedownload en uitgevoerd.
-- Shell (inline)-voert specifieke opdrachten uit. In dit voor beeld omvatten de inline-opdrachten het maken van een map en het bijwerken van het besturings systeem.
-- Bestand: kopieert een [bestand van github](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) naar een map op de virtuele machine.
+- Shell (ScriptUri) - downloadt en voert een [shell script](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh).
+- Shell (inline) - voert specifieke opdrachten uit. In dit voorbeeld omvatten de inline-opdrachten het maken van een map en het bijwerken van het besturingssysteem.
+- Bestand - kopieert een [bestand van GitHub](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) naar een map op de VM.
 
-U kunt ook een `buildTimeoutInMinutes`opgeven. De standaard waarde is 240 minuten en u kunt een build-tijd verg Roten zodat er meer builds meer worden uitgevoerd.
+U ook `buildTimeoutInMinutes`een. De standaardinstelling is 240 minuten en u de buildtijd verhogen om langer lopende builds mogelijk te maken.
 
-Er wordt een voor beeld van een JSON-sjabloon gebruikt voor het configureren van de installatie kopie. Het JSON-bestand dat we gebruiken, is hier: [helloImageTemplateLinux. json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json). 
+We gebruiken een voorbeeld .json-sjabloon om de afbeelding te configureren. Het .json-bestand dat we gebruiken is hier: [helloImageTemplateLinux.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json). 
 
 > [!IMPORTANT]
-> Azure Image Builder is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Azure Image Builder bevindt zich momenteel in een openbare preview.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
 
 ## <a name="register-the-features"></a>De functies registreren
 Als u Azure Image Builder wilt gebruiken tijdens de preview, moet u de nieuwe functie registreren.
@@ -37,7 +37,7 @@ Als u Azure Image Builder wilt gebruiken tijdens de preview, moet u de nieuwe fu
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 ```
 
-Controleer de status van de functie registratie.
+Controleer de status van de functieregistratie.
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
@@ -51,7 +51,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Als ze niet zijn geregistreerd, voert u de volgende handelingen uit:
+Als ze niet zeggen geregistreerd, voer het volgende uit:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -59,12 +59,12 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Storage
 ```
 
-## <a name="setup-example-variables"></a>Voor beeld van installatie variabelen
+## <a name="setup-example-variables"></a>Voorbeeldvariabelen instellen
 
-We zullen enkele gegevens herhaaldelijk gebruiken, dus we maken een aantal variabelen om deze informatie op te slaan.
+We zullen een aantal stukjes informatie herhaaldelijk gebruiken, dus we zullen een aantal variabelen maken om die informatie op te slaan.
 
 
-```azurecli-interactive
+```console
 # Resource group name - we are using myImageBuilderRG in this example
 imageResourceGroup=myImageBuilerRGLinux
 # Datacenter location - we are using West US 2 in this example
@@ -75,23 +75,23 @@ imageName=myBuilderImage
 runOutputName=aibLinux
 ```
 
-Maak een variabele voor uw abonnements-ID. U kunt dit doen met behulp van `az account show | grep id`.
+Maak een variabele voor uw abonnements-ID. U dit `az account show | grep id`krijgen met behulp van.
 
-```azurecli-interactive
+```console
 subscriptionID=<Your subscription ID>
 ```
 
 ## <a name="create-the-resource-group"></a>Maak de resourcegroep.
-Dit wordt gebruikt voor het opslaan van het sjabloon artefact van de installatie kopie en de installatie kopie.
+Dit wordt gebruikt om het artefact van de afbeeldingsconfiguratiesjabloon en de afbeelding op te slaan.
 
 ```azurecli-interactive
 az group create -n $imageResourceGroup -l $location
 ```
 
-## <a name="set-permissions-on-the-resource-group"></a>Machtigingen voor de resource groep instellen
-Geef de machtiging Inzender om de afbeelding in de resource groep te maken. Zonder de juiste machtigingen kan de installatie kopie niet worden gemaakt. 
+## <a name="set-permissions-on-the-resource-group"></a>Machtigingen instellen voor de resourcegroep
+Geef Image Builder 'bijdrager' toestemming om de afbeelding in de resourcegroep te maken. Zonder de juiste machtigingen zal de image build mislukken. 
 
-De `--assignee` waarde is de ID van de app-registratie voor de Image Builder-service. 
+De `--assignee` waarde is de app-registratie-id voor de Image Builder-service. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -100,11 +100,11 @@ az role assignment create \
     --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
 ```
 
-## <a name="download-the-template-example"></a>Het voor beeld van de sjabloon downloaden
+## <a name="download-the-template-example"></a>Het voorbeeld van de sjabloon downloaden
 
-Er is een para meter configuratie sjabloon voor voorbeeld afbeelding gemaakt die u kunt gebruiken. Down load het voor beeld. JSON-bestand en configureer dit met de variabelen die u eerder hebt ingesteld.
+Er is een parametersjabloon voor voorbeeldafbeeldinggemaakt die u gebruiken. Download het voorbeeld .json-bestand en configureer het met de variabelen die u eerder hebt ingesteld.
 
-```azurecli-interactive
+```bash
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json -o helloImageTemplateLinux.json
 
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateLinux.json
@@ -114,20 +114,20 @@ sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateLinux.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateLinux.json
 ```
 
-U kunt dit voor beeld. json aanpassen als dat nodig is. U kunt bijvoorbeeld de waarde van `buildTimeoutInMinutes` verg Roten, zodat er meer builds meer worden uitgevoerd. U kunt het bestand bewerken in Cloud Shell met behulp van een tekst editor zoals `vi`.
+U dit voorbeeld .json indien nodig wijzigen. U bijvoorbeeld de waarde `buildTimeoutInMinutes` verhogen om langer lopende builds mogelijk te maken. U het bestand bewerken in Cloud `vi`Shell met behulp van een teksteditor zoals.
 
-```azurecli-interactive
+```bash
 vi helloImageTemplateLinux.json
 ```
 
 > [!NOTE]
-> Voor de bron installatie kopie moet u altijd [een versie opgeven](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure). u kunt `latest`niet gebruiken.
+> Voor bronafbeelding moet u altijd een versie `latest` [opgeven](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)die u niet gebruiken.
 >
-> Als u de resource groep toevoegt of wijzigt waar de installatie kopie wordt gedistribueerd, moet u controleren of de [machtigingen zijn ingesteld voor de resource groep](#set-permissions-on-the-resource-group).
+> Als u de resourcegroep toevoegt of wijzigt waarin de afbeelding wordt gedistribueerd, moet u ervoor zorgen dat de [machtigingen zijn ingesteld voor de resourcegroep](#set-permissions-on-the-resource-group).
 
 
-## <a name="submit-the-image-configuration"></a>De configuratie van de installatie kopie verzenden
-De configuratie van de installatie kopie verzenden naar de VM Image Builder-service
+## <a name="submit-the-image-configuration"></a>De afbeeldingsconfiguratie verzenden
+De afbeeldingsconfiguratie verzenden naar de VM Image Builder-service
 
 ```azurecli-interactive
 az resource create \
@@ -138,14 +138,14 @@ az resource create \
     -n helloImageTemplateLinux01
 ```
 
-Als de bewerking is voltooid, wordt er een bericht weer gegeven en wordt er een Image Builder-configuratie sjabloon artefact gemaakt in de $imageResourceGroup. U kunt de resource groep in de portal zien als u verborgen typen weer geven inschakelt.
+Als het voltooid is, wordt een succesbericht weergegeven en wordt een sjabloonartefact voor de configuratievan de afbeeldingsbouwer in de $imageResourceGroup. U de brongroep in de portal zien als u 'Verborgen typen weergeven' inschakelt.
 
-Bovendien maakt de opbouw functie voor afbeeldingen op de achtergrond een staging-resource groep in uw abonnement. In de opbouw functie voor installatie kopieën wordt de resource groep staging gebruikt voor het bouwen van de installatie kopie. De naam van de resource groep heeft de volgende indeling: `IT_<DestinationResourceGroup>_<TemplateName>`.
+Op de achtergrond maakt Image Builder ook een brongroep voor tijdelijke bestanden in uw abonnement. Image Builder gebruikt de brongroep met fasering voor de afbeeldingsopbouw. De naam van de resourcegroep vindt `IT_<DestinationResourceGroup>_<TemplateName>`plaats in deze indeling: .
 
 > [!IMPORTANT]
-> Verwijder de faserings resource groep niet rechtstreeks. Als u het afbeeldings sjabloon artefact verwijdert, wordt de resource groep staging automatisch verwijderd. Zie de sectie [opschonen](#clean-up) aan het einde van dit artikel voor meer informatie.
+> Verwijder de groep met tijdelijke bestanden niet rechtstreeks. Als u het artefact van de afbeeldingssjabloon verwijdert, wordt de groep met tijdelijke bestanden automatisch verwijderd. Zie voor meer informatie de sectie [Opruimen](#clean-up) aan het einde van dit artikel.
 
-Zie de stappen voor [probleem oplossing](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) als de service een fout meldt tijdens het verzenden van de afbeeldings configuratie sjabloon. U moet de sjabloon ook verwijderen voordat u opnieuw probeert de build te verzenden. De sjabloon verwijderen:
+Als de service een fout meldt tijdens het indienen van de afbeeldingsconfiguratiesjabloon, raadpleegt u de [stappen voor het oplossen van problemen.](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) U moet de sjabloon ook verwijderen voordat u opnieuw probeert de build in te dienen. Ga als u de sjabloon verwijdert:
 
 ```azurecli-interactive
 az resource delete \
@@ -154,9 +154,9 @@ az resource delete \
     -n helloImageTemplateLinux01
 ```
 
-## <a name="start-the-image-build"></a>De installatie kopie starten
+## <a name="start-the-image-build"></a>De afbeeldingsopbouw starten
 
-Start het maken van de installatie kopie.
+Start de afbeeldingsopbouw.
 
 
 ```azurecli-interactive
@@ -167,14 +167,14 @@ az resource invoke-action \
      --action Run 
 ```
 
-Wacht totdat de build is voltooid. Dit kan 10-15 minuten duren.
+Wacht tot de build is voltooid, voor dit voorbeeld kan het 10-15 minuten duren.
 
-Als er fouten optreden, raadpleegt u deze [probleemoplossings](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) stappen.
+Als u fouten tegenkomt, raadpleegt u deze [stappen voor het oplossen van problemen.](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting)
 
 
 ## <a name="create-the-vm"></a>De virtuele machine maken
 
-Maak de virtuele machine met behulp van de installatie kopie die u hebt gemaakt.
+Maak de VM met de afbeelding die u hebt gemaakt.
 
 ```azurecli-interactive
 az vm create \
@@ -186,15 +186,15 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Haal het IP-adres op uit de uitvoer van het maken van de virtuele machine en gebruik deze om te SSHen naar de virtuele machine.
+Haal het IP-adres uit de uitvoer van het maken van de VM en gebruik het naar SSH naar de VM.
 
-```azurecli-interactive
+```bash
 ssh azureuser@<pubIp>
 ```
 
-U ziet dat de installatie kopie is aangepast met een bericht van de dag zodra uw SSH-verbinding tot stand is gebracht.
+U moet zien dat de afbeelding is aangepast met een Bericht van de Dag zodra uw SSH-verbinding tot stand is gebracht!
 
-```console
+```output
 
 *******************************************************
 **            This VM was built from the:            **
@@ -207,19 +207,19 @@ Typ `exit` wanneer u klaar bent om de SSH-verbinding te sluiten.
 
 ## <a name="check-the-source"></a>Controleer de bron
 
-In de afbeelding Builder-sjabloon, in de ' Eigenschappen ', ziet u de bron afbeelding, het aanpassings script dat wordt uitgevoerd en de locatie waar deze wordt gedistribueerd.
+In de sjabloon Image Builder ziet u in de 'Eigenschappen' de bronafbeelding, het aanpassingsscript dat wordt uitgevoerd en waar deze wordt gedistribueerd.
 
-```azurecli-interactive
+```bash
 cat helloImageTemplateLinux.json
 ```
 
-Zie voor meer informatie over dit JSON-bestand [Image Builder-sjabloon verwijzing](image-builder-json.md)
+Zie [Sjabloonverwijzing voor imagebuilder-sjabloon](image-builder-json.md) voor meer gedetailleerde informatie over dit .json-bestand
 
 ## <a name="clean-up"></a>Opruimen
 
-Wanneer u klaar bent, kunt u de resources verwijderen.
+Wanneer u klaar bent, u de bronnen verwijderen.
 
-Verwijder de sjabloon voor de opbouw functie voor installatie kopieën.
+Verwijder de sjabloon voor de opbouw van afbeeldingen.
 
 ```azurecli-interactive
 az resource delete \
@@ -228,13 +228,13 @@ az resource delete \
     -n helloImageTemplateLinux01
 ```
 
-Verwijder de resource groep voor de installatie kopie.
+Verwijder de groep afbeeldingsbronnen.
 
-```bash
+```azurecli
 az group delete -n $imageResourceGroup
 ```
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de onderdelen van het JSON-bestand dat in dit artikel wordt gebruikt [Image Builder-sjabloon verwijzing](image-builder-json.md).
+Zie [Sjabloonverwijzing](image-builder-json.md)image builder voor meer informatie over de onderdelen van het JSon-bestand dat in dit artikel wordt gebruikt.

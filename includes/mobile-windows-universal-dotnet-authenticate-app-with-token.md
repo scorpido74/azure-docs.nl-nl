@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: d71d52257b6e8cfa243207c9bfdb5c7de7d3dd37
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176716"
 ---
-1. Voeg het volgende toe in het projectbestand MainPage.xaml.cs **met behulp van** instructies:
+1. Voeg in het MainPage.xaml.cs-projectbestand de volgende **instructies** toe:
    
         using System.Linq;        
         using Windows.Security.Credentials;
-2. Vervang de **AuthenticateAsync** methode met de volgende code:
+2. Vervang de **methode AuthenticateAsync** door de volgende code:
    
         private async System.Threading.Tasks.Task<bool> AuthenticateAsync()
         {
@@ -84,13 +84,13 @@ ms.locfileid: "67176716"
             return success;
         }
    
-    In deze versie van **AuthenticateAsync**, de app probeert te gebruiken van referenties die zijn opgeslagen de **PasswordVault** voor toegang tot de service. Een gewone aanmelding wordt ook uitgevoerd wanneer er geen opgeslagen referenties.
+    In deze versie van **AuthenticateAsync**probeert de app referenties te gebruiken die zijn opgeslagen in de **PasswordVault** om toegang te krijgen tot de service. Een regelmatige aanmelding wordt ook uitgevoerd wanneer er geen opgeslagen referenties zijn.
    
    > [!NOTE]
-   > Een token in cache is mogelijk verlopen en token verloopt na verificatie kan ook optreden wanneer de app gebruikt wordt. Zie voor informatie over het bepalen of een token is verlopen, [controleren voor verlopen verificatietokens](https://aka.ms/jww5vp). Zie voor een oplossing voor het afhandelen van autorisatiefouten met betrekking tot verlopen tokens, het bericht [Caching en verwerken van vervallen tokens in Azure Mobile Services SDK beheerd](https://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx). 
+   > Een token in de cache kan verlopen en tokenverloop kan ook plaatsvinden na verificatie wanneer de app in gebruik is. Zie [Controleren op verlopen verificatietokens voor](https://aka.ms/jww5vp)meer informatie over hoe u bepalen of een token is verlopen. Zie de [na-caching-tokens in Azure Mobile Services managed SDK](https://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx)voor een oplossing voor het afhandelen van autorisatiefouten in het verlopen van tokens. 
    > 
    > 
-3. De app twee keer opnieuw opgestart.
+3. Start de app twee keer opnieuw.
    
-    U ziet dat op het eerste lid is, aanmelden met de provider is weer vereist. Echter op de tweede keer opnieuw opstarten referenties in de cache worden gebruikt en de aanmelding wordt overgeslagen. 
+    Merk op dat bij de eerste start-up, aanmelden bij de provider opnieuw verplicht is. Bij de tweede herstart worden de in de cache opgeslagen referenties echter gebruikt en wordt de aanmelding omzeild. 
 

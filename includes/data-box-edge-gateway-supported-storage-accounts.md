@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: alkohli
 ms.openlocfilehash: 6172570ad541dee10473d222f79fc1ba1ce19dea
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176481"
 ---
-Hier volgt een lijst met ondersteunde opslagaccounts voor uw apparaat.
+Hier is een lijst met de ondersteunde opslagaccounts voor uw apparaat.
 
 | **Opslagaccount** | **Opmerkingen** |
 | --- | --- |
 | Klassiek | Standard |
-| Algemeen doel  |Standaard; zowel V1 als V2 worden ondersteund. Warme en koude lagen worden ondersteund. |
+| Algemeen gebruik  |Standard; zowel V1 als V2 wordt ondersteund. Zowel dynamische als statische servicelagen worden ondersteund. |
 

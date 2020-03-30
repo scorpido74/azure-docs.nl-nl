@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database resource limieten | Microsoft Docs
-description: Dit artikel bevat een overzicht van de Azure SQL Database resource limieten voor afzonderlijke data bases en elastische Pools. Het bevat ook informatie over wat er gebeurt wanneer deze resource limieten worden bereikt of overschreden.
+title: Azure SQL Database-bronlimieten | Microsoft Documenten
+description: In dit artikel vindt u een overzicht van de azure SQL Database-bronlimieten voor afzonderlijke databases en elastische pools. Het biedt ook informatie over wat er gebeurt wanneer deze resourcelimieten worden bereikt of overschreden.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,129 +11,147 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: fa41649e002bd4845b95e787c1d0589ed1987588
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 550c315023c0ae907c369778c81b16e137004bec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79255923"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067251"
 ---
-# <a name="sql-database-resource-limits-and-resource-governance"></a>SQL Database resource limieten en resource governance
+# <a name="sql-database-resource-limits-and-resource-governance"></a>SQL Database-resourcelimieten en resourcegovernance
 
-Dit artikel bevat een overzicht van de SQL Database resource limieten voor een SQL Database-Server die afzonderlijke data bases en elastische Pools beheert. Het bevat informatie over wat er gebeurt wanneer deze resource limieten worden bereikt of overschreden, en beschrijft de resource governance-mechanismen die worden gebruikt om deze limieten af te dwingen.
+In dit artikel vindt u een overzicht van de SQL Database-bronlimieten voor een SQL Database-server die afzonderlijke databases en elastische pools beheert. Het geeft informatie over wat er gebeurt wanneer deze resourcelimieten worden bereikt of overschreden, en beschrijft de mechanismen voor resourcegovernance die worden gebruikt om deze limieten af te dwingen.
 
 > [!NOTE]
-> Zie [SQL database resource limieten voor beheerde instanties](sql-database-managed-instance-resource-limits.md)voor beheerde instantie limieten.
+> Zie [SQL Database-bronlimieten voor beheerde exemplaren voor](sql-database-managed-instance-resource-limits.md)limieten voor beheerde exemplaren voor beheerde instanties.
 
-## <a name="maximum-resource-limits"></a>Maximum aantal resource limieten
+## <a name="maximum-resource-limits"></a>Maximale resourcelimieten
 
 | Resource | Limiet |
 | :--- | :--- |
-| Data bases per server | 5000 |
-| Standaard aantal servers per abonnement in een wille keurige regio | 20 |
-| Maximum aantal servers per abonnement in een wille keurige regio | 200 |  
-| DTU/eDTU-quotum per server | 54,000 |  
-| vCore quotum per Server/exemplaar | 540 |
-| Maximum aantal groepen per server | Beperkt door het aantal Dtu's of vCores. Als bijvoorbeeld elke groep 1000 Dtu's is, kan een server 54 groepen ondersteunen.|
+| Databases per server | 5000 |
+| Standaardaantal servers per abonnement in elke regio | 20 |
+| Maximaal aantal servers per abonnement in elke regio | 200 |  
+| DTU/ eDTU-quotum per server | 54,000 |  
+| vCore-quotum per server/instantie | 540 |
+| Maximale groepen per server | Beperkt door het aantal DTUs of vCores. Als elke groep bijvoorbeeld 1000 DTU's is, kan een server 54 groepen ondersteunen.|
 |||
 
 > [!IMPORTANT]
-> Wanneer het aantal data bases de limiet per SQL Database Server nadert, kunnen de volgende problemen optreden:
+> Als het aantal databases de limiet per SQL Database-server benadert, kan het volgende optreden:
 >
-> - De latentie verhogen bij het uitvoeren van query's op de hoofd database.  Dit geldt ook voor weer gaven van gegevens over het resource gebruik, zoals sys. resource_stats.
-> - Het verg Roten van latentie in beheer bewerkingen en het weer geven van portal-gezichts punten waarbij de data bases op de server worden geïnventariseerd.
+> - Toenemende latentie bij het uitvoeren van query's ten opzichte van de hoofddatabase.  Dit omvat weergaven van resourcegebruiksstatistieken zoals sys.resource_stats.
+> - Toenemende latentie in beheerbewerkingen en rendering portal standpunten die betrekking hebben op het opsommen van databases in de server.
 
 > [!NOTE]
-> Als u meer DTU/eDTU-quotum, vCore quotum of meer servers dan het standaard aantal wilt verkrijgen, moet u een nieuwe ondersteunings aanvraag indienen in de Azure Portal. Zie [aanvraag quotum verhogingen voor Azure SQL database](quota-increase-request.md)voor meer informatie.
+> Als u meer DTU/eDTU-quota, vCore-quota of meer servers dan het standaardbedrag wilt verkrijgen, dient u een nieuwe ondersteuningsaanvraag in de Azure-portal in. Zie [Quotaverhogingen voor Azure SQL Database aanvragen voor](quota-increase-request.md)meer informatie.
 
-### <a name="storage-size"></a>Opslag grootte
+### <a name="storage-size"></a>Opslaggrootte
 
-Voor bron opslag van één data base, raadpleegt u op [DTU gebaseerde resource limieten](sql-database-dtu-resource-limits-single-databases.md) of op [vCore gebaseerde resource limieten](sql-database-vcore-resource-limits-single-databases.md) voor de maximale opslag ruimte per prijs categorie.
+Voor de grootte van resources in afzonderlijke databases raadpleegt u [dtu-gebaseerde resourcelimieten](sql-database-dtu-resource-limits-single-databases.md) of [vCore-gebaseerde resourcelimieten](sql-database-vcore-resource-limits-single-databases.md) voor de opslaggroottelimieten per prijscategorie.
 
-## <a name="what-happens-when-database-resource-limits-are-reached"></a>Wat er gebeurt wanneer de database resource limieten zijn bereikt
+## <a name="what-happens-when-database-resource-limits-are-reached"></a>Wat gebeurt er als databaseresourcelimieten worden bereikt
 
-### <a name="compute-dtus-and-edtus--vcores"></a>Compute (Dtu's en Edtu's/vCores)
+### <a name="compute-dtus-and-edtus--vcores"></a>Compute (DTU's en eDTUs / vCores)
 
-Wanneer database Compute-gebruik (gemeten door Dtu's en Edtu's, of vCores) hoog wordt, wordt de query latentie verhoogd en kunnen query's zelfs een time-out opleveren. Onder deze omstandigheden kunnen query's in de wachtrij worden geplaatst door de service en worden resources opgegeven voor uitvoering omdat resources gratis worden.
-Wanneer het gebruik van hoge berekeningen wordt tegengekomen, zijn de volgende opties voor risico beperking:
+Wanneer het gebruik van databasegegevens (gemeten door DTU's en eDTU's, of vCores) hoog wordt, neemt de latentie van query's toe en kunnen query's zelfs een time-out krijgen. Onder deze voorwaarden kunnen query's in de wachtrij worden geplaatst door de service en worden resources voor uitvoering geleverd naarmate resources gratis worden.
+Bij een hoog computergebruik zijn mitigatieopties:
 
-- De reken grootte van de data base of elastische pool verg Roten om de data base te voorzien van meer compute-resources. Zie bronnen van [één data base schalen](sql-database-single-database-scale.md) en [elastische pool resources schalen](sql-database-elastic-pool-scale.md).
-- Query's optimaliseren om het resource gebruik van elke query te verminderen. Zie [query tuning/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting)(Engelstalig) voor meer informatie.
+- De rekengrootte van de database of elastische groep verhogen om de database te voorzien van meer rekenbronnen. Zie [Afzonderlijke databaseresources schalen](sql-database-single-database-scale.md) en [Elastische poolbronnen schalen](sql-database-elastic-pool-scale.md).
+- Query's optimaliseren om het resourcegebruik van elke query te verminderen. Zie [Queryafstemming/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting)voor meer informatie.
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 
-Wanneer gebruikte database ruimte de maximale grootte bereikt, worden invoeg bewerkingen en updates die de omvang van de gegevens overschrijden, door data bases ingevoegd en bijgewerkt en ontvangen clients een [fout bericht](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md). De instructies SELECT en DELETE blijven slagen.
+Wanneer de gebruikte databaseruimte de maximale groottelimiet bereikt, mislukken database-inserts en updates die de gegevensgrootte vergroten en ontvangen clients een [foutmelding.](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md) SELECT- en VERWIJDER-instructies blijven slagen.
 
-Wanneer u gebruik maakt van hoge ruimte, kunt u onder andere het volgende doen:
+Bij het tegenkomen van een hoge ruimte gebruik, mitigatie opties omvatten:
 
-- De maximale grootte van de data base of elastische pool verg Roten of meer opslag toevoegen. Zie bronnen van [één data base schalen](sql-database-single-database-scale.md) en [elastische pool resources schalen](sql-database-elastic-pool-scale.md).
-- Als de data base zich in een elastische pool bevindt, kan de data base buiten de pool worden geplaatst, zodat de opslag ruimte niet wordt gedeeld met andere data bases.
-- Een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md) voor meer informatie.
+- De maximale grootte van de database of elastische pool vergroten of meer opslagruimte toevoegen. Zie [Afzonderlijke databaseresources schalen](sql-database-single-database-scale.md) en [Elastische poolbronnen schalen](sql-database-elastic-pool-scale.md).
+- Als de database zich in een elastische groep bevindt, kan de database als alternatief buiten de groep worden verplaatst, zodat de opslagruimte niet wordt gedeeld met andere databases.
+- Een database verkleinen om ongebruikte ruimte terug te winnen. Zie [Bestandsruimte beheren in Azure SQL Database](sql-database-file-space-management.md) voor meer informatie
 
-### <a name="sessions-and-workers-requests"></a>Sessies en werk nemers (aanvragen)
+### <a name="sessions-and-workers-requests"></a>Sessies en werknemers (aanvragen)
 
-Het maximum aantal sessies en werk rollen wordt bepaald door de servicelaag en de berekenings grootte (Dtu's/Edtu's of vCores. Nieuwe aanvragen worden afgewezen wanneer de limiet voor sessies of werk nemers is bereikt en clients ontvangen een fout bericht. Hoewel het aantal beschik bare verbindingen kan worden beheerd door de toepassing, is het aantal gelijktijdige werk nemers vaak moeilijker om te schatten en te beheren. Dit geldt met name voor piek belasting perioden wanneer database resource limieten zijn bereikt en werk nemers kunnen opvallen omdat er meer query's, grote blokkerende ketens of buitensporige query parallellisme worden uitgevoerd.
+Het maximum aantal sessies en werknemers wordt bepaald door de servicelaag en de rekengrootte (DTU/eDTU's of vCores). Nieuwe aanvragen worden afgewezen wanneer sessie- of werklimieten worden bereikt en clients een foutbericht ontvangen. Hoewel het aantal beschikbare verbindingen door de toepassing kan worden gecontroleerd, is het aantal gelijktijdige werknemers vaak moeilijker in te schatten en te controleren. Dit geldt vooral tijdens piekbelastingsperioden wanneer databaseresourcelimieten worden bereikt en werknemers zich opstapelen als gevolg van langere query's, grote blokkeringsketens of overmatig queryparallellisme.
 
-Wanneer u het gebruik van hoge sessies of werk nemers ondervindt, kunt u de volgende beperkende opties gebruiken:
+Bij het tegenkomen van een hoge sessie of werknemer gebruik, mitigatie opties omvatten:
 
-- De servicelaag of de reken grootte van de data base of elastische pool wordt verhoogd. Zie bronnen van [één data base schalen](sql-database-single-database-scale.md) en [elastische pool resources schalen](sql-database-elastic-pool-scale.md).
-- Het optimaliseren van query's om het resource gebruik van elke query te verminderen als de oorzaak van het verhoogde werk nemer is vanwege de conflicten voor reken bronnen. Zie [query tuning/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting)(Engelstalig) voor meer informatie.
+- De servicelaag of rekengrootte van de database of elastische groep verhogen. Zie [Afzonderlijke databaseresources schalen](sql-database-single-database-scale.md) en [Elastische poolbronnen schalen](sql-database-elastic-pool-scale.md).
+- Query's optimaliseren om het resourcegebruik van elke query te verminderen als de oorzaak van een groter gebruik van werknemers te wijten is aan onenigheid voor rekenresources. Zie [Queryafstemming/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting)voor meer informatie.
+- Het verminderen van de [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (maximale mate van parallellisme) instelling.
+- Querywerkbelasting optimaliseren om het aantal voorvallen en de duur van queryblokkering te verminderen.
+
+### <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>Resourceverbruik door gebruikersworkloads en interne processen
+
+CPU- en geheugenverbruik door gebruikersworkloads in elke database wordt gerapporteerd in `avg_cpu_percent` `avg_memory_usage_percent` de [sys.dm_db_resource_stats-](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) en [sys.resource_stats-weergaven,](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) in en in kolommen. Voor elastische pools wordt resourceverbruik op poolsniveau gerapporteerd in de weergave [sys.elastic_pool_resource_stats.](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) Cpu-verbruik voor gebruikersworkloads `cpu_percent` wordt ook gerapporteerd via de Azure Monitor-statistiek, voor [afzonderlijke databases](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases) en [elastische pools](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) op poolniveau.
+
+Azure SQL Database vereist compute resources voor het implementeren van kernservicefuncties zoals hoge beschikbaarheid en disaster recovery, database back-up en herstel, monitoring, Query Store, Automatische tuning, enz. Het systeem zet een bepaald beperkt deel van de totale resources voor deze interne processen opzij met behulp van [mechanismen voor resourcegovernance,](#resource-governance) waardoor de rest van de resources beschikbaar is voor gebruikersworkloads. Op momenten dat interne processen geen compute resources gebruiken, maakt het systeem ze beschikbaar voor workloads van gebruikers.
+
+Het totale CPU- en geheugenverbruik door gebruikersworkloads en interne processen op het SQL Server-exemplaar dat een enkele `avg_instance_cpu_percent` `avg_instance_memory_percent` database of een elastische groep host, wordt gerapporteerd in de [sys.dm_db_resource_stats-](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) en [sys.resource_stats-weergaven](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) in en in kolommen. Deze gegevens worden ook `sqlserver_process_core_percent` `sqlserver_process_memory_percent` gerapporteerd via de statistieken en Azure Monitor, voor [afzonderlijke databases](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases) en [elastische pools](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) op poolniveau.
+
+Een meer gedetailleerde uitsplitsing van het recente resourceverbruik naar gebruikersworkloads en interne processen wordt gerapporteerd in de weergaven [sys.dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database) en [sys.dm_resource_governor_workload_groups_history_ex.](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database) Zie [Resourcegovernance](#resource-governance)voor meer informatie over resourcegroepen en werkbelastinggroepen waarnaar in deze weergaven wordt verwezen. Deze weergaven rapporteren over het gebruik van resources door gebruikersworkloads en specifieke interne processen in de bijbehorende resourcegroepen en werkworkloadgroepen.
+
+In het kader van prestatiebewaking en probleemoplossing is het`avg_cpu_percent` `cpu_percent`belangrijk om zowel het **cpu-verbruik** van gebruikers ( , ) als **het totale CPU-verbruik** door gebruikersworkloads en interne processen in overweging te nemen ( ,`avg_instance_cpu_percent``sqlserver_process_core_percent`).
+
+**Het CPU-verbruik** van gebruikers wordt berekend als een percentage van de gebruikersworkloadlimieten in elke servicedoelstelling. **Het gebruik van de cpu-gebruiker** op 100% geeft aan dat de gebruikersworkload de limiet van de servicedoelstelling heeft bereikt. Wanneer het **totale CPU-verbruik** echter het bereik van 70-100% bereikt, is het mogelijk om de doorvoer van de gebruikersworkload af te vlakken en de latentie van query's te verhogen, zelfs als het gerapporteerde **CPU-verbruik** van de gebruiker aanzienlijk onder de 100% blijft. Dit is waarschijnlijker bij het gebruik van kleinere servicedoelstellingen met een matige toewijzing van rekenresources, maar relatief intense gebruikersworkloads, zoals in [dichte elastische pools.](sql-database-elastic-pool-resource-management.md) Dit kan ook gebeuren met kleinere servicedoelstellingen wanneer interne processen tijdelijk extra resources vereisen, bijvoorbeeld bij het maken van een nieuwe replica van de database.
+
+Wanneer **het totale CPU-verbruik** hoog is, zijn mitigatieopties hetzelfde als eerder vermeld, en omvatten servicedoelstelling te verhogen en/of user workload optimalisatie.
 
 ## <a name="resource-governance"></a>Resourcebeheer
 
-Azure SQL Database maakt gebruik van een resource governance-implementatie die is gebaseerd op SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor), gewijzigd en uitgebreid om een SQL Server database service in azure uit te voeren. Op elk SQL Server-exemplaar in de service zijn er meerdere [resource groepen](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-resource-pool) en [werkbelasting groepen](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-workload-group), waarbij resource limieten zijn ingesteld op groeps-en groeps niveaus om een [evenwichtige data base-as-a-Service](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/)te bieden. De werk belasting van gebruikers en interne workloads worden geclassificeerd in afzonderlijke resource groepen en werkbelasting groepen. De werk belasting van de gebruiker op de primaire en lees bare secundaire replica's, met inbegrip van geo-replica's, wordt geclassificeerd in de `SloSharedPool1` resource groep en `UserPrimaryGroup.DBId[N]` werkbelasting groep, waarbij `N` staat voor de waarde van de data base-ID. Daarnaast zijn er meerdere resource groepen en werkbelasting groepen voor verschillende interne workloads.
+Om resourcelimieten af te dwingen, gebruikt Azure SQL Database een implementatie voor resourcebeheer die is gebaseerd op SQL Server [Resource Governor,](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor)gewijzigd en uitgebreid om een SQL Server-databaseservice in Azure uit te voeren. Op elke SQL Server-instantie in de service zijn er meerdere [resourcegroepen](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-resource-pool) en [werkworkloadgroepen,](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-workload-group)met resourcelimieten die zijn ingesteld op zowel pool- als groepsniveaus om een [gebalanceerde Database-as-a-Service](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/)te bieden. Gebruikersworkloads en interne workloads worden ingedeeld in afzonderlijke resourcegroepen en workloadgroepen. Gebruikerswerkbelasting op de primaire en leesbare secundaire replica's, `SloSharedPool1` waaronder `UserPrimaryGroup.DBId[N]` georeplica's, wordt ingedeeld in de resourcegroep en werkbelastinggroep, waar `N` staat voor de waarde van de database-id. Daarnaast zijn er meerdere resourcepools en workloadgroepen voor verschillende interne workloads.
 
-Naast het gebruik van Resource Governor voor het beheren van resources binnen het SQL Server proces, maakt Azure SQL Database ook gebruik van Windows- [taak objecten](https://docs.microsoft.com/windows/win32/procthread/job-objects) voor proces niveau resource beheer en Windows [File Server Resource Manager (FSRM)](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview) voor opslag quotum beheer.
+Azure SQL Database gebruikt niet alleen Resource Governor om resources binnen het SQL Server-proces te beheren, maar gebruikt ook Windows [Job Objects](https://docs.microsoft.com/windows/win32/procthread/job-objects) voor resourcegovernance op procesniveau en Windows File Server Resource [Manager (FSRM)](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview) voor opslagquotumbeheer.
 
-Azure SQL Database Resource governance is hiërarchisch van aard. Van boven naar beneden worden de limieten afgedwongen op het niveau van het besturings systeem en op het niveau van het opslag volume met behulp van de beheer mechanismen van het resource-en Resource Governor, op het niveau van de resource groep met behulp van Resource Governor en vervolgens op het niveau van de werkbelasting groep die gebruikmaakt van Resource Governor. De beheer limieten voor resources die gelden voor de huidige data base of elastische pool worden opgehaald in de weer gave [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) . 
+Azure SQL Database resource governance is hiërarchisch van aard. Van boven naar beneden worden limieten afgedwongen op os-niveau en op het niveau van het opslagvolume met behulp van beheermechanismen voor besturingssysteemresources en Resource Governor, vervolgens op resourcepoolniveau met Resource Governor en vervolgens op het niveau van de werkbelastinggroep met behulp van Resource Gouverneur. Resourcegovernancelimieten die van kracht zijn voor de huidige database of elastische groep, worden weergegeven in de [sys.dm_user_db_resource_governance-weergave.](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 
 
-### <a name="data-io-governance"></a>Data IO governance
+### <a name="data-io-governance"></a>Data IO-governance
 
-Data IO governance is een proces in Azure SQL Database dat wordt gebruikt voor het beperken van fysieke IO-Lees-en schrijf bewerkingen op gegevens bestanden van een Data Base. IOPS-limieten worden voor elk service niveau ingesteld om het effect "ruis op de buur" zo klein mogelijk te maken, om resource toewijzings verdeling in de multi tenant-service te bieden en om binnen de mogelijkheden van de onderliggende hardware en opslag te blijven.
+Data IO-governance is een proces in Azure SQL Database dat wordt gebruikt om zowel lezen als schrijven van fysieke IO te beperken tot gegevensbestanden van een database. IOPS-limieten zijn ingesteld voor elk serviceniveau om het effect 'luidruchtige buren' te minimaliseren, de toewijzing van resources in de multi-tenantservice te bieden en binnen de mogelijkheden van de onderliggende hardware en opslag te blijven.
 
-Voor afzonderlijke data bases worden de limieten voor werkbelasting groepen toegepast op alle opslag-i/o-bewerkingen op de data base, terwijl de limieten voor de resource groep van toepassing zijn op alle opslag-i/o-data bases op hetzelfde SQL Server exemplaar, inclusief de `tempdb` Voor elastische Pools gelden werkbelasting groepen voor elke data base in de pool, terwijl de limiet voor de resource groep van toepassing is op de volledige elastische pool, met inbegrip van de `tempdb`-data base, die wordt gedeeld tussen alle data bases in de groep. Over het algemeen kunnen limieten voor resource groepen niet worden behaald door de werk belasting op basis van een Data Base (enkel of gegroepeerd), omdat de limieten voor werkbelasting groepen lager zijn dan de limieten voor de resource groep en het aantal IOPS/door Voer is beperkt. Groeps limieten kunnen echter worden bereikt door de gecombineerde werk belasting voor meerdere data bases op hetzelfde SQL Server-exemplaar.
+Voor afzonderlijke databases worden limieten voor workloadgroepen toegepast op alle opslag-IO's tegen de database, terwijl resourcepoollimieten van toepassing zijn op alle opslag-IO voor alle databases in dezelfde SQL Server-instantie, inclusief de `tempdb` database. Voor elastische groepen zijn limieten voor werkbelastinggroepen van toepassing op elke database in `tempdb` de groep, terwijl de limiet voor de resourcegroep van toepassing is op de volledige elastische groep, inclusief de database, die wordt gedeeld tussen alle databases in de groep. In het algemeen zijn resourcepoollimieten mogelijk niet haalbaar door de werkbelasting ten opzichte van een database (één of gepoold), omdat de limieten voor werkbelastinggroepen lager zijn dan de limieten voor resourcegroepen en de IOPS/doorvoer eerder beperken. De gecombineerde workload kan echter worden bereikt door de gecombineerde workload ten opzichte van meerdere databases op dezelfde SQL Server-instantie.
 
-Als een query bijvoorbeeld 1000 IOPS genereert zonder IO resource governance, maar de maximale IOPS-limiet van de werkbelasting groep is ingesteld op 900 IOPS, kan de query niet meer dan 900 IOPS genereren. Als de maximale IOPS-limiet van de resource groep is ingesteld op 1500 IOPS en het totale aantal IO-bewerkingen van alle werkbelasting groepen die zijn gekoppeld aan de resource groep meer dan 1500 IOPS overschrijdt, kan de i/o van dezelfde query worden verminderd onder de limiet van 900 IOPS voor de werk groep.
+Als een query bijvoorbeeld 1000 IOPS genereert zonder io-resourcebeheer, maar de maximale IOPS-limiet voor workloadgroep is ingesteld op 900 IOPS, kan de query niet meer dan 900 IOPS genereren. Als de maximale IOPS-limiet voor resourcesgroep echter is ingesteld op 1500 IOPS en het totale IO van alle workloadgroepen die zijn gekoppeld aan de resourcegroep meer dan 1500 IOPS, kan de IO van dezelfde query worden verlaagd tot onder de werkgroeplimiet van 900 IOPS.
 
-De min/max-waarden voor IOPS en door Voer die worden geretourneerd door de [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) -weer gave fungeren als limieten/cap's, niet als garanties. Verder biedt resource governance geen specifieke opslag latentie gegarandeerd. De best Haal bare latentie, IOPS en door Voer voor een bepaalde gebruikers werkbelasting zijn niet alleen afhankelijk van de beheer limieten voor i/o-resources, maar ook op basis van de combi natie van i/o-grootten en de mogelijkheden van de onderliggende opslag. SQL Server maakt gebruik van IOs die variëren van grootte tussen 512 KB en 4 MB. Met het oog op het afdwingen van IOPS-limieten wordt elke IO verwerkt ongeacht de grootte, met uitzonde ring van data bases met gegevens bestanden in Azure Storage. In dat geval wordt IOs groter dan 256 KB verwerkt als meerdere 256 KB IOs, om te worden uitgelijnd met Azure Storage IO-accounting.
+De IOPS- en doorvoermin/max-waarden die worden geretourneerd door de [sys.dm_user_db_resource_governance-weergave](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) fungeren als limieten/caps, niet als garanties. Bovendien garandeert resourcegovernance geen specifieke opslaglatentie. De best haalbare latentie, IOPS en doorvoer voor een bepaalde gebruikersworkload zijn niet alleen afhankelijk van io-resourcegovernancelimieten, maar ook van de mix van io-formaten die worden gebruikt en van de mogelijkheden van de onderliggende opslag. SQL Server maakt gebruik van IOs die variëren in grootte tussen 512 KB en 4 MB. Voor de handhaving van IOPS-limieten wordt elke IO geboekt, ongeacht de grootte, met uitzondering van databases met gegevensbestanden in Azure Storage. In dat geval worden IOs groter dan 256 KB geboekt als meerdere 256 KB-IOs, om af te stemmen op azure storage IO-boekhouding.
 
-Voor Basic-, Standard-en Algemeen-data bases, die gebruikmaken van gegevens bestanden in Azure Storage, kan de `primary_group_max_io` waarde mogelijk niet worden behaald als een Data Base niet over voldoende gegevens bestanden beschikt om cumulatief te zijn van dit aantal IOPS, of als de gegevens niet gelijkmatig over de bestanden worden gedistribueerd, of als de laag van de onderliggende blobs de limiet voor IOPS/door Voer overschrijd Op dezelfde manier wordt de `primary_max_log_rate`-waarde mogelijk niet door een werk belasting gegenereerd als gevolg van een klein aantal logboek-IOs dat door veelvuldige trans acties kan worden door lopen, vanwege de limiet voor IOPS voor de onderliggende Azure Storage-blob.
+Voor basisdatabases, standaard- en algemene beheerdatabases, die `primary_group_max_io` gegevensbestanden in Azure Storage gebruiken, is de waarde mogelijk niet haalbaar als een database niet genoeg gegevensbestanden heeft om dit aantal IOPS cumulatief op te geven, of als gegevens niet gelijkmatig over bestanden worden verdeeld, of als de prestatielaag van onderliggende blobs IOPS/doorvoer beperkt onder de limiet voor resourcegovernance. Met kleine log-IOs die worden gegenereerd `primary_max_log_rate` door frequente transactiecommit, is de waarde mogelijk niet haalbaar door een werkbelasting vanwege de IOPS-limiet voor de onderliggende Azure-opslagblob.
 
-De waarden van resource gebruik, zoals `avg_data_io_percent` en `avg_log_write_percent`, die zijn gerapporteerd in de weer gaven [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)en [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) , worden berekend als percentage van de maximale resource beheer limieten. Daarom is het mogelijk om te voor komen dat andere factoren dan het aantal IOPS/door Voer van de resource governance de IOPS/door Voer afvlakken en de latentie verhogen naarmate de werk belasting toeneemt, ook al is het gerapporteerde resource gebruik minder dan 100%. 
+Waarden voor resourcegebruik, `avg_data_io_percent` zoals en `avg_log_write_percent`, gerapporteerd in de weergaven [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)en [sys.elastic_pool_resource_stats,](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) worden berekend als percentages van de maximale resourcegovernancelimieten. Wanneer andere factoren dan resource governance IOPS/throughput beperken, is het daarom mogelijk om IOPS/throughput afte vlakken en latencies te zien toenemen naarmate de werkbelasting toeneemt, ook al blijft het gerapporteerde resourcegebruik onder de 100%. 
 
-Als u de IOPS, door Voer en latentie per database bestand voor lezen en schrijven wilt zien, gebruikt u de functie [sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) . Deze functie behaalt alle i/o-bewerkingen op de data base, inclusief de i/o van de achtergrond die niet is verwerkt bij `avg_data_io_percent`, maar gebruikt IOPS en door Voer van de onderliggende opslag, en kan van invloed zijn op de waargenomen opslag latentie. De functie heeft ook betrekking op extra latentie die kan worden geïntroduceerd door IO-resource governance voor lees-en schrijf bewerkingen, in de kolommen `io_stall_queued_read_ms` en `io_stall_queued_write_ms`.
+Als u IOPS, doorvoer en latentie per databasebestand wilt lezen en schrijven, gebruikt u de functie [sys.dm_io_virtual_file_stats()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) om iops, doorvoer en latentie per databasebestand te bekijken. Deze functie oppervlak alle IO tegen de database, met `avg_data_io_percent`inbegrip van achtergrond IO die niet wordt verwerkt naar , maar maakt gebruik van IOPS en doorvoer van de onderliggende opslag, en kan van invloed zijn waargenomen opslag latentie. De functie geeft ook extra latentie weer die kan worden geïntroduceerd door `io_stall_queued_read_ms` `io_stall_queued_write_ms` IO resource governance voor respectievelijk reads en writes.
 
-### <a name="transaction-log-rate-governance"></a>Beleid voor transactie logboek belasting
+### <a name="transaction-log-rate-governance"></a>Beheer van transactielogboekratio's
 
-Het tarief voor transactie Logboeken is een proces in Azure SQL Database dat wordt gebruikt om een hoge opname snelheid te beperken voor werk belastingen, zoals bulksgewijs invoegen, selecteren en index builds. Deze limieten worden bijgehouden en afgedwongen op het subseconde op het niveau van de generatie van de logboek record, waardoor de door Voer wordt beperkt, ongeacht het aantal IOs-bestanden dat kan worden uitgegeven aan de hand van gegevens.  Tarieven voor het genereren van transactie logboeken worden momenteel lineair geschaald naar een punt dat is afhankelijk van de hardware, waarbij de maximale logboek snelheid van 96 MB/s met het vCore-aankoop model wordt toegestaan. 
+Beheer van transactielogboeksnelheden is een proces in Azure SQL Database dat wordt gebruikt om hoge opnamepercentages voor workloads zoals bulkinserts, SELECT INTO en indexbuilds te beperken. Deze limieten worden bijgehouden en afgedwongen op het tweede niveau tot de snelheid van het genereren van logboekrecorden, waardoor de doorvoer wordt beperkt, ongeacht hoeveel IOs kunnen worden uitgegeven tegen gegevensbestanden.  Transactieloggeneratietarieven schalen momenteel lineair naar een punt dat hardwareafhankelijk is, waarbij de maximaal toegestane logsnelheid 96 MB/s is met het vCore-inkoopmodel. 
 
 > [!NOTE]
-> De daad werkelijke fysieke IOs-naar-transactie logboek bestanden zijn niet gebonden of beperkt.
+> De werkelijke fysieke IOs naar transactie log bestanden worden niet geregeld of beperkt.
 
-De logboek tarieven zijn zodanig ingesteld dat ze in verschillende scenario's kunnen worden bereikt en onderhouden, terwijl het hele systeem de functionaliteit kan behouden met een geminimaliseerd effect op de belasting van de gebruiker. Log rate governance zorgt ervoor dat back-ups van transactie logboeken binnen de gepubliceerde herstel-Sla's blijven.  Dit bestuur voor komt ook een buitensporige achterstand op secundaire replica's.
+Logtarieven zijn zo ingesteld dat ze kunnen worden bereikt en ondersteund in een verscheidenheid van scenario's, terwijl het algemene systeem kan zijn functionaliteit te behouden met een minimale impact op de belasting van de gebruiker. Log rate governance zorgt ervoor dat transactielogback-ups binnen gepubliceerde herstelbaarheids-SLA's blijven.  Dit bestuur voorkomt ook een buitensporige achterstand op secundaire replica's.
 
-Wanneer er logboek records worden gegenereerd, wordt elke bewerking geëvalueerd en beoordeeld of deze moet worden uitgesteld om een maximale gewenste logboek frequentie (MB/s per seconde) te behouden. De vertragingen worden niet toegevoegd wanneer de logboek records worden leeg gemaakt naar de opslag, maar de log rate governance wordt toegepast tijdens het genereren van de logboek registratie.
+Als logboekrecords worden gegenereerd, wordt elke bewerking geëvalueerd en beoordeeld op de vraag of deze moet worden vertraagd om een maximale gewenste logsnelheid (MB/s per seconde) te behouden. De vertragingen worden niet toegevoegd wanneer de logboekrecords naar opslag worden gespoeld, in plaats van dat beheer van logboekfrequentie wordt toegepast tijdens het genereren van logkoersen zelf.
 
-De werkelijke generatie tarieven voor logboek registratie die tijdens de uitvoering zijn opgelegd, kunnen ook worden beïnvloed door de feedback mechanismen, waardoor de toegestane logboek tarieven tijdelijk worden verminderd zodat het systeem kan stabiliseren. Beheer van de ruimte van het logboek bestand, voor komen dat de logboek ruimte wordt gebruikt en de replicatie mechanismen voor beschikbaarheids groepen kunnen de algehele systeem limieten tijdelijk verlagen.
+De werkelijke log generatie tarieven opgelegd tijdens de looptijd kan ook worden beïnvloed door feedback mechanismen, tijdelijk verminderen van de toegestane log tarieven, zodat het systeem kan stabiliseren. Log bestandsruimtebeheer, voorkomen dat u uit de instellingen van de logboekruimte loopt en replicatiemechanismen voor beschikbaarheidsgroepen de algemene systeemlimieten tijdelijk kunnen verlagen.
 
-De verkeers vormgeving van de logboek frequentie wordt geoppereerd via de volgende wacht typen (beschikbaar in de [sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) dmv):
+Log rate governor traffic shaping is opgedoken via de volgende wachttypen (blootgesteld in de [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV):
 
-| Wacht type | Opmerkingen |
+| Wachttype | Opmerkingen |
 | :--- | :--- |
-| LOG_RATE_GOVERNOR | Data base beperken |
-| POOL_LOG_RATE_GOVERNOR | Beperking van groepen |
-| INSTANCE_LOG_RATE_GOVERNOR | Beperking op exemplaar niveau |  
-| HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Feedback beheer, fysieke replicatie van beschikbaarheids groepen in Premium/Bedrijfskritiek niet bijhouden |  
-| HADR_THROTTLE_LOG_RATE_LOG_SIZE | Feedback beheer, beperkende tarieven om te voor komen dat er een fout optreedt in de logboek ruimte |
+| LOG_RATE_GOVERNOR | Databasebeperkend |
+| POOL_LOG_RATE_GOVERNOR | Beperking van de pool |
+| INSTANCE_LOG_RATE_GOVERNOR | Beperking van het instantieniveau |  
+| HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Feedbackbesturingselement, fysieke replicatie van beschikbaarheidsgroepen in Premium/Business Critical houdt het niet bij |  
+| HADR_THROTTLE_LOG_RATE_LOG_SIZE | Feedbackcontrole, beperking van de tarieven om een voorwaarde voor een niet-logboekruimte te voorkomen |
 |||
 
-Houd rekening met de volgende opties als er een frequentie limiet optreedt die de gewenste schaal baarheid belemmert:
-- Schaal omhoog naar een hoger service niveau om de maximale logboek frequentie van 96 MB/s te verkrijgen. 
-- Als gegevens die worden geladen tijdelijk zijn, zoals faserings gegevens in een ETL-proces, kan deze worden geladen in TempDB (dit is mini maal geregistreerd). 
-- Voor analytische scenario's laadt u in een geclusterde column Store-gedekte tabel. Dit reduceert de vereiste logboek frequentie vanwege compressie. Deze techniek verhoogt het CPU-gebruik en is alleen van toepassing op gegevens sets die profiteren van geclusterde column Store-indexen. 
+Wanneer u een limiet voor de logsnelheid tegenkomt die de gewenste schaalbaarheid belemmert, moet u rekening houden met de volgende opties:
+- Schaal op naar een hoger serviceniveau om de maximale logsnelheid van 96 MB/s te krijgen of schakel over naar een andere servicelaag. De [hyperscale-servicelaag](sql-database-service-tier-hyperscale.md) biedt een logsnelheid van 100 MB/s, ongeacht het gekozen serviceniveau.
+- Als gegevens die worden geladen van voorbijgaande aard zijn, zoals faseringsgegevens in een ETL-proces, kan deze worden geladen in tempdb (die minimaal is vastgelegd). 
+- Voor analytische scenario's wordt u in een gedekte tabel met geclusterde kolomarchief geladen. Dit vermindert de vereiste logsnelheid als gevolg van compressie. Deze techniek verhoogt het CPU-gebruik en is alleen van toepassing op gegevenssets die profiteren van geclusterde kolomarchiefindexen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)voor meer informatie over algemene Azure-limieten.
-- Zie [dtu's en edtu's](sql-database-purchase-models.md#dtu-based-purchasing-model)voor informatie over Dtu's en edtu's.
-- Zie [tempdb in Azure SQL database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)voor meer informatie over de limieten voor TempDB-grootte.
+- Zie [Azure-abonnements- en servicelimieten, quota en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)voor informatie over algemene Azure-limieten.
+- Zie [DTU's en eDTU's voor informatie over DTU's en eDTU's.](sql-database-purchase-models.md#dtu-based-purchasing-model)
+- Zie [TempDB in Azure SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)voor informatie over tempdb-groottelimieten.

@@ -1,7 +1,7 @@
 ---
-title: Azure Video Indexer gebruiken om het merk model aan te passen
+title: Een Brands-model aanpassen met Video Indexer API
 titleSuffix: Azure Media Services
-description: In dit artikel wordt gedemonstreerd hoe u Azure Video Indexer kunt gebruiken om het merk model aan te passen.
+description: Meer informatie over het aanpassen van een Brands-model met de Video Indexer API.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,36 +10,36 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: anzaman
-ms.openlocfilehash: 81ba4cc7be5f9361d21aaea2ba78d0fd6f0f8c95
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 79c3a7934e9152a4908f895c20ee6fbdc0f360cf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289914"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127996"
 ---
-# <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Een Brands model aanpassen met de Video Indexer-API
+# <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Een Brands-model aanpassen met de API voor videoindexer
 
-Video Indexer ondersteunt merk detectie van spraak-en visuele tekst tijdens het indexeren en opnieuw indexeren van video-en audio-inhoud. De merk detectie functie identificeert vermeldingen van producten, services en bedrijven die worden voorgesteld door de merken database van Bing. Als micro soft bijvoorbeeld wordt vermeld in een video-of audio-inhoud of als het in visuele tekst in een video wordt weer gegeven, detecteert Video Indexer deze als een merk in de inhoud. Met een aangepast merk model kunt u bepaalde merken uitsluiten van detectie en merken opnemen die deel uitmaken van uw model en die zich mogelijk niet in de data base van Bing Brands bevinden.
+Video Indexer ondersteunt merkdetectie van spraak en visuele tekst tijdens het indexeren en opnieuw indexeren van video- en audio-inhoud. De merkdetectiefunctie identificeert vermeldingen van producten, services en bedrijven die worden voorgesteld door de merkendatabase van Bing. Als Microsoft bijvoorbeeld wordt vermeld in video- of audio-inhoud of als deze wordt weergegeven in visuele tekst in een video, detecteert Video Indexer het als een merk in de inhoud. Met een aangepast brands-model u uitsluiten dat bepaalde merken worden gedetecteerd en merken opnemen die deel moeten uitmaken van uw model dat mogelijk niet in de merkendatabase van Bing staat.
 
-Zie [overzicht](customize-brands-model-overview.md)voor een gedetailleerd overzicht.
+Zie [Overzicht](customize-brands-model-overview.md)voor een gedetailleerd overzicht .
 
-U kunt de Video Indexer-Api's gebruiken om aangepaste Brands modellen te maken, te gebruiken en te bewerken die in een video zijn gedetecteerd, zoals beschreven in dit onderwerp. U kunt ook de Video Indexer website gebruiken, zoals beschreven in [het model Brands aanpassen met behulp van de video indexer-website](customize-brands-model-with-api.md).
+U de API's voor video-indexeren gebruiken om aangepaste merkenmodellen te maken, te gebruiken en te bewerken die in een video zijn gedetecteerd, zoals beschreven in dit onderwerp. U ook de video-indexerwebsite gebruiken, zoals beschreven in [het model Merken aanpassen met behulp van de website Video Indexer.](customize-brands-model-with-api.md)
 
 ## <a name="create-a-brand"></a>Een merk maken
 
-Met de [Create a brand](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand) API maakt u een nieuw aangepast merk en voegt u dit toe aan het aangepaste merk model voor het opgegeven account. 
+Het [maken van een merk](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand) API creëert een nieuw aangepast merk en voegt het toe aan het aangepaste Merken-model voor het opgegeven account.
 
 > [!NOTE]
-> Als de instelling is **ingeschakeld** (in de hoofd tekst) op True, wordt het merk in de lijst met *insluitingen* voor video indexer gedetecteerd. Als **de instelling is ingesteld op** False, wordt het merk in de *uitsluitings* lijst geplaatst, zodat video indexer dit niet detecteert.
+> Als `enabled` u (in het lichaam) op true zet, wordt het merk in de lijst *Opnemen* voor Video-indexer ingesteld om te detecteren. Als `enabled` u false instelt, wordt het merk in de lijst *Uitsluiten* weergegeven, zodat Video Indexer het niet detecteert.
 
-Enkele andere para meters die u in de hoofd tekst kunt instellen:
+Enkele andere parameters die u in het lichaam instellen:
 
-* De **referenceUrl** -waarde kan bestaan uit een referentie websites voor het merk, zoals een koppeling naar de Wikipedia-pagina.
-* De waarde **Tags** is een lijst met tags voor het merk. Dit wordt weer gegeven in het *categorie* veld van het merk op de website van video indexer. Het merk "Azure" kan bijvoorbeeld worden gelabeld of gecategoriseerd als "Cloud".
+* De `referenceUrl` waarde kan elke referentiewebsites voor het merk zijn, zoals een link naar de Wikipedia-pagina.
+* De `tags` waarde is een lijst met tags voor het merk. Deze tag wordt weergegeven in het *veld Categorie* van het merk op de website van Video Indexer. Het merk "Azure" kan bijvoorbeeld worden getagd of gecategoriseerd als "Cloud".
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord bevat informatie over het merk dat u zojuist hebt gemaakt, in de indeling van het onderstaande voor beeld.
+Het antwoord geeft informatie over het merk dat u zojuist hebt gemaakt naar aanleiding van de indeling van het onderstaande voorbeeld.
 
 ```json
 {
@@ -61,19 +61,19 @@ Het antwoord bevat informatie over het merk dat u zojuist hebt gemaakt, in de in
 
 ## <a name="delete-a-brand"></a>Een merk verwijderen
 
-Met de brand-API [verwijderen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?) wordt een merk van het aangepaste merk model verwijderd voor het opgegeven account. Het account is opgegeven in de **accountId** -para meter. Zodra het merk is aangeroepen, bevallen de lijsten voor het *opnemen* of *uitsluiten* van merken niet meer.
+Met [de delete a brand](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?) API wordt een merk verwijderd uit het aangepaste merkenmodel voor het opgegeven account. Het account is `accountId` opgegeven in de parameter. Zodra het merk succesvol wordt genoemd, staat het niet langer in de lijsten met merken *opnemen* of *uitsluiten.*
 
 ### <a name="response"></a>Antwoord
 
-Er is geen inhoud geretourneerd wanneer het merk wordt verwijderd.
+Er is geen geretourneerde inhoud wanneer het merk is verwijderd.
 
-## <a name="get-a-specific-brand"></a>Een specifiek merk ophalen
+## <a name="get-a-specific-brand"></a>Krijg een specifiek merk
 
-Met de [een merk](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?) -API ophalen kunt u zoeken naar de details van een merk in het aangepaste merk model voor het opgegeven account met behulp van de merk-id.
+Met de [GET a Brand](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?) API u zoeken naar de details van een merk in het aangepaste merkenmodel voor het opgegeven account met behulp van de merk-ID.
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord bevat informatie over het merk dat u hebt gezocht (met behulp van merk-ID) volgens de indeling van het voor beeld hieronder.
+Het antwoord geeft informatie over het merk dat u hebt gezocht (met merk-ID) volgens de indeling van het onderstaande voorbeeld.
 
 ```json
 {
@@ -94,15 +94,15 @@ Het antwoord bevat informatie over het merk dat u hebt gezocht (met behulp van m
 ```
 
 > [!NOTE]
-> **als deze instelling is** ingesteld op **True** , geeft dit aan dat het merk *in de lijst met* insluitingen voor video indexer moet worden **gedetecteerd en is ingesteld op** False, betekent dit dat het merk zich in de *uitsluitings* lijst bevindt, zodat dit niet door video indexer wordt gedetecteerd.
+> `enabled`wordt ingesteld `true` om te betekenen dat het merk in de lijst `enabled` *Opnemen* voor Video-indexer om te detecteren, en vals betekent dat het merk in de lijst *Uitsluiten,* dus Video Indexer zal het niet detecteren.
 
 ## <a name="update-a-specific-brand"></a>Een specifiek merk bijwerken
 
-Met de [Update een gloed](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?) -API kunt u zoeken naar de details van een merk in het aangepaste merk model voor het opgegeven account met behulp van de merk-id.
+Met [de update van een merk-API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?) u zoeken naar de details van een merk in het aangepaste merkenmodel voor het opgegeven account met behulp van de merk-ID.
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord bevat de bijgewerkte informatie over het merk dat u hebt bijgewerkt volgens de indeling van het onderstaande voor beeld.
+Het antwoord bevat de bijgewerkte informatie over het merk dat u hebt bijgewerkt naar aanleiding van de indeling van het onderstaande voorbeeld.
 
 ```json
 {
@@ -122,13 +122,13 @@ Het antwoord bevat de bijgewerkte informatie over het merk dat u hebt bijgewerkt
 }
 ```
 
-## <a name="get-all-of-the-brands"></a>Alle merken ophalen
+## <a name="get-all-of-the-brands"></a>Krijg alle merken
 
-De [all Brands](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?) -API ophalen retourneert alle Brands in het aangepaste Brands model voor het opgegeven account, ongeacht of het merk is bedoeld om te worden *opgenomen* in de lijst met merken of *uitsluiten* .
+De [get all brands](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?) API retourneert alle merken in het aangepaste Merken-model voor het opgegeven account, ongeacht of het merk in de lijst met merken *opnemen* of *uitsluiten* moet staan.
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord bevat een lijst met alle Brands in uw account en alle details op basis van de indeling van het onderstaande voor beeld.
+Het antwoord bevat een lijst van alle merken in uw account en elk van hun gegevens volgens de indeling van het onderstaande voorbeeld.
 
 ```json
 [
@@ -160,15 +160,15 @@ Het antwoord bevat een lijst met alle Brands in uw account en alle details op ba
 ```
 
 > [!NOTE]
-> Het merk in de lijst *bevat* een voor *beeld* van video indexer om te detecteren en het merk met de naam *example2* bevindt zich in de *uitsluitings* lijst, waardoor het niet door video indexer wordt gedetecteerd.
+> Het merk met de naam *Voorbeeld* staat in de lijst *Opnemen* voor Video-indexer om te detecteren en het merk met de naam *Example2* staat in de lijst *Uitsluiten,* dus Video Indexer detecteert het niet.
 
-## <a name="get-brands-model-settings"></a>Instellingen voor Brands model ophalen
+## <a name="get-brands-model-settings"></a>De modelinstellingen van Merken weergeven
 
-Met de API-instellingen voor het [ophalen van Brands](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands) worden de model instellingen voor Brands in het opgegeven account geretourneerd. De instellingen van het merk model geven aan of detectie van de Bing Brands-data base is ingeschakeld. Als Bing-merken niet zijn ingeschakeld, detecteert Video Indexer alleen Brands van het aangepaste merk model van het opgegeven account.
+De API [voor merkinstellingen voor nl](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands) retourneert de modelinstellingen van Merken in het opgegeven account. De modelinstellingen van Brands geven aan of detectie van de bing-merkendatabase is ingeschakeld of niet. Als Bing-merken niet zijn ingeschakeld, detecteert Video Indexer alleen merken op het aangepaste merkenmodel van het opgegeven account.
 
 ### <a name="response"></a>Antwoord
 
-In het antwoord wordt weer gegeven of Bing Brands is ingeschakeld volgens de indeling van het onderstaande voor beeld.
+Het antwoord laat zien of Bing-merken zijn ingeschakeld volgens de indeling van het onderstaande voorbeeld.
 
 ```json
 {
@@ -178,18 +178,18 @@ In het antwoord wordt weer gegeven of Bing Brands is ingeschakeld volgens de ind
 ```
 
 > [!NOTE]
-> **useBuiltIn** wordt ingesteld op True, betekent dat Bing-merken zijn ingeschakeld. Als *useBuiltin* False is, zijn Bing-merken uitgeschakeld. De **status** waarde kan worden genegeerd, omdat deze is afgeschaft.
+> `useBuiltIn`true wordt ingesteld, geeft aan dat Bing-merken zijn ingeschakeld. Als `useBuiltin` dit niet klopt, zijn Bing-merken uitgeschakeld. De `state` waarde kan worden genegeerd omdat deze is afgeschaft.
 
-## <a name="update-brands-model-settings"></a>Model instellingen voor update Brands bijwerken
+## <a name="update-brands-model-settings"></a>Modelinstellingen voor merken bijwerken
 
-Met de [Update-Brands](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?) worden de instellingen van het merk model bijgewerkt in het opgegeven account. De instellingen van het merk model geven aan of detectie van de Bing Brands-data base is ingeschakeld. Als Bing-merken niet zijn ingeschakeld, detecteert Video Indexer alleen Brands van het aangepaste merk model van het opgegeven account.
+De [API van updatemerken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?) werkt de modelinstellingen van Brands bij in het opgegeven account. De modelinstellingen van Brands geven aan of detectie van de bing-merkendatabase is ingeschakeld of niet. Als Bing-merken niet zijn ingeschakeld, detecteert Video Indexer alleen merken op het aangepaste merkenmodel van het opgegeven account.
 
-De vlag **useBuiltIn** ingesteld op True geeft aan dat Bing-merken zijn ingeschakeld. Als *useBuiltin* False is, zijn Bing-merken uitgeschakeld.
+De `useBuiltIn` vlag ingesteld op true betekent dat Bing merken zijn ingeschakeld. Als `useBuiltin` dit niet klopt, zijn Bing-merken uitgeschakeld.
 
 ### <a name="response"></a>Antwoord
 
-Er is geen inhoud geretourneerd wanneer de instelling voor het model Brands is bijgewerkt.
+Er is geen geretourneerde inhoud wanneer de modelinstelling Brands is bijgewerkt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Het merk model aanpassen met behulp van website](customize-brands-model-with-website.md)
+[Merkenmodel aanpassen met website](customize-brands-model-with-website.md)

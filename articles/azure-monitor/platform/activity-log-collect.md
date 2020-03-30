@@ -1,78 +1,78 @@
 ---
-title: Azure-activiteiten Logboeken in Log Analytics werk ruimte verzamelen en analyseren | Microsoft Docs
-description: Verzamel het Azure-activiteiten logboek in Azure Monitor logboeken en gebruik de bewakings oplossing om het Azure-activiteiten logboek te analyseren en doorzoeken op al uw Azure-abonnementen.
+title: Azure-activiteitslogboek verzamelen in de werkruimte Log Analytics
+description: Verzamel het Azure Activity Log in Azure Monitor Logs en gebruik de bewakingsoplossing om het Azure-activiteitenlogboek voor al uw Azure-abonnementen te analyseren en te doorzoeken.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 044f974d83eba098820639e67412110329d5ad7d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 407bff10e2480c5210d3057bcccd6c60e591c165
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79249111"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055311"
 ---
-# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure-activiteiten Logboeken in Log Analytics werk ruimte in Azure Monitor verzamelen en analyseren
+# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure-activiteitslogboeken verzamelen en analyseren in de werkruimte Log Analytics in Azure Monitor
 
 > [!WARNING]
-> U kunt het activiteiten logboek nu verzamelen in een Log Analytics-werk ruimte met behulp van een diagnostische instelling, vergelijkbaar met de manier waarop u bron logboeken verzamelt. Zie [Azure-activiteiten logboeken verzamelen en analyseren in log Analytics werk ruimte in azure monitor](diagnostic-settings-legacy.md).
+> U nu het logboek activiteit verzamelen in een werkruimte van Log Analytics met behulp van een diagnostische instelling die vergelijkbaar is met hoe u bronlogboeken verzamelt. Zie [Azure-activiteitslogboeken verzamelen en analyseren in de werkruimte Log Analytics in Azure Monitor](diagnostic-settings-legacy.md).
 
-Het [Azure-activiteiten logboek](platform-logs-overview.md) biedt inzicht in gebeurtenissen op abonnements niveau die in uw Azure-abonnement zijn opgetreden. In dit artikel wordt beschreven hoe u het activiteiten logboek in een Log Analytics-werk ruimte verzamelt en hoe u de Analyse van activiteitenlogboek [bewakings oplossing](../insights/solutions.md)gebruikt, waarmee logboek query's en-weer gaven worden geboden voor het analyseren van deze gegevens. 
+Het [Azure-activiteitenlogboek](platform-logs-overview.md) biedt inzicht in gebeurtenissen op abonnementsniveau die zich in uw Azure-abonnement hebben voorgedaan. In dit artikel wordt beschreven hoe u het activiteitenlogboek verzamelt in een werkruimte van Log Analytics en hoe u de [monitoringoplossing](../insights/solutions.md)Activity Log Analytics gebruiken, die logboekquery's en -weergaven biedt voor het analyseren van deze gegevens. 
 
-Het verbinden van het activiteiten logboek met een Log Analytics-werk ruimte biedt de volgende voor delen:
+Het activiteitenlogboek verbinden met een loganalytics-werkruimte biedt de volgende voordelen:
 
-- Het activiteiten logboek van meerdere Azure-abonnementen samen voegen tot één locatie voor analyse.
-- Vermeldingen in het activiteiten logboek worden langer dan 90 dagen bewaard.
-- Correleer activiteiten logboek gegevens met andere bewakings gegevens die zijn verzameld door Azure Monitor.
-- Gebruik [logboek query's](../log-query/log-query-overview.md) om complexe analyses uit te voeren en uitgebreide inzichten te verkrijgen over activiteiten logboek vermeldingen.
+- Het activiteitenlogboek van meerdere Azure-abonnementen consolideren tot één locatie voor analyse.
+- Winkel activiteitlogboekvermeldingen langer dan 90 dagen.
+- Correleer activiteitslogboekgegevens met andere bewakingsgegevens die door Azure Monitor worden verzameld.
+- Gebruik [logboekquery's](../log-query/log-query-overview.md) om complexe analyses uit te voeren en diepgaande inzichten te krijgen over items in het activiteitenlogboek.
 
-## <a name="connect-to-log-analytics-workspace"></a>Verbinding maken met Log Analytics werk ruimte
-Eén werk ruimte kan worden gekoppeld aan het activiteiten logboek voor meerdere abonnementen in dezelfde Azure-Tenant. Zie [Azure-activiteiten logboeken verzamelen in een log Analytics-werk ruimte voor het verzamelen van gegevens over meerdere tenants in verschillende Azure Active Directory tenants](activity-log-collect-tenants.md).
+## <a name="connect-to-log-analytics-workspace"></a>Verbinding maken met de werkruimte Log Analytics
+Eén werkruimte kan worden verbonden met het activiteitenlogboek voor meerdere abonnementen in dezelfde Azure-tenant. Zie [Azure Activity Logs verzamelen in een Log Analytics-werkruimte voor verschillende Azure Active Directory-tenants](activity-log-collect-tenants.md)voor verzameling en meerdere tenants.
 
 > [!IMPORTANT]
-> Er kan een fout met de volgende procedure worden weer gegeven als de resource providers micro soft. OperationalInsights en micro soft. OperationsManagement niet zijn geregistreerd voor uw abonnement. Zie [Azure-resource providers en-typen](../../azure-resource-manager/management/resource-providers-and-types.md) om deze providers te registreren.
+> Mogelijk ontvangt u een fout met de volgende procedure als de microsoft.operationalinsights- en Microsoft.OperationsManagement-resourceproviders niet zijn geregistreerd voor uw abonnement. Zie [Azure-bronproviders en -typen](../../azure-resource-manager/management/resource-providers-and-types.md) om deze providers te registreren.
 
-Gebruik de volgende procedure om het activiteiten logboek te verbinden met uw Log Analytics-werk ruimte:
+Gebruik de volgende procedure om het activiteitenlogboek te koppelen aan uw log analytics-werkruimte:
 
-1. Selecteer in het menu **log Analytics werk ruimten** in de Azure Portal de werk ruimte om het activiteiten logboek te verzamelen.
-1. Selecteer in de sectie **werkruimte gegevens bronnen** van het menu van de werk ruimte **Azure-activiteiten logboek**.
-1. Klik op het abonnement dat u wilt verbinden.
+1. Selecteer in het menu **Logboekanalyse-werkruimten** in de Azure-portal de werkruimte om het activiteitenlogboek te verzamelen.
+1. Selecteer **azure-activiteitenlogboek**in de sectie **Werkruimtegegevensbronnen in** het menu van de werkruimte .
+1. Klik op het abonnement dat u wilt aansluiten.
 
     ![Workspaces](media/activity-log-export/workspaces.png)
 
-1. Klik op **verbinden** om het activiteiten logboek in het abonnement te verbinden met de geselecteerde werk ruimte. Als het abonnement al is verbonden met een andere werk ruimte, klikt u eerst op **verbinding verbreken** om de verbinding te verbreken.
+1. Klik **op Verbinding maken** om het activiteitslogboek in het abonnement te verbinden met de geselecteerde werkruimte. Als het abonnement al is verbonden met een andere werkruimte, klikt u eerst op **Verbinding verbreken** om de verbinding te verbreken.
 
-    ![Werk ruimten verbinden](media/activity-log-export/connect-workspace.png)
+    ![Werkruimten verbinden](media/activity-log-export/connect-workspace.png)
 
-## <a name="analyze-in-log-analytics-workspace"></a>In Log Analytics werk ruimte analyseren
-Wanneer u een activiteiten logboek verbindt met een Log Analytics-werk ruimte, worden er items naar de werk ruimte geschreven in een tabel met de naam **AzureActivity** die u met een [logboek query](../log-query/log-query-overview.md)kunt ophalen. De structuur van deze tabel is afhankelijk van de [categorie logboek vermelding](activity-log-view.md#categories-in-the-activity-log). Zie [Azure activiteiten logboek gebeurtenis schema](activity-log-schema.md) voor een beschrijving van elke categorie.
+## <a name="analyze-in-log-analytics-workspace"></a>Analyseren in de werkruimte Log Analytics
+Wanneer u een activiteitenlogboek koppelt aan een werkruimte loganalytics, worden items naar de werkruimte geschreven in een tabel met de naam **AzureActivity** die u ophalen met een [logboekquery](../log-query/log-query-overview.md). De structuur van deze tabel is afhankelijk van de [categorie loginvoer.](activity-log-view.md#categories-in-the-activity-log) Zie [gebeurtenisschema azure activity log](activity-log-schema.md) voor een beschrijving van elke categorie.
 
-## <a name="activity-logs-analytics-monitoring-solution"></a>Bewakings oplossing voor activiteiten logboeken
-De Azure Log Analytics-bewakings oplossing bevat meerdere logboek query's en-weer gaven voor het analyseren van de records in het activiteiten logboek in uw Log Analytics-werk ruimte.
+## <a name="activity-logs-analytics-monitoring-solution"></a>Monitoringoplossing activity logs Analytics
+De bewakingsoplossing azure log Analytics bevat meerdere logboekquery's en -weergaven voor het analyseren van de activiteitenlogboekrecords in uw logboekanalysewerkruimte.
 
 ### <a name="install-the-solution"></a>De oplossing installeren
-Gebruik de procedure in [een bewakings oplossing installeren](../insights/solutions.md#install-a-monitoring-solution) om de **analyse van activiteitenlogboek** -oplossing te installeren. Er is geen aanvullende configuratie vereist.
+Gebruik de procedure in [Een bewakingsoplossing installeren](../insights/solutions.md#install-a-monitoring-solution) om de **Activity Log Analytics-oplossing** te installeren. Er is geen extra configuratie vereist.
 
-### <a name="use-the-solution"></a>De oplossing gebruiken
-Bewakings oplossingen zijn toegankelijk via het menu **monitor** in de Azure Portal. Selecteer **meer** in het gedeelte **inzichten** om de **overzichts** pagina te openen met de oplossings tegels. De tegel **activiteiten logboeken van Azure** bevat een telling van het aantal **AzureActivity** -records in uw werk ruimte.
+### <a name="use-the-solution"></a>Gebruik de oplossing
+Bewakingsoplossingen zijn toegankelijk via het menu **Monitor** in de Azure-portal. Selecteer **Meer** in de sectie **Inzichten** om de **pagina Overzicht** met de oplossingstegels te openen. Op de tegel **Azure Activity Logs** wordt een aantal **AzureActivity-records** in uw werkruimte weergegeven.
 
-![Azure-activiteitenlogboeken tegel](media/collect-activity-logs/azure-activity-logs-tile.png)
+![Tegel Azure Activity Logs](media/collect-activity-logs/azure-activity-logs-tile.png)
 
 
-Klik op de tegel **Azure-activiteiten logboeken** om de weer gave **Azure-activiteiten logboeken** te openen. De weer gave bevat de visualisatie onderdelen in de volgende tabel. Elk onderdeel bevat Maxi maal 10 items die overeenkomen met de criteria van die onderdelen voor het opgegeven tijds bereik. U kunt een logboek query uitvoeren waarmee alle overeenkomende records worden geretourneerd door te klikken op **Alles bekijken** onder aan het onderdeel.
+Klik op de tegel **Azure Activity Logs** om de weergave Azure Activity **Logs** te openen. De weergave bevat de visualisatie-onderdelen in de volgende tabel. Elk onderdeel bevat maximaal 10 items die overeenkomen met de criteria van die onderdelen voor het opgegeven tijdsbereik. U een logboekquery uitvoeren die alle overeenkomende records retourneert door onder aan het onderdeel op **Alles weergeven** te klikken.
 
-![Azure-activiteitenlogboeken-dashboard](media/collect-activity-logs/activity-log-dash.png)
+![Azure-activiteitslogboekendashboard](media/collect-activity-logs/activity-log-dash.png)
 
-| Visualisatie onderdeel | Beschrijving |
+| Visualisatieonderdeel | Beschrijving |
 | --- | --- |
-| Vermeldingen in het Azure-activiteit | Toont een staaf diagram van de bovenste Azure-activiteiten logboek vermeldingen records voor het datum bereik dat u hebt geselecteerd, en toont een lijst met de Top 10 van aanroepen van de activiteit. Klik op het staaf diagram om een logboek zoekopdracht voor `AzureActivity`uit te voeren. Klik op een beller-item om een zoek opdracht in Logboeken uit te voeren waarin alle activiteiten logboek vermeldingen voor dat item worden geretourneerd. |
-| Activiteitenlogboeken op Status | Toont een ring diagram voor de Azure-activiteiten logboek status voor het geselecteerde datum bereik en een lijst met de top tien status records. Klik op de grafiek om een logboek query voor `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`uit te voeren. Klik op een status item om een logboek zoekopdracht uit te voeren waarin alle activiteiten logboek vermeldingen voor die status record worden geretourneerd. |
-| Activiteitenlogboeken per Resource | Toont het totale aantal resources met activiteiten logboeken en een lijst met de bovenste tien resources met record aantallen voor elke resource. Klik op het gedeelte totaal om een zoek opdracht van het logboek uit te voeren voor `AzureActivity | summarize AggregatedValue = count() by Resource`, waarin alle Azure-resources worden weer gegeven die beschikbaar zijn voor de oplossing. Klik op een resource om een logboek query uit te voeren voor het retour neren van alle activiteiten records voor die bron. |
-| Activiteitenlogboeken door de Resourceprovider | Toont het totale aantal resource providers dat activiteiten logboeken produceert en een lijst met de top tien. Klik op het gedeelte totaal om een logboek query uit te voeren voor `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`, waarin alle Azure-resource providers worden weer gegeven. Klik op een resource provider om een logboek query uit te voeren voor het retour neren van alle activiteiten records voor de provider. |
+| Azure-activiteitslogboekvermeldingen | Toont een staafdiagram van de hoogste totalen van de azure activity log-vermelding voor het datumbereik dat u hebt geselecteerd en toont een lijst met de top 10-activiteitsbellers. Klik op het staafdiagram om `AzureActivity`een logboekzoekopdracht uit te voeren naar . Klik op een belleritem om een logboekzoekopdracht uit te voeren en alle activiteitslogboekvermeldingen voor dat item terug te sturen. |
+| Activiteitslogboeken op status | Toont een ringdiagram voor de status azure-activiteitslogboek voor het geselecteerde datumbereik en een lijst met de tien belangrijkste statusrecords. Klik op de grafiek om `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`een logboekquery uit te voeren voor . Klik op een statusitem om een logboekzoekopdracht uit te voeren en alle activiteitslogboekvermeldingen voor die statusrecord terug te sturen. |
+| Activiteitslogboeken per resource | Toont het totale aantal resources met activiteitslogboeken en geeft een overzicht van de tien belangrijkste resources met recordtellingen voor elke resource. Klik op het totale gebied `AzureActivity | summarize AggregatedValue = count() by Resource`om een logboekzoekopdracht uit te voeren, waarin alle Azure-bronnen worden weergegeven die beschikbaar zijn voor de oplossing. Klik op een resource om een logboekquery uit te voeren die alle activiteitsrecords voor die resource retoureert. |
+| Activiteitslogboeken per resourceprovider | Toont het totale aantal resourceproviders dat activiteitslogboeken produceert en de top tien weergeeft. Klik op het totale gebied `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`waarvoor u een logboekquery wilt uitvoeren, waarin alle Azure-bronproviders worden weergegeven. Klik op een resourceprovider om een logboekquery uit te voeren die alle activiteitsrecords voor de provider retoureert. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [activiteiten logboek](platform-logs-overview.md).
-- Meer informatie over het [Azure monitor-gegevens platform](data-platform.md).
-- Gebruik [logboek query's](../log-query/log-query-overview.md) om gedetailleerde informatie uit uw activiteiten logboek weer te geven.
+- Meer informatie over het [activiteitenlogboek](platform-logs-overview.md).
+- Meer informatie over het [Azure Monitor-gegevensplatform](data-platform.md).
+- Gebruik [logboekquery's](../log-query/log-query-overview.md) om gedetailleerde informatie uit uw activiteitenlogboek weer te geven.

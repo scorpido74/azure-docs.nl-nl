@@ -1,39 +1,39 @@
 ---
-title: Persoonlijke IP-adresbereiken van Azure Firewall SNAT
-description: U kunt particuliere bereiken voor IP-adressen configureren, zodat de firewall geen verkeer naar die IP-adressen overbelasting.
+title: Azure Firewall SNAT privé-IP-adresbereiken
+description: U privébereiken voor IP-adressen configureren, zodat de firewall geen SNAT-verkeer naar die IP-adressen heeft.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 03/20/2020
 ms.author: victorh
-ms.openlocfilehash: b190d07ceadea43ca572f5eb5be3eeeafa616971
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: ed8cef00b7de67458c607373c724a3717f14a7cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444457"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064816"
 ---
-# <a name="azure-firewall-snat-private-ip-address-ranges"></a>Persoonlijke IP-adresbereiken van Azure Firewall SNAT
+# <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Firewall SNAT privé-IP-adresbereiken
 
-Azure Firewall geen SNAT wanneer het doel-IP-adres zich in een privé-IP-adres bereik bevindt op het niveau van de [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). 
+Azure Firewall is niet snat met netwerkregels wanneer het doel-IP-adres zich in een privé-IP-adresbereik bevindt per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Toepassingsregels worden altijd toegepast met behulp van een [transparante proxy,](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) ongeacht het doel-IP-adres.
 
-Als uw organisatie gebruikmaakt van een openbaar IP-adres bereik voor particuliere netwerken, verkrijgt Azure Firewall het verkeer naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet. U kunt Azure Firewall echter zodanig configureren dat uw open bare IP-adres bereik **niet** wordt gesnat.
+Als uw organisatie een openbaar IP-adresbereik gebruikt voor privénetwerken, wordt het verkeer naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet gesind. U Azure Firewall echter configureren om **niet** uw openbare IP-adresbereik van SNAT te gebruiken.
 
-## <a name="configure-snat-private-ip-address-ranges"></a>Persoonlijke IP-adresbereiken voor het SNAT configureren
+## <a name="configure-snat-private-ip-address-ranges"></a>SNAT-privé-IP-adresbereiken configureren
 
-U kunt Azure PowerShell gebruiken om een IP-adres bereik op te geven dat niet door de firewall kan worden gesnat.
+U Azure PowerShell gebruiken om een IP-adresbereik op te geven dat de firewall niet snat.
 
 ### <a name="new-firewall"></a>Nieuwe firewall
 
-Voor een nieuwe firewall is de Azure PowerShell opdracht:
+Voor een nieuwe firewall is de opdracht Azure PowerShell:
 
 `New-AzFirewall -Name $GatewayName -ResourceGroupName $RG -Location $Location -VirtualNetworkName $vnet.Name -PublicIpName $LBPip.Name -PrivateRange @("IANAPrivateRanges","IPRange1", "IPRange2")`
 
 > [!NOTE]
-> IANAPrivateRanges wordt uitgebreid naar de huidige standaard waarden op Azure Firewall terwijl de andere bereiken hieraan worden toegevoegd.
+> IANAPrivateRanges wordt uitgebreid naar de huidige standaardwaarden op Azure Firewall, terwijl de andere bereiken worden toegevoegd.
 
-Zie [New-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall?view=azps-3.3.0)voor meer informatie.
+Zie [Nieuw-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall?view=azps-3.3.0)voor meer informatie.
 
 ### <a name="existing-firewall"></a>Bestaande firewall
 
@@ -41,13 +41,13 @@ Als u een bestaande firewall wilt configureren, gebruikt u de volgende Azure Pow
 
 ```azurepowershell
 $azfw = Get-AzFirewall -ResourceGroupName "Firewall Resource Group name"
-$azfw.PrivateRange = @(“IANAPrivateRanges”,“IPRange1”, “IPRange2”)
+$azfw.PrivateRange = @("IANAPrivateRanges","IPRange1", "IPRange2")
 Set-AzFirewall -AzureFirewall $azfw
 ```
 
 ### <a name="templates"></a>Sjablonen
 
-U kunt het volgende toevoegen aan de sectie `additionalProperties`:
+U het volgende `additionalProperties` aan de sectie toevoegen:
 
 ```
 "additionalProperties": {
@@ -57,4 +57,4 @@ U kunt het volgende toevoegen aan de sectie `additionalProperties`:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [implementeren en configureren van een Azure firewall](tutorial-firewall-deploy-portal.md).
+- Meer informatie over het [implementeren en configureren van een Azure Firewall](tutorial-firewall-deploy-portal.md).

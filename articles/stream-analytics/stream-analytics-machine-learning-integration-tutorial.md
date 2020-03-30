@@ -1,202 +1,206 @@
 ---
-title: Integratie van Azure Stream Analytics met Azure Machine Learning
-description: In dit artikel wordt beschreven hoe u snel een eenvoudige Azure Stream Analytics-taak die is geïntegreerd Azure Machine Learning, met behulp van een gebruiker gedefinieerde functie instellen.
+title: Azure Stream Analytics-integratie met Azure Machine Learning
+description: In dit artikel wordt beschreven hoe u snel een eenvoudige Azure Stream Analytics-taak instellen waarin Azure Machine Learning wordt geïntegreerd met behulp van een door de gebruiker gedefinieerde functie.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: c683cfeadcc13e5112a4687e18db9338d3574cd3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b33aeeee03fa57d87a60fd4c1904d5e4a86dd004
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459599"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067092"
 ---
-# <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic-preview"></a>Sentiment-analyse uitvoeren met Azure Stream Analytics en Azure Machine Learning Studio (klassiek) (preview)
-In dit artikel wordt beschreven hoe u snel een eenvoudige Azure Stream Analytics-taak kunt instellen die Azure Machine Learning Studio (klassiek) integreert. Kunt u een Machine Learning sentiment analytics-model van de Cortana Intelligence Gallery streaming gegevens analyseren en te bepalen van de gevoelsscore in realtime. Met behulp van de Cortana Intelligence Suite kunt u deze taak wordt uitgevoerd zonder dat u de complexiteit van het bouwen van een gevoel analytics-model.
+# <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Sentimentanalyse uitvoeren met Azure Stream Analytics en Azure Machine Learning Studio (klassiek)
 
-U kunt het geleerde toepast in dit artikel voor dergelijke scenario's:
+In dit artikel wordt beschreven hoe u snel een eenvoudige Azure Stream Analytics-taak instellen waarin Azure Machine Learning Studio (klassiek) wordt geïntegreerd. U gebruikt een Machine Learning sentiment analytics model van de Cortana Intelligence Gallery om streaming tekstgegevens te analyseren en de sentimentscore in realtime te bepalen. Met behulp van de Cortana Intelligence Suite u deze taak uitvoeren zonder u zorgen te maken over de fijne kneepjes van het bouwen van een sentiment analytics-model.
 
-* Analyse van realtime sentimentanalyse voor streaming-gegevens van Twitter.
-* Analyseren van de records van de klant chats met ondersteuningsmedewerkers.
-* Evaluatie van opmerkingen over forums, blogs en video's. 
-* Veel andere realtime, voorspellende scoring scenario's.
+> [!TIP]
+> Het wordt ten zeerste aanbevolen om [Azure Machine Learning UDF's](machine-learning-udf.md) te gebruiken in plaats van Azure Machine Learning Studio (klassieke) UDF voor betere prestaties en betrouwbaarheid.
 
-In een Praktijkscenario krijgt u de gegevens rechtstreeks vanuit een Twitter-gegevensstroom. Ter vereenvoudiging van de zelfstudie, wordt zodat de Streaming Analytics-taak tweets opgehaald uit een CSV-bestand in Azure Blob-opslag geschreven. U kunt uw eigen CSV-bestand maken of kunt u een voorbeeld-CSV-bestand, zoals wordt weergegeven in de volgende afbeelding:
+U wat u uit dit artikel leert toepassen op scenario's zoals deze:
 
-![Voorbeeld van tweets wordt weergegeven in een CSV-bestand](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
+* Het analyseren van real-time sentiment op streaming Twitter-gegevens.
+* Het analyseren van records van klantchats met ondersteunend personeel.
+* Het evalueren van reacties op forums, blogs en video's. 
+* Veel andere real-time, voorspellende scoring scenario's.
 
-De stream Analytics-taak die u maakt past het sentiment analytics-model als een gebruiker gedefinieerde functie (UDF's) op de voorbeeldgegevens van de tekst van de blob-archief. De uitvoer (het resultaat van de sentimentanalyse) wordt aan dezelfde opslag-blob in een andere CSV-bestand geschreven. 
+In een real-world scenario, zou je de gegevens rechtstreeks uit een Twitter datastroom. Om de zelfstudie te vereenvoudigen, is deze zo geschreven dat de taak Streaming Analytics tweets krijgt van een CSV-bestand in Azure Blob-opslag. U uw eigen CSV-bestand maken of een csv-voorbeeldbestand gebruiken, zoals in de volgende afbeelding wordt weergegeven:
 
-De volgende afbeelding ziet u deze configuratie. Zoals opgemerkt, voor een realistischer scenario, kunt u blob-opslag vervangen met het streamen van Twitter-gegevens uit een Azure Event Hubs-invoer. U kunt bovendien bouwen een [Microsoft Power BI](https://powerbi.microsoft.com/) realtime visualisatie van de cumulatieve sentiment.    
+![Voorbeeldtweets die worden weergegeven in een CSV-bestand](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
 
-![Overzicht van Stream Analytics Machine Learning-integratie](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-1.png)  
+De taak Streaming Analytics die u maakt, past het sentimentanalysemodel toe als een door de gebruiker gedefinieerde functie (UDF) op de voorbeeldtekstgegevens van het blobarchief. De uitvoer (het resultaat van de sentimentanalyse) wordt naar hetzelfde blobarchief in een ander CSV-bestand geschreven. 
+
+De volgende figuur toont deze configuratie. Zoals opgemerkt, u voor een realistischer scenario blob-opslag vervangen door het streamen van Twitter-gegevens van een Azure Event Hubs-invoer. Bovendien u een Microsoft Power BI-real-time visualisatie van het geaggregeerde sentiment maken. [Microsoft Power BI](https://powerbi.microsoft.com/)    
+
+![Overzicht van De Integratie van Stream Analytics Machine Learning](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-1.png)  
 
 ## <a name="prerequisites"></a>Vereisten
 Zorg ervoor dat u het volgende hebt voordat u begint:
 
 * Een actief Azure-abonnement.
-* Een CSV-bestand met gegevens erin. U kunt de eerder weergegeven uit bestand downloaden [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv), of u kunt uw eigen bestand maken. In dit artikel wordt ervan uitgegaan dat u het bestand vanuit GitHub.
+* Een CSV-bestand met wat gegevens erin. U het eerder getoonde bestand downloaden van [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv)of u uw eigen bestand maken. Voor dit artikel wordt ervan uitgegaan dat u het bestand van GitHub gebruikt.
 
-Op een hoog niveau voor het voltooien van de taken in dit artikel wordt gedemonstreerd doen u het volgende:
+Op een hoog niveau, om de taken die in dit artikel worden gedemonstreerd, te voltooien, gaat u als volgt te werk:
 
-1. Maak een Azure storage-account en een blob storage-container en een CSV-indeling invoerbestand uploaden naar de container.
-3. Voeg een sentiment Analytics-model van de Cortana Intelligence Gallery toe aan uw Azure Machine Learning Studio (klassieke) werk ruimte en implementeer dit model als een webservice in de Machine Learning-werk ruimte.
-5. Maak een Stream Analytics-taak die deze webservice als een functie aanroept om te bepalen van de tekstinvoer sentiment.
-6. Start de Stream Analytics-taak en controleer de uitvoer.
+1. Maak een Azure-opslagaccount en een blobopslagcontainer en upload een csv-indelingsinvoerbestand naar de container.
+3. Voeg een sentimentanalysemodel van de Cortana Intelligence Gallery toe aan uw Azure Machine Learning Studio (klassieke) werkruimte en implementeer dit model als webservice in de Machine Learning-werkruimte.
+5. Maak een Stream Analytics-taak die deze webservice als functie aanroept om het sentiment voor de tekstinvoer te bepalen.
+6. Start de taak Stream Analytics en controleer de uitvoer.
 
-## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>Een storage-container maken en uploaden van het CSV-bestand voor invoer
-Voor deze stap kunt u een CSV-bestand, zoals die beschikbaar is via GitHub.
+## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>Een opslagcontainer maken en het CSV-invoerbestand uploaden
+Voor deze stap u elk CSV-bestand gebruiken, zoals het bestand dat beschikbaar is bij GitHub.
 
-1. Klik in de Azure-portal op **een resource maken** > **opslag** > **opslagaccount**.
+1. Klik in de Azure-portal op **Een** > **bronopslagaccount voor****resources** > maken .
 
-2. Geef een naam (`samldemo` in het voorbeeld). De naam kan alleen kleine letters en cijfers gebruiken en deze moet uniek zijn binnen Azure. 
+2. Geef een`samldemo` naam op (in het voorbeeld). De naam kan alleen kleine letters en cijfers gebruiken en moet uniek zijn in Azure. 
 
-3. Geef een bestaande resourcegroep en een locatie opgeven. Voor de locatie, is het raadzaam dat alle resources die zijn gemaakt in deze zelfstudie gebruikt u dezelfde locatie.
+3. Geef een bestaande resourcegroep op en geef een locatie op. Voor locatie raden we aan dat alle bronnen die in deze zelfstudie zijn gemaakt, dezelfde locatie gebruiken.
 
-    ![Geef de accountgegevens voor opslag](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
+    ![opslagaccountgegevens verstrekken](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
-4. Selecteer het opslagaccount in de Azure-portal. Klik in de blade opslagaccount op **Containers** en klik vervolgens op  **+ &nbsp;Container** te maken van blob-opslag.
+4. Selecteer in de Azure-portal het opslagaccount. Klik in het opslagaccountblad op **Containers** en klik vervolgens op ** + &nbsp;Container** om blobopslag te maken.
 
-    ![Blob storage-container voor invoer maken](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
+    ![Blobopslagcontainer maken voor invoer](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
-5. Geef een naam op voor de container (`azuresamldemoblob` in het voorbeeld) en Controleer **toegangstype** is ingesteld op **Blob**. Wanneer u klaar bent, klikt u op **OK**.
+5. Geef een naam op`azuresamldemoblob` voor de container (in het voorbeeld) en controleer of **het access-type** is ingesteld op **Blob.** Wanneer u klaar bent, klikt u op **OK**.
 
-    ![Geef details op blob-container](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
+    ![blobcontainerdetails opgeven](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
 
-6. In de **Containers** blade, selecteert u de nieuwe container, zodat de blade voor die container.
+6. Selecteer in het **blad Containers** de nieuwe container, waarmee het blad voor die container wordt geopend.
 
 7. Klik op **Uploaden**.
 
-    ![Knop voor een container uploaden](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
+    ![Knop 'Uploaden' voor een container](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
 
-8. In de **blob uploaden** blade, upload het **sampleinput.csv** -bestand dat u eerder hebt gedownload. Voor **Blobtype**, selecteer **blok-blob** en de blokgrootte ingesteld op 4 MB, hetgeen voldoende is voor deze zelfstudie.
+8. Upload in het **blobblad uploaden** het **sampleinput.csv-bestand** dat u eerder hebt gedownload. Selecteer **voor Blob-type** **Blob blob** en stel de blokgrootte in op 4 MB, wat voldoende is voor deze zelfstudie.
 
-9. Klik op de **uploaden** knop aan de onderkant van de blade.
+9. Klik op de knop **Uploaden** onder aan het blad.
 
-## <a name="add-the-sentiment-analytics-model-from-the-cortana-intelligence-gallery"></a>Het sentiment analytics-model van de Cortana Intelligence Gallery toevoegen
+## <a name="add-the-sentiment-analytics-model-from-the-cortana-intelligence-gallery"></a>Het sentimentanalysemodel toevoegen vanuit de Cortana Intelligence Gallery
 
-De voorbeeldgegevens is in een blob, kunt u het model sentiment-analyse in Cortana Intelligence Gallery kunt inschakelen.
+Nu de voorbeeldgegevens zich in een blob bevinden, u het sentimentanalysemodel inschakelen in Cortana Intelligence Gallery.
 
-1. Ga naar de [sentiment predictive analytics-model](https://gallery.cortanaintelligence.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1) pagina in de Cortana Intelligence Gallery.  
+1. Ga naar de [modelpagina voor voorspellende sentimentanalyses](https://gallery.cortanaintelligence.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1) in de Cortana Intelligence Gallery.  
 
-2. Klik op **Open in Studio**.  
+2. Klik **op Openen in de studio**.  
    
    ![Stream Analytics Machine Learning, open Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
 
-3. Meld u aan om te gaan naar de werkruimte. Selecteer een locatie.
+3. Meld u aan om naar de werkruimte te gaan. Selecteer een locatie.
 
-4. Klik op **uitvoeren** aan de onderkant van de pagina. Het proces wordt uitgevoerd, die duurt ongeveer een minuut.
+4. Klik onder aan de pagina op **Uitvoeren.** Het proces loopt, wat ongeveer een minuut duurt.
 
-   ![Voer experiment in Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
+   ![experiment uitvoeren in Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
 
-5. Nadat het proces met succes is uitgevoerd, selecteert u **webservice implementeren** aan de onderkant van de pagina.
+5. Nadat het proces is uitgevoerd, selecteert u **Webservice implementeren** onder aan de pagina.
 
-   ![experiment in Machine Learning Studio implementeren als een webservice](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
+   ![experiment implementeren in Machine Learning Studio als webservice](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
 
-6. Als u wilt valideren dat het sentiment analytics-model klaar voor gebruik is, klikt u op de **Test** knop. Tekstinvoer, zoals "Ik graag Microsoft" bevatten. 
+6. Als u wilt valideren dat het sentimentanalysemodel klaar is voor gebruik, klikt u op de knop **Testen.** Geef tekstinvoer zoals "Ik hou van Microsoft". 
 
-   ![Test-experiment in Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
+   ![testexperiment in Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
 
-    Als de test werkt, ziet u een resultaat vergelijkbaar met het volgende voorbeeld:
+    Als de test werkt, ziet u een resultaat dat vergelijkbaar is met het volgende voorbeeld:
 
-   ![de resultaten in Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
+   ![testresultaten in Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
 
-7. In de **Apps** kolom, klikt u op de **Excel 2010 of ouder werkmap** koppeling naar een Excel-werkmap downloaden. De werkmap bevat de API-sleutel en de URL die u later nodig hebt voor het instellen van de Stream Analytics-taak.
+7. Klik **in** de kolom Apps op de koppeling **Excel 2010 of eerdere werkmap** om een Excel-werkmap te downloaden. De werkmap bevat de API-sleutel en de URL die u later nodig hebt om de taak Stream Analytics in te stellen.
 
-    ![Stream Analytics, Machine Learning, snelle weergave](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
+    ![Stream Analytics Machine Learning, snelle blik](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
 
 
-## <a name="create-a-stream-analytics-job-that-uses-the-machine-learning-model"></a>Een Stream Analytics-taak die gebruikmaakt van de Machine Learning-model maken
+## <a name="create-a-stream-analytics-job-that-uses-the-machine-learning-model"></a>Een Stream Analytics-taak maken die het Machine Learning-model gebruikt
 
-U kunt nu een Stream Analytics-taak die de tweets voorbeeld van het CSV-bestand in blob-opslag leest maken. 
+U nu een Stream Analytics-taak maken die de voorbeeldtweets uit het CSV-bestand in blobopslag leest. 
 
 ### <a name="create-the-job"></a>De taak maken
 
-1. Ga naar de [Azure Portal](https://portal.azure.com).  
+1. Ga naar de [Azure-portal.](https://portal.azure.com)  
 
-2. Klik op **een resource maken** > **Internet of Things** > **Stream Analytics-taak**. 
+2. Klik **op Een vacature** > **Internet of Things** > **Stream Analytics**maken . 
 
-3. Naam van de taak `azure-sa-ml-demo`, Geef een abonnement op, Geef een bestaande resourcegroep of maak een nieuwe en selecteert u de locatie voor de taak.
+3. Geef de `azure-sa-ml-demo`taak een naam, geef een abonnement op, geef een bestaande resourcegroep op of maak een nieuwe en selecteer de locatie voor de taak.
 
-   ![instellingen opgeven voor nieuwe Stream Analytics-taak](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-job-1.png)
+   ![instellingen opgeven voor de nieuwe Stream Analytics-taak](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-job-1.png)
    
 
-### <a name="configure-the-job-input"></a>De Taakinvoer configureren
-De taak haalt de invoer uit het CSV-bestand dat u eerder hebt geüpload naar blob-opslag.
+### <a name="configure-the-job-input"></a>De taakinvoer configureren
+De taak krijgt zijn invoer van het CSV-bestand dat u eerder hebt geüpload naar blob-opslag.
 
-1. Nadat de taak is gemaakt, onder **Taaktopologie** in de taakblade klikt u op de **invoer** optie.    
+1. Nadat de taak is gemaakt, klikt u onder **Job Topology** in het taakblad op de optie **Invoer.**    
 
-2. In de **invoer** blade, klikt u op **toevoegen Stream Input** >**Blob storage**
+2. Klik in het blad **Ingangen** op **Opslag Streaminvoerblob** >**toevoegen**
 
-3. Vul de **Blob-opslag** blade met deze waarden:
+3. Vul het **blobopslagblad** in met de volgende waarden:
 
    
    |Veld  |Waarde  |
    |---------|---------|
-   |**Invoeralias** | Gebruik de naam `datainput` en selecteer **blob-opslag van uw abonnement selecteren**       |
+   |**Invoeralias** | De naam `datainput` gebruiken en **blobopslag selecteren in uw abonnement**       |
    |**Opslagaccount**  |  Selecteer het opslagaccount dat u eerder hebt gemaakt.  |
-   |**Container**  | Selecteer de container die u eerder hebt gemaakt (`azuresamldemoblob`)        |
-   |**Serialisatie-indeling voor gebeurtenissen**  |  Selecteer **CSV**       |
+   |**Container**  | Selecteer de container die`azuresamldemoblob`u eerder hebt gemaakt ( )        |
+   |**Serialisatie-indeling voor gebeurtenissen**  |  **Csv selecteren**       |
 
-   ![Instellingen voor nieuwe Stream Analytics-Taakinvoer](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
+   ![Instellingen voor nieuwe Stream Analytics-taakinvoer](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
 1. Klik op **Opslaan**.
 
 ### <a name="configure-the-job-output"></a>De taakuitvoer configureren
-De taak verzendt resultaten naar dezelfde blob storage waar deze wordt ingevoerd. 
+De taak stuurt resultaten naar dezelfde blobopslag waar deze invoer krijgt. 
 
-1. Onder **Taaktopologie** in de taakblade klikt u op de **uitvoer** optie.  
+1. Klik **onder Taaktopologie** in het taakblad op de optie **Uitvoer.**  
 
-2. In de **uitvoer** blade, klikt u op **toevoegen** >**Blob storage**, en voeg deze uitvoer met de alias `datamloutput`. 
+2. Klik in het blad **Uitvoer** op**Blob-opslag** **toevoegen** >en `datamloutput`voeg vervolgens een uitvoer toe met de alias . 
 
-3. Vul de **Blob-opslag** blade met deze waarden:
+3. Vul het **blobopslagblad** in met de volgende waarden:
 
    |Veld  |Waarde  |
    |---------|---------|
-   |**Uitvoeralias** | Gebruik de naam `datamloutput` en selecteer **blob-opslag van uw abonnement selecteren**       |
+   |**Uitvoeralias** | De naam `datamloutput` gebruiken en **blobopslag selecteren in uw abonnement**       |
    |**Opslagaccount**  |  Selecteer het opslagaccount dat u eerder hebt gemaakt.  |
-   |**Container**  | Selecteer de container die u eerder hebt gemaakt (`azuresamldemoblob`)        |
-   |**Serialisatie-indeling voor gebeurtenissen**  |  Selecteer **CSV**       |
+   |**Container**  | Selecteer de container die`azuresamldemoblob`u eerder hebt gemaakt ( )        |
+   |**Serialisatie-indeling voor gebeurtenissen**  |  **Csv selecteren**       |
 
-   ![Instellingen voor nieuwe Stream Analytics-taakuitvoer](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
+   ![Instellingen voor de nieuwe stream analytics-taakuitvoer](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
 
 4. Klik op **Opslaan**.   
 
 
-### <a name="add-the-machine-learning-function"></a>De Machine Learning-functie toevoegen 
-Eerder hebt u een Machine Learning-model gepubliceerd naar een webservice. In dit scenario wordt elke tweet voorbeeld verzonden wanneer de analyse van de Stream-taak wordt uitgevoerd, uit de invoer met de webservice voor sentimentanalyse. De Machine Learning-webservice retourneert een sentiment (`positive`, `neutral`, of `negative`) en een kans van de tweet wordt positief. 
+### <a name="add-the-machine-learning-function"></a>De functie Machine Learning toevoegen 
+Eerder publiceerde u een Machine Learning-model voor een webservice. In dit scenario, wanneer de taak Stream Analysis wordt uitgevoerd, wordt elke voorbeeldtweet van de invoer naar de webservice gestuurd voor sentimentanalyse. De Machine Learning-webservice`positive`retourneert een gevoel ( , `neutral`of `negative`) en een waarschijnlijkheid dat de tweet positief is. 
 
-In deze sectie van de zelfstudie definieert u een functie in de Stream Analysis-taak. De functie kan worden aangeroepen voor het verzenden van een tweet met de webservice en het antwoord weer toegang te krijgen. 
+In dit gedeelte van de zelfstudie definieert u een functie in de taak StreamAnalysis. De functie kan worden aangeroepen om een tweet naar de webservice te sturen en het antwoord terug te krijgen. 
 
-1. Zorg ervoor dat u hebt de web service-URL en API-sleutel die u eerder in de Excel-werkmap hebt gedownload.
+1. Zorg ervoor dat u de URL en API-sleutel van de webservice hebt die u eerder in de Excel-werkmap hebt gedownload.
 
-2. Navigeer naar de taakblade > **functies** >  **+ toevoegen** > **AzureML**
+2. Navigeer naar uw taakblad > **Functies** > **+ AzureML toevoegen** > **AzureML**
 
-3. Vul de **Azure Machine Learning-functie** blade met deze waarden:
+3. Vul het **azure machine learning-functieblad** in met de volgende waarden:
 
    |Veld  |Waarde  |
    |---------|---------|
-   | **Functiealias** | Gebruik de naam `sentiment` en selecteer **bieden Azure Machine Learning functie-instellingen handmatig** waarmee u een optie voor het invoeren van de URL en de sleutel.      |
-   | **URL**| Plak de URL van de webservice.|
+   | **Functiealias** | Gebruik de `sentiment` naam en selecteer **Azure Machine Learning-functie-instellingen handmatig opgeven,** waardoor u de optie krijgt om de URL en de sleutel in te voeren.      |
+   | **Url**| Plak de URL van de webservice.|
    |**Sleutel** | Plak de API-sleutel. |
   
-   ![Instellingen voor het Machine Learning-functie toevoegen aan Stream Analytics-taak](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
+   ![Instellingen om de functie Machine Learning toe te voegen aan de taak Analytics](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
     
 4. Klik op **Opslaan**.
 
 ### <a name="create-a-query-to-transform-the-data"></a>Een query maken om de gegevens te transformeren
 
-Stream Analytics maakt gebruik van een declaratieve, op basis van SQL-query om te controleren van de invoer en te verwerken. In deze sectie maakt u een query maken die elke tweet van invoer leest en roept vervolgens de Machine Learning-functie voor het uitvoeren van sentimentanalyse. De query verzendt het resultaat vervolgens naar de uitvoer die u hebt gedefinieerd (blob storage).
+Stream Analytics gebruikt een declaratieve, SQL-gebaseerde query om de invoer te onderzoeken en te verwerken. In deze sectie maakt u een query die elke tweet van invoer leest en vervolgens de functie Machine Learning aanroept om sentimentanalyse uit te voeren. De query stuurt het resultaat vervolgens naar de uitvoer die u hebt gedefinieerd (blobopslag).
 
-1. Ga terug naar de overzichtsblade van de taak.
+1. Ga terug naar het overzichtsblad van de taak.
 
-2.  Onder **Taaktopologie**, klikt u op de **Query** vak.
+2.  Klik **onder Taaktopologie**op het vak **Query.**
 
-3. Voer de volgende query:
+3. Voer de volgende query in:
 
     ```SQL
     WITH sentiment AS (  
@@ -209,50 +213,50 @@ Stream Analytics maakt gebruik van een declaratieve, op basis van SQL-query om t
     FROM sentiment  
     ```    
 
-    De query roept de functie die u eerder hebt gemaakt (`sentiment`) om te kunnen uitvoeren van sentimentanalyse voor elke tweet in de invoer. 
+    De query roept de functie aan`sentiment`die u eerder hebt gemaakt ( ) om sentimentanalyse uit te voeren op elke tweet in de invoer. 
 
-4. Klik op **opslaan** de query op te slaan.
+4. Klik op **Save** om de query op te slaan.
 
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>De Stream Analytics-taak starten en uitvoer controleren
 
-U kunt nu de Stream Analytics-taak starten.
+Je nu de streamanalytics-taak starten.
 
 ### <a name="start-the-job"></a>Taak starten
-1. Ga terug naar de overzichtsblade van de taak.
+1. Ga terug naar het overzichtsblad van de taak.
 
-2. Klik op **Start** aan de bovenkant van de blade.
+2. Klik boven aan het blad op **Start.**
 
-3. In de **starttaak**, selecteer **aangepaste**, en selecteer vervolgens één dag voor wanneer u het CSV-bestand geüpload naar blob-opslag. Wanneer u klaar bent, klikt u op **Start**.  
+3. Selecteer in de **taak Start**de optie **Aangepast**en selecteer vervolgens een dag voordat u het CSV-bestand uploadde naar blobopslag. Als u klaar bent, klikt u op **Start**.  
 
 
-### <a name="check-the-output"></a>De uitvoer controleren
-1. De taak voor een paar minuten totdat u activiteit in ziet, kunnen de **bewaking** vak. 
+### <a name="check-the-output"></a>Controleer de uitvoer
+1. Laat de taak enkele minuten duren totdat u activiteit ziet in het vak **Controle.** 
 
-2. Hebt u een hulpprogramma waarmee u gesproken gebruikt om de inhoud van de blob-opslag bekijken, dit hulpprogramma gebruiken om te controleren de `azuresamldemoblob` container. U kunt ook de volgende stappen uit in Azure portal doen:
+2. Als u een hulpmiddel hebt dat u normaal gesproken gebruikt om de `azuresamldemoblob` inhoud van blobopslag te onderzoeken, gebruikt u dat gereedschap om de container te onderzoeken. Als u ook de volgende stappen in de Azure-portal uitvoeren:
 
-    1. Zoek in de portal de `samldemo` storage-account en binnen het account, vinden de `azuresamldemoblob` container. U ziet u twee bestanden in de container: het bestand met de voorbeeld-tweets en een CSV-bestand dat is gegenereerd door de Stream Analytics-taak.
-    2. Met de rechtermuisknop op het gegenereerde bestand en selecteer vervolgens **downloaden**. 
+    1. Zoek in het `samldemo` portaal het opslagaccount en vind `azuresamldemoblob` binnen het account de container. U ziet twee bestanden in de container: het bestand met de voorbeeldtweets en een CSV-bestand dat wordt gegenereerd door de taak Stream Analytics.
+    2. Klik met de rechtermuisknop op het gegenereerde bestand en selecteer **Download**. 
 
-   ![CSV-taakuitvoer downloaden uit de Blob-opslag](./media/stream-analytics-machine-learning-integration-tutorial/download-output-csv-file.png)  
+   ![CSV-taakuitvoer downloaden vanuit Blob-opslag](./media/stream-analytics-machine-learning-integration-tutorial/download-output-csv-file.png)  
 
-3. Open de gegenereerde CSV-bestand. U ziet er ongeveer als volgt:  
+3. Open het gegenereerde CSV-bestand. U ziet zoiets als het volgende voorbeeld:  
    
-   ![Stream Analytics, Machine Learning, CSV-weergave](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
+   ![Stream Analytics Machine Learning, CSV-weergave](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
 
 
 ### <a name="view-metrics"></a>Metrische gegevens bekijken
-U kunt ook Azure Machine Learning functie-gerelateerde metrische gegevens weergeven. De volgende functie-gerelateerde metrische gegevens worden weergegeven in de **bewaking** vak op de taakblade:
+U ook azure Machine Learning-functiegerelateerde statistieken bekijken. De volgende functiegerelateerde statistieken worden weergegeven in het vak **Controle** in het taakblad:
 
-* **Functie aanvragen** geeft het aantal aanvragen dat is verzonden naar een Machine Learning-webservice.  
-* **Gebeurtenissen werken** geeft het aantal gebeurtenissen in de aanvraag. Standaard bevat elke aanvraag aan een Machine Learning-webservice maximaal 1000 gebeurtenissen.  
+* **Functieaanvragen** geven het aantal aanvragen aan dat naar een Machine Learning-webservice wordt verzonden.  
+* **Functiegebeurtenissen** geven het aantal gebeurtenissen in de aanvraag aan. Standaard bevat elk verzoek voor een Machine Learning-webservice maximaal 1.000 gebeurtenissen.  
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Integratie van REST-API en Machine Learning](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
+* [REST API en Machine Learning integreren](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 * [REST API-naslaggids voor Azure Stream Analytics Management](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 

@@ -1,48 +1,48 @@
 ---
-title: Azure Service Fabric-toepassings model
-description: Toepassingen en services in azure Service Fabric model leren en beschrijven met toepassings-en service manifest bestanden.
+title: Azure Service Fabric-toepassingsmodel
+description: Toepassingen en services in Azure Service Fabric modelleren en beschrijven met behulp van toepassings- en servicemanifestbestanden.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 7179686b7d4ef2df267cb95ece8f83d5fb7682b8
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75551876"
 ---
-# <a name="model-an-application-in-service-fabric"></a>Een toepassing model leren in Service Fabric
-Dit artikel bevat een overzicht van het Azure Service Fabric-toepassings model en hoe u een toepassing en service kunt definiëren via manifest bestanden.
+# <a name="model-an-application-in-service-fabric"></a>Een toepassing modelleren in Service Fabric
+In dit artikel vindt u een overzicht van het Azure Service Fabric-toepassingsmodel en hoe u een toepassing en service definiëren via manifeste bestanden.
 
-## <a name="understand-the-application-model"></a>Inzicht in het toepassings model
-Een toepassing is een verzameling van onderdeel Services die een bepaalde functie of functies uitvoeren. Een service voert een volledige en zelfstandige functie uit en kan onafhankelijk van andere services worden gestart en uitgevoerd.  Een service bestaat uit code, configuratie en gegevens. Voor elke service bestaat code uit de binaire uitvoer bare bestanden, configuratie bestaat uit service-instellingen die tijdens runtime kunnen worden geladen en gegevens bestaan uit wille keurige statische gegevens die door de service worden gebruikt. Elk onderdeel in dit hiërarchische toepassings model kan worden geversied en onafhankelijk van elkaar worden bijgewerkt.
+## <a name="understand-the-application-model"></a>Het toepassingsmodel begrijpen
+Een toepassing is een verzameling samenstellende services die een bepaalde functie of functies uitvoeren. Een service voert een volledige en zelfstandige functie uit en kan onafhankelijk van andere services worden gestart en uitgevoerd.  Een service bestaat uit code, configuratie en gegevens. Voor elke service bestaat code uit de uitvoerbare binaire bestanden, bestaat de configuratie uit service-instellingen die kunnen worden geladen tijdens uitvoering en gegevens bestaan uit willekeurige statische gegevens die door de service moeten worden verbruikt. Elk onderdeel in dit hiërarchische toepassingsmodel kan onafhankelijk van elkaar worden geüpgraded en geüpgraded.
 
-![Het Service Fabric toepassings model][appmodel-diagram]
+![Het servicefabric-toepassingsmodel][appmodel-diagram]
 
-Een toepassings type is een categorisatie van een toepassing en bestaat uit een bundel van service typen. Een service type is een categorisatie van een service. De categorisatie kan verschillende instellingen en configuraties hebben, maar de kern functionaliteit blijft hetzelfde. De exemplaren van een service zijn de verschillende service configuratie variaties van hetzelfde service type.  
+Een toepassingstype is een categorisering van een toepassing en bestaat uit een bundel servicetypen. Een servicetype is een categorisering van een service. De categorisatie kan verschillende instellingen en configuraties hebben, maar de kernfunctionaliteit blijft hetzelfde. De exemplaren van een service zijn de verschillende serviceconfiguratievariaties van hetzelfde servicetype.  
 
-Klassen (of "typen") van toepassingen en services worden beschreven met XML-bestanden (toepassings manifesten en service manifesten).  In de manifesten worden toepassingen en services beschreven en zijn de sjablonen waarmee toepassingen kunnen worden geïnstantieerd uit de installatie kopie opslag van het cluster.  Manifesten worden gedetailleerd besproken in [toepassings-en service manifesten](service-fabric-application-and-service-manifests.md). De schema definitie voor het bestand ServiceManifest. XML en ApplicationManifest. XML wordt geïnstalleerd met de Service Fabric SDK en hulpprogram ma's in *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.XSD*. Het XML-schema wordt beschreven in de [documentatie bij ServiceFabricServiceModel. XSD-schema](service-fabric-service-model-schema.md).
+Klassen (of 'typen') van toepassingen en services worden beschreven via XML-bestanden (toepassingsmanifesten en servicemanifesten).  De manifesten beschrijven toepassingen en services en zijn de sjablonen waartegen toepassingen kunnen worden geinstantieerd vanuit de afbeeldingswinkel van het cluster.  Manifesten worden in detail behandeld in [toepassings- en servicemanifesten](service-fabric-application-and-service-manifests.md). De schemadefinitie voor het bestand ServiceManifest.xml en ApplicationManifest.xml is geïnstalleerd met de Service Fabric SDK en de hulpprogramma's voor *C:\Program Files\Microsoft SDKs\Service Fabric\schema's\ServiceFabricServiceModel.xsd*. Het XML-schema is gedocumenteerd in [de schemadocumentatie servicefabricservicemodel.xsd.](service-fabric-service-model-schema.md)
 
-De code voor verschillende toepassings exemplaren wordt uitgevoerd als afzonderlijke processen, zelfs als deze worden gehost door hetzelfde Service Fabric knoop punt. Bovendien kan de levens cyclus van elke toepassings instantie afzonderlijk worden beheerd (bijvoorbeeld geüpgraded). In het volgende diagram ziet u hoe toepassings typen bestaan uit service typen, die op zijn beurt bestaan uit code, configuratie en gegevens pakketten. Om het diagram te vereenvoudigen, worden alleen de code/config/data-pakketten voor `ServiceType4` weer gegeven, hoewel elk Service type een of meer van de pakket typen zou bevatten.
+De code voor verschillende toepassingsinstanties wordt uitgevoerd als afzonderlijke processen, zelfs wanneer deze worden gehost door hetzelfde Service Fabric-knooppunt. Bovendien kan de levenscyclus van elke toepassingsinstantie onafhankelijk worden beheerd (bijvoorbeeld geüpgraded). In het volgende diagram ziet u hoe toepassingstypen bestaan uit servicetypen, die op hun beurt bestaan uit code, configuratie en gegevenspakketten. Om het diagram te vereenvoudigen, worden alleen `ServiceType4` de code/config/gegevenspakketten voor weergegeven, hoewel elk servicetype sommige of al die pakkettypen zou bevatten.
 
-![Service Fabric toepassings typen en-service typen][cluster-imagestore-apptypes]
+![Service Fabric-toepassingstypen en servicetypen][cluster-imagestore-apptypes]
 
-Er kunnen een of meer exemplaren van een service type actief zijn in het cluster. Bijvoorbeeld stateful service instanties of replica's, behaalt u hoge betrouw baarheid door de status te repliceren tussen replica's die zich op verschillende knoop punten in het cluster bevinden. Replicatie heeft in wezen de redundantie voor de service beschikbaar, zelfs als één knoop punt in een cluster uitvalt. Een [gepartitioneerde service](service-fabric-concepts-partitioning.md) heeft de status van de knoop punten in het cluster verder onderverdeeld (en toegang tot patronen met die status).
+Er kunnen een of meer exemplaren van een servicetype actief zijn in het cluster. Stateful service-exemplaren of replica's bereiken bijvoorbeeld een hoge betrouwbaarheid door de status te repliceren tussen replica's op verschillende knooppunten in het cluster. Replicatie biedt in wezen redundantie voor de service beschikbaar te zijn, zelfs als een knooppunt in een cluster mislukt. Een [partitieservice](service-fabric-concepts-partitioning.md) verdeelt de status (en toegangspatronen tot die status) verder tussen knooppunten in het cluster.
 
 In het volgende diagram ziet u de relatie tussen toepassingen en service-exemplaren, partities en replica's.
 
-![Partities en replica's in een service][cluster-application-instances]
+![Partities en replica's binnen een service][cluster-application-instances]
 
 > [!TIP]
-> U kunt de indeling van toepassingen in een cluster weer geven met behulp van het Service Fabric Explorer-hulp programma dat beschikbaar is op http://&lt;yourclusteraddress&gt;: 19080/Explorer. Zie [uw cluster visualiseren met Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)voor meer informatie.
+> U de indeling van toepassingen in een cluster bekijken&lt;met&gt;het hulpprogramma Service Fabric Explorer dat beschikbaar is op http:// yourclusteraddress :19080/Explorer. Zie [Uw cluster visualiseren met Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)voor meer informatie.
 > 
 > 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [schaal baarheid van toepassingen](service-fabric-concepts-scalability.md).
-- Meer informatie over service [status](service-fabric-concepts-state.md), [partitionering](service-fabric-concepts-partitioning.md)en [Beschik baarheid](service-fabric-availability-services.md).
-- Meer informatie over hoe toepassingen en services worden gedefinieerd in [toepassings-en service manifesten](service-fabric-application-and-service-manifests.md).
-- Met [Application Hosting-modellen](service-fabric-hosting-model.md) wordt de relatie tussen replica's (of exemplaren) van een geïmplementeerd service-en service-hostproces beschreven.
+- Meer informatie over [schaalbaarheid van toepassingen](service-fabric-concepts-scalability.md).
+- Meer informatie over [servicestatus,](service-fabric-concepts-state.md) [partitionering](service-fabric-concepts-partitioning.md)en [beschikbaarheid](service-fabric-availability-services.md).
+- Lees hoe toepassingen en services worden gedefinieerd in [toepassings- en servicemanifesten.](service-fabric-application-and-service-manifests.md)
+- [Toepassingshostingmodellen](service-fabric-hosting-model.md) beschrijven de relatie tussen replica's (of instanties) van een geïmplementeerdservice- en servicehostproces.
 
 <!--Image references-->
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png

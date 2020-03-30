@@ -1,6 +1,6 @@
 ---
-title: Abonnementen Azure Event Grid via de portal
-description: In dit artikel wordt beschreven hoe u Event Grid-abonnementen maakt voor de ondersteunde bronnen, zoals Azure Blob Storage, door gebruik te maken van de Azure Portal.
+title: Azure Event Grid-abonnementen via portal
+description: In dit artikel wordt beschreven hoe u Event Grid-abonnementen maakt voor de ondersteunde bronnen, zoals Azure Blob Storage, met behulp van de Azure-portal.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,64 +8,64 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 3172c92ecae094ab5d978803d2ccac7e6404a5e1
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721503"
 ---
-# <a name="subscribe-to-events-through-portal"></a>Abonneren op gebeurtenissen via de portal
+# <a name="subscribe-to-events-through-portal"></a>Abonneer u op evenementen via portal
 
-In dit artikel wordt beschreven hoe u Event Grid-abonnementen maakt via de portal.
+In dit artikel wordt beschreven hoe u eventgrid-abonnementen maakt via de portal.
 
-## <a name="create-event-subscriptions"></a>Gebeurtenis abonnementen maken
+## <a name="create-event-subscriptions"></a>Gebeurtenisabonnementen maken
 
-Als u een Event Grid-abonnement wilt maken voor een van de ondersteunde [gebeurtenis bronnen](event-sources.md), gebruikt u de volgende stappen. In dit artikel wordt beschreven hoe u een Event Grid-abonnement maakt voor een Azure-abonnement.
+Als u een abonnement op eventgrid wilt maken voor een van de ondersteunde [gebeurtenisbronnen,](event-sources.md)gebruikt u de volgende stappen. In dit artikel ziet u hoe u een Event Grid-abonnement maakt voor een Azure-abonnement.
 
 1. Selecteer **Alle services**.
 
    ![Alle services selecteren](./media/subscribe-through-portal/select-all-services.png)
 
-1. Zoek naar **Event grid-abonnementen** en selecteer deze in de beschik bare opties.
+1. Zoek naar **abonnementen op het gebeurtenisraster** en selecteer deze uit de beschikbare opties.
 
-   ![Zoeken](./media/subscribe-through-portal/search.png)
+   ![Search](./media/subscribe-through-portal/search.png)
 
 1. Selecteer **+ Gebeurtenisabonnement**.
 
    ![Abonnement toevoegen](./media/subscribe-through-portal/add-subscription.png)
 
-1. Selecteer het type abonnement dat u wilt maken. Als u zich bijvoorbeeld wilt abonneren op gebeurtenissen voor uw Azure-abonnement, selecteert u **Azure-abonnementen** en het doel abonnement.
+1. Selecteer het type abonnement dat u wilt maken. Als u zich bijvoorbeeld wilt abonneren op gebeurtenissen voor uw Azure-abonnement, selecteert u **Azure-abonnementen** en het doelabonnement.
 
    ![Azure-abonnement selecteren](./media/subscribe-through-portal/azure-subscription.png)
 
-1. Als u zich wilt abonneren op alle gebeurtenis typen voor deze gebeurtenis bron, laat u de optie **Abonneren op alle gebeurtenis typen** ingeschakeld. Anders selecteert u de gebeurtenis typen voor dit abonnement.
+1. Als u zich wilt abonneren op alle gebeurtenistypen voor deze gebeurtenisbron, houdt u de optie **Abonneren op alle gebeurtenistypen** ingeschakeld. Selecteer anders de gebeurtenistypen voor dit abonnement.
 
-   ![Gebeurtenis typen selecteren](./media/subscribe-through-portal/select-event-types.png)
+   ![Gebeurtenistypen selecteren](./media/subscribe-through-portal/select-event-types.png)
 
-1. Geef aanvullende informatie op over het gebeurtenis abonnement, zoals het eind punt voor het afhandelen van gebeurtenissen en de naam van een abonnement.
+1. Geef meer informatie over het gebeurtenisabonnement, zoals het eindpunt voor het afhandelen van gebeurtenissen en een abonnementsnaam.
 
-   ![Abonnements gegevens opgeven](./media/subscribe-through-portal/provide-subscription-details.png)
+   ![Abonnementsgegevens opgeven](./media/subscribe-through-portal/provide-subscription-details.png)
 
-1. Als u onbestelbare berichten wilt inschakelen en beleid voor opnieuw proberen wilt aanpassen, selecteert u **extra functies**.
+1. Als u beleid voor dode letters wilt inschakelen en beleid voor nieuwe apparaten wilt aanpassen, selecteert u **Extra functies**.
 
    ![Extra functies selecteren](./media/subscribe-through-portal/select-additional-features.png)
 
-1. Selecteer een container die moet worden gebruikt voor het opslaan van gebeurtenissen die niet worden geleverd en stel in hoe nieuwe pogingen worden verzonden.
+1. Selecteer een container die u wilt gebruiken voor het opslaan van gebeurtenissen die niet worden geleverd en stel in hoe nieuwe pogingen worden verzonden.
 
-   ![Dead-berichten inschakelen en opnieuw proberen](./media/subscribe-through-portal/set-deadletter-retry.png)
+   ![Dode letters inschakelen en opnieuw proberen](./media/subscribe-through-portal/set-deadletter-retry.png)
 
 1. Wanneer u klaar bent, selecteert u **Maken**.
 
 ## <a name="create-subscription-on-resource"></a>Abonnement maken op resource
 
-Bepaalde gebeurtenis bronnen bieden ondersteuning voor het maken van een gebeurtenis abonnement via de portal-interface voor die bron. Selecteer de bron van de gebeurtenis en zoek naar **gebeurtenissen** in het linkerdeel venster.
+Sommige gebeurtenisbronnen ondersteunen het maken van een gebeurtenisabonnement via de portalinterface voor die bron. Selecteer de gebeurtenisbron en zoek naar **gebeurtenissen** in het linkerdeelvenster.
 
-![Abonnements gegevens opgeven](./media/subscribe-through-portal/resource-events.png)
+![Abonnementsgegevens opgeven](./media/subscribe-through-portal/resource-events.png)
 
-De portal geeft u de opties voor het maken van een gebeurtenis abonnement dat relevant is voor die bron.
+De portal biedt u opties voor het maken van een evenementabonnement dat relevant is voor die bron.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Event grid aflevering van berichten en probeer het opnieuw](delivery-and-retry.md).
+* Voor informatie over het bezorgen en opnieuw proberen van [gebeurtenissen, het verzenden van het gebeurtenisrasterbericht en het opnieuw proberen](delivery-and-retry.md).
 * Zie [Een inleiding tot Event Grid](overview.md) voor een inleiding tot Event Grid.
-* Zie [aangepaste gebeurtenissen maken en routeren met Azure Event grid](custom-event-quickstart.md)om snel aan de slag te gaan met Event grid.
+* Zie [Aangepaste gebeurtenissen maken en routeren met Azure Event Grid](custom-event-quickstart.md)om snel aan de slag te gaan met gebeurtenisraster.
