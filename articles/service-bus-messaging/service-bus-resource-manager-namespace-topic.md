@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus naam ruimte-onderwerp maken met behulp van een sjabloon
-description: 'Snelstartgids: een Service Bus naam ruimte met een onderwerp en een abonnement maken met behulp van Azure Resource Manager sjabloon'
+title: Het naamruimteonderwerp Azure Service Bus maken met een sjabloon
+description: 'Snelstart: een naamruimte voor servicebus maken met onderwerp en abonnement met azure resourcemanager-sjabloon'
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -14,51 +14,50 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 98ca0f95f5b2aab9651b97442f1f38651767f1df
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: c94b670a33f7640d2d6f428287b3ba0fab766bc5
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264489"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384871"
 ---
-# <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Snelstartgids: een Service Bus naam ruimte met een onderwerp en een abonnement maken met behulp van een Azure Resource Manager sjabloon
+# <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Snelstart: een naamruimte voor servicebus maken met onderwerp en abonnement met behulp van een Azure Resource Manager-sjabloon
 
-In dit artikel wordt beschreven hoe u een Azure Resource Manager sjabloon gebruikt waarmee u een Service Bus naam ruimte en een onderwerp en een abonnement binnen die naam ruimte maakt. In het artikel wordt uitgelegd hoe u kunt opgeven welke resources worden geïmplementeerd en hoe para meters moeten worden gedefinieerd die worden opgegeven wanneer de implementatie wordt uitgevoerd. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen
+In dit artikel ziet u hoe u een Azure Resource Manager-sjabloon gebruikt waarmee een naamruimte voor servicebus en een onderwerp en abonnement in die naamruimte worden gemaakt. In het artikel wordt uitgelegd hoe u opgeven welke resources worden geïmplementeerd en hoe parameters kunnen worden gedefinieerd die zijn opgegeven wanneer de implementatie wordt uitgevoerd. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen
 
-Zie [Azure Resource Manager sjablonen ontwerpen][Authoring Azure Resource Manager templates]voor meer informatie over het maken van sjablonen.
+Zie [Azure Resource Manager-sjablonen samenstellen][Authoring Azure Resource Manager templates] voor meer informatie over het maken van sjablonen.
 
-Zie voor de volledige sjabloon de [Service Bus naam ruimte met onderwerp en abonnements][Service Bus namespace with topic and subscription] sjabloon.
+Zie de [naamruimte Servicebus met onderwerp en abonnementssjabloon][Service Bus namespace with topic and subscription] voor de volledige sjabloon.
 
 > [!NOTE]
-> De volgende Azure Resource Manager sjablonen zijn beschikbaar voor downloaden en implementeren.
+> De volgende Azure Resource Manager-sjablonen zijn beschikbaar voor download en implementatie.
 > 
-> * [Een Service Bus naam ruimte maken](service-bus-resource-manager-namespace.md)
-> * [Een Service Bus naam ruimte maken met wachtrij](service-bus-resource-manager-namespace-queue.md)
-> * [Een Service Bus naam ruimte maken met een wachtrij-en autorisatie regel](service-bus-resource-manager-namespace-auth-rule.md)
-> * [Een Service Bus naam ruimte maken met een onderwerp, een abonnement en een regel](service-bus-resource-manager-namespace-topic-with-rule.md)
+> * [Een Service Bus-naamruimte maken](service-bus-resource-manager-namespace.md)
+> * [Een naamruimte voor servicebus maken met wachtrij](service-bus-resource-manager-namespace-queue.md)
+> * [Een naamruimte voor servicebus maken met wachtrij- en autorisatieregel](service-bus-resource-manager-namespace-auth-rule.md)
+> * [Een naamruimte voor servicebus maken met onderwerp, abonnement en regel](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> Als u de meest recente sjablonen wilt controleren, gaat u naar de galerie met [Azure Quick Start sjablonen][Azure Quickstart Templates] en zoekt u naar **Service Bus**.
-> 
-> 
+> Als u wilt controleren of u de nieuwste sjablonen wilt controleren, gaat u naar de azure [quickstartsjablonengalerie][Azure Quickstart Templates] en zoekt u naar **Servicebus**.
 
-## <a name="what-do-you-deploy"></a>Wat gaat u implementeren?
+## <a name="what-do-you-deploy"></a>Wat zet je in?
 
-Met deze sjabloon implementeert u een Service Bus naam ruimte met een onderwerp en een abonnement.
+Met deze sjabloon implementeert u een servicebusnaamruimte met onderwerp en abonnement.
 
-[Service Bus-onderwerpen en-abonnementen](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) bieden een een-op-veel communicatie vorm, in een patroon voor *publiceren/abonneren* .
+[Service Bus onderwerpen en abonnementen](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) bieden een een-op-veel vorm van communicatie, in een publiceren / *abonneren* patroon.
 
 Klik op de volgende knop om de implementatie automatisch uit te voeren:
 
-[![Implementeren in Azure](./media/service-bus-resource-manager-namespace-topic/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-topic-and-subscription%2Fazuredeploy.json)
+[![Implementeren naar Azure](./media/service-bus-resource-manager-namespace-topic/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-topic-and-subscription%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Parameters
 
-Met Azure Resource Manager kunt u parameters definiëren voor waarden die u wilt opgeven wanneer de sjabloon wordt geïmplementeerd. De sjabloon bevat een sectie met de naam `Parameters` die alle parameter waarden bevat. Definieer een para meter voor die waarden die variëren op basis van het project dat u implementeert of op basis van de omgeving waarin u de implementatie uitvoert. Definieer geen parameters voor waarden die altijd hetzelfde blijven. De waarde van elke parameter wordt gebruikt in de sjabloon voor het definiëren van de resources die worden geïmplementeerd.
+Met Azure Resource Manager kunt u parameters definiëren voor waarden die u wilt opgeven wanneer de sjabloon wordt geïmplementeerd. De sjabloon bevat `Parameters` een sectie die wordt aangeroepen en die alle parameterwaarden bevat. Definieer een parameter voor de waarden die variëren op basis van het project dat u implementeert of op basis van de omgeving waarop u implementeert. Definieer geen parameters voor waarden die altijd hetzelfde blijven. De waarde van elke parameter wordt gebruikt in de sjabloon voor het definiëren van de resources die worden geïmplementeerd.
 
-De sjabloon definieert de volgende para meters:
+De sjabloon definieert de volgende parameters:
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
-De naam van de Service Bus naam ruimte die moet worden gemaakt.
+
+De naam van de naamruimte servicebus om te maken.
 
 ```json
 "serviceBusNamespaceName": {
@@ -67,7 +66,8 @@ De naam van de Service Bus naam ruimte die moet worden gemaakt.
 ```
 
 ### <a name="servicebustopicname"></a>serviceBusTopicName
-De naam van het onderwerp dat in de Service Bus naam ruimte is gemaakt.
+
+De naam van het onderwerp dat is gemaakt in de naamruimte servicebus.
 
 ```json
 "serviceBusTopicName": {
@@ -75,8 +75,9 @@ De naam van het onderwerp dat in de Service Bus naam ruimte is gemaakt.
 }
 ```
 
-### <a name="servicebussubscriptionname"></a>serviceBusSubscriptionName
-De naam van het abonnement dat in de naam ruimte van de Service Bus is gemaakt.
+### <a name="servicebussubscriptionname"></a>serviceBusAbonnementNaam
+
+De naam van het abonnement dat is gemaakt in de naamruimte servicebus.
 
 ```json
 "serviceBusSubscriptionName": {
@@ -84,8 +85,9 @@ De naam van het abonnement dat in de naam ruimte van de Service Bus is gemaakt.
 }
 ```
 
-### <a name="servicebusapiversion"></a>serviceBusApiVersion
-De API-versie van de Service Bus van de sjabloon.
+### <a name="servicebusapiversion"></a>serviceBusApiVersie
+
+De API-versie van de sjabloon servicebus.
 
 ```json
 "serviceBusApiVersion": { 
@@ -95,8 +97,10 @@ De API-versie van de Service Bus van de sjabloon.
            "description": "Service Bus ApiVersion used by the template" 
        }
 ```
+
 ## <a name="resources-to-deploy"></a>Resources om te implementeren
-Hiermee maakt u een standaard Service Bus naam ruimte van het type **berichten**, met onderwerp en abonnement.
+
+Hiermee maakt u een standaard naamruimte van de servicebus van het type **Messaging,** met onderwerp en abonnement.
 
 ```json
 "resources": [{
@@ -131,28 +135,30 @@ Hiermee maakt u een standaard Service Bus naam ruimte van het type **berichten**
     }]
 ```
 
-Voor de JSON-syntaxis en-eigenschappen raadpleegt u [naam ruimten](/azure/templates/microsoft.servicebus/namespaces), [onderwerpen](/azure/templates/microsoft.servicebus/namespaces/topics)en [abonnementen](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions).
+Zie [naamruimten](/azure/templates/microsoft.servicebus/namespaces), [onderwerpen](/azure/templates/microsoft.servicebus/namespaces/topics)en [abonnementen](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions)voor syntaxis en eigenschappen van JSON .
 
 ## <a name="commands-to-run-deployment"></a>Opdrachten om implementatie uit te voeren
+
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
-```powershell
+
+```powershell-interactive
 New-AzureResourceGroupDeployment -Name \<deployment-name\> -ResourceGroupName \<resource-group-name\> -TemplateUri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-and-subscription/azuredeploy.json>
 ```
 
 ## <a name="azure-cli"></a>Azure-CLI
-```azurecli
-azure config mode arm
 
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-and-subscription/azuredeploy.json>
+```azurecli-interactive
+az group deployment create \<my-resource-group\> --name \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-and-subscription/azuredeploy.json>
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u resources hebt gemaakt en geïmplementeerd met behulp van Azure Resource Manager, leert u hoe u deze resources kunt beheren door de volgende artikelen te bekijken:
+
+Nu u resources hebt gemaakt en geïmplementeerd met Azure Resource Manager, leest u hoe u deze bronnen beheren door deze artikelen te bekijken:
 
 * [Service Bus met PowerShell beheren](service-bus-manage-with-ps.md)
-* [Service Bus-resources beheren met de Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [Servicebusbronnen beheren met de Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus

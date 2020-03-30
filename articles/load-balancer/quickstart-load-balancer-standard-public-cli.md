@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: een open bare Load Balancer maken-Azure CLI'
+title: Snelstart:Een openbare load balancer maken - Azure CLI
 titleSuffix: Azure Load Balancer
-description: In deze snelstart vindt u meer informatie over het maken van een openbare load balancer met Azure CLI
+description: In deze snelstart vindt u meer informatie over het maken van een openbare load balancer met behulp van Azure CLI
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -17,16 +17,16 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: fdbd002ac946f3ac3a1a67980905d4ed6f5510c5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 1f6a05fdfc28adf412ffbd1402e37b69d1c51634
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470340"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79477762"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Snelstartgids: een Standard Load Balancer maken om taken te verdelen over Vm's met behulp van Azure CLI
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Snelstart: een standaardloadbalancer maken om vm's met balans te laden met Azure CLI
 
-In deze Quick start ziet u hoe u een open bare Load Balancer maakt. U test de load balancer door twee virtuele machines (VM's) te implementeren waarop een Ubuntu-server wordt uitgevoerd en waarbij de taken van een web-app gelijkelijk over twee VM's worden verdeeld.
+Deze quickstart laat zien hoe u een openbare load balancer maakt. U test de load balancer door twee virtuele machines (VM's) te implementeren waarop een Ubuntu-server wordt uitgevoerd en waarbij de taken van een web-app gelijkelijk over twee VM's worden verdeeld.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -46,34 +46,34 @@ In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroupSL
 
 ## <a name="create-a-public-ip-address"></a>Een openbaar IP-adres maken
 
-Om toegang te krijgen tot uw web-app op internet, hebt u een openbaar IP-adres nodig voor de load balancer. Gebruik [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip) om een redundante standaard zone met de naam *myPublicIP* in *myResourceGroupSLB*te maken.
+Om toegang te krijgen tot uw web-app op internet, hebt u een openbaar IP-adres nodig voor de load balancer. Gebruik [het public-ip-create van het AZ-netwerk](https://docs.microsoft.com/cli/azure/network/public-ip) om een standaardredundant openbaar IP-adres met de naam *myPublicIP* te maken in *myResourceGroupSLB.*
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard
 ```
 
-Een openbaar IP-adres voor zonegebonden maken in zone 1 gebruiken:
+Ga als lid van het nieuwe IP-adres in zone 1:
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard --zone 1
 ```
 
-Gebruik ```-SKU Basic``` om een open bare basis-IP te maken. Algemene open bare Ip's zijn niet compatibel met **standaard** Load Balancer. Micro soft raadt aan om **standaard** te gebruiken voor werk belastingen voor de productie.
+Gebruiken `-SKU Basic` om een basisip-ip-adres te maken. Basis-IP's zijn niet compatibel met **standaard** load balancer. Microsoft raadt aan **om Standaard** te gebruiken voor productieworkloads.
 
 > [!IMPORTANT]
-> In de rest van deze Snelstartgids wordt ervan uitgegaan dat **standaard** -SKU is gekozen tijdens het bovenstaande SKU-selectie proces.
+> De rest van deze quickstart gaat ervan uit dat **standaard** SKU is gekozen tijdens het sku-selectieproces hierboven.
 
-## <a name="create-azure-load-balancer"></a>Een Azure Load Balancer maken
+## <a name="create-azure-load-balancer"></a>Azure Load balancer maken
 
-In deze sectie wordt beschreven hoe u de volgende onderdelen van de load balancer kunt maken en configureren.
+In deze sectie wordt beschreven hoe u de volgende onderdelen van de load balancer kunt maken en configureren:
   - een front-end IP-pool die het binnenkomende netwerkverkeer op de load balancer ontvangt.
-  - een back-end IP-pool waar de front-endpool het netwerkverkeer op de load balancer heen stuurt.
+  - een back-end-IP-pool waar de front-end-pool het netwerkverkeer op de load balancer naartoe stuurt.
   - een statustest die de status van de back-end-VM-exemplaren vaststelt.
   - een load balancer-regel die bepaalt hoe het verkeer over de VM's wordt verdeeld.
 
 ### <a name="create-the-load-balancer"></a>Load balancer maken
 
-Maak met [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) een openbare Azure Load Balancer met de naam **myLoadBalancer** die een front-endgroep bevat met de naam **myFrontEnd**, een back-endgroep met de naam **myBackEndPool**, die wordt gekoppeld aan het openbare IP-adres **myPublicIP** dat u in de vorige stap hebt gemaakt. Gebruik ```--sku basic``` om een open bare basis-IP te maken. Micro soft raadt standaard-SKU aan voor productie werkbelastingen.
+Maak met [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) een openbare Azure Load Balancer met de naam **myLoadBalancer** die een front-endgroep bevat met de naam **myFrontEnd**, een back-endgroep met de naam **myBackEndPool**, die wordt gekoppeld aan het openbare IP-adres **myPublicIP** dat u in de vorige stap hebt gemaakt. Gebruiken `--sku basic` om een basisip-ip-adres te maken. Microsoft raadt Standaard SKU aan voor productieworkloads.
 
 ```azurecli-interactive
   az network lb create \
@@ -83,10 +83,10 @@ Maak met [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool       
-  ```
+```
 
 > [!IMPORTANT]
-> In de rest van deze Snelstartgids wordt ervan uitgegaan dat **standaard** -SKU is gekozen tijdens het bovenstaande SKU-selectie proces.
+> De rest van deze quickstart gaat ervan uit dat **standaard** SKU is gekozen tijdens het sku-selectieproces hierboven.
 
 ### <a name="create-the-health-probe"></a>Statustest maken
 
@@ -103,7 +103,7 @@ Een statuscontrole controleert alle exemplaren van de virtuele machines om ervoo
 
 ### <a name="create-the-load-balancer-rule"></a>Load balancer-regel maken
 
-Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-pool om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met *az network lb rule create* de regel [myLoadBalancerRuleWeb](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) voor het luisteren naar poort 80 in de front-endpool *myFrontEnd* en het verzenden van netwerkverkeer met gelijke taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt. 
+Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-pool om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) de regel *myLoadBalancerRuleWeb* voor het luisteren naar poort 80 in de front-endpool *myFrontEnd* en het verzenden van netwerkverkeer met gelijke taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -120,11 +120,11 @@ Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenk
 
 ## <a name="configure-virtual-network"></a>Virtueel netwerk configureren
 
-Voordat u enkele VM's implementeert en uw load balancer test, maakt u de ondersteunende virtuele-netwerkbronnen.
+Voordat u enkele VM's implementeert om uw load balancer te testen, maakt u de ondersteunende virtuele-netwerkbronnen.
 
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-Maak met *az network vnet create* een virtueel netwerk met de naam *myVnet* met een subnet met de naam *mySubnet* in [myResourceGroup](https://docs.microsoft.com/cli/azure/network/vnet).
+Maak met [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) in *myResourceGroup* een virtueel netwerk met de naam *myVnet* met een subnet met de naam *mySubnet*.
 
 ```azurecli-interactive
   az network vnet create \
@@ -133,9 +133,10 @@ Maak met *az network vnet create* een virtueel netwerk met de naam *myVnet* met 
     --name myVnet \
     --subnet-name mySubnet
 ```
-###  <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
 
-Voor Standard Load Balancer moeten de VM's in het back-endadres NIC's bevatten die tot een netwerkbeveiligingsgroep behoren. Maak een netwerkbeveiligingsgroep om binnenkomende verbindingen met uw virtuele netwerk te definiëren.
+### <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
+
+Voor Standard Load Balancer moeten de VM's in het back-endadres NIC's bevatten die tot een netwerkbeveiligingsgroep behoren. Maak een netwerkbeveiligingsgroep om de binnenkomende verbindingen met uw virtuele netwerk te definiëren.
 
 ```azurecli-interactive
   az network nsg create \
@@ -161,6 +162,7 @@ Maak een regel voor de netwerkbeveiligingsgroep om binnenkomende verbindingen vi
     --access allow \
     --priority 200
 ```
+
 ### <a name="create-nics"></a>NIC's maken
 
 Maak met [az network nic create](/cli/azure/network/nic#az-network-nic-create) drie netwerkinterfaces en koppel deze aan het openbare IP-adres en de netwerkbeveiligingsgroep. 
@@ -200,7 +202,7 @@ Maak met [az network nic create](/cli/azure/network/nic#az-network-nic-create) d
 
 In dit voorbeeld maakt u drie virtuele machines die worden gebruikt als back-endservers voor de load balancer. Installeer NGINX op de virtuele machines om te controleren of de load balancer is gemaakt.
 
-Als u een basis Load Balancer maakt met een standaard openbaar IP-adres, moet u een Beschikbaarheidsset maken met ([AZ VM availabilityset maken](/cli/azure/network/nic) ) om uw virtuele machines aan toe te voegen. Voor standaard load balancers is deze extra stap niet vereist. Micro soft raadt u aan om standaard te gebruiken.
+Als u een Basic Load Balancer maakt met een basic public IP, moet u een beschikbaarheidsset maken met behulp van[(beschikbaarheidsset van AZ VM maakt u](/cli/azure/network/nic) om uw virtuele machines aan toe te voegen. Standaard load balancers vereisen deze extra stap niet. Microsoft raadt aan om Standard te gebruiken.
 
 ### <a name="create-three-virtual-machines"></a>Drie virtuele machines maken
 
@@ -246,11 +248,11 @@ runcmd:
   - npm init
   - npm install express -y
   - nodejs index.js
-``` 
- 
+```
+
 Maak de virtuele machines met [az vm create](/cli/azure/vm#az-vm-create).
 
- ```azurecli-interactive
+```azurecli-interactive
 
   az vm create \
     --resource-group myResourceGroupSLB \
@@ -283,6 +285,7 @@ Maak de virtuele machines met [az vm create](/cli/azure/vm#az-vm-create).
     --no-wait
 
 ```
+
 Het kan enkele minuten duren voordat de VM's zijn geïmplementeerd.
 
 ## <a name="test-the-load-balancer"></a>Load balancer testen
@@ -295,17 +298,19 @@ Gebruik [az network public-ip show](/cli/azure/network/public-ip#az-network-publ
     --name myPublicIP \
     --query [ipAddress] \
     --output tsv
-``` 
+```
+
    ![Load balancer testen](./media/load-balancer-standard-public-cli/running-nodejs-app.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 U kunt de opdracht [az group delete](/cli/azure/group#az-group-delete) gebruiken om de resourcegroep, de load balancer en alle gerelateerde resources te verwijderen wanneer u deze niet meer nodig hebt.
 
-```azurecli-interactive 
+```azurecli-interactive
   az group delete --name myResourceGroupSLB
 ```
-## <a name="next-steps"></a>Volgende stappen
-In deze Quick Start hebt u een Standard Load Balancer, gekoppelde Vm's aan de app gemaakt, de regel voor het Load Balancer verkeer geconfigureerd, de status test en vervolgens de Load Balancer getest. Ga door naar [Azure Load Balancer zelf studies](tutorial-load-balancer-standard-public-zone-redundant-portal.md)voor meer informatie over Azure Load Balancer.
 
-Meer informatie over [Load Balancer-en beschikbaarheids zones](load-balancer-standard-availability-zones.md).
+## <a name="next-steps"></a>Volgende stappen
+In deze quickstart hebt u een Standaard Load Balancer gemaakt, VM's aan gekoppeld, de verkeersregel Load Balancer geconfigureerd, statussonde en vervolgens de Load Balancer getest. Ga voor meer informatie over Azure Load Balancer verder naar [azure load balancer-zelfstudies](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
+
+Meer informatie over [de zones Load Balancer en Availability](load-balancer-standard-availability-zones.md).

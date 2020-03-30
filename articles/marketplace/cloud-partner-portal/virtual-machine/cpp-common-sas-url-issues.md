@@ -1,33 +1,32 @@
 ---
-title: Veelvoorkomende problemen met SAS-URL'S en oplossingen voor Azure Marketplace
-description: Veelvoorkomende problemen met het gebruik van de Uri's van gedeelde Access-hand tekeningen en mogelijke oplossingen weer geven.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+title: Veelvoorkomende SAS-URL-problemen en -oplossingen voor de Azure Marketplace
+description: Vermeld veelvoorkomende problemen rond het gebruik van URI's met gedeelde toegangen en mogelijke oplossingen.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2018
-ms.author: pabutler
-ms.openlocfilehash: 502ba1a65f9b0740a51c7a4da219cc87af494f27
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 47702959474a352a8e13710ec850f789dee4d517
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813319"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278158"
 ---
-# <a name="common-sas-url-issues-and-fixes"></a>Veelvoorkomende problemen en oplossingen voor SAS-URL'S
+# <a name="common-sas-url-issues-and-fixes"></a>Veelvoorkomende SAS-URL-problemen en -oplossingen
 
-De volgende tabel bevat een aantal veelvoorkomende problemen bij het werken met hand tekeningen voor gedeelde toegang (die worden gebruikt om de geüploade Vhd's voor uw oplossing te identificeren en te delen), samen met suggesties voor oplossingen.
+In de volgende tabel worden enkele van de veelvoorkomende problemen weergegeven bij het werken met gedeelde toegangshandtekeningen (die worden gebruikt om de geüploade VHD's voor uw oplossing te identificeren en te delen), samen met voorgestelde oplossingen.
 
-| **Name** | **Fout bericht** | **Holpen** | 
+| **Probleem** | **Foutbericht** | **Fix** | 
 | --------- | ------------------- | ------- | 
-| &emsp;is *mislukt bij het kopiëren van afbeeldingen* |  |  |
-| '? ' is niet gevonden in de SAS-URL | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Werk de SAS-URL bij met aanbevolen hulpprogram ma's. |
-| de para meters "St" en "SE" niet in SAS-URL | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | De SAS-URL met de juiste **begin** -en **eind datum** waarden bijwerken. | 
-| "SP = RL" niet in SAS-URL | `Failure: Copying Images. Not able to download blob using provided SAS Uri` | Werk de SAS-URL bij met machtigingen die zijn ingesteld als `Read` en `List`. | 
-| SAS-URL heeft spaties in VHD-naam | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Werk de SAS-URL bij om spaties te verwijderen. |
-| Verificatie fout SAS-URL | `Failure: Copying Images. Not able to download blob due to authorization error` | Controleer de SAS URI-indeling en corrigeer deze. Genereer indien nodig opnieuw. |
-| De para meters van de SAS-URL "St" en "SE" hebben geen volledige datum-tijd specificatie | `Failure: Copying Images. Not able to download blob due to incorrect SAS URL` | De para meters voor de **begin** -en **eind datum** van SAS-url's (`st` en `se` subtekenreeksen) moeten een volledige datum notatie hebben, zoals `11-02-2017T00:00:00Z`. Verkorte versies zijn niet geldig. (Sommige opdrachten in azure CLI kunnen standaard verkorte waarden genereren.) | 
+| &emsp;  *Fout bij het kopiëren van afbeeldingen* |  |  |
+| "?" is niet te vinden in de Url van SAS | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Werk de SAS-URL bij met behulp van aanbevolen hulpprogramma's. |
+| "st" en "se" parameters niet in SAS URL | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Werk de SAS-URL bij met de juiste **begin-** en **einddatumwaarden.** | 
+| "sp=rl" niet in SAS URL | `Failure: Copying Images. Not able to download blob using provided SAS Uri` | Werk de SAS-URL bij `Read` `List`met machtigingen die zijn ingesteld als en . | 
+| SAS URL heeft witte spaties in VHD-naam | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Werk de SAS-URL bij om witte spaties te verwijderen. |
+| SAS URL-autorisatiefout | `Failure: Copying Images. Not able to download blob due to authorization error` | Controleer en corrigeer het SAS URI-formaat. Regenereren indien nodig. |
+| SAS URL "st" en "se" parameters hebben geen volledige datum-tijd specificatie | `Failure: Copying Images. Not able to download blob due to incorrect SAS URL` | De **begin-** en **einddatum** parameters`st` `se` (en subtekenreeksen) van de SAS-URL zijn vereist voor een volledige datumnotatie, zoals `11-02-2017T00:00:00Z`. Verkorte versies zijn niet geldig. (Sommige opdrachten in Azure CLI genereren standaard mogelijk verkorte waarden.) | 
 |  |  |  |
 
-Zie [using Shared Access signatures (SAS) (Engelstalig)](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)voor meer informatie.
+Zie [Gedeelde toegangshandtekeningen (SAS) gebruiken voor](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)meer informatie.

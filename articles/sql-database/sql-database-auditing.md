@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 8b50cb95e51ef36ed4436a6eb9c9143c9c613cc7
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 682735e1189333c2455863b8fde8e57d815111ba
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346447"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387696"
 ---
 # <a name="azure-sql-auditing"></a>Azure SQL-controle
 
@@ -30,7 +30,7 @@ De controlefunctie biedt ook deze mogelijkheden:
 > [!NOTE] 
 > Dit onderwerp is van toepassing op zowel Azure SQL Database als Azure Synapse Analytics-databases. Voor de eenvoud wordt SQL Database gebruikt wanneer u verwijst naar zowel Azure SQL Database als Azure Synapse Analytics.
 
-## <a name="overview"></a><a id="subheading-1"></a>Overzicht
+## <a name="overview"></a><a id="overview"></a>Overzicht
 
 U kunt SQL Database Auditing gebruiken voor het volgende:
 
@@ -40,8 +40,14 @@ U kunt SQL Database Auditing gebruiken voor het volgende:
 
 > [!IMPORTANT]
 > - Azure SQL Database auditing is geoptimaliseerd voor beschikbaarheid & prestaties. Tijdens zeer hoge activiteit azure SQL Database kunnen bewerkingen worden uitgevoerd en kan sommige gecontroleerde gebeurtenissen niet worden geregistreerd.
-   
-## <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="subheading-8"></a>Serverniveau versus controlebeleid op databaseniveau definiëren
+
+#### <a name="auditing-limitations"></a>Controlebeperkingen
+
+- **Premium-opslag** wordt momenteel **niet ondersteund**.
+- **Hiërarchische naamruimte** voor **Azure Data Lake Storage Gen2-opslagaccount** wordt momenteel niet **ondersteund**.
+- Controle inschakelen op een onderbroken **Azure SQL Data Warehouse** wordt niet ondersteund. Als u controle wilt inschakelen, hervat u het gegevensmagazijn.
+
+## <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>Serverniveau versus controlebeleid op databaseniveau definiëren
 
 Een controlebeleid kan worden gedefinieerd voor een specifieke database of als standaardserverbeleid:
 
@@ -58,8 +64,17 @@ Een controlebeleid kan worden gedefinieerd voor een specifieke database of als s
    >
    > Anders raden we u aan alleen blobcontrole op serverniveau in te schakelen en de controle op databaseniveau uitgeschakeld te laten voor alle databases.
 
-## <a name="set-up-auditing-for-your-server"></a><a id="subheading-2"></a>Controle instellen voor uw server
+## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>Controle instellen voor uw server
 
+Het standaardcontrolebeleid omvat alle acties en de volgende set actiegroepen, die alle query's en opgeslagen procedures die zijn uitgevoerd tegen de database controleren, evenals succesvolle en mislukte aanmeldingen:
+  
+  - BATCH_COMPLETED_GROUP
+  - SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+  - FAILED_DATABASE_AUTHENTICATION_GROUP
+  
+U controle configureren voor verschillende typen acties en actiegroepen met PowerShell, zoals beschreven in de [sectie SQL-databasecontrole beheren met Azure PowerShell.](#manage-auditing)
+
+Azure SQL Database Audit slaat 4000 tekens gegevens op voor tekenvelden in een controlerecord. Wanneer de **instructie** of de **data_sensitivity_information-waarden** die zijn geretourneerd uit een controleerbare actie meer dan 4000 tekens bevatten, worden alle gegevens die verder gaan dan de eerste 4000 tekens, **afgekapt en niet gecontroleerd**.
 In de volgende sectie wordt de configuratie van controle beschreven met behulp van de Azure-portal.
 
 1. Ga naar de [Azure-portal.](https://portal.azure.com)
@@ -78,35 +93,20 @@ In de volgende sectie wordt de configuratie van controle beschreven met behulp v
 
 Als u het schrijven van controlelogboeken wilt configureren voor een opslagaccount, selecteert u **Opslaggegevens** en **opent u Opslaggegevens**. Selecteer het Azure-opslagaccount waar logboeken worden opgeslagen en selecteer vervolgens de bewaarperiode. Klik vervolgens op **OK**. Logboeken die ouder zijn dan de bewaartermijn worden verwijderd.
 
+- De standaardwaarde voor bewaartermijn is 0 (onbeperkte retentie). U deze waarde wijzigen door de schuifregelaar **Retentie (Dagen)** in **Opslaginstellingen** te verplaatsen wanneer u het opslagaccount configureert voor controle.
+  - Als u de bewaartermijn wijzigt van 0 (onbeperkte retentie) naar een andere waarde, moet u er rekening mee houden dat bewaarwaarde alleen van toepassing is op logboeken die zijn geschreven nadat de bewaarwaarde is gewijzigd (logboeken die zijn geschreven tijdens de periode waarin de bewaartermijn is ingesteld op onbeperkt, behouden blijven, zelfs na retentie is ingeschakeld).
+
   ![opslagaccount](./media/sql-database-auditing-get-started/auditing_select_storage.png)
-
-#### <a name="log-audits-to-storage-account-behind-vnet-or-firewall"></a>Logaudits naar opslagaccount achter VNet of firewall
-
-U controlelogboeken schrijven naar een Azure Storage-account achter een VNet of firewall. Voor specifieke instructies zie, [Schrijf audit naar een opslagaccount achter VNet en firewall](create-auditing-storage-account-vnet-firewall.md).
 
 #### <a name="remarks"></a>Opmerkingen
 
-- Alle opslagsoorten (v1, v2, blob) worden ondersteund.
-- Alle configuratie van opslagreplicatie wordt ondersteund.
-- Opslag achter een virtueel netwerk en firewall wordt ondersteund.
-- **Premium-opslag** wordt momenteel **niet ondersteund**.
-- **Hiërarchische naamruimte** voor **Azure Data Lake Storage Gen2-opslagaccount** wordt momenteel niet **ondersteund**.
-- Controle inschakelen op een onderbroken **Azure SQL Data Warehouse** wordt niet ondersteund. Als u controle wilt inschakelen, hervat u het gegevensmagazijn.
-- De standaardwaarde voor bewaartermijn is 0 (onbeperkte retentie). U deze waarde wijzigen door de schuifregelaar **Retentie (Dagen)** in **Opslaginstellingen** te verplaatsen wanneer u het opslagaccount configureert voor controle.
-  - Als u de bewaartermijn wijzigt van 0 (onbeperkte retentie) naar een andere waarde, moet u er rekening mee houden dat bewaarwaarde alleen van toepassing is op logboeken die zijn geschreven nadat de bewaarwaarde is gewijzigd (logboeken die zijn geschreven tijdens de periode waarin de bewaartermijn is ingesteld op onbeperkt, behouden blijven, zelfs na retentie is ingeschakeld).
-- Klanten die een onveranderlijklogboekarchief willen configureren voor hun controlegebeurtenissen op server- of databaseniveau, moeten de [instructies van Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes) volgen (Zorg ervoor dat u Extra toevoegen **toestaan** hebt geselecteerd wanneer u de onveranderlijke blobopslag configureert).
+- Controlelogboeken worden geschreven om **Blobs toe** te schrijven in een Azure Blob-opslag op uw Azure-abonnement
+- Als u een onveranderlijklogboekarchief wilt configureren voor de controlegebeurtenissen op server- of databaseniveau, volgt u de [instructies van Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes) (Zorg ervoor dat u Extra **toevoegenen toestaan** hebt geselecteerd wanneer u de onveranderlijke blobopslag configureert).
+- U controlelogboeken schrijven naar een Azure Storage-account achter een VNet of firewall. Voor specifieke instructies zie, [Schrijf audit naar een opslagaccount achter VNet en firewall](create-auditing-storage-account-vnet-firewall.md).
 - Nadat u uw controle-instellingen hebt geconfigureerd, u de nieuwe functie voor bedreigingsdetectie inschakelen en e-mails configureren om beveiligingswaarschuwingen te ontvangen. Wanneer u bedreigingsdetectie gebruikt, ontvangt u proactieve waarschuwingen over afwijkende databaseactiviteiten die potentiële beveiligingsbedreigingen kunnen aangeven. Zie [Aan de slag met bedreigingsdetectie](sql-database-threat-detection-get-started.md)voor meer informatie.
 - Zie de naslagverwijzing naar de [blobcontrolelogboeknota](https://go.microsoft.com/fwlink/?linkid=829599)voor meer informatie over de logboekindeling, hiërarchie van de opslagmap en naamgevingsconventies.
-- Azure SQL Database Audit slaat 4000 tekens gegevens op voor tekenvelden in een controlerecord. Wanneer de **instructie** of de **data_sensitivity_information-waarden** die zijn geretourneerd uit een controleerbare actie meer dan 4000 tekens bevatten, worden alle gegevens die verder gaan dan de eerste 4000 tekens, **afgekapt en niet gecontroleerd**.
-- Controlelogboeken worden geschreven om **Blobs toe** te schrijven in een Azure Blob-opslag op uw Azure-abonnement
-- Het standaardcontrolebeleid omvat alle acties en de volgende set actiegroepen, die alle query's en opgeslagen procedures die zijn uitgevoerd tegen de database controleren, evenals succesvolle en mislukte aanmeldingen:
-  
-  - BATCH_COMPLETED_GROUP
-  - SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
-  - FAILED_DATABASE_AUTHENTICATION_GROUP
-  
-- U controle configureren voor verschillende typen acties en actiegroepen met PowerShell, zoals beschreven in de [sectie SQL-databasecontrole beheren met Azure PowerShell.](#subheading-7)
 - Bij het gebruik van AAD-verificatie worden mislukte aanmeldingsrecords *niet* weergegeven in het SQL-controlelogboek. Als u mislukte inlogcontrolerecords wilt weergeven, moet u de [Azure Active Directory-portal]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)bezoeken, die details van deze gebeurtenissen registreert.
+- Controle op [alleen-lezen replica's](sql-database-read-scale-out.md) wordt automatisch ingeschakeld. Zie de [SQL Database Audit Log Format](sql-database-audit-log-format.md)voor meer informatie over de hiërarchie van de opslagmappen, naamgevingsconventies en logboekindeling. 
 
 ### <a name=""></a><a id="audit-log-analytics-destination">Controleren op de doelbestemming Log Analytics</a>
   
@@ -160,9 +160,6 @@ Als u ervoor kiest om controlelogboeken naar gebeurtenishub te schrijven:
 
 Als u ervoor hebt gekozen om controlelogboeken naar een Azure-opslagaccount te schrijven, zijn er verschillende methoden die u gebruiken om de logboeken weer te geven:
 
-> [!NOTE] 
-> Controle op [alleen-lezen replica's](sql-database-read-scale-out.md) wordt automatisch ingeschakeld. Zie de [SQL Database Audit Log Format](sql-database-audit-log-format.md)voor meer informatie over de hiërarchie van de opslagmappen, naamgevingsconventies en logboekindeling. 
-
 - Controlelogboeken worden samengevoegd in het account dat u tijdens de installatie hebt gekozen. U controlelogboeken verkennen met behulp van een hulpprogramma zoals [Azure Storage Explorer.](https://storageexplorer.com/) In Azure-opslag worden controlelogboeken opgeslagen als een verzameling blobbestanden in een container met de naam **sqldbauditlogs.** Zie de [SQL Database Audit Log Format](https://go.microsoft.com/fwlink/?linkid=829599)voor meer informatie over de hiërarchie van de opslagmappen, naamgevingsconventies en logboekindeling.
 
 - Gebruik de [Azure-portal](https://portal.azure.com).  Open de relevante database. Klik boven aan de **controlepagina** van de database op **Controlelogboeken weergeven**.
@@ -201,11 +198,11 @@ Als u ervoor hebt gekozen om controlelogboeken naar een Azure-opslagaccount te s
 
     - [Query Extended Events Files](https://sqlscope.wordpress.com/20../../reading-extended-event-files-using-client-side-tools-only/) met PowerShell.
 
-## <a name="production-practices"></a><a id="subheading-5"></a>Productiepraktijken
+## <a name="production-practices"></a><a id="production-practices"></a>Productiepraktijken
 
 <!--The description in this section refers to preceding screen captures.-->
 
-### <a name=""></a><a id="subheading-6">Geo-gerepliceerde databases controleren</a>
+#### <a name="auditing-geo-replicated-databases"></a>Geo-gerepliceerde databases controleren
 
 Met geo-gerepliceerde databases heeft de secundaire database een identiek controlebeleid wanneer u controle inschakelt op de primaire database. Het is ook mogelijk om auditing in te stellen op de secundaire database door controle op de **secundaire server**in te schakelen , onafhankelijk van de primaire database.
 
@@ -217,7 +214,7 @@ Met geo-gerepliceerde databases heeft de secundaire database een identiek contro
     >[!IMPORTANT]
     >Met controle op databaseniveau zijn de opslaginstellingen voor de secundaire database identiek aan die van de primaire database, waardoor cross-regional verkeer ontstaat. We raden u aan alleen controle op serverniveau in te schakelen en de controle op databaseniveau uitgeschakeld te laten voor alle databases.
 
-### <a name=""></a><a id="subheading-6">Regeneratie van opslagsleutels</a>
+#### <a name="storage-key-regeneration"></a>Regeneratie van opslagsleutels
 
 In de productie zult u uw opslagsleutels waarschijnlijk periodiek vernieuwen. Wanneer u controlelogboeken schrijft voor Azure-opslag, moet u uw controlebeleid opnieuw opslaan wanneer u uw sleutels ververst. Het proces is als volgt:
 
@@ -230,7 +227,9 @@ In de productie zult u uw opslagsleutels waarschijnlijk periodiek vernieuwen. Wa
 3. Ga terug naar de controleconfiguratiepagina, schakel de opslagtoegangssleutel over van secundair naar primair en klik op **OK.** Klik vervolgens boven aan de controleconfiguratiepagina op **Opslaan.**
 4. Ga terug naar de pagina opslagconfiguratie en regenereerde de secundaire toegangssleutel (ter voorbereiding van de vernieuwingscyclus van de volgende toets).
 
-## <a name="manage-azure-sql-server-and-database-auditing-using-azure-powershell"></a><a id="subheading-7"></a>Azure SQL Server- en Databasecontrole beheren met Azure PowerShell
+## <a name="manage-azure-sql-server-and-database-auditing"></a><a id="manage-auditing"></a>Azure SQL Server- en Databasecontrole beheren
+
+#### <a name="using-azure-powershell"></a>Azure PowerShell gebruiken
 
 **PowerShell-cmdlets (inclusief WHERE-clausuleondersteuning voor extra filtering)**:
 
@@ -243,7 +242,7 @@ In de productie zult u uw opslagsleutels waarschijnlijk periodiek vernieuwen. Wa
 
 Zie [Controle- en bedreigingsdetectie configureren met PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md)voor een voorbeeld van een script.
 
-## <a name="manage-azure-sql-server-and-database-auditing-using-rest-api"></a><a id="subheading-8"></a>Azure SQL Server- en Databasecontrole beheren met REST API
+#### <a name="using-rest-api"></a>REST API gebruiken
 
 **REST API**:
 
@@ -259,7 +258,7 @@ Uitgebreid beleid met WHERE-clausuleondersteuning voor extra filtering:
 - [*Uitgebreide* controlebeleid voor database's](/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Uitgebreid *controlebeleid* voor server krijgen](/rest/api/sql/server%20auditing%20settings/get)
 
-## <a name="manage-azure-sql-server-and-database-auditing-using-azure-resource-manager-templates"></a><a id="subheading-9"></a>Azure SQL Server- en Databasecontrole beheren met Azure Resource Manager-sjablonen
+#### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen gebruiken
 
 U Azure SQL-databasecontrole beheren met [Azure Resource Manager-sjablonen,](../azure-resource-manager/management/overview.md) zoals in deze voorbeelden wordt weergegeven:
 
@@ -269,16 +268,6 @@ U Azure SQL-databasecontrole beheren met [Azure Resource Manager-sjablonen,](../
 
 > [!NOTE]
 > De gekoppelde monsters bevinden zich op een externe openbare opslagplaats en worden 'as is' geleverd, zonder garantie, en worden niet ondersteund onder een Microsoft-ondersteuningsprogramma/-service.
-
-<!--Anchors-->
-[Azure SQL Database Auditing overview]: #subheading-1
-[Set up auditing for your database]: #subheading-2
-[Analyze audit logs and reports]: #subheading-3
-[Practices for usage in production]: #subheading-5
-[Storage Key Regeneration]: #subheading-6
-[Manage Azure SQL Server and Database auditing using Azure PowerShell]: #subheading-7
-[Manage SQL database auditing using REST API]: #subheading-8
-[Manage Azure SQL Server and Database auditing using ARM templates]: #subheading-9
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png

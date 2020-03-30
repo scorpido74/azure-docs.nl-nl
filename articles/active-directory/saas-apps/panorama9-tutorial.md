@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Panorama9 | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Panorama9.
+title: 'Zelfstudie: Azure Active Directory-integratie met Panorama9 | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Panorama9.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: c88088b804f90769512d33a5e96fdedc5ce6fba8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094931"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Zelfstudie: Azure Active Directory-integratie met Panorama9
 
-In deze zelfstudie leert u hoe u Panorama9 integreren met Azure Active Directory (Azure AD).
-Panorama9 integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe u Panorama9 integreert met Azure Active Directory (Azure AD).
+Het integreren van Panorama9 met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot Panorama9 heeft.
-* U kunt uw gebruikers worden automatisch aangemeld Panorama9 inschakelen (Single Sign-On) met hun Azure AD-accounts.
+* U in Azure AD bepalen wie toegang heeft tot Panorama9.
+* U uw gebruikers automatisch laten aanmelden bij Panorama9 (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Panorama9, moet u de volgende items:
+Als u Azure AD-integratie met Panorama9 wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Eenmalige aanmelding Panorama9 ingeschakeld abonnement
+* Abonnement met één aanmelding met één aanmelding
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor Panorama9 **SP** gestart door SSO
+* Panorama9 ondersteunt **DOOR SP** geïnitieerde SSO
 
-## <a name="adding-panorama9-from-the-gallery"></a>Panorama9 uit de galerie toe te voegen
+## <a name="adding-panorama9-from-the-gallery"></a>Panorama9 toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van Panorama9 in Azure AD, moet u Panorama9 uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Panorama9 in Azure AD wilt configureren, moet u Panorama9 vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen Panorama9 uit de galerie, moet u de volgende stappen uitvoeren:**
+**Als u Panorama9 vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Voor het configureren van de integratie van Panorama9 in Azure AD, moet u Panora
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Panorama9**, selecteer **Panorama9** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Selecteer **Panorama9**in het zoekvak , selecteer **Panorama9** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
 
-     ![Panorama9 in de lijst met resultaten](common/search-new-app.png)
+     ![Panorama9 in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met Panorama9 op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Panorama9 tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met Panorama9 op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding om te werken, moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Panorama9.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met Panorama9, moet u de volgende bouwstenen voltooien:
+Als u Azure AD-eenmaligaanmelding met Panorama9 wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding Panorama9](#configure-panorama9-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker Panorama9](#create-panorama9-test-user)**  : als u wilt een equivalent van Britta Simon in Panorama9 die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Panorama9-aanmelding configureren](#configure-panorama9-single-sign-on)** - om de instellingen voor eenmalig aanmelding aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Panorama9-testgebruiker maken](#create-panorama9-test-user)** - om een tegenhanger van Britta Simon in Panorama9 te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Panorama9, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Panorama9 te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Panorama9** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Panorama9-toepassingsintegratie** de optie **Eén aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,24 +103,24 @@ Voor het configureren van Azure AD eenmalige aanmelding met Panorama9, moet u de
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Panorama9 domein en URL's, eenmalige aanmelding informatie](common/sp-identifier.png)
+    ![Panorama9-domein- en URL's met eenmalige aanmelding](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL: `https://dashboard.panorama9.com/saml/access/3262`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://www.panorama9.com/saml20/<tenant-name>`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://www.panorama9.com/saml20/<tenant-name>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [Panorama9 Client ondersteuningsteam](https://support.panorama9.com/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [het ondersteuningsteam van Panorama9](https://support.panorama9.com/) Client om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Klik in de sectie **SAML-handtekeningcertificaat** op de knop **Bewerken** om het dialoogvenster **SAML-handtekeningcertificaat** te openen.
 
     ![SAML-handtekeningcertificaat bewerken](common/edit-certificate.png)
 
-6. Kopieer in de sectie **SAML-handtekeningcertificaat** de waarde voor **VINGERAFDRUK** en sla deze op de computer op.
+6. Kopieer in de sectie **SAML-ondertekeningscertificaat** de **duimafdruk** en sla deze op uw computer op.
 
     ![Waarde van vingerafdruk kopiëren](common/copy-thumbprint.png)
 
-7. Op de **Panorama9 instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+7. Kopieer in de sectie **Panorama9 instellen** de juiste URL(s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -130,25 +130,25 @@ Voor het configureren van Azure AD eenmalige aanmelding met Panorama9, moet u de
 
     c. Afmeldings-URL
 
-### <a name="configure-panorama9-single-sign-on"></a>Configureer Panorama9 Single Sign-On
+### <a name="configure-panorama9-single-sign-on"></a>Panorama9-aanmelding configureren
 
-1. In een ander browservenster aanmelden bij uw bedrijf Panorama9 site als beheerder.
+1. Meld u in een ander browservenster aan bij uw objectsite Panorama9 als beheerder.
 
-2. Klik in de werkbalk bovenaan op **beheren**, en klik vervolgens op **extensies**.
+2. Klik op de werkbalk bovenaan op **Beheren**en klik vervolgens op **Extensies**.
    
-    ![Extensions](./media/panorama9-tutorial/ic790023.png "Extensions")
+    ![Extensies](./media/panorama9-tutorial/ic790023.png "Extensies")
 
-3. Op de **extensies** dialoogvenster, klikt u op **Single Sign-On**.
+3. Klik in het dialoogvenster **Extensies** op **Eén aanmelding**.
    
-    ![Single Sign-On](./media/panorama9-tutorial/ic790024.png "Single Sign-On")
+    ![Eén aanmelding](./media/panorama9-tutorial/ic790024.png "Eenmalige aanmelding")
 
-4. In de **instellingen** sectie, voert u de volgende stappen uit:
+4. Voer **in** de sectie Instellingen de volgende stappen uit:
    
-    ![Settings](./media/panorama9-tutorial/ic790025.png "Settings")
+    ![Instellingen](./media/panorama9-tutorial/ic790025.png "Instellingen")
    
-    a. In **URL van de id-provider** tekstvak, plak de waarde van **aanmeldings-URL**, die u hebt gekopieerd vanuit Azure portal.
+    a. Plak in **het tekstvak URL van de identiteitsprovider** de waarde van **de aanmeldings-URL**, die u hebt gekopieerd vanuit azure-portal.
    
-    b. In **certificaat vingerafdruk** tekstvak, plak de **vingerafdruk** waarde van het certificaat dat u hebt gekopieerd vanuit Azure portal.    
+    b. Plak **in het** tekstvak Certificaat vingerafdruk de **thumbprint-waarde** van het certificaat, die u hebt gekopieerd van Azure-portal.    
          
 5. Klik op **Opslaan**.
 
@@ -168,25 +168,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In **User name** het veld brittasimon@yourcompanydomain.extensiontype gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Panorama9.
+In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Panorama9.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Panorama9**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens Panorama9**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Panorama9**.
+2. Selecteer **Panorama9**in de lijst met toepassingen .
 
-    ![De koppeling Panorama9 in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling Panorama9 in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -196,48 +196,48 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-panorama9-test-user"></a>Panorama9 testgebruiker maken
+### <a name="create-panorama9-test-user"></a>Panorama9-testgebruiker maken
 
-Als u wilt dat Azure AD-gebruikers kunnen zich aanmelden bij Panorama9, moeten ze worden ingericht voor Panorama9.  
+Om Azure AD-gebruikers in staat te stellen zich aan te melden bij Panorama9, moeten ze worden ingericht in Panorama9.  
 
 In het geval van Panorama9 is inrichten een handmatige taak.
 
-**Voer de volgende stappen uit om de gebruikersinrichting te configureren:**
+**Voer de volgende stappen uit om de inrichting van gebruikers te configureren:**
 
-1. Aanmelden bij uw **Panorama9** bedrijf site als beheerder.
+1. Meld u aan bij uw **panorama9-bedrijfssite** als beheerder.
 
-2. Klik in het menu aan de bovenkant op **beheren**, en klik vervolgens op **gebruikers**.
+2. Klik in het menu bovenaan op **Beheren**en klik vervolgens op **Gebruikers**.
    
     ![Gebruikers](./media/panorama9-tutorial/ic790027.png "Gebruikers")
 
-3. Klik in de sectie gebruikers **+** nieuwe gebruiker toe te voegen.
+3. Klik in de **+** sectie Gebruikers om nieuwe gebruikers toe te voegen.
 
     ![Gebruikers](./media/panorama9-tutorial/ic790028.png "Gebruikers")
 
-4. Ga naar de sectie van de gebruiker gegevens, typt u het e-mailadres van een geldige Azure Active Directory-gebruiker die u inrichten wilt in de **e** tekstvak.
+4. Ga naar de sectie Gebruikersgegevens en typ het e-mailadres van een geldige Azure Active Directory-gebruiker die u wilt inrichten in het tekstvak **E-mail.**
 
-5. Komen aan de sectie gebruikers, klikt u op **opslaan**.
+5. Kom naar de sectie Gebruikers, Klik op **Opslaan**.
    
     > [!NOTE]
     > De houder van het Azure Active Directory-account ontvangt een e-mail en volgt een koppeling om het account te bevestigen voordat het actief wordt.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Panorama9 in het toegangsvenster, moet u worden automatisch aangemeld bij de Panorama9 waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Panorama9 in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Panorama9 waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,78 +1,78 @@
 ---
-title: Aanbevolen procedures voor Azure Kubernetes service (AKS)
-description: Verzameling van de best practices voor cluster operators en ontwikkel aars voor het maken en beheren van toepassingen in azure Kubernetes service (AKS)
+title: Aanbevolen procedures voor Azure Kubernetes Service (AKS)
+description: Verzameling van de aanbevolen procedures voor de clusteroperator en ontwikkelaar voor het bouwen en beheren van toepassingen in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 12/07/2018
 ms.openlocfilehash: 627eeffd18a479486e5a682da06bf89cd5f8f0e1
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596314"
 ---
-# <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor cluster operators en ontwikkel aars voor het maken en beheren van toepassingen in azure Kubernetes service (AKS)
+# <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor clusteroperator en ontwikkelaar voor het bouwen en beheren van toepassingen op Azure Kubernetes Service (AKS)
 
-Als u toepassingen wilt bouwen en uitvoeren in azure Kubernetes service (AKS), zijn er enkele belang rijke aandachtspunten om te begrijpen en implementeren. Dit zijn onder andere multitenancy-en scheduler-functies, cluster-en pod-beveiliging, of bedrijfs continuïteit en herstel na nood gevallen. De volgende aanbevolen procedures zijn gegroepeerd om cluster operators en ontwikkel aars inzicht te geven in de overwegingen voor elk van deze gebieden en de juiste functies uit te voeren.
+Om toepassingen succesvol te bouwen en uit te voeren in Azure Kubernetes Service (AKS), zijn er enkele belangrijke overwegingen om te begrijpen en te implementeren. Deze gebieden omvatten functies voor meerdere huur- en planners, cluster- en podbeveiliging of bedrijfscontinuïteit en herstel na noodgevallen. De volgende aanbevolen procedures zijn gegroepeerd om clusteroperators en ontwikkelaars te helpen de overwegingen voor elk van deze gebieden te begrijpen en de juiste functies te implementeren.
 
-Deze aanbevolen procedures en conceptuele artikelen zijn geschreven in combi natie met de AKS-product groep, technische teams en veld teams, met inbegrip van wereld wijde zwarte gordels (GBBs).
+Deze best practices en conceptuele artikelen zijn geschreven in samenwerking met de AKS-productgroep, engineeringteams en veldteams, waaronder global black belts (GBB's).
 
-## <a name="cluster-operator-best-practices"></a>Aanbevolen procedures voor cluster operators
+## <a name="cluster-operator-best-practices"></a>Aanbevolen procedures voor clusteroperator
 
-Als cluster operator kunt u samen werken met eigen aren van toepassingen en ontwikkel aars om inzicht te krijgen in hun behoeften. U kunt vervolgens de volgende aanbevolen procedures gebruiken om uw AKS-clusters naar behoefte te configureren.
+Werk als clusteroperator samen met toepassingseigenaren en ontwikkelaars om hun behoeften te begrijpen. U vervolgens de volgende aanbevolen procedures gebruiken om uw AKS-clusters zo nodig te configureren.
 
 **Multitenancy**
 
 * [Aanbevolen procedures voor clusterisolatie](operator-best-practices-cluster-isolation.md)
-    * Inclusief multitenancy-kern onderdelen en logische isolatie met naam ruimten.
+    * Bevat kerncomponenten met meerdere huurovereenkomsten en logische isolatie met naamruimten.
 * [Aanbevolen procedures voor standaard Scheduler-functies](operator-best-practices-scheduler.md)
-    * Omvat het gebruik van resource quota's en pod-verstoringen budgetten.
+    * Inclusief het gebruik van resourcequota en pod-onderbrekingsbudgetten.
 * [Aanbevolen procedures voor geavanceerde Scheduler-functies](operator-best-practices-advanced-scheduler.md)
-    * Omvat het gebruik van taints en verdragen, knooppunt selecties en affiniteit en de Inter-pod-affiniteit en anti-affiniteit.
+    * Omvat het gebruik van taints en toleranties, knooppuntselectors en affiniteit, en interpod affiniteit en anti-affiniteit.
 * [Aanbevolen procedures voor verificatie en autorisatie](operator-best-practices-identity.md)
-    * Omvat integratie met Azure Active Directory, met behulp van op rollen gebaseerde toegangs beheer (RBAC) en pod-identiteiten.
+    * Inclusief integratie met Azure Active Directory, met behulp van op rollen gebaseerde toegangscontroles (RBAC) en podidentiteiten.
 
 **Beveiliging**
 
 * [Aanbevolen procedures voor beveiliging en upgrades van clusters](operator-best-practices-cluster-security.md)
-    * Omvat het beveiligen van toegang tot de API-server, het beperken van toegang tot containers en het beheren van upgrades en het opnieuw opstarten van knoop punten.
-* [Aanbevolen procedures voor het beheer en de beveiliging van container installatie kopieën](operator-best-practices-container-image-management.md)
-    * Omvat het beveiligen van de installatie kopie en runtime en geautomatiseerde builds voor updates van basis installatie kopieën.
-* [Aanbevolen procedures voor pod-beveiliging](developer-best-practices-pod-security.md)
-    * Omvat het beveiligen van de toegang tot bronnen, het beperken van de referentie blootstelling en het gebruik van pod-identiteiten en digitale sleutel kluizen.
+    * Inclusief het beveiligen van toegang tot de API-server, het beperken van containertoegang en het beheren van upgrades en het opnieuw opstarten van knooppunten.
+* [Aanbevolen procedures voor het beheer en beveiliging van containerafbeeldingen](operator-best-practices-container-image-management.md)
+    * Inclusief het beveiligen van de afbeelding en runtimes en geautomatiseerde builds op basisvan image-updates.
+* [Aanbevolen procedures voor podbeveiliging](developer-best-practices-pod-security.md)
+    * Omvat het beveiligen van toegang tot bronnen, het beperken van de blootstelling aan referenties en het gebruik van pod-identiteiten en digitale sleutelkluizen.
 
 **Netwerk en opslag**
 
-* [Aanbevolen procedures voor netwerk connectiviteit](operator-best-practices-network.md)
-    * Bevat verschillende netwerk modellen, met behulp van binnenkomend en firewalls voor webtoepassingen (WAF) en het beveiligen van het knoop punt SSH-toegang.
-* [Aanbevolen procedures voor opslag en back-ups](operator-best-practices-storage.md)
-    * Omvat het kiezen van het juiste opslag type en de gewenste knooppunt grootte, het dynamisch inrichten van volumes en gegevens back-ups.
+* [Aanbevolen procedures voor netwerkconnectiviteit](operator-best-practices-network.md)
+    * Omvat verschillende netwerkmodellen, met behulp van inbinnendringen en webapplicatie firewalls (WAF), en het beveiligen van knooppunt SSH toegang.
+* [Best practices voor opslag en back-ups](operator-best-practices-storage.md)
+    * Inclusief het kiezen van het juiste opslagtype en knooppuntgrootte, het dynamisch inrichten van volumes en back-ups van gegevens.
 
-**Bedrijfs klare workloads uitvoeren**
+**Bedrijfsklare workloads uitvoeren**
 
-* [Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen](operator-best-practices-multi-region.md)
-    * Omvat het gebruik van regio paren, meerdere clusters met Azure Traffic Manager en geo-replicatie van container installatie kopieën.
+* [Best practices voor bedrijfscontinuïteit en disaster recovery](operator-best-practices-multi-region.md)
+    * Inclusief het gebruik van regioparen, meerdere clusters met Azure Traffic Manager en geo-replicatie van containerafbeeldingen.
 
-## <a name="developer-best-practices"></a>Best practices voor ontwikkel aars
+## <a name="developer-best-practices"></a>Best practices voor ontwikkelaars
 
-Als ontwikkelaar of toepassings eigenaar kunt u uw ontwikkelings ervaring vereenvoudigen en de behoeften van de toepassings prestaties bepalen.
+Als ontwikkelaar of eigenaar van toepassingen u uw ontwikkelingservaring vereenvoudigen en de prestatiebehoeften van vereisende toepassingen definiëren.
 
 * [Aanbevolen procedures voor toepassingsontwikkelaars om resources te beheren](developer-best-practices-resource-management.md)
-    * Omvat het definiëren van Pod en limieten voor de resource, het configureren van ontwikkel hulpprogramma's en het controleren op toepassings problemen.
-* [Aanbevolen procedures voor pod-beveiliging](developer-best-practices-pod-security.md)
-    * Omvat het beveiligen van de toegang tot bronnen, het beperken van de referentie blootstelling en het gebruik van pod-identiteiten en digitale sleutel kluizen.
+    * Omvat het definiëren van pod resource aanvragen en limieten, het configureren van ontwikkeltools en het controleren op toepassingsproblemen.
+* [Aanbevolen procedures voor podbeveiliging](developer-best-practices-pod-security.md)
+    * Omvat het beveiligen van toegang tot bronnen, het beperken van de blootstelling aan referenties en het gebruik van pod-identiteiten en digitale sleutelkluizen.
 
-## <a name="kubernetes--aks-concepts"></a>Kubernetes/AKS-concepten
+## <a name="kubernetes--aks-concepts"></a>Kubernetes / AKS concepten
 
-Als u wilt weten wat de functies en onderdelen van deze best practices zijn, kunt u ook de volgende conceptuele artikelen zien voor clusters in azure Kubernetes service (AKS):
+Om een aantal van de functies en onderdelen van deze aanbevolen procedures te begrijpen, u ook de volgende conceptuele artikelen voor clusters in Azure Kubernetes Service (AKS) bekijken:
 
-* [Basis concepten voor Kubernetes](concepts-clusters-workloads.md)
+* [Kubernetes kernconcepten](concepts-clusters-workloads.md)
 * [Toegang en identiteit](concepts-identity.md)
-* [Beveiligings concepten](concepts-security.md)
-* [Netwerk concepten](concepts-network.md)
+* [Beveiligingsconcepten](concepts-security.md)
+* [Netwerkconcepten](concepts-network.md)
 * [Opslagopties](concepts-storage.md)
-* [Schaal opties](concepts-scale.md)
+* [Opties voor schalen](concepts-scale.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u aan de slag wilt met AKS, volgt u een van de Quick starts voor het implementeren van een Azure Kubernetes service (AKS)-cluster met behulp van [Azure cli](kubernetes-walkthrough.md) of [Azure Portal](kubernetes-walkthrough-portal.md).
+Als u aan de slag wilt met AKS, volgt u een van de snel gestarten om een AKS-cluster (Azure Kubernetes Service) te implementeren met behulp van de Azure CLI- of [Azure-portal.](kubernetes-walkthrough-portal.md) [Azure CLI](kubernetes-walkthrough.md)

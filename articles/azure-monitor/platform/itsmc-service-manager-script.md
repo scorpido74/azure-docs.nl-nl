@@ -1,41 +1,41 @@
 ---
-title: Geautomatiseerd script om Service Manager web-app te maken om te verbinden met IT Service Management-connector in azure | Microsoft Docs
-description: Een Service Manager web-app maken met behulp van een geautomatiseerd script om verbinding te maken met IT Service Management-connector in azure, en de ITSM-werk items centraal te controleren en te beheren.
+title: Web-app maken voor Service Management Connector
+description: Maak een Service Manager Web-app met behulp van een geautomatiseerd script om verbinding te maken met IT Service Management Connector in Azure en de ITSM-werkitems centraal te bewaken en te beheren.
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: f224e58905e2989caf16259e383726595c0206d5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: decb674c2b55b93a81169c540ee04713bdf2799e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672188"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80054857"
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script"></a>Service Manager web-app maken met behulp van het geautomatiseerde script
+# <a name="create-service-manager-web-app-using-the-automated-script"></a>Service Manager Web-app maken met behulp van het geautomatiseerde script
 
-Gebruik het volgende script om de web-app voor uw Service Manager-exemplaar te maken. Meer informatie over Service Manager verbinding vindt u hier: [Service Manager web-app](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+Gebruik het volgende script om de web-app voor uw instantie Service Manager te maken. Meer informatie over de servicemanager-verbinding vindt u: [Service Manager Web-app](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
-Voer het script uit door de volgende vereiste gegevens op te geven:
+Voer het script uit door de volgende vereiste details op te geven:
 
-- Details van Azure-abonnement
+- Azure-abonnementsgegevens
 - Naam van de resourcegroep
 - Locatie
-- Service Manager server Details (Server naam, domein, gebruikers naam en wacht woord)
-- Het voor voegsel van de site naam voor uw web-app
-- Naam ruimte ServiceBus.
+- Service Manager-servergegevens (servernaam, domein, gebruikersnaam en wachtwoord)
+- Voorvoegsel sitenaam voor uw web-app
+- ServiceBus Naamruimte.
 
-Met het script wordt de web-app gemaakt met de naam die u hebt opgegeven (samen met enkele extra teken reeksen om deze uniek te maken). De web- **app-URL**, de **client-id**en het **client geheim**worden gegenereerd.
+Het script maakt de web-app met de naam die u hebt opgegeven (samen met enkele extra tekenreeksen om deze uniek te maken). Het genereert de URL van de **web-app,** **client-ID**en **clientgeheim.**
 
-Sla deze waarden op. u hebt deze waarden nodig wanneer u een verbinding maakt met IT Service Management-connector.
+Als u deze waarden opslaat, hebt u deze waarden nodig wanneer u een verbinding maakt met IT Service Management Connector.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
- Windows Management Framework 5,0 of hoger.
-Windows 10 heeft standaard 5,1. U kunt het Framework [downloaden van de volgende:](https://www.microsoft.com/download/details.aspx?id=50395)
+ Windows Management Framework 5.0 of hoger.
+Windows 10 heeft standaard 5.1. U het kader downloaden vanaf [hier:](https://www.microsoft.com/download/details.aspx?id=50395)
 
 Gebruik het volgende script:
 

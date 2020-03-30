@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: een probleem met een VM-netwerk verkeer vaststellen-Azure CLI'
+title: 'Snelstart: diagnose stellen voor een probleem met vm-netwerkverkeerfilter - Azure CLI'
 titleSuffix: Azure Network Watcher
 description: In deze snelstart leert u hoe u een diagnose uitvoert voor een probleem met netwerkverkeersfilters op een virtuele machine met behulp van de functie IP-stroomverificatie in Azure Network Watcher.
 services: network-watcher
@@ -18,32 +18,32 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 251f72ab4f4d53fc2c836f06c78a1faa291b3a8a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b3919a016613da2470c14995663acc9c5415e483
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276078"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382848"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Snelstart: Diagnose uitvoeren voor een probleem met netwerkverkeersfilters op een virtuele machine - Azure CLI
 
 In deze snelstart implementeert u een VM (virtuele machine) en controleert u vervolgens de communicatie naar een IP-adres en URL, en vanaf een IP-adres. U stelt de oorzaak van mislukte communicatie vast en leert hoe u dit probleem kunt oplossen.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze snelstart de Azure CLI versie 2.0.28 of later uitvoeren. Voer `az --version` uit om na te gaan welke versie er is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Nadat u de CLI-versie hebt gecontroleerd, voert u `az login` uit om een verbinding met Azure te maken. De CLI-opdrachten in deze snelstart zijn ingedeeld om te worden uitgevoerd in een Bash-shell.
+Als u ervoor kiest de Azure CLI lokaal te installeren en te gebruiken, moet u met deze quickstart de Azure CLI-versie 2.0.28 of hoger uitvoeren. Voer `az --version` uit om te zien welke versie is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Nadat u de Azure CLI-versie hebt geverifieerd, voert u uit `az login` om een verbinding met Azure te maken. De Azure CLI-opdrachten in deze quickstart worden opgemaakt om in een Bash-shell uit te voeren.
 
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 
-Voordat u een VM kunt maken, maakt u eerst een resourcegroep die de VM bevat. Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
+Voordat u een VM kunt maken, maakt u eerst een resourcegroep die de VM bevat. Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* op de *locatie Eastus geaald:*
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak een VM met [az vm create](/cli/azure/vm). Als SSH-sleutels niet al bestaan op de standaardlocatie van de sleutel, worden ze met deze opdracht gemaakt. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`. In het volgende voorbeeld wordt een VM gemaakt met de naam *myVm*:
+Maak een VM met [az vm create](/cli/azure/vm). Als SSH-sleutels niet al bestaan op de standaardlocatie van de sleutel, worden ze met deze opdracht gemaakt. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`. In het volgende voorbeeld wordt een VM met de naam *myVm gemaakt:*
 
 ```azurecli-interactive
 az vm create \
@@ -53,7 +53,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Het maken van de virtuele machine duurt een paar minuten. Ga niet door met de resterende stappen totdat de VM is gemaakt en uitvoer wordt geretourneerd met de CLI.
+Het maken van de virtuele machine duurt een paar minuten. Ga niet verder met de resterende stappen totdat de VM is gemaakt en de Azure CLI de uitvoer retourneert.
 
 ## <a name="test-network-communication"></a>Netwerkcommunicatie testen
 
@@ -61,7 +61,7 @@ Als u de netwerkcommunicatie met Network Watcher wilt testen, moet u eerst een n
 
 ### <a name="enable-network-watcher"></a>Netwerk-watcher inschakelen
 
-Als u al een netwerk-watcher hebt ingeschakeld in de regio US - oost, gaat u verder met [IP-stroomverificatie gebruiken](#use-ip-flow-verify). Gebruik de opdracht [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) om een netwerk-watcher te maken in de regio VS Oost:
+Als u al een netwerk-watcher hebt ingeschakeld in de regio VS - oost, gaat u verder met [IP-stroomverificatie gebruiken](#use-ip-flow-verify). Gebruik de opdracht [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) om een netwerk-watcher te maken in de regio VS Oost:
 
 ```azurecli-interactive
 az network watcher configure \
@@ -134,7 +134,7 @@ az network nic list-effective-nsg \
 
 De geretourneerde uitvoer bevat de volgende tekst voor de regel **AllowInternetOutbound** op basis waarvan uitgaand verkeer naar www.bing.com was toegestaan in een vorige stap onder [IP-stroomverificatie gebruiken](#use-ip-flow-verify):
 
-```azurecli
+```
 {
  "access": "Allow",
  "additionalProperties": {},
@@ -171,11 +171,11 @@ De geretourneerde uitvoer bevat de volgende tekst voor de regel **AllowInternetO
 },
 ```
 
-In de vorige uitvoer ziet u dat **destinationAddressPrefix** **Internet** is. Het is niet duidelijk hoe 13.107.21.200 is gerelateerd aan **Internet**. Er worden verschillende adresvoorvoegsels weergegeven onder **expandedDestinationAddressPrefix**. Een van de voorvoegsels in de lijst is **12.0.0.0/6**, dat het bereik met IP-adressen 12.0.0.1-15.255.255.254 bevat. Aangezien 13.107.21.200 zich binnen dit adresbereik bevindt, is uitgaand verkeer toegestaan op basis van de regel **AllowInternetOutBound**. Daarnaast worden in de vorige uitvoer geen regels met hogere prioriteit (lagere waarde) weergegeven op basis waarvan deze regel wordt genegeerd. Als u uitgaande communicatie naar een IP-adres wilt weigeren, kunt u een beveiligingsregel met een hogere prioriteit toevoegen op basis waarvan uitgaand verkeer via poort 80 naar het IP-adres wordt geweigerd.
+In de vorige uitvoer ziet u dat **destinationAddressPrefix****Internet** is. Het is niet duidelijk hoe 13.107.21.200 is gerelateerd aan **Internet**. U ziet verschillende adresvoorvoegsels die worden vermeld onder **uitgebreidBestemmingsadresvoorvoegsel**. Een van de voorvoegsels in de lijst is **12.0.0.0/6**, dat het bereik met IP-adressen 12.0.0.1-15.255.255.254 bevat. Aangezien 13.107.21.200 zich binnen dit adresbereik bevindt, is uitgaand verkeer toegestaan op basis van de regel **AllowInternetOutBound**. Daarnaast worden in de vorige uitvoer geen regels met hogere prioriteit (lagere waarde) weergegeven op basis waarvan deze regel wordt genegeerd. Als u uitgaande communicatie naar een IP-adres wilt weigeren, kunt u een beveiligingsregel met een hogere prioriteit toevoegen op basis waarvan uitgaand verkeer via poort 80 naar het IP-adres wordt geweigerd.
 
 Toen u de opdracht `az network watcher test-ip-flow` in [IP-stroomverificatie gebruiken](#use-ip-flow-verify) uitvoerde om uitgaande communicatie van 172.131.0.100 te testen, bleek uit de uitvoer dat communicatie wordt geweigerd op basis van de regel **DefaultOutboundDenyAll**. De regel **DefaultOutboundDenyAll** is gelijk aan de regel **DenyAllOutBound** die wordt weergegeven in de volgende uitvoer via de opdracht `az network nic list-effective-nsg`:
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -204,11 +204,11 @@ Toen u de opdracht `az network watcher test-ip-flow` in [IP-stroomverificatie ge
 }
 ```
 
-In de regel wordt **0.0.0.0/0** vermeld als **destinationAddressPrefix**. Op basis van de regel wordt uitgaande communicatie naar 172.131.0.100 geweigerd, omdat het adres zich niet in **destinationAddressPrefix** bevindt van een van de overige regels voor uitgaand verkeer via de opdracht `az network nic list-effective-nsg`. Als u de uitgaande communicatie wilt toestaan, kunt u een beveiligingsregel toevoegen met een hogere prioriteit, op basis waarvan uitgaand verkeer naar poort 80 is toegestaan op 172.131.0.100.
+De regel vermeldt **0.0.0.0/0** als **het destinationAddressPrefix**. De regel weigert de uitgaande communicatie naar 172.131.0.100, omdat het adres zich niet binnen het **destinationAddressPrefix** van een van de andere uitgaande regels in de uitvoer van de `az network nic list-effective-nsg` opdracht bevindt. Als u de uitgaande communicatie wilt toestaan, kunt u een beveiligingsregel toevoegen met een hogere prioriteit, op basis waarvan uitgaand verkeer naar poort 80 is toegestaan op 172.131.0.100.
 
 Toen u de opdracht `az network watcher test-ip-flow` in [IP-stroomverificatie gebruiken](#use-ip-flow-verify) uitvoerde om binnenkomende communicatie van 172.131.0.100 te testen, bleek uit de uitvoer dat communicatie wordt geweigerd op basis van de regel **DefaultInboundDenyAll**. De regel **DefaultInboundDenyAll** is gelijk aan de regel **DenyAllInBound** die wordt weergegeven in de volgende uitvoer via de opdracht `az network nic list-effective-nsg`:
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},

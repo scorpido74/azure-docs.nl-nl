@@ -1,6 +1,6 @@
 ---
-title: Tabel met limieten voor Site Recovery
-description: Beschrijft systeem limieten voor Site Recovery.
+title: Tabel Siteherstellimieten
+description: Beschrijft systeemlimieten voor siteherstel.
 services: site recovery
 documentationcenter: NA
 author: csilauraa
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/06/2015
 ms.author: lauraa
-ms.openlocfilehash: 4d4e68d99585522e773e71430b4e4f37ad7b1580
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 7a241d3144b6220d0084b61de2dde7c36a68c257
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67176437"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334583"
 ---
-De volgende limieten gelden voor Azure Site Recovery.
+De volgende limieten zijn van toepassing op Azure Site Recovery.
 
-| Limiet-id | Standaardlimiet |
+| Limiet-id | Limiet |
 | --- | --- |
 | Aantal kluizen per abonnement |500 |     
 | Aantal servers per Azure-kluis |250 |
-| Aantal beveiligings groepen per Azure-kluis |Geen limiet |
-| Aantal herstel plannen per Azure-kluis |Geen limiet |
-| Aantal servers per beveiligings groep |Geen limiet |
-| Aantal servers per herstel plan |50 |
+| Aantal beveiligingsgroepen per Azure-kluis |Geen limiet |
+| Aantal herstelplannen per Azure-kluis |Geen limiet |
+| Aantal servers per beveiligingsgroep |Geen limiet |
+| Aantal servers per herstelplan |50 |
 

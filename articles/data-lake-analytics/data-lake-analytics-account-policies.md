@@ -1,6 +1,6 @@
 ---
-title: Beleid voor Azure Data Lake Analytics-accounts beheren
-description: Meer informatie over het gebruik van account beleid voor het beheren van het gebruik van een Data Lake Analytics account, zoals maximum aantal AUs en maximum aantal taken.
+title: Azure Data Lake Analytics-accountbeleid beheren
+description: Meer informatie over het gebruik van accountbeleid om het gebruik van een Data Lake Analytics-account te beheren, zoals maximale AU's en maximale taken.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: guyhay
@@ -10,101 +10,101 @@ ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 4689714073047e383a53a04bd0069a8a27afdf9d
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72966435"
 ---
-# <a name="manage-azure-data-lake-analytics-using-account-policies"></a>Azure Data Lake Analytics beheren met account beleid
+# <a name="manage-azure-data-lake-analytics-using-account-policies"></a>Azure Data Lake Analytics beheren met accountbeleid
 
-Met account beleid kunt u bepalen hoe resources een Azure Data Lake Analytics-account gebruikt. Met deze beleids regels kunt u de kosten van het gebruik van Azure Data Lake Analytics beheren. Met deze beleids regels kunt u bijvoorbeeld onverwachte kosten pieken voor komen door te beperken hoeveel AUs het account gelijktijdig kan gebruiken.
+Met accountbeleid u bepalen hoe resources een Azure Data Lake Analytics-account worden gebruikt. Met dit beleid u de kosten van het gebruik van Azure Data Lake Analytics beheren. Met dit beleid u bijvoorbeeld onverwachte kostenpieken voorkomen door te beperken hoeveel AU's het account tegelijkertijd kan gebruiken.
 
-## <a name="account-level-policies"></a>Beleids regels op account niveau
+## <a name="account-level-policies"></a>Beleid op accountniveau
 
 Dit beleid is van toepassing op alle taken in een Data Lake Analytics-account.
 
-### <a name="maximum-number-of-aus-in-a-data-lake-analytics-account"></a>Maximum aantal AUs in een Data Lake Analytics-account
-Een beleid bepaalt het totale aantal Analytics units (AUs) dat uw Data Lake Analytics-account kan gebruiken. De waarde is standaard ingesteld op 250. Als deze waarde bijvoorbeeld is ingesteld op 250 AUs, kunt u een taak die wordt uitgevoerd met 250 AUs hieraan toewijzen, of 10 taken die worden uitgevoerd met 25 AUs elk. Aanvullende taken die worden verzonden, worden in een wachtrij geplaatst totdat de actieve taken zijn voltooid. Wanneer het uitvoeren van taken is voltooid, worden AUs vrijgegeven voor het uitvoeren van de taken in de wachtrij.
+### <a name="maximum-number-of-aus-in-a-data-lake-analytics-account"></a>Maximaal aantal AU's in een Data Lake Analytics-account
+Een beleid bepaalt het totale aantal Analytics Units (AU's) dat uw Data Lake Analytics-account kan gebruiken. Standaard is de waarde ingesteld op 250. Als deze waarde bijvoorbeeld is ingesteld op 250 AU's, u één taak uitvoeren met 250 AU's toegewezen, of 10 taken met elk 25 AU's. Extra taken die worden ingediend, worden in de wachtrij geplaatst totdat de lopende taken zijn voltooid. Wanneer lopende taken zijn voltooid, worden AU's vrijgemaakt voor de taken in de wachtrij die moeten worden uitgevoerd.
 
-Het aantal AUs voor uw Data Lake Analytics account wijzigen:
+Ga als het gaat om het aantal AU's voor uw Data Lake Analytics-account te wijzigen:
 
-1. Ga in het Azure Portal naar uw Data Lake Analytics-account.
-2. Klik op **limieten en beleids regels**.
-3. Verplaats onder **Maxi maal AUs**de schuif regelaar om een waarde te selecteren of voer de waarde in het tekstvak in. 
+1. Ga in de Azure-portal naar uw Data Lake Analytics-account.
+2. Klik **op Limieten en beleid**.
+3. Verplaats **onder Maximale AU's**de schuifregelaar om een waarde te selecteren of voer de waarde in het tekstvak in. 
 4. Klik op **Opslaan**.
 
 > [!NOTE]
-> Als u meer nodig hebt dan de standaard (250) AUs, klikt u in de portal op **Help + ondersteuning** om een ondersteunings aanvraag in te dienen. Het aantal in de Data Lake Analytics-account beschik bare AUs kan worden verhoogd.
+> Als u meer dan de standaardAU's (250) nodig hebt, klikt u in de portal op **Help+Ondersteuning** om een ondersteuningsverzoek in te dienen. Het aantal AU's dat beschikbaar is in uw Data Lake Analytics-account kan worden verhoogd.
 >
 
-### <a name="maximum-number-of-jobs-that-can-run-simultaneously"></a>Maximum aantal taken dat tegelijkertijd kan worden uitgevoerd
-Dit beleid beperkt het aantal taken dat tegelijkertijd kan worden uitgevoerd. Deze waarde is standaard ingesteld op 20. Als uw Data Lake Analytics AUs beschikbaar heeft, worden nieuwe taken zo gepland dat deze onmiddellijk worden uitgevoerd tot het totale aantal actieve taken de waarde van dit beleid bereikt. Wanneer u het maximum aantal taken bereikt dat tegelijkertijd kan worden uitgevoerd, worden volgende taken in de volg orde van prioriteit in de wachtrij geplaatst totdat een of meer actieve taken zijn voltooid (afhankelijk van de beschik bare AUs).
+### <a name="maximum-number-of-jobs-that-can-run-simultaneously"></a>Maximaal aantal taken dat tegelijkertijd kan worden uitgevoerd
+Dit beleid beperkt het aantal taken dat tegelijkertijd kan worden uitgevoerd. Standaard is deze waarde ingesteld op 20. Als uw Data Lake Analytics AUs beschikbaar heeft, worden nieuwe taken onmiddellijk uitgevoerd totdat het totale aantal lopende taken de waarde van dit beleid heeft bereikt. Wanneer u het maximum aantal taken bereikt dat tegelijkertijd kan worden uitgevoerd, worden volgende taken in de prioriteitsvolgorde in de wachtrij geplaatst totdat een of meer lopende taken zijn voltooid (afhankelijk van de beschikbare AU's).
 
-Wijzigen van het aantal taken dat tegelijkertijd kan worden uitgevoerd:
+Ga als het gaat om het aantal taken dat tegelijkertijd kan worden uitgevoerd, te wijzigen:
 
-1. Ga in het Azure Portal naar uw Data Lake Analytics-account.
-2. Klik op **limieten en beleids regels**.
-3. Verplaats onder **maximum aantal actieve taken**de schuif regelaar om een waarde te selecteren of voer de waarde in het tekstvak in. 
+1. Ga in de Azure-portal naar uw Data Lake Analytics-account.
+2. Klik **op Limieten en beleid**.
+3. Verplaats **onder Maximum aantal lopende taken**de schuifregelaar om een waarde te selecteren of voer de waarde in het tekstvak in. 
 4. Klik op **Opslaan**.
 
 > [!NOTE]
-> Als u meer dan het standaard aantal taken (20) wilt uitvoeren, klikt u in de portal op **Help en ondersteuning** om een ondersteunings aanvraag in te dienen. Het aantal taken dat tegelijkertijd kan worden uitgevoerd in uw Data Lake Analytics-account kan worden verhoogd.
+> Als u meer dan het standaardaantal (20) taken moet uitvoeren, klikt u in de portal op **Help+Ondersteuning** om een ondersteuningsverzoek in te dienen. Het aantal taken dat tegelijkertijd kan worden uitgevoerd in uw Data Lake Analytics-account, kan worden verhoogd.
 >
 
-### <a name="how-long-to-keep-job-metadata-and-resources"></a>Hoe lang de meta gegevens en resources van de taak bewaard moeten blijven 
-Wanneer uw gebruikers U-SQL-taken uitvoeren, worden alle gerelateerde bestanden door de Data Lake Analytics-service bewaard. Deze bestanden bevatten het U-SQL-script, de DLL-bestanden waarnaar wordt verwezen in het U-SQL-script, gecompileerde resources en statistieken. De bestanden bevinden zich in de map/System/van het standaard Azure Data Lake Storage-account. Dit beleid bepaalt hoe lang deze resources worden opgeslagen voordat ze automatisch worden verwijderd (de standaard waarde is 30 dagen). U kunt deze bestanden gebruiken voor fout opsporing en voor het afstemmen van de prestaties van taken die u in de toekomst opnieuw wilt uitvoeren.
+### <a name="how-long-to-keep-job-metadata-and-resources"></a>Hoe lang duurt het om metagegevens en resources van vacatures te bewaren 
+Wanneer uw gebruikers U-SQL-taken uitvoeren, bewaart de Data Lake Analytics-service alle gerelateerde bestanden. Deze bestanden omvatten het U-SQL-script, de DLL-bestanden waarnaar wordt verwezen in het U-SQL-script, gecompileerde bronnen en statistieken. De bestanden bevinden zich in de /system/map van het standaard Azure Data Lake Storage-account. Met dit beleid bepaalt u hoe lang deze bronnen worden opgeslagen voordat ze automatisch worden verwijderd (de standaardinstelling is 30 dagen). U deze bestanden gebruiken voor foutopsporing en voor het afstemmen van taken die u in de toekomst opnieuw zult uitvoeren.
 
-Instellen hoe lang de meta gegevens en resources van de taak moeten worden bewaard:
+Ga als u zo lang als u metagegevens en bronnen van de taak wilt bewaren:
 
-1. Ga in het Azure Portal naar uw Data Lake Analytics-account.
-2. Klik op **limieten en beleids regels**.
-3. Verplaats onder **dagen om taak query's te bewaren**de schuif regelaar om een waarde te selecteren of voer de waarde in het tekstvak in.  
+1. Ga in de Azure-portal naar uw Data Lake Analytics-account.
+2. Klik **op Limieten en beleid**.
+3. Verplaats onder **Dagen om taakquery's te behouden,** verplaats de schuifregelaar om een waarde te selecteren of voer de waarde in het tekstvak in.  
 4. Klik op **Opslaan**.
 
-## <a name="job-level-policies"></a>Beleids regels op taak niveau
+## <a name="job-level-policies"></a>Beleid op functieniveau
 
-Met beleids regels op taak niveau kunt u het maximum aantal AUs en de maximale prioriteit instellen waarmee afzonderlijke gebruikers (of leden van specifieke beveiligings groepen) kunnen worden ingesteld voor taken die ze indienen. Met dit beleid kunt u de kosten beheren die door gebruikers worden gemaakt. U kunt hiermee ook het effect bepalen dat geplande taken mogelijk hebben op productie taken met hoge prioriteit die worden uitgevoerd in hetzelfde Data Lake Analytics-account.
+Met beleid op taakniveau u de maximale AU's beheren en de maximale prioriteit die individuele gebruikers (of leden van specifieke beveiligingsgroepen) kunnen instellen op taken die ze indienen. Met dit beleid u de kosten van gebruikers beheren. Hiermee u ook bepalen wat het effect is dat geplande taken kunnen hebben op productietaken met hoge prioriteit die worden uitgevoerd in hetzelfde Data Lake Analytics-account.
 
-Data Lake Analytics heeft twee beleids regels die u op taak niveau kunt instellen:
+Data Lake Analytics heeft twee beleidsregels die u op taakniveau instellen:
 
-* **Automatische au-limiet per taak**: gebruikers kunnen alleen taken verzenden die Maxi maal het aantal AUs hebben. Deze limiet is standaard hetzelfde als de maximale AU-limiet voor het account.
-* **Prioriteit**: gebruikers kunnen alleen taken verzenden die een prioriteit hebben die lager is dan of gelijk is aan deze waarde. Een hogere waarde geeft aan dat er een lagere prioriteit is. Deze limiet is standaard ingesteld op 1. Dit is de hoogst mogelijke prioriteit.
+* **AU-limiet per taak**: gebruikers kunnen alleen taken indienen die maximaal dit aantal AU's hebben. Standaard is deze limiet hetzelfde als de maximale AU-limiet voor het account.
+* **Prioriteit:** gebruikers kunnen alleen taken indienen met een prioriteit die lager is dan of gelijk is aan deze waarde. Een hoger getal duidt op een lagere prioriteit. Standaard is deze limiet ingesteld op 1, wat de hoogst mogelijke prioriteit is.
 
-Er is een standaard beleid ingesteld voor elk account. Het standaard beleid is van toepassing op alle gebruikers van het account. U kunt extra beleids regels maken voor specifieke gebruikers en groepen. 
+Er is een standaardbeleid ingesteld voor elk account. Het standaardbeleid is van toepassing op alle gebruikers van het account. U aanvullende beleidsregels maken voor specifieke gebruikers en groepen. 
 
 > [!NOTE]
-> Beleids regels op account niveau en beleids regels op taak niveau worden tegelijkertijd toegepast.
+> Beleid op accountniveau en beleid op taakniveau zijn gelijktijdig van toepassing.
 >
 
 ### <a name="add-a-policy-for-a-specific-user-or-group"></a>Een beleid voor een specifieke gebruiker of groep toevoegen
 
-1. Ga in het Azure Portal naar uw Data Lake Analytics-account.
-2. Klik op **limieten en beleids regels**.
-3. Klik onder **limieten voor taak indiening**op de knop **beleid toevoegen** . Selecteer of voer de volgende instellingen in:
-    1. **Naam van reken beleid**: Voer een beleids naam in om u te herinneren over het doel van het beleid.
-    2. **Gebruiker of groep selecteren**: Selecteer de gebruiker of groep waarop dit beleid van toepassing is.
-    3. **De limiet voor taak-au instellen**: Stel de limiet voor au in die van toepassing is op de geselecteerde gebruiker of groep.
-    4. **Stel de prioriteits limiet**in: Stel de prioriteits limiet in die van toepassing is op de geselecteerde gebruiker of groep.
+1. Ga in de Azure-portal naar uw Data Lake Analytics-account.
+2. Klik **op Limieten en beleid**.
+3. Klik **onder Limieten voor het indienen van**vacatures op de knop Beleid **toevoegen.** Selecteer of voer vervolgens de volgende instellingen in:
+    1. **Naam van het rekenbeleid:** voer een beleidsnaam in om u te herinneren aan het doel van het beleid.
+    2. **Selecteer Gebruiker of groep:** selecteer de gebruiker of groep op dit beleid.
+    3. **Stel de AU-limiet voor werk**in: stel de AU-limiet in die van toepassing is op de geselecteerde gebruiker of groep.
+    4. **De prioriteitslimiet instellen:** stel de prioriteitslimiet in die van toepassing is op de geselecteerde gebruiker of groep.
 
-4. Klik op **OK**.
+4. Klik op **Ok**.
 
-5. Het nieuwe beleid wordt weer gegeven in de **standaard** beleids tabel, onder **limieten voor taak inzending**. 
+5. Het nieuwe beleid wordt vermeld in de tabel **Standaardbeleid** onder **Limieten voor het indienen van vacatures**. 
 
-### <a name="delete-or-edit-an-existing-policy"></a>Bestaande beleids regels verwijderen of bewerken
+### <a name="delete-or-edit-an-existing-policy"></a>Een bestaand beleid verwijderen of bewerken
 
-1. Ga in het Azure Portal naar uw Data Lake Analytics-account.
-2. Klik op **limieten en beleids regels**.
-3. Zoek onder **limieten voor taak inzending**het beleid dat u wilt bewerken.
-4.  Als u de opties voor **verwijderen** en **bewerken** wilt zien, klikt u in de kolom uiterst rechts van de tabel op `...`.
+1. Ga in de Azure-portal naar uw Data Lake Analytics-account.
+2. Klik **op Limieten en beleid**.
+3. Zoek **onder Limieten voor het indienen van**vacatures het beleid dat u wilt bewerken.
+4.  Als u de opties **Verwijderen** en Bewerken wilt **weergeven,** klikt u in de meest rechtse kolom van de tabel op `...`.
 
-## <a name="additional-resources-for-job-policies"></a>Aanvullende bronnen voor taak beleid
-* [Blog bericht over beleids overzicht](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-overview/)
-* [Blog bericht beleids regels op account niveau](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-account-level-policy/)
-* [Blog bericht over beleid op taak niveau](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-job-level-policy/)
+## <a name="additional-resources-for-job-policies"></a>Aanvullende middelen voor taakbeleid
+* [Blogbericht beleidsoverzicht](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-overview/)
+* [Blogbericht op accountniveau](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-account-level-policy/)
+* [Blogbericht op taakniveau](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-job-level-policy/)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overzicht van Azure Data Lake Analytics](data-lake-analytics-overview.md)
-* [Aan de slag met Data Lake Analytics met behulp van de Azure Portal](data-lake-analytics-get-started-portal.md)
+* [Overzicht van Data Lake Analytics](data-lake-analytics-overview.md)
+* [Aan de slag met Data Lake Analytics met behulp van de Azure-portal](data-lake-analytics-get-started-portal.md)
 * [Azure Data Lake Analytics beheren met Azure PowerShell](data-lake-analytics-manage-use-powershell.md)

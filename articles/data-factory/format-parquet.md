@@ -1,6 +1,6 @@
 ---
-title: De indeling Parquet in Azure Data Factory
-description: In dit onderwerp wordt beschreven hoe u kunt omgaan met de Parquet-indeling in Azure Data Factory.
+title: Parketindeling in Azure Data Factory
+description: In dit onderwerp wordt beschreven hoe u met de parketindeling omgaan in Azure Data Factory.
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
@@ -10,32 +10,32 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 81bbd476cea0472647ca183fb188fc13725d1469
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77597623"
 ---
-# <a name="parquet-format-in-azure-data-factory"></a>De indeling Parquet in Azure Data Factory
+# <a name="parquet-format-in-azure-data-factory"></a>Parketindeling in Azure Data Factory
 
-Volg dit artikel als u **de Parquet-bestanden wilt parseren of de gegevens wilt schrijven naar de Parquet-indeling**. 
+Volg dit artikel wanneer u de parketbestanden wilt **ontken of de gegevens in parketformaat**wilt schrijven. 
 
-De Parquet-indeling wordt ondersteund voor de volgende connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Bestands systeem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)en [SFTP](connector-sftp.md).
+Parket-indeling wordt ondersteund voor de volgende connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob,](connector-azure-blob-storage.md) [Azure Data Lake Storage Gen1,](connector-azure-data-lake-store.md) [Azure Data Lake Storage Gen2,](connector-azure-data-lake-storage.md) [Azure File Storage](connector-azure-file-storage.md), File [System](connector-file-system.md), [FTP](connector-ftp.md), Google [Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md)en [SFTP](connector-sftp.md).
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Parquet-gegevensset.
+Zie het artikel [Gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de gegevensset Parket.
 
 | Eigenschap         | Beschrijving                                                  | Vereist |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | De eigenschap type van de DataSet moet worden ingesteld op **Parquet**. | Ja      |
-| locatie         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location`. **Zie de sectie Details in connector artikel-> Eigenschappen van gegevensset**. | Ja      |
-| compressionCodec | De compressie-codec die moet worden gebruikt bij het schrijven naar Parquet-bestanden. Bij het lezen van Parquet-bestanden, bepalen gegevens fabrieken de compressie-codec automatisch op basis van de meta gegevens van het bestand.<br>Ondersteunde typen zijn '**none**', '**gzip**', '**Snappy**' (standaard) en '**lzo**'. Houd er rekening mee dat de activiteit die momenteel wordt gekopieerd, geen ondersteuning biedt voor LZO wanneer Parquet bestanden lezen/schrijven. | Nee       |
+| type             | De eigenschap type van de gegevensset moet worden ingesteld **op Parket**. | Ja      |
+| location         | Locatie-instellingen van het bestand(en). Elke op bestanden gebaseerde connector heeft zijn `location`eigen locatietype en ondersteunde eigenschappen onder . **Zie details in de sectie -> gegevensseteigenschappen**van de connector . | Ja      |
+| compressieCodec | De compressie codec te gebruiken bij het schrijven naar parketbestanden. Bij het lezen van parketbestanden bepalen Data Factories automatisch de compressiecodec op basis van de bestandsmetagegevens.<br>Ondersteunde types zijn "**none**", "**gzip**", "**snappy**" (standaard), en "**lzo**". Opmerking momenteel Kopieeractiviteit biedt geen ondersteuning voor LZO bij het lezen/schrijven van parketbestanden. | Nee       |
 
 > [!NOTE]
-> Spaties in kolom naam wordt niet ondersteund voor Parquet-bestanden.
+> Witte ruimte in kolomnaam wordt niet ondersteund voor parketbestanden.
 
-Hieronder ziet u een voor beeld van een Parquet-gegevensset op Azure Blob Storage:
+Hieronder vindt u een voorbeeld van de gegevensset Parket over Azure Blob Storage:
 
 ```json
 {
@@ -61,55 +61,55 @@ Hieronder ziet u een voor beeld van een Parquet-gegevensset op Azure Blob Storag
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Parquet-bron en Sink.
+Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst van eigenschappen die worden ondersteund door de parketbron en gootsteen.
 
-### <a name="parquet-as-source"></a>Parquet als bron
+### <a name="parquet-as-source"></a>Parket als bron
 
-De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*bron\**** .
-
-| Eigenschap      | Beschrijving                                                  | Vereist |
-| ------------- | ------------------------------------------------------------ | -------- |
-| type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **ParquetSource**. | Ja      |
-| storeSettings | Een groep eigenschappen voor het lezen van gegevens uit een gegevens archief. Elke connector op basis van een bestand heeft zijn eigen ondersteunde Lees instellingen onder `storeSettings`. **Zie de sectie Details in connector artikel-> Eigenschappen van de Kopieer activiteit**. | Nee       |
-
-### <a name="parquet-as-sink"></a>Parquet als Sink
-
-De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*sink\**** .
+De volgende eigenschappen worden ondersteund in de *** \*sectie\* *** bron van kopieeractiviteit.
 
 | Eigenschap      | Beschrijving                                                  | Vereist |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **ParquetSink**. | Ja      |
-| storeSettings | Een groep eigenschappen voor het schrijven van gegevens naar een gegevens archief. Elke connector op basis van bestanden heeft eigen ondersteunde schrijf instellingen onder `storeSettings`. **Zie de sectie Details in connector artikel-> Eigenschappen van de Kopieer activiteit**. | Nee       |
+| type          | De eigenschap type van de bron van de kopieeractiviteit moet worden ingesteld **op ParquetSource**. | Ja      |
+| storeInstellingen | Een groep eigenschappen voor het lezen van gegevens uit een gegevensarchief. Elke op bestanden gebaseerde connector heeft `storeSettings`zijn eigen ondersteunde leesinstellingen onder . **Zie details in de sectie connectorartikel -> Activiteitseigenschappen kopiëren**. | Nee       |
 
-## <a name="mapping-data-flow-properties"></a>Eigenschappen van gegevens stroom toewijzen
+### <a name="parquet-as-sink"></a>Parket als gootsteen
 
-Meer informatie over de [bron transformatie](data-flow-source.md) en [sink-trans formatie](data-flow-sink.md) in de toewijzing van gegevens stroom.
+De volgende eigenschappen worden ondersteund in de sectie copy activity *** \*sink.\* ***
 
-## <a name="data-type-support"></a>Ondersteuning voor gegevens typen
+| Eigenschap      | Beschrijving                                                  | Vereist |
+| ------------- | ------------------------------------------------------------ | -------- |
+| type          | De eigenschap type van de bron van de kopieeractiviteit moet worden ingesteld op **ParquetSink**. | Ja      |
+| storeInstellingen | Een groep eigenschappen voor het schrijven van gegevens naar een gegevensarchief. Elke op bestanden gebaseerde connector heeft `storeSettings`zijn eigen ondersteunde schrijfinstellingen onder . **Zie details in de sectie connectorartikel -> Activiteitseigenschappen kopiëren**. | Nee       |
 
-Parquet complexe gegevens typen worden momenteel niet ondersteund (bijvoorbeeld kaart, lijst, STRUCT).
+## <a name="mapping-data-flow-properties"></a>Gegevensstroomeigenschappen toewijzen
 
-## <a name="using-self-hosted-integration-runtime"></a>Zelf-hostende Integration Runtime gebruiken
+Leer meer over [brontransformatie](data-flow-source.md) en [sinktransformatie](data-flow-sink.md) in de kaartgegevensstroom.
+
+## <a name="data-type-support"></a>Ondersteuning voor gegevenstype
+
+Parketcomplexe gegevenstypen worden momenteel niet ondersteund (bijvoorbeeld MAP, LIST, STRUCT).
+
+## <a name="using-self-hosted-integration-runtime"></a>Runtime voor zelfgehoste integratie gebruiken
 
 > [!IMPORTANT]
-> Als u een kopie **hebt die is**voorzien van zelf-hostende Integration runtime bijvoorbeeld tussen on-premises en gegevens opslag in de Cloud, moet u het **64-bits JRE 8 (Java Runtime Environment) of** het **herdistribueerbare pakket OpenJDK en micro soft Visual C++ 2010** op uw IR-computer installeren. Raadpleeg de volgende alinea met meer informatie.
+> Voor copy empowered van Self-hosted Integration Runtime bijvoorbeeld tussen on-premises en cloud data stores, als u geen Parketbestanden kopieert **zoals het is,** moet u het **64-bits JRE 8 (Java Runtime Environment) of OpenJDK** en **Microsoft Visual C++ 2010 Redistributable Package** op uw IR-machine installeren. Controleer de volgende alinea met meer details.
 
-Voor kopieën die worden uitgevoerd op zelf-hostende IR met Parquet-serialisatie/deserialisatie, zoekt ADF de Java-runtime door de register *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* voor jre te controleren, indien niet gevonden, ter controle van de systeem variabele *`JAVA_HOME`* voor openjdk.
+Voor copy running op Self-hosted IR met Parquet file serialization/deserialization, adf lokaliseert de Java runtime door eerst het register *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* te controleren op JRE, indien niet gevonden, ten tweede het controleren van systeem variabele *`JAVA_HOME`* voor OpenJDK.
 
-- **Jre gebruiken**: de 64-bits IR vereist een 64-bits jre. U kunt deze [hier](https://go.microsoft.com/fwlink/?LinkId=808605)vinden.
-- **Als u openjdk wilt gebruiken**, wordt dit ondersteund sinds IR-versie 3,13. Verdeel het JVM. dll-bestand met alle andere vereiste assembly's van OpenJDK in een zelf-hostende IR-computer en stel de systeem omgevings variabele in JAVA_HOME dienovereenkomstig in.
-- **Het herdistribueerbare pakket Visual C++ 2010 installeren: het**herdistribueerbare pakket Visual C++ 2010 wordt niet geïnstalleerd met de zelf-hostende IR-installaties. U kunt deze [hier](https://www.microsoft.com/download/details.aspx?id=14632)vinden.
+- **Om JRE te gebruiken:** De 64-bits IR vereist 64-bits JRE. U het vanaf [hier](https://go.microsoft.com/fwlink/?LinkId=808605)vinden.
+- **Om OpenJDK te gebruiken**: Het wordt ondersteund sinds IR-versie 3.13. Verpak de jvm.dll met alle andere vereiste samenstellingen van OpenJDK in Self-hosted IR machine, en stel systeemomgevingvariabele JAVA_HOME dienovereenkomstig in.
+- **Voor het installeren van Visual C++ 2010 Redistributable Package:** Visual C++ 2010 Redistributable Package is niet geïnstalleerd met zelf gehoste IR-installaties. U het vanaf [hier](https://www.microsoft.com/download/details.aspx?id=14632)vinden.
 
 > [!TIP]
-> Als u gegevens kopieert naar/van Parquet-indeling met behulp van zelf-hostende Integration Runtime en de fout melding ' er is een fout opgetreden bij het aanroepen van Java, bericht: **Java. lang. OutOfMemoryError: Java-heapruimte**', kunt u een omgevings variabele `_JAVA_OPTIONS` toevoegen aan de computer die als host fungeert voor de zelf-hostende IR om een dergelijke kopie te maken,
+> Als u gegevens kopieert naar/van het Parket-formaat met behulp van Self-hosted Integration Runtime en hiterror met de tekst Er is een `_JAVA_OPTIONS` fout opgetreden bij het aanroepen van java, bericht: **java.lang.OutOfMemoryError:Java heap space**, u een omgevingsvariabele toevoegen in de machine die de zelfgehoste IR host om de min/max heapgrootte voor JVM aan te passen om een dergelijke kopie te machtigen en vervolgens de pijplijn opnieuw te gebruiken.
 
-![JVM-Heap-grootte instellen op zelf-hostende IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+![Stel de grootte van de JVM-heap in op zelfgehoste IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Voor beeld: Stel variabele `_JAVA_OPTIONS` in met de waarde `-Xms256m -Xmx16g`. Met de vlag `Xms` wordt de eerste geheugen toewijzings groep opgegeven voor een Java Virtual Machine (JVM), terwijl `Xmx` de maximale geheugen toewijzings groep opgeeft. Dit betekent dat JVM wordt gestart met `Xms` hoeveelheid geheugen en dat er Maxi maal `Xmx` hoeveelheid geheugen kan worden gebruikt. ADF gebruikt standaard min 64 MB en Max 1G.
+Voorbeeld: variabele `_JAVA_OPTIONS` instellen `-Xms256m -Xmx16g`met waarde . De `Xms` vlag geeft de initiële groep geheugentoewijzing voor `Xmx` een Java Virtual Machine (JVM) op, terwijl de maximale geheugentoewijzingsgroep wordt opgegeven. Dit betekent dat JVM `Xms` zal worden gestart met de hoeveelheid `Xmx` geheugen en in staat zal zijn om een maximale hoeveelheid geheugen te gebruiken. AdF gebruikt standaard min 64 MB en max 1G.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
-- [Gegevens stroom toewijzen](concepts-data-flow-overview.md)
-- [Activiteit Lookup](control-flow-lookup-activity.md)
-- [GetMetadata-activiteit](control-flow-get-metadata-activity.md)
+- [Overzicht van activiteit kopiëren](copy-activity-overview.md)
+- [Gegevensstroom toewijzen](concepts-data-flow-overview.md)
+- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Activiteit Metagegevens](control-flow-get-metadata-activity.md)

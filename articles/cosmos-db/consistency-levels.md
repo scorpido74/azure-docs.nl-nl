@@ -1,97 +1,97 @@
 ---
 title: Consistentieniveaus in Azure Cosmos DB
-description: Azure Cosmos DB biedt vijf consistentieniveaus te verdelen over uiteindelijke consistentie, beschikbaarheid en latentie-en nadelen.
+description: Azure Cosmos DB heeft vijf consistentieniveaus om eventuele consistentie, beschikbaarheid en latentietrade-offs in evenwicht te brengen.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: b5d9df7a0afa9b4270f0eff643e083e5bccfceb8
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.date: 03/18/2020
+ms.openlocfilehash: 4e3d29471064616039bf946bb2762c15ce67bf8d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78933667"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530254"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Consistentieniveaus in Azure Cosmos DB
 
-Gedistribueerde databases die afhankelijk van de replicatie voor hoge beschikbaarheid, lage latentie, of beide zijn, moeten het fundamentele verschil tussen het lezen van consistentie en beschikbaarheid, latentie en doorvoer. De meeste commerciële beschik bare gedistribueerde data bases vragen ontwikkel aars om te kiezen tussen de twee uiterst consistente consistentie modellen: *sterke* consistentie en *uiteindelijke* consistentie. Het linearizability of het sterke consistentie model is de Gold Standard van data Programmable. Maar Hiermee wordt een prijs van hogere latentie (in stabiele toestand) en een lagere Beschik baarheid (tijdens fouten) toegevoegd. Aan de andere kant bieden uiteindelijke consistentie een hogere Beschik baarheid en betere prestaties, maar maakt het Program meren van toepassingen lastig. 
+Gedistribueerde databases die afhankelijk zijn van replicatie voor hoge beschikbaarheid, lage latentie of beide, maken de fundamentele afweging tussen de leesconsistentie versus beschikbaarheid, latentie en doorvoer. De meeste commercieel beschikbare gedistribueerde databases vragen ontwikkelaars om te kiezen tussen de twee extreme consistentiemodellen: *sterke* consistentie en *uiteindelijke* consistentie. De linearizability of het sterke consistentiemodel is de gouden standaard van data-programmeerbaarheid. Maar het voegt een prijs van hogere latentie (in steady state) en verminderde beschikbaarheid (tijdens storingen). Aan de andere kant biedt uiteindelijke consistentie een hogere beschikbaarheid en betere prestaties, maar maakt het moeilijk om toepassingen te programmeren. 
 
-Azure Cosmos DB nadert de consistentie van gegevens als een spectrum van de opties in plaats van twee extreme. Sterke consistentie en uiteindelijke consistentie bevinden zich aan de uiteinden van het spectrum, maar er zijn veel consistentie mogelijkheden in het spectrum. Ontwikkel aars kunnen deze opties gebruiken om nauw keurige keuzes en gedetailleerde afwegingen te maken met betrekking tot hoge Beschik baarheid en prestaties. 
+Azure Cosmos DB benadert gegevensconsistentie als een spectrum van keuzes in plaats van twee uitersten. Sterke consistentie en uiteindelijke consistentie zijn aan de uiteinden van het spectrum, maar er zijn veel consistentie keuzes langs het spectrum. Ontwikkelaars kunnen deze opties gebruiken om nauwkeurige keuzes en gedetailleerde afwegingen te maken met betrekking tot hoge beschikbaarheid en prestaties. 
 
-Met Azure Cosmos DB kunnen ontwikkelaars kiezen uit vijf duidelijk gedefinieerde consistentiemodellen op het spectrum consistentie. Uit het oogpunt van het sterkst om minder goed te zijn, bevatten de modellen *sterke*, *gebonden veroudering*, *sessie*, *consistent voor voegsel*en *uiteindelijke* consistentie. De modellen zijn goed gedefinieerd en intuïtief en kunnen worden gebruikt voor specifieke praktijk scenario's. Elk model biedt [Beschik baarheid en prestatie afwegingen](consistency-levels-tradeoffs.md) en wordt ondersteund door de sla's. In de volgende afbeelding ziet u de verschillende consistentie niveaus als een spectrum.
+Met Azure Cosmos DB kunnen ontwikkelaars kiezen uit vijf goed gedefinieerde consistentiemodellen op het consistentiespectrum. Van sterkste tot meer ontspannen, de modellen omvatten *sterke*, *begrensde staleness*, *sessie,* *consistente voorvoegsel*, en *uiteindelijke* consistentie. De modellen zijn goed gedefinieerd en intuïtief en kunnen worden gebruikt voor specifieke scenario's in de echte wereld. Elk model biedt [beschikbaarheid en prestaties afwegingen](consistency-levels-tradeoffs.md) en wordt ondersteund door de SLA's. De volgende afbeelding toont de verschillende consistentieniveaus als een spectrum.
 
-![Consistentie als een breed spectrum aan mogelijkheden](./media/consistency-levels/five-consistency-levels.png)
+![Consistentie als spectrum](./media/consistency-levels/five-consistency-levels.png)
 
-De consistentie niveaus zijn neutraal en worden gegarandeerd voor alle bewerkingen, ongeacht de regio van waaruit de lees-en schrijf bewerkingen worden uitgevoerd, het aantal regio's dat aan uw Azure Cosmos-account is gekoppeld, of of uw account is geconfigureerd met één of meerdere schrijf regio's.
+De consistentieniveaus zijn regio-agnostisch en zijn gegarandeerd voor alle bewerkingen, ongeacht het gebied waarvan de reads en schrijfbewerkingen worden weergegeven, het aantal regio's dat is gekoppeld aan uw Azure Cosmos-account of dat uw account is geconfigureerd met één enkele of meerdere schrijfregio's.
 
-## <a name="scope-of-the-read-consistency"></a>Bereik van het lezen van consistentie
+## <a name="scope-of-the-read-consistency"></a>Bereik van de leesconsistentie
 
-Lezen van consistentie van toepassing op een enkele leesbewerking binnen het bereik van binnen het bereik van een partitiesleutel of een logische partitie. De leesbewerking kan worden uitgegeven door een externe client of een opgeslagen procedure.
+Leesconsistentie is van toepassing op één leesbewerking die is ondergebracht binnen een partitiesleutelbereik of een logische partitie. De leesbewerking kan worden uitgevoerd door een externe client of een opgeslagen procedure.
 
 ## <a name="configure-the-default-consistency-level"></a>Het standaardconsistentieniveau configureren
 
-U kunt het standaardconsistentieniveau configureren op uw Azure Cosmos-account op elk gewenst moment. Het standaard consistentie niveau dat voor uw account is geconfigureerd, is van toepassing op alle Azure Cosmos-data bases en containers onder dat account. Alle leesbewerkingen en query's die zijn uitgegeven voor een container of een database wordt de opgegeven consistentieniveau standaard gebruikt. Zie [het standaard consistentie niveau configureren](how-to-manage-consistency.md#configure-the-default-consistency-level)voor meer informatie.
+U het standaardconsistentieniveau op uw Azure Cosmos-account op elk gewenst moment configureren. Het standaardconsistentieniveau dat is geconfigureerd voor uw account, is van toepassing op alle Azure Cosmos-databases en -containers onder dat account. Alle lees- en query's die zijn uitgegeven tegen een container of een database gebruiken standaard het opgegeven consistentieniveau. Zie voor meer informatie hoe u [het standaardconsistentieniveau configureert.](how-to-manage-consistency.md#configure-the-default-consistency-level)
 
-## <a name="guarantees-associated-with-consistency-levels"></a>Garanties die zijn gekoppeld aan consistentieniveaus
+## <a name="guarantees-associated-with-consistency-levels"></a>Garanties in verband met consistentieniveaus
 
-De uitgebreide Sla's geleverd door Azure Cosmos DB gegarandeerd dat 100 procent van de leesaanvragen voldoet aan de consistentiegarantie voor elk consistentieniveau die u kiest. Een leesaanvraag voldoet aan de SLA van de consistentie als alle de consistentiegarantie die zijn gekoppeld aan het consistentieniveau is voldaan. De exacte definities van de vijf consistentie niveaus in Azure Cosmos DB met behulp van de TLA + specificatie taal zijn opgenomen in de [Azure-Cosmos-TLA](https://github.com/Azure/azure-cosmos-tla) github opslag plaats.
+De uitgebreide SLA's van Azure Cosmos DB garanderen dat 100 procent van de leesaanvragen voldoet aan de consistentiegarantie voor elk consistentieniveau dat u kiest. Een leesaanvraag voldoet aan de consistentieSLA als aan alle consistentiegaranties die aan het consistentieniveau zijn gekoppeld, is voldaan. De precieze definities van de vijf consistentieniveaus in Azure Cosmos DB met behulp van de TLA+ specificatietaal worden geleverd in de [azuurblauwe-cosmos-tla](https://github.com/Azure/azure-cosmos-tla) GitHub repo.
 
-De semantiek van de vijf consistentieniveaus worden hier beschreven:
+De semantiek van de vijf consistentieniveaus wordt hier beschreven:
 
-- **Sterk**: sterke consistentie biedt een linearizability-garantie. Linearizability verwijst naar de gelijktijdigheid van aanvragen. De leesbewerkingen gegarandeerd de meest recente doorgevoerde versie van een item geretourneerd. Een client ziet nooit het terugschrijven van een niet-doorgevoerde of gedeeltelijke. Gebruikers zijn altijd gegarandeerd de meest recente toegezegde schrijven.
+- **Sterk**: Sterke consistentie biedt een linearizability garantie. Linearizability verwijst naar het gelijktijdig dienen van verzoeken. De reads zijn gegarandeerd de meest recente vastgelegde versie van een item terug te keren. Een client ziet nooit een niet-vastgelegde of gedeeltelijke schrijf. Gebruikers zijn altijd gegarandeerd om de laatste geëngageerde schrijven te lezen.
 
-  In de volgende afbeelding ziet u de sterke consistentie met muzikale notities. Wanneer u de gegevens in de regio VS-Oost hebt geschreven, krijgt u de meest recente waarde wanneer u de gegevens uit andere regio's leest:
+  De volgende afbeelding illustreert de sterke consistentie met muzieknoten. Nadat de gegevens naar de regio 'West US 2' zijn geschreven, krijgt u de meest recente waarde wanneer u de gegevens uit andere regio's leest:
 
   ![video](media/consistency-levels/strong-consistency.gif)
 
-- **Gebonden veroudering**: de Lees bewerkingen worden gegarandeerd de consistentie van het voor voegsel garanderen. De Lees bewerkingen kunnen vertraging oplopen bij schrijf bewerkingen door Maxi maal *"K"* -versies (dat wil zeggen "updates") van een item of op een *T* -outinterval. Met andere woorden, wanneer u de gebonden veroudering kiest, kan de ' verouderd ' op twee manieren worden geconfigureerd: 
+- **Begrensde staleness**: De reads zijn gegarandeerd om de consistente-voorvoegsel garantie te eren. De leest kan achterblijven schrijft door de meeste *"K"* versies (dat wil zeggen, "updates") van een item of door *"T"* tijdsinterval. Met andere woorden, wanneer u grenzende staleness kiest, kan de "staleness" op twee manieren worden geconfigureerd: 
 
-  * Het aantal versies (*K*) van het item
-  * Het tijds interval (*T*) waarmee de Lees bewerkingen kunnen worden vertraagd achter de schrijf bewerkingen 
+  * Het aantal versies *(K)* van het item
+  * Het tijdsinterval (*T*) waardoor de leest kan achterblijven bij de schrijft 
 
-  Gebonden veroudering aanbiedingen totale globale volgorde, behalve binnen de "veroudering venster." De monotone lezen garanties bestaan binnen een regio, zowel binnen als buiten het venster veroudering. Sterke consistentie heeft dezelfde semantiek als die van de gebonden veroudering. Het venster veroudering is gelijk aan nul. Gebonden veroudering wordt ook wel tijd uitgesteld verwerkingen genoemd. Wanneer een client lees bewerkingen uitvoert binnen een regio die schrijf acties accepteert, zijn de garanties die worden geboden door de gebonden verouderde consistentie, identiek aan die garanties van de sterke consistentie.
+  Gebonden veroudering biedt een totale globale volgorde, behalve in het ‘verouderingsvenster’. De monotoon leesgaranties bestaan zowel binnen als buiten het raam. Sterke consistentie heeft dezelfde semantiek als die van begrensde staleness. Het venster staleness is gelijk aan nul. Begrensde staleness wordt ook wel aangeduid als tijd-vertraagde linearizability. Wanneer een klant leesbewerkingen uitvoert binnen een regio die schrijft accepteert, zijn de garanties die worden geboden door de consistentie van de begrensde staleness identiek aan die garanties door de sterke consistentie.
 
-  Gebonden verouderd wordt vaak gekozen door wereld wijd gedistribueerde toepassingen die weinig schrijf latentie verwachten, maar die de totale garantie voor de globale bestelling vereisen. Gebonden verouderd is handig voor toepassingen met groeps samenwerking en delen, aandelen tikker, publiceren/abonneren/wachtrij, enzovoort. In de volgende afbeelding ziet u de gebonden consistentie van veroudering met muzikale notities. Nadat de gegevens zijn geschreven naar de regio ' vs-Oost ', lezen de regio's ' vs-West ' en ' Australië-oost ' de geschreven waarde op basis van de geconfigureerde maximale vertragings tijd of het maximum aantal bewerkingen:
+  Bounded staleness wordt vaak gekozen door wereldwijd gedistribueerde applicaties die lage schrijflatencies verwachten, maar totale wereldwijde ordergarantie vereisen. Bounded staleness is zeer geschikt voor toepassingen met groepssamenwerking en delen, voorraadticker, publiceren-abonneren /in de wachtrij staan enz. De volgende afbeelding illustreert de begrensde staleness consistentie met muzikale noten. Nadat de gegevens naar de regio "West US 2" zijn geschreven, lezen de regio's 'Oost-VS 2' en 'Australië-Oost' de geschreven waarde op basis van de geconfigureerde maximale vertragingstijd of de maximale bewerkingen:
 
   ![video](media/consistency-levels/bounded-staleness-consistency.gif)
 
-- **Sessie**: in een enkele client sessie Lees bewerkingen worden gegarandeerd het consistente voor voegsel (uitgaande van één ' schrijver '-sessie), monotone Lees bewerkingen, monotone schrijf bewerkingen, lees-uw-schrijf bewerkingen en lees-en schrijf bewerkingen. Clients buiten de sessie die schrijf bewerkingen uitvoeren, zien uiteindelijke consistentie.
+- **Sessie**: Binnen een enkele client sessie leest zijn gegarandeerd ter ere van de consistente-voorvoegsel (uitgaande van een enkele "schrijver" sessie), monotoon leest, monotoon schrijft, read-your-writes, en write-follows-reads garanties. Clients buiten de sessie die schrijft, zien uiteindelijke consistentie.
 
-  Sessie consistentie is het meestgebruikte consistentie niveau voor zowel de ene regio als wereld wijd gedistribueerde toepassingen. Het biedt schrijf latentie, Beschik baarheid en lees doorvoer die vergelijkbaar zijn met die van uiteindelijke consistentie, maar biedt ook de consistentie garanties die van toepassing zijn op de behoeften van toepassingen die zijn geschreven om te kunnen worden gebruikt in de context van een gebruiker. In de volgende afbeelding ziet u de consistentie van de sessie met muzikale notities. In de regio vs-West en de regio's VS-Oost worden dezelfde sessie (sessie A) gebruikt, zodat de gegevens tegelijkertijd worden gelezen. Terwijl de regio ' Australië-oost ' gebruikmaakt van ' sessie B ', wordt de gegevens later ontvangen, maar in dezelfde volg orde als de schrijf bewerkingen.
+  Sessieconsistentie is het veelgebruikte consistentieniveau voor zowel afzonderlijke regio's als wereldwijd gedistribueerde toepassingen. Het biedt schrijflatencies, beschikbaarheid en leesdoorvoer die vergelijkbaar is met die van uiteindelijke consistentie, maar biedt ook de consistentiegaranties die passen bij de behoeften van toepassingen die zijn geschreven om te werken in de context van een gebruiker. De volgende afbeelding illustreert de sessie consistentie met muzikale noten. De regio "West US 2" en de "East US 2" regio's gebruiken dezelfde sessie (Sessie A), zodat ze beide de gegevens tegelijkertijd lezen. Terwijl de "Australië Oost" regio is met behulp van "Sessie B" dus, het ontvangt gegevens later, maar in dezelfde volgorde als de schrijft.
 
   ![video](media/consistency-levels/session-consistency.gif)
 
-- **Consistent voor voegsel**: updates die worden geretourneerd, bevatten een voor voegsel van alle updates, zonder onderbrekingen. Consistent consistentie niveau van het voor voegsel zorgt ervoor dat lees bewerkingen die nooit worden uitgevoerd, worden vervolgd.
+- **Consistent voorvoegsel:** Updates die worden geretourneerd bevatten een voorvoegsel van alle updates, zonder hiaten. Consistent voorvoegselconsistentieniveau garandeert dat lezen nooit out-of-order-schrijfbewerkingen ziet.
 
-  Als schrijf bewerkingen zijn uitgevoerd in de volg orde `A, B, C`, ziet een client `A`, `A,B`of `A,B,C`, maar niet in de juiste volg orde, zoals `A,C` of `B,A,C`. Consistent voor voegsel biedt schrijf latentie, Beschik baarheid en lees doorvoer die vergelijkbaar zijn met die van uiteindelijke consistentie, maar biedt ook de volg orde van de bestellingen die voldoen aan de behoeften van scenario's waarin de volg orde belang rijk is. In de volgende afbeelding ziet u de consistentie van het consistentie voorvoegsel met muzikale notities. In alle regio's zien de Lees bewerkingen nooit buiten de juiste volg orde:
+  Als schrijfbewerkingen in de volgorde `A, B, C` zijn uitgevoerd, ziet de client `A`, `A,B` of `A,B,C`, maar nooit schrijfbewerkingen die niet op volgorde plaatsvinden, zoals `A,C` of `B,A,C`. Consistent Prefix biedt schrijflatencies, beschikbaarheid en leesdoorvoer die vergelijkbaar is met die van eventuele consistentie, maar biedt ook de ordergaranties die passen bij de behoeften van scenario's waarin volgorde belangrijk is. De volgende afbeelding illustreert de consistentie voorvoegsel consistentie met muzieknoten. In alle regio's, de leest nooit zien buiten de orde schrijft:
 
   ![video](media/consistency-levels/consistent-prefix.gif)
 
-- **Uiteindelijk**: er is geen garantie voor lees bewerkingen. De replica's worden in de afwezigheid van geen schrijfbewerkingen meer kunnen uiteindelijk geconvergeerd.  
-Uiteindelijke consistentie is de zwakke vorm van consistentie, omdat een client de waarden kan lezen die ouder zijn dan de waarde die het eerder had gelezen. Uiteindelijke consistentie is ideaal wanneer de toepassing geen garantie voor het ordenen van de toepassingen vereist. Voor beelden zijn het aantal retweeten, leuk of niet-threaded opmerkingen. In de volgende afbeelding ziet u de uiteindelijke consistentie met muzikale notities.
+- **Eventual**: Er is geen bestelgarantie voor reads. Bij afwezigheid van verdere schrijft, de replica's uiteindelijk convergeren.  
+Uiteindelijke consistentie is de zwakste vorm van consistentie omdat een client de waarden kan lezen die ouder zijn dan de waarden die hij eerder had gelezen. Uiteindelijke consistentie is ideaal wanneer de toepassing geen bestelgaranties vereist. Voorbeelden hiervan zijn het aantal retweets, vind-ik-leuks of niet-threaded opmerkingen. De volgende afbeelding illustreert de uiteindelijke samenhang met muzieknoten.
 
   ![video](media/consistency-levels/eventual-consistency.gif)
 
-## <a name="additional-reading"></a>Meer lezen
+## <a name="additional-reading"></a>Aanvullende lezing
 
-Lees voor meer informatie over concepten van de consistentie van de volgende artikelen:
+Lees de volgende artikelen voor meer informatie over consistentieconcepten:
 
-- [TLA en specificaties op hoog niveau voor de vijf consistentie niveaus die worden geboden door Azure Cosmos DB](https://github.com/Azure/azure-cosmos-tla)
-- [Consistentie van gerepliceerde gegevens die wordt uitgelegd via voetbal (video) door Doug Terry](https://www.youtube.com/watch?v=gluIh8zd26I)
-- [Consistentie van gerepliceerde gegevens die wordt uitgelegd via honkbal (White Paper) door Doug Terry](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
-- [Sessie garanties voor zwak consistente gerepliceerde gegevens](https://dl.acm.org/citation.cfm?id=383631)
-- [Consistentie-afwegingen in het moderne ontwerp van gedistribueerde data base systemen: CAP maakt alleen deel uit van het verhaal](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
-- [Probabilistic gebonden veroudering (PBS) voor praktische gedeeltelijke quorums](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
-- [Uiteindelijk consistent-gestart](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)
+- [TLA+-specificaties op hoog niveau voor de vijf consistentieniveaus die Azure Cosmos DB biedt](https://github.com/Azure/azure-cosmos-tla)
+- [Gerepliceerde data consistentie uitgelegd door honkbal (video) door Doug Terry](https://www.youtube.com/watch?v=gluIh8zd26I)
+- [Gerepliceerde data consistentie uitgelegd door honkbal (whitepaper) door Doug Terry](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
+- [Sessiegaranties voor zwak consistente gerepliceerde gegevens](https://dl.acm.org/citation.cfm?id=383631)
+- [Consistentie afwegingen in moderne gedistribueerde database systemen ontwerp: CAP is slechts een deel van het verhaal](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+- [Probabilistic Bounded Staleness (PBS) voor praktische gedeeltelijke quorums](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
+- [Uiteindelijk Consistent - Revisited](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Lees de volgende artikelen voor meer informatie over consistentieniveaus in Azure Cosmos DB:
 
-* [Het juiste consistentie niveau voor uw toepassing kiezen](consistency-levels-choosing.md)
-* [Consistentie niveaus voor Azure Cosmos DB-Api's](consistency-levels-across-apis.md)
-* [Beschik baarheid en prestaties voor diverse consistentie niveaus](consistency-levels-tradeoffs.md)
-* [Het standaard consistentie niveau configureren](how-to-manage-consistency.md#configure-the-default-consistency-level)
-* [Het standaard consistentie niveau onderdrukken](how-to-manage-consistency.md#override-the-default-consistency-level)
+* [Kies het juiste consistentieniveau voor uw toepassing](consistency-levels-choosing.md)
+* [Consistentieniveaus in Azure Cosmos DB API's](consistency-levels-across-apis.md)
+* [Beschikbaarheid en prestatieafwegingen voor verschillende consistentieniveaus](consistency-levels-tradeoffs.md)
+* [Het standaardconsistentieniveau configureren](how-to-manage-consistency.md#configure-the-default-consistency-level)
+* [Het standaardconsistentieniveau overschrijven](how-to-manage-consistency.md#override-the-default-consistency-level)
 

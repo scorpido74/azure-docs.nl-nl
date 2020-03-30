@@ -1,6 +1,6 @@
 ---
-title: Gebeurtenisschema in het Azure Event Grid Azure App-configuratie
-description: Beschrijft de eigenschappen die beschikbaar zijn voor Azure App-configuratie-gebeurtenissen met Azure Event Grid
+title: Azure Event Grid Azure App Configuration Event event schema
+description: Beschrijft de eigenschappen die worden geleverd voor Azure App Configuration-gebeurtenissen met Azure Event Grid
 services: event-grid
 author: jimmyca
 ms.service: event-grid
@@ -8,30 +8,30 @@ ms.topic: reference
 ms.date: 05/30/2019
 ms.author: jimmyca
 ms.openlocfilehash: fe0274f723692eea3cfd25cc0e9e146b35dce2ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66735779"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-app-configuration"></a>Azure Event Grid-gebeurtenisschema voor de configuratie van Azure-App
+# <a name="azure-event-grid-event-schema-for-azure-app-configuration"></a>Azure Event Grid-gebeurtenisschema voor Azure App-configuratie
 
-Dit artikel bevat de eigenschappen en het schema voor Azure App-Configuratiegebeurtenissen. Zie voor een inleiding tot gebeurtenisschema's, [Azure Event Grid-gebeurtenisschema](event-schema.md).
+In dit artikel vindt u de eigenschappen en het schema voor Azure App Configuration-gebeurtenissen. Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md)
 
-Zie voor een lijst met zelfstudies en voorbeelden van scripts, [Azure App-configuratie gebeurtenisbron](event-sources.md#app-configuration).
+Zie [gebeurtenisbron Azure App Configuration voor](event-sources.md#app-configuration)een lijst met voorbeeldscripts en -zelfstudies .
 
-## <a name="available-event-types"></a>Typen van de gebeurtenis berichten beschikbaar
+## <a name="available-event-types"></a>Beschikbare gebeurtenistypen
 
-Azure App-configuratie verzendt de volgende typen gebeurtenissen:
+Azure App Configuration zendt de volgende gebeurtenistypen uit:
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
-| Microsoft.AppConfiguration.KeyValueModified | Treedt op wanneer een sleutel / waarde wordt gemaakt of vervangen. |
-| Microsoft.AppConfiguration.KeyValueDeleted | Treedt op wanneer een sleutel / waarde-wordt verwijderd. |
+| Microsoft.appConfiguration.KeyValueGewijzigd | Verhoogd wanneer een sleutelwaarde wordt gemaakt of vervangen. |
+| Microsoft.AppConfiguration.KeyValueDeleted | Verhoogd wanneer een sleutelwaarde wordt verwijderd. |
 
-## <a name="example-event"></a>Voorbeeld van de gebeurtenis
+## <a name="example-event"></a>Voorbeeldgebeurtenis
 
-Het volgende voorbeeld ziet u het schema van een sleutel / waarde-gewijzigde gebeurtenis: 
+In het volgende voorbeeld wordt het schema van een gewijzigde gebeurtenis met sleutelwaarde weergegeven: 
 
 ```json
 [{
@@ -50,7 +50,7 @@ Het volgende voorbeeld ziet u het schema van een sleutel / waarde-gewijzigde geb
 }]
 ```
 
-Het schema voor een sleutel / waarde-verwijderde gebeurtenis is vergelijkbaar: 
+Het schema voor een verwijderde gebeurtenis met sleutelwaarde is vergelijkbaar: 
 
 ```json
 [{
@@ -69,31 +69,31 @@ Het schema voor een sleutel / waarde-verwijderde gebeurtenis is vergelijkbaar:
 }]
 ```
  
-## <a name="event-properties"></a>Eigenschappen van gebeurtenis
+## <a name="event-properties"></a>Gebeurtenis-eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| topic | string | Volledige resource-pad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid biedt deze waarde. |
-| subject | string | Uitgever gedefinieerde pad naar het onderwerp van de gebeurtenis. |
-| eventType | string | Een van de geregistreerde gebeurtenis-typen voor de bron van deze gebeurtenis. |
-| eventTime | string | Het moment waarop dat de gebeurtenis is gegenereerd, is afhankelijk van de UTC-tijd van de provider. |
-| id | string | De unieke id voor de gebeurtenis. |
-| data | object | Gebeurtenisgegevens voor App-configuratie. |
-| dataVersion | string | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
-| metadataVersion | string | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema van de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
+| onderwerp | tekenreeks | Volledig resourcepad naar de gebeurtenisbron. Dit veld is niet schrijfbaar. Event Grid biedt deze waarde. |
+| Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
+| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| eventTime | tekenreeks | De tijd dat de gebeurtenis wordt gegenereerd op basis van de UTC-tijd van de provider. |
+| id | tekenreeks | Unieke id voor de gebeurtenis. |
+| data | object | Gebeurtenisgegevens voor app-configuratie. |
+| dataVersion | tekenreeks | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
+| metadataVersion | tekenreeks | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 
 Het gegevensobject heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| key | string | De sleutel van de sleutel-waarde die is gewijzigd of verwijderd. |
-| label | string | Het label, indien van toepassing, van de sleutel-waarde die is gewijzigd of verwijderd. |
-| etag | string | Voor `KeyValueModified` de etag van de nieuwe sleutel-waarde. Voor `KeyValueDeleted` de etag van de sleutel-waarde die is verwijderd. |
+| sleutel | tekenreeks | De sleutel van de sleutelwaarde die is gewijzigd of verwijderd. |
+| label | tekenreeks | Het label, indien aanwezig, van de sleutelwaarde die is gewijzigd of verwijderd. |
+| etag etag | tekenreeks | Voor `KeyValueModified` de etag van de nieuwe sleutelwaarde. Voor `KeyValueDeleted` de etag van de sleutelwaarde die is verwijderd. |
  
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor een inleiding tot Azure Event Grid, [wat is Event Grid?](overview.md)
-* Zie voor meer informatie over het maken van een Azure Event Grid-abonnement [Event Grid-abonnementsschema](subscription-creation-schema.md).
-* Zie voor een inleiding tot het werken met Azure App-Configuratiegebeurtenissen, [Route Azure App-configuratie gebeurtenissen - Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json). 
+* Zie [Wat is gebeurtenisraster voor](overview.md) een inleiding tot Azure Event Grid?
+* Zie [Abonnement op gebeurtenisrastervoor](subscription-creation-schema.md)meer informatie over het maken van een Azure Event Grid-abonnement .
+* Zie Route Azure App Configuration events [- Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json)voor een inleiding tot het werken met azure app-configuratiegebeurtenissen. 

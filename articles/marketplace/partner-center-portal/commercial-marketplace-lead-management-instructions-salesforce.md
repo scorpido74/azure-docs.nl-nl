@@ -1,70 +1,69 @@
 ---
-title: Beheer van leads voor Sales Force configureren | Azure Marketplace
-description: Configureer het beheer van leads voor Sales Force voor Azure Marketplace-klanten.
-services: Azure, Marketplace, commercial marketplace, Partner Center
+title: Leadbeheer configureren voor Salesforce | Azure Marketplace
+description: Configureer leadbeheer op Salesforce voor Azure Marketplace-klanten.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: evansma
-ms.openlocfilehash: bdd3bb50fc69083c73eb01a84bf0fb0db82a8a65
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 1720026b4beff941b02a60cd1c755a043d66bdb5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812155"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281490"
 ---
-# <a name="configure-lead-management-for-salesforce"></a>Beheer van leads voor Sales Force configureren
+# <a name="configure-lead-management-for-salesforce"></a>Leadmanagement configureren voor Salesforce
 
-In dit artikel wordt beschreven hoe u uw Sales Force-systeem zo kunt instellen dat verkoop leads van uw Marketplace-aanbieding worden verwerkt.
+In dit artikel wordt beschreven hoe u uw Salesforce-systeem instelt om verkoopleads te verwerken vanuit uw marktplaatsaanbieding.
 
-## <a name="set-up-your-salesforce-system"></a>Uw Sales Force-systeem instellen
+## <a name="set-up-your-salesforce-system"></a>Uw Salesforce-systeem instellen
 
-1. Meld u aan bij Sales Force.
-2. Als u gebruikmaakt van de Sales Force-belichtings ervaring.
-    1. Selecteer **Setup** van Sales Force-start pagina.
-    Setup van ![Sales Force](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
+1. Meld u aan bij Salesforce.
+2. Als u gebruik maakt van de Salesforce-verlichtingservaring.
+    1. Selecteer **Setup** op de startpagina van Salesforce.
+    ![Salesforce-installatie](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
 
-    1. Ga op de pagina Setup naar de linkernavigatiebalk op basis van de **Hulpprogram ma's voor het platform-> onderdelen-> marketing-> Web-to-lead**.
-    ![Sales Force-](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png) voor webtoepassingen
+    1. Navigeer vanaf de pagina Setup via de linkernavigatie naar **Platform Tools->Feature Settings->Marketing->Web-to-Lead.**
+    ![Salesforce Web-to-Lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
-3. Als u de klassieke Sales Force-ervaring gebruikt:
-    1. Selecteer **Setup** van Sales Force-start pagina.
-    Setup van ![Sales Force](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
+3. Als u de Salesforce Classic-ervaring gebruikt:
+    1. Selecteer **Setup** op de startpagina van Salesforce.
+    ![Klassieke Salesforce-setup](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
 
-    1. Ga op de pagina Setup naar de linkernavigatiebalk om **> aanpassen-> leads-> Web-to-lead**.
-    ![Sales Force-klassiek, webto-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
+    1. Navigeer vanaf de pagina Setup via de linkernavigatie naar **Build->Customize->Leads->Web-to-Lead.**
+    ![Salesforce klassieke web-to-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
-De overige instructies zijn hetzelfde, ongeacht de Sales Force-ervaring die u gebruikt.
+De rest van de instructies zijn hetzelfde, ongeacht welke Salesforce-ervaring u gebruikt.
 
-4. Selecteer op de **pagina voor het instellen van de web-naar-lead**de knop voor het maken van een **Web-naar-lead-formulier** .
-5. Selecteer op de **pagina Web**-to-lead instellen de optie **Web-naar-lead-formulier maken**.
-    ![Sales Force-installatie van webtoepassingen](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
+4. Selecteer op de **pagina Web-to-Lead Setup**de knop **Web-to-Lead-formulier maken.**
+5. Selecteer **Web-to-Lead-formulier**maken **bij web-to-lead-instelling**.
+    ![Salesforce - Web-to-Lead Setup](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
 
-6. Zorg er in het **formulier een web-naar-lead maken**voor dat `the Include reCAPTCHA in HTML` instelling is uitgeschakeld en selecteer **genereren**. 
-    ![Sales Force: Maak een web-to-lead-formulier](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
+6. Controleer in **het formulier Een web-naar-lead maken**of de `the Include reCAPTCHA in HTML` instelling niet is ingeschakeld en selecteer **Genereren**. 
+    ![Salesforce - Een web-naar-leadformulier maken](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
 
-7. Er wordt een aantal HTML-tekst weer gegeven. Zoek naar de tekst "OID" en kopieer de **OID-waarde** uit de HTML-tekst (alleen de tekst tussen aanhalings tekens) en sla deze op. Plak deze waarde in het veld **organisatie-id** op de portal voor publiceren.
-    ![Sales Force: Maak een web-to-lead-formulier](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-5.png)
+7. U krijgt wat HTML-tekst te zien. Zoek naar de tekst "oid" en kopieer de **oid waarde** uit de HTML-tekst (alleen de tekst tussen aanhalingstekens) en sla deze op. U plakt deze waarde in het veld **Organisatie-id** op de publicatieportal.
+    ![Salesforce - Een web-naar-leadformulier maken](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-5.png)
 
-8. Geselecteerd **.**
+8. **Geselecteerd voltooid**.
 
-## <a name="configure-your-offer-to-send-leads-to-salesforce"></a>Uw aanbieding configureren voor het verzenden van leads naar Sales Force
+## <a name="configure-your-offer-to-send-leads-to-salesforce"></a>Uw aanbieding configureren om leads naar Salesforce te verzenden
 
-Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbieding te configureren in de portal voor publiceren, volgt u de onderstaande stappen:
+Wanneer u klaar bent om de leadmanagementgegevens voor uw aanbieding in de publicatieportal te configureren, volgt u de volgende stappen:
 
-1. Navigeer naar de pagina voor het instellen van de **aanbieding** voor uw aanbieding.
-1. Selecteer **verbinding maken** in het gedeelte Lead beheer.
-    ![Lead beheer-verbinding maken](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
+1. Navigeer naar de pagina **Installatie van aanbieding** voor uw aanbieding.
+1. Selecteer **Verbinding maken** onder de sectie Leadbeheer.
+    ![Leadmanagement - Connect](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
 
-1. Selecteer in het pop-upvenster verbindings Details de optie **Sales Force** voor het doel van de **lead** en plak het formulier `oid` van web-naar-lead dat u hebt gemaakt door eerdere stappen in het veld **organisatie-id** te volgen.
+1. Selecteer **Salesforce** in het pop-upvenster Verbindingsdetails voor de `oid` **leadbestemming** en plak in het formulier van web-naar-lead dat u hebt gemaakt door eerdere stappen in het veld **Organisatie-id** te volgen.
 
 1. Selecteer **Opslaan**. 
 
     >[!Note]
-    >U moet de configuratie van de rest van de aanbieding volt ooien en publiceren voordat u leads voor de aanbieding kunt ontvangen.
+    >U moet de rest van de aanbieding voltooien en publiceren voordat u leads voor de aanbieding ontvangen.
 
-    ![Verbindings Details: Kies een doel voor de lead](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+    ![Verbindingsgegevens - Kies een leadbestemming](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
 
-    ![Verbindings Details: Kies een doel voor de lead](./media/commercial-marketplace-lead-management-instructions-salesforce/connection-details.png)
+    ![Verbindingsgegevens - Kies een leadbestemming](./media/commercial-marketplace-lead-management-instructions-salesforce/connection-details.png)

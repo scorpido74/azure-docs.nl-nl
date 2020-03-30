@@ -1,85 +1,85 @@
 ---
-title: Een persoonlijke Azure-koppeling configureren voor een Azure Cosmos-account
-description: Meer informatie over het instellen van een persoonlijke Azure-koppeling voor toegang tot een Azure Cosmos-account met behulp van een privé-IP-adres in een virtueel netwerk.
+title: Azure Private Link configureren voor een Azure Cosmos-account
+description: Meer informatie over het instellen van Azure Private Link om toegang te krijgen tot een Azure Cosmos-account met behulp van een privé-IP-adres in een virtueel netwerk.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 466f870f257ca4d93764cbfdb4208e8cf1f75553
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 944341b1ef88c7e3d64a74536720eb9fb1d17321
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79205042"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80152737"
 ---
-# <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Cosmos-account
+# <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Private Link configureren voor een Azure Cosmos-account
 
-Met behulp van een persoonlijke Azure-koppeling kunt u verbinding maken met een Azure Cosmos-account via een persoonlijk eind punt. Het persoonlijke eind punt is een reeks privé-IP-adressen in een subnet binnen het virtuele netwerk. Vervolgens kunt u de toegang tot een Azure Cosmos-account beperken via privé-IP-adressen. Wanneer een persoonlijke koppeling wordt gecombineerd met een beperkt NSG-beleid, vermindert dit het risico van gegevens exfiltration. Zie het artikel over een [persoonlijke Azure-koppeling](../private-link/private-link-overview.md) voor meer informatie over privé-eind punten.
+Door Azure Private Link te gebruiken, u verbinding maken met een Azure Cosmos-account via een privéeindpunt. Het privéeindpunt is een set privé-IP-adressen in een subnet binnen uw virtuele netwerk. U vervolgens de toegang tot een Azure Cosmos-account beperken via privé-IP-adressen. Wanneer Private Link wordt gecombineerd met een beperkt NSG-beleid, helpt het het risico op gegevensexfiltratie te verminderen. Zie het artikel Azure Private [Link](../private-link/private-link-overview.md) voor meer informatie over privéeindpunten.
 
-Met persoonlijke koppeling kunnen gebruikers toegang krijgen tot een Azure Cosmos-account vanuit het virtuele netwerk of via een peered virtueel netwerk. Resources die zijn toegewezen aan een privé koppeling, zijn ook on-premises toegankelijk via privé-peering via VPN of Azure ExpressRoute. 
+Met Private Link kunnen gebruikers toegang krijgen tot een Azure Cosmos-account vanuit het virtuele netwerk of vanuit een virtueel netwerk met een peered. Resources die zijn toegewezen aan Private Link zijn ook on-premises toegankelijk via private peering via VPN of Azure ExpressRoute. 
 
-U kunt verbinding maken met een Azure Cosmos-account dat is geconfigureerd met een persoonlijke koppeling met behulp van de automatische of hand matige goedkeurings methode. Zie de sectie [goedkeurings werk stroom](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) van de documentatie van de persoonlijke koppeling voor meer informatie. 
+U verbinding maken met een Azure Cosmos-account dat is geconfigureerd met Private Link met behulp van de automatische of handmatige goedkeuringsmethode. Zie de sectie [Goedkeuringswerkstroom](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) van de privékoppelingsdocumentatie voor meer informatie. 
 
-In dit artikel worden de stappen beschreven voor het maken van een persoonlijk eind punt. Hierbij wordt ervan uitgegaan dat u de automatische goedkeurings methode gebruikt.
+In dit artikel worden de stappen beschreven om een privéeindpunt te maken. Het gaat ervan uit dat u de automatische goedkeuringsmethode gebruikt.
 
 > [!NOTE]
-> Ondersteuning voor privé-eind punten is momenteel algemeen beschikbaar in ondersteunde regio's voor de verbindings modus voor de gateway. Voor de directe modus is deze beschikbaar als een preview-functie.
+> Ondersteuning voor privéeindpunten is momenteel algemeen alleen beschikbaar in ondersteunde regio's voor de gateway-verbindingsmodus. Voor de directe modus is het beschikbaar als voorbeeldfunctie.
 
-## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Een persoonlijk eind punt maken met behulp van de Azure Portal
+## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Een privéeindpunt maken met behulp van de Azure-portal
 
-Gebruik de volgende stappen om een persoonlijk eind punt te maken voor een bestaand Azure Cosmos-account met behulp van de Azure Portal:
+Gebruik de volgende stappen om een privéeindpunt voor een bestaand Azure Cosmos-account te maken met behulp van de Azure-portal:
 
-1. Kies in het deel venster **alle resources** een Azure Cosmos-account.
+1. Kies in het deelvenster **Alle bronnen** een Azure Cosmos-account.
 
-1. Selecteer **particuliere endpoint-verbindingen** in de lijst met instellingen en selecteer vervolgens **persoonlijk eind punt**:
+1. Selecteer **Privéeindpuntverbindingen** in de lijst met instellingen en selecteer **Vervolgens Privéeindpunt:**
 
-   ![Selecties voor het maken van een persoonlijk eind punt in de Azure Portal](./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png)
+   ![Selecties voor het maken van een privéeindpunt in de Azure-portal](./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png)
 
-1. Voer in het deel venster **een persoonlijk eind punt maken-basis beginselen** de volgende gegevens in of Selecteer deze:
+1. Voer in het deelvenster **Een privéeindpunt maken - Basisbeginselen** de volgende details in of selecteer u:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | **Project Details** | |
+    | **Projectdetails** | |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer een resourcegroep.|
-    | **Exemplaar Details** |  |
-    | Naam | Voer een naam in voor uw privé-eind punt. Als deze naam wordt gebruikt, maakt u er een. |
-    |Regio| Selecteer de regio waar u een persoonlijke koppeling wilt implementeren. Maak het persoonlijke eind punt op de locatie waar het virtuele netwerk zich bevindt.|
+    | **Instantiedetails** |  |
+    | Name | Voer een naam in voor uw privéeindpunt. Als deze naam wordt aangenomen, maakt u een unieke naam. |
+    |Regio| Selecteer het gebied waar u Privékoppeling wilt implementeren. Maak het privéeindpunt op dezelfde locatie waar uw virtuele netwerk bestaat.|
     |||
-1. Selecteer **volgende: resource**.
-1. Voer in **een persoonlijk eind punt maken-resource**in of Selecteer deze gegevens:
+1. Selecteer **Volgende: Resource**.
+1. Voer in **Een privéeindpunt maken - Resource**deze gegevens in of selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    |Verbindingsmethode  | Selecteer **verbinding maken met een Azure-resource in mijn Directory**. <br/><br/> U kunt vervolgens een van uw resources kiezen om een persoonlijke koppeling in te stellen. U kunt ook verbinding maken met de resource van iemand anders door een resource-ID of alias te gebruiken die met u is gedeeld.|
+    |Verbindingsmethode  | Selecteer **Verbinding maken met een Azure-bron in mijn map**. <br/><br/> U vervolgens een van uw resources kiezen om Privékoppeling in te stellen. Of u verbinding maken met de bron van iemand anders met behulp van een bron-ID of alias die ze met u hebben gedeeld.|
     | Abonnement| Selecteer uw abonnement. |
-    | Resourcetype | Selecteer **micro soft. AzureCosmosDB/databaseAccounts**. |
+    | Resourcetype | Selecteer **Microsoft.AzureCosmosDB/databaseAccounts**. |
     | Resource |Selecteer uw Azure Cosmos-account. |
-    |Doel-subresource |Selecteer het Azure Cosmos DB-API-type dat u wilt toewijzen. Dit wordt standaard ingesteld op slechts één keuze voor de Api's SQL, MongoDB en Cassandra. Voor de Gremlin-en Table-Api's kunt u ook **SQL** kiezen omdat deze api's compatibel zijn met de SQL-API. |
+    |Subresource target |Selecteer het Azure Cosmos DB API-type dat u wilt toewijzen. Dit is standaard slechts één keuze voor de SQL-, MongoDB- en Cassandra-API's. Voor de Gremlin- en Tabel-API's u ook kiezen voor **Sql** omdat deze API's interoperabel zijn met de SQL API. |
     |||
 
-1. Selecteer **volgende: Configuratie**.
-1. Voer in **een persoonlijk eind punt maken-configuratie**de volgende gegevens in of Selecteer deze:
+1. Selecteer **Volgende: Configuratie**.
+1. Voer **in Een privéeindpunt maken - Configuratie**deze gegevens in of selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    |**Netwerken**| |
+    |**Networking**| |
     | Virtueel netwerk| Selecteer uw virtuele netwerk. |
     | Subnet | Selecteer uw subnet. |
-    |**Integratie van Privé-DNS**||
-    |Integreren met een privé-DNS-zone |Selecteer **Ja**. <br><br/> Als u privé wilt verbinden met uw persoonlijke eind punt, moet u een DNS-record hebben. We raden u aan uw persoonlijke eind punt te integreren met een privé-DNS-zone. U kunt ook uw eigen DNS-servers gebruiken of DNS-records maken met behulp van de host-bestanden op uw virtuele machines. |
-    |Privé-DNS zone |Selecteer **privatelink.Documents.Azure.com**. <br><br/> De privé-DNS-zone wordt automatisch bepaald. U kunt deze niet wijzigen met behulp van de Azure Portal.|
+    |**Private DNS-integratie**||
+    |Integreren met private DNS-zone |Selecteer **Ja**. <br><br/> Als u privé verbinding wilt maken met uw privéeindpunt, hebt u een DNS-record nodig. We raden u aan uw privéeindpunt te integreren met een privé-DNS-zone. U ook uw eigen DNS-servers gebruiken of DNS-records maken met behulp van de hostbestanden op uw virtuele machines. |
+    |Privé-DNS-zone |Selecteer **privatelink.documents.azure.com**. <br><br/> De private DNS-zone wordt automatisch bepaald. U het niet wijzigen door de Azure-portal te gebruiken.|
     |||
 
-1. Selecteer **Controleren + maken**. Op de pagina **controleren en maken** valideert Azure uw configuratie.
-1. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**.
+1. Selecteer **Controleren + maken**. Op de pagina **Controleren + maken** valideert Azure uw configuratie.
+1. Wanneer u het **doorgegeven bericht Validatie ziet,** selecteert u **Maken**.
 
-Wanneer u een persoonlijke koppeling hebt goedgekeurd voor een Azure Cosmos-account, is de optie **alle netwerken** in het deel venster **firewall en virtuele netwerken** niet beschikbaar in de Azure Portal.
+Wanneer u Private Link voor een Azure Cosmos-account hebt goedgekeurd, is in de Azure-portal de optie **Alle netwerken** in het deelvenster Firewall en **virtuele netwerken** niet beschikbaar.
 
-In de volgende tabel ziet u de toewijzing tussen de verschillende Azure Cosmos-account-API-typen, ondersteunde subresources en de bijbehorende namen van de persoonlijke zones. U kunt ook toegang krijgen tot de Gremlin-en Table-API-accounts via de SQL-API, zodat er twee vermeldingen voor deze Api's zijn.
+In de volgende tabel wordt de toewijzing tussen verschillende Azure Cosmos-accountAPI-typen, ondersteunde subresources en de bijbehorende namen van de privézone weergegeven. U hebt ook toegang tot de Gremlin- en Table API-accounts via de SQL API, dus er zijn twee vermeldingen voor deze API's.
 
-|API-type voor Azure Cosmos-account  |Ondersteunde subbronnen (of groeps-Id's) |Naam van particuliere zone  |
+|API-type Azure Cosmos-account  |Ondersteunde subresources (of groeps-i-adressen) |Naam privézone  |
 |---------|---------|---------|
 |SQL    |   SQL      | privatelink.documents.azure.com   |
 |Cassandra    | Cassandra        |  privatelink.cassandra.cosmos.azure.com    |
@@ -91,22 +91,22 @@ In de volgende tabel ziet u de toewijzing tussen de verschillende Azure Cosmos-a
 
 ### <a name="fetch-the-private-ip-addresses"></a>De privé-IP-adressen ophalen
 
-Nadat het persoonlijke eind punt is ingericht, kunt u een query uitvoeren op de IP-adressen. De IP-adressen van de Azure Portal weer geven:
+Nadat het privéeindpunt is ingericht, u de IP-adressen opvragen. Ga als het gaat om het weergeven van de IP-adressen vanuit de Azure-portal:
 
 1. Selecteer **Alle resources**.
-1. Zoek naar het persoonlijke eind punt dat u eerder hebt gemaakt. In dit geval is het **cdbPrivateEndpoint3**.
-1. Selecteer het tabblad **overzicht** om de DNS-instellingen en IP-adressen te bekijken.
+1. Zoek naar het privéeindpunt dat u eerder hebt gemaakt. In dit geval is het **cdbPrivateEndpoint3**.
+1. Selecteer het tabblad **Overzicht** om de DNS-instellingen en IP-adressen te bekijken.
 
-![Privé-IP-adressen in de Azure Portal](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
+![Privé-IP-adressen in de Azure-portal](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
 
-Er zijn meerdere IP-adressen gemaakt per particulier eind punt:
+Per privéeindpunt worden meerdere IP-adressen gemaakt:
 
-* Een voor het algemene eind punt (Region-neutraal) van het Azure Cosmos-account
+* Eén voor het globale (regio-agnostische) eindpunt van het Azure Cosmos-account
 * Eén voor elke regio waar het Azure Cosmos-account wordt geïmplementeerd
 
-## <a name="create-a-private-endpoint-by-using-azure-powershell"></a>Een persoonlijk eind punt maken met behulp van Azure PowerShell
+## <a name="create-a-private-endpoint-by-using-azure-powershell"></a>Een privéeindpunt maken met Azure PowerShell
 
-Voer het volgende Power shell-script uit om een persoonlijk eind punt met de naam ' MyPrivateEndpoint ' te maken voor een bestaand Azure Cosmos-account. Vervang de variabele waarden door de gegevens voor uw omgeving.
+Voer het volgende PowerShell-script uit om een privéeindpunt met de naam 'MyPrivateEndpoint' te maken voor een bestaand Azure Cosmos-account. Vervang de variabele waarden door de details voor uw omgeving.
 
 ```azurepowershell-interactive
 $SubscriptionId = "<your Azure subscription ID>"
@@ -137,9 +137,9 @@ $subnet = $virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.N
 $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $ResourceGroupName -Name $PrivateEndpointName -Location "westcentralus" -Subnet  $subnet -PrivateLinkServiceConnection $privateEndpointConnection
 ```
 
-### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>Het persoonlijke eind punt integreren met een privé-DNS-zone
+### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>Het privéeindpunt integreren met een privé-DNS-zone
 
-Nadat u het persoonlijke eind punt hebt gemaakt, kunt u het integreren met een privé-DNS-zone met behulp van het volgende Power shell-script:
+Nadat u het privéeindpunt hebt gemaakt, u het integreren met een privé-DNS-zone met behulp van het volgende PowerShell-script:
 
 ```azurepowershell-interactive
 Import-Module Az.PrivateDns
@@ -174,10 +174,9 @@ New-AzPrivateDnsRecordSet -Name $recordName `
 
 ### <a name="fetch-the-private-ip-addresses"></a>De privé-IP-adressen ophalen
 
-Nadat het persoonlijke eind punt is ingericht, kunt u een query uitvoeren op de IP-adressen en de FQDN-toewijzing met behulp van het volgende Power shell-script:
+Nadat het privéeindpunt is ingericht, u de IP-adressen en de FQDN-toewijzing opvragen met behulp van het volgende PowerShell-script:
 
 ```azurepowershell-interactive
-
 $pe = Get-AzPrivateEndpoint -Name MyPrivateEndpoint -ResourceGroupName myResourceGroup
 $networkInterface = Get-AzNetworkInterface -ResourceId $pe.NetworkInterfaces[0].Id
 foreach ($IPConfiguration in $networkInterface.IpConfigurations)
@@ -186,11 +185,88 @@ foreach ($IPConfiguration in $networkInterface.IpConfigurations)
 }
 ```
 
-## <a name="create-a-private-endpoint-by-using-a-resource-manager-template"></a>Een persoonlijk eind punt maken met behulp van een resource manager-sjabloon
+## <a name="create-a-private-endpoint-by-using-azure-cli"></a>Een privéeindpunt maken met Azure CLI
 
-U kunt een persoonlijke koppeling instellen door een persoonlijk eind punt te maken in een subnet van een virtueel netwerk. U kunt dit doen met behulp van een Azure Resource Manager sjabloon.
+Voer het volgende Azure CLI-script uit om een privéeindpunt met de naam 'myPrivateEndpoint' te maken voor een bestaand Azure Cosmos-account. Vervang de variabele waarden door de details voor uw omgeving.
 
-Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateEndpoint_template. json ' te maken. Met deze sjabloon maakt u een persoonlijk eind punt voor een bestaand Azure Cosmos SQL API-account in een bestaand virtueel netwerk.
+```azurecli-interactive
+# Resource group where the Azure Cosmos account and virtual network resources are located
+ResourceGroupName="myResourceGroup"
+
+# Subscription ID where the Azure Cosmos account and virtual network resources are located
+SubscriptionId="<your Azure subscription ID>"
+
+# Name of the existing Azure Cosmos account
+CosmosDbAccountName="mycosmosaccount"
+
+# API type of your Azure Cosmos account: Sql, MongoDB, Cassandra, Gremlin, or Table
+CosmosDbApiType="Sql"
+
+# Name of the virtual network to create
+VNetName="myVnet"
+
+# Name of the subnet to create
+SubnetName="mySubnet"
+
+# Name of the private endpoint to create
+PrivateEndpointName="myPrivateEndpoint"
+
+# Name of the private endpoint connection to create
+PrivateConnectionName="myConnection"
+
+az network vnet create \
+ --name $VNetName \
+ --resource-group $ResourceGroupName \
+ --subnet-name $SubnetName
+
+az network vnet subnet update \
+ --name $SubnetName \
+ --resource-group $ResourceGroupName \
+ --vnet-name $VNetName \
+ --disable-private-endpoint-network-policies true
+
+az network private-endpoint create \
+    --name $PrivateEndpointName \
+    --resource-group $ResourceGroupName \
+    --vnet-name $VNetName  \
+    --subnet $SubnetName \
+    --private-connection-resource-id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/$CosmosDbAccountName" \
+    --group-ids $CosmosDbApiType \
+    --connection-name $PrivateConnectionName
+```
+
+### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>Het privéeindpunt integreren met een privé-DNS-zone
+
+Nadat u het privéeindpunt hebt gemaakt, u het integreren met een privé-DNS-zone met behulp van het volgende Azure CLI-script:
+
+```azurecli-interactive
+zoneName="privatelink.documents.azure.com"
+
+az network private-dns zone create --resource-group $ResourceGroupName \
+   --name  $zoneName
+
+az network private-dns link vnet create --resource-group $ResourceGroupName \
+   --zone-name  $zoneName\
+   --name myzonelink \
+   --virtual-network $VNetName \
+   --registration-enabled false 
+
+#Query for the network interface ID  
+networkInterfaceId=$(az network private-endpoint show --name $PrivateEndpointName --resource-group $ResourceGroupName --query 'networkInterfaces[0].id' -o tsv)
+ 
+# Copy the content for privateIPAddress and FQDN matching the Azure Cosmos account 
+az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json 
+ 
+#Create DNS records 
+az network private-dns record-set a create --name recordSet1 --zone-name privatelink.documents.azure.com --resource-group $ResourceGroupName
+az network private-dns record-set a add-record --record-set-name recordSet2 --zone-name privatelink.documents.azure.com --resource-group $ResourceGroupName -a <Private IP Address>
+```
+
+## <a name="create-a-private-endpoint-by-using-a-resource-manager-template"></a>Een privéeindpunt maken met behulp van een resourcemanagersjabloon
+
+U Privékoppeling instellen door een privéeindpunt te maken in een virtueel netwerksubnet. U bereikt dit door een Azure Resource Manager-sjabloon te gebruiken.
+
+Gebruik de volgende code om een resourcemanagersjabloon met de naam 'PrivateEndpoint_template.json' te maken. Met deze sjabloon wordt een privéeindpunt gemaakt voor een bestaand Azure Cosmos SQL API-account in een bestaand virtueel netwerk.
 
 ```json
 {
@@ -249,9 +325,9 @@ Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateE
 }
 ```
 
-**Definieer het parameter bestand voor de sjabloon**
+**Het parametersbestand voor de sjabloon definiëren**
 
-Maak een parameter bestand voor de sjabloon en geef het de naam PrivateEndpoint_parameters. json. Voeg de volgende code toe aan het parameter bestand:
+Maak een parametersbestand voor de sjabloon en noem de naam 'PrivateEndpoint_parameters.json'. Voeg de volgende code toe aan het parametersbestand:
 
 ```json
 {
@@ -274,9 +350,9 @@ Maak een parameter bestand voor de sjabloon en geef het de naam PrivateEndpoint_
 }
 ```
 
-**De sjabloon implementeren met behulp van een Power shell-script**
+**De sjabloon implementeren met behulp van een PowerShell-script**
 
-Maak een Power shell-script met de volgende code. Voordat u het script uitvoert, moet u de abonnements-ID, de naam van de resource groep en andere variabelen waarden vervangen door de gegevens voor uw omgeving.
+Maak een PowerShell-script met de volgende code. Voordat u het script uitvoert, vervangt u de abonnements-ID, de naam van de resourcegroep en andere variabele waarden door de details voor uw omgeving.
 
 ```azurepowershell-interactive
 ### This script creates a private endpoint for an existing Azure Cosmos account in an existing virtual network
@@ -325,22 +401,22 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-In het Power shell-script mag de variabele `GroupId` slechts één waarde bevatten. Deze waarde is het API-type van het account. Toegestane waarden zijn: `Sql`, `MongoDB`, `Cassandra`, `Gremlin`en `Table`. Sommige Azure Cosmos-account typen zijn toegankelijk via meerdere Api's. Bijvoorbeeld:
+In het PowerShell-script kan de `GroupId` variabele slechts één waarde bevatten. Die waarde is het API-type van het account. Toegestane `Sql`waarden zijn: `MongoDB` `Cassandra`, `Gremlin`, `Table`, en . Sommige Azure Cosmos-accounttypen zijn toegankelijk via meerdere API's. Bijvoorbeeld:
 
-* U kunt toegang krijgen tot een Gremlin-API-account vanuit zowel de Gremlin-als SQL-API-accounts.
-* Een Table-API account kan worden geopend vanuit zowel de tabel-als de SQL-API-accounts.
+* Een Gremlin API-account is toegankelijk vanaf zowel Gremlin- als SQL API-accounts.
+* Een Tabel API-account is toegankelijk via zowel Tabel- als SQL API-accounts.
 
-Voor deze accounts moet u één persoonlijk eind punt maken voor elk API-type. Het bijbehorende API-type is opgegeven in de matrix `GroupId`.
+Voor deze accounts moet u één privéeindpunt maken voor elk API-type. Het bijbehorende API-type `GroupId` wordt opgegeven in de array.
 
-Nadat de sjabloon is geïmplementeerd, kunt u een uitvoer zien die vergelijkbaar is met wat er in de volgende afbeelding wordt weer gegeven. De `provisioningState` waarde wordt `Succeeded` als de persoonlijke eind punten correct zijn ingesteld.
+Nadat de sjabloon is geïmplementeerd, ziet u een uitvoer die vergelijkbaar is met wat de volgende afbeelding weergeeft. De `provisioningState` waarde `Succeeded` is als de privéeindpunten correct zijn ingesteld.
 
-![Implementatie-uitvoer voor de Resource Manager-sjabloon](./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png)
+![Implementatieuitvoer voor de sjabloon Resourcebeheer](./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png)
 
-Nadat de sjabloon is geïmplementeerd, worden de privé-IP-adressen in het subnet gereserveerd. De firewall regel van het Azure Cosmos-account is geconfigureerd om alleen verbindingen van het privé-eind punt te accepteren.
+Nadat de sjabloon is geïmplementeerd, worden de privé-IP-adressen gereserveerd in het subnet. De firewallregel van het Azure Cosmos-account is geconfigureerd om alleen verbindingen vanaf het privéeindpunt te accepteren.
 
-### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>Het persoonlijke eind punt integreren met een Privé-DNS zone
+### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>Het privéeindpunt integreren met een privé-DNS-zone
 
-Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateZone_template. json ' te maken. Met deze sjabloon maakt u een privé-DNS-zone voor een bestaand Azure Cosmos SQL API-account in een bestaand virtueel netwerk.
+Gebruik de volgende code om een resourcemanagersjabloon met de naam 'PrivateZone_template.json' te maken. Met deze sjabloon wordt een privé-DNS-zone gemaakt voor een bestaand Azure Cosmos SQL API-account in een bestaand virtueel netwerk.
 
 ```json
 {
@@ -382,7 +458,7 @@ Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateZ
 }
 ```
 
-Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateZoneRecords_template. json ' te maken.
+Gebruik de volgende code om een resourcemanagersjabloon met de naam 'PrivateZoneRecords_template.json' te maken.
 
 ```json
 {
@@ -414,9 +490,9 @@ Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateZ
 }
 ```
 
-**Definieer het parameter bestand voor de sjabloon**
+**Het parametersbestand voor de sjabloon definiëren**
 
-Maak het volgende twee parameter bestand voor de sjabloon. Maak de PrivateZone_parameters. json. met de volgende code:
+Maak de volgende twee parameters bestand voor de sjabloon. Maak de 'PrivateZone_parameters.json'. met de volgende code:
 
 ```json
 {
@@ -433,7 +509,7 @@ Maak het volgende twee parameter bestand voor de sjabloon. Maak de PrivateZone_p
 }
 ```
 
-Maak de PrivateZoneRecords_parameters. json. met de volgende code:
+Maak de 'PrivateZoneRecords_parameters.json'. met de volgende code:
 
 ```json
 {
@@ -450,9 +526,9 @@ Maak de PrivateZoneRecords_parameters. json. met de volgende code:
 }
 ```
 
-**De sjabloon implementeren met behulp van een Power shell-script**
+**De sjabloon implementeren met behulp van een PowerShell-script**
 
-Maak een Power shell-script met de volgende code. Voordat u het script uitvoert, moet u de abonnements-ID, de naam van de resource groep en andere variabelen waarden vervangen door de gegevens voor uw omgeving.
+Maak een PowerShell-script met de volgende code. Voordat u het script uitvoert, vervangt u de abonnements-ID, de naam van de resourcegroep en andere variabele waarden door de details voor uw omgeving.
 
 ```azurepowershell-interactive
 ### This script:
@@ -535,70 +611,70 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ## <a name="configure-custom-dns"></a>Aangepaste DNS configureren
 
-U moet een privé-DNS-zone gebruiken in het subnet waar u het persoonlijke eind punt hebt gemaakt. Configureer de eind punten zodat elk privé-IP-adres wordt toegewezen aan een DNS-vermelding. (Zie de eigenschap `fqdns` in het antwoord dat eerder is weer gegeven.)
+U moet een privé-DNS-zone gebruiken in het subnet waar u het privéeindpunt hebt gemaakt. Configureer de eindpunten zodat elk privé-IP-adres wordt toegewezen aan een DNS-item. (Zie `fqdns` de eigenschap in het antwoord dat eerder is weergegeven.)
 
-Wanneer u het persoonlijke eind punt maakt, kunt u het integreren met een privé-DNS-zone in Azure. Als u in plaats daarvan een aangepaste DNS-zone wilt gebruiken, moet u deze configureren voor het toevoegen van DNS-records voor alle privé-IP-adressen die zijn gereserveerd voor het persoonlijke eind punt.
+Wanneer u het privéeindpunt maakt, u het integreren met een privé-DNS-zone in Azure. Als u ervoor kiest om in plaats daarvan een aangepaste DNS-zone te gebruiken, moet u deze configureren om DNS-records toe te voegen voor alle privé-IP-adressen die zijn gereserveerd voor het privéeindpunt.
 
-## <a name="private-link-combined-with-firewall-rules"></a>Privé koppeling gecombineerd met firewall regels
+## <a name="private-link-combined-with-firewall-rules"></a>Private Link gecombineerd met firewallregels
 
-De volgende situaties en resultaten zijn mogelijk wanneer u een persoonlijke koppeling gebruikt in combi natie met firewall regels:
+De volgende situaties en resultaten zijn mogelijk wanneer u Private Link gebruikt in combinatie met firewallregels:
 
-* Als u geen firewall regels configureert, kan standaard al het verkeer toegang krijgen tot een Azure Cosmos-account.
+* Als u geen firewallregels configureert, heeft al het verkeer standaard toegang tot een Azure Cosmos-account.
 
-* Als u openbaar verkeer of een service-eind punt configureert en u persoonlijke eind punten maakt, worden verschillende soorten binnenkomend verkeer geautoriseerd door het bijbehorende type firewall regel.
+* Als u openbaar verkeer of een serviceeindpunt configureert en privéeindpunten maakt, worden verschillende typen binnenkomend verkeer geautoriseerd door het bijbehorende type firewallregel.
 
-* Als u geen openbaar verkeer of service-eind punt configureert en u persoonlijke eind punten maakt, is het Azure Cosmos-account alleen toegankelijk via de persoonlijke eind punten. Als u geen openbaar verkeer of een service-eind punt configureert, wordt het account geopend voor het hele netwerk nadat alle goedgekeurde privé-eind punten zijn afgewezen of verwijderd.
+* Als u geen eindpunt voor openbaar verkeer of service configureert en privéeindpunten maakt, is het Azure Cosmos-account alleen toegankelijk via de privéeindpunten. Als u geen openbaar verkeer of een serviceeindpunt configureert, nadat alle goedgekeurde privéeindpunten zijn geweigerd of verwijderd, staat het account open voor het hele netwerk.
 
-## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Een persoonlijk eind punt bijwerken wanneer u een regio toevoegt of verwijdert
+## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Een privéeindpunt bijwerken wanneer u een regio toevoegt of verwijdert
 
-Als u regio's wilt toevoegen aan of verwijderen uit een Azure Cosmos-account, moet u DNS-vermeldingen voor dat account toevoegen of verwijderen. Nadat er regio's zijn toegevoegd of verwijderd, kunt u de privé-DNS-zone van het subnet bijwerken om de toegevoegde of verwijderde DNS-vermeldingen en de bijbehorende privé-IP-adressen weer te geven.
+Voor het toevoegen of verwijderen van regio's aan een Azure Cosmos-account moet u DNS-vermeldingen voor dat account toevoegen of verwijderen. Nadat regio's zijn toegevoegd of verwijderd, u de privé-DNS-zone van het subnet bijwerken om de toegevoegde of verwijderde DNS-vermeldingen en de bijbehorende privé-IP-adressen weer te geven.
 
-Stel bijvoorbeeld dat u een Azure Cosmos-account in drie regio's implementeert: "VS-West," "centraal VS" en "Europa-west". Wanneer u een persoonlijk eind punt voor uw account maakt, worden vier privé Ip's gereserveerd in het subnet. Er is één IP-adres voor elk van de drie regio's en er is één IP-adres voor het neutraal-eind punt globaal/regio.
+Stel je voor dat je een Azure Cosmos-account implementeert in drie regio's: 'West US', 'Central US' en 'West-Europa'. Wanneer u een privéeindpunt voor uw account maakt, worden vier privé-IP's gereserveerd in het subnet. Er is één IP voor elk van de drie regio's en er is één IP voor het wereldwijde/regio-agnostische eindpunt.
 
-U kunt later een nieuwe regio (bijvoorbeeld ' vs Oost ') toevoegen aan het Azure Cosmos-account. Nadat u de nieuwe regio hebt toegevoegd, moet u een bijbehorende DNS-record toevoegen aan uw privé-DNS-zone of uw aangepaste DNS.
+Later u een nieuwe regio (bijvoorbeeld 'Oost-VS') toevoegen aan het Azure Cosmos-account. Nadat u de nieuwe regio hebt toegevoegd, moet u een bijbehorende DNS-record toevoegen aan uw privé-DNS-zone of uw aangepaste DNS.
 
-U kunt dezelfde stappen gebruiken wanneer u een regio verwijdert. Nadat u de regio hebt verwijderd, moet u de bijbehorende DNS-record verwijderen uit uw privé-DNS-zone of uw aangepaste DNS.
+U dezelfde stappen gebruiken wanneer u een regio verwijdert. Nadat u de regio hebt verwijderd, moet u de bijbehorende DNS-record verwijderen uit uw privé-DNS-zone of uw aangepaste DNS.
 
 ## <a name="current-limitations"></a>Huidige beperkingen
 
-De volgende beperkingen zijn van toepassing wanneer u een privé-verbinding met een Azure Cosmos-account gebruikt:
+De volgende beperkingen zijn van toepassing wanneer u Privékoppeling gebruikt met een Azure Cosmos-account:
 
-* Ondersteuning voor persoonlijke koppelingen voor Azure Cosmos-accounts en virtuele netwerken is alleen beschikbaar in bepaalde regio's. Zie de sectie [beschik bare regio's](../private-link/private-link-overview.md#availability) van het artikel over een persoonlijke koppeling voor een lijst met ondersteunde regio's. 
+* Ondersteuning voor Private Link voor Azure Cosmos-accounts en virtuele netwerken is alleen beschikbaar in specifieke regio's. Zie de sectie [Beschikbare regio's](../private-link/private-link-overview.md#availability) van het artikel Privékoppeling voor een lijst met ondersteunde regio's. 
 
   > [!NOTE]
-  > Als u een persoonlijk eind punt wilt maken, moet u ervoor zorgen dat zowel het virtuele netwerk als het Azure Cosmos-account in ondersteunde regio's worden ondersteund.
+  > Als u een privéeindpunt wilt maken, moet u ervoor zorgen dat zowel het virtuele netwerk als het Azure Cosmos-account zich in ondersteunde regio's bevinden.
 
-* Wanneer u een persoonlijke koppeling met een Azure Cosmos-account gebruikt via een directe modus verbinding, kunt u alleen het TCP-protocol gebruiken. Het HTTP-protocol wordt nog niet ondersteund.
+* Wanneer u Private Link met een Azure Cosmos-account gebruikt met behulp van een verbinding in de directe modus, u alleen het TCP-protocol gebruiken. Het HTTP-protocol wordt nog niet ondersteund.
 
-* Ondersteuning voor privé-eind punten is momenteel algemeen beschikbaar in ondersteunde regio's voor de verbindings modus voor de gateway. Voor de directe modus is deze beschikbaar als een preview-functie.
+* Ondersteuning voor privéeindpunten is momenteel algemeen alleen beschikbaar in ondersteunde regio's voor de gateway-verbindingsmodus. Voor de directe modus is het beschikbaar als voorbeeldfunctie.
 
-* Wanneer u de API van Azure Cosmos DB gebruikt voor MongoDB-accounts, wordt een persoonlijk eind punt alleen ondersteund voor accounts op Server versie 3,6 (dat wil zeggen, accounts die gebruikmaken van het eind punt in de notatie `*.mongo.cosmos.azure.com`). Privé koppeling wordt niet ondersteund voor accounts op Server versie 3,2 (dat wil zeggen, accounts die gebruikmaken van het eind punt in de indeling `*.documents.azure.com`). Als u een persoonlijke koppeling wilt gebruiken, moet u oude accounts migreren naar de nieuwe versie.
+* Wanneer u de API van Azure Cosmos DB voor MongoDB-accounts gebruikt, wordt een privéeindpunt alleen ondersteund voor accounts op serverversie 3.6 (dat wil zeggen accounts met het eindpunt in de indeling). `*.mongo.cosmos.azure.com` Private Link wordt niet ondersteund voor accounts op serverversie 3.2 (dat `*.documents.azure.com`wil zeggen accounts met het eindpunt in de indeling). Als u Privékoppeling wilt gebruiken, moet u oude accounts migreren naar de nieuwe versie.
 
-* Wanneer u de API van het Azure Cosmos DB gebruikt voor MongoDB-accounts die een persoonlijke koppeling hebben, kunt u geen gebruik maken van hulpprogram ma's zoals Robo 3T gebruiken, Studio 3T gebruiken en Mongoose. Het eind punt kan alleen een persoonlijke koppeling ondersteunen als de para meter `appName=<account name>` is opgegeven. Een voorbeeld is `replicaSet=globaldb&appName=mydbaccountname`. Omdat deze hulpprogram ma's de naam van de app niet door geven in de connection string aan de service, kunt u geen persoonlijke koppeling gebruiken. Maar u hebt nog steeds toegang tot deze accounts met behulp van SDK-Stuur Programma's met de versie 3,6.
+* Wanneer u de API van Azure Cosmos DB voor MongoDB-accounts met Private Link gebruikt, u geen hulpprogramma's zoals Robo 3T, Studio 3T en Mongoose gebruiken. Het eindpunt kan alleen ondersteuning voor `appName=<account name>` Privékoppelingen hebben als de parameter is opgegeven. Een voorbeeld is `replicaSet=globaldb&appName=mydbaccountname`. Omdat deze hulpprogramma's de naam van de app niet doorgeven in de verbindingstekenreeks aan de service, u Geen Privékoppeling gebruiken. Maar u nog steeds toegang tot deze accounts met behulp van SDK drivers met de 3.6 versie.
 
-* U kunt een virtueel netwerk niet verplaatsen of verwijderen als het een persoonlijke koppeling bevat.
+* U een virtueel netwerk niet verplaatsen of verwijderen als het Privékoppeling bevat.
 
-* U kunt een Azure Cosmos-account niet verwijderen als het is gekoppeld aan een persoonlijk eind punt.
+* U een Azure Cosmos-account niet verwijderen als het is gekoppeld aan een privéeindpunt.
 
-* U kunt geen failover uitvoeren voor een Azure Cosmos-account naar een regio die niet is toegewezen aan alle persoonlijke eind punten die aan het account zijn gekoppeld.
+* U niet falen over een Azure Cosmos-account naar een regio die niet is toegewezen aan alle privéeindpunten die aan het account zijn gekoppeld.
 
-* Aan een netwerk beheerder moet ten minste de machtiging ' */PrivateEndpointConnectionsApproval ' zijn toegewezen in het bereik van de Azure Cosmos-account om automatisch goedgekeurde persoonlijke eind punten te maken.
+* Een netwerkbeheerder moet ten minste de machtiging "*/PrivateEndpointConnectionsApproval" krijgen op het Azure Cosmos-accountbereik om automatisch goedgekeurde privéeindpunten te maken.
 
-### <a name="limitations-to-private-dns-zone-integration"></a>Beperkingen voor de integratie van particuliere DNS-zones
+### <a name="limitations-to-private-dns-zone-integration"></a>Beperkingen voor integratie van privé-DNS-zones
 
-DNS-records in de privé-DNS-zone worden niet automatisch verwijderd wanneer u een persoonlijk eind punt verwijdert of een regio verwijdert uit het Azure Cosmos-account. U moet de DNS-records hand matig verwijderen voordat:
+DNS-records in de privé-DNS-zone worden niet automatisch verwijderd wanneer u een privéeindpunt verwijdert of een regio verwijdert uit het Azure Cosmos-account. U moet de DNS-records handmatig verwijderen voordat:
 
-* Het toevoegen van een nieuw persoonlijk eind punt dat is gekoppeld aan deze privé-DNS-zone.
-* Het toevoegen van een nieuwe regio aan een database account met persoonlijke eind punten die zijn gekoppeld aan deze privé-DNS-zone.
+* Het toevoegen van een nieuw privéeindpunt dat is gekoppeld aan deze privé-DNS-zone.
+* Een nieuw gebied toevoegen aan een databaseaccount met privéeindpunten die zijn gekoppeld aan deze privé-DNS-zone.
 
-Als u de DNS-records niet opschoont, kunnen er onverwachte problemen met het gegevens vlak optreden. Deze problemen bevatten gegevens onderbrekingen voor regio's die zijn toegevoegd na het verwijderen van het privé-eind punt of het verwijderen van de regio.
+Als u de DNS-records niet opschonen, kunnen er onverwachte problemen met het gegevensvlak optreden. Deze problemen omvatten gegevensuitval naar regio's die zijn toegevoegd na het verwijderen van privéeindpunten of het verwijderen van regio's.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor meer informatie over Azure Cosmos DB beveiligings functies:
+Zie de volgende artikelen voor meer informatie over azure cosmos DB-beveiligingsfuncties:
 
-* Zie [firewall ondersteuning](firewall-support.md)als u een firewall wilt configureren voor Azure Cosmos db.
+* Zie [Firewall-ondersteuning](firewall-support.md)voor het configureren van een firewall voor Azure Cosmos DB.
 
-* Zie [toegang vanaf virtuele netwerken configureren](how-to-configure-vnet-service-endpoint.md)voor meer informatie over het configureren van een service-eind punt voor een virtueel netwerk voor uw Azure Cosmos-account.
+* Zie Toegang configureren [vanaf virtuele netwerken](how-to-configure-vnet-service-endpoint.md)voor meer informatie over het configureren van een eindpunt voor een virtuele netwerkservice voor uw Azure Cosmos-account.
 
-* Zie de documentatie van [Azure private link](../private-link/private-link-overview.md) voor meer informatie over persoonlijke koppelingen.
+* Zie de [Azure Private Link-documentatie](../private-link/private-link-overview.md) voor meer informatie over Private Link.

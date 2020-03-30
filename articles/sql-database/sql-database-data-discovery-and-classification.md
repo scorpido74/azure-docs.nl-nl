@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: eb4e7907c3dcffed035307c2084160ce6051be13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98b21969ce86f84b20fbe78dbdf3002769ef65f5
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409946"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387866"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Gegevensdetectie & classificatie voor Azure SQL Database en Azure Synapse Analytics
 
@@ -89,17 +89,11 @@ Zodra het tenantbrede beleid is gedefinieerd, u doorgaan met de classificatie va
 
 4. Als u een rapport wilt downloaden in Excel-indeling, klikt u op de optie **Exporteren** in het bovenste menu van het venster.
 
-   ![Exporteren naar Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
-
 5. <a id="step-5"></a>Als u wilt beginnen met het classificeren van uw gegevens, klikt u op het **tabblad Classificatie** boven aan het venster.
-
-    ![Uw gegevens classificeren](./media/sql-data-discovery-and-classification/4_data_classification_classification_tab_click.png)
 
 6. De classificatieengine scant uw database op kolommen met mogelijk gevoelige gegevens en biedt een lijst met **aanbevolen kolomclassificaties.** Ga als volgt te werk om classificatieaanbevelingen te bekijken en toe te passen:
 
-   - Als u de lijst met aanbevolen kolomclassificaties wilt weergeven, klikt u op het deelvenster Aanbevelingen onder aan het venster:
-
-      ![Uw gegevens classificeren](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
+   - Als u de lijst met aanbevolen kolomclassificaties wilt bekijken, klikt u op het deelvenster Aanbevelingen onder aan het venster
 
    - Bekijk de lijst met aanbevelingen om een aanbeveling voor een specifieke kolom te accepteren, schakel het selectievakje in de linkerkolom van de desbetreffende rij in. U ook *alle aanbevelingen* markeren als geaccepteerd door het selectievakje in de koptekst van de aanbevelingentabel in te schakelen.
 
@@ -107,21 +101,15 @@ Zodra het tenantbrede beleid is gedefinieerd, u doorgaan met de classificatie va
 
    - Als u de geselecteerde aanbevelingen wilt toepassen, klikt u op de blauwe knop **Geselecteerde aanbevelingen accepteren.**
 
-      ![Aanbevelingen toepassen](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
-
 7. U kolommen ook **handmatig classificeren** als alternatief, of bovendien voor de classificatie op basis van aanbevelingen:
 
    - Klik op **Classificatie toevoegen** in het bovenste menu van het venster.
-
-      ![Classificatie handmatig toevoegen](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png)
 
    - Selecteer in het contextvenster dat wordt geopend het schema > tabel > kolom die u wilt classificeren en het informatietype en het gevoeligheidslabel. Klik vervolgens op de blauwe **knop Classificatie toevoegen** onder aan het contextvenster.
 
       ![Kolom selecteren om te classificeren](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
 
 8. Als u uw classificatie wilt voltooien en de databasekolommen met de nieuwe classificatiemetagegevens voortdurend wilt labelen (taggen), klikt u op **Opslaan** in het bovenste menu van het venster.
-
-   ![Opslaan](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
 
 ## <a name="auditing-access-to-sensitive-data"></a><a id="subheading-3"></a>Toegang tot gevoelige gegevens controleren
 

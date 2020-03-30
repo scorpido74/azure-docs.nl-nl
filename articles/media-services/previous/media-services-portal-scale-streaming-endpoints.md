@@ -1,6 +1,6 @@
 ---
-title: Schaal streaming-eindpunten met Azure portal | Microsoft Docs
-description: Deze zelfstudie leert u de stappen voor het schalen van streaming-eindpunten met Azure portal.
+title: Streamingeindpunten schalen met de Azure-portal | Microsoft Documenten
+description: In deze zelfstudie u de stappen doorlopen van het schalen van streamingeindpunten met de Azure-portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 23eb51428dcf4961febfb592bf957bb8beeeda57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463108"
 ---
 # <a name="scale-streaming-endpoints-with-the-azure-portal"></a>Streaming-eindpunten schalen met Azure Portal
@@ -29,24 +29,24 @@ ms.locfileid: "61463108"
 > 
 > 
 
-**Premium**-streaming-eindpunten zijn geschikt voor geavanceerde workloads omdat er gebruik wordt gemaakt van toegewezen, schaalbare bandbreedtecapaciteit. Klanten met een **Premium**-streaming-eindpunt krijgen standaard één streaming-eenheid (SU). Het streaming-eindpunt kan worden geschaald door SU's toe te voegen. Elke SU biedt extra bandbreedtecapaciteit voor de toepassing. Zie voor meer informatie over het streamen van eindpunttypen en CDN-configuratie, de [overzicht van Streaming-eindpunt](media-services-streaming-endpoints-overview.md) onderwerp.
+**Premium**-streaming-eindpunten zijn geschikt voor geavanceerde workloads omdat er gebruik wordt gemaakt van toegewezen, schaalbare bandbreedtecapaciteit. Klanten met een **Premium**-streaming-eindpunt krijgen standaard één streaming-eenheid (SU). Het streaming-eindpunt kan worden geschaald door SU's toe te voegen. Elke SU biedt extra bandbreedtecapaciteit voor de toepassing. Zie het [onderwerp Streaming Endpoint-overzicht](media-services-streaming-endpoints-overview.md) voor meer informatie over streaming endpoint-typen en CDN-configuratie.
  
-In dit onderwerp laat zien hoe schalen van een streaming-eindpunt.
+In dit onderwerp wordt uitgelegd hoe u een streamingeindpunt schaalt.
 
 Zie [Media Services Pricing Details](https://go.microsoft.com/fwlink/?LinkId=275107) (Informatie over Media Services-prijzen) voor informatie over prijzen.
 
-## <a name="scale-streaming-endpoints"></a>Streaming eindpunten schalen
+## <a name="scale-streaming-endpoints"></a>Streaming-eindpunten schalen
 
-Als u wilt wijzigen van het aantal streaming-eenheden, het volgende doen:
+Ga als volgt te werk om het aantal streaming-eenheden te wijzigen:
 
 1. Selecteer uw Azure Media Services-account in [Azure Portal](https://portal.azure.com/).
-2. In de **instellingen** venster **Streaming-eindpunten**.
-3. Klik op het streaming-eindpunt dat u wilt schalen. 
+2. Selecteer **In** het venster Instellingen de optie **Streaming-eindpunten**.
+3. Klik op het streamingeindpunt dat u wilt schalen. 
 
     > [!NOTE] 
-    > U kunt alleen schalen **Premium** streaming-eindpunten.
+    > Je alleen **Premium** streaming endpoints schalen.
 
-4. Verplaats de schuifregelaar om het aantal streaming-eenheden te geven.
+4. Verplaats de schuifregelaar om het aantal streaming-eenheden op te geven.
 
     ![Streaming-eindpunt](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints3.png)
 

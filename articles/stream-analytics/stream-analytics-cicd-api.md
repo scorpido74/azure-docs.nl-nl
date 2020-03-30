@@ -1,30 +1,30 @@
 ---
-title: REST-Api's gebruiken om CI/CD voor Azure Stream Analytics op IoT Edge uit te voeren
-description: Informatie over het implementeren van een continue integratie en implementatiepijplijn voor Azure Stream Analytics met REST-API's.
+title: REST API's gebruiken om CI/CD voor Azure Stream Analytics op IoT Edge uit te brengen
+description: Meer informatie over het implementeren van een pijplijn voor continue integratie en implementatie voor Azure Stream Analytics met REST API's.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: 78f2e06947c2b81ffe5e6cd8a88438db4dabf158
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 328ca7cd2c6f76095c8334ae6fdb4aa75fbb867d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426422"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292006"
 ---
-# <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>CI/CD voor Stream Analytics implementeren op IoT Edge met behulp van Api's
+# <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>CI/CD implementeren voor Stream Analytics op IoT Edge met API's
 
-U kunt continue integratie en implementatie voor Azure Stream Analytics-taken met behulp van REST-API's inschakelen. In dit artikel biedt voorbeelden op welke API's voor het gebruik en het gebruik ervan. REST-API's worden niet ondersteund op Azure Cloud Shell.
+U continue integratie en implementatie inschakelen voor Azure Stream Analytics-taken met BEHULP van REST-API's. In dit artikel vindt u voorbeelden van welke API's u moet gebruiken en hoe u deze gebruiken. REST API's worden niet ondersteund op Azure Cloud Shell.
 
-## <a name="call-apis-from-different-environments"></a>API's aanroepen vanuit verschillende omgevingen
+## <a name="call-apis-from-different-environments"></a>Apis bellen vanuit verschillende omgevingen
 
-REST-API's kunnen worden aangeroepen vanuit zowel Windows als Linux. De volgende opdrachten laten zien juiste syntaxis voor de API-aanroep. Het gebruik van specifieke API wordt in latere secties van dit artikel worden beschreven.
+REST API's kunnen worden aangeroepen vanuit zowel Linux als Windows. In de volgende opdrachten wordt de juiste syntaxis voor de API-aanroep weergegeven. Specifiek API-gebruik wordt in latere secties van dit artikel beschreven.
 
 ### <a name="linux"></a>Linux
 
-Voor Linux, kunt u `Curl` of `Wget` opdrachten:
+Voor Linux `Curl` u `Wget` of opdrachten gebruiken:
 
 ```bash
 curl -u { <username:password> }  -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" { <url> }   
@@ -36,7 +36,7 @@ wget -q -O- --{ <method> } -data="<request body>" --header=Content-Type:applicat
  
 ### <a name="windows"></a>Windows
 
-Voor Windows, moet u Powershell gebruiken: 
+Gebruik Powershell voor Windows: 
 
 ```powershell 
 $user = "<username>" 
@@ -51,21 +51,21 @@ $response = Invoke-RestMethod <url> -Method <method> -Body $content -Headers $He
 echo $response 
 ```
  
-## <a name="create-an-asa-job-on-edge"></a>Maken van een ASA-taak voor edge-apparaten 
+## <a name="create-an-asa-job-on-edge"></a>Een ASA-taak maken op Edge 
  
-Voor het maken van Stream Analytics-taak, roept u de PUT-methode met behulp van de Stream Analytics-API.
+Als u de taak Stream Analytics wilt maken, roept u de PUT-methode aan met behulp van de Stream Analytics API.
 
 |Methode|Aanvraag-URL|
 |------|-----------|
-|PUT|https://management.azure.com/subscriptions/{**abonnement-id**} /resourcegroups/ {**resource-group-name**} / providers/Microsoft.StreamAnalytics/streamingjobs/ {**taaknaam**}? api-version = 2017-04-01-preview|
+|PUT|`https://management.azure.com/subscriptions/{\**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview`|
  
-Voorbeeld van het gebruik van de opdracht **curl**:
+Voorbeeld van opdracht met behulp van **krul:**
 
 ```curl
 curl -u { <username:password> } -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}?api-version=2017-04-01-preview  
 ``` 
  
-Voorbeeld van aanvraagtekst in JSON:
+Voorbeeld van aanvraaginstantie in JSON:
 
 ```json
 { 
@@ -136,42 +136,42 @@ Voorbeeld van aanvraagtekst in JSON:
 } 
 ```
  
-Zie voor meer informatie de [API-documentatie](/rest/api/streamanalytics/stream-analytics-job).  
+Zie de [API-documentatie](/rest/api/streamanalytics/stream-analytics-job)voor meer informatie.  
  
 ## <a name="publish-edge-package"></a>Edge-pakket publiceren 
  
-Aanroepen voor het publiceren van een Stream Analytics-taak in IoT Edge, de POST-methode met de Edge-API voor het publiceren van pakket.
+Als u een functie Stream Analytics op IoT Edge wilt publiceren, roept u de METHODE POST aan met de Edge Package Publish API.
 
 |Methode|Aanvraag-URL|
 |------|-----------|
-|POST|https://management.azure.com/subscriptions/{**subscriptionid**} /resourceGroups/ {**resourcegroupname**} / providers/Microsoft.StreamAnalytics/streamingjobs/ {**jobname**} / publishedgepackage? api-version = 2017-04-01 - Voorbeeld|
+|POST|`https://management.azure.com/subscriptions/{\**subscriptionid**}/resourceGroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage?api-version=2017-04-01-preview`|
 
-Deze asynchrone bewerking retourneert een status van 202 totdat de taak is gepubliceerd. De locatieheader van het antwoord bevat de URI die wordt gebruikt om op te halen van de status van het proces. Terwijl het proces wordt uitgevoerd, retourneert een aanroep naar de URI in de location-header 202 status. Wanneer het proces is voltooid, is de URI in de location-header geeft als resultaat de status van 200. 
+Deze asynchrone bewerking retourneert een status van 202 totdat de taak is gepubliceerd. De koptekst voor locatierespons bevat de URI die wordt gebruikt om de status van het proces te krijgen. Terwijl het proces wordt uitgevoerd, geeft een aanroep naar de URI in de locatiekopeen status van 202. Wanneer het proces is voltooid, geeft de URI in de locatiekop een status van 200 terug. 
 
-Voorbeeld van een Edge-pakket publiceren met behulp van aanroep **curl**: 
+Voorbeeld van een Edge-pakket publiceren oproep met behulp van **krul:** 
 
 ```bash
 curl -d -X POST https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}/publishedgepackage?api-version=2017-04-01-preview
 ```
  
-Nadat u de POST-aanroep, moet u een antwoord met een lege hoofdtekst verwachten. Zoek naar de URL die zich in de kop van het antwoord en leg deze vast voor gebruik.
+Na het maken van de POST oproep, moet u verwachten dat een reactie met een leeg lichaam. Zoek naar de URL in het hoofd van het antwoord en neem deze op voor verder gebruik.
  
-Voorbeeld van de URL van de kop van de reactie:
+Voorbeeld van de URL van het hoofd van de respons:
 
 ```
 https://management.azure.com/subscriptions/{**subscriptionid**}/resourcegroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/StreamingJobs/{**resourcename**}/OperationResults/023a4d68-ffaf-4e16-8414-cb6f2e14fe23?api-version=2017-04-01-preview 
 ```
-Een wachttijd voor het één tot twee minuten voordat u de volgende opdracht uit om te maken van een API-aanroep met de URL die u in de kop van het antwoord gevonden. Als u niet een 200-respons ontvangt, voert u de opdracht opnieuw uit.
+Een wachttijd voor één tot twee minuten voordat u de volgende opdracht uitvoert om een API-aanroep te maken met de URL die u in het hoofd van het antwoord hebt gevonden. Probeer de opdracht opnieuw als u geen 200-antwoord krijgt.
  
-Voorbeeld van het maken van API-aanroep met geretourneerde URL met **curl**:
+Voorbeeld van het maken van API-aanroep met geretourneerde URL met **krul:**
 
 ```bash
 curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{resourcename}/publishedgepackage?api-version=2017-04-01-preview 
 ```
 
-Het antwoord bevat de informatie die u wilt toevoegen aan het Edge-script voor implementatie. De voorbeelden hieronder ziet u wat informatie die u nodig hebt voor het verzamelen en waar toe te voegen in de implementatie manifest.
+Het antwoord bevat de informatie die u moet toevoegen aan het Edge-implementatiescript. De onderstaande voorbeelden laten zien welke informatie u moet verzamelen en waar u deze toevoegen in het implementatiemanifest.
  
-Voorbeeld van de antwoordtekst na het publiceren is:
+Voorbeeldreactiebody na publicatie:
 
 ```json
 { 
@@ -182,7 +182,7 @@ Voorbeeld van de antwoordtekst na het publiceren is:
 } 
 ```
 
-Voorbeeld van implementatie-Manifest: 
+Voorbeeld van implementatiemanifest: 
 
 ```json
 { 
@@ -252,11 +252,11 @@ Voorbeeld van implementatie-Manifest:
 } 
 ```
 
-Raadpleeg na de configuratie van de implementatie van het manifest, [implementeren Azure IoT Edge-modules met Azure CLI](../iot-edge/how-to-deploy-modules-cli.md) voor implementatie.
+Na de configuratie van het implementatiemanifest verwijzen we je naar [Azure IoT Edge-modules implementeren met Azure CLI](../iot-edge/how-to-deploy-modules-cli.md) voor implementatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen 
  
 * [Azure Stream Analytics op IoT Edge](stream-analytics-edge.md)
-* [ASA on IoT Edge-zelfstudie](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
-* [Stream Analytics Edge-taken met behulp van Visual Studio-hulpprogramma's ontwikkelen](stream-analytics-tools-for-visual-studio-edge-jobs.md)
+* [ASA op IoT Edge-zelfstudie](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
+* [Stream Analytics Edge-taken ontwikkelen met behulp van Visual Studio-hulpprogramma's](stream-analytics-tools-for-visual-studio-edge-jobs.md)

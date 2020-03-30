@@ -1,6 +1,6 @@
 ---
-title: Een app met één pagina verplaatsen naar productie-micro soft Identity-platform | Azure
-description: Meer informatie over het bouwen van een toepassing met één pagina (verplaatsen naar productie)
+title: App voor één pagina naar productie verplaatsen - Microsoft-identiteitsplatform | Azure
+description: Meer informatie over het maken van een toepassing van één pagina (naar productie)
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,37 +15,37 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 01b923e0d013fab1815456e55eac6036ded772bb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701838"
 ---
-# <a name="single-page-application-move-to-production"></a>Toepassing met één pagina: verplaatsen naar productie
+# <a name="single-page-application-move-to-production"></a>Toepassing met één pagina: naar productie gaan
 
-Nu u weet hoe u een token kunt verkrijgen om Web-Api's aan te roepen, leert u hoe u kunt overstappen op productie.
+Nu u weet hoe u een token aanschaffen om web-API's te bellen, leert u hoe u naar de productie gaan.
 
 ## <a name="improve-your-app"></a>Uw app verbeteren
 
-[Schakel logboek registratie](msal-logging.md) in om uw app-productie gereed te maken.
+[Schakel logboekregistratie in](msal-logging.md) om de productie van uw app gereed te maken.
 
-## <a name="test-your-integration"></a>Uw integratie testen
+## <a name="test-your-integration"></a>Test uw integratie
 
-Test uw integratie door de [controle lijst voor de integratie van micro soft Identity platform](identity-platform-integration-checklist.md)te volgen.
+Test uw integratie door de checklist voor integratie [van het Microsoft-identiteitsplatform te volgen.](identity-platform-integration-checklist.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Grondige kennis van het Snelstartgids-voor beeld, waarin de code wordt uitgelegd voor het aanmelden van gebruikers en het verkrijgen van een toegangs token om de Microsoft Graph-API aan te roepen met behulp van MSAL. js:
+Diepe duik van het quickstart-voorbeeld, waarin de code wordt uitgelegd voor het inloggen van gebruikers en een toegangstoken krijgt om de Microsoft Graph-API aan te roepen met MSAL.js:
 
 > [!div class="nextstepaction"]
-> [Java script-zelf studie](./tutorial-v2-javascript-spa.md)
+> [JavaScript SPA-zelfstudie](./tutorial-v2-javascript-spa.md)
 
-Voor beeld dat laat zien hoe u tokens kunt ophalen voor uw eigen back-end web-API met behulp van MSAL. js:
-
-> [!div class="nextstepaction"]
-> [Beveiligd-wachtwoord verificatie met een ASP.NET-back-end](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
-
-Voor beeld waarin wordt getoond hoe u MSAL. js kunt gebruiken om gebruikers te ondertekenen in een app die is geregistreerd met Azure Active Directory B2C (Azure AD B2C):
+Voorbeeld dat laat zien hoe je tokens krijgen voor je eigen back-end web-API met MSAL.js:
 
 > [!div class="nextstepaction"]
-> [Beveiligd-wachtwoord verificatie met Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+> [SPA met een ASP.NET back-end](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
+
+Voorbeeld van het gebruik van MSAL.js om gebruikers aan te melden in een app die is geregistreerd bij Azure Active Directory B2C (Azure AD B2C):
+
+> [!div class="nextstepaction"]
+> [SPA met Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)

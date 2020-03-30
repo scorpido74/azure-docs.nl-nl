@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met KnowledgeOwl | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met KnowledgeOwl | Microsoft Documenten'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en KnowledgeOwl.
 services: active-directory
 documentationCenter: na
@@ -17,81 +17,81 @@ ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dc7d481b757a76ba65e0c78a93bde1bc58ace7cc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72791638"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met KnowledgeOwl
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met KnowledgeOwl
 
-In deze zelf studie leert u hoe u KnowledgeOwl integreert met Azure Active Directory (Azure AD). Wanneer u KnowledgeOwl integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u KnowledgeOwl integreren met Azure Active Directory (Azure AD). Wanneer u KnowledgeOwl integreert met Azure AD, u het als:
 
-* Controle in azure AD die toegang heeft tot KnowledgeOwl.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij KnowledgeOwl met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Beheer in Azure AD die toegang heeft tot KnowledgeOwl.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij KnowledgeOwl met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+Om aan de slag te gaan, heb je de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* KnowledgeOwl-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
+* KnowledgeOwl single sign-on (SSO) ingeschakeld abonnement.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
 
-* KnowledgeOwl ondersteunt SSO die door **SP en IDP** is geïnitieerd
-* KnowledgeOwl ondersteunt **just-in-time** -gebruikers inrichting
+* KnowledgeOwl ondersteunt **SP en IDP** geïnitieerd sso
+* KnowledgeOwl ondersteunt **Just In Time** gebruikersinrichting
 
-## <a name="adding-knowledgeowl-from-the-gallery"></a>KnowledgeOwl toevoegen uit de galerie
+## <a name="adding-knowledgeowl-from-the-gallery"></a>KnowledgeOwl toevoegen vanuit de galerie
 
-Als u de integratie van KnowledgeOwl in azure AD wilt configureren, moet u KnowledgeOwl uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van KnowledgeOwl in Azure AD wilt configureren, moet u KnowledgeOwl uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **KnowledgeOwl** in het zoekvak.
-1. Selecteer **KnowledgeOwl** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
+1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
+1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ **KnowledgeOwl** in de sectie **Toevoegen in de galerie** in het zoekvak.
+1. Selecteer **KnowledgeOwl** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-knowledgeowl"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor KnowledgeOwl
+## <a name="configure-and-test-azure-ad-single-sign-on-for-knowledgeowl"></a>Azure AD-aanmelding voor KnowledgeOwl configureren en testen
 
-Azure AD SSO met KnowledgeOwl configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in KnowledgeOwl.
+Azure AD SSO configureren en testen met KnowledgeOwl met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in KnowledgeOwl.
 
-Als u Azure AD SSO wilt configureren en testen met KnowledgeOwl, voltooit u de volgende bouw stenen:
+Als u Azure AD SSO wilt configureren en testen met KnowledgeOwl, voert u de volgende bouwstenen in:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[KNOWLEDGEOWL SSO configureren](#configure-knowledgeowl-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    * **[Maak een KnowledgeOwl-test gebruiker](#create-knowledgeowl-test-user)** -om een equivalent van B. Simon in KnowledgeOwl te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
+    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
+    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
+1. **[Configureer KnowledgeOwl SSO](#configure-knowledgeowl-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+    * **[Maak KnowledgeOwl-testgebruiker](#create-knowledgeowl-test-user)** - om een tegenhanger van B.Simon in KnowledgeOwl te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie van **KnowledgeOwl** de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **KnowledgeOwl-toepassingsintegratie** de sectie **Beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
+1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
+1. Voer in de sectie **BasisSAML-configuratie** de waarden voor de volgende velden in als u de toepassing in de **idp-modus** wilt configureren:
 
-    a. In het tekstvak **Id** typt u een URL met het volgende patroon:
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: 
     
     | | |
     |-|-|
     | `https://app.knowledgeowl.com/sp`|
     | `https://app.knowledgeowl.com/sp/id/<unique ID>`|
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon:
+    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: 
     
     | | |
     |-|-|
@@ -104,7 +104,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon:
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: 
     
     | | |
     |-|-|
@@ -116,115 +116,115 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     | `https://privatedomain.com/home/saml-login`|
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. U moet deze waarde bijwerken vanuit de daad werkelijke id, de antwoord-URL en de aanmeldings-URL die verderop in de zelf studie wordt uitgelegd.
+    > Dit zijn geen echte waarden. U moet deze waarde bijwerken vanaf de werkelijke id, url voor antwoorden en url van aanmelding, wat later in de zelfstudie wordt uitgelegd.
 
-1. De KnowledgeOwl-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. KnowledgeOwl-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![image](common/default-attributes.png)
+    ![installatiekopie](common/default-attributes.png)
 
-1. Daarnaast verwacht KnowledgeOwl toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
+1. Naast bovenstaande, KnowledgeOwl applicatie verwacht weinig meer attributen worden teruggegeven in SAML reactie die hieronder worden weergegeven. Deze kenmerken zijn ook vooraf ingevuld, maar u ze bekijken volgens uw vereisten.
 
-    | Naam | Bronkenmerk | Naamruimte |
+    | Name | Bronkenmerk | Naamruimte |
     | ------------ | -------------------- | -----|
-    | ssoid | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | ssoïde | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , **certificaat (RAW)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** **certificaat** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/certificateraw.png)
 
-1. Op de sectie **KnowledgeOwl instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
+1. Kopieer in de sectie **KnowledgeOwl instellen** de juiste URL(s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
+   1. Voer in het veld **Naam**`B.Simon` in.  
+   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+   1. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan KnowledgeOwl.
+In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot KnowledgeOwl.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **KnowledgeOwl**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Selecteer **KnowledgeOwl**in de lijst met toepassingen .
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
+1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
 
 ## <a name="configure-knowledgeowl-sso"></a>KnowledgeOwl SSO configureren
 
-1. Meld u in een ander webbrowser venster als beheerder aan bij uw KnowledgeOwl-bedrijfs site.
+1. Meld u in een ander browservenster aan op uw KnowledgeOwl-bedrijfssite als beheerder.
 
-1. Klik op **instellingen** en selecteer vervolgens **beveiliging**.
+1. Klik op **Instellingen** en selecteer **Vervolgens Beveiliging**.
 
     ![KnowledgeOwl-configuratie](./media/knowledgeowl-tutorial/configure1.png)
 
-1. Ga naar **SAML-SSO-integratie** en voer de volgende stappen uit:
+1. Schuif naar **SAML SSO-integratie** en voer de volgende stappen uit:
 
     ![KnowledgeOwl-configuratie](./media/knowledgeowl-tutorial/configure2.png)
 
     a. Selecteer **SAML SSO inschakelen**.
 
-    b. Kopieer de waarde van de **SP-entiteit-id** en plak deze in de **id (Entiteits-ID)** in het gedeelte **basis configuratie van SAML** op het Azure Portal.
+    b. Kopieer de waarde van de **SP-entiteits-id** en plak deze in de **id (entiteits-id)** in de sectie **BasisSAML-configuratie** op de Azure-portal.
 
-    c. Kopieer de waarde voor de **aanmeldings-URL van SP** en plak deze in de tekst van de **aanmeldings-URL en antwoord-URL** in het gedeelte **basis-SAML-configuratie** op de Azure Portal.
+    c. Kopieer de **URL-waarde van DE SP-aanmelding** en plak deze in de tekstvakken **voor aanmeldings-URL en URL-antwoord** in de sectie **BasisSAML-configuratie** op de Azure-portal.
 
-    d. Plak in het tekstvak **IDP entityID** de waarde van de **Azure ad-id** , die u hebt gekopieerd uit de Azure Portal.
+    d. Plak in het tekstvak **Id-entiteit ID** de waarde **van de Azure AD-id,** die u hebt gekopieerd van de Azure-portal.
 
-    e. Plak in het tekstvak **IDP aanmeld-URL** de waarde voor de **aanmeldings-URL** , die u hebt gekopieerd uit de Azure Portal.
+    e. Plak in het tekstvak **URL-login-aanmelding** splakken de **waarde van de inlog-URL,** die u hebt gekopieerd van de Azure-portal.
 
-    f. Plak in het tekstvak **Afmeldings-URL van IDP** de waarde van de **afmeldings-URL** , die u hebt gekopieerd uit de Azure Portal
+    f. Plak in het **tekstvak URL-url-aanmelding idp** de **URL-waarde van afmelden,** die u hebt gekopieerd uit de Azure-portal
 
-    g. Upload het gedownloade certificaat formulier de Azure Portal door te klikken op het **certificaat IDP uploaden**.
+    g. Upload het gedownloade certificaat van de Azure-portal door op het **Upload IdP-certificaat**te klikken.
 
-    h. Klik op **SAML-kenmerken toewijzen** om kenmerken toe te wijzen en voer de volgende stappen uit:
+    h. Klik op **SAML-kenmerken toewijzen om** kenmerken toe te passen en de volgende stappen uit te voeren:
 
     ![KnowledgeOwl-configuratie](./media/knowledgeowl-tutorial/configure3.png)
 
-    * `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` invoeren in het tekstvak **SSO-id**
-    * Voer `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` in het tekstvak **gebruikers naam/e-mail adres** in.
-    * Voer `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` in het tekstvak **voor de voor naam** in.
-    * Voer `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` in het tekstvak **Achternaam** in.
-    * Klik op **Opslaan**.
+    * Voer `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` het **tekstvak Van SSO-id** in
+    * Voer `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` het **tekstvak Gebruikersnaam/e-mail in.**
+    * Voer `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` het tekstvak **Voornaam** in.
+    * Voer `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` het tekstvak **Achternaam** in.
+    * Klik **op Opslaan**
 
     i. Klik op **Opslaan** onder aan de pagina.
 
     ![KnowledgeOwl-configuratie](./media/knowledgeowl-tutorial/configure4.png)
 
-### <a name="create-knowledgeowl-test-user"></a>KnowledgeOwl-test gebruiker maken
+### <a name="create-knowledgeowl-test-user"></a>KnowledgeOwl-testgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in KnowledgeOwl. KnowledgeOwl biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in KnowledgeOwl, wordt er een nieuwe gemaakt na verificatie.
+In deze sectie wordt een gebruiker genaamd B.Simon gemaakt in KnowledgeOwl. KnowledgeOwl ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in KnowledgeOwl, wordt er een nieuwe gemaakt na verificatie.
 
 > [!Note]
-> Als u hand matig een gebruiker moet maken, neemt u contact op met het [ondersteunings team van KnowledgeOwl](mailto:support@knowledgeowl.com).
+> Neem contact op met [knowledgeowl support team](mailto:support@knowledgeowl.com)als u handmatig een gebruiker wilt maken.
 
-## <a name="test-sso"></a>SSO testen
+## <a name="test-sso"></a>Test SSO
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel KnowledgeOwl in het toegangs venster klikt, moet u automatisch worden aangemeld bij de KnowledgeOwl waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel KnowledgeOwl in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de KnowledgeOwl waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer KnowledgeOwl met Azure AD](https://aad.portal.azure.com/)
+- [KnowledgeOwl uitproberen met Azure AD](https://aad.portal.azure.com/)

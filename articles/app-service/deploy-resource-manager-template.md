@@ -1,59 +1,59 @@
 ---
 title: Apps implementeren met sjablonen
-description: Vind hulp bij het maken van Azure Resource Manager sjablonen voor het inrichten en implementeren van App Service-apps.
+description: Richtlijnen voor het maken van Azure Resource Manager-sjablonen voor het inrichten en implementeren van App Service-apps.
 author: tfitzmac
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
 ms.openlocfilehash: dfdfa9f69e00aa644c21fc96cb70e9fa460ca0c1
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77211702"
 ---
-# <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Richt lijnen voor het implementeren van web-apps met behulp van Azure Resource Manager sjablonen
+# <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Richtlijnen voor het implementeren van webapps met Azure Resource Manager-sjablonen
 
-In dit artikel vindt u aanbevelingen voor het maken van Azure Resource Manager sjablonen voor het implementeren van Azure App Service oplossingen. Deze aanbevelingen kunnen u helpen veelvoorkomende problemen te voor komen.
+In dit artikel vindt u aanbevelingen voor het maken van Azure Resource Manager-sjablonen voor het implementeren van Azure App Service-oplossingen. Deze aanbevelingen kunnen u helpen veelvoorkomende problemen te voorkomen.
 
 ## <a name="define-dependencies"></a>Afhankelijkheden definiëren
 
-Voor het definiëren van afhankelijkheden voor web-apps moet u weten hoe de resources in een web-app werken. Als u afhankelijkheden in een onjuiste volg orde opgeeft, kunt u implementatie fouten veroorzaken of een race voorwaarde maken waarmee de implementatie wordt gestallion.
+Het definiëren van afhankelijkheden voor web-apps vereist inzicht in hoe de bronnen in een web-app met elkaar omgaan. Als u afhankelijkheden opgeeft in een onjuiste volgorde, u implementatiefouten veroorzaken of een racevoorwaarde maken die de implementatie blokkeert.
 
 > [!WARNING]
-> Als u een MSDeploy-site-extensie in uw sjabloon opneemt, moet u configuratie resources instellen als afhankelijk van de MSDeploy-resource. Configuratie wijzigingen zorgen ervoor dat de site asynchroon opnieuw wordt gestart. Door de configuratie bronnen afhankelijk van MSDeploy te maken, zorgt u ervoor dat MSDeploy eindigt voordat de site opnieuw wordt opgestart. Zonder deze afhankelijkheden wordt de site mogelijk opnieuw opgestart tijdens het implementatie proces van MSDeploy. Zie voor een voorbeeld sjabloon [wordpress-sjabloon met de afhankelijkheid van Web Deploy](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json).
+> Als u een MSDeploy-siteextensie in uw sjabloon opneemt, moet u alle configuratiebronnen zo ingesteld dat deze afhankelijk is van de MSDeploy-bron. Configuratiewijzigingen zorgen ervoor dat de site opnieuw wordt opgestart. Door de configuratiebronnen afhankelijk te maken van MSDeploy, zorgt u ervoor dat MSDeploy klaar is voordat de site opnieuw wordt opgestart. Zonder deze afhankelijkheden kan de site opnieuw worden opgestart tijdens het implementatieproces van MSDeploy. Zie [WordPress-sjabloon met afhankelijkheid van webdeploy voor](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json)een voorbeeldsjabloon .
 
-In de volgende afbeelding ziet u de afhankelijkheids volgorde voor verschillende App Service resources:
+In de volgende afbeelding wordt de afhankelijkheidsvolgorde voor verschillende App Service-bronnen weergegeven:
 
-![Web-app-afhankelijkheden](media/web-sites-rm-template-guidance/web-dependencies.png)
+![Afhankelijkheden van webapps](media/web-sites-rm-template-guidance/web-dependencies.png)
 
-U implementeert resources in de volgende volg orde:
+U implementeert resources in de volgende volgorde:
 
-**Laag 1**
-* App Service plan.
-* Alle andere gerelateerde resources, zoals data bases of opslag accounts.
+**Tier 1**
+* App Service-abonnement.
+* Andere gerelateerde bronnen, zoals databases of opslagaccounts.
 
-**Laag 2**
-* Web-app--is afhankelijk van het App Service-abonnement.
-* Azure-toepassing Insights-exemplaar dat de server farm bedoelt, is afhankelijk van het App Service plan.
+**Tier 2**
+* Web-app- is afhankelijk van het App Service-abonnement.
+* Het exemplaar Azure Application Insights dat zich richt op de serverfarm, is afhankelijk van het App Service-abonnement.
 
 **Laag 3**
-* Broncode beheer: is afhankelijk van de web-app.
-* Site-uitbrei ding MSDeploy--is afhankelijk van de web-app.
-* Azure-toepassing Insights-exemplaar dat de web-app bedoelt, is afhankelijk van de web-app.
+* Bronbeheer - is afhankelijk van de web-app.
+* MSDeploy-siteextensie is afhankelijk van de web-app.
+* Het exemplaar Azure Application Insights dat zich richt op de web-app, is afhankelijk van de web-app.
 
 **Laag 4**
-* App Service certificaat: afhankelijk van broncode beheer of MSDeploy, indien aanwezig. Anders is dit afhankelijk van de web-app.
-* Configuratie-instellingen (verbindings reeksen, Web. config-waarden, app-instellingen): afhankelijk van broncode beheer of MSDeploy, indien aanwezig. Anders is dit afhankelijk van de web-app.
+* App Service-certificaat- is afhankelijk van bronbeheer of MSDeploy als een van beide aanwezig is. Anders hangt het af van de web-app.
+* Configuratie-instellingen (verbindingstekenreeksen, web.config-waarden, app-instellingen)--afhankelijk van bronbeheer of MSDeploy als een van beide aanwezig is. Anders hangt het af van de web-app.
 
 **Laag 5**
-* Host-naam bindingen: afhankelijk van het certificaat, indien aanwezig. Anders is dit afhankelijk van een resource van een hoger niveau.
-* Site-extensies: afhankelijk van de huidige configuratie-instellingen. Anders is dit afhankelijk van een resource van een hoger niveau.
+* Host naam bindingen - is afhankelijk van het certificaat indien aanwezig. Anders is het afhankelijk van een bron op een hoger niveau.
+* Site-extensies - afhankelijk van configuratie-instellingen indien aanwezig. Anders is het afhankelijk van een bron op een hoger niveau.
 
-Normaal gesp roken bevat uw oplossing slechts enkele van deze resources en lagen. Voor ontbrekende lagen wijst u lagere resources toe aan de volgende hogere laag.
+Uw oplossing bevat doorgaans slechts enkele van deze bronnen en lagen. Voor ontbrekende lagen u lagere resources toewijzen aan de volgende hogere laag.
 
-In het volgende voor beeld ziet u een deel van een sjabloon. De waarde van de connection string configuratie is afhankelijk van de MSDeploy-extensie. De MSDeploy-extensie is afhankelijk van de web-app en de data base. 
+In het volgende voorbeeld wordt een deel van een sjabloon weergegeven. De waarde van de configuratie van de verbindingstekenreeks is afhankelijk van de MSDeploy-extensie. De MSDeploy-extensie is afhankelijk van de web-app en -database. 
 
 ```json
 {
@@ -82,19 +82,19 @@ In het volgende voor beeld ziet u een deel van een sjabloon. De waarde van de co
 }
 ```
 
-Zie voor een kant-en-klaar voor beeld dat gebruikmaakt van de bovenstaande code [sjabloon: een eenvoudige Umbraco-web-app bouwen](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple).
+Zie [Sjabloon: Bouw een eenvoudige Umbraco Web App](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple)voor een kant-en-klaar voorbeeld dat de bovenstaande code gebruikt.
 
-## <a name="find-information-about-msdeploy-errors"></a>Informatie over MSDeploy-fouten zoeken
+## <a name="find-information-about-msdeploy-errors"></a>Informatie vinden over MSDeploy-fouten
 
-Als uw Resource Manager-sjabloon gebruikmaakt van MSDeploy, kan het lastig zijn om de implementatie fout berichten te begrijpen. Als u meer informatie wilt over het uitvoeren van een mislukte implementatie, voert u de volgende stappen uit:
+Als uw resourcemanagersjabloon MSDeploy gebruikt, kunnen de foutmeldingen voor implementatie moeilijk te begrijpen zijn. Als u meer informatie wilt krijgen na een mislukte implementatie, probeert u de volgende stappen:
 
-1. Ga naar de kudu- [console](https://github.com/projectkudu/kudu/wiki/Kudu-console)van de site.
+1. Ga naar de [Kudu-console](https://github.com/projectkudu/kudu/wiki/Kudu-console)van de site.
 2. Blader naar de map op D:\home\LogFiles\SiteExtensions\MSDeploy.
-3. Zoek naar de bestanden appManagerStatus. XML en appManagerLog. XML. Het eerste bestand registreert de status. Het tweede bestand registreert informatie over de fout. Als de fout niet aan u is toegevoegd, kunt u deze toevoegen wanneer u hulp nodig hebt bij het [forum](https://docs.microsoft.com/answers/topics/azure-webapps.html).
+3. Zoek naar de bestanden appManagerStatus.xml en appManagerLog.xml. Het eerste bestand registreert de status. In het tweede bestand worden gegevens over de fout opgeslagen. Als de fout niet duidelijk is voor u, u deze opnemen wanneer u om hulp vraagt op het [forum.](https://docs.microsoft.com/answers/topics/azure-webapps.html)
 
-## <a name="choose-a-unique-web-app-name"></a>Kies een unieke naam voor de web-app
+## <a name="choose-a-unique-web-app-name"></a>Een unieke naam van de web-app kiezen
 
-De naam van uw web-app moet wereld wijd uniek zijn. U kunt een naam Conventie gebruiken die waarschijnlijk uniek is, of u kunt de [functie Unique string](../azure-resource-manager/templates/template-functions-string.md#uniquestring) gebruiken om te helpen bij het genereren van een unieke naam.
+De naam voor uw web-app moet wereldwijd uniek zijn. U een naamgevingsconventie gebruiken die waarschijnlijk uniek is, of u de [unieke String-functie](../azure-resource-manager/templates/template-functions-string.md#uniquestring) gebruiken om te helpen bij het genereren van een unieke naam.
 
 ```json
 {
@@ -105,13 +105,13 @@ De naam van uw web-app moet wereld wijd uniek zijn. U kunt een naam Conventie ge
 }
 ```
 
-## <a name="deploy-web-app-certificate-from-key-vault"></a>Web-app-certificaat van Key Vault implementeren
+## <a name="deploy-web-app-certificate-from-key-vault"></a>Web-app-certificaat implementeren vanuit Key Vault
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Als uw sjabloon een [micro soft. Web/certificates](/azure/templates/microsoft.web/certificates) -bron bevat voor SSL-binding en het certificaat wordt opgeslagen in een Key Vault, moet u ervoor zorgen dat de app service identiteit toegang heeft tot het certificaat.
+Als uw sjabloon een [Microsoft.Web/certificaten-bron](/azure/templates/microsoft.web/certificates) voor SSL-binding bevat en het certificaat is opgeslagen in een Sleutelkluis, moet u ervoor zorgen dat de app-service-identiteit toegang heeft tot het certificaat.
 
-In Global Azure heeft de App Service Service-Principal de ID **abfa0a7c-a6b6-4736-8310-5855508787cd**. Als u toegang wilt verlenen aan Key Vault voor de App Service Service-Principal, gebruikt u:
+In globale Azure heeft de serviceprincipal van App Service de ID van **abfa0a7c-a6b6-4736-8310-5855508787cd**. Gebruik het als belangrijkste toegang tot Key Vault voor de hoofdsom van de App-serviceservice:
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy `
@@ -121,17 +121,17 @@ Set-AzKeyVaultAccessPolicy `
   -PermissionsToCertificates get
 ```
 
-In Azure Government heeft de App Service Service-Principal de ID **6a02c803-DaFD-4136-b4c3-5a6f318b4714**. Gebruik die ID in het vorige voor beeld.
+In Azure Government heeft de serviceprincipal van App Service de ID van **6a02c803-dafd-4136-b4c3-5a6f318b4714**. Gebruik die ID in het voorgaande voorbeeld.
 
-Selecteer in uw Key Vault **certificaten** en **genereren/importeren** om het certificaat te uploaden.
+Selecteer in uw sleutelkluis **certificaten** en **Genereer/importeer om** het certificaat te uploaden.
 
 ![Certificaat importeren](media/web-sites-rm-template-guidance/import-certificate.png)
 
-Geef in uw sjabloon de naam op van het certificaat voor de `keyVaultSecretName`.
+Geef in uw sjabloon de naam `keyVaultSecretName`op van het certificaat voor de .
 
-Zie [een web-app-certificaat implementeren vanuit Key Vault Secret en dit gebruiken voor het maken van SSL-binding](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)voor een voorbeeld sjabloon.
+Zie [Een web-app-certificaat uit Key Vault-geheim implementeren en gebruiken voor het maken van SSL-binding en voor](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)een voorbeeldsjabloon.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie micro [services zoals verwacht inrichten en implementeren in azure](deploy-complex-application-predictably.md)voor een zelf studie over het implementeren van web-apps met een sjabloon.
-* Zie [Azure Resource Manager-sjabloon verwijzing](/azure/templates/)voor meer informatie over de JSON-syntaxis en eigenschappen voor resource typen in sjablonen.
+* Zie [Microservices inrichten en implementeren voorspelbaar in Azure](deploy-complex-application-predictably.md)voor een zelfstudie over het implementeren van webapps met een sjabloon.
+* Zie [Sjabloonverwijzing](/azure/templates/)azure resource manager voor meer informatie over syntaxis en eigenschappen van JSON voor resourcetypen in sjablonen.

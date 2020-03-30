@@ -1,104 +1,104 @@
 ---
-title: Naamgevings beperkingen voor resources
-description: Hier worden de regels en beperkingen voor het benoemen van Azure-resources weer gegeven.
+title: Beperkingen voor het benoemen van resources
+description: Toont de regels en beperkingen voor het benoemen van Azure-bronnen.
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/27/2020
+ms.openlocfilehash: 580b7efd26d5729baf236b59452f63483c003e44
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273915"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366215"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Naamgevingsregels en -beperkingen voor Azure-resources
 
-Dit artikel bevat een overzicht van de naamgevings regels en beperkingen voor Azure-resources. Zie [Ready: Recommended name and Tags Conventions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)(Engelstalig) voor aanbevelingen voor het benoemen van resources.
+In dit artikel worden naamgevingsregels en beperkingen voor Azure-bronnen samengevat. Zie [Afspraken maken: Aanbevolen naamgeving en tags voor](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)het benoemen van resources.
 
-Resource namen zijn hoofdletter gevoelig, tenzij specifiek vermeld in de kolom geldige tekens.
+Resourcenamen zijn hoofdletters ongevoelig, tenzij specifiek vermeld in de kolom geldige tekens.
 
 In de volgende tabellen verwijst de term alfanumeriek naar:
 
-* **a** t/m **z** (kleine letters)
-* **A** t/m **Z** (hoofd letters)
-* **0** t/m **9** (cijfers)
+* **a** tot **en met z** (kleine letters)
+* **A** tot **en met Z** (hoofdletters)
+* **0** tot **en met 9** (cijfers)
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | Server | resourcegroep | 3-63 | Kleine letters en cijfers.<br><br>Beginnen met kleine letters. |
+> | Servers | resourcegroep | 3-63 | Kleine letters en cijfers.<br><br>Begin met kleine letter. |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | service | internationaal | 1-50 | Alfanumerieke tekens.<br><br>Begin met letter. |
-> | Service/api's | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/api's/problemen | api | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/api's/problemen/bijlagen | name | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/api's/problemen/opmerkingen | name | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/api's/bewerkingen | api | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/api's/bewerkingen/Tags | operation | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/api's/releases | api | 1-80 | Alfanumeriek, onderstrepings tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumeriek of onderstrepings teken. |
-> | Service/api's/schema's | api | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/api's/tagDescriptions | api | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/api's/Tags | api | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/API-versie-sets | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service-authorizationServers | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/back-end | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/certificaten | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/diagnostische gegevens | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | service/groepen | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | service/groepen/gebruikers | group | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service-identityProviders | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/logger | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/meldingen | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/meldingen/recipientEmails | melding | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service-openidConnectProviders | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/beleid | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/producten | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/producten/api's | product | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/producten/groepen | product | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/Producten/Tags | product | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | service/eigenschappen | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/abonnementen | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/Tags | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | service/Sjablonen | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/gebruikers | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
+> | service | Globale | 1-50 | Alfanumerieke waarden.<br><br>Begin met de brief. |
+> | service / apis | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / apis / problemen | api | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / apis / problemen / bijlagen | Probleem | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / api's / problemen / opmerkingen | Probleem | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / api's / bewerkingen | api | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / api's / bewerkingen / tags | Bewerking | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / api's / releases | api | 1-80 | Alfanumerieke, underscores en koppeltekens.<br><br>Begin en eindig met alfanumerieke of underscore. |
+> | service / apis / schema's | api | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / apis / tagBeschrijvingen | api | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / apis / tags | api | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / api-versie-sets | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / autorisatieServers | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / back-ends | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / certificaten | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / diagnostiek | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / groepen | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / groepen / gebruikers | group | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / identiteitProviders | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / loggers | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / meldingen | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / meldingen / ontvangerE-mails | melding | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / openidConnectProviders | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / beleid | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / producten | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / producten / api's | product | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / producten / groepen | product | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / producten / tags | product | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / eigenschappen | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / abonnementen | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / tags | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / sjablonen | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
+> | service / gebruikers | service | 1-256 | Kan het als geen gebruik maken:<br> `*#&+:<>?` |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | configurationStores | resourcegroep | 5-50 | Alfanumeriek, onderstrepings tekens en afbreek streepjes. |
+> | configurationStores | resourcegroep | 5-50 | Alfanumerieke, underscores en koppeltekens. |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | vergren delingen | toewijzings bereik | 1-90 | Alfanumerieken, punten, onderstrepings tekens, afbreek streepjes en haakjes.<br><br>Kan niet eindigen met een periode. |
-> | policyassignments | toewijzings bereik | weergave naam 1-128<br><br>resource naam voor 1-260 | De weergave naam mag tekens bevatten.<br><br>De resource naam mag niet `%` bevatten en mag niet eindigen met een punt of spatie. |
-> | policydefinitions | bereik van definitie | weergave naam 1-128<br><br>resource naam voor 1-260 | De weergave naam mag tekens bevatten.<br><br>De resource naam mag niet `%` bevatten en mag niet eindigen met een punt of spatie. |
-> | policySetDefinitions | bereik van definitie | weergave naam 1-128<br><br>resource naam voor 1-260 | De weergave naam mag tekens bevatten.<br><br>De resource naam mag niet `%` bevatten en mag niet eindigen met een punt of spatie.  |
+> | Sloten | omvang van de toewijzing | 1-90 | Alfanumerieke waarden, perioden, underscores, koppeltekens en haakjes.<br><br>Kan niet eindigen in een periode. |
+> | beleidstoewijzingen | omvang van de toewijzing | 1-128 weergavenaam<br><br>1-260 resourcenaam | Weergavenaam kan alle tekens bevatten.<br><br>Resourcenaam kan niet `%` worden opgenomen en kan niet eindigen met periode of ruimte. |
+> | beleidsdefinities | definitietje | 1-128 weergavenaam<br><br>1-260 resourcenaam | Weergavenaam kan alle tekens bevatten.<br><br>Resourcenaam kan niet `%` worden opgenomen en kan niet eindigen met periode of ruimte. |
+> | policySetDefinities | definitietje | 1-128 weergavenaam<br><br>1-260 resourcenaam | Weergavenaam kan alle tekens bevatten.<br><br>Resourcenaam kan niet `%` worden opgenomen en kan niet eindigen met periode of ruimte.  |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | automationAccounts | resourcegroep | 6-50 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met letter en sluit af met een alfanumerieke teken. |
-> | automationAccounts/certificaten | Automation-account | 1-128 | Kan niet gebruiken:<br> `<>*%&:\?.+/` <br><br>Kan niet eindigen met een spatie.  |
-> | automationAccounts/verbindingen | Automation-account | 1-128 | Kan niet gebruiken:<br> `<>*%&:\?.+/` <br><br>Kan niet eindigen met een spatie. |
-> | automationAccounts/referenties | Automation-account | 1-128 | Kan niet gebruiken:<br> `<>*%&:\?.+/` <br><br>Kan niet eindigen met een spatie. |
-> | automationAccounts/runbooks | Automation-account | 1-63 | Alfanumeriek, onderstrepings tekens en afbreek streepjes.<br><br>Begin met letter.  |
-> | automationAccounts/schema's | Automation-account | 1-128 | Kan niet gebruiken:<br> `<>*%&:\?.+/` <br><br>Kan niet eindigen met een spatie. |
-> | automationAccounts/variabelen | Automation-account | 1-128 | Kan niet gebruiken:<br> `<>*%&:\?.+/` <br><br>Kan niet eindigen met een spatie. |
-> | automationAccounts/volgers | Automation-account | 1-63 |  Alfanumeriek, onderstrepings tekens en afbreek streepjes.<br><br>Begin met letter. |
-> | automationAccounts/webhooks | Automation-account | 1-128 | Kan niet gebruiken:<br> `<>*%&:\?.+/` <br><br>Kan niet eindigen met een spatie. |
+> | automatiseringAccounts | resourcegroep | 6-50 | Alfanumerieke en koppeltekens.<br><br>Begin met de letter en eindig met alfanumeriek. |
+> | automationAccounts / certificaten | automatiseringsaccount | 1-128 | Kan het als geen gebruik maken:<br> `<>*%&:\?.+/` <br><br>Kan niet eindigen met ruimte.  |
+> | automatiseringAccounts / verbindingen | automatiseringsaccount | 1-128 | Kan het als geen gebruik maken:<br> `<>*%&:\?.+/` <br><br>Kan niet eindigen met ruimte. |
+> | automatiseringAccounts / referenties | automatiseringsaccount | 1-128 | Kan het als geen gebruik maken:<br> `<>*%&:\?.+/` <br><br>Kan niet eindigen met ruimte. |
+> | automationAccounts / runbooks | automatiseringsaccount | 1-63 | Alfanumerieke, underscores en koppeltekens.<br><br>Begin met de brief.  |
+> | automationAccounts / schema's | automatiseringsaccount | 1-128 | Kan het als geen gebruik maken:<br> `<>*%&:\?.+/` <br><br>Kan niet eindigen met ruimte. |
+> | automatiseringAccounts / variabelen | automatiseringsaccount | 1-128 | Kan het als geen gebruik maken:<br> `<>*%&:\?.+/` <br><br>Kan niet eindigen met ruimte. |
+> | automationAccounts / watchers | automatiseringsaccount | 1-63 |  Alfanumerieke, underscores en koppeltekens.<br><br>Begin met de brief. |
+> | automationAccounts / webhooks | automatiseringsaccount | 1-128 | Kan het als geen gebruik maken:<br> `<>*%&:\?.+/` <br><br>Kan niet eindigen met ruimte. |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -106,582 +106,590 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
 > | batchAccounts | Regio | 3-24 | Kleine letters en cijfers. |
-> | batchAccounts/toepassingen | batch-account | 1-64 | Alfanumeriek, onderstrepings tekens en afbreek streepjes. |
-> | batchAccounts/certificaten | batch-account | 5-45 | Alfanumeriek, onderstrepings tekens en afbreek streepjes. |
-> | batchAccounts/Pools | batch-account | 1-64 | Alfanumeriek, onderstrepings tekens en afbreek streepjes. |
+> | batchAccounts / toepassingen | batchaccount | 1-64 | Alfanumerieke, underscores en koppeltekens. |
+> | batchAccounts / certificaten | batchaccount | 5-45 | Alfanumerieke, underscores en koppeltekens. |
+> | batchAccounts / pools | batchaccount | 1-64 | Alfanumerieke, underscores en koppeltekens. |
 
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | blockchainMembers | internationaal | 2-20 | Kleine letters en cijfers.<br><br>Beginnen met kleine letters. |
+> | blockchainLeden | Globale | 2-20 | Kleine letters en cijfers.<br><br>Begin met kleine letter. |
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | botServices | internationaal | 2-64 |  Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. |
-> | botServices/kanalen | bot-service | 2-64 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. |
-> | botServices/verbindingen | bot-service | 2-64 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. |
-> | enterpriseChannels | resourcegroep | 2-64 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. |
+> | botServices | Globale | 2-64 |  Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. |
+> | botServices / kanalen | botservice | 2-64 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. |
+> | botServices / Verbindingen | botservice | 2-64 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. |
+> | enterpriseKanalen | resourcegroep | 2-64 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. |
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | Redis | internationaal | 1-63 | Alfanumerieke tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumerieke teken. Opeenvolgende afbreek streepjes zijn niet toegestaan. |
-> | Redis/firewallRules | Redis | 1-256 | Alfanumerieke tekens |
+> | Redis | Globale | 1-63 | Alfanumerieke en koppeltekens.<br><br>Begin en einde met alfanumerieke. Opeenvolgende koppeltekens niet toegestaan. |
+> | Redis / firewallRegels | Redis | 1-256 | Alfanumerieke waarden |
 
-## <a name="microsoftcdn"></a>Microsoft.Cdn
+## <a name="microsoftcdn"></a>Microsoft.Cdn (Microsoft.Cdn)
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | profiles | resourcegroep | 1-260 | Alfanumerieke tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | profielen/eind punten | internationaal | 1-50 | Alfanumerieke tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
+> | Profielen | resourcegroep | 1-260 | Alfanumerieke en koppeltekens.<br><br>Begin en einde met alfanumerieke. |
+> | profielen / eindpunten | Globale | 1-50 | Alfanumerieke en koppeltekens.<br><br>Begin en einde met alfanumerieke. |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | certificateOrders | resourcegroep | 3-30 | Alfanumerieke tekens. |
+> | certificaatOrders | resourcegroep | 3-30 | Alfanumerieke waarden. |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | accounts | resourcegroep | 2-64 | Alfanumerieke tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
+> | accounts | resourcegroep | 2-64 | Alfanumerieke en koppeltekens.<br><br>Begin en einde met alfanumerieke. |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | Availability sets | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Eindigen met een alfanumeriek of onderstrepings teken. |
-> | diskEncryptionSets | resourcegroep | 1-80 | Alfanumerieke tekens en onderstrepingen. |
-> | cd's | resourcegroep | 1-80 | Alfanumerieke tekens en onderstrepingen. |
-> | Galerij | resourcegroep | 1-80 | Alfanumerieke tekens en punten.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | galerieën/toepassingen | sjablonen | 1-80 | Alfanumerieke tekens, afbreek streepjes en punten.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | galerieën/toepassingen/versies | modules | 32-bits geheel getal | Cijfers en peri Oden. |
-> | galerieën/afbeeldingen | sjablonen | 1-80 | Alfanumerieke tekens, afbreek streepjes en punten.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | galerieën/afbeeldingen/versies | image | 32-bits geheel getal | Cijfers en peri Oden. |
-> | images | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Eindigen met een alfanumeriek of onderstrepings teken. |
-> | momentopnamen | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Eindigen met een alfanumeriek of onderstrepings teken. |
-> | Informatie | resourcegroep | 1-15 (Windows)<br>1-64 (Linux)<br><br>Zie de opmerking hieronder. | Kan niet gebruiken:<br> `\/""[]:|<>+=;,?*@&`<br><br>Kan niet beginnen met een onderstrepings teken. Kan niet eindigen met een punt of afbreek streepje. |
-> | virtualMachineScaleSets | resourcegroep | 1-15 (Windows)<br>1-64 (Linux)<br><br>Zie de opmerking hieronder. | Kan niet gebruiken:<br> `\/""[]:|<>+=;,?*@&`<br><br>Kan niet beginnen met een onderstrepings teken. Kan niet eindigen met een punt of afbreek streepje. |
+> | beschikbaarheidSets | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Eindig met alfanumerieke of underscore. |
+> | diskEncryptionSets | resourcegroep | 1-80 | Alfanumerieke en underscores. |
+> | Schijven | resourcegroep | 1-80 | Alfanumerieke en underscores. |
+> | Galeries | resourcegroep | 1-80 | Alfanumerieke en perioden.<br><br>Begin en einde met alfanumerieke. |
+> | galerijen / toepassingen | galerie | 1-80 | Alfanumerieke waarden, koppeltekens en perioden.<br><br>Begin en einde met alfanumerieke. |
+> | galerijen / toepassingen/versies | toepassing | 32-bits geheel getal | Nummers en periodes. |
+> | galerijen / afbeeldingen | galerie | 1-80 | Alfanumerieke waarden, koppeltekens en perioden.<br><br>Begin en einde met alfanumerieke. |
+> | galerijen / afbeeldingen / versies | installatiekopie | 32-bits geheel getal | Nummers en periodes. |
+> | images | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Eindig met alfanumerieke of underscore. |
+> | momentopnamen | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Eindig met alfanumerieke of underscore. |
+> | virtueleMachines | resourcegroep | 1-15 (Windows)<br>1-64 (Linux)<br><br>Zie hieronder opmerking. | Kan het als geen gebruik maken:<br> `\/""[]:|<>+=;,?*@&`<br><br>Kan niet beginnen met underscore. Kan niet eindigen met een punt of koppelteken. |
+> | virtualMachineScaleSets | resourcegroep | 1-15 (Windows)<br>1-64 (Linux)<br><br>Zie hieronder opmerking. | Kan het als geen gebruik maken:<br> `\/""[]:|<>+=;,?*@&`<br><br>Kan niet beginnen met underscore. Kan niet eindigen met een punt of koppelteken. |
 
 > [!NOTE]
-> Virtuele Azure-machines hebben twee verschillende namen: resource naam en hostnaam. Wanneer u een virtuele machine in de portal maakt, wordt dezelfde waarde gebruikt voor beide namen. De beperkingen in de voor gaande tabel zijn voor de hostnaam. De werkelijke resourcenaam mag niet langer zijn dan 64 tekens.
+> Azure virtuele machines hebben twee verschillende namen: resource naam en host naam. Wanneer u een virtuele machine in de portal maakt, wordt voor beide namen dezelfde waarde gebruikt. De beperkingen in de vorige tabel zijn voor de hostnaam. De werkelijke resourcenaam mag niet langer zijn dan 64 tekens.
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | containerGroups | resourcegroep | 1-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. Opeenvolgende afbreek streepjes zijn niet toegestaan. |
+> | containerGroepen | resourcegroep | 1-63 | Kleine letters, cijfers en koppeltekens.<br><br>Kan niet beginnen of eindigen met koppelteken. Opeenvolgende afbreekstreepjes zijn niet toegestaan. |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | registers | internationaal | 5-50 | Alfanumerieke tekens. |
-> | registers/buildTasks | registersubsleutel | 5-50 | Alfanumerieke tekens. |
-> | registers/buildTasks/stappen | taak bouwen | 5-50 | Alfanumerieke tekens. |
-> | registers/replicaties | registersubsleutel | 5-50 | Alfanumerieke tekens. |
-> | registers/scopeMaps | registersubsleutel | 5-50 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
-> | registers/taken | registersubsleutel | 5-50 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
-> | registers/tokens | registersubsleutel | 5-50 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
-> | registers/webhooks | registersubsleutel | 5-50 | Alfanumerieke tekens. |
+> | Registers | Globale | 5-50 | Alfanumerieke waarden. |
+> | registers / buildTaken | registry | 5-50 | Alfanumerieke waarden. |
+> | registers / buildTaken/stappen | taken maken | 5-50 | Alfanumerieke waarden. |
+> | registers / replicaties | registry | 5-50 | Alfanumerieke waarden. |
+> | registers / scopeMaps | registry | 5-50 | Alfanumerieke, koppeltekens en underscores. |
+> | registers / taken | registry | 5-50 | Alfanumerieke, koppeltekens en underscores. |
+> | registers / tokens | registry | 5-50 | Alfanumerieke, koppeltekens en underscores. |
+> | registers / webhooks | registry | 5-50 | Alfanumerieke waarden. |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | managedClusters | resourcegroep | 1-63 | Alfanumeriek, onderstrepings tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | openShiftManagedClusters | resourcegroep | 1-30 | Alfanumerieke tekens. |
+> | managedClusters | resourcegroep | 1-63 | Alfanumerieke, underscores en koppeltekens.<br><br>Begin en einde met alfanumerieke. |
+> | openShiftManagedClusters | resourcegroep | 1-30 | Alfanumerieke waarden. |
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | bedrijfs | resourcegroep | 1-64 | Alfanumerieke tekens.<br><br>Begin met letter.  |
-> | hubs/authorizationPolicies | hub | 1-50 | Alfanumeriek, onderstrepings tekens en punten.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | hubs/connectors | hub | 1-128 | Alfanumerieke tekens en onderstrepingen.<br><br>Begin met letter. |
-> | hubs/connectors/toewijzingen | connector | 1-128 | Alfanumerieke tekens en onderstrepingen.<br><br>Begin met letter. |
-> | hubs/interacties | hub | 1-128 | Alfanumerieke tekens en onderstrepingen.<br><br>Begin met letter. |
-> | hubs/kpi's | hub | 1-512 | Alfanumerieke tekens en onderstrepingen.<br><br>Begin met letter. |
-> | hubs/koppelingen | hub | 1-512 | Alfanumerieke tekens en onderstrepingen.<br><br>Begin met letter. |
-> | hubs/voor spellingen | hub | 1-512 | Alfanumerieke tekens en onderstrepingen.<br><br>Begin met letter. |
-> | hubs/profielen | hub | 1-128 | Alfanumerieke tekens en onderstrepingen.<br><br>Begin met letter. |
-> | hubs/relationshipLinks | hub | 1-512 | Alfanumerieke tekens en onderstrepingen.<br><br>Begin met letter. |
-> | hubs/relaties | hub | 1-512 | Alfanumerieke tekens en onderstrepingen.<br><br>Begin met letter. |
-> | hubs/roleAssignments | hub | 1-128 | Alfanumerieke tekens en onderstrepingen.<br><br>Begin met letter. |
-> | hubs/weer gaven | hub | 1-512 | Alfanumerieke tekens en onderstrepingen.<br><br>Begin met letter. |
+> | hubs | resourcegroep | 1-64 | Alfanumerieke waarden.<br><br>Begin met de brief.  |
+> | hubs / autorisatieBeleid | hub | 1-50 | Alfanumerieke, underscores en perioden.<br><br>Begin en einde met alfanumerieke. |
+> | hubs / connectoren | hub | 1-128 | Alfanumerieke en underscores.<br><br>Begin met de brief. |
+> | hubs / connectors/toewijzingen | connector | 1-128 | Alfanumerieke en underscores.<br><br>Begin met de brief. |
+> | hubs / interacties | hub | 1-128 | Alfanumerieke en underscores.<br><br>Begin met de brief. |
+> | hubs / kpi | hub | 1-512 | Alfanumerieke en underscores.<br><br>Begin met de brief. |
+> | hubs / links | hub | 1-512 | Alfanumerieke en underscores.<br><br>Begin met de brief. |
+> | hubs / voorspellingen | hub | 1-512 | Alfanumerieke en underscores.<br><br>Begin met de brief. |
+> | hubs / profielen | hub | 1-128 | Alfanumerieke en underscores.<br><br>Begin met de brief. |
+> | hubs / relatieLinks | hub | 1-512 | Alfanumerieke en underscores.<br><br>Begin met de brief. |
+> | hubs / relaties | hub | 1-512 | Alfanumerieke en underscores.<br><br>Begin met de brief. |
+> | hubs / rolOpdrachten | hub | 1-128 | Alfanumerieke en underscores.<br><br>Begin met de brief. |
+> | hubs / weergaven | hub | 1-512 | Alfanumerieke en underscores.<br><br>Begin met de brief. |
 
 ## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | lidkoppelingen | resourcegroep | 1-180 | Kan niet gebruiken:<br>`%&\\?/`<br><br>Kan niet eindigen met een punt of spatie. |
-> | resourceProviders | resourcegroep | 3-64 | Kan niet gebruiken:<br>`%&\\?/`<br><br>Kan niet eindigen met een punt of spatie. |
+> | Verenigingen | resourcegroep | 1-180 | Kan het als geen gebruik maken:<br>`%&\\?/`<br><br>Kan niet eindigen met periode of ruimte. |
+> | resourceProviders | resourcegroep | 3-64 | Kan het als geen gebruik maken:<br>`%&\\?/`<br><br>Kan niet eindigen met periode of ruimte. |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | functies | resourcegroep | 3-24 | Alfanumerieke tekens, afbreek streepjes, onderstrepings tekens en punten. |
+> | Banen | resourcegroep | 3-24 | Alfanumerieke waarden, koppeltekens, underscores en perioden. |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | werk ruimten | resourcegroep | 3-30 | Alfanumerieken, onderstrepings tekens en afbreek streepjes |
+> | werkruimten | resourcegroep | 3-30 | Alfanumerieke waarden, underscores en koppeltekens |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | factory's | internationaal | 3-63 | Alfanumerieke tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | fabrieken/gegevens stromen | standaard | 1-260 | Kan niet gebruiken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
-> | fabrieken/gegevens sets | standaard | 1-260 | Kan niet gebruiken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
-> | fabrieken/integrationRuntimes | standaard | 3-63 | Alfanumerieke tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | fabrieken/linkedservices | standaard | 1-260 | Kan niet gebruiken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
-> | fabrieken/pijp lijnen | standaard | 1-260 | Kan niet gebruiken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
-> | fabrieken/triggers | standaard | 1-260 | Kan niet gebruiken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
-> | fabrieken/triggers/rerunTriggers | trigger | 1-260 | Kan niet gebruiken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
+> | Fabrieken | Globale | 3-63 | Alfanumerieke en koppeltekens.<br><br>Begin en einde met alfanumerieke. |
+> | fabrieken / datastromen | Fabriek | 1-260 | Kan het als geen gebruik maken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
+> | fabrieken / datasets | Fabriek | 1-260 | Kan het als geen gebruik maken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
+> | fabrieken / integratieRuntimes | Fabriek | 3-63 | Alfanumerieke en koppeltekens.<br><br>Begin en einde met alfanumerieke. |
+> | fabrieken / linkedservices | Fabriek | 1-260 | Kan het als geen gebruik maken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
+> | fabrieken / pijpleidingen | Fabriek | 1-260 | Kan het als geen gebruik maken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
+> | fabrieken / triggers | Fabriek | 1-260 | Kan het als geen gebruik maken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
+> | fabrieken / triggers / rerunTriggers | Trigger | 1-260 | Kan het als geen gebruik maken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | accounts | internationaal | 3-24 | Kleine letters en cijfers. |
-> | accounts/computePolicies | account | 3-60 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
-> | accounts/dataLakeStoreAccounts | account | 3-24 | Kleine letters en cijfers. |
-> | accounts/firewallRules | account | 3-50 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
-> | accounts/Storage accounts | account | 3-60 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
+> | accounts | Globale | 3-24 | Kleine letters en cijfers. |
+> | accounts / computePolicies | account | 3-60 | Alfanumerieke, koppeltekens en underscores. |
+> | accounts / dataLakeStoreAccounts | account | 3-24 | Kleine letters en cijfers. |
+> | accounts / firewallRegels | account | 3-50 | Alfanumerieke, koppeltekens en underscores. |
+> | accounts / storageAccounts | account | 3-60 | Alfanumerieke, koppeltekens en underscores. |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | accounts | internationaal | 3-24 | Kleine letters en cijfers. |
-> | accounts/firewallRules | account | 3-50 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
-> | accounts/virtualNetworkRules | account | 3-50 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
+> | accounts | Globale | 3-24 | Kleine letters en cijfers. |
+> | accounts / firewallRegels | account | 3-50 | Alfanumerieke, koppeltekens en underscores. |
+> | accounts / virtualNetworkRules | account | 3-50 | Alfanumerieke, koppeltekens en underscores. |
 
-## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
+## <a name="microsoftdatamigration"></a>Microsoft.DataMigratie
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | services | resourcegroep | 2-62 | Alfanumerieke tekens, afbreek streepjes, punten en onderstrepings tekens.<br><br>Begin met alfanumeriek. |
-> | Services/projecten | service | 2-57 | Alfanumerieke tekens, afbreek streepjes, punten en onderstrepings tekens.<br><br>Begin met alfanumeriek. |
+> | services | resourcegroep | 2-62 | Alfanumerieke waarden, koppeltekens, perioden en underscores.<br><br>Begin met alfanumeriek. |
+> | diensten / projecten | service | 2-57 | Alfanumerieke waarden, koppeltekens, perioden en underscores.<br><br>Begin met alfanumeriek. |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | Server | internationaal | 3-63 | Kleine letters, afbreek streepjes en cijfers.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. |
-> | servers/data bases | Server | 1-63 | Alfanumerieke tekens en afbreek streepjes. |
-> | servers/firewallRules | Server | 1-128 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
-> | servers/virtualNetworkRules | Server | 1-128 | Alfanumerieke tekens en afbreek streepjes. |
+> | Servers | Globale | 3-63 | Kleine letters, koppeltekens en cijfers.<br><br>Kan niet beginnen of eindigen met koppelteken. |
+> | servers / databases | Servers | 1-63 | Alfanumerieke en koppeltekens. |
+> | servers / firewallRegels | Servers | 1-128 | Alfanumerieke, koppeltekens en underscores. |
+> | servers / virtualNetworkRules | Servers | 1-128 | Alfanumerieke en koppeltekens. |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | Server | internationaal | 3-63 | Kleine letters, afbreek streepjes en cijfers.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. |
-> | servers/data bases | Server | 1-63 | Alfanumerieke tekens en afbreek streepjes. |
-> | servers/firewallRules | Server | 1-128 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
-> | servers/virtualNetworkRules | Server | 1-128 | Alfanumerieke tekens en afbreek streepjes. |
+> | Servers | Globale | 3-63 | Kleine letters, koppeltekens en cijfers.<br><br>Kan niet beginnen of eindigen met koppelteken. |
+> | servers / databases | Servers | 1-63 | Alfanumerieke en koppeltekens. |
+> | servers / firewallRegels | Servers | 1-128 | Alfanumerieke, koppeltekens en underscores. |
+> | servers / virtualNetworkRules | Servers | 1-128 | Alfanumerieke en koppeltekens. |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | Server | internationaal | 3-63 | Kleine letters, afbreek streepjes en cijfers.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. |
-> | servers/data bases | Server | 1-63 | Alfanumerieke tekens en afbreek streepjes. |
-> | servers/firewallRules | Server | 1-128 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
-> | servers/virtualNetworkRules | Server | 1-128 | Alfanumerieke tekens en afbreek streepjes. |
+> | Servers | Globale | 3-63 | Kleine letters, koppeltekens en cijfers.<br><br>Kan niet beginnen of eindigen met koppelteken. |
+> | servers / databases | Servers | 1-63 | Alfanumerieke en koppeltekens. |
+> | servers / firewallRegels | Servers | 1-128 | Alfanumerieke, koppeltekens en underscores. |
+> | servers / virtualNetworkRules | Servers | 1-128 | Alfanumerieke en koppeltekens. |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | IotHubs | internationaal | 3-50 | Alfanumerieke tekens en afbreek streepjes.<br><br>Kan niet eindigen met een afbreek streepje. |
-> | IotHubs/certificaten | IoT-hub | 1-64 | Alfanumerieke tekens, afbreek streepjes, punten en onderstrepings tekens. |
-> | IotHubs/eventHubEndpoints/ConsumerGroups | eventHubEndpoints | 1-50 | Alfanumerieke tekens, afbreek streepjes, punten en onderstrepings tekens. |
-> | provisioningServices | resourcegroep | 3-64 | Alfanumerieke tekens en afbreek streepjes.<br><br>Eindigen met een alfanumerieke teken. |
-> | provisioningServices/certificaten | provisioningServices | 1-64 | Alfanumerieke tekens, afbreek streepjes, punten en onderstrepings tekens. |
+> | IotHubs | Globale | 3-50 | Alfanumerieke en koppeltekens.<br><br>Kan niet eindigen met koppelteken. |
+> | IotHubs / certificaten | IoT-hub | 1-64 | Alfanumerieke waarden, koppeltekens, perioden en underscores. |
+> | IotHubs / eventHubEndpunten / ConsumerGroups | eventHubEndpunten | 1-50 | Alfanumerieke waarden, koppeltekens, perioden en underscores. |
+> | provisioningServices | resourcegroep | 3-64 | Alfanumerieke en koppeltekens.<br><br>Eindig met alfanumeriek. |
+> | provisioningServices /certificaten | provisioningServices | 1-64 | Alfanumerieke waarden, koppeltekens, perioden en underscores. |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | Labs | resourcegroep | 1-50 | Alfanumeriek, onderstrepings tekens en afbreek streepjes. |
-> | Labs-customimages | Slab | 1-80 | Alfanumeriek, onderstrepings tekens, afbreek streepjes en haakjes. |
-> | Labs/formules | Slab | 1-80 | Alfanumeriek, onderstrepings tekens, afbreek streepjes en haakjes. |
-> | Labs-informatie | Slab | 1-15 (Windows)<br>1-64 (Linux) | Alfanumerieke tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumerieke teken. Kan niet alle cijfers zijn. |
+> | Labs | resourcegroep | 1-50 | Alfanumerieke, underscores en koppeltekens. |
+> | labs / aangepaste afbeeldingen | Lab | 1-80 | Alfanumerieke waarden, underscores, koppeltekens en haakjes. |
+> | labs / formules | Lab | 1-80 | Alfanumerieke waarden, underscores, koppeltekens en haakjes. |
+> | labs / virtualmachines | Lab | 1-15 (Windows)<br>1-64 (Linux) | Alfanumerieke en koppeltekens.<br><br>Begin en einde met alfanumerieke. Het kunnen niet alle nummers zijn. |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | databaseAccounts | internationaal | 3-31 | Kleine letters, cijfers en afbreek streepjes.<br><br>Begin met kleine letter of cijfer. |
+> | databaseAccounts | Globale | 3-31 | Kleine letters, cijfers en koppeltekens.<br><br>Begin met kleine letter of nummer. |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | domeinen | resourcegroep | 3-50 | Alfanumerieke tekens en afbreek streepjes. |
-> | domeinen/onderwerpen | domeinen | 3-50 | Alfanumerieke tekens en afbreek streepjes. |
-> | eventSubscriptions | resourcegroep | 3-64 | Alfanumerieke tekens en afbreek streepjes. |
-> | onderwerp | resourcegroep | 3-50 | Alfanumerieke tekens en afbreek streepjes. |
+> | Domeinen | resourcegroep | 3-50 | Alfanumerieke en koppeltekens. |
+> | domeinen / onderwerpen | domein | 3-50 | Alfanumerieke en koppeltekens. |
+> | eventAbonnementen | resourcegroep | 3-64 | Alfanumerieke en koppeltekens. |
+> | Onderwerpen | resourcegroep | 3-50 | Alfanumerieke en koppeltekens. |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | clusters | resourcegroep | 6-50 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met letter. Eindigen met een letter of cijfer. |
-> | naam ruimten | internationaal | 6-50 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met letter. Eindigen met een letter of cijfer. |
-> | naam ruimten/AuthorizationRules | naamruimte | 1-50 | Alfanumerieke tekens, punten, afbreek streepjes en onderstrepings tekens.<br><br>Beginnen en eindigen met een letter of cijfer. |
-> | naam ruimten/disasterRecoveryConfigs | naamruimte | 1-50 | Alfanumerieke tekens, punten, afbreek streepjes en onderstrepings tekens.<br><br>Beginnen en eindigen met een letter of cijfer. |
-> | naam ruimten/Event hubs | naamruimte | 1-50 | Alfanumerieke tekens, punten, afbreek streepjes en onderstrepings tekens.<br><br>Beginnen en eindigen met een letter of cijfer. |
-> | naam ruimten/Event hubs/authorizationRules | Event Hub | 1-50 | Alfanumerieke tekens, punten, afbreek streepjes en onderstrepings tekens.<br><br>Beginnen en eindigen met een letter of cijfer. |
-> | naam ruimten/Event hubs/consumergroups | Event Hub | 1-50 | Alfanumerieke tekens, punten, afbreek streepjes en onderstrepings tekens.<br><br>Beginnen en eindigen met een letter of cijfer. |
+> | Clusters | resourcegroep | 6-50 | Alfanumerieke en koppeltekens.<br><br>Begin met de brief. Eindig met letter of nummer. |
+> | Naamruimten | Globale | 6-50 | Alfanumerieke en koppeltekens.<br><br>Begin met de brief. Eindig met letter of nummer. |
+> | naamruimten / Autorisatieregels | naamruimte | 1-50 | Alfanumerieke waarden, perioden, koppeltekens en underscores.<br><br>Begin en eindig met letter of nummer. |
+> | naamruimten / rampRecoveryConfigs | naamruimte | 1-50 | Alfanumerieke waarden, perioden, koppeltekens en underscores.<br><br>Begin en eindig met letter of nummer. |
+> | naamruimten / eventhubs | naamruimte | 1-50 | Alfanumerieke waarden, perioden, koppeltekens en underscores.<br><br>Begin en eindig met letter of nummer. |
+> | naamruimten / eventhubs / autorisatieRegels | gebeurtenishub | 1-50 | Alfanumerieke waarden, perioden, koppeltekens en underscores.<br><br>Begin en eindig met letter of nummer. |
+> | naamruimten / eventhubs / consumentengroepen | gebeurtenishub | 1-50 | Alfanumerieke waarden, perioden, koppeltekens en underscores.<br><br>Begin en eindig met letter of nummer. |
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | clusters | internationaal | 3-59 | Alfanumerieke tekens en afbreek streepjes<br><br>Beginnen en eindigen met een letter of cijfer. |
+> | Clusters | Globale | 3-59 | Alfanumerieke waarden en koppeltekens<br><br>Begin en eindig met letter of nummer. |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | functies | resourcegroep | 2-64 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met letter. |
+> | Banen | resourcegroep | 2-64 | Alfanumerieke en koppeltekens.<br><br>Begin met de brief. |
+
+## <a name="microsoftinsights"></a>Microsoft.Insights
+
+> [!div class="mx-tableFixed"]
+> | Entiteit | Bereik | Lengte | Geldige tekens |
+> | --- | --- | --- | --- |
+> | Onderdelen | resourcegroep | 1-260 | Kan het als geen gebruik maken:<br>`%&\?/` <br><br>Kan niet eindigen met ruimte of periode.  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | IoTApps | internationaal | 2-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Begin met kleine letter of cijfer. |
+> | IoTApps | Globale | 2-63 | Kleine letters, cijfers en koppeltekens.<br><br>Begin met kleine letter of nummer. |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | kluizen | internationaal | 3-24 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met letter. Eindigen met een letter of cijfer. Kan geen opeenvolgende afbreek streepjes bevatten. |
-> | kluizen/geheimen | Kluis | 1-127 | Alfanumerieke tekens en afbreek streepjes. |
+> | Kluizen | Globale | 3-24 | Alfanumerieke en koppeltekens.<br><br>Begin met de brief. Eindig met letter of cijfer. Kan geen opeenvolgende koppeltekens bevatten. |
+> | kluizen / geheimen | Kluis | 1-127 | Alfanumerieke en koppeltekens. |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | clusters | internationaal | 4-22 | Kleine letters en cijfers.<br><br>Begin met letter. |
-> | /clusters/data bases | cluster | 1-260 | Alfanumerieke tekens, afbreek streepjes, spaties en punten. |
-> | /clusters/data bases/dataConnections | enddatabase | 1-40 | Alfanumerieke tekens, afbreek streepjes, spaties en punten. |
-> | /clusters/data bases/eventhubconnections | enddatabase | 1-40 | Alfanumerieke tekens, afbreek streepjes, spaties en punten. |
+> | Clusters | Globale | 4-22 | Kleine letters en cijfers.<br><br>Begin met de brief. |
+> | /clusters / databases | cluster | 1-260 | Alfanumerieke waarden, koppeltekens, spaties en perioden. |
+> | /clusters / databases / dataConnections | database | 1-40 | Alfanumerieke waarden, koppeltekens, spaties en perioden. |
+> | /clusters / databases / eventhubverbindingen | database | 1-40 | Alfanumerieke waarden, koppeltekens, spaties en perioden. |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | integrationAccounts | resourcegroep | 1-80 | Alfanumerieke tekens, afbreek streepjes, onderstrepings tekens, punten en haakjes. |
-> | integrationAccounts/assembly's | integratieaccount | 1-80 | Alfanumerieke tekens, afbreek streepjes, onderstrepings tekens, punten en haakjes. |
-> | integrationAccounts / batchConfigurations | integratieaccount | 1-20 | Alfanumerieke tekens. |
-> | integrationAccounts/certificaten | integratieaccount | 1-80 | Alfanumerieke tekens, afbreek streepjes, onderstrepings tekens, punten en haakjes. |
-> | integrationAccounts/Maps | integratieaccount | 1-80 | Alfanumerieke tekens, afbreek streepjes, onderstrepings tekens, punten en haakjes. |
-> | integrationAccounts/partners | integratieaccount | 1-80 | Alfanumerieke tekens, afbreek streepjes, onderstrepings tekens, punten en haakjes. |
-> | integrationAccounts / rosettanetprocessconfigurations | integratieaccount | 1-80 | Alfanumerieke tekens, afbreek streepjes, onderstrepings tekens, punten en haakjes. |
-> | integrationAccounts/schema's | integratieaccount | 1-80 | Alfanumerieke tekens, afbreek streepjes, onderstrepings tekens, punten en haakjes. |
-> | integrationAccounts/sessies | integratieaccount | 1-80 | Alfanumerieke tekens, afbreek streepjes, onderstrepings tekens, punten en haakjes. |
-> | integrationServiceEnvironments | resourcegroep | 1-80 | Alfanumerieke tekens, afbreek streepjes, punten en onderstrepings tekens. |
-> | integrationServiceEnvironments/Beheerdeapi's | integratie service omgeving | 1-80 | Alfanumerieke tekens, afbreek streepjes, punten en onderstrepings tekens. |
-> | stroom | resourcegroep | 1-80 | Alfanumerieke tekens, afbreek streepjes, onderstrepings tekens, punten en haakjes. |
+> | integratieAccounts | resourcegroep | 1-80 | Alfanumerieke waarden, koppeltekens, underscores, perioden en haakjes. |
+> | integratieAccounts / assemblages | integratieaccount | 1-80 | Alfanumerieke waarden, koppeltekens, underscores, perioden en haakjes. |
+> | integratieAccounts / batchConfiguraties | integratieaccount | 1-20 | Alfanumerieke waarden. |
+> | integratieAccounts / certificaten | integratieaccount | 1-80 | Alfanumerieke waarden, koppeltekens, underscores, perioden en haakjes. |
+> | integratieAccounts / kaarten | integratieaccount | 1-80 | Alfanumerieke waarden, koppeltekens, underscores, perioden en haakjes. |
+> | integratieAccounts / partners | integratieaccount | 1-80 | Alfanumerieke waarden, koppeltekens, underscores, perioden en haakjes. |
+> | integratieAccounts / rosettanetprocessconfiguraties | integratieaccount | 1-80 | Alfanumerieke waarden, koppeltekens, underscores, perioden en haakjes. |
+> | integratieAccounts / schema's | integratieaccount | 1-80 | Alfanumerieke waarden, koppeltekens, underscores, perioden en haakjes. |
+> | integratieAccounts / sessies | integratieaccount | 1-80 | Alfanumerieke waarden, koppeltekens, underscores, perioden en haakjes. |
+> | integratieServiceOmgevingen | resourcegroep | 1-80 | Alfanumerieke waarden, koppeltekens, perioden en underscores. |
+> | integrationServiceEnvironments / managedApis | integratieserviceomgeving | 1-80 | Alfanumerieke waarden, koppeltekens, perioden en underscores. |
+> | Werkstromen | resourcegroep | 1-80 | Alfanumerieke waarden, koppeltekens, underscores, perioden en haakjes. |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | commitmentPlans | resourcegroep | 1-260 | Kan niet gebruiken:<br>`<>*%&:?+/\\`<br><br>Kan niet eindigen met een spatie. |
-> | webServices | resourcegroep | 1-260 | Kan niet gebruiken:<br>`<>*%&:?+/\\`<br><br>Kan niet eindigen met een spatie. |
-> | werk ruimten | resourcegroep | 1-260 | Kan niet gebruiken:<br>`<>*%&:?+/\\`<br><br>Kan niet eindigen met een spatie. |
+> | inzetPlannen | resourcegroep | 1-260 | Kan het als geen gebruik maken:<br>`<>*%&:?+/\\`<br><br>Kan niet eindigen met een ruimte. |
+> | Webservices | resourcegroep | 1-260 | Kan het als geen gebruik maken:<br>`<>*%&:?+/\\`<br><br>Kan niet eindigen met een ruimte. |
+> | werkruimten | resourcegroep | 1-260 | Kan het als geen gebruik maken:<br>`<>*%&:?+/\\`<br><br>Kan niet eindigen met een ruimte. |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | werk ruimten | resourcegroep | 3-33 | Alfanumerieke tekens en afbreek streepjes. |
-> | werk ruimten/reken bewerkingen | werkruimte | 2-16 | Alfanumerieke tekens en afbreek streepjes. |
+> | werkruimten | resourcegroep | 3-33 | Alfanumerieke en koppeltekens. |
+> | werkruimten / berekent | werkruimte | 2-16 | Alfanumerieke en koppeltekens. |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | userAssignedIdentities | resourcegroep | 3-128 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens<br><br>Begin met letter of cijfer. |
+> | userAssignedIdentities | resourcegroep | 3-128 | Alfanumerieke waarden, koppeltekens en underscores<br><br>Begin met letter of nummer. |
 
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | accounts | resourcegroep | 1-98 (voor de naam van de resource groep en de account naam) | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. |
+> | accounts | resourcegroep | 1-98 (voor de naam van de resourcegroep en de accountnaam) | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. |
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | Media Services | resourcegroep | 3-24 | Kleine letters en cijfers. |
-> | Media Services/liveEvents | Media service | 1-32 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met alfanumeriek. |
-> | Media Services/liveEvents/liveOutputs | Live-gebeurtenis | 1-256 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met alfanumeriek. |
-> | Media Services/streamingEndpoints | Media service | 1-24 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met alfanumeriek. |
+> | mediaservices | resourcegroep | 3-24 | Kleine letters en cijfers. |
+> | mediaservices / liveEvents | Mediaservice | 1-32 | Alfanumerieke en koppeltekens.<br><br>Begin met alfanumeriek. |
+> | mediaservices / liveEvents / liveOutputs | Live-evenement | 1-256 | Alfanumerieke en koppeltekens.<br><br>Begin met alfanumeriek. |
+> | mediaservices / streamingEndpoints | Mediaservice | 1-24 | Alfanumerieke en koppeltekens.<br><br>Begin met alfanumeriek. |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | applicationGateways | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | applicationSecurityGroups | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | azureFirewalls | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Eindigen met een alfanumeriek of onderstrepings teken. |
-> | bastionHosts | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | inbel | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | dnsZones | resourcegroep | 1-63 tekens<br><br>2 tot 34 labels<br><br>Elk label bestaat uit een reeks tekens gescheiden door een punt. Zo heeft **contoso.com** twee labels. | Elk label mag alfanumerieken, onderstrepings tekens en afbreek streepjes bevatten.<br><br>Elk label wordt gescheiden door een punt. |
-> | expressRouteCircuits | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | firewallPolicies | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | firewallPolicies / ruleGroups | Firewall beleid | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | frontDoors | internationaal | 5-64 | Alfanumerieke tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | loadBalancers | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | loadBalancers/inboundNatRules | load balancer | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | localNetworkGateways | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | networkInterfaces | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | networkSecurityGroups | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | networkSecurityGroups/securityRules | netwerk beveiligings groep | 1-80 |  Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | networkWatchers | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | privateDnsZones | resourcegroep | 1-63 tekens<br><br>2 tot 34 labels<br><br>Elk label bestaat uit een reeks tekens gescheiden door een punt. Zo heeft **contoso.com** twee labels. | Elk label mag alfanumerieken, onderstrepings tekens en afbreek streepjes bevatten.<br><br>Elk label wordt gescheiden door een punt. |
-> | privateDnsZones / virtualNetworkLinks | privé-DNS-zone | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | publicIPAddresses | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | publicIPPrefixes | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | routeFilters | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | routeFilters / routeFilterRules | routefilter | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | routeTables | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | routeTables/routes | routetabel | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | serviceEndpointPolicies | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | trafficmanagerprofiles | internationaal | 1-63 | Alfanumerieke tekens, afbreek streepjes en punten.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | virtualNetworkGateways | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | virtualNetworks | resourcegroep | 2-64 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | virtualnetworks/subnetten | virtueel netwerk | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | virtualNetworks/virtualNetworkPeerings | virtueel netwerk | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | virtualWans | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | vpnGateways | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | vpnGateways / vpnConnections | VPN-gateway | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
-> | vpnSites | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
+> | applicationGateways | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | applicationSecurityGroups | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | azureFirewalls | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Eindig met alfanumerieke of underscore. |
+> | bastionHosts | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | Verbindingen | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | dnsZones | resourcegroep | 1-63 tekens<br><br>2 tot 34 etiketten<br><br>Elk label is een set tekens gescheiden door een punt. Contoso.com **heeft** bijvoorbeeld 2 labels. | Elk label kan alfanumerieke waarden, underscores en koppeltekens bevatten.<br><br>Elk label wordt gescheiden door een punt. |
+> | expressRouteCircuits | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | FirewallBeleid | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | firewallbeleid / regelGroepen | firewallbeleid | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | frontDoors | Globale | 5-64 | Alfanumerieke en koppeltekens.<br><br>Begin en einde met alfanumerieke. |
+> | loadBalancers | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | loadBalancers / inboundNatRules | load balancer | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | localNetworkGateways | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | netwerkInterfaces | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | networkSecurityGroups | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | networkSecurityGroups / securityRules | netwerkbeveiligingsgroep | 1-80 |  Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | networkWatchers | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | privateDnsZones | resourcegroep | 1-63 tekens<br><br>2 tot 34 etiketten<br><br>Elk label is een set tekens gescheiden door een punt. Contoso.com **heeft** bijvoorbeeld 2 labels. | Elk label kan alfanumerieke waarden, underscores en koppeltekens bevatten.<br><br>Elk label wordt gescheiden door een punt. |
+> | privateDnsZones / virtualNetworkLinks | privé-DNS-zone | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | publicIPAddresses | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | publicIPPrefixes | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | routeFilters | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | routeFilters / routeFilterregels | routefilter | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | routeTabellen | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | routeTabellen / routes | routetabel | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | serviceEndpointBeleid | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | trafficmanagerprofielen | Globale | 1-63 | Alfanumerieke waarden, koppeltekens en perioden.<br><br>Begin en einde met alfanumerieke. |
+> | virtualNetworkGateways | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | virtuelenetwerken | resourcegroep | 2-64 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | virtuele netwerken / subnetten | virtueel netwerk | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | virtualNetworks / virtualNetworkPeerings | virtueel netwerk | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | virtualWans virtualWans | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | vpnGateways | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | vpnGateways / vpnVerbindingen | VPN-gateway | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
+> | vpnSites | resourcegroep | 1-80 | Alfanumerieke waarden, underscores, perioden en koppeltekens.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepen. |
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | naam ruimten | internationaal | 6-50 | Alfanumerieke tekens en afbreek streepjes<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | naam ruimten/AuthorizationRules | naamruimte | 1-256 | Alfanumerieken, punten, afbreek streepjes en onderstrepings tekens.<br><br>Begin alfanumerieke tekens. |
-> | naam ruimten/notification hubs | naamruimte | 1-260 | Alfanumerieken, punten, afbreek streepjes en onderstrepings tekens.<br><br>Begin alfanumerieke tekens. |
-> | naam ruimten/notification hubs/AuthorizationRules | Notification hub | 1-256 | Alfanumerieken, punten, afbreek streepjes en onderstrepings tekens.<br><br>Begin alfanumerieke tekens. |
+> | Naamruimten | Globale | 6-50 | Alfanumerieke waarden en koppeltekens<br><br>Begin en einde met alfanumerieke. |
+> | naamruimten / Autorisatieregels | naamruimte | 1-256 | Alfanumerieke waarden, perioden, koppeltekens en underscores.<br><br>Alfanumeriek starten. |
+> | naamruimten / notificationHubs | naamruimte | 1-260 | Alfanumerieke waarden, perioden, koppeltekens en underscores.<br><br>Alfanumeriek starten. |
+> | naamruimten / notificationHubs / Autorisatieregels | meldingshub | 1-256 | Alfanumerieke waarden, perioden, koppeltekens en underscores.<br><br>Alfanumeriek starten. |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | clusters | resourcegroep | 4-63 | Alfanumerieke tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | werk ruimten | resourcegroep | 4-63 | Alfanumerieke tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
+> | Clusters | resourcegroep | 4-63 | Alfanumerieke en koppeltekens.<br><br>Begin en einde met alfanumerieke. |
+> | werkruimten | resourcegroep | 4-63 | Alfanumerieke en koppeltekens.<br><br>Begin en einde met alfanumerieke. |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | Dash boards | resourcegroep | 3-160 | Alfanumerieke tekens en afbreek streepjes.<br><br>Als u beperkte tekens wilt gebruiken, voegt u een label toe met de naam **verborgen-titel** en de naam van het dash board dat u wilt gebruiken. In de portal wordt die naam weer gegeven wanneer het dash board wordt weer gegeven. |
+> | dashboards | resourcegroep | 3-160 | Alfanumerieke en koppeltekens.<br><br>Als u beperkte tekens wilt gebruiken, voegt u een tag met de naam **verborgen titel** toe met de dashboardnaam die u wilt gebruiken. De portal geeft die naam weer wanneer het dashboard wordt weergegeven. |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | workspaceCollections | regio | 3-63 | Alfanumerieke tekens en afbreek streepjes.<br><br>Kan niet beginnen met een koppel teken. Kan geen opeenvolgende afbreek streepjes gebruiken. |
+> | werkruimtecollecties | regio | 3-63 | Alfanumerieke en koppeltekens.<br><br>Ik kan niet beginnen met een koppelteken. Kan geen opeenvolgende koppeltekens gebruiken. |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | beschikt | regio | 3-63 | Kleine letters of cijfers<br><br>Beginnen met kleine letters. |
+> | Capaciteiten | regio | 3-63 | Letters of cijfers van kleine letters<br><br>Begin met kleine letter. |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | kluizen | resourcegroep | 2-50 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met letter. |
-> | kluizen/backupPolicies | kluis | 3-150 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met letter. Kan niet eindigen met een afbreek streepje. |
+> | Kluizen | resourcegroep | 2-50 | Alfanumerieke en koppeltekens.<br><br>Begin met de brief. |
+> | kluizen / back-upbeleid | kluis | 3-150 | Alfanumerieke en koppeltekens.<br><br>Begin met de brief. Kan niet eindigen met koppelteken. |
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | naam ruimten | internationaal | 6-50 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met een letter. Eindigen met een letter of cijfer. |
-> | naam ruimten/AuthorizationRules | naamruimte | 1-50 |  Alfanumerieke tekens, punten, afbreek streepjes en onderstrepings tekens.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | naam ruimten/HybridConnections | naamruimte | 1-260 | Alfanumerieke tekens, punten, afbreek streepjes, onderstrepings tekens en slashes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | naam ruimten/HybridConnections/authorizationRules | hybride verbinding | 1-50 | Alfanumerieke tekens, punten, afbreek streepjes en onderstrepings tekens.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | naam ruimten/WcfRelays | naamruimte | 1-260 | Alfanumerieke tekens, punten, afbreek streepjes, onderstrepings tekens en slashes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | naam ruimten/WcfRelays/authorizationRules | WCF-relay | 1-50 | Alfanumerieke tekens, punten, afbreek streepjes en onderstrepings tekens.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
+> | Naamruimten | Globale | 6-50 | Alfanumerieke en koppeltekens.<br><br>Begin met een letter. Eindig met een letter of nummer. |
+> | naamruimten / Autorisatieregels | naamruimte | 1-50 |  Alfanumerieke waarden, perioden, koppeltekens en underscores.<br><br>Begin en einde met alfanumerieke. |
+> | naamruimten / HybridConnections | naamruimte | 1-260 | Alfanumerieke waarden, perioden, koppeltekens, underscores en slashes.<br><br>Begin en einde met alfanumerieke. |
+> | naamruimten / HybridConnections/autorisatieRegels | hybride verbinding | 1-50 | Alfanumerieke waarden, perioden, koppeltekens en underscores.<br><br>Begin en einde met alfanumerieke. |
+> | naamruimten / WcfRelays | naamruimte | 1-260 | Alfanumerieke waarden, perioden, koppeltekens, underscores en slashes.<br><br>Begin en einde met alfanumerieke. |
+> | naamruimten / WcfRelays / autorisatieRegels | Wcf estafette | 1-50 | Alfanumerieke waarden, perioden, koppeltekens en underscores.<br><br>Begin en einde met alfanumerieke. |
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | implementaties | resourcegroep | 1-64 | Alfanumeriek, onderstrepings tekens, haakjes, afbreek streepjes en punten. |
-> | ResourceGroups | abonnement | 1-90 | Alfanumeriek, onderstreping, haakjes, afbreek streepjes, punten en Unicode-tekens die overeenkomen met de [regex-documentatie](/rest/api/resources/resourcegroups/createorupdate).<br><br>Kan niet eindigen met een punt. |
-> | tagName | resource | 1-512 | Kan niet gebruiken:<br>`<>%&\?/` |
-> | tagName-tagValues | Label naam | 1-256 | Alle tekens. |
+> | Implementaties | resourcegroep | 1-64 | Alfanumerieke waarden, underscores, haakjes, koppeltekens en perioden. |
+> | resourcegroepen | abonnement | 1-90 | Alfanumerieke waarden, underscores, haakjes, koppeltekens, perioden en unicode-tekens die overeenkomen met de [regex-documentatie](/rest/api/resources/resourcegroups/createorupdate).<br><br>Kan niet eindigen met periode. |
+> | tagNamen | resource | 1-512 | Kan het als geen gebruik maken:<br>`<>%&\?/` |
+> | tagNamen / tagWaarden | tagnaam | 1-256 | Alle personages. |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | naam ruimten | internationaal | 6-50 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met een letter. Eindigen met een letter of cijfer.<br><br>Zie [naam ruimte maken](/rest/api/servicebus/create-namespace)voor meer informatie. |
-> | naam ruimten/AuthorizationRules | naamruimte | 1-50 | Alfanumerieken, punten, afbreek streepjes en onderstrepings tekens.<br><br>Start en eindigt met alphnumeric. |
-> | naam ruimten/disasterRecoveryConfigs | internationaal | 6-50 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met letter. Eindigen met een alfanumerieke teken. |
-> | naam ruimten/migrationConfigurations | naamruimte |  | Moet altijd worden **$default**. |
-> | naam ruimten/wacht rijen | naamruimte | 1-260 | Alfanumerieke tekens, punten, afbreek streepjes, onderstrepings tekens en slashes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | naam ruimten/wacht rijen/authorizationRules | wachtrij | 1-50 | Alfanumerieken, punten, afbreek streepjes en onderstrepings tekens.<br><br>Start en eindigt met alphnumeric. |
-> | naam ruimten/onderwerpen | naamruimte | 1-260 | Alfanumerieke tekens, punten, afbreek streepjes, onderstrepings tekens en slashes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | naam ruimten/onderwerpen/authorizationRules | onderwerp | 1-50 | Alfanumerieken, punten, afbreek streepjes en onderstrepings tekens.<br><br>Start en eindigt met alphnumeric. |
-> | naam ruimten/onderwerpen/abonnementen | onderwerp | 1-50 | Alfanumerieken, punten, afbreek streepjes en onderstrepings tekens.<br><br>Start en eindigt met alphnumeric. |
-> | naam ruimten/onderwerpen/abonnementen/regels | abonnement | 1-50 | Alfanumerieken, punten, afbreek streepjes en onderstrepings tekens.<br><br>Start en eindigt met alphnumeric. |
+> | Naamruimten | Globale | 6-50 | Alfanumerieke en koppeltekens.<br><br>Begin met een letter. Eindig met een letter of nummer.<br><br>Zie [Naamruimte maken](/rest/api/servicebus/create-namespace)voor meer informatie . |
+> | naamruimten / Autorisatieregels | naamruimte | 1-50 | Alfanumerieke waarden, perioden, koppeltekens en underscores.<br><br>Begin en einde met alphnumeriek. |
+> | naamruimten / rampRecoveryConfigs | Globale | 6-50 | Alfanumerieke en koppeltekens.<br><br>Begin met de brief. Eindig met alfanumeriek. |
+> | naamruimten / migratieConfiguraties | naamruimte |  | Moet altijd **$default**zijn. |
+> | naamruimten / wachtrijen | naamruimte | 1-260 | Alfanumerieke waarden, perioden, koppeltekens, underscores en slashes.<br><br>Begin en einde met alfanumerieke. |
+> | naamruimten / wachtrijen / autorisatieRegels | wachtrij | 1-50 | Alfanumerieke waarden, perioden, koppeltekens en underscores.<br><br>Begin en einde met alphnumeriek. |
+> | naamruimten / onderwerpen | naamruimte | 1-260 | Alfanumerieke waarden, perioden, koppeltekens, underscores en slashes.<br><br>Begin en einde met alfanumerieke. |
+> | naamruimten / onderwerpen / autorisatieRegels | onderwerp | 1-50 | Alfanumerieke waarden, perioden, koppeltekens en underscores.<br><br>Begin en einde met alphnumeriek. |
+> | naamruimten / onderwerpen / abonnementen | onderwerp | 1-50 | Alfanumerieke waarden, perioden, koppeltekens en underscores.<br><br>Begin en einde met alphnumeriek. |
+> | naamruimten / onderwerpen / abonnementen / regels | abonnement | 1-50 | Alfanumerieke waarden, perioden, koppeltekens en underscores.<br><br>Begin en einde met alphnumeriek. |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | clusters | regio | 4-23 | Kleine letters, cijfers en afbreek streepjes.<br><br>Beginnen met kleine letters. Eindigen met kleine letter of cijfer. |
+> | Clusters | regio | 4-23 | Kleine letters, cijfers en koppeltekens.<br><br>Begin met kleine letter. Eindig met kleine letter of nummer. |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | signalR | internationaal | 3-63 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met letter. Eindigen met een letter of cijfer.  |
+> | signaalR | Globale | 3-63 | Alfanumerieke en koppeltekens.<br><br>Begin met de brief. Eindig met letter of nummer.  |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | managedInstances | internationaal | 1-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. |
-> | Server | internationaal | 1-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. |
-> | servers/data bases | server | 1-128 | Kan niet gebruiken:<br>`<>*%&:\/?`<br><br>Kan niet eindigen met een punt of spatie. |
-> | servers/data bases/syncGroups | enddatabase | 1-150 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
-> | servers/elasticPools | server | 1-128 | Kan niet gebruiken:<br>`<>*%&:\/?`<br><br>Kan niet eindigen met een punt of spatie. |
-> | servers/failoverGroups | internationaal | 1-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. |
-> | servers/firewallRules | server | 1-128 | Kan niet gebruiken:<br>`<>*%&:;\/?`<br><br>Kan niet eindigen met een punt. |
+> | managedInstances | Globale | 1-63 | Kleine letters, cijfers en koppeltekens.<br><br>Kan niet beginnen of eindigen met koppelteken. |
+> | Servers | Globale | 1-63 | Kleine letters, cijfers en koppeltekens.<br><br>Kan niet beginnen of eindigen met koppelteken. |
+> | servers / beheerders | server |  | Moet `ActiveDirectory`wel. |
+> | servers / databases | server | 1-128 | Kan het als geen gebruik maken:<br>`<>*%&:\/?`<br><br>Kan niet eindigen met periode of ruimte. |
+> | servers / databases / syncGroups | database | 1-150 | Alfanumerieke, koppeltekens en underscores. |
+> | servers / elasticPools | server | 1-128 | Kan het als geen gebruik maken:<br>`<>*%&:\/?`<br><br>Kan niet eindigen met periode of ruimte. |
+> | servers / failoverGroepen | Globale | 1-63 | Kleine letters, cijfers en koppeltekens.<br><br>Kan niet beginnen of eindigen met koppelteken. |
+> | servers / firewallRegels | server | 1-128 | Kan het als geen gebruik maken:<br>`<>*%&:;\/?`<br><br>Kan niet eindigen met periode. |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | storageAccounts | internationaal | 3-24 | Kleine letters en cijfers. |
-> | Storage accounts/blobServices | opslagaccount |  | Moet `default`zijn. |
-> | Storage accounts/blobServices/containers | opslagaccount | 3-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Begin met kleine letter of cijfer. Kan geen opeenvolgende afbreek streepjes gebruiken. |
-> | Storage accounts/fileServices | opslagaccount |  | Moet `default`zijn. |
-> | Storage accounts/fileServices/shares | opslagaccount | 3-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. Kan geen opeenvolgende afbreek streepjes gebruiken. |
-> | Storage accounts/managementPolicies | opslagaccount |  | Moet `default`zijn. |
-> | blob | container | 1-1024 | Wille keurige URL-tekens, hoofdletter gevoelig |
-> | wachtrij | opslagaccount | 3-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. Kan geen opeenvolgende afbreek streepjes gebruiken. |
-> | table | opslagaccount | 3-63 | Alfanumerieke tekens.<br><br>Begin met letter. |
+> | storageAccounts | Globale | 3-24 | Kleine letters en cijfers. |
+> | storageAccounts / blobServices | opslagaccount |  | Moet `default`wel. |
+> | storageAccounts / blobServices / containers | opslagaccount | 3-63 | Kleine letters, cijfers en koppeltekens.<br><br>Begin met kleine letter of nummer. Kan geen opeenvolgende koppeltekens gebruiken. |
+> | storageAccounts / fileServices | opslagaccount |  | Moet `default`wel. |
+> | storageAccounts / fileServices / aandelen | opslagaccount | 3-63 | Kleine letters, cijfers en koppeltekens.<br><br>Kan niet beginnen of eindigen met koppelteken. Kan geen opeenvolgende koppeltekens gebruiken. |
+> | storageAccounts / beheerBeleid | opslagaccount |  | Moet `default`wel. |
+> | blob | container | 1-1024 | URL-tekens, hoofdletters |
+> | wachtrij | opslagaccount | 3-63 | Kleine letters, cijfers en koppeltekens.<br><br>Kan niet beginnen of eindigen met koppelteken. Kan geen opeenvolgende koppeltekens gebruiken. |
+> | tabel | opslagaccount | 3-63 | Alfanumerieke waarden.<br><br>Begin met de brief. |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | storageSyncServices | resourcegroep | 1-260 | Alfanumerieke tekens, spaties, punten, afbreek streepjes en onderstrepingen.<br><br>Kan niet eindigen met een punt of spatie. |
-> | storageSyncServices / syncGroups | opslag synchronisatie service | 1-260 | Alfanumerieke tekens, spaties, punten, afbreek streepjes en onderstrepingen.<br><br>Kan niet eindigen met een punt of spatie. |
+> | storageSyncServices | resourcegroep | 1-260 | Alfanumerieke waarden, spaties, perioden, koppeltekens en underscores.<br><br>Kan niet eindigen met periode of ruimte. |
+> | storageSyncServices / syncGroups | opslagsynchronisatieservice | 1-260 | Alfanumerieke waarden, spaties, perioden, koppeltekens en underscores.<br><br>Kan niet eindigen met periode of ruimte. |
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | leider | resourcegroep | 2-50 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met letter. Eindigen met een alfanumerieke teken. |
+> | Managers | resourcegroep | 2-50 | Alfanumerieke en koppeltekens.<br><br>Begin met de brief. Eindig met alfanumeriek. |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | streamingjobs | resourcegroep | 3-63 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
-> | streamingjobs/functions | streaming-taak | 3-63 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
-> | streamingjobs/invoer | streaming-taak | 3-63 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
-> | streamingjobs/uitvoer | streaming-taak | 3-63 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
-> | streamingjobs/trans formaties | streaming-taak | 3-63 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
+> | streamingjobs | resourcegroep | 3-63 | Alfanumerieke, koppeltekens en underscores. |
+> | streamingjobs / functies | streamingtaak | 3-63 | Alfanumerieke, koppeltekens en underscores. |
+> | streamingjobs / ingangen | streamingtaak | 3-63 | Alfanumerieke, koppeltekens en underscores. |
+> | streamingjobs / uitgangen | streamingtaak | 3-63 | Alfanumerieke, koppeltekens en underscores. |
+> | streamingjobs / transformaties | streamingtaak | 3-63 | Alfanumerieke, koppeltekens en underscores. |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | verschillend | resourcegroep | 1-90 | Kan niet gebruiken:<br>`'<>%&:\?/#` |
-> | omgevingen/accessPolicies | environment | 1-90 | Kan niet gebruiken:<br> `'<>%&:\?/#` |
-> | omgevingen/eventSources | environment | 1-90 | Kan niet gebruiken:<br>`'<>%&:\?/#` |
-> | omgevingen/referenceDataSets | environment | 3-63 | Alfanumerieke tekens |
+> | Omgevingen | resourcegroep | 1-90 | Kan het als geen gebruik maken:<br>`'<>%&:\?/#` |
+> | omgevingen / toegangsbeleid | omgeving | 1-90 | Kan het als geen gebruik maken:<br> `'<>%&:\?/#` |
+> | omgevingen / eventBronnen | omgeving | 1-90 | Kan het als geen gebruik maken:<br>`'<>%&:\?/#` |
+> | omgevingen / referenceDataSets | omgeving | 3-63 | Alfanumerieke waarden |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | server farms | resourcegroep | 1-40 | Alfanumerieke tekens en afbreek streepjes. |
-> | sites | internationaal | 2-60 | Bevat alfanumerieke tekens en afbreek streepjes.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. |
-> | sites/sleuven | site | 2-59 | Alfanumerieke tekens en afbreek streepjes. |
+> | serverfarms | resourcegroep | 1-40 | Alfanumerieke en koppeltekens. |
+> | sites | Globale | 2-60 | Bevat alfanumerieke en koppeltekens.<br><br>Kan niet beginnen of eindigen met koppelteken. |
+> | sites / slots | site | 2-59 | Alfanumerieke en koppeltekens. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Ready: Recommended name and Tags Conventions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)(Engelstalig) voor aanbevelingen voor het benoemen van resources.
+Zie [Afspraken maken: Aanbevolen naamgeving en tags voor](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)het benoemen van resources.

@@ -1,6 +1,6 @@
 ---
-title: Verificatie en autorisatie Azure Relay | Microsoft Docs
-description: Dit artikel bevat een overzicht van Shared Access Signature (SAS)-verificatie met de Azure Relay-service.
+title: Azure Relay-verificatie en -autorisatie | Microsoft Documenten
+description: In dit artikel vindt u een overzicht van SAS-verificatie (Shared Access Signature) met de Azure Relay-service.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -15,41 +15,41 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: aac5c973a99b13d5918a0162feb7f1ede443463b
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514575"
 ---
-# <a name="azure-relay-authentication-and-authorization"></a>Verificatie en autorisatie Azure Relay
+# <a name="azure-relay-authentication-and-authorization"></a>Azure Relay-verificatie en -autorisatie
 
-Toepassingen kunnen worden geverifieerd bij Azure Relay met behulp van Shared Access Signature-verificatie (SAS). Met SAS-verificatie kunnen toepassingen bij de Azure Relay-service worden geverifieerd met behulp van een toegangs sleutel die is geconfigureerd op de relay-naam ruimte. U kunt deze sleutel vervolgens gebruiken om een Shared Access Signature token te genereren dat clients kunnen gebruiken om zich te verifiëren bij de Relay-service.
+Toepassingen kunnen zich verifiëren naar Azure Relay met behulp van SAS-verificatie (Shared Access Signature). Met SAS-verificatie kunnen toepassingen zich verifiëren naar de Azure Relay-service met behulp van een toegangssleutel die is geconfigureerd op de naamruimte relay. U deze sleutel vervolgens gebruiken om een geclusterd handtekeningtoken voor gedeelde toegang te genereren dat clients kunnen gebruiken om te verifiëren bij de relayservice.
 
-## <a name="shared-access-signature-authentication"></a>Shared Access Signature-verificatie
+## <a name="shared-access-signature-authentication"></a>Verificatie van gedeelde toegangshandtekeningen
 
-Met [SAS-verificatie](../service-bus-messaging/service-bus-sas.md) kunt u een gebruiker toegang verlenen tot Azure relay resources met specifieke rechten. SAS-verificatie omvat de configuratie van een cryptografische sleutel met bijbehorende rechten voor een bron. Clients kunnen vervolgens toegang krijgen tot deze bron door een SAS-token te presen teren, dat bestaat uit de bron-URI waartoe toegang wordt verkregen en een verloop datum dat met de geconfigureerde sleutel is ondertekend.
+[Met SAS-verificatie](../service-bus-messaging/service-bus-sas.md) u een gebruiker toegang verlenen tot Azure Relay-bronnen met specifieke rechten. SAS-verificatie omvat de configuratie van een cryptografische sleutel met bijbehorende rechten op een resource. Clients kunnen vervolgens toegang krijgen tot die bron door een SAS-token te presenteren, dat bestaat uit de toegang tot de bron URI en een vervaldatum die is ondertekend met de geconfigureerde sleutel.
 
-U kunt sleutels voor SAS op een relay-naam ruimte configureren. In tegens telling tot Service Bus-berichten ondersteunt [Relay hybride verbindingen](relay-hybrid-connections-protocol.md) niet-geautoriseerde of anonieme afzenders. U kunt anonieme toegang voor de entiteit inschakelen wanneer u deze maakt, zoals wordt weer gegeven in de volgende scherm afbeelding van de portal:
+U sleutels voor SAS configureren op een naamruimte voor relais. In tegenstelling tot Service Bus-berichten ondersteunt [Relay Hybrid Connections](relay-hybrid-connections-protocol.md) onbevoegde of anonieme afzenders. U anonieme toegang voor de entiteit inschakelen wanneer u deze maakt, zoals wordt weergegeven in de volgende schermafbeelding van de portal:
 
 ![][0]
 
-Als u SAS wilt gebruiken, kunt u een [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -object configureren op een relay-naam ruimte die uit het volgende bestaat:
+Als u SAS wilt gebruiken, u een object [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) configureren op een naamruimte relay die bestaat uit het volgende:
 
-* De *naam* van de regel.
-* *PrimaryKey* is een cryptografische sleutel die wordt gebruikt voor het ondertekenen/valideren van SAS-tokens.
-* *Secundaire sleutel* is een cryptografische sleutel die wordt gebruikt voor het ondertekenen/valideren van SAS-tokens.
-* *Rechten* die de verzameling van geluisterde, verzonden of beheerde rechten vertegenwoordigen.
+* *KeyName* die de regel identificeert.
+* *PrimaryKey* is een cryptografische sleutel die wordt gebruikt om SAS-tokens te ondertekenen/valideren.
+* *SecondaryKey* is een cryptografische sleutel die wordt gebruikt om SAS-tokens te ondertekenen/valideren.
+* *Rechten* die de verzameling van verleende rechten voor luisteren, verzenden of beheren vertegenwoordigen.
 
-Autorisatie regels die op het niveau van de naam ruimte zijn geconfigureerd, kunnen toegang verlenen tot alle relay-verbindingen in een naam ruimte voor clients met tokens die zijn ondertekend met behulp van de bijbehorende sleutel. Er kunnen Maxi maal 12 dergelijke autorisatie regels worden geconfigureerd op een relay-naam ruimte. Standaard wordt een [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) met alle rechten voor elke naam ruimte geconfigureerd wanneer deze voor het eerst wordt ingericht.
+Autorisatieregels die zijn geconfigureerd op naamruimteniveau, kunnen toegang verlenen tot alle relayverbindingen in een naamruimte voor clients met tokens die zijn ondertekend met de bijbehorende sleutel. Maximaal 12 dergelijke autorisatieregels kunnen worden geconfigureerd op een relay-naamruimte. Standaard is een [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) met alle rechten geconfigureerd voor elke naamruimte wanneer deze voor het eerst wordt ingericht.
 
-Voor toegang tot een entiteit vereist de client een SAS-token dat is gegenereerd met behulp van een specifieke [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Het SAS-token wordt gegenereerd met behulp van de HMAC-SHA256 van een resource teken reeks die bestaat uit de resource-URI waarvoor toegang wordt gevraagd en een verval datum met een cryptografische sleutel die is gekoppeld aan de autorisatie regel.
+Om toegang te krijgen tot een entiteit, heeft de client een SAS-token nodig dat is gegenereerd met een specifieke [SharedAccessAuthorizationRule.](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) Het SAS-token wordt gegenereerd met behulp van de HMAC-SHA256 van een resourcetekenreeks die bestaat uit de bron URI waarvoor toegang wordt geclaimd, en een vervaldatum met een cryptografische sleutel die is gekoppeld aan de autorisatieregel.
 
-Ondersteuning voor SAS-verificatie voor Azure Relay is opgenomen in de Azure .NET SDK-versie 2,0 en hoger. SAS bevat ondersteuning voor een [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Alle Api's die een connection string als para meter accepteren, bieden ondersteuning voor SAS-verbindings reeksen.
+SAS-verificatieondersteuning voor Azure Relay is opgenomen in de Azure .NET SDK-versies 2.0 en hoger. SAS bevat ondersteuning voor een [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Alle API's die een verbindingstekenreeks als parameter accepteren, bevatten ondersteuning voor SAS-verbindingstekenreeksen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Ga door met het lezen van [Service Bus verificatie met hand tekeningen voor gedeelde toegang](../service-bus-messaging/service-bus-sas.md) voor meer informatie over SAS.
-- Raadpleeg de [hand leiding Azure Relay hybride verbindingen protocol](relay-hybrid-connections-protocol.md) voor gedetailleerde informatie over de hybride verbindingen mogelijkheid.
-- Zie voor informatie over Service Bus Messa ging-verificatie en-autorisatie [Service Bus verificatie en autorisatie](../service-bus-messaging/service-bus-authentication-and-authorization.md). 
+- Lees verder [Service Bus-verificatie met Gedeelde toegangshandtekeningen](../service-bus-messaging/service-bus-sas.md) voor meer informatie over SAS.
+- Zie de [protocolhandleiding](relay-hybrid-connections-protocol.md) azure relay hybrid connections voor gedetailleerde informatie over de mogelijkheid hybride verbindingen.
+- Zie [Verificatie en autorisatie servicebus](../service-bus-messaging/service-bus-authentication-and-authorization.md)voor overeenkomstige informatie over verificatie en autorisatie van Service Bus. 
 
 [0]: ./media/relay-authentication-and-authorization/hcanon.png

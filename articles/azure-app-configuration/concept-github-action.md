@@ -1,41 +1,41 @@
 ---
-title: GitHub-acties gebruiken met Azure-app configuratie synchronisatie
-description: GitHub-acties gebruiken om een update naar uw app-configuratie-exemplaar te activeren wanneer gedefinieerde acties worden uitgevoerd op een GitHub-opslag plaats
+title: GitHub-acties gebruiken met synchronisatie van Azure-app-configuratie
+description: GitHub-acties gebruiken om een update te activeren voor uw app-configuratie-exemplaar wanneer u uw GitHub-opslagplaats bijwerkt
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 9d60f1885a85fd7d45090f1cb4905a3d95d9d1d6
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 46d4aa4d4d37e9cac928e8d1a9e5e77ca0f30f18
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523710"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384055"
 ---
 # <a name="sync-your-app-configuration-instance-using-github-actions"></a>Uw App Configuration-exemplaar synchroniseren met GitHub-acties
-Azure-app-configuratie maakt gebruik van GitHub-acties om updates te activeren voor een app-configuratie-exemplaar op basis van acties die worden uitgevoerd in een GitHub-opslag plaats. Met GitHub-werk stromen worden configuratie-updates geactiveerd, waardoor de integratie van deze updates in dezelfde werk stroom kan worden gebruikt om de app-code bij te werken.
 
-Een GitHub actions- [werk stroom](https://help.github.com/articles/about-github-actions#workflow) definieert een geautomatiseerd proces in een github-opslag plaats. Dit proces vertelt u GitHub hoe u uw GitHub-project bouwt en implementeert. Azure-app configuratie biedt de *Azure-app configuratie synchronisatie* actie om updates van een app-configuratie-exemplaar in te scha kelen wanneer er wijzigingen in de bron opslagplaats worden aangebracht. 
+Teams die hun bestaande bronbeheerpraktijken willen blijven gebruiken, kunnen GitHub Actions gebruiken om hun GitHub-repository automatisch te synchroniseren met hun App Configuration Store. Hiermee u wijzigingen aanbrengen in uw config-bestanden zoals u dat normaal zou doen, terwijl u voordelen voor app-configuratie krijgt, zoals: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;• Gecentraliseerde configuratie buiten uw code <br>
+&nbsp;&nbsp;&nbsp;&nbsp;• Configuratie bijwerken zonder uw hele app opnieuw te implementeren <br>
+&nbsp;&nbsp;&nbsp;&nbsp;• Integratie met services zoals Azure App Service en Functies. 
 
-Een YAML-bestand (. yml) gevonden in het `/.github/workflows/` pad van uw opslag plaats definieert uw werk stroom. Deze definitie bevat de stappen en para meters van de werk stroom.
+Een GitHub [Actions-werkstroom](https://help.github.com/articles/about-github-actions#workflow) definieert een geautomatiseerd proces in een GitHub-repository. De *Azure App Configuration Sync* Action activeert updates voor een app-configuratie-instantie wanneer wijzigingen worden aangebracht in de bronopslagplaats. Het maakt gebruik van een YAML (.yml) bestand gevonden in het `/.github/workflows/` pad van uw repository om de stappen en parameters te definiëren. U configuratie-updates activeren wanneer u app-configuratiebestanden pusht, bekijkt of vertakt, net zoals u dat doet met app-code.
 
-GitHub-gebeurtenissen, zoals een push naar een opslag plaats, kunnen een GitHub actie werk stroom activeren.  Met de actie *Azure-app synchronisatie configuratie* kunt u een update van een app-configuratie-exemplaar activeren wanneer een opgegeven github-actie wordt uitgevoerd. U kunt configuratie-updates activeren tijdens het pushen, reviseren of vertakking van app-configuratie bestanden, net als bij app-code.
+De GitHub-documentatie biedt een diepgaand overzicht van GitHub-workflows en -acties. [documentation](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) 
 
-De GitHub- [documentatie](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) biedt uitgebreide weer gave van github-werk stromen en-acties. 
-
-## <a name="enable-github-actions-in-your-repository"></a>GitHub-acties inschakelen in uw opslag plaats
-Als u deze GitHub actie wilt gaan gebruiken, gaat u naar uw opslag plaats en selecteert u het tabblad **acties** . Klik op **nieuwe werk stroom**en **Stel zelf een werk stroom**in. Ga ten slotte naar de Marketplace voor ' Azure-app-configuratie synchronisatie '.
+## <a name="enable-github-actions-in-your-repository"></a>GitHub-acties inschakelen in uw opslagplaats
+Als u deze GitHub-actie wilt gebruiken, gaat u naar uw opslagplaats en selecteert u het tabblad **Acties.** Klik op **Nieuwe werkstroom**en **stel vervolgens zelf een werkstroom in.** Zoek tot slot op de marktplaats naar 'Azure App Configuration Sync'.
 > [!div class="mx-imgBorder"]
-> ![selecteert u het tabblad actie](media/find-github-action.png)
+> ![Het tabblad Actie selecteren](media/find-github-action.png)
 
 > [!div class="mx-imgBorder"]
-> ![Selecteer de synchronisatie actie voor de configuratie van de app](media/app-configuration-sync-action.png)
+> ![De actie voor het synchroniseren van de app-configuratie selecteren](media/app-configuration-sync-action.png)
 
-## <a name="sync-configuration-files-after-a-push"></a>Configuratie bestanden na een push synchroniseren
-Met deze actie worden Azure-app configuratie bestanden gesynchroniseerd wanneer een wijziging naar `appsettings.json`wordt gepusht. Wanneer een ontwikkelaar een wijziging naar `appsettings.json`pusht, werkt de synchronisatie actie van de app-configuratie het app-configuratie-exemplaar bij met de nieuwe waarden.
+## <a name="sync-configuration-files-after-a-push"></a>Configuratiebestanden synchroniseren na een push
+Met deze actie worden Azure App Configuration-bestanden gesynchroniseerd wanneer een wijziging wordt gepusht naar `appsettings.json`. Wanneer een ontwikkelaar een `appsettings.json`wijziging naar , de actie App Configuratie synchronisatie updates van de app configuratie instantie met de nieuwe waarden.
 
-In de eerste sectie van deze werk stroom wordt aangegeven dat de actie wordt geactiveerd *op* een *Push* met `appsettings.json` naar de *hoofd* vertakking. De tweede sectie bevat een lijst met de taken die worden uitgevoerd zodra de actie wordt geactiveerd. Met deze actie worden de relevante bestanden gecontroleerd en wordt het app-configuratie-exemplaar bijgewerkt met behulp van de connection string opgeslagen als een geheim in de opslag plaats.  Zie [het artikel van github](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) over het maken en gebruiken van versleutelde geheimen voor meer informatie over het gebruik van geheimen in github.
+Het eerste gedeelte van deze werkstroom geeft aan `appsettings.json` dat de actie wordt geactiveerd *op* een *push* die naar de *hoofdvertakking* wordt geleid. In het tweede gedeelte worden de taken weergegeven die worden uitgevoerd zodra de actie is geactiveerd. De actie controleert de relevante bestanden en werkt de instantie App-configuratie bij met behulp van de verbindingstekenreeks die als geheim in de opslagplaats is opgeslagen.  Zie het [artikel van GitHub](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) over het maken en gebruiken van versleutelde geheimen voor meer informatie over het gebruik van geheimen in GitHub.
 
 ```json
 on: 
@@ -61,10 +61,10 @@ jobs:
           separator: ':' 
 ```
 
-## <a name="use-a-dynamic-label-on-sync"></a>Een dynamisch label gebruiken bij synchronisatie
-Met de vorige actie wordt het app-configuratie-exemplaar bijgewerkt wanneer `appsettings.json` wordt bijgewerkt. Met deze actie wordt een dynamisch label ingevoegd bij elke synchronisatie, zodat elke synchronisatie uniek kan worden geïdentificeerd en het toestaan van code wijzigingen aan configuratie wijzigingen wordt toegewezen.
+## <a name="use-a-dynamic-label-on-sync"></a>Een dynamisch label gebruiken voor synchronisatie
+Met de vorige actie wordt `appsettings.json` het exemplaar App-configuratie bijgewerkt wanneer deze wordt bijgewerkt. Met deze actie wordt een dynamisch label op elke synchronisatie ingevoegd, zodat elke synchronisatie op unieke wijze kan worden geïdentificeerd en codewijzigingen kunnen worden toegewezen aan config-wijzigingen.
 
-In de eerste sectie van deze werk stroom wordt aangegeven dat de actie wordt geactiveerd *op* een *Push* met `appsettings.json` naar de *hoofd* vertakking. In het tweede gedeelte wordt een taak uitgevoerd waarmee een uniek label voor de configuratie-update wordt gemaakt op basis van de commit-hash. De taak werkt vervolgens het app-configuratie-exemplaar bij met de nieuwe waarden en het unieke label voor deze update.
+Het eerste gedeelte van deze werkstroom geeft aan `appsettings.json` dat de actie wordt geactiveerd *op* een *push* die naar de *hoofdvertakking* wordt geleid. In het tweede deel wordt een taak uitgevoerd die een uniek label voor de config-update maakt op basis van de commit hash. De taak werkt vervolgens de instantie App-configuratie bij met de nieuwe waarden en het unieke label voor deze update.
 
 ```json
 on: 
@@ -96,9 +96,9 @@ jobs:
 ```
 
 ## <a name="use-strict-sync"></a>Strikte synchronisatie gebruiken
-Als strikte modus is ingeschakeld, zorgt de synchronisatie ervoor dat het app-configuratie-exemplaar overeenkomt met het configuratie bestand voor het opgegeven voor voegsel en label. Sleutel-waardeparen met hetzelfde voor voegsel en label die zich niet in het configuratie bestand bevinden, worden verwijderd. 
+Wanneer de strikte modus is ingeschakeld, zorgt de synchronisatie ervoor dat de instantie App-configuratie precies overeenkomt met het configuratiebestand voor het gegeven voorvoegsel en label. Sleutelwaardenparen met hetzelfde voorvoegsel en label die niet in het configuratiebestand staan, worden verwijderd. 
  
-Als de strikte modus niet is ingeschakeld, worden door de synchronisatie alleen de sleutel waarden van het configuratie bestand ingesteld. Er worden geen sleutel-waardeparen verwijderd. 
+Als de strikte modus niet is ingeschakeld, worden alleen de sleutelwaarden van het configuratiebestand ingesteld. Er worden geen sleutelwaardeparen verwijderd. 
 
 ```json
 on: 
@@ -127,12 +127,12 @@ jobs:
           strict: true 
 ```
 
-## <a name="use-max-depth-to-limit-github-action"></a>Maximale diepte gebruiken om de GitHub-actie te beperken
-Het standaard gedrag voor geneste JSON-kenmerken is het samen voegen van het hele object.  De JSON hieronder definieert deze sleutel/waarde-paar:
+## <a name="use-max-depth-to-limit-github-action"></a>Gebruik maximale diepte om GitHub Action te beperken
+Het standaardgedrag voor geneste JSON-kenmerken is het hele object plat te maken.  De JSON hieronder definieert dit sleutel-waarde paar:
 
 | Sleutel | Waarde |
 | --- | --- |
-| Object: binnenste: InnerKey | InnerValue |
+| Object:Inner:Innerkey | Innervalue |
 
 ```json
 { "Object": 
@@ -144,7 +144,7 @@ Het standaard gedrag voor geneste JSON-kenmerken is het samen voegen van het hel
 }
 ```
 
-Als het geneste object de waarde is die naar het configuratie-exemplaar moet worden gepusht, kunt u de *diepte* waarde gebruiken om het afvlakken met de juiste diepte te stoppen. 
+Als het geneste object de waarde is die naar de instantie Configuratie wordt geduwd, u de *dieptewaarde* gebruiken om de afvlakking op de juiste diepte te stoppen. 
 
 ```json
 on: 
@@ -171,31 +171,31 @@ jobs:
           depth: 2 
 ```
 
-Met het bovenstaande voor beeld wordt nu het volgende sleutel/waarde-paar als resultaat gegeven:
+Met een diepte van 2 geeft het bovenstaande voorbeeld nu het volgende sleutelwaardepaar als resultaat:
 
 | Sleutel | Waarde |
 | --- | --- |
-| Object: binnenste | {"InnerKey":"InnerValue"} |
+| Object:Inner | {"Innerkey":"Innervalue"} |
 
-## <a name="understand-action-inputs"></a>Informatie over actie-invoer
-Invoer parameters geven gegevens op die worden gebruikt door de actie tijdens runtime.  De volgende tabel bevat de invoer parameters die worden geaccepteerd door de synchronisatie van de app-configuratie en de verwachte waarden voor elke.  Zie de [documentatie](https://help.github.com/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions#inputs)van github voor meer informatie over actie-invoer voor github-acties.
+## <a name="understand-action-inputs"></a>Inzicht in actie-ingangen
+Invoerparameters geven gegevens op die door de actie tijdens runtime worden gebruikt.  De volgende tabel bevat invoerparameters die worden geaccepteerd door App Configuration Sync en de verwachte waarden voor elk.  Zie de [documentatie](https://help.github.com/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions#inputs)van GitHub voor meer informatie over actie-ingangen voor GitHub-acties.
 
 > [!Note]
-> Invoer-Id's zijn niet hoofdletter gevoelig.
+> Invoer-id's zijn hoofdletterongevoelig.
 
 
-| Invoer naam | Vereist? | Waarde |
+| Invoernaam | Vereist? | Waarde |
 |----|----|----|
-| configurationFile | Ja | Relatief pad naar het configuratie bestand in de opslag plaats.  Globs-patronen worden ondersteund en kunnen meerdere bestanden bevatten. |
-| format | Ja | Bestands indeling van het configuratie bestand.  Geldige indelingen zijn: JSON, YAML, eigenschappen. |
-| connectionString | Ja | Verbindings reeks voor het app-configuratie-exemplaar. De connection string moet worden opgeslagen als een geheim in de GitHub-opslag plaats en alleen de geheime naam moet in de werk stroom worden gebruikt. |
-| scheiding | Ja | Scheidings teken dat wordt gebruikt bij het afvlakken van het configuratie bestand naar sleutel-waardeparen.  Geldige waarden zijn:. , ; : - _ __ / |
-| prefix | Nee | Het voor voegsel dat moet worden toegevoegd aan het begin van de sleutels. |
-| label | Nee | Label dat wordt gebruikt bij het instellen van sleutel-waardeparen. Als u geen waarde opgeeft, wordt een NULL-label gebruikt. |
-| beperking | Nee | Een Booleaanse waarde die bepaalt of de strikte modus is ingeschakeld. De standaardwaarde is false. |
-| diepga | Nee | Maximale diepte voor het afvlakken van het configuratie bestand.  Depth moet een positief getal zijn.  De standaard waarde heeft geen maximale diepte. |
-| tags | Nee | Hiermee geeft u de tag die is ingesteld op sleutel-waardeparen.  De verwachte indeling is een stringified vorm van een JSON-object van de volgende vorm: {[propertyname: String]: String;} Elke eigenschaps naam-waarde wordt een tag. |
+| configurationFile configurationFile configurationFile configurationFile | Ja | Relatief pad naar het configuratiebestand in de opslagplaats.  Glob-patronen worden ondersteund en kunnen meerdere bestanden bevatten. |
+| formaat | Ja | Bestandsindeling van het configuratiebestand.  Geldige indelingen zijn: JSON, YAML, eigenschappen. |
+| Connectionstring | Ja | Verbindingstekenreeks voor het exemplaar App-configuratie. De verbindingstekenreeks moet als geheim worden opgeslagen in de GitHub-opslagplaats en alleen de geheime naam moet in de werkstroom worden gebruikt. |
+| Scheidingsteken | Ja | Scheidingsteken die wordt gebruikt bij het afvlakken van het configuratiebestand naar sleutelwaardeparen.  Geldige waarden zijn: . , ; : - _ __ / |
+| Voorvoegsel | Nee | Voorvoegsel dat moet worden toegevoegd aan het begin van de toetsen. |
+| label | Nee | Label dat wordt gebruikt bij het instellen van sleutelwaardeparen. Indien niet gespecificeerd, wordt een null-label gebruikt. |
+| Strikte | Nee | Een booleaanse waarde die bepaalt of de strikte modus is ingeschakeld. De standaardwaarde is false. |
+| Diepte | Nee | Maximale diepte voor het afvlakken van het configuratiebestand.  Diepte moet een positief getal zijn.  De standaardwaarde heeft geen maximale diepte. |
+| tags | Nee | Hiermee geeft u de tagset op op sleutelwaardeparen.  De verwachte notatie is een gestouwde vorm van een JSON-object met de volgende vorm: { [propertyName: string]: tekenreeks; } Elke waardewaarde van de eigenschap wordt een tag. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u de GitHub-actie voor het configureren van de app-configuratie en hoe deze kan worden gebruikt voor het automatiseren van updates voor uw app-configuratie-exemplaar. Ga door naar het volgende [artikel](./concept-app-configuration-event.md)voor meer informatie over de manier waarop Azure-app configuratie reageert op wijzigingen in sleutel-waardeparen.
+In dit artikel leerde u over de GitHub-actie voor app-configuratiesynchronisatie en hoe deze kan worden gebruikt om updates voor uw app-configuratie-exemplaar te automatiseren. Ga verder naar het volgende [artikel](./concept-app-configuration-event.md)voor meer informatie over azure-appconfiguratie die reageert op wijzigingen in sleutelwaardeparen.

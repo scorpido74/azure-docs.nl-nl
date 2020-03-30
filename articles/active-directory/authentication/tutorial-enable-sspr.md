@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory self-service voor wachtwoord herstel inschakelen
-description: In deze zelf studie leert u hoe u Azure Active Directory selfservice voor het opnieuw instellen van wacht woorden inschakelt voor een groep gebruikers en het proces voor het opnieuw instellen van het wacht woord te testen.
+title: Azure Active Directory selfservicewachtwoord opnieuw instellen inschakelen
+description: In deze zelfstudie leert u hoe u Azure Active Directory selfservice wachtwoordopnieuw instelling inschakelt voor een groep gebruikers en het proces voor het opnieuw instellen van wachtwoorden testen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,138 +11,138 @@ author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71b9052f364dfbae205dd324ba69de9578ccc225
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77027676"
 ---
-# <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Zelf studie: gebruikers in staat stellen hun account te ontgrendelen of wacht woorden opnieuw in te stellen met Azure Active Directory self-service voor wachtwoord herstel
+# <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Zelfstudie: Gebruikers in staat stellen hun account te ontgrendelen of wachtwoorden opnieuw in te stellen met Azure Active Directory selfservicewachtwoord opnieuw instellen
 
-Azure Active Directory (Azure AD) self-service voor wachtwoord herstel (SSPR) biedt gebruikers de mogelijkheid om hun wacht woord te wijzigen of opnieuw in te stellen, zonder de rol van beheerder of Help Desk. Als het account van een gebruiker is vergrendeld of als het wacht woord is verg eten, kunnen ze de aanwijzingen volgen om zichzelf te deblokkeren en terug te gaan naar het werk. Deze mogelijkheid vermindert helpdesk oproepen en productiviteits verlies wanneer een gebruiker zich niet kan aanmelden bij hun apparaat of een toepassing.
+Azure Active Directory (Azure AD) selfservice password reset (SSPR) biedt gebruikers de mogelijkheid om hun wachtwoord te wijzigen of opnieuw in te stellen, zonder tussenkomst van de beheerder of helpdesk. Als het account van een gebruiker is vergrendeld of als hij zijn wachtwoord vergeet, kunnen ze aanwijzingen volgen om zichzelf te deblokkeren en weer aan het werk te gaan. Deze mogelijkheid vermindert helpdeskoproepen en productiviteitsverlies wanneer een gebruiker zich niet kan aanmelden bij zijn apparaat of toepassing.
 
 > [!IMPORTANT]
-> In deze Quick start ziet u een beheerder hoe selfservice voor wachtwoord herstel moet worden ingeschakeld. Als u een eind gebruiker bent al geregistreerd voor de selfservice voor het opnieuw instellen van het wacht woord en deze wilt weer geven in uw account, gaat u naar https://aka.ms/sspr.
+> In deze quickstart ziet u een beheerder hoe u het opnieuw instellen van selfservicewachtwoorden inschakelt. Als u een eindgebruiker bent die al is geregistreerd voor het opnieuw instellen https://aka.ms/ssprvan het selfservicewachtwoord en u terug moet naar uw account, gaat u naar .
 >
-> Als uw IT-team de mogelijkheid om uw eigen wacht woord opnieuw in te stellen niet heeft ingeschakeld, kunt u contact met de Help Desk vinden voor meer informatie.
+> Als uw IT-team de mogelijkheid om uw eigen wachtwoord opnieuw in te stellen niet heeft ingeschakeld, neemt u contact op met uw helpdesk voor extra hulp.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Selfservice voor wachtwoord herstel inschakelen voor een groep van Azure AD-gebruikers
-> * Verificatie methoden en registratie opties configureren
-> * Het SSPR-proces testen als een gebruiker
+> * Selfservice-wachtwoordopnieuw instellen inschakelen voor een groep Azure AD-gebruikers
+> * Verificatiemethoden en registratieopties configureren
+> * Het SSPR-proces testen als gebruiker
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende resources en bevoegdheden nodig om deze zelf studie te volt ooien:
+Als u deze zelfstudie wilt voltooien, hebt u de volgende bronnen en bevoegdheden nodig:
 
 * Een werkende Azure AD-tenant waarop minimaal een proeflicentie is ingeschakeld.
-    * Maak indien nodig [een gratis versie](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Een account met *globale beheerders* bevoegdheden.
-* Een niet-beheerders gebruiker met een wacht woord dat u kent, zoals *test User*. In deze zelf studie test u de SSPR-ervaring voor eind gebruikers met dit account.
-    * Als u een gebruiker wilt maken, raadpleegt u [Quick Start: nieuwe gebruikers toevoegen aan Azure Active Directory](../add-users-azure-active-directory.md).
-* Een groep waarvan de niet-beheerders gebruiker lid is, zoals *SSPR-test groep*. In deze zelf studie schakelt u SSPR in voor deze groep.
-    * Als u een groep wilt maken, raadpleegt u [een groep maken en leden toevoegen in azure Active Directory](../active-directory-groups-create-azure-portal.md).
+    * Maak er indien nodig [gratis een.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Een account met *global administrator-bevoegdheden.*
+* Een niet-beheerdersgebruiker met een wachtwoord dat u kent, zoals *testuser.* U test de sspr-ervaring van eindgebruikers met behulp van dit account in deze zelfstudie.
+    * Zie [Snelstart: Nieuwe gebruikers toevoegen aan Azure Active Directory](../add-users-azure-active-directory.md)als u een gebruiker wilt maken.
+* Een groep waarvan de niet-beheerdersgebruiker lid is, zoals *SSPR-Test-Group.* U schakelt SSPR voor deze groep in deze zelfstudie in.
+    * Als u een groep wilt maken, [raadpleegt](../active-directory-groups-create-azure-portal.md)u hoe u een groep maakt en leden toevoegt in Azure Active Directory .
 
 ## <a name="enable-self-service-password-reset"></a>Selfservice voor wachtwoordherstel inschakelen
 
-Met Azure AD kunt u SSPR inschakelen voor *geen*, *geselecteerd*of *alle* gebruikers. Met deze gedetailleerde mogelijkheid kunt u een subset van gebruikers kiezen om het registratie proces en de werk stroom van het SSPR te testen. Wanneer u vertrouwd bent met het proces en de vereisten kunt communiceren met een grotere set gebruikers, kunt u extra groepen gebruikers selecteren om in te scha kelen voor SSPR. U kunt ook SSPR inschakelen voor iedereen in de Azure AD-Tenant.
+Met Azure AD u SSPR voor *Geen,* *Geselecteerde*of *Alle* gebruikers inschakelen. Met deze gedetailleerde mogelijkheid u een subset van gebruikers kiezen om het SSPR-registratieproces en de werkstroom te testen. Wanneer u vertrouwd bent met het proces en de vereisten communiceren met een bredere groep gebruikers, u extra groepen gebruikers selecteren om SSPR in te schakelen. U ook SSPR inschakelen voor iedereen in de Azure AD-tenant.
 
-In deze zelf studie configureert u SSPR voor een set gebruikers in een test groep. In het volgende voor beeld wordt de groep Group *SSPR-test-Group* gebruikt. Geef uw eigen Azure AD-groep op als dat nodig is:
+Configureer in deze zelfstudie SSPR voor een set gebruikers in een testgroep. In het volgende voorbeeld wordt de groep *SSPR-Test-Group* gebruikt. Geef indien nodig uw eigen Azure AD-groep op:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een account met *globale beheerders* machtigingen.
-1. Zoek en selecteer **Azure Active Directory**en kies vervolgens **wacht woord opnieuw instellen** in het menu aan de linkerkant.
-1. Kies op de pagina **Eigenschappen** onder het selectie vakje *selfservice voor wacht woord opnieuw instellen is ingeschakeld*de optie **groep selecteren**
-1. Blader naar en selecteer uw Azure AD-groep, zoals *SSPR-test groep*, en kies vervolgens *selecteren*.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een account met algemene *beheerdersmachtigingen.*
+1. Zoek naar en selecteer **Azure Active Directory**en kies vervolgens Wachtwoord opnieuw **instellen** in het menu aan de linkerkant.
+1. Kies op de pagina **Eigenschappen** onder de optie *Self service password reset ingeschakeld*de optie Groep **Selecteren**
+1. Blader naar en selecteer uw Azure AD-groep, zoals *SSPR-Test-Group,* en kies *Selecteer Vervolgens Selecteren*.
 
     [![](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png "Select a group in the Azure portal to enable for self-service password reset")](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
 
-    Als onderdeel van een bredere implementatie van SSPR worden geneste groepen ondersteund. Zorg ervoor dat aan de gebruikers in de groep (en) die u kiest de juiste licenties zijn toegewezen. Er is momenteel geen validatie proces van deze licentie vereisten.
+    Als onderdeel van een bredere implementatie van SSPR worden geneste groepen ondersteund. Zorg ervoor dat de gebruikers in de groep(en) die u kiest, de juiste licenties hebben toegewezen. Er is momenteel geen validatieproces van deze licentievereisten.
 
-1. Selecteer **Opslaan**om SSPR in te scha kelen voor de Select-gebruikers.
+1. Als u SSPR voor de geselecteerde gebruikers wilt inschakelen, selecteert u **Opslaan**.
 
-## <a name="select-authentication-methods-and-registration-options"></a>Verificatie methoden en registratie opties selecteren
+## <a name="select-authentication-methods-and-registration-options"></a>Verificatiemethoden en registratieopties selecteren
 
-Wanneer gebruikers hun account moeten ontgrendelen of hun wacht woord opnieuw moeten instellen, wordt ze gevraagd een aanvullende bevestigings methode op te vragen. Deze extra verificatie factor zorgt ervoor dat alleen goedgekeurde SSPR-gebeurtenissen zijn voltooid. U kunt kiezen welke verificatie methoden u wilt toestaan, op basis van de registratie gegevens die door de gebruiker worden verstrekt.
+Wanneer gebruikers hun account moeten ontgrendelen of hun wachtwoord opnieuw moeten instellen, wordt ze gevraagd om een extra bevestigingsmethode. Deze extra verificatiefactor zorgt ervoor dat alleen goedgekeurde SSPR-gebeurtenissen worden voltooid. U kiezen welke verificatiemethoden u wilt toestaan, op basis van de registratiegegevens die de gebruiker verstrekt.
 
-1. Stel op de pagina **verificatie methoden** in het menu aan de linkerkant het **aantal methoden** in dat moet worden ingesteld op *1*.
+1. Stel op de pagina **Verificatiemethoden** in het menu aan de linkerkant het aantal methoden in **dat nodig is om te resetten** op *1*.
 
-    Om de beveiliging te verbeteren, kunt u het aantal verificatie methoden verhogen dat nodig is voor SSPR.
+    Om de beveiliging te verbeteren, u het aantal verificatiemethoden verhogen dat nodig is voor SSPR.
 
-1. Kies de **methoden die beschikbaar zijn voor gebruikers** die uw organisatie wil toestaan. Voor deze zelf studie schakelt u de selectie vakjes in om de volgende methoden in te scha kelen:
+1. Kies de **methoden die beschikbaar zijn voor gebruikers** die uw organisatie wil toestaan. Schakel voor deze zelfstudie de selectievakjes in om de volgende methoden in te schakelen:
 
-    * *Melding voor mobiele app*
-    * *Mobiele app-code*
-    * *E-mail*
+    * *Meldingen via mobiele app*
+    * *Code van mobiele app*
+    * *Email*
     * *Mobiele telefoon*
     * *Telefoon (werk)*
 
-1. Selecteer **Opslaan**om de verificatie methoden toe te passen.
+1. Als u de verificatiemethoden wilt toepassen, selecteert u **Opslaan**.
 
-Voordat gebruikers hun account kunnen ontgrendelen of een wacht woord opnieuw moeten instellen, moeten ze hun contact gegevens registreren. Deze contact gegevens worden gebruikt voor de verschillende verificatie methoden die in de vorige stappen zijn geconfigureerd.
+Voordat gebruikers hun account kunnen ontgrendelen of een wachtwoord kunnen resetten, moeten ze hun contactgegevens registreren. Deze contactgegevens worden gebruikt voor de verschillende verificatiemethoden die in de vorige stappen zijn geconfigureerd.
 
-Een beheerder kan deze contact gegevens hand matig opgeven, of gebruikers kunnen naar een registratie portal gaan om de informatie zelf op te geven. In deze zelf studie configureert u de gebruikers om om registratie te worden gevraagd wanneer ze zich de volgende keer aanmelden.
+Een beheerder kan deze contactgegevens handmatig verstrekken of gebruikers kunnen naar een registratieportal gaan om de informatie zelf te verstrekken. Configureer in deze zelfstudie de gebruikers die worden gevraagd om registratie wanneer ze zich volgende aanmelden.
 
-1. Op de **registratie** pagina in het menu aan de linkerkant selecteert u *Ja* voor **gebruikers die zich moeten registreren bij het aanmelden**.
-1. Het is belang rijk dat contact gegevens up-to-date blijven. Als de contact gegevens verouderd zijn wanneer een SSPR-gebeurtenis wordt gestart, kan de gebruiker de account niet meer ontgrendelen of hun wacht woord opnieuw instellen.
+1. Selecteer **op** de pagina Registratie in het menu aan de linkerkant *de* optie Ja voor **gebruikers die zich moeten registreren bij het aanmelden.**
+1. Het is belangrijk dat contactgegevens up-to-date worden gehouden. Als de contactgegevens verouderd zijn wanneer een SSPR-gebeurtenis wordt gestart, kan de gebruiker zijn account mogelijk niet ontgrendelen of zijn wachtwoord opnieuw instellen.
 
     Stel **Aantal dagen waarna gebruikers wordt gevraagd om de verificatiegegevens opnieuw te bevestigen** in op *180*.
-1. Selecteer **Opslaan**om de registratie-instellingen toe te passen.
+1. Als u de registratie-instellingen wilt toepassen, selecteert u **Opslaan**.
 
 ## <a name="configure-notifications-and-customizations"></a>Meldingen en aanpassingen configureren
 
-Om gebruikers op de hoogte te houden van account activiteit, kunt u e-mail meldingen configureren die moeten worden verzonden wanneer er een SSPR-gebeurtenis plaatsvindt. Deze meldingen kunnen zowel normale gebruikers accounts als beheerders accounts omvatten. Voor beheerders accounts bevat deze melding een extra beveiligingslaag wanneer een bevoegd beheerders account wacht woord opnieuw wordt ingesteld met behulp van SSPR.
+Als u gebruikers op de hoogte wilt houden van accountactiviteiten, u e-mailmeldingen configureren die moeten worden verzonden wanneer een SSPR-gebeurtenis plaatsvindt. Deze meldingen kunnen betrekking hebben op zowel gewone gebruikersaccounts als beheerdersaccounts. Voor beheerdersaccounts biedt deze melding een extra bewustzijnslaag wanneer een wachtwoord voor een geprivilegieerd beheerdersaccount opnieuw wordt ingesteld met SSPR.
 
-1. Configureer op de pagina **meldingen** in het menu aan de linkerkant de volgende opties:
+1. Configureer op de pagina **Meldingen** in het menu aan de linkerkant de volgende opties:
 
    * Stel **Gebruikers een melding tonen over het opnieuw instellen van hun wachtwoord** in op *Ja*.
    * Stel **Alle beheerders waarschuwen wanneer andere beheerders hun wachtwoord opnieuw instellen** in op *Ja*.
 
-1. Selecteer **Opslaan**om de voor keuren voor meldingen toe te passen.
+1. Als u de meldingsvoorkeuren wilt toepassen, selecteert u **Opslaan**.
 
-Als gebruikers extra hulp nodig hebben bij het SSPR-proces, kunt u de koppeling aanpassen voor ' Neem contact op met de beheerder '. Deze koppeling wordt gebruikt in het SSPR-registratie proces en wanneer een gebruiker hun account ontgrendelt of hun wacht woord opnieuw instelt. Om ervoor te zorgen dat uw gebruikers de benodigde ondersteuning krijgen, is het raadzaam een aangepaste Help Desk-e-mail of-URL op te geven.
+Als gebruikers extra hulp nodig hebben bij het SSPR-proces, u de koppeling voor 'Contact opnemen met uw beheerder' aanpassen. Deze koppeling wordt gebruikt in het SSPR-registratieproces en wanneer een gebruiker zijn account ontgrendelt of zijn wachtwoord opnieuw instelt. Om ervoor te zorgen dat uw gebruikers de ondersteuning krijgen die nodig is, is het ten zeerste aan te raden om een aangepaste helpdesk-e-mail of URL op te geven.
 
-1. Stel op de pagina **aanpassing** in het menu aan de linkerkant de *koppeling Help Desk aanpassen* in op **Ja**.
-1. Geef in het **aangepaste e-mail adres of URL** -veld van de Help Desk een URL op voor de webpagina waar uw gebruikers extra hulp kunnen krijgen van uw organisatie, zoals *https://support.contoso.com/*
-1. Selecteer **Opslaan**om de aangepaste koppeling toe te passen.
+1. Stel **op** de pagina Aanpassen in het menu aan de linkerkant *de koppeling Helpdesk* aanpassen naar **Ja**in.
+1. Geef in het **veld Aangepaste helpdeske-e-mail of URL** een e-mailadres of URL van webpagina op waar uw gebruikers extra hulp van uw organisatie kunnen krijgen, zoals*https://support.contoso.com/*
+1. Als u de aangepaste koppeling wilt toepassen, selecteert u **Opslaan**.
 
 ## <a name="test-self-service-password-reset"></a>Selfservice voor wachtwoord opnieuw instellen testen
 
-Als SSPR is ingeschakeld en geconfigureerd, moet u het SSPR-proces testen met een gebruiker die deel uitmaakt van de groep die u in de vorige sectie hebt geselecteerd, zoals *test-SSPR-Group*. In het volgende voor beeld wordt het *test* account gebruikt. Geef uw eigen gebruikers account op dat deel uitmaakt van de groep die u hebt ingeschakeld voor SSPR in de eerste sectie van deze zelf studie.
+Als SSPR is ingeschakeld en geconfigureerd, test u het SSPR-proces met een gebruiker die deel uitmaakt van de groep die u in de vorige sectie hebt geselecteerd, zoals *Test-SSPR-Group.* In het volgende voorbeeld wordt het *testuseraccount* gebruikt. Geef uw eigen gebruikersaccount op dat deel uitmaakt van de groep die u hebt ingeschakeld voor SSPR in het eerste deel van deze zelfstudie.
 
 > [!NOTE]
-> Gebruik een niet-beheerders account als u de selfservice voor wachtwoord herstel test. Beheerders zijn altijd ingeschakeld voor selfservice voor wachtwoord herstel en zijn vereist voor het gebruik van twee verificatie methoden om hun wacht woord opnieuw in te stellen.
+> Wanneer u de selfservicewachtwoordopnieuw instellen test, gebruikt u een niet-beheerdersaccount. Beheerders zijn altijd ingeschakeld voor het opnieuw instellen van selfservicewachtwoorden en moeten twee verificatiemethoden gebruiken om hun wachtwoord opnieuw in te stellen.
 
-1. Als u het hand matige registratie proces wilt bekijken, opent u een nieuw browser venster in de modus InPrivate of incognito en bladert u naar [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup). Gebruikers moeten worden omgeleid naar deze registratie portal bij de volgende aanmelding.
-1. Meld u aan met een gebruiker die geen beheerder is, zoals *test User, en*Registreer uw contact gegevens voor de verificatie methoden.
-1. Zodra u klaar bent, selecteert u de gemarkeerde knop **goed** en sluit u het browser venster.
-1. Open een nieuw browservenster in de InPrivate- of incognitomodus en browse naar [https://aka.ms/sspr](https://aka.ms/sspr).
-1. Voer uw account gegevens voor gebruikers die geen beheerder zijn, in, zoals *test User*, de tekens van de captcha en selecteer vervolgens **volgende**.
+1. Als u het handmatige registratieproces wilt bekijken, opent u een [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)nieuw browservenster in de InPrivate- of incognitomodus en bladert u naar . Gebruikers moeten naar deze registratieportal worden geleid wanneer ze zich volgende aanmelden.
+1. Meld u aan bij een niet-beheerderstestgebruiker, zoals *testuser,* en registreer de contactgegevens van uw verificatiemethoden.
+1. Zodra u klaar bent, selecteert u de knop gemarkeerd **Ziet er goed uit** en sluit u het browservenster.
+1. Open een nieuw browservenster in de InPrivate- of incognitomodus en blader naar [https://aka.ms/sspr](https://aka.ms/sspr).
+1. Voer de accountgegevens van uw niet-beheerderstestvoor gebruikers in, zoals *testgebruiker,* de tekens uit de CAPTCHA en selecteer **Volgende**.
 
-    ![Informatie over gebruikers account opgeven om het wacht woord opnieuw in te stellen](media/tutorial-enable-sspr/password-reset-page.png)
+    ![Gebruikersaccountgegevens invoeren om het wachtwoord opnieuw in te stellen](media/tutorial-enable-sspr/password-reset-page.png)
 
-1. Volg de verificaties tappen om uw wacht woord opnieuw in te stellen. Als u klaar bent, ontvangt u een e-mail melding dat uw wacht woord opnieuw is ingesteld.
+1. Volg de verificatiestappen om uw wachtwoord opnieuw in te stellen. Als u klaar bent, ontvangt u een e-mailmelding dat uw wachtwoord opnieuw is ingesteld.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-In een van de volgende zelf studies in deze reeks configureert u het terugschrijven van wacht woorden. Deze functie schrijft wachtwoord wijzigingen van Azure AD SSPR terug naar een on-premises AD-omgeving. Als u wilt door gaan met deze zelf studie serie om het terugschrijven van wacht woorden te configureren, schakelt u SSPR nu niet uit.
+In een volgende zelfstudie in deze serie configureert u het terugschrijven van wachtwoorden. Met deze functie worden wachtwoordwijzigingen van Azure AD SSPR teruggeplaatst naar een on-premises AD-omgeving. Als u door wilt gaan met deze zelfstudiereeks om wachtwoordterugschrijfformulieren te configureren, schakelt u SSPR nu niet uit.
 
-Als u de SSPR-functionaliteit die u als onderdeel van deze zelf studie hebt geconfigureerd niet meer wilt gebruiken, stelt u de status SSPR in op **geen** door de volgende stappen uit te voeren:
+Als u de SSPR-functionaliteit die u hebt geconfigureerd als onderdeel van deze zelfstudie niet meer wilt gebruiken, stelt u de SSPR-status in op **Geen** met de volgende stappen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-1. Zoek en selecteer **Azure Active Directory**en kies vervolgens **wacht woord opnieuw instellen** in het menu aan de linkerkant.
-1. Kies op de pagina **Eigenschappen** onder het selectie vakje *selfservice voor wacht woord opnieuw instellen is ingeschakeld*de optie **geen**.
-1. Selecteer **Opslaan**om de wijziging van de SSPR toe te passen.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Zoek naar en selecteer **Azure Active Directory**en kies vervolgens Wachtwoord opnieuw **instellen** in het menu aan de linkerkant.
+1. Kies **Geen**op de pagina **Eigenschappen** onder de optie *Self service password reset ingeschakeld*.
+1. Als u de SSPR-wijziging wilt toepassen, selecteert u **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u Azure AD self-service voor het opnieuw instellen van wacht woorden ingeschakeld voor een geselecteerde groep gebruikers. U hebt geleerd hoe u:
+In deze zelfstudie hebt u azure AD selfservice wachtwoordopnieuw instellen ingeschakeld voor een geselecteerde groep gebruikers. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Selfservice voor wachtwoord herstel inschakelen voor een groep van Azure AD-gebruikers
-> * Verificatie methoden en registratie opties configureren
-> * Het SSPR-proces testen als een gebruiker
+> * Selfservice-wachtwoordopnieuw instellen inschakelen voor een groep Azure AD-gebruikers
+> * Verificatiemethoden en registratieopties configureren
+> * Het SSPR-proces testen als gebruiker
 
 > [!div class="nextstepaction"]
 > [Azure Multi-Factor Authentication inschakelen](tutorial-mfa-applications.md)

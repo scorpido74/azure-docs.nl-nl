@@ -1,23 +1,23 @@
 ---
-title: Bursting van beheerde schijven
-description: Meer informatie over schijf bursting en hoe deze werkt voor Azure Premium Ssd's.
+title: Beheerde schijf die barst
+description: Meer informatie over het barsten van schijven en hoe het werkt voor Azure premium SSD's.
 author: roygara
 ms.author: rogarana
-ms.date: 10/22/2019
+ms.date: 03/28/2019
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: f5ec4cb63db1522153c0600d719a22e4744cb4d7
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 4cac3c3e5346fa9c8ab68a4238d64419060a0967
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970721"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385194"
 ---
-# <a name="premium-ssd-bursting-preview"></a>Premium-SSD bursting (preview-versie)
+# <a name="premium-ssd-bursting"></a>Premium SSD barsten
 
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Een gegevens schijf koppelen aan een virtuele Linux-machine met behulp van de portal](attach-disk-portal.md)
+[De portal gebruiken om een gegevensschijf aan een Linux-vm te koppelen](attach-disk-portal.md)
