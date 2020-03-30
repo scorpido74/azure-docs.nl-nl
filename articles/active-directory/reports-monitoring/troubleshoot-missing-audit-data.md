@@ -1,5 +1,5 @@
 ---
-title: Problemen met ontbrekende gegevens in activiteiten Logboeken oplossen | Microsoft Docs
+title: Problemen met ontbrekende gegevens in activiteitenlogboeken oplossen | Microsoft Documenten
 description: Hier vindt u informatie over een oplossing voor ontbrekende gegevens in de activiteitenlogboeken van Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014276"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Problemen met ontbrekende gegevens in de activiteitenlogboeken van Azure Active Directory oplossen 
@@ -94,6 +94,6 @@ U hebt twee opties om de gegevens langer dan 30 dagen te bewaren. U kunt de [API
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Bewaarbeleid Azure Active Directory-rapporten](reference-reports-data-retention.md)
-* [Azure Active Directory reporting latencies](reference-reports-latencies.md) (Rapportagevertraging in Azure Active Directory)
-* [Azure Active Directory reporting FAQ](reports-faq.md) (Veelgestelde vragen over Azure Active Directory-rapportage)
+* [Latenlaten van Azure Active Directory-rapportage](reference-reports-latencies.md).
+* [Veelgestelde vragen over azure Active Directory-rapportage](reports-faq.md).
 

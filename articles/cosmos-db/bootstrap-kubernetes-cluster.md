@@ -1,65 +1,65 @@
 ---
 title: Azure Kubernetes gebruiken met Azure Cosmos DB
-description: Meer informatie over het Boots trapen van een Kubernetes-cluster op Azure dat gebruikmaakt van Azure Cosmos DB (preview-versie)
+description: Meer informatie over het opstarten van een Kubernetes-cluster op Azure met Azure Cosmos DB (preview)
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: sngun
 ms.openlocfilehash: 9dbbc914580d8d80a3f9b7d730574e24b44827c1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70093733"
 ---
-# <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Azure Kubernetes gebruiken met Azure Cosmos DB (preview-versie)
+# <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Azure Kubernetes gebruiken met Azure Cosmos DB (preview)
 
-Met de etcd-API in Azure Cosmos DB kunt u Azure Cosmos DB gebruiken als back-end-Archief voor Azure Kubernetes. Azure Cosmos DB implementeert het etcd wire-protocol, waarmee de API-servers van het Master-knoop punt kunnen worden gebruikt Azure Cosmos DB net zoals een lokaal geïnstalleerd etcd. etcd-API in Azure Cosmos DB is momenteel beschikbaar als preview-versie. Wanneer u Azure Cosmos etcd API gebruikt als de back-upopslag voor Kubernetes, krijgt u de volgende voor delen: 
+Met de geëetcd-API in Azure Cosmos DB u Azure Cosmos DB gebruiken als backendstore voor Azure Kubernetes. Azure Cosmos DB implementeert het etcd-draadprotocol, waarmee de API-servers van het hoofdknooppunt Azure Cosmos DB kunnen gebruiken, net zoals het toegang zou krijgen tot een lokaal geïnstalleerde etcd. etcd API in Azure Cosmos DB is momenteel in preview. Wanneer u Azure Cosmos etcd API gebruikt als back-upvoor Kubernetes, krijgt u de volgende voordelen: 
 
-* U hoeft etcd niet hand matig te configureren en te beheren.
-* Hoge Beschik baarheid van etcd, gegarandeerd door Cosmos (99,99% in één regio, 99,999% in meerdere regio's).
-* Elastische schaal baarheid van etcd.
-* Standaard beveiligd & Enter prise Ready.
-* Toonaangevende, uitgebreide service overeenkomsten.
+* Het is niet nodig om etcd handmatig te configureren en te beheren.
+* Hoge beschikbaarheid van etcd, gegarandeerd door Cosmos (99,99% in één regio, 99,999% in meerdere regio's).
+* Elastische schaalbaarheid van etcd.
+* Beveilig standaard & enterprise ready.
+* Toonaangevende, uitgebreide SLA's.
 
-Zie het artikel [overzicht](etcd-api-introduction.md) voor meer informatie over de ETCD-API in azure Cosmos db. Dit artikel laat u zien hoe u met behulp van de [Azure Kubernetes-engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (AKS-Engine) een Kubernetes-cluster op Azure kunt Boots trapen dat gebruikmaakt van [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) in plaats van een lokaal geïnstalleerde en geconfigureerde etcd. 
+Zie het [overzichtsartikel](etcd-api-introduction.md) voor meer informatie over de ETCD API in Azure Cosmos DB. In dit artikel ziet u hoe u [Azure Kubernetes Engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (aks-engine) gebruiken om een Kubernetes-cluster op Azure op te start zetten dat Azure Cosmos [DB](https://docs.microsoft.com/azure/cosmos-db/) gebruikt in plaats van een lokaal geïnstalleerde en geconfigureerde geë-erop. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. Installeer de nieuwste versie van [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest). U kunt Azure CLI specifiek voor uw besturings systeem downloaden en installeren.
+1. Installeer de nieuwste versie van [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). U Azure CLI specifiek voor uw besturingssysteem downloaden en installeren.
 
-1. Installeer de [nieuwste versie](https://github.com/Azure/aks-engine/releases) van de Azure Kubernetes-engine. De installatie-instructies voor verschillende besturings systemen zijn beschikbaar op de pagina [Azure Kubernetes engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine) . U hebt alleen de stappen nodig van de sectie **AKS-Engine installeren** van het gekoppelde document. Pak het zip-bestand uit nadat het is gedownload.
+1. Installeer de [nieuwste versie](https://github.com/Azure/aks-engine/releases) van Azure Kubernetes Engine. De installatie-instructies voor verschillende besturingssystemen zijn beschikbaar op de azure [Kubernetes Engine-pagina.](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine) U hoeft alleen maar de stappen van **installeren AKS Engine** sectie van de gekoppelde doc. Haal na het downloaden het zip-bestand eruit.
 
-   De Azure Kubernetes-Engine (**AKS-engine**) genereert Azure Resource Manager sjablonen voor Kubernetes-clusters in Azure. De invoer voor AKS-engine is een cluster definitie bestand waarin het gewenste cluster wordt beschreven, met inbegrip van orchestrator, functies en agents. De structuur van de invoer bestanden is vergelijkbaar met de open bare API voor de Azure Kubernetes-service.
+   De Azure Kubernetes Engine **(aks-engine)** genereert Azure Resource Manager-sjablonen voor Kubernetes-clusters op Azure. De invoer naar aks-engine is een clusterdefinitiebestand dat het gewenste cluster beschrijft, inclusief orchestrator, functies en agents. De structuur van de invoerbestanden is vergelijkbaar met de openbare API voor Azure Kubernetes Service.
 
-1. De etcd-API in Azure Cosmos DB is momenteel beschikbaar als preview-versie. Meld u aan voor gebruik van de preview- https://aka.ms/cosmosetcdapi-signup versie op:. Nadat u het formulier hebt verzonden, wordt uw abonnement white list om de Azure Cosmos etcd-API te gebruiken. 
+1. De geëetcd-API in Azure Cosmos DB is momenteel in preview. Meld u aan om de https://aka.ms/cosmosetcdapi-signuppreview-versie te gebruiken op: . Nadat u het formulier hebt ingediend, wordt uw abonnement op de witte lijst gewhitelistom de Azure Cosmos etcd API te gebruiken. 
 
 ## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>Het cluster implementeren met Azure Cosmos DB
 
-1. Open een opdracht prompt venster en meld u aan bij Azure met de volgende opdracht:
+1. Open een opdrachtpromptvenster en meld u aan bij Azure met de volgende opdracht:
 
    ```azurecli-interactive
    az login 
    ```
 
-1. Als u meer dan één abonnement hebt, gaat u naar het abonnement dat is white list voor Azure Cosmos DB etcd-API. U kunt overschakelen naar het vereiste abonnement met behulp van de volgende opdracht:
+1. Als u meer dan één abonnement hebt, schakelt u over naar het abonnement dat op de witte lijst is gezet voor Azure Cosmos DB etcd API. U met de volgende opdracht overschakelen naar het vereiste abonnement:
 
    ```azurecli-interactive
    az account set --subscription "<Name of your subscription>"
    ```
-1. Maak vervolgens een nieuwe resource groep waarin u de resources implementeert die vereist zijn voor het Azure Kubernetes-cluster. Zorg ervoor dat u de resource groep in de regio ' centraal ' hebt gemaakt. Het is niet verplicht om de resource groep in de regio ' centraal ' te hebben, maar Azure Cosmos etcd API is momenteel alleen beschikbaar voor implementatie in de regio ' centraal '. Het is dus het beste om het Kubernetes-cluster te laten staan met de Cosmos etcd-instantie:
+1. Maak vervolgens een nieuwe brongroep waarin u de resources implementeert die vereist zijn voor het Azure Kubernetes-cluster. Zorg ervoor dat u de resourcegroep in de regio 'centralus' maakt. Het is niet verplicht voor de resourcegroep om zich in de regio 'centralus' te bevinden, maar Azure Cosmos etcd API is momenteel alleen beschikbaar om te implementeren in de regio 'centralus'. Dus het is het beste om de Kubernetes cluster te worden samenmet de Cosmos etcd instantie:
 
    ```azurecli-interactive
    az group create --name <Name> --location "centralus"
    ```
 
-1. Maak vervolgens een service-principal voor het Azure Kubernetes-cluster zodat deze kan communiceren met de resources die deel uitmaken van dezelfde resource groep. U kunt een service-principal maken met behulp van Azure CLI, Power shell of Azure Portal, in dit voor beeld u hebt CLI om deze te maken.
+1. Maak vervolgens een serviceprincipal voor het Azure Kubernetes-cluster, zodat het kan communiceren met de bronnen die deel uitmaken van dezelfde brongroep. U een serviceprincipal maken met Azure CLI, PowerShell of Azure-portal, in dit voorbeeld wilt u CLI maken.
 
    ```azurecli-interactive
    az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<Your_Azure_subscription_ID>/resourceGroups/<Your_resource_group_name>"
    ```
-   Met deze opdracht worden de details van een Service-Principal uitgevoerd, bijvoorbeeld:
+   Met deze opdracht worden de details van een serviceprincipal uitgevoerd, bijvoorbeeld:
    
    ```cmd
    Retrying role assignment creation: 1/36
@@ -72,15 +72,15 @@ Zie het artikel [overzicht](etcd-api-introduction.md) voor meer informatie over 
    }
    ```
    
-   Noteer de velden **AppID** en **wacht woord** , omdat u deze para meters in de volgende stappen gaat gebruiken. 
+   Noteer de **appId** en de **wachtwoordvelden,** omdat u deze parameters in de volgende stappen gebruikt. 
 
-1. Ga vanaf de opdracht prompt naar de map waarin het uitvoer bare bestand van de Azure Kubernetes-engine zich bevindt. U kunt bijvoorbeeld in de opdracht prompt naar de map navigeren als:
+1. Navigeer vanuit de opdrachtprompt naar de map waar de uitvoerbare Azure Kubernetes Engine zich bevindt. Op de opdrachtprompt u bijvoorbeeld naar de map navigeren als:
 
    ```cmd
    cd "\aks-engine-v0.36.3-windows-amd64\aks-engine-v0.36.3-windows-amd64"
    ```
 
-1. Open een tekst editor naar keuze en definieer een resource manager-sjabloon die het Azure Kubernetes-cluster implementeert met Azure Cosmos DB etcd-API. Kopieer de volgende JSON-definitie naar uw tekst editor en sla het bestand `apiModel.json`op als:
+1. Open een teksteditor naar keuze en definieer een Resource Manager-sjabloon waarmee het Azure Kubernetes-cluster wordt geïmplementeerd met Azure Cosmos DB etcd API. Kopieer de volgende JSON-definitie naar uw `apiModel.json`teksteditor en sla het bestand op als:
 
    ```json
 
@@ -121,9 +121,9 @@ Zie het artikel [overzicht](etcd-api-introduction.md) voor meer informatie over 
    }
    ```
 
-   In het JSON/cluster-definitie bestand is de sleutel parameter **' cosmosEtcd ': True**. Deze para meter bevindt zich in de eigenschappen masterProfile en geeft de implementatie aan voor het gebruik van de Azure Cosmos etcd-API in plaats van normale etcd. 
+   In het JSON/clusterdefinitiebestand is de belangrijkste parameter om op te merken **"cosmosEtcd": true**. Deze parameter bevindt zich in de eigenschappen "masterProfile" en geeft de implementatie aan om Azure Cosmos etcd API te gebruiken in plaats van gewone etcd. 
 
-1. Implementeer het Azure Kubernetes-cluster dat gebruikmaakt van Azure Cosmos DB met de volgende opdracht:
+1. Implementeer het Azure Kubernetes-cluster dat Azure Cosmos DB gebruikt met de volgende opdracht:
 
    ```cmd
    aks-engine deploy \
@@ -137,21 +137,21 @@ Zie het artikel [overzicht](etcd-api-introduction.md) voor meer informatie over 
      --force-overwrite
    ```
 
-   De Azure Kubernetes-engine gebruikt een cluster definitie die de gewenste vorm, grootte en configuratie van de Azure-Kubernetes omlijnt. Er zijn verschillende functies die kunnen worden ingeschakeld via de cluster definitie. In dit voor beeld gebruikt u de volgende para meters:
+   Azure Kubernetes Engine gebruikt een clusterdefinitie die de gewenste vorm, grootte en configuratie van de Azure Kubernetes schetst. Er zijn verschillende functies die kunnen worden ingeschakeld via de clusterdefinitie. In dit voorbeeld gebruikt u de volgende parameters:
 
-   * **abonnement-id:** Azure-abonnements-ID waarop Azure Cosmos DB etcd-API is ingeschakeld.
-   * **client-id:** De appId van de Service-Principal. De `appId` is geretourneerd als uitvoer in stap 4.
-   * **Client-secret:** Het wacht woord van de service-principal of een wille keurig gegenereerd wacht woord. Deze waarde is geretourneerd als uitvoer in de para meter ' wacht woord ' in stap 4. 
-   * **DnsPrefix** Een unieke DNS-naam voor een regio. Deze waarde maakt deel uit van de hostnaam (voorbeeld waarden zijn-myprod1, fase ring).
-   * **locatie**  De locatie waar het cluster moet worden geïmplementeerd, momenteel alleen ' centraalus ' wordt ondersteund.
+   * **abonnement-id:** Azure-abonnements-ID met Azure Cosmos DB etcd API ingeschakeld.
+   * **client-id:** AppId van de serviceprincipal. Het `appId` werd teruggegeven als output in stap 4.
+   * **Klantgeheim:** Het wachtwoord van de serviceprincipal of een willekeurig gegenereerd wachtwoord. Deze waarde is geretourneerd als uitvoer in de parameter 'wachtwoord' in stap 4. 
+   * **dnsPrefix:** Een regio-unieke DNS-naam. Deze waarde maakt deel uit van de hostnaam (voorbeeldwaarden zijn- myprod1, staging).
+   * **locatie:**  Locatie waar het cluster moet worden ingezet, momenteel wordt alleen "centralus" ondersteund.
 
    > [!Note]
-   > Azure Cosmos etcd API is momenteel alleen beschikbaar voor implementatie in de regio ' centraal '. 
+   > Azure Cosmos etcd API is momenteel alleen beschikbaar voor implementatie in de regio 'centralus'. 
  
-   * **api-model:** Volledig gekwalificeerde pad naar het sjabloon bestand.
-   * **geforceerd-overschrijven:** Deze optie wordt gebruikt voor het automatisch overschrijven van bestaande bestanden in de uitvoermap.
+   * **api-model:** Volledig gekwalificeerd pad naar het sjabloonbestand.
+   * **force-overwrite:** Deze optie wordt gebruikt om bestaande bestanden in de uitvoermap automatisch te overschrijven.
  
-   Met de volgende opdracht wordt een voorbeeld implementatie weer gegeven:
+   In de volgende opdracht wordt een voorbeeldimplementatie weergegeven:
 
    ```cmd
    aks-engine deploy \
@@ -166,7 +166,7 @@ Zie het artikel [overzicht](etcd-api-introduction.md) voor meer informatie over 
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
-Het duurt enkele minuten voordat de implementatie van de sjabloon is voltooid. Nadat de implementatie is voltooid, wordt de volgende uitvoer weer gegeven in de opdracht prompt:
+De implementatie van de sjabloon duurt enkele minuten. Nadat de implementatie is voltooid, ziet u de volgende uitvoer in de opdrachtprompt:
 
 ```cmd
 WARN[0006] apimodel: missing masterProfile.dnsPrefix will use "aks-sg-test"
@@ -175,12 +175,12 @@ INFO[0025] Starting ARM Deployment (aks-sg-test-546247491). This will take some 
 INFO[0587] Finished ARM Deployment (aks-sg-test-546247491). Succeeded
 ```
 
-De resource groep bevat nu resources zoals virtuele machine, Azure Cosmos-account (etcd-API), virtueel netwerk, beschikbaarheidsset en andere resources die vereist zijn voor het Kubernetes-cluster. 
+De brongroep bevat nu bronnen zoals virtuele machine, Azure Cosmos-account(etcd API), virtueel netwerk, beschikbaarheidsset en andere resources die vereist zijn door het Kubernetes-cluster. 
 
-De naam van het Azure Cosmos-account komt overeen met het opgegeven DNS-voor voegsel dat is toegevoegd met K8S. Uw Azure Cosmos-account wordt automatisch ingericht met een Data Base met de naam **EtcdDB** en een container met de naam **EtcdData**. In de container worden alle etcd-gerelateerde gegevens opgeslagen. De container is ingericht met een bepaald aantal aanvraag eenheden en u kunt [de door Voer schalen (verg Roten/verkleinen)](scaling-throughput.md) op basis van uw werk belasting. 
+De naam van het Azure Cosmos-account komt overeen met het opgegeven DNS-voorvoegsel dat is toegevoegd aan k8's. Uw Azure Cosmos-account wordt automatisch ingericht met een database met de naam **EtcdDB** en een container met de naam **EtcdData.** De container slaat alle etcd gerelateerde gegevens op. De container is ingericht met een bepaald aantal aanvraageenheden en u de doorvoer op basis van uw werkbelasting [schalen (verhogen/verkleinen).](scaling-throughput.md) 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [werken met Azure Cosmos data base, containers en items](databases-containers-items.md)
-* Meer informatie over het [optimaliseren van ingerichte doorvoer kosten](optimize-cost-throughput.md)
+* Meer informatie over het [werken met Azure Cosmos-database, containers en items](databases-containers-items.md)
+* Meer informatie over het [optimaliseren van ingerichte doorvoerkosten](optimize-cost-throughput.md)
 

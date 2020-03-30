@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Azure cache gebruiken voor redis met Java'
+title: 'Snelstart: Azure-cache gebruiken voor Redis met Java'
 description: In deze snelstart maakt u een nieuwe Java-app die gebruikmaakt van Azure Cache voor Redis
 author: yegu-ms
 ms.service: cache
@@ -9,19 +9,19 @@ ms.date: 05/23/2018
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 6163392c80d40b6ea65e681aa175c21c244099b9
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74122704"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Snelstartgids: Azure cache gebruiken voor redis met Java
+# <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Snelstart: Azure-cache gebruiken voor Redis met Java
 
-In deze Snelstartgids neemt u Azure cache voor redis op in een Java-app met behulp van de [jedis](https://github.com/xetorthio/jedis) redis-client om toegang te hebben tot een beveiligde, toegewezen cache die toegankelijk is vanuit elke toepassing in Azure.
+In deze quickstart neemt u Azure Cache voor Redis op in een Java-app met de [Jedis](https://github.com/xetorthio/jedis) Redis-client om toegang te hebben tot een beveiligde, speciale cache die toegankelijk is vanuit elke toepassing binnen Azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+- Azure-abonnement - [maak er gratis een](https://azure.microsoft.com/free/)
 - [Apache Maven](https://maven.apache.org/download.cgi)
 
 ## <a name="create-an-azure-cache-for-redis"></a>Een Azure Cache voor Redis-instantie maken
@@ -128,25 +128,25 @@ mvn exec:java -D exec.mainClass=example.demo.App
 
 In het onderstaande voorbeeld ziet u dat de `Message`-sleutel eerder een waarde in de cache had, die was ingesteld met behulp van de Redis Console in Azure Portal. De app heeft die waarde in de cache bijgewerkt. De app heeft ook de opdrachten `PING` en `CLIENT LIST` uitgevoerd.
 
-![Azure cache voor redis-app voltooid](./media/cache-java-get-started/azure-cache-redis-complete.png)
+![Azure-cache voor Redis-app voltooid](./media/cache-java-get-started/azure-cache-redis-complete.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Als u verder wilt gaan met de volgende zelfstudie, kunt u de resources die in deze snelstart zijn gemaakt behouden en opnieuw gebruiken.
 
-Als u niet verder wilt met de voorbeeldtoepassing uit de snelstart, kunt u de Azure-resources verwijderen die in deze snelstart zijn gemaakt om kosten te voorkomen. 
+Als u niet verder wilt met de snelstart, kunt u de Azure-resources verwijderen die in deze snelstart zijn gemaakt om kosten te voorkomen. 
 
 > [!IMPORTANT]
-> Houd er rekening mee dat het verwijderen van een resourcegroep niet ongedaan kan worden gemaakt, en dat de resourcegroep en alle bijbehorende resources permanent worden verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
+> Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle bijbehorende resources worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
 >
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com) en selecteer **Resourcegroepen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en selecteer **Resourcegroepen**.
 
-1. Typ in het tekstvak **filteren op naam** de naam van de resource groep. In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Selecteer in de lijst met resultaten van de resource groep de optie **...** en vervolgens de **resource groep verwijderen**.
+1. Typ in het tekstvak **Filteren op naam** de naam van uw resourcegroep. In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Selecteer in uw resourcegroep in de resultatenlijst **...** selecteer **vervolgens Brongroep verwijderen**.
 
-   ![De Azure-resource groep is verwijderd](./media/cache-java-get-started/azure-cache-redis-delete-resource-group.png)
+   ![Azure-brongroep verwijderd](./media/cache-java-get-started/azure-cache-redis-delete-resource-group.png)
 
-1. U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resource groep die u wilt bevestigen en selecteer **verwijderen**.
+1. U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van uw resourcegroep om te bevestigen en selecteer **Verwijderen**.
 
 Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.
 

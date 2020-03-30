@@ -1,6 +1,6 @@
 ---
-title: De versleutelings status van een BLOB controleren-Azure Storage
-description: Meer informatie over het gebruik van Azure Portal, Power shell of Azure CLI om te controleren of een bepaalde blob is versleuteld. Als een BLOB niet is versleuteld, leert u hoe u AzCopy kunt gebruiken om versleuteling af te dwingen door de BLOB te downloaden en opnieuw te uploaden.
+title: De versleutelingsstatus van een blob controleren - Azure Storage
+description: Meer informatie over het gebruik van Azure portal, PowerShell of Azure CLI om te controleren of een bepaalde blob is versleuteld. Als een blob niet is versleuteld, leest u hoe u AzCopy gebruiken om versleuteling te forceren door de blob te downloaden en opnieuw te uploaden.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,36 +10,36 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 5cef0e94a43b3ef16d45f7f43658f962e07b5345
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74707595"
 ---
-# <a name="check-the-encryption-status-of-a-blob"></a>De versleutelings status van een BLOB controleren
+# <a name="check-the-encryption-status-of-a-blob"></a>De versleutelingsstatus van een blob controleren
 
-Elke blok-blob, een toevoeg-BLOB of een pagina-blob die na 20 oktober 2017 is geschreven naar Azure Storage, is versleuteld met Azure Storage versleuteling. De blobs die vóór deze datum zijn gemaakt, worden versleuteld met een achtergrond proces.
+Elke blokblob, toevoegenblob of paginablob die na 20 oktober 2017 naar Azure Storage is geschreven, wordt versleuteld met Azure Storage-versleuteling. Blobs die vóór deze datum zijn gemaakt, worden nog steeds versleuteld door een achtergrondproces.
 
-In dit artikel wordt beschreven hoe u kunt bepalen of een bepaalde blob is versleuteld.
+In dit artikel ziet u hoe u bepalen of een bepaalde blob is versleuteld.
 
-## <a name="check-a-blobs-encryption-status"></a>De versleutelings status van een BLOB controleren
+## <a name="check-a-blobs-encryption-status"></a>De versleutelingsstatus van een blob controleren
 
-Gebruik de Azure Portal, Power shell of Azure CLI om te bepalen of een BLOB zonder code is versleuteld.
+Gebruik de Azure-portal, PowerShell of Azure CLI om te bepalen of een blob is versleuteld zonder code.
 
-### <a name="azure-portaltabportal"></a>[Azure-portal](#tab/portal)
+### <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
-Voer de volgende stappen uit om te controleren of een blob is versleuteld met behulp van de Azure Portal:
+Voer de volgende stappen uit om de Azure-portal te gebruiken om te controleren of een blob is versleuteld:
 
-1. Ga in Azure Portal naar uw opslagaccount.
-1. Selecteer **containers** om naar een lijst met containers in het account te navigeren.
-1. Zoek de BLOB en geef het tabblad **overzicht** weer.
-1. De **versleutelde** eigenschap van de server weer geven. Indien **waar**, zoals wordt weer gegeven in de volgende afbeelding, wordt de BLOB versleuteld. U ziet dat de eigenschappen van de BLOB ook de datum en tijd bevatten waarop de blob is gemaakt.
+1. Ga in Azure Portal naar het nieuwe opslagaccount.
+1. Selecteer **Containers** om naar een lijst met containers in het account te navigeren.
+1. Zoek de blob en geef het tabblad **Overzicht** weer.
+1. Bekijk de eigenschap **Server Encrypted.** Als **True ,** zoals weergegeven in de volgende afbeelding, wordt de blob versleuteld. De eigenschappen van de blob bevatten ook de datum en tijd waarop de blob is gemaakt.
 
-    ![Scherm afbeelding die laat zien hoe de versleutelde eigenschap van de server wordt gecontroleerd in Azure Portal](media/storage-blob-encryption-status/blob-encryption-property-portal.png)
+    ![Schermafbeelding van het controleren van de eigenschap Server encrypted in Azure-portal](media/storage-blob-encryption-status/blob-encryption-property-portal.png)
 
-### <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+### <a name="powershell"></a>[Powershell](#tab/powershell)
 
-Als u Power shell wilt gebruiken om te controleren of een blob is versleuteld, controleert u de eigenschap **IsServerEncrypted** van de blob. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
+Als u PowerShell wilt gebruiken om te controleren of een blob is versleuteld, controleert u de eigenschap **IsServerEncrypted van** de blob. Vergeet niet om plaatsaanduidingswaarden in hoekhaakjes te vervangen door uw eigen waarden:
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -50,15 +50,15 @@ $blob = Get-AzStorageBlob -Context $account.Context `
 $blob.ICloudBlob.Properties.IsServerEncrypted
 ```
 
-Controleer de waarde van de eigenschap **gemaakt** om te bepalen wanneer de blob is gemaakt:
+Als u wilt bepalen wanneer de blob is gemaakt, controleert u de waarde van de eigenschap **Gemaakt:**
 
 ```powershell
 $blob.ICloudBlob.Properties.IsServerEncrypted
 ```
 
-### <a name="azure-clitabcli"></a>[Azure CLI](#tab/cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/cli)
 
-Als u Azure CLI wilt gebruiken om te controleren of een blob is versleuteld, controleert u de eigenschap **IsServerEncrypted** van de blob. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
+Als u Azure CLI wilt gebruiken om te controleren of een blob is versleuteld, controleert u de **isServerEncrypted-eigenschap van** de blob. Vergeet niet om plaatsaanduidingswaarden in hoekhaakjes te vervangen door uw eigen waarden:
 
 ```azurecli-interactive
 az storage blob show \
@@ -68,15 +68,15 @@ az storage blob show \
     --query "properties.serverEncrypted"
 ```
 
-Controleer de waarde van de eigenschap **gemaakt** om te bepalen wanneer de blob is gemaakt.
+Als u wilt bepalen wanneer de blob is gemaakt, controleert u de waarde van de **gemaakte** eigenschap.
 
 ---
 
-## <a name="force-encryption-of-a-blob"></a>Versleuteling van een BLOB afdwingen
+## <a name="force-encryption-of-a-blob"></a>Versleuteling van een blob forceren
 
-Als een blob die is gemaakt vóór 20 oktober 2017 nog niet is versleuteld door het achtergrond proces, kunt u afdwingen dat versleuteling onmiddellijk plaatsvindt door de BLOB te downloaden en opnieuw te uploaden. Een eenvoudige manier om dit te doen is met AzCopy.
+Als een blob die vóór 20 oktober 2017 is gemaakt, nog niet is versleuteld door het achtergrondproces, u versleuteling onmiddellijk forceren door de blob te downloaden en opnieuw te uploaden. Een eenvoudige manier om dit te doen is met AzCopy.
 
-Als u een BLOB wilt downloaden naar uw lokale bestands systeem met AzCopy, gebruikt u de volgende syntaxis:
+Als u een blob wilt downloaden naar uw lokale bestandssysteem met AzCopy, gebruikt u de volgende syntaxis:
 
 ```
 azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'
@@ -85,7 +85,7 @@ Example:
 azcopy copy 'https://storagesamples.blob.core.windows.net/sample-container/blob1.txt' 'C:\temp\blob1.txt'
 ```
 
-Als u de BLOB opnieuw wilt uploaden naar Azure Storage met AzCopy, gebruikt u de volgende syntaxis:
+Als u de blob opnieuw wilt uploaden naar Azure Storage met AzCopy, gebruikt u de volgende syntaxis:
 
 ```
 azcopy copy '<local-file-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-name>'
@@ -94,8 +94,8 @@ Example:
 azcopy copy 'C:\temp\blob1.txt' 'https://storagesamples.blob.core.windows.net/sample-container/blob1.txt'
 ```
 
-Zie voor meer informatie over het gebruik van AzCopy voor het kopiëren van BLOB-gegevens [gegevens overdragen met AzCopy en Blob Storage](../common/storage-use-azcopy-blobs.md).
+Zie [Gegevens overbrengen met AzCopy en Blob-opslag](../common/storage-use-azcopy-blobs.md)voor meer informatie over het gebruik van AzCopy om blobgegevens te kopiëren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure Storage versleuteling voor Data-at-rest](../common/storage-service-encryption.md)
+[Azure Storage-versleuteling voor gegevens in rust](../common/storage-service-encryption.md)

@@ -1,6 +1,6 @@
 ---
-title: Architectuur-nood herstel op basis van VMware/fysiek naar een secundaire site met Azure Site Recovery
-description: Dit artikel bevat een overzicht van de onderdelen en architectuur die worden gebruikt tijdens het herstel na nood gevallen van on-premises virtuele VMware-machines of fysieke Windows/Linux-servers naar een secundaire VMware-site met Azure Site Recovery.
+title: Architectuur-VMware/fysiek herstel van rampen naar een secundaire site met Azure Site Recovery
+description: Dit artikel geeft een overzicht van componenten en architectuur die worden gebruikt bij het herstel van on-premises VMware-vm's of fysieke Windows/Linux-servers naar een secundaire VMware-site met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: b0a46dcf8fe298494a53713f122b1bda8ce07e5e
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954580"
 ---
-# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architectuur voor de replicatie van VMware/fysieke servers naar een secundaire on-premises site
+# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architectuur voor VMware/fysieke serverreplicatie naar een secundaire on-premises site
 
-In dit artikel worden de architectuur en processen beschreven die worden gebruikt bij het instellen van herstel na nood gevallen, failover en herstel van on-premises virtuele VMware-machines (Vm's) of fysieke Windows/Linux-servers naar een secundaire VMware-site met behulp van [Azure site Recovery](site-recovery-overview.md).
+In dit artikel worden de architectuur en processen beschreven die worden gebruikt bij het instellen van disaster recovery-replicatie, failover en herstel van on-premises Virtuele VMware-virtuele machines (VM's) of fysieke Windows/Linux-servers op een secundaire VMware-site met [Azure Site Recovery](site-recovery-overview.md).
 
 
 ## <a name="architectural-components"></a>Architectuuronderdelen
 
-**Onderwerp** | **Onderdeel** | **Details**
+**Onderwerp** | **Component** | **Details**
 --- | --- | ---
 **Azure** | U implementeert dit scenario met InMage Scout. | Voor het gebruik van InMage Scout hebt u een Azure-abonnement nodig.<br/><br/> Nadat u een Recovery Services-kluis hebt gemaakt, downloadt u InMage Scout en installeert u de nieuwste updates om de implementatie in te stellen.
 **Processerver** | Bevindt zich op de primaire site | U implementeert de processerver voor het afhandelen van caching, compressie en gegevensoptimalisatie.<br/><br/> Hier wordt ook de push-installatie van de Unified Agent afgehandeld naar computers die u wilt beveiligen.
@@ -45,4 +45,4 @@ In dit artikel worden de architectuur en processen beschreven die worden gebruik
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Stel](vmware-physical-secondary-disaster-recovery.md) herstel na nood gevallen van virtuele VMware-machines en fysieke servers naar een secundaire site.
+[Stel](vmware-physical-secondary-disaster-recovery.md) disaster recovery van VMware VM's en fysieke servers in op een secundaire site.

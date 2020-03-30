@@ -1,51 +1,55 @@
 ---
-title: Bepalen welk versleutelings sleutel model wordt gebruikt voor het opslag account
+title: Bepalen welk versleutelingssleutelmodel voor het opslagaccount wordt gebruikt
 titleSuffix: Azure Storage
-description: Gebruik Azure Portal, Power shell of Azure CLI om te controleren hoe de versleutelings sleutels voor het opslag account worden beheerd. Sleutels kunnen worden beheerd door micro soft (de standaard instelling) of door de klant. Door de klant beheerde sleutels moeten worden opgeslagen in Azure Key Vault.
+description: Gebruik Azure portal, PowerShell of Azure CLI om te controleren hoe versleutelingssleutels worden beheerd voor het opslagaccount. Sleutels kunnen worden beheerd door Microsoft (de standaardinstelling) of door de klant. Door de klant beheerde sleutels moeten worden opgeslagen in Azure Key Vault.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/03/2020
+ms.date: 03/13/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3806fead9226978c277e87f3d97b14ee38d9552d
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 0df0ba4ce76d249bcb4738b41c94677e061f14ca
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665415"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409849"
 ---
-# <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>Bepalen welk Azure Storage versleutelings sleutel model wordt gebruikt voor het opslag account
+# <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>Bepalen welk Azure Storage-versleutelingssleutelmodel wordt gebruikt voor het opslagaccount
 
-De gegevens in uw opslag account worden automatisch versleuteld door Azure Storage. Azure Storage versleuteling biedt twee opties voor het beheren van versleutelings sleutels op het niveau van het opslag account:
+Gegevens in uw opslagaccount worden automatisch versleuteld door Azure Storage. Azure Storage-versleuteling biedt twee opties voor het beheren van versleutelingssleutels op het niveau van het opslagaccount:
 
-- **Door micro soft beheerde sleutels.** Standaard beheert micro soft de sleutels die worden gebruikt voor het versleutelen van uw opslag account.
-- **Door de klant beheerde sleutels.** Desgewenst kunt u ervoor kiezen om versleutelings sleutels voor uw opslag account te beheren. Door de klant beheerde sleutels moeten worden opgeslagen in Azure Key Vault.
+- **Door Microsoft beheerde sleutels.** Microsoft beheert standaard de sleutels die worden gebruikt om uw opslagaccount te versleutelen.
+- **Door de klant beheerde sleutels.** U er optioneel voor kiezen om versleutelingssleutels voor uw opslagaccount te beheren. Door de klant beheerde sleutels moeten worden opgeslagen in Azure Key Vault.
 
-Daarnaast kunt u een versleutelings sleutel opgeven op het niveau van een afzonderlijke aanvraag voor bepaalde Blob Storage-bewerkingen. Wanneer een versleutelings sleutel is opgegeven voor de aanvraag, overschrijft die sleutel de versleutelings sleutel die actief is op het opslag account. Zie voor meer informatie [een door de klant opgegeven sleutel opgeven voor een aanvraag voor Blob-opslag](../blobs/storage-blob-customer-provided-key.md).
+Bovendien u een versleutelingssleutel op bieden op het niveau van een individuele aanvraag voor sommige Blob-opslagbewerkingen. Wanneer een versleutelingssleutel op de aanvraag is opgegeven, overschrijft die sleutel de versleutelingssleutel die actief is op het opslagaccount. Zie [Een door de klant verstrekte sleutel opgeven voor een aanvraag voor Blob-opslag](../blobs/storage-blob-customer-provided-key.md)voor meer informatie.
 
-Zie [Azure Storage versleuteling voor Data-at-rest](storage-service-encryption.md)voor meer informatie over versleutelings sleutels.
+Zie [Azure Storage-versleuteling voor gegevens in rust](storage-service-encryption.md)voor meer informatie over versleutelingssleutels.
 
-## <a name="check-the-encryption-key-model-for-the-storage-account"></a>Het versleutelings sleutel model voor het opslag account controleren
+## <a name="check-the-encryption-key-model-for-the-storage-account"></a>Het coderingssleutelmodel voor het opslagaccount controleren
 
-Gebruik een van de volgende benaderingen om te bepalen of een opslag account gebruikmaakt van door micro soft beheerde sleutels of door de klant beheerde sleutels voor versleuteling.
+Als u wilt bepalen of een opslagaccount door Microsoft beheerde sleutels of door de klant beheerde sleutels voor versleuteling gebruikt, gebruikt u een van de volgende benaderingen.
 
-# <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
-Voer de volgende stappen uit om het versleutelings model voor het opslag account te controleren met behulp van de Azure Portal:
+Voer de volgende stappen uit om het versleutelingsmodel voor het opslagaccount te controleren met behulp van de Azure-portal:
 
 1. Ga in Azure Portal naar het nieuwe opslagaccount.
-1. Selecteer de **versleutelings** instelling en noteer de instelling.
+1. Selecteer de **instelling Versleuteling** en noteer de instelling.
 
-In de volgende afbeelding ziet u een opslag account waarin door de klant beheerde sleutels worden gebruikt voor versleuteling:
+In de volgende afbeelding wordt een opslagaccount weergegeven dat is versleuteld met door Microsoft beheerde sleutels:
 
-![Scherm opname met de instelling voor de versleutelings sleutel in Azure Portal](media/storage-encryption-key-model-get/customer-managed-encryption-key-setting-portal.png)
+![Account versleuteld weergeven met door Microsoft beheerde sleutels](media/storage-encryption-key-model-get/microsoft-managed-encryption-key-setting-portal.png)
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+En de volgende afbeelding toont een opslagaccount dat is versleuteld met door de klant beheerde sleutels:
 
-Als u het versleutelings model voor het opslag account wilt controleren met behulp van Power shell, roept u de opdracht [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) aan en controleert u vervolgens de eigenschap sleutel **bron** voor het account.
+![Schermafbeelding van de instelling van versleutelingssleutels in azure-portal](media/storage-encryption-key-model-get/customer-managed-encryption-key-setting-portal.png)
+
+# <a name="powershell"></a>[Powershell](#tab/powershell)
+
+Als u het versleutelingsmodel voor het opslagaccount wilt controleren met PowerShell, belt u de opdracht [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) en controleert u vervolgens de eigenschap **KeySource** voor het account.
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -53,11 +57,11 @@ $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
 $account.Encryption.KeySource
 ```
 
-Als de waarde van de eigenschap sleutel **bron** is `Microsoft.Storage`, wordt het account versleuteld met door micro soft beheerde sleutels. Als de waarde van de eigenschap sleutel **bron** is `Microsoft.Keyvault`, wordt het account versleuteld met door de klant beheerde sleutels.
+Als de waarde van de `Microsoft.Storage`eigenschap **KeySource** is, wordt het account versleuteld met door Microsoft beheerde sleutels. Als de waarde van de `Microsoft.Keyvault`eigenschap **KeySource** is, wordt het account versleuteld met door de klant beheerde sleutels.
 
-# <a name="azure-clitabcli"></a>[Azure-CLI](#tab/cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/cli)
 
-Als u het versleutelings model voor het opslag account wilt controleren met behulp van Azure CLI, roept u de opdracht [AZ Storage account show](/cli/azure/storage/account#az-storage-account-show) aan en controleert u vervolgens de eigenschap sleutel **bron** voor het account.
+Als u het versleutelingsmodel voor het opslagaccount wilt controleren met Azure CLI, roept u de opdracht [showshow van het AZ-opslagaccount](/cli/azure/storage/account#az-storage-account-show) aan en controleert u vervolgens de eigenschap **keySource** voor het account.
 
 ```azurecli-interactive
 key_source=$(az storage account show \
@@ -67,10 +71,11 @@ key_source=$(az storage account show \
     --output tsv)
 ```
 
-Als de waarde van de eigenschap sleutel **bron** is `Microsoft.Storage`, wordt het account versleuteld met door micro soft beheerde sleutels. Als de waarde van de eigenschap sleutel **bron** is `Microsoft.Keyvault`, wordt het account versleuteld met door de klant beheerde sleutels.
+Als de waarde van de `Microsoft.Storage`eigenschap **keySource** is, wordt het account versleuteld met door Microsoft beheerde sleutels. Als de waarde van de `Microsoft.Keyvault`eigenschap **keySource** is, wordt het account versleuteld met door de klant beheerde sleutels.
 
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure Storage versleuteling voor Data-at-rest](storage-service-encryption.md)
+- [Azure Storage-versleuteling voor gegevens in rust](storage-service-encryption.md)
+- [Door de klant beheerde sleutels gebruiken met Azure Key Vault om Azure Storage-versleuteling te beheren](encryption-customer-managed-keys.md)

@@ -1,6 +1,6 @@
 ---
-title: Verbindings typen voor beheerd exemplaar
-description: Meer informatie over verbindings typen voor beheerde instanties
+title: Beheerde instantieverbindingstypen
+description: Meer informatie over beheerde instantieverbindingstypen
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,43 +10,43 @@ ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
 ms.openlocfilehash: 46223d1701b930d93de7c49c1e216a41045dda16
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73819461"
 ---
-# <a name="azure-sql-database-managed-instance-connection-types"></a>Verbindings typen voor beheerde instanties Azure SQL Database
+# <a name="azure-sql-database-managed-instance-connection-types"></a>Door Azure SQL Database beheerde typen verbindingstypen
 
-In dit artikel wordt uitgelegd hoe clients verbinding maken met Azure SQL Database beheerde instantie, afhankelijk van het verbindings type. Hieronder vindt u voor beelden van scripts voor het wijzigen van de verbindings typen, samen met overwegingen met betrekking tot het wijzigen van de standaard connectiviteits instellingen.
+In dit artikel wordt uitgelegd hoe clients verbinding maken met de beheerde instantie van Azure SQL Database, afhankelijk van het verbindingstype. Scriptvoorbeelden om verbindingstypen te wijzigen zijn hieronder weergegeven, samen met overwegingen met betrekking tot het wijzigen van de standaardverbindingsinstellingen.
 
 ## <a name="connection-types"></a>Verbindingstypen
 
-Azure SQL Database Managed instance ondersteunt de volgende twee verbindings typen:
+De instantie beheerd Azure SQL Database ondersteunt de volgende twee verbindingstypen:
 
-- **Omleiden (aanbevolen):** Clients maken rechtstreeks verbinding met het knoop punt dat als host fungeert voor de data base. Als u connectiviteit via omleiding wilt inschakelen, moet u firewalls en netwerk beveiligings groepen (NSG) openen om toegang toe te staan op de poorten 1433 en 11000-11999. Pakketten gaan rechtstreeks naar de data base en daarom zijn er verbeteringen in latentie en doorvoer prestaties met behulp van omleiding via een proxy.
-- **Proxy (standaard instelling):** In deze modus gebruiken alle verbindingen een proxy gateway onderdeel. Om connectiviteit in te scha kelen, moet alleen poort 1433 voor particuliere netwerken en poort 3342 voor open bare verbinding worden geopend. Het kiezen van deze modus kan leiden tot hogere latentie en een lagere door Voer, afhankelijk van de aard van de werk belasting. U wordt aangeraden om het beleid voor omleidings verbindingen uit te voeren via het beleid voor proxy verbindingen voor de laagste latentie en de hoogste door voer.
+- **Omleiden (aanbevolen):** Clients leggen rechtstreeks verbindingen met het knooppunt dat de database host. Als u connectiviteit met omleiding wilt inschakelen, moet u firewalls en netwerkbeveiligingsgroepen (NSG) openen om toegang te verlenen op poorten 1433 en 11000-11999. Pakketten gaan rechtstreeks naar de database, en dus zijn er latentie en doorvoer prestaties verbeteringen met behulp van Redirect over Proxy.
+- **Proxy (standaard):** In deze modus gebruiken alle verbindingen een proxygatewaycomponent. Om connectiviteit mogelijk te maken, hoeft alleen poort 1433 voor particuliere netwerken en poort 3342 voor openbare verbinding te worden geopend. Als u deze modus kiest, kan dit leiden tot een hogere latentie en een lagere doorvoer, afhankelijk van de aard van de werkbelasting. We raden het verbindingsbeleid Redirect ten zeerste aan ten opzichte van het proxy-verbindingsbeleid voor de laagste latentie en de hoogste doorvoer.
 
-## <a name="redirect-connection-type"></a>Verbindings type omleiden
+## <a name="redirect-connection-type"></a>Verbindingstype omleiden
 
-Verbindings type omleiden betekent dat wanneer de TCP-sessie tot stand is gebracht met de SQL-engine, de client sessie het virtuele IP-doel van het virtuele cluster knooppunt van de load balancer verkrijgt. Volgende pakketten stromen rechtstreeks naar het virtuele cluster knooppunt, waarbij de gateway wordt omzeild. In het volgende diagram ziet u deze verkeers stroom.
+Het type omleidingsverbinding betekent dat nadat de TCP-sessie is ingesteld op de SQL-engine, de clientsessie het virtuele IP-doel van het virtuele clusterknooppunt van de load balancer verkrijgt. Volgende pakketten stromen rechtstreeks naar het virtuele clusterknooppunt, waarmee de gateway wordt omzeild. Het volgende diagram illustreert deze verkeersstroom.
 
-![omleiding. png](media/sql-database-managed-instance-connection-types/redirect.png)
+![redirect.png](media/sql-database-managed-instance-connection-types/redirect.png)
 
 > [!IMPORTANT]
-> Het verbindings type voor omleiding werkt momenteel alleen voor een persoonlijk eind punt. Ongeacht de instelling van het verbindings type, wordt de verbinding via het open bare eind punt tot stand gebracht via een proxy.
+> Het type omleidingsverbinding werkt momenteel alleen voor privéeindpunt. Ongeacht de instelling van het verbindingstype, worden verbindingen die via het openbare eindpunt komen, via een proxy.
 
-## <a name="proxy-connection-type"></a>Type proxy verbinding
+## <a name="proxy-connection-type"></a>Type proxyverbinding
 
-Proxy Verbindings type betekent dat de TCP-sessie tot stand is gebracht met behulp van de gateway en dat alle volgende pakketten door de server worden gebruikt. In het volgende diagram ziet u deze verkeers stroom.
+Proxy-verbindingstype betekent dat de TCP-sessie wordt ingesteld met behulp van de gateway en alle volgende pakketten erdoorheen stromen. Het volgende diagram illustreert deze verkeersstroom.
 
-![proxy. png](media/sql-database-managed-instance-connection-types/proxy.png)
+![proxy.png](media/sql-database-managed-instance-connection-types/proxy.png)
 
-## <a name="script-to-change-connection-type-settings-using-powershell"></a>Script voor het wijzigen van de instellingen van het verbindings type met Power shell
+## <a name="script-to-change-connection-type-settings-using-powershell"></a>Script om verbindingstype-instellingen te wijzigen met PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Het volgende Power shell-script laat zien hoe u het verbindings type voor een beheerd exemplaar wijzigt in omleiden.
+In het volgende PowerShell-script ziet u hoe u het verbindingstype voor een beheerde instantie wijzigt in Omleiding.
 
 ```powershell
 Install-Module -Name Az
@@ -65,6 +65,6 @@ $mi = $mi | Set-AzSqlInstance -ProxyOverride "Redirect" -force
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een database herstellen naar een beheerd exemplaar](sql-database-managed-instance-get-started-restore.md)
-- Meer informatie over het [configureren van een openbaar eind punt in een beheerd exemplaar](sql-database-managed-instance-public-endpoint-configure.md)
-- Meer informatie over de [connectiviteits architectuur voor beheerde exemplaren](sql-database-managed-instance-connectivity-architecture.md)
+- [Een database herstellen naar een beheerde instantie](sql-database-managed-instance-get-started-restore.md)
+- Meer informatie over het [configureren van een openbaar eindpunt voor beheerde instantie](sql-database-managed-instance-public-endpoint-configure.md)
+- Meer informatie over [beheerde architectuur voor instantieconnectiviteit](sql-database-managed-instance-connectivity-architecture.md)

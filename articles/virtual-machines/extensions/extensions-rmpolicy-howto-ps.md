@@ -1,6 +1,6 @@
 ---
-title: Azure Policy gebruiken om de installatie van de VM-extensie te beperken
-description: Gebruik Azure Policy om uitbreidings implementaties te beperken.
+title: Azure-beleid gebruiken om de installatie van VM-extensies te beperken
+description: Gebruik Azure Policy om extensie-implementaties te beperken.
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -14,33 +14,33 @@ ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.openlocfilehash: 428db340ce43463939ce71ffadd4188060f3e732
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073114"
 ---
-# <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Azure Policy gebruiken om de installatie van extensies op Windows-Vm's te beperken
+# <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Azure-beleid gebruiken om de installatie van extensies op Windows VM's te beperken
 
-Als u wilt voor komen dat bepaalde extensies op uw Windows-Vm's worden gebruikt of geïnstalleerd, kunt u een Azure-beleid maken met behulp van Power shell om uitbrei dingen voor virtuele machines in een resource groep te beperken. 
+Als u het gebruik of de installatie van bepaalde extensies op uw Windows VM's wilt voorkomen, u een Azure-beleid maken met PowerShell om extensies voor VM's binnen een resourcegroep te beperken. 
 
-In deze zelf studie wordt gebruikgemaakt van Azure PowerShell in het Cloud Shell, dat voortdurend wordt bijgewerkt naar de nieuwste versie. 
+Deze zelfstudie maakt gebruik van Azure PowerShell in de Cloud Shell, die voortdurend wordt bijgewerkt naar de nieuwste versie. 
 
  
 
-## <a name="create-a-rules-file"></a>Een regel bestand maken
+## <a name="create-a-rules-file"></a>Een regelsbestand maken
 
-Als u wilt beperken welke uitbrei dingen kunnen worden geïnstalleerd, moet u een [regel](../../governance/policy/concepts/definition-structure.md#policy-rule) hebben om de logica te bieden voor het identificeren van de uitbrei ding.
+Om te beperken welke extensies kunnen worden geïnstalleerd, moet u een [regel](../../governance/policy/concepts/definition-structure.md#policy-rule) hebben om de logica te bieden om de extensie te identificeren.
 
-In dit voor beeld ziet u hoe u door micro soft. Compute uitbrei dingen die zijn gepubliceerd, kunt weigeren door een regel bestand te maken in Azure Cloud Shell, maar als u lokaal werkt in Power shell, is het mogelijk om ook een lokaal bestand te maken en het pad ($home/clouddrive) te vervangen door het pad naar de lokaal bestand op uw computer.
+In dit voorbeeld ziet u hoe u extensies weigeren die door 'Microsoft.Compute' zijn gepubliceerd door een regelsbestand in Azure Cloud Shell te maken, maar als u lokaal in PowerShell werkt, u ook een lokaal bestand maken en het pad ($home/clouddrive) vervangen door het pad naar het lokale bestand op uw machine.
 
-Typ het volgende in een [Cloud shell](https://shell.azure.com/powershell):
+Typ in een [Cloud Shell:](https://shell.azure.com/powershell)
 
 ```azurepowershell-interactive
 nano $home/clouddrive/rules.json
 ```
 
-Kopieer en plak de volgende json in het bestand.
+Kopieer en plak de volgende .json in het bestand.
 
 ```json
 {
@@ -66,21 +66,21 @@ Kopieer en plak de volgende json in het bestand.
 }
 ```
 
-Wanneer u klaar bent, drukt u op **CTRL + O** en vervolgens op **Enter** om het bestand op te slaan. Druk op **CTRL + X** om het bestand te sluiten en te sluiten.
+Als u klaar bent, drukt u op **Ctrl + O** en vervolgens op **Enter** om het bestand op te slaan. Druk **op Ctrl + X** om het bestand en de uitgang te sluiten.
 
-## <a name="create-a-parameters-file"></a>Een parameter bestand maken
+## <a name="create-a-parameters-file"></a>Een parametersbestand maken
 
-U hebt ook een [parameter](../../governance/policy/concepts/definition-structure.md#parameters) bestand nodig dat een structuur maakt die u kunt gebruiken voor het door geven van een lijst met de uitbrei dingen die moeten worden geblokkeerd. 
+U hebt ook een [parametersbestand](../../governance/policy/concepts/definition-structure.md#parameters) nodig dat een structuur maakt die u gebruiken om in een lijst met extensies te worden doorstaan. 
 
-Dit voor beeld laat zien hoe u een parameter bestand voor virtuele machines in Cloud Shell maakt, maar als u lokaal in Power shell werkt, kunt u ook een lokaal bestand maken en het pad ($home/clouddrive) vervangen door het pad naar het lokale bestand op uw computer.
+In dit voorbeeld ziet u hoe u een parametersbestand voor VM's maakt in Cloud Shell, maar als u lokaal in PowerShell werkt, u ook een lokaal bestand maken en het pad ($home/clouddrive) vervangen door het pad naar het lokale bestand op uw machine.
 
-Typ in [Cloud shell](https://shell.azure.com/powershell):
+Typ in [Cloud Shell:](https://shell.azure.com/powershell)
 
 ```azurepowershell-interactive
 nano $home/clouddrive/parameters.json
 ```
 
-Kopieer en plak de volgende json in het bestand.
+Kopieer en plak de volgende .json in het bestand.
 
 ```json
 {
@@ -95,13 +95,13 @@ Kopieer en plak de volgende json in het bestand.
 }
 ```
 
-Wanneer u klaar bent, drukt u op **CTRL + O** en vervolgens op **Enter** om het bestand op te slaan. Druk op **CTRL + X** om het bestand te sluiten en te sluiten.
+Als u klaar bent, drukt u op **Ctrl + O** en vervolgens op **Enter** om het bestand op te slaan. Druk **op Ctrl + X** om het bestand en de uitgang te sluiten.
 
-## <a name="create-the-policy"></a>Het beleid maken
+## <a name="create-the-policy"></a>Beleid maken
 
-Een beleids definitie is een object dat wordt gebruikt voor het opslaan van de configuratie die u wilt gebruiken. De beleids definitie gebruikt de regels en parameter bestanden om het beleid te definiëren. Een beleids definitie maken met de cmdlet [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition) .
+Een beleidsdefinitie is een object dat wordt gebruikt om de configuratie op te slaan die u wilt gebruiken. De beleidsdefinitie gebruikt de regels en parametersbestanden om het beleid te definiëren. Maak een beleidsdefinitie met de cmdlet [Nieuw-AzPolicyDefinition.](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition)
 
- De beleids regels en para meters zijn de bestanden die u hebt gemaakt en opgeslagen als json-bestanden in uw Cloud shell.
+ De beleidsregels en parameters zijn de bestanden die u hebt gemaakt en opgeslagen als .json-bestanden in uw cloudshell.
 
 
 ```azurepowershell-interactive
@@ -116,11 +116,11 @@ $definition = New-AzPolicyDefinition `
 
 
 
-## <a name="assign-the-policy"></a>Het beleid toewijzen
+## <a name="assign-the-policy"></a>Wijs het beleid toe
 
-In dit voor beeld wordt het beleid toegewezen aan een resource groep met behulp van [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment). Elke VM die in de resource groep **myResourceGroup** is gemaakt, kan de VM-toegangs agent of aangepaste script extensies niet installeren. 
+In dit voorbeeld wordt het beleid toegewezen aan een resourcegroep met [nieuw-azpolicyassignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment). Vm's die zijn gemaakt in de **brongroep myResourceGroup,** kunnen de VM Access Agent- of Custom Script-extensies niet installeren. 
 
-De [Get-AzSubscription gebruiken | Maak](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) de cmdlet Table om uw abonnements-id op te halen die u wilt gebruiken in plaats van het voor beeld.
+Gebruik het [Get-AzSubscription | Format-Table](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) cmdlet om uw abonnements-ID te gebruiken in plaats van de ene in het voorbeeld.
 
 ```azurepowershell-interactive
 $scope = "/subscriptions/<subscription id>/resourceGroups/myResourceGroup"
@@ -141,7 +141,7 @@ $assignment
 
 ## <a name="test-the-policy"></a>Het beleid testen
 
-Als u het beleid wilt testen, probeert u de extensie VM-toegang te gebruiken. Het volgende moet mislukken met het bericht ' set-AzVMAccessExtension: resource ' myVMAccess ' is niet toegestaan door beleid '.
+Als u het beleid wilt testen, probeert u de VM Access-extensie te gebruiken. Het volgende moet mislukken met het bericht "Set-AzVMAccessExtension: Resource 'myVMAccess' is niet toegestaan door het beleid."
 
 ```azurepowershell-interactive
 Set-AzVMAccessExtension `
@@ -151,7 +151,7 @@ Set-AzVMAccessExtension `
    -Location EastUS 
 ```
 
-In de portal moet de wijziging van het wacht woord mislukken met de implementatie van de sjabloon is mislukt vanwege een overtreding van het beleid. Bericht.
+In de portal moet de wachtwoordwijziging mislukken met de implementatie van de sjabloon mislukt vanwege beleidsschending. .
 
 ## <a name="remove-the-assignment"></a>De toewijzing verwijderen
 

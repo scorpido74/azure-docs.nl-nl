@@ -1,6 +1,6 @@
 ---
-title: SQL Data Sync controleren met Azure Monitor-logboeken
-description: Meer informatie over het bewaken van Azure SQL Data Sync met behulp van Azure Monitor-logboeken
+title: SQL-gegevenssynchronisatie met Azure Monitor-logboeken bewaken
+description: Meer informatie over het bewaken van Azure SQL Data Sync met Azure Monitor-logboeken
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,15 +12,15 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: 0ed0bd3544fff89c8230267e3d6d8826c5ae3c7c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74114613"
 ---
-# <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>SQL Data Sync controleren met Azure Monitor-logboeken 
+# <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>SQL-gegevenssynchronisatie met Azure Monitor-logboeken bewaken 
 
-Als u het SQL Data Sync-activiteiten logboek wilt controleren en fouten en waarschuwingen wilt detecteren, moet u SQL Data Sync eerder in de Azure Portal controleren of Power shell of de REST API gebruiken. Volg de stappen in dit artikel voor het configureren van een aangepaste oplossing voor het verbeteren van de bewakings ervaring voor gegevens synchronisatie. U kunt deze oplossing aanpassen aan uw scenario.
+Als u het SQL Data Sync-activiteitenlogboek wilt controleren en fouten en waarschuwingen wilt detecteren, moest u sql-gegevenssynchronisatie eerder handmatig controleren in de Azure-portal of PowerShell of de REST-API gebruiken. Volg de stappen in dit artikel om een aangepaste oplossing te configureren die de monitoringervaring voor gegevenssynchronisatie verbetert. U deze oplossing aanpassen aan uw scenario.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -29,173 +29,173 @@ Zie [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met
 > [!IMPORTANT]
 > Azure SQL Data Sync biedt op dit moment **geen** ondersteuning voor beheerde exemplaren voor Azure SQL Database.
 
-## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Bewakings dashboard voor al uw synchronisatie groepen 
+## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Dashboard bewaken voor al uw synchronisatiegroepen 
 
-Het is niet meer nodig om de logboeken van elke synchronisatie groep afzonderlijk te bekijken om problemen op te sporen. U kunt al uw synchronisatie groepen vanuit uw abonnementen op één locatie bewaken met behulp van een aangepaste Azure Monitor weer gave. In deze weer gave worden de informatie die betrekking heeft op SQL Data Sync klanten, geoppereerd.
+U hoeft niet langer afzonderlijk door de logboeken van elke synchronisatiegroep te kijken om problemen te zoeken. U al uw synchronisatiegroepen vanaf een van uw abonnementen op één plaats controleren met behulp van een aangepaste Azure Monitor-weergave. Deze weergave geeft de informatie weer die belangrijk is voor SQL Data Sync-klanten.
 
-![Bewakings dashboard voor gegevens synchronisatie](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
+![Monitoringdashboard gegevenssynchronisatie](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
-## <a name="automated-email-notifications"></a>Automatische e-mail meldingen
+## <a name="automated-email-notifications"></a>Automatische e-mailmeldingen
 
-U hoeft het logboek niet meer hand matig te controleren in de Azure Portal of via Power shell of de REST API. Met [Azure monitor-logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)kunt u waarschuwingen maken die rechtstreeks naar de e-mail adressen van de mensen gaan die ze moeten zien wanneer er een fout optreedt.
+U hoeft het logboek niet langer handmatig te controleren in de Azure-portal of via PowerShell of de REST API. Met [Azure Monitor-logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)u waarschuwingen maken die rechtstreeks naar de e-mailadressen gaan van de mensen die ze moeten zien wanneer er een fout optreedt.
 
-![E-mail meldingen voor gegevens synchronisatie](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
+![E-mailmeldingen voor gegevenssynchronisatie](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
 
-## <a name="how-do-you-set-up-these-monitoring-features"></a>Hoe stelt u deze bewakings functies in? 
+## <a name="how-do-you-set-up-these-monitoring-features"></a>Hoe stelt u deze bewakingsfuncties in? 
 
-Voer de volgende stappen uit om in minder dan een uur een bewakings oplossing voor aangepaste Azure Monitor logboeken voor SQL Data Sync te implementeren:
+Implementeer in minder dan een uur een aangepaste Azure Monitor-logboekenbewakingsoplossing voor SQL Data Sync door de volgende dingen te doen:
 
-U moet drie onderdelen configureren:
+U moet drie componenten configureren:
 
--   Een Power shell-runbook om SQL Data Sync logboek gegevens naar Azure Monitor-logboeken te feeden.
+-   Een PowerShell-runbook voor sql-gegevenssynchronisatielogboekgegevens naar Azure Monitor-logboeken.
 
--   Een Azure Monitor waarschuwing voor e-mail meldingen.
+-   Een Azure Monitor-waarschuwing voor e-mailmeldingen.
 
--   Een Azure Monitor weergave voor bewaking.
+-   Een Azure Monitor-weergave voor bewaking.
 
-### <a name="samples-to-download"></a>Voor beelden om te downloaden
+### <a name="samples-to-download"></a>Voorbeelden die moeten worden gedownload
 
-De volgende twee voor beelden downloaden:
+Download de volgende twee voorbeelden:
 
--   [Data Sync-logboek Power shell-Runbook](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
+-   [PowerShell-runbook voor gegevenssynchronisatie](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [Weer gave gegevens synchronisatie Azure Monitor](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Azure-monitorweergave voor gegevenssynchronisatie](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ### <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat u de volgende zaken hebt ingesteld:
+Zorg ervoor dat u de volgende dingen hebt ingesteld:
 
 -   Een Azure Automation-account
 
--   Log Analytics werk ruimte
+-   Log Analytics-werkruimte
 
-## <a name="powershell-runbook-to-get-sql-data-sync-log"></a>Power shell-Runbook om SQL Data Sync-logboek op te halen 
+## <a name="powershell-runbook-to-get-sql-data-sync-log"></a>PowerShell Runbook om SQL Data Sync Log te krijgen 
 
-Gebruik een Power shell-runbook dat wordt gehost in Azure Automation om de SQL Data Sync-logboek gegevens op te halen en te verzenden naar Azure Monitor Logboeken. Er is een voorbeeld script opgenomen. Als vereiste moet u een Azure Automation-account hebben. Vervolgens moet u een runbook maken en dit plannen om uit te voeren. 
+Gebruik een PowerShell-runbook die wordt gehost in Azure Automation om de SQL Data Sync-logboekgegevens op te halen en naar Azure Monitor-logboeken te verzenden. Een voorbeeldscript is inbegrepen. Als voorwaarde moet u een Azure Automation-account hebben. Vervolgens moet u een runbook maken en plannen om het uit te voeren. 
 
 ### <a name="create-a-runbook"></a>Een runbook maken
 
-Zie [mijn eerste Power shell-runbook](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell)voor meer informatie over het maken van een runbook.
+Zie [Mijn eerste PowerShell-runbook](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell)voor meer informatie over het maken van een runbook.
 
-1.  Onder uw Azure Automation-account selecteert u het tabblad **Runbooks** onder proces automatisering.
+1.  Selecteer onder uw Azure Automation-account het tabblad **Runbooks** onder Procesautomatisering.
 
-2.  Selecteer **een Runbook toevoegen** in de linkerbovenhoek van de pagina Runbooks.
+2.  Selecteer **Een runbook toevoegen** in de linkerbovenhoek van de pagina Runbooks.
 
-3.  Selecteer **een bestaand Runbook importeren**.
+3.  Selecteer **Een bestaand runbook importeren**.
 
-4.  Gebruik het opgegeven `DataSyncLogPowerShellRunbook` bestand onder **Runbook file**. Stel het **type Runbook** in als `PowerShell`. Geef een naam op voor het runbook.
+4.  Gebruik **onder Runbook-bestand**het opgegeven `DataSyncLogPowerShellRunbook` bestand. Stel het type `PowerShell` **Runbook** in als . Geef het runbook een naam.
 
-5.  Selecteer **Maken**. U hebt nu een runbook.
+5.  Selecteer **Maken**. Je hebt nu een hardloopboek.
 
-6.  Onder uw Azure Automation-account selecteert u het tabblad **variabelen** onder gedeelde resources.
+6.  Selecteer onder uw Azure Automation-account het tabblad **Variabelen** onder Gedeelde resources.
 
-7.  Selecteer **een variabele toevoegen** op de pagina variabelen. Maak een variabele om de laatste uitvoerings tijd voor het runbook op te slaan. Als u meerdere runbooks hebt, hebt u één variabele nodig voor elk runbook.
+7.  Selecteer **Een variabele toevoegen** op de pagina Variabelen. Maak een variabele om de laatste uitvoeringstijd voor het runbook op te slaan. Als u meerdere runbooks hebt, hebt u één variabele nodig voor elk runbook.
 
-8.  Stel de naam van de variabele in als `DataSyncLogLastUpdatedTime` en stel het type in op DateTime.
+8.  Stel de variabelenaam in als `DataSyncLogLastUpdatedTime` en stel het type in als DateTime.
 
-9.  Selecteer het runbook en klik op de knop bewerken boven aan de pagina.
+9.  Selecteer het runbook en klik op de knop Bewerken boven aan de pagina.
 
-10. Breng de vereiste wijzigingen aan voor uw account en uw SQL Data Sync configuratie. (Zie het voorbeeld script voor meer gedetailleerde informatie.)
+10. Breng de wijzigingen aan die nodig zijn voor uw account en uw SQL Data Sync-configuratie. (Zie het voorbeeldscript voor meer gedetailleerde informatie.)
 
-    1.  Azure-gegevens.
+    1.  Azure-informatie.
 
-    2.  Groeps gegevens synchroniseren.
+    2.  Groepsinformatie synchroniseren.
 
-    3.  Azure Monitor logboek gegevens. Deze informatie zoeken in azure Portal | Instellingen | Verbonden bronnen. Zie voor meer informatie over het verzenden van gegevens naar Azure Monitor [-Logboeken gegevens verzenden naar Azure monitor logboeken met de http data collector API (preview)](../azure-monitor/platform/data-collector-api.md).
+    3.  Azure Monitor registreert gegevens. Deze informatie zoeken in Azure Portal | Instellingen | Verbonden bronnen. Zie [Gegevens verzenden naar Azure Monitor-logboeken met de HTTP Data Collector API (preview)](../azure-monitor/platform/data-collector-api.md)voor meer informatie over het verzenden van gegevens naar Azure Monitor-logboeken.
 
-11. Voer het runbook uit in het test venster. Controleer of het is gelukt.
+11. Voer het runbook uit in het deelvenster Test. Controleer of het gelukt is.
 
-    Als u fouten hebt, zorg er dan voor dat de meest recente Power shell-module is geïnstalleerd. U kunt de meest recente Power shell-module installeren in de **Galerie met modules** in uw Automation-account.
+    Als u fouten hebt, moet u ervoor zorgen dat u de nieuwste PowerShell-module hebt geïnstalleerd. U de nieuwste PowerShell-module in de **modulesgalerie** installeren in uw automatiseringsaccount.
 
-12. Klik op **publiceren**
+12. Klik **op Publiceren**
 
 ### <a name="schedule-the-runbook"></a>Het runbook plannen
 
-Het runbook plannen:
+Ga als u het loopboek in:
 
-1.  Selecteer onder het runbook het tabblad **schema's** onder resources.
+1.  Selecteer onder de runbook het tabblad **Schema's** onder Resources.
 
-2.  Selecteer **een planning toevoegen** op de pagina planningen.
+2.  Selecteer **Een planning toevoegen** op de pagina Schema's.
 
-3.  Selecteer **een planning koppelen aan uw runbook**.
+3.  Selecteer **Een planning koppelen aan uw runbook**.
 
-4.  Selecteer **een nieuw schema maken.**
+4.  Selecteer **Een nieuw schema maken.**
 
-5.  Stel **terugkeer patronen** in op terugkerend en stel het gewenste interval in. Gebruik hetzelfde interval, in het script en in Azure Monitor Logboeken.
+5.  Stel **Herhaling** in op Terugkerend en stel het gewenste interval in. Gebruik hetzelfde interval hier, in het script en in Azure Monitor-logboeken.
 
 6.  Selecteer **Maken**.
 
-### <a name="check-the-automation"></a>De automatisering controleren
+### <a name="check-the-automation"></a>Controleer de automatisering
 
-Als u wilt controleren of uw automatisering op de verwachte manier wordt uitgevoerd, gaat u naar de weer gave **taak statistieken** onder **bewaking**onder **overzicht** van uw Automation-account. Deze weer gave vastmaken aan uw dash board voor een eenvoudige weer gave. Geslaagde uitvoeringen van het runbook worden weer gegeven als voltooid en mislukte uitvoeringen weer geven als ' mislukt '.
+Als u wilt controleren of uw automatisering werkt zoals verwacht, zoekt u onder **Overzicht** voor uw automatiseringsaccount de weergave **Taakstatistieken** onder **Monitoring**. Maak deze weergave vast aan uw dashboard voor een eenvoudige weergave. Succesvolle uitvoeringen van de runbook-show als 'Voltooid' en Mislukte uitvoeringen worden weergegeven als 'Mislukt'.
 
-## <a name="create-an-azure-monitor-reader-alert-for-email-notifications"></a>Een waarschuwing voor een Azure Monitor lezer maken voor e-mail meldingen
+## <a name="create-an-azure-monitor-reader-alert-for-email-notifications"></a>Een Azure-monitorlezerwaarschuwing maken voor e-mailmeldingen
 
-Ga als volgt te werk om een waarschuwing te maken die gebruikmaakt van Azure Monitor Logboeken. Als vereiste moet u Azure Monitor-logboeken die zijn gekoppeld aan een Log Analytics-werk ruimte.
+Als u een waarschuwing wilt maken die azure monitorlogboeken gebruikt, doet u de volgende dingen. Als voorwaarde moet u Azure Monitor-logboeken hebben die zijn gekoppeld aan een Log Analytics-werkruimte.
 
-1.  Selecteer in het Azure Portal **logboek zoeken**.
+1.  Selecteer **Logboekzoeken**in de Azure-portal .
 
-2.  Maak een query om de fouten en waarschuwingen te selecteren op basis van de synchronisatie groep binnen het interval dat u hebt geselecteerd. Bijvoorbeeld:
+2.  Maak een query om de fouten en waarschuwingen te selecteren op synchronisatiegroep binnen het geselecteerde interval. Bijvoorbeeld:
 
     `DataSyncLog_CL | where LogLevel_s != "Success" | summarize AggregatedValue = count() by bin(TimeGenerated,60m),SyncGroupName_s`
 
-3.  Nadat de query is uitgevoerd, selecteert u de Bell met de **melding waarschuwing**.
+3.  Nadat u de query hebt uitgevoerd, selecteert u de bel met de tekst **Alert**.
 
-4.  Selecteer onder **waarschuwing genereren op basis van**de optie **metrische maat eenheid**.
+4.  Selecteer Metrische meting onder **Waarschuwing genereren op basis**van , selecteer Metrische **meting**.
 
-    1.  Stel de cumulatieve waarde in op **groter dan**.
+    1.  Stel de totale waarde in **op Groter dan**.
 
-    2.  Voer na **groter dan**de drempel waarde in die moet verstrijken voordat u meldingen ontvangt. Er worden tijdelijke fouten verwacht in de gegevens synchronisatie. Stel de drempel waarde in op 5 om ruis te verminderen.
+    2.  Voer **na Groter dan**, de drempel in om te vervallen voordat u meldingen ontvangt. Tijdelijke fouten worden verwacht in Data Sync. Om ruis te verminderen, stelt u de drempelwaarde in op 5.
 
-5.  Stel onder **acties** **e-mail melding** in op Ja. Voer de ontvangers van het gewenste e-mail adres in.
+5.  Stel **onder Acties** **e-mailmelding** in op 'Ja'. Voer de gewenste e-mailontvangers in.
 
-6.  Klik op **Opslaan**. De opgegeven ontvangers ontvangen nu e-mail meldingen wanneer er fouten optreden.
+6.  Klik op **Opslaan**. De opgegeven ontvangers ontvangen nu e-mailmeldingen wanneer er fouten optreden.
 
-## <a name="create-an-azure-monitor-view-for-monitoring"></a>Een Azure Monitor weer gave voor bewaking maken
+## <a name="create-an-azure-monitor-view-for-monitoring"></a>Een Azure-monitorweergave maken voor bewaking
 
-Met deze stap maakt u een Azure Monitor weer gave voor het visueel bewaken van alle opgegeven synchronisatie groepen. De weer gave bevat verschillende onderdelen:
+Met deze stap wordt een Azure Monitor-weergave om alle opgegeven synchronisatiegroepen visueel te controleren. De weergave bevat verschillende onderdelen:
 
--   Een overzichts tegel, die laat zien hoeveel fouten, successen en waarschuwingen alle synchronisatie groepen hebben.
+-   Een overzichtstegel, die aangeeft hoeveel fouten, successen en waarschuwingen alle synchronisatiegroepen hebben.
 
--   Een tegel voor alle synchronisatie groepen, waarin het aantal fouten en waarschuwingen per synchronisatie groep wordt weer gegeven. Groepen zonder problemen worden niet weer gegeven op deze tegel.
+-   Een tegel voor alle synchronisatiegroepen, die het aantal fouten en waarschuwingen per synchronisatiegroep weergeeft. Groepen zonder problemen worden niet op deze tegel weergegeven.
 
--   Een tegel voor elke synchronisatie groep, waarin het aantal fouten, geslaagde en waarschuwingen en de recente fout berichten worden weer gegeven.
+-   Een tegel voor elke synchronisatiegroep, die het aantal fouten, successen en waarschuwingen en de recente foutberichten weergeeft.
 
-Ga als volgt te werk om de weer gave Azure Monitor te configureren:
+Ga als volgt te werk om de Azure Monitor-weergave te configureren:
 
-1.  Selecteer op de start pagina van de Log Analytics werkruimte de plus aan de linkerkant om de **weergave ontwerper**te openen.
+1.  Selecteer op de startpagina van de Log Analytics-werkruimte het plusje aan de linkerkant om de weergaveontwerper te **openen.**
 
-2.  Selecteer **importeren** in de bovenste balk van de weer gave Designer. Selecteer vervolgens het voorbeeld bestand ' DataSyncLogOMSView '.
+2.  Selecteer **Importeren** op de bovenste balk van de weergaveontwerper. Selecteer vervolgens het voorbeeldbestand "DataSyncLogOMSView".
 
-3.  De voorbeeld weergave is voor het beheren van twee synchronisatie groepen. Bewerk deze weer gave zodat deze overeenkomt met uw scenario. Klik op **bewerken** en breng de volgende wijzigingen aan:
+3.  De voorbeeldweergave is voor het beheren van twee synchronisatiegroepen. Bewerk deze weergave om aan uw scenario te voldoen. Klik **op bewerken** en breng de volgende wijzigingen aan:
 
-    1.  Maak indien nodig nieuwe objecten van de galerie & lijst.
+    1.  Maak indien nodig nieuwe objecten '&-lijst van donut& uit de galerie'.
 
     2.  Werk in elke tegel de query's bij met uw gegevens.
 
-        1.  Wijzig op elke tegel het TimeStamp_t interval naar wens.
+        1.  Wijzig op elke tegel het TimeStamp_t-interval zoals gewenst.
 
-        2.  Werk de namen van de synchronisatie groepen bij op de tegels voor elke synchronisatie groep.
+        2.  Werk op de tegels voor elke synchronisatiegroep de namen van de synchronisatiegroep bij.
 
     3.  Werk op elke tegel de titel zo nodig bij.
 
-4.  Klik op Opslaan om de weer gave gereed te **houden** .
+4.  Klik **op Opslaan** en de weergave is gereed.
 
 ## <a name="cost-of-this-solution"></a>Kosten van deze oplossing
 
 In de meeste gevallen is deze oplossing gratis.
 
-**Azure Automation:** Er zijn mogelijk kosten verbonden aan het Azure Automation-account, afhankelijk van uw gebruik. De eerste 500 minuten van de taak uitvoerings tijd per maand zijn gratis. In de meeste gevallen wordt deze oplossing waarschijnlijk minder dan 500 minuten per maand gebruikt. Als u kosten wilt voor komen, moet u het runbook plannen om te worden uitgevoerd met een interval van twee uur of langer. Zie [prijzen van Automation](https://azure.microsoft.com/pricing/details/automation/)voor meer informatie.
+**Azure-automatisering:** Er kunnen kosten worden gemaakt met het Azure Automation-account, afhankelijk van uw gebruik. De eerste 500 minuten looptijd per maand zijn gratis. In de meeste gevallen zal deze oplossing naar verwachting minder dan 500 minuten per maand gebruiken. Om kosten te voorkomen, plant u het runbook te laten draaien op een interval van twee uur of meer. Zie [Automatiseringsprijzen](https://azure.microsoft.com/pricing/details/automation/)voor meer informatie .
 
-**Azure monitor logboeken:** Er zijn mogelijk kosten verbonden aan Azure Monitor logboeken, afhankelijk van uw gebruik. De laag gratis bevat 500 MB aan opgenomen gegevens per dag. In de meeste gevallen wordt deze oplossing naar verwachting kleiner dan 500 MB per dag. Als u het gebruik wilt verkleinen, gebruikt u het filter voor fout filters dat is opgenomen in het runbook. Als u meer dan 500 MB per dag gebruikt, moet u upgraden naar de betaalde laag om te voor komen dat het risico van analyse wordt gestopt wanneer de beperking wordt bereikt. Zie de [prijzen van Azure monitor-logboeken](https://azure.microsoft.com/pricing/details/log-analytics/)voor meer informatie.
+**Azure Monitor-logboeken:** Er kunnen kosten verbonden zijn aan Azure Monitor-logboeken, afhankelijk van uw gebruik. De gratis laag bevat 500 MB aan ingenomen gegevens per dag. In de meeste gevallen zal deze oplossing naar verwachting minder dan 500 MB per dag innemen. Als u het gebruik wilt verminderen, gebruikt u de filtering alleen voor fouten in het runbook. Als u meer dan 500 MB per dag gebruikt, u upgraden naar de betaalde laag om te voorkomen dat het risico bestaat dat analytics stopt wanneer de beperking is bereikt. Zie [Azure Monitor-logboekenprijzen voor](https://azure.microsoft.com/pricing/details/log-analytics/)meer informatie.
 
 ## <a name="code-samples"></a>Codevoorbeelden
 
-Down load de code voorbeelden die in dit artikel worden beschreven van de volgende locaties:
+Download de codevoorbeelden die in dit artikel worden beschreven vanaf de volgende locaties:
 
--   [Data Sync-logboek Power shell-Runbook](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
+-   [PowerShell-runbook voor gegevenssynchronisatie](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [Weer gave gegevens synchronisatie Azure Monitor](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Azure-monitorweergave voor gegevenssynchronisatie](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:

@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met wrangling data flow in Azure Data Factory
-description: Een zelf studie over het voorbereiden van gegevens in Azure Data Factory met behulp van wrangling-gegevens stroom
+title: Aan de slag met de gegevensstroom in Azure Data Factory
+description: Een zelfstudie over het voorbereiden van gegevens in Azure Data Factory met behulp van een gegevensstroom
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: gamal
@@ -8,53 +8,53 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.openlocfilehash: 8ae109045381dba77610dedc5bb95e233b213eee
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73682266"
 ---
-# <a name="prepare-data-with-wrangling-data-flow"></a>Gegevens voorbereiden met wrangling-gegevens stroom
+# <a name="prepare-data-with-wrangling-data-flow"></a>Gegevens voorbereiden met de gegevensstroom van getouwtrek
 
-## <a name="create-a-wrangling-data-flow"></a>Een wrangling-gegevens stroom maken
+## <a name="create-a-wrangling-data-flow"></a>Een getouwtrekgegevensstroom maken
 
-Er zijn twee manieren om een wrangling-gegevens stroom te maken in Azure Data Factory. U kunt ook op het plus-pictogram klikken en **gegevens stroom** selecteren in het deel venster Factory resources.
+Er zijn twee manieren om een getouwtrekgegevensstroom te maken in Azure Data Factory. Een manier is om op het pluspictogram te klikken en **Gegevensstroom** te selecteren in het deelvenster fabrieksresources.
 
-![Wrangling](media/wrangling-data-flow/tutorial7.png)
+![Gehakketak](media/wrangling-data-flow/tutorial7.png)
 
-De andere methode bevindt zich in het deel venster activiteiten van het pijp lijn-canvas. Open de accordeon voor **verplaatsen en transformeren** en sleep de activiteit **gegevens stroom** naar het canvas.
+De andere methode bevindt zich in het deelvenster Activiteiten van het pijplijncanvas. Open de accordeon **Verplaatsen en Transformeren** en sleep de activiteit **Gegevensstroom** naar het canvas.
 
-Selecteer in beide methoden in het zijvenster dat wordt geopend, de optie **nieuwe gegevens stroom maken** en kies **Wrangling data flow**. Klik op OK.
+Selecteer in beide methoden in het zijvenster dat wordt geopend de optie **Nieuwe gegevensstroom maken** en kies **Wrangling-gegevensstroom**. Klik op OK.
 
-![Wrangling](media/wrangling-data-flow/tutorial1.png)
+![Gehakketak](media/wrangling-data-flow/tutorial1.png)
 
-## <a name="author-a-wrangling-data-flow"></a>Een wrangling-gegevens stroom schrijven
+## <a name="author-a-wrangling-data-flow"></a>Auteur van een getouwtrek data stroom
 
-Voeg een **bron gegevensset** toe voor uw wrangling-gegevens stroom. U kunt ofwel een bestaande gegevensset kiezen of een nieuwe maken. U kunt ook een Sink-gegevensset selecteren. U kunt een of meer bron gegevens sets kiezen, maar er is op dit moment slechts één sink toegestaan. Het kiezen van een Sink-gegevensset is optioneel, maar er is ten minste één bron-gegevensset vereist.
+Voeg een **brongegevensset toe** voor uw gegevensstroom. U een bestaande gegevensset kiezen of een nieuwe gegevensset maken. U ook een sink-gegevensset selecteren. U een of meer brongegevenssets kiezen, maar op dit moment is slechts één sink toegestaan. Het kiezen van een sink dataset is optioneel, maar er is ten minste één brongegevensset vereist.
 
 > [!NOTE]
-> Alleen ADLS gen 2 gescheiden tekst worden ondersteund voor een beperkte preview. 
+> Alleen ADLS Gen 2 delimited text worden ondersteund voor een beperkte preview. 
 
-![Wrangling](media/wrangling-data-flow/tutorial4.png)
+![Gehakketak](media/wrangling-data-flow/tutorial4.png)
 
-Klik op **maken** om de Power query online Mashup-Editor te openen.
+Klik **op Maken** om de mashup-editor van Power Query Online te openen.
 
-![Wrangling](media/wrangling-data-flow/tutorial5.png)
+![Gehakketak](media/wrangling-data-flow/tutorial5.png)
 
-Maak uw wrangling-gegevens stroom met behulp van code-Free Data Preparation. Zie [transformatie functies](wrangling-data-flow-functions.md)/ voor een lijst met beschik bare functies.
+Auteur van uw getouw getouw wrangling data flow met behulp van code-vrije gegevens voorbereiding. Zie [transformatiefuncties](wrangling-data-flow-functions.md) voor de lijst met beschikbare functies/
 
-![Wrangling](media/wrangling-data-flow/tutorial6.png)
+![Gehakketak](media/wrangling-data-flow/tutorial6.png)
 
-## <a name="running-and-monitoring-a-wrangling-data-flow"></a>Een wrangling-gegevens stroom uitvoeren en controleren
+## <a name="running-and-monitoring-a-wrangling-data-flow"></a>Het uitvoeren en bewaken van een getouwtrek gegevensstroom
 
-Klik op **debug** in het canvas op de pijp lijn om het uitvoeren van een pijp lijn fout opsporing uit te voeren voor een wrangling-gegevens stroom. Zodra u de gegevens stroom hebt gepubliceerd, voert de **trigger nu** een uitvoering op aanvraag uit van de laatste gepubliceerde pijp lijn. Wrangling-gegevens stromen kunnen worden gepland met alle bestaande Azure Data Factory triggers.
+Als u een foutopsporingsrun voor pijplijnen van een gegevensstroom wilt uitvoeren, klikt u op **Foutopsporing** in het pijplijncanvas. Zodra u uw gegevensstroom publiceert, voert **Trigger nu** een on-demand run uit van de laatst gepubliceerde pijplijn. Getouwtrek gegevensstromen kunnen worden gepland met alle bestaande Azure Data Factory-triggers.
 
-![Wrangling](media/wrangling-data-flow/tutorial3.png)
+![Gehakketak](media/wrangling-data-flow/tutorial3.png)
 
-Ga naar het tabblad **monitor** om de uitvoer te visualiseren van een triggered wrangling-activiteit voor het uitvoeren van gegevens stromen.
+Ga naar het tabblad **Monitor** om de uitvoer van een geactiveerde gegevensstroomactiviteit te visualiseren.
 
-![Wrangling](media/wrangling-data-flow/tutorial2.png)
+![Gehakketak](media/wrangling-data-flow/tutorial2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [maken van een toewijzings gegevens stroom](tutorial-data-flow.md).
+Meer informatie over het [maken van een kaartgegevensstroom](tutorial-data-flow.md).

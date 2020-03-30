@@ -1,6 +1,6 @@
 ---
-title: CLI-interface van met Azure verbonden machine agent
-description: Referentie documentatie voor de Azure Connected machine Agent CLI
+title: CLI-interface van met Azure verbonden machineagent
+description: Referentiedocumentatie voor de Azure Connected Machine-agent CLI
 author: bobbytreed
 manager: carmonm
 services: azure-arc
@@ -10,19 +10,19 @@ ms.topic: reference
 ms.date: 11/04/2019
 ms.author: robreed
 ms.openlocfilehash: d35c5e283f2e1e2f8afd431d83775167dc2a531a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73513196"
 ---
-# <a name="azure-connected-machine-agent-cli-interface"></a>CLI-interface van met Azure verbonden machine agent
+# <a name="azure-connected-machine-agent-cli-interface"></a>CLI-interface van met Azure verbonden machineagent
 
-Het hulp programma `Azcmagent` (Azure Connected machine agent) wordt gebruikt voor het configureren en oplossen van problemen met een niet-Azure-computer verbinding met Azure.
+Het `Azcmagent` hulpprogramma (Azure Connected Machine Agent) wordt gebruikt om een niet-azure-apparaatverbinding met Azure te configureren en op te lossen.
 
-De agent zelf is een daemon-proces met de naam `himdsd` op Linux en een Windows-service met de naam `himds` in Windows.
+De agent zelf is `himdsd` een daemon proces opgeroepen `himds` op Linux, en een Windows-service opgeroepen op Windows.
 
-Bij normaal gebruik `azcmagent connect` wordt gebruikt om een verbinding tot stand te brengen tussen deze computer en Azure, en `azcmagent disconnect` als u besluit dat deze verbinding niet meer nodig is. De andere opdrachten zijn voor het oplossen van problemen of andere speciale gevallen.
+Bij normaal `azcmagent connect` gebruik wordt het gebruikt om een verbinding `azcmagent disconnect` tot stand te brengen tussen deze machine en Azure en als u besluit dat u die verbinding niet meer wilt. De andere opdrachten zijn voor het oplossen van problemen of andere speciale gevallen.
 
 ## <a name="options"></a>Opties
 
@@ -33,30 +33,30 @@ Bij normaal gebruik `azcmagent connect` wordt gebruikt om een verbinding tot sta
 
 ## <a name="see-also"></a>ZIE OOK
 
-* [azcmagent Connect](#azcmagent-connect) : Hiermee wordt deze computer verbonden met Azure
-* [azcmagent verbinding verbreken](#azcmagent-disconnect) : Hiermee wordt de verbinding tussen deze computer en Azure verbroken
-* [azcmagent reconnect](#azcmagent-reconnect) : Hiermee wordt deze computer opnieuw verbonden met Azure
-* [azcmagent show](#azcmagent-show) -Hiermee worden de meta gegevens van de machine en de agent status opgehaald. Dit is vooral nuttig voor het oplossen van problemen.
-* [azcmagent-versie](#azcmagent-version) : de versie van de hybride beheer agent weer geven
+* [azcmagent connect](#azcmagent-connect) - Verbindt deze machine met Azure
+* [azcmagent loskoppelen](#azcmagent-disconnect) - Hiermee verbreekt deze machine van Azure
+* [azcmagent reconnect](#azcmagent-reconnect) - Verbindt deze machine opnieuw met Azure
+* [azcmagent show](#azcmagent-show) - Krijgt machine metadata en Agent status. Dit is vooral handig voor het oplossen van problemen.
+* [azcmagent versie](#azcmagent-version) - Display de Hybrid Management Agent versie
 
-## <a name="azcmagent-connect"></a>azcmagent verbinding maken
+## <a name="azcmagent-connect"></a>azcmagent verbinden
 
-Deze machine verbinden met Azure
+Verbindt deze machine met Azure
 
-### <a name="synopsis"></a>Samen vatting
+### <a name="synopsis"></a>Synopsis
 
-Hiermee maakt u een resource in azure die deze machine vertegenwoordigt.
+Hiermee maakt u een resource in Azure die deze machine vertegenwoordigt.
 
-Dit maakt gebruik van de verificatie opties voor het maken van een resource in Azure Resource Manager die deze machine vertegenwoordigen. De resource bevindt zich in het aangevraagde abonnement en de resource groep en de gegevens over de machine worden opgeslagen in de Azure-regio die is opgegeven door de locatie parameter.
-De standaard resource naam is de hostnaam van deze computer als deze niet wordt overschreven.
+Hiermee worden de verificatieopties gebruikt om een bron te maken in Azure Resource Manager die deze machine vertegenwoordigt. De bron bevindt zich in de aangevraagde abonnements- en resourcegroep en gegevens over de machine worden opgeslagen in het Azure-gebied dat is opgegeven door de locatieparameter.
+De standaardresourcenaam is de hostnaam van deze machine als deze niet wordt overschreven.
 
-Een certificaat dat overeenkomt met de door het systeem toegewezen identiteit van deze computer, wordt vervolgens lokaal gedownload en opgeslagen. Zodra deze stap is voltooid, worden de **meta gegevens service van Azure Connected machine** en de gast configuratie agent gesynchroniseerd met de Azure-Cloud.
+Een certificaat dat overeenkomt met de systeemtoegewezen identiteit van deze machine wordt vervolgens lokaal gedownload en opgeslagen. Zodra deze stap is voltooid, beginnen de **Azure Connected Machine Metadata** Service en Guest Configuration Agent te synchroniseren met Azure cloud.
 
-Verificatie opties:
+Verificatieopties:
 
-* Toegangs token `azcmagent connect --access-token <> --subscription-id <> --resource-group <> --location <>`
-* Service-Principal-ID en geheime `azcmagent connect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid> --subscription-id <> --resource-group <> --location <>`
-* Aanmelden bij apparaat (interactief) `azcmagent connect --tenant-id <> --subscription-id <> --resource-group <> --location <>`
+* Toegang tot token`azcmagent connect --access-token <> --subscription-id <> --resource-group <> --location <>`
+* Service Principal ID en geheim`azcmagent connect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid> --subscription-id <> --resource-group <> --location <>`
+* Apparaataanmelding (interactief)`azcmagent connect --tenant-id <> --subscription-id <> --resource-group <> --location <>`
 
 ### <a name="syntax"></a>Syntaxis
 
@@ -80,25 +80,25 @@ azcmagent connect [flags]
       --tenant-id string                  Tenant Id
 ```
 
-## <a name="azcmagent-disconnect"></a>azcmagent-verbinding verbreken
+## <a name="azcmagent-disconnect"></a>azcmagent los te koppelen
 
-Hiermee wordt de verbinding tussen deze computer en Azure verbroken
+Hiermee wordt deze machine losgekoppeld van Azure
 
-### <a name="synopsis"></a>Samen vatting
+### <a name="synopsis"></a>Synopsis
 
-Hiermee verwijdert u de resource in azure die deze server vertegenwoordigt.
+Hiermee verwijdert u de bron in Azure die deze server vertegenwoordigt.
 
-Met deze opdracht worden de verificatie opties gebruikt voor het verwijderen van de Azure Resource Manager resource die deze computer vertegenwoordigt. Hierna wordt de verbinding met de **Azure Connected Machine metadata service** en de gast configuratie agent verbroken. Met deze opdracht worden de services niet gestopt of verwijderd: Verwijder het pakket om dit uit te voeren.
+Met deze opdracht worden de verificatieopties gebruikt om de Azure Resource Manager-bron die deze machine vertegenwoordigt, te verwijderen. Na dit punt worden de **Azure Connected Machine Metadata Service** en Guest Configuration Agent losgekoppeld. Met deze opdracht worden de services niet gestopt of verwijderd: verwijder het pakket om dat te doen.
 
-Voor deze opdracht zijn hogere bevoegdheden vereist dan de rol ' Azure Connectd machine onboarding '.
+Deze opdracht vereist hogere bevoegdheden dan de rol 'Azure Connected Machine Onboarding'.
 
-Als de verbinding met een computer is verbroken, gebruikt u `azcmagent connect`en niet `azcmagent reconnect` als u een nieuwe resource wilt maken in Azure.
+Zodra de verbinding met `azcmagent connect`een `azcmagent reconnect` machine is verbroken, gebruikt u niet of u er een nieuwe bron voor wilt maken in Azure.
 
-Verificatie opties:
+Verificatieopties:
 
-* Toegangs token `azcmagent disconnect --access-token <>`
-* Service-Principal-ID en geheime `azcmagent disconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
-* Aanmelden bij een interactief apparaat `azcmagent disconnect --tenant-id <>`
+* Toegang tot token`azcmagent disconnect --access-token <>`
+* Service Principal ID en geheim`azcmagent disconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
+* Aanmelden voor interactief apparaat`azcmagent disconnect --tenant-id <>`
 
 ### <a name="syntax"></a>Syntaxis
 
@@ -119,27 +119,27 @@ azcmagent disconnect [flags]
   -t, --tenant-id string                  Tenant Id
 ```
 
-## <a name="azcmagent-reconnect"></a>azcmagent opnieuw verbinding maken
+## <a name="azcmagent-reconnect"></a>azcmagent opnieuw verbinden
 
-Hiermee wordt de computer opnieuw verbonden met Azure
+Verbindt deze machine opnieuw met Azure
 
-### <a name="synopsis"></a>Samen vatting
+### <a name="synopsis"></a>Synopsis
 
-Verbind de computer opnieuw met ongeldige referenties voor Azure.
+Maak de machine opnieuw verbinden met ongeldige referenties met Azure.
 
-Als een machine al een resource in azure heeft maar niet kan worden geverifieerd, kan deze opnieuw worden verbonden met behulp van deze opdracht. Dit kan gebeuren als een computer lang genoeg is uitgeschakeld voor het verlopen van het certificaat (ten minste 45 dagen).
+Als een machine al een resource in Azure heeft, maar deze niet kan verifiëren, kan deze opnieuw worden verbonden met deze opdracht. Dit is mogelijk als een machine lang genoeg is uitgeschakeld om het certificaat te laten verlopen (ten minste 45 dagen).
 
-Als een computer niet is verbonden met `azcmagent disconnect`, gebruikt u `azcmagent connect` in plaats daarvan.
+Als een machine `azcmagent disconnect`is `azcmagent connect` losgekoppeld met, gebruik in plaats daarvan.
 
-Met deze opdracht worden de verificatie opties gebruikt die zijn verschaft om nieuwe referenties op te halen die overeenkomen met de Azure Resource Manager bron van deze computer.
+Met deze opdracht worden de verificatieopties gebruikt om nieuwe referenties op te halen die overeenkomen met de Azure Resource Manager-bron die deze machine vertegenwoordigt.
 
-Voor deze opdracht zijn hogere bevoegdheden vereist dan de **met Azure verbonden computer** voorbereidings functie.
+Deze opdracht vereist hogere bevoegdheden dan de Azure **Connected Machine Onboarding-rol.**
 
-Verificatie opties
+Verificatieopties
 
-* Toegangs token `azcmagent reconnect --access-token <>`
-* Service-Principal-ID en geheime `azcmagent reconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
-* Aanmelden bij een interactief apparaat `azcmagent reconnect --tenant-id <>`
+* Toegang tot token`azcmagent reconnect --access-token <>`
+* Service Principal ID en geheim`azcmagent reconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
+* Aanmelden voor interactief apparaat`azcmagent reconnect --tenant-id <>`
 
 ### <a name="syntax"></a>Syntaxis
 
@@ -161,13 +161,13 @@ azcmagent reconnect [flags]
       --tenant-id string                  tenant id
 ```
 
-## <a name="azcmagent-show"></a>azcmagent weer geven
+## <a name="azcmagent-show"></a>azcmagent show
 
-Hiermee worden de meta gegevens van de computer en de agent status opgehaald. Dit is vooral nuttig voor het oplossen van problemen.
+Krijgt machine metadata en Agent status. Dit is vooral handig voor het oplossen van problemen.
 
-### <a name="synopsis"></a>Samen vatting
+### <a name="synopsis"></a>Synopsis
 
-Hiermee worden de meta gegevens van de computer en de agent status opgehaald. Dit is vooral nuttig voor het oplossen van problemen.
+Krijgt machine metadata en Agent status. Dit is vooral handig voor het oplossen van problemen.
 
 
 ### <a name="syntax"></a>Syntaxis
@@ -182,13 +182,13 @@ azcmagent show [flags]
   -h, --help   help for show
 ```
 
-## <a name="azcmagent-version"></a>azcmagent-versie
+## <a name="azcmagent-version"></a>azcmagent versie
 
-De versie van de hybride beheer agent weer geven
+De versie van de hybride beheeragent weergeven
 
-### <a name="synopsis"></a>Samen vatting
+### <a name="synopsis"></a>Synopsis
 
-De versie van de hybride beheer agent weer geven
+De versie van de hybride beheeragent weergeven
 
 ### <a name="syntax"></a>Syntaxis
 

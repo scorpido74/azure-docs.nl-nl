@@ -1,142 +1,142 @@
 ---
-title: Hyperledger Fabric consortium op Azure Kubernetes service (AKS)
-description: Het Hyperledger Fabric consortium-netwerk implementeren en configureren op de Azure Kubernetes-service
+title: Hyperledger Fabric consortium op Azure Kubernetes Service (AKS)
+description: Hyperledger Fabric-consortiumnetwerk implementeren en configureren op Azure Kubernetes Service
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 5aed420295fd17cf4e7b26c86e8b84c4687e6545
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 2312c002e5c2e0b813f8acbdc3e3bff597f204d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029908"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476437"
 ---
-# <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric consortium op Azure Kubernetes service (AKS)
+# <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric consortium op Azure Kubernetes Service (AKS)
 
-U kunt de Hyperledger Fabric (HLF) op de Azure Kubernetes service (AKS)-sjabloon gebruiken om een Hyperledger Fabric consortium-netwerk te implementeren en configureren op Azure.
+U de sjabloon Hyperledger Fabric (HLF) op Azure Kubernetes Service (AKS) gebruiken om een Hyperledger Fabric-consortiumnetwerk op Azure te implementeren en configureren.
 
 Wanneer u dit artikel hebt gelezen:
 
-- Krijg praktische kennis over de Hyperledger-infra structuur en de verschillende onderdelen die de bouw stenen van Hyperledger Fabric Block chain-netwerk vormen.
-- Meer informatie over het implementeren en configureren van een Hyperledger Fabric consortium op de Azure Kubernetes-service voor uw productie scenario's.
+- Verkrijg werkkennis van Hyperledger Fabric en de verschillende componenten die de bouwstenen vormen van Hyperledger Fabric blockchain-netwerk.
+- Meer informatie over het implementeren en configureren van een Hyperledger Fabric-consortium op Azure Kubernetes Service voor uw productiescenario's.
 
-## <a name="hyperledger-fabric-consortium-architecture"></a>Consortium architectuur voor Hyperledger Fabric
+## <a name="hyperledger-fabric-consortium-architecture"></a>Hyperledger Fabric Consortium architectuur
 
-Als u Hyperledger Fabric-netwerk op Azure wilt bouwen, moet u de order service en organisatie implementeren met peer knooppunten. De verschillende fundamentele onderdelen die worden gemaakt als onderdeel van de sjabloon implementatie zijn:
+Als u hyperledgerfabric-netwerk op Azure wilt bouwen, moet u de bestelservice en -organisatie implementeren met peer nodes. De verschillende fundamentele componenten die worden gemaakt als onderdeel van de sjabloonimplementatie zijn:
 
-- **Orderer-knoop punten**: een knoop punt dat verantwoordelijk is voor transactie ordening in het groot boek. Naast andere knoop punten vormen de geordende knoop punten de bestel service van het Hyperledger-infrastructuur netwerk.
+- **Ordererknooppunten**: een knooppunt dat verantwoordelijk is voor het bestellen van transacties in het grootboek. Samen met andere knooppunten vormen de geordende knooppunten de bestelservice van het Hyperledger Fabric-netwerk.
 
-- **Gelijkwaardige knoop punten**: een knoop punt dat voornamelijk als host dient voor groot boeken en slimme contracten, deze fundamentele elementen van het netwerk.
+- **Peer nodes**: Een knooppunt dat voornamelijk grootboeken en slimme contracten host, deze fundamentele elementen van het netwerk.
 
-- **Infrastructuur ca**: Fabric-CA is de certificerings instantie (CA) voor de Hyperledger-infra structuur. Met de infrastructuur certificerings instantie kunt u het Server proces dat als host fungeert voor de certificerings instantie, initialiseren en starten. Hiermee kunt u identiteiten en certificaten beheren. Elk AKS-cluster dat is geïmplementeerd als onderdeel van de sjabloon, heeft standaard een Fabric-CA pod.
+- **Fabric CA:** Fabric CA is the Certificate Authority (CA) for Hyperledger Fabric. Met de Fabric CA u het serverproces initialiseren en starten waarmee de certificaatautoriteit wordt host. Hiermee u identiteiten en certificaten beheren. Elk AKS-cluster dat als onderdeel van de sjabloon wordt geïmplementeerd, heeft standaard een Fabric CA-pod.
 
-- **Couchdb of LevelDB**: World State Data Base voor de peer knooppunten kan worden opgeslagen in LevelDB of couchdb. LevelDB is de standaard status database die in het knoop punt peer is inge sloten en waar chaincode-gegevens worden opgeslagen als eenvoudige sleutel-waardeparen en alleen sleutel, sleutel bereik en samengestelde sleutel query's ondersteunt. CouchDB is een optionele alternatieve status database die Rich query's ondersteunt wanneer chaincode-gegevens waarden als JSON worden gemodelleerd.
+- **CouchDB of LevelDB**: World state database voor de peer nodes kan worden opgeslagen in LevelDB of CouchDB. LevelDB is de standaardstatusdatabase die is ingesloten in de peer node en slaat ketencodegegevens op als eenvoudige sleutelwaardeparen en ondersteunt alleen sleutel-, sleutelbereik- en samengestelde sleutelquery's. CouchDB is een optionele alternatieve statusdatabase die uitgebreide query's ondersteunt wanneer chaincode-gegevenswaarden worden gemodelleerd als JSON.
 
-Met de sjabloon voor implementatie worden verschillende Azure-resources in uw abonnement gedraaid. De verschillende Azure-resources die zijn geïmplementeerd zijn:
+De sjabloon voor implementatie draait verschillende Azure-bronnen in uw abonnement op. De verschillende Azure-resources die zijn geïmplementeerd, zijn:
 
-- **AKS-cluster**: Azure Kubernetes-cluster dat is geconfigureerd met de invoer parameters van de klant. Het AKS-cluster heeft verschillende peulen die zijn geconfigureerd voor het uitvoeren van de onderdelen van het Hyperledger Fabric-netwerk. De verschillende peulen die worden gemaakt zijn:
+- **AKS-cluster**: Azure Kubernetes-cluster dat is geconfigureerd volgens de invoerparameters die door de klant worden opgegeven. Het AKS-cluster heeft verschillende pods geconfigureerd voor het uitvoeren van de Hyperledger Fabric-netwerkcomponenten. De verschillende pods die zijn gemaakt zijn:
 
-  - **Infrastructuur hulpprogramma's**: het Fabric-hulp programma is verantwoordelijk voor het configureren van de Hyperledger Fabric-onderdelen.
-  - **Orderer/peer-peul**: de knoop punten van het HLF-netwerk.
-  - **Proxy**: een NGNIX-proxy pod die de client toepassingen kan interface met het AKS-cluster.
-  - **Fabric-ca**: de pod die de Fabric-CA uitvoert.
-- **Postgresql**: er is een instantie van postgresql geïmplementeerd voor het onderhouden van de CA-identiteiten van de infra structuur.
+  - **Fabric tools**: De fabric tool is verantwoordelijk voor het configureren van de Hyperledger Fabric componenten.
+  - **Orderer/peer pods**: De knooppunten van het HLF-netwerk.
+  - **Proxy:** een NGNIX proxy pod waarmee de clientapplicaties kunnen communiceren met het AKS-cluster.
+  - **Stof CA:** de pod die de Fabric CA draait.
+- **PostgreSQL**: Een instantie van PostgreSQL wordt geïmplementeerd om de Fabric CA-identiteiten te behouden.
 
-- **Azure-sleutel kluis**: er wordt een sleutel kluis-exemplaar geïmplementeerd voor het opslaan van de CA-certificerings instantie en de basis certificaten van de klant, die wordt gebruikt in het geval van een nieuwe poging voor een sjabloon implementatie. Dit is om de mechanismen van de sjabloon te verwerken.
-- **Azure Managed Disk**: Azure Managed disk is voor een permanente opslag voor de data base in de wereld van het groot boek-en peer knooppunt
-- **Openbaar IP-adres**: een openbaar IP-eind punt van het AKS-cluster dat is geïmplementeerd voor confacing met het cluster.
+- **Azure Key vault**: Een sleutelkluisinstantie wordt geïmplementeerd om de Fabric CA-referenties en de rootcertificaten van de klant op te slaan, die worden gebruikt in het geval van opnieuw proberen van sjabloonimplementatie, dit is om de mechanica van de sjabloon te verwerken.
+- **Azure Managed disk**: Azure Managed disk is voor permanente opslag voor grootboek- en peernodeworld state database.
+- **Openbaar IP:** een openbaar IP-eindpunt van het AKS-cluster dat is geïmplementeerd voor interfacing met het cluster.
 
-## <a name="hyperledger-fabric-blockchain-network-setup"></a>Hyperledger Fabric Block chain-netwerk installatie
+## <a name="hyperledger-fabric-blockchain-network-setup"></a>Hyperledger Fabric Blockchain-netwerksetup
 
-Om te beginnen hebt u een Azure-abonnement nodig dat ondersteuning biedt voor de implementatie van verschillende virtuele machines en standaardopslagaccounts. Als u geen Azure-abonnement hebt, kunt u [een gratis Azure-account maken](https://azure.microsoft.com/free/).
+Om te beginnen hebt u een Azure-abonnement nodig dat ondersteuning kan bieden voor het implementeren van verschillende virtuele machines en standaardopslagaccounts. Als u geen Azure-abonnement hebt, u [een gratis Azure-account maken.](https://azure.microsoft.com/free/)
 
-Stel Hyperledger Fabric Block Chain Network in met behulp van de volgende stappen:
+Stel Hyperledger Fabric Blockchain-netwerk in met de volgende stappen:
 
 - [De orderer/peer-organisatie implementeren](#deploy-the-ordererpeer-organization)
-- [Het consortium bouwen](#build-the-consortium)
-- [Systeem eigen HLF-bewerkingen uitvoeren](#run-native-hlf-operations)
+- [Bouw het consortium](#build-the-consortium)
+- [Native HLF-bewerkingen uitvoeren](#run-native-hlf-operations)
 
 ## <a name="deploy-the-ordererpeer-organization"></a>De orderer/peer-organisatie implementeren
 
-Om aan de slag te gaan met de implementatie van HLF-netwerk onderdelen, gaat u naar de [Azure Portal](https://portal.azure.com). Selecteer **een resource maken > block chain** > zoek naar **Hyperledger Fabric op de Azure Kubernetes-service**.
+Als u aan de slag wilt met de implementatie van HLF-netwerkcomponenten, navigeert u naar de [Azure-portal.](https://portal.azure.com) Selecteer **Een bron maken > Blockchain** > zoeken naar **Hyperledger Fabric op Azure Kubernetes Service.**
 
-1. Selecteer **maken** om de sjabloon implementatie te starten. De **Hyperledger Fabric maken op de Azure Kubernetes-service** wordt weer gegeven.
+1. Selecteer **maken** om de sjabloonimplementatie te starten. De **Hyperledger-structuur maken op Azure Kubernetes-service** wordt weergegeven.
 
-    ![Hyperledger Fabric op de Azure Kubernetes-service sjabloon](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-fabric-aks.png)
+    ![Hyperledger Fabric op Azure Kubernetes Service Template](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-fabric-aks.png)
 
-2. Voer de project details in op de pagina **basis beginselen** .
+2. Voer de projectdetails in de pagina **Basisbeginselen** in.
 
-    ![Hyperledger Fabric op de Azure Kubernetes-service sjabloon](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-basics.png)
+    ![Hyperledger Fabric op Azure Kubernetes Service Template](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-basics.png)
 
 3. Voer de volgende details in:
-    - **Abonnement**: Kies de naam van het abonnement waarin u de HLF-netwerk onderdelen wilt implementeren.
-    - **Resource groep**: Maak een nieuwe resource groep of kies een bestaande lege resource groep. de resource groep bevat alle resources die zijn geïmplementeerd als onderdeel van de sjabloon.
-    - **Regio**: Kies de Azure-regio waar u het Azure Kubernetes-cluster wilt implementeren voor de HLF-onderdelen. De sjabloon is beschikbaar in alle regio's waar AKS beschikbaar is, moet u een regio kiezen waar uw abonnement niet de quotum limiet van de virtuele machine (VM) aankomt.
-    - **Resource voorvoegsel**: voor voegsel voor de naamgeving van resources die worden geïmplementeerd. Het resource voorvoegsel moet uit minder dan zes tekens bestaan en de combi natie van tekens moet cijfers en letters bevatten.
-4. Selecteer het tabblad **infrastructuur instellingen** om de HLF-netwerk onderdelen te definiëren die worden geïmplementeerd.
+    - **Abonnement:** kies de abonnementsnaam waar u de HLF-netwerkcomponenten wilt implementeren.
+    - **Resourcegroep**: Maak een nieuwe resourcegroep of kies een bestaande lege resourcegroep, de resourcegroep houdt alle resources die zijn geïmplementeerd als onderdeel van de sjabloon.
+    - **Regio**: Kies het Azure-gebied waar u het Azure Kubernetes-cluster wilt implementeren voor de HLF-componenten. De sjabloon is beschikbaar in alle regio's waar AKS beschikbaar is Zorg ervoor dat u een regio kiest waar uw abonnement de vm-quotumlimiet (Virtual Machine) niet bereikt.
+    - **Resourcevoorvoegsel:** voorvoegsel voor het benoemen van resources die zijn geïmplementeerd. Het voorvoegsel van resources moet minder dan zes tekens lang zijn en de combinatie van tekens moet zowel getallen als letters bevatten.
+4. Selecteer het tabblad **Structuurinstellingen** om de HLF-netwerkcomponenten te definiëren die worden geïmplementeerd.
 
-    ![Hyperledger Fabric op de Azure Kubernetes-service sjabloon](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-settings.png)
+    ![Hyperledger Fabric op Azure Kubernetes Service Template](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-settings.png)
 
 5. Voer de volgende details in:
-    - **Organisatie naam**: de naam van de infrastructuur organisatie, die is vereist voor verschillende bewerkingen voor gegevenslaag.
-    - **Fabric-netwerk onderdeel**: Kies service-of peer knooppunten die zijn gebaseerd op Block chain netwerk onderdeel dat u wilt instellen.
-    - **Aantal knoop punten** -de volgende twee typen knoop punten zijn:
-        - Order service: Selecteer het aantal knoop punten waarvoor fout tolerantie aan het netwerk is gegeven. Alleen 3, 5 en 7 zijn het aantal ondersteunde orderer-knoop punten.
-        - Knoop punten op hetzelfde niveau: u kunt 1-10-knoop punten kiezen op basis van uw vereiste.
-    - **Data Base voor wereld wijde status van peer-knoop punt**: Kies tussen LevelDB en CoucbDB. Dit veld wordt weer gegeven wanneer de gebruiker de vervolg keuzelijst peer-knoop punt in infrastructuur netwerk onderdeel kiest.
-    - **Fabric-gebruikers naam**: Voer de gebruikers naam in die wordt gebruikt voor de CA-verificatie van de infra structuur.
-    - **CA-wacht woord van infrastructuur resources**: Voer het wacht woord in voor infrastructuur ca-authenticatie.
-    - **Bevestig het wacht woord**: Bevestig het CA-wacht woord van de infra structuur.
-    - **Certificaten**: als u uw eigen basis certificaten wilt gebruiken om de infrastructuur certificerings instantie te initialiseren, kiest u basis certificaat uploaden voor Fabric-ca-optie, anders door de CA-standaard infrastructuur maakt zelfondertekende certificaten.
-    - **Basis certificaat**: basis certificaat uploaden (open bare sleutel) waarmee infrastructuur certificerings instantie moet worden geïnitialiseerd. Certificaten van. pem-indeling worden ondersteund. de certificaten moeten geldig zijn in de UTC-tijd zone.
-    - **Persoonlijke sleutel van het basis certificaat**: de persoonlijke sleutel van het basis certificaat uploaden. Als u een. PEM-certificaat hebt, dat zowel een open bare als een persoonlijke sleutel bevat, kunt u dit hier ook uploaden.
+    - **Organisatienaam**: De naam van de Fabric-organisatie, die vereist is voor verschillende bewerkingen van gegevensvlak. De naam van de organisatie moet uniek zijn per implementatie. 
+    - **Fabric-netwerkcomponent:** kies bestelservice of Peer-knooppunten op basis van blockchain-netwerkcomponent die u wilt instellen.
+    - **Aantal knooppunten** - De volgende zijn de twee typen knooppunten:
+        - Bestelservice - selecteer het aantal knooppunten dat de fouttolerantie voor het netwerk biedt. Slechts 3,5 en 7 zijn de ondersteunde orderer node tellen.
+        - Peer-knooppunten - u 1-10 knooppunten kiezen op basis van uw vereiste.
+    - **Peer node world state database**: Kies tussen LevelDB en CoucbDB. Dit veld wordt weergegeven wanneer de gebruiker peer node kiest in de vervolgkeuzelijst Fabric-netwerkcomponent.
+    - **Gebruikersnamen voor stof:** voer de gebruikersnaam in die wordt gebruikt voor de Fabric CA-verificatie.
+    - **Fabric CA-wachtwoord:** voer het wachtwoord in voor Fabric CA-verificatie.
+    - **Wachtwoord bevestigen:** bevestig het wachtwoord van Fabric CA.
+    - **Certificaten:** Als u uw eigen basiscertificaten wilt gebruiken om de Fabric CA te initialiseren, kiest u Rootcertificaat uploaden voor de optie Fabric CA, anders maakt Fabric CA standaard zelfondertekende certificaten.
+    - **Rootcertificaat**: Upload rootcertificaat (public key) waarmee Fabric CA moet worden geïnitialiseerd. Certificaten van .pem-formaat worden ondersteund, de certificaten moeten geldig zijn in utc-tijdzone.
+    - **Privésleutel basiscertificaat:** Upload de privésleutel van het hoofdcertificaat. Als u een .pem-certificaat hebt, dat zowel openbare als privésleutel heeft gecombineerd, upload deze dan ook hier.
 
 
-6. Selecteer **AKS tabblad Cluster instellingen** om de Azure Kubernetes-cluster configuratie te definiëren die de onderliggende infra structuur is waarop de infrastructuur netwerk onderdelen moeten worden ingesteld.
+6. Selecteer het tabblad **AKS-clusterinstellingen** om de Azure Kubernetes-clusterconfiguratie te definiëren die de onderliggende infrastructuur is waarop de fabric-netwerkcomponenten worden ingesteld.
 
-    ![Hyperledger Fabric op de Azure Kubernetes-service sjabloon](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
+    ![Hyperledger Fabric op Azure Kubernetes Service Template](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
 7. Voer de volgende details in:
-    - **Kubernetes-cluster naam**: de naam van het AKS-cluster dat wordt gemaakt. Dit veld wordt vooraf ingevuld op basis van het voor voegsel van de resource, u kunt zo nodig wijzigen.
-    - **Kubernetes-versie**: de versie van de Kubernetes die in het cluster wordt geïmplementeerd. Op basis van de regio die is geselecteerd op het tabblad **basis beginselen** , kunnen de ondersteunde versies worden gewijzigd.
-    - **DNS-voor voegsel**: Domain Name System (DNS)-naam VOORVOEGSEL voor AKS-cluster. U gebruikt DNS om verbinding te maken met de Kubernetes-API wanneer u containers beheert nadat u het cluster hebt gemaakt.
-    - **Knooppunt grootte**: de grootte van het Kubernetes-knoop punt, kunt u kiezen uit de lijst met Vm's (Stock Keeping Unit) die beschikbaar zijn op Azure. Voor optimale prestaties raden wij standaard DS3 v2 aan.
-    - **Knooppunt telling**: het aantal Kubernetes-knoop punten dat in het cluster moet worden geïmplementeerd. U wordt aangeraden dit aantal knoop punten ten minste gelijk te houden aan het aantal HLF knooppunten dat is opgegeven in de infrastructuur instellingen.
-    - **Service-Principal-client-id**: Voer de client-id van een bestaande Service-Principal in of maak een nieuwe, die vereist is voor de AKS-verificatie. Zie stappen voor het [maken](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)van een service-principal.
-    - **Service-Principal-client geheim**: Voer het client geheim in van de service-principal die is opgegeven in de client-id van de Service-Principal.
-    - **Client geheim bevestigen**: Bevestig het client geheim dat is opgenomen in het client geheim van de Service-Principal.
-    - **Container bewaking inschakelen**: Selecteer deze optie om AKS-bewaking in te scha kelen, zodat de AKS-logboeken naar de opgegeven log Analytics werk ruimte pushen.
-    - **Log Analytics werk ruimte**: de werk ruimte voor log Analytics wordt gevuld met de standaardwerk ruimte die wordt gemaakt als bewaking is ingeschakeld.
+    - **Kubernetes-clusternaam:** de naam van het AKS-cluster dat is gemaakt. Dit veld is vooraf ingevuld op basis van het meegeleverde bronvoorvoegsel, u indien nodig wijzigen.
+    - **Kubernetes-versie**: De versie van de Kubernetes die op het cluster wordt geïmplementeerd. Op basis van het gebied dat is geselecteerd op het tabblad **Basisbeginselen,** kunnen de beschikbare ondersteunde versies worden gewijzigd.
+    - **DNS-voorvoegsel**: DNS-naamvoorvoegsel (Domain Name System) voor AKS-cluster. U gebruikt DNS om verbinding te maken met de Kubernetes API bij het beheren van containers na het maken van het cluster.
+    - **Knooppuntgrootte**: De grootte van het Kubernetes-knooppunt, u kiezen uit de lijst met VM Stock keeping unit (SKU's) die beschikbaar is op Azure. Voor optimale prestaties raden we standaard DS3 v2 aan.
+    - **Aantal knooppunten**: het aantal Kubernetes-knooppunten dat in het cluster moet worden geïmplementeerd. We raden u aan het aantal knooppunten ten minste gelijk of hoger te houden dan het aantal HLF-knooppunten dat is opgegeven in de fabric-instellingen.
+    - **Serviceprincipal client ID:** Voer de client-ID van een bestaande serviceprincipal in of maak een nieuwe, die vereist is voor de AKS-verificatie. Zie, stappen om [serviceprincipal te maken.](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)
+    - **Service belangrijkste klant geheim**: Voer de klant geheim van de service principal die in de service principal client ID.
+    - **Bevestig het geheim van**de klant: bevestig het klantgeheim in het geheim van de hoofdklant van de dienst.
+    - **Containerbewaking inschakelen:** kies om AKS-bewaking in te schakelen, waardoor de AKS-logboeken naar de opgegeven loganalytics-werkruimte kunnen worden geduwd.
+    - **Werkruimte Log Analytics**: De werkruimte Logboekanalyse wordt gevuld met de standaardwerkruimte die wordt gemaakt als bewaking is ingeschakeld.
 
-8. Nadat u alle bovenstaande gegevens hebt opgegeven, selecteert u het tabblad **controleren en maken** . Met de controle en het maken wordt de validatie geactiveerd voor de waarden die u hebt ingevoerd.
-9. Zodra de validatie is geslaagd, kunt u **maken**selecteren.
-De implementatie duurt doorgaans 10-12 minuten, afhankelijk van de grootte en het aantal opgegeven AKS-knoop punten.
-10. Nadat de implementatie is voltooid, ontvangt u een melding via meldingen van Azure in de rechter bovenhoek.
-11. Selecteer **Ga naar resource groep** om alle resources te controleren die zijn gemaakt als onderdeel van de sjabloon implementatie. Alle resource namen worden gestart met het voor voegsel dat is opgenomen in de instelling **basis beginselen** .
+8. Nadat u alle bovenstaande details hebt opgegeven, selecteert u Controleren en het tabblad **maken.** Met de beoordeling en het maken activeert u de validatie voor de opgegeven waarden.
+9. Zodra de validatie is doorgegeven, u **kiezen voor .**
+De implementatie duurt meestal 10-12 minuten, kan variëren afhankelijk van de grootte en het aantal opgegeven AKS-knooppunten.
+10. Na de succesvolle implementatie wordt u hiervan op de hoogte gesteld via Azure-meldingen in de rechterbovenhoek.
+11. Selecteer **Ga naar resourcegroep om** alle resources te controleren die zijn gemaakt als onderdeel van de sjabloonimplementatie. Alle resourcenamen beginnen met het voorvoegsel in de instelling **Basisbeginselen.**
 
-## <a name="build-the-consortium"></a>Het consortium bouwen
+## <a name="build-the-consortium"></a>Bouw het consortium
 
-Als u het block Chain consortium na het implementeren van de best maat service en peer-knoop punten wilt maken, moet u de onderstaande stappen in volg orde uitvoeren. **Bouw uw netwerk** script (byn.sh), dat u helpt bij het instellen van het consortium, het maken van een kanaal en het installeren van chaincode.
+Om de blockchain-consortium post te bouwen die de bestelservice en peer nodes implementeert, moet u de onderstaande stappen achter elkaar uitvoeren. **Bouw uw netwerkscript** (byn.sh), waarmee u het consortium instellen, kanaal maken en chaincode installeren.
 
 > [!NOTE]
-> Het byn-script dat u hebt gemaakt, is strikt te gebruiken voor demonstratie-devtest scenario's. Voor het instellen van de productie kwaliteit raden we u aan de systeem eigen HLF-Api's te gebruiken.
+> Build Your Network (byn) script is strikt te gebruiken voor demo / devtest scenario's. Voor de installatie van productiekwaliteit raden we u aan de native HLF API's te gebruiken.
 
-Alle opdrachten voor het uitvoeren van het script byn kunnen worden uitgevoerd via de bash-opdracht regel interface (CLI) van Azure. U kunt zich aanmelden bij de Azure shell-webversie via ![Hyperledger Fabric op de Azure Kubernetes-service sjabloon](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) in de rechter bovenhoek van de Azure Portal. Typ bash en Enter in het opdracht prompt om over te scha kelen naar bash CLI.
+Alle opdrachten voor het uitvoeren van het byn-script kunnen worden uitgevoerd via de Azure Bash Command Line Interface (CLI). U inloggen op azure shell webversie via ![Hyperledger Fabric op Azure Kubernetes Service Template](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) optie in de rechterbovenhoek van de Azure-portal. Typ bash en voer op de opdrachtprompt in om over te schakelen naar bash CLI.
 
 Zie [Azure shell](https://docs.microsoft.com/azure/cloud-shell/overview) voor meer informatie.
 
-![Hyperledger Fabric op de Azure Kubernetes-service sjabloon](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
+![Hyperledger Fabric op Azure Kubernetes Service Template](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
 
 
-Down load het byn.sh-en Fabric-admin. yaml-bestand.
+Download byn.sh en fabric-admin.yaml-bestand.
 
 ```bash-interactive
 curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/byn.sh -o byn.sh; chmod 777 byn.sh
 curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/fabric-admin.yaml -o fabric-admin.yaml
 ```
-**Stel onder omgevings variabelen in op Azure cli bash shell**:
+**Hieronder omgevingsvariabelen instellen op Azure CLI Bash-shell:**
 
-Informatie over de organisatie van het kanaal en de orderer instellen
+Kanaalinformatie en informatie over ordererorganisaties instellen
 
 ```bash
 SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
@@ -147,7 +147,7 @@ ORDERER_DNS_ZONE=$(az aks show --resource-group $ORDERER_AKS_RESOURCE_GROUP --na
 ORDERER_END_POINT="orderer1.$ORDERER_DNS_ZONE:443"
 CHANNEL_NAME=<channelName>
 ```
-Informatie van peer-organisatie instellen
+Informatie over peer-organisaties instellen
 
 ```bash
 PEER_AKS_RESOURCE_GROUP=<peerAKSClusterResourceGroup>
@@ -157,7 +157,7 @@ PEER_AKS_SUBSCRIPTION=<peerAKSClusterSubscriptionID>
 PEER_ORG_NAME=<peerOrganizationName>
 ```
 
-Maak een Azure-bestands share om verschillende open bare certificaten te delen tussen de organisaties van de peer en de orderer.
+Maak één Azure-bestandsshare om verschillende openbare certificaten te delen tussen peer- en ordererorganisaties.
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -174,27 +174,27 @@ az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE
 SAS_TOKEN=$(az storage account generate-sas --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT --expiry `date -u -d "1 day" '+%Y-%m-%dT%H:%MZ'` --https-only --permissions lruwd --resource-types sco --services f | tr -d '"')
 AZURE_FILE_CONNECTION_STRING="https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN"
 ```
-**Opdrachten voor kanaal beheer**
+**Kanaalbeheeropdrachten**
 
-Ga naar orderere organisatie AKS cluster en opdracht uitgeven om een nieuw kanaal te maken
+Ga naar het AKS-cluster en de opdracht Voor een nieuw kanaal om een nieuw kanaal te maken
 
 ```bash
 SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
 ./byn.sh createChannel "$CHANNEL_NAME"
 ```
 
-**Management-opdrachten voor consortium**
+**Opdrachten voor consortiumbeheer**
 
-Voer de onderstaande opdrachten in de aangegeven volg orde uit om een peer-organisatie toe te voegen aan een kanaal en consortium.
+Voer onderstaande opdrachten uit in de gegeven volgorde om een peer-organisatie toe te voegen aan een kanaal en consortium.
 
-1. Ga naar het AKS-cluster van de peer-organisatie en upload de bijbehorende leden service (MSP) op een Azure-File Storage.
+1. Ga naar het AKS-cluster van peerorganisatie en upload de MSP (Member Service Provide) op een Azure-bestandsopslag.
 
     ```bash
     SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
     ./byn.sh uploadOrgMSP "$AZURE_FILE_CONNECTION_STRING"
     ```
 
-2. Ga naar de orderer organisatie AKS-cluster en voeg de peer-organisatie toe in Channel en consortium.
+2. Ga naar het AKS-cluster van ordererorganisatie en voeg de peer-organisatie toe in kanaal en consortium.
 
     ```bash
     SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
@@ -204,26 +204,26 @@ Voer de onderstaande opdrachten in de aangegeven volg orde uit om een peer-organ
     ./byn.sh addPeerInChannel "$PEER_ORG_NAME" "$CHANNEL_NAME" "$AZURE_FILE_CONNECTION_STRING"
     ```
 
-3. Ga terug naar de organisatie van de peer en de opdracht issue om peer knooppunten in het kanaal te koppelen.
+3. Ga terug naar peer organization en geef de opdracht uit om peer nodes in het kanaal aan te sluiten.
 
     ```bash
     SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
     ./byn.sh joinNodesInChannel "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
     ```
 
-Als u meer peer-organisaties wilt toevoegen aan het kanaal, moet u peer AKS-omgevings variabelen bijwerken volgens de vereiste peer-organisatie en de stappen 1 tot en met 3 uitvoeren.
+Als u meer peer-organisaties in het kanaal wilt toevoegen, worden ak-omgevingsvariabelen peer bijgewerkt volgens de vereiste peer-organisatie en u de stappen 1 tot en met 3 uitvoeren.
 
-**Chaincode-beheer opdrachten**
+**Opdrachten voor beheer van chaincode**
 
-Voer de onderstaande opdracht uit om de gerelateerde bewerking chaincode uit te voeren. Met deze opdrachten worden alle bewerkingen uitgevoerd op een demo-chaincode. Deze demo-chaincode heeft twee variabelen: "a" en "b". Bij het instantiëren van de chaincode wordt "a" geïnitialiseerd met 1000 en "b" geïnitialiseerd met 2000. Bij elke aanroep van de chaincode worden 10 eenheden overgebracht van ' a ' naar ' b '. De query bewerking in chaincode toont de wereld status van de variabele "a".
+Voer de onderstaande opdracht uit om de ketencodegerelateerde bewerking uit te voeren. Deze opdrachten voeren alle bewerkingen uit op een demochaincode. Deze demo chaincode heeft twee variabelen "a" en "b". Op instantiatie van de chaincode, "a" is geïnitialiseerd met 1000 en "b" is geïnitialiseerd met 2000. Bij elke aanroep van de kettingcode worden 10 eenheden overgedragen van "a" naar "b". Querybewerking op chaincode toont de wereldstatus van "a" variabele.
 
-Voer de volgende opdrachten uit die zijn uitgevoerd op het AKS-cluster van de peer-organisatie.
+Voer de volgende opdrachten uit die zijn uitgevoerd op het AKS-cluster van peerorganisatie.
 
 ```bash
 # switch to peer organization AKS cluster. Skip this command if already connected to the required Peer AKS Cluster
 SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
 ```
-**Opdracht Chaincode**
+**Opdrachten voor de bewerking van chaincode**
 
 ```bash
 PEER_NODE_NAME="peer<peer#>"
@@ -233,51 +233,51 @@ PEER_NODE_NAME="peer<peer#>"
 ./byn.sh queryDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME"
 ```
 
-## <a name="run-native-hlf-operations"></a>Systeem eigen HLF-bewerkingen uitvoeren
+## <a name="run-native-hlf-operations"></a>Native HLF-bewerkingen uitvoeren
 
-Om klanten te helpen aan de slag te gaan met het uitvoeren van Hyperledger systeem eigen opdrachten op HLF-netwerk op AKS. De voorbeeld toepassing maakt gebruik van Fabric NodeJS SDK om de HLF-bewerkingen uit te voeren. De opdrachten zijn bedoeld om nieuwe gebruikers identiteiten te maken en uw eigen chaincode te installeren.
+Klanten aan de slag helpen met het uitvoeren van Hyperledger native opdrachten op HLF-netwerk op AKS. De voorbeeldtoepassing wordt geleverd die stof NodeJS SDK gebruikt om de HLF-bewerkingen uit te voeren. De opdrachten worden geleverd om nieuwe gebruikersidentiteit te maken en uw eigen chaincode te installeren.
 
 ### <a name="before-you-begin"></a>Voordat u begint
 
 Volg de onderstaande opdrachten voor de eerste installatie van de toepassing:
 
-- Toepassings bestanden downloaden
-- Verbindings profiel en beheerders profiel genereren
-- Gebruikers-id van beheerder importeren
+- Toepassingsbestanden downloaden
+- Verbindingsprofiel en beheerdersprofiel genereren
+- Gebruikersidentiteit van beheerders importeren
 
-Nadat de eerste installatie is voltooid, kunt u de SDK gebruiken om de onderstaande bewerkingen te verzorgen:
+Nadat u de eerste installatie hebt voltooid, u de SDK gebruiken om de onderstaande bewerkingen te bereiken:
 
-- Genereren van gebruikers identiteit
+- Het genereren van gebruikersidentiteit
 - Chaincode bewerkingen
 
-De hierboven genoemde opdrachten kunnen worden uitgevoerd vanaf Azure Cloud Shell.
+De bovengenoemde opdrachten kunnen worden uitgevoerd vanuit Azure Cloud Shell.
 
-### <a name="download-application-files"></a>Toepassings bestanden downloaden
+### <a name="download-application-files"></a>Toepassingsbestanden downloaden
 
-De eerste installatie voor het uitvoeren van een toepassing is het downloaden van alle toepassings bestanden in een map.
+De eerste setup voor het uitvoeren van toepassing is het downloaden van alle toepassingsbestanden in een map.
 
-**Maak een app-map en voer de volgende map in**:
+**Maak de map van apps en voer de map in:**
 
 ```bash
 mkdir app
 cd app
 ```
-Voer de volgende opdracht uit om alle vereiste bestanden en pakketten te downloaden:
+Voer onderstaande opdracht uit om alle vereiste bestanden en pakketten te downloaden:
 
 ```bash-interactive
 curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/application/setup.sh | bash
 ```
-Met deze opdracht wordt gebruikgemaakt van de tijd om alle pakketten te laden. Nadat de opdracht is uitgevoerd, ziet u een `node_modules` map in de huidige map. Alle vereiste pakketten worden geladen in de map `node_modules`.
+Deze opdracht kost tijd om alle pakketten te laden. Na een succesvolle uitvoering van `node_modules` de opdracht u een map in de huidige map zien. Alle benodigde pakketten worden `node_modules` in de map geladen.
 
-### <a name="generate-connection-profile-and-admin-profile"></a>Verbindings profiel en beheerders profiel genereren
+### <a name="generate-connection-profile-and-admin-profile"></a>Verbindingsprofiel en beheerdersprofiel genereren
 
-`profile` map maken in de `app` map
+Map `profile` maken `app` in de map
 
 ```bash
 cd app
 mkdir ./profile
 ```
-Deze omgevings variabelen instellen in azure Cloud shell
+Deze omgevingsvariabelen instellen op Azure-cloudshell
 
 ```bash
 # Organization name whose connection profile is to be generated
@@ -286,47 +286,47 @@ ORGNAME=<orgname>
 AKS_RESOURCE_GROUP=<resourceGroup>
 ```
 
-Voer de onderstaande opdracht uit om het verbindings profiel en het profiel van de beheerder van de organisatie te genereren
+Onderstaande opdracht uitvoeren om verbindingsprofiel en beheerdersprofiel van de organisatie te genereren
 
 ```bash
 ./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/gateway/g"| xargs curl > ./profile/$ORGNAME-ccp.json
 ./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/admin/g"| xargs curl > ./profile/$ORGNAME-admin.json
 ```
 
-Hiermee worden het verbindings profiel en de beheerders `profile` van de organisatie in de profielmap gemaakt met de naam `<orgname>-ccp.json` en `<orgname>-admin.json` respectievelijk.
+Het zal verbindingprofiel `profile` en admin van de organisatie `<orgname>-ccp.json` `<orgname>-admin.json` in de profielmap met naam en respectievelijk creëren.
 
-U kunt ook het verbindings profiel en het profiel van de beheerder voor elke orderer en peer-organisatie genereren.
+Op dezelfde manier u voor elke orderer en peer-organisatie het verbindingsprofiel en het beheerdersprofiel genereren.
 
 
-### <a name="import-admin-user-identity"></a>Gebruikers-id van beheerder importeren
+### <a name="import-admin-user-identity"></a>Gebruikersidentiteit van beheerders importeren
 
-De laatste stap is het importeren van de identiteit van de beheerder van de organisatie in de wallet.
+De laatste stap is het importeren van de beheerdersidentiteit van de organisatie in de portemonnee.
 
 ```bash
 npm run importAdmin -- -o <orgName>
 
 ```
-De bovenstaande opdracht voert importAdmin. js uit om de gebruikers identiteit van de beheerder in de wallet te importeren. Het script leest de beheerders identiteit van het beheer profiel `<orgname>-admin.json` en importeert deze in Wallet voor het uitvoeren van HLF-bewerkingen.
+Met de bovenstaande opdracht wordt importAdmin.js uitgevoerd om de identiteit van de beheerdersgebruiker in de portemonnee te importeren. Het script leest de beheerdersidentiteit uit het beheerdersprofiel `<orgname>-admin.json` en importeert deze in de portemonnee voor het uitvoeren van HLF-bewerkingen.
 
-De scripts gebruiken bestands systeem Wallet om de identiteiten op te slaan. Hiermee wordt een wallet gemaakt volgens het pad dat is opgegeven in het veld '. wallet ' in het verbindings profiel. Standaard wordt het veld '. wallet ' geïnitialiseerd met `<orgname>`, wat betekent dat een map met de naam `<orgname>` wordt gemaakt in de huidige map om de identiteiten op te slaan. Als u wallet op een ander pad wilt maken, wijzigt u het veld '. wallet ' in het verbindings profiel voordat u de gebruiker inschrijven en andere HLF-bewerkingen uitvoert.
+De scripts gebruiken de portemonnee van het bestandssysteem om de identiteiten op te slaan. Het maakt een portemonnee volgens het pad dat is opgegeven in het veld '.wallet' in het verbindingsprofiel. Standaard wordt het veld '.wallet' `<orgname>`geïnitialiseerd `<orgname>` met , wat betekent dat er een map met de naam wordt gemaakt in de huidige map om de identiteiten op te slaan. Als u portemonnee wilt maken op een ander pad, wijzigt u het veld '.wallet' in het verbindingsprofiel voordat u de gebruiker van de inschrijfbeheerder en andere HLF-bewerkingen uitvoert.
 
-Importeer ook de gebruikers identiteit van de beheerder voor elke organisatie.
+Importeer ook de gebruikersidentiteit van beheerders voor elke organisatie.
 
-Raadpleeg de Help van de opdracht voor meer informatie over de argumenten die zijn door gegeven in de opdracht.
+Raadpleeg de opdrachthelp voor meer informatie over de argumenten die in de opdracht zijn doorgegeven.
 
 ```bash
 npm run importAdmin -- -h
 
 ```
 
-### <a name="user-identity-generation"></a>Genereren van gebruikers identiteit
+### <a name="user-identity-generation"></a>Het genereren van gebruikersidentiteit
 
-Voer de onderstaande opdrachten uit in de aangegeven volg orde om nieuwe gebruikers identiteiten voor de HLF-organisatie te genereren.
+Voer onderstaande opdrachten uit in de gegeven volgorde om nieuwe gebruikersidentiteiten voor de HLF-organisatie te genereren.
 
 > [!NOTE]
-> Voordat u begint met de stappen voor het genereren van gebruikers-id's, moet u ervoor zorgen dat de initiële installatie van de toepassing wordt uitgevoerd.
+> Voordat u begint met stappen voor het genereren van gebruikersidentiteit, moet u ervoor zorgen dat de eerste installatie van de toepassing wordt uitgevoerd.
 
-Onder omgevings variabelen instellen in azure Cloud shell
+Hieronder omgevingsvariabelen instellen op azure cloudshell
 
 ```bash
 # Organization name for which user identity is to be generated
@@ -338,7 +338,7 @@ USER_IDENTITY=<username>
 
 Nieuwe gebruiker registreren en inschrijven
 
-Als u een nieuwe gebruiker wilt registreren en inschrijven, voert u de onderstaande opdracht uit die registerUser. js uitvoert. De gegenereerde gebruikers-id wordt opgeslagen in de wallet.
+Als u een nieuwe gebruiker wilt registreren en inschrijven, voert u de onderstaande opdracht uit die registerUser.js uitvoert. Het slaat de gegenereerde gebruikersidentiteit op in de portemonnee.
 
 ```bash
 npm run registerUser -- -o $ORGNAME -u $USER_IDENTITY
@@ -346,9 +346,9 @@ npm run registerUser -- -o $ORGNAME -u $USER_IDENTITY
 ```
 
 > [!NOTE]
-> De gebruikers-id van de beheerder wordt gebruikt voor het uitgeven van de registratie opdracht voor de nieuwe gebruiker. Daarom is het verplicht de gebruikers-id van de beheerder in de wallet te hebben voordat u deze opdracht uitvoert. Anders mislukt deze opdracht.
+> Beheerdersgebruikersidentiteit wordt gebruikt om de opdracht Register voor de nieuwe gebruiker uit te geven. Daarom is het verplicht om de identiteit van de beheerdersgebruiker in de portemonnee te hebben voordat u deze opdracht uitvoert. Anders mislukt deze opdracht.
 
-Raadpleeg de Help van de opdracht voor meer informatie over de argumenten die zijn door gegeven in de opdracht
+Opdrachthulp doorverwijzen voor meer informatie over de argumenten die in de opdracht zijn doorgegeven
 
 ```bash
 npm run registerUser -- -h
@@ -359,9 +359,9 @@ npm run registerUser -- -h
 
 
 > [!NOTE]
-> Voordat u met een chaincode-bewerking begint, moet u ervoor zorgen dat de eerste installatie van de toepassing wordt uitgevoerd.
+> Voordat u begint met een ketencodebewerking, moet u ervoor zorgen dat de eerste installatie van de toepassing wordt uitgevoerd.
 
-Hieronder stelt u de specifieke omgevings variabelen chaincode in op Azure Cloud shell:
+Stel hieronder ketencodespecifieke omgevingsvariabelen in op Azure Cloud shell:
 
 ```bash
 # peer organization name where chaincode is to be installed
@@ -383,52 +383,52 @@ CHANNEL=<channelName>
 
 ````
 
-De onderstaande chaincode-bewerkingen kunnen worden uitgevoerd:
+De onderstaande chaincode bewerkingen kunnen worden uitgevoerd:
 
 - Chaincode installeren
-- Chaincode instantiëren
+- Instantiate chaincode
 - Chaincode aanroepen
-- Query chaincode
+- Queryketencode
 
 ### <a name="install-chaincode"></a>Chaincode installeren
 
-Voer de onderstaande opdracht uit om chaincode op de peer-organisatie te installeren.
+Voer onderstaande opdracht uit om chaincode te installeren op de peer-organisatie.
 
 ```bash
 npm run installCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION
 
 ```
-Er wordt chaincode geïnstalleerd op alle peer knooppunten van de organisatie die is ingesteld in `ORGNAME` omgevings variabele. Als er twee of meer peer-organisaties in uw kanaal zijn en u chaincode wilt installeren, moet u de opdrachten afzonderlijk voor elke peer-organisatie uitvoeren.
+Het installeert chaincode op alle peer nodes `ORGNAME` van de organisatie ingesteld in omgevingsvariabele. Als er twee of meer peer-organisaties in uw kanaal zijn en u chaincode op alle van deze organisaties wilt installeren, voert u de opdrachten afzonderlijk uit voor elke peer-organisatie.
 
 Volg de stappen:
 
-- Stel `ORGNAME` in op `<peerOrg1Name>` en geef `installCC` opdracht.
-- Stel `ORGNAME` in op `<peerOrg2Name>` en geef `installCC` opdracht.
+- Opdracht `ORGNAME` `<peerOrg1Name>` instellen `installCC` en uitgeven.
+- Opdracht `ORGNAME` `<peerOrg2Name>` instellen `installCC` en uitgeven.
 
-  Voer deze uit voor elke peer-organisatie.
+  Voer het uit voor elke peer organisatie.
 
-Raadpleeg de Help van de opdracht voor meer informatie over de argumenten die zijn door gegeven in de opdracht.
+Raadpleeg de opdrachthelp voor meer informatie over de argumenten die in de opdracht zijn doorgegeven.
 
 ```bash
 npm run installCC -- -h
 
 ```
 
-### <a name="instantiate-chaincode"></a>Chaincode instantiëren
+### <a name="instantiate-chaincode"></a>Instantiate chaincode
 
-Voer de onderstaande opdracht uit om chaincode op de peer te instantiëren.
+Voer onderstaande opdracht uit om chaincode op de peer te instantiëren.
 
 ```bash
 npm run instantiateCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL -f <instantiateFunc> -a <instantiateFuncArgs>
 
 ```
-Geef de naam van de functie en de door komma's gescheiden lijst met argumenten in `<instantiateFunc>` en `<instantiateFuncArgs>` respectievelijk door. U kunt bijvoorbeeld in [fabrcar chaincode](https://github.com/hyperledger/fabric-samples/blob/release/chaincode/fabcar/fabcar.go)de chaincode `<instantiateFunc>` instellen op `"Init"` en `<instantiateFuncArgs>` op een lege teken reeks `""`.
+Pass instantiation functie naam en komma `<instantiateFunc>` gescheiden `<instantiateFuncArgs>` lijst van argumenten in en respectievelijk. Bijvoorbeeld, in [fabrcar chaincode](https://github.com/hyperledger/fabric-samples/blob/release/chaincode/fabcar/fabcar.go), om de chaincode `"Init"` `<instantiateFuncArgs>` ingesteld `<instantiateFunc>` op `""`en op lege string instantiate .
 
 > [!NOTE]
-> Voer de opdracht uit voor één van de peer-organisaties in het kanaal.
-> Zodra de trans actie is verzonden naar de orderer, wordt deze trans actie door de orderer gedistribueerd naar alle peer-organisaties in het kanaal. Daarom wordt de chaincode geïnstantieerd op alle peer knooppunten op alle peer-organisaties in het kanaal.
+> Voer de opdracht voor één keer uit vanuit één peer-organisatie in het kanaal.
+> Zodra de transactie is ingediend bij de orderer, distribueert de orderorderdeze transactie naar alle peer-organisaties in het kanaal. Vandaar dat de chaincode wordt geinstantieerd op alle peer nodes op alle peer organisaties in het kanaal.
 
-Raadpleeg de Help van de opdracht voor meer informatie over de argumenten die zijn door gegeven in de opdracht
+Opdrachthulp doorverwijzen voor meer informatie over de argumenten die in de opdracht zijn doorgegeven
 
 ```bash
 npm run instantiateCC -- -h
@@ -437,37 +437,37 @@ npm run instantiateCC -- -h
 
 ### <a name="invoke-chaincode"></a>Chaincode aanroepen
 
-Voer de onderstaande opdracht uit om de chaincode-functie aan te roepen:
+Voer de onderstaande opdracht uit om de functie chaincode aan te roepen:
 
 ```bash
 npm run invokeCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <invokeFunc> -a <invokeFuncArgs>
 
 ```
-Geef de naam van de functie invoke en door komma's gescheiden lijst met argumenten in `<invokeFunction>` en `<invokeFuncArgs>` respectievelijk op. U kunt door gaan met het fabcar chaincode-voor beeld om initLedger-functie set aan te roepen `<invokeFunction>` op `"initLedger"` en `<invokeFuncArgs>` te `""`.
+Pass aanroepen functie naam en komma `<invokeFunction>` `<invokeFuncArgs>` gescheiden lijst van argumenten in en respectievelijk. Doorgaan met het fabcar-kettingcodevoorbeeld, om `<invokeFunction>` initLedger-functie in te roepen op `"initLedger"` en `<invokeFuncArgs>` naar `""`.
 
 > [!NOTE]
-> Voer de opdracht uit voor één van de peer-organisaties in het kanaal.
-> Zodra de trans actie is verzonden naar de orderer, wordt deze trans actie door de orderer gedistribueerd naar alle peer-organisaties in het kanaal. De wereld staat wordt daarom bijgewerkt op alle peer knooppunten van alle peer-organisaties in het kanaal.
+> Voer de opdracht voor één keer uit vanuit één peer-organisatie in het kanaal.
+> Zodra de transactie is ingediend bij de orderer, distribueert de orderorderdeze transactie naar alle peer-organisaties in het kanaal. Vandaar dat de wereldstaat wordt bijgewerkt op alle peer nodes van alle peer organisaties in het kanaal.
 
-Raadpleeg de Help van de opdracht voor meer informatie over de argumenten die zijn door gegeven in de opdracht
+Opdrachthulp doorverwijzen voor meer informatie over de argumenten die in de opdracht zijn doorgegeven
 
 ```bash
 npm run invokeCC -- -h
 
 ```
 
-### <a name="query-chaincode"></a>Query chaincode
+### <a name="query-chaincode"></a>Queryketencode
 
-Voer de onderstaande opdracht uit om een query uit te voeren op chaincode:
+Uitvoer onder opdracht naar querychaincode:
 
 ```bash
 npm run queryCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <queryFunction> -a <queryFuncArgs>
 
 ```
 
-Geef de naam van de query functie en de door komma's gescheiden lijst met argumenten in `<queryFunction>` en `<queryFuncArgs>` respectievelijk op. En `fabcar` chaincode als referentie, om een query uit te voeren op alle auto's in de wereld statusset `<queryFunction>` naar `"queryAllCars"` en `<queryArgs>` `""`.
+De naam van de queryfunctie doorgeven `<queryFunction>` `<queryFuncArgs>` en de lijst met argumenten in respectievelijk komma's gescheiden. Nogmaals, `fabcar` het nemen van chaincode als referentie, om `<queryFunction>` `"queryAllCars"` alle `<queryArgs>` `""`auto's in de wereld staat ingesteld op en naar query .
 
-Raadpleeg de Help van de opdracht voor meer informatie over de argumenten die zijn door gegeven in de opdracht
+Opdrachthulp doorverwijzen voor meer informatie over de argumenten die in de opdracht zijn doorgegeven
 
 ```bash
 npm run queryCC -- -h

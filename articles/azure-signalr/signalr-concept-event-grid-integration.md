@@ -1,6 +1,6 @@
 ---
-title: Reageren op gebeurtenissen van de Azure signalerings service
-description: Gebruik Azure Event Grid om u te abonneren op gebeurtenissen van de Azure signalerings service. Andere downstream-Services kunnen worden geactiveerd door deze gebeurtenissen.
+title: Reageren op Azure SignalR Service-gebeurtenissen
+description: Gebruik Azure Event Grid om u te abonneren op Azure SignalR Service-gebeurtenissen. Andere downstream-services kunnen worden geactiveerd door deze gebeurtenissen.
 services: azure-signalr,event-grid
 author: chenyl
 ms.author: chenyl
@@ -9,35 +9,35 @@ ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: signalr
 ms.openlocfilehash: a8e25907b40b910f2b91884d355b6ac85eeaa250
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74158191"
 ---
-# <a name="reacting-to-azure-signalr-service-events"></a>Reageren op gebeurtenissen van de Azure signalerings service
+# <a name="reacting-to-azure-signalr-service-events"></a>Reageren op Azure SignalR Service-gebeurtenissen
 
-Met de service gebeurtenissen van Azure signalering kunnen toepassingen reageren op client verbindingen die zijn verbonden of losgekoppeld met moderne serverloze architecturen. Dit gebeurt zonder dat er complexe code of dure en inefficiënte polling services nodig zijn.  In plaats daarvan worden gebeurtenissen gepusht via [Azure Event grid](https://azure.microsoft.com/services/event-grid/) naar abonnees zoals [Azure functions](https://azure.microsoft.com/services/functions/), [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/)of zelfs naar uw eigen aangepaste HTTP-listener en betaalt u alleen voor wat u gebruikt.
+Azure SignalR Service-gebeurtenissen stellen toepassingen in staat om te reageren op clientverbindingen die zijn verbonden of losgekoppeld met behulp van moderne serverloze architecturen. Het doet dit zonder de noodzaak van ingewikkelde code of dure en inefficiënte polling diensten.  In plaats daarvan worden gebeurtenissen via [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) doorgeschoven naar abonnees zoals Azure [Functions,](https://azure.microsoft.com/services/functions/) [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)of zelfs naar uw eigen aangepaste http-listener, en betaalt u alleen voor wat u gebruikt.
 
-Gebeurtenissen van de Azure signalerings service worden betrouwbaar verzonden naar de Event Grid-Service. Dit biedt betrouw bare leverings Services voor uw toepassingen via een uitgebreid beleid voor opnieuw proberen en levering van onbestelbare berichten. Zie [Event grid aflevering van berichten en probeer het opnieuw](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
+Azure SignalR Service-gebeurtenissen worden op betrouwbare wijze verzonden naar de Event Grid-service die betrouwbare leveringsservices biedt aan uw toepassingen via een uitgebreid beleid voor nieuwe investeringen en levering van dode brieven. Zie [Berichtbezorging van gebeurtenisrasteren voor](https://docs.microsoft.com/azure/event-grid/delivery-and-retry)meer informatie en opnieuw proberen .
 
-![Event Grid model](https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png)
+![Gebeurtenisrastermodel](https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png)
 
 ## <a name="serverless-state"></a>Serverloze status
-Gebeurtenissen van de Azure signalerings service zijn alleen actief wanneer client verbindingen de status serverloos hebben. In het algemeen is het zo dat als een client niet wordt doorgestuurd naar een hub-server, de status van de serverloze wordt bereikt. De klassieke modus werkt alleen wanneer de hub, waarmee client verbindingen verbinding maken, geen hub-server heeft. Serverloze modus wordt echter aanbevolen om een probleem te voor komen. Zie [Service modus kiezen](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose)voor meer informatie over de service modus.
+Azure SignalR Service-gebeurtenissen zijn alleen actief wanneer clientverbindingen serverloos zijn. Over het algemeen, als een client niet naar een hubserver wordt doorgestuurd, gaat deze in de serverloze status. De klassieke modus werkt alleen wanneer de hub, waarmee clientverbindingen verbinding maken, geen hubserver heeft. De serverloze modus wordt echter aanbevolen om een probleem te voorkomen. Zie [Servicemodus kiezen](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose)voor meer informatie over de servicemodus .
 
-## <a name="available-azure-signalr-service-events"></a>Beschik bare gebeurtenissen van de Azure signalerings service
-Event grid gebruikt [gebeurtenis abonnementen](../event-grid/concepts.md#event-subscriptions) om gebeurtenis berichten te routeren naar abonnees. Gebeurtenis abonnementen van de Azure signalerings service ondersteunen twee typen gebeurtenissen:  
+## <a name="available-azure-signalr-service-events"></a>Beschikbare Azure SignalR-servicegebeurtenissen
+Gebeurtenisraster gebruikt [gebeurtenisabonnementen](../event-grid/concepts.md#event-subscriptions) om gebeurtenisberichten door te sturen naar abonnees. Azure SignalR Service-gebeurtenisabonnementen ondersteunen twee soorten gebeurtenissen:  
 
-|Gebeurtenis naam|Beschrijving|
+|Naam van de gebeurtenis|Beschrijving|
 |----------|-----------|
-|`Microsoft.SignalRService.ClientConnectionConnected`|Deze gebeurtenis treedt op wanneer een verbinding met een client tot stand is gebracht.|
-|`Microsoft.SignalRService.ClientConnectionDisconnected`|Deze gebeurtenis treedt op wanneer de verbinding van een client verbinding wordt verbroken.|
+|`Microsoft.SignalRService.ClientConnectionConnected`|Verhoogd wanneer een clientverbinding is verbonden.|
+|`Microsoft.SignalRService.ClientConnectionDisconnected`|Verhoogd wanneer de verbinding met een client wordt verbroken.|
 
 ## <a name="event-schema"></a>Gebeurtenisschema
-De gebeurtenissen van de Azure signalerings service bevatten alle informatie die u nodig hebt om te reageren op de wijzigingen in uw gegevens. U kunt een Azure signalerings service-gebeurtenis identificeren met de eigenschap Event type begint met ' micro soft. SignalRService '. Meer informatie over het gebruik van Event Grid gebeurtenis eigenschappen wordt beschreven in [Event grid-gebeurtenis schema](../event-grid/event-schema.md).  
+Azure SignalR Service-gebeurtenissen bevatten alle informatie die u nodig hebt om te reageren op de wijzigingen in uw gegevens. U een Azure SignalR Service-gebeurtenis identificeren met de eigenschap eventType, die begint met 'Microsoft.SignalRService'. Additional information about the usage of Event Grid event properties is documented at [Event Grid event schema](../event-grid/event-schema.md).  
 
-Hier volgt een voor beeld van een gebeurtenis die verbonden is met de client verbinding:
+Hier is een voorbeeld van een clientverbinding verbonden gebeurtenis:
 ```json
 [{
   "topic": "/subscriptions/{subscription-id}/resourceGroups/signalr-rg/providers/Microsoft.SignalRService/SignalR/signalr-resource",
@@ -56,12 +56,12 @@ Hier volgt een voor beeld van een gebeurtenis die verbonden is met de client ver
 }]
 ```
 
-Zie voor meer informatie [schema voor seingevings service-gebeurtenissen](../event-grid/event-schema-azure-signalr.md).
+Zie het programma voor gebeurtenissen van [De SignalR Service](../event-grid/event-schema-azure-signalr.md)voor meer informatie .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over Event Grid en het geven van Azure signalerings service-gebeurtenissen een try:
+Meer informatie over gebeurtenisraster en Azure SignalR Service-gebeurtenissen proberen:
 
 > [!div class="nextstepaction"]
-> [Probeer een voor beeld Event grid integratie met de Azure signalerings Service](./signalr-howto-event-grid-integration.md)
-> [over Event grid](../event-grid/overview.md)
+> [Probeer een voorbeeld van gebeurtenisrasterintegratie met Azure SignalR-service](./signalr-howto-event-grid-integration.md)
+> [over gebeurtenisraster](../event-grid/overview.md)

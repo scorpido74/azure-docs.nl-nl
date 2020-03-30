@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b655fa2f12eac894e97c61cc931983aa58fff7a9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74007926"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Wat zijn Azure Active Directory-rapporten?
@@ -54,9 +54,9 @@ Alle edities van Azure AD bieden rapporten over gebruikers voor wie wordt aangeg
 
 - In de edities **Azure Active Directory Free en Basic** hebt u toegang tot een lijst die gebruikers bevat voor wie wordt aangegeven dat ze risico lopen, evenals riskante aanmeldingen. 
 
-- De **Azure Active Directory Premium 1** editie breidt dit model uit door ook een aantal van de onderliggende risico detecties te onderzoeken die zijn gedetecteerd voor elk rapport. 
+- De **Azure Active Directory Premium 1-editie** breidt dit model uit door ook enkele onderliggende risicodetecties te onderzoeken die voor elk rapport zijn gedetecteerd. 
 
-- De versie van **Azure Active Directory Premium 2** biedt u de meest gedetailleerde informatie over de onderliggende risico detecties. Daarnaast kunt u hiermee beveiligings beleid configureren dat automatisch reageert op geconfigureerde risico niveaus.
+- De **Azure Active Directory Premium 2-editie** biedt u de meest gedetailleerde informatie over de onderliggende risicodetecties en stelt u ook in staat om beveiligingsbeleid te configureren dat automatisch reageert op geconfigureerde risiconiveaus.
 
 
 ## <a name="activity-reports"></a>Activiteitsrapporten
@@ -101,6 +101,6 @@ De rapportage van Azure AD biedt u naast de gebruikersinterface ook [toegang op 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Rapport voor riskante aanmeldingen](concept-risky-sign-ins.md)
+- [Rapport Riskante aanmeldingen](concept-risky-sign-ins.md)
 - [Rapport voor audittrails](concept-audit-logs.md)
 - [Rapport voor aanmeldlogboeken](concept-sign-ins.md)

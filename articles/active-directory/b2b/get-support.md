@@ -1,6 +1,6 @@
 ---
-title: Ondersteuning voor B2B-samen werking verkrijgen-Azure Active Directory
-description: Wat is de ondersteunings ervaring voor Azure Active Directory B2B-samen werking?
+title: Ondersteuning krijgen voor B2B-samenwerking - Azure Active Directory
+description: Wat is de ondersteuningservaring voor Azure Active Directory B2B-samenwerking?
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,30 +13,30 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 00817acf93295becefab2d1a61de84a3f5519338
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74272758"
 ---
-# <a name="getting-support-for-b2b-collaboration"></a>Ondersteuning voor B2B-samen werking verkrijgen
+# <a name="getting-support-for-b2b-collaboration"></a>Ondersteuning krijgen voor B2B-samenwerking
 
-U hebt de documentatie gelezen, hebt u de juiste dingen gedaan, maar is het nog steeds niet mogelijk om iets te doen? Een ondersteunings ticket openen (vereist een ondersteunings abonnement):
+Je hebt de documentatie doorgelezen, je hebt de juiste dingen gedaan, maar nog steeds niet iets aan het werk krijgen? Open een ondersteuningsticket (vereist een ondersteuningsplan):
 
-1. Navigeer in [het Azure Portal](https://portal.azure.com)naar de Blade Help en ondersteuning en selecteer nieuwe ondersteunings aanvraag:
-   - Probleem type: technisch
-   - Abonnement: betrokken abonnement kiezen
+1. Navigeer in [de Azure-portal](https://portal.azure.com)naar het mes Help en ondersteuning en selecteer Nieuw ondersteuningsverzoek:
+   - Type probleem: Technisch
+   - Abonnement: Abonnement kiezen
      - Service: Active Directory
-     - Ondersteunings plan: Kies een relevant ondersteunings plan
+     - Ondersteuningsplan: kies relevant ondersteuningsplan
 
-   ![Scherm opname met een nieuwe ondersteunings aanvraag](media/get-support/new-support-request.png)
+   ![Schermafbeelding van een nieuw ondersteuningsverzoek](media/get-support/new-support-request.png)
 
-2. Beschrijf het probleem:
-   - Kies de juiste ernst die overeenkomt met uw behoeften.
-   - Probleem type kiezen als gebruikers-en groeps beheer
-   - Categorie kiezen als gebruikers toevoegen (B2B)
-   - Voeg eventuele fout berichten toe, zoals CorrelationID, betrokken gebruikers, enzovoort.
+2. Beschrijf uw probleem:
+   - Kies de juiste ernst die overeenkomt met wat u nodig hebt.
+   - Probleemtype kiezen als gebruikers- en groepsbeheer
+   - Rubriek kiezen als Gebruikers toevoegen (B2B)
+   - Voeg foutberichten toe, zoals CorrelationID, getroffen gebruikers, enzovoort.
 
-   ![Scherm afbeelding van probleem beschrijving van ondersteunings ticket](media/get-support/problem-description.png)
+   ![Schermafbeelding van de beschrijving van een probleem voor ondersteuningstickets](media/get-support/problem-description.png)
 
-3. Voeg uw contact gegevens toe voor een ondersteunings medewerker om contact met u op te nemen voor het oplossen van problemen.
+3. Als u een ondersteuningsmedewerker wilt contact met u opnemen voor verdere probleemoplossing, voegt u uw contactgegevens toe.

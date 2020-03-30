@@ -1,7 +1,7 @@
 ---
-title: Een aangepaste test maken met behulp van Power shell
+title: Een aangepaste sonde maken met PowerShell
 titleSuffix: Azure Application Gateway
-description: Meer informatie over het maken van een aangepaste test voor Application Gateway met behulp van Power shell in Resource Manager
+description: Meer informatie over het maken van een aangepaste sonde voor application gateway met PowerShell in Resource Manager
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,36 +9,36 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 1fef24f4065ca6fc749f35a07143487e049ee6ea
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075264"
 ---
-# <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Een aangepaste test voor Azure-toepassing gateway maken met behulp van Power shell voor Azure Resource Manager
+# <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Een aangepaste sonde voor Azure Application Gateway maken met PowerShell voor Azure Resource Manager
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-probe-portal.md)
+> * [Azure-portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
-In dit artikel voegt u een aangepaste test toe aan een bestaande toepassings gateway met Power shell. Aangepaste tests zijn handig voor toepassingen met een specifieke status controle pagina of voor toepassingen die geen geslaagde reactie op de standaard webtoepassing bieden.
+In dit artikel voegt u een aangepaste sonde toe aan een bestaande toepassingsgateway met PowerShell. Aangepaste sondes zijn handig voor toepassingen met een specifieke statuscontrolepagina of voor toepassingen die geen succesvol antwoord bieden op de standaardwebtoepassing.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-an-application-gateway-with-a-custom-probe"></a>Een toepassings gateway maken met een aangepaste test
+## <a name="create-an-application-gateway-with-a-custom-probe"></a>Een toepassingsgateway maken met een aangepaste sonde
 
-### <a name="sign-in-and-create-resource-group"></a>Aanmelden en resource groep maken
+### <a name="sign-in-and-create-resource-group"></a>Aanmelden en resourcegroep maken
 
-1. Gebruik `Connect-AzAccount` om te verifiëren.
+1. Gebruiken `Connect-AzAccount` om te verifiëren.
 
    ```powershell
    Connect-AzAccount
    ```
 
-1. Haal de abonnementen voor het account op.
+1. Ontvang de abonnementen voor het account.
 
    ```powershell
    Get-AzSubscription
@@ -50,19 +50,19 @@ In dit artikel voegt u een aangepaste test toe aan een bestaande toepassings gat
    Select-AzSubscription -Subscriptionid '{subscriptionGuid}'
    ```
 
-1. Maak een resourcegroep. U kunt deze stap overs Laan als u een bestaande resource groep hebt.
+1. Maak een resourcegroep. U deze stap overslaan als u een bestaande resourcegroep hebt.
 
    ```powershell
    New-AzResourceGroup -Name appgw-rg -Location 'West US'
    ```
 
-Azure Resource Manager vereist dat er voor alle resourcegroepen een locatie wordt opgegeven. Deze locatie wordt gebruikt als de standaardlocatie voor resources in die resourcegroep. Zorg ervoor dat alle opdrachten voor het maken van een toepassings gateway dezelfde resource groep gebruiken.
+Azure Resource Manager vereist dat er voor alle resourcegroepen een locatie wordt opgegeven. Deze locatie wordt gebruikt als de standaardlocatie voor resources in die resourcegroep. Zorg ervoor dat alle opdrachten voor het maken van een toepassingsgateway dezelfde brongroep gebruiken.
 
-In het vorige voor beeld is er een resource groep met de naam **appgw-RG** gemaakt in de locatie **VS-West**.
+In het voorgaande voorbeeld hebben we een resourcegroep gemaakt genaamd **appgw-RG** op locatie **West US.**
 
 ### <a name="create-a-virtual-network-and-a-subnet"></a>Een virtueel netwerk en een subnet maken
 
-In het volgende voor beeld wordt een virtueel netwerk en een subnet voor de toepassings gateway gemaakt. Voor de toepassings gateway is een eigen subnet vereist voor gebruik. Daarom moet het subnet dat voor de toepassings gateway is gemaakt, kleiner zijn dan de adres ruimte van het VNET, zodat andere subnetten kunnen worden gemaakt en gebruikt.
+In het volgende voorbeeld wordt een virtueel netwerk en een subnet voor de toepassingsgateway gemaakt. Application gateway vereist een eigen subnet voor gebruik. Om deze reden moet het subnet dat voor de toepassingsgateway is gemaakt, kleiner zijn dan de adresruimte van de VNET, zodat andere subnetten kunnen worden gemaakt en gebruikt.
 
 ```powershell
 # Assign the address range 10.0.0.0/24 to a subnet variable to be used to create a virtual network.
@@ -77,7 +77,7 @@ $subnet = $vnet.Subnets[0]
 
 ### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Een openbaar IP-adres maken voor de front-endconfiguratie
 
-Maak de openbare IP-resource **publicIP01** in de resourcegroep **appgw-rg** voor de regio US - west. In dit voor beeld wordt een openbaar IP-adres gebruikt voor het front-end-IP-adres van de toepassings gateway.  Voor Application Gateway moet het open bare IP-adres een dynamisch gemaakte DNS-naam hebben. Daarom kan de `-DomainNameLabel` niet worden opgegeven tijdens het maken van het open bare IP-adres.
+Maak de openbare IP-resource **publicIP01** in de resourcegroep **appgw-rg** voor de regio VS - west. In dit voorbeeld wordt een openbaar IP-adres gebruikt voor het front-end IP-adres van de toepassingsgateway.  Application gateway vereist dat het openbare IP-adres een `-DomainNameLabel` dynamisch gemaakte DNS-naam heeft, dus het kan niet worden opgegeven tijdens het maken van het openbare IP-adres.
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic
@@ -85,17 +85,17 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -
 
 ### <a name="create-an-application-gateway"></a>Een toepassingsgateway maken
 
-U kunt alle configuratie-items instellen voordat u de toepassings gateway maakt. In het volgende voor beeld worden de configuratie-items gemaakt die nodig zijn voor een toepassings gateway resource.
+U stelt alle configuratie-items in voordat u de toepassingsgateway maakt. In het volgende voorbeeld worden de configuratie-items die nodig zijn voor een toepassingsgatewaybron.
 
-| **Onderdeel** | **Beschrijving** |
+| **Component** | **Beschrijving** |
 |---|---|
-| **IP-configuratie van Gateway** | Een IP-configuratie voor een toepassings gateway.|
-| **Back-end-groep** | Een groep IP-adressen, FQDN-of Nic's die betrekking hebben op de toepassings servers die als host fungeren voor de webtoepassing|
-| **Status test** | Een aangepaste test die wordt gebruikt om de status van de back-endadresgroep te controleren|
-| **HTTP-instellingen** | Een verzameling instellingen waaronder, poort, protocol, affiniteit op basis van cookies, test en time-out.  Deze instellingen bepalen hoe verkeer wordt doorgestuurd naar de back-endadresgroep.|
-| **Frontend-poort** | De poort die de toepassings gateway luistert naar verkeer op|
-| **Listener** | Een combi natie van een protocol, front-end-IP-configuratie en een frontend-poort. Dit is wat luistert naar binnenkomende aanvragen.
-|**Budgetoverboekingsregel**| Stuurt het verkeer naar de juiste back-end op basis van HTTP-instellingen.|
+| **Gateway-IP-configuratie** | Een IP-configuratie voor een toepassingsgateway.|
+| **Backend pool** | Een pool van IP-adressen, FQDN's of NIC's die zich bevinden bij de toepassingsservers die de webtoepassing hosten|
+| **Gezondheidssonde** | Een aangepaste sonde die wordt gebruikt om de status van de backendpoolleden te controleren|
+| **HTTP-instellingen** | Een verzameling instellingen, waaronder poort, protocol, cookie-gebaseerde affiniteit, sonde en time-out.  Deze instellingen bepalen hoe verkeer wordt doorgestuurd naar de backend pool-leden|
+| **Frontend-poort** | De poort waarop de toepassingsgateway luistert naar verkeer|
+| **Luisteraar** | Een combinatie van een protocol, ip-configuratie aan de frontend en frontend-poort. Dit is wat luistert naar inkomende verzoeken.
+|**Regel**| Leidt het verkeer naar de juiste backend op basis van HTTP-instellingen.|
 
 ```powershell
 # Creates an application gateway Frontend IP configuration named gatewayIP01
@@ -129,9 +129,9 @@ $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity
 $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location 'West US' -BackendAddressPools $pool -Probes $probe -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
-## <a name="add-a-probe-to-an-existing-application-gateway"></a>Een test toevoegen aan een bestaande toepassings gateway
+## <a name="add-a-probe-to-an-existing-application-gateway"></a>Een sonde toevoegen aan een bestaande toepassingsgateway
 
-Het volgende code fragment voegt een test toe aan een bestaande toepassings gateway.
+In het volgende codefragment wordt een sonde toegevoegd aan een bestaande toepassingsgateway.
 
 ```powershell
 # Load the application gateway resource into a PowerShell variable by using Get-AzApplicationGateway.
@@ -147,9 +147,9 @@ $getgw = Set-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw 
 Set-AzApplicationGateway -ApplicationGateway $getgw
 ```
 
-## <a name="remove-a-probe-from-an-existing-application-gateway"></a>Een test verwijderen uit een bestaande toepassings gateway
+## <a name="remove-a-probe-from-an-existing-application-gateway"></a>Een sonde verwijderen uit een bestaande toepassingsgateway
 
-Met het volgende code fragment wordt een test uit een bestaande toepassings gateway verwijderd.
+In het volgende codefragment wordt een sonde verwijderd uit een bestaande toepassingsgateway.
 
 ```powershell
 # Load the application gateway resource into a PowerShell variable by using Get-AzApplicationGateway.
@@ -197,5 +197,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het configureren van SSL-offloading via de volgende website: [SSL-offload configureren](application-gateway-ssl-arm.md)
+Leren ssl-offloading te configureren door te bezoeken: [SSL-offload configureren](application-gateway-ssl-arm.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Filters maken met Azure Media Services .NET SDK
-description: In dit onderwerp wordt beschreven hoe u filters maken, zodat de client voor het specifieke secties van de stroom van een stroom gebruiken kunt. Media Services wordt gemaakt dynamische manifesten voor het bereiken van deze selectief streaming.
+description: In dit onderwerp wordt beschreven hoe u filters maakt, zodat uw client deze kan gebruiken om specifieke secties van een stream te streamen. Media Services creëert dynamische manifesten om deze selectieve streaming te bereiken.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,37 +16,37 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: cenkdin
 ms.openlocfilehash: c60b223f91a151bf63cabc5e95816f2545022503
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69016607"
 ---
 # <a name="creating-filters-with-media-services-net-sdk"></a>Filters maken met Media Services .NET SDK 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
-> * [REST](media-services-rest-dynamic-manifest.md)
+> * [Rest](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
-Met ingang van 2,17 versie Media Services kunt u filters voor uw assets definiëren. Deze filters zijn regels aan de server zijde waarmee uw klanten kunnen kiezen voor het uitvoeren van dingen als: alleen een sectie van een video afspelen (in plaats van de volledige video afspelen), of alleen een subset van audio-en video weergaven opgeven die het apparaat van uw klant kan verwerken (in plaats van alle vertoningen die zijn gekoppeld aan de Asset). Dit filter van uw assets wordt bereikt via de **dynamische manifesten**die worden gemaakt op de aanvraag van uw klant om een video te streamen op basis van opgegeven filter (s).
+Vanaf 2.17 release u met Media Services filters voor uw assets definiëren. Deze filters zijn regels aan de serverzijde waarmee uw klanten kunnen kiezen om dingen te doen zoals: alleen een gedeelte van een video afspelen (in plaats van de hele video af te spelen), of alleen een subset van audio- en videoweergaven opgeven die het apparaat van uw klant aankan (in plaats van alle weergaven die aan het actief zijn gekoppeld). Deze filtering van uw assets wordt bereikt via **Dynamic Manifest**s die zijn gemaakt op verzoek van uw klant om een video te streamen op basis van opgegeven filter(s).
 
-Zie [overzicht van dynamische manifesten](media-services-dynamic-manifest-overview.md)voor meer informatie over filters en dynamische manifesten.
+Zie [Overzicht dynamische manifesten voor](media-services-dynamic-manifest-overview.md)meer gedetailleerde informatie met betrekking tot filters en Dynamisch Manifest.
 
-In dit artikel wordt beschreven hoe u Media Services .NET SDK gebruikt om filters te maken, bij te werken en te verwijderen. 
+In dit artikel ziet u hoe u Media Services .NET SDK gebruiken om filters te maken, bij te werken en te verwijderen. 
 
-Opmerking Als u een filter bijwerkt, kan het Maxi maal twee minuten duren voordat het streaming-eind punt de regels vernieuwt. Als de inhoud is geleverd met dit filter (en in cache is opgeslagen in proxy's en CDN-caches), kan het bijwerken van dit filter leiden tot fouten in de speler. De cache altijd wissen na het bijwerken van het filter. Als deze optie niet mogelijk is, kunt u overwegen een ander filter te gebruiken. 
+Als u een filter bijwerkt, kan het tot twee minuten duren voordat streaming-eindpunten de regels vernieuwen. Als de inhoud is weergegeven met dit filter (en in de cache is opgeslagen in proxy's en CDN-caches), kan het bijwerken van dit filter leiden tot player-fouten. Verwijder altijd de cache na het bijwerken van het filter. Als deze optie niet mogelijk is, u overwegen een ander filter te gebruiken. 
 
 ## <a name="types-used-to-create-filters"></a>Typen die worden gebruikt om filters te maken
 De volgende typen worden gebruikt bij het maken van filters: 
 
-* **IStreamingFilter**.  Dit type is gebaseerd op het volgende REST API [filter](https://docs.microsoft.com/rest/api/media/operations/filter)
-* **IStreamingAssetFilter**. Dit type is gebaseerd op de volgende REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
+* **IStreamingFilter**.  Dit type is gebaseerd op het volgende REST [API-filter](https://docs.microsoft.com/rest/api/media/operations/filter)
+* **iStreamingAssetFilter**. Dit type is gebaseerd op de volgende REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
 * **PresentationTimeRange**. Dit type is gebaseerd op de volgende REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* **FilterTrackSelectStatement** en **IFilterTrackPropertyCondition**. Deze typen zijn gebaseerd op de volgende REST Api's [FilterTrackSelect en FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* **FilterTrackSelectStatement** en **IFilterTrackPropertyCondition**. Deze typen zijn gebaseerd op de volgende REST API's [FilterTrackSelect en FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
 
 ## <a name="createupdatereaddelete-global-filters"></a>Globale filters maken/bijwerken/lezen/verwijderen
-De volgende code laat zien hoe u .NET gebruikt voor het maken, bijwerken, lezen en verwijderen van Asset-filters.
+In de volgende code ziet u hoe u .NET gebruikt om assetfilters te maken, bij te werken, te lezen en te verwijderen.
 
 ```csharp
     string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
@@ -75,8 +75,8 @@ De volgende code laat zien hoe u .NET gebruikt voor het maken, bijwerken, lezen 
     filter.Delete();
 ```
 
-## <a name="createupdatereaddelete-asset-filters"></a>Activa filters maken/bijwerken/lezen/verwijderen
-De volgende code laat zien hoe u .NET gebruikt voor het maken, bijwerken, lezen en verwijderen van Asset-filters.
+## <a name="createupdatereaddelete-asset-filters"></a>Assetfilters maken/bijwerken/lezen/verwijderen
+In de volgende code ziet u hoe u .NET gebruikt om assetfilters te maken, bij te werken, te lezen en te verwijderen.
 
 ```csharp
     string assetName = "AssetFilter_" + Guid.NewGuid().ToString();
@@ -107,20 +107,20 @@ De volgende code laat zien hoe u .NET gebruikt voor het maken, bijwerken, lezen 
 ```
 
 
-## <a name="build-streaming-urls-that-use-filters"></a>Streaming-Url's bouwen die filters gebruiken
-Zie voor meer informatie over het publiceren en leveren van uw assets [overzicht inhoud aan klanten leveren](media-services-deliver-content-overview.md).
+## <a name="build-streaming-urls-that-use-filters"></a>Streaming-URL's maken die filters gebruiken
+Zie [Inhoud leveren aan klantenoverzicht](media-services-deliver-content-overview.md)voor informatie over het publiceren en leveren van uw assets.
 
-In de volgende voor beelden ziet u hoe u filters kunt toevoegen aan uw streaming-Url's.
+In de volgende voorbeelden ziet u hoe u filters toevoegt aan uw streaming-URL's.
 
-**MPEG-DASH** 
+**MPEG DASH** 
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
 
-**Apple HTTP Live Streaming (HLS) v4**
+**Apple HTTP Live Streaming (HLS) V4**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
 
-**Apple HTTP Live Streaming (HLS) v3**
+**Apple HTTP Live Streaming (HLS) V3**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
 

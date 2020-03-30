@@ -1,6 +1,6 @@
 ---
-title: Licentie plannen voor gebruikers en groepen wijzigen-Azure AD | Microsoft Docs
-description: Gebruikers binnen een groep migreren naar verschillende service plannen met behulp van groeps licenties in Azure Active Directory
+title: Licentieplannen voor gebruikers en groepen wijzigen - Azure AD | Microsoft Documenten
+description: Gebruikers binnen een groep migreren naar verschillende serviceplannen met groepslicenties in Azure Active Directory
 services: active-directory
 keywords: Azure AD-licenties
 documentationcenter: ''
@@ -17,68 +17,68 @@ ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf2f04e1728f94c89bddcc31c287cc017a79020f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74025906"
 ---
-# <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Licentie toewijzingen voor een gebruiker of groep in Azure Active Directory wijzigen
+# <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Licentietoewijzingen voor een gebruiker of groep wijzigen in Azure Active Directory
 
-In dit artikel wordt beschreven hoe u gebruikers en groepen verplaatst tussen service licentie plannen in Azure Active Directory (Azure AD). De doel stelling van Azure AD is om ervoor te zorgen dat de service of de gegevens tijdens de licentie wijziging niet verloren gaan. Gebruikers moeten naadloos overschakelen tussen services. De stappen voor het toewijzen van licentie plannen in dit artikel beschrijven het wijzigen van een gebruiker of groep op Office 365 E1 in Office 365 E3, maar de stappen zijn van toepassing op alle licentie plannen. Wanneer u licentie toewijzingen voor een gebruiker of groep bijwerkt, worden de licentie toewijzing verwijderd en worden nieuwe toewijzingen tegelijk gemaakt zodat gebruikers geen toegang meer verliezen tot hun services tijdens licentie wijzigingen of conflicten tussen abonnementen kunnen zien.
+In dit artikel wordt beschreven hoe u gebruikers en groepen verplaatst tussen servicelicentieplannen in Azure Active Directory (Azure AD). Het doel van Azure AD is ervoor te zorgen dat er geen verlies van service of gegevens tijdens de licentiewijziging. Gebruikers moeten naadloos schakelen tussen services. In de toewijzingsstappen voor licentieplannen in dit artikel wordt beschreven dat een gebruiker of groep in Office 365 E1 in Office 365 E3 wordt gewijzigd, maar de stappen zijn van toepassing op alle licentieplannen. Wanneer u licentietoewijzingen voor een gebruiker of groep bijwerkt, worden de verwijderingen van licentietoewijzingen en nieuwe toewijzingen gelijktijdig uitgevoerd, zodat gebruikers geen toegang tot hun services verliezen tijdens licentiewijzigingen of licentieconflicten tussen plannen zien.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voordat u de licentie toewijzingen bijwerkt, is het belang rijk om te controleren of bepaalde veronderstellingen waar zijn voor alle gebruikers of groepen die moeten worden bijgewerkt. Als de veronderstellingen niet waar zijn voor alle gebruikers in een groep, kan de migratie mislukken. Als gevolg hiervan kunnen sommige gebruikers de toegang tot services of gegevens verliezen. Zorg ervoor dat:
+Voordat u de licentietoewijzingen bijwerkt, is het belangrijk om te controleren of bepaalde veronderstellingen gelden voor alle gebruikers of groepen die moeten worden bijgewerkt. Als de veronderstellingen niet waar zijn voor alle gebruikers in een groep, kan de migratie voor sommige gebruikers mislukken. Als gevolg hiervan kunnen sommige gebruikers de toegang tot services of gegevens verliezen. Zorg ervoor dat:
 
-- Gebruikers hebben het huidige licentie plan (in dit geval Office 365 E1) dat is toegewezen aan een groep en door de gebruiker overgenomen en niet rechtstreeks is toegewezen.
+- Gebruikers hebben het huidige licentieplan (in dit geval Office 365 E1) dat is toegewezen aan een groep en wordt overgenomen door de gebruiker en niet rechtstreeks is toegewezen.
 
-- U hebt voldoende beschik bare licenties voor het licentie abonnement dat u toewijst. Als u niet genoeg licenties hebt, zijn sommige gebruikers mogelijk niet het nieuwe licentie plan toegewezen. U kunt het aantal beschik bare licenties controleren.
+- U hebt voldoende beschikbare licenties voor het licentieplan dat u toevertrouwt. Als u niet genoeg licenties hebt, krijgen sommige gebruikers mogelijk geen nieuw licentieplan toegewezen. U het aantal beschikbare licenties controleren.
 
-- Gebruikers hebben geen andere toegewezen service licenties die kunnen conflicteren met de gewenste licentie of waarmee de huidige licentie niet kan worden verwijderd. Bijvoorbeeld een licentie van een service zoals werk plek Analytics of project online met een afhankelijkheid van andere services.
+- Gebruikers hebben geen andere toegewezen servicelicenties die in strijd kunnen zijn met de gewenste licentie of verwijdering van de huidige licentie kunnen voorkomen. Bijvoorbeeld een licentie van een service zoals Workplace Analytics of Project Online die afhankelijk is van andere services.
 
-- Als u on-premises groepen beheert en deze synchroniseert met Azure AD via Azure AD Connect, kunt u gebruikers toevoegen of verwijderen door gebruik te maken van uw on-premises systeem. Het kan enige tijd duren voordat de wijzigingen worden gesynchroniseerd met Azure AD om te worden opgehaald door groeps licenties.
+- Als u groepen on-premises beheert en deze synchroniseert met Azure AD via Azure AD Connect, voegt u gebruikers toe of verwijdert u deze met behulp van uw on-premises systeem. Het kan enige tijd duren voordat de wijzigingen worden gesynchroniseerd met Azure AD door groepslicenties.
 
-- Als u gebruikmaakt van dynamische Azure AD-groepslid maatschappen, kunt u gebruikers toevoegen of verwijderen door hun kenmerken te wijzigen, maar het update proces voor licentie toewijzingen blijft hetzelfde.
+- Als u azure AD-dynamische groepslidmaatschappen gebruikt, voegt of verwijdert u gebruikers door hun kenmerken te wijzigen, maar blijft het updateproces voor licentietoewijzingen hetzelfde.
 
-## <a name="change-user-license-assignments"></a>Gebruikers licentie toewijzingen wijzigen
+## <a name="change-user-license-assignments"></a>Gebruikerslicentietoewijzingen wijzigen
 
-Als u ziet dat sommige selectie vakjes niet beschikbaar zijn op de pagina **licentie toewijzingen bijwerken** , worden de Services aangegeven die niet kunnen worden gewijzigd omdat ze zijn overgenomen van een groeps licentie.
+Als u op de pagina **Licentietoewijzingen** bijwerken ziet dat sommige selectievakjes niet beschikbaar zijn, worden services weergegeven die niet kunnen worden gewijzigd omdat ze zijn overgenomen van een groepslicentie.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een licentie beheerders account in uw Azure AD-organisatie.
-1. Selecteer **Azure Active Directory** > **gebruikers**en open vervolgens de **profiel** pagina voor een gebruiker.
-1. Selecteer **licenties**.
-1. Selecteer **toewijzingen** om de licentie toewijzing voor de gebruiker of groep te bewerken. Op de pagina **toewijzingen** kunt u conflicten met licentie toewijzingen oplossen.
-1. Schakel het selectie vakje voor Office 366 E3 in en zorg ervoor dat er mini maal alle E1-services die aan de gebruiker zijn toegewezen, zijn geselecteerd.
-1. Schakel het selectie vakje voor Office 365 E1 uit.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met een licentiebeheerdersaccount in uw Azure AD-organisatie.
+1. Selecteer **Azure Active Directory** > **Users**en open de **profielpagina** voor een gebruiker.
+1. Selecteer **Licenties**.
+1. Selecteer **Toewijzingen** om licentietoewijzing voor de gebruiker of groep te bewerken. Op de pagina **Toewijzingen** u conflicten met licentietoewijzingoplossen.
+1. Schakel het selectievakje voor Office 366 E3 in en controleer of ten minste alle E1-services die aan de gebruiker zijn toegewezen, zijn geselecteerd.
+1. Schakel het selectievakje voor Office 365 E1 uit.
 
-    ![pagina licentie toewijzingen voor een gebruiker met Office 365 E1 gewist en Office 365 E3 geselecteerd](media/licensing-groups-change-licenses/update-user-license-assignments.png)
-
-1. Selecteer **Opslaan**.
-
-In azure AD worden de nieuwe licenties toegepast en worden de oude licenties tegelijkertijd verwijderd om service continuïteit te bieden.
-
-## <a name="change-group-license-assignments"></a>Toewijzing van groeps licenties wijzigen
-
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een licentie beheerders account in uw Azure AD-organisatie.
-1. Selecteer **Azure Active Directory** > **groepen**en open vervolgens de pagina **overzicht** voor een groep.
-1. Selecteer **licenties**.
-1. Selecteer de opdracht **toewijzingen** om de licentie toewijzing voor de gebruiker of groep te bewerken.
-1. Schakel het selectie vakje voor Office 366 E3 in. Als u de continuïteit van de service wilt behouden, moet u alle E1-services selecteren die al aan de gebruiker zijn toegewezen.
-1. Schakel het selectie vakje voor Office 365 E1 uit.
-
-    ![Selecteer de opdracht toewijzingen op de pagina gebruikers-of groeps licenties](media/licensing-groups-change-licenses/update-group-license-assignments.png)
+    ![pagina licentietoewijzingen voor een gebruiker met Office 365 E1 gewist en Office 365 E3 geselecteerd](media/licensing-groups-change-licenses/update-user-license-assignments.png)
 
 1. Selecteer **Opslaan**.
 
-Om service continuïteit te bieden, worden de nieuwe licenties door Azure AD toegepast en worden de oude licenties voor alle gebruikers in de groep tegelijkertijd verwijderd.
+Azure AD past de nieuwe licenties toe en verwijdert de oude licenties tegelijkertijd om servicecontinuïteit te bieden.
+
+## <a name="change-group-license-assignments"></a>Groepslicentietoewijzingen wijzigen
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met een licentiebeheerdersaccount in uw Azure AD-organisatie.
+1. Selecteer Azure Active**Directory-groepen** **Azure Active Directory** > en open de pagina **Overzicht** voor een groep.
+1. Selecteer **Licenties**.
+1. Selecteer de opdracht **Toewijzingen** om licentietoewijzing voor de gebruiker of groep te bewerken.
+1. Schakel het selectievakje voor Office 366 E3 in. Als u de continuïteit van de service wilt behouden, moet u ervoor zorgen dat u alle E1-services selecteert die al aan de gebruiker zijn toegewezen.
+1. Schakel het selectievakje voor Office 365 E1 uit.
+
+    ![De opdracht Toewijzingen selecteren op een pagina met gebruikers- of groepslicenties](media/licensing-groups-change-licenses/update-group-license-assignments.png)
+
+1. Selecteer **Opslaan**.
+
+Om servicecontinuïteit te bieden, past Azure AD de nieuwe licenties toe en verwijdert het de oude licenties tegelijkertijd voor alle gebruikers in de groep.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over andere scenario's voor licentie beheer via groepen in de volgende artikelen:
+Meer informatie over andere scenario's voor licentiebeheer via groepen in de volgende artikelen:
 
 - [Licenties toewijzen aan een groep in Azure Active Directory](../users-groups-roles/licensing-groups-assign.md)
 - [Licentieproblemen voor een groep vaststellen en oplossen in Azure Active Directory](../users-groups-roles/licensing-groups-resolve-problems.md)
-- [Gebruikers met een afzonderlijke licentie migreren naar groeps licenties in Azure Active Directory](../users-groups-roles/licensing-groups-migrate-users.md)
-- [Aanvullende scenario's Azure Active Directory groeps licenties](../users-groups-roles/licensing-group-advanced.md)
-- [Power shell-voor beelden voor groeps licenties in Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)
+- [Individuele gelicentieerde gebruikers migreren naar groepslicenties in Azure Active Directory](../users-groups-roles/licensing-groups-migrate-users.md)
+- [Aanvullende scenario's voor Azure Active Directory-groeplicenties](../users-groups-roles/licensing-group-advanced.md)
+- [PowerShell-voorbeelden voor groepslicenties in Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)

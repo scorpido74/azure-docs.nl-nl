@@ -1,89 +1,89 @@
 ---
-title: Failover en patching-Azure cache voor redis
-description: Meer informatie over failover, patching en het update proces voor Azure cache voor redis.
+title: Failover en patching - Redis Cache
+description: Meer informatie over failover, patchen en het updateproces voor Azure Cache voor Redis.
 author: asasine
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: adsasine
 ms.openlocfilehash: 6ff33bd594181aabc4fd7d55ce33f780a0d06086
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74122201"
 ---
-# <a name="failover-and-patching-for-azure-cache-for-redis"></a>Failover en Patching voor Azure cache voor redis
+# <a name="failover-and-patching-for-azure-cache-for-redis"></a>Failover en patchen voor Azure Cache voor Redis
 
-Als u robuuste en geslaagde client toepassingen wilt bouwen, is het belang rijk om de failover in de context van de Azure-cache voor de redis-service te begrijpen. Een failover kan deel uitmaken van geplande beheer bewerkingen of kan worden veroorzaakt door ongeplande hardware-of netwerk storingen. Een veelvoorkomend gebruik van de cache-failover wordt geleverd wanneer de Management service de Azure-cache voor binaire redis-bestanden bijwerkt. In dit artikel wordt beschreven wat een failover is, hoe deze plaatsvindt tijdens patches en hoe u een flexibele client toepassing bouwt.
+Om veerkrachtige en succesvolle clienttoepassingen te bouwen, is het van cruciaal belang om failover te begrijpen in de context van de Azure Cache for Redis-service. Een failover kan deel uitmaken van geplande beheerbewerkingen of kan worden veroorzaakt door ongeplande hardware- of netwerkfouten. Een veelvoorkomend gebruik van cachefailover komt wanneer de beheerservice de Azure-cache voor Redis-binaire bestanden patches. In dit artikel wordt ingegaan op wat een failover is, hoe deze optreedt tijdens het patchen en hoe u een veerkrachtige clienttoepassing bouwen.
 
 ## <a name="what-is-a-failover"></a>Wat is een failover?
 
-Laten we beginnen met een overzicht van failover voor Azure cache voor redis.
+Laten we beginnen met een overzicht van failover voor Azure Cache voor Redis.
 
-### <a name="a-quick-summary-of-cache-architecture"></a>Een snelle samen vatting van de cache architectuur
+### <a name="a-quick-summary-of-cache-architecture"></a>Een korte samenvatting van cachearchitectuur
 
-Een cache bestaat uit meerdere virtuele machines met afzonderlijke, persoonlijke IP-adressen. Elke virtuele machine, ook wel een knoop punt genoemd, is verbonden met een gedeelde load balancer met één virtueel IP-adres. Elk knoop punt voert het redis-server proces uit en is toegankelijk met behulp van de hostnaam en de redis-poorten. Elk knoop punt wordt beschouwd als een hoofd-of replica knooppunt. Wanneer een client toepassing verbinding maakt met een cache, loopt het verkeer via deze load balancer en wordt het automatisch doorgestuurd naar het hoofd knooppunt.
+Een cache is opgebouwd uit meerdere virtuele machines met afzonderlijke, privé IP-adressen. Elke virtuele machine, ook wel een knooppunt genoemd, is verbonden met een gedeelde load balancer met één virtueel IP-adres. Elk knooppunt voert het Redis-serverproces uit en is toegankelijk via de hostnaam en de Redis-poorten. Elk knooppunt wordt beschouwd als een master of een replica knooppunt. Wanneer een clienttoepassing verbinding maakt met een cache, gaat het verkeer via deze load balancer en wordt deze automatisch doorgestuurd naar het hoofdknooppunt.
 
-In een Basic-cache is het één knoop punt altijd een Master. In een Standard-of Premium-cache zijn er twee knoop punten: een wordt gekozen als Master en de andere is de replica. Omdat de standaard-en Premium-cache meerdere knoop punten hebben, is het mogelijk dat er een knoop punt niet beschikbaar is terwijl de andere aanvragen blijven verwerken. Geclusterde caches worden gemaakt van veel Shards, elk met afzonderlijke hoofd-en replica knooppunten. Een Shard is mogelijk niet actief terwijl de andere beschikbaar blijven.
+In een Basic-cache is het enkele knooppunt altijd een master. In een standaard- of Premium-cache zijn er twee knooppunten: de ene is gekozen als het stramien en de andere is de replica. Omdat standaard- en Premium-caches meerdere knooppunten hebben, is één knooppunt mogelijk niet beschikbaar terwijl het andere knooppunt aanvragen blijft verwerken. Geclusterde caches zijn gemaakt van vele scherven, elk met verschillende master- en replicaknooppunten. Een scherf kan naar beneden, terwijl de anderen beschikbaar blijven.
 
 > [!NOTE]
-> Een Basic-cache heeft geen meerdere knoop punten en biedt geen SLA (Service Level Agreement) voor de beschik baarheid. Basis caches worden alleen aanbevolen voor ontwikkelings-en test doeleinden. Gebruik een Standard-of Premium-cache voor een implementatie met meerdere knoop punten om de beschik baarheid te verg Roten.
+> Een Basic-cache heeft niet meerdere knooppunten en biedt geen service-level overeenkomst (SLA) voor de beschikbaarheid ervan. Basiscaches worden alleen aanbevolen voor ontwikkelings- en testdoeleinden. Gebruik een Standaard- of Premium-cache voor een implementatie met meerdere nodes om de beschikbaarheid te vergroten.
 
 ### <a name="explanation-of-a-failover"></a>Uitleg van een failover
 
-Er treedt een failover op wanneer een replica-knoop punt zichzelf kan maken als hoofd knooppunt en het oude hoofd knooppunt bestaande verbindingen sluit. Nadat het hoofd knooppunt een back-up heeft gemaakt, ziet u de wijziging in rollen en degradeert zichzelf zichzelf als een replica. Vervolgens wordt er verbinding gemaakt met de nieuwe master en worden gegevens gesynchroniseerd. Een failover kan gepland of niet-gepland zijn.
+Een failover treedt op wanneer een replicaknooppunt zichzelf promoot om een hoofdknooppunt te worden en het oude hoofdknooppunt bestaande verbindingen sluit. Nadat het hoofdknooppunt weer omhoog komt, merkt het de verandering in rollen op en degradeert zichzelf om een replica te worden. Het maakt vervolgens verbinding met de nieuwe master en synchroniseert gegevens. Een failover kan worden gepland of ongepland.
 
-Een *geplande failover* vindt plaats tijdens systeem updates, zoals redis patches of besturingssysteem upgrades, en beheer bewerkingen, zoals schalen en opnieuw opstarten. Omdat de knoop punten voorafgaande kennisgeving van de update ontvangen, kunnen ze hun rollen gezamenlijk wisselen en snel de load balancer van de wijziging bijwerken. Een geplande failover eindigt doorgaans in minder dan 1 seconde.
+Een *geplande failover* vindt plaats tijdens systeemupdates, zoals Redis-patching of OS-upgrades, en beheerbewerkingen, zoals schalen en opnieuw opstarten. Omdat de knooppunten van tevoren op de hoogte worden gesteld van de update, kunnen ze gezamenlijk rollen wisselen en de load balancer van de wijziging snel bijwerken. Een geplande failover eindigt meestal in minder dan 1 seconde.
 
-Een niet- *geplande failover* kan optreden als gevolg van hardwarestoringen, netwerk storingen of andere onverwachte storingen in het hoofd knooppunt. Het replica knooppunt bevordert zichzelf tot de Master, maar het proces duurt langer. Een replica knooppunt moet eerst detecteren dat het hoofd knooppunt niet beschikbaar is voordat het failover-proces kan initiëren. Het replica knooppunt moet er ook voor zorgen dat deze niet-geplande fout niet tijdelijk of lokaal is, om een onnodige failover te voor komen. Deze vertraging in de detectie houdt in dat een niet-geplande failover doorgaans binnen 10 tot 15 seconden wordt voltooid.
+Er kan *een ongeplande failover* optreden als gevolg van hardwarefouten, netwerkstoringen of andere onverwachte storingen aan het hoofdknooppunt. Het replicaknooppunt bevordert zichzelf om te beheersen, maar het proces duurt langer. Een replicaknooppunt moet eerst detecteren dat het hoofdknooppunt niet beschikbaar is voordat het failoverproces kan worden gestart. Het replicaknooppunt moet ook controleren of deze ongeplande fout niet van voorbijgaande aard of lokaal is, om een onnodige failover te voorkomen. Deze vertraging in detectie betekent dat een ongeplande failover meestal binnen 10 tot 15 seconden eindigt.
 
-## <a name="how-does-patching-occur"></a>Hoe wordt patching uitgevoerd?
+## <a name="how-does-patching-occur"></a>Hoe treedt patchen voor?
 
-De Azure cache for redis-service werkt uw cache regel matig bij met de nieuwste platform functies en-oplossingen. Als u een cache wilt patchen, volgt de service deze stappen:
+De Azure Cache for Redis-service werkt uw cache regelmatig bij met de nieuwste platformfuncties en -oplossingen. Als u een cache wilt patchen, volgt de service de volgende stappen:
 
-1. De Management service selecteert één knoop punt waarvoor een patch moet worden uitgevoerd.
-1. Als het geselecteerde knoop punt een hoofd knooppunt is, bevordert het bijbehorende replica knooppunt zichzelf samen. Deze promotie wordt beschouwd als een geplande failover.
-1. Het geselecteerde knoop punt wordt opnieuw opgestart om de nieuwe wijzigingen te maken en er wordt een back-up van gemaakt als replica knooppunt.
-1. Het replica knooppunt maakt verbinding met het hoofd knooppunt en synchroniseert gegevens.
-1. Wanneer de gegevens synchronisatie is voltooid, wordt het patch proces herhaald voor de resterende knoop punten.
+1. De beheerservice selecteert één knooppunt dat moet worden gepatcht.
+1. Als het geselecteerde knooppunt een hoofdknooppunt is, promoot het bijbehorende replicaknooppunt zichzelf coöperatief. Deze promotie wordt beschouwd als een geplande failover.
+1. Het geselecteerde knooppunt wordt opnieuw opgestart om de nieuwe wijzigingen te nemen en wordt weer opgenomen als een replicaknooppunt.
+1. Het replicaknooppunt maakt verbinding met het hoofdknooppunt en synchroniseert gegevens.
+1. Wanneer de gegevenssynchronisatie is voltooid, wordt het patchproces herhaald voor de resterende knooppunten.
 
-Omdat patching een geplande failover is, wordt het replica-knoop punt snel gepromoveerd om een Master te worden, en worden er aanvragen voor het onderhoud en nieuwe verbindingen gestart. Basis caches hebben geen replica knooppunt en zijn pas beschikbaar als de update is voltooid. Elk Shard van een geclusterde cache wordt afzonderlijk gerepareerd en sluit geen verbindingen met een andere Shard.
+Omdat patchen een geplande failover is, promoot het replicaknooppunt zichzelf snel om een master te worden en begint het onderhoud van aanvragen en nieuwe verbindingen. Basiscaches hebben geen replicaknooppunt en zijn niet beschikbaar totdat de update is voltooid. Elke scherf van een geclusterde cache wordt afzonderlijk gepatcht en sluit geen verbindingen met een andere scherf.
 
 > [!IMPORTANT]
-> Knoop punten worden een voor een patch uitgevoerd om gegevens verlies te voor komen. Voor basis caches geldt een verlies van gegevens. Geclusterde caches worden één Shard per keer patched.
+> Knooppunten worden één voor één gepatcht om gegevensverlies te voorkomen. Basiscaches hebben gegevensverlies. Geclusterde caches worden één scherf tegelijk gepatcht.
 
-Meerdere caches in dezelfde resource groep en regio worden ook een patch per keer uitgevoerd.  Voor caches die zich in verschillende resource groepen of verschillende regio's bevinden, kan tegelijkertijd een patch worden uitgevoerd.
+Meerdere caches in dezelfde resourcegroep en regio worden ook één voor één gepatcht.  Caches die zich in verschillende resourcegroepen of verschillende regio's bevinden, kunnen tegelijkertijd worden gepatcht.
 
-Omdat volledige gegevens synchronisatie plaatsvindt voordat het proces wordt herhaald, zullen gegevens verlies waarschijnlijk niet optreden wanneer u een Standard-of Premium-cache gebruikt. U kunt gegevens verlies verder beveiligen door gegevens te [exporteren](cache-how-to-import-export-data.md#export) en [persistentie](cache-how-to-premium-persistence.md)in te scha kelen.
+Omdat volledige gegevenssynchronisatie plaatsvindt voordat het proces zich herhaalt, is het onwaarschijnlijk dat gegevensverlies optreedt wanneer u een Standaard- of Premium-cache gebruikt. U zich verder beschermen tegen gegevensverlies door gegevens [te exporteren](cache-how-to-import-export-data.md#export) en [persistentie](cache-how-to-premium-persistence.md)mogelijk te maken.
 
-## <a name="additional-cache-load"></a>Extra cache belasting
+## <a name="additional-cache-load"></a>Extra cachebelasting
 
-Wanneer een failover optreedt, moeten de standaard-en Premium-caches gegevens repliceren van het ene knoop punt naar het andere. Deze replicatie veroorzaakt een aantal belasting verhogingen in het server geheugen en de CPU. Als het cache-exemplaar al zwaar is geladen, kunnen client toepassingen de latentie verhogen. In uitzonderlijke gevallen kunnen client toepassingen time-outuitzonderingen ontvangen. [Configureer](cache-configure.md#memory-policies) de `maxmemory-reserved` instelling van de cache om de impact van deze extra belasting te verminderen.
+Wanneer er een failover optreedt, moeten de Standard- en Premium-caches gegevens van het ene knooppunt naar het andere repliceren. Deze replicatie zorgt voor enige toename van de belasting in zowel servergeheugen als CPU. Als de cache-instantie al zwaar is geladen, kunnen clienttoepassingen een verhoogde latentie ervaren. In extreme gevallen kunnen clienttoepassingen uitzonderingen op een time-out ontvangen. Configureer [de](cache-configure.md#memory-policies) `maxmemory-reserved` instelling van de cache om de impact van deze extra belasting te beperken.
 
-## <a name="how-does-a-failover-affect-my-client-application"></a>Wat is de invloed van een failover op mijn client toepassing?
+## <a name="how-does-a-failover-affect-my-client-application"></a>Welke invloed heeft een failover op mijn clienttoepassing?
 
-Het aantal fouten dat door de client toepassing wordt weer gegeven, is afhankelijk van het aantal bewerkingen dat in die verbinding in behandeling was op het moment van de failover. Alle verbindingen die via het knoop punt zijn gerouteerd en waarmee de verbindingen zijn verbroken, krijgen fouten te zien. Veel client bibliotheken kunnen verschillende typen fouten genereren wanneer er verbindingen worden verbroken, inclusief time-outuitzonderingen, verbindings uitzonderingen of socket-uitzonde ringen. Het aantal en type uitzonde ringen is afhankelijk van waar in het codepad de aanvraag zich bevindt wanneer de cache de verbindingen sluit. Een bewerking die bijvoorbeeld een aanvraag verzendt, maar geen antwoord heeft ontvangen wanneer de failover optreedt, kan een time-outuitzondering opleveren. Nieuwe aanvragen voor het gesloten verbindings object ontvangen verbindings uitzonderingen totdat de verbinding is hersteld.
+Het aantal fouten dat door de clienttoepassing wordt gezien, is afhankelijk van het aantal bewerkingen dat op die verbinding in behandeling was op het moment van de failover. Elke verbinding die wordt doorgestuurd via het knooppunt dat de verbindingen heeft gesloten, ziet fouten. Veel clientbibliotheken kunnen verschillende soorten fouten weggooien wanneer verbindingen worden verbroken, waaronder time-outuitzonderingen, verbindingsuitzonderingen of socketuitzonderingen. Het aantal en het type uitzonderingen zijn afhankelijk van waar in het codepad de aanvraag zich bevindt wanneer de cache de verbindingen sluit. Een bewerking die bijvoorbeeld een aanvraag verzendt, maar geen antwoord heeft ontvangen wanneer de failover optreedt, kan een time-outuitzondering krijgen. Nieuwe aanvragen voor het gesloten verbindingsobject ontvangen verbindingsuitzonderingen totdat de herverbinding is voltooid.
 
-De meeste client bibliotheken proberen opnieuw verbinding te maken met de cache als deze zijn geconfigureerd. Onvoorziene fouten kunnen echter af en toe de bibliotheek objecten in een onherstelbare status plaatsen. Als fouten blijven bestaan gedurende een vooraf geconfigureerde hoeveelheid tijd, moet het verbindings object opnieuw worden gemaakt. In Microsoft.NET en andere object gerichte talen kunt u de verbinding opnieuw maken zonder dat de toepassing opnieuw hoeft te worden opgestart met behulp van [een luie\<t\> patroon](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern).
+De meeste clientbibliotheken proberen opnieuw verbinding te maken met de cache als ze zijn geconfigureerd om dit te doen. Onvoorziene bugs kunnen de bibliotheekobjecten echter af en toe in een onherstelbare status plaatsen. Als fouten langer dan een vooraf geconfigureerde tijd blijven bestaan, moet het verbindingsobject opnieuw worden gemaakt. In Microsoft.NET en andere objectgeoriënteerde talen kan het opnieuw maken van de verbinding zonder de toepassing opnieuw op te starten worden bereikt met behulp van [een Lazy\<T-patroon.\> ](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)
 
-### <a name="how-do-i-make-my-application-resilient"></a>Hoe kan ik mijn toepassing robuust maken?
+### <a name="how-do-i-make-my-application-resilient"></a>Hoe maak ik mijn toepassing veerkrachtig?
 
-Omdat u failovers niet volledig kunt voor komen, schrijft u uw client toepassingen voor tolerantie voor verbindings onderbrekingen en mislukte aanvragen. Hoewel de meeste client bibliotheken automatisch opnieuw verbinding maken met het cache-eind punt, proberen enkele daarvan mislukte aanvragen opnieuw uit te voeren. Afhankelijk van het toepassings scenario kan het zinvol zijn om opnieuw proberen logica te gebruiken met uitstel.
+Omdat u failovers niet volledig voorkomen, schrijft u uw clienttoepassingen voor tolerantie voor verbindingsonderbrekingen en mislukte aanvragen. Hoewel de meeste clientbibliotheken automatisch opnieuw verbinding maken met het eindpunt van de cache, proberen weinigen van hen mislukte aanvragen opnieuw te proberen. Afhankelijk van het toepassingsscenario is het mogelijk om logica opnieuw proberen met back-off te gebruiken.
 
-Als u de tolerantie van een client toepassing wilt testen, gebruikt u [opnieuw opstarten](cache-administration.md#reboot) als hand matige trigger voor verbindings onderbrekingen. Daarnaast wordt u aangeraden updates op een cache te [plannen](cache-administration.md#schedule-updates) . Vertel de beheer service om redis runtime patches toe te passen tijdens opgegeven wekelijkse Windows. Deze vensters zijn doorgaans Peri Oden waarin het verkeer van de client toepassing laag is, om potentiële incidenten te voor komen.
+Als u de tolerantie van een clienttoepassing wilt testen, gebruikt u een [reboot](cache-administration.md#reboot) als handmatige trigger voor verbindingsonderbrekingen. Daarnaast raden we je aan [om updates in te plannen](cache-administration.md#schedule-updates) voor een cache. Vertel de beheerservice om Redis runtime-patches toe te passen tijdens opgegeven wekelijkse vensters. Deze vensters zijn meestal perioden waarin clienttoepassingsverkeer laag is, om mogelijke incidenten te voorkomen.
 
-### <a name="client-network-configuration-changes"></a>Client netwerk-configuratie wijzigingen
+### <a name="client-network-configuration-changes"></a>Wijzigingen in clientnetwerkconfiguratie
 
-Bepaalde netwerk configuratie wijzigingen aan de client zijde kunnen fouten met betrekking tot ' geen verbinding beschikbaar ' veroorzaken. Deze wijzigingen kunnen het volgende omvatten:
+Bepaalde wijzigingen in de netwerkconfiguratie aan de clientzijde kunnen fouten veroorzaken zonder verbinding. Dergelijke wijzigingen kunnen bestaan uit:
 
-- Het virtuele IP-adres van een client toepassing wisselen tussen fase ring en productie sleuven.
-- De grootte of het aantal exemplaren van uw toepassing schalen.
+- Het virtuele IP-adres van een clienttoepassing verwisselen tussen faserings- en productiesleuven.
+- Schalen van de grootte of het aantal exemplaren van uw toepassing.
 
-Dergelijke wijzigingen kunnen een connectiviteits probleem veroorzaken dat minder dan een minuut duurt. De verbinding van de client toepassing met andere externe netwerk bronnen gaat waarschijnlijk verloren naast de Azure-cache voor de redis-service.
+Dergelijke wijzigingen kunnen leiden tot een verbindingsprobleem dat minder dan een minuut duurt. Uw clienttoepassing verliest waarschijnlijk de verbinding met andere externe netwerkbronnen naast de Azure Cache for Redis-service.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Updates](cache-administration.md#schedule-updates) voor uw cache plannen.
-- Toepassings tolerantie testen door het [opnieuw opstarten](cache-administration.md#reboot)te gebruiken.
-- Geheugen reserveringen en-beleid [configureren](cache-configure.md#memory-policies) .
+- [Plan updates](cache-administration.md#schedule-updates) voor uw cache.
+- Test toepassingstolerantie met behulp van een [reboot.](cache-administration.md#reboot)
+- Geheugenreserveringen en -beleid [configureren.](cache-configure.md#memory-policies)

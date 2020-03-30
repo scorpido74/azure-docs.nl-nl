@@ -1,6 +1,6 @@
 ---
 title: Gegevensdetectie en -classificatie
-description: Classificatie van Azure SQL Database en gegevens detectie &
+description: Gegevensdetectie & classificatie voor Azure SQL Database en Azure Synapse Analytics
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -13,179 +13,179 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: e22205e81178ac0caff4b71462ece776238900f6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: eb4e7907c3dcffed035307c2084160ce6051be13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191942"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409946"
 ---
-# <a name="azure-sql-database-and-azure-synapse-analytics-data-discovery--classification"></a>& Classificatie van Azure SQL Database en Azure Synapse Analytics-gegevens detectie
+# <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Gegevensdetectie & classificatie voor Azure SQL Database en Azure Synapse Analytics
 
-Gegevens detectie & classificatie biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL Database voor het **detecteren**, **classificeren**, **labelen** & **rapportage** van de gevoelige gegevens in uw data bases.
+Gegevensdetectie & classificatie biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL Database voor **het ontdekken,** **classificeren,** **labelen van** & het**labelen** van de gevoelige gegevens in uw databases.
 
-Het detecteren en classificeren van uw meest gevoelige gegevens (zakelijke, financiële, gezondheids zorg, persoonlijke Identificeer bare gegevens (PII), enzovoort.) kan een draai functie in uw organisatie voor gegevens beveiliging van stature afspelen. Dit kan dienen als infra structuur voor:
+Het ontdekken en classificeren van uw meest gevoelige gegevens (business, financial, healthcare, personally identificeerbare gegevens (PII), enzovoort.) kan een centrale rol spelen in uw organisatieinformatiebescherming. Dit kan dienen als infrastructuur om:
 
-- Helpt te voldoen aan de normen voor gegevens beveiliging en naleving van regelgeving.
-- Diverse beveiligings scenario's, zoals controle (controle) en waarschuwingen over afwijkende toegang tot gevoelige gegevens.
-- Het beheren van de toegang tot en het beveiligen van de beveiliging van data bases met zeer gevoelige gegevens.
+- Te helpen voldoen aan standaarden op het gebied van gegevensbescherming en aan vereisten voor naleving van regelgeving.
+- Verschillende beveiligingsscenario's, zoals monitoring (auditing) en waarschuwingen over afwijkende toegang tot gevoelige gegevens.
+- De toegang tot en verbetering van de beveiliging van databases met uiterst gevoelige gegevens te beheren.
 
-Gegevens detectie & classificatie maakt deel uit van de aanbieding voor [geavanceerde gegevens beveiliging](sql-database-advanced-data-security.md) (ADS), een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. gegevens detectie & classificatie kan worden gebruikt en beheerd via de centrale SQL ADS-Portal.
+Data Discovery & Classificatie maakt deel uit van het ADS-aanbod [(Advanced Data Security),](sql-database-advanced-data-security.md) een uniform pakket voor geavanceerde SQL-beveiligingsmogelijkheden. gegevensdetectie & classificatie kan worden geopend en beheerd via de centrale SQL ADS-portal.
 
 > [!NOTE]
-> Dit document is gekoppeld aan Azure SQL Database en Azure Synapse. SQL Database wordt gebruikt bij het verwijzen naar SQL Database en Azure Synapse voor eenvoud. Zie [SQL-gegevens detectie en-classificatie](https://go.microsoft.com/fwlink/?linkid=866999)voor SQL Server (on-premises).
+> Dit document heeft betrekking op Azure SQL Database en Azure Synapse. Voor de eenvoud wordt SQL Database gebruikt bij het verwijzen naar zowel SQL Database als Azure Synapse. Zie SQL Data Discovery [and Classification](https://go.microsoft.com/fwlink/?linkid=866999)voor SQL Server (on-premises).
 
-## <a id="subheading-1"></a>Wat is de classificatie van gegevens detectie &
+## <a name="what-is-data-discovery--classification"></a><a id="subheading-1"></a>Wat is gegevensdetectie & classificatie
 
-Gegevens detectie & classificatie introduceert een aantal geavanceerde services en nieuwe SQL-mogelijkheden, waarmee u een nieuw SQL Information Protection-paradigma kunt vormen dat is gericht op het beveiligen van de gegevens, niet alleen de Data Base:
+Data Discovery & Classificatie introduceert een reeks geavanceerde services en nieuwe SQL-mogelijkheden, die een nieuw SQL Information Protection-paradigma vormen dat gericht is op het beschermen van de gegevens, niet alleen de database:
 
-- **Aanbevelingen voor detectie &**
+- **Aanbevelingen voor &**
 
-  De classificatie-engine scant uw data base en identificeert kolommen die mogelijk gevoelige gegevens bevatten. Vervolgens krijgt u een eenvoudige manier om de juiste classificatie aanbevelingen te controleren en toe te passen via de Azure Portal.
+  De classificatieengine scant uw database en identificeert kolommen met mogelijk gevoelige gegevens. Vervolgens kunt u in Azure Portal op een gemakkelijke manier de juiste classificatieaanbevelingen controleren en toepassen.
 
-- **Labels**
+- **Labeling**
 
-  Labels voor de gevoeligheids classificatie kunnen permanent worden gelabeld op kolommen met behulp van nieuwe classificatie meta gegevens kenmerken die zijn geïntroduceerd in de SQL-engine. Deze meta gegevens kunnen vervolgens worden gebruikt voor geavanceerde op gevoeligheid gebaseerde controle-en beveiligings scenario's.
+  Gevoeligheidsclassificatielabels kunnen voortdurend worden getagd op kolommen met behulp van nieuwe classificatiemetagegevenskenmerken die in de SQL Engine zijn geïntroduceerd. Deze metagegevens kunnen daarna worden gebruikt voor geavanceerde audit- en beschermingscenario’s op basis van gevoeligheid.
 
-- **Gevoeligheid van query resultaten instellen**
+- **Gevoeligheid voor queryresultaatset**
 
-  De gevoeligheid van de resultatenset van de query wordt in realtime berekend voor controle doeleinden.
+  De gevoeligheid van de queryresultatenset wordt in realtime berekend voor controledoeleinden.
 
 - **Zichtbaarheid**
 
-  De classificatie status van de data base kan worden weer gegeven in een gedetailleerd dash board in de portal. Daarnaast kunt u een rapport (in Excel-indeling) downloaden dat moet worden gebruikt voor naleving & controle doeleinden, evenals andere behoeften.
+  De status van de databaseclassificatie kan worden weergegeven in een gedetailleerd dashboard in de portal. Daarnaast kunt u een rapport (in Excel-indeling) downloaden dat kan worden gebruikt voor naleving en controle en voor andere behoeften.
 
-## <a id="subheading-2"></a>& Label gevoelige kolommen detecteren, classificeren
+## <a name="discover-classify--label-sensitive-columns"></a><a id="subheading-2"></a>& labelgevoelige kolommen ontdekken, classificeren
 
-In de volgende sectie worden de stappen beschreven voor het detecteren, classificeren en labelen van kolommen met gevoelige gegevens in uw data base, en het weer geven van de huidige classificatie status van uw data base en het exporteren van rapporten.
+In de volgende sectie worden de stappen beschreven voor het ontdekken, classificeren en labelen van kolommen met gevoelige gegevens in uw database, evenals het bekijken van de huidige classificatiestatus van uw database en het exporteren van rapporten.
 
-De classificatie bevat twee meta gegevens kenmerken:
+De classificatie bevat twee metagegevenskenmerken:
 
-- Labels: de belangrijkste classificatie kenmerken, die worden gebruikt voor het definiëren van het gevoeligheids niveau van de gegevens die zijn opgeslagen in de kolom.  
-- Informatie typen: bieden een extra granulatie voor het type gegevens dat in de kolom wordt opgeslagen.
+- Labels : de belangrijkste classificatiekenmerken die worden gebruikt om het gevoeligheidsniveau te definiëren van de gegevens die in de kolom zijn opgeslagen.  
+- Informatietypen : geef extra granulariteit aan het type gegevens dat in de kolom is opgeslagen.
 
-## <a name="define-and-customize-your-classification-taxonomy"></a>Uw classificatie taxonomie definiëren en aanpassen
+## <a name="define-and-customize-your-classification-taxonomy"></a>Uw classificatietaxonomie definiëren en aanpassen
 
-De classificatie van SQL-gegevens detectie & wordt geleverd met een ingebouwde set van gevoeligheids labels en een ingebouwde set met gegevens typen en detectie logica. U hebt nu de mogelijkheid om deze taxonomie aan te passen en een set en classificatie van classificatie constructies te definiëren die specifiek zijn voor uw omgeving.
+Data Discovery & Classificatie wordt geleverd met een ingebouwde set gevoeligheidslabels en een ingebouwde set informatietypen en detectielogica. U hebt nu de mogelijkheid om deze taxonomie aan te passen en een set en rangschikking van classificatieconstructies specifiek voor uw omgeving te definiëren.
 
-De definitie en aanpassing van uw classificatie taxonomie wordt uitgevoerd op één centrale locatie voor uw hele Azure-Tenant. Deze locatie bevindt zich in [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), als onderdeel van uw beveiligings beleid. Alleen iemand met beheerders rechten voor de hoofd beheer groep van de Tenant kan deze taak uitvoeren.
+Definitie en aanpassing van uw classificatietaxonomie gebeurt op één centrale plaats voor uw gehele Azure-tenant. Die locatie bevindt zich in [Azure Security Center,](https://docs.microsoft.com/azure/security-center/security-center-intro)als onderdeel van uw beveiligingsbeleid. Alleen iemand met beheerdersrechten op de hoofdbeheergroep Tenant kan deze taak uitvoeren.
 
-Als onderdeel van het beheer van Information Protection-beleid kunt u aangepaste labels definiëren, ze rangschikken en koppelen aan een geselecteerde set met gegevens typen. U kunt ook uw eigen aangepaste gegevens typen toevoegen en ze configureren met teken reeks patronen die worden toegevoegd aan de detectie logica voor het identificeren van dit type gegevens in uw data bases.
-Meer informatie over het aanpassen en beheren van uw beleid in de [hand leiding voor Information Protections beleid](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
+Als onderdeel van het beleidsbeheer informatiebescherming u aangepaste labels definiëren, rangschikken en koppelen aan een geselecteerde set informatietypen. U kunt ook uw eigen aangepaste informatietypen toevoegen en deze configureren met tekenreekspatronen, die worden toegevoegd aan de detectielogica voor het identificeren van dit type gegevens in uw databases.
+Meer informatie over het aanpassen en beheren van uw beleid vindt u in de [handleiding informatiebescherming.](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409)
 
-Zodra het beleid voor de hele Tenant is gedefinieerd, kunt u door gaan met de classificatie van afzonderlijke data bases met behulp van uw aangepaste beleids regel.
+Zodra het tenantbrede beleid is gedefinieerd, u doorgaan met de classificatie van afzonderlijke databases met behulp van uw aangepaste beleid.
 
-## <a name="classify-your-sql-database"></a>Uw SQL Database classificeren
+## <a name="classify-your-sql-database"></a>Uw SQL-database classificeren
 
-1. Ga naar de [Azure Portal](https://portal.azure.com).
+1. Ga naar de [Azure-portal.](https://portal.azure.com)
 
-2. Navigeer naar **geavanceerde gegevens beveiliging** onder de kop beveiliging in het deel venster Azure SQL database. Klik om geavanceerde gegevens beveiliging in te scha kelen en klik vervolgens op de kaart **gegevens detectie & classificatie** .
+2. Navigeer naar **Geavanceerde gegevensbeveiliging** onder het kopje Beveiliging in het deelvenster Azure SQL Database. Klik hierom geavanceerde gegevensbeveiliging in te schakelen en klik vervolgens op de **& classificatiekaart gegevensdetectie.**
 
-   ![Een Data Base scannen](./media/sql-data-discovery-and-classification/data_classification.png)
+   ![Een database scannen](./media/sql-data-discovery-and-classification/data_classification.png)
 
-3. Het tabblad **overzicht** bevat een samen vatting van de huidige classificatie status van de data base, met inbegrip van een gedetailleerde lijst met alle geclassificeerde kolommen, die u ook kunt filteren om alleen specifieke schema onderdelen, gegevens typen en labels weer te geven. Als u nog geen kolommen hebt geclassificeerd, [gaat u verder met stap 5](#step-5).
+3. Het tabblad **Overzicht** bevat een overzicht van de huidige classificatiestatus van de database, inclusief een gedetailleerde lijst met alle geclassificeerde kolommen, die u ook filteren om alleen specifieke schemaonderdelen, informatietypen en labels weer te geven. Als u nog geen kolommen hebt geclassificeerd, [gaat u naar stap 5](#step-5).
 
-   ![Samen vatting van huidige classificatie status](./media/sql-data-discovery-and-classification/2_data_classification_overview_dashboard.png)
+   ![Samenvatting van de huidige classificatiestatus](./media/sql-data-discovery-and-classification/2_data_classification_overview_dashboard.png)
 
-4. Als u een rapport in Excel-indeling wilt downloaden, klikt u op de optie **exporteren** in het bovenste menu van het venster.
+4. Als u een rapport wilt downloaden in Excel-indeling, klikt u op de optie **Exporteren** in het bovenste menu van het venster.
 
    ![Exporteren naar Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
 
-5. <a id="step-5"></a>Klik op het **tabblad classificatie** boven aan het venster om te beginnen met het classificeren van uw gegevens.
+5. <a id="step-5"></a>Als u wilt beginnen met het classificeren van uw gegevens, klikt u op het **tabblad Classificatie** boven aan het venster.
 
-    ![U gegevens classificeren](./media/sql-data-discovery-and-classification/4_data_classification_classification_tab_click.png)
+    ![Uw gegevens classificeren](./media/sql-data-discovery-and-classification/4_data_classification_classification_tab_click.png)
 
-6. De classificatie-engine scant uw Data Base op kolommen met mogelijk gevoelige gegevens en bevat een lijst met **Aanbevolen kolom classificaties**. Aanbevelingen voor classificaties bekijken en Toep assen:
+6. De classificatieengine scant uw database op kolommen met mogelijk gevoelige gegevens en biedt een lijst met **aanbevolen kolomclassificaties.** Ga als volgt te werk om classificatieaanbevelingen te bekijken en toe te passen:
 
-   - Als u de lijst met aanbevolen kolom classificaties wilt weer geven, klikt u op het deel venster aanbevelingen onder aan het venster:
+   - Als u de lijst met aanbevolen kolomclassificaties wilt weergeven, klikt u op het deelvenster Aanbevelingen onder aan het venster:
 
       ![Uw gegevens classificeren](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
 
-   - Bekijk de lijst met aanbevelingen: Schakel het selectie vakje in de linkerkolom van de relevante rij in om een aanbeveling voor een specifieke kolom te accepteren. U kunt *alle aanbevelingen* ook markeren als geaccepteerd door het selectie vakje in de koptekst van de tabel met aanbevelingen in te scha kelen.
+   - Bekijk de lijst met aanbevelingen om een aanbeveling voor een specifieke kolom te accepteren, schakel het selectievakje in de linkerkolom van de desbetreffende rij in. U ook *alle aanbevelingen* markeren als geaccepteerd door het selectievakje in de koptekst van de aanbevelingentabel in te schakelen.
 
-       ![Lijst met aanbevelingen controleren](./media/sql-data-discovery-and-classification/6_data_classification_recommendations_list.png)
+       ![Aanbevelingslijst controleren](./media/sql-data-discovery-and-classification/6_data_classification_recommendations_list.png)
 
-   - Als u de geselecteerde aanbevelingen wilt Toep assen, klikt u op de knop blauwe **geselecteerde aanbevelingen accepteren** .
+   - Als u de geselecteerde aanbevelingen wilt toepassen, klikt u op de blauwe knop **Geselecteerde aanbevelingen accepteren.**
 
-      ![Aanbevelingen Toep assen](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
+      ![Aanbevelingen toepassen](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
 
-7. U kunt ook **hand matig kolommen classificeren** als een andere, of als aanvulling op de op aanbeveling gebaseerde classificatie:
+7. U kolommen ook **handmatig classificeren** als alternatief, of bovendien voor de classificatie op basis van aanbevelingen:
 
-   - Klik op **classificatie toevoegen** in het bovenste menu van het venster.
+   - Klik op **Classificatie toevoegen** in het bovenste menu van het venster.
 
-      ![Classificatie hand matig toevoegen](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png)
+      ![Classificatie handmatig toevoegen](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png)
 
-   - In het context venster dat wordt geopend, selecteert u het schema > tabel > kolom die u wilt classificeren, en het gegevens type en gevoeligheids label. Klik vervolgens op de knop **classificatie toevoegen** onder aan het context venster.
+   - Selecteer in het contextvenster dat wordt geopend het schema > tabel > kolom die u wilt classificeren en het informatietype en het gevoeligheidslabel. Klik vervolgens op de blauwe **knop Classificatie toevoegen** onder aan het contextvenster.
 
-      ![Selecteer de kolom die u wilt classificeren](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
+      ![Kolom selecteren om te classificeren](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
 
-8. Klik op **Opslaan** in het bovenste menu van het venster om de classificatie te volt ooien en de database kolommen persistent te labelen (tag) met de nieuwe meta gegevens van de classificatie.
+8. Als u uw classificatie wilt voltooien en de databasekolommen met de nieuwe classificatiemetagegevens voortdurend wilt labelen (taggen), klikt u op **Opslaan** in het bovenste menu van het venster.
 
    ![Opslaan](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
 
-## <a id="subheading-3"></a>Toegang tot gevoelige gegevens controleren
+## <a name="auditing-access-to-sensitive-data"></a><a id="subheading-3"></a>Toegang tot gevoelige gegevens controleren
 
-Een belang rijk aspect van het gegevens beveiligings model is de mogelijkheid om toegang tot gevoelige gegevens te bewaken. [Azure SQL database controle](sql-database-auditing.md) is uitgebreid met een nieuw veld in het controle logboek met de naam *data_sensitivity_information*, dat de gevoeligheids classificaties (labels) registreert van de werkelijke gegevens die door de query zijn geretourneerd.
+Een belangrijk aspect van het paradigma van informatiebescherming is de mogelijkheid om de toegang tot gevoelige gegevens te controleren. [Azure SQL Database Auditing](sql-database-auditing.md) is uitgebreid met een nieuw veld in het controlelogboek genaamd *data_sensitivity_information*, dat de gevoeligheidsclassificaties (labels) van de werkelijke gegevens registreert die door de query zijn geretourneerd.
 
-![Audit logboek](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
+![Controlelogboek](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a id="subheading-4"></a>Machtigingen
+## <a name="permissions"></a><a id="subheading-4"></a>Machtigingen
 
-De volgende ingebouwde rollen kunnen de gegevens classificatie van een Azure SQL database: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` en `User Access Administrator`lezen.
+De volgende ingebouwde rollen kunnen de gegevensclassificatie van `Owner` `Reader`een `Contributor` `SQL Security Manager` Azure `User Access Administrator`SQL-database lezen: , , en .
 
-De volgende ingebouwde rollen kunnen de gegevens classificatie wijzigen van een Azure SQL database: `Owner`, `Contributor``SQL Security Manager`.
+De volgende ingebouwde rollen kunnen de gegevensclassificatie van `Owner` `Contributor`een `SQL Security Manager`Azure SQL-database wijzigen: , ,
 
-Meer informatie over [RBAC voor Azure-resources](https://docs.microsoft.com/azure/role-based-access-control/overview)
+Meer informatie over [RBAC voor Azure-bronnen](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-## <a id="subheading-5"></a>Classificaties beheren
+## <a name="manage-classifications"></a><a id="subheading-5"></a>Classificaties beheren
 
 # <a name="t-sql"></a>[T-SQL](#tab/azure-t-sql)
-U kunt T-SQL gebruiken om kolom classificaties toe te voegen of te verwijderen, en alle classificaties voor de hele Data Base op te halen.
+U T-SQL gebruiken om kolomclassificaties toe te voegen/verwijderen en alle classificaties voor de hele database op te halen.
 
 > [!NOTE]
-> Wanneer u T-SQL gebruikt voor het beheren van labels, is er geen validatie waarbij labels die worden toegevoegd aan een kolom, bestaan in het organisatie Information Protection-beleid (de set labels die in de portal aanbevelingen worden weer gegeven). Daarom is het raadzaam om dit te valideren.
+> Wanneer u T-SQL gebruikt om labels te beheren, is er geen validatie dat labels die aan een kolom zijn toegevoegd, bestaan in het beleid voor organisatie-informatiebescherming (de set labels die worden weergegeven in de portalaanbevelingen). Het is dus aan u om dit te valideren.
 
-- De classificatie van een of meer kolommen toevoegen/bijwerken: [gevoeligheids classificatie toevoegen](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- De classificatie verwijderen uit een of meer kolommen: [gevoeligheids classificatie voor neerzetten](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-- Alle classificaties weer geven in de Data Base: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+- De classificatie van een of meer kolommen toevoegen/bijwerken: [GEVOELIGHEIDsclassificatie TOEVOEGEN](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- De classificatie verwijderen uit een of meer kolommen: [CLASSIFICATIE DROPGEVOELIGHEID](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- Bekijk alle classificaties in de database: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-# <a name="rest-apis"></a>[Rest-Api's](#tab/azure-rest-api)
-U kunt REST-Api's gebruiken om classificaties en aanbevelingen programmatisch te beheren. De gepubliceerde REST Api's ondersteunen de volgende bewerkingen:
+# <a name="rest-apis"></a>[Rest API's](#tab/azure-rest-api)
+U REST API's gebruiken om classificaties en aanbevelingen programmatisch te beheren. De gepubliceerde REST API's ondersteunen de volgende bewerkingen:
 
-- [Maken of bijwerken](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) : Hiermee wordt het gevoeligheids label van een bepaalde kolom gemaakt of bijgewerkt
-- [Verwijderen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) : Hiermee verwijdert u het gevoeligheids label van een bepaalde kolom
-- [Aanbeveling uitschakelen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation) : Hiermee worden de gevoeligheids aanbevelingen voor een bepaalde kolom uitgeschakeld
-- [Aanbeveling inschakelen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation) : Hiermee schakelt u gevoeligheids aanbevelingen in voor een bepaalde kolom (aanbevelingen zijn standaard ingeschakeld voor alle kolommen)
-- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) -haalt het gevoeligheids label van een bepaalde kolom op
-- [Lijst huidige per data base](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) : Hiermee worden de huidige gevoeligheids labels van een bepaalde data base opgehaald
-- [Lijst aanbevolen door data base](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) : Hiermee wordt de aanbevolen gevoeligheids labels van een bepaalde data base opgehaald
+- [Het](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) gevoeligheidslabel van een bepaalde kolom maken of bijwerken : het gevoeligheidslabel van een bepaalde kolom maken of bijwerken
+- [Verwijderen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) - Verwijdert het gevoeligheidslabel van een bepaalde kolom
+- [Aanbeveling uitschakelen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation) - Schakelt aanbevelingen voor gevoeligheid op een bepaalde kolom uit
+- [Aanbeveling inschakelen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation) : gevoeligheidsaanbevelingen voor een bepaalde kolom inschakelen (aanbevelingen zijn standaard ingeschakeld op alle kolommen)
+- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) - Krijgt het gevoeligheidslabel van een bepaalde kolom
+- [Lijst Huidig op database](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) - Krijgt de huidige gevoeligheidslabels van een bepaalde database
+- [Lijst aanbevolen door database](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) - Krijgt de aanbevolen gevoeligheidslabels van een bepaalde database
 
-# <a name="powershell-cmdlet"></a>[Power shell-cmdlet](#tab/azure-powelshell)
-U kunt Power shell gebruiken om classificaties en aanbevelingen voor Azure SQL Database en een beheerd exemplaar te beheren.
+# <a name="powershell-cmdlet"></a>[PowerShell-cmdlet](#tab/azure-powelshell)
+U PowerShell gebruiken om classificaties en aanbevelingen voor Azure SQL Database en Managed Instance te beheren.
 
-### <a name="powershell-cmdlet-for-azure-sql-database"></a>Power shell-cmdlet voor Azure SQL Database
+### <a name="powershell-cmdlet-for-azure-sql-database"></a>PowerShell-cmdlet voor Azure SQL-database
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
-- [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
-- [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
-- [Get-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
-- [Enable-AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
-- [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
+- [Classificatie van set-AzSqlDatabaseSensitivity](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
+- [Classificatie van gegevens over de gevoeligheid van AzSqlDatabase verwijderen](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
+- [Get-AzSqlDatabaseSensitivityAanbeveling](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
+- [Aanbeveling voor inschakeling azSqlDatabaSesensitivite](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
+- [Aanbeveling voor gevoeligheid voor azsqldatabase uitschakelen](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
-### <a name="powershell-cmdlets-for-managed-instance"></a>Power shell-cmdlets voor een beheerd exemplaar
+### <a name="powershell-cmdlets-for-managed-instance"></a>PowerShell-cmdlets voor beheerde instantie
 - [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
-- [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
-- [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
+- [Classificatie van set-AzSqlInstanceDatabaseSensitivity](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
+- [Classificatie van gegevens over de gevoeligheid van AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
 - [Get-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
-- [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
-- [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
+- [Inschakelbare aanbeveling voor gegevensgevoeligheid van AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
+- [Aanbeveling voor gevoeligheid voor azsqlinstancedatabase uitschakelen](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
 ---
 
-## <a id="subheading-6"></a>Volgende stappen
+## <a name="next-steps"></a><a id="subheading-6"></a>Volgende stappen
 
-- Meer informatie over [geavanceerde gegevens beveiliging](sql-database-advanced-data-security.md).
-- Overweeg het configureren van [Azure SQL database controle](sql-database-auditing.md) voor het bewaken en controleren van de toegang tot uw geclassificeerde gevoelige gegevens.
-- Zie [detecteren, classificeren, labelen & beveiligen van SQL-gegevens voor een YouTube-presentatie met gegevens detectie & classificatie. | Gegevens die worden weer gegeven](https://www.youtube.com/watch?v=itVi9bkJUNc).
+- Meer informatie over [geavanceerde gegevensbeveiliging](sql-database-advanced-data-security.md).
+- Overweeg [Azure SQL Database Auditing](sql-database-auditing.md) te configureren voor het bewaken en controleren van toegang tot uw geclassificeerde gevoelige gegevens.
+- Zie Gegevensdetectie & classificatie voor een YouTube-presentatie met gegevensdetectie & classificatie: [ontdekken, classificeren, labelen & SQL-gegevens beveiligen | Blootgestelde gegevens](https://www.youtube.com/watch?v=itVi9bkJUNc).
 
 <!--Anchors-->
 [What is data discovery & classification]: #subheading-1

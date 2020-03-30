@@ -1,30 +1,30 @@
 ---
-title: Fout bij het terugdraaien naar een geslaagde implementatie
+title: Fout terugdraaien naar succesvolle implementatie
 description: Geef op dat een mislukte implementatie moet worden teruggedraaid naar een geslaagde implementatie.
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 32ba5485e1980eb819bf5429fbfbb597dfe75c2a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 206c794996f58a4c5b6982c551ae50128ed4f5eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484296"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460140"
 ---
-# <a name="rollback-on-error-to-successful-deployment"></a>Ongedaan maken bij fout bij geslaagde implementatie
+# <a name="rollback-on-error-to-successful-deployment"></a>Rollback-on-fout naar succesvolle implementatie
 
-Wanneer een implementatie mislukt, kunt u automatisch een eerdere, geslaagde implementatie uit de implementatie geschiedenis opnieuw implementeren. Deze functie is handig als u een bekende goede status hebt voor de implementatie van uw infra structuur en u wilt terugkeren naar deze status. Er zijn een aantal voor behoud en beperkingen:
+Wanneer een implementatie mislukt, u een eerdere, succesvolle implementatie automatisch opnieuw implementeren vanuit uw implementatiegeschiedenis. Deze functionaliteit is handig als u een bekende goede status hebt voor uw implementatie van uw infrastructuur en wilt terugkeren naar deze status. Er zijn een aantal kanttekeningen en beperkingen:
 
-- De implementatie wordt precies zo uitgevoerd als deze eerder met dezelfde para meters is uitgevoerd. U kunt de para meters niet wijzigen.
-- De vorige implementatie wordt uitgevoerd met de [volledige modus](./deployment-modes.md#complete-mode). Alle resources die geen deel uitmaken van de vorige implementatie worden verwijderd en alle resource configuraties worden ingesteld op de vorige status. Zorg ervoor dat u de [implementatie modi](./deployment-modes.md)volledig begrijpt.
-- De herimplementatie heeft alleen invloed op de resources, maar wijzigingen in de gegevens worden niet beïnvloed.
-- U kunt deze functie alleen gebruiken met implementaties van resource groepen, niet op abonnementen of op het niveau van beheer groepen. Zie [resource groepen en-resources op abonnements niveau maken](./deploy-to-subscription.md)voor meer informatie over de implementatie op abonnements niveau.
-- U kunt deze optie alleen gebruiken bij implementaties op hoofd niveau. Implementaties van een geneste sjabloon zijn niet beschikbaar voor opnieuw implementeren.
+- De herschikking wordt uitgevoerd precies zoals het eerder werd uitgevoerd met dezelfde parameters. Je de parameters niet wijzigen.
+- De vorige implementatie wordt uitgevoerd met de [volledige modus](./deployment-modes.md#complete-mode). Alle resources die niet in de vorige implementatie zijn opgenomen, worden verwijderd en alle resourceconfiguraties zijn ingesteld op de vorige status. Zorg ervoor dat u de [implementatiemodi](./deployment-modes.md)volledig begrijpt.
+- De herschikking heeft alleen invloed op de resources, eventuele gegevenswijzigingen worden niet beïnvloed.
+- U deze functie alleen gebruiken met implementaties van resourcegroepen, niet met implementaties op abonnements- of beheergroepniveau. Zie [Resourcegroepen en resources maken op abonnementsniveau](./deploy-to-subscription.md)voor meer informatie over de implementatie op abonnementsniveau.
+- U deze optie alleen gebruiken bij implementaties op basisniveau. Implementaties van een geneste sjabloon zijn niet beschikbaar voor herschikking.
 
-Als u deze optie wilt gebruiken, moeten uw implementaties unieke namen hebben zodat deze in de geschiedenis kunnen worden geïdentificeerd. Als u geen unieke namen hebt, kan de huidige mislukte implementatie de eerder geslaagde implementatie in de geschiedenis overschrijven.
+Als u deze optie wilt gebruiken, moeten uw implementaties unieke namen hebben, zodat ze in de geschiedenis kunnen worden geïdentificeerd. Als u geen unieke namen hebt, kan de huidige mislukte implementatie de eerder succesvolle implementatie in de geschiedenis overschrijven.
 
 ## <a name="powershell"></a>PowerShell
 
-Als u de laatste geslaagde implementatie opnieuw wilt implementeren, voegt u de para meter `-RollbackToLastDeployment` als een vlag toe.
+Als u de laatste succesvolle `-RollbackToLastDeployment` implementatie opnieuw wilt implementeren, voegt u de parameter toe als een vlag.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -Name ExampleDeployment02 `
@@ -33,7 +33,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment02 `
   -RollbackToLastDeployment
 ```
 
-Als u een specifieke implementatie opnieuw wilt implementeren, gebruikt u de para meter `-RollBackDeploymentName` en geeft u de naam van de implementatie op. De opgegeven implementatie moet zijn geslaagd.
+Als u een specifieke implementatie `-RollBackDeploymentName` opnieuw wilt implementeren, gebruikt u de parameter en geeft u de naam van de implementatie op. De opgegeven implementatie moet zijn geslaagd.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -Name ExampleDeployment02 `
@@ -44,10 +44,10 @@ New-AzResourceGroupDeployment -Name ExampleDeployment02 `
 
 ## <a name="azure-cli"></a>Azure-CLI
 
-Als u de laatste geslaagde implementatie opnieuw wilt implementeren, voegt u de para meter `--rollback-on-error` als een vlag toe.
+Als u de laatste succesvolle `--rollback-on-error` implementatie opnieuw wilt implementeren, voegt u de parameter toe als een vlag.
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
   --template-file storage.json \
@@ -55,10 +55,10 @@ az group deployment create \
   --rollback-on-error
 ```
 
-Als u een specifieke implementatie opnieuw wilt implementeren, gebruikt u de para meter `--rollback-on-error` en geeft u de naam van de implementatie op. De opgegeven implementatie moet zijn geslaagd.
+Als u een specifieke implementatie `--rollback-on-error` opnieuw wilt implementeren, gebruikt u de parameter en geeft u de naam van de implementatie op. De opgegeven implementatie moet zijn geslaagd.
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment02 \
   --resource-group ExampleGroup \
   --template-file storage.json \
@@ -68,7 +68,7 @@ az group deployment create \
 
 ## <a name="rest-api"></a>REST API
 
-Gebruik de volgende opdracht om de laatste geslaagde implementatie opnieuw te implementeren als de huidige implementatie mislukt:
+Als u de laatste succesvolle implementatie opnieuw wilt implementeren als de huidige implementatie mislukt, gebruikt u:
 
 ```json
 {
@@ -115,7 +115,7 @@ De opgegeven implementatie moet zijn geslaagd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure Deployment Manager](deployment-manager-overview.md)als u uw service veilig wilt implementeren in meer dan één regio.
-- Zie [Azure Resource Manager implementatie modi](deployment-modes.md)om op te geven hoe u resources wilt afhandelen die in de resource groep aanwezig zijn, maar die niet zijn gedefinieerd in de sjabloon.
-- Zie [inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen](template-syntax.md)voor meer informatie over het definiëren van para meters in uw sjabloon.
-- Zie voor meer informatie over het implementeren van een sjabloon waarvoor een SAS-token is vereist een [persoonlijke sjabloon implementeren met SAS-token](secure-template-with-sas-token.md).
+- Zie [Azure Deployment Manager](deployment-manager-overview.md)als u uw service veilig wilt uitrollen naar meer dan één regio.
+- Zie [Azure Resource Manager-implementatiemodi](deployment-modes.md)als u wilt opgeven hoe u resources in de resourcegroep verwerken, maar niet in de sjabloon bent gedefinieerd.
+- Zie [De structuur en de syntaxis van Azure Resource Manager-sjablonen begrijpen](template-syntax.md)als u wilt begrijpen hoe u parameters in uw sjabloon definiëren.
+- Zie [Privésjabloon implementeren met SAS-token voor](secure-template-with-sas-token.md)informatie over het implementeren van een sjabloon waarvoor een SAS-token vereist is.

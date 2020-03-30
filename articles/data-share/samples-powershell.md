@@ -1,35 +1,35 @@
 ---
-title: Azure PowerShell voor beelden voor Azure-gegevens share
-description: Meer informatie over Azure PowerShell voorbeeld scripts om u te helpen bij het maken en beheren van gegevens shares in azure data share.
+title: Azure PowerShell-voorbeelden voor Azure-gegevensshare
+description: Meer informatie over Azure PowerShell-voorbeeldscripts waarmee u gegevensshares maken en beheren in Azure-gegevensshare.
 ms.service: data-share
 author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/06/2019
 ms.openlocfilehash: c2593c4c03f48624b8b9e3b9d72a3558f5f581be
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73499288"
 ---
-# <a name="azure-powershell-samples-for-azure-data-share"></a>Azure PowerShell voor beelden voor Azure-gegevens share
+# <a name="azure-powershell-samples-for-azure-data-share"></a>Azure PowerShell-voorbeelden voor Azure-gegevensshare
 
-De volgende tabel bevat koppelingen naar voor beelden Azure PowerShell scripts voor Azure data share.
+De volgende tabel bevat koppelingen naar voorbeeld van Azure PowerShell-scripts voor Azure Data Share.
 
 | |  |
 |---|---|
-|**Power shell-voor beelden**||
-|[Een nieuw gegevens share-account maken](scripts/powershell/create-new-share-account-powershell.md)| Met dit Power shell-script maakt u een nieuw gegevens share-account. |
-|[Een nieuwe gegevens share maken](scripts/powershell/create-new-share-powershell.md)| Met dit Power shell-script maakt u een nieuwe gegevens share. |
-|[Gegevens sets toevoegen aan een share](scripts/powershell/add-datasets-powershell.md)| Met dit Power shell-script wordt een BLOB-gegevensset toegevoegd aan een bestaand gegevens share-account. |
-|[Synchronisaties van een share instellen en weer geven](scripts/powershell/set-view-synchronizations-powershell.md)| Met dit Power shell-script worden synchronisaties van een bestaande gegevens share gemaakt en weer gegeven. |
-|[Een uitnodiging voor een gegevens share maken](scripts/powershell/create-share-invitation-powershell.md)| Met dit Power shell-voorbeeld script maakt u een uitnodiging voor toegang tot een bestaande gegevens share. |
-|[Verzonden uitnodigingen voor delen weer geven](scripts/powershell/view-sent-invitations-powershell.md)| Met dit Power shell-voorbeeld script wordt een lijst opgehaald met uitnodigingen die zijn verzonden vanuit een bestaande gegevens share. |
-|[Ontvangen uitnodigingen voor delen accepteren](scripts/powershell/accept-share-invitations-powershell.md)| In dit Power shell-voorbeeld script wordt een uitnodiging voor gegevens delen geaccepteerd|
-|[Details van een gegevens shares weer geven](scripts/powershell/view-share-details-powershell.md)| In dit Power shell-voorbeeld script worden de details van gegevens shares weer gegeven en opgehaald. |
-|[Het gebruik van gedeelde gegevens bewaken](scripts/powershell/monitor-usage-powershell.md)| Met dit Power shell-voorbeeld script wordt het gebruik van verzonden gedeelde gegevens bewaakt. |
-|[Triggers voor moment opnamen maken en weer geven](scripts/powershell/create-view-trigger-powershell.md)| Met dit Power shell-voorbeeld script worden moment opname triggers van een share gemaakt.
+|**Powershell-monsters**||
+|[Een nieuw account voor gegevensshare maken](scripts/powershell/create-new-share-account-powershell.md)| Met dit PowerShell-script wordt een nieuw account voor gegevensshare gemaakt. |
+|[Een nieuwe gegevensshare maken](scripts/powershell/create-new-share-powershell.md)| Met dit PowerShell-script wordt een nieuwe gegevensshare gemaakt. |
+|[Gegevenssets toevoegen aan een share](scripts/powershell/add-datasets-powershell.md)| Dit PowerShell-script voegt een blob-gegevensset toe aan een bestaand account voor gegevensshare. |
+|[Synchronisaties van een aandeel instellen en weergeven](scripts/powershell/set-view-synchronizations-powershell.md)| Met dit PowerShell-script worden synchronisaties van een bestaand gegevensaandeel gemaakt en weergaven. |
+|[Een uitnodiging voor gegevensshare maken](scripts/powershell/create-share-invitation-powershell.md)| Met dit voorbeeld maakt PowerShell-script een uitnodiging voor toegang tot een bestaand gegevensaandeel. |
+|[Verzonden uitnodigingen voor delen weergeven](scripts/powershell/view-sent-invitations-powershell.md)| In dit voorbeeld haalt PowerShell-script een lijst op met uitnodigingen die zijn verzonden vanuit een bestaand gegevensaandeel. |
+|[Uitnodigingen voor ontvangen delen accepteren](scripts/powershell/accept-share-invitations-powershell.md)| In dit voorbeeld van PowerShell-script wordt een uitnodiging voor gegevensshare geaccepteerd|
+|[Details van een gegevensaandeel weergeven](scripts/powershell/view-share-details-powershell.md)| In dit voorbeeld bevat PowerShell-script details van gegevensshares en worden gegevens opgehaald. |
+|[Het gebruik van gedeelde gegevens controleren](scripts/powershell/monitor-usage-powershell.md)| In dit voorbeeld wordt het gebruik van verzonden gedeelde gegevens gecontroleerd. |
+|[Momentopnametriggers maken en weergeven](scripts/powershell/create-view-trigger-powershell.md)| Met dit voorbeeld maakt PowerShell-script momentopnametriggers van een share.
 
 
 

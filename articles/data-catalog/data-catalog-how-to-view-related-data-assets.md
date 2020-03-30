@@ -1,23 +1,23 @@
 ---
-title: Gerelateerde gegevensassets weer geven in Azure Data Catalog
-description: In dit artikel wordt uitgelegd hoe u gerelateerde gegevensassets van een geselecteerde gegevensasset in Azure Data Catalog kunt weer geven.
+title: Gerelateerde gegevenselementen weergeven in Azure-gegevenscatalogus
+description: In dit artikel wordt uitgelegd hoe u gerelateerde gegevenselementen van een geselecteerd gegevenselement weergeven in Azure-gegevenscatalogus.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 212ba647e6eb44e800a589928620f56fba65107c
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68737020"
 ---
-# <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>Gerelateerde gegevensassets in Azure Data Catalog weer geven?
-Met Azure Data Catalog kunt u gegevensassets weer geven die zijn gerelateerd aan een geselecteerd gegevens activum en relaties tussen deze activa weer geven. 
+# <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>Hoe u gerelateerde gegevenselementen weergeven in Azure Data Catalog?
+Met Azure Data Catalog u gegevenselementen met betrekking tot een geselecteerd gegevensitem bekijken en relaties tussen deze gegevens bekijken. 
 
 ## <a name="supported-data-sources"></a>Ondersteunde gegevensbronnen 
-Wanneer u gegevensassets registreert bij de volgende gegevens bronnen, registreert Azure Data Catalog automatisch meta gegevens over het koppelen van relaties tussen de geselecteerde gegevensassets. 
+Wanneer u gegevenselementen registreert uit de volgende gegevensbronnen, registreert Azure Data Catalog automatisch metagegevens over joinrelaties tussen de geselecteerde gegevenselementen. 
 
 - SQL Server
 - Azure SQL Database
@@ -25,26 +25,26 @@ Wanneer u gegevensassets registreert bij de volgende gegevens bronnen, registree
 - Oracle
 
 > [!NOTE]
-> Als Data Catalog relatie tussen twee gegevensassets wilt importeren, moet u beide activa tegelijk registreren. Als u een van deze afzonderlijk hebt toegevoegd, voegt u deze opnieuw toe en de andere gegevensasset om de relatie tussen de gegevens te importeren.
+> Als u de relatie tussen twee gegevenselementen wilt importeren, moet u beide elementen tegelijkertijd registreren. Als u een van deze afzonderlijk had toegevoegd, voegt u deze opnieuw toe en het andere gegevenselement om de relatie tussen deze gegevens te importeren.
 
 ## <a name="view-related-data-assets"></a>Gerelateerde gegevensassets weergeven
-Als u gegevensassets wilt weer geven die zijn gerelateerd aan een geselecteerde gegevensset, gebruikt u het tabblad **relaties** zoals wordt weer gegeven in de volgende afbeelding: 
+Als u gegevenselementen wilt weergeven die gerelateerd zijn aan een geselecteerde gegevensset, gebruikt u het tabblad **Relaties** zoals weergegeven in de volgende afbeelding: 
 
-![Gerelateerde gegevensassets Azure Data Catalog weer geven](media/data-catalog-how-to-view-related-data-assets/relationships-tab.png)
+![Azure-gegevenscatalogus - Gerelateerde gegevenselementen weergeven](media/data-catalog-how-to-view-related-data-assets/relationships-tab.png)
 
-In dit voor beeld zijn er twee relaties voor de geselecteerde **tabel productsubcategory** -gegevens Asset: 
+In dit voorbeeld zijn er twee relaties voor het geselecteerde **gegevensitem ProductSubcategorie:** 
 
-- De kolom ProductSubcategoryID van de product tabel heeft een refererende-sleutel relatie met de kolom ProductSubcategoryID van de geselecteerde tabel productsubcategory-tabel. 
-- De kolom ProductCategoryID van de tabel tabel productsubcategory heeft een refererende-sleutel relatie met de kolom ProductCategoryID van de geselecteerde ProductCategory-tabel.
+- De kolom ProductSubcategoryID van de producttabel heeft een buitenlandse sleutelrelatie met de productsubcategorieID-kolom van de geselecteerde tabel ProductSubcategorie. 
+- De kolom ProductCategoryID van de tabel ProductSubCategorie heeft een buitenlandse sleutelrelatie met de kolom ProductCategoryID van de geselecteerde tabel Productcategorie.
 
 > [!NOTE]
-> Let op de richting van de pijl in de structuur weergave relaties.  
+> Let op de richting van de pijl in de structuurweergave relaties.  
 
-Als u meer informatie wilt weer geven, bijvoorbeeld de volledig gekwalificeerde naam van de kolom, plaatst u de muis aanwijzer op en ziet u een pop-upvenster dat lijkt op de volgende afbeelding: 
+Als u meer details wilt zien, zoals de volledig gekwalificeerde naam van de kolom, beweegt u de muis omen ziet u een pop-up die vergelijkbaar is met de volgende afbeelding: 
 
-![Pop-up Azure Data Catalog-relatie](media/data-catalog-how-to-view-related-data-assets/relationship-popup.png)
+![Azure-gegevenscatalogus - pop-up relatie](media/data-catalog-how-to-view-related-data-assets/relationship-popup.png)
 
-Als u relaties wilt opnemen tussen activa die al zijn geregistreerd, registreert u deze opnieuw.
+Als u relaties wilt opnemen tussen activa die al zijn geregistreerd, moet u deze activa opnieuw registreren.
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Gegevensassets beheren](data-catalog-how-to-manage.md)

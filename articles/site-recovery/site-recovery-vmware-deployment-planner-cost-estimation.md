@@ -1,6 +1,6 @@
 ---
-title: Bekijk de kosten ramingen in de Azure Site Recovery Deployment Planner
-description: In dit artikel wordt beschreven hoe u de kosten ramingen kunt controleren in het Azure Site Recovery Deployment Planner voor VMware-nood herstel.
+title: Kostenschattingen bekijken in de Azure Site Recovery Deployment Planner
+description: In deze artikelen wordt beschreven hoe u de kostenschattingen in de Azure Site Recovery Deployment Planner voor VMware-noodherstel bekijken.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
 ms.openlocfilehash: 27678fff1c0322f9755e7726026c73934810d5d6
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953344"
 ---
-# <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Kosten ramingen controleren in VMware Deployment Planner 
+# <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Kostenschattingen bekijken in de VMware Deployment Planner 
 
 De implementatieplanner geeft een samenvatting van de kostenramingen in werkbladen met [Aanbevelingen](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations). De details staan in het werkblad Kostenramingen. Hier vindt u de uitgebreide kostenanalyse per VM. 
 
 >[!Note]
->De huidige versie van de Deployment planner tool v 2.5 biedt een schatting van de kosten voor het repliceren van Vm's naar Managed Disks.
+>De huidige versie van het hulpprogramma Implementatieplanner v2.5 biedt kostenschatting voor VM's die worden gerepliceerd naar beheerde schijven.
 
 ### <a name="cost-estimation-summary"></a>Samenvatting kostenramingen 
-De grafiek toont de weergave Samenvatting van de geschatte totale kosten voor noodherstel (DR) voor Azure van de gekozen doelregio en de valuta die u hebt opgegeven voor het genereren van rapporten.
+De grafiek toont de weergave Samenvatting van de geschatte totale noodherstel (DR) kosten voor Azure van uw gekozen doelregio en de valuta die u hebt opgegeven voor het genereren van rapporten.
 Samenvatting kostenramingen
 
 ![Samenvatting kostenramingen](media/site-recovery-vmware-deployment-planner-analyze-report/cost-estimation-summary-v2a.png)
@@ -77,7 +77,7 @@ Selecteer de gewenste instelling overeenkomstig uw vereisten.
 
 **VPN Gateway**: selecteer VPN Gateway als u die in uw omgeving hebt. Dit is standaard niet van toepassing.
 
-**Doelregio**: Azure-regio die voor DR is opgegeven. De prijs die in het rapport wordt gebruikt voor het berekenen, de opslag, het netwerk en de licentie, is gebaseerd op de Azure-prijzen voor die regio. 
+**Doelregio:** opgegeven Azure-gebied voor DR. De prijs die in het rapport wordt gebruikt voor het berekenen, de opslag, het netwerk en de licentie, is gebaseerd op de Azure-prijzen voor die regio. 
 
 ### <a name="vm-running-on-azure"></a>VM uitgevoerd op Azure
 Als u een domeincontroller of DNS-VM of SQL Server-VM met AlwaysOn-beschikbaarheidsgroepen hebt die op Azure voor DR worden uitgevoerd, kunt u het aantal virtuele machines en de grootte ervan opgeven, als u wilt dat de rekenkosten ervan worden meegenomen in de totale kosten voor DR. 
@@ -101,7 +101,7 @@ Handmatig VM's toevoegen:
 
 * Het aantal virtuele machines, de grootte van de IaaS (uw selectie)
 * Het opslagtype (Standard/Premium)
-* VM-totale opslag grootte (GB) van de bron machine
+* VM totale opslaggrootte (GB) van de bronmachine
 * Het aantal DR-oefeningen in een jaar 
 * De duur van elke DR-oefening (dagen) 
 * Het type besturingssysteem
@@ -116,17 +116,17 @@ Handmatig VM's toevoegen:
 
 **Aantal VM's**: het aantal virtuele machines dat overeenkomt met de configuratie. U kunt het aantal bestaande virtuele machines bijwerken als vergelijkbare configuratie-VM's niet zijn geprofileerd maar toch worden beveiligd.
 
-**De grootte van de IaaS (aanbevolen)** : dit is de grootte van de VM-rol van de compatibele VM die door het hulpprogramma wordt aanbevolen. 
+**De grootte van de IaaS (aanbevolen)**: dit is de grootte van de VM-rol van de compatibele VM die door het hulpprogramma wordt aanbevolen. 
 
-**De grootte van de IaaS-grootte (uw selectie)** : standaard is deze gelijk aan de aanbevolen grootte van de VM-rol. U kunt de rol aanpassen aan uw behoefte. De kosten voor het rekenen zijn gebaseerd op de geselecteerde grootte van de VM-rol.
+**De grootte van de IaaS-grootte (uw selectie)**: standaard is deze gelijk aan de aanbevolen grootte van de VM-rol. U kunt de rol aanpassen aan uw behoefte. De kosten voor het rekenen zijn gebaseerd op de geselecteerde grootte van de VM-rol.
 
 **Opslagtype**: het type opslag dat wordt gebruikt door de virtuele machine. Dit is Standard- of Premium-opslag.
 
-**Totale opslag grootte van virtuele machine (GB)** : de totale opslag van de bron-VM.
+**VM totale opslaggrootte (GB)**: De totale opslag van de bron-VM.
 
 **Aantal DR-oefeningen in een jaar**: het aantal keer dat u DR-oefeningen in een jaar uitvoert. Dit is standaard vier keer per jaar. U kunt de periode voor specifieke virtuele machines wijzigen of op alle VM's toepassen door de nieuwe waarde in de bovenste rij in te voeren en op de knop Op alles toepassen te klikken. Op basis van het aantal DR-oefeningen in een jaar en de duur van elke DR-oefening worden de totale kosten van de DR-oefening berekend.  
 
-**Duur van elke DR-oefening (dagen)** : de duur van elke DR-oefening. Standaard is dit 7 dagen om de 90 dagen, overeenkomstig [Disaster Recovery Software Assurance](https://azure.microsoft.com/pricing/details/site-recovery). U kunt de periode voor specifieke virtuele machines wijzigen of op alle VM's toepassen door een nieuwe waarde in de bovenste rij in te voeren en op de knop 'Op alles toepassen' te klikken. De totale kosten voor DR-oefeningen worden berekend op basis van het aantal DR-oefeningen in een jaar en de duur van elke DR-oefening.
+**Duur van elke DR-oefening (dagen)**: de duur van elke DR-oefening. Standaard is dit 7 dagen om de 90 dagen, overeenkomstig [Disaster Recovery Software Assurance](https://azure.microsoft.com/pricing/details/site-recovery). U kunt de periode voor specifieke virtuele machines wijzigen of op alle VM's toepassen door een nieuwe waarde in de bovenste rij in te voeren en op de knop 'Op alles toepassen' te klikken. De totale kosten voor DR-oefeningen worden berekend op basis van het aantal DR-oefeningen in een jaar en de duur van elke DR-oefening.
   
 **Type besturingssysteem**: het type besturingssysteem van de virtuele machine. Dit is Windows of Linux. Als het type besturingssysteem Windows is, kan Azure Hybrid Use Benefit op die VM worden toegepast. 
 
@@ -138,7 +138,7 @@ Handmatig VM's toevoegen:
 
 **Replicatiekosten juiste gereedstatus**: hierin zijn de opslagkosten voor replicatie opgenomen.
 
-**Totale kosten DR-oefening (gemiddeld)** : hierin zijn de reken- en opslagkosten voor de DR-oefening opgenomen.
+**Totale kosten DR-oefening (gemiddeld)**: hierin zijn de reken- en opslagkosten voor de DR-oefening opgenomen.
 
 **Kosten ASR-licentie**: de kosten voor een Azure Site Recovery-licentie.
 
@@ -150,7 +150,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Ondersteunde valuta's
 Met Azure Site Recovery Deployment Planner kunt u het kostenrapport genereren met een van de volgende valuta's.
 
-|Valuta|Naam||Valuta|Naam||Valuta|Naam|
+|Valuta|Name||Valuta|Name||Valuta|Name|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentijnse peso ($)||AUD|Australische dollar ($)||BRL|Braziliaanse real (R$)|
 |CAD|Canadese dollar ($)||CHF|Zwitserse frank. (chf)||DKK|Deense kroon (kr)|

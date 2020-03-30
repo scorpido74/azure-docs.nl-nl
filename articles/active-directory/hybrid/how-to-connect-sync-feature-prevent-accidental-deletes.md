@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect synchronisatie: onopzettelijke verwijderingen voor komen | Microsoft Docs'
-description: In dit onderwerp wordt de functie onopzettelijke verwijderingen voor komen (onbedoeld verwijderen voor komen) in Azure AD Connect beschreven.
+title: 'Azure AD Connect-synchronisatie: voorkom per ongeluk verwijderen | Microsoft Documenten'
+description: In dit onderwerp wordt de functie voor het per ongeluk verwijderen (voorkomen van onbedoelde verwijderingen) in Azure AD Connect beschreven.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,60 +17,60 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48f3109b4c87e25444629ca25411894eab8a9d56
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71827126"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect-synchronisatie: onopzettelijke verwijderingen voorkomen
-In dit onderwerp wordt de functie onopzettelijke verwijderingen voor komen (onbedoeld verwijderen voor komen) in Azure AD Connect beschreven.
+In dit onderwerp wordt de functie voor het per ongeluk verwijderen (voorkomen van onbedoelde verwijderingen) in Azure AD Connect beschreven.
 
-Wanneer u Azure AD Connect installeert, is onbedoeld verwijderen standaard ingeschakeld en zo geconfigureerd dat een export met meer dan 500 verwijderingen niet is toegestaan. Deze functie is ontworpen om u te beschermen tegen onbedoelde configuratiewijzigingen en wijzigingen aan uw on-premises directory die invloed zouden hebben op veel gebruikers en andere objecten.
+Bij het installeren van Azure AD Connect wordt Onopzettelijke verwijderingen voorkomen standaard ingeschakeld en geconfigureerd zodat exporteren van meer dan 500 verwijderingen niet is toegestaan. Deze functie is ontworpen om u te beschermen tegen onbedoelde configuratiewijzigingen en wijzigingen aan uw on-premises directory die invloed zouden hebben op veel gebruikers en andere objecten.
 
-## <a name="what-is-prevent-accidental-deletes"></a>Wat is onopzettelijke verwijderingen voor komen
-Veelvoorkomende scenario's zijn onder meer:
+## <a name="what-is-prevent-accidental-deletes"></a>Wat is voorkomen dat per ongeluk wordt verwijderd
+Veelvoorkomende scenario's wanneer u veel verwijderingen ziet, zijn:
 
-* Wijzigingen in [filters](how-to-connect-sync-configure-filtering.md) waarbij een volledige [organisatie-eenheid](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) of [domein](how-to-connect-sync-configure-filtering.md#domain-based-filtering) niet is geselecteerd.
+* Wijzigingen in [filteren](how-to-connect-sync-configure-filtering.md) waarbij een volledige [organisatie-eenheid](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) of [domein](how-to-connect-sync-configure-filtering.md#domain-based-filtering) niet is geselecteerd.
 * alle objecten in een organisatie-eenheid worden verwijderd;
 * de naam van een organisatie-eenheid is gewijzigd, zodat alle objecten in die eenheid als buiten het synchronisatiebereik worden beschouwd.
 
-De standaard waarde van 500-objecten kan worden gewijzigd met Power shell met behulp van `Enable-ADSyncExportDeletionThreshold`, die deel uitmaakt van de AD Sync module die is geïnstalleerd met Azure Active Directory Connect. U moet deze waarde zodanig configureren dat deze overeenkomt met de grootte van uw organisatie. Omdat de synchronisatie planner elke 30 minuten wordt uitgevoerd, is de waarde het aantal verwijderingen dat binnen 30 minuten wordt weer gegeven.
+De standaardwaarde van 500 objecten kan `Enable-ADSyncExportDeletionThreshold`worden gewijzigd met PowerShell met powershell, dat deel uitmaakt van de AD Sync-module die is geïnstalleerd met Azure Active Directory Connect. U moet deze waarde zo configureren dat deze past bij de grootte van uw organisatie. Aangezien de synchronisatieplanner elke 30 minuten wordt uitgevoerd, is de waarde het aantal deletes dat binnen 30 minuten wordt gezien.
 
-Als er te veel verwijderde verwijderingen naar Azure AD worden uitgevoerd, wordt de export gestopt en ontvangt u een e-mail bericht als volgt:
+Als er te veel delete's zijn gestart om naar Azure AD te worden geëxporteerd, stopt de export en ontvangt u een e-mail als volgt:
 
-![E-mail voor onopzettelijke verwijderingen voor komen](./media/how-to-connect-sync-feature-prevent-accidental-deletes/email.png)
+![Voorkomen dat per ongeluk e-mail wordt verwijderd](./media/how-to-connect-sync-feature-prevent-accidental-deletes/email.png)
 
-> *Hallo (technische contact). De Identiteitssynchronisatie-service heeft gedetecteerd dat het aantal verwijderingen de geconfigureerde drempel waarde voor verwijdering voor (organisatie naam) heeft overschreden. Er is een totaal van (aantal) objecten verzonden om te verwijderen in deze Identiteitssynchronisatie worden uitgevoerd. Er is voldaan aan de geconfigureerde drempel waarde voor verwijdering van (aantal) objecten of deze is overschreden. U moet bevestigen dat deze verwijderingen moeten worden verwerkt voordat we verdergaan. Zie het voor komen van onopzettelijke verwijderingen voor meer informatie over de fout die wordt weer gegeven in dit e-mail bericht.*
+> *Hallo (technisch contact). Op (het tijdstip) heeft de synchronisatieservice Identiteit gedetecteerd dat het aantal verwijderingen de geconfigureerde verwijderingsdrempel voor (organisatienaam) heeft overschreden. In deze pagina Identiteitsynchronisatie is in totaal (aantal)objecten verzonden voor verwijdering. Hiermee is voldaan aan of overschreden de geconfigureerde verwijderingsdrempelwaarde van (getal) objecten. We hebben u nodig om te bevestigen dat deze verwijderingen moeten worden verwerkt voordat we verder gaan. Raadpleeg de verwijderingen voor het voorkomen van onbedoelde verwijderingen voor meer informatie over de fout in dit e-mailbericht.*
 >
 > 
 
-U kunt ook de status `stopped-deletion-threshold-exceeded` zien wanneer u de **Synchronization Service Manager** gebruikers interface voor het export profiel bekijkt.
-![onopzettelijke verwijderingen synchroniseren Service Manager gebruikers interface](./media/how-to-connect-sync-feature-prevent-accidental-deletes/syncservicemanager.png)
+U ook `stopped-deletion-threshold-exceeded` de status zien wanneer u in de **gebruikersinterface van synchronisatieservicebeheermanager** voor het exportprofiel kijkt.
+![Voorkomen dat per ongeluk de gebruikersinterface van Sync Service Manager wordt verwijderd](./media/how-to-connect-sync-feature-prevent-accidental-deletes/syncservicemanager.png)
 
-Als dit niet werd verwacht, onderzoekt en corrigeert u corrigerende maat regelen. Ga als volgt te werk om te zien welke objecten er worden verwijderd:
+Als dit onverwacht was, dan onderzoeken en corrigerende maatregelen te nemen. Ga als volgt te werk om te zien welke objecten op het punt staan te worden verwijderd:
 
-1. Start de **synchronisatie service** vanuit het menu Start.
-2. Naar **connectors**.
-3. Selecteer de connector met het type **Azure Active Directory**.
-4. Selecteer onder **acties** aan de rechter kant de **ruimte Zoek connector**.
-5. Selecteer in het pop-upvenster onder **Scope**de optie **verbinding verbroken sinds** en kies een tijd in het verleden. Klik op **Zoeken**. Deze pagina geeft een overzicht van alle objecten die moeten worden verwijderd. Als u op elk item klikt, kunt u aanvullende informatie over het object ophalen. U kunt ook op **kolom instelling** klikken om aanvullende kenmerken toe te voegen die zichtbaar zijn in het raster.
+1. Synchronisatieservice **starten** vanuit het menu Start.
+2. Ga naar **Connectors**.
+3. Selecteer de connector met type **Azure Active Directory**.
+4. Selecteer onder **Acties** aan de rechterkant **zoekconnectorruimte**.
+5. Selecteer in de pop-up onder **Scope**de optie **Verbroken sinds** en kies een tijd in het verleden. Klik op **Zoeken**. Op deze pagina vindt u een overzicht van alle objecten die op het punt staan te worden verwijderd. Door op elk item te klikken, u aanvullende informatie over het object krijgen. U ook op **Kolominstelling** klikken om extra kenmerken toe te voegen die zichtbaar zijn in het raster.
 
-![Zoek connector ruimte](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
+![Zoekconnectorruimte](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
 
-[!NOTE] Als u niet zeker weet of alle verwijderingen gewenst zijn, en u een veiliger route wilt door lopen. U kunt de Power shell-cmdlet: `Enable-ADSyncExportDeletionThreshold` een nieuwe drempel waarde instellen in plaats van de drempel waarde in te scha kelen, waardoor ongewenste verwijderingen kunnen worden toegestaan. 
+[!NOTE] Als u niet zeker weet of alle verwijderingen gewenst zijn en een veiligere route wilt afleggen. U de PowerShell-cmdlet gebruiken: `Enable-ADSyncExportDeletionThreshold` om een nieuwe drempel in te stellen in plaats van de drempelwaarde uit te schakelen die ongewenste verwijderingen mogelijk maakt. 
 
 ## <a name="if-all-deletes-are-desired"></a>Als alle verwijderingen gewenst zijn
-Als alle verwijderingen gewenst zijn, gaat u als volgt te werk:
+Als alle verwijderingen gewenst zijn, ga dan als volgt te werk:
 
-1. Als u de huidige drempel waarde voor verwijderen wilt ophalen, voert u de Power shell-cmdlet `Get-ADSyncExportDeletionThreshold`uit. Geef een globaal beheerders account en wacht woord voor Azure AD op. De standaard waarde is 500.
-2. Als u deze beveiliging tijdelijk wilt uitschakelen en deze wilt verwijderen, voert u de Power shell-cmdlet uit: `Disable-ADSyncExportDeletionThreshold`. Geef een globaal beheerders account en wacht woord voor Azure AD op.
+1. Voer de PowerShell-cmdlet `Get-ADSyncExportDeletionThreshold`uit om de huidige verwijderingsdrempel op te halen. Geef een Azure AD Global Administrator-account en -wachtwoord op. De standaardwaarde is 500.
+2. Voer de PowerShell-cmdlet uit om deze beveiliging tijdelijk uit `Disable-ADSyncExportDeletionThreshold`te schakelen en deze deletes door te laten gaan: . Geef een Azure AD Global Administrator-account en -wachtwoord op.
    ![Referenties](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
-3. Selecteer, terwijl de Azure Active Directory-Connector nog steeds is geselecteerd, de actie **uitvoeren** en selecteer **exporteren**.
-4. Als u de beveiliging opnieuw wilt inschakelen, voert u de Power shell-cmdlet uit: `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`. Vervang 500 door de waarde die u hebt opgevallen bij het ophalen van de huidige verwijderings drempel. Geef een globaal beheerders account en wacht woord voor Azure AD op.
+3. Als de Azure Active Directory Connector nog steeds is geselecteerd, selecteert u de actie **Uitvoeren** en selecteert u **Exporteren**.
+4. Voer de PowerShell-cmdlet uit om `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`de beveiliging opnieuw in te schakelen: . Vervang 500 door de waarde die u hebt opgemerkt bij het ophalen van de huidige verwijderingsdrempel. Geef een Azure AD Global Administrator-account en -wachtwoord op.
 
 ## <a name="next-steps"></a>Volgende stappen
-**Overzichts onderwerpen**
+**Overzichtsonderwerpen**
 
-* [Azure AD Connect synchronisatie: synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)
-* [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md)
+* [Synchronisatie van Azure AD Connect: synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)
+* [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)

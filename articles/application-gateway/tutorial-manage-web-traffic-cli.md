@@ -8,34 +8,34 @@ ms.topic: article
 ms.date: 07/20/2019
 ms.author: victorh
 ms.openlocfilehash: 3064def2eac0aaee5c04f7ab736cf539ae372cb4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68359897"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Webverkeer met een toepassingsgateway beheren met behulp van Azure CLI
 
-De toepassingsgateway wordt gebruikt voor het beheren en beveiligen van webverkeer naar servers die door u worden onderhouden. U kunt de Azure CLI gebruiken om een [toepassings gateway](overview.md) te maken die gebruikmaakt van een schaalset voor [virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor back-endservers. In dit voor beeld bevat de schaalset twee exemplaren van virtuele machines. De schaalset wordt toegevoegd aan de standaard back-end-groep van de toepassings gateway.
+De toepassingsgateway wordt gebruikt voor het beheren en beveiligen van webverkeer naar servers die door u worden onderhouden. U de Azure CLI gebruiken om een [toepassingsgateway](overview.md) te maken die gebruikmaakt van een [virtuele machineschaalset](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor backendservers. In dit voorbeeld bevat de schaalset twee virtuele machine-exemplaren. De schaalset wordt toegevoegd aan de standaardbackendpool van de toepassingsgateway.
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Het netwerk instellen
+> * Netwerk instellen
 > * Een toepassingsgateway maken
-> * Een virtuele-machineschaalset maken met de standaard back-endpool
+> * Een virtuele-machineschaalset maken met de standaard back-endgroep
 
-Als u wilt, kunt u deze procedure volt ooien met behulp van [Azure PowerShell](tutorial-manage-web-traffic-powershell.md).
+Als u dat liever hebt, u deze procedure voltooien met [Azure PowerShell.](tutorial-manage-web-traffic-powershell.md)
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze Quick Start de Azure CLI-versie 2.0.4 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u met deze quickstart de Azure CLI-versie 2.0.4 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met de opdracht [az group create](/cli/azure/group#az-group-create).
+Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met [az group create](/cli/azure/group#az-group-create).
 
 In het volgende voorbeeld wordt de resourcegroep *myResourceGroupAG* gemaakt op de locatie *eastus*.
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Netwerkbronnen maken 
 
-Maak het virtuele netwerk *myVNet* en het subnet *myAGSubnet* met [az network vnet create](/cli/azure/network/vnet). Vervolgens kunt u het subnet *myBackendSubnet*, dat voor de back-endservers vereist is, toevoegen met [az network vnet subnet create](/cli/azure/network/vnet/subnet). Maak het openbare IP-adres*myAGPublicIPAddress* met [az network public-ip create](/cli/azure/network/public-ip).
+Maak het virtuele netwerk *myVNet* en het subnet *myAGSubnet* met [az network vnet create](/cli/azure/network/vnet). Vervolgens kunt u het subnet *myBackendSubnet*, dat voor de back-endservers vereist is, toevoegen met [az network vnet subnet create](/cli/azure/network/vnet/subnet). Maak het openbare IP-adres *myAGPublicIPAddress* met [az network public-ip create](/cli/azure/network/public-ip).
 
 ```azurecli-interactive
 az network vnet create \
@@ -71,7 +71,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Een toepassingsgateway maken
 
-Gebruik [az network application-gateway create](/cli/azure/network/application-gateway) om de toepassingsgateway *myAppGateway* te maken. Als u met de Azure CLI een toepassingsgateway maakt, geeft u configuratiegegevens op, zoals capaciteit, SKU en HTTP-instellingen. De toepassingsgateway wordt toegewezen aan *myAGSubnet* en *myPublicIPAddress*, die u zojuist hebt gemaakt. 
+Gebruik [het az-netwerk applicatie-gateway maken](/cli/azure/network/application-gateway) om de applicatie gateway genaamd *myAppGateway*te maken. Als u een toepassingsgateway met de Azure CLI maakt, geeft u configuratiegegevens op, zoals capaciteit, SKU en HTTP-instellingen. De toepassingsgateway wordt toegewezen aan *myAGSubnet* en *myPublicIPAddress*, die u zojuist hebt gemaakt. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -89,13 +89,13 @@ az network application-gateway create \
   --public-ip-address myAGPublicIPAddress
 ```
 
- Het kan enkele minuten duren voordat de toepassingsgateway is gemaakt. Nadat de toepassings gateway is gemaakt, ziet u deze nieuwe functies:
+ Het kan enkele minuten duren voordat de toepassingsgateway is gemaakt. Nadat de toepassingsgateway is gemaakt, ziet u de volgende nieuwe functies:
 
 - *appGatewayBackendPool*: een toepassingsgateway moet ten minste één back-endadresgroep hebben.
 - *appGatewayBackendHttpSettings*: hiermee wordt aangegeven dat voor de communicatie poort 80 en een HTTP-protocol worden gebruikt.
 - *appGatewayHttpListener*: de standaard-listener die aan *appGatewayBackendPool* is gekoppeld.
 - *appGatewayFrontendIP*: hiermee wordt *myAGPublicIPAddress* aan *appGatewayHttpListener* toegewezen.
-- *rule1*: de standaardrouteringsregel die aan *appGatewayHttpListener* is gekoppeld.
+- *rule1* - De standaardrouteringsregel die aan *appGatewayHttpListener* is gekoppeld.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Een virtuele-machineschaalset maken
 

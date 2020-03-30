@@ -12,13 +12,13 @@ ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
 ms.openlocfilehash: ff2508952b75bad88ff8ff92388c20ba52f50f42
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73818262"
 ---
-# <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Quick Start: een firewall regel op server niveau maken voor één en gepoolde data bases met behulp van de Azure Portal
+# <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Snelstart: een firewallregel op serverniveau maken voor afzonderlijke en samengevoegde databases met de Azure-portal
 
 Deze quickstart beschrijft hoe u een [firewallregel op serverniveau](sql-database-firewall-configure.md) maakt voor individuele en pooldatabases in Azure SQL Database met behulp van de Azure-portal, zodat u verbinding kunt maken met databaseservers, individuele databases en elastische pools en de bijbehorende databases. Een firewallregel is vereist om verbinding te maken vanaf andere Azure-resources en vanaf on-premises bronnen.
 
@@ -28,7 +28,7 @@ Deze quickstart gebruikt de resources die zijn gemaakt in [Create a single datab
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Een IP-firewallregel op serverniveau maken
 
@@ -54,7 +54,7 @@ Volg deze stappen om een IP-firewallregel op serverniveau te maken voor het IP-a
 4. Kies **IP van client toevoegen** op de werkbalk om uw huidige IP-adres toe te voegen aan een nieuwe IP-firewallregel op serverniveau. Een IP-firewallregel op serverniveau kan poort 1433 openen voor een individueel IP-adres of voor een bereik van IP-adressen.
 
    > [!IMPORTANT]
-   > Standaard is toegang via de SQL Database firewall uitgeschakeld voor alle Azure-Services. Kies **op** deze pagina als u toegang wilt inschakelen voor alle Azure-Services.
+   > Standaard is de toegang via de SQL Database-firewall uitgeschakeld voor alle Azure-services. Kies **OP** DEZE pagina als u toegang wilt inschakelen voor alle Azure-services.
    >
 
 5. Selecteer **Opslaan**. Er wordt een IP-firewallregel op serverniveau gemaakt voor uw huidige IP-adres waarbij poort 1433 wordt geopend op de SQL Database-server.

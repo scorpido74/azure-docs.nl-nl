@@ -1,156 +1,156 @@
 ---
-title: Azure Analysis Services modellen vernieuwen met Azure Automation | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u code model vernieuwt voor Azure Analysis Services met behulp van Azure Automation.
+title: Azure Analysis Services-modellen vernieuwen met Azure Automation | Microsoft Documenten
+description: In dit artikel wordt beschreven hoe u modelvernieuwingen voor Azure Analysis Services codeert met Azure Automation.
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73572355"
 ---
 # <a name="refresh-with-azure-automation"></a>Vernieuwen met Azure Automation
 
-Met Azure Automation-en Power shell-Runbooks kunt u geautomatiseerde gegevens vernieuwings bewerkingen uitvoeren op de tabellaire modellen van Azure Analysis.  
+Met Azure Automation en PowerShell Runbooks u geautomatiseerde bewerkingen voor het vernieuwen van gegevens uitvoeren op uw tabelmodellen voor Azure Analysis.  
 
-In het voor beeld in dit artikel wordt gebruikgemaakt van de [Power shell sqlserver-modules](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps).
+Het voorbeeld in dit artikel maakt gebruik van de [PowerShell SqlServer-modules.](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)
 
-Verderop in dit artikel vindt u een voor beeld van een Power shell-Runbook, dat laat zien hoe u een model vernieuwt.  
+Een voorbeeld PowerShell Runbook, waaruit blijkt dat een model wordt vernieuwd, wordt later in dit artikel gegeven.  
 
 ## <a name="authentication"></a>Authentication
 
-Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory (OAuth 2)-token.  In het voor beeld in dit artikel wordt gebruikgemaakt van een service-principal (SPN) voor het verifiëren van Azure Analysis Services.
+Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory -token (OAuth 2).  In het voorbeeld in dit artikel wordt een Service Principal (SPN) gebruikt om te verifiëren voor Azure Analysis Services.
 
-Zie [een service-principal maken met behulp van Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie over het maken van een service-principal.
+Zie [Een serviceprincipal maken met Azure-portal](../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie over het maken van een serviceprincipal.
 
 ## <a name="prerequisites"></a>Vereisten
 
 > [!IMPORTANT]
-> In het volgende voor beeld wordt ervan uitgegaan dat de Azure Analysis Services firewall is uitgeschakeld. Als de firewall is ingeschakeld, moet het open bare IP-adres van de initiator voor aanvragen worden white list in de firewall.
+> In het volgende voorbeeld wordt ervan uitgegaan dat de firewall van Azure Analysis Services is uitgeschakeld. Als de firewall is ingeschakeld, moet het openbare IP-adres van de initiator van de aanvraag op de witte lijst in de firewall worden weergegeven.
 
-### <a name="install-sqlserver-modules-from-powershell-gallery"></a>Installeer SqlServer-modules vanuit Power shell Gallery.
+### <a name="install-sqlserver-modules-from-powershell-gallery"></a>Installeer SqlServer-modules vanuit PowerShell-galerie.
 
-1. Klik in uw Azure Automation-account op **modules**en **Blader**vervolgens op Galerie.
+1. Klik in uw Azure Automation-account op **Modules**en **blader vervolgens door de galerie**.
 
-2. Zoek in de zoek balk naar **sqlserver**.
+2. Zoek in de zoekbalk naar **SqlServer**.
 
-    ![Modules zoeken](./media/analysis-services-refresh-azure-automation/1.png)
+    ![Zoekmodules](./media/analysis-services-refresh-azure-automation/1.png)
 
-3. Selecteer SqlServer en klik vervolgens op **importeren**.
+3. Selecteer SqlServer en klik op **Importeren**.
  
     ![Module importeren](./media/analysis-services-refresh-azure-automation/2.png)
 
 4. Klik op **OK**.
  
-### <a name="create-a-service-principal-spn"></a>Een service-principal maken (SPN)
+### <a name="create-a-service-principal-spn"></a>Een serviceprincipal (SPN) maken
 
-Zie [een service-principal maken met behulp van Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie over het maken van een service-principal.
+Zie [Een serviceprincipal maken met Azure-portal](../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie over het maken van een serviceprincipal.
 
 ### <a name="configure-permissions-in-azure-analysis-services"></a>Machtigingen configureren in Azure Analysis Services
  
-De service-principal die u maakt, moet Server Administrator-machtigingen hebben op de server. Zie [een Service-Principal toevoegen aan de rol Server beheerder](analysis-services-addservprinc-admins.md)voor meer informatie.
+De serviceprincipal die u maakt, moet serverbeheerdersmachtigingen op de server hebben. Zie Een [serviceprincipal toevoegen aan de serverbeheerderrol](analysis-services-addservprinc-admins.md)voor meer informatie.
 
-## <a name="design-the-azure-automation-runbook"></a>Het Azure Automation Runbook ontwerpen
+## <a name="design-the-azure-automation-runbook"></a>De Azure Automation Runbook ontwerpen
 
-1. In het Automation-account maakt u een **gegevens** bron die wordt gebruikt om de Service-Principal veilig op te slaan.
+1. Maak in het automatiseringsaccount een **credentials-bron** die wordt gebruikt om de Service Principal veilig op te slaan.
 
-    ![Referentie maken](./media/analysis-services-refresh-azure-automation/6.png)
+    ![Referenties maken](./media/analysis-services-refresh-azure-automation/6.png)
 
-2. Voer de details in voor de referentie.  Voer voor de **gebruikers naam**de **SPN ClientId**in voor het **wacht woord**, voer het **geheim**van de SPN in.
+2. Voer de gegevens voor de referentie in.  Voer voor de **gebruikersnaam**de **SPN ClientId**in voor het **wachtwoord**, voer het **SPN-geheim**in .
 
-    ![Referentie maken](./media/analysis-services-refresh-azure-automation/7.png)
+    ![Referenties maken](./media/analysis-services-refresh-azure-automation/7.png)
 
-3. Het Automation-Runbook importeren
+3. Het runbook voor automatisering importeren
 
     ![Runbook importeren](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. Blader naar het bestand **Refresh-model. ps1** , geef een **naam** en **Beschrijving**op en klik vervolgens op **maken**.
+4. Blader naar het **bestand Refresh-Model.ps1,** geef een **naam** en **beschrijving**op en klik op **Maken**.
 
     ![Runbook importeren](./media/analysis-services-refresh-azure-automation/9.png)
 
-5. Wanneer het Runbook is gemaakt, gaat het automatisch naar de bewerkings modus.  Selecteer **Publiceren**.
+5. Wanneer de Runbook is gemaakt, gaat deze automatisch in de bewerkingsmodus.  Selecteer **Publiceren**.
 
     ![Runbook publiceren](./media/analysis-services-refresh-azure-automation/10.png)
 
     > [!NOTE]
-    > De referentie resource die eerder is gemaakt, wordt opgehaald door het runbook met behulp van de opdracht **Get-AutomationPSCredential** .  Deze opdracht wordt vervolgens door gegeven aan de Power shell **-opdracht invoke-ProcessASADatabase** om de verificatie uit te voeren voor Azure Analysis Services.
+    > De referentiebron die eerder is gemaakt, wordt opgehaald door de runbook met de opdracht **Get-AutomationPSCredential.**  Deze opdracht wordt vervolgens doorgegeven aan de opdracht **Invoke-ProcessASADatabase** PowerShell om de verificatie uit te voeren naar Azure Analysis Services.
 
-6. Test het runbook door op **Start**te klikken.
+6. Test het runbook door op **Start**te klikken .
 
-    ![Het Runbook starten](./media/analysis-services-refresh-azure-automation/11.png)
+    ![Het runbook starten](./media/analysis-services-refresh-azure-automation/11.png)
 
-7. Vul de para meters **DATABASENAME**, **ANALYSISSERVER**en **REFRESHTYPE** in en klik vervolgens op **OK**. De para meter **WEBHOOKDATA** is niet vereist wanneer het Runbook hand matig wordt uitgevoerd.
+7. Vul de parameters **DATABASENAME,** **ANALYSISSERVER**en **REFRESHTYPE** in en klik op **OK**. De parameter **WEBHOOKDATA** is niet vereist wanneer de Runbook handmatig wordt uitgevoerd.
 
-    ![Het Runbook starten](./media/analysis-services-refresh-azure-automation/12.png)
+    ![Het runbook starten](./media/analysis-services-refresh-azure-automation/12.png)
 
-Als het Runbook is uitgevoerd, ontvangt u een uitvoer zoals het volgende:
+Als de runbook is uitgevoerd, ontvangt u een uitvoer zoals:
 
-![Geslaagde uitvoering](./media/analysis-services-refresh-azure-automation/13.png)
+![Succesvolle run](./media/analysis-services-refresh-azure-automation/13.png)
 
-## <a name="use-a-self-contained-azure-automation-runbook"></a>Een Azure Automation Runbook gebruiken dat zich op zichzelf bevindt
+## <a name="use-a-self-contained-azure-automation-runbook"></a>Een op zichzelf staande Azure Automation Runbook gebruiken
 
-Het Runbook kan worden geconfigureerd om het Azure Analysis Services model vernieuwen volgens een geplande basis te activeren.
+De Runbook kan worden geconfigureerd om de vernieuwing van het Azure Analysis Services-model op een geplande basis te activeren.
 
 Dit kan als volgt worden geconfigureerd:
 
-1. Klik in het Automation-Runbook op **planningen**en vervolgens op **een schema toevoegen**.
+1. Klik in het runboek automatisering op **Planningen**en **voeg vervolgens een planning toe**.
  
     ![Planning maken](./media/analysis-services-refresh-azure-automation/14.png)
 
-2. Klik op **planning** > **een nieuw schema te maken**en vul de details in.
+2. Klik **op Een** > **nieuw schema plannen**en vul de details in.
 
     ![Planning configureren](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. Klik op **Maken**.
+3. Klik **op Maken**.
 
-4. Vul de para meters voor de planning in. Deze worden gebruikt telkens wanneer het Runbook wordt geactiveerd. De para meter **WEBHOOKDATA** moet leeg blijven als deze wordt uitgevoerd via een schema.
+4. Vul de parameters voor het schema in. Deze worden elke keer gebruikt wanneer het runbook wordt geactiveerd. De parameter **WEBHOOKDATA** moet leeg blijven bij het uitvoeren via een schema.
 
-    ![Para meters configureren](./media/analysis-services-refresh-azure-automation/16.png)
+    ![Parameters configureren](./media/analysis-services-refresh-azure-automation/16.png)
 
 5. Klik op **OK**.
 
-## <a name="consume-with-data-factory"></a>Gebruiken met Data Factory
+## <a name="consume-with-data-factory"></a>Verbruiken met gegevensfabriek
 
-Als u het runbook wilt gebruiken met behulp van Azure Data Factory, maakt u eerst een **webhook** voor het runbook. De **webhook** bevat een URL die kan worden aangeroepen via een Azure Data Factory-webactiviteit.
+Als u de runbook wilt gebruiken met Azure Data Factory, maakt u eerst een **Webhook** voor het runbook. De **Webhook** geeft een URL die kan worden aangeroepen via een Azure Data Factory-webactiviteit.
 
 > [!IMPORTANT]
-> Als u een **webhook**wilt maken, moet de status van het Runbook worden **gepubliceerd**.
+> Als u een **webhook wilt**maken, moet de status van het runbook worden **gepubliceerd**.
 
-1. Klik in uw Automation-Runbook op **webhooks**en klik vervolgens op **webhook toevoegen**.
+1. Klik in uw automatiseringsrunboek op **Webhooks**en klik vervolgens op **Webhook toevoegen**.
 
    ![Webhook toevoegen](./media/analysis-services-refresh-azure-automation/17.png)
 
-2. Geef de webhook een naam en een verval datum.  De naam identificeert alleen de webhook binnen het Automation-Runbook, maar maakt geen deel uit van de URL.
+2. Geef de Webhook een naam en een vervaldatum.  De naam identificeert alleen de Webhook in het Automation Runbook, deze maakt geen deel uit van de URL.
 
    >[!CAUTION]
-   >Zorg ervoor dat u de URL kopieert voordat u de wizard sluit, omdat u deze niet meer kunt ophalen nadat deze is gesloten.
+   >Zorg ervoor dat u de URL kopieert voordat u de wizard sluit, omdat u deze niet terug krijgen nadat deze is gesloten.
     
    ![Webhook configureren](./media/analysis-services-refresh-azure-automation/18.png)
 
-    De para meters voor de webhook kunnen leeg blijven.  Bij het configureren van de Azure Data Factory-webactiviteit, kunnen de para meters worden door gegeven aan de hoofd tekst van de webaanroep.
+    De parameters voor de webhook kunnen leeg blijven.  Bij het configureren van de webactiviteit Azure Data Factory kunnen de parameters worden doorgegeven aan de hoofdtekst van het webgesprek.
 
-3. Configureer in Data Factory een **webactiviteit**
+3. Configureer in Gegevensfabriek een **webactiviteit**
 
 ### <a name="example"></a>Voorbeeld
 
-   ![Voor beeld-webactiviteit](./media/analysis-services-refresh-azure-automation/19.png)
+   ![Voorbeeld van webactiviteit](./media/analysis-services-refresh-azure-automation/19.png)
 
-De **URL** is de URL die is gemaakt op basis van de webhook.
+De **URL** is de URL die is gemaakt van de Webhook.
 
-De **hoofd tekst** is een JSON-document dat de volgende eigenschappen moet bevatten:
+De **body** is een JSON-document dat de volgende eigenschappen moet bevatten:
 
 
 |Eigenschap  |Waarde  |
 |---------|---------|
-|**AnalysisServicesDatabase**     |De naam van de Azure Analysis Services Data Base <br/> Voor beeld: AdventureWorksDB         |
-|**AnalysisServicesServer**     |De naam van de Azure Analysis Services-server. <br/> Voor beeld: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
-|**DatabaseRefreshType**     |Het type vernieuwing dat moet worden uitgevoerd. <br/> Voor beeld: volledig         |
+|**AnalysisServicesDatabase**     |De naam van de Azure Analysis Services-database <br/> Voorbeeld: AdventureWorksDB         |
+|**AnalysisServicesServer**     |De naam van de Azure Analysis Services-server. <br/> Voorbeeld: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
+|**DatabaseRefreshType**     |Het type vernieuwing dat moet worden uitgevoerd. <br/> Voorbeeld: Vol         |
 
-Voor beeld van JSON-hoofd tekst:
+Voorbeeld JSON body:
 
 ```json
 {
@@ -160,30 +160,30 @@ Voor beeld van JSON-hoofd tekst:
 }
 ```
 
-Deze para meters worden gedefinieerd in het Power shell-script voor runbook.  Wanneer de webactiviteit wordt uitgevoerd, is de door gegeven JSON-nettolading WEBHOOKDATA.
+Deze parameters worden gedefinieerd in het PowerShell-script van runbook.  Wanneer de webactiviteit wordt uitgevoerd, is de DOORgegeven JSON-payload WEBHOOKDATA.
 
-Dit wordt gedeserialiseerd en opgeslagen als Power shell-para meters, die vervolgens worden gebruikt door de opdracht invoke-ProcesASDatabase Power shell.
+Dit wordt gedeserialiseerd en opgeslagen als PowerShell-parameters, die vervolgens worden gebruikt door de opdracht Invoke-ProcesASDatabase PowerShell.
 
-![Ongeserialiseerde webhook](./media/analysis-services-refresh-azure-automation/20.png)
+![Gedeserialiseerde Webhook](./media/analysis-services-refresh-azure-automation/20.png)
 
-## <a name="use-a-hybrid-worker-with-azure-analysis-services"></a>Een Hybrid Worker gebruiken met Azure Analysis Services
+## <a name="use-a-hybrid-worker-with-azure-analysis-services"></a>Een hybride werker gebruiken met Azure Analysis Services
 
-Een virtuele machine van Azure met een statisch openbaar IP-adres kan worden gebruikt als Azure Automation Hybrid Worker.  Dit open bare IP-adres kan vervolgens worden toegevoegd aan de firewall van Azure Analysis Services.
+Een Azure Virtual Machine met een statisch openbaar IP-adres kan worden gebruikt als Azure Automation Hybrid Worker.  Dit openbare IP-adres kan vervolgens worden toegevoegd aan de firewall van Azure Analysis Services.
 
 > [!IMPORTANT]
-> Zorg ervoor dat het open bare IP-adres van de virtuele machine is geconfigureerd als statisch.
+> Zorg ervoor dat het openbare IP-adres van de virtuele machine is geconfigureerd als statisch.
 >
->Zie voor meer informatie over het configureren van Azure Automation Hybrid Workers [resources in uw Data Center of Cloud automatiseren met behulp van Hybrid Runbook worker](../automation/automation-hybrid-runbook-worker.md#install-a-hybrid-runbook-worker).
+>Zie [Resources automatiseren in uw datacenter of cloud met Hybride Runbook Worker](../automation/automation-hybrid-runbook-worker.md#install-a-hybrid-runbook-worker)voor meer informatie over het configureren van Hybride Werknemers voor Azure Automation.
 
-Nadat een Hybrid Worker is geconfigureerd, maakt u een webhook zoals beschreven in de sectie [die wordt gebruikt met Data Factory](#consume-with-data-factory).  Het enige verschil is hier het selecteren van de optie **uitvoeren op** > **Hybrid worker** bij het configureren van de webhook.
+Zodra een hybride werknemer is geconfigureerd, maakt u een webhook zoals beschreven in de sectie [Verbruiken met gegevensfabriek](#consume-with-data-factory).  Het enige verschil hier is om de optie **Uitvoeren op** > **hybride werknemers** te selecteren bij het configureren van de Webhook.
 
-Voor beeld-webhook met Hybrid Worker:
+Voorbeeld van webhook met Hybride Werker:
 
-![Voor beeld Hybrid Worker webhook](./media/analysis-services-refresh-azure-automation/21.png)
+![Voorbeeld Hybride Werknemer Webhook](./media/analysis-services-refresh-azure-automation/21.png)
 
-## <a name="sample-powershell-runbook"></a>Voor beeld Power shell-Runbook
+## <a name="sample-powershell-runbook"></a>Voorbeeld van PowerShell-runbook
 
-Het volgende code fragment is een voor beeld van het vernieuwen van het Azure Analysis Services model met behulp van een Power shell-Runbook.
+Het volgende codefragment is een voorbeeld van het vernieuwen van het Azure Analysis Services-model met behulp van een PowerShell Runbook.
 
 ```powershell
 param
@@ -226,5 +226,5 @@ else
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Voorbeelden](analysis-services-samples.md)  
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)
+[Monsters](analysis-services-samples.md)  
+[REST-API](https://docs.microsoft.com/rest/api/analysisservices/servers)

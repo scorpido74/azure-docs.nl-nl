@@ -1,6 +1,6 @@
 ---
-title: Overzicht van Azure Active Directory Identity Protection beveiliging
-description: Meer informatie over hoe het beveiligings overzicht u een inzicht geeft in de beveiligings postuur van uw organisatie.
+title: Overzicht van de beveiliging van Azure Active Directory-beveiliging
+description: Ontdek hoe het overzicht Beveiliging u inzicht geeft in de beveiligingshouding van uw organisatie.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,58 +12,58 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9550684ad154f28a02ee347fd0a79c1ec286beb
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74382185"
 ---
-# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection-beveiligings overzicht
+# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - Overzicht van beveiliging
 
-Het [overzicht van beveiliging](https://aka.ms/IdentityProtectionRefresh) in de Azure Portal biedt u inzicht in de beveiligings postuur van uw organisatie. Het helpt mogelijke aanvallen te identificeren en inzicht te krijgen in de effectiviteit van uw beleid.
+Het [beveiligingsoverzicht](https://aka.ms/IdentityProtectionRefresh) in de Azure-portal geeft u inzicht in de beveiligingshouding van uw organisatie. Het helpt bij het identificeren van potentiële aanvallen en het begrijpen van de effectiviteit van uw beleid.
 
-Het beveiligings overzicht is breed onderverdeeld in twee secties:
+Het 'Beveiligingsoverzicht' is grofweg verdeeld in twee secties:
 
-- Trends, aan de linkerkant, bieden een risico lijn voor uw organisatie.
-- Naast tegels markeert u aan de rechter kant de belangrijkste problemen in uw organisatie en wordt voorgesteld hoe u snel actie kunt ondernemen.
+- Trends, aan de linkerkant, bieden een tijdlijn van risico's in uw organisatie.
+- Tegels, aan de rechterkant, markeer de belangrijkste lopende problemen in uw organisatie en stel voor hoe u snel actie ondernemen.
 
 ![Beveiligingsoverzicht](./media/concept-identity-protection-security-overview/01.png)
   
 ## <a name="trends"></a>Trends
 
-### <a name="new-risky-users-detected"></a>Er zijn nieuwe Risk ante gebruikers gedetecteerd
+### <a name="new-risky-users-detected"></a>Nieuwe riskante gebruikers gedetecteerd
 
-Dit diagram toont het aantal nieuwe Risk ante gebruikers dat gedurende de gekozen tijds periode is gedetecteerd. U kunt de weer gave van dit diagram filteren op risico niveau van de gebruiker (laag, gemiddeld, hoog). Beweeg de muis aanwijzer over de UTC-datum om het aantal Risk ante gebruikers te zien dat voor die dag is gedetecteerd. Als u op deze grafiek klikt, gaat u naar het rapport Risk ante gebruikers. Als u gebruikers die risico lopen, wilt oplossen, kunt u het wacht woord wijzigen.
+Deze grafiek toont het aantal nieuwe riskante gebruikers dat is gedetecteerd gedurende de gekozen periode. U de weergave van deze grafiek filteren op het risiconiveau van de gebruiker (laag, gemiddeld, hoog). Plaats de plaats boven de utc-datumstappen om het aantal riskante gebruikers te zien dat voor die dag is gedetecteerd. Een klik op deze grafiek brengt u naar het rapport 'Riskante gebruikers'. Als u gebruikers wilt herstellen die risico lopen, u overwegen hun wachtwoord te wijzigen.
 
-### <a name="new-risky-sign-ins-detected"></a>Er zijn nieuwe Risk ante aanmeldingen gedetecteerd
+### <a name="new-risky-sign-ins-detected"></a>Nieuwe risicovolle aanmeldingen gedetecteerd
 
-Dit diagram toont het aantal Risk ante aanmeldingen dat tijdens de gekozen tijds periode is gedetecteerd. U kunt de weer gave van deze grafiek filteren op het type aanmeldings risico (realtime of aggregatie) en het risico niveau voor aanmelden (laag, gemiddeld, hoog). Niet-beveiligde aanmeldingen zijn geslaagde realtime-aanmeldingen waarvoor geen MFA-Challenge werd geleverd. (Opmerking: aanmeldingen die riskant zijn omdat offline detecties niet in realtime kunnen worden beveiligd met beleids regels voor aanmeldings Risico's). Beweeg de muis aanwijzer over de UTC-datum om het aantal aanmeldingen dat voor die dag is gedetecteerd, te bekijken. Als u op deze grafiek klikt, gaat u naar het rapport Risk ante aanmeldingen.
+Deze grafiek toont het aantal risicovolle aanmeldingen dat is gedetecteerd gedurende de gekozen periode. U de weergave van deze grafiek filteren op het aanmeldingsrisicotype (real-time of aggregaat) en het aanmeldingsrisiconiveau (laag, gemiddeld, hoog). Onbeschermde aanmeldingen zijn succesvolle real-time risicoaanmeldingen die niet werden uitgedaagd door MFA. (Opmerking: Aanmeldingen die riskant zijn vanwege offline detecties, kunnen niet in realtime worden beschermd door aanmeldingsrisicobeleid). Plaats de plaats boven de UTC-datumstappen om het aantal aanmeldingen te zien dat voor die dag wordt gedetecteerd. Een klik op deze grafiek brengt u naar het rapport 'Riskante aanmeldingen'.
 
-## <a name="tiles"></a>Pagina's
+## <a name="tiles"></a>Tegels
  
 ### <a name="high-risk-users"></a>Gebruikers met een hoog risico
 
-De tegel gebruikers met een hoog risico toont het nieuwste aantal gebruikers met een hoge kans op inbreuk op de identiteit. Deze moeten de hoogste prioriteit voor onderzoek zijn. Als u op de tegel ' gebruikers van hoog risico ' klikt, wordt een omleiding naar een gefilterde weer gave van het rapport Risk ante gebruikers weer gegeven met alleen gebruikers met een risico niveau hoog. Met dit rapport kunt u meer informatie vinden en deze gebruikers herstellen met een wacht woord opnieuw instellen.
+De tegel 'Gebruikers met een hoog risico' toont het laatste aantal gebruikers met een grote kans op identiteitscompromis. Deze moeten een topprioriteit zijn voor onderzoek. Een klik op de tegel 'Gebruikers met een hoog risico' wordt omgeleid naar een gefilterde weergave van het rapport 'Riskante gebruikers' met alleen gebruikers met een hoog risiconiveau. Met dit rapport u meer informatie en deze gebruikers herstellen met een wachtwoordreset.
 
 ![Beveiligingsoverzicht](./media/concept-identity-protection-security-overview/02.png)
 
 ### <a name="medium-risk-users"></a>Gebruikers met een gemiddeld risico
-De tegel gebruikers met een gemiddeld risico toont het nieuwste aantal gebruikers met een gemiddelde kans op inbreuk op de identiteit. Als u op de tegel ' gebruikers van middel grote risico ' klikt, wordt een gefilterde weer gave van het rapport Risk ante gebruikers omgeleid naar een gemiddeld risico niveau. Met dit rapport kunt u deze gebruikers verder onderzoeken en oplossen.
+De tegel 'Gebruikers met een gemiddeld risico' toont het laatste aantal gebruikers met een gemiddelde kans op identiteitscompromis. Een klik op de tegel 'Gebruikers met een gemiddeld risico' wordt omgeleid naar een gefilterde weergave van het rapport 'Riskante gebruikers' met alleen gebruikers met een risiconiveau van medium. Met behulp van dit rapport u deze gebruikers verder onderzoeken en herstellen.
 
-### <a name="unprotected-risky-sign-ins"></a>Niet-beveiligde Risk ante aanmeldingen
+### <a name="unprotected-risky-sign-ins"></a>Onbeschermde risicovolle aanmeldingen
 
-In de tegel niet-beveiligde Risk ante aanmeldingen wordt het aantal geslaagde, realtime aanmeldingen van de afgelopen week weer gegeven die niet zijn geblokkeerd of waarvoor MFA is aangestuurd door een beleid voor voorwaardelijke toegang, een risico beleid voor identiteits beveiliging of MFA per gebruiker. Dit zijn mogelijk gemanipuleerde aanmeldingen die zijn geslaagd en geen enkele MFA-uitdaging. Als u dergelijke aanmeldingen in de toekomst wilt beveiligen, moet u een beleid voor aanmeldings Risico's Toep assen. Een klik op de tegel onbeveiligde Risk ante aanmeldingen wordt omgeleid naar de Blade configuratie van het aanmeldings risico beleid waar u het beleid voor aanmeldings Risico's kunt configureren om MFA te vereisen voor een aanmelding met een opgegeven risico niveau.
+De tegel 'Onbeschermde risicovolle aanmeldingen' toont de telling van succesvolle, realtime risicovolle aanmeldingen van vorige week die niet zijn geblokkeerd of MFA die is aangevochten door een beleid voor voorwaardelijke toegang, het risicobeleid voor identiteitsbescherming of mfa per gebruiker. Dit zijn mogelijk gecompromitteerde aanmeldingen die succesvol waren en niet MFA uitgedaagd. Om dergelijke aanmeldingen in de toekomst te beschermen, past u een aanmeldingsrisicobeleid toe. Met een klik op de tegel 'Onbeschermde riskante aanmeldingen' wordt omgeleid naar het configuratieblad voor aanmeldingsbeleid, waar u het aanmeldingsrisicobeleid configureren om MFA te vereisen op een aanmelding met een opgegeven risiconiveau.
 
 ### <a name="legacy-authentication"></a>Verouderde verificatie
 
-De tegel ' verouderde verificatie ' bevat het aantal verouderde authenticaties van de laatste week in uw organisatie. Verouderde verificatie protocollen bieden geen ondersteuning voor moderne beveiligings methoden zoals een MFA. Als u verouderde verificatie wilt voor komen, kunt u een beleid voor voorwaardelijke toegang Toep assen. Als u op de tegel ' oude verificatie ' klikt, wordt u omgeleid naar de beveiligde score voor identiteit.
+De tegel 'Legacy-verificatie' toont het aantal oudere verificaties van vorige week in uw organisatie. Verouderde verificatieprotocollen bieden geen ondersteuning voor moderne beveiligingsmethoden zoals een MFA. Als u verouderde verificatie wilt voorkomen, u een beleid voor voorwaardelijke toegang toepassen. Met een klik op de tegel 'Legacy authentication' wordt u doorverwezen naar de 'Identity Secure Score'.
 
-### <a name="identity-secure-score"></a>Identiteits veilige Score
+### <a name="identity-secure-score"></a>Identiteitsbeveiligde score
 
-De identiteit van de beveiligde score meet en vergelijkt uw beveiligings postuur tot branche patronen. Als u op de tegel identiteits veilige Score (preview) klikt, wordt deze omgeleid naar de Blade identiteits veilige Score, waar u meer informatie kunt krijgen over het verbeteren van uw beveiligings postuur.
+De Identity Secure Score meet en vergelijkt uw beveiligingshouding met branchepatronen. Als u op de tegel 'Identity Secure Score (Preview)' klikt, wordt deze omgeleid naar het mes 'Identity Secure Score' waar u meer te weten komen over het verbeteren van uw beveiligingshouding.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Wat is risico](concept-identity-protection-risks.md)
 
-- [Beleids regels beschikbaar om Risico's te beperken](concept-identity-protection-policies.md)
+- [Beleid beschikbaar om risico's te beperken](concept-identity-protection-policies.md)

@@ -1,6 +1,6 @@
 ---
-title: Er is geen Working connector-groep gevonden voor een toepassings proxy-app
-description: Problemen oplossen die kunnen optreden wanneer er geen werkende connector in een connector groep voor uw toepassing is met de Azure-AD-toepassingsproxy
+title: Geen werkgroep gevonden voor een app Application Proxy
+description: Problemen oplossen die u ondervinden wanneer er geen werkende connector in een connectorgroep voor uw toepassing is met de Azure AD-toepassingsproxy
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,58 +17,58 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96ab0d1b3bbab9c97c04da4f918f3aaa2f1d07e4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275623"
 ---
-# <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>Er is geen Working connector-groep gevonden voor een toepassings proxy toepassing
+# <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>Geen werkgroep gevonden voor een toepassingsproxytoepassing
 
-Dit artikel helpt u bij het oplossen van veelvoorkomende problemen die zich voordoen wanneer er geen connector wordt gedetecteerd voor een toepassings proxy toepassing die is geïntegreerd met Azure Active Directory.
+In dit artikel u de veelvoorkomende problemen oplossen wanneer er geen connector is gedetecteerd voor een toepassingsproxytoepassing die is geïntegreerd met Azure Active Directory.
 
 ## <a name="overview-of-steps"></a>Overzicht van stappen
-Als er geen werkende connector in een connector groep voor uw toepassing is, zijn er een aantal manieren om het probleem op te lossen:
+Als er geen werkende connector in een connectorgroep voor uw toepassing is, zijn er een aantal manieren om het probleem op te lossen:
 
--   Als u geen connectors in de groep hebt, kunt u het volgende doen:
+-   Als u geen connectors in de groep hebt, u het:
 
-    -   Down load een nieuwe connector aan de rechter kant van de on-premises server en wijs deze toe aan deze groep
+    -   Een nieuwe connector downloaden aan de rechterkant-on-premises server en deze toewijzen aan deze groep
 
-    -   Een actieve connector verplaatsen naar de groep
+    -   Een actieve connector naar de groep verplaatsen
 
--   Als u geen actieve connectors in de groep hebt, kunt u het volgende doen:
+-   Als u geen actieve connectors in de groep hebt, u het nieuwe bedrijf:
 
-    -   De reden voor het inactief zijn van uw connector identificeren en oplossen
+    -   De reden waarom uw connector inactief is en oplost identificeren
 
-    -   Een actieve connector verplaatsen naar de groep
+    -   Een actieve connector naar de groep verplaatsen
 
-Om het probleem op te lossen, opent u het menu toepassings proxy in uw toepassing en bekijkt u het waarschuwings bericht groep connector. Als er geen connectors in de groep zijn, geeft het waarschuwings bericht aan dat de groep ten minste één connector nodig heeft. Als u geen actieve connectors hebt, wordt in het waarschuwings bericht uitgelegd dat. Het is gebruikelijk dat er niet-actieve connectors zijn. 
+Als u het probleem wilt oplossen, opent u het menu 'Toepassingsproxy' in uw toepassing en bekijkt u het waarschuwingsbericht Connectorgroep. Als er geen connectors in de groep zijn, geeft het waarschuwingsbericht aan dat de groep ten minste één connector nodig heeft. Als u geen actieve connectors hebt, wordt dat in het waarschuwingsbericht uitgelegd. Het is gebruikelijk om inactieve connectors te hebben. 
 
-   ![Selectie van connector groep in Azure Portal](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
+   ![Selectie van connectorgroep in Azure-portal](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
 
-Zie de bijbehorende sectie hieronder voor meer informatie over elk van deze opties. In de instructies wordt ervan uitgegaan dat u begint vanaf de pagina voor het beheren van connectors. Als u het bovenstaande fout bericht bekijkt, kunt u naar deze pagina gaan door te klikken op het waarschuwings bericht. U kunt de pagina ook openen door naar **Azure Active Directory**te gaan, op **bedrijfs toepassingen**en vervolgens op **toepassings proxy** te klikken.
+Zie het desbetreffende gedeelte hieronder voor meer informatie over elk van deze opties. De instructies gaan ervan uit dat u vanaf de pagina Connectorbeheer begint. Als u het foutbericht hierboven bekijkt, u naar deze pagina gaan door op het waarschuwingsbericht te klikken. U ook naar de pagina gaan door naar **Azure Active Directory**te gaan, te klikken op **Enterprise-toepassingen**en vervolgens **Application Proxy.**
 
-   ![Groeps beheer voor connectors in Azure Portal](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
+   ![Groepsbeheer voor connectoren in Azure-portal](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
 
 ## <a name="download-a-new-connector"></a>Een nieuwe connector downloaden
 
-Als u een nieuwe connector wilt downloaden, gebruikt u de knop ' connector downloaden ' boven aan de pagina.
+Als u een nieuwe connector wilt downloaden, gebruikt u de knop 'Connector downloaden' boven aan de pagina.
 
-Installeer de connector op een computer met een rechtstreekse gezichts lijn voor de back-end-toepassing. Normaal gesp roken wordt de connector geïnstalleerd op dezelfde server als de toepassing. Na het downloaden moet de connector in dit menu worden weer gegeven. Klik op de connector en gebruik de vervolg keuzelijst connector groep om te controleren of deze bij de juiste groep hoort. Sla de wijziging op.
+Installeer de connector op een machine met directe zichtlijn naar de backend-toepassing. Normaal gesproken is de connector geïnstalleerd op dezelfde server als de toepassing. Na het downloaden moet de connector in dit menu worden weergegeven. klik op de connector en gebruik de vervolgkeuzelijst 'Connectorgroep' om te zien of deze tot de juiste groep behoort. Sla de wijziging op.
 
-   ![De connector downloaden van de Azure Portal](./media/application-proxy-connectivity-no-working-connector/download-connector.png)
+   ![De connector downloaden van de Azure-portal](./media/application-proxy-connectivity-no-working-connector/download-connector.png)
    
 ## <a name="move-an-active-connector"></a>Een actieve connector verplaatsen
 
-Als u een actieve connector hebt die deel moet uitmaken van de groep en een regel voor de detectie van de doel-back-end-toepassing heeft, kunt u de connector verplaatsen naar de toegewezen groep. Om dit te doen, klikt u op de Connector. In het veld connector groep gebruikt u de vervolg keuzelijst om de juiste groep te selecteren en klikt u op opslaan.
+Als u een actieve connector hebt die tot de groep moet behoren en zichtlijn heeft naar de doelbackendtoepassing, u de connector naar de toegewezen groep verplaatsen. Klik hiervoor op de connector. Gebruik in het veld 'Verbindingsgroep' de vervolgkeuzelijst om de juiste groep te selecteren en klik op Opslaan.
 
 ## <a name="resolve-an-inactive-connector"></a>Een inactieve connector oplossen
 
-Als de enige connectors in de groep inactief zijn, zijn ze waarschijnlijk op een computer waarop niet alle benodigde poorten zijn gedeblokkeerd.
+Als de enige connectors in de groep inactief zijn, bevinden ze zich waarschijnlijk op een machine die niet alle benodigde poorten heeft gedeblokkeerd.
 
-Zie het document over het oplossen van problemen met poorten voor meer informatie over het onderzoeken van dit probleem.
+zie de poorten Probleemoplossing document voor details over het onderzoeken van dit probleem.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Azure AD-toepassingsproxy-connectors begrijpen](application-proxy-connectors.md)
+[Informatie over Azure AD-toepassingsproxyconnectors](application-proxy-connectors.md)
 
 

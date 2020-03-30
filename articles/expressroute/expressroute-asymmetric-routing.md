@@ -1,5 +1,5 @@
 ---
-title: 'Azure-ExpressRoute: asymmetrische route ring'
+title: 'Azure ExpressRoute: Asymmetrische routering'
 description: In dit artikel worden problemen met asymmetrische routering besproken die u kunt tegenkomen in een netwerk met meerdere koppelingen naar een bestemming.
 services: expressroute
 author: osamazia
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: osamam
 ms.openlocfilehash: 8adfcc6559e3e2d48aabd3cfeec4fe20541917c3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74072145"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Asymmetrische routering met meerdere netwerkpaden
@@ -48,12 +48,12 @@ Om te begrijpen welk effect deze twee wijzigingen op een netwerk hebben, gaan we
 
 Vervolgens schakelt u ExpressRoute in, en gebruikt u services die door Microsoft worden aangeboden nu via ExpressRoute. Alle andere services van Microsoft worden via internet gebruikt. U implementeert een afzonderlijke firewall aan de rand die is verbonden met ExpressRoute. Microsoft kondigt voor specifieke services specifiekere voorvoegsels naar het netwerk via ExpressRoute aan. De routeringsinfrastructuur kiest ExpressRoute als het voorkeurspad voor die voorvoegsels. Als u uw openbare IP-adressen niet bij Microsoft aankondigt via ExpressRoute, zal Microsoft via internet met uw openbare IP-adressen communiceren. Voorwaarts verkeer van uw netwerk naar Microsoft gebruikt dus ExpressRoute, en terugkerend verkeer van Microsoft maakt gebruik van internet. Wanneer de firewall aan de rand een antwoordpakket ziet voor een stroom die niet wordt gevonden in de statustabel, wordt het retourverkeer verwijderd.
 
-Als u ervoor kiest om dezelfde Network Address Translation groep (NAT) voor ExpressRoute en voor Internet te adverteren, ziet u vergelijk bare problemen met de clients in uw netwerk op privé-IP-adressen. Aanvragen voor services zoals Windows Update verlopen via internet omdat IP-adressen voor deze services niet worden verzonden via ExpressRoute. Het retourverkeer keert echter terug via ExpressRoute. Als Microsoft een IP-adres met hetzelfde subnetmasker van internet en ExpressRoute ontvangt, verkiest het ExpressRoute boven internet. Als een firewall of een ander stateful apparaat aan de rand van uw netwerk en gericht op ExpressRoute geen eerdere informatie over de stroom heeft, worden de pakketten die behoren tot deze gegevensstroom verwijderd.
+Als u ervoor kiest om dezelfde NAT-pool (Network Address Translation) te adverteren voor ExpressRoute en voor het internet, ziet u vergelijkbare problemen met de clients in uw netwerk op privé-IP-adressen. Aanvragen voor services zoals Windows Update verlopen via internet omdat IP-adressen voor deze services niet worden verzonden via ExpressRoute. Het retourverkeer keert echter terug via ExpressRoute. Als Microsoft een IP-adres met hetzelfde subnetmasker van internet en ExpressRoute ontvangt, verkiest het ExpressRoute boven internet. Als een firewall of een ander stateful apparaat aan de rand van uw netwerk en gericht op ExpressRoute geen eerdere informatie over de stroom heeft, worden de pakketten die behoren tot deze gegevensstroom verwijderd.
 
 ## <a name="asymmetric-routing-solutions"></a>Oplossingen voor asymmetrische routering
 Er zijn in feite twee oplossingen voor het probleem van asymmetrische routering. De ene is routering en de andere is het gebruik van brongebaseerde NAT (SNAT).
 
-### <a name="routing"></a>Routes
+### <a name="routing"></a>Routering
 Zorg ervoor dat uw openbare IP-adressen zijn aangekondigd aan de juiste WAN-koppelingen (Wide Area Network). Als u bijvoorbeeld internet wilt gebruiken voor verificatieverkeer en ExpressRoute voor uw e-mailverkeer, dan moet u uw openbare IP-adressen voor AD FS (Active Directory Federation Services) niet aankondigen via ExpressRoute. Evenzo moet u ervoor zorgen dat u een on-premises AD FS-server niet blootstelt aan IP-adressen die de router via ExpressRoute ontvangt. Routes die worden ontvangen via ExpressRoute zijn specifieker, zodat ExpressRoute het voorkeurspad wordt voor verificatieverkeer naar Microsoft. Dit veroorzaakt asymmetrische routering.
 
 Als u ExpressRoute wilt gebruiken voor verificatie, zorg dan dat u openbare IP-adressen van ADFS via ExpressRoute aankondigt zonder NAT. Op deze manier loopt het verkeer dat afkomstig is van Microsoft en naar een on-premises AD FS-server gaat via ExpressRoute. Retourverkeer van de klant naar Microsoft maakt gebruik van ExpressRoute omdat het de voorkeursroute is via internet.

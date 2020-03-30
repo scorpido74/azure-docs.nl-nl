@@ -1,7 +1,7 @@
 ---
-title: Zoeken in azure Table Storage-inhoud
+title: Zoeken via azure table-opslaginhoud
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over het indexeren van gegevens die zijn opgeslagen in azure-tabel opslag met een Azure Cognitive Search indexer.
+description: Meer informatie over het indexeren van gegevens die zijn opgeslagen in Azure Table-opslag met een Azure Cognitive Search-indexeerder.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -10,44 +10,44 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: e8f6c0454497b1cb1d62417e566e9662469c56d0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74112994"
 ---
-# <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Tabellen indexeren vanuit Azure-tabel opslag met Azure Cognitive Search
+# <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Tabellen indexeren vanuit Azure Table-opslag met Azure Cognitive Search
 
-In dit artikel wordt beschreven hoe u Azure Cognitive Search gebruikt voor het indexeren van gegevens die zijn opgeslagen in azure-tabel opslag.
+In dit artikel ziet u hoe u Azure Cognitive Search gebruiken om gegevens te indexeren die zijn opgeslagen in Azure Table-opslag.
 
-## <a name="set-up-azure-table-storage-indexing"></a>Indexering van Azure Table Storage instellen
+## <a name="set-up-azure-table-storage-indexing"></a>Azure Table-opslagindexering instellen
 
-U kunt een Azure Table Storage-indexer instellen met behulp van de volgende resources:
+U een Azure Table-opslagindexeerder instellen met behulp van de volgende bronnen:
 
-* [Azure Portal](https://ms.portal.azure.com)
-* Azure Cognitive Search [rest API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
+* [Azure-portal](https://ms.portal.azure.com)
+* Azure Cognitive Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Cognitive Search [.NET SDK](https://aka.ms/search-sdk)
 
-Hier demonstreren we de stroom met behulp van de REST API. 
+Hier tonen we de flow met behulp van de REST API. 
 
-### <a name="step-1-create-a-datasource"></a>Stap 1: een gegevens bron maken
+### <a name="step-1-create-a-datasource"></a>Stap 1: Een gegevensbron maken
 
-Een gegevens bron geeft aan welke gegevens moeten worden geïndexeerd, de referenties die nodig zijn voor toegang tot de gegevens en de beleids regels waarmee Azure Cognitive Search de wijzigingen in de gegevens efficiënt kunnen identificeren.
+Een gegevensbron geeft aan welke gegevens moeten worden geïndexeerd, welke referenties nodig zijn om toegang te krijgen tot de gegevens en het beleid waarmee Azure Cognitive Search wijzigingen in de gegevens efficiënt kan identificeren.
 
-Voor het indexeren van tabellen moet de gegevens bron de volgende eigenschappen hebben:
+Voor tabelindexering moet de gegevensbron de volgende eigenschappen hebben:
 
-- **naam** is de unieke naam van de gegevens bron in uw zoek service.
-- het **type** moet `azuretable`zijn.
-- de para meter **referenties** bevat het Connection String van het opslag account. Zie de sectie [referenties opgeven](#Credentials) voor meer informatie.
-- **container** stelt de naam van de tabel en een optionele query in.
-    - Geef de naam van de tabel op met behulp van de para meter `name`.
-    - Geef eventueel een query op met behulp van de para meter `query`. 
+- **naam** is de unieke naam van de gegevensbron binnen uw zoekservice.
+- **type** moet `azuretable`zijn .
+- parameter **credentials** bevat de tekenreeks voor de verbindingsreeks voor opslagaccount. Zie de sectie [Referenties opgeven](#Credentials) voor meer informatie.
+- **container** stelt de tabelnaam en een optionele query in.
+    - Geef de tabelnaam `name` op met behulp van de parameter.
+    - Geef destijds een `query` query op met behulp van de parameter. 
 
 > [!IMPORTANT] 
-> Gebruik, indien mogelijk, een filter op PartitionKey voor betere prestaties. Elke andere query voert een volledige tabel scan uit, wat leidt tot slechte prestaties voor grote tabellen. Zie de sectie [prestatie overwegingen](#Performance) .
+> Gebruik waar mogelijk een filter op PartitionKey voor betere prestaties. Elke andere query doet een volledige tabelscan, wat resulteert in slechte prestaties voor grote tabellen. Zie de sectie [Prestatieoverwegingen.](#Performance)
 
 
-Een gegevens bron maken:
+Ga als lid van het nieuws:
 
     POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
@@ -60,26 +60,26 @@ Een gegevens bron maken:
         "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
     }   
 
-Zie [Create Data Source](https://docs.microsoft.com/rest/api/searchservice/create-data-source)voor meer informatie over de Create Data Source-API.
+Zie [Gegevensbron maken](https://docs.microsoft.com/rest/api/searchservice/create-data-source)voor meer informatie over de API Gegevensbron maken.
 
 <a name="Credentials"></a>
 #### <a name="ways-to-specify-credentials"></a>Manieren om referenties op te geven ####
 
-U kunt de referenties voor de tabel op een van de volgende manieren opgeven: 
+U de referenties voor de tabel op een van de volgende manieren verstrekken: 
 
-- **Volledig Access Storage-account Connection String**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` u de Connection String van de Azure Portal kunt verkrijgen door naar de **Blade opslag account** te gaan > **instellingen** > **sleutels** (voor klassieke opslag accounts) of **instellingen** > **toegangs sleutels** (voor Azure Resource Manager opslag accounts).
-- **Opslag account gedeelde toegangs handtekening Connection String**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` de Shared Access-hand tekening moet de lijst-en lees machtigingen hebben voor containers (tabellen in dit geval) en objecten (tabel rijen).
--  **Shared Access Signature**voor een tabel: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` de Shared Access-hand tekening over de machtiging query (lezen) moet beschikken voor de tabel.
+- **Tekenreeks voor opslagaccountverbinding** `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` met volledige toegang : u de verbindingstekenreeks van de Azure-portal ophalen door naar de**instellingensleutels** **voor het opslagaccountblad** > **(voor** > klassieke opslagaccounts) of**Instellingentoegangssleutels** **Settings** > (voor opslagaccounts van Azure Resource Manager) te gaan.
+- **Tekenreeks voor gedeelde toegang voor gedeelde toegang:** `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` de handtekening voor gedeelde toegang moet de lijst- en leesmachtigingen voor containers (tabellen in dit geval) en objecten (tabelrijen) hebben.
+-  **Handtekening voor**gedeelde `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` toegang tabel : de handtekening voor gedeelde toegang moet querymachtigingen (lees)in de tabel hebben.
 
-Zie [using Shared Access signatures](../storage/common/storage-dotnet-shared-access-signature-part-1.md)(Engelstalig) voor meer informatie over gedeelde toegangs handtekeningen voor opslag.
+Zie Handtekeningen [voor gedeelde toegang gebruiken](../storage/common/storage-dotnet-shared-access-signature-part-1.md)voor meer informatie over gedeelde toegangshandtekeningen voor opslag.
 
 > [!NOTE]
-> Als u referenties voor een Shared Access-hand tekening gebruikt, moet u de referenties van de gegevens bron regel matig bijwerken met de vernieuwde hand tekeningen om te voor komen dat ze verlopen. Als referenties voor de hand tekening van de gedeelde toegang verlopen, mislukt de Indexeer functie met een fout bericht dat lijkt op de referenties die in de connection string zijn gegeven, ongeldig of verlopen zijn.  
+> Als u handtekeningreferenties voor gedeelde toegang gebruikt, moet u de gegevensbronreferenties periodiek bijwerken met vernieuwde handtekeningen om te voorkomen dat ze verlopen. Als de referenties van gedeelde toegangshandtekeningen verlopen, mislukt de indexer met een foutbericht dat vergelijkbaar is met 'Referenties in de verbindingstekenreeks zijn ongeldig of verlopen'.  
 
 ### <a name="step-2-create-an-index"></a>Stap 2: een index maken
-De index specificeert de velden in een document, de kenmerken en andere constructies die de zoek ervaring vormen.
+De index geeft de velden in een document, de kenmerken en andere constructies op die de zoekervaring vormen.
 
-Een index maken:
+Ga als u een index maken:
 
     POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
@@ -93,12 +93,12 @@ Een index maken:
           ]
     }
 
-Zie [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index)voor meer informatie over het maken van indexen.
+Zie [Index maken](https://docs.microsoft.com/rest/api/searchservice/create-index)voor meer informatie over het maken van indexen.
 
-### <a name="step-3-create-an-indexer"></a>Stap 3: een Indexeer functie maken
-Een Indexeer functie verbindt een gegevens bron met een doel zoek index en biedt een schema om het vernieuwen van gegevens te automatiseren. 
+### <a name="step-3-create-an-indexer"></a>Stap 3: Een indexer maken
+Een indexer verbindt een gegevensbron met een doelzoekindex en biedt een planning om de gegevensvernieuwing te automatiseren. 
 
-Nadat de index en gegevens bron zijn gemaakt, bent u klaar om de Indexeer functie te maken:
+Nadat de index en gegevensbron zijn gemaakt, bent u klaar om de indexer te maken:
 
     POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
@@ -111,29 +111,29 @@ Nadat de index en gegevens bron zijn gemaakt, bent u klaar om de Indexeer functi
       "schedule" : { "interval" : "PT2H" }
     }
 
-Deze Indexeer functie wordt elke twee uur uitgevoerd. (Het interval van de planning is ingesteld op ' PT2H '.) Als u een Indexeer functie elke 30 minuten wilt uitvoeren, stelt u het interval in op ' PT30M '. Het kortste ondersteunde interval is vijf minuten. De planning is optioneel; Als u dit weglaat, wordt een Indexeer functie slechts eenmaal uitgevoerd wanneer deze wordt gemaakt. U kunt een Indexeer functie echter op elk gewenst moment uitvoeren.   
+Deze indexer draait elke twee uur. (Het schemainterval is ingesteld op "PT2H".) Als u elke 30 minuten een indexer wilt uitvoeren, stelt u het interval in op "PT30M". Het kortste ondersteunde interval is vijf minuten. Het schema is optioneel; als deze wordt weggelaten, wordt een indexer slechts één keer uitgevoerd wanneer deze is gemaakt. U echter op elk gewenst moment een indexer op aanvraag uitvoeren.   
 
-Zie [Indexeer functie maken](https://docs.microsoft.com/rest/api/searchservice/create-indexer)voor meer informatie over het maken van de API voor indexering.
+Zie Indexer maken voor meer informatie over de API [Indexer maken.](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
-Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van de planningen voor de Indexeer functie.
+Zie [Indexeerders voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van indexerschema's.
 
-## <a name="deal-with-different-field-names"></a>Omgaan met verschillende veld namen
-Soms verschillen de veld namen in uw bestaande index van de eigenschaps namen in de tabel. U kunt veld toewijzingen gebruiken om de namen van eigenschappen van de tabel toe te wijzen aan de veld namen in uw zoek index. Zie voor meer informatie over veld toewijzingen [Azure Cognitive Search Indexeer functie veld Toewijzingen Bridget de verschillen tussen gegevens bronnen en zoek indexen](search-indexer-field-mappings.md).
+## <a name="deal-with-different-field-names"></a>Omgaan met verschillende veldnamen
+Soms verschillen de veldnamen in uw bestaande index van de eigenschapsnamen in uw tabel. U veldtoewijzingen gebruiken om de eigenschapsnamen van de tabel in kaart te brengen van de veldnamen in uw zoekindex. Zie [Azure Cognitive Search-indexerveldtoewijzingen overbrug de verschillen tussen gegevensbronnen en zoekindexen](search-indexer-field-mappings.md)voor meer informatie over veldtoewijzingen.
 
-## <a name="handle-document-keys"></a>Document sleutels verwerken
-In azure Cognitive Search is de document sleutel een unieke identificatie van een document. Elke zoek index moet precies één sleutel veld van het type `Edm.String`hebben. Het sleutel veld is vereist voor elk document dat wordt toegevoegd aan de index. (In feite is dit het enige vereiste veld.)
+## <a name="handle-document-keys"></a>Documentsleutels verwerken
+In Azure Cognitive Search identificeert de documentsleutel op unieke wijze een document. Elke zoekindex moet precies één `Edm.String`belangrijk veld van het type hebben. Het sleutelveld is vereist voor elk document dat aan de index wordt toegevoegd. (In feite is het het enige vereiste veld.)
 
-Omdat tabel rijen een samengestelde sleutel hebben, genereert Azure Cognitive Search een synthetisch veld met de naam `Key` dat een samen voeging van partitie sleutel-en rijwaarden is. Als de PartitionKey van een rij bijvoorbeeld `PK1` is en RowKey is `RK1`, wordt de waarde van het `Key` veld `PK1RK1`.
+Omdat tabelrijen een samengestelde sleutel hebben, genereert `Key` Azure Cognitive Search een synthetisch veld genaamd dat een samenvoeging is van partitiesleutel- en rijsleutelwaarden. Als de PartitionKey van een `PK1` rij bijvoorbeeld `RK1`is en `Key` RowKey is, dan is `PK1RK1`de waarde van het veld .
 
 > [!NOTE]
-> De `Key`-waarde kan tekens bevatten die ongeldig zijn in document sleutels, zoals streepjes. U kunt met ongeldige tekens omgaan met de functie voor het toewijzen van `base64Encode` [velden](search-indexer-field-mappings.md#base64EncodeFunction). Vergeet niet, als u dit doet, om ook URL-safe Base64-codering te gebruiken bij het doorgeven van documentsleutels in API-aanroepen zoals Opzoeken.
+> De `Key` waarde kan tekens bevatten die ongeldig zijn in documentsleutels, zoals streepjes. U ongeldige tekens `base64Encode` afhandelen met de [veldtoewijzingsfunctie](search-indexer-field-mappings.md#base64EncodeFunction). Vergeet niet, als u dit doet, om ook URL-safe Base64-codering te gebruiken bij het doorgeven van documentsleutels in API-aanroepen zoals Opzoeken.
 >
 >
 
-## <a name="incremental-indexing-and-deletion-detection"></a>Incrementele indexering en detectie van verwijderingen
-Wanneer u een tabel Indexeer functie zo instelt dat deze volgens een planning wordt uitgevoerd, worden alleen nieuwe of bijgewerkte rijen opnieuw geïndexeerd, zoals wordt bepaald door de `Timestamp` waarde van een rij. U hoeft geen beleid voor wijzigingen detectie op te geven. Incrementele indexering is automatisch ingeschakeld voor u.
+## <a name="incremental-indexing-and-deletion-detection"></a>Detectie van incrementele indexering en verwijdering
+Wanneer u een tabelindexer instelt die volgens een planning wordt uitgevoerd, worden alleen nieuwe `Timestamp` of bijgewerkte rijen opnieuw geïndexeerd, zoals bepaald door de waarde van een rij. U hoeft geen wijzigingsdetectiebeleid op te geven. Incrementele indexering is automatisch voor u ingeschakeld.
 
-Om aan te geven dat bepaalde documenten uit de index moeten worden verwijderd, kunt u een voorlopig verwijderings strategie gebruiken. In plaats van een rij te verwijderen, voegt u een eigenschap toe om aan te geven dat deze is verwijderd en stelt u een voorlopig detectie beleid voor het verwijderen van de gegevens bron in. Het volgende beleid houdt bijvoorbeeld in dat een rij wordt verwijderd als de rij een eigenschap heeft `IsDeleted` met de waarde `"true"`:
+Als u wilt aangeven dat bepaalde documenten uit de index moeten worden verwijderd, u een soft delete-strategie gebruiken. In plaats van een rij te verwijderen, voegt u een eigenschap toe om aan te geven dat deze is verwijderd en stelt u een beleid voor het verwijderen van zachte verwijderingsdetectie in op de gegevensbron. In het volgende beleid wordt bijvoorbeeld van mening dat een `IsDeleted` rij `"true"`wordt verwijderd als de rij een eigenschap heeft met de waarde:
 
     PUT https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
@@ -150,21 +150,21 @@ Om aan te geven dat bepaalde documenten uit de index moeten worden verwijderd, k
 <a name="Performance"></a>
 ## <a name="performance-considerations"></a>Prestatieoverwegingen
 
-Azure Cognitive Search maakt standaard gebruik van het volgende query filter: `Timestamp >= HighWaterMarkValue`. Omdat Azure-tabellen geen secundaire index hebben op het `Timestamp` veld, is voor dit type query een volledige tabel Scan vereist en is dit daarom langzaam voor grote tabellen.
+Azure Cognitive Search gebruikt standaard het `Timestamp >= HighWaterMarkValue`volgende queryfilter: . Omdat Azure-tabellen geen secundaire index `Timestamp` in het veld hebben, vereist dit type query een volledige tabelscan en is het daarom traag voor grote tabellen.
 
 
-Hier volgen twee mogelijke benaderingen voor het verbeteren van de prestaties van tabel indexen. Beide benaderingen zijn afhankelijk van het gebruik van tabel partities: 
+Hier zijn twee mogelijke benaderingen voor het verbeteren van de tabel indexering prestaties. Beide benaderingen zijn afhankelijk van het gebruik van tabelpartities: 
 
-- Als uw gegevens natuurlijk in verschillende partitielay-bereiken kunnen worden gepartitioneerd, maakt u een gegevens bron en een bijbehorende Indexeer functie voor elk partitie bereik. Elke Indexeer functie moet nu alleen een specifiek partitie bereik verwerken, wat resulteert in betere query prestaties. Als de gegevens die moeten worden geïndexeerd, een klein aantal vaste partities hebben, nog beter: elke Indexeer functie heeft alleen een partitie scan. Als u bijvoorbeeld een gegevens bron wilt maken voor het verwerken van een partitie bereik met sleutels van `000` naar `100`, gebruikt u een query als volgt: 
+- Als uw gegevens natuurlijk kunnen worden verdeeld in verschillende partitiebereiken, maakt u een gegevensbron en een bijbehorende indexer voor elk partitiebereik. Elke indexer hoeft nu alleen een specifiek partitiebereik te verwerken, wat resulteert in betere queryprestaties. Als de gegevens die moeten worden geïndexeerd een klein aantal vaste partities hebben, nog beter: elke indexer doet alleen een partitiescan. Als u bijvoorbeeld een gegevensbron wilt maken voor `000` `100`het verwerken van een partitiebereik met sleutels van tot , gebruikt u een query als volgt: 
     ```
     "container" : { "name" : "my-table", "query" : "PartitionKey ge '000' and PartitionKey lt '100' " }
     ```
 
-- Als uw gegevens op tijd zijn gepartitioneerd (bijvoorbeeld elke dag of week een nieuwe partitie maken), moet u rekening houden met de volgende benadering: 
-    - Gebruik een query van het formulier: `(PartitionKey ge <TimeStamp>) and (other filters)`. 
-    - Controleer de voortgang van de Indexeer functie met behulp van de [API voor Indexeer functies ophalen](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)en werk de `<TimeStamp>`-voor waarde van de query regel matig bij op basis van de nieuwste hoge water merk waarde. 
-    - Als u deze aanpak wilt activeren, moet u de data source-query opnieuw instellen als u de Indexeer functie opnieuw wilt instellen. 
+- Als uw gegevens worden verdeeld naar tijd (u maakt bijvoorbeeld elke dag of week een nieuwe partitie), moet u de volgende benadering overwegen: 
+    - Gebruik een query van `(PartitionKey ge <TimeStamp>) and (other filters)`het formulier: . 
+    - Monitor de voortgang van indexeren met behulp van [Get Indexer Status API](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)en werk periodiek de conditie van de `<TimeStamp>` query bij op basis van de laatste succesvolle hoogwatermerkwaarde. 
+    - Als u met deze aanpak een volledige reindexering moet activeren, moet u de gegevensbronquery opnieuw instellen naast het opnieuw instellen van de indexer. 
 
 
 ## <a name="help-us-make-azure-cognitive-search-better"></a>Help ons Azure Cognitive Search beter te maken
-Als u een functie verzoek of ideeën voor verbeteringen hebt, dient u deze in te dienen op onze [UserVoice-site](https://feedback.azure.com/forums/263029-azure-search/).
+Als u functieverzoeken of ideeën voor verbeteringen hebt, dient u deze in op onze [UserVoice-site.](https://feedback.azure.com/forums/263029-azure-search/)

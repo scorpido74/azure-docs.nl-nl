@@ -1,6 +1,6 @@
 ---
-title: SSL-offload met behulp van Power shell-Azure-toepassing gateway
-description: Dit artikel bevat instructies voor het maken van een toepassings gateway met SSL-offload met behulp van het klassieke Azure-implementatie model
+title: SSL-offload met PowerShell - Azure Application Gateway
+description: In dit artikel vindt u instructies voor het maken van een toepassingsgateway met SSL-offload met behulp van het klassieke Azure-implementatiemodel
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: c456a0856adb0d36349b5f96ba0ab8bab3eec5c9
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74047921"
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Een toepassings gateway configureren voor SSL-offload met behulp van het klassieke implementatie model
+# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Een toepassingsgateway configureren voor SSL-offload met behulp van het klassieke implementatiemodel
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-ssl-portal.md)
+> * [Azure-portal](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
-> * [Klassieke Azure Power shell](application-gateway-ssl.md)
-> * [Azure CLI](application-gateway-ssl-cli.md)
+> * [Azure-klassieker PowerShell](application-gateway-ssl.md)
+> * [Azure-CLI](application-gateway-ssl-cli.md)
 
 Azure Application Gateway kan zodanig worden geconfigureerd dat de Secure Sockets Layer-sessie (SSL) wordt beëindigd bij de gateway om kostbare SSL-ontsleutelingstaken te voorkomen die worden uitgevoerd in de webfarm. Met SSL-offload worden ook het instellen van de front-endserver en het beheer van de webtoepassing eenvoudiger.
 
@@ -28,28 +28,28 @@ Azure Application Gateway kan zodanig worden geconfigureerd dat de Secure Socket
 
 1. Installeer de nieuwste versie van de Azure PowerShell-cmdlets via het webplatforminstallatieprogramma. U kunt de nieuwste versie downloaden en installeren via het gedeelte **Windows PowerShell** op de pagina [Downloads](https://azure.microsoft.com/downloads/).
 2. Controleer of u een werkend virtueel netwerk hebt met een geldig subnet. Zorg ervoor dat er geen virtuele machines en cloudimplementaties zijn die gebruikmaken van het subnet. De toepassingsgateway moet afzonderlijk in een subnet van een virtueel netwerk staan.
-3. De servers die u configureert voor het gebruik van de toepassings gateway moeten bestaan of hun eind punten hebben die zijn gemaakt in het virtuele netwerk of met een openbaar IP-adres of een virtueel IP-adres (VIP) toegewezen.
+3. De servers die u configureert om de toepassingsgateway te gebruiken, moeten bestaan of hun eindpunten hebben die zijn gemaakt in het virtuele netwerk of met een openbaar IP-adres of een vip-adres (Virtual IP-adres).
 
-Als u SSL-offload wilt configureren op een toepassings gateway, voert u de volgende stappen uit in de aangegeven volg orde:
+Voer de volgende stappen in de vermelde volgorde uit om SSL-offload op een toepassingsgateway te configureren:
 
-1. [Een toepassings gateway maken](#create-an-application-gateway)
+1. [Een toepassingsgateway maken](#create-an-application-gateway)
 2. [SSL-certificaten uploaden](#upload-ssl-certificates)
 3. [De gateway configureren](#configure-the-gateway)
-4. [De gateway configuratie instellen](#set-the-gateway-configuration)
-5. [De gateway starten](#start-the-gateway)
-6. [De gateway status controleren](#verify-the-gateway-status)
+4. [De gatewayconfiguratie instellen](#set-the-gateway-configuration)
+5. [De gateway openen](#start-the-gateway)
+6. [De gatewaystatus controleren](#verify-the-gateway-status)
 
 ## <a name="create-an-application-gateway"></a>Een toepassingsgateway maken
 
-Als u de gateway wilt maken, voert u de `New-AzureApplicationGateway` cmdlet in, waarbij u de waarden vervangt door uw eigen waarde. Er worden op dat moment nog geen kosten in rekening gebracht voor gebruik van de gateway. De kosten zijn pas vanaf een latere stap van toepassing, wanneer de gateway wordt geopend.
+Als u de gateway `New-AzureApplicationGateway` wilt maken, voert u de cmdlet in en vervangt u de waarden door die van u. Er worden op dat moment nog geen kosten in rekening gebracht voor gebruik van de gateway. De kosten zijn pas vanaf een latere stap van toepassing, wanneer de gateway wordt geopend.
 
 ```powershell
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
 ```
 
-Als u wilt controleren of de gateway is gemaakt, kunt u de `Get-AzureApplicationGateway`-cmdlet opgeven.
+Als u wilt valideren of de `Get-AzureApplicationGateway` gateway is gemaakt, u de cmdlet invoeren.
 
-In het voor beeld, **Description**, **InstanceCount**en **GatewaySize** zijn optionele para meters. De standaard waarde voor **InstanceCount** is **2**, met een maximale waarde van **10**. De standaard waarde voor **GatewaySize** is **gemiddeld**. Kleine en grote zijn andere beschik bare waarden. **VirtualIPs** en **DnsName** worden als leeg weer gegeven, omdat de gateway nog niet is gestart. Deze waarden worden gemaakt nadat de gateway de status actief heeft.
+In het voorbeeld zijn **Beschrijving**, **InstanceCount**en **GatewaySize** optionele parameters. De standaardwaarde voor **InstanceCount** is **2**, met een maximale waarde van **10**. De standaardwaarde voor **GatewaySize** is **Gemiddeld**. Klein en groot zijn andere beschikbare waarden. **VirtualIP's** en **DnsName** worden weergegeven als leeg, omdat de gateway nog niet is gestart. Deze waarden worden gemaakt nadat de gateway in de loopstatus is.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -57,17 +57,17 @@ Get-AzureApplicationGateway AppGwTest
 
 ## <a name="upload-ssl-certificates"></a>SSL-certificaten uploaden
 
-Voer `Add-AzureApplicationGatewaySslCertificate` in om het server certificaat in PFX-indeling te uploaden naar de Application Gateway. De naam van het certificaat is een door de gebruiker gekozen naam en moet uniek zijn binnen de Application Gateway. Naar dit certificaat wordt verwezen met deze naam in alle certificaat beheer bewerkingen in de toepassings gateway.
+Voer `Add-AzureApplicationGatewaySslCertificate` deze in om het servercertificaat in PFX-indeling te uploaden naar de toepassingsgateway. De certificaatnaam is een door de gebruiker gekozen naam en moet uniek zijn binnen de toepassingsgateway. Dit certificaat wordt met deze naam aangeduid in alle certificaatbeheerbewerkingen op de toepassingsgateway.
 
-In het volgende voor beeld wordt de cmdlet weer gegeven. Vervang de waarden in de steek proef door uw eigen voor beeld.
+Het volgende monster toont de cmdlet. Vervang de waarden in het voorbeeld door die van u.
 
 ```powershell
 Add-AzureApplicationGatewaySslCertificate  -Name AppGwTest -CertificateName GWCert -Password <password> -CertificateFile <full path to pfx file>
 ```
 
-Valideer vervolgens de upload van het certificaat. Voer de `Get-AzureApplicationGatewayCertificate`-cmdlet in.
+Valideer vervolgens het uploaden van het certificaat. Voer `Get-AzureApplicationGatewayCertificate` de cmdlet in.
 
-In het volgende voor beeld wordt de cmdlet op de eerste regel weer gegeven, gevolgd door de uitvoer:
+In het volgende monster wordt de cmdlet op de eerste regel weergegeven, gevolgd door de uitvoer:
 
 ```powershell
 Get-AzureApplicationGatewaySslCertificate AppGwTest
@@ -84,28 +84,28 @@ State..........: Provisioned
 ```
 
 > [!NOTE]
-> Het certificaat wachtwoord moet tussen 4 en 12 tekens bestaan uit letters of cijfers. Speciale tekens worden niet geaccepteerd.
+> Het certificaatwachtwoord moet tussen de 4 en 12 tekens zijn die uit letters of cijfers bestaan. Speciale tekens worden niet geaccepteerd.
 
 ## <a name="configure-the-gateway"></a>De gateway configureren
 
-Een configuratie van een toepassings gateway bestaat uit meerdere waarden. De waarden kunnen samen worden gekoppeld om de configuratie te maken.
+Een configuratie van de toepassingsgateway bestaat uit meerdere waarden. De waarden kunnen aan elkaar worden gekoppeld om de configuratie te construeren.
 
 De waarden zijn:
 
-* **Back-end-server groep**: de lijst met IP-adressen van de back-endservers. De vermelde IP-adressen moeten deel uitmaken van het subnet van het virtuele netwerk of moeten een openbaar IP-of VIP-adres zijn.
-* **Instellingen voor de back-end-server groep**: elke pool heeft instellingen als poort, protocol en affiniteit op basis van cookies. Deze instellingen zijn gekoppeld aan een pool en worden toegepast op alle servers in de pool.
-* **Front-end poort**: deze poort is de open bare poort die wordt geopend op de toepassings gateway. Het verkeer komt binnen via deze poort en wordt vervolgens omgeleid naar een van de back-endservers.
-* **Listener**: de listener heeft een front-end-poort, een protocol (http of https; deze waarden zijn hoofdletter gevoelig) en de naam van het SSL-certificaat (bij het configureren van een SSL-offload).
-* **Regel**: de regel verbindt de listener en de back-end-server groep en definieert welke back-endserver Server groep moet worden doorgestuurd naar het verkeer wanneer het een bepaalde listener aantreft. Momenteel wordt alleen de regel *basic* ondersteund. De regel *basic* is een vorm van round-robinbelastingverdeling.
+* **Back-end serverpool:** de lijst met IP-adressen van de back-endservers. De vermelde IP-adressen moeten deel uitmaken van het virtuele netwerksubnet of een openbaar IP- of VIP-adres zijn.
+* **Back-end serverpoolinstellingen:** elke groep heeft instellingen zoals poort-, protocol- en cookiegebaseerde affiniteit. Deze instellingen zijn gekoppeld aan een pool en worden toegepast op alle servers in de pool.
+* **Front-end poort**: Deze poort is de openbare poort die wordt geopend op de toepassingsgateway. Het verkeer komt binnen via deze poort en wordt vervolgens omgeleid naar een van de back-endservers.
+* **Listener**: De listener heeft een front-endpoort, een protocol (Http of Https; deze waarden zijn hoofdlettergevoelig) en de naam van het SSL-certificaat (als u een SSL-offload configureert).
+* **Regel:** De regel bindt de listener en de back-end servergroep en definieert naar welke back-endservergroep het verkeer moet worden gericht wanneer het een bepaalde listener raakt. Momenteel wordt alleen de regel *basic* ondersteund. De regel *basic* is een vorm van round-robinbelastingverdeling.
 
-**Aanvullende configuratie opmerkingen**
+**Aanvullende configuratieopmerkingen**
 
-Voor het configureren van SSL-certificaten moet het protocol in **HttpListener** worden gewijzigd in **Https** (hoofdlettergevoelig). Voeg het element **SslCert** toe aan **HttpListener** met de waarde ingesteld op dezelfde naam die wordt gebruikt in de sectie [SSL-certificaten uploaden](#upload-ssl-certificates) . De front-end-poort moet worden bijgewerkt naar **443**.
+Voor het configureren van SSL-certificaten moet het protocol in **HttpListener** worden gewijzigd in **Https** (hoofdlettergevoelig). Voeg het element **SslCert** toe aan **HttpListener** met de waarde die is ingesteld op dezelfde naam die wordt gebruikt in de sectie [SSL-certificaten uploaden.](#upload-ssl-certificates) De front-end poort moet worden bijgewerkt tot **443**.
 
-**Voor het inschakelen van de op cookies gebaseerde affiniteit**: u kunt een toepassings gateway configureren om ervoor te zorgen dat een aanvraag van een client sessie altijd wordt doorgestuurd naar dezelfde virtuele machine in de webfarm. Als u dit wilt doen, voegt u een sessie cookie in waarmee de gateway het verkeer correct kan omleiden. Als u op cookies gebaseerde affiniteit wilt inschakelen, stelt u **CookieBasedAffinity** in op **Enabled** in het element **BackendHttpSettings**.
+**Affiniteit op basis van cookies inschakelen:** U een toepassingsgateway configureren om ervoor te zorgen dat een aanvraag van een clientsessie altijd naar dezelfde VM in de webfarm wordt geleid. Om dit te bereiken, voegt u een sessiecookie in waarmee de gateway verkeer op de juiste manier kan leiden. Als u op cookies gebaseerde affiniteit wilt inschakelen, stelt u **CookieBasedAffinity** in op **Enabled** in het element **BackendHttpSettings**.
 
-U kunt uw configuratie samen stellen door een configuratie object te maken of door een XML-configuratie bestand te gebruiken.
-Als u de configuratie wilt maken met behulp van een XML-configuratie bestand, voert u het volgende voor beeld in:
+U uw configuratie samenstellen door een configuratieobject te maken of door een XML-configuratiebestand te gebruiken.
+Voer het volgende voorbeeld in om uw configuratie te construeren met behulp van een XML-configuratiebestand:
 
 
 ```xml
@@ -155,9 +155,9 @@ Als u de configuratie wilt maken met behulp van een XML-configuratie bestand, vo
 </ApplicationGatewayConfiguration>
 ```
 
-## <a name="set-the-gateway-configuration"></a>De gateway configuratie instellen
+## <a name="set-the-gateway-configuration"></a>De gatewayconfiguratie instellen
 
-Vervolgens stelt u de toepassingsgateway in. U kunt de cmdlet `Set-AzureApplicationGatewayConfig` invoeren met een configuratie object of een XML-configuratie bestand.
+Vervolgens stelt u de toepassingsgateway in. U `Set-AzureApplicationGatewayConfig` de cmdlet invoeren met een configuratieobject of een XML-configuratiebestand.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
@@ -165,10 +165,10 @@ Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
 
 ## <a name="start-the-gateway"></a>De gateway openen
 
-Nadat de gateway is geconfigureerd, voert u de `Start-AzureApplicationGateway`-cmdlet in om de gateway te starten. Voor een toepassingsgateway worden pas kosten doorberekend wanneer de gateway is geactiveerd.
+Nadat de gateway is geconfigureerd, `Start-AzureApplicationGateway` voert u de cmdlet in om de gateway te starten. Voor een toepassingsgateway worden pas kosten doorberekend wanneer de gateway is geactiveerd.
 
 > [!NOTE]
-> Het kan 15-20 minuten duren voordat de cmdlet `Start-AzureApplicationGateway` is voltooid.
+> De `Start-AzureApplicationGateway` cmdlet kan 15-20 minuten duren om te voltooien.
 >
 >
 
@@ -178,9 +178,9 @@ Start-AzureApplicationGateway AppGwTest
 
 ## <a name="verify-the-gateway-status"></a>De gatewaystatus controleren
 
-Voer de `Get-AzureApplicationGateway`-cmdlet in om de status van de gateway te controleren. Als `Start-AzureApplicationGateway` in de vorige stap is geslaagd, moet de **status** worden **uitgevoerd**en moeten de **VirtualIPs** en **DnsName** geldige vermeldingen bevatten.
+Voer `Get-AzureApplicationGateway` de cmdlet in om de status van de gateway te controleren. Als `Start-AzureApplicationGateway` dit in de vorige stap is gelukt, moet de **status** **worden uitgevoerd**en moeten de **VirtualIP's** en **DnsName** geldige vermeldingen hebben.
 
-In dit voor beeld ziet u een toepassings gateway die actief, werkend en klaar is om verkeer te nemen:
+In dit voorbeeld wordt een toepassingsgateway weergegeven die up, running en klaar is om verkeer te verwerken:
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -200,7 +200,7 @@ DnsName       : appgw-4c960426-d1e6-4aae-8670-81fd7a519a43.cloudapp.net
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over opties voor taak verdeling in het algemeen:
+Zie voor meer informatie over opties voor het balanceren van de lasten in het algemeen:
 
 * [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
-* [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
+* [Azure-beheer](https://azure.microsoft.com/documentation/services/traffic-manager/)

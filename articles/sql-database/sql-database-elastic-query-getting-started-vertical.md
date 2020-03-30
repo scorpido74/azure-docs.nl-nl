@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met query’s tussen meerdere databases
-description: query's voor Elastic Data Base gebruiken met verticaal gepartitioneerde data bases
+title: Aan de slag met query's met verschillende gegevens
+description: elastische databasequery gebruiken met verticaal verdeelde databases
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,29 +12,29 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: af93035766eaf1afa12d124b8379ee55c5567260
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823801"
 ---
-# <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Aan de slag met query's voor meerdere data bases (verticaal partitioneren) (preview)
+# <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Aan de slag met cross-database query's (verticale partitionering) (voorbeeld)
 
-Met Elastic data base query (preview) voor Azure SQL Database kunt u T-SQL-query's uitvoeren die meerdere data bases omvatten met behulp van één verbindings punt. Dit artikel is van toepassing op [verticaal gepartitioneerde data bases](sql-database-elastic-query-vertical-partitioning.md).  
+Met elastische databasequery 's voor Azure SQL Database u T-SQL-query's uitvoeren die meerdere databases omvatten met één verbindingspunt. Dit artikel is van toepassing op [verticaal verdeelde databases](sql-database-elastic-query-vertical-partitioning.md).  
 
-Wanneer u klaar bent, kunt u informatie over het configureren en gebruiken van een Azure SQL Database voor het uitvoeren van query's die meerdere gerelateerde data bases omvatten.
+Wanneer u klaar bent, leest u hoe u een Azure SQL-database configureert en gebruikt om query's uit te voeren die meerdere gerelateerde databases omvatten.
 
-Zie [Azure SQL database overzicht van Elastic data base](sql-database-elastic-query-overview.md)voor meer informatie over de functie voor Elastic data base-query's.
+Zie het overzicht van [elastische databasequery's](sql-database-elastic-query-overview.md)in Azure SQL Database voor meer informatie over de functie elastische databasequery.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet een machtiging voor externe gegevens bronnen wijzigen. Deze machtiging is opgenomen in de machtiging ALTER data base. Machtigingen voor externe gegevens bronnen wijzigen is nodig om te verwijzen naar de onderliggende gegevens bron.
+WIJZIG ELKE externe gegevensbrontoestemming is vereist. Deze toestemming is opgenomen in de toestemming van ALTER DATABASE. WIJZIG ALLE externe gegevensbronmachtigingen zijn nodig om naar de onderliggende gegevensbron te verwijzen.
 
-## <a name="create-the-sample-databases"></a>De voorbeeld databases maken
+## <a name="create-the-sample-databases"></a>De voorbeelddatabases maken
 
-U kunt beginnen met het maken van twee data bases, **klanten** en **Orders**op dezelfde of een andere SQL database-servers.
+Maak om te beginnen twee databases, **klanten** en **orders,** in dezelfde of verschillende SQL Database-servers.
 
-Voer de volgende query's uit op de Data Base **Orders** om de tabel **OrderInformation** te maken en de voorbeeld gegevens in te voeren.
+Voer de volgende query's uit in de database **Orders** om de tabel **Orderinformatie** te maken en de voorbeeldgegevens in te voeren.
 
     CREATE TABLE [dbo].[OrderInformation](
         [OrderID] [int] NOT NULL,
@@ -46,7 +46,7 @@ Voer de volgende query's uit op de Data Base **Orders** om de tabel **OrderInfor
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1)
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8)
 
-Voer nu de volgende query uit op de **klanten** database om de tabel **CustomerInformation** te maken en de voorbeeld gegevens in te voeren.
+Voer nu de volgende query uit in de database **Klanten** om de tabel **CustomerInformation** te maken en de voorbeeldgegevens in te voeren.
 
     CREATE TABLE [dbo].[CustomerInformation](
         [CustomerID] [int] NOT NULL,
@@ -58,24 +58,24 @@ Voer nu de volgende query uit op de **klanten** database om de tabel **CustomerI
     INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (2, 'Steve', 'XYZ')
     INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (3, 'Lylla', 'MNO')
 
-## <a name="create-database-objects"></a>Database objecten maken
+## <a name="create-database-objects"></a>Databaseobjecten maken
 
-### <a name="database-scoped-master-key-and-credentials"></a>Data base-bereik hoofd sleutel en referenties
+### <a name="database-scoped-master-key-and-credentials"></a>Hoofdsleutel en referenties met databasebereik
 
 1. Open SQL Server Management Studio of SQL Server Data Tools in Visual Studio.
-2. Maak verbinding met de data base orders en voer de volgende T-SQL-opdrachten uit:
+2. Maak verbinding met de database Orders en voer de volgende T-SQL-opdrachten uit:
 
         CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
         CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
         WITH IDENTITY = '<username>',
         SECRET = '<password>';  
 
-    De gebruikers naam en het wacht woord moeten de gebruikers naam en het wacht woord zijn die worden gebruikt om u aan te melden bij de klanten database.
-    Verificatie met behulp van Azure Active Directory met elastische query's wordt momenteel niet ondersteund.
+    De "gebruikersnaam" en "wachtwoord" moet de gebruikersnaam en het wachtwoord worden gebruikt om in te loggen in de klanten database.
+    Verificatie met Azure Active Directory met elastische query's wordt momenteel niet ondersteund.
 
-### <a name="external-data-sources"></a>Externe gegevens bronnen
+### <a name="external-data-sources"></a>Externe gegevensbronnen
 
-Als u een externe gegevens bron wilt maken, voert u de volgende opdracht uit in de data base orders:
+Als u een externe gegevensbron wilt maken, voert u de volgende opdracht uit in de database Orders:
 
     CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
         (TYPE = RDBMS,
@@ -86,7 +86,7 @@ Als u een externe gegevens bron wilt maken, voert u de volgende opdracht uit in 
 
 ### <a name="external-tables"></a>Externe tabellen
 
-Maak een externe tabel in de data base orders die overeenkomt met de definitie van de CustomerInformation-tabel:
+Maak een externe tabel in de database Orders, die overeenkomt met de definitie van de tabel CustomerInformation:
 
     CREATE EXTERNAL TABLE [dbo].[CustomerInformation]
     ( [CustomerID] [int] NOT NULL,
@@ -95,9 +95,9 @@ Maak een externe tabel in de data base orders die overeenkomt met de definitie v
     WITH
     ( DATA_SOURCE = MyElasticDBQueryDataSrc)
 
-## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Een voor beeld van een Elastic data base-T-SQL-query uitvoeren
+## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Een voorbeeld van een elastische database T-SQL-query uitvoeren
 
-Wanneer u uw externe gegevens bron en uw externe tabellen hebt gedefinieerd, kunt u nu T-SQL gebruiken om een query uit te zoeken op uw externe tabellen. Deze query uitvoeren op de orders database:
+Zodra u uw externe gegevensbron en uw externe tabellen hebt gedefinieerd, u nu T-SQL gebruiken om uw externe tabellen op te vragen. Voer deze query uit in de database Orders:
 
     SELECT OrderInformation.CustomerID, OrderInformation.OrderId, CustomerInformation.CustomerName, CustomerInformation.Company
     FROM OrderInformation
@@ -106,14 +106,14 @@ Wanneer u uw externe gegevens bron en uw externe tabellen hebt gedefinieerd, kun
 
 ## <a name="cost"></a>Kosten
 
-Op dit moment is de functie voor Elastic data base-query's opgenomen in de kosten van uw Azure SQL Database.  
+Momenteel is de functie elastische databasequery opgenomen in de kosten van uw Azure SQL Database.  
 
-Zie [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database)voor prijs informatie.
+Zie [SQL Database Pricing](https://azure.microsoft.com/pricing/details/sql-database)voor prijsinformatie .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [overzicht van elastische query's](sql-database-elastic-query-overview.md)voor een overzicht van elastische query's.
-* Zie query's [uitvoeren op verticaal gepartitioneerde gegevens](sql-database-elastic-query-vertical-partitioning.md) voor syntaxis-en voorbeeld query's voor verticaal gepartitioneerde gegevens)
-* Zie aan de slag [met elastische query's voor horizontale partitionering (sharding)](sql-database-elastic-query-getting-started.md)voor een zelf studie over horizontale partitionering (sharding).
-* Zie query's [uitvoeren in horizon taal gepartitioneerde gegevens](sql-database-elastic-query-horizontal-partitioning.md) voor syntaxis-en voorbeeld query's voor Horizon taal gepartitioneerde gegevens)
-* Zie [sp\_execute \_Remote](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL database of een set met data bases die fungeren als Shards in een horizon taal partitie schema.
+* Zie Overzicht van elastische query's voor een overzicht van elastische [query's](sql-database-elastic-query-overview.md).
+* Zie [Verticaal verdeelde gegevens opvragen voor](sql-database-elastic-query-vertical-partitioning.md) syntaxis- en voorbeeldquery's voor verticaal verdeelde gegevens)
+* Zie [Aan de slag met elastische query voor horizontale partitionering (sharding) voor](sql-database-elastic-query-getting-started.md)een horizontale zelfstudie voor het partitioneren (sharden).
+* Zie [Horizontaal gepartitioneerde gegevens opvragen voor](sql-database-elastic-query-horizontal-partitioning.md) syntaxis- en voorbeeldquery's voor horizontaal verdeelde gegevens)
+* Zie [\_sp \_remote uitvoeren](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure die een Transact-SQL-instructie uitvoert op één externe Azure SQL-database of set databases die als shards dienen in een horizontaal partitioneringsschema.

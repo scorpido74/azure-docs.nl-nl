@@ -1,6 +1,6 @@
 ---
-title: De besturingssysteem schijf voor een Azure-VM wisselen met Power shell
-description: Wijzig de besturingssysteem schijf die wordt gebruikt door een virtuele machine van Azure met behulp van Power shell.
+title: Os-schijf ruilen voor een Azure VM met PowerShell '
+description: Wijzig de schijf van het besturingssysteem die wordt gebruikt door een virtuele Azure-machine met PowerShell.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,29 +15,29 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.openlocfilehash: ec66892804f3c2d1f831168a2955f2498462cbf3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033027"
 ---
-# <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>De besturingssysteem schijf wijzigen die wordt gebruikt door een Azure VM met behulp van Power shell
+# <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>De besturingssysteemschijf wijzigen die door een Azure VM wordt gebruikt met PowerShell
 
-Als u een bestaande VM hebt, maar u de schijf wilt wisselen voor een back-upschijf of een andere besturingssysteem schijf, kunt u Azure PowerShell gebruiken om de besturingssysteem schijven te vervangen. U hoeft de virtuele machine niet te verwijderen en opnieuw te maken. U kunt zelfs een beheerde schijf in een andere resource groep gebruiken, zolang deze nog niet in gebruik is.
+Als u een bestaande virtuele machine hebt, maar u de schijf wilt ruilen voor een back-upschijf of een andere osschijf, u Azure PowerShell gebruiken om de besturingssysteemschijven te verwisselen. U hoeft de vm niet te verwijderen en opnieuw te maken. U zelfs een beheerde schijf in een andere resourcegroep gebruiken, zolang deze nog niet in gebruik is.
 
  
 
-De VM moet stopped\deallocated zijn. vervolgens kan de bron-ID van de beheerde schijf worden vervangen door de resource-ID van een andere beheerde schijf.
+De VM moet wel worden gestopt\deallocated, waarna de resource-id van de beheerde schijf kan worden vervangen door de resource-id van een andere beheerde schijf.
 
-Zorg ervoor dat de VM-grootte en het opslag type compatibel zijn met de schijf die u wilt koppelen. Als de schijf die u wilt gebruiken zich bijvoorbeeld in Premium Storage bevindt, moet de virtuele machine Premium Storage kunnen zijn (zoals een grootte van de DS-serie). Beide schijven moeten ook dezelfde grootte hebben.
+Controleer of de VM-grootte en het opslagtype compatibel zijn met de schijf die u wilt koppelen. Als de schijf die u wilt gebruiken bijvoorbeeld in Premium Storage staat, moet de VM in staat zijn om Premium-opslag te gebruiken (zoals een DS-serie). Beide schijven moeten ook dezelfde grootte hebben.
 
-Een lijst met schijven in een resource groep ophalen met behulp van [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)
+Een lijst met schijven in een resourcegroep met [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)
 
 ```azurepowershell-interactive
 Get-AzDisk -ResourceGroupName myResourceGroup | Format-Table -Property Name
 ```
  
-Wanneer u de naam van de schijf die u wilt gebruiken hebt, stelt u deze in als de besturingssysteem schijf voor de virtuele machine. In dit voor beeld stop\deallocates de virtuele machine met de naam *myVM* en wordt de schijf met de naam *newDisk* toegewezen als de nieuwe besturingssysteem schijf. 
+Wanneer u de naam hebt van de schijf die u wilt gebruiken, stelt u die in als de osschijf voor de VM. In dit voorbeeld wordt de VM met de naam *myVM* toegewezen en wordt de schijf met de naam *newDisk* toegewezen als de nieuwe OS-schijf. 
  
 ```azurepowershell-interactive 
 # Get the VM 
@@ -62,4 +62,4 @@ Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 
 **Volgende stappen**
 
-Als u een kopie van een schijf wilt maken, raadpleegt u [een moment opname van een schijf](snapshot-copy-managed-disk.md).
+Zie [Momentopname een schijf](snapshot-copy-managed-disk.md)als u een kopie van een schijf wilt maken.

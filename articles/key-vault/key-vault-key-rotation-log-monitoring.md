@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault met end-to-end sleutel rotatie en-controle instellen | Microsoft Docs
-description: Gebruik deze hand leiding om u te helpen bij het instellen van de belangrijkste draai-en sleutel kluis Logboeken.
+title: Azure Key Vault instellen met end-to-end sleutelrotatie en -controle | Microsoft Documenten
+description: Gebruik deze handleiding om u te helpen bij het instellen van sleutelrotatie en het bewaken van sleutelkluislogboeken.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,58 +11,58 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 6962a264787bd8a55b6f6a2ebdb6eeb615c33d5a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218406"
 ---
-# <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Azure Key Vault instellen met de functie voor het draaien en controleren van sleutels
+# <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Azure Key Vault instellen met sleutelrotatie en controle
 
 ## <a name="introduction"></a>Inleiding
 
-Nadat u een sleutel kluis hebt, kunt u deze gebruiken om sleutels en geheimen op te slaan. Uw toepassingen hoeven uw sleutels of geheimen niet langer op te slaan, maar kunnen ze naar wens aanvragen bij de kluis. Met een sleutel kluis kunt u sleutels en geheimen bijwerken zonder dat dit van invloed is op het gedrag van uw toepassing, waardoor er een breed scala aan mogelijkheden voor uw sleutel en uw geheime beheer wordt geopend.
+Nadat u een sleutelkluis hebt, u deze gebruiken om sleutels en geheimen op te slaan. Uw toepassingen hoeven uw sleutels of geheimen niet langer voort te duren, maar kunnen ze indien nodig uit de kluis aanvragen. Met een sleutelkluis u sleutels en geheimen bijwerken zonder het gedrag van uw toepassing te beïnvloeden, wat een breed scala aan mogelijkheden voor uw sleutel- en geheim beheer opent.
 
-In dit artikel vindt u instructies voor het implementeren van een geplande rotatie van sleutels voor opslag accounts, het controleren van de audit logboeken van de sleutel kluis en het activeren van waarschuwingen wanneer er onverwachte aanvragen worden gedaan. 
+In dit artikel wordt uitgelegd hoe u een geplande rotatie van opslagaccountsleutels implementeert, de logboeken voor de controle van de sleutelkluis controleert en waarschuwingen verzamelen wanneer onverwachte aanvragen worden gedaan. 
 
-U moet eerst een sleutel kluis maken met behulp van de methode van uw keuze:
+U moet eerst een sleutelkluis maken met de methode van uw keuze:
 
-- [Een geheim van Azure Key Vault instellen en ophalen met behulp van Azure CLI](quick-create-cli.md)
-- [Een geheim instellen en ophalen uit Azure Key Vault met behulp van Azure PowerShell](quick-create-powershell.md)
-- [Een geheim instellen en ophalen uit Azure Key Vault met behulp van Azure Portal](quick-create-portal.md)
+- [een geheim uit Azure Key Vault instellen en ophalen met behulp van Azure CLI](quick-create-cli.md)
+- [Een geheim instellen en ophalen uit Azure Key Vault met Azure PowerShell](quick-create-powershell.md)
+- [Een geheim instellen en ophalen uit Azure Key Vault met Azure Portal](quick-create-portal.md)
 
 
-## <a name="store-a-secret"></a>Een geheim opslaan
+## <a name="store-a-secret"></a>Bewaar een geheim
 
-Als u een toepassing wilt inschakelen voor het ophalen van een geheim van Key Vault, moet u eerst het geheim maken en dit uploaden naar uw kluis.
+Als u een toepassing wilt inschakelen om een geheim uit Key Vault op te halen, moet u eerst het geheim maken en uploaden naar uw kluis.
 
-Start een Azure PowerShell-sessie en meld u aan bij uw Azure-account met de volgende opdracht:
+Start een Azure PowerShell-sessie en gebruik de volgende opdracht om u aan te melden bij uw Azure-account:
 
 ```powershell
 Connect-AzAccount
 ```
 
-Voer in het pop-upvenster browser de gebruikers naam en het wacht woord in voor uw Azure-account. Power shell haalt alle abonnementen op die aan dit account zijn gekoppeld. Power Shell maakt standaard gebruik van de eerste.
+Voer in het pop-upbrowservenster de gebruikersnaam en het wachtwoord voor uw Azure-account in. PowerShell krijgt alle abonnementen die aan dit account zijn gekoppeld. PowerShell gebruikt standaard de eerste.
 
-Als u meerdere abonnementen hebt, moet u mogelijk het account opgeven dat is gebruikt voor het maken van uw sleutel kluis. Voer het volgende in om de abonnementen voor uw account weer te geven:
+Als u meerdere abonnementen hebt, moet u mogelijk opgeven welke is gebruikt om uw sleutelkluis te maken. Voer het volgende in om de abonnementen voor uw account te bekijken:
 
 ```powershell
 Get-AzSubscription
 ```
 
-Als u het abonnement wilt opgeven dat is gekoppeld aan de sleutel kluis, voert u de volgende gegevens in:
+Voer het volgende in om het abonnement op te geven dat is gekoppeld aan de sleutelkluis die u registreert:
 
 ```powershell
 Set-AzContext -SubscriptionId <subscriptionID>
 ```
 
-Omdat in dit artikel wordt gedemonstreerd hoe u een sleutel van een opslag account als geheim opslaat, moet u die sleutel voor het opslag account ophalen.
+Omdat in dit artikel wordt aangetoond dat een opslagaccountsleutel als geheim wordt opgeslagen, moet u die opslagaccountsleutel krijgen.
 
 ```powershell
 Get-AzStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
 ```
 
-Nadat u uw geheim hebt opgehaald (in dit geval de sleutel van uw opslag account), moet u die sleutel converteren naar een beveiligde teken reeks en vervolgens een geheim maken met die waarde in uw sleutel kluis.
+Nadat u uw geheim hebt opgehaald (in dit geval uw opslagaccountsleutel), moet u die sleutel converteren naar een beveiligde tekenreeks en vervolgens een geheim maken met die waarde in uw sleutelkluis.
 
 ```powershell
 $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
@@ -70,7 +70,7 @@ $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
 Set-AzKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
 ```
 
-Haal vervolgens de URI op voor het geheim dat u hebt gemaakt. U hebt deze URI in een latere stap nodig om de sleutel kluis aan te roepen en uw geheim op te halen. Voer de volgende Power shell-opdracht uit en noteer de ID-waarde. Dit is de URI van het geheim:
+Vervolgens krijgt u de URI voor het geheim dat u hebt gemaakt. Je hebt deze URI in een latere stap nodig om de sleutelkluis te bellen en je geheim op te halen. Voer de volgende PowerShell-opdracht uit en noteer de ID-waarde, de URI van het geheim:
 
 ```powershell
 Get-AzKeyVaultSecret –VaultName <vaultName>
@@ -78,36 +78,36 @@ Get-AzKeyVaultSecret –VaultName <vaultName>
 
 ## <a name="set-up-the-application"></a>De toepassing instellen
 
-Nu u een geheim hebt opgeslagen, kunt u code gebruiken om deze op te halen en te gebruiken nadat u nog een paar stappen hebt uitgevoerd.
+Nu u een geheim hebt opgeslagen, u code gebruiken om deze op te halen en te gebruiken nadat u nog een paar stappen hebt uitgevoerd.
 
-Eerst moet u uw toepassing registreren bij Azure Active Directory. Vertel vervolgens Key Vault uw toepassings gegevens zodat deze aanvragen van uw toepassing kunnen toestaan.
+Eerst moet u uw toepassing registreren bij Azure Active Directory. Vertel Key Vault vervolgens uw toepassingsgegevens, zodat aanvragen van uw toepassing kunnen worden toegestaan.
 
 > [!NOTE]
-> Uw toepassing moet worden gemaakt op dezelfde Azure Active Directory Tenant als uw sleutel kluis.
+> Uw toepassing moet worden gemaakt op dezelfde Azure Active Directory-tenant als uw sleutelkluis.
 
-1. Open **Azure Active Directory**.
+1. **Open Azure Active Directory**.
 2. Selecteer **App-registraties**. 
-3. Selecteer **nieuwe toepassing registreren** om een toepassing toe te voegen aan Azure Active Directory.
+3. Selecteer **Nieuwe toepassingsregistratie** om een toepassing toe te voegen aan Azure Active Directory.
 
     ![Toepassingen openen in Azure Active Directory](./media/keyvault-keyrotation/azure-ad-application.png)
 
-4. Laat het toepassings type onder **maken**staan als **Web-app/API** en geef uw toepassing een naam. Geef uw toepassing een **aanmeldings-URL**. Deze URL kan alles zijn wat u wilt voor deze demo.
+4. Onder **Maken**verlaat u het toepassingstype als **web-app / API** en geef u uw toepassing een naam. Geef uw aanvraag een **aanmeldings-URL**. Deze URL kan alles zijn wat je wilt voor deze demo.
 
-    ![Toepassings registratie maken](./media/keyvault-keyrotation/create-app.png)
+    ![Toepassingsregistratie maken](./media/keyvault-keyrotation/create-app.png)
 
-5. Nadat de toepassing is toegevoegd aan Azure Active Directory, wordt de pagina toepassing geopend. Selecteer **instellingen**en selecteer vervolgens **Eigenschappen**. Kopieer de waarde van de **toepassings-id** . U hebt deze nodig in latere stappen.
+5. Nadat de toepassing is toegevoegd aan Azure Active Directory, wordt de toepassingspagina geopend. Selecteer **Instellingen**en selecteer **Eigenschappen**. Kopieer de waarde **van de toepassings-id.** Je hebt het nodig in latere stappen.
 
-Genereer vervolgens een sleutel voor uw toepassing, zodat deze kan communiceren met Azure Active Directory. Als u een sleutel wilt maken, selecteert u **sleutels** onder **instellingen**. Noteer de zojuist gegenereerde sleutel voor uw Azure Active Directory-toepassing. U hebt deze in een latere stap nodig. De sleutel is niet beschikbaar nadat u deze sectie verlaat. 
+Genereer vervolgens een sleutel voor uw toepassing, zodat deze kan communiceren met Azure Active Directory. Als u een sleutel wilt maken, selecteert u **Toetsen** onder **Instellingen**. Noteer de nieuw gegenereerde sleutel voor uw Azure Active Directory-toepassing. U hebt deze in een latere stap nodig. De sleutel is niet beschikbaar nadat u deze sectie hebt verlaten. 
 
-![App-sleutels Azure Active Directory](./media/keyvault-keyrotation/create-key.png)
+![Azure Active Directory-app-sleutels](./media/keyvault-keyrotation/create-key.png)
 
-Voordat u aanroepen van uw toepassing in de sleutel kluis tot stand brengt, moet u de sleutel kluis informeren over uw toepassing en de bijbehorende machtigingen. De volgende opdracht maakt gebruik van de naam van de kluis en de toepassings-ID van uw Azure Active Directory-app om de **toepassing toegang te geven tot uw** sleutel kluis.
+Voordat u oproepen van uw toepassing in de sleutelkluis vaststelt, moet u de sleutelkluis vertellen over uw toepassing en de machtigingen ervan. Met de volgende opdracht worden de kluisnaam en de toepassings-id van uw Azure Active Directory-app gebruikt om de **toepassing** Toegang te verlenen tot uw sleutelkluis.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
 ```
 
-U kunt nu beginnen met het bouwen van uw toepassings aanroepen. In uw toepassing moet u de NuGet-pakketten installeren die nodig zijn om te communiceren met Azure Key Vault en Azure Active Directory. Voer de volgende opdrachten uit in de Visual Studio Package Manager-console. Bij het schrijven van dit artikel is de huidige versie van het Azure Active Directory pakket 3.10.305231913, dus bevestig de meest recente versie en werk deze indien nodig bij.
+U bent nu klaar om te beginnen met het bouwen van uw sollicitatiegesprekken. In uw toepassing moet u de NuGet-pakketten installeren die nodig zijn om te communiceren met Azure Key Vault en Azure Active Directory. Voer in de Visual Studio Package Manager-console de volgende opdrachten in. Bij het schrijven van dit artikel is de huidige versie van het Azure Active Directory-pakket 3.10.305231913, dus bevestig de nieuwste versie en update indien nodig.
 
 ```powershell
 Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.305231913
@@ -115,13 +115,13 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.30
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-Maak in de toepassings code een klasse om de methode voor uw Azure Active Directory-verificatie te bewaren. In dit voor beeld heet die klasse **hulppr**. Voeg de volgende `using`-instructie toe:
+Maak in uw toepassingscode een klasse om de methode voor uw Azure Active Directory-verificatie vast te houden. In dit voorbeeld wordt die klasse **Utils**genoemd. Voeg de `using` volgende instructie toe:
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Voeg vervolgens de volgende methode toe om de JWT-token op te halen uit Azure Active Directory. Voor onderhoud kunt u de in code vastgelegde teken reeks waarden verplaatsen naar uw web-of toepassings configuratie.
+Voeg vervolgens de volgende methode toe om het JWT-token op te halen uit Azure Active Directory. Voor onderhoud u de hardgecodeerde tekenreekswaarden verplaatsen naar uw web- of toepassingsconfiguratie.
 
 ```csharp
 public async static Task<string> GetToken(string authority, string resource, string scope)
@@ -140,13 +140,13 @@ public async static Task<string> GetToken(string authority, string resource, str
 }
 ```
 
-Voeg de benodigde code toe om Key Vault aan te roepen en uw geheime waarde op te halen. Eerst moet u de volgende `using`-instructie toevoegen:
+Voeg de benodigde code toe om Key Vault te bellen en uw geheime waarde op te halen. Eerst moet u de `using` volgende instructie toevoegen:
 
 ```csharp
 using Microsoft.Azure.KeyVault;
 ```
 
-Voeg de methode aanroepen toe om Key Vault aan te roepen en uw geheim op te halen. In deze methode geeft u de geheime URI op die u in een vorige stap hebt opgeslagen. Let op het gebruik van de methode **GetToken** van de klasse **hulppr** . die u eerder hebt gemaakt.
+Voeg de methodeaanroepen toe om Key Vault aan te roepen en je geheim op te halen. Met deze methode geeft u de geheime URI die u in een vorige stap hebt opgeslagen. Let op het gebruik van de **GetToken-methode** van de klasse **Utils** die u eerder hebt gemaakt.
 
 ```csharp
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetToken));
@@ -154,26 +154,26 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetT
 var sec = kv.GetSecretAsync(<SecretID>).Result.Value;
 ```
 
-Wanneer u de toepassing uitvoert, moet u zich nu verifiëren voor Azure Active Directory en vervolgens uw geheime waarde ophalen van Azure Key Vault.
+Wanneer u uw toepassing uitvoert, moet u nu authenticeren naar Azure Active Directory en vervolgens uw geheime waarde ophalen uit Azure Key Vault.
 
-## <a name="key-rotation-using-azure-automation"></a>De draaiing van sleutels met Azure Automation
+## <a name="key-rotation-using-azure-automation"></a>Sleutelrotatie met Azure Automation
 
 > [!IMPORTANT]
-> Azure Automation runbooks vereisen nog steeds het gebruik van de module `AzureRM`.
+> Azure Automation-runbooks vereisen nog `AzureRM` steeds het gebruik van de module.
 
-U bent nu klaar om een rotatie strategie in te stellen voor de waarden die u als Key Vault geheimen opslaat. Geheimen kunnen op verschillende manieren worden gedraaid:
+U bent nu klaar om een rotatiestrategie op te zetten voor de waarden die u opslaat als Key Vault-geheimen. Geheimen kunnen op verschillende manieren worden gedraaid:
 
-- Als onderdeel van een hand matig proces
-- Programmatisch met behulp van API-aanroepen
-- Via een Azure Automation script
+- Als onderdeel van een handmatig proces
+- Programmatisch met API-aanroepen
+- Via een Azure Automation-script
 
-Voor de doel einden van dit artikel gebruikt u Power shell in combi natie met Azure Automation om de toegangs sleutel van een Azure Storage-account te wijzigen. Vervolgens werkt u een sleutel kluis geheim bij met de nieuwe sleutel.
+Voor de toepassing van dit artikel gebruikt u PowerShell in combinatie met Azure Automation om de toegangssleutel van een Azure-opslagaccount te wijzigen. Je werkt dan een sleutelkluisgeheim bij met die nieuwe sleutel.
 
-Als u wilt toestaan dat Azure Automation geheime waarden in uw sleutel kluis in te stellen, moet u de client-ID ophalen voor de verbinding met de naam **AzureRunAsConnection**. Deze verbinding is gemaakt toen u uw Azure Automation-exemplaar hebt gemaakt. Als u deze ID wilt vinden, selecteert u **assets** van uw Azure Automation-exemplaar. Selecteer vervolgens **verbindingen**en selecteer vervolgens de Service-Principal **AzureRunAsConnection** . Noteer de **ApplicationId** -waarde.
+Als u Azure Automation toestaat geheime waarden in uw sleutelkluis in te stellen, moet u de client-id voor de verbinding met de naam **AzureRunAsConnection**krijgen. Deze verbinding is gemaakt toen u uw Azure Automation-exemplaar instelde. Als u deze id wilt vinden, selecteert u **Elementen** in uw Azure Automation-exemplaar. Selecteer van daaruit **Verbindingen**en selecteer vervolgens de principal van de **AzureRunAsConnection-service.** Noteer de waarde **ApplicationId.**
 
-![Client-ID Azure Automation](./media/keyvault-keyrotation/Azure_Automation_ClientID.png)
+![Azure Automation-client-id](./media/keyvault-keyrotation/Azure_Automation_ClientID.png)
 
-Selecteer in **assets** **modules**. Selecteer **Galerie**en zoek en importeer bijgewerkte versies van elk van de volgende modules:
+Selecteer **Modules**in **assets**. Selecteer **Galerij**en zoek bijgewerkte versies van elk van de volgende modules en importeer deze:
 
     Azure
     Azure.Storage
@@ -183,19 +183,19 @@ Selecteer in **assets** **modules**. Selecteer **Galerie**en zoek en importeer b
     AzureRM.Storage
 
 > [!NOTE]
-> Als dit artikel is geschreven, moeten alleen de eerder genoteerde modules voor het volgende script worden bijgewerkt. Als uw Automation-taak mislukt, controleert u of u alle benodigde modules en de bijbehorende afhankelijkheden hebt geïmporteerd.
+> Bij het schrijven van dit artikel moesten alleen de eerder genoteerde modules worden bijgewerkt voor het volgende script. Als uw automatiseringstaak mislukt, bevestigt u dat u alle benodigde modules en hun afhankelijkheden hebt geïmporteerd.
 
-Nadat u de toepassings-ID voor uw Azure Automation verbinding hebt opgehaald, moet u uw sleutel kluis vertellen dat deze toepassing is gemachtigd om geheimen bij te werken in uw kluis. Gebruik de volgende Power shell-opdracht:
+Nadat u de toepassings-id voor uw Azure Automation-verbinding hebt opgehaald, moet u uw sleutelkluis vertellen dat deze toepassing toestemming heeft om geheimen in uw kluis bij te werken. Gebruik de volgende PowerShell-opdracht:
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
-Selecteer vervolgens **Runbooks** onder uw Azure Automation-exemplaar en selecteer vervolgens **Runbook toevoegen**. Selecteer **Snelle invoer**. Geef uw runbook een naam en selecteer **Power shell** als het type runbook. U kunt een beschrijving toevoegen. Selecteer tot slot **maken**.
+Selecteer vervolgens **Runbooks** onder de instantie Azure Automation en selecteer **Vervolgens Runbook toevoegen**. Selecteer **Snelle invoer**. Geef uw runbook een naam en selecteer **PowerShell** als runbook-type. U een beschrijving toevoegen. Selecteer tot slot **Maken**.
 
 ![Runbook maken](./media/keyvault-keyrotation/Create_Runbook.png)
 
-Plak het volgende Power shell-script in het deel venster Editor voor uw nieuwe runbook:
+Plak het volgende PowerShell-script in het editorvenster voor uw nieuwe runbook:
 
 ```powershell
 $connectionName = "AzureRunAsConnection"
@@ -238,13 +238,13 @@ $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 $secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
-Selecteer in het deel venster Editor de optie **test deel venster** om uw script te testen. Nadat het script zonder fouten is uitgevoerd, kunt u **publiceren**selecteren. vervolgens kunt u een planning voor het runbook Toep assen in het deel venster runbook Configuration.
+Selecteer in het editorvenster **het deelvenster Testen** om uw script te testen. Nadat het script foutloos is uitgevoerd, u **Publiceren**selecteren en vervolgens een planning voor de runbook toepassen in het configuratievenster van de runbook.
 
-## <a name="key-vault-auditing-pipeline"></a>Pijp lijn voor Key Vault controle
+## <a name="key-vault-auditing-pipeline"></a>Key Vault-controlepijplijn
 
-Wanneer u een sleutel kluis instelt, kunt u controle inschakelen voor het verzamelen van logboeken met toegangs aanvragen voor de sleutel kluis. Deze logboeken worden opgeslagen in een aangewezen Azure-opslag account en kunnen worden opgehaald, bewaakt en geanalyseerd. In het volgende scenario worden Azure functions, Azure Logic apps en sleutel-kluis audit logboeken gebruikt om een pijp lijn te maken waarmee een e-mail wordt verzonden wanneer een app die niet overeenkomt met de App-ID van de web-app, geheimen uit de kluis ophaalt.
+Wanneer u een sleutelkluis instelt, u controle inschakelen om logboeken te verzamelen over toegangsverzoeken die zijn gedaan in de sleutelkluis. Deze logboeken worden opgeslagen in een aangewezen Azure-opslagaccount en kunnen worden uitgetrokken, gecontroleerd en geanalyseerd. In het volgende scenario worden Azure-functies, Azure-logische apps en controlelogboeken voor sleutelkluizen gebruikt om een pijplijn te maken die een e-mail verzendt wanneer een app die niet overeenkomt met de app-id van de web-app, geheimen uit de kluis ophaalt.
 
-Eerst moet u logboek registratie inschakelen voor uw sleutel kluis. Gebruik de volgende Power shell-opdrachten. (In dit artikel vindt u een overzicht van de volledige Details [over de sleutel kluis logboek registratie](key-vault-logging.md).)
+Eerst moet u het inloggen op uw sleutelkluis inschakelen. Gebruik de volgende PowerShell-opdrachten. (U de volledige details in [dit artikel over key-vault-logging](key-vault-logging.md).)
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
@@ -252,27 +252,27 @@ $kv = Get-AzKeyVault -VaultName '<vaultName>'
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
-Nadat logboek registratie is ingeschakeld, worden audit Logboeken opgeslagen in het aangewezen opslag account. Deze logboeken bevatten gebeurtenissen over hoe en wanneer uw sleutel kluizen toegankelijk zijn, en door wie.
+Nadat logboekregistratie is ingeschakeld, worden controlelogboeken opgeslagen in het aangewezen opslagaccount. Deze logboeken bevatten gebeurtenissen over hoe en wanneer uw sleutelkluizen worden geopend en door wie.
 
 > [!NOTE]
-> U kunt de logboek gegevens 10 minuten na de sleutel kluis gebruiken. Het is vaak eerder beschikbaar dan dat.
+> U hebt 10 minuten na de sleutelkluisbewerking toegang tot uw logboekgegevens. Het zal vaak eerder beschikbaar zijn dan dat.
 
-De volgende stap is het [maken van een Azure service bus wachtrij](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md). Deze wachtrij is de plaats waar sleutel kluis audit logboeken worden gepusht. Wanneer de berichten van het controle logboek zich in de wachtrij bevinden, haalt de logische app deze op en voert deze op deze taken uit. Maak een Service Bus-exemplaar met de volgende stappen:
+De volgende stap is het [maken van een Azure Service Bus-wachtrij.](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md) In deze wachtrij worden controlelogboeken voor sleutelkluizen gepusht. Wanneer de controlelogboekberichten in de wachtrij staan, pikt de logische app ze op en werkt ze erop. Een instantie servicebus maken met de volgende stappen:
 
-1. Maak een Service Bus naam ruimte (als u er al een hebt die u wilt gebruiken, gaat u verder met stap 2).
-2. Blader naar het Service Bus-exemplaar in de Azure Portal en selecteer de naam ruimte waarin u de wachtrij wilt maken.
-3. Selecteer **een resource maken** > **bedrijfsintegratie** > **Service Bus**en voer vervolgens de vereiste gegevens in.
-4. Zoek de Service Bus verbindings gegevens door de naam ruimte te selecteren en vervolgens **verbindings gegevens**te selecteren. U hebt deze informatie nodig voor de volgende sectie.
+1. Maak een naamruimte voor servicebus (als u er al een hebt die u wilt gebruiken, gaat u naar stap 2).
+2. Blader naar de instantie Servicebus in de Azure-portal en selecteer de naamruimte waarin u de wachtrij wilt maken.
+3. Selecteer **Een resource** > **Enterprise Integration** > **Service Bus maken**en voer de vereiste gegevens in.
+4. Zoek de verbindingsgegevens van servicebus door de naamruimte te selecteren en vervolgens **Verbindingsgegevens te**selecteren . Je hebt deze informatie nodig voor de volgende sectie.
 
-Maak vervolgens [een Azure-functie](../azure-functions/functions-create-first-azure-function.md) om de sleutel kluis logboeken te controleren binnen het opslag account en nieuwe gebeurtenissen op te halen. Deze functie wordt geactiveerd volgens een schema.
+Maak vervolgens [een Azure-functie](../azure-functions/functions-create-first-azure-function.md) om de logboeken van de sleutelkluis binnen het opslagaccount te peilen en nieuwe gebeurtenissen op te halen. Deze functie wordt geactiveerd volgens een schema.
 
-Als u een Azure function-app wilt maken, selecteert u **een resource maken**, zoekt u in de marketplace naar **functie-app**en selecteert u **maken**. Tijdens het maken kunt u een bestaand hosting plan gebruiken of een nieuw abonnement maken. U kunt er ook voor kiezen om dynamisch te hosten. Zie [Azure functions schalen](../azure-functions/functions-scale.md)voor meer informatie over de hosting opties voor Azure functions.
+Als u een Azure-functie-app wilt maken, selecteert **u Een resource maken,** zoekt u op de marktplaats naar **functie-app**en selecteert u **Vervolgens Maken**. Tijdens het maken u een bestaand hostingplan gebruiken of een nieuw plan maken. U ook kiezen voor dynamische hosting. Zie [Azure-functies schalen](../azure-functions/functions-scale.md)voor meer informatie over de hostingopties voor Azure-functies.
 
-Nadat de Azure function-app is gemaakt, gaat u naar deze en selecteert u het **Timer** scenario en **C\#** voor de taal. Selecteer vervolgens **deze functie maken**.
+Nadat de Azure-functie-app is gemaakt, gaat u naar de app En selecteert u het **timerscenario** en **C\# ** voor de taal. Selecteer vervolgens **Deze functie maken**.
 
-![Blade Azure Functions starten](./media/keyvault-keyrotation/Azure_Functions_Start.png)
+![Startblad Azure-functies](./media/keyvault-keyrotation/Azure_Functions_Start.png)
 
-Vervang op het tabblad **ontwikkelen** de code run. CSX door het volgende:
+Vervang op het tabblad **Ontwikkelen** de run.csx-code door het volgende:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -384,19 +384,19 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 ```
 
 > [!NOTE]
-> Wijzig de variabelen in de voor gaande code zodat deze verwijzen naar het opslag account waar de sleutel kluis logboeken worden geschreven, naar het Service Bus exemplaar dat u eerder hebt gemaakt en naar het specifieke pad naar de sleutel kluis opslag Logboeken.
+> Wijzig de variabelen in de vorige code om te verwijzen naar uw opslagaccount waar de sleutelkluislogboeken zijn geschreven, naar de instantie Servicebus die u eerder hebt gemaakt en naar het specifieke pad naar de opslaglogboeken voor sleutelkluizen.
 
-De functie haalt het meest recente logboek bestand op uit het opslag account waarin de sleutel kluis logboeken worden geschreven, plaatst de meest recente gebeurtenissen uit dat bestand en duwt ze naar een Service Bus wachtrij. 
+De functie pikt het nieuwste logboekbestand op van het opslagaccount waar de sleutelkluislogboeken worden geschreven, pakt de laatste gebeurtenissen uit dat bestand en duwt ze naar een servicebuswachtrij. 
 
-Omdat één bestand meerdere gebeurtenissen kan hebben, moet u een Sync. txt-bestand maken dat door de functie wordt weer gegeven om het tijds tempel van de laatste gebeurtenis die is opgehaald te bepalen. Als u dit bestand gebruikt, zorgt u ervoor dat dezelfde gebeurtenis niet meerdere keren wordt gepusht. 
+Omdat één bestand meerdere gebeurtenissen kan hebben, moet u een sync.txt-bestand maken waar de functie ook naar kijkt om de tijdstempel te bepalen van de laatste gebeurtenis die is opgehaald. Als u dit bestand gebruikt, wordt ervoor dat u niet meerdere keren dezelfde gebeurtenis pusht. 
 
-Het bestand sync. txt bevat een tijds tempel voor de laatst gevonden gebeurtenis. Wanneer de logboeken worden geladen, moeten ze worden gesorteerd op basis van hun tijds tempels om ervoor te zorgen dat ze correct worden geordend.
+Het bestand sync.txt bevat een tijdstempel voor de laatst aangetroffen gebeurtenis. Wanneer de logboeken worden geladen, moeten ze worden gesorteerd op basis van hun tijdstempels om ervoor te zorgen dat ze correct zijn besteld.
 
-Voor deze functie verwijzen we naar een paar extra bibliotheken die niet beschikbaar zijn in het vak in Azure Functions. Om deze bibliotheken op te nemen, hebben we Azure Functions nodig om ze te kunnen ophalen met behulp van NuGet. Selecteer in het vak **code** de optie **bestanden weer geven**.
+Voor deze functie verwijzen we naar een aantal extra bibliotheken die niet beschikbaar zijn in Azure-functies. Om deze bibliotheken op te nemen, hebben we Azure-functies nodig om ze op te halen met NuGet. Selecteer onder het vak **Code** de optie **Bestanden weergeven**.
 
-![Optie voor het weer geven van bestanden](./media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
+![Optie Bestanden weergeven](./media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
 
-Voeg een bestand met de naam project. json toe met de volgende inhoud:
+Voeg een bestand met de volgende inhoud toe, project.json:
 
 ```json
     {
@@ -411,38 +411,38 @@ Voeg een bestand met de naam project. json toe met de volgende inhoud:
     }
 ```
 
-Nadat u **Opslaan**hebt geselecteerd, worden de vereiste binaire bestanden door Azure functions gedownload.
+Nadat u **Opslaan**hebt geselecteerd, worden de vereiste binaire bestanden gedownload van Azure Functions.
 
-Ga naar het tabblad **integreren** en geef de para meter timer een duidelijke naam die u in de functie kunt gebruiken. In de voor gaande code verwacht de functie dat de timer *myTimer*wordt genoemd. Geef als volgt een [cron-expressie](../app-service/webjobs-create.md#CreateScheduledCRON) op voor de timer: `0 * * * * *`. Deze expressie zorgt ervoor dat de functie één keer per minuut wordt uitgevoerd.
+Ga naar het tabblad **Integreren** en geef de parameter timer een betekenisvolle naam om te gebruiken binnen de functie. In de voorgaande code verwacht de functie dat de timer *myTimer*wordt genoemd. Geef als volgt een [CRON-expressie](../app-service/webjobs-create.md#CreateScheduledCRON) voor de timer op: `0 * * * * *`. Deze expressie zorgt ervoor dat de functie eenmaal per minuut wordt uitgevoerd.
 
-Voeg op hetzelfde tabblad **integreren** een invoer van het type **Azure Blob-opslag**toe. Deze invoer verwijst naar het bestand sync. txt dat het tijds tempel bevat van de laatste gebeurtenis die door de functie is bekeken. Deze invoer wordt in de functie geopend met behulp van de parameter naam. In de voor gaande code verwacht de invoer van de Azure Blob-opslag de parameter naam *inputBlob*. Selecteer het opslag account waarin het bestand sync. txt zich bevindt (dit kan hetzelfde zijn of een ander opslag account zijn). Geef in het veld pad het pad naar het bestand op in de indeling `{container-name}/path/to/sync.txt`.
+Voeg op hetzelfde tabblad **Integreren** een invoer toe van het type **Azure Blob-opslag**. Deze invoer wijst naar het bestand sync.txt dat de tijdstempel bevat van de laatste gebeurtenis die door de functie wordt bekeken. Deze invoer wordt binnen de functie geopend met behulp van de parameternaam. In de vorige code verwacht de Azure Blob-opslaginvoer dat de parameternaam *invoerblob*is. Selecteer het opslagaccount waar het sync.txt-bestand zich bevindt (het kan hetzelfde of een ander opslagaccount zijn). Geef in het padveld het pad naar `{container-name}/path/to/sync.txt`het bestand op in de indeling .
 
-Voeg een uitvoer van het type **Azure Blob-opslag**toe. Deze uitvoer verwijst naar het bestand sync. txt dat u in de invoer hebt gedefinieerd. Deze uitvoer wordt gebruikt door de functie om het tijds tempel van de laatste gebeurtenis die is bekeken, te schrijven. De voor gaande code verwacht dat deze para meter *outputBlob*wordt genoemd.
+Voeg een uitvoer toe van het type **Azure Blob-opslag**. Deze uitvoer wijst naar het sync.txt-bestand dat u in de invoer hebt gedefinieerd. Deze uitvoer wordt door de functie gebruikt om de tijdstempel van de laatste gebeurtenis te schrijven. De voorgaande code verwacht dat deze parameter *outputBlob*wordt genoemd.
 
-De functie is nu gereed. Ga terug naar het tabblad **ontwikkelen** en sla de code op. Controleer het uitvoer venster voor compilatie fouten en corrigeer deze indien nodig. Als de code wordt gecompileerd, moet de code nu elke minuut de sleutel kluis logboeken controleren en nieuwe gebeurtenissen naar de gedefinieerde Service Bus wachtrij pushen. U ziet dat logboek gegevens naar het logboek venster schrijven wanneer de functie wordt geactiveerd.
+De functie is nu klaar. Zorg ervoor dat u terugschakelt naar het tabblad **Ontwikkelen** en de code opslaat. Controleer het uitvoervenster op eventuele compilatiefouten en corrigeer deze indien nodig. Als de code wordt gecompileerd, moet de code nu elke minuut de logboeken van de sleutelkluis controleren en nieuwe gebeurtenissen in de gedefinieerde wachtrij van servicebus duwen. U moet zien logging informatie uitschrijven naar het logboekvenster elke keer dat de functie wordt geactiveerd.
 
-### <a name="azure-logic-app"></a>Azure Logic-app
+### <a name="azure-logic-app"></a>Azure-logica-app
 
-Vervolgens moet u een Azure Logic-app maken die de gebeurtenissen ophaalt die de functie naar de Service Bus wachtrij pusht, de inhoud parseert en een e-mail bericht verzendt op basis van een voor waarde die overeenkomt.
+Vervolgens moet u een Azure-logica-app maken die de gebeurtenissen oppikt die de functie naar de wachtrij van de servicebus pusht, de inhoud ontleedt en een e-mail verzendt op basis van een voorwaarde die wordt gekoppeld.
 
-[Maak een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md) door **een resource maken** > **Integration** > **Logic app**te selecteren.
+[Maak een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md) door Een**logicalogische app** **voor bronintegratie** > **Integration** > maken te selecteren .
 
-Nadat de logische app is gemaakt, gaat u naar deze en selecteert u **bewerken**. Selecteer in de Logic app-editor **Service Bus wachtrij** en voer uw service bus referenties in om deze te verbinden met de wachtrij.
+Nadat de logische app is gemaakt, gaat u naar de app en selecteert u **Bewerken**. Selecteer in de editor van de logische app de optie **ServiceBuswachtrij** en voer uw servicebusreferenties in om deze aan de wachtrij te koppelen.
 
-![Azure Logic App Service Bus](./media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
+![Azure Logic App-servicebus](./media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
 
-Selecteer **een voor waarde toevoegen**. In de voor waarde gaat u naar de geavanceerde editor en voert u de volgende code in. Vervang *APP_ID* door de daad werkelijke app-id van uw web-app:
+Selecteer **Een voorwaarde toevoegen**. Schakel in de voorwaarde over naar de geavanceerde editor en voer de volgende code in. Vervang *APP_ID* door de werkelijke app-id van uw web-app:
 
 ```
 @equals('<APP_ID>', json(decodeBase64(triggerBody()['ContentData']))['identity']['claim']['appid'])
 ```
 
-Deze expressie retourneert in feite **Onwaar** als de *AppID* van de binnenkomende gebeurtenis (de hoofd tekst van het service bus bericht) niet de *AppID* van de app is.
+Deze expressie wordt in wezen **false** als de *appid* van de binnenkomende gebeurtenis (die het hoofd van het Service Bus-bericht is) niet de *appid* van de app is.
 
-Maak nu een actie onder **als Nee, niets doen**.
+Nu, maak een actie onder **ALS NEE, NIETS DOEN**.
 
-![Actie Azure Logic Apps kiezen](./media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
+![Azure Logic Apps kiezen actie](./media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
 
-Selecteer voor de actie **Office 365-e-mail verzenden**. Vul de velden in om een e-mail bericht te maken dat u kunt verzenden wanneer de gedefinieerde voor waarde **Onwaar**retourneert. Als u geen Office 365 hebt, zoekt u naar alternatieven om dezelfde resultaten te krijgen.
+Selecteer voor de actie **Office 365 - stuur e-mail**. Vul de velden in om een e-mail te maken die u wilt verzenden wanneer de gedefinieerde voorwaarde **false retourneert.** Als u office 365 niet hebt, zoekt u naar alternatieven om dezelfde resultaten te bereiken.
 
-U hebt nu een end-to-end-pijp lijn die een nieuwe sleutel kluis audit logboeken eenmaal per minuut zoekt. Er worden nieuwe logboeken gepusht die naar een Service Bus wachtrij worden gevonden. De logische app wordt geactiveerd wanneer er een nieuw bericht binnenkomt in de wachtrij. Als de *AppID* binnen het evenement niet overeenkomt met de app-id van de aanroepende toepassing, wordt een e-mail bericht verzonden.
+U hebt nu een end-to-end pijplijn die één keer per minuut op zoek is naar nieuwe key-vault auditlogs. Het duwt nieuwe logboeken vindt het aan een rij van de Bus van de Dienst. De logische app wordt geactiveerd wanneer een nieuw bericht in de wachtrij terechtkomt. Als de *appid* in de gebeurtenis niet overeenkomt met de app-id van de aanroepende toepassing, stuurt deze een e-mail.

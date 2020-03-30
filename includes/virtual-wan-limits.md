@@ -9,19 +9,19 @@ ms.date: 09/26/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0cf30666ab9950459f2a48f8fe271fd770f4efe1
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71839213"
 ---
 | Resource |  Limiet |
 | --- | --- |
 | Virtuele WAN-hubs per regio | 1  |
-| Virtuele WAN-hubs per virtueel WAN |Azure-regio's |
-| VPN-verbindingen (vertakking) per hub |1000 |
+| Virtuele WAN-hubs per virtuele wan |Azure-regio's |
+| VPN (branch) verbindingen per hub |1000 |
 | VNet-verbindingen per hub  | 500 |
-| Punt-naar-site-gebruikers per hub|10.000 |
-| Cumulatieve door Voer per virtuele WAN-VPN-gateway |20 Gbps |
-| Door Voer per virtuele WAN-VPN-verbinding (2 tunnels) | 2 Gbps met 1 Gbps/IPsec-tunnel |
-| Cumulatieve door Voer per virtuele WAN ExpressRoute-gateway |20 Gbps 
+| Point-to-Site-gebruikers per hub|10.000 |
+| Geaggregeerde doorvoer per Virtual WAN VPN-gateway |20 Gbps |
+| Doorvoer per Virtual WAN VPN-verbinding (2 tunnels) | 2 Gbps met 1 Gbps/IPsec tunnel |
+| Geaggregeerde doorvoer per Virtual WAN ExpressRoute-gateway |20 Gbps 

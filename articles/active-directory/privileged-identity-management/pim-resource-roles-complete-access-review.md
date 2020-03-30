@@ -1,6 +1,6 @@
 ---
-title: De toegangs beoordeling van Azure-resource rollen in PIM volt ooien-Azure AD | Microsoft Docs
-description: Meer informatie over het volt ooien van een toegangs beoordeling van Azure resource roles Privileged Identity Management in Azure Active Directory.
+title: Toegangscontrole van Azure-bronrollen voltooien in PIM - Azure AD | Microsoft Documenten
+description: Meer informatie over het voltooien van een toegangscontrole van Azure-bronrollen Privileged Identity Management in Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,63 +16,63 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9e45249245aaab97070b7e774d4b6bab6827bdc9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74021982"
 ---
-# <a name="complete-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Een toegangs beoordeling van Azure-resource rollen in Privileged Identity Management volt ooien
+# <a name="complete-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Een toegangscontrole van Azure-bronrollen voltooien in Privileged Identity Management
 
-Beheerders van geprivilegieerde rollen kunnen bevoorrechte toegang controleren nadat ze [een toegangs beoordeling hebben gestart](pim-resource-roles-start-access-review.md). Privileged Identity Management (PIM) in Azure Active Directory (Azure AD) verzendt automatisch een e-mail bericht waarin gebruikers wordt gevraagd hun toegang te controleren. Als een gebruiker geen e-mail bericht ontvangt, kunt u de instructies voor het [uitvoeren van een toegangs beoordeling](pim-resource-roles-perform-access-review.md)verzenden.
+Beheerders van bevoorrechte rollen kunnen bevoorrechte toegang controleren nadat ze [een toegangscontrole hebben gestart.](pim-resource-roles-start-access-review.md) Privileged Identity Management (PIM) in Azure Active Directory (Azure AD) stuurt automatisch een e-mail waarin gebruikers worden gevraagd hun toegang te controleren. Als een gebruiker geen e-mail ontvangt, u hem of haar de instructies sturen voor [het uitvoeren van een toegangscontrole.](pim-resource-roles-perform-access-review.md)
 
-Volg de stappen in dit artikel om de controle te beheren en de resultaten te bekijken nadat de toegangs beoordelings periode is afgelopen of nadat alle gebruikers de zelf beoordeling hebben voltooid.
+Nadat de periode voor toegangscontrole voorbij is, of nadat alle gebruikers hun zelfbeoordeling hebben voltooid, volgt u de stappen in dit artikel om de beoordeling te beheren en de resultaten te bekijken.
 
-## <a name="manage-access-reviews"></a>Toegangs beoordelingen beheren
+## <a name="manage-access-reviews"></a>Toegangsbeoordelingen beheren
 
-1. Ga naar de [Azure Portal](https://portal.azure.com/). Selecteer de **Azure-resources** service op het dash board.
+1. Ga naar de [Azure-portal.](https://portal.azure.com/) Selecteer op het dashboard de **Azure-resourcesservice.**
 
 2. Selecteer uw resource.
 
-3. Selecteer de sectie **toegangs beoordelingen** van het dash board.
+3. Selecteer het gedeelte **Toegangsrecensies** van het dashboard.
 
-    ![Azure-resources-lijst met toegangs beoordelingen met rol, eigenaar, begin datum, eind datum en status](media/pim-resource-roles-complete-access-review/rbac-access-review-home-list.png)
+    ![Azure-bronnen - Lijst met toegangsbeoordelingen met rol, eigenaar, begindatum, einddatum en status](media/pim-resource-roles-complete-access-review/rbac-access-review-home-list.png)
 
-4. Selecteer de toegangs beoordeling die u wilt beheren.
+4. Selecteer de toegangscontrole die u wilt beheren.
 
-Op de detail pagina voor de toegangs beoordeling zijn er een aantal opties voor het beheren van die beoordeling. U hebt de volgende opties:
+Op de detailpagina voor de toegangscontrole zijn er een aantal opties voor het beheren van die beoordeling. Dit zijn de opties:
 
-![Opties voor het beheren van een beoordeling-stoppen, opnieuw instellen, Toep assen, verwijderen](media/pim-resource-roles-complete-access-review/rbac-access-review-menu.png)
+![Opties voor het beheren van een beoordeling - Stoppen, opnieuw instellen, toepassen, verwijderen](media/pim-resource-roles-complete-access-review/rbac-access-review-menu.png)
 
 ### <a name="stop"></a>Stoppen
 
-Alle toegangs beoordelingen hebben een eind datum. Selecteer **stoppen** om de bewerking te volt ooien. Gebruikers die hun beoordeling niet op dit moment hebben voltooid, kunnen deze niet meer volt ooien nadat de controle is gestopt. U kunt een beoordeling niet opnieuw starten nadat deze is gestopt.
+Alle toegangsbeoordelingen hebben een einddatum. Selecteer **Stoppen** om het eerder af te maken. Gebruikers die hun beoordeling op dat moment nog niet hebben voltooid, kunnen deze niet voltooien nadat u de beoordeling hebt gestopt. U een beoordeling niet opnieuw starten nadat deze is gestopt.
 
 ### <a name="reset"></a>Opnieuw instellen
 
-U kunt een toegangs beoordeling opnieuw instellen om alle beslissingen te verwijderen die erop zijn gemaakt. Nadat u een toegangs beoordeling opnieuw hebt ingesteld, worden alle gebruikers gemarkeerd als niet opnieuw gecontroleerd.
+U een toegangscontrole opnieuw instellen om alle beslissingen die erop worden genomen te verwijderen. Nadat u een toegangscontrole opnieuw hebt ingesteld, worden alle gebruikers gemarkeerd als niet opnieuw beoordeeld.
 
 ### <a name="apply"></a>Toepassen
 
-Wanneer een toegangs beoordeling is voltooid, selecteert u **Toep assen** om het resultaat van de beoordeling te implementeren. Als de toegang van een gebruiker bij de controle is geweigerd, wordt met deze stap de roltoewijzing verwijderd.  
+Nadat een toegangscontrole is voltooid, selecteert u **Toepassen** om de resultaten van de beoordeling te implementeren. Als de toegang van een gebruiker in de beoordeling is geweigerd, wordt in deze stap de roltoewijzing verwijderd.  
 
 ### <a name="delete"></a>Verwijderen
 
-Als u de controle niet meer wilt doen, verwijdert u deze. Selecteer **verwijderen** yo de beoordeling uit de privileged Identity Management-service verwijderen.
+Als u niet meer geïnteresseerd bent in de beoordeling, verwijdert u deze. Selecteer **Yo** verwijderen de revisie verwijderen uit de service Bevoegde identiteitsbeheer.
 
 ## <a name="results"></a>Resultaten
 
-Op de pagina **resultaten** kunt u een lijst met de resultaten van de beoordeling bekijken en downloaden.
+Bekijk en download op de pagina **Resultaten** een lijst met de resultaten van uw beoordeling.
 
-![Pagina met resultaten met vermelding van gebruikers, resultaat, reden, gereviseerd door, toegepast op en resultaat Toep assen](media/pim-resource-roles-complete-access-review/rbac-access-review-results.png)
+![Resultatenpagina met gebruikers, resultaat, reden, beoordeeld door, toegepast op en resultaat toepassen](media/pim-resource-roles-complete-access-review/rbac-access-review-results.png)
 
-## <a name="reviewers"></a>Revisor
+## <a name="reviewers"></a>Revisoren
 
-Revisoren weer geven en toevoegen aan uw bestaande toegangs beoordeling. Herinner revisoren om hun beoordelingen te volt ooien.
+Bekijk en voeg revisoren toe aan uw bestaande toegangscontrole. Herinner reviewers eraan om hun beoordelingen in te vullen.
 
-![Pagina revisoren naam en user principal name](media/pim-resource-roles-complete-access-review/rbac-access-review-reviewers.png)
+![Paginanaam van revisoren en gebruikersnaam](media/pim-resource-roles-complete-access-review/rbac-access-review-reviewers.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een toegangs beoordeling starten voor Azure-resource rollen in Privileged Identity Management](pim-resource-roles-start-access-review.md)
-- [Een toegangs beoordeling van mijn Azure-resource rollen uitvoeren in Privileged Identity Management](pim-resource-roles-perform-access-review.md)
+- [Een toegangscontrole voor Azure-bronrollen starten in Privileged Identity Management](pim-resource-roles-start-access-review.md)
+- [Een toegangscontrole uitvoeren van mijn Azure-bronrollen in Privileged Identity Management](pim-resource-roles-perform-access-review.md)

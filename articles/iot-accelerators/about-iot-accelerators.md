@@ -10,10 +10,10 @@ ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
 ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "71309521"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Wat zijn Azure IoT-oplossingsversnellers?
@@ -38,7 +38,7 @@ Gebruik de [verbetering voor de externe bewakingsoplossing](iot-accelerators-rem
 
 U kunt het dashboard voor externe controle gebruiken om de telemetrie van verbonden apparaten te bekijken, nieuwe apparaten in te richten of de firmware op verbonden apparaten bij te werken:
 
-[![Dashboard van externe bewakingsoplossing](./media/about-iot-accelerators/rm-dashboard-inline.png)](./media/about-iot-accelerators/rm-dashboard-expanded.png#lightbox)
+[![Dashboard voor externe bewakingsoplossingen](./media/about-iot-accelerators/rm-dashboard-inline.png)](./media/about-iot-accelerators/rm-dashboard-expanded.png#lightbox)
 
 ### <a name="connected-factory"></a>Verbonden factory
 
@@ -46,15 +46,15 @@ Gebruik de [Connected Factory-oplossingsversneller](iot-accelerators-connected-f
 
 U kunt de verbonden factory gebruiken om industriële apparaten te controleren en te beheren:
 
-[![Dashboard van oplossing voor verbonden factory](./media/about-iot-accelerators/cf-dashboard-inline.png)](./media/about-iot-accelerators/cf-dashboard-expanded.png#lightbox)
+[![Dashboard voor verbonden fabrieksoplossingen](./media/about-iot-accelerators/cf-dashboard-inline.png)](./media/about-iot-accelerators/cf-dashboard-expanded.png#lightbox)
 
-### <a name="predictive-maintenance"></a>Voorspeld onderhoud
+### <a name="predictive-maintenance"></a>Predictief onderhoud
 
 Gebruik de [Predictive Maintenance-oplossingsversneller](iot-accelerators-predictive-walkthrough.md) om te voorspellen wanneer een extern apparaat naar verwachting defect raakt, zodat u onderhoud kunt plegen voordat het apparaat uitvalt. De oplossingsversneller maakt gebruik van machine learning-algoritmen om fouten op basis van telemetriegegevens van apparaten te voorspellen. Voorbeelden van dergelijke apparaten zijn vliegtuigmotoren en liften.
 
 U kunt het dashboard voor predictief onderhoud gebruiken om de analyse voor predictief onderhoud te bekijken:
 
-[![Dashboard van oplossing voor verbonden factory](./media/about-iot-accelerators/pm-dashboard-inline.png)](./media/about-iot-accelerators/pm-dashboard-expanded.png#lightbox)
+[![Dashboard voor verbonden fabrieksoplossingen](./media/about-iot-accelerators/pm-dashboard-inline.png)](./media/about-iot-accelerators/pm-dashboard-expanded.png#lightbox)
 
 ### <a name="device-simulation"></a>Apparaatsimulatie
 
@@ -62,7 +62,7 @@ Gebruik de [Device Simulation-oplossingsversneller](iot-accelerators-device-simu
 
 U kunt de web-app voor apparaatsimulatie gebruiken om simulaties te configureren en uit te voeren:
 
-[![Dashboard van oplossing voor verbonden factory](./media/about-iot-accelerators/ds-dashboard-inline.png)](./media/about-iot-accelerators/ds-dashboard-expanded.png#lightbox)
+[![Dashboard voor verbonden fabrieksoplossingen](./media/about-iot-accelerators/ds-dashboard-inline.png)](./media/about-iot-accelerators/ds-dashboard-expanded.png#lightbox)
 
 ## <a name="design-principles"></a>Ontwerpprincipes
 
@@ -78,10 +78,10 @@ Alle oplossingsversnellers volgen dezelfde ontwerpprincipes en -doelen. Het ontw
 
 De oorspronkelijke oplossingsversnellers werden geschreven met behulp van .NET en een model-view-controller (MVC)-architectuur. Microsoft werkt de oplossingsversnellers bij met een nieuwe architectuur op basis van microservices. In de volgende tabel wordt de huidige status van de oplossingsverbeteringen weergegeven met koppelingen naar de GitHub-opslagplaatsen:
 
-| Oplossingsverbetering   | Architectuur  | Languages     |
+| Oplossingsverbetering   | Architectuur  | Talen     |
 | ---------------------- | ------------- | ------------- |
 | Externe bewaking      | Microservices | [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) en [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) |
-| Voorspeld onderhoud | MVC           | [.NET](https://github.com/Azure/azure-iot-predictive-maintenance)          |
+| Predictief onderhoud | MVC           | [.NET](https://github.com/Azure/azure-iot-predictive-maintenance)          |
 | Verbonden factory      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | Apparaatsimulatie      | Microservices | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 

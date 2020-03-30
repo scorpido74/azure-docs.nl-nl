@@ -1,6 +1,6 @@
 ---
-title: VM-extensie AzureLogCollector
-description: Hierin wordt de AzureLogCollector-VM-extensie beschreven, waarmee alle logboek bestanden worden verzameld en samengebracht op één locatie in Azure Storage.
+title: AzureLogCollector VM-extensie
+description: Beschrijft de AzureLogCollector VM-extensie, die alle logboekbestanden verzamelt en samenbrengt naar één locatie in Azure Storage.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: gwallace
@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/23/2016
 ms.author: gwallace
 ms.openlocfilehash: ecbd4311160cb37916be259ead1ebd1b3b226773
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073095"
 ---
 # <a name="azurelogcollector-extension"></a>AzureLogCollector-extensie

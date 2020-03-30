@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-voor beelden-Azure Load Balancer
-description: Met deze voor beelden is taak verdeling van verkeer naar meerdere websites op Vm's en verkeer naar Vm's voor HA met Azure Load Balancer.
+title: Azure PowerShell-voorbeelden - Azure Load Balancer
+description: Met deze voorbeelden laadt u het saldoverkeer naar meerdere websites op VM's en wordt verkeer naar VM's voor HA met Azure Load Balancer.
 services: virtual-network
 documentationcenter: load-balancer
 author: asudbring
@@ -13,18 +13,18 @@ ms.workload: infrastructure
 ms.date: 12/10/2018
 ms.author: allensu
 ms.openlocfilehash: 4311c1dca2ad299ac8b064769db5eb928e6a4513
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74048716"
 ---
-# <a name="azure-powershell-samples-for-load-balancer"></a>Voor beelden Azure PowerShell voor Load Balancer
+# <a name="azure-powershell-samples-for-load-balancer"></a>Azure PowerShell-monsters voor load balancer
 
-De volgende tabel bevat koppelingen naar scripts die zijn gebouwd met behulp van Azure PowerShell.
+De volgende tabel bevat koppelingen naar scripts die zijn gemaakt met Azure PowerShell.
 
 | | |
 |-|-|
-| [Taakverdeling voor verkeer naar VM's voor hoge beschikbaarheid](./scripts/load-balancer-windows-powershell-sample-nlb.md) | Hiermee maakt u meerdere virtuele machines in een maximaal beschikbare en configuratie van taakverdeling. |
-| [Taakverdeling instellen voor meerdere websites op virtuele machines](./scripts/load-balancer-windows-powershell-load-balance-multiple-websites-vm.md) | Hiermee maakt twee virtuele machines met meerdere IP-configuraties, lid is van een Azure-Beschikbaarheidsset toegankelijk zijn via een Azure Load Balancer. |
+| [Verkeer verdelen naar virtuele machines voor hoge beschikbaarheid](./scripts/load-balancer-windows-powershell-sample-nlb.md) | Hiermee worden verschillende virtuele machines gemaakt in een zeer beschikbare en laadgebalanceerde configuratie. |
+| [Load balance meerdere websites op VM's](./scripts/load-balancer-windows-powershell-load-balance-multiple-websites-vm.md) | Hiermee maakt u twee VM's met meerdere IP-configuraties, gekoppeld aan een Azure Availability Set, die toegankelijk is via een Azure Load Balancer. |
 | | |

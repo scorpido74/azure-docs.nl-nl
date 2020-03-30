@@ -1,6 +1,6 @@
 ---
-title: Analytics-query's uitvoeren
-description: Cross-Tenant analyse query's die gebruikmaken van gegevens die zijn geëxtraheerd uit meerdere Azure SQL Database data bases in een app met meerdere tenants.
+title: Analysequery's uitvoeren
+description: Analysequery's met meerdere tenant's met gegevens die zijn geëxtraheerd uit meerdere Azure SQL Database-databases in een multitenant-app.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -12,56 +12,56 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 09/19/2018
 ms.openlocfilehash: 067afd09f942b8062825553a3cf90f715e8d3938
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822153"
 ---
-# <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Cross-Tenant analyse met geëxtraheerde gegevens-multi tenant-app
+# <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Analyse van meerdere tenants met behulp van geëxtraheerde gegevens - multi-tenant-app
  
-In deze zelf studie gaat u een volledig analyse scenario door lopen voor een multi tenant-implementatie. In het scenario wordt gedemonstreerd hoe u met analyses slimme beslissingen kunt nemen. Met behulp van gegevens die zijn geëxtraheerd uit de Shard-data base, gebruikt u analyses om inzicht te krijgen in het gedrag van de Tenant, waaronder het gebruik van de SaaS-toepassing voor beeld-Wingtip tickets. Dit scenario bestaat uit drie stappen: 
+In deze zelfstudie doorloopt u een compleet analysescenario voor een implementatie met meerdere tenants. Het scenario laat zien hoe analytics bedrijven in staat kan stellen om slimme beslissingen te nemen. Met behulp van gegevens uit de geshard database gebruikt u analyses om inzicht te krijgen in het gedrag van huurders, inclusief het gebruik van de voorbeeld-Wingtip Tickets SaaS-toepassing. Dit scenario omvat drie stappen: 
 
-1.  **Gegevens** uit elke Tenant database in een analytische opslag ophalen.
-2.  **Optimaliseer de geëxtraheerde gegevens** voor analyse verwerking.
-3.  Gebruik hulpprogram ma's voor **bedrijfs informatie** om nuttige inzichten uit te tekenen, waarmee u besluit vorming kunt doen. 
+1.  **Haal gegevens** uit elke tenantdatabase naar een analysearchief.
+2.  **Optimaliseer de geëxtraheerde gegevens** voor analyseverwerking.
+3.  Gebruik **Business Intelligence-tools** om nuttige inzichten te verzamelen, die de besluitvorming kunnen sturen. 
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> - Maak de Tenant-analyse opslag voor het uitpakken van de gegevens in.
-> - Gebruik elastische taken voor het extra heren van gegevens van elke Tenant database in de analyse opslag.
-> - Optimaliseer de geëxtraheerde gegevens (Organiseer opnieuw in een ster schema).
-> - Query's uitvoeren op de Analytics-Data Base.
-> - Gebruik Power BI voor gegevens visualisatie om trends in Tenant gegevens te markeren en aanbevelingen te doen voor verbeteringen.
+> - Maak het tenantanalytics-archief om de gegevens in te extraheren.
+> - Gebruik elastische taken om gegevens uit elke tenantdatabase in het analysearchief te extraheren.
+> - Optimaliseer de geëxtraheerde gegevens (reorganiseren in een sterschema).
+> - Query de analytics database.
+> - Gebruik Power BI voor gegevensvisualisatie om trends in tenantgegevens te markeren en aanbevelingte doen voor verbeteringen.
 
 ![architectureOverView](media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
 
-## <a name="offline-tenant-analytics-pattern"></a>Patroon voor offline Tenant analyse
+## <a name="offline-tenant-analytics-pattern"></a>Offline tenantanalysepatroon
 
-SaaS-toepassingen die u ontwikkelt, hebben toegang tot een grote hoeveelheid Tenant gegevens die in de Cloud zijn opgeslagen. De gegevens bieden een uitgebreide bron van inzichten over de werking en het gebruik van uw toepassing en over het gedrag van de tenants. Met deze inzichten kunt u de ontwikkeling van functies, verbetering van de bruikbaarheid en andere investeringen in de app en het platform begeleiden.
+SaaS-applicaties die u ontwikkelt, hebben toegang tot een enorme hoeveelheid tenantgegevens die in de cloud zijn opgeslagen. De gegevens bieden een rijke bron van inzichten over de werking en het gebruik van uw toepassing en over het gedrag van de tenants. Deze inzichten kunnen de ontwikkeling van functies, bruikbaarheidsverbeteringen en andere investeringen in de app en het platform sturen.
 
-Het is eenvoudig om toegang te krijgen tot de gegevens voor alle tenants wanneer alle gegevens zich in slechts één data base met meerdere tenants bevinden. Maar de toegang is complexer wanneer deze op schaal wordt gedistribueerd over duizenden data bases. Een manier om de complexiteit te beheersenen is het extra heren van de gegevens naar een Analytics-Data Base of een Data Warehouse. Vervolgens voert u een query uit op het Data Warehouse om inzichten te verzamelen van de gegevens van tickets van alle tenants.
+Toegang tot de gegevens voor alle tenants is eenvoudig wanneer alle gegevens zich in slechts één multi-tenantdatabase bevinden. Maar de toegang is complexer wanneer deze op schaal wordt verdeeld over duizenden databases. Een manier om de complexiteit te temmen is door de gegevens te extraheren naar een analysedatabase of een datawarehouse. Vervolgens bevraagt u het datawarehouse om inzichten te verzamelen uit de ticketgegevens van alle tenants.
 
-In deze zelf studie wordt een volledig analyse scenario voor deze voor beeld van een SaaS-toepassing weer gegeven. Eerst worden elastische taken gebruikt voor het plannen van het ophalen van gegevens uit elke Tenant database. De gegevens worden verzonden naar een analyse-archief. Het analyse archief kan een SQL Database of een SQL Data Warehouse zijn. Voor grootschalige gegevens extractie is [Azure Data Factory](../data-factory/introduction.md) Commended.
+Deze zelfstudie bevat een volledig analysescenario voor deze voorbeeld-SaaS-toepassing. Ten eerste worden elastische taken gebruikt om de extractie van gegevens uit elke tenantdatabase te plannen. De gegevens worden verzonden naar een analysearchief. De analysewinkel kan een SQL-database of een SQL Data Warehouse zijn. Voor grootschalige gegevensextractie wordt [Azure Data Factory](../data-factory/introduction.md) geprezen.
 
-Vervolgens worden de geaggregeerde gegevens vernietigd tot een set [ster-schema](https://www.wikipedia.org/wiki/Star_schema) tabellen. De tabellen bestaan uit een centrale feiten tabel plus gerelateerde dimensie tabellen:
+Vervolgens worden de geaggregeerde gegevens versnipperd in een reeks [sterschematabellen.](https://www.wikipedia.org/wiki/Star_schema) De tabellen bestaan uit een centrale feitentabel plus bijbehorende dimensietabellen:
 
-- De centrale feiten tabel in het ster schema bevat ticket gegevens.
-- De dimensie tabellen bevatten gegevens over locaties, gebeurtenissen, klanten en aankoop datums.
+- De centrale feitentabel in het sterschema bevat ticketgegevens.
+- De dimensietabellen bevatten gegevens over locaties, evenementen, klanten en aankoopdatums.
 
-De centrale en dimensie tabellen kunnen samen een efficiënte analyse verwerking hebben. Het ster schema dat in deze zelf studie wordt gebruikt, wordt weer gegeven in de volgende afbeelding:
+Samen maken de centrale en dimensietabellen een efficiënte analytische verwerking mogelijk. Het sterschema dat in deze zelfstudie wordt gebruikt, wordt weergegeven in de volgende afbeelding:
  
-![StarSchema](media/saas-multitenantdb-tenant-analytics/StarSchema.png)
+![StarSchema StarSchema](media/saas-multitenantdb-tenant-analytics/StarSchema.png)
 
-Ten slotte worden de tabellen van het ster schema opgevraagd. De resultaten van de query worden visueel weer gegeven om inzicht te krijgen in het gedrag van de Tenant en het gebruik van de toepassing. Met dit ster schema kunt u query's uitvoeren om items te detecteren, zoals de volgende:
+Ten slotte worden de tabellen met het sterschema opgevraagd. De queryresultaten worden visueel weergegeven om inzicht te geven in het gedrag van de tenant en het gebruik van de toepassing. Met dit sterschema u query's uitvoeren waarmee u items als het volgende ontdekken:
 
-- Wie is verantwoordelijk voor het kopen van tickets en van welke locaties.
+- Wie koopt tickets en van welke locatie.
 - Verborgen patronen en trends op de volgende gebieden:
     - De verkoop van tickets.
     - De relatieve populariteit van elke locatie.
 
-Hoe consistent elke Tenant de service gebruikt, biedt u de mogelijkheid om service plannen te maken die voldoen aan hun behoeften. In deze zelf studie vindt u eenvoudige voor beelden van inzichten die kunnen worden afgelezen van Tenant gegevens.
+Begrijpen hoe consistent elke tenant de service gebruikt, biedt de mogelijkheid om serviceplannen te maken om aan hun behoeften te voldoen. Deze zelfstudie bevat basisvoorbeelden van inzichten die kunnen worden verkregen uit tenantgegevens.
 
 ## <a name="setup"></a>Instellen
 
@@ -69,177 +69,177 @@ Hoe consistent elke Tenant de service gebruikt, biedt u de mogelijkheid om servi
 
 Voor het voltooien van deze zelfstudie moet u ervoor zorgen dat aan de volgende vereisten is voldaan:
 
-- De Wingtip tickets SaaS multi-tenant database toepassing wordt geïmplementeerd. Zie [de toepassing Wingtip tickets SaaS multi-tenant data base implementeren en verkennen](saas-multitenantdb-get-started-deploy.md) voor meer informatie over de implementatie in minder dan vijf minuten
-- De Wingtip SaaS-scripts en de [bron code](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) van de toepassing worden gedownload vanaf github. Zorg ervoor dat u *het zip-bestand deblokkeren* voordat u de inhoud uitpakt. Bekijk de [algemene richt lijnen](saas-tenancy-wingtip-app-guidance-tips.md) voor de stappen voor het downloaden en blok keren van de Wingtip tickets SaaS-scripts.
+- De Wingtip Tickets SaaS Multi-tenant Database applicatie wordt geïmplementeerd. Zie [De Wingtip Tickets SaaS Multi-tenant Database-toepassing implementeren en verkennen](saas-multitenantdb-get-started-deploy.md) als u deze in minder dan vijf minuten wilt implementeren.
+- De Wingtip SaaS scripts en applicatie [broncode](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) worden gedownload van GitHub. Zorg ervoor dat *u het zip-bestand deblokkeert* voordat u de inhoud ervan extraheren. Bekijk de [algemene richtlijnen](saas-tenancy-wingtip-app-guidance-tips.md) voor stappen om de Wingtip Tickets SaaS-scripts te downloaden en te deblokkeren.
 - Power BI Desktop is geïnstalleerd. [Power BI Desktop downloaden](https://powerbi.microsoft.com/downloads/)
-- De batch met aanvullende tenants is ingericht. Raadpleeg de [**zelf studie voor het inrichten van tenants**](saas-multitenantdb-provision-and-catalog.md).
-- Er zijn een taak agent en taak agent-data base gemaakt. Zie de juiste stappen in de [**zelf studie schema beheer**](saas-multitenantdb-schema-management.md#create-a-job-agent-database-and-new-job-agent).
+- De partij van extra tenants is ingericht, zie de [**Provision tenants tutorial**](saas-multitenantdb-provision-and-catalog.md).
+- Er is een database voor jobagent en jobagent gemaakt. Bekijk de juiste stappen in de [**zelfstudie Schemabeheer**](saas-multitenantdb-schema-management.md#create-a-job-agent-database-and-new-job-agent).
 
 ### <a name="create-data-for-the-demo"></a>Gegevens maken voor de demo
 
-In deze zelf studie wordt de analyse uitgevoerd op de verkoop gegevens van het ticket. In de huidige stap genereert u ticket gegevens voor alle tenants.  Later worden deze gegevens geëxtraheerd voor analyse. *Zorg ervoor dat u de batch met tenants hebt ingericht zoals eerder beschreven, zodat u een zinvolle hoeveelheid gegevens hebt*. Een voldoende grote hoeveelheid gegevens kan een aantal verschillende inkopende patronen voor tickets bieden.
+In deze zelfstudie wordt analyse uitgevoerd op de gegevens van de kaartverkoop. In de huidige stap genereert u ticketgegevens voor alle huurders.  Later worden deze gegevens geëxtraheerd voor analyse. *Zorg ervoor dat u de batch van tenants hebt ingericht zoals eerder beschreven, zodat u een zinvolle hoeveelheid gegevens hebt.* Een voldoende grote hoeveelheid gegevens kan een reeks verschillende ticketaankooppatronen blootleggen.
 
-1. Open *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1*in **Power shell ISE**en stel de volgende waarde in:
-    - **$DemoScenario** = **1** aankoop tickets voor gebeurtenissen op alle locaties
-2. Druk op **F5** om het script uit te voeren en een ticket-inkoop geschiedenis te maken voor elke gebeurtenis in elke locatie.  Het script wordt gedurende enkele minuten uitgevoerd om tien duizenden tickets te genereren.
+1. Open in **PowerShell ISE** *...\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1*en stel de volgende waarde in:
+    - **$DemoScenario** = **1** Koop tickets voor evenementen op alle locaties
+2. Druk op **F5** om het script uit te voeren en maak de aankoopgeschiedenis van het ticket voor elk evenement in elke locatie.  Het script loopt enkele minuten om tienduizenden tickets te genereren.
 
-### <a name="deploy-the-analytics-store"></a>De Analytics Store implementeren
-Vaak bestaan er talrijke transactionele Shard-data bases die samen alle Tenant gegevens bevatten. U moet de Tenant gegevens van de Shard-data base in één analyse archief samen voegen. De aggregatie maakt een efficiënte query van de gegevens mogelijk. In deze zelf studie wordt een Azure SQL Database-data base gebruikt om de geaggregeerde gegevens op te slaan.
+### <a name="deploy-the-analytics-store"></a>De analysewinkel implementeren
+Vaak zijn er tal van transactionele geshard databases die samen alle tenantgegevens bevatten. U moet de tenantgegevens uit de geshard database samenvoegen tot één analysearchief. De aggregatie maakt een efficiënte query van de gegevens mogelijk. In deze zelfstudie wordt een Azure SQL Database-database gebruikt om de samengevoegde gegevens op te slaan.
 
-In de volgende stappen implementeert u de Analytics Store, die **tenantanalytics**wordt genoemd. U kunt ook vooraf gedefinieerde tabellen implementeren die verderop in de zelf studie worden ingevuld:
-1. Open in Power shell ISE *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 
-2. Stel de variabele $DemoScenario in het script in die overeenkomt met de keuze van de analyse Store. Voor Learning doeleinden wordt SQL database zonder column Store aanbevolen.
-    - Als u SQL database wilt gebruiken zonder column Store, stelt u **$DemoScenario** in = **2**
-    - Als u SQL database wilt gebruiken met column Store, stelt u **$DemoScenario** in = **3**  
-3. Druk op **F5** om het demo script uit te voeren (waarmee het script *Deploy-TenantAnalytics\<xx >. ps1* wordt aangeroepen, waarmee de Tenant-Analytics Store wordt gemaakt. 
+In de volgende stappen implementeert u de analysewinkel, die **tenantanalytics**wordt genoemd. U implementeert ook vooraf gedefinieerde tabellen die later in de zelfstudie worden ingevuld:
+1. Open in PowerShell ISE *...\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 
+2. Stel de $DemoScenario variabele in het script in op uw keuze van de analytics-winkel. Voor leerdoeleinden wordt SQL-database zonder kolomarchief aanbevolen.
+    - Als u SQL-database zonder kolomarchief wilt gebruiken, stelt u **$DemoScenario** = **2** in
+    - Als u SQL-database wilt gebruiken met kolomarchief, stelt u **$DemoScenario** = **3** in  
+3. Druk op **F5** om het demoscript uit te voeren (dat het *Script\<Deploy-TenantAnalytics XX>.ps1* aanroept) waarmee de tenantanalysewinkel wordt gemaakt. 
 
-Nu u de toepassing hebt geïmplementeerd en deze hebt gevuld met interessante Tenant gegevens, gebruikt u [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) om verbinding te maken met **tenants1-MT-\<gebruikers\>** en **catalogus-MT-\<gebruikers\>** servers met behulp van Login = *ontwikkelaar*, wacht woord = *P\@ssword1*.
+Nu u de toepassing hebt geïmplementeerd en gevuld met interessante tenantgegevens, gebruikt u [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) om tenants **\<1-mt- Gebruiker\> ** en **catalogus-mt-\<Gebruikersservers\> ** met login = *ontwikkelaar*, Wachtwoord = *P\@zwaard1*te verbinden .
 
 ![architectureOverView](media/saas-multitenantdb-tenant-analytics/ssmsSignIn.png)
 
-Voer de volgende stappen uit in de Objectverkenner:
+Voer in de ObjectVerkenner de volgende stappen uit:
 
-1. Vouw de *tenants1-MT-\<gebruiker\>-* server uit.
-2. Vouw het knoop punt data bases uit en Bekijk de *tenants1* -data base met meerdere tenants.
-3. Vouw de\>-server van de *catalogus-MT-\<* van de gebruiker uit.
-4. Controleer of u de analytische Store en de jobaccount-data base ziet.
+1. De *tenants1-mt-gebruikersserver\<\> * uitbreiden.
+2. Vouw het knooppunt Databases uit en bekijk *de database tenants1* met meerdere tenants.
+3. Vouw de *server voor\<\> de catalogus-mt- gebruiker* uit.
+4. Controleer of u de analysewinkel en de jobaccountdatabase ziet.
 
-Zie de volgende data base-items in de SSMS-Objectverkenner door het knoop punt Analytics Store uit te vouwen:
+Bekijk de volgende database-items in de SSMS Object Explorer door het knooppunt van het analysearchief uit te breiden:
 
-- Tabellen **TicketsRawData** en **EventsRawData** bevatten onbewerkte gegevens uit de Tenant-data bases.
-- De tabellen in het ster schema zijn **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**en **dim_Dates**.
-- De **sp_ShredRawExtractedData** opgeslagen procedure wordt gebruikt voor het vullen van de ster-schema tabellen uit de onbewerkte gegevens tabellen.
+- Tabellen **TicketsRawData** en **EventsRawData** bevatten ruwe geëxtraheerde gegevens uit de tenantdatabases.
+- De tabellen van het sterschema worden **fact_Tickets,** **dim_Customers,** **dim_Venues,** **dim_Events**en **dim_Dates**.
+- De **sp_ShredRawExtractedData** opgeslagen procedure wordt gebruikt om de tabellen met sterschema's uit de ruwe gegevenstabellen te vullen.
 
 ![tenantAnalytics](media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
 
-## <a name="data-extraction"></a>Gegevens extractie 
+## <a name="data-extraction"></a>Gegevensextractie 
 
-### <a name="create-target-groups"></a>Doel groepen maken 
+### <a name="create-target-groups"></a>Doelgroepen maken 
 
-Voordat u doorgaat, moet u ervoor zorgen dat u het taak account en de jobaccount-Data Base hebt geïmplementeerd. In de volgende reeks stappen wordt elastische taken gebruikt voor het extra heren van gegevens uit de Shard tenants-data base en voor het opslaan van de gegevens in de analyse opslag. De tweede taak Shreds de gegevens en slaat deze op in de tabellen in het ster schema. Deze twee taken worden uitgevoerd op twee verschillende doel groepen, namelijk **TenantGroup** en **AnalyticsGroup**. De uitpak taak wordt uitgevoerd op de TenantGroup, die alle Tenant databases bevat. De verwerkings taak wordt uitgevoerd op de AnalyticsGroup, die alleen de analytische opslag bevat. Maak de doel groepen met behulp van de volgende stappen:
+Voordat u verdergaat, moet u ervoor zorgen dat u het taakaccount en de jobaccountdatabase hebt geïmplementeerd. In de volgende reeks stappen wordt Elastic Jobs gebruikt om gegevens uit de database met geshardtenants te extraheren en de gegevens op te slaan in het analysearchief. Vervolgens versnippert de tweede taak de gegevens en slaat deze op in tabellen in het sterschema. Deze twee taken lopen tegen twee verschillende doelgroepen, namelijk **TenantGroup** en **AnalyticsGroup.** De functie extraheren wordt uitgevoerd tegen de TenantGroep, die alle tenantdatabases bevat. De shreddertaak wordt uitgevoerd ten opzichte van de AnalyticsGroup, die alleen de analytics-winkel bevat. Maak de doelgroepen met behulp van de volgende stappen:
 
-1. In SSMS maakt u verbinding met de **jobaccount** -data base in Catalog-mt-\<gebruikers\>.
-2. Open in SSMS *. ..\Learning Modules\Operational Analytics\Tenant Analytics \ TargetGroups. SQL* 
-3. Wijzig de @User variabele boven aan het script en vervang `<User>` door de gebruikers waarde die wordt gebruikt bij het implementeren van de toepassing Wingtip tickets SaaS multi tenant data base.
-4. Druk op **F5** om het script uit te voeren dat de twee doel groepen maakt.
+1. Maak in SSMS verbinding met de **jobaccountdatabase** in catalogus-mt-\<Gebruiker.\>
+2. Open in SSMS *...\Learning Modules\Operational Analytics\Tenant Analytics\ TargetGroups.sql* 
+3. Wijzig @User de variabele boven aan het `<User>` script en vervang de gebruikerswaarde die wordt gebruikt bij het implementeren van de Wingtip Tickets SaaS Multi-tenant Database-toepassing.
+4. Druk op **F5** om het script uit te voeren waarmee de twee doelgroepen zijn gemaakt.
 
-### <a name="extract-raw-data-from-all-tenants"></a>Onbewerkte gegevens uit alle tenants ophalen
+### <a name="extract-raw-data-from-all-tenants"></a>Onbewerkte gegevens van alle tenants extraheren
 
-Trans acties kunnen vaker voor *ticket-en klant* gegevens worden uitgevoerd dan voor *gebeurtenis-en* locatie gegevens. Overweeg daarom het extra heren van ticket-en klant gegevens en regel matig meer, dan u de gegevens van de gebeurtenis en de locatie wilt extra heren. In deze sectie definieert en plant u twee afzonderlijke taken:
+Transacties kunnen vaker voorkomen voor *ticket- en klantgegevens* dan voor *gebeurtenis- en locatiegegevens.* Overweeg daarom om ticket- en klantgegevens afzonderlijk en vaker te extraheren dan u gebeurtenis- en locatiegegevens veronttrekt. In deze sectie definieert en plant u twee afzonderlijke taken:
 
-- Het ticket en de klant gegevens ophalen.
-- Gegevens van gebeurtenis en locatie ophalen.
+- Haal ticket- en klantgegevens uit.
+- Uittreksel seinen gegevens over evenementen en locaties.
 
-Elke taak extraheert de gegevens en plaatst deze in het Analytics-archief. Er is een afzonderlijke taak Shreds de geëxtraheerde gegevens in het analyse ster-schema.
+Elke taak haalt zijn gegevens eruit en plaatst deze in de analysewinkel. Daar versnippert een aparte taak de geëxtraheerde gegevens in het analytics-sterschema.
 
-1. In SSMS maakt u verbinding met de **jobaccount** -data base in Catalog-mt-\<gebruiker\>-server.
-2. Open in SSMS *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.SQL*.
-3. Wijzig @User boven aan het script en vervang `<User>` door de gebruikers naam die wordt gebruikt bij het implementeren van de toepassing Wingtip tickets SaaS multi tenant data base. 
-4. Druk op **F5** om het script uit te voeren waarmee de taak wordt gemaakt en uitgevoerd voor het extra heren van tickets en klanten gegevens uit elke Tenant database. Met de taak worden de gegevens opgeslagen in de analyse opslag.
-5. Query's uitvoeren op de tabel TicketsRawData in de tenantanalytics-data base om ervoor te zorgen dat de tabel is gevuld met ticketsgegevens van alle tenants.
+1. Maak in SSMS verbinding met de **jobaccountdatabase** in de server met catalogus-mt-\<Gebruiker.\>
+2. Open in SSMS *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql*.
+3. Wijzig @User boven aan het script `<User>` en vervang de gebruikersnaam die wordt gebruikt toen u de Wingtip Tickets SaaS Multi-tenant Database-toepassing hebt geïmplementeerd. 
+4. Druk op **F5** om het script uit te voeren dat de taak maakt en uitvoert waarmee tickets en klantgegevens uit elke tenantdatabase worden geëxtraheerd. De taak slaat de gegevens op in de analysewinkel.
+5. Vraag de tabel TicketsRawData in de tenantanalytics-database om ervoor te zorgen dat de tabel wordt gevuld met ticketgegevens van alle tenants.
 
-![ticketExtracts](media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
+![ticketExtracten](media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
 
-Herhaal de voor gaande stappen, behalve deze keer **\ExtractTickets.SQL** vervangen door **\ExtractVenuesEvents.SQL** in stap 2.
+Herhaal de voorgaande stappen, behalve deze keer **vervang \ExtractTickets.sql** met **\ExtractVenuesEvents.sql** in stap 2.
 
-Als de taak wordt uitgevoerd, wordt de EventsRawData-tabel in de analyse opslag gevuld met nieuwe gebeurtenissen en worden gegevens van alle tenants opgehaald. 
+Als u de taak uitvoert, wordt de tabel EventsRawData in de analysewinkel gevuld met nieuwe evenementen en locatiegegevens van alle tenants. 
 
-## <a name="data-reorganization"></a>Gegevens reorganisatie
+## <a name="data-reorganization"></a>Gegevensreorganisatie
 
-### <a name="shred-extracted-data-to-populate-star-schema-tables"></a>Shred geëxtraheerde gegevens voor het vullen van ster-schema tabellen
+### <a name="shred-extracted-data-to-populate-star-schema-tables"></a>Geëxtraheerde gegevens versnipperen om sterschematabellen in te vullen
 
-De volgende stap is het shred van de geëxtraheerde onbewerkte gegevens in een set tabellen die zijn geoptimaliseerd voor analyse query's. Er wordt een ster-schema gebruikt. Een centrale feiten tabel bevat afzonderlijke ticket omzet records. Dimensie tabellen worden gevuld met gegevens over locaties, gebeurtenissen, klanten en aankoop datums. 
+De volgende stap is het versnipperen van de geëxtraheerde ruwe gegevens in een set tabellen die zijn geoptimaliseerd voor analysequery's. Er wordt een sterrenschema gebruikt. Een centrale feitentabel bevat individuele ticketverkooprecords. Dimensietabellen worden gevuld met gegevens over locaties, evenementen, klanten en aankoopdatums. 
 
-In deze sectie van de zelf studie definieert en voert u een taak uit die de geëxtraheerde onbewerkte gegevens samenvoegt met de gegevens in de ster-schema tabellen. Nadat de samenvoeg taak is voltooid, worden de onbewerkte gegevens verwijderd, waardoor de tabellen klaar zijn om te worden gevuld met de volgende taak voor het uitpakken van Tenant gegevens.
+In dit gedeelte van de zelfstudie definieert en voert u een taak uit die de geëxtraheerde ruwe gegevens samenvoegt met de gegevens in de tabellen met het sterschema. Nadat de samenvoegtaak is voltooid, worden de ruwe gegevens verwijderd, zodat de tabellen klaar zijn om te worden ingevuld door de volgende tenantgegevensextractietaak.
 
-1. In SSMS maakt u verbinding met de **jobaccount** -data base in Catalog-mt-\<gebruikers\>.
-2. Open in SSMS *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.SQL*.
-3. Druk op **F5** om het script uit te voeren om een taak te definiëren die de sp_ShredRawExtractedData opgeslagen procedure aanroept in het Analytics-archief.
-4. Voldoende tijd om de taak te kunnen uitvoeren.
-    - Controleer de kolom **levens duur** van taken. jobs_execution tabel voor de status van de taak. Zorg ervoor dat de taak **is voltooid** voordat u doorgaat. Bij een geslaagde uitvoering worden gegevens weer gegeven die vergelijkbaar zijn met de volgende grafiek:
+1. Maak in SSMS verbinding met de **jobaccountdatabase** in catalogus-mt-\<Gebruiker.\>
+2. Open in SSMS *...\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql*.
+3. Druk op **F5** om het script uit te voeren om een taak te definiëren die de sp_ShredRawExtractedData opgeslagen procedure in de analysewinkel aanroept.
+4. Geef voldoende tijd voor de taak om succesvol uit te voeren.
+    - Controleer de kolom **Levenscyclus** van jobs.jobs_execution tabel voor de status van taak. Zorg ervoor dat de taak **is geslaagd** voordat u verdergaat. In een geslaagde run worden gegevens weergegeven die vergelijkbaar zijn met de volgende grafiek:
 
-![shreddingJob](media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
+![versnipperenJob](media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
 
-## <a name="data-exploration"></a>Gegevens verkennen
+## <a name="data-exploration"></a>Gegevensverkenning
 
-### <a name="visualize-tenant-data"></a>Tenant gegevens visualiseren
+### <a name="visualize-tenant-data"></a>Tenantgegevens visualiseren
 
-De gegevens in de ster-schema tabel bevatten alle gegevens van de ticket verkoop die nodig zijn voor uw analyse. Als u de trends in grote gegevens sets makkelijker wilt zien, moet u deze grafisch visualiseren.  In deze sectie leert u hoe u **Power bi** kunt gebruiken om de Tenant gegevens die u hebt geëxtraheerd en georganiseerd, te manipuleren en te visualiseren.
+De gegevens in de tabel met het sterschema bieden alle gegevens over de kaartverkoop die nodig zijn voor uw analyse. Om het gemakkelijker te maken om trends in grote gegevenssets te zien, moet u deze grafisch visualiseren.  In deze sectie leert u hoe u **Power BI kunt** gebruiken om de tenantgegevens die u hebt geëxtraheerd en georganiseerd, te manipuleren en te visualiseren.
 
-Gebruik de volgende stappen om verbinding te maken met Power BI en om de weer gaven te importeren die u eerder hebt gemaakt:
+Gebruik de volgende stappen om verbinding te maken met Power BI en de weergaven te importeren die u eerder hebt gemaakt:
 
-1. Start Power BI bureau blad.
-2. Selecteer op het lint start de optie **gegevens ophalen**en selecteer **meer...** in het menu.
-3. Selecteer Azure SQL Database in het venster **gegevens ophalen** .
-4. Voer in het venster Data Base-aanmeldingen de server naam in (catalogus-MT-\<gebruiker\>. database.windows.net). Selecteer **importeren** voor de **gegevens connectiviteits modus**en klik vervolgens op OK. 
+1. Start Power BI-bureaublad.
+2. Selecteer op het lint Start de optie **Gegevens ophalen**en selecteer **Meer...** van het menu.
+3. Selecteer Azure SQL Database in het venster **Gegevens opdoen.**
+4. Voer in het inlogvenster van de database\<uw\>servernaam in (catalogus-mt- Gebruiker .database.windows.net). Selecteer **Importeren** voor **de modus Gegevensconnectiviteit**en klik op OK. 
 
     ![powerBISignIn](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. Selecteer **Data Base** in het linkerdeel venster, voer gebruikers naam = *ontwikkelaar*in en voer wacht woord = *P\@ssword1*in. Klik op **Verbinden**.  
+5. Selecteer **Database** in het linkerdeelvenster en voer vervolgens de gebruikersnaam in = *ontwikkelaar*en voer wachtwoord in = *\@P zwaard1*. Klik op **Verbinden**.  
 
-    ![DatabaseSignIn](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
+    ![Databasesignin](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
-6. Selecteer in het deel venster **Navigator** onder de Analytics-Data Base de ster-schema tabellen: fact_Tickets, dim_Events, dim_Venues, dim_Customers en dim_Dates. Selecteer vervolgens **laden**. 
+6. Selecteer in het deelvenster **Navigator** onder de analysedatabase de tabellen met het sterschema: fact_Tickets, dim_Events, dim_Venues, dim_Customers en dim_Dates. Selecteer vervolgens **Laden**. 
 
-Gefeliciteerd. De gegevens zijn geladen in Power BI. U kunt nu interessante visualisaties gaan verkennen om inzicht te krijgen in uw tenants. In de volgende stap leert u hoe u met analyses gegevensgestuurde aanbevelingen kunt leveren aan het Business team van de Wingtip tickets. De aanbevelingen kunnen helpen het bedrijfs model en de klant ervaring te optimaliseren.
+Gefeliciteerd! U hebt de gegevens in Power BI geladen. Nu u beginnen met het verkennen van interessante visualisaties om inzicht te krijgen in uw huurders. Vervolgens doorloopt u hoe analytics u in staat stelt om datagestuurde aanbevelingen te doen aan het business team van Wingtip Tickets. De aanbevelingen kunnen helpen om het bedrijfsmodel en de klantervaring te optimaliseren.
 
-U begint met het analyseren van de verkoop gegevens van het ticket om de variatie in het gebruik over de locaties te bekijken. Selecteer de volgende opties in Power BI om een staaf diagram te tekenen van het totale aantal tickets dat per locatie is verkocht. Als gevolg van een wille keurige variatie in de ticket generator, kunnen de resultaten afwijken.
+U begint met het analyseren van ticketverkoopgegevens om de variatie in gebruik tussen de locaties te zien. Selecteer de volgende opties in Power BI om een staafdiagram te plotten van het totale aantal tickets dat per locatie wordt verkocht. Als gevolg van willekeurige variatie in de ticketgenerator kunnen uw resultaten anders zijn.
  
-![TotalTicketsByVenues](media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
+![TotalTicketsByVenues TotalTicketsByVenues TotalTicketsByVenues](media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
 
-In het voor gaande waarnemings punt wordt bevestigd dat het aantal tickets dat door elke locatie wordt verkocht, varieert. Locaties waarbij meer tickets worden verkocht, maken gebruik van uw service meer sterk dan locaties die minder tickets verkopen. Er is mogelijk een kans om de toewijzing van resources aan te passen op basis van de verschillende behoeften van de Tenant.
+Het voorgaande plot bevestigt dat het aantal tickets dat per locatie wordt verkocht, varieert. Locaties die meer tickets verkopen, gebruiken uw service zwaarder dan locaties die minder tickets verkopen. Er kan hier een mogelijkheid zijn om de toewijzing van resources af te stemmen op basis van verschillende tenantbehoeften.
 
-U kunt de gegevens verder analyseren om te zien hoe de ticket omzet gedurende een periode verschilt. Selecteer de volgende opties in Power BI om het totale aantal tickets te zetten dat elke dag gedurende een periode van 60 dagen is verkocht.
+U de gegevens verder analyseren om te zien hoe de kaartverkoop in de loop van de tijd varieert. Selecteer de volgende opties in Power BI om het totale aantal verkochte tickets per dag voor een periode van 60 dagen te plotten.
  
 ![SaleVersusDate](media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
 
-In het voor gaande diagram wordt de verkoop piek van het ticket voor sommige locaties weer gegeven. Deze pieken versterken het idee dat sommige locaties mogelijk systeem bronnen onevenredig verbruiken. Tot nu toe is er geen duidelijk patroon in wanneer de pieken optreden.
+De voorgaande grafiek geeft die ticketverkoop piek voor sommige locaties. Deze pieken versterken het idee dat sommige locaties mogelijk onevenredig gebruik maken van systeembronnen. Tot nu toe is er geen duidelijk patroon in wanneer de spikes optreden.
 
-Vervolgens wilt u de significantie van deze piek verkoop dagen verder onderzoeken. Wanneer komen deze pieken voor nadat tickets aan de verkoop gaan? Als u kaarten wilt uitzetten die per dag worden verkocht, selecteert u de volgende opties in Power BI.
+Vervolgens wilt u de betekenis van deze piekverkoopdagen verder onderzoeken. Wanneer ontstaan deze pieken nadat tickets in de verkoop gaan? Als u tickets wilt plotten die per dag worden verkocht, selecteert u de volgende opties in Power BI.
 
-![SaleDayDistribution](media/saas-multitenantdb-tenant-analytics/SaleDistributionPerDay.PNG)
+![SaleDayDistributie](media/saas-multitenantdb-tenant-analytics/SaleDistributionPerDay.PNG)
 
-In het voor gaande waarnemings punt ziet u dat sommige locaties op de eerste dag van de verkoop veel tickets verkopen. Zodra tickets op deze locaties aan de verkoop gaan, lijkt het alsof er sprake is van een Made spoed. Deze burst-activiteit door enkele locaties kan van invloed zijn op de service voor andere tenants.
+De voorgaande plot laat zien dat sommige locaties verkopen veel tickets op de eerste dag van de verkoop. Zodra tickets gaan op de verkoop op deze locaties, lijkt er een gekke rush. Deze uitbarsting van activiteit door een paar locaties kan invloed hebben op de service voor andere huurders.
 
-U kunt opnieuw inzoomen op de gegevens om te zien of deze Mad spoed waar is voor alle gebeurtenissen die worden gehost door deze locaties. In vorige grafieken heeft u geconstateerd dat contoso concert hal veel tickets verkoopt en dat contoso ook over bepaalde dagen een piek in de ticket verkopen heeft. U kunt met behulp van Power BI opties spelen om de cumulatieve ticket verkoop voor contoso-concert zaal uit te zetten, zodat u zich kunt concentreren op trends in de verkoop voor elk van de gebeurtenissen. Volgen alle gebeurtenissen hetzelfde verkoop patroon?
+U opnieuw inzoomen op de gegevens om te zien of deze gekke rush geldt voor alle evenementen die worden gehost door deze locaties. In eerdere percelen merkte je op dat Contoso Concert Hall veel tickets verkoopt, en dat Contoso ook een piek heeft in de kaartverkoop op bepaalde dagen. Speel met Power BI-opties om de cumulatieve kaartverkoop voor Contoso Concert Hall te plotten, met de nadruk op verkooptrends voor elk van zijn evenementen. Volgen alle gebeurtenissen hetzelfde verkooppatroon?
 
 ![ContosoSales](media/saas-multitenantdb-tenant-analytics/EventSaleTrends.PNG)
 
-In het voor gaande teken voor contoso concert zaal ziet u dat de spoed van de Mad niet voor alle gebeurtenissen plaatsvindt. U kunt met de filter opties spelen om de verkoop trends voor andere evenementen te bekijken.
+De voorgaande plot voor Contoso Concert Hall laat zien dat de gekke rush niet gebeurt voor alle evenementen. Speel met de filteropties om verkooptrends voor andere locaties te zien.
 
-De inzichten in de verkoop patronen van het ticket kunnen leiden tot Wingtip tickets om hun bedrijfs model te optimaliseren. In plaats van alle tenants gelijkmatig te laden, kunnen Wingtip mogelijk service lagen introduceren met verschillende reken grootten. Grotere locaties die meer tickets per dag moeten verkopen, kunnen een hogere laag met een hoger service level agreement (SLA) worden aangeboden. Deze locaties kunnen hun data bases in een pool plaatsen met meer resource limieten per data base. Elke servicelaag kan een verkoop toewijzing per uur hebben, waarbij extra kosten in rekening worden gebracht voor het overschrijden van de toewijzing. Grotere locaties met periodieke pieken in de verkoop zouden profiteren van de hogere lagen en Wingtip tickets kunnen hun service efficiënter geld verdienen.
+De inzichten in ticketverkooppatronen kunnen Wingtip Tickets ertoe brengen hun bedrijfsmodel te optimaliseren. In plaats van alle tenants gelijk te laden, moet Wingtip misschien servicelagen met verschillende rekengroottes introduceren. Grotere locaties die meer tickets per dag moeten verkopen, kunnen een hoger niveau worden aangeboden met een hogere servicelevelovereenkomst (SLA). Deze locaties kunnen hun databases in de pool plaatsen met hogere resourcelimieten per database. Elke servicelaag kan een verkooptoewijzing per uur hebben, waarbij extra kosten in rekening worden gebracht voor het overschrijden van de toewijzing. Grotere locaties met periodieke verkoopuitbarstingen zouden profiteren van de hogere lagen en Wingtip Tickets kunnen efficiënter inkomsten genereren met hun service.
 
-In de tussen tijd kunnen klanten met een Wingtip-tickets een klacht doen om voldoende tickets te verkopen om de service kosten te rechtvaardigen. Misschien is er in deze inzichten een kans om de verkoop van tickets te stimuleren bij het uitvoeren van locaties. Bij een hogere verkoop wordt de waargenomen waarde van de service verhoogd. Klik met de rechter muisknop op fact_Tickets en selecteer **nieuwe meting**. Voer de volgende expressie in voor de nieuwe meting met de naam **AverageTicketsSold**:
+Ondertussen klagen sommige Wingtip Tickets-klanten dat ze moeite hebben om genoeg tickets te verkopen om de servicekosten te rechtvaardigen. Misschien is er in deze inzichten een mogelijkheid om de kaartverkoop voor onder presterende locaties te stimuleren. Hogere verkopen zouden de waargenomen waarde van de dienst verhogen. Klik met de rechtermuisknop op fact_Tickets en selecteer **Nieuwe meting**. Voer de volgende expressie in voor de nieuwe maatregel genaamd **AverageTicketsSold:**
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))
 ```
 
-Selecteer de volgende visualisatie opties om het percentage tickets af te zetten dat door elke locatie wordt verkocht om het relatieve succes te bepalen.
+Selecteer de volgende visualisatieopties om het percentage tickets dat door elke locatie wordt verkocht, in kaart te brengen om hun relatieve succes te bepalen.
 
-![analyticsViews](media/saas-multitenantdb-tenant-analytics/AvgTicketsByVenues.PNG)
+![analyticsWeergaven](media/saas-multitenantdb-tenant-analytics/AvgTicketsByVenues.PNG)
 
-In het voor gaande waarnemings punt ziet u dat hoewel de meeste locaties meer dan 80% van hun tickets verkopen, sommige lastig meer dan de helft van de stoelen vullen. Speel met de waarden goed om het maximum of minimum percentage van tickets te selecteren dat voor elke locatie wordt verkocht.
+De voorgaande plot blijkt dat, hoewel de meeste locaties verkopen meer dan 80% van hun tickets, sommige worstelen om meer dan de helft van de zetels te vullen. Speel met de Waarden Goed om maximaal of minimaal percentage verkochte tickets voor elke locatie te selecteren.
 
-Eerder hebt u uw analyse verdiept om te ontdekken dat de ticket verkoop veel voorspel bare patronen volgen. Deze detectie kan Wingtip tickets helpen bij het uitvoeren van locaties om de verkoop van tickets te stimuleren door dynamische prijzen aan te bevelen. Deze detectie kan ertoe leiden dat machine learning technieken worden geboden om de verkoop van tickets voor elke gebeurtenis te voors pellen. Er kunnen ook voor spellingen worden gemaakt voor de impact van de omzet van kortingen op ticket verkopen. Power BI Embedded kan worden geïntegreerd in een toepassing voor gebeurtenis beheer. De integratie kan helpen bij het visualiseren van voorspelde verkoop en het effect van verschillende kortingen. De toepassing kan u helpen een optimale korting te maken die rechtstreeks vanuit de analyse weergave wordt toegepast.
+Eerder verdiepte u uw analyse om te ontdekken dat de kaartverkoop de neiging heeft om voorspelbare patronen te volgen. Deze ontdekking kan Wingtip Tickets helpen slecht presterende locaties te stimuleren ticketverkoop door het aanbevelen van dynamische prijzen. Deze ontdekking zou een kans kunnen onthullen om machine learning-technieken te gebruiken om de kaartverkoop voor elk evenement te voorspellen. Er kunnen ook voorspellingen worden gedaan voor de impact op de inkomsten van het aanbieden van kortingen op de kaartverkoop. Power BI Embedded kan worden geïntegreerd in een toepassing voor eventmanagement. De integratie kan helpen bij het visualiseren van voorspelde verkopen en het effect van verschillende kortingen. De applicatie kan helpen bij het bedenken van een optimale korting die rechtstreeks vanuit de analytics-display moet worden toegepast.
 
-U hebt waargenomen trends in Tenant gegevens van de Wingtip tickets SaaS multi-tenant database toepassing. U kunt andere manieren voor het indelen van de app Toep assen op zakelijke beslissingen bij leveranciers van SaaS-toepassingen. Leveranciers kunnen beter voldoen aan de behoeften van hun tenants. Hopelijk is deze zelf studie voorzien van hulpprogram ma's die nodig zijn voor het uitvoeren van analyses op Tenant gegevens om uw bedrijven in staat te stellen om op gegevens gebaseerde beslissingen te nemen.
+U hebt trends in tenantgegevens waargenomen vanuit de Wingtip Tickets SaaS Multi-tenant Database applicatie. U overwegen op andere manieren waarop de app zakelijke beslissingen kan nemen voor leveranciers van SaaS-toepassingen. Verkopers kunnen beter tegemoet te komen aan de behoeften van hun huurders. Hopelijk heeft deze zelfstudie u uitgerust met tools die nodig zijn om analyses uit te voeren op tenantgegevens om uw bedrijven in staat te stellen gegevensgestuurde beslissingen te nemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> - Een Tenant Analytics-Data Base met vooraf gedefinieerde ster schema tabellen geïmplementeerd
-> - Gebruikte elastische taken voor het extra heren van gegevens uit de Tenant database
-> - De geëxtraheerde gegevens samen voegen in tabellen in een ster schema dat is ontworpen voor analyse
-> - Query's uitvoeren op een Analytics-Data Base 
-> - Gebruik Power BI voor gegevens visualisatie om trends in Tenant gegevens te observeren 
+> - Een tenantanalysedatabase geïmplementeerd met vooraf gedefinieerde sterschematabellen
+> - Gebruikte elastische taken om gegevens uit alle tenantdatabase te extraheren
+> - De geëxtraheerde gegevens samenvoegen in tabellen in een sterschema dat is ontworpen voor analyse
+> - Een analysedatabase opvragen 
+> - Power BI gebruiken voor gegevensvisualisatie om trends in tenantgegevens te observeren 
 
-Gefeliciteerd.
+Gefeliciteerd!
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-Aanvullende [zelf studies die voortbouwen op de Wingtip SaaS-toepassing](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials). 
+Extra [tutorials die voortbouwen op de Wingtip SaaS applicatie](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials). 
 - [Elastische taken](elastic-jobs-overview.md).
-- [Cross-Tenant analyse met geëxtraheerde gegevens-app met één Tenant](saas-tenancy-tenant-analytics.md) 
+- [Analyse van meerdere tenants met behulp van geëxtraheerde gegevens - app met één tenant](saas-tenancy-tenant-analytics.md) 

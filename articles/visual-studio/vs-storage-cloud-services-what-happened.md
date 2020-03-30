@@ -1,6 +1,6 @@
 ---
-title: Wat is er gebeurd met mijn Cloud service project?
-description: Beschrijft wat er gebeurt in een Cloud Services-project nadat u verbinding hebt gemaakt met een Azure-opslag account met behulp van Visual Studio Connected Services
+title: Wat is er gebeurd met mijn cloudserviceproject?
+description: Beschrijft wat er gebeurt in een cloudservicesproject nadat u verbinding hebt gemaakt met een Azure-opslagaccount met behulp van visual studio-verbonden services
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,30 +14,30 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ac5a635b687e51ddd34899717497548296c2fc23
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72298760"
 ---
-# <a name="what-happened-to-my-cloud-services-project-visual-studio-azure-storage-connected-service"></a>Wat is er gebeurd met mijn Cloud Services-project (Visual Studio Azure Storage Connected service)?
-## <a name="references-added"></a>Toegevoegde verwijzingen
-Het NuGet-pakket van Azure Storage is toegevoegd aan uw Visual Studio-project.  
-Dit pakket voegt de volgende .NET-verwijzingen toe:
+# <a name="what-happened-to-my-cloud-services-project-visual-studio-azure-storage-connected-service"></a>Wat is er gebeurd met mijn cloudserviceproject (aan Visual Studio Azure Storage verbonden service)?
+## <a name="references-added"></a>Referenties toegevoegd
+Het Azure Storage NuGet-pakket is toegevoegd aan uw Visual Studio-project.  
+In dit pakket worden de volgende .NET-verwijzingen toegevoegd:
 
-* **Micro soft. data. EDM**
-* **Micro soft. data. OData**
-* **Micro soft. data. Services. client**
-* **Micro soft. WindowsAzure. Configuration**
-* **Micro soft. WindowsAzure. Storage**
-* **Newton soft. json**
-* **System. data**
-* **Systeem. ruimtelijk**
+* **Microsoft.Data.Edm**
+* **Microsoft.Data.OData**
+* **Microsoft.Data.Services.Client**
+* **Microsoft.WindowsAzure.Configuration**
+* **Microsoft.WindowsAzure.Storage**
+* **Newtonsoft.Json**
+* **System.data**
+* **System.Spatial System.Spatial System.Spatial System.**
 
-## <a name="connection-string-for-azure-storage-added"></a>Verbindings reeks voor toegevoegde Azure Storage
-Elementen zijn gemaakt met de connection string en sleutel van het geselecteerde opslag account. Er zijn wijzigingen aangebracht in de volgende bestanden:
+## <a name="connection-string-for-azure-storage-added"></a>Verbindingstekenreeks voor Azure Storage toegevoegd
+Elementen zijn gemaakt met de verbindingstekenreeks en de sleutel van het geselecteerde opslagaccount. De volgende dossiers zijn gewijzigd:
 
-* **ServiceDefinition. csdef**
-* **ServiceConfiguration. Cloud. cscfg**
-* **ServiceConfiguration. local. cscfg**
+* **ServiceDefinition.csdef**
+* **ServiceConfiguration.Cloud.cscfg**
+* **ServiceConfiguration.Local.cscfg**
 

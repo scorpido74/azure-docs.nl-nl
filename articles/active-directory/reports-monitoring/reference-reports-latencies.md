@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory rapportage latenties | Microsoft Docs
-description: Meer informatie over de hoeveelheid tijd die nodig is voor het rapporteren van gebeurtenissen om weer te geven in uw Azure Portal
+title: Latenlaten van Azure Active Directory-rapportage | Microsoft Documenten
+description: Meer informatie over de tijd die het kost om rapportagegebeurtenissen weer te geven in uw Azure-portal
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,27 +18,27 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74007704"
 ---
-# <a name="azure-active-directory-reporting-latencies"></a>Vertragingen bij rapportage Azure Active Directory
+# <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory reporting latencies (Rapportagevertraging in Azure Active Directory)
 
-Latentie is de hoeveelheid tijd die nodig is voor het weer geven van Azure Active Directory (Azure AD)-rapportage gegevens in de [Azure Portal](https://portal.azure.com). In dit artikel wordt de verwachte latentie voor de verschillende typen rapporten weer gegeven. 
+Latentie is de hoeveelheid tijd die nodig is om Azure Active Directory-rapportagegegevens (Azure AD) weer te geven in de [Azure-portal.](https://portal.azure.com) In dit artikel vindt u de verwachte latentie voor de verschillende typen rapporten. 
 
 ## <a name="activity-reports"></a>Activiteitsrapporten
 
-Er zijn twee soorten activiteiten rapporten:
+Er zijn twee soorten activiteitenrapporten:
 
-- [Aanmeldingen](concept-sign-ins.md) : bevat informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers
-- [Audit logboeken](concept-audit-logs.md) : bevat informatie over de systeem activiteit over gebruikers en groepen, beheerde toepassingen en Directory-activiteiten
+- [Aanmeldingsprogramma's](concept-sign-ins.md) – Biedt informatie over het gebruik van beheerde toepassingen en aanmeldingsactiviteiten voor gebruikers
+- [Controlelogboeken](concept-audit-logs.md) - Biedt informatie over systeemactiviteit over gebruikers en groepen, beheerde toepassingen en directoryactiviteiten
 
-De volgende tabel bevat de latentie-informatie voor activiteiten rapporten. 
+In de volgende tabel worden de latentiegegevens voor activiteitenrapporten weergegeven. 
 
 > [!NOTE]
-> **Latentie (95e percentiel)** verwijst naar het tijdstip waarop 95% van de logboeken worden gerapporteerd en **latentie (99e percentiel)** verwijst naar het tijdstip waarop 99% van de logboeken worden gerapporteerd. 
+> **Latentie (95e percentiel)** verwijst naar de tijd waarin 95% van de logboeken wordt gerapporteerd, en **Latentie (99e percentiel)** verwijst naar de tijd waarmee 99% van de logboeken zal worden gerapporteerd. 
 >
 
 | Rapport | Latentie (95e percentiel) |Latentie (99e percentiel)|
@@ -46,18 +46,18 @@ De volgende tabel bevat de latentie-informatie voor activiteiten rapporten.
 | Auditlogboeken | 2 minuten  | 5 minuten  |
 | Aanmeldingen | 2 minuten  | 5 minuten |
 
-### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Hoe kan ik activiteiten gegevens weer geven na het verkrijgen van een Premium-licentie?
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Hoe snel kan ik activiteitengegevens zien nadat ik een premium licentie heb verkregen?
 
-Als u al activiteiten gegevens met uw gratis licentie hebt, kunt u deze direct na de upgrade bekijken. Als u geen gegevens hebt, duurt het één of twee dagen voordat de gegevens in de rapporten worden weer gegeven nadat u een upgrade hebt uitgevoerd naar een Premium-licentie.
+Als u al activiteitengegevens hebt met uw gratis licentie, dan u deze onmiddellijk zien bij de upgrade. Als u geen gegevens hebt, duurt het een of twee dagen voordat de gegevens in de rapporten worden weergegeven nadat u een upgrade naar een premiumlicentie hebt uitgevoerd.
 
 ## <a name="security-reports"></a>Beveiligingsrapporten
 
 Er zijn twee typen beveiligingsrapporten:
 
 - [Riskante aanmeldingen](concept-risky-sign-ins.md) - Een riskante aanmelding is een indicator van een aanmeldingspoging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikersaccount is. 
-- [Gebruikers van wie wordt aangegeven dat ze risico lopen](concept-user-at-risk.md) - Een riskante gebruiker is een indicator van een gebruikersaccount dat mogelijk is aangetast. 
+- [Gebruikers voor wie wordt aangegeven dat ze risico lopen](concept-user-at-risk.md) - Een riskante gebruiker is een indicator van een gebruikersaccount dat mogelijk is aangetast. 
 
-De volgende tabel bevat de latentie-informatie voor beveiligings rapporten.
+In de volgende tabel worden de latentiegegevens voor beveiligingsrapporten weergegeven.
 
 | Rapport | Minimum | Average | Maximum |
 | :-- | --- | --- | --- |
@@ -66,9 +66,9 @@ De volgende tabel bevat de latentie-informatie voor beveiligings rapporten.
 
 ## <a name="risk-detections"></a>Risicodetectie
 
-Azure AD gebruikt adaptieve machine learning algoritmen en heuristiek om verdachte acties te detecteren die betrekking hebben op uw gebruikers accounts. Elke gedetecteerde verdachte actie wordt opgeslagen in een record met de naam **risico detectie**.
+Azure AD maakt gebruik van adaptieve machine learning-algoritmen en heuristiek om verdachte acties te detecteren die gerelateerd zijn aan uw gebruikersaccounts. Elke gedetecteerde verdachte actie wordt opgeslagen in een record genaamd een **risicodetectie.**
 
-De volgende tabel bevat de latentie-informatie voor risico detectie.
+In de volgende tabel worden de latentie-informatie voor risicodetecties weergegeven.
 
 | Rapport | Minimum | Average | Maximum |
 | :-- | --- | --- | --- |
@@ -84,4 +84,4 @@ De volgende tabel bevat de latentie-informatie voor risico detectie.
 
 * [Overzicht van Azure AD-rapporten](overview-reports.md)
 * [Programmatische toegang tot Azure AD-rapporten](concept-reporting-api.md)
-* [Detectie van Azure Active Directory-Risico's](concept-risk-events.md)
+* [Risicodetecties van Azure Active Directory](concept-risk-events.md)

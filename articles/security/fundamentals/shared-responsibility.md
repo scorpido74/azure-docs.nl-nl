@@ -1,6 +1,6 @@
 ---
-title: Gedeelde verantwoordelijkheid in de Cloud-Microsoft Azure
-description: Begrijp het gedeelde verantwoordelijkheids model en welke beveiligings taken worden verwerkt door de Cloud provider en welke taken door u worden afgehandeld.
+title: Gedeelde verantwoordelijkheid in de cloud - Microsoft Azure
+description: Inzicht krijgen in het gedeelde verantwoordelijkheidsmodel en welke beveiligingstaken worden uitgevoerd door de cloudprovider en welke taken door u worden uitgevoerd.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,38 +16,38 @@ ms.workload: na
 ms.date: 10/16/2019
 ms.author: terrylan
 ms.openlocfilehash: 8f16105d6bda1798828bc423ec8a158d49e0cf2b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72518367"
 ---
-# <a name="shared-responsibility-in-the-cloud"></a>Gedeelde verantwoordelijkheid in de Cloud
+# <a name="shared-responsibility-in-the-cloud"></a>Gedeelde verantwoordelijkheid in de cloud
 
-Als u de open bare Cloud Services overweegt en evalueert, is het belang rijk om het gedeelde verantwoordelijkheids model te begrijpen en welke beveiligings taken worden verwerkt door de Cloud provider en welke taken door u worden uitgevoerd. De werkbelasting verantwoordelijkheden variëren, afhankelijk van of de werk belasting wordt gehost op Software as a Service (SaaS), platform as a Service (PaaS), Infrastructure as a Service (IaaS) of in een on-premises Data Center
+Wanneer u openbare cloudservices overweegt en evalueert, is het van cruciaal belang om inzicht te krijgen in het gedeelde verantwoordelijkheidsmodel en welke beveiligingstaken door de cloudprovider worden afgehandeld en welke taken door u worden uitgevoerd. De verantwoordelijkheden voor werkbelasting variëren afhankelijk van of de werkbelasting wordt gehost op Software as a Service (SaaS), Platform as a Service (PaaS), Infrastructure as a Service (IaaS) of in een on-premises datacenter
 
-## <a name="division-of-responsibility"></a>Verantwoordelijkheids divisie
-In een on-premises Data Center bent u eigenaar van de hele stack. Wanneer u overstapt naar de Cloud, worden sommige verantwoordelijkheden overgedragen naar micro soft. In het volgende diagram ziet u de verantwoordelijkheids gebieden tussen u en micro soft, afhankelijk van het type implementatie van de stack.
+## <a name="division-of-responsibility"></a>Verdeling van de verantwoordelijkheid
+In een on-premises datacenter bent u eigenaar van de hele stack. Als u naar de cloud gaat, worden sommige verantwoordelijkheden overgedragen aan Microsoft. In het volgende diagram worden de verantwoordelijkheden tussen u en Microsoft geïllustreerd, afhankelijk van het type implementatie van uw stack.
 
-![Verantwoordelijkheids zones](./media/shared-responsibility/shared-responsibility.png)
+![Verantwoordelijkheidszones](./media/shared-responsibility/shared-responsibility.png)
 
-Voor alle Cloud implementatie typen bent u eigenaar van uw gegevens en identiteiten. U bent verantwoordelijk voor het beveiligen van de beveiliging van uw gegevens en identiteiten, on-premises resources en de Cloud onderdelen die u beheert (afhankelijk van het Service type).
+Voor elk type cloudimplementatie bent u eigenaar van uw gegevens en identiteiten. U bent verantwoordelijk voor de bescherming van de beveiliging van uw gegevens en identiteiten, on-premises resources en de cloudcomponenten die u beheert (die per servicetype verschilt).
 
-Ongeacht het type implementatie, worden de volgende verantwoordelijkheden altijd door u bewaard:
+Ongeacht het type implementatie, worden de volgende verantwoordelijkheden altijd door u behouden:
 
 - Gegevens
 - Eindpunten
 - Account
 - Toegangsbeheer
 
-## <a name="cloud-security-advantages"></a>Voor delen van Cloud beveiliging
-De Cloud biedt grote voor delen voor het oplossen van lange permanente informatie over beveiligings problemen. In een on-premises omgeving hebben organisaties waarschijnlijk unmet verantwoordelijkheden en beperkte bronnen die beschikbaar zijn om te investeren in beveiliging, waardoor een omgeving wordt gemaakt waarin aanvallers zwakke plekken op alle lagen kunnen exploiteren.
+## <a name="cloud-security-advantages"></a>Voordelen voor cloudbeveiliging
+De cloud biedt aanzienlijke voordelen voor het oplossen van langdurige uitdagingen op het gebied van informatiebeveiliging. In een on-premises omgeving hebben organisaties waarschijnlijk onvervulde verantwoordelijkheden en beperkte middelen beschikbaar om te investeren in beveiliging, waardoor een omgeving ontstaat waarin aanvallers kwetsbaarheden in alle lagen kunnen misbruiken.
 
-In het volgende diagram ziet u een traditionele benadering waarbij veel beveiligings verantwoordelijkheden worden unmet vanwege beperkte resources. In de Cloud-aanpak kunt u de beveiligings verantwoordelijkheden van de dag tot de dag naar uw Cloud provider verschuiven en uw resources opnieuw toewijzen.
+Het volgende diagram toont een traditionele benadering waarbij veel beveiligingsverantwoordelijkheden niet worden nageleefd vanwege beperkte resources. In de cloud-enabled aanpak, bent u in staat om dag tot dag beveiligingsverantwoordelijkheden verschuiven naar uw cloud provider en herverdelen van uw middelen.
 
-![Beveiligings voordelen van Cloud era](./media/shared-responsibility/cloud-enabled-security.png)
+![Beveiligingsvoordelen van cloudtijdperk](./media/shared-responsibility/cloud-enabled-security.png)
 
-In de Cloud-aanpak kunt u ook gebruikmaken van cloud-gebaseerde beveiligings mogelijkheden voor meer effectiviteit en Cloud Intelligence gebruiken om de detectie en reactie tijd van bedreigingen te verbeteren. Door verantwoordelijkheden te verplaatsen naar de Cloud provider, kunnen organisaties meer beveiligings dekking krijgen, waardoor ze beveiligings bronnen en budget opnieuw aan andere zakelijke prioriteiten kan toewijzen.
+In de cloud-enabled aanpak, bent u ook in staat om cloud-gebaseerde beveiligingsmogelijkheden te benutten voor meer effectiviteit en gebruik maken van cloud intelligence om uw bedreigingdetectie en responstijd te verbeteren. Door verantwoordelijkheden te verschuiven naar de cloudprovider, kunnen organisaties meer beveiligingsdekking krijgen, waardoor ze beveiligingsresources en budget kunnen herverdelen naar andere zakelijke prioriteiten.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [gedeelde verantwoordelijkheden voor Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)voor meer informatie over het delen van de verantwoordelijkheid tussen u en micro soft in een SaaS-, Paas-en IaaS-implementatie.
+Zie [Gedeelde verantwoordelijkheden voor cloud computing voor](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)meer informatie over de verdeling van de verantwoordelijkheid tussen u en Microsoft in een SaaS-, PaaS- en IaaS-implementatie.

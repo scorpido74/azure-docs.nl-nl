@@ -1,5 +1,5 @@
 ---
-title: PHP gebruiken om een query uit te zoeken
+title: PHP gebruiken om te vragen
 description: PHP gebruiken om een programma te maken dat is verbonden met een Azure SQL-database, en een query op deze database uitvoeren met behulp van T-SQL-instructies.
 services: sql-database
 ms.service: sql-database
@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 02/12/2019
 ms.openlocfilehash: ae119dd23da670f16c0239b14119519c431e6326
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73827003"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Snelstart: PHP gebruiken om een query uit te voeren voor een Azure SQL-database
@@ -31,15 +31,15 @@ Zorg dat u aan de volgende vereisten voldoet als u dit voorbeeld wilt uitvoeren:
   |:--- |:--- |:---|
   | Maken| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  || [Powershell](scripts/sql-database-create-and-configure-database-powershell.md) | [Powershell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Configureren | [IP-firewallregel op serverniveau](sql-database-server-level-firewall-rule.md)| [Connectiviteit vanaf een VM](sql-database-managed-instance-configure-vm.md)|
   |||[Connectiviteit vanaf locatie](sql-database-managed-instance-configure-p2s.md)
   |Gegevens laden|Adventure Works geladen volgens de quickstart|[Wide World Importers herstellen](sql-database-managed-instance-get-started-restore.md)
-  |||Adventure Works herstellen of importeren vanuit [BACPAC](sql-database-import.md) -bestand vanuit [github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||Adventure Works uit [BACPAC-bestand](sql-database-import.md) herstellen of importeren van [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
-  > De scripts in dit artikel zijn geschreven voor gebruik met de Adventure Works-database. Met een beheerd exemplaar moet u de Adventure Works-database importeren in een exemplaardatabase of de scripts in dit artikel wijzigen voor gebruik van de Wide World Importers-database.
+  > De scripts in dit artikel zijn geschreven voor gebruik met de Adventure Works-database. Met een beheerd exemplaar moet u de Adventure Works-database importeren in een exemplaardatabase of de scripts in dit artikel wijzigen zodat deze de Wide World Importers-database gebruiken.
 
 - U moet aan PHP verwante software hebben geïnstalleerd voor het besturingssysteem:
 
@@ -49,15 +49,15 @@ Zorg dat u aan de volgende vereisten voldoet als u dit voorbeeld wilt uitvoeren:
 
   - **Windows**: installeer PHP voor IIS Express en Chocolatey, en installeer vervolgens het ODBC-stuurprogramma en SQLCMD. Zie [Stap 1.2 en 1.3](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).
 
-## <a name="get-sql-server-connection-information"></a>Verbindingsgegevens voor SQL Server ophalen
+## <a name="get-sql-server-connection-information"></a>SQL Server-verbindingsgegevens ophalen
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Azure SQL-database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 2. Navigeer naar de pagina **SQL-database** of **Met SQL beheerde exemplaren**.
 
-3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erop en selecteert u het pictogram **Kopiëren**.
+3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren**.
 
 ## <a name="add-code-to-query-database"></a>Code toevoegen om een query uit te voeren op de database
 

@@ -1,16 +1,16 @@
 ---
-title: Hand leiding voor het verifiëren van Azure signalerings service-clients
-description: Meer informatie over hoe u uw eigen verificatie implementeert en integreert met de Azure signalerings service door het E2E-voor beeld te volgen.
+title: Handleiding voor het verifiëren van Azure SignalR Service-clients
+description: Lees hoe u uw eigen verificatie implementeert en integreert met Azure SignalR Service door het voorbeeld van e2e te volgen.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: cc955adffbe7df5809f9c4c860877ad22df3e99b
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74158283"
 ---
 # <a name="azure-signalr-service-authentication"></a>verificatie van Azure SignalR Service
@@ -54,7 +54,7 @@ U hebt het volgende nodig om deze zelfstudie te voltooien:
 
 1. Open een webbrowser, ga naar `https://github.com` en meld u aan bij uw account.
 
-2. Ga naar **Settings** > **Developer settings** en klik op **Register a new application** of **New OAuth App** onder *OAuth Apps*.
+2. Ga voor uw account naar **Instellingen** > **voor ontwikkelaars instellingen** en klik op Een nieuwe **toepassing**registreren of Nieuwe **OAuth-app** onder *OAuth-apps*.
 
 3. Gebruik de volgende instellingen voor de nieuwe OAuth-app en klik vervolgens op **Register application**:
 
@@ -377,7 +377,7 @@ In dit gedeelte gaat u echte verificatie inschakelen door het kenmerk `Authorize
 
 ## <a name="deploy-the-app-to-azure"></a>De app implementeren in Azure
 
-In deze sectie gebruikt u de Azure-opdracht regel interface (CLI) van de Azure Cloud Shell om een nieuwe web-app te maken in [Azure app service](https://docs.microsoft.com/azure/app-service/) om uw ASP.NET-toepassing in azure te hosten. De web-app wordt geconfigureerd voor het gebruik van een lokale Git-implementatie. De web-app wordt daarnaast geconfigureerd met de verbindingsreeks voor SignalR, geheimen van de GitHub OAuth-app en een implementatiegebruiker.
+In deze sectie gebruikt u de Azure command-line interface (CLI) van de Azure Cloud Shell om een nieuwe web-app in [Azure App Service](https://docs.microsoft.com/azure/app-service/) te maken om uw ASP.NET toepassing in Azure te hosten. De web-app wordt geconfigureerd voor het gebruik van een lokale Git-implementatie. De web-app wordt daarnaast geconfigureerd met de verbindingsreeks voor SignalR, geheimen van de GitHub OAuth-app en een implementatiegebruiker.
 
 In de stappen in dit gedeelte wordt de extensie *signalr* voor de Azure CLI gebruikt. Voer de volgende opdracht uit om de extensie *signalr* voor Azure CLI te installeren:
 
@@ -539,7 +539,7 @@ Voer de volgende opdrachten uit in een Git-shell om uw code te implementeren.
 
 Als laatste moet u de waarden voor **Homepage URL** en **Authorization callback URL** van de GitHub OAuth-app bijwerken, zodat deze verwijzen naar de nieuwe gehoste app.
 
-1. Open [https://github.com](https://github.com) in een browser en ga in uw account naar **Settings** > **Developer settings** > **Oauth Apps**.
+1. Open [https://github.com](https://github.com) in een browser en navigeer naar de**instellingen** >  **voor instellingen** > van uw account Voor ontwikkelaars**Oauth Apps**.
 
 2. Klik op de verificatie-app en werk de waarden voor **Homepage URL** en **Authorization callback URL** bij zoals hieronder wordt weergegeven:
 
@@ -556,18 +556,18 @@ Als laatste moet u de waarden voor **Homepage URL** en **Authorization callback 
 
 Als u verder wilt gaan met de volgende zelfstudie, kunt u de resources die in deze snelstart zijn gemaakt behouden en gebruiken met de volgende zelfstudie.
 
-Als u niet verder wilt met de voorbeeldtoepassing uit de snelstart, kunt u de Azure-resources verwijderen die in deze snelstart zijn gemaakt om kosten te voorkomen.
+Als u niet verder wilt met de snelstart, kunt u de Azure-resources verwijderen die in deze snelstart zijn gemaakt om kosten te voorkomen.
 
 > [!IMPORTANT]
-> Houd er rekening mee dat het verwijderen van een resourcegroep niet ongedaan kan worden gemaakt, en dat de resourcegroep en alle bijbehorende resources permanent worden verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
+> Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle bijbehorende resources worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
 
-Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
+Meld u aan bij de [Azure-portal](https://portal.azure.com) en klik op **Resourcegroepen**.
 
-Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...** . In de instructies voor dit artikel is een resourcegroep met de naam *SignalRTestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
+Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...**. In de instructies voor dit artikel is een resourcegroep met de naam *SignalRTestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
 
 ![Verwijderen](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
 
-U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resourcegroep en klik op **Verwijderen**.
+U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resourcegroep om te bevestigen en klik op **Verwijderen**.
 
 Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.
 
