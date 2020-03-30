@@ -1,0 +1,90 @@
+---
+title: Prestaties afstemmen door resultatensets op te slaan in de cache
+description: Overzicht van caching-functies voor SQL Analytics in Azure Synapse Analytics
+services: synapse-analytics
+author: XiaoyuMSFT
+manager: craigg
+ms.service: synapse-analytics
+ms.topic: conceptual
+ms.subservice: ''
+ms.date: 10/10/2019
+ms.author: xiaoyul
+ms.reviewer: nidejaco;
+ms.custom: azure-synapse
+ms.openlocfilehash: 0c2190c29054301a8e21a9a27eb078802fbc9612
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80350865"
+---
+# <a name="performance-tuning-with-result-set-caching"></a>Prestaties afstemmen door resultatensets op te slaan in de cache  
+Wanneer de cache van de resultatenset is ingeschakeld, cachet SQL Analytics automatisch queryresultaten in de gebruikersdatabase voor herhaald gebruik.  Hierdoor kunnen volgende query-uitvoeringen rechtstreeks resultaten uit de volgehouden cache krijgen, zodat herberekening niet nodig is.   Het incachezetten van resultaten verbetert de queryprestaties en vermindert het gebruik van rekenbronnen.  Bovendien gebruiken query's met in de cache ingestelde resultaten geen gelijktijdigheidssleuven en tellen ze dus niet mee voor bestaande gelijktijdigheidslimieten. Voor beveiliging hebben gebruikers alleen toegang tot de resultaten in de cache als ze dezelfde machtigingen voor gegevenstoegang hebben als de gebruikers die de resultaten in de cache maken.  
+
+## <a name="key-commands"></a>Toetsopdrachten
+[Aan/UIT-resultaatset instellen voor een gebruikersdatabase inschakelen](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
+
+[In/UIT-resultaatset instellen voor een sessie](https://docs.microsoft.com/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)
+
+[De grootte van de in de cache opgeslagen resultatenset controleren](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest)  
+
+[De cache opschonen](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)
+
+## <a name="whats-not-cached"></a>Wat is niet in de cache opgeslagen  
+
+Zodra de resulterenset cache is ingeschakeld voor een database, worden de resultaten in de cache opgeslagen voor alle query's totdat de cache vol is, met uitzondering van deze query's:
+- Query's met niet-deterministische functies zoals DateTime.Now()
+- Query's met door de gebruiker gedefinieerde functies
+- Query's met tabellen met beveiliging op rijniveau of beveiliging op kolomniveau ingeschakeld
+- Query's die gegevens retourneren met een rijgrootte groter dan 64 KB
+
+> [!IMPORTANT]
+> De bewerkingen voor het maken van resultatensetcache en het ophalen van gegevens uit de cache vinden plaats op het controleknooppunt van een SQL Analytics-exemplaar.
+> Wanneer het incachezetten van het resultaat is ingeschakeld, kunnen query's die grote resultaatset retourneren (bijvoorbeeld >1 miljoen rijen) leiden tot een hoog CPU-gebruik op het controleknooppunt en het algemene queryantwoord op de instantie vertragen.  Deze query's worden vaak gebruikt tijdens gegevensverkenning of ETL-bewerkingen. Om te voorkomen dat het controleknooppunt wordt benadrukt en prestatieproblemen ontstaan, moeten gebruikers de cache van de resultatenset in de database uitschakelen voordat deze typen query's worden uitgevoerd.  
+
+Voer deze query uit voor de tijd die wordt genomen door de cachingbewerkingen van de resultatenset voor een query:
+
+```sql
+SELECT step_index, operation_type, location_type, status, total_elapsed_time, command 
+FROM sys.dm_pdw_request_steps 
+WHERE request_id  = <'request_id'>; 
+```
+
+Hier is een voorbeelduitvoer voor een query die is uitgevoerd met de caching van de resultaatset uitgeschakeld.
+
+![Query-stappen-met-rsc-uitgeschakeld](./media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
+
+Hier is een voorbeelduitvoer voor een query die is uitgevoerd met in cache van de resultaatset ingeschakeld.
+
+![Query-stappen-met-rsc-ingeschakeld](./media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
+
+## <a name="when-cached-results-are-used"></a>Wanneer in de cache opgeslagen resultaten worden gebruikt
+
+Resultatenset in cache wordt opnieuw gebruikt voor een query als aan alle volgende vereisten is voldaan:
+- De gebruiker die de query uitvoert, heeft toegang tot alle tabellen waarnaar in de query wordt verwezen.
+- Er is een exacte overeenkomst tussen de nieuwe query en de vorige query die de cache van de resultaatset heeft gegenereerd.
+- Er zijn geen gegevens- of schemawijzigingen in de tabellen waaruit de resultaatset in de cache is gegenereerd.
+
+Voer deze opdracht uit om te controleren of een query is uitgevoerd met een hit or miss-hit of misser van de resultaatcache. Als er een cache hit, de result_cache_hit zal terugkeren 1.
+
+```sql
+SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests 
+WHERE request_id = <'Your_Query_Request_ID'>
+```
+
+## <a name="manage-cached-results"></a>Resultaten in de cache beheren 
+
+De maximale grootte van de cache van de resultaatset is 1 TB per database.  De in de cache opgeslagen resultaten worden automatisch ongeldig gemaakt wanneer de onderliggende querygegevens worden gewijzigd.  
+
+De cacheuitzetting wordt beheerd door SQL Analytics die automatisch volgens dit schema volgt: 
+- Elke 48 uur als de resultaatset niet is gebruikt of ongeldig is gemaakt. 
+- Wanneer de cache met resultaatset de maximale grootte nadert.
+
+Gebruikers kunnen handmatig de volledige cache van de resultaatset legen met behulp van een van de volgende opties: 
+- De cachefunctie voor de resultatenset voor de database uitschakelen 
+- DBCC DROPRESULTSETCACHE uitvoeren terwijl deze is verbonden met de database
+
+Als u een database pauzeert, wordt de set resultaten in de cache niet leeg.  
+
+## <a name="next-steps"></a>Volgende stappen
+Zie voor meer ontwikkelingstips [het ontwikkelingsoverzicht.](sql-data-warehouse-overview-develop.md) 

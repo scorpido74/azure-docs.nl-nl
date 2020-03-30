@@ -1,58 +1,58 @@
 ---
 title: Problemen met Azure FarmBeats oplossen
-description: In dit artikel wordt beschreven hoe u problemen met Azure FarmBeats oplost.
+description: In dit artikel wordt beschreven hoe u Azure FarmBeats oplossen.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 20d07be99aa2f9881218f8d581ac8d429a1fe4d0
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: a429a1e454e73a1a9d544e308e5b2d60052d91a9
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79298798"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349777"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
-Dit artikel bevat oplossingen voor veelvoorkomende problemen met Azure FarmBeats.
+In dit artikel vindt u oplossingen voor veelvoorkomende Azure FarmBeats-problemen.
 
-Neem contact met ons op farmbeatssupport@microsoft.comvoor meer hulp. Zorg ervoor dat u het bestand **deployer. log** opneemt in uw e-mail bericht.
+Voor extra hulp kunt farmbeatssupport@microsoft.comu contact met ons opnemen via . Zorg ervoor dat u het bestand **deployer.log** in uw e-mail opneemt.
 
-Ga als volgt te werk om het bestand **deployer. log** te downloaden:
+Ga als volgt te werk om het bestand **deployer.log** te downloaden:
 
-1. Meld u aan **Azure Portal** en selecteer uw abonnement en de Azure AD-Tenant.
+1. Meld u aan bij **azure portal** en selecteer uw abonnement en Azure AD-tenant.
 2. Open Cloud Shell via de bovenste navigatiebalk van de Azure Portal.
-3. Selecteer **bash** als de voor keurs-Cloud shell-ervaring.
-4. Selecteer het gemarkeerde pictogram en selecteer vervolgens in de vervolg keuzelijst **downloaden**.
+3. Selecteer **Bash** als de voorkeurscloudshell-ervaring.
+4. Selecteer het gemarkeerde pictogram en selecteer vervolgens in de vervolgkeuzelijst **Download**.
 
     ![Project FarmBeats](./media/troubleshoot-azure-farmbeats/download-deployer-log-1.png)
 
-5. Geef in het volgende deel venster het pad op naar het bestand **deployer. log** . Voer bijvoorbeeld **farmbeats-deployer. log**in.
+5. Voer in het volgende deelvenster het pad naar het **bestand deployer.log** in. Voer bijvoorbeeld **farmbeats-deployer.log in**.
 
-## <a name="sensor-telemetry"></a>Sensor-telemetrie
+## <a name="sensor-telemetry"></a>Sensortelemetrie
 
-### <a name="cant-view-telemetry-data"></a>Kan geen telemetriegegevens weer geven
+### <a name="cant-view-telemetry-data"></a>Telemetriegegevens kunnen niet worden bekeken
 
-**Symptoom**: er zijn apparaten of Sens oren geïmplementeerd en u hebt FarmBeats gekoppeld aan de partner van uw apparaat, maar u kunt geen telemetriegegevens ophalen of weer geven op FarmBeats.
+**Symptoom:** Apparaten of sensoren worden geïmplementeerd en u hebt FarmBeats gekoppeld aan uw apparaatpartner, maar u geen telemetriegegevens op FarmBeats krijgen of bekijken.
 
-**Corrigerende actie**:
+**Corrigerende maatregelen**:
 
-1. Ga naar de resource groep FarmBeats Datahub.   
-2. Selecteer de **Event hub** (DatafeedEventHubNamespace) en controleer vervolgens op het aantal inkomende berichten.
+1. Ga naar uw FarmBeats Datahub-brongroep.   
+2. Selecteer de **gebeurtenishub** (DatafeedEventHubNamespace) en controleer vervolgens op het aantal binnenkomende berichten.
 3. Voer een van de volgende bewerkingen uit:   
-   - Als er *geen inkomende berichten*zijn, neemt u contact op met de partner van uw apparaat.  
-   - Als er *inkomende berichten*zijn, neemt u contact op met farmbeatssupport@microsoft.com. Koppel uw Datahub-en Accelerator logboeken en vastgelegde telemetrie.
+   - Als er *geen binnenkomende berichten*zijn, neemt u contact op met uw apparaatpartner.  
+   - Als er *binnenkomende berichten* farmbeatssupport@microsoft.comzijn, neemt u contact op met . Voeg uw Datahub- en Accelerator-logboeken toe en vastgelegde telemetrie.
 
-Als u wilt weten hoe u Logboeken kunt downloaden, gaat u naar de sectie [Logboeken hand matig verzamelen](#collect-logs-manually) .  
+Als u wilt weten hoe u logboeken downloaden, gaat u naar de sectie [Logboeken handmatig verzamelen.](#collect-logs-manually)  
 
-### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Er kunnen geen telemetriegegevens worden weer gegeven na het opnemen van historische/streaming-gegevens van uw Sens oren
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Kan telemetriegegevens niet bekijken na het innemen van historische/streaminggegevens van uw sensoren
 
-**Symptoom**: er zijn apparaten of Sens oren geïmplementeerd en u hebt de apparaten/Sens oren op FarmBeats en opgenomen telemetrie naar de EventHub gemaakt, maar u kunt geen telemetriegegevens ophalen of weer geven op FarmBeats.
+**Symptoom:** Apparaten of sensoren worden geïmplementeerd en u hebt de apparaten/sensoren op FarmBeats gemaakt en telemetrie ingenomen naar de EventHub, maar u geen telemetriegegevens op FarmBeats krijgen of bekijken.
 
-**Corrigerende actie**:
+**Corrigerende maatregelen**:
 
-1. Zorg ervoor dat u de partner registratie op de juiste manier hebt uitgevoerd. u kunt dit controleren door naar uw datahub Swagger te gaan, naar/partner API te gaan, een Get-en check-taak uit te voeren als de partner is geregistreerd. Als dat niet het geval is, volgt u de [stappen hier](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) om een partner toe te voegen.
-2. Zorg ervoor dat u de juiste indeling voor telemetrie-berichten hebt gebruikt:
+1. Zorg ervoor dat u de partnerregistratie correct hebt gedaan - u dit controleren door naar uw datahub-branie te gaan, naar /Partner API te navigeren, een get te doen en te controleren of de partner is geregistreerd. Zo niet, volg [dan de stappen hier](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) om partner toe te voegen.
+2. Controleer of u de juiste telemetrieberichtindeling hebt gebruikt:
 
 ```json
 {
@@ -65,7 +65,7 @@ Als u wilt weten hoe u Logboeken kunt downloaden, gaat u naar de sectie [Logboek
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>":"<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
@@ -77,266 +77,275 @@ Als u wilt weten hoe u Logboeken kunt downloaden, gaat u naar de sectie [Logboek
 }
 ```
 
-### <a name="dont-have-the-azure-event-hubs-connection-string"></a>De Azure-Event Hubs niet hebben connection string
+### <a name="dont-have-the-azure-event-hubs-connection-string"></a>De verbindingstekenreeks Azure Event Hubs niet hebben
 
-**Corrigerende actie**:
+**Corrigerende maatregelen**:
 
-1. Ga in Datahub Swagger naar de partner-API.
-2. Selecteer ** > ** **uitproberen** > **uitvoeren**.
-3. Noteer de partner-ID van de sensor partner die u wilt.
-4. Ga terug naar de partner-API en selecteer **Get/\<ID >** .
-5. Geef de partner-ID op uit stap 3 en selecteer vervolgens **uitvoeren**.
+1. Ga in Datahub Swagger naar de Partner API.
+2. Selecteer **Try** > **it out uitvoeren.** > **Execute**
+3. Let op de partner-ID van de sensorpartner waarin u geïnteresseerd bent.
+4. Ga terug naar de Partner-API en selecteer **>op-\<en>. **
+5. Geef de partner-id op vanaf stap 3 en selecteer **Uitvoeren**.
 
-   De API-reactie moet de Event Hubs connection string hebben.
+   De API-respons moet de verbindingstekenreeks Gebeurtenishubs hebben.
 
-### <a name="device-appears-offline"></a>Apparaat wordt offline weer gegeven
+### <a name="device-appears-offline"></a>Apparaat wordt offline weergegeven
 
-**Symptomen**: er zijn apparaten geïnstalleerd en u hebt FarmBeats gekoppeld aan de partner van uw apparaat. De apparaten zijn online en verzenden telemetriegegevens, maar ze worden offline weer gegeven.
+**Symptomen:** Apparaten zijn geïnstalleerd en u hebt FarmBeats gekoppeld aan uw apparaatpartner. De apparaten zijn online en verzenden telemetriegegevens, maar ze worden offline weergegeven.
 
-**Corrigerende actie**: het rapportage-interval is niet geconfigureerd voor dit apparaat. Neem contact op met de fabrikant van uw apparaat om het rapportage-interval in te stellen. 
+**Corrigerende actie:** het rapportageinterval is niet geconfigureerd voor dit apparaat. Neem contact op met de fabrikant van het apparaat om het rapportage-interval in te stellen. 
 
 ### <a name="error-deleting-a-device"></a>Fout bij het verwijderen van een apparaat
 
-Tijdens het verwijderen van een apparaat kan een van de volgende veelvoorkomende fout scenario's optreden:  
+Terwijl u een apparaat loost, u een van de volgende veelvoorkomende foutscenario's tegenkomen:  
 
-**Bericht**: er wordt naar het apparaat verwezen in Sens oren: er zijn een of meer Sens oren gekoppeld aan het apparaat. Verwijder de Sens oren en verwijder vervolgens het apparaat.  
+**Bericht**: "Apparaat wordt verwezen in sensoren: Er zijn een of meer sensoren gekoppeld aan het apparaat. Verwijder de sensoren en verwijder het apparaat."  
 
-Dat **wil zeggen**: het apparaat is gekoppeld aan meerdere Sens oren die in de farm zijn geïmplementeerd.   
+**Betekenis**: Het apparaat is gekoppeld aan meerdere sensoren die in de farm worden geïmplementeerd.   
 
-**Corrigerende actie**:  
+**Corrigerende maatregelen**:  
 
-1. Verwijder de Sens oren die zijn gekoppeld aan het apparaat via Accelerator.  
-2. Als u de Sens oren wilt koppelen aan een ander apparaat, vraagt u de partner van het apparaat hetzelfde te doen.  
-3. Verwijder het apparaat met behulp van een `DELETE API` aanroep en stel de para meter Force in op *True*.  
+1. Verwijder de sensoren die aan het apparaat zijn gekoppeld via Accelerator.  
+2. Als u de sensoren aan een ander apparaat wilt koppelen, vraagt u uw apparaatpartner hetzelfde te doen.  
+3. Verwijder het apparaat `DELETE API` met behulp van een aanroep en stel de krachtparameter in als *true*.  
 
-**Bericht**: in apparaten wordt naar het apparaat verwezen als ParentDeviceId: er zijn een of meer apparaten die zijn gekoppeld aan dit apparaat als onderliggende apparaten. Verwijder ze en verwijder dit apparaat. "  
+**Bericht:**"Apparaat wordt verwezen in apparaten als ParentDeviceId: Er zijn een of meer apparaten die zijn gekoppeld aan dit apparaat als onderliggende apparaten. Verwijder ze en verwijder dit apparaat."  
 
-Dat **wil zeggen**: er zijn andere apparaten aan het apparaat gekoppeld.  
+**Betekenis:** uw apparaat heeft andere apparaten die eraan zijn gekoppeld.  
 
-**Corrigerende actie**
+**Corrigerende maatregelen**
 
-1. De apparaten verwijderen die zijn gekoppeld aan dit specifieke apparaat.  
-2. Het specifieke apparaat verwijderen.  
+1. Verwijder de apparaten die aan dit specifieke apparaat zijn gekoppeld.  
+2. Verwijder het specifieke apparaat.  
 
     > [!NOTE]
-    > U kunt een apparaat niet verwijderen als er Sens oren aan zijn gekoppeld. Voor meer informatie over het verwijderen van gekoppelde Sens oren, zie de sectie **sensor verwijderen** in [sensor gegevens ophalen van sensor partners](get-sensor-data-from-sensor-partner.md).
+    > U een apparaat niet verwijderen als er sensoren aan zijn gekoppeld. Zie de sectie **Sensor verwijderen** in [Sensorgegevens ophalen van sensorpartners](get-sensor-data-from-sensor-partner.md)voor meer informatie over het verwijderen van bijbehorende sensoren.
+
+    > Partners hebben geen toegang tot het verwijderen van een apparaat of sensor. Alleen beheerders hebben toegang tot hetzelfde te doen.
 
 
 ## <a name="issues-with-jobs"></a>Problemen met taken
 
-### <a name="farmbeats-internal-error"></a>Interne FarmBeats-fout
+### <a name="farmbeats-internal-error"></a>Interne farmbeats-fout
 
-**Bericht**: FarmBeats interne fout, zie probleemoplossings gids voor meer informatie.
+**Bericht:**"Interne fout FarmBeats, zie handleiding voor probleemoplossing voor meer details".
 
-**Corrigerende actie**: dit probleem kan het gevolg zijn van een tijdelijke fout in de gegevens pijplijn. Maak de taak opnieuw. Als de fout zich blijft voordoen, voegt u het fout bericht toe aan een bericht op het FarmBeats-forum of neemt u contact op met FarmBeatsSupport@microsoft.com.
+**Corrigerende maatregelen:** dit probleem kan het gevolg zijn van een tijdelijke fout in de gegevenspijplijn. Maak de taak opnieuw. Als de fout blijft bestaan, voegt u het foutbericht toe FarmBeatsSupport@microsoft.comin een bericht op het FarmBeats-forum of neemt u contact op met .
 
-## <a name="accelerator-troubleshooting"></a>Problemen met accelerators oplossen
+## <a name="accelerator-troubleshooting"></a>Acceleratorprobleemoplossing
 
 ### <a name="access-control"></a>Toegangsbeheer
 
-**Probleem**: er wordt een fout bericht weer gegeven tijdens het toevoegen van een roltoewijzing.
+**Probleem:** U ontvangt een fout terwijl u een roltoewijzing toevoegt.
 
-**Bericht**: er zijn geen overeenkomende gebruikers gevonden.
+**Bericht:**'Geen overeenkomende gebruikers gevonden'.
 
-**Corrigerende actie**: Controleer de e-mail-id waarvoor u een roltoewijzing wilt toevoegen. De e-mail-ID moet exact overeenkomen met de ID, die is geregistreerd voor die gebruiker in de Active Directory. Als de fout zich blijft voordoen, voegt u het fout bericht toe aan een bericht op het FarmBeats-forum of neemt u contact op met FarmBeatsSupport@microsoft.com.
+**Corrigerende actie:** controleer de e-id waarvoor u een roltoewijzing probeert toe te voegen. De e-id moet exact overeenkomen met de id, die voor die gebruiker is geregistreerd in de Active Directory. Als de fout blijft bestaan, voegt u het foutbericht toe FarmBeatsSupport@microsoft.comin een bericht op het FarmBeats-forum of neemt u contact op met .
 
-### <a name="unable-to-log-in-to-accelerator"></a>Kan niet aanmelden bij de Accelerator
+### <a name="unable-to-log-in-to-accelerator"></a>Kan niet inloggen op Accelerator
 
-**Bericht**: ' fout: u bent niet gemachtigd om de service aan te roepen. Neem contact op met de beheerder voor autorisatie. "
+**Bericht:**"Fout: u bent niet bevoegd om de service te bellen. Neem contact op met de beheerder voor autorisatie."
 
-**Corrigerende actie**: vraag de beheerder om u te machtigen om toegang te krijgen tot de FarmBeats-implementatie. U kunt dit doen door een bericht te plaatsen van de RoleAssignment-Api's of via de Access Control in het deel venster **instellingen** in Accelerator.  
+**Corrigerende actie:** Vraag de beheerder om u toestemming te geven voor toegang tot de FarmBeats-implementatie. Dit kan door een post van de RoleAssignment API's te doen of via het toegangsbesturingselement in het deelvenster **Instellingen** in Accelerator.  
 
-Als u al toegang hebt gekregen en deze fout ondervindt, kunt u het opnieuw proberen door de pagina te vernieuwen. Als de fout zich blijft voordoen, voegt u het fout bericht toe aan een bericht op het FarmBeats-forum of neemt u contact op met FarmBeatsSupport@microsoft.com.
+Als u al toegang hebt gekregen en met deze fout wordt geconfronteerd, probeert u het opnieuw door de pagina te vernieuwen. Als de fout blijft bestaan, voegt u het foutbericht toe FarmBeatsSupport@microsoft.comin een bericht op het FarmBeats-forum of neemt u contact op met .
 
 ![Project FarmBeats](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
 
-### <a name="accelerator-issues"></a>Problemen met de Accelerator  
+### <a name="accelerator-issues"></a>Accelerator problemen  
 
-**Probleem**: u hebt een verwerkings fout van een onbepaalde oorzaak ontvangen.
+**Probleem:** U hebt een acceleratorfout van onbepaalde oorzaak ontvangen.
 
-**Bericht**: ' fout: er is een onbekende fout opgetreden. '
+**Bericht**: "Fout: er is een onbekende fout opgetreden."
 
-**Corrigerende actie**: deze fout treedt op als u de pagina te lang niet-actief blijft. Vernieuw de pagina.  
+**Corrigerende actie**: Deze fout treedt op als u de pagina te lang inactief laat. Vernieuw de pagina.  
 
-Als de fout zich blijft voordoen, voegt u het fout bericht toe aan een bericht op het FarmBeats-forum of neemt u contact op met FarmBeatsSupport@microsoft.com.
+Als de fout blijft bestaan, voegt u het foutbericht toe FarmBeatsSupport@microsoft.comin een bericht op het FarmBeats-forum of neemt u contact op met .
 
-**Probleem**: FarmBeats Accelerator geeft niet de nieuwste versie weer, zelfs nadat u FarmBeatsDeployment hebt bijgewerkt.
+**Probleem:** FarmBeats Accelerator toont niet de nieuwste versie, zelfs niet nadat u FarmBeatsDeployment hebt geüpgraded.
 
-**Corrigerende actie**: deze fout treedt op door de service medewerker-persistentie in de browser. Ga als volgt te werk:
+**Corrigerende maatregelen:** Deze fout treedt op als gevolg van persistentie van de servicemedewerker in de browser. Ga als volgt te werk:
 
-1. Sluit alle browser tabbladen met Accelerator open en sluit het browser venster.
-2. Start een nieuw exemplaar van de browser en laad de Accelerator-URI opnieuw. Met deze actie wordt de nieuwe versie van Accelerator geladen.
+1. Sluit alle browsertabbladen met Accelerator open en sluit het browservenster.
+2. Start een nieuw exemplaar van de browser en herlaad de Accelerator URI. Deze actie laadt de nieuwe versie van Accelerator.
 
-## <a name="sentinel-imagery-related-issues"></a>Sentinel: problemen met betrekking tot installatie kopieën
+## <a name="sentinel-imagery-related-issues"></a>Sentinel: Problemen met beeldmateriaal
 
-### <a name="wrong-username-or-password"></a>Onjuiste gebruikers naam of wacht woord
+### <a name="wrong-username-or-password"></a>Verkeerde gebruikersnaam of wachtwoord
 
-**Taak fout bericht**: volledige verificatie is vereist voor toegang tot deze resource.
+**Bericht voor het mislukken:**'Volledige verificatie is vereist om toegang te krijgen tot deze bron'.
 
-**Corrigerende actie**:
+**Corrigerende maatregelen**:
 
 Voer een van de volgende handelingen uit:
 
-- Voer het installatie programma voor het bijwerken van Datahub met de juiste gebruikers naam en wacht woord opnieuw uit.
-- Voer de mislukte taak opnieuw uit of voer een satelliet-indexen taak uit voor een datum bereik van 5 tot 7 dagen en controleer vervolgens of de taak is geslaagd.
+- Voer het installatieprogramma opnieuw uit voor het upgraden van Datahub met de juiste gebruikersnaam en wachtwoord.
+- Voer de mislukte taak opnieuw uit of voer een satellietindextaak uit voor een datumbereik van 5 tot 7 dagen en controleer vervolgens of de taak succesvol is.
 
-### <a name="sentinel-hub-wrongurlor-site-not-accessible"></a>Sentinel hub: onjuiste URL of site niet toegankelijk 
+### <a name="sentinel-hub-wrongurlor-site-not-accessible"></a>Sentinel-hub: verkeerde URL of site niet toegankelijk 
 
-**Taak fout bericht**: er is iets fout gegaan. De pagina die u probeert te openen, is (tijdelijk) niet beschikbaar. " 
+**Job failure bericht:**"Oeps, er ging iets mis. De pagina die u probeerde te openen, is (tijdelijk) niet beschikbaar." 
 
-**Corrigerende actie**:
+**Corrigerende maatregelen**:
 1. Open [Sentinel](https://scihub.copernicus.eu/dhus/) in uw browser om te zien of de website toegankelijk is. 
-2. Als de website niet toegankelijk is, controleert u of een firewall, bedrijfs netwerk of andere blokkerende software de toegang tot de website verhindert en voert u de benodigde stappen uit om de verklikker-URL toe te staan. 
-3. Voer de mislukte taak opnieuw uit of voer een satelliet-indexen taak uit voor een datum bereik van 5 tot 7 dagen en controleer vervolgens of de taak is geslaagd.  
+2. Als de website niet toegankelijk is, controleert u of een firewall, bedrijfsnetwerk of andere blokkeringssoftware de toegang tot de website verhindert en neemt u de nodige stappen om de Sentinel-URL toe te staan. 
+3. Voer de mislukte taak opnieuw uit of voer een satellietindextaak uit voor een datumbereik van 5 tot 7 dagen en controleer vervolgens of de taak succesvol is.  
 
-### <a name="sentinel-server-down-for-maintenance"></a>Verklikker server: omlaag voor onderhoud
+### <a name="sentinel-server-down-for-maintenance"></a>Sentinel-server: omlaag voor onderhoud
 
-**Taak fout bericht**: de Open Access-hub Copernicus wordt binnenkort weer gegeven. Onze excuses voor het ongemak. we voeren nu een aantal onderhoud uit. We zijn binnenkort weer online. " 
+**Job failure bericht**: "De Copernicus Open Access Hub zal binnenkort terug! Sorry voor het ongemak, we voeren wat onderhoud op dit moment. We zijn binnenkort weer online!" 
 
-**Corrigerende actie**:
+**Corrigerende maatregelen**:
 
-Dit probleem kan zich voordoen als er onderhouds activiteiten op de Sentinel-server worden uitgevoerd.
+Dit probleem kan optreden als er onderhoudswerkzaamheden worden uitgevoerd op de Sentinel-server.
 
-1. Als een taak of pijp lijn mislukt omdat er onderhoud wordt uitgevoerd, dient u de taak na enige tijd opnieuw in te dienen. 
+1. Als een taak of pijplijn mislukt omdat er onderhoud wordt uitgevoerd, dient u de taak na enige tijd opnieuw in. 
 
-   Voor informatie over geplande of niet-geplande verklikker onderhouds activiteiten gaat u naar de [nieuws site Copernicus Open Access hub](https://scihub.copernicus.eu/news/) .  
+   Ga voor informatie over geplande of ongeplande Sentinel-onderhoudsactiviteiten naar de [Copernicus Open Access Hub-nieuwssite.](https://scihub.copernicus.eu/news/)  
 
-2. Voer de mislukte taak opnieuw uit of voer een satelliet-indexen taak uit voor een datum bereik van 5 tot 7 dagen en controleer vervolgens of de taak is geslaagd.
+2. Voer de mislukte taak opnieuw uit of voer een satellietindextaak uit voor een datumbereik van 5 tot 7 dagen en controleer vervolgens of de taak succesvol is.
 
-### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: maximum aantal verbindingen bereikt
+### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: Maximaal aantal verbindingen bereikt
 
-**Taak fout bericht**: het maximum aantal gelijktijdige stromen dat door de gebruiker is bereikt\<gebruikers naam >.
+**Bericht voor het mislukken:**"Maximaal aantal twee\<gelijktijdige stromen bereikt door de gebruikersnaam> van de gebruiker."
 
-Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen is bereikt, wordt hetzelfde verklikker account gebruikt in een andere software-implementatie.
+**Betekenis:** Als een taak mislukt omdat het maximum aantal verbindingen is bereikt, wordt hetzelfde Sentinel-account gebruikt in een andere software-implementatie.
 
-**Corrigerende actie**: Voer een van de volgende handelingen uit:
+**Corrigerende maatregelen**: Probeer een van de volgende opties:
 
-* Maak een nieuw verklikker account en voer het installatie programma opnieuw uit om Datahub bij te werken met een nieuwe Sentinel-gebruikers naam en-wacht woord.  
-* Voer de mislukte taak opnieuw uit of voer een satelliet-indexen taak uit voor een datum bereik van 5 tot 7 dagen en controleer vervolgens of de taak is geslaagd.
+* Maak een nieuw Sentinel-account aan en voer het installatieprogramma opnieuw uit om Datahub te upgraden met een nieuwe Sentinel-gebruikersnaam en -wachtwoord.  
+* Voer de mislukte taak opnieuw uit of voer een satellietindextaak uit voor een datumbereik van 5 tot 7 dagen en controleer vervolgens of de taak succesvol is.
 
-### <a name="sentinel-server-refused-connection"></a>Verklikker server: verbinding geweigerd 
+### <a name="sentinel-server-refused-connection"></a>Sentinel-server: geweigerde verbinding 
 
-**Taak fout bericht**: de server heeft de verbinding geweigerd bij: http://172.30.175.69:8983/solr/dhus. 
+**Bericht voor het mislukken**: http://172.30.175.69:8983/solr/dhus"Server weigerde verbinding op: ." 
 
-**Corrigerende actie**: dit probleem kan zich voordoen als er onderhouds activiteiten worden uitgevoerd op de Sentinel-server. 
-1. Als een taak of pijp lijn mislukt omdat er onderhoud wordt uitgevoerd, dient u de taak na enige tijd opnieuw in te dienen. 
+**Corrigerende maatregelen:** Dit probleem kan optreden als er onderhoudswerkzaamheden worden uitgevoerd op de Sentinel-server. 
+1. Als een taak of pijplijn mislukt omdat er onderhoud wordt uitgevoerd, dient u de taak na enige tijd opnieuw in. 
 
-   Voor informatie over geplande of niet-geplande verklikker onderhouds activiteiten gaat u naar de [nieuws site Copernicus Open Access hub](https://scihub.copernicus.eu/news/) .  
+   Ga voor informatie over geplande of ongeplande Sentinel-onderhoudsactiviteiten naar de [Copernicus Open Access Hub-nieuwssite.](https://scihub.copernicus.eu/news/)  
 
-2. Voer de mislukte taak opnieuw uit of voer een satelliet-indexen taak uit voor een datum bereik van 5 tot 7 dagen en controleer vervolgens of de taak is geslaagd.
+2. Voer de mislukte taak opnieuw uit of voer een satellietindextaak uit voor een datumbereik van 5 tot 7 dagen en controleer vervolgens of de taak succesvol is.
 
-## <a name="collect-logs-manually"></a>Logboeken hand matig verzamelen
+### <a name="soil-moisture-map-has-white-areas"></a>Bodemvocht kaart heeft witte gebieden 
 
-[Installeer en implementeer Azure Storage Explorer]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
+**Probleem**: De bodemvochtkaart is gegenereerd, maar de kaart heeft meestal witte gebieden.
 
-### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>Azure Data Factory-taak logboeken verzamelen in Datahub
+**Corrigerende maatregelen**: Dit probleem kan optreden als de satellietindexen die zijn gegenereerd voor de tijd waarvoor de kaart is aangevraagd NDVI-waarden hebben die minder dan 0,3 zijn. Ga voor meer informatie naar [de Technische Gids van Sentinel.](https://earth.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm)
+1. Voer de taak opnieuw uit voor een ander datumbereik en controleer of de NDVI-waarden in de satellietindexen meer dan 0,3 zijn
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Zoek in **het zoekvak naar de resource** groep FarmBeats Datahub.
+## <a name="collect-logs-manually"></a>Logboeken handmatig verzamelen
+
+[Azure Storage Explorer installeren en implementeren]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
+
+### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>Azure Data Factory-taaklogboeken verzamelen in Datahub
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Zoek **in het** vak Zoeken naar de brongroep FarmBeats Datahub.
 
     > [!NOTE]
-    > Selecteer de Datahub-resource groep die u tijdens de FarmBeats-installatie hebt opgegeven.
+    > Selecteer de Gegevenshub-brongroep die u hebt opgegeven tijdens de installatie van FarmBeats.
 
-3. Zoek in het dash board van de **resource groep** naar het *datahublogs-\** -opslag account. Zoek bijvoorbeeld naar **datahublogsmvxmq**.  
-4. Selecteer in de kolom **naam** het opslag account om het dash board van het **opslag account** weer te geven.
-5. Selecteer in het deel venster **datahubblogs\*** **Open in Verkenner** om de **Open Azure Storage Explorer** -toepassing weer te geven.
-6. Selecteer **BLOB-containers**in het linkerdeel venster en selecteer vervolgens **taak-logboeken**.
-7. In het deel venster **taak logboeken** selecteert u **downloaden**.
-8. Down load de logboeken naar een lokale map op uw computer.
-9. Het gedownloade zip-bestand per e-mail verzenden naar farmbeatssupport@microsoft.com.
+3. Zoek in het dashboard **van resourcegroep** naar het *opslagaccount van\* datahublogs.* Zoek bijvoorbeeld naar **datahublogsmvxmq**.  
+4. Selecteer **in** de kolom Naam het opslagaccount om het dashboard **van het opslagaccount** weer te geven.
+5. Selecteer in het deelvenster **datahubblogs\* ** de optie **Openen in Explorer** om de toepassing Azure Storage **Explorer** te openen.
+6. Selecteer **blobcontainers**in het linkerdeelvenster en selecteer **vervolgens taaklogboeken**.
+7. Selecteer **Downloaden**in het venster **Taaklogboeken** .
+8. Download de logboeken naar een lokale map op uw machine.
+9. E-mail het gedownloade farmbeatssupport@microsoft.com.zip-bestand naar .
 
     ![Project FarmBeats](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
 
-### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Azure Data Factory-taak Logboeken in de Accelerator verzamelen
+### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Azure Data Factory-taaklogboeken verzamelen in Accelerator
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Zoek in **het zoekvak naar de resource** groep FarmBeats Accelerator.
-
-    > [!NOTE]
-    > Selecteer de resource groep voor accelerators die u hebt opgegeven tijdens de installatie van FarmBeats.
-
-3. Zoek in het dash board van de **resource groep** naar het opslag account *opslag\** . Zoek bijvoorbeeld naar **storagedop4k\*** .
-4. Selecteer het opslag account in de kolom **naam** om het dash board van het **opslag account** weer te geven.
-5. Selecteer in het deel venster **opslag\*** de optie **openen in verkenner** om de Azure Storage Explorer toepassing te openen.
-6. Selecteer **BLOB-containers**in het linkerdeel venster en selecteer vervolgens **taak-logboeken**.
-7. In het deel venster **taak logboeken** selecteert u **downloaden**.
-8. Down load de logboeken naar een lokale map op uw computer.
-9. Het gedownloade zip-bestand per e-mail verzenden naar farmbeatssupport@microsoft.com.
-
-
-### <a name="collect-datahub-app-service-logs"></a>Datahub app service-logboeken verzamelen
-
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Zoek in **het zoekvak naar de resource** groep FarmBeats Datahub.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Zoek **in het** vak Zoeken naar de resourcegroep FarmBeats Accelerator.
 
     > [!NOTE]
-    > Selecteer de Datahub-resource groep die u tijdens de FarmBeats-installatie hebt opgegeven.
+    > Selecteer de resourcegroep Accelerator die u hebt opgegeven tijdens de installatie farmbeats.
 
-3. Zoek in de resource groep naar het datahublogs-opslag account van *\** . Zoek bijvoorbeeld naar **fordatahublogsmvxmq\*** .
-4. Selecteer het opslag account in de kolom **naam** om het dash board van het **opslag account** weer te geven.
-5. Selecteer in het deel venster **datahubblogs\*** **Open in verkenner** om de Azure Storage Explorer toepassing te openen.
-6. Selecteer **BLOB-containers**in het linkerdeel venster en selecteer vervolgens **appinsights-logs**.
-7. In het deel venster **appinsights-logs** selecteert u **downloaden**.
-8. Down load de logboeken naar een lokale map op uw computer.
-9. Het gedownloade zip-bestand per e-mail verzenden naar farmbeatssupport@microsoft.com.
+3. Zoek in het dashboard **Resourcegroep** naar het *\* opslagaccount.* Zoek bijvoorbeeld naar **storagedop4k.\***
+4. Selecteer het opslagaccount in de kolom **Naam** om het dashboard **van het opslagaccount** weer te geven.
+5. Selecteer in het **opslagvenster\* ** **Openen in Explorer** om de Azure Storage Explorer-toepassing te openen.
+6. Selecteer **blobcontainers**in het linkerdeelvenster en selecteer **vervolgens taaklogboeken**.
+7. Selecteer **Downloaden**in het venster **Taaklogboeken** .
+8. Download de logboeken naar een lokale map op uw machine.
+9. E-mail het gedownloade farmbeatssupport@microsoft.com.zip-bestand naar .
 
-### <a name="collect-accelerator-app-service-logs"></a>App service-logboeken voor Accelerators verzamelen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Zoek in **het zoekvak naar de resource** groep FarmBeats Accelerator.
+### <a name="collect-datahub-app-service-logs"></a>Gegevenshub-app-servicelogboeken verzamelen
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Zoek **in het** vak Zoeken naar de brongroep FarmBeats Datahub.
 
     > [!NOTE]
-    > Selecteer de resource groep FarmBeats Accelerator die tijdens de installatie van FarmBeats werd verschaft.
+    > Selecteer de Gegevenshub-brongroep die u hebt opgegeven tijdens de installatie van FarmBeats.
 
-3. Zoek in de resource groep naar het opslag account *opslag\** . Zoek bijvoorbeeld naar **storagedop4k\*** .
-4. Selecteer het opslag account in de kolom **naam** om het dash board van het **opslag account** weer te geven.
-5. Selecteer in het deel venster **opslag\*** de optie **openen in verkenner** om de Azure Storage Explorer toepassing te openen.
-6. Selecteer **BLOB-containers**in het linkerdeel venster en selecteer vervolgens **appinsights-logs**.
-7. In het deel venster **appinsights-logs** selecteert u **downloaden**.
-8. Down load de logboeken naar een lokale map op uw computer.
-9. De gedownloade map per e-mail verzenden naar farmbeatssupport@microsoft.com.
+3. Zoek in de brongroep naar het *\* datahublogs-opslagaccount.* Zoek bijvoorbeeld naar **datahublogsmvxmq\***.
+4. Selecteer het opslagaccount in de kolom **Naam** om het dashboard **van het opslagaccount** weer te geven.
+5. Selecteer in het deelvenster **datahubblogs\* ** de optie **Openen in Explorer** om de Azure Storage Explorer-toepassing te openen.
+6. Selecteer **blobcontainers**in het linkerdeelvenster en selecteer **vervolgens appinsights-logs**.
+7. Selecteer **Downloaden**in het deelvenster **appinsights-logs** .
+8. Download de logboeken naar een lokale map op uw machine.
+9. E-mail het gedownloade farmbeatssupport@microsoft.com.zip-bestand naar .
+
+### <a name="collect-accelerator-app-service-logs"></a>Servicelogboeken van accelerator-app verzamelen
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Zoek **in het** vak Zoeken naar de resourcegroep FarmBeats Accelerator.
+
+    > [!NOTE]
+    > Selecteer de resourcegroep FarmBeats Accelerator die is geleverd tijdens de installatie farmbeats.
+
+3. Zoek in de brongroep naar het *\* opslagaccount.* Zoek bijvoorbeeld naar **storagedop4k.\***
+4. Selecteer het opslagaccount in de kolom **Naam** om het dashboard **van het opslagaccount** weer te geven.
+5. Selecteer in het **opslagvenster\* ** **Openen in Explorer** om de Azure Storage Explorer-toepassing te openen.
+6. Selecteer **blobcontainers**in het linkerdeelvenster en selecteer **vervolgens appinsights-logs**.
+7. Selecteer **Downloaden**in het deelvenster **appinsights-logs** .
+8. Download de logboeken naar een lokale map op uw machine.
+9. E-mail de farmbeatssupport@microsoft.comgedownloade map naar .
 
 ## <a name="known-issues"></a>Bekende problemen
 
-## <a name="batch-related-issues"></a>Batch-gerelateerde problemen
+## <a name="batch-related-issues"></a>Batchgerelateerde problemen
 
-**Fout bericht**: de regionale account quota van de batch-accounts voor het opgegeven abonnement is bereikt.
+**Foutbericht:**'Het regionale accountquotum van Batchaccounts voor het opgegeven abonnement is bereikt'.
 
-**Corrigerende actie**: Verhoog het quotum of verwijder de niet-gebruikte batch-accounts en voer de implementatie opnieuw uit.
+**Corrigerende maatregelen**: Verhoog het quotum of verwijder de ongebruikte batchaccounts en voer de implementatie opnieuw uit.
 
-### <a name="azure-active-directory-azure-ad-related-issues"></a>Problemen met betrekking tot Azure Active Directory (Azure AD)
+### <a name="azure-active-directory-azure-ad-related-issues"></a>Azure Active Directory (Azure AD)-gerelateerde problemen
 
-**Fout bericht**: de vereiste instellingen kunnen niet worden bijgewerkt naar Azure AD-App d41axx40-XX21-4fbd-8xxf-97Xxx9e2xxc0: onvoldoende bevoegdheden om de bewerking te volt ooien. Zorg ervoor dat de bovenstaande instellingen juist zijn geconfigureerd voor de Azure AD-app. "
+**Foutbericht:**"Kan de vereiste instellingen niet bijwerken naar Azure AD App d41axx40-xx21-4fbd-8xxf-97xxx9e2xxc0: Onvoldoende bevoegdheden om de bewerking te voltooien. Controleer of de bovenstaande instellingen goed zijn geconfigureerd voor de Azure AD-app."
 
-**Betekenis**: de configuratie van de Azure AD-App-registratie is niet correct voltooid.  
+**Betekenis:** de configuratie van de Azure AD-app-app is niet goed voltooid.  
 
-**Corrigerende actie**: vraag de IT-beheerder (de persoon met lees toegang voor de Tenant) het [script](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) te gebruiken voor het maken van de registratie van de Azure AD-app. Dit script zorgt er automatisch voor dat de configuratie stappen ook worden uitgevoerd.
+**Corrigerende maatregelen:** Vraag de IT-beheerder (de persoon met leestoegang voor tenant) om ons [script](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) te gebruiken voor het maken van de Azure AD-appregistratie. Dit script zorgt automatisch voor de configuratiestappen.
 
-**Fout bericht**: kan geen nieuwe Active Directory toepassing maken\<toepassings naam\>in deze Tenant: er bestaat al een ander object met dezelfde waarde voor de eigenschaps-id-uri's.
+**Foutbericht**: 'Kan geen nieuwe\<toepassingsnaam\>van Active Directory Application ' maken in deze tenant: een ander object met dezelfde waarde voor URI's van eigenschap-id bestaat al."
 
-Dat **wil zeggen**: er bestaat al een Azure AD-App-registratie met dezelfde naam.
+**Betekenis**: Er bestaat al een Azure AD-app-registratie met dezelfde naam.
 
-**Corrigerende actie**: Verwijder de bestaande Azure AD-App-registratie of hergebruik deze voor installatie. Als u de bestaande Azure AD-App-registratie opnieuw wilt gebruiken, geeft u de toepassings-ID en het client geheim door aan het installatie programma en implementeert u het opnieuw.
+**Corrigerende maatregelen:** verwijder de bestaande Azure AD-app-registratie of gebruik deze opnieuw voor installatie. Als u de bestaande Azure AD-app-registratie opnieuw gebruikt, geeft u de toepassings-id en het clientgeheim door aan het installatieprogramma en implementeert u opnieuw.
 
-## <a name="issues-with-the-inputjson-file"></a>Problemen met het bestand input. json
+## <a name="issues-with-the-inputjson-file"></a>Problemen met het bestand input.json
 
-**Fout**: er is een fout opgetreden tijdens het lezen van de invoer van het bestand *input. json* .
+**Fout:** er is een foutleesinvoer van het *bestand input van input.json.*
 
-**Corrigerende actie**: dit probleem doet zich meestal voor vanwege een fout in het opgeven van de juiste *invoer.* het pad naar het JSON-bestand of de naam van het installatie programma. Voer de juiste correcties uit en probeer de implementatie opnieuw uit te voeren.
+**Corrigerende maatregelen**: Dit probleem ontstaat meestal als gevolg van een fout bij het opgeven van het juiste filepad of de naam *van input.json* aan het installatieprogramma. Breng de juiste correcties aan en probeer de implementatie opnieuw.
 
-**Fout**: er is een fout opgetreden bij het parseren van waarden in het bestand *input. json* .
+**Fout:** er is een fout bij het ontleden van waarden in het bestand *input.json.*
 
-**Corrigerende actie**: dit probleem doet zich voornamelijk voor als gevolg van onjuiste waarden in het bestand *input. json* . Voer de juiste correcties uit en probeer de implementatie opnieuw uit te voeren.
+**Corrigerende maatregelen**: Dit probleem ontstaat meestal als gevolg van onjuiste waarden in het *bestand input.json.* Breng de juiste correcties aan en probeer de implementatie opnieuw.
 
 ## <a name="high-cpu-usage"></a>Hoog CPU-gebruik
 
-**Fout**: er wordt een e-mail waarschuwing weer geven die verwijst naar een **hoge waarschuwing voor CPU-gebruik**. 
+**Fout:** U ontvangt een e-mailwaarschuwing die verwijst naar een **waarschuwing voor een hoog CPU-gebruik.** 
 
-**Corrigerende actie**: 
-1. Ga naar de resource groep FarmBeats Datahub.
-2. Selecteer **app service**.  
-3. Ga naar de pagina met [prijs](https://azure.microsoft.com/pricing/details/app-service/windows/)opschalen app service en selecteer een geschikte prijs categorie.
+**Corrigerende maatregelen**: 
+1. Ga naar uw FarmBeats Datahub-brongroep.
+2. Selecteer de **app-service**.  
+3. Ga naar de prijspagina voor [app-service opschalen](https://azure.microsoft.com/pricing/details/app-service/windows/)en selecteer vervolgens een geschikte prijscategorie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u nog steeds FarmBeats problemen ondervindt, neemt u contact op met ons [ondersteunings forum](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats).
+Als u nog steeds te maken hebt met FarmBeats-problemen, neemt u contact op met ons [ondersteuningsforum.](https://aka.ms/farmbeatssupport)

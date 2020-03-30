@@ -1,6 +1,6 @@
 ---
-title: Export U-SQL database-Azure Data Lake-Hulpprogram Ma's voor Visual Studio
-description: Meer informatie over het gebruik van Azure Data Lake-Hulpprogram Ma's voor Visual Studio voor het exporteren van een U-SQL database en om deze automatisch te importeren in een lokaal account.
+title: "U-SQL-database exporteren: Azure Data Lake-hulpprogramma's voor Visual Studio"
+description: Meer informatie over het gebruik van Azure Data Lake Tools voor Visual Studio om een U-SQL-database te exporteren en deze automatisch te importeren naar een lokaal account.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -10,81 +10,81 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.openlocfilehash: e5a52de0342e864cb108d8d590583fe64f72e3b6
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71315798"
 ---
-# <a name="export-a-u-sql-database"></a>Een U-SQL database exporteren
+# <a name="export-a-u-sql-database"></a>Een U-SQL-database exporteren
 
-In dit artikel leert u hoe u [Azure data Lake-Hulpprogram ma's voor Visual Studio](https://aka.ms/adltoolsvs) kunt gebruiken om een u-SQL database te exporteren als één u-SQL-script en gedownloade resources. U kunt de geëxporteerde data base in hetzelfde proces importeren naar een lokaal account.
+In dit artikel vindt u meer informatie over het gebruik van [Azure Data Lake Tools voor Visual Studio](https://aka.ms/adltoolsvs) om een U-SQL-database te exporteren als één U-SQL-script en gedownloade resources. U de geëxporteerde database importeren naar een lokaal account in hetzelfde proces.
 
-Klanten onderhouden doorgaans meerdere omgevingen voor ontwikkeling, testen en productie. Deze omgevingen worden gehost op een lokaal account, op de lokale computer van een ontwikkelaar en in een Azure Data Lake Analytics-account in Azure. 
+Klanten onderhouden meestal meerdere omgevingen voor ontwikkeling, test en productie. Deze omgevingen worden gehost op zowel een lokaal account, op de lokale computer van een ontwikkelaar als in een Azure Data Lake Analytics-account in Azure. 
 
-Wanneer u u-SQL-query's ontwikkelt en afstemt in ontwikkel-en test omgevingen, moeten ontwikkel aars hun werk vaak opnieuw in een productie database maken. De wizard Data Base exporteren helpt dit proces te versnellen. Met behulp van de wizard kunnen ontwikkel aars de bestaande database omgeving en voorbeeld gegevens klonen naar andere Data Lake Analytics accounts.
+Wanneer u U-SQL-query's ontwikkelt en afstemt in ontwikkel- en testomgevingen, moeten ontwikkelaars hun werk vaak opnieuw maken in een productiedatabase. De wizard Databaseexporteren helpt dit proces te versnellen. Met behulp van de wizard kunnen ontwikkelaars de bestaande databaseomgeving en voorbeeldgegevens klonen naar andere Data Lake Analytics-accounts.
 
-## <a name="export-steps"></a>Stappen exporteren
+## <a name="export-steps"></a>Exportstappen
 
-### <a name="step-1-export-the-database-in-server-explorer"></a>Stap 1: De data base in Server Explorer exporteren
+### <a name="step-1-export-the-database-in-server-explorer"></a>Stap 1: De database exporteren in Server Explorer
 
-Alle Data Lake Analytics accounts waarvoor u machtigingen hebt, worden weer gegeven in Server Explorer. De data base exporteren:
+Alle Data Lake Analytics-accounts waarvoor u machtigingen hebt, worden weergegeven in Server Explorer. Ga als u de database exporteert:
 
-1. Vouw in Server Explorer het account uit dat de Data Base bevat die u wilt exporteren.
-2. Klik met de rechter muisknop op de data base en selecteer vervolgens **exporteren**. 
+1. Vouw in Server Explorer het account uit dat de database bevat die u wilt exporteren.
+2. Klik met de rechtermuisknop op de database en selecteer **Exporteren**. 
    
-    ![Server Explorer: een Data Base exporteren](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
+    ![Server Explorer - Een database exporteren](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
 
-     Als de menu optie **exporteren** niet beschikbaar is, moet u [het hulp programma bijwerken naar de laatste release](https://aka.ms/adltoolsvs).
+     Als de menuoptie **Exporteren** niet beschikbaar is, moet u [het hulpprogramma bijwerken naar de laatste release.](https://aka.ms/adltoolsvs)
 
 ### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>Stap 2: De objecten configureren die u wilt exporteren
 
-Als u slechts een klein deel van een grote data base nodig hebt, kunt u een subset van objecten configureren die u wilt exporteren in de wizard exporteren. 
+Als u slechts een klein deel van een grote database nodig hebt, u een subset configureren van objecten die u wilt exporteren in de wizard Exporteren. 
 
-De export actie wordt voltooid door een U-SQL-taak uit te voeren. Daarom is het exporteren van een Azure-account kosten in rekening gebracht.
+De exportactie wordt voltooid door een U-SQL-taak uit te voeren. Daarom brengt exporteren vanuit een Azure-account enige kosten met zich mee.
 
-![Wizard Data Base exporteren-Selecteer objecten exporteren](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard.png)
+![Wizard Databaseexporteren - Exportobjecten selecteren](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard.png)
 
-### <a name="step-3-check-the-objects-list-and-other-configurations"></a>Stap 3: Controleer de lijst met objecten en andere configuraties
+### <a name="step-3-check-the-objects-list-and-other-configurations"></a>Stap 3: De lijst met objecten en andere configuraties controleren
 
-In deze stap kunt u de geselecteerde objecten in de **keuze lijst export object** controleren. Als er fouten zijn, selecteert u **vorige** om terug te gaan en de objecten die u wilt exporteren correct te configureren.
+In deze stap u de geselecteerde objecten verifiëren in het **vak Objectlijst exporteren.** Als er fouten zijn, selecteert u **Vorige** om terug te gaan en de objecten die u wilt exporteren correct te configureren.
 
-U kunt ook andere instellingen voor het export doel configureren. Configuratie beschrijvingen worden weer gegeven in de volgende tabel:
+U ook andere instellingen voor het exportdoel configureren. Configuratiebeschrijvingen worden weergegeven in de volgende tabel:
 
-|Configuratie|Description|
+|Configuratie|Beschrijving|
 |-------------|-----------|
-|Doel naam|Met deze naam wordt aangegeven waar u de geëxporteerde database resources wilt opslaan. Voor beelden hiervan zijn assembly's, extra bestanden en voorbeeld gegevens. Er wordt een map met deze naam gemaakt in de hoofdmap van uw lokale data root.|
-|Projectmap|Dit pad definieert waar u het geëxporteerde U-SQL-script wilt opslaan. Alle database object definities worden op deze locatie opgeslagen.|
-|Alleen schema|Als u deze optie selecteert, worden alleen database definities en resources (zoals assembly's en aanvullende bestanden) geëxporteerd.|
-|Schema en gegevens|Als u deze optie selecteert, worden database definities, resources en gegevens geëxporteerd. De bovenste N rijen met tabellen worden geëxporteerd.|
-|Automatisch importeren in lokale data base|Als u deze optie selecteert, wordt de geëxporteerde data base automatisch geïmporteerd in uw lokale data base wanneer het exporteren is voltooid.|
+|Bestemmingsnaam|Deze naam geeft aan waar u de geëxporteerde databasebronnen wilt opslaan. Voorbeelden zijn samenstellingen, aanvullende bestanden en voorbeeldgegevens. Er wordt een map met deze naam gemaakt onder uw lokale hoofdmap voor gegevens.|
+|Projectmap|Dit pad definieert waar u het geëxporteerde U-SQL-script wilt opslaan. Alle definities van databaseobjecten worden op deze locatie opgeslagen.|
+|Alleen schema|Als u deze optie selecteert, worden alleen databasedefinities en resources (zoals verzamelingen en aanvullende bestanden) geëxporteerd.|
+|Schema en gegevens|Als u deze optie selecteert, worden databasedefinities, resources en gegevens geëxporteerd. De bovenste N-rijen tabellen worden geëxporteerd.|
+|Automatisch importeren in lokale database|Als u deze optie selecteert, wordt de geëxporteerde database automatisch geïmporteerd naar uw lokale database wanneer het exporteren is voltooid.|
 
-![Wizard Data Base exporteren-lijst met objecten exporteren en andere configuraties](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-configuration.png)
+![Wizard Databaseexporteren - Lijst met objecten exporteren en andere configuraties](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-configuration.png)
 
-### <a name="step-4-check-the-export-results"></a>Stap 4: De export resultaten controleren
+### <a name="step-4-check-the-export-results"></a>Stap 4: Controleer de exportresultaten
 
-Wanneer het exporteren is voltooid, kunt u de geëxporteerde resultaten weer geven in het logboek venster in de wizard. In het volgende voor beeld ziet u hoe u een geëxporteerde-SQL-script en database bronnen kunt vinden, inclusief assembly's, aanvullende bestanden en voorbeeld gegevens:
+Wanneer het exporteren is voltooid, u de geëxporteerde resultaten bekijken in het logboekvenster in de wizard. In het volgende voorbeeld ziet u hoe u geëxporteerde U-SQL-script- en databasebronnen vinden, waaronder verzamelingen, aanvullende bestanden en voorbeeldgegevens:
 
-![Wizard Data Base exporteren-resultaten exporteren](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-completed.png)
+![Wizard Databaseexporteren - Resultaten exporteren](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-completed.png)
 
-## <a name="import-the-exported-database-to-a-local-account"></a>De geëxporteerde data base importeren naar een lokaal account
+## <a name="import-the-exported-database-to-a-local-account"></a>De geëxporteerde database importeren naar een lokaal account
 
-De meest geschikte manier om de geëxporteerde data base te importeren is door het selectie vakje **naar lokale data base automatisch importeren** tijdens het export proces in stap 3 te selecteren. Als u dit selectie vakje niet hebt ingeschakeld, gaat u eerst naar het geëxporteerde U-SQL-script in het export logboek. Voer vervolgens het U-SQL-script lokaal uit om de data base te importeren in uw lokale account.
+De handigste manier om de geëxporteerde database te importeren is door het selectievakje **Automatisch importeren in lokale database** in te schakelen tijdens het exporteren in stap 3. Als u dit selectievakje niet hebt geselectievakje, zoekt u eerst het geëxporteerde U-SQL-script in het exportlogboek. Voer vervolgens het U-SQL-script lokaal uit om de database te importeren naar uw lokale account.
 
-## <a name="import-the-exported-database-to-a-data-lake-analytics-account"></a>De geëxporteerde data base importeren in een Data Lake Analytics-account
+## <a name="import-the-exported-database-to-a-data-lake-analytics-account"></a>De geëxporteerde database importeren in een Data Lake Analytics-account
 
-De data base importeren in een andere Data Lake Analytics account:
+Ga als u de database wilt importeren naar een ander Data Lake Analytics-account:
 
-1. Upload de geëxporteerde resources, inclusief de assembly's, aanvullende bestanden en voorbeeld gegevens, naar de standaard Azure Data Lake Store account van het Data Lake Analytics account waarnaar u wilt importeren. De map met de geëxporteerde resources is te vinden in de hoofdmap van lokale gegevens. Upload de volledige map naar de hoofdmap van het standaard account Data Lake Store.
-2. Wanneer het uploaden is voltooid, verzendt u het geëxporteerde U-SQL-script naar het Data Lake Analytics-account waarnaar u de Data Base wilt importeren.
+1. Upload de geëxporteerde resources, inclusief assemblages, extra bestanden en voorbeeldgegevens, naar het standaard Azure Data Lake Store-account van het Data Lake Analytics-account waarnaar u wilt importeren. U de geëxporteerde bronmap vinden onder de hoofdmap lokale gegevens. Upload de hele map naar de hoofdmap van het standaard Data Lake Store-account.
+2. Wanneer het uploaden is voltooid, dient u het geëxporteerde U-SQL-script in bij het Data Lake Analytics-account waarnaar u de database wilt importeren.
 
 ## <a name="known-limitations"></a>Bekende beperkingen
 
-Als u op dit moment de optie **schema en gegevens** in stap 3 selecteert, wordt met het hulp programma een U-SQL-taak uitgevoerd voor het exporteren van de gegevens die zijn opgeslagen in tabellen. Als gevolg hiervan kan het proces voor het exporteren van gegevens traag zijn en kunnen er kosten in rekening worden gebracht. 
+Als u momenteel de optie **Schema en gegevens** selecteert in stap 3, voert het hulpprogramma een U-SQL-taak uit om de gegevens te exporteren die zijn opgeslagen in tabellen. Hierdoor kan het proces voor het exporteren van gegevens traag zijn en u kosten maken. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over U-SQL-data bases](/u-sql/data-definition-language-ddl-statements) 
+* [Meer informatie over U-SQL-databases](/u-sql/data-definition-language-ddl-statements) 
 * [U-SQL-taken testen en controleren op fouten met behulp van lokale uitvoering en de Azure Data Lake U-SQL-SDK](data-lake-analytics-data-lake-tools-local-run.md)
 
 

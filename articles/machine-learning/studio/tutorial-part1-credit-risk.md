@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie 1: krediet risico voors pellen'
+title: 'Zelfstudie 1: Kredietrisico voorspellen'
 titleSuffix: ML Studio (classic) - Azure
-description: Een gedetailleerde zelf studie waarin wordt getoond hoe u een predictive analytics oplossing kunt maken voor een beoordeling van een credit risico in Azure Machine Learning Studio (klassiek). Deze zelfstudie is deel één van een driedelige serie.  U leert een werkruimte maken, gegevens uploaden en een experiment maken.
+description: Een gedetailleerde zelfstudie waarin wordt uitgelegd hoe u een oplossing voor voorspellende analyses maakt voor kredietrisicobeoordeling in Azure Machine Learning Studio (klassiek). Deze zelfstudie is deel één van een driedelige serie.  U leert een werkruimte maken, gegevens uploaden en een experiment maken.
 keywords: kredietrisico, predictive analytics-oplossing, risico-evaluatie
 author: sdgilley
 ms.author: sgilley
@@ -11,30 +11,30 @@ ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
 ms.openlocfilehash: 6fd8573c78d80c950bdeb41ec01e2835def3979a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79204253"
 ---
-# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Zelf studie 1: krediet risico voors pellen-Azure Machine Learning Studio (klassiek)
+# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Zelfstudie 1: Kredietrisico voorspellen - Azure Machine Learning Studio (klassiek)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-In deze zelfstudie wordt uitgebreid ingegaan op het ontwikkelingsproces van een predictive analytics-oplossing. U ontwikkelt een eenvoudig model in Machine Learning Studio (klassiek).  Vervolgens implementeert u het model als een Azure Machine Learning-webservice.  Dit geïmplementeerde model kan voorspellingen doen op basis van nieuwe gegevens. Deze zelfstudie is **deel één van een driedelige serie**.
+In deze zelfstudie wordt uitgebreid ingegaan op het ontwikkelingsproces van een predictive analytics-oplossing. Je ontwikkelt een eenvoudig model in Machine Learning Studio (klassiek).  Vervolgens implementeert u het model als een Azure Machine Learning-webservice.  Dit geïmplementeerde model kan voorspellingen doen op basis van nieuwe gegevens. Deze zelfstudie is **deel één van een driedelige serie**.
 
 Stel dat u iemands kredietrisico moet voorspellen op basis van de gegevens die deze persoon in een kredietaanvraag heeft ingevuld.  
 
-Kredietrisicobeoordeling is een complex probleem, maar in deze zelfstudie wordt het enigszins vereenvoudigd. U gebruikt deze als voor beeld van hoe u een predictive analytics oplossing kunt maken met behulp van Microsoft Azure Machine Learning Studio (klassiek). U gebruikt Azure Machine Learning Studio (klassiek) en een Machine Learning-webservice voor deze oplossing.  
+Kredietrisicobeoordeling is een complex probleem, maar in deze zelfstudie wordt het enigszins vereenvoudigd. U gebruikt het als een voorbeeld van hoe u een oplossing voor voorspellende analyses maken met Microsoft Azure Machine Learning Studio (klassiek). U gebruikt Azure Machine Learning Studio (klassiek) en een Machine Learning-webservice voor deze oplossing.  
 
 In deze driedelige zelfstudie begint u met openbaar beschikbare kredietrisicogegevens.  Vervolgens ontwikkelt en traint u een voorspellend model.  En ten slotte implementeert u het model als een webservice.
 
 In dit deel van de zelfstudie gaat u het volgende doen: 
  
 > [!div class="checklist"]
-> * Een Machine Learning Studio (klassieke) werk ruimte maken
+> * Een machine learning studio (klassieke) werkruimte maken
 > * Bestaande gegevens uploaden
 > * Een experiment maken
 
@@ -42,33 +42,33 @@ U kunt dit experiment vervolgens gebruiken om [modellen te trainen in deel 2](tu
 
 ## <a name="prerequisites"></a>Vereisten
 
-In deze zelf studie wordt ervan uitgegaan dat u Machine Learning Studio (klassiek) ten minste één keer hebt gebruikt en dat u over machine learning concepten kunt kijken. Er wordt niet van uitgegaan dat u een expert bent.
+In deze zelfstudie wordt ervan uitgegaan dat u Machine Learning Studio (klassiek) minstens één keer eerder hebt gebruikt en dat u enig begrip hebt van machine learning-concepten. Er wordt niet van uitgegaan dat u een expert bent.
 
-Als u **Azure machine learning Studio (klassiek)** nog nooit eerder hebt gebruikt, kunt u beginnen met de Snelstartgids, [uw eerste experimentele experiment voor data technologie in azure machine learning Studio (klassiek) maken](create-experiment.md). U gaat de eerste keer door de Snelstartgids Machine Learning Studio (klassiek). U ziet hoe u modules naar uw experiment sleept, ze aan elkaar koppelt, het experiment uitvoert en de resultaten weergeeft.
+Als u Azure **Machine Learning Studio (klassiek)** nog nooit eerder hebt gebruikt, u beginnen met de quickstart, [Uw eerste data science-experiment maken in Azure Machine Learning Studio (klassiek).](create-experiment.md) De quickstart neemt je voor het eerst mee door Machine Learning Studio (klassiek). U ziet hoe u modules naar uw experiment sleept, ze aan elkaar koppelt, het experiment uitvoert en de resultaten weergeeft.
 
 
 > [!TIP] 
-> In de [Azure AI Gallery](https://gallery.azure.ai) vindt u een werkende kopie van het experiment dat u in deze zelfstudie gaat ontwikkelen. Ga naar **[zelf studie: krediet risico voors pellen](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** en klik op **Open in Studio** om een kopie van het experiment te downloaden naar de werk ruimte machine learning Studio (klassiek).
+> In de [Azure AI Gallery](https://gallery.azure.ai) vindt u een werkende kopie van het experiment dat u in deze zelfstudie gaat ontwikkelen. Ga naar **[Zelfstudie - Voorspel kredietrisico's](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** en klik op **Openen in Studio** om een kopie van het experiment te downloaden naar uw Machine Learning Studio (klassieke) werkruimte.
 > 
 
 
-## <a name="create-a-machine-learning-studio-classic-workspace"></a>Een Machine Learning Studio (klassieke) werk ruimte maken
+## <a name="create-a-machine-learning-studio-classic-workspace"></a>Een machine learning studio (klassieke) werkruimte maken
 
-Als u Machine Learning Studio (klassiek) wilt gebruiken, moet u een Microsoft Azure Machine Learning Studio (klassieke) werk ruimte hebben. Deze werkruimte bevat de hulpprogramma's die u nodig hebt om experimenten te maken, beheren en publiceren.  
+Als u Machine Learning Studio (klassiek) wilt gebruiken, moet u een Microsoft Azure Machine Learning Studio (klassieke) werkruimte hebben. Deze werkruimte bevat de hulpprogramma's die u nodig hebt om experimenten te maken, beheren en publiceren.  
 
-Zie [een Azure machine learning Studio (klassieke) werk ruimte maken en delen](create-workspace.md)voor meer informatie over het maken van een werk ruimte.
+Zie Een azure [machine learning studio (klassieke) werkruimte maken en delen](create-workspace.md)als u een werkruimte wilt maken.
 
-Nadat uw werk ruimte is gemaakt, opent u Machine Learning Studio (klassiek) ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Als u meer dan één werkruimte hebt, kunt u de werkruimte selecteren op de werkbalk in de rechterbovenhoek van het venster.
+Nadat uw werkruimte is gemaakt, opent u[https://studio.azureml.net/Home](https://studio.azureml.net/Home)Machine Learning Studio (klassiek). Als u meer dan één werkruimte hebt, kunt u de werkruimte selecteren op de werkbalk in de rechterbovenhoek van het venster.
 
-![Werk ruimte in Studio selecteren (klassiek)](./media/tutorial-part1-credit-risk/open-workspace.png)
+![Werkruimte selecteren in Studio (klassiek)](./media/tutorial-part1-credit-risk/open-workspace.png)
 
 > [!TIP]
-> Als u eigenaar bent van de werkruimte, kunt u de experimenten waaraan u werkt met anderen delen door ze uit te nodigen in de werkruimte. U kunt dit doen in Machine Learning Studio (klassiek) op de pagina **instellingen** . U hebt alleen het Microsoft- of organisatie-account van elke gebruiker nodig.
+> Als u eigenaar bent van de werkruimte, kunt u de experimenten waaraan u werkt met anderen delen door ze uit te nodigen in de werkruimte. Dit kan in Machine Learning Studio (klassiek) op de **pagina INSTELLINGEN.** U hebt alleen het Microsoft- of organisatie-account van elke gebruiker nodig.
 > 
 > Klik op de pagina **SETTINGS** op **USERS** (gebruikers) en klik op **INVITE MORE USERS** (meer gebruikers uitnodigen) onderaan het venster.
 > 
 
-## <a name="upload"></a>Bestaande gegevens uploaden
+## <a name="upload-existing-data"></a><a name="upload"></a>Bestaande gegevens uploaden
 
 Voor het ontwikkelen van een voorspellend model voor kredietrisico hebt u gegevens nodig die u kunt gebruiken om het model te trainen en vervolgens te testen. Voor deze zelfstudie gebruikt u "UCI Statlog (German Credit Data) Data Set" uit de UC Irvine Machine Learning-opslagplaats. U vindt deze hier:  
 <a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
@@ -79,7 +79,7 @@ De gegevensset **german.data** bevat rijen met 20 variabelen voor 1000 kredietaa
 
 De UCI-website bevat een beschrijving van de kenmerken van de functievector voor deze gegevens. Deze gegevens omvatten financiële gegevens, kredietgeschiedenis, werknemersstatus en persoonlijke gegevens. Voor elke aanvrager is een binaire beoordeling gegeven die aangeeft of deze een laag of een hoog kredietrisico heeft. 
 
-U gebruikt deze gegevens om een voorspellend model te trainen. Wanneer u klaar bent, moet uw model een functie Vector kunnen accepteren voor een nieuwe persoon en te voors pellen of ze een laag of hoog krediet risico zijn.  
+U gebruikt deze gegevens om een voorspellend model te trainen. Wanneer u klaar bent, moet uw model in staat zijn om een functievector voor een nieuw individu te accepteren en te voorspellen of ze een laag of hoog kredietrisico zijn.  
 
 Er is een interessante wending.
 
@@ -97,7 +97,7 @@ Als het model iemand vervolgens ten onrechte classificeert als een laag kredietr
 
 ### <a name="convert-the-dataset-format"></a>De gegevenssetindeling converteren
 
-In de oorspronkelijke gegevensset worden de gegevens gescheiden door witruimte. Machine Learning Studio (klassiek) werkt beter met een CSV-bestand (Comma-Separated Value), dus u converteert de gegevensset door spaties te vervangen door komma's.  
+In de oorspronkelijke gegevensset worden de gegevens gescheiden door witruimte. Machine Learning Studio (klassiek) werkt beter met een CSV-bestand (comma-separated value), zodat u de gegevensset converteert door spaties te vervangen door komma's.  
 
 Er zijn veel manieren om deze gegevens te converteren. Eén manier is de volgende Windows PowerShell-opdracht te gebruiken:   
 
@@ -109,11 +109,11 @@ Een andere manier is met behulp van de sed-opdracht van Unix:
 
 In beide gevallen hebt u een door komma's gescheiden versie van de gegevens gemaakt in een bestand met de naam **german.csv** dat u in uw experiment kunt gebruiken.
 
-### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>De gegevensset uploaden naar Machine Learning Studio (klassiek)
+### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>Upload de dataset naar Machine Learning Studio (klassiek)
 
-Zodra de gegevens zijn geconverteerd naar de CSV-indeling, moet u deze uploaden naar Machine Learning Studio (klassiek). 
+Zodra de gegevens zijn geconverteerd naar CSV-indeling, moet u deze uploaden naar Machine Learning Studio (klassiek). 
 
-1. Open de start pagina van Machine Learning Studio (klassiek) ([https://studio.azureml.net](https://studio.azureml.net)). 
+1. Open de startpagina van machine learning[https://studio.azureml.net](https://studio.azureml.net)studio (klassieke) ( ). 
 
 2. Klik in het menu ![Menu](./media/tutorial-part1-credit-risk/menu.png) in de linkerbovenhoek van het venster, klik op **Azure Machine Learning**, selecteer **Studio** en meld u aan.
 
@@ -131,25 +131,25 @@ Zodra de gegevens zijn geconverteerd naar de CSV-indeling, moet u deze uploaden 
 
 8. Selecteer als gegevenstype **Generic CSV File With no header (.nh.csv)** (generiek CSV-bestand zonder koptekst).
 
-9. Voeg indien gewenst een beschrijving toe.
+9. Voeg een beschrijving toe als je wilt.
 
-10. Klik op het **OK**-selectievakje.  
+10. Klik op het vinkje **OK**.  
 
     ![De gegevensset uploaden](./media/tutorial-part1-credit-risk/upload-dataset.png)
 
 Hiermee worden de gegevens geüpload naar een gegevenssetmodule die u in een experiment kunt gebruiken.
 
-U kunt gegevens sets beheren die u hebt geüpload naar Studio (klassiek) door te klikken op het tabblad **gegevens sets** links in het venster Studio (klassiek).
+U gegevenssets beheren die u naar Studio (klassiek) hebt geüpload door links van het venster Studio (klassiek) op het tabblad **GEGEVENSSETGEGEVENS** te klikken.
 
 ![Gegevenssets beheren](./media/tutorial-part1-credit-risk/dataset-list.png)
 
-Zie [uw trainings gegevens importeren in azure machine learning Studio (klassiek)](import-data.md)voor meer informatie over het importeren van andere typen gegevens in een experiment.
+Zie [Uw trainingsgegevens importeren in Azure Machine Learning Studio (klassiek)](import-data.md)voor meer informatie over het importeren van andere typen gegevens in een experiment.
 
 ## <a name="create-an-experiment"></a>Een experiment maken
 
-De volgende stap in deze zelf studie is het maken van een experiment in Machine Learning Studio (klassiek) dat gebruikmaakt van de gegevensset die u hebt geüpload.  
+De volgende stap in deze zelfstudie is het maken van een experiment in Machine Learning Studio (klassiek) dat gebruik maakt van de gegevensset die u hebt geüpload.  
 
-1. In Studio (klassiek), klikt u op **+ Nieuw** onder aan het venster.
+1. Klik in Studio (klassiek) op **+NIEUW** onder aan het venster.
 1. Selecteer **EXPERIMENT** en selecteer 'Blank Experiment' (leeg experiment). 
 
     ![Een nieuw experiment maken](./media/tutorial-part1-credit-risk/create-new-experiment.png)
@@ -173,21 +173,21 @@ De volgende stap in deze zelf studie is het maken van een experiment in Machine 
 
 ### <a name="prepare-the-data"></a>De gegevens voorbereiden
 
-U kunt de eerste 100 rijen van de gegevens en enkele statistische gegevens voor de hele gegevensset weer geven: Klik op de uitvoer poort van de gegevensset (de kleine cirkel aan de onderkant) en selecteer **visualiseren**.  
+U de eerste 100 rijen van de gegevens en wat statistische informatie voor de hele gegevensset bekijken: Klik op de uitvoerpoort van de gegevensset (de kleine cirkel onderaan) en selecteer **Visualiseren**.  
 
-Omdat het gegevens bestand geen kolom koppen bevat, heeft Studio (klassiek) algemene koppen (Kol1, col2, *enzovoort*) verstrekt. Goede koppen zijn niet essentieel voor het maken van een model, maar ze maken het gemakkelijker om met de gegevens in het experiment te werken. Wanneer u dit model uiteindelijk publiceert in een webservice, helpen de koppen u ook bij het identificeren van de kolommen voor de gebruiker van de service.  
+Omdat het gegevensbestand niet met kolomkoppen is geleverd, heeft Studio (klassiek) generieke koppen (Col1, Col2, *enz.).* Goede koppen zijn niet essentieel voor het maken van een model, maar ze maken het gemakkelijker om met de gegevens in het experiment te werken. Wanneer u dit model uiteindelijk publiceert in een webservice, helpen de koppen u ook bij het identificeren van de kolommen voor de gebruiker van de service.  
 
-U kunt kolom koppen toevoegen met behulp van de module [meta gegevens bewerken][edit-metadata] .
+U kunt kolomkoppen toevoegen met behulp van de module [Edit Metadata][edit-metadata] (metagegevens bewerken).
 
-U gebruikt de module [meta gegevens bewerken][edit-metadata] om meta gegevens te wijzigen die zijn gekoppeld aan een gegevensset. In dit geval om meer beschrijvende namen voor de kolomkoppen op te geven. 
+U gebruikt de module [Edit Metadata][edit-metadata] om de metagegevens van een gegevensset te wijzigen. In dit geval om meer beschrijvende namen voor de kolomkoppen op te geven. 
 
-Als u [meta gegevens bewerken][edit-metadata]wilt gebruiken, geeft u eerst op welke kolommen u wilt aanpassen (in dit geval allemaal.) Vervolgens geeft u de actie op die moet worden uitgevoerd voor deze kolommen (in dit geval wordt de kolom koppen gewijzigd.)
+Als u [Metagegevens bewerken][edit-metadata]wilt gebruiken, geeft u eerst op welke kolommen u wilt wijzigen (in dit geval allemaal.) Vervolgens geeft u de actie op die moet worden uitgevoerd op deze kolommen (in dit geval kolomkoppen wijzigen.)
 
-1. Typ in het modulepalet 'metadata' in het vak **Search**. De [meta gegevens bewerken][edit-metadata] wordt weer gegeven in de lijst met modules.
+1. Typ in het modulepalet 'metadata' in het vak **Search**. [Edit Metadata][edit-metadata] wordt weergegeven in de modulelijst.
 
-1. Klik en sleep de module [meta gegevens bewerken][edit-metadata] op het canvas en neer deze onder de gegevensset die u eerder hebt toegevoegd.
+1. Klik en sleep de module [Edit Metadata][edit-metadata] module naar het canvas en zet deze neer onder de gegevensset die u eerder hebt toegevoegd.
 
-1. De gegevensset verbinden met de [meta gegevens bewerken][edit-metadata]: Klik op de uitvoer poort van de gegevensset (de kleine cirkel aan de onderkant van de gegevensset), sleep deze naar de invoer poort van [meta gegevens bewerken][edit-metadata] (de kleine cirkel aan de bovenkant van de module) en laat de muis knop los. De gegevensset en de module blijven verbonden, zelfs als u een ervan op het canvas verplaatst.
+1. Verbind de gegevensset met [Edit Metadata][edit-metadata]: klik op de uitvoerpoort van de gegevensset (het rondje onderaan de gegevensset), sleep naar de invoerpoort van [Edit Metadata][edit-metadata] (het rondje aan de bovenkant van de module) en laat de muisknop los. De gegevensset en de module blijven verbonden, zelfs als u een ervan op het canvas verplaatst.
  
     Het experiment zou er nu ongeveer zo uit moeten zien:  
 
@@ -196,12 +196,12 @@ Als u [meta gegevens bewerken][edit-metadata]wilt gebruiken, geeft u eerst op we
     Het rode uitroepteken geeft aan dat u de eigenschappen voor deze module nog niet hebt ingesteld. U gaat dat nu doen.
 
     > [!TIP]
-    > U kunt een opmerking aan een module toevoegen door te dubbelklikken op de module en tekst in te voeren. Zodoende kunt u in één oogopslag zien wat de module in uw experiment doet. Dubbel klik in dit geval op de module [meta gegevens bewerken][edit-metadata] en typ de opmerking ' kolom koppen toevoegen '. Klik ergens anders op het canvas om het tekstvak te sluiten. Klik op de pijl-omlaag in de module om de opmerking weer te geven.
+    > U kunt een opmerking aan een module toevoegen door te dubbelklikken op de module en tekst in te voeren. Zodoende kunt u in één oogopslag zien wat de module in uw experiment doet. In dit geval dubbelklikt u op de module [Edit Metadata][edit-metadata] en typt u de opmerking "Add column headings" (kolomkoppen toevoegen). Klik ergens anders op het canvas om het tekstvak te sluiten. Klik op de pijl-omlaag in de module om de opmerking weer te geven.
     > 
     > ![Module Edit Metadata met toegevoegde opmerking](./media/tutorial-part1-credit-risk/edit-metadata-with-comment.png)
     > 
 
-1. Selecteer [meta gegevens bewerken][edit-metadata]en klik in het deel venster **Eigenschappen** rechts van het canvas op **Start column selector**.
+1. Selecteer [Edit Metadata][edit-metadata] en klik in het deelvenster **Properties** (eigenschappen) rechts van het canvas op **Launch column selector** (kolomkiezer starten).
 
 1. Selecteer in het dialoogvenster **Select columns** (kolommen selecteren) alle rijen in **Available Columns** (beschikbare kolommen) en klik op > om ze naar **Selected Columns** (geselecteerde kolommen) te verplaatsen.
    Het dialoogvenster zou er zo uit moeten zien:
@@ -209,7 +209,7 @@ Als u [meta gegevens bewerken][edit-metadata]wilt gebruiken, geeft u eerst op we
    ![Kolomkiezer met alle kolommen geselecteerd](./media/tutorial-part1-credit-risk/select-columns.png)
 
 
-1. Klik op het **OK**-selectievakje.
+1. Klik op het vinkje **OK**.
 
 1. Zoek in het deelvenster **Properties** de parameter **New column names** (nieuwe kolomnamen). Voer in dit veld een lijst met namen in voor de 21 kolommen in de gegevensset, gescheiden door komma's, in de volgorde van de kolommen. U kunt de kolomnamen verkrijgen uit de datasetdocumentatie op de UCI-website, of voor het gemak kunt u de volgende lijst kopiëren en plakken:  
 
@@ -222,7 +222,7 @@ Als u [meta gegevens bewerken][edit-metadata]wilt gebruiken, geeft u eerst op we
    ![Eigenschappen voor Edit Metadata](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
    > [!TIP]
-   > Als u de kolomkoppen wilt controleren, voert u het experiment uit (klik op **RUN** onder het experimentcanvas). Wanneer de uitvoering is voltooid (er wordt een groen vinkje weer gegeven op [meta gegevens bewerken][edit-metadata]), klikt u op de uitvoer poort van de module [meta gegevens bewerken][edit-metadata] en selecteert u **visualiseren**. U kunt de uitvoer van elke module op dezelfde manier bekijken om de voortgang van de gegevens door het experiment te bekijken.
+   > Als u de kolomkoppen wilt controleren, voert u het experiment uit (klik op **RUN** onder het experimentcanvas). Wanneer het experiment is uitgevoerd (er verschijnt een groen vinkje op [Edit Metadata][edit-metadata]), klikt u op de uitvoerpoort van de module [Edit Metadata][edit-metadata] en selecteert u **Visualize** (visualiseren). U kunt de uitvoer van elke module op dezelfde manier bekijken om de voortgang van de gegevens door het experiment te bekijken.
    > 
    > 
 
@@ -231,30 +231,30 @@ Als u [meta gegevens bewerken][edit-metadata]wilt gebruiken, geeft u eerst op we
 U hebt gegevens nodig om het model te trainen, en andere gegevens om het te testen.
 In de volgende stap van het experiment splitst u de gegevensset dus in twee afzonderlijke gegevenssets: een voor het trainen van ons model en een voor het testen ervan.
 
-Hiervoor gebruikt u de module [gegevens splitsen][split] .  
+U doet dit met behulp van de module [Split Data][split] (gegevens splitsen).  
 
-1. Zoek de module [Split data][split] , sleep deze naar het canvas en verbind deze met de module [meta gegevens bewerken][edit-metadata] .
+1. Zoek de [Split Data][split] -module, sleep deze naar het canvas en verbindt deze met de module [Edit Metadata][edit-metadata].
 
-1. Standaard is de splitsingsverhouding 0,5 en is de **Randomized split**-parameter ingesteld. Dit betekent dat een wille keurige helft van de gegevens wordt uitgevoerd via één poort van de module [Split data][split] en de helft door de andere. U kunt deze parameters aanpassen, evenals de parameter **Random seed** (willekeurige seed), om de verdeling in trainings- en testgegevens te wijzigen. In dit voorbeeld laat u staan zoals ze zijn.
+1. Standaard is de splitsingsverhouding 0,5 en is de **Randomized split**-parameter ingesteld. Dit betekent dat een willekeurige helft van de gegevens wordt uitgevoerd via één poort van de module [Split Data][split], en de andere helft door de andere. U kunt deze parameters aanpassen, evenals de parameter **Random seed** (willekeurige seed), om de verdeling in trainings- en testgegevens te wijzigen. In dit voorbeeld laat u staan zoals ze zijn.
    
    > [!TIP]
    > De eigenschap **Fraction of rows in the first output dataset** (fractie van rijen in de eerste uitgevoerde gegevensset) bepaalt welk deel van de gegevens wordt uitgevoerd via de *linker* uitvoerpoort. Als u bijvoorbeeld de verhouding instelt op 0,7, wordt 70% van de gegevens uitgevoerd via de linker poort en 30% via de rechter poort.  
    > 
    > 
 
-1. Dubbel klik op de module [Split data][split] en voer de opmerking ' training/Test Data Split 50% ' in. 
+1. Dubbelklik op de module [Split Data][split] (gegevens splitsen) en voer de volgende opmerking in: "Training/testing data split 50%" (50% splitsing van trainings- en testgegevens). 
 
-U kunt de uitvoer van de module voor [gesplitste gegevens][split] echter gebruiken, maar u wilt de links-uitvoer gebruiken als trainings gegevens en de juiste uitvoer als test gegevens.  
+U kunt de uitvoer van de [Split Data][split]-module zo gebruiken als u wilt, maar wij gebruiken de linker uitvoer als trainingsgegevens, en de rechter uitvoer als testgegevens.  
 
 Zoals gezegd in de [vorige stap](tutorial-part1-credit-risk.md#upload), zijn de kosten van het verkeerd classificeren van een hoog kredietrisico als laag vijf keer zo hoog als de kosten van het verkeerd classificeren van een laag kredietrisico als hoog. Om hier rekening mee te houden, genereert u een nieuwe gegevensset die deze kostenfunctie weergeeft. In de nieuwe gegevensset wordt elk voorbeeld met een hoog risico vijf keer gerepliceerd, terwijl elk voorbeeld met een laag risico niet wordt gerepliceerd.   
 
 U kunt deze replicatie uitvoeren met behulp van R-code:  
 
-1. Zoek en sleep de module voor het [uitvoeren van R-script][execute-r-script] naar het canvas op het experiment. 
+1. Zoek de module [Execute R Script][execute-r-script] (R-script uitvoeren) en sleep deze naar het experimentcanvas. 
 
-1. Verbind de linker uitvoer poort van de module [gesplitste gegevens][split] met de eerste invoer poort (' Dataset1 ') van de module voor het uitvoeren van een [R-script][execute-r-script] .
+1. Koppel de linker uitvoerpoort van de module [Split Data][split] aan de eerste invoerpoort ('Dataset1') van de module [Execute R Script][execute-r-script].
 
-1. Dubbel klik op de module voor het [uitvoeren van R-scripts][execute-r-script] en voer de opmerking ' Stel kosten correctie ' in.
+1. Dubbelklik op de module [Execute R Script][execute-r-script] en voer de opmerking "Set cost adjustment" (kostencorrectie instellen) in.
 
 1. Verwijder in het deelvenster **Properties** (eigenschappen), de standaardtekst bij de parameter **R Script** en voer het volgende script in:
    
@@ -266,13 +266,13 @@ U kunt deze replicatie uitvoeren met behulp van R-code:
 
     ![R-script in de module Execute R Script](./media/tutorial-part1-credit-risk/execute-r-script.png)
 
-U moet dezelfde replicatie bewerking uitvoeren voor elke uitvoer van de module [Split data][split] , zodat de trainings-en test gegevens dezelfde kosten aanpassing hebben. De eenvoudigste manier om dit te doen is door de [Execute R-script][execute-r-script] module te dupliceren die u zojuist hebt gemaakt en deze te verbinden met de andere uitvoer poort van de module [Split data][split] .
+U moet dezelfde replicatiebewerking uitvoeren voor elke uitvoer van de module [Split Data][split], zodat de trainings- en testgegevens dezelfde kostenaanpassing hebben. De eenvoudigste manier om dit te doen is de [Execute R Script][execute-r-script]-module die u hebt gemaakt te dupliceren en de kopie te koppelen aan de andere uitvoerpoort van de [Split Data][split]-module.
 
-1. Klik met de rechter muisknop op de module voor het [uitvoeren van R-scripts][execute-r-script] en selecteer **kopiëren**.
+1. Klik met de rechtermuisknop op de module [Execute R Script][execute-r-script] en selecteer **Copy** (kopiëren).
 
 1. Klik met de rechtermuisknop op het experimentcanvas en selecteer **Paste** (plakken).
 
-1. Sleep de nieuwe module naar positie en verbind vervolgens de juiste uitvoer poort van de module [Split data][split] naar de eerste invoer poort van deze nieuwe [Execute R-script][execute-r-script] module. 
+1. Sleep de nieuwe module naar de juiste positie en verbind vervolgens de rechter uitvoerpoort van de module [Split Data][split] met de eerste invoerpoort van deze nieuwe [Execute R Script][execute-r-script]-module. 
 
 1. Klik onderaan het canvas op **Run** (uitvoeren). 
 
@@ -297,7 +297,7 @@ Zie voor meer informatie over het gebruik van R-scripts in uw experimenten [Exte
 In deze zelfstudie hebt u de volgende stappen voltooid: 
  
 > [!div class="checklist"]
-> * Een Machine Learning Studio (klassieke) werk ruimte maken
+> * Een machine learning studio (klassieke) werkruimte maken
 > * Bestaande gegevens uploaden naar de werkruimte
 > * Een experiment maken
 

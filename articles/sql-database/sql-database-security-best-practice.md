@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77506223"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387645"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Playbook voor het aanpakken van algemene beveiligingsvereisten met Azure SQL Database
 
@@ -657,7 +657,7 @@ Het bijhouden van databasegebeurtenissen helpt u inzicht te krijgen in de databa
 **Aanbevolen procedures**:
 
 - Door [SQL Database Auditing](sql-database-auditing.md) op uw databaseserver te configureren om gebeurtenissen te controleren, worden alle bestaande en nieuw gemaakte databases op die server gecontroleerd.
-- Standaard controlebeleid omvat alle acties (query's, opgeslagen procedures en succesvolle en mislukte aanmeldingen) tegen de databases, wat kan resulteren in een groot aantal controlelogboeken. Het wordt aanbevolen voor klanten om controle te [configureren voor verschillende soorten acties en actiegroepen met PowerShell.](sql-database-auditing.md#subheading-7) Door dit te configureren, u het aantal gecontroleerde acties beheren en het risico op gebeurtenisverlies minimaliseren. Met een aangepaste controleconfiguratie kunnen klanten alleen de benodigde controlegegevens vastleggen.
+- Standaard controlebeleid omvat alle acties (query's, opgeslagen procedures en succesvolle en mislukte aanmeldingen) tegen de databases, wat kan resulteren in een groot aantal controlelogboeken. Het wordt aanbevolen voor klanten om controle te [configureren voor verschillende soorten acties en actiegroepen met PowerShell.](sql-database-auditing.md#manage-auditing) Door dit te configureren, u het aantal gecontroleerde acties beheren en het risico op gebeurtenisverlies minimaliseren. Met een aangepaste controleconfiguratie kunnen klanten alleen de benodigde controlegegevens vastleggen.
 - Controlelogboeken kunnen rechtstreeks worden verbruikt in de [Azure-portal](https://portal.azure.com/)of vanaf de opslaglocatie die is geconfigureerd. 
 
 

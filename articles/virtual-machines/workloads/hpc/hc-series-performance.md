@@ -1,6 +1,6 @@
 ---
-title: Prestaties in de HC-serie VM-grootte - Azure Virtual Machines | Microsoft Docs
-description: Meer informatie over de prestaties van testresultaten voor CH-serie VM-grootten in Azure.
+title: HC-serie VM-formaat prestaties - Azure Virtual Machines | Microsoft Documenten
+description: Meer informatie over prestatietestresultaten voor VM-formaten in Azure in HC-serie.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,25 +13,25 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: cea772f03d5e2838b44d50f3cf5e926d740be5f0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67707683"
 ---
-# <a name="hc-series-virtual-machine-sizes"></a>CH-serie VM-grootten
+# <a name="hc-series-virtual-machine-sizes"></a>Virtuele machineformaten uit de HC-serie
 
-Verschillende prestatietests zijn uitgevoerd op de grootte van de HC-serie. Hier volgen enkele van de resultaten van deze prestatietests.
+Er zijn verschillende prestatietests uitgevoerd op HC-serie maten. Hieronder volgen enkele van de resultaten van deze prestatietests.
 
 | Workload                                        | HB                    |
 |-------------------------------------------------|-----------------------|
-| Drie vakken STREAM                                    | ~190 GB/s (Intel MLC AVX-512)  |
-| High-Performance Linpackuitvoer (HPL)                  | ~ 3520 GigaFLOPS (Rpeak), ~ 2970 GigaFLOPS (Rmax) |
-| RDMA-latentie en bandbreedte                        | 1.80 microseconden, 96.3 Gb/s   |
-| FIO op lokale NVMe SSD                           | ~1.3 GB/s lezen, ~ 900 MB/s schrijft |  
-| IOR op 4 Azure Premium SSD (P30 beheerde schijven, RAID 0) **  | ~ 780 MB/s leest, ~ 780 MB/schrijft |
+| STREAM Triade                                    | ~190 GB/s (Intel MLC AVX-512)  |
+| Krachtige Linpack (HPL)                  | ~3520 GigaFLOPS (Rpeak), ~2970 GigaFLOPS (Rmax) |
+| RDMA-latentie & bandbreedte                        | 1,80 microseconden, 96,3 Gb/s   |
+| FIO op lokale NVMe SSD                           | ~ 1,3 GB / s leest, ~ 900 MB / s schrijft |  
+| IOR op 4 Azure Premium SSD (P30 Managed Disks, RAID0)**  | ~ 780 MB / s leest, ~ 780 MB / schrijft |
 
-## <a name="infiniband-send-latency"></a>Latentie van InfiniBand verzenden
+## <a name="infiniband-send-latency"></a>InfiniBand verzenden latentie
 
 Mellanox Perftest.
 
@@ -39,30 +39,30 @@ Mellanox Perftest.
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 
-|  #bytes         | #iterations     | t_min[microsecond]     | t_max[microsecond]     | t_typical[microsecond] | t_avg[microsecond]     | t_stdev[microsecond]   |
+|  #bytes         | #iterations     | t_min[microseconde]     | t_max[microseconde]     | t_typical[microseconde] | t_avg[microseconde]     | t_stdev[microseconde]   |
 |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-| 2               | 1000            | 1.80            | 7.50            | 1.85            | 1.86            | 0.20            |
-| 4               | 1000            | 1.79            | 6.06            | 1.83            | 1.84            | 0.20            |
+| 2               | 1000            | 1.80            | 7.50            | 1.85            | 1.86            | 0,20            |
+| 4               | 1000            | 1.79            | 6.06            | 1.83            | 1.84            | 0,20            |
 | 8               | 1000            | 1.78            | 5.26            | 1.83            | 1.84            | 0.19            |
-| 16              | 1000            | 1.79            | 6.21            | 1.83            | 1.84            | 0.22            |
+| 16              | 1000            | 1.79            | 6.21            | 1.83            | 1.84            | 0,22            |
 | 32              | 1000            | 1.80            | 6.82            | 1.84            | 1.85            | 0.24            |
-| 64              | 1000            | 1.85            | 5.47            | 1.88            | 1.86            | 0.12            |
-| 128             | 1000            | 1.88            | 5.61            | 1.93            | 1.89            | 0.25            |
+| 64              | 1000            | 1.85            | 5.47            | 1.88            | 1.86            | 0,12            |
+| 128             | 1000            | 1.88            | 5.61            | 1.93            | 1.89            | 0,25            |
 | 256             | 1000            | 2.24            | 6.39            | 2.28            | 2.02            | 0.18            |
 | 512             | 1000            | 2.32            | 5.42            | 2.36            | 2.30            | 0.17            |
 | 1024            | 1000            | 2.43            | 6.22            | 2.48            | 2.38            | 0.21            |
-| 2048            | 1000            | 2.68            | 6.14            | 2.75            | 2.52            | 0.20            |
+| 2048            | 1000            | 2.68            | 6.14            | 2.75            | 2.52            | 0,20            |
 | 4096            | 1000            | 3.17            | 7.02            | 3.26            | 2.81            | 0.24            |
 
-## <a name="osu-mpi-latency-test"></a>Test voor OSU MPI-latentie
+## <a name="osu-mpi-latency-test"></a>OSU MPI-latentietest
 
-OSU MPI-latentie van v5.4.3 testen.
+OSU MPI Latency Test v5.4.3.
 
 ```azure-cli
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
 ```
 
-| #bytes  | Latentie [wachttijden van microseconden] (MPICH 3.3 + H4) | Latentie [wachttijden van microseconden] (OpenMPI 4.0.0) | Latentie [wachttijden van microseconden] (MVAPICH2 2.3) |
+| #bytes  | Latentie [microseconde] (MPICH 3.3 + CH4) | Latentie [microseconde] (OpenMPI 4.0.0) | Latentie [microseconde] (MVAPICH2 2.3) |
 |------|----------|----------|----------|
 | 2    | 1.84     | 1.78     | 2.08     |
 | 4    | 1.84     | 1.79     | 2.08     |
@@ -79,7 +79,7 @@ OSU MPI-latentie van v5.4.3 testen.
 
 ## <a name="mpi-bandwidth"></a>MPI-bandbreedte
 
-OSU MPI bandbreedte v5.4.3 testen.
+OSU MPI Bandwidth Test v5.4.3.
 
 ```azure-cli
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw

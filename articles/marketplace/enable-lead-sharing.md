@@ -1,18 +1,18 @@
 ---
 title: Leadsharing inschakelen in de Azure Marketplace | Azure
 description: Meer informatie over het inschakelen van leadsharing voor azure marketplace en appsource voor app- en service-uitgevers.
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dsindona
-ms.openlocfilehash: 09282f3a54eeded52c63fab6bfe13528eaace48a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b41a29fb3548937e9071cfb9f065dd46f63df83e
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286299"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387598"
 ---
 # <a name="enable-lead-sharing"></a>Delen van leads inschakelen
 Als u ervoor zorgen dat leadbeheer is ingeschakeld voor uw vermelding in Azure [Marketplace](https://azuremarketplace.microsoft.com) of [Microsoft AppSource,](https://appsource.microsoft.com) u contactgegevens ontvangen voor de volgende doelgroepen:

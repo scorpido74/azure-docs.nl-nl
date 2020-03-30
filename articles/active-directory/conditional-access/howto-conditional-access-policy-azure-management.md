@@ -1,63 +1,64 @@
 ---
-title: 'Voorwaardelijke toegang: MFA vereisen voor Azure Management-Azure Active Directory'
-description: Een aangepast beleid voor voorwaardelijke toegang maken om multi-factor Authentication voor Azure-beheer taken te vereisen
+title: Voorwaardelijke toegang - MFA vereisen voor Azure-beheer - Azure Active Directory
+description: Een aangepast beleid voor voorwaardelijke toegang maken om meervoudige verificatie voor Azure-beheertaken te vereisen
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6c4e5d90704e847b3bcd033a20311cc6c69cfe7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c90566006868c817d977699c35f2213895f3fe70
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424900"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295229"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Voorwaardelijke toegang: MFA vereisen voor Azure-beheer
 
-Organisaties gebruiken verschillende Azure-Services en beheren ze via Azure Resource Manager op basis van hulpprogram ma's zoals:
+Organisaties gebruiken verschillende Azure-services en beheren deze vanuit azure resource beheergebaseerde hulpprogramma's zoals:
 
 * Azure Portal
 * Azure PowerShell
 * Azure-CLI
 
-Deze hulpprogram ma's kunnen uiterst privileged toegang bieden tot bronnen, waarmee u de volledige configuratie van abonnementen, Service-instellingen en abonnements facturering kunt wijzigen. Voor het beveiligen van deze geprivilegieerde resources raadt micro soft aan om multi-factor Authentication te vereisen voor elke gebruiker die toegang tot deze bronnen heeft.
+Deze hulpprogramma's kunnen zeer bevoorrechte toegang bieden tot bronnen, die configuraties voor het hele abonnement, service-instellingen en abonnementsfacturering kunnen wijzigen. Om deze bevoegde bronnen te beschermen, raadt Microsoft aan om meervoudige verificatie te vereisen voor elke gebruiker die toegang heeft tot deze bronnen.
 
-## <a name="user-exclusions"></a>Gebruikers uitsluitingen
+## <a name="user-exclusions"></a>Gebruikersuitsluitingen
 
-Beleids regels voor voorwaardelijke toegang zijn krachtige hulp middelen. u wordt aangeraden de volgende accounts uit te sluiten van het beleid:
+Beleid voor voorwaardelijke toegang zijn krachtige tools, we raden u aan de volgende accounts uit uw beleid uit te sluiten:
 
-* **Nood toegang** of **afbreek glazen** om te voor komen dat accounts voor tenants worden vergrendeld. In het onwaarschijnlijke scenario zijn alle beheerders vergrendeld van uw Tenant. u kunt uw beheer account voor nood toegang gebruiken om u aan te melden bij de Tenant stappen nemen om de toegang te herstellen.
-   * Meer informatie vindt u in het artikel [manage accounts voor nood toegang in azure AD](../users-groups-roles/directory-emergency-access.md).
-* **Service accounts** en **service principes**, zoals het Azure AD Connect Sync-account. Service accounts zijn niet-interactieve accounts die niet zijn gekoppeld aan een bepaalde gebruiker. Ze worden normaal gesp roken gebruikt door back-end-services en kunnen programmatische toegang tot toepassingen bieden. Service accounts moeten worden uitgesloten omdat MFA niet programmatisch kan worden voltooid.
-   * Als uw organisatie deze accounts in gebruik heeft in scripts of code, kunt u overwegen deze te vervangen door [beheerde identiteiten](../managed-identities-azure-resources/overview.md). Als tijdelijke oplossing kunt u deze specifieke accounts uitsluiten van het basislijn beleid.
+* **Noodtoegang** of **break-glass-accounts** om tenant-brede accountlock-out te voorkomen. In het onwaarschijnlijke scenario dat alle beheerders zijn uitgesloten van uw tenant, kan uw beheeraccount met noodtoegang worden gebruikt om zich aan te melden bij de tenant om de toegang te herstellen.
+   * Meer informatie vindt u in het artikel, [Accounts voor noodtoegang beheren in Azure AD](../users-groups-roles/directory-emergency-access.md).
+* **Serviceaccounts** en **serviceprincipes,** zoals het Azure AD Connect Sync-account. Serviceaccounts zijn niet-interactieve accounts die niet aan een bepaalde gebruiker zijn gekoppeld. Ze worden normaal gesproken gebruikt door back-endservices en bieden programmatische toegang tot toepassingen. Serviceaccounts moeten worden uitgesloten, omdat MFA niet programmatisch kan worden voltooid.
+   * Als uw organisatie deze accounts in scripts of code heeft gebruikt, u overwegen deze te vervangen door [beheerde identiteiten.](../managed-identities-azure-resources/overview.md) Als tijdelijke tijdelijke oplossing u deze specifieke accounts uitsluiten van het basislijnbeleid.
 
 ## <a name="create-a-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang maken
 
-De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke toegang om te vereisen dat aan deze toegewezen beheerders rollen multi-factor Authentication wordt uitgevoerd.
+Met de volgende stappen u een beleid voor voorwaardelijke toegang maken om de toegewezen beheerdersrollen te verplichten multifactorauthenticatie uit te voeren.
 
-1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
-1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
+1. Meld u aan bij de **Azure-portal** als globale beheerder, beveiligingsbeheerder of beheerder van voorwaardelijke toegang.
+1. Blader naar voorwaardelijke**toegang**voor Azure Active**Directory-beveiliging** >  **Azure Active Directory** > .
 1. Selecteer **Nieuw beleid**.
-1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
-1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
-   1. Onder **insluiten**selecteert u **alle gebruikers**.
-   1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
+1. Geef uw polis een naam. We raden organisaties aan een zinvolle standaard te maken voor de namen van hun beleid.
+1. Selecteer **Gebruikers en groepen** onder **Toewijzingen**
+   1. Selecteer Alle **gebruikers** **onder Opnemen**.
+   1. Selecteer **onder Uitsluiten**de optie Gebruikers en **groepen** en kies de noodtoegangs- of breakglas-accounts van uw organisatie. 
    1. Selecteer **Done**.
-1. Selecteer **onder Cloud-apps of acties** > **toevoegen**de optie **apps selecteren**, kies **Microsoft Azure beheer**en **Selecteer** vervolgens **gereed**.
-1. Onder **toegangs beheer** > **verlenen**, selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en selecteert u **selecteren**.
-1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
-1. Selecteer **maken** om uw beleid in te stellen.
+1. Selecteer **onder Cloud-apps of -acties** > **Include**, selecteer **Apps selecteren,** kies Microsoft Azure **Management**en selecteer **Selecteer** Vervolgens **Gereed selecteren**.
+1. Stel **Configureren** in op **Ja**en selecteer **Gereed**onder **Apps** > **voor client (voorbeeld)** instellen .
+1. Selecteer **onder Access-besturingselementen** > **Grant**de optie **Toegang verlenen**, Meervoudige verificatie **vereisen**en selecteer **Selecteren**.
+1. Bevestig uw instellingen en stel **Beleid inschakelen** in **op Aan**.
+1. Selecteer **Maken** om te maken om uw beleid in te schakelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
+[Gemeenschappelijk beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
 
-[Effect bepalen met de modus alleen rapport-alleen voor voorwaardelijke toegang](howto-conditional-access-report-only.md)
+[Impact bepalen met de modus Alleen voor rapportvoorwaardelijke toegang](howto-conditional-access-report-only.md)
 
-[Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)
+[Aanmeldingsgedrag simuleren met het gereedschap Welke als voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)

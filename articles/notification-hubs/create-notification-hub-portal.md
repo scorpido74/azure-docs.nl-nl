@@ -12,14 +12,14 @@ ms.date: 02/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 53abc28a6923c2d55b3bb39defb08778485a9744
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 3aeeb989d15dc74849c85fa58cbefa891809f3c5
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212455"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80347093"
 ---
-# <a name="create-an-azure-notification-hub-in-the-azure-portal"></a>Een Azure notification hub maken met behulp van de Azure-portal 
+# <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>Snelstart: een Azure-meldingshub maken in de Azure-portal 
 Azure Notification Hubs biedt een eenvoudig te gebruiken en uitgeschaalde push-engine waarmee u vanuit elke back-end (cloud of on-premises) meldingen kunt verzenden naar ieder platform (iOS, Android, Windows, Kindle, Baidu, enzovoort). Zie voor meer informatie over de service [Wat is Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
 In deze quickstart maakt u een notification hub in de Azure-portal. De eerste sectie bevat de stappen voor het maken van een Notification Hubs-naamruimte en een hub in die naamruimte. De tweede sectie bevat de stappen voor het maken van een notification hub in een bestaande Notification Hubs-naamruimte. 

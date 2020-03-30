@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid-SDK 's
-description: Beschrijving van de SDK's voor Azure Event Grid. Deze SDK's bieden beheren, publiceren en verbruik.
+title: Azure Event Grid SDKs
+description: Beschrijft de SDK's voor Azure Event Grid. Deze SDK's bieden beheer, publicatie en verbruik.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,33 +9,33 @@ ms.topic: reference
 ms.date: 01/19/2019
 ms.author: spelluru
 ms.openlocfilehash: 7f05665f4bcc5449c1a81fa24582b333b0a944e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60822846"
 ---
-# <a name="event-grid-sdks-for-management-and-publishing"></a>Event Grid-SDK's voor het beheren en publiceren
+# <a name="event-grid-sdks-for-management-and-publishing"></a>Event Grid SDKs voor beheer en publicatie
 
-Event Grid biedt SDK's waarmee u programmatisch beheren van uw resources en gebeurtenissen kunt posten.
+Event Grid biedt SDK's waarmee u uw resources programmatisch beheren en gebeurtenissen plaatsen.
 
-## <a name="management-sdks"></a>Management SDK 's
+## <a name="management-sdks"></a>Beheer SDKs
 
-De management SDK's kunt u maken, bijwerken en verwijderen van event grid-onderwerpen en abonnementen. De volgende SDK's zijn momenteel beschikbaar:
+Met de beheer-SDK's u onderwerpen en abonnementen voor gebeurtenisrasters maken, bijwerken en verwijderen. Momenteel zijn de volgende SDK's beschikbaar:
 
 * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid)
-* [Go](https://github.com/Azure/azure-sdk-for-go)
+* [OK](https://github.com/Azure/azure-sdk-for-go)
 * [Java](https://search.maven.org/#search%7Cga%7C1%7Cazure-mgmt-eventgrid)
 * [Node](https://www.npmjs.com/package/azure-arm-eventgrid)
 * [Python](https://pypi.python.org/pypi/azure-mgmt-eventgrid)
 * [Ruby](https://rubygems.org/gems/azure_mgmt_event_grid)
 
-## <a name="data-plane-sdks"></a>Gegevens vlak SDK 's
+## <a name="data-plane-sdks"></a>Datavlak SDKs
 
-De gegevenslaag SDK's kunnen u onderwerpen gebeurtenissen kunt posten door Zorg ervoor dat u voor verificatie, vormen de gebeurtenis en asynchroon items plaatsen op het opgegeven eindpunt. Ze ook mogelijk om te gebruiken van eerste partij gebeurtenissen. De volgende SDK's zijn momenteel beschikbaar:
+Met de SDK's met gegevensvlak u gebeurtenissen naar onderwerpen plaatsen door te zorgen voor het verifiëren, de gebeurtenis te vormen en asynchroon te posten op het opgegeven eindpunt. Ze stellen u ook in staat om first party-evenementen te consumeren. Momenteel zijn de volgende SDK's beschikbaar:
 
 * [.NET](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)
-* [Go](https://github.com/Azure/azure-sdk-for-go)
+* [OK](https://github.com/Azure/azure-sdk-for-go)
 * [Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)
 * [Node](https://www.npmjs.com/package/azure-eventgrid)
 * [Python](https://pypi.python.org/pypi/azure-eventgrid)
@@ -43,7 +43,7 @@ De gegevenslaag SDK's kunnen u onderwerpen gebeurtenissen kunt posten door Zorg 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bijvoorbeeld toepassingen, Zie [Event Grid-codevoorbeelden](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid).
-* Zie voor een inleiding tot Event Grid, [wat is Event Grid?](overview.md)
-* Zie voor Event Grid-opdrachten in de Azure CLI, [Azure CLI](/cli/azure/eventgrid).
-* Zie voor Event Grid-opdrachten in PowerShell, [PowerShell](/powershell/module/az.eventgrid).
+* Zie bijvoorbeeld toepassingen, zie [Voorbeelden van gebeurtenisrastercodes](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid).
+* Zie Wat is Event Grid voor een inleiding tot Event [Grid?](overview.md)
+* Zie [Azure CLI](/cli/azure/eventgrid)voor opdrachten voor gebeurtenisrasters in Azure CLI .
+* Zie [PowerShell](/powershell/module/az.eventgrid)voor opdrachten voor gebeurtenisrasters in PowerShell.

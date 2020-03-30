@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: profiel voor voor deur maken voor hoge Beschik baarheid van toepassingen'
+title: 'Quickstart: Voordeurprofiel maken voor hoge beschikbaarheid van toepassingen'
 description: In dit snelstartartikel wordt beschreven hoe u een Front Door-profiel maakt voor een webtoepassing met hoge beschikbaarheid en uitstekende prestaties.
 services: front-door
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2018
 ms.author: sharadag
-ms.openlocfilehash: 67a4f9eb3290ba09a2c19325464cf7ad224856e7
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a98a933113322509f6fda8678350e9415d0b4058
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184520"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79471418"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Snelstart: een Front Door maken voor een webtoepassing met hoge beschikbaarheid
 
@@ -26,20 +26,20 @@ In deze snelstart wordt beschreven hoe u een Front Door-profiel maakt dat hoge b
 
 Het scenario dat in deze snelstart wordt beschreven, beschrijft twee exemplaren van een webtoepassing die in verschillende Azure-regio's wordt uitgevoerd. Er wordt een configuratie van Front Door gemaakt op basis van [back-ends met dezelfde weging en prioriteit](front-door-routing-methods.md) die helpt om verkeer van gebruikers om te leiden naar de dichtstbijzijnde set site-back-ends waarop de toepassing wordt uitgevoerd. De weboepassing wordt continu gecontroleerd door Front Door en de service biedt automatische failover naar de eerstvolgende beschikbare back-end als de dichtstbijzijnde site niet beschikbaar is.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="prerequisites"></a>Vereisten
-Voor deze snelstart moeten twee exemplaren van een webtoepassing worden geïmplementeerd, die in verschillende Azure-regio's wordt uitgevoerd (*US - oost* en *Europa - west*). Beide exemplaren van de webtoepassing worden uitgevoerd in de modus Active/Active, wat inhoudt dat een van beide exemplaren op elk gewenst moment verkeer kan accepteren, in tegenstelling tot een configuratie Active/Stand-By waarbij het ene exemplaar fungeert als een failover.
+Voor deze snelstart moeten twee exemplaren van een webtoepassing worden geïmplementeerd, die in verschillende Azure-regio's wordt uitgevoerd (*VS - oost* en *Europa - west*). Beide exemplaren van de webtoepassing worden uitgevoerd in de modus Active/Active, wat inhoudt dat een van beide exemplaren op elk gewenst moment verkeer kan accepteren, in tegenstelling tot een configuratie Active/Stand-By waarbij het ene exemplaar fungeert als een failover.
 
-1. Selecteer linksboven in het scherm de optie **Een resource maken** > **Web** > **Web-app** > **Maken**.
+1. Selecteer linksboven in het scherm de optie **Een bron** > **webwebapp** > **Web** > **maken .**
 2. Voer in **Web-app** de volgende gegevens in (of selecteer ze) en voer standaardinstellingen in waar ze niet zijn opgegeven:
 
      | Instelling         | Waarde     |
      | ---              | ---  |
-     | Naam           | Voer een unieke naam voor de web-app in  |
+     | Name           | Voer een unieke naam voor de web-app in  |
      | Resourcegroep          | Selecteer **Nieuw** en typ *myResourceGroupFD1* |
      | App Service-plan/-locatie         | Selecteer **Nieuw**.  Voer in het App Service-plan *myAppServicePlanEastUS* in en selecteer **OK**. 
      |      Locatie  |   VS - oost        |
@@ -51,7 +51,7 @@ Voor deze snelstart moeten twee exemplaren van een webtoepassing worden geïmple
 
      | Instelling         | Waarde     |
      | ---              | ---  |
-     | Naam           | Voer een unieke naam voor de web-app in  |
+     | Name           | Voer een unieke naam voor de web-app in  |
      | Resourcegroep          | Selecteer **Nieuw** en typ *myResourceGroupFD2* |
      | App Service-plan/-locatie         | Selecteer **Nieuw**.  Voer in het App Service-plan *myAppServicePlanWestEurope* in en selecteer **OK**. 
      |      Locatie  |   Europa -west      |
@@ -62,7 +62,7 @@ Voor deze snelstart moeten twee exemplaren van een webtoepassing worden geïmple
 ### <a name="a-add-a-frontend-host-for-front-door"></a>A. Een front-end-host toevoegen voor Front Door
 Maak een Front Door-configuratie die verkeer van gebruikers omleid op basis van de laagste latentie tussen de twee back-ends.
 
-1. Selecteer linksboven in het scherm de optie **Een resource maken** > **Netwerken** > **Front Door** > **Maken**.
+1. Selecteer linksboven in het scherm de optie **Een bron** > **maken voor de** > **voordeur** > **maken**van netwerken .
 2. Begin in het scherm **Een Front Door maken** met het toevoegen van de basisgegevens en geef een abonnement op waarvoor u de Front Door wilt configureren. Net als bij andere Azure-resources moet u een resourcegroep opgeven, plus een regio als u een nieuwe resourcegroep maakt. Ten slotte moet u een naam voor de Front Door opgeven.
 3. Zodra de basisgegevens zijn ingevuld, is de volgende stap het definiëren van de **front-endhost** voor de configuratie. Het resultaat moet een geldige domeinnaam zijn, zoals `myappfrontend.azurefd.net`. Deze hostnaam moet globaal uniek zijn. Deze controle wordt echter uitgevoerd door Front Door. 
 
@@ -75,7 +75,7 @@ Vervolgens moet u uw toepassings-back-end(s) configureren in een back-endpool, z
 3. Stel **Type doelhost** in op 'App Service', selecteer het abonnement waarin u de website hebt gemaakt en kies vervolgens de eerste website bij **Naam doelhost**, dus *myAppServicePlanEastUS.azurewebsites.net*.
 4. Laat de overige velden voorlopig ongewijzigd en klik op **Toevoegen**.
 5. Herhaal stappen 2 - 4 om de andere website toe te voegen, namelijk *myAppServicePlanWestEurope.azurewebsites.net*
-6. U kunt eventueel de instellingen voor tests en load balancing bijwerken voor de back-endpool, maar de standaardwaarden moeten voldoen. Klik op **Toevoegen**.
+6. U er optioneel voor kiezen om de instellingen voor statussondes en load-balancing voor de backendpool bij te werken, maar de standaardwaarden moeten ook werken. Klik op**toevoegen**.
 
 
 ### <a name="c-add-a-routing-rule"></a>C. Een routeringsregel toevoegen
