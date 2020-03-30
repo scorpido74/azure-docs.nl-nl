@@ -1,7 +1,7 @@
 ---
-title: Communicatie beveiliging voor de Microsoft Threat Modeling Tool
+title: Communicatiebeveiliging voor de Microsoft Threat Modeling Tool
 titleSuffix: Azure
-description: oplossingen voor bedreigingen die worden blootgesteld aan de Threat Modeling Tool
+description: oplossingen voor bedreigingen die worden blootgesteld in de Threat Modeling Tool
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,109 +16,109 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: b861c54cfffe409946a2b23de4c7ccf2cd85433a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 39ee0fa2dc973cd6c20756cae2024af79d1375dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78269900"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294155"
 ---
-# <a name="security-frame-communication-security--mitigations"></a>Beveiligings frame: communicatie beveiliging | Oplossingen 
-| Product/Service | Artikel |
+# <a name="security-frame-communication-security--mitigations"></a>Beveiligingskader: Communicatiebeveiliging | Mitigaties 
+| Product/service | Artikel |
 | --------------- | ------- |
-| **Azure Event hub** | <ul><li>[Communicatie met Event hub beveiligen met behulp van SSL/TLS](#comm-ssltls)</li></ul> |
-| **Dynamics CRM** | <ul><li>[Controleer de bevoegdheden van het service account en controleer of de aangepaste services of ASP.NET-pagina's de beveiliging van CRM respecteren](#priv-aspnet)</li></ul> |
-| **Azure Data Factory** | <ul><li>[Data Management gateway gebruiken tijdens het verbinden van on-premises SQL Server naar Azure Data Factory](#sqlserver-factory)</li></ul> |
-| **Identiteits server** | <ul><li>[Zorg ervoor dat al het verkeer naar de identiteits server de HTTPS-verbinding heeft](#identity-https)</li></ul> |
-| **Webtoepassing** | <ul><li>[X. 509-certificaten verifiëren die worden gebruikt voor het verifiëren van SSL-, TLS-en DTLS-verbindingen](#x509-ssltls)</li><li>[SSL-certificaat voor aangepast domein in Azure App Service configureren](#ssl-appservice)</li><li>[Alle verkeer naar Azure App Service via HTTPS-verbinding afdwingen](#appservice-https)</li><li>[HTTP-strikte transport beveiliging (HSTS) inschakelen](#http-hsts)</li></ul> |
-| **Database** | <ul><li>[Zorg ervoor dat SQL Server-verbindings versleuteling en certificaat validatie worden](#sqlserver-validation)</li><li>[Versleutelde communicatie met SQL server afdwingen](#encrypted-sqlserver)</li></ul> |
-| **Azure Storage** | <ul><li>[Zorg ervoor dat de communicatie met Azure Storage over HTTPS is](#comm-storage)</li><li>[MD5-hash valideren na het downloaden van de BLOB als HTTPS niet kan worden ingeschakeld](#md5-https)</li><li>[SMB 3,0-compatibele client gebruiken om te zorgen voor in-transit gegevens versleuteling naar Azure-bestands shares](#smb-shares)</li></ul> |
-| **Mobiele client** | <ul><li>[Certificaat vastmaken implementeren](#cert-pinning)</li></ul> |
-| **WCF** | <ul><li>[HTTPS-beveiligd transport kanaal inschakelen](#https-transport)</li><li>[WCF: beveiligings niveau voor bericht beveiliging instellen op EncryptAndSign](#message-protection)</li><li>[WCF: gebruik een account met minimale bevoegdheden om uw WCF-service uit te voeren](#least-account-wcf)</li></ul> |
-| **Web-API** | <ul><li>[Alle verkeer naar web-Api's via HTTPS-verbinding afdwingen](#webapi-https)</li></ul> |
-| **Azure Cache voor Redis** | <ul><li>[Zorg ervoor dat de communicatie met Azure cache voor redis meer dan SSL is](#redis-ssl)</li></ul> |
-| **IoT-veld Gateway** | <ul><li>[Communicatie tussen het apparaat en de veld Gateway beveiligen](#device-field)</li></ul> |
-| **IoT-Cloud gateway** | <ul><li>[Communicatie tussen het apparaat en de Cloud gateway met behulp van SSL/TLS](#device-cloud)</li></ul> |
+| **Azure Event Hub** | <ul><li>[Beveiligde communicatie naar Gebeurtenishub met SSL/TLS](#comm-ssltls)</li></ul> |
+| **Dynamics CRM** | <ul><li>[Controleer de bevoegdheden van serviceaccount en controleer of de aangepaste Services of ASP.NET pagina's de beveiliging van CRM respecteren](#priv-aspnet)</li></ul> |
+| **Azure-gegevensfabriek** | <ul><li>[Gegevensbeheergateway gebruiken terwijl u on-premises SQL Server verbindt met Azure Data Factory](#sqlserver-factory)</li></ul> |
+| **Identiteitsserver** | <ul><li>[Ervoor zorgen dat al het verkeer naar de identiteitsserver via https-verbinding is](#identity-https)</li></ul> |
+| **Webtoepassing** | <ul><li>[X.509-certificaten verifiëren die worden gebruikt om SSL-, TLS- en DTLS-verbindingen te verifiëren](#x509-ssltls)</li><li>[SSL-certificaat configureren voor aangepast domein in Azure App Service](#ssl-appservice)</li><li>[Al het verkeer naar Azure App Service afdwingen via HTTPS-verbinding](#appservice-https)</li><li>[Http Strict Transport Security (HSTS) inschakelen](#http-hsts)</li></ul> |
+| **Database** | <ul><li>[Zorgen voor SQL-serververbindingsversleuteling en certificaatvalidatie](#sqlserver-validation)</li><li>[Versleutelde communicatie naar SQL-server forceren](#encrypted-sqlserver)</li></ul> |
+| **Azure Storage** | <ul><li>[Controleren of de communicatie met Azure Storage via HTTPS is](#comm-storage)</li><li>[MD5-hash valideren na het downloaden van blob als HTTPS niet kan worden ingeschakeld](#md5-https)</li><li>[SMB 3.0-compatibele client gebruiken om te zorgen voor versleuteling van gegevens in transitnaar Azure File Shares](#smb-shares)</li></ul> |
+| **Mobiele client** | <ul><li>[Certificaatvastmaken implementeren](#cert-pinning)</li></ul> |
+| **WCF** | <ul><li>[HTTPS inschakelen - Secure Transport-kanaal](#https-transport)</li><li>[WCF: Beveiligingsniveau voor berichten instellen op EncryptAndSign](#message-protection)</li><li>[WCF: gebruik een account met de minste bevoegdheden om uw WCF-service uit te voeren](#least-account-wcf)</li></ul> |
+| **Web-API** | <ul><li>[Al het verkeer naar web-API's via HTTPS-verbinding forceren](#webapi-https)</li></ul> |
+| **Azure Cache voor Redis** | <ul><li>[Ervoor zorgen dat de communicatie met Azure Cache voor Redis via SSL verloopt](#redis-ssl)</li></ul> |
+| **IoT-veldgateway** | <ul><li>[Beveiligde gatewayvan apparaat naar veld](#device-field)</li></ul> |
+| **IoT Cloud Gateway** | <ul><li>[Secure Device to Cloud Gateway communicatie met SSL/TLS](#device-cloud)</li></ul> |
 
-## <a id="comm-ssltls"></a>Communicatie met Event hub beveiligen met behulp van SSL/TLS
+## <a name="secure-communication-to-event-hub-using-ssltls"></a><a id="comm-ssltls"></a>Beveiligde communicatie naar Gebeurtenishub met SSL/TLS
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Azure Event Hub | 
+| **Component**               | Azure Event Hub | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
-| **Eigenschappen**              | N.v.t.  |
-| **Referentie**              | [Overzicht van Event Hubs verificatie en beveiligings model](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
-| **Stappen** | AMQP of HTTP-verbindingen met Event hub beveiligen met behulp van SSL/TLS |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | [Overzicht van verificatie en beveiligingsmodel van Gebeurtenishubs](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
+| **Stappen** | AmQP- of HTTP-verbindingen beveiligen met gebeurtenishub met SSL/TLS |
 
-## <a id="priv-aspnet"></a>Controleer de bevoegdheden van het service account en controleer of de aangepaste services of ASP.NET-pagina's de beveiliging van CRM respecteren
+## <a name="check-service-account-privileges-and-check-that-the-custom-services-or-aspnet-pages-respect-crms-security"></a><a id="priv-aspnet"></a>Controleer de bevoegdheden van serviceaccount en controleer of de aangepaste Services of ASP.NET pagina's de beveiliging van CRM respecteren
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Dynamics CRM | 
+| **Component**               | Dynamics CRM | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
-| **Eigenschappen**              | N.v.t.  |
-| **Referentie**              | N.v.t.  |
-| **Stappen** | Controleer de bevoegdheden van het service account en controleer of de aangepaste services of ASP.NET-pagina's de beveiliging van CRM respecteren |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | N.v.t.  |
+| **Stappen** | Controleer de bevoegdheden van serviceaccount en controleer of de aangepaste Services of ASP.NET pagina's de beveiliging van CRM respecteren |
 
-## <a id="sqlserver-factory"></a>Data Management gateway gebruiken tijdens het verbinden van on-premises SQL Server naar Azure Data Factory
+## <a name="use-data-management-gateway-while-connecting-on-premises-sql-server-to-azure-data-factory"></a><a id="sqlserver-factory"></a>Gegevensbeheergateway gebruiken terwijl u on-premises SQL Server verbindt met Azure Data Factory
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Azure Data Factory | 
+| **Component**               | Azure Data Factory | 
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
-| **Eigenschappen**              | Gekoppelde service typen: Azure en on-premises |
-| **Referentie**              |[Gegevens verplaatsen tussen on-premises en Azure Data Factory](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway), [Data Management Gateway](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
-| **Stappen** | <p>Het hulp programma Data Management Gateway (DMG) is vereist om verbinding te maken met gegevens bronnen die zijn beveiligd achter Corpnet of een firewall.</p><ol><li>Door de computer te vergren delen, wordt het DMG-hulp programma geïsoleerd en wordt voor komen dat Program ma's beschadigd of op de gegevens bron machine worden genoteerd. Zoals. de meest recente updates moeten worden geïnstalleerd, beschikken over Mini maal vereiste poorten, het inrichten van beheerde accounts, het inschakelen van controle, het inschakelen van de schijf versleuteling, enzovoort.)</li><li>De gegevens gateway sleutel moet met regel matige tussen pozen worden geroteerd of wanneer het wacht woord van de DMG-service account wordt vernieuwd</li><li>Gegevens doorvoer via de koppelings service moet worden versleuteld</li></ol> |
+| **Kenmerken**              | Gekoppelde servicetypen - Azure en On-premises |
+| **Verwijzingen**              |[Gegevensbeheergateway verplaatsen tussen on-premises en Azure Data Factory,](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway) [Gegevensbeheergateway](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
+| **Stappen** | <p>De Data Management Gateway (DMG) tool is vereist om verbinding te maken met gegevensbronnen die zijn beschermd achter corpnet of een firewall.</p><ol><li>Het vergrendelen van de machine isoleert het Gereedschap DMG en voorkomt dat defecte programma's de gegevensbronmachine beschadigen of snooping. (Bijv. de laatste updates moeten worden geïnstalleerd, minimale vereiste poorten inschakelen, gecontroleerde beheervan accounts, controle ingeschakeld, schijfversleuteling ingeschakeld, enz.)</li><li>Data Gateway-sleutel moet worden gedraaid met regelmatige tussenpozen of wanneer het wachtwoord van het DMG-serviceaccount wordt verlengd</li><li>Gegevensdoorvoer via Link Service moet worden versleuteld</li></ol> |
 
-## <a id="identity-https"></a>Zorg ervoor dat al het verkeer naar de identiteits server de HTTPS-verbinding heeft
+## <a name="ensure-that-all-traffic-to-identity-server-is-over-https-connection"></a><a id="identity-https"></a>Ervoor zorgen dat al het verkeer naar de identiteitsserver via https-verbinding is
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Identiteits server | 
+| **Component**               | Identiteitsserver | 
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
-| **Eigenschappen**              | N.v.t.  |
-| **Referentie**              | [IdentityServer3-sleutels, hand tekeningen en crypto grafie](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html), [IdentityServer3-implementatie](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
-| **Stappen** | IdentityServer vereist standaard dat alle binnenkomende verbindingen worden ontvangen via HTTPS. Het is absoluut verplicht dat communicatie met IdentityServer alleen worden uitgevoerd via beveiligde trans porten. Er zijn bepaalde implementatie scenario's zoals SSL-offloading waarbij deze vereiste kan worden gesoepeld. Zie de pagina voor de implementatie van de identiteits server in de referenties voor meer informatie. |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | [IdentityServer3 - Sleutels, handtekeningen en cryptografie](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html), [IdentityServer3 - Implementatie](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
+| **Stappen** | Standaard vereist IdentityServer dat alle binnenkomende verbindingen over HTTPS komen. Het is absoluut verplicht dat communicatie met IdentityServer alleen via beveiligde transporten wordt uitgevoerd. Er zijn bepaalde implementatiescenario's zoals SSL offloading waar deze vereiste kan worden versoepeld. Zie de pagina Met de implementatie van de identiteitsserver in de verwijzingen voor meer informatie. |
 
-## <a id="x509-ssltls"></a>X. 509-certificaten verifiëren die worden gebruikt voor het verifiëren van SSL-, TLS-en DTLS-verbindingen
-
-| Titel                   | Details      |
-| ----------------------- | ------------ |
-| **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Algemeen |
-| **Eigenschappen**              | N.v.t.  |
-| **Referentie**              | N.v.t.  |
-| **Stappen** | <p>Toepassingen die gebruikmaken van SSL, TLS of DTLS, moeten de X. 509-certificaten van de entiteiten waarmee ze verbinding maken, volledig controleren. Dit omvat de verificatie van de certificaten voor:</p><ul><li>Domeinnaam</li><li>De geldigheids datums (zowel de begin-als de verval datum)</li><li>Intrekkings status</li><li>Gebruik (bijvoorbeeld Server verificatie voor servers, client verificatie voor clients)</li><li>Vertrouwens keten. Certificaten moeten worden gekoppeld aan een basis certificerings instantie (CA) die wordt vertrouwd door het platform of expliciet is geconfigureerd door de beheerder</li><li>De sleutel lengte van de open bare sleutel van het certificaat moet > 2048 bits zijn</li><li>Hash-algoritme moet SHA256 en hoger zijn |
-
-## <a id="ssl-appservice"></a>SSL-certificaat voor aangepast domein in Azure App Service configureren
+## <a name="verify-x509-certificates-used-to-authenticate-ssl-tls-and-dtls-connections"></a><a id="x509-ssltls"></a>X.509-certificaten verifiëren die worden gebruikt om SSL-, TLS- en DTLS-verbindingen te verifiëren
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Webtoepassing | 
+| **Component**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
-| **Eigenschappen**              | EnvironmentType-Azure |
-| **Referentie**              | [HTTPS inschakelen voor een app in Azure App Service](../../app-service/configure-ssl-bindings.md) |
-| **Stappen** | Standaard schakelt Azure HTTPS al in voor elke app met een Joker certificaat voor het domein *. azurewebsites.net. Net als alle Joker domeinen is het echter niet zo veilig als het gebruik van een aangepast domein met een eigen certificaat [verwijzen](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/). Het is raadzaam SSL in te scha kelen voor het aangepaste domein waarmee de geïmplementeerde app wordt geopend|
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | N.v.t.  |
+| **Stappen** | <p>Toepassingen die SSL, TLS of DTLS gebruiken, moeten de X.509-certificaten van de entiteiten waarmee ze verbinding maken volledig verifiëren. Dit omvat de verificatie van de certificaten voor:</p><ul><li>Domeinnaam</li><li>Geldigheidsdatums (zowel begin- als vervaldatums)</li><li>Intrekkingsstatus</li><li>Gebruik (bijvoorbeeld serververificatie voor servers, clientverificatie voor clients)</li><li>Vertrouwensketen. Certificaten moeten worden geketend aan een rootcertificeringsinstantie (CA) die wordt vertrouwd door het platform of expliciet is geconfigureerd door de beheerder</li><li>De sleutellengte van de openbare sleutel van het certificaat moet >2048 bits zijn</li><li>Hashing algoritme moet SHA256 en hoger |
 
-## <a id="appservice-https"></a>Alle verkeer naar Azure App Service via HTTPS-verbinding afdwingen
+## <a name="configure-ssl-certificate-for-custom-domain-in-azure-app-service"></a><a id="ssl-appservice"></a>SSL-certificaat configureren voor aangepast domein in Azure App Service
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Webtoepassing | 
+| **Component**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
-| **Eigenschappen**              | EnvironmentType-Azure |
-| **Referentie**              | [HTTPS afdwingen op Azure App Service](../../app-service/configure-ssl-bindings.md#enforce-https) |
-| **Stappen** | <p>Hoewel Azure al HTTPS maakt voor Azure app Services met een Joker teken voor het domein *. azurewebsites.net, wordt HTTPS niet afgedwongen. Bezoekers hebben mogelijk nog steeds toegang tot de app via HTTP, waardoor de beveiliging van de app kan worden aangetast en daarom expliciet HTTPS moet worden afgedwongen. ASP.NET MVC-toepassingen moeten het [RequireHttps-filter](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) gebruiken dat ervoor zorgt dat een niet-beveiligde HTTP-aanvraag opnieuw wordt verzonden via https.</p><p>U kunt ook de module voor het herschrijven van URL'S, die is opgenomen in Azure App Service, gebruiken om HTTPS af te dwingen. Met de module voor het herschrijven van URL'S kunnen ontwikkel aars regels definiëren die worden toegepast op binnenkomende aanvragen voordat de aanvragen worden overgedragen aan uw toepassing. De regels voor het herschrijven van URL'S worden gedefinieerd in een web. config-bestand dat is opgeslagen in de hoofdmap van de toepassing</p>|
+| **Kenmerken**              | EnvironmentType - Azure |
+| **Verwijzingen**              | [HTTPS inschakelen voor een app in Azure App Service](../../app-service/configure-ssl-bindings.md) |
+| **Stappen** | Azure maakt standaard al HTTPS in voor elke app met een wildcardcertificaat voor het *.azurewebsites.net-domein. Echter, net als alle wildcard domeinen, het is niet zo veilig als het gebruik van een aangepast domein met eigen certificaat [Verwijzen](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/). Het wordt aanbevolen om SSL in te schakelen voor het aangepaste domein dat de geïmplementeerde app zal worden geopend via|
+
+## <a name="force-all-traffic-to-azure-app-service-over-https-connection"></a><a id="appservice-https"></a>Al het verkeer naar Azure App Service afdwingen via HTTPS-verbinding
+
+| Titel                   | Details      |
+| ----------------------- | ------------ |
+| **Component**               | Webtoepassing | 
+| **SDL-fase**               | Ontwikkelen |  
+| **Toepasselijke technologieën** | Algemeen |
+| **Kenmerken**              | EnvironmentType - Azure |
+| **Verwijzingen**              | [HTTPS afdwingen op Azure App Service](../../app-service/configure-ssl-bindings.md#enforce-https) |
+| **Stappen** | <p>Hoewel Azure al HTTPS voor Azure-app-services inschakelt met een wildcardcertificaat voor het domein *.azurewebsites.net, wordt https niet afgedwongen. Bezoekers kunnen nog steeds toegang krijgen tot de app via HTTP, wat de veiligheid van de app in gevaar kan brengen en dus moet HTTPS expliciet worden afgedwongen. ASP.NET MVC-toepassingen moet het [filter Vereisenhttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) gebruiken dat een onbeveiligd HTTP-verzoek dwingt om opnieuw via HTTPS te worden verzonden.</p><p>De URL Rewrite-module, die is opgenomen in Azure App Service, kan ook worden gebruikt om HTTPS af te dwingen. URL Rewrite module stelt ontwikkelaars in staat om regels te definiëren die worden toegepast op binnenkomende aanvragen voordat de aanvragen aan uw toepassing worden overhandigd. URL Rewrite-regels worden gedefinieerd in een web.config-bestand dat is opgeslagen in de hoofdmap van de toepassing</p>|
 
 ### <a name="example"></a>Voorbeeld
-Het volgende voor beeld bevat een eenvoudige regel voor het herschrijven van URL'S waarmee alle binnenkomende verkeer wordt afgedwongen voor gebruik van HTTPS
+Het volgende voorbeeld bevat een basisregel voor het herschrijven van URL die alle binnenkomend verkeer dwingt https te gebruiken
 ```XML
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
@@ -137,84 +137,84 @@ Het volgende voor beeld bevat een eenvoudige regel voor het herschrijven van URL
   </system.webServer>
 </configuration>
 ```
-Deze regel werkt door het retour neren van een HTTP-status code van 301 (permanente omleiding) wanneer de gebruiker een pagina aanvraagt via HTTP. De 301 leidt de aanvraag om naar dezelfde URL als de door de bezoeker aangevraagde, maar vervangt het HTTP-gedeelte van de aanvraag met HTTPS. `HTTP://contoso.com` worden bijvoorbeeld omgeleid naar `HTTPS://contoso.com`. 
+Deze regel werkt door een HTTP-statuscode van 301 (permanente omleiding) terug te sturen wanneer de gebruiker een pagina aanvraagt met HTTP. De 301 verwijst het verzoek om naar dezelfde URL als de gevraagde bezoeker, maar vervangt het HTTP-gedeelte van de aanvraag door HTTPS. Bijvoorbeeld, `HTTP://contoso.com` zou worden doorgestuurd `HTTPS://contoso.com`naar . 
 
-## <a id="http-hsts"></a>HTTP-strikte transport beveiliging (HSTS) inschakelen
+## <a name="enable-http-strict-transport-security-hsts"></a><a id="http-hsts"></a>Http Strict Transport Security (HSTS) inschakelen
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Webtoepassing | 
+| **Component**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
-| **Eigenschappen**              | N.v.t.  |
-| **Referentie**              | [Cheat-blad OWASP HTTP strict-Trans Port beveiliging](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **Stappen** | <p>HTTP strict Trans Port Security (HSTS) is een opt-in-beveiligings verbetering die is opgegeven door een webtoepassing via het gebruik van een speciale antwoord header. Zodra een ondersteunde browser deze header ontvangt, kan de browser voor komen dat er communicatie via HTTP naar het opgegeven domein wordt verzonden en wordt in plaats daarvan alle communicatie verzonden via HTTPS. Er wordt ook voor komen dat met HTTPS wordt geklikt op vragen over browsers.</p><p>Voor het implementeren van HSTS moet de volgende reactie header worden geconfigureerd voor een website globaal, hetzij in code of in configuratie. Strict-Trans Port-Security: Max-Age = 300; includeSubDomains HSTS behandelt de volgende bedreigingen:</p><ul><li>Gebruikers bladwijzer of typen hand matig https://example.com en zijn onderworpen aan een man-in-the-Middle-aanvaller: HSTS stuurt automatisch HTTP-aanvragen om naar HTTPS voor het doel domein</li><li>Webtoepassingen die louter HTTPS bedoeld zijn, bevatten per ongeluk HTTP-koppelingen of verzendt inhoud via HTTP: HSTS stuurt automatisch HTTP-aanvragen om naar HTTPS voor het doel domein</li><li>Een man-in-the-Middle-aanvaller probeert verkeer te onderscheppen van een slacht offer-gebruiker met een ongeldig certificaat en wil de gebruiker het onjuiste certificaat accepteert: HSTS staat niet toe dat een gebruiker het ongeldige certificaat bericht overschrijft</li></ul>|
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | [OWASP HTTP Strict Transport Security Cheat Sheet](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
+| **Stappen** | <p>HTTP Strict Transport Security (HSTS) is een opt-in beveiligingsverbetering die door een webtoepassing wordt opgegeven door het gebruik van een speciale reactieheader. Zodra een ondersteunde browser deze header ontvangt, voorkomt die browser dat berichten via HTTP naar het opgegeven domein worden verzonden en in plaats daarvan alle communicatie via HTTPS verzenden. Het voorkomt ook HTTPS klik door middel van prompts op browsers.</p><p>Om HSTS te implementeren, moet de volgende antwoordkop voor een website wereldwijd worden geconfigureerd, in code of in config. Strikte transportbeveiliging: max-leeftijd=300; includeSubDomains HSTS pakt de volgende bedreigingen aan:</p><ul><li>Gebruikersbladwijzers of handmatig `https://example.com` typen en is onderworpen aan een man-in-the-middle-aanvaller: HSTS stuurt automatisch HTTP-aanvragen door naar HTTPS voor het doeldomein</li><li>Webapplicatie die puur HTTPS-artikelen per ongeluk is, bevat HTTP-koppelingen of dient inhoud via HTTP: HSTS stuurt automatisch HTTP-aanvragen door naar HTTPS voor het doeldomein</li><li>Een man-in-the-middle-aanvaller probeert verkeer van een slachtoffergebruiker te onderscheppen met behulp van een ongeldig certificaat en hoopt dat de gebruiker het slechte certificaat accepteert: HSTS staat niet toe dat een gebruiker het ongeldige certificaatbericht overschrijft</li></ul>|
 
-## <a id="sqlserver-validation"></a>Zorg ervoor dat SQL Server-verbindings versleuteling en certificaat validatie worden
+## <a name="ensure-sql-server-connection-encryption-and-certificate-validation"></a><a id="sqlserver-validation"></a>Zorgen voor SQL-serververbindingsversleuteling en certificaatvalidatie
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Database | 
+| **Component**               | Database | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | SQL Azure  |
-| **Eigenschappen**              | SQL-versie-V12 |
-| **Referentie**              | [Aanbevolen procedures voor het schrijven van beveiligde verbindings reeksen voor SQL Database](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
-| **Stappen** | <p>Alle communicatie tussen SQL Database en een client toepassing is te allen tijde versleuteld met behulp van Secure Sockets Layer (SSL). SQL Database biedt geen ondersteuning voor niet-versleutelde verbindingen. Om certificaten te valideren met toepassings code of hulpprogram ma's, vraagt u expliciet een versleutelde verbinding aan en vertrouwt u de server certificaten niet. Als uw toepassings code of hulpprogram ma's geen versleutelde verbinding aanvragen, worden er nog steeds versleutelde verbindingen ontvangen</p><p>Ze kunnen de server certificaten echter niet valideren en zijn dus vatbaar voor man in het midden. Als u certificaten met een ADO.NET-toepassings code wilt valideren, stelt u `Encrypt=True` en `TrustServerCertificate=False` in de connection string van de data base in. Als u certificaten wilt valideren via SQL Server Management Studio, opent u het dialoog venster verbinding maken met server. Klik op verbinding versleutelen op het tabblad verbindings eigenschappen</p>|
+| **Kenmerken**              | SQL-versie - V12 |
+| **Verwijzingen**              | [Aanbevolen procedures voor het schrijven van secure connection strings voor SQL Database](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
+| **Stappen** | <p>Alle communicatie tussen SQL Database en een clienttoepassing wordt te allen tijde versleuteld met Secure Sockets Layer (SSL). SQL Database biedt geen ondersteuning voor onversleutelde verbindingen. Als u certificaten wilt valideren met toepassingscode of hulpprogramma's, vraagt u expliciet een versleutelde verbinding aan en vertrouwt u de servercertificaten niet. Als uw toepassingscode of -hulpprogramma's geen versleutelde verbinding aanvragen, ontvangen ze nog steeds versleutelde verbindingen</p><p>Ze kunnen echter niet valideren van de server certificaten en dus zal gevoelig zijn voor "man in the middle" aanvallen. Als u certificaten wilt valideren `Encrypt=True` `TrustServerCertificate=False` met ADO.NET toepassingscode, stelt u in en in de tekenreeks voor databaseverbindingen. Als u certificaten wilt valideren via SQL Server Management Studio, opent u het dialoogvenster Verbinding maken met server. Klik op Verbinding versleutelen op het tabblad Verbindingseigenschappen</p>|
 
-## <a id="encrypted-sqlserver"></a>Versleutelde communicatie met SQL server afdwingen
+## <a name="force-encrypted-communication-to-sql-server"></a><a id="encrypted-sqlserver"></a>Versleutelde communicatie naar SQL-server forceren
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Database | 
+| **Component**               | Database | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | OnPrem |
-| **Eigenschappen**              | SQL-versie-MsSQL2016, SQL-versie-MsSQL2012, SQL-versie-MsSQL2014 |
-| **Referentie**              | [Versleutelde verbindingen met de data base-engine inschakelen](https://msdn.microsoft.com/library/ms191192)  |
-| **Stappen** | Als u SSL-versleuteling inschakelt, wordt de beveiliging van gegevens die worden verzonden tussen netwerken tussen exemplaren van SQL Server en toepassingen, verbeterd. |
+| **Toepasselijke technologieën** | OnPrem (OnPrem) |
+| **Kenmerken**              | SQL-versie - MSSQL2016, SQL-versie - MSSQL2012, SQL-versie - MSSQL2014 |
+| **Verwijzingen**              | [Versleutelde verbindingen naar de databaseengine inschakelen](https://msdn.microsoft.com/library/ms191192)  |
+| **Stappen** | Ssl-versleuteling inschakelen verhoogt de beveiliging van gegevens die via netwerken worden verzonden tussen exemplaren van SQL Server en toepassingen. |
 
-## <a id="comm-storage"></a>Zorg ervoor dat de communicatie met Azure Storage over HTTPS is
+## <a name="ensure-that-communication-to-azure-storage-is-over-https"></a><a id="comm-storage"></a>Controleren of de communicatie met Azure Storage via HTTPS is
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Azure Storage | 
+| **Component**               | Azure Storage | 
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
-| **Eigenschappen**              | N.v.t.  |
-| **Referentie**              | [Versleuteling op transport niveau Azure Storage: HTTPS gebruiken](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
-| **Stappen** | Gebruik altijd het HTTPS-protocol bij het aanroepen van de REST-Api's of het openen van objecten in opslag om de beveiliging van Azure Storage gegevens in transit te garanderen. Ook gedeelde toegangs handtekeningen, die kunnen worden gebruikt voor het delegeren van toegang tot Azure Storage-objecten, bevatten een optie om op te geven dat alleen het HTTPS-protocol kan worden gebruikt bij het gebruik van hand tekeningen voor gedeelde toegang, om ervoor te zorgen dat iedereen die koppelingen met SAS-tokens verzendt, gebruikmaakt van het juiste protocol.|
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | [Versleuteling op transportniveau voor Azure-opslag – HTTPS gebruiken](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
+| **Stappen** | Als u de beveiliging van Azure Storage-gegevens onderweg wilt garanderen, gebruikt u altijd het HTTPS-protocol wanneer u de REST-API's aanroept of toegang krijgt tot objecten in de opslag. Ook shared access signatures, die kunnen worden gebruikt om toegang tot Azure Storage-objecten te delegeren, bevatten een optie om op te geven dat alleen het HTTPS-protocol kan worden gebruikt bij het gebruik van Gedeelde toegangshandtekeningen, zodat iedereen die koppelingen met SAS-tokens verzendt, wordt gebruikt het juiste protocol.|
 
-## <a id="md5-https"></a>MD5-hash valideren na het downloaden van de BLOB als HTTPS niet kan worden ingeschakeld
+## <a name="validate-md5-hash-after-downloading-blob-if-https-cannot-be-enabled"></a><a id="md5-https"></a>MD5-hash valideren na het downloaden van blob als HTTPS niet kan worden ingeschakeld
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Azure Storage | 
+| **Component**               | Azure Storage | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
-| **Eigenschappen**              | Para-BLOB |
-| **Referentie**              | [Overzicht van Windows Azure Blob MD5](https://blogs.msdn.microsoft.com/windowsazurestorage/2011/02/17/windows-azure-blob-md5-overview/) |
-| **Stappen** | <p>Windows Azure Blob service biedt mechanismen voor het garanderen van gegevens integriteit op de toepassings-en transport lagen. Als u om een of andere reden HTTP in plaats van HTTPS moet gebruiken en u met blok-blobs werkt, kunt u de MD5-controle gebruiken om de integriteit te controleren van de blobs die worden overgedragen</p><p>Dit helpt bij de beveiliging van netwerk/Trans Port-laag fouten, maar niet noodzakelijkerwijs met tussenliggende aanvallen. Als u HTTPS kunt gebruiken, dat beveiliging op transport niveau biedt, is het gebruik van MD5-controle overbodig en onnodig.</p>|
+| **Kenmerken**              | StorageType - Blob |
+| **Verwijzingen**              | [Overzicht van Windows Azure Blob MD5](https://blogs.msdn.microsoft.com/windowsazurestorage/2011/02/17/windows-azure-blob-md5-overview/) |
+| **Stappen** | <p>Windows Azure Blob-service biedt mechanismen om de gegevensintegriteit te garanderen, zowel op de toepassings- als transportlagen. Als u om welke reden dan ook HTTP in plaats van HTTPS moet gebruiken en u werkt met blokblobs, u MD5-controle gebruiken om de integriteit van de blobs die worden overgedragen te verifiëren</p><p>Dit zal helpen bij de bescherming tegen netwerk / transport laag fouten, maar niet noodzakelijkerwijs met intermediaire aanvallen. Als u HTTPS gebruiken, dat beveiliging op transportniveau biedt, is het gebruik van MD5-controle overbodig en overbodig.</p>|
 
-## <a id="smb-shares"></a>SMB 3,0-compatibele client gebruiken om te zorgen voor in-transit gegevens versleuteling naar Azure-bestands shares
+## <a name="use-smb-30-compatible-client-to-ensure-in-transit-data-encryption-to-azure-file-shares"></a><a id="smb-shares"></a>Gebruik smb 3.0-compatibele client om te zorgen voor versleuteling van gegevens in transitnaar Azure File-shares
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Mobiele client | 
+| **Component**               | Mobiele client | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
-| **Eigenschappen**              | Para-bestand |
-| **Referentie**              | [Azure File Storage](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931), [Azure File Storage SMB-ondersteuning voor Windows-clients](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files/#_mount-the-file-share) |
-| **Stappen** | Azure File Storage ondersteunt HTTPS bij het gebruik van de REST API, maar wordt vaak gebruikt als een SMB-bestands share die is gekoppeld aan een virtuele machine. SMB 2,1 biedt geen ondersteuning voor versleuteling. verbindingen zijn dus alleen toegestaan binnen dezelfde regio in Azure. SMB 3,0 ondersteunt echter versleuteling en kan worden gebruikt met Windows Server 2012 R2, Windows 8, Windows 8,1 en Windows 10, zodat u toegang hebt tot meerdere regio's en zelfs toegang op het bureau blad. |
+| **Kenmerken**              | StorageType - Bestand |
+| **Verwijzingen**              | [Azure File Storage](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931), [Azure File Storage SMB Support voor Windows Clients](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files/#_mount-the-file-share) |
+| **Stappen** | Azure File Storage ondersteunt HTTPS bij het gebruik van de REST API, maar wordt vaker gebruikt als een SMB-bestandsshare die is gekoppeld aan een vm. SMB 2.1 biedt geen ondersteuning voor versleuteling, dus verbindingen zijn alleen toegestaan binnen dezelfde regio in Azure. SMB 3.0 ondersteunt versleuteling en kan echter worden gebruikt met Windows Server 2012 R2, Windows 8, Windows 8.1 en Windows 10, waardoor toegang tussen regio's en zelfs toegang op het bureaublad mogelijk is. |
 
-## <a id="cert-pinning"></a>Certificaat vastmaken implementeren
+## <a name="implement-certificate-pinning"></a><a id="cert-pinning"></a>Certificaatvastmaken implementeren
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Azure Storage | 
+| **Component**               | Azure Storage | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Generic, Windows Phone |
-| **Eigenschappen**              | N.v.t.  |
-| **Referentie**              | [Certificaat en open bare sleutel vastmaken](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) |
-| **Stappen** | <p>Certificaat vastmaken beschermt tegen man-in-the-middle-aanvallen (MITM). Vastmaken is het proces van het koppelen van een host met het verwachte x509-certificaat of de open bare sleutel. Zodra een certificaat of open bare sleutel bekend of zichtbaar is voor een host, wordt het certificaat of de open bare sleutel gekoppeld of vastgemaakt aan de host. </p><p>Wanneer een kwaadwillende persoon een SSL-MITM-aanval probeert uit te voeren, wordt tijdens de SSL-Handshake de sleutel van de server van de aanvaller afwijkend van de sleutel van de vastgemaakte certificaten en wordt de aanvraag verwijderd, waardoor MITM certificaat vastmaken niet kan worden bereikt door de implementatie van ServicePointManager `ServerCertificateValidationCallback`-gemachtigde.</p>|
+| **Toepasselijke technologieën** | Algemeen, Windows Phone |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | [Certificaat en openbare sleutel vastmaken](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) |
+| **Stappen** | <p>Certificate pinning verdedigt tegen Man-In-The-Middle (MITM) aanvallen. Pinning is het proces van het associëren van een host met hun verwachte X509-certificaat of openbare sleutel. Zodra een certificaat of openbare sleutel bekend is of wordt gezien voor een host, wordt het certificaat of de openbare sleutel gekoppeld of 'vastgemaakt' aan de host. </p><p>Wanneer een tegenstander probeert SSL MITM-aanval uit te voeren, zal de sleutel van de server van de aanvaller tijdens de SSL-handshake dus afwijken van de sleutel van het `ServerCertificateValidationCallback` vastgemaakte certificaat en wordt het verzoek verwijderd, waardoor het vastzetten van mitm-certificaten kan worden voorkomen door de gemachtigde van ServicePointManager te implementeren.</p>|
 
 ### <a name="example"></a>Voorbeeld
 ```csharp
@@ -282,30 +282,30 @@ namespace CertificatePinningExample
 }
 ```
 
-## <a id="https-transport"></a>HTTPS-beveiligd transport kanaal inschakelen
+## <a name="enable-https---secure-transport-channel"></a><a id="https-transport"></a>HTTPS inschakelen - Secure Transport-kanaal
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | WCF | 
+| **Component**               | WCF | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | NET Framework 3 |
-| **Eigenschappen**              | N.v.t.  |
-| **Referentie**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
-| **Stappen** | De configuratie van de toepassing moet ervoor zorgen dat HTTPS wordt gebruikt voor alle toegang tot gevoelige informatie.<ul><li>**Uitleg:** Als een toepassing gevoelige informatie verwerkt en geen versleuteling op bericht niveau gebruikt, mag deze alleen communiceren via een versleuteld transport kanaal.</li><li>**Aanbevelingen:** Zorg ervoor dat HTTP-Trans Port is uitgeschakeld en schakel in plaats daarvan HTTPS-Trans Port in. Vervang bijvoorbeeld de `<httpTransport/>` met `<httpsTransport/>`-tag. Vertrouw niet op een netwerk configuratie (firewall) om te garanderen dat de toepassing alleen toegankelijk is via een beveiligd kanaal. Vanuit een Philosophical-weergave punt moet de toepassing niet afhankelijk zijn van het netwerk voor de beveiliging.</li></ul><p>Vanuit een praktisch oogpunt van de gebruikers die verantwoordelijk zijn voor het beveiligen van het netwerk, worden de beveiligings vereisten van de toepassing niet altijd gevolgd tijdens het ontwikkelen.</p>|
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
+| **Stappen** | De toepassingsconfiguratie moet ervoor zorgen dat HTTPS wordt gebruikt voor alle toegang tot gevoelige informatie.<ul><li>**UITLEG:** Als een toepassing gevoelige informatie verwerkt en geen versleuteling op berichtniveau gebruikt, mag deze alleen via een versleuteld transportkanaal communiceren.</li><li>**AANBEVELINGEN:** Zorg ervoor dat HTTP-transport is uitgeschakeld en schakel in plaats daarvan HTTPS-transport in. Vervang bijvoorbeeld de `<httpTransport/>` `<httpsTransport/>` tag door. Vertrouw niet op een netwerkconfiguratie (firewall) om te garanderen dat de toepassing alleen via een beveiligd kanaal kan worden geopend. Vanuit filosofisch oogpunt mag de toepassing niet afhankelijk zijn van het netwerk voor de beveiliging ervan.</li></ul><p>Vanuit praktisch oogpunt houden de mensen die verantwoordelijk zijn voor het beveiligen van het netwerk niet altijd de beveiligingsvereisten van de toepassing bij als ze evolueren.</p>|
 
-## <a id="message-protection"></a>WCF: beveiligings niveau voor bericht beveiliging instellen op EncryptAndSign
+## <a name="wcf-set-message-security-protection-level-to-encryptandsign"></a><a id="message-protection"></a>WCF: Beveiligingsniveau voor berichten instellen op EncryptAndSign
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | WCF | 
+| **Component**               | WCF | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | .NET Framework 3 |
-| **Eigenschappen**              | N.v.t.  |
-| **Referentie**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
-| **Stappen** | <ul><li>**Uitleg:** Wanneer het beveiligings niveau is ingesteld op ' geen ', wordt de beveiliging van berichten uitgeschakeld. Vertrouwelijkheid en integriteit wordt bereikt met het juiste niveau van de instelling.</li><li>**VEREISTEN**<ul><li>Wanneer `Mode=None`-schakelt bericht beveiliging uit</li><li>bij `Mode=Sign`, maar het bericht niet versleutelen. moet worden gebruikt als de gegevens integriteit belang rijk is</li><li>het bericht `Mode=EncryptAndSign`-ondertekenen en versleutelen</li></ul></li></ul><p>Overweeg versleuteling uit te scha kelen en uw bericht alleen te ondertekenen wanneer u alleen de integriteit van de gegevens moet valideren zonder dat u zich zorgen hoeft te maken. Dit kan handig zijn voor bewerkingen of service contracten waarin u de oorspronkelijke afzender moet valideren, maar er geen gevoelige gegevens worden verzonden. Zorg er bij het verminderen van het beveiligings niveau voor dat het bericht geen persoonlijke gegevens bevat.</p>|
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
+| **Stappen** | <ul><li>**UITLEG:** Wanneer het beschermingsniveau is ingesteld op "geen" wordt berichtbeveiliging uitgeschakeld. Vertrouwelijkheid en integriteit wordt bereikt met de juiste mate van instelling.</li><li>**Aanbevelingen:**<ul><li>wanneer `Mode=None` - Berichtbeveiliging uitschakelt</li><li>wanneer `Mode=Sign` - Tekens maar niet het bericht versleutelt; moet worden gebruikt wanneer gegevensintegriteit belangrijk is</li><li>wanneer `Mode=EncryptAndSign` - Het bericht ondertekenen en versleutelen</li></ul></li></ul><p>Overweeg om versleuteling uit te schakelen en uw bericht alleen te ondertekenen wanneer u alleen de integriteit van de informatie hoeft te valideren zonder zich zorgen te maken over vertrouwelijkheid. Dit kan handig zijn voor bewerkingen of servicecontracten waarin u de oorspronkelijke afzender moet valideren, maar er geen gevoelige gegevens worden verzonden. Let er bij het verlagen van het beschermingsniveau op dat het bericht geen persoonsgegevens bevat.</p>|
 
 ### <a name="example"></a>Voorbeeld
-Het configureren van de service en de bewerking om het bericht alleen te ondertekenen wordt weer gegeven in de volgende voor beelden. Voor beeld van een service contract van `ProtectionLevel.Sign`: Hier volgt een voor beeld van het gebruik van ProtectionLevel. Sign op het service contract niveau: 
+Het configureren van de service en de bewerking om alleen het bericht te ondertekenen, wordt weergegeven in de volgende voorbeelden. Voorbeeld van `ProtectionLevel.Sign`servicecontract: het volgende is een voorbeeld van het gebruik van ProtectionLevel.Sign op servicecontractniveau: 
 ```
 [ServiceContract(Protection Level=ProtectionLevel.Sign] 
 public interface IService 
@@ -315,37 +315,37 @@ public interface IService
 ```
 
 ### <a name="example"></a>Voorbeeld
-Voor beeld van een bewerkings contract van `ProtectionLevel.Sign` (voor granulaire controle): Hier volgt een voor beeld van het gebruik van `ProtectionLevel.Sign` op het niveau OperationContract:
+Operation contract `ProtectionLevel.Sign` example of (for Granular Control): `ProtectionLevel.Sign` Het volgende is een voorbeeld van het gebruik op operationeel contract:
 
 ```
 [OperationContract(ProtectionLevel=ProtectionLevel.Sign] 
 string GetData(int value);
 ``` 
 
-## <a id="least-account-wcf"></a>WCF: gebruik een account met minimale bevoegdheden om uw WCF-service uit te voeren
+## <a name="wcf-use-a-least-privileged-account-to-run-your-wcf-service"></a><a id="least-account-wcf"></a>WCF: gebruik een account met de minste bevoegdheden om uw WCF-service uit te voeren
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | WCF | 
+| **Component**               | WCF | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | .NET Framework 3 |
-| **Eigenschappen**              | N.v.t.  |
-| **Referentie**              | [MSDN](https://msdn.microsoft.com/library/ff648826.aspx ) |
-| **Stappen** | <ul><li>**Uitleg:** Voer geen WCF-services uit onder Administrator of account met hoge bevoegdheden. Als er sprake is van een inbreuk op de services, resulteert dit in grote impact.</li><li>**Aanbevelingen:** Gebruik een account met minimale bevoegdheden om uw WCF-service te hosten, omdat deze de kwets baarheid van uw toepassing vermindert en de mogelijke schade kan verminderen als u wordt aangevallen. Als het service account aanvullende toegangs rechten vereist voor infrastructuur resources zoals MSMQ, het gebeurtenis logboek, prestatie meter items en het bestands systeem, moeten de juiste machtigingen worden verleend aan deze resources zodat de WCF-service kan worden uitgevoerd.</li></ul><p>Als uw service toegang moet hebben tot specifieke resources namens de oorspronkelijke oproepende functie, gebruikt u imitatie en overdracht om de identiteit van de beller te stroom te geven voor een stroomafwaartse autorisatie controle. Gebruik in een ontwikkelings scenario het lokale netwerk service account, een speciaal ingebouwd account met beperkte bevoegdheden. Maak in een productie scenario een aangepast domein service account met minimale privileges.</p>|
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | [MSDN](https://msdn.microsoft.com/library/ff648826.aspx ) |
+| **Stappen** | <ul><li>**UITLEG:** Voer geen WCF-services uit onder een account met beheerders of hoge bevoegdheden. in het geval van een compromis van de diensten zal dit leiden tot een grote impact.</li><li>**AANBEVELINGEN:** Gebruik een account met de minste bevoegdheden om uw WCF-service te hosten, omdat het het aanvalsoppervlak van uw toepassing vermindert en de potentiële schade vermindert als u wordt aangevallen. Als het serviceaccount aanvullende toegangsrechten vereist voor infrastructuurbronnen zoals MSMQ, het gebeurtenislogboek, prestatiemeteritems en het bestandssysteem, moeten aan deze bronnen de juiste machtigingen worden gegeven, zodat de WCF-service succesvol kan worden uitgevoerd.</li></ul><p>Als uw service namens de oorspronkelijke beller toegang moet krijgen tot specifieke bronnen, gebruikt u imitatie en overdracht om de identiteit van de beller door te voeren voor een downstreamautorisatiecontrole. Gebruik in een ontwikkelingsscenario het lokale netwerkserviceaccount, een speciaal ingebouwd account dat de bevoegdheden heeft verminderd. Maak in een productiescenario een aangepast domeinserviceaccount met de minste bevoegdheden.</p>|
 
-## <a id="webapi-https"></a>Alle verkeer naar web-Api's via HTTPS-verbinding afdwingen
+## <a name="force-all-traffic-to-web-apis-over-https-connection"></a><a id="webapi-https"></a>Al het verkeer naar web-API's via HTTPS-verbinding forceren
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Web-API | 
+| **Component**               | Web-API | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | MVC5, MVC6 |
-| **Eigenschappen**              | N.v.t.  |
-| **Referentie**              | [SSL afdwingen in een web-API-controller](https://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
-| **Stappen** | Als een toepassing zowel een HTTPS-als een HTTP-binding heeft, kunnen clients nog steeds HTTP gebruiken voor toegang tot de site. U kunt dit voor komen door een actie filter te gebruiken om ervoor te zorgen dat aanvragen voor beveiligde Api's altijd over HTTPS zijn.|
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | [SSL afdwingen in een web-API-controller](https://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
+| **Stappen** | Als een toepassing zowel een HTTPS- als een HTTP-binding heeft, kunnen clients HTTP nog steeds gebruiken om toegang te krijgen tot de site. Gebruik hiervoor een actiefilter om ervoor te zorgen dat aanvragen voor beveiligde API's altijd via HTTPS zijn.|
 
 ### <a name="example"></a>Voorbeeld 
-De volgende code toont een web API-verificatie filter dat controleert op SSL: 
+In de volgende code wordt een web-api-verificatiefilter weergegeven dat controleert op SSL: 
 ```csharp
 public class RequireHttpsAttribute : AuthorizationFilterAttribute
 {
@@ -365,7 +365,7 @@ public class RequireHttpsAttribute : AuthorizationFilterAttribute
     }
 }
 ```
-Voeg dit filter toe aan Web API-acties waarvoor SSL is vereist: 
+Voeg dit filter toe aan alle Web API-acties waarvoor SSL nodig is: 
 ```csharp
 public class ValuesController : ApiController
 {
@@ -374,37 +374,37 @@ public class ValuesController : ApiController
 }
 ```
  
-## <a id="redis-ssl"></a>Zorg ervoor dat de communicatie met Azure cache voor redis meer dan SSL is
+## <a name="ensure-that-communication-to-azure-cache-for-redis-is-over-ssl"></a><a id="redis-ssl"></a>Ervoor zorgen dat de communicatie met Azure Cache voor Redis via SSL verloopt
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Azure Cache voor Redis | 
+| **Component**               | Azure Cache voor Redis | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
-| **Eigenschappen**              | N.v.t.  |
-| **Referentie**              | [Azure redis SSL-ondersteuning](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
-| **Stappen** | De redis-server biedt geen ondersteuning voor SSL vanuit het vak, maar Azure cache voor redis wel. Als u verbinding maakt met Azure cache voor redis en uw client SSL ondersteunt, zoals stack Exchange. redis, moet u SSL gebruiken. Standaard is niet-SSL-poort uitgeschakeld voor nieuwe Azure-cache voor redis-exemplaren. Zorg ervoor dat de beveiligde standaard waarden niet worden gewijzigd, tenzij er een afhankelijkheid is voor SSL-ondersteuning voor redis-clients. |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | [Azure Redis SSL-ondersteuning](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
+| **Stappen** | Redis-server biedt geen ondersteuning voor SSL uit de doos, maar Azure Cache voor Redis wel. Als u verbinding maakt met Azure Cache voor Redis en uw client SSL ondersteunt, zoals StackExchange.Redis, moet u SSL gebruiken. Standaard is de niet-SSL-poort uitgeschakeld voor nieuwe Azure-cache voor Redis-exemplaren. Controleer of de veilige standaardinstellingen niet worden gewijzigd, tenzij er een afhankelijkheid is van SSL-ondersteuning voor redis-clients. |
 
-Houd er rekening mee dat redis is ontworpen voor toegang door vertrouwde clients binnen vertrouwde omgevingen. Dit betekent dat het niet goed is om het redis-exemplaar rechtstreeks beschikbaar te maken op internet of in het algemeen naar een omgeving waarin niet-vertrouwde clients rechtstreeks toegang hebben tot de TCP-poort of UNIX-socket van redis. 
+Houd er rekening mee dat Redis is ontworpen om toegankelijk te zijn voor vertrouwde clients in vertrouwde omgevingen. Dit betekent dat het meestal geen goed idee is om de Redis-instantie rechtstreeks bloot te stellen aan het internet of, in het algemeen, aan een omgeving waar niet-vertrouwde clients rechtstreeks toegang hebben tot de Redis TCP-poort of UNIX-socket. 
 
-## <a id="device-field"></a>Communicatie tussen het apparaat en de veld Gateway beveiligen
+## <a name="secure-device-to-field-gateway-communication"></a><a id="device-field"></a>Beveiligde gatewayvan apparaat naar veld
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | IoT-veld Gateway | 
+| **Component**               | IoT-veldgateway | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
-| **Eigenschappen**              | N.v.t.  |
-| **Referentie**              | N.v.t.  |
-| **Stappen** | Voor op IP gebaseerde apparaten kan het communicatie protocol doorgaans worden ingekapseld in een SSL/TLS-kanaal om gegevens onderweg te beschermen. Andere protocollen die SSL/TLS-onderzoek niet ondersteunen als er sprake is van een beveiligde versie van het protocol dat een beveiliging biedt op Trans Port of de laag van berichten. |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | N.v.t.  |
+| **Stappen** | Voor IP-apparaten kan het communicatieprotocol doorgaans worden ingekapseld in een SSL/TLS-kanaal om gegevens tijdens het transport te beschermen. Voor andere protocollen die SSL/TLS niet ondersteunen, moet u onderzoeken of er veilige versies van het protocol zijn die beveiliging bieden op transport- of berichtlaag. |
 
-## <a id="device-cloud"></a>Communicatie tussen het apparaat en de Cloud gateway met behulp van SSL/TLS
+## <a name="secure-device-to-cloud-gateway-communication-using-ssltls"></a><a id="device-cloud"></a>Secure Device to Cloud Gateway communicatie met SSL/TLS
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | IoT-Cloud gateway | 
+| **Component**               | IoT Cloud Gateway | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
-| **Eigenschappen**              | N.v.t.  |
-| **Referentie**              | [Kies uw communicatie protocol](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging) |
-| **Stappen** | HTTP-AMQP of MQTT-protocollen beveiligen met SSL/TLS. |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | [Kies uw communicatieprotocol](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging) |
+| **Stappen** | Beveilig HTTP/AMQP- of MQTT-protocollen met SSL/TLS. |

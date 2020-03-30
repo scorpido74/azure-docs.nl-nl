@@ -1,103 +1,99 @@
 ---
-title: Evalueer een groot aantal virtuele VMware-machines voor migratie naar Azure met Azure Migrate | Microsoft Docs
-description: Hierin wordt beschreven hoe u een groot aantal virtuele VMware-machines kunt beoordelen voor migratie naar Azure met behulp van de Azure Migrate-service.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
-ms.topic: conceptual
-ms.date: 07/12/2019
-ms.author: hamusa
-ms.openlocfilehash: f76134ffc6a7becb9b5719dcb3d826130b7cfa86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+title: Grote aantallen VMware VM's beoordelen op migratie naar Azure met Azure Migrate
+description: Beschrijft hoe u grote aantallen VMware VM's beoordelen op migratie naar Azure met behulp van de Azure Migrate service.e
+ms.topic: how-to
+ms.date: 03/23/2020
+ms.openlocfilehash: d404583b1bad474a5e24e8c7cf060aeb80d610bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453268"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336858"
 ---
-# <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Een groot aantal virtuele VMware-machines beoordelen voor migratie naar Azure
+# <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Grote aantallen VMware VM's beoordelen op migratie naar Azure
 
 
-In dit artikel wordt beschreven hoe u met het hulp programma Azure Migrate server Assessment grote aantallen (1000-35000) van on-premises virtuele VMware-machines kunt beoordelen voor migratie naar Azure.
+In dit artikel wordt beschreven hoe u grote aantallen (1000-35.000) on-premises Vm's vMware beoordelen voor migratie naar Azure, met behulp van het hulpprogramma azure migrate server assessment.
 
-[Azure migrate](migrate-services-overview.md) biedt een hub aan hulpprogram ma's waarmee u apps, infra structuur en werk belastingen op Microsoft Azure kunt detecteren, evalueren en migreren. De hub bevat Azure Migrate-hulpprogram ma's en ISV-aanbiedingen (Independent Software Vendor) van derden. 
+[Azure Migrate](migrate-services-overview.md) biedt een hub met hulpprogramma's waarmee u apps, infrastructuur en workloads ontdekken, beoordelen en migreren naar Microsoft Azure. De hub bevat Azure Migrate-hulpprogramma's en isv-aanbiedingen (independent software vendor) van derden. 
 
 In dit artikel leert u het volgende:
 > [!div class="checklist"]
-> * Plan voor evaluatie op schaal.
-> * Configureer Azure-machtigingen en bereid VMware voor evaluatie voor.
-> * Maak een Azure Migrate project en maak een evaluatie.
-> * Controleer de evaluatie tijdens het plannen van de migratie.
+> * Plan voor beoordeling op schaal.
+> * Configureer Azure-machtigingen en bereid VMware voor op beoordeling.
+> * Maak een Azure Migrate-project en maak een beoordeling.
+> * Bekijk de beoordeling terwijl u van plan bent migratie.
 
 
 > [!NOTE]
-> Als u een haalbaarheids test wilt uitproberen om een aantal Vm's te beoordelen voordat u op schaal controleert, volgt u de [reeks zelf](tutorial-prepare-vmware.md) studies
+> Als u een proof-of-concept wilt uitproberen om een paar VM's te beoordelen voordat u op schaal beoordeelt, volgt u onze [zelfstudiereeks](tutorial-prepare-vmware.md)
 
-## <a name="plan-for-assessment"></a>Beoordeling plannen
+## <a name="plan-for-assessment"></a>Plan voor beoordeling
 
-Bij het plannen van de beoordeling van een groot aantal virtuele VMware-machines, zijn er een aantal dingen die u moet nadenken:
+Bij de planning voor de beoordeling van een groot aantal VMware VM's, zijn er een paar dingen om over na te denken:
 
-- **Azure migrate projecten plannen**: Ontdek hoe u Azure migrate projecten implementeert. Als uw data centers zich bijvoorbeeld in verschillende geografische grafieken bevinden, of als u de meta gegevens voor detectie, analyses of migratie wilt opslaan in een andere geografie, hebt u mogelijk meerdere projecten nodig. 
-- **Toestellen plannen**: Azure migrate gebruikt een on-premises Azure migrate apparaat, geïmplementeerd als een VMware-VM, om voortdurend vm's te detecteren. Het apparaat bewaakt omgevings wijzigingen, zoals het toevoegen van Vm's, schijven of netwerk adapters. Ook worden er meta gegevens en prestatie gegevens naar Azure verzonden. U moet bepalen hoeveel apparaten er moeten worden geïmplementeerd.
-- **Accounts voor detectie plannen**: het Azure migrate-apparaat maakt gebruik van een account met toegang tot VCenter server om vm's te ontdekken voor evaluatie en migratie. Als u meer dan 10.000 Vm's wilt detecteren, stelt u meerdere accounts in.
+- **Azure Migrate-projecten plannen:** zoek uit hoe azure-migratieprojecten kunnen worden geïmplementeerd. Als uw datacenters zich bijvoorbeeld in verschillende regio's bevinden of als u detectie-, beoordelings- of migratiegerelateerde metagegevens in een andere geografie moet opslaan, hebt u mogelijk meerdere projecten nodig. 
+- **Apparaten plannen**: Azure Migrate gebruikt een on-premises Azure Migrate-toestel, geïmplementeerd als VMware VM, om vm's voortdurend te ontdekken. Het toestel controleert omgevingswijzigingen, zoals het toevoegen van VM's, schijven of netwerkadapters. Het stuurt ook metagegevens en prestatiegegevens over hen naar Azure. Je moet uitzoeken hoeveel apparaten je moet implementeren.
+- **Accounts plannen voor detectie**: het Azure Migrate-toestel gebruikt een account met toegang tot vCenter Server om VM's te detecteren voor beoordeling en migratie. Als u meer dan 10.000 VM's ontdekt, stelt u meerdere accounts in.
 
 
-## <a name="planning-limits"></a>Plannings limieten
+## <a name="planning-limits"></a>Planningslimieten
  
-Gebruik de limieten in deze tabel voor de planning.
+Gebruik de limieten die in deze tabel zijn samengevat voor planning.
 
-**Planning** | **Limieten**
+**Planning** | **Grenzen**
 --- | --- 
-**Azure Migrate projecten** | Evalueer Maxi maal 35.000 Vm's in een project.
-**Azure Migrate apparaat** | Een apparaat kan Maxi maal 10.000 Vm's op een vCenter Server detecteren.<br/> Een apparaat kan alleen verbinding maken met één vCenter Server.<br/> Een apparaat kan alleen worden gekoppeld aan één Azure Migrate project.<br/>  Een wille keurig aantal apparaten kan worden gekoppeld aan één Azure Migrate project. <br/><br/> 
-**Groep** | U kunt Maxi maal 35.000 Vm's toevoegen aan één groep.
-**Azure Migrate beoordeling** | U kunt Maxi maal 35.000 Vm's in één evaluatie evalueren.
+**Azure-migratieprojecten** | Beoordeel tot 35.000 VM's in een project.
+**Azure Migrate-apparaat** | Een toestel kan tot 10.000 VM's ontdekken op een vCenter-server.<br/> Een toestel kan alleen verbinding maken met één vCenter-server.<br/> Een toestel kan alleen worden gekoppeld aan één Azure Migrate-project.<br/>  Elk aantal apparaten kan worden gekoppeld aan één Azure Migrate-project. <br/><br/> 
+**Groep** | U maximaal 35.000 VM's in één groep toevoegen.
+**Azure-migratiebeoordeling** | U maximaal 35.000 VM's beoordelen in één beoordeling.
 
-Hieronder volgen enkele voor beelden van implementaties:
+Met deze limieten in het achterhoofd, hier zijn enkele voorbeeld implementaties:
 
 
-**vCenter-server** | **Vm's op server** | **Aanbeveling** | **Actie**
+**vCenter-server** | **VM's op server** | **Aanbeveling** | **Actie**
 ---|---|---
-Een | < 10.000 | Eén Azure Migrate-project.<br/> Eén apparaat.<br/> Een vCenter-account voor detectie. | Apparaat instellen, verbinding maken met vCenter Server met een account.
-Een | > 10.000 | Eén Azure Migrate-project.<br/> Meerdere apparaten.<br/> Meerdere vCenter-accounts. | Stel het apparaat in voor elke 10.000 Vm's.<br/><br/> Stel vCenter-accounts in en Splits de inventaris om de toegang voor een account te beperken tot Maxi maal 10.000 Vm's.<br/> Elk apparaat verbinden met een vCenter-Server met een account.<br/> U kunt afhankelijkheden analyseren tussen computers die worden gedetecteerd met verschillende apparaten.
-Meerdere | < 10.000 |  Eén Azure Migrate-project.<br/> Meerdere apparaten.<br/> Een vCenter-account voor detectie. | Toestellen instellen, verbinding maken met vCenter Server met een account.<br/> U kunt afhankelijkheden analyseren tussen computers die worden gedetecteerd met verschillende apparaten.
-Meerdere | > 10.000 | Eén Azure Migrate-project.<br/> Meerdere apparaten.<br/> Meerdere vCenter-accounts. | Als vCenter Server detectie < 10.000 Vm's, moet u voor elke vCenter Server een apparaat instellen.<br/><br/> Als vCenter Server detectie > 10.000 Vm's, stelt u een apparaat in voor elke 10.000 Vm's.<br/> Stel vCenter-accounts in en Splits de inventaris om de toegang voor een account te beperken tot Maxi maal 10.000 Vm's.<br/> Elk apparaat verbinden met een vCenter-Server met een account.<br/> U kunt afhankelijkheden analyseren tussen computers die worden gedetecteerd met verschillende apparaten.
+Eén | < 10.000 | Eén Azure Migrate-project.<br/> Eén apparaat.<br/> Eén vCenter-account voor detectie. | Stel toestel in, maak verbinding met vCenter Server met een account.
+Eén | > 10.000 | Eén Azure Migrate-project.<br/> Meerdere apparaten.<br/> Meerdere vCenter-accounts. | Stel een apparaat in voor elke 10.000 VM's.<br/><br/> Stel vCenter-accounts in en verdeel de voorraad om de toegang voor een account te beperken tot minder dan 10.000 VM's.<br/> Verbind elk toestel met vCenter-server met een account.<br/> U afhankelijkheden analyseren tussen machines die met verschillende apparaten worden gedetecteerd.
+Meerdere | < 10.000 |  Eén Azure Migrate-project.<br/> Meerdere apparaten.<br/> Eén vCenter-account voor detectie. | Apparaten instellen, verbinding maken met vCenter Server met een account.<br/> U afhankelijkheden analyseren tussen machines die met verschillende apparaten worden gedetecteerd.
+Meerdere | > 10.000 | Eén Azure Migrate-project.<br/> Meerdere apparaten.<br/> Meerdere vCenter-accounts. | Als vCenter Server-detectie < 10.000 VM's, stelt u een toestel in voor elke vCenter-server.<br/><br/> Als vCenter Server detectie > 10.000 VM's, stelt u een toestel in voor elke 10.000 VM's.<br/> Stel vCenter-accounts in en verdeel de voorraad om de toegang voor een account te beperken tot minder dan 10.000 VM's.<br/> Verbind elk toestel met vCenter-server met een account.<br/> U afhankelijkheden analyseren tussen machines die met verschillende apparaten worden gedetecteerd.
 
 
-## <a name="plan-discovery-in-a-multi-tenant-environment"></a>Detectie plannen in een omgeving met meerdere tenants
+## <a name="plan-discovery-in-a-multi-tenant-environment"></a>Detectie plannen in een omgeving met meerdere huurders
 
-Als u van plan bent een omgeving met meerdere tenants te plannen, kunt u de detectie op de vCenter Server bereiken.
+Als u een omgeving met meerdere tenant's wilt, u de detectie op de vCenterserver uitvoeren.
 
-- U kunt het apparaat detectie bereik instellen op een vCenter Server Data Centers, clusters of map met clusters, hosts of de map hosts of afzonderlijke Vm's.
-- Als uw omgeving wordt gedeeld door tenants en u elke Tenant afzonderlijk wilt detecteren, kunt u de toegang tot het vCenter-account beperken dat het apparaat voor detectie gebruikt. 
-    - U kunt het bereik van VM-mappen beperken als de tenants hosts delen. Azure Migrate kan geen Vm's detecteren als het vCenter-account toegang heeft verleend op het niveau van de vCenter-VM-map. Als u uw detectie op basis van VM-mappen wilt beperken, kunt u dit doen door ervoor te zorgen dat het vCenter-account alleen-lezen toegang heeft dat is toegewezen op een VM-niveau. Meer informatie over detectiebereik vindt u [hier](tutorial-assess-vmware.md#set-the-scope-of-discovery).
+- U het detectiebereik van het toestel instellen op een vCenter Server-datacenters, clusters of mappen met clusters, hosts of mappen met hosts of afzonderlijke VM's.
+- Als uw omgeving wordt gedeeld tussen tenants en u elke tenant afzonderlijk wilt ontdekken, u toegang tot het vCenter-account dat het toestel gebruikt voor detectie, openen. 
+    - U het bereik per VM-map bekijken als de tenants hosts delen. Azure Migrate kan vm's niet ontdekken als het vCenter-account toegang heeft op vCenter VM-mapniveau. Als u uw detectie wilt scopen met VM-mappen, u dit doen door ervoor te zorgen dat het vCenter-account alleen-lezen toegang heeft toegewezen op VM-niveau. [Meer informatie](set-discovery-scope.md).
 
-## <a name="prepare-for-assessment"></a>Evaluatie voorbereiden
+## <a name="prepare-for-assessment"></a>Voorbereiden op beoordeling
 
-Azure en VMware voorbereiden voor Server evaluatie. 
+Bereid Azure en VMware voor op serverbeoordeling. 
 
-1. Controleer de [vereisten en beperkingen voor VMware-ondersteuning](migrate-support-matrix-vmware.md).
-2. Stel machtigingen in voor uw Azure-account om te communiceren met Azure Migrate.
-3. VMware voorbereiden voor evaluatie.
+1. Controleer [de ondersteuningsvereisten en -beperkingen van VMware.](migrate-support-matrix-vmware.md)
+2. Machtigingen instellen voor uw Azure-account voor interactie met Azure Migrate.
+3. VMware voorbereiden op beoordeling.
 
-Volg de instructies in [deze zelf studie](tutorial-prepare-vmware.md) om deze instellingen te configureren.
+Volg de instructies in [deze zelfstudie](tutorial-prepare-vmware.md) om deze instellingen te configureren.
 
 
 ## <a name="create-a-project"></a>Een project maken
 
-In overeenstemming met uw plannings vereisten gaat u als volgt te werk:
+Ga als volgt te werk in overeenstemming met uw planningsvereisten:
 
-1. Een Azure Migrate projecten maken.
-2. Voeg het hulp programma voor het evalueren van Azure Migrate-servers toe aan de projecten.
+1. Maak een Azure Migrate-projecten.
+2. Voeg het hulpprogramma voor azure migrateserverbeoordeling toe aan de projecten.
 
 [Meer informatie](how-to-add-tool-first-time.md)
 
-## <a name="create-and-review-an-assessment"></a>Een evaluatie maken en bekijken
+## <a name="create-and-review-an-assessment"></a>Een beoordeling maken en beoordelen
 
-1. Maak evaluaties voor virtuele VMware-machines.
-1. Bekijk de evaluaties in de voor bereiding op de migratie planning.
+1. Maak beoordelingen voor VMware VM's.
+1. Bekijk de beoordelingen ter voorbereiding van migratieplanning.
 
 
-Volg de instructies in [deze zelf studie](tutorial-assess-vmware.md) om deze instellingen te configureren.
+Volg de instructies in [deze zelfstudie](tutorial-assess-vmware.md) om deze instellingen te configureren.
     
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -105,9 +101,9 @@ Volg de instructies in [deze zelf studie](tutorial-assess-vmware.md) om deze ins
 In dit artikel leert u het volgende:
  
 > [!div class="checklist"] 
-> * Gepland om Azure Migrate Beoordelingen voor virtuele VMware-machines te schalen
-> * Voor bereiding van Azure en VMware voor evaluatie
-> * Een Azure Migrate project gemaakt en evaluaties uitgevoerd
-> * Gereviseerde evaluaties in de voor bereiding voor de migratie.
+> * Gepland om Azure Migrate-beoordelingen voor VMware VM's te schalen
+> * Azure en VMware voorbereid voor beoordeling
+> * Een Azure Migrate-project maken en beoordelingen uitvoeren
+> * Herziene beoordelingen ter voorbereiding van migratie.
 
-Nu [leert u hoe](concepts-assessment-calculation.md) beoordelingen worden berekend en hoe u beoordelingen kunt [wijzigen](how-to-modify-assessment.md).
+[Nu, leren hoe](concepts-assessment-calculation.md) beoordelingen worden berekend, en hoe beoordelingen te [wijzigen](how-to-modify-assessment.md).

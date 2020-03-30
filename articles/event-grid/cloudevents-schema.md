@@ -1,28 +1,28 @@
 ---
-title: Azure Event Grid gebruiken met gebeurtenissen in het CloudEvents-schema
-description: Hierin wordt beschreven hoe u het CloudEvents-schema gebruikt voor gebeurtenissen in Azure Event Grid. De service ondersteunt gebeurtenissen in de JSON-implementatie van Cloud gebeurtenissen.
+title: Azure-gebeurtenisraster gebruiken met gebeurtenissen in het CloudEvents-schema
+description: Beschrijft hoe u het CloudEvents-schema gebruiken voor gebeurtenissen in Azure Event Grid. De service ondersteunt evenementen bij de JSON-implementatie van Cloud Events.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 25a24c5bb44c77038a508e4c2f4e099132101f6a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 0efccd2851885dad209d5548a76737c25777b891
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79265075"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372452"
 ---
-# <a name="use-cloudevents-v10-schema-with-event-grid"></a>CloudEvents v 1.0-schema gebruiken met Event Grid
+# <a name="use-cloudevents-v10-schema-with-event-grid"></a>CloudEvents v1.0-schema gebruiken met gebeurtenisraster
 
-Naast het [standaard schema](event-schema.md)van de gebeurtenis, ondersteunt Azure Event grid systeem eigen gebeurtenissen in de [JSON-implementatie van CloudEvents v 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) en [http-protocol binding](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md). [CloudEvents](https://cloudevents.io/) is een [open specificatie](https://github.com/cloudevents/spec/blob/v1.0/spec.md) voor het beschrijven van gebeurtenis gegevens.
+Naast het [standaardgebeurtenisschema](event-schema.md)ondersteunt Azure Event Grid native gebeurtenissen in de [JSON-implementatie van CloudEvents v1.0-](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) en [HTTP-protocolbinding](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md). [CloudEvents](https://cloudevents.io/) is een [open specificatie](https://github.com/cloudevents/spec/blob/v1.0/spec.md) voor het beschrijven van gebeurtenisgegevens.
 
-CloudEvents vereenvoudigt interoperabiliteit door een gemeen schappelijk gebeurtenis schema te bieden voor het publiceren en gebruiken van Cloud gebeurtenissen. Dit schema biedt uniforme hulp middelen, standaard methoden voor route ring & het afhandelen van gebeurtenissen en universele manieren om het buitenste gebeurtenis schema te deserialiseren. Met een gemeen schappelijk schema kunt u gemakkelijker werk op verschillende platforms integreren.
+CloudEvents vereenvoudigt de interoperabiliteit door een algemeen gebeurtenisschema te bieden voor het publiceren en consumeren van cloudgebaseerde gebeurtenissen. Dit schema maakt uniforme tooling, standaardmanieren van routering & het afhandelen van gebeurtenissen en universele manieren om het externe gebeurtenisschema te deserialiseren. Met een gemeenschappelijk schema u werk gemakkelijker integreren op verschillende platforms.
 
-CloudEvents wordt gebouwd door verschillende deel [nemers](https://github.com/cloudevents/spec/blob/master/community/contributors.md), waaronder micro soft, via de [systeem eigen Cloud Computing Foundation](https://www.cncf.io/). Het is momenteel beschikbaar als versie 1,0.
+CloudEvents wordt gebouwd door verschillende [medewerkers](https://github.com/cloudevents/spec/blob/master/community/contributors.md), waaronder Microsoft, via de [Cloud Native Computing Foundation](https://www.cncf.io/). Het is momenteel beschikbaar als versie 1.0.
 
-In dit artikel wordt beschreven hoe u het CloudEvents-schema gebruikt met Event Grid.
+In dit artikel wordt beschreven hoe u het cloudgebeurtenissenschema gebruiken met gebeurtenisraster.
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
@@ -32,7 +32,7 @@ In dit artikel wordt beschreven hoe u het CloudEvents-schema gebruikt met Event 
 
 ## <a name="cloudevent-schema"></a>CloudEvent-schema
 
-Hier volgt een voor beeld van een Azure Blob Storage-gebeurtenis in de indeling CloudEvents:
+Hier is een voorbeeld van een Azure Blob Storage-gebeurtenis in de CloudEvents-indeling:
 
 ``` JSON
 {
@@ -60,26 +60,26 @@ Hier volgt een voor beeld van een Azure Blob Storage-gebeurtenis in de indeling 
 }
 ```
 
-[Hier](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)vindt u een gedetailleerde beschrijving van de beschik bare velden, hun typen en definities in CloudEvents v 1.0.
+Een gedetailleerde beschrijving van de beschikbare velden, hun typen en definities in CloudEvents v1.0 is [hier beschikbaar.](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)
 
-De waarden van headers voor gebeurtenissen die in het CloudEvents-schema en het Event Grid schema worden bezorgd, zijn hetzelfde als voor `content-type`. Voor het CloudEvents-schema is die header waarde `"content-type":"application/cloudevents+json; charset=utf-8"`. Voor Event Grid schema is die header waarde `"content-type":"application/json; charset=utf-8"`.
+De koptekstwaarden voor gebeurtenissen die worden geleverd in het cloudgebeurtenissenschema en het schema gebeurtenisraster zijn hetzelfde, behalve voor `content-type`. Voor het cloudgebeurtenissenschema is `"content-type":"application/cloudevents+json; charset=utf-8"`die kopwaarde . Voor het schema Gebeurtenisraster `"content-type":"application/json; charset=utf-8"`is die kopwaarde .
 
-## <a name="configure-event-grid-for-cloudevents"></a>Event Grid configureren voor CloudEvents
+## <a name="configure-event-grid-for-cloudevents"></a>Gebeurtenisraster configureren voor CloudEvents
 
-U kunt Event Grid gebruiken voor zowel invoer als uitvoer van gebeurtenissen in het CloudEvents-schema. U kunt CloudEvents gebruiken voor systeem gebeurtenissen, zoals Blob Storage gebeurtenissen en IoT Hub gebeurtenissen, en aangepaste gebeurtenissen. Het kan ook deze gebeurtenissen op de achtergrond transformeren.
+U Gebeurtenisraster gebruiken voor zowel invoer als uitvoer van gebeurtenissen in het CloudEvents-schema. U CloudEvents gebruiken voor systeemgebeurtenissen, zoals Blob Storage-gebeurtenissen en IoT Hub-gebeurtenissen en aangepaste gebeurtenissen. Het kan ook transformeren die gebeurtenissen op de draad heen en weer.
 
 
-| Invoer schema       | Uitvoer schema
+| Invoerschema       | Uitvoerschema
 |--------------------|---------------------
 | CloudEvents-indeling | CloudEvents-indeling
-| Event Grid indeling  | CloudEvents-indeling
-| Event Grid indeling  | Event Grid indeling
+| Gebeurtenisrasternotatie  | CloudEvents-indeling
+| Gebeurtenisrasternotatie  | Gebeurtenisrasternotatie
 
-Voor alle gebeurtenis schema's moet Event Grid worden gevalideerd bij het publiceren naar een event grid-onderwerp en bij het maken van een gebeurtenis abonnement. Zie [Event grid beveiliging en verificatie](security-authentication.md)voor meer informatie.
+Voor alle gebeurtenisschema's vereist gebeurtenisraster validatie bij het publiceren naar een gebeurtenisrasteronderwerp en bij het maken van een gebeurtenisabonnement. Zie [Beveiliging en verificatie van gebeurtenisraster](security-authentication.md)voor meer informatie.
 
-### <a name="input-schema"></a>Invoer schema
+### <a name="input-schema"></a>Invoerschema
 
-Wanneer u het aangepaste onderwerp maakt, stelt u het invoer schema voor een aangepast onderwerp in.
+U stelt het invoerschema in voor een aangepast onderwerp wanneer u het aangepaste onderwerp maakt.
 
 Gebruik voor Azure CLI:
 
@@ -109,9 +109,9 @@ New-AzureRmEventGridTopic `
   -InputSchema CloudEventSchemaV1_0
 ```
 
-### <a name="output-schema"></a>Uitvoer schema
+### <a name="output-schema"></a>Uitvoerschema
 
-U stelt het uitvoer schema in wanneer u het gebeurtenis abonnement maakt.
+U stelt het uitvoerschema in wanneer u het gebeurtenisabonnement maakt.
 
 Gebruik voor Azure CLI:
 
@@ -136,75 +136,70 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema CloudEventSchemaV1_0
 ```
 
- Op dit moment kunt u geen Event Grid trigger gebruiken voor een Azure Functions-app wanneer de gebeurtenis wordt bezorgd in het CloudEvents-schema. Gebruik een HTTP-trigger. Zie [using CloudEvents with Azure functions](#azure-functions)(Engelstalig) voor voor beelden van het implementeren van een http-trigger die gebeurtenissen ontvangt in het CloudEvents-schema.
+ Momenteel u geen trigger voor gebeurtenisrastergebruiken voor een Azure Functions-app wanneer de gebeurtenis wordt geleverd in het CloudEvents-schema. Gebruik een HTTP-trigger. Zie CloudEvents gebruiken [met Azure-functies](#azure-functions)voor voorbeelden van het implementeren van een HTTP-trigger die gebeurtenissen ontvangt in het CloudEvents-schema.
 
- ## <a name="endpoint-validation-with-cloudevents-v10"></a>Eindpunt validatie met CloudEvents v 1.0
+ ## <a name="endpoint-validation-with-cloudevents-v10"></a>Eindpuntvalidatie met CloudEvents v1.0
 
-Als u al bekend bent met Event Grid, is het mogelijk dat u op de hoogte bent van de verificatie-handshake van het Event Grid om misbruik te voor komen. CloudEvents v 1.0 implementeert zijn eigen [beveiligings semantiek](security-authentication.md#webhook-event-delivery) met behulp van de http-opties methode. [Hier](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection) vindt u meer informatie. Wanneer u het CloudEvents-schema voor uitvoer gebruikt, wordt Event Grid gebruikt met de CloudEvents v 1.0-beschermings beveiliging in plaats van het Event Grid validatie gebeurtenis mechanisme.
+Als u al bekend bent met Gebeurtenisraster, bent u mogelijk op de hoogte van de handdruk van event grid voor het voorkomen van misbruik. CloudEvents v1.0 implementeert zijn eigen [misbruikbescherming semantiek](security-authentication.md#webhook-event-delivery) met behulp van de HTTP OPTIONS-methode. [Hier](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection) vindt u meer informatie. Wanneer u het CloudEvents-schema gebruikt voor uitvoer, gebruikt Gebeurtenisraster met de cloudevents v1.0-misbruikbeveiliging in plaats van het gebeurtenismechanisme voor gebeurtenisrastergebeurtenissen.
 
 <a name="azure-functions"></a>
 
-## <a name="use-with-azure-functions"></a>Gebruiken met Azure Functions
+## <a name="use-with-azure-functions"></a>Gebruiken met Azure-functies
 
-De [Azure Functions Event grid-binding](../azure-functions/functions-bindings-event-grid.md) biedt geen systeem eigen ondersteuning voor CloudEvents, dus de http-geactiveerde functies worden gebruikt voor het lezen van CloudEvents-berichten. Wanneer u een HTTP-trigger gebruikt om CloudEvents te lezen, moet u code schrijven voor wat de Event Grid trigger automatisch doet:
+De [binding van het Azure Functions Event Grid](../azure-functions/functions-bindings-event-grid.md) biedt geen ondersteuning voor CloudEvents, dus http-geactiveerde functies worden gebruikt om CloudEvents-berichten te lezen. Wanneer u een HTTP-trigger gebruikt om CloudEvents te lezen, moet u code schrijven voor wat de trigger van eventgrid automatisch doet:
 
-* Hiermee verzendt u een validatie antwoord naar een [validatie aanvraag](../event-grid/security-authentication.md#webhook-event-delivery)voor het abonnement.
-* Hiermee wordt de functie aangeroepen per element van de gebeurtenis matrix die is opgenomen in de hoofd tekst van de aanvraag.
+* Hiermee verzendt u een validatieantwoord op een [abonnementsvalidatieaanvraag](../event-grid/security-authentication.md#webhook-event-delivery).
+* Roept de functie eenmaal per element van de gebeurtenisarray in de aanvraaginstantie.
 
-Voor informatie over de URL die moet worden gebruikt om de functie lokaal aan te roepen of wanneer deze wordt uitgevoerd in azure, raadpleegt u de [referentie documentatie voor http-trigger bindingen](../azure-functions/functions-bindings-http-webhook.md)
+Zie de [HTTP-triggerbindingsdocumentatie](../azure-functions/functions-bindings-http-webhook.md) voor informatie over de URL die moet worden gebruikt voor het lokaal inroepen van de functie of wanneer deze wordt uitgevoerd in Azure.
 
-Met de volgende C# voorbeeld code voor een http-trigger wordt Event grid trigger gedrag gesimuleerd.  Gebruik dit voor beeld voor gebeurtenissen die in het CloudEvents-schema worden bezorgd.
+De volgende voorbeeldc#-code voor een HTTP-trigger simuleert gebeurtenisrastertriggergedrag.  Gebruik dit voorbeeld voor gebeurtenissen die worden geleverd in het CloudEvents-schema.
 
 ```csharp
 [FunctionName("HttpTrigger")]
-public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req, ILogger log)
+public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", "options", Route = null)]HttpRequestMessage req, ILogger log)
 {
     log.LogInformation("C# HTTP trigger function processed a request.");
+    if (req.Method == "OPTIONS")
+    {
+        // If the request is for subscription validation, send back the validation code
+        
+        var response = req.CreateResponse(HttpStatusCode.OK);
+        response.Add("Webhook-Allowed-Origin", "eventgrid.azure.net");
+
+        return response;
+    }
 
     var requestmessage = await req.Content.ReadAsStringAsync();
     var message = JToken.Parse(requestmessage);
 
-    if (message.Type == JTokenType.Array)
-    {
-        // If the request is for subscription validation, send back the validation code.
-        if (string.Equals((string)message[0]["eventType"],
-        "Microsoft.EventGrid.SubscriptionValidationEvent",
-        System.StringComparison.OrdinalIgnoreCase))
-        {
-            log.LogInformation("Validate request received");
-            return req.CreateResponse<object>(new
-            {
-                validationResponse = message[0]["data"]["validationCode"]
-            });
-        }
-    }
-    else
-    {
-        // The request is not for subscription validation, so it's for an event.
-        // CloudEvents schema delivers one event at a time.
-        log.LogInformation($"Source: {message["source"]}");
-        log.LogInformation($"Time: {message["eventTime"]}");
-        log.LogInformation($"Event data: {message["data"].ToString()}");
-    }
+    // The request is not for subscription validation, so it's for an event.
+    // CloudEvents schema delivers one event at a time.
+    log.LogInformation($"Source: {message["source"]}");
+    log.LogInformation($"Time: {message["eventTime"]}");
+    log.LogInformation($"Event data: {message["data"].ToString()}");
 
     return req.CreateResponse(HttpStatusCode.OK);
 }
 ```
 
-Met de volgende Java script-voorbeeld code voor een HTTP-trigger wordt Event Grid trigger gedrag gesimuleerd. Gebruik dit voor beeld voor gebeurtenissen die in het CloudEvents-schema worden bezorgd.
+De volgende voorbeeld JavaScript-code voor een HTTP-trigger simuleert gebeurtenisrastertriggergedrag. Gebruik dit voorbeeld voor gebeurtenissen die worden geleverd in het CloudEvents-schema.
 
 ```javascript
 module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
-
-    var message = req.body;
-    // If the request is for subscription validation, send back the validation code.
-    if (message.length > 0 && message[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
+    
+    if (req.method == "OPTIONS) {
+        // If the request is for subscription validation, send back the validation code
+        
         context.log('Validate request received');
-        var code = message[0].data.validationCode;
         context.res = { status: 200, body: { "ValidationResponse": code } };
+        context.res.headers.append('Webhook-Allowed-Origin', 'eventgrid.azure.net');
     }
-    else {
+    else
+    {
+        var message = req.body;
+        
         // The request is not for subscription validation, so it's for an event.
         // CloudEvents schema delivers one event at a time.
         var event = JSON.parse(message);
@@ -212,12 +207,13 @@ module.exports = function (context, req) {
         context.log('Time: ' + event.eventTime);
         context.log('Data: ' + JSON.stringify(event.data));
     }
+ 
     context.done();
 };
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Event grid bericht bezorging bewaken](monitor-event-delivery.md)voor meer informatie over het bewaken van gebeurtenis leveringen.
-* We raden u aan om CloudEvents te testen, opmerkingen te leveren en bij te [dragen](https://github.com/cloudevents/spec/blob/master/CONTRIBUTING.md) .
-* Zie [Event grid Subscription schema](subscription-creation-schema.md)voor meer informatie over het maken van een Azure Event grid-abonnement.
+* Zie [Gebeurtenisnetbezorging controleren](monitor-event-delivery.md)voor informatie over het bewaken van gebeurtenisleveringen.
+* We raden je aan om cloudevents te testen, te becommentariëpen en bij te [dragen aan](https://github.com/cloudevents/spec/blob/master/CONTRIBUTING.md) CloudEvents.
+* Zie [Abonnement op gebeurtenisrastervoor](subscription-creation-schema.md)meer informatie over het maken van een Azure Event Grid-abonnement .

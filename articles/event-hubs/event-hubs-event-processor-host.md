@@ -1,6 +1,6 @@
 ---
-title: Gebeurtenissen ontvangen met Eventprocessorhost - Azure Event Hubs | Microsoft Docs
-description: Dit artikel beschrijft de Event Processor Host in Azure Event Hubs, dat het beheer van het plaatsen van controlepunten vereenvoudigt, overdracht en bewaartermijn parallel lezen van gebeurtenissen.
+title: Gebeurtenissen ontvangen met Event Processor Host - Azure Event Hubs | Microsoft Documenten
+description: In dit artikel wordt de Host eventprocessor in Azure Event Hubs beschreven, wat het beheer van checkpointing-, leasing- en leesgebeurtenissen ion parallel vereenvoudigt.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -14,47 +14,47 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 01/10/2020
 ms.author: shvija
-ms.openlocfilehash: 414179d62970315a7575be0411bf1cb152349fdc
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 485f51e45e342ca28d54d609fd975bef5b204f7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162290"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372233"
 ---
 # <a name="event-processor-host"></a>Gebeurtenisprocessorhost
 > [!NOTE]
-> Dit artikel is van toepassing op de oude versie van Azure Event Hubs SDK. Zie deze migratie handleidingen voor meer informatie over het migreren van uw code naar de nieuwere versie van de SDK. 
-> - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md)
+> Dit artikel is van toepassing op de oude versie van Azure Event Hubs SDK. Zie deze migratiehulplijnen voor meer informatie over het migreren van uw code naar de nieuwere versie van de SDK. 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
-> - [Java script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
+> - [Java-script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
 >
-> Zie ook [de verdeling van de partitie verdelen over meerdere exemplaren van uw toepassing](event-processor-balance-partition-load.md).
+> Zie [Ook De verdelingsbelasting van saldo in meerdere exemplaren van uw toepassing.](event-processor-balance-partition-load.md)
 
-Azure Event Hubs is een krachtige service voor telemetrieopname die kan worden gebruikt voor streaming van miljoenen gebeurtenissen tegen lage kosten. In dit artikel wordt beschreven hoe u opgenomen gebeurtenissen kunt gebruiken met behulp van de *Event processor host* (EPH). een intelligente Consumer-agent die het beheer van de controle punten, leasing en parallelle gebeurtenis lezers vereenvoudigt.  
+Azure Event Hubs is een krachtige telemetrie-opnameservice die kan worden gebruikt om miljoenen gebeurtenissen tegen lage kosten te streamen. In dit artikel wordt beschreven hoe u ingenomen gebeurtenissen consumeren met behulp van de *Event Processor Host* (EPH); een intelligente consumentenagent die het beheer van checkpointing, leasing en parallelle evenementlezers vereenvoudigt.  
 
-De sleutel worden geschaald voor Event Hubs is het idee van de gepartitioneerde consumenten. In tegens telling tot het patroon van [concurrerende gebruikers](https://msdn.microsoft.com/library/dn568101.aspx) , maakt het gepartitioneerde consument patroon een hoge schaal door de knel punt conflicten te verwijderen en end-to-end-parallellisme te vereenvoudigen.
+De sleutel tot schaal voor Event Hubs is het idee van verdeelde consumenten. In tegenstelling tot het patroon van de [concurrerende consumenten](https://msdn.microsoft.com/library/dn568101.aspx) maakt het verdeelde consumentenpatroon een grote schaal mogelijk door het geschilknelpunt weg te nemen en het parallellisme van de end-to-end te vergemakkelijken.
 
-## <a name="home-security-scenario"></a>Beveiliging voor thuis-scenario
+## <a name="home-security-scenario"></a>Home security scenario
 
-Een voorbeeldscenario, kunt u beter een beveiliging voor thuis-bedrijf dat 100.000 huisadressen bewaakt. Elke minuut, deze gegevens worden opgehaald uit diverse sensoren, zoals een bewegingsherkenning, of venster van de klep open sensor, glas break detector, enz., geïnstalleerd bij elke thuis. Het bedrijf biedt een website voor inwoners van de voor het bewaken van de activiteit van de startpagina in bijna realtime.
+Als voorbeeld scenario, overweeg dan een home security bedrijf dat 100.000 woningen controleert. Elke minuut, het krijgt gegevens van verschillende sensoren, zoals een bewegingsdetector, deur / raam open sensor, glas breken detector, enz., geïnstalleerd in elk huis. Het bedrijf biedt een website voor bewoners om de activiteit van hun huis te controleren in de buurt van real-time.
 
-Elke sensor pushes gegevens naar een event hub. De event hub is geconfigureerd met 16 partities. Aan het einde in beslag nemen moet u een mechanisme dat u kunt deze gebeurtenissen worden gelezen, kunt u deze (filteren, samen te voegen enzovoort) en de statistische functie naar een blob storage, die vervolgens wordt toegewezen aan een gebruiksvriendelijke webpagina dump.
+Elke sensor duwt gegevens naar een gebeurtenishub. De gebeurtenishub is geconfigureerd met 16 partities. Aan het verbruikende uiteinde hebt u een mechanisme nodig dat deze gebeurtenissen kan lezen, consolideren (filter, aggregaat, enz.) en het aggregaat dumpen naar een opslagblob, die vervolgens wordt geprojecteerd op een gebruiksvriendelijke webpagina.
 
-## <a name="write-the-consumer-application"></a>De consument toepassing schrijven
+## <a name="write-the-consumer-application"></a>Schrijf de consumententoepassing
 
-Bij het ontwerpen van de gebruiker in een gedistribueerde omgeving, moet het scenario ingang in de volgende vereisten:
+Bij het ontwerpen van de consument in een gedistribueerde omgeving moet het scenario aan de volgende vereisten voldoen:
 
-1. **Schalen:** Maak meerdere consumenten, waarbij elke consument eigenaar is van een aantal Event Hubs partities.
-2. **Taak verdeling:** De consumenten dynamisch te verhogen of te verlagen. Bijvoorbeeld, wanneer een nieuw sensortype (bijvoorbeeld een koolmonoxide detector) wordt toegevoegd aan elke start, verhoogt het aantal gebeurtenissen. In dat geval wordt het aantal consumentexemplaren wordt verhoogd in de operator (een mens). Vervolgens, in de groep consumenten herverdelen van het aantal partities ze eigenaar zijn, voor het delen van de belasting met de zojuist toegevoegde consumenten.
-3. **Naadloos hervatten bij fouten:** Als een Consumer (**Consumer a**) uitvalt (bijvoorbeeld als de virtuele machine die de consument als host voor de klant heeft gevonden, plotseling vastloopt), moeten andere gebruikers de partities kunnen ophalen die eigendom zijn van de **consument a** en door gaan. Daarnaast moet het voortzettings punt, een *controle punt* of *Offset*, worden opgegeven op het exacte punt waar de **Consumer a** mislukt, of iets voor dat.
-4. **Gebeurtenissen gebruiken:** Hoewel de voor gaande drie punten van toepassing zijn op het beheer van de gebruiker, moet er code zijn om de gebeurtenissen te gebruiken en iets nuttig te doen. u kunt deze bijvoorbeeld samen voegen en uploaden naar Blob Storage.
+1. **Schaal:** Maak meerdere consumenten, waarbij elke consument eigenaar wordt van het lezen van een paar Event Hubs-partities.
+2. **Load balans:** Verhoog of reduceer de consument dynamisch. Wanneer bijvoorbeeld een nieuw sensortype (bijvoorbeeld een koolmonoxidemelder) aan elk huis wordt toegevoegd, neemt het aantal gebeurtenissen toe. In dat geval verhoogt de operator (een mens) het aantal consumenteninstanties. Vervolgens kan de pool van consumenten het aantal partities dat ze bezitten opnieuw in evenwicht brengen, om de belasting te delen met de nieuw toegevoegde consumenten.
+3. **Naadloos hervatten bij storingen:** Als een consument **(consument A)** faalt (bijvoorbeeld de virtuele machine die de consument host plotseling crasht), dan moeten andere consumenten in staat zijn om de partities van **consument A** op te halen en door te gaan. Ook moet het vervolgpunt, een *checkpoint* of *offset*genoemd, precies op het punt zijn waarop **consument A** faalde, of iets daarvoor.
+4. **Gebeurtenissen consumeren:** Terwijl de vorige drie punten betrekking hebben op het beheer van de consument, moet er code zijn om de gebeurtenissen te consumeren en er iets nuttigs mee te doen; Aggreisseer het bijvoorbeeld en upload het naar blobopslag.
 
-Event Hubs biedt deze functionaliteit in plaats van uw eigen oplossing te maken met behulp van de [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) -interface en de [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) -klasse.
+In plaats van hiervoor een eigen oplossing te bouwen, biedt Event Hubs deze functionaliteit via de [IEventProcessor-interface](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) en de [klasse EventProcessorHost.](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)
 
 ## <a name="ieventprocessor-interface"></a>IEventProcessor-interface
 
-Voor de eerste keer gebruiken toepassingen de [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) -interface, die vier methoden heeft: [openasync, CloseAsync, ProcessErrorAsync en ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Deze interface bevat de werkelijke code voor het gebruiken van de gebeurtenissen die Event Hubs wordt verzonden. De volgende code toont een eenvoudige implementatie:
+Ten eerste implementeren verbruikende toepassingen de [IEventProcessor-interface,](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) die vier methoden heeft: [OpenAsync, CloseAsync, ProcessErrorAsync en ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Deze interface bevat de werkelijke code om de gebeurtenissen te gebruiken die gebeurtenishubs verzenden. De volgende code toont een eenvoudige implementatie:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -89,125 +89,125 @@ public class SimpleEventProcessor : IEventProcessor
 }
 ```
 
-Vervolgens instantiërt u een [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) -exemplaar. Afhankelijk van de overbelasting, worden de volgende para meters gebruikt bij het maken van het [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) -exemplaar in de constructor:
+Vervolgens u een [EventProcessorHost-exemplaar](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) instantiëren. Afhankelijk van de overbelasting worden bij het maken van de [instantie EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) in de constructor de volgende parameters gebruikt:
 
-- **hostnaam:** de naam van elke consument instantie. Elk exemplaar van **EventProcessorHost** moet een unieke waarde voor deze variabele hebben binnen een Consumer groep. Zorg er dus voor dat u deze waarde niet vast kunt coderen.
-- **eventHubPath:** De naam van de Event Hub.
-- **consumerGroupName:** Event Hubs gebruikt **$default** als de naam van de standaard Consumer groep, maar het is een goed idee om een Consumer groep te maken voor uw specifieke verwerkings aspect.
-- **eventHubConnectionString:** Het connection string naar de Event Hub, dat kan worden opgehaald uit de Azure Portal. Deze connection string moet **Luister** machtigingen hebben voor de Event hub.
-- **storageConnectionString:** Het opslag account dat wordt gebruikt voor intern resource beheer.
+- **hostName:** de naam van elk consumentenexemplaar. Elk exemplaar van **EventProcessorHost** moet een unieke waarde hebben voor deze variabele binnen een consumentengroep, dus codeer deze waarde niet hard.
+- **eventHubPath:** De naam van de gebeurtenishub.
+- **consumerGroupName:** Event Hubs gebruikt **$Default** als de naam van de standaardconsumentengroep, maar het is een goede gewoonte om een consumentengroep te maken voor uw specifieke aspect van verwerking.
+- **eventHubConnectionString:** De verbindingstekenreeks met de gebeurtenishub, die kan worden opgehaald uit de Azure-portal. Deze verbindingstekenreeks moet **machtigingen voor luisteren** op de gebeurtenishub hebben.
+- **storageConnectionString:** Het opslagaccount dat wordt gebruikt voor intern beheer van resources.
 
-Tot slot registreren consumenten het [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) -exemplaar met de Event hubs-service. Registreren van een klasse event processor met een exemplaar van EventProcessorHost start gebeurtenisverwerking. Registratie geeft de Event Hubs-service de opdracht te verwachten dat gebeurtenissen van sommige van de partities door de Consumer-app worden gebruikt en dat de [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) -implementatie code moet worden aangeroepen wanneer de gebeurtenissen worden gepusht. 
+Ten slotte registreren consumenten de [EventProcessorHost-instantie](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) bij de Event Hubs-service. Als u een gebeurtenisprocessorklasse registreert met een exemplaar van EventProcessorHost, wordt de verwerking van gebeurtenissen gestart. Registreren instrueert de Event Hubs-service om te verwachten dat de consumentenapp gebeurtenissen van sommige partities verbruikt en de [implementatiecode van IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) aan te roepen wanneer gebeurtenissen worden verbruikt om te consumeren. 
 
 
 ### <a name="example"></a>Voorbeeld
 
-Een voorbeeld: Stel dat er 5 virtuele machines (VM's) zijn toegewezen aan het verbruiken van gebeurtenissen en een eenvoudige consoletoepassing in elke virtuele machine, die het werkelijke verbruik werkt. Elke console toepassing maakt vervolgens één [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) -exemplaar en registreert het met de Event hubs-service.
+Stel je bijvoorbeeld voor dat er 5 virtuele machines (VM's) zijn die zijn gewijd aan het consumeren van gebeurtenissen en een eenvoudige consoletoepassing in elke VM, die het werkelijke verbruik doet. Elke consoletoepassing maakt vervolgens één [EventProcessorHost-exemplaar](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) en registreert deze met de Event Hubs-service.
 
-In dit voorbeeld scenario gaan we ervan uit dat 16 partities worden toegewezen aan de 5 **EventProcessorHost** -instanties. Sommige **EventProcessorHost** -instanties hebben mogelijk een aantal meer partities dan andere. Voor elke partitie waarvan een **EventProcessorHost** -exemplaar eigenaar is, wordt er een instantie van de klasse `SimpleEventProcessor` gemaakt. Daarom zijn er 16 exemplaren van `SimpleEventProcessor` over het algemeen, met één toegewezen aan elke partitie.
+Stel dat in dit voorbeeldscenario 16 partities worden toegewezen aan de 5 **EventProcessorHost-exemplaren.** Sommige **EventProcessorHost-exemplaren** bezitten mogelijk een paar partities meer dan andere. Voor elke partitie waarvan een **instantie EventProcessorHost** eigenaar `SimpleEventProcessor` is, wordt een instantie van de klasse gemaakt. Daarom zijn er 16 `SimpleEventProcessor` exemplaren van de totale, met een toegewezen aan elke partitie.
 
-De volgende lijst bevat een overzicht van dit voorbeeld:
+In de volgende lijst wordt dit voorbeeld samengevat:
 
-- 16 event Hubs-partities.
-- 5-VM's, 1 consumer-app (bijvoorbeeld Consumer.exe) in elke virtuele machine.
-- 5 EPH-exemplaren geregistreerd, 1 in elke virtuele machine door Consumer.exe.
-- 16 `SimpleEventProcessor` objecten die zijn gemaakt door de 5 EPH-instanties.
-- 1 Consumer. exe-app kan vier `SimpleEventProcessor` objecten bevatten, omdat het 1 EPH-exemplaar een eigenaar van vier partities kan zijn.
+- 16 Gebeurtenishubspartities.
+- 5 VM's, 1 consumentenapp (bijvoorbeeld Consumer.exe) in elke VM.
+- 5 EPH-exemplaren geregistreerd, 1 in elke VM door Consumer.exe.
+- 16 `SimpleEventProcessor` objecten gemaakt door de 5 EPH-exemplaren.
+- 1 Consumer.exe-app `SimpleEventProcessor` kan 4 objecten bevatten, aangezien de 1 EPH-instantie 4 partities kan bezitten.
 
-## <a name="partition-ownership-tracking"></a>Partitie eigendom bijhouden
+## <a name="partition-ownership-tracking"></a>Het bijhouden van partitieeigendom
 
-Eigendom van een partitie op een EPH-exemplaar (of een gebruiker) wordt bijgehouden via de Azure Storage-account dat is opgegeven voor tracering. U kunt als volgt de tracering als een eenvoudige tabel visualiseren. U kunt de daadwerkelijke implementatie zien door te controleren van de blobs onder het opgegeven opslagaccount:
+Het eigendom van een partitie aan een EPH-instantie (of een consument) wordt bijgehouden via het Azure Storage-account dat wordt bijgehouden. U de tracking als een eenvoudige tabel visualiseren, als volgt. U de werkelijke implementatie bekijken door de blobs te onderzoeken onder het opgegeven opslagaccount:
 
-| **Naam van consumentengroep** | **Partitie-ID** | **Hostnaam (eigenaar)** | **Verwervings tijd (of eigendom) van de lease** | **Offset in partitie (controle punt)** |
+| **Naam van consumentengroep** | **Partitie-id** | **Hostnaam (eigenaar)** | **Lease (of eigendom) verworven tijd** | **Verschuiving in partitie (controlepunt)** |
 | --- | --- | --- | --- | --- |
-| Standaar$d | 0 | Consumenten\_VM3 | 2018-04-15T01:23:45 | 156 |
-| Standaar$d | 1 | Consumenten\_VM4 | 2018-04-15T01:22:13 | 734 |
-| Standaar$d | 2 | Consumenten\_VM0 | 2018-04-15T01:22:56 | 122 |
+| $Default | 0 | Consument\_VM3 | 2018-04-15T01:23:45 | 156 |
+| $Default | 1 | Consument\_VM4 | 2018-04-15T01:22:13 | 734 |
+| $Default | 2 | Consument\_VM0 | 2018-04-15T01:22:56 | 122 |
 | : |   |   |   |   |
 | : |   |   |   |   |
-| Standaar$d | 15 | Consumenten\_VM3 | 2018-04-15T01:22:56 | 976 |
+| $Default | 15 | Consument\_VM3 | 2018-04-15T01:22:56 | 976 |
 
-Hier, krijgt elke host eigendom van een partitie gedurende een bepaalde periode (de duur van de lease). Als een host mislukt (virtuele machine wordt afgesloten), is de lease is verlopen. Andere hosts proberen op te halen van de eigenaar van de partitie en een van de hosts is geslaagd. Dit proces stelt de lease op de partitie met een nieuwe eigenaar. Op deze manier slechts één lezer tegelijk kunt lezen uit een bepaalde partitie binnen een consumergroep.
+Hier verwerft elke host het eigendom van een partitie voor een bepaalde duur (de leaseduur). Als een host mislukt (VM wordt afgesloten), vervalt de lease. Andere hosts proberen eigenaar te worden van de partitie en een van de hosts slaagt. Dit proces reset de lease op de partitie met een nieuwe eigenaar. Op deze manier kan slechts één lezer tegelijk lezen van een bepaalde partitie binnen een consumentengroep.
 
 ## <a name="receive-messages"></a>Berichten ontvangen
 
-Elke aanroep van [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) levert een verzameling gebeurtenissen. Het is uw verantwoordelijkheid om deze gebeurtenissen te verwerken. Als u er zeker van wilt zijn dat de processor host elk bericht ten minste één keer verwerkt, moet u uw eigen code voor het opnieuw proberen van het proces schrijven. Maar wees voorzichtig met verontreinigde berichten.
+Elke oproep aan [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) levert een verzameling evenementen. Het is uw verantwoordelijkheid om deze gebeurtenissen te behandelen. Als u ervoor wilt zorgen dat de processorhost elk bericht minstens één keer verwerkt, moet u uw eigen code blijven opnieuw proberen. Maar wees voorzichtig met vergiftigde berichten.
 
-Het is raadzaam dat u relatief snel handelingen; dat wil zeggen, kunt u doen als weinig verwerking mogelijk. Gebruik in plaats daarvan consumentengroepen. Als u naar opslag moet schrijven en een route ring wilt uitvoeren, is het beter om twee consumenten groepen te gebruiken en twee [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) -implementaties te hebben die afzonderlijk worden uitgevoerd.
+Het wordt aanbevolen dat je dingen relatief snel doet; dat wil zeggen, doe zo weinig mogelijk verwerking. Gebruik in plaats daarvan consumentengroepen. Als u naar opslag moet schrijven en een aantal routering en routeringswerk moet doen, is het beter om twee consumentengroepen te gebruiken en twee [IEventProcessor-implementaties](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) te hebben die afzonderlijk worden uitgevoerd.
 
-Op een bepaald moment tijdens de verwerking, is het raadzaam om wat u hebt gelezen en voltooid bij te houden. Het bijhouden is van essentieel belang als u het lezen, opnieuw opstarten moet, zodat u niet teruggaan naar het begin van de stroom. [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) vereenvoudigt dit bijhouden met behulp van *controle punten*. Een controlepunt is een locatie of een offset voor een bepaalde partitie, binnen een bepaalde consumergroep, op het moment waarop u bent ervan overtuigd dat u de berichten zijn verwerkt. Het markeren van een controle punt in **EventProcessorHost** wordt bereikt door het aanroepen van de methode [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) op het [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) -object. Deze bewerking wordt uitgevoerd in de [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) -methode, maar kan ook worden uitgevoerd in [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync).
+Op een bepaald moment tijdens de verwerking wilt u misschien bijhouden wat u hebt gelezen en voltooid. Het bijhouden is essentieel als u het lezen opnieuw moet starten, zodat u niet terugkeert naar het begin van de stream. [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) vereenvoudigt deze tracking met behulp van *checkpoints.* Een controlepunt is een locatie, of compensatie, voor een bepaalde partitie, binnen een bepaalde consumentengroep, op welk punt u ervan overtuigd bent dat u de berichten hebt verwerkt. Het markeren van een controlepunt in **EventProcessorHost** wordt bereikt door de [CheckpointAsync-methode](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) aan te roepen op het object [PartitionContext.](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) Deze bewerking gebeurt binnen de [ProcessEventsAsync-methode,](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) maar kan ook in [CloseAsync.](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync)
 
 ## <a name="checkpointing"></a>Controlepunten plaatsen
 
-De methode [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) heeft twee Overloads: de eerste, zonder para meters, de controle punten voor de hoogste gebeurtenis verschuiving in de verzameling die wordt geretourneerd door [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync). Deze offset is een teken 'high-water'; wordt ervan uitgegaan dat u alle recente gebeurtenissen wanneer u deze aanroepen zijn verwerkt. Als u deze methode op deze manier gebruikt, Let erop dat u wordt naar deze aanroepen nadat de verwerking van de gebeurtenis-code heeft geretourneerd. Met de tweede overbelasting kunt u een [Event Data](/dotnet/api/microsoft.azure.eventhubs.eventdata) -exemplaar opgeven voor het controle punt. Deze methode kunt u met een ander type watermerk controlepunt. Met deze watermerk, kunt u een ' laag ' watermerk implementeren: de laagste gesequentieerde gebeurtenis u er zeker van zijn verwerkt. Deze overbelasting is opgegeven voor het inschakelen van flexibiliteit bij het beheer van offset.
+De [CheckpointAsync-methode](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) heeft twee overbelastingen: de eerste, zonder parameters, controlepunten naar de hoogste gebeurtenisverschuiving binnen de verzameling die wordt geretourneerd door [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync). Deze offset is een "hoog water" merk; het gaat ervan uit dat u alle recente gebeurtenissen hebt verwerkt wanneer u het noemt. Als u deze methode op deze manier gebruikt, moet u ervan op letten dat u deze gebruikt nadat uw andere gebeurtenisverwerkingscode is geretourneerd. Met de tweede overbelasting u een [EventData-exemplaar](/dotnet/api/microsoft.azure.eventhubs.eventdata) opgeven aan controlepunt. Met deze methode u een ander type watermerk gebruiken om controlepunt. Met dit watermerk u een laag water merk implementeren: de laagste volgorde gebeurtenis die u zeker bent is verwerkt. Deze overbelasting is aanwezig om flexibiliteit in offsetbeheer mogelijk te maken.
 
-Wanneer het controle punt wordt uitgevoerd, wordt een JSON-bestand met partitie-specifieke informatie (met name de offset) geschreven naar het opslag account dat is opgegeven in de constructor naar [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Dit bestand wordt voortdurend bijgewerkt. Het is essentieel om te overwegen het plaatsen van controlepunten in de context: het is niet verstandig controlepunt elk bericht. Het opslagaccount dat wordt gebruikt voor het plaatsen van controlepunten waarschijnlijk verwerkt niet deze belasting, maar nog belangrijker plaatsen van controlepunten voor elke gebeurtenis is indicatief voor een in de wachtrij abonnementsberichten waarvoor mogelijk een Service Bus-wachtrij een betere optie dan een event hub. Het idee achter Event Hubs, is dat u 'ten minste eenmaal' levering op grote schaal. Door uw downstream-systemen idempotent zijn, het is eenvoudig om fouten te herstellen of opnieuw wordt gestart die resulteren in dezelfde gebeurtenissen meerdere keren worden ontvangen.
+Wanneer het controlepunt wordt uitgevoerd, wordt een JSON-bestand met partitiespecifieke informatie (met name de offset) naar de opslagrekening geschreven die in de constructor aan [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)wordt geleverd. Dit bestand wordt voortdurend bijgewerkt. Het is van cruciaal belang om checkpointing in context te overwegen - het zou onverstandig zijn om elk bericht te controleren. Het opslagaccount dat wordt gebruikt voor controlepunten zou deze belasting waarschijnlijk niet verwerken, maar nog belangrijker is dat het controleren van elke gebeurtenis een indicatie is van een berichtenpatroon in de wachtrij waarvoor een wachtrij voor servicebussen een betere optie is dan een gebeurtenishub. Het idee achter Event Hubs is dat je "ten minste eenmaal" levering op grote schaal krijgt. Door uw downstreamsystemen idempotent te maken, is het gemakkelijk om te herstellen van storingen of opnieuw opstarten die resulteren in dezelfde gebeurtenissen die meerdere keren worden ontvangen.
 
-## <a name="thread-safety-and-processor-instances"></a>Thread-veiligheid en processor-instanties
+## <a name="thread-safety-and-processor-instances"></a>Thread-beveiliging en processorinstanties
 
-[EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) is standaard thread veilig en gedraagt zich op synchrone wijze met betrekking tot het exemplaar van [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor). Wanneer gebeurtenissen voor een partitie arriveren, wordt [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) aangeroepen voor het **IEventProcessor** -exemplaar voor die partitie en worden verdere aanroepen naar **ProcessEventsAsync** voor de partitie geblokkeerd. Volgende berichten en aanroepen van de **ProcessEventsAsync** -wachtrij worden achter de schermen geplaatst, terwijl de bericht pomp blijft draaien op de achtergrond van andere threads. Deze thread veiligheid hoeven zich niet voor thread-veilige verzamelingen en worden de prestaties aanzienlijk verbeterd.
+[EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) is standaard draadveilig en gedraagt zich synchroon ten opzichte van de instantie van [IEventProcessor.](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) Wanneer gebeurtenissen aankomen voor een partitie, wordt [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) ingeschakeld op de **iEventProcessor-instantie** voor die partitie en worden verdere oproepen naar **ProcessEventsAsync** voor de partitie geblokkeerd. Volgende berichten en oproepen naar **ProcessEventsAsync** wachtrij achter de schermen als het bericht pomp blijft draaien op de achtergrond op andere threads. Deze draadveiligheid elimineert de noodzaak van draadveilige verzamelingen en verhoogt de prestaties aanzienlijk.
 
-## <a name="shut-down-gracefully"></a>Zonder problemen worden afgesloten
+## <a name="shut-down-gracefully"></a>Sierlijk afsluiten
 
-Ten slotte maakt [EventProcessorHost. UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) een schone afsluiting mogelijk van alle partitie lezers en moet deze altijd worden aangeroepen wanneer een instantie van [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)wordt afgesloten. Als u dit niet doet, kan dit leiden tot vertragingen bij het starten van andere exemplaren van **EventProcessorHost** vanwege verval-en epoche conflicten. Het epoche-beheer wordt uitvoerig besproken in de sectie [epoche](#epoch) van het artikel. 
+Tot slot maakt [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) een schone afsluiting van alle partitielezers mogelijk en moet altijd worden gebeld bij het afsluiten van een exemplaar van [EventProcessorHost.](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) Als u dit niet doet, kan dit leiden tot vertragingen bij het starten van andere exemplaren van **EventProcessorHost** vanwege lease-vervaldatum en Epoch-conflicten. Het beheer van het tijdvak wordt in detail behandeld in de sectie [Van het Tijdvak](#epoch) van het artikel. 
 
-## <a name="lease-management"></a>Lease-management
-Registreren van een klasse event processor met een exemplaar van EventProcessorHost start gebeurtenisverwerking. De instantie van de host haalt leases op aantal partities van de Event Hub, mogelijk gegevens uit formulieren sommige vanuit andere exemplaren hosten op een manier die convergeert wel op een gelijkmatige verdeling van partities voor alle instanties van de host ligt. Voor elke partitie geleased de instantie van de host maakt een exemplaar van de klasse opgegeven event processor, klikt u vervolgens ontvangt gebeurtenissen van deze partitie en geeft deze door aan de event processor-instantie. Als u meer instanties zijn toegevoegd en meer leases afkomstig zijn, verdeelt EventProcessorHost uiteindelijk de belasting tussen alle gebruikers.
+## <a name="lease-management"></a>Leasebeheer
+Als u een gebeurtenisprocessorklasse registreert met een exemplaar van EventProcessorHost, wordt de verwerking van gebeurtenissen gestart. De hostinstantie verkrijgt leases op sommige partities van de Gebeurtenishub, waarbij mogelijk enkele van andere host-exemplaren worden gegrepen, op een manier die convergeert op een gelijkmatige verdeling van partities over alle hostexemplaren. Voor elke gehuurde partitie maakt de hostinstantie een instantie van de opgegeven gebeurtenisprocessorklasse, ontvangt vervolgens gebeurtenissen van die partitie en geeft deze door aan de instantie gebeurtenisprocessor. Naarmate er meer exemplaren worden toegevoegd en meer leases worden buitgemaakt, balanceert EventProcessorHost uiteindelijk de belasting onder alle consumenten.
 
-Zoals eerder is uitgelegd, vereenvoudigt de tracerings tabel het automatisch schalen van [EventProcessorHost. UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync). Als instantie van **EventProcessorHost** wordt gestart, worden zo veel mogelijk leases opgehaald en worden gebeurtenissen gelezen. Wanneer de leases bijna verlopen, probeert **EventProcessorHost** ze te vernieuwen door een reserve ring te plaatsen. Als de lease beschikbaar is voor vernieuwing, gaat de processor door met lezen, maar als dat niet het geval is, wordt de lezer gesloten en wordt [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) aangeroepen. **CloseAsync** is een goede tijd om een definitieve opschoning voor die partitie uit te voeren.
+Zoals eerder uitgelegd, vereenvoudigt de trackingtabel het automatisch schalen de karakter van [EventProcessorHost.UnregisterEventProcessorAsync.](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) Als een exemplaar van **EventProcessorHost** begint, verwerft het zo veel leases mogelijk, en begint het lezen van evenementen. Aangezien de leases bijna verlopen, probeert **EventProcessorHost** deze te verlengen door een reservering te plaatsen. Als de lease beschikbaar is voor verlenging, blijft de processor lezen, maar als dit niet het is, wordt de lezer gesloten en wordt [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) aangeroepen. **CloseAsync** is een goed moment om een definitieve opschoning voor die partitie uit te voeren.
 
-**EventProcessorHost** bevat een eigenschap [PartitionManagerOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.partitionmanageroptions) . Deze eigenschap kunt u bepalen leasebeheer. Stel deze opties in voordat u uw [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) -implementatie registreert.
+**EventProcessorHost** bevat een eigenschap [PartitionManagerOptions.](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.partitionmanageroptions) Deze eigenschap maakt controle over leasemanagement mogelijk. Stel deze opties in voordat u uw [IEventProcessor-implementatie](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) registreert.
 
-## <a name="control-event-processor-host-options"></a>Opties voor broncodebeheer Event Processor Host
+## <a name="control-event-processor-host-options"></a>Opties voor gebeurtenisprocessorhost beheren
 
-Daarnaast neemt één overbelasting van [RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) een [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) -object als para meter. Gebruik deze para meter om het gedrag van [EventProcessorHost. UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) zelf te beheren. [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions) definieert vier eigenschappen en één gebeurtenis:
+Daarnaast neemt één overbelasting van [RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) een [Object EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) als parameter. Gebruik deze parameter om het gedrag van [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) zelf te beheren. [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions) definieert vier eigenschappen en één gebeurtenis:
 
-- [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize): de maximale grootte van de verzameling die u wilt ontvangen in een aanroep van [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync). Deze grootte is niet het minimum, alleen de maximale grootte. Als er minder berichten moeten worden ontvangen, wordt **ProcessEventsAsync** uitgevoerd met zo veel als beschikbaar.
-- [PrefetchCount](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount): een waarde die wordt gebruikt door het onderliggende AMQP-kanaal om de bovengrens te bepalen van het aantal berichten dat de client moet ontvangen. Deze waarde moet groter zijn dan of gelijk zijn aan [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize).
-- [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout): als deze para meter **True**is, wordt [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) aangeroepen wanneer de onderliggende aanroep voor het ontvangen van gebeurtenissen op een partitie een time-out heeft. Deze methode is handig voor het nemen van op tijd gebaseerde acties tijdens peri Oden van inactiviteit op de partitie.
-- [InitialOffsetProvider](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider): Hiermee kan een functie-of lambda-expressie worden ingesteld, die wordt aangeroepen om de initiële offset te bieden wanneer een lezer begint met het lezen van een partitie. Zonder deze offset op te geven, begint de lezer bij het oudste evenement, tenzij een JSON-bestand met een offset al is opgeslagen in het opslag account dat is opgegeven aan de [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) -constructor. Deze methode is handig als u wilt wijzigen van het gedrag van het opstarten van de lezer. Wanneer deze methode wordt aangeroepen, bevat de parameter van het object in de partitie-ID waarvoor de lezer wordt gestart.
-- [ExceptionReceivedEventArgs](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs): Hiermee kunt u meldingen ontvangen over onderliggende uitzonde ringen die optreden in [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Als dingen niet werkt zoals verwacht, is deze gebeurtenis een goede plaats te bekijken.
+- [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize): De maximale grootte van de collectie die u wilt ontvangen in een aanroep van [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync). Deze grootte is niet het minimum, alleen de maximale grootte. Als er minder berichten moeten worden ontvangen, voert **ProcessEventsAsync** uit met zoveel als beschikbaar was.
+- [PrefetchCount](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount): Een waarde die wordt gebruikt door het onderliggende AMQP-kanaal om de bovengrens te bepalen van het aantal berichten dat de client moet ontvangen. Deze waarde moet groter zijn dan of gelijk zijn aan [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize).
+- [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout): Als deze parameter **waar**is, wordt [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) aangeroepen wanneer de onderliggende aanroep om gebeurtenissen te ontvangen op een partitietime-out. Deze methode is handig voor het uitvoeren van op tijd gebaseerde acties tijdens perioden van inactiviteit op de partitie.
+- [InitialOffsetProvider](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider): Hiermee kan een functieaanwijzer of lambda-expressie worden ingesteld, die wordt aangeroepen om de eerste verschuiving te bieden wanneer een lezer een partitie begint te lezen. Zonder deze verschuiving op te geven, begint de lezer bij de oudste gebeurtenis, tenzij een JSON-bestand met een verschuiving al is opgeslagen in de opslagrekening die aan de [EventProcessorHost-constructor](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) is geleverd. Deze methode is handig wanneer u het gedrag van het opstarten van de lezer wilt wijzigen. Wanneer deze methode wordt aangeroepen, bevat de objectparameter de partitie-id waarvoor de lezer wordt gestart.
+- [ExceptionReceivedEventArgs:](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs)Hiermee u een melding ontvangen van eventuele onderliggende uitzonderingen die zich voordoen in [EventProcessorHost.](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) Als dingen niet werken zoals je verwacht, is dit evenement een goede plek om te beginnen met zoeken.
 
 ## <a name="epoch"></a>Epoch
 
-De receive-epoche werkt als volgt:
+Hier is hoe de ontvangen tijdperk werkt:
 
-### <a name="with-epoch"></a>Met epoche
-Epoche is een unieke id (epoche waarde) die door de service wordt gebruikt om het eigendom van een partitie/lease af te dwingen. U maakt een op epoche gebaseerde ontvanger met behulp van de methode [CreateEpochReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) . Met deze methode wordt een op epoche gebaseerde ontvanger gemaakt. De ontvanger wordt gemaakt voor een specifieke Event Hub partitie van de opgegeven Consumer groep.
+### <a name="with-epoch"></a>Met Epoch
+Epoch is een unieke id (tijdvakwaarde) die de service gebruikt om partitie/leaseeigendom af te dwingen. U maakt een ontvanger op basis van Epoch met behulp van de [CreateEpochReceiver-methode.](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) Deze methode creëert een ontvanger op basis van Epoch. De ontvanger wordt gemaakt voor een specifieke gebeurtenishubpartitie van de opgegeven consumentengroep.
 
-De epoche-functie biedt gebruikers de mogelijkheid om ervoor te zorgen dat er op elk moment maar één ontvanger op een Consumer groep is, met de volgende regels:
+De functie voor het tijdperk biedt gebruikers de mogelijkheid om ervoor te zorgen dat er op elk moment slechts één ontvanger op een consumentengroep is, met de volgende regels:
 
-- Als er geen bestaande ontvanger is voor een Consumer groep, kan de gebruiker een ontvanger maken met elke epoche waarde.
-- Als er een ontvanger is met een epoche waarde E1 en er een nieuwe ontvanger wordt gemaakt met een epoche waarde E2 waarbij E1 < = E2, wordt de ontvanger met E1 automatisch losgekoppeld, ontvanger met E2 wordt gemaakt.
-- Als er een ontvanger is met een epoche waarde E1 en er een nieuwe ontvanger wordt gemaakt met een epoche waarde E2 waarbij E1 > E2, wordt het maken van E2 met een fout gegenereerd: er bestaat al een ontvanger met epoche E1.
+- Als er geen bestaande ontvanger op een consumentengroep is, kan de gebruiker een ontvanger maken met een tijdvakwaarde.
+- Als er een ontvanger is met een tijdvakwaarde e1 en een nieuwe ontvanger wordt gemaakt met een tijdvakwaarde e2 waar e1 <= e2, wordt de ontvanger met e1 automatisch losgekoppeld, wordt ontvanger met e2 met succes gemaakt.
+- Als er een ontvanger met een tijdvak waarde e1 en een nieuwe ontvanger wordt gemaakt met een tijdperk waarde e2 waar e1 > e2, dan is de oprichting van e2 met mislukken met de fout: Een ontvanger met tijdperk e1 bestaat al.
 
-### <a name="no-epoch"></a>Geen epoche
-U maakt een ontvanger op basis van een niet-epoche met behulp van de methode [CreateReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) . 
+### <a name="no-epoch"></a>Geen tijdperk
+U maakt een ontvanger op basis van een niet-Epoch met behulp van de [CreateReceiver-methode.](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) 
 
-Er zijn enkele scenario's in de verwerking van stromen waarbij gebruikers meerdere ontvangers willen maken op één consumer groep. Om dergelijke scenario's te ondersteunen, hebben we de mogelijkheid om een ontvanger zonder epoche te maken. in dit geval kunnen we Maxi maal vijf gelijktijdige ontvangers voor de consumenten groep toestaan.
+Er zijn enkele scenario's in streamprocessing waarbij gebruikers meerdere ontvangers op één consumentengroep willen maken. Om dergelijke scenario's te ondersteunen, hebben we de mogelijkheid om een ontvanger te maken zonder tijdperk en in dit geval staan we maximaal 5 gelijktijdige ontvangers toe op de consumentengroep.
 
 ### <a name="mixed-mode"></a>Gemengde modus
-Het gebruik van de toepassing wordt niet aanbevolen, waarbij u een ontvanger maakt met epoche en vervolgens overschakelt naar No-epoche of vice-versa op dezelfde Consumer groep. Als dit probleem zich voordoet, wordt het echter door de service verwerkt met de volgende regels:
+We raden toepassingsgebruik niet aan wanneer u een ontvanger met tijdvak maakt en vervolgens overschakelt naar geen-tijdperk of omgekeerd op dezelfde consumentengroep. Wanneer dit gedrag optreedt, verwerkt de service het echter met behulp van de volgende regels:
 
-- Als er al een ontvanger is gemaakt met epoche E1 en actief gebeurtenissen ontvangt en er een nieuwe ontvanger wordt gemaakt zonder epoche, mislukt het maken van een nieuwe ontvanger. Epoche-ontvangers hebben altijd voor rang op het systeem.
-- Als er al een ontvanger is gemaakt met epoche E1 en de verbinding is verbroken, en er een nieuwe ontvanger wordt gemaakt zonder epoche op een nieuwe MessagingFactory, zal het maken van een nieuwe ontvanger slagen. Er wordt hier een voor behoud weer gegeven dat ons systeem na ongeveer 10 minuten de verbinding van de ontvanger moet detecteren.
-- Als er een of meer ontvangers zijn gemaakt zonder epoche, en er een nieuwe ontvanger wordt gemaakt met epoche E1, worden alle oude ontvangers losgekoppeld van elkaar.
+- Als er al een ontvanger is gemaakt met tijdperk e1 en actief gebeurtenissen ontvangt en een nieuwe ontvanger wordt gemaakt zonder tijdperk, zal de creatie van een nieuwe ontvanger mislukken. Epoch ontvangers hebben altijd voorrang in het systeem.
+- Als er een ontvanger al gemaakt met tijdperk e1 en kreeg losgekoppeld, en een nieuwe ontvanger is gemaakt zonder tijdperk op een nieuwe MessagingFactory, de oprichting van nieuwe ontvanger zal slagen. Er is een voorbehoud hier dat ons systeem zal de "ontvanger ontkoppeling" te detecteren na ~ 10 minuten.
+- Als er een of meer ontvangers zijn gemaakt zonder tijdperk, en een nieuwe ontvanger is gemaakt met tijdperk e1, worden alle oude ontvangers losgekoppeld.
 
 
 > [!NOTE]
-> We raden u aan verschillende consumenten groepen te gebruiken voor toepassingen die gebruikmaken van epoches en voor gebruikers die geen epoches gebruiken om fouten te voor komen. 
+> We raden u aan verschillende consumentengroepen te gebruiken voor toepassingen die tijdperken gebruiken en voor toepassingen die geen tijdvakken gebruiken om fouten te voorkomen. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u bekend bent met de Event Processor Host, Zie de volgende artikelen voor meer informatie over Event Hubs:
+Nu je bekend bent met de Event Processor Host, raadpleeg je de volgende artikelen voor meer informatie over Event Hubs:
 
 - Aan de slag met Event Hubs
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
-* [Programmeerhandleiding voor Event Hubs](event-hubs-programming-guide.md)
+    - [Javascript](get-started-java-send-v2.md)
+* [Programmeerhandleiding voor gebeurtenishubs](event-hubs-programming-guide.md)
 * [Beschikbaarheid en consistentie in Event Hubs](event-hubs-availability-and-consistency.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)
-* [Voor beelden Event Hubs op GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples)
+* [Voorbeelden van gebeurtenishubs op GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples)
