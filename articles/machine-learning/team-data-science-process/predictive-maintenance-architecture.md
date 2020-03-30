@@ -1,6 +1,6 @@
 ---
-title: Voorspellend onderhoud voor lucht-en ruimtevaart met Azure - Team Data Science Process
-description: Voor speld onderhouds architectuur diagram van de oplossings sjabloon voor lucht vaart, hulpprogram ma's, Trans Port.
+title: Voorspellend onderhoud voor ruimtevaart met Azure - Team Data Science Process
+description: Voorspellend onderhoudsarchitectuurdiagram van de oplossingssjabloon voor lucht- en ruimtevaart, nutsbedrijven, transport.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.openlocfilehash: 8fae4255a577e7744fa045ef3da4ee5b784ed6b0
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79088046"
 ---
-# <a name="architecture-of-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Architectuur van de oplossings sjabloon voor predictief onderhoud in de lucht vaart
-In het onderstaande diagram vindt u een architectuur overzicht van de [oplossings sjabloon voor voor speld onderhoud](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1).
+# <a name="architecture-of-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Architectuur van de oplossingssjabloon voor voorspellend onderhoud in de lucht- en ruimtevaart
+Het onderstaande diagram geeft een architectonisch overzicht van de [oplossingssjabloon voor voorspellend onderhoud.](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1)
 
-U kunt hier een volledige versie van het diagram downloaden: [architectuur diagram: oplossings sjabloon voor predictief onderhoud](https://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
+U hier een volledige versie van het diagram downloaden: [Architectuurdiagram: Oplossingssjabloon voor voorspellend onderhoud.](https://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png)
 
-![Architectuurdiagram van oplossing sjabloon voor Voorspellend onderhoud][image]
+![Architectuurdiagram voor oplossingssjabloon voor voorspellend onderhoud][image]
 
 [image]: ./media/predictive-maintenance-architecture/ca-topologies-maintenance-prediction.png

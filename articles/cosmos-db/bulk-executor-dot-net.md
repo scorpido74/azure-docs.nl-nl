@@ -1,6 +1,6 @@
 ---
-title: Bulksgewijs uitvoeren van de .NET-bibliotheek in Azure Cosmos DB gebruiken voor bulksgewijze import-en update bewerkingen
-description: Bulksgewijs importeren en de Azure Cosmos DB documenten bijwerken met de bulk-uitvoerder .NET-bibliotheek.
+title: Bulkexecutor .NET-bibliotheek gebruiken in Azure Cosmos DB voor bulkimport- en updatebewerkingen
+description: Bulk importeert en updatet de Azure Cosmos DB-documenten met behulp van de bulkexecutor .NET-bibliotheek.
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -10,45 +10,45 @@ ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246875"
 ---
-# <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Gebruik de bulk-uitvoerder .NET-bibliotheek voor het uitvoeren van bulk bewerkingen in Azure Cosmos DB
+# <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>De bulkexecutor .NET-bibliotheek gebruiken om bulkbewerkingen uit te voeren in Azure Cosmos DB
 
-Deze zelf studie bevat instructies over het gebruik van de bulk-uitvoerder .NET-bibliotheek om documenten te importeren en bij te werken naar een Azure Cosmos-container. Zie het artikel overzicht van de bulk-uitvoerder [bibliotheek](bulk-executor-overview.md) voor meer informatie over de bibliotheek voor bulk doorvoer. In deze zelf studie wordt een voor beeld van een .NET-toepassing weer geven waarmee wille keurig gegenereerde documenten bulksgewijs worden geïmporteerd in een Azure Cosmos-container. Na het importeren ziet u hoe u de geïmporteerde gegevens bulksgewijs kunt bijwerken door het opgeven van patches als bewerkingen die moeten worden uitgevoerd op specifieke document velden.
+Deze zelfstudie bevat instructies over het gebruik van de bulkexecutor .NET-bibliotheek om documenten te importeren en bij te werken naar een Azure Cosmos-container. Zie het overzichtsartikel voor [bulkexecutorlibrary](bulk-executor-overview.md) voor meer informatie over de bibliotheek voor bulkuitvoerbedrijven en hoe deze u helpt gebruik te maken van enorme doorvoer en opslag. In deze zelfstudie ziet u een voorbeeld .NET-toepassing die willekeurig gegenereerde documenten importeert in een Azure Cosmos-container. Na het importeren ziet u hoe u de geïmporteerde gegevens in bulk bijwerken door patches op te geven als bewerkingen die u op specifieke documentvelden wilt uitvoeren.
 
-De bibliotheek voor bulk-uitvoering wordt momenteel alleen ondersteund door de Azure Cosmos DB SQL API-en Gremlin-API-accounts. In dit artikel wordt beschreven hoe u de bulk-uitvoerder .NET-bibliotheek met SQL API-accounts gebruikt. Zie [bulksgewijze bewerkingen uitvoeren in de Gremlin-API voor Azure Cosmos DB](bulk-executor-graph-dotnet.md)voor meer informatie over het gebruik van de bulk-uitvoerder .net-bibliotheek met GREMLIN-API-accounts.
+Momenteel wordt de bulkexecutorbibliotheek alleen ondersteund door de Azure Cosmos DB SQL API- en Gremlin-API-accounts. In dit artikel wordt beschreven hoe u de bulkexecutor .NET-bibliotheek met SQL API-accounts gebruiken. Zie [Bulkbewerkingen uitvoeren in de Azure Cosmos DB Gremlin API](bulk-executor-graph-dotnet.md)voor meer informatie over het gebruik van de bulkexecutor .NET-bibliotheek met Gremlin-API.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als Visual Studio 2019 nog niet is geïnstalleerd, kunt u de [Visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u ' Azure Development ' inschakelt tijdens de installatie van Visual Studio.
+* Als u Visual Studio 2019 nog niet hebt geïnstalleerd, u de [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u 'Azure-ontwikkeling' inschakelt tijdens de installatie van Visual Studio.
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
+* Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
 
-* [Probeer Azure Cosmos DB gratis uit](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, zonder kosten en zonder verplichtingen. U kunt ook de Azure Cosmos DB- [emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) gebruiken met het `https://localhost:8081`-eind punt. De primaire sleutel wordt gegeven in [Aanvragen verifiëren](local-emulator.md#authenticating-requests).
+* U [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement, gratis en verplichtingen. U ook de Azure Cosmos `https://localhost:8081` [DB-emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) met het eindpunt gebruiken. De primaire sleutel wordt gegeven in [Aanvragen verifiëren](local-emulator.md#authenticating-requests).
 
-* Maak een Azure Cosmos DB SQL-API-account met behulp van de stappen in het gedeelte [Database account maken](create-sql-api-dotnet.md#create-account) van het artikel .net quick start.
+* Maak een Azure Cosmos DB SQL API-account met behulp van de stappen die zijn beschreven in de sectie [Databaseaccount maken](create-sql-api-dotnet.md#create-account) van het quickstart-artikel .NET.
 
 ## <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
 
-We gaan nu naar het werken met code door een .NET-voorbeeld toepassing te downloaden van GitHub. Met deze toepassing worden bulk bewerkingen uitgevoerd op de gegevens die zijn opgeslagen in uw Azure Cosmos-account. Als u de toepassing wilt klonen, opent u een opdracht prompt, navigeert u naar de map waarnaar u deze wilt kopiëren en voert u de volgende opdracht uit:
+Laten we nu overschakelen naar het werken met code door het downloaden van een voorbeeld .NET applicatie van GitHub. Deze toepassing voert bulkbewerkingen uit op de gegevens die zijn opgeslagen in uw Azure Cosmos-account. Als u de toepassing wilt klonen, opent u een opdrachtprompt, navigeert u naar de map waar u de toepassing wilt kopiëren en voert u de volgende opdracht uit:
 
 ```
 git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started.git
 ```
 
-De gekloonde opslag plaats bevat twee voor beelden van ' BulkImportSample ' en ' BulkUpdateSample '. U kunt een van de voorbeeld toepassingen openen, de verbindings reeksen in het bestand app. config bijwerken met de verbindings reeksen van uw Azure Cosmos DB-account, de oplossing bouwen en deze uitvoeren.
+De gekloonde opslagplaats bevat twee voorbeelden "BulkImportSample" en "BulkUpdateSample". U een van de voorbeeldtoepassingen openen, de verbindingstekenreeksen in app.config-bestand bijwerken met de verbindingstekenreeksen van uw Azure Cosmos DB-account, de oplossing bouwen en uitvoeren.
 
-De toepassing ' BulkImportSample ' genereert wille keurige documenten en importeert deze bulksgewijs in uw Azure Cosmos-account. Met de toepassing ' BulkUpdateSample ' worden de geïmporteerde documenten bulksgewijs bijgewerkt door patches op te geven als bewerkingen die moeten worden uitgevoerd op specifieke document velden. In de volgende secties controleert u de code in elk van deze voor beelden van apps.
+De toepassing 'BulkImportSample' genereert willekeurige documenten en bulk importeert deze naar uw Azure Cosmos-account. De bulktoepassing 'BulkUpdateSample' wordt bijgewerkt door patches op te geven als bewerkingen die moeten worden uitgevoerd op specifieke documentvelden. In de volgende secties bekijkt u de code in elk van deze voorbeeld-apps.
 
-## <a name="bulk-import-data-to-an-azure-cosmos-account"></a>Gegevens bulksgewijs importeren naar een Azure Cosmos-account
+## <a name="bulk-import-data-to-an-azure-cosmos-account"></a>Bulkimporterenvan gegevens naar een Azure Cosmos-account
 
-1. Ga naar de map ' BulkImportSample ' en open het bestand ' BulkImportSample. SLN '.  
+1. Navigeer naar de map BulkImportSample en open het bestand 'BulkImportSample.sln'.  
 
-2. De verbindings reeksen van de Azure Cosmos DB worden opgehaald uit het bestand app. config, zoals wordt weer gegeven in de volgende code:  
+2. De verbindingstekenreeksen van Azure Cosmos DB worden opgehaald uit het bestand App.config, zoals weergegeven in de volgende code:  
 
    ```csharp
    private static readonly string EndpointUrl = ConfigurationManager.AppSettings["EndPointUrl"];
@@ -58,9 +58,9 @@ De toepassing ' BulkImportSample ' genereert wille keurige documenten en importe
    private static readonly int CollectionThroughput = int.Parse(ConfigurationManager.AppSettings["CollectionThroughput"]);
    ```
 
-   De functie Bulk Import maakt een nieuwe data base en een container met de database naam, container naam en de doorvoer waarden die zijn opgegeven in het bestand app. config.
+   De bulkimporteur maakt een nieuwe database en een container met de databasenaam, containernaam en de doorvoerwaarden die zijn opgegeven in het bestand App.config.
 
-3. De volgende keer dat het object DocumentClient wordt geïnitialiseerd met de directe TCP-verbindings modus:  
+3. Vervolgens wordt het object DocumentClient geïnitialiseerd met de direct TCP-verbindingsmodus:  
 
    ```csharp
    ConnectionPolicy connectionPolicy = new ConnectionPolicy
@@ -72,7 +72,7 @@ De toepassing ' BulkImportSample ' genereert wille keurige documenten en importe
    connectionPolicy)
    ```
 
-4. Het BulkExecutor-object wordt geïnitialiseerd met een hoge waarde voor nieuwe pogingen voor wacht tijd en vertraagde aanvragen. En ze worden vervolgens ingesteld op 0 om de levens duur van de congestie controle door te geven aan BulkExecutor.  
+4. Het object BulkExecutor wordt geïnitialiseerd met een hoge waarde voor het opnieuw proberen voor wachttijd en aangeschreven aanvragen. En dan zijn ze ingesteld op 0 om congestie controle door te geven aan BulkExecutor voor zijn levensduur.  
 
    ```csharp
    // Set retry options high during initialization (default values).
@@ -87,7 +87,7 @@ De toepassing ' BulkImportSample ' genereert wille keurige documenten en importe
    client.ConnectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 0;
    ```
 
-5. De toepassing roept de BulkImportAsync-API aan. De .NET-bibliotheek biedt twee overbelasting van de API voor bulk import: een die een lijst met geserialiseerde JSON-documenten accepteert en de andere die een lijst met gedeserialiseerd POCO-documenten accepteert. Raadpleeg de [API-documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync?view=azure-dotnet)voor meer informatie over de definities van elk van deze overbelaste methoden.
+5. De toepassing roept de BulkImportAsync API op. De .NET-bibliotheek biedt twee overbelastingen van de bulkimport-API - een die een lijst met geserialiseerde JSON-documenten accepteert en de andere die een lijst met gedeserialiseerde POCO-documenten accepteert. Voor meer informatie over de definities van elk van deze overbelaste methoden, raadpleegt u de [API-documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync?view=azure-dotnet).
 
    ```csharp
    BulkImportResponse bulkImportResponse = await bulkExecutor.BulkImportAsync(
@@ -98,32 +98,32 @@ De toepassing ' BulkImportSample ' genereert wille keurige documenten en importe
      maxInMemorySortingBatchSize: null,
      cancellationToken: token);
    ```
-   **De methode BulkImportAsync accepteert de volgende para meters:**
+   **BulkImportAsync-methode accepteert de volgende parameters:**
    
-   |**Bepaalde**  |**Beschrijving** |
+   |**Parameter**  |**Beschrijving** |
    |---------|---------|
-   |enableUpsert    |   Een markering voor het inschakelen van upsert-bewerkingen op de documenten. Als er al een document met de opgegeven ID bestaat, wordt het bijgewerkt. Deze waarde is standaard ingesteld op ONWAAR.      |
-   |disableAutomaticIdGeneration    |    Een vlag om uit te schakelen automatisch genereren van ID. Standaard is ingesteld op true.     |
-   |maxConcurrencyPerPartitionKeyRange    | De maximale graad van gelijktijdigheid per partitie sleutel bereik, ingesteld op NULL zorgt ervoor dat de tape wisselaar een standaard waarde van 20 gebruikt. |
-   |maxInMemorySortingBatchSize     |  Het maximum aantal documenten dat wordt opgehaald uit de document-enumerator, die wordt door gegeven aan de API-aanroep in elke fase. Voor de sorteer fase in het geheugen die plaatsvindt voordat bulksgewijs wordt geïmporteerd, wordt door het instellen van deze para meter op null de standaard minimum waarde (Documents. Count, 1000000) gebruikt.       |
-   |cancellationToken    |    Het annulerings token om de bulkimportbewerking zonder problemen af te sluiten.     |
+   |enableUpsert    |   Een vlag om upsert-bewerkingen op de documenten in te schakelen. Als er al een document met de opgegeven id bestaat, wordt het bijgewerkt. Standaard is deze ingesteld op false.      |
+   |schakelt AutomaticIdGeneration uit    |    Een vlag om de automatische generatie ID uit te schakelen. Standaard is het ingesteld op true.     |
+   |maxConcurrencyPerPartitionKeyRange    | De maximale mate van gelijktijdigheid per partitiesleutelbereik, instellen op null, zorgt ervoor dat bibliotheek een standaardwaarde van 20 gebruikt. |
+   |maxInMemorySortingBatchSize     |  Het maximum aantal documenten dat uit de documentenumerator wordt gehaald, dat in elke fase wordt doorgegeven aan de API-aanroep. Voor de sorteerfase in het geheugen die plaatsvindt voordat bulk wordt geïmporteerd, wordt deze parameter ingesteld op null, waardoor bibliotheek de standaardminimumwaarde (documents.count, 1000000) gebruikt.       |
+   |annuleringToken    |    Het annuleringstoken om de bulkimportbewerking op een elegante manier af te sluiten.     |
 
-   **Definitie van antwoord object voor bulk import** Het resultaat van de API-aanroep voor Bulk Import bevat de volgende kenmerken:
+   **Definitie van bulkimportresponsobject** Het resultaat van de API-aanroep voor bulkimport bevat de volgende kenmerken:
 
-   |**Bepaalde**  |**Beschrijving**  |
+   |**Parameter**  |**Beschrijving**  |
    |---------|---------|
-   |NumberOfDocumentsImported (lang)   |  Het totale aantal documenten dat is geïmporteerd uit de totale hoeveelheid documenten die is geleverd aan de API-aanroep voor bulk import.       |
-   |TotalRequestUnitsConsumed (double)   |   Het totaal aantal aanvragen van aanvraageenheden (RU) die worden gebruikt door de bulksgewijs importeren API-aanroep.      |
-   |TotalTimeTaken (time span)    |   De totale tijd die nodig is voor de API-aanroep voor bulk import om de uitvoering te volt ooien.      |
-   |BadInputDocuments (lijst\<object >)   |     De lijst met slechte indeling documenten die zijn niet geïmporteerd in de bulksgewijs importeren API-aanroep. Los de geretourneerde documenten op en voer de import opnieuw uit. -Ongeldige indeling of meer documenten waarvan u de id-waarde geen tekenreeks is (null of een andere gegevenstype is als ongeldig wordt beschouwd).    |
+   |Aantal geïmporteerde documenten (lang)   |  Het totale aantal documenten dat met succes is geïmporteerd uit de totale documenten die zijn geleverd aan de API-aanroep voor bulkimport.       |
+   |TotalRequestUnitsConsumed (dubbel)   |   De total request units (RU) verbruikt door de bulk import API call.      |
+   |TotalTimeTaken (TimeSpan)    |   De totale tijd die wordt genomen door de API-aanroep voor bulkimport om de uitvoering te voltooien.      |
+   |BadInputDocuments (object>\<lijst)   |     De lijst met documenten met slechte indeling die niet zijn geïmporteerd in de API-aanroep voor bulkimport. Repareer de geretourneerde documenten en probeer opnieuw te importeren. Documenten met slechte opmaak omvatten documenten waarvan de id-waarde geen tekenreeks is (null of een ander gegevenstype wordt als ongeldig beschouwd).    |
 
-## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>Gegevens bulksgewijs bijwerken in uw Azure Cosmos-account
+## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>Bulkupdategegevens in uw Azure Cosmos-account
 
-U kunt bestaande documenten met behulp van de API BulkUpdateAsync bijwerken. In dit voor beeld stelt u het veld `Name` in op een nieuwe waarde en verwijdert u het veld `Description` uit de bestaande documenten. Raadpleeg de [API-documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)voor de volledige set met ondersteunde update bewerkingen.
+U bestaande documenten bijwerken met de BulkUpdateAsync API. In dit voorbeeld stelt `Name` u het veld in `Description` op een nieuwe waarde en verwijdert u het veld uit de bestaande documenten. Raadpleeg de [API-documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)voor de volledige set ondersteunde updatebewerkingen.
 
-1. Ga naar de map ' BulkUpdateSample ' en open het bestand ' BulkUpdateSample. SLN '.  
+1. Navigeer naar de map 'BulkUpdateSample' en open het bestand 'BulkUpdateSample.sln'.  
 
-2. Definieer de update-items samen met de bijbehorende veld Update bewerkingen. In dit voor beeld gebruikt u `SetUpdateOperation` om het `Name` veld bij te werken en `UnsetUpdateOperation` om het veld `Description` te verwijderen uit alle documenten. U kunt ook andere bewerkingen zoals het verhogen van een veld van het document door een specifieke waarde uitvoeren, push-specifieke waarden in het matrixveld van een of een specifieke waarde verwijderen uit een matrixveld. Raadpleeg de [API-documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)voor meer informatie over de verschillende methoden van de API voor bulksgewijs bijwerken.
+2. Definieer de update-items samen met de bijbehorende veldupdatebewerkingen. In dit voorbeeld gebruikt `SetUpdateOperation` u `Name` om `UnsetUpdateOperation` het veld `Description` bij te werken en het veld uit alle documenten te verwijderen. U ook andere bewerkingen uitvoeren, zoals een documentveld verhogen met een specifieke waarde, specifieke waarden in een matrixveld duwen of een specifieke waarde uit een matrixveld verwijderen. Raadpleeg de [API-documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)voor meer informatie over verschillende methoden die door de API voor bulkupdates worden geleverd.
 
    ```csharp
    SetUpdateOperation<string> nameUpdate = new SetUpdateOperation<string>("Name", "UpdatedDoc");
@@ -140,7 +140,7 @@ U kunt bestaande documenten met behulp van de API BulkUpdateAsync bijwerken. In 
    }
    ```
 
-3. De toepassing roept de BulkUpdateAsync-API aan. Raadpleeg de [API-documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync?view=azure-dotnet)voor meer informatie over de definitie van de BulkUpdateAsync-methode.  
+3. De toepassing roept de BulkUpdateAsync API aan. Raadpleeg de [API-documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync?view=azure-dotnet)voor meer informatie over de definitie van de bulkupdateasync-methode.  
 
    ```csharp
    BulkUpdateResponse bulkUpdateResponse = await bulkExecutor.BulkUpdateAsync(
@@ -149,41 +149,41 @@ U kunt bestaande documenten met behulp van de API BulkUpdateAsync bijwerken. In 
      maxInMemorySortingBatchSize: null,
      cancellationToken: token);
    ```  
-   **De methode BulkUpdateAsync accepteert de volgende para meters:**
+   **BulkUpdateAsync-methode accepteert de volgende parameters:**
 
-   |**Bepaalde**  |**Beschrijving** |
+   |**Parameter**  |**Beschrijving** |
    |---------|---------|
-   |maxConcurrencyPerPartitionKeyRange    |   De maximale graad van gelijktijdigheid per partitie sleutel bereik. als deze para meter wordt ingesteld op NULL, wordt de tape wisselaar gebruikt voor het gebruik van de standaard waarde (20).   |
-   |maxInMemorySortingBatchSize    |    Het maximum aantal update-items dat is opgehaald uit de enumerator voor update-items die zijn door gegeven aan de API-aanroep in elke fase. Voor de sorteer fase in het geheugen die vóór het bulksgewijs bijwerken plaatsvindt, wordt door het instellen van deze para meter op null de standaard minimum waarde (updateItems. Count, 1000000) gebruikt.     |
-   | cancellationToken|Het annulerings token om de bewerking voor bulksgewijs bijwerken zonder problemen af te sluiten. |
+   |maxConcurrencyPerPartitionKeyRange    |   De maximale mate van gelijktijdigheid per partitiesleutelbereik, waarbij deze parameter wordt ingesteld op null, zorgt ervoor dat de bibliotheek de standaardwaarde(20) gebruikt.   |
+   |maxInMemorySortingBatchSize    |    Het maximum aantal update-items dat uit de updateitems is gehaald, is in elke fase doorgegeven aan de API-aanroep. Voor de sorteerfase in het geheugen die plaatsvindt voordat deze in bulk wordt bijgewerkt, wordt de standaardminimumwaarde van de bibliotheek ingesteld op null(updateItems.count, 1000000).     |
+   | annuleringToken|Het annuleringstoken om de bulkupdatebewerking op een elegante manier af te sluiten. |
 
-   **Definitie van antwoord object voor bulk update** Het resultaat van de API-aanroep voor bulk updates bevat de volgende kenmerken:
+   **Definitie van bulkupdate-antwoordobject** Het resultaat van de API-aanroep voor bulkupdates bevat de volgende kenmerken:
 
-   |**Bepaalde**  |**Beschrijving** |
+   |**Parameter**  |**Beschrijving** |
    |---------|---------|
-   |NumberOfDocumentsUpdated (lang)    |   Het aantal documenten dat is bijgewerkt met de totale hoeveelheid documenten die is geleverd aan de API-aanroep voor bulksgewijs bijwerken.      |
-   |TotalRequestUnitsConsumed (double)   |    Het totale aantal aanvraag eenheden (RUs) dat wordt gebruikt door de API-aanroep voor bulk updates.    |
-   |TotalTimeTaken (time span)   | De totale tijd die nodig is voor de API-aanroep voor bulk updates om de uitvoering te volt ooien. |
+   |Aantalbijgewerkte documenten (lang)    |   Het aantal documenten dat met succes is bijgewerkt ten opzichte van de totale documenten die zijn geleverd aan de API-aanroep voor bulkupdates.      |
+   |TotalRequestUnitsConsumed (dubbel)   |    De total request units (RU's) verbruikt door de bulk update API call.    |
+   |TotalTimeTaken (TimeSpan)   | De totale tijd die wordt genomen door de API-aanroep voor bulkupdates om de uitvoering te voltooien. |
     
 ## <a name="performance-tips"></a>Tips voor prestaties 
 
-Houd rekening met de volgende punten voor betere prestaties bij gebruik van de bibliotheek voor bulk-uitvoerder:
+Houd rekening met de volgende punten voor betere prestaties bij het gebruik van de bibliotheek voor bulkuitvoer:
 
-* Voor de beste prestaties voert u uw toepassing uit vanaf een virtuele machine van Azure die zich in dezelfde regio bevindt als de schrijf regio van uw Azure Cosmos-account.  
+* Voer uw toepassing uit vanaf een virtuele Azure-machine die zich in dezelfde regio bevindt als het schrijfgebied van uw Azure Cosmos-account.  
 
-* Het is raadzaam om een enkel `BulkExecutor`-object voor de hele toepassing te instantiëren binnen één virtuele machine die overeenkomt met een specifieke Azure Cosmos-container.  
+* Het wordt aanbevolen om één `BulkExecutor` object voor de hele toepassing te instantiëren binnen één virtuele machine die overeenkomt met een specifieke Azure Cosmos-container.  
 
-* Omdat één bulk bewerking van een API een groot deel van de CPU-en netwerk-i/o's van de client computer verbruikt (dit gebeurt door het uitvoeren van meerdere taken intern). Vermijd het starten van meerdere gelijktijdige taken binnen uw toepassings proces waarmee API-aanroepen voor bulk bewerkingen worden uitgevoerd. Als één bulk bewerking van een API-aanroep die wordt uitgevoerd op één virtuele machine, niet in staat is de gehele door Voer van de container te gebruiken (als de door Voer van de container > 1.000.000 RU/s) is, kunt u het beste afzonderlijke virtuele machines maken voor het gelijktijdig uitvoeren van de API-aanroepen voor bulk bewerkingen.  
+* Aangezien een enkele bulk operatie API uitvoering verbruikt een groot deel van de client machine CPU en netwerk IO (Dit gebeurt door het paaien van meerdere taken intern). Vermijd het spawnen van meerdere gelijktijdige taken binnen uw toepassingsproces die API-aanroepen voor bulkbewerking uitvoeren. Als een API-aanroep met één bulkbewerking die op één virtuele machine wordt uitgevoerd, de doorvoer van de volledige container niet kan verbruiken (als de doorvoer van uw container > 1 miljoen RU/s) mogelijk is, heeft het de voorkeur om afzonderlijke virtuele machines te maken om gelijktijdig de API-aanroepen voor bulkbewerking uit te voeren.  
 
-* Zorg ervoor dat de `InitializeAsync()` methode wordt aangeroepen nadat u een BulkExecutor-object hebt geinstantiërd om de partitie toewijzing van de doel Cosmos-container op te halen.  
+* Zorg `InitializeAsync()` ervoor dat de methode wordt aangeroepen nadat u een object BulkExecutor hebt geinstantieerd om de partitiemap van de doelcosmoscontainer op te halen.  
 
-* Zorg ervoor dat **gcServer** is ingeschakeld voor betere prestaties in de app. config van uw toepassing.
+* Zorg ervoor dat **gcServer in** de App.Config van uw toepassing is ingeschakeld voor betere prestaties
   ```xml  
   <runtime>
     <gcServer enabled="true" />
   </runtime>
   ```
-* De bibliotheek verzendt traceringen die kunnen worden verzameld in een logboek bestand of in de-console. Als u beide wilt inschakelen, voegt u de volgende code toe aan het bestand app. config van uw toepassing.
+* De bibliotheek zendt sporen uit die kunnen worden verzameld in een logboekbestand of op de console. Als u beide wilt inschakelen, voegt u de volgende code toe aan het App.Config-bestand van uw toepassing.
 
   ```xml
   <system.diagnostics>
@@ -198,4 +198,4 @@ Houd rekening met de volgende punten voor betere prestaties bij gebruik van de b
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voor meer informatie over de details van het Nuget-pakket en de release opmerkingen raadpleegt u de informatie over de bulk-invoerder- [SDK](sql-api-sdk-bulk-executor-dot-net.md).
+* Zie de details van de [bulkuitvoerder SDK](sql-api-sdk-bulk-executor-dot-net.md)voor meer informatie over de details van het Nuget-pakket en de releasenotes.

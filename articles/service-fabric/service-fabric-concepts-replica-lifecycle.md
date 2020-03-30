@@ -1,139 +1,139 @@
 ---
-title: Replica's en instanties in azure Service Fabric
-description: Meer informatie over replica's en instanties in Service Fabric, inclusief een overzicht van de levens cycli en functies.
+title: Replica's en instanties in Azure Service Fabric
+description: Meer informatie over replica's en exemplaren in Service Fabric, inclusief een overzicht van hun levenscyclus en functies.
 author: appi101
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258562"
 ---
-# <a name="replicas-and-instances"></a>Replica's en instanties 
-Dit artikel geeft een overzicht van de levens cyclus van replica's van stateful Services en instanties van stateless Services.
+# <a name="replicas-and-instances"></a>Replica's en exemplaren 
+Dit artikel geeft een overzicht van de levenscyclus van replica's van stateful services en exemplaren van stateless services.
 
-## <a name="instances-of-stateless-services"></a>Exemplaren van stateless Services
-Een exemplaar van een stateless service is een kopie van de service logica die wordt uitgevoerd op een van de knoop punten van het cluster. Een exemplaar binnen een partitie wordt uniek geïdentificeerd door de **InstanceId**. De levens cyclus van een exemplaar wordt gemodelleerd in het volgende diagram:
+## <a name="instances-of-stateless-services"></a>Gevallen van staatloze services
+Een instantie van een statusloze service is een kopie van de servicelogica die wordt uitgevoerd op een van de knooppunten van het cluster. Een instantie binnen een partitie wordt uniek geïdentificeerd door de **InstanceId**. De levenscyclus van een instantie is gemodelleerd naar het volgende diagram:
 
-![Levens cyclus van exemplaar](./media/service-fabric-concepts-replica-lifecycle/instance.png)
+![Levenscyclus van instantie](./media/service-fabric-concepts-replica-lifecycle/instance.png)
 
-### <a name="inbuild-ib"></a>Inbouwen (IB)
-Nadat de cluster resource manager een plaatsing voor het exemplaar heeft bepaald, wordt deze levens cyclus status geactiveerd. Het exemplaar wordt gestart op het knoop punt. De toepassingshost is gestart, het exemplaar wordt gemaakt en vervolgens geopend. Nadat het opstarten is voltooid, wordt het exemplaar overgezet naar de status gereed. 
+### <a name="inbuild-ib"></a>InBuild (IB)
+Nadat clusterbronbeheer een plaatsing voor de instantie heeft bepaald, wordt deze levenscyclusstatus invoert. De instantie wordt gestart op het knooppunt. De toepassingshost wordt gestart, de instantie wordt gemaakt en vervolgens geopend. Nadat het opstarten is voltooid, wordt de instantie overgezet naar de gereedstaat. 
 
-Als de toepassingshost of het knoop punt voor deze instantie vastloopt, wordt deze overgezet naar de status verwijderd.
+Als de toepassingshost of -knooppunt voor dit exemplaar vastloopt, wordt deze overgezet naar de status gevallen.
 
-### <a name="ready-rd"></a>Gereed (RD)
-In de status gereed is de instantie actief en wordt deze uitgevoerd op het knoop punt. Als dit een betrouw bare service is, is **RunAsync** aangeroepen. 
+### <a name="ready-rd"></a>Klaar (RD)
+In de gereedstaat is de instantie up-and-running op het knooppunt. Als dit exemplaar een betrouwbare service is, is **RunAsync** aangeroepen. 
 
-Als de toepassingshost of het knoop punt voor deze instantie vastloopt, wordt deze overgezet naar de status verwijderd.
+Als de toepassingshost of -knooppunt voor dit exemplaar vastloopt, wordt deze overgezet naar de status gevallen.
 
-### <a name="closing-cl"></a>Sluiten (CL)
-In de sluitings status is Azure Service Fabric bezig met het afsluiten van het exemplaar op dit knoop punt. Dit kan te wijten zijn aan een groot aantal redenen: bijvoorbeeld een toepassings upgrade, taak verdeling of de service die wordt verwijderd. Nadat het afsluiten is voltooid, wordt de status verwijderd.
+### <a name="closing-cl"></a>Sluiting (CL)
+In de afsluitstatus is Azure Service Fabric bezig met het afsluiten van de instantie op dit knooppunt. Deze afsluiting kan te wijten zijn aan vele redenen, bijvoorbeeld een upgrade van een toepassing, taakverdeling of het verwijderen van de service. Nadat de shutdown is voltooid, wordt deze overgezet naar de gedaalde status.
 
-### <a name="dropped-dd"></a>Verwijderd (DD)
-In de status verwijderd wordt het exemplaar niet meer uitgevoerd op het knoop punt. Op dit punt bewaart Service Fabric de meta gegevens over deze instantie, die uiteindelijk ook worden verwijderd.
+### <a name="dropped-dd"></a>Dropped (DD)
+In de status dropped wordt de instantie niet meer op het knooppunt uitgevoerd. Op dit moment onderhoudt Service Fabric de metadata over dit exemplaar, dat uiteindelijk ook wordt verwijderd.
 
 > [!NOTE]
-> U kunt overstappen van elke status naar de status verwijderd met behulp van de optie **ForceRemove** op `Remove-ServiceFabricReplica`.
+> Het is mogelijk om over te schakelen van elke status `Remove-ServiceFabricReplica`naar de gelatenvallen met behulp van de optie **ForceRemove** op .
 >
 
-## <a name="replicas-of-stateful-services"></a>Replica's van stateful Services
-Een replica van een stateful service is een kopie van de service logica die wordt uitgevoerd op een van de knoop punten van het cluster. Daarnaast houdt de replica een kopie bij van de status van die service. In twee gerelateerde concepten worden de levens cyclus en het gedrag van stateful replica's beschreven:
-- Levens cyclus van replica's
-- Replica-rol
+## <a name="replicas-of-stateful-services"></a>Replica's van statige diensten
+Een replica van een stateful service is een kopie van de servicelogica die wordt uitgevoerd op een van de knooppunten van het cluster. Bovendien behoudt de replica een kopie van de status van die service. Twee verwante concepten beschrijven de levenscyclus en het gedrag van stateful replica's:
+- Levenscyclus van replica's
+- Replicarol
 
-In de volgende bespreking worden persistente stateful Services beschreven. Voor een volatiel (of in het geheugen) stateful-Services zijn de status omlaag en neergezet gelijkwaardig.
+De volgende bespreking beschrijft voortdurende stateful diensten. Voor vluchtige (of in-memory) stateful services zijn de down- en dropped-statussen gelijkwaardig.
 
-![Levens cyclus van replica's](./media/service-fabric-concepts-replica-lifecycle/replica.png)
+![Levenscyclus van replica's](./media/service-fabric-concepts-replica-lifecycle/replica.png)
 
-### <a name="inbuild-ib"></a>Inbouwen (IB)
-Een inbouwen replica is een replica die wordt gemaakt of voor bereid voor het toevoegen van de replicaset. De IB heeft een andere semantiek, afhankelijk van de rol van de replica. 
+### <a name="inbuild-ib"></a>InBuild (IB)
+Een InBuild-replica is een replica die is gemaakt of voorbereid om deel te nemen aan de replicaset. Afhankelijk van de replicarol heeft de IB verschillende semantiek. 
 
-Als de toepassingshost of het knoop punt voor een inbuild-replica vastloopt, wordt deze overgezet naar de status omlaag.
+Als de toepassingshost of het knooppunt voor een InBuild-replica vastloopt, wordt deze overgezet naar de downstatus.
 
-   - **Primaire inbuild-replica's**: primaire inbouwen zijn de eerste replica's voor een partitie. Deze replica treedt meestal op wanneer de partitie wordt gemaakt. Primaire inbuild-replica's ontstaan ook wanneer alle replica's van een partitie opnieuw worden opgestart of worden verwijderd.
+   - **Primaire InBuild-replica's:** Primary InBuild zijn de eerste replica's voor een partitie. Deze replica gebeurt meestal wanneer de partitie wordt gemaakt. Primaire InBuild-replica's ontstaan ook wanneer alle replica's van een partitie opnieuw worden opgestart of worden verwijderd.
 
-   - **IdleSecondary inbuild-replica's**: Dit zijn de nieuwe replica's die worden gemaakt door de cluster resource manager of bestaande replica's die zijn opgetreden en die opnieuw moeten worden toegevoegd aan de set. Deze replica's worden geseed of gebouwd op basis van de primaire versie voordat ze kunnen deel nemen aan de replicaset als ActiveSecondary en deel nemen aan de quorum bevestiging van bewerkingen.
+   - **IdleSecondary InBuild replica's:** Dit zijn nieuwe replica's die zijn gemaakt door de Cluster Resource Manager, of bestaande replica's die naar beneden ging en moeten worden toegevoegd terug in de set. Deze replica's worden gezaaid of gebouwd door de primaire voordat ze kunnen deelnemen aan de replica set als ActiveSecondary en deelnemen aan quorum bevestiging van operaties.
 
-   - **ActiveSecondary inbuild-replica's**: deze status wordt in sommige query's in acht genomen. Het is een optimalisatie waarbij de replicaset niet verandert, maar een replica moet worden gebouwd. De replica zelf volgt de normale status computer overgangen (zoals beschreven in de sectie over replica rollen).
+   - **ActiveSecondary InBuild replica's:** Deze status wordt waargenomen in sommige query's. Het is een optimalisatie waarbij de replicaset niet verandert, maar een replica moet worden gebouwd. De replica zelf volgt de normale status machine overgangen (zoals beschreven in de sectie over replica rollen).
 
-### <a name="ready-rd"></a>Gereed (RD)
-Een kant-en-klare replica is een replica die deelneemt aan replicatie en quorum bevestiging van bewerkingen. De status gereed is van toepassing op primaire en actieve secundaire replica's.
+### <a name="ready-rd"></a>Klaar (RD)
+Een replica klaar is een replica die deelneemt aan replicatie en quorumbevestiging van bewerkingen. De gereedstaande status is van toepassing op primaire en actieve secundaire replica's.
 
-Als de toepassingshost of het knoop punt voor een kant-en-klare replica vastloopt, wordt deze overgezet naar de status omlaag.
+Als de toepassingshost of het knooppunt voor een gereedreplica vastloopt, wordt deze overgezet naar de downstatus.
 
-### <a name="closing-cl"></a>Sluiten (CL)
-Een replica krijgt de sluitings status in de volgende scenario's:
+### <a name="closing-cl"></a>Sluiting (CL)
+Een replica voert de afsluitingsstatus in de volgende scenario's in:
 
-- **De code voor de replica wordt afgesloten**: Service Fabric moet mogelijk de actieve code voor een replica afsluiten. Dit kan verschillende oorzaken hebben. Dit kan bijvoorbeeld gebeuren vanwege een toepassings-, infrastructuur-of infrastructuur upgrade, of vanwege een fout die door de replica is gerapporteerd. Wanneer het sluiten van de replica is voltooid, wordt de replica overgezet naar de status omlaag. De persistente status die is gekoppeld aan deze replica die is opgeslagen op schijf, wordt niet opgeschoond.
+- **De code voor de replica afsluiten:** Servicefabric moet mogelijk de bedrijfscode voor een replica afsluiten. Deze shutdown kan om vele redenen zijn. Dit kan bijvoorbeeld gebeuren vanwege een upgrade van een toepassing, fabric of infrastructuur of als gevolg van een fout die door de replica wordt gerapporteerd. Wanneer de replica bijna klaar is, wordt de replica overgezet naar de downstatus. De status die is ingeschakeld voor deze replica die op schijf is opgeslagen, wordt niet opgeschoond.
 
-- **De replica verwijderen uit het cluster**: Service Fabric moet mogelijk de persistente status verwijderen en de actieve code voor een replica afsluiten. Deze afsluiting kan veel oorzaken hebben, bijvoorbeeld taak verdeling.
+- **De replica uit het cluster verwijderen:** Servicefabric moet mogelijk de status voortduren verwijderen en de loopcode voor een replica afsluiten. Deze shutdown kan om vele redenen zijn, bijvoorbeeld het balanceren van de last.
 
-### <a name="dropped-dd"></a>Verwijderd (DD)
-In de status verwijderd wordt het exemplaar niet meer uitgevoerd op het knoop punt. Er is ook geen status meer op het knoop punt. Op dit punt bewaart Service Fabric de meta gegevens over deze instantie, die uiteindelijk ook worden verwijderd.
+### <a name="dropped-dd"></a>Dropped (DD)
+In de status dropped wordt de instantie niet meer op het knooppunt uitgevoerd. Er is ook geen staat meer op het knooppunt. Op dit moment onderhoudt Service Fabric de metadata over dit exemplaar, dat uiteindelijk ook wordt verwijderd.
 
 ### <a name="down-d"></a>Omlaag (D)
-In de status down wordt de replica code niet uitgevoerd, maar de persistente status voor die replica bestaat op het knoop punt. Een replica kan een groot aantal redenen hebben: bijvoorbeeld het knoop punt is niet actief, een crash in de replica code, een toepassings upgrade of replica fouten.
+In de downstatus wordt de replicacode niet uitgevoerd, maar de status voor die replica bestaat op dat knooppunt. Een replica kan naar beneden om vele redenen - bijvoorbeeld, het knooppunt wordt naar beneden, een crash in de replica code, een applicatie-upgrade, of replica fouten.
 
-Als de upgrade op het knoop punt is voltooid, wordt de replica door Service Fabric als vereist geopend.
+Een down replica wordt geopend door Service Fabric zoals vereist, bijvoorbeeld wanneer de upgrade eindigt op het knooppunt.
 
-De replica-rol is niet relevant in de status down.
+De replicarol is niet relevant in de down-status.
 
-### <a name="opening-op"></a>Openen (OP)
-Met een down keer replica wordt de openings status geactiveerd wanneer Service Fabric de replica opnieuw moet instellen. Deze status kan bijvoorbeeld zijn nadat een code-upgrade voor de toepassing op een knoop punt is voltooid. 
+### <a name="opening-op"></a>Opening (OP)
+Een down replica komt in de openingsstatus wanneer Service Fabric de replica weer omhoog moet brengen. Deze status kan bijvoorbeeld zijn nadat een code-upgrade voor de toepassing is voltooid op een knooppunt. 
 
-Als de toepassingshost of het knoop punt voor een inconsistentie van de replica vastloopt, wordt de status naar beneden overgezet.
+Als de toepassingshost of het knooppunt voor een openingsreplica vastloopt, wordt deze overgezet naar de downstatus.
 
-De replica-rol is niet relevant voor de openings status.
+De replicarol is niet relevant in de openingsstatus.
 
 ### <a name="standby-sb"></a>Stand-by (SB)
-Een stand-by replica is een replica van een persistente service die is afgesloten en vervolgens werd geopend. Deze replica kan worden gebruikt door Service Fabric als een andere replica moet worden toegevoegd aan de replicaset (omdat de replica al een deel van de status heeft en het bouw proces sneller is). Nadat de StandByReplicaKeepDuration is verlopen, wordt de stand-by replica verwijderd.
+Een stand-by replica is een replica van een voortdurende service die ging naar beneden en werd vervolgens geopend. Deze replica kan worden gebruikt door Service Fabric als deze een andere replica aan de replicaset moet toevoegen (omdat de replica al een deel van de status heeft en het bouwproces sneller is). Nadat de StandByReplicaKeepDuration is verlopen, wordt de stand-byreplica verwijderd.
 
-Als de toepassingshost of het knoop punt van een stand-by-replica vastloopt, wordt deze overgezet naar de status omlaag.
+Als de toepassingshost of het knooppunt voor een stand-byreplica vastloopt, wordt deze overgezet naar de downstatus.
 
-De replica-rol is niet relevant voor de status stand-by.
+De replicarol is niet relevant in de stand-bystatus.
 
 > [!NOTE]
-> Een replica die niet wordt ingeactief of verwijderd, wordt beschouwd als *actief*.
+> Elke replica die niet naar beneden of gedaald wordt beschouwd als *up*.
 >
 
 > [!NOTE]
-> U kunt overstappen van elke status naar de status verwijderd met behulp van de **ForceRemove** -optie op `Remove-ServiceFabricReplica`.
+> Het is mogelijk om over te schakelen van elke status `Remove-ServiceFabricReplica`naar de gelatenvallen met behulp van de optie **ForceRemove** op .
 >
 
-## <a name="replica-role"></a>Replica-rol 
+## <a name="replica-role"></a>Replicarol 
 De rol van de replica bepaalt de functie in de replicaset:
 
-- **Primair (P)** : er is één primaire set in de replicaset die verantwoordelijk is voor het uitvoeren van lees-en schrijf bewerkingen. 
-- **ActiveSecondary (S)** : Dit zijn replica's die status updates ontvangen van de primaire, toe te passen en vervolgens teruggestuurde bevestigingen te sturen. Er zijn meerdere actieve secundaire zones in de replicaset. Het aantal van deze actieve secundaire zones bepaalt het aantal fouten dat de service kan verwerken.
-- **IdleSecondary (I)** : deze replica's worden gebouwd door de primaire. Ze ontvangen de status van de primaire voordat ze kunnen worden gepromoveerd tot actief secundair. 
-- **Geen (N)** : deze replica's hebben geen verantwoordelijkheid in de replicaset.
-- **Onbekend (U)** : dit is de initiële rol van een replica voordat een **ChangeRole** -API-aanroep van service Fabric wordt ontvangen.
+- **Primair (P)**: Er is één primaire in de replicaset die verantwoordelijk is voor het uitvoeren van lees- en schrijfbewerkingen. 
+- **ActiveSecondary (S)**: Dit zijn replica's die statusupdates van de primaire ontvangen, deze toepassen en vervolgens bevestigingen terugsturen. Er zijn meerdere actieve secondaries in de replicaset. Het aantal van deze actieve secondaries bepaalt het aantal fouten dat de service kan verwerken.
+- **IdleSecondary (I)**: Deze replica's worden gebouwd door de primaire. Ze ontvangen status van de primaire voordat ze kunnen worden bevorderd tot actieve secundaire. 
+- **None**
+- **Onbekend (U):** dit is de eerste rol van een replica voordat deze een **ChangeRole** API-aanroep van Service Fabric ontvangt.
 
-In het volgende diagram ziet u de overgangen van replica rollen en enkele voorbeeld scenario's waarin ze kunnen optreden:
+In het volgende diagram worden de overgangen van replicarollen en enkele voorbeeldscenario's geïllustreerd waarin ze kunnen optreden:
 
-![Replica-rol](./media/service-fabric-concepts-replica-lifecycle/role.png)
+![Replicarol](./media/service-fabric-concepts-replica-lifecycle/role.png)
 
-- U-> P: het maken van een nieuwe primaire replica.
-- U-> I: het maken van een nieuwe niet-actieve replica.
-- U-> N: verwijdering van een stand-by replica.
-- I-> S: promotie van de niet-actieve secundaire naar actief secundair zodat de bevestigingen bijdragen aan het quorum.
-- I-> P: de promotie van de niet-actieve secundaire naar de primaire. Dit kan gebeuren onder speciale herconfiguraties wanneer de niet-actieve secundaire de juiste kandidaat primair is.
-- I-> N: de niet-actieve secundaire replica wordt verwijderd.
-- S-> P: de promotie van de actieve secundaire naar de primaire. Dit kan worden veroorzaakt door failover van de primaire of primaire verplaatsing die door de cluster resource manager is gestart. Het kan bijvoorbeeld zijn als reactie op een toepassings upgrade of taak verdeling.
-- S-> N: de actieve secundaire replica wordt verwijderd.
-- P-> S: degradatie van de primaire replica. Dit kan worden veroorzaakt door een primaire verplaatsing die door de cluster resource manager is geïnitieerd. Het kan bijvoorbeeld zijn als reactie op een toepassings upgrade of taak verdeling.
-- P-> N: verwijdering van de primaire replica.
+- U -> P: Het maken van een nieuwe primaire replica.
+- U -> I: Het maken van een nieuwe niet-actieve replica.
+- U -> N: Schrapping van een stand-by replica.
+- I -> S: Bevordering van de niet-actieve secundaire tot actieve secundaire, zodat de erkenningen bijdragen aan quorum.
+- I -> P: Promotie van de niet-actieve secundaire naar primaire. Dit kan gebeuren onder speciale herconfiguraties wanneer de niet-actieve secundaire is de juiste kandidaat om primaire.
+- Ik -> N: Schrapping van de niet-actieve secundaire replica.
+- S -> P: Promotie van de actieve secundaire naar primaire. Dit kan te wijten zijn aan failover van de primaire of primaire beweging geïnitieerd door de Cluster Resource Manager. Het kan bijvoorbeeld een reactie zijn op een upgrade van een toepassing of taakverdeling.
+- S -> N: Verwijderen van de actieve secundaire replica.
+- P-> S: Degradatie van de primaire replica. Dit kan te wijten zijn aan een primaire beweging geïnitieerd door de Cluster Resource Manager. Het kan bijvoorbeeld een reactie zijn op een upgrade van een toepassing of taakverdeling.
+- P -> N: Verwijderen van de primaire replica.
 
 > [!NOTE]
-> Ontwikkel modellen op een hoger niveau, zoals [reliable actors](service-fabric-reliable-actors-introduction.md) en [reliable Services](service-fabric-reliable-services-introduction.md), verbergen het concept van replica rollen van de ontwikkelaar. In Actors is het begrip van een rol overbodig. In-Services is het grotendeels vereenvoudigd voor de meeste scenario's.
+> Programmeermodellen op hoger niveau, zoals [Betrouwbare Actoren](service-fabric-reliable-actors-introduction.md) en [Betrouwbare Diensten,](service-fabric-reliable-services-introduction.md)verbergen het concept van replicarollen voor de ontwikkelaar. In Acteurs is het begrip van een rol niet nodig. In Services is het grotendeels vereenvoudigd voor de meeste scenario's.
 >
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende artikel voor meer informatie over Service Fabric concepten:
+Zie het volgende artikel voor meer informatie over servicefabric-concepten:
 
 [Levenscyclus van Reliable Services - C#](service-fabric-reliable-services-lifecycle.md)
 

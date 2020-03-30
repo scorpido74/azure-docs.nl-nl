@@ -1,5 +1,5 @@
 ---
-title: Visual Studio met .NET gebruiken en C# query's uitvoeren
+title: Visual Studio gebruiken met .NET en C# om op te vragen
 description: Gebruik Visual Studio om een C#-toepassing te maken die is verbonden met een Azure SQL-database en query's uitvoert op deze database met behulp van Transact-SQL-instructies.
 services: sql-database
 ms.service: sql-database
@@ -12,19 +12,19 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/31/2019
 ms.openlocfilehash: 75f84f87fc59a870a0c88fd24cb1b1b8894b3e2a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79209577"
 ---
-# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Snelstartgids: .NET en C# in Visual Studio gebruiken om verbinding te maken met een Azure-SQL database en een query uit te zoeken
+# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Snelstart: gebruik .NET en C# in Visual Studio om verbinding te maken met en query een Azure SQL-database
 
-In deze Quick start ziet u hoe [.NET Framework](https://www.microsoft.com/net/) u de C# .NET Framework en code in Visual Studio kunt gebruiken om een query uit te voeren op een Azure SQL database met Transact-SQL-instructies.
+In deze quickstart wordt uitgelegd hoe u de [.NET Framework-](https://www.microsoft.com/net/) en C#-code in Visual Studio gebruiken om een Azure SQL-database op te vragen met Transact-SQL-instructies.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt het volgende nodig om deze snelstartgids te voltooien:
+U hebt het volgende nodig om deze quickstart te voltooien:
 
 - Een Azure SQL-database. U kunt een van deze quickstarts gebruiken om een database te maken en vervolgens te configureren in Azure SQL Database:
 
@@ -32,37 +32,37 @@ U hebt het volgende nodig om deze snelstartgids te voltooien:
   |:--- |:--- |:---|
   | Maken| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  || [Powershell](scripts/sql-database-create-and-configure-database-powershell.md) | [Powershell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Configureren | [IP-firewallregel op serverniveau](sql-database-server-level-firewall-rule.md)| [Connectiviteit vanaf een VM](sql-database-managed-instance-configure-vm.md)|
   |||[Connectiviteit vanaf locatie](sql-database-managed-instance-configure-p2s.md)
   |Gegevens laden|Adventure Works geladen volgens de quickstart|[Wide World Importers herstellen](sql-database-managed-instance-get-started-restore.md)
-  |||Adventure Works herstellen of importeren vanuit [BACPAC](sql-database-import.md) -bestand vanuit [github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||Adventure Works uit [BACPAC-bestand](sql-database-import.md) herstellen of importeren van [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
-  > De scripts in dit artikel zijn geschreven voor gebruik met de Adventure Works-database. Met een beheerd exemplaar moet u de Adventure Works-database in een exemplaardatabase importeren of de scripts in dit artikel wijzigen zodat deze de Wide World Importers-database gebruiken.
+  > De scripts in dit artikel zijn geschreven voor gebruik met de Adventure Works-database. Met een beheerd exemplaar moet u de Adventure Works-database importeren in een exemplaardatabase of de scripts in dit artikel wijzigen zodat deze de Wide World Importers-database gebruiken.
 
-- [Visual Studio 2019](https://www.visualstudio.com/downloads/) Community, Professional of ENTER prise Edition.
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) Community-, Professional- of Enterprise-editie.
 
-## <a name="get-sql-server-connection-information"></a>Verbindingsgegevens voor SQL Server ophalen
+## <a name="get-sql-server-connection-information"></a>SQL Server-verbindingsgegevens ophalen
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Azure SQL-database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 2. Navigeer naar de pagina **SQL-database** of **Met SQL beheerde exemplaren**.
 
-3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erop en selecteert u het pictogram **Kopiëren**. 
+3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren**. 
 
 ## <a name="create-code-to-query-the-sql-database"></a>Code maken om query's uit te voeren op de SQL-database
 
-1. Selecteer in Visual Studio **Bestand** > **Nieuw** > **Project**. 
+1. Selecteer **in** > Visual Studio Bestand**Nieuw** > **project**. 
    
-1. Selecteer in het dialoogvenster **Nieuw project** achtereenvolgens **Visual C#** en **Consoletoepassing (.NET Framework)** .
+1. Selecteer in het dialoogvenster **Nieuw project** achtereenvolgens **Visual C#** en **Consoletoepassing (.NET Framework)**.
    
 1. Voer *sqltest* in voor de projectnaam en selecteer vervolgens **OK**. Het nieuwe project wordt gemaakt. 
    
-1. Selecteer **Project** > **NuGet-pakketten beheren**. 
+1. Selecteer**NuGet-pakketten voor** **projectbeheer** > . 
    
 1. Selecteer in **NuGet Package Manager** het tabblad **Bladeren** en zoek en selecteer **System.Data.SqlClient**.
    
@@ -72,7 +72,7 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Az
    
 1. Wanneer de installatie is voltooid, kunt u **NuGet Package Manager** sluiten. 
    
-1. Vervang in de code-editor de inhoud **Program.cs** door de volgende code. Vervang de waarden voor `<server>`, `<username>`, `<password>`en `<database>`.
+1. Vervang in de code-editor de inhoud **Program.cs** door de volgende code. Vervang uw `<server>`waarden `<username>` `<password>`voor `<database>`, , en .
    
    >[!IMPORTANT]
    >Voor de code in dit voorbeeld worden de voorbeeldgegevens gebruikt van AdventureWorksLT, die u als bron kunt kiezen bij het maken van uw database. Als in uw database andere gegevens staan, kunt u tabellen uit uw eigen database gebruiken in de SELECT-query. 
@@ -133,7 +133,7 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Az
 
 ## <a name="run-the-code"></a>De code uitvoeren
 
-1. Om de app uit te voeren, selecteert u **Fouten opsporen** > **Foutopsporing starten** of selecteert u **Start** op de werkbalk of drukt u op **F5**.
+1. Als u de app wilt uitvoeren, selecteert u Foutopsporing van **foutopsporing defoutopsporing** > **Start Debugging**opsporen debuggen, of selecteert u **Start** op de werkbalk of drukt u op **F5**.
 1. Controleer of de bovenste twintig rijen Categorie/Product in uw database worden geretourneerd en sluit vervolgens het appvenster.
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -142,7 +142,7 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Az
 - Meer informatie over [Aan de slag met .NET Core in Windows/Linux/macOS met behulp van de opdrachtregel](/dotnet/core/tutorials/using-with-xplat-cli).
 - Meer informatie over [Uw eerste Azure SQL-database ontwerpen met behulp van SSMS](sql-database-design-first-database.md) of [Uw eerste Azure SQL-database ontwerpen met behulp van .NET](sql-database-design-first-database-csharp.md).
 - Raadpleeg de [.NET-documentatie](https://docs.microsoft.com/dotnet/) voor meer informatie over .NET.
-- Voor beeld van een logische poging: [Maak robuuste verbinding met SQL met ADO.net][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
+- Probeer het logicavoorbeeld opnieuw: [Sluit veerkrachtig verbinding met SQL met ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
 
 
 <!-- Link references. -->

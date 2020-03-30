@@ -1,6 +1,6 @@
 ---
-title: Eenheids overzicht van Azure spatiale ankers
-description: Meer informatie over hoe Azure spatiale ankers kunnen worden gebruikt binnen Unity-apps.
+title: Overzicht van Eenheid saneren van Azure Spatial Anchors
+description: Ontdek hoe Azure Spatial Anchors kunnen worden gebruikt in Unity Apps. Bekijk snel starts voor Unity voor HoloLens, Unity voor Android en Unity voor iOS.
 author: rgarcia
 ms.author: rgarcia
 manager: vriveras
@@ -8,25 +8,25 @@ services: azure-spatial-anchors
 ms.service: azure-spatial-anchors
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: eea2d57c708bd3563625d6f9da19ac043b604888
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: df28fc6b5e3a1ddd9813919c8afbf21f65d731b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246260"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471083"
 ---
-# <a name="building-in-unity-with-azure-spatial-anchors"></a>Bouwen op basis van een eenheid met Azure ruimtelijke ankers
+# <a name="building-in-unity-with-azure-spatial-anchors"></a>Bouwen in eenheid met azure ruimtelijke ankers
 
-Ontwikkel aars kunnen eenheid kiezen voor het maken en implementeren van toepassingen voor gemengde realiteit die gebruikmaken van Azure spatiale ankers. De volgende platforms worden ondersteund:
+Ontwikkelaars kunnen Unity kiezen voor het maken en implementeren van mixed reality-toepassingen die Azure Spatial Anchors gebruiken. De volgende platforms worden ondersteund:
 
 **Eenheid voor HoloLens**
 
-[Snelstartgids: een unit HoloLens-app maken die gebruikmaakt van ruimtelijke ankers van Azure](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-hololens)
+[Snelstart: een Unity HoloLens-app maken die azure-ruimtelijke ankers gebruikt](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-hololens)
 
 **Eenheid voor Android**
 
-[Snelstartgids: een app Unitruimte maken die gebruikmaakt van ruimtelijke ankers van Azure](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-android)
+[Snelstart: maak een Unity Android-app die azure spatial anchors gebruikt](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-android)
 
 **Eenheid voor iOS**
 
-[Quick Start: een unit van een iOS-app maken die gebruikmaakt van ruimtelijke ankers van Azure](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-ios)
+[Snelstart: een Unity iOS-app maken die azure-ruimtelijke ankers gebruikt](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-ios)

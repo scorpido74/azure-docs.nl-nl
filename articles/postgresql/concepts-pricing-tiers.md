@@ -1,111 +1,111 @@
 ---
-title: Prijs categorieën-Azure Database for PostgreSQL-één server
-description: In dit artikel worden de berekenings-en opslag opties in Azure Database for PostgreSQL-één server beschreven.
+title: Prijsniveaus - Azure Database voor PostgreSQL - Single Server
+description: In dit artikel worden de reken- en opslagopties in Azure Database voor PostgreSQL - Single Server beschreven.
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 2e5b01a271eb290229904fc98d1268760e01620d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243560"
 ---
-# <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Prijs categorieën in Azure Database for PostgreSQL-één server
+# <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Prijscategorieën in Azure Database for PostgreSQL - enkele server
 
-U kunt een Azure Database for PostgreSQL-server maken in een van drie verschillende prijs Categorieën: basis, Algemeen en geoptimaliseerd voor geheugen. De prijs categorieën worden onderscheiden van de hoeveelheid Compute in vCores die kan worden ingericht, het geheugen per vCore en de opslag technologie die wordt gebruikt om de gegevens op te slaan. Alle resources worden ingericht op het niveau van de PostgreSQL-server. Een server kan een of meer data bases bevatten.
+U een Azure Database voor PostgreSQL-server maken in een van de drie verschillende prijsniveaus: Basic, General Purpose en Memory Optimized. De prijsniveaus worden gedifferentieerd naar de hoeveelheid compute in vCores die kunnen worden ingericht, geheugen per vCore en de opslagtechnologie die wordt gebruikt om de gegevens op te slaan. Alle resources zijn ingericht op PostgreSQL-serverniveau. Een server kan een of meerdere databases hebben.
 
-|    | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
+|    | **Basic** | **Algemeen doel** | **Geheugen geoptimaliseerd** |
 |:---|:----------|:--------------------|:---------------------|
-| Compute genereren | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
+| Compute generatie | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | vCores | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Geheugen per vCore | 2 GB | 5 GB | 10 GB |
-| Opslag grootte | 5 GB tot 1 TB | 5 GB tot 16 TB | 5 GB tot 16 TB |
-| Bewaar periode voor database back-ups | 7 tot 35 dagen | 7 tot 35 dagen | 7 tot 35 dagen |
+| Opslaggrootte | 5 GB tot 1 TB | 5 GB tot 16 TB | 5 GB tot 16 TB |
+| Bewaarperiode voor databaseback-ups | 7 tot 35 dagen | 7 tot 35 dagen | 7 tot 35 dagen |
 
-Als u een prijs categorie wilt kiezen, gebruikt u de volgende tabel als uitgangs punt.
+Als u een prijscategorie wilt kiezen, gebruikt u de volgende tabel als uitgangspunt.
 
 | Prijscategorie | Beoogde workloads |
 |:-------------|:-----------------|
-| Basic | Werk belastingen waarvoor lichte reken kracht en I/O-prestaties zijn vereist. Voor beelden zijn servers die worden gebruikt voor ontwikkeling of testen of kleinschalige, niet-veelgebruikte toepassingen. |
-| Algemeen gebruik | De meeste zakelijke workloads die evenwichtige reken kracht en geheugen vereisen met schaal bare I/O-door voer. Voor beelden zijn servers voor het hosten van web-en mobiele apps en andere zakelijke toepassingen.|
-| Geoptimaliseerd geheugen | Data bases met hoogwaardige prestaties waarvoor de prestaties in het geheugen zijn vereist voor een snellere transactie verwerking en hogere gelijktijdigheid. Voor beelden zijn servers voor het verwerken van real-time gegevens en transactionele of analytische toepassingen met hoge prestaties.|
+| Basic | Workloads die lichte rekenkracht en I/O-prestaties vereisen. Voorbeelden hiervan zijn servers die worden gebruikt voor ontwikkeling of testen of kleinschalige niet-gebruikte toepassingen. |
+| Algemeen gebruik | De meeste zakelijke workloads die een evenwichtige rekenkracht en geheugen vereisen met schaalbare I/O-doorvoer. Voorbeelden hiervan zijn servers voor het hosten van web- en mobiele apps en andere bedrijfstoepassingen.|
+| Geoptimaliseerd geheugen | Krachtige databaseworkloads die in-memory prestaties vereisen voor snellere transactieverwerking en hogere gelijktijdigheid. Voorbeelden hiervan zijn servers voor het verwerken van realtime gegevens en krachtige transactionele of analytische apps.|
 
-Nadat u een server hebt gemaakt, kunt u binnen enkele seconden het aantal vCores, de generatie van de hardware en de prijs categorie (met uitzonde ring van en van basis) wijzigen. U kunt ook onafhankelijk de hoeveelheid opslag ruimte en de Bewaar periode voor back-ups op afstand aanpassen zonder uitval tijd van de toepassing. U kunt het opslag type voor back-ups niet wijzigen nadat een server is gemaakt. Zie de sectie [resources schalen](#scale-resources) voor meer informatie.
+Nadat u een server hebt gemaakt, kan het aantal vCores, hardwaregeneratie en prijscategorie (behalve van en naar Basic) binnen enkele seconden omhoog of omlaag worden gewijzigd. U ook zelfstandig de hoeveelheid opslagruimte en de back-upbewaarperiode omhoog of omlaag aanpassen zonder downtime van de toepassing. U het type back-upopslag niet wijzigen nadat een server is gemaakt. Zie de sectie [Schaalbronnen](#scale-resources) voor meer informatie.
 
-## <a name="compute-generations-and-vcores"></a>Berekende generaties en vCores
+## <a name="compute-generations-and-vcores"></a>Rekengeneraties en vCores
 
-Reken bronnen worden weer gegeven als vCores, die de logische CPU van de onderliggende hardware vertegenwoordigen. China-oost 1, China-noord 1, US DoD-centraal en US DoD-oost logische Cpu's van generatie 4 gebruiken die zijn gebaseerd op Intel E5-2673 v3 (Haswell) 2,4-GHz processors. Alle andere regio's maken gebruik van generatie 5 logische Cpu's die zijn gebaseerd op Intel E5-2673 v4 (Broadwell) 2,3-GHz processors.
+Compute resources worden geleverd als vCores, die de logische CPU van de onderliggende hardware vertegenwoordigen. China East 1, China North 1, US DoD Central en US DoD East maken gebruik van gen 4 logische CPU's die zijn gebaseerd op Intel E5-2673 v3 (Haswell) 2,4-GHz processors. Alle andere regio's maken gebruik van gen 5 logische CPU's die zijn gebaseerd op Intel E5-2673 v4 (Broadwell) 2,3-GHz processors.
 
-## <a name="storage"></a>Opslag
+## <a name="storage"></a>Storage
 
-De opslag ruimte die u inricht, is de hoeveelheid opslag capaciteit die beschikbaar is voor uw Azure Database for PostgreSQL-server. De opslag wordt gebruikt voor de database bestanden, tijdelijke bestanden, transactie logboeken en de PostgreSQL-server Logboeken. De totale hoeveelheid opslag ruimte die u hebt ingericht, definieert ook de I/O-capaciteit die beschikbaar is voor uw server.
+De opslag die u indient, is de hoeveelheid opslagcapaciteit die beschikbaar is voor uw Azure Database voor PostgreSQL-server. De opslag wordt gebruikt voor de databasebestanden, tijdelijke bestanden, transactielogboeken en de PostgreSQL-serverlogboeken. De totale hoeveelheid opslagruimte die u indient, definieert ook de I/O-capaciteit die beschikbaar is voor uw server.
 
-|    | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
+|    | **Basic** | **Algemeen doel** | **Geheugen geoptimaliseerd** |
 |:---|:----------|:--------------------|:---------------------|
-| Opslagtype | Basis opslag | Opslag Algemeen | Opslag Algemeen |
-| Opslag grootte | 5 GB tot 1 TB | 5 GB tot 16 TB | 5 GB tot 16 TB |
-| Grootte van toename van opslag | 1 GB | 1 GB | 1 GB |
-| IOPS | Variabele |3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS |
+| Opslagtype | Basisopslag | Opslag voor algemeen gebruik | Opslag voor algemeen gebruik |
+| Opslaggrootte | 5 GB tot 1 TB | 5 GB tot 16 TB | 5 GB tot 16 TB |
+| Omvang opslagverhoging | 1 GB | 1 GB | 1 GB |
+| IOPS | Variabele |3 IOPS/GB<br/>Min 100 IOPS<br/>Max 20.000 IOPS | 3 IOPS/GB<br/>Min 100 IOPS<br/>Max 20.000 IOPS |
 
 > [!NOTE]
-> Opslag tot 16TB en 20.000 IOPS wordt ondersteund in de volgende regio's: VS-Oost, VS-Oost 2, centraal VS, VS-West, Noord-Centraal VS, Zuid-Centraal VS, Europa-noord, Europa-west, UK-zuid, UK-west, Zuidoost-Azië, Azië-oost, Japan-Oost, Japan-West, Korea-centraal , Korea-zuid, Australië-oost, Australië-Zuid-Oost.
+> Opslag tot 16 TB en 20.000 IOPS wordt ondersteund in de volgende regio's: Oost-VS, Oost-VS 2, Centraal VS, West-VS, Noord-Centraal VS, Noord-Europa, West-Europa, Verenigd Koninkrijk Zuid, UK West, Zuidoost-Azië, Oost-Azië, Japan East, Japan West, Korea Centraal , Korea Zuid, Australië Oost, Australië Zuidoost.
 >
-> Alle andere regio's ondersteunen Maxi maal 4 TB opslag ruimte en 6000 IOPS.
+> Alle andere regio's ondersteunen maximaal 4 TB opslagruimte en 6000 IOPS.
 >
 
-U kunt extra opslag capaciteit toevoegen tijdens en na het maken van de-server en het systeem toestaan om opslag automatisch te laten groeien op basis van het opslag verbruik van uw werk belasting. 
+U extra opslagcapaciteit toevoegen tijdens en na het maken van de server en het systeem toestaan om de opslag automatisch te laten groeien op basis van het opslagverbruik van uw werkbelasting. 
 
 >[!NOTE]
-> Opslag kan alleen omhoog en omlaag worden geschaald.
+> Opslag kan alleen worden opgeschaald, niet naar beneden.
 
-De laag basis biedt geen IOPS-garantie. In de prijs Categorieën Algemeen en geoptimaliseerd voor geheugen, wordt de IOPS-schaal met de ingerichte opslag grootte in een verhouding van 3:1.
+De Basic-laag biedt geen IOPS-garantie. In de prijzenlagen Voor algemeen gebruik en geheugen geoptimaliseerd, wordt de IOPS-schaal uitgevoerd met de ingerichte opslaggrootte in een verhouding van 3:1.
 
-U kunt uw I/O-gebruik bewaken in de Azure Portal of met behulp van Azure CLI-opdrachten. De relevante metrische gegevens die moeten worden bewaakt [, zijn opslag limiet, opslag percentage, gebruikte opslag en i/o-percentage](concepts-monitoring.md).
+U uw I/O-verbruik controleren in de Azure-portal of met Azure CLI-opdrachten. De relevante statistieken die moeten worden gecontroleerd zijn [opslaglimiet, opslagpercentage, gebruikte opslag en IO-percentage.](concepts-monitoring.md)
 
-### <a name="reaching-the-storage-limit"></a>De opslag limiet wordt bereikt
+### <a name="reaching-the-storage-limit"></a>Het bereiken van de opslaglimiet
 
-Servers met minder dan 100 GB ingerichte opslag zijn gemarkeerd als alleen-lezen als de vrije opslag minder is dan 512 MB of 5% van de ingerichte opslag grootte. Servers met meer dan 100 GB ingerichte opslag worden als alleen-lezen gemarkeerd als de vrije opslag minder is dan 5 GB.
+Servers met minder dan 100 GB ingerichte opslag zijn alleen-lezen gemarkeerd als de gratis opslag minder dan 512 MB of 5% van de ingerichte opslaggrootte is. Servers met meer dan 100 GB ingerichte opslag worden als alleen-lezen gemarkeerd als de vrije opslag minder is dan 5 GB.
 
-Als u bijvoorbeeld 110 GB aan opslag hebt ingericht en het werkelijke gebruik meer dan 105 GB overschrijdt, is de server gemarkeerd als alleen-lezen. Als u 5 GB aan opslag hebt ingericht, is de server gemarkeerd als alleen-lezen wanneer de vrije opslag minder dan 512 MB bedraagt.
+Als u bijvoorbeeld 110 GB opslagruimte hebt ingericht en het werkelijke gebruik meer dan 105 GB bedraagt, wordt de server alleen-lezen gemarkeerd. Als u 5 GB opslagruimte hebt ingericht, is de server alleen als alleen-lezen gemarkeerd wanneer de gratis opslag minder dan 512 MB bereikt.
 
-Wanneer de server is ingesteld op alleen-lezen, worden alle bestaande sessies losgekoppeld en worden niet-doorgevoerde trans acties teruggedraaid. Eventuele volgende schrijf bewerkingen en trans acties worden niet doorgevoerd. Alle volgende Lees query's werken niet meer.  
+Wanneer de server is ingesteld op alleen-lezen, worden alle bestaande sessies verbroken en worden niet-vastgelegde transacties teruggedraaid. Eventuele latere schrijfbewerkingen en transactiecommits mislukken. Alle volgende leesquery's werken ononderbroken.  
 
-U kunt de hoeveelheid ingerichte opslag naar uw server verg Roten of een nieuwe sessie starten in de modus lezen-schrijven en gegevens verwijderen om vrije opslag vrij te maken. Als `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` wordt uitgevoerd, wordt de huidige sessie ingesteld op lees schrijf modus. Om beschadiging van gegevens te voor komen, moet u geen schrijf bewerkingen uitvoeren wanneer de server nog steeds de status alleen-lezen heeft.
+U de hoeveelheid ingerichte opslag naar uw server verhogen of een nieuwe sessie starten in de leesschrijfmodus en gegevens neerzetten om gratis opslag terug te winnen. Met `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` uitvoeren stelt u de huidige sessie in om de schrijfmodus te lezen. Om gegevensbeschadiging te voorkomen, voert u geen schrijfbewerkingen uit wanneer de server nog steeds alleen-lezen is.
 
-U wordt aangeraden opslag ruimte automatisch te verg Roten of een waarschuwing in te stellen om u te waarschuwen wanneer uw server opslag de drempel waarde nadert, zodat u kunt voor komen dat u de status alleen-lezen krijgt. Zie de documentatie over het [instellen van een waarschuwing](howto-alert-on-metric.md)voor meer informatie.
+We raden u aan de opslag automatisch te laten groeien in of een waarschuwing in te stellen om u op de hoogte te stellen wanneer uw serveropslag de drempel nadert, zodat u niet in de alleen-lezenstatus komen. Zie voor meer informatie de documentatie over [het instellen van een waarschuwing](howto-alert-on-metric.md).
 
-### <a name="storage-auto-grow"></a>Opslag automatisch verg Roten
+### <a name="storage-auto-grow"></a>Opslag automatisch groeien
 
-Met opslag automatisch verg Roten kan de opslag van uw server niet worden uitgevoerd en wordt deze alleen-lezen. Als automatische groei van opslag is ingeschakeld, wordt de opslag automatisch uitgebreid zonder dat dit van invloed is op de werk belasting. Voor servers met minder dan 100 GB ingerichte opslag, wordt de ingerichte opslag grootte verhoogd met 5 GB zodra de gratis opslag onder het hoogste van 1 GB of 10% van de ingerichte opslag komt. Voor servers met meer dan 100 GB ingerichte opslag wordt de ingerichte opslag grootte verhoogd met 5% wanneer de beschik bare opslag ruimte lager is dan 10 GB of 5% van de ingerichte opslag grootte. De maximale opslag limieten, zoals hierboven is beschreven, zijn van toepassing.
+Opslagauto-grow voorkomt dat uw server geen opslagruimte meer heeft en alleen-lezen wordt. Als de opslagautomatisch wordt ingeschakeld, wordt de opslag automatisch groter zonder dat dit gevolgen heeft voor de werkbelasting. Voor servers met minder dan 100 GB ingerichte opslag wordt de ingerichte opslaggrootte met 5 GB verhoogd zodra de gratis opslag lager is dan 1 GB of 10% van de ingerichte opslag. Voor servers met meer dan 100 GB ingerichte opslag wordt de ingerichte opslaggrootte met 5% vergroot wanneer de vrije opslagruimte lager is dan 10 GB of 5% van de ingerichte opslaggrootte. De hierboven vermelde maximale opslaglimieten zijn van toepassing.
 
-Als u bijvoorbeeld 1000 GB aan opslag hebt ingericht en het werkelijke gebruik meer dan 950 GB overschrijdt, wordt de opslag grootte van de server verhoogd naar 1050 GB. Als u 10 GB aan opslag ruimte hebt ingericht, wordt de opslag grootte verhoogd tot 15 GB wanneer minder dan 1 GB aan opslag ruimte vrij is.
+Als u bijvoorbeeld 1000 GB opslagruimte hebt ingericht en het werkelijke gebruik meer dan 950 GB bedraagt, wordt de opslaggrootte van de server verhoogd tot 1050 GB. Als u 10 GB opslagruimte hebt ingericht, wordt de opslaggrootte verhoogd tot 15 GB wanneer minder dan 1 GB opslagruimte gratis is.
 
-Houd er rekening mee dat opslag alleen omhoog kan worden geschaald.
+Vergeet niet dat opslag alleen kan worden opgeschaald, niet naar beneden.
 
-## <a name="backup"></a>Back-up maken
+## <a name="backup"></a>Back-up
 
-De service maakt automatisch back-ups van uw server. U kunt een Bewaar periode van 7 tot 35 dagen selecteren. Algemeen-servers en geoptimaliseerd voor geheugen kunnen ervoor kiezen om geografisch redundante opslag te hebben voor back-ups. Meer informatie over back-ups vindt u in het [artikel concepten](concepts-backup.md).
+De service maakt automatisch back-ups van uw server. U een bewaartermijn selecteren uit een bereik van 7 tot 35 dagen. Servers met algemene toepassing en geheugen geoptimaliseerde servers kunnen ervoor kiezen om geo-redundante opslag voor back-ups te hebben. Meer informatie over back-ups in het [conceptartikel](concepts-backup.md).
 
 ## <a name="scale-resources"></a>Resources omhoog/omlaag schalen
 
-Nadat u de server hebt gemaakt, kunt u de vCores, de generatie van de hardware, de prijs categorie (met uitzonde ring van en van basis), de hoeveelheid opslag en de Bewaar periode voor back-ups afzonderlijk wijzigen. U kunt het opslag type voor back-ups niet wijzigen nadat een server is gemaakt. Het aantal vCores kan omhoog of omlaag worden geschaald. De Bewaar periode van de back-up kan worden uitgebreid of omlaag van 7 tot 35 dagen. De opslag grootte kan alleen worden verhoogd. U kunt de resources verg Roten of verkleinen via de portal of Azure CLI. Zie [een Azure database for postgresql server bewaken en schalen met behulp van Azure cli](scripts/sample-scale-server-up-or-down.md)voor een voor beeld van schalen met behulp van Azure cli.
+Nadat u uw server hebt gemaakt, u zelfstandig de vCores, de hardwaregeneratie, de prijscategorie (behalve basic), de hoeveelheid opslagruimte en de bewaarperiode voor back-ups wijzigen. U het type back-upopslag niet wijzigen nadat een server is gemaakt. Het aantal vCores kan worden opgeschaald of omlaag. De back-upbewaarperiode kan worden opgeschaald of omlaag van 7 naar 35 dagen. De opslaggrootte kan alleen maar worden vergroot. Schalen van de resources kan via de portal of Azure CLI. Zie [Een Azure Database voor PostgreSQL-server controleren en schalen met Azure CLI](scripts/sample-scale-server-up-or-down.md)voor een voorbeeld van schalen met Azure CLI.
 
 > [!NOTE] 
-> De opslag grootte kan alleen worden verhoogd. U kunt niet teruggaan naar een kleinere opslag grootte na de verhoging.
+> De opslaggrootte kan alleen maar worden vergroot. U niet terug naar een kleinere opslaggrootte na de verhoging.
 
-Wanneer u het aantal vCores, het genereren van de hardware of de prijs categorie wijzigt, wordt er een kopie van de oorspronkelijke server gemaakt met de nieuwe reken toewijzing. Wanneer de nieuwe server actief is, worden de verbindingen hiernaartoe overgeschakeld. Op het moment dat het systeem overschakelt naar de nieuwe server, kunnen er geen nieuwe verbindingen worden vastgelegd en worden alle niet-doorgevoerde transacties teruggedraaid. Dit tijdvenster is variabel, maar is in de meeste gevallen minder dan een minuut.
+Wanneer u het aantal vCores, de hardwaregeneratie of de prijscategorie wijzigt, wordt een kopie van de oorspronkelijke server gemaakt met de nieuwe rekentoewijzing. Wanneer de nieuwe server actief is, worden de verbindingen hiernaartoe overgeschakeld. Op het moment dat het systeem overschakelt naar de nieuwe server, kunnen er geen nieuwe verbindingen worden vastgelegd en worden alle niet-doorgevoerde transacties teruggedraaid. Dit tijdvenster is variabel, maar is in de meeste gevallen minder dan een minuut.
 
-Het schalen van de opslag en het wijzigen van de Bewaar periode voor back-ups is waar online bewerkingen. Er is geen downtime en uw toepassing heeft geen last van dit probleem. Als IOPS wordt geschaald met de grootte van de ingerichte opslag, kunt u de IOPS die beschikbaar is voor uw server verhogen door opslag ruimte te schalen.
+Het schalen van opslag en het wijzigen van de back-upbewaarperiode zijn echte onlinebewerkingen. Er is geen downtime en uw toepassing wordt niet beïnvloed. Als IOPS-schaal met de grootte van de ingerichte opslag, u het IOPS dat beschikbaar is voor uw server vergroten door de opslag op te schalen.
 
 ## <a name="pricing"></a>Prijzen
 
-Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/PostgreSQL/)voor services voor de meest actuele prijs informatie. Als u de kosten voor de gewenste configuratie wilt zien, geeft de [Azure Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) de maandelijkse kosten op het tabblad **prijs categorie** weer op basis van de opties die u selecteert. Als u geen Azure-abonnement hebt, kunt u de Azure-prijs calculator gebruiken om een geschatte prijs te krijgen. Selecteer op de website [Azure-prijs calculator](https://azure.microsoft.com/pricing/calculator/) de optie **items toevoegen**, vouw de categorie **data bases** uit en kies **Azure database for PostgreSQL** om de opties aan te passen.
+Zie de pagina serviceprijzen voor de meest actuele [prijsinformatie.](https://azure.microsoft.com/pricing/details/PostgreSQL/) Als u de gewenste kosten wilt zien voor de gewenste configuratie, [worden](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) de maandelijkse kosten weergegeven op het tabblad **Prijslaag** op basis van de opties die u selecteert. Als u geen Azure-abonnement hebt, u de azure-prijscalculator gebruiken om een geschatte prijs te krijgen. Selecteer op de website van de [Azure-prijscalculator](https://azure.microsoft.com/pricing/calculator/) de optie **Items toevoegen,** vouw de categorie **Databases** uit en kies **Azure Database voor PostgreSQL** om de opties aan te passen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [maken van een postgresql-server in de portal](tutorial-design-database-using-azure-portal.md).
-- Meer informatie over [service limieten](concepts-limits.md). 
-- Meer informatie over hoe u kunt [uitschalen met lees replica's](howto-read-replicas-portal.md).
+- Meer informatie over het [maken van een PostgreSQL-server in de portal.](tutorial-design-database-using-azure-portal.md)
+- Meer informatie over [servicelimieten](concepts-limits.md). 
+- Meer informatie over hoe u [kunt uitschalen met gelezen replica's.](howto-read-replicas-portal.md)

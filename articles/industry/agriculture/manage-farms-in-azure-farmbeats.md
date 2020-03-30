@@ -1,82 +1,82 @@
 ---
-title: Farms beheren
-description: Hierin wordt beschreven hoe u Farms beheert
+title: Boerderijen beheren
+description: Beschrijft hoe u boerderijen beheert
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 09144c4c35ab911b60931849807123608f2c3cdd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271718"
 ---
 # <a name="manage-farms"></a>Een boerderij beheren
 
-U kunt uw farms beheren in azure FarmBeats. In dit artikel vindt u informatie over het maken van Farms, het installeren van apparaten, Sens oren en drones waarmee u uw Farms kunt beheren.
+U uw farms beheren in Azure FarmBeats. In dit artikel vindt u informatie over het maken van boerderijen, het installeren van apparaten, sensoren en drones die u helpen bij het beheren van uw boerderijen.
 
-## <a name="create-farms"></a>Farms maken
+## <a name="create-farms"></a>Boerderijen maken
 
 Voer de volgende stappen uit:
 
-1. Meld u aan bij de farm Accelerator. de pagina **Farms** wordt weer gegeven.
-    Op de pagina **Farms** wordt de lijst met farms weer gegeven als deze al zijn gemaakt in het abonnement.
+1. Log in op de Farm Accelerator, de **farms** pagina wordt weergegeven.
+    Op de pagina **Boerderijen** wordt de lijst van boerderijen weergegeven voor het geval ze al in abonnement zijn gemaakt.
 
-    Hier volgt een voor beeld van de afbeelding:
+    Hier is de voorbeeldafbeelding:
 
-    ![Maten van project-Farm](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
+    ![Project Farm Beats](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
 
 
-2. Selecteer **farm maken** en geef **naam**, **bijsnijds** en **adres**op.
-3. Selecteer in de grens van de **Farm definiëren**(verplicht veld) de optie **voor het koppelen** of **geojson-code**markeren.
+2. Selecteer **Farm maken** en geef **naam,** **gewassen** en **adres op.**
+3. Selecteer in het veld **Farmgrens definiëren**(verplicht veld) **Markeren op kaart** of **GeoJSON-code plakken**.
 
-Dit zijn de twee manieren om een farm grens te definiëren:
+Dit zijn de twee manieren om een bedrijfsgrens te definiëren:
 
-1. **Op kaart markeren**: gebruik het kaart beheer programma om de grens van de farm te tekenen en te markeren. Als u de grenzen wilt markeren, ![u de project Farm maten](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) en markeert u de exacte grenzen.
+1. **Markering op kaart:** gebruik het gereedschap kaartbesturingselement om de grens van de boerderij te tekenen en te markeren. Om de grenzen ![te](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) markeren, slaat Project Farm beats en markeert u de exacte grenzen.
 
-    ![Maten van project-Farm](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
+    ![Project Farm Beats](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
 
-2. **Geojson-code plakken**: de geojson is een indeling voor het coderen van geografische gegevens structuren, met behulp van JavaScript object NOTATION (JSON). Met deze optie wordt een tekstvak weer gegeven waarin een geojson-teken reeks kan worden ingevoerd om de grenzen van de farm te markeren. U kunt ook geojson-code maken op basis van GeoJSON.io.
-Gebruik de knop Info om de informatie te vullen.
+2. **GeoJson-code plakken:** De GeoJSON is een indeling voor het coderen van geografische gegevensstructuren met behulp van JavaScript Object Notatie (JSON). Met deze optie wordt een tekstvak weergegeven waarin een GeoJSON-tekenreeks kan worden ingevoerd om de bedrijfsgrenzen te markeren. U ook GeoJSON-code maken vanuit GeoJSON.io.
+Gebruik de tooltips om de informatie in te vullen.
 
-    ![Maten van project-Farm](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
+    ![Project Farm Beats](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
 
-3.  Selecteer **verzenden** om een farm te maken. Er wordt een nieuwe farm gemaakt en weer gegeven op de pagina **Farms** .
+3.  Selecteer **Verzenden** om een farm te maken. Een nieuwe boerderij wordt gemaakt en weergegeven op de **pagina Boerderijen.**
 
-## <a name="view-farm"></a>Farm weer geven
+## <a name="view-farm"></a>Boerderij bekijken
 
-Op de lijst pagina met farms wordt een lijst met gemaakte Farms weer gegeven. Selecteer een farm om de lijst met te bekijken:
+Op de pagina Farmlist wordt een lijst met gemaakte bedrijven weergegeven. Selecteer een farm om de lijst van:
 
- - **Aantal** apparaten: geeft het aantal en de status weer van apparaten die in de farm zijn geïmplementeerd.
- - **Kaart** : kaart van de farm met de apparaten die in de farm zijn geïmplementeerd.
- - **Telemetrie** : geeft de telemetrie weer van de Sens oren die in de farm zijn geïmplementeerd.
- - **Nieuwste precisie kaarten** : geeft de meest recente satelliet indices-kaart (Evi, NDWI), bodem vocht heatmap en sensor plaatsing kaart.
+ - **Aantal apparaten** : geeft het aantal en de status weer van apparaten die in de farm zijn geïmplementeerd.
+ - **Kaart** — kaart van de boerderij met de apparaten die in de boerderij zijn geïmplementeerd.
+ - **Telemetrie** : geeft de telemetrie weer van de sensoren die in de farm zijn geïmplementeerd.
+ - **Laatste Precision Maps** - toont de nieuwste satellietindexkaart (EVI, NDWI), Soil Moisture Heatmap en Sensor Placement map.
 
-## <a name="edit-farm"></a>Farm bewerken
+## <a name="edit-farm"></a>Boerderij bewerken
 
-Op de pagina **Farms** wordt een lijst met gemaakte Farms weer gegeven.
+Op de pagina **Boerderijen** wordt een lijst van gecreëerde boerderijen weergegeven.
 
-1.  Selecteer een farm om de farm weer te geven en te bewerken.
-2.  Selecteer **Farm bewerken** om de farm gegevens te bewerken. In het venster **Farm Details** kunt u de grens velden voor de **naam**, het **gewas**, het **adres**en de **Farm** definitie bewerken.
+1.  Selecteer een farm die de boerderij wilt bekijken en bewerken.
+2.  Selecteer **Farm bewerken** om de farminformatie te bewerken. In het venster **Farmdetails** u **naam**, **gewassen,** **adres**en velden **Farmboundary** bewerken.
 
-    ![Maten van project-Farm](./media/create-farms-in-azure-farmbeats/edit-farm-1.png)
+    ![Project Farm Beats](./media/create-farms-in-azure-farmbeats/edit-farm-1.png)
 
-3. Selecteer **verzenden** om de bewerkte details op te slaan.
+3. Selecteer **Verzenden** om de bewerkte details op te slaan.
 
 ## <a name="delete-farm"></a>Farm verwijderen
 
-Op de pagina **Farms** wordt een lijst met gemaakte Farms weer gegeven. Gebruik de volgende stappen om een farm te verwijderen:
+Op de pagina **Boerderijen** wordt een lijst weergegeven van de bedrijven die zijn gemaakt. Gebruik de volgende stappen om een farm te verwijderen:
 
-1.  Selecteer een farm in de lijst om de farm gegevens te verwijderen.
-2.  Selecteer **farm verwijderen** om de farm te verwijderen.
+1.  Selecteer een farm in de lijst om bedrijfsgegevens te verwijderen.
+2.  Selecteer **Farm verwijderen** om de farm te verwijderen.
 
-    ![Maten van project-Farm](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
+    ![Project Farm Beats](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
 
     > [!NOTE]
-    > Wanneer u een farm verwijdert, worden de apparaten en toewijzingen die zijn gekoppeld aan de farm niet verwijderd. Alle farm gegevens die aan het apparaat en de kaarten zijn gekoppeld, zijn niet relevant. U kunt door gaan met het weer geven van apparaten, telemetrie en kaarten van de FarmBeats-service.
+    > Wanneer u een farm verwijdert, worden de apparaten en kaarten die aan de farm zijn gekoppeld, niet verwijderd. Alle bedrijfsinformatie die aan het apparaat en de kaarten is gekoppeld, is niet relevant. U apparaten, telemetrie en kaarten blijven bekijken vanuit de FarmBeats-service.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u uw farm hebt gemaakt, leert u hoe u [sensor gegevens kunt ophalen](get-sensor-data-from-sensor-partner.md) in uw farm.
+Nu u uw farm hebt gemaakt, u leren hoe [u sensorgegevens](get-sensor-data-from-sensor-partner.md) in uw farm laten stromen.

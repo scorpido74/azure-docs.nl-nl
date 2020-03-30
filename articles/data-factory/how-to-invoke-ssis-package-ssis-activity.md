@@ -1,6 +1,6 @@
 ---
-title: Voer een SSIS-pakket uit met de activiteit voor het uitvoeren van SSIS-pakketten
-description: In dit artikel wordt beschreven hoe u een SQL Server Integration Services (SSIS)-pakket uitvoert in een Azure Data Factory-pijp lijn met behulp van de activiteit voor het uitvoeren van SSIS-pakketten.
+title: Een SSIS-pakket uitvoeren met de activiteit SSIS-pakket uitvoeren
+description: In dit artikel wordt beschreven hoe u een SQL Server Integration Services (SSIS)-pakket uitvoert in een Azure Data Factory-pijplijn met behulp van de activiteit SSIS-pakket uitvoeren.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -15,125 +15,125 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/14/2019
 ms.openlocfilehash: 6027c2d94535ca2ef5c41e7027fe070c6ccb21a0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260629"
 ---
-# <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Voer een SSIS-pakket uit met de activiteit voor het uitvoeren van SSIS-pakketten in Azure Data Factory
-In dit artikel wordt beschreven hoe u een SQL Server Integration Services (SSIS)-pakket uitvoert in een Azure Data Factory-pijp lijn met behulp van de activiteit voor het uitvoeren van SSIS-pakketten. 
+# <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Een SSIS-pakket uitvoeren met de activiteit SSIS-pakket uitvoeren in Azure Data Factory
+In dit artikel wordt beschreven hoe u een SQL Server Integration Services (SSIS)-pakket uitvoert in een Azure Data Factory-pijplijn met behulp van de activiteit SSIS-pakket uitvoeren. 
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Een Azure SSIS Integration runtime (IR) maken als u er nog geen hebt, volgt u de stapsgewijze instructies in de [zelf studie: inrichting van Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md).
+Maak een Azure-SSIS-integratieruntime (IR) als u die nog niet hebt door de stapsgewijze instructies in de [zelfstudie: Azure-SSIS IR interichten.](tutorial-create-azure-ssis-runtime-portal.md)
 
-## <a name="run-a-package-in-the-azure-portal"></a>Een pakket uitvoeren in de Azure Portal
-In deze sectie gebruikt u de Data Factory gebruikers interface (UI) of de app om een Data Factory pijp lijn te maken met een activiteit voor het uitvoeren van SSIS-pakketten die uw SSIS-pakket uitvoert.
+## <a name="run-a-package-in-the-azure-portal"></a>Een pakket uitvoeren in de Azure-portal
+In deze sectie gebruikt u de gebruikersinterface (UI) of de app Data Factory om een Data Factory-pijplijn te maken met een SSIS-pakketactiviteit uitvoeren waarmee uw SSIS-pakket wordt uitgevoerd.
 
-### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Een pijp lijn maken met een activiteit voor het uitvoeren van SSIS-pakketten
-In deze stap gebruikt u de Data Factory-gebruikers interface of-app om een pijp lijn te maken. U voegt een activiteit voor het uitvoeren van SSIS-pakketten toe aan de pijp lijn en configureert deze voor het uitvoeren van uw SSIS-pakket. 
+### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Een pijplijn maken met een activiteit SSIS-pakket uitvoeren
+In deze stap gebruikt u de gebruikersinterface of app Gegevensfabriek om een pijplijn te maken. U voegt een Activiteit SSIS-pakket uitvoeren toe aan de pijplijn en configureert deze om uw SSIS-pakket uit te voeren. 
 
-1. Selecteer op uw Data Factory overzicht of start pagina in de Azure Portal de tegel **auteur & monitor** om de Data Factory-gebruikers interface of-app op een afzonderlijk tabblad te starten. 
+1. Selecteer op uw overzicht van de gegevensfabriek of op de startpagina in de Azure-portal de tegel **Auteur & monitor** om de gebruikersinterface of app gegevensfabriek te starten op een afzonderlijk tabblad. 
 
-   ![Start pagina van Data Factory](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
+   ![Startpagina gegevensfabriek](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 
    Selecteer op de pagina **Aan de slag** de optie **Pijplijn maken**. 
 
    ![Pagina Aan de slag](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
 
-1. Vouw in de werkset **activities** de optie **Algemeen**uit. Sleep vervolgens een activiteit voor het **uitvoeren van SSIS-pakketten** naar het ontwerp oppervlak voor pijp lijnen. 
+1. Vouw in de **gereedschapsset Activiteiten** **Algemeen**uit. Sleep vervolgens een activiteit **SSIS-pakket uitvoeren** naar het oppervlak van de pijplijnontwerper. 
 
-   ![Sleep een uitvoeren SSIS-pakket activiteit naar het ontwerp oppervlak](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
+   ![Een activiteit ssis-pakket uitvoeren naar het ontwerpoppervlak slepen](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
 
-1. Geef op het tabblad **Algemeen** voor de activiteit SSIS-pakket uitvoeren een naam en een beschrijving op voor de activiteit. Optionele **time-outwaarden** instellen en waarden **opnieuw proberen** .
+1. Geef op het tabblad **Algemeen** voor de activiteit SSIS-pakket uitvoeren een naam en beschrijving voor de activiteit op. Stel optionele **time-out-** en **probeerwaarden** in.
 
    ![Eigenschappen instellen op het tabblad Algemeen](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
-1. Selecteer op het tabblad **instellingen** voor de activiteit SSIS-pakket uitvoeren een Azure-SSIS IR waar u het pakket wilt uitvoeren. Als uw pakket gebruikmaakt van Windows-verificatie voor toegang tot gegevens archieven (bijvoorbeeld SQL-servers of bestands shares on-premises of Azure Files), schakelt u het selectie vakje **Windows-verificatie** in. Voer de waarden in voor de referenties voor het uitvoeren van het pakket in de vakken **domein**, **gebruikers naam**en **wacht woord** . 
+1. Selecteer op het tabblad **Instellingen** voor de activiteit SSIS-pakket uitvoeren een Azure-SSIS IR waar u uw pakket wilt uitvoeren. Als uw pakket Windows-verificatie gebruikt om toegang te krijgen tot gegevensopslag (bijvoorbeeld SQL-servers of bestandsshares on-premises of Azure Files), schakelt u het selectievakje **Windows-verificatie** in. Voer de waarden in voor de invoerreferenties van uw pakket in de vakken **Domein,** **Gebruikersnaam**en **Wachtwoord.** 
 
-    U kunt ook geheimen die zijn opgeslagen in uw Azure-sleutel kluis, gebruiken als waarden. Als u dit wilt doen, schakelt u het selectie vakje **Azure Key kluis** in naast de relevante referentie. Selecteer of bewerk uw bestaande sleutel kluis gekoppelde service of maak een nieuwe. Selecteer vervolgens de geheime naam of versie voor de referentie waarde.
+    U ook geheimen gebruiken die zijn opgeslagen in uw Azure-sleutelkluis als hun waarden. Schakel hiervoor het selectievakje **AZURE KEY VAULT** in naast de relevante referenties. Selecteer of bewerk uw bestaande key vault linked service of maak een nieuwe. Selecteer vervolgens de geheime naam of versie voor uw referentiewaarde.
 
-    Wanneer u uw Key kluis gekoppelde service maakt of bewerkt, kunt u uw bestaande sleutel kluis selecteren of bewerken of een nieuwe maken. Zorg ervoor dat u Data Factory beheerde identiteits toegang verleent aan uw sleutel kluis als u dit nog niet hebt gedaan. U kunt uw geheimen ook rechtstreeks invoeren in de volgende indeling: `<Key vault linked service name>/<secret name>/<secret version>`. Als uw pakket 32 bits-runtime nodig heeft om uit te voeren, schakelt u het selectie vakje **32-bits runtime** in.
+    Wanneer u uw key vault linked service maakt of bewerkt, u uw bestaande sleutelkluis selecteren of bewerken of een nieuwe vault maken. Zorg ervoor dat Data Factory beheerde identiteitstoegang verleent tot uw sleutelkluis als u dit nog niet hebt gedaan. U uw geheimen ook rechtstreeks `<Key vault linked service name>/<secret name>/<secret version>`invoeren in de volgende indeling:. Als uw pakket 32-bits runtime nodig heeft om uit te voeren, schakelt u het selectievakje **32-bits runtime** in.
 
-   Voor **de pakket locatie**selecteert u **SSISDB**, **Bestands systeem (pakket)** , **Bestands systeem (project)** of **Inge sloten pakket**. Als u **SSISDB** als uw pakket locatie selecteert, die automatisch wordt geselecteerd als uw Azure-SSIS IR is ingericht met de SSIS-catalogus (SSISDB) die wordt gehost door een Azure SQL database server of beheerde instantie, geeft u op welk pakket moet worden uitgevoerd dat is GEÏMPLEMENTEERD in SSISDB. 
+   Selecteer **voor pakketlocatie** **SSISDB**, **Bestandssysteem (pakket),** **bestandssysteem (project)** of **ingesloten pakket**. Als u **SSISDB** selecteert als uw pakketlocatie, die automatisch wordt geselecteerd als uw Azure-SSIS IR is ingericht met de SSIS-catalogus (SSISDB) die wordt gehost door een Azure SQL Database-server of beheerde instantie, geeft u uw pakket op dat is geïmplementeerd in SSISDB. 
 
-    Als uw Azure-SSIS IR actief is en het selectie vakje **hand matige invoer** is uitgeschakeld, bladert u naar uw bestaande mappen, projecten, pakketten of omgevingen en selecteert u deze in SSISDB. Selecteer **vernieuwen** om de zojuist toegevoegde mappen, projecten, pakketten of omgevingen van SSISDB op te halen, zodat deze beschikbaar zijn voor bladeren en selectie. Als u de omgevingen voor uw pakket uitvoeringen wilt zoeken of selecteren, moet u uw projecten vooraf configureren om deze omgevingen toe te voegen als verwijzingen van dezelfde mappen onder SSISDB. Zie [SSIS-omgevingen maken en toewijzen](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014)voor meer informatie.
+    Als uw Azure-SSIS IR wordt uitgevoerd en het selectievakje **Handmatige vermeldingen** is gewist, bladert u door uw bestaande mappen, projecten, pakketten of omgevingen van SSISDB en selecteert u deze. Selecteer **Vernieuwen** om uw nieuw toegevoegde mappen, projecten, pakketten of omgevingen op te halen bij SSISDB, zodat ze beschikbaar zijn voor browsen en selectie. Als u wilt bladeren of de omgevingen voor uw pakketuitvoeringen wilt selecteren, moet u uw projecten vooraf configureren om deze omgevingen toe te voegen als verwijzingen uit dezelfde mappen onder SSISDB. Zie [SSIS-omgevingen maken en toewijzen](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014)voor meer informatie.
 
-   Voor het **niveau van logboek registratie**selecteert u een vooraf gedefinieerd bereik van logboek registratie voor de uitvoering van het pakket. Schakel het selectie vakje **aangepast** in als u in plaats daarvan de aangepaste logboek naam wilt invoeren. 
+   Selecteer **voor logboekregistratieniveau**een vooraf gedefinieerd bereik van logboekregistratie voor de uitvoering van uw pakket. Schakel het selectievakje **Aangepast** in als u in plaats daarvan de aangepaste logboekregistratienaam wilt invoeren. 
 
-   ![Eigenschappen instellen op het tabblad Instellingen-automatisch](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
+   ![Eigenschappen instellen op het tabblad Instellingen - Automatisch](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
-   Als uw Azure-SSIS IR niet wordt uitgevoerd of het selectie vakje **hand matige invoer** is ingeschakeld, voert u de paden voor het pakket en de omgeving van SSISDB rechtstreeks in de volgende indelingen in: `<folder name>/<project name>/<package name>.dtsx` en `<folder name>/<environment name>`.
+   Als uw Azure-SSIS IR niet wordt uitgevoerd of als het selectievakje **Handmatige vermeldingen** is ingeschakeld, voert u `<folder name>/<project name>/<package name>.dtsx` `<folder name>/<environment name>`uw pakket- en omgevingspaden van SSISDB rechtstreeks in de volgende indelingen in: en .
 
-   ![Eigenschappen instellen op het tabblad instellingen-hand matig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
+   ![Eigenschappen instellen op het tabblad Instellingen - Handmatig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-   Als u **Bestands systeem (pakket)** als uw pakket locatie selecteert, dat automatisch wordt geselecteerd als uw Azure-SSIS IR is ingericht zonder SSISDB, geeft u het pakket op dat moet worden uitgevoerd door een UNC-pad (Universal Naming Convention) naar uw pakket bestand (`.dtsx`) op te geven in het vak **pakket pad** . Als u bijvoorbeeld uw pakket opslaat in Azure Files, wordt het pad van het pakket `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`. 
+   Als u **Bestandssysteem (pakket)** selecteert als uw pakketlocatie, die automatisch wordt geselecteerd als uw Azure-SSIS IR is ingericht zonder SSISDB, geeft`.dtsx`u uw pakket op dat moet worden uitgevoerd door een UNC-pad (Universal Naming Convention) op te geven in het **pakketpadvak.** Als u uw pakket bijvoorbeeld opslaat in Azure `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`Files, is het pakketpad . 
    
-   Als u uw pakket in een afzonderlijk bestand configureert, moet u ook een UNC-pad naar uw configuratie bestand (`.dtsConfig`) in het vak **configuratiepad** opgeven. Als u bijvoorbeeld uw configuratie in Azure Files opslaat, wordt het configuratiepad `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`.
+   Als u uw pakket in een afzonderlijk bestand configureert, moet`.dtsConfig`u ook een UNC-pad naar uw configuratiebestand () in het vak **Configuratiepad** () verstrekken. Als u bijvoorbeeld uw configuratie opslaat in Azure `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`Files, is het configuratiepad .
 
-   ![Eigenschappen instellen op het tabblad instellingen-hand matig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
+   ![Eigenschappen instellen op het tabblad Instellingen - Handmatig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
 
-   Als u **Bestands systeem (project)** als uw pakket locatie selecteert, geeft u het pakket op dat moet worden uitgevoerd door een UNC-pad naar uw project bestand (`.ispac`) op te geven in het vak **pad naar project** en een pakket bestand (`.dtsx`) van uw project in het vak **pakket naam** . Als u bijvoorbeeld het project in Azure Files opslaat, wordt het pad van het project `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`.
+   Als u **Bestandssysteem (Project)** als locatie van uw pakket selecteert, geeft u`.ispac`het pakket op dat moet worden`.dtsx`uitgevoerd door een UNC-pad op te geven voor uw projectbestand ( ) in het vak **Projectpad** en een pakketbestand ( ) vanuit uw project in het vak **Pakketnaam.** Als u uw project bijvoorbeeld opslaat in Azure `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`Files, is het projectpad .
 
-   ![Eigenschappen instellen op het tabblad instellingen-hand matig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
+   ![Eigenschappen instellen op het tabblad Instellingen - Handmatig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
 
-   Geef vervolgens de referenties op voor toegang tot uw project-, pakket-of configuratie bestanden. Als u de waarden voor de referenties voor het uitvoeren van het pakket hebt opgegeven (zie vorige), kunt u ze opnieuw gebruiken door hetzelfde selectie vakje voor het uitvoeren van de **pakket referenties** in te scha kelen. Voer anders de waarden in voor uw pakket toegangs referenties in de vakken **domein**, **gebruikers naam**en **wacht woord** . Als u bijvoorbeeld uw project, pakket of configuratie in Azure Files opslaat, wordt het domein `Azure`, is de gebruikers naam `<storage account name>`en wordt het wacht woord `<storage account key>`. 
+   Geef vervolgens de referenties op om toegang te krijgen tot uw project-, pakket- of configuratiebestanden. Als u eerder de waarden voor de uitvoeringreferenties van uw pakket hebt ingevoerd (zie vorige), u deze opnieuw gebruiken door het selectievakje **Hetzelfde als pakketuitvoeringsreferenties** in te schakelen. Voer anders de waarden in voor de vakken **Domeintoegangsgegevens**voor uw pakket, **Gebruikersnaam**en **Wachtwoord.** Als u bijvoorbeeld uw project, pakket of configuratie opslaat `Azure`in Azure-bestanden, is het domein de gebruikersnaam `<storage account name>`en is `<storage account key>`het wachtwoord . 
 
-   U kunt ook geheimen die zijn opgeslagen in uw sleutel kluis gebruiken als waarden (zie vorige). Deze referenties worden gebruikt om toegang te krijgen tot uw pakket en onderliggende pakketten in de taak pakket uitvoeren, allemaal vanaf hun eigen pad of hetzelfde project, evenals configuraties, die zijn opgegeven in uw pakketten. 
+   U ook geheimen gebruiken die in uw sleutelkluis zijn opgeslagen als hun waarden (zie vorige). Deze referenties worden gebruikt om toegang te krijgen tot uw pakket- en onderliggende pakketten in Pakkettaak uitvoeren, allemaal vanuit hun eigen pad of hetzelfde project, evenals configuraties, die zijn opgegeven in uw pakketten. 
 
-   Als u **Inge sloten pakket** selecteert als uw pakket locatie, sleept u het pakket en verwijdert u **het uit** een bestandsmap naar het meegeleverde vak. Uw pakket wordt automatisch gecomprimeerd en Inge sloten in de nettolading van de activiteit. Als u het pakket hebt Inge sloten, kunt u het later **downloaden** om het te bewerken. U kunt ook uw Inge sloten pakket **para meters** door het toe te wijzen aan een pijplijn parameter die in meerdere activiteiten kan worden gebruikt, waardoor u de grootte van de pijplijn lading optimaliseert. Als uw Inge sloten pakket niet is versleuteld en het gebruik van de taak voor het uitvoeren van een pakket wordt gedetecteerd, wordt het selectie vakje **pakket taak uitvoeren** automatisch ingeschakeld en worden de relevante onderliggende pakketten met de bijbehorende bestandssysteem verwijzingen automatisch toegevoegd zodat u ze ook kunt insluiten. Als we het gebruik van de taak voor het uitvoeren van een pakket niet kunnen detecteren, moet u hand matig het selectie vakje **pakket taak uitvoeren** inschakelen en de relevante onderliggende pakketten toevoegen aan het bestands systeem, zodat u deze ook kunt insluiten. Als de onderliggende pakketten SQL Server verwijzingen gebruiken, moet u ervoor zorgen dat de SQL Server toegankelijk is voor uw Azure-SSIS IR.  Het gebruik van project verwijzingen voor onderliggende pakketten wordt momenteel niet ondersteund.
+   Als u **Ingesloten pakket** als locatie van uw pakket selecteert, sleept u uw pakket naar uitvoeren of **Uploadt u** het pakket vanuit een bestandsmap naar het meegeleverde vak. Uw pakket wordt automatisch gecomprimeerd en ingebed in de activiteit payload. Eenmaal ingesloten, u uw pakket later **downloaden** voor bewerking. U uw ingesloten pakket ook **parameteriseren** door het toe te wijst aan een pijplijnparameter die in meerdere activiteiten kan worden gebruikt, waardoor de grootte van uw pijplijnpayload wordt geoptimaliseerd. Als uw ingesloten pakket niet allemaal versleuteld is en we het gebruik van Pakkettaak uitvoeren erin detecteren, wordt het selectievakje **Pakkettaak uitvoeren** automatisch ingeschakeld en worden de relevante onderliggende pakketten met hun bestandssysteemreferenties automatisch toegevoegd om ze ook in te sluiten. Als we het gebruik van Taken uitvoeren niet kunnen detecteren, moet u handmatig het selectievakje **Pakkettaak uitvoeren** handmatig inschakelen en de relevante onderliggende pakketten toevoegen met hun bestandssysteemverwijzingen één voor één, om ze ook in te sluiten. Als de onderliggende pakketten SQL Server-verwijzingen gebruiken, moet u ervoor zorgen dat de SQL Server toegankelijk is voor uw Azure-SSIS IR.  Het gebruik van projectverwijzingen voor onderliggende pakketten wordt momenteel niet ondersteund.
    
-   ![Eigenschappen instellen op het tabblad instellingen-hand matig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
+   ![Eigenschappen instellen op het tabblad Instellingen - Handmatig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
    
-   Als u het beveiligings niveau **EncryptAllWithPassword** of **EncryptSensitiveWithPassword** hebt gebruikt toen u het pakket hebt gemaakt via SQL Server Data tools, voert u de waarde voor uw wacht woord in het vak **versleutelings wachtwoord** in. U kunt ook een geheim dat is opgeslagen in uw sleutel kluis gebruiken als waarde (zie vorige). Als u het beveiligings niveau **EncryptSensitiveWithUserKey** hebt gebruikt, voert u uw gevoelige waarden opnieuw in bij configuratie bestanden of op de **SSIS-para meters**, **verbindings beheer**functies of **Eigenschappen onderdrukkingen** tabbladen (zie later). 
+   Als u het beveiligingsniveau **EncryptAllWithPassword** of **EncryptSensitiveWithPassword** hebt gebruikt wanneer u uw pakket hebt gemaakt via SQL Server Data Tools, voert u de waarde voor uw wachtwoord in het vak **Versleutelingswachtwoord** in. U ook een geheim gebruiken dat is opgeslagen in uw sleutelkluis als de waarde ervan (zie vorige). Als u het beveiligingsniveau **EncryptSensitiveWithUserKey** hebt gebruikt, voert u uw gevoelige waarden opnieuw in configuratiebestanden of op de tabbladen **SSIS-parameters,** **Verbindingsbeheer**of **Eigenschappenoverschrijvingen** (zie later). 
 
-   Als u het beveiligings niveau **EncryptAllWithUserKey** hebt gebruikt, wordt dit niet ondersteund. U moet het pakket opnieuw configureren om een ander beveiligings niveau te gebruiken via SQL Server Data Tools of het `dtutil` opdracht regel programma. 
+   Als u het **EncryptAllWithUserKey-beveiligingsniveau** hebt gebruikt, wordt dit niet ondersteund. U moet uw pakket opnieuw configureren om een ander beveiligingsniveau te gebruiken via SQL Server Data Tools of het `dtutil` command-line hulpprogramma. 
    
-   Voor het **niveau van logboek registratie**selecteert u een vooraf gedefinieerd bereik van logboek registratie voor de uitvoering van het pakket. Schakel het selectie vakje **aangepast** in als u in plaats daarvan de aangepaste logboek naam wilt invoeren. Als u de pakket uitvoeringen wilt vastleggen naast het gebruik van de standaard logboek providers die in uw pakket kunnen worden opgegeven, geeft u uw logboekmap op door het UNC-pad op te geven in het vak **pad naar logboek** bestand. Als u bijvoorbeeld uw logboeken opslaat in Azure Files, wordt het pad voor logboek registratie `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`. Er wordt in dit pad een submap gemaakt voor elk afzonderlijk pakket dat wordt uitgevoerd en de naam krijgt na de run-ID van de uitvoering van SSIS-pakket activiteit, waarbij de logboek bestanden om de vijf minuten worden gegenereerd. 
+   Selecteer **voor logboekregistratieniveau**een vooraf gedefinieerd bereik van logboekregistratie voor de uitvoering van uw pakket. Schakel het selectievakje **Aangepast** in als u in plaats daarvan de aangepaste logboekregistratienaam wilt invoeren. Als u uw pakketuitvoeringen verder wilt registreren dan de standaardlogboekproviders die in uw pakket kunnen worden opgegeven, geeft u uw logboekmap op door het UNC-pad op te geven in het vak **Logboekpad.** Als u bijvoorbeeld uw logboeken opslaat in `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`Azure Files, is uw logboekpad . Op dit pad wordt een submap gemaakt voor elke afzonderlijke pakketuitvoering en vernoemd naar de run-ID van het SSIS-pakket uitvoeren, waarin logboekbestanden elke vijf minuten worden gegenereerd. 
    
-   Geef ten slotte de referenties voor toegang tot uw logboekmap op. Als u de waarden voor uw pakket toegangs referenties (zie vorige) eerder hebt opgegeven, kunt u ze opnieuw gebruiken door **hetzelfde selectie vakje als toegangs referenties** voor het pakket in te scha kelen. Voer anders de waarden in voor uw toegangs referenties voor logboek registratie in de vakken **domein**, **gebruikers naam**en **wacht woord** . Als u bijvoorbeeld uw logboeken opslaat in Azure Files, is het domein `Azure`, de gebruikers naam `<storage account name>`en het wacht woord `<storage account key>`. 
+   Geef ten slotte de referenties op om toegang te krijgen tot uw logboekmap. Als u eerder de waarden voor de referenties voor pakkettoegangsinvoer hebt ingevoerd (zie vorige), u deze opnieuw gebruiken door het selectievakje **Hetzelfde als pakkettoegangsreferenties in** te schakelen. Voer anders de waarden in voor de vakken Toegang tot logboekregistratie in de vakken **Domein,** **Gebruikersnaam**en **Wachtwoord.** Als u bijvoorbeeld uw logboeken opslaat in `Azure`Azure Files, is het domein , de gebruikersnaam is `<storage account name>`en het wachtwoord is `<storage account key>`. 
 
-    U kunt ook geheimen die zijn opgeslagen in uw sleutel kluis gebruiken als waarden (zie vorige). Deze referenties worden gebruikt om uw logboeken op te slaan. 
+    U ook geheimen gebruiken die in uw sleutelkluis zijn opgeslagen als hun waarden (zie vorige). Deze referenties worden gebruikt om uw logboeken op te slaan. 
    
-   Voor alle eerder genoemde UNC-paden moet de volledige naam van het bestand kleiner zijn dan 260 tekens. De mapnaam mag niet langer zijn dan 248 tekens.
+   Voor alle eerder genoemde UNC-paden moet de volledig gekwalificeerde bestandsnaam minder dan 260 tekens bevatten. De naam van de map moet minder dan 248 tekens bevatten.
 
-1. Als uw Azure-SSIS IR wordt uitgevoerd op het tabblad **SSIS-para meters** voor de activiteit EXECUTe SSIS-pakket, wordt **SSISDB** geselecteerd als uw pakket locatie en wordt het selectie vakje **hand matige vermeldingen** op het tabblad **instellingen** uitgeschakeld. de bestaande SSIS-para meters in het geselecteerde project of pakket van SSISDB worden weer gegeven zodat u waarden aan hen kunt toewijzen. Als dat niet het geval is, kunt u ze één voor één invoeren om waarden hand matig toe te wijzen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. 
+1. Op het tabblad **SSIS-parameters** voor de activiteit SSIS-pakket uitvoeren wordt, als uw Azure-SSIS IR wordt uitgevoerd, **SSISDB** als locatie voor uw pakket geselecteerd en wordt het selectievakje **Handmatige vermeldingen** op het tabblad **Instellingen** gewist, worden de bestaande SSIS-parameters in uw geselecteerde project of pakket van SSISDB weergegeven om u aan hen toe te wijzen. Anders u ze één voor één invoeren om er handmatig waarden aan toe te wijzen. Zorg ervoor dat ze bestaan en correct zijn ingevoerd voor uw pakket uitvoering te slagen. 
    
-   Als u het **EncryptSensitiveWithUserKey** -beveiligings niveau hebt gebruikt toen u het pakket hebt gemaakt via SQL Server Data tools en het **Bestands systeem (pakket)** of het **Bestands systeem (project)** is geselecteerd als uw pakket locatie, moet u ook uw gevoelige para meters opnieuw invoeren om waarden toe te wijzen aan de configuratie bestanden of op dit tabblad. 
+   Als u het **encryptsensitiveWithUserKey-beveiligingsniveau** hebt gebruikt wanneer u uw pakket hebt gemaakt via SQL Server Data Tools en **Bestandssysteem (Project)** of **Bestandssysteem (Project)** is geselecteerd als uw pakketlocatie, moet u ook uw gevoelige parameters opnieuw invoeren om waarden toe te wijzen aan hen in configuratiebestanden of op dit tabblad. 
    
-   Wanneer u waarden toewijst aan uw para meters, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen. U kunt ook geheimen die zijn opgeslagen in uw sleutel kluis gebruiken als waarden (zie vorige).
+   Wanneer u waarden aan uw parameters toewijst, u dynamische inhoud toevoegen met behulp van expressies, functies, gegevensfabriekssysteemvariabelen en pijplijnparameters of variabelen voor gegevensfabrieken. U ook geheimen gebruiken die in uw sleutelkluis zijn opgeslagen als hun waarden (zie vorige).
 
-   ![Eigenschappen instellen op het tabblad SSIS-para meters](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
+   ![Eigenschappen instellen op het tabblad SSIS-parameters](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
-1. Op het tabblad **verbindings beheer** voor de activiteit voor het uitvoeren van SSIS-pakketten, als uw Azure-SSIS IR wordt uitgevoerd, **SSISDB** is geselecteerd als uw pakket locatie en het selectie vakje **hand matige vermeldingen** op het tabblad **instellingen** is uitgeschakeld, worden de bestaande verbindings beheer in uw geselecteerde project of pakket van SSISDB weer gegeven om waarden aan hun eigenschappen toe te wijzen. Als dat niet het geval is, kunt u ze één voor één invoeren om waarden hand matig toe te wijzen aan hun eigenschappen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. 
+1. Op het tabblad **Verbindingsbeheer** voor de activiteit SSIS-pakket uitvoeren wordt, als uw Azure-SSIS IR wordt uitgevoerd, **SSISDB** als locatie voor uw pakket geselecteerd en wordt het selectievakje **Handmatige vermeldingen** op het tabblad **Instellingen** gewist, worden de bestaande verbindingsmanagers in uw geselecteerde project of pakket van SSISDB weergegeven waarmee u waarden aan hun eigenschappen toewijzen. Anders u ze één voor één invoeren om waarden handmatig aan hun eigenschappen toe te wijzen. Zorg ervoor dat ze bestaan en correct zijn ingevoerd voor uw pakket uitvoering te slagen. 
    
-   Als u het **EncryptSensitiveWithUserKey** -beveiligings niveau hebt gebruikt toen u het pakket hebt gemaakt via SQL Server Data tools en het **Bestands systeem (pakket)** of het **Bestands systeem (project)** is geselecteerd als uw pakket locatie, moet u ook de eigenschappen van uw gevoelige verbindings beheer opnieuw invoeren om waarden toe te wijzen aan de configuratie bestanden of op dit tabblad. 
+   Als u het **encryptsensitiveWithUserKey-beveiligingsniveau** hebt gebruikt wanneer u uw pakket hebt gemaakt via SQL Server Data Tools en **Bestandssysteem (Project)** of **Bestandssysteem (Project)** is geselecteerd als uw pakketlocatie, moet u ook uw gevoelige eigenschappen van verbindingsbeheer opnieuw invoeren om waarden aan hen toe te wijzen in configuratiebestanden of op dit tabblad. 
    
-   Wanneer u waarden toewijst aan de eigenschappen van verbindings beheer, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen. U kunt ook geheimen die zijn opgeslagen in uw sleutel kluis gebruiken als waarden (zie vorige).
+   Wanneer u waarden toewijst aan de eigenschappen van uw verbindingsbeheerder, u dynamische inhoud toevoegen met behulp van expressies, functies, gegevensfabriekssysteemvariabelen en pijplijnparameters of variabelen voor gegevensfabrieken. U ook geheimen gebruiken die in uw sleutelkluis zijn opgeslagen als hun waarden (zie vorige).
 
-   ![Eigenschappen instellen op het tabblad verbindings beheer](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
+   ![Eigenschappen instellen op het tabblad Verbindingsbeheer](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
 
-1. Voer op het tabblad **Eigenschappen onderdrukkingen** voor de activiteit uitvoeren SSIS-pakket de paden in van bestaande eigenschappen in het geselecteerde pakket één voor één om hand matig waarden toe te wijzen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. Als u bijvoorbeeld de waarde van uw gebruikers variabele wilt overschrijven, voert u het pad in de volgende indeling in: `\Package.Variables[User::<variable name>].Value`. 
+1. Voer op het tabblad **Eigenschappenoverschrijvingen** voor de activiteit SSIS-pakket uitvoeren één voor één de paden van bestaande eigenschappen in het geselecteerde pakket in om waarden handmatig toe te wijzen. Zorg ervoor dat ze bestaan en correct zijn ingevoerd voor uw pakket uitvoering te slagen. Als u bijvoorbeeld de waarde van uw gebruikersvariabele wilt overschrijven, voert u het pad in de volgende indeling in: `\Package.Variables[User::<variable name>].Value`. 
    
-   Als u het **EncryptSensitiveWithUserKey** -beveiligings niveau hebt gebruikt toen u het pakket hebt gemaakt via SQL Server Data tools en het **Bestands systeem (pakket)** of het **Bestands systeem (project)** is geselecteerd als uw pakket locatie, moet u ook uw gevoelige eigenschappen opnieuw invoeren om waarden toe te wijzen aan de configuratie bestanden of op dit tabblad. 
+   Als u het **encryptsensitiveWithUserKey-beveiligingsniveau** hebt gebruikt wanneer u uw pakket hebt gemaakt via SQL Server Data Tools en **Bestandssysteem (Project)** of **Bestandssysteem (Project)** is geselecteerd als uw pakketlocatie, moet u ook uw gevoelige eigenschappen opnieuw invoeren om waarden toe te wijzen aan hen in configuratiebestanden of op dit tabblad. 
    
-   Wanneer u waarden toewijst aan uw eigenschappen, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen.
+   Wanneer u waarden aan uw eigenschappen toewijst, u dynamische inhoud toevoegen met behulp van expressies, functies, gegevensfabriekssysteemvariabelen en pijplijnparameters of variabelen voor gegevensfabrieken.
 
-   ![Eigenschappen instellen op het tabblad Eigenschappen onderdrukkingen](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
+   ![Eigenschappen instellen op het tabblad Overschrijven van eigenschappen](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
 
-   De waarden die zijn toegewezen in configuratie bestanden en op het tabblad **SSIS-para meters** kunnen worden overschreven met behulp van de tabbladen **verbindings beheer** of **eigenschaps onderdrukkingen** . De waarden die zijn toegewezen op het tabblad **verbindings beheer** kunnen ook worden overschreven met behulp van het tabblad **Eigenschappen onderdrukkingen** .
+   De waarden die zijn toegewezen in configuratiebestanden en op het tabblad **SSIS-parameters** kunnen worden overschreven met de tabbladen **Verbindingsbeheer** of **Eigenschapoverschrijft.** De waarden die op het tabblad **Verbindingsbeheer** zijn toegewezen, kunnen ook worden overschreven met het tabblad **Eigenschappenoverschrijven.**
 
-1. Selecteer **valideren** op de werk balk om de configuratie van de pijp lijn te valideren. Selecteer **>>** om het **rapport pijplijn validatie**te sluiten.
+1. Als u de pijplijnconfiguratie wilt valideren, selecteert **u Valideren** op de werkbalk. Als u het **pijplijnvalidatierapport wilt**sluiten, selecteert u **>>**.
 
-1. Als u de pijp lijn naar Data Factory wilt publiceren, selecteert u **Alles publiceren**. 
+1. Als u de pijplijn wilt publiceren naar Gegevensfabriek, selecteert u **Alles publiceren**. 
 
 ### <a name="run-the-pipeline"></a>De pijplijn uitvoeren
-In deze stap activeert u een pijplijn uitvoering. 
+In deze stap activeert u een pijplijnrun. 
 
-1. Als u een pijplijn uitvoering wilt activeren, selecteert u **activeren** op de werk balk en selecteert u **nu activeren**. 
+1. Als u een pijplijnrun wilt activeren, selecteert u **Trigger** op de werkbalk en selecteert u **Nu activeren**. 
 
    ![Nu activeren](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png)
 
@@ -141,45 +141,45 @@ In deze stap activeert u een pijplijn uitvoering.
 
 ### <a name="monitor-the-pipeline"></a>De pijplijn bewaken
 
-1. Ga naar het tabblad **Monitor** aan de linkerkant. U ziet de pijplijn uitvoering en de status ervan samen met andere informatie, zoals de start tijd van de **uitvoering** . Selecteer **Vernieuwen** om de weergave te vernieuwen.
+1. Ga naar het tabblad **Controleren** aan de linkerkant. U ziet de pijplijnrun en de status ervan samen met andere informatie, zoals de **begintijd uitvoeren.** Selecteer **Vernieuwen** om de weergave te vernieuwen.
 
    ![Pijplijnuitvoeringen](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
-2. Selecteer de koppeling **Uitvoeringen van activiteit weergeven** in de kolom **Acties**. U ziet dat er slechts één activiteit wordt uitgevoerd omdat de pijp lijn maar één activiteit heeft. Het is de activiteit voor het uitvoeren van SSIS-pakketten.
+2. Selecteer de koppeling **Uitvoeringen van activiteit weergeven** in de kolom **Acties**. U ziet slechts één activiteit worden uitgevoerd omdat de pijplijn slechts één activiteit heeft. Het is de activiteit SSIS-pakket uitvoeren.
 
    ![Uitvoering van activiteiten](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png)
 
-3. Voer de volgende query uit op de SSISDB-data base in uw SQL-Server om te controleren of het pakket is uitgevoerd. 
+3. Voer de volgende query uit tegen de SSISDB-database in uw SQL-server om te controleren of het pakket is uitgevoerd. 
 
    ```sql
    select * from catalog.executions
    ```
 
-   ![Pakket uitvoeringen controleren](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
+   ![Pakketuitvoeringen verifiëren](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
 
-4. U kunt ook de SSISDB-uitvoerings-ID ophalen uit de uitvoer van de uitvoering van de pijplijn activiteit en de ID gebruiken om uitgebreidere uitvoerings logboeken en fout berichten in SQL Server Management Studio te controleren.
+4. U de SSISDB-uitvoerings-ID ook ophalen bij de uitvoer van de pijplijnactiviteit uitvoeren en de ID gebruiken om uitgebreidere uitvoeringslogboeken en foutberichten in SQL Server Management Studio te controleren.
 
-   ![De uitvoerings-ID ophalen.](media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png)
+   ![Haal de executie-id.](media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png)
 
-### <a name="schedule-the-pipeline-with-a-trigger"></a>De pijp lijn plannen met een trigger
+### <a name="schedule-the-pipeline-with-a-trigger"></a>De pijplijn plannen met een trigger
 
-U kunt ook een geplande trigger voor uw pijp lijn maken zodat de pijp lijn op een schema wordt uitgevoerd, zoals elk uur of dagelijks. Zie [een Data Factory-Data Factory gebruikers interface maken](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule)voor een voor beeld.
+U ook een geplande trigger voor uw pijplijn maken, zodat de pijplijn volgens een planning wordt uitgevoerd, zoals per uur of per dag. Zie Een gegevensfabriek maken voor een voorbeeld [: Gegevensfabriek UI](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).
 
-## <a name="run-a-package-with-powershell"></a>Een pakket uitvoeren met Power shell
-In deze sectie gebruikt u Azure PowerShell om een Data Factory-pijp lijn te maken met een activiteit voor het uitvoeren van SSIS-pakketten die uw SSIS-pakket uitvoert. 
+## <a name="run-a-package-with-powershell"></a>Een pakket uitvoeren met PowerShell
+In deze sectie gebruikt u Azure PowerShell om een Data Factory-pijplijn te maken met een SSIS-pakketactiviteit uitvoeren waarmee uw SSIS-pakket wordt uitgevoerd. 
 
-Installeer de nieuwste Azure PowerShell-modules door de stapsgewijze instructies te volgen in [How to install and configure Azure PowerShell](/powershell/azure/install-az-ps).
+Installeer de nieuwste Azure PowerShell-modules door de stapsgewijze instructies te volgen in [Azure PowerShell installeren en configureren.](/powershell/azure/install-az-ps)
 
-### <a name="create-a-data-factory-with-azure-ssis-ir"></a>Een data factory met Azure-SSIS IR maken
-U kunt een bestaand data factory gebruiken dat al Azure-SSIS IR ingericht is of een nieuw data factory maakt met Azure-SSIS IR. Volg de stapsgewijze instructies in de [zelf studie: implementeer SSIS-pakketten naar Azure via Power shell](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure-powershell).
+### <a name="create-a-data-factory-with-azure-ssis-ir"></a>Een gegevensfabriek maken met Azure-SSIS IR
+U een bestaande gegevensfabriek gebruiken die al azure-SSIS IR heeft ingericht of een nieuwe gegevensfabriek maken met Azure-SSIS IR. Volg de stapsgewijze instructies in de [zelfstudie: SSIS-pakketten implementeren in Azure via PowerShell.](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure-powershell)
 
-### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Een pijp lijn maken met een activiteit voor het uitvoeren van SSIS-pakketten 
-In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSIS-pakketten. De activiteit voert uw SSIS-pakket uit. 
+### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Een pijplijn maken met een activiteit SSIS-pakket uitvoeren 
+In deze stap maakt u een pijplijn met een activiteit SSIS-pakket uitvoeren. De activiteit voert uw SSIS-pakket uit. 
 
-1. Maak een JSON-bestand met de naam *RunSSISPackagePipeline. json* in de map *C:\ADF\RunSSISPackage* met inhoud die lijkt op het volgende voor beeld.
+1. Maak een JSON-bestand met de naam *RunSSISPackagePipeline.json* in de map *C:\ADF\RunSSISPackage* met inhoud die lijkt op het volgende voorbeeld.
 
    > [!IMPORTANT]
-   > Vervang object namen, beschrijvingen en paden, eigenschaps-of parameter waarden, wacht woorden en andere variabelen waarden voordat u het bestand opslaat. 
+   > Vervang objectnamen, beschrijvingen en paden, eigenschaps- of parameterwaarden, wachtwoorden en andere variabele waarden voordat u het bestand opslaat. 
     
    ```json
    {
@@ -286,7 +286,7 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
    }
    ```
 
-   Als u pakketten wilt uitvoeren die zijn opgeslagen in bestands systemen, bestands shares of Azure Files, voert u de waarden voor uw pakket-en logboek locatie-eigenschappen als volgt in:
+   Als u pakketten wilt uitvoeren die zijn opgeslagen in bestandssystemen, bestandsshares of Azure-bestanden, voert u als volgt de waarden voor uw pakket- en logboeklocatie-eigenschappen uit:
 
    ```json
    {
@@ -335,7 +335,7 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
    }
    ```
 
-   Als u pakketten wilt uitvoeren in projecten die zijn opgeslagen in bestands systemen, bestands shares of Azure Files, voert u de waarden voor de eigenschap pakket locatie als volgt in:
+   Als u pakketten wilt uitvoeren in projecten die zijn opgeslagen in bestandssystemen, bestandsshares of Azure-bestanden, voert u als volgt de waarden voor de eigenschap pakketlocatie in:
 
    ```json
    {
@@ -366,7 +366,7 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
    }
    ```
 
-   Als u Inge sloten pakketten wilt uitvoeren, voert u de waarden voor de eigenschap pakket locatie als volgt in:
+   Als u ingesloten pakketten wilt uitvoeren, voert u de waarden voor de eigenschap pakketlocatie als volgt in:
 
    ```json
    {
@@ -391,9 +391,9 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
    }
    ```
 
-2. Ga in Azure PowerShell naar de map *C:\ADF\RunSSISPackage* .
+2. Schakel in Azure PowerShell over naar de map *C:\ADF\RunSSISPackage.*
 
-3. Als u de pijp lijn **RunSSISPackagePipeline**wilt maken, voert u de cmdlet **set-AzDataFactoryV2Pipeline** uit.
+3. Als u de pijplijn **RunSSISPackagePipeline wilt maken,** voert u de cmdlet **Set-AzDataFactoryV2Pipeline** uit.
 
    ```powershell
    $DFPipeLine = Set-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
@@ -402,7 +402,7 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
                                                   -DefinitionFile ".\RunSSISPackagePipeline.json"
    ```
 
-   Hier volgt een voor beeld van de uitvoer:
+   Hier is de voorbeelduitvoer:
 
    ```
    PipelineName      : Adfv2QuickStartPipeline
@@ -413,7 +413,7 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
    ```
 
 ### <a name="run-the-pipeline"></a>De pijplijn uitvoeren
-Gebruik de cmdlet **invoke-AzDataFactoryV2Pipeline** om de pijp lijn uit te voeren. De cmdlet retourneert de id voor de pijplijnuitvoering voor toekomstige controle.
+Gebruik de cmdlet **Invoke-AzDataFactoryV2Pipeline** om de pijplijn uit te voeren. De cmdlet retourneert de id voor de pijplijnuitvoering voor toekomstige controle.
 
 ```powershell
 $RunId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
@@ -423,7 +423,7 @@ $RunId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactor
 
 ### <a name="monitor-the-pipeline"></a>De pijplijn bewaken
 
-Voer het volgende PowerShell-script uit om continu de status van de pijplijnuitvoering te controleren totdat het kopiëren van de gegevens is voltooid. Kopieer of plak het volgende script in het Power shell-venster en selecteer ENTER. 
+Voer het volgende PowerShell-script uit om continu de status van de pijplijnuitvoering te controleren totdat het kopiëren van de gegevens is voltooid. Kopieer of plak het volgende script in het PowerShell-venster en selecteer Enter. 
 
 ```powershell
 while ($True) {
@@ -444,12 +444,12 @@ while ($True) {
 }   
 ```
 
-U kunt de pijp lijn ook bewaken met behulp van de Azure Portal. Zie [de pijp lijn controleren](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)voor stapsgewijze instructies.
+U de pijplijn ook controleren met behulp van de Azure-portal. Zie [De pijplijn controleren](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)voor stapsgewijze instructies.
 
-### <a name="schedule-the-pipeline-with-a-trigger"></a>De pijp lijn plannen met een trigger
-In de vorige stap hebt u de pijp lijn op aanvraag uitgevoerd. U kunt ook een schema trigger maken om de pijp lijn op een schema uit te voeren, zoals elk uur of dagelijks.
+### <a name="schedule-the-pipeline-with-a-trigger"></a>De pijplijn plannen met een trigger
+In de vorige stap hebt u de pijplijn op aanvraag uitgevoerd. U ook een planningstrigger maken om de pijplijn volgens een planning uit te voeren, zoals per uur of per dag.
 
-1. Maak een JSON-bestand met de naam *MyTrigger. json* in de map *C:\ADF\RunSSISPackage* met de volgende inhoud: 
+1. Maak een JSON-bestand met de naam *MyTrigger.json* in de map *C:\ADF\RunSSISPackage* met de volgende inhoud: 
         
    ```json
    {
@@ -475,29 +475,29 @@ In de vorige stap hebt u de pijp lijn op aanvraag uitgevoerd. U kunt ook een sch
    }    
    ```
     
-1. Ga in Azure PowerShell naar de map *C:\ADF\RunSSISPackage* .
-1. Voer de cmdlet **set-AzDataFactoryV2Trigger** uit om de trigger te maken. 
+1. Schakel in Azure PowerShell over naar de map *C:\ADF\RunSSISPackage.*
+1. Voer de **cmdlet Set-AzDataFactoryV2Trigger** uit, waarmee de trigger wordt geactiveerd. 
 
    ```powershell
    Set-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
                                    -DataFactoryName $DataFactory.DataFactoryName `
                                    -Name "MyTrigger" -DefinitionFile ".\MyTrigger.json"
    ```
-1. De trigger heeft standaard de status gestopt. Start de trigger door de cmdlet **Start-AzDataFactoryV2Trigger** uit te voeren. 
+1. Standaard is de trigger in de gestopte status. Start de trigger door de **cmdlet Start-AzDataFactoryV2Trigger** uit te voeren. 
 
    ```powershell
    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
                                      -DataFactoryName $DataFactory.DataFactoryName `
                                      -Name "MyTrigger" 
    ```
-1. Controleer of de trigger is gestart door de cmdlet **Get-AzDataFactoryV2Trigger** uit te voeren. 
+1. Controleer of de trigger is gestart door de **cmdlet Get-AzDataFactoryV2Trigger** uit te voeren. 
 
    ```powershell
    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName `
                                    -DataFactoryName $DataFactoryName `
                                    -Name "MyTrigger"     
    ```    
-1. Voer de volgende opdracht na het volgende uur uit. Als de huidige tijd bijvoorbeeld 3:25 uur UTC is, voert u de opdracht uit op 4 PM UTC. 
+1. Voer de volgende opdracht na het volgende uur uit. Als de huidige tijd bijvoorbeeld 15:25 UTC is, voert u de opdracht uit op UTC van 16.00 uur. 
     
    ```powershell
    Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName `
@@ -507,12 +507,12 @@ In de vorige stap hebt u de pijp lijn op aanvraag uitgevoerd. U kunt ook een sch
                                       -TriggerRunStartedBefore "2017-12-09"
    ```
 
-   Voer de volgende query uit op de SSISDB-data base in uw SQL-Server om te controleren of het pakket is uitgevoerd. 
+   Voer de volgende query uit tegen de SSISDB-database in uw SQL-server om te controleren of het pakket is uitgevoerd. 
 
    ```sql
    select * from catalog.executions
    ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende blog bericht:
-- [Uw ETL/ELT-werk stromen moderniseren en uitbreiden met SSIS-activiteiten in Azure Data Factory pijp lijnen](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)
+Zie de volgende blogpost:
+- [Uw ETL/ELT-werkstromen moderniseren en uitbreiden met SSIS-activiteiten in Azure Data Factory-pijplijnen](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)

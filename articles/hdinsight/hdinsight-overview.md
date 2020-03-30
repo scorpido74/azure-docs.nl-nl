@@ -1,6 +1,6 @@
 ---
-title: Wat is Azure HDInsight?
-description: Een inleiding tot HDInsight en de Apache Hadoop-en Apache Spark technologie stack en-onderdelen, inclusief Kafka, Hive, Storm en HBase voor big data analyse.
+title: Wat is Azure HDInsight
+description: Een inleiding tot HDInsight, en de Apache Hadoop en Apache Spark technologie stack en componenten, waaronder Kafka, Hive, Storm, en HBase voor big data analyse.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,37 +9,37 @@ ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
 ms.openlocfilehash: 31e8506067133304144614ff58974ee21e9680be
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241218"
 ---
 # <a name="what-is-azure-hdinsight"></a>Wat is Azure HDInsight?
 
-Azure HDInsight is een beheerde, open-source analyse service in de Cloud voor ondernemingen. U kunt populaire opensourcekaders zoals Hadoop, Apache Spark, Apache Hive, LLAP, Apache Kafka, Apache Storm, R, enzovoort gebruiken.
+Azure HDInsight is een beheerde, full-spectrum, open-source analytics-service in de cloud voor ondernemingen. U kunt populaire opensourcekaders zoals Hadoop, Apache Spark, Apache Hive, LLAP, Apache Kafka, Apache Storm, R, enzovoort gebruiken.
 
 ## <a name="what-is-hdinsight-and-the-hadoop-technology-stack"></a>Wat is HDInsight en de Hadoop-technologiestack?
 
-Azure HDInsight is een Cloud distributie van Hadoop-onderdelen. Azure HDInsight maakt het eenvoudig, snel en kosteneffectief om enorme hoeveelheden gegevens te verwerken. U kunt de populairste opensourcekaders gebruiken, zoals Hadoop, Spark, Hive, LLAP, Kafka, Storm, R enz. Met deze kaders kunt u ook een breed scala aan scenario's inschakelen, zoals extraheren, transformeren en laden (ETL), gegevensopslag, machine learning en IoT.
+Azure HDInsight is een clouddistributie van Hadoop-componenten. Azure HDInsight maakt het eenvoudig, snel en kosteneffectief om enorme hoeveelheden gegevens te verwerken. U kunt de populairste opensourcekaders gebruiken, zoals Hadoop, Spark, Hive, LLAP, Kafka, Storm, R enz. Met deze kaders kunt u ook een breed scala aan scenario's inschakelen, zoals extraheren, transformeren en laden (ETL), gegevensopslag, machine learning en IoT.
 
-Zie [onderdelen en versies die beschikbaar zijn met hdinsight](./hdinsight-component-versioning.md)voor een overzicht van de beschik bare Hadoop-technologie stack onderdelen op hdinsight. Zie de [pagina met Azure-functies voor HDInsight](https://azure.microsoft.com/services/hdinsight/) voor meer informatie over Hadoop in HDInsight.
+Raadpleeg [Components and versions available with HDInsight](./hdinsight-component-versioning.md) (Onderdelen en versies die beschikbaar zijn in HDInsight) om na te gaan welke onderdelen van de Hadoop-technologiestack in HDInsight beschikbaar zijn. Zie de [pagina met Azure-functies voor HDInsight](https://azure.microsoft.com/services/hdinsight/) voor meer informatie over Hadoop in HDInsight.
 
 ## <a name="what-is-big-data"></a>Wat is big data?
 
 Big data wordt verzameld in steeds sneller groeiende volumes, met een steeds hogere snelheid en in een groter aantal indelingen dan ooit tevoren. Bij big data kan het gaan om historische gegevens (opgeslagen gegevens), maar ook om realtime gegevens (gestreamd vanuit de bron). Zie [Scenario's voor het gebruik van HDInsight](#scenarios-for-using-hdinsight) voor meer informatie over de meest voorkomende gebruiksvoorbeelden voor big data.
 
-## <a name="why-should-i-use-azure-hdinsight"></a>Waarom moet ik Azure HDInsight gebruiken?
+## <a name="why-should-i-use-azure-hdinsight"></a>Waarom zou ik Azure HDInsight gebruiken?
 
 In deze sectie worden de mogelijkheden van Azure HDInsight toegelicht.
 
 |Mogelijkheid  |Beschrijving  |
 |---------|---------|
 |Cloudeigen     |     Met Azure HDInsight kunt u geoptimaliseerde clusters maken voor [Hadoop](./hadoop/apache-hadoop-linux-tutorial-get-started.md), [Apache Spark](./spark/apache-spark-jupyter-spark-sql.md), [interactieve query’s (LLAP)](./interactive-query/apache-interactive-query-get-started.md), [Kafka](./kafka/apache-kafka-get-started.md), [ Storm](./storm/apache-storm-tutorial-get-started-linux.md), [HBase](./hbase/apache-hbase-tutorial-get-started-linux.md) en [ML Services](./r-server/r-server-overview.md) in Azure. HDInsight Biedt tevens een end-to-end SLA voor al uw productieworkloads.  |
-|Voordelig en schaalbaar     | Met HDInsight kunt u [workloads](./hdinsight-administer-use-portal-linux.md#scale-clusters)  vergroten/verkleinen. U kunt de kosten verlagen door [clusters op aanvraag te maken](./hdinsight-hadoop-create-linux-clusters-adf.md) en alleen te betalen voor wat u gebruikt. U kunt ook gegevenspijplijnen maken om uw taken operationeel maken. Rekenwerk en opslag zijn niet langer gekoppeld, voor betere prestaties en flexibiliteit. |
+|Voordelig en schaalbaar     | Met HDInsight u workloads omhoog of omlaag [schalen.](./hdinsight-administer-use-portal-linux.md#scale-clusters) U de kosten verlagen door [clusters op aanvraag](./hdinsight-hadoop-create-linux-clusters-adf.md) te maken en alleen te betalen voor wat u gebruikt. U kunt ook gegevenspijplijnen maken om uw taken operationeel maken. Rekenwerk en opslag zijn niet langer gekoppeld, voor betere prestaties en flexibiliteit. |
 |Beveiligd en compatibel    | Met HDInsight kunt u uw zakelijke gegevensassets beschermen met [Azure Virtual Network](./hdinsight-plan-virtual-network-deployment.md), [versleuteling](./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md) en integratie met [Azure Active Directory](./domain-joined/hdinsight-security-overview.md). HDInsight voldoet aan de meeste populaire [nalevingsstandaarden](https://azure.microsoft.com/overview/trusted-cloud) van de industrie en de overheid.        |
 |Bewaking    | Azure HDInsight kan worden geïntegreerd met [Azure Monitor-logboeken](./hdinsight-hadoop-oms-log-analytics-tutorial.md) en biedt zo één enkele interface waarmee u al uw clusters kunt bewaken.        |
-|Wereldwijde beschikbaarheid | HDInsight is wereldwijd beschikbaar in meer  [regio's](https://azure.microsoft.com/regions/services/)  dan welk ander aanbod voor big-data-analyses ook. Azure HDInsight is ook beschikbaar in Azure Government, China en Duitsland, waarmee u kunt voldoen aan de behoeften van uw bedrijf in belangrijke soevereine gebieden. |  
+|Wereldwijde beschikbaarheid | HDInsight is beschikbaar in meer [regio's](https://azure.microsoft.com/regions/services/) dan enig ander big data analytics-aanbod. Azure HDInsight is ook beschikbaar in Azure Government, China en Duitsland, waarmee u kunt voldoen aan de behoeften van uw bedrijf in belangrijke soevereine gebieden. |  
 |Productiviteit     |  Met Azure HDInsight kunt u geavanceerde hulpprogramma's voor Hadoop en Spark gebruiken in de ontwikkelomgeving van uw keuze. De beschikbare ontwikkelomgevingen zijn [Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md), [VSCode](./hdinsight-for-vscode.md), [Eclipse](./spark/apache-spark-eclipse-tool-plugin.md) en [IntelliJ](./spark/apache-spark-intellij-tool-plugin.md) voor ondersteuning van Scala, Python, R, Java en .NET. Gegevensanalisten kunnen ook samenwerken met behulp van populaire notebooks zoals [Jupyter](./spark/apache-spark-jupyter-notebook-kernels.md) en [Zeppelin](./spark/apache-spark-zeppelin-notebook.md).    |
 |Uitbreidbaarheid     |  U kunt de HDInsight-clusters uitbreiden met geïnstalleerde onderdelen (Hue, Presto enz.) met behulp van [scriptacties](./hdinsight-hadoop-customize-cluster-linux.md), door [edge-knooppunten toe te voegen](./hdinsight-apps-use-edge-node.md) of via [integratie met andere toepassingen die zijn gecertificeerd voor big data](./hdinsight-apps-install-applications.md). Met HDInsight kunt u naadloos integreren met de meest populaire big data-oplossingen met [éénkliksimplementatie](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/).|
 
@@ -55,11 +55,11 @@ Extraheren, transformeren en laden (ETL) is een proces waarbij ongestructureerde
 
 Met HDInsight kunt u interactieve query's op petabyte-schaal uitvoeren voor gestructureerde of ongestructureerde gegevens in elke indeling. U kunt ook modellen bouwen die hen verbinden met BI-hulpprogramma’s. Lees dit [verhaal van een klant](https://customers.microsoft.com/story/milliman) voor meer informatie.
 
-![HDInsight-architectuur: gegevens opslag](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "Gegevens opslag architectuur HDInsight")
+![HDInsight-architectuur: datawarehousing](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "HDInsight Data warehousing architectuur")
 
-### <a name="internet-of-things-iot"></a>Internet der dingen (IoT)
+### <a name="internet-of-things-iot"></a>Internet of Things (IoT)
 
-U kunt HDInsight gebruiken voor het verwerken van streaminggegevens die in real-time worden ontvangen vanaf verschillende soorten apparaten. Voor meer informatie leest u [deze Azure-blogpost](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/) waarin de openbare preview van Apache Kafka in HDInsight met Azure Managed Disks wordt aangekondigd.
+U HDInsight gebruiken om streaminggegevens te verwerken die in realtime van verschillende soorten apparaten zijn ontvangen. Voor meer informatie leest u [deze Azure-blogpost](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/) waarin de openbare preview van Apache Kafka in HDInsight met Azure Managed Disks wordt aangekondigd.
 
 ![HDInsight-architectuur: Internet of Things](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png "HDInsight IoT-architectuur")
 
@@ -67,13 +67,13 @@ U kunt HDInsight gebruiken voor het verwerken van streaminggegevens die in real-
 
 Met HDInsight kunt u toepassingen ontwikkelen die belangrijke inzichten uit gegevens halen. U kunt hierbij ook Azure Machine Learning gebruiken om toekomstige ontwikkelingen voor uw bedrijf te voorspellen. Lees dit [verhaal van een klant](https://customers.microsoft.com/story/pros) voor meer informatie.
 
-![HDInsight-architectuur: gegevens wetenschap](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-science.png "HDInsight data Science-architectuur")
+![HDInsight-architectuur: data science](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-science.png "HDInsight data science architectuur")
 
 ### <a name="hybrid"></a>Hybride
 
 Met HDInsight kunt u uw bestaande on-premises big data-infrastructuur uitbreiden naar Azure om gebruik te maken van de mogelijkheden voor geavanceerde analyses van de cloud.
 
-![HDInsight-architectuur: hybride](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-hybrid.png "Hybride HDInsight-architectuur")
+![HDInsight-architectuur: hybride](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-hybrid.png "HDInsight hybride architectuur")
 
 ## <a name="cluster-types-in-hdinsight"></a>Clustertypen in HDInsight
 
@@ -84,9 +84,9 @@ HDInsight omvat specifieke clustertypen en opties voor clusteraanpassing, zoals 
 |[Apache Hadoop](./hadoop/apache-hadoop-introduction.md)|Een kader dat gebruikmaakt van HDFS, YARN voor resourcebeheer en een eenvoudig MapReduce-programmeermodel om batchgegevens parallel te verwerken en te analyseren.|
 |[Apache Spark](./spark/apache-spark-overview.md)|Een opensourcekader voor parallelle verwerking dat ondersteuning biedt voor in-memory verwerking om de prestaties van toepassingen voor de analyse van big data te verbeteren. Zie [Wat is Apache Spark in HDInsight?](./spark/apache-spark-overview.md).|
 |[Apache HBase](./hbase/apache-hbase-overview.md)|Een NoSQL-database gebouwd op Hadoop. Deze biedt willekeurige toegang en sterke consistentie voor grote hoeveelheden (mogelijk miljarden rijen bij miljoenen kolommen) ongestructureerde en semi-gestructureerde gegevens. Zie [Wat is HBase in HDInsight?](./hbase/apache-hbase-overview.md)|
-|[ML Services](./r-server/r-server-overview.md)|Een server voor de hosting van websites en het beheren van parallelle, gedistribueerde R-processen. Het biedt gegevenswetenschappers, statistici en R-programmeurs on-demand toegang tot schaalbare, gedistribueerde analysemethoden in HDInsight. Zie [Overzicht van ML Services in HDInsight](./r-server/r-server-overview.md).|
+|[ML-services](./r-server/r-server-overview.md)|Een server voor de hosting van websites en het beheren van parallelle, gedistribueerde R-processen. Het biedt gegevenswetenschappers, statistici en R-programmeurs on-demand toegang tot schaalbare, gedistribueerde analysemethoden in HDInsight. Zie [Overzicht van ML Services in HDInsight](./r-server/r-server-overview.md).|
 |[Apache Storm](./storm/apache-storm-overview.md)|Een gedistribueerd, realtime berekeningssysteem voor het snel verwerken van grote gegevensstromen. Storm wordt aangeboden als beheerd cluster in HDInsight. Zie [Realtime-sensorgegevens analyseren met Storm en Hadoop](./storm/apache-storm-overview.md).|
-|[Apache-interactieve query](./interactive-query/apache-interactive-query-get-started.md)|Caching in geheugen voor interactieve en snellere Hive-query's. Zie [Interactive Query gebruiken in HDInsight](./interactive-query/apache-interactive-query-get-started.md).|
+|[Interactieve query voor Apache](./interactive-query/apache-interactive-query-get-started.md)|Caching in geheugen voor interactieve en snellere Hive-query's. Zie [Interactive Query gebruiken in HDInsight](./interactive-query/apache-interactive-query-get-started.md).|
 |[Apache Kafka](./kafka/apache-kafka-introduction.md)|Een opensourceplatform dat wordt gebruikt voor het bouwen van pijplijnen en toepassingen voor het streamen van gegevens. Kafka biedt ook berichtenwachtrijfunctionaliteit waarmee u gegevensstromen kunt publiceren en zich kunt abonneren op gegevensstromen. Zie [Inleiding tot Apache Kafka in HDInsight](./kafka/apache-kafka-introduction.md).|
 
 ## <a name="open-source-components-in-hdinsight"></a>Opensource-onderdelen in HDInsight
@@ -95,7 +95,7 @@ Met Azure HDInsight kunt u clusters maken met opensourcekaders zoals Hadoop, Spa
 
 ## <a name="programming-languages-in-hdinsight"></a>Programmeertalen in HDInsight
 
-HDInsight-clusters, waaronder Spark, HBase, Kafka, Hadoop en andere, bieden ondersteuning voor een groot aantal programmeertalen. Sommige programmeertalen worden niet standaard geïnstalleerd. Gebruik voor bibliotheken, modules of pakketten die niet standaard zijn geïnstalleerd, [een script actie om het onderdeel te installeren](./hdinsight-hadoop-script-actions-linux.md).
+HDInsight-clusters, waaronder Spark, HBase, Kafka, Hadoop en andere, bieden ondersteuning voor een groot aantal programmeertalen. Sommige programmeertalen worden niet standaard geïnstalleerd. Voor bibliotheken, modules of pakketten die niet standaard zijn geïnstalleerd, [gebruikt u een scriptactie om de component te installeren.](./hdinsight-hadoop-script-actions-linux.md)
 
 |Programmeertaal  |Informatie  |
 |---------|---------|
@@ -107,9 +107,9 @@ HDInsight-clusters, waaronder Spark, HBase, Kafka, Hadoop en andere, bieden onde
 
 U kunt HDInsight-ontwikkelingsprogramma's zoals IntelliJ, Eclipse, Visual Studio Code en Visual Studio gebruiken om HDInsight-gegevensquery's en taken te schrijven en te verzenden met naadloze integratie in Azure.
 
-* [Azure Toolkit voor IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)
+* [Azure toolkit voor IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)
 
-* [Azure Toolkit voor Eclipse](./spark/apache-spark-eclipse-tool-plugin.md)
+* [Azure toolkit voor Eclipse](./spark/apache-spark-eclipse-tool-plugin.md)
 
 * [Azure HDInsight Tools voor IntelliJ](./hdinsight-for-vscode.md)
 

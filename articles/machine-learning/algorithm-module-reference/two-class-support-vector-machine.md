@@ -1,7 +1,7 @@
 ---
-title: '2-klasse support vector machine: module verwijzing'
+title: 'Vectormachine voor ondersteuning in twee klassen: naslaginformatie over module'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de machine module voor **ondersteuning van twee klassen** in azure machine learning om een model te maken dat is gebaseerd op de computer algoritme van de ondersteunings vector.
+description: Meer informatie over het gebruik van de **vectormachinemodule voor twee klassen** in Azure Machine Learning om een model te maken dat is gebaseerd op het ondersteuningsvectormachinealgoritme.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,76 +9,76 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 3b2f6b2bb1dc5f9e16c537f78b5a456ee4984e80
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ba788518951e72c1701d99decf46350e8665dbae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916724"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455805"
 ---
-# <a name="two-class-support-vector-machine-module"></a>Machine module voor de ondersteuning van twee klassen
+# <a name="two-class-support-vector-machine-module"></a>Vectormachinemodule voor twee klassen
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module beschreven in Azure Machine Learning designer (preview).
 
-Gebruik deze module om een model te maken dat is gebaseerd op de computer algoritme van de ondersteunings vector. 
+Gebruik deze module om een model te maken dat is gebaseerd op het ondersteuningsvectormachinealgoritme. 
 
-Support Vector machines (SVMs) zijn een goed te doorzoeken klasse van leer methoden met toezicht. Deze specifieke implementatie is geschikt voor het voors pellen van twee mogelijke resultaten, op basis van doorlopende of Categorische variabelen.
+Support vector machines (SVMs) zijn een goed onderzochte klasse van onder toezicht leermethoden. Deze specifieke implementatie is geschikt voor het voorspellen van twee mogelijke uitkomsten, op basis van continue of categorische variabelen.
 
-Nadat u de para meters van het model hebt gedefinieerd, traint u het model met behulp van de trainings modules en geeft u een *gecodeerde gegevensset* op die een kolom Label of resultaat bevat.
+Nadat u de modelparameters hebt gedefinieerd, traint u het model met behulp van de trainingsmodules en biedt u een *gelabelde gegevensset* met een label- of uitkomstkolom.
 
-## <a name="about-support-vector-machines"></a>Vector machines ondersteunen
+## <a name="about-support-vector-machines"></a>Over ondersteuningsvectormachines
 
-Ondersteuning voor vector machines is een van de eerste machine learning-algoritmen en SVM modellen zijn gebruikt in veel toepassingen, van gegevens die worden opgehaald tot tekst-en afbeeldings classificatie. SVMs kan worden gebruikt voor zowel classificatie-als regressie taken.
+Ondersteuningsvectormachines behoren tot de vroegste machine learning-algoritmen en SVM-modellen zijn in veel toepassingen gebruikt, van het ophalen van informatie tot tekst- en beeldclassificatie. SPM's kunnen worden gebruikt voor zowel classificatie- als regressietaken.
 
-Dit SVM-model is een trainings model met Super visie waarvoor gelabelde gegevens zijn vereist. In het trainings proces analyseert het algoritme invoer gegevens en herkent patronen in een multi-dimensionale functie ruimte die de *hyperplane*wordt genoemd.  Alle invoer voorbeelden worden weer gegeven als punten in deze ruimte en worden toegewezen aan uitvoer Categorieën op een zodanige manier dat categorieën worden gedeeld door de brede en duidelijke onderbreking.
+Dit SVM-model is een begeleid leermodel dat gelabelde gegevens vereist. In het trainingsproces analyseert het algoritme invoergegevens en herkent het patronen in een multidimensionale functieruimte genaamd de *hyperplane.*  Alle invoervoorbeelden worden weergegeven als punten in deze ruimte en worden zodanig toegewezen aan uitvoercategorieën dat categorieën worden verdeeld door een zo breed en duidelijk mogelijke kloof.
 
-Voor de voor spelling wijst het SVM-algoritme nieuwe voor beelden toe aan één categorie of aan de andere, en wijs deze toe aan dezelfde ruimte. 
+Voor voorspelling wijst het SVM-algoritme nieuwe voorbeelden toe in de ene of de andere categorie en brengt u ze in kaart in dezelfde ruimte. 
 
 ## <a name="how-to-configure"></a>Configureren 
 
-Voor dit model type wordt aanbevolen dat u de gegevensset normaliseert voordat u deze gebruikt om de classificatie te trainen.
+Voor dit modeltype wordt aanbevolen de gegevensset te normaliseren voordat u deze gebruikt om de classificatie te trainen.
   
-1.  Voeg de **machine module met twee klasse-ondersteunings vectoren** toe aan uw pijp lijn.  
+1.  Voeg de **vectormachinemodule voor twee klassen** ondersteuning toe aan uw pijplijn.  
   
-2.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
+2.  Geef op hoe u het model wilt trainen door de optie **Trainer-modus maken in** te stellen.  
   
-    -   **Eén para meter**: als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.  
+    -   **Eén parameter:** als u weet hoe u het model wilt configureren, u een specifieke set waarden als argumenten opgeven.  
 
-    -   **Parameter bereik**: als u niet zeker weet wat de beste para meters zijn, kunt u de optimale para meters vinden met behulp van de Hyper parameters-module voor het [afstemmen van modellen](tune-model-hyperparameters.md) . U geeft een aantal waarden op, en de trainer herhaalt meerdere combi Naties van de instellingen om de combi natie van waarden te bepalen die het beste resultaat oplevert.
+    -   **Parameterbereik:** Als u niet zeker bent van de beste parameters, u de optimale parameters vinden met behulp van de module Hyperparameters van [tunemodel.](tune-model-hyperparameters.md) U geeft een aantal waarden en de trainer wijzigt meerdere combinaties van de instellingen om de combinatie van waarden te bepalen die het beste resultaat oplevert.
 
-3.  Voor **aantal herhalingen**typt u een getal dat het aantal iteraties aanduidt dat wordt gebruikt bij het bouwen van het model.  
+3.  Typ **voor Aantal iteraties**een getal dat het aantal iteraties aangeeft dat wordt gebruikt bij het bouwen van het model.  
   
-     Deze para meter kan worden gebruikt om de verhouding tussen de snelheid en nauw keurigheid van de training te bepalen.  
+     Deze parameter kan worden gebruikt om de afweging tussen trainingssnelheid en nauwkeurigheid te regelen.  
   
-4.  Typ voor **Lambda**een waarde die moet worden gebruikt als gewicht voor de N1-regularisatie.  
+4.  Voor **Lambda,** typ een waarde te gebruiken als het gewicht voor L1 regularisatie.  
   
-     Deze regularisatie-coëfficiënt kan worden gebruikt om het model af te stemmen. Grotere waarden bestraffen complexere modellen.  
+     Deze regularisatiecoëfficiënt kan worden gebruikt om het model af te stemmen. Grotere waarden bestraffen complexere modellen.  
   
-5.  Selecteer de optie voor het **normaliseren van functies**als u functies vóór de training wilt normaliseren.
+5.  Selecteer de **optie, Functies normaliseren,** als u functies wilt normaliseren voordat u traint.
   
-     Als u normalisatie toepast voordat de training wordt toegepast, worden gegevens punten gecentreerd op het gemiddelde en geschaald om één eenheid van standaard afwijking te hebben.
+     Als u normalisatie toepast, vóór de training, worden gegevenspunten gecentreerd op het gemiddelde en geschaald om één eenheid standaarddeviatie te hebben.
   
-6.  Selecteer de optie **project naar de eenheids bol**om coëfficiënten te normaliseren.
+6.  Selecteer de optie **Project naar de eenheidsbol**om coëfficiënten te normaliseren.
   
-     Projecteren van waarden naar eenheids ruimte betekent dat voordat een training wordt gegeven, gegevens punten worden gecentreerd op 0 en geschaald om één eenheid van standaard afwijking te hebben.
+     Het projecteren van waarden naar eenheidsruimte betekent dat gegevenspunten vóór de training gecentreerd zijn op 0 en worden geschaald om één eenheid standaarddeviatie te hebben.
   
-7.  Typ bij **wille keurig aantal Seed**een geheel getal dat moet worden gebruikt als seeding als u de reproduceer baarheid van alle uitvoeringen wilt garanderen.  Anders wordt een waarde van een systeem klok gebruikt als seed, wat kan leiden tot enigszins verschillende resultaten voor uitvoeringen.
+7.  Typ **in Willekeurig getalzaad**een gehele waarde die u als zaad wilt gebruiken als u reproduceerbaarheid wilt garanderen in verschillende runs.  Anders wordt een systeemklokwaarde gebruikt als zaad, wat kan resulteren in iets andere resultaten over runs.
   
-9. Verbind een gegevensset met een label en een van de [trainings modules](module-reference.md):
+9. Sluit een gelabelde gegevensset en een van de [trainingsmodules](module-reference.md)aan:
   
-    -   Als u de **modus trainer maken** instelt op **één para meter**, gebruikt u de module [Train model](train-model.md) .
+    -   Als u **De trainermodus maken** instelt op Eén **parameter,** gebruikt u de module [Treinmodel.](train-model.md)
   
-10. Voer de pijplijn uit.
+10. Verzend de pijplijn.
 
 ## <a name="results"></a>Resultaten
 
-Nadat de training is voltooid:
+Na de training is voltooid:
 
-+ Als u een moment opname van het getrainde model wilt opslaan, selecteert u het tabblad **uitvoer** in het rechterdeel venster van de module **Train model** . Selecteer het pictogram **gegevensset registreren** om het model als een herbruikbare module op te slaan.
++ Als u een momentopname van het getrainde model wilt opslaan, selecteert u het tabblad **Uitvoer** in het rechterdeelvenster van de **module Treinmodel.** Selecteer het pictogram **Gegevensset registreren** om het model op te slaan als een herbruikbare module.
 
-+ Als u het model voor scores wilt gebruiken, voegt u de module **score model** toe aan een pijp lijn.
++ Als u het model wilt gebruiken om te scoren, voegt u de module **Scoremodel** toe aan een pijplijn.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 

@@ -1,91 +1,91 @@
 ---
-title: Over herstel plannen in Azure Site Recovery
-description: Meer informatie over herstel plannen in Azure Site Recovery.
+title: Over herstelplannen in Azure Site Recovery
+description: Meer informatie over herstelplannen in Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257769"
 ---
 # <a name="about-recovery-plans"></a>Over herstelplannen
 
-In dit artikel vindt u een overzicht van herstel plannen in [Azure site Recovery](site-recovery-overview.md).
+In dit artikel vindt u een overzicht van herstelplannen in [Azure Site Recovery](site-recovery-overview.md).
 
-Een herstel plan verzamelt computers in herstel groepen voor het doel van de failover. Met een herstel plan kunt u een systematisch herstel proces definiëren door kleine onafhankelijke eenheden te maken waarvoor u een failover wilt uitvoeren. Een eenheid vertegenwoordigt meestal een app in uw omgeving.
+Een herstelplan verzamelt machines in herstelgroepen met het oog op failover. Een herstelplan helpt u om een systematisch herstelproces te definiëren, door kleine onafhankelijke eenheden te maken die u mislukken. Een eenheid vertegenwoordigt doorgaans een app in uw omgeving.
 
-- Een herstel plan definieert hoe machine failover wordt uitgevoerd en de volg orde waarin ze worden gestart na een failover.
-- Herstel plannen worden gebruikt voor failover naar Azure, maar kunnen niet worden gebruikt voor failback vanuit Azure.
-- Maxi maal 100 beveiligde instanties kunnen worden toegevoegd aan één herstel plan.
-- U kunt een plan aanpassen door er bestellingen, instructies en taken aan toe te voegen.
-- Nadat een plan is gedefinieerd, kunt u er een failover op uitvoeren.
-- Er kan in meerdere herstel plannen naar machines worden verwezen, waarbij de volgende plannen de implementatie/het starten van een machine overs Laan als deze eerder is geïmplementeerd met een ander herstel plan.
-
-
-
-### <a name="why-use-a-recovery-plan"></a>Waarom een herstel plan gebruiken?
-
-Herstel plannen gebruiken voor:
-
-* Modeleer een app rond de bijbehorende afhankelijkheden.
-* Herstel taken automatiseren voor het beperken van de beoogde herstel tijd (RTO).
-* Controleer of u bent voor bereid op migratie of herstel na nood gevallen door ervoor te zorgen dat uw apps deel uitmaken van een herstel plan.
-* Voer testfailover uit op herstel plannen om ervoor te zorgen dat nood herstel of migratie naar verwachting werkt.
+- Een herstelplan definieert hoe machines mislukken en de volgorde waarin ze beginnen na failover.
+- Herstelplannen worden gebruikt voor failover naar Azure, maar kunnen niet worden gebruikt voor failback vanuit Azure.
+- Er kunnen maximaal 100 beveiligde exemplaren aan één herstelplan worden toegevoegd.
+- U een plan aanpassen door er volgorde, instructies en taken aan toe te voegen.
+- Nadat een plan is gedefinieerd, u er een failover uitvoeren.
+- Machines kunnen worden verwezen in meerdere herstelplannen, waarin latere plannen de implementatie/het opstarten van een machine overslaan als deze eerder is geïmplementeerd met een ander herstelplan.
 
 
-## <a name="model-apps"></a>Apps model leren 
-U kunt een herstel groep plannen en maken om app-specifieke eigenschappen vast te leggen. Laten we bijvoorbeeld eens kijken naar een typische toepassing met drie lagen met een back-end van SQL Server, middleware en een Webfront-end. Normaal gesp roken past u het herstel plan aan zodat de computers in elke laag in de juiste volg orde worden gestart na een failover.
 
-- De SQL-back-end moet eerst worden gestart, de middleware volgende en uiteindelijk het Webfront-end.
-- Deze start volgorde zorgt ervoor dat de app werkt op het moment dat de laatste machine wordt gestart.
-- Deze volg orde zorgt ervoor dat de SQL Server laag al wordt uitgevoerd wanneer de middleware wordt gestart en probeert verbinding te maken met de laag SQL Server. 
-- Deze volg orde zorgt er ook voor dat de front-end-server de laatste keer wordt gestart, zodat eind gebruikers geen verbinding met de app-URL kunnen maken voordat alle onderdelen actief zijn, en de app klaar is om aanvragen te accepteren.
+### <a name="why-use-a-recovery-plan"></a>Waarom een herstelplan gebruiken?
 
-Als u deze order wilt maken, voegt u groepen toe aan de herstel groep en voegt u computers toe aan de groepen.
-- Waar order is opgegeven, wordt sequentiëren gebruikt. Acties worden parallel uitgevoerd, waar nodig, om de RTO van toepassings herstel te verbeteren.
-- Failover van machines in één groep wordt parallel uitgevoerd.
-- Voor machines in verschillende groepen wordt een failover uitgevoerd in de groeps volgorde, zodat groep 2-machines de testfailover alleen starten nadat op alle computers in groep 1 een fout is opgetreden en de bewerking is gestart.
+Herstelplannen gebruiken om:
 
-    ![Voor beeld van herstel plan](./media/recovery-plan-overview/rp.png)
-
-Wanneer u deze aanpassing uitvoert, gebeurt het volgende wanneer u een failover in het herstel plan voert: 
-
-1. Bij een afsluit stap wordt geprobeerd om de on-premises machines uit te scha kelen. De uitzonde ring hierop is als u een testfailover uitvoert. in dat geval wordt de primaire site actief blijft. 
-2. Bij het afsluiten wordt een parallelle failover geactiveerd van alle computers in het herstel plan.
-3. De failover bereidt virtuele machine schijven voor met behulp van gerepliceerde gegevens.
-4. De opstart groepen worden in volg orde uitgevoerd en de computers in elke groep worden gestart. Eerst groep 1 wordt uitgevoerd, vervolgens groep 2 en tenslotte groep 3. Als een groep meer dan één computer bevat, worden alle machines parallel gestart.
+* Modelleer een app rond de afhankelijkheden.
+* Hersteltaken automatiseren om de doelstelling (RTO) te verminderen.
+* Controleer of u voorbereid bent op migratie of herstel na noodgevallen door ervoor te zorgen dat uw apps deel uitmaken van een herstelplan.
+* Testfailovers uitvoeren op herstelplannen om te zorgen dat herstel of migratie na noodgevallen werkt zoals verwacht.
 
 
-## <a name="automate-tasks-in-recovery-plans"></a>Taken automatiseren in herstel plannen
+## <a name="model-apps"></a>Apps modelleren 
+U een herstelgroep plannen en maken om app-specifieke eigenschappen vast te leggen. Laten we bijvoorbeeld eens kijken naar een typische drielaagse toepassing met een SQL-server backend, middleware en een webfrontend. Doorgaans past u het herstelplan aan zodat machines in elke laag in de juiste volgorde starten na een failover.
 
-Het herstellen van grote toepassingen kan een complexe taak zijn. Hand matige stappen maken het proces gevoelig voor fouten en de persoon die de failover uitvoert, is mogelijk niet op de hoogte van alle app-complexiteit. U kunt een herstel plan gebruiken om een order in te stellen en de acties te automatiseren die nodig zijn bij elke stap, met Azure Automation runbooks voor failover naar Azure of scripts. Voor taken die niet kunnen worden geautomatiseerd, kunt u pauzes voor hand matige acties invoegen in herstel plannen. U kunt een aantal typen taken configureren:
+- De SQL backend moet eerst beginnen, de middleware volgende, en ten slotte de web frontend.
+- Deze startvolgorde zorgt ervoor dat de app werkt tegen de tijd dat de laatste machine wordt gestart.
+- Deze volgorde zorgt ervoor dat wanneer de middleware wordt gestart en probeert verbinding te maken met de SQL Server-laag, de SQL Server-laag al wordt uitgevoerd. 
+- Deze volgorde helpt er ook voor te zorgen dat de front-endserver als laatste start, zodat eindgebruikers geen verbinding maken met de URL van de app voordat alle onderdelen actief zijn en de app klaar is om aanvragen te accepteren.
 
-* **Taken op de virtuele Azure-machine na een failover**: wanneer u een failover uitvoert naar Azure, moet u doorgaans acties uitvoeren, zodat u na een failover verbinding kunt maken met de virtuele machine. Bijvoorbeeld: 
-    * Maak een openbaar IP-adres op de Azure-VM.
-    * Wijs een netwerk beveiligings groep toe aan de netwerk adapter van de virtuele Azure-machine.
+Als u deze volgorde wilt maken, voegt u groepen toe aan de herstelgroep en voegt u machines toe aan de groepen.
+- Wanneer de volgorde is opgegeven, wordt sequencing gebruikt. Acties lopen parallel, naar gelang van het geval, om de rto voor toepassingsherstel te verbeteren.
+- Machines in één groep mislukken parallel.
+- Machines in verschillende groepen mislukken in groepsvolgorde, zodat groep 2-machines hun failover pas starten nadat alle machines in groep 1 zijn mislukt en zijn gestart.
+
+    ![Voorbeeld herstelplan](./media/recovery-plan-overview/rp.png)
+
+Met deze aanpassing op zijn plaats, hier is wat er gebeurt als je een failover op het herstelplan: 
+
+1. Met een afsluitstap wordt geprobeerd de on-premises machines uit te schakelen. De uitzondering is als u een testfailover uitvoert, in welk geval de primaire site blijft worden uitgevoerd. 
+2. De shutdown activeert een parallelle failover van alle machines in het herstelplan.
+3. De failover bereidt virtuele machineschijven voor met behulp van gerepliceerde gegevens.
+4. De opstartgroepen worden in volgorde uitgevoerd en starten de machines in elke groep. Eerst loopt groep 1, dan groep 2 en tenslotte groep 3. Als er meer dan één machine in een groep is, beginnen alle machines parallel.
+
+
+## <a name="automate-tasks-in-recovery-plans"></a>Taken in herstelplannen automatiseren
+
+Het herstellen van grote toepassingen kan een complexe taak zijn. Handmatige stappen maken het proces foutgevoelig en de persoon die de failover uitvoert, is mogelijk niet op de hoogte van alle complexiteiten van apps. U een herstelplan gebruiken om order op te leggen en de acties te automatiseren die nodig zijn bij elke stap, met Azure Automation-runbooks voor failover naar Azure of scripts. Voor taken die niet kunnen worden geautomatiseerd, u pauzes voor handmatige acties invoegen in herstelplannen. Er zijn een paar soorten taken die u configureren:
+
+* **Taken op de Azure VM na failover:** Wanneer u niet overgaat naar Azure, moet u doorgaans acties uitvoeren zodat u na failover verbinding maken met de VM. Bijvoorbeeld: 
+    * Maak een openbaar IP-adres op de Azure VM.
+    * Wijs een netwerkbeveiligingsgroep toe aan de netwerkadapter van de Azure VM.
     * Voeg een load balancer toe aan een beschikbaarheidsset.
-* **Taken in de VM na een failover**: met deze taken wordt de app die op de computer wordt uitgevoerd, opnieuw geconfigureerd zodat deze goed blijft werken in de nieuwe omgeving. Bijvoorbeeld:
-    * Wijzig de data base-connection string in de computer.
-    * Wijzig de webserver configuratie of-regels.
+* **Taken in VM na failover**: Deze taken configureren de app die op de machine wordt uitgevoerd doorgaans opnieuw, zodat deze correct blijft werken in de nieuwe omgeving. Bijvoorbeeld:
+    * Wijzig de tekenreeks voor de databaseverbinding in de machine.
+    * Wijzig de configuratie of regels van de webserver.
 
 
-### <a name="run-a-test-failover-on-recovery-plans"></a>Een testfailover uitvoeren op herstel plannen
+### <a name="run-a-test-failover-on-recovery-plans"></a>Een testfailover uitvoeren op herstelplannen
 
-U kunt een herstel plan gebruiken om een testfailover te activeren. Gebruik de volgende aanbevolen procedures:
+U een herstelplan gebruiken om een testfailover te activeren. Gebruik de volgende aanbevolen procedures:
 
-- Voltooi altijd een testfailover voor een app voordat u een volledige failover uitvoert. Met testfailover kunt u controleren of de app op de herstel site komt.
-- Als u weet dat u iets hebt gemist, kunt u een opschoon bewerking activeren en de testfailover opnieuw uitvoeren. 
-- Voer een testfailover meerdere keren uit, totdat u zeker weet dat de app probleemloos wordt hersteld.
-- Omdat elke app uniek is, moet u herstel plannen maken die zijn aangepast voor elke toepassing en een testfailover uitvoeren op elk van de apps.
-- Apps en hun afhankelijkheden worden regel matig gewijzigd. Voer elk kwar taal een testfailover voor elke app uit om ervoor te zorgen dat herstel plannen up-to-date zijn.
+- Voltooi altijd een testfailover op een app, voordat u een volledige failover uitvoert. Testfailovers helpen u om te controleren of de app op de herstelsite verschijnt.
+- Als je merkt dat je iets hebt gemist, activeer dan een clean-up en voer de testfailover opnieuw uit. 
+- Voer een testfailover meerdere keren uit, totdat u zeker weet dat de app soepel herstelt.
+- Omdat elke app uniek is, moet u herstelplannen maken die voor elke toepassing zijn aangepast en een testfailover uitvoeren op elk.
+- Apps en hun afhankelijkheden veranderen regelmatig. Voer elk kwartaal een testfailover uit voor elke app om ervoor te zorgen dat herstelplannen up-to-date zijn.
 
-    ![Scherm afbeelding van een voor beeld van een test herstel plan in Site Recovery](./media/recovery-plan-overview/rptest.png)
+    ![Schermafbeelding van een voorbeeldtestherstelplan in Siteherstel](./media/recovery-plan-overview/rptest.png)
 
-## <a name="watch-a-recovery-plan-video"></a>Een video van een herstel plan bekijken
+## <a name="watch-a-recovery-plan-video"></a>Bekijk een video van een herstelplan
 
-Bekijk een snelle voorbeeld video met een on-click failover voor een herstel plan voor een WordPress-app met twee lagen.
+Bekijk een snelle voorbeeldvideo met een failover op de muis voor een herstelplan voor een WordPress-app met twee lagen.
     
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
@@ -93,5 +93,5 @@ Bekijk een snelle voorbeeld video met een on-click failover voor een herstel pla
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Een herstel plan [maken](site-recovery-create-recovery-plans.md) .
-- [Voer](site-recovery-failover.md) failovers uit. 
+- [Maak](site-recovery-create-recovery-plans.md) een herstelplan.
+- [Run](site-recovery-failover.md) failovers. 

@@ -1,6 +1,6 @@
 ---
 title: Wat is Azure Machine Learning
-description: 'Overzicht van Azure Machine Learning: een geïntegreerde, end-to-end oplossing voor gegevens wetenschap voor professionele gegevens wetenschappers om geavanceerde analyse toepassingen te ontwikkelen, te experimenteren en te implementeren op Cloud schaal.'
+description: Overzicht van Azure Machine Learning - Een geïntegreerde, end-to-end data science-oplossing voor professionele gegevenswetenschappers om geavanceerde analysetoepassingen op cloudschaal te ontwikkelen, te experimenteren en te implementeren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,26 +9,26 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.openlocfilehash: b8dbbb2810277bef20cb3b9b47a63deeea3e0ff9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241610"
 ---
 # <a name="what-is-azure-machine-learning"></a>Wat is Azure Machine Learning?
 
-In dit artikel vindt u meer informatie over Azure Machine Learning, een cloud omgeving die u kunt gebruiken voor het trainen, implementeren, automatiseren, beheren en volgen van ML-modellen. 
+In dit artikel leert u over Azure Machine Learning, een cloudomgeving die u gebruiken om ML-modellen te trainen, implementeren, automatiseren, beheren en volgen. 
 
-Azure Machine Learning kunnen worden gebruikt voor elk soort machine learning, van klassieke ml tot diep gaande lessen, onder Super visie en zonder toezicht. Of u liever python-of R-code schrijft of opties voor nul code/laag code, zoals de [ontwerp functie](tutorial-designer-automobile-price-train-score.md), u kunt zeer nauw keurige machine learning en diep gaande modellen bouwen, trainen en bijhouden in een Azure machine learning-werkruimte. 
+Azure Machine Learning kan worden gebruikt voor elke vorm van machine learning, van klassieke ml tot deep learning, onder toezicht en zonder toezicht leren. Of u nu liever Python- of R-code of zero-code/low-code-opties zoals de [ontwerper](tutorial-designer-automobile-price-train-score.md)schrijft, u zeer nauwkeurige machine learning- en deep learning-modellen bouwen, trainen en bijhouden in een Azure Machine Learning Workspace. 
 
-Start training op uw lokale machine en schaal vervolgens naar de Cloud. 
+Begin met trainen op uw lokale machine en schaal vervolgens naar de cloud. 
 
-De service is ook compatibel met populaire open-source hulpprogram ma's, zoals PyTorch, tensor flow en scikit-learn.
+De dienst werkt ook samen met populaire open-source tools, zoals PyTorch, TensorFlow en scikit-learn.
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
 > [!Tip]
-> **Gratis proef versie.**  Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) . U ontvangt tegoed wat u kunt uitgeven aan Azure-services. Als uw tegoed op is, kunt u het account behouden en de [gratis Azure-services](https://azure.microsoft.com/free/) gebruiken. Er worden nooit kosten in rekening gebracht bij uw creditcard tenzij u de instellingen expliciet wijzigt en aangeeft dat u wilt betalen.
+> **Gratis proefperiode!**  Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning.](https://aka.ms/AMLFree) U ontvangt tegoed wat u kunt uitgeven aan Azure-services. Als uw tegoed op is, kunt u het account behouden en de [gratis Azure-services](https://azure.microsoft.com/free/) gebruiken. Er wordt nooit geld van uw creditcard afgeschreven, tenzij u uw instellingen zelf wijzigt en expliciet aangeeft dat u wilt betalen.
 
 
 ## <a name="what-is-machine-learning"></a>Wat is machine learning?
@@ -37,108 +37,108 @@ Machine learning is een techniek van gegevenswetenschap die computers in staat s
 
 Prognoses of voorspellingen op basis van machine learning kunnen apps en apparaten slimmer maken. Wanneer u bijvoorbeeld online winkelt, helpt machine learning op basis van wat u eerder hebt gekocht, bij het aanraden van andere producten waarvoor u mogelijk belangstelling hebt. Of wanneer uw creditcard wordt gebruikt, vergelijkt machine learning de transactie met een database van transacties om fraude te detecteren. En wanneer uw robotstofzuiger een kamer stofzuigt, helpt machine learning bij het besluiten wanneer de taak klaar is.
 
-## <a name="machine-learning-tools-to-fit-each-task"></a>Machine learning-hulpprogram ma's om aan elke taak te voldoen 
+## <a name="machine-learning-tools-to-fit-each-task"></a>Machine learning-tools die bij elke taak passen 
 
-Azure Machine Learning biedt alle hulpprogram ma's voor ontwikkel aars en gegevens wetenschappers die hun machine learning werk stromen nodig hebben, waaronder:
-+ De [Azure machine learning Designer](tutorial-designer-automobile-price-train-score.md) (preview): modules slepen en neerzetten om uw experimenten te bouwen en vervolgens pijp lijnen te implementeren.
+Azure Machine Learning biedt alle tools die ontwikkelaars en gegevenswetenschappers nodig hebben voor hun machine learning-workflows, waaronder:
++ De [Azure Machine Learning-ontwerper](tutorial-designer-automobile-price-train-score.md) (voorbeeld): drag-n-drop-modules om uw experimenten te bouwen en vervolgens pijplijnen te implementeren.
 
-+ Jupyter-notebooks: gebruik onze [voor beelden van notitie blokken](https://aka.ms/aml-notebooks) of maak uw eigen notitie blokken om te profiteren van onze <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK voor python</a> -voor beelden voor uw machine learning. 
++ Jupyter-notitieblokken: gebruik onze [voorbeeldnotitieblokken](https://aka.ms/aml-notebooks) of maak uw eigen notitieblokken om onze <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK voor Python-voorbeelden te</a> gebruiken voor uw machine learning. 
 
-+ R-scripts of-notebooks waarin u de <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK voor r</a> gebruikt voor het schrijven van uw eigen code of het gebruik van de R-modules in de ontwerp functie.
++ R-scripts of -notitieblokken waarin u de <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK voor R</a> gebruikt om uw eigen code te schrijven of de R-modules in de ontwerper te gebruiken.
 
-+ [Visual Studio code-extensie](tutorial-setup-vscode-extension.md)
++ [Visual Studio Code-extensie](tutorial-setup-vscode-extension.md)
 
 + [Machine learning-CLI](reference-azure-machine-learning-cli.md)
 
-+ Open source frameworks zoals PyTorch, tensor flow en scikit-Learn en nog veel meer
++ Open-source frameworks zoals PyTorch, TensorFlow en scikit-learn en nog veel meer
 
-U kunt zelfs [MLflow gebruiken om metrische gegevens bij te houden en modellen](how-to-use-mlflow.md) of Kubeflow te implementeren om [end-to-end werk stroom pijplijnen te bouwen](https://www.kubeflow.org/docs/azure/).
+U [MLflow](how-to-use-mlflow.md) zelfs gebruiken om statistieken bij te houden en modellen of Kubeflow te implementeren om [end-to-end workflowpijplijnen te bouwen.](https://www.kubeflow.org/docs/azure/)
 
 ## <a name="build-ml-models-in-python-or-r"></a>ML-modellen bouwen in Python of R
 
-Start training op uw lokale computer met behulp van de Azure Machine Learning <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">PYTHON SDK</a> of <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a>. Vervolgens kunt u uitschalen naar de Cloud. 
+Start met trainen op uw lokale machine met de Azure Machine Learning <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> of <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK.</a> Vervolgens u opschalen naar de cloud. 
 
 Dankzij de vele beschikbare [rekendoelen](how-to-set-up-training-targets.md) zoals Azure Machine Learning Compute en [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), en [geavanceerde afstemmingsservices van hyperparameters](how-to-tune-hyperparameters.md), kunt u sneller betere modellen bouwen, met de kracht van de cloud.
 
-U kunt [model training en-aanpassing ook automatiseren](tutorial-auto-train-models.md) met de SDK.
+U ook [modeltraining en tuning automatiseren](tutorial-auto-train-models.md) met de SDK.
 
-## <a name="build-ml-models-with-no-code-tools"></a>Bouw ML-modellen met hulpprogram ma's zonder code
+## <a name="build-ml-models-with-no-code-tools"></a>ML-modellen bouwen met hulpprogramma's zonder code
 
-Voor code-free of low-code training en implementatie kunt u het volgende proberen:
+Probeer het als volgt te trainen en implementeren voor codevrije of low-code training en implementatie:
 
-+ **Azure Machine Learning Designer (preview-versie)**
++ **Azure Machine Learning-ontwerper (voorbeeld)**
 
-  Gebruik de ontwerp functie voor het voorbereiden van gegevens, het trainen, testen, implementeren, beheren en bijhouden van machine learning modellen zonder code te schrijven. Er is geen programmering vereist. u kunt gegevens sets en modules visueel verbinden om uw model samen te stellen. Probeer de [ontwerp zelf studie](tutorial-designer-automobile-price-train-score.md).
+  Gebruik de ontwerper om gegevens voor te bereiden, te trainen, te testen, implementeren, beheren en bijhouden van machine learning-modellen zonder code te schrijven. Er is geen programmering vereist, u verbindt gegevenssets en modules visueel om uw model te construeren. Probeer de [designer tutorial](tutorial-designer-automobile-price-train-score.md).
 
-  Meer informatie vindt u in [het artikel overzicht van Azure machine learning Designer](concept-designer.md). 
+  Meer informatie vindt u in [het overzichtsartikel van Azure Machine Learning designer](concept-designer.md). 
 
-  ![Voor beeld van Azure Machine Learning Designer](./media/overview-what-is-azure-ml/designer-drag-and-drop.gif)
+  ![Voorbeeld van Azure Machine Learning-ontwerper](./media/overview-what-is-azure-ml/designer-drag-and-drop.gif)
 
-+ **Automatische machine learning gebruikers interface**
++ **Automatische machine learning-gebruikersinterface**
 
-  Meer informatie over het maken van [automatische ml-experimenten](tutorial-first-experiment-automated-ml.md) in de gebruiks vriendelijke interface. 
+  Leer hoe u [geautomatiseerde ML-experimenten maakt](tutorial-first-experiment-automated-ml.md) in de gebruiksvriendelijke interface. 
 
-  [navigatie deel venster van ![Azure Machine Learning Studio](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)
+  [![Navigatiedeelvenster azure Machine Learning-studio](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)
 
-## <a name="mlops-deploy--lifecycle-management"></a>MLOps: & levenscyclus beheer implementeren
-Wanneer u het juiste model hebt, kunt u het eenvoudig gebruiken in een webservice, op een IoT-apparaat of in Power BI. Zie het artikel [Hoe implementeren en waar](how-to-deploy-and-where.md) voor meer informatie.
+## <a name="mlops-deploy--lifecycle-management"></a>MLOps: implementeer & lifecycle management
+Wanneer u het juiste model hebt, u het eenvoudig gebruiken in een webservice, op een IoT-apparaat of bij Power BI. Zie het artikel [Hoe implementeren en waar](how-to-deploy-and-where.md) voor meer informatie.
 
-Vervolgens kunt u uw geïmplementeerde modellen beheren met behulp van de [Azure machine learning SDK voor python](https://aka.ms/aml-sdk), [Azure machine learning studio](https://ml.azure.com)of de [machine learning cli](reference-azure-machine-learning-cli.md).
+Vervolgens u uw geïmplementeerde modellen beheren met behulp van de [Azure Machine Learning SDK voor Python,](https://aka.ms/aml-sdk)Azure Machine [Learning-studio](https://ml.azure.com)of de [CLI voor machine learning.](reference-azure-machine-learning-cli.md)
 
-Deze modellen kunnen worden gebruikt en voor spellingen in [realtime](how-to-consume-web-service.md) of [asynchroon](how-to-use-parallel-run-step.md) in grote hoeveel heden gegevens worden geretourneerd.
+Deze modellen kunnen worden verbruikt en retourvoorspellingen in [real-time](how-to-consume-web-service.md) of [asynchroon](how-to-use-parallel-run-step.md) op grote hoeveelheden gegevens.
 
-En met geavanceerde [machine learning pijp lijnen](concept-ml-pipelines.md)kunt u samen werken aan elke stap van het voorbereiden van gegevens, het model leren en evalueren van een cursus, via implementatie. Met pijp lijnen kunt u het volgende doen:
+En met geavanceerde [machine learning-pijplijnen](concept-ml-pipelines.md)u samenwerken bij elke stap, van gegevensvoorbereiding, modeltraining en -evaluatie, tot implementatie. Met pijplijnen u:
 
-* Het end-to-end-machine learning proces automatiseren in de Cloud
-* Onderdelen opnieuw gebruiken en alleen stappen opnieuw uitvoeren als dat nodig is
-* In elke stap verschillende reken bronnen gebruiken
-* Batch Score taken uitvoeren
+* Automatiseer het end-to-end machine learning-proces in de cloud
+* Onderdelen opnieuw gebruiken en alleen stappen opnieuw uitvoeren wanneer dat nodig is
+* Verschillende rekenbronnen gebruiken in elke stap
+* Batchscoringtaken uitvoeren
 
-Als u scripts wilt gebruiken om uw machine learning werk stroom te automatiseren, biedt de [machine learning cli](reference-azure-machine-learning-cli.md) opdracht regel Programma's voor het uitvoeren van algemene taken, zoals het verzenden van een training of het implementeren van een model.
+Als u scripts wilt gebruiken om uw machine learning-workflow te automatiseren, biedt de [machine learning CLI](reference-azure-machine-learning-cli.md) opdrachtregelgereedschappen die veelvoorkomende taken uitvoeren, zoals het indienen van een trainingsrun of het implementeren van een model.
 
-Zie [volgende stappen](#next-steps)om aan de slag te gaan met Azure machine learning.
+Zie [Volgende stappen](#next-steps)om aan de slag te gaan met Azure Machine Learning.
 
-## <a name="integration-with-other-services"></a>Integratie met andere services
+## <a name="integration-with-other-services"></a>Integratie met andere diensten
 
-Azure Machine Learning werkt met andere services op het Azure-platform en kan ook worden geïntegreerd met open source-hulpprogram ma's zoals Git en MLFlow.
+Azure Machine Learning werkt met andere services op het Azure-platform en integreert ook met open source-tools zoals Git en MLFlow.
 
-+ Reken doelen zoals __Azure Kubernetes service__, __Azure container instances__, __Azure Databricks__, __Azure data Lake Analytics__en __Azure HDInsight__. Zie [Wat zijn reken doelen?](concept-compute-target.md)voor meer informatie over Compute-doelen.
-+ __Azure Event grid__. Zie [Azure machine learning-gebeurtenissen gebruiken](concept-event-grid-integration.md)voor meer informatie.
-+ __Azure monitor__. Zie [Monitoring Azure machine learning](monitor-azure-machine-learning.md)voor meer informatie.
-+ Gegevens archieven zoals __Azure Storage accounts__, __Azure data Lake Storage__, __Azure SQL database__, __Azure database for PostgreSQL__en __Azure open gegevens sets__. Zie voor meer informatie [toegang tot gegevens in azure Storage-services](how-to-access-data.md) en gegevens [sets maken met Azure open data sets](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets).
-+ __Virtuele netwerken van Azure__. Zie voor meer informatie [veilig experimenteren en dezicht in een virtueel netwerk](how-to-enable-virtual-network.md).
-+ __Azure-pijp lijnen__. Zie [machine learning modellen trainen en implementeren](/azure/devops/pipelines/targets/azure-machine-learning)voor meer informatie.
-+ __Git-opslagplaats logboeken__. Zie [Git-integratie](concept-train-model-git-integration.md)voor meer informatie.
-+ __MLFlow__. Zie voor meer informatie [MLflow voor het bijhouden van metrische gegevens en het implementeren van modellen](how-to-use-mlflow.md) 
-+ __Kubeflow__. Zie [end-to-end werk stroom pijplijnen bouwen](https://www.kubeflow.org/docs/azure/)voor meer informatie.
++ Compute-doelen zoals __Azure Kubernetes Service,__ __Azure Container Instances,__ __Azure Databricks,__ __Azure Data Lake Analytics__en __Azure HDInsight__. Zie [Wat zijn rekendoelen?](concept-compute-target.md)
++ __Azure-gebeurtenisraster__. Zie [Azure Machine Learning-gebeurtenissen consumeren](concept-event-grid-integration.md)voor meer informatie .
++ __Azure-monitor__. Zie [Azure Machine Learning controleren](monitor-azure-machine-learning.md)voor meer informatie.
++ Gegevensopslag zoals __Azure Storage-accounts,__ __Azure Data Lake Storage,__ __Azure SQL Database,__ __Azure Database voor PostgreSQL__en __Azure Open Datasets__. Zie [Access-gegevens in Azure-opslagservices](how-to-access-data.md) en [Gegevenssets maken met Azure Open Datasets](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets)voor meer informatie.
++ __Azure Virtual Networks__. Zie [Veilig experimenteren en gevolgtrekking in een virtueel netwerk](how-to-enable-virtual-network.md)voor meer informatie.
++ __Azure-pijplijnen__. Zie [Machine Learning-modellen trainen en implementeren](/azure/devops/pipelines/targets/azure-machine-learning)voor meer informatie.
++ __Git repository logs__. Zie [Git integration](concept-train-model-git-integration.md)voor meer informatie.
++ __MLFlow__. Zie [MLflow voor](how-to-use-mlflow.md) meer informatie om statistieken bij te houden en modellen te implementeren 
++ __Kubeflow__. Zie [end-to-end workflowpipelines maken voor](https://www.kubeflow.org/docs/azure/)meer informatie.
 
-### <a name="secure-communications"></a>Beveiligde communicatie
+### <a name="secure-communications"></a>Veilige communicatie
 
-Uw Azure Storage-account, compute-doelen en andere resources kunnen veilig in een virtueel netwerk worden gebruikt om modellen te trainen en de interferentie af te zetten. Zie voor meer informatie [veilig experimenteren en dezicht in een virtueel netwerk](how-to-enable-virtual-network.md).
+Uw Azure Storage-account, rekendoelen en andere resources kunnen veilig worden gebruikt in een virtueel netwerk om modellen te trainen en gevolgtrekkingen uit te voeren. Zie [Veilig experimenteren en gevolgtrekking in een virtueel netwerk](how-to-enable-virtual-network.md)voor meer informatie.
 
-## <a name="sku"></a>Basis & Enter prise-edities
+## <a name="basic--enterprise-editions"></a><a name="sku"></a>Basic & Enterprise-edities
 
-Azure Machine Learning biedt twee edities die zijn afgestemd op uw machine learning behoeften:
+Azure Machine Learning biedt twee edities die zijn afgestemd op uw machine learning-behoeften:
 + Basic (algemeen beschikbaar)
-+ Enter prise (preview-versie)
++ Enterprise (voorbeeld)
 
-Deze edities bepalen welke machine learning-hulpprogram ma's beschikbaar zijn voor ontwikkel aars en gegevens wetenschappers uit hun werk ruimte.   
+Deze edities bepalen welke machine learning-tools beschikbaar zijn voor ontwikkelaars en gegevenswetenschappers vanuit hun werkruimte.   
 
-Met eenvoudige werk ruimten kunt u Azure Machine Learning blijven gebruiken en betaalt u alleen voor de Azure-resources die worden verbruikt tijdens het machine learning proces. Enter prise Edition-werk ruimten worden alleen in rekening gebracht voor hun Azure-verbruik tijdens de preview-versie. Meer informatie over de beschik baarheid vindt u in de Azure Machine Learning [Edition overview & pagina met prijzen](https://azure.microsoft.com/pricing/details/machine-learning/). 
+Met basiswerkruimten u Azure Machine Learning blijven gebruiken en alleen betalen voor de Azure-resources die tijdens het machine learning-proces worden verbruikt. Werkruimten voor Enterprise Edition worden alleen in rekening gebracht voor hun Azure-verbruik terwijl de editie in een voorbeeld is. Meer informatie over wat er beschikbaar is in het overzicht van de Azure Machine [Learning-editie & prijspagina.](https://azure.microsoft.com/pricing/details/machine-learning/) 
 
-U wijst de editie toe wanneer u een werk ruimte maakt. Bovendien zijn bestaande werk ruimten geconverteerd naar de Basic-editie. De Basic-editie omvat alle functies die al algemeen beschikbaar waren vanaf oktober 2019. Alle experimenten in deze werk ruimten die zijn gemaakt met behulp van ENTER prise Edition-functies, blijven beschikbaar voor u in alleen-lezen totdat u een upgrade naar Enter prise uitvoert. Meer informatie over het [bijwerken van een Basic-werk ruimte naar Enter prise Edition](how-to-manage-workspace.md#upgrade). 
+U wijst de editie toe wanneer u een werkruimte maakt. En reeds bestaande werkruimten zijn voor u geconverteerd naar de Basic-editie. Basic edition bevat alle functies die al algemeen beschikbaar waren vanaf oktober 2019. Alle experimenten in de werkruimten die zijn gebouwd met enterprise-editiefuncties, blijven alleen voor u beschikbaar totdat u een upgrade uitvoert naar Enterprise. Meer informatie over het [upgraden van een Basiswerkruimte naar Enterprise-editie](how-to-manage-workspace.md#upgrade). 
 
-Klanten zijn verantwoordelijk voor de kosten die zijn gemaakt voor reken-en andere Azure-resources gedurende deze periode.
+Klanten zijn verantwoordelijk voor de kosten die gedurende deze periode zijn gemaakt voor compute en andere Azure-resources.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Maak uw eerste experiment met uw voorkeurs methode:
-  + [Python-notebooks gebruiken voor het trainen & implementeren van ML-modellen](tutorial-1st-experiment-sdk-setup.md)
-  + [R-korting gebruiken om & Deploy-modellen te trainen](tutorial-1st-r-experiment.md) 
-  + [Automatische machine learning gebruiken om & Deploy-modellen te trainen](tutorial-first-experiment-automated-ml.md) 
-  + [Gebruik de functie slepen & neerzetten van Designer om & implementeren te trainen](tutorial-designer-automobile-price-train-score.md) 
-  + [De machine learning CLI gebruiken om een model te trainen en te implementeren](tutorial-train-deploy-model-cli.md)
+- Maak uw eerste experiment met de methode van uw voorkeur:
+  + [Python-notitieblokken gebruiken om ML-modellen te trainen & implementeren](tutorial-1st-experiment-sdk-setup.md)
+  + [R Markdown gebruiken om ML-modellen & implementeren te trainen](tutorial-1st-r-experiment.md) 
+  + [Gebruik geautomatiseerde machine learning om ML-modellen & implementeren te trainen](tutorial-first-experiment-automated-ml.md) 
+  + [Gebruik de sleep-&-dropmogelijkheden van de ontwerper om & implementeren te trainen](tutorial-designer-automobile-price-train-score.md) 
+  + [Gebruik de machine learning CLI om een model te trainen en te implementeren](tutorial-train-deploy-model-cli.md)
 
 - Leer meer over [Machine Learning-pijplijnen](concept-ml-pipelines.md) om uw Machine Learning-scenario’s te bouwen, te optimaliseren en te beheren.
 
-- Lees het artikel uitgebreide [Azure machine learning architecturen en concepten](concept-azure-machine-learning-architecture.md) .
+- Lees het uitgebreide [Azure Machine Learning-architectuur en conceptenartikel.](concept-azure-machine-learning-architecture.md)

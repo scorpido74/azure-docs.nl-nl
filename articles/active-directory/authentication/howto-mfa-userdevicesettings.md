@@ -1,6 +1,6 @@
 ---
-title: Gebruikers en apparaten beheren Azure MFA-Azure Active Directory
-description: Hoe kunnen beheerders gebruikers instellingen wijzigen, zoals het forceren van de gebruikers om het controle proces opnieuw uit te voeren.
+title: Gebruikers en apparaten azure MFA beheren - Azure Active Directory
+description: Hoe kunnen beheerders gebruikersinstellingen wijzigen, zoals de gebruikers dwingen om het controleproces opnieuw uit te voeren.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,50 +12,50 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07845bb5b742b1bcfbb22d260457e9a8e16edab6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263710"
 ---
-# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Gebruikers instellingen beheren met Azure Multi-Factor Authentication in de Cloud
+# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Gebruikersinstellingen beheren met Azure Multi-Factor Authentication in de cloud
 
-Als beheerder kunt u de volgende gebruikers-en apparaatinstellingen beheren:
+Als beheerder u de volgende gebruikers- en apparaatinstellingen beheren:
 
-* Gebruikers moeten opnieuw contact methoden opgeven
-* App-wacht woorden verwijderen
+* Gebruikers verplichten om opnieuw contactmethoden op te geven
+* App-wachtwoorden verwijderen
 * MFA vereisen op alle vertrouwde apparaten
 
-## <a name="manage-authentication-methods"></a>Verificatie methoden beheren
+## <a name="manage-authentication-methods"></a>Verificatiemethoden beheren
 
-Als beheerder die de rol authenticatie beheerder toegewezen, kunt u vereisen dat gebruikers hun wacht woord opnieuw instellen, zich opnieuw registreren voor MFA of bestaande MFA-sessies intrekken vanuit hun gebruikers object.
+Als beheerder de rol Verificatiebeheerder heeft toegewezen, u gebruikers verplichten hun wachtwoord opnieuw in te stellen, zich opnieuw te registreren voor MFA of bestaande MFA-sessies uit hun gebruikersobject in te trekken.
 
-![Verificatie methoden beheren vanuit de Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
+![Verificatiemethoden beheren vanuit de Azure-portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer aan de linkerkant **Azure Active Directory** > **gebruikers** > **alle gebruikers**.
-1. Kies de gebruiker waarvoor u een actie wilt uitvoeren en selecteer **verificatie methoden**.
-   - **Wacht woord opnieuw instellen** stelt het wacht woord van de gebruiker opnieuw in en wijst een tijdelijk wacht woord toe dat moet worden gewijzigd bij de volgende aanmelding.
-   - **Vereisen dat het opnieuw registreren van MFA vereist** is zodat wanneer de gebruiker de volgende keer aanmeldt, wordt gevraagd om een nieuwe MFA-verificatie methode in te stellen.
-   - Met **MFA-sessies intrekken** worden de MFA-sessies van de gebruiker gewist en moeten ze MFA de volgende keer worden uitgevoerd door het beleid op het apparaat.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Selecteer aan de linkerkant **Azure Active Directory** > **Users** > **All users**.
+1. Kies de gebruiker waarop u een actie wilt uitvoeren en selecteer **Verificatiemethoden**.
+   - **Als wachtwoord opnieuw worden ingesteld,** wordt het wachtwoord van de gebruiker opnieuw ingesteld en wordt een tijdelijk wachtwoord toegewezen dat moet worden gewijzigd bij het volgende aanmeldingsformulier.
+   - **Vereisen Opnieuw registreren MFA** zal het zo maken dat wanneer de gebruiker zich de volgende keer aanmeldt, ze zullen worden gevraagd om een nieuwe MFA-authenticatiemethode in te stellen.
+   - **Mfa-sessies intrekken** wist de onthouden MFA-sessies van de gebruiker en vereist dat deze MFA uitvoert de volgende keer dat dit vereist is door het beleid op het apparaat.
 
-## <a name="delete-users-existing-app-passwords"></a>Bestaande app-wacht woorden van gebruikers verwijderen
+## <a name="delete-users-existing-app-passwords"></a>Gebruikers bestaande app-wachtwoorden verwijderen
 
-Met deze instelling worden alle app-wacht woorden verwijderd die een gebruiker heeft gemaakt. Niet-browser-apps die zijn gekoppeld aan deze app-wacht woorden, werken niet totdat er een nieuw app-wacht woord is gemaakt. Globale beheerders machtigingen zijn vereist om deze actie uit te voeren.
+Met deze instelling worden alle app-wachtwoorden die een gebruiker heeft gemaakt, verwijderd. Niet-browserapps die aan deze app-wachtwoorden zijn gekoppeld, werken niet meer totdat er een nieuw app-wachtwoord is gemaakt. Globale beheerdersmachtigingen zijn vereist om deze actie uit te voeren.
 
-### <a name="how-to-delete-users-existing-app-passwords"></a>Bestaande app-wacht woorden van gebruikers verwijderen
+### <a name="how-to-delete-users-existing-app-passwords"></a>Bestaande app-wachtwoorden voor gebruikers verwijderen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer aan de linkerkant **Azure Active Directory** > **gebruikers** > **alle gebruikers**.
-3. Selecteer aan de rechter kant **multi-factor Authentication** op de werk balk. De multi-factor Authentication-pagina wordt geopend.
-4. Schakel het selectie vakje in naast de gebruiker of gebruikers die u wilt beheren. Er wordt aan de rechter kant een lijst met opties voor snelle stappen weer gegeven.
-5. Selecteer **gebruikers instellingen beheren**.
-6. Schakel het selectie vakje in om **alle bestaande app-wacht woorden te verwijderen die door de geselecteerde gebruikers zijn gegenereerd**.
-   ![alle bestaande app-wacht woorden verwijderen](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Selecteer aan de linkerkant **Azure Active Directory** > **Users** > **All users**.
+3. Selecteer rechts **Multi-Factor Authentication** op de werkbalk. De pagina met meervoudige verificatie wordt geopend.
+4. Schakel het selectievakje in naast de gebruiker of gebruikers die u wilt beheren. Aan de rechterkant verschijnt een lijst met opties voor snelle stappen.
+5. Selecteer **Gebruikersinstellingen beheren**.
+6. Schakel het selectievakje in voor **Alle bestaande app-wachtwoorden die door de geselecteerde gebruikers zijn gegenereerd, verwijderen**.
+   ![Alle bestaande app-wachtwoorden verwijderen](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 7. Klik op **Opslaan**.
-8. Klik op **sluiten**.
+8. Klik **op sluiten**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het configureren van [Azure multi-factor Authentication-instellingen](howto-mfa-mfasettings.md)
-- Als uw gebruikers hulp nodig hebben, kunt u ze naar de [Gebruikers handleiding voor verificatie in twee stappen](../user-help/multi-factor-authentication-end-user.md) laten wijzen
+- Meer informatie over het [configureren van Azure Multi-Factor Authentication-instellingen](howto-mfa-mfasettings.md)
+- Als uw gebruikers hulp nodig hebben, wijst u deze naar de [gebruikershandleiding voor verificatie in twee stappen](../user-help/multi-factor-authentication-end-user.md)

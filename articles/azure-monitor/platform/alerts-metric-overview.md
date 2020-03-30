@@ -1,149 +1,158 @@
 ---
 title: Begrijpen hoe metrische waarschuwingen werken in Azure Monitor.
-description: Bekijk een overzicht van wat u met metrische waarschuwingen kunt doen en hoe ze werken in Azure Monitor.
-ms.date: 12/5/2019
+description: Krijg een overzicht van wat u doen met metrische waarschuwingen en hoe ze werken in Azure Monitor.
+ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 2f1734d30136be904aedf7d880922ba052130ec7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: b6d8bc69a407838025c5e78e0a1c773ab457c409
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79274916"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480229"
 ---
-# <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Begrijpen hoe metrische waarschuwingen werken in Azure Monitor
+# <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Begrijpen hoe waarschuwingen voor metrische gegevens werken in Azure Monitor
 
-Metrische waarschuwingen in Azure Monitor werken bovenop meerdere dimensies. Deze metrische gegevens zijn mogelijk [platform metrieken](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [aangepaste metrische gegevens](../../azure-monitor/platform/metrics-custom-overview.md), [populaire logboeken van Azure monitor geconverteerd naar metrische gegevens](../../azure-monitor/platform/alerts-metric-logs.md) en Application Insights metrische gegevens. Metrische waarschuwingen bepalen regel matig of er voor waarden in een of meer metrische time-series waar zijn en u wordt gewaarschuwd wanneer aan de evaluaties wordt voldaan. Metrische waarschuwingen zijn stateful, dat wil zeggen dat ze alleen meldingen verzenden wanneer de status wordt gewijzigd.
+Metrische waarschuwingen in Azure Monitor werken bovenop multidimensionale statistieken. Deze statistieken kunnen [platformstatistieken,](alerts-metric-near-real-time.md#metrics-and-dimensions-supported) [aangepaste statistieken,](../../azure-monitor/platform/metrics-custom-overview.md) [populaire logboeken van Azure Monitor zijn die zijn geconverteerd naar statistieken](../../azure-monitor/platform/alerts-metric-logs.md) en Statistieken voor Toepassingsstatistieken. Metrische waarschuwingen evalueren regelmatig om te controleren of de omstandigheden op een of meer metrische tijdreeksen waar zijn en stellen u op de hoogte wanneer aan de evaluaties is voldaan. Metrische waarschuwingen zijn stateful, dat wil zeggen, ze sturen alleen meldingen wanneer de status verandert.
 
 ## <a name="how-do-metric-alerts-work"></a>Hoe werken metrische waarschuwingen?
 
-U kunt een metrische waarschuwings regel definiëren door een doel resource op te geven die moet worden bewaakt, metrische naam, voorwaarde type (statisch of dynamisch) en de voor waarde (een operator en een drempel/gevoeligheid) en een actie groep die moet worden geactiveerd wanneer de waarschuwings regel wordt geactiveerd. Voorwaardentypen beïnvloeden de manier waarop drempelwaarden worden bepaald. Meer [informatie over de drempel waarde voor het type en gevoeligheids opties voor dynamische waarden](alerts-dynamic-thresholds.md).
+U een metrische waarschuwingsregel definiëren door een te controleren doelbron, metrische naam, voorwaardetype (statisch of dynamisch) en de voorwaarde (een operator en een drempel/gevoeligheid) en een actiegroep op te geven die moet worden geactiveerd wanneer de waarschuwingsregel wordt geactiveerd. Voorwaardentypen beïnvloeden de manier waarop drempelwaarden worden bepaald. [Meer informatie over het voorwaardetype dynamische drempels en gevoeligheidsopties](alerts-dynamic-thresholds.md).
 
-### <a name="alert-rule-with-static-condition-type"></a>Waarschuwings regel met statisch voorwaarde type
+### <a name="alert-rule-with-static-condition-type"></a>Waarschuwingsregel met statisch voorwaardetype
 
-Stel dat u als volgt een eenvoudige waarschuwings regel voor een statische drempel waarde hebt gemaakt:
+Stel dat u als volgt een eenvoudige statische drempelmetrische waarschuwingsregel hebt gemaakt:
 
-- Doel resource (de Azure-resource die u wilt bewaken): myVM
-- Metriek: percentage CPU
-- Voorwaarde type: statisch
-- Tijd aggregatie (statistiek dat wordt uitgevoerd boven onbewerkte meet waarden. Ondersteunde tijd aggregaties zijn min, Max, Gem, totaal, aantal): gemiddeld
-- Periode (het venster terugkijken waarover metrische waarden worden gecontroleerd): in de afgelopen 5 minuten
-- Frequentie (de frequentie waarmee met de metrische waarschuwing wordt gecontroleerd of aan de voor waarden wordt voldaan): 1 min.
+- Doelbron (de Azure-bron die u wilt controleren): myVM
+- Statistiek: Percentage CPU
+- Voorwaardetype: statisch
+- Tijdaggregatie (Statistiek die wordt uitgevoerd over ruwe metrische waarden. Ondersteunde tijdsaggregaties zijn Min, Max, Avg, Totaal, Aantal): Gemiddeld
+- Periode (Het terugblikvenster waarover metrische waarden worden gecontroleerd): In de afgelopen 5 minuten
+- Frequentie (de frequentie waarmee de metrische waarschuwing controleert of aan de voorwaarden is voldaan): 1 min
 - Operator: groter dan
-- Drempel waarde: 70
+- Drempel: 70
 
-Vanaf het moment dat de waarschuwings regel wordt gemaakt, wordt de monitor elke 1 minuut uitgevoerd en wordt gekeken naar metrische waarden voor de laatste 5 minuten en wordt gecontroleerd of het gemiddelde van die waarden 70 overschrijdt. Als aan de voor waarde wordt voldaan, is het gemiddelde percentage CPU voor de laatste 5 minuten hoger dan 70, de waarschuwings regel geactiveerd een geactiveerde melding. Als u een e-mail bericht of een actie voor een webhook hebt geconfigureerd in de actie groep die is gekoppeld aan de waarschuwings regel, ontvangt u een geactiveerde melding op beide.
+Vanaf het moment dat de waarschuwingsregel wordt gemaakt, wordt de monitor elke 1 minuten uitgevoerd en wordt de metrische waarden van de laatste 5 minuten bekeken en wordt gecontroleerd of het gemiddelde van die waarden hoger is dan 70. Als aan de voorwaarde is voldaan, dat wil zeggen dat het gemiddelde percentage CPU voor de laatste 5 minuten hoger is dan 70, wordt een geactiveerde melding geactiveerd. Als u een e-mail of een webhaakactie hebt geconfigureerd in de actiegroep die is gekoppeld aan de waarschuwingsregel, ontvangt u op beide een geactiveerde melding.
 
-Wanneer u meerdere voor waarden in één regel gebruikt, de regel ' and ' de voor waarden tegelijk.  Dat wil zeggen dat de waarschuwing wordt geactiveerd wanneer alle voor waarden in de waarschuwing worden geëvalueerd als waar en worden opgelost wanneer een van de voor waarden niet meer waar is. Een voor beeld van dit type waarschuwing is een waarschuwing wanneer ' CPU groter dan 90% ' en ' wachtrij lengte meer dan 300 items ' is. 
+Wanneer u meerdere voorwaarden in één regel gebruikt, "ands" de regel samen.  Dat wil zeggen, de waarschuwing branden wanneer alle voorwaarden in de waarschuwing te evalueren als waar en op te lossen wanneer een van de voorwaarden niet langer waar is. En voorbeeld van dit type waarschuwing zou alert zijn wanneer "CPU hoger dan 90%" en "wachtrij lengte is meer dan 300 items". 
 
-### <a name="alert-rule-with-dynamic-condition-type"></a>Waarschuwings regel met dynamisch type voor waarde
+### <a name="alert-rule-with-dynamic-condition-type"></a>Waarschuwingsregel met dynamisch voorwaardetype
 
-Stel dat u een regel voor metrische waarschuwing voor eenvoudige dynamische drempel waarden hebt gemaakt:
+Stel dat u als volgt een eenvoudige regel dynamische drempelwaarden hebt gemaakt:
 
-- Doel resource (de Azure-resource die u wilt bewaken): myVM
-- Metriek: percentage CPU
-- Voorwaarde type: dynamisch
-- Tijd aggregatie (statistiek dat wordt uitgevoerd boven onbewerkte meet waarden. Ondersteunde tijd aggregaties zijn min, Max, Gem, totaal, aantal): gemiddeld
-- Periode (het venster terugkijken waarover metrische waarden worden gecontroleerd): in de afgelopen 5 minuten
-- Frequentie (de frequentie waarmee met de metrische waarschuwing wordt gecontroleerd of aan de voor waarden wordt voldaan): 1 min.
+- Doelbron (de Azure-bron die u wilt controleren): myVM
+- Statistiek: Percentage CPU
+- Voorwaardetype: Dynamisch
+- Tijdaggregatie (Statistiek die wordt uitgevoerd over ruwe metrische waarden. Ondersteunde tijdsaggregaties zijn Min, Max, Avg, Totaal, Aantal): Gemiddeld
+- Periode (Het terugblikvenster waarover metrische waarden worden gecontroleerd): In de afgelopen 5 minuten
+- Frequentie (de frequentie waarmee de metrische waarschuwing controleert of aan de voorwaarden is voldaan): 1 min
 - Operator: groter dan
-- Gevoeligheid: gemiddeld
-- Alle Peri Oden bekijken: 4
-- Aantal schendingen: 4
+- Gevoeligheid: Gemiddeld
+- Terugblik periodes: 4
+- Aantal overtredingen: 4
 
-Zodra de waarschuwings regel is gemaakt, krijgen de dynamische drempel waarden machine learning-algoritme historische gegevens te zien die beschikbaar zijn, wordt de drempel waarde berekend die het beste past bij het gedrags patroon van de metrische serie en doorlopend meer op basis van nieuwe gegevens, zodat de de drempel waarde is nauw keuriger.
+Zodra de waarschuwingsregel is gemaakt, verwerft het machine learning-algoritme Dynamische drempels historische gegevens die beschikbaar zijn, berekent u de drempelwaarde die het beste past bij het gedragspatroon van de metrische reeks en leert het voortdurend op basis van nieuwe gegevens om de drempel nauwkeuriger.
 
-Vanaf het moment dat de waarschuwings regel wordt gemaakt, wordt de monitor elke 1 minuut uitgevoerd en wordt de waarde van de waarden in de afgelopen 20 minuten genoteerd in vijf minuten en wordt gecontroleerd of het gemiddelde van de periode waarden in elk van de vier Peri Oden de verwachte drempel overschrijdt. Als er wordt voldaan aan de voor waarde, wordt het gemiddelde percentage CPU in de afgelopen 20 minuten (vier 5 minuten Peri Oden), ten opzichte van het verwachte gedrag vier keer, de waarschuwings regel geactiveerd met een geactiveerde melding. Als u een e-mail bericht of een actie voor een webhook hebt geconfigureerd in de actie groep die is gekoppeld aan de waarschuwings regel, ontvangt u een geactiveerde melding op beide.
+Vanaf het moment dat de waarschuwingsregel wordt gemaakt, wordt de monitor elke 1 min uitgevoerd en wordt de metrische waarden in de laatste 20 minuten gegroepeerd in perioden van 5 minuten en wordt gecontroleerd of het gemiddelde van de periodewaarden in elk van de 4 perioden de verwachte drempel overschrijdt. Als aan de voorwaarde is voldaan, dat wil zeggen dat de gemiddelde CPU-percentage in de laatste 20 minuten (vier perioden van 5 minuten) vier keer van verwacht gedrag is afgeweken, wordt een geactiveerde melding geactiveerd. Als u een e-mail of een webhaakactie hebt geconfigureerd in de actiegroep die is gekoppeld aan de waarschuwingsregel, ontvangt u op beide een geactiveerde melding.
 
-### <a name="view-and-resolution-of-fired-alerts"></a>Geactiveerde waarschuwingen weer geven en oplossen
+### <a name="view-and-resolution-of-fired-alerts"></a>Het weergeven en oplossen van ontslagen waarschuwingen
 
-De bovenstaande voor beelden van het starten van waarschuwings regels kunnen ook worden weer gegeven in de Azure Portal op de Blade **alle waarschuwingen** .
+De bovenstaande voorbeelden van het afvuren van waarschuwingsregels kunnen ook worden weergegeven in de Azure-portal in het blade **Alle waarschuwingen.**
 
-Zeg het gebruik op ' myVM ' blijft boven de drempel waarde bij volgende controles. de waarschuwings regel wordt niet meer geactiveerd totdat de voor waarden zijn opgelost.
+Stel dat het gebruik op "myVM" blijft boven de drempel in de volgende controles, zal de waarschuwingsregel niet opnieuw branden totdat de voorwaarden zijn opgelost.
 
-Na enige tijd wordt het gebruik op ' myVM ' weer gegeven op normaal (onder de drempel waarde). De waarschuwings regel controleert de voor waarde voor twee keer dat er een opgeloste melding wordt verzonden. De waarschuwings regel verzendt een opgelost/gedeactiveerd bericht wanneer niet wordt voldaan aan de waarschuwings voorwaarde voor drie opeenvolgende Peri Oden om ruis in het geval van gaat en neer-voor waarden te verminderen.
+Na enige tijd, het gebruik op "myVM" komt terug naar normaal (gaat onder de drempel). De waarschuwingsregel controleert de voorwaarde nog twee keer om een opgeloste melding uit te sturen. De waarschuwingsregel stuurt een opgelost/gedeactiveerd bericht wanneer drie opeenvolgende perioden niet aan de waarschuwingsvoorwaarde wordt voldaan om ruis te verminderen in geval van klapperende omstandigheden.
 
-Wanneer het opgeloste bericht via webhooks of e-mail wordt verzonden, wordt de status van het waarschuwings exemplaar (Monitor status) in Azure Portal ook ingesteld op opgelost.
+Aangezien de opgeloste melding wordt verzonden via webhaken of e-mail, is de status van de waarschuwingsinstantie (de zogenaamde monitorstatus) in Azure-portal ook ingesteld op opgelost.
 
-### <a name="using-dimensions"></a>Dimensies gebruiken
+### <a name="using-dimensions"></a>Afmetingen gebruiken
 
-Metrische waarschuwingen in Azure Monitor bieden ook ondersteuning voor het bewaken van meerdere combi Naties van dimensie waarden met één regel. Laten we weten waarom u meerdere dimensie combinaties kunt gebruiken met behulp van een voor beeld.
+Metrische waarschuwingen in Azure Monitor ondersteunen ook het bewaken van meerdere dimensionswaardecombinaties met één regel. Laten we begrijpen waarom u meerdere dimensiecombinaties gebruiken met behulp van een voorbeeld.
 
-Stel dat u een App Service abonnement hebt voor uw website. U het CPU-gebruik wilt bewaken op meerdere exemplaren waarop uw website/app wordt uitgevoerd. U kunt dit als volgt doen met behulp van een metrische waarschuwings regel:
+Stel dat u een App Service-abonnement voor uw website hebt. U wilt het CPU-gebruik controleren op meerdere exemplaren waarop uw website/app wordt uitgevoerd. U dat als volgt doen met een metrische waarschuwingsregel:
 
-- Doel resource: myAppServicePlan
-- Metriek: percentage CPU
-- Voorwaarde type: statisch
+- Doelbron: myAppServicePlan
+- Statistiek: Percentage CPU
+- Voorwaardetype: statisch
 - Dimensies
   - Instantie = InstanceName1, InstanceName2
-- Tijd aggregatie: gemiddeld
-- Period: in de afgelopen 5 minuten
-- Frequentie: 1 min.
-- Operator: GreaterThan
-- Drempel waarde: 70
+- Tijdaggregatie: Gemiddeld
+- Periode: In de laatste 5 minuten
+- Frequentie: 1 min
+- Operator: Groter dan
+- Drempel: 70
 
-Net als voorheen controleert deze regel of het gemiddelde CPU-gebruik voor de laatste 5 minuten 70% overschrijdt. Met dezelfde regel kunt u echter twee exemplaren bewaken waarop uw website wordt uitgevoerd. Elk exemplaar wordt afzonderlijk bewaakt en u ontvangt meldingen afzonderlijk.
+Net als voorheen, deze regel controleert als de gemiddelde CPU-gebruik voor de laatste 5 minuten meer dan 70%. Met dezelfde regel u echter twee exemplaren controleren waarop uw website wordt uitgevoerd. Elk exemplaar wordt individueel gecontroleerd en u ontvangt meldingen afzonderlijk.
 
-Stel dat u een web-app hebt die een enorme vraag ziet, en u moet meer exemplaren toevoegen. Met de bovenstaande regel worden nog steeds slechts twee exemplaren gecontroleerd. U kunt echter een regel als volgt maken:
+Stel dat u een web-app die ziet enorme vraag en je moet meer exemplaren toe te voegen. De bovenstaande regel controleert nog steeds slechts twee exemplaren. U echter een regel als volgt maken:
 
-- Doel resource: myAppServicePlan
-- Metriek: percentage CPU
-- Voorwaarde type: statisch
+- Doelbron: myAppServicePlan
+- Statistiek: Percentage CPU
+- Voorwaardetype: statisch
 - Dimensies
   - Instantie = *
-- Tijd aggregatie: gemiddeld
-- Period: in de afgelopen 5 minuten
-- Frequentie: 1 min.
-- Operator: GreaterThan
-- Drempel waarde: 70
+- Tijdaggregatie: Gemiddeld
+- Periode: In de laatste 5 minuten
+- Frequentie: 1 min
+- Operator: Groter dan
+- Drempel: 70
 
-Met deze regel worden alle waarden van het exemplaar automatisch gecontroleerd, d.w.z. u kunt uw instanties bewaken terwijl ze worden weer gegeven zonder dat u uw metrische waarschuwings regel opnieuw hoeft te wijzigen.
+Deze regel controleert automatisch alle waarden voor de instantie d.w.z. u uw instanties controleren wanneer ze naar boven komen zonder dat u uw metrische waarschuwingsregel opnieuw hoeft te wijzigen.
 
-Bij het bewaken van meerdere dimensies kan de regel waarschuwings drempelwaarde voor dynamische gegevens aangepaste drempel waarden maken voor honderden metrische reeksen per keer. Dynamische drempel waarden leiden tot minder waarschuwings regels om te beheren en aanzienlijke tijd besparen op het beheer en het maken van waarschuwings regels.
+Bij het bewaken van meerdere dimensies kan de regel dynamische drempelwaarden voor honderden metrische reeksen tegelijk maken. Dynamische drempels resulteren in minder waarschuwingsregels om te beheren en aanzienlijke tijdsbesparing op het beheer en het maken van waarschuwingsregels.
 
-Stel dat u een web-app hebt met veel instanties en u niet weet wat de meest geschikte drempel waarde is. In de bovenstaande regels wordt altijd de drempel waarde van 70% gebruikt. U kunt echter een regel als volgt maken:
+Stel dat u een web-app met veel exemplaren en je weet niet wat de meest geschikte drempel is. De bovenstaande regels zullen altijd gebruik maken van een drempel van 70%. U echter een regel als volgt maken:
 
-- Doel resource: myAppServicePlan
-- Metriek: percentage CPU
-- Voorwaarde type: dynamisch
+- Doelbron: myAppServicePlan
+- Statistiek: Percentage CPU
+- Voorwaardetype: Dynamisch
 - Dimensies
   - Instantie = *
-- Tijd aggregatie: gemiddeld
-- Period: in de afgelopen 5 minuten
-- Frequentie: 1 min.
-- Operator: GreaterThan
-- Gevoeligheid: gemiddeld
-- Navolgende Peri Oden weer geven: 1
-- Aantal schendingen: 1
+- Tijdaggregatie: Gemiddeld
+- Periode: In de laatste 5 minuten
+- Frequentie: 1 min
+- Operator: Groter dan
+- Gevoeligheid: Gemiddeld
+- Terugblik periodes: 1
+- Aantal overtredingen: 1
 
-Deze regel controleert of het gemiddelde CPU-gebruik voor de laatste 5 minuten het verwachte gedrag voor elk exemplaar overschrijdt. Met dezelfde regel kunt u exemplaren controleren wanneer deze worden weer gegeven zonder dat u uw metrische waarschuwings regel opnieuw hoeft te wijzigen. Elk exemplaar krijgt een drempel waarde die past bij het gedrags patroon van de metrische reeks en verandert voortdurend op basis van nieuwe gegevens, zodat de drempel nauw keuriger wordt. Net als voorheen wordt elk exemplaar afzonderlijk bewaakt en ontvangt u meldingen afzonderlijk.
+Deze regel houdt in of het gemiddelde CPU-gebruik van de afgelopen 5 minuten het verwachte gedrag voor elke instantie overschrijdt. Dezelfde regel die u controleren als deze worden opgesteld zonder dat u uw metrische waarschuwingsregel opnieuw hoeft te wijzigen. Elke instantie krijgt een drempelwaarde die past bij het gedragspatroon van de metrische reeks en verandert voortdurend op basis van nieuwe gegevens om de drempel nauwkeuriger te maken. Net als voorheen wordt elk exemplaar afzonderlijk gecontroleerd en ontvangt u meldingen afzonderlijk.
 
-Het verhogen van de doorlopende Peri Oden en het aantal schendingen kan er ook toe leiden dat waarschuwingen worden gefilterd op alleen waarschuwingen voor uw definitie van een aanzienlijke afwijking. Meer [informatie over geavanceerde opties voor dynamische drempel waarden](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
+Het verhogen van de terugkijkperioden en het aantal overtredingen kunnen ook het filteren van waarschuwingen mogelijk maken om alleen te waarschuwen voor uw definitie van een significante afwijking. [Meer informatie over geavanceerde dynamische drempels .](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean)
 
-## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Bewaking op schaal met behulp van metrische waarschuwingen in Azure Monitor
+## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Bewaken op schaal met metrische waarschuwingen in Azure Monitor
 
-Tot nu toe hebt u gezien hoe één metrische waarschuwing kan worden gebruikt om een of meer metrische time-series te bewaken die betrekking hebben op één Azure-resource. Vaak wilt u dezelfde waarschuwings regel op veel resources Toep assen. Azure Monitor biedt ook ondersteuning voor het bewaken van meerdere resources (van hetzelfde type) met één metrische waarschuwings regel, voor resources die zich in dezelfde Azure-regio bevinden. Deze functie wordt momenteel alleen ondersteund in de open bare Azure-Cloud en alleen voor virtuele machines, SQL server-data bases, elastische Pools en data Box edge-apparaten van SQL Server. Deze functie is ook alleen beschikbaar voor platform metrieken en wordt niet ondersteund voor aangepaste metrische gegevens.
+Tot nu toe hebt u gezien hoe een enkele metrische waarschuwing kan worden gebruikt om een of meer metrische tijdreeksen met betrekking tot één Azure-bron te controleren. Vaak wilt u mogelijk dezelfde waarschuwingsregel die op veel resources wordt toegepast. Azure Monitor ondersteunt ook het bewaken van meerdere resources (van hetzelfde type) met één metrische waarschuwingsregel, voor resources die in dezelfde Azure-regio bestaan. 
 
-U kunt op een van de volgende drie manieren het bewakings bereik opgeven voor één metrische waarschuwings regel:
+Deze functie wordt momenteel ondersteund voor platformstatistieken (geen aangepaste statistieken) voor de volgende services in de volgende Azure-clouds:
 
-- Als een lijst met virtuele machines in één Azure-regio binnen een abonnement
-- alle virtuele machines (in één Azure-regio) in een of meer resource groepen in een abonnement
+| Service | Openbaar Azure | Overheid | China |
+|:--------|:--------|:--------|:--------|
+| Virtuele machines  | **Ja** | Nee | Nee |
+| SQL-serverdatabases | **Ja** | **Ja** | Nee |
+| Elastische groepen van SQL-server | **Ja** | **Ja** | Nee |
+| Randapparaten voor gegevensvakrand | **Ja** | **Ja** | Nee |
+
+U het bereik van de bewaking op drie manieren opgeven met één metrische waarschuwingsregel. Bij virtuele machines u bijvoorbeeld het bereik opgeven als:  
+
+- een lijst met virtuele machines in één Azure-regio binnen een abonnement
+- alle virtuele machines (in één Azure-regio) in een of meer resourcegroepen in een abonnement
 - alle virtuele machines (in één Azure-regio) in één abonnement
 
-Het maken van metrische waarschuwings regels waarmee meerdere resources worden bewaakt, is vergelijkbaar met [het maken van een andere metrische waarschuwing](alerts-metric.md) waarmee één resource wordt gecontroleerd. Alleen een verschil is dat u alle resources selecteert die u wilt bewaken. U kunt deze regels ook maken via [Azure Resource Manager sjablonen](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). U ontvangt afzonderlijke meldingen voor elke bewaakte resource.
+Het maken van metrische waarschuwingsregels die meerdere resources bewaken is als [het maken van een andere metrische waarschuwing](alerts-metric.md) die één resource bewaakt. Het enige verschil is dat u alle resources selecteert die u wilt controleren. U deze regels ook maken via [Azure Resource Manager-sjablonen.](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources) U ontvangt individuele meldingen voor elke bewaakte resource.
 
-## <a name="typical-latency"></a>Normale latentie
+## <a name="typical-latency"></a>Typische latentie
 
-Voor metrische waarschuwingen krijgt u doorgaans binnen vijf minuten een melding als u de frequentie van de waarschuwings regel instelt op 1 min. In het geval van een zware belasting voor meldings systemen ziet u mogelijk een langere latentie.
+Voor metrische waarschuwingen ontvangt u meestal binnen 5 minuten een melding als u de waarschuwingsregelfrequentie op 1 min instelt. In geval van zware belasting voor meldingssystemen ziet u mogelijk een langere latentie.
 
-## <a name="supported-resource-types-for-metric-alerts"></a>Ondersteunde resource typen voor metrische waarschuwingen
+## <a name="supported-resource-types-for-metric-alerts"></a>Ondersteunde resourcetypen voor metrische waarschuwingen
 
-In dit [artikel](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)vindt u de volledige lijst met ondersteunde resource typen.
+In dit [artikel](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)vindt u de volledige lijst met ondersteunde brontypen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie over het maken, weer geven en beheren van metrische waarschuwingen in azure](alerts-metric.md)
-- [Meer informatie over het implementeren van metrische waarschuwingen met behulp van Azure Resource Manager sjablonen](../../azure-monitor/platform/alerts-metric-create-templates.md)
-- [Meer informatie over actie groepen](action-groups.md)
-- [Meer informatie over het type voor waarde van dynamische drempel waarden](alerts-dynamic-thresholds.md)
+- [Meer informatie over het maken, weergeven en beheren van metrische waarschuwingen in Azure](alerts-metric.md)
+- [Informatie over het implementeren van metrische waarschuwingen met Azure Resource Manager-sjablonen](../../azure-monitor/platform/alerts-metric-create-templates.md)
+- [Meer informatie over actiegroepen](action-groups.md)
+- [Meer informatie over het voorwaardetype Dynamische drempels](alerts-dynamic-thresholds.md)

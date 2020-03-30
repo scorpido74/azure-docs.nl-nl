@@ -8,20 +8,18 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 717bf922ac600242892d86ad6b58d80b36a0710e
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: 3d0bd5d6403264ae6c71b43468b61930bcf6b86c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79299491"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79504369"
 ---
-Voor Premium Ssd's, Standard Ssd's en Standard Hdd's worden alleen de volgende regio's ondersteund door de klant beheerde sleutels:
+Voor premium SSD's, standaard SSD's en standaard HDD's ondersteunen alleen de volgende regio's momenteel door de klant beheerde toetsen:
 
-- Beschikbaar als een GA aanbieding in VS-Oost, VS-West 2, Zuid-Centraal VS, UK-zuid regio's.
-- Beschikbaar als open bare preview in de regio's vs-West-Centraal, VS-Oost 2, Canada-centraal en Europa-noord.
+- Beschikbaar als GA-aanbieding in de openbare regio's en Azure Government-regio's.
 
-
-Voor Ultra disks ondersteunen alleen de volgende regio's door de klant beheerde sleutels als een GA aanbieding:
+Voor ultraschijven ondersteunen alleen de volgende regio's door de klant beheerde sleutels als een GA-aanbieding:
 
 - VS - oost
 - VS - west 2

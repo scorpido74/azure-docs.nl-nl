@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen met een object dat niet wordt gesynchroniseerd met Azure Active Directory | Microsoft Docs '
-description: Problemen oplossen met een object dat niet wordt gesynchroniseerd met Azure Active Directory.
+title: Problemen oplossen met een object dat niet wordt gesynchroniseerd met Azure Active Directory | Microsoft Docs'
+description: Problemen oplossen met een object dat niet synchroniseert met Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,197 +17,197 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 931865803328189d89c0fbae15caa801c3f7f7c6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79253531"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Problemen oplossen met een object dat niet synchroniseert met Azure Active Directory
 
-Als een object niet op de verwachte manier wordt gesynchroniseerd met Microsoft Azure Active Directory (Azure AD), kan dit verschillende oorzaken hebben. Als u een e-mail bericht van Azure AD hebt ontvangen of als u de fout in Azure AD Connect Health ziet, lees dan in plaats daarvan [problemen oplossen tijdens de synchronisatie](tshoot-connect-sync-errors.md) . Maar als u een probleem oplost waarbij het object zich niet in azure AD bevindt, is dit artikel voor u. Hierin wordt beschreven hoe u fouten kunt vinden in het on-premises onderdeel Azure AD Connect synchronisatie.
+Als een object niet synchroniseert zoals verwacht met Microsoft Azure Active Directory (Azure AD), kan dit om verschillende redenen zijn. Als u een foute-mail van Azure AD hebt ontvangen of als u de fout ziet in Azure AD Connect-status, leest u in plaats daarvan [fouten oplossen tijdens synchronisatie.](tshoot-connect-sync-errors.md) Maar als u een probleem oplost waarbij het object zich niet in Azure AD bevindt, is dit artikel iets voor u. Hierin wordt beschreven hoe u fouten vinden in de on-premises synchronisatie van Azure AD Connect.
 
 >[!IMPORTANT]
->Voor Azure AD Connect-implementatie met versie 1.1.749.0 of hoger gebruikt u de [taak probleem oplossing](tshoot-connect-objectsync.md) in de wizard om problemen met het synchroniseren van objecten op te lossen. 
+>Gebruik voor Azure AD Connect-implementatie met versie 1.1.749.0 of hoger de [taak voor het oplossen van problemen](tshoot-connect-objectsync.md) met het oplossen van objecten in de wizard om problemen met het synchroniseren van objecten op te lossen. 
 
-## <a name="synchronization-process"></a>Synchronisatie proces
+## <a name="synchronization-process"></a>Synchronisatieproces
 
-Voordat we synchronisatie problemen onderzoeken, begrijpen we het Azure AD Connect synchronisatie proces:
+Voordat we synchronisatieproblemen onderzoeken, laten we het synchronisatieproces van Azure AD Connect begrijpen:
 
-  ![Diagram van Azure AD Connect synchronisatie proces](./media/tshoot-connect-object-not-syncing/syncingprocess.png)
+  ![Diagram van Azure AD Connect-synchronisatieproces](./media/tshoot-connect-object-not-syncing/syncingprocess.png)
 
 ### <a name="terminology"></a>**Terminologie**
 
-* **CS:** Connector ruimte, een tabel in een Data Base
-* **Mv:** Omgekeerde, een tabel in een Data Base
+* **CS:** Verbindingsruimte, een tabel in een database
+* **MV:** Metaverse, een tabel in een database
 
-### <a name="synchronization-steps"></a>**Synchronisatie stappen**
-Het synchronisatie proces bestaat uit de volgende stappen:
+### <a name="synchronization-steps"></a>**Synchronisatiestappen**
+Het synchronisatieproces omvat de volgende stappen:
 
-1. **Importeren uit AD:** Active Directory objecten worden in de Active Directory CS gebracht.
+1. **Importeren uit AD:** Active Directory-objecten worden in active directory CS gebracht.
 
-2. **Importeren vanuit Azure AD:** Azure AD-objecten worden binnengebracht in azure AD CS.
+2. **Importeren uit Azure AD:** Azure AD-objecten worden naar de Azure AD CS gebracht.
 
-3. **Synchronisatie:** Binnenkomende synchronisatie regels en regels voor uitgaande synchronisatie worden uitgevoerd in volg orde van prioriteits nummer, van lager naar hoger. Als u de synchronisatie regels wilt weer geven, gaat u naar de editor voor synchronisatie regels van de bureaublad toepassingen. De binnenkomende synchronisatie regels brengen gegevens over van CS naar MV. Met de regels voor uitgaande synchronisatie worden gegevens verplaatst van MV naar CS.
+3. **Synchronisatie:** Binnenkomende synchronisatieregels en uitgaande synchronisatieregels worden uitgevoerd in de volgorde van het voorrangsgetal, van lager naar hoger. Als u de synchronisatieregels wilt weergeven, gaat u naar de editor voor synchronisatieregels vanuit de bureaubladtoepassingen. De binnenkomende synchronisatieregels brengen gegevens van CS naar MV. De uitgaande synchronisatieregels verplaatsen gegevens van MV naar CS.
 
-4. **Exporteren naar AD:** Na het synchroniseren worden objecten uit de Active Directory-CS geëxporteerd naar Active Directory.
+4. **Exporteren naar AD:** Na synchronisatie worden objecten geëxporteerd van active directory CS naar Active Directory.
 
-5. **Exporteren naar Azure AD:** Na het synchroniseren worden objecten van Azure AD CS geëxporteerd naar Azure AD.
+5. **Exporteren naar Azure AD:** Na synchronisatie worden objecten geëxporteerd van het Azure AD CS naar Azure AD.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als u de fouten wilt vinden, bekijkt u een aantal verschillende locaties in de volgende volg orde:
+Als u de fouten wilt vinden, bekijkt u een paar verschillende plaatsen in de volgende volgorde:
 
-1. De [bewerkings logboeken](#operations) voor het vinden van fouten die zijn geïdentificeerd door de synchronisatie-engine tijdens het importeren en synchroniseren.
-2. De [connector ruimte](#connector-space-object-properties) om ontbrekende objecten en synchronisatie fouten te vinden.
-3. De [tekst](#metaverse-object-properties) die te maken heeft met gegevens problemen.
+1. De [bewerking wordt logboeken](#operations) gevonden om fouten te vinden die zijn geïdentificeerd door de synchronisatie-engine tijdens het importeren en synchroniseren.
+2. De [verbindingsruimte](#connector-space-object-properties) voor het vinden van ontbrekende objecten en synchronisatiefouten.
+3. De [metaverse](#metaverse-object-properties) om gegevensgerelateerde problemen te vinden.
 
-Start [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) voordat u begint met deze stappen.
+Start [Synchronisatieservicebeheer](how-to-connect-sync-service-manager-ui.md) voordat u met deze stappen begint.
 
 ## <a name="operations"></a>Bewerkingen
-Op het tabblad **bewerkingen** in Synchronization Service Manager kunt u beginnen met het oplossen van problemen. Op dit tabblad worden de resultaten van de meest recente bewerkingen weer gegeven. 
+Op het tabblad **Bewerkingen** in Synchronisatieservicebeheer moet u beginnen met het oplossen van problemen. Op dit tabblad worden de resultaten van de meest recente bewerkingen weergegeven. 
 
-![Scherm afbeelding van Synchronization Service Manager, tabblad weer geven van bewerkingen](./media/tshoot-connect-object-not-syncing/operations.png)  
+![Schermafbeelding van Synchronisatieservicebeheer, waarop het tabblad Bewerkingen is geselecteerd](./media/tshoot-connect-object-not-syncing/operations.png)  
 
-In het bovenste gedeelte van het tabblad **bewerkingen** worden alle uitvoeringen in chronologische volg orde weer gegeven. Standaard houdt het operations-logboek informatie over de afgelopen zeven dagen, maar deze instelling kan worden gewijzigd met de [scheduler](how-to-connect-sync-feature-scheduler.md). Zoek naar een wille keurige uitvoering die geen **succes** status weergeeft. U kunt de sorteer volgorde wijzigen door te klikken op de kopteksten.
+De bovenste helft van het tabblad **Bewerkingen** toont alle runs in chronologische volgorde. Standaard houdt het logboek van bewerkingen informatie over de afgelopen zeven dagen bij, maar deze instelling kan worden gewijzigd met de [planner](how-to-connect-sync-feature-scheduler.md). Kijk voor een run die niet een **succes** status tonen. U de sortering wijzigen door op de kopteksten te klikken.
 
-De kolom **status** bevat de belangrijkste informatie en toont het ernstigste probleem voor een uitvoering. Hier volgt een korte samen vatting van de meest voorkomende statussen in volg orde van prioriteit van onderzoek (waarbij * duidt op meerdere mogelijke fout teken reeksen).
+De kolom **Status** bevat de belangrijkste informatie en toont het ernstigste probleem voor een run. Hier vindt u een korte samenvatting van de meest voorkomende statussen in volgorde van prioriteit voor onderzoek (waarbij * verschillende mogelijke fouttekenreeksen aangeeft).
 
 | Status | Opmerking |
 | --- | --- |
-| gestopt-* |De uitvoering kan niet worden voltooid. Dit kan bijvoorbeeld gebeuren als het externe systeem niet actief is en er geen contact kan worden opgenomen. |
-| gestopt-fout limiet |Er zijn meer dan 5.000 fouten. De uitvoering is automatisch gestopt vanwege het grote aantal fouten. |
-| voltooid-\*-fouten |De uitvoering is voltooid, maar er zijn fouten (minder dan 5.000) die moeten worden onderzocht. |
-| voltooid-\*-waarschuwingen |De uitvoering is voltooid, maar sommige gegevens hebben niet de verwachte status. Als u fouten hebt, is dit bericht meestal alleen een symptoom. Onderzoek pas waarschuwingen als u fouten hebt opgelost. |
+| gestopt-* |De run kon niet afmaken. Dit kan bijvoorbeeld gebeuren als het externe systeem uitvalt en niet kan worden gecontacteerd. |
+| stop-fout-limiet |Er zijn meer dan 5.000 fouten. De run werd automatisch gestopt vanwege het grote aantal fouten. |
+| voltooide-\*-fouten |De run is afgelopen, maar er zijn fouten (minder dan 5.000) die moeten worden onderzocht. |
+| voltooid-\*-waarschuwingen |De run is voltooid, maar sommige gegevens zijn niet in de verwachte status. Als u fouten hebt, is dit bericht meestal slechts een symptoom. Onderzoek geen waarschuwingen totdat u fouten hebt verholpen. |
 | voltooid |Geen problemen. |
 
-Wanneer u een rij selecteert, wordt de onderkant van het tabblad **bewerkingen** bijgewerkt, zodat de details van die uitvoering worden weer gegeven. Aan de linkerkant van dit gebied hebt u mogelijk een lijst met de titel **stap #** . Deze lijst wordt alleen weer gegeven als u meerdere domeinen in uw forest hebt en elk domein wordt vertegenwoordigd door een stap. De domein naam kan worden gevonden onder de koptekst **partitie**. Onder de kop **synchronisatie statistieken** vindt u meer informatie over het aantal wijzigingen dat is verwerkt. Selecteer de koppelingen om een lijst met gewijzigde objecten op te halen. Als u objecten met fouten hebt, worden deze fouten weer gegeven onder de kop **synchronisatie fouten** .
+Wanneer u een rij selecteert, wordt de onderkant van het tabblad **Bewerkingen** bijgewerkt om de details van die run weer te geven. Aan de uiterst linkse kant van dit gebied hebt u mogelijk een lijst met de titel **Stap #**. Deze lijst wordt alleen weergegeven als u meerdere domeinen in uw forest hebt en elk domein wordt vertegenwoordigd door een stap. De domeinnaam is te vinden onder het kopje **Partitie**. Onder de kop **Synchronisatiestatistieken** vindt u meer informatie over het aantal wijzigingen dat is verwerkt. Selecteer de koppelingen om een lijst met de gewijzigde objecten te krijgen. Als u objecten met fouten hebt, worden deze fouten weergegeven onder de kop **Synchronisatiefouten.**
 
-### <a name="errors-on-the-operations-tab"></a>Fouten op het tabblad bewerkingen
-Wanneer u fouten hebt, Synchronization Service Manager het object in de fout weer gegeven en de fout zelf als koppelingen die meer informatie geven.
+### <a name="errors-on-the-operations-tab"></a>Fouten op het tabblad Bewerkingen
+Wanneer u fouten hebt, toont Synchronisatieservicebeheer zowel het object als de fout zelf als koppelingen die meer informatie bieden.
 
-Scherm opname ![van fouten in Synchronization Service Manager](./media/tshoot-connect-object-not-syncing/errorsync.png)  
-Begin met het selecteren van de fout teken reeks. (In de voor gaande afbeelding is de fout reeks **Sync-regel-error-function-geactiveerd**.) U krijgt eerst een overzicht van het object. Als u de werkelijke fout wilt zien, selecteert u **Stack tracering**. Deze tracering biedt informatie over debugniveau voor de fout.
+![Schermafbeelding van fouten in Synchronisatieservicebeheer](./media/tshoot-connect-object-not-syncing/errorsync.png)  
+Begin met het selecteren van de fouttekenreeks. (In de vorige afbeelding wordt de fouttekenreeks **synchronisatieregel-fout-functie geactiveerd**.) U krijgt eerst een overzicht van het object te zien. Als u de werkelijke fout wilt zien, selecteert u **Stapeltracering**. Deze tracering biedt informatie op foutopsporingsniveau voor de fout.
 
-Klik met de rechter muisknop op het vak **informatie over de aanroep stack** , klik op **Alles selecteren**en selecteer vervolgens **kopiëren**. Kopieer vervolgens de stack en Bekijk de fout in uw favoriete editor, zoals Klad blok.
+Klik met de rechtermuisknop op het vak **Informatie van de oproepstapel,** klik op **Alles selecteren**en selecteer **Kopiëren**. Kopieer vervolgens de stapel en kijk naar de fout in uw favoriete editor, zoals Kladblok.
 
-Als de fout afkomstig is uit **SyncRulesEngine**, worden in de stack gegevens voor de aanroep eerst alle kenmerken van het object weer gegeven. Schuif omlaag totdat u de kop **InnerException = >** ziet.  
+Als de fout afkomstig is van **SyncRulesEngine,** worden in de callstack-informatie eerst alle kenmerken van het object weergegeven. Scroll naar beneden totdat u de kop **InnerException =>** ziet.  
 
-  ![Scherm afbeelding van de Synchronization Service Manager, met de fout informatie onder de kop InnerException = >](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)
+  ![Schermafbeelding van synchronisatieservicebeheer, waarin foutgegevens worden weergegeven onder het kopje InnerException =>](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)
   
-De regel na de kop toont de fout. In de vorige afbeelding is de fout afkomstig uit een aangepaste synchronisatie regel die door Fabrikam is gemaakt.
+De regel na de kop toont de fout. In de voorgaande figuur is de fout afkomstig van een aangepaste synchronisatieregel die Fabrikam heeft gemaakt.
 
-Als de fout niet voldoende informatie geeft, is het tijd om de gegevens zelf te bekijken. Selecteer de koppeling met de object-id en ga door met het oplossen van problemen met het [geïmporteerde object in de connector ruimte](#cs-import).
+Als de fout niet genoeg informatie geeft, is het tijd om te kijken naar de gegevens zelf. Selecteer de koppeling met de object-id en blijf het [geïmporteerde object van](#cs-import)de connectorruimte oplossen .
 
-## <a name="connector-space-object-properties"></a>Eigenschappen van connector Space-object
-Als op het tabblad [**bewerkingen**](#operations) geen fouten worden weer gegeven, volgt u het connector Space-object van Active Directory naar het omgekeerde naar Azure AD. In dit pad moet u vinden waar het probleem zich bevindt.
+## <a name="connector-space-object-properties"></a>Eigenschappen van het object van het connectorgebied
+Als het tabblad [**Bewerkingen**](#operations) geen fouten weergeeft, volgt u het verbindingsruimteobject van Active Directory naar de metaverse naar Azure AD. Op dit pad moet u vinden waar het probleem zich bevindt.
 
 ### <a name="searching-for-an-object-in-the-cs"></a>Zoeken naar een object in de CS
 
-Selecteer in Synchronization Service Manager **connectors**, selecteer de Active Directory-connector en selecteer **ruimte voor Zoek connector**.
+Selecteer in Synchronisatieservicebeheer **connectors,** selecteer de Active Directory Connector en selecteer **Zoekconnectorruimte**.
 
-Selecteer in het vak **bereik** **RDN** wanneer u wilt zoeken op het kenmerk CN of selecteer **DN of anker** wanneer u wilt zoeken op het kenmerk **DN** -naam. Voer een waarde in en selecteer **zoeken**. 
+Selecteer **RDN** in **RDN** het vak Bereik wanneer u wilt zoeken op het kenmerk CN of selecteer **DN of anker** wanneer u wilt zoeken op het kenmerk **DistinguishedName.** Voer een waarde in en selecteer **Zoeken**. 
  
-![Scherm afbeelding van een zoek opdracht voor een connector ruimte](./media/tshoot-connect-object-not-syncing/cssearch.png)  
+![Schermafbeelding van een zoekopdracht in de connectorruimte](./media/tshoot-connect-object-not-syncing/cssearch.png)  
 
-Als u het object dat u zoekt niet kunt vinden, is het mogelijk gefilterd met filteren [op domein basis](how-to-connect-sync-configure-filtering.md#domain-based-filtering) of [filteren op basis](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)van een organisatie-eenheid. Als u wilt controleren of het filter is geconfigureerd zoals verwacht, lees dan [Azure AD Connect Sync: Configure filtering](how-to-connect-sync-configure-filtering.md).
+Als u het object dat u zoekt niet vindt, is het mogelijk gefilterd met [filtering op basis van domeinen](how-to-connect-sync-configure-filtering.md#domain-based-filtering) of op een [ou-gebaseerde filtering](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering). Als u wilt controleren of de filtering is geconfigureerd zoals verwacht, leest u [Azure AD Connect-synchronisatie: Filtering configureren](how-to-connect-sync-configure-filtering.md).
 
-U kunt een andere nuttige zoek opdracht uitvoeren door de Azure AD-connector te selecteren. Selecteer in het vak **bereik** de optie **in wachtrij worden geïmporteerd**en schakel vervolgens het selectie vakje **toevoegen** in. Deze zoek opdracht geeft u alle gesynchroniseerde objecten in azure AD die niet aan een on-premises object kunnen worden gekoppeld.  
+U een andere nuttige zoekopdracht uitvoeren door de Azure AD Connector te selecteren. Schakel **in** het vak Bereik de optie **In behandeling bij importeren**in en schakel het selectievakje Toevoegen **in.** Met deze zoekopdracht u alle gesynchroniseerde objecten in Azure AD gebruiken die niet kunnen worden gekoppeld aan een on-premises object.  
 
-![Scherm afbeelding van zwevende ruimten in een zoek opdracht voor een connector](./media/tshoot-connect-object-not-syncing/cssearchorphan.png) 
+![Schermafbeelding van wezen in een zoekopdracht naar de connectorruimte](./media/tshoot-connect-object-not-syncing/cssearchorphan.png) 
  
-Deze objecten zijn gemaakt door een andere synchronisatie-engine of een synchronisatie-engine met een andere filter configuratie. Deze zwevende objecten worden niet meer beheerd. Bekijk deze lijst en overweeg deze objecten te verwijderen met behulp van de [Azure AD Power shell](https://aka.ms/aadposh) -cmdlets.
+Deze objecten zijn gemaakt door een andere synchronisatie-engine of een synchronisatie-engine met een andere filterconfiguratie. Deze weesobjecten worden niet meer beheerd. Bekijk deze lijst en overweeg deze objecten te verwijderen met behulp van de Azure AD PowerShell-cmdlets. [Azure AD PowerShell](https://aka.ms/aadposh)
 
 ### <a name="cs-import"></a>CS importeren
-Wanneer u een CS-object opent, zijn er verschillende tabbladen bovenaan. Op het tabblad **importeren** worden de gegevens weer gegeven die zijn klaargezet na het importeren.  
+Wanneer u een CS-object opent, staan er verschillende tabbladen bovenaan. Op het tabblad **Importeren** worden de gegevens weergegeven die na een import zijn uitgevoerd.  
 
-![Scherm afbeelding van het object voor de verbindings ruimte venster Eigenschappen, waarbij het tabblad importeren is geselecteerd](./media/tshoot-connect-object-not-syncing/csobject.png)    
+![Schermafbeelding van het venster Eigenschappen van objectverbindingsruimte connector, waarbij het tabblad Importeren is geselecteerd](./media/tshoot-connect-object-not-syncing/csobject.png)    
 
-In de kolom **oude waarde** wordt weer gegeven wat op dit moment wordt opgeslagen in Connect. in de kolom **nieuwe waarde** wordt weer gegeven wat er is ontvangen van het bron systeem en nog niet is toegepast. Als er een fout optreedt op het object, worden de wijzigingen niet verwerkt.
+In de kolom **Oude waarde** ziet u wat momenteel is opgeslagen in Verbinding en in de kolom Nieuwe **waarde** wordt weergegeven wat er van het bronsysteem is ontvangen en nog niet is toegepast. Als er een fout op het object optreedt, worden wijzigingen niet verwerkt.
 
-Het tabblad **synchronisatie fout** is alleen zichtbaar in het venster **Eigenschappen van connector ruimte-object** als er een probleem is met het object. Lees voor meer informatie over [het oplossen van synchronisatie fouten op het tabblad **bewerkingen** ](#errors-on-the-operations-tab).
+Het tabblad **Synchronisatiefout** is alleen zichtbaar in het venster **Eigenschappen van objectverbindingsruimte** als er een probleem is met het object. Bekijk op [het tabblad **Bewerkingen** ](#errors-on-the-operations-tab)hoe u synchronisatiefouten oplossen voor meer informatie.
 
-![Scherm afbeelding van het tabblad Synchronisatie fout in de verbindings ruimte-object venster Eigenschappen](./media/tshoot-connect-object-not-syncing/cssyncerror.png)  
+![Schermafbeelding van het tabblad Synchronisatiefout in het venster Eigenschappen van objectverbindingsruimte connectorruimte](./media/tshoot-connect-object-not-syncing/cssyncerror.png)  
 
-### <a name="cs-lineage"></a>CS-afkomst
-Op het tabblad **afkomst** in het venster **Eigenschappen van connector ruimte object** ziet u hoe het object voor de connector ruimte aan het omgekeerde object is gerelateerd. U kunt zien wanneer de connector voor het laatst een wijziging van het verbonden systeem heeft geïmporteerd en welke regels worden toegepast om gegevens in de tekst te vullen.  
+### <a name="cs-lineage"></a>CS-regel
+Op het tabblad **Regellijn** in het venster **Eigenschappen van object Verbindingsruimte** ziet u hoe het object voor de connectorruimte is gerelateerd aan het metaverseobject. U zien wanneer de connector voor het laatst een wijziging van het verbonden systeem heeft geïmporteerd en welke regels van toepassing zijn op het invullen van gegevens in de metaverse.  
 
-![Scherm opname van het afkomst-tabblad in het object connector ruimte venster Eigenschappen](./media/tshoot-connect-object-not-syncing/cslineage.png)  
+![Schermafbeelding van het tabblad Regelrij in het venster Eigenschappen van objectverbindingsruimte connector](./media/tshoot-connect-object-not-syncing/cslineage.png)  
 
-In de voor gaande afbeelding toont de kolom **actie** een regel voor binnenkomende synchronisatie met de actie- **inrichting**. Dit geeft aan dat, zolang dit connector ruimte-object aanwezig is, het omgekeerde object blijft. Als in de lijst met synchronisatie regels een regel voor uitgaande synchronisatie met een **inrichtings** actie wordt weer gegeven, wordt dit object verwijderd wanneer het omgekeerde object wordt verwijderd.  
+In de voorgaande afbeelding wordt in de kolom **Actie** een binnenkomende synchronisatieregel weergegeven met de **actievoorziening**. Dit geeft aan dat zolang dit verbindingsruimteobject aanwezig is, het metaverse object blijft. Als in de lijst met synchronisatieregels in plaats daarvan een uitgaande synchronisatieregel met een **actie Voorziening** wordt weergegeven, wordt dit object verwijderd wanneer het doelmetkeerobject wordt verwijderd.  
 
-![Scherm opname van een afkomst-venster op het tabblad afkomst in het object connector Space venster Eigenschappen](./media/tshoot-connect-object-not-syncing/cslineageout.png)  
+![Schermafbeelding van een regelvenster op het tabblad Regelrij in het venster Eigenschappen van objectverbindingsruimte connector](./media/tshoot-connect-object-not-syncing/cslineageout.png)  
 
-In de voor gaande afbeelding ziet u ook in de kolom **PasswordSync** dat de binnenkomende connector ruimte kan bijdragen aan het wacht woord, omdat één synchronisatie regel de waarde **waar**heeft. Dit wacht woord wordt via de regel voor uitgaande verbindingen verzonden naar Azure AD.
+In de voorgaande afbeelding u in de kolom **PasswordSync** ook zien dat de binnenkomende connectorruimte wijzigingen in het wachtwoord kan bijdragen, omdat één synchronisatieregel de waarde **True**heeft. Dit wachtwoord wordt via de uitgaande regel naar Azure AD verzonden.
 
-Op het tabblad **afkomst** kunt u naar de omgekeerde tekst gaan door de eigenschappen van het [**omgekeerde object**](#mv-attributes)te selecteren.
+Op het tabblad **Regelrij** u bij de metaverse komen door [**metaverse objecteigenschappen te**](#mv-attributes)selecteren.
 
 ### <a name="preview"></a>Preview
-In de linkerbenedenhoek van het venster Eigenschappen van **connector ruimte object** ziet u de knop **Preview** . Selecteer deze knop om de **voorbeeld** pagina te openen, waar u één object kunt synchroniseren. Deze pagina is handig als u problemen met bepaalde aangepaste synchronisatie regels oplost en het effect van een wijziging op een enkel object wilt bekijken. U kunt een **volledige synchronisatie** of een **Delta synchronisatie**selecteren. U kunt ook **Preview genereren**selecteren, waarbij alleen de wijziging in het geheugen wordt bewaard. Of selecteer **Doorvoervoorbeeld**, waarmee de mailverse wordt bijgewerkt en alle wijzigingen in doel connector ruimten worden doorgevoerd.  
+In de linkerbenedenhoek van het venster **Eigenschappen van het verbindingsruimteobject** bevindt zich de knop **Voorbeeld.** Selecteer deze knop om de **voorbeeldpagina** te openen, waar u één object synchroniseren. Deze pagina is handig als u een aantal aangepaste synchronisatieregels oplost en het effect van een wijziging op één object wilt zien. U een **volledige synchronisatie** of een **Delta-synchronisatie**selecteren. U ook **Voorbeeld genereren**selecteren, waardoor de wijziging alleen in het geheugen wordt bijhouden. Of selecteer **Commit Preview**, die de metaverse bijwerkt en alle wijzigingen in doelconnectorruimten opvoert.  
 
-![Scherm opname van de pagina voor beeld, met voor beeld van starten geselecteerd](./media/tshoot-connect-object-not-syncing/preview.png)  
+![Schermafbeelding van de voorbeeldpagina, waarbij StartPreview is geselecteerd](./media/tshoot-connect-object-not-syncing/preview.png)  
 
-In het voor beeld kunt u het object controleren en zien welke regel wordt toegepast op een bepaalde kenmerk stroom.  
+In het voorbeeld u het object inspecteren en zien welke regel voor een bepaalde kenmerkstroom is toegepast.  
 
-![Scherm afbeelding van de voorbeeld pagina, met de kenmerk stroom importeren](./media/tshoot-connect-object-not-syncing/previewresult.png)
+![Schermafbeelding van de voorbeeldpagina met invoerkenmerkstroom](./media/tshoot-connect-object-not-syncing/previewresult.png)
 
 ### <a name="log"></a>Logboek
-Selecteer naast de knop **voor beeld** de knop **logboek** om de **logboek** pagina te openen. Hier ziet u de status en geschiedenis van de wachtwoord synchronisatie. Zie problemen met wachtwoord- [hash-synchronisatie met Azure AD Connect synchronisatie oplossen](tshoot-connect-password-hash-synchronization.md)voor meer informatie.
+Selecteer naast de knop **Voorbeeld** de knop **Logboek en** open de **pagina Logboek.** Hier ziet u de status en geschiedenis van wachtwoordsynchronisatie. Zie [Problemen met wachtwoordhashsynchronisatie oplossen met Azure AD Connect-synchronisatie](tshoot-connect-password-hash-synchronization.md)voor meer informatie.
 
-## <a name="metaverse-object-properties"></a>Eigenschappen van het omgekeerde object
-Het is doorgaans beter om te zoeken vanaf de bron Active Directory-Connector ruimte. Maar u kunt ook beginnen met zoeken vanuit de tekst.
+## <a name="metaverse-object-properties"></a>Metaverse objecteigenschappen
+Het is meestal beter om te beginnen met zoeken vanuit de bron Active Directory-connectorruimte. Maar je ook beginnen met zoeken vanaf de metaverse.
 
-### <a name="searching-for-an-object-in-the-mv"></a>Zoeken naar een object in de MV
-Selecteer in Synchronization Service Manager de optie **omgekeerde zoek opdracht**, zoals in de volgende afbeelding. Een query maken waarvan u weet dat deze de gebruiker heeft gevonden. Zoek naar algemene kenmerken, zoals **AccountName** (**SAMAccountName**) en **userPrincipalName**. Zie [Sync Service Manager omgekeerde zoek opdracht](how-to-connect-sync-service-manager-ui-mvsearch.md)voor meer informatie.
+### <a name="searching-for-an-object-in-the-mv"></a>Zoeken naar een object op de MV
+Selecteer **metaverse zoeken**in Synchronisatieservicebeheer, zoals in de volgende afbeelding. Maak een query waarvan u weet dat deze de gebruiker vindt. Zoeken naar algemene kenmerken, zoals **accountName** (**sAMAccountName**) en **userPrincipalName**. Zie [Metaverse zoeken voor](how-to-connect-sync-service-manager-ui-mvsearch.md)Meer informatie.
 
-![Scherm opname van Synchronization Service Manager, met het geselecteerde tabblad voor het zoeken van tekst](./media/tshoot-connect-object-not-syncing/mvsearch.png)  
+![Schermafbeelding van Synchronisatieservicebeheer, waarbij het tabblad Metaverse zoeken is geselecteerd](./media/tshoot-connect-object-not-syncing/mvsearch.png)  
 
-Klik in het venster **Zoek resultaten** op het object.
+Klik **in** het venster Zoekresultaten op het object.
 
-Als u het object niet hebt gevonden, is het nog niet bereikt. Ga door met zoeken naar het object in de [ruimte](#connector-space-object-properties)van de Active Directory-connector. Als u het object in de ruimte van de Active Directory-connector vindt, kan er een synchronisatie fout optreden waardoor het object niet meer naar de tekst kan worden verzonden of een filter voor het bereik van de synchronisatie regel kan worden toegepast.
+Als u het object niet hebt gevonden, heeft het object nog niet bereikt. Ga verder met zoeken naar het object in de [Active Directory-connectorruimte](#connector-space-object-properties). Als u het object in de Active Directory-connectorruimte vindt, kan er een synchronisatiefout zijn waardoor het object niet naar de metaverse kan komen of dat er mogelijk een synchronisatieregelscopingfilter wordt toegepast.
 
-### <a name="object-not-found-in-the-mv"></a>Object niet gevonden in de MV
-Als het object zich in de Active Directory-CS bevindt, maar niet aanwezig is in de MV, wordt een bereik filter toegepast. Als u het filter bereik wilt bekijken, gaat u naar het menu bureaublad toepassing en selecteert u **Editor voor synchronisatie regels**. Filter de regels die van toepassing zijn op het object door het filter hieronder aan te passen.
+### <a name="object-not-found-in-the-mv"></a>Object dat niet op de MV is gevonden
+Als het object zich in de Active Directory CS bevindt, maar niet aanwezig is op de MV, wordt een scopingfilter toegepast. Als u het scopingfilter wilt bekijken, gaat u naar het menu van de bureaubladtoepassing en selecteert u **De editor voor synchronisatieregels**. Filter de regels die van toepassing zijn op het object door het onderstaande filter aan te passen.
 
-  ![Scherm afbeelding van de editor voor synchronisatie regels, met een zoek opdracht voor inkomende synchronisatie regels](./media/tshoot-connect-object-not-syncing/syncrulessearch.png)
+  ![Schermafbeelding van de editor voor synchronisatieregels, met een zoeken naar binnenkomende synchronisatieregels](./media/tshoot-connect-object-not-syncing/syncrulessearch.png)
 
-Bekijk elke regel in de bovenstaande lijst en controleer het **filter bereik**. Als de waarde van **isCriticalSystemObject** in het volgende bereik is ingesteld op null of False of leeg, wordt deze in de scope.
+Bekijk elke regel in de lijst van bovenaf en controleer het **filter Scoping**. In het volgende scopingfilter is de waarde **van isCriticalSystemObject** null of FALSE of leeg.
 
-  ![Scherm afbeelding van het filter bereik in een zoek opdracht voor een inkomende synchronisatie regel](./media/tshoot-connect-object-not-syncing/scopingfilter.png)
+  ![Schermafbeelding van een scopingfilter in een binnenkomend zoeken naar synchronisatieregels](./media/tshoot-connect-object-not-syncing/scopingfilter.png)
 
-Ga naar de [CS](#cs-import) -lijst met import kenmerken en controleer welk filter het object blokkeert van verplaatsing naar de MV. In de lijst met kenmerken van de **connector ruimte** worden alleen niet-null-en niet-lege kenmerken weer gegeven. Als **isCriticalSystemObject** bijvoorbeeld niet in de lijst wordt weer gegeven, is de waarde van dit kenmerk null of leeg.
+Ga naar de kenmerklijst [CS importeren](#cs-import) en controleer welk filter het object blokkeert om naar de MV te gaan. In de kenmerklijst **Connectorruimte** worden alleen niet-null- en niet-lege kenmerken weergegeven. Als **isCriticalSystemObject** bijvoorbeeld niet in de lijst wordt weergegeven, is de waarde van dit kenmerk ongeldig of leeg.
 
-### <a name="object-not-found-in-the-azure-ad-cs"></a>Object niet gevonden in de Azure AD-CS
-Als het object niet aanwezig is in de connector ruimte van Azure AD, maar wel aanwezig is in de MV, kijkt u naar het bereik filter van de uitgaande regels van de corresponderende connector ruimte en gaat u na of het object wordt gefilterd omdat de [kenmerken van MV](#mv-attributes) niet voldoen aan de criteria.
+### <a name="object-not-found-in-the-azure-ad-cs"></a>Object dat niet is gevonden in de Azure AD CS
+Als het object niet aanwezig is in de connectorruimte van Azure AD, maar wel aanwezig is op de MV, kijkt u naar het scopingfilter van de uitgaande regels van de bijbehorende connectorruimte en zoekt u uit of het object is uitgefilterd omdat de [MV-kenmerken](#mv-attributes) niet aan de criteria voldoen.
 
-Als u het filter voor uitgaande scoping wilt bekijken, selecteert u de toepasselijke regels voor het object door het filter hieronder aan te passen. Bekijk elke regel en Bekijk de overeenkomende waarde voor het [kenmerk MV](#mv-attributes) .
+Als u het uitgaande scopingfilter wilt bekijken, selecteert u de toepasselijke regels voor het object door het onderstaande filter aan te passen. Bekijk elke regel en kijk naar de bijbehorende [MV-attribuutwaarde.](#mv-attributes)
 
-  ![Scherm opname van een zoek opdracht voor uitgaande synchronisatie regels in de editor voor synchronisatie regels](./media/tshoot-connect-object-not-syncing/outboundfilter.png)
+  ![Schermafbeelding van een zoekopdracht voor uitgaande synchronisatieregels in de editor synchronisatieregels](./media/tshoot-connect-object-not-syncing/outboundfilter.png)
 
 
-### <a name="mv-attributes"></a>MV kenmerken
-Op het tabblad **kenmerken** ziet u de waarden en welke Connect oren ze hebben bijgedragen.  
+### <a name="mv-attributes"></a>MV-kenmerken
+Op het tabblad **Kenmerken** ziet u de waarden en welke connectoren deze hebben bijgedragen.  
 
-![Scherm afbeelding van het omgekeerde object venster Eigenschappen, met het tabblad kenmerken geselecteerd](./media/tshoot-connect-object-not-syncing/mvobject.png)  
+![Schermafbeelding van het venster Eigenschappen van metaverse objecten, waarbij het tabblad Kenmerken is geselecteerd](./media/tshoot-connect-object-not-syncing/mvobject.png)  
 
-Als een object niet wordt gesynchroniseerd, vraagt u de volgende vragen over kenmerk toestanden in het omgekeerde:
-- Is het kenmerk **cloudFiltered** aanwezig en ingesteld op **waar**? Als dit het geval is, is dit gefilterd op basis van de stappen in [op kenmerken gebaseerde filtering](how-to-connect-sync-configure-filtering.md#attribute-based-filtering).
-- Is het kenmerk **Source Anchor** aanwezig? Als dat niet het geval is, hebt u een account-resource forest-topologie? Als een object wordt geïdentificeerd als een gekoppeld postvak (het kenmerk **msExchRecipientTypeDetails** heeft de waarde **2**), wordt de **Source Anchor** bijgedragen door het forest met een ingeschakeld Active Directory-account. Zorg ervoor dat het hoofd account is geïmporteerd en correct is gesynchroniseerd. De hoofd account moet worden weer gegeven tussen de [connectors](#mv-connectors) voor het object.
+Als een object niet synchroniseert, stelt u de volgende vragen over kenmerkstatussen in de metaverse:
+- Is het kenmerk **cloudFiltered** aanwezig en ingesteld op **True?** Als dit het is, is het gefilterd op basis van de stappen in [filtering op basis van kenmerken.](how-to-connect-sync-configure-filtering.md#attribute-based-filtering)
+- Is het kenmerk **sourceAnchor** aanwezig? Zo niet, heeft u een account-resource forest topologie? Als een object wordt geïdentificeerd als een gekoppeld postvak (het kenmerk **msExchRecipientTypeDetails** heeft de waarde **2),** wordt het **sourceAnchor** door het forest bijgedragen met een ingeschakeld Active Directory-account. Controleer of het hoofdaccount correct is geïmporteerd en gesynchroniseerd. Het hoofdaccount moet worden weergegeven tussen de [connectors](#mv-connectors) voor het object.
 
-### <a name="mv-connectors"></a>MV-connectors
-Op het tabblad **connectors** worden alle connector ruimten weer gegeven die een representatie van het object hebben. 
+### <a name="mv-connectors"></a>MV-connectoren
+Op het tabblad **Connectors** worden alle verbindingsruimten weergegeven die een weergave van het object hebben. 
  
-![Scherm afbeelding van het omgekeerde object venster Eigenschappen, met het tabblad connectors geselecteerd](./media/tshoot-connect-object-not-syncing/mvconnectors.png)  
+![Schermafbeelding van het venster Eigenschappen van metaverse objecten, waarbij het tabblad Connectors is geselecteerd](./media/tshoot-connect-object-not-syncing/mvconnectors.png)  
 
-U moet een connector hebben voor het volgende:
+Je moet een connector hebben om:
 
-- Elk Active Directory forest waarin de gebruiker wordt weer gegeven. Deze representatie kan **foreignSecurityPrincipals** en **contact** objecten bevatten.
-- Een connector in azure AD.
+- Elk Active Directory-forest waarin de gebruiker is vertegenwoordigd. Deze vertegenwoordiging kan **foreignSecurityPrincipals** en **Contact** objecten omvatten.
+- Een connector in Azure AD.
 
-Als de connector ontbreekt in azure AD, raadpleegt u de sectie over [MV Attributes](#mv-attributes) om de criteria voor het inrichten van Azure ad te controleren.
+Als u de connector voor Azure AD mist, controleert u de sectie over [MV-kenmerken](#mv-attributes) om de criteria voor de inrichting van Azure AD te verifiëren.
 
-Op het tabblad **connectors** kunt u ook naar het [object connector ruimte](#connector-space-object-properties)gaan. Selecteer een rij en klik op **Eigenschappen**.
+Via het tabblad **Connectors** u ook naar het [object connectorruimte](#connector-space-object-properties)gaan. Selecteer een rij en klik op **Eigenschappen**.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [Azure AD Connect synchronisatie](how-to-connect-sync-whatis.md).
+- Meer informatie over [Azure AD Connect-synchronisatie](how-to-connect-sync-whatis.md).
 - Meer informatie over [hybride identiteit](whatis-hybrid-identity.md).

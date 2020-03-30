@@ -1,6 +1,6 @@
 ---
-title: Windows Azure-Vm's samen zoeken
-description: Meer informatie over hoe co-locaties van Azure-VM-bronnen de latentie kunnen verbeteren.
+title: Windows Azure VM's co-lokaliseren
+description: Meer informatie over hoe het co-locating van Azure VM-resources de latentie kan verbeteren.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -12,15 +12,15 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: zivr
 ms.openlocfilehash: b61a84f2b284177b7443be00efeea65e7eb8aaef
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266791"
 ---
-# <a name="co-locate-resource-for-improved-latency"></a>Resource samen zoeken voor verbeterde latentie
+# <a name="co-locate-resource-for-improved-latency"></a>Co-locate resource voor verbeterde latentie
 
-Wanneer u uw toepassing in azure implementeert, wordt er netwerk latentie gemaakt, wat van invloed kan zijn op de algehele prestaties van uw toepassing. 
+Wanneer u uw toepassing implementeert in Azure, zorgt het verspreiden van instanties over regio's of beschikbaarheidszones voor netwerklatentie, wat van invloed kan zijn op de algehele prestaties van uw toepassing. 
 
 
 ## <a name="proximity-placement-groups"></a>Nabijheidsplaatsingsgroepen 
@@ -29,10 +29,10 @@ Wanneer u uw toepassing in azure implementeert, wordt er netwerk latentie gemaak
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Implementeer een virtuele machine op een [proximity-plaatsings groep](proximity-placement-groups.md) met behulp van Azure PowerShell.
+Implementeer een VM in een [plaatsingsgroep voor nabijheid](proximity-placement-groups.md) met Azure PowerShell.
 
-Meer informatie over het testen van de [netwerk latentie](https://aka.ms/TestNetworkLatency?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Meer informatie over het [testen van netwerklatentie](https://aka.ms/TestNetworkLatency?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Meer informatie over het optimaliseren van de [netwerk doorvoer](https://docs.microsoft.com/azure/virtual-network/virtual-network-optimize-network-bandwidth?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).  
+Meer informatie over het [optimaliseren van de netwerkdoorvoer.](https://docs.microsoft.com/azure/virtual-network/virtual-network-optimize-network-bandwidth?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)  
 
-Meer informatie over het [gebruik van proximity-plaatsings groepen met SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Meer informatie over het [gebruik van nabijheidsplaatsingsgroepen met SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -1,6 +1,6 @@
 ---
-title: Gegevens verplaatsen van Webtabel met behulp van Azure Data Factory
-description: Meer informatie over het verplaatsen van gegevens uit een tabel op een webpagina met behulp van Azure Data Factory.
+title: Gegevens uit webtabel verplaatsen met Azure Data Factory
+description: Meer informatie over het verplaatsen van gegevens uit een tabel in een webpagina met Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,30 +13,30 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265712"
 ---
-# <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Gegevens verplaatsen van een bron van een webtabel met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+# <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Gegevens verplaatsen van een webtabelbron met Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](data-factory-web-table-connector.md)
 > * [Versie 2 (huidige versie)](../connector-web-table.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [Web Table connector in v2](../connector-web-table.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Zie [Webtabelconnector in V2](../connector-web-table.md)als u de huidige versie van de service Data Factory gebruikt.
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens van een tabel in een webpagina te verplaatsen naar een ondersteund Sink-gegevens archief. In dit artikel vindt u een overzicht van het artikel over de [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) , dat algemene informatie bevat over het verplaatsen van gegevens met de Kopieer activiteit en de lijst met gegevens archieven die worden ondersteund als bronnen/Sinks.
+In dit artikel wordt beschreven hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens van een tabel in een webpagina naar een ondersteund sink-gegevensarchief te verplaatsen. Dit artikel bouwt voort op het artikel over [gegevensverplaatsingsactiviteiten](data-factory-data-movement-activities.md) dat een algemeen overzicht geeft van gegevensverplaatsing met kopieeractiviteit en de lijst met gegevensarchieven die worden ondersteund als bronnen/putten.
 
-Data Factory ondersteunt momenteel alleen het verplaatsen van gegevens van een webtabel naar andere gegevens archieven, maar het verplaatsen van gegevens van andere gegevens archieven naar een webtabel.
+Gegevensfabriek ondersteunt momenteel alleen het verplaatsen van gegevens van een webtabel naar andere gegevensopslag, maar verplaatst geen gegevens van andere gegevensopslag naar een webtabelbestemming.
 
 > [!IMPORTANT]
-> Deze web-connector ondersteunt momenteel alleen het extra heren van tabel inhoud van een HTML-pagina. Als u gegevens wilt ophalen uit een HTTP/s-eind punt, gebruikt u in plaats daarvan [http-connector](data-factory-http-connector.md) .
+> Deze webconnector ondersteunt momenteel alleen het extraheren van tabelinhoud uit een HTML-pagina. Als u gegevens wilt ophalen uit een HTTP/s-eindpunt, gebruikt u in plaats daarvan [HTTP-connector.](data-factory-http-connector.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze web Table-connector wilt gebruiken, moet u een zelf-hostende Integration Runtime (ook wel Data Management Gateway) instellen en de eigenschap `gatewayName` configureren in de gekoppelde Sink-service. Als u bijvoorbeeld van web Table naar Azure Blob-opslag wilt kopiëren, moet u de Azure Storage gekoppelde service als volgt configureren:
+Als u deze webtabelconnector wilt gebruiken, moet u een Self-hosted Integration Runtime (ook bekend als Data Management Gateway) instellen en de `gatewayName` eigenschap configureren in de sink linked-service. Als u bijvoorbeeld wilt kopiëren van webtabel naar Azure Blob-opslag, configureert u de gekoppelde Azure Storage-service als volgt:
 
 ```json
 {
@@ -52,29 +52,29 @@ Als u deze web Table-connector wilt gebruiken, moet u een zelf-hostende Integrat
 ```
 
 ## <a name="getting-started"></a>Aan de slag
-U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een on-premises Cassandra-gegevens opslag met behulp van verschillende hulpprogram ma's/Api's. 
+U een pijplijn maken met een kopieeractiviteit die gegevens verplaatst van een on-premises Cassandra-gegevensarchief met behulp van verschillende hulpprogramma's/API's. 
 
-- De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren. 
-- U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. 
+- De eenvoudigste manier om een pijplijn te maken, is door de **wizard Kopiëren**te gebruiken. Zie [Zelfstudie: Maak een pijplijn met wizard Kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough voor het maken van een pijplijn met de wizard Gegevens kopiëren. 
+- U ook de volgende hulpprogramma's gebruiken om een pijplijn te maken: **Visual Studio,** **Azure PowerShell,** **Azure Resource Manager-sjabloon,** **.NET API**en REST **API**. Zie [Zelfstudie voor activiteit kopiëren](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies om een pijplijn met een kopieeractiviteit te maken. 
 
-Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
+Of u nu de hulpprogramma's of API's gebruikt, u voert de volgende stappen uit om een pijplijn te maken die gegevens van een brongegevensarchief naar een sink-gegevensarchief verplaatst:
 
-1. Maak **gekoppelde services** om invoer-en uitvoer gegevens archieven te koppelen aan uw Data Factory.
-2. Gegevens **sets** maken om invoer-en uitvoer gegevens voor de Kopieer bewerking weer te geven. 
-3. Maak een **pijp lijn** met een Kopieer activiteit die een gegevensset als invoer en een gegevensset als uitvoer gebruikt. 
+1. Maak **gekoppelde services** om invoer- en uitvoergegevensopslag te koppelen aan uw gegevensfabriek.
+2. Maak **gegevenssets** om invoer- en uitvoergegevens voor de kopieerbewerking weer te geven. 
+3. Maak een **pijplijn** met een kopieeractiviteit die een gegevensset als invoer en een uitvoerset als uitvoer neemt. 
 
-Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data Factory entiteiten (gekoppelde services, gegevens sets en de pijp lijn) gemaakt. Wanneer u hulpprogram ma's/Api's (met uitzonde ring van .NET API) gebruikt, definieert u deze Data Factory entiteiten met behulp van de JSON-indeling.  Zie [JSON-voor beeld: gegevens kopiëren van Webtabel naar Azure Blob](#json-example-copy-data-from-web-table-to-azure-blob) in dit artikel voor een voor beeld met JSON-definities voor Data Factory entiteiten die worden gebruikt voor het kopiëren van gegevens uit een webtabel. 
+Wanneer u de wizard gebruikt, worden JSON-definities voor deze gegevensfabrieksentiteiten (gekoppelde services, gegevenssets en de pijplijn) automatisch voor u gemaakt. Wanneer u tools/API's (behalve .NET API) gebruikt, definieert u deze entiteiten in de Data Factory met behulp van de JSON-indeling.  Zie [JSON-voorbeeld: Gegevens uit de webtabel kopiëren naar azure blob-sectie](#json-example-copy-data-from-web-table-to-azure-blob) van dit artikel voor een voorbeeld van JSON met JSON-definities voor entiteiten in gegevensfabriek die worden gebruikt om gegevens uit een webtabel te kopiëren. 
 
-De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor een webtabel:
+In de volgende secties vindt u informatie over JSON-eigenschappen die worden gebruikt om entiteiten in gegevensfabriek te definiëren die specifiek zijn voor een webtabel:
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
-In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifiek zijn voor gekoppelde webservices.
+## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+In de volgende tabel vindt u een beschrijving voor JSON-elementen die specifiek zijn voor webgekoppelde service.
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De eigenschap type moet worden ingesteld op: **Web** |Ja |
+| type |De eigenschap type moet zijn ingesteld op: **Web** |Ja |
 | URL |URL naar de webbron |Ja |
-| authenticationType |Toegang. |Ja |
+| authenticationType |Anonieme. |Ja |
 
 ### <a name="using-anonymous-authentication"></a>Anonieme verificatie gebruiken
 
@@ -94,15 +94,15 @@ In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifie
 ```
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
-Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
+Zie het artikel [Gegevenssets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. Secties zoals structuur, beschikbaarheid en beleid van een gegevensset JSON zijn vergelijkbaar voor alle gegevenssettypen (Azure SQL, Azure blob, Azure table, etc.).
 
-De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie typeProperties voor de gegevensset van het type **webtable** heeft de volgende eigenschappen:
+De sectie **typeEigenschappen** is verschillend voor elk type gegevensset en geeft informatie over de locatie van de gegevens in het gegevensarchief. De sectie typeEigenschappen voor de gegevensset van type **WebTable** heeft de volgende eigenschappen
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type |Het type van de gegevensset. moet worden ingesteld op **Webtable** |Ja |
-| pad |Een relatieve URL naar de resource die de tabel bevat. |Nee. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. |
-| index |De index van de tabel in de resource. Zie [index ophalen van een tabel in een sectie met een HTML-pagina](#get-index-of-a-table-in-an-html-page) voor de stappen voor het ophalen van index van een tabel in een HTML-pagina. |Ja |
+| type |type van de gegevensset. moet worden ingesteld op **WebTable** |Ja |
+| path |Een relatieve URL naar de resource die de tabel bevat. |Nee. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van gekoppelde service. |
+| Index |De index van de tabel in de resource. Zie [Index van een tabel in een HTML-paginasectie opvragen](#get-index-of-a-table-in-an-html-page) voor stappen om index van een tabel in een HTML-pagina op te halen. |Ja |
 
 **Voorbeeld:**
 
@@ -126,27 +126,27 @@ De sectie **typeProperties** verschilt voor elk type gegevensset en bevat inform
 ```
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
-Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleid zijn beschikbaar voor alle typen activiteiten.
+Zie het artikel [Pijplijnmaken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer- en uitvoertabellen en beleid zijn beschikbaar voor alle soorten activiteiten.
 
-Terwijl de eigenschappen die beschikbaar zijn in de sectie typeProperties van de activiteit, verschillen per activiteitstype. Voor kopieer activiteiten zijn ze afhankelijk van de typen bronnen en Sinks.
+Overwegende dat de eigenschappen die beschikbaar zijn in de sectie typeEigenschappen van de activiteit per activiteitstype verschillen. Voor Kopieeractiviteit variëren ze afhankelijk van de soorten bronnen en putten.
 
-Wanneer de bron in de Kopieer activiteit van het type **websource**is, worden er op dit moment geen aanvullende eigenschappen ondersteund.
+Op dit moment, wanneer de bron in kopieeractiviteit van type **WebSource**is, worden er geen extra eigenschappen ondersteund.
 
 
-## <a name="json-example-copy-data-from-web-table-to-azure-blob"></a>JSON-voor beeld: gegevens kopiëren van Webtabel naar Azure Blob
-In het volgende voor beeld ziet u:
+## <a name="json-example-copy-data-from-web-table-to-azure-blob"></a>JSON-voorbeeld: gegevens uit webtabel kopiëren naar Azure Blob
+In het volgende voorbeeld wordt het volgende voorbeeld weergegeven:
 
-1. Een gekoppelde service van het type [Web](#linked-service-properties).
-2. Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [webtable](#dataset-properties).
-4. Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. Een [pijp lijn](data-factory-create-pipelines.md) met Kopieer activiteit die gebruikmaakt van [websource](#copy-activity-properties) -en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+1. Een gekoppelde service van het [type Web](#linked-service-properties).
+2. Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+3. Een [invoergegevensset](data-factory-create-datasets.md) van het type [WebTable](#dataset-properties).
+4. Een [uitvoergegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+5. Een [pijplijn](data-factory-create-pipelines.md) met kopieeractiviteit die [WebSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)gebruikt.
 
-In het voor beeld worden elk uur gegevens van een webtabel naar een Azure-Blob gekopieerd. De JSON-eigenschappen die in deze steek proeven worden gebruikt, worden beschreven in secties die volgen op de voor beelden.
+Het voorbeeld kopieert elk uur gegevens uit een webtabel naar een Azure-blob. De JSON-eigenschappen die in deze monsters worden gebruikt, worden beschreven in secties die de monsters volgen.
 
-In het volgende voor beeld ziet u hoe u gegevens uit een webtabel naar een Azure-Blob kopieert. Gegevens kunnen echter rechtstreeks naar een van de sinks worden gekopieerd die in het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) worden vermeld met behulp van de Kopieer activiteit in azure Data Factory.
+In het volgende voorbeeld ziet u hoe u gegevens uit een webtabel kopieert naar een Azure-blob. Gegevens kunnen echter rechtstreeks worden gekopieerd naar een van de sinks die in het artikel [Gegevensverplaatsingsactiviteiten](data-factory-data-movement-activities.md) zijn vermeld met behulp van de activiteit kopiëren in Azure Data Factory.
 
-**Gekoppelde Internet Service** In dit voor beeld wordt de met internet gekoppelde service met anonieme verificatie gebruikt. Zie de sectie met [gekoppelde webservices](#linked-service-properties) voor verschillende typen verificatie die u kunt gebruiken.
+**Webgekoppelde service** In dit voorbeeld wordt de webgekoppelde service gebruikt met anonieme verificatie. Zie [webgekoppelde servicesectie](#linked-service-properties) voor verschillende typen verificatie die u gebruiken.
 
 ```json
 {
@@ -163,7 +163,7 @@ In het volgende voor beeld ziet u hoe u gegevens uit een webtabel naar een Azure
 }
 ```
 
-**Een gekoppelde Azure Storage-service**
+**Gekoppelde Azure Storage-service**
 
 ```json
 {
@@ -178,10 +178,10 @@ In het volgende voor beeld ziet u hoe u gegevens uit een webtabel naar een Azure
 }
 ```
 
-**Gegevensset voor invoer van Webtabel** Als u **extern** instelt op **True** , informeert de Data Factory-service dat de gegevensset zich buiten de Data Factory bevindt en die niet wordt geproduceerd door een activiteit in de Data Factory.
+**WebTable-invoergegevensset** Als **u extern** naar true **instelt,** wordt de service Data Factory geïnformeerd dat de gegevensset buiten de gegevensfabriek staat en niet wordt geproduceerd door een activiteit in de gegevensfabriek.
 
 > [!NOTE]
-> Zie [index ophalen van een tabel in een sectie met een HTML-pagina](#get-index-of-a-table-in-an-html-page) voor de stappen voor het ophalen van index van een tabel in een HTML-pagina.  
+> Zie [Index van een tabel in een HTML-paginasectie opvragen](#get-index-of-a-table-in-an-html-page) voor stappen om index van een tabel in een HTML-pagina op te halen.  
 >
 >
 
@@ -207,7 +207,7 @@ In het volgende voor beeld ziet u hoe u gegevens uit een webtabel naar een Azure
 
 **Azure Blob-uitvoergegevensset**
 
-Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interval: 1).
+Gegevens worden elk uur naar een nieuwe blob geschreven (frequentie: uur, interval: 1).
 
 ```json
 {
@@ -231,11 +231,11 @@ Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interv
 
 
 
-**Pijp lijn met Kopieer activiteit**
+**Pijplijn met kopieeractiviteit**
 
-De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **websource** en **sink** -type is ingesteld op **BlobSink**.
+De pijplijn bevat een kopieeractiviteit die is geconfigureerd om de invoer- en uitvoergegevenssets te gebruiken en die elk uur moet worden uitgevoerd. In de JSON-definitie van pijplijn wordt het **brontype** ingesteld op **WebSource** en is **het gootsteentype** ingesteld op **BlobSink**.
 
-Zie Eigenschappen van het webbron type voor de lijst met eigenschappen die worden ondersteund door de webbron.
+Zie WebSource-teksteigenschappen voor de lijst met eigenschappen die door de WebSource worden ondersteund.
 
 ```json
 {  
@@ -283,33 +283,33 @@ Zie Eigenschappen van het webbron type voor de lijst met eigenschappen die worde
 }
 ```
 
-## <a name="get-index-of-a-table-in-an-html-page"></a>Index van een tabel in een HTML-pagina ophalen
-1. Start **Excel 2016** en schakel over naar het tabblad **gegevens** .  
-2. Klik op **nieuwe query** op de werk balk, wijs **vanuit andere bronnen** naar en klik op **van web**.
+## <a name="get-index-of-a-table-in-an-html-page"></a>Index van een tabel in een HTML-pagina opdoen
+1. Start **Excel 2016** en ga naar het tabblad **Gegevens.**  
+2. Klik op **Nieuwe query** op de werkbalk, wijs Uit **andere bronnen** aan en klik op Van **web**.
 
-    ![Menu Power Query](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
-3. Voer in het dialoog venster **van het web** de **URL** in die u in de gekoppelde service-JSON zou gebruiken (bijvoorbeeld: https://en.wikipedia.org/wiki/) samen met het pad dat u opgeeft voor de GEGEVENSSET (bijvoorbeeld: AFI% 27s_100_Years... 100_Movies) en klik op **OK**.
+    ![Power Query-menu](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
+3. Voer in het dialoogvenster **Van web** **URL** in die u zou https://en.wikipedia.org/wiki/) gebruiken in de gekoppelde service JSON (bijvoorbeeld: samen met het pad dat u voor de gegevensset opgeeft (bijvoorbeeld: AFI%27s_100_Years... 100_Movies) en klik op **OK**.
 
-    ![Vanuit het dialoog venster Web](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
+    ![Dialoogvenster Web](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
-    URL die in dit voor beeld wordt gebruikt: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. Als u het dialoog venster **webinhoud openen** ziet, selecteert u de juiste **URL**, **verificatie**en klikt u op **verbinding maken**.
+    URL die in dit voorbeeld wordt gebruikt:https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+4. Als u het dialoogvenster **Access Web-inhoud** ziet, selecteert u de juiste **URL**, **verificatie**en klikt u op **Verbinding maken**.
 
-   ![Het dialoog venster toegang tot webinhoud](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
-5. Klik in de structuur weergave op een **tabel** item om de inhoud van de tabel te bekijken en klik vervolgens onderaan op de knop **bewerken** .  
+   ![Dialoogvenster Webinhoud openen](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
+5. Klik op een **tabelitem** in de structuurweergave om de inhoud van de tabel te bekijken en klik vervolgens op **Knop Bewerken** onderin.  
 
-   ![Dialoog venster navigator](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
-6. Klik in het venster **query-editor** op **Geavanceerde editor** knop op de werk balk.
+   ![Navigator-venster](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
+6. Klik in het venster **Queryeditor** op de knop **Geavanceerde editor** op de werkbalk.
 
     ![Knop Geavanceerde editor](./media/data-factory-web-table-connector/QueryEditor-AdvancedEditorButton.png)
-7. In het dialoog venster Geavanceerde editor is het nummer naast ' Bron ' de index.
+7. In het dialoogvenster Geavanceerde editor is het getal naast 'Bron' de index.
 
-    ![Geavanceerde editor-index](./media/data-factory-web-table-connector/AdvancedEditor-Index.png)
+    ![Geavanceerde editor - Index](./media/data-factory-web-table-connector/AdvancedEditor-Index.png)
 
-Als u Excel 2013 gebruikt, gebruikt u [Microsoft Power query voor Excel](https://www.microsoft.com/download/details.aspx?id=39379) om de index op te halen. Zie [verbinding maken met een webpagina](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) -artikel voor meer informatie. De stappen zijn vergelijkbaar als u [micro soft power BI voor het bureau blad](https://powerbi.microsoft.com/desktop/)gebruikt.
+Als u Excel 2013 gebruikt, gebruikt u [Microsoft Power Query voor Excel](https://www.microsoft.com/download/details.aspx?id=39379) om de index op te halen. Zie [Verbinding maken met een webpaginaartikel](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) voor meer informatie. De stappen zijn vergelijkbaar als u [Microsoft Power BI voor bureaublad gebruikt.](https://powerbi.microsoft.com/desktop/)
 
 > [!NOTE]
-> Als u kolommen van de bron-gegevensset wilt toewijzen aan kolommen uit Sink-gegevensset, raadpleegt u [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md).
+> Zie Kolommen van [gegevensset toewijzing in Azure Data Factory](data-factory-map-columns.md)als u kolommen wilt toewijzen van brongegevensset naar kolommen uit de sink-gegevensset.
 
-## <a name="performance-and-tuning"></a>Prestaties en afstemming
-Zie [Kopieer activiteit prestaties & afstemmings handleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed hebben op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in azure Data Factory en verschillende manieren om deze te optimaliseren.
+## <a name="performance-and-tuning"></a>Prestaties en tuning
+Zie [Handleiding activiteitsprestaties kopiëren & tuningom](data-factory-copy-activity-performance.md) meer te weten te komen over de belangrijkste factoren die van invloed zijn op de prestaties van gegevensverplaatsing (Kopieeractiviteit) in Azure Data Factory en op verschillende manieren om deze te optimaliseren.

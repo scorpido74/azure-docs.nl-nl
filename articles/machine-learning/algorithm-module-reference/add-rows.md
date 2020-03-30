@@ -1,7 +1,7 @@
 ---
-title: 'Rijen toevoegen: module verwijzing'
+title: 'Rijen toevoegen: modulenaslag'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module rijen toevoegen in Azure Machine Learning om twee gegevens sets samen te voegen.
+description: Meer informatie over het gebruik van de module Rijen toevoegen in Azure Machine Learning om twee gegevenssets samen te voegen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,37 +9,37 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 7787a765bf48adc15f4675c6c03ff3d04fa388c6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: cd9b5f8f182c4deab746d2c41e516a6ac23fb7aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918492"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477728"
 ---
-# <a name="add-rows-module"></a>Module rijen toevoegen
+# <a name="add-rows-module"></a>Module Rijen toevoegen
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module beschreven in Azure Machine Learning designer (preview).
 
-Gebruik deze module om twee gegevens sets samen te voegen. In samen voeging worden de rijen van de tweede gegevensset toegevoegd aan het einde van de eerste gegevensset.  
+Gebruik deze module om twee gegevenssets te concaten. In samenvoeging worden de rijen van de tweede gegevensset toegevoegd aan het einde van de eerste gegevensset.  
   
-Het samen voegen van rijen is handig in scenario's zoals:  
+Samenvoeging van rijen is handig in scenario's als deze:  
   
-+ U hebt een reeks evaluatie statistieken gegenereerd en wilt u deze combi neren in één tabel om de rapportage te vergemakkelijken.  
++ U hebt een reeks evaluatiestatistieken gegenereerd en u wilt deze combineren in één tabel voor eenvoudigere rapportage.  
   
-+ U hebt met verschillende gegevens sets gewerkt en u wilt de gegevens sets combi neren om een definitieve gegevensset te maken.  
++ U hebt met verschillende gegevenssets gewerkt en u wilt de gegevenssets combineren om een definitieve gegevensset te maken.  
 
 ## <a name="how-to-use-add-rows"></a>Rijen toevoegen gebruiken  
 
-Als u rijen wilt samen voegen vanuit twee gegevens sets, moeten de rijen precies hetzelfde schema hebben. Dit betekent dat hetzelfde aantal kolommen en hetzelfde type gegevens in de kolommen.
+Om rijen uit twee gegevenssets te laten zien, moeten de rijen precies hetzelfde schema hebben. Dit betekent dat hetzelfde aantal kolommen en hetzelfde type gegevens in de kolommen.
 
-1.  Sleep de module **rijen toevoegen** naar uw pijp lijn, u kunt deze vinden onder **gegevens transformatie**.
+1.  Sleep de module **Rijen toevoegen** in uw pijplijn, u deze vinden onder **Gegevenstransformatie**.
 
-2. Verbind de gegevens sets met de twee invoer poorten. De gegevensset die u wilt toevoegen, moet zijn verbonden met de tweede poort (rechts). 
+2. Verbind de gegevenssets met de twee invoerpoorten. De gegevensset die u wilt toevoegen, moet worden verbonden met de tweede (juiste) poort. 
   
-3.  Voer de pijplijn uit. Het aantal rijen in de uitvoer gegevensset moet gelijk zijn aan de som van de rijen van beide invoer gegevens sets.
+3.  Verzend de pijplijn. Het aantal rijen in de uitvoergegevensset moet gelijk zijn aan de som van de rijen van beide invoergegevenssets.
 
-    Als u dezelfde gegevensset toevoegt aan beide invoer van de module **rijen toevoegen** , wordt de gegevensset gedupliceerd. 
+    Als u dezelfde gegevensset toevoegt aan beide ingangen van de module **Rijen toevoegen,** wordt de gegevensset gedupliceerd. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 
